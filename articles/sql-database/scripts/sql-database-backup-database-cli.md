@@ -1,5 +1,5 @@
 ---
-title: Příklad CLI – zálohování – Azure SQL Database
+title: 'Azure CLI: zálohování databáze v Azure SQL Database'
 description: Ukázkový skript Azure CLI pro zálohování izolované databáze SQL Azure do kontejneru úložiště Azure
 services: sql-database
 ms.service: sql-database
@@ -10,16 +10,16 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 03/27/2019
-ms.openlocfilehash: 68af42bd83565243dad5d48f227fa5cef3115cf6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 605b2690f85ea8c800e6485b0eb998b795ea9d10
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061866"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022705"
 ---
 # <a name="use-cli-to-backup-an-azure-sql-single-database-to-an-azure-storage-container"></a>Použití rozhraní příkazového řádku pro zálohování databáze SQL Azure do kontejneru úložiště Azure
 
-Tento příklad rozhraní příkazového řádku Azure zálohuje databázi SQL Azure do kontejneru úložiště Azure.  
+Tento příklad rozhraní příkazového řádku Azure zálohuje databázi v SQL Database do kontejneru úložiště Azure.  
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 
@@ -60,4 +60,4 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další ukázkové skripty rozhraní příkazového řádku pro službu SQL Database najdete v [dokumentaci ke službě Azure SQL Database](../sql-database-cli-samples.md).
+Další ukázkové skripty rozhraní příkazového řádku pro službu SQL Database najdete v [dokumentaci ke službě Azure SQL Database](../../azure-sql/database/az-cli-script-samples-content-guide.md).

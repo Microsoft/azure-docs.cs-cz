@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 28fa9dddda94845511ead7d8fb7481aff6b6b044
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ef24e78ea88bb0922c0affbe47f2591475024601
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80130851"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015994"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Kurz: migrace zachycených Event Hubs dat do SQL Data Warehouse pomocí Event Grid a Azure Functions
 
@@ -22,18 +22,19 @@ ms.locfileid: "80130851"
 
 ![Visual Studio](./media/store-captured-data-data-warehouse/EventGridIntegrationOverview.PNG)
 
-*   Nejprve vytvoříte centrum událostí s povolenou funkcí **Zachytávání** a jako cíl nastavíte službu Azure Blob Storage. Data generovaná aplikací WindTurbineGenerator se streamují do centra událostí a automaticky se zachytávají do služby Azure Storage jako soubory Avro. 
-*   Pak vytvoříte předplatné Azure Event Gridu s oborem názvů služby Event Hubs jako zdrojem a koncovým bodem funkce Azure jako cílem.
-*   Vždy, když funkce Zachytávání služby Event Hubs doručí soubor Avro do objektu blob služby Azure Storage, oznámí Event Grid funkci Azure identifikátor URI objektu blob. Funkce pak provede migraci dat z objektu blob do služby SQL Data Warehouse.
+- Nejprve vytvoříte centrum událostí s povolenou funkcí **Zachytávání** a jako cíl nastavíte službu Azure Blob Storage. Data generovaná aplikací WindTurbineGenerator se streamují do centra událostí a automaticky se zachytávají do služby Azure Storage jako soubory Avro.
+- Pak vytvoříte předplatné Azure Event Gridu s oborem názvů služby Event Hubs jako zdrojem a koncovým bodem funkce Azure jako cílem.
+- Vždy, když funkce Zachytávání služby Event Hubs doručí soubor Avro do objektu blob služby Azure Storage, oznámí Event Grid funkci Azure identifikátor URI objektu blob. Funkce pak provede migraci dat z objektu blob do služby SQL Data Warehouse.
 
-V tomto kurzu provedete následující akce: 
+V tomto kurzu provedete následující akce:
 
 > [!div class="checklist"]
-> * Nasazení infrastruktury
-> * Publikování kódu do aplikace Functions
-> * Vytvoření odběru Event Gridu v aplikaci Functions
-> * Streamování ukázkových dat do centra událostí 
-> * Ověření zachycených dat ve službě SQL Data Warehouse
+>
+> - Nasazení infrastruktury
+> - Publikování kódu do aplikace Functions
+> - Vytvoření odběru Event Gridu v aplikaci Functions
+> - Streamování ukázkových dat do centra událostí
+> - Ověření zachycených dat ve službě SQL Data Warehouse
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -41,20 +42,22 @@ V tomto kurzu provedete následující akce:
 
 - [Visual studio 2019](https://www.visualstudio.com/vs/). Při instalaci nezapomeňte nainstalovat následující sady funkcí: Vývoj desktopových aplikací .NET, Vývoj pro Azure, Vývoj pro ASP.NET a web, Vývoj v Node.js a Vývoj v Pythonu.
 - Stažení [ukázky Gitu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) ukázka řešení obsahuje následující součásti:
-    - *WindTurbineDataGenerator* – Jednoduchý vydavatel odesílající ukázková data větrné turbíny do centra událostí s povolenou funkcí Zachytávání.
-    - *FunctionDWDumper* – Funkce Azure, která přijímá oznámení Event Gridu při zachycení souboru Avro do objektu blob služby Azure Storage. Přijme cestu URI objektu blob, načte jeho obsah a odešle tato data do služby SQL Data Warehouse.
 
-    Tato ukázka používá nejnovější balíček Azure. Messaging. EventHubs. Starou ukázku, která používá balíček Microsoft. Azure. EventHubs, můžete najít [tady](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). 
+  - *WindTurbineDataGenerator* – Jednoduchý vydavatel odesílající ukázková data větrné turbíny do centra událostí s povolenou funkcí Zachytávání.
+  - *FunctionDWDumper* – Funkce Azure, která přijímá oznámení Event Gridu při zachycení souboru Avro do objektu blob služby Azure Storage. Přijme cestu URI objektu blob, načte jeho obsah a odešle tato data do služby SQL Data Warehouse.
+
+  Tato ukázka používá nejnovější balíček Azure. Messaging. EventHubs. Starou ukázku, která používá balíček Microsoft. Azure. EventHubs, můžete najít [tady](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo).
 
 ### <a name="deploy-the-infrastructure"></a>Nasazení infrastruktury
+
 Pomocí Azure PowerShellu nebo Azure CLI nasaďte infrastrukturu potřebnou pro tento kurz s využitím této [šablony Azure Resource Manageru](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json). Tato šablona vytvoří následující prostředky:
 
--   Centrum událostí s povolenou funkci Zachytávání
--   Účet úložiště pro zachycená data událostí
--   Plán služby Azure App Service pro hostování aplikace Functions
--   Aplikace funkcí pro zpracování zachycených souborů událostí
--   SQL Server pro hostování služby Data Warehouse
--   SQL Data Warehouse na uložení migrovaných dat
+- Centrum událostí s povolenou funkci Zachytávání
+- Účet úložiště pro zachycená data událostí
+- Plán služby Azure App Service pro hostování aplikace Functions
+- Aplikace funkcí pro zpracování zachycených souborů událostí
+- Logický server SQL pro hostování datového skladu
+- SQL Data Warehouse na uložení migrovaných dat
 
 Následující části obsahují příkazy Azure CLI a Azure PowerShellu pro nasazení požadované infrastruktury pro tento kurz. Před spuštěním příkazů aktualizujte názvy následujících objektů: 
 
@@ -62,7 +65,7 @@ Následující části obsahují příkazy Azure CLI a Azure PowerShellu pro nas
 - Oblast pro skupinu prostředků
 - Obor názvů služby Event Hubs
 - Centrum událostí
-- Server SQL Azure
+- Logický server SQL
 - Uživatel SQL (a heslo)
 - Databáze Azure SQL
 - Azure Storage 
@@ -71,6 +74,7 @@ Následující části obsahují příkazy Azure CLI a Azure PowerShellu pro nas
 Vytvoření všech artefaktů Azure těmito skripty nějakou dobu trvá. Než budete pokračovat, počkejte na dokončení skriptu. Pokud nasazení z nějakého důvodu selže, odstraňte skupinu prostředků, opravte nahlášený problém a spusťte příkaz znovu. 
 
 #### <a name="azure-cli"></a>Azure CLI
+
 Pokud chcete šablonu nasadit pomocí Azure CLI, použijte následující příkazy:
 
 ```azurecli-interactive
@@ -91,8 +95,8 @@ New-AzResourceGroup -Name rgDataMigration -Location westcentralus
 New-AzResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
+### <a name="create-a-table-in-sql-data-warehouse"></a>Vytvoření tabulky ve službě SQL Data Warehouse
 
-### <a name="create-a-table-in-sql-data-warehouse"></a>Vytvoření tabulky ve službě SQL Data Warehouse 
 Vytvořte ve své službě SQL Data Warehouse tabulku spuštěním skriptu [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) v sadě [Visual Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-visual-studio.md), aplikaci [SQL Server Management Studio](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-query-ssms.md) nebo Editoru dotazů na portálu. 
 
 ```sql

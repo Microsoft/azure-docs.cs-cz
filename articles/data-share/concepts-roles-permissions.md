@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 36a492f6a3e86cfb2fc9505550cc2d9f4746e070
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 96a5d3d5c894dda4270c5a8832f188ead56a1ce4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265503"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020893"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Role a požadavky pro Azure Data Share 
 
@@ -24,6 +24,7 @@ Pomocí služby Azure data Shared můžete sdílet data bez výměn přihlašova
 Spravované identitě prostředku Azure Data Share se musí udělit přístup k úložišti dat Azure. Služba sdílení dat Azure pak pomocí této spravované identity čte a zapisuje data pro sdílení na základě snímků a k vytvoření symbolického odkazu pro místní sdílení. 
 
 Aby uživatel mohl sdílet nebo přijímat data z úložiště dat Azure, potřebuje alespoň následující oprávnění. Pro sdílení založené na jazyce SQL jsou vyžadována další oprávnění.
+
 * Oprávnění k zápisu do úložiště dat Azure. Toto oprávnění se obvykle nachází v roli **Přispěvatel** .
 * Oprávnění k vytvoření přiřazení role v úložišti dat Azure. Oprávnění k vytváření přiřazení rolí obvykle existují v roli **vlastníka** , roli správce přístupu uživatele nebo vlastní role s přiřazenými oprávněními Microsoft. Authorization/role/oprávnění k zápisu. Toto oprávnění není vyžadováno, pokud je spravované identitě prostředku sdílení dat již udělen přístup k úložišti dat Azure. Požadovaná role najdete v tabulce níže.
 
@@ -35,7 +36,7 @@ Níže je uveden souhrn rolí přiřazených k spravované identitě prostředku
 |Azure Blob Storage| Čtečka dat objektů BLOB úložiště | Přispěvatel dat objektu BLOB služby Storage
 |Azure Data Lake Gen1 | Vlastník | Nepodporuje se
 |Azure Data Lake Gen2 | Čtečka dat objektů BLOB úložiště | Přispěvatel dat objektu BLOB služby Storage
-|SQL Server Azure | Přispěvatel databáze SQL | Přispěvatel databáze SQL
+|Azure SQL Server | Přispěvatel databáze SQL | Přispěvatel databáze SQL
 |Cluster Azure Průzkumník dat | Přispěvatel | Přispěvatel
 |
 
@@ -48,8 +49,8 @@ Pro sdílení založené na SQL je potřeba vytvořit uživatele SQL z externíh
 |Azure Synapse Analytics (dříve SQL DW) | db_datareader | db_datareader, db_datawriter db_ddladmin
 |
 
+### <a name="data-provider"></a>Poskytovatel dat
 
-### <a name="data-provider"></a>Poskytovatel dat 
 Chcete-li přidat datovou sadu ve službě Azure data Shared, musí být spravované identitě prostředku sdílení dat zprostředkovatele udělen přístup ke zdrojovému úložišti dat Azure. Například v případě účtu úložiště je spravované identitě prostředku sdílení dat udělená role čtečky dat objektů BLOB úložiště. 
 
 To je prováděno automaticky službou Sdílení dat Azure, když uživatel přidává datovou sadu prostřednictvím Azure Portal a uživatel má příslušné oprávnění. Uživatel je například vlastníkem úložiště dat Azure nebo je členem vlastní role, která má přiřazené oprávnění Microsoft. Authorization/role/Write. 
@@ -97,7 +98,7 @@ Pokud chcete ve svém tenantovi Azure zobrazit pozvání ke sdílení dat Azure 
 1. Vyberte předplatné, které používáte pro sdílení dat Azure.
 1. Klikněte na **poskytovatelé prostředků**.
 1. Vyhledejte Microsoft. datashare.
-1. Klikněte na **zaregistrovat**.
+1. Klikněte na **Zaregistrovat**.
 
 ## <a name="next-steps"></a>Další kroky
 

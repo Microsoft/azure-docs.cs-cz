@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/16/2019
 ms.author: sedusch
-ms.openlocfilehash: 7fb87380047d046a580d1ad62b1d7107a94bb297
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ddcf1d05933daadd29bf2f93850ac3299dc9e734
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80239886"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020111"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Nasazení Azure Virtual Machines pro SAP NetWeaver
 
@@ -284,9 +284,9 @@ ms.locfileid: "80239886"
 [virtual-machines-sizes]:../../linux/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
@@ -427,7 +427,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
    * **Předplatné**: vyberte předplatné, které chcete použít k zřízení nového virtuálního počítače.
    * **Skupina prostředků**: název skupiny prostředků pro virtuální počítač. Můžete zadat buď název nové skupiny prostředků, nebo název skupiny prostředků, která již existuje.
    * **Umístění**: kam se má nový virtuální počítač nasadit. Pokud chcete virtuální počítač připojit k místní síti, ujistěte se, že jste vybrali umístění virtuální sítě, která připojuje Azure k vaší místní síti. Další informace najdete v tématu [Microsoft Azure sítě][planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
-1. **Size** (Velikost):
+1. **Velikost**:
 
      Seznam podporovaných typů virtuálních počítačů najdete v tématu SAP Note [1928533]. Pokud chcete používat Azure Premium Storage, ujistěte se, že jste vybrali správný typ virtuálního počítače. Nepodporují Premium Storage všechny typy virtuálních počítačů. Další informace najdete v tématech [úložiště: Microsoft Azure Storage a datové disky][planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage][planning-guide-azure-premium-storage] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
 
@@ -497,7 +497,7 @@ V Azure Portal zadejte pro šablonu následující parametry:
    * **Uživatelské jméno** a **heslo správce**: uživatelské jméno a heslo.
      Vytvoří se nový uživatel, který se přihlásí k virtuálnímu počítači.
    * **Nová nebo existující podsíť**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo se použije existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle&lt;vypadá takto: ID předplatného/Subscriptions/>/ResourceGroups/&lt;název skupiny prostředků>/providers/microsoft.network/virtualnetworks/&lt;název virtuální sítě>/subnets/&lt;název podsítě>
+   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/ResourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualnetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
 
 1. Podmínky **a ujednání**:  
     Přečtěte si právní podmínky a přijměte je.
@@ -540,7 +540,7 @@ Pomocí různých kroků můžete vytvořit soukromou bitovou kopii pro Linux, n
 >
 > ![Linux][Logo_Linux] Linux
 >
-> K přípravě image pro Linux, kterou můžete použít k nasazení více virtuálních počítačů, je nutné, aby některá nastavení systému Linux byla na místním virtuálním počítači abstraktní nebo zobecněná. K tomu můžete `waagent -deprovision` použít. Další informace najdete v tématu [zachycení virtuálního počítače se systémem Linux běžícího v Azure][virtual-machines-linux-capture-image] a v [uživatelské příručce agenta Azure Linux][virtual-machines-linux-agent-user-guide-command-line-options].
+> K přípravě image pro Linux, kterou můžete použít k nasazení více virtuálních počítačů, je nutné, aby některá nastavení systému Linux byla na místním virtuálním počítači abstraktní nebo zobecněná. K tomu můžete použít `waagent -deprovision` . Další informace najdete v tématu [zachycení virtuálního počítače se systémem Linux běžícího v Azure][virtual-machines-linux-capture-image] a v [uživatelské příručce agenta Azure Linux][virtual-machines-linux-agent-user-guide-command-line-options].
 >
 >
 
@@ -567,7 +567,7 @@ Průvodce vás provede nastavením požadovaných parametrů k vytvoření virtu
    * **Předplatné**: vyberte předplatné, které chcete použít k zřízení nového virtuálního počítače.
    * **Skupina prostředků**: název skupiny prostředků pro virtuální počítač. Můžete zadat buď název nové skupiny prostředků, nebo název skupiny prostředků, která již existuje.
    * **Umístění**: kam se má nový virtuální počítač nasadit. Pokud chcete virtuální počítač připojit k místní síti, ujistěte se, že jste vybrali umístění virtuální sítě, která připojuje Azure k vaší místní síti. Další informace najdete v tématu [Microsoft Azure sítě][planning-guide-microsoft-azure-networking] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
-1. **Size** (Velikost):
+1. **Velikost**:
 
      Seznam podporovaných typů virtuálních počítačů najdete v tématu SAP Note [1928533]. Pokud chcete používat Azure Premium Storage, ujistěte se, že jste vybrali správný typ virtuálního počítače. Nepodporují Premium Storage všechny typy virtuálních počítačů. Další informace najdete v tématech [úložiště: Microsoft Azure Storage a datové disky][planning-guide-storage-microsoft-azure-storage-and-data-disks] a [Azure Premium Storage][planning-guide-azure-premium-storage] v [Azure Virtual Machines plánování a implementace pro SAP NetWeaver][planning-guide].
 
@@ -630,14 +630,14 @@ V Azure Portal zadejte pro šablonu následující parametry:
       * [Struktura úložiště virtuálního počítače pro nasazení RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure][storage-premium-storage-preview-portal]
       * [Úvod do Microsoft Azure Storage][storage-introduction]
-   * **Identifikátor URI image virtuálního pevného** disku (jenom šablona image nespravovaného disku): identifikátor URI PRIVÁTNÍHO virtuálního pevného disku, například&lt;https://> Account. blob.Core.Windows.NET/VHDs/userimage.VHD.
-   * **Uživatelský účet úložiště image** (jenom šablona nespravovaného disku): název účtu úložiště, ve kterém je uložená image PRIVÁTNÍHO operačního systému, třeba &lt;account> v účtu https://&lt;>. blob.Core.Windows.NET/VHDs/userimage.VHD.
+   * **Identifikátor URI image virtuálního pevného** disku (jenom šablona image nespravovaného disku): identifikátor URI PRIVÁTNÍHO virtuálního pevného disku, například https:// &lt;> Account. blob.Core.Windows.NET/VHDs/userimage.VHD.
+   * **Uživatelský účet úložiště image** (jenom šablona nespravovaného disku): název účtu úložiště, ve kterém je uložená image PRIVÁTNÍHO operačního systému, třeba &lt; account> v &lt; účtu https://>. blob.Core.Windows.NET/VHDs/userimage.VHD.
    * **userImageId** (jenom šablona image spravovaného disku): ID image spravovaného disku, kterou chcete použít.
    * **Uživatelské jméno** a **heslo správce**: uživatelské jméno a heslo.
 
      Vytvoří se nový uživatel, který se přihlásí k virtuálnímu počítači.
    * **Nová nebo existující podsíť**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo se použije existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle&lt;vypadá takto: ID předplatného/Subscriptions/>/ResourceGroups/&lt;název skupiny prostředků>/providers/microsoft.network/virtualnetworks/&lt;název virtuální sítě>/subnets/&lt;název podsítě>
+   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/ResourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualnetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
 
 1. Podmínky **a ujednání**:  
     Přečtěte si právní podmínky a přijměte je.
@@ -722,10 +722,10 @@ V Azure Portal zadejte pro šablonu následující parametry:
       * [Struktura úložiště virtuálního počítače pro nasazení RDBMS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/dbms_guide_general#65fa79d6-a85f-47ee-890b-22e794f51a64)
       * [Premium Storage: vysoce výkonné úložiště pro úlohy virtuálních počítačů Azure][storage-premium-storage-preview-portal]
       * [Úvod do Microsoft Azure Storage][storage-introduction]
-   * **Identifikátor URI VHD disku s operačním systémem** (jenom šablona nespravovaného disku): identifikátor URI privátního disku s operačním&lt;systémem, například https://\ účet \>. blob.Core.Windows.NET/VHDs/OSDisk.VHD.
+   * **Identifikátor URI VHD disku s operačním systémem** (jenom šablona nespravovaného disku): identifikátor URI privátního disku s operačním systémem, například https://\ &lt; účet \>. blob.Core.Windows.NET/VHDs/OSDisk.VHD.
    * **ID spravovaného disku disku s operačním systémem** (jenom šablona spravovaného disku): ID disku operačního systému spravovaného disku,/Subscriptions/92d102f7-81a5-4DF7-9877-54987ba97dd9/resourceGroups/Group/Providers/Microsoft.COMPUTE/disks/Win
    * **Nová nebo existující podsíť**: Určuje, jestli se vytvoří nová virtuální síť a podsíť, nebo se použije existující podsíť. Pokud už máte virtuální síť, která je připojená k vaší místní síti, vyberte **existující**.
-   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle&lt;vypadá takto: ID předplatného/Subscriptions/>/ResourceGroups/&lt;název skupiny prostředků>/providers/microsoft.network/virtualnetworks/&lt;název virtuální sítě>/subnets/&lt;název podsítě>
+   * **ID podsítě**: Pokud chcete nasadit virtuální počítač do existující virtuální sítě, kde máte definovanou podsíť, ke které je potřeba přiřadit virtuální počítač, pojmenujte ID této konkrétní podsítě. ID obvykle vypadá takto: &lt; ID předplatného/subscriptions/>/ResourceGroups/název &lt; skupiny prostředků>/Providers/Microsoft.Network/virtualnetworks/název &lt; virtuální sítě>/subnets/ &lt; název podsítě>
 
 1. Podmínky **a ujednání**:  
     Přečtěte si právní podmínky a přijměte je.
@@ -879,8 +879,8 @@ Postup pro konfiguraci proxy serveru ve Windows se liší od způsobu konfigurac
 Aby bylo možné získat přístup k Internetu, musí být nastavení proxy serveru správně nastaveno pro účet místního systému. Pokud vaše nastavení proxy serveru nejsou nastavená Zásady skupiny, můžete nakonfigurovat nastavení pro účet místního systému.
 
 1. Přejděte na **Start**, zadejte **gpedit. msc**a pak vyberte **ENTER**.
-1. Vyberte **Konfigurace** > **počítače šablony pro správu** > **součásti** > systému Windows**Internet Explorer**. Ujistěte se, že nastavení **nastavit proxy na počítač (nikoli na uživatele)** je zakázané nebo není nakonfigurované.
-1. V **Ovládacích panelech**klikněte na možnosti **sítě a sdílení** > **Internet Options**na webu.
+1. Vyberte **Konfigurace počítače**  >  **šablony pro správu**  >  **součásti systému Windows**  >  **Internet Explorer**. Ujistěte se, že nastavení **nastavit proxy na počítač (nikoli na uživatele)** je zakázané nebo není nakonfigurované.
+1. V **Ovládacích panelech**klikněte na možnosti **sítě a sdílení**na webu  >  **Internet Options**.
 1. Na kartě **připojení** vyberte tlačítko **nastavení sítě LAN** .
 1. Zrušte zaškrtnutí políčka **Automaticky zjišťovat nastavení**.
 1. Zaškrtněte políčko **použít proxy server pro vaši síť LAN** a potom zadejte adresu a port proxy serveru.
@@ -889,7 +889,7 @@ Aby bylo možné získat přístup k Internetu, musí být nastavení proxy serv
 
 #### <a name="linux"></a>Linux
 
-Nakonfigurujte správný proxy server v konfiguračním souboru Microsoft Azureho agenta hosta, který se nachází na adrese \\a\\na úrovni služby (waagent. conf).
+Nakonfigurujte správný proxy server v konfiguračním souboru Microsoft Azureho agenta hosta, který se nachází na adrese a na úrovni služby ( \\ \\ waagent. conf).
 
 Nastavte následující parametry:
 
@@ -913,18 +913,18 @@ Nastavte následující parametry:
    sudo service waagent restart
    ```
 
-Nastavení proxy serveru v \\etc\\waagent. conf platí také pro požadovaná rozšíření virtuálních počítačů. Pokud chcete používat úložiště Azure, ujistěte se, že provoz do těchto úložišť neprojde vaším místním intranetem. Pokud jste vytvořili uživatelsky definované trasy, abyste mohli povolit vynucené tunelování, nezapomeňte přidat trasu, která směruje provoz do úložišť přímo na Internet, a ne prostřednictvím připojení VPN typu Site-to-site.
+Nastavení proxy serveru v \\ etc \\ waagent. conf platí také pro požadovaná rozšíření virtuálních počítačů. Pokud chcete používat úložiště Azure, ujistěte se, že provoz do těchto úložišť neprojde vaším místním intranetem. Pokud jste vytvořili uživatelsky definované trasy, abyste mohli povolit vynucené tunelování, nezapomeňte přidat trasu, která směruje provoz do úložišť přímo na Internet, a ne prostřednictvím připojení VPN typu Site-to-site.
 
 * **SLES**
 
-  Také je nutné přidat trasy pro IP adresy uvedené v \\\\regionserverclnt. cfg. Příklad ukazuje následující obrázek:
+  Také je nutné přidat trasy pro IP adresy uvedené v \\ \\ regionserverclnt. cfg. Příklad ukazuje následující obrázek:
 
   ![Vynucené tunelování][deployment-guide-figure-50]
 
 
 * **RHEL**
 
-  Také je nutné přidat trasy pro IP adresy hostitelů uvedených v \\\\Yumu. úložiště. d\\rhui – služby Vyrovnávání zatížení. Příklad naleznete na předchozím obrázku.
+  Také je nutné přidat trasy pro IP adresy hostitelů uvedených v \\ \\ Yumu. úložiště. d \\ rhui – služby Vyrovnávání zatížení. Příklad naleznete na předchozím obrázku.
 
 * **Oracle Linux**
 
@@ -944,7 +944,7 @@ Postup instalace rozšíření Azure pro SAP pomocí prostředí PowerShell:
 
 1. Ujistěte se, že máte nainstalovanou nejnovější verzi rutiny Azure PowerShell. Další informace najdete v tématu [nasazení rutin Azure PowerShell][deployment-guide-4.1].  
 1. Spusťte následující rutinu Azure PowerShellu.
-    Seznam dostupných prostředí získáte spuštěním `commandlet Get-AzEnvironment`. Pokud chcete používat globální Azure, vaše prostředí je **AzureCloud**. V případě Azure v Číně vyberte **AzureChinaCloud**.
+    Seznam dostupných prostředí získáte spuštěním `commandlet Get-AzEnvironment` . Pokud chcete používat globální Azure, vaše prostředí je **AzureCloud**. V případě Azure v Číně vyberte **AzureChinaCloud**.
 
     ```powershell
     $env = Get-AzEnvironment -Name <name of the environment>
@@ -955,11 +955,11 @@ Postup instalace rozšíření Azure pro SAP pomocí prostředí PowerShell:
     ```
 
 Po zadání dat účtu a určení virtuálního počítače Azure nasadí skript požadovaná rozšíření a povolí požadované funkce. Může to trvat několik minut.
-Další informace o `Set-AzVMAEMExtension`naleznete v tématu [set-AzVMAEMExtension][msdn-set-Azvmaemextension].
+Další informace o `Set-AzVMAEMExtension` naleznete v tématu [set-AzVMAEMExtension][msdn-set-Azvmaemextension].
 
 ![Úspěšné spuštění rutiny Azure specifické pro SAP – AzVMAEMExtension][deployment-guide-figure-900]
 
-`Set-AzVMAEMExtension` Konfigurace provádí všechny kroky pro konfiguraci shromažďování dat hostitele pro SAP.
+`Set-AzVMAEMExtension`Konfigurace provádí všechny kroky pro konfiguraci shromažďování dat hostitele pro SAP.
 
 Výstup skriptu obsahuje následující informace:
 
@@ -1015,7 +1015,7 @@ Instalace rozšíření Azure pro SAP pomocí Azure CLI:
       az vm aem set -g <resource-group-name> -n <vm name>
       ```
 
-1. Ověřte, jestli je rozšíření Azure pro SAP aktivní na virtuálním počítači Azure Linux. Ověřte, zda existuje \\soubor\\var\\lib\\AzureEnhancedMonitor PerfCounters. Pokud existuje, spusťte na příkazovém řádku tento příkaz, který zobrazí informace shromažďované rozšířením Azure pro SAP:
+1. Ověřte, jestli je rozšíření Azure pro SAP aktivní na virtuálním počítači Azure Linux. Ověřte, zda \\ existuje soubor var \\ lib \\ AzureEnhancedMonitor \\ PerfCounters. Pokud existuje, spusťte na příkazovém řádku tento příkaz, který zobrazí informace shromažďované rozšířením Azure pro SAP:
 
    ```console
    cat /var/lib/AzureEnhancedMonitor/PerfCounters
@@ -1044,7 +1044,7 @@ Tato kontrolu zajistí, že se všechny metriky výkonu, které se zobrazí v ap
 
 1. Přihlaste se k virtuálnímu počítači Azure (použití účtu správce není nutné).
 1. Otevřete okno příkazového řádku.
-1. Na příkazovém řádku změňte adresář na instalační složku rozšíření Azure pro SAP:\\C: balíčky\\plugins\\Microsoft. zákaznického poradního. AzureEnhancedMonitoring. AzureCATExtensionHandler\\&lt;,>drop \\
+1. Na příkazovém řádku změňte adresář na instalační složku rozšíření Azure pro SAP: C: \\ balíčky \\ plugins \\ Microsoft. zákaznického poradního. AzureEnhancedMonitoring. AzureCATExtensionHandler, \\ &lt;>\\ drop
 
    *Verze* v cestě k příponě se může lišit. Pokud se v instalační složce zobrazují složky pro více verzí rozšíření, zkontrolujte konfiguraci služby Windows AzureEnhancedMonitoring a pak přepněte do složky označené jako *cesta ke spustitelnému souboru*.
 
@@ -1123,7 +1123,7 @@ Pokud předchozí kontrola nebyla úspěšná, spusťte tyto další kontroly:
 
    **Očekávaný výsledek**: zobrazuje jednu položku podobnou této:`python /var/lib/waagent/Microsoft.OSTCExtensions.AzureEnhancedMonitorForLinux-2.0.0.2/handler.py daemon`
 
-1. Nainstalujte agenta hostitele SAP, jak je popsáno v tématu SAP Note [1031096], a zkontrolujte `saposcol`výstup.
+1. Nainstalujte agenta hostitele SAP, jak je popsáno v tématu SAP Note [1031096], a zkontrolujte výstup `saposcol` .
 
    a.  Spusťte `/usr/sap/hostctrl/exe/saposcol -d`.
 
@@ -1137,10 +1137,10 @@ Pokud některá z těchto kontrol selže a podrobnější informace o tom, jak t
 
 ### <a name="health-check-for-the-azure-extension-for-sap-configuration"></a><a name="e2d592ff-b4ea-4a53-a91a-e5521edb6cd1"></a>Kontrolu stavu pro rozšíření Azure pro konfiguraci SAP
 
-Pokud některá data infrastruktury nejsou doručena správně, jak je uvedeno v testu popsaných v tématu [Kontrola připravenosti pro Azure Extension pro SAP][deployment-guide-5.1], `Test-AzVMAEMExtension` spusťte rutinu, abyste zkontrolovali, jestli je správně nakonfigurovaná infrastruktura Azure a rozšíření Azure pro SAP.
+Pokud některá data infrastruktury nejsou doručena správně, jak je uvedeno v testu popsaných v tématu [Kontrola připravenosti pro Azure Extension pro SAP][deployment-guide-5.1], spusťte `Test-AzVMAEMExtension` rutinu, abyste zkontrolovali, jestli je správně nakonfigurovaná infrastruktura Azure a rozšíření Azure pro SAP.
 
 1. Ujistěte se, že máte nainstalovanou nejnovější verzi rutiny Azure PowerShell, jak je popsáno v tématu [Deploying Azure PowerShell rutiny][deployment-guide-4.1].
-1. Spusťte následující rutinu Azure PowerShellu. Seznam dostupných prostředí získáte spuštěním rutiny `Get-AzEnvironment`. Pokud chcete použít globální Azure, vyberte prostředí **AzureCloud** . V případě Azure v Číně vyberte **AzureChinaCloud**.
+1. Spusťte následující rutinu Azure PowerShellu. Seznam dostupných prostředí získáte spuštěním rutiny `Get-AzEnvironment` . Pokud chcete použít globální Azure, vyberte prostředí **AzureCloud** . V případě Azure v Číně vyberte **AzureChinaCloud**.
 
    ```powershell
    $env = Get-AzEnvironment -Name <name of the environment>
@@ -1173,7 +1173,7 @@ Služba systému Windows AzureEnhancedMonitoring shromažďuje metriky výkonu v
 
 ###### <a name="issue"></a>Problém
 
-Instalační adresář\\C: balíčky\\plug-\\in Microsoft. zákaznického poradního. AzureEnhancedMonitoring.\\&lt;AzureCATExtensionHandler verze \\>drop jsou prázdné.
+Instalační adresář C: \\ balíčky \\ Plug-in \\ Microsoft. zákaznického poradního. AzureEnhancedMonitoring. AzureCATExtensionHandler \\ &lt; verze>\\ drop jsou prázdné.
 
 ###### <a name="solution"></a>Řešení
 
@@ -1220,7 +1220,7 @@ Metriky výkonu v Azure se shromažďují pomocí démona. Pokud démon není sp
 
 ###### <a name="issue"></a>Problém
 
-Složka \\var\\lib\\waagent\\ neobsahuje podadresář pro rozšíření Azure pro SAP.
+Složka \\ var \\ lib waagent neobsahuje podadresář \\ \\ pro rozšíření Azure pro SAP.
 
 ###### <a name="solution"></a>Řešení
 
@@ -1251,4 +1251,4 @@ Metriky výkonu v Azure se shromažďují pomocí démona, který získává dat
 
 Úplný a aktuální seznam známých problémů najdete v článku SAP Note [1999351], který obsahuje další informace o řešení potíží pro rozšíření Azure pro SAP.
 
-Pokud problém nevyřešíte pomocí SAP Note [1999351] , spusťte `Set-AzVMAEMExtension` konfigurační skript znovu, jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. Může se stát, že budete muset počkat na hodinu, protože čítače pro diagnostiku úložiště nebo diagnostické čítače se nemůžou vytvářet hned po povolení. Pokud se problém opakuje, otevřete zprávu zákaznická podpora SAP na komponentě BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR pro virtuální počítač se systémem Linux.
+Pokud problém nevyřešíte pomocí SAP Note [1999351] , spusťte konfigurační skript znovu, `Set-AzVMAEMExtension` jak je popsáno v tématu [Konfigurace rozšíření Azure pro SAP][deployment-guide-4.5]. Může se stát, že budete muset počkat na hodinu, protože čítače pro diagnostiku úložiště nebo diagnostické čítače se nemůžou vytvářet hned po povolení. Pokud se problém opakuje, otevřete zprávu zákaznická podpora SAP na komponentě BC-OP-NT-AZR pro Windows nebo BC-OP-LNX-AZR pro virtuální počítač se systémem Linux.

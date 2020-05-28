@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/05/2020
 ms.topic: overview
-ms.openlocfilehash: a06c63152cb56be6d94cccc472d2e1d65651d6ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e40109a3c43fa30d70b7a13243723d717b4003c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80679951"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021431"
 ---
 # <a name="about-azure-remote-rendering"></a>Informace o službě Azure Remote Rendering
 
@@ -22,7 +22,11 @@ ms.locfileid: "80679951"
 
 ![Vzorový model](../media/arr-engine.png)
 
-Nepřipojená zařízení mají omezený výpočetní výkon pro vykreslování složitých modelů. U mnoha aplikací by bylo možné nepřijmout, ale omezit vizuální věrnost v libovolném způsobu.
+Nepřipojená zařízení mají omezený výpočetní výkon pro vykreslování složitých modelů. U mnoha aplikací by bylo možné nepřijmout, ale omezit vizuální věrnost v libovolném způsobu. Následující snímek obrazovky porovnává model s úplnými podrobnostmi s modelem, který byl Decimated pomocí společného nástroje pro vytváření obsahu:
+
+![Vzorový model](./media/engine-model-decimated.png)
+
+Redukovaný model se skládá přibližně z 200 000 trojúhelníků (včetně podrobných vnitřních částí), v porovnání s více než 18 000 000 trojúhelníky v původním modelu.
 
 *Vzdálené vykreslování* řeší tento problém přesunutím úlohy vykreslování na špičkové GPU v cloudu. Grafický modul hostovaný v cloudu vykresluje obrázek, zakóduje ho jako datový proud videa a streamy, které jsou na cílovém zařízení.
 

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 63db1810cbdd2133bc0577530325351997b31f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2b0238d8026bff435fce9c03b6517efb6a55311d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70139266"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019907"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – ukázky
 > [!NOTE]
@@ -26,7 +26,7 @@ ms.locfileid: "70139266"
 ## <a name="samples-on-github"></a>Ukázky na GitHubu
 [Úložiště GitHub Azure-DataFactory](https://github.com/azure/azure-datafactory) obsahuje několik ukázek, které vám pomůžou rychle zvýšit úroveň pomocí služby Azure Data Factory (nebo) změnit skripty a použít je v vlastní aplikaci. Složka Samples\JSON obsahuje fragmenty JSON pro běžné scénáře.
 
-| Ukázka | Popis |
+| Ukázka | Description |
 |:--- |:--- |
 | [Návod k ADF](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Tato ukázka poskytuje ucelený návod ke zpracování souborů protokolu pomocí Azure Data Factory k přepínání dat ze souborů protokolů v nástroji na přehledy. <br/><br/>V tomto návodu kanál Data Factory shromažďuje ukázkové protokoly, zpracovává a vylepšuje data z protokolů pomocí referenčních dat a transformuje je k vyhodnocení efektivity marketingové kampaně, která se nedávno spustila. |
 | [Ukázky JSON](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Tato ukázka poskytuje příklady JSON pro běžné scénáře. |
@@ -46,7 +46,7 @@ ms.locfileid: "70139266"
 ## <a name="azure-resource-manager-templates"></a>Šablony Azure Resource Manageru
 Následující šablony Azure Resource Manager můžete najít Data Factory na GitHubu.
 
-| Šablona | Popis |
+| Šablona | Description |
 | --- | --- |
 | [Kopírování z Azure Blob Storage do Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |Při nasazení této šablony se vytvoří objekt pro vytváření dat Azure s kanálem, který kopíruje data ze zadaného úložiště objektů BLOB v Azure do Azure SQL Database. |
 | [Kopírování z Salesforce do Azure Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |Při nasazení této šablony se vytvoří objekt pro vytváření dat Azure s kanálem, který kopíruje data ze zadaného účtu Salesforce do úložiště objektů BLOB v Azure. |
@@ -62,7 +62,7 @@ Dlaždici **ukázkové kanály** na domovské stránce vaší datové továrny m
 3. V okně **ukázkové kanály** klikněte na **ukázku** , kterou chcete nasadit.
 
     ![Okno ukázkové kanály](./media/data-factory-samples/SampleTile.png)
-4. Zadejte konfigurační nastavení pro ukázku. Například název účtu úložiště Azure a klíč účtu, název serveru SQL, databáze, ID uživatele a heslo atd.
+4. Zadejte konfigurační nastavení pro ukázku. Například název účtu úložiště Azure a klíč účtu, název logického SQL serveru, databáze, ID uživatele a heslo atd.
 
     ![Okno vzorku](./media/data-factory-samples/SampleBlade.png)
 5. Po dokončení zadání nastavení konfigurace kliknutím na **vytvořit** vytvořte nebo nasadíte ukázkové kanály a propojené služby nebo tabulky používané kanály.
@@ -80,7 +80,7 @@ Na počítači musíte mít nainstalované tyto položky:
 
 * Visual Studio 2013 nebo Visual Studio 2015.
 * Stáhněte si sadu Azure SDK pro Visual Studio 2013 nebo Visual Studio 2015. Přejděte na [stránku položek ke stažení pro Azure](https://azure.microsoft.com/downloads/) a klikněte na **VS 2013** nebo **VS 2015** v části **.NET**.
-* Stáhněte si nejnovější modul plug-in Azure Data Factory pro Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) nebo [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Pokud používáte Visual Studio 2013, můžete modul plug-in také aktualizovat pomocí následujících kroků: v nabídce klikněte na **nástroje** -> **rozšíření a aktualizace** -> **online** -> **Galerie** -> Visual Studio**Microsoft Azure Data Factory Tools for Visual Studio** -> **Update**.
+* Stáhněte si nejnovější modul plug-in Azure Data Factory pro Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) nebo [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Pokud používáte Visual Studio 2013, můžete modul plug-in také aktualizovat pomocí následujících kroků: v nabídce klikněte na **nástroje**  ->  **rozšíření a aktualizace**  ->  **online**  ->  **Galerie Visual Studio**  ->  **Microsoft Azure Data Factory Tools for Visual Studio**  ->  **Update**.
 
 ### <a name="use-data-factory-templates"></a>Použití šablon Data Factory
 1. V nabídce klikněte na **soubor** , přejděte na **Nový**a klikněte na **projekt**.

@@ -15,29 +15,29 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b76ade40db1e85abc0fb42af2e6f4ab88cb092c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 384b66020b3d18064ea1cd9f162911878caa598d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982286"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017528"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Automatizace úloh správy v Azure Virtual Machines s rozšířením agenta SQL Server (Classic)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-server-agent-extension.md)
-> * [Classic](../classic/sql-server-agent-extension.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md)
+> * [Klasický](virtual-machines-windows-classic-sql-server-agent-extension.md)
 > 
 >
  
 Rozšíření agenta SQL Server IaaS (SQLIaaSAgent) se spouští na virtuálních počítačích Azure pro automatizaci úloh správy. Toto téma poskytuje přehled služeb podporovaných rozšířením a také pokyny k instalaci, stavu a odebrání.
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud chcete zobrazit Správce prostředků verzi tohoto článku, přečtěte si téma [rozšíření agenta SQL Server pro SQL Server virtuální počítače Správce prostředků](../sql/virtual-machines-windows-sql-server-agent-extension.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud chcete zobrazit Správce prostředků verzi tohoto článku, přečtěte si téma [rozšíření agenta SQL Server pro SQL Server virtuální počítače Správce prostředků](../../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md).
 
 ## <a name="supported-services"></a>Podporované služby
 Rozšíření agenta SQL Server IaaS podporuje následující úlohy správy:
 
-| Funkce správy | Popis |
+| Funkce správy | Description |
 | --- | --- |
 | **Automatizované zálohování SQL** |Automatizuje plánování záloh pro všechny databáze pro výchozí instanci SQL Server ve virtuálním počítači. Další informace najdete v tématu [automatizované zálohování pro SQL Server v Azure Virtual Machines (Classic)](../classic/sql-automated-backup.md). |
 | **Automatizované opravy pro SQL Server** |Nakonfiguruje časový interval pro správu a údržbu, během kterého může probíhat důležitá aktualizace Windows pro váš virtuální počítač, takže se můžete vyhnout aktualizacím během špičky pro vaše zatížení. Další informace najdete v tématu [automatizované opravy pro SQL Server v Azure Virtual Machines (Classic)](../classic/sql-automated-patching.md). |
@@ -82,7 +82,7 @@ Pokud aktualizujete na nejnovější verzi rozšíření agenta SQL IaaS, musít
 > Klasické virtuální počítače nemají možnost nainstalovat a nakonfigurovat rozšíření agenta SQL IaaS prostřednictvím portálu.
 
 > [!NOTE]
-> Rozšíření agenta SQL Server IaaS se podporuje jenom v [imagí Galerie virtuálních počítačů v SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md#get-started-with-sql-vms) (průběžné platby nebo vlastní licence). Není podporováno, pokud SQL Server nainstalujete ručně na virtuální počítač se systémem Windows Server pouze v operačním systému nebo pokud nasadíte přizpůsobený virtuální pevný disk SQL Server virtuálního počítače. V těchto případech může být možné ručně nainstalovat a spravovat rozšíření pomocí PowerShellu, ale důrazně se doporučuje nainstalovat Image Galerie virtuálních počítačů SQL Server a pak ji přizpůsobit.
+> Rozšíření agenta SQL Server IaaS se podporuje jenom v [imagí Galerie virtuálních počítačů v SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms) (průběžné platby nebo vlastní licence). Není podporováno, pokud SQL Server nainstalujete ručně na virtuální počítač se systémem Windows Server pouze v operačním systému nebo pokud nasadíte přizpůsobený virtuální pevný disk SQL Server virtuálního počítače. V těchto případech může být možné ručně nainstalovat a spravovat rozšíření pomocí PowerShellu, ale důrazně se doporučuje nainstalovat Image Galerie virtuálních počítačů SQL Server a pak ji přizpůsobit.
 
 ## <a name="status"></a>Status
 Jedním ze způsobů, jak ověřit, že je rozšíření nainstalované, je zobrazit stav agenta na webu Azure Portal. Vyberte virtuální počítač uvedený v okně virtuální počítač a pak klikněte na **rozšíření**. Měla by se zobrazit uvedená rozšíření **SQLIaaSAgent** .
@@ -105,5 +105,5 @@ Můžete také použít rutinu PowerShellu **Remove-AzureVMSqlServerExtension** 
 ## <a name="next-steps"></a>Další kroky
 Začněte používat jednu ze služeb, které rozšíření podporuje. Další podrobnosti najdete v tématech uvedených v části věnované [podporovaným službám](#supported-services) tohoto článku.
 
-Další informace o spouštění SQL Server v Azure Virtual Machines najdete v tématu [SQL Server na azure Virtual Machines Overview](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Další informace o spouštění SQL Server v Azure Virtual Machines najdete v tématu [SQL Server na azure Virtual Machines Overview](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 

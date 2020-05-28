@@ -8,12 +8,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
-ms.openlocfilehash: bdb38e36a9f1344a3adde15d349a2ec176c0fe95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a384db9c3c0b4beee6063fd503abadcb4c6b5158
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74423999"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016946"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>Pochopení kódu Apache Spark pro vývojáře U-SQL
 
@@ -23,7 +23,7 @@ V této části najdete pokyny vysoké úrovně pro transformaci skriptů U-SQL 
 - Poskytuje tipy, jak:
    - [Transformace skriptů](#transform-u-sql-scripts) včetně [výrazů sady řádků](#transform-u-sql-rowset-expressions-and-sql-based-scalar-expressions) U-SQL
    - [Kód .NET](#transform-net-code)
-   - [Datové typy](#transform-typed-values)
+   - [Typy dat](#transform-typed-values)
    - [Objekty katalogu](#transform-u-sql-catalog-objects).
 
 ## <a name="understand-the-u-sql-and-spark-language-and-processing-paradigms"></a>Pochopení jazyka U-SQL a Spark a zpracování paradigmat
@@ -100,7 +100,7 @@ Pokud potřebujete transformovat skript odkazující na knihovny služby pro roz
 
 ## <a name="transform-typed-values"></a>Transformace typových hodnot
 
-Vzhledem k tomu, že systém typů U-SQL je založen na systému typů .NET a Spark má svůj vlastní systém typů, který je ovlivněn vazbou jazyka hostitele, bude nutné zajistit, aby typy, na kterých pracujete, byly blízko a pro určité typy, rozsahy typů, přesnost a/nebo měřítko mohou být mírně odlišné. Kromě toho jsou U-SQL a Spark `null` zpracovávány hodnoty odlišně.
+Vzhledem k tomu, že systém typů U-SQL je založen na systému typů .NET a Spark má svůj vlastní systém typů, který je ovlivněn vazbou jazyka hostitele, bude nutné zajistit, aby typy, na kterých pracujete, byly blízko a pro určité typy, rozsahy typů, přesnost a/nebo měřítko mohou být mírně odlišné. Kromě toho jsou U-SQL a Spark zpracovávány `null` hodnoty odlišně.
 
 ### <a name="data-types"></a>Typy dat
 
@@ -141,9 +141,9 @@ Ve Sparku typy na výchozí povoluje hodnoty NULL při použití v U-SQL explici
 
 Ve Sparku hodnota NULL označuje, že hodnota je neznámá. Hodnota NULL pro Spark se liší od jakékoli hodnoty, včetně sebe samé. Porovnání mezi dvěma hodnotami NULL Spark nebo mezi hodnotou NULL a jakoukoli jinou hodnotou vrátí neznámou hodnotu, protože hodnota každé hodnoty NULL je neznámá.  
 
-Toto chování se liší od jazyka U-SQL, který následuje sémantika jazyka `null` C#, kde se liší od jakékoli hodnoty, ale je rovna sobě.  
+Toto chování se liší od jazyka U-SQL, který následuje sémantika jazyka C#, kde `null` se liší od jakékoli hodnoty, ale je rovna sobě.  
 
-Proto příkaz SparkSQL `SELECT` , který používá `WHERE column_name = NULL` , vrátí nulové řádky `column_name`, i když v U-SQL jsou hodnoty null, zatímco v u-SQL by to vrátilo řádky, na `column_name` `null`kterých je nastavena hodnota. Podobně příkaz Spark `SELECT` , který používá `WHERE column_name != NULL` , vrátí nulové řádky i v případě `column_name`, že v u-SQL jsou hodnoty, které nejsou null, zatímco v u-SQL by vracely řádky, které mají jinou hodnotu než null. Proto pokud chcete, aby sémantika kontroly hodnoty U-SQL byla zaručena, měli byste použít [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) a [IsNotNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (nebo jejich ekvivalent DSL).
+Proto příkaz SparkSQL `SELECT` , který používá, `WHERE column_name = NULL` vrátí nulové řádky, i když v U-SQL jsou hodnoty null, `column_name` zatímco v u-SQL by to vrátilo řádky, `column_name` na kterých je nastavena hodnota `null` . Podobně `SELECT` příkaz Spark, který používá, `WHERE column_name != NULL` vrátí nulové řádky i v případě, že v u-SQL jsou hodnoty, které nejsou null, `column_name` zatímco v u-SQL by vracely řádky, které mají jinou hodnotu než null. Proto pokud chcete, aby sémantika kontroly hodnoty U-SQL byla zaručena, měli byste použít [IsNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnull) a [IsNotNull](https://spark.apache.org/docs/2.3.0/api/sql/index.html#isnotnull) (nebo jejich ekvivalent DSL).
 
 ## <a name="transform-u-sql-catalog-objects"></a>Transformace objektů katalogu U-SQL
 
@@ -160,8 +160,8 @@ Pokud byl katalog U-SQL použit ke sdílení dat a objektů kódu napříč proj
 Základní jazyk U-SQL transformuje sady řádků a je založen na SQL. Následuje nevyčerpávající seznam nejběžnějších výrazů sady řádků nabízených v U-SQL:
 
 - `SELECT`/`FROM`/`WHERE`/`GROUP BY`+ Agregace +`HAVING`/`ORDER BY`+`FETCH`
-- `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN` výrazy
-- `CROSS`/`OUTER``APPLY` výrazy
+- `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN`výrazy
+- `CROSS`/`OUTER``APPLY`výrazy
 - `PIVOT`/`UNPIVOT`Expression
 - `VALUES`konstruktor sady řádků
 
@@ -170,8 +170,8 @@ Základní jazyk U-SQL transformuje sady řádků a je založen na SQL. Následu
 U-SQL navíc poskytuje nejrůznější skalární výrazy založené na SQL, jako je například
 
 - `OVER`výrazy okna
-- celá řada předdefinovaných agregačních funkcí a funkcí řazení (`SUM` `FIRST` atd.)
-- Některé z nejoblíbenějších skalárních výrazů SQL: `CASE`, `LIKE`, (`NOT`) `IN`, `AND` `OR` atd.
+- celá řada předdefinovaných agregačních funkcí a funkcí řazení ( `SUM` `FIRST` atd.)
+- Některé z nejoblíbenějších skalárních výrazů SQL: `CASE` , `LIKE` , ( `NOT` ) `IN` , `AND` `OR` atd.
 
 Spark nabízí ekvivalentní výrazy ve formátu DSL i SparkSQL pro většinu těchto výrazů. Některé výrazy, které nejsou v Sparku nativně podporované, se musí přepsat pomocí kombinace nativních výrazů Spark a sémanticky ekvivalentních vzorů. Například `OUTER UNION` bude nutné přeložit na ekvivalentní kombinaci projekce a sjednocení.
 
@@ -183,7 +183,7 @@ U-SQL také nabízí celou řadu dalších funkcí a konceptů, jako jsou federo
 
 ### <a name="federated-queries-against-sql-server-databasesexternal-tables"></a>Federované dotazy na databáze SQL Server/externí tabulky
 
-U-SQL poskytuje zdroje dat a externí tabulky a přímé dotazy na Azure SQL Database. I když Spark nenabízí stejné abstrakce objektů, poskytuje [konektor Spark pro Azure SQL Database](../sql-database/sql-database-spark-connector.md) , který se dá použít k dotazování databází SQL.
+U-SQL poskytuje zdroje dat a externí tabulky a přímé dotazy na Azure SQL Database. I když Spark nenabízí stejné abstrakce objektů, poskytuje [konektor Spark pro Azure SQL Database](../azure-sql/database/spark-connector.md) , který se dá použít k dotazování databází SQL.
 
 ### <a name="u-sql-parameters-and-variables"></a>Parametry a proměnné U-SQL
 
@@ -196,7 +196,7 @@ var x = 2 * 3;
 println(x)
 ```
 
-Systémové proměnné U-SQL (začínající na `@@`) se dají rozdělit do dvou kategorií:
+Systémové proměnné U-SQL (začínající `@@` na) se dají rozdělit do dvou kategorií:
 
 - Nastavitelné systémové proměnné, které mohou být nastaveny na konkrétní hodnoty, aby ovlivnily chování skriptů
 - Informativní systémové proměnné, které se dotazují na informace o úrovni systému a úlohy
@@ -208,8 +208,8 @@ Většina nastavitelných systémových proměnných nemá přímý ekvivalent v
 U-SQL nabízí několik syntaktických způsobů poskytnutí rad pro Optimalizátor dotazů a prováděcí modul:  
 
 - Nastavení systémové proměnné U-SQL
-- `OPTION` klauzule přidružená ke výrazu sady řádků pro zadání pomocného parametru data nebo plánu
-- pomocný parametr Join v syntaxi výrazu Join (například `BROADCASTLEFT`)
+- `OPTION`klauzule přidružená ke výrazu sady řádků pro zadání pomocného parametru data nebo plánu
+- pomocný parametr Join v syntaxi výrazu Join (například `BROADCASTLEFT` )
 
 Nástroj pro optimalizaci dotazů založený na ceně Sparku má své vlastní funkce k poskytování pomocných parametrů a ladění výkonu dotazů. Informace najdete v příslušné dokumentaci.
 

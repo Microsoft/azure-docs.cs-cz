@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.custom: hdinsightactive,mvc
 ms.date: 07/02/2019
-ms.openlocfilehash: 7413a32fdddb579bad61c9cfe539be6aaeae9881
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 431cd5efbb1087d99fc8521cec7a5c604856dac5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81313745"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021734"
 ---
 # <a name="tutorial-extract-transform-and-load-data-using-interactive-query-in-azure-hdinsight"></a>Kurz: extrakce, transformace a načtení dat pomocí interaktivního dotazu ve službě Azure HDInsight
 
@@ -42,7 +42,7 @@ Tento kurz se zabývá následujícími úkony:
 
 2. Na stránce zrušte zaškrtnutí všech polí a pak vyberte následující hodnoty:
 
-   | Název | Hodnota |
+   | Name | Hodnota |
    | --- | --- |
    | Filter Year (Filtr roku) |2019 |
    | Filter Period (Filtr období) |January (Leden) |
@@ -68,7 +68,7 @@ Do úložiště přidruženého ke clusteru HDInsight můžete data nahrát mnoh
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-3. Po navázání připojení SSH nastavte proměnnou prostředí. `FILE_NAME`Nahraďte `SQL_SERVERNAME`, `SQL_DATABASE`, `SQL_USER`, a `SQL_PASWORD` odpovídajícími hodnotami. Pak zadejte příkaz:
+3. Po navázání připojení SSH nastavte proměnnou prostředí. Nahraďte `FILE_NAME` ,, `SQL_SERVERNAME` `SQL_DATABASE` , `SQL_USER` a `SQL_PASWORD` odpovídajícími hodnotami. Pak zadejte příkaz:
 
     ```bash
     export FILENAME=FILE_NAME
@@ -205,7 +205,7 @@ Existuje mnoho způsobů, jak se připojit ke službě SQL Database a vytvořit 
     sudo apt-get --assume-yes install freetds-dev freetds-bin
     ```
 
-2. Po dokončení instalace se pomocí následujícího příkazu připojte k serveru služby SQL Database.
+2. Po dokončení instalace se připojte k SQL Database pomocí následujícího příkazu.
 
     ```bash
     TDSVER=8.0 tsql -H $SQLSERVERNAME.database.windows.net -U $SQLUSER -p 1433 -D $DATABASE -P $SQLPASWORD

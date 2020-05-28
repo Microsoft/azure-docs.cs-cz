@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/07/2020
 ms.topic: article
-ms.openlocfilehash: 8f64c4a9a438b07fef428a5ed044985736055525
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 3f808d45197f7d9ee23d3f809a2ab0452e92c20e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758839"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021292"
 ---
 # <a name="spatial-queries"></a>Prostorové dotazy
 
@@ -88,9 +88,9 @@ void CastRay(ApiHandle<AzureSession> session)
 
 Existují tři režimy kolekce přístupů:
 
-* **Nejbližší:** V tomto režimu bude hlášeno pouze nejbližší volání.
-* **Jakékoli:** Tento režim dáváte přednost, pokud chcete zjistit, *zda* se v Ray objevil cokoli, ale nezáleží na tom, co bylo dosaženo přesně. Tento dotaz může být výrazně levnější pro vyhodnocení, ale má i několik aplikací.
-* **Vše:** V tomto režimu jsou hlášeny všechny přístupy po celém Ray, seřazené podle vzdálenosti. Tento režim nepoužívejte, pokud skutečně nepotřebujete více než první zásah. Omezte počet nahlášených přístupů s `MaxHits` možností.
+* ** `Closest` :** V tomto režimu bude hlášeno pouze nejbližší volání.
+* ** `Any` :** Preferovat tento režim, pokud chcete zjistit, *jestli* v Ray nedošlo cokoli, ale nezáleží na tom, co bylo dosaženo přesně. Tento dotaz může být výrazně levnější pro vyhodnocení, ale má i několik aplikací.
+* ** `All` :** V tomto režimu jsou vykazovány všechny přístupy podél pole Ray, seřazené podle vzdálenosti. Tento režim nepoužívejte, pokud skutečně nepotřebujete více než první zásah. Omezte počet nahlášených přístupů s `MaxHits` možností.
 
 Pokud chcete vyloučit objekty, které se selektivně považují za přetypování, je možné použít komponentu [HierarchicalStateOverrideComponent](override-hierarchical-state.md) .
 
@@ -106,11 +106,11 @@ Výsledkem dotazu přetypování do Ray je pole přístupů. Pole je prázdné, 
 
 K dispozice jsou následující vlastnosti:
 
-* **HitEntity:** Která [entita](../../concepts/entities.md) byla vybrána.
-* **SubPartId:** Která *podsítě* byla vybrána v [MeshComponent](../../concepts/meshes.md). Dá se použít k indexování `MeshComponent.UsedMaterials` a hledání [materiálu](../../concepts/materials.md) v tomto okamžiku.
-* **HitPosition:** Pozice ve světě, kde se prostor protínají.
-* **HitNormal:** Střední plocha normálního prostoru na pozici průniku.
-* **DistanceToHit:** Vzdálenost od počáteční pozice od Ray po k dosažení.
+* ** `HitEntity` :** Která [entita](../../concepts/entities.md) byla vybrána.
+* ** `SubPartId` :** Která *podsítě* byla v [MeshComponent](../../concepts/meshes.md). Dá se použít k indexování `MeshComponent.UsedMaterials` a hledání [materiálu](../../concepts/materials.md) v tomto okamžiku.
+* ** `HitPosition` :** Pozice v celém světě, kde prostor protínají objekty.
+* ** `HitNormal` :** Střední plocha je normální plocha na pozici průsečíku.
+* ** `DistanceToHit` :** Vzdálenost od počáteční pozice od Ray po k dosažení.
 
 ## <a name="next-steps"></a>Další kroky
 

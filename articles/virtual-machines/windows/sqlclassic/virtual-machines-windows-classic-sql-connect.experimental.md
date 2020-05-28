@@ -16,17 +16,17 @@ ms.author: mathoma
 ms.reviewer: jroth
 experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 1c2d5ae5d85624ea172eb9a95d4086dd71287c4f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82c9f6f0797a4d863e04b45c918d649250157a72
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978205"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017646"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Připojení k virtuálnímu počítači s SQL Serverem v Azure (nasazení Classic)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-sql-connect.md)
-> * [Classic](../classic/sql-connect.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md)
+> * [Klasický](../classic/sql-connect.md)
 > 
 > 
 
@@ -34,7 +34,7 @@ ms.locfileid: "75978205"
 Toto téma popisuje, jak se připojit k instanci SQL Server běžící na virtuálním počítači Azure. Zabývá se některými [obecnými scénáři připojení](#connection-scenarios) a pak poskytuje [podrobné pokyny ke konfiguraci SQL Serverho připojení ve virtuálním počítači Azure](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
 > [!IMPORTANT] 
-> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud používáte Správce prostředků virtuálních počítačů, přečtěte si téma [připojení k virtuálnímu počítači s SQL Server na Azure pomocí Správce prostředků](../sql/virtual-machines-windows-sql-connect.md).
+> Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek popisuje použití klasického modelu nasazení. Microsoft doporučuje, aby byl ve většině nových nasazení použit model Resource Manager. Pokud používáte Správce prostředků virtuálních počítačů, přečtěte si téma [připojení k virtuálnímu počítači s SQL Server na Azure pomocí Správce prostředků](../../../azure-sql/virtual-machines/windows/ways-to-connect-to-sql.md).
 
 ## <a name="connection-scenarios"></a>Scénáře připojení
 Způsob, jakým se klient připojuje k SQL Server běžícímu na virtuálním počítači, se liší v závislosti na umístění klienta a konfiguraci počítače nebo sítě. Mezi tyto scénáře patří:
@@ -106,9 +106,9 @@ Cesta k připojení je shrnuta podle následujícího diagramu:
 ## <a name="next-steps"></a>Další kroky
 Pokud také plánujete použít Skupiny dostupnosti AlwaysOn pro vysokou dostupnost a zotavení po havárii, měli byste zvážit implementaci naslouchacího procesu. Klienti databáze se připojují ke službě Listener, nikoli přímo k jedné z SQL Server instancí. Naslouchací proces směruje klienty do primární repliky ve skupině dostupnosti. Další informace najdete v tématu [Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti AlwaysOn v Azure](../classic/ps-sql-int-listener.md).
 
-Je důležité si projít všechny osvědčené postupy zabezpečení pro SQL Server běžící na virtuálním počítači Azure. Další informace najdete v tématu [Informace o zabezpečení pro SQL Server na virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-security.md).
+Je důležité si projít všechny osvědčené postupy zabezpečení pro SQL Server běžící na virtuálním počítači Azure. Další informace najdete v tématu [Informace o zabezpečení pro SQL Server na virtuálních počítačích Azure](../../../azure-sql/virtual-machines/windows/security-considerations-best-practices.md).
 
 [Projděte si mapy kurzů](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) pro SQL Server na virtuálních počítačích Azure. 
 
-Další témata související se spouštěním SQL Server ve virtuálních počítačích Azure najdete v tématu [SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Další témata související se spouštěním SQL Server ve virtuálních počítačích Azure najdete v tématu [SQL Server v Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 

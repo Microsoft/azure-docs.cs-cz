@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 9/27/2019
-ms.openlocfilehash: 77fa8f72d4d4d929d15859fde71f112de1ddd14e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7746726775cd5230f48842ad9a9260efe0e540b5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418724"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022108"
 ---
 # <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
 
@@ -42,13 +42,13 @@ V tomto kurzu se dozvíte, jak provádět následující úlohy:
 
 Tento kurz používá .NET SDK. K interakci s Azure Data Factory můžete použít jiné mechanismy. Data Factory rychlých startech najdete v tématu [5 minut rychlých startů](/azure/data-factory/quickstart-create-data-factory-portal).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Účet Azure Storage. Úložiště objektů BLOB použijete jako zdrojové úložiště dat. Pokud nemáte účet úložiště Azure, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 * Průzkumník služby Azure Storage. Pokud chcete tento nástroj nainstalovat, přečtěte si téma [Průzkumník služby Azure Storage](https://storageexplorer.com/).
-* Azure SQL Database. Tuto databázi použijete jako úložiště dat jímky. Pokud nemáte Azure SQL Database, přečtěte si téma [Vytvoření databáze SQL Azure](../sql-database/sql-database-get-started-portal.md).
+* Azure SQL Database. Tuto databázi použijete jako úložiště dat jímky. Pokud nemáte Azure SQL Database, přečtěte si téma [Vytvoření databáze SQL Azure](../azure-sql/database/single-database-create-quickstart.md).
 * Visual Studio. Tento článek používá Visual Studio 2019.
 * Sada Azure .NET SDK. Stáhněte a nainstalujte si [sadu Azure .NET SDK](https://azure.microsoft.com/downloads/).
 
@@ -79,7 +79,7 @@ Vytvořte konzolovou aplikaci v jazyce C# .NET:
 
 ### <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-1. Vyberte **nástroje** > **správce** > balíčků NuGet**Konzola správce balíčků**.
+1. Vyberte **nástroje**  >  **Správce balíčků NuGet**  >  **Konzola správce balíčků**.
 1. V **konzole správce balíčků**spusťte následující příkazy pro instalaci balíčků. Podrobnosti najdete v [balíčku NuGet pro Microsoft. Azure. Management. DataFactory](https://www.nuget.org/packages/Microsoft.Azure.Management.DataFactory/) .
 
    ```powershell
@@ -148,7 +148,7 @@ Vytvořte konzolovou aplikaci v jazyce C# .NET:
 
 ### <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. Do souboru `CreateOrUpdateDataFactory` *program.cs* přidejte metodu:
+1. `CreateOrUpdateDataFactory`Do souboru *program.cs* přidejte metodu:
 
    ```csharp
    static Factory CreateOrUpdateDataFactory(DataFactoryManagementClient client)
@@ -181,7 +181,7 @@ Vytvořte konzolovou aplikaci v jazyce C# .NET:
 
 ## <a name="create-an-azure-storage-linked-service"></a>Vytvoření propojené služby Azure Storage
 
-1. Do souboru `StorageLinkedServiceDefinition` *program.cs* přidejte metodu:
+1. `StorageLinkedServiceDefinition`Do souboru *program.cs* přidejte metodu:
 
    ```csharp
    static LinkedServiceResource StorageLinkedServiceDefinition(DataFactoryManagementClient client)
@@ -213,7 +213,7 @@ V této části vytvoříte dvě datové sady, jednu pro zdroj a jednu pro jímk
 
 Přidejte metodu, která vytvoří *datovou sadu objektů BLOB v Azure*. Další informace o podporovaných vlastnostech a podrobnostech najdete v tématu [Vlastnosti datové sady objektů BLOB v Azure](connector-azure-blob-storage.md#dataset-properties).
 
-Do souboru `SourceBlobDatasetDefinition` *program.cs* přidejte metodu:
+`SourceBlobDatasetDefinition`Do souboru *program.cs* přidejte metodu:
 
 ```csharp
 static DatasetResource SourceBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -240,7 +240,7 @@ Všimněte si použití parametrů pro *FolderPath*. `sourceBlobContainer`je ná
 
 ### <a name="create-a-dataset-for-a-sink-azure-blob"></a>Vytvoření datové sady pro objekt blob Azure jímky
 
-1. Do souboru `SourceBlobDatasetDefinition` *program.cs* přidejte metodu:
+1. `SourceBlobDatasetDefinition`Do souboru *program.cs* přidejte metodu:
 
    ```csharp
    static DatasetResource SinkBlobDatasetDefinition(DataFactoryManagementClient client)
@@ -260,7 +260,7 @@ Všimněte si použití parametrů pro *FolderPath*. `sourceBlobContainer`je ná
    }
    ```
 
-1. Do `Main` metody přidejte následující kód, který vytvoří datovou sadu Azure Blob source i jímky.
+1. Do metody přidejte následující kód `Main` , který vytvoří datovou sadu Azure Blob source i jímky.
 
    ```csharp
    client.Datasets.CreateOrUpdate(resourceGroup, dataFactoryName, blobSourceDatasetName, SourceBlobDatasetDefinition(client));
@@ -270,7 +270,7 @@ Všimněte si použití parametrů pro *FolderPath*. `sourceBlobContainer`je ná
 
 ## <a name="create-a-c-class-emailrequest"></a>Vytvoření třídy EmailRequest v C#
 
-V projektu C# vytvořte třídu s názvem `EmailRequest`. Tato třída definuje, jaké vlastnosti kanál posílá v žádosti o tělo při odesílání e-mailů. V tomto kurzu kanál do e-mailu odešle čtyři vlastnosti:
+V projektu C# vytvořte třídu s názvem `EmailRequest` . Tato třída definuje, jaké vlastnosti kanál posílá v žádosti o tělo při odesílání e-mailů. V tomto kurzu kanál do e-mailu odešle čtyři vlastnosti:
 
 * Zpráva. Text e-mailu Pro úspěšnou kopii Tato vlastnost obsahuje množství zapsaných dat. Pro neúspěšnou kopii Tato vlastnost obsahuje podrobnosti o chybě.
 * Název datové továrny. Název datové továrny.
@@ -308,7 +308,7 @@ K aktivaci odesílání e-mailů použijete [Logic Apps](../logic-apps/logic-app
 
 ### <a name="success-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu
 
-V [Azure Portal](https://portal.azure.com)vytvořte pracovní postup Logic Apps s názvem *CopySuccessEmail*. Definujte Trigger pracovního postupu jako `When an HTTP request is received`. Pro trigger požadavku zadejte do `Request Body JSON Schema` následující JSON:
+V [Azure Portal](https://portal.azure.com)vytvořte pracovní postup Logic Apps s názvem *CopySuccessEmail*. Definujte Trigger pracovního postupu jako `When an HTTP request is received` . Pro trigger požadavku zadejte do `Request Body JSON Schema` následující JSON:
 
 ```json
 {
@@ -336,7 +336,7 @@ Váš pracovní postup vypadá podobně jako v následujícím příkladu:
 
 Tento obsah JSON zarovnává `EmailRequest` třídu, kterou jste vytvořili v předchozí části.
 
-Přidat akci `Office 365 Outlook – Send an email`. V případě akce **Odeslat e-mail** upravte způsob, jakým chcete e-maily naformátovat, pomocí vlastností předaných v rámci schématu JSON pro **tělo** požadavku. Tady je příklad:
+Přidat akci `Office 365 Outlook – Send an email` . V případě akce **Odeslat e-mail** upravte způsob, jakým chcete e-maily naformátovat, pomocí vlastností předaných v rámci schématu JSON pro **tělo** požadavku. Tady je příklad:
 
 ![Návrhář aplikace logiky – akce Odeslat e-mail](media/tutorial-control-flow/customize-send-email-action.png)
 
@@ -470,7 +470,7 @@ Parameters = new Dictionary<string, ParameterSpecification>
 
 ### <a name="web-activity"></a>Aktivita webu
 
-Aktivita webu umožňuje volání libovolného koncového bodu REST. Další informace o aktivitě najdete v tématu [Webová aktivita v Azure Data Factory](control-flow-web-activity.md). Tento kanál používá aktivitu webu pro volání pracovního postupu Logic Appsho e-mailu. Vytvoříte dvě webové aktivity: jednu, která volá do `CopySuccessEmail` pracovního postupu a jednu, která volá `CopyFailWorkFlow`.
+Aktivita webu umožňuje volání libovolného koncového bodu REST. Další informace o aktivitě najdete v tématu [Webová aktivita v Azure Data Factory](control-flow-web-activity.md). Tento kanál používá aktivitu webu pro volání pracovního postupu Logic Appsho e-mailu. Vytvoříte dvě webové aktivity: jednu, která volá do `CopySuccessEmail` pracovního postupu a jednu, která volá `CopyFailWorkFlow` .
 
 ```csharp
         new WebActivity
@@ -492,10 +492,10 @@ Aktivita webu umožňuje volání libovolného koncového bodu REST. Další inf
 
 Do `Url` vlastnosti vložte koncové body **adresy URL http post** z pracovních postupů Logic Apps. Ve `Body` vlastnosti předejte instanci `EmailRequest` třídy. Obsahuje následující vlastnosti:
 
-* Zpráva. Předává hodnotu `@{activity('CopyBlobtoBlob').output.dataWritten`. Přistupuje k vlastnosti předchozí aktivity kopírování a předá hodnotu `dataWritten`. V případě neúspěchu předejte výstup chyby místo `@{activity('CopyBlobtoBlob').error.message`.
+* Zpráva. Předává hodnotu `@{activity('CopyBlobtoBlob').output.dataWritten` . Přistupuje k vlastnosti předchozí aktivity kopírování a předá hodnotu `dataWritten` . V případě neúspěchu předejte výstup chyby místo `@{activity('CopyBlobtoBlob').error.message`.
 * Název Data Factory Hodnota Pass `@{pipeline().DataFactory}` této systémové proměnné vám umožní přístup k odpovídajícímu názvu datové továrny. Seznam systémových proměnných najdete v tématu [systémové proměnné](control-flow-system-variables.md).
-* Název kanálu Předává hodnotu `@{pipeline().Pipeline}`. Tato systémová proměnná umožňuje přístup k odpovídajícímu názvu kanálu.
-* Pozorování. Předává hodnotu `"@pipeline().parameters.receiver"`. Přistupuje k parametrům kanálu.
+* Název kanálu Předává hodnotu `@{pipeline().Pipeline}` . Tato systémová proměnná umožňuje přístup k odpovídajícímu názvu kanálu.
+* Pozorování. Předává hodnotu `"@pipeline().parameters.receiver"` . Přistupuje k parametrům kanálu.
 
 Tento kód vytvoří novou závislost aktivity, která závisí na předchozí aktivitě kopírování.
 
@@ -519,7 +519,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="main-class"></a>Hlavní třída
 
-Poslední `Main` metoda by měla vypadat takto.
+Poslední `Main` Metoda by měla vypadat takto.
 
 ```csharp
 // Authenticate and create a data factory management client

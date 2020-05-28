@@ -6,15 +6,15 @@ author: swmachan
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
-ms.date: 02/21/2019
+ms.date: 05/26/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: cf5b2b84142c9104ea5b3afa3ad179fd0ec07449
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c8c4bbcfdd8f06d4c2b4759b84a72c5b3cff5a5d
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80370138"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996342"
 ---
 # <a name="sentence-pairing-and-alignment-in-parallel-documents"></a>Párování a zarovnání vět v paralelních dokumentech
 
@@ -26,7 +26,7 @@ Vlastní Překladatel se učí překlady vět v jednom okamžiku. Čte ze zdroje
 
 ## <a name="pre-aligned-documents"></a>Předem zarovnané dokumenty
 
-Pokud víte, že máte paralelní dokumenty, můžete zarovnání věty přepsat zadáním předem zarovnaných textových souborů. Můžete extrahovat všechny věty z obou dokumentů do textového souboru, uspořádat jednu větu na řádek a nahrát s `.align` příponou. `.align` Rozšíření signalizuje vlastní překladateli, že by měl přeskočit zarovnání věty.
+Pokud víte, že máte paralelní dokumenty, můžete zarovnání věty přepsat zadáním předem zarovnaných textových souborů. Můžete extrahovat všechny věty z obou dokumentů do textového souboru, uspořádat jednu větu na řádek a nahrát s `.align` příponou. `.align`Rozšíření signalizuje vlastní překladateli, že by měl přeskočit zarovnání věty.
 
 Pro dosažení co nejlepších výsledků se ujistěte, že máte v souborech jednu větu na řádek.Ve větě nemusíte mít znaky nového řádku, protože by to způsobilo špatné zarovnání.
 

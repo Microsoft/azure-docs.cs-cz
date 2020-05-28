@@ -7,22 +7,22 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.openlocfilehash: 8353c0fba034022a79570d09b320b7b5c4c3e60a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 091ce1cc0b2540a02e62e1e85c5515f6aa62b93c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74951849"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018833"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Použití Apache Sqoopu s Hadoopem ve službě HDInsight
 
 [!INCLUDE [sqoop-selector](../../../includes/hdinsight-selector-use-sqoop.md)]
 
-Naučte se používat Apache Sqoop ve službě HDInsight k importu a exportu dat mezi clusterem HDInsight a databází SQL Azure.
+Naučte se používat Apache Sqoop ve službě HDInsight k importu a exportu dat mezi clusterem HDInsight a Azure SQL Database.
 
 I když je Apache Hadoop přirozenou volbou pro zpracování nestrukturovaných a částečně strukturovaných dat, jako jsou protokoly a soubory, může být potřeba zpracovat strukturovaná data uložená v relačních databázích.
 
-[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) je nástroj určený k přenosu dat mezi clustery Hadoop a relačními databázemi. Můžete ji použít k importu dat ze systému pro správu relačních databází (RDBMS), jako je SQL Server, MySQL nebo Oracle, do systému Hadoop Distributed File System (HDFS), transformovat data v Hadoop pomocí MapReduce nebo Apache Hive a pak data exportovat zpátky do RDBMS. V tomto článku používáte databázi SQL Server pro relační databázi.
+[Apache Sqoop](https://sqoop.apache.org/docs/1.99.7/user.html) je nástroj určený k přenosu dat mezi clustery Hadoop a relačními databázemi. Můžete ji použít k importu dat ze systému pro správu relačních databází (RDBMS), jako je SQL Server, MySQL nebo Oracle, do systému Hadoop Distributed File System (HDFS), transformovat data v Hadoop pomocí MapReduce nebo Apache Hive a pak data exportovat zpátky do RDBMS. V tomto článku používáte Azure SQL Database pro relační databázi.
 
 > [!IMPORTANT]  
 > Tento článek nastaví testovací prostředí pro přenos dat. Pak zvolíte způsob přenosu dat pro toto prostředí z jedné z metod v části [spuštění úloh Sqoop](#run-sqoop-jobs), které jsou níže.
@@ -33,7 +33,7 @@ Verze Sqoop podporované v clusterech HDInsight najdete v tématu [co je nového
 
 Cluster HDInsight obsahuje ukázková data. Použijete následující dvě ukázky:
 
-* Soubor protokolu Apache log4j, který se nachází na adrese `/example/data/sample.log`. Následující protokoly jsou extrahovány ze souboru:
+* Soubor protokolu Apache log4j, který se nachází na adrese `/example/data/sample.log` . Následující protokoly jsou extrahovány ze souboru:
 
 ```text
 2012-02-03 18:35:34 SampleClass6 [INFO] everything normal for id 577725851
@@ -42,7 +42,7 @@ Cluster HDInsight obsahuje ukázková data. Použijete následující dvě ukáz
 ...
 ```
 
-* Tabulka podregistru s `hivesampletable`názvem, která odkazuje na datový soubor umístěný `/hive/warehouse/hivesampletable`v. Tabulka obsahuje některá data mobilních zařízení.
+* Tabulka podregistru s názvem `hivesampletable` , která odkazuje na datový soubor umístěný v `/hive/warehouse/hivesampletable` . Tabulka obsahuje některá data mobilních zařízení.
   
   | Pole | Datový typ |
   | --- | --- |
@@ -62,7 +62,7 @@ V tomto článku pomocí těchto dvou datových sad otestujete Sqoop import a ex
 
 ## <a name="set-up-test-environment"></a><a name="create-cluster-and-sql-database"></a>Nastavení testovacího prostředí
 
-Cluster, SQL Database a další objekty se vytvářejí prostřednictvím Azure Portal pomocí Azure Resource Manager šablony. Šablonu najdete v [šablonách rychlého startu Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Šablona Správce prostředků volá balíček BacPac pro nasazení schémat tabulek do databáze SQL.  Balíček BacPac se nachází ve veřejném kontejneru objektů blob, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac. Pokud chcete použít privátní kontejner pro soubory BacPac, použijte následující hodnoty v šabloně:
+Cluster, SQL Database a další objekty se vytvářejí prostřednictvím Azure Portal pomocí Azure Resource Manager šablony. Šablonu najdete v [šablonách rychlého startu Azure](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-sql-database/). Šablona Správce prostředků volá balíček BacPac pro nasazení schémat tabulek do databáze SQL.  Balíček BacPac se nachází ve veřejném kontejneru objektů blob, https://hditutorialdata.blob.core.windows.net/usesqoop/SqoopTutorial-2016-2-23-11-2.bacpac . Pokud chcete použít privátní kontejner pro soubory BacPac, použijte následující hodnoty v šabloně:
 
 ```json
 "storageKeyType": "Primary",
@@ -84,18 +84,18 @@ Cluster, SQL Database a další objekty se vytvářejí prostřednictvím Azure 
     |Skupina prostředků |Z rozevíracího seznamu vyberte skupinu prostředků nebo vytvořte novou.|
     |Umístění |V rozevíracím seznamu vyberte oblast.|
     |Název clusteru |Zadejte název clusteru Hadoop. Použijte pouze malé písmeno.|
-    |Uživatelské jméno přihlášení clusteru |Nechte předem vyplněnou hodnotu `admin`.|
+    |Uživatelské jméno přihlášení clusteru |Nechte předem vyplněnou hodnotu `admin` .|
     |Heslo přihlášení clusteru |Zadejte heslo.|
-    |Uživatelské jméno SSH |Nechte předem vyplněnou hodnotu `sshuser`.|
+    |Uživatelské jméno SSH |Nechte předem vyplněnou hodnotu `sshuser` .|
     |Heslo SSH |Zadejte heslo.|
-    |Přihlášení správce SQL |Nechte předem vyplněnou hodnotu `sqluser`.|
+    |Přihlášení správce SQL |Nechte předem vyplněnou hodnotu `sqluser` .|
     |Heslo správce SQL |Zadejte heslo.|
     |Umístění _artifacts | Pokud nechcete použít vlastní soubor BacPac v jiném umístění, použijte výchozí hodnotu.|
     |Token SAS pro _artifacts umístění |Ponechte prázdné.|
     |Název souboru BacPac |Pokud nechcete použít vlastní soubor BacPac, použijte výchozí hodnotu.|
     |Umístění |Použijte výchozí hodnotu.|
 
-    Název Azure SQL Server bude `<ClusterName>dbserver`. Název databáze bude `<ClusterName>db`. Výchozí název účtu úložiště bude `e6qhezrh2pdqu`.
+    Název [logického serveru SQL Server](../../azure-sql/database/logical-servers.md) bude `<ClusterName>dbserver` . Název databáze bude `<ClusterName>db` . Výchozí název účtu úložiště bude `e6qhezrh2pdqu` .
 
 3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře**.
 
@@ -113,7 +113,7 @@ HDInsight může spouštět úlohy Sqoop pomocí různých metod. Pomocí násle
 
 ## <a name="limitations"></a>Omezení
 
-* Hromadný export – pomocí HDInsight se systémem Linux, konektor Sqoop používaný k exportu dat do Microsoft SQL Server nebo Azure SQL Database v současné době nepodporuje hromadné vložení.
+* Hromadný export – pomocí HDInsight se systémem Linux, konektor Sqoop používaný k exportu dat do Microsoft SQL Server nebo SQL Database v současné době nepodporuje hromadné vložení.
 * Dávkování – se systémem Linux HDInsight při použití `-batch` přepínače při provádění operací INSERT Sqoop provede vícenásobné vkládání místo dávkování operací vložení.
 
 ## <a name="next-steps"></a>Další kroky

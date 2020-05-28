@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 03/13/2019
-ms.openlocfilehash: 2604d5b357feacce3493b4a4ded971144262611d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f68bbb4e73758e44e775e1c0c23ad007ca60aa2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161932"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016929"
 ---
 # <a name="regional-disaster-recovery-for-azure-databricks-clusters"></a>Místní zotavení po havárii pro clustery Azure Databricks
 
@@ -150,7 +150,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
    clusters_list = []
    ##for cluster_info in clusters_info_list: clusters_list.append(cluster_info.split(None, 1)[0])
 
-   for cluster_info in clusters_info_list: 
+   for cluster_info in clusters_info_list:
       if cluster_info != '':
          clusters_list.append(cluster_info.split(None, 1)[0])
 
@@ -176,7 +176,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
       cluster_json_keys = cluster_req_json.keys()
 
       #Don't migrate Job clusters
-      if cluster_req_json['cluster_source'] == u'JOB' : 
+      if cluster_req_json['cluster_source'] == u'JOB' :
          print ("Skipping this cluster as it is a Job cluster : " + cluster_req_json['cluster_id'] )
          print ("---------------------------------------------------------")
          continue
@@ -188,10 +188,10 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
       # Create the cluster, and store the mapping from old to new cluster ids
 
       #Create a temp file to store the current cluster info as JSON
-      strCurrentClusterFile = "tmp_cluster_info.json" 
+      strCurrentClusterFile = "tmp_cluster_info.json"
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
       fClusterJSONtmp = open(strCurrentClusterFile,"w+")
@@ -207,7 +207,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
       print ("---------------------------------------------------------")
 
       #delete the temp file if exists
-      if os.path.exists(strCurrentClusterFile) : 
+      if os.path.exists(strCurrentClusterFile) :
          os.remove(strCurrentClusterFile)
 
    print ("Cluster mappings: " + json.dumps(cluster_old_new_mappings))
@@ -225,7 +225,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
 
    Konfigurace úlohy vyžaduje nastavení pro nový nebo existující cluster. Při použití existujícího clusteru se skript/Code níže pokusí nahradit staré ID clusteru novým ID clusteru.
 
-   Zkopírujte a uložte následující skript Pythonu do souboru. Nahraďte hodnotu pro `old_cluster_id` a `new_cluster_id`výstupem z migrace clusteru provedené v předchozím kroku. Spusťte ji na příkazovém řádku datacihly-CLI, například `python scriptname.py`.
+   Zkopírujte a uložte následující skript Pythonu do souboru. Nahraďte hodnotu pro `old_cluster_id` a `new_cluster_id` výstupem z migrace clusteru provedené v předchozím kroku. Spusťte ji na příkazovém řádku datacihly-CLI, například `python scriptname.py` .
 
    ```python
    from subprocess import call, check_output
@@ -290,7 +290,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
 
 9. **Migrace inicializačních skriptů clusteru**
 
-   Všechny inicializační skripty clusteru je možné migrovat ze starých na nový pracovní prostor pomocí rozhraní příkazového [řádku DBFS](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Nejdřív Zkopírujte potřebné skripty z `dbfs:/dat abricks/init/..` aplikace do místního počítače nebo virtuálního počítače. Potom tyto skripty zkopírujte do nového pracovního prostoru na stejné cestě.
+   Všechny inicializační skripty clusteru je možné migrovat ze starých na nový pracovní prostor pomocí rozhraní příkazového [řádku DBFS](https://github.com/databricks/databricks-cli#dbfs-cli-examples). Nejdřív Zkopírujte potřebné skripty z aplikace `dbfs:/dat abricks/init/..` do místního počítače nebo virtuálního počítače. Potom tyto skripty zkopírujte do nového pracovního prostoru na stejné cestě.
 
    ```bash
    // Primary to local
@@ -308,7 +308,7 @@ Pokud chcete vytvořit svou vlastní místní topologii zotavení po havárii, p
 
 ## <a name="disaster-recovery-for-your-azure-ecosystem"></a>Zotavení po havárii pro váš ekosystém Azure
 
-Pokud používáte další služby Azure, ujistěte se, že implementujete osvědčené postupy zotavení po havárii pro tyto služby. Pokud se například rozhodnete použít externí instanci metastore Hive, měli byste zvážit zotavení po havárii pro [azure SQL Server](../sql-database/sql-database-disaster-recovery.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)a/nebo [Azure Database for MySQL](../mysql/concepts-business-continuity.md). Obecné informace o zotavení po havárii najdete v tématu [zotavení po havárii pro aplikace Azure](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
+Pokud používáte další služby Azure, ujistěte se, že implementujete osvědčené postupy zotavení po havárii pro tyto služby. Pokud se například rozhodnete použít externí instanci metastore Hive, měli byste zvážit zotavení po havárii pro [Azure SQL Database](../azure-sql/database/disaster-recovery-guidance.md), [Azure HDInsight](../hdinsight/hdinsight-high-availability-linux.md)a/nebo [Azure Database for MySQL](../mysql/concepts-business-continuity.md). Obecné informace o zotavení po havárii najdete v tématu [zotavení po havárii pro aplikace Azure](https://docs.microsoft.com/azure/architecture/resiliency/disaster-recovery-azure-applications).
 
 ## <a name="next-steps"></a>Další kroky
 

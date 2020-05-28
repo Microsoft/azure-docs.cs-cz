@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: c570f988dea894b8106405f4e427edb386a3e74a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5436e50a23b73e1a10cf42b3dd8790c5b0620ac3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75969291"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021887"
 ---
 # <a name="use-case---customer-profiling"></a>Případ použití – profilace zákazníků
 Azure Data Factory je jedna z mnoha služeb, které se používají k implementaci Cortana Intelligence Suite akcelerátorů řešení.  Další informace o Cortana Intelligence najdete v [Cortana Intelligence Suite](https://www.microsoft.com/cortanaanalytics). V tomto dokumentu popisujeme jednoduchý případ použití, který vám pomůžeme začít s porozuměním, jak Azure Data Factory řešit běžné problémy s analýzou.
@@ -38,7 +38,7 @@ K tomuto jednoduchému případu použití stačí získat přístup a vyzkouše
 3. V okně **ukázkové kanály** klikněte na **profilování zákazníků** , které chcete nasadit.
 
     ![Okno ukázkové kanály](./media/data-factory-samples/SampleTile.png)
-4. Zadejte konfigurační nastavení pro ukázku. Například název a klíč účtu služby Azure Storage, název, databázi, ID uživatele a heslo Azure SQL serveru.
+4. Zadejte konfigurační nastavení pro ukázku. Například název a klíč účtu úložiště Azure, název logického SQL serveru, databáze, ID uživatele a heslo.
 
     ![Okno vzorku](./media/data-factory-samples/SampleBlade.png)
 5. Po dokončení zadání nastavení konfigurace kliknutím na **vytvořit** vytvořte nebo nasadíte ukázkové kanály a propojené služby nebo tabulky používané kanály.

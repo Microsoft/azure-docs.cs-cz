@@ -12,12 +12,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: cb04a8e5a6d8c982a35cb5c448e4b6d93825bf73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7a888d95a97e30e7d663b528e8d9941aec1f51e9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460218"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015841"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 Máte nějaké otázky? Další informace najdete v následujících nejčastějších dotazech.
@@ -26,7 +26,7 @@ Máte nějaké otázky? Další informace najdete v následujících nejčastěj
 
 ### <a name="can-i-install-the-extension-on-my-visual-studio-team-foundation-server-instance-instead-of-on-an-azure-devops-instance"></a>Můžu nainstalovat rozšíření na mou instanci sady Visual Studio Team Foundation Server místo v instanci Azure DevOps?
 
-Ne. Rozšíření není k dispozici pro stažení a instalaci sady Visual Studio Team Foundation Server.
+No. Rozšíření není k dispozici pro stažení a instalaci sady Visual Studio Team Foundation Server.
 
 ### <a name="do-i-have-to-run-microsoft-security-code-analysis-with-my-build"></a>Musím v mém buildu spustit analýzu kódu zabezpečení od Microsoftu? 
 
@@ -38,7 +38,7 @@ Pro jiné nástroje, jako je BinSkim, které analyzují artefakty po sestavení,
 
 ### <a name="can-i-break-my-build-when-results-are-found"></a>Je možné ukončit sestavení při nalezení výsledků?
 
-Ano. Můžete zavést přerušení sestavení, když kterýkoli nástroj ohlásí problém nebo problém v souboru protokolu. Stačí přidat úlohu sestavení po analýze a zaškrtnout políčko pro libovolný nástroj, pro který chcete sestavení přerušit.
+Yes. Můžete zavést přerušení sestavení, když kterýkoli nástroj ohlásí problém nebo problém v souboru protokolu. Stačí přidat úlohu sestavení po analýze a zaškrtnout políčko pro libovolný nástroj, pro který chcete sestavení přerušit.
 
 V uživatelském rozhraní úlohy po analýze můžete zvolit, aby se sestavení přerušit, když jakýkoli nástroj hlásí pouze chyby nebo chyby a upozornění.
 
@@ -48,14 +48,14 @@ Ve většině případů jsou úkoly sestavení Azure DevOps přímými obálkam
 
 Patrné rozdíly:
 
-- Nástroje jsou spouštěny ze zdrojové složky agenta $ (Build. SourcesDirectory) nebo z% BUILD_SOURCESDIRECTORY%. Příkladem je C:\Agent\_work\1\s.
+- Nástroje jsou spouštěny ze zdrojové složky agenta $ (Build. SourcesDirectory) nebo z% BUILD_SOURCESDIRECTORY%. Příkladem je C:\Agent \_ work\1\s.
 - Cesty v argumentech mohou být relativní ke kořenu výše uvedeného zdrojového adresáře. Cesty mohou být také absolutní. Absolutní cesty můžete získat buď pomocí proměnných sestavení Azure DevOps, nebo spuštěním místního agenta se známými umístěními nasazení místních prostředků.
 - Nástroje automaticky poskytují cestu k výstupnímu souboru nebo složku. Pokud zadáte umístění výstupu pro úlohu sestavení, bude toto umístění nahrazeno cestou k našemu dobře známému umístění protokolů agenta sestavení.
 - Některé další argumenty příkazového řádku se u některých nástrojů změnily. Jedním z příkladů je přidání nebo odebrání možností, které zajistí, že se nespustí žádné grafické rozhraní (GUI).
 
 ### <a name="can-i-run-a-build-task-like-credential-scanner-across-multiple-repositories-in-an-azure-devops-build"></a>Můžu spustit úlohu sestavení, jako je třeba skener přihlašovacích údajů v rámci několika úložišť v sestavení Azure DevOps?
 
-Ne. Používání nástrojů pro bezpečné vývoj v různých úložištích v jednom kanálu se nepodporuje.
+No. Používání nástrojů pro bezpečné vývoj v různých úložištích v jednom kanálu se nepodporuje.
 
 ### <a name="the-output-file-i-specified-isnt-being-created-or-i-cant-find-the-output-file-i-specified"></a>Zadaný výstupní soubor se nevytváří nebo nejde najít zadaný výstupní soubor.
 
@@ -63,11 +63,11 @@ Ne. Používání nástrojů pro bezpečné vývoj v různých úložištích v 
 
 ### <a name="where-are-the-output-files-generated-by-the-tools-saved"></a>Kde jsou výstupní soubory generované nástroji uložené? 
 
-Úlohy sestavení automaticky přidávají výstupní cesty k tomuto známému umístění v agentovi sestavení: $ (agent. BuildDirectory)\_sdt\logs. Vzhledem k tomu, že jsme v tomto umístění standardizaci, všechny týmy, které vytváří nebo využívají protokoly analýzy kódu, mají přístup k výstupu.
+Úlohy sestavení automaticky přidávají výstupní cesty k tomuto známému umístění v agentovi sestavení: $ (agent. BuildDirectory) \_ sdt\logs. Vzhledem k tomu, že jsme v tomto umístění standardizaci, všechny týmy, které vytváří nebo využívají protokoly analýzy kódu, mají přístup k výstupu.
 
 ### <a name="can-i-queue-a-build-to-run-these-tasks-on-a-hosted-build-agent"></a>Můžu sestavení zařadit do fronty a spustit tyto úlohy v hostovaném agentu sestavení? 
 
-Ano. Všechny úlohy a nástroje v rozšíření lze spustit u hostovaného agenta sestavení.
+Yes. Všechny úlohy a nástroje v rozšíření lze spustit u hostovaného agenta sestavení.
 
 >[!NOTE]
 > Úloha sestavení pro kontrolu proti malwaru vyžaduje, aby byl v programu Windows Defender povolen agent sestavení. Hostitelem sady Visual Studio 2017 a novějších je například agent. V hostovaném agentu sady Visual Studio 2015 se úloha sestavení nespustí.
@@ -90,7 +90,7 @@ Po jejich instalaci budou úkoly sestavení zabezpečení poskytované rozšíř
 
 ### <a name="does-installing-the-extension-modify-my-existing-azure-pipelines"></a>Mění se v instalaci rozšíření moje existující Azure Pipelines? 
 
-Ne. Instalace rozšíření zpřístupňuje úlohy sestavení zabezpečení pro přidání do vašich kanálů. Stále je nutné přidat nebo aktualizovat definice sestavení, aby nástroje mohly pracovat s procesem sestavení.
+No. Instalace rozšíření zpřístupňuje úlohy sestavení zabezpečení pro přidání do vašich kanálů. Stále je nutné přidat nebo aktualizovat definice sestavení, aby nástroje mohly pracovat s procesem sestavení.
 
 ## <a name="task-specific-faq"></a>Nejčastější dotazy ke konkrétním úlohám
 
@@ -123,11 +123,11 @@ Klíč hash tajného kódu z výstupního souboru CredScan je vyžadován, jak j
 
 Výrazem souboru může být název souboru. Může to být i část úplné cesty k souboru nebo názvu souboru. Zástupné znaky se nepodporují.
 
-Následující příklady ukazují, jak potlačit soubor \<inputPath> \src\js\lib\angular.js
+Následující příklady ukazují, jak potlačit \Src\JS\lib\angular.js souboru \<InputPath>
 
 Příklady platných pravidel potlačení:
 
-- \<InputPath> \src\JS\lib\angular.js – potlačí soubor v zadané cestě.
+- \<InputPath>\src\JS\lib\angular.js – potlačí soubor v zadané cestě.
 - \src\JS\lib\angular.js
 - \JS\lib\angular.js
 - \lib\angular.js
@@ -155,7 +155,7 @@ Příklady platných pravidel potlačení:
 Následující zdroje vám pomůžou bezpečně spravovat tajné klíče a přistupovat k citlivým informacím v rámci svých aplikací:
 
  - [Azure Key Vault](../../key-vault/index.yml)
- - [Azure Active Directory (Azure AD)](../../sql-database/sql-database-aad-authentication.md)
+ - [Azure Active Directory (Azure AD)](../../azure-sql/database/authentication-aad-overview.md)
  - [Služba Azure AD Identita spravované služby (MSI)](https://azure.microsoft.com/blog/keep-credentials-out-of-code-introducing-azure-ad-managed-service-identity/)
  - [Spravované identity pro prostředky Azure](../../active-directory/managed-identities-azure-resources/overview.md)
  - [Spravované identity v Azure App Service a Azure Functions](../../app-service/overview-managed-identity.md)
@@ -173,7 +173,7 @@ Hledání obsahu je definováno následujícím způsobem:
 - **Název**: popisný název vyhledávacího programu, který se má použít ve výstupních souborech pro kontrolu přihlašovacích údajů. Doporučujeme používat ve stylu CamelCase konvence pojmenovávání pro názvy vyhledávacích jmen.
 - **RuleId**: stabilní neprůhledné ID vyhledávacího pole:
     - Výchozímu vyhledávacímu skeneru přihlašovacích údajů se přiřadí hodnota **RuleId** , jako je CSCAN0010, CSCAN0020 nebo CSCAN0030. Poslední číslice je vyhrazena pro potenciálně slučování nebo rozdělování skupin hledání prostřednictvím regulárních výrazů (Regex).
-    - Hodnota **RuleId** přizpůsobeného vyhledávacího modulu by měla mít vlastní obor názvů. Příklady zahrnují CSCAN-\<Namespace\>0010, CSCAN-\<Namespace\>0020 a CSCAN-\<Namespace\>0030.
+    - Hodnota **RuleId** přizpůsobeného vyhledávacího modulu by měla mít vlastní obor názvů. Příklady zahrnují CSCAN- \<Namespace\> 0010, CSCAN- \<Namespace\> 0020 a CSCAN- \<Namespace\> 0030.
     - Plně kvalifikovaný název hledání je kombinací hodnoty **RuleId** a názvu vyhledávacího pole. Příklady zahrnují CSCAN0010. KeyStoreFiles a CSCAN0020. Base64EncodedCertificate.
 - **ResourceMatchPattern**: Regex pro přípony souborů, které se mají kontrolovat u hledání.
 - **ContentSearchPatterns**: pole řetězců obsahující příkazy Regex, které mají být shodné. Pokud nejsou definovány žádné vzory hledání, vrátí se všechny soubory, které odpovídají hodnotě **ResourceMatchPattern** .
@@ -202,13 +202,13 @@ Krok do hlavního postupu sestavení a analyzátoru Roslyn může vést k tomu, 
 
 Úplná chybová zpráva:
 
-soubor csc. exe byl ukončen s kódem chyby 1--instanci služby Analyzer *AAAA* nelze vytvořit z jazyka C:\\*bbbb*. dll: nelze načíst soubor nebo sestavení Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 nebo jedna z jejích závislostí. Systém nemůže najít zadaný soubor.
+soubor csc. exe byl ukončen s kódem chyby 1--instanci služby Analyzer *AAAA* nelze vytvořit z jazyka C: \\ *bbbb*. dll: nelze načíst soubor nebo sestavení Microsoft. CodeAnalysis, Version =*X. x. x. x*, Culture = neutral, PublicKeyToken = 31bf3856ad364e35 nebo jedna z jejích závislostí. Systém nemůže najít zadaný soubor.
 
 Ujistěte se, že kompilátor podporuje analyzátory Roslyn. Spuštěním příkazu **CSc. exe/Version** by měla být nahlášena hodnota verze 2,6 nebo novější.
 
 V některých případech může soubor. csproj přepsat instalaci sady Visual Studio sestavení počítače tím, že odkazuje na balíček z Microsoft.Net. compilers. Pokud nechcete použít konkrétní verzi kompilátoru, odeberte odkazy na Microsoft.Net. compilers. V opačném případě se ujistěte, že verze odkazovaného balíčku je také 2,6 nebo novější.
 
-Pokuste se získat cestu k protokolu chyb, která je zadána v možnosti **/Errorlog CSc. exe** . Možnost a cesta se zobrazí v protokolu pro úlohu sestavení analyzátorů Roslyn. Můžou vypadat nějak takto **:/errorlog: f:\ts-services-123\_work\456\s\Some\Project\Code\Code.csproj.Sarif**
+Pokuste se získat cestu k protokolu chyb, která je zadána v možnosti **/Errorlog CSc. exe** . Možnost a cesta se zobrazí v protokolu pro úlohu sestavení analyzátorů Roslyn. Můžou vypadat nějak takto **:/errorlog: f:\ts-services-123 \_ work\456\s\Some\Project\Code\Code.csproj.Sarif**
 
 ##### <a name="the-c-compiler-version-isnt-recent-enough"></a>Verze kompilátoru C# není dost nedávné.
 

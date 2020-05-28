@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 90de49ae3137735683bae6a18b5f7c8951b021ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5a7343bcf6ba4388beda118b242fa47d13baaa89
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645867"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022586"
 ---
 # <a name="sap-maxdb-livecache-and-content-server-deployment-on-azure-vms"></a>Nasazení SAP MaxDB, liveCache a Content serveru na virtuálních počítačích Azure
 
@@ -281,9 +281,9 @@ ms.locfileid: "75645867"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/resources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -313,8 +313,8 @@ Tento dokument popisuje několik různých oblastí, které je potřeba vzít v 
 
 ## <a name="specifics-for-the-sap-maxdb-deployments-on-windows"></a>Specifické pro nasazení SAP MaxDB ve Windows
 ### <a name="sap-maxdb-version-support-on-azure"></a>Podpora verze SAP MaxDB v Azure
-SAP v současné době podporuje SAP MaxDB verze 7,9 nebo vyšší pro použití s produkty SAP NetWeaver v Azure. Všechny aktualizace pro SAP MaxDB Server nebo ovladače JDBC a ODBC, které se mají použít s produkty SAP NetWeaver, jsou k dispozici výhradně prostřednictvím služby SAP Service <https://support.sap.com/swdc>Marketplace na adrese.
-Obecné informace o spuštění SAP NetWeaver na SAP MaxDB najdete na adrese <https://www.sap.com/community/topic/maxdb.html>.
+SAP v současné době podporuje SAP MaxDB verze 7,9 nebo vyšší pro použití s produkty SAP NetWeaver v Azure. Všechny aktualizace pro SAP MaxDB Server nebo ovladače JDBC a ODBC, které se mají použít s produkty SAP NetWeaver, jsou k dispozici výhradně prostřednictvím služby SAP Service Marketplace na adrese <https://support.sap.com/swdc> .
+Obecné informace o spuštění SAP NetWeaver na SAP MaxDB najdete na adrese <https://www.sap.com/community/topic/maxdb.html> .
 
 ### <a name="supported-microsoft-windows-versions-and-azure-vm-types-for-sap-maxdb-dbms"></a>Podporované verze systému Microsoft Windows a typy virtuálních počítačů Azure pro SAP MaxDB DBMS
 Podporované verze Microsoft Windows pro SAP MaxDB DBMS v Azure najdete v těchto tématech:
@@ -467,7 +467,7 @@ Pokud nakonfigurujete server obsahu SAP tak, aby ukládal soubory do databáze S
 
 Pokud nakonfigurujete server obsahu SAP pro ukládání souborů v systému souborů, jednou z možností je provést ruční zálohování nebo obnovení celé struktury souborů, kde jsou umístěny dokumenty. Podobně jako u služby SAP MaxDB Backup/Restore se doporučuje mít vyhrazený diskový svazek pro účely zálohování. 
 
-#### <a name="other"></a>Ostatní
+#### <a name="other"></a>Jiné
 Další nastavení specifická pro obsah SAP serveru jsou pro virtuální počítače Azure transparentní a jsou popsána v tématu různé dokumenty a poznámky SAP:
 
 * <https://service.sap.com/contentserver> 

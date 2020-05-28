@@ -8,12 +8,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 01/29/2020
-ms.openlocfilehash: fa7750a6e7888b6ca13c1ec32cabee9bcf803e65
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d97fae777b06625488234eb6d48a74a60a83f4d6
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81382729"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018714"
 ---
 # <a name="tutorial-extract-transform-and-load-data-by-using-azure-databricks"></a>Kurz: extrakce, transformace a načtení dat pomocí Azure Databricks
 
@@ -37,7 +37,7 @@ Tento kurz se zabývá následujícími úkony:
 > * Transformuje data v Azure Databricks.
 > * Načte data do Azure synapse.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 > [!Note]
 > Tento kurz se nedá provést pomocí **předplatného Azure free zkušební verze**.
@@ -65,7 +65,7 @@ Než začnete s tímto kurzem, dokončete tyto úkoly:
 
    * Při provádění kroků v části [získat hodnoty pro přihlášení v](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) článku Vložte ID TENANTA, ID aplikace a tajné hodnoty do textového souboru.
 
-* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ## <a name="gather-the-information-that-you-need"></a>Shromážděte informace, které potřebujete.
 
@@ -93,7 +93,7 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
 
     ![Vytvoření prostředku na Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-on-portal.png)
 
-    Pak vyberte **Analytics** > **Azure Databricks**.
+    Pak vyberte **Analytics**  >  **Azure Databricks**.
 
     ![Vytvoření Azure Databricks na Azure Portal](./media/databricks-extract-load-sql-data-warehouse/azure-databricks-resource-create.png)
 
@@ -101,7 +101,7 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
 
 2. V části **Azure Databricks služba**zadejte následující hodnoty pro vytvoření služby datacihly:
 
-    |Vlastnost  |Popis  |
+    |Vlastnost  |Description  |
     |---------|---------|
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
@@ -185,13 +185,13 @@ V této části vytvoříte v pracovním prostoru Azure Databricks Poznámkový 
    spark.conf.set("fs.azure.createRemoteFileSystemDuringInitialization", "false")
    ```
 
-6. V tomto bloku kódu Nahraďte zástupné hodnoty `<app-id>`, `<storage-account-name>` `<secret>`, `<tenant-id>`a v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte `<file-system-name>` hodnotu zástupného symbolu libovolným názvem, který chcete systému souborů poskytnout.
+6. V tomto bloku kódu nahraďte `<app-id>` `<secret>` `<tenant-id>` `<storage-account-name>` zástupné hodnoty,, a v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte `<file-system-name>` hodnotu zástupného symbolu libovolným názvem, který chcete systému souborů poskytnout.
 
    * `<app-id>`A `<secret>` jsou z aplikace, kterou jste v rámci služby Active Directory zaregistrovali jako součást vytváření instančního objektu.
 
-   * `<tenant-id>` Z vašeho předplatného.
+   * `<tenant-id>`Z vašeho předplatného.
 
-   * `<storage-account-name>` Je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
+   * `<storage-account-name>`Je název vašeho účtu úložiště Azure Data Lake Storage Gen2.
 
 7. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
 
@@ -368,9 +368,9 @@ Jak už bylo zmíněno dříve, konektor Azure synapse využívá úložiště o
    ```
 
    > [!NOTE]
-   > Tato ukázka používá příznak `forward_spark_azure_storage_credentials` , který způsobí, že Azure synapse přistupuje k datům z úložiště objektů BLOB pomocí přístupového klíče. Toto je jediná podporovaná metoda ověřování.
+   > Tato ukázka používá `forward_spark_azure_storage_credentials` příznak, který způsobí, že Azure synapse přistupuje k datům z úložiště objektů BLOB pomocí přístupového klíče. Toto je jediná podporovaná metoda ověřování.
    >
-   > Pokud je váš Blob Storage Azure omezený na výběr virtuálních sítí, vyžaduje Azure synapse [Identita spravované služby místo přístupových klíčů](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Tím dojde k chybě "Tato žádost není autorizována k provedení této operace".
+   > Pokud je váš Blob Storage Azure omezený na výběr virtuálních sítí, vyžaduje Azure synapse [Identita spravované služby místo přístupových klíčů](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Tím dojde k chybě "Tato žádost není autorizována k provedení této operace".
 
 6. Připojte se k databázi SQL a ověřte, že se zobrazí databáze s názvem **Samples**.
 

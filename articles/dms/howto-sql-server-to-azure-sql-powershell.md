@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: f63f79402b457017257f1762c6ddc7e04c0ee1af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 323d6b006d3e790a7517e90f34241976904b3ba3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650686"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021479"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Migrace SQL Server místně pro Azure SQL Database pomocí Azure PowerShell
 
@@ -109,7 +109,7 @@ $sourceConnInfo = New-AzDmsConnInfo -ServerType SQL `
   -TrustServerCertificate:$true
 ```
 
-Následující příklad ukazuje vytvoření informací o připojení pro server služby Azure SQL Database s názvem SQLAzureTarget pomocí ověřování SQL:
+Následující příklad ukazuje vytvoření informací o připojení pro server s názvem SQLAzureTarget pomocí ověřování SQL:
 
 ```powershell
 $targetConnInfo = New-AzDmsConnInfo -ServerType SQL `
@@ -131,7 +131,7 @@ $dbList = @($dbInfo1)
 
 ### <a name="create-a-project-object"></a>Vytvoření objektu projektu
 
-Nakonec můžete vytvořit projekt Azure Database Migration s názvem *MyDMSProject* , který *East US* se nachází `New-AzDataMigrationProject` v východní USA pomocí a přidat dříve vytvořená zdrojová a cílová připojení a seznam databází, které chcete migrovat.
+Nakonec můžete vytvořit projekt Azure Database Migration s názvem *MyDMSProject* , který se nachází v *východní USA* pomocí `New-AzDataMigrationProject` a přidat dříve vytvořená zdrojová a cílová připojení a seznam databází, které chcete migrovat.
 
 ```powershell
 $project = New-AzDataMigrationProject -ResourceGroupName myResourceGroup `

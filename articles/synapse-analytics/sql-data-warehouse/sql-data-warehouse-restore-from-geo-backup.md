@@ -11,12 +11,12 @@ ms.date: 07/12/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 7e0980a9142dc966916d5a4df898ea53b0ddeae5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99a6373c314530741bbff67a4573005ff2523d6d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745078"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020213"
 ---
 # <a name="geo-restore-for-sql-pool"></a>Geografické obnovení pro fond SQL
 
@@ -26,7 +26,7 @@ V tomto článku se naučíte, jak obnovit svůj fond SQL z geografické zálohy
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**Ověřte svoji kapacitu DTU.** Každý fond SQL je hostovaný SQL serverem (například myserver.database.windows.net), který má výchozí kvótu DTU. Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
+**Ověřte svoji kapacitu DTU.** Každý fond SQL je hostovaný [logickým SQL serverem](../../azure-sql/database/logical-servers.md) (například MyServer.Database.Windows.NET), který má výchozí kvótu DTU. Ověřte, zda má systém SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="restore-from-an-azure-geographical-region-through-powershell"></a>Obnovení z geografické oblasti Azure prostřednictvím PowerShellu
 
@@ -49,7 +49,7 @@ K obnovení z geografické zálohy použijte rutinu [Get-AzSqlDatabaseGeoBackup]
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
-$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different logical server.
+$TargetResourceGroupName="<YourTargetResourceGroupName>" # Restore to a different server.
 $TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"  
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
@@ -81,7 +81,7 @@ Postupujte podle kroků uvedených níže a obnovte fond SQL z geografické zál
 
    ![Nový datový sklad](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new.png)
 
-3. Klikněte na **databáze** a pak * * Azure synapse Analytics (dřív SQL DW) * *.
+3. Klikněte na **databáze** a potom na **Azure synapse Analytics (dřív SQL DW)**.
 
    ![Nový DW 2](./media/sql-data-warehouse-restore-from-geo-backup/georestore-new-02.png)
 

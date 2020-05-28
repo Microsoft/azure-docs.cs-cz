@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: genli
-ms.openlocfilehash: becbf88aeda164f7d916cbc1f1ace89262cc1a3f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11d1a4743f9aaf70d96e6cfd1f22ff31def440f1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77921619"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021258"
 ---
 # <a name="reset-local-windows-password-for-azure-vm-offline"></a>Resetování místního hesla Windows pro offline virtuální počítač Azure
 Místní heslo pro Windows virtuálního počítače v Azure můžete resetovat pomocí [Azure Portal nebo Azure PowerShell](reset-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) za předpokladu, že je nainstalovaný Agent hosta Azure. Tato metoda je hlavním způsobem, jak resetovat heslo pro virtuální počítač Azure. Pokud narazíte na problémy s agentem hosta Azure nereaguje nebo se nedaří nainstalovat po nahrání vlastní image, můžete heslo pro Windows resetovat ručně. Tento článek podrobně popisuje, jak resetovat heslo místního účtu připojením virtuálního disku zdrojového operačního systému k jinému virtuálnímu počítači. Kroky popsané v tomto článku se nevztahují na řadiče domény se systémem Windows. 
@@ -45,7 +45,7 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
 
 1. Položte si snímek disku s operačním systémem ovlivněného virtuálního počítače, vytvořte disk ze snímku a pak ho připojte k virtuálnímu počítači pro odstraňování potíží. Další informace najdete v tématu [řešení potíží s virtuálním počítačem s Windows připojením disku s operačním systémem k virtuálnímu počítači pro obnovení pomocí Azure Portal](troubleshoot-recovery-disks-portal-windows.md).
 2. Připojte se k virtuálnímu počítači pro řešení potíží pomocí vzdálené plochy.
-3. `\Windows\System32\GroupPolicy` Vytvořte `gpt.ini` na jednotce zdrojového virtuálního počítače (pokud existuje GPT. ini, přejmenujte na GPT. ini. bak):
+3. Vytvořte `gpt.ini` na `\Windows\System32\GroupPolicy` jednotce zdrojového virtuálního počítače (pokud existuje GPT. ini, přejmenujte na GPT. ini. bak):
    
    > [!WARNING]
    > Ujistěte se, že jste omylem nevytvořili následující soubory v C:\Windows, což je jednotka operačního systému pro virtuální počítač pro řešení potíží. Na jednotce operačního systému vytvořte následující soubory pro zdrojový virtuální počítač, který je připojený jako datový disk.
@@ -61,7 +61,7 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
      
      ![Vytvořit GPT. ini](./media/reset-local-password-without-agent/create-gpt-ini.png)
 
-4. Vytvořte `scripts.ini` v `\Windows\System32\GroupPolicy\Machines\Scripts\`. Ujistěte se, že jsou zobrazené skryté složky. V `Machine` případě potřeby vytvořte složky nebo `Scripts` .
+4. Vytvořte `scripts.ini` v `\Windows\System32\GroupPolicy\Machine\Scripts\` . Ujistěte se, že jsou zobrazené skryté složky. V případě potřeby vytvořte `Machine` složky nebo `Scripts` .
    
    * Do `scripts.ini` souboru, který jste vytvořili, přidejte následující řádky:
      
@@ -115,9 +115,9 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
      
      ![Odstranit existující virtuální počítač](./media/reset-local-password-without-agent/delete-vm-classic.png)
 
-2. Připojte disk s operačním systémem zdrojového virtuálního počítače k virtuálnímu počítači pro řešení potíží. Virtuální počítač pro řešení potíží se musí nacházet ve stejné oblasti jako disk s operačním systémem zdrojového virtuálního `West US`počítače (například):
+2. Připojte disk s operačním systémem zdrojového virtuálního počítače k virtuálnímu počítači pro řešení potíží. Virtuální počítač pro řešení potíží se musí nacházet ve stejné oblasti jako disk s operačním systémem zdrojového virtuálního počítače (například `West US` ):
    
-   1. Vyberte virtuální počítač pro řešení potíží ve Azure Portal. Klikněte na *disky* | *připojit existující*:
+   1. Vyberte virtuální počítač pro řešení potíží ve Azure Portal. Klikněte na *disky*  |  *připojit existující*:
      
       ![Připojit existující disk](./media/reset-local-password-without-agent/disks-attach-existing-classic.png)
      
@@ -149,10 +149,10 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
      
       ![Zobrazit připojený datový disk](./media/reset-local-password-without-agent/troubleshooting-vm-file-explorer-classic.png)
 
-4. Vytvořte `gpt.ini` v `\Windows\System32\GroupPolicy` jednotce zdrojového virtuálního počítače (Pokud `gpt.ini` existuje, přejmenujte na `gpt.ini.bak`):
+4. Vytvořte `gpt.ini` v `\Windows\System32\GroupPolicy` jednotce zdrojového virtuálního počítače (Pokud `gpt.ini` existuje, přejmenujte na `gpt.ini.bak` ):
    
    > [!WARNING]
-   > Ujistěte se, že jste v `C:\Windows`nástroji nechtěně nevytvořili následující soubory, a to na jednotce operačního systému pro virtuální počítač pro řešení potíží. Na jednotce operačního systému vytvořte následující soubory pro zdrojový virtuální počítač, který je připojený jako datový disk.
+   > Ujistěte se, že jste v nástroji nechtěně nevytvořili následující soubory, a to `C:\Windows` na jednotce operačního systému pro virtuální počítač pro řešení potíží. Na jednotce operačního systému vytvořte následující soubory pro zdrojový virtuální počítač, který je připojený jako datový disk.
    
    * Do `gpt.ini` souboru, který jste vytvořili, přidejte následující řádky:
      
@@ -165,7 +165,7 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
      
      ![Vytvořit GPT. ini](./media/reset-local-password-without-agent/create-gpt-ini-classic.png)
 
-5. Vytvořte `scripts.ini` v `\Windows\System32\GroupPolicy\Machines\Scripts\`. Ujistěte se, že jsou zobrazené skryté složky. V `Machine` případě potřeby vytvořte složky nebo `Scripts` .
+5. Vytvořte `scripts.ini` v `\Windows\System32\GroupPolicy\Machines\Scripts\` . Ujistěte se, že jsou zobrazené skryté složky. V případě potřeby vytvořte `Machine` složky nebo `Scripts` .
    
    * Do `scripts.ini` souboru, který jste vytvořili, přidejte následující řádky:
 
@@ -218,7 +218,7 @@ Před pokusem o provedení následujících kroků se vždycky pokuste resetovat
     * Výsledkem`%windir%\System32\GroupPolicy\Machine\Scripts`
       * odebrány`scripts.ini`
     * Výsledkem`%windir%\System32\GroupPolicy`
-      * odebrat `gpt.ini` (Pokud `gpt.ini` existovalo dřív a přejmenovali jste `gpt.ini.bak`ho na, `.bak` přejmenujte `gpt.ini`soubor zpátky na)
+      * odebrat `gpt.ini` (Pokud `gpt.ini` existovalo dřív a přejmenovali jste ho na `gpt.ini.bak` , přejmenujte `.bak` soubor zpátky na `gpt.ini` )
 
 ## <a name="next-steps"></a>Další kroky
 Pokud se stále nemůžete připojit pomocí vzdálené plochy, přečtěte si [příručku pro odstraňování potíží s RDP](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). [Podrobný průvodce odstraňováním potíží s](detailed-troubleshoot-rdp.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) protokolem RDP hledá místo konkrétních kroků postupy řešení potíží. Můžete také [otevřít žádost o podporu Azure](https://azure.microsoft.com/support/options/) pro praktickou pomoc.

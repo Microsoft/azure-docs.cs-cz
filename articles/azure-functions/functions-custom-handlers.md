@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.author: cshoe
 ms.date: 3/18/2020
 ms.topic: article
-ms.openlocfilehash: 5abc216e182d7becd9d6f42e0f566ee96d09c2a5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f0b738f394c4a544ddb31e25b4570890ccfa9235
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79479251"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995849"
 ---
 # <a name="azure-functions-custom-handlers-preview"></a>Azure Functions vlastní obslužné rutiny (Preview)
 
@@ -20,9 +20,9 @@ Vlastní obslužné rutiny jsou jednoduché webové servery, které přijímají
 
 Vlastní obslužné rutiny se nejlépe hodí pro situace, kdy chcete:
 
-- Implementujte aplikaci Functions v jazyce, který překračuje oficiálně podporované jazyky.
-- Implementace Function App v jazykové verzi nebo modulu runtime není ve výchozím nastavení podporován
-- Mít podrobnou kontrolu nad prostředím provádění aplikace
+- Implementujte aplikaci Function App v jazyce, který není oficiálně podporován.
+- Implementujte aplikaci Function App v jazykové verzi nebo modul runtime, který není ve výchozím nastavení podporován.
+- Poskytněte přesnější kontrolu nad spouštěcím prostředím aplikace Function App.
 
 S vlastními obslužnými rutinami jsou všechny [triggery a vstupní a výstupní vazby](./functions-triggers-bindings.md) podporovány prostřednictvím [sad rozšíření](./functions-bindings-register.md).
 
@@ -73,7 +73,7 @@ Vlastní obslužná rutina je definována konfigurací souboru *Host. JSON* s po
 }
 ```
 
-`httpWorker` Oddíl odkazuje na cíl definovaný v `defaultExecutablePath`. Cíl spuštění může být buď příkaz, spustitelný soubor nebo soubor, kde je webový server implementován.
+`httpWorker`Oddíl odkazuje na cíl definovaný v `defaultExecutablePath` . Cíl spuštění může být buď příkaz, spustitelný soubor nebo soubor, kde je webový server implementován.
 
 Pro skriptované aplikace `defaultExecutablePath` odkazují na modul runtime skriptovacího jazyka a `defaultWorkerPath` odkazuje na umístění souboru skriptu. Následující příklad ukazuje, jak je aplikace JavaScriptu v Node. js nakonfigurovaná jako vlastní obslužná rutina.
 
@@ -123,11 +123,11 @@ Datová část požadavku pro funkce čistého protokolu HTTP je nezpracované d
 
 Všechny ostatní typy funkcí, které zahrnují vstupní, výstupní vazby nebo aktivované prostřednictvím jiného zdroje událostí než HTTP, mají vlastní datovou část požadavku.
 
-Následující kód představuje ukázkovou datovou část požadavku. Datová část obsahuje strukturu JSON se dvěma členy: `Data` a. `Metadata`
+Následující kód představuje ukázkovou datovou část požadavku. Datová část obsahuje strukturu JSON se dvěma členy: `Data` a `Metadata` .
 
-`Data` Člen obsahuje klíče, které odpovídají vstupům a názvům triggerů, jak jsou definovány v poli Bindings v souboru *Function. JSON* .
+`Data`Člen obsahuje klíče, které odpovídají vstupům a názvům triggerů, jak jsou definovány v poli Bindings v souboru *Function. JSON* .
 
-`Metadata` Člen zahrnuje [metadata generovaná ze zdroje události](./functions-bindings-expressions-patterns.md#trigger-metadata).
+`Metadata`Člen zahrnuje [metadata generovaná ze zdroje události](./functions-bindings-expressions-patterns.md#trigger-metadata).
 
 S ohledem na vazby definované v následujícím souboru *Function. JSON* :
 
@@ -181,7 +181,7 @@ Podle konvencí jsou odpovědi na funkce naformátované jako páry klíč/hodno
 
 | <nobr>Klíč datové části</nobr>   | Datový typ | Poznámky                                                      |
 | ------------- | --------- | ------------------------------------------------------------ |
-| `Outputs`     | JSON      | Uchovává hodnoty odpovědí definované `bindings` polem *Function. JSON* .<br /><br />Pokud je například funkce nakonfigurovaná s výstupní vazbou úložiště objektů BLOB s názvem "blob", pak `Outputs` obsahuje klíč s názvem `blob`, který je nastavený na hodnotu objektu BLOB. |
+| `Outputs`     | JSON      | Uchovává hodnoty odpovědí definované `bindings` polem *Function. JSON* .<br /><br />Pokud je například funkce nakonfigurovaná s výstupní vazbou úložiště objektů BLOB s názvem "blob", pak `Outputs` obsahuje klíč s názvem `blob` , který je nastavený na hodnotu objektu BLOB. |
 | `Logs`        | pole     | Zprávy se zobrazí v protokolech vyvolání funkcí.<br /><br />Při spuštění v Azure se zprávy zobrazí v Application Insights. |
 | `ReturnValue` | řetězec    | Slouží k poskytnutí odpovědi, pokud je výstup nakonfigurován jako `$return` v souboru *Function. JSON* . |
 
@@ -196,7 +196,7 @@ Vlastní obslužné rutiny se dají implementovat v jakémkoli jazyce, který po
 
 ## <a name="http-only-function"></a>Funkce pouze HTTP
 
-Následující příklad ukazuje, jak nakonfigurovat funkci aktivované protokolem HTTP bez dalších vazeb nebo výstupů. Scénář implementovaný v tomto příkladu obsahuje funkci s názvem `http` , která přijímá `GET` nebo. `POST`
+Následující příklad ukazuje, jak nakonfigurovat funkci aktivované protokolem HTTP bez dalších vazeb nebo výstupů. Scénář implementovaný v tomto příkladu obsahuje funkci s názvem `http` , která přijímá `GET` nebo `POST` .
 
 Následující fragment kódu představuje způsob, jakým se skládá požadavek na funkci.
 
@@ -233,7 +233,7 @@ Ve složce s názvem *http*se v souboru *Function. JSON* NAkonfiguruje funkce ak
 }
 ```
 
-Funkce je nakonfigurována tak, aby `GET` přijímala `POST` požadavky i i výsledná hodnota je poskytnuta prostřednictvím argumentu `res`s názvem.
+Funkce je nakonfigurována tak, aby přijímala `GET` požadavky i i `POST` Výsledná hodnota je poskytnuta prostřednictvím argumentu s názvem `res` .
 
 V kořenovém adresáři aplikace je soubor *Host. JSON* nakonfigurovaný tak, aby spouštěl Node. js a odkazoval na `server.js` soubor.
 
@@ -274,14 +274,14 @@ app.post("/hello", (req, res) => {
 });
 ```
 
-V tomto příkladu se Express používá k vytvoření webového serveru pro zpracování událostí HTTP a je nastaven na naslouchání požadavkům přes `FUNCTIONS_HTTPWORKER_PORT`.
+V tomto příkladu se Express používá k vytvoření webového serveru pro zpracování událostí HTTP a je nastaven na naslouchání požadavkům přes `FUNCTIONS_HTTPWORKER_PORT` .
 
-Funkce je definována v cestě k `/hello`. `GET`požadavky jsou zpracovávány vrácením jednoduchého objektu JSON a `POST` požadavky mají přístup k textu žádosti prostřednictvím `req.body`.
+Funkce je definována v cestě k `/hello` . `GET`požadavky jsou zpracovávány vrácením jednoduchého objektu JSON a `POST` požadavky mají přístup k textu žádosti prostřednictvím `req.body` .
 
-Trasa pro funkci Order tady je `/hello` a není `/api/hello` , protože hostitel Functions hostuje požadavek na vlastní obslužnou rutinu.
+Trasa pro funkci Order tady je `/hello` a není, `/api/hello` protože hostitel Functions hostuje požadavek na vlastní obslužnou rutinu.
 
 >[!NOTE]
->`FUNCTIONS_HTTPWORKER_PORT` Nejedná se o veřejný port, který se používá k volání funkce. Tento port je používán hostitelem Functions pro volání vlastní obslužné rutiny.
+>Nejedná se `FUNCTIONS_HTTPWORKER_PORT` o veřejný port, který se používá k volání funkce. Tento port je používán hostitelem Functions pro volání vlastní obslužné rutiny.
 
 ## <a name="function-with-bindings"></a>Funkce s vazbami
 
@@ -379,9 +379,9 @@ app.post("/order", (req, res) => {
 });
 ```
 
-V tomto příkladu se Express používá k vytvoření webového serveru pro zpracování událostí HTTP a je nastaven na naslouchání požadavkům přes `FUNCTIONS_HTTPWORKER_PORT`.
+V tomto příkladu se Express používá k vytvoření webového serveru pro zpracování událostí HTTP a je nastaven na naslouchání požadavkům přes `FUNCTIONS_HTTPWORKER_PORT` .
 
-Funkce je definována v cestě k `/order` .  Trasa pro funkci Order tady je `/order` a není `/api/order` , protože hostitel Functions hostuje požadavek na vlastní obslužnou rutinu.
+Funkce je definována v cestě k `/order` .  Trasa pro funkci Order tady je `/order` a není, `/api/order` protože hostitel Functions hostuje požadavek na vlastní obslužnou rutinu.
 
 Po `POST` odeslání požadavků do této funkce jsou data zveřejněna prostřednictvím několika bodů:
 
@@ -390,7 +390,7 @@ Po `POST` odeslání požadavků do této funkce jsou data zveřejněna prostře
 
 Odpověď funkce je formátována na dvojici klíč/hodnota, kde `Outputs` člen obsahuje hodnotu JSON, kde klíče odpovídají výstupům, jak jsou definovány v souboru *Function. JSON* .
 
-Když je `message` nastavení rovno zprávě, která byla součástí z požadavku, a `res` k očekávané odpovědi HTTP, tato funkce vypíše zprávu do Queue Storage a vrátí odpověď HTTP.
+Když je nastavení `message` rovno zprávě, která byla součástí z požadavku, a `res` k očekávané odpovědi HTTP, tato funkce vypíše zprávu do Queue Storage a vrátí odpověď HTTP.
 
 ## <a name="debugging"></a>Ladění
 

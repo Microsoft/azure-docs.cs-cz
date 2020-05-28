@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/05/2020
-ms.openlocfilehash: 466c170985715be52a90d579c19ca23aefefe2e5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e40367e07fcda572cca73a3c01d9036e322c85c
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77067393"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020094"
 ---
 # <a name="apache-ambari-usage-in-azure-hdinsight"></a>Použití Apache Ambari v Azure HDInsight
 
@@ -56,7 +56,7 @@ Toto je pořadí spuštění služby při spuštění:
 
 ## <a name="ambari-database"></a>Databáze Ambari
 
-HDInsight vytvoří v digestoři SQL Azure databázi, která bude sloužit jako databáze pro server Ambari. Výchozí [úroveň služby je S0](../sql-database/sql-database-elastic-pool-scale.md).
+HDInsight vytvoří v digestoři SQL Azure databázi, která bude sloužit jako databáze pro server Ambari. Výchozí [úroveň služby je S0](../azure-sql/database/elastic-pool-scale.md).
 
 V případě jakéhokoli clusteru s počtem pracovních uzlů, který je větší než 16 při vytváření clusteru, je S2 vrstva služby databáze.
 
@@ -75,6 +75,6 @@ Pokud jste se nedostali k problému nebo jste nedokázali problém vyřešit, p�
 
 * Získejte odpovědi od odborníků na Azure prostřednictvím [podpory komunity Azure](https://azure.microsoft.com/support/community/).
 
-* Připojte se [@AzureSupport](https://twitter.com/azuresupport) k oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
+* Připojte se k [@AzureSupport](https://twitter.com/azuresupport) oficiálnímu Microsoft Azuremu účtu pro zlepšení prostředí pro zákazníky. Propojování komunity Azure se správnými zdroji informací: odpovědi, podpora a odborníci.
 
 * Pokud potřebujete další pomoc, můžete odeslat žádost o podporu z [Azure Portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). V řádku nabídek vyberte **Podpora** a otevřete centrum pro **pomoc a podporu** . Podrobnější informace najdete v tématu [jak vytvořit žádost o podporu Azure](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Přístup ke správě předplatných a fakturační podpoře jsou součástí vašeho předplatného Microsoft Azure a technická podpora je poskytována prostřednictvím některého z [plánů podpory Azure](https://azure.microsoft.com/support/plans/).

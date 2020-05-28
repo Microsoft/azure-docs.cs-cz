@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a0fbed1f4dd62b2d75d39f475d2fe124c55a2b97
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 011904d7ce14f346b678c753c10a8f3258730ee1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75645799"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014515"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server nasazení Azure Virtual Machines DBMS pro SAP NetWeaver
 
@@ -281,9 +281,9 @@ ms.locfileid: "75645799"
 [virtual-machines-sizes-windows]:../../windows/sizes.md
 [virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
 [virtual-machines-windows-classic-ps-sql-int-listener]:./../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:./../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[virtual-machines-sql-server-infrastructure-services]:./../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[virtual-machines-sql-server-performance-best-practices]:./../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+[virtual-machines-sql-server-infrastructure-services]:../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+[virtual-machines-sql-server-performance-best-practices]:../../../azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/eresources/templates/sql-server-2014-alwayson-existing-vnet-and-ad/
@@ -332,7 +332,7 @@ V IaaS konkrétní informace, které byste měli znát, byste měli před pokra�
 
 
 ## <a name="recommendations-on-vmvhd-structure-for-sap-related-sql-server-deployments"></a>Doporučení ke struktuře virtuálních počítačů/VHD pro nasazení SQL Server souvisejících s SAP
-V souladu s obecným popisem SQL Server spustitelné soubory, které by se měly nacházet nebo instalovat do systémové jednotky disku s operačním systémem virtuálního počítače (\)jednotka C:.  Většinou se většina SQL Server systémových databází nevyužívá na vysoké úrovni úloh SAP NetWeaver. V důsledku toho mohou systémové databáze SQL Server (Master, msdb a model) zůstat na C:\ i jednotka. Výjimka by měla být tempdb, která v případě úloh SAP může vyžadovat buď vyšší objem dat, nebo vstupně-výstupní operace. Vstupně-výstupní úlohy, které by neměly být aplikovány na virtuální pevný disk operačního systému. U takových systémů je třeba provést následující kroky:
+V souladu s obecným popisem SQL Server spustitelné soubory, které by se měly nacházet nebo instalovat do systémové jednotky disku s operačním systémem virtuálního počítače (jednotka C: \) .  Většinou se většina SQL Server systémových databází nevyužívá na vysoké úrovni úloh SAP NetWeaver. V důsledku toho mohou systémové databáze SQL Server (Master, msdb a model) zůstat na C:\ i jednotka. Výjimka by měla být tempdb, která v případě úloh SAP může vyžadovat buď vyšší objem dat, nebo vstupně-výstupní operace. Vstupně-výstupní úlohy, které by neměly být aplikovány na virtuální pevný disk operačního systému. U takových systémů je třeba provést následující kroky:
 
 
 * U všech typů virtuálních počítačů certifikovaných pomocí SAP (viz poznámku SAP – Poznámka [1928533]), s výjimkou virtuálních počítačů řady a-Series, dat tempdb a souborů protokolů, se dají umístit do netrvalého D:\u. disky. 
@@ -439,7 +439,7 @@ Pro naprosto celou řadu zákazníků SAP neexistovala možnost začít znovu a 
 ## <a name="using-a-sql-server-image-out-of-the-microsoft-azure-marketplace"></a><a name="1b353e38-21b3-4310-aeb6-a77e7c8e81c8"></a>Použití bitové kopie SQL Server mimo Microsoft Azure Marketplace
 Microsoft nabízí virtuální počítače ve Azure Marketplace, které už obsahují verze SQL Server. Pro zákazníky SAP, kteří vyžadují licence pro SQL Server a Windows, může být použití těchto imagí příležitostí k povýšení potřeby licencí, a to vyvoláním virtuálních počítačů s SQL Server již nainstalovanými. Aby bylo možné používat takové obrázky pro SAP, je třeba provést následující:
 
-* Verze SQL Server bez vyhodnocení získají vyšší náklady než virtuální počítač, který je jenom Windows nasazený z Azure Marketplace. V těchto článcích můžete porovnat ceny: <https://azure.microsoft.com/pricing/details/virtual-machines/windows/> a <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/>. 
+* Verze SQL Server bez vyhodnocení získají vyšší náklady než virtuální počítač, který je jenom Windows nasazený z Azure Marketplace. V těchto článcích můžete porovnat ceny: <https://azure.microsoft.com/pricing/details/virtual-machines/windows/> a <https://azure.microsoft.com/pricing/details/virtual-machines/sql-server-enterprise/> . 
 * Můžete použít jenom SQL Server verze, které SAP podporuje.
 * Kolace instance SQL Server, která je nainstalovaná ve virtuálních počítačích nabízených v Azure Marketplace, není kolace SAP NetWeaver vyžaduje spuštění instance SQL Server. Kolaci můžete změnit, i když s pokyny v následující části.
 
@@ -448,7 +448,7 @@ Vzhledem k tomu, že SQL Server imagí v Azure Marketplace nejsou nastavené tak
 
 * Otevřete okno příkazového řádku systému Windows jako správce.
 * Změňte adresář na C:\Program Files\Microsoft SQL Server\110\Setup Bootstrap\SQLServer2012.
-* Spusťte příkaz: Setup. exe/QUIET za akci = REBUILDDATABASE/INSTANCENAME = MSSQLSERVER/SQLSYSADMINACCOUNTS =`<local_admin_account_name`>/SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
+* Spusťte příkaz: Setup. exe/QUIET za akci = REBUILDDATABASE/INSTANCENAME = MSSQLSERVER/SQLSYSADMINACCOUNTS = `<local_admin_account_name` >/SQLCOLLATION = SQL_Latin1_General_Cp850_BIN2   
   * `<local_admin_account_name`> je účet, který byl definován jako účet správce při prvním nasazení virtuálního počítače pomocí galerie.
 
 Proces by měl trvat jen několik minut. Chcete-li se ujistit, zda byl krok dokončen se správným výsledkem, proveďte následující kroky:

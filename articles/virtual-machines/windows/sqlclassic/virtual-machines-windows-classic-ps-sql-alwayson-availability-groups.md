@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f20d79ea353830b41290c7b91d8d1de2b1b3abe
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978142"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014855"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Konfigurace skupiny dostupnosti Always On na virtuálním počítači Azure pomocí PowerShellu
 > [!div class="op_single_selector"]
@@ -27,7 +27,7 @@ ms.locfileid: "75978142"
 > * [Klasický: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
-Než začnete, zvažte, že teď můžete tuto úlohu dokončit v modelu Azure Resource Manager. Pro nová nasazení doporučujeme model Azure Resource Manager. Viz [SQL Server skupiny dostupnosti Always On na virtuálních počítačích Azure](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md).
+Než začnete, zvažte, že teď můžete tuto úlohu dokončit v modelu Azure Resource Manager. Pro nová nasazení doporučujeme model Azure Resource Manager. Viz [SQL Server skupiny dostupnosti Always On na virtuálních počítačích Azure](../../../azure-sql/virtual-machines/windows/availability-group-overview.md).
 
 > [!IMPORTANT]
 > Doporučujeme, aby většina nových nasazení používala model Správce prostředků. Azure má dva různé modely nasazení pro vytváření prostředků a práci s nimi: [Správce prostředků a Classic](../../../azure-resource-manager/management/deployment-models.md). Tento článek se věnuje použití klasického modelu nasazení.
@@ -158,7 +158,7 @@ V tomto kurzu se dozvíte, jaké kroky potřebujete k nastavení výše uvedené
    * **Add-AzureDataDisk** přidá datový disk, který budete používat k ukládání dat služby Active Directory, s možností ukládání do mezipaměti nastavenou na žádné.
    * **New-AzureVM** vytvoří novou cloudovou službu a vytvoří nový virtuální počítač Azure v nové cloudové službě.
 
-7. Počkejte na úplné zřízení nového virtuálního počítače a Stáhněte soubor vzdálené plochy do pracovního adresáře. Vzhledem k tomu, že nový virtuální počítač Azure trvá zřízení delší dobu `while` , bude smyčka pokračovat v dotazování nového virtuálního počítače, dokud nebude připraven k použití.
+7. Počkejte na úplné zřízení nového virtuálního počítače a Stáhněte soubor vzdálené plochy do pracovního adresáře. Vzhledem k tomu, že nový virtuální počítač Azure trvá zřízení delší dobu, bude `while` smyčka pokračovat v dotazování nového virtuálního počítače, dokud nebude připraven k použití.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -354,7 +354,7 @@ Server řadiče domény se teď úspěšně zřídil. Dále nakonfigurujete dom�
    * **Set-AzureSubnet** umístí virtuální počítač do back-Subnet.
    * **Add-AzureEndpoint** přidá koncové body přístupu, aby klientské aplikace mohly přistupovat k těmto instancím služby SQL Server Services na internetu. K ContosoSQL1 a ContosoSQL2 jsou přidány různé porty.
    * **New-AzureVM** vytvoří nový virtuální počítač SQL Server ve stejné cloudové službě jako ContosoQuorum. Virtuální počítače musíte umístit do stejné cloudové služby, pokud chcete, aby byly ve stejné skupině dostupnosti.
-4. Počkejte, až se všechny virtuální počítače úplně zřídí, a pro každý z nich Stáhněte svůj soubor vzdálené plochy do pracovního adresáře. Cyklická `for` smyčka prochází třemi novými virtuálními počítači a provádí příkazy uvnitř složených závorek nejvyšší úrovně pro každé z nich.
+4. Počkejte, až se všechny virtuální počítače úplně zřídí, a pro každý z nich Stáhněte svůj soubor vzdálené plochy do pracovního adresáře. `for`Cyklická smyčka prochází třemi novými virtuálními počítači a provádí příkazy uvnitř složených závorek nejvyšší úrovně pro každé z nich.
 
         Foreach ($VM in $VMs = Get-AzureVM -ServiceName $sqlServiceName)
         {
@@ -481,7 +481,7 @@ Nakonec budete připraveni ke konfiguraci skupiny dostupnosti. Pomocí zprostře
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Stopped,$timeout)
         $svc2.Start();
         $svc2.WaitForStatus([System.ServiceProcess.ServiceControllerStatus]::Running,$timeout)
-7. Stáhněte si **CreateAzureFailoverCluster. ps1** z [vytváření clusteru s podporou převzetí služeb při selhání pro skupiny dostupnosti Always On na virtuálním počítači Azure](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) do místního pracovního adresáře. Pomocí tohoto skriptu vám pomůžete vytvořit funkční cluster s podporou převzetí služeb při selhání. Důležité informace o tom, jak Windows Clustering s podporou převzetí služeb při selhání spolupracuje se sítí Azure, najdete v tématu [Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-high-availability-dr.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+7. Stáhněte si **CreateAzureFailoverCluster. ps1** z [vytváření clusteru s podporou převzetí služeb při selhání pro skupiny dostupnosti Always On na virtuálním počítači Azure](https://gallery.technet.microsoft.com/scriptcenter/Create-WSFC-Cluster-for-7c207d3a) do místního pracovního adresáře. Pomocí tohoto skriptu vám pomůžete vytvořit funkční cluster s podporou převzetí služeb při selhání. Důležité informace o tom, jak Windows Clustering s podporou převzetí služeb při selhání spolupracuje se sítí Azure, najdete v tématu [Vysoká dostupnost a zotavení po havárii pro SQL Server v Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 8. Přejděte do pracovního adresáře a vytvořte cluster s podporou převzetí služeb při selhání se staženým skriptem.
 
         Set-ExecutionPolicy Unrestricted -Force
@@ -567,4 +567,4 @@ Nakonec budete připraveni ke konfiguraci skupiny dostupnosti. Pomocí zprostře
 ## <a name="next-steps"></a>Další kroky
 Nyní jste úspěšně nasadili SQL Server vždy k vytvoření skupiny dostupnosti v Azure. Pokud chcete pro tuto skupinu dostupnosti nakonfigurovat naslouchací proces, přečtěte si téma [Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
 
-Další informace o používání SQL Server v Azure najdete v článku [SQL Server na virtuálních počítačích Azure](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Další informace o používání SQL Server v Azure najdete v článku [SQL Server na virtuálních počítačích Azure](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).

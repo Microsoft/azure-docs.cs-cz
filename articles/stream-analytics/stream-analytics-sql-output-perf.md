@@ -7,18 +7,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/18/2019
-ms.openlocfilehash: 9c9ad45ac1cf59f05454cba0babff8c3b7368f72
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.openlocfilehash: 3d166c8fd893f38d587dbeff1d86530c46f89630
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839109"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018782"
 ---
 # <a name="azure-stream-analytics-output-to-azure-sql-database"></a>Azure Stream Analytics výstup do Azure SQL Database
 
 Tento článek popisuje tipy, které vám pomůžou dosáhnout lepšího výkonu propustnosti zápisu při načítání dat do SQL Azure databáze pomocí Azure Stream Analytics.
 
-Výstup SQL v Azure Stream Analytics podporuje paralelní zápis jako možnost. Tato možnost umožňuje [plně paralelní](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologie úloh, ve kterých je paralelní zápis více výstupních oddílů do cílové tabulky. Povolení této možnosti v Azure Stream Analytics ale nemusí být dostačující pro dosažení vyšší propustnosti, protože na SQL Azure konfiguraci databáze a schématu tabulky záleží výrazně. Výběr indexů, klíčů clusteringu, faktoru plnění indexu a komprese má vliv na dobu načítání tabulek. Další informace o tom, jak optimalizovat databázi SQL Azure pro zlepšení výkonu dotazů a zatížení na základě vnitřních srovnávacích testů, najdete v tématu [Průvodce výkonem služby SQL Database](../sql-database/sql-database-performance-guidance.md). Řazení zápisů není zaručené při psaní paralelně s SQL Azure databáze.
+Výstup SQL v Azure Stream Analytics podporuje paralelní zápis jako možnost. Tato možnost umožňuje [plně paralelní](stream-analytics-parallelization.md#embarrassingly-parallel-jobs) topologie úloh, ve kterých je paralelní zápis více výstupních oddílů do cílové tabulky. Povolení této možnosti v Azure Stream Analytics ale nemusí být dostačující pro dosažení vyšší propustnosti, protože na SQL Azure konfiguraci databáze a schématu tabulky záleží výrazně. Výběr indexů, klíčů clusteringu, faktoru plnění indexu a komprese má vliv na dobu načítání tabulek. Další informace o tom, jak optimalizovat databázi SQL Azure pro zlepšení výkonu dotazů a zatížení na základě vnitřních srovnávacích testů, najdete v tématu [Průvodce výkonem služby SQL Database](../azure-sql/database/performance-guidance.md). Řazení zápisů není zaručené při psaní paralelně s SQL Azure databáze.
 
 Tady je několik konfigurací v rámci každé služby, které mohou pomoci zlepšit celkovou propustnost vašeho řešení.
 
@@ -37,7 +37,7 @@ Tady je několik konfigurací v rámci každé služby, které mohou pomoci zlep
 
 - **Dělená tabulka a indexy** – použití [dělené](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes?view=sql-server-2017) tabulky SQL a dělené indexy v tabulce se stejným sloupcem, jako má klíč oddílu (například PartitionID), může významně snížit počet kolizí mezi oddíly během zápisu. V případě dělené tabulky budete muset vytvořit [funkci oddílu](https://docs.microsoft.com/sql/t-sql/statements/create-partition-function-transact-sql?view=sql-server-2017) a [schéma oddílu](https://docs.microsoft.com/sql/t-sql/statements/create-partition-scheme-transact-sql?view=sql-server-2017) v primární skupině souborů. Tím se také zvýší dostupnost stávajících dat při načítání nových dat. Omezení v/v protokolu může být dosaženo na základě počtu oddílů, které lze zvýšit upgradováním SKU.
 
-- **Vyhněte se narušení jedinečnosti klíčů** – Pokud se v protokolu Azure Stream Analyticsch aktivit zobrazí [více výstražných zpráv o porušení klíčů](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) , zajistěte, aby vaše úloha neovlivnila omezením jedinečnosti omezení, která se pravděpodobně vyskytují během případů obnovení. To je možné vyhnout nastavením možnosti [Ignorovat\_klíč duplicity\_](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) na vašich indexech.
+- **Vyhněte se narušení jedinečnosti klíčů** – Pokud se v protokolu Azure Stream Analyticsch aktivit zobrazí [více výstražných zpráv o porušení klíčů](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) , zajistěte, aby vaše úloha neovlivnila omezením jedinečnosti omezení, která se pravděpodobně vyskytují během případů obnovení. To je možné vyhnout nastavením možnosti [Ignorovat \_ \_ klíč duplicity](stream-analytics-troubleshoot-output.md#key-violation-warning-with-azure-sql-database-output) na vašich indexech.
 
 ## <a name="azure-data-factory-and-in-memory-tables"></a>Tabulky Azure Data Factory a v paměti
 

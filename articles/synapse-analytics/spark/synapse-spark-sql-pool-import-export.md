@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
-ms.openlocfilehash: 1a2b9c739f3583fb5d842bd9d3834252d542cb7d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 20b030079121104fe7bd75924a63ab0e12be9b19
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739273"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020859"
 ---
 # <a name="introduction"></a>Úvod
 
@@ -59,7 +59,7 @@ EXEC sp_addrolemember 'db_exporter', 'Mary';
 
 Příkazy import nejsou vyžadovány, jsou předem importovány pro prostředí poznámkového bloku.
 
-### <a name="transferring-data-to-or-from-a-sql-pool-in-the-logical-server-dw-instance-attached-with-the-workspace"></a>Přenos dat do nebo z fondu SQL na logickém serveru (instance DW) připojené k pracovnímu prostoru
+### <a name="transferring-data-to-or-from-a-sql-pool-attached-with-the-workspace"></a>Přenos dat do nebo z fondu SQL připojeném k pracovnímu prostoru
 
 > [!NOTE]
 > **V prostředí poznámkových blocích nejsou importy nutné.**
@@ -92,7 +92,7 @@ df.write.sqlanalytics("[DBName].[Schema].[TableName]", Constants.EXTERNAL)
 
 Ověřování pro úložiště a SQL Server je dokončeno.
 
-### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-in-a-logical-server-outside-the-workspace"></a>Pokud přenášíte data do nebo z fondu nebo databáze SQL na logickém serveru mimo pracovní prostor
+### <a name="if-you-are-transferring-data-to-or-from-a-sql-pool-or-database-outside-the-workspace"></a>Pokud přenášíte data do nebo z fondu nebo databáze SQL mimo pracovní prostor
 
 > [!NOTE]
 > V prostředí poznámkových blocích nejsou importy nutné.

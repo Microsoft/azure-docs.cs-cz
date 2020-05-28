@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 14849dd1f68f281009808d1bd1dc1cae62927ab4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 003ee13220e9e8aae252e1a976d579beac870052
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594232"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015008"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Migrace úloh podregistru Azure HDInsight 3,6 do HDInsight 4,0
 
@@ -34,7 +34,7 @@ Jednou z výhod podregistru je schopnost exportovat metadata do externí databá
 Tabulky kyselin HDInsight 3,6 a HDInsight 4,0 rozumějí rozdíly v KYSELosti odlišně. Jediná akce požadovaná před migrací je spuštění hlavní komprimace proti každé tabulce KYSELosti v clusteru 3,6. Podrobnosti o komprimaci najdete v [příručce k jazyku pro podregistr](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+DDL#LanguageManualDDL-AlterTable/Partition/Compact) .
 
 ### <a name="2-copy-sql-database"></a>2. kopírování SQL Database
-Vytvořte novou kopii vašich externích metastore. Pokud používáte externí metastore, je jedním z bezpečných a snadných způsobů, jak vytvořit kopii metastore, je [obnovit databázi](../../sql-database/sql-database-recovery-using-backups.md#point-in-time-restore) s jiným názvem pomocí funkce SQL Database obnovení.  Další informace o připojení externích metastore ke clusteru HDInsight najdete v tématu [použití externích úložišť metadat ve službě Azure HDInsight](../hdinsight-use-external-metadata-stores.md) .
+Vytvořte novou kopii vašich externích metastore. Pokud používáte externí metastore, je jedním z bezpečných a snadných způsobů, jak vytvořit kopii metastore, je [obnovit databázi](../../azure-sql/database/recovery-using-backups.md#point-in-time-restore) s jiným názvem pomocí funkce SQL Database obnovení.  Další informace o připojení externích metastore ke clusteru HDInsight najdete v tématu [použití externích úložišť metadat ve službě Azure HDInsight](../hdinsight-use-external-metadata-stores.md) .
 
 ### <a name="3-upgrade-metastore-schema"></a>3. upgrade schématu metastore
 Po dokončení **kopírování** metastore spusťte skript upgradu schématu v [akci skriptu](../hdinsight-hadoop-customize-cluster-linux.md) v existujícím clusteru HDInsight 3,6 a upgradujte nový metastore na schéma pro podregistr 3. (Tento krok nevyžaduje připojení nového metastore ke clusteru.) To umožňuje připojení databáze jako HDInsight 4,0 metastore.
@@ -103,7 +103,7 @@ Clustery HDInsight 3,6 a 4,0 musí používat stejný účet úložiště.
 >
 > * Po dokončení tohoto skriptu se předpokládá, že původní cluster se už nebude používat pro přístup ke kterékoli z tabulek nebo databází, na které se odkazuje ve skriptu.
 >
-> * Všechny spravované tabulky se stanou transakčními v HDInsight 4,0. Volitelně můžete zachovat netransakční tabulku tak, že data exportujete do externí tabulky pomocí vlastnosti external. Table. vyprázdnění = true. Například:
+> * Všechny spravované tabulky se stanou transakčními v HDInsight 4,0. Volitelně můžete zachovat netransakční tabulku tak, že data exportujete do externí tabulky pomocí vlastnosti external. Table. vyprázdnění = true. Třeba
 >
 >    ```SQL
 >    create table tablename_backup like tablename;
@@ -124,7 +124,7 @@ Clustery HDInsight 3,6 a 4,0 musí používat stejný účet úložiště.
     chmod 755 exporthive_hdi_3_6.sh
     ```
 
-    * Pro běžný cluster HDInsight bez protokolu ESP stačí provést `exporthive_hdi_3_6.sh`příkaz.
+    * Pro běžný cluster HDInsight bez protokolu ESP stačí provést příkaz `exporthive_hdi_3_6.sh` .
 
     * Pro cluster s protokolem ESP, kinit a upravte argumenty na Beeline: spusťte následující příkaz definující uživatele a doménu pro uživatele Azure AD s úplnými oprávněními pro podregistr.
 
@@ -221,14 +221,14 @@ V HDInsight 3,6 je klient grafického uživatelského rozhraní pro interakci se
 |Identifikátor URI skriptu bash|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Typ (typy) uzlů|Head|
 
-Počkejte 10 až 15 minut a pak spusťte data Analytics Studio pomocí této adresy URL: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+Počkejte 10 až 15 minut a pak spusťte data Analytics Studio pomocí této adresy URL: `https://CLUSTERNAME.azurehdinsight.net/das/` .
 
 Před přístupem DAS může být potřeba aktualizovat uživatelské rozhraní Ambari nebo restartovat všechny součásti Ambari.
 
 Pokud se po instalaci DAS nezobrazí dotazy, které jste spustili v prohlížeči dotazů, proveďte následující kroky:
 
 1. Nastavte konfigurace pro podregistr, tez a DAS, jak je popsáno v [této příručce pro řešení potíží s instalací Das](https://docs.hortonworks.com/HDPDocuments/DAS/DAS-1.2.0/troubleshooting/content/das_queries_not_appearing.html).
-2. Ujistěte se, že následující konfigurace adresáře úložiště Azure jsou objekty blob stránky a že jsou uvedené v části `fs.azure.page.blob.dirs`:
+2. Ujistěte se, že následující konfigurace adresáře úložiště Azure jsou objekty blob stránky a že jsou uvedené v části `fs.azure.page.blob.dirs` :
     * `hive.hook.proto.base-directory`
     * `tez.history.logging.proto-base-dir`
 3. V obou hlavních restartujte HDFS, podregistr, tez a DAS.

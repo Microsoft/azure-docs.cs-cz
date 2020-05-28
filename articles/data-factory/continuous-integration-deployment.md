@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 0feab5c4c03ddce6fb4df2395316484bf35bae81
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 77cba087ec578a478f4de9c8eebec3eb1e8d41b2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772858"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022397"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -569,26 +569,6 @@ Pokud chcete místo úplné Správce prostředků šablony použít propojené �
 Nezapomeňte přidat skripty Data Factory do kanálu CI/CD před a po úloze nasazení.
 
 Pokud nemáte nakonfigurovaný Git, můžete k propojeným šablonám přistupovat pomocí **šablony pro export ARM** v seznamu **šablon ARM** .
-
-## <a name="exclude-azure-ssis-integration-runtimes-from-cicd"></a>Vyloučení prostředí Azure-SSIS Integration runtime z CI/CD
-
-Pokud má vaše továrna pro vývoj prostředí Azure-SSIS Integration runtime, můžete vyloučit všechny prostředí Azure-SSIS Integration runtime z procesu CI/CD v následujícím scénáři:
-
-- Infrastruktura Azure-SSIS IR je složitá a v každém prostředí se liší.  
-- Azure-SSIS IR se nastaví ručně pro každé prostředí se stejným názvem. V opačném případě se publikování nezdaří, pokud se v závislosti na Azure-SSIS IR nachází aktivita.
-
-Vyloučení prostředí Azure-SSIS Integration Runtime:
-
-1. Pokud neexistuje, přidejte soubor publish_config. JSON do kořenové složky ve větvi pro spolupráci.
-1. Do publish_config. JSON přidejte následující nastavení: 
-
-```json
-{
-    " excludeIRs": "true"
-}
-```
-
-Při publikování z větve pro spolupráci budou prostředí Azure-SSIS Integration runtime vyloučena z vygenerované šablony Správce prostředků.
 
 ## <a name="hotfix-production-branch"></a>Produkční větev s opravou hotfix
 

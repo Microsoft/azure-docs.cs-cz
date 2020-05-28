@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 5d6d4a41deb1ef96789a48eefba306be4dfb20eb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3cf16c2cd119eb3eec64104b2573ff7de2cc76c4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745139"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020077"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Extrakce, transformace a načítání (ETL) ve velkém měřítku
 
@@ -27,7 +27,7 @@ Následující části obsahují všechny fáze ETL a jejich přidružené souč
 
 ## <a name="orchestration"></a>Orchestrace
 
-Orchestrace se rozpíná napříč všemi fázemi kanálu ETL. Úlohy ETL v HDInsight často zahrnují více různých produktů, které spolu vzájemně spolupracují. Například:
+Orchestrace se rozpíná napříč všemi fázemi kanálu ETL. Úlohy ETL v HDInsight často zahrnují více různých produktů, které spolu vzájemně spolupracují. Příklad:
 
 - Můžete použít Apache Hive k vyčištění části dat a Apache prasete k vyčištění další části.
 - Pomocí Azure Data Factory můžete načíst data do Azure SQL Database z Azure Data Lake Store.
@@ -106,9 +106,9 @@ Přizpůsobitelnost HBA závisí na počtu uzlů v clusteru HDInsight.
 
 Azure nabízí tři relační databáze PaaS:
 
-- [Azure SQL Database](../../sql-database/sql-database-technical-overview.md) je implementace Microsoft SQL Server. Další informace o výkonu najdete v tématu [optimalizace výkonu v Azure SQL Database](../../sql-database/sql-database-performance-guidance.md).
-- [Azure Database for MySQL](../../mysql/overview.md) je implementace Oracle MySQL.
-- [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) je implementace PostgreSQL.
+* [Azure SQL Database](../../azure-sql/database/sql-database-paas-overview.md) je implementace Microsoft SQL Server. Další informace o výkonu najdete v tématu [optimalizace výkonu v Azure SQL Database](../../azure-sql/database/performance-guidance.md).
+* [Azure Database for MySQL](../../mysql/overview.md) je implementace Oracle MySQL.
+* [Azure Database for PostgreSQL](../../postgresql/quickstart-create-server-database-portal.md) je implementace PostgreSQL.
 
 Přidejte další procesor a paměť pro horizontální navýšení kapacity těchto produktů.  Můžete také použít prémiové disky s produkty pro lepší výkon vstupně-výstupních operací.
 

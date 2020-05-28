@@ -12,12 +12,12 @@ ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
-ms.openlocfilehash: 86cd3d2f7675ca5111c29be278c9433ec7f66945
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 868130b23bc29acf0f1271f68a45f44cee98fe98
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653047"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015620"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Ověření ve službě Azure synapse Analytics
 
@@ -54,16 +54,16 @@ Ověřování [Azure Active Directory](../../active-directory/fundamentals/activ
 Mezi výhody Azure Active Directory patří:
 
 * Představuje alternativu k ověřování SQL Server.
-* Pomáhá zastavit šíření identit uživatelů napříč databázovými servery.
+* Pomáhá zastavit šíření identit uživatelů napříč servery.
 * Umožňuje rotaci hesel na jednom místě.
 * Spravujte databázová oprávnění pomocí skupin externích (Azure AD).
-* Eliminuje ukládání hesel povolením integrovaného ověřování systému Windows a dalších forem ověřování, které podporuje Azure Active Directory.
+* Eliminuje ukládání hesel povolením integrovaného ověřování systému Windows a o seřazení formulářů s ověřováním, které podporuje Azure Active Directory.
 * Používá uživatele databáze s omezením k ověřování identit na úrovni databáze.
 * Podporuje ověřování založené na tokenech pro aplikace, které se připojují ke fondu SQL.
-* Podporuje službu Multi-Factor Authentication prostřednictvím univerzálního ověřování služby Active Directory pro různé nástroje, včetně [SQL Server Management Studio](../../sql-database/sql-database-ssms-mfa-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [SQL Server datových nástrojů](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+* Podporuje službu Multi-Factor Authentication prostřednictvím univerzálního ověřování služby Active Directory pro různé nástroje, včetně [SQL Server Management Studio](../../azure-sql/database/authentication-mfa-ssms-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) a [SQL Server datových nástrojů](/sql/ssdt/azure-active-directory?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 > [!NOTE]
-> Azure Active Directory je stále poměrně nové a má určitá omezení. Aby bylo zajištěno, že pro vaše prostředí je Azure Active Directory vhodné, přečtěte si téma [funkce a omezení služby Azure AD](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations), konkrétně Další informace.
+> Azure Active Directory je stále poměrně nové a má určitá omezení. Aby bylo zajištěno, že pro vaše prostředí je Azure Active Directory vhodné, přečtěte si téma [funkce a omezení služby Azure AD](../../azure-sql/database/authentication-aad-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#azure-ad-features-and-limitations), konkrétně Další informace.
 
 ### <a name="configuration-steps"></a>Postup konfigurace
 
@@ -80,7 +80,7 @@ Aktuálně Azure Active Directory uživatelé nejsou zobrazeni v Průzkumník ob
 
 ### <a name="find-the-details"></a>Najít podrobnosti
 
-* Postup pro konfiguraci a použití ověřování Azure Active Directory je skoro stejný pro Azure SQL Database a synapse SQL v Azure synapse. Postupujte podle podrobných pokynů v tématu [připojení k SQL Database nebo fondu SQL pomocí ověřování Azure Active Directory](../../sql-database/sql-database-aad-authentication.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
+* Postup pro konfiguraci a použití ověřování Azure Active Directory je skoro stejný pro Azure SQL Database a synapse SQL v Azure synapse. Postupujte podle podrobných pokynů v tématu [připojení k SQL Database nebo fondu SQL pomocí ověřování Azure Active Directory](../../azure-sql/database/authentication-aad-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json).
 * Vytvořte vlastní databázové role a přidejte uživatele k rolím. Pak udělte rolím přesnější oprávnění. Další informace najdete v tématu [Začínáme s oprávněním databázového stroje](/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="next-steps"></a>Další kroky

@@ -3,12 +3,12 @@ title: Řešení potíží se zálohováním databáze SQL Server
 description: Informace o řešení potíží při zálohování SQL Server databází běžících na virtuálních počítačích Azure s Azure Backup.
 ms.topic: troubleshooting
 ms.date: 06/18/2019
-ms.openlocfilehash: cec3f8530d8a48a870c672d418d42d12a62aa2a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 93e06cc3219d5588c1740220af01950a25fcb52f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183326"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017014"
 ---
 # <a name="troubleshoot-sql-server-database-backup-by-using-azure-backup"></a>Řešení potíží se zálohováním databáze SQL Server pomocí Azure Backup
 
@@ -20,7 +20,7 @@ Další informace o procesu zálohování a omezeních najdete v tématu [inform
 
 Pokud chcete nakonfigurovat ochranu pro SQL Server databázi na virtuálním počítači, musíte na tomto virtuálním počítači nainstalovat rozšíření **AzureBackupWindowsWorkload** . Pokud se zobrazí chyba **UserErrorSQLNoSysadminMembership**, znamená to, že vaše instance SQL Server nemá požadovaná oprávnění k zálohování. Pokud chcete tuto chybu opravit, postupujte podle kroků v části [Nastavení oprávnění virtuálních počítačů](backup-azure-sql-database.md#set-vm-permissions).
 
-## <a name="troubleshoot-discover-and-configure-issues"></a>Řešení potíží se zjišťováním a konfigurací problémů
+## <a name="troubleshoot-discover-and-configure-issues"></a>Řešení potíží se zjišťováním a konfigurací
 
 Po vytvoření a konfiguraci trezoru Recovery Services, který zjišťuje databáze a konfiguruje zálohování, je proces se dvěma kroky.<br>
 
@@ -60,7 +60,7 @@ V některých případech se může stát, že při operacích zálohování a o
 
 ### <a name="backup-type-unsupported"></a>Typ zálohování se nepodporuje.
 
-| Severity | Popis | Možné příčiny | Doporučená akce |
+| Severity | Description | Možné příčiny | Doporučená akce |
 |---|---|---|---|
 | Upozornění | Aktuální nastavení této databáze nepodporují určité typy zálohování přítomné v přidružených zásadách. | <li>V hlavní databázi lze provést pouze úplnou operaci zálohování databáze. Není možné použít rozdílovou zálohu ani zálohování protokolu transakcí. </li> <li>Žádná databáze v jednoduchém modelu obnovení nepovoluje zálohování protokolů transakcí.</li> | Upravte nastavení databáze tak, aby všechny typy zálohování v těchto zásadách byly podporovány. Nebo můžete změnit aktuální zásady tak, aby zahrnovaly jenom podporované typy zálohování. V opačném případě se nepodporované typy zálohování při plánovaném Zálohování přeskočí, jinak se úloha zálohování na vyžádání nezdařila.
 
@@ -219,7 +219,7 @@ Pokud velikost řetězce obsahu překračuje 20 000 bajtů, soubory databáze bu
 
 ### <a name="override-the-default-target-restore-file-path"></a>Přepsat výchozí cílovou cestu k souboru pro obnovení
 
-Cílovou cestu k souboru obnovení můžete během operace obnovení přepsat umístěním souboru JSON, který obsahuje mapování souboru databáze na cílovou cestu pro obnovení. Vytvořte `database_name.json` soubor a umístěte ho do umístění `C:\Program Files\Azure Workload Backup\bin\plugins\SQL*`.
+Cílovou cestu k souboru obnovení můžete během operace obnovení přepsat umístěním souboru JSON, který obsahuje mapování souboru databáze na cílovou cestu pro obnovení. Vytvořte `database_name.json` soubor a umístěte ho do umístění `C:\Program Files\Azure Workload Backup\bin\plugins\SQL*` .
 
 Obsah souboru by měl být v tomto formátu:
 
@@ -267,4 +267,4 @@ Tento soubor by měl být umístěn před aktivací operace obnovení.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure Backup pro virtuální počítače s SQL Server (Public Preview) najdete v tématu [Azure Backup pro virtuální počítače SQL](../virtual-machines/windows/sql/virtual-machines-windows-sql-backup-recovery.md#azbackup).
+Další informace o Azure Backup pro virtuální počítače s SQL Server (Public Preview) najdete v tématu [Azure Backup pro virtuální počítače SQL](../azure-sql/virtual-machines/windows/backup-restore.md#azbackup).

@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/10/2020
-ms.openlocfilehash: 236c68b3c26049073d3e6e942ce2a6be8b7f4fde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82d6fe190b191b6aca3bd51dcefb03ecda95b4f2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298903"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020434"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Kurz: migrace SQL Server do Azure SQL Database spravované instance online pomocí DMS
 
-Pomocí Azure Database Migration Service můžete migrovat databáze z místní instance SQL Server do [Azure SQL Database spravované instance](../sql-database/sql-database-managed-instance.md) s minimálními výpadky. Další metody, které mohou vyžadovat určité ruční úsilí, najdete v článku [migrace instance SQL Server do Azure SQL Database spravované instance](../sql-database/sql-database-managed-instance-migrate.md).
+Pomocí Azure Database Migration Service můžete migrovat databáze z místní instance SQL Server do [Azure SQL Database spravované instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) s minimálními výpadky. Další metody, které mohou vyžadovat určité ruční úsilí, najdete v článku [migrace instance SQL Server do Azure SQL Database spravované instance](../azure-sql/managed-instance/migrate-to-instance-from-sql-server.md).
 
 V tomto kurzu migrujete databázi **Adventureworks2012** z místní instance SQL Server do SQL Database spravované instance s minimálními výpadky pomocí Azure Database Migration Service.
 
@@ -212,7 +212,7 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
     |**Uživatelské jméno** | Ujistěte se, že má uživatel Windows oprávnění Úplné řízení ke sdílené síťové složce, kterou jste určili dříve. Azure Database Migration Service zosobní přihlašovací údaje uživatele, aby nahrála záložní soubory do Azure Storage kontejneru pro operaci obnovení. Pokud používáte sdílenou složku Azure, použijte jako uživatelské jméno název účtu úložiště označené jako nedokončené s AZURE. |
     |**Heslo** | Heslo pro tohoto uživatele. Pokud používáte službu Azure File Share, jako heslo použijte klíč účtu úložiště. |
     |**Předplatné účtu úložiště Azure** | Vyberte předplatné obsahující účet úložiště Azure. |
-    |**Účet Azure Storage** | Vyberte účet úložiště Azure, do kterého může DMS nahrát soubory záloh ze sdílené síťové složky SMB a který může použít k migraci databází.  Pro zajištění optimálního výkonu nahrávání souborů doporučujeme vybrat účet úložiště ve stejné oblasti, jako je služba DMS. |
+    |**Účet služby Azure Storage** | Vyberte účet úložiště Azure, do kterého může DMS nahrát soubory záloh ze sdílené síťové složky SMB a který může použít k migraci databází.  Pro zajištění optimálního výkonu nahrávání souborů doporučujeme vybrat účet úložiště ve stejné oblasti, jako je služba DMS. |
 
     ![Konfigurace nastavení migrace](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
@@ -267,5 +267,5 @@ Po obnovení úplné zálohy databáze v cílové instanci SQL Database Managed 
 ## <a name="next-steps"></a>Další kroky
 
 * Kurz, ve kterém se dozvíte, jak migrovat databázi do spravované instance pomocí příkazu T-SQL Restore, najdete v tématu [obnovení zálohy do spravované instance pomocí příkazu RESTORE](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md).
-* Informace o spravované instanci najdete v tématu [co je spravovaná instance](../sql-database/sql-database-managed-instance.md).
-* Informace o připojení aplikací ke spravované instanci najdete v tématu [připojení aplikací](../sql-database/sql-database-managed-instance-connect-app.md).
+* Informace o spravované instanci najdete v tématu [co je spravovaná instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
+* Informace o připojení aplikací ke spravované instanci najdete v tématu [připojení aplikací](../azure-sql/managed-instance/connect-application-instance.md).

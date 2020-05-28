@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: hrasheed
-ms.openlocfilehash: e7351e2f39c7e4eed84f4a47e3eeb2214a062a94
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4cb96e1299010636e0bce3cb99fbba9862822564
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80240158"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022261"
 ---
 # <a name="set-up-hdinsight-clusters-with-a-custom-ambari-db"></a>Nastavení clusterů HDInsight s vlastní Ambari DB
 
 Apache Ambari zjednodušuje správu a monitorování Apache Hadoopho clusteru. Ambari nabízí snadno použitelné webové uživatelské rozhraní a REST API. Ambari je součástí clusterů HDInsight a používá se k monitorování clusteru a provádění změn konfigurace.
 
-V normálním vytváření clusteru, jak je popsáno v dalších článcích, jako je například [Nastavení clusterů ve službě HDInsight](hdinsight-hadoop-provision-linux-clusters.md), je Ambari nasazena v [S0 databázi SQL Azure](../sql-database/sql-database-dtu-resource-limits-single-databases.md#standard-service-tier) spravované službou HDInsight a není přístupná pro uživatele.
+V normálním vytváření clusteru, jak je popsáno v dalších článcích, jako je například [Nastavení clusterů ve službě HDInsight](hdinsight-hadoop-provision-linux-clusters.md), je Ambari nasazena v [S0 databázi SQL Azure](../azure-sql/database/resource-limits-dtu-single-databases.md#standard-service-tier) spravované službou HDInsight a není přístupná pro uživatele.
 
 Funkce vlastní Ambari DB umožňuje nasadit nový cluster a nastavit Ambari v externí databázi, kterou spravujete. Nasazení se provádí pomocí šablony Azure Resource Manager. Tato funkce má následující výhody:
 
@@ -41,19 +41,19 @@ Vlastní Ambari DB má následující požadavky:
 - Musíte mít existující server a databázi Azure SQL DB.
 - Databáze, kterou zadáte pro nastavení Ambari, musí být prázdná. Ve výchozím schématu dbo by neměly být žádné tabulky.
 - Uživatel, který se používá k připojení k databázi, by měl mít v databázi oprávnění SELECT, CREATE TABLE a INSERT.
-- Zapněte možnost [Povolení přístupu ke službám Azure](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md#azure-portal-steps) na serveru Azure SQL, na kterém budete hostovat Ambari.
-- V SQL Server musí být povolené IP adresy pro správu ze služby HDInsight. Seznam IP adres, které je nutné přidat do brány firewall systému SQL Server, najdete v části [IP adresy správy HDInsight](hdinsight-management-ip-addresses.md) .
+- Zapněte možnost [Povolení přístupu ke službám Azure](../azure-sql/database/vnet-service-endpoint-rule-overview.md#azure-portal-steps) na serveru, kde budete hostovat Ambari.
+- V pravidle brány firewall musí být povolená IP adresa pro správu ze služby HDInsight. Seznam IP adres, které se musí přidat do pravidla brány firewall na úrovni serveru, najdete v článku [IP adresy správy HDInsight](hdinsight-management-ip-addresses.md) .
 
 Při hostování databáze Apache Ambari v externí databázi Pamatujte na tyto body:
 
 - Zodpovídáte za další náklady na databázi Azure SQL, která obsahuje Ambari.
-- Pravidelně zálohujte svoji vlastní Ambari DB. Azure SQL Database automaticky generuje zálohy, ale časové rámce uchovávání záloh se liší. Další informace najdete v tématu [informace o automatickém zálohování SQL Database](../sql-database/sql-database-automated-backups.md).
+- Pravidelně zálohujte svoji vlastní Ambari DB. Azure SQL Database automaticky generuje zálohy, ale časové rámce uchovávání záloh se liší. Další informace najdete v tématu [informace o automatickém zálohování SQL Database](../azure-sql/database/automated-backups-overview.md).
 
 ## <a name="deploy-clusters-with-a-custom-ambari-db"></a>Nasazení clusterů s vlastní Ambari DB
 
 Pokud chcete vytvořit cluster HDInsight, který používá vaši vlastní externí databázi Ambari, použijte [šablonu pro rychlý Start pro vlastní AMBARI DB](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-custom-ambari-db).
 
-Úpravou parametrů v `azuredeploy.parameters.json` v zadejte informace o novém clusteru a databázi, která bude obsahovat Ambari.
+Úpravou parametrů v v `azuredeploy.parameters.json` Zadejte informace o novém clusteru a databázi, která bude obsahovat Ambari.
 
 Nasazení můžete zahájit pomocí Azure CLI. Nahraďte `<RESOURCEGROUPNAME>` skupinou prostředků, do které chcete cluster nasadit.
 

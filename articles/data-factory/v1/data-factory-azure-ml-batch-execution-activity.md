@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: eba5df587d6bd6dda6083314cfb94836c6669393
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c40b58dfb63ac6bf1b5532eb06bfd2ad0cdccde9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73683145"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022023"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí služby Azure Machine Learning a Azure Data Factory
 
@@ -80,7 +80,7 @@ V tomto scénáři používá webová služba Azure Machine Learning předpověd
 > [!IMPORTANT]
 > Pokud webová služba používá více vstupů, použijte namísto použití **webServiceInput**vlastnost **webServiceInputs** . Viz část [Webová služba vyžaduje více vstupů](#web-service-requires-multiple-inputs) pro příklad použití vlastnosti webServiceInputs.
 >
-> Datové sady, na které odkazují vlastnosti **webServiceInput**/**webServiceInputs** a **webServiceOutputs** (v **typeProperties**), musí být zahrnuté i do **vstupů** a **výstupů**aktivit.
+> Datové sady, na které odkazují vlastnosti **webServiceInput** / **webServiceInputs** a **webServiceOutputs** (v **typeProperties**), musí být zahrnuté i do **vstupů** a **výstupů**aktivit.
 >
 > Ve vašem experimentu Azure Machine Learning Studio mají vstupní a výstupní porty webové služby a globální parametry výchozí názvy ("input1", "input2"), které můžete přizpůsobit. Názvy, které použijete pro nastavení webServiceInputs, webServiceOutputs a globalParameters, se musí přesně shodovat s názvy v experimentech. Chcete-li ověřit očekávané mapování, můžete zobrazit datovou část s ukázkovým požadavkem na stránce s nápovědu pro spuštění dávky pro váš koncový bod služby Azure Machine Learning Studio.
 >
@@ -311,7 +311,7 @@ Před přechodem do tohoto příkladu doporučujeme projít si [sestavení prvn�
 ### <a name="scenario-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scénář: experimenty pomocí modulů pro čtení a zápis, které odkazují na data v různých úložištích
 Dalším běžným scénářem při vytváření experimentů Azure Machine Learning studia je použití modulů pro čtení a zápis. Modul čtečky se používá k načtení dat do experimentu a modul zapisovače ukládá data z experimentů. Podrobnosti o modulech čtenářů a zapisovači najdete v tématu témata [čtenářů](https://msdn.microsoft.com/library/azure/dn905997.aspx) a [zapisovače](https://msdn.microsoft.com/library/azure/dn905984.aspx) v knihovně MSDN.
 
-Při použití modulů pro čtení a zápis je vhodné použít parametr webové služby pro každou vlastnost těchto modulů pro čtení a zápis. Tyto webové parametry umožňují konfigurovat hodnoty za běhu. Můžete například vytvořit experiment s modulem čtenář, který používá Azure SQL Database: XXX.database.windows.net. Po nasazení webové služby budete chtít povolit uživatelům webové služby zadání další SQL Server Azure s názvem YYY.database.windows.net. Tuto hodnotu můžete nakonfigurovat pomocí parametru webové služby.
+Při použití modulů pro čtení a zápis je vhodné použít parametr webové služby pro každou vlastnost těchto modulů pro čtení a zápis. Tyto webové parametry umožňují konfigurovat hodnoty za běhu. Můžete například vytvořit experiment s modulem čtenář, který používá Azure SQL Database: XXX.database.windows.net. Po nasazení webové služby budete chtít povolit uživatelům webové služby, aby určili jiný logický SQL Server s názvem YYY.database.windows.net. Tuto hodnotu můžete nakonfigurovat pomocí parametru webové služby.
 
 > [!NOTE]
 > Vstup a výstup webové služby se liší od parametrů webové služby. V prvním scénáři jste viděli, jak lze zadat vstupní a výstupní výstup pro webovou službu Azure Machine Learning Studio. V tomto scénáři předáte parametry pro webovou službu, která odpovídá vlastnostem modulů pro čtení a zápis.
@@ -347,7 +347,7 @@ V rámci předávání hodnot pro parametry webové služby můžete také použ
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>Použití modulu čtenáře ke čtení dat z více souborů v objektu blob Azure
 Kanály velkých objemů dat s aktivitami, jako je například prase a podregistr, mohou způsobit jeden nebo více výstupních souborů bez rozšíření. Když například zadáte externí tabulku podregistru, data pro tabulku externího podregistru můžete uložit do Azure Blob Storage s následujícím názvem 000000_0. Modul čtečky můžete použít ve experimentu ke čtení více souborů a jejich použití pro předpovědi.
 
-Při použití modulu čtenář ve Azure Machine Learning experimentu můžete jako vstup zadat objekt blob Azure. Soubory v úložišti objektů BLOB v Azure můžou být výstupní soubory (například: 000000_0), které jsou vyráběny pomocí nástroje pro vepřové soubory a skripty v HDInsight spuštěné v HDInsight. Modul čtečky umožňuje číst soubory (bez rozšíření) konfigurací **cesty ke kontejneru, adresáři nebo objektu BLOB**. **Cesta ke kontejneru** odkazuje na kontejner a **adresář nebo objekt BLOB** odkazuje na složku, která obsahuje soubory, jak je znázorněno na následujícím obrázku. Hvězdička, která je \*,) **Určuje, že všechny soubory v kontejneru/složce (tj. data/aggregateddata/Year = 2014/month-6/\*)** jsou čteny jako součást experimentu.
+Při použití modulu čtenář ve Azure Machine Learning experimentu můžete jako vstup zadat objekt blob Azure. Soubory v úložišti objektů BLOB v Azure můžou být výstupní soubory (například: 000000_0), které jsou vyráběny pomocí nástroje pro vepřové soubory a skripty v HDInsight spuštěné v HDInsight. Modul čtečky umožňuje číst soubory (bez rozšíření) konfigurací **cesty ke kontejneru, adresáři nebo objektu BLOB**. **Cesta ke kontejneru** odkazuje na kontejner a **adresář nebo objekt BLOB** odkazuje na složku, která obsahuje soubory, jak je znázorněno na následujícím obrázku. Hvězdička, která je, \* ) **Určuje, že všechny soubory v kontejneru/složce (tj. data/aggregateddata/Year = 2014/month-6/ \* )** jsou čteny jako součást experimentu.
 
 ![Vlastnosti objektu BLOB v Azure](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 

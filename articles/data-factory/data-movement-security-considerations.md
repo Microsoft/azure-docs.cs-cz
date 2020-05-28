@@ -1,5 +1,5 @@
 ---
-title: Důležité informace o zabezpečení
+title: Aspekty zabezpečení
 description: Popisuje základní infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k lepšímu zabezpečení vašich dat.
 services: data-factory
 ms.author: abnarain
@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: bb3f22223bd64c06cfa4a5f6ffabe7b128dff1d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/26/2020
+ms.openlocfilehash: 6496e5c953b3dd5e387a79906b22645ba4a24b4f
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416469"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019975"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Otázky zabezpečení při přesunu dat v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -47,7 +47,7 @@ Data Factory bylo certifikováno pro:
 | **[SOC 1, 2, 3](https://www.microsoft.com/trustcenter/compliance/soc)** |
 | **[HIPAA BAA](https://www.microsoft.com/trustcenter/compliance/hipaa)** |
 
-Pokud vás zajímá dodržování předpisů Azure a způsob, jakým Azure zabezpečuje svou vlastní infrastrukturu, přejděte na web [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Poslední seznam všech kontrol nabídek dodržování předpisů Azure – https://aka.ms/AzureCompliance.
+Pokud vás zajímá dodržování předpisů Azure a způsob, jakým Azure zabezpečuje svou vlastní infrastrukturu, přejděte na web [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/default.aspx). Poslední seznam všech kontrol nabídek dodržování předpisů Azure – https://aka.ms/AzureCompliance .
 
 V tomto článku prozkoumáme bezpečnostní opatření v následujících dvou scénářích přesunu dat: 
 
@@ -155,6 +155,12 @@ Následující obrázky ukazují použití prostředí Integration runtime v mí
 
 ### <a name="firewall-configurations-and-allow-list-setting-up-for-ip-addresses"></a><a name="firewall-configurations-and-allow-list-setting-up-for-ip-address-of-gateway"></a>Nastavení konfigurace brány firewall a povolení seznamu povolených IP adres
 
+> [!NOTE] 
+> Možná budete muset spravovat porty nebo na úrovni podnikové brány firewall nastavit seznam povolených pro domény podle požadavků příslušných zdrojů dat. Tato tabulka používá jako příklady pouze Azure SQL Database, Azure SQL Data Warehouse a Azure Data Lake Store.
+
+> [!NOTE] 
+> Podrobnosti o strategiích přístupu k datům prostřednictvím Azure Data Factory najdete v [tomto článku](https://docs.microsoft.com/azure/data-factory/data-access-strategies#data-access-strategies-through-azure-data-factory).
+
 #### <a name="firewall-requirements-for-on-premisesprivate-network"></a>Požadavky na bránu firewall pro místní nebo privátní síť    
 V podniku je podniková brána firewall provozována v centrálním směrovači organizace. Brána Windows Firewall běží jako démon na místním počítači, ve kterém je nainstalovaný modul runtime integrace v místním prostředí. 
 
@@ -167,7 +173,7 @@ Následující tabulka obsahuje požadavky na Odchozí porty a domény pro podni
 
 Následující tabulka uvádí požadavky na porty pro bránu Windows Firewall:
 
-| Příchozí porty | Popis                              |
+| Příchozí porty | Description                              |
 | ------------- | ---------------------------------------- |
 | 8060 (TCP)    | Vyžadovaná rutinou šifrování PowerShellu, jak je popsáno v tématu [šifrování přihlašovacích údajů pro místní úložiště dat v Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md)a aplikace Správce přihlašovacích údajů pro bezpečné nastavení přihlašovacích údajů pro místní úložiště dat v místním prostředí Integration runtime. |
 
@@ -178,7 +184,7 @@ Některá úložiště dat v cloudu také vyžadují, abyste povolili IP adresu 
 
 Následující cloudová úložiště dat vyžadují, abyste povolili IP adresu počítače místního prostředí Integration runtime. Některá z těchto úložišť dat nemusí ve výchozím nastavení vyžadovat seznam povolených. 
 
-- [Azure SQL Database](../sql-database/sql-database-firewall-configure.md) 
+- [Azure SQL Database](../azure-sql/database/firewall-configure.md) 
 - [Azure SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-provision.md)
 - [Azure Data Lake Store](../data-lake-store/data-lake-store-secure-data.md#set-ip-address-range-for-data-access)
 - [Azure Cosmos DB](../cosmos-db/firewall-support.md)
@@ -188,7 +194,7 @@ Následující cloudová úložiště dat vyžadují, abyste povolili IP adresu 
 
 **Je možné místní prostředí Integration runtime sdílet mezi různými datovými továrnami?**
 
-Ano. Další podrobnosti najdete [tady](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
+Yes. Další podrobnosti najdete [tady](https://azure.microsoft.com/blog/sharing-a-self-hosted-integration-runtime-infrastructure-with-multiple-data-factories/).
 
 **Jaké jsou požadavky na porty pro fungování prostředí Integration runtime v místním prostředí?**
 

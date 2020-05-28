@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.custom: seodec18
-ms.openlocfilehash: f5bb2b97d7da770828c2f4f03167483ad2044c79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10d9053e082a995085fa255cc0d9f63a2b4e2b17
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75426390"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020604"
 ---
 # <a name="checkpoint-and-replay-concepts-in-azure-stream-analytics-jobs"></a>Koncepty kontrolního bodu a přehrání v úlohách Azure Stream Analytics
 Tento článek popisuje interní body kontrolního bodu a přehrání v Azure Stream Analytics a dopad na obnovení úlohy. Při každém spuštění úlohy Stream Analytics se informace o stavu udržují interně. Tyto informace o stavu se pravidelně ukládají do kontrolního bodu. V některých scénářích se pro obnovení úlohy použijí informace kontrolního bodu, pokud dojde k selhání nebo upgradu úlohy. V jiných případech se kontrolní bod nedá použít k obnovení a je potřeba ho přehrát znovu.
@@ -47,7 +47,7 @@ Microsoft občas provede upgrade binárních souborů, které spouštějí Strea
 
 V současné době není formát kontrolního bodu obnovení zachován mezi upgrady. V důsledku toho je nutné obnovit stav dotazu streamování výhradně pomocí techniky přehrání. Aby bylo možné, aby Stream Analytics úlohy přehrály přesně stejný vstup než předtím, je důležité nastavit zásady uchovávání dat pro zdrojová data alespoň na velikosti oken v dotazu. V takovém případě může docházet k nesprávným nebo částečným výsledkům během upgradu služby, protože zdrojová data nemusí být dostatečně velká, aby bylo možné zahrnout celou velikost okna.
 
-Velikost potřebného přehrání je obecně úměrná velikosti okna vynásobené průměrnou sazbou události. Například pro úlohu se vstupní rychlostí 1000 událostí za sekundu je velikost okna větší než jedna hodina považována za velikost většího počtu přehrání. Po dobu až jedné hodiny bude nutné znovu zpracovat data, aby bylo možné stav inicializovat, aby bylo možné vytvořit úplné a správné výsledky, což může způsobit zpožděný výstup (žádný výstup) pro delší dobu. Dotazy bez oken nebo jiných dočasných operátorů, jako `JOIN` je `LAG`například nebo, by měly nulové přehrání.
+Velikost potřebného přehrání je obecně úměrná velikosti okna vynásobené průměrnou sazbou události. Například pro úlohu se vstupní rychlostí 1000 událostí za sekundu je velikost okna větší než jedna hodina považována za velikost většího počtu přehrání. Po dobu až jedné hodiny bude nutné znovu zpracovat data, aby bylo možné stav inicializovat, aby bylo možné vytvořit úplné a správné výsledky, což může způsobit zpožděný výstup (žádný výstup) pro delší dobu. Dotazy bez oken nebo jiných dočasných operátorů, jako je například `JOIN` nebo `LAG` , by měly nulové přehrání.
 
 ## <a name="estimate-replay-catch-up-time"></a>Odhad doby zachycení přehrání
 Chcete-li odhadnout délku zpoždění v důsledku upgradu služby, můžete postupovat podle tohoto postupu:

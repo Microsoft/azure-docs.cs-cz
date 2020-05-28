@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: a5cdb24a80dcbd95e4ccc59dd55f4acb9ae18060
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 150ee15adb042841f74ffbf3b75338b2dd569333
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417891"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017655"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Aktivita webu v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,13 +66,13 @@ Webová aktivita slouží k volání vlastního koncového bodu REST z kanálu s
 
 ## <a name="type-properties"></a>Vlastnosti typu
 
-Vlastnost | Popis | Povolené hodnoty | Požaduje se
+Vlastnost | Description | Povolené hodnoty | Vyžadováno
 -------- | ----------- | -------------- | --------
-jméno | Název aktivity webu | Řetězec | Ano
-type | Musí být nastavená na **aktivitu webactivity**. | Řetězec | Ano
+name | Název aktivity webu | Řetězec | Ano
+typ | Musí být nastavená na **aktivitu webactivity**. | Řetězec | Ano
 method | Metoda rozhraní REST API pro cílový koncový bod | Řetězec. <br/><br/>Podporované typy: "GET", "POST", "PUT" | Ano
 url | Cílový koncový bod a cesta | Řetězec (nebo výraz s hodnotou resultType řetězce). Pokud tato aktivita neobdrží odpověď od koncového bodu, bude časový limit 1 minuty s chybou. | Ano
-záhlaví | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }`. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ano, hlavička Content-Type je povinná. `"headers":{ "Content-Type":"application/json"}`
+záhlaví | Hlavičky, které se odesílají do žádosti Například pro nastavení jazyka a typu na žádost: `"headers" : { "Accept-Language": "en-us", "Content-Type": "application/json" }` . | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ano, hlavička Content-Type je povinná. `"headers":{ "Content-Type":"application/json"}`
 text | Představuje datovou část, která je odeslána do koncového bodu.  | Řetězec (nebo výraz s hodnotou resultType řetězce). <br/><br/>Podívejte se na schéma datové části požadavku v části [schéma datové části požadavku](#request-payload-schema) . | Vyžadováno pro metody POST/PUT.
 ověřování | Metoda ověřování používaná pro volání koncového bodu. Podporované typy jsou "Basic" nebo ClientCertificate ". Další informace najdete v části [ověřování](#authentication) . Pokud není vyžadováno ověření, vylučte tuto vlastnost. | Řetězec (nebo výraz s hodnotou resultType řetězce) | Ne
 datové sady | Seznam datových sad předaných do koncového bodu. | Pole odkazů na datovou sadu Může být prázdné pole. | Ano
@@ -95,7 +95,7 @@ V následující tabulce jsou uvedeny požadavky na obsah JSON:
 
 Níže jsou uvedené podporované typy ověřování v aktivitě webu.
 
-### <a name="none"></a>Žádná
+### <a name="none"></a>Žádné
 
 Pokud není vyžadováno ověřování, nezahrnujte vlastnost "ověřování".
 
@@ -125,7 +125,7 @@ Zadejte obsah souboru PFX a hesla zakódovaného ve formátu base64.
 
 ### <a name="managed-identity"></a>Spravovaná identita
 
-Zadejte identifikátor URI prostředku, pro který bude přístupový token vyžádán pomocí spravované identity pro datovou továrnu. K volání rozhraní API pro správu prostředků Azure použijte `https://management.azure.com/`. Další informace o tom, jak spravované identity fungují, najdete na [stránce s přehledem spravovaných identit pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/overview).
+Zadejte identifikátor URI prostředku, pro který bude přístupový token vyžádán pomocí spravované identity pro datovou továrnu. K volání rozhraní API pro správu prostředků Azure použijte `https://management.azure.com/` . Další informace o tom, jak spravované identity fungují, najdete na [stránce s přehledem spravovaných identit pro prostředky Azure](/azure/active-directory/managed-identities-azure-resources/overview).
 
 ```json
 "authentication": {
@@ -161,7 +161,7 @@ Při použití metody POST/PUT představuje vlastnost text datovou část, kter�
 ```
 
 ## <a name="example"></a>Příklad
-V tomto příkladu webová aktivita v kanálu volá koncový bod REST. Předá do koncového bodu propojenou službu Azure SQL a datovou sadu Azure SQL. Koncový bod REST používá připojovací řetězec Azure SQL pro připojení k serveru SQL Azure a vrací název instance SQL serveru.
+V tomto příkladu webová aktivita v kanálu volá koncový bod REST. Předá do koncového bodu propojenou službu Azure SQL a datovou sadu Azure SQL. Koncový bod REST používá připojovací řetězec Azure SQL pro připojení k logickému SQL serveru a vrací název instance SQL serveru.
 
 ### <a name="pipeline-definition"></a>Definice kanálu
 

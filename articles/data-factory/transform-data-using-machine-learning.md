@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
-ms.openlocfilehash: 3587ee711864eb33fea9bc4e61fe226562e8f612
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 26ba4c3da0bcfa36874e7b31241839c138809cec
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418860"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019890"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Vytváření prediktivních kanálů pomocí služby Azure Machine Learning a Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -67,7 +67,7 @@ Vytvoříte propojenou službu **Azure Machine Learning** k propojení webové s
 
 Popisy týkající se vlastností v definici JSON najdete v článku věnovaném [výpočetním propojeným službám](compute-linked-services.md) .
 
-Azure Machine Learning podporuje klasické webové služby a nové webové služby pro prediktivní experiment. Můžete vybrat jednu z nich, která bude použita z Data Factory. Chcete-li získat informace potřebné k vytvoření propojené služby Azure Machine Learning, přečtěte https://services.azureml.netsi, kde jsou uvedeny všechny vaše (nové) webové služby a klasické webové služby. Klikněte na webovou službu, ke které chcete získat přístup, a klikněte na **spotřebovat** stránku. Zkopírujte **primární klíč** pro vlastnost **ApiKey** a **dávkové požadavky** na vlastnost **mlEndpoint** .
+Azure Machine Learning podporuje klasické webové služby a nové webové služby pro prediktivní experiment. Můžete vybrat jednu z nich, která bude použita z Data Factory. Chcete-li získat informace potřebné k vytvoření propojené služby Azure Machine Learning, přečtěte si https://services.azureml.net , kde jsou uvedeny všechny vaše (nové) webové služby a klasické webové služby. Klikněte na webovou službu, ke které chcete získat přístup, a klikněte na **spotřebovat** stránku. Zkopírujte **primární klíč** pro vlastnost **ApiKey** a **dávkové požadavky** na vlastnost **mlEndpoint** .
 
 ![Azure Machine Learning webové služby](./media/transform-data-using-machine-learning/web-services.png)
 
@@ -125,11 +125,11 @@ Následující fragment kódu JSON definuje aktivitu spuštění Azure Machine L
 }
 ```
 
-| Vlastnost          | Popis                              | Požaduje se |
+| Vlastnost          | Description                              | Vyžadováno |
 | :---------------- | :--------------------------------------- | :------- |
-| jméno              | Název aktivity v kanálu     | Ano      |
+| name              | Název aktivity v kanálu     | Ano      |
 | description       | Text popisující, co aktivita dělá.  | Ne       |
-| type              | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity **AzureMLBatchExecution**. | Ano      |
+| typ              | Pro aktivitu Data Lake Analytics U-SQL je typ aktivity **AzureMLBatchExecution**. | Ano      |
 | linkedServiceName | Propojené služby pro propojenou službu Azure Machine Learning. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) . | Ano      |
 | webServiceInputs  | Páry klíč-hodnota, mapování názvů Azure Machine Learning vstupů webové služby. Klíč musí odpovídat vstupním parametrům definovaným v publikované webové službě Azure Machine Learning. Hodnota je dvojice vlastností Azure Storage propojených služeb a FilePath určující umístění vstupních objektů BLOB. | Ne       |
 | webServiceOutputs | Páry klíč-hodnota, mapování názvů Azure Machine Learning výstupů webové služby. Klíč musí odpovídat výstupním parametrům definovaným v publikované webové službě Azure Machine Learning. Hodnota je dvojice vlastností Azure Storage propojených služeb a FilePath určující umístění výstupního objektu BLOB. | Ne       |
@@ -192,7 +192,7 @@ V tomto scénáři používá webová služba Azure Machine Learning předpověd
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>Scénář 2: experimenty pomocí modulů pro čtení a zápis, které odkazují na data v různých úložištích
 Dalším běžným scénářem při vytváření Azure Machine Learning Studio (klasických) experimentů je použít Import dat a výstupní datové moduly. Modul Import dat slouží k načtení dat do experimentu a modulu výstupních dat je uložit data z experimentů. Podrobnosti o importu dat a modulech výstupních dat najdete v tématech [Import dat](https://msdn.microsoft.com/library/azure/dn905997.aspx) a [výstupní data](https://msdn.microsoft.com/library/azure/dn905984.aspx) v knihovně MSDN.
 
-Při použití modulů importovat data a Output data je vhodné použít parametr webové služby pro každou vlastnost těchto modulů. Tyto webové parametry umožňují konfigurovat hodnoty za běhu. Můžete například vytvořit experiment s modulem importu dat, který používá Azure SQL Database: XXX.database.windows.net. Po nasazení webové služby budete chtít povolit uživatelům webové služby, aby určili další SQL Server Azure s názvem `YYY.database.windows.net`. Tuto hodnotu můžete nakonfigurovat pomocí parametru webové služby.
+Při použití modulů importovat data a Output data je vhodné použít parametr webové služby pro každou vlastnost těchto modulů. Tyto webové parametry umožňují konfigurovat hodnoty za běhu. Můžete například vytvořit experiment s modulem importu dat, který používá Azure SQL Database: XXX.database.windows.net. Po nasazení webové služby budete chtít povolit uživatelům webové služby, aby určili jiný logický SQL Server s názvem `YYY.database.windows.net` . Tuto hodnotu můžete nakonfigurovat pomocí parametru webové služby.
 
 > [!NOTE]
 > Vstup a výstup webové služby se liší od parametrů webové služby. V prvním scénáři jste viděli, jak lze zadat vstup a výstup pro webovou službu Azure Machine Learning Studio (Classic). V tomto scénáři předáte parametry webové služby, které odpovídají vlastnostem importovat datové/výstupní datové moduly.

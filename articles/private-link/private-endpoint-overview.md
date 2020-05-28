@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 51afa118be75c7e9ea2cb6e394d27cc39a58de0b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f75b080ce31a5c954471d277aad354879c16c6b3
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849650"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022193"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -22,7 +22,7 @@ Privátní koncový bod Azure je síťové rozhraní, které vás privátně a z
  Soukromý koncový bod určuje následující vlastnosti: 
 
 
-|Vlastnost  |Popis |
+|Vlastnost  |Description |
 |---------|---------|
 |Name    |    Jedinečný název v rámci skupiny prostředků.      |
 |Podsíť    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
@@ -86,7 +86,7 @@ Pro připojení k podporované službě Azure můžete úlohy zcela uzamknout z 
  
 ## <a name="access-to-a-private-link-resource-using-approval-workflow"></a>Přístup k prostředku privátního propojení pomocí pracovního postupu schválení 
 K prostředku privátního propojení se můžete připojit pomocí následujících metod schvalování připojení:
-- **Automaticky** schváleno, pokud vlastníte nebo máte oprávnění ke konkrétnímu prostředku privátního propojení. Požadovaná oprávnění jsou založená na typu prostředku privátního propojení v následujícím formátu: Microsoft. \< Zprostředkovatel>/<resource_type>/privateEndpointConnectionApproval/action
+- **Automaticky** schváleno, pokud vlastníte nebo máte oprávnění ke konkrétnímu prostředku privátního propojení. Požadovaná oprávnění jsou založená na typu prostředku privátního propojení v následujícím formátu: Microsoft. \<Provider> /<resource_type>/privateEndpointConnectionApproval/action
 - **Ruční** požadavek, pokud nemáte požadovaná oprávnění a přejete si požádat o přístup. Zahájí se schvalovací pracovní postup. Privátní koncový bod a další připojení privátního koncového bodu se vytvoří ve stavu Čeká na vyřízení. Za schválení připojení je zodpovědný vlastník prostředku služby Private Link. Po schválení je povolený privátní koncový bod pro normální odesílání provozu, jak je znázorněno v následujícím diagramu pracovního postupu schválení.  
 
 ![schválení pracovního postupu](media/private-endpoint-overview/private-link-paas-workflow.png)
@@ -118,15 +118,15 @@ Podrobné informace o osvědčených postupech a doporučeních pro konfiguraci 
 Následující tabulka obsahuje seznam známých omezení při použití privátních koncových bodů: 
 
 
-|Omezení |Popis |Omezení rizik  |
+|Omezení |Description |Omezení rizik  |
 |---------|---------|---------|
 |Pravidla skupiny zabezpečení sítě (NSG) a uživatelsky definované trasy se nevztahují na soukromý koncový bod.    |NSG se nepodporuje u privátních koncových bodů. V případě, že k podsítím obsahujícím soukromý koncový bod může být přidruženo NSG, pravidla nebudou platná pro přenosy zpracovávané privátním koncovým bodem. K nasazení privátních koncových bodů v podsíti je nutné, aby bylo [vynucování zásad sítě zakázané](disable-private-endpoint-network-policy.md) . NSG se pořád vynutil na jiných úlohách hostovaných ve stejné podsíti. Při směrování v každé podsíti klienta bude použita předpona/32, změna výchozího chování směrování vyžaduje podobný UDR  | Řízení provozu pomocí pravidel NSG pro odchozí přenosy na zdrojových klientech. Nasaďte jednotlivé trasy s předponou/32, abyste mohli přepsat trasy privátních koncových bodů. Protokoly toku NSG a informace o monitorování pro odchozí připojení se pořád podporují a dají se použít.        |
 
 
 ## <a name="next-steps"></a>Další kroky
-- [Vytvoření privátního koncového bodu pro SQL Database Server pomocí portálu](create-private-endpoint-portal.md)
-- [Vytvoření privátního koncového bodu pro SQL Database Server pomocí PowerShellu](create-private-endpoint-powershell.md)
-- [Vytvoření privátního koncového bodu pro SQL Database Server pomocí rozhraní příkazového řádku](create-private-endpoint-cli.md)
+- [Vytvoření privátního koncového bodu pro SQL Database pomocí portálu](create-private-endpoint-portal.md)
+- [Vytvoření privátního koncového bodu pro SQL Database pomocí prostředí PowerShell](create-private-endpoint-powershell.md)
+- [Vytvoření privátního koncového bodu pro SQL Database pomocí rozhraní příkazového řádku](create-private-endpoint-cli.md)
 - [Vytvoření privátního koncového bodu pro účet úložiště pomocí portálu](create-private-endpoint-storage-portal.md)
 - [Vytvoření privátního koncového bodu pro účet Azure Cosmos pomocí portálu](../cosmos-db/how-to-configure-private-endpoints.md)
 - [Vytvoření vlastní služby privátního propojení pomocí Azure PowerShell](create-private-link-service-powershell.md)

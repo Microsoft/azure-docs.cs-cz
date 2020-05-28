@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: db80c11c3b6eab3b7e682878e479729f4787a40b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 894eecc7746ddb1352708f2dfe5d6d2d53cdd8c9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82086092"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021649"
 ---
 # <a name="use-azure-active-directory-authentication-for-authentication-with-synapse-sql"></a>Použití ověřování Azure Active Directory pro ověřování pomocí synapse SQL
 
@@ -22,7 +22,7 @@ Ověřování Azure Active Directory je mechanismus připojení ke [službě Azu
 Pomocí ověřování Azure AD můžete centrálně spravovat identity uživatelů, kteří mají přístup k Azure synapse, a zjednodušit tak správu oprávnění. Mezi jeho výhody patří následující:
 
 - Nabízí alternativu k pravidelnému ověřování uživatelského jména a hesla.
-- Pomáhá zastavit šíření identit uživatelů napříč databázovými servery.
+- Pomáhá zastavit šíření identit uživatelů napříč servery.
 - Umožňuje otočení hesla na jednom místě.
 - Zákazníci můžou spravovat oprávnění pomocí externích skupin (Azure AD).
 - Může eliminovat ukládání hesel povolením integrovaného ověřování systému Windows a dalších forem ověřování, které Azure Active Directory podporuje.
@@ -70,7 +70,7 @@ Použití účtu skupiny jako správce vylepšuje spravovatelnost tím, že umo�
 
 ## <a name="permissions"></a>Oprávnění
 
-Chcete-li vytvořit nové uživatele, musíte mít `ALTER ANY USER` v databázi oprávnění. `ALTER ANY USER` Oprávnění lze udělit libovolnému uživateli databáze. `ALTER ANY USER` Oprávnění je také uchováváno pomocí účtů správců serveru a uživatelů databáze s oprávněním `CONTROL ON DATABASE` nebo `ALTER ON DATABASE` pro tuto databázi a členy `db_owner` databázové role.
+Chcete-li vytvořit nové uživatele, musíte mít `ALTER ANY USER` v databázi oprávnění. `ALTER ANY USER`Oprávnění lze udělit libovolnému uživateli databáze. `ALTER ANY USER`Oprávnění je také uchováváno pomocí účtů správců serveru a uživatelů databáze s `CONTROL ON DATABASE` `ALTER ON DATABASE` oprávněním nebo pro tuto databázi a členy `db_owner` databázové role.
 
 Pokud chcete vytvořit uživatele databáze s omezením v synapse SQL, musíte se k databázi nebo instanci připojit pomocí identity Azure AD. Chcete-li vytvořit prvního uživatele databáze s omezením, je nutné se připojit k databázi pomocí správce Azure AD (který je vlastníkem databáze). 
 
@@ -85,11 +85,11 @@ Jakékoli ověřování Azure AD je možné pouze v případě, že byl vytvoře
   - Importované členy z jiných členů služby Azure AD, kteří jsou nativní nebo federované domény.
   - Skupiny služby Active Directory se vytvořily jako skupiny zabezpečení.
 
-- Uživatelé Azure AD, kteří jsou součástí skupiny, která má `db_owner` roli serveru, nemůžou používat SYNTAXI **[Create Database scoped Credential](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** v synapse SQL. Zobrazí se následující chyba:
+- Uživatelé Azure AD, kteří jsou součástí skupiny, která má `db_owner` roli serveru, nemůžou používat syntaxi **[Create Database scoped Credential](/sql/t-sql/statements/create-database-scoped-credential-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)** v synapse SQL. Zobrazí se následující chyba:
 
     `SQL Error [2760] [S0001]: The specified schema name 'user@mydomain.com' either does not exist or you do not have permission to use it.`
 
-    Udělte `db_owner` roli přímo individuálnímu uživateli služby Azure AD, aby se zmírnil problém s **rozsahem pro vytvoření databáze s oborem přihlašovacích údajů** .
+    Udělte `db_owner` roli přímo individuálnímu uživateli služby Azure AD, aby se zmírnil problém s **rozsahem pro vytvoření databáze s OBORem přihlašovacích údajů** .
 
 - Tyto systémové funkce vrací hodnoty NULL při spuštění v rámci objektů zabezpečení Azure AD:
 

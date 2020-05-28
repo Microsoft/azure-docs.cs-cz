@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b8a01b5f2f5ec64fea014468356408220f9c4f1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4de0686dbca803b9008c1b56c512a90fcfe2b3c0
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76721366"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022431"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Přesun dat do SQL Serveru na virtuálním počítači Azure
 
@@ -38,7 +38,7 @@ V tomto dokumentu se předpokládá, že příkazy SQL se spouštějí z SQL Ser
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Požadavky
+## <a name="prerequisites"></a><a name="prereqs"></a>Požadovaný
 V tomto kurzu se předpokládá, že máte následující:
 
 * **Předplatné Azure**. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
@@ -62,7 +62,7 @@ BCP je nástroj příkazového řádku nainstalovaný s SQL Server a je jedním 
 >
 >
 
-1. Ujistěte se, že databáze a tabulky jsou vytvořeny v cílové SQL Server databázi. Tady je příklad, jak to udělat pomocí příkazů `Create Database` a: `Create Table`
+1. Ujistěte se, že databáze a tabulky jsou vytvořeny v cílové SQL Server databázi. Tady je příklad, jak to udělat pomocí `Create Database` `Create Table` příkazů a:
 
     ```sql
     CREATE DATABASE <database_name>
@@ -174,7 +174,7 @@ Můžete také použít následující strategie migrace:
 Popisujeme všechny tyto možnosti:
 
 ### <a name="deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard"></a>Nasazení databáze SQL Server do průvodce Microsoft Azure VM VM
-**Průvodce nasazením databáze SQL Server do virtuálního počítače s Microsoft Azure** je jednoduchý a doporučený způsob, jak přesunout data z místní instance SQL Server do SQL Server na virtuálním počítači Azure. Podrobné pokyny a další informace o dalších alternativách najdete v tématu [migrace databáze do SQL Server na virtuálním počítači Azure](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md).
+**Průvodce nasazením databáze SQL Server do virtuálního počítače s Microsoft Azure** je jednoduchý a doporučený způsob, jak přesunout data z místní instance SQL Server do SQL Server na virtuálním počítači Azure. Podrobné pokyny a další informace o dalších alternativách najdete v tématu [migrace databáze do SQL Server na virtuálním počítači Azure](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md).
 
 ### <a name="export-to-flat-file"></a><a name="export-flat-file"></a>Exportovat do plochého souboru
 K hromadnému exportu dat z místních SQL Server, jak je popsáno v tématu [Hromadný import a export dat (SQL Server)](https://msdn.microsoft.com/library/ms175937.aspx) , lze použít různé metody. V tomto dokumentu se jako příklad pokryje program hromadného kopírování (BCP). Jakmile budou data exportována do plochého souboru, lze je pomocí hromadného importu importovat do jiného systému SQL Server.
@@ -210,9 +210,9 @@ Snímek obrazovky možností zálohování a obnovení databáze z SQL Server Ma
 ![Nástroj pro import SQL Server][1]
 
 ## <a name="resources"></a>Zdroje a prostředky
-[Migrace databáze na SQL Server na virtuálním počítači Azure](../../virtual-machines/windows/sql/virtual-machines-windows-migrate-sql.md)
+[Migrace databáze na SQL Server na virtuálním počítači Azure](../../azure-sql/virtual-machines/windows/migrate-to-vm-from-sql-server.md)
 
-[SQL Server na Azure Virtual Machines – přehled](../../virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md)
+[SQL Server na Azure Virtual Machines – přehled](../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
 
 [1]: ./media/move-sql-server-virtual-machine/sqlserver_builtin_utilities.png
 [2]: ./media/move-sql-server-virtual-machine/database_migration_wizard.png

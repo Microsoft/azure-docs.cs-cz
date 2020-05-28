@@ -4,12 +4,12 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 9df08151e4af6e82a775b3ee99dab88134a2f032
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: e0ff4e91ed55a37e710a5655e7da9ec76b7d1dd5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82784091"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014688"
 ---
 ## <a name="next-steps"></a>Další kroky
 
@@ -17,9 +17,9 @@ Po povolení Integrace Azure Key Vault můžete povolit SQL Server šifrování 
 
 Existuje několik forem šifrování, které můžete využít k těmto akcím:
 
-* [Transparentní šifrování dat](https://msdn.microsoft.com/library/bb934049.aspx)
-* [Šifrovaná zálohování](https://msdn.microsoft.com/library/dn449489.aspx)
-* [Šifrování na úrovni sloupce (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)
+* [Transparentní šifrování dat](/sql/relational-databases/security/encryption/transparent-data-encryption)
+* [Šifrovaná zálohování](/sql/relational-databases/backup-restore/backup-encryption)
+* [Šifrování na úrovni sloupce (CLE)](/sql/t-sql/functions/cryptographic-functions-transact-sql)
 
 Následující skripty Transact-SQL poskytují příklady pro každou z těchto oblastí.
 
@@ -142,8 +142,8 @@ SELECT CONVERT(VARCHAR, DECRYPTBYKEY(@DATA));
 CLOSE SYMMETRIC KEY DATA_ENCRYPTION_KEY;
 ```
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 Další informace o tom, jak tyto funkce šifrování používat, najdete v tématu [použití funkce EKM s SQL Server funkcemi šifrování](https://msdn.microsoft.com/library/dn198405.aspx#UsesOfEKM).
 
-Všimněte si, že kroky v tomto článku předpokládají, že už máte SQL Server spuštěnou na virtuálním počítači Azure. Pokud ne, přečtěte si téma [zřízení virtuálního počítače s SQL Server v Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md). Další pokyny týkající se spuštění SQL Server na virtuálních počítačích Azure najdete v tématu [SQL Server na azure Virtual Machines přehled](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Všimněte si, že kroky v tomto článku předpokládají, že už máte SQL Server spuštěnou na virtuálním počítači Azure. Pokud ne, přečtěte si téma [zřízení virtuálního počítače s SQL Server v Azure](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md). Další pokyny týkající se spuštění SQL Server na virtuálních počítačích Azure najdete v tématu [SQL Server na azure Virtual Machines přehled](../articles/azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).

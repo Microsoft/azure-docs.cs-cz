@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: dba0dd4e52913e0998b088fb2ccf90c98f0a89c2
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 2c8c0430e8a1f54daa99d3fd986bae0c3eaf7f61
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83821490"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017596"
 ---
 ## <a name="application-performance-indicators"></a>Indikátory výkonu aplikace
 
@@ -92,7 +92,7 @@ Nejlepším způsobem, jak změřit požadavky na výkon vaší aplikace, je pou
 
 Čítače výkonu jsou k dispozici pro procesor, paměť a každý logický disk a fyzický disk serveru. Když použijete disky Premium Storage s virtuálním počítačem, čítače fyzického disku jsou pro každý disk Storage úrovně Premium a čítače logických disků jsou pro každý svazek vytvořený na discích úložiště úrovně Premium. Je nutné zachytit hodnoty pro disky, které hostují zatížení vaší aplikace. Pokud existuje mapování mezi logickými a fyzickými disky, můžete se podívat na čítače fyzického disku. v opačném případě se podívejte na čítače logických disků. V systému Linux příkaz iostat vygeneruje sestavu využití procesoru a disku. Sestava využití disku poskytuje statistiku pro každé fyzické zařízení nebo oddíl. Pokud máte databázový server s daty a protokoly na samostatných discích, shromážděte tato data pro oba disky. Následující tabulka popisuje čítače pro disky, procesory a paměť:
 
-| Čítač | Popis | PerfMon | Iostat |
+| Čítač | Description | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **Počet vstupně-výstupních operací za sekundu** |Počet vstupně-výstupních požadavků vydaných na disk úložiště za sekundu. |Čtení z disku/s <br> Zápisy na disk/s |TPS <br> r/s <br> w/s |
 | **Čtení a zápisy na disk** |% operací čtení a zápisu provedených na disku. |% Doby čtení disku <br> % Času zápisu na disk |r/s <br> w/s |
@@ -333,7 +333,7 @@ Důležitou konfigurací při proložení disku je velikost pruhu. Velikost nebo
 
 Pokud je například požadavek v/v generovaný vaší aplikací větší než velikost diskového pruhu, systém úložiště ho zapisuje přes hranice prokládaných jednotek na více než jednom disku. Pokud je čas na přístup k těmto datům, bude nutné vyhledat v rámci více jednotek Stripe, aby bylo možné požadavek dokončit. Kumulativní účinek takového chování může vést k výraznému snížení výkonu. Na druhou stranu platí, že pokud je velikost vstupně-výstupních operací menší než velikost pruhu, a pokud je náhodná, můžou požadavky na vstupně-výstupní operace přidat na stejný disk, který způsobuje kritické body, a nakonec zpomalit výkon v/v.
 
-V závislosti na typu zatížení, na kterém je aplikace spuštěná, vyberte vhodnou velikost pruhu. V případě náhodných malých vstupně-výstupních požadavků použijte menší velikost pruhu. Vzhledem k tomu, že velké sekvenční vstupně-výstupní požadavky používají větší velikost pruhu. Zjistěte doporučení pro velikost stripe pro aplikaci, kterou budete používat na Premium Storage. Pro SQL Server nakonfigurujte velikost Stripe 64 KB pro úlohy OLTP a 256 KB pro úlohy datových skladů. Další informace najdete v tématu [osvědčené postupy výkonu pro SQL Server na virtuálních počítačích Azure](../articles/virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md#disks-guidance) .
+V závislosti na typu zatížení, na kterém je aplikace spuštěná, vyberte vhodnou velikost pruhu. V případě náhodných malých vstupně-výstupních požadavků použijte menší velikost pruhu. Vzhledem k tomu, že velké sekvenční vstupně-výstupní požadavky používají větší velikost pruhu. Zjistěte doporučení pro velikost stripe pro aplikaci, kterou budete používat na Premium Storage. Pro SQL Server nakonfigurujte velikost Stripe 64 KB pro úlohy OLTP a 256 KB pro úlohy datových skladů. Další informace najdete v tématu [osvědčené postupy výkonu pro SQL Server na virtuálních počítačích Azure](../articles/azure-sql/virtual-machines/windows/performance-guidelines-best-practices.md#disks-guidance) .
 
 > [!NOTE]
 > Na virtuálním počítači řady DS 64 a na discích úrovně Premium úložiště na VIRTUÁLNÍm počítači řady GS můžete prokládat maximálně 32 disků úložiště úrovně Premium.

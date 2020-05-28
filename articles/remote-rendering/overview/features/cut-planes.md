@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/06/2020
 ms.topic: article
-ms.openlocfilehash: 5d641b573a1cad5cac6db6199f5bad5c06151c62
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 7adf9a9701eb2492f0b13a26af1dbaf8de631373
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83759077"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021360"
 ---
 # <a name="cut-planes"></a>Řezy roviny
 
@@ -60,11 +60,11 @@ void CreateCutPlane(ApiHandle<AzureSession> session, ApiHandle<Entity> ownerEnti
 
 Následující vlastnosti jsou zpřístupněny na komponentě vyjmuté roviny:
 
-* **Povoleno:** Vyjmuté plochy můžete dočasně vypnout tím, že tuto součást zakážete. Zakázané vyjmuté plochy neúčtují režii vykreslování a také se nepočítají s omezením globální vyjmuté plochy.
+* `Enabled`: Vyjmutím komponenty můžete dočasně vypnout vyjmuté plochy. Zakázané vyjmuté plochy neúčtují režii vykreslování a také se nepočítají s omezením globální vyjmuté plochy.
 
-* **Normální:** Určuje směr (+ X,-X, + Y,-Y, + Z,-Z), který je použit jako normální rovina. Tento směr je relativní vzhledem k orientaci entity vlastníka. Přesune a otočí entitu vlastníka pro přesné umístění.
+* `Normal`: Určuje směr (+ X,-X, + Y,-Y, + Z,-Z) se používá jako normální rovina. Tento směr je relativní vzhledem k orientaci entity vlastníka. Přesune a otočí entitu vlastníka pro přesné umístění.
 
-* **FadeColor** a **FadeLength:**
+* `FadeColor`a `FadeLength` :
 
   Pokud hodnota alfa *FadeColor* je nenulová, pixely blízko k vyjmuté rovině se rozstanou k části RGB v FadeColor. Síla alfa kanálu určuje, zda se bude zcela zvolna zobrazovat barvě slábnutí nebo pouze částečně. *FadeLength* definuje, přes jakou vzdálenost bude tato slábnutí probíhat.
 

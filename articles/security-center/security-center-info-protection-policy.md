@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/29/2019
 ms.author: memildin
-ms.openlocfilehash: 9c776a32b4a35c72fc40a16afb87db9896a763cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5120e7ca3a29f12066343e5c4a81d6e51278f9ef
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75611062"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020400"
 ---
 # <a name="customize-the-sql-information-protection-policy-in-azure-security-center-preview"></a>Přizpůsobení zásad SQL Information Protection v Azure Security Center (Preview)
  
@@ -29,7 +29,7 @@ Ochrana informací je pokročilá funkce zabezpečení pro zjišťování, klasi
 - Scénáře zabezpečení, jako je monitorování (auditování) a upozorňování na neobvyklé přístup k citlivým datům
 - Řízení přístupu a posílení zabezpečení úložišť dat obsahujících vysoce citlivá data
  
-[SQL Information Protection](../sql-database/sql-database-data-discovery-and-classification.md) implementuje toto paradigma pro vaše úložiště dat SQL, které se v současné době podporují pro Azure SQL Database. SQL Information Protection automaticky zjišťuje a klasifikuje potenciálně citlivá data, poskytuje mechanismus označování pro trvalé označení citlivých dat pomocí atributů klasifikace a poskytuje podrobný řídicí panel, který ukazuje stav klasifikace databáze. Kromě toho počítá sadu výsledků dotazu SQL, takže dotazy, které extrahují citlivá data, lze explicitně auditovat a data lze chránit. Další informace o Information Protection SQL najdete v tématu [Azure SQL Database zjišťování a klasifikace dat](../sql-database/sql-database-data-discovery-and-classification.md).
+[SQL Information Protection](../azure-sql/database/data-discovery-and-classification-overview.md) implementuje toto paradigma pro vaše úložiště dat SQL, které se v současné době podporují pro Azure SQL Database. SQL Information Protection automaticky zjišťuje a klasifikuje potenciálně citlivá data, poskytuje mechanismus označování pro trvalé označení citlivých dat pomocí atributů klasifikace a poskytuje podrobný řídicí panel, který ukazuje stav klasifikace databáze. Kromě toho počítá sadu výsledků dotazu SQL, takže dotazy, které extrahují citlivá data, lze explicitně auditovat a data lze chránit. Další informace o Information Protection SQL najdete v tématu [Azure SQL Database zjišťování a klasifikace dat](../azure-sql/database/data-discovery-and-classification-overview.md).
  
 Klasifikační mechanizmus je založen na dvou primárních konstrukcích, které tvoří klasifikaci klasifikace – **popisky** a **typy informací**.
 - **Labels** – hlavní atributy klasifikace, které slouží k definování úrovně citlivosti dat uložených ve sloupci. 
@@ -79,7 +79,7 @@ Po úplném definování a uložení zásad služby Information Protection se ta
  
 ## <a name="next-steps"></a>Další kroky
  
-V tomto článku jste se dozvěděli o definování zásad Information Protection SQL v Azure Security Center. Další informace o použití Information Protection SQL ke klasifikaci a ochraně citlivých dat ve vašich databázích SQL najdete v tématu [Azure SQL Database zjišťování a klasifikace dat](../sql-database/sql-database-data-discovery-and-classification.md). 
+V tomto článku jste se dozvěděli o definování zásad Information Protection SQL v Azure Security Center. Další informace o použití Information Protection SQL ke klasifikaci a ochraně citlivých dat ve vašich databázích SQL najdete v tématu [Azure SQL Database zjišťování a klasifikace dat](../azure-sql/database/data-discovery-and-classification-overview.md). 
 
 Další informace o zásadách zabezpečení a zabezpečení dat v Azure Security Center najdete v následujících článcích:
  

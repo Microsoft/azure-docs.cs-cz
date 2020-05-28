@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 928162282ca973811315728a07b4fbe40100324e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978048"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017575"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Rozšíření místních skupin dostupnosti Always On do Azure
 Skupiny dostupnosti Always On poskytují vysokou dostupnost pro skupiny databáze přidáním sekundárních replik. Tyto repliky umožňují při selhání převzít služby při selhání databáze. Kromě toho je lze použít k přesměrování zatížení a úloh pro zálohování.
@@ -41,7 +41,7 @@ V této části se dozvíte, jak pomocí **Průvodce přidáním repliky Azure**
 > [!IMPORTANT]
 > **Průvodce přidáním repliky Azure** podporuje jenom virtuální počítače vytvořené pomocí modelu nasazení Classic. Nová nasazení virtuálních počítačů by měla používat novější model Správce prostředků. Pokud používáte virtuální počítače s Správce prostředků, je nutné ručně přidat sekundární repliku Azure pomocí příkazů jazyka Transact-SQL (zde nejsou uvedeny). Tento průvodce nebude ve scénáři Správce prostředků fungovat.
 
-1. V rámci SQL Server Management Studio rozbalte položku**skupiny** > dostupnosti **Always On s vysokou dostupností** > **[název vaší skupiny dostupnosti]**.
+1. V rámci SQL Server Management Studio rozbalte položku skupiny dostupnosti **Always On s vysokou dostupností**  >  **Availability Groups**  >  **[název vaší skupiny dostupnosti]**.
 2. Klikněte pravým tlačítkem na **repliky dostupnosti**a pak klikněte na **Přidat repliku**.
 3. Ve výchozím nastavení se zobrazí **Průvodce přidáním repliky do skupiny dostupnosti** . Klikněte na **Další**.  Pokud jste v dolní části stránky během předchozího spuštění tohoto průvodce vybrali možnost tuto **stránku již příště nezobrazovat** , tato obrazovka se nezobrazí.
    
@@ -55,7 +55,7 @@ V této části se dozvíte, jak pomocí **Průvodce přidáním repliky Azure**
     ![SQL](./media/virtual-machines-windows-classic-sql-onprem-availability/IC742864.png)
 7. Každé pole na stránce se naplní hodnotami, které se použijí k vytvoření virtuálního počítače Azure, který bude hostovat repliku.
    
-   | Nastavení | Popis |
+   | Nastavení | Description |
    | --- | --- |
    | **Image** |Vyberte požadovanou kombinaci OS a SQL Server |
    | **Velikost virtuálního počítače** |Vyberte velikost virtuálního počítače, který nejlépe vyhovuje vašim obchodním potřebám. |
@@ -90,7 +90,7 @@ V této části se dozvíte, jak pomocí **Průvodce přidáním repliky Azure**
 Po vytvoření skupiny dostupnosti byste měli vytvořit naslouchací proces pro klienty pro připojení k replikám. Naslouchací procesy směrují příchozí připojení buď k primární replice, nebo k sekundární replice jen pro čtení. Další informace o posluchačích najdete v tématu [Konfigurace naslouchacího procesu interního nástroje pro skupiny dostupnosti Always On v Azure](../classic/ps-sql-int-listener.md).
 
 ## <a name="next-steps"></a>Další kroky
-Kromě používání **Průvodce přidáním repliky Azure** k rozšíření skupiny dostupnosti Always On do Azure můžete také některé úlohy SQL Server do Azure přesunout úplně. Informace o tom, jak začít, najdete v tématu [zřízení virtuálního počítače s SQL Server v Azure](../sql/virtual-machines-windows-portal-sql-server-provision.md).
+Kromě používání **Průvodce přidáním repliky Azure** k rozšíření skupiny dostupnosti Always On do Azure můžete také některé úlohy SQL Server do Azure přesunout úplně. Informace o tom, jak začít, najdete v tématu [zřízení virtuálního počítače s SQL Server v Azure](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
 
-Další témata související se spouštěním SQL Server ve virtuálních počítačích Azure najdete v tématu [SQL Server v Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md).
+Další témata související se spouštěním SQL Server ve virtuálních počítačích Azure najdete v tématu [SQL Server v Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md).
 

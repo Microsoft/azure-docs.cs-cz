@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: aa4881aef9f3a9ba5d19fb0b768f13a1eb372296
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 55ef2ee7d39d68804fe44c9d7a6eb0ee199e6109
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131421"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019856"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrace Azure Data Lake Storage z Gen1 na Gen2
 
@@ -79,7 +79,7 @@ Migrujte data, úlohy a aplikace pomocí vhodného vzoru. Doporučujeme, abyste 
    
 5. Aktualizujte skripty pro použití Data Lake Storage Gen2 [rutiny prostředí PowerShell](data-lake-storage-directory-file-acl-powershell.md)a [příkazy rozhraní příkazového řádku Azure CLI](data-lake-storage-directory-file-acl-cli.md).
    
-6. Vyhledejte odkazy URI, které obsahují řetězec `adl://` v souborech kódu nebo v poznámkových blocích datacihly, Apache Hive soubory HQL nebo jakýkoli jiný soubor, který se používá jako součást vašich úloh. Nahraďte tyto odkazy [identifikátorem URI Gen2 formátovaného](data-lake-storage-introduction-abfs-uri.md) nového účtu úložiště. Příklad: identifikátor URI Gen1: `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` může být. `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` 
+6. Vyhledejte odkazy URI, které obsahují řetězec `adl://` v souborech kódu nebo v poznámkových blocích datacihly, Apache Hive soubory HQL nebo jakýkoli jiný soubor, který se používá jako součást vašich úloh. Nahraďte tyto odkazy [identifikátorem URI Gen2 formátovaného](data-lake-storage-introduction-abfs-uri.md) nového účtu úložiště. Příklad: identifikátor URI Gen1: `adl://mydatalakestore.azuredatalakestore.net/mydirectory/myfile` může být `abfss://myfilesystem@mydatalakestore.dfs.core.windows.net/mydirectory/myfile` . 
 
 7. Nakonfigurujte zabezpečení svého účtu tak, aby zahrnovalo [role řízení přístupu na základě role (RBAC)](../common/storage-auth-aad-rbac-portal.md), [zabezpečení na úrovni souborů a složek](data-lake-storage-access-control.md)a [Azure Storage brány firewall a virtuální sítě](../common/storage-network-security.md).
 
@@ -103,7 +103,7 @@ Tato tabulka porovnává možnosti Gen1 s Gen2.
 |Podpora virtuální sítě|[Integrace virtuální sítě](../../data-lake-store/data-lake-store-network-security.md)|[Koncové body služby](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [privátní koncové body](../common/storage-private-endpoints.md)|
 |Vývojářské prostředí|[REST](../../data-lake-store/data-lake-store-data-operations-rest-api.md), [.NET](../../data-lake-store/data-lake-store-data-operations-net-sdk.md), [Java](../../data-lake-store/data-lake-store-get-started-java-sdk.md), [Python](../../data-lake-store/data-lake-store-data-operations-python.md), [PowerShell](../../data-lake-store/data-lake-store-get-started-powershell.md), [Azure CLI](../../data-lake-store/data-lake-store-get-started-cli-2.0.md)|Všeobecně dostupná – [REST](/rest/api/storageservices/data-lake-storage-gen2), [.NET](data-lake-storage-directory-file-acl-dotnet.md), [Java](data-lake-storage-directory-file-acl-java.md), [Python](data-lake-storage-directory-file-acl-python.md)<br>Public Preview – [JavaScript](data-lake-storage-directory-file-acl-javascript.md), [POWERSHELL](data-lake-storage-directory-file-acl-powershell.md), [Azure CLI](data-lake-storage-directory-file-acl-cli.md)|
 |Protokoly prostředků|Klasické protokoly<br>[Azure Monitor integrovaný](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klasické protokoly](../common/storage-analytics-logging.md) – všeobecně dostupné<br>Integrace se službou Azure monitor – TBD časová osa|
-|Ekosystém|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 a vyšší)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 a vyšší)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [SQL DW](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
+|Ekosystém|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 a vyšší)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 a vyšší)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
 <a id="migration-patterns" />
 

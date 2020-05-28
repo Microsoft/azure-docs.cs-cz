@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/26/2018
-ms.openlocfilehash: 74e381a9ad32acdaa8cbb719824d74ca6d339f30
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98f0eb89893ff7394390d2fc1fc77497f1bf948d
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418945"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019958"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 
@@ -35,7 +35,7 @@ Chcete-li přesunout data do nebo z úložiště dat, které Data Factory nepodp
 
 Pokud Azure Batch službu nepoužíváte, přečtěte si následující články:
 
-* [Azure Batch základy](../batch/batch-technical-overview.md) pro přehled služby Azure Batch.
+* [Azure Batch základy](../azure-sql/database/sql-database-paas-overview.md) pro přehled služby Azure Batch.
 * Rutina [New-AzBatchAccount](/powershell/module/az.batch/New-azBatchAccount) pro vytvoření účtu Azure Batch (nebo) [Azure Portal](../batch/batch-account-create-portal.md) k vytvoření účtu Azure Batch pomocí Azure Portal. Podrobné pokyny k používání rutiny najdete v článku [použití PowerShellu ke správě Azure Batch účtu](https://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx) .
 * Rutina [New-AzBatchPool](/powershell/module/az.batch/New-AzBatchPool) pro vytvoření fondu Azure Batch.
 
@@ -100,13 +100,13 @@ V této ukázce je soubor HelloWorld. exe vlastní aplikací uloženou ve složc
 
 V následující tabulce jsou popsány názvy a popisy vlastností, které jsou specifické pro tuto aktivitu.
 
-| Vlastnost              | Popis                              | Požaduje se |
+| Vlastnost              | Description                              | Vyžadováno |
 | :-------------------- | :--------------------------------------- | :------- |
-| jméno                  | Název aktivity v kanálu     | Ano      |
+| name                  | Název aktivity v kanálu     | Ano      |
 | description           | Text popisující, co aktivita dělá.  | Ne       |
-| type                  | U vlastní aktivity je typ aktivity **vlastní**. | Ano      |
+| typ                  | U vlastní aktivity je typ aktivity **vlastní**. | Ano      |
 | linkedServiceName     | Propojená služba s Azure Batch. Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md) .  | Ano      |
-| command               | Příkaz vlastní aplikace, která má být provedena. Pokud je aplikace již k dispozici na uzlu Azure Batch fondu, lze resourceLinkedService a folderPath přeskočit. Můžete například zadat příkaz, který bude `cmd /c dir`nativně podporován uzlem fondu služby Batch systému Windows. | Ano      |
+| command               | Příkaz vlastní aplikace, která má být provedena. Pokud je aplikace již k dispozici na uzlu Azure Batch fondu, lze resourceLinkedService a folderPath přeskočit. Můžete například zadat příkaz `cmd /c dir` , který bude nativně podporován uzlem fondu služby Batch systému Windows. | Ano      |
 | resourceLinkedService | Azure Storage propojených služeb k účtu úložiště, ve kterém je vlastní aplikace uložená. | Bez &#42;       |
 | folderPath            | Cesta ke složce vlastní aplikace a všech jejích závislostí<br/><br/>Pokud máte závislosti uložené v podsložkách – to znamená, že v hierarchické struktuře složek pod *FolderPath* – struktura složek se v současnosti při kopírování souborů do Azure Batch nesloučí. To znamená, že všechny soubory se zkopírují do jediné složky bez podsložek. Chcete-li toto chování obejít, zvažte komprimaci souborů, kopírování komprimovaného souboru a jeho rozzipovává pomocí vlastního kódu v požadovaném umístění. | Bez &#42;       |
 | referenceObjects      | Pole existujících propojených služeb a datových sad. Odkazované propojené služby a datové sady jsou předány do vlastní aplikace ve formátu JSON, aby váš vlastní kód mohl odkazovat na prostředky Data Factory | Ne       |
@@ -298,7 +298,7 @@ Activity Error section:
 "target": "MyCustomActivity"
 ```
 
-Pokud chcete spotřebovat obsah STDOUT. txt v podřízených aktivitách, můžete získat cestu k souboru STDOUT. txt ve výrazu "\@Activity (' MyCustomActivity '). Output. Outputs [0]".
+Pokud chcete spotřebovat obsah STDOUT. txt v podřízených aktivitách, můžete získat cestu k souboru STDOUT. txt ve výrazu " \@ Activity (' MyCustomActivity '). Output. Outputs [0]".
 
 > [!IMPORTANT]
 > - Soubory Activity. JSON, linkedServices. JSON a DataSets. JSON jsou uloženy ve složce runtime dávkové úlohy. V tomto příkladu jsou aktivity Activity. JSON, linkedServices. JSON a DataSets. JSON uložené v `"https://adfv2storage.blob.core.windows.net/adfjobs/\<GUID>/runtime/"` cestě. V případě potřeby je potřeba je vyčistit samostatně.
@@ -306,7 +306,7 @@ Pokud chcete spotřebovat obsah STDOUT. txt v podřízených aktivitách, může
 
 ## <a name="pass-outputs-to-another-activity"></a>Předání výstupů jiné aktivitě
 
-Můžete odesílat vlastní hodnoty z kódu v rámci vlastní aktivity zpátky do Azure Data Factory. Můžete to udělat tak, že je zapíšete do `outputs.json` aplikace z aplikace. Data Factory zkopíruje obsah `outputs.json` a připojí ho do výstupu aktivity jako hodnotu `customOutput` vlastnosti. (Omezení velikosti je 2 MB.) Pokud chcete spotřebovat obsah `outputs.json` v rámci podřízených aktivit, můžete získat hodnotu pomocí výrazu. `@activity('<MyCustomActivity>').output.customOutput`
+Můžete odesílat vlastní hodnoty z kódu v rámci vlastní aktivity zpátky do Azure Data Factory. Můžete to udělat tak, že je zapíšete do `outputs.json` aplikace z aplikace. Data Factory zkopíruje obsah `outputs.json` a připojí ho do výstupu aktivity jako hodnotu `customOutput` Vlastnosti. (Omezení velikosti je 2 MB.) Pokud chcete spotřebovat obsah `outputs.json` v rámci podřízených aktivit, můžete získat hodnotu pomocí výrazu `@activity('<MyCustomActivity>').output.customOutput` .
 
 ## <a name="retrieve-securestring-outputs"></a>Načtení výstupů SecureString
 
@@ -323,7 +323,7 @@ Hodnoty citlivých vlastností určené jako typ *SecureString*, jak je znázorn
 
 Tato serializace není skutečně zabezpečená a není určena k zabezpečení. Záměrem je pokyn Data Factory k maskování hodnoty na kartě monitorování.
 
-Chcete-li získat přístup k vlastnostem typu *SecureString* z vlastní aktivity `activity.json` , přečtěte si soubor, který je umístěn ve stejné složce jako vaše. EXE, deserializace JSON a pak přístup k vlastnosti JSON (extendedProperties => [propertyName] => Value).
+Chcete-li získat přístup k vlastnostem typu *SecureString* z vlastní aktivity, přečtěte si `activity.json` soubor, který je umístěn ve stejné složce jako vaše. EXE, deserializace JSON a pak přístup k vlastnosti JSON (extendedProperties => [propertyName] => Value).
 
 ## <a name="compare-v2-custom-activity-and-version-1-custom-dotnet-activity"></a><a name="compare-v2-v1"></a>Porovnání aktivity vlastní aktivity v2 a verze 1 (vlastní)
 
@@ -342,19 +342,19 @@ Následující tabulka popisuje rozdíly mezi vlastní aktivitou Data Factory v2
 |Jak je definována vlastní logika      |Poskytnutím spustitelného souboru      |Implementací knihovny DLL .NET      |
 |Spouštěcí prostředí vlastní logiky      |Windows nebo Linux      |Windows (.NET Framework 4.5.2)      |
 |Spouštění skriptů      |Podporuje spouštěné skripty přímo (například "cmd/c echo Hello World" na virtuálním počítači s Windows).      |Vyžaduje implementaci v knihovně DLL .NET.      |
-|Požadovaná datová sada      |Nepovinné      |Požadováno pro řetězení aktivit a předávání informací      |
+|Požadovaná datová sada      |Volitelné      |Požadováno pro řetězení aktivit a předávání informací      |
 |Předání informací z aktivity do vlastní logiky      |Prostřednictvím ReferenceObjects (LinkedServices a datových sad) a ExtendedProperties (vlastní vlastnosti)      |Prostřednictvím ExtendedProperties (vlastní vlastnosti), vstupních a výstupních datových sad      |
 |Načtení informací v vlastní logice      |Analyzuje soubor Activity. JSON, linkedServices. JSON a DataSets. JSON uložený ve stejné složce spustitelného souboru.      |Přes .NET SDK (.NET Frame 4.5.2)      |
-|protokolování      |Zápisy přímo do STDOUT      |Implementace protokolovacího nástroje v knihovně DLL .NET      |
+|Protokolování      |Zápisy přímo do STDOUT      |Implementace protokolovacího nástroje v knihovně DLL .NET      |
 
 Pokud máte existující kód .NET napsaný pro aktivitu rozhraní DotNet verze 1 (vlastní), musíte upravit kód, aby fungoval s aktuální verzí vlastní aktivity. Aktualizujte kód podle následujících pokynů vysoké úrovně:
 
   - Změňte projekt z knihovny tříd .NET na konzolovou aplikaci.
-  - Spusťte aplikaci pomocí `Main` metody. `Execute` Metoda `IDotNetActivity` rozhraní již není požadována.
+  - Spusťte aplikaci pomocí `Main` metody. `Execute`Metoda `IDotNetActivity` rozhraní již není požadována.
   - Přečtěte si a analyzujte propojené služby, datové sady a aktivity pomocí serializátoru JSON a ne jako objekty silného typu. Předejte hodnoty požadovaných vlastností do vaší hlavní logiky vlastního kódu. Jako příklad se podívejte na předchozí kód dotazů. exe.
   - Objekt protokolovacího nástroje již není podporován. Výstup z spustitelného souboru lze vytisknout do konzoly nástroje a je uložen do STDOUT. txt.
   - Balíček NuGet Microsoft. Azure. Management. DataFactory už není potřeba.
-  - Zkompilujte kód, nahrajte spustitelný soubor a jeho závislosti do Azure Storage a definujte cestu ve `folderPath` vlastnosti.
+  - Zkompilujte kód, nahrajte spustitelný soubor a jeho závislosti do Azure Storage a definujte cestu ve `folderPath` Vlastnosti.
 
 Kompletní vzorek, jak se komplexní ukázka knihovny DLL a kanálu, která je popsaná v článku Data Factory verze 1, [používá vlastní aktivity v kanálu Azure Data Factory](https://docs.microsoft.com/azure/data-factory/v1/data-factory-use-custom-activities) může být přepsána jako Data Factory vlastní aktivita, viz [Data Factory ukázka vlastní aktivity](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFv2CustomActivitySample).
 

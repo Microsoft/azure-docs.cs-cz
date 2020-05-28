@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: article
 ms.date: 12/12/2019
 ms.author: cherylmc
-ms.openlocfilehash: 48ecfcc0d6241e7926892a3ca1c9925b0dc07241
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fc5740fef87497d881f689f888e446dbf4d100e1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75436836"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019447"
 ---
 # <a name="move-a-public-peering-to-microsoft-peering"></a>Přesun veřejného partnerského vztahu do partnerskému vztahu Microsoftu
 
@@ -33,7 +33,7 @@ Pokud se chcete připojit k partnerskému vztahu Microsoftu, musíte nastavit a 
 
 Před konfigurací partnerského vztahu Microsoftu se můžete podívat na [asymetrické směrování s několika síťovými cestami](https://docs.microsoft.com/azure/expressroute/expressroute-asymmetric-routing) , které vám umožní mít upozornění asymetrického směrování.
 
-* Pokud používáte veřejný partnerský vztah a aktuálně máte pravidla sítě IP pro veřejné IP adresy, které se používají pro přístup k [Azure Storage](../storage/common/storage-network-security.md) nebo [Azure SQL Database](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md), musíte se UJISTIT, že fond IP adres NAT nakonfigurovaný s partnerským vztahem Microsoftu je obsažený v seznamu veřejných IP adres pro účet Azure Storage nebo účet Azure SQL.<br>
+* Pokud používáte veřejný partnerský vztah a aktuálně máte pravidla sítě IP pro veřejné IP adresy, které se používají pro přístup k [Azure Storage](../storage/common/storage-network-security.md) nebo [Azure SQL Database](../azure-sql/database/vnet-service-endpoint-rule-overview.md), musíte se UJISTIT, že fond IP adres NAT nakonfigurovaný s partnerským vztahem Microsoftu je obsažený v seznamu veřejných IP adres pro účet Azure Storage nebo účet Azure SQL.<br>
 * Aby bylo možné přejít na partnerský vztah Microsoftu bez výpadků, postupujte podle kroků v tomto článku v uvedeném pořadí.
 
 ## <a name="1-create-microsoft-peering"></a><a name="create"></a>1. vytvoření partnerského vztahu Microsoftu

@@ -7,12 +7,12 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: twooley
-ms.openlocfilehash: cf3893706afcb4c4cc5b90dd3d2431ecedc71d0a
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 154f8f1923874a3221597f1c0017fe99b5d31844
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73839063"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84015926"
 ---
 # <a name="copy-data-between-data-lake-storage-gen1-and-azure-sql-database-using-sqoop"></a>Kopírování dat mezi Data Lake Storage Gen1 a Azure SQL Database pomocí Sqoop
 
@@ -35,7 +35,7 @@ Než začnete, musíte mít následující:
 
 ## <a name="create-sample-tables-in-the-azure-sql-database"></a>Vytvoření ukázkových tabulek ve službě Azure SQL Database
 
-1. Začněte tím, že vytvoříte dvě ukázkové tabulky ve službě Azure SQL Database. Pomocí [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) nebo sady Visual Studio se připojte k databázi a spusťte následující dotazy.
+1. Začněte tím, že vytvoříte dvě ukázkové tabulky ve službě Azure SQL Database. Pomocí [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) nebo sady Visual Studio se připojte k databázi a spusťte následující dotazy.
 
     **Vytvořit Tabulka1**
 
@@ -81,7 +81,7 @@ Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakon
 
 ### <a name="import-data-from-azure-sql-database-into-data-lake-storage-gen1"></a>Import dat z Azure SQL Database do Data Lake Storage Gen1
 
-1. Přejděte do adresáře, kde jsou k dispozici balíčky Sqoop. Obvykle toto umístění je `/usr/hdp/<version>/sqoop/bin`.
+1. Přejděte do adresáře, kde jsou k dispozici balíčky Sqoop. Obvykle toto umístění je `/usr/hdp/<version>/sqoop/bin` .
 
 1. Importujte data ze služby **Tabulka1** do účtu Data Lake Storage Gen1. Použijte následující syntaxi:
 
@@ -89,7 +89,7 @@ Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakon
 
    Zástupný symbol **SQL-Database-Server-Name** představuje název serveru, na kterém běží databáze SQL Azure. zástupný symbol **SQL-Database-Name** představuje skutečný název databáze.
 
-   Například:
+   Třeba
 
        sqoop-import --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table1 --target-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1
 
@@ -113,11 +113,11 @@ Pro An HDInsight cluster již jsou k dispozici balíčky Sqoop. Pokud jste nakon
 
        sqoop-export --connect "jdbc:sqlserver://<sql-database-server-name>.database.windows.net:1433;username=<username>@<sql-database-server-name>;password=<password>;database=<sql-database-name>" --table Table2 --export-dir adl://<data-lake-storage-gen1-name>.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-   Například:
+   Třeba
 
        sqoop-export --connect "jdbc:sqlserver://mysqoopserver.database.windows.net:1433;username=twooley@mysqoopserver;password=<password>;database=mysqoopdatabase" --table Table2 --export-dir adl://myadlsg1store.azuredatalakestore.net/Sqoop/SqoopImportTable1 --input-fields-terminated-by ","
 
-1. Ověřte, že se data nahrála do SQL Database tabulky. Pomocí [SQL Server Management Studio](../sql-database/sql-database-connect-query-ssms.md) nebo sady Visual Studio se připojte k Azure SQL Database a pak spusťte následující dotaz.
+1. Ověřte, že se data nahrála do SQL Database tabulky. Pomocí [SQL Server Management Studio](../azure-sql/database/connect-query-ssms.md) nebo sady Visual Studio se připojte k Azure SQL Database a pak spusťte následující dotaz.
 
        SELECT * FROM TABLE2
 

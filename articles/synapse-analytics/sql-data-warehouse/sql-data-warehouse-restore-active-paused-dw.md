@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6fa8bd42eb067124ab6ea1db77e2f3d6fba79638
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d092baacd202bdb4d0bbe98f4119621c9d916b4
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745212"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020247"
 ---
 # <a name="restore-an-existing-sql-pool"></a>Obnovit existující fond SQL
 
@@ -24,7 +24,7 @@ V tomto článku se dozvíte, jak obnovit existující fond SQL ve službě Azur
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-**Ověřte svoji kapacitu DTU.** Každý fond je hostovaný SQL serverem (například myserver.database.windows.net), který má výchozí kvótu DTU. Ověřte, zda má SQL Server dostatek zbývajících kvót DTU pro obnovenou databázi. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
+**Ověřte svoji kapacitu DTU.** Každý fond je hostovaný [logickým SQL serverem](../../azure-sql/database/logical-servers.md) (například MyServer.Database.Windows.NET), který má výchozí kvótu DTU. Ověřte, že server má pro obnovenou databázi dostatečný počet zbývajících kvót DTU. Informace o tom, jak vypočítat potřebné DTU nebo požádat o více DTU, najdete v tématu [vyžádání změny kvóty DTU](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -46,19 +46,20 @@ Pokud chcete obnovit existující fond SQL z bodu obnovení, použijte rutinu [R
 5. Vyberte požadovaný bod obnovení pomocí RestorePointCreationDate.
 
 6. Obnovte fond SQL na požadovaný bod obnovení pomocí rutiny [Restore-AzSqlDatabase](/powershell/module/az.sql/restore-azsqldatabase?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) prostředí PowerShell.
-        1. Pokud chcete obnovit fond SQL na jiný logický Server, nezapomeňte zadat jiný název logického serveru.  Tento logický Server může být taky v jiné skupině prostředků a oblasti.
-        2. K obnovení do jiného předplatného použijte tlačítko přesunout, aby se logický Server přesunul do jiného předplatného.
+
+    1. Chcete-li obnovit fond SQL na jiný server, nezapomeňte zadat jiný název serveru.  Tento server může být také v jiné skupině prostředků a oblasti.
+    2. K obnovení do jiného předplatného použijte tlačítko přesunout a přesuňte server do jiného předplatného.
 
 7. Ověřte, zda je obnovený fond SQL online.
 
-8. Po dokončení obnovení můžete po obnovení nakonfigurovat obnovený fond SQL pomocí [Konfigurace databáze](../../sql-database/sql-database-disaster-recovery.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
+8. Po dokončení obnovení můžete po obnovení nakonfigurovat obnovený fond SQL pomocí [Konfigurace databáze](../../azure-sql/database/disaster-recovery-guidance.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json#configure-your-database-after-recovery).
 
 ```Powershell
 
 $SubscriptionName="<YourSubscriptionName>"
 $ResourceGroupName="<YourResourceGroupName>"
 $ServerName="<YourServerNameWithoutURLSuffixSeeNote>"  # Without database.windows.net
-#$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different logical server.
+#$TargetResourceGroupName="<YourTargetResourceGroupName>" # uncomment to restore to a different server.
 #$TargetServerName="<YourtargetServerNameWithoutURLSuffixSeeNote>"  
 $DatabaseName="<YourDatabaseName>"
 $NewDatabaseName="<YourDatabaseName>"
@@ -79,7 +80,7 @@ $PointInTime="<RestorePointCreationDate>"
 # Restore database from a restore point
 $RestoredDatabase = Restore-AzSqlDatabase –FromPointInTimeBackup –PointInTime $PointInTime -ResourceGroupName $Database.ResourceGroupName -ServerName $Database.ServerName -TargetDatabaseName $NewDatabaseName –ResourceId $Database.ResourceID
 
-# Use the following command to restore to a different logical server
+# Use the following command to restore to a different server
 #$RestoredDatabase = Restore-AzSqlDatabase –FromPointInTimeBackup –PointInTime $PointInTime -ResourceGroupName $Database.ResourceTargetGroupName -ServerName $TargetServerName -TargetDatabaseName $NewDatabaseName –ResourceId $Database.ResourceID
 
 # Verify the status of restored database
@@ -89,13 +90,13 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-sql-pool-through-the-azure-portal"></a>Obnovte stávající fond SQL prostřednictvím Azure Portal
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 2. Přejděte do fondu SQL, ze kterého chcete obnovit.
 3. V horní části okna Přehled vyberte **obnovit**.
 
     ![ Obnovení – přehled](./media/sql-data-warehouse-restore-active-paused-dw/restoring-01.png)
 
-4. Vyberte buď **body automatického obnovení** nebo **body obnovení definované uživatelem**. Pokud fond SQL neobsahuje žádné body automatického obnovení, počkejte několik hodin nebo před obnovením vytvořte uživatelem definovaný bod obnovení. V případě uživatelem definovaných bodů obnovení vyberte existující nebo vytvořte novou. V případě **serveru**můžete vybrat logický Server v jiné skupině prostředků a oblasti nebo vytvořit nový. Po zadání všech parametrů klikněte na **zkontrolovat + obnovit**.
+4. Vyberte buď **body automatického obnovení** nebo **body obnovení definované uživatelem**. Pokud fond SQL neobsahuje žádné body automatického obnovení, počkejte několik hodin nebo před obnovením vytvořte uživatelem definovaný bod obnovení. V případě uživatelem definovaných bodů obnovení vyberte existující nebo vytvořte novou. V případě **serveru**můžete vybrat server v jiné skupině prostředků a oblasti nebo vytvořit nový. Po zadání všech parametrů klikněte na **zkontrolovat + obnovit**.
 
     ![Automatické body obnovení](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 

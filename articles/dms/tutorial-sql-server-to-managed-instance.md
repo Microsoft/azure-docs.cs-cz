@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 416be7de4b3cef4fb6e1bcfd09d934937f8c96d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 240e0a6469f16adee971492e70d88479c6a0bbd9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297726"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020910"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-offline-using-dms"></a>Kurz: migrace SQL Server do Azure SQL Database spravované instance offline pomocí DMS
 
-Pomocí Azure Database Migration Service můžete migrovat databáze z místní instance SQL Server do [spravované instance Azure SQL Database](../sql-database/sql-database-managed-instance.md). Další metody, které mohou vyžadovat určité ruční úsilí, najdete v článku [migrace instance SQL Server do Azure SQL Database spravované instance](../sql-database/sql-database-managed-instance-migrate.md).
+Pomocí Azure Database Migration Service můžete migrovat databáze z místní instance SQL Server do [spravované instance Azure SQL Database](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md). Další metody, které mohou vyžadovat určité ruční úsilí, najdete v článku [migrace instance SQL Server do Azure SQL Database spravované instance](../azure-sql/managed-instance/migrate-to-instance-from-sql-server.md).
 
 V tomto kurzu migrujete databázi **Adventureworks2012** z místní instance SQL Server do spravované instance SQL Database pomocí Azure Database Migration Service.
 
@@ -243,5 +243,5 @@ Po vytvoření instance služby ji vyhledejte na webu Azure Portal, otevřete ji
 ## <a name="next-steps"></a>Další kroky
 
 - Kurz, ve kterém se dozvíte, jak migrovat databázi do spravované instance pomocí příkazu T-SQL Restore, najdete v tématu [obnovení zálohy do spravované instance pomocí příkazu RESTORE](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md).
-- Informace o spravované instanci najdete v tématu [co je spravovaná instance](../sql-database/sql-database-managed-instance.md).
-- Informace o připojení aplikací ke spravované instanci najdete v tématu [připojení aplikací](../sql-database/sql-database-managed-instance-connect-app.md).
+- Informace o spravované instanci najdete v tématu [co je spravovaná instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
+- Informace o připojení aplikací ke spravované instanci najdete v tématu [připojení aplikací](../azure-sql/managed-instance/connect-application-instance.md).

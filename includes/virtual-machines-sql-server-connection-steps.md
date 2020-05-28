@@ -4,15 +4,15 @@ ms.service: virtual-machines-sql
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: jroth
-ms.openlocfilehash: 297317ff33d88d6390220980ef35f2538579e310
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d679767f1a4be3ecdcf1811662c72dbbe2df33a0
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67174948"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014758"
 ---
 ### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>Otevření portů TCP v bráně Windows Firewall pro výchozí instanci databázového stroje
-1. Pomocí Vzdálené plochy se připojte k virtuálnímu počítači. Podrobné pokyny pro připojení k virtuálnímu počítači najdete v tématu věnovaném [otevření virtuálního počítače SQL pomocí Vzdálené plochy](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#remotedesktop).
+1. Pomocí Vzdálené plochy se připojte k virtuálnímu počítači. Podrobné pokyny pro připojení k virtuálnímu počítači najdete v tématu věnovaném [otevření virtuálního počítače SQL pomocí Vzdálené plochy](../articles/azure-sql/virtual-machines/windows/create-sql-vm-portal.md#remotedesktop).
 2. Jakmile se přihlásíte, zadejte na obrazovce Start **WF. msc**a potom stiskněte ENTER.
    
     ![Spuštění programu brány firewall](./media/virtual-machines-sql-server-connection-steps/12Open-WF.png)
@@ -67,7 +67,7 @@ Databázový stroj SQL Serveru nemůže používat ověřování systému Window
 5. Kliknutím na **OK** v dialogovém okně SQL Server Management Studio potvrďte požadavek na restartování SQL Serveru.
 6. V Průzkumníku objektů klikněte pravým tlačítkem na server a potom klikněte na **Restartovat**. (Pokud je spuštěný agent systému SQL Server, musí se také restartovat.)
    
-    ![Restartování](./media/virtual-machines-sql-server-connection-steps/22Restart2.png)
+    ![Restartovat](./media/virtual-machines-sql-server-connection-steps/22Restart2.png)
 7. Kliknutím na **Ano** v dialogovém okně SQL Server Management Studio vyjádříte souhlas s restartováním SQL Serveru.
 
 ### <a name="create-sql-server-authentication-logins"></a>Vytvoření účtů ověřování serveru SQL

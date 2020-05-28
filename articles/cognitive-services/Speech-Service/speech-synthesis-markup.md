@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/23/2020
 ms.author: trbye
-ms.openlocfilehash: 8ec4c87dc4f19c140c5ac02779c5551016dfb0b3
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 855feaf9b5b47b7b725ee7927418a2b3a9e25393
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714317"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84017763"
 ---
 # <a name="improve-synthesis-with-speech-synthesis-markup-language-ssml"></a>Vylepšení syntézy pomocí jazyka SSML (Speech syntézy)
 
@@ -55,7 +55,7 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 **Atributy**
 
-| Atribut | Popis | Požadováno/volitelné |
+| Atribut | Description | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `version` | Určuje verzi specifikace SSML, která se používá k interpretaci značek dokumentu. Aktuální verze je 1,0. | Vyžadováno |
 | `xml:lang` | Určuje jazyk kořenového dokumentu. Hodnota může obsahovat malé písmeno, kód jazyka se dvěma písmeny (například `en` ), kód jazyka a zemi/oblast (například `en-US` ). | Vyžadováno |
@@ -75,11 +75,11 @@ Každý dokument SSML je vytvořen pomocí SSML prvků (nebo značek). Tyto prvk
 
 **Atributy**
 
-| Atribut | Popis | Požadováno/volitelné |
+| Atribut | Description | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Vyžadováno |
 
-**Příklad**
+**Případě**
 
 > [!NOTE]
 > V tomto příkladu se používá `en-US-AriaRUS` hlas. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech).
@@ -98,7 +98,7 @@ V rámci `speak` elementu můžete zadat více hlasů pro výstup textu na řeč
 
 **Atributy**
 
-| Atribut | Popis | Požadováno/volitelné |
+| Atribut | Description | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `name` | Identifikuje hlas používaný pro výstup textu na řeč. Úplný seznam podporovaných hlasů najdete v tématu [Podpora jazyků](language-support.md#text-to-speech). | Vyžadováno |
 
@@ -173,7 +173,7 @@ speechConfig!.setPropertyTo(
 
 ---
 
-**Příklad**
+**Případě**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -208,13 +208,13 @@ Změny se aplikují na úrovni věty a styl se liší podle hlasu. Pokud styl ne
 
 **Atributy**
 
-| Atribut | Popis | Požadováno/volitelné |
+| Atribut | Description | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `style` | Určuje styl speaking. V současné době jsou styly mluvené řeči specifické pro hlas. | Vyžaduje se, když se upraví styl speakování pro neuronové hlas. Pokud používáte `mstts:express-as` , musí být zadán styl. Pokud je zadána neplatná hodnota, bude tento prvek ignorován. |
 
 Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý neuronové hlas podporovány.
 
-| Hlas                   | Styl                     | Popis                                                 |
+| Hlas                   | Styl                     | Description                                                 |
 |-------------------------|---------------------------|-------------------------------------------------------------|
 | `en-US-AriaNeural`      | `style="newscast"`        | Vyjadřuje formální a profesionální tón pro zprávy mluveného komentáře. |
 |                         | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  |
@@ -227,7 +227,7 @@ Pomocí této tabulky můžete určit, které mluvené styly jsou pro každý ne
 |                         | `style="lyrical"`         | Vyjadřuje emoce v Melodic a Sentimental         |   
 | `zh-CN-YunyangNeural`   | `style="customerservice"` | Vyjadřuje uživatelsky přívětivý a užitečný tón pro zákaznickou podporu.  | 
 
-**Příklad**
+**Případě**
 
 Tento fragment SSML ukazuje, jak se `<mstts:express-as>` prvek používá ke změně stylu speakování na `cheerful` .
 
@@ -258,12 +258,12 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 
 **Atributy**
 
-| Atribut | Popis | Požadováno/volitelné |
+| Atribut | Description | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `strength` | Určuje relativní dobu trvání pozastavení pomocí jedné z následujících hodnot:<ul><li>žádné</li><li>x – slabý</li><li>slabé</li><li>střední (výchozí)</li><li>silnější</li><li>x – silné</li></ul> | Volitelné |
 | `time` | Určuje absolutní dobu trvání pauzy v sekundách nebo milisekundách. Příklady platných hodnot jsou `2s` a.`500` | Volitelné |
 
-| Obsahem                      | Popis |
+| Obsahem                      | Description |
 |-------------------------------|-------------|
 | Žádná, nebo pokud není zadána žádná hodnota | 0 MS        |
 | x – slabý                        | 250 ms      |
@@ -272,7 +272,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 | silnější                        | 1000 MS     |
 | x – silné                      | 1250 MS     |
 
-**Příklad**
+**Případě**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -297,7 +297,7 @@ Pomocí `break` elementu vložte pauzy (nebo přerušit) mezi slova nebo Zabraň
 <s></s>
 ```
 
-**Příklad**
+**Případě**
 
 ```XML
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -328,9 +328,9 @@ Fonetické abecedy se skládají z telefonů, které jsou tvořeny písmeny, č�
 
 **Atributy**
 
-| Atribut | Popis | Požadováno/volitelné |
+| Atribut | Description | Požadováno/volitelné |
 |-----------|-------------|---------------------|
-| `alphabet` | Určuje fonetickou abecedu, která se použije při syntetizování výslovnosti řetězce v `ph` atributu. Řetězec určující abecedu musí být zadán malými písmeny. Níže jsou uvedené možné abecedy, které můžete zadat.<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Mezinárodní fonetická abeceda <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash; [Fonetická abeceda služby Speech](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash;Univerzální telefonní sada</li></ul><br>Abeceda se vztahuje pouze na `phoneme` prvek v prvku.. | Volitelné |
+| `alphabet` | Určuje fonetickou abecedu, která se použije při syntetizování výslovnosti řetězce v `ph` atributu. Řetězec určující abecedu musí být zadán malými písmeny. Níže jsou uvedené možné abecedy, které můžete zadat.<ul><li>`ipa`&ndash; <a href="https://en.wikipedia.org/wiki/International_Phonetic_Alphabet" target="_blank">Mezinárodní fonetická abeceda <span class="docon docon-navigate-external x-hidden-focus"></span> </a></li><li>`sapi`&ndash; [Fonetická abeceda služby Speech](speech-ssml-phonetic-sets.md)</li><li>`ups`&ndash; <a href="https://documentation.help/Microsoft-Speech-Platform-SDK-11/17509a49-cae7-41f5-b61d-07beaae872ea.htm" target="_blank">Univerzální telefonní sada</a></li></ul><br>Abeceda se vztahuje pouze na `phoneme` prvek v prvku.. | Volitelné |
 | `ph` | Řetězec obsahující telefony, které určují výslovnost slova v `phoneme` prvku. Pokud zadaný řetězec obsahuje nerozpoznané telefony, služba převod textu na mluvené slovo (TTS) odmítne celý dokument SSML a vytvoří žádný z výstupů řeči zadaného v dokumentu. | Vyžaduje se, pokud používáte fonémy. |
 
 **Příklady**
@@ -374,7 +374,7 @@ Někdy může služba převod textu na řeč přesně vyslovit slovo. Napříkla
 
 **Atributy**
 
-| Atribut | Popis                               | Požadováno/volitelné |
+| Atribut | Description                               | Požadováno/volitelné |
 |-----------|-------------------------------------------|---------------------|
 | `uri`     | Adresa externího dokumentu jiných pracovních prostorů | Povinná hodnota.           |
 
@@ -403,7 +403,7 @@ Chcete-li definovat způsob čtení více entit, můžete vytvořit vlastní lex
 
 `lexicon`Element obsahuje alespoň jeden `lexeme` element. Každý `lexeme` prvek obsahuje nejméně jeden `grapheme` element a jeden nebo více elementů `grapheme` , `alias` a `phoneme` . `grapheme`Element obsahuje text popisující <a href="https://www.w3.org/TR/pronunciation-lexicon/#term-Orthography" target="_blank">orthography <span class="docon docon-navigate-external x-hidden-focus"></span> </a>. `alias`Prvky slouží k označení výslovnosti zkratky nebo zkrácení podmínky. `phoneme`Element poskytuje text popisující způsob, jakým `lexeme` je vyslovení.
 
-Je důležité si uvědomit, že nemůžete přímo nastavit výslovnost slova pomocí vlastního slovníku. Pokud potřebujete nastavit výslovnost pro, nejdřív zadejte `alias` a přidružte k `phoneme` `alias` . Například:
+Je důležité si uvědomit, že nemůžete přímo nastavit výslovnost slova pomocí vlastního slovníku. Pokud potřebujete nastavit výslovnost pro, nejdřív zadejte `alias` a přidružte k `phoneme` `alias` . Příklad:
 
 ```xml
   <lexeme>
@@ -489,10 +489,10 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 
 **Atributy**
 
-| Atribut | Popis | Požadováno/volitelné |
+| Atribut | Description | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `pitch` | Určuje rozteč účaří pro text. Rozteč můžete vyjádřit jako:<ul><li>Absolutní hodnota vyjádřená jako číslo následovaný "Hz" (Hz). Například 600 Hz.</li><li>Relativní hodnota vyjádřená jako číslo před "+" nebo "-" a následována "Hz" nebo "St", která určuje velikost pro změnu rozteči. Například: + 80 Hz nebo-2st. "St" značí, že se jednotka změny semitone, což je polovina tónu (poloviční krok) na standardním diatonic škále.</li><li>Konstantní hodnota:<ul><li>x – nízká</li><li>slab</li><li>střední</li><li>high</li><li>x-vysoká</li><li>default</li></ul></li></ul>. | Volitelné |
-| `contour` |Obrys teď podporuje hlasy neuronové i Standard. Obrys znázorňuje změny v rozteči. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Například: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch` ). | Volitelné |
+| `contour` |Obrys teď podporuje hlasy neuronové i Standard. Obrys znázorňuje změny v rozteči. Tyto změny jsou reprezentovány jako pole cílů v určených časových pozicích ve výstupu řeči. Každý cíl je definován sadami dvojic parametrů. Příklad: <br/><br/>`<prosody contour="(0%,+20Hz) (10%,-2st) (40%,+10Hz)">`<br/><br/>První hodnota v každé sadě parametrů určuje umístění změny sklonu v procentech doby trvání textu. Druhá hodnota určuje velikost, která má zvýšit nebo snížit rozteč, pomocí relativní hodnoty nebo hodnoty výčtu pro rozteč (viz `pitch` ). | Volitelné |
 | `range` | Hodnota, která představuje rozsah roztečí textu. Můžete vyjádřit `range` použití stejných absolutních hodnot, relativních hodnot nebo hodnot výčtu používaných k popisu `pitch` . | Volitelné |
 | `rate` | Určuje míru projevení textu. Můžete vyjádřit `rate` jako:<ul><li>Relativní hodnota vyjádřená jako číslo, které funguje jako násobitel výchozí hodnoty. Například hodnota *1* má za následek nezměněnou sazbu. Výsledkem hodnoty *0,5* je poloviční sazba. Hodnota *3* má za následek cestu k této sazbě.</li><li>Konstantní hodnota:<ul><li>x – pomalé</li><li>pomalé</li><li>střední</li><li>světl</li><li>x – Fast</li><li>default</li></ul></li></ul> | Volitelné |
 | `duration` | Časový interval, který by měl uplynout, zatímco služba rozpoznávání řeči (TTS) čte text v sekundách nebo milisekundách. Například *2S* nebo *1800ms*. | Volitelné |
@@ -502,7 +502,7 @@ Vzhledem k tomu, že se hodnoty atributů Prozodický předěl můžou v rámci 
 
 Míru speakace lze použít na hlasy neuronové a standardní hlasy na úrovni slova nebo věty. 
 
-**Příklad**
+**Případě**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -518,7 +518,7 @@ Míru speakace lze použít na hlasy neuronové a standardní hlasy na úrovni s
 
 Změny svazku lze použít na standardní hlasy na úrovni slova nebo na úrovni věty. Změny svazku se dají použít jenom na hlasy neuronové na úrovni věty.
 
-**Příklad**
+**Případě**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -534,7 +534,7 @@ Změny svazku lze použít na standardní hlasy na úrovni slova nebo na úrovni
 
 Změny v rozteči je možné použít u standardních hlasů na úrovni slova nebo věty. Vzhledem k tomu, že změny v sklonu se dají použít jenom na hlasy neuronové na úrovni věty.
 
-**Příklad**
+**Případě**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -549,7 +549,7 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 > [!IMPORTANT]
 > U hlasů neuronové se teď podporují změny profilování sklonu.
 
-**Příklad**
+**Případě**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -572,7 +572,7 @@ Změny v rozteči je možné použít u standardních hlasů na úrovni slova ne
 
 **Atributy**
 
-| Atribut | Popis | Požadováno/volitelné |
+| Atribut | Description | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `interpret-as` | Určuje typ obsahu textu elementu. Seznam typů naleznete v následující tabulce. | Vyžadováno |
 | `format` | Poskytuje další informace o přesném formátování textu elementu pro typy obsahu, které mohou mít dvojznačné formáty. SSML definuje formáty pro typy obsahu, které je používají (viz tabulka níže). | Volitelné |
@@ -598,7 +598,7 @@ Níže jsou podporované typy obsahu pro `interpret-as` `format` atributy a. Atr
 
 `say-as`Element může obsahovat pouze text.
 
-**Příklad**
+**Případě**
 
 Modul Shrnutí řeči připraví následující příklad jako "první požadavek byl v říjnu Nineteenth 20 10 s počátečním příchodem na 12 35 odp."
  
@@ -634,11 +634,11 @@ Libovolný zvuk zahrnutý v dokumentu SSML musí splňovat tyto požadavky:
 
 **Atributy**
 
-| Atribut | Popis                                   | Požadováno/volitelné                                        |
+| Atribut | Description                                   | Požadováno/volitelné                                        |
 |-----------|-----------------------------------------------|------------------------------------------------------------|
 | `src`     | Určuje umístění nebo adresu URL zvukového souboru. | Požadováno při použití prvku zvuk v dokumentu SSML. |
 
-**Příklad**
+**Případě**
 
 ```xml
 <speak version="1.0" xmlns="http://www.w3.org/2001/10/synthesis" xml:lang="en-US">
@@ -670,14 +670,14 @@ V SSML dokumentu je povolen pouze jeden zvukový soubor na pozadí. Můžete vš
 
 **Atributy**
 
-| Atribut | Popis | Požadováno/volitelné |
+| Atribut | Description | Požadováno/volitelné |
 |-----------|-------------|---------------------|
 | `src` | Určuje umístění nebo adresu URL zvukového souboru na pozadí. | Vyžaduje se, pokud v dokumentu SSML používáte zvuk na pozadí. |
 | `volume` | Určuje hlasitost zvukového souboru na pozadí. **Přijaté hodnoty**: `0` na `100` včetně Výchozí hodnota je `1`. | Volitelné |
 | `fadein` | Určuje dobu, po kterou se bude zvuk na pozadí zobrazovat jako milisekundy. Výchozí hodnota je `0` , což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` na `10000` včetně  | Volitelné |
 | `fadeout` | Určuje dobu, po kterou se má zvuk na pozadí rozmizet v milisekundách. Výchozí hodnota je `0` , což je ekvivalent bez zmizení. **Přijaté hodnoty**: `0` na `10000` včetně  | Volitelné |
 
-**Příklad**
+**Případě**
 
 ```xml
 <speak version="1.0" xml:lang="en-US" xmlns:mstts="http://www.w3.org/2001/mstts">

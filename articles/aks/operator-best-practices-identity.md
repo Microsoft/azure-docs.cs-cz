@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro postupy, jak spravovat ov�
 services: container-service
 ms.topic: conceptual
 ms.date: 04/24/2019
-ms.openlocfilehash: 0e3569be769fcf70a65cbfee62a3b80a5abdc3b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e02b542f74a2dd7b7e88f1fa075ad6a736895e76
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668318"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020043"
 ---
 # <a name="best-practices-for-authentication-and-authorization-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro ověřování a autorizaci ve službě Azure Kubernetes (AKS)
 
@@ -19,6 +19,7 @@ Při nasazení a údržbě clusterů ve službě Azure Kubernetes Service (AKS) 
 Tento článek o osvědčených postupech se zaměřuje na to, jak operátor clusteru může spravovat přístup a identitu pro clustery AKS. V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
+>
 > * Ověřování uživatelů clusteru AKS pomocí Azure Active Directory
 > * Řízení přístupu k prostředkům pomocí řízení přístupu na základě role (RBAC)
 > * Použití spravované identity k ověřování s ostatními službami
@@ -62,7 +63,7 @@ rules:
   verbs: ["*"]
 ```
 
-Pak se vytvoří RoleBinding, který váže uživatele Azure AD *developer1\@contoso.com* na RoleBinding, jak je znázorněno v následujícím manifestu YAML:
+Pak se vytvoří RoleBinding, který váže uživatele Azure AD *developer1 \@ contoso.com* na RoleBinding, jak je znázorněno v následujícím manifestu YAML:
 
 ```yaml
 kind: RoleBinding
@@ -80,7 +81,7 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-Pokud *se\@developer1 contoso.com* ověřuje v rámci clusteru AKS, mají úplná oprávnění k prostředkům v oboru názvů *finance-aplikace* . Tímto způsobem můžete logicky oddělit a řídit přístup k prostředkům. Kubernetes RBAC by se měla používat ve spojení s integrací Azure AD, jak je popsáno v předchozí části.
+Pokud se *developer1 \@ contoso.com* ověřuje v rámci clusteru AKS, mají úplná oprávnění k prostředkům v oboru názvů *finance-aplikace* . Tímto způsobem můžete logicky oddělit a řídit přístup k prostředkům. Kubernetes RBAC by se měla používat ve spojení s integrací Azure AD, jak je popsáno v předchozí části.
 
 Pokud chcete zjistit, jak používat skupiny Azure AD k řízení přístupu k prostředkům Kubernetes pomocí RBAC, přečtěte si téma [řízení přístupu k prostředkům clusteru pomocí řízení přístupu na základě rolí a Azure Active Directory identit v AKS][azure-ad-rbac].
 
@@ -97,14 +98,14 @@ Spravované identity pro prostředky Azure (aktuálně implementované jako při
 
 Když lusky požadují přístup ke službě Azure, Síťová pravidla přesměrují provoz na server NMI (Node Management identity). Server NMI identifikuje lusky, které vyžadují přístup ke službám Azure na základě jejich vzdálené adresy, a odešle dotaz na spravovaný řadič identity (MIC). MIKROFON kontroluje mapování identit Azure v clusteru AKS a server NMI pak požádá o přístupový token z Azure Active Directory (AD) na základě mapování identity pod. Azure AD poskytuje přístup k serveru NMI, který je vrácen do pod. Přístup k tomuto přístupovému tokenu může použít ta pod tím, že bude vyžadovat přístup ke službám v Azure.
 
-V následujícím příkladu Vývojář vytvoří pod, který používá spravovanou identitu k vyžádání přístupu k instanci Azure SQL Server:
+V následujícím příkladu Vývojář vytvoří pod, který používá spravovanou identitu k vyžádání přístupu k Azure SQL Database:
 
 ![Identity pod umožňují automatické vyžádání přístupu k jiným službám.](media/operator-best-practices-identity/pod-identities.png)
 
 1. Operátor clusteru nejdřív vytvoří účet služby, který se dá použít k mapování identit, když lusky požadují přístup ke službám.
 1. Server NMI a mikrofon jsou nasazeny pro předávání všech požadavků na přístupových tokenů do služby Azure AD.
 1. Vývojář nasadí pod spravovanou identitou, která žádá o přístupový token prostřednictvím serveru NMI.
-1. Token se vrátí do pole pod a použije se pro přístup k instanci Azure SQL Server.
+1. Token se vrátí do pole pod a používá se pro přístup k Azure SQL Database
 
 > [!NOTE]
 > Spravované identity pod jsou open source projekt a technická podpora Azure ji nepodporuje.

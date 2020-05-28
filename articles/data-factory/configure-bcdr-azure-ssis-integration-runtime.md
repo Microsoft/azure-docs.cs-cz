@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: 795247cd0d6adfd27115b73c1d0de02e6810d670
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 479e57a6001e143e233457967d55ea0e2fb6d3de
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201145"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021044"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>Konfigurace prostředí Azure-SSIS Integration runtime pomocí SQL Database geografické replikace a převzetí služeb při selhání
 
@@ -87,27 +87,27 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky:
 2. Upravte Azure-SSIS IR o novou oblast, koncový bod a informace o virtuální síti pro sekundární instanci.
 
     ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                -VNetId "new VNet" `
-                -Subnet "new subnet" `
-                -SetupScriptContainerSasUri "new custom setup SAS URI"
-    ```
+      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+                    -CatalogServerEndpoint "Azure SQL Database endpoint" `
+                    -CatalogAdminCredential "Azure SQL Database admin credentials" `
+                    -VNetId "new VNet" `
+                    -Subnet "new subnet" `
+                    -SetupScriptContainerSasUri "new custom setup SAS URI"
+        ```
 
-3. Restartujte Azure-SSIS IR.
+3. Restart the Azure-SSIS IR.
 
-### <a name="scenario-3-azure-ssis-ir-is-pointing-to-a-public-endpoint-of-a-sql-database-managed-instance"></a>Scénář 3: Azure-SSIS IR odkazuje na veřejný koncový bod SQL Database spravované instance
+### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Database managed instance
 
-Tento scénář je vhodný, pokud Azure-SSIS IR odkazuje na veřejný koncový bod Azure SQL Database spravované instance a nepřipojí se k virtuální síti. Jediným rozdílem ze scénáře 2 je, že nemusíte upravovat informace o virtuální síti pro Azure-SSIS IR po převzetí služeb při selhání.
+This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of an Azure SQL Database managed instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
 
-#### <a name="solution"></a>Řešení
+#### Solution
 
-Pokud dojde k převzetí služeb při selhání, proveďte následující kroky:
+When failover occurs, take the following steps:
 
-1. Zastavte Azure-SSIS IR v primární oblasti.
+1. Stop the Azure-SSIS IR in the primary region.
 
-2. Upravte Azure-SSIS IR s informacemi o nové oblasti a koncových bodech pro sekundární instanci.
+2. Edit the Azure-SSIS IR with the new region and endpoint information for the secondary instance.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
@@ -131,13 +131,13 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky.
 
 1. Zastavte Azure-SSIS IR v primární oblasti.
 
-2. Spusťte uloženou proceduru, která aktualizuje metadata v SSISDB, aby přijímala připojení z ** \< new_data_factory_name \> ** a ** \< new_integration_runtime_name \> **.
+2. Spusťte uloženou proceduru, která aktualizuje metadata v SSISDB, aby přijímala připojení z **\<new_data_factory_name\>** a **\<new_integration_runtime_name\>** .
    
     ```sql
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
     ```
 
-3. Vytvořte novou datovou továrnu s názvem ** \< new_data_factory_name \> ** v nové oblasti.
+3. Vytvořte novou datovou továrnu s názvem **\<new_data_factory_name\>** v nové oblasti.
 
     ```powershell
     Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
@@ -147,7 +147,7 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky.
     
     Další informace o tomto příkazu PowerShellu najdete v tématu [Vytvoření datové továrny Azure pomocí PowerShellu](quickstart-create-data-factory-powershell.md).
 
-4. Pomocí Azure PowerShell vytvořte nový Azure-SSIS IR s názvem ** \< new_integration_runtime_name \> ** v nové oblasti.
+4. Vytvoří nový Azure-SSIS IR s názvem **\<new_integration_runtime_name\>** v nové oblasti pomocí Azure PowerShell.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `
@@ -202,12 +202,12 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky:
 2. Upravte Azure-SSIS IR o novou oblast, koncový bod a informace o virtuální síti pro sekundární instanci.
 
     ```powershell
-    Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
-                    -CatalogServerEndpoint "Azure SQL Database server endpoint" `
-                    -CatalogAdminCredential "Azure SQL Database server admin credentials" `
-                    -VNetId "new VNet" `
-                    -Subnet "new subnet" `
-                    -SetupScriptContainerSasUri "new custom setup SAS URI"
+      Set-AzDataFactoryV2IntegrationRuntime -Location "new region" `
+                        -CatalogServerEndpoint "Azure SQL Database endpoint" `
+                        -CatalogAdminCredential "Azure SQL Database admin credentials" `
+                        -VNetId "new VNet" `
+                        -Subnet "new subnet" `
+                        -SetupScriptContainerSasUri "new custom setup SAS URI"
     ```
 
 3. Restartujte Azure-SSIS IR.
@@ -225,13 +225,13 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky.
 
 1. Zastavte Azure-SSIS IR v primární oblasti.
 
-2. Spusťte uloženou proceduru, která aktualizuje metadata v SSISDB, aby přijímala připojení z ** \< new_data_factory_name \> ** a ** \< new_integration_runtime_name \> **.
+2. Spusťte uloženou proceduru, která aktualizuje metadata v SSISDB, aby přijímala připojení z **\<new_data_factory_name\>** a **\<new_integration_runtime_name\>** .
    
     ```sql
     EXEC [catalog].[failover_integration_runtime] @data_factory_name='<new_data_factory_name>', @integration_runtime_name='<new_integration_runtime_name>'
     ```
 
-3. Vytvořte novou datovou továrnu s názvem ** \< new_data_factory_name \> ** v nové oblasti.
+3. Vytvořte novou datovou továrnu s názvem **\<new_data_factory_name\>** v nové oblasti.
 
     ```powershell
     Set-AzDataFactoryV2 -ResourceGroupName "new resource group name" `
@@ -241,7 +241,7 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky.
     
     Další informace o tomto příkazu PowerShellu najdete v tématu [Vytvoření datové továrny Azure pomocí PowerShellu](quickstart-create-data-factory-powershell.md).
 
-4. Pomocí Azure PowerShell vytvořte nový Azure-SSIS IR s názvem ** \< new_integration_runtime_name \> ** v nové oblasti.
+4. Vytvoří nový Azure-SSIS IR s názvem **\<new_integration_runtime_name\>** v nové oblasti pomocí Azure PowerShell.
 
     ```powershell
     Set-AzDataFactoryV2IntegrationRuntime -ResourceGroupName "new resource group name" `

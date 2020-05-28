@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: b6cb9c70de27e40c62d6a7adeece5cb39554c090
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844556"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84018816"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -29,7 +29,7 @@ Ujistěte se, že brány firewall (na zařízení, ve směrovačích atd.) neblo
 * **8266 (TCP + UDP)** – vyžadováno pro přenos dat
 * **5000 (TCP)**, **5433 (tcp)**, **8443 (TCP)** – požadováno pro [ArrInspector](tools/arr-inspector.md)
 
-## <a name="error-disconnected-videoformatnotavailable"></a>Chyba "odpojeno: VideoFormatNotAvailable"
+## <a name="error-disconnected-videoformatnotavailable"></a>Chyba: `Disconnected: VideoFormatNotAvailable` ' '
 
 Ověřte, že grafický procesor podporuje dekódování hardwarových videí. Viz [vývojový počítač](../overview/system-requirements.md#development-pc).
 
@@ -37,7 +37,7 @@ Pokud pracujete na přenosném počítači se dvěma grafickými procesory, je m
 
 ## <a name="h265-codec-not-available"></a>Kodek h265 není k dispozici.
 
-Existují dva důvody, proč se může server odmítat připojit pomocí **kodeku, který není k dispozici** .
+Existují dva důvody, proč může server odmítat připojení s `codec not available` chybou.
 
 **Kodek h265 není nainstalován:**
 
@@ -107,7 +107,7 @@ Pokud vám tyto dva kroky nepomohly, je nutné zjistit, zda jsou snímky videa p
 
 Podívejte se na určitá [omezení velikosti virtuálních počítačů](../reference/limits.md#overall-number-of-polygons).
 
-**Model není v frustum zobrazení:**
+**Model není uvnitř frustum kamery:**
 
 V mnoha případech se model zobrazuje správně, ale je umístěný mimo frustum kamery. Běžným důvodem je to, že model byl exportován s mnohem mimo špičku, takže ho ořízne daleko ořezovou rovinou kamery. Pomáhá při programovém dotazování ohraničujícího rámečku modelu a vizualizaci pole pomocí Unity jako pole řádku nebo vytištění jeho hodnot do protokolu ladění.
 
@@ -142,7 +142,7 @@ Existují dva problémy s tímto ohraničujícím polem, které vedou k nevidite
 
 **Kanál vykreslování Unity neobsahuje zavěšení vykreslování:**
 
-Vzdálené vykreslování Azure se zapojte do kanálu vykreslování Unity a provede kompozici snímků s videem a provede reprojekci. Chcete-li ověřit, zda tyto háky existují, otevřete *okno nabídky > analýza > ladicího programu rámce*. Povolte ji a ujistěte se, že v kanálu existují dvě položky `HolographicRemotingCallbackPass` :
+Vzdálené vykreslování Azure se zapojte do kanálu vykreslování Unity a provede kompozici snímků s videem a provede reprojekci. Chcete-li ověřit, zda tyto zavěšení existují, otevřete nabídku *:::no-loc text="Window > Analysis > Frame debugger":::* . Povolte ji a ujistěte se, že v kanálu existují dvě položky `HolographicRemotingCallbackPass` :
 
 ![Ladicí program rámce Unity](./media/troubleshoot-unity-pipeline.png)
 

@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: vs-azure
 ms.date: 01/22/2018
-ms.openlocfilehash: eb9c21bf1972304da688586da9ccabe5063fa112
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bf7bfa6ec405841934cd068cbc90c2b071fc0afc
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75438974"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022076"
 ---
 # <a name="tutorial-create-a-data-factory-by-using-visual-studio"></a>Kurz: Vytvoření datové továrny pomocí sady Visual Studio
 > [!div class="op_single_selector" title="Tools/SDKs"]
@@ -65,7 +65,7 @@ V rámci tohoto názorného postupu provedete tyto kroky:
 3. Na počítači musíte mít nainstalované tyto položky:
    * Visual Studio 2013 nebo Visual Studio 2015.
    * Stáhněte si sadu Azure SDK pro Visual Studio 2013 nebo Visual Studio 2015. Přejděte na [stránku položek ke stažení pro Azure](https://azure.microsoft.com/downloads/) a klikněte na **VS 2013** nebo **VS 2015** v části **.NET**.
-   * Stáhněte si nejnovější modul plug-in Azure Data Factory pro Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) nebo [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Modul plug-in můžete také aktualizovat pomocí následujících kroků: v nabídce klikněte na **nástroje** -> **rozšíření a aktualizace** -> **online** -> **Galerie** -> **sady Visual Studio Microsoft Azure Data Factory nástrojů pro Visual Studio** -> **Update**.
+   * Stáhněte si nejnovější modul plug-in Azure Data Factory pro Visual Studio: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) nebo [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Modul plug-in můžete také aktualizovat pomocí následujících kroků: v nabídce klikněte na **nástroje**  ->  **rozšíření a aktualizace**  ->  **online**  ->  **Galerie sady Visual Studio**  ->  **Microsoft Azure Data Factory nástrojů pro Visual Studio**  ->  **Update**.
 
 Nyní použijeme sadu Visual Studio k vytvoření objektu pro vytváření dat Azure.
 
@@ -119,7 +119,7 @@ S využitím propojené služby HDInsight na vyžádání se cluster HDInsight a
 
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-    Vlastnost | Popis
+    Vlastnost | Description
     -------- | ----------- 
     ClusterSize | Určuje velikost clusteru HDInsight Hadoop.
     TimeToLive | Určuje dobu nečinnosti před odstraněním clusteru HDInsight.
@@ -168,12 +168,12 @@ V tomto kroku vytvoříte datové sady, které představují vstupní a výstupn
 
     Následující tabulka obsahuje popis vlastností použitých v tomto fragmentu kódu JSON:
 
-    Vlastnost | Popis |
+    Vlastnost | Description |
     -------- | ----------- |
-    type |Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage.
+    typ |Vlastnost type je nastavená na hodnotu **AzureBlob**, protože se data nachází ve službě Azure Blob Storage.
     linkedServiceName | Odkazuje na službu AzureStorageLinkedService1, kterou jste vytvořili předtím.
     fileName |Tato vlastnost je nepovinná. Pokud ji vynecháte, vyberou se všechny soubory v cestě folderPath. V tomto případě se zpracovává jenom soubor input.log.
-    type | Soubory protokolů jsou v textovém formátu, takže použijeme hodnotu TextFormat. |
+    typ | Soubory protokolů jsou v textovém formátu, takže použijeme hodnotu TextFormat. |
     columnDelimiter | Sloupce v souborech protokolu jsou oddělené znakem čárky (`,`).
     frequency/interval | Frekvence je nastavená na hodnotu Month (Měsíc) a interval je 1, takže vstupní řezy jsou dostupné jednou za měsíc.
     external | Pokud vstupní data pro tuto aktivitu nevygeneroval kanál, je tato vlastnost nastavená na hodnotu true. Tato vlastnost se určuje jenom pro vstupní datové sady. U vstupní datové sady první aktivity ji vždycky nastavte na hodnotu true.
@@ -472,7 +472,7 @@ Následující postup umožňuje přidat pro každé prostředí jiný konfigura
         "AzureSqlLinkedService1": [
             {
                 "name": "$.properties.typeProperties.connectionString",
-                "value":  "Server=tcp:<Azure sql server name>.database.windows.net,1433;Database=<Azure Sql database>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
+                "value":  "Server=tcp:<logical SQL server name>.database.windows.net,1433;Database=<Azure Sql database>;User ID=<user name>;Password=<password>;Trusted_Connection=False;Encrypt=True;Connection Timeout=30"
             }
         ]
     }
@@ -563,9 +563,9 @@ Dvě aktivity můžete zřetězit (spustit jednu aktivitu po druhé) nastavením
 
 ## <a name="see-also"></a>Viz také
 
-| Téma | Popis |
+| Téma | Description |
 |:--- |:--- |
-| [Kanály](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení pracovních postupů založených na datech. |
+| [Pipelines](data-factory-create-pipelines.md) |Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data Factory a porozumět tomu, jak se dají ve vaší situaci nebo firmě použít k sestavení pracovních postupů založených na datech. |
 | [Datové sady](data-factory-create-datasets.md) |Tento článek vám pomůže pochopit datové sady ve službě Azure Data Factory. |
 | [Aktivity transformace dat](data-factory-data-transformation-activities.md) |Tento článek obsahuje seznam aktivit transformace dat (třeba transformaci HDInsight Hive, kterou jste použili v tomto kurzu) podporovaných službou Azure Data Factory. |
 | [Plánování a provádění](data-factory-scheduling-and-execution.md) |Tento článek vysvětluje aspekty plánování a provádění aplikačního modelu služby Azure Data Factory. |

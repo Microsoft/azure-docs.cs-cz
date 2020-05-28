@@ -11,12 +11,12 @@ ms.date: 04/08/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 193b1d5ff37eace127c8d5473b102842f4fa2a8c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5935efca138d156507e2e3fefa65d045f618a57b
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654502"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020825"
 ---
 # <a name="load-data-from-azure-data-lake-storage-for-synapse-sql"></a>Načtení dat z Azure Data Lake Storage SQL pro synapse
 
@@ -93,7 +93,7 @@ WITH
 
 ## <a name="create-the-external-data-source"></a>Vytvoření externího zdroje dat
 
-Pomocí tohoto příkazu [Create External data source](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uložte umístění dat. Pokud ověřujete průchozí průchod AAD, parametr PŘIHLAŠOVACÍch údajů se nevyžaduje. Pokud ověřujete pomocí spravované identity pro koncové body služby, použijte tuto [dokumentaci](../../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-synapse-analytics-polybase) a nastavte externí zdroj dat.
+Pomocí tohoto příkazu [Create External data source](/sql/t-sql/statements/create-external-data-source-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) uložte umístění dat. Pokud ověřujete průchozí průchod AAD, parametr PŘIHLAŠOVACÍch údajů se nevyžaduje. Pokud ověřujete pomocí spravované identity pro koncové body služby, použijte tuto [dokumentaci](../../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#azure-synapse-polybase) a nastavte externí zdroj dat.
 
 ```sql
 -- C (for Gen1): Create an external data source

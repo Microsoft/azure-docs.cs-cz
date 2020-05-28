@@ -4,18 +4,18 @@ description: Application Insights provádí inteligentní analýzu telemetrie ap
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: ad4341993d92052123eacd3d37500905a0b25179
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 22c1eeb00372b9b3c67d6a87f2300225a071438e
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697173"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84016844"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Inteligentní zjišťování – anomálie výkonu
 
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) automaticky analyzuje výkon webové aplikace a může vás upozornit na potenciální problémy. Můžete si ho přečíst, protože jste dostali jednu z našich oznámení inteligentního zjišťování.
 
-Tato funkce nevyžaduje žádné speciální nastavení, kromě konfigurace vaší aplikace pro Application Insights (na [ASP.NET](../../azure-monitor/app/asp-net.md), [Java](../../azure-monitor/app/java-get-started.md)nebo [Node. js](../../azure-monitor/app/nodejs.md)a v [kódu webové stránky](../../azure-monitor/app/javascript.md)). Je aktivní, když vaše aplikace vygeneruje dostatek telemetrie.
+Tato funkce nevyžaduje žádné speciální nastavení, kromě konfigurace aplikace pro Application Insights pro váš [podporovaný jazyk](../../azure-monitor/app/platforms.md). Je aktivní, když vaše aplikace vygeneruje dostatek telemetrie.
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>Kdy získám oznámení inteligentního zjišťování?
 
@@ -57,10 +57,10 @@ Oznámení inteligentní detekce jsou ve výchozím nastavení povolená a odes�
 
 U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Application Insights prostředku omezí na jeden e-mail za den. E-mail se pošle jenom v případě, že se v daném dni našel aspoň jeden nový problém. Žádná zpráva se neopakuje. 
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 * *Proto si zaměstnanci Microsoftu prohledají moje údaje?*
-  * Ne. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](../../azure-monitor/app/data-retention-privacy.md).
+  * No. Služba je zcela automatická. Oznámení se zobrazí jenom vy. Vaše data jsou [soukromá](../../azure-monitor/app/data-retention-privacy.md).
 * *Analyzujete všechna data shromažďovaná v Application Insights?*
   * V současné době není k dispozici. V současné době analyzujeme dobu odezvy požadavku, dobu odezvy závislosti a dobu načítání stránky. Analýza dalších metrik je na našich nevyřízených položkách, které jsou vyhledány.
 
@@ -76,7 +76,7 @@ U e-mailů o inteligentních Detekcích se anomálie výkonu u každého Applica
 
   * Analýzy provedeme denně na telemetrie z předchozího dne (celý den v časovém pásmu UTC).
 * *To znamená, že tyto [výstrahy metriky](/azure/azure-monitor/platform/alerts-log)nahrazují?*
-  * Ne.  Nepotvrzuji jsme zjišťování všech chování, která by se vám mohla považovat za neobvyklou.
+  * No.  Nepotvrzuji jsme zjišťování všech chování, která by se vám mohla považovat za neobvyklou.
 
 
 * *Pokud v reakci na oznámení něco neudělám, zobrazí se vám připomenutí?*

@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 45aa49de51f42b26c653b15e79c865e3f5647c39
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3f9f4db0119b10a2df3a1007f9e5fa710e31f0e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931631"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84113703"
 ---
 # <a name="sql-server-stored-procedure-activity"></a>Aktivita uložené procedury SQL Server
 > [!div class="op_single_selector" title1="Aktivity transformace"]
@@ -114,7 +114,7 @@ Po vytvoření datové továrny vytvoříte propojenou službu Azure SQL, která
    ![Nové úložiště dat](media/data-factory-stored-proc-activity/new-data-store.png)
 3. Ve skriptu JSON proveďte následující změny:
 
-   1. Nahraďte `<servername>` názvem vašeho serveru Azure SQL Database.
+   1. Nahraďte `<servername>` názvem vašeho serveru.
    2. Nahraďte `<databasename>` databází, ve které jste vytvořili tabulku a uloženou proceduru.
    3. Nahraďte `<username@servername>` uživatelským účtem, který má přístup k databázi.
    4. Nahraďte `<password>` heslem pro uživatelský účet.
@@ -204,7 +204,7 @@ Všimněte si následujících vlastností:
 2. V **zobrazení diagramu**uvidíte přehled kanálů a datové sady použité v tomto kurzu.
 
     ![dlaždice diagramu](media/data-factory-stored-proc-activity/data-factory-diagram-view.png)
-3. V zobrazení diagramu dvakrát klikněte na datovou sadu `sprocsampleout`. Řezy se zobrazí ve stavu připraveno. Mělo by existovat pět řezů, protože řez se vytvoří pro každou hodinu mezi počátečním a koncovým časem z formátu JSON.
+3. V zobrazení diagramu dvakrát klikněte na datovou sadu `sprocsampleout` . Řezy se zobrazí ve stavu připraveno. Mělo by existovat pět řezů, protože řez se vytvoří pro každou hodinu mezi počátečním a koncovým časem z formátu JSON.
 
     ![dlaždice diagramu](media/data-factory-stored-proc-activity/data-factory-slices.png)
 4. Pokud je řez ve stavu **připraveno** , spusťte `select * from sampletable` dotaz proti službě Azure SQL Database a ověřte, že data byla vložena do tabulky pomocí uložené procedury.
@@ -303,11 +303,11 @@ Tady je formát JSON pro definování aktivity uložené procedury:
 
 Tyto vlastnosti JSON jsou popsány v následující tabulce:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Description | Vyžadováno |
 | --- | --- | --- |
-| jméno | Název aktivity |Ano |
+| name | Název aktivity |Ano |
 | description |Text popisující, k čemu se aktivita používá |Ne |
-| type | Musí být nastavené na: **SqlServerStoredProcedure** | Ano |
+| typ | Musí být nastavené na: **SqlServerStoredProcedure** | Ano |
 | vztahují | Nepovinný parametr. Pokud zadáte vstupní datovou sadu, musí být k dispozici (ve stavu "připraveno") pro spuštění aktivity uložená procedura. Vstupní datovou sadu nelze v uložené proceduře jako parametr spotřebovat. Slouží pouze ke kontrole závislosti před spuštěním aktivity uložené procedury. |Ne |
 | činnosti | Pro aktivitu uložené procedury musíte zadat výstupní datovou sadu. Výstupní datová sada určuje **plán** aktivity uložené procedury (každou hodinu, týdně, měsíčně atd.). <br/><br/>Výstupní datová sada musí používat **propojenou službu** , která odkazuje na Azure SQL Database nebo Azure SQL Data Warehouse nebo SQL Server databázi, ve které chcete spustit uloženou proceduru. <br/><br/>Výstupní datová sada může sloužit jako způsob, jak předat výsledek uložené procedury pro následné zpracování jinou aktivitou ([řetězení aktivit](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline) v kanálu. Data Factory však do této datové sady automaticky nezapisuje výstup uložené procedury. Jedná se o uloženou proceduru, která zapisuje do tabulky SQL, na kterou odkazuje výstupní datová sada. <br/><br/>V některých případech může být výstupní datovou sadou **fiktivní datová**sada, která se používá pouze k zadání plánu pro spuštění aktivity uložené procedury. |Ano |
 | storedProcedureName |Zadejte název uložené procedury ve službě Azure SQL Database nebo Azure SQL Data Warehouse nebo SQL Server databázi reprezentované propojenou službou, kterou používá výstupní tabulka. |Ano |

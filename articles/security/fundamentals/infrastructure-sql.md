@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: ad6d3992f03802174eb03aa30b57b8d3dac1d6c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0e7089e7c674f324c2c3d293661c518b41731b9
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78942950"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021853"
 ---
 # <a name="azure-sql-database-security-features"></a>Funkce zabezpečení Azure SQL Database    
 Azure SQL Database poskytuje službu relačních databází v Azure. Aby bylo možné chránit zákaznická data a poskytovat silné bezpečnostní funkce, které zákazníci očekávají od služby relační databáze, SQL Database mají vlastní sady možností zabezpečení. Tyto možnosti se sestavují na ovládací prvky, které jsou zděděné z Azure.
@@ -31,13 +31,13 @@ Azure SQL Database poskytuje službu relačních databází v Azure. Aby bylo mo
 Azure SQL Database podporuje jenom protokol TDS (Tabular data Stream), který vyžaduje přístupnost databáze jenom na výchozím portu TCP/1433.
 
 ### <a name="azure-sql-database-firewall"></a>Azure SQL Database firewall
-Aby bylo možné chránit zákaznická data, Azure SQL Database zahrnuje funkci brány firewall, která standardně zabraňuje všem přístupům k serveru SQL Database, jak je vidět níže.
+Aby bylo možné chránit zákaznická data, Azure SQL Database zahrnuje funkci brány firewall, která standardně zabraňuje všem přístupům k SQL Database, jak je vidět níže.
 
 ![Azure SQL Database firewall](./media/infrastructure-sql/sql-database-firewall.png)
 
 Brána firewall brány může omezit adresy, což zákazníkům umožňuje podrobná řízení, aby určovala rozsah přípustných IP adres. Brána firewall uděluje přístup na základě zdrojové IP adresy jednotlivých požadavků.
 
-Zákazníci mohou dosáhnout konfigurace brány firewall pomocí portálu pro správu nebo programově pomocí REST API správy Azure SQL Database. Brána firewall brány Azure SQL Database ve výchozím nastavení zabraňuje všemu přístupu ke službě Azure SQL Database všem zákazníkům. Zákazníci musí nakonfigurovat přístup pomocí seznamů řízení přístupu (ACL) a povolit tak Azure SQL Database připojení pomocí zdrojových a cílových internetových adres, protokolů a čísel portů.
+Zákazníci mohou dosáhnout konfigurace brány firewall pomocí portálu pro správu nebo programově pomocí REST API správy Azure SQL Database. Brána firewall brány Azure SQL Database ve výchozím nastavení zabraňuje všem uživatelům přístup k protokolu TDS v Azure SQL Database. Zákazníci musí nakonfigurovat přístup pomocí seznamů řízení přístupu (ACL) a povolit tak Azure SQL Database připojení pomocí zdrojových a cílových internetových adres, protokolů a čísel portů.
 
 ### <a name="dosguard"></a>Dosguardu
 Útoky DoS (Denial of Service) se snižují pomocí služby SQL Database Gateway s názvem Dosguardu. Dosguardu aktivně sleduje neúspěšná přihlášení z IP adres. Pokud dojde k několika neúspěšným přihlášením z konkrétní IP adresy v časovém intervalu, IP adresa se zablokuje přístup k žádným prostředkům ve službě za předem definované časové období.

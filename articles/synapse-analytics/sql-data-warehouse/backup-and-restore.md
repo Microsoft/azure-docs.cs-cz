@@ -11,12 +11,12 @@ ms.date: 03/04/2020
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
-ms.openlocfilehash: 1d82c7c22bb5aeb2740884b0d7ede4a4d8f07f86
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ea9a9430f9abee6179bacd4f999b7eeca92a8129
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80631215"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020842"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Zálohování a obnovení ve fondu SQL Azure synapse
 
@@ -30,7 +30,7 @@ Naučte se používat zálohování a obnovení ve fondu SQL Azure synapse. Pomo
 
 ## <a name="automatic-restore-points"></a>Automatické body obnovení
 
-Snímky jsou vestavěnou funkcí služby, která vytváří body obnovení. Tuto možnost není nutné povolit. Fond SQL by ale měl být v aktivním stavu pro vytvoření bodu obnovení. Pokud je fond SQL pozastaven často, nemusíte vytvářet automatické body obnovení, takže nezapomeňte před pozastavením fondu SQL vytvořit uživatelem definovaný bod obnovení. Automatické body obnovení aktuálně nelze odstranit uživateli, protože služba používá tyto body obnovení k údržbě SLA pro obnovení.
+Snímky jsou vestavěnou funkcí, která vytváří body obnovení. Tuto možnost není nutné povolit. Fond SQL by ale měl být v aktivním stavu pro vytvoření bodu obnovení. Pokud je fond SQL pozastaven často, nemusíte vytvářet automatické body obnovení, takže nezapomeňte před pozastavením fondu SQL vytvořit uživatelem definovaný bod obnovení. Automatické body obnovení aktuálně nelze odstranit uživateli, protože služba používá tyto body obnovení k údržbě SLA pro obnovení.
 
 Snímky datového skladu jsou odebírány během celého dne vytváření bodů obnovení, které jsou k dispozici po dobu sedmi dnů. Tuto dobu uchování nelze změnit. Fond SQL podporuje osm hodin cíl bodu obnovení (RPO). Datový sklad můžete obnovit v primární oblasti z libovolného snímku, který jste provedli během posledních sedmi dnů.
 
@@ -65,7 +65,7 @@ Následující seznam obsahuje podrobné informace o obdobích uchování bodu o
 Při vyřazení fondu SQL se vytvoří konečný snímek a uloží se sedm dní. Můžete obnovit fond SQL na finální bod obnovení, který byl vytvořen při odstranění. Pokud je fond SQL vyřazený v pozastaveném stavu, žádný snímek se nebere. V takovém případě nezapomeňte před vyřazením fondu SQL vytvořit uživatelem definovaný bod obnovení.
 
 > [!IMPORTANT]
-> Odstraníte-li logickou instanci systému SQL Server, budou odstraněny také všechny databáze patřící do této instance a nelze je obnovit. Odstraněný Server nelze obnovit.
+> Pokud odstraníte Server, který je hostitelem fondu SQL, odstraní se také všechny databáze patřící do serveru a nelze je obnovit. Odstraněný Server nelze obnovit.
 
 ## <a name="geo-backups-and-disaster-recovery"></a>Geografické zálohování a zotavení po havárii
 
@@ -96,7 +96,7 @@ K obnovení odstraněného nebo pozastaveného datového skladu můžete [vytvo�
 
 ## <a name="cross-subscription-restore"></a>Obnovení mezi předplatnými
 
-Pokud potřebujete přímo obnovit v rámci předplatného, Hlasujte [sem](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)pro tuto funkci. Obnovení na jiný logický Server a [přesunutí](/azure/azure-resource-manager/resource-group-move-resources?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) serveru mezi předplatnými, aby bylo možné provést obnovení mezi předplatnými.
+Pokud potřebujete přímo obnovit v rámci předplatného, Hlasujte [sem](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/36256231-enable-support-for-cross-subscription-restore)pro tuto funkci. Obnovení na jiný server a [přesunutí](../../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) serveru mezi předplatnými, aby bylo možné provést obnovení mezi předplatnými.
 
 ## <a name="geo-redundant-restore"></a>Geograficky redundantní obnovení
 
@@ -107,4 +107,4 @@ Pokud potřebujete přímo obnovit v rámci předplatného, Hlasujte [sem](https
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o plánování havárií najdete v tématu [Přehled provozní kontinuity](../../sql-database/sql-database-business-continuity.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
+Další informace o plánování havárií najdete v tématu [Přehled provozní kontinuity](../../azure-sql/database/business-continuity-high-availability-disaster-recover-hadr-overview.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) .
