@@ -10,16 +10,14 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/20/2017
-ms.openlocfilehash: 3c041834b9ad191817cdf1380b0a75efc7639bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: caa37dbc3a09236c8e9553eba506e6c0b25e51e2
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79218143"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84118444"
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning-studio-classic"></a>Postup vyhodnocení výkonu modelu v Azure Machine Learning Studio (Classic)
-
-[!INCLUDE [Notebook deprecation notice](../../../includes/aml-studio-notebook-notice.md)]
 
 Tento článek ukazuje, jak vyhodnotit výkon modelu v Azure Machine Learning Studio (Classic) a poskytuje stručné vysvětlení metrik dostupných pro tuto úlohu. K dispozici jsou tři běžné scénáře učení s dohledem: 
 
@@ -140,7 +138,7 @@ V tomto experimentu použijeme oblíbenou datovou sadu [Iris](https://archive.ic
 ### <a name="creating-the-experiment"></a>Vytvoření experimentu
 Přidejte do svého pracovního prostoru následující moduly v Azure Machine Learning Studio (Classic):
 
-* [Import dat][import-data]
+* [Importovat data][import-data]
 * [Rozhodovací les s více třídami][multiclass-decision-forest]
 * [Rozdělení dat][split]
 * [Trénování modelu][train-model]
@@ -151,7 +149,7 @@ Připojte porty, jak je znázorněno na obrázku 10.
 
 Nastavte index sloupce popisku modulu [vlakového modelu][train-model] na 5. Datová sada neobsahuje řádek záhlaví, ale víme, že popisky třídy jsou v pátém sloupci.
 
-Klikněte na modul [importu dat][import-data] a nastavte vlastnost *zdroj dat* na *adresu URL webu prostřednictvím http*a *adresu URL* na http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data.
+Klikněte na modul [importu dat][import-data] a nastavte vlastnost *zdroj dat* na *adresu URL webu prostřednictvím http*a *adresu URL* na http://archive.ics.uci.edu/ml/machine-learning-databases/iris/iris.data .
 
 Nastavte zlomek instancí, které se mají použít pro školení v modulu [Split data][split] (například 0,7).
 

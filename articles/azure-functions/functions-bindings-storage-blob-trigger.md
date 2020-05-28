@@ -5,18 +5,18 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/13/2020
 ms.author: cshoe
-ms.openlocfilehash: 61fbaf37577efdab0b147d437ae78fc4df0764cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c594f269d32bc87b2389c430343f6480e97bc5f6
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084953"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142244"
 ---
 # <a name="azure-blob-storage-trigger-for-azure-functions"></a>Aktivační událost Azure Blob Storage pro Azure Functions
 
 Trigger služby Blob Storage spustí funkci při zjištění nového nebo aktualizovaného objektu BLOB. Obsah objektu BLOB je uveden jako [vstup do funkce](./functions-bindings-storage-blob-input.md).
 
-Aktivační událost Azure Blob Storage vyžaduje účet úložiště pro obecné účely. Pokud chcete použít účet jen pro objekt blob, nebo pokud vaše aplikace má specializované potřeby, přečtěte si alternativy k použití této aktivační události.
+Aktivační událost Azure Blob Storage vyžaduje účet úložiště pro obecné účely. Jsou podporovány také účty úložiště verze 2 s [oborem názvů hierarchická](../storage/blobs/data-lake-storage-namespace.md) . Pokud chcete použít účet jen pro objekt blob, nebo pokud vaše aplikace má specializované potřeby, přečtěte si alternativy k použití této aktivační události.
 
 Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled](./functions-bindings-storage-blob.md).
 
@@ -52,13 +52,13 @@ public static void Run([BlobTrigger("samples-workitems/{name}")] Stream myBlob, 
 }
 ```
 
-Řetězec `{name}` v cestě `samples-workitems/{name}` triggeru objektu BLOB vytvoří [výraz vazby](./functions-bindings-expressions-patterns.md) , který můžete použít v kódu funkce pro přístup k názvu souboru triggerového objektu BLOB. Další informace najdete v tématu [vzory názvů objektů BLOB](#blob-name-patterns) dále v tomto článku.
+Řetězec `{name}` v cestě triggeru objektu BLOB `samples-workitems/{name}` vytvoří [výraz vazby](./functions-bindings-expressions-patterns.md) , který můžete použít v kódu funkce pro přístup k názvu souboru triggerového objektu BLOB. Další informace najdete v tématu [vzory názvů objektů BLOB](#blob-name-patterns) dále v tomto článku.
 
-Další informace o `BlobTrigger` atributu naleznete v tématu [atributy a poznámky](#attributes-and-annotations).
+Další informace o atributu naleznete `BlobTrigger` v tématu [atributy a poznámky](#attributes-and-annotations).
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje vazbu triggeru objektu BLOB v souboru *Function. JSON* a kódu, který používá vazbu. Funkce zapisuje protokol, když se v `samples-workitems` [kontejneru](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)přidá nebo aktualizuje objekt BLOB.
+Následující příklad ukazuje vazbu triggeru objektu BLOB v souboru *Function. JSON* a kódu, který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
 Tady jsou data vazby v souboru *Function. JSON* :
 
@@ -77,11 +77,11 @@ Tady jsou data vazby v souboru *Function. JSON* :
 }
 ```
 
-Řetězec `{name}` v cestě `samples-workitems/{name}` triggeru objektu BLOB vytvoří [výraz vazby](./functions-bindings-expressions-patterns.md) , který můžete použít v kódu funkce pro přístup k názvu souboru triggerového objektu BLOB. Další informace najdete v tématu [vzory názvů objektů BLOB](#blob-name-patterns) dále v tomto článku.
+Řetězec `{name}` v cestě triggeru objektu BLOB `samples-workitems/{name}` vytvoří [výraz vazby](./functions-bindings-expressions-patterns.md) , který můžete použít v kódu funkce pro přístup k názvu souboru triggerového objektu BLOB. Další informace najdete v tématu [vzory názvů objektů BLOB](#blob-name-patterns) dále v tomto článku.
 
 Další informace o vlastnostech souboru *Function. JSON* najdete v části [Konfigurace](#configuration) vysvětlení těchto vlastností.
 
-Tady je kód skriptu C#, který se váže k `Stream`:
+Tady je kód skriptu C#, který se váže k `Stream` :
 
 ```cs
 public static void Run(Stream myBlob, string name, ILogger log)
@@ -90,7 +90,7 @@ public static void Run(Stream myBlob, string name, ILogger log)
 }
 ```
 
-Tady je kód skriptu C#, který se váže k `CloudBlockBlob`:
+Tady je kód skriptu C#, který se váže k `CloudBlockBlob` :
 
 ```cs
 #r "Microsoft.WindowsAzure.Storage"
@@ -105,7 +105,7 @@ public static void Run(CloudBlockBlob myBlob, string name, ILogger log)
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje vazbu triggeru objektu BLOB v souboru *Function. JSON* a [kódu JavaScriptu](functions-reference-node.md) , který používá vazbu. Funkce zapisuje protokol, když se v `samples-workitems` kontejneru přidá nebo aktualizuje objekt BLOB.
+Následující příklad ukazuje vazbu triggeru objektu BLOB v souboru *Function. JSON* a [kódu JavaScriptu](functions-reference-node.md) , který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` .
 
 Tady je soubor *Function. JSON* :
 
@@ -124,7 +124,7 @@ Tady je soubor *Function. JSON* :
 }
 ```
 
-Řetězec `{name}` v cestě `samples-workitems/{name}` triggeru objektu BLOB vytvoří [výraz vazby](./functions-bindings-expressions-patterns.md) , který můžete použít v kódu funkce pro přístup k názvu souboru triggerového objektu BLOB. Další informace najdete v tématu [vzory názvů objektů BLOB](#blob-name-patterns) dále v tomto článku.
+Řetězec `{name}` v cestě triggeru objektu BLOB `samples-workitems/{name}` vytvoří [výraz vazby](./functions-bindings-expressions-patterns.md) , který můžete použít v kódu funkce pro přístup k názvu souboru triggerového objektu BLOB. Další informace najdete v tématu [vzory názvů objektů BLOB](#blob-name-patterns) dále v tomto článku.
 
 Další informace o vlastnostech souboru *Function. JSON* najdete v části [Konfigurace](#configuration) vysvětlení těchto vlastností.
 
@@ -139,7 +139,7 @@ module.exports = function(context) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje vazbu triggeru objektu BLOB v souboru *Function. JSON* a [kódu Pythonu](functions-reference-python.md) , který používá vazbu. Funkce zapisuje protokol, když se v `samples-workitems` [kontejneru](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources)přidá nebo aktualizuje objekt BLOB.
+Následující příklad ukazuje vazbu triggeru objektu BLOB v souboru *Function. JSON* a [kódu Pythonu](functions-reference-python.md) , který používá vazbu. Funkce zapisuje protokol, když se v kontejneru přidá nebo aktualizuje objekt BLOB `samples-workitems` [container](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources).
 
 Tady je soubor *Function. JSON* :
 
@@ -159,7 +159,7 @@ Tady je soubor *Function. JSON* :
 }
 ```
 
-Řetězec `{name}` v cestě `samples-workitems/{name}` triggeru objektu BLOB vytvoří [výraz vazby](./functions-bindings-expressions-patterns.md) , který můžete použít v kódu funkce pro přístup k názvu souboru triggerového objektu BLOB. Další informace najdete v tématu [vzory názvů objektů BLOB](#blob-name-patterns) dále v tomto článku.
+Řetězec `{name}` v cestě triggeru objektu BLOB `samples-workitems/{name}` vytvoří [výraz vazby](./functions-bindings-expressions-patterns.md) , který můžete použít v kódu funkce pro přístup k názvu souboru triggerového objektu BLOB. Další informace najdete v tématu [vzory názvů objektů BLOB](#blob-name-patterns) dále v tomto článku.
 
 Další informace o vlastnostech souboru *Function. JSON* najdete v části [Konfigurace](#configuration) vysvětlení těchto vlastností.
 
@@ -176,7 +176,7 @@ def main(myblob: func.InputStream):
 
 # <a name="java"></a>[Java](#tab/java)
 
-Tato funkce zapisuje protokol, když se do `myblob` kontejneru přidá nebo aktualizuje objekt BLOB.
+Tato funkce zapisuje protokol, když se do kontejneru přidá nebo aktualizuje objekt BLOB `myblob` .
 
 ```java
 @FunctionName("blobprocessor")
@@ -214,7 +214,7 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte ná
   }
   ```
 
-  `Connection` Vlastnost můžete nastavit tak, aby určovala účet úložiště, který se má použít, jak je znázorněno v následujícím příkladu:
+  Vlastnost můžete nastavit `Connection` tak, aby určovala účet úložiště, který se má použít, jak je znázorněno v následujícím příkladu:
 
    ```csharp
   [FunctionName("ResizeImage")]
@@ -246,10 +246,10 @@ V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte ná
 
 Účet úložiště, který se má použít, se určuje v tomto pořadí:
 
-* `Connection` Vlastnost `BlobTrigger` atributu
-* `StorageAccount` Atribut aplikovaný na stejný parametr jako `BlobTrigger` atribut.
-* `StorageAccount` Atribut aplikovaný na funkci.
-* `StorageAccount` Atribut aplikovaný na třídu.
+* `BlobTrigger` `Connection` Vlastnost atributu
+* `StorageAccount`Atribut aplikovaný na stejný parametr jako `BlobTrigger` atribut.
+* `StorageAccount`Atribut aplikovaný na funkci.
+* `StorageAccount`Atribut aplikovaný na třídu.
 * Výchozí účet úložiště pro aplikaci Function App (nastavení aplikace "AzureWebJobsStorage").
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
@@ -266,7 +266,7 @@ Python nepodporuje atributy.
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobTrigger` Atribut slouží k poskytnutí přístupu k objektu blob, který funkci aktivoval. Podrobnosti najdete v [příkladu triggeru](#example) .
+`@BlobTrigger`Atribut slouží k poskytnutí přístupu k objektu blob, který funkci aktivoval. Podrobnosti najdete v [příkladu triggeru](#example) .
 
 ---
 
@@ -276,11 +276,11 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Function. JSON – vlastnost | Vlastnost atributu |Popis|
 |---------|---------|----------------------|
-|**textový** | neuvedeno | Musí být nastaven na `blobTrigger`hodnotu. Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**direction** | neuvedeno | Musí být nastaven na `in`hodnotu. Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. Výjimky jsou uvedeny v části [použití](#usage) . |
-|**Jméno** | neuvedeno | Název proměnné, která představuje objekt BLOB v kódu funkce. |
+|**textový** | Není k dispozici | Musí být nastaven na hodnotu `blobTrigger` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**direction** | Není k dispozici | Musí být nastaven na hodnotu `in` . Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. Výjimky jsou uvedeny v části [použití](#usage) . |
+|**Jméno** | Není k dispozici | Název proměnné, která představuje objekt BLOB v kódu funkce. |
 |**dílčí** | **Blobpath cestou** |[Kontejner](../storage/blobs/storage-blobs-introduction.md#blob-storage-resources) , který se má monitorovat  Může se jednat o [vzor názvu objektu BLOB](#blob-name-patterns). |
-|**vázán** | **Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage`.<br><br>Připojovací řetězec musí být pro účet úložiště pro obecné účely, nikoli [účet Blob Storage](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
+|**vázán** | **Připojení** | Název nastavení aplikace, které obsahuje připojovací řetězec úložiště, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zde zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyStorage", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyStorage". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec úložiště v nastavení aplikace s názvem `AzureWebJobsStorage` .<br><br>Připojovací řetězec musí být pro účet úložiště pro obecné účely, nikoli [účet Blob Storage](../storage/common/storage-account-overview.md#types-of-storage-accounts).|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
@@ -296,7 +296,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Přístup k datům objektů `context.bindings.<NAME>` BLOB `<NAME>` pomocí WHERE odpovídá hodnotě definované v *Function. JSON*.
+Přístup k datům objektů BLOB pomocí `context.bindings.<NAME>` Where `<NAME>` odpovídá hodnotě definované v *Function. JSON*.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -304,13 +304,13 @@ Přístup k datům objektů BLOB prostřednictvím parametru zadaného jako [Inp
 
 # <a name="java"></a>[Java](#tab/java)
 
-`@BlobTrigger` Atribut slouží k poskytnutí přístupu k objektu blob, který funkci aktivoval. Podrobnosti najdete v [příkladu triggeru](#example) .
+`@BlobTrigger`Atribut slouží k poskytnutí přístupu k objektu blob, který funkci aktivoval. Podrobnosti najdete v [příkladu triggeru](#example) .
 
 ---
 
 ## <a name="blob-name-patterns"></a>Vzory názvů objektů BLOB
 
-Můžete zadat vzor názvu objektu BLOB ve `path` vlastnosti v *Function. JSON* nebo v konstruktoru `BlobTrigger` atributu. Vzor názvu může být [filtr nebo výraz vazby](./functions-bindings-expressions-patterns.md). V následujících částech jsou uvedeny příklady.
+Můžete zadat vzor názvu objektu BLOB ve `path` vlastnosti v *Function. JSON* nebo v `BlobTrigger` konstruktoru atributu. Vzor názvu může být [filtr nebo výraz vazby](./functions-bindings-expressions-patterns.md). V následujících částech jsou uvedeny příklady.
 
 ### <a name="get-file-name-and-extension"></a>Získat název a příponu souboru
 
@@ -320,7 +320,7 @@ Následující příklad ukazuje, jak vytvořit nezávisle s názvem a přípono
 "path": "input/{blobname}.{blobextension}",
 ```
 
-Pokud je objekt BLOB pojmenovaný *Original-Blob1. txt* `blobname` , hodnoty proměnných `blobextension` a v kódu funkce jsou *původní – Blob1* a *txt*.
+Pokud je objekt BLOB pojmenovaný *Original-Blob1. txt*, hodnoty `blobname` `blobextension` proměnných a v kódu funkce jsou *původní – Blob1* a *txt*.
 
 ### <a name="filter-on-blob-name"></a>Filtrovat podle názvu objektu BLOB
 
@@ -330,7 +330,7 @@ Následující příklad aktivuje pouze objekty BLOB v `input` kontejneru, kter�
 "path": "input/original-{name}",
 ```
 
-Pokud je název objektu BLOB *Original-Blob1. txt*, hodnota `name` proměnné v kódu funkce je `Blob1`.
+Pokud je název objektu BLOB *Original-Blob1. txt*, hodnota `name` proměnné v kódu funkce je `Blob1` .
 
 ### <a name="filter-on-file-type"></a>Filtrovat podle typu souboru
 
@@ -348,7 +348,7 @@ Chcete-li vyhledat složené závorky v názvech souborů, vydejte závorky pomo
 "path": "images/{{20140101}}-{name}",
 ```
 
-Pokud je objekt BLOB pojmenovaný * {20140101}-soundfile. mp3*, hodnota `name` proměnné v kódu funkce je *soundfile. mp3*.
+Pokud je objekt BLOB pojmenovaný * {20140101} -soundfile. mp3*, `name` hodnota proměnné v kódu funkce je *soundfile. mp3*.
 
 ## <a name="metadata"></a>Metadata
 
@@ -383,15 +383,15 @@ Metadata nejsou v jazyce Java k dispozici.
 
 Modul runtime Azure Functions zajišťuje, aby se žádná funkce triggeru objektu BLOB nevolala více než jednou pro stejný nový nebo aktualizovaný objekt BLOB. Aby bylo možné zjistit, zda daná verze objektu BLOB byla zpracována, uchovává *příjem objektů BLOB*.
 
-Azure Functions ukládá příjem objektů BLOB v kontejneru s názvem *Azure-WebJobs – hostitelé* v účtu úložiště Azure pro vaši aplikaci Function App (definované nastavením `AzureWebJobsStorage`aplikace). Příjem objektů BLOB obsahuje následující informace:
+Azure Functions ukládá příjem objektů BLOB v kontejneru s názvem *Azure-WebJobs – hostitelé* v účtu úložiště Azure pro vaši aplikaci Function App (definované nastavením aplikace `AzureWebJobsStorage` ). Příjem objektů BLOB obsahuje následující informace:
 
-* Aktivovaná funkce (*&lt;název aplikace funkce>*. POZVYHLEDAT. název funkce>", například:" MyFunctionApp. Functions. CopyBlob ") * &lt; *
+* Aktivovaná funkce (* &lt; název aplikace funkce>*. POZVYHLEDAT. * &lt; název funkce>*", například:" MyFunctionApp. Functions. CopyBlob ")
 * Název kontejneru
 * Typ objektu BLOB ("BlockBlob" nebo "PageBlob")
 * Název objektu BLOB
 * ETag (identifikátor verze objektu blob, například: "0x8D1DC6E70A277EF")
 
-Pokud chcete vynutit opětovné zpracování objektu blob, odstraňte příjem objektů BLOB pro tento objekt BLOB z kontejneru *Azure-WebJobs – hostuje* kontejner ručně. I když se nemůžete znovu zajímat, je zaručeno, že dojde k pozdějšímu časovému okamžiku. Pro okamžité zpracování je možné aktualizovat *scaninfo* objekt BLOB v *Azure – WebJobs – Hosts/blobscaninfo* . Všechny objekty BLOB s časovým razítkem poslední `LatestScan` změny, po jejichž uplynutí bude vlastnost prohledávána znovu.
+Pokud chcete vynutit opětovné zpracování objektu blob, odstraňte příjem objektů BLOB pro tento objekt BLOB z kontejneru *Azure-WebJobs – hostuje* kontejner ručně. I když se nemůžete znovu zajímat, je zaručeno, že dojde k pozdějšímu časovému okamžiku. Pro okamžité zpracování je možné aktualizovat *scaninfo* objekt BLOB v *Azure – WebJobs – Hosts/blobscaninfo* . Všechny objekty BLOB s časovým razítkem poslední změny, po jejichž uplynutí bude `LatestScan` vlastnost prohledávána znovu.
 
 ## <a name="poison-blobs"></a>Poškozené objekty blob
 
@@ -399,7 +399,7 @@ Pokud se funkce triggeru objektu BLOB pro daný objekt BLOB nezdařila, Azure Fu
 
 Pokud dojde k selhání všech 5 pokusů, Azure Functions přidá zprávu do fronty úložiště s názvem *WebJobs-blobtrigger-otrav*. Maximální počet opakovaných pokusů lze konfigurovat. Stejné nastavení MaxDequeueCount se používá pro zpracování poškozeného objektu BLOB a zpracování zpráv z fronty otrav. Zpráva fronty pro poškozené objekty BLOB je objekt JSON, který obsahuje následující vlastnosti:
 
-* FunctionId (v * &lt;názvu aplikace funkce Format>*. POZVYHLEDAT. název funkce>) * &lt; *
+* FunctionId (v * &lt; názvu aplikace funkce Format>*. POZVYHLEDAT. * &lt; název funkce>*)
 * BlobType ("BlockBlob" nebo "PageBlob")
 * ContainerName
 * BlobName
@@ -411,7 +411,7 @@ Trigger objektu BLOB používá interně frontu, takže maximální počet soub�
 
 [Plán spotřeby](functions-scale.md#how-the-consumption-and-premium-plans-work) omezuje aplikaci funkcí na jednom virtuálním počítači na 1,5 GB paměti. Paměť je používána každou souběžně spuštěnou instancí funkce a samotným modulem runtime Functions. Pokud funkce aktivovaná objektem BLOB načte celý objekt blob do paměti, maximální velikost paměti, kterou tato funkce používá jenom pro objekty blob, je 24 * maximální velikost objektu BLOB. Například aplikace funkcí se třemi funkcemi aktivovanými pro objekty BLOB a výchozími nastaveními může být maximální souběžnost na virtuálním počítači 3 * 24 = 72 volání funkcí.
 
-Funkce JavaScriptu a Java načtou celý objekt blob do paměti a funkce jazyka C# to uděláte, když vytváříte vazby na `string`, `Byte[]`nebo POCO.
+Funkce JavaScriptu a Java načtou celý objekt blob do paměti a funkce jazyka C# to uděláte, když vytváříte vazby na `string` , `Byte[]` nebo POCO.
 
 ## <a name="polling"></a>Dotazování
 

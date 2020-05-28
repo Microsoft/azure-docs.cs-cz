@@ -1,5 +1,5 @@
 ---
-title: Příklad rozhraní příkazového řádku – povolení BYOK TDE-Azure SQL Database Managed instance
+title: Příklad rozhraní příkazového řádku – povolení BYOK TDE – spravovaná instance Azure SQL
 description: Naučte se konfigurovat spravovanou instanci Azure SQL, abyste mohli začít používat BYOK transparentní šifrování dat (TDE) pro šifrování v klidovém prostředí pomocí PowerShellu.
 services: sql-database
 ms.service: sql-database
@@ -11,16 +11,16 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: 8e8c0e2db1f87cca52c44d33ce14d7ce4f00e895
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 271f68a57a4490032e318da57b4b37aac09a1410
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061734"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84019344"
 ---
 # <a name="manage-transparent-data-encryption-in-a-managed-instance-using-your-own-key-from-azure-key-vault"></a>Správa transparentní šifrování dat ve spravované instanci pomocí vlastního klíče z Azure Key Vault
 
-Tento ukázkový skript Azure CLI nakonfiguruje transparentní šifrování dat (TDE) s klíčem spravovaným zákazníkem pro Azure SQL Managed instance pomocí klíče z Azure Key Vault. Tato situace se často označuje jako Bring Your Own Key scénář pro TDE. Další informace o TDE s klíčem spravovaným zákazníkem najdete v tématu [TDE Bring Your Own Key do Azure SQL](../transparent-data-encryption-byok-azure-sql.md).
+Tento ukázkový skript Azure CLI nakonfiguruje transparentní šifrování dat (TDE) s klíčem spravovaným zákazníkem pro Azure SQL Managed instance pomocí klíče z Azure Key Vault. Tato situace se často označuje jako Bring Your Own Key scénář pro TDE. Další informace o TDE s klíčem spravovaným zákazníkem najdete v tématu [TDE Bring Your Own Key do Azure SQL](../../azure-sql/database/transparent-data-encryption-byok-overview.md).
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
@@ -28,7 +28,7 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (
 
 ### <a name="prerequisites"></a>Požadavky
 
-Existující spravovanou instanci najdete v tématu [použití rozhraní příkazového řádku Azure k vytvoření spravované instance Azure SQL Database](sql-database-create-configure-managed-instance-cli.md).
+Existující spravovanou instanci najdete v tématu použití rozhraní příkazového [řádku Azure k vytvoření spravované instance Azure SQL](sql-database-create-configure-managed-instance-cli.md).
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -65,4 +65,4 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 Další informace o Azure CLI najdete v [dokumentaci k Azure CLI](/cli/azure).
 
-Další ukázkové skripty rozhraní příkazového řádku pro službu SQL Database najdete v [dokumentaci ke službě Azure SQL Database](../sql-database-cli-samples.md).
+Další ukázkové skripty rozhraní příkazového řádku pro službu SQL Database najdete v [dokumentaci ke službě Azure SQL Database](../../azure-sql/database/az-cli-script-samples-content-guide.md).

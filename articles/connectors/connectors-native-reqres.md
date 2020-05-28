@@ -7,12 +7,12 @@ ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
 tags: connectors
-ms.openlocfilehash: 0dea516ea6b938b91fc4b9b833979bcecc285339
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 1e1a7f2e82ba2e90a641a6559062348f8d4d3aea
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714963"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142448"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps
 
@@ -64,7 +64,7 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
    | **ADRESA URL PRO POST HTTP** | nTato | Ano | Adresa URL koncového bodu, která se generuje po uložení aplikace logiky a která se používá pro volání aplikace logiky |
-   | **Schéma JSON pro tělo požadavku** | `schema` | Ne | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
+   | **Schéma JSON pro tělo požadavku** | `schema` | No | Schéma JSON, které popisuje vlastnosti a hodnoty v textu příchozí žádosti |
    |||||
 
 1. V poli **schématu JSON textu žádosti** můžete volitelně zadat schéma JSON, které popisuje tělo v příchozím požadavku, například:
@@ -162,8 +162,8 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
 
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
-   | **Metoda** | `method` | Ne | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
-   | **Relativní cesta** | `relativePath` | Ne | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
+   | **Metoda** | `method` | No | Metoda, kterou musí příchozí požadavek použít k volání aplikace logiky |
+   | **Relativní cesta** | `relativePath` | No | Relativní cesta k parametru, který adresa URL koncového bodu aplikace logiky může přijmout |
    |||||
 
    Tento příklad přidá vlastnost **metody** :
@@ -185,6 +185,9 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
    Tento krok vygeneruje adresu URL, která se má použít pro odeslání žádosti, která spouští aplikaci logiky. Tuto adresu URL můžete zkopírovat tak, že vyberete ikonu kopírování vedle adresy URL.
 
    ![Adresa URL pro použití aktivace aplikace logiky](./media/connectors-native-reqres/generated-url.png)
+   
+   > [!NOTE]
+   > Adresa URL povoluje použití symbolu "at" ( **@** ), ale nikoli symbolu hash ( **#** ).
 
 1. Pokud chcete aktivovat aplikaci logiky, odešlete příspěvek HTTP na vygenerovanou adresu URL.
 
@@ -196,7 +199,7 @@ Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto 
 
 Zde jsou další informace o výstupech z triggeru požadavku:
 
-| Název vlastnosti JSON | Datový typ | Description |
+| Název vlastnosti JSON | Datový typ | Popis |
 |--------------------|-----------|-------------|
 | `headers` | Objekt | Objekt JSON, který popisuje hlavičky z požadavku |
 | `body` | Objekt | Objekt JSON, který popisuje obsah těla žádosti |
@@ -254,8 +257,8 @@ Vaše aplikace logiky udržuje příchozí požadavek otevřené jenom po dobu [
    | Název vlastnosti | Název vlastnosti JSON | Povinné | Popis |
    |---------------|--------------------|----------|-------------|
    | **Stavový kód** | `statusCode` | Ano | Stavový kód, který se má vrátit v odpovědi |
-   | **Hlavičky** | `headers` | Ne | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
-   | **Text** | `body` | Ne | Tělo odpovědi |
+   | **Hlavičky** | `headers` | No | Objekt JSON, který popisuje jednu nebo více hlaviček, které mají být zahrnuty do odpovědi |
+   | **Text** | `body` | No | Tělo odpovědi |
    |||||
 
 1. Chcete-li zadat další vlastnosti, jako je například schéma JSON pro tělo odpovědi, otevřete seznam **Přidat nový parametr** a vyberte parametry, které chcete přidat.

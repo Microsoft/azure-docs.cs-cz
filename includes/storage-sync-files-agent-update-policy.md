@@ -14,8 +14,8 @@ ms.locfileid: "77123219"
 Agent Azure File Sync se pravidelně aktualizuje, aby bylo možné přidat nové funkce a vyřešit problémy. Doporučujeme, abyste nakonfigurovali Microsoft Update, abyste získali aktualizace pro agenta Azure File Sync, jak jsou k dispozici.
 
 #### <a name="major-vs-minor-agent-versions"></a>Hlavní verze agentů vs.
-* Hlavní verze agenta často obsahují nové funkce a v první části čísla verze se zvyšuje číslo. Příklad: \*2.\*.\*\*
-* Dílčí verze agenta se také nazývají "opravy" a jsou vydávány častěji než hlavní verze. Často obsahují opravy chyb a menší vylepšení, ale žádné nové funkce. Příklad: \* \*. 3.\*\*
+* Hlavní verze agenta často obsahují nové funkce a v první části čísla verze se zvyšuje číslo. Příklad: \* 2. \* .\*\*
+* Dílčí verze agenta se také nazývají "opravy" a jsou vydávány častěji než hlavní verze. Často obsahují opravy chyb a menší vylepšení, ale žádné nové funkce. Příklad: \* \* . 3.\*\*
 
 #### <a name="upgrade-paths"></a>Cesty upgradu
 Existují čtyři schválené a testované způsoby, jak nainstalovat aktualizace agenta Azure File Sync. 
@@ -43,7 +43,7 @@ cd 'C:\Program Files\Azure\StorageSyncAgent'
 Import-Module -Name .\StorageSync.Management.ServerCmdlets.dll
 ```
 
-Můžete spustit `Get-StorageSyncAgentAutoUpdatePolicy` , pokud chcete kontrolovat aktuální nastavení zásad a určit, jestli ho chcete změnit.
+Můžete spustit, `Get-StorageSyncAgentAutoUpdatePolicy` Pokud chcete kontrolovat aktuální nastavení zásad a určit, jestli ho chcete změnit.
 
 Chcete-li změnit aktuální nastavení zásad na záznam opožděné aktualizace, můžete použít:
 ```powershell

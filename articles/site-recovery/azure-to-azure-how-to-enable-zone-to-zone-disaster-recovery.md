@@ -65,7 +65,7 @@ Jak je uvedeno výše, zóna pro zotavení po havárii zóny snižuje složitost
 
 Předtím, než nasadíte zónu do zóny zotavení po havárii pro vaše virtuální počítače, je důležité zajistit, aby byly na virtuálním počítači vzájemně ovladatelné další funkce s cílem zotavení po havárii zóny.
 
-|Funkce  | Příkaz support  |
+|Příznak  | Příkaz support  |
 |---------|---------|
 |Klasické virtuální počítače   |     Nepodporuje se    |
 |Virtuální počítače ARM    |    Podporuje se    |

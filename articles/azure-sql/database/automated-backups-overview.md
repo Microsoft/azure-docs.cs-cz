@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: e450d9ede3b073d2d1a791b341e4376b40919933
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 0d6ab6152d7025098006c580673848fe0268346b
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116471"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141836"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -49,11 +49,11 @@ Některé z těchto operací můžete vyzkoušet pomocí následujících přík
 
 | | Azure Portal | Azure PowerShell |
 |---|---|---|
-| Změna uchovávání záloh | [SQL Database](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Spravovaná instance SQL](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [SQL Database](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Spravovaná instance SQL](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
-| Změna dlouhodobého uchovávání záloh | [SQL Database](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance SQL – N/A  | [SQL Database](long-term-backup-retention-configure.md)<br/>Spravovaná instance SQL – N/A  |
-| Obnovení databáze z určitého bodu v čase | [SQL Database](recovery-using-backups.md#point-in-time-restore) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance SQL](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
-| Obnovení odstraněné databáze | [SQL Database](recovery-using-backups.md) | [SQL Database](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance SQL](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
-| Obnovení databáze ze služby Azure Blob Storage | SQL Database – N/A <br/>Spravovaná instance SQL – N/A  | SQL Database – N/A <br/>[Spravovaná instance SQL](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
+| Změna uchovávání záloh | [Samostatná databáze](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) <br/> [Spravovaná instance](automated-backups-overview.md?tabs=managed-instance#change-the-pitr-backup-retention-period-by-using-the-azure-portal) | [Samostatná databáze](automated-backups-overview.md#change-the-pitr-backup-retention-period-by-using-powershell) <br/>[Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstancedatabasebackupshorttermretentionpolicy) |
+| Změna dlouhodobého uchovávání záloh | [Samostatná databáze](long-term-backup-retention-configure.md#configure-long-term-retention-policies)<br/>Spravovaná instance – není k dispozici  | [Samostatná databáze](long-term-backup-retention-configure.md)<br/>Spravovaná instance – není k dispozici  |
+| Obnovení databáze z určitého bodu v čase | [Samostatná databáze](recovery-using-backups.md#point-in-time-restore) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqlinstancedatabase) |
+| Obnovení odstraněné databáze | [Samostatná databáze](recovery-using-backups.md) | [Samostatná databáze](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeleteddatabasebackup) <br/> [Spravovaná instance](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldeletedinstancedatabasebackup)|
+| Obnovení databáze ze služby Azure Blob Storage | Izolovaná databáze – není k dispozici <br/>Spravovaná instance – není k dispozici  | Izolovaná databáze – není k dispozici <br/>[Spravovaná instance](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) |
 
 ## <a name="backup-frequency"></a>Frekvence zálohování
 
@@ -61,7 +61,7 @@ Některé z těchto operací můžete vyzkoušet pomocí následujících přík
 
 SQL Database a SQL Managed instance podporují samoobslužnou službu pro obnovení PITR (Point-in-time) tím, že automaticky vytvoří úplné zálohy, rozdílové zálohy a zálohy protokolu transakcí. Úplné zálohy databáze jsou vytvářeny týdně a rozdílové zálohy databáze se většinou vytvářejí každých 12 hodin. Zálohy protokolu transakcí se většinou vytvářejí každých 5 až 10 minut. Frekvence zálohování protokolu transakcí je založena na výpočetní velikosti a množství aktivity databáze.
 
-První úplné zálohování je naplánováno ihned po vytvoření databáze. Tato záloha se obvykle dokončí do 30 minut, ale pokud je databáze velká, může trvat déle. Například počáteční záloha může trvat déle na obnovenou databázi nebo kopii databáze. Po první úplné záloze se všechny další zálohy naplánují automaticky a budou se bezobslužně spravovat na pozadí. Přesný okamžik všech záloh databáze je určený SQL Database a SQL Managed instance, protože vyvažuje celkovou úlohu systému. Úlohy zálohování nemůžete změnit ani zakázat.
+První úplné zálohování je naplánováno ihned po vytvoření databáze. Tato záloha se obvykle dokončí do 30 minut, ale pokud je databáze velká, může trvat déle. Například počáteční záloha může trvat déle na obnovenou databázi nebo kopii databáze. Po první úplné záloze se všechny další zálohy naplánují automaticky a budou se bezobslužně spravovat na pozadí. Přesné časování všech záloh databáze určuje služba SQL Database nebo služba SQL Managed instance, protože vyrovnává celkovou úlohu systému. Úlohy zálohování nemůžete změnit ani zakázat.
 
 ### <a name="default-backup-retention-period"></a>Výchozí doba uchovávání záloh
 
@@ -79,20 +79,20 @@ Další informace o LTR najdete v tématu [dlouhodobé uchovávání záloh](lon
 
 ## <a name="backup-storage-consumption"></a>Spotřeba úložiště záloh
 
-V případě izolovaných databází v SQL Database a spravovaných instancí ve spravované instanci SQL se tato rovnice používá k výpočtu celkového využití úložiště záloh:
+Pro jednotlivé databáze a spravované instance se tato rovnice používá k výpočtu celkového využití úložiště záloh:
 
 `Total backup storage size = (size of full backups + size of differential backups + size of log backups) – database size`
 
-Pro databáze ve fondu v SQL Database je celková velikost úložiště zálohování agregovaná na úrovni fondu a počítá se takto:
+Pro databáze ve fondu je celková velikost úložiště zálohování agregovaná na úrovni fondu a počítá se takto:
 
 `Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - allocated pool data storage`
 
 Zálohy, ke kterým dojde před dobou uchovávání, se automaticky vyprázdní na základě jejich časového razítka. Vzhledem k tomu, že rozdílové zálohy a zálohy protokolů vyžadují, aby bylo předchozí úplné zálohování užitečné, vyčistí se společně v týdenních blocích.
 
 Služba SQL Database a SQL Managed instance počítají celkové úložiště záloh v rámci uchování jako kumulativní hodnotu. Každou hodinu se tato hodnota oznamuje fakturačnímu kanálu Azure, který zodpovídá za agregaci tohoto hodinového využití za účelem výpočtu spotřeby na konci každého měsíce. Po vyřazení databáze se spotřeba sníží jako stáří zálohování. Až budou zálohy starší než doba uchovávání, fakturace se zastaví.
-
+   
    > [!IMPORTANT]
-   > Zálohy databáze se uchovávají po určenou dobu uchování, a to i v případě, že databáze byla vyřazena. Při vyřazování a opětovném vytváření databáze se může často ušetřit náklady na úložiště a výpočetní výkon, protože společnost Microsoft uchovává zálohu pro zadanou dobu uchování pro každou vyřazenou databázi pokaždé, když je zahozena.
+   > Zálohy databáze se uchovávají po určenou dobu uchování, a to i v případě, že databáze byla vyřazena. Při vyřazování a opětovném vytváření databáze se může často ušetřit náklady na úložiště a výpočetní výkon, protože společnost Microsoft uchovává zálohu pro zadanou dobu uchování pro každou vyřazenou databázi pokaždé, když je zahozena. 
 
 ### <a name="monitor-consumption"></a>Monitorovat spotřebu
 
@@ -142,18 +142,21 @@ Přidejte filtr pro **název služby**a potom v rozevíracím seznamu vyberte **
 
 ## <a name="backup-retention"></a>Uchování záloh
 
-Všechny databáze v Microsoft Azure SQL mají výchozí dobu uchovávání záloh 7 dní. [Dobu uchovávání záloh můžete změnit](#change-the-pitr-backup-retention-period) na až 35 dní.
+Všechny databáze v Microsoft Azure SQL mají výchozí dobu uchovávání záloh 7 dní. [Dobu uchovávání záloh můžete změnit](#change-the-pitr-backup-retention-period) na odkudkoli mezi 1-35 dny.
 
 Pokud databázi odstraníte, Azure bude zálohy uchovávat stejným způsobem jako online databáze. Pokud například odstraníte databázi Basic, která má dobu uchování sedm dní, uloží se záloha se čtyřmi dny do stáří po dobu tří dalších dnů.
 
 Pokud potřebujete uchovat zálohy po dobu delší, než je maximální doba uchovávání, můžete upravit vlastnosti zálohy a přidat jednu nebo více dlouhodobých dob uchovávání do databáze. Další informace najdete v tématu [Dlouhodobé uchovávání](long-term-retention-overview.md).
 
 > [!IMPORTANT]
-> Při odstranění serveru nebo spravované instance se odstraní také všechny databáze spravované tímto serverem nebo spravovanou instancí. Nelze je obnovit. Odstraněný Server nebo spravovanou instanci nelze obnovit. Pokud jste ale nakonfigurovali dlouhodobou dobu uchovávání pro SQL Database, zálohy databází s LTR se neodstraní a tyto databáze je možné obnovit.
+> Nastavení doby uchování zálohy na 1 den (nebo na libovolnou hodnotu v rozsahu 1-7) je podporováno pouze prostřednictvím PowerShellu nebo REST API v tuto chvíli. Minimální požadovaná verze modulu AZ. SQL je v 2.6.0 nebo se dá spustit prostřednictvím Cloudshellu, který má vždycky nejnovější verzi AZ. SQL.
+
+> [!IMPORTANT]
+> Při odstranění serveru nebo spravované instance se odstraní také všechny databáze spravované tímto serverem nebo spravovanou instancí. Nelze je obnovit. Odstraněný Server nebo spravovanou instanci nelze obnovit. Pokud jste ale nakonfigurovali dlouhodobou dobu uchovávání SQL Database nebo spravovaných instance, zálohy databází s LTR se neodstraní a tyto databáze je možné obnovit.
 
 ## <a name="encrypted-backups"></a>Šifrovaná zálohování
 
-Pokud je databáze zašifrovaná pomocí TDE, zálohy se automaticky zašifrují v klidovém stavu, včetně záloh LTR. Pokud je TDE povolená pro SQL Database nebo SQL Managed instance, zálohy se taky šifrují. Všechny nové databáze v Azure SQL jsou ve výchozím nastavení nakonfigurované s povoleným TDE. Další informace o TDE najdete v tématu [transparentní šifrování dat s SQL Database a SQL Managed instance](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Pokud je databáze zašifrovaná pomocí TDE, zálohy se automaticky zašifrují v klidovém stavu, včetně záloh LTR. Pokud je TDE povolená pro SQL Database nebo SQL Managed instance, zálohy se taky šifrují. Všechny nové databáze v Azure SQL jsou ve výchozím nastavení nakonfigurované s povoleným TDE. Další informace o TDE najdete v tématu [transparentní šifrování dat s SQL Database & spravované instance SQL](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 ## <a name="backup-integrity"></a>Integrita zálohy
 

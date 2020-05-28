@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/01/2019
+ms.date: 05/27/2020
 ms.author: b-juche
-ms.openlocfilehash: aea783b818550b8219e1a0498256280f61f678e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78af9c12fb54b63e1a94c8b41a7ec2ac5c9b4e27
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "70995103"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142142"
 ---
 # <a name="cost-model-for-azure-netapp-files"></a>Model nákladů pro Azure NetApp Files 
 
@@ -50,6 +50,8 @@ Následující diagram znázorňuje tyto koncepty.
 ## <a name="overage-in-capacity-consumption"></a>Nadlimitní využití kapacity  
 
 Pokud celková využitá kapacita fondu překročí zřízenou kapacitu, budou zápisy dat stále povoleny.  Po uplynutí období odkladu (jedna hodina) i v případě, že využitá kapacita fondu stále přesáhne zřízenou kapacitu, bude velikost fondu automaticky zvýšena v přírůstcích po 1 TiB, dokud není zřízená kapacita větší než celková využitá kapacita.  Například na ilustraci výše se pokud jednotka 3 stále rozrůstá a skutečná spotřeba dosáhne 1,2 TiB, pak po uplynutí období odkladu se automaticky změní velikost fondu na 5 TiB.  Výsledkem je, že kapacita zřízeného fondu (5 TiB) překračuje využitou kapacitu (4,2 TiB).  
+
+I když velikost fondu kapacity se automaticky zvětšuje tak, aby splňovala požadavky svazku, při snížení velikosti svazku se automaticky nesníží. Pokud chcete fond kapacit zmenšit po zmenšení velikosti svazku (například po vyčištění dat svazku), musíte velikost fondu kapacity _ručně_ snížit.
 
 ## <a name="manual-changes-of-the-pool-size"></a>Ruční změny velikosti fondu  
 
@@ -91,4 +93,4 @@ Spotřeba kapacity snímků v Azure NetApp Files se účtuje na základě kvóty
 
 * [Stránka s cenami Azure NetApp Files](https://azure.microsoft.com/pricing/details/storage/netapp/)
 * [Úrovně služeb pro Azure NetApp Files](azure-netapp-files-service-levels.md)
-* [Omezení prostředků pro Azure NetApp Files](azure-netapp-files-resource-limits.md)
+* [Omezení prostředků pro službu Azure NetApp Files](azure-netapp-files-resource-limits.md)

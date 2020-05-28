@@ -73,7 +73,7 @@ Tato schopnost zajišťování IT na základě lidských zdrojů nabízí tyto v
 - **Řešení dodržování předpisů a zásad správného řízení:** Azure AD podporuje protokoly nativního auditu pro požadavky uživatelů na zřizování prováděné aplikacemi ze zdrojového i cílového systému. Díky auditování můžete sledovat, kdo má přístup k aplikacím z jedné obrazovky.
 - **Spravovat náklady:** Automatické zřizování snižuje náklady tím, že se vyhne neefektivitám a lidským chybám přidruženým k ručnímu zřizování. Díky starším a zastaralým platformám omezuje nutnost sestavování řešení pro zřizování uživatelů vytvořených v průběhu času.
 
-### <a name="licensing"></a>Licencování
+### <a name="licensing"></a>Licensing
 
 Pokud chcete nakonfigurovat aplikaci cloudového HR na integraci zřizování uživatelů Azure AD, budete potřebovat platnou [licenci Azure AD Premium](https://azure.microsoft.com/pricing/details/active-directory/) a licenci pro aplikaci cloudového HR, jako je například Workday nebo SuccessFactors.
 
@@ -398,7 +398,7 @@ Agent Azure AD Connect zřizování nainstalovaný na Windows serveru vytvoří 
 
 Služba zřizování Azure AD negeneruje sestavy, provádí analýzy ani neposkytuje přehledy po dobu 30 dnů, protože služba neukládá, nezpracovává ani neuchovává žádná data déle než 30 dnů.
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstraňování potíží
 
 Chcete-li vyřešit všechny problémy, které se mohou během zřizování vypnout, přečtěte si následující články:
 

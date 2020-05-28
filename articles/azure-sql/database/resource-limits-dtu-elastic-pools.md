@@ -49,7 +49,7 @@ V případě Azure SQL Database elastických fondů se v následujících tabulk
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maximální počet možností úložiště na fond (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – | – | – | – |
+| Maximální úložiště OLTP v paměti na fond (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 | Maximální počet databáze na fond <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>2</sup> | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -68,7 +68,7 @@ V případě Azure SQL Database elastických fondů se v následujících tabulk
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 50 | 100 | 200 | 300 | 400 | 800 |
 | Maximální počet možností úložiště na fond (GB) | 50, 250, 500 | 100, 250, 500, 750 | 200, 250, 500, 750, 1024 | 300, 500, 750, 1024, 1280 | 400, 500, 750, 1024, 1280, 1536 | 800, 1024, 1280, 1536, 1792, 2048 |
-| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – | – |
+| Maximální úložiště OLTP v paměti na fond (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 | Maximální počet databáze na fond <sup>1</sup> | 100 | 200 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>2</sup> | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -87,7 +87,7 @@ V případě Azure SQL Database elastických fondů se v následujících tabulk
 |:---|---:|---:|---:| ---: | ---: |
 | Zahrnuté úložiště na fond (GB) | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maximální počet možností úložiště na fond (GB) | 1200, 1280, 1536, 1792, 2048, 2304, 2560 | 1600, 1792, 2048, 2304, 2560, 2816, 3072 | 2000, 2048, 2304, 2560, 2816, 3072, 3328, 3584 | 2500, 2560, 2816, 3072, 3328, 3584, 3840, 4096 | 3000, 3072, 3328, 3584, 3840, 4096 |
-| Maximální úložiště OLTP v paměti na fond (GB) | – | – | – | – | – |
+| Maximální úložiště OLTP v paměti na fond (GB) | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 | Maximální počet databáze na fond <sup>1</sup> | 500 | 500 | 500 | 500 | 500 |
 | Maximální počet souběžných pracovních procesů (požadavků) na fond <sup>2</sup> | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Maximální počet souběžných relací na fond <sup>2</sup> | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -150,7 +150,7 @@ Pokud se využívají všechny DTU elastického fondu, pak každá databáze ve 
 
 Následující tabulka popisuje vlastnosti pro databáze ve fondu.
 
-| Vlastnost | Description |
+| Vlastnost | Popis |
 |:--- |:--- |
 | Maximální počet eDTU na databázi |Maximální počet eDTU, které může využívat libovolná databáze ve fondu za předpokladu, že jsou dostupné v závislosti na využití ostatními databázemi ve fondu. Maximální počet eDTU na databázi není garancí prostředků pro databázi. Toto nastavení je globální a platí pro všechny databáze ve fondu. Nastavte maximální počet eDTU na databázi dostatečně vysoký, aby databáze zvládly využití ve špičkách. Očekává se určitý stupeň předimenzování, protože fond obecně předpokládá studené a horké vzory používání, při nichž nenastávají špičky u všech databází ve stejnou chvíli. Předpokládejme například, že využití ve špičce na databázi je 20 eDTU a špička v jednu chvíli nastává pouze u 20 % ze 100 databází ve fondu. Pokud je maximální počet eDTU na databázi nastaven na 20 eDTU, je rozumné fond 5krát předimenzovat a nastavit počet eDTU na fond na 400. |
 | Minimální počet eDTU na databázi |Minimální počet eDTU garantovaných pro každou databázi ve fondu. Toto nastavení je globální a platí pro všechny databáze ve fondu. Minimální počet eDTU na databázi může být nastaven na 0, což je i výchozí hodnota. Tato vlastnost je nastavena na libovolnou hodnotu mezi 0 a průměrným využitím eDTU na databázi. Násobek počtu databází ve fondu a minimálním počtem eDTU na databázi nemůže překročit počet eDTU na fond. Pokud je například ve fondu 20 databází a minimální počet eDTU na databázi je nastaven na 10 eDTU, pak musí být počet eDTU na fond alespoň 200 eDTU. |

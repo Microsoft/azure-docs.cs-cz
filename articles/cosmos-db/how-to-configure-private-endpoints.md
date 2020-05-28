@@ -4,14 +4,14 @@ description: Přečtěte si, jak nastavit privátní odkaz Azure pro přístup k
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/14/2020
+ms.date: 05/27/2020
 ms.author: thweiss
-ms.openlocfilehash: 2c4044fded2d14b8c6a1d92f367de9588b7b2ca3
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c5b82e8cdea49f8dd761844ff5492df0ad109943
+ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697879"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84116666"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos
 
@@ -83,8 +83,8 @@ Následující tabulka ukazuje mapování mezi různými typy rozhraní API úč
 |Mongo   |  MongoDB       |  privatelink.mongo.cosmos.azure.com    |
 |Gremlin     | Gremlin        |  privatelink.gremlin.cosmos.azure.com   |
 |Gremlin     |  Sql       |  privatelink.documents.azure.com    |
-|Tabulka    |    Tabulka     |   privatelink.table.cosmos.azure.com    |
-|Tabulka     |   Sql      |  privatelink.documents.azure.com    |
+|Table    |    Table     |   privatelink.table.cosmos.azure.com    |
+|Table     |   Sql      |  privatelink.documents.azure.com    |
 
 ### <a name="fetch-the-private-ip-addresses"></a>Načtení privátních IP adres
 
@@ -398,7 +398,7 @@ $deploymentOutput = New-AzResourceGroupDeployment -Name "PrivateCosmosDbEndpoint
 $deploymentOutput
 ```
 
-V PowerShellovém skriptu `GroupId` může proměnná obsahovat jenom jednu hodnotu. Tato hodnota je typ rozhraní API tohoto účtu. Povolené hodnoty jsou: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` a `Table` . Některé typy účtů Azure Cosmos jsou přístupné prostřednictvím více rozhraní API. Například:
+V PowerShellovém skriptu `GroupId` může proměnná obsahovat jenom jednu hodnotu. Tato hodnota je typ rozhraní API tohoto účtu. Povolené hodnoty jsou: `Sql` , `MongoDB` , `Cassandra` , `Gremlin` a `Table` . Některé typy účtů Azure Cosmos jsou přístupné prostřednictvím více rozhraní API. Příklad:
 
 * K účtu rozhraní Gremlin API je možné přihlédnout z účtů Gremlin a SQL API.
 * K účtu rozhraní API pro tabulky lze přihlédnout z tabulek i z účtů rozhraní SQL API.
@@ -618,9 +618,11 @@ Při použití privátního odkazu v kombinaci s pravidly brány firewall jsou m
 
 * Pokud žádná pravidla brány firewall nenakonfigurujete, budou mít všechny přenosy ve výchozím nastavení přístup k účtu Azure Cosmos.
 
-* Pokud nakonfigurujete veřejný provoz nebo koncový bod služby a vytvoříte privátní koncové body, budou se podle odpovídajícího typu pravidla brány firewall autorizovat různé typy příchozích přenosů.
+* Pokud nakonfigurujete veřejný provoz nebo koncový bod služby a vytvoříte privátní koncové body, budou se podle odpovídajícího typu pravidla brány firewall autorizovat různé typy příchozích přenosů. Pokud je privátní koncový bod nakonfigurovaný v podsíti, ve které je taky nakonfigurovaný koncový bod služby:
+  * provoz do databázového účtu mapovaného privátním koncovým bodem je směrován prostřednictvím privátního koncového bodu,
+  * provoz do jiných databázových účtů z podsítě je směrován prostřednictvím koncového bodu služby.
 
-* Pokud neprovedete konfiguraci žádného veřejného provozu nebo koncového bodu služby a vytvoříte privátní koncové body, účet Azure Cosmos je přístupný jenom prostřednictvím privátních koncových bodů. Pokud nenastavíte veřejný provoz nebo koncový bod služby, po odmítnutí nebo odstranění všech schválených privátních koncových bodů se účet otevře v celé síti.
+* Pokud neprovedete konfiguraci žádného veřejného provozu nebo koncového bodu služby a vytvoříte privátní koncové body, účet Azure Cosmos je přístupný jenom prostřednictvím privátních koncových bodů. Pokud nenastavíte veřejný provoz nebo koncový bod služby, po odmítnutí nebo odstranění všech schválených privátních koncových bodů se účet otevře v celé síti, pokud není PublicNetworkAccess nastavené na zakázáno (viz část níže).
 
 ## <a name="blocking-public-network-access-during-account-creation"></a>Blokování přístupu k veřejné síti při vytváření účtu
 

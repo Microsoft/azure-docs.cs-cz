@@ -44,7 +44,7 @@ Do úlohy Stream Analytics můžete přidat funkce Azure Machine Learning přím
 
 Následující tabulka popisuje každou vlastnost funkcí služby Azure ML v Stream Analytics.
 
-|Vlastnost|Description|
+|Vlastnost|Popis|
 |--------|-----------|
 |Alias funkce|Zadejte název pro vyvolání funkce v dotazu.|
 |Předplatné|Vaše předplatné Azure..|

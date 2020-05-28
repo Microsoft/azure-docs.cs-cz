@@ -32,6 +32,8 @@
       href: clean-missing-data.md
     - name: Úpravy metadat
       href: edit-metadata.md
+    - name: Seskupení dat do přihrádek
+      href: group-data-into-bins.md
     - name: Spojení dat
       href: join-data.md
     - name: Normalizace dat
@@ -130,6 +132,8 @@
       href: execute-r-script.md
 - name: Analýza textu
   items:
+    - name: Převod slova na vektor
+      href: convert-word-to-vector.md
     - name: Extrakce funkcí n-gramů z textu
       href: extract-n-gram-features-from-text.md
     - name: Hashování funkcí

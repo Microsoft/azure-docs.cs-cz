@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 0c56652b4e098213bae0c69d4be5ac77e1b1393c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: a94b2897b3e84688cd7dc5c7bca96a0f7a4449d1
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83635289"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142074"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
@@ -74,6 +74,7 @@ Po ověření vůči službě Active Directory načtěte token. Tento token je v
 
 ## <a name="additional-considerations"></a>Další aspekty
 
+- Ověřování Azure Active Directory je k dispozici pouze pro MySQL 5,7 a novější.
 - Pro Azure Database for MySQL server můžete kdykoli nakonfigurovat pouze jednoho správce Azure AD.
 - Pouze správce Azure AD pro MySQL se může zpočátku připojit k Azure Database for MySQL pomocí účtu Azure Active Directory. Správce služby Active Directory může nakonfigurovat další uživatele databáze služby Azure AD.
 - Pokud se uživatel z Azure AD odstraní, už ho nebude moct ověřit ve službě Azure AD, a proto už nebude možné získat přístupový token pro tohoto uživatele. V takovém případě, i když bude odpovídající uživatel v databázi stále, nebude možné se připojit k serveru s tímto uživatelem.

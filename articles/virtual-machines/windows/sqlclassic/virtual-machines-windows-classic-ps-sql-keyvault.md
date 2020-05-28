@@ -16,17 +16,17 @@ ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f878c6f7a59328e2f68ffbaee066bba4a5b6c898
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6c84be9a23713080f348daf8dddf0ad6b0390ded
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75978128"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84014689"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Konfigurace integrace Azure Key Vault pro SQL Server v Azure Virtual Machines (Classic)
 > [!div class="op_single_selector"]
-> * [Resource Manager](../sql/virtual-machines-windows-ps-sql-keyvault.md)
-> * [Classic](../classic/ps-sql-keyvault.md)
+> * [Resource Manager](../../../azure-sql/virtual-machines/windows/azure-key-vault-integration-configure.md)
+> * [Klasický](../classic/ps-sql-keyvault.md)
 > 
 > 
 
@@ -53,7 +53,7 @@ V následující tabulce jsou uvedeny parametry potřebné ke spuštění skript
 
 | Parametr | Popis | Příklad |
 | --- | --- | --- |
-| **$akvURL** |**Adresa URL trezoru klíčů** |"https:\//contosokeyvault.Vault.Azure.NET/" |
+| **$akvURL** |**Adresa URL trezoru klíčů** |"https: \/ /contosokeyvault.Vault.Azure.NET/" |
 | **$spName** |**Hlavní název služby** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
 | **$spSecret** |**Tajný klíč objektu služby** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM =" |
 | **$credName** |**Název přihlašovacího údaje:** Integrace se službou Azure Key Vault vytvoří přihlašovací údaje v rámci SQL Serveru, díky čemuž mají virtuální počítače přístup do trezoru klíčů. Zvolte název pro tyto přihlašovací údaje. |"mycred1" |

@@ -5,22 +5,22 @@ author: florianborn71
 ms.author: flborn
 ms.date: 12/11/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1f4207a11f3ae3664023fccf6178b6db7cf253b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a10558e76a6e9af7c7571dc4ba3d063ce3e2286
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80681308"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84021156"
 ---
 # <a name="create-client-side-performance-traces"></a>Vytvoření trasování výkonu na straně klienta
 
 Existuje mnoho důvodů, proč výkon vzdáleného vykreslování Azure nemusí být podle potřeby vhodný. Kromě čistého výkonu vykreslování na cloudovém serveru mají obzvláště kvalita síťového připojení výrazný vliv na prostředí. Pokud chcete Profilovat výkon serveru, přečtěte si téma [dotazy na výkon na straně serveru](../overview/features/performance-queries.md).
 
-Tato kapitola se zaměřuje na to, jak identifikovat potenciální slabá místa na straně klienta prostřednictvím *trasování výkonu*.
+Tato kapitola se zaměřuje na to, jak identifikovat potenciální kritické body na straně klienta prostřednictvím *:::no-loc text="performance traces":::* .
 
 ## <a name="getting-started"></a>Začínáme
 
-Pokud s funkcí trasování výkonu systému Windows začínáte, Tato část uvádí nejdůležitější výrazy a aplikace, které vám pomohou začít.
+Pokud s funkcemi systému Windows začínáte :::no-loc text="performance tracing"::: , Tato část uvádí nejdůležitější výrazy a aplikace, které vám pomohou začít.
 
 ### <a name="installation"></a>Instalace
 
@@ -37,11 +37,11 @@ Při hledání informací o trasování výkonu se nebudete nevyhnutelně pohybo
 
 **Trasování událostí pro Windows** představuje [ **E**-indows **pro** **t**](https://docs.microsoft.com/windows/win32/etw/about-event-tracing). Je to jednoduše název přestavění efektivního sledovacího zařízení na úrovni jádra, které je součástí systému Windows. Nazývá se trasování *událostí* , protože aplikace, které podporují ETW, generují události pro protokolování akcí, které mohou pomoci při sledování problémů s výkonem. Ve výchozím nastavení operační systém již generuje události pro věci, jako jsou přístup k disku, přepínače úlohy a takové. Aplikace, jako je třeba šipka, navíc generují vlastní události, např. odhozené snímky, prodlevu sítě atd.
 
-**ETL** představuje pro **e-mail E**-Park **T**rasy **L**ogging. Jednoduše to znamená, že trasování bylo shromážděno (zaznamenáno), a proto se obvykle používá jako Přípona souboru pro soubory, které ukládají data trasování. Proto když provedete trasování, obvykle budete mít soubor \*. ETL později.
+**ETL** představuje pro **e-mail E**-Park **T**rasy **L**ogging. Jednoduše to znamená, že trasování bylo shromážděno (zaznamenáno), a proto se obvykle používá jako Přípona souboru pro soubory, které ukládají data trasování. Proto když provedete trasování, obvykle budete mít \* soubor. ETL později.
 
-**WPR** představuje [ **W**indows **P**ERFORMANCE **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) a je název aplikace, která spustí a zastaví záznam trasování událostí. WPR převezme soubor profilu (\*. wprp), který nakonfiguruje, které přesné události se mají protokolovat. Takový `wprp` soubor je k dispozici v sadě ARR SDK. Při trasování na stolním počítači můžete spustit WPR přímo. Když provádíte trasování HoloLens, obvykle místo toho procházíte webovým rozhraním.
+**WPR** představuje [ **W**indows **P**ERFORMANCE **R**ecorder](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) a je název aplikace, která spustí a zastaví záznam trasování událostí. WPR převezme soubor profilu ( \* . wprp), který nakonfiguruje, které přesné události se mají protokolovat. Takový `wprp` soubor je k dispozici v sadě ARR SDK. Při trasování na stolním počítači můžete spustit WPR přímo. Když provádíte trasování HoloLens, obvykle místo toho procházíte webovým rozhraním.
 
-**WPA** představuje pro [ **W**indows **P**ERFORMANCE **a**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) a je název aplikace grafického uživatelského rozhraní, která se používá k \*otevírání souborů. ETL a ke zjištění problémů s výkonem prostřednictvím dat. WPA umožňuje řadit data podle různých kritérií, zobrazovat data několika způsoby, dig je v podrobnostech a korelovat informace.
+**WPA** představuje pro [ **W**indows **P**ERFORMANCE **a**nalyzer](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-analyzer) a je název aplikace grafického uživatelského rozhraní, která se používá k otevírání \* souborů. ETL a ke zjištění problémů s výkonem prostřednictvím dat. WPA umožňuje řadit data podle různých kritérií, zobrazovat data několika způsoby, dig je v podrobnostech a korelovat informace.
 
 I když se trasování ETL dá vytvořit na jakémkoli zařízení s Windows (místní počítač, HoloLens, cloudový server atd.), obvykle se ukládá na disk a analyzuje se přes WPA na stolním počítači. Soubory ETL je možné odeslat ostatním vývojářům, aby vypadaly. Mějte na paměti, že citlivé informace, jako jsou například cesty k souborům a IP adresaem, mohou být zachyceny v trasování ETL, ale. Trasování událostí pro Windows můžete použít dvěma způsoby: k záznamu trasování nebo k analýze trasování. Záznam trasování je přímý a vyžaduje minimální nastavení. Analýza trasování na druhé straně vyžaduje dát porozumění nástroji WPA a problému, který zkoumáte. Obecný materiál pro výuku WPA se bude nacházet níže a také pokyny k interpretaci trasování specifických pro použití ARR.
 
@@ -51,7 +51,7 @@ Chcete-li zjistit problémy s výkonem na základě výkonu, měli byste prefero
 
 ### <a name="wpr-configuration"></a>Konfigurace WPR
 
-1. Z *nabídky Start*spusťte modul pro [zaznamenávání výkonu systému Windows](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder) .
+1. [:::no-loc text="Windows Performance Recorder":::](https://docs.microsoft.com/windows-hardware/test/wpt/windows-performance-recorder)Z *nabídky Start*spusťte.
 1. Rozbalit **Další možnosti**
 1. Klikněte na **Přidat profily...**
 1. Vyberte soubor *AzureRemoteRenderingNetworkProfiling. wprp*. Tento soubor najdete v sadě ARR SDK v nabídce *nástroje/ETLProfiles*.
@@ -67,7 +67,7 @@ Konfigurace WPR by pak měla vypadat nějak takto:
 
 ### <a name="recording"></a>Nahrávání
 
-Kliknutím na **Spustit** zahájíte zaznamenávání trasování. Nahrávání můžete kdykoli spustit a zastavit. před tím, než to uděláte, nemusíte aplikaci zavřít. Jak vidíte, nemusíte určit, která aplikace se má trasovat, protože trasování událostí pro Windows bude vždycky nahrávat trasování pro celý systém. `wprp` Soubor určuje, které typy událostí mají být zaznamenávány.
+Kliknutím na **Spustit** zahájíte zaznamenávání trasování. Nahrávání můžete kdykoli spustit a zastavit. před tím, než to uděláte, nemusíte aplikaci zavřít. Jak vidíte, nemusíte určit, která aplikace se má trasovat, protože trasování událostí pro Windows bude vždycky nahrávat trasování pro celý systém. `wprp`Soubor určuje, které typy událostí mají být zaznamenávány.
 
 Kliknutím na **Uložit** zastavte nahrávání a určete, kam se má uložit soubor ETL.
 
@@ -81,7 +81,7 @@ Pokud chcete zaznamenat trasování na HoloLens, spusťte zařízení a zadejte 
 
 1. Na levé straně přejděte na *výkon > sledování výkonu*.
 1. Vybrat **vlastní profily**
-1. Klikněte na tlačítko **Procházet...**
+1. Klepněte**:::no-loc text="Browse...":::**
 1. Vyberte soubor *AzureRemoteRenderingNetworkProfiling. wprp*. Tento soubor najdete v sadě ARR SDK v nabídce *nástroje/ETLProfiles*.
 1. Klikněte na **Spustit trasování** .
 1. HoloLens nyní zaznamenává trasování. Nezapomeňte aktivovat problémy s výkonem, které chcete prozkoumat. Pak klikněte na **Zastavit trasování**.

@@ -16,12 +16,12 @@ ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5499c8808c3916842071df1f03a865efd98719f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a711fa522f6b105eb98d57d4f63afb90be255b3f
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79262084"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995033"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Co jsou kontroly přístupu Azure AD?
 
@@ -78,6 +78,12 @@ Chcete-li vytvořit kontroly přístupu, postupujte podle následujících krok�
 
    ![Úvodní stránka kontroly přístupu](./media/access-reviews-overview/access-reviews-overview-create-access-reviews.png) 
 
+### <a name="creating-access-review-on-a-group-that-can-be-assigned-to-azure-ad-role"></a>Vytváření kontroly přístupu u skupiny, kterou je možné přiřadit k roli Azure AD
+Pokud pracujete na nejnovější verzi kontrol přístupu (ve výchozím nastavení jsou vaši kontroloři přesměrováni na **můj přístup** ), pak jenom globální správce může vytvořit kontrolu přístupu pro skupiny, které umožňují přiřazení role. Pokud ale používáte starší verzi kontrol přístupu (ve výchozím nastavení jsou vaši kontroloři přesměrováni na **přístupový panel** ), pak globální správce i Správce uživatelů můžou zkontrolovat přístup pro skupiny s přiřazením rolí.  
+
+Nové prostředí bude zavedeno pro všechny zákazníky od 1. srpna 2020, ale pokud byste chtěli provést upgrade dřív, uveďte prosím požadavek v tématu kontroly [přístupu Azure AD – aktualizované možnosti kontrolora v registraci přístupu](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR5dv-S62099HtxdeKIcgO-NUOFJaRDFDWUpHRk8zQ1BWVU1MMTcyQ1FFUi4u).
+
+[Přečtěte si další informace o přiřazování skupin k rolím Azure AD](https://go.microsoft.com/fwlink/?linkid=2103037).
 
 ## <a name="learn-about-access-reviews"></a>Další informace o kontrolách přístupu
 
@@ -120,7 +126,7 @@ Tady je několik ukázkových scénářů licencí, které vám pomůžou určit
 | Správce vytvoří kontrolu přístupu skupiny B s 500 uživateli a 3 vlastníky skupiny a přiřadí 3 vlastníky skupiny jako kontrolory. | 3 licence pro každého vlastníka skupiny jako kontroloři | 3 |
 | Správce vytvoří kontrolu přístupu skupiny B s 500 uživateli. Provede si ho samy se změnami. | licence 500 pro každého uživatele jako kontroloři samoobslužné. | 500 |
 | Správce vytvoří kontrolu přístupu skupiny C s 50 členskými uživateli a 25 uživateli typu Host. Provede si ho samy se změnami. | licence 50 pro každého uživatele jako kontroloři pro sebe.<br/>(uživatelé typu Host jsou zahrnuti v požadovaném poměru 1:5.) | 50 |
-| Správce vytvoří kontrolu přístupu skupiny D s 6 členskými uživateli a 108 uživateli typu Host. Provede si ho samy se změnami. | 6 licencí pro každého uživatele jako samoobslužných revidujících + 16 dalších licencí, které pokrývají všechny 108 uživatelů typu Host v požadované 1:5 poměru. 6 licencí, které zahrnují 6\*5 = 30 uživatelů typu Host. Pro zbývající (108-6\*5) = 78 uživatelů typu Host se vyžaduje 78/5 = 16 dalších licencí. Proto jsou vyžadovány celkem 6 + 16 = 22 licencí. | 22 |
+| Správce vytvoří kontrolu přístupu skupiny D s 6 členskými uživateli a 108 uživateli typu Host. Provede si ho samy se změnami. | 6 licencí pro každého uživatele jako samoobslužných revidujících + 16 dalších licencí, které pokrývají všechny 108 uživatelů typu Host v požadované 1:5 poměru. 6 licencí, které zahrnují 6 \* 5 = 30 uživatelů typu Host. Pro zbývající (108-6 \* 5) = 78 uživatelů typu Host se vyžaduje 78/5 = 16 dalších licencí. Proto jsou vyžadovány celkem 6 + 16 = 22 licencí. | 22 |
 
 ## <a name="next-steps"></a>Další kroky
 
