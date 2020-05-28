@@ -6,16 +6,19 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 1fa34deaa12400a164602d38b6b2d349a64850c6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8ef16f581a4b945d3a5e6ef58166eeed900f3bb3
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652252"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140884"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
 Tento článek vás provede jednotlivými kroky konfigurace Azure Active Directory přístupu pomocí Azure Database for MySQL a o tom, jak se připojit pomocí tokenu Azure AD.
+
+> [!IMPORTANT]
+> Ověřování Azure Active Directory je k dispozici pouze pro MySQL 5,7 a novější.
 
 ## <a name="setting-the-azure-ad-admin-user"></a>Nastavení uživatele správce Azure AD
 

@@ -11,12 +11,12 @@ ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 52385bb1d855d2e9258e16254220848085392849
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: b3d77a84aa5206257f82bc5d634e1a3eae1a7790
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683603"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996413"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Partneři Azure synapse Analytics pro integraci dat
 
@@ -24,12 +24,13 @@ Pokud chcete vytvořit řešení datového skladu pomocí funkce synapse fondu S
 
 ## <a name="data-integration-partners"></a>Partneři pro integraci dat
 
-| Partner | Popis | Odkaz na web/produkt |
+| Partner | Description | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![Alooma](./media/sql-data-warehouse-partner-data-integration/alooma_logo.png) |**Alooma**<br> Alooma je řešení pro extrakci, transformaci a načítání (ETL), které umožňuje datovým týmům integraci, obohacení a streamování dat z různých sila dat do datového skladu Azure synapse v reálném čase. |[Stránka produktu](https://www.alooma.com/) |
 | ![Alteryx](./media/sql-data-warehouse-partner-data-integration/alteryx_logo.png) |**Alteryx**<br> Alteryx Designer poskytuje opakovaně pracovní postup pro analýzu dat samoobslužných služeb, který vede k hlubším přehledům v řádu hodin, ne k týdenům typickým z tradičních přístupů. Alteryx Designer pomáhá analytikům dat kombinací přípravy dat, míchání dat a analýz – prediktivní, statistická a prostorová – pomocí stejného intuitivního uživatelského rozhraní. |[Stránka produktu](https://www.alteryx.com/partners/microsoft/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/alteryx.alteryx-designer)<br>|
 | ![Attunity](./media/sql-data-warehouse-partner-data-integration/attunity_logo.png) |**Attunity (CloudBeam)**<br>Attunity CloudBeam poskytuje automatizované řešení pro načítání dat do datového skladu Azure synapse. Zjednodušuje dávkové načítání a přírůstkovou replikaci dat z mnoha zdrojů – SQL Server, Oracle, DB2, Sybase, MySQL a dalších. |[Stránka produktu](http://www.attunity.com/attunity-cloudbeam-for-azure/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/attunity_cloudbeam.cloudbeam-dw-byol) <br> |
 | ![Denodo](./media/sql-data-warehouse-partner-data-integration/denodo_logo.png) |**Denodo**<br>Denodo zajišťuje přístup k datům v reálném čase napříč různými zdroji dat organizace. Virtualizace dat využívá k přemostění dat napříč mnoha zdroji bez replikace. Nabízí širokou škálu přístupů k strukturovaným a nestrukturovaným datům umístěným v podnikových, velkých objemech dat a cloudových zdrojích v dávce i v reálném čase.|[Stránka produktu](https://www.denodo.com/en)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/denodo.denodo-platform-7_0)<br> |
+| ![Dimodelo](./media/sql-data-warehouse-partner-data-integration/dimodelo-logo.png) |**Dimodelo**<br>Dimodelo Data Warehouse Studio je Automatizační nástroj datového skladu pro datovou platformu Azure. Dimodelo vylepšuje produktivitu vývojářů prostřednictvím vyhrazeného modelování datových skladů a nástroje pro návrh ETL, generování kódu s osvědčenými postupy, nasazení jedním kliknutím a orchestrace ETL. Dimodelo vylepšuje udržovatelnost díky šíření změn, umožňuje vývojářům soustředit se na obchodní výsledky a automatizuje přenositelnost napříč datovými platformami.|[Stránka produktu](https://www.dimodelo.com/data-warehouse-studio-for-azure-synapse/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/dimodelosolutions.dimodeloazurevs)<br> |
 | ![Fivetran](./media/sql-data-warehouse-partner-data-integration/fivetran_logo.png) |**Fivetran**<br>Fivetran pomáhá centralizovat data z různorodých zdrojů. Nabízí produkt s nulovou údržbou, nulovým kanálem pro konfigurační data s rostoucím seznamem integrovaných konektorů pro všechny oblíbené zdroje dat. Instalační program trvá pět minut po ověření zdrojů dat a cílového datového skladu.|[Stránka produktu](https://fivetran.com/)<br> |
 | ![Informatica](./media/sql-data-warehouse-partner-data-integration/informatica_logo.png) |**1. Informatica Cloud Services pro Azure**<br> Informatica Cloud nabízí nejlepší řešení pro migraci, integraci a správu dat samoobslužných služeb. Zákazníci můžou rychle a spolehlivě importovat a exportovat petabajty dat z různých druhů zdrojů do Azure. Informatica Cloud Services pro Azure poskytuje nativní, vysoce výkonné a vysoce výkonné připojení ke službě Azure synapse, SQL Database, Blob Storage, Data Lake Store a Azure Cosmos DB. <br><br> **2. Informatica PowerCenter** PowerCenter je platforma pro integraci dat řízená metadata, která Jumpstarts a zrychluje projekty pro integraci dat, aby poskytovaly data do firmy rychleji než ruční kódování ručně. Slouží jako základ pro investice do integrace dat. |**Cloud Services Informatica pro Azure**<br>[Stránka produktu](https://www.informatica.com/products/cloud-integration.html)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.iics-winter)<br><br> **Informatica PowerCenter**<br>[Stránka produktu](https://www.informatica.com/products/data-integration/powercenter.html)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informatica.powercenter/)<br>|
 | ![Tvůrci informací](./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png) |**Sestavování informací (Omni-gen Správa dat)**<br>Omni – obecná platforma pro správu dat, která poskytuje řešení pro integraci dat, kvalitu dat a správu hlavních dat. Usnadňuje přístup, přesun a míchání všech dat bez ohledu na formát, umístění, svazek nebo latenci.|[Stránka produktu](https://www.informationbuilders.com/3i-platform)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm) |

@@ -29,7 +29,7 @@ ms.locfileid: "84014758"
     **Poznámka k zabezpečení:** Výběr nastavení **Povolit připojení, je-li zabezpečené** může zvýšit úroveň zabezpečení. Tuto možnost vyberte, pokud chcete konfigurovat další možnosti zabezpečení ve vašem prostředí.
    
     ![Povolení připojení](./media/virtual-machines-sql-server-connection-steps/15Allow-Connection.png)
-8. V dialogovém okně **Profil** vyberte **Veřejný**, **Privátní** a **Doména**. Pak klikněte na **Další**.
+8. V dialogovém okně **Profil** vyberte **Veřejný**, **Privátní** a **Doména**. Potom klikněte na **Další**.
    
     **Poznámka k zabezpečení:** Výběr možnosti **Veřejný** umožní přístup přes internet. Pokud je to možné, vybírejte vždy restriktivnější profil.
    

@@ -12,12 +12,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 54cb06f1c77ab68818d8531b57d6eb936deda8d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cea9cd1439bce0c55d701539471c463acb8f7e2
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265724"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84020128"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Použití vlastních aktivit v kanálu Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -49,11 +49,11 @@ Následující návod poskytuje podrobné pokyny k vytvoření vlastní aktivity
 ### <a name="azure-batch-prerequisites"></a>Azure Batch předpoklady
 V tomto návodu spustíte vlastní aktivity rozhraní .NET pomocí Azure Batch jako výpočetní prostředek. **Azure Batch** je služba platformy pro efektivní spouštění rozsáhlých paralelních aplikací a aplikací vysoce výkonného výpočetního prostředí (HPC) v cloudu. Azure Batch plánuje práci náročné na výpočetní výkon na spravované **kolekci virtuálních počítačů**a dokáže automaticky škálovat výpočetní prostředky tak, aby splňovaly potřeby vašich úloh. Podrobný přehled služby Azure Batch najdete v článku [Azure Batch základních][batch-technical-overview] informací.
 
-V tomto kurzu vytvořte účet Azure Batch s fondem virtuálních počítačů. Postup je následující:
+V tomto kurzu vytvořte účet Azure Batch s fondem virtuálních počítačů. Postupujte takto:
 
 1. Vytvořte **účet Azure Batch** pomocí [Azure Portal](https://portal.azure.com). Pokyny najdete v článku [Vytvoření a Správa účtu Azure Batch][batch-create-account] .
 2. Poznamenejte si Azure Batch název účtu, klíč účtu, identifikátor URI a název fondu. Budete je potřebovat k vytvoření propojené služby Azure Batch.
-    1. Na domovské stránce Azure Batch účtu se zobrazí **Adresa URL** v následujícím formátu: `https://myaccount.westus.batch.azure.com`. V tomto příkladu je **MyAccount** název účtu Azure Batch. Identifikátor URI, který použijete v definici propojené služby, je adresa URL bez názvu účtu. Například: `https://<region>.batch.azure.com`.
+    1. Na domovské stránce Azure Batch účtu se zobrazí **Adresa URL** v následujícím formátu: `https://myaccount.westus.batch.azure.com` . V tomto příkladu je **MyAccount** název účtu Azure Batch. Identifikátor URI, který použijete v definici propojené služby, je adresa URL bez názvu účtu. Příklad: `https://<region>.batch.azure.com`.
     2. V nabídce vlevo klikněte na **klíče** a ZKOPÍRUJTE **Primární přístupový klíč**.
     3. Pokud chcete použít existující fond, klikněte v nabídce na **fondy** a poznamenejte si **ID** fondu. Pokud nemáte existující fond, přejděte k dalšímu kroku.
 2. Vytvořte **fond Azure Batch**.
@@ -372,7 +372,7 @@ Metoda vrací slovník, který lze použít k zřetězení vlastních aktivit sp
     > Nastavte verzi 4.5.2 .NET Framework jako cílovou architekturu pro váš projekt: klikněte pravým tlačítkem myši na projekt a kliknutím na **vlastnosti** nastavte cílovou architekturu. Data Factory nepodporuje vlastní aktivity zkompilované proti .NET Framework verzím novějším než 4.5.2.
 
 11. Spusťte **Průzkumníka Windows**a přejděte do složky **bin\Debug** nebo **bin\Release** v závislosti na typu sestavení.
-12. Vytvořte soubor zip **MyDotNetActivity. zip** , který obsahuje všechny binární soubory ve složce \<projektu složka\>\bin\debug. Zahrňte soubor **MyDotNetActivity. pdb** , abyste získali další podrobnosti, jako je číslo řádku ve zdrojovém kódu, který způsobil problém, pokud došlo k chybě.
+12. Vytvořte soubor zip **MyDotNetActivity. zip** , který obsahuje všechny binární soubory ve \<project folder\> složce \bin\debug. Zahrňte soubor **MyDotNetActivity. pdb** , abyste získali další podrobnosti, jako je číslo řádku ve zdrojovém kódu, který způsobil problém, pokud došlo k chybě.
 
     > [!IMPORTANT]
     > Všechny soubory v souboru .zip pro vlastní aktivitu musí být na **nejvyšší úrovni**, bez podsložek.
@@ -451,7 +451,7 @@ Propojené služby propojují úložiště dat nebo výpočetní služby s objek
     ![Nové výpočetní prostředí – Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
 2. Proveďte následující změny skriptu JSON:
 
-   1. Zadejte Azure Batch název účtu pro vlastnost **účtu** . **Adresa URL** z okna **Azure Batch účtu** je v následujícím formátu: `http://accountname.region.batch.azure.com`. Pro vlastnost **batchUri** ve formátu JSON je nutné odebrat `accountname.` z adresy URL a použít vlastnost `accountname` for `accountName` JSON.
+   1. Zadejte Azure Batch název účtu pro vlastnost **účtu** . **Adresa URL** z okna **Azure Batch účtu** je v následujícím formátu: `http://accountname.region.batch.azure.com` . Pro vlastnost **batchUri** ve formátu JSON je nutné odebrat `accountname.` z adresy URL a použít `accountname` `accountName` vlastnost for JSON.
    2. Zadejte Azure Batch klíč účtu pro vlastnost **AccessKey** .
    3. Zadejte název fondu, který jste vytvořili jako součást požadavků pro vlastnost **Pool** . Místo názvu fondu můžete zadat také ID fondu.
    4. Zadejte Azure Batch identifikátor URI pro vlastnost **batchUri** . Příklad: `https://westus.batch.azure.com`.
@@ -1031,7 +1031,7 @@ Ukázka [místního prostředí Azure Data Factory](https://github.com/gbrueckl/
 
 [batch-net-library]: ../../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../../batch/batch-account-create-portal.md
-[batch-technical-overview]: ../../batch/batch-technical-overview.md
+[batch-technical-overview]:../../azure-sql/database/sql-database-paas-overview.md
 [batch-get-started]: ../../batch/batch-dotnet-get-started.md
 [use-custom-activities]: data-factory-use-custom-activities.md
 [troubleshoot]: data-factory-troubleshoot.md

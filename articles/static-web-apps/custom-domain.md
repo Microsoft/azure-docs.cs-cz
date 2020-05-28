@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: buhollan
-ms.openlocfilehash: 8425c2c1f653d874d24053a12d511c64a3b9ee9d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0f8e1be92d77dc928389dffb61da52f2db4c804d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655240"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142057"
 ---
 # <a name="setup-a-custom-domain-in-azure-static-web-apps-preview"></a>Nastavení vlastní domény ve službě Azure static Web Apps Preview
 
@@ -80,7 +80,7 @@ Záznam CNAME mapuje jednu doménu do druhé. Záznam CNAME můžete použít k 
 
 1. Klikněte na tlačítko **ověřit** .
 
-Teď, když je nakonfigurovaná vlastní doména, může zprostředkovatel DNS trvat několik hodin, než se poskytovatel DNS rozšíří po celém světě. Stav šíření můžete zjistit tak, že kliknete na [dnspropagation.NET](https://dnspropagation.net). Zadejte vlastní doménu včetně, v `www` rozevíracím seznamu vyberte CNAME a vyberte **Spustit**.
+Teď, když je vlastní doména nakonfigurovaná, může zprostředkovatel DNS trvat několik hodin, než se změny rozšíří po celém světě. Stav šíření můžete zjistit tak, že kliknete na [dnspropagation.NET](https://dnspropagation.net). Zadejte vlastní doménu včetně, v `www` rozevíracím seznamu vyberte CNAME a vyberte **Spustit**.
 
 Pokud se vaše změny DNS naplní, web vrátí automaticky generovanou adresu URL vaší statické webové aplikace (například _Random-Name-123456789c.azurestaticapps.NET_).
 

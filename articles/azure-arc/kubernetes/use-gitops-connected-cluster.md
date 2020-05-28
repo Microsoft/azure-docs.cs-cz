@@ -99,14 +99,14 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 
 Tady jsou podporované scénáře pro parametr hodnota--úložiště-adresa URL.
 
-| Scénář | Formát | Popis |
+| Scénář | Formát | Description |
 | ------------- | ------------- | ------------- |
 | Soukromé úložiště GitHub – SSH | git@github.com:username/repo | Souboru KeyPair SSH vygenerovaný tokem.  Uživatel musí do účtu GitHubu přidat veřejný klíč jako klíč pro nasazení. |
 | Veřejné úložiště GitHub | `http://github.com/username/repo`nebo git://github.com/username/repo   | Veřejné úložiště Git  |
 
 Tyto scénáře jsou podporovány tokem, ale nikoli sourceControlConfiguration. 
 
-| Scénář | Formát | Popis |
+| Scénář | Formát | Description |
 | ------------- | ------------- | ------------- |
 | Úložiště privátního GitHubu – HTTPS | `https://github.com/username/repo` | Tok negeneruje souboru KeyPair SSH.  [Pokyny](https://docs.fluxcd.io/en/1.17.0/guides/use-git-https.html) |
 | Privátní hostitel Git | user@githost:path/to/repo | [Pokyny](https://docs.fluxcd.io/en/1.18.0/guides/use-private-git-host.html) |
@@ -129,7 +129,7 @@ Chcete-li upravit vytvoření konfigurace, je zde několik dalších parametrů:
 
 Možnosti podporované v--operator-params
 
-| Možnost | Popis |
+| Možnost | Description |
 | ------------- | ------------- |
 | --Git-větev  | Větev úložiště Git, která se má použít pro Kubernetes manifesty Výchozí hodnota je "Master". |
 | --Git-Path  | Relativní cesta v úložišti Git pro tok, ve kterém se mají vyhledat manifesty Kubernetes. |

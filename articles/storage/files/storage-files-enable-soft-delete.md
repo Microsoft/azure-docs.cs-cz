@@ -1,6 +1,6 @@
 ---
 title: Povolit obnovitelné odstranění – sdílené složky Azure
-description: Naučte se, jak ve sdílených složkách Azure povolit obnovitelné odstranění pro obnovení dat a zabránit nechtěnému odstranění.
+description: Naučte se, jak povolit obnovitelné odstranění (Preview) ve sdílených složkách Azure pro obnovení dat a zabránění nechtěnému odstranění.
 author: roygara
 ms.service: storage
 ms.topic: conceptual
@@ -8,16 +8,16 @@ ms.date: 05/26/2020
 ms.author: rogarana
 ms.subservice: files
 services: storage
-ms.openlocfilehash: 70081114995d46e7c5db7c9549cfce2fdff42975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a31fc675ca32697ece1fe7240112bb5610feda9d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116499"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142091"
 ---
 # <a name="enable-soft-delete-on-azure-file-shares"></a>Povolit obnovitelné odstranění u sdílených složek Azure
 
-Azure Storage nabízí obnovitelné odstranění sdílených složek, abyste mohli snadněji obnovit data v případě, že je omylem odstranila aplikace nebo jiný uživatel účtu úložiště. Další informace o obnovitelném odstranění najdete v tématu [Jak zabránit nechtěnému odstranění sdílených složek Azure](storage-files-prevent-file-share-deletion.md).
+Azure Storage nabízí obnovitelné odstranění sdílených složek (Preview), abyste mohli snadněji obnovit data v případě, že je omylem odstranila aplikace nebo jiný uživatel účtu úložiště. Další informace o obnovitelném odstranění najdete v tématu [Jak zabránit nechtěnému odstranění sdílených složek Azure](storage-files-prevent-file-share-deletion.md).
 
 V následujících částech se dozvíte, jak povolit a použít obnovitelné odstranění pro sdílené složky Azure v existujícím účtu úložiště:
 

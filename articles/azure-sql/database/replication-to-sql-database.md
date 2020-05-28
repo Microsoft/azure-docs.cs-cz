@@ -1,0 +1,140 @@
+---
+title: SQL Server replikaci do Azure SQL Database
+description: Můžete nakonfigurovat Azure SQL Database jako předplatitele nabízené replikace v jednosměrné topologii transakce nebo replikace snímků.
+services: sql-database
+ms.service: sql-database
+ms.subservice: data-movement
+ms.custom: seo-lt-2019, sqldbrb=1
+ms.devlang: ''
+ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: mathoma
+ms.date: 04/28/2020
+ms.openlocfilehash: eebf0bb2a5f2a813ff282854b62f10957475e3b1
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84046436"
+---
+# <a name="replication-to-azure-sql-database"></a>Replikace do Azure SQL Database
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+Můžete nakonfigurovat Azure SQL Database jako předplatitele nabízené replikace v jednosměrné topologii transakce nebo replikace snímků.
+
+> [!NOTE]
+> Tento článek popisuje použití [transakční replikace](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) v Azure SQL Database. Nesouvisí s [aktivní geografickou replikací](https://docs.microsoft.com/azure/sql-database/sql-database-active-geo-replication), Azure SQL Database funkcí, která umožňuje vytvářet kompletní čitelné repliky jednotlivých databází.
+
+## <a name="supported-configurations"></a>Podporované konfigurace
+  
+- Azure SQL Database může být pouze předplatitelem nabízených oznámení SQL Server vydavatele a distributora.  
+- SQL Server, která funguje jako Vydavatel nebo distributora, může být instance [SQL Server spuštěná v místním](https://www.microsoft.com/sql-server/sql-server-downloads)prostředí, [Azure SQL Managed instance](../managed-instance/instance-create-quickstart.md)nebo instance [SQL Server spuštěná na virtuálním počítači Azure v cloudu](../virtual-machines/windows/sql-vm-create-portal-quickstart.md). 
+- Distribuční databázi a agenty replikace nelze umístit do Azure SQL Database.  
+- Je podporována [snímková](/sql/relational-databases/replication/snapshot-replication) a [Jednosměrná transakční](/sql/relational-databases/replication/transactional/transactional-replication) replikace. Transakční replikace peer-to-peer a slučovací replikace se nepodporují.
+
+### <a name="versions"></a>Verze  
+
+Aby bylo možné úspěšně provést replikaci do Azure SQL Database, SQL Server vydavatelé a distributoři musí použít (aspoň) jednu z následujících verzí: 
+
+Publikování do libovolného Azure SQL Database z místního SQL Server je podporované v následujících verzích SQL Server:
+
+- SQL Server 2016 a vyšší
+- SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) nebo [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
+- SQL Server 2012 [SP2 CU8 (11.0.5634.1)](https://support.microsoft.com/help/3082561/cumulative-update-8-for-sql-server-2012-sp2) nebo [SP3 (11.0.6020.0)](https://www.microsoft.com/download/details.aspx?id=49996)
+
+> [!NOTE]
+> Pokud se pokusíte nakonfigurovat replikaci pomocí nepodporované verze, může dojít k chybě číslo MSSQL_REPL20084 (proces se nemohl připojit k odběrateli) a MSSQL_REPL40532 (nemůže otevřít server \<name> požadovaný přihlášením. Přihlášení se nezdařilo.).  
+
+Pokud chcete používat všechny funkce Azure SQL Database, musíte používat nejnovější verze nástrojů [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) a [SQL Server Data Tools](/sql/ssdt/download-sql-server-data-tools-ssdt).  
+
+### <a name="types-of-replication"></a>Typy replikace
+
+Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication):
+
+| Replikace | Azure SQL Database | Spravovaná instance Azure SQL |
+| :----| :------------- | :--------------- |
+| [**Standardní transakční**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/transactional-replication) | Ano (jenom jako předplatitel) | Ano | 
+| [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
+| [**Sloučit replikaci**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Ne | Ne|
+| [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Ne | Ne|
+| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Ne | Ano|
+| [**Odběry, které by možné aktualizovat**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Ne | Ne|
+| &nbsp; | &nbsp; | &nbsp; |
+
+  
+## <a name="remarks"></a>Poznámky
+
+- Jsou podporovány pouze nabízené odběry Azure SQL Database.  
+- Replikaci lze konfigurovat pomocí [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) nebo spuštěním příkazů jazyka Transact-SQL na vydavateli. Replikaci nelze nakonfigurovat pomocí Azure Portal.  
+- Replikace může pro připojení k Azure SQL Database používat pouze přihlášení SQL Server ověřování.
+- Replikované tabulky musí mít primární klíč.  
+- Musíte mít existující předplatné Azure.  
+- Předplatitel Azure SQL Database může být v libovolné oblasti.  
+- Jedna publikace na SQL Server může podporovat předplatitele Azure SQL Database a SQL Server (místní i SQL Server ve virtuálních počítačích Azure).  
+- Správa replikace, monitorování a řešení potíží se musí provádět z SQL Server spíše než Azure SQL Database.  
+- `@subscriber_type = 0`Pro SQL Database se podporuje jenom **sp_addsubscription** .  
+- Azure SQL Database nepodporuje replikaci obousměrné, okamžité, aktualizovatelné ani peer-to-peer.
+
+## <a name="replication-architecture"></a>Architektura replikace  
+
+![replikace do SQL – databáze](./media/replication-to-sql-database/replication-to-sql-database.png)  
+
+## <a name="scenarios"></a>Scénáře  
+
+### <a name="typical-replication-scenario"></a>Scénář typické replikace  
+
+1. Vytvoření publikace transakční replikace v místní databázi SQL Server.  
+2. Na místních SQL Server použijte **Průvodce novým předplatným** nebo příkazy jazyka Transact-SQL k vytvoření nabízeného oznámení do předplatného pro Azure SQL Database.  
+3. Při použití jedné a sdružené databáze v Azure SQL Database je počáteční datová sada snímkem vytvořeným agentem snímku, který distribuuje a používá agent distribuce. Pomocí vydavatele spravované instance SQL můžete také použít zálohu databáze k osazení Azure SQL Database předplatitele.
+
+### <a name="data-migration-scenario"></a>Scénář migrace dat  
+
+1. K replikaci dat z místní databáze SQL Server do Azure SQL Database můžete použít transakční replikaci.  
+2. Přesměrujte klienta nebo aplikace střední vrstvy, aby bylo možné aktualizovat kopii databáze.  
+3. Ukončení aktualizace verze SQL Server tabulky a odebrání publikace.  
+
+## <a name="limitations"></a>Omezení
+
+Pro Azure SQL Database odběry nejsou podporovány následující možnosti:
+
+- Kopírovat přidružení skupin souborů  
+- Kopírovat schémata dělení tabulky  
+- Kopírovat schémata dělení indexů  
+- Kopírovat uživatelsky definované statistiky  
+- Kopírovat výchozí vazby  
+- Kopírovat vazby pravidla  
+- Kopírovat fulltextové indexy  
+- Kopírovat XSD XML  
+- Kopírovat indexy XML  
+- Kopírovat oprávnění  
+- Kopírovat prostorové indexy  
+- Kopírovat filtrované indexy  
+- Kopírovat atribut komprese dat  
+- Kopírovat atribut zhuštěného sloupce  
+- Převést datový typ FileStream na maximum  
+- Převést hierarchyid na maximální počet datových typů  
+- Převod prostorových datových typů na maximum  
+- Kopírovat rozšířené vlastnosti  
+- Kopírovat oprávnění  
+
+### <a name="limitations-to-be-determined"></a>Omezení, která mají být určena
+
+- Kopírovat kolaci  
+- Provádění v serializované transakci SP  
+
+## <a name="examples"></a>Příklady
+
+Vytvořte publikaci a nabízený odběr. Další informace naleznete v tématu:
+  
+- [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [Vytvořte nabízený odběr](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/) pomocí názvu serveru jako předplatitele (například **N'azuresqldbdns. Database. Windows. NET**) a názvu Azure SQL Database jako cílovou databázi (například **AdventureWorks**).  
+
+## <a name="see-also"></a>Viz také  
+
+- [Transakční replikace](../managed-instance/replication-transactional-overview.md)
+- [Vytvoření publikace](https://docs.microsoft.com/sql/relational-databases/replication/publish/create-a-publication)
+- [Vytvoření nabízeného odběru](https://docs.microsoft.com/sql/relational-databases/replication/create-a-push-subscription/)
+- [Typy replikace](https://docs.microsoft.com/sql/relational-databases/replication/types-of-replication)
+- [Monitorování (replikace)](https://docs.microsoft.com/sql/relational-databases/replication/monitor/monitoring-replication)
+- [Inicializovat předplatné](https://docs.microsoft.com/sql/relational-databases/replication/initialize-a-subscription)  

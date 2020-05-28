@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 91a3c71ecaa8af58e13cb96571fc7afdf618fcdd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 94823445e4f8e3f8d40a219dc23b40f8a5c267c6
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780075"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83996308"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Přehled podnikového zabezpečení ve službě Azure HDInsight
 
@@ -43,7 +43,7 @@ V rámci této instalace se zaměstnanci v podniku můžou přihlašovat k uzlů
 
 V souladu s osvědčenými postupy se zajišťují, že ne každý zaměstnanec má úplný přístup ke všem podnikovým prostředkům. Správce může podobně definovat zásady řízení přístupu na základě rolí pro prostředky clusteru. Tato akce je k dispozici pouze v clusterech ESP.
 
-Správce Hadoop může nakonfigurovat řízení přístupu na základě role (RBAC). Konfigurace zabezpečeného [podregistru](apache-domain-joined-run-hive.md)Apache, [HBA](apache-domain-joined-run-hbase.md)a [Kafka](apache-domain-joined-run-kafka.md) s moduly plug-in pro Apache Range. Konfigurace zásad RBAC vám umožní přidružit oprávnění k roli v organizaci. Tato vrstva abstrakce usnadňuje zajištění, že uživatelé mají pouze oprávnění potřebná k tomu, aby mohli provádět své pracovní úkoly. Ranger také umožňuje auditovat přístup k datům zaměstnanců a jakékoli změny provedené v zásadách řízení přístupu.
+Správce Hadoop může nakonfigurovat řízení přístupu na základě role (RBAC). Konfigurace zabezpečeného [podregistru](apache-domain-joined-run-hive.md)Apache, [HBA](apache-domain-joined-run-hbase.md)a [Kafka](apache-domain-joined-run-kafka.md) s moduly plug-in Apache Ranger. Konfigurace zásad RBAC vám umožní přidružit oprávnění k roli v organizaci. Tato vrstva abstrakce usnadňuje zajištění, že uživatelé mají pouze oprávnění potřebná k tomu, aby mohli provádět své pracovní úkoly. Ranger také umožňuje auditovat přístup k datům zaměstnanců a jakékoli změny provedené v zásadách řízení přístupu.
 
 Správce může například nakonfigurovat [Apache Ranger](https://ranger.apache.org/), aby nastavil zásady řízení přístupu pro Hive. Tato funkce zajišťuje filtrování na úrovni řádků a sloupců (maskování dat). A filtruje citlivá data od neautorizovaných uživatelů.
 
@@ -75,20 +75,20 @@ Následující tabulka obsahuje odkazy na prostředky pro jednotlivé typy řeš
 
 | Oblast zabezpečení | Dostupná řešení | Zodpovědná strana |
 |---|---|---|
-| Zabezpečení přístupu k datům | Konfigurace [seznamů řízení přístupu seznamy ACL](../../storage/blobs/data-lake-storage-access-control.md) pro Azure Data Lake Storage Gen1 a Gen2  | Zákazník |
-|  | U účtů úložiště Povolte vlastnost ["vyžaduje zabezpečený přenos"](../../storage/common/storage-require-secure-transfer.md) . | Zákazník |
-|  | Konfigurace [Azure Storage bran firewall](../../storage/common/storage-network-security.md) a virtuálních sítí | Zákazník |
-|  | Konfigurace [koncových bodů služby virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) pro Cosmos DB a [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Zákazník |
-|  | Zajistěte, aby bylo [šifrování TLS](../../storage/common/storage-security-tls.md) povolené pro přenos dat. | Zákazník |
-|  | Konfigurace [klíčů spravovaných zákazníkem](../../storage/common/storage-encryption-keys-portal.md) pro šifrování Azure Storage | Zákazník |
-| Zabezpečení aplikací a middlewaru | Integrace s AAD-DS a [Konfigurace ověřování](apache-domain-joined-configure-using-azure-adds.md) | Zákazník |
-|  | Konfigurace zásad [autorizace Apache Ranger](apache-domain-joined-run-hive.md) | Zákazník |
-|  | Použití [protokolů Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | Zákazník |
-| Zabezpečení operačního systému | Vytváření clusterů s nejnovější zabezpečenou základní imagí | Zákazník |
-|  | Zajistěte, aby byly [opravy operačního systému](../hdinsight-os-patching.md) v pravidelných intervalech | Zákazník |
+| Zabezpečení přístupu k datům | Konfigurace [seznamů řízení přístupu seznamy ACL](../../storage/blobs/data-lake-storage-access-control.md) pro Azure Data Lake Storage Gen1 a Gen2  | Customer (Zákazník) |
+|  | U účtů úložiště Povolte vlastnost ["vyžaduje zabezpečený přenos"](../../storage/common/storage-require-secure-transfer.md) . | Customer (Zákazník) |
+|  | Konfigurace [Azure Storage bran firewall](../../storage/common/storage-network-security.md) a virtuálních sítí | Customer (Zákazník) |
+|  | Konfigurace [koncových bodů služby virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) pro Cosmos DB a [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Customer (Zákazník) |
+|  | Zajistěte, aby bylo [šifrování TLS](../../storage/common/storage-security-tls.md) povolené pro přenos dat. | Customer (Zákazník) |
+|  | Konfigurace [klíčů spravovaných zákazníkem](../../storage/common/storage-encryption-keys-portal.md) pro šifrování Azure Storage | Customer (Zákazník) |
+| Zabezpečení aplikací a middlewaru | Integrace s AAD-DS a [Konfigurace ověřování](apache-domain-joined-configure-using-azure-adds.md) | Customer (Zákazník) |
+|  | Konfigurace zásad [autorizace Apache Ranger](apache-domain-joined-run-hive.md) | Customer (Zákazník) |
+|  | Použití [protokolů Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | Customer (Zákazník) |
+| Zabezpečení operačního systému | Vytváření clusterů s nejnovější zabezpečenou základní imagí | Customer (Zákazník) |
+|  | Zajistěte, aby byly [opravy operačního systému](../hdinsight-os-patching.md) v pravidelných intervalech | Customer (Zákazník) |
 | Zabezpečení sítě | Konfigurace [virtuální sítě](../hdinsight-plan-virtual-network-deployment.md) |
-|  | Konfigurace [pravidel skupiny zabezpečení příchozí sítě (NSG)](../control-network-traffic.md) | Zákazník |
-|  | Konfigurace [omezení odchozích přenosů](../hdinsight-restrict-outbound-traffic.md) pomocí brány firewall | Zákazník |
+|  | Konfigurace [pravidel skupiny zabezpečení příchozí sítě (NSG)](../control-network-traffic.md) | Customer (Zákazník) |
+|  | Konfigurace [omezení odchozích přenosů](../hdinsight-restrict-outbound-traffic.md) pomocí brány firewall | Customer (Zákazník) |
 | Virtualizovaná infrastruktura | – | HDInsight (poskytovatel cloudu) |
 | Zabezpečení fyzické infrastruktury | – | HDInsight (poskytovatel cloudu) |
 

@@ -3,12 +3,12 @@ title: Ukázka podrobného plánu úlohy ASE/SQL ISO 27001 – přehled
 description: Přehled a architektura ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 834096ec529673bae1728877310ba7153ae94cb3
-ms.sourcegitcommit: b55d7c87dc645d8e5eb1e8f05f5afa38d7574846
+ms.openlocfilehash: ab6a1b7e5569be39cc3b2934ec9891d5aa5712ca
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81460575"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84012989"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Přehled ukázky podrobného plánu úlohy ISO 27001 App Service Environment/SQL Database
 
@@ -33,7 +33,7 @@ Toto prostředí je tvořené několika službami Azure, které se využívají 
 - Virtuální síť obsahující jednu podsíť, která je propojená k předem připravenému prostředí [sdílených služeb](../iso27001-shared/index.md) a vynucuje průchod veškerého provozu bránou firewall [sdílených služeb](../iso27001-shared/index.md). Tato virtuální síť je hostitelem pro tyto prostředky:
   - [Prostředí Azure App Service Environment](../../../../app-service/environment/intro.md), která se dají využít k hostování jedné nebo několika webových aplikací, webových rozhraní API nebo služeb
   - Instance služby [Azure Key Vault](../../../../key-vault/general/overview.md) využívající koncový bod služby virtuální sítě, a to pro ukládání tajných kódů využívaných aplikacemi, které jsou spuštěné v prostředí příslušné úlohy
-  - Instance serveru [Azure SQL Database](../../../../sql-database/sql-database-technical-overview.md) využívající koncový bod služby virtuální sítě, a to pro hostování databází využívaných pro aplikace v prostředí příslušné úlohy
+  - Instance serveru [Azure SQL Database](../../../../azure-sql/database/sql-database-paas-overview.md) využívající koncový bod služby virtuální sítě, a to pro hostování databází využívaných pro aplikace v prostředí příslušné úlohy
 
 ## <a name="next-steps"></a>Další kroky
 
