@@ -119,8 +119,8 @@ Následující části popisují kroky pro konfiguraci zřizování uživatelů 
    
      | Formát URL | Použitá verze rozhraní API WWS | Jsou vyžadovány změny XPATH |
      |------------|----------------------|------------------------|
-     | https://####.workday.com/ccx/service/tenantName | v 21.1 | Ne |
-     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | Ne |
+     | https://####.workday.com/ccx/service/tenantName | v 21.1 | No |
+     | https://####.workday.com/ccx/service/tenantName/Human_Resources | v 21.1 | No |
      | https://####.workday.com/ccx/service/tenantName/Human_Resources/v##.# | v # #. # | Ano |
 
       > [!NOTE]
