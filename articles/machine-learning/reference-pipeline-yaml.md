@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: sanpil
 author: sanpil
 ms.date: 11/11/2019
-ms.openlocfilehash: cee6de8fda45c429d0c74a3ecdc966b49e092567
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0bf5a722c611f4d1c5446eb739fdd95b7edbc934
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208495"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170524"
 ---
 # <a name="define-machine-learning-pipelines-in-yaml"></a>Definování kanálů strojového učení v YAML
 
@@ -26,15 +26,16 @@ Následující tabulka uvádí, co je a není aktuálně podporováno při defin
 | Typ kroku | Podporované? |
 | ----- | :-----: |
 | PythonScriptStep | Ano |
+| ParallelRunStep | Ano |
 | AdlaStep | Ano |
 | AzureBatchStep | Ano |
 | DatabricksStep | Ano |
 | DataTransferStep | Ano |
-| AutoMLStep | Ne |
-| HyperDriveStep | Ne |
+| AutoMLStep | No |
+| HyperDriveStep | No |
 | ModuleStep | Ano |
-| MPIStep | Ne |
-| EstimatorStep | Ne |
+| MPIStep | No |
+| EstimatorStep | No |
 
 ## <a name="pipeline-definition"></a>Definice kanálu
 
@@ -50,14 +51,14 @@ Definice kanálu používá následující klíče, které odpovídají třídě
 
 ## <a name="parameters"></a>Parametry
 
-`parameters` Oddíl používá následující klíče, které odpovídají třídě [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py) :
+`parameters`Oddíl používá následující klíče, které odpovídají třídě [PipelineParameter](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelineparameter?view=azure-ml-py) :
 
 | YAML klíč | Popis |
 | ---- | ---- |
-| `type` | Typ hodnoty parametru. Platné typy jsou `string`, `int`, `float` `bool`, nebo `datapath`. |
+| `type` | Typ hodnoty parametru. Platné typy jsou `string` , `int` , `float` , `bool` nebo `datapath` . |
 | `default` | Výchozí hodnota. |
 
-Každý parametr má název. Například následující fragment kódu YAML definuje tři parametry s názvem `NumIterationsParameter`, `DataPathParameter`a: `NodeCountParameter`
+Každý parametr má název. Například následující fragment kódu YAML definuje tři parametry s názvem `NumIterationsParameter` , `DataPathParameter` a `NodeCountParameter` :
 
 ```yaml
 pipeline:
@@ -78,14 +79,14 @@ pipeline:
 
 ## <a name="data-reference"></a>Reference pro data
 
-`data_references` Oddíl používá následující klíče, které odpovídají [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py):
+`data_references`Oddíl používá následující klíče, které odpovídají [DataReference](https://docs.microsoft.com/python/api/azureml-core/azureml.data.data_reference.datareference?view=azure-ml-py):
 
 | YAML klíč | Popis |
 | ----- | ----- |
 | `datastore` | Úložiště dat, na které se má odkazovat |
 | `path_on_datastore` | Relativní cesta v úložišti zálohování pro datový odkaz. |
 
-Každý odkaz na data je obsažen v klíči. Například následující fragment kódu YAML definuje odkaz na data uložený v klíči s názvem `employee_data`:
+Každý odkaz na data je obsažen v klíči. Například následující fragment kódu YAML definuje odkaz na data uložený v klíči s názvem `employee_data` :
 
 ```yaml
 pipeline:
@@ -111,12 +112,13 @@ Kroky definují výpočetní prostředí spolu se soubory, které se mají spust
 | `DatabricsStep` | Přidá Poznámkový blok datacihly, skript Pythonu nebo JAR. Odpovídá třídě [DatabricksStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.databricksstep?view=azure-ml-py) . |
 | `DataTransferStep` | Přenáší data mezi možnostmi úložiště. Odpovídá třídě [DataTransferStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.datatransferstep?view=azure-ml-py) . |
 | `PythonScriptStep` | Spustí skript Pythonu. Odpovídá třídě [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py) . |
+| `ParallelRunStep` | Spustí skript Pythonu pro asynchronní zpracování velkých objemů dat a souběžně. Odpovídá třídě [ParallelRunStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallel_run_step.parallelrunstep?view=azure-ml-py) . |
 
 ### <a name="adla-step"></a>Krok ADLA
 
 | YAML klíč | Popis |
 | ----- | ----- |
-| `script_name` | Název skriptu U-SQL (relativně k příponě `source_directory`). |
+| `script_name` | Název skriptu U-SQL (relativně k `source_directory` příponě). |
 | `compute_target` | Výpočetní cíl Azure Data Lake, který se má použít pro tento krok. |
 | `parameters` | [Parametry](#parameters) kanálu. |
 | `inputs` | Vstupy můžou být [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
@@ -176,7 +178,7 @@ pipeline:
 | `delete_batch_job_after_finish` | Logický příznak, který označuje, jestli se má úloha Odstranit z účtu Batch po jeho dokončení. |
 | `delete_batch_pool_after_finish` | Logický příznak označující, zda se má po dokončení úlohy Odstranit fond. |
 | `is_positive_exit_code_failure` | Logický příznak, který označuje, jestli se úloha nezdařila, pokud se úloha ukončí s kladným kódem. |
-| `vm_image_urn` | Pokud `create_pool` je `True`, a virtuální počítač `VirtualMachineConfiguration`používá. |
+| `vm_image_urn` | Pokud `create_pool` je `True` , a virtuální počítač používá `VirtualMachineConfiguration` . |
 | `pool_id` | ID fondu, ve kterém se úloha spustí |
 | `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
 
@@ -321,7 +323,7 @@ pipeline:
 | ----- | ----- |
 | `inputs` | Vstupy můžou být [InputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.inputportbinding?view=azure-ml-py), [DataReference](#data-reference), [PortDataReference](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.portdatareference?view=azure-ml-py), [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py), [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
 | `outputs` | Výstupy můžou být buď [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nebo [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
-| `script_name` | Název skriptu Pythonu (relativní vzhledem k `source_directory`) |
+| `script_name` | Název skriptu Pythonu (relativní vzhledem k `source_directory` ) |
 | `source_directory` | Adresář, který obsahuje skript, prostředí conda atd. |
 | `runconfig` | Cesta k `.runconfig` souboru Tento soubor je YAML reprezentace třídy [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) . Další informace o struktuře tohoto souboru naleznete v tématu [RunConfig. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json). |
 | `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
@@ -362,11 +364,63 @@ pipeline:
                     bind_mode: mount
 ```
 
+### <a name="parallel-run-step"></a>Krok paralelního spuštění
+
+| YAML klíč | Popis |
+| ----- | ----- |
+| `inputs` | Vstupy můžou být [datová sada](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py), [DatasetDefinition](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_definition.datasetdefinition?view=azure-ml-py)nebo [PipelineDataset](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedataset?view=azure-ml-py). |
+| `outputs` | Výstupy můžou být buď [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) nebo [OutputPortBinding](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.graph.outputportbinding?view=azure-ml-py). |
+| `script_name` | Název skriptu Pythonu (relativní vzhledem k `source_directory` ) |
+| `source_directory` | Adresář, který obsahuje skript, prostředí conda atd. |
+| `parallel_run_config` | Cesta k `parallel_run_config.yml` souboru Tento soubor je YAML reprezentace třídy [ParallelRunConfig](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.parallelrunconfig?view=azure-ml-py) . |
+| `allow_reuse` | Určuje, zda má být při opětovném spuštění se stejným nastavením krok znovu použit předchozí výsledky. |
+
+Následující příklad obsahuje krok paralelního spuštění:
+
+```yaml
+pipeline:
+    description: SamplePipelineFromYaml
+    default_compute: cpu-cluster
+    data_references:
+        MyMinistInput:
+            dataset_name: mnist_sample_data
+    parameters:
+        PipelineParamTimeout:
+            type: int
+            default: 600
+    steps:        
+        Step1:
+            parallel_run_config: "yaml/parallel_run_config.yml"
+            type: "ParallelRunStep"
+            name: "parallel-run-step-1"
+            allow_reuse: True
+            arguments:
+            - "--progress_update_timeout"
+            - parameter:timeout_parameter
+            - "--side_input"
+            - side_input:SideInputData
+            parameters:
+                timeout_parameter:
+                    source: PipelineParamTimeout
+            inputs:
+                InputData:
+                    source: MyMinistInput
+            side_inputs:
+                SideInputData:
+                    source: Output4
+                    bind_mode: mount
+            outputs:
+                OutputDataStep2:
+                    destination: Output5
+                    datastore: workspaceblobstore
+                    bind_mode: mount
+```
+
 ### <a name="pipeline-with-multiple-steps"></a>Kanál s více kroky 
 
 | YAML klíč | Popis |
 | ----- | ----- |
-| `steps` | Sekvence jedné nebo více definicí PipelineStep. Všimněte si, `destination` že klíče jednoho kroku `outputs` se stanou `source` klíči pro `inputs` další krok.| 
+| `steps` | Sekvence jedné nebo více definicí PipelineStep. Všimněte si, že `destination` klíče jednoho kroku `outputs` se stanou `source` klíči pro `inputs` Další krok.| 
 
 ```yaml
 pipeline:
@@ -435,8 +489,8 @@ Při definování plánu pro kanál může to být buď úložiště dat, aktivo
 | `datastore_name` | Úložiště dat, které se má monitorovat pro upravené nebo přidané objekty blob |
 | `polling_interval` | Doba mezi dotazem na změněné nebo přidané objekty BLOB v minutách Výchozí hodnota: 5 minut. Podporováno pouze pro plány úložiště dat. |
 | `data_path_parameter_name` | Název parametru kanálu pro cestu k datům, který se má nastavit se změněnou cestou k objektu BLOB. Podporováno pouze pro plány úložiště dat. |
-| `continue_on_step_failure` | Určuje, zda pokračovat v provádění dalších kroků v odeslaných PipelineRun, pokud nějaký krok selhává. Pokud je tato `continue_on_step_failure` možnost zadána, přepíše nastavení kanálu.
-| `path_on_datastore` | Nepovinný parametr. Cesta v úložišti dat, která se má monitorovat pro upravené nebo přidané objekty blob Cesta je pod kontejnerem úložiště dat, takže skutečná cesta, ke které je plán monitorování, je kontejnerem`path_on_datastore`. Pokud žádný není, je monitorovaný kontejner úložiště dat. Přidání/úpravy provedené v podsložce `path_on_datastore` nejsou monitorovány. Podporováno pouze pro plány úložiště dat. |
+| `continue_on_step_failure` | Určuje, zda pokračovat v provádění dalších kroků v odeslaných PipelineRun, pokud nějaký krok selhává. Pokud je tato možnost zadána, přepíše `continue_on_step_failure` Nastavení kanálu.
+| `path_on_datastore` | Nepovinný parametr. Cesta v úložišti dat, která se má monitorovat pro upravené nebo přidané objekty blob Cesta je pod kontejnerem úložiště dat, takže skutečná cesta, ke které je plán monitorování, je kontejnerem `path_on_datastore` . Pokud žádný není, je monitorovaný kontejner úložiště dat. Přidání/úpravy provedené v podsložce `path_on_datastore` nejsou monitorovány. Podporováno pouze pro plány úložiště dat. |
 
 Následující příklad obsahuje definici pro plán aktivovaný úložištěm dat:
 
@@ -454,18 +508,18 @@ Schedule:
       path_on_datastore: "file/path" 
 ```
 
-Při definování **opakovaného plánu**použijte následující klíče `recurrence`:
+Při definování **opakovaného plánu**použijte následující klíče `recurrence` :
 
 | YAML klíč | Popis |
 | ----- | ----- |
-| `frequency` | Jak často se plán opakuje. Platné hodnoty jsou `"Minute"`, `"Hour"`, `"Day"` `"Week"`, nebo `"Month"`. |
+| `frequency` | Jak často se plán opakuje. Platné hodnoty jsou `"Minute"` , `"Hour"` , `"Day"` , `"Week"` nebo `"Month"` . |
 | `interval` | Jak často je plán aktivován. Celočíselná hodnota představuje počet časových jednotek, které se mají počkat, dokud se plán znovu neaktivuje. |
-| `start_time` | Čas spuštění plánu. Formát řetězce hodnoty je `YYYY-MM-DDThh:mm:ss`. Pokud se nezadá žádný počáteční čas, první zatížení se spustí okamžitě a v závislosti na plánu se spustí další úlohy. Pokud je čas začátku v minulosti, první úloha se spustí při další vypočtené době spuštění. |
+| `start_time` | Čas spuštění plánu. Formát řetězce hodnoty je `YYYY-MM-DDThh:mm:ss` . Pokud se nezadá žádný počáteční čas, první zatížení se spustí okamžitě a v závislosti na plánu se spustí další úlohy. Pokud je čas začátku v minulosti, první úloha se spustí při další vypočtené době spuštění. |
 | `time_zone` | Časové pásmo pro čas spuštění. Pokud není zadáno žádné časové pásmo, bude použit čas UTC. |
-| `hours` | Pokud `frequency` je `"Day"` nebo `"Week"`, můžete zadat jedno nebo více celých čísel od 0 do 23, které jsou odděleny čárkami, jako hodiny dne, kdy se má kanál spustit. Lze `time_of_day` použít `hours` pouze `minutes` nebo a. |
-| `minutes` | Pokud `frequency` je `"Day"` nebo `"Week"`, můžete zadat jedno nebo více celých čísel od 0 do 59, které jsou odděleny čárkami, jako minuty hodiny, kdy se má kanál spustit. Lze `time_of_day` použít `hours` pouze `minutes` nebo a. |
-| `time_of_day` | Pokud `frequency` je `"Day"` nebo `"Week"`, můžete zadat denní dobu, po kterou má být plán spuštěn. Formát řetězce hodnoty je `hh:mm`. Lze `time_of_day` použít `hours` pouze `minutes` nebo a. |
-| `week_days` | Pokud `frequency` je `"Week"`, můžete zadat jeden nebo více dní, které jsou odděleny čárkami, kdy se má plán spustit. Platné hodnoty jsou `"Monday"`, `"Tuesday"`, `"Wednesday"`, `"Thursday"`, `"Friday"`, `"Saturday"`a `"Sunday"`. |
+| `hours` | Pokud `frequency` je `"Day"` nebo `"Week"` , můžete zadat jedno nebo více celých čísel od 0 do 23, které jsou odděleny čárkami, jako hodiny dne, kdy se má kanál spustit. `time_of_day` `hours` Lze použít pouze nebo a `minutes` . |
+| `minutes` | Pokud `frequency` je `"Day"` nebo `"Week"` , můžete zadat jedno nebo více celých čísel od 0 do 59, které jsou odděleny čárkami, jako minuty hodiny, kdy se má kanál spustit. `time_of_day` `hours` Lze použít pouze nebo a `minutes` . |
+| `time_of_day` | Pokud `frequency` je `"Day"` nebo `"Week"` , můžete zadat denní dobu, po kterou má být plán spuštěn. Formát řetězce hodnoty je `hh:mm` . `time_of_day` `hours` Lze použít pouze nebo a `minutes` . |
+| `week_days` | Pokud `frequency` je `"Week"` , můžete zadat jeden nebo více dní, které jsou odděleny čárkami, kdy se má plán spustit. Platné hodnoty jsou `"Monday"` , `"Tuesday"` , `"Wednesday"` , `"Thursday"` , `"Friday"` , a `"Saturday"` `"Sunday"` . |
 
 Následující příklad obsahuje definici pro opakovaný plán:
 

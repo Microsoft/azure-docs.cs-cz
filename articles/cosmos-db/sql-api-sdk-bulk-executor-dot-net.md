@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/27/2020
 ms.author: anfeldma
-ms.openlocfilehash: 398f1495fdfc9da7273ff372fbb57a6ba304c490
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 12140bd6fac888a4f5dc47023ec1fa8aad0a9969
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117706"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171663"
 ---
 # <a name="net-bulk-executor-library-download-information"></a>Knihovna hromadného prováděcího modulu .NET: informace o stažení 
 
@@ -21,7 +21,7 @@ ms.locfileid: "84117706"
 > * [.NET](sql-api-sdk-dotnet.md)
 > * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
 > * [.NET Core](sql-api-sdk-dotnet-core.md)
-> * [Node. js](sql-api-sdk-node.md)
+> * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
@@ -36,7 +36,7 @@ ms.locfileid: "84117706"
 |---|---|
 | **Popis**| Knihovna hromadného prováděcího modulu .NET umožňuje klientským aplikacím provádět hromadné operace s účty Azure Cosmos DB. Tato knihovna poskytuje obory názvů BulkImport, BulkUpdate a BulkDelete. Modul BulkImport dokáže hromadně ingestovat dokumenty optimalizovaným způsobem tak, že propustnost zřízená pro kolekci se spotřebovává do svého maximálního rozsahu. Modul BulkUpdate může hromadně aktualizovat existující data v kontejnerech Azure Cosmos jako opravy. Modul BulkDelete může rychle odstranit dokumenty optimalizovaným způsobem tak, aby propustnost zřízená pro kolekci byla spotřebována do maximálního rozsahu.|
 |**Stažení sady SDK**| [NuGet](https://www.nuget.org/packages/Microsoft.Azure.CosmosDB.BulkExecutor/) |
-| **Knihovna hromadných prováděcích modulů na GitHubu**| [GitHub](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
+| **Knihovna hromadných prováděcích modulů na GitHubu**| [GitHubu](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace rozhraní .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmosdb.bulkexecutor?view=azure-dotnet)|
 |**Začínáme**|[Začínáme s knihovnou .NET SDK pro hromadnou vykonavatelskou práci](bulk-executor-dot-net.md)|
 | **Aktuální podporovaná architektura**| Microsoft .NET Framework 4.5.2, 4.6.1 a .NET Standard 2,0 |
@@ -46,115 +46,115 @@ ms.locfileid: "84117706"
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-### <a name="241-preview"></a><a name="2.4.1-preview"/>2.4.1 – Preview
+### <a name="241-preview"></a><a name="2.4.1-preview"></a>2.4.1 – Preview
 
 * Opravili TotalElapsedTime v reakci na BulkDelete pro správné měření celkového času včetně všech opakovaných pokusů.
 
-### <a name="240-preview"></a><a name="2.4.0-preview"/>2.4.0 – Preview
+### <a name="240-preview"></a><a name="2.4.0-preview"></a>2.4.0 – Preview
 
 * Změna závislosti sady SDK na >= 2.5.1
 
-### <a name="230-preview2"></a><a name="2.3.0-preview2"/>2.3.0-preview2
+### <a name="230-preview2"></a><a name="2.3.0-preview2"></a>2.3.0-preview2
 
 * Přidání podpory hromadného prováděcího modulu grafu pro příjem hodnoty TTL u vrcholů a hran
 
-### <a name="220-preview2"></a><a name="2.2.0-preview2"/>2.2.0 – preview2
+### <a name="220-preview2"></a><a name="2.2.0-preview2"></a>2.2.0 – preview2
 
 * Opravili jsme problém, což způsobilo výjimky během elastického škálování Azure Cosmos DB při spuštění v režimu brány. Tato oprava je funkčně ekvivalentní verzi 1.4.1.
 
-### <a name="210-preview2"></a><a name="2.1.0-preview2"/>2.1.0 – preview2
+### <a name="210-preview2"></a><a name="2.1.0-preview2"></a>2.1.0 – preview2
 
 * Přidali jsme podporu BulkDelete pro účty rozhraní SQL API k přijetí klíče oddílu, k odstranění řazených kolekcí členů dokumentu. Tato změna zajišťuje funkčně rovnocennou verzi 1.4.0.
 
-### <a name="200-preview2"></a><a name="2.0.0-preview2"/>2.0.0 – preview2
+### <a name="200-preview2"></a><a name="2.0.0-preview2"></a>2.0.0 – preview2
 
 * Včetně MongoBulkExecutor pro podporu .NET Standard 2,0. Tato funkce je funkčně ekvivalentní verzi 1.3.0, s přidáním podpory .NET Standard 2,0 jako cílové rozhraní.
 
-### <a name="200-preview"></a><a name="2.0.0-preview"/>2.0.0 – Preview
+### <a name="200-preview"></a><a name="2.0.0-preview"></a>2.0.0 – Preview
 
 * Přidání .NET Standard 2,0 jako jedné z podporovaných cílových rozhraní umožňuje, aby knihovna hromadného prováděcího modulu fungovala s aplikacemi .NET Core.
 
-### <a name="189"></a><a name="1.8.9"/>1.8.9
+### <a name="189"></a><a name="1.8.9"></a>1.8.9
 
 * Opravili jsme problém s BulkDeleteAsync, když byly hodnoty s řídicími uvozovkami předány jako vstupní parametry.
 
-### <a name="188"></a><a name="1.8.8"/>1.8.8
+### <a name="188"></a><a name="1.8.8"></a>1.8.8
 
 * Opravili jsme problém na MongoBulkExecutor, který neočekávaně zvýšil velikost dokumentu přidáním odsazení a v některých případech, při překročení limitu maximální velikosti dokumentu.
 
-### <a name="187"></a><a name="1.8.7"/>1.8.7
+### <a name="187"></a><a name="1.8.7"></a>1.8.7
 
 * Opravili jsme problém s BulkDeleteAsync, když kolekce obsahuje cesty k klíčům vnořeného oddílu.
 
-### <a name="186"></a><a name="1.8.6"/>1.8.6
+### <a name="186"></a><a name="1.8.6"></a>1.8.6
 
 * MongoBulkExecutor nyní implementuje rozhraní IDisposable a očekává se, že bude po použití uvolněn.
 
-### <a name="185"></a><a name="1.8.5"/>1.8.5
+### <a name="185"></a><a name="1.8.5"></a>1.8.5
 
 * Zámek na verzi sady SDK byl odebrán. Balíček je teď závislý na SDK >= 2.5.1.
 
-### <a name="184"></a><a name="1.8.4"/>1.8.4
+### <a name="184"></a><a name="1.8.4"></a>1.8.4
 
 * Pevné zpracování identifikátorů při volání BulkImport se seznamem objektů POCO s číselnými hodnotami.
 
-### <a name="183"></a><a name="1.8.3"/>1.8.3
+### <a name="183"></a><a name="1.8.3"></a>1.8.3
 
 * Opravili TotalElapsedTime v reakci na BulkDelete pro správné měření celkového času včetně všech opakovaných pokusů.
 
-### <a name="182"></a><a name="1.8.2"/>1.8.2
+### <a name="182"></a><a name="1.8.2"></a>1.8.2
 
 * Pevná vysoká spotřeba procesoru v některých scénářích.
 * Trasování teď používá TraceSource. Uživatelé můžou definovat naslouchací procesy pro `BulkExecutorTrace` zdroj.
 * Opravili jsme vzácnou situaci, která by mohla způsobit zámek při posílání dokumentů s velikostí 2 MB.
 
-### <a name="160"></a><a name="1.6.0"/>1.6.0
+### <a name="160"></a><a name="1.6.0"></a>1.6.0
 
 * Byl aktualizován hromadný prováděcí modul, aby nyní používal nejnovější verzi sady Azure Cosmos DB .NET SDK (2.4.0).
 
-### <a name="150"></a><a name="1.5.0"/>1.5.0
+### <a name="150"></a><a name="1.5.0"></a>1.5.0
 
 * Přidání podpory hromadného prováděcího modulu grafu pro příjem hodnoty TTL u vrcholů a hran
 
-### <a name="141"></a><a name="1.4.1"/>1.4.1
+### <a name="141"></a><a name="1.4.1"></a>1.4.1
 
 * Opravili jsme problém, což způsobilo výjimky během elastického škálování Azure Cosmos DB při spuštění v režimu brány.
 
-### <a name="140"></a><a name="1.4.0"/>1.4.0
+### <a name="140"></a><a name="1.4.0"></a>1.4.0
 
 * Přidali jsme podporu BulkDelete pro účty rozhraní SQL API k přijetí klíče oddílu, k odstranění řazených kolekcí členů dokumentu.
 
-### <a name="130"></a><a name="1.3.0"/>1.3.0
+### <a name="130"></a><a name="1.3.0"></a>1.3.0
 
 * Opravili jsme problém, což způsobilo problém s formátováním uživatelského agenta používaného hromadným vykonavatelem.
 
-### <a name="120"></a><a name="1.2.0"/>1.2.0
+### <a name="120"></a><a name="1.2.0"></a>1.2.0
 
 * Nastavilo se zlepšení hromadného prováděcího modulu pro import a aktualizaci rozhraní API pro účely transparentního přizpůsobování elastického škálování Cosmos kontejneru, když úložiště překročí aktuální kapacitu bez vyvolání výjimek.
 
-### <a name="112"></a><a name="1.1.2"/>bodu
+### <a name="112"></a><a name="1.1.2"></a>bodu
 
 * DocumentDB závislost sady .NET SDK na verzi 2.1.3.
 
-### <a name="111"></a><a name="1.1.1"/>1.1.1
+### <a name="111"></a><a name="1.1.1"></a>1.1.1
 
 * Opravili jsme problém, což způsobilo, že hromadný vykonavatel při importu do pevných kolekcí vyvolal chybu JSRT.
 
-### <a name="110"></a><a name="1.1.0"/>1.1.0
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 
 * Přidání podpory pro operaci BulkDelete pro účty Azure Cosmos DB rozhraní SQL API
 * Přidala se podpora pro BulkImport operace pro účty s rozhraním API Azure Cosmos DB pro MongoDB.
 * DocumentDB závislost sady .NET SDK na verzi 2.0.0. 
 
-### <a name="102"></a><a name="1.0.2"/>1.0.2
+### <a name="102"></a><a name="1.0.2"></a>1.0.2
 
 * Přidání podpory pro operaci BulkImport pro účty rozhraní API pro Azure Cosmos DB Gremlin
 
-### <a name="101"></a><a name="1.0.1"/>1.0.1
+### <a name="101"></a><a name="1.0.1"></a>1.0.1
 
 * Menší Oprava chyby BulkImport operace pro účty rozhraní SQL API Azure Cosmos DB.
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 
 * Přidání podpory pro operace BulkImport a BulkUpdate pro Azure Cosmos DB účty rozhraní SQL API
 

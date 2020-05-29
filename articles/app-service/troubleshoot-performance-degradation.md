@@ -7,12 +7,12 @@ ms.assetid: b8783c10-3a4a-4dd6-af8c-856baafbdde5
 ms.topic: article
 ms.date: 08/03/2016
 ms.custom: seodec18
-ms.openlocfilehash: 98c11a72b5aea0fac15d943977402289dc33a970
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2ef4862b629f5d192049c2cb9236a3da2b411960
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688302"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170762"
 ---
 # <a name="troubleshoot-slow-app-performance-issues-in-azure-app-service"></a>Řešení potíží s výkonem pomalých aplikací v Azure App Service
 Tento článek vám pomůže při řešení problémů s výkonem pomalých aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714).
@@ -39,7 +39,7 @@ Tento problém je často způsoben problémy na úrovni aplikace, například:
 
 [App Service](overview.md) poskytuje v každém kroku různé možnosti.
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. Sledujte a sledujte chování aplikace
 #### <a name="track-service-health"></a>Sledovat stav služby
@@ -84,7 +84,7 @@ Každá aplikace App Service poskytuje rozšiřitelný koncový bod správy, kte
 
 [Azure Application Insights](https://azure.microsoft.com/services/application-insights/) je rozšíření webu pro monitorování výkonu, které je dostupné taky. Chcete-li použít Application Insights, znovu sestavte kód pomocí sady SDK. Můžete také nainstalovat rozšíření, které poskytuje přístup k dalším datům. Sada SDK umožňuje psát kód pro sledování využití a výkonu vaší aplikace podrobněji. Další informace najdete v tématu [monitorování výkonu ve webových aplikacích](../azure-monitor/app/web-monitor-performance.md).
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2. shromažďování dat
 App Service poskytuje diagnostické funkce pro protokolování informací z webového serveru i z webové aplikace. Tyto informace jsou rozdělené na diagnostiku webových serverů a Application Diagnostics.
@@ -126,7 +126,7 @@ Pokud chcete získat přístup k diagnostice App Service, přejděte v [Azure Po
 #### <a name="use-the-kudu-debug-console"></a>Použití konzoly ladění Kudu
 App Service se dodává s konzolou ladění, kterou můžete použít pro ladění, prozkoumávání, nahrávání souborů a také pro koncové body JSON pro získání informací o vašem prostředí. Tato konzola se nazývá *Konzola Kudu* nebo *řídicí panel SCM* pro vaši aplikaci.
 
-K tomuto řídicímu panelu se dostanete tak, že na odkaz **https://&lt;název vaší aplikace>. SCM.azurewebsites.NET/**.
+K tomuto řídicímu panelu se dostanete tak, že na odkaz **https:// &lt; název vaší aplikace>. SCM.azurewebsites.NET/**.
 
 K dispozici jsou některé z věcí, které Kudu poskytuje:
 
@@ -139,7 +139,7 @@ Další užitečnou funkcí Kudu je to, že v případě, že aplikace vyvoláv�
 
 Další informace o funkcích dostupných v Kudu najdete v tématu [nástroje Azure DevOps, které byste měli znát](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3. zmírnění problému
 #### <a name="scale-the-app"></a>Škálování aplikace

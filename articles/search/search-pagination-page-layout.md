@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/01/2020
-ms.openlocfilehash: da01d0f7d2313b9700c5aae08edbda9e355b3774
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 93f1da7db3962994611f70fc145d0e9b62cd4f26
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801769"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167855"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Jak pracovat s výsledky hledání v Azure Kognitivní hledání
 
@@ -49,7 +49,7 @@ Chcete-li vrátit jiný počet vyhovujících dokumentů, `$top` přidejte `$ski
 
 + Vrátí první sadu 15 odpovídajících dokumentů a celkový počet shod:`GET /indexes/<INDEX-NAME>/docs?search=<QUERY STRING>&$top=15&$skip=0&$count=true`
 
-+ Vrátí druhou sadu a přeskočí prvních 15 k získání následujících 15: `$top=15&$skip=15`. Totéž udělejte u třetí sady 15:`$top=15&$skip=30`
++ Vrátí druhou sadu a přeskočí prvních 15 k získání následujících 15: `$top=15&$skip=15` . Totéž udělejte u třetí sady 15:`$top=15&$skip=30`
 
 V případě změny podkladového indexu není zaručeno, že výsledky stránkovaných dotazů nebudou stabilní. Stránkování změní hodnotu `$skip` pro každou stránku, ale každý dotaz je nezávislý a pracuje s aktuálním zobrazením dat v indexu v době dotazu (jinými slovy, není ukládání do mezipaměti nebo snímku výsledků, jako jsou například ty, které se nacházejí v databázi pro obecné účely).
  
@@ -60,12 +60,12 @@ Následuje příklad, jak můžete získat duplicity. Předpokládat index se č
     { "id": "3", "rating": 2 }
     { "id": "4", "rating": 1 }
  
-Nyní předpokládejme, že výsledky byly vráceny dvakrát v čase seřazené podle hodnocení. Tento dotaz provedete tak, aby získal první stránku výsledků: `$top=2&$skip=0&$orderby=rating desc`a vygeneroval následující výsledky:
+Nyní předpokládejme, že výsledky byly vráceny dvakrát v čase seřazené podle hodnocení. Tento dotaz provedete tak, aby získal první stránku výsledků: `$top=2&$skip=0&$orderby=rating desc` a vygeneroval následující výsledky:
 
     { "id": "1", "rating": 5 }
     { "id": "2", "rating": 3 }
  
-Ve službě se předpokládá, že se do indexu přidá pátý dokument mezi voláními dotazu: `{ "id": "5", "rating": 4 }`.  Krátce potom spustíte dotaz k načtení druhé stránky: `$top=2&$skip=2&$orderby=rating desc`a získáte tyto výsledky:
+Ve službě se předpokládá, že se do indexu přidá pátý dokument mezi voláními dotazu: `{ "id": "5", "rating": 4 }` .  Krátce potom spustíte dotaz k načtení druhé stránky: `$top=2&$skip=2&$orderby=rating desc` a získáte tyto výsledky:
 
     { "id": "2", "rating": 3 }
     { "id": "3", "rating": 2 }
@@ -94,11 +94,11 @@ Další možností je použít [vlastní profil vyhodnocování](index-add-scori
 
 Zvýrazňování přístupů odkazuje na formátování textu (například tučné nebo žluté světla) použité pro odpovídající výrazy ve výsledku, což usnadňuje umístění shody. Pokyny pro zvýraznění přístupů jsou k dispozici v [žádosti o dotaz](https://docs.microsoft.com/rest/api/searchservice/search-documents). 
 
-Pokud chcete povolit zvýrazňování přístupů, `highlight=[comma-delimited list of string fields]` přidejte, abyste určili, která pole budou používat zvýraznění. Zvýrazňování je užitečné pro delší pole obsahu, jako je pole popisu, kde shoda není okamžitě zřejmá. Jenom definice polí s atributem, které jsou s **možností prohledávání** , jsou způsobilé pro zvýrazňování přístupů.
+Pokud chcete povolit zvýrazňování přístupů, přidejte, `highlight=[comma-delimited list of string fields]` abyste určili, která pole budou používat zvýraznění. Zvýrazňování je užitečné pro delší pole obsahu, jako je pole popisu, kde shoda není okamžitě zřejmá. Jenom definice polí s atributem, které jsou s **možností prohledávání** , jsou způsobilé pro zvýrazňování přístupů.
 
 Ve výchozím nastavení Azure Kognitivní hledání vrátí až pět světel na pole. Toto číslo můžete upravit připojením k poli a pomlčkou, po které následuje celé číslo. Například `highlight=Description-10` vrátí až 10 světel na základě odpovídajícího obsahu v poli Popis.
 
-Formátování se aplikuje na všechny výrazy. Typ formátování je určen značkami `highlightPreTag` a `highlightPostTag`a váš kód zpracovává odpověď (například použití tučného písma nebo žlutého pozadí).
+Formátování se aplikuje na všechny výrazy. Typ formátování je určen značkami `highlightPreTag` a a `highlightPostTag` váš kód zpracovává odpověď (například použití tučného písma nebo žlutého pozadí).
 
 V následujícím příkladu jsou označeny výrazy "oranžovohnědá", "písek", "pláže", "pláž" v rámci pole Popis pro zvýraznění. Dotazy, které spouštějí rozšíření dotazů v modulu, jako je například přibližná a hledání pomocí zástupných znaků, mají omezené podpory pro zvýrazňování přístupů.
 
@@ -126,8 +126,6 @@ Nové chování:
     '<em>super bowl</em> is super awesome with a bowl of chips'
     ```
   Všimněte si, že pojem *Bowl čipy* nemá žádné zvýrazňování, protože neodpovídá celé frázi.
-  
-* Bude možné určit velikost fragmentu vrácenou pro zvýraznění. Velikost fragmentu se zadává jako počet znaků (maximálně 1000 znaků).
 
 Při psaní kódu klienta, který implementuje zvýrazňování přístupů, si pamatujte na tuto změnu. Mějte na paměti, že to nebude mít vliv, pokud vytvoříte úplně novou službu vyhledávání.
 

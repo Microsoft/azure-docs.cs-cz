@@ -3,12 +3,12 @@ title: Získání změn prostředků
 description: Pochopte, jak zjistit, kdy byl prostředek změněn, získat seznam vlastností, které se změnily, a vyhodnotit rozdíly.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: d53148f302d82a7563520036f327406ca4a86040
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9e233ebbdd1d70d483af44eacf12cc924deaafac
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681054"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167158"
 ---
 # <a name="get-resource-changes"></a>Získání změn prostředků
 
@@ -25,8 +25,7 @@ Zjišťování změn a podrobnosti jsou užitečné v následujících ukázkov�
 - Udržování databáze správy konfigurace označované jako CMDB, aktuální. Místo aktualizace všech prostředků a jejich úplných vlastností u naplánované četnosti Získejte jenom to, co se změnilo.
 - Informace o tom, jaké další vlastnosti se mohly změnit, když prostředek změnil stav dodržování předpisů. Vyhodnocení těchto dalších vlastností může poskytnout přehled o dalších vlastnostech, které mohou být nutné ke správě pomocí definice Azure Policy.
 
-Tento článek ukazuje, jak shromáždit tyto informace prostřednictvím sady SDK pro graf prostředků. Pokud chcete zobrazit tyto informace v Azure Portal, přečtěte si téma historie [změn](../../policy/how-to/determine-non-compliance.md#change-history-preview) v Azure Policy nebo [historie změn protokolu aktivit](../../../azure-monitor/platform/activity-log-view.md#azure-portal)Azure.
-Podrobnosti o změnách vašich aplikací z infrastruktury do nasazení aplikace najdete v tématu [použití analýzy změn aplikace (Preview)](../../../azure-monitor/app/change-analysis.md) v Azure monitor.
+Tento článek ukazuje, jak shromáždit tyto informace prostřednictvím sady SDK pro graf prostředků. Pokud chcete zobrazit tyto informace v Azure Portal, přečtěte si téma historie [změn](../../policy/how-to/determine-non-compliance.md#change-history) v Azure Policy nebo [historie změn protokolu aktivit](../../../azure-monitor/platform/activity-log-view.md#azure-portal)Azure. Podrobnosti o změnách vašich aplikací z infrastruktury do nasazení aplikace najdete v tématu [použití analýzy změn aplikace (Preview)](../../../azure-monitor/app/change-analysis.md) v Azure monitor.
 
 > [!NOTE]
 > Podrobnosti o změně v grafu prostředků jsou pro Správce prostředků vlastnosti. Informace o sledování změn v rámci virtuálního počítače Azure Automation najdete v tématu Konfigurace služby [Change Tracking](../../../automation/automation-change-tracking.md) nebo [Host Azure Policy na virtuálních](../../policy/concepts/guest-configuration.md)počítačích.

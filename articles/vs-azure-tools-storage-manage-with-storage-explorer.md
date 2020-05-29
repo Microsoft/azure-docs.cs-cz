@@ -8,12 +8,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/08/2019
 ms.author: cawa
-ms.openlocfilehash: 7886d5a1ad0745550767b7d6f19592ca3c84b00a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 11166d5578b90fe6ec936389bcd173c4c26b4852
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79279790"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171238"
 ---
 # <a name="get-started-with-storage-explorer"></a>Začínáme s Průzkumníkem služby Storage
 
@@ -33,7 +33,7 @@ Průzkumník služby Storage podporují následující verze Windows:
 * Windows 8
 * Windows 7
 
-Pro všechny verze Windows Průzkumník služby Storage vyžaduje .NET Framework 4.6.2 nebo novější.
+Pro všechny verze Windows Průzkumník služby Storage vyžaduje minimálně .NET Framework 4.7.2.
 
 # <a name="macos"></a>[macOS](#tab/macos)
 
@@ -81,7 +81,7 @@ Průzkumník služby Storage nabízí několik způsobů, jak se připojit k ú�
 > [!NOTE]
 > Pro úplný přístup k prostředkům po přihlášení Průzkumník služby Storage vyžaduje obě oprávnění ke správě (Azure Resource Manager) a datové vrstvě. To znamená, že potřebujete oprávnění Azure Active Directory (Azure AD), která vám umožní přístup k vašemu účtu úložiště, kontejnerům v účtu a datům v kontejnerech. Pokud máte oprávnění jenom na datové vrstvě, zvažte [Přidání prostředku přes Azure AD](#add-a-resource-via-azure-ad). Další informace o konkrétních oprávněních Průzkumník služby Storage vyžaduje, najdete v [Průvodci odstraňováním potíží Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting#rbac-permissions-issues).
 
-1. V Průzkumník služby Storage vyberte **Zobrazit** > **správu účtů** nebo klikněte na tlačítko **Spravovat účty** .
+1. V Průzkumník služby Storage vyberte **Zobrazit**  >  **správu účtů** nebo klikněte na tlačítko **Spravovat účty** .
 
     ![Správa účtů][1]
 
@@ -108,7 +108,7 @@ Existuje několik způsobů, jak se připojit k prostředku v Průzkumník služ
 * [Přidejte prostředek přes Azure AD](#add-a-resource-via-azure-ad). Pokud máte oprávnění pouze v datové vrstvě, použijte tuto možnost k přidání kontejneru objektů BLOB nebo Azure Data Lake Storage Gen2 kontejneru úložiště objektů BLOB.
 * [Použijte připojovací řetězec](#use-a-connection-string). Tuto možnost použijte, pokud máte připojovací řetězec k účtu úložiště. Průzkumník služby Storage podporuje připojovací řetězce klíčů a [sdíleného přístupového podpisu](storage/common/storage-dotnet-shared-access-signature-part-1.md) .
 * [Použijte identifikátor URI sdíleného přístupového podpisu](#use-a-shared-access-signature-uri). Pokud máte [identifikátor URI sdíleného přístupového podpisu](storage/common/storage-dotnet-shared-access-signature-part-1.md) pro kontejner objektů blob, sdílenou složku, frontu nebo tabulku, použijte ji k připojení k prostředku. Identifikátor URI sdíleného přístupového podpisu můžete získat buď pomocí [Průzkumník služby Storage](#generate-a-sas-in-storage-explorer) nebo [Azure Portal](https://portal.azure.com).
-* [Použijte název a klíč](#use-a-name-and-key). Pokud znáte některý z klíčů účtu pro účet úložiště, můžete tuto možnost použít k rychlému připojení. Klíče najdete na stránce účtu úložiště tak, že v [Azure Portal](https://portal.azure.com)vyberete **Nastavení** > **přístupové klíče** .
+* [Použijte název a klíč](#use-a-name-and-key). Pokud znáte některý z klíčů účtu pro účet úložiště, můžete tuto možnost použít k rychlému připojení. Klíče najdete na stránce účtu úložiště tak, že v Azure Portal vyberete **Nastavení**  >  **přístupové klíče** . [Azure portal](https://portal.azure.com)
 * [Připojte se k místnímu emulátoru](#attach-to-a-local-emulator). Pokud používáte některý z dostupných Azure Storage emulátorů, použijte tuto možnost k snadnému připojení k emulátoru.
 * [Připojte se k účtu Azure Cosmos DB pomocí připojovacího řetězce](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string). Tuto možnost použijte, pokud máte připojovací řetězec k instanci CosmosDB.
 * [Připojte se k Azure Data Lake Store podle identifikátoru URI](#connect-to-azure-data-lake-store-by-uri). Tuto možnost použijte, pokud máte identifikátor URI pro Azure Data Lake Store.
@@ -131,7 +131,7 @@ Existuje několik způsobů, jak se připojit k prostředku v Průzkumník služ
 
 1. Zkontrolujte **Souhrn připojení** a ujistěte se, že jsou všechny informace správné. Pokud je, vyberte **připojit**. V opačném případě vyberte **zpět** a vraťte se na předchozí stránky a opravte případné nesprávné informace.
 
-Po úspěšném přidání připojení strom prostředků přejde na uzel, který představuje připojení. Prostředek se zobrazí v **části místní & připojené** > **kontejnery objektů****úložiště** > **(připojené kontejnery)** > . Pokud Průzkumník služby Storage nešlo přidat vaše připojení, nebo pokud nemůžete získat přístup k datům po úspěšném přidání připojení, přečtěte si [Průvodce řešením potíží s Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
+Po úspěšném přidání připojení strom prostředků přejde na uzel, který představuje připojení. Prostředek se zobrazí v části **místní & připojené**  >  **Storage Accounts**  >  kontejnery objektů úložiště **(připojené kontejnery)**  >  **Blob Containers**. Pokud Průzkumník služby Storage nešlo přidat vaše připojení, nebo pokud nemůžete získat přístup k datům po úspěšném přidání připojení, přečtěte si [Průvodce řešením potíží s Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
 
 #### <a name="use-a-connection-string"></a>Použít připojovací řetězec
 
@@ -145,7 +145,7 @@ Po úspěšném přidání připojení strom prostředků přejde na uzel, kter�
 
 1. Zkontrolujte **Souhrn připojení** a ujistěte se, že jsou všechny informace správné. Pokud je, vyberte **připojit**. V opačném případě vyberte **zpět** a vraťte se na předchozí stránky a opravte případné nesprávné informace.
 
-Po úspěšném přidání připojení strom prostředků přejde na uzel, který představuje připojení. Prostředek se zobrazí v části **místní & připojené** > **účty úložiště**. Pokud Průzkumník služby Storage nešlo přidat vaše připojení, nebo pokud nemůžete získat přístup k datům po úspěšném přidání připojení, přečtěte si [Průvodce řešením potíží s Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
+Po úspěšném přidání připojení strom prostředků přejde na uzel, který představuje připojení. Prostředek se zobrazí v části **místní & připojené**  >  **účty úložiště**. Pokud Průzkumník služby Storage nešlo přidat vaše připojení, nebo pokud nemůžete získat přístup k datům po úspěšném přidání připojení, přečtěte si [Průvodce řešením potíží s Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
 
 #### <a name="use-a-shared-access-signature-uri"></a>Použít identifikátor URI sdíleného přístupového podpisu
 
@@ -159,7 +159,7 @@ Po úspěšném přidání připojení strom prostředků přejde na uzel, kter�
 
 1. Zkontrolujte **Souhrn připojení** a ujistěte se, že jsou všechny informace správné. Pokud je, vyberte **připojit**. V opačném případě vyberte **zpět** a vraťte se na předchozí stránky a opravte případné nesprávné informace.
 
-Po úspěšném přidání připojení strom prostředků přejde na uzel, který představuje připojení. Prostředek se zobrazí v části **místní & připojené** > **účty** > úložiště **(připojené kontejnery)** > *uzlu služby pro typ kontejneru, který jste připojili*. Pokud Průzkumník služby Storage nemohlo přidat vaše připojení, přečtěte si [Průvodce řešením potíží s Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting). Pokud po úspěšném přidání připojení nemůžete získat přístup k datům, přečtěte si průvodce řešením potíží.
+Po úspěšném přidání připojení strom prostředků přejde na uzel, který představuje připojení. Prostředek se zobrazí v části **místní & připojené**  >  **účty úložiště**  >  **(připojené kontejnery)**  >  *uzlu služby pro typ kontejneru, který jste připojili*. Pokud Průzkumník služby Storage nemohlo přidat vaše připojení, přečtěte si [Průvodce řešením potíží s Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting). Pokud po úspěšném přidání připojení nemůžete získat přístup k datům, přečtěte si průvodce řešením potíží.
 
 #### <a name="use-a-name-and-key"></a>Použít název a klíč
 
@@ -177,7 +177,7 @@ Po úspěšném přidání připojení strom prostředků přejde na uzel, kter�
 
 1. Zkontrolujte **Souhrn připojení** a ujistěte se, že jsou všechny informace správné. Pokud je, vyberte **připojit**. V opačném případě vyberte **zpět** a vraťte se na předchozí stránky a opravte případné nesprávné informace.
 
-Po úspěšném přidání připojení strom prostředků přejde na uzel, který představuje připojení. Prostředek se zobrazí v části **místní & připojené** > **účty úložiště**. Pokud Průzkumník služby Storage nešlo přidat vaše připojení, nebo pokud nemůžete získat přístup k datům po úspěšném přidání připojení, přečtěte si [Průvodce řešením potíží s Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
+Po úspěšném přidání připojení strom prostředků přejde na uzel, který představuje připojení. Prostředek se zobrazí v části **místní & připojené**  >  **účty úložiště**. Pokud Průzkumník služby Storage nešlo přidat vaše připojení, nebo pokud nemůžete získat přístup k datům po úspěšném přidání připojení, přečtěte si [Průvodce řešením potíží s Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
 
 #### <a name="attach-to-a-local-emulator"></a>Připojit k místnímu emulátoru
 
@@ -186,7 +186,7 @@ Průzkumník služby Storage aktuálně podporuje dva oficiální emulátory úl
 * [Emulátor Azure Storage](storage/common/storage-use-emulator.md) (jenom Windows)
 * [Azurite](https://github.com/azure/azurite) (Windows, MacOS nebo Linux)
 
-Pokud emulátor naslouchá na výchozích portech, můžete pro přístup k emulátoru použít uzel **výchozí porty pro emulátor** . Vyhledejte **emulátor – výchozí porty** v části **místní & připojené** > **účty úložiště**.
+Pokud emulátor naslouchá na výchozích portech, můžete pro přístup k emulátoru použít uzel **výchozí porty pro emulátor** . Vyhledejte **emulátor – výchozí porty** v části **místní & připojené**  >  **účty úložiště**.
 
 Pokud chcete pro připojení použít jiný název nebo pokud emulátor neběží na výchozích portech, postupujte podle těchto kroků:
 
@@ -205,7 +205,7 @@ Pokud chcete pro připojení použít jiný název nebo pokud emulátor neběž�
 
 1. Zkontrolujte **Souhrn připojení** a ujistěte se, že jsou všechny informace správné. Pokud je, vyberte **připojit**. V opačném případě vyberte **zpět** a vraťte se na předchozí stránky a opravte případné nesprávné informace.
 
-Po úspěšném přidání připojení strom prostředků přejde na uzel, který představuje připojení. Uzel by se měl zobrazit v části **místní & připojené** > **účty úložiště**. Pokud Průzkumník služby Storage nešlo přidat vaše připojení, nebo pokud nemůžete získat přístup k datům po úspěšném přidání připojení, přečtěte si [Průvodce řešením potíží s Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
+Po úspěšném přidání připojení strom prostředků přejde na uzel, který představuje připojení. Uzel by se měl zobrazit v části **místní & připojené**  >  **účty úložiště**. Pokud Průzkumník služby Storage nešlo přidat vaše připojení, nebo pokud nemůžete získat přístup k datům po úspěšném přidání připojení, přečtěte si [Průvodce řešením potíží s Průzkumník služby Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-explorer-troubleshooting).
 
 #### <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>Připojení k účtu Azure Cosmos DB pomocí připojovacího řetězce
 

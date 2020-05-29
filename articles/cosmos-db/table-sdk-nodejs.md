@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 0f94ae4a4b5ad7806658c4ae54146d4ac940750e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 52aebf5a4f2e5ea7b3b09ae105c9ea632416c27e
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76771299"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167974"
 ---
 # <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Rozhraní API pro tabulky Azure Cosmos DB pro Node. js: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -34,9 +34,9 @@ ms.locfileid: "76771299"
 > Pokud jste vytvořili účet Table API během období Preview, vytvořte [nový účet Table API](create-table-dotnet.md#create-a-database-account) pro práci s obecně dostupnými sadami Table API SDK.
 >
 
-## <a name="release-notes"></a>Zpráva k vydání verze
+## <a name="release-notes"></a>Poznámky k verzi
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * Verze pro obecné dostupnosti
 
 ## <a name="release-and-retirement-dates"></a>Data o uvolnění a vyřazení
@@ -44,7 +44,7 @@ Microsoft bude před vyřazením sady SDK do novější nebo podporované verze 
 
 Nové funkce a funkce a optimalizace se přidávají jenom do aktuální sady SDK, protože se tak doporučuje kdykoli nejdříve upgradovat na nejnovější verzi sady SDK. 
 
-| Version | Datum vydání | Datum vyřazení |
+| Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
 | [1.0.0](#1.0.0) |15. listopadu 2017 |--- |
 

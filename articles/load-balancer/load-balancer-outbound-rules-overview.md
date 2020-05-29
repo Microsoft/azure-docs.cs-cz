@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 7/17/2019
 ms.author: allensu
-ms.openlocfilehash: d419c213b3bcfef3631d68eb9d4cb485291bed31
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6c7464eb1bf51a4e42d0db98d92459dc39fbb11
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78304187"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170813"
 ---
 # <a name="load-balancer-outbound-rules"></a>Load Balancer odchozí pravidla
 
@@ -42,7 +42,7 @@ Odchozí pravidla rozbalí [scénář 2](load-balancer-outbound-connections.md#l
 
 Stejně jako všechna pravidla Load Balancer se odchozí pravidla řídí stejnou známou syntaxí jako vyrovnávání zatížení a příchozí pravidla překladu adres (NAT):
 
-**back-** End – + **fond** **parametrů** + 
+**front-end**  +  **parametry**  +  **back-end fond**
 
 Odchozí pravidlo konfiguruje odchozí překlad adres (NAT) pro _všechny virtuální počítače identifikované fondem back-end_ pro překlad do _front-endu_.  _Parametry_ a poskytují další jemně odstupňovanou kontrolu nad odchozím algoritmem NAT.
 
@@ -66,7 +66,7 @@ Verze rozhraní API "2018-07-01" umožňuje strukturované definování odchozí
 
 ### <a name="scale-outbound-nat-with-multiple-ip-addresses"></a><a name="scale"></a>Škálování odchozího překladu adres (NAT) s několika IP adresami
 
-I když se odchozí pravidlo dá použít jenom s jednou veřejnou IP adresou, odchozí pravidla zjednodušují zátěž v konfiguraci pro škálování odchozího překladu adres (NAT). Pro plánování rozsáhlých scénářů můžete použít více IP adres a pomocí odchozích pravidel můžete zmírnit vzory náchylné k [vyčerpání SNAT](load-balancer-outbound-connections.md#snatexhaust) .  
+I když se odchozí pravidlo dá použít jenom s jednou veřejnou IP adresou, odchozí pravidla zjednodušují zátěž v konfiguraci pro škálování odchozího překladu adres (NAT). Pro plánování rozsáhlých scénářů můžete použít více IP adres a pomocí odchozích pravidel můžete zmírnit vzory náchylné k [vyčerpání SNAT](troubleshoot-outbound-connection.md#snatexhaust) .  
 
 Každá další IP adresa poskytovaná front-endu poskytuje 64 000 dočasných portů, které Load Balancer použít jako porty SNAT. I když mají pravidla vyrovnávání zatížení nebo příchozího překladu adres (NAT) jeden front-end, toto pravidlo rozšíří rozhraní front-end a umožní více front-endu na jedno pravidlo.  U několika front-endu na pravidlo je množství dostupných portů SNAT vynásobeno každou veřejnou IP adresou a může být podporováno velké scénáře.
 
@@ -95,7 +95,7 @@ Pro nastavení odchozího časového limitu nečinnosti na 1 hodinu použijte n�
 
           "idleTimeoutInMinutes": 60
 
-### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a> Povolit resetování protokolu TCP pro časový limit nečinnosti
+### <a name="enable-tcp-reset-on-idle-timeout"></a><a name="tcprst"></a><a name="tcpreset"></a>Povolit resetování protokolu TCP pro časový limit nečinnosti
 
 Výchozím chováním Load Balancer je vyřazení toku v tichém režimu v případě dosažení odchozího časového limitu nečinnosti.  Pomocí parametru enableTCPReset můžete povolit předvídatelné chování aplikace a určit, jestli se má v době nečinnosti odchozího nečinnosti odesílat obousměrné resetování protokolu TCP (TCP RST). 
 

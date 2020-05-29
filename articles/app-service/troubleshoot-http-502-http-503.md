@@ -7,12 +7,12 @@ ms.assetid: 51cd331a-a3fa-438f-90ef-385e755e50d5
 ms.topic: article
 ms.date: 07/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9345b6fb28aa282e85f1167f6f2531e5f990e3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9cb672f2ada88b1fc67bcd8f022c5faeeac6dddf
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688331"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170796"
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-azure-app-service"></a>Řešení chyb HTTP z "502 špatné brány" a "503 Služba není dostupná" v Azure App Service
 "502 Chybná brána" a "503 Služba není k dispozici" jsou běžné chyby v aplikaci hostované v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Tento článek vám pomůže vyřešit tyto chyby.
@@ -38,7 +38,7 @@ Tento problém je často způsoben problémy na úrovni aplikace, například:
 
 [App Service](overview.md) poskytuje v každém kroku různé možnosti.
 
-<a name="observe" />
+<a name="observe"></a>
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1. Sledujte a sledujte chování aplikace
 #### <a name="track-service-health"></a>Sledovat stav služby
@@ -62,7 +62,7 @@ Další informace naleznete v tématu:
 * [Monitorování aplikací v Azure App Service](web-sites-monitor.md)
 * [Zobrazování oznámení o výstrahách](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)
 
-<a name="collect" />
+<a name="collect"></a>
 
 ### <a name="2-collect-data"></a>2. shromažďování dat
 #### <a name="use-the-diagnostics-tool"></a>Použití nástroje pro diagnostiku
@@ -73,7 +73,7 @@ Pokud chcete získat přístup k diagnostice App Service, přejděte v [Azure Po
 #### <a name="use-the-kudu-debug-console"></a>Použití konzoly ladění Kudu
 App Service se dodává s konzolou ladění, kterou můžete použít pro ladění, prozkoumávání, nahrávání souborů a také pro koncové body JSON pro získání informací o vašem prostředí. To se označuje jako *Konzola Kudu* nebo *řídicí panel SCM* pro vaši aplikaci.
 
-K tomuto řídicímu panelu se dostanete tak, že na odkaz **https://&lt;název vaší aplikace>. SCM.azurewebsites.NET/**.
+K tomuto řídicímu panelu se dostanete tak, že na odkaz **https:// &lt; název vaší aplikace>. SCM.azurewebsites.NET/**.
 
 K dispozici jsou některé z věcí, které Kudu poskytuje:
 
@@ -86,7 +86,7 @@ Další užitečnou funkcí Kudu je to, že v případě, že aplikace vyvoláv�
 
 Další informace o funkcích dostupných v Kudu najdete v tématu [online nástroje Azure websites, které byste měli znát](https://azure.microsoft.com/blog/windows-azure-websites-online-tools-you-should-know-about/).
 
-<a name="mitigate" />
+<a name="mitigate"></a>
 
 ### <a name="3-mitigate-the-issue"></a>3. zmírnění problému
 #### <a name="scale-the-app"></a>Škálování aplikace

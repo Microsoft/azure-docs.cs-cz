@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 54379c65850fa210e5523b53a64fe89705ed1f15
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f998cc238b997f2dfb8e8043693379e4c5a53546
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79532106"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170405"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mariadb"></a>Použití koncových bodů služeb virtuální sítě a pravidel pro Azure Database for MariaDB
 
@@ -24,7 +24,7 @@ Aby bylo možné vytvořit pravidlo virtuální sítě, musí nejprve existovat 
 > [!NOTE]
 > Tato funkce je k dispozici ve všech oblastech Azure, kde Azure Database for MariaDB nasazeny pro Pro obecné účely a paměťově optimalizované servery.
 
-<a name="anch-terminology-and-description-82f" />
+<a name="anch-terminology-and-description-82f"></a>
 
 ## <a name="terminology-and-description"></a>Terminologie a popis
 
@@ -44,7 +44,7 @@ Pravidlo virtuální sítě přikáže serveru Azure Database for MariaDB, aby p
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-benefits-of-a-vnet-rule-68b"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Výhody pravidla virtuální sítě
 
@@ -68,7 +68,7 @@ Pokud byl váš **Microsoft. SQL** Server uzlem v podsíti ve vaší virtuální
 
 Od srpna 2018 však služba Azure Database for MariaDB ještě nepatří mezi služby, které je možné přiřadit přímo do podsítě.
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>Podrobnosti o pravidlech virtuální sítě
 
@@ -88,8 +88,8 @@ Každé pravidlo virtuální sítě se vztahuje na celý Azure Database for Mari
 
 V rámci správy koncových bodů služby Virtual Network je oddělení rolí zabezpečení. Pro každou z následujících rolí se vyžaduje akce:
 
-- **Správce sítě:** &nbsp; zapněte koncový bod.
-- **Správce databáze:** &nbsp; aktualizujte seznam řízení přístupu (ACL) pro přidání dané podsítě do serveru Azure Database for MariaDB.
+- **Správce sítě:** &nbsp; Zapněte koncový bod.
+- **Správce databáze:** &nbsp; Aktualizujte seznam řízení přístupu (ACL), chcete-li přidat danou podsíť do serveru Azure Database for MariaDB.
 
 *Alternativa RBAC:*
 

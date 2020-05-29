@@ -12,16 +12,16 @@ ms.date: 02/12/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: has-adal-ref
-ms.openlocfilehash: 74c6951a718d15a9ca7b84e92662272ba1bfd182
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c3efd94e741124d5e662ac17e9c1daaf66d4c1c5
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610288"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168805"
 ---
 # <a name="secure-access-to-on-premises-apis-with-azure-ad-application-proxy"></a>Zabezpečený přístup k místním rozhraním API pomocí Azure Proxy aplikací služby AD
 
-Můžete mít rozhraní API pro obchodní logiku spuštěná místně nebo hostovaná na virtuálních počítačích v cloudu. Vaše nativní aplikace pro Android, iOS, Mac nebo Windows potřebují komunikovat s koncovými body rozhraní API, aby mohli používat data nebo poskytovat interakci s uživatelem. Azure Proxy aplikací služby AD a [knihovny ověřování Azure Active Directory (ADAL)](/azure/active-directory/develop/active-directory-authentication-libraries) umožňují vašim nativním aplikacím zabezpečený přístup k vašim místním rozhraním API. Proxy aplikací služby Azure Active Directory je rychlejší a bezpečnější řešení než otevření portů brány firewall a řízení ověřování a autorizace ve vrstvě aplikace.
+Můžete mít rozhraní API pro obchodní logiku spuštěná místně nebo hostovaná na virtuálních počítačích v cloudu. Vaše nativní aplikace pro Android, iOS, Mac nebo Windows potřebují komunikovat s koncovými body rozhraní API, aby mohli používat data nebo poskytovat interakci s uživatelem. Azure Proxy aplikací služby AD a [Knihovna Microsoft Authentication Library (MSAL)](/azure/active-directory/develop/active-directory-authentication-libraries) umožňují vašim nativním aplikacím zabezpečený přístup k vašim místním rozhraním API. Proxy aplikací služby Azure Active Directory je rychlejší a bezpečnější řešení než otevření portů brány firewall a řízení ověřování a autorizace ve vrstvě aplikace.
 
 Tento článek vás provede nastavením řešení Azure Proxy aplikací služby AD pro hostování služby webového rozhraní API, ke které mají přístup nativní aplikace.
 
@@ -54,7 +54,7 @@ Publikování webového rozhraní API SecretAPI prostřednictvím aplikačního 
 
 1. Sestavte a publikujte vzorový projekt SecretAPI jako webovou aplikaci ASP.NET na místním počítači nebo intranetu. Ujistěte se, že máte přístup k webové aplikaci místně.
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **Azure Active Directory**. Pak vyberte **podnikové aplikace**.
+1. Na portálu [Azure Portal](https://portal.azure.com) vyberte **Azure Active Directory**. Pak vyberte **podnikové aplikace**.
 
 1. V horní části stránky **podnikové aplikace – všechny aplikace** vyberte možnost **Nová aplikace**.
 
@@ -113,7 +113,7 @@ Registrace nativní aplikace AppProxyNativeAppSample:
 
    1. V části **podporované typy účtů**vyberte **účty v libovolném organizačním adresáři a osobní účty Microsoft**.
 
-   1. V části **Adresa URL pro přesměrování**rozbalte rozevírací seznam a vyberte možnost **veřejný klient (mobilní & plocha)** a pak zadejte *https:\//appproxynativeapp*.
+   1. V části **Adresa URL pro přesměrování**vyberte možnost **veřejný klient (mobilní & plocha)** a pak zadejte *https://login.microsoftonline.com/common/oauth2/nativeclient* .
 
    1. Vyberte **Registrovat**a počkejte, než se aplikace úspěšně zaregistruje.
 
@@ -121,7 +121,7 @@ Registrace nativní aplikace AppProxyNativeAppSample:
 
 Aplikaci AppProxyNativeAppSample jste teď zaregistrovali v Azure Active Directory. Přístup k webovému rozhraní API SecretAPI vaší nativní aplikace:
 
-1. Na stránce Azure Active Directory **Přehled** > **Registrace aplikací** vyberte aplikaci **AppProxyNativeAppSample** .
+1. Na stránce Azure Active Directory **Přehled**  >  **Registrace aplikací** vyberte aplikaci **AppProxyNativeAppSample** .
 
 1. Na stránce **AppProxyNativeAppSample** v levém navigačním panelu vyberte **oprávnění rozhraní API** .
 
@@ -139,30 +139,46 @@ Aplikaci AppProxyNativeAppSample jste teď zaregistrovali v Azure Active Directo
 
 Posledním krokem je konfigurace nativní aplikace. Následující fragment kódu ze souboru *Form1.cs* v ukázkové aplikaci NativeClient způsobí, že knihovna ADAL získá token pro vyžádání volání rozhraní API a připojí ho jako nosič k hlavičce aplikace.
 
-   ```csharp
-       AuthenticationResult result = null;
-       HttpClient httpClient = new HttpClient();
-       authContext = new AuthenticationContext(authority);
-       result = await authContext.AcquireTokenAsync(todoListResourceId, clientId, redirectUri, new PlatformParameters(PromptBehavior.Auto));
-
-       // Append the token as bearer in the request header.
-       httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", result.AccessToken);
-
-       // Call the API.
-       HttpResponseMessage response = await httpClient.GetAsync(todoListBaseAddress + "/api/values/4");
-
-       // MessageBox.Show(response.RequestMessage.ToString());
-       string s = await response.Content.ReadAsStringAsync();
-       MessageBox.Show(s);
    ```
+   // Acquire Access Token from AAD for Proxy Application
+ IPublicClientApplication clientApp = PublicClientApplicationBuilder
+.Create(<App ID of the Native app>)
+.WithDefaultRedirectUri() // will automatically use the default Uri for native app
+.WithAuthority("https://login.microsoftonline.com/{<Tenant ID>}")
+.Build();
+
+AuthenticationResult authResult = null;
+var accounts = await clientApp.GetAccountsAsync();
+IAccount account = accounts.FirstOrDefault();
+
+IEnumerable<string> scopes = new string[] {"<Scope>"};
+
+try
+ {
+    authResult = await clientApp.AcquireTokenSilent(scopes, account).ExecuteAsync();
+ }
+    catch (MsalUiRequiredException ex)
+ {
+     authResult = await clientApp.AcquireTokenInteractive(scopes).ExecuteAsync();                
+ }
+ 
+if (authResult != null)
+ {
+  //Use the Access Token to access the Proxy Application
+  
+  HttpClient httpClient = new HttpClient();
+  HttpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", authResult.AccessToken);
+  HttpResponseMessage response = await httpClient.GetAsync("<Proxy App Url>");
+ }
+```
 
 Pokud chcete nakonfigurovat nativní aplikaci pro připojení k Azure Active Directory a volání proxy aplikace API, aktualizujte zástupné hodnoty v souboru *App. config* ukázkové aplikace NativeClient pomocí hodnot z Azure AD:
 
-- Do `<add key="ida:Tenant" value="" />` pole vložte **ID adresáře (tenant)** . Tuto hodnotu (identifikátor GUID) můžete najít a zkopírovat ze stránky **Přehled** některé z vašich aplikací.
+- Do pole vložte **ID adresáře (tenant)** `<add key="ida:Tenant" value="" />` . Tuto hodnotu (identifikátor GUID) můžete najít a zkopírovat ze stránky **Přehled** některé z vašich aplikací.
 
-- Do `<add key="ida:ClientId" value="" />` pole vložte **ID aplikace AppProxyNativeAppSample (ID klienta)** . Tuto hodnotu (identifikátor GUID) můžete na stránce **přehledu** AppProxyNativeAppSample najít a zkopírovat.
+- Do pole vložte **ID aplikace AppProxyNativeAppSample (ID klienta)** `<add key="ida:ClientId" value="" />` . Tuto hodnotu (identifikátor GUID) můžete na stránce **přehledu** AppProxyNativeAppSample najít a zkopírovat.
 
-- Do `<add key="ida:RedirectUri" value="" />` pole vložte **identifikátor URI pro přesměrování** AppProxyNativeAppSample. Tuto hodnotu (identifikátor URI) můžete najít a zkopírovat na stránce **ověřování** AppProxyNativeAppSample.
+- Do pole vložte **identifikátor URI pro přesměrování** AppProxyNativeAppSample `<add key="ida:RedirectUri" value="" />` . Tuto hodnotu (identifikátor URI) můžete najít a zkopírovat na stránce **ověřování** AppProxyNativeAppSample.
 
 - Vložte **identifikátor URI ID aplikace** SecretAPI do `<add key="todo:TodoListResourceId" value="" />` pole. Tuto hodnotu (identifikátor URI) můžete najít a zkopírovat ze stránky **rozhraní API SecretAPI vystavit** .
 

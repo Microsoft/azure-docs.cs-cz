@@ -3,12 +3,12 @@ title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
 ms.date: 04/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: d4c1c10dfbf384815c34af8436acdbb45cb8e242
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a4f136bc805cd48d05c2378b47966b4e4e4c60fb
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746985"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168501"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -82,7 +82,7 @@ Ve většině případů doporučujeme nastavit **režim** na `all` . Všechny d
 
 `indexed`by měla být použita při vytváření zásad, které vysazují značky nebo umístění. I když to není nutné, zabrání prostředkům, které nepodporují značky a umístění, z hlediska výsledků dodržování předpisů v nedodržení předpisů. Výjimkou jsou **skupiny prostředků** a **předplatná**. Definice zásad, které vynutily umístění nebo značky v rámci skupiny prostředků nebo předplatného, by měly nastavit **režim** na `all` a konkrétně cílit na `Microsoft.Resources/subscriptions/resourceGroups` `Microsoft.Resources/subscriptions` typ nebo. Příklad naleznete v tématu [Pattern: Tags-Sample #1](../samples/pattern-tags.md). Seznam prostředků, které podporují značky, najdete v tématu [Podpora značek pro prostředky Azure](../../../azure-resource-manager/management/tag-support.md).
 
-### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes" />Režimy poskytovatele prostředků (Preview)
+### <a name="resource-provider-modes-preview"></a><a name="resource-provider-modes"></a>Režimy poskytovatele prostředků (Preview)
 
 V současné době jsou podporovány následující režimy poskytovatele prostředků ve verzi Preview:
 
@@ -284,11 +284,11 @@ Podporují se následující pole:
 - `tags`
 - `tags['<tagName>']`
   - Tato syntaxe závorky podporuje názvy značek, které mají interpunkční znaménka, jako je například spojovník, tečka nebo mezera.
-  - Kde ** \< TagName \> ** je název značky, pro kterou má být podmínka ověřena.
+  - Kde **\<tagName\>** je název značky, pro kterou má být podmínka ověřena.
   - Příklady: `tags['Acct.CostCenter']` kde **Acct. CostCenter** je název značky.
 - `tags['''<tagName>''']`
   - Tato syntaxe závorky podporuje názvy značek, které mají apostrofy, pomocí uvozovacích znaků s dvojitými apostrofy.
-  - Kde **' \< TagName \> '** je název značky, pro kterou má být podmínka ověřena.
+  - Kde **' \<tagName\> '** je název značky, pro kterou má být podmínka ověřena.
   - Příklad: `tags['''My.Apostrophe.Tag''']` kde **' My. apostrof. tag '** je název značky.
 - aliasy vlastností – pro seznam najdete v tématu [aliasy](#aliases).
 
@@ -432,7 +432,7 @@ Pro **počet**se používají tyto vlastnosti:
 - **Count. Field** (Required): obsahuje cestu k poli a musí se jednat o alias pole. Pokud pole chybí, je výraz vyhodnocen jako _nepravdivý_ bez zvážení výrazu podmínky.
 - **Count. Where** (volitelné): výraz podmínky, který má individuálně vyhodnotit každého člena pole [ \[ \* \] aliasu](#understanding-the--alias) **Count. Field**. Pokud tato vlastnost není zadána, jsou všechny členy pole s cestou pole vyhodnoceny na _hodnotu true_. V této vlastnosti lze použít jakoukoli [podmínku](../concepts/definition-structure.md#conditions) .
   [Logické operátory](#logical-operators) lze použít uvnitř této vlastnosti k vytvoření složitých požadavků na vyhodnocení.
-- ** \< podmínka \> ** (povinné): hodnota je porovnána s počtem položek, které splnily výraz **Count. Where** podmínky. Měla by se použít číselná [Podmínka](../concepts/definition-structure.md#conditions) .
+- **\<condition\>**(povinné): hodnota je porovnána s počtem položek, které splnily výraz **Count. Where** podmínky. Měla by se použít číselná [Podmínka](../concepts/definition-structure.md#conditions) .
 
 #### <a name="count-examples"></a>Příklady počtu
 
@@ -681,7 +681,7 @@ Seznam aliasů se vždycky zvětšuje. Chcete-li zjistit, které aliasy jsou akt
 
 ### <a name="understanding-the--alias"></a>Princip aliasu [*]
 
-Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Například:
+Několik dostupných aliasů má verzi, která se zobrazí jako název Normal (normální) a další, která je **\[\*\]** k ní připojená. Příklad:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

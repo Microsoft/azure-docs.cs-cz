@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f633c1816e9e2e977c52ab99b66a26f7d2c4d8e2
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 3405a322b8498b0b1a29399811ddf188ea766ca8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800768"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170592"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Replikace objektů pro objekty blob bloku (Preview)
 
@@ -54,7 +54,7 @@ Když vytvoříte pravidlo replikace, zkopírují se ve výchozím nastavení je
 
 Můžete také zadat jeden nebo více filtrů jako součást pravidla replikace pro filtrování objektů blob bloku podle předpony. Když zadáte předponu, zkopírují se do cílového kontejneru jenom objekty blob odpovídající této předponě ve zdrojovém kontejneru.
 
-Zdrojové a cílové kontejnery musí existovat, aby bylo možné je zadat v pravidle. Po vytvoření zásady replikace bude cílový kontejner jen pro čtení. Jakékoli pokusy o zápis do cílového kontejneru selžou s kódem chyby 409 (konflikt). Můžete ale zavolat operaci [nastavit úroveň objektu BLOB](/rest/api/storageservices/set-blob-tier) u objektu BLOB v cílovém kontejneru a přesunout ho do jiné vrstvy přístupu. Můžete například přesunout objekty BLOB v cílovém kontejneru do archivní úrovně a ušetřit tak náklady.
+Zdrojové a cílové kontejnery musí existovat, aby bylo možné je zadat v pravidle. Po vytvoření zásady replikace bude cílový kontejner jen pro čtení. Jakékoli pokusy o zápis do cílového kontejneru selžou s kódem chyby 409 (konflikt). Můžete ale zavolat operaci [nastavit vrstvu objektů BLOB](/rest/api/storageservices/set-blob-tier) u objektu BLOB v cílovém kontejneru a přesunout ho do archivní úrovně. Další informace o archivní úrovni najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md#archive-access-tier).
 
 ## <a name="about-the-preview"></a>O verzi Preview
 

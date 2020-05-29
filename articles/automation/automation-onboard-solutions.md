@@ -5,12 +5,12 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: f21e8ad8944340bf1f6bd97786b2d06c426ad934
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 54adcb6c6da62406dda5df738dde06dee5d6b1e0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117218"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167379"
 ---
 # <a name="enable-update-management-from-a-runbook"></a>Povolení Update Managementu z runbooku
 
@@ -103,8 +103,6 @@ Abyste mohli spustit tuto sadu Runbook, musíte mít povolený Update Management
 
 * Chcete-li naplánovat sadu Runbook, přečtěte si téma [Správa plánů v Azure Automation](shared-resources/schedules.md).
 * Pokud chcete použít Update Management pro virtuální počítače, přečtěte si téma [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
-* Pokud už nepotřebujete pracovní prostor Log Analytics, přečtěte si pokyny v tématu [zrušení propojení pracovního prostoru s účtem Automation pro Update Management](automation-unlink-workspace-update-management.md).
-* Postup odstranění virtuálních počítačů z Update Management najdete v tématu [Odebrání virtuálních počítačů z Update Management](automation-remove-vms-from-update-management.md).
 * Pokud chcete řešit obecné chyby Update Management, přečtěte si téma [řešení potíží s Update Management](troubleshoot/update-management.md).
 * Informace o řešení problémů s agentem Windows Update najdete v tématu řešení potíží s [agentem pro Windows Update](troubleshoot/update-agent-issues.md).
 * Informace o řešení problémů s agentem aktualizací pro Linux najdete v tématu[řešení potíží s agentem aktualizace pro Linux](troubleshoot/update-agent-issues-linux.md).

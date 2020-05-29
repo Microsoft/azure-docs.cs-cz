@@ -2,13 +2,13 @@
 title: Posouzení v Azure Migrate posouzení serveru
 description: Další informace o hodnoceních v Azure Migrate posouzení serveru
 ms.topic: conceptual
-ms.date: 02/17/2020
-ms.openlocfilehash: 2f76ea5f195be2914cdcdb4de9e93af38504d66e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/27/2020
+ms.openlocfilehash: bfae3f23dd16b0d1a09b49f56efbca88a7bea08f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81769927"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171000"
 ---
 # <a name="assessments-in-azure-migrate-server-assessment"></a>Posouzení v Azure Migrate: posouzení serveru
 
@@ -25,7 +25,7 @@ Posouzení pomocí nástroje pro posouzení serveru měří připravenost a odha
 
 Posouzení, která vytvoříte pomocí posouzení serveru, jsou snímkem dat k určitému bodu v čase. Vyhodnocování serveru nabízí dva typy posouzení.
 
-**Typ posouzení** | **Zobrazí** | **Data**
+**Typ posouzení** | **Podrobnosti** | **Data**
 --- | --- | ---
 **Na základě výkonu** | Posouzení, která vytvářejí doporučení na základě shromážděných údajů o výkonu | Doporučení na velikost virtuálního počítače vychází z dat využití procesoru a paměti RAM.<br/><br/> Doporučení pro typ disku vychází z počtu vstupně-výstupních operací za sekundu (IOPS) a propustnosti místních disků. Typy disků jsou Azure HDD úrovně Standard, Azure SSD úrovně Standard a Azure Premium disks.
 **V místním prostředí** | Posouzení, které nepoužívají údaje o výkonu k vytváření doporučení | Doporučení na velikost virtuálního počítače je založené na velikosti místního virtuálního počítače.<br/><br> Doporučený typ disku je založený na vybraném typu úložiště pro posouzení.
@@ -110,7 +110,7 @@ Vlastnost | Podrobnosti
 **Cílové umístění** | Umístění, do kterého chcete migrovat. Posouzení serveru aktuálně podporuje tyto cílové oblasti Azure:<br/><br/> Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Střed Indie, Střed USA, Čína – východ, Čína – sever, Východní Asie, východní USA, Východní USA 2, Německo – střed, Německo – severovýchod, Japonsko – východ, Japonsko – západ, Korea – jih, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Velká Británie – západ, US Gov – Arizona, US gov – Texas, US gov – Virginie , Středozápadní USA, Západní Evropa, Západní Indie, Západní USA a Západní USA 2.
 **Cílový disk úložiště (stejně jako velikost)** | Typ disku, který se má použít pro úložiště v Azure. <br/><br/> Zadejte cílový disk úložiště jako spravovaný SSD úrovně Standard spravovaný na úrovni Premium nebo HDD úrovně Standard.
 **Cílový disk úložiště (Změna velikosti na základě výkonu)** | Určuje typ cílového úložného disku jako automatické, spravované na úrovni Premium, HDD úrovně Standard spravovaný nebo SSD úrovně Standard spravovaný.<br/><br/> **Automaticky**: doporučení na disku vychází z údajů o výkonu disků, což znamená vstupně-výstupní operace a propustnost.<br/><br/>**Premium nebo Standard**: posouzení doporučuje SKU disku v rámci vybraného typu úložiště.<br/><br/> Pokud požadujete smlouvu SLA s jednou instancí služby (SLA) 99,9%, zvažte použití disků spravovaných na úrovni Premium. Tím se zajistí, že se všechny disky v posouzení doporučují jako disky spravované na úrovni Premium.<br/><br/> Azure Migrate podporuje pro vyhodnocení migrace pouze spravované disky.
-**Azure Reserved Virtual Machine Instances** | Určuje [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/) , aby se odhady nákladů v rámci posouzení zohlednily v úvahu.<br/><br/> Azure Migrate aktuálně podporuje Azure Reserved VM Instances jenom pro nabídky s průběžnými platbami.
+**Azure Reserved VM Instances** | Určuje [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/) , aby se odhady nákladů v rámci posouzení zohlednily v úvahu.<br/><br/> Pokud jsou vybrané rezervované instance, nechte výchozí nastavení ve slevě (%). a vlastnosti pro dobu provozu virtuálního počítače.<br/><br/> Azure Migrate aktuálně podporuje Azure Reserved VM Instances jenom pro nabídky s průběžnými platbami.
 **Kritéria změny velikosti** | Používá se k nastavte správnou velikost virtuálního počítače Azure.<br/><br/> Použijte změnu velikosti nebo určení velikosti na základě výkonu.
 **Historie výkonu** | Používá se při změně velikosti na základě výkonu. Historie výkonu určuje dobu použitou při vyhodnocování údajů o výkonu.
 **Percentilové využití** | Používá se při změně velikosti na základě výkonu. Procento využití Určuje hodnotu percentilu pro vzorek výkonu, který se používá pro snižování.
@@ -121,6 +121,8 @@ Vlastnost | Podrobnosti
 **Sleva (%)** | Všechny slevy specifické pro předplatné, které obdržíte nad nabídkou Azure. Výchozí nastavení je 0 %.
 **Doba provozu virtuálního počítače** | Doba ve dnech za měsíc a hodiny za den pro virtuální počítače Azure, které nebudou běžet nepřetržitě. Odhad nákladů vychází z této doby trvání.<br/><br/> Výchozí hodnoty jsou 31 dní za měsíc a 24 hodin denně.
 **Zvýhodněné hybridní využití Azure** | Určuje, jestli máte program Software Assurance a máte nárok na [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Pokud má nastavení výchozí hodnotu "Ano", ceny za Azure pro jiné operační systémy než Windows se považují za virtuální počítače s Windows.
+**Předplatné EA** | Určuje, že se pro odhad nákladů používá předplatné smlouva Enterprise (EA). Bere v úvahu slevu, která se vztahuje k předplatnému. <br/><br/> Ponechat nastavení pro rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálních počítačů s jejich výchozími nastaveními.
+
 
 [Projděte si osvědčené postupy](best-practices-assessment.md) pro vytvoření posouzení pomocí posouzení serveru.
 
@@ -143,7 +145,7 @@ Vlastnost | Podrobnosti | Stav připravenosti na Azure
 --- | --- | ---
 **Typ spouštění** | Azure podporuje virtuální počítače s typem spouštění systému BIOS, nikoli UEFI. | Podmíněně připravený, pokud je typ spouštění UEFI
 **Cores** | Každý počítač nesmí mít více než 128 jader, což je maximální počet podporovaných virtuálních počítačů Azure.<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využité jádra k porovnání. Pokud nastavení posouzení určí faktor komfortu, vynásobí se počet využitých jader faktorem komfortu.<br/><br/> Pokud není k dispozici žádná historie výkonu, Azure Migrate používá přidělená jádra bez použití faktoru pohodlí. | Připraveno, pokud je počet jader v rámci limitu
-**SRAM** | Každý počítač nesmí mít více než 3 892 GB paměti RAM, což je maximální velikost, kterou virtuální počítač Azure M-Series&nbsp;Standard_M128m<sup>2</sup> podporuje. [Další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využitou paměť RAM za účelem porovnání. Pokud je určen faktor komfortu, vynásobit se využití paměti RAM faktorem komfortu.<br/><br/> Pokud není k dispozici žádná historie, přidělená paměť RAM se použije bez použití faktoru pohodlí.<br/><br/> | Připraveno, pokud je velikost paměti RAM v rámci limitu
+**SRAM** | Každý počítač nesmí mít více než 3 892 GB paměti RAM, což je maximální velikost, kterou virtuální počítač Azure M-Series Standard_M128m &nbsp; <sup>2</sup> podporuje. [Přečtěte si další informace](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).<br/><br/> Pokud je k dispozici historie výkonu, Azure Migrate považuje využitou paměť RAM za účelem porovnání. Pokud je určen faktor komfortu, vynásobit se využití paměti RAM faktorem komfortu.<br/><br/> Pokud není k dispozici žádná historie, přidělená paměť RAM se použije bez použití faktoru pohodlí.<br/><br/> | Připraveno, pokud je velikost paměti RAM v rámci limitu
 **Disk úložiště** | Přidělená velikost disku nesmí být větší než 32 TB. I když Azure podporuje disky 64 – TB s SSD úrovně Ultra disky Azure, Azure Migrate: posouzení serveru aktuálně kontroluje 32 TB jako limit velikosti disku, protože to ještě nepodporuje SSD úrovně Ultra. <br/><br/> Počet disků připojených k počítači, včetně disku s operačním systémem, musí být 65 nebo menší. | Připraveno, pokud je velikost disku a číslo v mezích
 **Sítě** | Počítač musí mít k němu připojená maximálně 32 síťových rozhraní (nic). | Připraveno, pokud je počet síťových adaptérů v limitu
 
@@ -156,7 +158,7 @@ Při kontrole vlastností virtuálního počítače se posouzení serveru vyhled
 
 Posouzení serveru používá následující logiku k identifikaci připravenosti na Azure na základě operačního systému:
 
-**Operační systém** | **Zobrazí** | **Stav připravenosti na Azure**
+**Operační systém** | **Podrobnosti** | **Stav připravenosti na Azure**
 --- | --- | ---
 Windows Server 2016 a všechny SPs | Azure poskytuje plnou podporu. | Připraveno pro Azure.
 Windows Server 2012 R2 a všechny SPs | Azure poskytuje plnou podporu. | Připraveno pro Azure.

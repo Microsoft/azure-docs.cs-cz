@@ -5,20 +5,19 @@ services: firewall-manager
 author: vhorne
 ms.service: firewall
 ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 05/19/2020
 ms.author: victorh
-ms.openlocfilehash: b9839e51fcea1e8fe4adc4760e16ae2d73b163ee
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 9c51fdb5142159e390ac4fcf59a04aa3dd747469
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83694233"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167192"
 ---
 # <a name="quickstart-secure-your-virtual-hub-using-azure-firewall-manager---resource-manager-template"></a>Rychlý Start: zabezpečení virtuálního rozbočovače pomocí nástroje Azure Firewall Manager – šablona Správce prostředků
 
-V tomto rychlém startu použijete šablonu Správce prostředků k zabezpečení virtuálního centra pomocí nástroje Azure Firewall Manager Preview.
-
-Nasazená brána firewall má pravidlo aplikace, které umožňuje připojení `www.microsoft.com` . K otestování brány firewall jsou nasazeny dva virtuální počítače s Windows serverem 2019. K připojení k serveru úloh se používá jeden server skoků. Ze serveru úloh se můžete připojit pouze k `www.microsoft.com` .
+V tomto rychlém startu použijete šablonu Správce prostředků k zabezpečení virtuálního centra pomocí nástroje Azure Firewall Manager Preview. Nasazená brána firewall má pravidlo aplikace, které umožňuje připojení `www.microsoft.com` . K otestování brány firewall jsou nasazeny dva virtuální počítače s Windows serverem 2019. K připojení k serveru úloh se používá jeden server skoků. Ze serveru úloh se můžete připojit pouze k `www.microsoft.com` .
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -34,23 +33,23 @@ Tato šablona vytvoří zabezpečeného virtuálního rozbočovače pomocí nás
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/blob/master/fwm-docs-qs/azuredeploy.json).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/fwm-docs-qs/).
 
 :::code language="json" source="~/quickstart-templates/fwm-docs-qs/azuredeploy.json" range="001-477" highlight="47-76":::
 
 V šabloně je definováno víc prostředků Azure:
 
-- [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
-- [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
-- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
-- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
-- [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
-- [**Microsoft. Network/firewallPolicies**](/azure/templates/microsoft.network/firewallPolicies)
-- [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 - [**Microsoft. Network/virtualWans**](/azure/templates/microsoft.network/virtualWans)
 - [**Microsoft. Network/virtualHubs**](/azure/templates/microsoft.network/virtualHubs)
+- [**Microsoft. Network/firewallPolicies**](/azure/templates/microsoft.network/firewallPolicies)
+- [**Microsoft. Network/azureFirewalls**](/azure/templates/microsoft.network/azureFirewalls)
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks)
+- [**Microsoft.Compute/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines)
+- [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageAccounts)
+- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces)
+- [**Microsoft. Network/networkSecurityGroups**](/azure/templates/microsoft.network/networksecuritygroups)
+- [**Microsoft. Network/publicIPAddresses**](/azure/templates/microsoft.network/publicipaddresses)
+- [**Microsoft. Network/routeTables**](/azure/templates/microsoft.network/routeTables)
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 

@@ -102,6 +102,8 @@
           href: troubleshoot-conditional-access.md
         - name: Řešení potíží pomocí nástroje What If
           href: troubleshoot-conditional-access-what-if.md
+        - name: Nejčastější dotazy
+          href: faqs.md
 - name: Zdroje a prostředky
   items:
     - name: Fórum Azure pro názory

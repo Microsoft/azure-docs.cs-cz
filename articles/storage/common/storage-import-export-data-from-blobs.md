@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: a5afa6439caa6b7c1572447e3b212f3357bf296a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe58f59147db43b1c15298f83a2945b50766f8a8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80282507"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169198"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Službu Azure Import/Export můžete použít k exportu dat z úložiště objektů blob v Azure.
 
@@ -27,10 +27,10 @@ Musíte:
 - Mít aktivní předplatné Azure, které se dá použít pro službu import/export.
 - Mít aspoň jeden Azure Storage účet. Podívejte se na seznam [podporovaných účtů úložiště a typů úložiště pro službu import/export](storage-import-export-requirements.md). Informace o vytvoření nového účtu úložiště najdete v tématu [Vytvoření účtu úložiště](storage-account-create.md).
 - Mít dostatečný počet disků [podporovaných typů](storage-import-export-requirements.md#supported-disks).
-- Mít účet FedEx/DHL. Pokud chcete použít nosný operátor jiný než FedEx/DHL, obraťte se na Azure Data Box provozní tým na `adbops@microsoft.com`adrese.
+- Mít účet FedEx/DHL. Pokud chcete použít nosný operátor jiný než FedEx/DHL, obraťte se na Azure Data Box provozní tým na adrese `adbops@microsoft.com` .
   - Účet musí být platný, měl by mít zůstatek a musí mít možnosti vrácení expedice.
   - Vygenerujte sledovací číslo pro úlohu exportu.
-  - Každá úloha by měla mít samostatné sledovací číslo. Více úloh se stejným číslem sledování se nepodporuje.
+  - Každá úloha by měla mít samostatné sledovací číslo. Více úloh se stejným sledovacím číslem se nepodporuje.
   - Pokud nemáte účet dopravce, přečtěte si:
     - [Vytvořte účet FedEx](https://www.fedex.com/en-us/create-account.html)nebo
     - [Vytvořte účet DHL](http://www.dhl-usa.com/en/express/shipping/open_account.html).
@@ -39,7 +39,7 @@ Musíte:
 
 Chcete-li vytvořit úlohu exportu v Azure Portal, proveďte následující kroky.
 
-1. Přihlaste https://portal.azure.com/se k.
+1. Přihlaste se k https://portal.azure.com/ .
 2. **> úlohy import/export přejít na všechny služby > úložiště**.
 
     ![Přejít na úlohy importu/exportu](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -129,7 +129,7 @@ Export byl dokončen.
 
 Pokud používáte 1.4.0.300 verze nástroje WAImportExport, odemkněte jednotku pomocí následujícího příkazu:
 
-    `WAImportExport Unlock /externalKey:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
 
 Pokud používáte starší verze nástroje, odemkněte jednotku pomocí dialogového okna BitLocker.
 
@@ -140,7 +140,7 @@ V tuto chvíli můžete úlohu odstranit nebo ji nechat opustit. Úlohy se autom
 Tento *volitelný* krok vám pomůže určit počet jednotek vyžadovaných pro úlohu exportu. Tento krok proveďte v systému Windows s [podporovanou verzí operačního systému](storage-import-export-requirements.md#supported-operating-systems).
 
 1. [Stáhněte si WAImportExport verze 1](https://www.microsoft.com/download/details.aspx?id=42659) v systému Windows.
-2. Rozbalte do výchozí složky `waimportexportv1`. Například, `C:\WaImportExportV1`.
+2. Rozbalte do výchozí složky `waimportexportv1` . Například, `C:\WaImportExportV1`.
 3. Otevřete okno PowerShellu nebo příkazového řádku s oprávněními správce. Chcete-li změnit adresář na složku unzip, spusťte následující příkaz:
 
     `cd C:\WaImportExportV1`
@@ -157,7 +157,7 @@ Tento *volitelný* krok vám pomůže určit počet jednotek vyžadovaných pro 
     |**SN**|Povinná hodnota. Název účtu úložiště pro úlohu exportu|  
     |**SM**|Požadováno jenom v případě, že není zadané SAS kontejneru. Klíč účtu pro účet úložiště pro úlohu exportu|  
     |**/csas:**|Požadováno jenom v případě, že není zadaný klíč účtu úložiště. SAS kontejneru pro výpis objektů blob, které se mají exportovat v úloze exportu|  
-    |**/ExportBlobListFile:**|Povinná hodnota. Cesta k souboru XML obsahujícímu seznam cest objektů BLOB nebo předpony cesty objektů BLOB pro objekty blob, které se mají exportovat Formát souboru, který se používá `BlobListBlobPath` v prvku v operaci [Put úlohy](/rest/api/storageimportexport/jobs) služby Import/export REST API.|  
+    |**/ExportBlobListFile:**|Povinná hodnota. Cesta k souboru XML obsahujícímu seznam cest objektů BLOB nebo předpony cesty objektů BLOB pro objekty blob, které se mají exportovat Formát souboru, který se používá v `BlobListBlobPath` prvku v operaci [Put úlohy](/rest/api/storageimportexport/jobs) služby Import/export REST API.|  
     |**/DriveSize:**|Povinná hodnota. Velikost jednotek, které se mají použít pro úlohu exportu, *např.* 500 GB, 1,5 TB.|  
 
     Podívejte se [na příklad příkazu PreviewExport](#example-of-previewexport-command).

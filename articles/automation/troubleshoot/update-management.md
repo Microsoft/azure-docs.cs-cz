@@ -8,14 +8,14 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 35049e148af09376667a55e2f0bb4a28cf728245
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2989d85ddfca036a27ff6b886bd3b13a981c27a3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735884"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170252"
 ---
-# <a name="troubleshoot-update-management-issues"></a>Řešení potíží s Update Management
+# <a name="troubleshoot-update-management-issues"></a>Řešení problémů s Update Managementem
 
 Tento článek popisuje problémy, ke kterým může dojít při nasazování funkce Update Management do počítačů. U agenta Hybrid Runbook Worker je poradce při potížích s agentem, aby mohl zjistit základní problém. Další informace o poradci při potížích najdete v tématu řešení potíží s [agentem Windows Update](update-agent-issues.md) a [odstraňování potíží s problémy agenta aktualizací pro Linux](update-agent-issues-linux.md). Další problémy při nasazení funkcí najdete v tématu [řešení potíží s nasazením funkcí](onboarding.md).
 
@@ -50,7 +50,7 @@ K této chybě může dojít z následujících důvodů:
 
 * V části [Konfigurace sítě](../../azure-monitor/platform/log-analytics-agent.md#network-requirements) zjistíte, které adresy a porty musí být povolené, aby mohl agent Log Analytics fungovat.
 
-* Vyhledejte problémy s konfigurací oboru. [Konfigurace oboru](../automation-onboard-solutions-from-automation-account.md#scope-configuration) určuje, které počítače jsou nakonfigurovány pro Update Management. Pokud se Váš počítač zobrazuje v pracovním prostoru, ale ne na portálu Update Management, musíte nastavit konfiguraci oboru pro cílení na počítače. Další informace o konfiguraci oboru najdete v tématu [Povolení počítačů v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
+* Vyhledejte problémy s konfigurací oboru. [Konfigurace oboru](../automation-scope-configurations-update-management.md) určuje, které počítače jsou nakonfigurovány pro Update Management. Pokud se Váš počítač zobrazuje v pracovním prostoru, ale ne na portálu Update Management, musíte nastavit konfiguraci oboru pro cílení na počítače. Další informace o konfiguraci oboru najdete v tématu [Povolení počítačů v pracovním prostoru](../automation-onboard-solutions-from-automation-account.md#enable-machines-in-the-workspace).
 
 * Odeberte konfiguraci pracovního procesu podle kroků v části [odebrání Hybrid Runbook Worker z místního počítače s Windows](../automation-windows-hrw-install.md#remove-windows-hybrid-runbook-worker) nebo [Odebrání Hybrid Runbook Worker z místního počítače se systémem Linux](../automation-linux-hrw-install.md#remove-linux-hybrid-runbook-worker). 
 

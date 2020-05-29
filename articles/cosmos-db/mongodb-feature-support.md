@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/16/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 94b65b4e7947bc02b1fdaae90c8f774ec216e7bb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e0a495093e89312f316401b191c916406668f600
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80981881"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171680"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-32-version-supported-features-and-syntax"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB (verze 3.2): Podporované funkce a syntax
 
@@ -73,7 +73,7 @@ Rozhraní API pro Azure Cosmos DB pro MongoDB podporuje následující databázo
 - listDatabases
 - whatsmyuri
 
-<a name="aggregation-pipeline"/>
+<a name="aggregation-pipeline"></a>
 
 ## <a name="aggregation-pipelinea"></a>Agregační zřetězení</a>
 
@@ -332,7 +332,7 @@ cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | Dokumenty bez klíče �
 
 ## <a name="unique-indexes"></a>Jedinečné indexy
 
-Cosmos DB indexuje všechna pole v dokumentech, která jsou ve výchozím nastavení zapsána do databáze. Jedinečné indexy zajišťují, že konkrétní pole neobsahují duplicitní hodnoty ve všech dokumentech v kolekci, podobně jako je zachována možnost jedinečnosti pro `_id` výchozí klíč. Vlastní indexy můžete v Cosmos DB vytvořit pomocí příkazu createIndex, včetně omezení UNIQUE.
+Cosmos DB indexuje všechna pole v dokumentech, která jsou ve výchozím nastavení zapsána do databáze. Jedinečné indexy zajišťují, že konkrétní pole neobsahují duplicitní hodnoty ve všech dokumentech v kolekci, podobně jako je zachována možnost jedinečnosti pro výchozí `_id` klíč. Vlastní indexy můžete v Cosmos DB vytvořit pomocí příkazu createIndex, včetně omezení UNIQUE.
 
 K dispozici jsou jedinečné indexy pro všechny účty Cosmos s využitím rozhraní API Azure Cosmos DB pro MongoDB.
 

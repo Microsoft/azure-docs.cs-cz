@@ -3,12 +3,12 @@ title: Funkce šablon – prostředky
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot o prostředcích.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: aea3f654551f66390afa207ac5ce682d23e5bfe9
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 89e8907e4e134b621cd1c55bfcefeebde772df10
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780564"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167719"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -495,7 +495,7 @@ Odkazovaná funkce se dá použít jenom ve vlastnostech definice prostředků a
 
 Pomocí referenční funkce nelze nastavit hodnotu `count` vlastnosti ve smyčce kopírování. Můžete použít k nastavení dalších vlastností ve smyčce. Odkaz je blokován pro vlastnost Count, protože tato vlastnost musí být určena před vyřešením Referenční funkce.
 
-V výstupech [vnořené šablony](linked-templates.md#nested-template) nelze použít referenční funkci pro vrácení prostředku, který jste nasadili ve vnořené šabloně. Místo toho použijte [propojenou šablonu](linked-templates.md#linked-template).
+Chcete-li použít funkci reference Function nebo Any list * v části výstupy vnořené šablony, je nutné nastavit, ```expressionEvaluationOptions``` aby používalo [vnitřní vyhodnocení oboru](linked-templates.md#expression-evaluation-scope-in-nested-templates) , nebo použít propojený namísto vnořené šablony.
 
 Použijete-li **referenční** funkci v prostředku, který je podmíněně nasazen, je funkce vyhodnocena i v případě, že prostředek není nasazen.  Pokud **odkazovaná** funkce odkazuje na prostředek, který neexistuje, zobrazí se chyba. Použijte funkci **if** a ujistěte se, že je funkce vyhodnocena pouze při nasazení prostředku. Podívejte se na [funkci IF](template-functions-logical.md#if) pro ukázkovou šablonu, která používá if a odkaz s podmíněně nasazeným prostředkem.
 
@@ -527,7 +527,7 @@ Při sestavování plně kvalifikovaného odkazu na prostředek, pořadí pro ko
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Například:
+Příklad:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`je správné, není `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` správné.
 
@@ -891,10 +891,10 @@ Výstup z předchozího příkladu s výchozími hodnotami je:
 
 | Name | Typ | Hodnota |
 | ---- | ---- | ----- |
-| sameRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentRGOutput | String | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| differentSubOutput | String | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
-| nestedResourceOutput | String | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
+| sameRGOutput | Řetězec | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentRGOutput | Řetězec | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| differentSubOutput | Řetězec | /subscriptions/11111111-1111-1111-1111-111111111111/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
+| nestedResourceOutput | Řetězec | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.SQL/servers/serverName/databases/databaseName |
 
 ## <a name="subscription"></a>předplatné
 

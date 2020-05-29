@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: babanisa
-ms.openlocfilehash: e193b272460fe97f599adff414fcac6e80648104
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6025c4c694da1e036201aef35ab73500429f7e2c
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738366"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170558"
 ---
 # <a name="auth0-partner-topics"></a>Témata týkající se partnerů Auth0
 ![Logo Auth0](./media/auth0-overview/auth0-logo.png)
@@ -23,21 +23,24 @@ Téma Auth0 partner umožňuje použít události, které vygeneroval systém Au
 
 Integrace umožňuje streamovat události protokolu Auth0 s vysokou spolehlivostí do Azure. Tady můžete události využívat s oblíbenými prostředky Azure. Tato integrace umožňuje reagovat na události, získat přehledy, sledovat problémy se zabezpečením a pracovat s dalšími výkonnými datovými kanály.
 
-V případě organizací využívajících Auth0 a Azure vám tato integrace umožní hladkou integraci dat napříč celým zásobníkem. 
+Pro organizace, které používají Auth0 a Azure, vám tato integrace umožňuje hladkou integraci dat napříč celým zásobníkem. 
  
 ## <a name="available-event-types"></a>Dostupné typy událostí
-Úplný seznam dostupných typů událostí Auth0 a jejich popisy jsou k dispozici [zde](https://auth0.com/docs/logs/references/log-event-type-codes).
+Úplný seznam dostupných typů událostí Auth0 a jejich popisy jsou k dispozici na [tomto webu](https://auth0.com/docs/logs/references/log-event-type-codes).
 
 ## <a name="use-cases"></a>Případy použití
 
 ### <a name="engage-with-your-users"></a>Zapojení uživatelů
-Poskytování silného uživatelského prostředí je důležité pro omezení změn a udržování uživatelů. Pomocí Azure Functions a Logic Apps dodávejte přizpůsobené prostředí aplikací s využitím Auth0ch událostí. 
+Poskytování silného uživatelského prostředí je důležité pro omezení změn a udržování uživatelů. Auth0 a Azure Logic Apps vám umožní doručovat přizpůsobené prostředí aplikací pomocí Azure Functions událostí. 
 
 ### <a name="understand-user-behavior"></a>Pochopení chování uživatelů
-Zjistěte, kdy uživatelé přistupují k vašemu produktu, kde jsou přihlášeni a která zařízení používají. Seznámení s těmito signály vám zajistí přehled o oblastech produktu, které jsou nejvíce důležité. Tyto signály vám pomůžou určit, které prohlížeče a zařízení se mají podporovat, jazyky pro lokalizaci vaší aplikace v a v případě, že jsou časy provozu ve špičce. 
+Zjistěte, kdy uživatelé přistupují k vašemu produktu, kde jsou přihlášeni a která zařízení používají. Seznámení s těmito signály vám zajistí přehled o oblastech produktu, které jsou nejvíce důležité. Tyto signály vám pomůžou určit:
+- Jaké prohlížeče a zařízení se mají podporovat. 
+- Jazyky, ve kterých se má aplikace lokalizovat 
+- Když jsou časy provozu ve špičce. 
 
 ### <a name="manage-user-data"></a>Správa uživatelských dat
-Zachování a auditování akcí uživatele je zásadní pro zachování zabezpečení a dodržování předpisů v souladu s těmito obory. Možnost upravovat, odebírat nebo exportovat uživatelská data se stále blíží ke sledování zákonů na ochranu osobních údajů, jako je například Obecné nařízení o ochraně osobních údajů Evropské unie (GDPR).
+Zachování a auditování akcí uživatele je zásadní pro zachování zabezpečení a dodržování předpisů v souladu s těmito obory. Možnost upravovat, odebírat nebo exportovat uživatelská data jsou stále důležitá pro následující zákony o ochraně osobních údajů, jako je například Obecné nařízení o ochraně osobních údajů Evropské unie (GDPR).
 
 ### <a name="secure-your-application"></a>Zabezpečení aplikace
 Kombinování postupů monitorování zabezpečení a reakce na incidenty je důležité při ochraně distribuovaného systému. Z tohoto důvodu je důležité uchovávat všechna data na jednom místě a monitorovat celý zásobník. 

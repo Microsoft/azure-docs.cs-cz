@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 291e81261f8841b3d4629b077f0a244f10aa1fd8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8ca2a3d55a98f96f704999d888761ea40fc4665f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118578"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140969"
 ---
 # <a name="what-is-apache-spark-in-azure-synapse-analytics"></a>Co je Apache Spark ve službě Azure synapse Analytics
 
@@ -32,7 +32,7 @@ Apache Spark poskytuje primitivní prvky pro výpočetní clustery v paměti. Ú
 
 Fondy Spark v Azure synapse nabízejí plně spravovanou službu Spark. Tady jsou uvedené výhody vytvoření fondu Spark v synapse Analytics.
 
-| Funkce | Description |
+| Příznak | Popis |
 | --- | --- |
 | Rychlost a efektivita |Instance Spark začínají přibližně 2 minuty pro méně než 60 uzlů a přibližně 5 minut pro více než 60 uzlů. Instance se ukončí, ve výchozím nastavení 5 minut po poslední provedené úloze, pokud není udržována připojením poznámkového bloku. |
 | Snadné vytvoření |Během několika minut můžete vytvořit nový fond Spark v Azure synapse pomocí Azure Portal, Azure PowerShell nebo sady synapse Analytics .NET SDK. Přečtěte si téma Začínáme [se fondy Spark v synapse Analytics](../quickstart-create-apache-spark-pool-studio.md). |

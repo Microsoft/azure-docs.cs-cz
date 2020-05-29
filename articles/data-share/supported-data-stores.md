@@ -6,12 +6,12 @@ author: joannapea
 ms.author: joanpo
 ms.topic: conceptual
 ms.date: 10/30/2019
-ms.openlocfilehash: 624bb45de3e2ff184326949611d437f71f3e2def
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7b4de3b1d2998a1b6083283c3f397fc77fe9670
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79501802"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167583"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Podporovaná úložiště dat v Azure Data Share
 
@@ -47,7 +47,7 @@ Následující tabulka obsahuje podrobnosti různých kombinací a možností, k
 | Azure synapse Analytics (dříve Azure SQL DW) | ✓ | | ✓| ✓| ✓|
 
 ## <a name="share-from-a-storage-account"></a>Sdílení z účtu úložiště
-Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Azure Data Lake Gen1 a Azure Data Lake Gen2. Podporuje taky sdílení objektů blob, složek a kontejnerů z Azure Blob Storage. V tuto chvíli se podporuje jenom objekt blob bloku. Když se složky sdílí ve sdílení založeném na snímcích, příjemce dat se může rozhodnout vytvořit úplnou kopii sdílených dat nebo využít možnost přírůstkového snímku a kopírovat jenom nové nebo aktualizované soubory. Existující soubory se stejným názvem budou přepsány.
+Azure Data Share podporuje sdílení souborů, složek a systémů souborů z Azure Data Lake Gen1 a Azure Data Lake Gen2. Podporuje taky sdílení objektů blob, složek a kontejnerů z Azure Blob Storage. V tuto chvíli se podporuje jenom objekt blob bloku. Když se složky sdílí ve sdílení založeném na snímcích, příjemce dat se může rozhodnout vytvořit úplnou kopii sdílených dat nebo využít možnost přírůstkového snímku pro kopírování jenom nových nebo aktualizovaných souborů. Existující soubory se stejným názvem budou přepsány.
 
 ## <a name="share-from-a-sql-based-source"></a>Sdílení ze zdroje založeného na jazyce SQL
 Azure Data Share podporuje sdílení tabulek nebo zobrazení z Azure SQL Database a Azure synapse Analytics (dříve Azure SQL DW). Příjemci dat můžou přijmout data do Azure Data Lake Store Gen2 nebo Azure Blob Storage jako soubor CSV nebo Parquet. Všimněte si, že ve výchozím nastavení jsou formáty souborů CSV. Příjemce dat se může rozhodnout, že obdrží data ve formátu Parquet v případě potřeby. To se dá udělat v nastavení mapování datové sady při přijímání dat. 

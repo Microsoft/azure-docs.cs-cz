@@ -5,16 +5,18 @@ services: automation
 ms.topic: conceptual
 ms.date: 05/10/2018
 ms.custom: mvc
-ms.openlocfilehash: 9bb9ee93be4e045b52355255ecb86e54e48e5c5d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 796cf18ae4dbab50eb7f968bda065ae0351f2ae8
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117418"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169402"
 ---
 # <a name="remove-vms-from-update-management"></a>Odebrání virtuálních počítačů z Update Managementu
 
 Až skončíte s nasazováním aktualizací do virtuálních počítačů ve vašem prostředí, můžete je odebrat z funkce [Update Management](automation-update-management.md) .
+
+## <a name="to-remove-your-vms"></a>Odebrání virtuálních počítačů
 
 1. Z účtu Automation v části **Správa aktualizací**vyberte **Správa aktualizací** .
 

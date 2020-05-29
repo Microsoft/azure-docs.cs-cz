@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/06/2020
+ms.date: 05/28/2020
 tags: connectors
-ms.openlocfilehash: 1e1a7f2e82ba2e90a641a6559062348f8d4d3aea
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 1eb017740fb13dbc4f67b11ad8768e48e5b29010
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142448"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171527"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps
 
@@ -185,9 +185,9 @@ Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, kte
    Tento krok vygeneruje adresu URL, která se má použít pro odeslání žádosti, která spouští aplikaci logiky. Tuto adresu URL můžete zkopírovat tak, že vyberete ikonu kopírování vedle adresy URL.
 
    ![Adresa URL pro použití aktivace aplikace logiky](./media/connectors-native-reqres/generated-url.png)
-   
+
    > [!NOTE]
-   > Adresa URL povoluje použití symbolu "at" ( **@** ), ale nikoli symbolu hash ( **#** ).
+   > Pokud chcete při volání triggeru požadavku do identifikátoru URI zahrnout symbol hash nebo symbol křížku ( **#** ), použijte místo toho tuto kódovanou verzi:`%25%23`
 
 1. Pokud chcete aktivovat aplikaci logiky, odešlete příspěvek HTTP na vygenerovanou adresu URL.
 

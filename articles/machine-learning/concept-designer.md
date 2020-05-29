@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
 ms.custom: designer
-ms.openlocfilehash: 7a756a09e135f664074e64a611755845d8dfb8b7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7dcd2015a669d9640f4163e6decc96689bb4ca7b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654940"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167056"
 ---
 # <a name="what-is-azure-machine-learning-designer-preview"></a>Co je návrhář služby Azure Machine Learning (Preview)? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -38,19 +38,19 @@ Návrhář používá [pracovní prostor](concept-workspace.md) Azure Machine Le
 Návrhář nabízí vizuální plátno pro sestavování, testování a nasazení modelů strojového učení. Pomocí návrháře můžete:
 
 + [Datové sady](#datasets) a [moduly](#module) přetáhněte na plátno.
-+ Propojte moduly dohromady a vytvořte [koncept kanálu](#pipeline-draft).
++ Připojte moduly a vytvořte [koncept kanálu](#pipeline-draft).
 + Odešlete [běh kanálu](#pipeline-run) pomocí výpočetních prostředků ve vašem pracovním prostoru Azure Machine Learning.
 + Převeďte **školicí kanály** na **odvozené kanály**.
-+ [Publikujte](#publish) kanály do **koncového bodu kanálu** Rest a odešlete nové spuštění kanálu s různými parametry a datovými sadami.
++ [Publikování](#publish) kanálů do **koncového bodu kanálu** REST pro odeslání nového kanálu, který běží s různými parametry a datovými sadami.
     + Publikování **výukového kanálu** pro opakované použití jednoho kanálu pro výuku více modelů při změně parametrů a datových sad.
     + Publikování **kanálu odvození dávky** , aby se předpovědi na nová data pomocí dříve poučeného modelu.
-+ [Deploy](#deploy) Nasaďte **kanál pro odvození v reálném čase** do koncového bodu v reálném čase, abyste mohli předpovědi na nová data v reálném čase.
++ [Deploy](#deploy) Nasaďte **kanál pro odvození v reálném čase** do koncového bodu v reálném čase, abyste mohli předpovědi na nových datech v reálném čase.
 
 ![Diagram pracovního postupu pro školení, odvozování dávek a odvození v reálném čase v Návrháři](./media/concept-designer/designer-workflow-diagram.png)
 
 ## <a name="pipeline"></a>Kanál
 
-[Kanál](concept-azure-machine-learning-architecture.md#ml-pipelines) se skládá z datových sad a analytických modulů, které spojíte dohromady. Kanály mají spoustu použití: můžete vytvořit kanál, který bude nadávat jeden model, nebo ten, který bude vlakem více modelů. Můžete vytvořit kanál, který bude předpovědi v reálném čase nebo v dávce, nebo vytvořit kanál, který pouze čistí data. Kanály umožňují opakovaně používat práci a organizovat vaše projekty.
+[Kanál](concept-azure-machine-learning-architecture.md#ml-pipelines) se skládá z datových sad a analytických modulů, které se připojují. Kanály mají spoustu použití: můžete vytvořit kanál, který bude nadávat jeden model, nebo ten, který bude vlakem více modelů. Můžete vytvořit kanál, který bude předpovědi v reálném čase nebo v dávce, nebo vytvořit kanál, který pouze čistí data. Kanály umožňují opakovaně používat práci a organizovat vaše projekty.
 
 ### <a name="pipeline-draft"></a>Koncept kanálu
 
@@ -73,7 +73,7 @@ Spuštění kanálu jsou seskupena do [experimentů](concept-azure-machine-learn
 
 ## <a name="datasets"></a>Datové sady
 
-Datová sada Machine Learning usnadňuje přístup k datům a práci s nimi. V návrháři je zahrnutý několik ukázkových datových sad, které můžete experimentovat s nástrojem. Můžete [zaregistrovat](how-to-create-register-datasets.md) více datových sad, jak je potřebujete.
+Datová sada Machine Learning usnadňuje přístup k datům a práci s nimi. V návrháři je zahrnutých několik ukázkových datových sad, které můžete experimentovat s nástrojem. Můžete [zaregistrovat](how-to-create-register-datasets.md) více datových sad, jak je potřebujete.
 
 ## <a name="module"></a>Modul
 
@@ -138,4 +138,3 @@ Existující experimenty vizuálního rozhraní a webové služby můžete přev
 
 * Seznamte se se základy prediktivní analýzy a strojového učení s využitím [kurzu: předpověď ceny automobilu pomocí návrháře](tutorial-designer-automobile-price-train-score.md)
 * Naučte se, jak upravit existující [ukázky Návrháře](samples-designer.md) a přizpůsobit je vašim potřebám.
-

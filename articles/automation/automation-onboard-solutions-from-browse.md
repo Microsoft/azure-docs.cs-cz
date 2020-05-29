@@ -5,12 +5,12 @@ services: automation
 ms.date: 04/11/2019
 ms.topic: article
 ms.custom: mvc
-ms.openlocfilehash: 039e79f043e4e898ab85f003a84f9f4db2d36d27
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d0df98e76e8f0575f14794a53c6987e12a4d05d6
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117233"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170694"
 ---
 # <a name="enable-update-management-from-the-azure-portal"></a>Povolení Update Managementu z webu Azure Portal
 
@@ -63,8 +63,6 @@ Přihlaste se k Azure na adrese https://portal.azure.com .
 ## <a name="next-steps"></a>Další kroky
 
 * Pokud chcete použít Update Management pro virtuální počítače, přečtěte si téma [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
-* Pokud už nepotřebujete pracovní prostor Log Analytics, přečtěte si pokyny v tématu [zrušení propojení pracovního prostoru s účtem Automation pro Update Management](automation-unlink-workspace-update-management.md).
-* Postup odstranění virtuálních počítačů z Update Management najdete v tématu [Odebrání virtuálních počítačů z Update Management](automation-remove-vms-from-update-management.md).
 * Pokud chcete řešit obecné chyby Update Management, přečtěte si téma [řešení potíží s Update Management](troubleshoot/update-management.md).
 * Informace o řešení problémů s agentem Windows Update najdete v tématu řešení potíží s [agentem pro Windows Update](troubleshoot/update-agent-issues.md).
 * Informace o řešení problémů s agentem aktualizací pro Linux najdete v tématu[řešení potíží s agentem aktualizace pro Linux](troubleshoot/update-agent-issues-linux.md).

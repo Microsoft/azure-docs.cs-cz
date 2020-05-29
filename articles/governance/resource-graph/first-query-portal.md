@@ -3,12 +3,12 @@ title: 'Rychlý Start: váš první dotaz na portálu'
 description: V tomto rychlém startu budete postupovat podle pokynů ke spuštění prvního dotazu z Azure Portal pomocí Průzkumníka Azure Resource Graph.
 ms.date: 05/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 69fb1262de706185d8968e9381bb34dd0d84a3b7
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a4b8e0b792dfda1bbd1866444ddc6c4ec8d289b6
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872092"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148034"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rychlý Start: spuštění prvního dotazu na graf prostředku pomocí Průzkumníka Azure Resource graphu
 
@@ -51,7 +51,7 @@ Prohlížeč schémat je skvělým způsobem, jak zjistit vlastnosti pro použit
 
 ## <a name="create-a-chart-from-the-resource-graph-query"></a>Vytvoření grafu z dotazu na graf prostředků
 
-Pokud po spuštění posledního dotazu vyberete kartu **grafy** , zobrazí se zpráva, že sada výsledků dotazu není kompatibilní s vizualizací výsečového grafu. Dotazy, které uvádějí výsledky seznamu, se nedají provést v grafu, ale můžou se zadat i dotazy, které poskytují počty prostředků. Pomocí [ukázkového dotazu – počet virtuálních počítačů podle typu operačního systému](./samples/starter.md#count-virtual-machines-by-os-type)vytvoříme vizualizaci z dotazu na graf prostředků.
+Pokud po spuštění posledního dotazu vyberete kartu **grafy** , zobrazí se zpráva, že sada výsledků dotazu není kompatibilní s vizualizací výsečového grafu. Dotazy, které uvádějí výsledky seznamu, se nedají provést v grafu, ale můžou se zadat i dotazy, které poskytují počty prostředků. Pomocí [ukázkového dotazu – počet virtuálních počítačů podle typu operačního systému](./samples/starter.md#count-os)vytvoříme vizualizaci z dotazu na graf prostředků.
 
 1. V části pro **dotaz 1** v okně zadejte následující dotaz a vyberte **Spustit dotaz**.
 

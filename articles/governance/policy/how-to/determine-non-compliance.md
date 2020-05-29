@@ -3,12 +3,12 @@ title: Určení příčiny nedodržování předpisů
 description: Pokud prostředek není kompatibilní, existuje mnoho možných důvodů. Přečtěte si, jak zjistit, co způsobilo nedodržení předpisů.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 2b26357e9957259470049209913501cc024caeaa
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 05405671900e8734ee1536cfc00fd5203a145124
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684243"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168552"
 ---
 # <a name="determine-causes-of-non-compliance"></a>Určení příčiny nedodržování předpisů
 
@@ -188,7 +188,7 @@ Audit that an application is installed inside Windows VMs.                Compli
 Audit that an application is installed inside Windows VMs                 NonCompliant                       02/09/2019 09:00:20 AM 02/09/2019 09:00:23 AM VM01  ../15ze1...
 ```
 
-## <a name="change-history-preview"></a><a name="change-history"/>Historie změn (Preview)
+## <a name="change-history-preview"></a><a name="change-history"></a>Historie změn (Preview)
 
 V rámci nové **verze Public Preview**jsou poslední 14 dní historie změn k dispozici pro všechny prostředky Azure, které podporují [odstranění režimu úplného režimu](../../../azure-resource-manager/templates/complete-mode-deletion.md). Historie změn poskytuje podrobnosti o tom, kdy byla zjištěna změna, a _vizuální rozdíl_ pro každou změnu. Detekce změn se aktivuje, když se přidají, odeberou nebo změní vlastnosti Správce prostředků.
 

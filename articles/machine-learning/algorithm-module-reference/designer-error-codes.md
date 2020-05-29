@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: bfb70aaa092cc62fbff87e9e3e327ee7364f8701
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 540c3eace72a1692a927916a48f772047115375f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83833809"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167243"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer-preview"></a>Výjimky a kódy chyb pro návrháře (Preview)
 
@@ -68,7 +68,7 @@ Níže jsou uvedené chybové kódy modulů v návrháři.
 
  Tato chyba se zobrazí v Azure Machine Learning, pokud jsou jakékoli vstupy nebo parametry modulu null nebo prázdné.  K této chybě může dojít například v případě, že jste nezadali žádnou hodnotu parametru. Může k tomu také dojít, pokud vyberete datovou sadu, která obsahuje chybějící hodnoty, nebo prázdnou datovou sadu.  
 
-**Rozhodnutí**
+**Řešení:**
 
 + Otevřete modul, který vygeneroval výjimku, a ověřte, že byly zadány všechny vstupy. Zajistěte, aby byly zadány všechny požadované vstupy. 
 + Ujistěte se, že data načtená z Azure Storage jsou přístupná a že se název nebo klíč účtu nezměnil.  
@@ -131,7 +131,7 @@ Níže jsou uvedené chybové kódy modulů v návrháři.
 
  Tato chyba se může zobrazit také v případě, že zadáváte dvě sady dat, které se musí nějakým způsobem shodovat. Například pokud přejmenováváte sloupce a určíte sloupce podle indexu, počet názvů, které zadáte, musí odpovídat počtu indexů sloupců. Dalším příkladem může být Matematická operace, která používá dva sloupce, kde sloupce musí mít stejný počet řádků. 
 
-**Rozhodnutí**
+**Řešení:**
 
  + Otevřete příslušný modul a zkontrolujte všechna nastavení numerických vlastností.
  + Zajistěte, aby všechny hodnoty parametrů spadají do podporovaného rozsahu hodnot pro danou vlastnost.
@@ -178,7 +178,7 @@ K této chybě dochází v Azure Machine Learning designeru při zadávání par
  + Nezadali jste plnou cestu k souboru (cesta k objektu BLOB).
    
 
-**Rozhodnutí**
+**Řešení:**
 
 K takovým problémům často dochází, když se pokusíte ručně zadat název účtu, heslo nebo cestu k kontejneru. Doporučujeme použít Průvodce pro [Import dat](import-data.md) , který vám pomůže vyhledat a zkontrolovat jména.
 
@@ -245,7 +245,7 @@ Pokud byla zadána úplná cesta k objektu blob, ověřte, zda je cesta zadána 
 
  K této chybě dochází pokaždé, když je trained model nekompatibilní s připojeným modulem bodování. <!--For example, connecting the output of [Train Matchbox Recommender](train-matchbox-recommender.md) to [Score Model](score-model.md) (instead of [Score Matchbox Recommender](score-matchbox-recommender.md)) will generate this error when the pipeline is run.  -->
 
-**Rozhodnutí**
+**Řešení:**
 
 Určete typ učení, který je vytvořen modulem školení, a určete modul bodování, který je vhodný pro tento seznam. 
 
@@ -280,7 +280,7 @@ Pokud byl model vyškolen pomocí některého ze specializovaných školicích m
 
  K této chybě dochází, pokud sloupec obsahuje příliš mnoho jedinečných hodnot.  Tato chyba se může zobrazit například v případě, že určíte, že sloupec bude zpracován jako kategoriíá data, ale ve sloupci je příliš mnoho jedinečných hodnot, aby bylo možné zpracování dokončit. Tato chyba se může zobrazit také v případě, že došlo k neshodě mezi počtem jedinečných hodnot ve dvou vstupech.   
 
-**Rozhodnutí**
+**Řešení:**
 
 Otevřete modul, který chybu generoval, a Identifikujte sloupce používané jako vstupy. U některých modulů můžete kliknout pravým tlačítkem myši na vstup datové sady a vybrat **vizualizovat** a získat statistiku pro jednotlivé sloupce, včetně počtu jedinečných hodnot a jejich distribuce.
 
@@ -332,7 +332,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 
  Tato chyba se může zobrazit například v Azure Machine Learning, pokud výběr sloupce zahrnuje sloupec s datovým typem, který nemůže být zpracován modulem, jako je například řetězcový sloupec pro operaci Math nebo sloupec skóre, ve kterém je sloupec funkce kategorií povinný.  
 
-**Rozhodnutí**
+**Řešení:**
  1. Identifikujte sloupec, který je problémem.
  2. Zkontrolujte požadavky modulu.
  3. Upravte sloupec tak, aby splňoval požadavky. V závislosti na sloupci a převodu, který se pokoušíte provést, možná budete muset použít několik následujících modulů:
@@ -418,7 +418,7 @@ Pro sloupce, které chcete použít pro seskupování nebo kategorizaci, proveď
 
  Tato chyba se zobrazila v Azure Machine Learning, pokud v datové sadě není dostatek řádků k provedení zadané operace. Tato chyba se může zobrazit například v případě, že je vstupní datová sada prázdná nebo pokud se pokoušíte provést operaci, která vyžaduje, aby určitý minimální počet řádků byl platný. Takové operace mohou zahrnovat (ale nejsou omezené) seskupení nebo klasifikace na základě statistických metod, určitých typů binningu a učení s počty.  
 
-**Rozhodnutí**
+**Řešení:**
 
  + Otevřete modul, který vrátil chybu, a ověřte vstupní datovou sadu a vlastnosti modulu. 
  + Ověřte, zda není vstupní datová sada prázdná a zda existuje dostatek řádků dat pro splnění požadavků popsaných v nápovědě k modulu.  
@@ -488,7 +488,7 @@ K výjimce dojde, pokud datová sada neobsahuje sloupec popisku.
 
 Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku, ale Azure Machine Learning nebyl správně zjištěn.
 
-**Rozhodnutí**
+**Řešení:**
 
 + Otevřete modul, který chybu generoval, a zjistěte, jestli je přítomný sloupec popisku. Název nebo datový typ sloupce nezáleží na tom, jestli sloupec obsahuje jeden výsledek (nebo závislou proměnnou), se kterou se pokoušíte odhadnout. Pokud si nejste jistí, který sloupec má popisek, vyhledejte obecný název, jako je například *Třída* nebo *cíl*. 
 +  Pokud datová sada neobsahuje sloupec popisku, je možné, že sloupec popisku byl explicitně nebo omylem odebrán z nadřazeného objektu. Je také možné, že datová sada není výstupním modulem nadřazeného modulu pro vyhodnocování.
@@ -658,7 +658,7 @@ Může k tomu také dojít, když je v datové sadě přítomen sloupec popisku,
 
  K této chybě v Azure Machine Learning dochází k tomu, že se snažíte použít model doporučení pro hodnocení, ale vektor funkce se nenašel.  
 
-**Rozhodnutí**
+**Řešení:**
 
 Doporučení Matchbox má určité požadavky, které je nutné splnit při použití funkcí nebo funkcí uživatele.  Tato chyba označuje, že pro uživatele nebo položku, kterou jste zadali jako vstup, chybí vektor funkce. Ujistěte se, že je v datech pro každého uživatele nebo položku k dispozici vektor funkcí.  
 
@@ -730,7 +730,7 @@ Můžete například vybrat sloupec a zkusit ho převést na číselný datový 
 
 Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloupec obsahující čísla s plovoucí desetinnou čárkou nebo mnoho jedinečných hodnot jako sloupec kategorií. 
 
-**Rozhodnutí**
+**Řešení:**
 
 + Otevřete stránku s nápovědu pro modul, který chybu generoval, a ověřte požadavky na datový typ.
 + Zkontrolujte datové typy sloupců ve vstupní datové sadě.
@@ -891,7 +891,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 
   <!--For example, the [Convert to Indicator Values](convert-to-indicator-values.md) module requires that columns be categorical, and will raise this error if you select a feature column or label column.  -->
 
-**Rozhodnutí**
+**Řešení:**
 
 1.  Zkontrolujte datový typ aktuálně vybraných sloupců. 
 
@@ -912,7 +912,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 
  K této výjimce dochází při použití modulu [exportu dat](export-data.md) nebo jiného modulu k uložení výsledků kanálu v Azure Machine Learning do úložiště objektů BLOB v Azure, ale pokusíte se vytvořit soubor nebo objekt blob, který už existuje.   
 
-**Rozhodnutí**
+**Řešení:**
 
  Tato chyba se zobrazí jenom v případě, že jste předtím nastavili vlastnost **režim zápisu úložiště objektů BLOB v Azure** na hodnotu **Chyba**. Podle návrhu tento modul vyvolá chybu, pokud se pokusíte zapsat datovou sadu do objektu blob, který již existuje.
 
@@ -1070,7 +1070,7 @@ Další důvod: Tato chyba se může zobrazit, pokud se pokusíte použít sloup
 
  K této chybě v Azure Machine Learning dojde v případě, že se vyskytly chyby syntaxe ve skriptu QL podregistru, nebo pokud překladač podregistru při provádění dotazu nebo skriptu narazí na chybu.  
 
-**Rozhodnutí**
+**Řešení:**
 
 Chybová zpráva z podregistru se obvykle hlásí zpět v protokolu chyb, takže můžete provést akci na základě konkrétní chyby. 
 
@@ -1106,7 +1106,7 @@ Nápovědu k dotazům na podregistr pro strojové učení najdete v následujíc
 
  Pokud dojde k vygenerování zprávy generované modulem SQL, proveďte akci na základě hlášené chyby. Chybové zprávy například někdy obsahují konkrétní pokyny o pravděpodobnou chybu:
 + *Neexistuje žádný takový sloupec nebo chybějící databáze*, což značí, že je možné, že jste zadali nesprávný název sloupce. Pokud jste si jisti, že je název sloupce správný, zkuste použít hranaté závorky nebo uvozovky k uzavření identifikátoru sloupce.
-+ *Chyba logice SQL poblíž \< Klíčové slovo \> SQL*, což znamená, že před zadaným klíčovým slovem může být chyba syntaxe
++ *Chyba logiky SQL \<SQL keyword\> poblíž *, což znamená, že před zadaným klíčovým slovem může být chyba syntaxe.
 
   
 |Zprávy výjimek|
@@ -1159,7 +1159,7 @@ K výjimce dojde, pokud je při quantizing datové sady použita neplatná funkc
 
 K této chybě v Azure Machine Learning dochází při pokusu o data z přihrádky pomocí nepodporované metody nebo v případě, že kombinace parametrů nejsou platné.  
 
-**Rozhodnutí**
+**Řešení:**
 
 Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azure Machine Learning, která umožňovala další přizpůsobení metod binningu. Všechny metody binningu jsou v současné době založené na výběru z rozevíracího seznamu, a proto by tato chyba neměla být možná.
 
@@ -1266,7 +1266,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 
  K této chybě v Azure Machine Learning dochází, pokud se pokusíte použít jeden z modulů pro vyhodnocení modelu s výstupem z skriptu jazyka R, který obsahuje skóre.  
 
-**Rozhodnutí**
+**Řešení:**
 
 |Zprávy výjimek|
 |------------------------|
@@ -1345,7 +1345,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 ## <a name="error-0125"></a>Chyba 0125  
  Vyvolána, když se schéma pro více datových sad neshoduje.  
 
-**Rozhodnutí**
+**Řešení:**
 
 |Zprávy výjimek|
 |------------------------|
@@ -1373,7 +1373,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 ## <a name="error-0128"></a>Chyba 0128  
  Počet podmíněných pravděpodobností pro sloupce kategorií překračuje limit.  
 
-**Rozhodnutí**
+**Řešení:**
 
 |Zprávy výjimek|
 |------------------------|
@@ -1384,7 +1384,7 @@ Zpracování chyb pro tuto událost bylo představeno v dřívější verzi Azur
 ## <a name="error-0129"></a>Chyba 0129  
  Počet sloupců v datové sadě překračuje povolený limit.  
 
-**Rozhodnutí**
+**Řešení:**
 
 |Zprávy výjimek|
 |------------------------|
@@ -1500,7 +1500,7 @@ K této chybě může dojít také v případě, že předchozí operace změní
 
 
 ## <a name="error-0159"></a>Chyba 0159
- Pokud je předána do adresáře modelu modulu, dojde k výjimce. 
+ K výjimce dojde v případě, že adresář modelu modulu je neplatný. 
 
 |Zprávy výjimek|
 |------------------------------------------------------------|

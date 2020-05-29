@@ -5,12 +5,12 @@ services: automation
 ms.subservice: change-inventory-management
 ms.date: 07/03/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6afa3d4d2d62541a51c3bab85843d41b48397100
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 2738605680a7035e4e2da95b0f53b4d5e227304b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118779"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170286"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Správa řešení Change Tracking a Inventory
 
@@ -22,6 +22,10 @@ Než začnete používat postupy v tomto článku, ujistěte se, že jste povoli
 * [Povolení Change Tracking a inventáře procházením Azure Portal](automation-enable-changes-from-browse.md)
 * [Povolení řešení Change Tracking a Inventory z runbooku](automation-enable-changes-from-runbook.md)
 * [Povolení řešení Change Tracking a Inventory z virtuálního počítače Azure](automation-enable-changes-from-vm.md)
+
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Omezení rozsahu nasazení
+
+Change Tracking a inventář používá v rámci pracovního prostoru konfiguraci oboru pro cílení na počítače, aby přijímaly změny. Další informace najdete v tématu [omezení rozsahu nasazení Change Tracking a inventáře](automation-scope-configurations-change-tracking.md).
 
 ## <a name="track-files"></a>Sledování souborů
 
@@ -36,7 +40,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Windows použ
 3. Na stránce Konfigurace pracovního prostoru vyberte **soubory Windows**a potom kliknutím na **+ Přidat** přidejte nový soubor, který chcete sledovat.
 4. V podokně Přidat soubor Windows pro Change Tracking zadejte informace pro soubor nebo složku, které chcete sledovat, a klikněte na **Uložit**. Následující tabulka definuje vlastnosti, které lze použít pro tyto informace.
 
-    |Vlastnost  |Description  |
+    |Vlastnost  |Popis  |
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
@@ -57,7 +61,7 @@ Ke konfiguraci sledování souborů na počítačích se systémem Linux použij
 3. Na stránce Konfigurace pracovního prostoru vyberte **soubory pro Linux**a potom kliknutím na **+ Přidat** přidejte nový soubor, který chcete sledovat.
 4. V podokně Přidat soubor pro Linux pro Change Tracking zadejte informace o souboru nebo adresáři, který se má sledovat, a klikněte na **Uložit**. Následující tabulka definuje vlastnosti, které lze použít pro tyto informace.
 
-    |Vlastnost  |Description  |
+    |Vlastnost  |Popis  |
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název souboru, který se má sledovat        |
@@ -126,7 +130,7 @@ Ke konfiguraci sledování klíčů registru v počítačích se systémem Windo
 4. Kliknutím na **+ Přidat** přidejte nový klíč registru, který chcete sledovat.
 5. V podokně Přidat registr systému Windows pro Change Tracking zadejte informace pro klíč, který chcete sledovat, a klikněte na **Uložit**. Následující tabulka definuje vlastnosti, které lze použít pro tyto informace.
 
-    |Vlastnost  |Description  |
+    |Vlastnost  |Popis  |
     |---------|---------|
     |Povoleno     | True, pokud je nastavení použito, a jinak false.        |
     |Název položky     | Popisný název klíče registru, který se má sledovat        |
@@ -137,7 +141,7 @@ Ke konfiguraci sledování klíčů registru v počítačích se systémem Windo
 
 Můžete provádět různé vyhledávání v protokolech Azure Monitor pro záznamy změn. Otevřete stránku pro sledování změn, kliknutím na **Log Analytics** otevřete stránku protokoly. V následující tabulce jsou uvedeny ukázky hledání v protokolech pro záznamy změn.
 
-|Dotaz  |Description  |
+|Dotaz  |Popis  |
 |---------|---------|
 |`ConfigurationData`<br>&#124;`where ConfigDataType == "Microsoft services" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Zobrazuje nejaktuálnější záznamy inventáře pro služby společnosti Microsoft, které byly nastaveny na hodnotu automaticky, ale byly hlášeny jako zastaveno. Výsledky jsou omezené na nejnovější záznam pro zadaný název softwaru a počítač.    |
 |`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|Zobrazuje záznamy změn pro odebraný software.|
@@ -165,5 +169,8 @@ Pomocí tohoto příkladu se podíváme na postup, jak na změnu vytvořit výst
 
 ## <a name="next-steps"></a>Další kroky
 
+* Informace o konfiguracích oboru najdete v tématu [omezení Change Tracking a rozsahu nasazení inventáře](automation-scope-configurations-change-tracking.md).
 * Pokud potřebujete hledat v protokolech uložených v pracovním prostoru Log Analytics, přečtěte si téma [prohledávání protokolů v](../log-analytics/log-analytics-log-searches.md)protokolech Azure monitor.
+* Pokud jste dokončili nasazení, přečtěte si téma [zrušení propojení pracovního prostoru s účtem Automation pro Change Tracking a inventář](automation-unlink-workspace-change-tracking.md).
+* Pokud chcete virtuální počítače odstranit z Change Tracking a inventáře, přečtěte si téma [Odebrání virtuálních počítačů z Change Tracking a inventáře](automation-remove-vms-from-change-tracking.md).
 * Řešení chyb funkcí najdete v tématu [řešení potíží s Change Tracking a inventářem](troubleshoot/change-tracking.md).

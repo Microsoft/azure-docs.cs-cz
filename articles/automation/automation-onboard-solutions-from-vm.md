@@ -5,12 +5,12 @@ services: automation
 ms.date: 03/04/2020
 ms.topic: conceptual
 ms.custom: mvc
-ms.openlocfilehash: 254ff2906d2b80b6c34ba930daffbb2c65f2b22f
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: bcb457cd9c2e1bb829ddb90008cc5334db0def8b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117932"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167362"
 ---
 # <a name="enable-update-management-from-an-azure-vm"></a>Povolení Update Managementu z virtuálního počítače Azure
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak můžete pomocí virtuálního počítače Azure po
 
 Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
-## <a name="enable-update-management"></a>Povolení řešení Update Management
+## <a name="enable-the-feature-for-deployment"></a>Povolit funkci pro nasazení
 
 1. V [Azure Portal](https://portal.azure.com)vyberte **virtuální počítače** nebo vyhledejte a vyberte **virtuální počítače** z domovské stránky.
 
@@ -43,16 +43,9 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
 
     ![Povolení řešení Update Management](media/automation-tutorial-update-management/manageupdates-update-enable.png)
 
-## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Omezení rozsahu nasazení
-
-Update Management používá v rámci pracovního prostoru konfiguraci oboru pro cílení na počítače, aby přijímaly aktualizace. Další informace najdete v tématu [omezení rozsahu nasazení Update Management](automation-scope-configurations-update-management.md).
-
 ## <a name="next-steps"></a>Další kroky
 
 * Pokud chcete použít Update Management pro virtuální počítače, přečtěte si téma [Správa aktualizací a oprav pro virtuální počítače Azure](automation-tutorial-update-management.md).
-* Informace o konfiguracích oboru najdete v tématu [omezení rozsahu nasazení Update Management](automation-scope-configurations-update-management.md).
-* Pokud už nepotřebujete pracovní prostor Log Analytics, přečtěte si pokyny v tématu [zrušení propojení pracovního prostoru s účtem Automation pro Update Management](automation-unlink-workspace-update-management.md).
-* Postup odstranění virtuálních počítačů z Update Management najdete v tématu [Odebrání virtuálních počítačů z Update Management](automation-remove-vms-from-update-management.md).
 * Pokud chcete řešit obecné chyby Update Management, přečtěte si téma [řešení potíží s Update Management](troubleshoot/update-management.md).
 * Informace o řešení problémů s agentem Windows Update najdete v tématu řešení potíží s [agentem pro Windows Update](troubleshoot/update-agent-issues.md).
 * Informace o řešení problémů s agentem aktualizací pro Linux najdete v tématu[řešení potíží s agentem aktualizace pro Linux](troubleshoot/update-agent-issues-linux.md).

@@ -11,18 +11,18 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b0d6221aaafe3ade70bc23ce4196a7b53c9474c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ec1d02cefcdb443a74fab52496cd9428a852139f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424717"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169963"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Rychlý Start: nastavení a načtení certifikátu z Azure Key Vault pomocí Azure Portal
 
 Azure Key Vault je cloudová služba, která funguje jako zabezpečené úložiště tajných kódů. Můžete bezpečně ukládat klíče, hesla, certifikáty a další tajné klíče. Trezory klíčů Azure můžete vytvářet a spravovat přes web Azure Portal. V tomto rychlém startu vytvoříte Trezor klíčů a pak ho použijete k uložení certifikátu. Další informace o službě Key Vault najdete v tématu [Přehled](../general/overview.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -67,7 +67,8 @@ Jakmile se zobrazí zpráva o úspěšném vytvoření certifikátu, můžete na
 
 ![Vlastnosti certifikátu](../media/certificates/quick-create-portal/current-version-hidden.png)
 
-Kliknutím na tlačítko Stáhnout ve formátu CER nebo stáhnout ve formátu PFX/PEM můžete certifikát stáhnout. 
+## <a name="export-certificate-from-key-vault"></a>Exportovat certifikát z Key Vault
+Pokud kliknete na tlačítko Stáhnout ve formátu CER nebo stáhnout ve formátu PFX/PEM, můžete si certifikát stáhnout. 
 
 ![Stažení certifikátu](../media/certificates/quick-create-portal/current-version-shown.png)
 

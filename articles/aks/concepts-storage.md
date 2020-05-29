@@ -4,12 +4,12 @@ description: Seznamte se s úložištěm ve službě Azure Kubernetes (AKS), vč
 services: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
-ms.openlocfilehash: 4bb19d7da971a82aef9c0e1fc092cc648ac49c4c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 643d25e99bef191bfce77f092a9f2218c891a442
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77595990"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171374"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Možnosti úložiště pro aplikace ve službě Azure Kubernetes (AKS)
 
@@ -55,12 +55,14 @@ PersistentVolume je možné *staticky* vytvořit správcem clusteru nebo *dynami
 
 Pokud chcete definovat různé úrovně úložiště, jako je například Premium a Standard, můžete vytvořit *StorageClass*. StorageClass také definuje *reclaimPolicy*. Tento reclaimPolicy řídí chování podkladového prostředku služby Azure Storage, když se odstraní pole pod a trvalý svazek už nemusí být potřeba. Základní prostředek úložiště je možné odstranit, případně uchovat pro použití s budoucím pod.
 
-V AKS se vytvoří dvě počáteční StorageClasses:
+V AKS se vytvoří 4 počáteční StorageClasses:
 
-- *výchozí* – používá službu Azure Storage Standard k vytvoření spravovaného disku. Zásady opětovné deklarace označují, že základní disk Azure se odstraní při odstranění trvalého svazku, který ho použil.
+- *výchozí* – používá úložiště Azure StandardSSD k vytvoření spravovaného disku. Zásady opětovné deklarace označují, že základní disk Azure se odstraní při odstranění trvalého svazku, který ho použil.
 - *Managed Premium* – využívá Azure Premium Storage k vytvoření spravovaného disku. Zásady opětovné deklarace označují, že základní disk Azure se odstraní při odstranění trvalého svazku, který ho použil.
+- *azurefile* – k vytvoření sdílené složky Azure používá službu Azure Storage úrovně Standard. Zásady opětovné deklarace označují, že základní sdílená složka Azure se odstraní při odstranění trvalého svazku, který ho použil.
+- *azurefile – Premium* – využívá Azure Premium Storage k vytvoření sdílené složky Azure. Zásady opětovné deklarace označují, že základní sdílená složka Azure se odstraní při odstranění trvalého svazku, který ho použil.
 
-Pokud pro trvalý svazek není zadána žádná StorageClass, použije se výchozí StorageClass. Při žádosti o trvalé svazky postupujte opatrně, aby používaly vhodné úložiště, které potřebujete. StorageClass můžete vytvořit pro další potřeby pomocí `kubectl`. Následující příklad používá prémiové Managed Disks a určuje, že základní disk Azure by měl být *zachován* při odstranění části pod.
+Pokud pro trvalý svazek není zadána žádná StorageClass, použije se výchozí StorageClass. Při žádosti o trvalé svazky postupujte opatrně, aby používaly vhodné úložiště, které potřebujete. StorageClass můžete vytvořit pro další potřeby pomocí `kubectl` . Následující příklad používá prémiové Managed Disks a určuje, že základní disk Azure by měl být *zachován* při odstranění části pod.
 
 ```yaml
 kind: StorageClass

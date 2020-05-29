@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2906c947e24bf5053760e9b83429ae7c6ecd3f4
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254622"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170116"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Zapnutí nebo vypnutí zařízení řady StorSimple 8000
 
@@ -86,12 +86,12 @@ Výpadek napájení nebo přerušení může vypnout zařízení StorSimple. Vý
 * [Jenom zařízení s primární skříňkou](#8100)
 * [Zařízení s EBOD skříní](#8600)
 
-### <a name="device-with-primary-enclosure-only-a-name8100"></a>Jenom zařízení s primární skříňkou<a name="8100">
+### <a name="device-with-primary-enclosure-only"></a>Jenom zařízení s primární skříňkou<a name="8100"></a>
 Systém může pokračovat v běžném provozu, pokud dojde ke snížení výkonu některého z jeho zdrojů napájení. Chcete-li však zajistit vysokou dostupnost zařízení, obnovte napájení podle potřeby co nejdříve.
 
 Pokud dojde k výpadku napájení nebo přerušení napájení u napájení, systém se vypne přesně podle pořadí. Po obnovení napájení se systém automaticky zapne.
 
-### <a name="device-with-ebod-enclosure-a-name8600"></a>Zařízení s EBOD skříní<a name="8600">
+### <a name="device-with-ebod-enclosure"></a>Zařízení s EBOD skříní<a name="8600"></a>
 #### <a name="power-loss-on-one-power-supply"></a>Výpadek napájení u jednoho zdroje napájení
 Systém může pokračovat v běžném provozu, pokud dojde ke snížení výkonu některého z jeho napájení v primární skříni nebo skříni EBOD. Chcete-li však zajistit vysokou dostupnost zařízení, obnovte napájení podle potřeby co nejdříve.
 
@@ -140,21 +140,21 @@ Běžící zařízení StorSimple může být potřeba vypnout, pokud se právě
 * [Zařízení s primární skříňkou](#8100a)
 * [Zařízení s EBOD skříní](#8600a)
 
-### <a name="device-with-primary-enclosure-a-name8100a"></a>Zařízení s primární skříňkou<a name="8100a">
+### <a name="device-with-primary-enclosure"></a>Zařízení s primární skříňkou<a name="8100a"></a>
 Pokud chcete zařízení vypnout podle pořadí a řízeného způsobu, můžete to provést prostřednictvím Azure Portal nebo přes Windows PowerShell pro StorSimple. 
 
 > [!IMPORTANT]
 > Neukončí spuštěné zařízení pomocí tlačítka napájení na zadní straně zařízení.
 > 
-> Před vypnutím zařízení se ujistěte, že jsou všechny součásti zařízení v pořádku. V Azure Portal přejděte na **zařízení** > **monitorovat** > stav**hardwaru**a ověřte, že stav všech komponent je zelený. To platí jenom pro dobrý systém. Pokud se systém vypíná, aby nahradil nefunkční komponentu, zobrazí se u příslušné součásti ve **stavu hardwaru**stav neúspěšné (červené) nebo zhoršený (žlutý).
+> Před vypnutím zařízení se ujistěte, že jsou všechny součásti zařízení v pořádku. V Azure Portal přejděte na **zařízení**  >  **monitorovat**stav  >  **hardwaru**a ověřte, že stav všech komponent je zelený. To platí jenom pro dobrý systém. Pokud se systém vypíná, aby nahradil nefunkční komponentu, zobrazí se u příslušné součásti ve **stavu hardwaru**stav neúspěšné (červené) nebo zhoršený (žlutý).
 > 
 > 
 
 Po přístupu k Windows PowerShell pro StorSimple nebo Azure Portal postupujte podle kroků v části [vypnutí zařízení StorSimple](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device). 
 
-### <a name="device-with-ebod-enclosure-a-name8600a"></a>Zařízení s EBOD skříní<a name="8600a">
+### <a name="device-with-ebod-enclosure"></a>Zařízení s EBOD skříní<a name="8600a"></a>
 > [!IMPORTANT]
-> Před vypnutím primární skříně a skříně EBOD zajistěte, aby byly všechny součásti zařízení v dobrém stavu. V Azure Portal přejděte na **zařízení** > **monitor** > **stav hardwaru**a ověřte, zda jsou všechny součásti v pořádku.
+> Před vypnutím primární skříně a skříně EBOD zajistěte, aby byly všechny součásti zařízení v dobrém stavu. V Azure Portal přejděte na **zařízení**  >  **monitor**  >  **stav hardwaru**a ověřte, zda jsou všechny součásti v pořádku.
 
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Vypnutí běžícího zařízení pomocí skříně EBOD

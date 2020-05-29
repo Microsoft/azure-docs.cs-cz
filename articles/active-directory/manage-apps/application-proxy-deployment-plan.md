@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: baselden
 ms.custom: has-adal-ref
-ms.openlocfilehash: a293bd33d3a25f26e5374184da42db335041284d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 040ad734cdf3b2d382baa55006fbda02fdcf457d
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82610135"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169504"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Plánování nasazení služby Azure Proxy aplikací služby AD
 
@@ -129,7 +129,7 @@ Níže jsou uvedené oblasti, ve kterých byste měli definovat obchodní požad
 
 * V porovnání s přístupem k aplikaci z interní sítě neexistuje žádná snížení výkonu aplikace.
 
-**Zkušenosti uživatele**
+**Činnost koncového uživatele**
 
 * Uživatelé si vědomi, jak přistupovat ke svým aplikacím pomocí známých adres URL společnosti na libovolné platformě zařízení.
 
@@ -228,13 +228,13 @@ U místních aplikací, které jsou běžně přístupné anonymně, nevyžaduj�
 
 Když necháte tuto možnost nastavenou na ne, umožníte uživatelům přístup k místní aplikaci prostřednictvím proxy serveru Aplikace Azure AD bez oprávnění, takže používejte s opatrností.
 
-Po publikování aplikace by měla být přístupná zadáním její externí adresy URL v prohlížeči nebo její ikonou na [https://myapps.microsoft.com](https://myapps.microsoft.com/).
+Po publikování aplikace by měla být přístupná zadáním její externí adresy URL v prohlížeči nebo její ikonou na [https://myapps.microsoft.com](https://myapps.microsoft.com/) .
 
 ### <a name="enable-pre-authentication"></a>Povolit předběžné ověřování
 
 Ověřte, že je vaše aplikace přístupná prostřednictvím proxy aplikace, která k ní přistupuje přes externí adresu URL.
 
-1. Přejděte na **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** a vyberte aplikaci, kterou chcete spravovat.
+1. Přejděte na **Azure Active Directory**  >  **podnikové aplikace**  >  **všechny aplikace** a vyberte aplikaci, kterou chcete spravovat.
 
 2. Vyberte **proxy aplikace**.
 
@@ -254,7 +254,7 @@ Načtěte si [jednotné přihlašování k aplikacím ve službě Azure AD](what
 
 ###  <a name="working-with-other-types-of-applications"></a>Práce s jinými typy aplikací
 
-Azure Proxy aplikací služby AD také podporuje aplikace vyvinuté pro používání naší knihovny ověřování Azure AD ([ADAL](https://docs.microsoft.com/azure/active-directory/develop/active-directory-authentication-libraries)) nebo knihovny Microsoft Authentication Library ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)). Podporuje nativní klientské aplikace tím, že spotřebovávají vydané tokeny Azure AD obdržené v hlavičkových požadavcích klienta, aby prováděly předběžné ověřování jménem uživatelů.
+Azure Proxy aplikací služby AD také podporuje aplikace vyvinuté pro použití knihovny Microsoft Authentication Library ([MSAL](https://azure.microsoft.com/blog/start-writing-applications-today-with-the-new-microsoft-authentication-sdks/)). Podporuje nativní klientské aplikace tím, že spotřebovávají vydané tokeny Azure AD obdržené v hlavičkových požadavcích klienta, aby prováděly předběžné ověřování jménem uživatelů.
 
 Další informace o dostupných konfiguracích proxy aplikací najdete v tématu [publikování nativních a mobilních klientských aplikací](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-native-client) a [aplikací založených na deklaracích](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-claims-aware-apps) .
 

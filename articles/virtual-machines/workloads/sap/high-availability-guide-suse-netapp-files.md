@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: e1511882a1244aaf7783a330c2b5c7d1eb15e50d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 541c775897f95eda932d3e19653cf557756f3efd
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176018"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170881"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-with-azure-netapp-files-for-sap-applications"></a>Vysoká dostupnost pro SAP NetWeaver na virtuálních počítačích Azure na SUSE Linux Enterprise Server s Azure NetApp Files pro aplikace SAP
 
@@ -78,7 +78,7 @@ Nejprve si přečtěte následující poznámky a dokumenty SAP:
 * Poznámka SAP Poznámka [2243692][2243692] obsahuje informace o LICENCOVÁNí SAP v systému Linux v Azure.
 * Poznámka SAP poznámky [1984787][1984787] obsahuje obecné informace o SUSE Linux Enterprise Server 12.
 * V části SAP Note [1999351][1999351] najdete další informace o odstraňování potíží pro rozšíření Azure Enhanced Monitoring pro SAP.
-* Komunitní WIKIWEB pro SAP]https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) (obsahuje všechny požadované poznámky SAP pro Linux.
+* Komunitní WIKIWEB pro SAP] ( https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) obsahuje všechny požadované poznámky SAP pro Linux.
 * [Plánování a implementace služby Azure Virtual Machines pro SAP v systému Linux][planning-guide]
 * [Nasazení Azure Virtual Machines pro SAP v systému Linux][deployment-guide]
 * [Nasazení Azure Virtual Machines DBMS pro SAP v systému Linux][dbms-guide]
@@ -103,32 +103,32 @@ SAP NetWeaver ASCS, SAP NetWeaver SCS, SAP NetWeaver OLAJÍCÍCH a databáze SAP
 * Konfigurace front-endu
   * 10.1.1.20 IP adres
 * Port testu paměti
-  * Port 620<strong>&lt;Nr&gt;</strong>
+  * Port 620<strong> &lt; Nr &gt; </strong>
 * Pravidla vyrovnávání zatížení
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
   * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-    * 32<strong>&lt;Nr&gt; </strong> TCP
-    * 36<strong>&lt;Nr&gt; </strong> TCP
-    * 39<strong>&lt;Nr&gt; </strong> TCP
-    * 81<strong>&lt;Nr&gt; </strong> TCP
-    * 5<strong>&lt;Nr&gt;</strong>13 TCP
-    * 5<strong>&lt;Nr&gt;</strong>14 TCP
-    * 5.16 TCP<strong>&lt;&gt;</strong>
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 36<strong> &lt; Nr &gt; </strong> TCP
+    * 39<strong> &lt; Nr &gt; </strong> TCP
+    * 81<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>14 TCP
+    * 5<strong>. &lt; 16 TCP &gt; </strong>
 
 ### <a name="ers"></a>OLAJÍCÍCH
 
 * Konfigurace front-endu
   * 10.1.1.21 IP adres
 * Port testu paměti
-  * Port 621<strong>&lt;Nr&gt;</strong>
+  * Port 621<strong> &lt; Nr &gt; </strong>
 * Pravidla vyrovnávání zatížení
   * Pokud používáte Standard Load Balancer, vyberte **porty ha** .
   * Pokud používáte základní Load Balancer, vytvořte pravidla vyrovnávání zatížení pro následující porty.
-    * 32<strong>&lt;Nr&gt; </strong> TCP
-    * 33<strong>&lt;Nr&gt; </strong> TCP
-    * 5<strong>&lt;Nr&gt;</strong>13 TCP
-    * 5<strong>&lt;Nr&gt;</strong>14 TCP
-    * 5.16 TCP<strong>&lt;&gt;</strong>
+    * 32<strong> &lt; Nr &gt; </strong> TCP
+    * 33<strong> &lt; Nr &gt; </strong> TCP
+    * 5<strong> &lt; Nr &gt; </strong>13 TCP
+    * 5<strong> &lt; Nr &gt; </strong>14 TCP
+    * 5<strong>. &lt; 16 TCP &gt; </strong>
 
 * Konfigurace back-endu
   * Připojeno k primárním síťovým rozhraním všech virtuálních počítačů, které by měly být součástí clusteru (A) SCS/OLAJÍCÍCH
@@ -207,7 +207,7 @@ Pokyny v této části se použijí jenom v případě, že používáte Azure N
 1. Ověřte nastavení domény systému souborů NFS. Ujistěte se, že je doména nakonfigurovaná jako výchozí doména Azure NetApp Files, tj. **`defaultv4iddomain.com`** a mapování je nastavené na **nikdo**.  
 
     > [!IMPORTANT]
-    > Ujistěte se, že jste na virtuálním `/etc/idmapd.conf` počítači nastavili doménu systému souborů NFS, aby odpovídala **`defaultv4iddomain.com`** výchozí konfiguraci domény v Azure NetApp Files:. Pokud dojde k neshodě mezi konfigurací domény v klientovi NFS (tj. virtuálním počítačem) a serverem NFS, tj. konfigurací Azure NetApp, pak se budou zobrazovat oprávnění k souborům na svazcích Azure NetApp, které jsou připojené k virtuálním počítačům `nobody`.  
+    > Ujistěte se, že jste na virtuálním počítači nastavili doménu systému souborů NFS, `/etc/idmapd.conf` aby odpovídala výchozí konfiguraci domény v Azure NetApp Files: **`defaultv4iddomain.com`** . Pokud dojde k neshodě mezi konfigurací domény v klientovi NFS (tj. virtuálním počítačem) a serverem NFS, tj. konfigurací Azure NetApp, pak se budou zobrazovat oprávnění k souborům na svazcích Azure NetApp, které jsou připojené k virtuálním počítačům `nobody` .  
 
     <pre><code>
     sudo cat /etc/idmapd.conf
@@ -221,7 +221,7 @@ Pokyny v této části se použijí jenom v případě, že používáte Azure N
     Nobody-Group = <b>nobody</b>
     </code></pre>
 
-4. **[A]** ověřte `nfs4_disable_idmapping`. Měl by být nastaven na **Y**. Pokud chcete vytvořit adresářovou strukturu `nfs4_disable_idmapping` , kde se nachází, spusťte příkaz Mount. V/sys/modules nebudete moct ručně vytvořit adresář, protože přístup je vyhrazený pro jádro nebo ovladače.  
+4. **[A]** ověřte `nfs4_disable_idmapping` . Měl by být nastaven na **Y**. Pokud chcete vytvořit adresářovou strukturu `nfs4_disable_idmapping` , kde se nachází, spusťte příkaz Mount. V/sys/modules nebudete moct ručně vytvořit adresář, protože přístup je vyhrazený pro jádro nebo ovladače.  
 
     <pre><code>
     # Check nfs4_disable_idmapping 
@@ -452,9 +452,9 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind 10.1.0.4/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind 10.1.0.4:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=3,nobind 10.1.0.4:/trans
-   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind 10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=3,nobind 10.1.0.4:/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
    </code></pre>
    
    Pokud používáte NFSv 4.1, vytvořte soubor pomocí:
@@ -462,9 +462,9 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys 10.1.0.4/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/trans
-   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sec=sys 10.1.0.4/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
+   /usr/sap/<b>QAS</b>/SYS -nfsvers=4.1,nobind,sec=sys 10.1.0.4:/usrsap<b>qas</b>/usrsap<b>QAS</b>sys
    </code></pre>
    
    > [!NOTE]
@@ -516,7 +516,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
+   sudo crm configure primitive fs_<b>QAS</b>_ASCS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ascs' directory='/usr/sap/<b>QAS</b>/ASCS<b>00</b>' fstype='nfs' options='sec=sys,vers=4.1' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -569,13 +569,13 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo crm node online <b>anftstsapcl2</b>
    sudo crm node standby <b>anftstsapcl1</b>
    # If using NFSv3
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' \
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
    
    # If using NFSv4.1
-   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
+   sudo crm configure primitive fs_<b>QAS</b>_ERS Filesystem device='<b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>ers' directory='/usr/sap/<b>QAS</b>/ERS<b>01</b>' fstype='nfs' options='sec=sys,vers=4.1'\
      op start timeout=60s interval=0 \
      op stop timeout=60s interval=0 \
      op monitor interval=20s timeout=40s
@@ -683,7 +683,7 @@ Následující položky jsou předpony buď **[A]** – platí pro všechny uzly
    sudo usermod -aG haclient <b>qas</b>adm
    </code></pre>
 
-8. **[1]** přidejte do `sapservice` souboru služby SAP ASCS a olajících.
+8. **[1]** přidejte do souboru služby SAP ASCS a olajících. `sapservice`
 
    Přidejte položku služby ASCS do druhého uzlu a zkopírujte položku služby OLAJÍCÍCH do prvního uzlu.
 
@@ -847,9 +847,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS,
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
    </code></pre>
 
    Pokud používáte NFSv 4.1, vytvořte nový soubor s tímto:
@@ -857,9 +857,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS,
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
+   /usr/sap/<b>QAS</b>/D<b>02</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>pas
    </code></pre>
 
    Restartováním `autofs` připojíte nové sdílené složky.
@@ -882,9 +882,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS,
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=3,nobind <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=3,nobind <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
    </code></pre>
 
    Pokud používáte NFSv 4.1, vytvořte nový soubor s tímto:
@@ -892,9 +892,9 @@ Následující položky jsou s předponou buď **[A]** – platí pro pas i AAS,
    <pre><code>
    sudo vi /etc/auto.direct
    # Add the following lines to the file, save and exit
-   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/sapmnt<b>QAS</b>
+   /sapmnt/<b>QAS</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/sapmnt<b>QAS</b>
    /usr/sap/trans -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/trans
-   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
+   /usr/sap/<b>QAS</b>/D<b>03</b> -nfsvers=4.1,nobind,sec=sys <b>10.1.0.4</b>:/usrsap<b>qas</b>/usrsap<b>QAS</b>aas
    </code></pre>
 
    Restartováním `autofs` připojíte nové sdílené složky.
@@ -983,7 +983,7 @@ Následující testy jsou kopie testovacích případů v [SUSE průvodců osvě
 
 1. Test HAGetFailoverConfig, HACheckConfig a HACheckFailoverConfig
 
-   Spusťte následující příkazy jako \<sapsid>ADM na uzlu, ve kterém je aktuálně spuštěná instance ASCS. Pokud se příkazy nezdaří s CHYBou: nedostatek paměti, může to být způsobeno pomlčkami ve vašem názvu hostitele. Jedná se o známý problém, který bude opraven nástrojem SUSE v balíčku SAP-SUSE-cluster-Connector.
+   \<sapsid>Na uzlu, kde je aktuálně spuštěná instance ASCS, spusťte následující příkazy jako ADM. Pokud se příkazy nezdaří s CHYBou: nedostatek paměti, může to být způsobeno pomlčkami ve vašem názvu hostitele. Jedná se o známý problém, který bude opraven nástrojem SUSE v balíčku SAP-SUSE-cluster-Connector.
 
    <pre><code>
    anftstsapcl1:qasadm 52> sapcontrol -nr 00 -function HAGetFailoverConfig
@@ -1097,7 +1097,7 @@ Následující testy jsou kopie testovacích případů v [SUSE průvodců osvě
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl2
    </code></pre>
 
-   Spusťte následující příkazy jako \<sapsid>ADM k migraci instance ASCS.
+   \<sapsid>Pro migraci instance ASCS spusťte následující příkazy jako ADM.
 
    <pre><code>
    anftstsapcl1:qasadm 53> sapcontrol -nr 00 -host anftstsapvh -user <b>qas</b>adm &lt;password&gt; -function HAFailoverToNode ""
@@ -1225,7 +1225,7 @@ Následující testy jsou kopie testovacích případů v [SUSE průvodců osvě
         rsc_sap_QAS_ERS01  (ocf::heartbeat:SAPInstance):   Started anftstsapcl1
    </code></pre>
 
-   Vytvořte zámek zařazení do fronty, například upravit uživatele v su01 transakce. Spusťte následující příkazy jako <sapsid\>ADM na uzlu, ve kterém je spuštěná instance ASCS. Příkazy zazastaví instanci ASCS a znovu se spustí. Pokud používáte architekturu serveru fronty 1, očekává se, že se v tomto testu ztratí zámek fronty. Pokud používáte architekturu Server 2 pro zařazování do fronty, zachová se. 
+   Vytvořte zámek zařazení do fronty, například upravit uživatele v su01 transakce. Spusťte následující příkazy jako <sapsid \> ADM na uzlu, ve kterém je spuštěná instance ASCS. Příkazy zazastaví instanci ASCS a znovu se spustí. Pokud používáte architekturu serveru fronty 1, očekává se, že se v tomto testu ztratí zámek fronty. Pokud používáte architekturu Server 2 pro zařazování do fronty, zachová se. 
 
    <pre><code>anftstsapcl2:qasadm 51> sapcontrol -nr 00 -function StopWait 600 2
    </code></pre>
@@ -1279,7 +1279,7 @@ Následující testy jsou kopie testovacích případů v [SUSE průvodců osvě
    <pre><code>anftstsapcl2:~ # pgrep ms.sapQAS | xargs kill -9
    </code></pre>
 
-   Pokud server pouze jednou zadáte, bude restartován nástrojem `sapstart`. Pokud jste ho ASCS dostatečně přesunuli, Pacemaker se nakonec přesune instance na jiný uzel. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
+   Pokud server pouze jednou zadáte, bude restartován nástrojem `sapstart` . Pokud jste ho ASCS dostatečně přesunuli, Pacemaker se nakonec přesune instance na jiný uzel. Spusťte následující příkazy jako kořen pro vyčištění stavu prostředků instance ASCS a OLAJÍCÍCH po testu.
 
    <pre><code>
    anftstsapcl2:~ # crm resource cleanup rsc_sap_QAS_ASCS00
