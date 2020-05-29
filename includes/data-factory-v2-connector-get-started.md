@@ -14,13 +14,13 @@ ms.locfileid: "67048551"
 <!--
     Separate the generic "Get started" paragraph from each connector-* article in azure-docs-pr/articles/data-factory/ to ease future central update.
 -->
-K použití aktivity kopírování s kanálem můžete použít jeden z následujících nástrojů nebo sady SDK. Pro podrobné pokyny vyberte odkaz:
+K použití aktivity kopírování pomocí kanálu můžete využít jeden z následujících nástrojů nebo sad SDK. Podrobné pokyny získáte výběrem odkazu:
 
 - [Nástroj pro kopírování dat](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
-- [portál Azure](../articles/data-factory/quickstart-create-data-factory-portal.md)
+- [Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
 - [.NET SDK](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
 - [Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)
 - [REST API](../articles/data-factory/quickstart-create-data-factory-rest-api.md)
-- [Šablona Azure Resource Manager](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
+- [Šablona Azure Resource Manageru](../articles/data-factory/quickstart-create-data-factory-resource-manager-template.md)
 

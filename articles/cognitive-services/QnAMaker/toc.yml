@@ -44,7 +44,7 @@
           href: Concepts/knowledge-base.md
         - name: Importované typy obsahu
           href: Concepts/content-types.md
-        - name: Sady otázek a odpovědí
+        - name: Dvojice otázek a odpovědí
           href: Concepts/question-answer-set.md
     - name: Životní cyklus znalostní báze
       items:
@@ -72,8 +72,6 @@
         - name: Správa prostředků
           href: How-To/set-up-qnamaker-service-azure.md
           displayName: 'azure, resource, key, upgrade, pricing, tier,'
-        - name: Vytvoření plánu kontinuity podnikových procesů
-          href: How-To/business-continuity-plan.md
         - name: Spolupráce
           href: How-To/collaborate-knowledge-base.md
         - name: Aktivace aktivního učení

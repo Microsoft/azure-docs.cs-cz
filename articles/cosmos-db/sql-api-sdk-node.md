@@ -8,12 +8,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 645565b0033324d6edc36a73fb59fa5a5d8689ee
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 66597f0807e27e421d5f7001550533090d5936c0
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650738"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171595"
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node. js SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -36,7 +36,7 @@ ms.locfileid: "83650738"
 |Stáhnout sadu SDK  |   [NPM](https://www.npmjs.com/package/@azure/cosmos) 
 |Dokumentace k rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-cosmos-js#installation)
-|Přispívání do sady SDK | [GitHub](https://github.com/Azure/azure-cosmos-js/tree/master)
+|Přispívání do sady SDK | [GitHubu](https://github.com/Azure/azure-cosmos-js/tree/master)
 | ukázky | [Ukázky kódu Node. js](sql-api-nodejs-samples.md)
 | Úvodní kurz | [Začínáme se sadou JavaScript SDK](sql-api-nodejs-get-started.md)
 | Kurz webové aplikace | [Sestavení webové aplikace Node. js pomocí Azure Cosmos DB](sql-api-nodejs-application.md)
@@ -44,23 +44,23 @@ ms.locfileid: "83650738"
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-### <a name=""></a><a name="3.1.0"/>3.1.0</a>
+### <a name="310"></a><a name="3.1.0"></a>3.1.0
 * Nastavte výchozí ResponseContinuationTokenLimitInKB na 1 KB. Ve výchozím nastavení jsme to capping na 1 KB, aby nedocházelo k dlouhým hlavičkám (Node. js má omezení velikosti globálního záhlaví). Uživatel může nastavit toto pole tak, aby povoloval delší hlavičky, což může přispět k provádění dotazů optimalizace back-endu.
 * Odeberte disableSSLVerification. Tato možnost obsahuje nové alternativy popsané v tématu [#388](https://github.com/Azure/azure-cosmos-js/pull/388)
 
-### <a name=""></a><a name="3.0.4"/>3.0.4</a>
+### <a name="304"></a><a name="3.0.4"></a>3.0.4
 * Povoluje, aby initialHeaders explicitně nastavil hlavičku klíče oddílu.
 * Pokud chcete zabránit publikování cizích souborů, použijte soubory Package. JSON #.
 * Oprava chyby řazení mapy směrování ve starší verzi Node + V8
 * Opravuje chybu, když uživatel zadá částečné možnosti opakování.
 
-### <a name=""></a><a name="3.0.3"/>3.0.3</a>
+### <a name="303"></a><a name="3.0.3"></a>3.0.3
 * Zabránit nástroji Webpack v překladu modulů s názvem vyžadovat
 
-### <a name=""></a><a name="3.0.2"/>3.0.2</a>
+### <a name="302"></a><a name="3.0.2"></a>3.0.2
 * Opravuje dlouhou nevyřízenou chybu, kde ru byly vždycky hlášeny jako 0 u agregačních dotazů.
 
-### <a name=""></a><a name="3.0.0"/>3.0.0</a>
+### <a name="300"></a><a name="3.0.0"></a>3.0.0
 
 Verze 🎉 v3! 🎉 mnoho nových funkcí, opravy chyb a některé zásadní změny. Primární cíle této verze:
 
@@ -211,30 +211,30 @@ Ne vždy nejčastěji viditelné změny, ale pomůžou náš tým dodat lepší 
 * Povolit noUnusedLocals a noUnusedParameters (#275)
 * Azure Pipelines YAML pro sestavení CI (#298)
 
-### <a name=""></a><a name="2.1.5"/>2.1.5</a>
+### <a name="215"></a><a name="2.1.5"></a>2.1.5
 * Žádné změny kódu. Opravuje problém, kdy byly některé další soubory zahrnuté do balíčku 2.1.4.
 
-### <a name=""></a><a name="2.1.4"/>2.1.4</a>
+### <a name="214"></a><a name="2.1.4"></a>2.1.4
 * Oprava místního převzetí služeb při selhání v rámci zásad opakování
 * Oprava vlastnosti ChangeFeed hasMoreResults
 * Aktualizace závislostí pro vývoj
 * Přidat PolicheckExclusions. txt
 
-### <a name=""></a><a name="2.1.3"/>2.1.3</a>
+### <a name="213"></a><a name="2.1.3"></a>2.1.3
 * Přepnout _ts typ z řetězce na číslo
 * Oprava výchozích testů indexování
 * Backport uniqueKeyPolicy na v2
 * Ukázka a ukázka oprav ladění
 
-### <a name=""></a><a name="2.1.2"/>2.1.2</a>
+### <a name="212"></a><a name="2.1.2"></a>2.1.2
 * Backport nabízí opravy z větve v3.
 * Oprava chyby v signatuře typu executeNext ()
 * Opravy překlepu
 
-### <a name=""></a><a name="2.1.1"/>2.1.1</a>
+### <a name="211"></a><a name="2.1.1"></a>2.1.1
 * Restrukturalizace sestavení Umožňuje vystavení verze sady SDK v době sestavení.
 
-### <a name=""></a><a name="2.1.0"/>2.1.0</a>
+### <a name="210"></a><a name="2.1.0"></a>2.1.0
 #### <a name="new-features"></a>Nové funkce
 * Přidání podpory ChangeFeed (#196)
 * Přidaný datový typ s více mnohoúhelníky pro indexování (#191)
@@ -247,76 +247,76 @@ Ne vždy nejčastěji viditelné změny, ale pomůžou náš tým dodat lepší 
 * Přidat test integrace pro spotřebu TypeScript (#199)
 * Povolit instalaci přímo z GitHubu (#194)
 
-### <a name=""></a><a name="2.0.5"/>2.0.5</a>
+### <a name="205"></a><a name="2.0.5"></a>2.0.5
 * Přidá rozhraní pro typ agenta uzlu. Uživatelé TypeScript už nebudou muset instalovat @types/node jako závislost.
 * Upřednostňovaná umístění jsou nyní správně dodržena.
 * Vylepšení přispívající k dokumentaci pro vývojáře
 * Různé opravy překlepu
 
-### <a name=""></a><a name="2.0.4"/>2.0.4</a>
+### <a name="204"></a><a name="2.0.4"></a>2.0.4
 * Opravuje problém definice typu představený v 2.0.3
 
-### <a name=""></a><a name="2.0.3"/>2.0.3</a>
+### <a name="203"></a><a name="2.0.3"></a>2.0.3
 * Odebrat `big-integer` závislost
 * Přepněte na direktivy Reference pro typ AsyncIterable. Uživatelé TypeScript již nemusí přizpůsobovat své nastavení "lib".
 * Opravy překlepu
 
-### <a name=""></a><a name="2.0.2"/>2.0.2</a>
+### <a name="202"></a><a name="2.0.2"></a>2.0.2
 * Opravit odkazy souboru Readme
 
-### <a name=""></a><a name="2.0.1"/>2.0.1</a>
+### <a name="201"></a><a name="2.0.1"></a>2.0.1
 * Opravit implementaci rozhraní opakování
 
-### <a name=""></a><a name="2.0.0"/>2.0.0</a>
+### <a name="200"></a><a name="2.0.0"></a>2.0.0
 * GA verze 2.0.0 sady SDK pro JavaScript
 * Byla přidána podpora pro zápisy ve více oblastech.
 
-### <a name=""></a><a name="2.0.0-3"/>2.0.0-3</a>
+### <a name="200-3"></a><a name="2.0.0-3"></a>2.0.0-3
 * RC1 verze 2.0.0 sady JavaScript SDK pro verzi Public Preview.
 * Nový objektový model s CosmosClient a metodami na nejvyšší úrovni se rozdělí mezi relevantní databáze, kontejnery a třídy položek. 
 * Podpora pro [příslibů](https://developer.mozilla.org/docs/Web/JavaScript/Guide/Using_promises). 
 * Sada SDK se převedla na TypeScript.
 
-### <a name=""></a><a name="1.14.4"/>1.14.4</a>
+### <a name="1144"></a><a name="1.14.4"></a>1.14.4
 * byla opravena dokumentace k npm.
 
-### <a name=""></a><a name="1.14.3"/>1.14.3</a>
+### <a name="1143"></a><a name="1.14.3"></a>1.14.3
 * Přidání podpory pro výchozí opakování při potížích s připojením
 * Přidala se podpora pro čtení kanálu změn kolekce.
 * Opravená chyba konzistence relace, která občas způsobila, že "relace čtení není k dispozici".
 * Přidání podpory pro metriky dotazů.
 * Byl změněn maximální počet připojení agenta http.
 
-### <a name=""></a><a name="1.14.2"/>1.14.2</a>
+### <a name="1142"></a><a name="1.14.2"></a>1.14.2
 * Aktualizovaná dokumentace, aby odkazovala Azure Cosmos DB místo Azure DocumentDB.
 * Přidání podpory pro nastavení proxyUrl v ConnectionPolicy
 
-### <a name=""></a><a name="1.14.1"/>1.14.1</a>
+### <a name="1141"></a><a name="1.14.1"></a>1.14.1
 * Menší oprava pro systémy souborů s rozlišením malých a velkých písmen.
 
-### <a name=""></a><a name="1.14.0"/>1.14.0</a>
+### <a name="1140"></a><a name="1.14.0"></a>1.14.0
 * Přidá podporu pro konzistenci relace.
 * Tato verze sady SDK vyžaduje nejnovější verzi [emulátoru Azure Cosmos DB](https://aka.ms/cosmosdb-emulator).
 
-### <a name=""></a><a name="1.13.0"/>1.13.0</a>
+### <a name="1130"></a><a name="1.13.0"></a>1.13.0
 * Rozdělte dotazy na více oddílů.
 * Přidá podporu pro odkaz na prostředek s úvodním a koncovým lomítkem (a odpovídajícími testy).
 
-### <a name=""></a><a name="1.12.2"/>1.12.2</a>
+### <a name="1122"></a><a name="1.12.2"></a>1.12.2
 *    byla opravena dokumentace k npm.
 
-### <a name=""></a><a name="1.12.1"/>1.12.1</a>
+### <a name="1121"></a><a name="1.12.1"></a>1.12.1
 * Opravili jsme chybu v executeStoredProcedure, kde se v dokumentech podílely speciální znaky Unicode (LS, PS).
 * Opravili jsme chybu ve zpracování dokumentů se znaky Unicode v klíči oddílu.
 * Pevná podpora pro vytváření kolekcí s názvem média #114 problému GitHubu.
 * Pevná podpora autorizačního tokenu oprávnění #178 problému GitHubu.
 
-### <a name=""></a><a name="1.12.0"/>1.12.0</a>
+### <a name="1120"></a><a name="1.12.0"></a>1.12.0
 * Přidání podpory pro novou [úroveň konzistence](consistency-levels.md) s názvem ConsistentPrefix.
 * Byla přidána podpora pro UriFactory.
 * Opravili jsme chybu podpory kódování Unicode. #171 problému GitHubu.
 
-### <a name=""></a><a name="1.11.0"/>1.11.0</a>
+### <a name="1110"></a><a name="1.11.0"></a>1.11.0
 * Přidali jsme podporu agregačních dotazů (COUNT, MIN, MAX, SUM a AVG).
 * Přidání možnosti pro řízení míry paralelismu pro dotazy na více oddílů.
 * Přidání možnosti pro zakázání ověřování TLS při spuštění v emulátoru Azure Cosmos DB.
@@ -324,87 +324,87 @@ Ne vždy nejčastěji viditelné změny, ale pomůžou náš tým dodat lepší 
 * Opravila se chyba tokenu pro pokračování pro kolekci s jedním oddílem. #107 problému GitHubu.
 * Opravili jsme chybu executeStoredProcedure při zpracovávání 0 jako jeden parametr. #155 problému GitHubu.
 
-### <a name=""></a><a name="1.10.2"/>1.10.2</a>
+### <a name="1102"></a><a name="1.10.2"></a>1.10.2
 * Opravené záhlaví User-agentu, které bude obsahovat verzi sady SDK.
 * Vyčištění vedlejšího kódu.
 
-### <a name=""></a><a name="1.10.1"/>1.10.1</a>
+### <a name="1101"></a><a name="1.10.1"></a>1.10.1
 * Zakazuje se ověřování TLS při použití sady SDK k zacílení na emulátor (název hostitele = localhost).
 * Přidání podpory pro povolení protokolování skriptu během provádění uložených procedur.
 
-### <a name=""></a><a name="1.10.0"/>1.10.0</a>
+### <a name="1100"></a><a name="1.10.0"></a>1.10.0
 * Byla přidána podpora paralelních dotazů mezi oddíly.
 * Přidání podpory pro dotazy TOP/ORDER BY pro dělené kolekce
 
-### <a name=""></a><a name="1.9.0"/>1.9.0</a>
+### <a name="190"></a><a name="1.9.0"></a>1.9.0
 * Přidala se podpora zásad opakování pro omezené požadavky. (Omezení požadavků obdrží příliš velkou výjimku, kód chyby 429.) Ve výchozím nastavení se Azure Cosmos DB opakuje devět časů pro každý požadavek, pokud se zjistil kód chyby 429, který respektuje čas retryAfter v hlavičce odpovědi. Pevný čas intervalu opakování se teď dá nastavit jako součást vlastnosti RetryOptions objektu ConnectionPolicy, pokud chcete ignorovat dobu retryAfter vrácenou serverem mezi opakovanými pokusy. Azure Cosmos DB nyní čeká maximálně 30 sekund pro každý požadavek, který je omezený (bez ohledu na počet opakování), a vrátí odpověď s kódem chyby 429. Tuto dobu lze také přepsat ve vlastnosti RetryOptions objektu ConnectionPolicy.
 * Cosmos DB nyní vrací hodnoty x-MS-Throttle-Return-Count a x-MS-Throttle-Retry-Time-MS jako hlavičky odpovědi v každé žádosti, aby se poznamenalo, že počet opakování omezení a kumulativní doba, jakou požadavek mezi opakovanými pokusy čekal.
 * Byla přidána třída RetryOptions, která vystavuje vlastnost RetryOptions třídy ConnectionPolicy, kterou lze použít k přepsání některých výchozích možností opakování.
 
-### <a name=""></a><a name="1.8.0"/>1.8.0</a>
+### <a name="180"></a><a name="1.8.0"></a>1.8.0
 * Přidání podpory pro účty databáze ve více oblastech.
 
-### <a name=""></a><a name="1.7.0"/>1.7.0</a>
+### <a name="170"></a><a name="1.7.0"></a>1.7.0
 * Přidali jsme podporu funkce Time to Live (TTL) pro dokumenty.
 
-### <a name=""></a><a name="1.6.0"/>1.6.0</a>
+### <a name="160"></a><a name="1.6.0"></a>1.6.0
 * Implementované [dělené kolekce](partition-data.md) a [uživatelem definované úrovně výkonu](performance-levels.md).
 
-### <a name=""></a><a name="1.5.6"/>1.5.6</a>
+### <a name="156"></a><a name="1.5.6"></a>1.5.6
 * Opravila se chyba RangePartitionResolver. resolveForRead, kde nevrátila odkazy z důvodu nesprávného concatu výsledků.
 
-### <a name=""></a><a name="1.5.5"/>1.5.5</a>
+### <a name="155"></a><a name="1.5.5"></a>1.5.5
 * Opravená hashPartitionResolver resolveForRead (): Pokud nebyl žádný zadaný klíč oddílu vyvolal výjimku, místo vrácení seznamu všech registrovaných odkazů.
 
-### <a name=""></a><a name="1.5.4"/>1.5.4</a>
+### <a name="154"></a><a name="1.5.4"></a>1.5.4
 * Opravuje problémový [#100](https://github.com/Azure/azure-documentdb-node/issues/100) vyhrazený agent https: Neměňte globální agenta pro Azure Cosmos DB účely. Použijte vyhrazeného agenta pro všechny požadavky lib.
 
-### <a name=""></a><a name="1.5.3"/>1.5.3</a>
+### <a name="153"></a><a name="1.5.3"></a>1.5.3
 * Opravuje [#81](https://github.com/Azure/azure-documentdb-node/issues/81) potíží – správně zpracovávají pomlčky v ID médií.
 
-### <a name=""></a><a name="1.5.2"/>2.5.1</a>
+### <a name="152"></a><a name="1.5.2"></a>2.5.1
 * Opravuje problém [#95](https://github.com/Azure/azure-documentdb-node/issues/95) -EventEmitter upozornění na nevracení naslouchacího procesu.
 
-### <a name=""></a><a name="1.5.1"/>1.5.1</a>
+### <a name="151"></a><a name="1.5.1"></a>1.5.1
 * Opravuje problém [#92](https://github.com/Azure/azure-documentdb-node/issues/90) -přejmenovat hodnotu hash složky na hodnotu hash pro systémy citlivé na velká a malá písmena.
 
-### <a name=""></a><a name="1.5.0"/>1.5.0</a>
+### <a name="150"></a><a name="1.5.0"></a>1.5.0
 * Implementujte podporu horizontálního dělení přidáním překladačů oddílů rozsahu & hash.
 
-### <a name=""></a><a name="1.4.0"/>1.4.0</a>
+### <a name="140"></a><a name="1.4.0"></a>1.4.0
 * Implementujte Upsert. Nové metody upsertXXX v documentClient.
 
-### <a name=""></a><a name="1.3.0"/>1.3.0</a>
+### <a name="130"></a><a name="1.3.0"></a>1.3.0
 * Vynecháno pro uvedení čísel verzí v zarovnání s jinými sadami SDK.
 
-### <a name=""></a><a name="1.2.2"/>1.2.2</a>
+### <a name="122"></a><a name="1.2.2"></a>1.2.2
 * Oddělte obálku Q příslibů do nového úložiště.
 * Aktualizujte soubor balíčku pro registr npm.
 
-### <a name=""></a><a name="1.2.1"/>1.2.1</a>
+### <a name="121"></a><a name="1.2.1"></a>1.2.1
 * Implementuje směrování na základě ID.
 * Opravuje problém [#49](https://github.com/Azure/azure-documentdb-node/issues/49) – aktuální vlastnost je v konfliktu s metodou Current ().
 
-### <a name=""></a><a name="1.2.0"/>1.2.0</a>
+### <a name="120"></a><a name="1.2.0"></a>1.2.0
 * Byla přidána podpora geoprostorového indexu.
 * Ověří vlastnost ID pro všechny prostředky. Identifikátory pro prostředky nesmí obsahovat znaky?,/, #,  &#47;&#47;, nebo končit mezerou.
 * Přidá novou hlavičku průběh transformace indexu do ResourceResponse.
 
-### <a name=""></a><a name="1.1.0"/>1.1.0</a>
+### <a name="110"></a><a name="1.1.0"></a>1.1.0
 * Implementuje zásadu indexování v2.
 
-### <a name=""></a><a name="1.0.3"/>1.0.3</a>
+### <a name="103"></a><a name="1.0.3"></a>1.0.3
 * Vydejte [#40](https://github.com/Azure/azure-documentdb-node/issues/40) a konfigurace grunt v základní sadě a sadě SDK pro příslib.
 
-### <a name=""></a><a name="1.0.2"/>1.0.2</a>
+### <a name="102"></a><a name="1.0.2"></a>1.0.2
 * Problém [#45](https://github.com/Azure/azure-documentdb-node/issues/45) – obálka příslibů neobsahuje hlavičku s chybou.
 
-### <a name=""></a><a name="1.0.1"/>1.0.1</a>
+### <a name="101"></a><a name="1.0.1"></a>1.0.1
 * Byla implementována možnost dotazování na konflikty přidáním readConflicts, readConflictAsync a queryConflicts.
 * Aktualizovala se dokumentace k rozhraní API.
 * Problém [#41](https://github.com/Azure/azure-documentdb-node/issues/41) – chyba Client. metody createdocumentasync
 
-### <a name=""></a><a name="1.0.0"/>1.0.0</a>
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * GA SDK.
 
 ## <a name="release--retirement-dates"></a>Data vyřazení & vydání
@@ -475,7 +475,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 | [1.0.1](#1.0.1) |15. května 2015 |30. srpna 2020 |
 | [1.0.0](#1.0.0) |08 8. dubna 2015 |30. srpna 2020 |
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také

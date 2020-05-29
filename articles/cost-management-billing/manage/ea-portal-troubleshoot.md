@@ -3,16 +3,16 @@ title: Řešení potíží s přístupem k portálu Azure EA
 description: Tento článek popisuje některé běžné problémy, které mohou nastat u smlouvy Azure Enterprise (EA) na portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: fdcce868cb53c0fdd6a51f2b351491e1ee998d61
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 97ba4e77c96859115c974b630a455f4bea62051a
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691187"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83654747"
 ---
 # <a name="troubleshoot-azure-ea-portal-access"></a>Řešení potíží s přístupem k portálu Azure EA
 
@@ -64,15 +64,15 @@ Případně může být příčinou chyby _Neplatný uživatel_ to, že při př
   - Pokud si potřebujete zkontrolovat primární alias, přejděte na [https://account.live.com](https://account.live.com). Pak klikněte na **Vaše informace** a na **Spravovat způsob přihlášení k Microsoftu**. Podle pokynů ověřte alternativní e-mailovou adresu a získejte kód pro přístup k citlivým informacím. Zadejte tento bezpečnostní kód. Pokud nechcete nastavit dvojúrovňové ověřování, vyberte **Nastavit později**.
   - Zobrazí se stránka **Správa způsobu přihlášení k Microsoftu**, na které uvidíte aliasy svých účtů. Ověřte, že se k portálu Azure EA přihlašujete pomocí primárního aliasu. Pokud se přihlašujete pomocí jiného aliasu, můžete ho nastavit jako svůj primární. Nebo můžete místo něho použít primární alias pro portál Azure EA.
 
-## <a name="no-activation-email-received"></a>Nepřišel aktivační e-mail
+## <a name="azure-ea-activation-faq"></a>Nejčastější dotazy k aktivaci Azure EA
+
+Tato část článku popisuje řešení běžných problémů souvisejících s aktivací Azure EA.
+
+### <a name="i-didnt-receive-an-activation-email"></a>Nepřišel mi aktivační e-mail
 
 Aktivační e-mail z portálu Azure EA se odesílá z adresy *waep@microsoft.com* . Pokud jste aktivační e-mail neobdrželi, vyhledejte ho ve složce se spamem nebo nevyžádanou poštou. Zpráva je v předmětu označená jako _pozvánka k zobrazení nebo správě služeb Microsoft Azure_. Měla by se odeslat každému nově přidanému správci EA.
 
 Pokud jste si jisti, že vás někdo nastavil jako správce EA, nemusíte čekat, až dostanete aktivační e-mail, abyste se mohli k portálu Azure EA přihlásit. Místo toho můžete přejít na https://ea.azure.com a přihlásit se pomocí své e-mailové adresy a hesla (pro pracovní či školní účet nebo účet Microsoft).
-
-## <a name="azure-ea-activation-faq"></a>Nejčastější dotazy k aktivaci Azure EA
-
-Tato část článku popisuje řešení běžných problémů souvisejících s aktivací Azure EA.
 
 ### <a name="i-would-like-to-add-a-new-ea-administrator-to-my-enrollment"></a>Chci ke své registraci přidat nového správce EA
 

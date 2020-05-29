@@ -7,12 +7,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 0eeddc26ac1a1f286d8ed253f3fe097f0e7de91f
-ms.sourcegitcommit: 27bbda320225c2c2a43ac370b604432679a6a7c0
+ms.openlocfilehash: 7cf42950bc25ad501fd11b1b28c74b5f63066c32
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/31/2020
-ms.locfileid: "80409389"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745531"
 ---
 # <a name="troubleshoot-a-declined-card-at-azure-sign-up"></a>Řešení potíží s odmítnutou kartou při registraci do Azure
 
@@ -20,9 +20,9 @@ Může dojít k problému nebo chybě, kdy se při registraci na portálu Micros
 
 Pokud chcete tyto potíže vyřešit, zvolte si z následujících témat to, které nejvíce připomíná vaši situaci.
 
-## <a name="the-credit-card-provider-is-not-accepted-for-your-country"></a>Poskytovatel platební karty není pro vaši zemi schválený
+## <a name="the-credit-card-provider-is-not-accepted-for-your-countryregion"></a>Poskytovatel platební karty není pro vaši zemi nebo oblast schválený
 
-Když zvolíte kartu, Azure zobrazí možnosti karty platné v zemi, kterou vyberete. Pokud chcete ověřit, jestli jsou u vaší platební karty povoleny mezinárodní transakce, obraťte se na svou banku nebo vystavitele karty. Další informace o podporovaných zemích a měnách najdete na stránce [Nejčastější dotazy k cenám Azure](https://azure.microsoft.com/pricing/faq/).
+Když zvolíte kartu, Azure zobrazí možnosti karty platné v zemi nebo oblasti, kterou vyberete. Pokud chcete ověřit, jestli jsou u vaší platební karty povoleny mezinárodní transakce, obraťte se na svou banku nebo vystavitele karty. Další informace o podporovaných zemích/oblastech a měnách najdete na stránce [Nejčastější dotazy k cenám Azure](https://azure.microsoft.com/pricing/faq/).
 
 >[!Note]
 >V Indii nejsou v současnosti podporovány jako platební nástroj platební karty American Express. Neznáme časový rámec, odkdy by mohly být přijatelnou formou platby.

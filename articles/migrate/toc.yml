@@ -128,6 +128,8 @@
       href: how-to-migrate.md
     - name: Migrace virtuálních počítačů VMware na virtuální počítače Azure šifrované s využitím SSE a CMK
       href: how-to-migrate-vmware-vms-with-cmk-disks.md
+    - name: Příprava serverů Windows 2003 na migraci
+      href: prepare-windows-server-2003-migration.md
     - name: Příprava počítačů na migraci
       href: prepare-for-migration.md
     - name: Odstranění projektu Azure Migrate

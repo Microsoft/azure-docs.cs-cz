@@ -14,7 +14,7 @@ ms.locfileid: "72930998"
 <!--
     Common for all ADF file-based connectors
 -->
-Azure Data Factory podporují následující formáty souborů. V každém článku najdete informace o nastaveních založených na formátu.
+Azure Data Factory podporuje následující formáty souborů. Informace o nastaveních založených na formátu najdete vždy v příslušném článku.
 
 - [Formát Avro](../articles/data-factory/format-avro.md)
 - [Binární formát](../articles/data-factory/format-binary.md)

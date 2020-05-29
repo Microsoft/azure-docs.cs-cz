@@ -13,7 +13,7 @@ ms.locfileid: "68881335"
 ---
 #### <a name="built-in-log-streaming"></a>Integrované streamování protokolů
 
-Pomocí `logstream` možnosti můžete začít přijímat protokoly streamování konkrétní aplikace Function App běžící v Azure, jako v následujícím příkladu:
+Pomocí možnosti `logstream` spustíte příjem protokolů streamování konkrétní aplikace funkcí běžící v Azure, jako v následujícím příkladu:
 
 ```bash
 func azure functionapp logstream <FunctionAppName>
@@ -21,7 +21,7 @@ func azure functionapp logstream <FunctionAppName>
 
 #### <a name="live-metrics-stream"></a>Live Metrics Stream
 
-Můžete také zobrazit [Live Metrics Stream](../articles/azure-monitor/app/live-stream.md) pro aplikaci Function App v novém okně prohlížeče, včetně `--browser` možnosti, jako v následujícím příkladu:
+Můžete pro svou aplikaci funkcí také zobrazit [Live Metrics Stream](../articles/azure-monitor/app/live-stream.md) v novém okně prohlížeče zahrnutím možnosti `--browser`, jak je uvedeno v následujícím příkladu:
 
 ```bash
 func azure functionapp logstream <FunctionAppName> --browser

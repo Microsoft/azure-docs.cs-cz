@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 0cf0911193cd379da60edb3064d3c6f195cf0190
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 99b6d86a65ec05a1299abfffae779113e573310c
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199853"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83834964"
 ---
 # <a name="add-update-or-remove-a-credit-card-for-azure"></a>Přidání, aktualizace nebo odebrání platební karty v Azure
 
@@ -29,9 +29,9 @@ Pokud máte smlouvu se zákazníkem Microsoftu, jsou způsoby platby přidružen
 
 ## <a name="manage-credit-cards-for-an-azure-subscription"></a>Správa platebních karet pro předplatné Azure
 
-Následující části se vztahují na zákazníky, kteří mají fakturační účet programu MOSP (Microsoft Online Services Program). Zjistěte, jak [zkontrolovat typ vašeho fakturačního účtu](#check-the-type-of-your-account). Pokud je váš fakturační účet typu MOSP (Microsoft Online Services Program), jsou způsoby platby přidružené k jednotlivým předplatným Azure.
+Následující části se vztahují na zákazníky, kteří mají fakturační účet programu MOSP (Microsoft Online Services Program). Zjistěte, jak [zkontrolovat typ vašeho fakturačního účtu](#check-the-type-of-your-account). Pokud je váš fakturační účet typu MOSP (Microsoft Online Services Program), jsou způsoby platby přidružené k jednotlivým předplatným Azure. Pokud po přidání platební karty dojde k chybě, přečtěte si téma věnované [odmítnutí platební karty při registraci do Azure](../../billing/billing-credit-card-fails-during-azure-sign-up.md).
 
-### <a name="change-credit-card-for-a-subscription"></a>Změna platební karty pro předplatné
+### <a name="change-credit-card-for-a-subscription-by-adding-a-new-credit-card"></a>Změna platební karty pro předplatné (přidání nové platební karty)
 
 Jako výchozí platební kartu pro předplatné Azure můžete zadat novou platební kartu, nebo kartu, kterou jste si už uložili na webu Azure Portal. Abyste mohli provést změnu platební karty, musíte být správce účtu. Pokud má více vašich předplatných stejný aktivní způsob platby, změnou aktivního způsobu platby u kteréhokoli z těchto předplatných zároveň aktualizujete aktivní způsob platby u ostatních předplatných.
 
@@ -57,7 +57,7 @@ Výchozí platební kartu předplatného můžete změnit na novou pomocí násl
 
 1. Vyberte **Další**.
 
-Pokud po přidání platební karty dojde k chybě, přečtěte si téma věnované [odmítnutí platební karty při registraci do Azure](../../billing/billing-credit-card-fails-during-azure-sign-up.md).
+### <a name="change-credit-card-for-a-subscription-to-a-previously-saved-credit-card"></a>Změna platební karty pro předplatné (použití už uložené platební karty)
 
 Výchozí platební kartu vašeho předplatného můžete také změnit na kartu, kterou jste si už ve vašem účtu uložili, a to pomocí následujících kroků:
 
@@ -93,7 +93,7 @@ Pokud dojde k obnovení vaší platební karty a její číslo zůstane stejné,
     ![Snímek obrazovky znázorňující vybranou platební kartu](./media/change-credit-card/edit-card-x.png)
 
 1. Aktualizujte údaje platební karty.
-1. Vyberte **Save** (Uložit).
+1. Vyberte **Uložit**.
 
 ### <a name="delete-a-credit-card-from-the-account"></a>Odstranění platební karty z účtu
 
@@ -107,7 +107,7 @@ Pokud dojde k obnovení vaší platební karty a její číslo zůstane stejné,
     ![Snímek obrazovky s vybranou možností Správa způsobů platby.](./media/change-credit-card/payment-methods-blade-x.png)
 
 1. Zaškrtněte políčko vedle karty, kterou chcete odebrat.
-1. Klikněte na tlačítko **Odstranit**.
+1. Klikněte na **Odstranit**.
 
 Pokud vaše platební karta představuje aktivní způsob platby pro některé z vašich předplatných Microsoftu, nemůžete ji z účtu Azure odebrat. Změňte aktivní způsob platby u všech předplatných spojených s touto platební kartou a zkuste to znovu.
 
@@ -116,6 +116,7 @@ Pokud vaše platební karta představuje aktivní způsob platby pro některé z
 Následující části se vztahují na zákazníky, kteří mají smlouvu se zákazníkem Microsoftu a zaregistrovali si Azure online pomocí platební karty. [Další informace o postupu při kontrole, jestli máte smlouvu se zákazníkem Microsoftu](#check-the-type-of-your-account).
 
 ### <a name="change-default-credit-card"></a>Změna výchozí platební karty
+
 Pokud máte smlouvu se zákazníkem Microsoftu, je vaše platební karta přidružená k fakturačnímu profilu. Způsob platby pro určitý fakturační profil může změnit jenom osoba, která provedla registraci v Azure a vytvořila fakturační účet.
 
 Pokud chcete jako výchozí způsob platby pro váš fakturační profil nastavit šek nebo bezhotovostní převod, projděte si téma [Úhrada předplatných Azure pomocí faktury](pay-by-invoice.md).
@@ -125,7 +126,7 @@ Pokud chcete změnit platební kartu, postupujte podle následujících kroků:
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.
 1. V nabídce na levé straně klikněte na **Fakturační profily**.
-1. Zvolte fakturační profil.
+1. Vyberte fakturační profil.
 1. V nabídce na levé straně vyberte **Způsoby platby**.
 
    ![Snímek obrazovky s možností Způsoby platby v nabídce](./media/change-credit-card/payment-methods-tab-mca.png)
@@ -145,7 +146,7 @@ Pokud chcete upravit nebo odstranit platební kartu, postupujte podle následuj�
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Vyhledejte **Cost Management a fakturace**.
 1. V nabídce na levé straně klikněte na **Fakturační profily**.
-1. Zvolte fakturační profil.
+1. Vyberte fakturační profil.
 1. V nabídce na levé straně vyberte **Způsoby platby**.
 
    ![Snímek obrazovky s možností Způsoby platby v nabídce](./media/change-credit-card/payment-methods-tab-mca.png)
@@ -159,9 +160,11 @@ Pokud chcete upravit nebo odstranit platební kartu, postupujte podle následuj�
 1. Pokud chcete platební karty odstranit, v místní nabídce vyberte **Odstranit**.
 
 ## <a name="troubleshooting"></a>Řešení potíží
+
 Virtuální ani předplacené karty nepodporujeme. Pokud při přidávání nebo aktualizaci platné platební karty dochází k chybám, zkuste otevřít prohlížeč v privátním režimu.
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
+
 V následujících částech najdete odpovědi na nejčastější dotazy týkající se změny údajů platebních karet.
 
 ### <a name="my-subscription-is-disabled-why-cant-i-remove-my-credit-card-now"></a>Moje předplatné je zablokované. Proč teď nemůžu odebrat platební kartu?
@@ -189,6 +192,7 @@ Pokud [platíte pomocí faktury](pay-by-invoice.md), zašlete svoji platbu na ad
 Pokud chcete přidat nebo aktualizovat DIČ, aktualizujte svůj profil v [Centru účtů Azure](https://account.azure.com/Profile) a vyberte **Daňové záznamy**. Toto DIČ slouží k výpočtu slevy na dani a zobrazí se na vaší faktuře.
 
 ## <a name="check-the-type-of-your-account"></a>Ověření typu účtu
+
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
@@ -196,4 +200,5 @@ Pokud chcete přidat nebo aktualizovat DIČ, aktualizujte svůj profil v [Centru
 Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Další kroky
+
 - Přečtěte si o [rezervacích Azure](../reservations/save-compute-costs-reservations.md) a zjistěte, jestli vám můžou ušetřit peníze.

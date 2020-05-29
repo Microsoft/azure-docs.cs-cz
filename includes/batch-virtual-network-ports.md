@@ -49,41 +49,41 @@ Další požadavky na virtuální síť se liší podle toho, jestli je fond Bat
 **Další síťové prostředky** – Batch automaticky přiděluje další síťové prostředky ve skupině prostředků obsahující virtuální síť.
 
 > [!IMPORTANT]
->Pro každý 50 vyhrazený uzel (nebo každý uzel s nízkou prioritou) dávka přiděluje: jednu skupinu zabezpečení sítě (NSG), jednu veřejnou IP adresu a jeden nástroj pro vyrovnávání zatížení. Pro tyto prostředky platí omezení [kvót prostředků](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. U rozsáhlých fondů možná budete muset požádat o zvýšení kvóty u jednoho nebo více těchto prostředků.
+>Za každých 50 vyhrazených uzlů (nebo každých 20 uzlů s nízkou prioritou) Batch přidělí: jednu skupinu zabezpečení sítě (NSG), jednu veřejnou IP adresu a jeden nástroj pro vyrovnávání zatížení. Pro tyto prostředky platí omezení [kvót prostředků](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. V případě velkých fondů možná bude potřeba požádat o navýšení kvóty pro jeden nebo několik z těchto prostředků.
 
-#### <a name="network-security-groups-batch-default"></a>Skupiny zabezpečení sítě: výchozí hodnota dávky
+#### <a name="network-security-groups-batch-default"></a>Skupiny zabezpečení sítě: Výchozí hodnota služby Batch
 
-Podsíť musí povolit příchozí komunikaci ze služby Batch, aby mohla plánovat úlohy na výpočetních uzlech, a odchozí komunikaci ke komunikaci s Azure Storage nebo jinými prostředky podle potřeby vašich úloh. Pro fondy v konfiguraci virtuálního počítače přidá Batch skupin zabezpečení sítě na úrovni síťových rozhraní (nic) připojených k výpočetním uzlům. Tyto skupin zabezpečení sítě jsou nakonfigurované s následujícími dalšími pravidly:
+Podsíť musí umožňovat příchozí komunikaci ze služby Batch, aby mohla plánovat úlohy na výpočetních uzlech, a odchozí komunikaci kvůli komunikaci se službou Azure Storage nebo jinými prostředky podle potřeb vaší úlohy. Pro fondy v konfiguraci virtuálního počítače přidává Batch skupiny zabezpečení sítě na úrovni síťových rozhraní připojených k výpočetním uzlům. U těchto skupin zabezpečení sítě jsou nakonfigurovaná následující další pravidla:
 
-* Příchozí provoz TCP na portech 29876 a 29877 z IP adres služby Batch, které odpovídají `BatchNodeManagement` značce služby.
-* Příchozí provoz přes protokol TCP na portu 22 (uzly s Linuxem) nebo portu 3389 (uzly s Windows) umožňující vzdálený přístup. U některých typů úkolů s více instancemi na platformě Linux (například MPI) budete muset taky u IP adres v podsíti, která obsahuje výpočetní uzly Batch, zapnout provoz protokolu SSH portu 22. To může být blokované podle pravidel NSG na úrovni podsítě (viz níže).
-* Odchozí provoz do virtuální sítě na jakémkoli portu. To může být změněno podle pravidel NSG na úrovni podsítě (viz níže).
-* Odchozí přenosy na jakémkoli portu na Internet. To může být změněno podle pravidel NSG na úrovni podsítě (viz níže).
+* Příchozí provoz přes protokol TCP na portech 29876 a 29877 z IP adres služby Batch, které odpovídají značce služby `BatchNodeManagement`.
+* Příchozí provoz přes protokol TCP na portu 22 (uzly s Linuxem) nebo portu 3389 (uzly s Windows) umožňující vzdálený přístup. U některých typů úkolů s více instancemi v Linuxu (jako je MPI) bude potřeba povolit také provoz přes protokol SSH na portu 22 pro IP adresy v podsíti, která obsahuje výpočetní uzly služby Batch. Toto je možné zablokovat pravidly NSG na úrovni podsítě (viz níže).
+* Odchozí provoz do virtuální sítě na jakémkoli portu. Toto je možné upravit pravidly NSG na úrovni podsítě (viz níže).
+* Odchozí provoz do internetu na jakémkoli portu. Toto je možné upravit pravidly NSG na úrovni podsítě (viz níže).
 
 > [!IMPORTANT]
-> Pokud potřebujete upravit nebo přidat pravidla příchozích nebo odchozích přenosů ve skupinách zabezpečení sítě nakonfigurovaných službou Batch, postupujte obezřetně. Pokud je komunikace s výpočetními uzly v zadané podsíti zakázaná skupinou NSG, nastaví služba Batch stav výpočetních uzlů na **nepoužitelné**. Kromě toho by neměly být žádné zámky prostředků aplikovány na žádný prostředek vytvořený dávkou, jinak to může způsobit, že vyčištění prostředků nebude v důsledku akcí iniciované uživatelem, jako je například odstranění fondu.
+> Pokud potřebujete upravit nebo přidat pravidla příchozích nebo odchozích přenosů ve skupinách zabezpečení sítě nakonfigurovaných službou Batch, postupujte obezřetně. Pokud je komunikace s výpočetními uzly v zadané podsíti zakázaná skupinou NSG, nastaví služba Batch stav výpočetních uzlů na **nepoužitelné**. Kromě toho by žádné prostředky vytvořené službou Batch neměly mít zámky prostředků, jinak může dojít k tomu, že v důsledku uživatelem zahájených akcí, jako je odstranění fondu, nedojde k vyčištění prostředků.
 
-#### <a name="network-security-groups-specifying-subnet-level-rules"></a>Skupiny zabezpečení sítě: zadání pravidel na úrovni podsítě
+#### <a name="network-security-groups-specifying-subnet-level-rules"></a>Skupiny zabezpečení sítě: Zadání pravidel na úrovni podsítě
 
-Není nutné zadávat skupin zabezpečení sítě na úrovni podsítě virtuální sítě, protože Batch konfiguruje vlastní skupin zabezpečení sítě (viz výše). Pokud máte NSG přidruženou k podsíti, ve které jsou nasazené výpočetní uzly Batch nebo chcete použít vlastní pravidla NSG pro přepsání výchozích hodnot, musíte tento NSG nakonfigurovat aspoň na pravidla zabezpečení příchozí a odchozí, jak je znázorněno v následujících tabulkách.
+Nemusíte zadávat skupiny zabezpečení sítě na úrovni podsítě virtuální sítě, protože služba Batch konfiguruje vlastní skupiny zabezpečení sítě (viz výše). Pokud máte k podsíti, ve které jsou nasazené výpočetní uzly služby Batch, přidruženou skupinu zabezpečení sítě nebo pokud chcete použít vlastní pravidla NSG a přepsat výchozí nastavení, musíte u této skupiny zabezpečení sítě nakonfigurovat alespoň příchozí a odchozí pravidla zabezpečení, jak je uvedeno v následujících tabulkách.
 
-Nakonfigurujte příchozí provoz na portu 3389 (Windows) nebo 22 (Linux) pouze v případě, že je třeba povolit vzdálený přístup k výpočetním uzlům z vnějších zdrojů. Pokud potřebujete podporu pro úlohy více instancí s některými MPI moduly runtime, možná budete muset povolit pravidla portu 22 v systému Linux. Povolení provozu na těchto portech není bezpodmínečně nutné, aby se pro výpočetní uzly fondu dala použít.
+Příchozí provoz na portu 3389 (Windows) nebo 22 (Linux) nakonfigurujte pouze v případě, že potřebujete povolit vzdálený přístup k výpočetním uzlům z externích zdrojů. Pokud potřebujete zajistit podporu úkolů s více instancemi a některými moduly runtime MPI, možná bude potřeba v Linuxu povolit pravidla pro port 22. Výpočetní uzly ve fondu budou použitelné i bez povolení provozu na těchto portech.
 
 **Příchozí pravidla zabezpečení**
 
 | Zdrojové IP adresy | Značka zdrojové služby | Zdrojové porty | Cíl | Cílové porty | Protocol (Protokol) | Akce |
 | --- | --- | --- | --- | --- | --- | --- |
-| – | `BatchNodeManagement`[Značka služby](../articles/virtual-network/security-overview.md#service-tags) (Pokud používáte oblastní variantu ve stejné oblasti jako účet Batch) | * | Všechny | 29876–29877 | TCP | Povolit |
-| IP adresy zdroje uživatelů pro vzdálené přístup k výpočetním uzlům a/nebo podsíti výpočetních uzlů pro úlohy s víc instancemi pro Linux, pokud je to potřeba. | – | * | Všechny | 3389 (Windows), 22 (Linux) | TCP | Povolit |
+| – | [Značka služby](../articles/virtual-network/security-overview.md#service-tags) `BatchNodeManagement` (pokud používáte místní variantu ve stejné oblasti jako váš účet Batch) | * | Všechny | 29876–29877 | TCP | Povolit |
+| Zdrojové IP adresy uživatelů pro vzdálený přístup k výpočetním uzlům nebo podsíti výpočetních uzlů pro úlohy Linuxu s více instancemi, pokud je to potřeba | – | * | Všechny | 3389 (Windows), 22 (Linux) | TCP | Povolit |
 
 > [!WARNING]
-> IP adresy služby Batch se můžou v průběhu času měnit. Proto se důrazně doporučuje použít tag `BatchNodeManagement` služby (nebo regionální variantu) pro pravidla NSG. Nedoporučuje se přímo naplnit pravidla NSG s IP adresami služby Batch.
+> IP adresy služby Batch se můžou v průběhu času měnit. Proto se důrazně doporučuje používat pro pravidla NSG značku služby `BatchNodeManagement` (nebo regionální variantu). Nedoporučuje se do pravidel NSG přímo doplnit IP adresy služby Batch.
 
 **Odchozí pravidla zabezpečení**
 
 | Zdroj | Zdrojové porty | Cíl | Značka cílové služby | Cílové porty | Protocol (Protokol) | Akce |
 | --- | --- | --- | --- | --- | --- | --- |
-| Všechny | * | [Značka služby](../articles/virtual-network/security-overview.md#service-tags) | `Storage`(Pokud používáte oblastní variantu, ve stejné oblasti jako účet Batch) | 443 | TCP | Povolit |
+| Všechny | * | [Značka služby](../articles/virtual-network/security-overview.md#service-tags) | `Storage` (pokud používáte místní variantu ve stejné oblasti jako váš účet Batch) | 443 | TCP | Povolit |
 
 ### <a name="pools-in-the-cloud-services-configuration"></a>Fondy v konfigurace služby Cloud Services
 
@@ -103,14 +103,14 @@ Podsíť musí umožňovat příchozí komunikaci ze služby Batch, aby mohla pl
 
 Není potřeba zadávat skupinu zabezpečení sítě, protože Batch konfiguruje příchozí komunikaci do uzlů fondu pouze z IP adres služby Batch. Pokud má však zadaná podsíť přiřazené skupiny zabezpečení sítě nebo bránu firewall, nakonfigurujte příchozí a odchozí pravidla zabezpečení podle následujících tabulek. Pokud je komunikace s výpočetními uzly v zadané podsíti zakázaná skupinou NSG, nastaví služba Batch stav výpočetních uzlů na **nepoužitelné**.
 
-Pokud potřebujete povolit přístup protokolu RDP k uzlům fondu, nakonfigurujte příchozí provoz na portu 3389 pro Windows. Uzly fondu budou použitelné i bez této konfigurace.
+Pokud potřebujete povolit přístup k uzlům fondu přes protokol RDP, nakonfigurujte pro Windows příchozí provoz na portu 3389. Uzly fondu budou použitelné i bez této konfigurace.
 
 **Příchozí pravidla zabezpečení**
 
 | Zdrojové IP adresy | Zdrojové porty | Cíl | Cílové porty | Protocol (Protokol) | Akce |
 | --- | --- | --- | --- | --- | --- |
 Všechny <br /><br />Přestože to efektivně vyžaduje „povolit vše“, služba Batch použije pravidlo seznamu ACL na úrovni každého uzlu, které filtruje všechny IP adresy, které nejsou služby Batch. | * | Všechny | 10100, 20100, 30100 | TCP | Povolit |
-| Volitelné, aby bylo umožněno přístupu RDP k výpočetním uzlům. | * | Všechny | 3389 | TCP | Povolit |
+| Volitelné povolení přístupu k výpočetním uzlům přes protokol RDP | * | Všechny | 3389 | TCP | Povolit |
 
 **Odchozí pravidla zabezpečení**
 

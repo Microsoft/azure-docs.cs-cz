@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: v-miegge
-ms.openlocfilehash: 7bcf3197ae218c469983200814cecf551dc42a6b
-ms.sourcegitcommit: edccc241bc40b8b08f009baf29a5580bf53e220c
+ms.openlocfilehash: 2ccb2b7fca8a5615d56c25b9ea09a26caf295a2b
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/24/2020
-ms.locfileid: "82133167"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745546"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Řešení potíží při registraci nového účtu na webu Azure Portal nebo Centru účtů Azure
 
@@ -63,7 +63,7 @@ Aktualizujte nastavení souborů cookie v prohlížeči následujícím postupem
 
 ### <a name="credit-card-form-doesnt-support-my-billing-address"></a>Formulář platební karty nepodporuje vaši fakturační adresu
 
-Vaše fakturační adresa musí být umístěná v zemi, kterou vyberete v části **Vaše údaje**. Zajistěte, abyste vybrali správnou zemi.
+Vaše fakturační adresa musí být v zemi nebo oblasti, kterou vyberete v části **Vaše údaje**. Ověřte, že jste vybrali správnou zemi nebo oblast.
 
 ### <a name="no-text-messages-or-calls-during-sign-up-account-verification"></a>Žádné textové zprávy ani hovory během ověřování účtu registrace
 
@@ -72,7 +72,7 @@ I když je proces obvykle rychlý, může doručení ověřovacího kódu trvat 
 Tady jsou některé další tipy:
 
 - Pro proces ověřování telefonem nejde použít telefonní číslo VoiP (Voice-over-IP).
-- Překontrolujte telefonní číslo, které zadáte, včetně kódu země, který vyberete v rozevírací nabídce.
+- Překontrolujte telefonní číslo, které zadáte, včetně kódu země nebo oblasti, který vyberete v rozevírací nabídce.
 - Pokud váš telefon nepřijímá textové zprávy (SMS), vyzkoušejte možnost **Zavolejte mi**.
 - Ujistěte se, že váš telefon může přijímat hovory nebo zprávy SMS z telefonních čísel v USA.
 

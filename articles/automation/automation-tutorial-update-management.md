@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: conceptual
 ms.date: 04/06/2020
 ms.custom: mvc
-ms.openlocfilehash: 5bc71c5462ed1c721d2c94f889146400a07dd19e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 917a7ccbf17fdb1e2691f1a3a8368b40006f6d7b
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119199"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170303"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Správa aktualizací a oprav pro virtuální počítače Azure
 
@@ -26,6 +26,10 @@ Než začnete používat postupy v tomto článku, ujistěte se, že jste ve sv�
 * [Povolení Update Management procházením Azure Portal](automation-onboard-solutions-from-browse.md)
 * [Povolení Update Managementu z runbooku](automation-onboard-solutions.md)
 * [Povolení Update Managementu z virtuálního počítače Azure](automation-onboard-solutions-from-vm.md)
+
+## <a name="limit-the-scope-for-the-deployment"></a><a name="scope-configuration"></a>Omezení rozsahu nasazení
+
+Update Management používá v rámci pracovního prostoru konfiguraci oboru pro cílení na počítače, aby přijímaly aktualizace. Další informace najdete v tématu [omezení rozsahu nasazení Update Management](automation-scope-configurations-update-management.md).
 
 ## <a name="view-update-assessment"></a>Zobrazení posouzení aktualizací
 
@@ -57,7 +61,7 @@ Pomocí následujících kroků nastavte výstrahy, které vám pomůžou zjisti
 
 5. Klikněte na **Přidat podmínku** a vyberte signál, který je vhodný pro nasazení aktualizace. V následující tabulce jsou uvedeny podrobnosti o dvou dostupných signálech.
 
-    |Název signálu|Dimenze|Description
+    |Název signálu|Dimenze|Popis
     |---|---|---|
     |`Total Update Deployment Runs`|– Název nasazení aktualizace<br>-Status    |Upozorní na celkový stav nasazení aktualizace.|
     |`Total Update Deployment Machine Runs`|– Název nasazení aktualizace</br>-Status</br>– Cílový počítač</br>– Aktualizovat ID běhu nasazení    |Upozorní na stav nasazení aktualizace zaměřeného na konkrétní počítače.|
@@ -201,5 +205,10 @@ Po dokončení nasazení aktualizace obdržíte výstrahu, kterou jste zadali b�
 
 ## <a name="next-steps"></a>Další kroky
 
+* Informace o konfiguracích oboru najdete v tématu [omezení rozsahu nasazení Update Management](automation-scope-configurations-update-management.md).
+* Pokud potřebujete hledat v protokolech uložených v pracovním prostoru Log Analytics, přečtěte si téma [prohledávání protokolů v](../log-analytics/log-analytics-log-searches.md)protokolech Azure monitor.
 * Pokud jste dokončili nasazení, přečtěte si téma [zrušení propojení pracovního prostoru s účtem Automation pro Update Management](automation-unlink-workspace-update-management.md).
 * Pokud chcete virtuální počítače odstranit z Update Management, přečtěte si téma [Odebrání virtuálních počítačů z Update Management](automation-remove-vms-from-update-management.md).
+* Pokud chcete řešit obecné chyby Update Management, přečtěte si téma [řešení potíží s Update Management](troubleshoot/update-management.md).
+* Informace o řešení problémů s agentem Windows Update najdete v tématu řešení potíží s [agentem pro Windows Update](troubleshoot/update-agent-issues.md).
+* Informace o řešení problémů s agentem aktualizací pro Linux najdete v tématu[řešení potíží s agentem aktualizace pro Linux](troubleshoot/update-agent-issues-linux.md).

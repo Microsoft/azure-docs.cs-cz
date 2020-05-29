@@ -3,34 +3,26 @@ title: Smlouvy k Azure EA a jejich změny
 description: Tento článek vysvětluje, jak smlouvy k Azure EA a jejich změny ovlivňují vaše používání portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/01/2020
+ms.date: 05/07/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 570a7b3bef702d0e42e23bc4b7af41cc431b9cc8
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 356b08526d96b6aa51a537a3dd1f7266cbf47141
+ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690996"
+ms.lasthandoff: 05/19/2020
+ms.locfileid: "83648177"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Smlouvy k Azure EA a jejich změny
 
 Tento článek popisuje, jak mohou smlouvy Azure EA a jejich změny ovlivnit váš přístup ke službám Azure, jejich používání a úhrady za ně.
 
-## <a name="amendment-status"></a>Stav změny
-
-Veškeré změny u zákazníků Azure musí projít přes jejich partnera nebo tým, který se stará o účty Microsoft, a musí je zpracovat regionální operační centrum. Pokud se domníváte, že se změna nezpracovala, obraťte se na svého partnera, softwarového poradce nebo tým, který se stará o účty Microsoft.
-
 ## <a name="enrollment-provisioning-status"></a>Stav zřízení registrace
 
 Počáteční datum nového peněžního závazku vyplývá z data, kdy ho regionální operační centrum zpracovalo. Vzhledem k tomu, že objednávky peněžních závazků prostřednictvím webu Azure EA Portal se zpracovávají v časovém pásmu UTC, může dojít ke zpoždění v případě, že nákupní objednávka peněžního závazku byla zpracována v jiné oblasti. Začátek peněžního závazku uvádí počáteční datum pokrytí v nákupní objednávce na webu https://www.explore.ms. Počáteční datum pokrytí představuje den, kdy se peněžní závazek zobrazí na portálu Azure EA.
 
-## <a name="support-offer-not-provisioned"></a>Nezřízení nabídky podpory
-
-Podporu Standard nebo Pro-Direct si můžete objednat zakoupením specifických skladových položek (SKU) představujících podporu. Objednávka se podobá nákupní objednávce položky SKU představující peněžní položku v rámci smlouvy EA. Například 6QK-00001. Čísla položek SKU představujících podporu jsou W6T-00002 (Pro-Direct) a W6T-00003 (Standard). Než si tyto jednotky SKU zakoupíte, projděte si aktuální nabídky podpory.
-
-Registrace musí zahrnovat alespoň jeden aktivní účet, aby bylo možné nabídku podpory zřídit.
+## <a name="support-for-enterprise-customers"></a>Podpora pro podnikové zákazníky
 
  Pro některé zákazníky je k dispozici [nabídka plánu podpory pro smlouvu Azure Enterprise](https://azure.microsoft.com/offers/enterprise-agreement-support/).
 
@@ -158,24 +150,6 @@ O navýšení kvóty můžete požádat kdykoli, a to odesláním [online žádo
 - ID předplatného vývojářského portálu Azure přidruženého k vaší službě.
   - Pokud potřebujete informace o tom, jak zjistit ID předplatného, [kontaktujte prosím podporu](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview).
 
-## <a name="azure-compute-pre-purchase-plan-cpp"></a>Plán předběžného nákupu pro výpočty Azure (CPP)
-
-Plán předběžného nákupu pro výpočty Azure (CPP – dříve označovaný jako Azure Compute Promo) je nabídka, která zákazníkům se stabilními a předvídatelnými úlohami poskytuje příležitost získat výpočetní funkce s výraznou slevou, a to předplacením výpočtů Azure na dobu 12 měsíců. Je k dispozici pro EA a zobrazuje se na webu EA Portal.
-
-Pokud jste si objednali skladovou položku CPP, je určená pro konkrétní typ počítače v konkrétním datacentru. V současnosti v rámci této funkce neposkytujeme seznam všech nákupů CPP, které zákazník realizoval, takže neexistuje seznam nevyužitých kreditů. Pokud si ale zakoupené typy počítačů nakonfigurujete v datacentru, ve kterém byly zakoupené, bude se vám na webu EA Portal zobrazovat měsíční přidělení v sestavě souhrnu využití.
-
-Předplacená částka se bude zobrazovat jako kredit ve sloupci Zahrnuté jednotky a za využití příslušných funkcí se nebudou účtovat žádné poplatky, dokud se tyto zahrnuté jednotky nespotřebují. Jakmile se spotřebují, bude se další využití účtovat vyjednanými sazbami v běžném ceníku pro zákazníky EA.
-
-Způsob nákupu kreditů vychází z počtu počítačů konkrétní třídy za měsíc. Příklad: Pokud jste si koupili 70 virtuálních počítačů A2 na roky v oblasti USA – východ 2, nebude se tato skutečnost na webu EA Portal zobrazovat stejným způsobem jako při nákupu.
-
-Měsíční počítače se počítají tak, jako kdyby běžely 744 hodin za měsíc. Převod této doby na hodiny je 70 krát 744 neboli 52 080 zakoupených hodin virtuálních počítačů A2 za měsíc. Vzhledem k tomu, že na webu EA Portal se v souhrnu využití virtuální počítače A2 uvádějí v přírůstcích po 100 hodinách, uvidíte kredit 520,8 (52 080/100) zahrnutých jednotek za měsíc a také se vám zobrazí jednotky, které jste v aktuálním měsíci už spotřebovali. Poplatky za využití se budou zobrazovat jako nula, dokud spotřebované jednotky za měsíc nepřekročí měsíční zahrnutý počet jednotek.
-
-Různé typy počítačů používají různé měrné jednotky. Například virtuální počítače D3 a D4 v sestavě souhrnu využití jako měrnou jednotku používají 10 hodin, takže nákup 70 takových počítačů by představoval 5 208 zahrnutých jednotek za měsíc (52080/10).
-
-Následující vzorec uvádí počet zakoupených virtuálních počítačů na základě jejich měrné jednotky:
-
-<center><b> (zahrnuté množství × měrná jednotka)/744 </b></center>
-
 ## <a name="plan-skus"></a>Skladové položky plánu
 
 Skladové položky plánu nabízejí možnost zakoupit si sadu integrovaných služeb společně se zvýhodněnou sazbou. Skladové jednotky plánu jsou navržené tak, aby se vzájemně doplňovaly prostřednictvím dalších integrovaných nabídek a slouží k větší úspoře nákladů.
@@ -191,35 +165,6 @@ Podnikoví správci můžou přiřazovat vlastníky účtů, aby zřizovali dř�
 1. Klikněte na kartu **Ceník**.
 1. Klikněte na ikonu Stáhnout v pravém horním rohu.
 1. Vyhledejte odpovídající výrobní čísla skladových položek plánu pomocí filtru pro sloupec Zahrnuté množství a vyberte hodnoty větší než 0.
-
-### <a name="provision-the-plan-skus"></a>Zřízení skladových položek plánu
-
-Podnikoví správci můžou přidat nové vlastníky účtů, přidružit stávajícího vlastníka účtu nebo požádat stávající vlastníky účtu, aby se přihlásili k portálu Azure EA Portal a zřídili dříve zakoupené skladové položky plánu na portálu Azure EA Portal pomocí následujících kroků.  
-
-**Přidání nového vlastníka účtu (dokončeno správcem EA):**
-
-1. V levém navigačním panelu portálu Azure EA Portal vyberte **Spravovat**.
-1. Klikněte na kartu **Účet**.
-1. Na stránce Účet klikněte na **+ Přidat účet**.
-1. Vyberte oddělení nebo nechte jako nepřiřazené.
-1. Vyberte požadovaný typ ověřování.
-1. Zadejte popisný název, který chcete použít k identifikaci tohoto účtu v sestavách.
-1. Zadejte e-mailovou adresu vlastníka účtu, kterou chcete přidružit k novému účtu.
-1. Potvrďte e-mailovou adresu, kterou chcete mít přidruženou k novému účtu.
-1. Klikněte na tlačítko **Add** (Přidat).
-1. Můžete přidat další účet, a to kliknutím na **Přidat další účet** nebo na tlačítko **Přidat** v pravém dolním rohu levého panelu nástrojů.
-1. Nyní se vlastník účtu může přihlásit a přidat příslušná předplatná ke zřízení skladových položek plánu.
-
-**Přidružení stávajícího vlastníka účtu:**
-
-1. Na portálu Enterprise Portal klikněte na **Spravovat**.
-1. Klikněte na kartu **Účet**.
-1. Klikněte na **+ Přidat účet**. Zadejte účet Microsoft nebo pracovní nebo školní účet přidružený ke stávajícímu účtu.
-1. Potvrďte účet Microsoft nebo pracovní nebo školní účet přidružený ke stávajícímu účtu.
-1. Zadejte název, který chcete použít k identifikaci tohoto účtu v sestavách.
-1. Klikněte na tlačítko **Add** (Přidat).
-1. Můžete znovu vybrat možnost **+ Přidat účet** a přidat další účet nebo se výběrem tlačítka **Správce** můžete vrátit na domovskou stránku.  
-1. Pokud si zobrazíte stránku Účet, nově přidaný účet se zobrazí ve stavu čekání na vyřízení. Po prvním přihlášení vlastníka účtu k webu EA Portal se změní stav na aktivní.
 
 ### <a name="existingnew-account-owners-to-create-new-subscriptions"></a>Stávající a noví vlastníci účtů pro vytváření nových předplatných
 
