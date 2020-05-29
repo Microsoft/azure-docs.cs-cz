@@ -9,16 +9,16 @@ ms.topic: include
 ms.date: 03/17/2020
 ms.author: aahi
 ms.reviewer: assafi
-ms.openlocfilehash: 0e98a10573a2e3abda255c325845190ed5067bb3
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 979c714ca5446d3f1eabb76e97535ee5ffa2e359
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778184"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140700"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 [Referenční dokumentace V3](https://aka.ms/azsdk-net-textanalytics-ref-docs)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics)  |  knihovny v3 [balíček V3 (NuGet)](https://www.nuget.org/packages/Azure.AI.TextAnalytics)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics/samples)
 
@@ -42,9 +42,9 @@ ms.locfileid: "83778184"
 
 Pomocí integrovaného vývojového prostředí (IDE) sady Visual Studio vytvořte novou konzolovou aplikaci .NET Core. Tím se vytvoří projekt "Hello World" s jedním zdrojovým souborem C#: *program.cs*.
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-Nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Procházet**, zaškrtněte políčko **Zahrnout předprodejní**a vyhledejte `Azure.AI.TextAnalytics` . Vyberte verzi `1.0.0-preview.4` a pak **nainstalujte**. Můžete také použít [konzolu Správce balíčků](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
+Nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení v **Průzkumník řešení** a vyberete **Spravovat balíčky NuGet**. Ve Správci balíčků, který se otevře, vyberte **Procházet**, zaškrtněte políčko **Zahrnout předprodejní**a vyhledejte `Azure.AI.TextAnalytics` . Vyberte verzi `1.0.0-preview.5` a pak **nainstalujte**. Můžete také použít [konzolu Správce balíčků](https://docs.microsoft.com/nuget/consume-packages/install-use-packages-powershell#find-and-install-a-package).
 
 > [!TIP]
 > Chcete zobrazit celý soubor kódu pro rychlý Start najednou? Můžete ji najít [na GitHubu](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/TextAnalytics/program.cs), který obsahuje příklady kódu v tomto rychlém startu. 
@@ -58,7 +58,7 @@ Nainstalujte knihovnu klienta tak, že kliknete pravým tlačítkem na řešení
 
 ---
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Otevřete soubor *program.cs* a přidejte následující `using` direktivy:
 
@@ -121,7 +121,7 @@ Nahraďte metodu aplikace `Main` . Zde budete definovat metody, které jsou zde 
 
 Klient Analýza textu je `TextAnalyticsClient` objekt, který se ověřuje v Azure pomocí vašeho klíče a poskytuje funkce pro příjem textu jako jednoho řetězce nebo jako dávky. Text do rozhraní API můžete synchronně nebo asynchronně posílat. Objekt odpovědi bude obsahovat informace o analýze pro každý dokument, který odešlete. 
 
-Pokud používáte verzi `3.0-preview` služby, můžete použít volitelnou `TextAnalyticsClientOptions` instanci pro inicializaci klienta s různými výchozími nastaveními (například výchozí jazyk nebo doporučení země/oblasti). Můžete se také ověřit pomocí Azure Active Directoryho tokenu. 
+Pokud používáte verzi `3.0` služby, můžete použít volitelnou `TextAnalyticsClientOptions` instanci pro inicializaci klienta s různými výchozími nastaveními (například výchozí jazyk nebo doporučení země/oblasti). Můžete se také ověřit pomocí Azure Active Directoryho tokenu. 
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -133,7 +133,7 @@ Pokud používáte verzi `3.0-preview` služby, můžete použít volitelnou `Te
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Zajistěte, aby metoda Main z dřívějších verzí vytvořila nový objekt klienta s vaším koncovým bodem a přihlašovacími údaji.
 
@@ -155,7 +155,7 @@ Vytvořte metodu pro vytvoření instance objektu [TextAnalyticsClient](https://
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Vytvořte novou funkci s názvem `SentimentAnalysisExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `AnalyzeSentiment()` funkci. Vrácený `Response<DocumentSentiment>` objekt bude obsahovat popisek mínění a skóre celého vstupního dokumentu a také analýzu mínění pro každou větu, pokud je úspěšná. Pokud došlo k chybě, vyvolá se `RequestFailedException` .
 
@@ -169,8 +169,7 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
     var si = new StringInfo(inputText);
     foreach (var sentence in documentSentiment.Sentences)
     {
-        Console.WriteLine($"\tSentence [length {sentence.GraphemeLength}]");
-        Console.WriteLine($"\tText: \"{si.SubstringByTextElements(sentence.GraphemeOffset, sentence.GraphemeLength)}\"");
+        Console.WriteLine($"\tText: \"{sentence.Text}\"");
         Console.WriteLine($"\tSentence sentiment: {sentence.Sentiment}");
         Console.WriteLine($"\tPositive score: {sentence.ConfidenceScores.Positive:0.00}");
         Console.WriteLine($"\tNegative score: {sentence.ConfidenceScores.Negative:0.00}");
@@ -184,14 +183,12 @@ static void SentimentAnalysisExample(TextAnalyticsClient client)
 ```console
 Document sentiment: Positive
 
-        Sentence [length 30]
         Text: "I had the best day of my life."
         Sentence sentiment: Positive
         Positive score: 1.00
         Negative score: 0.00
         Neutral score: 0.00
 
-        Sentence [length 30]
         Text: "I wish you were there with me."
         Sentence sentiment: Neutral
         Positive score: 0.21
@@ -215,7 +212,7 @@ Sentiment Score: 0.87
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 
 Vytvořte novou funkci s názvem `LanguageDetectionExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `DetectLanguage()` funkci. Vrácený `Response<DetectedLanguage>` objekt bude obsahovat zjištěný jazyk spolu s jeho názvem a kódem ISO-6391. Pokud došlo k chybě, vyvolá se `RequestFailedException` .
@@ -258,11 +255,11 @@ Language: English
 
 ## <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 
 > [!NOTE]
-> Novinka ve verzi `3.0-preview` :
+> Novinka ve verzi `3.0` :
 > * Propojení entit je teď oddělené od rozpoznávání entit.
 
 
@@ -276,7 +273,7 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
     foreach (var entity in response.Value)
     {
         Console.WriteLine($"\tText: {entity.Text},\tCategory: {entity.Category},\tSub-Category: {entity.SubCategory}");
-        Console.WriteLine($"\t\tLength: {entity.GraphemeLength},\tScore: {entity.ConfidenceScore:F2}\n");
+        Console.WriteLine($"\t\tScore: {entity.ConfidenceScore:F2}\n");
     }
 }
 ```
@@ -285,11 +282,14 @@ static void EntityRecognitionExample(TextAnalyticsClient client)
 
 ```console
 Named Entities:
+        Text: trip,     Category: Event,        Sub-Category:
+                Score: 0.61
+
         Text: Seattle,  Category: Location,     Sub-Category: GPE
-                Length: 7,      Score: 0.92
+                Score: 0.82
 
         Text: last week,        Category: DateTime,     Sub-Category: DateRange
-                Length: 9,      Score: 0.80
+                Score: 0.80
 ```
 
 ## <a name="entity-linking"></a>Propojení entit
@@ -313,7 +313,7 @@ static void EntityLinkingExample(TextAnalyticsClient client)
         foreach (var match in entity.Matches)
         {
             Console.WriteLine($"\t\tText: {match.Text}");
-            Console.WriteLine($"\t\tLength: {match.GraphemeLength},\tScore: {match.ConfidenceScore:F2}\n");
+            Console.WriteLine($"\t\tScore: {match.ConfidenceScore:F2}\n");
         }
     }
 }
@@ -326,38 +326,38 @@ Linked Entities:
         Name: Altair 8800,      ID: Altair 8800,        URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
                 Text: Altair 8800
-                Length: 11,     Score: 0.78
+                Score: 0.88
 
         Name: Bill Gates,       ID: Bill Gates, URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
                 Text: Bill Gates
-                Length: 10,     Score: 0.55
+                Score: 0.63
 
                 Text: Gates
-                Length: 5,      Score: 0.55
+                Score: 0.63
 
         Name: Paul Allen,       ID: Paul Allen, URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
                 Text: Paul Allen
-                Length: 10,     Score: 0.53
+                Score: 0.60
 
         Name: Microsoft,        ID: Microsoft,  URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
                 Text: Microsoft
-                Length: 9,      Score: 0.47
+                Score: 0.55
 
                 Text: Microsoft
-                Length: 9,      Score: 0.47
+                Score: 0.55
 
         Name: April 4,  ID: April 4,    URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
                 Text: April 4
-                Length: 7,      Score: 0.25
+                Score: 0.32
 
         Name: BASIC,    ID: BASIC,      URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
                 Text: BASIC
-                Length: 5,      Score: 0.28
+                Score: 0.33
 ```
 
 #### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
@@ -374,7 +374,7 @@ Vytvořte novou funkci s názvem `RecognizeEntitiesExample()` , která převezme
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Vytvořte novou funkci s názvem `KeyPhraseExtractionExample()` , která převezme klienta, který jste vytvořili dříve, a zavolejte jeho `ExtractKeyPhrases()` funkci. Vrácený `<Response<IReadOnlyCollection<string>>` objekt bude obsahovat seznam zjištěných klíčových frází. Pokud došlo k chybě, vyvolá se `RequestFailedException` .
 

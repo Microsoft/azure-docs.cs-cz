@@ -7,14 +7,14 @@ author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 05/26/2020
 ms.author: dapine
-ms.openlocfilehash: 885f92bfb7a49fb90f68d3d5c5a2a93e5880afbc
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8fcac761ab1f0805a3b2b75107e0119fbfb9db6e
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83588332"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148085"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurace virtuálních sítí Azure Cognitive Services
 
@@ -84,7 +84,7 @@ Ve výchozím nastavení Cognitive Services prostředky přijímají připojení
 
 Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete spravovat výchozí pravidla přístupu k síti pro Cognitive Services prostředky.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[portál Azure](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 
@@ -186,7 +186,7 @@ Cognitive Services prostředku a povolený přístup k virtuálním sítím mů�
 
 Pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure můžete spravovat pravidla virtuální sítě pro prostředky Cognitive Services.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[portál Azure](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 
@@ -361,7 +361,7 @@ Pokud používáte místní [ExpressRoute](../expressroute/expressroute-introduc
 
 Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 
-# <a name="azure-portal"></a>[Azure Portal](#tab/portal)
+# <a name="azure-portal"></a>[portál Azure](#tab/portal)
 
 1. Přejít na prostředek Cognitive Services, který chcete zabezpečit.
 
@@ -484,6 +484,68 @@ Pravidla sítě IP pro Cognitive Services prostředky můžete spravovat pomocí
 
 > [!IMPORTANT]
 > Ujistěte se, že jste [výchozí pravidlo nastavili](#change-the-default-network-access-rule) na **Odepřít**, nebo že Síťová pravidla nemají žádný vliv.
+
+## <a name="use-private-endpoints"></a>Použití privátních koncových bodů
+
+Pro prostředky Cognitive Services můžete použít [soukromé koncové body](../private-link/private-endpoint-overview.md) , které umožní klientům ve virtuální síti (VNET) zabezpečený přístup k datům prostřednictvím [privátního propojení](../private-link/private-link-overview.md). Privátní koncový bod používá IP adresu z adresního prostoru virtuální sítě pro prostředek Cognitive Services. Síťový provoz mezi klienty ve virtuální síti a prostředkem projde virtuální síť a privátní odkaz na páteřní síti Microsoftu a odstraní tak expozici veřejného Internetu.
+
+Soukromé koncové body pro Cognitive Services prostředky vám umožní:
+
+- Zabezpečte Cognitive Services prostředek tak, že nakonfigurujete bránu firewall tak, aby blokovala všechna připojení na veřejném koncovém bodu služby Cognitive Services.
+- Zvyšte zabezpečení virtuální sítě tím, že vám umožníte blokovat exfiltrace dat z virtuální sítě.
+- Bezpečně se připojte k Cognitive Services prostředkům z místních sítí, které se připojují k virtuální síti pomocí [sítě VPN](../vpn-gateway/vpn-gateway-about-vpngateways.md) nebo [ExpressRoutes](../expressroute/expressroute-locations.md) s privátním partnerským vztahem.
+
+### <a name="conceptual-overview"></a>Koncepční přehled
+
+Privátní koncový bod je speciální síťové rozhraní pro službu Azure ve vaší [virtuální](../virtual-network/virtual-networks-overview.md)síti. Když vytvoříte privátní koncový bod pro prostředek Cognitive Services, zajistíte zabezpečené připojení mezi klienty ve vaší virtuální síti a vaším prostředkem. Privátnímu koncovému bodu je přiřazena IP adresa z rozsahu IP adres vaší virtuální sítě. Připojení mezi soukromým koncovým bodem a službou Cognitive Services používá zabezpečený privátní odkaz.
+
+Aplikace ve virtuální síti se můžou bez problémů připojit ke službě přes soukromý koncový bod pomocí stejných připojovacích řetězců a mechanismů autorizace, které by jinak používaly. Výjimkou je služba pro rozpoznávání řeči, která vyžaduje samostatný koncový bod. Podívejte se na část u [soukromých koncových bodů pomocí služby Speech](#private-endpoints-with-the-speech-service). Soukromé koncové body lze použít se všemi protokoly podporovanými prostředkem Cognitive Services, včetně REST.
+
+V podsítích, které používají [koncové body služby](../virtual-network/virtual-network-service-endpoints-overview.md), lze vytvořit privátní koncové body. Klienti v podsíti se mohou připojit k jednomu Cognitive Services prostředku pomocí privátního koncového bodu a při použití koncových bodů služby k přístupu k ostatním.
+
+Když vytvoříte privátní koncový bod pro prostředek Cognitive Services ve vaší virtuální síti, pošle se žádost o souhlas ke schválení vlastníkem prostředku Cognitive Services. Pokud uživatel žádající o vytvoření privátního koncového bodu je zároveň vlastníkem prostředku, je tato žádost o souhlas automaticky schválena.
+
+Cognitive Services vlastníci prostředků mohou spravovat žádosti o souhlas a soukromé koncové body prostřednictvím karty*privátní koncové body*pro prostředek Cognitive Services v [Azure Portal](https://portal.azure.com).
+
+### <a name="private-endpoints"></a>Soukromé koncové body
+
+Při vytváření privátního koncového bodu je nutné zadat prostředek Cognitive Services, ke kterému se připojuje. Další informace o vytváření privátního koncového bodu najdete v následujících článcích:
+
+- [Vytvoření privátního koncového bodu pomocí centra privátního spojení v Azure Portal](../private-link/create-private-endpoint-portal.md)
+- [Vytvoření privátního koncového bodu pomocí Azure CLI](../private-link/create-private-endpoint-cli.md)
+- [Vytvoření privátního koncového bodu pomocí Azure PowerShell](../private-link/create-private-endpoint-powershell.md)
+
+### <a name="connecting-to-private-endpoints"></a>Připojování k soukromým koncovým bodům
+
+Klienti ve virtuální síti s použitím privátního koncového bodu by měli použít stejný připojovací řetězec pro prostředek Cognitive Services jako klienti připojující se ke veřejnému koncovému bodu. Výjimkou je služba pro rozpoznávání řeči, která vyžaduje samostatný koncový bod. Podívejte se na část u [soukromých koncových bodů pomocí služby Speech](#private-endpoints-with-the-speech-service). Pro automatické směrování připojení z virtuální sítě do Cognitive Services prostředku prostřednictvím privátního propojení spoléháme na překlad DNS. Služba rozpoznávání řeči 
+
+Ve výchozím nastavení vytvoříme [privátní ZÓNU DNS](../dns/private-dns-overview.md) připojenou k virtuální síti s nezbytnými aktualizacemi pro privátní koncové body. Pokud ale používáte vlastní server DNS, možná budete muset provést další změny v konfiguraci DNS. Oddíl o [změnách DNS](#dns-changes-for-private-endpoints) níže popisuje aktualizace vyžadované pro soukromé koncové body.
+
+### <a name="private-endpoints-with-the-speech-service"></a>Soukromé koncové body pomocí služby Speech
+
+Při použití privátních koncových bodů se službou Speech je nutné použít vlastní koncový bod pro volání rozhraní API služby Speech. Nemůžete použít globální koncový bod. Měli byste použít koncový bod ve formátu {Account}. {STT | TTS | Voice | DLS}. Speech. Microsoft. com.
+
+### <a name="dns-changes-for-private-endpoints"></a>Změny DNS u privátních koncových bodů
+
+Při vytváření privátního koncového bodu se záznam prostředku CNAME DNS pro prostředek Cognitive Services aktualizuje na alias v subdoméně s předponou '*privatelink*'. Ve výchozím nastavení vytvoříme také [privátní ZÓNU DNS](../dns/private-dns-overview.md), která odpovídá subdoméně*privatelink*, a záznamy prostředků DNS pro privátní koncové body.
+
+Při překladu adresy URL koncového bodu mimo virtuální síť s privátním koncovým bodem se přeloží na veřejný koncový bod prostředku Cognitive Services. Při vyřešení z virtuální sítě hostující soukromý koncový bod adresa URL koncového bodu se přeloží na IP adresu privátního koncového bodu.
+
+Tento přístup umožňuje přístup k prostředku Cognitive Services pomocí stejného připojovacího řetězce pro klienty ve virtuální síti, která je hostitelem privátních koncových bodů, a taky klientů mimo virtuální síť.
+
+Pokud ve vaší síti používáte vlastní server DNS, klienti musí být schopni přeložit plně kvalifikovaný název domény (FQDN) pro koncový bod prostředku Cognitive Services na IP adresu privátního koncového bodu. Server DNS byste měli nakonfigurovat tak, aby delegoval subdoménu privátního propojení s privátní zónou DNS pro virtuální síť.
+
+> [!TIP]
+> Pokud používáte vlastní nebo místní server DNS, měli byste server DNS nakonfigurovat tak, aby přeložil Cognitive Services název prostředku v subdoméně ' privatelink ' na IP adresu privátního koncového bodu. Můžete to udělat tak, že delegujete subdoménu privatelink do privátní zóny DNS virtuální sítě nebo nakonfigurujete zónu DNS na serveru DNS a přidáte záznamy DNS a.
+
+Další informace o konfiguraci vlastního serveru DNS pro podporu privátních koncových bodů najdete v následujících článcích:
+
+- [Překlad názvů pro prostředky ve virtuálních sítích Azure](https://docs.microsoft.com/azure/virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances#name-resolution-that-uses-your-own-dns-server)
+- [Konfigurace DNS pro privátní koncové body](https://docs.microsoft.com/azure/private-link/private-endpoint-overview#dns-configuration)
+
+### <a name="pricing"></a>Ceny
+
+Podrobnosti o cenách najdete v tématu [ceny za privátní propojení Azure](https://azure.microsoft.com/pricing/details/private-link).
 
 ## <a name="next-steps"></a>Další kroky
 

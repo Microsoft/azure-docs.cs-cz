@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/06/2020
 ms.topic: how-to
-ms.openlocfilehash: 104a583122fa08cf145191b8bcee49ce5f042599
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e3be1f9ec900655f4dae45abd402ff8e6a56e283
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021394"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147935"
 ---
 # <a name="configure-the-model-conversion"></a>Konfigurace převodu modelů
 
@@ -178,7 +178,7 @@ Tyto formáty jsou povolené pro příslušné součásti:
 
 Paměťové nároky na formáty jsou následující:
 
-| Formát | Description | Počet bajtů za sekundu:::no-loc text="vertex"::: |
+| Formát | Popis | Počet bajtů za sekundu:::no-loc text="vertex"::: |
 |:-------|:------------|:---------------|
 |32_32_FLOAT|Úplná přesnost plovoucí desetinné čárky se dvěma komponentami|8
 |16_16_FLOAT|poloviční přesnost s plovoucí desetinnou čárkou pro dvě komponenty|4
@@ -202,6 +202,51 @@ Předpokládejme, že máte model Photogrammetry, který má vloženými osvětl
 Ve výchozím nastavení má převaděč předpokládat, že v modelu můžete chtít používat i materiály PBR, takže vygeneruje `normal` `tangent` data, a `binormal` za vás. V důsledku toho je využití paměti na vrcholu `position` (12 bajtů) + `texcoord0` (8 bajtů) + `normal` (4 bajty) + `tangent` (4 bajty) + `binormal` (4 bajt) = 32 bajtů. Větší modely tohoto typu můžou snadno mít spoustu milionů :::no-loc text="vertices"::: výsledků v modelech, které můžou zabírat více GB paměti. Takové velké objemy dat budou mít vliv na výkon a dokonce i nedostatek paměti.
 
 S vědomím, že pro model nikdy nepotřebujete dynamické osvětlení a že všechny souřadnice textury jsou v `[0; 1]` rozsahu, můžete nastavit `normal` , `tangent` , a `binormal` na `NONE` a `texcoord0` na polovinu přesnosti ( `16_16_FLOAT` ), což má za následek jenom 16 bajtů :::no-loc text="vertex"::: . Rozřezání dat sítě na polovinu umožňuje načíst větší modely a potenciálně zvyšuje výkon.
+
+## <a name="memory-optimizations"></a>Optimalizace paměti
+
+Spotřeba paměti načteného obsahu se může stát kritickým bodem v systému vykreslování. Pokud je datová část paměti příliš velká, může dojít k ohrožení výkonu vykreslování nebo k tomu, že se model nenačte úplně. Tento článek popisuje některé důležité strategie, které snižují nároky na paměť.
+
+### <a name="instancing"></a>Vytváření instancí
+
+Vytváření instancí je koncept, ve kterém jsou opakovaně použity sítě pro součásti s odlišnými prostorovými transformacemi, a to na rozdíl od každé části odkazující na svou vlastní jedinečnou geometrii. Vytváření instancí má významný vliv na nároky na paměť.
+Příklady případů použití pro vytváření instancí jsou šrouby v modelu motoru nebo židle v modelu architektury.
+
+> [!NOTE]
+> Vytváření instancí může zlepšit spotřebu paměti (a tím i časy načítání), ale vylepšení na straně výkonu vykreslování jsou nevýznamná.
+
+Služba konverze ctí vytváření instancí, pokud jsou části ve zdrojovém souboru označeny odpovídajícím způsobem. Převod však neprovádí další hloubkovou analýzu dat sítě k identifikaci opakovaně použitelných částí. Nástroj pro vytváření obsahu a jeho exportní kanál jsou tedy rozhodujícím kritériem pro správné nastavení vytváření instancí.
+
+Jednoduchý způsob, jak otestovat, zda jsou informace o vytváření instancí při převodu zachované, je podívat se na [výstupní statistiky](get-information.md#example-info-file)konkrétně na `numMeshPartsInstanced` člena. Pokud je hodnota pro `numMeshPartsInstanced` větší než nula, znamená to, že se sítě sdílí mezi instancemi.
+
+#### <a name="example-instancing-setup-in-3ds-max"></a>Příklad: vytváření instancí v instalaci v nástroji 3ds Max
+
+Modul [Autodesk 3ds Max](https://www.autodesk.de/products/3ds-max) obsahuje odlišné režimy klonování objektů **`Copy`** , **`Instance`** které se **`Reference`** chovají jinak, s ohledem na vytváření instancí v exportovaném `.fbx` souboru.
+
+![Klonování v 3ds Max](./media/3dsmax-clone-object.png)
+
+* **`Copy`**: V tomto režimu se naklonuje síť, takže se nepoužijí žádné vytváření instancí ( `numMeshPartsInstanced` = 0).
+* **`Instance`**: Tyto dva objekty sdílejí stejnou síť, takže se používají vytváření instancí ( `numMeshPartsInstanced` = 1).
+* **`Reference`**: V geometrií lze použít rozdílné modifikátory, takže Exportér vybírá konzervativní přístup a nepoužívá vytváření instancí ( `numMeshPartsInstanced` = 0).
+
+
+### <a name="depth-based-composition-mode"></a>Režim skládání na základě hloubky
+
+Pokud se jedná o problém, nakonfigurujte modul pro vykreslování pomocí [režimu kompozice na základě hloubky](../../concepts/rendering-modes.md#depthbasedcomposition-mode). V tomto režimu je datová část GPU distribuována mezi více GPU.
+
+### <a name="decrease-vertex-size"></a>Zmenšit velikost vrcholu
+
+Jak je popsáno v části [osvědčené postupy pro změny formátu komponent](configure-model-conversion.md#best-practices-for-component-format-changes) , úprava formátu vrcholu může snížit nároky na paměť. Tato možnost by však měla být poslední možností.
+
+### <a name="texture-sizes"></a>Velikosti textury
+
+V závislosti na typu scénáře mohou množství dat textury převážit velikost paměti používané pro data sítě. Modely Photogrammetry jsou kandidáti.
+Konfigurace převodu neposkytuje způsob, jak automaticky škálovat textury. V případě potřeby je potřeba škálovat texturu jako krok předběžného zpracování na straně klienta. Krok převodu ale vyberte vhodný [Formát komprese textury](https://docs.microsoft.com/windows/win32/direct3d11/texture-block-compression-in-direct3d-11):
+
+* `BC1`pro neprůhledné textury barev
+* `BC7`pro zdrojové textury barev s alfa kanálem
+
+Vzhledem k tomu, že formát `BC7` má dvojnásobek paměti `BC1` , která je v porovnání s, je důležité zajistit, aby vstupní textury neposkytovaly alfa kanál zbytečně.
 
 ## <a name="typical-use-cases"></a>Typické případy použití
 

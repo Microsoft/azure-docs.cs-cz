@@ -3,18 +3,18 @@ title: Kurz – konfigurace sítě pro privátní cloud VMware v Azure
 description: Naučte se vytvářet a konfigurovat sítě potřebné k nasazení privátního cloudu v Azure.
 ms.topic: tutorial
 ms.date: 05/04/2020
-ms.openlocfilehash: 5a8086f78f465f52d0f9107932c09c4690f505e8
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 6cac420fb77526746dbdbfef5a88b071c007d555
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873853"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148102"
 ---
-# <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Kurz: konfigurace sítě pro privátní cloud VMWare v Azure
+# <a name="tutorial-configure-networking-for-your-vmware-private-cloud-in-azure"></a>Kurz: konfigurace sítě pro privátní cloud VMware v Azure
 
 Privátní cloud řešení Azure VMware (AVS) vyžaduje virtuální síť. Protože aplikace AVS v rámci verze Preview nepodporuje vaše místní vCenter, je potřeba provést další kroky pro integraci s místním prostředím. Nastavení okruhu ExpressRoute a Virtual Network brány jsou také potřeba a budou řešeny v tomto kurzu.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření virtuální sítě
@@ -68,10 +68,10 @@ Na kartě základy stránky **vytvořit bránu virtuální sítě** zadejte hodn
 | **Předplatné** | Tato hodnota se už naplní předplatným, ke kterému patří skupina prostředků. |
 | **Skupina prostředků** | Tato hodnota je pro aktuální skupinu prostředků již vyplněna. Mělo by se jednat o skupinu prostředků, kterou jste vytvořili v předchozím testu. |
 | **Název** | Zadejte jedinečný název pro bránu virtuální sítě. |
-| **Věřitel** | Vyberte zeměpisnou polohu brány virtuální sítě. |
+| **Oblast** | Vyberte zeměpisnou polohu brány virtuální sítě. |
 | **Typ brány** | Vyberte **ExpressRoute**. |
 | **Typ sítě VPN** | Vyberte **směrování založené na trasách**. |
-| **SKLADOVÉ** | Ponechte výchozí hodnotu: **Standard**. |
+| **SKU** | Ponechte výchozí hodnotu: **Standard**. |
 | **Virtuální síť** | Vyberte virtuální síť, kterou jste předtím vytvořili. Pokud virtuální síť nevidíte, ujistěte se, že oblast brány odpovídá oblasti vaší virtuální sítě. |
 | **Rozsah adres podsítě brány** | Tato hodnota se naplní při výběru virtuální sítě. Neměňte výchozí hodnotu. |
 | **Veřejná IP adresa** | Vyberte, že chcete **vytvořit novou** IP adresu. |

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 03/04/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 6847059de2a8685a56719f07a041a40456f2aa06
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: eb82422aa0e3d45743539da623fcb919e8e77bbc
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219244"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141805"
 ---
 # <a name="example-user-scenarios-for-the-text-analytics-api"></a>Příklady scénářů uživatelů pro rozhraní API pro analýzu textu
 
@@ -50,6 +50,13 @@ Sledujte svůj názor na produkt uživatele na Twitteru nebo na Facebook stránk
 Použijte rozpoznávání pojmenovaných entit k identifikaci osobních a citlivých informací v dokumentech. Použijte data ke klasifikaci dokumentů nebo redigování, aby je bylo možné bezpečně sdílet.
 
 ![Obrázek popisující, jak používat NER k detekci osobních údajů a klasifikaci a redigování dokumentů](media/use-cases/sensitive-docs.jpg)
+
+## <a name="perform-opinion-mining"></a>Vykonání názoru
+
+Seskupení stanovisek souvisejících s konkrétními aspekty produktu nebo služby v prohlídekch, zpětné vazby od zákazníků nebo pokaždé, když text obsahuje stanovisko k aspektu Použijte ho k tomu, abyste vám pomohli při spuštění a vylepšení produktu, na marketingovém úsilí nebo na tom, jak váš produkt nebo služba provádí. 
+
+> [!div class="mx-imgBorder"] 
+> :::image type="content" source="media/use-cases/aspect-based-sentiment.png" alt-text="Příklad stanovisek k hotelu.":::
 
 ## <a name="next-steps"></a>Další kroky
 

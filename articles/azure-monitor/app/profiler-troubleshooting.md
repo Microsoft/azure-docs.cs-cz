@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 55bc4ff05b650884ef17e0de10d7156cbf458a9c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7c9dd20aea410aecb34811ca6e08e0f641be292b
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81640946"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148340"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Řešení potíží s povolením nebo zobrazením Application Insights Profiler
 
@@ -48,7 +48,7 @@ Profiler zapisuje trasovací zprávy a vlastní události do prostředku Applica
 * Ujistěte se, že je vaše aplikace spuštěná na .NET Framework 4,6.
 * Pokud je vaše webová aplikace ASP.NET Core aplikace, musí běžet aspoň ASP.NET Core 2,0.
 * Pokud se data, která se snažíte zobrazit, starší než několik týdnů, zkuste omezit filtr času a zkusit to znovu. Trasování se odstraní po sedmi dnech.
-* Ujistěte se, že proxy nebo brána firewall neblokovaly přístup k https://gateway.azureserviceprofiler.net.
+* Ujistěte se, že proxy nebo brána firewall neblokovaly přístup k https://gateway.azureserviceprofiler.net .
 * Profiler není podporován na plánech Free nebo Shared App Service. Pokud používáte některý z těchto plánů, zkuste škálovat na jeden ze základních plánů a Profiler by měl začít pracovat.
 
 ### <a name="double-counting-in-parallel-threads"></a><a id="double-counting"></a>Dvojité počítání v paralelních vláknech
@@ -87,7 +87,7 @@ Pro správné fungování profileru postupujte takto:
 
       ![Profiler-webová úloha – protokol]
 
-Pokud nemůžete zjistit, proč Profiler nefunguje za vás, můžete si ho stáhnout a poslat mu v našem týmu, kde získáte serviceprofilerhelp@microsoft.compomoc. 
+Pokud nemůžete zjistit, proč Profiler nefunguje za vás, můžete si ho stáhnout a poslat mu v našem týmu, kde získáte pomoc serviceprofilerhelp@microsoft.com . 
     
 ### <a name="manual-installation"></a>Ruční instalace
 
@@ -110,11 +110,11 @@ Při konfiguraci profileru se aktualizace provedou v nastavení webové aplikace
 
 V současné době můžete profiler povolit na maximálně čtyři webové aplikace Azure a sloty nasazení, které běží ve stejném plánu služeb. Pokud máte více než čtyři webové aplikace spuštěné v jednom plánu služby App Service, může Profiler vyvolat *Microsoft. ServiceProfiler. Exceptions. TooManyETWSessionException*. Profiler se spouští samostatně pro každou webovou aplikaci a pokusy o spuštění relace trasování událostí pro Windows (ETW) pro každou aplikaci. V jednom okamžiku může být aktivní jenom omezený počet relací ETW. Pokud webová úloha profileru hlásí příliš mnoho aktivních relací profilování, přesuňte některé webové aplikace na jiný plán služby.
 
-### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Chyba nasazení: adresář není prázdný. d\\:\\domovská\\stránka\\\\wwwroot App_Data úlohy
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootapp_datajobs"></a>Chyba nasazení: adresář není prázdný. d: \\ Domovská stránka \\ \\ wwwroot \\ App_Data \\ úlohy
 
 Pokud znovu nasazujete webovou aplikaci do prostředku Web Apps s povoleným profilerem, může se zobrazit následující zpráva:
 
-*Adresář není prázdný. d\\:\\domovská\\stránka\\\\wwwroot App_Data úlohy*
+*Adresář není prázdný. d: \\ Domovská stránka \\ \\ wwwroot \\ App_Data \\ úlohy*
 
 K této chybě dojde, pokud spouštíte Nasazení webu ze skriptů nebo z kanálu nasazení Azure DevOps. Řešením je přidání následujících dalších parametrů nasazení do úlohy Nasazení webu:
 
@@ -128,7 +128,7 @@ Tyto parametry odstraní složku, kterou používá Application Insights Profile
 
 Profiler běží jako Průběžná webová úloha ve webové aplikaci. Prostředek webové aplikace můžete otevřít v [Azure Portal](https://portal.azure.com). V podokně **WebJobs** (webové úlohy) se podívejte na stav **ApplicationInsightsProfiler**. Pokud není spuštěný, otevřete **protokoly** a získejte další informace.
 
-## <a name="troubleshoot-problems-with-profiler-and-azure-diagnostics"></a>Řešení potíží s profilerem a Azure Diagnostics
+## <a name="troubleshoot-vms-and-cloud-services"></a>Řešení potíží s virtuálními počítači a Cloud Services
 
 >**Byla opravena chyba v profileru, která se dodává v WAD pro Cloud Services.** Nejnovější verze WAD (1.12.2.0) pro Cloud Services funguje se všemi nejnovějšími verzemi sady App Insights SDK. Hostitelé cloudové služby budou upgradovat WAD automaticky, ale nejsou okamžité. K vynucení upgradu můžete znovu nasadit službu nebo restartovat uzel.
 
@@ -141,27 +141,45 @@ Pokud chcete zjistit, jestli je profiler správně nakonfigurovaný pomocí Azur
 
 Chcete-li kontrolovat nastavení, která byla použita pro konfiguraci Azure Diagnostics:
 
-1. Přihlaste se k virtuálnímu počítači a otevřete soubor protokolu v tomto umístění. (Jednotka může být c: nebo d: a verze modulu plug-in může být odlišná.)
-
-    ```
-    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
-    ```
-    – nebo –
+1. Přihlaste se k virtuálnímu počítači a otevřete soubor protokolu v tomto umístění. Verze modulu plug-in na vašem počítači může být novější.
+    
+    Pro virtuální počítače:
     ```
     c:\WindowsAzure\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log
+    ```
+    
+    Pro Cloud Services:
+    ```
+    c:\logs\Plugins\Microsoft.Azure.Diagnostics.PaaSDiagnostics\1.11.3.12\DiagnosticsPlugin.log  
     ```
 
 1. V souboru můžete vyhledat řetězec **WadCfg** a vyhledat tak nastavení, která byla PŘEdána virtuálnímu počítači ke konfiguraci Azure Diagnostics. Můžete zjistit, zda je iKey používaný jímkou profileru správný.
 
-1. Podívejte se do příkazového řádku, který se používá ke spuštění profileru. Argumenty, které se používají ke spuštění profileru, jsou v následujícím souboru. (Jednotka může být c: nebo d:)
+1. Podívejte se do příkazového řádku, který se používá ke spuštění profileru. Argumenty, které se používají ke spuštění profileru, jsou v následujícím souboru. (Jednotka může být c: nebo d: a adresář může být skrytý.)
 
+    Pro virtuální počítače:
+    ```
+    C:\ProgramData\ApplicationInsightsProfiler\config.json
+    ```
+    
+    pro Cloud Services:
     ```
     D:\ProgramData\ApplicationInsightsProfiler\config.json
     ```
 
 1. Ujistěte se, že je iKey na příkazovém řádku profileru správný. 
 
-1. Pomocí cesty nalezené v předchozím souboru *config. JSON* ověřte soubor protokolu profileru. Zobrazí informace o ladění, které určují nastavení používané profilerem. Zobrazuje taky stavové a chybové zprávy z profileru.  
+1. Pomocí cesty nalezené v předchozím souboru *config. JSON* ověřte soubor protokolu profileru s názvem **BootstrapN. log**. Zobrazí informace o ladění, které určují nastavení používané profilerem. Zobrazuje taky stavové a chybové zprávy z profileru.  
+
+    V případě virtuálních počítačů je tento soubor obvykle:
+    ```
+    C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
+
+    Pro Cloud Services:
+    ```
+    C:\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.17.0.6\ApplicationInsightsProfiler
+    ```
 
     Pokud je v době, kdy aplikace přijímá požadavky, spuštěn Profiler, zobrazí se následující zpráva: *aktivita byla zjištěna z Ikey*. 
 

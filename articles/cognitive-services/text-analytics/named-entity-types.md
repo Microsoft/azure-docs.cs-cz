@@ -1,35 +1,33 @@
 ---
-title: Podporované typy pro rozpoznávání pojmenovaných entit
+title: Podporované kategorie pro rozpoznávání pojmenovaných entit
 titleSuffix: Azure Cognitive Services
-description: Přečtěte si o podporovaných typech entit v rozhraní API pro analýzu textu.
+description: Seznamte se s podporovanými kategoriemi entit v rozhraní API pro analýzu textu.
 services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/06/2020
+ms.date: 03/30/2020
 ms.author: aahi
-ms.openlocfilehash: 164e803a6af8a7d1ccdc9c70cc3e42b787857b3a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9800eb9ec8ae9aa800e5281131148b600e42725f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77086918"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140910"
 ---
-# <a name="supported-types-for-named-entity-recognition-version-3-preview"></a>Podporované typy pro rozpoznávání pojmenovaných entit verze 3 (Preview)
+# <a name="supported-entity-categories-in-named-entity-recognition-v3"></a>Podporované kategorie entit ve funkci rozpoznávání pojmenovaných entit V3
 
-Rozhraní API pro analýzu textu poskytuje možnost identifikovat a jednoznačně určit entity nalezené v textu. [Rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md) (ner) je schopnost identifikovat různé entity v textu a kategorizovat je do předem definovaných tříd.
+Pomocí tohoto článku můžete najít kategorie entit, které mohou být vráceny funkcí [rozpoznávání pojmenovaných entit](how-tos/text-analytics-how-to-entity-linking.md) (ner). K dispozici je také verze Preview NER verze 3.1, která zahrnuje schopnost zjišťovat osobní údaje ( `PII` ) a `PHI` informace o stavu ().
 
-## <a name="entity-types"></a>Typy entit
-
-Podporované typy entit a dílčí typy (tam, kde je k dispozici) jsou uvedeny níže:
+## <a name="entity-categories"></a>Kategorie entit
 
 #### <a name="general"></a>[Obecné](#tab/general)
 
 [!INCLUDE [supported entity types - general](./includes/entity-types/general-entities.md)]
 
-#### <a name="personal-information"></a>[Osobní údaje](#tab/personal)
+#### <a name="personal-and-health"></a>[Osobní a zdravotní stav](#tab/personal)
 
 [!INCLUDE [supported entity types - personally identifying information](./includes/entity-types/personal-information-entities.md)]
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 02/10/2020
+ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: 243086ddaae47eba20eea6877fe6d7f8f9889290
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 457be5ac014fda6b4984ed7af3dcc89780b16379
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79203487"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141613"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Jak používat rozpoznávání pojmenovaných entit v Analýza textu
 
@@ -23,97 +23,32 @@ Rozhraní API pro analýzu textu umožňuje přebírá nestrukturovaný text a v
 
 ### <a name="entity-linking"></a>Entity Linking
 
-Propojení entit je schopnost identifikovat a odstranit identitu entity nalezenou v textu (například určit, zda výskyt slova `Mars` odkazuje na globálním nebo římské jsou války). Tento proces vyžaduje přítomnost znalostní báze v příslušném jazyce, aby bylo možné propojit rozpoznané entity v textu. Při propojování entit se jako tato znalostní báze používá [Wikipedii](https://www.wikipedia.org/) .
+Propojení entit je schopnost identifikovat a odstranit identitu entity nalezenou v textu (například určit, zda výskyt slova "Mars" odkazuje na globálním nebo římské jsou války). Tento proces vyžaduje přítomnost znalostní báze v příslušném jazyce, aby bylo možné propojit rozpoznané entity v textu. Při propojování entit se jako tato znalostní báze používá [Wikipedii](https://www.wikipedia.org/) .
 
 
 ### <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
 
 Rozpoznávání pojmenovaných entit (NER) je schopnost identifikovat různé entity v textu a kategorizovat je do předem definovaných tříd nebo typů, jako je například osoba, umístění, událost, produkt a organizace.  
 
-Od verze 3 může tato funkce rozhraní API pro analýzu textu také identifikovat osobní a citlivé typy informací, jako je telefonní číslo, číslo sociálního pojištění, e-mailová adresa a číslo bankovního účtu.  Identifikace těchto entit může pomoci při klasifikaci citlivých dokumentů a redigování osobních údajů.
-
 ## <a name="named-entity-recognition-versions-and-features"></a>Verze a funkce pro rozpoznávání pojmenovaných entit
 
-Rozhraní API pro analýzu textu nabízí dvě verze rozpoznávání pojmenovaných entit – v2 a v3. Verze 3 (Public Preview) poskytuje zvýšené podrobnosti o entitách, které se dají detekovat a kategorizovat.
+[!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Funkce                                                         | NER v2 | NER V3 |
-|-----------------------------------------------------------------|--------|--------|
-| Metody pro jednotlivé a dávkové požadavky                          | ×      | ×      |
-| Základní rozpoznávání entit v několika kategoriích              | ×      | ×      |
-| Rozšířená klasifikace pro rozpoznané entity                 |        | ×      |
-| Samostatné koncové body pro posílání NER entit a žádostí o připojení. |        | ×      |
-| Správa verzí modelů                                                |        | ×      |
+| Příznak                                                         | NER v 3.0 | NER verze 3.1 – Preview. 1 |
+|-----------------------------------------------------------------|--------|----------|
+| Metody pro jednotlivé a dávkové požadavky                          | X      | X        |
+| Rozšířené rozpoznávání entit napříč několika kategoriemi           | X      | X        |
+| Samostatné koncové body pro posílání NER entit a žádostí o připojení. | X      | X        |
+| Rozpoznávání osobních entit ( `PII` ) a `PHI` informací o stavu ()        |        | X        |
 
-Informace najdete v tématu [Podpora jazyků](../language-support.md#sentiment-analysis-key-phrase-extraction-and-named-entity-recognition) .
-
-
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+Informace najdete v tématu [Podpora jazyků](../language-support.md) .
 
 ### <a name="entity-types"></a>Typy entit
 
-Rozpoznávání pojmenovaných entit V3 poskytuje rozšířené zjišťování napříč více typy. NER V3 v současné době dokáže rozpoznat následující kategorie entit:
+Rozpoznávání pojmenovaných entit V3 poskytuje rozšířené zjišťování napříč více typy. V současné době NER v 3.0 dokáže rozpoznat entity v [kategorii obecné entity](../named-entity-types.md).
 
-* Obecné
-* Osobní údaje 
+Rozpoznávání pojmenovaných entit v 3.1-Preview. 1 zahrnuje možnosti detekce v 3.0 a možnost detekovat osobní údaje ( `PII` ) pomocí `v3.1-preview.1/entities/recognition/pii` koncového bodu. `domain=phi`K detekci důvěrných informací o stavu () můžete použít volitelný parametr `PHI` . Další informace najdete níže v části věnované předmětům [kategorie](../named-entity-types.md) a [koncovým bodům žádosti](#request-endpoints) .
 
-Podrobný seznam podporovaných entit a jazyků najdete v článku [podporované typy entit ner V3](../named-entity-types.md) .
-
-### <a name="request-endpoints"></a>Koncové body požadavku
-
-Rozpoznávání pojmenovaných entit V3 používá samostatné koncové body pro žádosti NER a propojení entit. V závislosti na vaší žádosti použijte formát adresy URL:
-
-NER
-* Obecné entity –`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
-
-* Osobní informace –`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
-
-Propojení entit
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
-
-### <a name="model-versioning"></a>Správa verzí modelů
-
-[!INCLUDE [v3-model-versioning](../includes/model-versioning.md)]
-
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
-
-### <a name="entity-types"></a>Typy entit
-
-> [!NOTE]
-> Rozpoznávání pojmenovaných entit (NER) verze 2 podporuje pouze následující entity. NER v3 je ve verzi Public Preview a významně rozšiřuje počet a hloubku entit rozpoznaných v textu.   
-
-| Typ  | Podtyp | Příklad |
-|:-----------   |:------------- |:---------|
-| Person (Osoba)        | –\*         | Jan, vyúčtování Branch     |
-| Umístění      | –\*         | "Redmond, Washington", "Paříž"  |
-| Organizace  | –\*         | Microsoft   |
-| Množství      | Číslo        | "6", "šest"     |
-| Množství      | Procento    | "50%", "50 procent"|
-| Množství      | Řadový       | "2.", "Second"     |
-| Množství      | Věk           | "90 den starý", "30 let starý"    |
-| Množství      | Měna      | "$10,99"     |
-| Množství      | Dimenze     | "10 mil", "40 cm"     |
-| Množství      | Teplota   | "32 stupňů"    |
-| DateTime      | –\*         | "6:17:30 4. února 2012"      |
-| DateTime      | Datum          | "Květen 2, 2017", "05/02/2017"   |
-| DateTime      | Time          | "8:00", "8:00"  |
-| DateTime      | DateRange     | "Může 2. května až 5."    |
-| DateTime      | TimeRange     | "18:00 to 19:00"     |
-| DateTime      | Doba trvání      | 1 minuta a 45 sekund   |
-| DateTime      | Nastavit           | "každé úterý"     |
-| zprostředkovatele identity           | –\*         | "https:\//www.Bing.com"    |
-| E-mailu         | –\*         | "support@contoso.com" |
-| Telefonní číslo v USA  | –\*         | (Jenom telefonní čísla USA) "(312) 555-0176" |
-| IP adresa    | –\*         | 10.0.0.100 |
-
-\*V závislosti na vstupních a extrahovaných entitách můžou některé entity vynechat `SubType`.  Všechny uvedené podporované typy entit jsou k dispozici pouze pro jazyky anglické, zjednodušené, francouzštiny, němčiny a španělštiny.
-
-### <a name="request-endpoints"></a>Koncové body požadavku
-
-Rozpoznávání pojmenovaných entit v2 používá jeden koncový bod pro požadavky NER a propojení entit:
-
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
-
----
 
 ## <a name="sending-a-rest-api-request"></a>Odesílá se žádost o REST API.
 
@@ -130,27 +65,34 @@ Vytvořte žádost POST. Můžete [použít post](text-analytics-how-to-call-api
 > [!NOTE]
 > Klíč a koncový bod pro váš Analýza textu prostředek najdete na webu Azure Portal. Budou se nacházet na stránce **rychlý Start** prostředku v části **Správa prostředků**. 
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
 
-[Referenční informace o rerozpoznávání entity V3](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0-Preview-1/operations/EntitiesRecognitionGeneral)
+### <a name="request-endpoints"></a>Koncové body požadavku
 
-Verze 3 používá samostatné koncové body pro žádosti NER a propojení entit. V závislosti na vaší žádosti použijte formát adresy URL:
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-NER
-* Obecné entity –`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/general`
-
-* Entity osobních informací –`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/recognition/pii`
+Rozpoznávání pojmenovaných entit V3 používá samostatné koncové body pro žádosti NER a propojení entit. V závislosti na vaší žádosti použijte formát adresy URL:
 
 Propojení entit
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0-preview.1/entities/linking`
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
+NER
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
-[Referenční informace o rozpoznávání pojmenovaných entit (NER) v2](https://eastus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/5ac4251d5b4ccd1554da7634)
+#### <a name="version-31-preview1"></a>[Verze 3,1-Preview. 1](#tab/version-3-preview)
 
-Verze 2 používá pro požadavky entity propojování a NER následující koncový bod: 
+Rozpoznávání pojmenovaných entit `v3.1-preview.1` používá samostatné koncové body pro žádosti ner a propojení entit. V závislosti na vaší žádosti použijte formát adresy URL:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/entities`
+Propojení entit
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/linking`
+
+NER
+* Obecné entity –`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/general`
+
+* Osobní ( `PII` ) informace –`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii`
+
+`domain=phi`K detekci `PHI` informací o stavu () v textu můžete použít také volitelný parametr. 
+
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi`
 
 ---
 
@@ -164,12 +106,13 @@ Následuje příklad obsahu, který můžete odeslat do rozhraní API. Formát p
 {
   "documents": [
     {
-      "language": "en",
-      "id": "1",
-      "text": "I had a wonderful trip to Seattle last week."
+        "id": "1",
+        "language": "en",
+        "text": "Our tour guide took us up the Space Needle during our trip to Seattle last week."
     }
   ]
 }
+
 ```
 
 ## <a name="post-the-request"></a>Publikování žádosti
@@ -184,8 +127,6 @@ Všechny žádosti POST vrátí odpověď ve formátu JSON s ID a zjištěnými 
 
 Výstup se vrátí okamžitě. Výsledky můžete streamovat do aplikace, která přijímá JSON, nebo můžete výstup uložit do souboru v místním systému a potom ho naimportovat do aplikace, která umožňuje řadit a vyhledávat data a pracovat s nimi. Vzhledem k podpoře vícejazyčných a Emoji může odpověď obsahovat posunutí textu. Další informace najdete v tématu [postup zpracování posunutí textu](../concepts/text-offsets.md) .
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview)](#tab/version-3)
-
 ### <a name="example-v3-responses"></a>Příklad odpovědí V3
 
 Verze 3 poskytuje samostatné koncové body pro NER a propojení entit. Odpovědi pro obě operace jsou uvedené níže. 
@@ -194,97 +135,109 @@ Verze 3 poskytuje samostatné koncové body pro NER a propojení entit. Odpověd
 
 ```json
 {
-    "documents": [{
-    "id": "1",
-    "entities": [{
-        "text": "Seattle",
-        "type": "Location",
-        "offset": 26,
-        "length": 7,
-        "score": 0.80624294281005859
-    }, {
-        "text": "last week",
-        "type": "DateTime",
-        "subtype": "DateRange",
-        "offset": 34,
-        "length": 9,
-        "score": 0.8
-    }]
-    }],
-    "errors": [],
-    "modelVersion": "2019-10-01"
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
+        {
+          "text": "tour guide",
+          "category": "PersonType",
+          "offset": 4,
+          "length": 10,
+          "confidenceScore": 0.45
+        },
+        {
+          "text": "Space Needle",
+          "category": "Location",
+          "offset": 30,
+          "length": 12,
+          "confidenceScore": 0.38
+        },
+        {
+          "text": "trip",
+          "category": "Event",
+          "offset": 54,
+          "length": 4,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "Seattle",
+          "category": "Location",
+          "subcategory": "GPE",
+          "offset": 62,
+          "length": 7,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "last week",
+          "category": "DateTime",
+          "subcategory": "DateRange",
+          "offset": 70,
+          "length": 9,
+          "confidenceScore": 0.8
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
 }
 ```
+
 
 #### <a name="example-entity-linking-response"></a>Příklad odpovědi propojení entit
 
 ```json
 {
-  "documents": [{
-    "id": "1",
-    "entities": [{
-      "name": "Seattle",
-      "matches": [{
-        "text": "Seattle",
-        "offset": 26,
-        "length": 7,
-        "score": 0.15046201222847677
-      }],
-      "language": "en",
-      "id": "Seattle",
-      "url": "https://en.wikipedia.org/wiki/Seattle",
-      "dataSource": "Wikipedia"
-    }]
-  }],
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
+        {
+          "name": "Space Needle",
+          "matches": [
+            {
+              "text": "Space Needle",
+              "offset": 30,
+              "length": 12,
+              "confidenceScore": 0.4
+            }
+          ],
+          "language": "en",
+          "id": "Space Needle",
+          "url": "https://en.wikipedia.org/wiki/Space_Needle",
+          "dataSource": "Wikipedia"
+        },
+        {
+          "name": "Seattle",
+          "matches": [
+            {
+              "text": "Seattle",
+              "offset": 62,
+              "length": 7,
+              "confidenceScore": 0.25
+            }
+          ],
+          "language": "en",
+          "id": "Seattle",
+          "url": "https://en.wikipedia.org/wiki/Seattle",
+          "dataSource": "Wikipedia"
+        }
+      ],
+      "warnings": []
+    }
+  ],
   "errors": [],
-  "modelVersion": "2019-10-01"
+  "modelVersion": "2020-02-01"
 }
 ```
 
-#### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
-
-### <a name="example-ner-v2-response"></a>Příklad odpovědi NER v2
-```json
-{
-  "documents": [{
-    "id": "1",
-    "entities": [{
-      "name": "Seattle",
-      "matches": [{
-        "wikipediaScore": 0.15046201222847677,
-        "entityTypeScore": 0.80624294281005859,
-        "text": "Seattle",
-        "offset": 26,
-        "length": 7
-      }],
-      "wikipediaLanguage": "en",
-      "wikipediaId": "Seattle",
-      "wikipediaUrl": "https://en.wikipedia.org/wiki/Seattle",
-      "bingId": "5fbba6b8-85e1-4d41-9444-d9055436e473",
-      "type": "Location"
-    }, {
-      "name": "last week",
-      "matches": [{
-        "entityTypeScore": 0.8,
-        "text": "last week",
-        "offset": 34,
-        "length": 9
-      }],
-      "type": "DateTime",
-      "subType": "DateRange"
-    }]
-  }],
-  "errors": []
-}
-```
-
----
 
 ## <a name="summary"></a>Souhrn
 
 V tomto článku jste zjistili koncepty a pracovní postupy pro propojení entit pomocí Analýza textu v Cognitive Services. Souhrn:
 
-* Rozpoznávání pojmenovaných entit je k dispozici pro vybrané jazyky ve dvou verzích.
 * Dokumenty JSON v textu požadavku zahrnují ID, text a kód jazyka.
 * Žádosti POST se odesílají do jednoho nebo více koncových bodů s použitím přizpůsobeného [přístupového klíče a koncového bodu](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) , který je platný pro vaše předplatné.
 * Výstup odpovědi, který se skládá z propojených entit (včetně hodnocení spolehlivosti, posunu a webových odkazů, pro každé ID dokumentu), se dá použít v libovolné aplikaci.

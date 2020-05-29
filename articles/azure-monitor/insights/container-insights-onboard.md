@@ -2,13 +2,13 @@
 title: Postup povolení Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje, jak povolíte a nakonfigurujete Azure Monitor pro kontejnery, abyste porozuměli tomu, jak váš kontejner vykonává a jaké byly zjištěny problémy související s výkonem.
 ms.topic: conceptual
-ms.date: 04/21/2020
-ms.openlocfilehash: 284668dfe2aec809ce9a94e15f7c83cf0f2025b3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/28/2020
+ms.openlocfilehash: 0348d580a42d4a522ac05f929c96547a47e831a9
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185927"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147898"
 ---
 # <a name="how-to-enable-azure-monitor-for-containers"></a>Postup povolení Azure Monitor pro kontejnery
 
@@ -66,7 +66,6 @@ Informace v následující tabulce uvádí informace o konfiguraci proxy serveru
 | *.ods.opinsights.azure.com | 443 |  
 | *.oms.opinsights.azure.com | 443 |
 | dc.services.visualstudio.com | 443 |
-| *.microsoftonline.com | 443 |
 | *. monitoring.azure.com | 443 |
 | login.microsoftonline.com | 443 |
 
@@ -76,7 +75,6 @@ Informace v následující tabulce uvádí informace o konfiguraci proxy serveru
 |--------------|------|-------------|
 | *. ods.opinsights.azure.cn | 443 | Přijímání dat |
 | *. oms.opinsights.azure.cn | 443 | Připojování OMS |
-| microsoft.com | 80 | Používá se pro připojení k síti. To se vyžaduje jenom v případě, že verze image agenta je ciprod09262019 nebo starší. |
 | dc.services.visualstudio.com | 443 | Pro telemetrii agenta pomocí Application Insights veřejného cloudu Azure. |
 
 Informace v následující tabulce uvádí informace o konfiguraci proxy serveru a brány firewall pro vládu Azure USA.
@@ -85,7 +83,6 @@ Informace v následující tabulce uvádí informace o konfiguraci proxy serveru
 |--------------|------|-------------|
 | *. ods.opinsights.azure.us | 443 | Přijímání dat |
 | *. oms.opinsights.azure.us | 443 | Připojování OMS |
-| microsoft.com | 80 | Používá se pro připojení k síti. To se vyžaduje jenom v případě, že verze image agenta je ciprod09262019 nebo starší. |
 | dc.services.visualstudio.com | 443 | Pro telemetrii agenta pomocí Application Insights veřejného cloudu Azure. |
 
 ## <a name="components"></a>Komponenty
@@ -99,7 +96,7 @@ Vaše schopnost monitorovat výkon se spoléhá na Log Analyticsho agenta kontej
 Po vydání nové verze agenta se automaticky upgraduje na spravovaných clusterech Kubernetes hostovaných ve službě Azure Kubernetes Service (AKS). Pokud chcete postupovat podle vydaných verzí, přečtěte si téma [oznámení o vydáních](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)
 
 >[!NOTE]
->Pokud jste už nasadili cluster AKS, povolíte monitorování pomocí Azure CLI nebo poskytované Azure Resource Manager šablony, jak je znázorněno dále v tomto článku. Nemůžete `kubectl` použít k upgradu, odstranění, opětovnému nasazení nebo nasazení agenta.
+>Pokud jste už nasadili cluster AKS, povolíte monitorování pomocí Azure CLI nebo poskytované Azure Resource Manager šablony, jak je znázorněno dále v tomto článku. Nemůžete použít `kubectl` k upgradu, odstranění, opětovnému nasazení nebo nasazení agenta.
 >Šablona musí být nasazená ve stejné skupině prostředků jako cluster.
 
 Azure Monitor pro kontejnery povolíte pomocí jedné z následujících metod popsaných v následující tabulce.

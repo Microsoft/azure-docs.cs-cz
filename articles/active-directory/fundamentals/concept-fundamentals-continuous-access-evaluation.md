@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3713901dd3dd5d17c4e1ddcef529c663b68f5b43
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdf904bb2c0d133ea07cd32274fad5b6601da5d9
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112571"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148119"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -50,13 +50,13 @@ V budoucnu se doufáme, že přidáte další události, včetně událostí, ja
 Před vyhodnocením průběžného přístupu by se klienti vždy pokusili přehrát přístupový token z mezipaměti, dokud nevypršela jeho platnost. V CAE zavádíme nový případ, který poskytovatel prostředků může odmítnout token i v případě, že nevypršela jeho platnost. Aby klienti informovali o objednání své mezipaměti i v případě, že nevypršela platnost tokenů uložených v mezipaměti, zavádíme mechanismus s názvem **Challenge Challenge**. CAE vyžaduje aktualizaci klienta pro pochopení výzvy deklarací identity. Výzva pro deklaraci identity podporuje nejnovější verzi následujících aplikací:
 
 - Outlook pro Windows 
-- Outlook iOS 
-- Outlook Android 
-- Outlook Mac 
+- Outlook pro iOS 
+- Outlook pro Android 
+- Outlook pro Mac 
 - Týmy pro Windows
 - Týmy pro iOS 
-- Týmy – Android 
-- Počítače týmů 
+- Týmy pro Android 
+- Týmy pro Mac 
 
 ## <a name="token-lifetime"></a>Živostnost tokenu
 

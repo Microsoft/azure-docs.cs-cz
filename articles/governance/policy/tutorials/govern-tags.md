@@ -3,16 +3,16 @@ title: 'Kurz: Správa zásad správného řízení značek'
 description: V tomto kurzu použijete efekt změny Azure Policy k vytvoření a vykonání modelu zásad správného řízení pro nové a stávající prostředky.
 ms.date: 04/21/2020
 ms.topic: tutorial
-ms.openlocfilehash: 6319bbde2fdc8f78e2743dd5f1565c8680433fea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8b3d0db100a601950ec82824897a3ba3e5145b79
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81759063"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142261"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Kurz: Správa řízení značek pomocí Azure Policy
 
-[Značky](../../../azure-resource-manager/management/tag-resources.md) jsou důležitou součástí uspořádání prostředků Azure do taxonomie. Při dodržování [osvědčených postupů pro správu značek](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)může být značkami základem pro použití obchodních zásad s Azure Policy nebo [sledováním nákladů pomocí cost management](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+[Značky](../../../azure-resource-manager/management/tag-resources.md) jsou důležitou součástí uspořádání prostředků Azure do taxonomie. Při dodržování [osvědčených postupů pro správu značek](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)může být značkami základem pro použití obchodních zásad s Azure Policy nebo [sledováním nákladů pomocí cost management](../../../cost-management-billing/costs/cost-mgt-best-practices.md#tag-shared-resources).
 Bez ohledu na to, jak nebo proč používáte značky, je důležité, abyste tyto značky mohli rychle přidávat, měnit a odebírat ve svých prostředcích Azure. Pokud chcete zjistit, jestli váš prostředek Azure podporuje označování, přečtěte si téma [Podpora značek](../../../azure-resource-manager/management/tag-support.md).
 
 Efekt [změny](../concepts/effects.md#modify) Azure Policy je navržený tak, aby se v rámci zásad správného řízení značek bez ohledu na to, ve které fázi zásad správného řízení prostředků nejednalo. **Upravit** pomáhá v těchto případech:
@@ -100,7 +100,7 @@ Druhý _CostCenter_ vyžaduje, aby všechny prostředky dědily značku z nadřa
 }
 ```
 
-Toto pravidlo zásady používá operaci **Přidání** místo **addOrReplace** , protože nechceme změnit hodnotu značky, pokud je přítomna při [Oprava](../how-to/remediate-resources.md) stávajících prostředcích. Používá také funkci `[resourcegroup()]` Template k získání hodnoty značky z nadřazené skupiny prostředků.
+Toto pravidlo zásady používá operaci **Přidání** místo **addOrReplace** , protože nechceme změnit hodnotu značky, pokud je přítomna při [Oprava](../how-to/remediate-resources.md) stávajících prostředcích. Používá také `[resourcegroup()]` funkci Template k získání hodnoty značky z nadřazené skupiny prostředků.
 
 > [!NOTE]
 > Vzhledem k tomu, že toto pravidlo zásad cílí na prostředky, které podporují značky, musí být _režim_ definice zásady indexovaný. Tato konfigurace taky zajišťuje, že tyto zásady přeskočí skupiny prostředků.
@@ -148,7 +148,7 @@ Pro každé prostředí, které existuje ve vašem prostředí Azure, se vyžadu
 > [!NOTE]
 > Vzhledem k tomu, že toto pravidlo zásad cílí na skupinu prostředků, musí být _režim_ definice zásady "vše" místo "indexovaný".
 
-Tato zásada se shoduje jenom se skupinami prostředků s ukázkovým schématem pojmenovávání, které `prd-`se používá pro produkční prostředky. Složitější schéma pojmenování je možné dosáhnout s několika podmínkami **shody** namísto jediného, **jako** v tomto příkladu.
+Tato zásada se shoduje jenom se skupinami prostředků s ukázkovým schématem pojmenovávání, které se používá pro produkční prostředky `prd-` . Složitější schéma pojmenování je možné dosáhnout s několika podmínkami **shody** namísto jediného, **jako** v tomto příkladu.
 
 ### <a name="modify-resources-to-inherit-the-env-tag"></a>Úprava prostředků pro dědění značky ENV
 

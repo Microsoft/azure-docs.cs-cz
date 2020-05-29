@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/16/2020
+ms.date: 05/28/2020
 ms.author: shvija
-ms.openlocfilehash: e7f17c589b043a055bd541a0850d9efc8e1d96be
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: 4851a3edad9726230a8fc0dd3085caa172c8d5f3
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628857"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147864"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Vyrovnávání zatížení oddílu napříč několika instancemi vaší aplikace
 Chcete-li škálovat aplikaci pro zpracování událostí, můžete spustit více instancí aplikace a vyrovnávat zatížení mezi sebou. Ve starších verzích vám [EventProcessorHost](event-hubs-event-processor-host.md) povolil vyrovnávat zatížení mezi několika instancemi programu a události kontrolního bodu při příjmu. V novějších verzích (5,0 a vyšší), **EventProcessorClient** (.NET a Java) nebo **EventHubConsumerClient** (Python a JavaScript) vám umožňuje provádět stejné. Vývojový model je jednodušší pomocí událostí. Přihlásíte se k odběru událostí, na které vás zajímáte, registrací obslužné rutiny události.
@@ -44,7 +44,7 @@ Při návrhu spotřebitele v distribuovaném prostředí musí tento scénář s
 
 ## <a name="event-processor-or-consumer-client"></a>Procesor událostí nebo klient příjemce
 
-K splnění těchto požadavků nemusíte sestavovat vlastní řešení. Tuto funkci poskytují sady Azure Event Hubs SDK. V sadách .NET nebo Java SDK použijete klienta procesoru událostí (EventProcessorClient) a sady SDK skriptů Pythonu a Java, použijete EventHubConsumerClient. Ve staré verzi sady SDK se jednalo o hostitele procesoru událostí (EventProcessorHost), který tyto funkce podporuje.
+K splnění těchto požadavků nemusíte sestavovat vlastní řešení. Tuto funkci poskytují sady Azure Event Hubs SDK. V sadách .NET nebo Java SDK použijete klienta procesoru událostí (EventProcessorClient) a sady SDK v Pythonu a JavaScriptu, použijete EventHubConsumerClient. Ve staré verzi sady SDK se jednalo o hostitele procesoru událostí (EventProcessorHost), který tyto funkce podporuje.
 
 Pro většinu produkčních scénářů doporučujeme použít klienta procesoru událostí pro čtení a zpracování událostí. Klient procesoru má k dispozici robustní prostředí pro zpracování událostí ve všech oddílech centra událostí v rámci výkonného a odolného přenosu, který poskytuje prostředky pro kontrolní body. Klienti procesorů událostí můžou spolupracují i v kontextu skupiny uživatelů pro dané centrum událostí. Klienti budou automaticky spravovat distribuci a vyrovnávání práce, protože instance budou k dispozici nebo nebudou pro skupinu k dispozici.
 
@@ -54,7 +54,7 @@ Instance procesoru událostí obvykle vlastní a zpracovává události z jednoh
 
 Každému procesoru událostí se předává jedinečný identifikátor a vlastnictví deklarací oddílů přidáním nebo aktualizací položky v úložišti kontrolních bodů. Všechny instance procesoru událostí komunikují s tímto úložištěm pravidelně a aktualizují svůj vlastní stav zpracování i informace o dalších aktivních instancích. Tato data se pak použijí pro vyrovnání zatížení mezi aktivními procesory. Pro horizontální navýšení kapacity se můžou nové instance připojit ke fondu zpracování. Když instance nastanou mimo provoz, buď z důvodu selhání, nebo pro horizontální navýšení kapacity, vlastnictví oddílu se řádně přenáší na jiné aktivní procesory.
 
-Záznamy o vlastnictví oddílu v úložišti kontrolního bodu uchovávají informace o Event Hubs obor názvů, název centra událostí, skupinu uživatelů, identifikátor procesoru událostí (označovaný také jako vlastník), ID oddílu a čas poslední změny.
+Záznamy o vlastnictví oddílu v úložišti kontrolního bodu udržují přehled o Event Hubs obor názvů, název centra událostí, skupinu uživatelů, identifikátor procesoru událostí (označovaný také jako vlastník), ID oddílu a čas poslední změny.
 
 
 
@@ -92,7 +92,7 @@ Při provádění kontrolního bodu za účelem označení události jako zpraco
 
 ## <a name="thread-safety-and-processor-instances"></a>Bezpečnost vlákna a instance procesoru
 
-Ve výchozím nastavení je procesor událostí nebo spotřebitel bezpečný pro přístup z více vláken a pracuje synchronním způsobem. Po doručení událostí pro oddíl se zavolá funkce, která zpracovává události. Následné zprávy a volání této funkce zařadí do fronty na pozadí, protože čerpadlo zpráv pokračuje v běhu na pozadí v jiných vláknech. Tato bezpečnost vlákna odstraňuje nutnost pro kolekce bezpečné pro přístup z více vláken a významně zvyšuje výkon.
+Ve výchozím nastavení je funkce, která zpracovává události, volána sekvenčně pro daný oddíl. Následné události a volání této funkce ze stejného oddílu se zařadí do fronty na pozadí, protože čerpadlo událostí pokračuje v běhu na pozadí v jiných vláknech. Všimněte si, že události z různých oddílů se dají souběžně zpracovat a veškerý sdílený stav, ke kterému se dá přicházet přes oddíly, se musí synchronizovat.
 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na následující rychlé starty:
