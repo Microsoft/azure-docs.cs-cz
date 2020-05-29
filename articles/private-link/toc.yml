@@ -12,6 +12,8 @@
       href: create-private-endpoint-powershell.md
     - name: Vytvoření privátního koncového bodu – Azure CLI
       href: create-private-endpoint-cli.md
+    - name: Vytvoření privátního koncového bodu – šablona Resource Manageru
+      href: create-private-endpoint-template.md
     - name: Vytvoření služby Private Link – portál
       href: create-private-link-service-portal.md
     - name: Vytvoření služby Private Link – PowerShell

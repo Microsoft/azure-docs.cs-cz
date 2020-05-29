@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: quickstart
 ms.date: 04/22/2020
 ms.custom: subject-armqs
-ms.openlocfilehash: de24895334ec4c864e6daae84a6aab47a47d7b9b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: 88dd1dc99f32d0539718c0f71206176cbfc16eec
+ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82103629"
+ms.lasthandoff: 05/25/2020
+ms.locfileid: "83830306"
 ---
 # <a name="quickstart-create-a-budget-with-an-azure-resource-manager-template"></a>Rychlý start: Vytvoření rozpočtu pomocí šablony Azure Resource Manageru
 
@@ -39,21 +39,23 @@ Pro rozpočty se podporují následující oprávnění nebo obory Azure pro př
 
 Další informace o přiřazování oprávnění k datům služby Cost Management najdete v tématu [Přiřazení přístupu k datům služby Cost Management](assign-access-acm-data.md).
 
-## <a name="review-the-template"></a>Kontrola šablony
+## <a name="create-a-budget"></a>Vytvoření rozpočtu
+
+### <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/create-budget).
 
-:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json":::
+:::code language="json" source="~/quickstart-templates/create-budget/azuredeploy.json" range="1-146" highlight="110-139":::
 
 V této šabloně je definovaný jeden prostředek Azure:
 
 * [Microsoft.Consumption/budgets](/azure/templates/microsoft.consumption/budgets): Vytvoření rozpočtu Azure.
 
-## <a name="deploy-the-template"></a>Nasazení šablony
+### <a name="deploy-the-template"></a>Nasazení šablony
 
 1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří rozpočet.
 
-   <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json"><img src="./media/quick-create-budget-template/deploy-to-azure.png" alt="deploy to azure"/></a>
+   [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fcreate-budget%2Fazuredeploy.json)
 
 2. Vyberte nebo zadejte následující hodnoty.
 
@@ -97,6 +99,37 @@ az consumption budget list
 
 ```azurepowershell-interactive
 Get-AzConsumptionBudget
+```
+
+---
+
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud už rozpočet nepotřebujete, odstraňte ho pomocí jedné z následujících metod:
+
+### <a name="azure-portal"></a>portál Azure
+
+Přejděte do části **Správa nákladů a fakturace** > vyberte rozsah fakturace > **Rozpočty** > vyberte rozpočet > potom vyberte **Odstranit rozpočet**.
+
+### <a name="command-line"></a>Příkazový řádek
+
+Rozpočet můžete odebrat pomocí rozhraní příkazového řádku Azure CLI nebo Azure PowerShellu.
+
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
+
+```azurecli-interactive
+echo "Enter the budget name:" &&
+read budgetName &&
+az consumption budget delete --budget-name $budgetName &&
+echo "Press [ENTER] to continue ..."
+```
+
+# <a name="powershell"></a>[PowerShell](#tab/PowerShell)
+
+```azurepowershell-interactive
+$budgetName = Read-Host -Prompt "Enter the budget name"
+Remove-AzConsumptionBudget -Name $budgetName
+Write-Host "Press [ENTER] to continue..."
 ```
 
 ---

@@ -8,16 +8,16 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/10/2020
 ms.author: banders
-ms.openlocfilehash: 1c4522bed191ef4142cc603bf0e1d22f086111ee
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 847e9b692ddbd7880c37d1068d61447dcccb9c80
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77200584"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83747152"
 ---
 # <a name="open-banking-psd2-and-strong-customer-authentication-sca-for-azure-customers"></a>Ověřování PSD2 (otevřené bankovnictví) a SCA (Strong Customer Authentication) pro zákazníky Azure
 
-Od 14. září 2019 musí banky v 31 zemích [Evropského hospodářského prostoru](https://en.wikipedia.org/wiki/European_Economic_Area) ověřovat identitu osoby provádějící online nákup dřív, než se příslušná platba zpracuje. Toto ověření vyžaduje vícefaktorové ověřování, které pomáhá zajistit ochranu a zabezpečení vašich online nákupů. V některých zemích je datum tohoto ověřovacího požadavku odloženo. Další informace najdete v tématu Microsoftu věnovaném [nejčastějším dotazům k PSD2](https://support.microsoft.com/en-us/help/4517854?preview).
+Od 14. září 2019 musí banky v 31 zemích a oblastech [Evropského hospodářského prostoru](https://en.wikipedia.org/wiki/European_Economic_Area) ověřovat identitu osoby provádějící online nákup dřív, než se příslušná platba zpracuje. Toto ověření vyžaduje vícefaktorové ověřování, které pomáhá zajistit ochranu a zabezpečení vašich online nákupů. V některých zemích a oblastech je datum tohoto ověřovacího požadavku odloženo. Další informace najdete v tématu Microsoftu věnovaném [nejčastějším dotazům k PSD2](https://support.microsoft.com/en-us/help/4517854?preview).
 
 ## <a name="what-psd2-means-for-azure-customers"></a>Co PSD2 znamená pro zákazníky Azure
 

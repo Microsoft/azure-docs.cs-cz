@@ -80,8 +80,10 @@
           href: virtual-network-for-azure-services.md
     - name: Služby IP adres
       items:
-        - name: Přidělování IP adres
-          href: virtual-network-ip-addresses-overview-arm.md
+        - name: Veřejné IP adresy
+          href: public-ip-addresses.md
+        - name: Privátní IP adresy
+          href: private-ip-addresses.md
         - name: Předpona veřejné IP adresy
           href: public-ip-address-prefix.md
         - name: Protokol IPv6 pro virtuální síť Azure

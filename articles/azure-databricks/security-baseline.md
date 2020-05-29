@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 229485b5aa1bf3a97429c8d82c4c962cd9fab5c7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e6c51e80a0a9a68dc6ec11e03c133f3480eb4329
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84016334"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170473"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Základní hodnoty zabezpečení Azure pro Azure Databricks
 
@@ -968,7 +968,7 @@ Předem Prohledejte všechny soubory, které jsou odesílány do Azure Databrick
 
 ### <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: proveďte kompletní systémové zálohy a zálohujte všechny spravované klíče zákazníka.
 
-**Pokyny**: zálohování všech spravovaných zákaznických klíčů souvisejících s implementacemi Azure Databricks v rámci Azure Key Vault. Pomocí REST API a CLI můžete také vytvořit každodenní zálohu konfigurací datacihly. Pomocí REST API/CLI můžete také vytvořit každodenní zálohu konfigurací datacihly.
+**Pokyny**: zálohování všech spravovaných zákaznických klíčů souvisejících s implementacemi Azure Databricks v rámci Azure Key Vault. Pomocí REST API a/nebo rozhraní příkazového řádku můžete také vytvořit každodenní zálohu konfigurací datacihly.
 
 * [Postup zálohování klíčů trezoru klíčů v Azure](https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0)
 

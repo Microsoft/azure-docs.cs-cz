@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 84b36c1357bedfc120cec72af84fdd79f52a2f57
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8f259ba9c7da3d7c37ed3eb63c63d17b74f7fbdd
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79238155"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83745841"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Převod vlastnictví fakturace předplatného Azure na jiný účet
 
@@ -144,8 +144,8 @@ Pokud si nejste jisti, kdo je správcem účtu předplatného, zjistíte to nás
 
 Všechny prostředky, jako jsou virtuální počítače, disky a weby, se převedou na nový účet. Pokud ale převádíte předplatné do účtu v jiném tenantovi Azure AD, žádné [role správce](add-change-subscription-administrator.md) ani přiřazení [řízení přístupu na základě role (RBAC)](../../role-based-access-control/role-assignments-portal.md) předplatného se [nepřevedou](#transfer-a-subscription-to-another-azure-ad-tenant-account). Dále se společně s předplatným nepřevádí [registrace aplikací](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) a jiné služby specifické pro tenanta.
 
-### <a name="can-i-transfer-ownership-to-an-account-in-another-country"></a>Můžu převést vlastnictví na účet v jiné zemi?
-Převody mezi zeměmi bohužel na webu Azure Portal nejdou provádět. Pokud chcete předplatné převést mezi zeměmi, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>Můžu převést vlastnictví na účet v jiné zemi nebo oblasti?
+Převody mezi zeměmi nebo oblastmi bohužel na webu Azure Portal nejdou provádět. Pokud chcete předplatné převést mezi zeměmi nebo oblastmi, [obraťte se na podporu](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
 ### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>Jsem správce dvou účtů. Můžu převést předplatné z jednoho svého účtu do jiného?
 Ano, předplatné můžete převádět mezi vašimi účty. Vaše účty jsou koncepčně považované za účty dvou různých uživatelů, proto můžete použít výše uvedené kroky a převádět předplatná mezi těmito účty.

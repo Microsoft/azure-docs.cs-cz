@@ -13,7 +13,7 @@
       href: create-notification-hub-portal.md
     - name: Vytvoření centra oznámení – Azure CLI
       href: create-notification-hub-azure-cli.md
-    - name: Vytvoření centra oznámení – šablona Azure Resource Manageru
+    - name: Vytvoření centra oznámení – šablona ARM
       href: create-notification-hub-template.md
     - name: Konfigurace centra oznámení
       href: configure-notification-hub-portal-pns-settings.md

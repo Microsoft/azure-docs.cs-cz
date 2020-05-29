@@ -236,8 +236,8 @@
           href: connector-azure-file-storage.md
         - name: Azure SQL Database
           href: connector-azure-sql-database.md
-        - name: Azure SQL Database Managed Instance
-          href: connector-azure-sql-database-managed-instance.md
+        - name: Spravovaná instance Azure SQL
+          href: connector-azure-sql-managed-instance.md
         - name: Azure Synapse Analytics (dříve SQL Data Warehouse)
           href: connector-azure-sql-data-warehouse.md
         - name: Azure Table Storage
@@ -697,7 +697,7 @@
       items:
         - name: Přehled migrace SSIS
           href: scenario-ssis-migration-overview.md
-        - name: Migrace SSISDB do spravované instance Azure SQL Database
+        - name: Migrace SSISDB do spravované instance Azure SQL
           href: scenario-ssis-migration-ssisdb-mi.md
 - name: Referenční informace
   items:

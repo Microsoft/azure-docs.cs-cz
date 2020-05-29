@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ab6be101e33fb29f96e2e5ea0fd2e79aa1cf0d09
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8f5e4e80af106de7c4bc8f09bdbecbc84199c2b3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744689"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171153"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -79,7 +79,7 @@ Pořadí částí v rámci výrazu je důležité, aby nedocházelo k chybám sy
 Existují tři typy vlastností, které lze použít k vytvoření pravidla členství.
 
 - Logická hodnota
-- String
+- Řetězec
 - Kolekce řetězců
 
 Níže jsou uvedené vlastnosti uživatele, které můžete použít k vytvoření jednoho výrazu.
@@ -384,7 +384,7 @@ Je možné použít následující atributy zařízení.
  deviceManufacturer | libovolná hodnota řetězce | (Device. deviceManufacturer-EQ "Samsung")
  deviceModel | libovolná hodnota řetězce | (Device. deviceModel-EQ "iPad Air")
  deviceOwnership | Osobní, společnost, neznámá | (Device. deviceOwnership-EQ "společnost")
- enrollmentProfileName | Registrační profil zařízení Apple, registrace zařízení – identifikátory podnikových zařízení (Android – celoobrazovkový) nebo název profilu Windows autopilot | (zařízení. enrollmentProfileName-EQ "DEP – iPhone")
+ enrollmentProfileName | Název profilu registrace zařízení Apple, název profilu registrace vyhrazeného zařízení s Androidem Enterprise, nebo název profilu Windows autopilot | (zařízení. enrollmentProfileName-EQ "DEP – iPhone")
  s kořenem | true false | (Device.-rooted-EQ true)
  managementType | MDM (pro mobilní zařízení)<br>POČÍTAČ (pro počítače spravované agentem Intune pro počítače) | (Device. managementType-EQ "MDM")
  deviceId | platné ID zařízení Azure AD | (Device. deviceId-EQ "d4fe7726-5966-431c-b3b8-cddc8fdb717d")

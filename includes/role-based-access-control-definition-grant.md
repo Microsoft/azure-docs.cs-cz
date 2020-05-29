@@ -15,4 +15,4 @@ ms.contentlocale: cs-CZ
 ms.lasthandoff: 04/28/2020
 ms.locfileid: "74707796"
 ---
-[Řízení přístupu na základě role (RBAC) v Azure](../articles/role-based-access-control/overview.md) je autorizační systém, který používáte ke správě přístupu k prostředkům Azure. Chcete-li udělit přístup, přiřaďte role uživatelům, skupinám, instančním objektům nebo spravovaným identitám v konkrétním oboru.
+[Řízení přístupu na základě role (RBAC) v Azure](../articles/role-based-access-control/overview.md) je autorizační systém, který používáte ke správě přístupu k prostředkům Azure. Chcete-li udělit přístup, přiřaďte role uživatelům, skupinám, instančním objektům nebo spravovaným identitám v konkrétním rozsahu.

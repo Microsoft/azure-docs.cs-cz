@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 4e9077d06341ce5ecf6b2238374ce1ac8e13dca3
-ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+ms.openlocfilehash: 91d78975106299c3b3a6df6d8dee05f337dd339a
+ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/16/2020
-ms.locfileid: "81415162"
+ms.lasthandoff: 05/21/2020
+ms.locfileid: "83742977"
 ---
 # <a name="tutorial-order-azure-data-box-heavy"></a>Kurz: Objednání Azure Data Boxu Heavy
 
@@ -75,7 +75,7 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
     |---------|---------|
     |Předplatné     | Vyberte pro službu Data Box předplatné se smlouvou Enterprise, předplatné CSP nebo předplatné Azure Sponsorship. <br> Předplatné je propojeno s vaším fakturačním účtem.       |
     |Typ přenosu     | Vyberte **Importovat do Azure**.        |
-    |Zdrojová země     | Vyberte zemi nebo oblast, ve které jsou data aktuálně umístěná.         |
+    |Zdrojová země/oblast     | Vyberte zemi nebo oblast, ve které jsou data aktuálně umístěná.         |
     |Cílová oblast Azure     | Vyberte oblast Azure, do které chcete data přenést.        |
 
     [![Výběr dostupnosti řady služeb Data Box](media/data-box-deploy-ordered/select-data-box-option1.png)](media/data-box-deploy-ordered/select-data-box-option1.png#lightbox)
@@ -91,7 +91,7 @@ Provedením následujících kroků na webu Azure Portal si objednejte zařízen
     |Název     | Zadejte popisný název pro sledování objednávky. <br> Název může být tvořen 3 až 24 písmeny, číslicemi a spojovníky. <br> Název musí začínat a končit písmenem nebo číslicí.      |
     |Skupina prostředků     | Použijte existující skupinu prostředků, nebo vytvořte novou. <br> Skupina prostředků je logický kontejner prostředků, které lze spravovat nebo nasadit společně.         |
     |Cílová oblast Azure     | K účtu úložiště přiřaďte oblast. <br> Další informace najdete v části věnované [dostupnosti v oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=databox).        |
-    |Cíl úložiště     | Zvolte účet úložiště, spravované disky nebo obojí. <br> Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. <br>Data Box Heavy je možné propojit až s 10 účty úložiště. <br> Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**. <br> Účty Azure Data Lake Storage Gen2 se nepodporují. Projděte si [podporované typy účtu úložiště pro vaše zařízení](data-box-heavy-system-requirements.md#supported-storage-accounts). <br>Účty úložiště s virtuálními sítěmi se podporují. Pokud chcete službě Data Box povolit práci se zabezpečenými účty úložiště, v nastavení síťové brány firewall účtu úložiště povolte důvěryhodné služby. Další informace najdete v tématu popisujícím [přidání služby Azure Data Box jako důvěryhodné služby](../storage/common/storage-network-security.md#exceptions).|
+    |Cíl úložiště     | Zvolte účet úložiště, spravované disky nebo obojí. <br> Na základě zadané oblasti Azure vyberte z filtrovaného seznamu existujících účtů úložiště jeden nebo více účtů úložiště. <br>Data Box Heavy je možné propojit až s 10 účty úložiště. <br> Můžete si také vytvořit nový účet **Pro obecné účely v1**, **Pro obecné účely v2** nebo **účet úložiště objektů blob**. <br>Projděte si [podporované typy účtu úložiště pro vaše zařízení](data-box-heavy-system-requirements.md#supported-storage-accounts). <br>Účty úložiště s virtuálními sítěmi se podporují. Pokud chcete službě Data Box povolit práci se zabezpečenými účty úložiště, v nastavení síťové brány firewall účtu úložiště povolte důvěryhodné služby. Další informace najdete v tématu popisujícím [přidání služby Azure Data Box jako důvěryhodné služby](../storage/common/storage-network-security.md#exceptions).|
 
     Pokud jako cíl úložiště používáte účet úložiště, podívejte se na následující snímek obrazovky:
 

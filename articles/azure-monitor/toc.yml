@@ -972,6 +972,8 @@
           href: insights/container-insights-update-metrics.md
         - name: Konfigurace sledování pro cluster
           href: insights/container-insights-health-monitors-config.md
+        - name: Správa nákladů a využití
+          href: insights/container-insights-cost.md
         - name: Zákaz monitorování
           items:
             - name: Zákaz monitorování AKS
@@ -991,7 +993,7 @@
         - name: Azure Cosmos DB
           href: insights/cosmosdb-insights-overview.md
         - name: Key Vault
-          href: insights/key-vault-insights-overview.md
+          href: insights/key-vaults-insights-overview.md
         - name: Sítě
           href: insights/network-insights-overview.md
         - name: Storage

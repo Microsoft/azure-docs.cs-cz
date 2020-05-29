@@ -16,4 +16,4 @@ ms.lasthandoff: 04/28/2020
 ms.locfileid: "70050302"
 ---
 >[!NOTE]
->Některé funkce uvedené v tomto článku, jako je zasílání zpráv typu cloud-zařízení, vlákna zařízení a Správa zařízení, jsou k dispozici pouze na úrovni Standard IoT Hub. Další informace o úrovních Basic a Standard služby IoT Hub najdete v [návodu k výběru správné úrovně služby IoT Hub](../articles/iot-hub/iot-hub-scaling.md).
+>Některé funkce uvedené v tomto článku, jako je zasílání zpráv z cloudu do zařízení, dvojčata zařízení a správa zařízení, jsou k dispozici ve službě IoT Hub pouze na úrovni Standard. Další informace o úrovních Basic a Standard služby IoT Hub najdete v [návodu k výběru správné úrovně služby IoT Hub](../articles/iot-hub/iot-hub-scaling.md).

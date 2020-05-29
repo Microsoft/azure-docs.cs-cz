@@ -1,0 +1,131 @@
+### YamlMime:Landing
+title: Dokumentace k SQL Serveru na virtuálním počítači Azure
+summary: Projděte si koncepce, rychlá zprovoznění, kurzy a ukázky pro SQL Server nainstalovaný na virtuálních počítačích Azure s Windows i Linuxem.
+metadata:
+  title: Dokumentace k SQL Serveru na virtuálním počítači Azure
+  description: Projděte si dokumentaci týkající se SQL Serveru nainstalovaného na virtuálních počítačích Azure s Windows i Linuxem.
+  services: sql-database
+  ms.service: sql-database
+  ms.subservice: single-database
+  ms.topic: landing-page
+  author: MashaMSFT
+  ms.author: mathoma
+  ms.reviewer: carlrab
+  ms.date: 05/27/2020
+  ms.openlocfilehash: a02a76e3d0080e731643ff82162aafdf3b783423
+  ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 05/27/2020
+  ms.locfileid: "84023768"
+landingContent:
+- title: SQL Server na virtuálním počítači Azure
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Vytvoření virtuálního počítače SQL s Windows (portál)
+      url: windows/sql-vm-create-portal-quickstart.md
+    - text: Vytvoření virtuálního počítače SQL s Windows (PowerShell)
+      url: windows/sql-vm-create-powershell-quickstart.md
+    - text: Vytvoření virtuálního počítače SQL s Linuxem (portál)
+      url: linux/sql-vm-create-portal-quickstart.md
+  - linkListType: overview
+    links:
+    - text: Co je nového?
+      url: windows/doc-changes-updates-release-notes.md?
+    - text: Co je SQL Server na virtuálních počítačích s Windows?
+      url: windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+    - text: Co je SQL Server na virtuálních počítačích s Linuxem?
+      url: linux/sql-server-on-linux-vm-what-is-iaas-overview.md
+    - text: Migrace z SQL Serveru
+      url: windows/migrate-to-vm-from-sql-server.md
+    - text: Aspekty zabezpečení
+      url: windows/security-considerations-best-practices.md
+    - text: Pokyny k výkonu
+      url: windows/performance-guidelines-best-practices.md
+    - text: Doprovodné materiály k cenám
+      url: windows/pricing-guidance.md
+- title: Spravovat
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Rozšíření agenta SQL Server IaaS
+      url: windows/sql-server-iaas-agent-extension-automate-management.md
+    - text: Správa pomocí webu Azure Portal
+      url: windows/manage-sql-vm-portal.md
+    - text: Registrace u poskytovatele prostředků virtuálního počítače SQL
+      url: windows/sql-vm-resource-provider-register.md
+    - text: Automatizované opravy
+      url: windows/automated-patching.md
+    - text: Změna typu licence
+      url: windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+    - text: Změna edice SQL Serveru
+      url: windows/change-sql-server-edition.md
+    - text: Přesun do nové oblasti
+      url: windows/move-sql-vm-different-region.md
+    - text: Integrace se službou Azure Key Vault
+      url: windows/azure-key-vault-integration-configure.md
+- title: Kontinuita podnikových procesů
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Vysoká dostupnost a zotavení po havárii
+      url: windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+    - text: Zálohování a obnovení
+      url: windows/backup-restore.md
+    - text: Skupiny dostupnosti
+      url: windows/availability-group-overview.md
+  - linkListType: how-to-guide
+    links:
+    - text: Skupina dostupnosti (Az CLI)
+      url: windows/availability-group-az-cli-configure.md
+    - text: Skupina dostupnosti bez clusteru
+      url: windows/availability-group-clusterless-workgroup-configure.md
+    - text: FCI (prostory úložiště s přímým přístupem)
+      url: windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+    - text: FCI (sdílená složka úrovně Premium)
+      url: windows/failover-cluster-instance-premium-file-share-manually-configure.md
+  - linkListType: tutorial
+    links:
+    - text: Skupina dostupnosti (ručně)
+      url: windows/availability-group-manually-configure-prerequisites-tutorial.md
+    - text: Skupina dostupnosti Stonith (RHEL)
+      url: linux/rhel-high-availability-stonith-tutorial.md
+    - text: Naslouchací proces skupiny dostupnosti (RHEL)
+      url: linux/rhel-high-availability-listener-tutorial.md
+- title: Referenční informace
+  linkLists:
+  - linkListType: learn
+    links:
+    - text: Studijní zdroje pro SQL
+      url: /sql/sql-server/educational-sql-resources
+  - linkListType: deploy
+    links:
+    - text: Ukázky Azure CLI
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Ukázky pro PowerShell
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Ukázky šablon ARM
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+  - linkListType: download
+    links:
+    - text: SQL Server Management Studio (SSMS)
+      url: /sql/ssms/download-sql-server-management-studio-ssms
+    - text: Azure Data Studio
+      url: /sql/azure-data-studio/download-azure-data-studio
+    - text: SQL Server Data Tools
+      url: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - text: Visual Studio 2019
+      url: https://visualstudio.microsoft.com/downloads/
+  - linkListType: reference
+    links:
+    - text: Průvodce migrací
+      url: https://datamigration.microsoft.com/
+    - text: Transact-SQL (T-SQL)
+      url: /sql/t-sql/language-reference
+    - text: Azure CLI
+      url: https://docs.microsoft.com/cli/azure/sql
+    - text: PowerShell
+      url: https://docs.microsoft.com/powershell/module/az.sql
+    - text: REST API
+      url: https://docs.microsoft.com/rest/api/sql/

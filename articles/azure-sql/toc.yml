@@ -1,0 +1,1143 @@
+- name: Dokumentace ke službě Azure SQL
+  href: index.yml
+- name: Co je Azure SQL?
+  href: azure-sql-iaas-vs-paas-what-is-overview.md
+- name: Sdílená dokumentace pro SQL DB a MI
+  items:
+    - name: Nákupní modely
+      items:
+        - name: Přehled
+          href: database/purchasing-models.md
+        - name: Přehled modelů virtuálních jader
+          href: database/service-tiers-vcore.md
+        - name: Zvýhodněné hybridní využití Azure
+          href: azure-hybrid-benefit.md
+        - name: Rezervovaná kapacita
+          href: database/reserved-capacity-overview.md
+    - name: Výpočetní prostředky a úložiště
+      items:
+        - name: Přehled
+          href: database/service-tiers-general-purpose-business-critical.md
+          displayName: provisioned compute tier
+        - name: Pro obecné účely / Standard
+          href: database/service-tier-general-purpose.md
+        - name: Pro důležité obchodní informace / Premium
+          href: database/service-tier-business-critical.md
+    - name: Sdílené koncepty
+      itemS:
+        - name: Porovnání funkcí
+          href: database/features-comparison.md
+        - name: Funkce s více modely
+          href: multi-model-features.md
+        - name: OLTP v paměti
+          href: in-memory-oltp-overview.md
+        - name: Dočasné tabulky
+          href: temporal-tables.md
+        - name: Vertikální navýšení/snížení kapacity
+          href: database/scale-resources.md
+        - name: Zabezpečení
+          items:
+            - name: Přehled
+              href: database/security-overview.md
+              displayName: 'compliance, fedramp, soc, fact, fisc, hitrust, pci, iso'
+            - name: Osvědčené postupy
+              href: database/security-best-practice.md
+            - name: Standardní hodnoty zabezpečení
+              href: database/security-baseline.md
+            - name: Atributy zabezpečení
+              href: database/security-controls.md
+            - name: Advanced Data Security
+              href: database/advanced-data-security.md
+            - name: Rozšířená ochrana před internetovými útoky
+              href: database/threat-detection-overview.md
+            - name: Dynamické maskování dat
+              href: database/dynamic-data-masking-overview.md
+            - name: Posouzení ohrožení zabezpečení SQL
+              href: database/sql-vulnerability-assessment.md
+            - name: 'Přihlášení, uživatelské účty, role a oprávnění'
+              href: database/logins-create-manage.md
+            - name: Ověřování Azure AD
+              href: database/authentication-aad-overview.md
+              items:
+                - name: Konfigurace ověřování Azure AD
+                  href: database/authentication-aad-configure.md
+                - name: Vícefaktorové ověřování AAD
+                  href: database/authentication-mfa-ssms-overview.md
+                - name: Konfigurace vícefaktorového ověřování
+                  href: database/authentication-mfa-ssms-configure.md
+                - name: Podmíněný přístup
+                  href: database/conditional-access-configure.md
+            - name: Transparentní šifrování dat (TDE)
+              items:
+                - name: Přehled
+                  href: database/transparent-data-encryption-tde-overview.md
+                - name: Používání vlastního klíče (BYOK)
+                  href: database/transparent-data-encryption-byok-overview.md
+                - name: Zjišťování a klasifikace dat
+                  href: database/data-discovery-and-classification-overview.md
+        - name: Kontinuita podnikových procesů
+          displayName: 'Backup, back up, restore, recovery'
+          items:
+            - name: Přehled
+              href: database/business-continuity-high-availability-disaster-recover-hadr-overview.md
+            - name: Vysoká dostupnost
+              href: database/high-availability-sla.md
+            - name: Skupiny automatického převzetí služeb při selhání
+              href: database/auto-failover-group-overview.md
+            - name: Backup a obnovení
+              items:
+                - name: Automatizované zálohy
+                  href: database/automated-backups-overview.md
+                - name: Zrychlené obnovení databáze
+                  href: accelerated-database-recovery.md
+                - name: Obnovení pomocí záloh
+                  href: database/recovery-using-backups.md
+                - name: Dlouhodobé uchovávání záloh
+                  href: database/long-term-retention-overview.md
+        - name: Monitorování a ladění
+          items:
+            - name: Dokumentace
+              href: database/monitoring-tuning-index.yml
+            - name: Přehled
+              href: database/monitor-tune-overview.md
+            - name: Užitečné přehledy
+              href: database/intelligent-insights-overview.md
+            - name: SQL Analytics
+              href: /azure/log-analytics/log-analytics-azure-sql?toc=/azure/azure-sql/toc.json
+            - name: Automatické ladění
+              href: database/automatic-tuning-overview.md
+            - name: OLTP v paměti
+              href: in-memory-oltp-overview.md
+            - name: Rozšířené události
+              items:
+                - name: Rozšířené události
+                  href: database/xevent-db-diff-from-svr.md
+                - name: Rozšířené události – soubor událostí
+                  href: database/xevent-code-event-file.md
+                - name: Rozšířené události – cyklická vyrovnávací paměť
+                  href: database/xevent-code-ring-buffer.md
+    - name: Sdílené postupy
+      items:
+        - name: Žádost o navýšení kvóty
+          href: database/quota-increase-request.md
+        - name: Automatizace úloh
+          href: database/job-automation-overview.md
+        - name: Kontinuita podnikových procesů
+          items:
+            - name: Konfigurace skupiny převzetí služeb při selhání
+              href: database/auto-failover-group-configure.md
+            - name: Konfigurace zásad dočasného uchovávání informací
+              href: database/temporal-tables-retention-policy.md
+            - name: Konfigurace uchování záloh s využitím úložiště objektů blob v Azure
+              href: database/long-term-backup-retention-configure.md
+        - name: Zabezpečení
+          items:
+            - name: Transparentní šifrování dat s využitím služby BYOK
+              href: database/transparent-data-encryption-byok-configure.md
+            - name: Ukládání kontrol ohrožení zabezpečení v úložišti
+              href: database/sql-database-vulnerability-assessment-storage.md
+            - name: Funkce Always Encrypted
+              items:
+                - name: Použití trezoru klíčů Azure
+                  href: database/always-encrypted-azure-key-vault-configure.md
+                - name: Použití úložiště certifikátů
+                  href: database/always-encrypted-certificate-store-configure.md
+        - name: Monitorování a ladění
+          items:
+            - name: Detekce problémů s výkonem dotazů
+              href: identify-query-performance-issues.md
+            - name: Dávkování pro zajištění výkonu
+              href: performance-improve-use-batching.md
+            - name: Načítání dat pomocí BCP
+              href: load-from-csv-with-bcp.md
+            - name: Pokyny pro optimalizaci aplikací a databází
+              href: database/performance-guidance.md
+            - name: Monitorování výkonu pomocí zobrazení dynamické správy
+              href: database/monitoring-with-dmvs.md
+            - name: Protokolování diagnostických telemetrických dat
+              href: database/metrics-diagnostic-telemetry-logging-streaming-export-configure.md
+            - name: OLTP v paměti
+              items:
+                - name: Konfigurace OLTP v paměti
+                  href: in-memory-oltp-configure.md
+                - name: Vyzkoušení funkcí v paměti
+                  href: in-memory-sample.md
+                - name: Monitorování prostoru OLTP v paměti
+                  href: in-memory-oltp-monitor-space.md
+        - name: Načtení a přesun dat
+          items:
+            - name: Import databáze ze souboru BACPAC
+              href: database/database-import.md
+            - name: Export databáze do souboru BACPAC
+              href: database/database-export.md
+            - name: Přesun prostředků do nové oblasti
+              href: database/move-resources-across-regions.md
+            - name: Načítání dat pomocí ADF
+              href: ../data-factory/connector-azure-sql-database.md?toc=/azure/azure-sql/toc.json
+        - name: Vývoj datových aplikací
+          items:
+            - name: Přehled
+              href: database/develop-overview.md
+            - name: Práce s daty JSON
+              href: database/json-features.md
+            - name: Použití konektoru Spark
+              href: database/spark-connector.md
+            - name: Použití služby ASP.NET App Service
+              href: /azure/app-service/app-service-web-tutorial-dotnet-sqldatabase?toc=/azure/azure-sql/toc.json
+            - name: Použití Azure Functions
+              href: /azure/azure-functions/functions-scenario-database-table-cleanup?toc=/azure/azure-sql/toc.json
+            - name: Použití Azure Logic Apps
+              href: /azure/connectors/connectors-create-api-sqlazure?toc=/azure/azure-sql/toc.json
+            - name: Index s využitím kognitivního hledání Azure
+              href: /azure/search/search-howto-connecting-azure-sql-database-to-azure-search-using-indexers?toc=/azure/azure-sql/toc.json
+            - name: Integrace CLR/.NET na straně serveru
+              href: 'https://docs.microsoft.com/sql/relational-databases/clr-integration/common-language-runtime-integration-overview?toc=/azure/azure-sql/toc.json'
+            - name: Java
+              items:
+                - name: Použití JDBC služby Spring Data
+                  href: /java/azure/spring-framework/configure-spring-data-jdbc-with-azure-sql-server?toc=/azure/sql-database/toc.json
+                - name: Použití JPA služby Spring Data
+                  href: /java/azure/spring-framework/configure-spring-data-jpa-with-azure-sql-server?toc=/azure/sql-database/toc.json
+- name: SQL Database (SQL DB)
+  items:
+    - name: Dokumentace
+      href: database/index.yml
+    - name: Přehled
+      items:
+        - name: Co je SQL Database?
+          href: database/sql-database-paas-overview.md
+        - name: Izolované databáze
+          href: database/single-database-overview.md
+        - name: Elastické fondy
+          href: database/elastic-pool-overview.md
+        - name: Logické SQL servery
+          href: database/logical-servers.md
+        - name: "Poznámky k\_verzi"
+          href: database/doc-changes-updates-release-notes.md?&tabs=single-database
+        - name: Úrovně služeb
+          items:
+            - name: Bez serveru
+              href: database/serverless-tier-overview.md
+            - name: Přehled modelů DTU
+              href: database/service-tiers-dtu.md
+            - name: Hyperškálování
+              href: database/service-tier-hyperscale.md
+            - name: Nejčastější dotazy k hyperškálování
+              href: database/service-tier-hyperscale-frequently-asked-questions-faq.md
+            - name: Migrace z Premium RS
+              href: database/service-tiers-prs.md
+    - name: Rychlé starty
+      href: database/quickstart-content-reference-guide.md
+      items:
+        - name: Vytvoření databáze
+          items:
+            - name: portál Azure
+              href: database/single-database-create-quickstart.md
+            - name: Šablona ARM
+              displayName: Resource Manager
+              href: database/single-database-create-arm-template-quickstart.md
+        - name: Konfigurace
+          items:
+            - name: Pravidla firewallu protokolu IP na úrovni serveru
+              href: database/firewall-create-server-level-portal-quickstart.md
+    - name: Kurzy
+      items:
+        - name: Návrh databáze
+          items:
+            - name: Návrh databází s využitím SSMS
+              href: database/design-first-database-tutorial.md
+            - name: Návrh databází s využitím .NET
+              href: database/design-first-database-csharp-tutorial.md
+        - name: Kontinuita podnikových procesů
+          items:
+            - name: Přidání databáze do skupiny převzetí služeb při selhání
+              href: database/failover-group-add-single-database-tutorial.md
+            - name: Přidání fondu do skupiny převzetí služeb při selhání
+              href: database/failover-group-add-elastic-pool-tutorial.md
+            - name: Konfigurace zabezpečení pro repliky
+              href: database/active-geo-replication-security-configure.md
+            - name: Geograficky distribuovaná aplikace
+              href: database/geo-distributed-application-configure-tutorial.md
+            - name: Aktivní geografická replikace
+              href: database/active-geo-replication-configure-portal.md
+        - name: Zabezpečení
+          items:
+            - name: Konfigurace zabezpečení
+              href: database/secure-database-tutorial.md
+            - name: Obměna klíčů BYOK transparentního šifrování dat
+              href: database/transparent-data-encryption-byok-key-rotation.md
+            - name: Odebrání ochrany transparentního šifrování dat
+              href: database/transparent-data-encryption-byok-remove-tde-protector.md
+        - name: Přesun dat
+          items:
+            - name: Migrace s využitím DMS
+              href: ../dms/tutorial-sql-server-to-azure-sql.md?toc=/azure/azure-sql/toc.json
+            - name: Nastavení synchronizace dat SQL
+              href: database/sql-data-sync-sql-server-configure.md
+            - name: Migrace SQLite do prostředí bez serveru
+              href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+    - name: Koncepty
+      items:
+        - name: Architektura připojení
+          href: database/connectivity-architecture.md
+        - name: Nastavení možností připojení
+          href: database/connectivity-settings.md
+        - name: Škálování čtení na více instancí
+          href: database/read-scale-out.md
+        - name: Rozdíly v jazyce T-SQL
+          href: database/transact-sql-tsql-differences-sql-server.md
+        - name: Azure Automation
+          href: database/automation-manage.md
+        - name: Elastické dotazy
+          href: database/elastic-query-overview.md
+        - name: Elastické transakce
+          href: database/elastic-transactions-overview.md
+        - name: Správa prostředků
+          items:
+            - name: Prostředky izolované databáze
+              items:
+                - name: Limity prostředků virtuálních jader
+                  href: database/resource-limits-vcore-single-databases.md
+                - name: Limity prostředků DTU
+                  href: database/resource-limits-dtu-single-databases.md
+            - name: Prostředky elastických fondů
+              items:
+                - name: Limity prostředků virtuálních jader
+                  href: database/resource-limits-vcore-elastic-pools.md
+                - name: Limity prostředků DTU
+                  href: database/resource-limits-dtu-elastic-pools.md
+            - name: Prostředky logického SQL serveru
+              items:
+                - name: Omezení prostředků databází
+                  href: database/resource-limits-logical-server.md
+        - name: Kontinuita podnikových procesů
+          items:
+            - name: Aktivní geografická replikace
+              href: database/active-geo-replication-overview.md
+            - name: Pokyny k zotavení po výpadku
+              href: database/disaster-recovery-guidance.md
+            - name: Postupy zotavení
+              href: database/disaster-recovery-drills.md
+        - name: Synchronizace dat SQL
+          items:
+            - name: Přehled
+              href: database/sql-data-sync-data-sql-server-sql-database.md
+            - name: Agent synchronizace dat
+              href: database/sql-data-sync-agent-overview.md
+            - name: Osvědčené postupy pro synchronizaci dat
+              href: database/sql-data-sync-best-practices.md
+            - name: Řešení potíží se synchronizací dat
+              href: database/sql-data-sync-troubleshoot.md
+        - name: Zabezpečení
+          items:
+            - name: Auditování Azure SQL
+              href: database/auditing-overview.md
+            - name: Formát protokolu auditu
+              href: database/audit-log-format.md
+            - name: Řízení přístupu k síti
+              href: database/network-access-controls-overview.md
+            - name: Aliasy DNS
+              href: database/dns-alias-overview.md
+            - name: Koncové body virtuální sítě
+              href: database/vnet-service-endpoint-rule-overview.md
+            - name: Privátní propojení
+              href: database/private-endpoint-overview.md
+        - name: Machine Learning Services
+          items:
+            - name: Přehled
+              href: database/machine-learning-services-overview.md
+            - name: Klíčové rozdíly
+              href: database/machine-learning-services-differences.md
+            - name: Rychlé starty
+              items:
+                - name: Vytváření skriptů R
+                  href: database/r-script-create-quickstart.md
+                - name: Trénování a hodnocení modelu
+                  href: database/r-train-score-model-create-quickstart.md
+            - name: Kurzy
+              items:
+                - name: Vytvoření prediktivního modelu v R
+                  items:
+                    - name: 1. Příprava dat
+                      href: database/predictive-model-prepare-data-tutorial.md
+                    - name: 2. Vytvoření modelu
+                      href: database/predictive-model-build-compare-tutorial.md
+                    - name: 3. Nasazení modelu
+                      href: database/predictive-model-deploy-tutorial.md
+                - name: Vytvoření modelu clusteringu v R
+                  items:
+                    - name: 1. Příprava dat
+                      href: database/clustering-model-prepare-data-tutorial.md
+                    - name: 2. Vytvoření modelu
+                      href: database/clustering-model-build-tutorial.md
+                    - name: 3. Nasazení modelu
+                      href: database/clustering-model-deploy-tutorial.md
+            - name: Postup
+              items:
+                - name: Psaní pokročilých funkcí R
+                  href: database/machine-learning-services-functions.md
+                - name: Práce s daty SQL a R
+                  href: database/machine-learning-services-data-issues.md
+                - name: Přidání balíčků R
+                  href: database/machine-learning-services-add-r-packages.md
+        - name: Sharding databází
+          items:
+            - name: Sharding databází
+              href: database/elastic-scale-introduction.md
+            - name: Glosář
+              href: database/elastic-scale-glossary.md
+            - name: Knihovna elastických klientů
+              href: database/elastic-database-client-library.md
+            - name: Mapy horizontálních oddílů
+              href: database/elastic-scale-shard-map-management.md
+            - name: Směrování dotazů
+              href: database/elastic-scale-data-dependent-routing.md
+            - name: Správa přihlašovacích údajů
+              href: database/elastic-scale-manage-credentials.md
+            - name: Přesun horizontálně dělených dat
+              href: database/elastic-scale-overview-split-and-merge.md
+            - name: Elastické nástroje – nejčastější dotazy
+              href: database/elastic-scale-faq.md
+    - name: Postup
+      href: database/how-to-content-reference-guide.md
+      items:
+        - name: Připojení a dotazování
+          href: database/connect-query-content-reference-guide.md
+          items:
+            - name: Připojování a spouštění dotazů ad hoc
+              items:
+                - name: Azure Data Studio
+                  href: 'https://docs.microsoft.com/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json'
+                - name: SSMS
+                  href: database/connect-query-ssms.md
+                - name: portál Azure
+                  href: database/connect-query-portal.md
+                - name: VS Code
+                  href: database/connect-query-vscode.md
+            - name: Připojení a dotazování z aplikace
+              items:
+                - name: .NET se sadou Visual Studio
+                  href: database/connect-query-dotnet-visual-studio.md
+                - name: .NET Core
+                  href: database/connect-query-dotnet-core.md
+                - name: .NET s Active Directory MFA
+                  href: database/active-directory-interactive-connect-azure-sql-db.md
+                - name: Přejít
+                  href: database/connect-query-go.md
+                - name: Java
+                  href: database/connect-query-java.md
+                - name: Node.js
+                  href: database/connect-query-nodejs.md
+                - name: PHP
+                  href: database/connect-query-php.md
+                - name: Python
+                  href: database/connect-query-python.md
+                - name: Ruby
+                  href: database/connect-query-ruby.md
+                - name: R
+                  href: database/connect-query-r.md
+        - name: Spravovat
+          items:
+            - name: Referenční informace k rozhraní API pro správu
+              href: database/single-database-manage.md
+            - name: Alias DNS – PowerShell
+              href: database/dns-alias-powershell-create.md
+            - name: Správa prostoru souborů
+              href: database/file-space-manage.md
+            - name: Použití funkce Resource Health pro potíže s připojením
+              href: database/resource-health-to-troubleshoot-connectivity.md
+            - name: Migrace DTU na virtuální jádra
+              href: database/resource-health-to-troubleshoot-connectivity.md
+            - name: Škálování prostředků databáze
+              href: database/single-database-scale.md
+            - name: Škálování prostředků fondu
+              href: database/elastic-pool-scale.md
+            - name: Správa prostředků fondu
+              href: database/elastic-pool-manage.md
+            - name: Správa prostředků v hustých elastických fondech
+              href: database/elastic-pool-resource-management.md
+            - name: Diagnostika výkonu hyperškálování
+              href: database/hyperscale-performance-diagnostics.md
+        - name: Zabezpečení
+          items:
+            - name: Audit do účtu úložiště za virtuální sítí nebo branou firewall
+              href: database/audit-write-storage-account-behind-vnet-firewall.md
+            - name: Konfigurace zjišťování hrozeb
+              href: database/threat-detection-configure.md
+            - name: Konfigurace dynamického maskování dat
+              href: database/dynamic-data-masking-configure-portal.md
+            - name: Brána firewall založená na protokolu IP
+              href: database/firewall-configure.md
+            - name: Koncové body virtuální sítě – PowerShell
+              href: database/scripts/vnet-service-endpoint-rule-powershell-create.md
+        - name: Kontinuita podnikových procesů
+          items:
+            - name: Konfigurace uchování záloh s využitím úložiště objektů blob v Azure
+              href: database/long-term-backup-retention-configure.md
+            - name: Konfigurace geografické replikace – portál
+              href: database/active-geo-replication-configure-portal.md
+            - name: Konfigurace zabezpečení pro geografické repliky
+              href: database/active-geo-replication-security-configure.md
+        - name: Výkon
+          items:
+            - name: Použití nástrojů Query Performance Insight
+              href: database/query-performance-insight-use.md
+            - name: Povolení automatického ladění
+              href: database/automatic-tuning-enable.md
+            - name: Povolení e-mailových oznámení pro automatické ladění
+              href: database/automatic-tuning-email-notifications-configure.md
+            - name: Použití doporučení k výkonu
+              href: database/database-advisor-find-recommendations-portal.md
+            - name: Vytváření upozornění
+              href: database/alerts-insights-configure-portal.md
+            - name: Implementace doporučení nástroje Database Advisor
+              href: database/database-advisor-implement-performance-recommendations.md
+            - name: Streamování dat s využitím služby Stream Analytics
+              href: database/stream-data-stream-analytics-integration.md
+        - name: Načtení a přesun dat
+          items:
+            - name: Migrace do služby SQL Database
+              href: database/migrate-to-database-from-sql-server.md
+            - name: Správa SQL Database po migraci
+              href: database/manage-data-after-migrating-to-database.md
+            - name: Import/export (povolení zákazu služeb Azure)
+              href: database/database-import-export-azure-services-off.md
+            - name: Import databáze ze souboru BACPAC
+              href: database/database-import.md
+            - name: Kopírování databáze v rámci Azure
+              href: database/database-copy.md
+            - name: Replikace do SQL Database
+              href: database/replication-to-sql-database.md
+            - name: Synchronizace dat SQL
+              items:
+                - name: Replikace změn schématu
+                  href: database/sql-data-sync-update-sync-schema.md
+                - name: Monitorování pomocí OMS
+                  href: database/sql-data-sync-monitor-sync.md
+        - name: Sharding databází
+          items:
+            - name: Upgrade klientské knihovny
+              href: database/elastic-scale-upgrade-client-library.md
+            - name: Vytvoření horizontálně dělené aplikace
+              href: database/elastic-scale-get-started.md
+            - name: Dotazování na horizontálně dělená data
+              href: database/elastic-query-getting-started.md
+            - name: Dotazy s několika horizontálními oddíly
+              href: database/elastic-scale-multishard-querying.md
+            - name: Přesun horizontálně dělených dat
+              href: database/elastic-scale-configure-deploy-split-and-merge.md
+            - name: Konfigurace zabezpečení
+              href: database/elastic-scale-split-merge-security-configuration.md
+            - name: Přidání horizontálního oddílu
+              href: database/elastic-scale-add-a-shard.md
+            - name: Odstraňování problémů s horizontálními oddíly mapy
+              href: database/elastic-database-recovery-manager.md
+            - name: Migrace horizontálně dělené databáze
+              href: database/elastic-convert-to-use-elastic-tools.md
+            - name: Vytvoření čítačů
+              href: database/elastic-database-perf-counters.md
+            - name: Použití Entity Frameworku
+              href: database/elastic-scale-use-entity-framework-applications-visual-studio.md
+            - name: Použití architektury Dapper
+              href: database/elastic-scale-working-with-dapper.md
+        - name: Dotazování na distribuovaná data
+          items:
+            - name: Dotazování na vertikálně dělená data
+              href: database/elastic-query-getting-started-vertical.md
+            - name: Vytváření sestav napříč datovou vrstvou s horizontálním navýšením kapacity
+              href: database/elastic-query-horizontal-partitioning.md
+            - name: Dotazování přes tabulky s různými schématy
+              href: database/elastic-query-vertical-partitioning.md
+        - name: Elastické úlohy
+          items:
+            - name: Konfigurace úloh
+              href: database/elastic-jobs-overview.md
+            - name: Vytvoření a správa (PowerShell)
+              href: database/elastic-jobs-powershell-create.md
+            - name: Vytvoření a správa (T-SQL)
+              href: database/elastic-jobs-tsql-create-manage.md
+            - name: Migrace (z původních elastických úloh)
+              href: database/elastic-jobs-migrate.md
+        - name: Návrh datových aplikací
+          items:
+            - name: Ověření aplikace
+              href: database/application-authentication-get-client-id-keys.md
+            - name: Návrh pro zotavení po havárii
+              href: database/designing-cloud-solutions-for-disaster-recovery.md
+            - name: Návrh pro elastické fondy
+              href: database/disaster-recovery-strategies-for-applications-with-elastic-pool.md
+            - name: Návrh pro upgrady aplikací
+              href: database/manage-application-rolling-upgrade.md
+            - name: C a C ++
+              href: database/develop-cplusplus-simple.md
+            - name: Excel
+              href: database/connect-excel.md
+            - name: Porty – ADO.NET
+              href: database/adonet-v12-develop-direct-route-ports.md
+            - name: Víceklientský software jako služba (SaaS)
+              items:
+                - name: Způsoby návrhu SaaS
+                  href: database/saas-tenancy-app-design-patterns.md
+                - name: Indexer videa SaaS
+                  href: database/saas-tenancy-video-index-wingtip-brk3120-20171011.md
+                - name: Zabezpečení aplikací SaaS
+                  href: database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md
+                - name: Ukázková aplikace SaaS pro více tenantů
+                  items:
+                    - name: Ukázka lístků Wingtip
+                      href: database/saas-tenancy-welcome-wingtip-tickets-app.md
+                    - name: Obecné pokyny
+                      href: database/saas-tenancy-wingtip-app-guidance-tips.md
+                    - name: Jedna aplikace
+                      items:
+                        - name: Nasazení ukázkové aplikace
+                          href: database/saas-standaloneapp-get-started-deploy.md
+                        - name: Zřizování tenantů
+                          href: database/saas-standaloneapp-provision-and-catalog.md
+                    - name: Databáze na tenanta
+                      items:
+                        - name: Úvod ke kurzu
+                          href: database/saas-dbpertenant-wingtip-app-overview.md
+                        - name: Nasazení ukázkové aplikace
+                          href: database/saas-dbpertenant-get-started-deploy.md
+                        - name: Zřizování tenantů
+                          href: database/saas-dbpertenant-provision-and-catalog.md
+                        - name: Monitorování výkonu databáze
+                          href: database/saas-dbpertenant-performance-monitoring.md
+                        - name: Monitorování pomocí protokolů služby Azure Monitor
+                          href: database/saas-dbpertenant-log-analytics.md
+                        - name: Obnovení jednoho tenanta
+                          href: database/saas-dbpertenant-restore-single-tenant.md
+                        - name: Správa schémat tenantů
+                          href: database/saas-tenancy-schema-management.md
+                        - name: Vytváření sestav napříč tenanty
+                          href: database/saas-tenancy-cross-tenant-reporting.md
+                        - name: Analýzy tenantů
+                          items:
+                            - name: S využitím SQL Database
+                              href: database/saas-tenancy-tenant-analytics.md
+                            - name: S využitím služby SQL Data Warehouse
+                              href: database/saas-tenancy-tenant-analytics-adf.md
+                    - name: Zotavení po havárii s využitím geografického obnovení
+                      href: database/saas-dbpertenant-dr-geo-restore.md
+                    - name: Zotavení po havárii s využitím geografické replikace databáze
+                      href: database/saas-dbpertenant-dr-geo-replication.md
+                - name: Víceklientská databáze
+                  items:
+                    - name: Nasazení ukázkové aplikace
+                      href: database/saas-multitenantdb-get-started-deploy.md
+                    - name: Zřizování tenantů
+                      href: database/saas-multitenantdb-provision-and-catalog.md
+                    - name: Monitorování výkonu databáze
+                      href: database/saas-multitenantdb-performance-monitoring.md
+                    - name: Spouštění dotazů ad-hoc
+                      href: database/saas-multitenantdb-adhoc-reporting.md
+                    - name: Správa schémat tenantů
+                      href: database/saas-multitenantdb-schema-management.md
+                    - name: ETL pro analýzu
+                      href: database/saas-multitenantdb-tenant-analytics.md
+    - name: ukázky
+      items:
+        - name: Azure CLI
+          href: database/az-cli-script-samples-content-guide.md?tabs=single-database
+        - name: Azure PowerShell
+          href: database/powershell-script-content-guide.md?tabs=single-database
+        - name: Azure Resource Manager
+          href: database/arm-templates-content-guide.md?tabs=single-database
+        - name: Ukázky kódů
+          href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
+- name: Spravovaná instance SQL (SQL MI)
+  items:
+    - name: Dokumentace
+      href: managed-instance/index.yml
+    - name: Přehled
+      items:
+        - name: Co je spravované instance SQL?
+          href: managed-instance/sql-managed-instance-paas-overview.md
+        - name: Fondy instancí
+          href: managed-instance/instance-pools-overview.md
+        - name: Nejčastější dotazy
+          displayName: faq
+          href: managed-instance/frequently-asked-questions-faq.md
+        - name: "Poznámky k\_verzi"
+          href: database/doc-changes-updates-release-notes.md?&tabs=managed-instance
+    - name: Rychlé starty
+      href: managed-instance/quickstart-content-reference-guide.md
+      items:
+        - name: Vytvořit
+          items:
+            - name: Pomocí webu Azure Portal
+              href: managed-instance/instance-create-quickstart.md
+            - name: Pomocí prostředí PowerShell
+              href: managed-instance/scripts/create-configure-managed-instance-powershell.md
+            - name: Vytváření fondů instancí
+              href: managed-instance/instance-pools-configure.md
+        - name: Konfigurace
+          items:
+            - name: Konfigurace podsítě s podporou služeb
+              href: managed-instance/subnet-service-aided-configuration-enable.md
+            - name: Veřejný koncový bod
+              href: managed-instance/public-endpoint-configure.md
+            - name: Minimální verze protokolu TLS
+              href: managed-instance/minimal-tls-version-configure.md
+            - name: Připojení ke klientskému virtuálnímu počítači
+              href: managed-instance/connect-vm-instance-configure.md
+            - name: Připojení typu Point-to-Site
+              href: managed-instance/point-to-site-p2s-configure.md
+            - name: Dlouhodobé uchovávání záloh
+              href: managed-instance/long-term-backup-retention-configure.md
+        - name: Načtení dat
+          items:
+            - name: Obnovení ukázkové databáze
+              href: managed-instance/restore-sample-database-quickstart.md
+    - name: Kurzy
+      items:
+        - name: Migrace s využitím DMS
+          href: ../dms/tutorial-sql-server-to-managed-instance.md?toc=/azure/azure-sql/toc.json
+        - name: Konfigurace zabezpečení
+          href: managed-instance/aad-security-configure-tutorial.md
+        - name: Přidání instance do skupiny převzetí služeb při selhání
+          href: managed-instance/failover-group-add-instance-tutorial.md
+        - name: Migrace místních uživatelů a skupin
+          href: managed-instance/migrate-sql-server-users-to-instance-transact-sql-tsql-tutorial.md
+        - name: Transakční replikace
+          items:
+            - name: MI Pub do MI Sub
+              href: managed-instance/replication-between-two-instances-configure-tutorial.md
+            - name: 'MI pub, MI dist, SQL sub'
+              href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
+    - name: Koncepty
+      items:
+        - name: Transakční replikace
+          href: managed-instance/replication-transactional-overview.md
+        - name: Referenční informace k rozhraní API pro správu
+          href: managed-instance/api-references-create-manage-instance.md
+        - name: Omezení prostředků
+          href: managed-instance/resource-limits.md
+        - name: Architektura připojení
+          href: managed-instance/connectivity-architecture-overview.md
+        - name: Rozdíly v jazyce T-SQL
+          href: managed-instance/transact-sql-tsql-differences-sql-server.md
+        - name: Machine Learning Services
+          items:
+            - name: Přehled
+              href: managed-instance/machine-learning-services-overview.md
+            - name: Klíčové rozdíly
+              href: managed-instance/machine-learning-services-differences.md
+            - name: Rychlé starty
+              items:
+                - name: Python
+                  items:
+                    - name: Spouštění skriptů Pythonu
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Datové struktury a objekty
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-data-structures?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Funkce Pythonu
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Trénování a hodnocení modelu
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: R
+                  items:
+                    - name: Spouštění skriptů jazyka R
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Datové typy a objekty
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-data-types-and-objects?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Funkce jazyka R
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-functions?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Trénování a hodnocení modelu
+                      href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-train-score-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+            - name: Kurzy
+              items:
+                - name: Python
+                  items:
+                    - name: Půjčovna lyží (lineární regrese)
+                      items:
+                        - name: 1. Úvod
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2. Příprava dat
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3. Trénování modelu
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-train-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4. Nasazení modelu
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-ski-rental-linear-regression-deploy-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Kategorizace zákazníků (clustering K-Means)
+                      items:
+                        - name: 1. Úvod
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2. Příprava dat
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3. Vytvoření modelu
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4. Nasazení modelu
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/python-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: R
+                  items:
+                    - name: Půjčovna lyží (rozhodovací strom)
+                      items:
+                        - name: 1. Úvod
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2. Příprava dat
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3. Trénování modelu
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-train?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4. Nasazení modelu
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-predictive-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Kategorizace zákazníků (clustering K-Means)
+                      items:
+                        - name: 1. Úvod
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-introduction?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 2. Příprava dat
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-prepare-data?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 3. Vytvoření modelu
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-build?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                        - name: 4. Nasazení modelu
+                          href: 'https://docs.microsoft.com/sql/machine-learning/tutorials/r-clustering-model-deploy?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+            - name: Správa balíčků Pythonu a jazyka R
+              items:
+                - name: Python
+                  items:
+                    - name: Získání informací o balíčku Pythonu
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/python-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Instalace pomocí sqlmlutils
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-python-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                - name: R
+                  items:
+                    - name: Získání informací o balíčku jazyka R
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/r-package-information?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Instalace pomocí sqlmlutils
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/install-additional-r-packages-on-sql-server?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Vytvoření úložiště miniCRAN
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/create-a-local-package-repository-using-minicran?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+                    - name: Tipy pro použití balíčků jazyka R
+                      href: 'https://docs.microsoft.com/sql/machine-learning/package-management/tips-for-using-r-packages?context=/azure/azure-sql/managed-instance/context/ml-context&view=azuresqldb-mi-current'
+        - name: Funkce
+          items:
+            - name: Propojené servery
+              href: 'https://docs.microsoft.com/sql/relational-databases/linked-servers/linked-servers-database-engine?toc=/azure/azure-sql/toc.json'
+            - name: Service Broker
+              href: 'https://docs.microsoft.com/sql/database-engine/configure-windows/sql-server-service-broker?toc=/azure/azure-sql/toc.json'
+            - name: Databázový e-mail
+              href: 'https://docs.microsoft.com/sql/relational-databases/database-mail/database-mail?toc=/azure/azure-sql/toc.json'
+        - name: Zabezpečení
+          items:
+            - name: Zabezpečení veřejných koncových bodů
+              href: managed-instance/public-endpoint-overview.md
+            - name: Auditování
+              href: managed-instance/auditing-configure.md
+    - name: Postup
+      items:
+        - name: Přehled
+          href: managed-instance/how-to-content-reference-guide.md
+        - name: Migrace do spravované instance SQL
+          href: managed-instance/migrate-to-instance-from-sql-server.md
+        - name: Přizpůsobení časového pásma
+          href: managed-instance/timezones-overview.md
+        - name: Konfigurace typů připojení
+          href: managed-instance/connection-types-overview.md
+        - name: Migrace certifikátu TDE
+          href: managed-instance/tde-certificate-migrate.md
+        - name: Obnovení k určitému bodu v čase
+          href: managed-instance/point-in-time-restore.md
+        - name: Určení velikosti podsítě spravované instance
+          href: managed-instance/vnet-subnet-determine-size.md
+        - name: Vytvoření nové virtuální sítě a podsítě pro spravovanou instanci
+          href: managed-instance/virtual-network-subnet-create-arm-template.md
+        - name: Konfigurace stávající virtuální sítě a podsítě pro spravovanou instanci
+          href: managed-instance/vnet-existing-add-subnet.md
+        - name: Odstranění podsítě po odstranění spravované instance
+          href: managed-instance/virtual-cluster-delete.md
+        - name: Konfigurace vlastního systému DNS
+          href: managed-instance/custom-dns-configure.md
+        - name: Synchronizace konfigurace sítě
+          href: managed-instance/azure-app-sync-network-configuration.md
+        - name: Vyhledání IP adresy koncového bodu správy
+          href: managed-instance/management-endpoint-find-ip-address.md
+        - name: Ověření integrované ochrany brány firewall
+          href: managed-instance/management-endpoint-verify-built-in-firewall.md
+        - name: Konfigurace zjišťování hrozeb
+          href: managed-instance/threat-detection-configure.md
+        - name: Připojení aplikací
+          href: managed-instance/connect-application-instance.md
+        - name: Vytváření upozornění
+          href: managed-instance/alerts-create.md
+    - name: ukázky
+      items:
+        - name: Azure CLI
+          href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
+        - name: Azure PowerShell
+          href: database/powershell-script-content-guide.md?tabs=managed-instance
+        - name: Azure Resource Manager
+          href: database/arm-templates-content-guide.md?tabs=managed-instance
+        - name: Ukázky kódů
+          href: 'https://azure.microsoft.com/resources/samples/?service=sql-database'
+- name: SQL Server na virtuálním počítači Azure
+  items:
+    - name: Dokumentace
+      href: virtual-machines/index.yml
+    - name: Windows
+      items:
+        - name: Přehled
+          items:
+            - name: Co je virtuální počítač s SQL Serverem?
+              href: virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md
+            - name: Změny dokumentů
+              href: virtual-machines/windows/doc-changes-updates-release-notes.md
+        - name: Rychlé starty
+          items:
+            - name: Vytvoření virtuálního počítače SQL – portál
+              href: virtual-machines/windows/sql-vm-create-portal-quickstart.md
+            - name: Vytvoření virtuálního počítače SQL – PowerShell
+              href: virtual-machines/windows/sql-vm-create-powershell-quickstart.md
+        - name: Koncepty
+          items:
+            - name: Osvědčené postupy
+              items:
+                - name: Osvědčené postupy z hlediska výkonu
+                  href: virtual-machines/windows/performance-guidelines-best-practices.md
+                - name: Aspekty zabezpečení
+                  href: virtual-machines/windows/security-considerations-best-practices.md
+                - name: Vzory aplikací
+                  href: virtual-machines/windows/application-patterns-development-strategies.md
+            - name: Kontinuita podnikových procesů
+              items:
+                - name: Možnosti vysoké dostupnosti
+                  href: virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md
+                - name: Skupina dostupnosti Always On
+                  href: virtual-machines/windows/availability-group-overview.md
+                - name: Zálohování a obnovení
+                  href: virtual-machines/windows/backup-restore.md
+                - name: Automatizovaná záloha pro SQL Server 2014
+                  href: virtual-machines/windows/automated-backup-sql-2014.md
+                - name: Automatizovaná záloha pro SQL Server 2016+
+                  href: virtual-machines/windows/automated-backup.md
+            - name: Správa
+              items:
+                - name: Vyhrazený hostitel
+                  href: virtual-machines/windows/dedicated-host.md
+                - name: S využitím webu Azure Portal
+                  href: virtual-machines/windows/manage-sql-vm-portal.md
+                - name: Rozšíření podpory pro SQL 2008 a R2
+                  href: virtual-machines/windows/sql-server-2008-extend-end-of-support.md
+                - name: Připojení k virtuálnímu počítači
+                  href: virtual-machines/windows/ways-to-connect-to-sql.md
+                - name: Konfigurace úložiště
+                  href: virtual-machines/windows/storage-configuration.md
+                - name: Automatizace úloh správy
+                  items:
+                    - name: Použití rozšíření agenta SQL Server IaaS
+                      href: virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md
+                    - name: Automatizované opravy
+                      href: virtual-machines/windows/automated-patching.md
+                    - name: Integrace se službou Azure Key Vault
+                      href: virtual-machines/windows/azure-key-vault-integration-configure.md
+        - name: Návody
+          items:
+            - name: Vytvoření virtuálního počítače SQL
+              items:
+                - name: Použití portálu
+                  href: virtual-machines/windows/create-sql-vm-portal.md
+                - name: Použití Azure Powershell
+                  href: virtual-machines/windows/create-sql-vm-powershell.md
+            - name: Registrace s využitím SQL VM RP
+              displayName: 'resource provider, registration'
+              items:
+                - name: Jeden virtuální počítač
+                  href: virtual-machines/windows/sql-vm-resource-provider-register.md
+                - name: Hromadná registrace několika virtuálních počítačů
+                  href: virtual-machines/windows/sql-vm-resource-provider-bulk-register.md
+            - name: Spravovat
+              items:
+                - name: Model licencování
+                  displayName: 'ahb, ahub, payg, change, modify, update'
+                  href: virtual-machines/windows/licensing-model-azure-hybrid-benefit-ahb-change.md
+                - name: Edice
+                  displayName: 'change, modify, update'
+                  href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Azure Storage pro zálohování a obnovení
+                  href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
+            - name: Migrace
+              items:
+                - name: Databáze SQL Serveru do virtuálního počítače
+                  href: virtual-machines/windows/migrate-to-vm-from-sql-server.md
+                - name: Virtuální počítač do nové oblasti
+                  href: virtual-machines/windows/move-sql-vm-different-region.md
+            - name: Konfigurace vysoké dostupnosti
+              items:
+                - name: Skupina dostupnosti Always On
+                  items:
+                    - name: Rozhraní Azure SQL VM CLI
+                      href: virtual-machines/windows/availability-group-az-cli-configure.md
+                    - name: Šablona webu Azure Portal
+                      href: virtual-machines/windows/availability-group-azure-marketplace-template-configure.md
+                    - name: Šablony Azure pro rychlé zprovoznění
+                      href: virtual-machines/windows/availability-group-quickstart-template-configure.md
+                    - name: Několik oblastí
+                      href: virtual-machines/windows/availability-group-manually-configure-multiple-regions.md
+                    - name: Nezávislé na doméně (pracovní skupina)
+                      href: virtual-machines/windows/availability-group-clusterless-workgroup-configure.md
+                    - name: Ruční konfigurace
+                      items:
+                        - name: Požadavky
+                          href: virtual-machines/windows/availability-group-manually-configure-prerequisites-tutorial.md
+                        - name: Kurz
+                          href: virtual-machines/windows/availability-group-manually-configure-tutorial.md
+                        - name: Load Balancer – web Azure Portal
+                          href: virtual-machines/windows/availability-group-load-balancer-portal-configure.md
+                        - name: Load Balancer – Azure PowerShell
+                          href: virtual-machines/windows/availability-group-listener-powershell-configure.md
+                - name: Instance clusteru převzetí služeb při selhání
+                  items:
+                    - name: "S využitím prostorů úložiště s\_přímým přístupem"
+                      href: virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md
+                    - name: S využitím sdílené složky úrovně Premium
+                      href: virtual-machines/windows/failover-cluster-instance-premium-file-share-manually-configure.md
+        - name: Referenční informace
+          items:
+            - name: Azure PowerShell
+              href: /powershell/azure/overview
+            - name: Azure CLI
+              href: /cli/azure/
+            - name: T-SQL
+              href: 'https://docs.microsoft.com/sql/t-sql/language-reference'
+            - name: Ovladače SQL Serveru
+              href: 'https://docs.microsoft.com/sql/connect/sql-connection-libraries'
+            - name: REST
+              href: /rest/api/
+        - name: Zdroje a prostředky
+          items:
+            - name: Nejčastější dotazy
+              href: virtual-machines/windows/frequently-asked-questions-faq.md
+            - name: Ceny
+              href: virtual-machines/windows/pricing-guidance.md
+            - name: SQL Server Data Tools (SSDT)
+              href: '/https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
+            - name: SQL Server Management Studio (SSMS)
+              href: 'https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms'
+            - name: Nástroje SQL Serveru
+              href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
+            - name: Plány Azure do budoucna
+              href: 'https://azure.microsoft.com/roadmap/?category=compute'
+            - name: Fórum MSDN
+              href: 'https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesforWindows&filter=alltypes&brandIgnore=True&sort=relevancedesc&searchTerm=SQL+Server'
+            - name: Stack Overflow
+              href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+    - name: Linux
+      items:
+        - name: Přehled
+          items:
+            - name: Linuxové virtuální počítače s SQL Serverem
+              href: virtual-machines/linux/sql-server-on-linux-vm-what-is-iaas-overview.md
+        - name: Rychlé starty
+          items:
+            - name: Vytvoření virtuálního počítače SQL – portál
+              href: virtual-machines/linux/sql-vm-create-portal-quickstart.md
+        - name: Kurzy
+          items:
+            - name: Nastavení skupiny dostupnosti Azure RHEL VM s využitím STONITH
+              href: virtual-machines/linux/rhel-high-availability-stonith-tutorial.md
+            - name: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích RHEL v Azure
+              href: virtual-machines/linux/rhel-high-availability-listener-tutorial.md
+        - name: Zdroje a prostředky
+          items:
+            - name: Nejčastější dotazy
+              href: virtual-machines/linux/frequently-asked-questions-faq.md
+            - name: Dokumentace k SQL Serveru na Linuxu
+              href: 'https://docs.microsoft.com/sql/linux/sql-server-linux-overview'
+            - name: SQL Server Data Tools (SSDT)
+              href: 'https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt'
+            - name: Nástroje SQL Serveru
+              href: 'https://docs.microsoft.com/sql/tools/overview-sql-tools'
+            - name: Plány Azure do budoucna
+              href: 'https://azure.microsoft.com/roadmap/?category=compute'
+            - name: Stack Overflow
+              href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+- name: Referenční informace
+  items:
+    - name: Referenční informace k jazyku T-SQL
+      href: /sql/t-sql/language-reference
+    - name: Azure CLI
+      href: /cli/azure/sql
+    - name: Azure PowerShell
+      href: /powershell/module/az.sql
+    - name: .NET
+      href: /dotnet/api/microsoft.azure.management.sql.models
+    - name: Java
+      href: /java/api/com.microsoft.azure.management.sql
+    - name: REST
+      href: /rest/api/sql/
+    - name: Šablony Resource Manageru pro SQL
+      displayName: ARM
+      href: /azure/templates/microsoft.sql/allversions
+    - name: Nástroje SQL
+      href: /sql/tools/overview-sql-tools
+    - name: SQL Server Management Studio (SSMS)
+      href: /sql/ssms/download-sql-server-management-studio-ssms
+    - name: SQL Server Data Tools (SSDT)
+      href: /sql/ssdt/download-sql-server-data-tools-ssdt
+    - name: BCP
+      href: /sql/tools/bcp-utility
+    - name: SQLCMD
+      href: /sql/tools/sqlcmd-utility
+    - name: SqlPackage
+      href: 'https://docs.microsoft.com/sql/tools/sqlpackage?toc=/azure/azure-sql/toc.json'
+    - name: Balíček knihoven pro správu SQL Database
+      href: 'https://www.nuget.org/packages/Microsoft.Azure.Management.Sql'
+    - name: Ovladače připojení SQL
+      href: /sql/connect/sql-connection-libraries
+    - name: Ovladače SQL Serveru
+      href: /sql/connect/sql-server-drivers
+      items:
+        - name: ADO.NET
+          href: /sql/connect/ado-net/microsoft-ado-net-for-sql-server
+        - name: JDBC
+          href: /sql/connect/jdbc/microsoft-jdbc-driver-for-sql-server
+        - name: Node.js
+          href: /sql/connect/node-js/node-js-driver-for-sql-server
+        - name: ODBC
+          href: /sql/connect/odbc/microsoft-odbc-driver-for-sql-server
+        - name: PHP
+          href: /sql/connect/php/microsoft-php-driver-for-sql-server
+        - name: Python
+          href: /sql/connect/python/python-driver-for-sql-server
+        - name: Ruby
+          href: /sql/connect/ruby/ruby-driver-for-sql-server
+- name: Zdroje a prostředky
+  items:
+    - name: Získávání dovedností pomocí Microsoft Learn
+      href: /learn/browse/?products=azure-sql-database
+    - name: Blog o SQL Serveru
+      href: 'https://cloudblogs.microsoft.com/sqlserver/?product=azure-sql-database'
+    - name: Blog o Microsoft Azure
+      href: 'https://azure.microsoft.com/blog/'
+    - name: Plány Azure do budoucna
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: Veřejné datové sady
+      href: public-data-sets.md
+    - name: Ceny
+      href: 'https://azure.microsoft.com/pricing/details/sql-database/'
+    - name: Fórum MSDN
+      href: 'https://social.msdn.microsoft.com/Forums/home?forum=ssdsgetstarted'
+    - name: Stack Overflow
+      href: 'https://stackoverflow.com/questions/tagged/sql-azure'
+    - name: Řešení potíží
+      items:
+        - name: Chyby připojení
+          href: database/troubleshoot-common-errors-issues.md
+        - name: Běžné problémy s připojením
+          href: database/troubleshoot-common-connectivity-issues.md
+        - name: Zablokování služby importu/exportu
+          href: database/database-import-export-hang.md
+    - name: Aktualizace služeb
+      items:
+        - name: Aktualizace IP adresy brány
+          href: database/gateway-migration.md
+        - name: Události pravidelné údržby
+          href: database/planned-maintenance.md
+    - name: Videa
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'
+    - name: Aktualizace služeb
+      href: 'https://azure.microsoft.com/updates/?service=sql-database'
+    - name: Centrum architektury
+      href: /azure/architecture/
+    - name: Příběhy zákazníků
+      href: 'https://customers.microsoft.com/en-us/search?sq=%22Azure%20SQL%20Database%22&ff=&p=0&so=story_publish_date%20desc'

@@ -6,14 +6,14 @@ ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 05/14/2020
 ms.author: banders
-ms.openlocfilehash: 4aa02dae521844f2654a50f77be9b2ee3c46a74f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: ee2de33fadb068ee2697f79c1ebcb1b2fa4e5fcc
+ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199513"
+ms.lasthandoff: 05/20/2020
+ms.locfileid: "83715881"
 ---
 # <a name="change-your-azure-subscription-to-a-different-offer"></a>Změna předplatného Azure na jinou nabídku
 
@@ -54,7 +54,7 @@ Ze samostatného předplatného s průběžnými platbami můžete přepnout na:
 1. V závislosti na nabídce, na kterou přepínáte, se může zobrazit poznámka o dopadu přepnutí. Než budete pokračovat, pečlivě si tento seznam projděte a postupujte podle zobrazených pokynů.
 
    ![Kontrola poznámek](./media/switch-azure-offer/thingstonote.png)
-1. Předplatné můžete přejmenovat. Ve výchozím nastavení se pro něj nastaví nový název nabídky. Kliknutím na **Přepnout nabídku** proces dokončete.
+1. Předplatné můžete přejmenovat. Ve výchozím nastavení se pro něj nenastaví nový název nabídky. Kliknutím na **Přepnout nabídku** proces dokončete.
 
    ![Klikněte na zelené tlačítko](./media/switch-azure-offer/confirmpage.png)
 1. Výborně! Vaše předplatné se změnilo na novou nabídku.
@@ -96,11 +96,11 @@ Když přepnete nabídky, dojde k obnovení výchozího nastavení [všech navý
 
 #### <a name="billing"></a>Fakturace
 
-V den přepnutí se vygeneruje faktura za všechny nevyřízené poplatky. Potom se začne vaše předplatné účtovat podle cenových podmínek nové nabídky. Fakturační den předplatného se změní na datum, kdy jste změnili nabídky. Data o využití a fakturaci z doby před změnou nabídky se nezachovají, takže vám doporučujeme stáhnout si před předpnutím jejich kopii.
+V den přepnutí se vygeneruje faktura za všechny nevyřízené poplatky. Potom se začne vaše předplatné účtovat podle cenových podmínek nové nabídky. Fakturační den předplatného se změní na datum, kdy jste změnili nabídky. Data o využití a fakturaci z doby před změnou nabídky se neuchovávají, takže vám doporučujeme stáhnout si před přepnutím jejich kopii.
 
 ### <a name="can-i-migrate-from-a-subscription-with-pay-as-you-go-rates-to-cloud-solution-provider-csp-or-enterprise-agreement-ea"></a>Můžu přejít z předplatného s průběžnými platbami na program Cloud Solution Provider (CSP) nebo smlouvu Enterprise (EA)?
 
-* Pokud chcete přejít na program CSP, přečtěte si téma o [migraci z předplatného Azure s průběžnými platbami na program CSP](https://docs.microsoft.com/azure/cloud-solution-provider/migration/migration-from-payg-to-csp).
+* Pokud chcete migrovat na CSP, projděte si [Přenos předplatných Azure mezi předplatiteli a CSP](transfer-subscriptions-subscribers-csp.md).
 * Pokud chcete přejít na smlouvu EA, požádejte svého správce registrací, aby přidal váš účet do smlouvy EA. Podle pokynů v e-mailu s pozvánkou přesuňte svá předplatná do registrace smlouvy EA. Další informace najdete v tématu [Přidružení existujícího účtu](https://ea.azure.com/helpdocs/associateExistingAccount) na portálu EA.
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>Můžu migrovat data a služby na nové předplatné?

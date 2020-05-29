@@ -135,12 +135,14 @@
           href: move-across-regions-internal-load-balancer-portal.md
         - name: Interní nástroj pro vyrovnávání zatížení – PowerShell
           href: move-across-regions-internal-load-balancer-powershell.md
-    - name: Řešení potíží
-      items:
-        - name: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
-          href: load-balancer-troubleshoot.md
-        - name: Řešení potíží s běžnými chybami nasazení
-          href: load-balancer-common-deployment-errors.md
+- name: Řešení potíží
+  items:
+    - name: Řešení potíží s nástrojem pro vyrovnávání zatížení Azure
+      href: load-balancer-troubleshoot.md
+    - name: Řešení potíží s běžnými chybami nasazení
+      href: load-balancer-common-deployment-errors.md
+    - name: Řešení běžných problémů s odchozím připojením
+      href: troubleshoot-outbound-connection.md
 - name: Referenční informace
   items:
     - name: Ukázky kódů

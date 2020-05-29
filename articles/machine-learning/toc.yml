@@ -311,11 +311,14 @@
           displayName: automl automated auto ml
           href: how-to-auto-train-remote.md
         - name: Definování úloh ML
-          displayName: 'machine learning, task type'
+          displayName: 'machine learning, task type, automl'
           href: how-to-define-task-type.md
         - name: Automatické trénování modelu prognóz
           displayName: time series
           href: how-to-auto-train-forecast.md
+        - name: Funkcionalizace v automatizovaném strojovém učení (Python)
+          displayName: 'automl, feature engineering, feature importance'
+          href: how-to-configure-auto-features.md
         - name: Použití automatizovaného strojového učení v kanálech ML (Python)
           displayName: machine learning automl
           href: how-to-use-automlstep-in-pipelines.md
@@ -449,8 +452,6 @@
     - name: Reference k modulu návrháře
       displayName: 'module, reference, algorithm, studio'
       href: algorithm-module-reference/module-reference.md
-    - name: ML ve velkém měřítku
-      href: /azure/architecture/data-guide/big-data/machine-learning-at-scale
     - name: Monitorování odkazů na data
       href: monitor-resource-reference.md
     - name: Reference YAML ke kanálu strojového učení
