@@ -9,14 +9,18 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření úlohy – Azure Portal
-      href: stream-analytics-quick-create-portal.md
-    - name: Vytvoření úlohy – PowerShell
-      href: stream-analytics-quick-create-powershell.md
-    - name: Vytvoření úlohy – Visual Studio
-      href: stream-analytics-quick-create-vs.md
-    - name: Vytvoření úlohy – Visual Studio Code
-      href: quick-create-vs-code.md
+    - name: Vytvoření úlohy
+      items:
+        - name: portál Azure
+          href: stream-analytics-quick-create-portal.md
+        - name: Šablona ARM
+          href: quick-create-azure-resource-manager.md
+        - name: PowerShell
+          href: stream-analytics-quick-create-powershell.md
+        - name: Visual Studio
+          href: stream-analytics-quick-create-vs.md
+        - name: Visual Studio Code
+          href: quick-create-vs-code.md
 - name: Kurzy
   items:
     - name: 1. Vytvoření a správa úlohy

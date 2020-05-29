@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 6a2dd84ec091a2e862dd788a740585827b5cbde1
-ms.sourcegitcommit: 801a551e047e933e5e844ea4e735d044d170d99a
+ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/11/2020
-ms.locfileid: "83007535"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171547"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -44,7 +44,7 @@ V tomto článku se dozvíte, jak:
 * Data, která chcete označit, buď v místních souborech nebo v úložišti objektů BLOB v Azure.
 * Sada popisků, které chcete použít.
 * Pokyny pro označování.
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://aka.ms/AMLFree) před tím, než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://aka.ms/AMLFree), ještě než začnete.
 * Machine Learning pracovní prostor. Další informace najdete v tématu [Vytvoření pracovního prostoru Azure Machine Learning](how-to-manage-workspace.md).
 
 ## <a name="create-a-labeling-project"></a>Vytvoření projektu s popisem
@@ -55,8 +55,7 @@ Pokud vaše data jsou už v úložišti objektů BLOB v Azure, měli byste je p�
 
 Chcete-li vytvořit projekt, vyberte možnost **Přidat projekt**. Dejte projektu vhodný název a vyberte **typ úlohy označování**.
 
-![Průvodce vytvořením projektu s popisem](./media/how-to-create-labeling-projects/labeling-creation-wizard.png)
-
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-creation-wizard.png" alt-text="Průvodce vytvořením projektu s popisem":::
 
 * Vyberte možnost **klasifikace obrázku více tříd** pro projekty, pokud chcete použít pouze *jednu třídu* ze sady tříd na obrázek.
 * Pokud chcete použít *jeden nebo více* štítků ze sady tříd na obrázek, vyberte možnost **klasifikace obrázků – vícenásobné označení** pro projekty. Například fotografie psa může být označená pomocí *psa* i *Daytime*.
@@ -75,13 +74,13 @@ V mnoha případech je přesně možné pouze nahrávat místní soubory. [Průz
 
 Chcete-li vytvořit datovou sadu z dat, která již byla uložena v úložišti objektů BLOB v Azure:
 
-1. Vyberte **vytvořit datovou sadu** > **z úložiště**dat.
+1. Vyberte **vytvořit datovou sadu**  >  **z úložiště**dat.
 1. Přiřaďte k datové sadě **název** .
 1. Jako **Typ datové sady**vyberte **soubor** .  
 1. Vyberte úložiště dat.
 1. Pokud jsou vaše data v podsložce v úložišti objektů blob, zvolte **Procházet** a vyberte cestu.
     * Přidejte do cesty znak "/* *", chcete-li zahrnout všechny soubory do podsložek vybrané cesty.
-    * Připojíte **/*. * a zahrnete všechna data v aktuálním kontejneru a jejích podsložkách.
+    * Připojíte * */* . * a zahrnete všechna data v aktuálním kontejneru a jejích podsložkách.
 1. Zadejte popis pro datovou sadu.
 1. Vyberte **Další**.
 1. Potvrďte podrobnosti. Výběrem **zpět** upravíte nastavení nebo **vytvořte** datovou sadu.
@@ -93,7 +92,7 @@ Chcete-li vytvořit datovou sadu z dat, která již byla uložena v úložišti 
 
 Přímé nahrání dat:
 
-1. Vyberte **vytvořit datovou sadu** > **z místních souborů**.
+1. Vyberte **vytvořit datovou sadu**  >  **z místních souborů**.
 1. Přiřaďte k datové sadě **název** .
 1. Jako **Typ datové sady**vyberte "soubor".
 1. *Volitelné:* Vyberte **Upřesnit nastavení** a přizpůsobte úložiště dat, kontejner a cestu k datům.
@@ -108,7 +107,7 @@ Data se nahrají do výchozího úložiště objektů BLOB (workspaceblobstore) 
 
 Na stránce **třídy popisků** určete sadu tříd pro kategorizaci dat. Provedete to pečlivě, protože přesnost a rychlost štítků bude ovlivněna jejich možností výběru mezi třídami. Například namísto kontroly pravopisu úplných rodů a druhů pro rostliny nebo živočichy použijte kód pole nebo zkratku rodu.
 
-Zadejte jeden popisek na řádek. K přidání **+** nového řádku použijte tlačítko. Pokud máte více než 3 nebo 4 popisky, ale méně než 10, je možné, že budete chtít názvy označit čísly ("1:", "2:"), aby je mohli pomocí těchto klávesových zkratek zrychlit.
+Zadejte jeden popisek na řádek. **+** K přidání nového řádku použijte tlačítko. Pokud máte více než 3 nebo 4 popisky, ale méně než 10, je možné, že budete chtít názvy označit čísly ("1:", "2:"), aby je mohli pomocí těchto klávesových zkratek zrychlit.
 
 ## <a name="describe-the-labeling-task"></a>Popsat úlohu označování
 
@@ -173,7 +172,7 @@ Po inicializaci projektu ho Azure spustí. Vyberte projekt na stránce hlavní *
 
 Na kartě **data** můžete zobrazit datovou sadu a zkontrolovat data s popisky. Pokud se zobrazí nesprávně označená data, vyberte je a zvolte **odmítnout**. tím se odeberou popisky a data se převedou zpátky do fronty bez označení.
 
-Chcete-li pozastavit nebo restartovat projekt, vyberte tlačítko **pozastavit**/**spuštění** . Data můžete označovat pouze v případě, že projekt běží.
+Chcete-li pozastavit nebo restartovat projekt, vyberte tlačítko **pozastavit** / **spuštění** . Data můžete označovat pouze v případě, že projekt běží.
 
 Data můžete označit přímo ze stránky **Project Details (podrobnosti projektu** ), a to tak, že vyberete **Data popisku**.
 
@@ -187,7 +186,7 @@ Pomocí těchto kroků můžete přidat jeden nebo více štítků do projektu:
 1. V horní části stránky vyberte **pozastavit** a zastavte jmenovky od jejich aktivity.
 1. Vyberte kartu **Podrobnosti**.
 1. V seznamu na levé straně vyberte **třídy popisků**.
-1. V horní části seznamu vyberte **+ Přidat popisky** ![přidat popisek.](media/how-to-create-labeling-projects/add-label.png)
+1. V horní části seznamu vyberte **+ Přidat popisky** ![ Přidat popisek.](media/how-to-create-labeling-projects/add-label.png)
 1. Ve formuláři přidejte nový popisek a vyberte způsob, jak pokračovat.  Vzhledem k tomu, že jste změnili dostupné popisky pro obrázek, zvolíte způsob, jakým se mají již označená data zacházet:
     * Začněte znovu a odeberte všechny existující popisky.  Tuto možnost vyberte, pokud chcete začít popisky od začátku s novou úplnou sadou popisků. 
     * Začněte znovu a zachová všechny existující popisky.  Tuto možnost vyberte, pokud chcete všechna data označit jako neoznačená, ale stávající popisky nechejte jako výchozí značku pro image, které byly dříve označené.

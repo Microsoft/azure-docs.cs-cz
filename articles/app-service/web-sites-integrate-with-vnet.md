@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 78b49b8b7e17f12d49825390a302e28a61e10d16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b7df06ea7ff07907a292bdcc32e66aafa44ae68
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81770843"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170779"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace do služby Azure Virtual Network
 
@@ -117,17 +117,17 @@ Pokud používáte integraci virtuální sítě požadovaná bránou s partnersk
 
 1. Přidejte připojení partnerského vztahu do virtuální sítě, ke které se aplikace připojuje. Když přidáte připojení partnerského vztahu, povolte **Povolit přístup k virtuální síti** a vyberte **Povolit přesměrovaný přenos** a **Povolit přenos brány**.
 1. Přidejte připojení partnerského vztahu ve virtuální síti, která je v partnerském vztahu k virtuální síti, ke které jste se připojili. Pokud přidáte připojení partnerského vztahu do cílové virtuální sítě, povolte možnost **Povolit přístup k virtuální síti** a vyberte **Povolit předaný přenos** a **Povolit vzdálené brány**.
-1. V portálu **App Service Naplánujte** > **síťové** > rozhraní**Integrace virtuální** sítě. Vyberte virtuální síť, ke které se aplikace připojuje. V části směrování přidejte rozsah adres virtuální sítě, která má partnerský vztah s virtuální sítí, ke které je vaše aplikace připojená.
+1. V portálu **App Service Naplánujte**  >  **síťové**  >  rozhraní**Integrace virtuální** sítě. Vyberte virtuální síť, ke které se aplikace připojuje. V části směrování přidejte rozsah adres virtuální sítě, která má partnerský vztah s virtuální sítí, ke které je vaše aplikace připojená.
 
 ## <a name="manage-vnet-integration"></a>Správa integrace virtuální sítě
 
-Připojení a odpojení pomocí virtuální sítě se nachází na úrovni aplikace. Operace, které mohou ovlivnit integraci virtuální sítě napříč více aplikacemi, jsou na úrovni plánu App Service. Na portálu**Integration** **Networking služby** > App > Networking můžete získat podrobnosti o vaší virtuální síti. Podobné informace najdete na úrovni plánu App Service na portálu pro**integraci** **síťových virtuálních sítí** > v **App Service** > .
+Připojení a odpojení pomocí virtuální sítě se nachází na úrovni aplikace. Operace, které mohou ovlivnit integraci virtuální sítě napříč více aplikacemi, jsou na úrovni plánu App Service. Na portálu Integration **Networking služby App > Networking**  >  **VNet Integration** můžete získat podrobnosti o vaší virtuální síti. Podobné informace najdete na úrovni plánu App Service na **App Service plan**  >  portálu pro integraci**síťových virtuálních sítí**v App Service  >  **VNet Integration** .
 
 Jedinou operací, kterou můžete provést v zobrazení aplikace vaší instance integrace virtuální sítě, je odpojení vaší aplikace od virtuální sítě, ke které je aktuálně připojeno. Pokud chcete aplikaci odpojit od virtuální sítě, vyberte **Odpojit**. Vaše aplikace se po odpojení od virtuální sítě restartuje. Odpojením se nemění vaše virtuální síť. Podsíť nebo brána se neodeberou. Pokud budete chtít virtuální síť odstranit, nejdřív odpojte aplikaci od virtuální sítě a odstraňte v ní prostředky, jako jsou brány.
 
 Rozhraní App Service plánování virtuální sítě Integration UI zobrazuje všechny integrace virtuální sítě používané aplikacemi ve vašem plánu App Service. Pokud si chcete zobrazit podrobnosti o každé virtuální síti, vyberte virtuální síť, na kterou vás zajímáte. K dispozici jsou dvě akce, které můžete provést pro bránu. integrace virtuální sítě vyžaduje:
 
-* **Synchronizace sítě**: Síťová operace synchronizace se používá jenom pro funkci Integrace virtuální sítě závislé na bráně. Při provádění synchronizace sítě se zajistí, že budou synchronizovány i certifikáty a informace o síti. Pokud přidáte nebo změníte DNS vaší virtuální sítě, proveďte synchronizaci síťové operace. Tato operace restartuje všechny aplikace, které používají tuto virtuální síť.
+* **Synchronizace sítě**: Síťová operace synchronizace se používá jenom pro funkci Integrace virtuální sítě závislé na bráně. Při provádění synchronizace sítě se zajistí, že budou synchronizovány i certifikáty a informace o síti. Pokud přidáte nebo změníte DNS vaší virtuální sítě, proveďte synchronizaci síťové operace. Tato operace restartuje všechny aplikace, které používají tuto virtuální síť. Tato operace nebude fungovat, pokud používáte aplikaci a virtuální síť, která patří do různých předplatných.
 * **Přidání tras**: přidání tras k odchozímu provozu do vaší virtuální sítě.
 
 ### <a name="gateway-required-vnet-integration-routing"></a>Brána – požadované směrování integrace virtuální sítě

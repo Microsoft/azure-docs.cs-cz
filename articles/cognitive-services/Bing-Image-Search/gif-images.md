@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/24/2018
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: ad33b5a28728a8e7f9c0a70ff81ea5a9e65624bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 862a7f6c31df7395fe225cf89ad83425e917394e
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74072640"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169980"
 ---
 # <a name="search-for-gif-images"></a>Hledání obrázků GIF 
 
@@ -33,7 +33,7 @@ Chcete-li zobrazit příklady výsledků, použijte následující adresu URL pr
 https://www.bing.com/images/search?q=interesting&qft=%20filterui%3Aphoto-animatedgif
 
 ```
-## <a name="query-parameters"></a>Parametry dotazu
+## <a name="query-parameters"></a>Parametry dotazů
 
 Další informace o parametrech a parametrech dotazů naleznete v tématu [Reference k rozhraní vyhledávání obrázků API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query-parameters). V příkladu nadpisu se používá příklad, [kde můžete najít animovaný GIF pomocí jazyka Java](#gifExample).
 
@@ -42,11 +42,11 @@ Další informace o parametrech a parametrech dotazů naleznete v tématu [Refer
 - Můžete zadat parametry [maxFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#maxfilesize) a [minFileSize](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#minfilesize) . Doporučujeme nastavit maxFileSize = 2000000 jako většinu GIF v našem indexu pod 2 MB.  Také pomáhá řídit velikost dat v případě, že se jedná o problém, jako je například v mobilním mobilním scénáři.
 - Aby bylo možné zvýšit výkon, napřed načtením zdrojové adresy URL nejprve načtěte miniaturu.  
 - Pro prostředí pro první spuštění nebo cílovou stránku, kde ještě nemáte dotaz na uživatele, zkuste použít naše vývojové hledání ve formátu GIF a pomoci z [rozhraní API pro vývojové obrázky](trending-images.md).
-- Pro parametr [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) existují tři nastavení.  `strict` Možnost blokuje obsah pro dospělé.
+- Pro parametr [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) existují tři nastavení.  `strict`Možnost blokuje obsah pro dospělé.
 - Úplný seznam jazyků a umístění, která jsou podporovaná, najdete v tématu [MKT](supported-countries-markets.md) .
 - *AnimatedGifHttps* vrátí pouze animované obrázky GIF, které jsou z adresy https. V případě zabezpečení mnoho aplikací vyžaduje připojení k externím webovým odkazům přes protokol HTTPS. Například App Store společnosti Apple vyžaduje připojení k webovým službám přes protokol HTTPS, která šifruje data uživatelů během přenosu.
 
-<a name="gifExample" />
+<a name="gifExample"></a>
 
 ## <a name="example-search-for-animated-gif-using-java"></a>Příklad hledání animovaného formátu GIF pomocí jazyka Java
 

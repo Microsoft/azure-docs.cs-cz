@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: b812ae10b3462dbeff05c8a67e7ebb725281e7e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45a313318bc8005b433536d1b109f6153bc79e01
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81535753"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170609"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně nebo podle plánu. Zálohy můžete nakonfigurovat tak, aby se zachovaly až do neurčitého množství času. Aplikaci můžete obnovit do snímku předchozího stavu přepsáním existující aplikace nebo obnovením do jiné aplikace.
@@ -41,7 +41,7 @@ Funkce zálohování podporuje následující databázová řešení:
 <a name="requirements"></a>
 
 ## <a name="requirements-and-restrictions"></a>Požadavky a omezení
-* Funkce zálohování a obnovení vyžaduje, aby byl plán App Service v úrovni **Standard** nebo **Premium** . Další informace o škálování plánu App Service pro použití vyšší úrovně najdete v tématu [horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md). Úroveň **Premium** umožňuje větší počet denních zdrojů pro zálohování než úroveň **Standard** .
+* Funkce zálohování a obnovení vyžaduje, aby App Service plán byl v úrovni **Standard**, **Premium** nebo **Isolated** . Další informace o škálování plánu App Service pro použití vyšší úrovně najdete v tématu [horizontální navýšení kapacity aplikace v Azure](manage-scale-up.md). Úrovně **Premium** a **izolované** umožňují větší počet denních zdrojů pro zálohování než úroveň **Standard** .
 * Potřebujete účet úložiště Azure a kontejner ve stejném předplatném jako aplikace, kterou chcete zálohovat. Další informace o účtech Azure Storage najdete v tématu [Přehled účtu Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-account-overview).
 * Zálohy můžou mít až 10 GB obsahu aplikace a databáze. Pokud velikost zálohy překročí tento limit, zobrazí se chyba.
 * Zálohy Azure Database for MySQL s povoleným protokolem TLS nejsou podporovány. Pokud je nakonfigurované zálohování, obdržíte neúspěšné zálohy.
@@ -120,13 +120,13 @@ Někdy nechcete, aby se všechno ve vaší aplikaci zazálohovali. Tady je pár 
 ### <a name="exclude-files-from-your-backup"></a>Vyloučení souborů ze zálohy
 Předpokládejme, že máte aplikaci, která obsahuje soubory protokolů a statické bitové kopie, které se zálohují jednou a nebudete je měnit. V takových případech můžete vyloučit tyto složky a soubory z uložení v budoucích zálohách. Pokud chcete z vašich záloh vyloučit soubory a složky, vytvořte `_backup.filter` soubor ve `D:\home\site\wwwroot` složce vaší aplikace. Zadejte seznam souborů a složek, které chcete v tomto souboru vyloučit. 
 
-Přístup k souborům získáte tak, že přejdete `https://<app-name>.scm.azurewebsites.net/DebugConsole`na. Pokud se zobrazí výzva, přihlaste se ke svému účtu Azure.
+Přístup k souborům získáte tak, že přejdete na `https://<app-name>.scm.azurewebsites.net/DebugConsole` . Pokud se zobrazí výzva, přihlaste se ke svému účtu Azure.
 
 Identifikujte složky, které chcete z vašich záloh vyloučit. Například chcete vyfiltrovat zvýrazněnou složku a soubory.
 
 ![Složka imagí](./media/manage-backup/kudu-images.png)
 
-Vytvořte soubor s názvem `_backup.filter` a vložte předchozí seznam do souboru, ale odeberte `D:\home`. Vypíše jeden adresář nebo soubor na řádek. Obsah souboru by měl být následující:
+Vytvořte soubor s názvem `_backup.filter` a vložte předchozí seznam do souboru, ale odeberte `D:\home` . Vypíše jeden adresář nebo soubor na řádek. Obsah souboru by měl být následující:
 
  ```
 \site\wwwroot\Images\brand.png
@@ -136,7 +136,7 @@ Vytvořte soubor s názvem `_backup.filter` a vložte předchozí seznam do soub
 
 Nahrajte `_backup.filter` soubor do `D:\home\site\wwwroot\` adresáře vašeho webu pomocí [FTP](deploy-ftp.md) nebo jakékoli jiné metody. Pokud chcete, můžete soubor vytvořit přímo pomocí Kudu `DebugConsole` a vložit do něj obsah.
 
-Zálohování spouštějte stejným způsobem jako obvykle [ručně](#create-a-manual-backup) nebo [automaticky](#configure-automated-backups). Nyní jsou všechny soubory a složky, které jsou zadány v `_backup.filter` , vyloučené z budoucích plánovaných záloh nebo ručně iniciované. 
+Zálohování spouštějte stejným způsobem jako obvykle [ručně](#create-a-manual-backup) nebo [automaticky](#configure-automated-backups). Nyní jsou všechny soubory a složky, které jsou zadány v, `_backup.filter` vyloučené z budoucích plánovaných záloh nebo ručně iniciované. 
 
 > [!NOTE]
 > Částečné zálohy vaší lokality obnovíte stejným způsobem jako při [pravidelném zálohování](web-sites-restore.md). Proces obnovení dělá správnou věc.
@@ -148,7 +148,7 @@ Zálohování spouštějte stejným způsobem jako obvykle [ručně](#create-a-m
 <a name="aboutbackups"></a>
 
 ## <a name="how-backups-are-stored"></a>Způsob ukládání záloh
-Po provedení jedné nebo více záloh aplikace se zálohy zobrazí na stránce **kontejnery** vašeho účtu úložiště a v aplikaci. V účtu úložiště se každá záloha skládá ze`.zip` souboru, který obsahuje data zálohy, a `.xml` souboru, který obsahuje manifest obsahu `.zip` souboru. Pokud chcete mít přístup k vašim zálohám, aniž byste museli provádět obnovení aplikace, můžete tyto soubory rozbalit a procházet.
+Po provedení jedné nebo více záloh aplikace se zálohy zobrazí na stránce **kontejnery** vašeho účtu úložiště a v aplikaci. V účtu úložiště se každá záloha skládá ze `.zip` souboru, který obsahuje data zálohy, a `.xml` souboru, který obsahuje manifest `.zip` obsahu souboru. Pokud chcete mít přístup k vašim zálohám, aniž byste museli provádět obnovení aplikace, můžete tyto soubory rozbalit a procházet.
 
 Záloha databáze pro aplikaci je uložena v kořenové složce souboru ZIP. V případě databáze SQL se jedná o soubor BACPAC (bez přípony souboru) a je možné ho importovat. Pokud chcete vytvořit databázi SQL založenou na exportu BACPAC, přečtěte si téma [Import souboru BacPac pro vytvoření nové uživatelské databáze](https://technet.microsoft.com/library/hh710052.aspx).
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 638ba26c8c8aed9385e10242b86a7587c1d9a7c5
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 9797b4c8f8059f9cfefbb70672aa202c7a3f4825
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871180"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168331"
 ---
 # <a name="automation-with-service-principals"></a>Automatizace s využitím instančních objektů
 
@@ -48,7 +48,7 @@ V připojovacích řetězcích se dá použít identifikátor appID a heslo nebo
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-#### <a name="using-azanalysisservices-module"></a><a name="azmodule" />Použití modulu AZ. AnalysisServices
+#### <a name="using-azanalysisservices-module"></a><a name="azmodule"></a>Použití modulu AZ. AnalysisServices
 
 Při použití instančního objektu pro operace správy prostředků pomocí modulu [AZ. AnalysisServices](/powershell/module/az.analysisservices) použijte `Connect-AzAccount` rutinu. 
 
@@ -73,7 +73,7 @@ Sync-AzAnalysisServicesInstance -Instance "asazure://westus.asazure.windows.net/
 Set-AzAnalysisServicesServer -Name "testsvr" -ResourceGroupName "testRG" -Sku "S1" -ReadonlyReplicaCount 2 -DefaultConnectionMode Readonly
 ```
 
-#### <a name="using-sqlserver-module"></a>Použití modulu SQLServer
+#### <a name="using-sqlserver-module"></a>Používání modulu SQLServeru
 
 V následujícím příkladu se k provedení operace aktualizace databáze modelu používá appID a heslo:
 
@@ -92,9 +92,9 @@ Invoke-ProcessTable -Server "asazure://westcentralus.asazure.windows.net/myserve
 
 ### <a name="amo-and-adomd"></a>AMO a ADOMD 
 
-Při připojování k klientským aplikacím a webovým aplikacím můžou [klientské knihovny AMO a ADOMD](analysis-services-data-providers.md) verze 15.0.2 a novější instalovat balíčky z NuGet podporovat instanční objekty v připojovacích řetězcích pomocí následující syntaxe: `app:AppID` a hesla nebo `cert:thumbprint` . 
+Při připojování v klientských aplikacích a webových aplikacích podporují instalovatelné balíčky [klientských knihoven AMO a ADOMD](analysis-services-data-providers.md) verze 15.0.2 a vyšší z NuGetu instanční objekty v připojovacích řetězcích pomocí následující syntaxe: `app:AppID` a heslo nebo `cert:thumbprint`. 
 
-V následujícím příkladu `appID` a a `password` slouží k provedení operace aktualizace databáze modelu:
+V následujícím příkladu se `appID` a `password` používají k provedení operace aktualizace modelové databáze:
 
 ```csharp
 string appId = "xxx";

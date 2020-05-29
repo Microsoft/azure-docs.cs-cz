@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 11/20/2018
 author: sakash279
 ms.author: akshanka
-ms.openlocfilehash: 420c9e5a1e86f54e52905e7d7d2459fa2f68e405
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 66a53840d6002731910baf63a331a79a6f654078
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76771276"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167957"
 ---
 # <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB rozhraní API pro tabulky SDK pro Python: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -38,10 +38,10 @@ ms.locfileid: "76771276"
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
-### <a name="100"></a><a name="1.0.0"/>1.0.0
+### <a name="100"></a><a name="1.0.0"></a>1.0.0
 * Verze pro obecné dostupnosti
 
-### <a name="0371"></a><a name="0.37.1"/>0.37.1
+### <a name="0371"></a><a name="0.37.1"></a>0.37.1
 * Předběžná verze sady SDK
 
 ## <a name="release-and-retirement-dates"></a>Data o uvolnění a vyřazení

@@ -6,12 +6,12 @@ ms.author: jasonh
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 04ac6c2bf0137289221a4ae6ed58d5a71ad21739
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 698da509be2f375925459bbdd4a35d21c6ff4407
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "68950227"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171221"
 ---
 # <a name="how-to-data-profile-data-sources-in-azure-data-catalog"></a>Jak zdroje dat profilů dat v Azure Data Catalog
 
@@ -45,7 +45,7 @@ Zahrnutí profilů dat při registraci datových assetů pomáhá uživatelům o
 > Můžete také přidat dokumentaci k assetu, která popisuje, jak mohou být data integrována do aplikace. Podívejte [se, jak dokumentovat zdroje dat](data-catalog-how-to-documentation.md).
 >
 
-<a name="howto"/>
+<a name="howto"></a>
 
 ## <a name="how-to-include-a-data-profile-when-registering-a-data-source"></a>Jak zahrnout datový profil při registraci zdroje dat
 
@@ -57,7 +57,7 @@ Další informace o tom, jak registrovat zdroje dat, najdete v tématu [jak regi
 
 ## <a name="filtering-on-data-assets-that-include-data-profiles"></a>Filtrování datových assetů, které obsahují profily dat
 
-Chcete-li zjistit datové assety, které obsahují datový profil, `has:tableDataProfiles` můžete `has:columnsDataProfiles` zahrnout nebo jako jeden z hledaných výrazů.
+Chcete-li zjistit datové assety, které obsahují datový profil, můžete zahrnout `has:tableDataProfiles` nebo `has:columnsDataProfiles` jako jeden z hledaných výrazů.
 
 > [!NOTE]
 > Výběr možnosti **Zahrnout profil dat** v nástroji pro registraci zdroje dat zahrnuje informace o profilu na úrovni tabulky i sloupce. Rozhraní Data Catalog API však umožňuje registraci datových assetů pouze s jednou sadou informací o profilu.

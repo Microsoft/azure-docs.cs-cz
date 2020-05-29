@@ -1,21 +1,21 @@
 ---
 title: Příklady ovládacích prvků modelu CI Microsoft Azure Foundation srovnávacího testu
 description: Mapování doporučení pro ukázka srovnávacího testu služby CIS Microsoft Azure Foundation pro Azure Policy.
-ms.date: 05/06/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: 2163162f52eb4ad7f580c01d6539c242bd332645
-ms.sourcegitcommit: 602e6db62069d568a91981a1117244ffd757f1c2
+ms.openlocfilehash: b6029e147af49cfb91078c6228615c32ad2db5fe
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82863956"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84167226"
 ---
 # <a name="recommendation-mapping-of-the-cis-microsoft-azure-foundations-benchmark-blueprint-sample"></a>Mapování doporučení ukázka srovnávacího plánu pro CIS Microsoft Azure Foundation
 
 Následující článek podrobně popisuje, jak se vzorový test služby Azure modrotisky Microsoft Azure Foundation Maps mapuje na referenční doporučení pro CIS Microsoft Azure Foundation. Další informace o doporučeních najdete v článku věnovaném standardu [CIS Microsoft Azure Foundation](https://www.cisecurity.org/benchmark/azure/).
 
 Následující mapování jsou uvedená v doporučeních **1.1.0 Foundation v rámci testu služby Microsoft Azure CI v** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování doporučení.
-Mnohé z mapovaných doporučení jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte možnost ** \[\] auditovat audit CIS Microsoft Azure Foundation srovnávací testy v 1.1.0 a nasaďte specifická rozšíření virtuálních počítačů, která budou podporovat požadavky na audit na** integrovanou iniciativu zásad.
+Mnohé z mapovaných doporučení jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte možnost ** \[ \] Auditovat audit CIS Microsoft Azure Foundation srovnávací testy v 1.1.0 a nasaďte specifická rozšíření virtuálních počítačů, která budou podporovat požadavky na audit na** integrovanou iniciativu zásad.
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit. Historii změn si můžete prohlédnout v [historii potvrzení GitHubu](https://github.com/MicrosoftDocs/azure-docs/commits/master/articles/governance/blueprints/samples/cis-azure-1.1.0/control-mapping.md).
@@ -192,14 +192,14 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 ## <a name="44-ensure-that-advanced-data-security-on-a-sql-server-is-set-to-on"></a>4,4 Ujistěte se, že je možnost Rozšířená zabezpečení dat na SQL serveru nastavená na zapnuto.
 
-Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, aby byla na serverech SQL a spravovaných instancích SQL povolena Pokročilá zabezpečení dat.
+Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overview.md) , která vám pomůže zajistit, aby byla na serverech SQL Database a SQL Managed instance povolena Pokročilá zabezpečení dat.
 
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Pro spravované instance SQL by mělo být povolené rozšířené zabezpečení dat
 
 ## <a name="45-ensure-that-threat-detection-types-is-set-to-all"></a>4,5 zajistěte, aby se typy detekce hrozeb nastavily na ALL.
 
-Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit správnou konfiguraci rozšířené ochrany před internetovými útoky na serverech SQL a spravovaných instancích SQL.
+Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit správnou konfiguraci rozšířené ochrany před internetovými útoky na serverech SQL Database a spravovaných instancí SQL.
 
 - V rozšířených nastaveních zabezpečení dat SQL serveru by se měly nastavit rozšířené typy ochrany před internetovými útoky na ALL.
 - V rozšířených nastaveních zabezpečení dat spravované instance SQL by se měly nastavit rozšířené typy ochrany před internetovými útoky na ALL.
@@ -232,7 +232,7 @@ Tento podrobný plán přiřadí definici [Azure Policy](../../../policy/overvie
 
 ## <a name="410-ensure-sql-servers-tde-protector-is-encrypted-with-byok-use-your-own-key"></a>4,10 zajistěte, aby ochrana TDE systému SQL Server byla zašifrovaná pomocí BYOK (použijte vlastní klíč).
 
-Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby byla transparentní šifrování dat pro SQL servery a spravované instance SQL šifrované pomocí vlastního klíče.
+Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které vám pomůžou zajistit, aby transparentní Ochrana šifrovaných dat pro SQL Database a servery spravované instance SQL byly šifrované pomocí vlastního klíče.
 
 - Ochrana TDE systému SQL Server by měla být zašifrovaná pomocí vlastního klíče
 - Ochrana TDE spravované instance SQL by se měla šifrovat pomocí vlastního klíče.
@@ -524,8 +524,8 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 Teď, když jste zkontrolovali mapování ovládacího prvku pro kontrolní plán služby CIS Microsoft Azure Foundation, najdete v následujících článcích informace o podrobném plánu nebo návštěvě Azure Policy v Azure Portal k přiřazení iniciativy:
 
 > [!div class="nextstepaction"]
-> [Ci Microsoft Azure Foundation – přehled srovnávacích standardů – přehled](./index.md)
-> služby[CI Microsoft Azure Foundation srovnávací plán – nasazení kroků](./deploy.md)
+> [Ci Microsoft Azure Foundation – přehled](./index.md) 
+>  benchmark details [Ci Microsoft Azure Foundation – kroky testu – postup nasazení](./deploy.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

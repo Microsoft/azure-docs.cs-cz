@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: a89fd0ba39de3d4528dda44280d02a993bedd6b0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fb3246564c7902d1a99c28425ee7ee1789b00354
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047353"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171136"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Použití koncových bodů a pravidel služby virtuální sítě pro servery v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -208,7 +208,7 @@ Chyba připojení 40914 se vztahuje k *pravidlům virtuální sítě*, jak je uv
 
 *Řešení chyb:* Zadejte IP adresu klienta jako pravidlo protokolu IP. To provedete v podokně Brána firewall na webu Azure Portal.
 
-<a name="anchor-how-to-by-using-firewall-portal-59j" />
+<a name="anchor-how-to-by-using-firewall-portal-59j"></a>
 
 ## <a name="portal-can-create-a-virtual-network-rule"></a>Portál může vytvořit pravidlo virtuální sítě
 
@@ -236,7 +236,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 - Odpovídajícím názvem typu koncového bodu je **Microsoft. SQL**.
 - Pokud vaše podsíť nemusí být označená názvem typu, přečtěte si téma [ověření, že je podsíť koncovým bodem][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100].
 
-<a name="a-portal-steps-for-vnet-rule-200" />
+<a name="a-portal-steps-for-vnet-rule-200"></a>
 
 ## <a name="azure-portal-steps"></a>Azure Portal kroky
 
@@ -275,7 +275,7 @@ Musíte už mít podsíť, která je označená konkrétním Virtual Networkm *t
 > - **Odstraněno:** Platí pouze pro operaci odstranění a označuje, že pravidlo bylo odstraněno a již není použito.
 > - **Probíhá zpracování:** Indikuje, že operace probíhá. Původní pravidlo se použije, pokud je operace v tomto stavu.
 
-<a name="anchor-how-to-links-60h" />
+<a name="anchor-how-to-links-60h"></a>
 
 ## <a name="related-articles"></a>Související články
 

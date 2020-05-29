@@ -10,12 +10,12 @@ ms.date: 05/05/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: aab64e173b02ae991f7071da785434fa742de7de
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 4b1abe8efb4baaf260005df1a4ee5b6d1645715a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994693"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169215"
 ---
 # <a name="disaster-recovery-and-storage-account-failover"></a>Zotavení po havárii a převzetí služeb při selhání účtu úložiště
 
@@ -102,6 +102,8 @@ Vlastnost **čas poslední synchronizace** označuje poslední čas, po který j
 
 Osvědčeným postupem je navrhnout aplikaci tak, aby bylo možné použít čas poslední synchronizace k vyhodnocení očekávané ztráty dat. Pokud například protokoluje všechny operace zápisu, můžete porovnat čas poslední operace zápisu s časem poslední synchronizace a určit, které zápisy nebyly synchronizovány do sekundárního.
 
+Další informace o kontrole vlastnosti **Poslední čas synchronizace** najdete v tématu [Kontrola vlastnosti času poslední synchronizace pro účet úložiště](last-sync-time-get.md).
+
 ### <a name="use-caution-when-failing-back-to-the-original-primary"></a>Při navrácení služeb po obnovení původní primární služby postupujte opatrně.
 
 Po převzetí služeb při selhání z primárního umístění do sekundární oblasti je váš účet úložiště nakonfigurovaný místně redundantní v nové primární oblasti. Pak můžete znovu nakonfigurovat účet pro geografickou redundanci. Když je účet po převzetí služeb při selhání nakonfigurovaný na geografickou redundanci, nová primární oblast začne okamžitě kopírovat data do nové sekundární oblasti, která byla primární před původní převzetí služeb při selhání. Může ale nějakou dobu trvat, než se stávající data v primárním čase zkopírují do nového sekundárního.
@@ -173,4 +175,5 @@ V extrémních situacích, kdy dojde ke ztrátě oblasti z důvodu významné ha
 
 - [Použití geografické redundance k návrhu vysoce dostupných aplikací](geo-redundant-design.md)
 - [Zahájení převzetí služeb při selhání účtu](storage-initiate-account-failover.md)
+- [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)
 - [Kurz: vytvoření vysoce dostupné aplikace s úložištěm BLOB](../blobs/storage-create-geo-redundant-storage.md)

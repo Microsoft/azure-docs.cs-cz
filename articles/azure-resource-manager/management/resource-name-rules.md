@@ -3,12 +3,12 @@ title: Omezení pojmenování prostředků
 description: Zobrazuje pravidla a omezení pro pojmenování prostředků Azure.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 553d0e33c4b9bc1aa238cf582f37be1e148eea5e
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 73e5f7ce7f5c13a0ce456372d299e49033c7e704
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758890"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170575"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Omezení a pravidla pojmenování prostředků Azure
 
@@ -81,9 +81,9 @@ V následujících tabulkách pojem alfanumerický označuje:
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
 > | počtu | rozsah přiřazení | 1–90 | Alfanumerické znaky, tečky, podtržítka, spojovníky a závorky.<br><br>Nemůže končit tečkou. |
-> | policyassignments | rozsah přiřazení | zobrazované jméno 1-128<br><br>název prostředku 1-260 | Zobrazovaný název může obsahovat libovolné znaky.<br><br>Název prostředku nemůže obsahovat `%` a nemůže končit tečkou nebo mezerou. |
-> | policydefinitions | rozsah definice | zobrazované jméno 1-128<br><br>název prostředku 1-260 | Zobrazovaný název může obsahovat libovolné znaky.<br><br>Název prostředku nemůže obsahovat `%` a nemůže končit tečkou nebo mezerou. |
-> | policySetDefinitions | rozsah definice | zobrazované jméno 1-128<br><br>název prostředku 1-260 | Zobrazovaný název může obsahovat libovolné znaky.<br><br>Název prostředku nemůže obsahovat `%` a nemůže končit tečkou nebo mezerou.  |
+> | policyAssignments | rozsah přiřazení | zobrazované jméno 1-128<br><br>název prostředku 1-64 | Zobrazovaný název může obsahovat libovolné znaky.<br><br>Název prostředku nemůže obsahovat `%` a nemůže končit tečkou nebo mezerou. |
+> | policyDefinitions | rozsah definice | zobrazované jméno 1-128<br><br>název prostředku 1-64 | Zobrazovaný název může obsahovat libovolné znaky.<br><br>Název prostředku nemůže obsahovat `%` a nemůže končit tečkou nebo mezerou. |
+> | policySetDefinitions | rozsah definice | zobrazované jméno 1-128<br><br>název prostředku 1-64<br><br>1-24 název prostředku v oboru skupiny pro správu | Zobrazovaný název může obsahovat libovolné znaky.<br><br>Název prostředku nemůže obsahovat `%` a nemůže končit tečkou nebo mezerou.  |
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
@@ -540,7 +540,7 @@ V následujících tabulkách pojem alfanumerický označuje:
 > [!div class="mx-tableFixed"]
 > | Entita | Rozsah | Délka | Platné znaky |
 > | --- | --- | --- | --- |
-> | Řešení | Pracovní prostor | – | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
+> | Řešení | Pracovní prostor | Není k dispozici | Pro řešení vytvořená společností Microsoft musí být název ve vzoru:<br>`SolutionType(WorkspaceName)`<br><br>Pro řešení vytvořená třetími stranami musí být název ve vzoru:<br>`SolutionType[WorkspaceName]`<br><br>Platný název je například:<br>`AntiMalware(contoso-IT)`<br><br>Typ řešení rozlišuje velká a malá písmena. |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 

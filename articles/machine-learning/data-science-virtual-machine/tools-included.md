@@ -9,13 +9,14 @@ ms.subservice: data-science-vm
 author: lobrien
 ms.author: laobri
 ms.topic: reference
-ms.date: 05/07/2020
-ms.openlocfilehash: 394f143748912861cc4b819c9c28860b9a9ffddf
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.date: 05/28/2020
+ms.custom: contperfq4
+ms.openlocfilehash: 982b9bc55a19c4694e628ca101a2d9f82fe507cb
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82928988"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171442"
 ---
 # <a name="what-tools-are-included-on-the-azure-data-science-virtual-machine"></a>Jaké nástroje jsou součástí Azure Data Science Virtual Machine?
 
@@ -122,7 +123,7 @@ Data Science Virtual Machine se dodává s nejužitečnější nástroji pro dat
 * py37 </br>
 * azureml_py36 </br>
 
-**Windows Server 2016** má následující prostředí conda:-</br>  
+**Windows Server 2016**   má následující prostředí conda:-</br>  
 * base   </br>
 * AzureML  </br>
 * python2  </br>

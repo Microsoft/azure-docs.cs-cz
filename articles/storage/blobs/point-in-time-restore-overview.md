@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 66682e953e4e262604d1b0c07720ebaab5995364
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 38f6cfef60cf3bfe66742cba204d74db1c22ca77
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83195221"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84169283"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Obnovení bodu v čase pro objekty blob bloku (Preview)
 
@@ -26,15 +26,13 @@ Další informace o tom, jak povolit obnovení k určitému bodu v čase pro ú�
 
 Pokud chcete povolit obnovení k určitému bodu v čase, vytvořte zásadu správy pro účet úložiště a zadejte dobu uchování. Během doby uchování můžete obnovit objekty blob bloku z současného stavu do stavu v předchozím bodě v čase.
 
-Chcete-li zahájit obnovení k určitému bodu v čase, zavolejte operaci [obnovit rozsahy objektů BLOB](/rest/api/storagerp/storageaccounts/restoreblobranges) a určete bod obnovení v čase UTC. Můžete zadat lexicographical rozsah kontejnerů a názvů objektů blob, které se mají obnovit, nebo vynecháte rozsah pro obnovení všech kontejnerů v účtu úložiště. Operace **obnovit rozsahy objektů BLOB** vrátí ID obnovení, které jedinečně identifikuje operaci.
+Chcete-li zahájit obnovení k určitému bodu v čase, zavolejte operaci [obnovit rozsahy objektů BLOB](/rest/api/storagerp/storageaccounts/restoreblobranges) a určete bod obnovení v čase UTC. Můžete zadat lexicographical rozsahy názvů kontejnerů a objektů blob, které se mají obnovit, nebo vynecháte rozsah pro obnovení všech kontejnerů v účtu úložiště. Pro každou operaci obnovení se podporuje až 10 lexicographical rozsahů.
 
 Azure Storage analyzuje všechny změny provedené v zadaných objektech blob mezi požadovaným bodem obnovení, který je zadaný v čase UTC, a v současné době. Operace obnovení je atomická, takže se buď úspěšně dokončí obnovení všech změn, nebo selže. Pokud existují objekty blob, které se nedají obnovit, operace se nezdařila a operace čtení a zápisu do ovlivněných kontejnerů se obnoví.
 
-Když vyžádáte operaci obnovení, Azure Storage blokuje operace s daty objektů BLOB v rozsahu obnovování po dobu trvání operace. Operace čtení, zápisu a odstranění jsou v primárním umístění blokované. Operace čtení ze sekundárního umístění můžou během operace obnovení pokračovat, pokud je účet úložiště geograficky replikovaný.
-
 V účtu úložiště se dá spustit jenom jedna operace obnovení. Operaci obnovení nelze zrušit, jakmile probíhá, ale můžete provést druhou operaci obnovení, která vrátí zpět první operaci.
 
-Chcete-li zjistit stav obnovení k určitému bodu v čase, zavolejte operaci **získat stav obnovení** s ID obnovení vráceným z operace **obnovit rozsahy objektů BLOB** .
+Operace **obnovit rozsahy objektů BLOB** vrátí ID obnovení, které jedinečně identifikuje operaci. Chcete-li zjistit stav obnovení k určitému bodu v čase, zavolejte operaci **získat stav obnovení** s ID obnovení vráceným z operace **obnovit rozsahy objektů BLOB** .
 
 Mějte na paměti následující omezení operací obnovení:
 
@@ -42,6 +40,11 @@ Mějte na paměti následující omezení operací obnovení:
 - Objekt BLOB s aktivním zapůjčením nejde obnovit. Pokud je objekt BLOB s aktivním zapůjčením zahrnutý do rozsahu objektů blob, které se mají obnovit, operace obnovení se nezdařila.
 - Snímky se v rámci operace obnovení nevytváří ani neodstraňují. Do předchozího stavu se obnoví jenom základní objekt BLOB.
 - Pokud se objekt BLOB přesunul mezi horkou a studenou vrstvou v období od současného a bodu obnovení, obnoví se objekt blob do předchozí úrovně. Objekt blob, který se přesunul do archivní úrovně, se ale neobnoví.
+
+> [!IMPORTANT]
+> Když provádíte operaci obnovení, Azure Storage blokuje operace s daty u objektů BLOB v rozsahu obnovování po dobu trvání operace. Operace čtení, zápisu a odstranění jsou v primárním umístění blokované. Z tohoto důvodu nemusí operace, jako je například výpis kontejnerů v Azure Portal, fungovat podle očekávání, zatímco probíhá operace obnovení.
+>
+> Operace čtení ze sekundárního umístění můžou během operace obnovení pokračovat, pokud je účet úložiště geograficky replikovaný.
 
 > [!CAUTION]
 > Obnovení k bodu v čase podporuje pouze obnovení operací pouze pro objekty blob bloku. Operace na kontejnerech nelze obnovit. Pokud odstraníte kontejner z účtu úložiště voláním operace [odstranění kontejneru](/rest/api/storageservices/delete-container) během obnovování k určitému bodu v čase, nelze tento kontejner obnovit pomocí operace obnovení. V rámci verze Preview místo odstranění kontejneru odstraňte jednotlivé objekty blob, pokud je budete chtít obnovit.

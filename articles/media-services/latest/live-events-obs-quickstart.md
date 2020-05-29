@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.author: inhenkel
 author: IngridAtMicrosoft
 ms.date: 04/16/2020
-ms.openlocfilehash: 74aa17fb17d682449bd817945c3b8bbf3f95363e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 671609fc1db7325823e8ac40b2b8153682596588
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81726610"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84147813"
 ---
 # <a name="create-an-azure-media-services-live-stream-with-obs"></a>Vytvoření živého datového proudu Azure Media Services pomocí OBS
 
@@ -28,7 +28,7 @@ V tomto rychlém startu pokryjeme:
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -147,7 +147,7 @@ V dalším postupu se v prohlížeči vraťte do Azure Media Services a zkopíru
 
    ![Nastavení výstupu OBS](media/live-events-obs-quickstart/live-event-obs-advanced-output-settings.png)
 
-1. Ponechte ostatní nastavení nepravděpodobné a klikněte na **OK**.
+1. Zbývající nastavení ponechte beze změny a klikněte na **OK**.
 
 ### <a name="start-streaming"></a>Spustit streamování
 

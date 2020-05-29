@@ -8,12 +8,12 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: e389df7cfe0e228030d2d0f730fc5e671ad4c052
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 55c462795b29cd678a5fd7816211bce720d554e1
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927628"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170354"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 
@@ -69,7 +69,7 @@ K RequestTimeout obvykle dochází při použití Direct/TCP, ale může se stá
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Vysoká latence sítě
 Vysoká latence sítě se dá identifikovat pomocí [diagnostického řetězce](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) v sadě v2 SDK nebo v [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v sadě V3 SDK.
 
-Pokud nejsou k dispozici žádné [časové limity](#request-timeouts) a diagnostika zobrazí jednotlivé požadavky, u kterých je vysoká latence zřejmá na `ResponseTime` rozdíl `RequestStartTime`mezi a, například (>300 milisekund v tomto příkladu):
+Pokud nejsou k dispozici žádné [časové limity](#request-timeouts) a diagnostika zobrazí jednotlivé požadavky, u kterých je vysoká latence zřejmá na rozdíl mezi `ResponseTime` a `RequestStartTime` , například (>300 milisekund v tomto příkladu):
 
 ```bash
 RequestStartTime: 2020-03-09T22:44:49.5373624Z, RequestEndTime: 2020-03-09T22:44:49.9279906Z,  Number of regions attempted:1
@@ -94,10 +94,10 @@ Pokud je vaše aplikace nasazená v [Azure Virtual Machines bez veřejné IP adr
 * Přidejte koncový bod služby Azure Cosmos DB do podsítě vaší virtuální sítě Azure Virtual Machines. Další informace najdete v tématu [koncové body služby Azure Virtual Network](../virtual-network/virtual-network-service-endpoints-overview.md). 
 
     Pokud je povolen koncový bod služby, žádosti již nejsou odesílány z veřejné IP adresy do Azure Cosmos DB. Místo toho se pošle identita virtuální sítě a podsítě. Tato změna může vést k poklesu brány firewall, pokud jsou povolené jenom veřejné IP adresy. Pokud používáte bránu firewall a povolíte koncový bod služby, přidejte do brány firewall podsíť pomocí [Virtual Network ACL](../virtual-network/virtual-networks-acl.md).
-* Přiřaďte [k virtuálnímu počítači Azure veřejnou IP adresu](../load-balancer/load-balancer-outbound-connections.md#assignilpip).
+* Přiřaďte [k virtuálnímu počítači Azure veřejnou IP adresu](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
 
 ### <a name="http-proxy"></a>Proxy server HTTP
-Pokud používáte proxy server HTTP, ujistěte se, že může podporovat počet připojení nakonfigurovaných v sadě SDK `ConnectionPolicy`.
+Pokud používáte proxy server HTTP, ujistěte se, že může podporovat počet připojení nakonfigurovaných v sadě SDK `ConnectionPolicy` .
 Jinak čelíte problémům s připojením.
 
 ### <a name="request-rate-too-large"></a><a name="request-rate-too-large"></a>Příliš velký počet požadavků

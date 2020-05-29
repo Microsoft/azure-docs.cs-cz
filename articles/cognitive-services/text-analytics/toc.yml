@@ -9,7 +9,7 @@
       href: text-analytics-user-scenarios.md
     - name: Co je nového
       href: whats-new.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Klientská knihovna
@@ -54,6 +54,8 @@
       href: concepts/text-offsets.md
     - name: Omezení dat
       href: concepts/data-limits.md
+    - name: Správa verzí modelů
+      href: concepts/model-versioning.md
 - name: Návody
   items:
     - name: Volání rozhraní Text Analytics API
@@ -76,6 +78,8 @@
           href: how-tos/text-analytics-how-to-use-container-instances.md
         - name: Použití služby Kubernetes (AKS)
           href: how-tos/text-analytics-how-to-use-kubernetes-service.md
+    - name: Migrace na verzi 3 rozhraní API
+      href: migration-guide.md
 - name: Referenční informace
   items:
     - name: Referenční informace k rozhraní příkazového řádku
@@ -112,7 +116,7 @@
               href: 'https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/?view=azure-node-latest'
             - name: Přejít
               href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/textanalytics'
-- name: Zdroje
+- name: Zdroje a prostředky
   items:
     - name: Externí obsah a obsah komunity
       href: text-analytics-resource-external-community.md

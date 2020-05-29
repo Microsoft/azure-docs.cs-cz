@@ -13,12 +13,12 @@ ms.author: mimart
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 24e18f5b1766f0dde5e677ac40d24edd5597a20d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5ba82b34da8e4c3156d6854934ad873428bf121a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609948"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168722"
 ---
 # <a name="remote-access-to-on-premises-applications-through-azure-active-directorys-application-proxy"></a>Vzdálený přístup k místním aplikacím prostřednictvím proxy aplikace Azure Active Directory
 
@@ -41,7 +41,7 @@ Proxy aplikace funguje s:
 * Webové aplikace, které používají formulář nebo přístup [na základě hlaviček](application-proxy-configure-single-sign-on-with-ping-access.md)
 * Webová rozhraní API, která chcete zpřístupnit pro rozšířené aplikace na různých zařízeních
 * Aplikace hostované za [Brána vzdálené plochy](application-proxy-integrate-with-remote-desktop-services.md)
-* Bohatých klientských aplikací integrovaných s Active Directory Authentication Library (ADAL)
+* Bohatých klientských aplikací integrovaných do knihovny Microsoft Authentication Library (MSAL)
 
 Proxy aplikace podporuje jednotné přihlašování. Další informace o podporovaných metodách najdete v tématu [Výběr metody jednotného přihlašování](what-is-single-sign-on.md#choosing-a-single-sign-on-method).
 

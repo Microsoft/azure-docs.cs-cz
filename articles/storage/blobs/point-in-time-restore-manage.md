@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 05/06/2020
+ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cbfc5667fb35b8f807a3a806dda4647af10e9392
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: fe98e04c37172dc6b91c86fab8200022ed860d4f
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118205"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170099"
 ---
 # <a name="enable-and-manage-point-in-time-restore-for-block-blobs-preview"></a>Povolte a spravujte obnovení k určitému bodu v čase pro objekty blob bloku (Preview).
 
@@ -99,14 +99,19 @@ Get-AzStorageBlobServiceProperty -ResourceGroupName $rgName `
 
 ## <a name="perform-a-restore-operation"></a>Provést operaci obnovení
 
-Chcete-li zahájit operaci obnovení, zavolejte příkaz Restore-AzStorageBlobRange a určete bod obnovení jako hodnotu **DateTime** UTC. Můžete určit jeden nebo více lexicographical rozsahů objektů blob, které se mají obnovit, nebo vynecháte rozsah pro obnovení všech objektů BLOB ve všech kontejnerech v účtu úložiště. Dokončení operace obnovení může trvat několik minut.
+Chcete-li zahájit operaci obnovení, zavolejte příkaz Restore-AzStorageBlobRange a určete bod obnovení jako hodnotu **DateTime** UTC. Můžete zadat lexicographical rozsahy objektů blob, které se mají obnovit, nebo vynecháte rozsah pro obnovení všech objektů BLOB ve všech kontejnerech v účtu úložiště. Pro každou operaci obnovení se podporuje až 10 lexicographical rozsahů. Dokončení operace obnovení může trvat několik minut.
 
 Při zadávání rozsahu objektů blob, které se mají obnovit, pamatujte na následující pravidla:
 
 - Vzorek kontejneru zadaný pro počáteční rozsah a koncový rozsah musí obsahovat minimálně tři znaky. Lomítko (/), které se používá k oddělení názvu kontejneru z názvu objektu blob, se nepočítá směrem k tomuto minimu.
-- Pro operaci obnovení lze zadat pouze jeden rozsah.
+- Pro operaci obnovení lze zadat až 10 rozsahů.
 - Zástupné znaky nejsou podporovány. Jsou považovány za standardní znaky.
 - Objekty blob můžete obnovit v `$root` `$web` kontejnerech a tak, že je explicitně zadáte v rozsahu předaném do operace obnovení. `$root`Kontejnery a `$web` jsou obnoveny pouze v případě, že jsou výslovně určeny. Jiné systémové kontejnery nelze obnovit.
+
+> [!IMPORTANT]
+> Když provádíte operaci obnovení, Azure Storage blokuje operace s daty u objektů BLOB v rozsahu obnovování po dobu trvání operace. Operace čtení, zápisu a odstranění jsou v primárním umístění blokované. Z tohoto důvodu nemusí operace, jako je například výpis kontejnerů v Azure Portal, fungovat podle očekávání, zatímco probíhá operace obnovení.
+>
+> Operace čtení ze sekundárního umístění můžou během operace obnovení pokračovat, pokud je účet úložiště geograficky replikovaný.
 
 ### <a name="restore-all-containers-in-the-account"></a>Obnovit všechny kontejnery v účtu
 
@@ -147,7 +152,7 @@ Restore-AzStorageBlobRange -ResourceGroupName $rgName `
 
 ### <a name="restore-multiple-ranges-of-block-blobs"></a>Obnovení více rozsahů objektů blob bloku
 
-Chcete-li obnovit více rozsahů objektů blob bloku, zadejte pole rozsahů pro `-BlobRestoreRange` parametr. Následující příklad obnoví úplný obsah *container1* a *container4*:
+Chcete-li obnovit více rozsahů objektů blob bloku, zadejte pole rozsahů pro `-BlobRestoreRange` parametr. Na operaci obnovení se podporuje až 10 rozsahů. Následující příklad určuje dva rozsahy pro obnovení kompletního obsahu *container1* a *container4*:
 
 ```powershell
 $range1 = New-AzStorageBlobRangeToRestore -StartRange container1 -EndRange container2

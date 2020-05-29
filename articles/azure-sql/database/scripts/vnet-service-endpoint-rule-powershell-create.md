@@ -12,12 +12,12 @@ ms.reviewer: vanto
 ms.date: 04/17/2019
 ms.custom: sqldbrb=1
 tags: azure-synapse
-ms.openlocfilehash: 778b4f65f7d7b304f6931e5c552f94641d2ca5a7
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ae92d2000bb2c0dfd7e7a42c6070c143e5b787e3
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119053"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170864"
 ---
 # <a name="powershell-create-a-virtual-service-endpoint-and-vnet-rule-for-azure-sql-database"></a>PowerShell: Vytvoření koncového bodu virtuální služby a pravidla virtuální sítě pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
@@ -67,7 +67,7 @@ Následující seznam obsahuje posloupnost dalších *hlavních* rutin, které j
 
 Náš ukázkový skript PowerShellu je rozdělen do sekvence menších skriptů. Rozdělení usnadňuje učení a poskytuje flexibilitu. Skripty musí být spuštěny v uvedeném pořadí. Pokud nemáte čas spustit skripty, náš skutečný výstup testu se zobrazí za skriptem 4.
 
-<a name="a-script-10" />
+<a name="a-script-10"></a>
 
 ### <a name="script-1-variables"></a>Skript 1: proměnné
 
@@ -115,7 +115,7 @@ $ServiceEndpointTypeName_SqlDb = 'Microsoft.Sql';  # Official type name.
 Write-Host 'Completed script 1, the "Variables".';
 ```
 
-<a name="a-script-20" />
+<a name="a-script-20"></a>
 
 ### <a name="script-2-prerequisites"></a>Skript 2: předpoklady
 
@@ -205,7 +205,7 @@ $sqlDbServer                 = $null;
 Write-Host 'Completed script 2, the "Prerequisites".';
 ```
 
-<a name="a-script-30" />
+<a name="a-script-30"></a>
 
 ## <a name="script-3-create-an-endpoint-and-a-rule"></a>Skript 3: Vytvoření koncového bodu a pravidla
 
@@ -291,7 +291,7 @@ $vnetRuleObject2;
 Write-Host 'Completed script 3, the "Virtual-Network-Rule".';
 ```
 
-<a name="a-script-40" />
+<a name="a-script-40"></a>
 
 ## <a name="script-4-clean-up"></a>Skript 4: vyčištění
 
@@ -370,9 +370,9 @@ else {
 Write-Host 'Completed script 4, the "Clean-Up".';
 ```
 
-<a name="a-actual-output" />
+<a name="a-actual-output"></a>
 
-<a name="a-verify-subnet-is-endpoint-ps-100" />
+<a name="a-verify-subnet-is-endpoint-ps-100"></a>
 
 ## <a name="verify-your-subnet-is-an-endpoint"></a>Ověření, jestli je podsíť koncovým bodem
 

@@ -2,14 +2,14 @@
 title: 'Rychlý Start: koncový bod pro předpověď dotazů sady SDK – LUIS'
 description: V tomto rychlém startu se dozvíte, jak pomocí sady SDK odeslat uživatele utterance do aplikace Azure Cognitive Services LUIS a získat předpovědi.
 ms.topic: quickstart
-ms.date: 05/27/2020
+ms.date: 05/28/2020
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 69c9dce1c1b48ebf21e90ff9a4d3db6ac5b889c0
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 2275b50086eaf070d0748e3bb9b8de90ea9ee78e
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141326"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84171261"
 ---
 # <a name="quickstart-query-v3-prediction-endpoint-with-sdk"></a>Rychlý Start: prediktivní koncový bod dotazu V3 pomocí sady SDK
 

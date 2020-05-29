@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 4/17/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: 8075574556375b7c07de2abd6c5aff792880b497
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b88b6d1ea4b9d9fc2b33849157968ee1c2f8c620
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738814"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170456"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -80,7 +80,7 @@ Ve skupině akcí můžete mít omezený počet akcí sady Runbook.
 ### <a name="azure-app-push-notifications"></a>Nabízená oznámení aplikace Azure
 Můžete mít omezený počet akcí aplikace Azure ve skupině akcí.
 
-### <a name="email"></a>E-mailu
+### <a name="email"></a>E-mail
 E-maily budou odeslány z následujících e-mailových adres. Ujistěte se, že je správně nakonfigurováno filtrování e-mailů.
 - azure-noreply@microsoft.com
 - azureemail-noreply@microsoft.com
@@ -118,7 +118,7 @@ Akce Webhooku skupin akcí vám umožní využít výhod Azure Active Directory 
     > Abyste mohli tento skript spustit, musíte být členem [role Správce aplikací Azure AD](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#available-roles) .
     
     - Pokud chcete použít ID tenanta Azure AD, upravte volání Connect-AzureAD skriptu PowerShellu.
-    - Úprava proměnné $myAzureADApplicationObjectId skriptu PowerShellu pro použití ID objektu vaší aplikace Azure AD
+    - Upravte $myAzureADApplicationObjectId proměnné skriptu PowerShellu tak, aby používala ID objektu vaší aplikace služby Azure AD.
     - Spusťte upravený skript.
     
 1. Nakonfigurujte akci zabezpečeného Webhooku skupiny akcí.
@@ -245,7 +245,7 @@ Ve skupině akcí můžete mít omezený počet akcí Webhooku.
 ## <a name="next-steps"></a>Další kroky
 * Přečtěte si další informace o [chování výstrah SMS](../../azure-monitor/platform/alerts-sms-behavior.md).  
 * Získejte [informace o schématu Webhooku upozornění protokolu aktivit](../../azure-monitor/platform/activity-log-alerts-webhook.md).  
-* Další informace o [konektoru ITSM](../../azure-monitor/platform/itsmc-overview.md)
+* Přečtěte si další informace o [konektoru ITSM](../../azure-monitor/platform/itsmc-overview.md).
 * Přečtěte si další informace o [omezování četnosti](../../azure-monitor/platform/alerts-rate-limiting.md) výstrah.
 * Získejte [Přehled výstrah protokolu aktivit](../../azure-monitor/platform/alerts-overview.md)a Naučte se přijímat výstrahy.  
 * Naučte se [konfigurovat výstrahy pokaždé, když se publikuje oznámení o stavu služby](../../azure-monitor/platform/alerts-activity-log-service-notifications.md).

@@ -1,20 +1,20 @@
 ---
 title: Ukázkové ovládací prvky podrobného plánu pro úrovni DoD úrovně 4
 description: Mapování ovládacího prvku pro ukázku plánu dopadu DoD. 4. Každý ovládací prvek je namapován na jednu nebo více zásad Azure, které pomáhají s posouzením.
-ms.date: 03/06/2020
+ms.date: 05/12/2020
 ms.topic: sample
-ms.openlocfilehash: a11a8637618bb42831ccf1a7001e4da40529ba74
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 48734e62f47c38feb8bc34409f9ba41af2648e7a
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82024825"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84168977"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-4-blueprint-sample"></a>Mapování ovládacího prvku pro ukázku plánu dopadu na 3. plán na úrovni.
 
 Následující článek podrobně popisuje, jak je oddělení Azure modrotisky v rámci podrobného plánu úrovně dopadu 4 (DoD IL4) namapováno na ovládací prvky úrovně účinku DoD na úrovni 4. Další informace o ovládacích prvcích najdete v tématu [Průvodce požadavky na zabezpečení služby DoD Cloud Computing (SRG)](https://dl.dod.cyber.mil/wp-content/uploads/cloud/pdf/Cloud_Computing_SRG_v1r3.pdf). Agentura DISA (obrany Information Systems) je agenturou ministerstva obrany USA, která je odpovědná za vývoj a udržování Průvodce požadavky zabezpečení cloud computingu DoD (SRG). SRG definuje základní požadavky na zabezpečení pro poskytovatele cloudových služeb (CSP), kteří hostují informace, systémy a aplikace, a pro používání cloudových služeb DoD.  
 
-Následující mapování jsou ovládací prvky **úrovně dopadu dod. 4** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ** \[ukázková\]iniciativa úrovně dopadu 3** .
+Následující mapování jsou ovládací prvky **úrovně dopadu dod. 4** . Pomocí navigace na pravé straně můžete přejít přímo k určitému mapování ovládacího prvku. Mnohé z mapovaných ovládacích prvků jsou implementovány s [Azure Policy](../../../policy/overview.md) iniciativou. Chcete-li si projít kompletní iniciativu, otevřete **zásadu** v Azure Portal a vyberte stránku **definice** . Pak vyhledejte a vyberte ** \[ ukázková iniciativa \] úrovně dopadu 3** .
 
 > [!IMPORTANT]
 > Každý ovládací prvek níže je přidružen k jedné nebo více definicím [Azure Policy](../../../policy/overview.md) . Tyto zásady vám pomůžou [zhodnotit dodržování předpisů](../../../policy/how-to/get-compliance-data.md) pomocí ovládacího prvku. často však není 1:1 nebo Úplná shoda mezi ovládacím prvkem a jednou nebo více zásadami. V takovém případě **vyhovuje** v Azure Policy pouze zásadám, které jsou samotné. Tím se nezajistí, že budete plně kompatibilní se všemi požadavky ovládacího prvku. Standard kompatibility zahrnuje i ovládací prvky, které nejsou v tuto chvíli řešeny žádnými definicemi Azure Policy. Proto je dodržování předpisů v Azure Policy jenom částečný pohled na celkový stav dodržování předpisů. Přidružení mezi ovládacími prvky a definicemi Azure Policy pro tuto ukázku podrobného plánu dodržování předpisů se mohou v průběhu času měnit.
@@ -76,8 +76,8 @@ Azure implementuje [řízení přístupu na základě role](../../../../role-bas
 
 Tento podrobný plán vám pomůže s monitorováním a řízením vzdáleného přístupu tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) pro monitorování, že vzdálené ladění pro Azure App Service aplikace je vypnuté a definice zásad, které auditují virtuální počítače se systémem Linux, které umožňují vzdálená připojení z účtů bez hesel. Tento podrobný plán také přiřadí definici Azure Policy, která vám pomůže monitorovat neomezený přístup k účtům úložiště. Monitorování těchto indikátorů vám umožní zajistit, aby metody vzdáleného přístupu dodržovaly vaše zásady zabezpečení.
 
-- \[Preview\]: Auditovat virtuální počítače Linux, které umožňují vzdálená připojení z účtů bez hesel
-- \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
+- \[Preview \] : Auditovat virtuální počítače Linux, které umožňují vzdálená připojení z účtů bez hesel
+- \[Verze Preview \] : nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla
 - Auditování neomezeného síťového přístupu k účtům úložiště
 - Pro aplikaci API by mělo být vypnuto vzdálené ladění.
 - Vzdálené ladění by mělo být pro Function App vypnuté.
@@ -101,13 +101,13 @@ Tento podrobný plán poskytuje definice zásad, které vám pomohou zajistit, a
 
 Data protokolu shromážděná pomocí Azure Monitor jsou uložená v pracovním prostoru Log Analytics, který umožňuje centralizovanou konfiguraci a správu. Tento podrobný plán vám pomůže zajistit, aby se události protokoloval pomocí přiřazování [Azure Policy](../../../policy/overview.md) definic, které auditují a vynutily nasazení agenta Log Analytics na virtuálních počítačích Azure.
 
-- \[Verze\]Preview: audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
-- \[Preview\]: audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
-- \[Preview\]: audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
-- \[Verze\]Preview: nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
-- \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
-- \[Verze\]Preview: nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
-- \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače s Windows
+- \[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
+- \[Preview \] : Audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
+- \[Preview \] : Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
+- \[Verze Preview \] : nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
+- \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
+- \[Verze Preview \] : nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
+- \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows
 
 ## <a name="au-5-response-to-audit-processing-failures"></a>Reakce AU-5 na selhání zpracování auditu
 
@@ -122,21 +122,19 @@ Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) def
 
 Data protokolu shromážděná pomocí Azure Monitor jsou uložena v pracovním prostoru Log Analytics umožňující centralizované generování sestav a analýzu. Tento podrobný plán vám pomůže zajistit, aby se události protokoloval pomocí přiřazování [Azure Policy](../../../policy/overview.md) definic, které auditují a vynutily nasazení agenta Log Analytics na virtuálních počítačích Azure.
 
-- \[Verze\]Preview: audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
-- \[Preview\]: audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
-- \[Preview\]: audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
-- \[Verze\]Preview: nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
-- \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
-- \[Verze\]Preview: nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
-- \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače s Windows
+- \[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
+- \[Preview \] : Audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
+- \[Preview \] : Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
+- \[Verze Preview \] : nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
+- \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
+- \[Verze Preview \] : nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
+- \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows
 
 ## <a name="au-6-5-audit-review-analysis-and-reporting--integration--scanning-and-monitoring-capabilities"></a>AU-6 (5) kontrola auditu, analýza a vytváření sestav | Možnosti integrace, kontroly a monitorování
 
-Tento podrobný plán poskytuje definice zásad, které auditují záznamy s analýzou vyhodnocování ohrožení zabezpečení na virtuálních počítačích, Virtual Machine Scale Sets, spravovaných instancí SQL a SQL serverech.
-Tyto definice zásad také auditují konfiguraci diagnostických protokolů a poskytují přehled o operacích, které se provádějí v rámci prostředků Azure. Tyto přehledy poskytují informace o stavu zabezpečení nasazených prostředků v reálném čase a můžou vám pomůžou určit prioritu nápravných akcí.
-Pro podrobnou kontrolu a monitorování ohrožení zabezpečení doporučujeme, abyste využili taky Azure Sentinel a Azure Security Center.
+Tento podrobný plán poskytuje definice zásad, které auditují záznamy s analýzou vyhodnocování ohrožení zabezpečení na virtuálních počítačích, virtuálních počítačů, SQL Databasech serverech a serverech spravovaných instancí SQL. Tyto definice zásad také auditují konfiguraci diagnostických protokolů a poskytují přehled o operacích, které se provádějí v rámci prostředků Azure. Tyto přehledy poskytují informace o stavu zabezpečení nasazených prostředků v reálném čase a můžou vám pomůžou určit prioritu nápravných akcí. Pro podrobnou kontrolu a monitorování ohrožení zabezpečení doporučujeme, abyste využili taky Azure Sentinel a Azure Security Center.
 
-- \[Preview\]: posouzení ohrožení zabezpečení by mělo být povolené na Virtual Machines
+- \[Preview \] : posouzení ohrožení zabezpečení by mělo být povolené na Virtual Machines
 - Na vašich serverech SQL by mělo být povolené posouzení ohrožení zabezpečení
 - Auditování nastavení diagnostiky
 - Na spravovaných instancích SQL by mělo být povolené posouzení ohrožení zabezpečení
@@ -145,21 +143,21 @@ Pro podrobnou kontrolu a monitorování ohrožení zabezpečení doporučujeme, 
 - Ohrožení zabezpečení vašich databází SQL by mělo být opraveno
 - Ohrožení zabezpečení by se mělo opravit řešením posouzení ohrožení zabezpečení.
 - V konfiguraci zabezpečení v rámci sady škálování virtuálních počítačů by se měly napravit ohrožení zabezpečení.
-- \[Verze\]Preview: audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
-- \[Preview\]: audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
+- \[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
+- \[Preview \] : Audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
 
 ## <a name="au-12-audit-generation"></a>Generování auditu AU-12
 
 Tento podrobný plán poskytuje definice zásad, které auditují a vynutily nasazení Log Analytics agenta na virtuálních počítačích Azure a konfiguraci nastavení auditu pro jiné typy prostředků Azure.
 Tyto definice zásad také auditují konfiguraci diagnostických protokolů a poskytují přehled o operacích, které se provádějí v rámci prostředků Azure. Kromě toho jsou na SQL serverech nakonfigurovaná auditování a rozšířené zabezpečení dat.
 
-- \[Verze\]Preview: audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
-- \[Preview\]: audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
-- \[Preview\]: audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
-- \[Verze\]Preview: nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
-- \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
-- \[Verze\]Preview: nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
-- \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače s Windows
+- \[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
+- \[Preview \] : Audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
+- \[Preview \] : Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
+- \[Verze Preview \] : nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
+- \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
+- \[Verze Preview \] : nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
+- \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows
 - Auditování nastavení diagnostiky
 - Auditování by mělo být povolené pro pokročilá nastavení zabezpečení dat na SQL Server
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
@@ -226,29 +224,29 @@ Tento podrobný plán vám pomůže omezit a řídit přístup přiřazením def
 
 Tento podrobný plán přiřadí [Azure Policy](../../../policy/overview.md) definice, které auditují virtuální počítače se systémem Linux, které umožňují vzdálená připojení z účtů bez hesla nebo mají nastavená nesprávná oprávnění pro soubor passwd. Tento podrobný plán také přiřazuje definice zásad, které auditují konfiguraci typu šifrování hesla pro virtuální počítače s Windows. Monitorování těchto ukazatelů vám pomůže zajistit, aby ověřovatelé systému dodržovali zásady pro identifikaci a ověřování vaší organizace.
 
-- \[Preview\]: Auditovat virtuální počítače Linux, které nemají oprávnění k souboru passwd nastavené na 0644
-- \[Verze\]Preview: Auditovat virtuální počítače se systémem Linux, které mají účty bez hesla
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které neukládají hesla pomocí reverzibilního šifrování
-- \[Verze\]Preview: nasaďte požadavky na auditování virtuálních počítačů se systémem Linux, které nemají oprávnění k souboru passwd nastavené na 0644.
-- \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
-- \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování
+- \[Preview \] : Auditovat virtuální počítače Linux, které nemají oprávnění k souboru passwd nastavené na 0644
+- \[Verze Preview \] : Auditovat virtuální počítače se systémem Linux, které mají účty bez hesla
+- \[Verze Preview \] : Auditovat virtuální počítače s Windows, které neukládají hesla pomocí reverzibilního šifrování
+- \[Verze Preview \] : nasaďte požadavky na auditování virtuálních počítačů se systémem Linux, které nemají oprávnění k souboru passwd nastavené na 0644.
+- \[Verze Preview \] : nasazení požadavků pro audit virtuálních počítačů se systémem Linux, které mají účty bez hesla
+- \[Verze Preview \] : nasazení požadavků pro audit virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování
 
 ## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) Správa ověřovatele | Ověřování založené na heslech
 
 Tento podrobný plán vám pomůže vynutilit silná hesla tím, že přiřazuje definice [Azure Policy](../../../policy/overview.md) , které auditují virtuální počítače s Windows, které nevyžadují minimální sílu a jiné požadavky na heslo. Povědomí o problémech s virtuálními počítači, které jsou v rozporu s zásadami složitosti hesla, vám pomůžou provést nápravné akce, které zajistí, aby hesla všech uživatelských účtů virtuálních počítačů byla v pořádku se zásadami hesel vaší organizace.
 
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které umožňují opakované použití předchozích 24 hesel
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dní
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které nemají minimální stáří hesla 1 den
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, u kterých není povolené nastavení složitosti hesla
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků
-- \[Verze\]Preview: Auditovat virtuální počítače s Windows, které neukládají hesla pomocí reverzibilního šifrování
-- \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel
-- \[Verze\]Preview: nasaďte požadavky na auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dní.
-- \[Verze\]Preview: nasaďte požadavky na auditovat virtuální počítače s Windows, které nemají minimální stáří hesla 1 den.
-- \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů s Windows, u kterých není povolené nastavení složitosti hesla
-- \[Verze\]Preview: nasaďte požadavky na auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků.
-- \[Verze\]Preview: nasazení požadavků pro audit virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování
+- \[Verze Preview \] : Auditovat virtuální počítače s Windows, které umožňují opakované použití předchozích 24 hesel
+- \[Verze Preview \] : Auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dní
+- \[Verze Preview \] : Auditovat virtuální počítače s Windows, které nemají minimální stáří hesla 1 den
+- \[Verze Preview \] : Auditovat virtuální počítače s Windows, u kterých není povolené nastavení složitosti hesla
+- \[Verze Preview \] : Auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků
+- \[Verze Preview \] : Auditovat virtuální počítače s Windows, které neukládají hesla pomocí reverzibilního šifrování
+- \[Verze Preview \] : nasazení požadavků pro audit virtuálních počítačů s Windows, které umožňují opakované použití předchozích 24 hesel
+- \[Verze Preview \] : nasaďte požadavky na auditovat virtuální počítače s Windows, které nemají maximální stáří hesla 70 dní.
+- \[Verze Preview \] : nasaďte požadavky na auditovat virtuální počítače s Windows, které nemají minimální stáří hesla 1 den.
+- \[Verze Preview \] : nasazení požadavků pro audit virtuálních počítačů s Windows, u kterých není povolené nastavení složitosti hesla
+- \[Verze Preview \] : nasaďte požadavky na auditovat virtuální počítače s Windows, které neomezují minimální délku hesla na 14 znaků.
+- \[Verze Preview \] : nasazení požadavků pro audit virtuálních počítačů s Windows, které neukládají hesla pomocí reverzibilního šifrování
 
 ## <a name="ir-6-2-incident-reporting--vulnerabilities-related-to-incidents"></a>IR-6 (2) generování sestav incidentů | Ohrožení zabezpečení související s incidenty
 
@@ -358,7 +356,7 @@ Tento podrobný plán přiřadí definice zásad, které vám pomůžou zajistit
 - V aplikaci API by se měla použít nejnovější verze TLS.
 - V Function App by se měla použít nejnovější verze TLS.
 - Ve vaší webové aplikaci by se měla použít nejnovější verze TLS.
-- \[Verze\]Preview: služby Kubernetes by měly být upgradovány na nezranitelnou Kubernetes verzi
+- \[\]Verze Preview: služby Kubernetes by měly být upgradovány na nezranitelnou Kubernetes verzi
 
 ## <a name="si-3-malicious-code-protection"></a>Ochrana proti škodlivým kódem SI od-3
 
@@ -379,13 +377,13 @@ Tento podrobný plán vám pomůže spravovat službu Endpoint Protection, včet
 
 Tento podrobný plán vám pomůže monitorovat systém pomocí auditování a vynucování protokolování a zabezpečení dat napříč prostředky Azure. Konkrétně zásady přiřazují audit a vynutily nasazení agenta Log Analytics a rozšířené nastavení zabezpečení pro databáze SQL, účty úložiště a síťové prostředky. Tyto funkce vám pomůžou detekovat neobvyklé chování a indikátory útoků, abyste mohli podniknout příslušné akce.
 
-- \[Verze\]Preview: audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
-- \[Preview\]: audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
-- \[Preview\]: audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
-- \[Verze\]Preview: nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
-- \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
-- \[Verze\]Preview: nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
-- \[Verze\]Preview: nasazení agenta Log Analytics pro virtuální počítače s Windows
+- \[Verze Preview \] : Audit Log Analytics Deployment Agent – image virtuálního počítače (OS) bez seznamu
+- \[Preview \] : Audit log Analyticsho nasazení agenta v VMSS-VM Image (OS) bez seznamu
+- \[Preview \] : Audit Log Analytics pracovní prostor pro virtuální počítač – neshoda sestav
+- \[Verze Preview \] : nasazení agenta Log Analytics pro Linux VM Scale Sets (VMSS)
+- \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače se systémem Linux
+- \[Verze Preview \] : nasazení agenta Log Analytics pro Windows VM Scale Sets (VMSS)
+- \[Verze Preview \] : nasazení agenta Log Analytics pro virtuální počítače s Windows
 - Na spravovaných instancích by mělo být povolené rozšířené zabezpečení dat
 - Na vašich serverech SQL by mělo být povolené rozšířené zabezpečení dat
 - Nasazení pokročilých zabezpečení dat na SQL serverech
@@ -422,8 +420,8 @@ Rozšířená ochrana před internetovými útoky pro Azure Storage detekuje neo
 Teď, když jste zkontrolovali mapování ovládacího prvku na úrovni dopadu na 3. plán, najdete v následujících článcích informace o podrobném plánu a způsobu nasazení této ukázky:
 
 > [!div class="nextstepaction"]
-> [Úroveň dopadu dod. 4 podrobný plán – přehled](./index.md)
-> [úrovně dopadu na DoD – 4. plán – nasazení kroků](./deploy.md)
+> [Úroveň dopadu dod. 4 podrobný plán – přehled](./index.md) 
+>  [Úroveň dopadu dod. 4, plán – nasazení](./deploy.md)
 
 Další články věnované podrobným plánům a postupu jejich využití:
 

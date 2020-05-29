@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 01/23/2018
 ms.author: twooley
-ms.openlocfilehash: c9451afaefdd220b5f87d4650c7844f06926b03a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e591a6c1fbf91bb034ec57673f79c549bbec4672
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933422"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84170082"
 ---
 # <a name="update-your-storsimple-8000-series-device"></a>Aktualizace zařízení řady StorSimple 8000
 > [!NOTE]
@@ -84,22 +84,22 @@ Pokud potřebujete použít aktualizace režimu údržby, obdržíte upozorněn�
 > 
 > 
 
-### <a name="step-1-connect-to-the-serial-console-a-namestep1"></a>Krok 1: připojení ke konzole sériového portu<a name="step1">
+### <a name="step-1-connect-to-the-serial-console"></a>Krok 1: připojení ke konzole sériového portu<a name="step1"></a>
 Nejprve k přístupu ke konzole sériového rozhraní použijte aplikaci, jako je například výstup. Následující postup vysvětluje, jak pomocí výstupu připojit ke konzole sériového připojení.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="step-2-enter-maintenance-mode-a-namestep2"></a>Krok 2: Zadejte režim údržby<a name="step2">
+### <a name="step-2-enter-maintenance-mode"></a>Krok 2: Zadejte režim údržby<a name="step2"></a>
 Po připojení ke konzole nástroje Zjistěte, zda jsou k dispozici aktualizace pro instalaci, a zadejte režim údržby pro jejich instalaci.
 
 [!INCLUDE [storsimple-enter-maintenance-mode](../../includes/storsimple-enter-maintenance-mode.md)]
 
-### <a name="step-3-install-your-updates-a-namestep3"></a>Krok 3: instalace aktualizací<a name="step3">
+### <a name="step-3-install-your-updates"></a>Krok 3: instalace aktualizací<a name="step3"></a>
 Dále nainstalujte své aktualizace.
 
 [!INCLUDE [storsimple-install-maintenance-mode-updates](../../includes/storsimple-install-maintenance-mode-updates.md)]
 
-### <a name="step-4-exit-maintenance-mode-a-namestep4"></a>Krok 4: ukončení režimu údržby<a name="step4">
+### <a name="step-4-exit-maintenance-mode"></a>Krok 4: ukončení režimu údržby<a name="step4"></a>
 Nakonec ukončete režim údržby.
 
 [!INCLUDE [storsimple-exit-maintenance-mode](../../includes/storsimple-exit-maintenance-mode.md)]
