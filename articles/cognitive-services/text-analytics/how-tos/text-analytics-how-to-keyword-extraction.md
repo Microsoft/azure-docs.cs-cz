@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 07/29/2019
-ms.author: raymondl
-ms.openlocfilehash: ec5ff756d7e732430675676868bc754627a2a4a1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 05/13/2020
+ms.author: aahi
+ms.openlocfilehash: c1ca14b8471ef6257c0603e61d78e789e846f0ae
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72429023"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142397"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Příklad: jak extrahovat klíčové fráze pomocí Analýza textu
 
-[Rozhraní API pro extrakci klíčových frází](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) vyhodnotí nestrukturovaný text a pro každý dokument JSON vrátí seznam klíčových frází.
+[Rozhraní API pro extrakci klíčových frází](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) vyhodnotí nestrukturovaný text a pro každý dokument JSON vrátí seznam klíčových frází.
 
 Tato funkce je užitečná v případě, kdy potřebujete rychle identifikovat hlavní body v kolekci dokumentů. Například pro vstupní text „The food was delicious and there were wonderful staff“ (Jídlo bylo výborné a personál byl úžasný), vrátí služba hlavní body: „food“ (jídlo) a „wonderful staff“ (úžasný personál).
 
@@ -72,16 +72,16 @@ Velikost dokumentu musí být 5 120 nebo méně znaků v jednom dokumentu a pro 
 
 Informace o definici požadavku naleznete v tématu [způsob volání rozhraní API pro analýzu textu](text-analytics-how-to-call-api.md). Pro usnadnění znovu uvádíme následující body:
 
-+ Vytvořte žádost **POST**. Přečtěte si dokumentaci k rozhraní API pro tento požadavek: [klíčové rozhraní API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6).
++ Vytvořte žádost **POST**. Přečtěte si dokumentaci k rozhraní API pro tento požadavek: [klíčové rozhraní API](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases).
 
-+ Nastavte koncový bod HTTP pro extrakci klíčových frází pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). Do adresy URL `/text/analytics/v2.1/keyPhrases` musíte zahrnout. Například: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v2.1/keyPhrases`.
++ Nastavte koncový bod HTTP pro extrakci klíčových frází pomocí prostředku Analýza textu v Azure nebo vytvořeného [Analýza textu kontejneru](text-analytics-how-to-install-containers.md). `/text/analytics/v3.0/keyPhrases`Do adresy URL musíte zahrnout. Příklad: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`.
 
 + Nastavte hlavičku požadavku tak, aby obsahovala [přístupový klíč](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource) pro operace analýza textu.
 
 + V textu požadavku zadejte kolekci dokumentů JSON, kterou jste si připravili pro tuto analýzu.
 
 > [!Tip]
-> Použijte aplikaci [Postman](text-analytics-how-to-call-api.md) nebo otevřete **konzolu pro testování rozhraní API** v [dokumentaci](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) a vytvořte strukturu žádosti a pomocí příkazu POST ji odešlete do služby.
+> Použijte aplikaci [Postman](text-analytics-how-to-call-api.md) nebo otevřete **konzolu pro testování rozhraní API** v [dokumentaci](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) a vytvořte strukturu žádosti a pomocí příkazu POST ji odešlete do služby.
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Odeslání žádosti
 
@@ -152,7 +152,7 @@ Jak je uvedeno, analyzátor vyhledá a zahodí nepostradatelná slova a udržuje
 
 V tomto článku jste zjistili koncepty a pracovní postup pro extrakci klíčových frází pomocí Analýza textu v Cognitive Services. Souhrn:
 
-+ [Rozhraní API pro extrakci klíčových frází](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c6) je k dispozici pro vybrané jazyky.
++ [Rozhraní API pro extrakci klíčových frází](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/KeyPhrases) je k dispozici pro vybrané jazyky.
 + Dokumenty JSON v textu požadavku zahrnují ID, text a kód jazyka.
 + Žádost POST je určená pro koncový bod `/keyphrases` a používá individuální [přístupový klíč a koncový bod](../../cognitive-services-apis-create-account.md#get-the-keys-for-your-resource), který je platný pro dané předplatné.
 + Výstup odpovědi, který se skládá z klíčových slov a frází pro každé ID dokumentu, se může streamovat do libovolné aplikace, která přijímá JSON, včetně systém Microsoft Office Excel a Power BI, pro pojmenování.
@@ -164,5 +164,6 @@ V tomto článku jste zjistili koncepty a pracovní postup pro extrakci klíčov
 
 ## <a name="next-steps"></a>Další kroky
 
-> [!div class="nextstepaction"]
-> [Rozhraní Text Analytics API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/56f30ceeeda5650db055a3c6)
+* [Přehled Analýza textu](../overview.md)
+* [Použití klientské knihovny Analýza textu](../quickstarts/text-analytics-sdk.md)
+* [Co je nového](../whats-new.md)

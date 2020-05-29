@@ -7,12 +7,15 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: Vytvoření pracovního prostoru Databricks – portál
-      href: quickstart-create-databricks-workspace-portal.md
-    - name: Vytvoření pracovního prostoru Databricks – šablona Resource Manageru
-      href: quickstart-create-databricks-workspace-resource-manager-template.md
-    - name: Vytvoření pracovního prostoru Databricks – virtuální síť
-      href: quickstart-create-databricks-workspace-vnet-injection.md
+    - name: Vytvoření pracovního prostoru
+      items:
+        - name: Portál
+          href: quickstart-create-databricks-workspace-portal.md
+        - name: Šablona ARM
+          displayName: Resource Manager
+          href: quickstart-create-databricks-workspace-resource-manager-template.md
+        - name: Virtuální síť
+          href: quickstart-create-databricks-workspace-vnet-injection.md
 - name: Kurzy
   items:
     - name: Dotazování SQL Serveru spuštěného v kontejneru Docker

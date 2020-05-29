@@ -3,18 +3,18 @@ title: Dokončení zotavení po havárii virtuálních počítačů
 description: Tento článek ukazuje, jak dokončit zotavení po havárii virtuálních počítačů pomocí funkce AVS
 ms.topic: how-to
 ms.date: 05/04/2020
-ms.openlocfilehash: 86f823444d4fff3edf8651f4d949c71d2c981ec7
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 5fdfc252486d94fcc22ebba9705fa5e259539921
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740548"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148153"
 ---
-# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Dokončení zotavení po havárii virtuálních počítačů pomocí řešení Azure VMWare
+# <a name="complete-a-disaster-recovery-of-virtual-machines-using-azure-vmware-solution"></a>Dokončení zotavení po havárii virtuálních počítačů pomocí řešení Azure VMware
 
-Tento článek obsahuje proces dokončení zotavení po havárii virtuálních počítačů pomocí řešení HCX (VMWare Hybrid Cloud Extension) a použití privátního cloudu řešení Azure VMWare jako lokality pro obnovení nebo cílovou lokalitu.
+Tento článek obsahuje proces dokončení zotavení po havárii virtuálních počítačů pomocí řešení HCX (VMware Hybrid Cloud Extension) a použití privátního cloudu řešení Azure VMware jako lokality pro obnovení nebo cílovou lokalitu.
 
-VMWare HCX poskytuje různé operace, které poskytují přesné řízení a členitost zásad replikace. K dispozici jsou tyto operace:
+VMware HCX poskytuje různé operace, které poskytují přesné řízení a členitost zásad replikace. K dispozici jsou tyto operace:
 
 - Reverse – po havárii došlo k chybě. Reverse umožňuje vytvořit lokalitu B zdrojový web a lokalitu, kde je nyní chráněný virtuální počítač.
 
@@ -144,7 +144,7 @@ Replikaci můžete monitorovat v části Podrobnosti každého virtuálního po�
 
 ## <a name="disaster-recovery-plan-automation"></a>Automatizace plánu zotavení po havárii
 
-VMWare HCX aktuálně nemá integrovaný mechanizmus pro vytvoření a automatizaci plánu zotavení po havárii. Tato funkce v HCX neexistuje. Poskytuje ale sadu rozhraní REST API, včetně rozhraní API pro operaci zotavení po havárii.
+VMware HCX aktuálně nemá integrovaný mechanizmus pro vytvoření a automatizaci plánu zotavení po havárii. Tato funkce v HCX neexistuje. Poskytuje ale sadu rozhraní REST API, včetně rozhraní API pro operaci zotavení po havárii.
 
 Specifikace rozhraní API může být přístupná v rámci HCX Manageru v adrese URL.
 

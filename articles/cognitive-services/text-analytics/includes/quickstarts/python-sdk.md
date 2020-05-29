@@ -4,22 +4,22 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/13/2020
 ms.author: aahi
-ms.openlocfilehash: d58f294195efc393c07ecc3886c29e33dba02e6d
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b842084d00c1ce8ec347994371a55c97b89ba54f
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81421821"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140698"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-[Ukázky V3 dokumentace ke](https://aka.ms/azsdk-python-textanalytics-ref-docs) | [zdroji zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics) | knihovny v3[(PiPy)](https://pypi.org/project/azure-ai-textanalytics/) | [v3 Samples](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples) V3
+[Referenční dokumentace V3](https://aka.ms/azsdk-python-textanalytics-ref-docs)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics)  |  knihovny v3 [balíček V3 (PiPy)](https://pypi.org/project/azure-ai-textanalytics/)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/samples)
 
 #### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-[Ukázky v2 dokumentace ke](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python) | [zdrojovému kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics) | knihovny V2 verze V2[(PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/) | [v2 Samples](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples) v2
+[Referenční dokumentace v2](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/textanalytics?view=azure-python)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-language-textanalytics)  |  knihovny v2 [balíček v2 (PiPy)](https://pypi.org/project/azure-cognitiveservices-language-textanalytics/)  |  [ukázky v2](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
 ---
 
@@ -27,9 +27,9 @@ ms.locfileid: "81421821"
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * [Python 3.x](https://www.python.org/)
-* Jakmile budete <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="mít předplatné Azure, vytvořte prostředek analýza textu vytvoření prostředku"  target="_blank">analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
-    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň (`F0`) a upgradovat ji později na placenou úroveň pro produkční prostředí.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -37,7 +37,7 @@ ms.locfileid: "81421821"
 
 Po instalaci Pythonu můžete nainstalovat klientskou knihovnu pomocí nástroje:
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 ```console
 pip install azure-ai-textanalytics
@@ -71,11 +71,11 @@ endpoint = "<paste-your-text-analytics-endpoint-here>"
 
 ## <a name="object-model"></a>Objektový model
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Klient Analýza textu je `TextAnalyticsClient` objekt, který se ověřuje v Azure pomocí vašeho klíče. Klient nabízí několik metod, jak analyzovat text jako dávku. 
 
-Když je text dávkového zpracování odeslán do rozhraní API jako seznam objektů `documents`, což jsou `dictionary` objekty obsahující kombinaci atributů `id`, `text`a `language` v závislosti na použité metodě. `text` Atribut ukládá text, který má být analyzován v původním `language`umístění, a `id` může být libovolná hodnota. 
+Když je text dávkového zpracování odeslán do rozhraní API jako seznam `documents` objektů, což jsou `dictionary` objekty obsahující kombinaci `id` `text` atributů, a `language` v závislosti na použité metodě. `text`Atribut ukládá text, který má být analyzován v původním umístění `language` , a `id` může být libovolná hodnota. 
 
 Objekt Response je seznam obsahující informace o analýze pro každý dokument. 
 
@@ -83,7 +83,7 @@ Objekt Response je seznam obsahující informace o analýze pro každý dokument
 
 Klient Analýza textu je objekt [TextAnalyticsClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-textanalytics/azure.cognitiveservices.language.textanalytics.textanalyticsclient?view=azure-python) , který se ověřuje v Azure pomocí vašeho klíče. Klient nabízí několik metod analýzy textu, jako jeden řetězec nebo dávku. 
 
-Text se pošle do rozhraní API jako seznam objektů `documents`, což jsou `dictionary` objekty obsahující kombinaci atributů `id`, `text`a `language` v závislosti na použité metodě. `text` Atribut ukládá text, který má být analyzován v původním `language`umístění, a `id` může být libovolná hodnota. 
+Text se pošle do rozhraní API jako seznam `documents` objektů, což jsou `dictionary` objekty obsahující kombinaci `id` `text` atributů, a `language` v závislosti na použité metodě. `text`Atribut ukládá text, který má být analyzován v původním umístění `language` , a `id` může být libovolná hodnota. 
 
 ---
 
@@ -100,7 +100,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Anal
 
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Vytvořte funkci pro vytvoření instance `TextAnalyticsClient` objektu pomocí `key` a `endpoint` vytvořeného výše. Pak vytvořte nového klienta. 
 
@@ -129,7 +129,7 @@ Vytvořte funkci pro vytvoření instance `TextAnalyticsClient` objektu pomocí 
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Vytvořte novou funkci s názvem `sentiment_analysis_example()` , která převezme klienta jako argument, a pak zavolá `analyze_sentiment()` funkci. Vrácený objekt Response bude obsahovat popisek mínění a skóre celého vstupního dokumentu a také analýzu mínění pro každou větu.
 
@@ -146,7 +146,7 @@ def sentiment_analysis_example(client):
         response.confidence_scores.negative,
     ))
     for idx, sentence in enumerate(response.sentences):
-        print("[Length: {}]".format(sentence.grapheme_length))
+        print("Sentence: {}".format(sentence.text))
         print("Sentence {} sentiment: {}".format(idx+1, sentence.sentiment))
         print("Sentence score:\nPositive={0:.2f}\nNeutral={1:.2f}\nNegative={2:.2f}\n".format(
             sentence.confidence_scores.positive,
@@ -163,14 +163,14 @@ sentiment_analysis_example(client)
 Document Sentiment: positive
 Overall scores: positive=1.00; neutral=0.00; negative=0.00 
 
-[Length: 30]
+Sentence: I had the best day of my life.
 Sentence 1 sentiment: positive
 Sentence score:
 Positive=1.00
 Neutral=0.00
 Negative=0.00
 
-[Length: 30]
+Sentence: I wish you were there with me.
 Sentence 2 sentiment: neutral
 Sentence score:
 Positive=0.21
@@ -197,12 +197,12 @@ Document ID: 4 , Sentiment Score: 1.00
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-Vytvořte novou funkci s názvem `language_detection_example()` , která převezme klienta jako argument, a pak zavolá `detect_language()` funkci. Vrácený objekt Response bude obsahovat nalezený jazyk v případě `primary_language` úspěchu a v `error` případě potřeby.
+Vytvořte novou funkci s názvem `language_detection_example()` , která převezme klienta jako argument, a pak zavolá `detect_language()` funkci. Vrácený objekt Response bude obsahovat nalezený jazyk v `primary_language` případě úspěchu a v `error` případě potřeby.
 
 > [!Tip]
-> V některých případech může být obtížné nejednoznačnost jazyků na základě vstupu. Pomocí `country_hint` parametru můžete zadat kód země se dvěma písmeny. Rozhraní API ve výchozím nastavení používá "US" jako výchozí countryHint. Chcete-li toto chování odebrat, můžete tento parametr obnovit nastavením této hodnoty na prázdný řetězec `country_hint : ""`. 
+> V některých případech může být obtížné nejednoznačnost jazyků na základě vstupu. Pomocí `country_hint` parametru můžete zadat kód země se dvěma písmeny. Rozhraní API ve výchozím nastavení používá "US" jako výchozí countryHint. Chcete-li toto chování odebrat, můžete tento parametr obnovit nastavením této hodnoty na prázdný řetězec `country_hint : ""` . 
 
 ```python
 def language_detection_example(client):
@@ -242,10 +242,10 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 > [!NOTE]
-> Ve verzi `3.0-preview`: 
+> Ve verzi `3.0` : 
 > * Odkaz na entitu je samostatný požadavek než NER.
 
 Vytvořte novou funkci s názvem `entity_recognition_example` , která převezme klienta jako argument, poté zavolá `recognize_entities()` funkci a projde výsledky. Vrácený objekt Response bude obsahovat seznam zjištěných entit v `entity` případě úspěchu, a `error` Pokud ne. U každé zjištěné entity vytiskněte kategorii a podkategorii, pokud existuje.
@@ -260,7 +260,7 @@ def entity_recognition_example(client):
         print("Named Entities:\n")
         for entity in result.entities:
             print("\tText: \t", entity.text, "\tCategory: \t", entity.category, "\tSubCategory: \t", entity.subcategory,
-                    "\n\tLength: \t", entity.grapheme_length, "\tConfidence Score: \t", round(entity.confidence_score, 2), "\n")
+                    "\n\tConfidence Score: \t", round(entity.confidence_score, 2), "\n")
 
     except Exception as err:
         print("Encountered exception. {}".format(err))
@@ -272,16 +272,19 @@ entity_recognition_example(client)
 ```console
 Named Entities:
 
-    Text:    Seattle        Category:        Location       SubCategory:     GPE
-    Length:          7      Confidence Score:        0.92
+        Text:    trip   Category:        Event  SubCategory:     None
+        Confidence Score:        0.61
 
-    Text:    last week      Category:        DateTime       SubCategory:     DateRange
-    Length:          9      Confidence Score:        0.8
+        Text:    Seattle        Category:        Location       SubCategory:     GPE
+        Confidence Score:        0.82
+
+        Text:    last week      Category:        DateTime       SubCategory:     DateRange
+        Confidence Score:        0.8
 ```
 
 ## <a name="entity-linking"></a>Entity Linking
 
-Vytvořte novou funkci s názvem `entity_linking_example()` , která převezme klienta jako argument, poté zavolá `recognize_linked_entities()` funkci a projde výsledky. Vrácený objekt Response bude obsahovat seznam zjištěných entit v `entities` případě úspěchu, a `error` Pokud ne. Vzhledem k tomu, že propojené entity jsou jednoznačně identifikovány, jsou výskyty stejné entity `entity` seskupeny do objektu jako `match` seznam objektů.
+Vytvořte novou funkci s názvem `entity_linking_example()` , která převezme klienta jako argument, poté zavolá `recognize_linked_entities()` funkci a projde výsledky. Vrácený objekt Response bude obsahovat seznam zjištěných entit v `entities` případě úspěchu, a `error` Pokud ne. Vzhledem k tomu, že propojené entity jsou jednoznačně identifikovány, jsou výskyty stejné entity seskupeny do `entity` objektu jako seznam `match` objektů.
 
 ```python
 def entity_linking_example(client):
@@ -301,7 +304,7 @@ def entity_linking_example(client):
             print("\tMatches:")
             for match in entity.matches:
                 print("\t\tText:", match.text)
-                print("\t\tConfidence Score: {0:.2f}".format(match.confidence_score), "\tLength: {}\n".format(match.grapheme_length))
+                print("\t\tConfidence Score: {0:.2f}".format(match.confidence_score))
             
     except Exception as err:
         print("Encountered exception. {}".format(err))
@@ -313,47 +316,40 @@ entity_linking_example(client)
 ```console
 Linked Entities:
 
-    Name:  Altair 8800     Id:  Altair 8800     Url:  https://en.wikipedia.org/wiki/Altair_8800 
-    Data Source:  Wikipedia
-    Matches:
-        Text: Altair 8800
-        Confidence Score: 0.00     Length: 11
-
-    Name:  Bill Gates     Id:  Bill Gates     Url:  https://en.wikipedia.org/wiki/Bill_Gates 
-    Data Source:  Wikipedia
-    Matches:
-        Text: Bill Gates
-        Confidence Score: 0.00     Length: 10
-
-        Text: Gates
-        Confidence Score: 0.00     Length: 5
-
-    Name:  Paul Allen     Id:  Paul Allen     Url:  https://en.wikipedia.org/wiki/Paul_Allen 
-    Data Source:  Wikipedia
-    Matches:
-        Text: Paul Allen
-        Confidence Score: 0.00     Length: 10
-
-    Name:  Microsoft     Id:  Microsoft     Url:  https://en.wikipedia.org/wiki/Microsoft 
-    Data Source:  Wikipedia
-    Matches:
-        Text: Microsoft
-        Confidence Score: 0.00     Length: 9
-
-        Text: Microsoft
-        Confidence Score: 0.00     Length: 9
-
-    Name:  April 4     Id:  April 4     Url:  https://en.wikipedia.org/wiki/April_4 
-    Data Source:  Wikipedia
-    Matches:
-        Text: April 4
-        Confidence Score: 0.00     Length: 7
-
-    Name:  BASIC     Id:  BASIC     Url:  https://en.wikipedia.org/wiki/BASIC 
-    Data Source:  Wikipedia
-    Matches:
-        Text: BASIC
-        Confidence Score: 0.00     Length: 5
+        Name:  Altair 8800      Id:  Altair 8800        Url:  https://en.wikipedia.org/wiki/Altair_8800
+        Data Source:  Wikipedia
+        Matches:
+                Text: Altair 8800
+                Confidence Score: 0.88
+        Name:  Bill Gates       Id:  Bill Gates         Url:  https://en.wikipedia.org/wiki/Bill_Gates
+        Data Source:  Wikipedia
+        Matches:
+                Text: Bill Gates
+                Confidence Score: 0.63
+                Text: Gates
+                Confidence Score: 0.63
+        Name:  Paul Allen       Id:  Paul Allen         Url:  https://en.wikipedia.org/wiki/Paul_Allen
+        Data Source:  Wikipedia
+        Matches:
+                Text: Paul Allen
+                Confidence Score: 0.60
+        Name:  Microsoft        Id:  Microsoft  Url:  https://en.wikipedia.org/wiki/Microsoft
+        Data Source:  Wikipedia
+        Matches:
+                Text: Microsoft
+                Confidence Score: 0.55
+                Text: Microsoft
+                Confidence Score: 0.55
+        Name:  April 4  Id:  April 4    Url:  https://en.wikipedia.org/wiki/April_4
+        Data Source:  Wikipedia
+        Matches:
+                Text: April 4
+                Confidence Score: 0.32
+        Name:  BASIC    Id:  BASIC      Url:  https://en.wikipedia.org/wiki/BASIC
+        Data Source:  Wikipedia
+        Matches:
+                Text: BASIC
+                Confidence Score: 0.33
 ```
 
 #### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
@@ -409,9 +405,9 @@ Document ID: 2
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-Vytvořte novou funkci s názvem `key_phrase_extraction_example()` , která převezme klienta jako argument, a pak zavolá `extract_key_phrases()` funkci. Výsledek bude obsahovat seznam zjištěných klíčových frází v případě `key_phrases` úspěchu a v `error` případě potřeby. Vytiskněte všechny zjištěné klíčové fráze.
+Vytvořte novou funkci s názvem `key_phrase_extraction_example()` , která převezme klienta jako argument, a pak zavolá `extract_key_phrases()` funkci. Výsledek bude obsahovat seznam zjištěných klíčových frází v `key_phrases` případě úspěchu a v `error` případě potřeby. Vytiskněte všechny zjištěné klíčové fráze.
 
 ```python
 def key_phrase_extraction_example(client):

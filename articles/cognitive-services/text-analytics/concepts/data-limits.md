@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 04/27/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 4af2d060c11b804c5fa09bfdabbcb9753f7d5885
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 79a12505ccc7cea709a88818513ba95710989954
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82204411"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142363"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Omezení dat a přenosové rychlosti rozhraní API pro analýzu textu
 <a name="data-limits"></a>
@@ -36,7 +36,7 @@ V tomto článku najdete omezení velikosti a tarify, které můžete použít k
 
 Maximální počet dokumentů, které můžete poslat v rámci jedné žádosti, bude záviset na verzi rozhraní API a funkci, kterou používáte.
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-3"></a>[Verze 3](#tab/version-3)
 
 > [!NOTE]
 > Pokud vaše žádost rozhraní API V3 překročí tato omezení, ale spadá do omezení v2, vrátí se v odpovědi rozhraní API upozornění. Počínaje 7/15/2020 se místo toho vrátí kód chyby 400. 
@@ -44,7 +44,7 @@ Maximální počet dokumentů, které můžete poslat v rámci jedné žádosti,
 V v3 rozhraní API se změnila následující omezení. Překročení níže uvedených omezení vygeneruje upozornění v odpovědi rozhraní API.
 
 
-| Funkce | Maximální počet dokumentů na požadavek | 
+| Příznak | Maximální počet dokumentů na požadavek | 
 |----------|-----------|
 | Rozpoznávání jazyka | 1000 |
 | Analýza mínění | 10 |
@@ -54,7 +54,7 @@ V v3 rozhraní API se změnila následující omezení. Překročení níže uve
 
 #### <a name="version-2"></a>[Verze 2](#tab/version-2)
 
-| Funkce | Maximální počet dokumentů na požadavek | 
+| Příznak | Maximální počet dokumentů na požadavek | 
 |----------|-----------|
 | Rozpoznávání jazyka | 1000 |
 | Analýza mínění | 1000 |

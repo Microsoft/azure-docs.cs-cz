@@ -1,7 +1,7 @@
 ---
-title: 'Rychlý Start: Vytvoření vlastního příkazu (Preview) – služba Speech'
+title: 'Rychlý Start: Vytvoření vlastní příkazy Preview App-Speech Service'
 titleSuffix: Azure Cognitive Services
-description: V tomto článku vytvoříte a otestujete hostovanou aplikaci s vlastními příkazy.
+description: V tomto článku vytvoříte a otestujete hostované vlastní příkazy aplikace ve verzi Preview. Aplikace zpracuje projevy.
 services: cognitive-services
 author: don-d-kim
 manager: yetian
@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
 ms.author: donkim
-ms.openlocfilehash: f31d7279b73bab7aefda4c4b6570500d05cb89d7
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 80111ff370f3a5412b45adc04c82c9dee103c01d
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872520"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142346"
 ---
-# <a name="quickstart-create-a-custom-commands-app-preview"></a>Rychlý Start: Vytvoření vlastní aplikace s příkazy (Preview)
+# <a name="quickstart-create-a-custom-commands-preview-app"></a>Rychlý Start: Vytvoření vlastní příkazy Preview aplikace
 
 V tomto rychlém startu se dozvíte, jak vytvořit a otestovat vlastní aplikaci příkazů.
-Vytvořená aplikace bude zpracovávat projevy, jako je "zapnutí televizního vysílání" a odpověď pomocí jednoduché zprávy "OK, zapnutí televizního vysílání".
+Aplikace bude zpracovávat projevy jako "zapnout televizor" a odpovědět na jednoduchou zprávu, jako je "OK, zapnutí televizního vysílání".
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,48 +32,50 @@ Vytvořená aplikace bude zpracovávat projevy, jako je "zapnutí televizního v
 
 ## <a name="go-to-the-speech-studio-for-custom-commands"></a>Přejít do sady Speech Studio pro vlastní příkazy
 
-1. Otevřete webový prohlížeč a přejděte do sady [Speech Studio](https://speech.microsoft.com/)
+1. Ve webovém prohlížeči přejdete na [Speech Studio](https://speech.microsoft.com/).
 1. Zadejte přihlašovací údaje pro přihlášení k portálu.
 
-   - Výchozím zobrazením je seznam předplatných pro rozpoznávání řeči.
-     > [!NOTE]
-     > Pokud nevidíte stránku vybrat odběr, můžete na ni přejít výběrem možnosti "prostředky řeči" v nabídce nastavení na horním panelu.
+   Výchozím zobrazením je seznam předplatných pro rozpoznávání řeči.
+    > [!NOTE]
+    > Pokud nevidíte stránku vybrat odběr, můžete ji získat výběrem možnosti **prostředky řeči** v nabídce nastavení v horní části obrazovky.
 
 1. Vyberte své předplatné pro rozpoznávání řeči a pak vyberte **Přejít k studiu**.
 1. Vyberte **vlastní příkazy**.
 
-     - Výchozím zobrazením je seznam aplikací pro vlastní příkazy, které máte v rámci vybraného předplatného.
+     Výchozím zobrazením je seznam aplikací Custom Commands, které máte ve vybraném předplatném.
 
 ## <a name="create-a-custom-commands-project"></a>Vytvoření projektu s vlastními příkazy
 
-1. Vyberte **Nový projekt** a vytvořte nový projekt.
+1. Vyberte **Nový projekt** a vytvořte projekt.
 
    > [!div class="mx-imgBorder"]
    > ![Vytvoření projektu](media/custom-speech-commands/create-new-project.png)
 
-1. Zadejte název projektu.
-1. Z rozevíracího seznamu vyberte jazyk.
-1. V rozevíracím seznamu vyberte prostředek pro vytváření obsahu. Pokud neexistují žádné platné prostředky pro vytváření obsahu, vytvořte ho kliknutím na **vytvořit nový prostředek pro vytváření obsahu Luis**.
+1. Do pole **název** zadejte název projektu.
+1. V seznamu **jazyk** vyberte jazyk.
+1. V seznamu **prostředek pro vytváření Luis** vyberte prostředek pro vytváření obsahu. Pokud neexistují žádné platné prostředky pro vytváření obsahu, vytvořte si ho tak, že vyberete **vytvořit nový prostředek pro vytváření obsahu Luis**.
 
    > [!div class="mx-imgBorder"]
    > ![Vytvoření prostředku](media/custom-speech-commands/create-new-resource.png)
 
-   - Zadejte název prostředku, skupinu prostředků.
-   - V rozevíracím seznamu vyberte hodnotu pro umístění a cenovou úroveň.
+   1. Do pole **název prostředku** zadejte název prostředku.
+   1. V seznamu **Skupina prostředků** vyberte skupinu prostředků.
+   1. V seznamu **umístění** vyberte umístění.
+   1. V seznamu **cenová úroveň** vyberte úroveň.
 
       > [!NOTE]
-      > Skupiny prostředků můžete vytvořit tak, že do pole Skupina prostředků zadáte požadovaný název skupiny prostředků. Skupina prostředků se vytvoří, když se vybere možnost **vytvořit** .
+      > Skupinu prostředků můžete vytvořit tak, že do pole **Skupina prostředků** zadáte název skupiny prostředků. Skupina prostředků se vytvoří, když vyberete **vytvořit**.
 
-1. Potom vyberte **vytvořit** a vytvořte tak projekt.
-1. Po vytvoření vyberte svůj projekt.
+1. Vyberte **Vytvořit**.
+1. Po vytvoření projektu ho vyberte.
 
-    - Vaše zobrazení by teď mělo být přehled vaší nově vytvořené aplikace Custom Commands.
+    Nyní byste měli vidět přehled vaší nové aplikace Custom Commands.
 
 ## <a name="update-luis-resources-optional"></a>Aktualizace prostředků LUIS (volitelné)
 
-Můžete aktualizovat prostředek pro vytváření obsahu, který byl nastaven v okně Nový projekt, a nastavit předpověď prostředku. Prostředek předpovědi se používá pro rozpoznávání po publikování vlastní aplikace příkazů. Pro fáze vývoje a testování nepotřebujete žádný předpovědní prostředek.
+Můžete aktualizovat prostředek pro vytváření obsahu, který jste vybrali v okně **Nový projekt** , a nastavit předpověď prostředku. Pokud je vaše aplikace pro vlastní příkazy publikována, je prostředek předpovědi použit pro rozpoznávání. Během fází vývoje a testování nepotřebujete předpověď prostředků.
 
-1. V levém podokně vyberte **Nastavení** a potom přejděte do části **prostředky Luis** v prostředním podokně.
+1. V levém podokně vyberte **Nastavení** a v prostředním podokně vyberte **Luis prostředky** .
 1. Vyberte prostředek předpovědi, nebo ho vytvořte výběrem možnosti **vytvořit nový prostředek**.
 1. Vyberte **Uložit**.
     
@@ -82,26 +84,26 @@ Můžete aktualizovat prostředek pro vytváření obsahu, který byl nastaven v
 
 
 > [!NOTE]
-> Vzhledem k tomu, že prostředek pro vytváření podporuje jenom 1 000 požadavků koncového bodu předpovědi za měsíc, budete muset před publikováním aplikace Custom Commands mandatorily nastavit prostředek předpovědi LUIS.
+> Vzhledem k tomu, že prostředek pro vytváření podporuje jenom 1 000 požadavků koncového bodu předpovědi za měsíc, budete muset před publikováním aplikace Custom Commands nastavit prostředek předpovědi LUIS.
 
 
-## <a name="create-a-new-command"></a>Vytvoření nového příkazu
+## <a name="create-a-command"></a>Vytvoření příkazu
 
-Pojďme vytvořit jednoduchý příkaz, který bude mít jednu utterance, `turn on the tv`a odpovědět se zprávou. `Ok, turning on the tv`
+Pojďme vytvořit jednoduchý příkaz, který bude mít jednu utterance, `turn on the tv` a odpovědět se zprávou `Ok, turning on the tv` .
 
-1. Vytvořte nový příkaz výběrem `+ New command` ikony přítomné v levém horním podokně. Zobrazí se nové automaticky otevírané okno s názvem **Nový příkaz**.
-1. Zadejte hodnotu pole **název** jako `TurnOn`.
+1. Vytvořte příkaz výběrem **příkazu nový** v horní části levého podokna. Otevře se **nové okno příkazu** .
+1. Do pole **název** zadejte **TurnOn**.
 1. Vyberte **Vytvořit**.
 
-Prostřední podokno zařadí různé vlastnosti příkazu:
+Prostřední podokno obsahuje seznam vlastností příkazu:
 
 
 | Konfigurace            | Popis                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| Příklady vět | Příklad projevy, jak může uživatel aktivovat tento příkaz                                                                 |
-| Parametry       | Informace potřebné k dokončení příkazu                                                                                |
-| Pravidla dokončení | Akce, které mají být provedeny pro splnění příkazu. Například, pokud chcete reagovat na uživatele nebo komunikovat s jinou webovou službou. |
-| Pravidla interakce   | Další pravidla pro zpracování složitějších nebo složitých situací                                                              |
+| **Příklady vět** | Příklady projevy, jak může uživatel spustit příkaz.                                                                 |
+| **Parametry**       | Informace potřebné k dokončení příkazu                                                                                |
+| **Pravidla dokončení** | Akce, které budou provedeny pro splnění příkazu. Například můžete reagovat na uživatele nebo komunikovat s jinou webovou službou. |
+| **Pravidla interakce**   | Další pravidla, která budou zpracovávat konkrétnější nebo složitou situaci.                                                              |
 
 
 > [!div class="mx-imgBorder"]
@@ -110,41 +112,41 @@ Prostřední podokno zařadí různé vlastnosti příkazu:
 
 ### <a name="add-example-sentences"></a>Přidat ukázkové věty
 
-Pojďme začít s příkladem části věty a zadat příklad, co může uživatel vyslovit.
+Pojďme začít s **příkladem části věty** . Nabídneme vám příklad, co může uživatel vyslovit.
 
-1. V prostředním podokně a ve většině případů v pravém podokně vyberte **ukázkové věty** . Přidejte příklady:
+1. V prostředním podokně vyberte **příklad vět** . 
+1. V pravém podokně přidejte příklady:
 
     ```
     turn on the tv
     ```
 
-1. V `Save` horní části tohoto podokna vyberte ikonu k dispozici.
+1. V horní části podokna vyberte **Uložit** .
 
-Teď nemáme žádné parametry, abychom mohli přejít k části **pravidla dokončení** .
+Teď ale nemusíme mít parametry, takže se můžeme přesunout do oddílu **pravidla dokončení** .
 
 ### <a name="add-a-completion-rule"></a>Přidat pravidlo dokončení
 
-Teď přidejte pravidlo dokončení s následující konfigurací. Toto pravidlo označuje uživatele, že je prováděna akce plnění.
+Teď přidejte pravidlo dokončení, které má následující konfiguraci. Toto pravidlo přikáže uživateli, že je prováděna akce plnění.
 
 
 | Nastavení    | Navrhovaná hodnota                          | Popis                                        |
 | ---------- | ---------------------------------------- | -------------------------------------------------- |
-| Název pravidla  | ConfirmationResponse                  | Název popisující účel pravidla          |
-| Podmínky | Žádné                                     | Podmínky, které určují, kdy se pravidlo dá spustit    |
-| Akce    | SpeechResponse "-OK, zapnutí televizního vysílání" | Akce, která se má provést, když je podmínka pravidla pravdivá |
+| **Název**  | **ConfirmationResponse**                  | Název popisující účel pravidla.          |
+| **Podmínky** | Žádné                                     | Podmínky, které určují, kdy může být pravidlo spuštěno.    |
+| **Akce**    | **Odeslat odezvu na řeč – > ok a zapnout televizor** | Akce, která má být provedena v případě, kdy je podmínka pravidla pravdivá. |
 
-1. Kliknutím na `+Add` ikonu v horní části prostředního podokna vytvořte nové pravidlo dokončení.
-1. Zadejte hodnotu v části **Name (název** ).
-1. Přidání akce
-   1. Kliknutím na **+ přidat akci** v oddílu **Actions (akce** ) vytvořte novou akci.
-   1. V automaticky otevíraném okně **Nová akce** vyberte `Send speech response` z rozevíracího seznamu možnosti pro **typ**.
-   1. Vyberte `Simple editor` pro pole **Response** .
-       - Do pole **první variace** zadejte hodnotu pro odpověď jako`Ok, turning on the tv`
+1. Kliknutím na **Přidat** v horní části prostředního podokna vytvořte nové pravidlo dokončení.
+1. Zadejte název do pole **Název**.
+1. Přidat akci.
+   1. Vytvořte akci výběrem možnosti **přidat akci** v části **Akce** .
+   1. V okně **Upravit akci** vyberte v seznamu **typ** možnost **Odeslat odpověď řeči**.
+   1. V části **odpověď**vyberte **jednoduchý editor**. V poli **první variace** zadejte **OK a zapněte televizi**.
 
    > [!div class="mx-imgBorder"]
-   > ![Vytvoření odpovědi na řeč](media/custom-speech-commands/create-speech-response-action.png)
+   > ![Vytvořit odpověď](media/custom-speech-commands/create-speech-response-action.png)
 
-1. Kliknutím na **Save (Uložit** ) pravidlo uložte.
+1. Kliknutím na **Uložit** uložte pravidlo.
 1. Zpátky v části **pravidla dokončování** vyberte **Uložit** a uložte všechny změny. 
 
 > [!div class="mx-imgBorder"]
@@ -154,17 +156,17 @@ Teď přidejte pravidlo dokončení s následující konfigurací. Toto pravidlo
 
 ## <a name="try-it-out"></a>Vyzkoušejte si to.
 
-Testování chování pomocí panelu chat testu
-1. Vyberte `Train` ikonu, která se nachází v pravém podokně.
-1. Po dokončení školení vyberte `Test`. Zobrazí se nový test, který se zobrazí **v okně aplikace** .
-    - Zadáte: zapnout televizor
-    - Očekávaná odpověď: OK, zapnutí televizního vysílání
+Otestujte chování pomocí panelu chat testu.
+1. V horní části pravého podokna vyberte **vlak** .
+1. Po dokončení školení vyberte **test**. Zobrazí se nové okno **test aplikace** .
+    - Zadejte **zapnout televizi** .
+    - Očekávaná odpověď: **OK, zapnutí televizního vysílání**
 
 
 > [!div class="mx-imgBorder"]
-> ![Testování pomocí webového chatu](media/custom-speech-commands/create-basic-test-chat.png)
+> ![Testování chování](media/custom-speech-commands/create-basic-test-chat.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Rychlý Start: Vytvoření vlastního příkazu s parametry (Preview)](./quickstart-custom-speech-commands-create-parameters.md)
+> [Rychlý Start: Vytvoření vlastní příkazy Preview aplikace s parametry](./quickstart-custom-speech-commands-create-parameters.md)

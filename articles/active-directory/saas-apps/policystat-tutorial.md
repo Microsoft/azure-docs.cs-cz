@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f467e061ad52fdcc6d1e8706bb902088b237c24
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3e0e220467c8c16deb413f6c70f236f6de67f980
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848749"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142006"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Kurz: Azure Active Directory integrace s PolicyStat
 
@@ -175,11 +175,11 @@ Pokud chcete nakonfigurovat jednotné přihlašování Azure AD pomocí PolicySt
    
     a. Do textového pole **atributu username** zadejte **UID**.
 
-    b. Do textového pole **název atributu first name** (křestní jméno) zadejte název deklarace identity z Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname** .
+    b. Do textového pole **název atributu first name** (křestní jméno) zadejte název deklarace identity z Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`** .
 
-    c. Do textového pole **atributu Last Name (příjmení** ) zadejte název deklarace identity z Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname** .
+    c. Do textového pole **atributu Last Name (příjmení** ) zadejte název deklarace identity z Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** .
 
-    d. Do textového pole **atribut e-mailu** zadejte název deklarace identity e-mailu z Azure **http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress** .
+    d. Do textového pole **atribut e-mailu** zadejte název deklarace identity e-mailu z Azure **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`** .
 
     e. Klikněte na **Save Changes** (Uložit změny).
 

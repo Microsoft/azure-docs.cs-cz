@@ -9,23 +9,23 @@ ms.topic: include
 ms.date: 03/12/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 8bcc919aee7548e8596d1f44c8a357d3f84dfb14
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 0d2a4a8338880dc8063d6a3f088c0cd44e314e43
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82095977"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140696"
 ---
 <a name="HOLTop"></a>
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-[Ukázky V3 dokumentace ke](https://aka.ms/azsdk-js-textanalytics-ref-docs) | [zdroji zdrojového kódu](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics) | knihovny v3[(npm)](https://www.npmjs.com/package/@azure/ai-text-analytics) | [v3 Samples](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples) V3
+[Referenční dokumentace V3](https://aka.ms/azsdk-js-textanalytics-ref-docs)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics)  |  knihovny v3 [balíček V3 (npm)](https://www.npmjs.com/package/@azure/ai-text-analytics)  |  [ukázky V3](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/textanalytics/ai-text-analytics/samples)
 
 
 #### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-[Ukázky v2 dokumentace ke](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [zdrojovému kódu](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | knihovny V2 verze V2[(npm)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [v2 Samples](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/) v2
+[Referenční dokumentace v2](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics)  |  [zdrojový kód](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics)  |  knihovny v2 [balíček v2 (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics)  |  [ukázky v2](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ---
 
@@ -33,9 +33,9 @@ ms.locfileid: "82095977"
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
 * Aktuální verze [Node. js](https://nodejs.org/).
-* Jakmile budete <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="mít předplatné Azure, vytvořte prostředek analýza textu vytvoření prostředku"  target="_blank">analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
-    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň (`F0`) a upgradovat ji později na placenou úroveň pro produkční prostředí.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
 ## <a name="setting-up"></a>Nastavení
 
@@ -56,12 +56,12 @@ npm init
 ```
 ### <a name="install-the-client-library"></a>Instalace klientské knihovny
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-Instalace balíčků `@azure/ai-text-analytics` npm:
+Instalace `@azure/ai-text-analytics` balíčků npm:
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.4
+npm install --save @azure/ai-text-analytics@1.0.0-preview.5
 ```
 
 > [!TIP]
@@ -69,7 +69,7 @@ npm install --save @azure/ai-text-analytics@1.0.0-preview.4
 
 #### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-Instalace balíčků `@azure/cognitiveservices-textanalytics` npm:
+Instalace `@azure/cognitiveservices-textanalytics` balíčků npm:
 
 ```console
 npm install --save @azure/cognitiveservices-textanalytics
@@ -80,10 +80,10 @@ npm install --save @azure/cognitiveservices-textanalytics
 
 ---
 
-`package.json` Soubor vaší aplikace bude aktualizován pomocí závislostí.
+Soubor vaší aplikace `package.json` bude aktualizován pomocí závislostí.
 Vytvořte soubor s názvem `index.js` a přidejte následující:
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 ```javascript
 "use strict";
@@ -113,7 +113,7 @@ const endpoint = '<paste-your-text-analytics-endpoint-here>';
 
 Klient Analýza textu je `TextAnalyticsClient` objekt, který se ověřuje v Azure pomocí vašeho klíče. Klient nabízí několik metod analýzy textu, jako jeden řetězec nebo dávku.
 
-Text se pošle do rozhraní API jako seznam objektů `documents`, což jsou `dictionary` objekty obsahující kombinaci atributů `id`, `text`a `language` v závislosti na použité metodě. `text` Atribut ukládá text, který má být analyzován v původním `language`umístění, a `id` může být libovolná hodnota. 
+Text se pošle do rozhraní API jako seznam `documents` objektů, což jsou `dictionary` objekty obsahující kombinaci `id` `text` atributů, a `language` v závislosti na použité metodě. `text`Atribut ukládá text, který má být analyzován v původním umístění `language` , a `id` může být libovolná hodnota. 
 
 Objekt Response je seznam obsahující informace o analýze pro každý dokument. 
 
@@ -128,7 +128,7 @@ Objekt Response je seznam obsahující informace o analýze pro každý dokument
 
 ## <a name="client-authentication"></a>Ověření klienta
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Vytvořte nový `TextAnalyticsClient` objekt s vaším klíčem a koncovým bodem jako parametry.
 
@@ -138,7 +138,7 @@ const textAnalyticsClient = new TextAnalyticsClient(endpoint,  new AzureKeyCrede
 
 #### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
 
-Vytvořte nový objekt [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) s `credentials` parametrem `endpoint` a jako parametr.
+Vytvořte nový objekt [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) s `credentials` `endpoint` parametrem a jako parametr.
 
 [!code-javascript[Authentication and client creation](~/cognitive-services-node-sdk-samples/Samples/textAnalytics.js?name=authentication)]
 
@@ -146,7 +146,7 @@ Vytvořte nový objekt [TextAnalyticsClient](https://docs.microsoft.com/javascri
 
 ## <a name="sentiment-analysis"></a>Analýza mínění
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte `analyzeSentiment()` metodu klienta a získejte vrácený `SentimentBatchResult` objekt. Procházejte seznamem výsledků a vytiskněte ID každého dokumentu, mínění na úrovni dokumentu s výsledky spolehlivosti. Výsledek každého dokumentu obsahuje mínění na úrovni věty spolu s posuny, délkou a hodnocením spolehlivosti.
 
@@ -213,9 +213,9 @@ Spusťte kód `node index.js` v okně konzoly.
 
 ## <a name="language-detection"></a>Rozpoznávání jazyka
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
-Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte `detectLanguage()` metodu klienta a získejte vrácenou `DetectLanguageResultCollection`metodu. Pak Projděte výsledky a vytiskněte identifikátor každého dokumentu s příslušným primárním jazykem.
+Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte `detectLanguage()` metodu klienta a získejte vrácenou metodu `DetectLanguageResultCollection` . Pak Projděte výsledky a vytiskněte identifikátor každého dokumentu s příslušným primárním jazykem.
 
 ```javascript
 async function languageDetection(client) {
@@ -262,10 +262,10 @@ Document ID: 3 , Language: Chinese_Simplified
 
 ## <a name="named-entity-recognition-ner"></a>Rozpoznávání pojmenovaných entit (NER)
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 > [!NOTE]
-> Ve verzi `3.0-preview`:
+> Ve verzi `3.0-preview` :
 > * Odkaz na entitu je samostatný požadavek než NER.
 
 Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte `recognizeEntities()` metodu klienta a získejte `RecognizeEntitiesResult` objekt. Iterujte seznamem výsledků a vytiskněte název entity, typ, podtyp, posun, délku a skóre.
@@ -283,7 +283,7 @@ async function entityRecognition(client){
         console.log(`Document ID: ${document.id}`);
         document.entities.forEach(entity => {
             console.log(`\tName: ${entity.text} \tCategory: ${entity.category} \tSubcategory: ${entity.subCategory ? entity.subCategory : "N/A"}`);
-            console.log(`\tScore: ${entity.score}`);
+            console.log(`\tScore: ${entity.confidenceScore}`);
         });
     });
 }
@@ -297,26 +297,20 @@ Spusťte kód `node index.js` v okně konzoly.
 ```console
 Document ID: 0
         Name: Microsoft         Category: Organization  Subcategory: N/A
-        Score: 1
+        Score: 0.29
         Name: Bill Gates        Category: Person        Subcategory: N/A
-        Score: 0.67
+        Score: 0.78
         Name: Paul Allen        Category: Person        Subcategory: N/A
-        Score: 0.81
+        Score: 0.82
         Name: April 4, 1975     Category: DateTime      Subcategory: Date
         Score: 0.8
-        Name: interpreters      Category: PersonType    Subcategory: N/A
-        Score: 0.6
         Name: 8800      Category: Quantity      Subcategory: Number
         Score: 0.8
 Document ID: 1
-        Name: Microsoft         Category: Organization  Subcategory: N/A
-        Score: 0.96
-        Name: Redmond   Category: Location      Subcategory: GPE
-        Score: 0.09
         Name: 21        Category: Quantity      Subcategory: Number
         Score: 0.8
         Name: Seattle   Category: Location      Subcategory: GPE
-        Score: 0.31
+        Score: 0.25
 ```
 
 ## <a name="entity-linking"></a>Entity Linking
@@ -337,8 +331,8 @@ async function linkedEntityRecognition(client){
             console.log(`\tName: ${entity.name} \tID: ${entity.dataSourceEntityId} \tURL: ${entity.url} \tData Source: ${entity.dataSource}`);
             console.log(`\tMatches:`)
             entity.matches.forEach(match => {
-                console.log(`\t\tText: ${match.text} \tScore: ${match.score.toFixed(2)}`);
-            });
+                console.log(`\t\tText: ${match.text} \tScore: ${match.confidenceScore.toFixed(2)}`);
+        })
         });
     });
 }
@@ -353,24 +347,24 @@ Spusťte kód `node index.js` v okně konzoly.
 Document ID: 0
         Name: Altair 8800       ID: Altair 8800         URL: https://en.wikipedia.org/wiki/Altair_8800  Data Source: Wikipedia
         Matches:
-                Text: Altair 8800       Score: 0.78
+                Text: Altair 8800       Score: 0.88
         Name: Bill Gates        ID: Bill Gates  URL: https://en.wikipedia.org/wiki/Bill_Gates   Data Source: Wikipedia
         Matches:
-                Text: Bill Gates        Score: 0.55
-                Text: Gates     Score: 0.55
+                Text: Bill Gates        Score: 0.63
+                Text: Gates     Score: 0.63
         Name: Paul Allen        ID: Paul Allen  URL: https://en.wikipedia.org/wiki/Paul_Allen   Data Source: Wikipedia
         Matches:
-                Text: Paul Allen        Score: 0.53
+                Text: Paul Allen        Score: 0.60
         Name: Microsoft         ID: Microsoft   URL: https://en.wikipedia.org/wiki/Microsoft    Data Source: Wikipedia
         Matches:
-                Text: Microsoft         Score: 0.47
-                Text: Microsoft         Score: 0.47
+                Text: Microsoft         Score: 0.55
+                Text: Microsoft         Score: 0.55
         Name: April 4   ID: April 4     URL: https://en.wikipedia.org/wiki/April_4      Data Source: Wikipedia
         Matches:
-                Text: April 4   Score: 0.25
+                Text: April 4   Score: 0.32
         Name: BASIC     ID: BASIC       URL: https://en.wikipedia.org/wiki/BASIC        Data Source: Wikipedia
         Matches:
-                Text: BASIC     Score: 0.28
+                Text: BASIC     Score: 0.33
 ```
 
 #### <a name="version-21"></a>[Verze 2,1](#tab/version-2)
@@ -418,7 +412,7 @@ Document ID: 2
 
 ## <a name="key-phrase-extraction"></a>Extrakce klíčových frází
 
-#### <a name="version-30-preview"></a>[Verze 3,0-Preview](#tab/version-3)
+#### <a name="version-30"></a>[Verze 3,0](#tab/version-3)
 
 Vytvořte pole řetězců obsahující dokument, který chcete analyzovat. Zavolejte `extractKeyPhrases()` metodu klienta a získejte vrácený `ExtractKeyPhrasesResult` objekt. Iterujte výsledky a vytiskněte ID každého dokumentu a všechny zjištěné klíčové fráze.
 

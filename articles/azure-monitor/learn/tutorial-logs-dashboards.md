@@ -5,14 +5,14 @@ ms.subservice: logs
 ms.topic: tutorial
 author: bwren
 ms.author: bwren
-ms.date: 06/19/2019
+ms.date: 05/28/2020
 ms.custom: mvc
-ms.openlocfilehash: 76ba79561df4a75004369d24c4c6af82de9b1cfc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7bc2da2043c6607cfff62ff524be88efb79c6f18
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77661528"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148255"
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Vytváření a sdílená řídicích panelů s daty Log Analytics
 
@@ -35,6 +35,14 @@ Výběrem **řídicího panelu** otevřete výchozí [řídicí panel](../../azu
 ![Řídicí panel webu Azure Portal](media/tutorial-logs-dashboards/log-analytics-portal-dashboard.png)
 
 Tady můžete kombinovat provozní data všech prostředků Azure, která jsou nejdůležitější pro IT, včetně telemetrie z Azure Log Analytics.  Než se podíváme na vizualizaci dotazu protokolu, nejdřív vytvoříme řídicí panel a nasdílíme ho.  Pak se můžeme zaměřit na náš ukázkový dotaz protokolu výkonu, který se vykreslí jako spojnicový graf a přidá se na řídicí panel.  
+
+> [!NOTE]
+> V řídicích panelech Azure se pomocí dotazů protokolu podporují tyto typy grafů:
+> - areachart
+> - columnchart
+> - piechart (vykreslí se na řídicím panelu jako prstenec)
+> - scatterchart
+> - timechart
 
 Řídicí panel vytvoříte výběrem tlačítka **Nový řídicí panel** vedle názvu aktuálního řídicího panelu.
 

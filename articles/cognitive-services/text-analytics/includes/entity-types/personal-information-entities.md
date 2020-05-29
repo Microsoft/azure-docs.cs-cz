@@ -6,327 +6,61 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 02/06/2020
+ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 57be24142a8504347f420e5780e9621cd2eac91d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 81ed10f0b3b2a8042f0766f89bb99d7cad950fca
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83778153"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84140913"
 ---
-## <a name="personal-information-entity-types"></a>Typy entit osobních informací:
+> [!NOTE]
+> Ke zjištění `PHI` použijte `domain=phi` parametr a verzi modelu `2020-04-01` nebo novější.
+>
+> Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/entities/recognition/pii?domain=phi&model-version=2020-04-01`
+ 
+Při odesílání požadavků do koncového bodu se vrátí následující kategorie entit `/v3.1-preview.1/entities/recognition/pii` .
 
-### <a name="person"></a>Person (Osoba)
-Rozpoznat jména osob v textu.
+| Kategorie   | Subcategory | Popis                          | Spouští se verze modelu. | Poznámky |
+|------------|-------------|--------------------------------------|------------------------|---|
+| Person (Osoba)     | Není k dispozici         | Jména lidí.  | `2019-10-01`  | Také vrácen s `domain=phi` . |
+| PersonType | Není k dispozici         | Typy úloh nebo role držené osobou. | `2020-02-01` | |
+| PhoneNumber | Není k dispozici | Telefonní čísla (jenom USA a telefonní čísla EU). | `2019-10-01` | Také vrácen s`domain=phi` |
+|Má organizace  | Není k dispozici | Společnosti, politické skupiny, hudební pásma, sportovní klub, státní orgány a veřejné organizace.  | `2019-10-01` | Státní příslušníky a náboženství nejsou zahrnuté do tohoto typu entity.  |
+|Má organizace | Lékař | Lékařské společnosti a skupiny. | `2020-04-01` | Také vrácen s `domain=phi` . |
+|Má organizace | Burzovní Exchange | Burzovní skupiny Exchange. | `2020-04-01` | Také vrácen s `domain=phi` . |
+| Má organizace | Sport | Organizace související s sportem. | `2020-04-01` | Také vrácen s `domain=phi` . |
+| Adresa | Není k dispozici | Úplné poštovní adresy.  | `2020-04-01` | Také vrácen s `domain=phi` . |
+| Evropské unie GPS – souřadnice | Není k dispozici | Souřadnice GPS pro umístění v rámci Evropské unie.  | `2019-10-01` |  |
+| E-mail | Není k dispozici | E-mailové adresy. | `2019-10-01` | Také vrácen s `domain=phi` .   |
+| URL | Není k dispozici | Adresy URL webů. | `2019-10-01` | Také vrácen s `domain=phi` . |
+| IP adresa | Není k dispozici | Síťové IP adresy. | `2019-10-01` | |
+| DateTime | Není k dispozici | Data a denní doba. | `2019-10-01` |  | 
+| DateTime | Datum | Kalendářní data kalendáře | `2019-10-01` | Také vrácen s `domain=phi` . |
+| Množství | Není k dispozici | Čísla a číselná množství. | `2019-10-01` |  |
+| Množství | Věk | Ve věku. | `2019-10-01` | | |
+| Mezinárodní klasifikace nemocí (ICD – 10 – CM) | Není k dispozici | Entity týkající se mezinárodní klasifikace nemocí, deváté revize.   | `2020-04-01` | Také vrácen s `domain=phi` . |
+| Mezinárodní klasifikace nemocí (ICD – 10 – CM) | Není k dispozici | Entity týkající se mezinárodní klasifikace nemocí a desáté revize.    | `2020-04-01` | Také vrácen s `domain=phi` . |
 
-Jazyky:
-* Verze Public Preview:`English`
+## <a name="azure-information"></a>Informace o Azure
 
-| Název podtypu | Popis                                               | K dispozici počínaje verzí modelu |
-|--------------|-----------------------------------------------------------|----------------------------------------|
-| –          | Rozpoznané názvy `Bill Gates` , například`Marie Curie` | `2020-02-01`                           |
+Tato kategorie entit zahrnuje identifikovatelné informace Azure včetně ověřovacích informací a připojovacích řetězců. K dispozici počínaje verzí modelu `2019-10-01` . Nevráceno s `domain=phi` parametrem.
 
-### <a name="organization"></a>Má organizace  
-
-Rozpoznávání organizací, firem, organizací, společností, klubů a dalších skupin lidí
-
-Jazyky: 
-
-* Verze Public Preview:`English`
-
-| Název podtypu | Popis                                                                                       | K dispozici počínaje verzí modelu|
-|--------------|---------------------------------------------------------------------------------------------------|--------------|
-| –          | organizace, například `Microsoft` `NASA` ,`National Oceanic and Atmospheric Administration` | `2020-02-01` |
-
-### <a name="phone-number"></a>Telefonní číslo
-
-Telefonní čísla (jenom telefonní čísla USA). 
-
-Jazyky:
-
-* Verze Public Preview:`English`
-
-| Název podtypu | Popis                                    | K dispozici počínaje verzí modelu |
-|--------------|------------------------------------------------|----------------------------------------|
-| –          | Telefonní čísla USA, například`(312) 555-0176` | `2020-02-01`                           |
-
-### <a name="email"></a>E-mailu
-
-E-mailovou adresu 
-
-Jazyky:
-
-* Verze Public Preview:`English`
-
-| Název podtypu | Popis                                      | K dispozici počínaje verzí modelu |
-|--------------|--------------------------------------------------|----------------------------------------|
-| –          | E-mailová adresa, například`support@contoso.com` | `2020-02-01`                           |
-
-### <a name="url"></a>URL
-
-Internetové adresy URL.
-
-Jazyky:
-
-* Verze Public Preview:`English`
-
-| Název podtypu | Popis                                          | K dispozici počínaje verzí modelu |
-|--------------|------------------------------------------------------|----------------------------------------|
-| –          | Adresy URL pro weby, například`https://www.bing.com` | `2020-02-01`                           |
-
-### <a name="ip-address"></a>IP adresa
-
-Adresa Internet Protocol
-
-Jazyky:
-
-* Verze Public Preview:`English`
-
-| Název podtypu | Popis                              | K dispozici počínaje verzí modelu |
-|--------------|------------------------------------------|----------------------------------------|
-| –          | Například Síťová adresa`10.0.0.101` | `2020-02-01`                           |
-
-### <a name="quantity"></a>Množství 
-
-Číselné množství
-
-Jazyky:
-
-* Verze Public Preview:`English`
-
-| Název podtypu | Popis                   | K dispozici počínaje verzí modelu |
-|--------------|-------------------------------|----------------------------------------|
-| Věk          | `90 days old`, `30 years old` | `2020-02-01`                           |
-
-### <a name="datetime"></a>DateTime
-
-Entity data a času
-
-Jazyky:
-
-* Verze Public Preview:`English`
-
-| Název podtypu | Popis                   | K dispozici počínaje verzí modelu |
-|--------------|-------------------------------|----------------------------------------|
-| Datum         | `May 2nd, 2017`, `05/02/2017` | `2020-02-01`                           |
-
-### <a name="eu-gps-coordinates"></a>Evropské unie GPS – souřadnice
-
- Souřadnice GPS pro umístění v rámci Evropské unie. 
-
-Jazyky:
-
-* Verze Public Preview:`English`
-
-| Název podtypu | Popis                               | K dispozici počínaje verzí modelu |
-|--------------|-------------------------------------------|----------------------------------------|
-| –          | Souřadnice GPS v rámci Evropské unie | `2019-10-01`                           |
-
-### <a name="azure-information"></a>Informace o Azure
-
-Identifikovatelné informace Azure včetně ověřovacích informací a připojovacích řetězců. 
-
-* K dispozici počínaje verzí modelu `2019-10-01` .
-
-Jazyky:
-
-* Verze Public Preview:`English`
-
-| Název podtypu                          | Popis                                                                 |
+| Subcategory                           | Popis                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Klíč ověření Azure DocumentDB             | Autorizační klíč pro server Azure DocumentDB                           |
-| Připojovací řetězec databáze Azure IAAS | Připojovací řetězec pro databázi infrastruktury Azure jako služby (IaaS). |
+| Připojovací řetězec databáze Azure IAAS a připojovací řetězec SQL Azure | Připojovací řetězec pro databázi Azure Infrastructure as a Service (IaaS) a připojovací řetězec SQL. |
 | Připojovací řetězec SQL Azure           | Připojovací řetězec pro databázi SQL Azure.                                |
 | Připojovací řetězec Azure IoT           | Připojovací řetězec pro Azure Internet věcí (IoT)                        |
 | Heslo pro nastavení publikování v Azure        | Heslo pro nastavení publikování v Azure                                        |
 | Připojovací řetězec Azure Redis Cache   | Připojovací řetězec pro službu Azure cache pro Redis.                             |
 | SAS Azure                             | Připojovací řetězec pro službu Azure software as a Service (SAS).                     |
-| Připojovací řetězec Azure Service Bus   | Připojovací řetězec pro službu Azure Service Bus.                                |
+| Připojovací řetězec Azure Service Bus   | Připojovací řetězec pro službu Azure Service Bus.                                 |
 | Klíč účtu Azure Storage             | Klíč účtu pro účet služby Azure Storage.                                   |
 | Klíč účtu Azure Storage (Obecné)   | Klíč obecného účtu pro účet služby Azure Storage.                           |
 | Připojovací řetězec SQL Server          | Připojovací řetězec pro systém SQL Server.                                         |
 
-### <a name="identification"></a>Identifikace
+## <a name="identification"></a>Identifikace
 
-* K dispozici počínaje verzí modelu `2019-10-01` .
-
-Jazyky:
-
-* Verze Public Preview:`English`
-
-#### <a name="financial-account-identification"></a>Identifikace finančního účtu
-
-| Název podtypu               | Popis                                                                |
-|----------------------------|----------------------------------------------------------------------------|
-| ABA čísla směrování        | Směrovací čísla asociace (ABA) pro americký bankový přenos                  |
-| Kód SWIFT                 | Kódy SWIFT pro informace o platebních pokynech.                           |
-| Platební karta                | Čísla platebních karet                                                       |
-| Kód IBAN                  | Kódy IBAN pro informace o platebních pokynech.                            |
-
-#### <a name="government-and-countryregion-specific-identification"></a>Identifikace specifická pro státní správu a zemi/oblast
-
-Níže uvedené entity jsou seskupené podle země nebo oblasti:
-
-Argentina
-* Číslo národní identity (DNI)
-
-Austrálie
-* Číslo daňového souboru 
-* ID licence ovladače
-* ID služby Passport
-* Zdravotní číslo účtu
-* čísla bankovních účtů (například kontrola, úspory a debetní účty)
-
-Belgie
-* Národní číslo
-
-Brazílie
-* Číslo právní entity (CNPJ)
-* CPF číslo
-* Karta National ID (RG)
-
-Kanada
-* ID služby Passport
-* ID licence ovladače
-* Číslo pojištění stavu
-* Číslo ID osobního stavu (PHIN)
-* Číslo sociálního pojištění
-* čísla bankovních účtů (například kontrola, úspory a debetní účty)
-
-Chile
-* Číslo karty identity 
-
-Čína
-* Číslo karty identity
-* Číslo rezidentního ID karty (ČLR)
-
-Chorvatsko
-* Číslo karty ID
-* Číslo osobního ID (OIB)
-
-Česká republika
-* Číslo karty národního ID
-
-Dánsko
-* Číslo osobního ID
-
-Evropské unie (EU)
-* Národní identifikační číslo
-* ID služby Passport
-* ID licence ovladače
-* Číslo sociálního pojištění (SSN) nebo ekvivalentní ID
-* Daňové identifikační číslo (DIČ) EU
-* Číslo debetní karty v EU
-
-Finsko
-* Národní identifikační číslo
-* ID služby Passport
-
-Francie
-* Karta National ID (CNI)
-* Číslo sociálního pojištění (INSEE)
-* ID služby Passport
-* ID licence ovladače
-
-Německo
-* Číslo karty ID
-* ID služby Passport
-* ID licence ovladače
-
-Řecko 
-* Číslo karty národního ID
-
-Hongkong
-* Číslo karty ID (HKID)
-
-Indie
-* Trvalé číslo účtu (PAN)
-* Číslo jedinečného ID (Aadhaar)
-
-Indonésie
-* Číslo karty ID (KTP)
-
-Irsko
-* Číslo osobní veřejné služby (PPS)
-
-Izrael
-* Národní ID
-* čísla bankovních účtů (například kontrola, úspory a debetní účty)
-
-Itálie
-* ID licence ovladače
-
-Japonsko
-* Registrační číslo rezidentu
-* Číslo karty pro pobyt
-* ID licence ovladače
-* Číslo sociálního pojištění (SIN)
-* ID služby Passport
-* čísla bankovních účtů (například kontrola, úspory a debetní účty)
-
-Malajsie
-* Číslo karty ID
-
-Nizozemsko
-* Číslo služby občana (BSN)
-
-Nový Zéland
-* Ministerstvo číslo zdravotního stavu
-
-Norsko
-* Číslo karty ID
-
-Filipíny
-* Jednotné ID pro více účelů
-
-Polsko
-* Číslo karty ID
-* Národní ID (PESEL)
-* ID služby Passport
-
-Portugalsko 
-* Číslo karty občana
-
-Saúdská Arábie
-* Národní ID
-
-Singapur
-* Číslo karty národního registračního ID (NRIC)
-
-Jižní Afrika
-* Číslo ID
-* Registrační číslo rezidentu
-
-Jižní Korea
-* Registrační číslo rezidentu
-
-Španělsko 
-* Rodné číslo (sociální zabezpečení)
-
-Švédsko
-* Národní ID
-* ID služby Passport
-
-Tchaj-wan 
-* Národní ID
-* Číslo rezidentního certifikátu (ARC/TARC)
-* ID služby Passport
-
-Thajsko
-* Identifikační kód populace
-
-Spojené království
-* ID služby Passport
-* ID licence ovladače
-* Národní pojišťovací číslo (NINO)
-* Národní číslo Health Service (NHS)
-
-USA
-* Rodné číslo (sociální zabezpečení)
-* ID licence ovladače
-* ID služby Passport
-* Číslo Shrnutí
-* Individuální daňové identifikační číslo (ITIN)
-* Číslo v úřadu pro vynucování drog (DEA)
-* čísla bankovních účtů (například kontrola, úspory a debetní účty)
+[!INCLUDE [supported identification entities](./identification-entities.md)]

@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 3c42d520e5e30e57906245b9405b0d445be8ee16
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: cedc400ac6659cf2b2d0e9c499bf8789a6311e32
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871375"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84141887"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Výukový model pro rozpoznávání formulářů pomocí popisků pomocí nástroje pro vzorkování popisků
 
@@ -143,7 +143,8 @@ V dalším kroku vytvoříte značky (popisky) a použijete je na textové prvky
     > * Hodnoty popisků tak, jak se zobrazí ve formuláři; Nepokoušejte se rozdělit hodnotu do dvou částí se dvěma různými značkami. Například pole adresa musí být označeno s jednou značkou, i když pokrývá více řádků.
     > * Nezahrnujte klíče do polí s příznakem &mdash; pouze hodnoty.
     > * Data tabulky by měla být zjištěna automaticky a budou k dispozici v konečném výstupním souboru JSON. Pokud však model nerozpozná všechna data tabulky, můžete tato pole také označit ručně. Označte každou buňku v tabulce jiným popiskem. Pokud mají vaše formuláře tabulky s různými počty řádků, ujistěte se, že jste si vystavili alespoň jednu formu s největší možnou tabulkou.
-    > * Chcete-li odstranit použitou značku, vyberte obdélník v zobrazení dokumentu a stiskněte klávesu DELETE.
+    > * Pomocí tlačítek napravo od **+** můžete vyhledat, přejmenovat, změnit pořadí a odstranit značky.
+    > * Chcete-li odebrat použitou značku bez odstranění samotné značky, vyberte tagovaný obdélník v zobrazení dokumentu a stiskněte klávesu DELETE.
 
 ![Okno hlavního editoru nástroje pro ukázkové označování](../media/label-tool/main-editor.png)
 

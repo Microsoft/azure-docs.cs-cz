@@ -3,12 +3,12 @@ title: 'Kurz: Správa dotazů v Azure Portal'
 description: V tomto kurzu vytvoříte dotaz na diagram prostředku a nasdílíte nový dotaz s ostatními uživateli v Azure Portal.
 ms.date: 05/20/2020
 ms.topic: tutorial
-ms.openlocfilehash: e63a92a4570a0713ed65e1090e4d77d25fb10f95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 80725bd03d31a4985374005fe68a62e16aaef000
+ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83637749"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84148017"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Kurz: vytvoření a sdílení dotazu na graf Azure Resource v Azure Portal
 
@@ -44,7 +44,7 @@ Soukromé dotazy jsou přístupné a viditelné pouze pro účet, který je vytv
 
    Výběrem **Spustit dotaz** zobrazíte výsledky dotazu v dolním podokně.
 
-   Další informace o tomto dotazu najdete v tématu [ukázky – počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-virtual-machines-by-os-type).
+   Další informace o tomto dotazu najdete v tématu [ukázky – počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-os).
 
 
 1. Vyberte **Uložit** nebo **Uložit jako**, jako název zadejte **počet virtuálních počítačů podle operačního systému** , ponechte typ jako **soukromý dotaz**a potom v dolní části podokna **Uložit dotaz** vyberte **Uložit** . Název karty se změní z **dotazu 1** na **počet virtuálních počítačů podle operačního systému**.
@@ -76,7 +76,7 @@ Chcete-li vytvořit nový sdílený dotaz, postupujte podle následujících kro
     
    Výběrem **Spustit dotaz** zobrazíte výsledky dotazu v dolním podokně.
 
-   Další informace o tomto dotazu najdete v tématu [ukázky – počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-virtual-machines-by-os-type).
+   Další informace o tomto dotazu najdete v tématu [ukázky – počet virtuálních počítačů podle typu operačního systému](../samples/starter.md#count-os).
 
 1. Vyberte **Uložit** nebo **Uložit jako**.
 
