@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f9e576599fe1b329807427181d5de3fa37c9adea
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: efe7a68f7102da0b39def676306ce96ad00f5ff8
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041837"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204952"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server na virtuálních počítačích Azure? (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -112,7 +112,7 @@ Pokud chcete získat přístup k **prostředkům Azure SQL** , vyberte v nabídc
 ![Hledání Azure SQL](./media/sql-server-on-azure-vm-iaas-what-is-overview/search-for-azure-sql.png)
 
 > [!NOTE]
-> **Azure SQL** nabízí rychlý a snadný způsob, jak získat přístup ke všem databázím SQL, elastickým fondům, databázovým serverům, spravovaným instancím SQL a virtuálním počítačům SQL. Azure SQL není služba nebo prostředek. 
+> **Azure SQL** nabízí rychlý a snadný způsob, jak získat přístup ke všem databázím SQL Azure, elastickým fondům, logickým serverům, spravovaným instancím a virtuálním počítačům. Azure SQL není služba nebo prostředek. 
 
 Pokud chcete spravovat existující prostředky, vyberte požadovanou položku v seznamu. Pokud chcete vytvořit nové prostředky Azure SQL, vyberte **+ Přidat**. 
 

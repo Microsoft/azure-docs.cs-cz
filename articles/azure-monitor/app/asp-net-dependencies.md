@@ -3,12 +3,12 @@ title: Sledování závislostí v Azure Application Insights | Microsoft Docs
 description: Monitorování volání závislostí z vaší místní nebo Microsoft Azure webové aplikace s využitím Application Insights.
 ms.topic: conceptual
 ms.date: 03/26/2020
-ms.openlocfilehash: 2b7a20731fa5eae8313adcf07d877626fcaa4dce
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 759e465a21b421c22a62245536827546acc2d79e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980843"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204748"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Sledování závislostí v Azure Application Insights 
 
@@ -16,7 +16,7 @@ ms.locfileid: "82980843"
 
 ## <a name="automatically-tracked-dependencies"></a>Automaticky sledované závislosti
 
-Application Insights sady SDK pro .NET a .NET Core, `DependencyTrackingTelemetryModule` se kterými je modul telemetrie, který automaticky shromažďuje závislosti. Tato kolekce závislostí je automaticky povolená pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) a [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) aplikace, pokud je nakonfigurovaná podle propojených oficiálních dokumentů. `DependencyTrackingTelemetryModule` je dodávána jako [Tento](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) balíček NuGet a při použití některého z balíčků `Microsoft.ApplicationInsights.Web` NuGet nebo `Microsoft.ApplicationInsights.AspNetCore`je automaticky načítán.
+Application Insights sady SDK pro .NET a .NET Core `DependencyTrackingTelemetryModule` , se kterými je modul telemetrie, který automaticky shromažďuje závislosti. Tato kolekce závislostí je automaticky povolená pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) a [ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) aplikace, pokud je nakonfigurovaná podle propojených oficiálních dokumentů. `DependencyTrackingTelemetryModule`je dodávána jako [Tento](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) balíček NuGet a při použití některého z balíčků NuGet nebo je automaticky načítán `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.AspNetCore` .
 
  `DependencyTrackingTelemetryModule`v současné době sleduje následující závislosti automaticky:
 
@@ -24,7 +24,7 @@ Application Insights sady SDK pro .NET a .NET Core, `DependencyTrackingTelemetry
 |---------------|-------|
 |Http/https | Místní nebo vzdálené volání http/https |
 |Volání WCF| Automaticky sledováno pouze v případě, že jsou použity vazby založené na protokolu HTTP.|
-|SQL | Volání s `SqlClient`. Podívejte se na [Tento](#advanced-sql-tracking-to-get-full-sql-query) záznam pro zachycení dotazu SQL.  |
+|SQL | Volání s `SqlClient` . Podívejte se na [Tento](#advanced-sql-tracking-to-get-full-sql-query) záznam pro zachycení dotazu SQL.  |
 |[Azure Storage (objekt blob, tabulka, fronta)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Volání prováděná klientem Azure Storage. |
 |[Klientská sada SDK pro EventHub](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | Verze 1.1.0 a vyšší. |
 |[Klientská sada SDK pro ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| Verze 3.0.0 a vyšší. |
@@ -34,7 +34,7 @@ Pokud nemůžete najít závislost nebo používáte jinou sadu SDK, ujistěte s
 
 ## <a name="setup-automatic-dependency-tracking-in-console-apps"></a>Nastavení automatického sledování závislosti v konzolových aplikacích
 
-Chcete-li automaticky sledovat závislosti z konzolových aplikací .NET, nainstalujte `Microsoft.ApplicationInsights.DependencyCollector`balíček NuGet a `DependencyTrackingTelemetryModule` proveďte inicializaci následujícím způsobem:
+Chcete-li automaticky sledovat závislosti z konzolových aplikací .NET, nainstalujte balíček NuGet `Microsoft.ApplicationInsights.DependencyCollector` a proveďte inicializaci `DependencyTrackingTelemetryModule` následujícím způsobem:
 
 ```csharp
     DependencyTrackingTelemetryModule depModule = new DependencyTrackingTelemetryModule();
@@ -60,7 +60,7 @@ Níže jsou uvedeny některé příklady závislostí, které nejsou shromažďo
 
 Pro tyto závislosti, které nejsou automaticky shromažďovány sadou SDK, je můžete sledovat ručně pomocí [rozhraní TrackDependency API](api-custom-events-metrics.md#trackdependency) , které jsou používány standardními moduly pro automatické shromažďování dat.
 
-Například Pokud sestavíte kód se sestavením, které jste nenapsali sami, mohli byste při všech voláních na něj napřed zjistit, jaký příspěvek vzmá vaše doby odezvy. Chcete-li tato data zobrazit v grafech závislostí v Application Insights, odešlete je pomocí `TrackDependency`.
+Například Pokud sestavíte kód se sestavením, které jste nenapsali sami, mohli byste při všech voláních na něj napřed zjistit, jaký příspěvek vzmá vaše doby odezvy. Chcete-li tato data zobrazit v grafech závislostí v Application Insights, odešlete je pomocí `TrackDependency` .
 
 ```csharp
 
@@ -78,7 +78,7 @@ Například Pokud sestavíte kód se sestavením, které jste nenapsali sami, mo
     }
 ```
 
-Alternativně `TelemetryClient` poskytuje metody `StartOperation` rozšíření, `StopOperation` které lze použít k ručnímu sledování závislostí, jak je znázorněno [zde](custom-operations-tracking.md#outgoing-dependencies-tracking) .
+Alternativně `TelemetryClient` poskytuje metody rozšíření `StartOperation` , `StopOperation` které lze použít k ručnímu sledování závislostí, jak je znázorněno [zde](custom-operations-tracking.md#outgoing-dependencies-tracking) .
 
 Pokud chcete přepnout na standardní modul sledování závislostí, odeberte odkaz na DependencyTrackingTelemetryModule v [souboru ApplicationInsights. config](../../azure-monitor/app/configuration-with-applicationinsights-config.md) pro aplikace ASP.NET. V případě aplikací ASP.NET Core postupujte podle [pokynů.](asp-net-core.md#configuring-or-removing-default-telemetrymodules)
 
@@ -88,9 +88,12 @@ Pro webové stránky Application Insights JavaScript SDK automaticky shromážd�
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Rozšířené sledování SQL pro získání úplného dotazu SQL
 
-V případě volání SQL se název serveru a databáze vždycky shromažďují a ukládají se jako název shromážděné `DependencyTelemetry`služby. K dispozici je další pole s názvem data, které může obsahovat úplný text dotazu SQL.
+V případě volání SQL se název serveru a databáze vždycky shromažďují a ukládají se jako název shromážděné služby `DependencyTelemetry` . K dispozici je další pole s názvem data, které může obsahovat úplný text dotazu SQL.
 
-Pro ASP.NET Core aplikace není k dispozici žádný další krok potřebný k získání úplného dotazu SQL.
+U ASP.NET Corech aplikací se teď vyžaduje, aby se ke kolekci textů SQL mohla vyjádřit pomocí
+```csharp
+services.ConfigureTelemetryModule<DependencyTrackingTelemetryModule>((module, o) => { module. EnableSqlCommandTextInstrumentation = true; });
+```
 
 V případě aplikací ASP.NET je celý dotaz SQL shromážděn pomocí instrumentace bajtového kódu, která vyžaduje modul instrumentace nebo použití balíčku NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient) namísto knihovny System. data. SqlClient. Další kroky specifické pro platformu, jak je popsáno níže, jsou povinné.
 
@@ -101,7 +104,7 @@ V případě aplikací ASP.NET je celý dotaz SQL shromážděn pomocí instrume
 | Cloudová služba Azure | Přidat [úlohu po spuštění pro instalaci StatusMonitor](../../azure-monitor/app/cloudservices.md#set-up-status-monitor-to-collect-full-sql-queries-optional) <br> Vaše aplikace by se měla připojit k ApplicationInsights SDK v době sestavení instalací balíčků NuGet pro [ASP.NET](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) nebo [aplikace ASP.NET Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) . |
 | IIS Express | Použití balíčku NuGet [Microsoft. data. SqlClient](https://www.nuget.org/packages/Microsoft.Data.SqlClient)
 
-Ve výše uvedených případech je správným způsobem, jak ověřit, že je modul instrumentace správně nainstalovaný, ověření, že je shromážděná `DependencyTelemetry` verze sady SDK "rddp". ' rdddsd ' nebo ' rddf ' označuje závislosti, které jsou shromažďovány prostřednictvím zpětného volání DiagnosticSource nebo EventSource, takže plný dotaz SQL nebude zachycen.
+Ve výše uvedených případech je správným způsobem, jak ověřit, že je modul instrumentace správně nainstalovaný, ověření, že je shromážděná verze sady SDK `DependencyTelemetry` "rddp". ' rdddsd ' nebo ' rddf ' označuje závislosti, které jsou shromažďovány prostřednictvím zpětného volání DiagnosticSource nebo EventSource, takže plný dotaz SQL nebude zachycen.
 
 ## <a name="where-to-find-dependency-data"></a>Kde najít data závislostí
 
@@ -184,7 +187,7 @@ Závislosti můžete sledovat v [dotazovacím jazyku Kusto](/azure/kusto/query/)
 
 ### <a name="how-does-automatic-dependency-collector-report-failed-calls-to-dependencies"></a>*Jak automatické shromažďování závislostí hlásí neúspěšná volání závislostí?*
 
-* Neúspěšná volání závislostí budou mít pole Success nastaveno na hodnotu false. `DependencyTrackingTelemetryModule`neoznamuje `ExceptionTelemetry`. Úplný datový model pro závislost je popsán [zde](data-model-dependency-telemetry.md).
+* Neúspěšná volání závislostí budou mít pole Success nastaveno na hodnotu false. `DependencyTrackingTelemetryModule`neoznamuje `ExceptionTelemetry` . Úplný datový model pro závislost je popsán [zde](data-model-dependency-telemetry.md).
 
 ## <a name="open-source-sdk"></a>Open-Source sada SDK
 Stejně jako každý Application Insights SDK je modul pro shromažďování závislostí také open source. Přečtěte si kód, přispívat k němu nebo nahlaste problémy v [oficiálním úložišti GitHub](https://github.com/Microsoft/ApplicationInsights-dotnet-server).

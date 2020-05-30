@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 05/21/2019
+ms.date: 05/28/2020
 ms.author: sngun
-ms.openlocfilehash: df26021a3718c17d72f0fdb25588487043918732
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 45c1f9b5425b7e826776dc0f52681c67846bfdc5
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82084103"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218175"
 ---
 # <a name="quickstart-build-a-table-api-app-with-net-sdk-and-azure-cosmos-db"></a>Rychlý Start: Vytvoření aplikace rozhraní API pro tabulky pomocí sady .NET SDK a Azure Cosmos DB 
 
@@ -66,7 +66,8 @@ Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a
    git clone https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started.git
    ```
 
-> ! POPISEK Podrobnější návod k podobnému kódu naleznete v článku ukázkový článek pro [Cosmos DB rozhraní API pro tabulky](table-storage-how-to-use-dotnet.md) .
+> [!TIP]
+> Podrobnější návod k podobnému kódu naleznete v článku ukázkový článek pro [Cosmos DB rozhraní API pro tabulky](table-storage-how-to-use-dotnet.md) .
 
 ## <a name="open-the-sample-application-in-visual-studio"></a>Otevření ukázkové aplikace v sadě Visual Studio
 
@@ -75,6 +76,26 @@ Teď naklonujeme aplikaci Table z GitHubu, nastavíme připojovací řetězec a
    ![Otevření řešení](media/create-table-dotnet/azure-cosmosdb-open-solution.png) 
 
 2. Přejděte do složky, do které jste naklonováni ukázkovou aplikaci, a otevřete soubor TableStorage. sln.
+
+## <a name="review-the-code"></a>Kontrola kódu
+
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. V opačném případě můžete přeskočit k části [aktualizace připojovacího řetězce](#update-your-connection-string) v tomto dokumentu.
+
+* Následující kód ukazuje, jak vytvořit tabulku v rámci Azure Storage:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/Common.cs" id="CreateTable":::
+
+* Následující kód ukazuje, jak vložit data do tabulky:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="InsertItem":::
+
+* Následující kód ukazuje, jak zadávat dotazy na data z tabulky:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="QueryData":::
+
+* Následující kód ukazuje, jak odstranit data z tabulky:
+
+  :::code language="csharp" source="~/azure-cosmosdb-dotnet-table/CosmosTableSamples/SamplesUtils.cs" id="DeleteItem":::
 
 ## <a name="update-your-connection-string"></a>Aktualizace připojovacího řetězce
 

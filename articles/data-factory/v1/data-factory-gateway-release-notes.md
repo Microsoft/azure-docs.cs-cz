@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 838e523f74a21c44958ddb6dc88e4dab3526d81a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 405beb5cb8c2e74951aa54ba371be04d290ad3a2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064998"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194470"
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Poznámky k verzi pro Bránu pro správu dat
 > [!NOTE]
@@ -49,8 +49,8 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 -   Do seznamu povolených adres můžete přidat položky DNS Service Bus místo toho, aby se všechny IP adresy Azure v bráně firewall (v případě potřeby) nepřidaly. Další podrobnosti najdete tady.
 -   Nyní můžete kopírovat data do nebo z jednoho objektu blob bloku až do 4,75 TB, což je maximální podporovaná velikost objektu blob bloku. (předchozí omezení bylo 195 GB).
 -   Opraveno: nedostatek paměti při rozzipováváí několika malých souborů během aktivity kopírování.
--   Opraveno: index je mimo rozsah problému při kopírování z databáze dokumentů do místní SQL Server s funkcí idempotence.
--   Opraveno: skript SQL Cleanup nefunguje s místními SQL Server z Průvodce kopírováním.
+-   Opraveno: index je mimo rozsah problému při kopírování z databáze dokumentů do SQL Server s funkcí idempotence.
+-   Opraveno: skript SQL Cleanup nefunguje s SQL Server z Průvodce kopírováním.
 -   Opraveno: název sloupce s mezerou na konci nefunguje v aktivitě kopírování.
 
 ## <a name="28662833"></a>2.8.66283.3
@@ -111,7 +111,7 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 *  Ovladač DB2 teď podporuje z/OS a DB2 pro i (jako/400) i s již podporovanými platformami (Linux, UNIX a Windows).
 *  Podporuje použití Azure Cosmos DB jako zdroje nebo cíle místních úložišť dat.
 *  Podporuje kopírování dat z/do studeného a horkého úložiště objektů BLOB spolu s již podporovaným účtem úložiště pro obecné účely.
-*  Umožňuje připojení k místním SQL Server prostřednictvím brány s přihlašovacími oprávněními vzdáleného přihlášení.  
+*  Umožňuje připojení k SQL Server prostřednictvím brány s oprávněními vzdáleného přihlášení.  
 
 ## <a name="2060131"></a>2.0.6013.1
 
@@ -126,9 +126,9 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
     *  Přeorganizováné a zjednodušené ovládací prvky.
 
     *  Data z úložiště můžete kopírovat pomocí [Nástroje pro kopírování bez kódu](data-factory-copy-data-wizard-tutorial.md). Podrobné informace o této funkci najdete obecně v části [připravené kopírování](data-factory-copy-activity-performance.md#staged-copy) .
-*  Bránu Správa dat můžete použít pro příchozí data přímo z místní databáze SQL Server do Azure Machine Learning.
+*  Bránu Správa dat můžete použít k příchozímu přenosu dat přímo z databáze SQL Server do Azure Machine Learning.
 
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 
     * Zvyšte výkon zobrazení schématu nebo verze Preview proti SQL Server v nástroji pro kopírování bez kódu.
 
@@ -144,7 +144,7 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 
 *  V případě, že se automatické aktualizace nezdařily, instalační program brány se automaticky aktualizuje třikrát.
 
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 
     * Zvyšte výkon pro načítání velkých tabulek z místního serveru ve scénáři kopírování bez kódu.
 
@@ -152,7 +152,7 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 
 ## <a name="11058921"></a>1.10.5892.1
 
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 
 *  Opravy chyb
 
@@ -164,34 +164,34 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 *  Možnost nastavit čas plánu aktualizace
 *  PowerShellový skript pro automatické aktualizace automatických aktualizací
 *  Podpora formátu JSON  
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 *  Opravy chyb
 
 ## <a name="1858221"></a>1.8.5822.1
 
 *  Zlepšení prostředí pro odstraňování potíží
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 *  Opravy chyb
 
 ### <a name="1757951"></a>1.7.5795.1
 
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 *  Opravy chyb
 
 ### <a name="1757641"></a>1.7.5764.1
 
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 *  Opravy chyb
 
 ### <a name="1657351"></a>1.6.5735.1
 
 *  Podpora místního zdroje/jímky HDFS
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 *  Opravy chyb
 
 ### <a name="1656961"></a>1.6.5696.1
 
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 *  Opravy chyb
 
 ### <a name="1656761"></a>1.6.5676.1
@@ -208,7 +208,7 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 ### <a name="1656721"></a>1.6.5672.1
 
 *  Podpora názvu tabulky pro zdroj dat ODBC pro Azure Data Factory
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 *  Opravy chyb
 
 ### <a name="1656581"></a>1.6.5658.1
@@ -229,13 +229,13 @@ Poznámky k verzi tady neuchováváme. [Sem](https://go.microsoft.com/fwlink/?li
 
 *  Podpora pěti relačních databází pro Azure Data Factory (MySQL, PostgreSQL, DB2, Teradata a Sybase)
 *  Podpora komprese (gzip a Deflate)
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 *  Opravy chyb
 
 ### <a name="1455491"></a>1.4.5549.1
 
 *  Přidání podpory zdroje dat Oracle pro Azure Data Factory
-*  Zlepšení výkonu
+*  Vylepšení výkonu
 *  Opravy chyb
 
 ### <a name="1454921"></a>1.4.5492.1

@@ -13,17 +13,17 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: d59c022d72269e0e353f52727d36e18f1c321598
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 49b669627507af0e3e7386f31e344082cc4686df
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051133"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219308"
 ---
-# <a name="bulk-register-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Hromadná registrace virtuálních počítačů SQL v Azure u poskytovatele prostředků virtuálního počítače SQL
+# <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Registrace několika virtuálních počítačů SQL v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)][!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Tento článek popisuje, jak hromadně zaregistrovat SQL Server virtuální počítač v Azure pomocí poskytovatele prostředků virtuálního počítače SQL pomocí `Register-SqlVMs` rutiny PowerShellu.
+Tento článek popisuje, jak pomocí rutiny PowerShellu hromadně zaregistrovat vaše SQL Server virtuální počítače v Azure pomocí poskytovatele prostředků virtuálního počítače SQL `Register-SqlVMs` .
 
 `Register-SqlVMs`Rutinu je možné použít k registraci všech virtuálních počítačů v daném seznamu předplatných, skupin prostředků nebo seznamu konkrétních virtuálních počítačů. Rutina zaregistruje virtuální počítače v režimu _prosté_ správy a pak vygeneruje [sestavu i soubor protokolu](#output-description). 
 
@@ -40,15 +40,15 @@ Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem pr
 - Nejnovější verzi [AZ PowerShellu](/powershell/azure/new-azureps-module-az) 
 - Nejnovější verzi [AZ. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0).
 
-## <a name="getting-started"></a>Začínáme
+## <a name="get-started"></a>Začínáme
 
 Než budete pokračovat, musíte nejdřív vytvořit místní kopii skriptu, importovat ji jako modul prostředí PowerShell a připojit se k Azure. 
 
-### <a name="create-script"></a>Vytvořit skript
+### <a name="create-the-script"></a>Vytvoření skriptu
 
 Chcete-li vytvořit skript, zkopírujte [celý skript](#full-script) na konci tohoto článku a uložte jej místně jako `RegisterSqlVMs.psm1` . 
 
-### <a name="import-script"></a>Importovat skript
+### <a name="import-the-script"></a>Import skriptu
 
 Po vytvoření skriptu ho můžete importovat jako modul v terminálu PowerShellu. 
 
@@ -67,7 +67,7 @@ Connect-AzAccount
 ```
 
 
-## <a name="all-vms-in-list-of-subscriptions"></a>Všechny virtuální počítače v seznamu předplatných 
+## <a name="register-all-vms-in-a-list-of-subscriptions"></a>Registrace všech virtuálních počítačů v seznamu předplatných 
 
 K registraci všech SQL Serverch virtuálních počítačů v seznamu předplatných použijte následující rutinu:
 
@@ -91,7 +91,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-single-subscription"></a>Všechny virtuální počítače v jednom předplatném
+## <a name="register-all-vms-in-a-single-subscription"></a>Registrace všech virtuálních počítačů v jednom předplatném
 
 K registraci všech SQL Server virtuálních počítačů v rámci jednoho předplatného použijte následující rutinu: 
 
@@ -113,7 +113,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-multiple-resource-groups"></a>Všechny virtuální počítače ve více skupinách prostředků
+## <a name="register-all-vms-in-multiple-resource-groups"></a>Registrace všech virtuálních počítačů ve více skupinách prostředků
 
 K registraci všech SQL Server virtuálních počítačů ve více skupinách prostředků v rámci jednoho předplatného použijte následující rutinu:
 
@@ -134,7 +134,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="all-vms-in-a-resource-group"></a>Všechny virtuální počítače ve skupině prostředků
+## <a name="resister-all-vms-in-a-resource-group"></a>Předělit všechny virtuální počítače ve skupině prostředků
 
 K registraci všech SQL Server virtuálních počítačů do jedné skupiny prostředků použijte následující rutinu: 
 
@@ -155,7 +155,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="specific-vms-in-single-resource-group"></a>Konkrétní virtuální počítače v jedné skupině prostředků
+## <a name="register-specific-vms-in-single-resource-group"></a>Registrovat konkrétní virtuální počítače v jedné skupině prostředků
 
 K registraci konkrétních SQL Server virtuálních počítačů v rámci jedné skupiny prostředků použijte následující rutinu:
 
@@ -176,7 +176,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="specific-vm"></a>Konkrétní virtuální počítač
+## <a name="register-a-specific-vm"></a>Registrace konkrétního virtuálního počítače
 
 K registraci konkrétního SQL Server virtuálního počítače použijte následující rutinu: 
 
@@ -197,7 +197,7 @@ Please find the detailed report in  file RegisterSqlVMScriptReport1571314821.txt
 
 ## <a name="output-description"></a>Popis výstupu
 
-Při každém použití rutiny je vygenerována sestava i soubor protokolu `Register-SqlVMs` . 
+Sestava i soubor protokolu jsou generovány při každém `Register-SqlVMs` použití rutiny. 
 
 ### <a name="report"></a>Sestava
 
@@ -217,11 +217,11 @@ Sestava je vygenerována jako `.txt` soubor s názvem `RegisterSqlVMScriptReport
 
 ### <a name="log"></a>Protokol 
 
-Chyby se zaznamenávají do souboru protokolu s názvem `VMsNotRegisteredDueToError<Timestamp>.log` , kde časové razítko je čas spuštění skriptu. Pokud je chyba na úrovni předplatného, protokol obsahuje seznam SubscriptionID oddělený čárkami a chybovou zprávu. Pokud se jedná o chybu s registrací virtuálního počítače, protokol obsahuje ID předplatného, název skupiny prostředků, název virtuálního počítače, kód chyby a zprávu oddělený čárkami. 
+Chyby se zaznamenávají do souboru protokolu s názvem `VMsNotRegisteredDueToError<Timestamp>.log` , kde časové razítko je čas spuštění skriptu. Pokud je chyba na úrovni předplatného, protokol obsahuje ID předplatného oddělené čárkami a chybovou zprávu. Pokud se jedná o registraci virtuálního počítače, protokol obsahuje ID předplatného, název skupiny prostředků, název virtuálního počítače, kód chyby a zprávu oddělený čárkami. 
 
 ## <a name="remarks"></a>Poznámky
 
-Při registraci SQL Server virtuálních počítačů pomocí poskytovatele prostředků pomocí poskytnutého skriptu Vezměte v úvahu následující skutečnosti:
+Když zaregistrujete SQL Server virtuálních počítačů pomocí poskytovatele prostředků pomocí poskytnutého skriptu, vezměte v úvahu následující skutečnosti:
 
 - Registrace u poskytovatele prostředků vyžaduje, aby na virtuálním počítači s SQL Server spuštěný Agent hosta. Image Windows serveru 2008 nemají agenta hosta, takže tyto virtuální počítače selžou a musí být zaregistrované ručně pomocí [režimu správy Neagentů](sql-vm-resource-provider-register.md#management-modes).
 - K překonání transparentních chyb je integrovaná logika opakování. Pokud je virtuální počítač úspěšně zaregistrován, jedná se o rychlou operaci. Pokud se ale registrace nezdaří, bude se každý virtuální počítač opakovat.  V takovém případě byste měli pro dokončení procesu registrace poskytnout značnou dobu – i když je požadavek na skutečný čas závislý na typu a počtu chyb. 

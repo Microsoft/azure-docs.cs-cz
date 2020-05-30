@@ -9,17 +9,17 @@ ms.topic: overview
 ms.custom: sqldbrb=1
 ms.reviewer: vanto
 ms.date: 03/09/2020
-ms.openlocfilehash: 302a755dc32ad36e214ba4982a03da126f6aed04
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e1093e57757d780bf5393b6cb1bb45a706b18b11
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054663"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219884"
 ---
 # <a name="private-link-for-azure-sql-database-and-azure-synapse-analytics"></a>Privátní odkaz pro Azure SQL Database a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím **privátního koncového bodu**. Seznam služeb PaaS, které podporují funkce privátního propojení, najdete na stránce [dokumentace k privátním odkazům](../index.yml) . Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](../../virtual-network/virtual-networks-overview.md) síti a podsíti.
+Privátní odkaz vám umožní připojit se k různým službám PaaS v Azure prostřednictvím **privátního koncového bodu**. Seznam služeb PaaS, které podporují funkce privátního propojení, najdete na stránce [dokumentace k privátním odkazům](../../private-link/index.yml) . Privátní koncový bod je privátní IP adresa v konkrétní [virtuální](../../virtual-network/virtual-networks-overview.md) síti a podsíti.
 
 > [!IMPORTANT]
 > Tento článek se týká Azure SQL Database a analýzy Azure synapse (dřív SQL Data Warehouse). Pro zjednodušení pojem "Database" odkazuje jak na databáze Azure SQL Database, tak na Azure synapse Analytics. Podobně všechny odkazy na server se odkazují na [logický SQL Server](logical-servers.md) , který je hostitelem Azure SQL Database a Azure synapse Analytics. Tento článek se *nevztahuje na* **spravovanou instanci SQL Azure**.

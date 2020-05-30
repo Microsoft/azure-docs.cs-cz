@@ -4,15 +4,15 @@ description: V tomto článku se dozvíte, jak povolit a vytvářet velké sdíl
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: add2805d9a360d3d9cd45ab54f476a6852fb7bd5
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 16a183776bebad2fd365c3182ae64ea54befe41d
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858580"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219095"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Povolit a vytvořit velké sdílené složky souborů
 
@@ -20,7 +20,7 @@ Když v účtu úložiště povolíte velké sdílené složky, sdílené složk
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+- Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 - Pokud máte v úmyslu používat rozhraní příkazového řádku Azure, [nainstalujte nejnovější verzi](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 - Pokud máte v úmyslu použít Azure PowerShell, [nainstalujte nejnovější verzi](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
 
@@ -32,7 +32,7 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
 
 ## <a name="create-a-new-storage-account"></a>Vytvoření nového účtu úložiště
 
-### <a name="portal"></a>Portál
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V Azure Portal vyberte **všechny služby**. 
@@ -62,33 +62,34 @@ Povolení velkých sdílených složek na účtu je nevratný proces. Když ho p
 
 1. Vyberte **Vytvořit**.
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
 Nejdřív [nainstalujte nejnovější verzi rozhraní příkazového řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) , abyste mohli povolit velké sdílené složky.
 
-Pokud chcete vytvořit účet úložiště s povolenými velkými sdílenými soubory, použijte následující příkaz. `<yourStorageAccountName>`Nahraďte `<yourResourceGroup>`, a `<yourDesiredRegion>` informacemi.
+Pokud chcete vytvořit účet úložiště s povolenými velkými sdílenými soubory, použijte následující příkaz. Nahraďte `<yourStorageAccountName>` , `<yourResourceGroup>` a `<yourDesiredRegion>` informacemi.
 
 ```azurecli-interactive
 ## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 az storage account create --name <yourStorageAccountName> -g <yourResourceGroup> -l <yourDesiredRegion> --sku Standard_LRS --kind StorageV2 --enable-large-file-share
 ```
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 Nejdřív [nainstalujte nejnovější verzi PowerShellu](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0) , abyste mohli povolit velké sdílené složky.
 
-Pokud chcete vytvořit účet úložiště s povolenými velkými sdílenými soubory, použijte následující příkaz. `<yourStorageAccountName>`Nahraďte `<yourResourceGroup>`, a `<yourDesiredRegion>` informacemi.
+Pokud chcete vytvořit účet úložiště s povolenými velkými sdílenými soubory, použijte následující příkaz. Nahraďte `<yourStorageAccountName>` , `<yourResourceGroup>` a `<yourDesiredRegion>` informacemi.
 
 ```powershell
 ## This command creates a large file share–enabled account. It will not support GZRS, GRS, RA-GRS, or RA-GZRS.
 New-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -Location <yourDesiredRegion> -SkuName Standard_LRS -EnableLargeFileShare;
 ```
+---
 
 ## <a name="enable-large-files-shares-on-an-existing-account"></a>Povolení sdílení velkých souborů v existujícím účtu
 
 U stávajících účtů můžete také povolit velké sdílené složky. Pokud povolíte velké sdílené složky, nebudete se moct převést na GZRS, GRS, RA-GRS ani RA-GZRS. Povolení velkých sdílených složek je na tomto účtu úložiště nevratné.
 
-### <a name="portal"></a>Portál
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Otevřete [Azure Portal](https://portal.azure.com)a přejít na účet úložiště, ve kterém chcete povolit velké sdílené složky souborů.
 1. Otevřete účet úložiště a vyberte **Konfigurace**.
@@ -97,31 +98,35 @@ U stávajících účtů můžete také povolit velké sdílené složky. Pokud 
 
 ![Výběr přepínače Enabled na existujícím účtu úložiště v Azure Portal](media/storage-files-how-to-create-large-file-share/enable-large-file-shares-on-existing.png)
 
-V účtu úložiště jste teď povolili velké sdílené složky. V dalším kroku musíte aktualizovat kvótu existující sdílené složky, abyste mohli využít větší kapacitu a škálování.
+V účtu úložiště jste teď povolili velké sdílené složky. V dalším kroku musíte [aktualizovat kvótu existující sdílené složky](#expand-existing-file-shares) , abyste mohli využít větší kapacitu a škálování.
 
-Pokud se zobrazí chybová zpráva "pro účet ještě nejsou k dispozici žádné sdílené složky," může být vaše oblast uprostřed dokončení zavedení. Pokud máte naléhavou potřebu pro velké sdílené složky, obraťte se na podporu.
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-### <a name="cli"></a>Rozhraní příkazového řádku
-
-Pokud chcete v existujícím účtu povolit velké sdílené složky, použijte následující příkaz. `<yourStorageAccountName>` Nahraďte `<yourResourceGroup>` a s vašimi informacemi.
+Pokud chcete v existujícím účtu povolit velké sdílené složky, použijte následující příkaz. Nahraďte `<yourStorageAccountName>` a `<yourResourceGroup>` s vašimi informacemi.
 
 ```azurecli-interactive
 az storage account update --name <yourStorageAccountName> -g <yourResourceGroup> --enable-large-file-share
 ```
 
-### <a name="powershell"></a>PowerShell
+V účtu úložiště jste teď povolili velké sdílené složky. V dalším kroku musíte [aktualizovat kvótu existující sdílené složky](#expand-existing-file-shares) , abyste mohli využít větší kapacitu a škálování.
 
-Pokud chcete v existujícím účtu povolit velké sdílené složky, použijte následující příkaz. `<yourStorageAccountName>` Nahraďte `<yourResourceGroup>` a s vašimi informacemi.
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+
+Pokud chcete v existujícím účtu povolit velké sdílené složky, použijte následující příkaz. Nahraďte `<yourStorageAccountName>` a `<yourResourceGroup>` s vašimi informacemi.
 
 ```powershell
 Set-AzStorageAccount -ResourceGroupName <yourResourceGroup> -Name <yourStorageAccountName> -EnableLargeFileShare
 ```
 
+V účtu úložiště jste teď povolili velké sdílené složky. V dalším kroku musíte [aktualizovat kvótu existující sdílené složky](#expand-existing-file-shares) , abyste mohli využít větší kapacitu a škálování.
+
+---
+
 ## <a name="create-a-large-file-share"></a>Vytvoření velké sdílené složky
 
 Po povolení velkých sdílených složek v účtu úložiště můžete v tomto účtu vytvořit sdílené složky s vyššími kvótami. 
 
-### <a name="portal"></a>Portál
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Vytváření velkých sdílených složek je skoro stejné jako vytvoření standardní sdílené složky. Hlavním rozdílem je, že můžete nastavit kvótu až 100 TiB.
 
@@ -131,17 +136,17 @@ Vytváření velkých sdílených složek je skoro stejné jako vytvoření stan
 
 ![Azure Portal uživatelské rozhraní zobrazující pole název a kvóta](media/storage-files-how-to-create-large-file-share/large-file-shares-create-share.png)
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Chcete-li vytvořit rozsáhlou sdílenou složku, použijte následující příkaz. `<yourStorageAccountName>`Nahraďte `<yourStorageAccountKey>`, a `<yourFileShareName>` informacemi.
+Chcete-li vytvořit rozsáhlou sdílenou složku, použijte následující příkaz. Nahraďte `<yourStorageAccountName>` , `<yourStorageAccountKey>` a `<yourFileShareName>` informacemi.
 
 ```azurecli-interactive
 az storage share create --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName>
 ```
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Chcete-li vytvořit rozsáhlou sdílenou složku, použijte následující příkaz. `<YourStorageAccountName>`Nahraďte `<YourStorageAccountKey>`, a `<YourStorageAccountFileShareName>` informacemi.
+Chcete-li vytvořit rozsáhlou sdílenou složku, použijte následující příkaz. Nahraďte `<YourStorageAccountName>` , `<YourStorageAccountKey>` a `<YourStorageAccountFileShareName>` informacemi.
 
 ```powershell
 ##Config
@@ -151,12 +156,13 @@ $shareName="<YourStorageAccountFileShareName>"
 $ctx = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey
 New-AzStorageShare -Name $shareName -Context $ctx
 ```
+---
 
 ## <a name="expand-existing-file-shares"></a>Rozbalit existující sdílené složky
 
 Až v účtu úložiště povolíte velké sdílené složky, můžete také rozšířit existující sdílené složky v tomto účtu na vyšší kvótu. 
 
-### <a name="portal"></a>Portál
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 1. Z účtu úložiště vyberte **sdílené složky**.
 1. Klikněte pravým tlačítkem na sdílenou složku a vyberte možnost **kvóta**.
@@ -164,17 +170,17 @@ Až v účtu úložiště povolíte velké sdílené složky, můžete také roz
 
 ![ROZHRANÍ Azure Portal s kvótou stávajících sdílených složek](media/storage-files-how-to-create-large-file-share/update-large-file-share-quota.png)
 
-### <a name="cli"></a>Rozhraní příkazového řádku
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete nastavit kvótu na maximální velikost, použijte následující příkaz. `<yourStorageAccountName>`Nahraďte `<yourStorageAccountKey>`, a `<yourFileShareName>` informacemi.
+Pokud chcete nastavit kvótu na maximální velikost, použijte následující příkaz. Nahraďte `<yourStorageAccountName>` , `<yourStorageAccountKey>` a `<yourFileShareName>` informacemi.
 
 ```azurecli-interactive
 az storage share update --account-name <yourStorageAccountName> --account-key <yourStorageAccountKey> --name <yourFileShareName> --quota 102400
 ```
 
-### <a name="powershell"></a>PowerShell
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Pokud chcete nastavit kvótu na maximální velikost, použijte následující příkaz. `<YourStorageAccountName>`Nahraďte `<YourStorageAccountKey>`, a `<YourStorageAccountFileShareName>` informacemi.
+Pokud chcete nastavit kvótu na maximální velikost, použijte následující příkaz. Nahraďte `<YourStorageAccountName>` , `<YourStorageAccountKey>` a `<YourStorageAccountFileShareName>` informacemi.
 
 ```powershell
 ##Config
@@ -185,6 +191,7 @@ $ctx = New-AzStorageContext -StorageAccountName $storageAccountName -StorageAcco
 # update quota
 Set-AzStorageShareQuota -ShareName $shareName -Context $ctx -Quota 102400
 ```
+---
 
 ## <a name="next-steps"></a>Další kroky
 

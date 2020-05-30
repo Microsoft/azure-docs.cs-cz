@@ -1,5 +1,5 @@
 ---
-title: Konfigurace skupiny dostupnosti (Azure CLI)
+title: Konfigurace skupiny dostupnosti pomocí Azure CLI
 description: Pomocí Azure CLI můžete vytvořit cluster s podporou převzetí služeb při selhání Windows, naslouchací proces skupiny dostupnosti a interní nástroj pro vyrovnávání zatížení na virtuálním počítači s SQL Server v Azure.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,14 +14,14 @@ ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1a48095343fd24071a20d789704b8146be79d02c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 23667e8a50d2ef3a7a31aeb165c0b5d43bcf3eca
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041977"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219625"
 ---
-# <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-an-azure-vm"></a>Použití rozhraní příkazového řádku Azure ke konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure
+# <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-azure-vm"></a>Použití rozhraní příkazového řádku Azure ke konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Tento článek popisuje, jak pomocí rozhraní příkazového [řádku Azure](/cli/azure/sql/vm?view=azure-cli-latest/) nasadit cluster s podporou převzetí služeb při selhání systému Windows, přidat SQL Server virtuálních počítačů do clusteru a vytvořit interní nástroj pro vyrovnávání zatížení a naslouchací proces pro skupinu dostupnosti Always On. Nasazení skupiny dostupnosti Always On se pořád provádí ručně prostřednictvím SQL Server Management Studio (SSMS). 
@@ -38,7 +38,7 @@ K automatizaci nastavení skupiny dostupnosti Always On pomocí Azure CLI musít
 Ke konfiguraci skupiny dostupnosti Always On pomocí Azure CLI potřebujete následující oprávnění: 
 
 - Existující účet uživatele domény, který má v doméně oprávnění **vytvořit objekt počítače** . Například účet správce domény má obvykle dostatečná oprávnění (například: account@domain.com ). _Tento účet by měl být taky součástí místní skupiny správců na každém virtuálním počítači, aby se vytvořil cluster._
-- Účet uživatele domény, který řídí službu SQL Server. 
+- Uživatelský účet domény, který řídí SQL Server. 
  
 ## <a name="step-1-create-a-storage-account-as-a-cloud-witness"></a>Krok 1: vytvoření účtu úložiště jako určujícího cloudu
 Cluster potřebuje účet úložiště, který bude fungovat jako disk s kopií cloudu. Můžete použít libovolný existující účet úložiště, nebo můžete vytvořit nový účet úložiště. Pokud chcete použít existující účet úložiště, přeskočte dopředu k další části. 

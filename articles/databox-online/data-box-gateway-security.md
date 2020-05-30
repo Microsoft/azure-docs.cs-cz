@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 2476cf360909374f711564fb5fad5c9e0706083d
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 2711160534270f38845ab7b48234f4a441c236b4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562470"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195871"
 ---
 # <a name="azure-data-box-gateway-security-and-data-protection"></a>Azure Data Box Gateway zabezpečení a ochrana dat
 
@@ -27,7 +27,6 @@ Data Box Gateway řešení se skládá ze čtyř hlavních součástí, které v
 - **Data box Gateway zařízení**. Virtuální zařízení, které jste zřídili v hypervisoru systému, který zadáte. Toto virtuální zařízení slouží k importu místních dat do Azure.
 - **Klienti/hostitelé připojení k zařízení**. Klienti v infrastruktuře, kteří se připojují k Data Box Gateway zařízení a obsahují data, která je třeba chránit.
 - **Cloudové úložiště**. Umístění na cloudové platformě Azure, kde jsou uložená data. Toto umístění obvykle je účet úložiště propojený s vámi vytvořeným prostředkem Data Box Gateway.
-
 
 ## <a name="data-box-gateway-service-protection"></a>Ochrana Data Box Gateway služby
 
@@ -56,14 +55,13 @@ Další informace najdete v tématu [získání aktivačního klíče](data-box-
 
 Hesla zajišťují, že k datům budou mít přístup jenom autorizovaní uživatelé. Zařízení Data Box Gateway se spouští v uzamčeném stavu.
 
-Můžete:
+Další možnosti:
 
 - Připojte se k místnímu webovému uživatelskému rozhraní zařízení přes prohlížeč a pak zadejte heslo pro přihlášení k zařízení.
 - Vzdáleně se připojte k rozhraní PowerShell zařízení přes HTTP. Vzdálená správa je ve výchozím nastavení zapnutá. Pak můžete zadat heslo zařízení pro přihlášení k zařízení. Další informace najdete v tématu [vzdálené připojení k vašemu data box Gateway zařízení](data-box-gateway-connect-powershell-interface.md#connect-to-the-powershell-interface).
 
 [!INCLUDE [data-box-edge-gateway-password-best-practices](../../includes/data-box-edge-gateway-password-best-practices.md)]
 - [Změňte heslo](data-box-gateway-manage-access-power-connectivity-mode.md#manage-device-access)pomocí místního webového uživatelského rozhraní. Pokud změníte heslo, nezapomeňte se informovat o všech uživatelích vzdáleného přístupu tak, aby k nim nevznikly problémy s přihlášením.
-
 
 ## <a name="protect-your-data"></a>Ochrana dat
 
@@ -77,10 +75,18 @@ Tato část popisuje funkce zabezpečení Data Box Gateway, které chrání při
 
 [!INCLUDE [data-box-edge-gateway-data-flight](../../includes/data-box-edge-gateway-data-flight.md)]
 
-### <a name="protect-data-via-storage-accounts"></a>Ochrana dat prostřednictvím účtů úložiště
+### <a name="protect-data-using-storage-accounts"></a>Ochrana dat pomocí účtů úložiště
 
 [!INCLUDE [data-box-edge-gateway-data-storage-accounts](../../includes/data-box-edge-gateway-protect-data-storage-accounts.md)]
+
 - Pravidelně otáčejte a [synchronizujte klíče účtu úložiště](data-box-gateway-manage-shares.md#sync-storage-keys) , abyste chránili svůj účet úložiště před neoprávněnými uživateli.
+
+### <a name="protect-the-device-data-using-bitlocker"></a>Ochrana dat zařízení pomocí nástroje BitLocker
+
+Pro zabezpečení virtuálních disků na vašem Data Box Gatewayovém virtuálním počítači doporučujeme povolit nástroj BitLocker. Ve výchozím nastavení není BitLocker povolený. Další informace naleznete v tématu:
+
+- [Nastavení podpory šifrování ve Správci technologie Hyper-V](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+- [Podpora BitLockeru ve virtuálním počítači](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="manage-personal-information"></a>Správa osobních údajů
 

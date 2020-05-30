@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: b46c9f8b0cad74f3a4e9be8903270a60993c01f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 42443cac199c4ba9a5df25e13393bb2103cb340e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80585887"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205071"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Jak nainstalovat Application Gateway AGIC (příchozí adaptér) pomocí nového Application Gateway
 
@@ -38,7 +38,7 @@ Vaše [Azure Cloud Shell](https://shell.azure.com/) už má všechny potřebné 
 
 ## <a name="create-an-identity"></a>Vytvoření identity
 
-Pomocí následujících kroků vytvořte [objekt instančního objektu služby](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)Azure Active Directory (AAD). Poznamenejte si `appId`hodnoty `password`, a `objectId` , které budou použity v následujících krocích.
+Pomocí následujících kroků vytvořte [objekt instančního objektu služby](https://docs.microsoft.com/azure/active-directory/develop/app-objects-and-service-principals#service-principal-object)Azure Active Directory (AAD). Poznamenejte si `appId` hodnoty, a, které `password` `objectId` budou použity v následujících krocích.
 
 1. Vytvořit instanční objekt služby AD ([Další informace o RBAC](https://docs.microsoft.com/azure/role-based-access-control/overview)):
     ```azurecli
@@ -46,14 +46,14 @@ Pomocí následujících kroků vytvořte [objekt instančního objektu služby]
     appId=$(jq -r ".appId" auth.json)
     password=$(jq -r ".password" auth.json)
     ```
-    Hodnoty `appId` a `password` z výstupu JSON se použijí v následujících krocích.
+    `appId`Hodnoty a `password` z výstupu JSON se použijí v následujících krocích.
 
 
-1. Použijte výstup `appId` z předchozího příkazu k získání `objectId` nového instančního objektu:
+1. Použijte `appId` výstup z předchozího příkazu k získání `objectId` nového instančního objektu:
     ```azurecli
     objectId=$(az ad sp show --id $appId --query "objectId" -o tsv)
     ```
-    Výstup tohoto příkazu je `objectId`, který se použije v Azure Resource Manager šabloně níže.
+    Výstup tohoto příkazu je `objectId` , který se použije v Azure Resource Manager šabloně níže.
 
 1. Vytvořte soubor parametrů, který bude použit v nasazení šablony Azure Resource Manager později.
     ```bash
@@ -66,7 +66,7 @@ Pomocí následujících kroků vytvořte [objekt instančního objektu služby]
     }
     EOF
     ```
-    Chcete-li nasadit cluster s podporou **RBAC** , `aksEnabledRBAC` nastavte pole na`true`
+    Chcete-li nasadit cluster s podporou **RBAC** , nastavte `aksEnableRBAC` pole na`true`
 
 ## <a name="deploy-components"></a>Nasadit součásti
 Tento krok přidá do svého předplatného tyto komponenty:
@@ -82,7 +82,7 @@ Tento krok přidá do svého předplatného tyto komponenty:
     wget https://raw.githubusercontent.com/Azure/application-gateway-kubernetes-ingress/master/deploy/azuredeploy.json -O template.json
     ```
 
-1. Nasaďte šablonu Azure Resource Manager pomocí `az cli`. To může trvat až 5 minut.
+1. Nasaďte šablonu Azure Resource Manager pomocí `az cli` . To může trvat až 5 minut.
     ```azurecli
     resourceGroupName="MyResourceGroup"
     location="westus2"
@@ -99,7 +99,7 @@ Tento krok přidá do svého předplatného tyto komponenty:
             --parameters parameters.json
     ```
 
-1. Po dokončení nasazení stáhněte výstup nasazení do souboru s názvem `deployment-outputs.json`.
+1. Po dokončení nasazení stáhněte výstup nasazení do souboru s názvem `deployment-outputs.json` .
     ```azurecli
     az group deployment show -g $resourceGroupName -n $deploymentName --query "properties.outputs" -o json > deployment-outputs.json
     ```
@@ -109,7 +109,7 @@ Tento krok přidá do svého předplatného tyto komponenty:
 Podle pokynů v předchozí části jsme vytvořili a nakonfigurovali nový cluster AKS a Application Gateway. Nyní jsme připraveni nasadit ukázkovou aplikaci a vstupní kontroler do naší nové infrastruktury Kubernetes.
 
 ### <a name="setup-kubernetes-credentials"></a>Nastavení přihlašovacích údajů Kubernetes
-Pro následující kroky potřebujeme příkaz Setup [kubectl](https://kubectl.docs.kubernetes.io/) , který použijeme pro připojení k naší novému clusteru Kubernetes. [Cloud Shell](https://shell.azure.com/) už `kubectl` je nainstalovaný. K získání přihlašovacích údajů pro Kubernetes budeme používat `az` rozhraní příkazového řádku.
+Pro následující kroky potřebujeme příkaz Setup [kubectl](https://kubectl.docs.kubernetes.io/) , který použijeme pro připojení k naší novému clusteru Kubernetes. [Cloud Shell](https://shell.azure.com/) `kubectl` už je nainstalovaný. `az`K získání přihlašovacích údajů pro Kubernetes budeme používat rozhraní příkazového řádku.
 
 Získání přihlašovacích údajů pro nově nasazené AKS ([Další informace](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough#connect-to-the-cluster)):
 ```azurecli
@@ -124,7 +124,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
   Azure Active Directory pod identitou poskytuje přístup založený na tokenech k [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview).
 
   [Identita AAD pod](https://github.com/Azure/aad-pod-identity) přidá do clusteru Kubernetes následující součásti:
-   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity`, `AzureAssignedIdentity`,`AzureIdentityBinding`
+   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` ,`AzureIdentityBinding`
    * Komponenta [spravovaného řadiče identity (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic)
    * Komponenta [spravované identity (NMI) uzlů](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi)
 
@@ -237,7 +237,7 @@ Instalace identity AAD pod do clusteru:
         apiServerAddress: <aks-api-server-address>
     ```
 
-1. Upravte nově stažený soubor Helm-config. yaml a vyplňte oddíly `appgw` a. `armAuth`
+1. Upravte nově stažený soubor Helm-config. yaml a vyplňte oddíly `appgw` a `armAuth` .
     ```bash
     sed -i "s|<subscriptionId>|${subscriptionId}|g" helm-config.yaml
     sed -i "s|<resourceGroupName>|${resourceGroupName}|g" helm-config.yaml
@@ -254,16 +254,16 @@ Instalace identity AAD pod do clusteru:
      - `appgw.subscriptionId`: ID předplatného Azure, ve kterém se Application Gateway nachází. Příklad: `a123b234-a3b4-557d-b2df-a0bc12de1234`
      - `appgw.resourceGroup`: Název skupiny prostředků Azure, ve které se vytvořil Application Gateway. Příklad: `app-gw-resource-group`
      - `appgw.name`: Název Application Gateway. Příklad: `applicationgatewayd0f0`
-     - `appgw.shared`: Tento logický příznak by měl být nastaven na `false`výchozí hodnotu. Nastavte na `true` , pokud potřebujete [sdílený Application Gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway).
+     - `appgw.shared`: Tento logický příznak by měl být nastaven na výchozí hodnotu `false` . Nastavte na, `true` Pokud potřebujete [sdílený Application Gateway](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway).
      - `kubernetes.watchNamespace`: Zadejte obor názvů, který má AGIC sledovat. Může se jednat o jednu řetězcovou hodnotu nebo seznam oborů názvů oddělených čárkami.
     - `armAuth.type`: může být `aadPodIdentity` nebo`servicePrincipal`
     - `armAuth.identityResourceID`: ID prostředku spravované identity Azure
     - `armAuth.identityClientId`: ID klienta identity. Další informace o identitě najdete níže.
-    - `armAuth.secretJSON`: Je potřeba jenom v případě, že je zvolený tajný `armAuth.type` typ objektu služby ( `servicePrincipal`Pokud byl nastavený na). 
+    - `armAuth.secretJSON`: Je potřeba jenom v případě, že je zvolený tajný typ objektu služby (Pokud `armAuth.type` byl nastavený na `servicePrincipal` ). 
 
 
    > [!NOTE]
-   > A jsou hodnoty, které byly vytvořeny během kroků [nasazení součástí](ingress-controller-install-new.md#deploy-components) , a lze je znovu získat pomocí následujícího příkazu: `identityClientID` `identityResourceID`
+   > `identityResourceID`A `identityClientID` jsou hodnoty, které byly vytvořeny během kroků [nasazení součástí](ingress-controller-install-new.md#deploy-components) , a lze je znovu získat pomocí následujícího příkazu:
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```

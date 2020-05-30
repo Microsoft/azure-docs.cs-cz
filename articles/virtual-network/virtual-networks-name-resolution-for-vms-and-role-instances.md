@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 3/2/2020
 ms.author: rohink
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 9ea63192732184ff7a13ff1465a5b393a282f9d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32ef66c0a6d585e785fccb038a2b499c7f7f66db
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262192"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204765"
 ---
 # <a name="name-resolution-for-resources-in-azure-virtual-networks"></a>Překlad názvů pro prostředky ve virtuálních sítích Azure
 
@@ -70,7 +70,7 @@ Překlad názvů poskytovaných Azure zahrnuje tyto funkce:
 * Můžete použít překlad IP adres mezi virtuálními počítači ve virtuálních sítích, které používají model nasazení Azure Resource Manager, aniž byste museli plně kvalifikovaný název domény. Virtuální sítě v modelu nasazení Classic vyžadují při překladu názvů v různých cloudových službách plně kvalifikovaný název domény. 
 * Můžete použít názvy hostitelů, které nejlépe popisují vaše nasazení, a ne pracovat s automaticky generovanými názvy.
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 Body, které je potřeba vzít v úvahu při použití překladu IP adres poskytované Azure:
 * Příponu DNS vytvořenou v Azure nejde upravit.
@@ -84,9 +84,9 @@ Body, které je potřeba vzít v úvahu při použití překladu IP adres poskyt
 
 ### <a name="reverse-dns-considerations"></a>Přesměrovat požadavky DNS
 Reverzní DNS se podporuje ve všech virtuálních sítích založených na ARM. Můžete vystavit reverzní dotazy DNS (dotazy PTR) k mapování IP adres virtuálních počítačů na plně kvalifikované názvy domén virtuálních počítačů.
-* Všechny dotazy PTR pro IP adresy virtuálních počítačů budou vracet plně kvalifikované názvy domén ve \[formátu\]VMName. Internal.cloudapp.NET.
-* Dopředné vyhledávání v plně kvalifikovaném \[názvu\]domény ve formátu VMName. Internal.cloudapp.NET se přeloží na IP adresu přiřazenou k virtuálnímu počítači.
-* Pokud je virtuální síť propojená s [Azure DNS privátní zóny](../dns/private-dns-overview.md) jako registrační virtuální síť, vrátí reverzní dotazy DNS dva záznamy. Jeden záznam bude VMName \[\]formuláře. [priatednszonename] a další by měly být ve formátu \[vmname\]. Internal.cloudapp.NET
+* Všechny dotazy PTR pro IP adresy virtuálních počítačů budou vracet plně kvalifikované názvy domén ve formátu \[ VMName \] . Internal.cloudapp.NET.
+* Dopředné vyhledávání v plně kvalifikovaném názvu domény ve formátu \[ VMName \] . Internal.cloudapp.NET se přeloží na IP adresu přiřazenou k virtuálnímu počítači.
+* Pokud je virtuální síť propojená s [Azure DNS privátní zóny](../dns/private-dns-overview.md) jako registrační virtuální síť, vrátí reverzní dotazy DNS dva záznamy. Jeden záznam bude ve tvaru \[ VMName \] . [ privatednszonename] a další by měly být ve formátu \[ VMName \] . Internal.cloudapp.NET
 * Zpětné vyhledávání DNS je vymezené na zadanou virtuální síť i v případě, že je partnerským vztahem k ostatním virtuálním sítím. Reverzní dotazy DNS (dotazy PTR) pro IP adresy virtuálních počítačů umístěných v partnerských virtuálních sítích budou vracet NXDOMAIN.
 * Pokud chcete vypnout funkci reverzních DNS ve virtuální síti, můžete to udělat tak, že vytvoříte zónu zpětného vyhledávání pomocí [Azure DNS privátních zón](../dns/private-dns-overview.md) a propojíte ji s vaší virtuální sítí. Například pokud je adresní prostor IP adres vaší virtuální sítě 10.20.0.0/16, můžete vytvořit prázdnou privátní zónu DNS 20.10.in-addr. arpa a propojit ji s virtuální sítí. Při propojování zóny s vaší virtuální sítí byste měli zakázat automatickou registraci na tomto odkazu. Tato zóna přepíše výchozí zóny zpětného vyhledávání pro virtuální síť a protože tato zóna je prázdná, budete mít NXDOMAIN k reverzním dotazům DNS. Podrobnosti o tom, jak vytvořit privátní zónu DNS a propojit ji s virtuální sítí, najdete v našem [Průvodci rychlým startem](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal) .
 
@@ -108,19 +108,19 @@ Výchozí klient DNS systému Windows má vestavěnou mezipaměť DNS. Některé
 K dispozici je řada různých balíčků pro ukládání do mezipaměti DNS (například Dnsmasq). Zde je postup, jak nainstalovat Dnsmasq v nejběžnějších distribucích:
 
 * **Ubuntu (používá Resolvconf)**:
-  * Nainstalujte balíček Dnsmasq pomocí `sudo apt-get install dnsmasq`nástroje.
+  * Nainstalujte balíček Dnsmasq pomocí nástroje `sudo apt-get install dnsmasq` .
 * **SUSE (používá NETCONF)**:
-  * Nainstalujte balíček Dnsmasq pomocí `sudo zypper install dnsmasq`nástroje.
-  * Povolte službu Dnsmasq s nástrojem `systemctl enable dnsmasq.service`. 
-  * Spusťte službu Dnsmasq s nástrojem `systemctl start dnsmasq.service`. 
+  * Nainstalujte balíček Dnsmasq pomocí nástroje `sudo zypper install dnsmasq` .
+  * Povolte službu Dnsmasq s nástrojem `systemctl enable dnsmasq.service` . 
+  * Spusťte službu Dnsmasq s nástrojem `systemctl start dnsmasq.service` . 
   * Upravte **/etc/sysconfig/Network/config**a změňte *NETCONFIG_DNS_FORWARDER = ""* na *Dnsmasq*.
-  * Pokud chcete nastavit mezipaměť jako `netconfig update`místní Překladač DNS, aktualizujte soubor resolv. conf.
+  * Pokud `netconfig update` chcete nastavit mezipaměť jako místní PŘEKLADAČ DNS, aktualizujte soubor resolv. conf.
 * **CentOS (používá NetworkManager)**:
-  * Nainstalujte balíček Dnsmasq pomocí `sudo yum install dnsmasq`nástroje.
-  * Povolte službu Dnsmasq s nástrojem `systemctl enable dnsmasq.service`.
-  * Spusťte službu Dnsmasq s nástrojem `systemctl start dnsmasq.service`.
+  * Nainstalujte balíček Dnsmasq pomocí nástroje `sudo yum install dnsmasq` .
+  * Povolte službu Dnsmasq s nástrojem `systemctl enable dnsmasq.service` .
+  * Spusťte službu Dnsmasq s nástrojem `systemctl start dnsmasq.service` .
   * Přidejte předřadící *název domény-servery 127.0.0.1;* do **/etc/dhclient-eth0.conf**.
-  * Restartujte síťovou službu pomocí `service network restart`nástroje a nastavte mezipaměť jako místní Překladač DNS.
+  * Restartujte síťovou službu pomocí nástroje `service network restart` a nastavte mezipaměť jako místní PŘEKLADAČ DNS.
 
 > [!NOTE]
 > Balíček Dnsmasq je jenom jedna z mnoha mezipamětí DNS dostupných pro Linux. Než ho použijete, ověřte jeho vhodnost pro vaše konkrétní potřeby a ověřte, že není nainstalovaná žádná jiná mezipaměť.
@@ -133,7 +133,7 @@ DNS je primárně protokol UDP. Vzhledem k tomu, že protokol UDP nezaručí dor
 * Operační systémy Windows se zopakují po jedné sekundě a potom znovu po dalších dvou sekundách, čtyři sekundy a další čtyři sekundy. 
 * Výchozí nastavení pro Linux se zopakuje po pěti sekundách. Doporučujeme změnit specifikace opakování na pětkrát v intervalu s jednou sekundou.
 
-Ověřte aktuální nastavení virtuálního počítače se systémem Linux pomocí `cat /etc/resolv.conf`nástroje. Podívejte se na řádek *Možnosti* , například:
+Ověřte aktuální nastavení virtuálního počítače se systémem Linux pomocí nástroje `cat /etc/resolv.conf` . Podívejte se na řádek *Možnosti* , například:
 
 ```bash
 options timeout:1 attempts:5
@@ -149,7 +149,7 @@ Soubor soubor resolv. conf se obvykle generuje automaticky a neměl by být upra
   2. Spusťte `netconfig update` aktualizaci.
 * **CentOS** (používá NetworkManager):
   1. Přidání *ozvěny – časový limit možností: 1 pokusů: 5 "* do **/etc/NetworkManager/Dispatcher.d/11-dhclient**.
-  2. Aktualizujte `service network restart`pomocí.
+  2. Aktualizujte pomocí `service network restart` .
 
 ## <a name="name-resolution-that-uses-your-own-dns-server"></a>Překlad názvů, který používá vlastní server DNS
 
@@ -218,7 +218,7 @@ Pokud používáte model nasazení Azure Resource Manager, můžete zadat server
 Pokud používáte model nasazení Classic, můžete zadat servery DNS pro virtuální síť v Azure Portal nebo v [souboru konfigurace sítě](https://msdn.microsoft.com/library/azure/jj157100). Pro Cloud Services můžete zadat servery DNS prostřednictvím [konfiguračního souboru služby](https://msdn.microsoft.com/library/azure/ee758710) nebo pomocí prostředí PowerShell s rutinou [New-AzureVM](/powershell/module/servicemanagement/azure/new-azurevm).
 
 > [!NOTE]
-> Pokud změníte nastavení DNS pro virtuální síť nebo virtuální počítač, který je již nasazený, bude nutné provést obnovení zapůjčení služby DHCP u všech ovlivněných virtuálních počítačů ve virtuální síti. Pro virtuální počítače s operačním systémem Windows to můžete provést tak, že `ipconfig /renew` na virtuálním počítači zadáte přímo. Postup se liší v závislosti na operačním systému. Podívejte se na příslušnou dokumentaci pro typ operačního systému.
+> Pokud změníte nastavení DNS pro virtuální síť nebo virtuální počítač, který je již nasazený, bude nutné provést obnovení zapůjčení služby DHCP u všech ovlivněných virtuálních počítačů ve virtuální síti. Pro virtuální počítače s operačním systémem Windows to můžete provést tak, že na `ipconfig /renew` virtuálním počítači zadáte přímo. Postup se liší v závislosti na operačním systému. Podívejte se na příslušnou dokumentaci pro typ operačního systému.
 
 ## <a name="next-steps"></a>Další kroky
 

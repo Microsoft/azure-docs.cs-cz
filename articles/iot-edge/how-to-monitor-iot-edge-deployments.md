@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: veyalla
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 97bc3c8571793ec8c8b67fe0e7c5cb3b6a56fde4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 4ca22c39fcd7b488f527326e4fdeaa56b0485cb9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726039"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220291"
 ---
 # <a name="monitor-iot-edge-deployments"></a>Monitorování nasazení IoT Edge
 
@@ -24,7 +24,7 @@ Zařízení i moduly mají podobná data, například připojení, takže se hod
 
 Služba IoT Hub shromažďuje data hlášená nevlákenou zařízení a modulu a poskytuje počty různých stavů, které zařízení mohou mít. Služba IoT Hub uspořádá tato data do čtyř skupin metrik:
 
-| Typ | Description |
+| Typ | Popis |
 | --- | ---|
 | Targeted | Zobrazuje IoT Edge zařízení, která se shodují s podmínkou cílení nasazení. |
 | Použito | Zobrazuje cílené IoT Edge zařízení, na která necílí jiné nasazení s vyšší prioritou. |
@@ -42,7 +42,7 @@ Pokud chcete zobrazit podrobnosti o nasazení a monitorovat zařízení, která 
 1. Vyberte kartu **nasazení IoT Edge** .
 1. Zkontrolujte seznam nasazení.Pro každé nasazení si můžete zobrazit následující podrobnosti:
 
-    | Sloupec | Description |
+    | Sloupec | Popis |
     | --- | --- |
     | ID | Název nasazení. |
     | Typ | Typ **nasazení, nasazení nebo nasazení** v **vrstveném**prostředí. |
@@ -101,4 +101,4 @@ Chcete-li provést změny v nasazení, přečtěte si téma [Změna nasazení](h
 
 ## <a name="next-steps"></a>Další kroky
 
-Naučte [se komunikovat s EdgeAgent pomocí integrovaných přímých metod](how-to-edgeagent-direct-method.md).
+Naučte se [monitorovat vlákna modulu](how-to-monitor-module-twins.md), primárně IoT Edge agenta a moduly runtime centra IoT Edge, pro připojení a stav nasazení IoT Edge.

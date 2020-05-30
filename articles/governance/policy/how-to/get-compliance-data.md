@@ -3,12 +3,12 @@ title: Získat data dodržování zásad
 description: Azure Policy hodnocení a účinky určují dodržování předpisů. Přečtěte si, jak získat podrobnosti o dodržování předpisů pro vaše prostředky Azure.
 ms.date: 05/20/2020
 ms.topic: how-to
-ms.openlocfilehash: 55f0b471eff15140de0a586fd5d326d9cd913b1a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: e4d63355b793f69ccc2ed7aaa44bfb60a3a8440e
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747088"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204833"
 ---
 # <a name="get-compliance-data-of-azure-resources"></a>Získání dat o dodržování předpisů u prostředků Azure
 
@@ -148,6 +148,9 @@ Procento dodržování předpisů je určeno vydělením **odpovídajících** p
 _Celkem prostředků_ je definováno jako součet **kompatibilních**, **nekompatibilních**a **konfliktních** prostředků. Celková čísla dodržování předpisů jsou součtem různých prostředků, **které jsou v souladu s** hodnotou součet všech různých prostředků. Na následujícím obrázku je více než 20 různých prostředků, které jsou k dispozici, a pouze jeden z nich **nedodržuje předpisy**. Celkové dodržování předpisů prostředků je 95% (19 z 20).
 
 :::image type="content" source="../media/getting-compliance-data/simple-compliance.png" alt-text="Příklad dodržování zásad na stránce dodržování předpisů" border="false":::
+
+> [!NOTE]
+> Dodržování legislativních předpisů v Azure Policy je funkce ve verzi Preview. Vlastnosti dodržování předpisů ze sady SDK a stránky na portálu se liší od povolených iniciativ. Další informace najdete v tématu [dodržování legislativních předpisů](../concepts/regulatory-compliance.md) .
 
 ## <a name="portal"></a>Portál
 

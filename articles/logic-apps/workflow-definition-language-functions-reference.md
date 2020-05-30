@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: fea444f2e864683d6350e1c08872ec574a36852c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 05/29/2020
+ms.openlocfilehash: d879429eef68d1bc2448150e2d8eece9cfa35da2
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83646008"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204850"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci
 
@@ -121,17 +121,20 @@ Chcete-li pracovat s kolekcemi, všeobecně se jedná o pole, řetězce a někdy
 
 Chcete-li pracovat s podmínkami, porovnat hodnoty a výsledky výrazů nebo vyhodnotit různé druhy logiky, můžete použít tyto logické funkce porovnání. Úplný odkaz na jednotlivé funkce naleznete v [abecedním seznamu](../logic-apps/workflow-definition-language-functions-reference.md#alphabetical-list).
 
+> [!NOTE]
+> Použijete-li logické funkce nebo podmínky pro porovnání hodnot, hodnoty null budou převedeny na prázdné hodnoty řetězce ( `""` ). Chování podmínek se liší při porovnání s prázdným řetězcem namísto hodnoty null. Další informace naleznete v tématu [funkce String ()](#string). 
+
 | Funkce logického porovnání | Úkol |
 | --------------------------- | ---- |
-| [a](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ověřte, zda jsou všechny výrazy pravdivé. |
+| [and](../logic-apps/workflow-definition-language-functions-reference.md#and) | Ověřte, zda jsou všechny výrazy pravdivé. |
 | [equals](../logic-apps/workflow-definition-language-functions-reference.md#equals) | Zkontroluje, jestli jsou obě hodnoty ekvivalentní. |
 | [greater](../logic-apps/workflow-definition-language-functions-reference.md#greater) | Ověřte, zda je první hodnota větší než druhá hodnota. |
 | [greaterOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#greaterOrEquals) | Ověřte, zda je první hodnota větší než nebo rovna druhé hodnotě. |
 | [if](../logic-apps/workflow-definition-language-functions-reference.md#if) | Zkontroluje, jestli je výraz pravdivý, nebo nepravdivý. Na základě výsledku vrátí zadanou hodnotu. |
 | [less](../logic-apps/workflow-definition-language-functions-reference.md#less) | Ověřte, zda je první hodnota menší než druhá hodnota. |
 | [lessOrEquals](../logic-apps/workflow-definition-language-functions-reference.md#lessOrEquals) | Ověřte, zda je první hodnota menší nebo rovna druhé hodnotě. |
-| [mění](../logic-apps/workflow-definition-language-functions-reference.md#not) | Zkontroluje, jestli je výraz nepravdivý. |
-| [nebo](../logic-apps/workflow-definition-language-functions-reference.md#or) | Ověřte, zda je alespoň jeden výraz pravdivý. |
+| [not](../logic-apps/workflow-definition-language-functions-reference.md#not) | Zkontroluje, jestli je výraz nepravdivý. |
+| [or](../logic-apps/workflow-definition-language-functions-reference.md#or) | Ověřte, zda je alespoň jeden výraz pravdivý. |
 |||
 
 <a name="conversion-functions"></a>
@@ -149,7 +152,7 @@ Chcete-li změnit typ nebo formát hodnoty, můžete použít tyto funkce pro p�
 | [base64](../logic-apps/workflow-definition-language-functions-reference.md#base64) | Vrátí verzi kódovanou pro řetězec ve formátu base64. |
 | [base64ToBinary](../logic-apps/workflow-definition-language-functions-reference.md#base64ToBinary) | Vrátí binární verzi řetězce zakódovaného ve formátu base64. |
 | [base64ToString](../logic-apps/workflow-definition-language-functions-reference.md#base64ToString) | Vrátí verzi řetězce pro řetězec kódovaný v kódování Base64. |
-| [binární](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Vrátí binární verzi pro vstupní hodnotu. |
+| [tvaru](../logic-apps/workflow-definition-language-functions-reference.md#binary) | Vrátí binární verzi pro vstupní hodnotu. |
 | [bool](../logic-apps/workflow-definition-language-functions-reference.md#bool) | Vrátí logickou verzi pro vstupní hodnotu. |
 | [createArray](../logic-apps/workflow-definition-language-functions-reference.md#createArray) | Vrátí pole z více vstupů. |
 | [dataUri](../logic-apps/workflow-definition-language-functions-reference.md#dataUri) | Vrátí identifikátor URI dat pro vstupní hodnotu. |
@@ -349,12 +352,12 @@ action().outputs.body.<property>
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*majetek*> | Ne | String | Název vlastnosti objektu akce, jejíž hodnota má být: **název**, **čas_spuštění**, **čas_ukončení**, **vstupy**, **výstupy**, **stav**, **kód**, **trackingId**a **clientTrackingId**. V Azure Portal můžete tyto vlastnosti najít tak, že zkontrolujete podrobnosti o konkrétní historii spuštění. Další informace najdete v tématu [REST API – akce běhu pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*majetek*> | No | Řetězec | Název vlastnosti objektu akce, jejíž hodnota má být: **název**, **čas_spuštění**, **čas_ukončení**, **vstupy**, **výstupy**, **stav**, **kód**, **trackingId**a **clientTrackingId**. V Azure Portal můžete tyto vlastnosti najít tak, že zkontrolujete podrobnosti o konkrétní historii spuštění. Další informace najdete v tématu [REST API – akce běhu pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | -----| ----------- |
-| <*akce – výstup*> | String | Výstup z aktuální akce nebo vlastnosti |
+| <*akce – výstup*> | Řetězec | Výstup z aktuální akce nebo vlastnosti |
 ||||
 
 <a name="actionBody"></a>
@@ -371,15 +374,15 @@ actionBody('<actionName>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ano | String | Název `body` výstupu akce, který chcete |
+| <*actionName*> | Ano | Řetězec | Název `body` výstupu akce, který chcete |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | -----| ----------- |
-| <*Text akce – výstup*> | String | `body`Výstup ze zadané akce |
+| <*Text akce – výstup*> | Řetězec | `body`Výstup ze zadané akce |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad načte `body` výstup z akce Twitteru `Get user` :
 
@@ -416,15 +419,15 @@ actionOutputs('<actionName>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ano | String | Název výstupu akce, který chcete |
+| <*actionName*> | Ano | Řetězec | Název výstupu akce, který chcete |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | -----| ----------- |
-| <*výkonem*> | String | Výstup ze zadané akce |
+| <*výkonem*> | Řetězec | Výstup ze zadané akce |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad načte výstup z akce Twitteru `Get user` :
 
@@ -486,16 +489,16 @@ actions('<actionName>').outputs.body.<property>
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ano | String | Název objektu akce, jehož výstup chcete  |
-| <*majetek*> | Ne | String | Název vlastnosti objektu akce, jejíž hodnota má být: **název**, **čas_spuštění**, **čas_ukončení**, **vstupy**, **výstupy**, **stav**, **kód**, **trackingId**a **clientTrackingId**. V Azure Portal můžete tyto vlastnosti najít tak, že zkontrolujete podrobnosti o konkrétní historii spuštění. Další informace najdete v tématu [REST API – akce běhu pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
+| <*actionName*> | Ano | Řetězec | Název objektu akce, jehož výstup chcete  |
+| <*majetek*> | No | Řetězec | Název vlastnosti objektu akce, jejíž hodnota má být: **název**, **čas_spuštění**, **čas_ukončení**, **vstupy**, **výstupy**, **stav**, **kód**, **trackingId**a **clientTrackingId**. V Azure Portal můžete tyto vlastnosti najít tak, že zkontrolujete podrobnosti o konkrétní historii spuštění. Další informace najdete v tématu [REST API – akce běhu pracovního postupu](https://docs.microsoft.com/rest/api/logic/workflowrunactions/get). |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | -----| ----------- |
-| <*akce – výstup*> | String | Výstup z určené akce nebo vlastnosti |
+| <*akce – výstup*> | Řetězec | Výstup z určené akce nebo vlastnosti |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad získá `status` hodnotu vlastnosti z akce Twitteru `Get user` za běhu:
 
@@ -525,7 +528,7 @@ add(<summand_1>, <summand_2>)
 | <*výsledek – součet*> | Integer nebo float | Výsledek přidání zadaných čísel |
 ||||
 
-*Příklad*
+*Případě*
 
 V tomto příkladu se přidají zadaná čísla:
 
@@ -547,14 +550,14 @@ addDays('<timestamp>', <days>, '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
 | <*denní*> | Ano | Integer | Kladný nebo záporný počet dní, které se mají přidat |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Aktualizováno – časové razítko*> | String | Časové razítko plus zadaný počet dní  |
+| <*Aktualizováno – časové razítko*> | Řetězec | Časové razítko plus zadaný počet dní  |
 ||||
 
 *Příklad 1*
@@ -589,14 +592,14 @@ addHours('<timestamp>', <hours>, '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
 | <*hodin*> | Ano | Integer | Kladný nebo záporný počet hodin, které se mají přidat |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Aktualizováno – časové razítko*> | String | Časové razítko plus zadaný počet hodin  |
+| <*Aktualizováno – časové razítko*> | Řetězec | Časové razítko plus zadaný počet hodin  |
 ||||
 
 *Příklad 1*
@@ -631,14 +634,14 @@ addMinutes('<timestamp>', <minutes>, '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
 | <*minuty*> | Ano | Integer | Kladný nebo záporný počet minut, který se má přidat |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Aktualizováno – časové razítko*> | String | Časové razítko plus zadaný počet minut |
+| <*Aktualizováno – časové razítko*> | Řetězec | Časové razítko plus zadaný počet minut |
 ||||
 
 *Příklad 1*
@@ -674,7 +677,7 @@ addProperty(<object>, '<property>', <value>)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*předmětů*> | Ano | Objekt | Objekt JSON, do kterého chcete přidat vlastnost |
-| <*majetek*> | Ano | String | Název vlastnosti, která se má přidat |
+| <*majetek*> | Ano | Řetězec | Název vlastnosti, která se má přidat |
 | <*osa*> | Ano | Všechny | Hodnota vlastnosti |
 |||||
 
@@ -692,8 +695,8 @@ addProperty(<object>['<parent-property>'], '<child-property>', <value>)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*předmětů*> | Ano | Objekt | Objekt JSON, do kterého chcete přidat vlastnost |
-| <*Nadřazená vlastnost*> | Ano | String | Název pro nadřazenou vlastnost, do které chcete přidat podřízenou vlastnost |
-| <*podřízená vlastnost*> | Ano | String | Název podřízené vlastnosti, která se má přidat |
+| <*Nadřazená vlastnost*> | Ano | Řetězec | Název pro nadřazenou vlastnost, do které chcete přidat podřízenou vlastnost |
+| <*podřízená vlastnost*> | Ano | Řetězec | Název podřízené vlastnosti, která se má přidat |
 | <*osa*> | Ano | Všechny | Hodnota, která se má nastavit pro zadanou vlastnost |
 |||||
 
@@ -772,14 +775,14 @@ addSeconds('<timestamp>', <seconds>, '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
 | <*Second*> | Ano | Integer | Kladný nebo záporný počet sekund, které se mají přidat |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Aktualizováno – časové razítko*> | String | Časové razítko plus zadaný počet sekund  |
+| <*Aktualizováno – časové razítko*> | Řetězec | Časové razítko plus zadaný počet sekund  |
 ||||
 
 *Příklad 1*
@@ -815,15 +818,15 @@ addToTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
 | <*doba*> | Ano | Integer | Počet zadaných časových jednotek, které se mají přidat |
-| <*timeUnit*> | Ano | String | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*timeUnit*> | Ano | Řetězec | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Aktualizováno – časové razítko*> | String | Časové razítko plus zadaný počet časových jednotek  |
+| <*Aktualizováno – časové razítko*> | Řetězec | Časové razítko plus zadaný počet časových jednotek  |
 ||||
 
 *Příklad 1*
@@ -848,7 +851,7 @@ A vrátí výsledek pomocí volitelného formátu "D":`"Tuesday, January 2, 2018
 
 <a name="and"></a>
 
-### <a name="and"></a>a
+### <a name="and"></a>and
 
 Ověřte, zda jsou všechny výrazy pravdivé.
 Vrátí hodnotu true, pokud mají všechny výrazy hodnotu true, nebo vrátí hodnotu false, pokud je alespoň jeden výraz nepravdivý.
@@ -912,7 +915,7 @@ array('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec pro vytvoření pole |
+| <*osa*> | Ano | Řetězec | Řetězec pro vytvoření pole |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -920,7 +923,7 @@ array('<value>')
 | [<*value*>] | Pole | Pole, které obsahuje jeden zadaný vstup |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří pole z řetězce "Hello":
 
@@ -945,15 +948,15 @@ base64('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Vstupní řetězec |
+| <*osa*> | Ano | Řetězec | Vstupní řetězec |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*řetězec base64*> | String | Verze zakódovaná ve formátu base64 pro vstupní řetězec |
+| <*řetězec base64*> | Řetězec | Verze zakódovaná ve formátu base64 pro vstupní řetězec |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad převede řetězec "Hello" na řetězec kódovaný v kódování Base64:
 
@@ -978,15 +981,15 @@ base64ToBinary('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec kódovaný v kódování Base64 k převedení |
+| <*osa*> | Ano | Řetězec | Řetězec kódovaný v kódování Base64 k převedení |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*binární – řetězec pro kódování Base64*> | String | Binární verze řetězce zakódovaného ve formátu base64 |
+| <*binární – řetězec pro kódování Base64*> | Řetězec | Binární verze řetězce zakódovaného ve formátu base64 |
 ||||
 
-*Příklad*
+*Případě*
 
 V tomto příkladu se převede řetězec s kódováním base64 na binární řetězec typu "aGVsbG8 =".
 
@@ -1013,15 +1016,15 @@ base64ToString('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec kódovaný v kódování Base64 k dekódování |
+| <*osa*> | Ano | Řetězec | Řetězec kódovaný v kódování Base64 k dekódování |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*dekódované – řetězec base64*> | String | Verze řetězce pro řetězec kódovaný v kódování Base64 |
+| <*dekódované – řetězec base64*> | Řetězec | Verze řetězce pro řetězec kódovaný v kódování Base64 |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad převede řetězec kódovaný řetězcem Base64 "aGVsbG8 =" na pouze řetězec:
 
@@ -1043,15 +1046,15 @@ binary('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec, který se má převést |
+| <*osa*> | Ano | Řetězec | Řetězec, který se má převést |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*binární hodnota pro zadání hodnoty*> | String | Binární verze zadaného řetězce |
+| <*binární hodnota pro zadání hodnoty*> | Řetězec | Binární verze zadaného řetězce |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad převede řetězec "Hello" na binární řetězec:
 
@@ -1077,15 +1080,15 @@ body('<actionName>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ano | String | Název `body` výstupu akce, který chcete |
+| <*actionName*> | Ano | Řetězec | Název `body` výstupu akce, který chcete |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | -----| ----------- |
-| <*Text akce – výstup*> | String | `body`Výstup ze zadané akce |
+| <*Text akce – výstup*> | Řetězec | `body`Výstup ze zadané akce |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad načte `body` výstup z `Get user` Akce Twitteru:
 
@@ -1130,7 +1133,7 @@ bool(<value>)
 | true nebo false | Logická hodnota | Logická verze zadané hodnoty |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady převádějí zadané hodnoty na logické hodnoty:
 
@@ -1165,7 +1168,7 @@ coalesce(<object_1>, <object_2>, ...)
 | <*první položka, která není null,*> | Všechny | První položka nebo hodnota, která není null. Pokud jsou všechny parametry null, tato funkce vrátí hodnotu null. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady vrátí první hodnotu jinou než null ze zadaných hodnot nebo hodnotu null, pokud jsou všechny hodnoty null:
 
@@ -1193,15 +1196,15 @@ concat('<text1>', '<text2>', ...)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*text1*>, <*Text2*>,... | Ano | String | Aspoň dva řetězce, které se mají zkombinovat |
+| <*text1*>, <*Text2*>,... | Ano | Řetězec | Aspoň dva řetězce, které se mají zkombinovat |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*text1text2...*> | String | Řetězec vytvořený z kombinovaných vstupních řetězců |
+| <*text1text2...*> | Řetězec | Řetězec vytvořený z kombinovaných vstupních řetězců |
 ||||
 
-*Příklad*
+*Případě*
 
 V tomto příkladu jsou kombinovány řetězce "Hello" a "World":
 
@@ -1269,14 +1272,14 @@ convertFromUtc('<timestamp>', '<destinationTimeZone>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
-| <*destinationTimeZone*> | Ano | String | Název cílového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
+| <*destinationTimeZone*> | Ano | Řetězec | Název cílového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*převedeno – časové razítko*> | String | Časové razítko převedené do cílového časového pásma |
+| <*převedeno – časové razítko*> | Řetězec | Časové razítko převedené do cílového časového pásma |
 ||||
 
 *Příklad 1*
@@ -1311,15 +1314,15 @@ convertTimeZone('<timestamp>', '<sourceTimeZone>', '<destinationTimeZone>', '<fo
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
-| <*sourceTimeZone*> | Ano | String | Název zdrojového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
-| <*destinationTimeZone*> | Ano | String | Název cílového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
+| <*sourceTimeZone*> | Ano | Řetězec | Název zdrojového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
+| <*destinationTimeZone*> | Ano | Řetězec | Název cílového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*převedeno – časové razítko*> | String | Časové razítko převedené do cílového časového pásma |
+| <*převedeno – časové razítko*> | Řetězec | Časové razítko převedené do cílového časového pásma |
 ||||
 
 *Příklad 1*
@@ -1354,14 +1357,14 @@ convertToUtc('<timestamp>', '<sourceTimeZone>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
-| <*sourceTimeZone*> | Ano | String | Název zdrojového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
+| <*sourceTimeZone*> | Ano | Řetězec | Název zdrojového časového pásma. Informace o názvech časových pásem najdete v tématu [hodnoty indexu časového pásma Microsoftu](https://support.microsoft.com/en-us/help/973627/microsoft-time-zone-index-values), ale možná budete muset odebrat všechna interpunkční znaménka z názvu časového pásma. |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*převedeno – časové razítko*> | String | Časové razítko převedené na UTC |
+| <*převedeno – časové razítko*> | Řetězec | Časové razítko převedené na UTC |
 ||||
 
 *Příklad 1*
@@ -1405,7 +1408,7 @@ createArray('<object1>', '<object2>', ...)
 | [<*objekt1*>, <*objekt2*>,...] | Pole | Pole vytvořené ze všech vstupních položek |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří pole z těchto vstupů:
 
@@ -1427,15 +1430,15 @@ dataUri('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec, který se má převést |
+| <*osa*> | Ano | Řetězec | Řetězec, který se má převést |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*identifikátor URI dat*> | String | Identifikátor URI dat pro vstupní řetězec |
+| <*identifikátor URI dat*> | Řetězec | Identifikátor URI dat pro vstupní řetězec |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří identifikátor URI dat pro řetězec "Hello":
 
@@ -1459,15 +1462,15 @@ dataUriToBinary('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Identifikátor URI dat, který se má převést |
+| <*osa*> | Ano | Řetězec | Identifikátor URI dat, který se má převést |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*binární data pro identifikátor URI*> | String | Binární verze identifikátoru URI dat |
+| <*binární data pro identifikátor URI*> | Řetězec | Binární verze identifikátoru URI dat |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří binární verzi pro tento identifikátor URI dat:
 
@@ -1494,15 +1497,15 @@ dataUriToString('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Identifikátor URI dat, který se má převést |
+| <*osa*> | Ano | Řetězec | Identifikátor URI dat, který se má převést |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*řetězec pro datový identifikátor URI*> | String | Verze řetězce pro identifikátor URI dat |
+| <*řetězec pro datový identifikátor URI*> | Řetězec | Verze řetězce pro identifikátor URI dat |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří řetězec pro tento identifikátor URI dat:
 
@@ -1524,7 +1527,7 @@ dayOfMonth('<timestamp>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -1532,7 +1535,7 @@ dayOfMonth('<timestamp>')
 | <*den měsíce*> | Integer | Den v měsíci ze zadaného časového razítka |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vrátí číslo dne v měsíci z tohoto časového razítka:
 
@@ -1554,7 +1557,7 @@ dayOfWeek('<timestamp>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -1562,7 +1565,7 @@ dayOfWeek('<timestamp>')
 | <*den týdne*> | Integer | Den v týdnu ze zadaného časového razítka, kde neděle je 0, pondělí a tak dále |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vrátí číslo pro den v týdnu z tohoto časového razítka:
 
@@ -1584,7 +1587,7 @@ dayOfYear('<timestamp>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -1592,7 +1595,7 @@ dayOfYear('<timestamp>')
 | <*den roku*> | Integer | Den v roce ze zadaného časového razítka |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vrátí číslo dne v roce z tohoto časového razítka:
 
@@ -1623,15 +1626,15 @@ decodeDataUri('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec identifikátoru URI dat k dekódování |
+| <*osa*> | Ano | Řetězec | Řetězec identifikátoru URI dat k dekódování |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*binární data pro identifikátor URI*> | String | Binární verze řetězce identifikátoru URI dat |
+| <*binární data pro identifikátor URI*> | Řetězec | Binární verze řetězce identifikátoru URI dat |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vrátí binární verzi pro tento identifikátor URI dat:
 
@@ -1658,15 +1661,15 @@ decodeUriComponent('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec s řídicími znaky k dekódování |
+| <*osa*> | Ano | Řetězec | Řetězec s řídicími znaky k dekódování |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Dekódovatelné – identifikátor URI*> | String | Aktualizovaný řetězec s dekódovými řídicími znaky |
+| <*Dekódovatelné – identifikátor URI*> | Řetězec | Aktualizovaný řetězec s dekódovými řídicími znaky |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad nahrazuje řídicí znaky v tomto řetězci pomocí Dekódovatelné verze:
 
@@ -1698,7 +1701,7 @@ div(<dividend>, <divisor>)
 | <*podíl – výsledek*> | Integer | Celočíselný výsledek vydělení prvního čísla druhým číslem |
 ||||
 
-*Příklad*
+*Případě*
 
 Oba příklady vydělí první číslo druhým číslem:
 
@@ -1724,15 +1727,15 @@ encodeUriComponent('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec, který se má převést na formát kódovaný identifikátorem URI |
+| <*osa*> | Ano | Řetězec | Řetězec, který se má převést na formát kódovaný identifikátorem URI |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*kódovaný identifikátor URI*> | String | Řetězec kódovaný identifikátorem URI s řídicími znaky |
+| <*kódovaný identifikátor URI*> | Řetězec | Řetězec kódovaný identifikátorem URI s řídicími znaky |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří pro tento řetězec verzi kódovanou pomocí identifikátoru URI:
 
@@ -1764,7 +1767,7 @@ empty([<collection>])
 | true nebo false | Logická hodnota | Vrátí hodnotu pravda, pokud je kolekce prázdná. Vrátí hodnotu false, pokud není prázdná. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady kontrolují, jestli jsou zadané kolekce prázdné:
 
@@ -1792,8 +1795,8 @@ endsWith('<text>', '<searchText>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*textové*> | Ano | String | Řetězec, který má být zkontrolován |
-| <*Prohledávanýtext*> | Ano | String | Koncový dílčí řetězec, který se má najít |
+| <*textové*> | Ano | Řetězec | Řetězec, který má být zkontrolován |
+| <*Prohledávanýtext*> | Ano | Řetězec | Koncový dílčí řetězec, který se má najít |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -1842,7 +1845,7 @@ equals('<object1>', '<object2>')
 | true nebo false | Logická hodnota | Vrátí hodnotu true, pokud jsou obě ekvivalentní. Vrátí hodnotu false, pokud není ekvivalentní. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady kontrolují, zda jsou zadané vstupy ekvivalentní.
 
@@ -1877,7 +1880,7 @@ first([<collection>])
 | <*první kolekce – položka*> | Všechny | První položka v kolekci |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady vyhledají první položku v těchto kolekcích:
 
@@ -1904,7 +1907,7 @@ float('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec, který má platné číslo s plovoucí desetinnou čárkou, které se má převést |
+| <*osa*> | Ano | Řetězec | Řetězec, který má platné číslo s plovoucí desetinnou čárkou, které se má převést |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -1912,7 +1915,7 @@ float('<value>')
 | <*float-Value*> | Float | Číslo s plovoucí desetinnou čárkou pro zadaný řetězec |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří verzi řetězce pro toto číslo s plovoucí desetinnou čárkou:
 
@@ -1934,16 +1937,16 @@ formatDateTime('<timestamp>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*přeformátované – časové razítko*> | String | Aktualizované časové razítko v zadaném formátu |
+| <*přeformátované – časové razítko*> | Řetězec | Aktualizované časové razítko v zadaném formátu |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad převede časové razítko na určený formát:
 
@@ -1965,8 +1968,8 @@ formDataMultiValues('<actionName>', '<key>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ano | String | Akce, jejíž výstup má požadovanou hodnotu klíče |
-| <*zkrat*> | Ano | String | Název pro klíč, jehož hodnota má být |
+| <*actionName*> | Ano | Řetězec | Akce, jejíž výstup má požadovanou hodnotu klíče |
+| <*zkrat*> | Ano | Řetězec | Název pro klíč, jehož hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -1974,7 +1977,7 @@ formDataMultiValues('<actionName>', '<key>')
 | [<*pole-s-klíč-hodnoty*>] | Pole | Pole se všemi hodnotami, které odpovídají zadanému klíči |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří pole z hodnoty klíče "Subject" v zadané formě data formuláře nebo formuláře s kódováním:
 
@@ -1997,16 +2000,16 @@ formDataValue('<actionName>', '<key>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ano | String | Akce, jejíž výstup má požadovanou hodnotu klíče |
-| <*zkrat*> | Ano | String | Název pro klíč, jehož hodnota má být |
+| <*actionName*> | Ano | Řetězec | Akce, jejíž výstup má požadovanou hodnotu klíče |
+| <*zkrat*> | Ano | Řetězec | Název pro klíč, jehož hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*hodnota klíče*> | String | Hodnota v zadaném klíči  |
+| <*hodnota klíče*> | Řetězec | Hodnota v zadaném klíči  |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří řetězec z hodnoty klíče "Subject" v zadané formě data formuláře nebo formuláře s kódováním:
 
@@ -2029,13 +2032,13 @@ formatNumber(<number>, <format>, <locale>?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*Automatické*> | Ano | Integer nebo Double | Hodnota, kterou chcete formátovat. |
-| <*formátovat*> | Ano | String | Složený formátovací řetězec, který určuje formát, který chcete použít. Podporované řetězce číselného formátu naleznete v tématu [Standardní číselné formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings), které jsou podporovány nástrojem `number.ToString(<format>, <locale>)` . |
-| <*jazyka*> | Ne | String | Národní prostředí, které se má použít jako podporované `number.ToString(<format>, <locale>)` . Pokud není zadaný, použije se výchozí hodnota `en-us` . |
+| <*formátovat*> | Ano | Řetězec | Složený formátovací řetězec, který určuje formát, který chcete použít. Podporované řetězce číselného formátu naleznete v tématu [Standardní číselné formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-numeric-format-strings), které jsou podporovány nástrojem `number.ToString(<format>, <locale>)` . |
+| <*jazyka*> | No | Řetězec | Národní prostředí, které se má použít jako podporované `number.ToString(<format>, <locale>)` . Pokud není zadaný, použije se výchozí hodnota `en-us` . |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*formátované číslo*> | String | Zadané číslo jako řetězec ve formátu, který jste zadali. Tuto vrácenou hodnotu můžete přetypovat na `int` nebo `float` . |
+| <*formátované číslo*> | Řetězec | Zadané číslo jako řetězec ve formátu, který jste zadali. Tuto vrácenou hodnotu můžete přetypovat na `int` nebo `float` . |
 ||||
 
 *Příklad 1*
@@ -2083,13 +2086,13 @@ getFutureTime(<interval>, <timeUnit>, <format>?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*doba*> | Ano | Integer | Počet zadaných časových jednotek, které se mají přidat |
-| <*timeUnit*> | Ano | String | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*timeUnit*> | Ano | Řetězec | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Aktualizováno – časové razítko*> | String | Aktuální časové razítko plus zadaný počet časových jednotek |
+| <*Aktualizováno – časové razítko*> | Řetězec | Aktuální časové razítko plus zadaný počet časových jednotek |
 ||||
 
 *Příklad 1*
@@ -2127,13 +2130,13 @@ getPastTime(<interval>, <timeUnit>, <format>?)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*doba*> | Ano | Integer | Počet zadaných časových jednotek k odečtení |
-| <*timeUnit*> | Ano | String | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*timeUnit*> | Ano | Řetězec | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Aktualizováno – časové razítko*> | String | Aktuální časové razítko minus zadaný počet časových jednotek |
+| <*Aktualizováno – časové razítko*> | Řetězec | Aktuální časové razítko minus zadaný počet časových jednotek |
 ||||
 
 *Příklad 1*
@@ -2181,7 +2184,7 @@ greater('<value>', '<compareTo>')
 | true nebo false | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota větší než druhá hodnota. Vrátí hodnotu false, pokud je první hodnota rovna nebo menší než druhá hodnota. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady kontrolují, zda je první hodnota větší než druhá hodnota:
 
@@ -2218,7 +2221,7 @@ greaterOrEquals('<value>', '<compareTo>')
 | true nebo false | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota větší nebo rovna druhé hodnotě. Vrátí hodnotu false, pokud je první hodnota menší než druhá hodnota. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady kontrolují, zda je první hodnota větší nebo rovna druhé hodnotě:
 
@@ -2250,15 +2253,15 @@ guid('<format>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*formátovat*> | Ne | String | Jeden [specifikátor formátu](https://msdn.microsoft.com/library/97af8hh4) pro vrácený identifikátor GUID. Ve výchozím nastavení je formát "D", ale můžete použít "N", "D", "B", "P" nebo "X". |
+| <*formátovat*> | No | Řetězec | Jeden [specifikátor formátu](https://msdn.microsoft.com/library/97af8hh4) pro vrácený identifikátor GUID. Ve výchozím nastavení je formát "D", ale můžete použít "N", "D", "B", "P" nebo "X". |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Hodnota GUID*> | String | Náhodně generovaný identifikátor GUID |
+| <*Hodnota GUID*> | Řetězec | Náhodně generovaný identifikátor GUID |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad generuje stejný identifikátor GUID, ale jako 32 číslic oddělených pomlčkami a uzavřený v závorkách:
 
@@ -2290,7 +2293,7 @@ if(<expression>, <valueIfTrue>, <valueIfFalse>)
 | <*zadané-návratové hodnoty*> | Všechny | Zadaná hodnota, která se vrátí na základě toho, zda je výraz true nebo false |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vrátí, `"yes"` protože zadaný výraz vrátí hodnotu true.
 V opačném případě vrátí příklad `"no"` :
@@ -2312,8 +2315,8 @@ indexOf('<text>', '<searchText>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*textové*> | Ano | String | Řetězec, který obsahuje dílčí řetězec, který se má najít |
-| <*Prohledávanýtext*> | Ano | String | Dílčí řetězec, který se má najít |
+| <*textové*> | Ano | Řetězec | Řetězec, který obsahuje dílčí řetězec, který se má najít |
+| <*Prohledávanýtext*> | Ano | Řetězec | Dílčí řetězec, který se má najít |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -2321,7 +2324,7 @@ indexOf('<text>', '<searchText>')
 | <*Hodnota indexu*>| Integer | Počáteční pozice nebo hodnota indexu pro zadaný dílčí řetězec. <p>Pokud řetězec nebyl nalezen, vrátí číslo-1. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad najde počáteční hodnotu indexu pro podřetězec "World" v řetězci "Hello World":
 
@@ -2343,7 +2346,7 @@ int('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec, který se má převést |
+| <*osa*> | Ano | Řetězec | Řetězec, který se má převést |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -2351,7 +2354,7 @@ int('<value>')
 | <*celočíselný výsledek*> | Integer | Celočíselná verze zadaného řetězce |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří celočíselnou verzi pro řetězec "10":
 
@@ -2377,7 +2380,7 @@ item()
 | <*aktuální pole-položka*> | Všechny | Aktuální položka v poli pro aktuální iteraci akce |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad získá `body` prvek z aktuální zprávy pro akci "Send_an_email" v rámci aktuální iterace smyčky for-each:
 
@@ -2398,7 +2401,7 @@ items('<loopName>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*opakovat*> | Ano | String | Název pro smyčku For-Each |
+| <*opakovat*> | Ano | Řetězec | Název pro smyčku For-Each |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -2406,7 +2409,7 @@ items('<loopName>')
 | <*položkami*> | Všechny | Položka z aktuálního cyklu v zadaném pro – každou smyčku |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad načte aktuální položku z určeného pro – každou smyčku:
 
@@ -2426,7 +2429,7 @@ iterationIndexes('<loopName>')
 
 | Parametr | Požaduje se | Typ | Popis | 
 | --------- | -------- | ---- | ----------- | 
-| <*opakovat*> | Ano | String | Název pro smyčku do | 
+| <*opakovat*> | Ano | Řetězec | Název pro smyčku do | 
 ||||| 
 
 | Vrácená hodnota | Typ | Popis | 
@@ -2434,7 +2437,7 @@ iterationIndexes('<loopName>')
 | <*indexovacím*> | Integer | Hodnota indexu pro aktuální iteraci uvnitř zadaného do smyčky | 
 |||| 
 
-*Příklad* 
+*Případě* 
 
 Tento příklad vytvoří proměnnou čítače a zvýší proměnnou o jednu během každé iterace ve smyčce do, dokud hodnota čítače nedosáhne pěti. V příkladu je také vytvořena proměnná, která sleduje aktuální index pro každou iteraci. V rámci smyčky do v rámci každé iterace příklad zvýší čítač a potom přiřadí hodnotu čítače k aktuální hodnotě indexu a poté zvýší čítač. Ve smyčce tento příklad odkazuje na aktuální index iterace pomocí `iterationIndexes` funkce:
 
@@ -2607,7 +2610,7 @@ intersection('<collection1>', '<collection2>', ...)
 | <*společné položky*> | Pole nebo objekt, v uvedeném pořadí | Kolekce, která má v zadaných kolekcích jenom společné položky |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad najde společné položky v těchto polích:
 
@@ -2630,15 +2633,15 @@ join([<collection>], '<delimiter>')
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*kolekce*> | Ano | Pole | Pole, ve kterém se mají položky připojit |
-| <*oddělovač*> | Ano | String | Oddělovač, který se zobrazí mezi jednotlivými znaky ve výsledném řetězci |
+| <*oddělovač*> | Ano | Řetězec | Oddělovač, který se zobrazí mezi jednotlivými znaky ve výsledném řetězci |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*CHAR1* >< *oddělovač* >< *CHAR2* >< *oddělovač*>... | String | Výsledný řetězec vytvořený ze všech položek v zadaném poli |
+| <*CHAR1* >< *oddělovač* >< *CHAR2* >< *oddělovač*>... | Řetězec | Výsledný řetězec vytvořený ze všech položek v zadaném poli |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří řetězec ze všech položek v tomto poli se zadaným znakem jako oddělovač:
 
@@ -2669,7 +2672,7 @@ last([<collection>])
 | <*Poslední kolekce – položka*> | Řetězec nebo pole, v uvedeném pořadí | Poslední položka v kolekci |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady vyhledají poslední položku v těchto kolekcích:
 
@@ -2696,8 +2699,8 @@ lastIndexOf('<text>', '<searchText>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*textové*> | Ano | String | Řetězec, který obsahuje dílčí řetězec, který se má najít |
-| <*Prohledávanýtext*> | Ano | String | Dílčí řetězec, který se má najít |
+| <*textové*> | Ano | Řetězec | Řetězec, který obsahuje dílčí řetězec, který se má najít |
+| <*Prohledávanýtext*> | Ano | Řetězec | Dílčí řetězec, který se má najít |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -2705,7 +2708,7 @@ lastIndexOf('<text>', '<searchText>')
 | <*konec-index-hodnota*> | Integer | Počáteční pozice nebo hodnota indexu pro poslední výskyt zadaného podřetězce. <p>Pokud řetězec nebyl nalezen, vrátí číslo-1. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad najde počáteční hodnotu indexu pro poslední výskyt podřetězce "World" v řetězci "Hello World":
 
@@ -2736,7 +2739,7 @@ length([<collection>])
 | <*Délka nebo počet*> | Integer | Počet položek v kolekci |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady počítají počet položek v těchto kolekcích:
 
@@ -2770,7 +2773,7 @@ less('<value>', '<compareTo>')
 | true nebo false | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota menší než druhá hodnota. Vrátí hodnotu false, pokud je první hodnota rovna nebo větší než druhá hodnota. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady kontrolují, zda je první hodnota menší než druhá hodnota.
 
@@ -2807,7 +2810,7 @@ lessOrEquals('<value>', '<compareTo>')
 | true nebo false  | Logická hodnota | Vrátí hodnotu true, pokud je první hodnota menší nebo rovna druhé hodnotě. Vrátí hodnotu false, pokud je první hodnota větší než druhá hodnota. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady kontrolují, zda je první hodnota menší nebo stejná jako druhá hodnota.
 
@@ -2834,10 +2837,10 @@ listCallbackUrl()
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*zpětné volání – adresa URL*> | String | Adresa URL zpětného volání pro aktivační událost nebo akci |
+| <*zpětné volání – adresa URL*> | Řetězec | Adresa URL zpětného volání pro aktivační událost nebo akci |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad ukazuje ukázkovou adresu URL zpětného volání, kterou může tato funkce vrátit:
 
@@ -2865,7 +2868,7 @@ max([<number1>, <number2>, ...])
 | <*Max – hodnota*> | Integer nebo float | Nejvyšší hodnota v zadaném poli nebo sadě čísel |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady získávají nejvyšší hodnotu ze sady čísel a pole:
 
@@ -2898,7 +2901,7 @@ min([<number1>, <number2>, ...])
 | <*minimální hodnota*> | Integer nebo float | Nejnižší hodnota v zadané sadě čísel nebo zadaného pole |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady získají nejnižší hodnotu v sadě čísel a poli:
 
@@ -2931,7 +2934,7 @@ mod(<dividend>, <divisor>)
 | <*modulo – výsledek*> | Integer nebo float | Zbytek po dělení prvního čísla druhým číslem |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vydělí první číslo druhým číslem:
 
@@ -2962,7 +2965,7 @@ mul(<multiplicand1>, <multiplicand2>)
 | <*výsledek produktu*> | Integer nebo float | Součin pro násobení prvního čísla druhým číslem |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady vynásobí první číslo druhým číslem:
 
@@ -2988,13 +2991,13 @@ multipartBody('<actionName>', <index>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ano | String | Název akce, která má výstup s více částmi |
+| <*actionName*> | Ano | Řetězec | Název akce, která má výstup s více částmi |
 | <*indexovacím*> | Ano | Integer | Hodnota indexu pro část, kterou chcete |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*těles*> | String | Tělo pro určenou část |
+| <*těles*> | Řetězec | Tělo pro určenou část |
 ||||
 
 <a name="not"></a>
@@ -3048,7 +3051,7 @@ A vrátí tyto výsledky:
 
 <a name="or"></a>
 
-### <a name="or"></a>nebo
+### <a name="or"></a>or
 
 Ověřte, zda je alespoň jeden výraz pravdivý.
 Vrátí hodnotu true, pokud má alespoň jeden výraz hodnotu true, nebo vrátí hodnotu false, pokud všechny mají hodnotu false.
@@ -3107,15 +3110,15 @@ outputs('<actionName>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*actionName*> | Ano | String | Název výstupu akce, který chcete |
+| <*actionName*> | Ano | Řetězec | Název výstupu akce, který chcete |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | -----| ----------- |
-| <*výkonem*> | String | Výstup ze zadané akce |
+| <*výkonem*> | Řetězec | Výstup ze zadané akce |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad načte výstup z akce Twitteru `Get user` :
 
@@ -3170,7 +3173,7 @@ parameters('<parameterName>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*parameterName*> | Ano | String | Název parametru, jehož hodnota má být |
+| <*parameterName*> | Ano | Řetězec | Název parametru, jehož hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3178,7 +3181,7 @@ parameters('<parameterName>')
 | <*hodnota parametru*> | Všechny | Hodnota pro zadaný parametr |
 ||||
 
-*Příklad*
+*Případě*
 
 Předpokládejme, že máte tuto hodnotu JSON:
 
@@ -3217,7 +3220,7 @@ rand(<minValue>, <maxValue>)
 | <*náhodný výsledek*> | Integer | Náhodné celé číslo vrácené ze zadaného rozsahu |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad získá náhodné celé číslo ze zadaného rozsahu s výjimkou maximální hodnoty:
 
@@ -3248,7 +3251,7 @@ range(<startIndex>, <count>)
 | [<*Rozsah-> výsledků* ] | Pole | Pole s celými čísly počínaje zadaným indexem |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří celočíselné pole, které začíná od zadaného indexu a má zadaný počet celých čísel:
 
@@ -3270,17 +3273,17 @@ replace('<text>', '<oldText>', '<newText>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*textové*> | Ano | String | Řetězec, který má podřetězec, který má být nahrazen |
-| <*oldText*> | Ano | String | Dílčí řetězec, který má být nahrazen |
-| <*newText*> | Ano | String | Řetězec pro nahrazení |
+| <*textové*> | Ano | Řetězec | Řetězec, který má podřetězec, který má být nahrazen |
+| <*oldText*> | Ano | Řetězec | Dílčí řetězec, který má být nahrazen |
+| <*newText*> | Ano | Řetězec | Řetězec pro nahrazení |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*aktualizovaný text*> | String | Aktualizovaný řetězec po nahrazení podřetězce <p>Pokud dílčí řetězec nebyl nalezen, vrátí původní řetězec. |
+| <*aktualizovaný text*> | Řetězec | Aktualizovaný řetězec po nahrazení podřetězce <p>Pokud dílčí řetězec nebyl nalezen, vrátí původní řetězec. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad najde "starý" podřetězec v "starém řetězci" a nahradí "Old" novou:
 
@@ -3303,7 +3306,7 @@ removeProperty(<object>, '<property>')
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*předmětů*> | Ano | Objekt | Objekt JSON, ze kterého chcete odebrat vlastnost |
-| <*majetek*> | Ano | String | Název vlastnosti, která se má odebrat |
+| <*majetek*> | Ano | Řetězec | Název vlastnosti, která se má odebrat |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3320,8 +3323,8 @@ removeProperty(<object>['<parent-property>'], '<child-property>')
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*předmětů*> | Ano | Objekt | Objekt JSON, jehož vlastnost se má odebrat |
-| <*Nadřazená vlastnost*> | Ano | String | Název nadřazené vlastnosti s podřízenou vlastností, kterou chcete odebrat |
-| <*podřízená vlastnost*> | Ano | String | Název pro podřízenou vlastnost, která se má odebrat |
+| <*Nadřazená vlastnost*> | Ano | Řetězec | Název nadřazené vlastnosti s podřízenou vlastností, kterou chcete odebrat |
+| <*podřízená vlastnost*> | Ano | Řetězec | Název pro podřízenou vlastnost, která se má odebrat |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3399,7 +3402,7 @@ result('<scopedActionName>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*scopedActionName*> | Ano | String | Název akce s vymezeným oborem, ze které se mají vrátit vstupy a výstupy ze všech vnitřních akcí |
+| <*scopedActionName*> | Ano | Řetězec | Název akce s vymezeným oborem, ze které se mají vrátit vstupy a výstupy ze všech vnitřních akcí |
 ||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3407,7 +3410,7 @@ result('<scopedActionName>')
 | <*Array – objekt*> | Array – objekt | Pole, které obsahuje pole vstupů a výstupů z každé akce, která se zobrazí v rámci zadané akce s oborem |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vrátí vstupy a výstupy z každé iterace akce HTTP uvnitř `For_each` smyčky pomocí `result()` funkce v `Compose` akci:
 
@@ -3521,7 +3524,7 @@ setProperty(<object>, '<property>', <value>)
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*předmětů*> | Ano | Objekt | Objekt JSON, jehož vlastnost má být nastavena |
-| <*majetek*> | Ano | String | Název existující nebo nové vlastnosti, která se má nastavit |
+| <*majetek*> | Ano | Řetězec | Název existující nebo nové vlastnosti, která se má nastavit |
 | <*osa*> | Ano | Všechny | Hodnota, která se má nastavit pro zadanou vlastnost |
 |||||
 
@@ -3534,8 +3537,8 @@ setProperty(<object>['<parent-property>'], '<parent-property>', setProperty(<obj
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
 | <*předmětů*> | Ano | Objekt | Objekt JSON, jehož vlastnost má být nastavena |
-| <*Nadřazená vlastnost*> | Ano | String | Název nadřazené vlastnosti s podřízenou vlastností, kterou chcete nastavit |
-| <*podřízená vlastnost*> | Ano | String | Název podřízené vlastnosti, která se má nastavit |
+| <*Nadřazená vlastnost*> | Ano | Řetězec | Název nadřazené vlastnosti s podřízenou vlastností, kterou chcete nastavit |
+| <*podřízená vlastnost*> | Ano | Řetězec | Název podřízené vlastnosti, která se má nastavit |
 | <*osa*> | Ano | Všechny | Hodnota, která se má nastavit pro zadanou vlastnost |
 |||||
 
@@ -3621,7 +3624,7 @@ skip([<collection>], <count>)
 | [<*aktualizováno> kolekce* ] | Pole | Aktualizovaná kolekce po odebrání zadaných položek |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad odebere jednu položku, číslo 0, od začátku zadaného pole:
 
@@ -3643,8 +3646,8 @@ split('<text>', '<delimiter>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*textové*> | Ano | String | Řetězec, který se má oddělit k podřetězcům na základě zadaného oddělovače v původním řetězci |
-| <*oddělovač*> | Ano | String | Znak v původním řetězci, který má být použit jako oddělovač |
+| <*textové*> | Ano | Řetězec | Řetězec, který se má oddělit k podřetězcům na základě zadaného oddělovače v původním řetězci |
+| <*oddělovač*> | Ano | Řetězec | Znak v původním řetězci, který má být použit jako oddělovač |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3652,7 +3655,7 @@ split('<text>', '<delimiter>')
 | [<*subřetězec1*>, <*subřetězec2*>,...] | Pole | Pole, které obsahuje podřetězce z původního řetězce oddělené čárkami |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří pole s podřetězci ze zadaného řetězce založeného na zadaném znaku jako oddělovač:
 
@@ -3674,16 +3677,16 @@ startOfDay('<timestamp>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Aktualizováno – časové razítko*> | String | Zadané časové razítko, ale začíná nulovou časovou značkou dne |
+| <*Aktualizováno – časové razítko*> | Řetězec | Zadané časové razítko, ale začíná nulovou časovou značkou dne |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad najde začátek dne pro toto časové razítko:
 
@@ -3705,16 +3708,16 @@ startOfHour('<timestamp>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Aktualizováno – časové razítko*> | String | Zadané časové razítko, ale začíná na označení 0 minuta za hodinu |
+| <*Aktualizováno – časové razítko*> | Řetězec | Zadané časové razítko, ale začíná na označení 0 minuta za hodinu |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad najde začátek hodiny pro toto časové razítko:
 
@@ -3736,13 +3739,13 @@ startOfMonth('<timestamp>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Aktualizováno – časové razítko*> | String | Zadané časové razítko, ale počínaje prvním dnem v měsíci s označením nulové hodiny |
+| <*Aktualizováno – časové razítko*> | Řetězec | Zadané časové razítko, ale počínaje prvním dnem v měsíci s označením nulové hodiny |
 ||||
 
 *Příklad 1*
@@ -3779,8 +3782,8 @@ startsWith('<text>', '<searchText>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*textové*> | Ano | String | Řetězec, který má být zkontrolován |
-| <*Prohledávanýtext*> | Ano | String | Hledaný řetězec, který se má najít |
+| <*textové*> | Ano | Řetězec | Řetězec, který má být zkontrolován |
+| <*Prohledávanýtext*> | Ano | Řetězec | Hledaný řetězec, který se má najít |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -3820,13 +3823,17 @@ string(<value>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | Všechny | Hodnota, která se má převést |
+| <*osa*> | Ano | Všechny | Hodnota, kterou chcete převést. Pokud je tato hodnota null nebo je vyhodnocena jako null, hodnota je převedena na prázdnou řetězcovou `""` hodnotu (). <p><p>Například pokud přiřadíte proměnnou řetězce k neexistující vlastnosti, ke které máte přístup pomocí `?` operátoru, hodnota null je převedena na prázdný řetězec. Porovnávání hodnoty null však není stejné jako porovnávání prázdného řetězce. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*hodnota řetězce*> | String | Verze řetězce pro zadanou hodnotu |
+| <*hodnota řetězce*> | Řetězec | Verze řetězce pro zadanou hodnotu Pokud má parametr *Value* hodnotu null nebo je vyhodnocen jako null, tato hodnota se vrátí jako prázdná hodnota řetězce ( `""` ). |
 ||||
+
+
+
+
 
 *Příklad 1*
 
@@ -3869,7 +3876,7 @@ sub(<minuend>, <subtrahend>)
 | <*vyústit*> | Integer nebo float | Výsledek odečte druhé číslo od prvního čísla. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad odečte druhé číslo od prvního čísla:
 
@@ -3892,17 +3899,17 @@ substring('<text>', <startIndex>, <length>)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*textové*> | Ano | String | Řetězec, jehož znaky chcete |
+| <*textové*> | Ano | Řetězec | Řetězec, jehož znaky chcete |
 | <*Indexu*> | Ano | Integer | Kladné číslo větší nebo rovno 0, které chcete použít jako počáteční pozici nebo hodnotu indexu. |
 | <*časový*> | Ano | Integer | Kladný počet znaků, které chcete v podřetězci. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*podřetězec – výsledek*> | String | Podřetězec, který má zadaný počet znaků od zadané pozice indexu ve zdrojovém řetězci |
+| <*podřetězec – výsledek*> | Řetězec | Podřetězec, který má zadaný počet znaků od zadané pozice indexu ve zdrojovém řetězci |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří podřetězec s pěti znaky ze zadaného řetězce počínaje hodnotou indexu 6:
 
@@ -3925,15 +3932,15 @@ subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec, který obsahuje časové razítko |
+| <*časové razítko*> | Ano | Řetězec | Řetězec, který obsahuje časové razítko |
 | <*doba*> | Ano | Integer | Počet zadaných časových jednotek k odečtení |
-| <*timeUnit*> | Ano | String | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*timeUnit*> | Ano | Řetězec | Jednotka času, která se má použít v *intervalu*: "druhé", "Minute", "hodina", "den", "týden", "měsíc", "rok" |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Aktualizováno – časové razítko*> | String | Časové razítko minus zadaný počet časových jednotek |
+| <*Aktualizováno – časové razítko*> | Řetězec | Časové razítko minus zadaný počet časových jednotek |
 ||||
 
 *Příklad 1*
@@ -3978,7 +3985,7 @@ take([<collection>], <count>)
 | <*podmnožina*> nebo [ *podmnožina* <>] | Řetězec nebo pole, v uvedeném pořadí | Řetězec nebo pole, které má zadaný počet položek od začátku původní kolekce |
 ||||
 
-*Příklad*
+*Případě*
 
 Tyto příklady získají zadaný počet položek od začátku těchto kolekcí:
 
@@ -4004,7 +4011,7 @@ ticks('<timestamp>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*časové razítko*> | Ano | String | Řetězec pro časové razítko |
+| <*časové razítko*> | Ano | Řetězec | Řetězec pro časové razítko |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -4024,15 +4031,15 @@ toLower('<text>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*textové*> | Ano | String | Řetězec, který se má vrátit ve formátu malého písmene |
+| <*textové*> | Ano | Řetězec | Řetězec, který se má vrátit ve formátu malého písmene |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*malý text*> | String | Původní řetězec ve formátu malými písmeny |
+| <*malý text*> | Řetězec | Původní řetězec ve formátu malými písmeny |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad převede tento řetězec na malá písmena:
 
@@ -4054,15 +4061,15 @@ toUpper('<text>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*textové*> | Ano | String | Řetězec, který se má vrátit ve formátu velkého písmene |
+| <*textové*> | Ano | Řetězec | Řetězec, který se má vrátit ve formátu velkého písmene |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Velká písmena textu*> | String | Původní řetězec ve formátu velkých písmen |
+| <*Velká písmena textu*> | Řetězec | Původní řetězec ve formátu velkých písmen |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad převede tento řetězec na velká písmena:
 
@@ -4091,7 +4098,7 @@ trigger()
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*aktivační procedura – výstup*> | String | Výstup triggeru za běhu |
+| <*aktivační procedura – výstup*> | Řetězec | Výstup triggeru za běhu |
 ||||
 
 <a name="triggerBody"></a>
@@ -4108,7 +4115,7 @@ triggerBody()
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*aktivační text – výstup*> | String | `body`Výstup triggeru |
+| <*aktivační text – výstup*> | Řetězec | `body`Výstup triggeru |
 ||||
 
 <a name="triggerFormDataMultiValues"></a>
@@ -4123,7 +4130,7 @@ triggerFormDataMultiValues('<key>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*zkrat*> | Ano | String | Název pro klíč, jehož hodnota má být |
+| <*zkrat*> | Ano | Řetězec | Název pro klíč, jehož hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -4131,7 +4138,7 @@ triggerFormDataMultiValues('<key>')
 | [<*pole-s-klíč-hodnoty*>] | Pole | Pole se všemi hodnotami, které odpovídají zadanému klíči |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří pole z hodnoty klíče "feedUrl" v aktivačním formuláři – data nebo ve výstupu s kódováním informačního formátu RSS:
 
@@ -4154,15 +4161,15 @@ triggerFormDataValue('<key>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*zkrat*> | Ano | String | Název pro klíč, jehož hodnota má být |
+| <*zkrat*> | Ano | Řetězec | Název pro klíč, jehož hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*hodnota klíče*> | String | Hodnota v zadaném klíči |
+| <*hodnota klíče*> | Řetězec | Hodnota v zadaném klíči |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří řetězec z hodnoty klíče "feedUrl" v aktivačním formuláři-data nebo ve výstupu s kódováním informačního formátu RSS:
 
@@ -4189,7 +4196,7 @@ triggerMultipartBody(<index>)
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*těles*> | String | Tělo zadané části výstupu triggeru |
+| <*těles*> | Řetězec | Tělo zadané části výstupu triggeru |
 ||||
 
 <a name="triggerOutputs"></a>
@@ -4206,7 +4213,7 @@ triggerOutputs()
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*aktivační procedura – výstup*> | String | Výstup triggeru za běhu  |
+| <*aktivační procedura – výstup*> | Řetězec | Výstup triggeru za běhu  |
 ||||
 
 <a name="trim"></a>
@@ -4221,15 +4228,15 @@ trim('<text>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*textové*> | Ano | String | Řetězec, který má počáteční a koncovou mezeru, která se má odebrat |
+| <*textové*> | Ano | Řetězec | Řetězec, který má počáteční a koncovou mezeru, která se má odebrat |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*updatedText*> | String | Aktualizovaná verze původního řetězce bez počátečního nebo koncového znaku |
+| <*updatedText*> | Řetězec | Aktualizovaná verze původního řetězce bez počátečního nebo koncového znaku |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad odstraní úvodní a koncové mezery z řetězce "Hello World":
 
@@ -4261,7 +4268,7 @@ union([<collection1>], [<collection2>], ...)
 | <*aktualizacecollection*> | Pole nebo objekt, v uvedeném pořadí | Kolekce se všemi položkami ze zadané kolekce – žádné duplicity |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad načte *všechny* položky z těchto kolekcí:
 
@@ -4285,15 +4292,15 @@ uriComponent('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec, který se má převést na formát kódovaný identifikátorem URI |
+| <*osa*> | Ano | Řetězec | Řetězec, který se má převést na formát kódovaný identifikátorem URI |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*kódovaný identifikátor URI*> | String | Řetězec kódovaný identifikátorem URI s řídicími znaky |
+| <*kódovaný identifikátor URI*> | Řetězec | Řetězec kódovaný identifikátorem URI s řídicími znaky |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří pro tento řetězec verzi kódovanou pomocí identifikátoru URI:
 
@@ -4315,15 +4322,15 @@ uriComponentToBinary('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec kódovaný identifikátorem URI, který se má převést |
+| <*osa*> | Ano | Řetězec | Řetězec kódovaný identifikátorem URI, který se má převést |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*binární-pro kódovaný identifikátor URI*> | String | Binární verze řetězce zakódovaného identifikátorem URI. Binární obsah je kódovaný v kódování Base64 a reprezentován `$content` . |
+| <*binární-pro kódovaný identifikátor URI*> | Řetězec | Binární verze řetězce zakódovaného identifikátorem URI. Binární obsah je kódovaný v kódování Base64 a reprezentován `$content` . |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří binární verzi pro tento řetězec kódovaný pomocí identifikátoru URI:
 
@@ -4350,15 +4357,15 @@ uriComponentToString('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec kódovaný identifikátorem URI k dekódování |
+| <*osa*> | Ano | Řetězec | Řetězec kódovaný identifikátorem URI k dekódování |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*Dekódovatelné – identifikátor URI*> | String | Dekódovaná verze řetězce zakódovaného identifikátorem URI |
+| <*Dekódovatelné – identifikátor URI*> | Řetězec | Dekódovaná verze řetězce zakódovaného identifikátorem URI |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vytvoří dekódovanou verzi řetězce pro tento řetězec kódovaný pomocí identifikátoru URI:
 
@@ -4380,15 +4387,15 @@ uriHost('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI, jehož `host` hodnota má být |
+| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI, jehož `host` hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*hodnota hosta*> | String | `host`Hodnota pro zadaný identifikátor URI |
+| <*hodnota hosta*> | Řetězec | `host`Hodnota pro zadaný identifikátor URI |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad najde `host` hodnotu pro tento identifikátor URI:
 
@@ -4410,15 +4417,15 @@ uriPath('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI, jehož `path` hodnota má být |
+| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI, jehož `path` hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*hodnota Path*> | String | `path`Hodnota pro zadaný identifikátor URI. Pokud `path` hodnota nemá, vrátí znak "/". |
+| <*hodnota Path*> | Řetězec | `path`Hodnota pro zadaný identifikátor URI. Pokud `path` hodnota nemá, vrátí znak "/". |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad najde `path` hodnotu pro tento identifikátor URI:
 
@@ -4440,15 +4447,15 @@ uriPathAndQuery('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI `path` , jehož `query` hodnoty chcete |
+| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI `path` , jehož `query` hodnoty chcete |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*cesta-dotaz-hodnota*> | String | `path`Hodnoty a `query` pro zadaný identifikátor URI. Pokud `path` nezadáte hodnotu, vrátí znak "/". |
+| <*cesta-dotaz-hodnota*> | Řetězec | `path`Hodnoty a `query` pro zadaný identifikátor URI. Pokud `path` nezadáte hodnotu, vrátí znak "/". |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad najde `path` hodnoty a `query` pro tento identifikátor URI:
 
@@ -4470,7 +4477,7 @@ uriPort('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI, jehož `port` hodnota má být |
+| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI, jehož `port` hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -4478,7 +4485,7 @@ uriPort('<uri>')
 | <*Hodnota portu*> | Integer | `port`Hodnota pro zadaný identifikátor URI. Pokud `port` nezadáte hodnotu, vraťte výchozí port pro protokol. |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vrátí `port` hodnotu pro tento identifikátor URI:
 
@@ -4500,15 +4507,15 @@ uriQuery('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI, jehož `query` hodnota má být |
+| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI, jehož `query` hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*dotaz – hodnota*> | String | `query`Hodnota pro zadaný identifikátor URI |
+| <*dotaz – hodnota*> | Řetězec | `query`Hodnota pro zadaný identifikátor URI |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vrátí `query` hodnotu pro tento identifikátor URI:
 
@@ -4530,15 +4537,15 @@ uriScheme('<uri>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*identifikátor URI*> | Ano | String | Identifikátor URI, jehož `scheme` hodnota má být |
+| <*identifikátor URI*> | Ano | Řetězec | Identifikátor URI, jehož `scheme` hodnota má být |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*hodnota schématu*> | String | `scheme`Hodnota pro zadaný identifikátor URI |
+| <*hodnota schématu*> | Řetězec | `scheme`Hodnota pro zadaný identifikátor URI |
 ||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vrátí `scheme` hodnotu pro tento identifikátor URI:
 
@@ -4563,12 +4570,12 @@ Volitelně můžete zadat jiný formát s parametrem <*formát*>.
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*formátovat*> | Ne | String | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
+| <*formátovat*> | No | Řetězec | Buď [jeden specifikátor formátu](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [vlastní vzorek formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). Výchozí formát pro časové razítko je ["o"](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) (RRRR-MM-DDThh: mm: SS: fffffffK), který vyhovuje [normě ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) a uchovává informace o časovém pásmu. |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| <*aktuální – časové razítko*> | String | Aktuální datum a čas |
+| <*aktuální – časové razítko*> | Řetězec | Aktuální datum a čas |
 ||||
 
 *Příklad 1*
@@ -4605,7 +4612,7 @@ variables('<variableName>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*variableName*> | Ano | String | Název proměnné, jejíž hodnotu chcete |
+| <*variableName*> | Ano | Řetězec | Název proměnné, jejíž hodnotu chcete |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
@@ -4613,7 +4620,7 @@ variables('<variableName>')
 | <*Proměnná – hodnota*> | Všechny | Hodnota pro zadanou proměnnou |
 ||||
 
-*Příklad*
+*Případě*
 
 Předpokládejme, že aktuální hodnota proměnné "numItems" je 20.
 Tento příklad získá celočíselnou hodnotu pro tuto proměnnou:
@@ -4636,10 +4643,10 @@ workflow().<property>
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*majetek*> | Ne | String | Název vlastnosti pracovního postupu, jejíž hodnota má být <p>Objekt pracovního postupu má tyto vlastnosti: **název**, **typ**, **ID**, **umístění**a **spuštění**. Hodnota vlastnosti **spuštění** je také objekt, který má tyto vlastnosti: **název**, **typ**a **ID**. |
+| <*majetek*> | No | Řetězec | Název vlastnosti pracovního postupu, jejíž hodnota má být <p>Objekt pracovního postupu má tyto vlastnosti: **název**, **typ**, **ID**, **umístění**a **spuštění**. Hodnota vlastnosti **spuštění** je také objekt, který má tyto vlastnosti: **název**, **typ**a **ID**. |
 |||||
 
-*Příklad*
+*Případě*
 
 Tento příklad vrátí název aktuálního běhu pracovního postupu:
 
@@ -4659,7 +4666,7 @@ xml('<value>')
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*osa*> | Ano | String | Řetězec s objektem JSON, který se má převést <p>Objekt JSON musí mít pouze jednu kořenovou vlastnost, která nemůže být polem. <br>\\Jako řídicí znak dvojité uvozovky (") použijte znak zpětného lomítka (). |
+| <*osa*> | Ano | Řetězec | Řetězec s objektem JSON, který se má převést <p>Objekt JSON musí mít pouze jednu kořenovou vlastnost, která nemůže být polem. <br>\\Jako řídicí znak dvojité uvozovky (") použijte znak zpětného lomítka (). |
 |||||
 
 | Vrácená hodnota | Typ | Popis |

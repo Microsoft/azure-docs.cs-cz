@@ -1,7 +1,7 @@
 ---
 title: 'Vlastní role: online SQL Server na migrace spravované instance SQL'
 titleSuffix: Azure Database Migration Service
-description: Naučte se používat vlastní role pro SQL Server k Azure SQL Database migrací spravované instance online.
+description: Naučte se používat vlastní role pro SQL Server migrace do online migrací Azure SQL Managed instance.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 10/25/2019
-ms.openlocfilehash: e9a1024ca3ab68841474ab051c029042df4915b5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5d9f222818726fa81dd28fe70042cbfc51162e27
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78254948"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187454"
 ---
-# <a name="custom-roles-for-sql-server-to-sql-database-managed-instance-online-migrations"></a>Vlastní role pro SQL Server pro SQL Database migrace spravovaných instancí online
+# <a name="custom-roles-for-sql-server-to-azure-sql-managed-instance-online-migrations"></a>Vlastní role pro SQL Server migrací do online migrace spravované instance Azure SQL
 
 Azure Database Migration Service používá ID aplikace pro interakci se službami Azure. ID aplikace vyžaduje buď roli přispěvatel na úrovni předplatného (kterou nepovoluje mnoho podnikových bezpečnostních oddělení), nebo vytváření vlastních rolí, které udělují specifická oprávnění, která služba Azure Database Migration vyžaduje. Vzhledem k tomu, že v Azure Active Directory existuje limit 2 000 vlastních rolí, možná budete chtít zkombinovat všechna oprávnění požadovaná konkrétně ID aplikace do jedné nebo dvou vlastních rolí a potom udělit ID aplikace vlastní roli pro konkrétní objekty nebo skupiny prostředků (vs. na úrovni předplatného). Pokud počet vlastních rolí není obavou, můžete vlastní role rozdělit podle typu prostředku a vytvořit tak tři vlastní role celkem, jak je popsáno níže.
 
@@ -30,7 +30,7 @@ Azure Database Migration Service používá ID aplikace pro interakci se služba
 V současnosti doporučujeme vytvořit minimálně dvě vlastní role pro ID aplikace, jednu na úrovni prostředku a druhou na úrovni předplatného.
 
 > [!NOTE]
-> Poslední požadavek na vlastní roli možná nebude možné odebrat, protože se do Azure nasadí nový kód spravované instance SQL Database.
+> Poslední požadavek na vlastní roli možná nebude možné odebrat, protože nový kód spravované instance SQL je nasazený do Azure.
 
 **Vlastní role pro ID aplikace** Tato role se vyžaduje pro Azure Database Migration Service migrace na úrovni *prostředku* nebo *skupiny prostředků* (Další informace o ID aplikace najdete v článku [použití portálu k vytvoření aplikace a instančního objektu služby Azure AD, který má přístup k prostředkům](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal)).
 
@@ -87,14 +87,14 @@ Další informace najdete v článku [vlastní role pro prostředky Azure](https
 
 Po vytvoření těchto vlastních rolí je nutné přidat přiřazení rolí uživatelům a ID aplikací k příslušným prostředkům nebo skupinám prostředků:
 
-* Roli "DMS role – ID aplikace" musí být udělené ID aplikace, které se bude používat pro migrace, a také na úrovni účtu úložiště, Azure Database Migration Service instance a SQL Database úrovně prostředků spravované instance.
+* Roli "DMS role – ID aplikace" musí být udělené ID aplikace, které se bude používat pro migrace, a také na úrovni účtu úložiště, Azure Database Migration Service instance a úrovně prostředků spravované instance SQL.
 * Role "DMS role – ID aplikace-sub" musí být udělena ID aplikace na úrovni předplatného (přidělení u prostředku nebo skupiny prostředků se nezdaří). Tento požadavek je dočasný, dokud není nasazena aktualizace kódu.
 
 ## <a name="expanded-number-of-roles"></a>Rozšířený počet rolí
 
 Pokud se počet vlastních rolí v Azure Active Directory netýká, doporučujeme vytvořit celkem tři role. Pořád budete potřebovat roli "DMS role-App ID – sub", ale výše uvedená role "DMS role-App ID" je rozdělená podle typu prostředku do dvou různých rolí.
 
-**Vlastní role pro ID aplikace SQL Database Managed instance**
+**Vlastní role pro ID aplikace spravované instance SQL**
 
 ```json
 {

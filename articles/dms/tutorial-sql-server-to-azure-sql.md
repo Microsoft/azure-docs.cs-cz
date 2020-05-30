@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: migrace SQL Server offline do jediné databáze SQL'
 titleSuffix: Azure Database Migration Service
-description: Naučte se migrovat z místního prostředí SQL Server do jedné databáze nebo do fondu databáze v Azure SQL Database offline pomocí Azure Database Migration Service.
+description: Naučte se migrovat z SQL Server Azure SQL Database offline pomocí Azure Database Migration Service.
 services: dms
 author: HJToland3
 ms.author: jtoland
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 9eb5e5063a4aec69e1f21445cb5278caaea82ce2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a3917443e25589cafe1d68522e13ba60ef634341
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020485"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191492"
 ---
-# <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-offline-using-dms"></a>Kurz: migrace SQL Server do jedné databáze nebo ve fondu databáze v Azure SQL Database offline pomocí DMS
+# <a name="tutorial-migrate-sql-server-to-azure-sql-database-offline-using-dms"></a>Kurz: Offline migrace SQL Serveru do služby Azure SQL Database pomocí DMS
 
-Pomocí Azure Database Migration Service můžete migrovat databáze z místní instance SQL Server na [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). V tomto kurzu migrujete databázi **Adventureworks2012** obnovenou do místní instance SQL Server 2016 (nebo novější) do izolované databáze nebo databáze ve fondu v Azure SQL Database pomocí Azure Database Migration Service.
+Pomocí Azure Database Migration Service můžete migrovat databáze z instance SQL Server na [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/). V tomto kurzu migrujete databázi **Adventureworks2012** obnovenou do místní instance SQL Server 2016 (nebo novější) do izolované databáze nebo databáze ve fondu v Azure SQL Database pomocí Azure Database Migration Service.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -74,7 +74,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 ## <a name="assess-your-on-premises-database"></a>Posouzení místní databáze
 
-Než budete moct migrovat data z místní instance SQL Server do izolované databáze nebo databáze ve fondu v Azure SQL Database, je nutné vyhodnotit SQL Server databázi pro všechny blokující problémy, které by mohly bránit migraci. Proveďte posouzení místní databáze pomocí nástroje Data Migration Assistant verze 3.3 nebo novější a postupujte při tom podle kroků popsaných v článku [Posuzování migrace SQL Serveru](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem). Následuje souhrn požadovaných kroků:
+Než budete moct migrovat data z SQL Server instance do izolované databáze nebo databáze ve fondu v Azure SQL Database, musíte vyhodnotit SQL Server databázi pro všechny blokující problémy, které by mohly bránit migraci. Proveďte posouzení místní databáze pomocí nástroje Data Migration Assistant verze 3.3 nebo novější a postupujte při tom podle kroků popsaných v článku [Posuzování migrace SQL Serveru](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem). Následuje souhrn požadovaných kroků:
 
 1. V nástroji Data Migration Assistant vyberte ikonu Nový (+) a pak vyberte typ projektu **Posouzení**.
 2. Zadejte název projektu, v textovém poli **Typ zdrojového serveru** vyberte **SQL Server**, v textovém poli **Typ cílového serveru** vyberte **Azure SQL Database** a pak vyberte **Vytvořit** a vytvořte projekt.
@@ -100,7 +100,7 @@ Než budete moct migrovat data z místní instance SQL Server do izolované data
     Pro izolované databáze nebo databáze ve fondu v Azure SQL Database posouzení identifikují problémy s paritou funkcí a blokující problémy při nasazení do izolované databáze nebo databáze ve fondu.
 
     - Kategorie **Parita funkcí SQL Serveru** poskytuje komplexní sadu doporučení, alternativní postupy, které jsou v Azure k dispozici, a postupy pro zmírnění problémů, které vám pomůžou naplánovat náročnost projektů migrace.
-    - Kategorie **Problémy s kompatibilitou** identifikuje částečně podporované nebo nepodporované funkce, které odrážejí problémy, které můžou blokovat migraci místních databází SQL Serveru do služby Azure SQL Database. K dispozici jsou také doporučení, která vám pomůžou tyto problémy vyřešit.
+    - Kategorie **problémy s kompatibilitou** identifikuje částečně podporované nebo nepodporované funkce, které odráží problémy s kompatibilitou, které by mohly blokovat migraci SQL Server databází do Azure SQL Database. K dispozici jsou také doporučení, která vám pomůžou tyto problémy vyřešit.
 
 6. Výběrem konkrétních možností zkontrolujte výsledky posouzení z hlediska problémů blokujících migraci a problémů s paritou funkcí.
 

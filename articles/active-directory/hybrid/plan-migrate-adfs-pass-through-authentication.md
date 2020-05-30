@@ -8,16 +8,16 @@ ms.reviewer: martincoetzer
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 13a5fc216abc890c19ce3a2d75335431fe2a6799
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41761f8724f1913972298a50d2c35489ddd715b9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79528638"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219033"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrace z federace na předávací ověřování pro Azure Active Directory
 
@@ -25,6 +25,9 @@ Tento článek popisuje, jak přesunout domény organizace z Active Directory Fe
 
 > [!NOTE]
 > Změna metody ověřování vyžaduje plánování, testování a případné výpadky. [Příprava na přípravu](how-to-connect-staged-rollout.md) nabízí alternativní způsob testování a postupného migrace z federace na cloudové ověřování pomocí předávacího ověřování.
+> 
+> Pokud plánujete použití připraveného zavedení, nezapomeňte po dokončení průřezu vypnout funkce pro přípravu.  Další informace najdete v tématu [migrace do cloudového ověřování pomocí připraveného zavedení](how-to-connect-staged-rollout.md) .
+
 
 ## <a name="prerequisites-for-migrating-to-pass-through-authentication"></a>Předpoklady pro migraci na předávací ověřování
 
@@ -49,7 +52,7 @@ Pro většinu zákazníků stačí dva nebo tři ověřovací agenty k zajiště
 
 Můžete si vybrat ze dvou metod migrace ze správy federovaných identit do předávacího ověřování a bezproblémového jednotného přihlašování (SSO). Použitá metoda závisí na tom, jak byla instance AD FS původně nakonfigurovaná.
 
-* **Azure AD Connect**. Pokud jste původně nakonfigurovali AD FS pomocí Azure AD Connect, *musíte* se pomocí Průvodce Azure AD Connect změnit na předávací ověřování.
+* **Azure AD Connect** . Pokud jste původně nakonfigurovali AD FS pomocí Azure AD Connect, *musíte* se pomocí Průvodce Azure AD Connect změnit na předávací ověřování.
 
    Když změníte metodu přihlašování uživatele, Azure AD Connect automaticky spustí rutinu **set-MsolDomainAuthentication** . Azure AD Connect automaticky unfederates všechny ověřené federované domény v tenantovi Azure AD.
 
@@ -223,7 +226,7 @@ Naplánovali jste své řešení. Teď ji teď můžete implementovat. Implement
 
 Aby zařízení používalo bezproblémové jednotné přihlašování, musíte do nastavení zóny intranetu pro uživatele přidat adresu URL služby Azure AD pomocí zásad skupiny ve službě Active Directory.
 
-Ve výchozím nastavení webové prohlížeče automaticky vypočítávají správnou zónu, buď Internet, nebo intranet, z adresy URL. Například **http\/\/: contoso/** Maps do zóny intranetu a **\/\/http: intranet.contoso.com** se mapuje na zónu Internetu (protože adresa URL obsahuje tečku). Prohlížeče odesílají lístky protokolu Kerberos do koncového bodu cloudu, jako je například adresa URL služby Azure AD, jenom v případě, že explicitně přidáte adresu URL do zóny intranetu prohlížeče.
+Ve výchozím nastavení webové prohlížeče automaticky vypočítávají správnou zónu, buď Internet, nebo intranet, z adresy URL. Například **http: \/ \/ Contoso/** Maps do zóny intranetu a **http: \/ \/ intranet.contoso.com** se mapuje na zónu Internetu (protože adresa URL obsahuje tečku). Prohlížeče odesílají lístky protokolu Kerberos do koncového bodu cloudu, jako je například adresa URL služby Azure AD, jenom v případě, že explicitně přidáte adresu URL do zóny intranetu prohlížeče.
 
 Dokončete kroky k [zavedení](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-quick-start) požadovaných změn vašich zařízení.
 
@@ -269,7 +272,7 @@ Nejprve změňte metodu přihlašování:
 
 Další. Nasaďte další metody ověřování:
 
-1. V Azure Portal klikněte na **Azure Active Directory** > **Azure AD Connect**a pak vyberte **předávací ověřování**.
+1. V Azure Portal klikněte na **Azure Active Directory**  >  **Azure AD Connect**a pak vyberte **předávací ověřování**.
 2. Na stránce **předávací ověřování** vyberte tlačítko **Stáhnout** .
 3. Na stránce **Stáhnout agenta** vyberte **přijmout podmínky a stáhnout**.
 
@@ -331,7 +334,7 @@ Nejdřív povolte předávací ověřování:
 
 Dále nasaďte další ověřovací agenty:
 
-1. V Azure Portal klikněte na **Azure Active Directory** > **Azure AD Connect**a pak vyberte **předávací ověřování**.
+1. V Azure Portal klikněte na **Azure Active Directory**  >  **Azure AD Connect**a pak vyberte **předávací ověřování**.
 2. Na stránce **předávací ověřování** vyberte tlačítko **Stáhnout** . 
 3. Na stránce **Stáhnout agenta** vyberte **přijmout podmínky a stáhnout**.
  
@@ -359,7 +362,7 @@ Dokončete převod pomocí modulu Azure AD PowerShell:
    Set-MsolDomainAuthentication -Authentication Managed -DomainName <domain name>
    ```
  
-3. Na portálu Azure AD vyberte **Azure Active Directory** > **Azure AD Connect**.
+3. Na portálu Azure AD vyberte **Azure Active Directory**  >  **Azure AD Connect**.
 4. Po převedení všech federovaných domén ověřte tato nastavení:
    * **Federace** je nastavená na **disabled (zakázáno**).
    * **Bezproblémové jednotné přihlašování** je nastavené na **povoleno**.
@@ -378,7 +381,7 @@ Když váš tenant použil federované identity, přesměruje se uživatelé na 
 Postup testování předávacího ověřování:
 
 1. Spusťte Internet Explorer v režimu InPrivate, aby vás bez problémů přihlašování automaticky přihlásilo.
-2. Přejít na přihlašovací stránku Office 365 ([https://portal.office.com](https://portal.office.com/)).
+2. Přejít na přihlašovací stránku Office 365 ( [https://portal.office.com](https://portal.office.com/) ).
 3. Zadejte hlavní název uživatele (UPN) a pak vyberte **Další**. Ujistěte se, že zadáváte hlavní název uživatele (UPN), který byl synchronizovaný z místní instance služby Active Directory a který dřív používal federované ověřování. Zobrazí se stránka, na které zadáte uživatelské jméno a heslo:
 
    ![Snímek obrazovky zobrazující přihlašovací stránku, na které zadáte uživatelské jméno](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image27.png)
@@ -396,8 +399,8 @@ K otestování bezproblémového jednotného přihlašování:
 1. Přihlaste se k počítači připojenému k doméně, který je připojený k podnikové síti.
 2. V aplikaci Internet Explorer nebo Chrome použijte jednu z následujících adres URL (v doméně nahraďte "contoso"):
 
-   * https:\/\/myapps.Microsoft.com/contoso.com
-   * https:\/\/myapps.Microsoft.com/contoso.onmicrosoft.com
+   * https: \/ \/ myapps.Microsoft.com/contoso.com
+   * https: \/ \/ myapps.Microsoft.com/contoso.onmicrosoft.com
 
    Uživatel se krátce přesměruje na přihlašovací stránku služby Azure AD, kde se zobrazí zpráva "Probíhá pokus o přihlášení". Uživateli se nezobrazí výzva k zadání uživatelského jména nebo hesla.<br />
 

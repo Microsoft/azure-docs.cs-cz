@@ -12,27 +12,28 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: vanto, carlrab
 ms.date: 11/05/2019
-ms.openlocfilehash: cff98c0acfe06a9dbf9e3d7c7dae1b2411823d28
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 348b69933ae6b3706cf16642a138f1b00247cb5a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051791"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219197"
 ---
-# <a name="transparent-data-encryption-tde-in-a-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>Transparentní šifrování dat (TDE) ve spravované instanci SQL pomocí vlastního klíče z Azure Key Vault
+# <a name="transparent-data-encryption-in-sql-managed-instance-using-your-own-key-from-azure-key-vault"></a>transparentní šifrování dat ve spravované instanci SQL pomocí vlastního klíče z Azure Key Vault
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqlmi.md)]
 
-Tento ukázkový skript PowerShellu nakonfiguruje transparentní šifrování dat (TDE) s klíčem spravovaným zákazníkem pro Azure SQL Managed instance pomocí klíče z Azure Key Vault. Tato situace se často označuje jako Bring Your Own Key scénář pro TDE. Další informace o TDE s klíčem spravovaným zákazníkem najdete v tématu [TDE Bring Your Own Key do Azure SQL](../../database/transparent-data-encryption-byok-overview.md).
+Tento ukázkový skript PowerShellu nakonfiguruje transparentní šifrování dat (TDE) s klíčem spravovaným zákazníkem pro spravovanou instanci Azure SQL pomocí klíče z Azure Key Vault. To se často označuje jako scénář BYOK (Přineste si vlastní klíč) pro TDE. Další informace najdete v tématu [Azure SQL transparentní šifrování dat s klíčem spravovaným zákazníkem](../../database/transparent-data-encryption-byok-overview.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Existující spravovaná instance SQL. Viz [použití PowerShellu k vytvoření spravované instance Azure SQL](create-configure-managed-instance-powershell.md).
+- Existující spravovaná instance. Viz [použití PowerShellu k vytvoření spravované instance](create-configure-managed-instance-powershell.md).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Použití prostředí PowerShell místně nebo pomocí Azure Cloud Shell vyžaduje AZ PowerShell 2.3.2 nebo novější verze. Pokud potřebujete provést upgrade, přečtěte si téma [instalace Azure PowerShell Module](/powershell/azure/install-az-ps)nebo spusťte následující vzorový skript a nainstalujte modul pro aktuálního uživatele:
+Použití prostředí PowerShell místně nebo pomocí Azure Cloud Shell vyžaduje Azure PowerShell 2.3.2 nebo novější verzi. Pokud potřebujete provést upgrade, přečtěte si téma [instalace Azure PowerShell Module](/powershell/azure/install-az-ps)nebo spusťte následující vzorový skript a nainstalujte modul pro aktuálního uživatele:
 
 `Install-Module -Name Az -AllowClobber -Scope CurrentUser`
 
@@ -44,6 +45,6 @@ Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Conn
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+Další informace o Azure PowerShell najdete v [dokumentaci k Azure PowerShell](/powershell/azure/overview).
 
-Další ukázkové skripty PowerShellu spravované instance SQL najdete v [skriptech PowerShell spravované instance Azure SQL](../../database/powershell-script-content-guide.md).
+Další ukázkové skripty PowerShellu pro spravovanou instanci SQL najdete v [skriptech PowerShell spravované instance Azure SQL](../../database/powershell-script-content-guide.md).

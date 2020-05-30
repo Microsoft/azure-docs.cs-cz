@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
-ms.openlocfilehash: 8354be28203f1d466df6a22159fef87c9ae6f803
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4d4b2f0305e1069ac7873df24d834ab55512aff7
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83199742"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219719"
 ---
 # <a name="automatically-scale-azure-hdinsight-clusters"></a>Automatické škálování clusterů Azure HDInsight
 
@@ -39,7 +39,7 @@ Při volbě typu škálování Vezměte v úvahu následující faktory:
 
 Automatické škálování průběžně monitoruje cluster a shromažďuje následující metriky:
 
-|Metrika|Popis|
+|Metric|Popis|
 |---|---|
 |Celkový počet vyřízených PROCESORů|Celkový počet jader potřebných ke spuštění provádění všech nevyřízených kontejnerů.|
 |Celkový počet nevyřízených paměti|Celková paměť (v MB) požadovaná k zahájení provádění všech kontejnerů, které čekají na zpracování.|
@@ -182,12 +182,12 @@ Cluster HDInsight s automatickým škálováním na základě plánu můžete vy
             "minInstanceCount": 10,
             "maxInstanceCount": 10
           }
-        },
+        }
       ]
     }
   },
   "name": "workernode",
-  "targetInstanceCount": 4,
+  "targetInstanceCount": 4
 }
 ```
 
@@ -210,7 +210,7 @@ https://management.azure.com/subscriptions/{subscription Id}/resourceGroups/{res
 Použijte příslušné parametry v datové části požadavku. K povolení automatického škálování můžete použít datovou část JSON níže. `{autoscale: null}`K zakázání automatického škálování použijte datovou část.
 
 ```json
-{ autoscale: { capacity: { minInstanceCount: 3, maxInstanceCount: 2 } } }
+{ "autoscale": { "capacity": { "minInstanceCount": 3, "maxInstanceCount": 2 } } }
 ```
 
 Úplný popis všech parametrů datové části najdete v předchozím oddílu věnovaném [Povolení automatického škálování na základě zatížení](#load-based-autoscaling) .

@@ -1,6 +1,6 @@
 ---
 title: Vysoká dostupnost
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database and SQL Managed Instance
 description: Seznamte se s funkcemi a funkcemi vysoké dostupnosti služby spravované instance SQL Azure SQL Database a SQL
 services: sql-database
 ms.service: sql-database
@@ -12,21 +12,21 @@ author: sashan
 ms.author: sashan
 ms.reviewer: carlrab, sashan
 ms.date: 04/02/2020
-ms.openlocfilehash: ca340ce86dc4e6c028840fd7bfdb909ea097629e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 527fe8fa2ad8916f9e5209e4823457d81e745034
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043321"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219356"
 ---
-# <a name="high-availability-for-azure-sql-database--sql-managed-instance"></a>Vysoká dostupnost pro Azure SQL Database & spravované instance SQL
+# <a name="high-availability-for-azure-sql-database-and-sql-managed-instance"></a>Vysoká dostupnost pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Cílem architektury vysoké dostupnosti v Azure SQL Database a spravované instance SQL je zaručit, že vaše databáze bude v provozu až 99,99% času (Další informace týkající se konkrétní smlouvy SLA pro různé úrovně najdete v tématu [SLA pro Azure SQL Database & spravované instance SQL](https://azure.microsoft.com/support/legal/sla/sql-database/)), aniž byste se museli starat o dopad operací údržby a výpadků. Azure automaticky zpracovává důležité úlohy údržby, jako jsou třeba opravy, zálohování, upgrady Windows a SQL, a také neplánované události, jako je například základní hardware, software nebo selhání sítě.  Pokud je podkladová instance SQL opravena nebo převezme služby při selhání, nemůžete si všimnout, pokud ve své aplikaci použijete [logiku opakování](develop-overview.md#resiliency) . SQL Database a spravovaná instance SQL se můžou rychle zotavit i v nejdůležitějších případech, které zajistí, že vaše data jsou vždycky k dispozici.
+Cílem architektury vysoké dostupnosti v Azure SQL Database a spravované instance SQL je zaručit, že vaše databáze bude v provozu až 99,99% času (více informací týkajících se konkrétní smlouvy SLA pro různé úrovně, přečtěte si [smlouvu SLA pro Azure SQL Database a SQL Managed instance](https://azure.microsoft.com/support/legal/sla/sql-database/)), aniž byste se museli starat o dopad operací údržby a výpadků. Azure automaticky zpracovává důležité úlohy údržby, jako jsou třeba opravy, zálohování, upgrade Windows a Azure SQL, a také neplánované události, jako je například základní hardware, software nebo selhání sítě.  Pokud je podkladová databáze v Azure SQL Database opravena nebo převezme služby při selhání, nemůžete si všimnout, pokud ve své aplikaci použijete [logiku opakování](develop-overview.md#resiliency) . SQL Database a spravovaná instance SQL se můžou rychle zotavit i v nejdůležitějších případech, které zajistí, že vaše data jsou vždycky k dispozici.
 
 Řešení vysoké dostupnosti je navrženo tak, aby se zajistilo, že potvrzená data nejsou nikdy ztracena z důvodu selhání, že operace údržby neovlivní vaše zatížení a že databáze nebude v rámci softwarové architektury jediným bodem selhání. Neexistují žádná časová období údržby ani výpadky, které by měly vyžadovat, abyste při upgradu nebo údržbě databáze zastavili úlohy.
 
-K dispozici jsou dva modely architektury s vysokou dostupností:
+K dispozici jsou dva modely architektury vysoké dostupnosti:
 
 - **Standardní model dostupnosti** založený na oddělení výpočetních prostředků a úložiště.  Spoléhá se na vysokou dostupnost a spolehlivost vzdálené vrstvy úložiště. Tato architektura cílí na rozpočtově orientované podnikové aplikace, které mohou tolerovat některé snížení výkonu během údržby.
 - **Model dostupnosti Premium** , který je založen na clusteru procesů databázového stroje. Spoléhá na to, že je vždy kvorum dostupných uzlů databázového stroje. Tato architektura cílí na kritické aplikace s vysokými nároky na vstupně-výstupní operace, vysokou přenosovou rychlostí a zaručuje minimální dopad na výkon na vaše zatížení během aktivit údržby.
@@ -52,9 +52,9 @@ Pokaždé, když je databázový stroj nebo operační systém upgradovaný, neb
 
 ![Cluster uzlů databázového stroje](./media/high-availability-sla/business-critical-service-tier.png)
 
-Podkladové soubory databáze (. mdf/. ldf) jsou umístěné v připojeném úložišti SSD, aby bylo možné zajistit velmi nízkou latenci v/v pro vaše zatížení. Vysoká dostupnost se implementuje pomocí technologie podobné SQL Server [skupinám dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Cluster obsahuje jednu primární repliku, která je přístupná pro úlohy zákazníka pro čtení i zápis, a to až ze tří sekundárních replik (výpočetní výkon a úložiště), které obsahují kopie dat. Primární uzel průběžně přenáší změny do sekundárních uzlů v pořadí a před potvrzením každé transakce zajišťuje, aby byla data synchronizována do alespoň jedné sekundární repliky. Tento postup zaručuje, že pokud dojde k selhání primárního uzlu z jakéhokoli důvodu, je vždy plně synchronizovaný uzel, který převezme služby při selhání. Převzetí služeb při selhání iniciuje Service Fabric Azure. Jakmile se sekundární replika pokusí o nový primární uzel, vytvoří se další sekundární replika, která zajistí, že cluster má dostatek uzlů (sada kvora). Po dokončení převzetí služeb při selhání se připojení SQL automaticky přesměrují do nového primárního uzlu.
+Podkladové soubory databáze (. mdf/. ldf) jsou umístěné v připojeném úložišti SSD, aby bylo možné zajistit velmi nízkou latenci v/v pro vaše zatížení. Vysoká dostupnost se implementuje pomocí technologie podobné SQL Server [skupinám dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Cluster obsahuje jednu primární repliku, která je přístupná pro úlohy zákazníka pro čtení i zápis, a to až ze tří sekundárních replik (výpočetní výkon a úložiště), které obsahují kopie dat. Primární uzel průběžně přenáší změny do sekundárních uzlů v pořadí a před potvrzením každé transakce zajišťuje, aby byla data synchronizována do alespoň jedné sekundární repliky. Tento postup zaručuje, že pokud dojde k selhání primárního uzlu z jakéhokoli důvodu, je vždy plně synchronizovaný uzel, který převezme služby při selhání. Převzetí služeb při selhání iniciuje Service Fabric Azure. Jakmile se sekundární replika pokusí o nový primární uzel, vytvoří se další sekundární replika, která zajistí, že cluster má dostatek uzlů (sada kvora). Po dokončení převzetí služeb při selhání se připojení Azure SQL automaticky přesměrují do nového primárního uzlu.
 
-Model dostupnosti Premium navíc nabízí možnost přesměrovat připojení SQL jen pro čtení na jednu ze sekundárních replik. Tato funkce se nazývá horizontální navýšení [kapacity čtení](read-scale-out.md). Poskytuje 100% dodatečnou výpočetní kapacitu bez dalších poplatků za vypínání operací jen pro čtení, jako jsou analytické úlohy, z primární repliky.
+Model dostupnosti Premium navíc nabízí možnost přesměrovat připojení Azure SQL, která jsou jen pro čtení, na jednu ze sekundárních replik. Tato funkce se nazývá horizontální navýšení [kapacity čtení](read-scale-out.md). Poskytuje 100% dodatečnou výpočetní kapacitu bez dalších poplatků za vypínání operací jen pro čtení, jako jsou analytické úlohy, z primární repliky.
 
 ## <a name="hyperscale-service-tier-availability"></a>Dostupnost vrstvy služeb s škálovatelným škálováním
 
@@ -102,7 +102,7 @@ Převzetí služeb při selhání se dá iniciovat pomocí REST API nebo PowerSh
 
 ## <a name="conclusion"></a>Závěr
 
-Azure SQL Database a Azure SQL Managed instance jsou integrované řešení s vysokou dostupností, které je hluboko integrované s platformou Azure. Je závislý na Service Fabric pro detekci selhání a obnovení, v úložišti objektů BLOB v Azure pro ochranu dat a na Zóny dostupnosti pro zajištění vyšší odolnosti proti chybám. SQL Database a SQL Managed instance navíc využívají technologii skupin dostupnosti Always On z SQL Server pro replikaci a převzetí služeb při selhání. Kombinace těchto technologií umožňuje aplikacím plně realizovat výhody modelu kombinovaného úložiště a podporuje nejnáročnější SLA.
+Azure SQL Database a Azure SQL Managed instance jsou integrované řešení s vysokou dostupností, které je hluboko integrované s platformou Azure. Je závislý na Service Fabric pro detekci selhání a obnovení, v úložišti objektů BLOB v Azure pro ochranu dat a na Zóny dostupnosti pro zajištění vyšší odolnosti proti chybám. Kromě toho SQL Database a SQL Managed instance využívají technologii skupin dostupnosti Always On z instance SQL Server pro replikaci a převzetí služeb při selhání. Kombinace těchto technologií umožňuje aplikacím plně realizovat výhody modelu kombinovaného úložiště a podporuje nejnáročnější SLA.
 
 ## <a name="next-steps"></a>Další kroky
 

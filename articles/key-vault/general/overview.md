@@ -11,12 +11,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 9334cd0fa54212eac937742215f9c2e704a8bd9c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7ef31a11414fad1b9a3d06d00055c36c995adcce
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81688023"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216322"
 ---
 # <a name="about-azure-key-vault"></a>Informace o službě Azure Key Vault
 
@@ -73,7 +73,7 @@ Kromě toho trezory klíčů Azure umožňují oddělení tajných klíčů apli
 
 V Azure se jako zabezpečené úložiště používá Key Vault k zjednodušení podobných scénářů:
 -  [Azure Disk Encryption](../../security/fundamentals/encryption-overview.md)
--  Funkce [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) na SQL serveru a Azure SQL Database
+-  Funkce [Always Encrypted]( https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) a [transparentní šifrování dat]( https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption?view=sql-server-ver15) v systému SQL Server a Azure SQL Database
 - [Azure App Service]( https://docs.microsoft.com/azure/app-service/configure-ssl-certificate). 
 
 Samotná služba Key Vault se může integrovat s účty úložiště, centry událostí a analytikou protokolů.

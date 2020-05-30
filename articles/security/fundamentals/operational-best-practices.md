@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 80b8adfc26cd87e0788852e98fddb0fd3f2e8cd5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56132eae03a52af425e00bec93a63a697a2a55e6
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82188582"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204731"
 ---
 # <a name="azure-operational-security-best-practices"></a>Osvědčené postupy pro provozní zabezpečení Azure
 Tento článek poskytuje sadu provozních osvědčených postupů pro ochranu vašich dat, aplikací a dalších prostředků v Azure.
@@ -215,8 +215,8 @@ Další informace najdete v tématu [Vytvoření a Správa zásad pro vymáhán�
 **Osvědčený postup**: Identifikujte role zodpovědné za monitorování porušení zásad a zajistěte, aby byla akce správné nápravy provedena rychle.   
 **Podrobnosti**: přiřazená role monitoruje dodržování předpisů prostřednictvím [Azure Portal](../../governance/policy/how-to/get-compliance-data.md#portal) nebo prostřednictvím [příkazového řádku](../../governance/policy/how-to/get-compliance-data.md#command-line).
 
-**Osvědčený postup**: Azure Policy je technická reprezentace písemných zásad organizace. Namapujte všechny zásady Azure na zásady organizace, abyste snížili nejasnost a zvýšili konzistenci.   
-**Podrobnosti**: mapování dokumentů v dokumentaci vaší organizace nebo v definici Azure Policy samotné přidáním odkazu na zásadu organizace v [definici Azure Policy](../../governance/policy/concepts/definition-structure.md#display-name-and-description) nebo v popisu [iniciativy Azure Policy](../../governance/policy/concepts/definition-structure.md#initiatives) .
+**Osvědčený postup**: Azure Policy je technická reprezentace písemných zásad organizace. Namapujte všechny definice Azure Policy na zásady organizace, abyste snížili nejasnost a zvýšili konzistenci.   
+**Podrobnosti**: mapování dokumentů v dokumentaci vaší organizace nebo v definici Azure Policy samotné přidáním odkazu na zásadu organizace v [definici zásady](../../governance/policy/concepts/definition-structure.md#display-name-and-description) nebo popisu [definice iniciativy](../../governance/policy/concepts/initiative-definition-structure.md#metadata) .
 
 ## <a name="monitor-azure-ad-risk-reports"></a>Monitorování sestav rizik Azure AD
 Pokud útočníci získají přístup k prostředí tím, že ukrást identitu uživatele, dojde k převážné většině narušení zabezpečení. Zjišťování ohrožených identit není jednoduché. Azure AD pomocí adaptivních algoritmů strojového učení a heuristiky detekuje podezřelé akce, které souvisejí s vašimi uživatelskými účty. Každá zjištěná podezřelá akce je uložená v záznamu s názvem [detekce rizik](../../active-directory/reports-monitoring/concept-risk-events.md). Detekce rizik se zaznamenávají v sestavách zabezpečení Azure AD. Další informace najdete v sestavě zabezpečení [rizikové uživatele](../../active-directory/reports-monitoring/concept-user-at-risk.md) a [zabezpečení rizikových přihlášení](../../active-directory/reports-monitoring/concept-risky-sign-ins.md).

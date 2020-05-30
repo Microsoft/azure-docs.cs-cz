@@ -1,14 +1,14 @@
 ---
 title: Podrobnosti struktury definice zásad
 description: Popisuje způsob, jakým se používají definice zásad k navázání konvencí pro prostředky Azure ve vaší organizaci.
-ms.date: 04/03/2020
+ms.date: 05/11/2020
 ms.topic: conceptual
-ms.openlocfilehash: a4f136bc805cd48d05c2378b47966b4e4e4c60fb
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: de9b3c5242f361c9f0cf7128a5ec32c0e7dce428
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168501"
+ms.locfileid: "84205020"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definic Azure Policy
 
@@ -17,14 +17,15 @@ Přečtěte si další informace o [podmínkách](#conditions).
 
 Definováním konvencí můžete řídit náklady a snadněji spravovat prostředky. Můžete například určit, že jsou povoleny pouze určité typy virtuálních počítačů. Nebo můžete vyžadovat, aby všechny prostředky měly konkrétní značku. Zásady se dědí ze všech podřízených prostředků. Pokud se zásada použije pro skupinu prostředků, vztahuje se na všechny prostředky v této skupině prostředků.
 
-Schéma definice zásad najdete tady:[https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-06-01/policyDefinition.json)
+Schéma definice zásad najdete tady:[https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json](https://schema.management.azure.com/schemas/2019-09-01/policyDefinition.json)
 
 K vytvoření definice zásady použijete JSON. Definice zásad obsahuje prvky pro:
 
-- režim
-- parameters
 - zobrazované jméno
 - description
+- režim
+- zprostředkovatele identity
+- parameters
 - pravidlo zásad
   - logické vyhodnocení
   - až
@@ -34,7 +35,13 @@ Například následující JSON zobrazuje zásadu, která omezuje, kde jsou pros
 ```json
 {
     "properties": {
+        "displayName": "Allowed locations",
+        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
         "mode": "all",
+        "metadata": {
+            "version": "1.0.0",
+            "category": "Locations"
+        },
         "parameters": {
             "allowedLocations": {
                 "type": "array",
@@ -46,8 +53,6 @@ Například následující JSON zobrazuje zásadu, která omezuje, kde jsou pros
                 "defaultValue": [ "westus2" ]
             }
         },
-        "displayName": "Allowed locations",
-        "description": "This policy enables you to restrict the locations your organization can specify when deploying resources.",
         "policyRule": {
             "if": {
                 "not": {
@@ -63,7 +68,22 @@ Například následující JSON zobrazuje zásadu, která omezuje, kde jsou pros
 }
 ```
 
-Všechny ukázky Azure Policy jsou na [Azure Policy Samples](../samples/index.md).
+Azure Policy předdefinované a vzory jsou v [Azure Policy Samples](../samples/index.md).
+
+## <a name="display-name-and-description"></a>Zobrazované jméno a popis
+
+K identifikaci definice zásad a zadání kontextu, kdy se má použít, můžete použít **DisplayName** a **Description** . hodnota **DisplayName** má maximální délku _128_ znaků a **popis** nesmí být delší než _512_ znaků.
+
+> [!NOTE]
+> Během vytváření nebo aktualizace definice zásady, **ID**, **typu**a **název** jsou definovány vlastnostmi, které jsou externí pro JSON a nejsou nezbytné v souboru JSON. Načtení definice zásady prostřednictvím sady SDK vrátí vlastnosti **ID**, **typu**a **názvu** jako součást formátu JSON, ale každá z nich je informace jen pro čtení, které se týkají definice zásady.
+
+## <a name="type"></a>Typ
+
+I když nelze nastavit vlastnost **typu** , existují tři hodnoty, které jsou vráceny sadou SDK a viditelné na portálu:
+
+- `Builtin`: Tyto definice zásad poskytuje a udržuje společnost Microsoft.
+- `Custom`: Tato hodnota obsahuje všechny definice zásad vytvořené zákazníky.
+- `Static`: Označuje definici zásady [dodržování předpisů pro zákonné](./regulatory-compliance.md) **vlastnictví s vlastnictvím**Microsoftu. Výsledky dodržování předpisů pro tyto definice zásad jsou výsledky auditů třetích stran v infrastruktuře Microsoftu. V Azure Portal se tato hodnota někdy zobrazuje jako **spravovaná Microsoftem**. Další informace najdete v tématu [sdílená odpovědnost v cloudu](../../../security/fundamentals/shared-responsibility.md).
 
 ## <a name="mode"></a>Mode
 
@@ -93,6 +113,20 @@ V současné době jsou podporovány následující režimy poskytovatele prost�
 > [!NOTE]
 > Režimy poskytovatele prostředků podporují jenom integrované definice zásad a nepodporují iniciativy ve verzi Preview.
 
+## <a name="metadata"></a>Metadata
+
+Volitelná `metadata` vlastnost ukládá informace o definici zásady. Zákazníci mohou definovat libovolné vlastnosti a hodnoty, které jsou užitečné pro jejich organizaci v `metadata` . Existují však některé _běžné_ vlastnosti, které používá Azure Policy a v integrovaných modulech.
+
+### <a name="common-metadata-properties"></a>Vlastnosti běžných metadat
+
+- `version`(String): sleduje podrobnosti o verzi obsahu definice zásady.
+- `category`(String): Určuje, pod kterou kategorii v Azure Portal je tato definice zásad zobrazená.
+- `preview`(Boolean): příznak True nebo false pro, pokud je definice zásady ve _verzi Preview_.
+- `deprecated`(Boolean): příznak True nebo false pro, pokud byla definice zásad označena jako _zastaralá_.
+
+> [!NOTE]
+> Služba Azure Policy používá `version` vlastnosti, `preview` a `deprecated` k vyjádření úrovně změny předdefinované definice nebo iniciativy a stavu zásad. Formát `version` je: `{Major}.{Minor}.{Patch}` . Konkrétní stavy, například _zastaralé_ nebo ve _verzi Preview_, jsou připojeny k `version` vlastnosti nebo v jiné vlastnosti jako **logická hodnota**. Další informace o způsobu, jakým jsou předdefinované verze Azure Policy, najdete v tématu [Vestavěná správa verzí](https://github.com/Azure/azure-policy/blob/master/built-in-policies/README.md).
+
 ## <a name="parameters"></a>Parametry
 
 Parametry vám pomůžou zjednodušit správu zásad tím, že se sníží počet definic zásad. Představte si parametry jako pole ve formuláři – `name` , `address` , `city` , `state` . Tyto parametry vždy zůstávají stejné, ale jejich hodnoty se změní na základě jednotlivých vyplňování formuláře.
@@ -105,17 +139,11 @@ Parametry fungují stejným způsobem při vytváření zásad. Zahrnutím param
 
 Parametr má následující vlastnosti, které se používají v definici zásady:
 
-- **Name (název**): název parametru. Používá se `parameters` funkcí nasazení v rámci pravidla zásad. Další informace najdete v tématu [použití hodnoty parametru](#using-a-parameter-value).
+- `name`: Název vašeho parametru. Používá se `parameters` funkcí nasazení v rámci pravidla zásad. Další informace najdete v tématu [použití hodnoty parametru](#using-a-parameter-value).
 - `type`: Určuje, zda je parametr typu **řetězec**, **pole**, **objekt**, **Boolean**, **Integer**, **float**nebo **DateTime**.
 - `metadata`: Definuje podvlastnost primárně používané Azure Portal k zobrazení uživatelsky přívětivých informací:
   - `description`: Vysvětlení použití parametru pro. Dá se použít k zadání příkladů přijatelných hodnot.
   - `displayName`: Popisný název zobrazený na portálu pro parametr.
-  - `version`: (Volitelné) sleduje podrobnosti o verzi obsahu definice zásady.
-
-    > [!NOTE]
-    > Služba Azure Policy používá `version` vlastnosti, `preview` a `deprecated` k vyjádření úrovně změny předdefinované definice nebo iniciativy a stavu zásad. Formát `version` je: `{Major}.{Minor}.{Patch}` . Konkrétní stavy, například _zastaralé_ nebo ve _verzi Preview_, jsou připojeny k `version` vlastnosti nebo v jiné vlastnosti jako **logická hodnota**.
-
-  - `category`: (Volitelné) určuje, v jaké kategorii v Azure Portal se tato definice zásady zobrazuje.
   - `strongType`: (Volitelné) používá se při přiřazování definice zásady prostřednictvím portálu. Poskytuje seznam podporující kontext. Další informace najdete v tématu [strongType](#strongtype).
   - `assignPermissions`: (Volitelné) nastavte na _hodnotu true_ , pokud chcete, Azure Portal vytvořit přiřazení rolí během přiřazování zásad. Tato vlastnost je užitečná v případě, že chcete přiřadit oprávnění mimo rozsah přiřazení. Podle definice role v zásadě (nebo definice role v rámci všech zásad v iniciativě) existuje jedno přiřazení role. Hodnota parametru musí být platným prostředkem nebo oborem.
 - `defaultValue`: (Volitelné) nastaví hodnotu parametru v přiřazení, pokud není zadána žádná hodnota.
@@ -180,13 +208,6 @@ Pokud je umístění definice:
 
 - Zásadu můžou přiřadit jenom prostředky v rámci daného **předplatného** .
 - Zásadu můžou přiřadit jenom prostředky v rámci podřízených skupin **pro správu a** podřízených předplatných. Pokud plánujete použít definici zásady pro několik předplatných, umístění musí být skupina pro správu, která obsahuje tyto odběry.
-
-## <a name="display-name-and-description"></a>Zobrazované jméno a popis
-
-K identifikaci definice zásad a zadání kontextu, kdy se má použít, můžete použít **DisplayName** a **Description** . hodnota **DisplayName** má maximální délku _128_ znaků a **popis** nesmí být delší než _512_ znaků.
-
-> [!NOTE]
-> Během vytváření nebo aktualizace definice zásady, **ID**, **typu**a **název** jsou definovány vlastnostmi, které jsou externí pro JSON a nejsou nezbytné v souboru JSON. Načtení definice zásady prostřednictvím sady SDK vrátí vlastnosti **ID**, **typu**a **názvu** jako součást formátu JSON, ale každá z nich je informace jen pro čtení, které se týkají definice zásady.
 
 ## <a name="policy-rule"></a>Pravidlo zásad
 
@@ -713,88 +734,9 @@ Toto ukázkové pravidlo vyhledá všechny shody **hodnoty ipRules \[ \* \] . Va
 
 Další informace najdete v tématu [vyhodnocení \* aliasu []](../how-to/author-policies-for-arrays.md#evaluating-the--alias).
 
-## <a name="initiatives"></a>Iniciativy
-
-Iniciativy umožňují seskupit několik souvisejících definic zásad, které zjednodušují přiřazování a správu, protože pracujete se skupinou jako s jednou položkou. Můžete například seskupit související definice zásad označování do jedné iniciativy. Místo toho, abyste každou zásadu přiřadíte jednotlivě, můžete použít iniciativu.
-
-> [!NOTE]
-> Po přiřazení iniciativy se parametry úrovně iniciativy nedají změnit. Z tohoto důvodu doporučujeme, abyste při definování parametru nastavili hodnotu **DefaultValue** .
-
-Následující příklad ukazuje, jak vytvořit iniciativu pro zpracování dvou značek: `costCenter` a `productName` . Pomocí dvou předdefinovaných zásad použije výchozí hodnotu značky.
-
-```json
-{
-    "properties": {
-        "displayName": "Billing Tags Policy",
-        "policyType": "Custom",
-        "description": "Specify cost Center tag and product name tag",
-        "parameters": {
-            "costCenterValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for Cost Center tag"
-                },
-                "defaultValue": "DefaultCostCenter"
-            },
-            "productNameValue": {
-                "type": "String",
-                "metadata": {
-                    "description": "required value for product Name tag"
-                },
-                "defaultValue": "DefaultProduct"
-            }
-        },
-        "policyDefinitions": [{
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "costCenter"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('costCenterValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            },
-            {
-                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
-                "parameters": {
-                    "tagName": {
-                        "value": "productName"
-                    },
-                    "tagValue": {
-                        "value": "[parameters('productNameValue')]"
-                    }
-                }
-            }
-        ]
-    }
-}
-```
-
 ## <a name="next-steps"></a>Další kroky
 
+- Zobrazení [struktury definice iniciativy](./initiative-definition-structure.md)
 - Přečtěte si příklady na [Azure Policy Samples](../samples/index.md).
 - Projděte si [Vysvětlení efektů zásad](effects.md).
 - Zjistěte, jak [programově vytvářet zásady](../how-to/programmatically-create.md).

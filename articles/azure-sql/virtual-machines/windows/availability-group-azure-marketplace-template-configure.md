@@ -3,7 +3,7 @@ title: Nastavení vysoké dostupnosti pro virtuální počítače s Azure Resour
 description: V tomto kurzu se dozvíte, jak vytvořit skupinu dostupnosti Always On s Azure Virtual Machines v režimu Azure Resource Manager.
 services: virtual-machines-windows
 documentationcenter: na
-author: MikeRayMSFT
+author: MashaMSFT
 manager: craigg
 editor: ''
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: f824ef4964a1039c5ed866e470d19e1306107afe
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d00d8245f14b042b5fa779697ed74edacaf397a6
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049586"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219606"
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Automatické konfigurace skupin dostupnosti Always On v Azure Virtual Machines: Správce prostředků
 
@@ -67,10 +67,10 @@ Azure poskytuje image galerie pro celé řešení. Vyhledání šablony:
 1. Přihlaste se k Azure Portal pomocí svého účtu.
 2. V Azure Portal vyberte **vytvořit prostředek** a otevřete tak **nové** podokno.
 3. V podokně **Nový** vyhledejte **AlwaysOn**.
-   ![Najít šablonu AlwaysOn](./media/availability-group-azure-marketplace-template-configure/16-findalwayson.png)
-4. Ve výsledcích hledání vyhledejte **SQL Server clusteru AlwaysOn**.
-   ![Šablona AlwaysOn](./media/availability-group-azure-marketplace-template-configure/17-alwaysontemplate.png)
-5. V nabídce **Vybrat model nasazení**zvolte možnost **Správce prostředků**.
+  Azure Marketplace zobrazuje výsledky hledání, které zahrnují cluster SQL Server. Tato funkce je ve verzi Preview.
+4. Ve výsledcích hledání vyhledejte a klikněte na **SQL Server cluster AlwaysOn (Preview)**. Postupujte podle pokynů a vytvořte řešení.
+
+Následující části popisují vstup řešení. 
 
 ### <a name="basics"></a>Základy
 

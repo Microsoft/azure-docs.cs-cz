@@ -1,23 +1,23 @@
 ---
 title: Template deployment co-if (Preview)
 description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
-author: mumian
+author: tfitzmac
 ms.topic: conceptual
-ms.date: 04/29/2020
-ms.author: jgao
-ms.openlocfilehash: 70023f4fa5d44c74c7ce14f3a2c09ff14c9d2f8c
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.date: 05/29/2020
+ms.author: tomfitz
+ms.openlocfilehash: 31ef0f26043c416ff902fe792bae064c63f15b20
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581201"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218291"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Operace nasazení šablony ARM – if (Preview)
 
 Před nasazením šablony Azure Resource Manager (ARM) můžete zobrazit náhled změn, ke kterým dojde. Azure Resource Manager poskytuje operaci citlivostní operace, která vám umožní zjistit, jak se prostředky změní, pokud šablonu nasadíte. Operace citlivosti neprovede žádné změny stávajících prostředků. Místo toho odhadne změny, pokud je zadaná šablona nasazena.
 
 > [!NOTE]
-> Operace citlivosti je aktuálně ve verzi Preview. Ve verzi Preview můžou výsledky někdy Ukázat, že se prostředek změní, když se ve skutečnosti žádná změna nestane. Pracujeme na tom, abychom tyto problémy snížili, ale potřebujeme vaši technickou podporu. Nahlaste tyto problémy [https://aka.ms/whatifissues](https://aka.ms/whatifissues)na adrese.
+> Operace citlivosti je aktuálně ve verzi Preview. Ve verzi Preview můžou výsledky někdy Ukázat, že se prostředek změní, když se ve skutečnosti žádná změna nestane. Pracujeme na tom, abychom tyto problémy snížili, ale potřebujeme vaši technickou podporu. Nahlaste tyto problémy na adrese [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 
 Můžete použít operaci s citlivostní operací s Azure PowerShell, Azure CLI nebo REST API operacemi.
 
@@ -101,12 +101,12 @@ Resource changes: 1 to modify.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Chcete-li zobrazit náhled změn před nasazením šablony `-Whatif` , přidejte do příkazu Deployment parametr Switch.
+Chcete-li zobrazit náhled změn před nasazením šablony, přidejte `-Whatif` do příkazu Deployment parametr Switch.
 
 * `New-AzResourceGroupDeployment -Whatif`pro nasazení skupin prostředků
 * `New-AzSubscriptionDeployment -Whatif`a `New-AzDeployment -Whatif` pro nasazení na úrovni předplatného
 
-Pomocí parametru `-Confirm` Switch můžete zobrazit náhled změn a zobrazit výzvu k pokračování v nasazení.
+Pomocí `-Confirm` parametru Switch můžete zobrazit náhled změn a zobrazit výzvu k pokračování v nasazení.
 
 * `New-AzResourceGroupDeployment -Confirm`pro nasazení skupin prostředků
 * `New-AzSubscriptionDeployment -Confirm`a `New-AzDeployment -Confirm` pro nasazení na úrovni předplatného
@@ -118,12 +118,12 @@ Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolo
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Chcete-li zobrazit náhled změn před nasazením `what-if` šablony, použijte příkaz s příkazem nasazení.
+Chcete-li zobrazit náhled změn před nasazením šablony, použijte `what-if` příkaz s příkazem nasazení.
 
 * `az deployment group what-if`pro nasazení skupin prostředků
 * `az deployment sub what-if`pro nasazení na úrovni předplatného
 
-Můžete použít `--confirm-with-what-if` přepínač (nebo jeho krátký tvar `-c`) k zobrazení náhledu změn a zobrazení výzvy k pokračování v nasazení.
+Můžete použít `--confirm-with-what-if` přepínač (nebo jeho krátký tvar `-c` ) k zobrazení náhledu změn a zobrazení výzvy k pokračování v nasazení.
 
 * `az deployment group create --confirm-with-what-if`nebo `-c` pro nasazení skupin prostředků
 * `az deployment sub create --confirm-with-what-if`nebo `-c` pro nasazení na úrovni předplatného
@@ -150,11 +150,11 @@ Operace citlivostní zpracování seznamu obsahuje šest různých typů změn:
 
 - **Ignore**: prostředek existuje, ale není definovaný v šabloně. Prostředek se nebude nasazovat ani upravovat.
 
-- Žádná **Změna**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí, ale vlastnosti prostředku se nezmění. Tento typ změny se vrátí, pokud je [ResultFormat](#result-format) nastaveno `FullResourcePayloads`na, což je výchozí hodnota.
+- Žádná **Změna**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí, ale vlastnosti prostředku se nezmění. Tento typ změny se vrátí, pokud je [ResultFormat](#result-format) nastaveno na `FullResourcePayloads` , což je výchozí hodnota.
 
-- **Upravit**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí a změní se vlastnosti prostředku. Tento typ změny se vrátí, pokud je [ResultFormat](#result-format) nastaveno `FullResourcePayloads`na, což je výchozí hodnota.
+- **Upravit**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí a změní se vlastnosti prostředku. Tento typ změny se vrátí, pokud je [ResultFormat](#result-format) nastaveno na `FullResourcePayloads` , což je výchozí hodnota.
 
-- **Nasazení**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí. Vlastnosti prostředku mohou nebo nemusí být změněny. Tato operace vrátí tento typ změny, pokud nemá dostatek informací k určení, zda se změní některé vlastnosti. Tento stav se zobrazí pouze v [ResultFormat](#result-format) případě, že je `ResourceIdOnly`ResultFormat nastaveno na.
+- **Nasazení**: prostředek existuje a je definován v šabloně. Prostředek se znovu nasadí. Vlastnosti prostředku mohou nebo nemusí být změněny. Tato operace vrátí tento typ změny, pokud nemá dostatek informací k určení, zda se změní některé vlastnosti. Tento stav se zobrazí pouze v případě, že je [ResultFormat](#result-format) nastaveno na `ResourceIdOnly` .
 
 ## <a name="result-format"></a>Výsledný formát
 
@@ -167,7 +167,7 @@ Výchozí hodnota je **FullResourcePayloads**.
 
 Pro příkazy nasazení prostředí PowerShell použijte `-WhatIfResultFormat` parametr. V příkazech programového objektu použijte `ResultFormat` parametr.
 
-Pro rozhraní `--result-format` příkazového řádku Azure použijte parametr.
+Pro rozhraní příkazového řádku Azure použijte `--result-format` parametr.
  
 Následující výsledky znázorňují dva různé formáty výstupu:
 
@@ -397,9 +397,19 @@ Are you sure you want to execute the deployment?
 
 Zobrazí se očekávané změny a můžete potvrdit, že se nasazení má spustit.
 
+## <a name="sdks"></a>Sady SDK
+
+Můžete použít operaci citlivostní zpracování prostřednictvím sad Azure SDK.
+
+* V případě Pythonu použijte [co dělat](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-).
+
+* Pro jazyk Java použijte [třídu DeploymentWhatIf](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable).
+
+* Pro .NET použijte [třídu DeploymentWhatIf](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet).
+
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud si všimnete nesprávných výsledků z verze Preview, co-if, nahlaste problémy [https://aka.ms/whatifissues](https://aka.ms/whatifissues)na adrese.
+- Pokud si všimnete nesprávných výsledků z verze Preview, co-if, nahlaste problémy na adrese [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - Postup nasazení šablon pomocí Azure PowerShell najdete v tématu [nasazení prostředků pomocí šablon ARM a Azure PowerShell](deploy-powershell.md).
 - Pokud chcete nasadit šablony pomocí Azure CLI, přečtěte si téma [nasazení prostředků pomocí šablon ARM a Azure CLI](deploy-cli.md).
 - Pokud chcete nasadit šablony s REST, přečtěte si téma [nasazení prostředků pomocí šablon ARM a Správce prostředků REST API](deploy-rest.md).

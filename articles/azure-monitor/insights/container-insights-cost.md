@@ -2,13 +2,13 @@
 title: Náklady na monitorování pro Azure Monitor kontejnerů | Microsoft Docs
 description: Tento článek popisuje náklady na monitorování metriky & inventáře shromažďovaných pomocí Azure Monitor pro kontejnery, které zákazníkům pomůžou spravovat jejich využití a přidružené náklady.
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.openlocfilehash: 44802f611919fbf88894576eecf581a668e05b5b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 05/29/2020
+ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122462"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204646"
 ---
 # <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>Pochopení nákladů na monitorování Azure Monitor pro kontejnery
 
@@ -140,6 +140,8 @@ Vezměte v úvahu scénář, ve kterém má vaše organizace různé obchodní j
 - Fakturovatelné data protokolu kontejneru podle položky logsource
 
 - Fakturovatelné diagnostická data ingestovaná v protokolech diagnostických hlavních uzlů
+
+Chcete-li získat informace o správě práv a oprávnění k sešitu, zkontrolujte [řízení přístupu](../platform/workbooks-access-control.md).
 
 Po dokončení analýzy zjistíte, které zdroje nebo zdroje generují nejvíc dat, nebo více dat, která překračují vaše požadavky, můžete shromažďování dat znovu nakonfigurovat. Podrobnosti o konfiguraci kolekce proměnných stdout, stderr a prostředí jsou popsány v článku [Konfigurace nastavení shromažďování dat agenta](container-insights-agent-config.md) .
 

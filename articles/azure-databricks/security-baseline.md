@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: e6c51e80a0a9a68dc6ec11e03c133f3480eb4329
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 66043ae4f569e4151be829ca361232accb2f0ebd
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170473"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219386"
 ---
 # <a name="azure-security-baseline-for-azure-databricks"></a>Základní hodnoty zabezpečení Azure pro Azure Databricks
 
@@ -404,7 +404,7 @@ Poznámka: Azure Databricks diagnostické protokoly vyžadují plán Azure Datab
 
 ### <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: pravidelně kontrolovat a sjednotit přístup uživatelů
 
-**Doprovodné**materiály: Azure AD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. Můžete také implementovat rozhraní API SCIM a diagnostické protokoly Azure Databricks pro kontrolu přístupu uživatelů. Ke kontrole přístupu uživatelů můžete použít také rozhraní API SCIM a diagnostické protokoly Azure Databricks.
+**Doprovodné**materiály: Azure AD poskytuje protokoly, které vám pomůžou zjistit zastaralé účty. Navíc můžete pomocí kontrol přístupu Azure identity efektivně spravovat členství ve skupinách, přístup k podnikovým aplikacím a přiřazování rolí. Přístup uživatelů se dá pravidelně kontrolovat, aby se zajistilo, že budou mít přístup jenom přípravní uživatelé. Můžete také implementovat rozhraní API SCIM a diagnostické protokoly Azure Databricks pro kontrolu přístupu uživatelů.
 
 Kromě toho je pravidelně kontrolovat a spravovat přístup uživatelů v konzole pro správu Azure Databricks.
 

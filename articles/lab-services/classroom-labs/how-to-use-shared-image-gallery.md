@@ -11,17 +11,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/15/2020
+ms.date: 05/28/2020
 ms.author: spelluru
-ms.openlocfilehash: 8253b784a427ceb3842b6b4d585c52a2c30e0c4d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 608ff7366acf655b12b5a1eb0faf540249c0c1f7
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83592419"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204697"
 ---
 # <a name="use-a-shared-image-gallery-in-azure-lab-services"></a>Použití Galerie sdílených imagí v Azure Lab Services
-V tomto článku se dozvíte, jak můžou pedagogi/správci testovacího prostředí ukládat image virtuálního počítače šablony do [sdílené Image Galerie](../../virtual-machines/windows/shared-image-galleries.md) , aby ji mohli používat ostatní k vytváření Labs. 
+V tomto článku se dozvíte, jak můžou pedagogi/správci testovacího prostředí ukládat image virtuálního počítače šablony do [sdílené Image Galerie](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries) , aby ji mohli používat ostatní k vytváření Labs. 
 
 ## <a name="scenarios"></a>Scénáře
 Tady je několik scénářů, které tato funkce podporuje: 
@@ -30,11 +30,7 @@ Tady je několik scénářů, které tato funkce podporuje:
 - Správce účtu testovacího prostředí připojí galerii sdílených imagí k účtu testovacího prostředí. Tvůrce testovacího prostředí (instruktor) uloží přizpůsobenou image testovacího prostředí do galerie sdílených imagí. Ostatní tvůrci testovacích prostředí pak můžou tuto image vybrat z Galerie sdílených imagí a vytvořit šablonu pro jejich cvičení. 
 
     Když se obrázek uloží do galerie sdílených imagí, Azure Lab Services replikuje uložený obrázek do jiných oblastí dostupných ve stejné [geografické](https://azure.microsoft.com/global-infrastructure/geographies/)oblasti. Zajišťuje, aby byla bitová cvičení dostupná pro testovací prostředí vytvořená v jiných oblastech ve stejné geografické oblasti. Při ukládání imagí do galerie sdílených imagí se vyskytnou další náklady, včetně nákladů na všechny replikované bitové kopie. Tato cena je oddělená od nákladů na využití Azure Lab Services. Další informace o cenách Galerie sdílených imagí najdete v tématu [Galerie sdílených imagí – fakturace]( https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#billing).
-
-    > [!NOTE]
-    > Azure Lab Services podporuje vytváření virtuálních počítačů šablon na základě **generalizované** i **specializované** image v galerii sdílených imagí. 
-
-
+    
 ## <a name="prerequisites"></a>Požadavky
 - Pomocí [Azure PowerShell](../../virtual-machines/windows/shared-images.md) nebo rozhraní příkazového [řádku Azure](../../virtual-machines/linux/shared-images.md)můžete vytvořit galerii sdílených imagí.
 - Připojili jste galerii sdílených imagí k účtu testovacího prostředí. Podrobné pokyny najdete v tématu [Postup připojení nebo odpojení Galerie sdílených imagí](how-to-attach-detach-shared-image-gallery.md).
@@ -56,17 +52,19 @@ Po připojení Galerie sdílených imagí může správce účtu testovacího pr
 
     ![Export dokončen](../media/how-to-use-shared-image-gallery/exporting-image-completed.png)
 
-    > [!NOTE]
-    > Po uložení image do galerie sdílených imagí můžete tuto image použít z Galerie při vytváření jiného testovacího prostředí. 
-    > 
-    > Můžete také nahrát obrázek do galerie sdílených imagí mimo kontext testovacího prostředí. Další informace najdete v tématu [Přehled Galerie sdílených imagí](../../virtual-machines/windows/shared-images.md). 
+    Po uložení image do galerie sdílených imagí můžete tuto image použít z Galerie při vytváření jiného testovacího prostředí. Můžete také nahrát obrázek do galerie sdílených imagí mimo kontext testovacího prostředí. Další informace najdete v tématu [Přehled Galerie sdílených imagí](../../virtual-machines/windows/shared-images.md). 
 
-    
+    > [!IMPORTANT]
+    > Když [uložíte obrázek šablony testovacího prostředí](how-to-use-shared-image-gallery.md#save-an-image-to-the-shared-image-gallery) v Azure Lab Services do galerie sdílených imagí, obrázek se nahraje do galerie jako **speciální obrázek**. [Specializované obrázky](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries#generalized-and-specialized-images) udržují informace specifické pro počítač a profily uživatelů. Do galerie můžete i nadále přímo nahrát zobecněnou image mimo Azure Lab Services.    
 
 ## <a name="use-an-image-from-the-shared-image-gallery"></a>Použití obrázku z Galerie sdílených imagí
 Educator může vybrat vlastní image, která je k dispozici v galerii sdílených imagí pro šablonu během nového vytváření testovacího prostředí.
 
 ![Použití image virtuálního počítače z Galerie](../media/how-to-use-shared-image-gallery/use-shared-image.png)
 
+> [!NOTE]
+> Můžete vytvořit šablonu virtuálního počítače na základě **zobecněných** i **specializovaných** imagí v Azure Lab Services. 
+
+
 ## <a name="next-steps"></a>Další kroky
-Další informace o galeriích sdílených imagí najdete v tématu [Galerie sdílených imagí](../../virtual-machines/windows/shared-image-galleries.md).
+Další informace o galeriích sdílených imagí najdete v tématu [Galerie sdílených imagí](https://docs.microsoft.com/azure/virtual-machines/windows/shared-image-galleries).

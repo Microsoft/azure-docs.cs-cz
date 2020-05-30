@@ -3,12 +3,12 @@ title: Konfigurace Azure Monitor pro shromažďování dat agenta kontejnerů | 
 description: Tento článek popisuje, jak můžete nakonfigurovat agenta Azure Monitor for Containers pro řízení kolekce protokolů stdout/stderr a proměnných prostředí.
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 28b93190298ae61732ff7d2e297899af4ba0e5f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 000f68d5498324fa0e68bce178688a79f3ce9c5b
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75933020"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220241"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Konfigurace shromažďování dat agenta pro Azure Monitor pro kontejnery
 
@@ -31,16 +31,16 @@ K dispozici je soubor šablony ConfigMap, který umožňuje snadnou úpravu pomo
 
 Níže jsou uvedené nastavení, které lze nakonfigurovat pro řízení shromažďování dat.
 
-|Key |Datový typ |Hodnota |Popis |
+|Klíč |Datový typ |Hodnota |Popis |
 |----|----------|------|------------|
 |`schema-version` |Řetězec (rozlišuje velká a malá písmena) |V1 |Toto je verze schématu používaná agentem při analýze tohoto ConfigMap. Aktuálně podporovaná verze schématu je v1. Změna této hodnoty není podporována a při vyhodnocování ConfigMap bude odmítnuta.|
 |`config-version` |Řetězec | | Podporuje schopnost sledovat tuto verzi konfiguračního souboru v systému správy zdrojů nebo v úložišti. Maximální povolený počet znaků je 10 a všechny ostatní znaky jsou zkráceny. |
-|`[log_collection_settings.stdout] enabled =` |Logická hodnota | true nebo false | Tento ovládací prvek určuje, zda je povoleno shromažďování protokolů kontejnerů STDOUT. Při nastavení na `true` a nejsou vyloučeny žádné obory názvů pro shromažďování`log_collection_settings.stdout.exclude_namespaces` protokolů stdout (nastavení níže), protokoly stdout budou shromažďovány ze všech kontejnerů ve všech luskech/uzlech v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true`. |
-|`[log_collection_settings.stdout] exclude_namespaces =`|Řetězec | Pole oddělené čárkami |Pole oborů názvů Kubernetes, pro které se protokoly stdout nebudou shromažďovat Toto nastavení platí pouze v případě `log_collection_settings.stdout.enabled` , že je `true`parametr nastaven na hodnotu. Pokud není zadán v ConfigMap, výchozí hodnota je `exclude_namespaces = ["kube-system"]`.|
-|`[log_collection_settings.stderr] enabled =` |Logická hodnota | true nebo false |Tyto ovládací prvky, pokud je povoleno shromažďování protokolů kontejneru stderr. Když je tato `true` možnost nastavená na a nejsou vyloučené žádné obory názvů pro shromažďování protokolů stdout (`log_collection_settings.stderr.exclude_namespaces` nastavení), budou se protokoly stderr shromažďovat ze všech kontejnerů napříč všemi lusky nebo uzly v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true`. |
-|`[log_collection_settings.stderr] exclude_namespaces =` |Řetězec |Pole oddělené čárkami |Pole oborů názvů Kubernetes, pro které nebudou shromažďovány protokoly stderr Toto nastavení platí pouze v případě `log_collection_settings.stdout.enabled` , že je `true`parametr nastaven na hodnotu. Pokud není zadán v ConfigMap, výchozí hodnota je `exclude_namespaces = ["kube-system"]`. |
-| `[log_collection_settings.env_var] enabled =` |Logická hodnota | true nebo false | Toto nastavení řídí kolekci proměnných prostředí ve všech luskech/uzlech v clusteru a ve `enabled = true` výchozím nastavení, pokud není zadáno v ConfigMaps. Pokud je kolekce proměnných prostředí globálně povolená, můžete ji pro konkrétní kontejner `AZMON_COLLECT_ENV` zakázat nastavením proměnné prostředí na **hodnotu false** buď nastavením souboru Dockerfile, nebo v [konfiguračním souboru pro](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) bod obnovení pod **obálkou ENV:** . Pokud je kolekce proměnných prostředí globálně zakázaná, nemůžete povolit shromažďování pro konkrétní kontejner (to znamená, že jediné přepsání, které může být použito na úrovni kontejneru, je zakázat shromažďování, pokud je již povoleno globálně). |
-| `[log_collection_settings.enrich_container_logs] enabled =` |Logická hodnota | true nebo false | Toto nastavení řídí rozšíření protokolu kontejneru, aby se naplnily hodnoty vlastností název a obrázek každého záznamu protokolu zapsaného do tabulky ContainerLog pro všechny protokoly kontejnerů v clusteru. Nastaví se na `enabled = false` výchozí hodnotu, pokud není zadána v ConfigMap. |
+|`[log_collection_settings.stdout] enabled =` |Logická hodnota | true nebo false | Tento ovládací prvek určuje, zda je povoleno shromažďování protokolů kontejnerů STDOUT. Při nastavení na `true` a nejsou vyloučeny žádné obory názvů pro shromažďování protokolů stdout ( `log_collection_settings.stdout.exclude_namespaces` Nastavení níže), protokoly stdout budou shromažďovány ze všech kontejnerů ve všech luskech/uzlech v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true` . |
+|`[log_collection_settings.stdout] exclude_namespaces =`|Řetězec | Pole oddělené čárkami |Pole oborů názvů Kubernetes, pro které se protokoly stdout nebudou shromažďovat Toto nastavení platí pouze v případě `log_collection_settings.stdout.enabled` , že je parametr nastaven na hodnotu `true` . Pokud není zadán v ConfigMap, výchozí hodnota je `exclude_namespaces = ["kube-system"]` .|
+|`[log_collection_settings.stderr] enabled =` |Logická hodnota | true nebo false |Tyto ovládací prvky, pokud je povoleno shromažďování protokolů kontejneru stderr. Když je tato možnost nastavená na `true` a nejsou vyloučené žádné obory názvů pro shromažďování protokolů stdout ( `log_collection_settings.stderr.exclude_namespaces` nastavení), budou se protokoly stderr shromažďovat ze všech kontejnerů napříč všemi lusky nebo uzly v clusteru. Pokud není zadán v ConfigMaps, výchozí hodnota je `enabled = true` . |
+|`[log_collection_settings.stderr] exclude_namespaces =` |Řetězec |Pole oddělené čárkami |Pole oborů názvů Kubernetes, pro které nebudou shromažďovány protokoly stderr Toto nastavení platí pouze v případě `log_collection_settings.stdout.enabled` , že je parametr nastaven na hodnotu `true` . Pokud není zadán v ConfigMap, výchozí hodnota je `exclude_namespaces = ["kube-system"]` . |
+| `[log_collection_settings.env_var] enabled =` |Logická hodnota | true nebo false | Toto nastavení řídí kolekci proměnných prostředí ve všech luskech/uzlech v clusteru a ve výchozím nastavení, `enabled = true` Pokud není zadáno v ConfigMaps. Pokud je kolekce proměnných prostředí globálně povolená, můžete ji pro konkrétní kontejner zakázat nastavením proměnné prostředí `AZMON_COLLECT_ENV` na **hodnotu false** buď nastavením souboru Dockerfile, nebo v [konfiguračním souboru pro](https://kubernetes.io/docs/tasks/inject-data-application/define-environment-variable-container/) bod obnovení pod **obálkou ENV:** . Pokud je kolekce proměnných prostředí globálně zakázaná, nemůžete povolit shromažďování pro konkrétní kontejner (to znamená, že jediné přepsání, které může být použito na úrovni kontejneru, je zakázat shromažďování, pokud je již povoleno globálně). |
+| `[log_collection_settings.enrich_container_logs] enabled =` |Logická hodnota | true nebo false | Toto nastavení řídí rozšíření protokolu kontejneru, aby se naplnily hodnoty vlastností název a obrázek každého záznamu protokolu zapsaného do tabulky ContainerLog pro všechny protokoly kontejnerů v clusteru. Nastaví se na výchozí hodnotu, `enabled = false` Pokud není zadána v ConfigMap. |
 
 ConfigMaps je globální seznam a v agentovi může být použit pouze jeden ConfigMap. Nemůžete mít k dispozici další ConfigMaps pro kolekce.
 
@@ -55,11 +55,11 @@ Provedením následujících kroků nakonfigurujete a nasadíte konfigurační s
 
 2. Upravte soubor ConfigMap YAML s vlastními nastaveními pro shromažďování proměnných prostředí stdout, stderr a/nebo. Pokud upravujete soubor ConfigMap YAML pro Azure Red Hat OpenShift, nejprve spusťte příkaz `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` a otevřete soubor v textovém editoru.
 
-    - Chcete-li vyloučit konkrétní obory názvů pro shromažďování protokolů stdout, nakonfigurujte klíč nebo hodnotu pomocí následujícího příkladu `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`:.
+    - Chcete-li vyloučit konkrétní obory názvů pro shromažďování protokolů stdout, nakonfigurujte klíč nebo hodnotu pomocí následujícího příkladu: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]` .
     
     - Chcete-li zakázat shromažďování proměnných prostředí pro konkrétní kontejner, nastavte klíč/hodnotu `[log_collection_settings.env_var] enabled = true` pro povolení globální kolekce proměnných a pak postupujte podle kroků [zde](container-insights-manage-agent.md#how-to-disable-environment-variable-collection-on-a-container) , abyste dokončili konfiguraci konkrétního kontejneru.
     
-    - Pokud chcete zakázat shromažďování protokolů protokolu stderr v clusteru, nakonfigurujte klíč nebo hodnotu pomocí následujícího příkladu: `[log_collection_settings.stderr] enabled = false`.
+    - Pokud chcete zakázat shromažďování protokolů protokolu stderr v clusteru, nakonfigurujte klíč nebo hodnotu pomocí následujícího příkladu: `[log_collection_settings.stderr] enabled = false` .
 
 3. Pro jiné clustery než Azure Red Hat OpenShift vytvořte ConfigMap spuštěním následujícího příkazu kubectl: `kubectl apply -f <configmap_yaml_file.yaml>` v jiných clusterech než Azure Red Hat OpenShift. 
     
@@ -67,11 +67,11 @@ Provedením následujících kroků nakonfigurujete a nasadíte konfigurační s
 
     V případě Azure Red Hat OpenShift uložte změny v editoru.
 
-Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restartování je postupné restartování pro všechny omsagent lusky, ne pro všechna restartování ve stejnou dobu. Po dokončení restartů se zobrazí zpráva podobná následujícímu příkladu a obsahuje výsledek: `configmap "container-azm-ms-agentconfig" created`.
+Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restartování je postupné restartování pro všechny omsagent lusky, ne pro všechna restartování ve stejnou dobu. Po dokončení restartů se zobrazí zpráva podobná následujícímu příkladu a obsahuje výsledek: `configmap "container-azm-ms-agentconfig" created` .
 
 ## <a name="verify-configuration"></a>Ověřit konfiguraci
 
-Pokud chcete ověřit, jestli se konfigurace úspěšně použila na jiný cluster než Azure Red Hat OpenShift, pomocí následujícího příkazu zkontrolujte protokoly z agenta pod: `kubectl logs omsagent-fdf58 -n=kube-system`. Pokud dojde k chybám konfigurace z omsagent lusků, ve výstupu se zobrazí chyby podobné následujícímu:
+Pokud chcete ověřit, jestli se konfigurace úspěšně použila na jiný cluster než Azure Red Hat OpenShift, pomocí následujícího příkazu zkontrolujte protokoly z agenta pod: `kubectl logs omsagent-fdf58 -n kube-system` . Pokud dojde k chybám konfigurace z omsagent lusků, ve výstupu se zobrazí chyby podobné následujícímu:
 
 ``` 
 ***************Start Config Processing******************** 
@@ -96,7 +96,7 @@ Chyby související s použitím změn konfigurace jsou k dispozici také ke kon
 
 - Pomocí Azure Red Hat OpenShift Zkontrolujte protokoly omsagent, a to tak, že vyhledáte tabulku **ContainerLog** a ověříte, jestli je povolená kolekce protokolů OpenShift-Azure-Logging.
 
-Po opravě chyb v ConfigMap na jiných clusterech než Azure Red Hat OpenShift uložte soubor YAML a použijte aktualizovaný ConfigMaps spuštěním příkazu: `kubectl apply -f <configmap_yaml_file.yaml`. V případě Azure Red Hat OpenShift upravte a uložte aktualizované ConfigMaps spuštěním příkazu:
+Po opravě chyb v ConfigMap na jiných clusterech než Azure Red Hat OpenShift uložte soubor YAML a použijte aktualizovaný ConfigMaps spuštěním příkazu: `kubectl apply -f <configmap_yaml_file.yaml` . V případě Azure Red Hat OpenShift upravte a uložte aktualizované ConfigMaps spuštěním příkazu:
 
 ``` bash
 oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
@@ -104,13 +104,13 @@ oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 
 ## <a name="applying-updated-configmap"></a>Použití aktualizovaných ConfigMap
 
-Pokud jste už nasadili ConfigMap na jiné clustery než Azure Red Hat OpenShift a chcete ji aktualizovat pomocí novější konfigurace, můžete upravit soubor ConfigMap, který jste dřív použili, a pak použít stejný příkaz jako předtím `kubectl apply -f <configmap_yaml_file.yaml`. V případě Azure Red Hat OpenShift upravte a uložte aktualizované ConfigMaps spuštěním příkazu:
+Pokud jste už nasadili ConfigMap na jiné clustery než Azure Red Hat OpenShift a chcete ji aktualizovat pomocí novější konfigurace, můžete upravit soubor ConfigMap, který jste dřív použili, a pak použít stejný příkaz jako předtím `kubectl apply -f <configmap_yaml_file.yaml` . V případě Azure Red Hat OpenShift upravte a uložte aktualizované ConfigMaps spuštěním příkazu:
 
 ``` bash
 oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
 ```
 
-Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restartování je postupné restartování pro všechny omsagent lusky, ne pro všechna restartování ve stejnou dobu. Po dokončení restartů se zobrazí zpráva podobná následujícímu příkladu a obsahuje výsledek: `configmap "container-azm-ms-agentconfig" updated`.
+Dokončení změny konfigurace může trvat několik minut, než se projeví, a všechny omsagent v clusteru se restartují. Restartování je postupné restartování pro všechny omsagent lusky, ne pro všechna restartování ve stejnou dobu. Po dokončení restartů se zobrazí zpráva podobná následujícímu příkladu a obsahuje výsledek: `configmap "container-azm-ms-agentconfig" updated` .
 
 ## <a name="verifying-schema-version"></a>Ověřuje se verze schématu.
 
