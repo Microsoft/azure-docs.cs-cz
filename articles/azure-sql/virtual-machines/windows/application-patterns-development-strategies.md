@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mathoma
-ms.openlocfilehash: 209445378b71b4d6da2f40ea2744d3a2da0d8c45
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4b4a852f0f102277701191eb24158763998e7b5d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046324"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195768"
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Modely aplikací a vývojové strategie pro SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +46,7 @@ Můžete vyvíjet mnoho typů n-vrstvých aplikací oddělením komponent různ�
 
 Typická *n-vrstvá* aplikace zahrnuje prezentační vrstvu, obchodní vrstvu a datovou vrstvu:
 
-| Úroveň | Description |
+| Úroveň | Popis |
 | --- | --- |
 | **Zobrazení** |*Prezentační vrstva* (webová vrstva, front-end úroveň) je vrstva, ve které uživatelé pracují s aplikací. |
 | **Firemní** |*Obchodní vrstva* (střední vrstva) je vrstva, kterou prezentační vrstva a Datová vrstva používá ke komunikaci mezi sebou a zahrnuje základní funkce systému. |
@@ -59,8 +59,9 @@ Než začnete s čtením tohoto článku, měli byste si být vědomi základní
 Tento článek popisuje několik vzorů aplikací, které mohou být vhodné pro vaše jednoduché aplikace a také pro vysoce složité podnikové aplikace. Před podrobnostem každého vzoru doporučujeme, abyste se seznámili s dostupnými službami datových úložišť v Azure, jako jsou [Azure Storage](../../../storage/common/storage-introduction.md), [Azure SQL Database](../../database/sql-database-paas-overview.md)a [SQL Server na virtuálním počítači Azure](sql-server-on-azure-vm-iaas-what-is-overview.md). Aby se zajistilo, že se pro vaše aplikace vylepší rozhodnutí o návrhu, a to podle toho, kdy se služba Data Storage jasně používá.
 
 ### <a name="choose-sql-server-in-an-azure-virtual-machine-when"></a>Vyberte SQL Server na virtuálním počítači Azure, když:
+
 * Potřebujete mít pod kontrolou SQL Server a Windows. To může například zahrnovat verzi SQL Server, speciální opravy hotfix, konfiguraci výkonu atd.
-* Potřebujete plnou kompatibilitu s SQL Server v místním prostředí a chcete přesunout existující aplikace do Azure tak, jak jsou.
+* Potřebujete plnou kompatibilitu s SQL Server a chcete přesunout existující aplikace do Azure tak, jak jsou.
 * Chcete využívat možnosti prostředí Azure, ale Azure SQL Database nepodporuje všechny funkce, které vaše aplikace vyžaduje. To může zahrnovat následující oblasti:
   
   * **Velikost databáze**: v době, kdy se tento článek aktualizoval, SQL Database podporuje databázi o velikosti až 1 TB dat. Pokud vaše aplikace vyžaduje více než 1 TB dat a nechcete implementovat vlastní řešení horizontálního dělení, doporučujeme použít SQL Server na virtuálním počítači Azure. Nejnovější informace najdete v tématu horizontální navýšení kapacity [Azure SQL Database](https://msdn.microsoft.com/library/azure/dn495641.aspx), [nákupní model založený na DTU](../../database/service-tiers-dtu.md)a [vCoreý model nákupu](../../database/service-tiers-vcore.md)(Preview).

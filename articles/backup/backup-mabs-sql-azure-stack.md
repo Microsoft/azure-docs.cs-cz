@@ -3,12 +3,12 @@ title: Zálohování SQL Server úloh na Azure Stack
 description: V tomto článku se dozvíte, jak nakonfigurovat Microsoft Azure Backup Server (MABS) pro ochranu SQL Server databáze na Azure Stack.
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: 03211e1147f96429a8406c4c95654161ed2bf308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b2d41bdccd67539205b74a0ce277b3b01a685c6c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74172308"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192985"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>Zálohování SQL Server v Azure Stack
 
@@ -65,7 +65,7 @@ Správa zálohování SQL Server databáze do Azure a obnovení z Azure zahrnuje
 
     ![Metoda počáteční replikace](./media/backup-azure-backup-sql/pg-manual.png)
 
-    Prvotní záložní kopie vyžaduje přenos celého zdroje dat (SQL Server databáze) z provozního serveru (SQL Server počítače) na Azure Backup Server. Tato data můžou být velká a přenos dat přes síť by mohl překročit šířku pásma. Z tohoto důvodu se můžete rozhodnout pro přenos prvotní zálohy: **ručně** (pomocí vyměnitelného média), abyste se vyhnuli zahlcení šířky pásma nebo **automaticky přes síť** (v určitou dobu).
+    Prvotní záložní kopie vyžaduje, aby bylo možné přenášet celý zdroj dat (SQL Server databázi) z provozního serveru (SQL Server počítači) na Azure Backup Server. Tato data můžou být velká a přenos dat přes síť by mohl překročit šířku pásma. Z tohoto důvodu se můžete rozhodnout pro přenos prvotní zálohy: **ručně** (pomocí vyměnitelného média), abyste se vyhnuli zahlcení šířky pásma nebo **automaticky přes síť** (v určitou dobu).
 
     Po dokončení prvotního zálohování jsou zbývající zálohy přírůstkové zálohy v prvotní záložní kopii. Přírůstkové zálohování je obvykle malé a snadno se přenáší přes síť.
 

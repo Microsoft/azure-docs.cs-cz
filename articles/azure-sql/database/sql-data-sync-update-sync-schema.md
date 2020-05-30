@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 11/14/2018
-ms.openlocfilehash: eb0c88797dc23c912ce360dbcfd10f210b694fbd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4d0800d109d17c1233a18966d84a498596e8e834
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043937"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188195"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatizace replikace změn schématu v Azure Synchronizace dat SQL
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -209,7 +209,7 @@ Chcete-li vyčistit záznamy v tabulce sledování změn schématu, použijte p�
 
 -   Změny schématu lze provádět pouze v databázi, ve které je vytvořen TRIGGER DDL.
 
--   Pokud provádíte změnu v místní databázi SQL Server, ujistěte se, že je změna schématu v Azure SQL Database podporovaná.
+-   Pokud provádíte změnu v databázi SQL Server, ujistěte se, že je změna schématu v Azure SQL Database podporovaná.
 
 -   Pokud se změny schématu provádějí v databázích, které nejsou v databázi, ve které je vytvořený TRIGGER DDL, změny se nereplikují. Chcete-li se tomuto problému vyhnout, můžete vytvořit triggery DDL pro blokování změn v jiných koncových bodech.
 
@@ -225,7 +225,7 @@ Další informace o Synchronizaci dat SQL:
 
 -   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí Azure synchronizace dat SQL](sql-data-sync-data-sql-server-sql-database.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním](sql-data-sync-sql-server-configure.md) prostředím
+    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server](sql-data-sync-sql-server-configure.md)
     - S využitím PowerShellu
         -  [Použití PowerShellu k synchronizaci mezi několika databázemi v Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi databází v Azure SQL Database a databází v instanci SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

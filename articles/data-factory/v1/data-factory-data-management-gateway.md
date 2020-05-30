@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 76f8b741eb49949bb59ab5e1a4b7279f84b77111
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a2d4c9ad5a64fecaad023907351101942c4edac2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021564"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188311"
 ---
 # <a name="data-management-gateway"></a>Brána správy dat
 > [!NOTE]
@@ -28,7 +28,7 @@ ms.locfileid: "84021564"
 
 Brána pro správu dat je klientský Agent, který musíte nainstalovat do místního prostředí a kopírovat data mezi cloudovým a místním úložištěm dat. Místní úložiště dat podporovaná Data Factory jsou uvedená v části [podporované zdroje dat](data-factory-data-movement-activities.md#supported-data-stores-and-formats) .
 
-Tento článek doplňuje návod v článku [přesun dat mezi místními a cloudových úložišť dat](data-factory-move-data-between-onprem-and-cloud.md) . V tomto návodu vytvoříte kanál, který používá bránu k přesunu dat z místní databáze SQL Server do objektu blob Azure. Tento článek poskytuje podrobné informace o bráně pro správu dat.
+Tento článek doplňuje návod v článku [přesun dat mezi místními a cloudových úložišť dat](data-factory-move-data-between-onprem-and-cloud.md) . V tomto návodu vytvoříte kanál, který používá bránu k přesunu dat z databáze SQL Server do objektu blob Azure. Tento článek poskytuje podrobné informace o bráně pro správu dat.
 
 Bránu pro správu dat můžete škálovat tak, že přidružíte několik místních počítačů k bráně. Horizontální navýšení kapacity můžete zvýšit tak, že zvýšíte počet úloh přesunu dat, které můžou běžet souběžně na uzlu. Tato funkce je k dispozici také pro logickou bránu s jedním uzlem. Podrobnosti najdete [v tématu škálování brány pro správu dat v Azure Data Factory](data-factory-data-management-gateway-high-availability-scalability.md) článku.
 
@@ -140,7 +140,7 @@ Je potřeba vzít v úvahu dvě brány firewall: **podniková brána firewall** 
 
 Na úrovni podnikové brány firewall je potřeba nakonfigurovat následující domény a odchozí porty:
 
-| Názvy domén | Porty | Description |
+| Názvy domén | Porty | Popis |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Používá se pro komunikaci s back-end služby pro přesun dat. |
 | *.core.windows.net |443 |Používá se pro připravené kopírování pomocí objektu blob Azure (Pokud je nakonfigurované).|
@@ -164,7 +164,7 @@ Pokud například chcete kopírovat z **místního úložiště dat do jímky Az
 * Nakonfigurujte nastavení brány firewall logického SQL serveru tak, aby se do seznamu povolených IP adres přidala IP adresa počítače brány.
 
 > [!NOTE]
-> Pokud brána firewall nepovoluje odchozí port 1433, nemůže brána získat přímý přístup k Azure SQL. V takovém případě můžete použít [dvoufázové kopírování](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) pro SQL Azure Database/SQL Azure DW. V tomto scénáři budete pro přesun dat vyžadovat jenom HTTPS (port 443).
+> Pokud brána firewall nepovoluje odchozí port 1433, nemůže brána získat přímý přístup k Azure SQL. V takovém případě můžete použít [připravené kopírování](https://docs.microsoft.com/azure/data-factory/data-factory-copy-activity-performance#staged-copy) na SQL Database/SQL Managed Instance/SQL Azure DW. V tomto scénáři budete pro přesun dat vyžadovat jenom HTTPS (port 443).
 >
 >
 
@@ -362,9 +362,9 @@ V Azure Portal můžete na počítači brány Zobrazit snímek využití prostř
 
 Následující tabulka uvádí popisy sloupců v seznamu **uzly brány** :
 
-Vlastnost monitorování | Description
+Vlastnost monitorování | Popis
 :------------------ | :----------
-Name | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
+Název | Název logické brány a uzlů přidružených k bráně Uzel je místní počítač s Windows, na kterém je brána nainstalovaná. Informace o tom, jak mít více než jeden uzel (až čtyři uzly) v jedné logické bráně, najdete v tématu [Správa dat brány – vysoká dostupnost a škálovatelnost](data-factory-data-management-gateway-high-availability-scalability.md).
 Status | Stav logické brány a uzlů brány. Příklad: online/offline/omezený/atd. Informace o těchto stavech najdete v části [stav brány](#gateway-status) .
 Verze | Zobrazuje verzi logické brány a všech uzlů brány. Verze logické brány je určena na základě verze většiny uzlů ve skupině. Pokud v instalaci logické brány existují uzly s různými verzemi, budou správně fungovat pouze uzly se stejným číslem verze jako logická brána. Ostatní jsou v omezeném režimu a je potřeba je ručně aktualizovat (jenom v případě, že se automatická aktualizace nezdařila).
 Dostupná paměť | Dostupná paměť v uzlu brány Tato hodnota je snímkem téměř v reálném čase.
@@ -543,4 +543,4 @@ Remove-AzDataFactoryGateway -Name JasonHDMG_byPSRemote -ResourceGroupName ADF_Re
 ```
 
 ## <a name="next-steps"></a>Další kroky
-* Viz článek [přesun dat mezi místními a cloudových úložišť dat](data-factory-move-data-between-onprem-and-cloud.md) . V tomto návodu vytvoříte kanál, který používá bránu k přesunu dat z místní databáze SQL Server do objektu blob Azure.
+* Viz článek [přesun dat mezi místními a cloudových úložišť dat](data-factory-move-data-between-onprem-and-cloud.md) . V tomto návodu vytvoříte kanál, který používá bránu k přesunu dat z databáze SQL Server do objektu blob Azure.

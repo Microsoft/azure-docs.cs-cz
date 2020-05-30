@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 4559cd40bf9482ece80d0b6123ca73b7a0cbb3aa
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 14503299b241b87459517818b0d0b2be6dde9072
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170898"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219251"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -143,6 +143,23 @@ Pokud se zjištěné virtuální počítače nezobrazí na portálu nebo pokud j
 ## <a name="deleted-vms-appear-in-portal"></a>Odstraněné virtuální počítače se zobrazí na portálu.
 
 Pokud virtuální počítače odstraníte a pořád se zobrazí na portálu, počkejte 30 minut. Pokud se pořád zobrazují, aktualizujte je tak, jak je popsáno výše.
+
+## <a name="error-the-file-uploaded-is-not-in-the-expected-format"></a>Chyba: nahraný soubor nemá očekávaný formát.
+Některé nástroje mají místní nastavení, které vytvoří soubor CSV se středníkem jako oddělovačem. Změňte prosím nastavení tak, aby byl oddělovač čárkou.
+
+## <a name="i-imported-a-csv-but-i-see-discovery-is-in-progress"></a>Naimportoval (a) jsem sdílený svazek clusteru, ale zobrazuje se stav zjišťování probíhá.
+Tento stav se zobrazí, pokud selhalo nahrávání sdíleného svazku clusteru z důvodu chyby ověření. Pokuste se znovu naimportovat sdílený svazek clusteru. Můžete si stáhnout zprávu o chybách předchozího nahrávání a pomocí pokynů k nápravě v souboru tyto chyby opravit. Zprávu o chybách si můžete stáhnout z části Import podrobností na stránce zjistit počítače.
+
+## <a name="do-not-see-application-details-even-after-updating-guest-credentials"></a>Nevidíte podrobnosti o aplikacích ani po aktualizaci přihlašovacích údajů hostů.
+Zjišťování aplikací se spouští každých 24 hodin. Chcete-li zobrazit podrobnosti okamžitě, proveďte aktualizaci následujícím způsobem. To může trvat několik minut v závislosti na ne. zjištěných virtuálních počítačů.
+
+1. V **Servers**  >  **Azure Migrate servery vyhodnocování serveru**vyberte **Přehled**.
+2. V části **Spravovat**vyberte **Agent Health**.
+3. Vyberte **aktualizovat agenta**.
+4. Počkejte na dokončení operace aktualizace. Nyní byste měli vidět aktuální informace.
+
+## <a name="unable-to-export-application-inventory"></a>Inventář aplikací se nedá exportovat.
+Zajistěte, aby uživatel stáhl inventář z portálu má oprávnění přispěvatele k tomuto předplatnému.
 
 ## <a name="common-app-discovery-errors"></a>Běžné chyby zjišťování aplikací
 

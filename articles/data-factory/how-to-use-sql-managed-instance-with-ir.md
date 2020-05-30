@@ -1,6 +1,6 @@
 ---
-title: Použití spravované instance Azure SQL Database s Azure-služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
-description: Naučte se používat Azure SQL Database spravovanou instanci s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory.
+title: Použití spravované instance Azure SQL s Azure-služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
+description: Naučte se používat spravovanou instanci Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: chugugrace
@@ -11,30 +11,30 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
-ms.openlocfilehash: cd07bf86852d608a6d872f4c6b973b0a81b2a1c3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f53c7ccec5e82b79966807f12978adfb00940354
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015280"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195371"
 ---
-# <a name="use-azure-sql-database-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Použití spravované instance Azure SQL Database s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
+# <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Použití spravované instance Azure SQL s služba SSIS (SQL Server Integration Services) (SSIS) v Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-xxx-md.md)]
 
-Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services) (SSIS), balíčky a úlohy do cloudu Azure. Nasaďte, spouštějte a spravujte projekty a balíčky SSIS na Azure SQL Database nebo SQL Database spravované instance pomocí známých nástrojů, jako je například SQL Server Management Studio (SSMS). Tento článek popisuje následující konkrétní oblasti při použití Azure SQL Database spravované instance s prostředím Azure-SSIS Integration runtime (IR):
+Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services) (SSIS), balíčky a úlohy do cloudu Azure. Nasaďte, spouštějte a spravujte projekty a balíčky SSIS na Azure SQL Database nebo spravované instanci SQL pomocí známých nástrojů, jako je například SQL Server Management Studio (SSMS). Tento článek popisuje následující konkrétní oblasti při použití spravované instance Azure SQL s Azure-SSIS Integration runtime (IR):
 
-- [Zřízení Azure-SSIS IR pomocí katalogu SSIS (SSISDB) hostovaného službou Azure SQL Database Managed instance](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
+- [Zřízení Azure-SSIS IR pomocí katalogu SSIS (SSISDB) hostovaného službou Azure SQL Managed instance](#provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance)
 - [Spouštění balíčků SSIS pomocí úlohy agenta Managed instance Azure SQL](how-to-invoke-ssis-package-managed-instance-agent.md)
 - [Vyčistit protokoly SSISDB pomocí úlohy agenta spravované instance Azure SQL](#clean-up-ssisdb-logs)
-- [Azure-SSIS IR převzetí služeb při selhání pomocí spravované instance Azure SQL Database](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-database-managed-instance)
-- [Migrace místních úloh SSIS do SSIS v ADF pomocí Azure SQL Database spravované instance jako cíle úloh databáze](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
+- [Azure-SSIS IR převzetí služeb při selhání pomocí spravované instance Azure SQL](configure-bcdr-azure-ssis-integration-runtime.md#azure-ssis-ir-failover-with-a-sql-managed-instance)
+- [Migrace místních úloh SSIS do SSIS v ADF pomocí spravované instance Azure SQL jako cíle úloh databáze](scenario-ssis-migration-overview.md#azure-sql-managed-instance-as-database-workload-destination)
 
 ## <a name="provision-azure-ssis-ir-with-ssisdb-hosted-by-azure-sql-managed-instance"></a>Zřízení Azure-SSIS IR s SSISDB hostovaným pomocí spravované instance Azure SQL
 
 ### <a name="prerequisites"></a>Požadavky
 
-1. Pokud zvolíte Azure Active Directory ověřování, [Povolte v Azure SQL Database spravované instanci Azure Active Directory (Azure AD)](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
+1. Při volbě Azure Active Directory ověřování [povolit Azure Active Directory (Azure AD) na spravované instanci SQL Azure](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance)
 
 1. Vyberte, jak se má připojit spravovaná instance SQL, přes soukromý koncový bod nebo přes Veřejný koncový bod:
 
@@ -44,13 +44,13 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
             - Ve stejné virtuální síti jako spravovaná instance SQL s **jinou podsítí**.
             - Uvnitř jiné virtuální sítě než spravované instance SQL prostřednictvím partnerského vztahu virtuální sítě (která je omezená na stejnou oblast z důvodu omezení globálního partnerského vztahu virtuálních sítí) nebo připojení virtuální sítě k virtuální síti.
 
-            Další informace o připojení ke spravovaným instancím SQL najdete v tématu [připojení aplikace k Azure SQL Database Managed instance](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
+            Další informace o připojení ke spravovaným instancím SQL najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](https://review.docs.microsoft.com/azure/sql-database/sql-database-managed-instance-connect-app).
 
         1. [Nakonfigurujte virtuální síť](#configure-virtual-network).
 
     - Přes Veřejný koncový bod
 
-        Spravované instance Azure SQL Database můžou poskytovat připojení přes [veřejné koncové body](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure). Aby bylo možné povolit přenosy mezi spravovanou instancí SQL a Azure-SSIS IR, musí splňovat požadavky na příchozí a odchozí spojení:
+        Spravované instance Azure SQL můžou poskytovat připojení přes [veřejné koncové body](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure). Aby bylo možné povolit přenosy mezi spravovanou instancí SQL a Azure-SSIS IR, musí splňovat požadavky na příchozí a odchozí spojení:
 
         - Když Azure-SSIS IR není uvnitř virtuální sítě (upřednostňovaná)
 
@@ -147,7 +147,7 @@ Nyní můžete přesunout projekty služba SSIS (SQL Server Integration Services
 
     ![Katalog – veřejný koncový bod](./media/how-to-use-sql-managed-instance-with-ir/catalog-aad.png)
 
-    Další informace o tom, jak povolit ověřování Azure AD, najdete v tématu [Povolení služby Azure AD v Azure SQL Database Managed instance](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
+    Další informace o tom, jak povolit ověřování Azure AD, najdete v tématu [Povolení Azure AD na spravované instanci SQL Azure](enable-aad-authentication-azure-ssis-ir.md#configure-azure-ad-authentication-for-azure-sql-managed-instance).
 
 1. Když se použije, připojte se k virtuální síti Azure-SSIS IR.
 

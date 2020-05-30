@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 6e6bd55fbb73113dfbcd01e94753c4fb21219c14
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 60f3e725a4df619e3cc8ed7e8878fe2a5e5c3406
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780874"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195184"
 ---
 # <a name="get-started-with-azcopy"></a>Začínáme s nástrojem AzCopy
 
@@ -23,7 +23,7 @@ AzCopy je nástroj příkazového řádku, který můžete použít ke kopírov�
 >
 > Pokud potřebujete použít předchozí verzi AzCopy, přečtěte si část [Použití předchozí verze AzCopy](#previous-version) tohoto článku.
 
-<a id="download-and-install-azcopy" />
+<a id="download-and-install-azcopy"></a>
 
 ## <a name="download-azcopy"></a>Stáhnout AzCopy
 
@@ -48,7 +48,7 @@ Pokud se rozhodnete Nepřidávat adresář AzCopy do cesty, budete muset změnit
 
 Pokud chcete zobrazit seznam příkazů, zadejte `azcopy -h` a potom stiskněte klávesu ENTER.
 
-Chcete-li získat informace o konkrétním příkazu, stačí zahrnout název příkazu (například: `azcopy list -h`).
+Chcete-li získat informace o konkrétním příkazu, stačí zahrnout název příkazu (například: `azcopy list -h` ).
 
 ![Vložená Help](media/storage-use-azcopy-v10/azcopy-inline-help.png)
 
@@ -65,7 +65,7 @@ Tuto tabulku použijte jako vodítko:
 
 | Typ úložiště | Aktuálně podporovaná metoda autorizace |
 |--|--|
-|**Blob Storage** | & SAS pro Azure AD |
+|**Úložiště objektů BLOB** | & SAS pro Azure AD |
 |**Úložiště objektů BLOB (hierarchický obor názvů)** | & SAS pro Azure AD |
 |**Úložiště souborů** | Pouze SAS |
 
@@ -117,7 +117,7 @@ Pokud patříte do více než jedné organizace, uveďte ID tenanta organizace, 
 azcopy login --tenant-id=<tenant-id>
 ```
 
-`<tenant-id>` Zástupný symbol nahraďte ID tenanta organizace, které patří k účtu úložiště. ID tenanta zjistíte tak, že v Azure Portal vyberete **Azure Active Directory > vlastnosti > ID adresáře** .
+`<tenant-id>`Zástupný symbol nahraďte ID tenanta organizace, které patří k účtu úložiště. ID tenanta zjistíte tak, že v Azure Portal vyberete **Azure Active Directory > vlastnosti > ID adresáře** .
 
 Tento příkaz vrátí ověřovací kód a adresu URL webu. Otevřete web, zadejte kód a potom klikněte na tlačítko **Další** .
 
@@ -125,7 +125,7 @@ Tento příkaz vrátí ověřovací kód a adresu URL webu. Otevřete web, zadej
 
 Zobrazí se okno přihlášení. V tomto okně se přihlaste k účtu Azure pomocí svých přihlašovacích údajů k účtu Azure. Po úspěšném přihlášení můžete zavřít okno prohlížeče a začít používat AzCopy.
 
-<a id="service-principal" />
+<a id="service-principal"></a>
 
 #### <a name="authenticate-a-service-principal"></a>Ověření instančního objektu
 
@@ -141,7 +141,7 @@ Další informace o hlavních instančních objektech naleznete v tématu [Appli
 
 ##### <a name="using-a-client-secret"></a>Použití tajného klíče klienta
 
-Začněte nastavením proměnné `AZCOPY_SPA_CLIENT_SECRET` prostředí na tajný klíč klienta registrace aplikace objektu služby.
+Začněte nastavením `AZCOPY_SPA_CLIENT_SECRET` proměnné prostředí na tajný klíč klienta registrace aplikace objektu služby.
 
 > [!NOTE]
 > Ujistěte se, že jste tuto hodnotu nastavili z příkazového řádku, a ne do nastavení proměnných prostředí operačního systému. Tímto způsobem je hodnota k dispozici pouze pro aktuální relaci.
@@ -161,7 +161,7 @@ Potom zadejte následující příkaz a stiskněte klávesu ENTER.
 azcopy login --service-principal --application-id <application-id> --tenant-id=<tenant-id>
 ```
 
-`<application-id>` Zástupný symbol nahraďte ID aplikace registrace aplikace vašeho objektu služby. `<tenant-id>` Zástupný symbol nahraďte ID tenanta organizace, které patří k účtu úložiště. ID tenanta zjistíte tak, že v Azure Portal vyberete **Azure Active Directory > vlastnosti > ID adresáře** . 
+`<application-id>`Zástupný symbol nahraďte ID aplikace registrace aplikace vašeho objektu služby. `<tenant-id>`Zástupný symbol nahraďte ID tenanta organizace, které patří k účtu úložiště. ID tenanta zjistíte tak, že v Azure Portal vyberete **Azure Active Directory > vlastnosti > ID adresáře** . 
 
 ##### <a name="using-a-certificate"></a>Použití certifikátu
 
@@ -169,7 +169,7 @@ Pokud dáváte přednost používání vlastních přihlašovacích údajů pro 
 
 Kromě odeslání certifikátu do registrace aplikace budete také muset mít uloženou kopii certifikátu uloženého na počítači nebo virtuální počítač, kde bude AzCopy běžet. Tato kopie certifikátu by měla být v. PFX nebo. Formát PEM a musí obsahovat privátní klíč. Privátní klíč by měl být chráněn heslem. Pokud používáte systém Windows a váš certifikát existuje pouze v úložišti certifikátů, nezapomeňte tento certifikát exportovat do souboru PFX (včetně privátního klíče). Pokyny najdete v tématu [Export-vybíráte](https://docs.microsoft.com/powershell/module/pkiclient/export-pfxcertificate?view=win10-ps) .
 
-Dále nastavte proměnnou `AZCOPY_SPA_CERT_PASSWORD` prostředí na heslo certifikátu.
+Dále nastavte `AZCOPY_SPA_CERT_PASSWORD` proměnnou prostředí na heslo certifikátu.
 
 > [!NOTE]
 > Ujistěte se, že jste tuto hodnotu nastavili z příkazového řádku, a ne do nastavení proměnných prostředí operačního systému. Tímto způsobem je hodnota k dispozici pouze pro aktuální relaci.
@@ -186,12 +186,12 @@ Potom zadejte následující příkaz a stiskněte klávesu ENTER.
 azcopy login --service-principal --certificate-path <path-to-certificate-file> --tenant-id=<tenant-id>
 ```
 
-`<path-to-certificate-file>` Zástupný text nahraďte relativní nebo plně kvalifikovanou cestou k souboru certifikátu. AzCopy uloží cestu k tomuto certifikátu, ale neuloží kopii certifikátu, proto nezapomeňte tento certifikát ponechat na místě. `<tenant-id>` Zástupný symbol nahraďte ID tenanta organizace, které patří k účtu úložiště. ID tenanta zjistíte tak, že v Azure Portal vyberete **Azure Active Directory > vlastnosti > ID adresáře** .
+`<path-to-certificate-file>`Zástupný text nahraďte relativní nebo plně kvalifikovanou cestou k souboru certifikátu. AzCopy uloží cestu k tomuto certifikátu, ale neuloží kopii certifikátu, proto nezapomeňte tento certifikát ponechat na místě. `<tenant-id>`Zástupný symbol nahraďte ID tenanta organizace, které patří k účtu úložiště. ID tenanta zjistíte tak, že v Azure Portal vyberete **Azure Active Directory > vlastnosti > ID adresáře** .
 
 > [!NOTE]
 > Zvažte použití výzvy, jak je znázorněno v tomto příkladu. Tímto způsobem se vaše heslo nezobrazí v historii příkazů vaší konzole. 
 
-<a id="managed-identity" />
+<a id="managed-identity"></a>
 
 #### <a name="authenticate-a-managed-identity"></a>Ověření spravované identity
 
@@ -221,19 +221,19 @@ Pak v konzole příkazů zadejte libovolný z následujících příkazů a poto
 azcopy login --identity --identity-client-id "<client-id>"
 ```
 
-`<client-id>` Zástupný symbol nahraďte ID klienta spravované identity přiřazené uživatelem.
+`<client-id>`Zástupný symbol nahraďte ID klienta spravované identity přiřazené uživatelem.
 
 ```azcopy
 azcopy login --identity --identity-object-id "<object-id>"
 ```
 
-`<object-id>` Zástupný symbol nahraďte ID objektu spravované identity přiřazené uživatelem.
+`<object-id>`Zástupný symbol nahraďte ID objektu spravované identity přiřazené uživatelem.
 
 ```azcopy
 azcopy login --identity --identity-resource-id "<resource-id>"
 ```
 
-`<resource-id>` Zástupný symbol nahraďte ID prostředku spravované identity přiřazené uživatelem.
+`<resource-id>`Zástupný symbol nahraďte ID prostředku spravované identity přiřazené uživatelem.
 
 ### <a name="option-2-use-a-sas-token"></a>Možnost 2: použití tokenu SAS
 
@@ -277,7 +277,7 @@ Chcete-li získat odkaz, spusťte tento příkaz:
 | **Windows** | `(curl https://aka.ms/downloadazcopy-v10-windows -MaximumRedirection 0 -ErrorAction silentlycontinue).headers.location` |
 
 > [!NOTE]
-> Pro Linux `tar` příkaz `--strip-components=1` v příkazu odebere složku na nejvyšší úrovni, která obsahuje název verze, a místo toho extrahuje binární soubor přímo do aktuální složky. Tím umožníte, aby se skript aktualizoval pomocí nové verze nástroje `azcopy` , a to tak `wget` , že aktualizuje adresu URL.
+> Pro Linux `--strip-components=1` `tar` příkaz v příkazu odebere složku na nejvyšší úrovni, která obsahuje název verze, a místo toho extrahuje binární soubor přímo do aktuální složky. Tím umožníte, aby se skript aktualizoval pomocí nové verze nástroje `azcopy` , a to tak, že aktualizuje `wget` adresu URL.
 
 Adresa URL se zobrazí ve výstupu tohoto příkazu. Skript pak může stáhnout AzCopy pomocí této adresy URL.
 
@@ -288,7 +288,7 @@ Adresa URL se zobrazí ve výstupu tohoto příkazu. Skript pak může stáhnout
 
 ### <a name="escape-special-characters-in-sas-tokens"></a>Sekvence speciálních znaků v tokenech SAS
 
-V dávkových souborech, které `.cmd` mají rozšíření, je nutné řídicí `%` znaky, které se zobrazí v tokenech SAS. To lze provést přidáním dalšího `%` znaku vedle existujících `%` znaků v řetězci tokenu SAS.
+V dávkových souborech, které mají `.cmd` rozšíření, je nutné řídicí znaky, `%` které se zobrazí v tokenech SAS. To lze provést přidáním dalšího `%` znaku vedle existujících `%` znaků v řetězci tokenu SAS.
 
 ### <a name="run-scripts-by-using-jenkins"></a>Spouštění skriptů pomocí Jenkinse
 
@@ -304,7 +304,7 @@ Pokud máte v úmyslu spouštět skripty pomocí [Jenkinse](https://jenkins.io/)
 
 Průzkumník služby Storage používá k provádění operací klíč účtu, takže po přihlášení k Průzkumník služby Storage nebudete muset zadávat další přihlašovací údaje pro autorizaci.
 
-<a id="previous-version" />
+<a id="previous-version"></a>
 
 ## <a name="use-the-previous-version-of-azcopy"></a>Použít předchozí verzi AzCopy
 

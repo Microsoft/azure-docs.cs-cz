@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75982200"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195982"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány
 > [!NOTE]
@@ -47,7 +47,7 @@ Před zahájením tohoto Názorného postupu musíte mít následující požada
 
 * **Předplatné Azure**.  Pokud nemáte předplatné, můžete si během několika minut bezplatně vytvořit zkušební účet. Podrobnosti najdete v článku [bezplatná zkušební verze](https://azure.microsoft.com/pricing/free-trial/) .
 * **Účet Azure Storage**. V tomto kurzu použijete úložiště objektů BLOB jako **cílové úložiště nebo** úložiště dat jímky. Pokud nemáte účet úložiště Azure, přečtěte si článek [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md), kde najdete kroky pro jeho vytvoření.
-* **SQL Server**. V tomto kurzu použijete místní databázi SQL Serveru jako **zdrojové** úložiště dat.
+* **SQL Server**. V tomto kurzu použijete databázi SQL Server jako **zdrojové** úložiště dat.
 
 ## <a name="create-data-factory"></a>Vytvoření objektu pro vytváření dat
 V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory s názvem **ADFTutorialOnPremDF**.
@@ -120,7 +120,7 @@ V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory 
 6. Na svém počítači spusťte aplikaci **Správa dat Configuration Manager brány** . V okně **hledání** zadejte pro přístup k tomuto nástroji **Správa dat bránu** . Spustitelný soubor **ConfigManager. exe** můžete také najít ve složce: **C:\Program Files\Microsoft Správa dat Gateway\2.0\Shared**
 
     ![Configuration Manager brány](./media/data-factory-move-data-between-onprem-and-cloud/OnPremDMGConfigurationManager.png)
-7. Potvrďte, že `adftutorialgateway is connected to the cloud service` se zobrazí zpráva. Stavový řádek dole zobrazuje **připojení ke cloudové službě** spolu se **zeleným znakem zaškrtnutí**.
+7. Potvrďte, že se zobrazí `adftutorialgateway is connected to the cloud service` zpráva. Stavový řádek dole zobrazuje **připojení ke cloudové službě** spolu se **zeleným znakem zaškrtnutí**.
 
     Na kartě **Domů** můžete také provádět následující operace:
 
@@ -138,7 +138,7 @@ V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory 
    * Zobrazit nebo exportovat certifikát používaný bránou.
    * Změňte koncový bod HTTPS používaný bránou.    
    * Nastavte proxy server HTTP, který bude brána používat.     
-9. volitelné Přepněte na kartu **Diagnostika** , zaškrtněte možnost **Povolit podrobné protokolování** , pokud chcete povolit podrobné protokolování, které můžete použít k řešení potíží s bránou. Informace o protokolování najdete v **Prohlížeč událostí** v části ->  **protokoly aplikací a služeb****Správa dat uzel Brána** .
+9. volitelné Přepněte na kartu **Diagnostika** , zaškrtněte možnost **Povolit podrobné protokolování** , pokud chcete povolit podrobné protokolování, které můžete použít k řešení potíží s bránou. Informace o protokolování najdete v **Prohlížeč událostí** v části **protokoly aplikací a služeb**  ->  **Správa dat uzel Brána** .
 
     ![Karta Diagnostika](./media/data-factory-move-data-between-onprem-and-cloud/diagnostics-tab.png)
 
@@ -152,9 +152,9 @@ V tomto kroku použijete Azure Portal k vytvoření instance Azure Data Factory 
 12. Ve stromovém zobrazení na levé straně byste měli vidět **adftutorialgateway** v části **brány dat** .  Pokud na něj kliknete, měl by se zobrazit přidružený kód JSON.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
-V tomto kroku vytvoříte dvě propojené služby: **AzureStorageLinkedService** a **SqlServerLinkedService**. **SqlServerLinkedService** odkazuje na místní databázi SQL Server a propojená služba **AzureStorageLinkedService** propojuje úložiště objektů BLOB v Azure s datovou továrnou. Kanál vytvoříte později v tomto návodu, který kopíruje data z místní SQL Server databáze do úložiště objektů BLOB v Azure.
+V tomto kroku vytvoříte dvě propojené služby: **AzureStorageLinkedService** a **SqlServerLinkedService**. **SqlServerLinkedService** odkazuje na databázi SQL Server a propojená služba **AzureStorageLinkedService** propojuje úložiště objektů BLOB v Azure s datovou továrnou. Kanál vytvoříte později v tomto návodu, který kopíruje data z databáze SQL Server do úložiště objektů BLOB v Azure.
 
-#### <a name="add-a-linked-service-to-an-on-premises-sql-server-database"></a>Přidání propojené služby do místní databáze SQL Server
+#### <a name="add-a-linked-service-to-a-sql-server-database"></a>Přidání propojené služby do databáze SQL Server
 1. V **editoru Data Factory**klikněte na panelu nástrojů na **nové úložiště dat** a vyberte **SQL Server**.
 
    ![Nová propojená služba SQL Server](./media/data-factory-move-data-between-onprem-and-cloud/NewSQLServer.png)
@@ -189,7 +189,7 @@ V tomto kroku vytvoříte vstupní a výstupní datové sady, které představuj
 * V účtu služby Azure Blob Storage, který jste do datové továrny přidali jako propojenou službu, vytvořte kontejner objektů blob **adftutorial**.
 
 ### <a name="prepare-on-premises-sql-server-for-the-tutorial"></a>Příprava místních SQL Server pro tento kurz
-1. V databázi, kterou jste zadali pro propojenou službu místního SQL Serveru (**SqlServerLinkedService**), pomocí následujícího skriptu SQL vytvořte tabulku **emp**.
+1. V databázi, kterou jste zadali pro službu SQL Server Linked Service (**SqlServerLinkedService**), vytvořte tabulku **EMP** v databázi pomocí následujícího skriptu SQL.
 
     ```SQL   
     CREATE TABLE dbo.emp
@@ -359,7 +359,7 @@ V tomto kroku vytvoříte **kanál** s jednou **aktivitou kopírování** , kter
    * V části aktivity je k dispozici pouze aktivita, jejíž **typ** je nastaven na **Kopírovat**.
    * **Vstup** aktivity je nastavený na **EmpOnPremSQLTable** a **výstup** aktivity je nastavený na **OutputBlobTable**.
    * V části **typeProperties** je jako typ **zdroje** zadáno **SqlSource** a jako **typ jímky**je zadáno **BlobSink** .
-   * Pro vlastnost `select * from emp` **sqlReaderQuery** třídy **SqlSource**je zadán dotaz SQL.
+   * `select * from emp`Pro vlastnost **SqlReaderQuery** třídy **SQLSOURCE**je zadán dotaz SQL.
 
    Počáteční a koncové hodnoty data a času musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Například: 2014-10-14T16:32:41Z. Čas hodnoty **end** je nepovinný, ale my ho v tomto kurzu použijeme.
 
@@ -371,7 +371,7 @@ V tomto kroku vytvoříte **kanál** s jednou **aktivitou kopírování** , kter
 3. Kliknutím na **nasadit** na panelu příkazů nasaďte datovou sadu (tabulka je obdélníková datová sada). Ověřte, že se kanál zobrazuje ve stromovém zobrazení pod uzlem **kanály** .  
 4. Nyní kliknutím na **X** dvakrát zavřete stránku a vrátíte se na stránku **Data Factory** pro **ADFTutorialOnPremDF**.
 
-**Blahopřejeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure, propojené služby, datové sady a kanál a naplánovali jste kanál.
+**Gratulujeme!** Úspěšně jste vytvořili objekt pro vytváření dat Azure, propojené služby, datové sady a kanál a naplánovali jste kanál.
 
 #### <a name="view-the-data-factory-in-a-diagram-view"></a>Zobrazit objektu pro vytváření dat v zobrazení diagramu
 1. V **Azure Portal**klikněte na dlaždici **diagram** na domovské stránce pro **ADFTutorialOnPremDF** Data Factory. :

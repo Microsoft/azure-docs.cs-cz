@@ -8,12 +8,12 @@ ms.date: 03/11/2020
 ms.service: storage
 ms.reviewer: rukmani-msft
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 55ef2ee7d39d68804fe44c9d7a6eb0ee199e6109
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c2db8c41d29b3fd8cb40744708ff87d7f4ec5b12
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019856"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193489"
 ---
 # <a name="migrate-azure-data-lake-storage-from-gen1-to-gen2"></a>Migrace Azure Data Lake Storage z Gen1 na Gen2
 
@@ -87,7 +87,7 @@ Migrujte data, úlohy a aplikace pomocí vhodného vzoru. Doporučujeme, abyste 
 
 Jakmile budete mít jistotu, že vaše aplikace a úlohy jsou v Gen2 stabilní, můžete začít používat Gen2 k uspokojení vašich obchodních scénářů. Vypněte všechny zbývající kanály, které běží na Gen1, a vyřaďte účet Gen1. 
 
-<a id="gen1-gen2-feature-comparison" />
+<a id="gen1-gen2-feature-comparison"></a>
 
 ## <a name="gen1-vs-gen2-capabilities"></a>Možnosti Gen1 vs Gen2
 
@@ -97,7 +97,7 @@ Tato tabulka porovnává možnosti Gen1 s Gen2.
 |---|---|---|
 |Organizace dat|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora souborů a složek|[Hierarchický obor názvů](data-lake-storage-namespace.md)<br>Podpora kontejnerů, souborů a složek |
 |Geografická redundance| [LRS](../common/storage-redundancy.md#locally-redundant-storage)| [LRS](../common/storage-redundancy.md#locally-redundant-storage), [ZRS](../common/storage-redundancy.md#zone-redundant-storage), [GRS](../common/storage-redundancy.md#geo-redundant-storage), [RA-GRS](../common/storage-redundancy.md#read-access-to-data-in-the-secondary-region) |
-|Ověřování|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Sdílený přístupový klíč](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
+|Authentication|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)|[Spravovaná identita AAD](../../active-directory/managed-identities-azure-resources/overview.md)<br>[Instanční objekty](../../active-directory/develop/app-objects-and-service-principals.md)<br>[Sdílený přístupový klíč](https://docs.microsoft.com/rest/api/storageservices/authorize-with-shared-key)|
 |Autorizace|Správa – [RBAC](../../role-based-access-control/overview.md)<br>Data – [seznamy ACL](data-lake-storage-access-control.md)|Správa – [RBAC](../../role-based-access-control/overview.md)<br>Data- [seznamy řízení přístupu](data-lake-storage-access-control.md)( [RBAC](../../role-based-access-control/overview.md) ) |
 |Šifrování – neaktivní neaktivní data|Strana serveru – s použitím klíčů spravovaných [Microsoftem](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [zákazníky](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|Strana serveru – s použitím klíčů spravovaných [Microsoftem](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) nebo [zákazníky](../common/encryption-customer-managed-keys.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Podpora virtuální sítě|[Integrace virtuální sítě](../../data-lake-store/data-lake-store-network-security.md)|[Koncové body služby](../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [privátní koncové body](../common/storage-private-endpoints.md)|
@@ -105,7 +105,7 @@ Tato tabulka porovnává možnosti Gen1 s Gen2.
 |Protokoly prostředků|Klasické protokoly<br>[Azure Monitor integrovaný](../../data-lake-store/data-lake-store-diagnostic-logs.md)|[Klasické protokoly](../common/storage-analytics-logging.md) – všeobecně dostupné<br>Integrace se službou Azure monitor – TBD časová osa|
 |Ekosystém|[HDInsight (3,6)](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md), [Azure Databricks (3,1 a vyšší)](https://docs.databricks.com/data/data-sources/azure/azure-datalake.html), [SQL DW](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-load-from-azure-data-lake-store), [ADF](../../data-factory/load-azure-data-lake-store.md)|[HDInsight (3,6, 4,0)](../../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen2.md), [Azure Databricks (5,1 a vyšší)](https://docs.microsoft.com/azure/databricks/data/data-sources/azure/azure-datalake-gen2), [SQL DW](../../azure-sql/database/vnet-service-endpoint-rule-overview.md), [ADF](../../data-factory/load-azure-data-lake-storage-gen2.md)|
 
-<a id="migration-patterns" />
+<a id="migration-patterns"></a>
 
 ## <a name="gen1-to-gen2-patterns"></a>Gen1 ke vzorům Gen2
 

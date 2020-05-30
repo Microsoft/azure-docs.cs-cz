@@ -1,7 +1,7 @@
 ---
 title: Místní SQL Server
 titleSuffix: ML Studio (classic) - Azure
-description: Použijte data z místní databáze SQL Server k provádění pokročilých analýz s využitím Azure Machine Learning Studio (Classic).
+description: Použijte data z databáze SQL Server k provádění pokročilých analýz s využitím Azure Machine Learning Studio (Classic).
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
@@ -10,18 +10,18 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
-ms.openlocfilehash: 890486214eb67be26479b122c88c7a6b640b8ade
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: ff0169d0606728898bc6157d05f2013607e48f0c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117790"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193813"
 ---
-# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-an-on-premises-sql-server-database"></a>Analýza pomocí Azure Machine Learning Studio (Classic) pomocí místní databáze SQL Server
+# <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Analýza pomocí SQL Server databáze pomocí Azure Machine Learning Studio (Classic)
 
-Často by podniky, které pracují s místními daty, mohly využít výhod škály a flexibility cloudu pro úlohy strojového učení. Ale nechtějí přerušit své současné obchodní procesy a pracovní postupy přesunutím místních dat do cloudu. Azure Machine Learning Studio (Classic) teď podporuje čtení vašich dat z místní databáze SQL Server a následné školení a vyhodnocování modelu s těmito daty. Už nemusíte ručně kopírovat a synchronizovat data mezi cloudem a místním serverem. Místo toho se teď může modul **importu dat** v Azure Machine Learning Studio (Classic) přečíst přímo z místní databáze SQL Server pro vaše školicí a vyhodnocovací úlohy.
+Často by podniky, které pracují s místními daty, mohly využít výhod škály a flexibility cloudu pro úlohy strojového učení. Ale nechtějí přerušit své současné obchodní procesy a pracovní postupy přesunutím místních dat do cloudu. Azure Machine Learning Studio (Classic) nyní podporuje čtení dat z databáze SQL Server a následné školení a vyhodnocování modelu s těmito daty. Už nemusíte ručně kopírovat a synchronizovat data mezi cloudem a místním serverem. Místo toho se teď může modul **importu dat** v Azure Machine Learning Studio (Classic) přečíst přímo z databáze SQL Server pro vaše školicí a vyhodnocovací úlohy.
 
-Tento článek poskytuje přehled o příchozím přenosu dat z místního SQL serveru do Azure Machine Learning Studio (Classic). Předpokládá, že jste obeznámeni se základními koncepty studia, jako jsou pracovní prostory, moduly, datové sady, experimenty *atd.*
+Tento článek poskytuje přehled způsobů příchozího SQL Server dat do Azure Machine Learning Studio (Classic). Předpokládá, že jste obeznámeni se základními koncepty studia, jako jsou pracovní prostory, moduly, datové sady, experimenty *atd.*
 
 > [!NOTE]
 > Tato funkce není k dispozici pro bezplatné pracovní prostory. Další informace o cenách a úrovních Machine Learning najdete v tématu [Azure Machine Learning ceny](https://azure.microsoft.com/pricing/details/machine-learning/).
@@ -33,7 +33,7 @@ Tento článek poskytuje přehled o příchozím přenosu dat z místního SQL s
 
 
 ## <a name="install-the-data-factory-self-hosted-integration-runtime"></a>Instalace Integration Runtime Data Factory v místním prostředí
-Chcete-li získat přístup k místní databázi SQL Server v Azure Machine Learning Studio (Classic), je nutné stáhnout a nainstalovat Data Factory v místním prostředí Integration Runtime, dříve označované jako brána Správa dat. Když nakonfigurujete připojení v Machine Learning Studio (Classic), máte možnost stáhnout a nainstalovat Integration Runtime (IR) pomocí dialogu **Stáhnout a zaregistrovat data Gateway** , který je popsaný níže.
+Chcete-li získat přístup k databázi SQL Server v Azure Machine Learning Studio (Classic), je nutné stáhnout a nainstalovat Data Factory v místním prostředí Integration Runtime, dříve označované jako brána Správa dat. Když nakonfigurujete připojení v Machine Learning Studio (Classic), máte možnost stáhnout a nainstalovat Integration Runtime (IR) pomocí dialogu **Stáhnout a zaregistrovat data Gateway** , který je popsaný níže.
 
 
 Pomocí stažení a spuštění instalačního balíčku MSI z [webu Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=39717)můžete také nainstalovat prostředí IR před časem. Soubor MSI se dá použít taky k upgradu existujícího IR na nejnovější verzi, kde se zachovají všechna nastavení.
@@ -64,8 +64,8 @@ Při nastavování a používání Integration Runtime Data Factory v místním 
 
 Podrobné informace o požadavcích na instalaci, krocích instalace a tipůch k odstraňování potíží najdete v článku [Integration runtime v Data Factory](../../data-factory/concepts-integration-runtime.md).
 
-## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-on-premises-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Příchozí data z místní databáze SQL Server do Azure Machine Learning
-V tomto návodu nastavíte Integration Runtime Azure Data Factory v pracovním prostoru Azure Machine Learning, nakonfigurujete ho a pak načtete data z místní databáze SQL Server.
+## <a name="span-idusing-the-data-gateway-step-by-step-walk-classanchorspan-id_toc450838866-classanchorspanspaningress-data-from-your-sql-server-database-into-azure-machine-learning"></a><span id="using-the-data-gateway-step-by-step-walk" class="anchor"><span id="_Toc450838866" class="anchor"></span></span>Příchozí data z databáze SQL Server do Azure Machine Learning
+V tomto návodu nastavíte Integration Runtime Azure Data Factory v pracovním prostoru Azure Machine Learning, nakonfigurujete ho a potom načtete data z databáze SQL Server.
 
 > [!TIP]
 > Než začnete, zakažte blokování automaticky otevíraných oken v prohlížeči `studio.azureml.net` . Pokud používáte prohlížeč Google Chrome, Stáhněte a nainstalujte jeden z několika modulů plug-in, které jsou k dispozici na webu Google Chrome webstore [klikněte jednou na rozšíření aplikace](https://chrome.google.com/webstore/search/clickonce?_category=extensions).
@@ -74,7 +74,7 @@ V tomto návodu nastavíte Integration Runtime Azure Data Factory v pracovním p
 > Azure Data Factory Integration Runtime v místním prostředí se dřív jmenovala jako Správa dat brána. V tomto kurzu se v tomto kroku budou dál odkazovat jako na bránu.  
 
 ### <a name="step-1-create-a-gateway"></a>Krok 1: Vytvoření brány
-Prvním krokem je vytvoření a nastavení brány pro přístup k místní databázi SQL.
+Prvním krokem je vytvoření a nastavení brány pro přístup k databázi SQL.
 
 1. Přihlaste se k [Azure Machine Learning Studio (Classic)](https://studio.azureml.net/Home/) a vyberte pracovní prostor, ve kterém chcete pracovat.
 2. Klikněte na levé okno **Nastavení** a pak klikněte na kartu **brány dat** v horní části.
@@ -121,7 +121,7 @@ Teď jste připraveni použít vaše místní data.
 Pro každý pracovní prostor můžete vytvořit a nastavit několik bran v nástroji Studio (Classic). Například můžete mít bránu, kterou chcete připojit ke zdrojům testovacích dat během vývoje, a jinou bránu pro zdroje dat v produkčním prostředí. Azure Machine Learning Studio (Classic) získáte flexibilitu při nastavení několika bran v závislosti na vašem podnikovém prostředí. V tuto chvíli nemůžete sdílet bránu mezi pracovními prostory a v jednom počítači může být nainstalovaná jenom jedna brána. Další informace najdete v tématu [přesun dat mezi místními zdroji a cloudem pomocí Správa dat brány](../../data-factory/tutorial-hybrid-copy-portal.md).
 
 ### <a name="step-2-use-the-gateway-to-read-data-from-an-on-premises-data-source"></a>Krok 2: použití brány ke čtení dat z místního zdroje dat
-Po nastavení brány můžete přidat modul **importu dat** do experimentu, který bude pokaždé zadat data z místní databáze SQL Server.
+Po nastavení brány můžete přidat modul **importu dat** do experimentu, který data z databáze SQL Server.
 
 1. V Machine Learning Studio (Classic) vyberte kartu **experimenty** , v levém dolním rohu klikněte na **+ Nový** a vyberte možnost **prázdný experiment** (nebo vyberte jednu z několika možných experimentů s ukázkou).
 2. Vyhledejte a přetáhněte na plátno experimentu modul **Import dat** .
@@ -133,7 +133,7 @@ Po nastavení brány můžete přidat modul **importu dat** do experimentu, kter
 
    ![Vybrat bránu dat pro modul import dat](./media/use-data-from-an-on-premises-sql-server/import-data-select-on-premises-data-source.png)
 6. Zadejte **název serveru SQL Database** a **název databáze**společně s **dotazem SQL Database** , který chcete spustit.
-7. V části **uživatelské jméno a heslo** klikněte na **zadat hodnoty** a zadejte svoje přihlašovací údaje do databáze. V závislosti na tom, jak je místní SQL Server nakonfigurovaná, můžete použít integrované ověřování systému Windows nebo SQL Server ověřování.
+7. V části **uživatelské jméno a heslo** klikněte na **zadat hodnoty** a zadejte svoje přihlašovací údaje do databáze. V závislosti na tom, jak je SQL Server nakonfigurovaná, můžete použít integrované ověřování systému Windows nebo SQL Server ověřování.
 
    ![Zadat přihlašovací údaje databáze](./media/use-data-from-an-on-premises-sql-server/database-credentials.png)
 
@@ -144,4 +144,4 @@ Po nastavení brány můžete přidat modul **importu dat** do experimentu, kter
 
 Po dokončení experimentu můžete vizualizovat data, která jste importovali z databáze, kliknutím na výstupní port modulu **Import dat** a výběrem možnosti **vizualizovat**.
 
-Až dokončíte vývoj experimentů, můžete model nasadit a zprovoznění. Pomocí služby Batch Execution se data z místní databáze SQL Server nakonfigurovaná v modulu **Import dat** přečtou a budou se používat pro vyhodnocování. I když můžete použít službu Request response pro bodování místních dat, Microsoft doporučuje místo toho použít [doplněk Excelu](excel-add-in-for-web-services.md) . V současné době se zápisy do místní databáze SQL Server prostřednictvím **exportu dat** nepodporují ani v experimentech nebo publikovaných webových službách.
+Až dokončíte vývoj experimentů, můžete model nasadit a zprovoznění. Pomocí služby Batch Execution se data z databáze SQL Server nakonfigurovaná v modulu **Import dat** přečtou a použijí pro vyhodnocování. I když můžete použít službu Request response pro bodování místních dat, Microsoft doporučuje místo toho použít [doplněk Excelu](excel-add-in-for-web-services.md) . V současné době se zápis do databáze SQL Server prostřednictvím **exportu dat** nepodporuje ani v experimentech nebo publikovaných webových službách.

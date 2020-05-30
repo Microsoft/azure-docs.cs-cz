@@ -3,16 +3,17 @@ title: Zobrazit Azure Monitor pro nasazení kontejnerů (Preview) | Microsoft Do
 description: Tento článek popisuje zobrazení Kubernetes nasazení v reálném čase bez použití kubectl v Azure Monitor pro kontejnery.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 7d0344851e1db8c014a1bb16b228a0c2f76444d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: 98901ba8622404c03f3456b4ca404715d7016d9c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75404778"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195003"
 ---
 # <a name="how-to-view-deployments-preview-in-real-time"></a>Postup zobrazení nasazení (Preview) v reálném čase
 
-U Azure Monitor pro kontejnery, funkce Zobrazit nasazení (Preview) emuluje přímý přístup k objektům nasazení Kubernetes v reálném čase tím, že vystavuje `kubeclt get deployments` příkazy `kubectl describe deployment {your deployment}` a. 
+U Azure Monitor pro kontejnery, funkce Zobrazit nasazení (Preview) emuluje přímý přístup k objektům nasazení Kubernetes v reálném čase tím, že vystavuje `kubeclt get deployments` `kubectl describe deployment {your deployment}` příkazy a. 
 
 >[!NOTE]
 >AKS clustery, které jsou povolené jako [soukromé clustery](https://azure.microsoft.com/updates/aks-private-cluster/) , s touto funkcí se nepodporují. Tato funkce spoléhá přímo na rozhraní Kubernetes API prostřednictvím proxy server z prohlížeče. Když zapnete zabezpečení sítě, zablokujete tím, že rozhraní Kubernetes API z tohoto proxy serveru znemožní tento provoz. 
@@ -26,7 +27,7 @@ Další informace najdete v dokumentaci k Kubernetes o [nasazeních](https://kub
 
 Funkce Live data (Preview) přímo přistupuje k rozhraní Kubernetes API a další informace o modelu ověřování najdete [tady](https://kubernetes.io/docs/concepts/overview/kubernetes-api/). 
 
-Funkce nasazení (Preview) provádí jednorázové (obnovitelné) zatížení proti koncovému bodu `/apis/apps/v1/deployments`nasazení. Umožňuje vybrat dané nasazení a načíst podrobné informace o tomto konkrétním nasazení v rámci koncového bodu `/apis/apps/v1/namespaces/${nameSpace}/deployments/${deploymentName}`nasazení. 
+Funkce nasazení (Preview) provádí jednorázové (obnovitelné) zatížení proti koncovému bodu nasazení `/apis/apps/v1/deployments` . Umožňuje vybrat dané nasazení a načíst podrobné informace o tomto konkrétním nasazení v rámci koncového bodu nasazení `/apis/apps/v1/namespaces/${nameSpace}/deployments/${deploymentName}` . 
 
 Po výběru možnosti **aktualizovat** v levém horním rohu stránky se aktualizuje seznam nasazení. To simuluje opětovné spuštění `kubectl` příkazu. 
 
@@ -38,7 +39,7 @@ Po výběru možnosti **aktualizovat** v levém horním rohu stránky se aktuali
 
 ## <a name="deployments-describe"></a>Nasazení popisují
 
-Chcete-li zobrazit podrobné informace o nasazení, což je ekvivalent `kubectl describe deployment`, proveďte následující kroky.
+Chcete-li zobrazit podrobné informace o nasazení, což je ekvivalent `kubectl describe deployment` , proveďte následující kroky.
 
 1. V Azure Portal přejděte do skupiny prostředků clusteru AKS a vyberte svůj prostředek AKS.
 
@@ -48,11 +49,11 @@ Chcete-li zobrazit podrobné informace o nasazení, což je ekvivalent `kubectl 
 
     ![Zobrazení nasazení v Azure Portal](./media/container-insights-livedata-deployments/deployment-view.png)
 
-Zobrazení obsahuje seznam všech běžících nasazení společně s oborem názvů a dalšími podrobnými informacemi, které emuluje spuštění příkazu `kubectl get deployments –all-namespaces`. Výsledky můžete seřadit výběrem některého z těchto sloupců. 
+Zobrazení obsahuje seznam všech běžících nasazení společně s oborem názvů a dalšími podrobnými informacemi, které emuluje spuštění příkazu `kubectl get deployments –all-namespaces` . Výsledky můžete seřadit výběrem některého z těchto sloupců. 
 
 ![Podrobnosti podokna vlastností nasazení](./media/container-insights-livedata-deployments/deployment-properties-pane-details.png)
 
-Po výběru nasazení ze seznamu se automaticky zobrazí podokno vlastností na pravé straně stránky. Zobrazuje informace související s vybraným nasazením, které byste měli zobrazit při spuštění příkazu `kubectl describe deployment {deploymentName}`. Možná jste si všimli, že v popisech chybí nějaké informace. Zejména **Šablona** chybí. Výběr **nezpracované** karty vám umožní přejít na podrobné informace o neanalyzovaných analýzách.  
+Po výběru nasazení ze seznamu se automaticky zobrazí podokno vlastností na pravé straně stránky. Zobrazuje informace související s vybraným nasazením, které byste měli zobrazit při spuštění příkazu `kubectl describe deployment {deploymentName}` . Možná jste si všimli, že v popisech chybí nějaké informace. Zejména **Šablona** chybí. Výběr **nezpracované** karty vám umožní přejít na podrobné informace o neanalyzovaných analýzách.  
 
 ![Nezpracované Podrobnosti podokna Vlastnosti nasazení](./media/container-insights-livedata-deployments/deployment-properties-pane-raw.png)
 

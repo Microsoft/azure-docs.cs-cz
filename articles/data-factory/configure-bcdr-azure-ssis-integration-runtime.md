@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/09/2020
-ms.openlocfilehash: 479e57a6001e143e233457967d55ea0e2fb6d3de
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e1b70e0e3eb54253972afded1bd37363d1a868e7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021044"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195716"
 ---
 # <a name="configure-the-azure-ssis-integration-runtime-with-sql-database-geo-replication-and-failover"></a>Konfigurace prostředí Azure-SSIS Integration runtime pomocí SQL Database geografické replikace a převzetí služeb při selhání
 
@@ -29,11 +29,11 @@ Další informace o geografické replikaci a převzetí služeb při selhání p
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="azure-ssis-ir-failover-with-a-sql-database-managed-instance"></a>Azure-SSIS IR převzetí služeb při selhání pomocí spravované instance SQL Database
+## <a name="azure-ssis-ir-failover-with-a-sql-managed-instance"></a>Azure-SSIS IR převzetí služeb při selhání pomocí spravované instance SQL
 
 ### <a name="prerequisites"></a>Požadavky
 
-Azure SQL Database spravovaná instance používá k zabezpečení dat, přihlašovacích údajů a informací o připojeních uložených v databázi *hlavní klíč databáze (DMK)* . Chcete-li povolit automatické dešifrování DMK, je kopie klíče šifrována prostřednictvím *hlavního klíče serveru (SMK)*. 
+Spravovaná instance Azure SQL používá k zabezpečení dat, přihlašovacích údajů a informací o připojení uložených v databázi *hlavní klíč databáze (DMK)* . Chcete-li povolit automatické dešifrování DMK, je kopie klíče šifrována prostřednictvím *hlavního klíče serveru (SMK)*. 
 
 SMK není replikována ve skupině převzetí služeb při selhání. Po převzetí služeb při selhání musíte do primární i sekundární instance přidat heslo pro dešifrování DMK.
 
@@ -43,7 +43,7 @@ SMK není replikována ve skupině převzetí služeb při selhání. Po převze
     ALTER MASTER KEY ADD ENCRYPTION BY PASSWORD = 'password'
     ```
 
-2. Vytvořte skupinu převzetí služeb při selhání na spravované instanci Azure SQL Database.
+2. Vytvořte skupinu převzetí služeb při selhání na spravované instanci SQL.
 
 3. Spusťte **sp_control_dbmasterkey_password** na sekundární instanci pomocí nového šifrovacího hesla.
 
@@ -97,9 +97,9 @@ Pokud dojde k převzetí služeb při selhání, proveďte následující kroky:
 
 3. Restart the Azure-SSIS IR.
 
-### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Database managed instance
+### Scenario 3: Azure-SSIS IR is pointing to a public endpoint of a SQL Managed Instance
 
-This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of an Azure SQL Database managed instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
+This scenario is suitable if the Azure-SSIS IR is pointing to a public endpoint of a Azure SQL Managed Instance and it doesn't join to a virtual network. The only difference from scenario 2 is that you don't need to edit virtual network information for the Azure-SSIS IR after failover.
 
 #### Solution
 

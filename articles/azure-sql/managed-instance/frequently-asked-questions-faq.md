@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: c1a7f22314af472037194150b78e881395c14c2e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 518c4b83721e80aeaadfbdf5b03cddc62ae5479f
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117388"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216334"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure SQL Managed instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,7 +30,7 @@ Tento článek obsahuje nejčastější dotazy týkající se [spravované insta
 
 Seznam podporovaných funkcí ve spravované instanci SQL najdete v tématu [funkce spravované instance Azure SQL](../database/features-comparison.md).
 
-Rozdíly v syntaxi a chování mezi spravovanou instancí Azure SQL a místními SQL Server najdete v tématu rozdíly v [T-SQL od SQL Server](transact-sql-tsql-differences-sql-server.md).
+Rozdíly v syntaxi a chování mezi spravovanou instancí Azure SQL a SQL Server najdete v tématu [rozdíly v T-SQL od SQL Server](transact-sql-tsql-differences-sql-server.md).
 
 
 ## <a name="tech-spec--resource-limits"></a>Technické specifikace & omezení prostředků
@@ -60,7 +60,7 @@ Očekávaná doba vytvoření spravované instance SQL nebo změna úrovně slu�
 
 ## <a name="naming-convention"></a>Konvence pojmenování
 
-**Může mít spravovaná instance SQL stejný název jako místní SQL Server?**
+**Může mít spravovaná instance SQL stejný název jako místní instance SQL Server?**
 
 Změna názvu spravované instance SQL se nepodporuje.
 
@@ -240,3 +240,44 @@ Po zpřístupnění ochrany šifrování pro spravovanou instanci SQL můžete p
 **Jak můžu migrovat z Azure SQL Database do spravované instance SQL?**
 
 Služba SQL Managed instance nabízí stejné úrovně výkonu na výpočetní úrovni a velikost úložiště jako Azure SQL Database. Pokud chcete konsolidovat data na jednu instanci nebo jednoduše potřebujete funkci podporovanou výhradně ve spravované instanci SQL, můžete data migrovat pomocí funkce Export/Import (BACPAC).
+
+## <a name="password-policy"></a>Zásady hesel 
+
+**Jaké zásady hesel se používají pro přihlašovací údaje SQL spravované instance SQL?**
+
+Zásady hesel spravované instance SQL pro přihlášení SQL dědí zásady platformy Azure, které se používají u virtuálních počítačů tvořících virtuální cluster, který je držitelem spravované instance. V současné době není možné změnit žádné z těchto nastavení, protože tato nastavení definuje Azure a dědí spravovaná instance.
+
+ > [!IMPORTANT]
+ > Platforma Azure může měnit požadavky zásad bez upozorňování služeb, které se na tyto zásady spoléhají.
+
+**Co jsou aktuální zásady platformy Azure?**
+
+Každé přihlášení musí po přihlášení zadat své heslo a po dosažení maximálního stáří změnit jeho heslo.
+
+| **Zásady** | **Nastavení zabezpečení** |
+| --- | --- |
+| Maximální stáří hesla | 42 dní |
+| Minimální stáří hesla | 1 den |
+| Minimální délka hesla | 10 znaků |
+| Heslo musí splňovat požadavky na složitost. | Povoleno |
+
+**Je možné zakázat složitost a vypršení platnosti hesla ve spravované instanci SQL na úrovni přihlášení?**
+
+Ano, je možné řídit CHECK_POLICY a CHECK_EXPIRATION pole na úrovni přihlášení. Aktuální nastavení můžete kontrolovat spuštěním následujícího příkazu T-SQL:
+
+```sql
+SELECT *
+FROM sys.sql_logins
+```
+
+Potom můžete změnit zadaná nastavení přihlášení spuštěním příkazu:
+
+```sql
+ALTER LOGIN test WITH CHECK_POLICY = ON;
+ALTER LOGIN test WITH CHECK_EXPIRATION = ON;
+```
+
+(nahraďte ' test ' s požadovaným přihlašovacím jménem.)
+
+ > [!Note]
+ > Výchozí hodnoty pro CHECK_POLICY a CHECK_EXPIRATION jsou nastaveny na OFF.

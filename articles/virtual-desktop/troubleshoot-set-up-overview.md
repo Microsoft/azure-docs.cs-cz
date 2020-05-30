@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 196c4f692b425d2fc6592888ba89f2fa6dafd3de
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c5be26509eccdaebf1b504c1b0b8c7edb35e101c
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612499"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84203849"
 ---
 # <a name="troubleshooting-overview-feedback-and-support"></a>Přehled řešení potíží, zpětná vazba a podpora
 
@@ -53,6 +53,7 @@ Pomocí následující tabulky můžete identifikovat a vyřešit problémy, se 
 | Licenční zprávy a chyby                                                          | Pokud jsou problémy svázané s konkrétní aplikací nebo produktem, obraťte se na tým, který je zodpovědný za daný produkt. |
 | Problémy s metodami ověřování třetích stran | Ověřte, jestli váš poskytovatel třetí strany podporuje scénáře virtuálních počítačů s Windows, a přiblíží se k nim ohledně známých problémů. |
 | Problémy s používáním Log Analytics pro virtuální počítače s Windows | V případě problémů se schématem diagnostiky [otevřete žádost o podporu Azure](https://azure.microsoft.com/support/create-ticket/).<br><br>Pro dotazy, vizualizaci nebo jiné problémy v Log Analytics v části Log Analytics vyberte příslušný typ problému. |
+| Problémy s používáním aplikací M365 | Obraťte se na centrum pro správu M365 s jedním z [možností pomocníka centra pro správu M365](/microsoft-365/admin/contact-support-for-business-products/). |
 
 ## <a name="next-steps"></a>Další kroky
 

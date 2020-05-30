@@ -1,6 +1,6 @@
 ---
 title: Přesun dat na SQL Server virtuální počítač – proces týmu pro datové vědy
-description: Přesuňte data z plochých souborů nebo z místního SQL Server a SQL Server na virtuálním počítači Azure.
+description: Přesuňte data z plochých souborů nebo místních SQL Server a SQL Server na virtuálním počítači Azure.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4de0686dbca803b9008c1b56c512a90fcfe2b3c0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: be1abe415955b52cbd639faef703e5c2fbd257b6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022431"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194371"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Přesun dat do SQL Serveru na virtuálním počítači Azure
 
@@ -38,7 +38,7 @@ V tomto dokumentu se předpokládá, že příkazy SQL se spouštějí z SQL Ser
 >
 >
 
-## <a name="prerequisites"></a><a name="prereqs"></a>Požadovaný
+## <a name="prerequisites"></a><a name="prereqs"></a>Požadavky
 V tomto kurzu se předpokládá, že máte následující:
 
 * **Předplatné Azure**. Pokud nemáte předplatné, můžete si zaregistrovat [bezplatnou zkušební verzi](https://azure.microsoft.com/pricing/free-trial/).
@@ -185,7 +185,7 @@ K hromadnému exportu dat z místních SQL Server, jak je popsáno v tématu [Hr
 2. Vytvořte databázi a tabulku na SQL Serverm VIRTUÁLNÍm počítači v Azure pomocí `create database` a `create table` pro schéma tabulky exportované v kroku 1.
 3. Vytvořte formátový soubor pro popis schématu tabulky exportovaných a importovaných dat. Podrobnosti o formátovém souboru jsou popsány v tématu [Create a Format File (SQL Server)](https://msdn.microsoft.com/library/ms191516.aspx).
 
-    Při spuštění BCP z SQL Server počítače se formátovat soubor.
+    Při spuštění nástroje BCP z SQL Server počítače se naformátuje generování souboru
 
         bcp dbname..tablename format nul -c -x -f exportformatfilename.xml -S servername\sqlinstance -T -t \t -r \n
 
@@ -203,7 +203,7 @@ K hromadnému exportu dat z místních SQL Server, jak je popsáno v tématu [Hr
 SQL Server podporuje:
 
 1. [Funkce zálohování a obnovení databáze](https://msdn.microsoft.com/library/ms187048.aspx) (pro místní soubor nebo BacPac export do objektů BLOB) a [aplikace datové vrstvy](https://msdn.microsoft.com/library/ee210546.aspx) (pomocí BacPac).
-2. Možnost přímého vytváření SQL Server virtuálních počítačů v Azure pomocí zkopírované databáze nebo kopírování do existující databáze SQL Azure. Další informace najdete v tématu [použití Průvodce kopírováním databáze](https://msdn.microsoft.com/library/ms188664.aspx).
+2. Možnost přímého vytváření SQL Server virtuálních počítačů v Azure pomocí zkopírované databáze nebo kopírování do existující databáze v SQL Database. Další informace najdete v tématu [použití Průvodce kopírováním databáze](https://msdn.microsoft.com/library/ms188664.aspx).
 
 Snímek obrazovky možností zálohování a obnovení databáze z SQL Server Management Studio je uveden níže.
 

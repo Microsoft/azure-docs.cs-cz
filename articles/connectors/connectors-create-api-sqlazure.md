@@ -7,16 +7,16 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/12/2020
 tags: connectors
-ms.openlocfilehash: 5090d772be4f68c696e8dd4882a78ba6954b6058
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f63553ced8484b3ce328fb9537d5831ae1e27fe8
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020723"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191476"
 ---
 # <a name="automate-workflows-for-sql-server-or-azure-sql-database-by-using-azure-logic-apps"></a>Automatizace pracovních postupů pro SQL Server nebo Azure SQL Database pomocí Azure Logic Apps
 
-Tento článek ukazuje, jak můžete přistupovat k datům v databázi SQL z aplikace logiky pomocí konektoru SQL Server. Tímto způsobem můžete automatizovat úlohy, procesy nebo pracovní postupy, které spravují data a prostředky SQL pomocí vytváření Logic Apps. Konektor SQL Server funguje pro [místní SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) i pro [cloudové Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-technical-overview).
+Tento článek ukazuje, jak můžete přistupovat k datům v databázi SQL z aplikace logiky pomocí konektoru SQL Server. Tímto způsobem můžete automatizovat úlohy, procesy nebo pracovní postupy, které spravují data a prostředky SQL pomocí vytváření Logic Apps. Konektor SQL Server funguje pro [SQL Server](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation) a také pro [Azure SQL Database](../azure-sql/database/sql-database-paas-overview.md) a [Azure SQL Managed instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).
 
 Můžete vytvářet aplikace logiky, které se spouštějí při aktivaci událostmi ve vaší databázi SQL nebo v jiných systémech, jako je Dynamics CRM Online. Aplikace logiky můžou také získávat, vkládat a odstraňovat data společně se spuštěnými dotazy SQL a uloženými procedurami. Můžete například vytvořit aplikaci logiky, která automaticky kontroluje nové záznamy v Dynamics CRM Online, přidává položky do vaší databáze SQL pro všechny nové záznamy a pak posílá e-mailové výstrahy týkající se přidaných položek.
 

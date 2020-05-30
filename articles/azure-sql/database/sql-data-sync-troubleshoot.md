@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 0a013d702b48864a182180fa6fe382973bff2cd0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f4a851377128577cc7e50af777b502c9f59211c7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043944"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188248"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Řešení potíží s funkcí Synchronizace dat SQL
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -123,7 +123,7 @@ Informace o řešení problémů s agentem klienta najdete v tématu řešení p
 
 - [Nemůžu odstranit moji skupinu synchronizace](#setup-delete)
 
-- [Nemůžu zrušit registraci místní databáze SQL Server](#setup-unreg)
+- [Nemůžu zrušit registraci databáze SQL Server](#setup-unreg)
 
 - [Nemám dostatečná oprávnění ke spouštění systémových služeb.](#setup-perms)
 
@@ -166,11 +166,11 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupi
 
 - **Řešení**. Počkejte na dokončení procesu zřizování nebo synchronizace a pak zkuste skupinu synchronizace znovu odstranit.
 
-### <a name="i-cant-unregister-an-on-premises-sql-server-database"></a><a name="setup-unreg"></a>Nemůžu zrušit registraci místní databáze SQL Server
+### <a name="i-cant-unregister-a-sql-server-database"></a><a name="setup-unreg"></a>Nemůžu zrušit registraci databáze SQL Server
 
 - **Příčina**: Pravděpodobně se pokoušíte zrušit registraci databáze, která již byla odstraněna.
 
-- **Řešení**. Pokud chcete zrušit registraci místní databáze SQL Server, vyberte databázi a pak vyberte **Vynutit odstranění**.
+- **Řešení**. Pokud chcete zrušit registraci databáze SQL Server, vyberte databázi a pak vyberte **Vynutit odstranění**.
 
   Pokud se této operaci nepodařilo odebrat databázi ze skupiny synchronizace:
 
@@ -244,7 +244,7 @@ Další informace o Synchronizace dat SQL najdete v tématech:
 
 -   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí synchronizace dat SQL v Azure](sql-data-sync-data-sql-server-sql-database.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním](sql-data-sync-sql-server-configure.md) prostředím
+    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server](sql-data-sync-sql-server-configure.md)
     - S využitím PowerShellu
         -  [Použití PowerShellu k synchronizaci mezi několika databázemi v Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi databází v Azure SQL Database a databází v instanci SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

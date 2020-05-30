@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: c4ca328aa0ddc61d86a435b93fe775f294287b98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 12deb51cb2c0efc1bef77a3ff2c8d5150ba13cde
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527380"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196107"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Průvodce laděním a výkonem aktivity kopírování
 
@@ -205,12 +205,12 @@ V současné době nemůžete kopírovat data mezi dvěma místními úložišti
 ### <a name="configuration"></a>Konfigurace
 Nakonfigurujte nastavení **enableStaging** v aktivitě kopírování a určete, jestli se mají data v úložišti objektů BLOB připravit, než je načtete do cílového úložiště dat. Pokud nastavíte **enableStaging** na hodnotu true, určete další vlastnosti uvedené v následující tabulce. Pokud ho ještě nemáte, musíte vytvořit propojenou službu Azure Storage nebo sdílený přístupový podpis s úložištěm pro přípravu.
 
-| Vlastnost | Popis | Výchozí hodnota | Požaduje se |
+| Vlastnost | Popis | Výchozí hodnota | Vyžadováno |
 | --- | --- | --- | --- |
-| **enableStaging** |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |False |Ne |
+| **enableStaging** |Určete, zda chcete kopírovat data prostřednictvím dočasného přípravného úložiště. |False |No |
 | **linkedServiceName** |Zadejte název propojené služby [AzureStorage](data-factory-azure-blob-connector.md#azure-storage-linked-service) nebo [AzureStorageSas](data-factory-azure-blob-connector.md#azure-storage-sas-linked-service) , která odkazuje na instanci úložiště, kterou používáte jako dočasné pracovní úložiště. <br/><br/> Úložiště se sdíleným přístupovým podpisem nelze použít k načtení dat do SQL Data Warehouse prostřednictvím základny. Můžete ho použít ve všech ostatních scénářích. |– |Ano, pokud je **enableStaging** nastavené na true |
-| **dílčí** |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |– |Ne |
-| **Hodnotou EnableCompression** |Určuje, zda mají být data před zkopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |False |Ne |
+| **dílčí** |Zadejte cestu k úložišti objektů blob, kterou chcete, aby obsahovala zpracovaná data. Pokud cestu nezadáte, služba vytvoří kontejner pro ukládání dočasných dat. <br/><br/> Zadejte cestu pouze v případě, že používáte úložiště se sdíleným přístupovým podpisem, nebo pokud chcete, aby byla dočasná data v určitém umístění. |– |No |
+| **Hodnotou EnableCompression** |Určuje, zda mají být data před zkopírováním do cíle komprimována. Toto nastavení snižuje objem přenášených dat. |False |No |
 
 Tady je ukázková definice aktivity kopírování s vlastnostmi popsanými v předchozí tabulce:
 
@@ -366,8 +366,8 @@ Pokud je velikost dat, která chcete zkopírovat, Velká, můžete upravit obcho
 
 Buďte opatrní na počet datových sad a aktivit kopírování, které vyžadují, Data Factory, aby se současně konektor do stejného úložiště dat. Mnoho souběžných úloh kopírování může omezit úložiště dat a vést ke snížení výkonu, provádění interních opakovaných pokusů úloh kopírování a v některých případech na selhání.
 
-## <a name="sample-scenario-copy-from-an-on-premises-sql-server-to-blob-storage"></a>Ukázkový scénář: kopírování z místního SQL Server do úložiště objektů BLOB
-**Scénář**: kanál je sestavený tak, aby kopíroval data z místního SQL Server do úložiště objektů BLOB ve formátu CSV. Aby bylo možné úlohu kopírování urychlit, soubory CSV by se měly zkomprimovat do formátu bzip2.
+## <a name="sample-scenario-copy-from-a-sql-server-database-to-blob-storage"></a>Ukázkový scénář: kopírování z databáze SQL Server do úložiště objektů BLOB
+**Scénář**: kanál je sestavený tak, aby kopíroval data z databáze SQL Server do úložiště objektů BLOB ve formátu CSV. Aby bylo možné úlohu kopírování urychlit, soubory CSV by se měly zkomprimovat do formátu bzip2.
 
 **Testování a analýza**: propustnost aktivity kopírování je menší než 2 MB/s, což je mnohem pomalejší než srovnávací test výkonnosti.
 

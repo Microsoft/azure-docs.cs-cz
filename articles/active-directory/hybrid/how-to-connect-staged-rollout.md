@@ -6,20 +6,20 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/12/2020
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fbe76fb18e33efaa161d2e2b488b48fa5c8580d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 886a25fbf78f6071db55c02517621146b507f4ac
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644154"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221281"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
-Pomocí postupu při dvoufázovém zavedení můžete migrovat z federovaného ověřování na cloudové ověřování. Tento článek popisuje, jak provést tento přepínač. Než začnete postupovat podle fáze zavedení, měli byste zvážit důsledky, pokud je splněna jedna nebo více z následujících podmínek:
+Když použijete postup při dvoufázové přípravě, můžete se vyhnout přímou migraci celé doméně.  Díky tomu můžete selektivně testovat skupiny uživatelů s možnostmi cloudového ověřování, jako je Azure Multi-Factor Authentication (MFA), podmíněný přístup, ochrana identity pro nevrácená pověření, zásady správného řízení identity a další.  Tento článek popisuje, jak provést tento přepínač. Než začnete postupovat podle fáze zavedení, měli byste zvážit důsledky, pokud je splněna jedna nebo více z následujících podmínek:
     
 -  Aktuálně používáte místní Multi-Factor Authentication Server. 
 -  Pro ověřování používáte čipové karty. 
@@ -38,8 +38,8 @@ Přehled této funkce najdete v tomto tématu Azure Active Directory: co je post
 -   Máte tenanta Azure Active Directory (Azure AD) se federovanémi doménami.
 
 -   Rozhodli jste se přesunout jednu ze dvou možností:
-    - **Možnost A**  -  *synchronizace hodnot hash hesel (synchronizace)*  +  *bezproblémové jednotné přihlašování (SSO)*
-    - **Možnost B**  -  *předávací ověřování*  +  *bezproblémové jednotné přihlašování*
+    - **Možnost A**  -  *synchronizace hodnot hash hesel (synchronizace)*  +  *bezproblémové jednotné přihlašování (SSO)*.  Další informace najdete v tématu [co je synchronizace hodnot hash hesel](whatis-phs.md) a [co je bezproblémové jednotné přihlašování](how-to-connect-sso.md) .
+    - **Možnost B**  -  *předávací ověřování*  +  *bezproblémové jednotné přihlašování*  Další informace najdete v tématu [co je předávací ověřování](how-to-connect-pta.md) .  
     
     I když je *snadné jednotné přihlašování* volitelné, doporučujeme, aby mu zajistili tiché přihlašování pro uživatele, kteří používají počítače připojené k doméně v rámci podnikové sítě.
 
@@ -76,12 +76,14 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
     - Pro fáze zavedení se *nepodporují* dynamické skupiny.
     - Objekty kontaktu uvnitř skupiny zablokují přidávání skupiny.
 
-- Ke konečnému přímou migraci je potřeba z federovaných na cloudové ověřování vytvořit pomocí Azure AD Connect nebo PowerShellu. Při přípravě na přípravu se nemění doména ze federované na spravovanou.
+- Ke konečnému přímou migraci je potřeba z federovaných na cloudové ověřování vytvořit pomocí Azure AD Connect nebo PowerShellu. Při přípravě na přípravu se nemění doména ze federované na spravovanou.  Další informace o přímou migraci domény najdete v článku [migrace z federace na synchronizaci hodnoty hash hesla](plan-migrate-adfs-password-hash-sync.md) a [migrace z federace na předávací ověřování](plan-migrate-adfs-pass-through-authentication.md) .
+
+
 
 - Když poprvé přidáte skupinu zabezpečení pro dvoufázové zavedení, budete omezeni na 200 uživatelů, aby nedocházelo k vypršení časového limitu uživatelského prostředí. Po přidání skupiny můžete podle potřeby přidat do ní další uživatele přímo.
 
 >[!NOTE]
-> Vzhledem k tomu, že koncové body klienta neodesílají pomocné parametry přihlášení, nejsou podporovány pro připravené zavedení.  Aplikace SAML používají koncové body klienta a také nejsou podporovány pro připravené zavedení.
+> Vzhledem k tomu, že koncové body klienta neodesílají pomocné parametry přihlášení, nejsou podporovány pro připravené zavedení. 
 
 ## <a name="get-started-with-staged-rollout"></a>Začínáme s fází uvedení do provozu
 

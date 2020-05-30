@@ -1,6 +1,6 @@
 ---
 title: Konfigurace Always Encrypted pomocí Azure Key Vault
-description: V tomto kurzu se dozvíte, jak zabezpečit citlivá data v Azure SQL Database s šifrováním dat pomocí Průvodce Always Encrypted v SQL Server Management Studio.
+description: V tomto kurzu se dozvíte, jak zabezpečit citlivá data v databázi v Azure SQL Database s šifrováním dat pomocí Průvodce Always Encrypted v SQL Server Management Studio.
 keywords: šifrování dat, šifrovací klíč, cloudové šifrování
 services: sql-database
 ms.service: sql-database
@@ -12,17 +12,18 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 8f828d11d5351565c112b7e4b9dccaaef4607056
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2ff3df74c4cf3175fbbec5097a98c51e7f97ac16
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047696"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190511"
 ---
-# <a name="configure-always-encrypted-using-azure-key-vault"></a>Konfigurace Always Encrypted pomocí Azure Key Vault 
+# <a name="configure-always-encrypted-by-using-azure-key-vault"></a>Konfigurace Always Encrypted pomocí Azure Key Vault 
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb-sqlmi.md)]
 
-V tomto článku se dozvíte, jak zabezpečit citlivá data pro vaši databázi v Azure SQL Database nebo Azure SQL Managed instance s šifrováním dat pomocí [průvodce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-wizard) v [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms). Obsahuje také pokyny, které vám ukážou, jak uložit jednotlivé šifrovací klíče do Azure Key Vault.
+V tomto článku se dozvíte, jak zabezpečit citlivá data v databázi v Azure SQL Database s šifrováním dat pomocí [průvodce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-wizard) v [SQL Server Management Studio (SSMS)](/sql/ssms/sql-server-management-studio-ssms). Obsahuje také pokyny, které vám ukážou, jak uložit jednotlivé šifrovací klíče do Azure Key Vault.
 
 Always Encrypted je technologie pro šifrování dat, která pomáhá chránit citlivá data umístěná na serveru, během pohybu mezi klientem a serverem a i když se data používají. Always Encrypted zajistí, aby se citlivá data v rámci databázového systému nikdy nezobrazovala jako prostý text. Po nakonfigurování šifrování dat budou mít přístup k datům ve formátu prostého textu jenom klientské aplikace nebo aplikační servery, které mají přístup ke klíčům. Podrobné informace najdete v tématu [Always Encrypted (databázový stroj)](https://msdn.microsoft.com/library/mt163865.aspx).
 
@@ -48,7 +49,7 @@ Postupujte podle kroků v tomto článku a Naučte se, jak nastavit Always Encry
 
 ## <a name="enable-client-application-access"></a>Povolit přístup k klientské aplikaci
 
-Musíte povolit klientské aplikaci pro přístup k SQL Database nebo spravované instanci SQL nastavením aplikace Azure Active Directory (AAD) a zkopírováním ID a *klíče* *aplikace* , které budete potřebovat k ověření vaší aplikace.
+Musíte povolit klientské aplikaci přístup k databázi v SQL Database nastavením aplikace Azure Active Directory (Azure AD) a zkopírováním ID a *klíče* *aplikace* , které budete potřebovat k ověření vaší aplikace.
 
 Chcete-li získat ID a *klíč* *aplikace* , postupujte podle kroků v části [Vytvoření Azure Active Directory aplikace a instančního objektu, který má přístup k prostředkům](../../active-directory/develop/howto-create-service-principal-portal.md).
 
@@ -88,7 +89,7 @@ Set-AzKeyVaultAccessPolicy  -VaultName $vaultName  -ResourceGroupName $resourceG
 $subscriptionName = '<subscriptionName>'
 $userPrincipalName = '<username@domain.com>'
 $applicationId = '<applicationId from AAD application>'
-$resourceGroupName = '<resourceGroupName>' # use the same resource group name when creating your SQL Database below
+$resourceGroupName = '<resourceGroupName>' # use the same resource group name when creating your database in Azure SQL Database below
 $location = '<datacenterLocation>'
 $vaultName = '<vaultName>'
 
@@ -103,12 +104,9 @@ az keyvault set-policy --name $vaultName --key-permissions create, get, list, si
 az keyvault set-policy --name $vaultName --key-permissions get, list, sign, unwrapKey, verify, wrapKey --resource-group $resourceGroupName --spn $applicationId
 ```
 
-* * *
-
-
 ## <a name="connect-with-ssms"></a>Připojení přes SSMS
 
-Otevřete SQL Server Managed Studio (SSMS) a připojte se k serveru nebo ho můžete spravovat pomocí vaší databáze.
+Otevřete SQL Server Management Studio (SSMS) a připojte se k serveru nebo ho můžete spravovat pomocí vaší databáze.
 
 1. Otevřete aplikaci SSMS. (Přejít na **připojení**  >  **Databázový stroj** pro otevření okna **připojit k serveru** , pokud není otevřený.)
 

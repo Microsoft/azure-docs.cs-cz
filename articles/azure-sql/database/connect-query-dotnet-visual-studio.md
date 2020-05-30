@@ -1,6 +1,6 @@
 ---
 title: Použití sady Visual Studio s .NET a C# k dotazování
-description: Pomocí sady Visual Studio můžete vytvořit aplikaci v jazyce C#, která se připojí ke službě Microsoft Azure SQL Database a provede dotaz pomocí příkazů jazyka Transact-SQL.
+description: Pomocí sady Visual Studio můžete vytvořit aplikaci v jazyce C#, která se připojí k databázi v Azure SQL Database a provede dotaz pomocí příkazů jazyka Transact-SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,32 +11,32 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/31/2019
-ms.openlocfilehash: ea274805e936c327bf9db1c5eedc7e55a32d6c5f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 37567e09fc87a8677934ede4f110d029902c1373
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054261"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84189568"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-azure-sql-database"></a>Rychlý Start: použití .NET a C# v aplikaci Visual Studio pro připojení k databázi SQL Azure a dotazování na ni
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database"></a>Rychlý Start: použití .NET a C# v aplikaci Visual Studio k připojení a dotazování databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-V tomto rychlém startu se dozvíte, jak používat kód [.NET Framework](https://www.microsoft.com/net/) a C# v aplikaci Visual Studio k dotazování databáze SQL Azure pomocí příkazů jazyka Transact-SQL.
+V tomto rychlém startu se dozvíte, jak používat kód [.NET Framework](https://www.microsoft.com/net/) a C# v aplikaci Visual Studio k dotazování databáze v Azure SQL Database s příkazy jazyka Transact-SQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu je potřeba:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Databázi Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL můžete použít jeden z těchto rychlých startů:
+- Databázi Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
 
-  || SQL Database | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
+  || Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
   |:--- |:--- |:---|:---|
   | Vytvořit| [Azure Portal](single-database-create-quickstart.md) | [Azure Portal](../managed-instance/instance-create-quickstart.md) | [Azure Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [Rozhraní příkazového řádku](scripts/create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](firewall-create-server-level-portal-quickstart.md)| [Připojení z virtuálního počítače](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Připojení z webu](../managed-instance/point-to-site-p2s-configure.md) | [Připojení k SQL Serveru](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
+  |||[Připojení z místního prostředí](../managed-instance/point-to-site-p2s-configure.md) | [Připojení k SQL Serveru](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   |Načtení dat|Načtený Adventure Works pro každý rychlý Start|[Obnovení celosvětových dovozců](../managed-instance/restore-sample-database-quickstart.md) | [Obnovení celosvětových dovozců](../managed-instance/restore-sample-database-quickstart.md) |
   |||Obnovení nebo import Adventure Works ze souboru [BacPac](database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Obnovení nebo import Adventure Works ze souboru [BacPac](database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
@@ -46,20 +46,20 @@ K dokončení tohoto rychlého startu je potřeba:
 
 - [Visual Studio 2019](https://www.visualstudio.com/downloads/) Komunita, edice Professional nebo Enterprise.
 
-## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
+## <a name="get-server-connection-information"></a>Získat informace o připojení k serveru
 
 Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte na stránku **databáze SQL** nebo **spravované instance SQL** .
 
-3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server ve virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
+3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server na virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 
 > [!NOTE]
-> Informace o připojení pro SQL Server na virtuálním počítači Azure najdete v tématu [připojení k SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)
+> Informace o připojení pro SQL Server na virtuálním počítači Azure najdete v tématu [připojení k instanci SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
 
-## <a name="create-code-to-query-the-sql-database"></a>Vytvoření kódu pro dotazování databáze SQL
+## <a name="create-code-to-query-the-database-in-azure-sql-database"></a>Vytvořte kód pro dotazování databáze v Azure SQL Database
 
 1. V aplikaci Visual Studio vyberte **soubor**  >  **Nový**  >  **projekt**. 
    
@@ -143,11 +143,11 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 ## <a name="next-steps"></a>Další kroky
 
-- Naučte se, jak se [připojit k databázi SQL Azure a dotazovat se na ni pomocí .NET Core](connect-query-dotnet-core.md) v systému Windows, Linux nebo MacOS.  
+- Naučte se [připojit a dotazovat databázi v Azure SQL Database pomocí .NET Core](connect-query-dotnet-core.md) v systému Windows, Linux nebo MacOS.  
 - Informace o tom, [jak začít s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
-- Informace o [návrhu první databáze Azure SQL pomocí aplikace SSMS](design-first-database-tutorial.md) nebo [návrhu první databáze Azure SQL pomocí .NET](design-first-database-csharp-tutorial.md)
+- Naučte se, jak [navrhnout první databázi v Azure SQL Database pomocí SSMS](design-first-database-tutorial.md) nebo [navrhnout svou první databázi v Azure SQL Database pomocí .NET](design-first-database-csharp-tutorial.md).
 - Další informace o .NET najdete v [dokumentaci rozhraní .NET](https://docs.microsoft.com/dotnet/).
-- Příklad logiky opakování: [odolné připojení k SQL pomocí ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
+- Příklad logiky opakování: [odolné připojení k Azure SQL pomocí ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n].
 
 
 <!-- Link references. -->

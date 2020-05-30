@@ -1,10 +1,10 @@
 ---
-ms.openlocfilehash: 1bf7f3c15b40590c400e8a730de20c199bb1b4c2
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: e90a374917239ae1a20d25795757811a12cee80c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67175403"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200294"
 ---
 ---
 | Identifikátor omezení | Omezení | Komentáře |
@@ -16,4 +16,5 @@ ms.locfileid: "67175403"
 | Maximální počet jednotek streamování na úlohu |192 |Existuje vynucené omezení 192 jednotek streamování na úlohu Stream Analytics. |
 | Maximální počet úloh na oblast |1 500 |Každé předplatné může mít až 1 500 úloh na geografickou oblast. |
 | Velikost objektu blob referenčních dat v MB | 300 | Každý objekt BLOB referenčních dat nemůže být větší než 300 MB. |
+| Maximální počet znaků v dotazu | 512000 | V dotazu Azure Stream Analytics úlohy existuje vynucené omezení 512k znaků.|
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 6fc14bd41faf6a86953b82f8a7ea7bd75b746cf9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: b200aabff1231cdf383d30ad2e671c4b46ca91bb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83801678"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196214"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Kurz: Konfigurace 8x8 pro Automatické zřizování uživatelů
 
@@ -86,7 +86,7 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 ### <a name="to-configure-automatic-user-provisioning-for-8x8-in-azure-ad"></a>Konfigurace automatického zřizování uživatelů pro 8x8 ve službě Azure AD:
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 
     ![Okno podnikových aplikací](./media/8x8-provisioning-tutorial/enterprise-applications.png)
 
@@ -116,25 +116,25 @@ V této části se seznámíte s postupem konfigurace služby zřizování Azure
 
 7. Vyberte **Uložit**.
 
-8. V části **mapování** vyberte **synchronizovat Azure Active Directory uživatelé 8x8**.
+8. V části **mapování** vyberte možnost **zřídit Azure Active Directory uživatelé**.
 
 9. Zkontrolujte atributy uživatele synchronizované z Azure AD do 8x8 v oddílu **mapování atributů** . Atributy vybrané jako **odpovídající** vlastnosti se používají ke spárování uživatelských účtů v 8x8 pro operace aktualizace. Pokud se rozhodnete změnit [odpovídající cílový atribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes), budete muset zajistit, aby rozhraní 8x8 API podporovalo filtrování uživatelů na základě tohoto atributu. Kliknutím na tlačítko **Uložit** potvrďte změny.
 
    |Atribut|Typ|Poznámky|
    |---|---|---|
-   |userName|String|Nastaví uživatelské jméno i federační ID.|
-   |externalId|String||
+   |userName|Řetězec|Nastaví uživatelské jméno i federační ID.|
+   |externalId|Řetězec||
    |aktivně|Logická hodnota||
-   |title|String||
-   |e-maily [typ EQ "Work"]. Value|String||
-   |název. křestní jméno|String||
-   |název. rodina|String||
-   |phoneNumbers [Type EQ "mobilní"]. Value|String|Osobní kontaktní číslo|
-   |phoneNumbers [typ EQ "Work"]. Value|String|Osobní kontaktní číslo|
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|String||
-   |urn: IETF: parametry: SCIM: schémata: rozšíření: 8x8:1.1: uživatel: Web|String|Po vytvoření uživatele nelze aktualizovat|
-   |locale|String|Ve výchozím nastavení není namapováno.|
-   |údaj|String|Ve výchozím nastavení není namapováno.|
+   |title|Řetězec||
+   |e-maily [typ EQ "Work"]. Value|Řetězec||
+   |název. křestní jméno|Řetězec||
+   |název. rodina|Řetězec||
+   |phoneNumbers [Type EQ "mobilní"]. Value|Řetězec|Osobní kontaktní číslo|
+   |phoneNumbers [typ EQ "Work"]. Value|Řetězec|Osobní kontaktní číslo|
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: Enterprise: 2.0: uživatel: oddělení|Řetězec||
+   |urn: IETF: parametry: SCIM: schémata: rozšíření: 8x8:1.1: uživatel: Web|Řetězec|Po vytvoření uživatele nelze aktualizovat|
+   |locale|Řetězec|Ve výchozím nastavení není namapováno.|
+   |údaj|Řetězec|Ve výchozím nastavení není namapováno.|
 
 10. Pokud chcete nakonfigurovat filtry oborů, přečtěte si následující pokyny uvedené v [kurzu filtr oboru](../manage-apps/define-conditional-rules-for-provisioning-user-accounts.md).
 

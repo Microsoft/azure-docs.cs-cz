@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: aedc7ea3d778d52f6f348837430987568af188ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5347cda14773583bcfe92a702e59d4967ce2ea09
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649598"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196283"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Známé problémy/omezení migrace s využitím hybridního režimu
 
@@ -93,10 +93,10 @@ Pokud již nemáte přístup k pracovnímu počítači, můžete zrušit registr
 
 Níže uvedené části popisují problémy specifické pro scénáře týkající se použití Azure Database Migration Service hybridního režimu k provedení migrace online.
 
-### <a name="online-migrations-to-azure-sql-database-managed-instance"></a>Online migrace do Azure SQL Database spravované instance
+### <a name="online-migrations-to-azure-sql-managed-instance"></a>Online migrace do spravované instance Azure SQL
 
 **Vysoké využití procesoru**
 
-**Problém**: u online migrací do SQL Database spravované instance se na počítači, na kterém hybridní pracovní proces pracuje, zaznamená vysoké využití procesoru, pokud je moc velký počet záloh nebo pokud jsou zálohy moc velké.
+**Problém**: u online migrace do spravované instance SQL se na počítači, na kterém hybridní pracovní proces pracuje, setkáte s vysokým využitím procesoru, pokud existuje příliš mnoho záloh nebo pokud jsou zálohy moc velké.
 
 **Zmírnění rizika**: Pokud chcete tento problém zmírnit, použijte komprimované zálohy, rozdělte migraci tak, aby používala víc sdílených složek, nebo nahorizontální navýšení kapacity počítače, na kterém běží hybridní pracovní proces.

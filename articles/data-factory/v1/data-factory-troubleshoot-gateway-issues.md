@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 09d51de3ae0bd4baca585d2abdd936b1a29567d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 390cddf557905e95e313896f9f172e30b81352b9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80065030"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195930"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Řešení potíží při použití Brány pro správu dat
 Tento článek poskytuje informace o řešení potíží s používáním Správa dat brány.
@@ -24,7 +24,7 @@ Tento článek poskytuje informace o řešení potíží s používáním Správ
 > [!NOTE]
 > Tento článek platí pro Data Factory verze 1. Pokud používáte aktuální verzi služby Data Factory, přečtěte si téma [Integration runtime v místním prostředí v Data Factory](../create-self-hosted-integration-runtime.md).
 
-Podrobné informace o bráně najdete v článku o [bráně Správa dat](data-factory-data-management-gateway.md) . Návod k přesunutí dat z místní databáze SQL Server do úložiště Microsoft Azure BLOB pomocí brány najdete v článku [přesunutí dat mezi místním prostředím a cloudem](data-factory-move-data-between-onprem-and-cloud.md) .
+Podrobné informace o bráně najdete v článku o [bráně Správa dat](data-factory-data-management-gateway.md) . Návod, jak přesouvat data z databáze SQL Server do Microsoft Azure úložiště objektů BLOB pomocí brány, najdete v článku [přesunutí dat mezi místním prostředím a cloudem](data-factory-move-data-between-onprem-and-cloud.md) .
 
 ## <a name="failed-to-install-or-register-gateway"></a>Nepovedlo se nainstalovat nebo zaregistrovat bránu.
 ### <a name="1-problem"></a>1. problém
@@ -279,7 +279,7 @@ Kliknutím na odkaz **Archivovat protokoly brány** můžete archivovat a uklád
 Podrobné informace protokolu brány najdete v protokolech událostí systému Windows.
 
 1. Spusťte Windows **Prohlížeč událostí**.
-2. Vyhledejte protokoly ve složce **Application and Services log** > **Správa dat Gateway** .
+2. Vyhledejte protokoly ve složce **Application and Services log**  >  **Správa dat Gateway** .
 
    Když řešíte problémy související s bránou, hledejte události na úrovni chyb v prohlížeči událostí.
 

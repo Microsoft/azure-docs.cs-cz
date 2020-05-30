@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 12/05/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: fbaa8c3544b35978786404619879f59ab91a6979
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a48a6de406f14c5339a4e6d92cd09a12357b73f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281883"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195966"
 ---
 # <a name="move-data-by-using-copy-activity"></a>Přesun dat pomocí aktivity kopírování
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -81,7 +81,7 @@ Aktivita kopírování také čte a zapisuje do souborů v určených formátech
 
 Můžete například provést následující aktivity kopírování:
 
-* Zkopírujte data v místních SQL Server a zapište do Azure Data Lake Store ve formátu ORC.
+* Zkopírujte data do databáze SQL Server a zapište do Azure Data Lake Store ve formátu ORC.
 * Kopírování souborů ve formátu textu (CSV) z místního systému souborů a zápis do objektu blob Azure ve formátu Avro
 * Zkopírujte soubory zip z místního systému souborů a dekomprimujte je na Azure Data Lake Store.
 * Zkopírujte data ve formátu. komprimovaný text (CSV) z Azure Blob a zapište do Azure SQL Database.
@@ -94,7 +94,7 @@ Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá
 
 | Zeměpis cílových úložišť dat | Oblast cílového úložiště dat | Oblast, která se používá k přesunu dat |
 |:--- |:--- |:--- |
-| Spojené státy | USA – východ | USA – východ |
+| USA | USA – východ | USA – východ |
 | &nbsp; | USA – východ 2 | USA – východ 2 |
 | &nbsp; | USA – střed | USA – střed |
 | &nbsp; | USA – středosever | USA – středosever |
@@ -121,7 +121,7 @@ Pokud jsou zdrojová i jímka úložiště dat v cloudu, Data Factory používá
 | Jižní Korea | Jižní Korea – střed | Jižní Korea – střed |
 | &nbsp; | Jižní Korea – jih | Jižní Korea – střed |
 
-Případně můžete explicitně určit oblast Data Factory služby, která se má použít k provedení kopírování zadáním `executionLocation` vlastnosti v části aktivita `typeProperties`kopírování. Podporované hodnoty této vlastnosti jsou uvedeny v oblasti výše, která se **používá pro sloupec přesunu dat** . Všimněte si, že data procházejí během kopírování přes tuto oblast. Například pro kopírování mezi obchody Azure v Koreji můžete určit `"executionLocation": "Japan East"` směr směrování prostřednictvím japonské oblasti (viz [Ukázka JSON](#by-using-json-scripts) jako reference).
+Případně můžete explicitně určit oblast Data Factory služby, která se má použít k provedení kopírování zadáním `executionLocation` vlastnosti v části aktivita kopírování `typeProperties` . Podporované hodnoty této vlastnosti jsou uvedeny v oblasti výše, která se **používá pro sloupec přesunu dat** . Všimněte si, že data procházejí během kopírování přes tuto oblast. Například pro kopírování mezi obchody Azure v Koreji můžete určit `"executionLocation": "Japan East"` směr směrování prostřednictvím japonské oblasti (viz [Ukázka JSON](#by-using-json-scripts) jako reference).
 
 > [!NOTE]
 > Pokud oblast cílového úložiště dat není v předchozím seznamu nebo nezjistitelná, ve výchozím nastavení se aktivita kopírování nezdařila místo přechodu přes alternativní oblast, pokud `executionLocation` není zadaná. Seznam podporovaných oblastí se rozbalí v průběhu času.
@@ -196,7 +196,7 @@ Podívejte se na téma [Průvodce výkonem a optimalizací aktivity kopírován�
 ## <a name="fault-tolerance"></a>Odolnost proti chybám
 Ve výchozím nastavení zastaví aktivita kopírovat kopírování dat a vrátí chybu, když dojde k nekompatibilním datům mezi zdrojem a jímkou. i když se dá explicitně nakonfigurovat tak, aby přeskočil a zaprotokoloval nekompatibilní řádky a kopíruje se jenom taková kompatibilní data, aby kopírování bylo úspěšné. Další podrobnosti najdete v podrobnostech o odolnosti [proti chybám aktivity kopírování](data-factory-copy-activity-fault-tolerance.md) .
 
-## <a name="security-considerations"></a>Důležité informace o zabezpečení
+## <a name="security-considerations"></a>Aspekty zabezpečení
 Projděte si téma [požadavky na zabezpečení](data-factory-data-movement-security-considerations.md), které popisuje infrastrukturu zabezpečení, kterou služby pro přesun dat v Azure Data Factory používají k zabezpečení vašich dat.
 
 ## <a name="scheduling-and-sequential-copy"></a>Plánování a sekvenční kopírování

@@ -3,12 +3,12 @@ title: Zálohování SQL Server pomocí Azure Backup Server
 description: V tomto článku se dozvíte, jak nakonfigurovat zálohování SQL Server databází pomocí serveru Microsoft Azure Backup (MABS).
 ms.topic: conceptual
 ms.date: 03/24/2017
-ms.openlocfilehash: 9cd6a8b76e4618031f4d21dc04a82a78fad0076d
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 2bb172ca36f3f932fdaaf5b71e8fa183c04d1510
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159246"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194186"
 ---
 # <a name="back-up-sql-server-to-azure-by-using-azure-backup-server"></a>Zálohování SQL Server do Azure pomocí Azure Backup Server
 
@@ -36,7 +36,7 @@ Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady 
 1. Jako typ skupiny ochrany vyberte **servery**.
 
     ![Vyberte typ skupiny ochrany servery.](./media/backup-azure-backup-sql/pg-servers.png)
-1. Rozbalte SQL Server počítač, ve kterém jsou umístěny databáze, které chcete zálohovat. Zobrazí se zdroje dat, které je možné zálohovat z tohoto serveru. Rozbalte položku **všechny sdílené složky SQL** a pak vyberte databáze, které chcete zálohovat. V tomto příkladu vybereme ReportServer $ MSDPM2012 a ReportServer $ MSDPM2012TempDB. Vyberte **Další**.
+1. Rozbalte instanci SQL Server, kde se nacházejí databáze, které chcete zálohovat. Zobrazí se zdroje dat, které je možné zálohovat z tohoto serveru. Rozbalte položku **všechny sdílené složky SQL** a pak vyberte databáze, které chcete zálohovat. V tomto příkladu vybereme ReportServer $ MSDPM2012 a ReportServer $ MSDPM2012TempDB. Vyberte **Další**.
 
     ![Vybrat databázi SQL Server](./media/backup-azure-backup-sql/pg-databases.png)
 1. Pojmenujte skupinu ochrany a potom vyberte **Chci online ochranu**.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: c5d2ad481124f5ae048d010cdf632ee661bbd6ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f108c8b9d86a527764d2c7b8dddc6fb239b00d2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77649103"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196252"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Řešení běžných problémů s Azure Database Migration Service a chyb
 
@@ -32,7 +32,7 @@ Když vytvoříte nové aktivity v Azure Database Migration Service projektu, ak
 
 ## <a name="max-number-of-databases-selected-for-migration"></a>Maximální počet databází vybraných pro migraci
 
-Při vytváření aktivity pro projekt migrace databáze pro přesun do Azure SQL Database nebo spravované instance Azure SQL Database došlo k následující chybě:
+Při vytváření aktivity pro projekt migrace databáze pro přesun do Azure SQL Database nebo spravované instance Azure SQL došlo k následující chybě:
 
 * **Chyba**: Chyba ověření nastavení migrace "," errorDetail ":" pro migraci bylo vybráno více než maximální počet objektů ' databáze '. "
 
@@ -58,7 +58,7 @@ Při zastavování instance Azure Database Migration Service se zobrazí násled
 
 | Příčina         | Řešení |
 | ------------- | ------------- |
-| Tato chyba se zobrazí, když instance služby, kterou se pokoušíte zastavit, zahrnuje aktivity, které jsou pořád spuštěné nebo přítomné v projektech migrace. <br><br><br><br><br><br> | Zajistěte, aby v instanci Azure Database Migration Service, kterou se pokoušíte zastavit, neběžely žádné aktivity. Před pokusem o zastavení služby můžete také odstranit aktivity nebo projekty. Následující postup ukazuje, jak odebrat projekty pro vyčištění instance služby migrace odstraněním všech spuštěných úloh:<br>1. Install-Module-Name AzureRM. datamigration <br>2. přihlášení – AzureRmAccount <br>3. Select-AzureRmSubscription-Subscription "\<subname>" <br> 4. Remove-AzureRmDataMigrationProject-name \<ProjectName>-ResourceGroupName \<RgName>-ServiceName \<ServiceName>-DeleteRunningTask |
+| Tato chyba se zobrazí, když instance služby, kterou se pokoušíte zastavit, zahrnuje aktivity, které jsou pořád spuštěné nebo přítomné v projektech migrace. <br><br><br><br><br><br> | Zajistěte, aby v instanci Azure Database Migration Service, kterou se pokoušíte zastavit, neběžely žádné aktivity. Před pokusem o zastavení služby můžete také odstranit aktivity nebo projekty. Následující postup ukazuje, jak odebrat projekty pro vyčištění instance služby migrace odstraněním všech spuštěných úloh:<br>1. Install-Module-Name AzureRM. datamigration <br>2. přihlášení – AzureRmAccount <br>3. Select-AzureRmSubscription-Subscription " \<subName> " <br> 4. Remove-AzureRmDataMigrationProject-name \<projectName> -ResourceGroupName \<rgName> -ServiceName \<serviceName> -DeleteRunningTask |
 
 ## <a name="error-when-attempting-to-start-azure-database-migration-service"></a>Při pokusu o spuštění Azure Database Migration Service došlo k chybě.
 
@@ -72,13 +72,13 @@ Při spuštění instance Azure Database Migration Service se zobrazí následuj
 
 ## <a name="error-restoring-database-while-migrating-sql-to-azure-sql-db-managed-instance"></a>Chyba při obnovování databáze při migraci SQL do spravované instance Azure SQL DB
 
-Když provedete online migraci z SQL Server do spravované instance Azure SQL Database, přímou migraci se nezdařila s následující chybou:
+Při provádění online migrace z SQL Server do spravované instance Azure SQL dojde k chybě přímou migraci s následující chybou:
 
 * **Chyba**: operace obnovení pro ID operace operationId se nezdařila. Kód "AuthorizationFailed", zpráva "klient" clientId "s ID objektu" objectId "nemá autorizaci k provedení akce" Microsoft. SQL/Locations/managedDatabaseRestoreAzureAsyncOperation/Read "Over"/subscriptions/subscriptionId ".
 
 | Příčina         | Řešení    |
 | ------------- | ------------- |
-| Tato chyba znamená, že instanční objekt, který se používá pro online migraci z SQL Server do spravované instance Azure SQL Database nemá oprávnění přispívat k tomuto předplatnému. Některá volání rozhraní API se spravovanými instancemi v současné době vyžadují toto oprávnění u předplatného pro operaci obnovení. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Pomocí rutiny `Get-AzureADServicePrincipal` prostředí PowerShell `-ObjectId` , která je k dispozici z chybové zprávy, zobrazte seznam zobrazovaných názvů používaných ID aplikace.<br><br> Ověřte oprávnění k této aplikaci a ujistěte se, že má [roli Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) na úrovni předplatného. <br><br> Tým Azure Database Migration Service Engineering pracuje na omezení požadovaného přístupu z aktuální role Contribute v předplatném. Pokud máte obchodní požadavek, který nepovoluje použití role přispívání, požádejte o další pomoc podporu Azure. |
+| Tato chyba znamená, že instanční objekt, který se používá pro online migraci z SQL Server do spravované instance SQL, nemá oprávnění přispívat k tomuto předplatnému. Některá volání rozhraní API se spravovanými instancemi v současné době vyžadují toto oprávnění u předplatného pro operaci obnovení. <br><br><br><br><br><br><br><br><br><br><br><br><br><br> | Pomocí `Get-AzureADServicePrincipal` rutiny prostředí PowerShell, která `-ObjectId` je k dispozici z chybové zprávy, zobrazte seznam zobrazovaných názvů používaných ID aplikace.<br><br> Ověřte oprávnění k této aplikaci a ujistěte se, že má [roli Přispěvatel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) na úrovni předplatného. <br><br> Tým Azure Database Migration Service Engineering pracuje na omezení požadovaného přístupu z aktuální role Contribute v předplatném. Pokud máte obchodní požadavek, který nepovoluje použití role přispívání, požádejte o další pomoc podporu Azure. |
 
 ## <a name="error-when-deleting-nic-associated-with-azure-database-migration-service"></a>Při odstraňování síťového rozhraní přidruženého k Azure Database Migration Service došlo k chybě.
 

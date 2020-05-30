@@ -3,12 +3,12 @@ title: Zálohování SQL Server do Azure jako úlohy DPM
 description: Úvod k zálohování SQL Server databází pomocí služby Azure Backup
 ms.topic: conceptual
 ms.date: 01/30/2019
-ms.openlocfilehash: 01504fcfd81040d75e57ce62a9f77a5bb248d59b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6a612bc56d1fa6b70ac89ed48f28d1ae48da2e6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183785"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195776"
 ---
 # <a name="back-up-sql-server-to-azure-as-a-dpm-workload"></a>Zálohování SQL Server do Azure jako úlohy DPM
 
@@ -43,7 +43,7 @@ Pokud chcete chránit SQL Server databáze v Azure, vytvořte nejdřív zásady 
 1. Vyberte **servery**.
 
     ![Vyberte typ skupiny ochrany servery.](./media/backup-azure-backup-sql/pg-servers.png)
-1. Rozbalte SQL Server počítač, ve kterém jsou umístěny databáze, které chcete zálohovat. Zobrazí se zdroje dat, které je možné zálohovat z tohoto serveru. Rozbalte položku **všechny sdílené složky SQL** a pak vyberte databáze, které chcete zálohovat. V tomto příkladu vybereme ReportServer $ MSDPM2012 a ReportServer $ MSDPM2012TempDB. Pak vyberte **Další**.
+1. Rozbalte virtuální počítač SQL Server, kde jsou umístěny databáze, které chcete zálohovat. Zobrazí se zdroje dat, které je možné zálohovat z tohoto serveru. Rozbalte položku **všechny sdílené složky SQL** a pak vyberte databáze, které chcete zálohovat. V tomto příkladu vybereme ReportServer $ MSDPM2012 a ReportServer $ MSDPM2012TempDB. Pak vyberte **Další**.
 
     ![Vybrat databázi SQL Server](./media/backup-azure-backup-sql/pg-databases.png)
 1. Pojmenujte skupinu ochrany a potom vyberte **Chci online ochranu**.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 127c924da44c7e596d93b21d89ff4591a90ba7cf
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: b2f2939c6b7d07e128688f43e98b2a6b29595e1f
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827671"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204385"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurace Start/Stop VMs during off-hours
 
@@ -44,11 +44,15 @@ Můžete povolit buď cílení akce na předplatné a skupinu prostředků, nebo
 
 ### <a name="target-the-start-and-stop-action-by-vm-list"></a>Zacílit akci spustit a zastavit podle seznamu VM
 
-1. Spusťte sadu **ScheduledStartStop_Parent** Runbook s **akcí** nastavenou na **Start**, do pole parametr **VMList** přidejte čárkami oddělený seznam virtuálních počítačů a potom nastavte pole parametr **WHATIF** na hodnotu true (pravda). Zobrazte náhled změn.
+1. Spusťte sadu **ScheduledStartStop_Parent** Runbook s **akcí** nastavenou na **Start**.
 
-2. Nakonfigurujte `External_ExcludeVMNames` proměnnou pomocí čárkami odděleného seznamu virtuálních počítačů (VM1, VM2, VM3).
+2. Do pole parametr **VMList** přidejte čárkami oddělený seznam virtuálních počítačů (bez prázdných znaků). Seznam příkladů je `vm1,vm2,vm3` .
 
-3. Tento scénář nedodržuje `External_Start_ResourceGroupNames` proměnné a `External_Stop_ResourceGroupnames` . V tomto scénáři potřebujete vytvořit vlastní plán automatizace. Podrobnosti najdete v tématu [Naplánování runbooku v Azure Automation](shared-resources/schedules.md).
+3. Nastavte pole parametr **WHATIF** na hodnotu true.
+
+4. Nakonfigurujte `External_ExcludeVMNames` proměnnou pomocí čárkami odděleného seznamu virtuálních počítačů (VM1, VM2, VM3).
+
+5. Tento scénář nedodržuje `External_Start_ResourceGroupNames` proměnné a `External_Stop_ResourceGroupnames` . V tomto scénáři potřebujete vytvořit vlastní plán automatizace. Podrobnosti najdete v tématu [Naplánování runbooku v Azure Automation](shared-resources/schedules.md).
 
     > [!NOTE]
     > Hodnota pro **cílové názvy zdrojových zdrojů** je uložena jako hodnoty pro `External_Start_ResourceGroupNames` a `External_Stop_ResourceGroupNames` . Pro další členitost můžete každou z těchto proměnných upravit a cílit na jiné skupiny prostředků. Pro akci spustit použijte `External_Start_ResourceGroupNames` a použijte `External_Stop_ResourceGroupNames` pro akci zastavení. Virtuální počítače se automaticky přidají do plánů zahájení a zastavení.
@@ -71,13 +75,17 @@ V prostředí, které obsahuje dvě nebo více součástí na více virtuálníc
 
 1. Přidejte `sequencestart` a `sequencestop` značku s kladnými celočíselnými hodnotami do virtuálních počítačů, které chcete přidat do `VMList` parametru.
 
-2. Spusťte sadu **SequencedStartStop_Parent** Runbook s **akcí** nastavenou na **Start**, do pole parametr **VMList** přidejte čárkami oddělený seznam virtuálních počítačů a pak nastavte **WHATIF** na hodnotu true. Zobrazte náhled změn.
+2. Spusťte sadu **SequencedStartStop_Parent** Runbook s **akcí** nastavenou na **Start**.
 
-3. Nakonfigurujte `External_ExcludeVMNames` proměnnou pomocí čárkami odděleného seznamu virtuálních počítačů (VM1, VM2, VM3).
+3. Do pole parametr **VMList** přidejte čárkami oddělený seznam virtuálních počítačů (bez prázdných znaků). Seznam příkladů je `vm1,vm2,vm3` .
 
-4. Tento scénář nedodržuje `External_Start_ResourceGroupNames` proměnné a `External_Stop_ResourceGroupnames` . V tomto scénáři potřebujete vytvořit vlastní plán automatizace. Podrobnosti najdete v tématu [Naplánování runbooku v Azure Automation](shared-resources/schedules.md).
+4. Nastavte vlastnost **WHATIF** na hodnotu true. 
 
-5. Zobrazte náhled akce a proveďte potřebné změny před implementací na produkčních virtuálních počítačích. Až budete připraveni, spusťte ručně **monitorování-and-Diagnostics/monitoring-Action-groupsrunbook** s parametrem nastaveným na **hodnotu false (NEPRAVDA**). Další možností je nechat plány Automation **Sequenced-StartVM** a **Sequenced-StopVM** spustit automaticky podle předepsaného plánu.
+5. Nakonfigurujte `External_ExcludeVMNames` proměnnou se seznamem virtuálních počítačů oddělených čárkami.
+
+6. Tento scénář nedodržuje `External_Start_ResourceGroupNames` proměnné a `External_Stop_ResourceGroupnames` . V tomto scénáři potřebujete vytvořit vlastní plán automatizace. Podrobnosti najdete v tématu [Naplánování runbooku v Azure Automation](shared-resources/schedules.md).
+
+7. Zobrazte náhled akce a proveďte potřebné změny před implementací na produkčních virtuálních počítačích. Až budete připraveni, spusťte ručně **monitorování-and-Diagnostics/monitoring-Action-groupsrunbook** s parametrem nastaveným na **hodnotu false (NEPRAVDA**). Další možností je nechat plány Automation **Sequenced-StartVM** a **Sequenced-StopVM** spustit automaticky podle předepsaného plánu.
 
 ## <a name="scenario-3-start-or-stop-automatically-based-on-cpu-utilization"></a><a name="cpuutil"></a>Scénář 3: spuštění nebo zastavení automaticky na základě využití procesoru
 

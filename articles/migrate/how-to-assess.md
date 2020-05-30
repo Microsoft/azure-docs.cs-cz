@@ -3,12 +3,12 @@ title: Přidat nástroje pro posouzení do Azure Migrate
 description: Naučte se přidávat nástroje pro posouzení do Azure Migrate.
 ms.topic: how-to
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e7d7cf26cab30cd7449e4643fdfb59faece47f2
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 10e8b66575893bc8e63aa94392c872acc04407c4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901065"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195638"
 ---
 # <a name="add-assessment-tools"></a>Přidání nástrojů pro vyhodnocení
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak přidat nástroje pro posouzení do [Azure Migrate]
 2. Vyberte scénář posouzení, který chcete použít:
 
     - Pokud chcete zjišťovat a hodnotit počítače a úlohy pro migraci do Azure, vyberte **vyhodnotit a migrovat servery**.
-    - Pro vyhodnocení místních počítačů SQL vyberte možnost **vyhodnotit a migrovat databáze**.
+    - Pro vyhodnocení místních SQL Server databází vyberte možnost **vyhodnotit a migrovat databáze**.
     - Pokud chcete vyhodnotit místní webové aplikace, vyberte **vyhodnotit a migrovat webové aplikace**.
 
     ![Scénář posouzení](./media/how-to-assess/assess-scenario.png)

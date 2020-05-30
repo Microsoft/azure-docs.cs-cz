@@ -1,7 +1,7 @@
 ---
 title: Provozní kontinuita cloudu – obnovení databáze
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Přečtěte si, jak Azure SQL Database a SQL Managed instance podporují cloudovou provozní kontinuitu a obnovení databáze a pomáhají udržet důležité cloudové aplikace spuštěné.
+description: Přečtěte si, jak Azure SQL Database a SQL Managed instance podporují cloudovou provozní kontinuitu a obnovení databáze a pomůžou udržet důležité cloudové aplikace spuštěné.
 keywords: provozní kontinuita, provozní kontinuita v cloudu, zotavení databáze po havárii, obnovení databáze
 services: sql-database
 ms.service: sql-database
@@ -13,12 +13,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: 8ae58cedecf0b1dab488dac00b68e2b9a8c12e46
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8312fe1370ded990bd3523d531d168fd2cac5564
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043601"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84189763"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Přehled provozní kontinuity se službou Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -65,10 +65,10 @@ Pokud není maximální podporovaná doba uchovávání záloh pro obnovení k u
 
 |                                              | Geografická replikace | Skupiny převzetí služeb při selhání  |
 |:---------------------------------------------| :-------------- | :----------------|
-| Automatické převzetí služeb při selhání                           |     Ne          |      Ano         |
-| Převzetí služeb při selhání více databází současně  |     Ne          |      Ano         |
+| Automatické převzetí služeb při selhání                           |     No          |      Ano         |
+| Převzetí služeb při selhání více databází současně  |     No          |      Ano         |
 | Uživatel musí po převzetí služeb při selhání aktualizovat připojovací řetězec.      |     Ano         |      Ne          |
-| Podpora spravované instance SQL                   |     Ne          |      Ano         |
+| Podpora spravované instance SQL                   |     No          |      Ano         |
 | Může být ve stejné oblasti jako primární             |     Ano         |      Ne          |
 | Více replik                            |     Ano         |      Ne          |
 | Podporuje čtení i škálování.                          |     Ano         |      Ano         |
@@ -76,9 +76,9 @@ Pokud není maximální podporovaná doba uchovávání záloh pro obnovení k u
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Obnovení databáze na existujícím serveru
 
-Přestože je taková situace výjimečná, i u datového centra Azure může dojít k výpadku. Při výpadku dojde k narušení provozu, které může trvat jen několik minut nebo až několik hodin.
+I když může výpadek Azure datacentrum nejenom výjimečné. Při výpadku dojde k narušení provozu, které může trvat jen několik minut nebo až několik hodin.
 
-- Jednou z možností je počkat, až výpadek skončí a databáze se vrátí do režimu online. Tento postup funguje pro aplikace, které si mohou dovolit mít databázi v režimu offline. Například vývojový projekt nebo bezplatná zkušební verze, na které nemusíte neustále pracovat. Když dojde k výpadku datového centra, nevíte, jak dlouho může výpadek trvat, takže tato možnost funguje jenom v případě, že už nepotřebujete databázi.
+- Jednou z možností je počkat, až se databáze vrátí zpátky do režimu online, když dojde k výpadku datového centra. Tento postup funguje pro aplikace, které si mohou dovolit mít databázi v režimu offline. Například vývojový projekt nebo bezplatná zkušební verze, na které nemusíte neustále pracovat. Když dojde k výpadku datového centra, nevíte, jak dlouho může výpadek trvat, takže tato možnost funguje jenom v případě, že nepotřebujete databázi po dobu.
 - Další možností je obnovit databázi na jakémkoli serveru v libovolné oblasti Azure pomocí [geograficky redundantních záloh databáze](recovery-using-backups.md#geo-restore) (geografické obnovení). Geografické obnovení používá jako zdroj geograficky redundantní zálohu a dá se použít k obnovení databáze i v případě, že je databáze nebo datacentrum nedostupné kvůli výpadku.
 - Nakonec můžete rychle obnovit z výpadku, pokud jste nakonfigurovali geograficky sekundární pomocí [aktivní geografické replikace](active-geo-replication-overview.md) nebo [skupiny automatického převzetí služeb při selhání](auto-failover-group-overview.md) pro vaši databázi nebo databáze. V závislosti na vaší volbě těchto technologií můžete použít buď ruční nebo automatické převzetí služeb při selhání. I když převzetí služeb při selhání zabere jenom pár sekund, bude tato služba při aktivaci trvat aspoň 1 hodinu. To je nezbytné k tomu, aby bylo zajištěno, že převzetí služeb při selhání je v rámci škálování výpadku oprávněné. Převzetí služeb při selhání může také vést k malé ztrátě dat z důvodu povahy asynchronní replikace.
 
@@ -109,7 +109,7 @@ Pokud vaše aplikace splňuje některá z těchto kritérií, použijte skupiny 
 
 V závislosti na požadavcích vaší aplikace se můžete rozhodnout použít kombinaci záloh databáze a aktivní geografické replikace. Diskuzi o požadavcích na návrh pro samostatné databáze a elastické fondy, které využívají tyto funkce pro provozní kontinuitu, najdete v tématu [Návrh aplikace pro zotavení po havárii cloudu](designing-cloud-solutions-for-disaster-recovery.md) a [strategie zotavení po havárii elastického fondu](disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
-Následující části obsahují přehled kroků pro obnovení pomocí záloh databáze nebo aktivní geografické replikace. Podrobný postup, včetně požadavků na plánování, kroků po obnovení a informací o tom, jak simulovat výpadky při provádění postupu zotavení po havárii, najdete v tématu [obnovení SQL Database při výpadku](disaster-recovery-guidance.md).
+Následující části obsahují přehled kroků pro obnovení pomocí záloh databáze nebo aktivní geografické replikace. Podrobný postup, včetně požadavků na plánování, kroků po obnovení a informací o simulaci výpadku při provádění postupu zotavení po havárii, najdete v tématu [obnovení databáze v SQL Database z výpadku](disaster-recovery-guidance.md).
 
 ### <a name="prepare-for-an-outage"></a>Příprava na výpadek
 
@@ -126,14 +126,14 @@ Pokud nebudete připravovat správně, po převzetí služeb při selhání nebo
 Pokud jako mechanismus obnovení používáte aktivní geografickou replikaci nebo skupiny s automatickým převzetím služeb při selhání, můžete nakonfigurovat zásady automatického převzetí služeb při selhání nebo použít [Ruční neplánované převzetí služeb při](active-geo-replication-configure-portal.md#initiate-a-failover)selhání. Po zahájení převzetí služeb při selhání způsobí, že se sekundární stane novou primární a připravený k zaznamenávání nových transakcí a reakci na dotazy – s minimální ztrátou dat pro data, která se ještě nereplikují. Informace o návrhu procesu převzetí služeb při selhání najdete v tématu [Návrh aplikace pro zotavení po havárii cloudu](designing-cloud-solutions-for-disaster-recovery.md).
 
 > [!NOTE]
-> Když se datové centrum vrátí do režimu online, staré primární základní (Base) se automaticky znovu připojí k nové primární databázi a stanou se sekundárními databázemi. Pokud potřebujete přemístit primární zpátky do původní oblasti, můžete plánované převzetí služeb při selhání iniciovat ručně (navrácení služeb po obnovení).
+> Když se datacentrum vrátí do režimu online, původní základní primární se automaticky znovu připojí k nové primární databázi a stanou se sekundárními databázemi. Pokud potřebujete přemístit primární zpátky do původní oblasti, můžete plánované převzetí služeb při selhání iniciovat ručně (navrácení služeb po obnovení).
 
 ### <a name="perform-a-geo-restore"></a>Provedení geografického obnovení
 
 Pokud používáte automatizované zálohování s geograficky redundantním úložištěm (povoleno ve výchozím nastavení), můžete obnovit databázi pomocí [geografického obnovení](disaster-recovery-guidance.md#recover-using-geo-restore). K obnovení obvykle dochází během 12 hodin – s ztrátou dat po dobu až jedné hodiny, kterou určuje čas, kdy byla provedena a replikována poslední záloha protokolu. Dokud se obnovení nedokončí, databáze není schopná zaznamenávat žádné transakce ani reagovat na dotazy. Poznámka: geografická obnova obnovuje databázi pouze do posledního dostupného bodu v čase.
 
 > [!NOTE]
-> Pokud se datové centrum vrátí do režimu online předtím, než přepnete aplikaci do obnovené databáze, můžete obnovení zrušit.
+> Pokud se datacentrum vrátí do režimu online před přepnutím aplikace do obnovené databáze, můžete obnovení zrušit.
 
 ### <a name="perform-post-failover--recovery-tasks"></a>Provedení úloh po převzetí služeb při selhání nebo obnovení
 
@@ -141,7 +141,7 @@ Po obnovení s použitím libovolného mechanismu musíte provést následujíc�
 
 - Přesměrujte klienty a klientské aplikace na nový server a obnovenou databázi.
 - Zajistěte, aby se pro uživatele připojovala příslušná pravidla brány firewall na úrovni serveru, aby je bylo možné povolit, aby mohli používat [brány firewall na úrovni databáze](firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules) .
-- Ujistěte se, že se používají odpovídající přihlášení a oprávnění na úrovni hlavní databáze (nebo použijte [obsažené uživatelé](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable))
+- Zajistěte, aby byla k dismístě příslušná přihlášení a oprávnění na úrovni hlavní databáze (nebo použijte [omezení uživatelů](https://docs.microsoft.com/sql/relational-databases/security/contained-database-users-making-your-database-portable)).
 - Podle potřeby nakonfigurujte auditování.
 - Podle potřeby nakonfigurujte výstrahy.
 
@@ -154,4 +154,4 @@ V některých případech je třeba aplikaci odebrat z důvodu plánované údr�
 
 ## <a name="next-steps"></a>Další kroky
 
-Diskuzi o faktorech návrhu aplikací pro samostatné databáze a elastické fondy najdete v tématu [Návrh aplikace pro zotavení po havárii cloudu](designing-cloud-solutions-for-disaster-recovery.md) a [strategie zotavení po havárii elastického fondu](disaster-recovery-strategies-for-applications-with-elastic-pool.md).
+Diskuzi o požadavcích na návrh aplikace pro izolované databáze a elastické fondy najdete v tématu [Návrh aplikace pro zotavení po havárii cloudu](designing-cloud-solutions-for-disaster-recovery.md) a [strategie zotavení po havárii elastického fondu](disaster-recovery-strategies-for-applications-with-elastic-pool.md).

@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: f93bea240ee3f139c9be84199d116f9f3f231261
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1642c90f0a345bdaf5dd69ddb6c0e26c34faba91
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281519"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196007"
 ---
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Kanály a aktivity v Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -34,7 +34,7 @@ Tento článek vám pomůže pochopit kanály a aktivity ve službě Azure Data 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="overview"></a>Přehled
-Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Například můžete použít aktivitu kopírování ke zkopírování dat z místního SQL Serveru do služby Azure Blob Storage. Pak použijete aktivitu Hive, která spouští skript Hive v clusteru Azure HDInsight, aby zpracovala/transformovala data z úložiště objektů blob za účelem vytvoření výstupních dat. Nakonec použijte druhou aktivitu kopírování, která zkopíruje výstupní data do služby Azure SQL Data Warehouse, které jsou postavena řešení tvorby sestav business intelligence (BI).
+Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál je logické seskupení aktivit, které dohromady provádějí určitou úlohu. Aktivity v kanálu definují akce, které se mají provést s vašimi daty. Aktivitu kopírování můžete například použít ke kopírování dat z databáze SQL Server do Azure Blob Storage. Pak použijete aktivitu Hive, která spouští skript Hive v clusteru Azure HDInsight, aby zpracovala/transformovala data z úložiště objektů blob za účelem vytvoření výstupních dat. Nakonec použijte druhou aktivitu kopírování, která zkopíruje výstupní data do služby Azure SQL Data Warehouse, které jsou postavena řešení tvorby sestav business intelligence (BI).
 
 Každá aktivita může mít nula nebo více vstupních [datových sad](data-factory-create-datasets.md) a může generovat jednu nebo více výstupních [datových sad](data-factory-create-datasets.md). Následující diagram znázorňuje vztah mezi kanálem, aktivitou a datovou sadou v Data Factory:
 
@@ -92,17 +92,17 @@ Teď se blíže podíváme na to, jak se kanál definuje ve formátu JSON. Obecn
 }
 ```
 
-| Značka | Popis | Požaduje se |
+| Značka | Popis | Vyžadováno |
 | --- | --- | --- |
-| jméno |Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "\*", "%", "&", ":", ""\\</li></ul> |Ano |
+| name |Název kanálu. Určuje název, který představuje akci prováděnou kanálem. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat číslem písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", " \* ", "%", "&", ":", "" \\</li></ul> |Ano |
 | description | Určuje text popisující, k čemu se kanál používá. |Ano |
 | activities | Část **activities** může obsahovat definici jedné nebo více aktivit. Podrobnosti o elementu JSON aktivit naleznete v další části. | Ano |
-| start | Počáteční datum a čas pro kanál. Musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Například: `2016-10-14T16:32:41Z`. <br/><br/>Je možné zadat místní čas, například čas EST. Tady je příklad: `2016-02-27T06:00:00-05:00`", což je 6 am EST.<br/><br/>Vlastnosti Start a end společně určují aktivní období pro daný kanál. Výstupní řezy se vytvářejí jenom v tomto aktivním období. |Ne<br/><br/>Pokud zadáte hodnotu vlastnosti end, je nutné zadat hodnotu vlastnosti Start.<br/><br/>Časy zahájení a ukončení můžou být pro vytvoření kanálu prázdné. Chcete-li nastavit aktivní období pro spuštění kanálu, je nutné zadat obě hodnoty. Pokud při vytváření kanálu nezadáte počáteční a koncový čas, můžete je pomocí rutiny Set-AzDataFactoryPipelineActivePeriod nastavit později. |
-| end | Koncové datum a čas kanálu. Je-li parametr zadán, musí být ve formátu ISO. Příklad: `2016-10-14T17:32:41Z` <br/><br/>Je možné zadat místní čas, například čas EST. Tady je příklad: `2016-02-27T06:00:00-05:00`, který je 6 am EST.<br/><br/>Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti end hodnotu 9999-09-09. <br/><br/> Kanál je aktivní jenom mezi časem spuštění a časem ukončení. Není prováděna před časem spuštění nebo po ukončení. Pokud je kanál pozastaven, nebude proveden bez ohledu na jeho počáteční a koncový čas. Pro spuštění kanálu by neměl být pozastaven. V tématu [plánování a spouštění](data-factory-scheduling-and-execution.md) můžete pochopit, jak plánování a provádění funguje v Azure Data Factory. |Ne <br/><br/>Pokud zadáte hodnotu vlastnosti Start, je nutné zadat hodnotu vlastnosti end.<br/><br/>Viz poznámky pro vlastnost **Start** . |
-| isPaused | Pokud je nastavená hodnota true, kanál se nespustí. Je ve stavu pozastaveno. Výchozí hodnota = false. Tuto vlastnost můžete použít k povolení nebo zakázání kanálu. |Ne |
-| pipelineMode | Metoda pro plánování běhu pro kanál. Povolené hodnoty jsou: naplánované (výchozí), jednorázová.<br/><br/>Možnost naplánované znamená, že se kanál spouští v zadaném časovém intervalu podle jeho aktivního období (počáteční a koncový čas). Jednorázová označuje, že se kanál spouští jenom jednou. Jednorázová kanály se po vytvoření nedají změnit nebo aktualizovat aktuálně. Podrobnosti o nastavení jednorázová najdete v tématu [jednorázová Pipeline](#onetime-pipeline) . |Ne |
-| expirationTime | Doba po vytvoření, pro kterou je [jednorázový kanál](#onetime-pipeline) platný a měl by zůstat zřízen. Pokud nemá žádná aktivní, neúspěšná nebo nedokončená spuštění, kanál se po dosažení doby vypršení platnosti automaticky odstraní. Výchozí hodnota:`"expirationTime": "3.00:00:00"`|Ne |
-| datové sady |Seznam datových sad, které budou použity aktivitami, které jsou definovány v kanálu. Tato vlastnost se dá použít k definování datových sad, které jsou specifické pro tento kanál a nejsou definované v rámci objektu pro vytváření dat. Datové sady definované v tomto kanálu můžou použít jenom tento kanál a nedá se sdílet. Podrobnosti najdete v tématu [vymezené datové sady](data-factory-create-datasets.md#scoped-datasets) . |Ne |
+| start | Počáteční datum a čas pro kanál. Musí být ve [formátu ISO](https://en.wikipedia.org/wiki/ISO_8601). Příklad: `2016-10-14T16:32:41Z`. <br/><br/>Je možné zadat místní čas, například čas EST. Tady je příklad: `2016-02-27T06:00:00-05:00` ", což je 6 am EST.<br/><br/>Vlastnosti Start a end společně určují aktivní období pro daný kanál. Výstupní řezy se vytvářejí jenom v tomto aktivním období. |No<br/><br/>Pokud zadáte hodnotu vlastnosti end, je nutné zadat hodnotu vlastnosti Start.<br/><br/>Časy zahájení a ukončení můžou být pro vytvoření kanálu prázdné. Chcete-li nastavit aktivní období pro spuštění kanálu, je nutné zadat obě hodnoty. Pokud při vytváření kanálu nezadáte počáteční a koncový čas, můžete je pomocí rutiny Set-AzDataFactoryPipelineActivePeriod nastavit později. |
+| end | Koncové datum a čas kanálu. Je-li parametr zadán, musí být ve formátu ISO. Příklad: `2016-10-14T17:32:41Z` <br/><br/>Je možné zadat místní čas, například čas EST. Tady je příklad: `2016-02-27T06:00:00-05:00` , který je 6 am EST.<br/><br/>Pokud chcete kanál spouštět bez omezení, zadejte vlastnosti end hodnotu 9999-09-09. <br/><br/> Kanál je aktivní jenom mezi časem spuštění a časem ukončení. Není prováděna před časem spuštění nebo po ukončení. Pokud je kanál pozastaven, nebude proveden bez ohledu na jeho počáteční a koncový čas. Pro spuštění kanálu by neměl být pozastaven. V tématu [plánování a spouštění](data-factory-scheduling-and-execution.md) můžete pochopit, jak plánování a provádění funguje v Azure Data Factory. |No <br/><br/>Pokud zadáte hodnotu vlastnosti Start, je nutné zadat hodnotu vlastnosti end.<br/><br/>Viz poznámky pro vlastnost **Start** . |
+| isPaused | Pokud je nastavená hodnota true, kanál se nespustí. Je ve stavu pozastaveno. Výchozí hodnota = false. Tuto vlastnost můžete použít k povolení nebo zakázání kanálu. |No |
+| pipelineMode | Metoda pro plánování běhu pro kanál. Povolené hodnoty jsou: naplánované (výchozí), jednorázová.<br/><br/>Možnost naplánované znamená, že se kanál spouští v zadaném časovém intervalu podle jeho aktivního období (počáteční a koncový čas). Jednorázová označuje, že se kanál spouští jenom jednou. Jednorázová kanály se po vytvoření nedají změnit nebo aktualizovat aktuálně. Podrobnosti o nastavení jednorázová najdete v tématu [jednorázová Pipeline](#onetime-pipeline) . |No |
+| expirationTime | Doba po vytvoření, pro kterou je [jednorázový kanál](#onetime-pipeline) platný a měl by zůstat zřízen. Pokud nemá žádná aktivní, neúspěšná nebo nedokončená spuštění, kanál se po dosažení doby vypršení platnosti automaticky odstraní. Výchozí hodnota:`"expirationTime": "3.00:00:00"`|No |
+| datové sady |Seznam datových sad, které budou použity aktivitami, které jsou definovány v kanálu. Tato vlastnost se dá použít k definování datových sad, které jsou specifické pro tento kanál a nejsou definované v rámci objektu pro vytváření dat. Datové sady definované v tomto kanálu můžou použít jenom tento kanál a nedá se sdílet. Podrobnosti najdete v tématu [vymezené datové sady](data-factory-create-datasets.md#scoped-datasets) . |No |
 
 ## <a name="activity-json"></a>Zápis JSON aktivity
 Část **activities** může obsahovat definici jedné nebo více aktivit. Každá aktivita má následující strukturu nejvyšší úrovně:
@@ -130,17 +130,17 @@ Teď se blíže podíváme na to, jak se kanál definuje ve formátu JSON. Obecn
 
 Následující tabulka obsahuje popis vlastností v definici aktivity ve formátu JSON:
 
-| Značka | Popis | Požaduje se |
+| Značka | Popis | Vyžadováno |
 | --- | --- | --- |
-| jméno | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat číslem písmenem nebo podtržítkem (\_).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&", ":", "\\"</li></ul> |Ano |
+| name | Název aktivity. Určuje název, který představuje akci prováděnou danou aktivitou. <br/><ul><li>Maximální počet znaků: 260.</li><li>Musí začínat číslem písmenem nebo podtržítkem ( \_ ).</li><li>Nejsou povoleny následující znaky: ".", "+", "?", "/", "<", ">", "*", "%", "&" \\ , ":", ""</li></ul> |Ano |
 | description | Text popisující, k čemu aktivita slouží. |Ano |
-| type | Typ aktivity. Různé typy aktivit najdete v částech aktivity [přesunu dat](#data-movement-activities) a [aktivity transformace dat](#data-transformation-activities) . |Ano |
+| typ | Typ aktivity. Různé typy aktivit najdete v částech aktivity [přesunu dat](#data-movement-activities) a [aktivity transformace dat](#data-transformation-activities) . |Ano |
 | vztahují |Vstupní tabulky používané aktivitou<br/><br/>`// one input table`<br/>`"inputs":  [ { "name": "inputtable1"  } ],`<br/><br/>`// two input tables` <br/>`"inputs":  [ { "name": "inputtable1"  }, { "name": "inputtable2"  } ],` |Ano |
 | činnosti |Výstupní tabulky používané aktivitou.<br/><br/>`// one output table`<br/>`"outputs":  [ { "name": "outputtable1" } ],`<br/><br/>`//two output tables`<br/>`"outputs":  [ { "name": "outputtable1" }, { "name": "outputtable2" }  ],` |Ano |
 | linkedServiceName |Název propojené služby používané aktivitou. <br/><br/>Aktivita může vyžadovat zadání propojené služby, která odkazuje na požadované výpočetní prostředí. |Ano pro aktivitu služby HDInsight a Azure Machine Learning aktivitu dávkového vyhodnocování <br/><br/>Ne ve všech ostatních případech |
-| typeProperties |Vlastnosti v části **typeProperties** závisí na typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | Ne |
-| policy |Zásady, které ovlivňují chování aktivity za běhu. Pokud není zadaný, použijí se výchozí zásady. |Ne |
-| scheduler | vlastnost Scheduler slouží k definování požadovaného plánování aktivity. Jeho podvlastnosti jsou stejné jako ty ve [vlastnosti Availability v datové sadě](data-factory-create-datasets.md#dataset-availability). |Ne |
+| typeProperties |Vlastnosti v části **typeProperties** závisí na typu aktivity. Pokud chcete zobrazit vlastnosti typu určité aktivity, klikněte na odkaz na aktivitu v předchozí části. | No |
+| policy |Zásady, které ovlivňují chování aktivity za běhu. Pokud není zadaný, použijí se výchozí zásady. |No |
+| scheduler | vlastnost Scheduler slouží k definování požadovaného plánování aktivity. Jeho podvlastnosti jsou stejné jako ty ve [vlastnosti Availability v datové sadě](data-factory-create-datasets.md#dataset-availability). |No |
 
 ### <a name="policies"></a>Zásady
 Zásady ovlivňují chování aktivity za běhu, konkrétně při zpracování řezu tabulky. Podrobnosti jsou uvedeny v následující tabulce.
@@ -261,7 +261,7 @@ Je třeba počítat s následujícím:
 
 * V části activities je jenom jedna aktivita, jejíž vlastnost **type** má hodnotu **HDInsightHive**.
 * Soubor skriptu Hive **partitionweblogs.hql** je uložený v účtu služby Azure Storage (který určuje služba scriptLinkedService s názvem **AzureStorageLinkedService**) a ve složce **script** v kontejneru **adfgetstarted**.
-* `defines` Oddíl slouží k určení nastavení modulu runtime, která jsou předána skriptu podregistr jako hodnoty konfigurace podregistru (např `${hiveconf:inputtable}`. `${hiveconf:partitionedtable}`).
+* `defines`Oddíl slouží k určení nastavení modulu runtime, která jsou předána skriptu podregistr jako hodnoty konfigurace podregistru (např `${hiveconf:inputtable}` `${hiveconf:partitionedtable}` .).
 
 Část **typeProperties** je u každé aktivity transformace odlišná. Chcete-li získat informace o vlastnostech typu podporovaných pro aktivitu transformace, klikněte na aktivitu transformace v tabulce [aktivity transformace dat](#data-transformation-activities) .
 

@@ -1,5 +1,5 @@
 ---
-title: Nastavit Synchronizace dat SQL
+title: Nastavení synchronizace dat SQL
 description: V tomto kurzu se dozvíte, jak nastavit Synchronizace dat SQL pro Azure.
 services: sql-database
 ms.service: sql-database
@@ -11,14 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 01/14/2019
-ms.openlocfilehash: d0380239fde2c58e7c9a2e7dc3638881dbd8fd73
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 405705bee3ada2d2c43e9a243724d823a5e28602
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043972"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188695"
 ---
-# <a name="tutorial-set-up-sql-data-sync-between-azure-sql-database-and-sql-server-on-premises"></a>Kurz: nastavení Synchronizace dat SQL mezi Azure SQL Database a SQL Server místním prostředím
+# <a name="tutorial-set-up-sql-data-sync-between-databases-in-azure-sql-database-and-sql-server"></a>Kurz: nastavení Synchronizace dat SQL mezi databázemi v Azure SQL Database a SQL Server
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 V tomto kurzu se naučíte nastavit Synchronizace dat SQL tím, že vytvoříte skupinu synchronizace, která bude obsahovat instance Azure SQL Database a SQL Server. Skupina synchronizace je nastavena na vlastní konfiguraci a synchronizuje podle nastaveného plánu.
@@ -27,7 +27,7 @@ V tomto kurzu se předpokládá, že máte minimálně některé předchozí zku
 
 Přehled Synchronizace dat SQL najdete v tématu [synchronizace dat napříč cloudem a místními databázemi pomocí synchronizace dat SQL](sql-data-sync-data-sql-server-sql-database.md).
 
-Příklady prostředí PowerShell týkající se konfigurace Synchronizace dat SQL najdete v tématu [synchronizace mezi databázemi v SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md) nebo [Azure SQL Database a SQL Server místní databáze](scripts/sql-data-sync-sync-data-between-azure-onprem.md) .
+Příklady prostředí PowerShell týkající se konfigurace Synchronizace dat SQL najdete v tématu [synchronizace mezi databázemi v SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md) nebo [mezi databázemi v Azure SQL Database a SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)
 
 > [!IMPORTANT]
 > Synchronizace dat SQL v tuto **chvíli nepodporuje spravovanou** instanci SQL Azure.
@@ -55,7 +55,7 @@ Příklady prostředí PowerShell týkající se konfigurace Synchronizace dat S
 
    Na stránce **vytvořit skupinu synchronizace dat** změňte následující nastavení:
 
-   | Nastavení                        | Description |
+   | Nastavení                        | Popis |
    | ------------------------------ | ------------------------------------------------- |
    | **Název skupiny synchronizace** | Zadejte název nové skupiny synchronizace. Tento název se liší od názvu samotné databáze. |
    | **Synchronizovat databázi metadat** | Vyberte Vytvoření databáze (doporučeno) nebo pro použití existující databáze.<br/><br/>Zvolíte-li možnost **Nová databáze**, vyberte možnost **vytvořit novou databázi.** Pak na stránce **SQL Database** zadejte název a nakonfigurujte novou databázi a vyberte **OK**.<br/><br/>Pokud zvolíte možnost **použít existující databázi**, vyberte databázi ze seznamu. |
@@ -83,7 +83,7 @@ V části **databáze členů** můžete volitelně přidat Azure SQL Database d
 
   Na stránce **konfigurace Azure SQL Database** změňte následující nastavení:
 
-  | Nastavení                       | Description |
+  | Nastavení                       | Popis |
   | ----------------------------- | ------------------------------------------------- |
   | **Název člena synchronizace** | Zadejte název nového člena synchronizace. Tento název se liší od samotného názvu databáze. |
   | **Předplatné** | Vyberte přidružené předplatné Azure pro účely fakturace. |
@@ -96,9 +96,9 @@ V části **databáze členů** můžete volitelně přidat Azure SQL Database d
 
 <a name="add-on-prem"></a>
 
-### <a name="to-add-an-on-premises-sql-server-database"></a>Přidání místní databáze SQL Server
+### <a name="to-add-a-sql-server-database"></a>Přidání databáze SQL Server
 
-V části **databáze členů** můžete volitelně přidat místní SQL Server do skupiny synchronizace tak, že vyberete **Přidat místní databázi**. Otevře se stránka **Konfigurace na** místě, kde můžete provádět následující akce:
+V části **databáze členů** můžete volitelně přidat SQL Server databázi do skupiny synchronizace výběrem možnosti **Přidat místní databázi**. Otevře se stránka **Konfigurace na** místě, kde můžete provádět následující akce:
 
 1. Vyberte možnost **zvolit bránu agenta synchronizace**. Otevře se stránka **Vybrat agenta synchronizace** .
 

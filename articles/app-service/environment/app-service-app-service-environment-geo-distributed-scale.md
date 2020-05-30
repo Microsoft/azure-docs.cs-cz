@@ -6,13 +6,13 @@ ms.assetid: c1b05ca8-3703-4d87-a9ae-819d741787fb
 ms.topic: article
 ms.date: 09/07/2016
 ms.author: stefsch
-ms.custom: seodec18
-ms.openlocfilehash: 7ab04e23b838f2dfd39b73476db7492947d62e6e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, references_regions
+ms.openlocfilehash: 04ba8e7b3ccd18306cb8da0fd15d2cd88f363c70
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74688820"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193321"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Geograficky distribuované škálování v prostředí App Service Environments
 ## <a name="overview"></a>Přehled
@@ -79,7 +79,7 @@ Všimněte si, jak existuje jedno volání *Add-AzureTrafficManagerEndpointConfi
 U všech tří koncových bodů se pro parametr *váhy* používá stejná hodnota (10).  Výsledkem je Traffic Manager rozprostření požadavků zákazníků napříč všemi třemi instancemi aplikace relativně rovnoměrně. 
 
 ## <a name="pointing-the-apps-custom-domain-at-the-traffic-manager-domain"></a>Nasměrování vlastní domény aplikace v Traffic Manager doméně
-Posledním krokem je nasměrování vlastní domény aplikace v Traffic Manager doméně.  Pro ukázkovou aplikaci to znamená, `www.scalableasedemo.com` že `scalable-ase-demo.trafficmanager.net`ukazuje na.  Tento krok je nutné provést s doménovým registrátorem, který spravuje vlastní doménu.  
+Posledním krokem je nasměrování vlastní domény aplikace v Traffic Manager doméně.  Pro ukázkovou aplikaci to znamená, že ukazuje `www.scalableasedemo.com` na `scalable-ase-demo.trafficmanager.net` .  Tento krok je nutné provést s doménovým registrátorem, který spravuje vlastní doménu.  
 
 Pomocí nástrojů pro správu domény vašeho registrátora se musí vytvořit záznamy CNAME, které budou ukazovat na vlastní doménu v doméně Traffic Manager.  Následující obrázek ukazuje příklad toho, jak tato konfigurace záznamu CNAME vypadá takto:
 
@@ -87,14 +87,14 @@ Pomocí nástrojů pro správu domény vašeho registrátora se musí vytvořit 
 
 I když se to v tomto tématu nezabývá, pamatujte, že každá instance aplikace musí mít taky zaregistrovanou vlastní doménu.  Jinak pokud požadavek vytvoří instanci aplikace a aplikace nemá v aplikaci zaregistrovanou vlastní doménu, požadavek se nezdaří.  
 
-V tomto příkladu je `www.scalableasedemo.com`vlastní doména a ke každé instanci aplikace je přidružená vlastní doména.
+V tomto příkladu je vlastní doména `www.scalableasedemo.com` a ke každé instanci aplikace je přidružená vlastní doména.
 
 ![Vlastní doména][CustomDomain] 
 
 Rekapitulace o registraci vlastní domény pomocí Azure App Servicech aplikací najdete v následujícím článku o [registraci vlastních domén][RegisterCustomDomain].
 
 ## <a name="trying-out-the-distributed-topology"></a>Vyzkoušení distribuované topologie
-Konečný výsledek Traffic Manager a konfigurace DNS je, že požadavky na `www.scalableasedemo.com` službu budou procházet pomocí následujícího pořadí:
+Konečný výsledek Traffic Manager a konfigurace DNS je, že požadavky na službu `www.scalableasedemo.com` budou procházet pomocí následujícího pořadí:
 
 1. Prohlížeč nebo zařízení provede vyhledávání DNS pro`www.scalableasedemo.com`
 2. Záznam CNAME v registrátoru domény způsobí přesměrování vyhledávání DNS do Azure Traffic Manager.

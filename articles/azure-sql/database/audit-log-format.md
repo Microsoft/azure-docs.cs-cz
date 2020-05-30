@@ -1,6 +1,6 @@
 ---
-title: Formát protokolu auditu
-description: Zjistěte, jak jsou strukturované protokoly auditu Azure SQL a Azure synapse.
+title: SQL Database formát protokolu auditu
+description: Pochopte, jak jsou strukturované protokoly auditu Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,30 +10,30 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
 ms.date: 04/28/2020
-ms.openlocfilehash: 33a82cb5e4daac96d51f19de21e817b07237ec20
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 82e0cec514849eb41272e6b25dcce74eabfa2b8d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041658"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190315"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database formát protokolu auditu
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 [Azure SQL Database auditování](auditing-overview.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage nebo je odesílá do centra událostí nebo Log Analytics pro zpracování a analýzu pro příjem dat.
 
-## <a name="naming-conventions"></a>Konvence vytváření názvů
+## <a name="naming-conventions"></a>Zásady vytváření názvů
 
 ### <a name="blob-audit"></a>Audit objektů BLOB
 
-Protokoly auditu uložené v úložišti objektů BLOB se ukládají do kontejneru s názvem `sqldbauditlogs` v účtu Azure Storage. Hierarchie adresáře v rámci kontejneru má formu `<ServerName>/<DatabaseName>/<AuditName>/<Date>/` . Formát názvu souboru BLOB je `<CreationTime>_<FileNumberInSession>.xel` , kde `CreationTime` je ve `hh_mm_ss_ms` formátu UTC, a `FileNumberInSession` je spuštěný index v případě, že se protokoly relací mezi několika soubory objektů BLOB nacházejí v protokolech.
+Protokoly auditu uložené v Azure Blob Storage se ukládají do kontejneru s názvem `sqldbauditlogs` v účtu služby Azure Storage. Hierarchie adresáře v rámci kontejneru má formu `<ServerName>/<DatabaseName>/<AuditName>/<Date>/` . Formát názvu souboru objektu BLOB je `<CreationTime>_<FileNumberInSession>.xel` , kde `CreationTime` je ve `hh_mm_ss_ms` formátu UTC, a `FileNumberInSession` je spuštěným indexem v případě, že protokoly relací jsou rozloženy mezi více souborů objektů BLOB.
 
 Například pro databázi `Database1` v následujícím příkladu `Server1` je možnou platnou cestou:
 
     Server1/Database1/SqlDbAuditing_ServerAudit_NoRetention/2019-02-03/12_23_30_794_0.xel
 
-[Repliky jen pro čtení](read-scale-out.md) Protokoly auditu se ukládají do stejného kontejneru. Hierarchie adresáře v rámci kontejneru má formu `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` . Název souboru objektu BLOB sdílí stejný formát. Protokoly auditu replik jen pro čtení jsou uloženy ve stejném kontejneru.
+Protokoly auditu [replik jen pro čtení](read-scale-out.md) se ukládají do stejného kontejneru. Hierarchie adresáře v rámci kontejneru má formu `<ServerName>/<DatabaseName>/<AuditName>/<Date>/RO/` . Název souboru objektu BLOB sdílí stejný formát. Protokoly auditu replik jen pro čtení jsou uloženy ve stejném kontejneru.
 
 
 ### <a name="event-hub"></a>Centrum událostí
@@ -46,7 +46,7 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Pole protokolu auditu
 
-| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Description | Typ objektu BLOB | Typ Event Hubs/Log Analytics |
+| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Popis | Typ objektu blob | Typ Event Hubs/Log Analytics |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID akce | varchar (4) | řetězec |
 | action_name | action_name_s | Název akce | – | řetězec |

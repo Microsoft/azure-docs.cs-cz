@@ -5,16 +5,16 @@ services: logic-apps
 ms.suite: integration
 author: divyaswarnkar
 ms.author: divswa
-ms.reviewer: estfan, logicappspm
+ms.reviewer: estfan, daviburg, logicappspm
 ms.topic: article
-ms.date: 05/27/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: 36e22fd92d937271a3859d03367e2a7ef80ef3d2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 557e162d9d7f0238d5554c32cb3ae96885877dbe
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118667"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220505"
 ---
 # <a name="connect-to-sap-systems-from-azure-logic-apps"></a>Připojení k systémům SAP z Azure Logic Apps
 
@@ -28,12 +28,12 @@ Tento článek ukazuje, jak můžete přistupovat k místním prostředkům SAP 
 Konektor SAP používá [knihovnu SAP .NET Connector (NCo)](https://support.sap.com/en/product/connectors/msnet.html) a poskytuje tyto akce:
 
 * **Odeslat zprávu do SAP**: Odeslat IDOC prostřednictvím tRFC, volat funkce BAPI přes RFC nebo volat RFC/tRFC v systémech SAP.
+
 * **Při přijetí zprávy ze SAP**: přijmout IDOC over tRFC, volat funkce BAPI přes tRFC nebo volat RFC/tRFC v systémech SAP.
+
 * **Generování schémat**: generování schémat pro artefakty SAP pro IDOC, BAPI nebo RFC.
 
 Pro tyto operace konektor SAP podporuje základní ověřování prostřednictvím uživatelských jmen a hesel. Konektor podporuje také [zabezpečenou síťovou komunikaci (SNC)](https://help.sap.com/doc/saphelp_nw70/7.0.31/e6/56f466e99a11d1a5b00000e835363f/content.htm?no_cache=true). SNC se dá použít pro jednotné přihlašování SAP NetWeaver (SSO) nebo pro další funkce zabezpečení poskytované externím produktem zabezpečení.
-
-Konektor SAP se integruje s místními systémy SAP prostřednictvím místní [brány dat](../logic-apps/logic-apps-gateway-connection.md). Ve scénářích odeslání se například při odeslání zprávy z aplikace logiky do systému SAP chová brána dat jako klient RFC a přepošle žádosti přijaté z aplikace logiky do SAP. Obdobně platí, že brána data Gateway funguje jako server RFC, který přijímá žádosti od SAP a přesměruje je do aplikace logiky.
 
 V tomto článku se dozvíte, jak vytvořit ukázkové aplikace logiky, které se integrují s SAP a které pokrývají dříve popsané scénáře integrace. V tomto článku se pro Logic Apps, které používají starší konektory SAP, dozvíte, jak migrovat aplikace logiky na nejnovější konektor SAP.
 
@@ -49,42 +49,121 @@ Pokud chcete postupovat podle tohoto článku, budete potřebovat tyto položky:
 
 * [Aplikační Server SAP](https://wiki.scn.sap.com/wiki/display/ABAP/ABAP+Application+Server) nebo [Server zpráv SAP](https://help.sap.com/saphelp_nw70/helpdata/en/40/c235c15ab7468bb31599cc759179ef/frameset.htm).
 
-* [Stáhněte a nainstalujte místní bránu dat](../logic-apps/logic-apps-gateway-install.md) do místního počítače. Pak [vytvořte prostředek brány Azure](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) pro tuto bránu v Azure Portal. Brána vám pomůže zabezpečený přístup k místním datům a prostředkům. 
-
-  * V rámci osvědčeného postupu se ujistěte, že používáte podporovanou verzi místní brány dat. Společnost Microsoft každý měsíc vydává novou verzi. V současné době podporuje Microsoft poslední šest verzí. Pokud dojde k potížím s bránou, zkuste [upgradovat na nejnovější verzi](https://aka.ms/on-premises-data-gateway-installer), která může zahrnovat aktualizace pro vyřešení vašeho problému.
-
-* [Stáhněte, nainstalujte a nakonfigurujte nejnovější knihovnu klienta SAP](#sap-client-library-prerequisites) na stejném počítači, ve kterém je místní brána dat.
-
 * Obsah zprávy, který můžete odeslat na Server SAP, například vzorový soubor IDoc, musí být ve formátu XML a zahrnovat obor názvů pro akci SAP, kterou chcete použít.
+
+* Chcete-li použít **při přijetí zprávy z** triggeru SAP, je nutné provést tyto kroky nastavení:
+
+  * Nastavte oprávnění zabezpečení brány SAP pomocí tohoto nastavení:
+
+    `"TP=Microsoft.PowerBI.EnterpriseGateway HOST=<gateway-server-IP-address> ACCESS=*"`
+
+  * Nastavte protokolování zabezpečení brány SAP, které pomáhá najít chyby seznamu Access Control (ACL) a není ve výchozím nastavení povolené. V opačném případě se zobrazí následující chyba:
+
+    `"Registration of tp Microsoft.PowerBI.EnterpriseGateway from host <host-name> not allowed"`
+
+    Další informace najdete v tématu nápovědy SAP, [nastavení protokolování brány](https://help.sap.com/erp_hcm_ias2_2015_02/helpdata/en/48/b2a710ca1c3079e10000000a42189b/frameset.htm).
+
+<a name="multi-tenant"></a>
+
+### <a name="multi-tenant-azure-prerequisites"></a>Požadavky Azure na více tenantů
+
+Tyto požadavky platí v případě, že vaše aplikace logiky běží ve více tenantů Azure a chcete použít spravovaný konektor SAP, který neběží nativně v [prostředí ISE (Integration Service Environment)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). V opačném případě, pokud používáte ISE úrovně Premium a chcete použít konektor SAP spouštěný nativně v ISE, přečtěte si část [požadavky na ISE (Integration Service Environment)](#sap-ise).
+
+Spravovaný (bez ISE) konektor SAP se integruje s místními systémy SAP prostřednictvím místní [brány dat](../logic-apps/logic-apps-gateway-connection.md). Například při odeslání zprávy z aplikace logiky do systému SAP bude brána dat fungovat jako klient RFC a přepošle žádosti přijaté z aplikace logiky do SAP. Stejně tak v případě, že se zobrazují zprávy, brána dat funguje jako server RFC, který přijímá žádosti od SAP a přesměruje je do aplikace logiky.
+
+* [Stáhněte a nainstalujte místní bránu dat](../logic-apps/logic-apps-gateway-install.md) do místního počítače. Pak [vytvořte prostředek brány Azure](../logic-apps/logic-apps-gateway-connection.md#create-azure-gateway-resource) pro tuto bránu v Azure Portal. Brána vám pomůže zabezpečený přístup k místním datům a prostředkům.
+
+  V rámci osvědčeného postupu se ujistěte, že používáte podporovanou verzi místní brány dat. Společnost Microsoft každý měsíc vydává novou verzi. V současné době podporuje Microsoft poslední šest verzí. Pokud dojde k potížím s bránou, zkuste [upgradovat na nejnovější verzi](https://aka.ms/on-premises-data-gateway-installer), která může zahrnovat aktualizace pro vyřešení vašeho problému.
+
+* [Stáhněte si a nainstalujte nejnovější knihovnu klienta SAP](#sap-client-library-prerequisites) do stejného počítače, ve kterém je místní brána dat.
+
+<a name="sap-ise"></a>
+
+### <a name="integration-service-environment-ise-prerequisites"></a>Požadavky na prostředí ISE (Integration Service Environment)
+
+Tyto požadavky platí v případě, že aplikace logiky běží v [prostředí ISE (Integration Service Environment](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)) úrovně Premium a vy chcete použít konektor SAP, který běží nativně v ISE. ISE poskytuje přístup k prostředkům, které jsou chráněné službou Azure Virtual Network, a nabízí další ISEové konektory, které umožňují Logic Apps přímý přístup k místním prostředkům bez použití místní brány dat.
+
+> [!NOTE]
+> I když je konektor SAP ISE viditelný v ISE na úrovni vývojáře, pokusy o instalaci konektoru nebudou úspěšné.
+
+1. Pokud ještě nemáte účet Azure Storage a kontejner objektů blob, vytvořte tento kontejner buď pomocí [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) nebo [Průzkumník služby Azure Storage](../storage/blobs/storage-quickstart-blobs-storage-explorer.md).
+
+1. [Stáhněte a nainstalujte si nejnovější knihovnu klienta SAP](#sap-client-library-prerequisites) na místním počítači. Měli byste mít následující soubory sestavení:
+
+   * libicudecnumber. dll
+   * rscp4n. dll
+   * sapnco. dll
+   * sapnco_utils. dll
+
+1. Vytvořte soubor. zip, který obsahuje tato sestavení a nahrajte tento balíček do kontejneru objektů BLOB v Azure Storage.
+
+1. V Azure Portal nebo Průzkumník služby Azure Storage přejděte do umístění kontejneru, kam jste nahráli soubor. zip.
+
+1. Zkopírujte adresu URL tohoto umístění a ujistěte se, že jste zahrnuli token sdíleného přístupového podpisu (SAS).
+
+   V opačném případě token SAS nezíská autorizaci a nasazení konektoru SAP ISE se nezdaří.
+
+1. Než budete moct použít konektor SAP ISE, musíte nainstalovat a nasadit konektor v ISE.
+
+   1. V [Azure Portal](https://portal.azure.com)vyhledejte a otevřete své ISE.
+   
+   1. V nabídce ISE vyberte **spravované konektory**  >  **Přidat**. V seznamu konektory vyhledejte a vyberte **SAP**.
+   
+   1. V podokně **Přidat nový spravovaný konektor** do pole **balíček SAP** vložte adresu URL souboru. zip, který obsahuje sestavení SAP. *Ujistěte se, že jste zahrnuli token SAS.*
+
+   1. Až to budete mít, vyberte **Vytvořit**.
+
+   Další informace najdete v tématu [Přidání konektorů ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#add-ise-connectors-environment).
+
+1. Pokud se vaše instance SAP a ISE nacházejí v různých virtuálních sítích, musíte taky vytvořit [partnerský vztah k těmto sítím](../virtual-network/tutorial-connect-virtual-networks-portal.md) , aby byla vaše virtuální síť ISE připojená k virtuální síti vaší instance SAP.
+
+<a name="sap-client-library-prerequisites"></a>
 
 ### <a name="sap-client-library-prerequisites"></a>Požadavky na knihovnu klienta SAP
 
-* Ve výchozím nastavení instalační program SAP umístí soubory sestavení do výchozí instalační složky. Zkopírujte soubory sestavení z výchozí instalační složky do instalační složky brány.
+* Ujistěte se, že jste nainstalovali nejnovější verzi nástroje [SAP Connector (NCo 3,0) pro Microsoft .NET 3.0.22.0 zkompilované pomocí .NET Framework 4,0-Windows 64-bit (x64)](https://softwaredownloads.sap.com/file/0020000001000932019). Starší verze můžou mít za následek problémy s kompatibilitou. Další informace najdete v tématu [verze klientské knihovny SAP](#sap-library-versions).
 
-    * Pokud se připojení SAP nezdaří s chybovou zprávou, zkontrolujte prosím informace účtu nebo oprávnění a zkuste to znovu. soubory sestavení můžou být v nesprávném umístění. Ujistěte se, že jste zkopírovali soubory sestavení do instalační složky brány. Pak [použijte prohlížeč protokolů vazby sestavení .NET pro řešení potíží](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), které vám umožní ověřit, zda jsou soubory sestavení ve správném umístění.
+* Ve výchozím nastavení instalační program SAP umístí soubory sestavení do výchozí instalační složky. Tyto soubory sestavení je nutné zkopírovat do jiného umístění na základě vašeho scénáře, a to takto:
 
-    * Volitelně můžete vybrat možnost **registrace globální mezipaměti sestavení** při instalaci knihovny klienta SAP.
+  Pro Logic Apps, které běží na ISE, postupujte podle kroků popsaných v tématu [předpoklady pro prostředí integrační služby](#sap-ise). Pro aplikace logiky, které běží ve víceklientské architektuře Azure a používají místní bránu dat, zkopírujte soubory sestavení z výchozí instalační složky do instalační složky brány dat. Pokud narazíte na problémy s bránou data Gateway, přečtěte si následující problémy:
 
-* Nezapomeňte nainstalovat nejnovější verzi, [konektor SAP (NCo 3,0) pro Microsoft .NET 3.0.22.0 zkompilované pomocí .NET Framework 4,0-Windows 64-bit (x64)](https://softwaredownloads.sap.com/file/0020000001000932019)z těchto důvodů:
+  * Pro klientskou knihovnu SAP je nutné nainstalovat 64 verzi, protože brána dat se spouští pouze v systémech 64. V opačném případě se zobrazí chyba "chybná image", protože hostitelská služba brány dat nepodporuje 32 bitových sestavení.
 
-    * Starší verze SAP NCo můžou být zablokované, když se současně pošle víc než jedna zpráva IDoc. Tento stav blokuje všechny pozdější zprávy, které se odesílají do cíle SAP, což způsobí vypršení časového limitu zpráv.
-    * Místní brána dat se spouští jenom v 64 systémech. V opačném případě se zobrazí chyba "chybná image", protože hostitelská služba brány dat nepodporuje 32 bitových sestavení.
+  * Pokud se připojení SAP nezdaří s chybovou zprávou, zkontrolujte prosím informace účtu nebo oprávnění a zkuste to znovu. soubory sestavení můžou být v nesprávném umístění. Ujistěte se, že jste zkopírovali soubory sestavení do instalační složky brány dat.
 
-    * Hostitelská služba brány dat i adaptér Microsoft SAP používají .NET Framework 4,5. SAP NCo for .NET Framework 4,0 funguje s procesy, které používají .NET Runtime 4,0 až 4.7.1. SAP NCo for .NET Framework 2,0 funguje s procesy, které používají .NET runtime 2,0 na 3,5, ale už nefungují s nejnovější místní bránou dat.
+    Pro usnadnění odstraňování potíží [použijte prohlížeč protokolu vazby sestavení .NET](https://docs.microsoft.com/dotnet/framework/tools/fuslogvw-exe-assembly-binding-log-viewer), který vám umožní ověřit, zda jsou soubory sestavení ve správném umístění. Volitelně můžete vybrat možnost **registrace globální mezipaměti sestavení** při instalaci knihovny klienta SAP.
 
-### <a name="snc-prerequisites"></a>Požadavky na SNC
+<a name="sap-library-versions"></a>
 
-Pokud používáte SNC (volitelné), nakonfigurujte tato nastavení:
+#### <a name="sap-client-library-versions"></a>Verze klientské knihovny SAP
 
-* Pokud používáte SNC s SSO, ujistěte se, že je brána spuštěná jako uživatel, který je namapovaný na uživatele SAP. Chcete-li změnit výchozí účet, vyberte možnost **změnit účet**a zadejte přihlašovací údaje uživatele.
+Starší verze SAP NCo můžou být zablokované, když se současně pošle víc než jedna zpráva IDoc. Tento stav blokuje všechny pozdější zprávy, které se odesílají do cíle SAP, což způsobí vypršení časového limitu zpráv.
 
-  ![Změnit účet brány](./media/logic-apps-using-sap-connector/gateway-account.png)
+Tady jsou vztahy mezi klientskou knihovnou SAP, .NET Framework, modulem runtime .NET a bránou:
 
-* Pokud SNC povolíte s externím produktem zabezpečení, zkopírujte knihovnu SNC nebo soubory do stejného počítače, ve kterém je brána nainstalovaná. Mezi příklady SNC produktů patří [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos a NTLM.
+* Adaptér Microsoft SAP i hostitelská služba brány používají .NET Framework 4,5.
+
+* SAP NCo for .NET Framework 4,0 funguje s procesy, které používají .NET Runtime 4,0 až 4.7.1.
+
+* SAP NCo for .NET Framework 2,0 funguje s procesy, které používají .NET runtime 2,0 na 3,5, ale už nefungují s nejnovější bránou.
+
+### <a name="secure-network-communications-prerequisites"></a>Požadavky na zabezpečenou síťovou komunikaci
+
+Pokud používáte místní bránu dat s volitelnou zabezpečenou síťovou komunikací (SNC), která je podporovaná jenom ve více klientech Azure, musíte taky nakonfigurovat tato nastavení:
+
+* Pokud používáte SNC s jednotným přihlašováním (SSO), ujistěte se, že je brána dat spuštěná jako uživatel, který je namapovaný na uživatele SAP. Chcete-li změnit výchozí účet, vyberte možnost **změnit účet**a zadejte přihlašovací údaje uživatele.
+
+  ![Změnit účet brány dat](./media/logic-apps-using-sap-connector/gateway-account.png)
+
+* Pokud SNC povolíte s externím produktem zabezpečení, zkopírujte knihovnu SNC nebo soubory na stejném počítači, kde je nainstalována brána dat. Mezi příklady SNC produktů patří [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos a NTLM.
+
+Další informace o povolení SNC pro bránu dat najdete v tématu [Povolení zabezpečené síťové komunikace](#secure-network-communications).
 
 <a name="migrate"></a>
 
 ## <a name="migrate-to-current-connector"></a>Migrovat na aktuální konektor
+
+Pokud chcete migrovat ze staršího konektoru SAP spravovaného (bez ISE) na aktuální spravovaný konektor SAP, postupujte podle těchto kroků:
 
 1. Pokud jste to ještě neudělali, aktualizujte místní [bránu dat](https://www.microsoft.com/download/details.aspx?id=53127) tak, aby byla k dispozici nejnovější verze. Další informace najdete v tématu [instalace místní brány dat pro Azure Logic Apps](../logic-apps/logic-apps-gateway-install.md).
 
@@ -139,13 +218,15 @@ V Azure Logic Apps [Akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Výběr akce Odeslat zprávu na SAP na kartě organizace](media/logic-apps-using-sap-connector/select-sap-send-action-ent-tab.png)
 
-1. Pokud vaše připojení už existuje, pokračujte dalším krokem, abyste mohli nastavit akci SAP. Pokud se však zobrazí výzva k zadání podrobností o připojení, zadejte informace, abyste mohli nyní vytvořit připojení k místnímu serveru SAP.
+1. Pokud vaše připojení už existuje, pokračujte dalším krokem, abyste mohli nastavit akci SAP. Pokud se ale zobrazí výzva k zadání podrobností o připojení, zadejte informace, abyste mohli vytvořit připojení k místnímu serveru SAP.
 
    1. Zadejte název připojení.
 
-   1. V části **Brána dat** v části **předplatné**nejdřív vyberte předplatné Azure pro prostředek brány, který jste vytvořili v Azure Portal pro instalaci brány. 
+   1. Pokud používáte bránu dat, postupujte následovně:
    
-   1. V části **Brána připojení**vyberte prostředek brány.
+      1. V části **Brána dat** v části **předplatné**nejdřív vyberte předplatné Azure pro prostředek brány dat, který jste vytvořili v Azure Portal pro instalaci brány dat.
+   
+      1. V části **Brána připojení**vyberte prostředek brány dat v Azure.
 
    1. Pokračujte v poskytování informací o připojení. U vlastnosti **typ přihlášení** postupujte podle kroků na základě toho, jestli je vlastnost nastavená na **aplikační server** nebo **skupinu**:
    
@@ -257,9 +338,11 @@ V tomto příkladu se používá aplikace logiky, která se aktivuje, když apli
 
    1. Zadejte název připojení.
 
-   1. V části **Brána dat** v části **předplatné**nejdřív vyberte předplatné Azure pro prostředek brány, který jste vytvořili v Azure Portal pro instalaci brány. 
+   1. Pokud používáte bránu dat, postupujte následovně:
 
-   1. V části **Brána připojení**vyberte prostředek brány.
+      1. V části **Brána dat** v části **předplatné**nejdřív vyberte předplatné Azure pro prostředek brány dat, který jste vytvořili v Azure Portal pro instalaci brány dat.
+
+      1. V části **Brána připojení**vyberte prostředek brány dat v Azure.
 
    1. Pokračujte v poskytování informací o připojení. U vlastnosti **typ přihlášení** postupujte podle kroků na základě toho, jestli je vlastnost nastavená na **aplikační server** nebo **skupinu**:
 
@@ -279,13 +362,13 @@ V tomto příkladu se používá aplikace logiky, která se aktivuje, když apli
 
 1. Zadejte [požadované parametry](#parameters) na základě konfigurace systému SAP.
 
-   Volitelně můžete zadat jednu nebo více akcí SAP. Tento seznam akcí určuje zprávy, které aktivační událost přijme ze serveru SAP prostřednictvím brány dat. Prázdný seznam určuje, že Trigger obdrží všechny zprávy. Pokud má seznam více než jednu zprávu, aktivační událost přijímá pouze zprávy uvedené v seznamu. Všechny ostatní zprávy odeslané z vašeho serveru SAP jsou bránou odmítnuté.
+   Volitelně můžete zadat jednu nebo více akcí SAP. Tento seznam akcí určuje zprávy, které aktivační událost obdrží od vašeho serveru SAP. Prázdný seznam určuje, že Trigger obdrží všechny zprávy. Pokud má seznam více než jednu zprávu, aktivační událost přijímá pouze zprávy uvedené v seznamu. Všechny ostatní zprávy odeslané z vašeho serveru SAP jsou odmítnuty.
 
    Akci SAP můžete vybrat z výběru souboru:
 
    ![Přidat akci SAP do aplikace logiky](media/logic-apps-using-sap-connector/select-SAP-action-trigger.png)  
 
-   Můžete také zadat akci ručně:
+   Nebo můžete ručně zadat akci:
 
    ![Zadat akci SAP ručně](media/logic-apps-using-sap-connector/manual-enter-SAP-action-trigger.png)
 
@@ -300,7 +383,7 @@ V tomto příkladu se používá aplikace logiky, která se aktivuje, když apli
 Vaše aplikace logiky je teď připravená přijímat zprávy ze systému SAP.
 
 > [!NOTE]
-> Trigger SAP není Trigger cyklického dotazování, ale je místo toho Trigger založený na Webhooku. Trigger se volá z brány jenom v případě, že existuje zpráva, takže není potřeba žádné cyklické dotazování.
+> Trigger SAP není Trigger cyklického dotazování, ale je místo toho Trigger založený na Webhooku. Pokud používáte bránu dat, Trigger se z brány dat zavolá jenom v případě, že existuje zpráva, takže není potřeba žádné cyklické dotazování.
 
 <a name="parameters"></a>
 
@@ -320,11 +403,11 @@ Spolu s jednoduchým řetězcem a číselnými vstupy akceptuje konektor SAP ná
 
 1. Otevřete poslední spuštění, ve kterém se zobrazí zpráva odeslaná ze systému SAP v oddílu aktivační výstupy triggeru.
 
-## <a name="receive-idoc-packets-from-sap"></a>Příjem paketů IDOC ze SAP
+## <a name="receive-idoc-packets-from-sap"></a>Příjem paketů IDoc ze SAP
 
-Můžete nastavit SAP pro [posílání IDOCs v paketech](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), což jsou dávky nebo skupiny IDOCs. Aby bylo možné přijímat pakety IDOC, konektor SAP a konkrétně Trigger nevyžadují další konfiguraci. Pokud však chcete zpracovat každou položku v paketu IDOC poté, co Trigger obdrží paket, je nutné provést některé další kroky pro rozdělení paketu do jednotlivých IDOCs.
+Můžete nastavit SAP pro [posílání IDOCs v paketech](https://help.sap.com/viewer/8f3819b0c24149b5959ab31070b64058/7.4.16/en-US/4ab38886549a6d8ce10000000a42189c.html), což jsou dávky nebo skupiny IDOCs. Aby bylo možné přijímat pakety IDoc, konektor SAP a konkrétně Trigger nevyžadují další konfiguraci. Pokud však chcete zpracovat každou položku v paketu IDoc poté, co Trigger obdrží paket, je nutné provést některé další kroky pro rozdělení paketu do jednotlivých IDocs.
 
-Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDOCs z paketu pomocí [ `xpath()` funkce](./workflow-definition-language-functions-reference.md#xpath):
+Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDocs z paketu pomocí [ `xpath()` funkce](./workflow-definition-language-functions-reference.md#xpath):
 
 1. Než začnete, budete potřebovat aplikaci logiky s triggerem SAP. Pokud tuto aplikaci logiky ještě nemáte, pomocí předchozích kroků v tomto tématu [nastavte aplikaci logiky pomocí triggeru SAP](#receive-from-sap).
 
@@ -332,23 +415,23 @@ Tady je příklad, který ukazuje, jak extrahovat jednotlivé IDOCs z paketu pom
 
    ![Přidání triggeru SAP do aplikace logiky](./media/logic-apps-using-sap-connector/first-step-trigger.png)
 
-1. Získejte kořenový obor názvů z XML IDOC, který vaše aplikace logiky obdrží od SAP. Chcete-li tento obor názvů extrahovat z dokumentu XML, přidejte krok, který vytvoří místní řetězcovou proměnnou a uloží tento obor názvů pomocí `xpath()` výrazu:
+1. Získejte kořenový obor názvů z XML IDoc, který vaše aplikace logiky obdrží od SAP. Chcete-li tento obor názvů extrahovat z dokumentu XML, přidejte krok, který vytvoří místní řetězcovou proměnnou a uloží tento obor názvů pomocí `xpath()` výrazu:
 
    `xpath(xml(triggerBody()?['Content']), 'namespace-uri(/*)')`
 
-   ![Získat kořenový obor názvů z IDOC](./media/logic-apps-using-sap-connector/get-namespace.png)
+   ![Získat kořenový obor názvů z IDoc](./media/logic-apps-using-sap-connector/get-namespace.png)
 
-1. Chcete-li extrahovat jednotlivé IDOC, přidejte krok, který vytvoří proměnnou pole a uloží kolekci IDOC pomocí jiného `xpath()` výrazu:
+1. Chcete-li extrahovat jednotlivé IDoc, přidejte krok, který vytvoří proměnnou pole a uloží kolekci IDoc pomocí jiného `xpath()` výrazu:
 
    `xpath(xml(triggerBody()?['Content']), '/*[local-name()="Receive"]/*[local-name()="idocData"]')`
 
    ![Získat pole položek](./media/logic-apps-using-sap-connector/get-array.png)
 
-   Proměnná Array zpřístupňuje jednotlivé IDOC pro vaši aplikaci logiky, aby je bylo možné zpracovat individuálně pomocí výčtu kolekce. V tomto příkladu aplikace logiky přenáší jednotlivé IDOC na server SFTP pomocí smyčky:
+   Proměnná Array zpřístupňuje jednotlivé IDoc pro vaši aplikaci logiky, aby je bylo možné zpracovat individuálně pomocí výčtu kolekce. V tomto příkladu aplikace logiky přenáší jednotlivé IDoc na server SFTP pomocí smyčky:
 
-   ![Odeslání IDOC serveru SFTP](./media/logic-apps-using-sap-connector/loop-batch.png)
+   ![Odeslání IDoc serveru SFTP](./media/logic-apps-using-sap-connector/loop-batch.png)
 
-   Každý IDOC musí zahrnovat kořenový obor názvů, což je důvod, proč je obsah souboru zabalen uvnitř `<Receive></Receive` elementu společně s kořenovým oborem názvů před odesláním IDOC do aplikace pro příjem dat nebo serveru SFTP v tomto případě.
+   Každý IDoc musí zahrnovat kořenový obor názvů, což je důvod, proč je obsah souboru zabalen uvnitř `<Receive></Receive` elementu společně s kořenovým oborem názvů před odesláním IDOC do aplikace pro příjem dat nebo serveru SFTP v tomto případě.
 
 Můžete použít šablonu pro rychlý Start pro tento model výběrem této šablony v návrháři aplikace logiky při vytváření nové aplikace logiky.
 
@@ -391,9 +474,9 @@ Na panelu nástrojů návrháře vyberte **Uložit**.
 
    1. Zadejte název připojení.
 
-   1. V části **Brána dat** v části **předplatné**nejdřív vyberte předplatné Azure pro prostředek brány, který jste vytvořili v Azure Portal pro instalaci brány. 
+   1. V části **Brána dat** v části **předplatné**nejdřív vyberte předplatné Azure pro prostředek brány dat, který jste vytvořili v Azure Portal pro instalaci brány dat. 
    
-   1. V části **Brána připojení**vyberte prostředek brány.
+   1. V části **Brána připojení**vyberte prostředek brány dat v Azure.
 
    1. Pokračujte v poskytování informací o připojení. U vlastnosti **typ přihlášení** postupujte podle kroků na základě toho, jestli je vlastnost nastavená na **aplikační server** nebo **skupinu**:
    
@@ -480,19 +563,23 @@ V případě potřeby můžete vygenerovaná schémata stáhnout nebo uložit v 
 
 1. Po úspěšném spuštění přejdete na účet pro integraci a zkontrolujete, že vygenerovaná schémata existují.
 
+<a name="secure-network-communications"></a>
+
 ## <a name="enable-secure-network-communications"></a>Povolit zabezpečenou síťovou komunikaci
 
-Než začnete, ujistěte se, že jste splnili výše uvedené [požadavky](#pre-reqs):
+Než začnete, ujistěte se, že jste splnili výše uvedené [předpoklady](#pre-reqs), které platí jenom v případě, že používáte bránu data Gateway a vaše aplikace logiky běží ve více klientech Azure:
 
-* Místní brána dat je nainstalovaná na počítači, který je ve stejné síti jako váš systém SAP.
-* Pro jednotné přihlašování je brána spuštěná jako uživatel, který je namapovaný na uživatele SAP.
+* Ujistěte se, že místní brána dat je nainstalovaná na počítači, který je ve stejné síti jako váš systém SAP.
+
+* V případě jednotného přihlašování (SSO) je brána dat spuštěna jako uživatel, který je namapován na uživatele SAP.
+
 * Knihovna SNC, která poskytuje další funkce zabezpečení, je nainstalovaná na stejném počítači jako brána dat. Mezi příklady patří [sapseculib](https://help.sap.com/saphelp_nw74/helpdata/en/7a/0755dc6ef84f76890a77ad6eb13b13/frameset.htm), Kerberos a NTLM.
 
    Pokud chcete povolit SNC pro vaše požadavky na systém SAP nebo z něj, zaškrtněte políčko **použít SNC** v připojení SAP a zadejte tyto vlastnosti:
 
    ![Konfigurace SAP SNC v souvislosti s připojením](media/logic-apps-using-sap-connector/configure-sapsnc.png)
 
-   | Vlastnost | Description |
+   | Vlastnost | Popis |
    |----------| ------------|
    | **Cesta ke knihovně SNC** | Název knihovny SNC nebo cesta relativní k umístění instalace NCo nebo absolutní cesta. Příklady jsou `sapsnc.dll` nebo `.\security\sapsnc.dll` `c:\security\sapsnc.dll` . |
    | **JEDNOTNÉ PŘIHLAŠOVÁNÍ SNC** | Při připojení prostřednictvím SNC se obvykle používá identita SNC pro ověřování volajícího. Další možností je přepsat, aby se informace o uživateli a heslech mohly použít k ověřování volajícího, ale řádek je stále zašifrovaný. |
@@ -554,7 +641,7 @@ Když se odesílají zprávy s povoleným **bezpečným typováním** , TIMS odp
 
 ### <a name="confirm-transaction-explicitly"></a>Potvrdit transakci explicitně
 
-Když odesíláte transakce do SAP z Logic Apps, k tomuto systému Exchange dochází ve dvou krocích, jak je popsáno v dokumentu SAP, v tématu [transakční aplikace RFC serveru](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). Ve výchozím nastavení zpracuje akce **Odeslat do SAP** jak kroky pro přenos funkce, tak potvrzení transakce v jednom volání. Konektor SAP vám dává možnost oddělit tyto kroky. Můžete odeslat IDOC a místo toho, aby transakce byla automaticky potvrzena, můžete použít akci explicitní **potvrzení ID transakce** .
+Když odesíláte transakce do SAP z Logic Apps, k tomuto systému Exchange dochází ve dvou krocích, jak je popsáno v dokumentu SAP, v tématu [transakční aplikace RFC serveru](https://help.sap.com/doc/saphelp_nwpi71/7.1/en-US/22/042ad7488911d189490000e829fbbd/content.htm?no_cache=true). Ve výchozím nastavení zpracuje akce **Odeslat do SAP** jak kroky pro přenos funkce, tak potvrzení transakce v jednom volání. Konektor SAP vám dává možnost oddělit tyto kroky. Můžete odeslat IDoc a místo toho, aby transakce byla automaticky potvrzena, můžete použít akci explicitní **potvrzení ID transakce** .
 
 Tato možnost oddělit potvrzení ID transakce je užitečná v případě, že nechcete provádět duplicitní transakce v SAP, například ve scénářích, kdy může dojít k selhání z důvodu příčin potíží se sítí. Potvrzením ID transakce samostatně se transakce v systému SAP pouze v jednom okamžiku dokončí.
 
@@ -562,7 +649,7 @@ Tady je příklad, který ukazuje tento vzor:
 
 1. Vytvořte prázdnou aplikaci logiky a přidejte Trigger HTTP.
 
-1. Z konektoru SAP přidejte akci **Odeslat IDOC** . Zadejte podrobnosti pro IDOC, které jste odeslali do svého systému SAP.
+1. Z konektoru SAP přidejte akci **Odeslat IDOC** . Zadejte podrobnosti pro IDoc, které jste odeslali do svého systému SAP.
 
 1. Chcete-li explicitně potvrdit ID transakce v samostatném kroku, v poli **Potvrdit TID** vyberte možnost **ne**. Pro volitelné pole **GUID ID transakce** můžete buď ručně zadat hodnotu, nebo nechat konektor automaticky generovat a vrátit tento identifikátor GUID v odpovědi z akce Odeslat IDOC.
 
@@ -576,7 +663,7 @@ Tady je příklad, který ukazuje tento vzor:
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
-Tady jsou aktuálně známé problémy a omezení konektoru SAP:
+Tady jsou aktuálně známé problémy a omezení pro spravovaný konektor SAP (bez ISE):
 
 * Aktivační událost SAP nepodporuje clustery brány dat. V některých případech převzetí služeb při selhání se uzel brány dat, který komunikuje se systémem SAP, může lišit od aktivního uzlu, což vede k neočekávanému chování. Pro scénáře odeslání se podporují clustery služby data Gateway.
 

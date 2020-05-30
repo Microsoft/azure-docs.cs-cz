@@ -13,14 +13,15 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 34c790ee77c05e9e8c5a57a23e153bd9898c1cff
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 53bfe029038e9bf2a85cc8c571417be462fd4502
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045554"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188055"
 ---
-# <a name="troubleshooting-transient-connection-errors"></a>Řešení chyb přechodného připojení
+# <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Řešení chyb přechodného připojení v SQL Database a spravované instanci SQL
+
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 Tento článek popisuje, jak předejít, řešit a zmírnit chyby připojení a přechodné chyby, ke kterým dojde v klientské aplikaci, když komunikuje s Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics. Naučte se konfigurovat logiku opakování, sestavit připojovací řetězec a upravit další nastavení připojení.
@@ -29,7 +30,7 @@ Tento článek popisuje, jak předejít, řešit a zmírnit chyby připojení a 
 
 ## <a name="transient-errors-transient-faults"></a>Přechodné chyby (přechodné chyby)
 
-Přechodná chyba, známá také jako přechodná chyba, má základní příčinu, která se brzy vyřeší. Příležitostné příčiny přechodných chyb je, když systém Azure rychle posune hardwarové prostředky, aby lépe vyrovnal různé zatížení. Většina těchto událostí překonfigurace se dokončí za méně než 60 sekund. Během této doby rekonfigurace je možné, že budete mít problémy s připojením SQL Database. Aplikace, které se připojují k SQL Database by měly být sestavené tak, aby byly tyto přechodné chyby očekávané. Aby je bylo možné zpracovat, implementujte logiku opakování ve svém kódu namísto jejich zpřístupnění uživatelům jako chyby aplikace.
+Přechodná chyba, známá také jako přechodná chyba, má základní příčinu, která se brzy vyřeší. Příležitostné příčiny přechodných chyb je, když systém Azure rychle posune hardwarové prostředky, aby lépe vyrovnal různé zatížení. Většina těchto událostí překonfigurace se dokončí za méně než 60 sekund. Během této doby rekonfigurace může dojít k problémům s připojením k databázi v SQL Database. Aplikace, které se připojují k vaší databázi, by měly být sestavené tak, aby byly tyto přechodné chyby očekávat Aby je bylo možné zpracovat, implementujte logiku opakování ve svém kódu namísto jejich zpřístupnění uživatelům jako chyby aplikace.
 
 Pokud klientský program používá ADO.NET, váš program je o přechodné chybě vynásobený voláním **SqlException**.
 
@@ -37,13 +38,13 @@ Pokud klientský program používá ADO.NET, váš program je o přechodné chyb
 
 ### <a name="connection-vs-command"></a>Připojení vs. příkaz
 
-Opakujte pokus o připojení SQL nebo ho znovu vytvořte v závislosti na následujících případech:
+Opakujte pokus o SQL Database a připojení spravované instance SQL nebo ho znovu vytvořte podle následujících pokynů:
 
 - **Při pokusu o připojení dojde k přechodné chybě**
 
 Po prodlevě několik sekund zkuste připojení znovu.
 
-- **Při příkazu dotazu SQL dojde k přechodné chybě**
+- **K přechodné chybě dojde během SQL Database a příkazu dotazu Managed instance SQL.**
 
 Tento příkaz neprovádějte hned znovu. Místo toho se po zpoždění navažte navázání připojení. Pak zkuste příkaz zopakovat.
 
@@ -51,15 +52,15 @@ Tento příkaz neprovádějte hned znovu. Místo toho se po zpoždění navažte
 
 ## <a name="retry-logic-for-transient-errors"></a>Logika opakování pro přechodné chyby
 
-Klientské programy, které občas nastanou přechodnou chybu, jsou odolnější, pokud obsahují logiku opakování. Když váš program komunikuje s SQL Database prostřednictvím middlewaru třetí strany, požádejte dodavatele, zda middleware obsahuje logiku opakování pro přechodné chyby.
+Klientské programy, které občas nastanou přechodnou chybu, jsou odolnější, pokud obsahují logiku opakování. Když váš program komunikuje s vaší databází v SQL Database prostřednictvím middlewaru třetí strany, požádejte dodavatele, zda middleware obsahuje logiku opakování pro přechodné chyby.
 
 <a id="principles-for-retry" name="principles-for-retry"></a>
 
 ### <a name="principles-for-retry"></a>Principy pro opakování
 
 - Pokud je chyba přechodný, zkuste otevřít připojení znovu.
-- Neprovádějte přímý pokus o provedení `SELECT` příkazu SQL, u kterého došlo k přechodné chybě. Místo toho navažte nové připojení a potom zkuste operaci zopakovat `SELECT` .
-- Pokud příkaz SQL `UPDATE` selhává s přechodnou chybou, vytvořte nové připojení ještě před opakováním aktualizace. Logika opakování musí zajistit, že se buď celá transakce databáze dokončí, nebo že se celá transakce vrátí zpět.
+- Neprovádějte přímé opakování SQL Database nebo příkazu spravované instance SQL `SELECT` , který se nezdařil, došlo k přechodné chybě. Místo toho navažte nové připojení a potom zkuste operaci zopakovat `SELECT` .
+- Pokud se příkaz SQL Database nebo SQL Managed instance `UPDATE` nepovede s přechodovou chybou, vytvořte nové připojení ještě před opakováním aktualizace. Logika opakování musí zajistit, že se buď celá transakce databáze dokončí, nebo že se celá transakce vrátí zpět.
 
 ### <a name="other-considerations-for-retry"></a>Další požadavky pro opakování
 
@@ -78,8 +79,8 @@ Můžete také chtít nastavit maximální počet opakovaných pokusů, než se 
 
 Příklady kódu s logikou opakování jsou k dispozici v:
 
-- [Odolné připojení k SQL pomocí ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
-- [Odolné připojení k SQL pomocí PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
+- [Připojte se odolně k Azure SQL pomocí ADO.NET][step-4-connect-resiliently-to-sql-with-ado-net-a78n]
+- [Odolné připojení k Azure SQL pomocí PHP][step-4-connect-resiliently-to-sql-with-php-p42h]
 
 <a id="k-test-retry-logic" name="k-test-retry-logic"></a>
 
@@ -126,7 +127,7 @@ Aby byl tento test praktický, váš program rozpozná parametr modulu runtime, 
 
 ## <a name="net-sqlconnection-parameters-for-connection-retry"></a>Parametry .NET SqlConnection pro opakování připojení
 
-Pokud se klientský program připojuje k SQL Database pomocí .NET Framework třídy **System. data. SqlClient. SqlConnection**, použijte .NET 4.6.1 nebo novější (nebo .NET Core), abyste mohli použít funkci opakování připojení. Další informace o této funkci najdete na [této webové stránce](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection).
+Pokud se klientský program připojuje k vaší databázi v SQL Database pomocí .NET Framework třídy **System. data. SqlClient. SqlConnection**, použijte .NET 4.6.1 nebo novější (nebo .NET Core), abyste mohli použít funkci opakování připojení. Další informace o této funkci najdete na [této webové stránce](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection).
 
 <!--
 2015-11-30, FwLink 393996 points to dn632678.aspx, which links to a downloadable .docx related to SqlClient and SQL Server 2014.
@@ -159,13 +160,13 @@ Předpokládejme, že vaše aplikace má robustní vlastní logiku opakování. 
 
 <a id="a-connection-connection-string" name="a-connection-connection-string"></a>
 
-## <a name="connections-to-sql-database"></a>Připojení k SQL Database
+## <a name="connections-to-your-database-in-sql-database"></a>Připojení k databázi v SQL Database
 
 <a id="c-connection-string" name="c-connection-string"></a>
 
 ### <a name="connection-connection-string"></a>Připojení: připojovací řetězec
 
-Připojovací řetězec, který je potřeba pro připojení k SQL Database, se mírně liší od řetězce použitého pro připojení k SQL Server. Připojovací řetězec pro databázi můžete zkopírovat z [Azure Portal](https://portal.azure.com/).
+Připojovací řetězec, který je nezbytný pro připojení k vaší databázi, se mírně liší od řetězce použitého pro připojení k SQL Server. Připojovací řetězec pro databázi můžete zkopírovat z [Azure Portal](https://portal.azure.com/).
 
 [!INCLUDE [sql-database-include-connection-string-20-portalshots](../../../includes/sql-database-include-connection-string-20-portalshots.md)]
 
@@ -179,7 +180,7 @@ Pokud zapomenete nakonfigurovat IP adresu, váš program se nezdařil s užiteč
 
 [!INCLUDE [sql-database-include-ip-address-22-portal](../../../includes/sql-database-include-ip-address-22-v12portal.md)]
 
-Další informace najdete v tématu [Konfigurace nastavení brány firewall na SQL Database](firewall-configure.md).
+Další informace najdete v tématu [Konfigurace nastavení brány firewall v SQL Database](firewall-configure.md).
 <a id="c-connection-ports" name="c-connection-ports"></a>
 
 ### <a name="connection-ports"></a>Připojení: porty
@@ -193,7 +194,7 @@ Pokud je například klientský program hostovaný v počítači se systémem Wi
 
 Pokud je váš klientský program hostovaný na virtuálním počítači Azure (VM), přečtěte si [porty, které přesahují 1433 pro ADO.NET 4,5 a SQL Database](adonet-v12-develop-direct-route-ports.md).
 
-Základní informace o konfiguraci portů a IP adres Azure SQL Database najdete v tématu [Azure SQL Database firewall](firewall-configure.md).
+Základní informace o konfiguraci portů a IP adres ve vaší databázi najdete v tématu [Azure SQL Database firewall](firewall-configure.md).
 
 <a id="d-connection-ado-net-4-5" name="d-connection-ado-net-4-5"></a>
 
@@ -222,7 +223,7 @@ Pokud používáte ADO.NET 4,0 nebo starší, doporučujeme upgradovat na nejnov
 
 ### <a name="diagnostics-test-whether-utilities-can-connect"></a>Diagnostika: testování, zda se mohou nástroje připojit
 
-Pokud se programu nemůžete připojit k SQL Database, jedna z možností diagnostiky se pokusí připojit pomocí programu. V ideálním případě se nástroj připojuje pomocí stejné knihovny, kterou program používá.
+Pokud se programu nemůžete připojit k vaší databázi v SQL Database, jednou z možností diagnostiky je pokus o připojení pomocí programového programu. V ideálním případě se nástroj připojuje pomocí stejné knihovny, kterou program používá.
 
 Na jakémkoli počítači s Windows můžete vyzkoušet tyto nástroje:
 
@@ -242,7 +243,7 @@ V systému Linux mohou být užitečné následující nástroje:
 - `netstat -nap`
 - `nmap -sS -O 127.0.0.1`: Změňte ukázkovou hodnotu na vaši IP adresu.
 
-V systému Windows může být užitečný nástroj [PortQry. exe](https://www.microsoft.com/download/details.aspx?id=17148) . Tady je příklad spuštění, které se dotázalo na stav portu na SQL Database a který se spustil na přenosném počítači:
+V systému Windows může být užitečný nástroj [PortQry. exe](https://www.microsoft.com/download/details.aspx?id=17148) . Tady je příklad spuštění s dotazem na situaci, kdy se port nachází v databázi v SQL Database a který byl spuštěný na přenosném počítači:
 
 ```cmd
 [C:\Users\johndoe\]
@@ -276,7 +277,7 @@ Enterprise Library 6 (EntLib60) nabízí pro pomoc s protokolováním spravovan�
 
 Tady jsou některé příkazy SELECT jazyka Transact-SQL, které dotazují protokoly chyb a další informace.
 
-| Dotaz na protokol | Description |
+| Dotaz na protokol | Popis |
 |:--- |:--- |
 | `SELECT e.*`<br/>`FROM sys.event_log AS e`<br/>`WHERE e.database_name = 'myDbName'`<br/>`AND e.event_category = 'connectivity'`<br/>`AND 2 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, e.end_time, GetUtcDate())`<br/>`ORDER BY e.event_category,`<br/>&nbsp;&nbsp;`e.event_type, e.end_time;` |Zobrazení [Sys. event_log](https://msdn.microsoft.com/library/dn270018.aspx) nabízí informace o jednotlivých událostech, které obsahují některé, které mohou způsobit přechodné chyby nebo selhání připojení.<br/><br/>V ideálním případě můžete sladit **start_time** nebo **end_time** hodnoty informacemi o tom, kdy došlo k potížím s klientským programem.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
 | `SELECT c.*`<br/>`FROM sys.database_connection_stats AS c`<br/>`WHERE c.database_name = 'myDbName'`<br/>`AND 24 >= DateDiff`<br/>&nbsp;&nbsp;`(hour, c.end_time, GetUtcDate())`<br/>`ORDER BY c.end_time;` |Zobrazení [Sys. database_connection_stats](https://msdn.microsoft.com/library/dn269986.aspx) nabízí agregované počty typů událostí pro další diagnostiku.<br/><br/>Chcete-li spustit tento dotaz, je nutné se připojit k *Hlavní* databázi. |
@@ -326,7 +327,7 @@ database_xml_deadlock_report  2015-10-16 20:28:01.0090000  NULL   NULL   NULL   
 
 ## <a name="enterprise-library-6"></a>Enterprise Library 6
 
-Enterprise Library 6 (EntLib60) je architektura tříd .NET, která pomáhá implementovat robustní klienty Cloud Services, z nichž jeden je služba SQL Database. Témata vyhrazená pro jednotlivé oblasti, ve kterých může EntLib60 pomoct, najdete v tématu [Enterprise Library 6. dubna 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
+Enterprise Library 6 (EntLib60) je architektura tříd .NET, která pomáhá implementovat robustní klienty Cloud Services, z nichž jeden je SQL Database. Témata vyhrazená pro jednotlivé oblasti, ve kterých může EntLib60 pomoct, najdete v tématu [Enterprise Library 6. dubna 2013](https://msdn.microsoft.com/library/dn169621%28v=pandp.60%29.aspx).
 
 Logika opakování pro zpracování přechodných chyb je jednou z oblastí, ve které může EntLib60 pomoct. Další informace najdete v tématu [4 – Perseverance, tajný kód všech triumphs: použijte blok aplikace pro zpracování přechodného selhání](https://msdn.microsoft.com/library/dn440719%28v=pandp.60%29.aspx).
 

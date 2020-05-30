@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: 2c7cad2dfdcd55073a1cf09d79e5223b666ced5f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a8b1c53a5c060f2124a36b69365bdd9b62896b56
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478150"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220961"
 ---
 # <a name="custom-script-extension-for-windows"></a>Rozšíření vlastních skriptů pro virtuální počítače
 
@@ -30,7 +30,17 @@ Tento dokument popisuje, jak používat rozšíření vlastních skriptů pomoc�
 
 ### <a name="operating-system"></a>Operační systém
 
-Rozšíření vlastních skriptů pro Windows se spustí v podporovaném rozšíření OSs s rozšířením. Další informace najdete v tématu [podporované operační systémy rozšíření Azure](https://support.microsoft.com/help/4078134/azure-extension-supported-operating-systems).
+Rozšíření vlastních skriptů pro Windows se spustí v podporovaném rozšíření OSs s rozšířením.
+### <a name="windows"></a>Windows
+
+* Windows Server 2008 R2
+* Windows Server 2012
+* Windows Server 2012 R2
+* Windows 10
+* Windows Server 2016
+* Windows Server 2016 Core
+* Windows Server 2019
+* Windows Server 2019 Core
 
 ### <a name="script-location"></a>Umístění skriptu
 
@@ -114,7 +124,7 @@ Tyto položky by měly být považovány za citlivá data a specifikována v kon
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft.Compute | řetězec |
-| type | CustomScriptExtension | řetězec |
+| typ | CustomScriptExtension | řetězec |
 | typeHandlerVersion | 1.10 | int |
 | Identifikátory URI (např.) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | pole |
 | časové razítko (např.) | 123456789 | 32-bitové celé číslo |
@@ -211,7 +221,7 @@ Set-AzVMCustomScriptExtension -ResourceGroupName <resourceGroupName> `
 
 ### <a name="using-multiple-scripts"></a>Používání více skriptů
 
-V tomto příkladu máte tři skripty, které se používají k sestavení serveru. **CommandToExecute** volá první skript, potom máte možnosti, jak jsou voláni ostatními. Můžete mít například hlavní skript, který řídí provádění, se správným zpracováním chyb, protokolováním a správou stavu. Skripty se stáhnou do místního počítače, aby je bylo možné spustit. Například `1_Add_Tools.ps1` byste `2_Add_Features.ps1` volali přidání `.\2_Add_Features.ps1` do skriptu a tento postup opakujte pro ostatní skripty, které definujete v. `$settings`
+V tomto příkladu máte tři skripty, které se používají k sestavení serveru. **CommandToExecute** volá první skript, potom máte možnosti, jak jsou voláni ostatními. Můžete mít například hlavní skript, který řídí provádění, se správným zpracováním chyb, protokolováním a správou stavu. Skripty se stáhnou do místního počítače, aby je bylo možné spustit. Například `1_Add_Tools.ps1` byste volali `2_Add_Features.ps1` Přidání `.\2_Add_Features.ps1` do skriptu a tento postup opakujte pro ostatní skripty, které definujete v `$settings` .
 
 ```powershell
 $fileUri = @("https://xxxxxxx.blob.core.windows.net/buildServer1/1_Add_Tools.ps1",
@@ -328,9 +338,9 @@ Zadané soubory jsou staženy do následující složky v cílovém virtuálním
 C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.*\Downloads\<n>
 ```
 
-kde `<n>` je desítkové celé číslo, které se může změnit mezi spouštěním rozšíření.  `1.*` Hodnota odpovídá skutečné aktuální `typeHandlerVersion` hodnotě rozšíření.  Například skutečný adresář může být `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2`.  
+kde `<n>` je desítkové celé číslo, které se může změnit mezi spouštěním rozšíření.  `1.*`Hodnota odpovídá skutečné aktuální `typeHandlerVersion` hodnotě rozšíření.  Například skutečný adresář může být `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\1.8\Downloads\2` .  
 
-Při provádění `commandToExecute` příkazu rozšíření nastaví tento adresář (například `...\Downloads\2`) jako aktuální pracovní adresář. Tento proces umožňuje použití relativních cest k vyhledání souborů stažených prostřednictvím `fileURIs` vlastnosti. Příklady najdete v následující tabulce.
+Při provádění `commandToExecute` příkazu rozšíření nastaví tento adresář (například `...\Downloads\2` ) jako aktuální pracovní adresář. Tento proces umožňuje použití relativních cest k vyhledání souborů stažených prostřednictvím `fileURIs` Vlastnosti. Příklady najdete v následující tabulce.
 
 Vzhledem k tomu, že absolutní cesta ke stažení se může v průběhu času lišit, je lepší vyjádřit výslovný souhlas s relativními cestami Script/File v `commandToExecute` řetězci, kdykoli je to možné. Příklad:
 
@@ -338,7 +348,7 @@ Vzhledem k tomu, že absolutní cesta ke stažení se může v průběhu času l
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
 ```
 
-Informace o cestě po prvním segmentu URI se uchovávají pro soubory stažené přes seznam `fileUris` vlastností.  Jak je znázorněno v následující tabulce, stažené soubory jsou namapovány na podadresáře ke stažení `fileUris` , aby odrážely strukturu hodnot.  
+Informace o cestě po prvním segmentu URI se uchovávají pro soubory stažené přes `fileUris` seznam vlastností.  Jak je znázorněno v následující tabulce, stažené soubory jsou namapovány na podadresáře ke stažení, aby odrážely strukturu `fileUris` hodnot.  
 
 #### <a name="examples-of-downloaded-files"></a>Příklady stažených souborů
 

@@ -9,12 +9,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: 3a3d3b990c750e96b840676097bb3677606bf68b
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b8bd471c5fd5346fcc7e95b9afb49e833e7c6384
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118353"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187276"
 ---
 # <a name="azure-data-factory-faq"></a>Nejčastější dotazy ke službě Azure Data Factory
 
@@ -87,7 +87,7 @@ Od počáteční verze Public Preview v 2017 Data Factory přidali následujíc�
 -    Elastický fond
 -    Podpora pro Azure Resource Manager virtuální sítě nad klasickými virtuálními sítěmi, která se v budoucnu už nepoužívá, umožňuje vložit nebo připojit Azure-SSIS Integration runtime k virtuální síti nakonfigurované pro SQL Database pomocí koncových bodů služby virtuální sítě/MI/místních přístupových dat. Další informace najdete v tématu [připojení prostředí Azure-SSIS Integration runtime k virtuální síti](join-azure-ssis-integration-runtime-virtual-network.md).
 -    Podpora ověřování pomocí Azure Active Directory (Azure AD) a ověřování SQL pro připojení k SSISDB, povolení ověřování Azure AD s vaší Data Factory spravovanou identitou pro prostředky Azure
--    Podpora pro uvedení vlastní místní licence SQL Server k získání výrazné úspory nákladů z možnosti Zvýhodněné hybridní využití Azure
+-    Podpora pro uvedení stávající licence SQL Server k získání výrazné úspory nákladů z možnosti Zvýhodněné hybridní využití Azure
 -    Podpora Enterprise Edition prostředí Azure-SSIS Integration runtime, které umožňuje používat pokročilé a prémiové funkce, vlastní instalační rozhraní pro instalaci dalších komponent a rozšíření a partnerský ekosystém. Další informace najdete [v tématu edice Enterprise Edition, Custom Setup a rozšíření třetích stran pro SSIS v ADF](https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/). 
 -    Hlubší integrace SSIS v Data Factory, která vám umožní vyvolat nebo aktivovat aktivity balíčku SSIS na první úrovni v kanálu Data Factory a naplánovat je prostřednictvím SSMS. Další informace najdete v tématu [modernizovat a rozšiřování pracovních postupů ETL/ELT s aktivitami SSIS v kanálech ADF](https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/).
 
@@ -126,10 +126,10 @@ Propojené služby jsou velmi podobné připojovacím řetězcům, které definu
 
 Propojené služby mají dva účely v Data Factory:
 
-- Představuje *úložiště dat* , které zahrnuje, ale není omezené na místní instanci SQL Server, instanci databáze Oracle, sdílenou složku nebo účet úložiště objektů BLOB v Azure. Seznam podporovaných úložišť dat najdete [v tématu aktivita kopírování v Azure Data Factory](copy-activity-overview.md).
+- Představuje *úložiště dat* , které zahrnuje, ale není omezené na, instance SQL Server, instanci databáze Oracle, sdílenou složku nebo účet úložiště objektů BLOB v Azure. Seznam podporovaných úložišť dat najdete [v tématu aktivita kopírování v Azure Data Factory](copy-activity-overview.md).
 - Představují *výpočetní prostředek*, který může hostovat provádění aktivity. Například aktivita podregistru HDInsight běží v clusteru HDInsight Hadoop. Seznam aktivit transformace a podporovaných výpočetních prostředí najdete v tématu [transformace dat v Azure Data Factory](transform-data.md).
 
-### <a name="triggers"></a>Aktivační události
+### <a name="triggers"></a>Aktivační procedury
 Triggery reprezentují jednotky zpracování, které určují, kdy se spustí spuštění kanálu. Pro různé typy událostí existují různé typy aktivačních událostí. 
 
 ### <a name="pipeline-runs"></a>Spuštění kanálu
@@ -171,13 +171,13 @@ K naplánování kanálu můžete použít aktivační událost plánovače nebo
 Ano, parametry jsou první třídou, koncept nejvyšší úrovně v Data Factory. Můžete definovat parametry na úrovni kanálu a předat argumenty při spuštění kanálu na vyžádání nebo pomocí triggeru.  
 
 ### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>Můžu definovat výchozí hodnoty pro parametry kanálu? 
-Yes. Můžete definovat výchozí hodnoty pro parametry v kanálech. 
+Ano. Můžete definovat výchozí hodnoty pro parametry v kanálech. 
 
 ### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Může aktivita v kanálu spotřebovat argumenty, které se předávají do spuštění kanálu? 
-Yes. Každá aktivita v kanálu může spotřebovat hodnotu parametru, která je předána kanálu a spouštěna s `@parameter` konstrukcí. 
+Ano. Každá aktivita v kanálu může spotřebovat hodnotu parametru, která je předána kanálu a spouštěna s `@parameter` konstrukcí. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Je možné vlastnost výstup aktivity spotřebovat v jiné aktivitě? 
-Yes. Výstup aktivity lze spotřebovat v následné aktivitě s `@activity` konstrukcí.
+Ano. Výstup aktivity lze spotřebovat v následné aktivitě s `@activity` konstrukcí.
  
 ### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Návody řádně zpracovat hodnoty null ve výstupu aktivity? 
 `@coalesce`Konstrukce ve výrazech slouží k řádnému zpracování hodnot null. 

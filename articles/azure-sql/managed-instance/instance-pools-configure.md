@@ -12,17 +12,17 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: c781e23b23f5dbaf8eba9efe4c27428ef35c7be1
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 9b59f6e091143e5c10be393620e4cc042faac36a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113633"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216378"
 ---
-# <a name="deploy-an-azure-sql-managed-instance-to-an-instance-pool"></a>Nasazení spravované instance Azure SQL do fondu instancí
+# <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Nasazení spravované instance Azure SQL do fondu instancí
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Tento článek poskytuje podrobné informace o tom, jak vytvořit [fondy instancí](instance-pools-overview.md) a nasadit na ni spravovanou instanci Azure SQL. 
+Tento článek poskytuje podrobné informace o tom, jak vytvořit [fond instancí](instance-pools-overview.md) a nasadit do něj spravovanou instanci Azure SQL. 
 
 ## <a name="instance-pool-operations"></a>Operace fondu instancí
 
@@ -30,20 +30,20 @@ V následující tabulce jsou uvedeny dostupné operace týkající se fondů in
 
 |Příkaz|portál Azure|PowerShell|
 |:---|:---|:---|
-|Vytvoření fondu instancí|Ne|Ano|
-|Aktualizovat fond instancí (omezený počet vlastností)|Ne |Ano |
-|Zkontroluje využití fondu instancí a vlastnosti.|Ne|Ano |
-|Odstranit fond instancí|Ne|Ano|
-|Vytvoření spravované instance SQL uvnitř fondu instancí|Ne|Ano|
-|Aktualizovat využití prostředku spravované instance SQL|Ano |Ano|
-|Zkontroluje využití a vlastnosti spravované instance SQL.|Ano|Ano|
-|Odstranit spravovanou instanci SQL z fondu|Ano|Ano|
+|Vytvoření fondu instancí|No|Ano|
+|Aktualizace fondu instancí (omezený počet vlastností)|No |Ano |
+|Ověření využití fondu instancí a vlastností|No|Ano |
+|Odstranění fondu instancí|No|Ano|
+|Vytvoření spravované instance v rámci fondu instancí|No|Ano|
+|Aktualizace využití prostředků pro spravovanou instanci|Ano |Ano|
+|Zkontroluje využití a vlastnosti spravované instance.|Ano|Ano|
+|Odstranění spravované instance z fondu|Ano|Ano|
 |Vytvoření databáze v instanci v rámci fondu|Ano|Ano|
 |Odstranění databáze z spravované instance SQL|Ano|Ano|
 
-Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/)
+Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershell/module/az.sql/):
 
-|Rutina |Description |
+|Rutina |Popis |
 |:---|:---|
 |[New-AzSqlInstancePool](/powershell/module/az.sql/new-azsqlinstancepool/) | Vytvoří fond spravovaných instancí SQL. |
 |[Get-AzSqlInstancePool](/powershell/module/az.sql/get-azsqlinstancepool/) | Vrátí informace o fondu instancí. |
@@ -58,13 +58,13 @@ V případě operací souvisejících s instancemi v rámci fondů i s jednou in
 
 ## <a name="deployment-process"></a>Proces nasazení
 
-Chcete-li nasadit spravovanou instanci SQL do fondu instancí, je nutné nejprve nasadit fond instancí, což je jednorázová dlouhotrvající operace, která je stejná jako při nasazení [jedné instance vytvořené v prázdné podsíti](sql-managed-instance-paas-overview.md#management-operations). Potom můžete nasadit spravované instance SQL do fondu, což je poměrně rychlá operace, která obvykle trvá až pět minut. Parametr fondu instancí se musí explicitně zadat jako součást této operace.
+Pokud chcete nasadit spravovanou instanci do fondu instancí, musíte nejdřív nasadit fond instancí, což je jednorázová dlouhotrvající operace, která je stejná jako při nasazení [jedné instance vytvořené v prázdné podsíti](sql-managed-instance-paas-overview.md#management-operations). Potom můžete nasadit spravovanou instanci do fondu, což je poměrně rychlá operace, která obvykle trvá až pět minut. Parametr fondu instancí se musí explicitně zadat jako součást této operace.
 
-Ve verzi Public Preview se obě akce podporují jenom pomocí PowerShellu a Správce prostředků šablon. Prostředí Azure Portal není aktuálně k dispozici.
+Ve verzi Public Preview se obě akce podporují jenom pomocí PowerShellu a Azure Resource Manager šablon. Prostředí Azure Portal není aktuálně k dispozici.
 
-Po nasazení spravované instance SQL do fondu *můžete* použít Azure Portal ke změně jejích vlastností na stránce s cenovou úrovní.
+Po nasazení spravované instance do fondu *můžete* použít Azure Portal ke změně jejích vlastností na stránce s cenovou úrovní.
 
-## <a name="create-virtual-network-with-a-subnet"></a>Vytvoření virtuální sítě s podsítí 
+## <a name="create-a-virtual-network-with-a-subnet"></a>Vytvoření virtuální sítě s podsítí 
 
 Chcete-li umístit více fondů instancí do stejné virtuální sítě, přečtěte si následující články:
 
@@ -72,7 +72,7 @@ Chcete-li umístit více fondů instancí do stejné virtuální sítě, přečt
 - Vytvořte novou virtuální síť a podsíť pomocí [šablony Azure Portal](virtual-network-subnet-create-arm-template.md) nebo postupujte podle pokynů pro [přípravu existující virtuální sítě](vnet-existing-add-subnet.md).
  
 
-## <a name="create-instance-pool"></a>Vytvoření fondu instancí 
+## <a name="create-an-instance-pool"></a>Vytvoření fondu instancí 
 
 Po dokončení předchozích kroků jste připraveni vytvořit fond instancí.
 
@@ -80,7 +80,7 @@ Následující omezení platí pro fondy instancí:
 
 - Ve verzi Public Preview jsou k dispozici pouze Pro obecné účely a Gen5.
 - Název fondu může obsahovat jenom malá písmena, číslice a spojovníky a nemůže začínat spojovníkem.
-- Pokud chcete použít AHB (Zvýhodněné hybridní využití Azure), použije se na úrovni fondu instancí. Typ licence můžete nastavit během vytváření fondu nebo ho aktualizovat kdykoli po vytvoření.
+- Pokud chcete použít Zvýhodněné hybridní využití Azure, použije se na úrovni fondu instancí. Typ licence můžete nastavit během vytváření fondu nebo ho aktualizovat kdykoli po vytvoření.
 
 > [!IMPORTANT]
 > Nasazení fondu instancí je dlouhodobě běžící operace, která trvá přibližně 4,5 hodin.
@@ -109,11 +109,11 @@ $instancePool = New-AzSqlInstancePool `
 > [!IMPORTANT]
 > Vzhledem k tomu, že nasazení fondu instancí je dlouhodobá operace, je třeba počkat na jeho dokončení, než spustíte některý z následujících kroků v tomto článku.
 
-## <a name="create-sql-managed-instance"></a>Vytvoření spravované instance SQL
+## <a name="create-a-managed-instance"></a>Vytvoření spravované instance
 
-Po úspěšném nasazení fondu instancí je čas vytvořit v něm spravovanou instanci SQL.
+Po úspěšném nasazení fondu instancí je čas vytvořit spravovanou instanci uvnitř ní.
 
-Chcete-li vytvořit spravovanou instanci SQL, spusťte následující příkaz:
+Chcete-li vytvořit spravovanou instanci, spusťte následující příkaz:
 
 ```powershell
 $instanceOne = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 2 -StorageSizeInGB 256
@@ -127,9 +127,9 @@ $instanceTwo = $instancePool | New-AzSqlInstance -Name "mi-pool-name" -VCore 4 -
 
 ## <a name="create-a-database"></a>Vytvoření databáze 
 
-Chcete-li vytvářet a spravovat databáze ve spravované instanci SQL, která je uvnitř fondu, použijte příkazy s jedinou instancí.
+Pokud chcete vytvářet a spravovat databáze ve spravované instanci, která je uvnitř fondu, použijte příkazy s jedinou instancí.
 
-Vytvoření databáze v rámci spravované instance SQL:
+Vytvoření databáze uvnitř spravované instance:
 
 ```powershell
 $poolinstancedb = New-AzSqlInstanceDatabase -Name "mipooldb1" -InstanceName "poolmi-001" -ResourceGroupName "myResourceGroup"
@@ -172,8 +172,8 @@ $databases = Get-AzSqlInstanceDatabase -InstanceName "pool-mi-001" -ResourceGrou
 ## <a name="scale"></a>Měřítko 
 
 
-Po naplnění spravované instance SQL databázemi můžete vyhodnotit omezení pro instance týkající se úložiště nebo výkonu. V takovém případě, pokud se využití fondu nepřekročilo, můžete škálovat instanci.
-Škálování spravované instance SQL uvnitř fondu je operace, která trvá několik minut. Předpoklad pro škálování je dostupný virtuální jádra a Storage na úrovni fondu instancí.
+Po naplnění spravované instance databázemi můžete vyhodnotit omezení pro instance týkající se úložiště nebo výkonu. V takovém případě, pokud se využití fondu nepřekročilo, můžete škálovat instanci.
+Škálování spravované instance v rámci fondu je operace, která trvá několik minut. Předpoklad pro škálování je dostupný virtuální jádra a Storage na úrovni fondu instancí.
 
 Aktualizace počtu virtuální jádra a velikosti úložiště:
 
@@ -190,14 +190,14 @@ $instance | Set-AzSqlInstance -StorageSizeInGB 1024 -InstancePoolName "mi-pool-n
 
 ## <a name="connect"></a>Připojit 
 
-Pokud se chcete připojit ke spravované instanci SQL ve fondu, vyžadují se tyto dva kroky:
+Pokud se chcete připojit ke spravované instanci ve fondu, vyžadují se tyto dva kroky:
 
-1. [Povolte pro instanci veřejný koncový bod](#enable-public-endpoint).
+1. [Povolte pro instanci veřejný koncový bod](#enable-the-public-endpoint).
 2. [Přidat příchozí pravidlo do skupiny zabezpečení sítě (NSG)](#add-an-inbound-rule-to-the-network-security-group).
 
 Po dokončení obou kroků se můžete připojit k instanci pomocí veřejné adresy koncového bodu, portu a přihlašovacích údajů zadaných během vytváření instance. 
 
-### <a name="enable-public-endpoint"></a>Povolit veřejný koncový bod
+### <a name="enable-the-public-endpoint"></a>Povolení veřejného koncového bodu
 
 Povolení veřejného koncového bodu pro instanci lze provést prostřednictvím Azure Portal nebo pomocí následujícího příkazu prostředí PowerShell:
 
@@ -215,7 +215,7 @@ Tento krok se dá provést pomocí Azure Portal nebo pomocí příkazů PowerShe
 Podrobnosti najdete v tématu [povolení provozu veřejného koncového bodu ve skupině zabezpečení sítě](public-endpoint-configure.md#allow-public-endpoint-traffic-on-the-network-security-group).
 
 
-## <a name="move-existing-single-instance-to-pool"></a>Přesunout existující jednu instanci do fondu
+## <a name="move-an-existing-single-instance-to-a-pool"></a>Přesunutí existující jedné instance do fondu
  
 Přesunutí instancí do fondu a ven je jedním z omezení verze Public Preview. Alternativní řešení využívá obnovení databází k určitému bodu v čase z instance mimo fond do instance, která je již ve fondu. 
 
@@ -225,7 +225,7 @@ Tento proces může mít dobu výpadku.
 
 Přesunutí stávajících databází:
 
-1. Pozastaví úlohy na spravované instanci SQL, ze které migrujete.
+1. Pozastaví úlohy na spravované instanci, ze které migrujete.
 2. Vygenerujte skripty pro vytváření systémových databází a proveďte je v instanci, která je uvnitř fondu instancí.
 3. Proveďte obnovení jednotlivých databází z jedné instance do instance fondu v čase.
 
@@ -248,7 +248,7 @@ Přesunutí stávajících databází:
       -TargetInstanceName $targetInstanceName
     ```
 
-4. Nasměrujte svoji aplikaci na novou instanci a obnovte její úlohy.
+4. Nasměrujte aplikaci na novou instanci a obnovte její úlohy.
 
 Pokud existuje více databází, opakujte tento postup pro každou databázi.
 
@@ -257,7 +257,7 @@ Pokud existuje více databází, opakujte tento postup pro každou databázi.
 
 - Seznam funkcí a porovnání najdete v tématu věnovaném [běžným funkcím SQL](../database/features-comparison.md).
 - Další informace o konfiguraci virtuální sítě najdete v tématu [Konfigurace virtuální sítě spravované instance SQL](connectivity-architecture-overview.md).
-- Pro rychlý Start, který vytváří spravovanou instanci a obnovuje databázi ze záložního souboru, najdete v tématu [Vytvoření spravované instance SQL](instance-create-quickstart.md).
-- Kurz pro migraci pomocí Azure Database Migration Service (DMS) najdete v tématu [migrace spravované instance SQL pomocí DMS](../../dms/tutorial-sql-server-to-managed-instance.md).
+- Pro rychlý Start, který vytváří spravovanou instanci a obnovuje databázi ze záložního souboru, najdete v tématu [Vytvoření spravované instance](instance-create-quickstart.md).
+- Kurz týkající se použití Azure Database Migration Service k migraci najdete v tématu [migrace spravované instance SQL pomocí Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md).
 - Informace o pokročilém monitorování výkonu databáze spravované instance SQL s integrovanými funkcemi pro řešení potíží najdete v tématu [monitorování spravované instance Azure SQL pomocí Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md).
 - Informace o cenách najdete v tématu [ceny za spravované instance SQL](https://azure.microsoft.com/pricing/details/sql-database/managed/).

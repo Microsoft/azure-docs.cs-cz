@@ -6,69 +6,74 @@ ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
 ms.workload: identity
-ms.date: 11/21/2019
+ms.date: 05/28/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 915675af1e646f2cb77e36c0018ed372ff9496fc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: contperfq4
+ms.openlocfilehash: 781d8b89dd1b7fa6b2ed9707f6d4c485b4abdf20
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263228"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220606"
 ---
-# <a name="what-is-the-location-condition-in-azure-active-directory-conditional-access"></a>Jaká je podmínka umístění v Azure Active Directory podmíněný přístup? 
+# <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Použití podmínky umístění v zásadách podmíněného přístupu 
 
-Pomocí [podmíněného přístupu Azure Active Directory (Azure AD)](../active-directory-conditional-access-azure-portal.md)můžete řídit, jak můžou autorizovaní uživatelé přistupovat k vašim cloudovým aplikacím. Podmínka umístění zásad podmíněného přístupu umožňuje propojení nastavení řízení přístupu k síťovým umístěním vašich uživatelů.
+Jak je vysvětleno v [článku](overview.md) zásady podmíněného přístupu, jsou na nejvyšší úrovni základní příkazy if-then kombinující signály, jejich rozhodování a prosazování zásad organizace. Jedním z těchto signálů, které je možné začlenit do procesu rozhodování, je umístění v síti.
 
-Tento článek poskytuje informace, které potřebujete ke konfiguraci podmínky umístění.
+![Koncepční podmíněný signál plus rozhodnutí pro získání vynucování](./media/location-condition/conditional-access-signal-decision-enforcement.png)
 
-## <a name="locations"></a>Umístění
-
-Azure AD umožňuje jednotné přihlašování k zařízením, aplikacím a službám odkudkoli na veřejném Internetu. V případě podmínky umístění můžete řídit přístup k vašim cloudovým aplikacím na základě síťového umístění uživatele. Běžné případy použití pro podmínku umístění:
+Organizace můžou použít toto síťové umístění pro běžné úkoly, jako je: 
 
 - Vyžadování služby Multi-Factor Authentication pro uživatele, kteří přistupují ke službě, když jsou mimo podnikovou síť.
 - Blokování přístupu pro uživatele, kteří přistupují ke službě z určitých zemí nebo oblastí.
 
-Umístění je popisek pro síťové umístění, které buď představuje pojmenované umístění nebo důvěryhodné IP adresy služby Multi-Factor Authentication.
+Umístění v síti je určené veřejnou IP adresou, kterou klient poskytuje Azure Active Directory. Zásady podmíněného přístupu se ve výchozím nastavení vztahují na všechny adresy IPv4 a IPv6. 
+
+> [!TIP]
+> Rozsahy IPV6 se podporují jenom v rozhraní **[pojmenované umístění (Preview)](#preview-features)** . 
 
 ## <a name="named-locations"></a>Pojmenovaná umístění
 
-Pomocí pojmenovaných umístění můžete vytvořit logická seskupení rozsahů IP adres nebo zemí a oblastí.
+Umístění jsou určena v Azure Portal v části **Azure Active Directory**  >  **zabezpečení**  >  **podmíněného přístupu**  >  **s názvem umístění**. Tato umístění v síti můžou zahrnovat umístění, jako jsou například rozsahy sítě ústředí organizace, rozsahy sítě VPN nebo rozsahy, které chcete blokovat. 
 
-K pojmenovaným umístěním se dostanete v části **Správa** na stránce podmíněný přístup.
+![Pojmenovaná umístění v Azure Portal](./media/location-condition/new-named-location.png)
 
-![Pojmenovaná umístění v podmíněném přístupu](./media/location-condition/02.png)
-
-Pojmenované umístění má následující komponenty:
-
-![Vytvořit nové pojmenované umístění](./media/location-condition/42.png)
-
-- **Name** – zobrazovaný název pojmenovaného umístění.
-- **Rozsahy IP** adres – jeden nebo víc rozsahů IPv4 adres ve formátu CIDR. Zadání rozsahu IPv6 adres se nepodporuje.
-
-   > [!NOTE]
-   > Rozsahy IPv6 adres se aktuálně nedají zahrnout do pojmenovaného umístění. To znamená, že rozsahy IPv6 nelze vyloučit ze zásady podmíněného přístupu.
-
-- **Označit jako důvěryhodné umístění** – příznak, který můžete nastavit pro pojmenované umístění k označení důvěryhodného umístění. Obvykle jsou důvěryhodná umístění síťová oblast, která je řízena vaším IT oddělením. Kromě podmíněného přístupu jsou důvěryhodná pojmenovaná umístění používána také v sestavách Azure Identity Protection a Azure AD k omezení [falešně pozitivních](../reports-monitoring/concept-risk-events.md#impossible-travel-to-atypical-locations-1)událostí.
-- **Země nebo oblasti** – Tato možnost umožňuje vybrat jednu nebo více zemí nebo oblastí k definování pojmenovaného umístění.
-- **Zahrnout neznámé oblasti** – některé IP adresy nejsou namapované na konkrétní zemi nebo oblast. Tato možnost umožňuje zvolit, jestli se mají tyto IP adresy zahrnout do pojmenovaného umístění. Toto nastavení použijte, pokud se zásada používající pojmenované umístění má vztahovat na neznámá umístění.
+Pokud chcete nakonfigurovat umístění, budete muset zadat aspoň **název** a rozsah IP adres. 
 
 Počet pojmenovaných umístění, která můžete konfigurovat, se omezuje na velikost souvisejícího objektu ve službě Azure AD. Umístění můžete nakonfigurovat na základě následujících omezení:
 
-- Jedno pojmenované umístění s rozsahem IP adres až 1200.
+- Jedno pojmenované umístění s až 1200 rozsahy IPv4 adres.
 - Do každé z nich se přiřadí maximálně 90 pojmenovaných umístění s jedním rozsahem IP adres.
 
-Zásady podmíněného přístupu se vztahují na přenosy IPv4 a IPv6. Aktuálně pojmenovaná umístění neumožňují konfigurovat rozsahy IPv6. Toto omezení způsobuje následující situace:
+> [!TIP]
+> Rozsahy IPV6 se podporují jenom v rozhraní **[pojmenované umístění (Preview)](#preview-features)** . 
 
-- Zásady podmíněného přístupu se nedají cílit na konkrétní rozsahy IPv6.
-- Zásady podmíněného přístupu nemůžou vyloučit konkrétní rozsahy IPV6.
+### <a name="trusted-locations"></a>Důvěryhodná umístění
 
-Pokud je zásada nakonfigurovaná tak, aby se nastavila na jakékoli místo, bude se vztahovat na přenosy IPv4 a IPv6. Pojmenovaná umístění konfigurovaná pro zadané země a oblasti podporují pouze adresy IPv4. Přenos IPv6 je zahrnutý jenom v případě, že je vybraná možnost zahrnout neznámé oblasti.
+Při vytváření síťového umístění má správce možnost označit umístění jako důvěryhodné umístění. 
 
-## <a name="trusted-ips"></a>Důvěryhodné IP adresy
+![Důvěryhodná umístění v Azure Portal](./media/location-condition/new-trusted-location.png)
+
+Tato možnost může být v rámci zásad podmíněného přístupu, kde můžete například vyžadovat registraci služby Multi-Factor Authentication z důvěryhodného umístění v síti. V důsledku toho také vzAzure AD Identity Protection výpočet rizika, což snižuje riziko přihlašování uživatelů, když přichází z místa označeného jako důvěryhodné.
+
+### <a name="countries-and-regions"></a>Země a oblasti
+
+Některé organizace se můžou rozhodnout definovat celé země nebo regiony hranice IP adres jako pojmenovaná umístění pro zásady podmíněného přístupu. Můžou tato umístění používat při blokování zbytečných přenosů, když ví, že platní uživatelé nebudou nikdy přijít z místa, jako je Severní Korea. Tato mapování IP adres na zemi se pravidelně aktualizují. 
+
+> [!NOTE]
+> Země neobsahují rozsahy IPv6 adres, jenom známé rozsahy IPv4 adres.
+
+![Vytvořit nové umístění na základě země nebo oblasti v Azure Portal](./media/location-condition/new-named-location-country-region.png)
+
+#### <a name="include-unknown-areas"></a>Zahrnout neznámé oblasti
+
+Některé IP adresy nejsou namapované na konkrétní zemi nebo oblast. Pokud chcete zachytit tato umístění IP adres, zaškrtněte políčko při definování umístění **Zahrnout neznámé oblasti** . Tato možnost umožňuje zvolit, jestli se mají tyto IP adresy zahrnout do pojmenovaného umístění. Toto nastavení použijte, pokud se zásada používající pojmenované umístění má vztahovat na neznámá umístění.
+
+### <a name="configure-mfa-trusted-ips"></a>Konfigurace důvěryhodných IP adres MFA
 
 V [nastavení služby Multi-Factor Authentication Service](https://account.activedirectory.windowsazure.com/usermanagement/mfasettings.aspx)můžete také nakonfigurovat rozsahy IP adres reprezentující místní intranet vaší organizace. Tato funkce vám umožní nakonfigurovat až 50 rozsahů IP adres. Rozsahy IP adres jsou ve formátu CIDR. Další informace najdete v tématu [důvěryhodné IP adresy](../authentication/howto-mfa-mfasettings.md#trusted-ips).  
 
@@ -83,19 +88,44 @@ Po zaškrtnutí této možnosti, včetně pojmenovaného umístění, **důvěry
 U mobilních a desktopových aplikací, které mají dlouhodobé životnosti relací, se podmíněný přístup pravidelně znovu vyhodnocuje. Výchozí hodnota je jednou hodinu. Pokud je deklarace identity uvnitř podnikové sítě vydaná jenom v době počátečního ověřování, služba Azure AD nemusí mít seznam důvěryhodných IP adres. V takovém případě je obtížné zjistit, jestli je uživatel stále v podnikové síti:
 
 1. Ověřte, zda je IP adresa uživatele v jednom z rozsahů důvěryhodných IP adres.
-2. Ověřte, zda první tři oktety IP adresy uživatele odpovídají prvním třem oktetům IP adresy počátečního ověřování. IP adresa je porovnávána s počátečním ověřováním, když byla původně vydaná deklarace identity uvnitř podnikové sítě a bylo ověřené umístění uživatele.
+1. Ověřte, zda první tři oktety IP adresy uživatele odpovídají prvním třem oktetům IP adresy počátečního ověřování. IP adresa je porovnávána s počátečním ověřováním, když byla původně vydaná deklarace identity uvnitř podnikové sítě a bylo ověřené umístění uživatele.
 
 Pokud dojde k selhání obou kroků, bude uživatel považován za již nepřipojený k důvěryhodné IP adrese.
 
-## <a name="location-condition-configuration"></a>Konfigurace podmínky umístění
+## <a name="preview-features"></a>Funkce ve verzi Preview
+
+Kromě všeobecně dostupné funkce pojmenovaného umístění existuje také pojmenované umístění (Preview). K tomuto ukázkovému umístění můžete přistupovat pomocí nápisu v horní části okna aktuálně pojmenovaného umístění.
+
+![Vyzkoušejte si náhled pojmenovaných umístění](./media/location-condition/preview-features.png)
+
+S pojmenovaným umístěním ve verzi Preview je možné
+
+- Nakonfigurovat až 195 pojmenovaných umístění
+- Nakonfigurovat až 2000 rozsahů IP adres na pojmenované umístění
+- Konfigurace až IPv6 adres
+
+Přidali jsme také několik dalších kontrol, které vám pomůžou snížit změnu chybných konfigurací.
+
+- Rozsahy privátních IP adres už se nedají konfigurovat.
+- Počet IP adres, které lze zahrnout do rozsahu, je omezený. Při konfiguraci rozsahu IP adres budou povoleny pouze masky CIDR větší než/8.
+
+Ve verzi Preview jsou teď dvě možnosti vytvoření: 
+
+- **Umístění zemí**
+- **Umístění rozsahů IP adres**
+
+> [!NOTE]
+> Země neobsahují rozsahy IPv6 adres, jenom známé rozsahy IPv4 adres.
+
+![Rozhraní s pojmenovanými umístěními verze Preview](./media/location-condition/named-location-preview.png)
+
+## <a name="location-condition-in-policy"></a>Podmínka umístění v zásadách
 
 Když konfigurujete podmínku umístění, máte možnost rozlišovat mezi:
 
 - Jakékoli umístění
 - Všechna důvěryhodná umístění
 - Vybraná umístění
-
-![Konfigurace podmínky umístění](./media/location-condition/01.png)
 
 ### <a name="any-location"></a>Jakékoli umístění
 
@@ -129,12 +159,9 @@ Ve výchozím nastavení služba Azure AD vydá token po hodinách. Po přesunu 
 
 IP adresa, která se používá při vyhodnocování zásad, je veřejná IP adresa uživatele. V případě zařízení v privátní síti tato IP adresa nepředstavuje IP adresu klienta zařízení uživatele v intranetu, jedná se o adresu, kterou síť používá pro připojení k veřejnému Internetu.
 
-> [!WARNING]
-> Pokud má vaše zařízení jenom adresu IPv6, konfigurace podmínky umístění není podporovaná.
-
 ### <a name="bulk-uploading-and-downloading-of-named-locations"></a>Hromadné nahrávání a stahování pojmenovaných umístění
 
-Při vytváření nebo aktualizaci pojmenovaných umístění můžete pro hromadné aktualizace nahrát nebo stáhnout soubor CSV s rozsahy IP adres. Nahrávání nahradí rozsahy IP adres v seznamu hodnotami ze souboru. Každý řádek souboru obsahuje jeden rozsah IP adres ve formátu CIDR.
+Při vytváření nebo aktualizaci pojmenovaných umístění můžete pro hromadné aktualizace nahrát nebo stáhnout soubor CSV s rozsahy IP adres. Nahrávání nahradí rozsahy IP adres v seznamu těmito rozsahy ze souboru. Každý řádek souboru obsahuje jeden rozsah IP adres ve formátu CIDR.
 
 ### <a name="cloud-proxies-and-vpns"></a>Cloudové proxy servery a sítě VPN
 
@@ -144,9 +171,9 @@ Pokud je cloudový proxy server, je možné použít zásadu, která vyžaduje z
 
 ### <a name="api-support-and-powershell"></a>Podpora rozhraní API a prostředí PowerShell
 
-Rozhraní API a PowerShell se zatím nepodporují pro pojmenovaná umístění nebo pro zásady podmíněného přístupu.
+Rozhraní API a PowerShell ještě nejsou pro pojmenovaná umístění podporovaná.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Pokud chcete zjistit, jak nakonfigurovat zásady podmíněného přístupu, přečtěte si téma [vyžádání MFA pro konkrétní aplikace s Azure Active Directory podmíněný přístup](app-based-mfa.md).
-- Pokud jste připraveni ke konfiguraci zásad podmíněného přístupu pro vaše prostředí, přečtěte si [osvědčené postupy pro podmíněný přístup v Azure Active Directory](best-practices.md).
+- Pokud chcete zjistit, jak nakonfigurovat zásadu podmíněného přístupu, přečtěte si článek [Vytvoření zásady podmíněného přístupu](concept-conditional-access-policies.md).
+- Hledáte ukázkovou zásadu pomocí podmínky umístění? Projděte si článek [podmíněný přístup: blokování přístupu podle umístění](howto-conditional-access-policy-location.md)

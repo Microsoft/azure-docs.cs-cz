@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: negoe
 ms.reviewer: negoe,celested
-ms.custom: aaddev
-ms.openlocfilehash: 9a8d9c5c0a24e59c8f6345666f8838aa4c41d0f9
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: aaddev,references_regions
+ms.openlocfilehash: 20a158aac6a03dfe0bd8929de9fa66ea215aa29c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845181"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194119"
 ---
 # <a name="national-clouds"></a>Národní cloudy
 
@@ -76,7 +76,7 @@ Pokud se chcete dozvědět, jak vytvořit aplikaci pomocí platformy Microsoft i
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
+Přečtěte si další informace:
 
 - [Azure Government](https://docs.microsoft.com/azure/azure-government/)
 - [Azure China 21Vianet](https://docs.microsoft.com/azure/china/)

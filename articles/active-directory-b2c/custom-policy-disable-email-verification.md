@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 13a5fa6a030d876d92651ca587e37fdc6a3ec600
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51cb46d3ce1b74681c2ee3e53104cc57e73f1c5d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79136138"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192236"
 ---
 # <a name="disable-email-verification-during-customer-sign-up-using-a-custom-policy-in-azure-active-directory-b2c"></a>Zakázat ověřování e-mailů při registraci zákazníka pomocí vlastní zásady v Azure Active Directory B2C
 
@@ -30,15 +30,15 @@ Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get
 
 Technický profil **LocalAccountSignUpWithLogonEmail** je [samostatně](self-asserted-technical-profile.md)vyvolaný, který se vyvolá během procesu registrace. Chcete-li zakázat ověřování e-mailů, nastavte `EnforceEmailVerification` metadata na hodnotu NEPRAVDA. Potlačí technické profily LocalAccountSignUpWithLogonEmail v souboru rozšíření. 
 
-1. Otevřete soubor rozšíření vaší zásady. Například <em> `SocialAndLocalAccounts/` </em>.
+1. Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Vyhledejte `ClaimsProviders` element. Pokud element neexistuje, přidejte jej.
-1. Do `ClaimsProviders` elementu přidejte následující zprostředkovatele deklarací:
+1. Do elementu přidejte následující zprostředkovatele deklarací `ClaimsProviders` :
 
 ```XML
 <ClaimsProvider>
   <DisplayName>Local Account</DisplayName>
   <TechnicalProfiles>
-    <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+    <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
       <Metadata>
         <Item Key="EnforceEmailVerification">false</Item>
       </Metadata>

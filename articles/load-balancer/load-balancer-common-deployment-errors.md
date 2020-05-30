@@ -10,12 +10,12 @@ ms.service: load-balancer
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.author: anavin
-ms.openlocfilehash: b596e349d789584de07943332ede6f6897a1fd22
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 527f71b1980b5a62d3db94fe89a1bce98142e31a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658642"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221013"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-load-balancer"></a>Řešení běžných chyb při nasazení Azure pomocí Azure Load Balancer
 
@@ -28,6 +28,7 @@ Tento článek popisuje některé běžné chyby při nasazení Azure Load Balan
 |DifferentSkuLoadBalancersAndPublicIPAddressNotAllowed| Musí souhlasit obě veřejné IP SKU i Load Balancer SKU. Zajistěte, aby se Azure Load Balancer a veřejné skladové jednotky IP shodovaly. Pro produkční úlohy se doporučuje standardní skladová jednotka (SKU). Další informace o [rozdílech v SKU](./skus.md)  |
 |DifferentSkuLoadBalancerAndPublicIPAddressNotAllowedInVMSS | V případě, že je SKU Neurčeno nebo není nasazené bez standardních veřejných IP adres, je pro službu Virtual Machine Scale Sets výchozí hodnota Basic Load Balancer Znovu nasaďte sadu škálování virtuálního počítače se standardními veřejnými IP adresami pro jednotlivé instance, abyste měli jistotu, že je vybraná možnost Standard Load Balancer, nebo při nasazování sady škálování virtuálních počítačů z Azure Portal vyberte jenom standardní. |
 |MaxAvailabilitySetsInLoadBalancerReached | Back-end fond Load Balancer může obsahovat maximálně 150 skupin dostupnosti. Pokud nemáte skupiny dostupnosti explicitně definované pro virtuální počítače ve fondu back-end, každý z nich přejde do své vlastní skupiny dostupnosti. Nasazení 150 samostatných virtuálních počítačů by tedy znamenalo, že by mělo mít 150 skupiny dostupnosti, a tím by se dosáhlo limitu. Můžete nasadit skupinu dostupnosti a přidat do ní další virtuální počítače jako alternativní řešení. |
+|NetworkInterfaceAndLoadBalancerAreInDifferentAvailabilitySets | Pro nástroj pro vyrovnávání zatížení Basic SKU musí být síťové rozhraní a nástroj pro vyrovnávání zatížení ve stejné skupině dostupnosti. |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndIPConfig| Pro daný typ nástroje pro vyrovnávání zatížení (interní, veřejný) se stejným portem back-end a protokolem, na který odkazuje stejná sada škálování virtuálního počítače, nemůžete mít více než jedno pravidlo. Aktualizujte pravidlo, aby se toto duplicitní vytvoření pravidla změnilo. |
 |RulesOfSameLoadBalancerTypeUseSameBackendPortProtocolAndVmssIPConfig| Pro daný typ nástroje pro vyrovnávání zatížení (interní, veřejný) se stejným portem back-end a protokolem, na který odkazuje stejná sada škálování virtuálního počítače, nemůžete mít více než jedno pravidlo. Aktualizujte parametry pravidla pro změnu tohoto duplicitního vytvoření pravidla. |
 |AnotherInternalLoadBalancerExists| Můžete mít jenom jednu Load Balancer typu interní odkazování na stejnou sadu virtuálních počítačů nebo síťových rozhraní v back-endu Load Balancer. Aktualizujte nasazení, aby se zajistilo, že vytváříte jenom jeden Load Balancer stejného typu. |

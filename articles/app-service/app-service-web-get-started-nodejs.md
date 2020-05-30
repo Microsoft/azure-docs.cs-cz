@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.date: 03/04/2020
 ms.custom: mvc, devcenter, seodec18
 ms.openlocfilehash: df1e0809c0122eae593543cd193a6477b03d0938
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
+ms.lasthandoff: 05/29/2020
 ms.locfileid: "82690794"
 ---
 # <a name="create-a-nodejs-web-app-in-azure"></a>Vytvoření webové aplikace Node.js ve službě Azure 
@@ -43,9 +43,9 @@ Začněte s Azure App Service vytvořením aplikace Node. js/Express místně po
     npm start
     ```
     
-1. Otevřete prohlížeč a přejděte na `http://localhost:1337`. V prohlížeči by se měl zobrazit Hello World!.
+1. Otevřete prohlížeč a přejděte na `http://localhost:1337` . V prohlížeči by se měl zobrazit Hello World!.
 
-1. Stisknutím klávesy **CTRL**+**v terminálu** zastavte Server.
+1. Stisknutím klávesy **CTRL** + **C** v terminálu zastavte Server.
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/PWZWZ52?tutorial=node-deployment-azure-app-service&step=create-app)
@@ -64,7 +64,7 @@ V této části nasadíte aplikaci Node. js do Azure pomocí VS Code a rozšíř
 
     ![Přihlášení k Azure](containers/media/quickstart-nodejs/sign-in.png)
 
-1. V VS Code Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasaďte aplikaci do Azure. (Můžete také vyvolat stejný příkaz z **palety příkazů** (**CTRL**+**SHIFT**+**+)** zadáním příkazu "nasadit do webové aplikace" a volbou **Azure App Service: nasadit do webové aplikace**).
+1. V VS Code Průzkumníku **Azure App Service** vyberte ikonu modré šipky nahoru a nasaďte aplikaci do Azure. (Můžete také vyvolat stejný příkaz z **palety příkazů** (**CTRL** + **SHIFT** + **+**) zadáním příkazu "nasadit do webové aplikace" a volbou **Azure App Service: nasadit do webové aplikace**).
 
     ![Nasazení do webové aplikace](containers/media/quickstart-nodejs/deploy.png)
         
@@ -80,15 +80,15 @@ V této části nasadíte aplikaci Node. js do Azure pomocí VS Code a rozšíř
 1. Pokud se zaměřujete na Linux, po zobrazení výzvy vyberte verzi Node. js. Doporučuje se verze **LTS** .
 
 1. Pokud cílíte na systém Windows, postupujte podle dalších pokynů:
-    1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků, například `AppServiceQS-rg`.
+    1. Vyberte **vytvořit novou skupinu prostředků**a potom zadejte název skupiny prostředků, například `AppServiceQS-rg` .
     1. Pro operační systém vyberte **systém Windows** .
-    1. Vyberte **vytvořit nový App Service plán**, zadejte název plánu (například `AppServiceQS-plan`) a pak pro cenovou úroveň vyberte **F1 zdarma** .
+    1. Vyberte **vytvořit nový App Service plán**, zadejte název plánu (například `AppServiceQS-plan` ) a pak pro cenovou úroveň vyberte **F1 zdarma** .
     1. Po zobrazení výzvy k Application Insights **Nyní vyberte Přeskočit** .
     1. Vyberte oblast poblíž nebo poblíž zdrojů, ke kterým chcete získat přístup.
 
 1. Po reakci na všechny výzvy VS Code v místní nabídce oznámení zobrazit prostředky Azure, které jsou vytvářeny pro vaši aplikaci.
 
-    Když nasazujete na Linux **Yes** , při zobrazení výzvy k aktualizaci konfigurace, která `npm install` se má spustit na cílovém serveru Linux, vyberte Ano.
+    Když nasazujete na Linux **Yes** , při zobrazení výzvy k aktualizaci konfigurace, která se má spustit `npm install` na cílovém serveru Linux, vyberte Ano.
 
     ![Výzva k aktualizaci konfigurace na cílovém serveru se systémem Linux](containers/media/quickstart-nodejs/server-build.png)
 
@@ -115,7 +115,7 @@ V této části nasadíte aplikaci Node. js do Azure pomocí VS Code a rozšíř
 
 ### <a name="troubleshooting-azure-sign-in"></a>Řešení potíží s přihlášením do Azure
 
-Pokud se vám při přihlašování k Azure zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"** , může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraním API Azure. Pomocí `HTTP_PROXY` použijte `HTTPS_PROXY` `export`konfiguraci a proměnné prostředí s informacemi o proxy serveru v terminálu.
+Pokud se vám při přihlašování k Azure zobrazí chyba **"nelze najít předplatné s názvem [ID předplatného]"** , může to být způsobeno tím, že jste za proxy serverem a nemůžete získat přístup k rozhraním API Azure. `HTTP_PROXY` `HTTPS_PROXY` Pomocí použijte konfiguraci a proměnné prostředí s informacemi o proxy serveru v terminálu `export` .
 
 ```bash
 export HTTPS_PROXY=https://username:password@proxy:8080
@@ -130,7 +130,7 @@ Změny v této aplikaci můžete nasadit provedením úprav v VS Code, uložení
 
 ## <a name="viewing-logs"></a>Zobrazení protokolů
 
-Můžete zobrazit výstup protokolu (volání `console.log`) z aplikace přímo v okně výstup vs Code.
+Můžete zobrazit výstup protokolu (volání `console.log` ) z aplikace přímo v okně výstup vs Code.
 
 1. V Průzkumníku **služby Azure App Service** klikněte pravým tlačítkem myši na uzel aplikace a vyberte **Spustit protokoly streamování**.
 

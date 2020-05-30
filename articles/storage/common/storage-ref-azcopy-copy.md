@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 0325a71fb069f3d96f05d106afac1639fc38fe42
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7f55b22938bd6f18bae1576a0c64e673996d38bf
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253335"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220134"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -41,7 +41,7 @@ Další informace najdete v příkladech.
 - [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
-## <a name="advanced"></a>Upřesnit
+## <a name="advanced"></a>Pokročilý
 
 AzCopy automaticky detekuje typ obsahu souborů při nahrávání z místního disku na základě přípony souboru nebo obsahu (Pokud není zadáno žádné rozšíření).
 
@@ -81,7 +81,7 @@ Nahrajte celý adresář pomocí tokenu SAS:
   
 - AzCopy CP "/path/to/dir" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true
 
-– nebo –
+or
 
 - AzCopy CP "/path/to/dir" "https://[účet]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true--Put-MD5
 
@@ -147,25 +147,25 @@ Zkopírujte všechny kontejnery objektů blob, adresáře a objekty BLOB z účt
 
 Zkopírování jednoho objektu do Blob Storage ze Amazon Web Services (AWS) S3 pomocí přístupového klíče a tokenu SAS. Nejprve nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
   
-- AzCopy CP "https://s3.amazonaws.com/[kontejner]/[objekt]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[cesta/k/BLOB]? [SAS] "
+- AzCopy CP " https://s3.amazonaws.com/ [kontejner]/[objekt]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[cesta/k/BLOB]? [ SAS] "
 
 Zkopírování celého adresáře do Blob Storage z AWS S3 pomocí přístupového klíče a tokenu SAS. Nejprve nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
 
-- AzCopy CP "https://s3.amazonaws.com/[kontejner]/[složka]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [SAS] "--rekurzivní = true
+- AzCopy CP " https://s3.amazonaws.com/ [kontejner]/[složka]" "https://[destaccount]. blob. Core. Windows. NET/[Container]/[cesta/do/adresář]? [ SAS] "--rekurzivní = true
 
-Pokud https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html chcete lépe pochopit zástupný symbol [složka], přečtěte si prosím.
+Pokud https://docs.aws.amazon.com/AmazonS3/latest/user-guide/using-folders.html Chcete lépe pochopit zástupný symbol [složka], přečtěte si prosím.
 
 Zkopírujte všechny intervaly do Blob Storage z Amazon Web Services (AWS) pomocí přístupového klíče a tokenu SAS. Nejprve nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
 
-- AzCopy CP "https://s3.amazonaws.com/" https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
+- AzCopy CP " https://s3.amazonaws.com/ " https://[destaccount]. blob. Core. Windows. NET? [ SAS] "--rekurzivní = true
 
 Zkopírujte všechny intervaly do Blob Storage z oblasti Amazon Web Services (AWS) pomocí přístupového klíče a tokenu SAS. Nejprve nastavte proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY pro zdroj AWS S3.
 
-- AzCopy CP "https://s3-[region]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
+- AzCopy CP " https://s3- [region]. amazonaws. com/" "https://[destaccount]. blob. Core. Windows. NET? [ SAS] "--rekurzivní = true
 
 Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kontejneru. Stejně jako v předchozích příkladech budete potřebovat přístupový klíč a token SAS. Ujistěte se, že jste pro zdroj AWS S3 nastavili proměnnou prostředí AWS_ACCESS_KEY_ID a AWS_SECRET_ACCESS_KEY.
 
-- AzCopy CP "https://s3.amazonaws.com/[interval * název]/" "https://[destaccount]. blob. Core. Windows. NET? [SAS] "--rekurzivní = true
+- AzCopy CP " https://s3.amazonaws.com/ [interval * název]/" "https://[destaccount]. blob. Core. Windows. NET? [ SAS] "--rekurzivní = true
 
 ## <a name="options"></a>Možnosti
 
@@ -225,11 +225,11 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--Preserve – čas poslední změny**          K dispozici pouze v případě, že cílem je systém souborů.
 
-**--Preserve-SMB-oprávnění** ve výchozím nastavení false. Zachovává seznamy řízení přístupu SMB mezi prostředky, které podporují (soubory Windows a Azure). Pro soubory ke stažení budete také muset pomocí `--backup` příznaku obnovit oprávnění, kde nový vlastník nebude uživatel, na kterém běží AzCopy. Tento příznak platí pro soubory i složky, pokud není zadán filtr pouze souborů (např. `include-pattern`).
+**--Preserve-SMB-oprávnění** ve výchozím nastavení false. Zachovává seznamy řízení přístupu SMB mezi prostředky, které podporují (soubory Windows a Azure). Pro soubory ke stažení budete také muset pomocí `--backup` příznaku obnovit oprávnění, kde nový vlastník nebude uživatel, na kterém běží AzCopy. Tento příznak platí pro soubory i složky, pokud není zadán filtr pouze souborů (např. `include-pattern` ).
 
 **--Preserve-SMB-info** String false ve výchozím nastavení. Zachovává informace o vlastnostech protokolu SMB (čas posledního zápisu, čas vytvoření, bity atributů) mezi prostředky pracujícími s protokolem SMB (soubory Windows a Azure). Přenesou se jenom bity atributů podporované soubory Azure. ostatní budou ignorovány. Tento příznak platí pro soubory i složky, pokud není zadán filtr pouze souborů (např. include-Pattern). Přenesené informace pro složky jsou stejné jako u souborů, s výjimkou času posledního zápisu, který se nikdy nezachovává pro složky.
 
-**--Preserve – vlastník**                       Má vliv jenom na to, kdy se stahují data, a `--preserve-smb-permissions` jenom v případě, že se používá. Pokud je hodnota true (výchozí nastavení), vlastník a skupina souborů se při stahování zachovají. Pokud je tento příznak nastaven na hodnotu false `--preserve-smb-permissions` , bude stále zachovat seznamy ACL, ale vlastník a skupina budou založené na uživateli, na kterém je spuštěný AzCopy.
+**--Preserve – vlastník**                       Má vliv jenom na to, kdy se stahují data, a jenom v případě, že `--preserve-smb-permissions` se používá. Pokud je hodnota true (výchozí nastavení), vlastník a skupina souborů se při stahování zachovají. Pokud je tento příznak nastaven na hodnotu false, `--preserve-smb-permissions` bude stále zachovat seznamy ACL, ale vlastník a skupina budou založené na uživateli, na kterém je spuštěný AzCopy.
 
 **--Put-MD5**                             Vytvořte hodnotu hash MD5 každého souboru a uložte hodnotu hash jako vlastnost content-MD5 cílového objektu BLOB nebo souboru. (Ve výchozím nastavení není hodnota hash vytvořena.) K dispozici pouze při nahrávání.
 
@@ -249,6 +249,8 @@ Zkopírujte podmnožinu kontejnerů pomocí zástupného znaku (*) v názvu kont
 
 **--výstupní** formát řetězce výstupu příkazu. Mezi možnosti patří: text, JSON. Výchozí hodnota je "text". (výchozí "text")
 
+**--Trusted – řetězec Microsoft-přípony** Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí hodnota je *. Core.Windows.NET;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.
+
 ## <a name="see-also"></a>Viz také
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

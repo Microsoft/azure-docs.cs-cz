@@ -1,6 +1,6 @@
 ---
 title: Přesun dat do procesu Azure SQL Database – tým pro datové vědy
-description: Přesuňte data z plochých souborů (formáty CSV nebo TSV) nebo z dat uložených v místní SQL Server do Azure SQL Database.
+description: Přesuňte data z plochých souborů (formáty CSV nebo TSV) nebo z dat uložených v SQL Server do Azure SQL Database.
 services: machine-learning
 author: marktab
 manager: marktab
@@ -11,18 +11,18 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: f9a1424f2afe6c5153e208601b21dff9651880a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99e637099e54698e9d6eabb14920251a9d4a81f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722454"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194397"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Přesun dat do služby SQL Database pro Azure Machine Learning
 
-Tento článek popisuje možnosti přesunu dat buď z plochých souborů (formáty CSV nebo TSV), nebo z dat uložených v místních SQL Server do Azure SQL Database. Tyto úlohy pro přesun dat do cloudu jsou součástí vědeckého procesu týmového zpracování dat.
+Tento článek popisuje možnosti přesunu dat buď z plochých souborů (formáty CSV nebo TSV), nebo z dat uložených v SQL Server do Azure SQL Database. Tyto úlohy pro přesun dat do cloudu jsou součástí vědeckého procesu týmového zpracování dat.
 
-Téma, které popisuje možnosti přesunu dat do místní SQL Server pro Machine Learning najdete v tématu [přesun dat do SQL Server na virtuálním počítači Azure](move-sql-server-virtual-machine.md).
+Téma, které popisuje možnosti přesunutí dat na SQL Server pro Machine Learning najdete v tématu [přesun dat do SQL Server na virtuálním počítači Azure](move-sql-server-virtual-machine.md).
 
 Následující tabulka shrnuje možnosti přesunutí dat do Azure SQL Database.
 
@@ -41,7 +41,7 @@ Tady popsané postupy vyžadují:
 
 **Data**: procesy migrace jsou znázorněny pomocí [datové sady taxislužby NYC](https://chriswhong.com/open-data/foil_nyc_taxi/). Datová sada taxislužby NYC obsahuje informace o datech na cestách a jejich veletrzích a je dostupná v Azure Blob Storage: [data NYC taxislužby](https://www.andresmh.com/nyctaxitrips/). Ukázka a popis těchto souborů jsou k dispozici v [popisu datové sady NYC taxislužby TRIPS](sql-walkthrough.md#dataset).
 
-Můžete buď upravit popsané postupy na sadu vlastních dat, nebo postupovat podle pokynů popsaných v datové sadě taxislužby NYC. Pokud chcete nahrát datovou sadu taxislužby NYC do místní databáze SQL Server, postupujte podle pokynů uvedených v [hromadném importu dat do databáze SQL Server](sql-walkthrough.md#dbload). Tyto pokyny jsou pro SQL Server na virtuálním počítači Azure, ale postup odesílání do místní SQL Server je stejný.
+Můžete buď upravit popsané postupy na sadu vlastních dat, nebo postupovat podle pokynů popsaných v datové sadě taxislužby NYC. Pokud chcete nahrát datovou sadu taxislužby NYC do databáze SQL Server, postupujte podle pokynů uvedených v [hromadném importu dat do SQL Server databáze](sql-walkthrough.md#dbload).
 
 ## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a>Přesun dat ze zdroje plochého souboru do Azure SQL Database
 Data v plochých souborech (ve formátu CSV nebo ve formátu TSV) se dají přesunout do Azure SQL Database pomocí hromadného vložení dotazu SQL.
@@ -49,8 +49,8 @@ Data v plochých souborech (ve formátu CSV nebo ve formátu TSV) se dají přes
 ### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a>Hromadné vložení dotazu SQL
 Postup použití příkazu hromadného vkládání SQL se podobá Postup přesunutí dat z plochého zdroje souborů na SQL Server na virtuálním počítači Azure. Podrobnosti najdete v tématu [hromadné vložení dotazu SQL](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="moving-data-from-on-premises-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>Přesun dat z místních SQL Server do Azure SQL Database
-Pokud jsou zdrojová data uložená v místních SQL Server, existují různé možnosti, jak data přesouvat do Azure SQL Database:
+## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>Přesun dat z SQL Server do Azure SQL Database
+Pokud jsou zdrojová data uložená v SQL Server, existují různé možnosti, jak data přesouvat do Azure SQL Database:
 
 1. [Exportovat do plochého souboru](#export-flat-file)
 2. [Průvodce migrací SQL Database](#insert-tables-bcp)
@@ -69,6 +69,6 @@ Postup použití Průvodce migrací SQL Database je podobný těm směrům popsa
 Postup použití zálohování a obnovení databáze je podobný těm směrům uvedeným v části [zálohování a obnovení databáze](move-sql-server-virtual-machine.md#sql-backup).
 
 ### <a name="azure-data-factory"></a><a name="adf"></a>Azure Data Factory
-Naučte se, jak přesunout data do Azure SQL Database pomocí Azure Data Factory (ADF) v tomto tématu, [přesuňte data z místního SQL serveru na SQL Azure s Azure Data Factory](move-sql-azure-adf.md). V tomto tématu se dozvíte, jak pomocí ADF přesunout data z místní databáze SQL Server do Azure SQL Database prostřednictvím Azure Blob Storage.
+Naučte se, jak přesunout data do Azure SQL Database pomocí Azure Data Factory (ADF) v tomto tématu, [přesuňte data z SQL Server do SQL Azure s Azure Data Factory](move-sql-azure-adf.md). V tomto tématu se dozvíte, jak pomocí ADF přesunout data z databáze SQL Server do Azure SQL Database prostřednictvím Azure Blob Storage.
 
 Pokud je potřeba průběžně migrovat data s využitím hybridních místních i cloudových zdrojů, zvažte použití ADF.  ADF také pomáhá s tím, jak data potřebují transformovat, nebo potřebuje během migrace novou obchodní logiku. ADF umožňuje plánovat a monitorovat úlohy pomocí jednoduchých skriptů JSON, které pravidelně spravují pohyb dat. ADF má také další možnosti, jako je podpora složitých operací.

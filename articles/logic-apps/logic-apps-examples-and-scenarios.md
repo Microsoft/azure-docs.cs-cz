@@ -6,16 +6,16 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
-ms.openlocfilehash: ad5cc696892764ce68d4714ead98b8afd9c37669
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 786655f8e8ee7e21f2615361b0bb1ea336ccb479
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82144157"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190741"
 ---
 # <a name="common-scenarios-examples-tutorials-and-walkthroughs-for-azure-logic-apps"></a>Běžné scénáře, ukázky, kurzy a návody pro Azure Logic Apps
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) vám pomůže s orchestrací a integrací různých služeb tím, že poskytuje [stovky připravených konektorů](../connectors/apis-list.md), od místních SQL Server nebo SAP až po Azure Cognitive Services. Služba Logic Apps je bez serveru, takže se nemusíte starat o škálování nebo instance. Vše, co musíte udělat, je definovat pracovní postup s triggerem a akcemi, které pracovní postup provádí. Základní platforma zpracovává škálování, dostupnost a výkon. Logic Apps je zvláště užitečné pro případy použití a scénáře, kdy potřebujete koordinovat akce napříč různými systémy a službami.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) vám pomůže s orchestrací a integrací různých služeb tím, že poskytuje [stovky připravených konektorů](../connectors/apis-list.md)od SQL Server nebo SAP až po Azure Cognitive Services. Služba Logic Apps je bez serveru, takže se nemusíte starat o škálování nebo instance. Vše, co musíte udělat, je definovat pracovní postup s triggerem a akcemi, které pracovní postup provádí. Základní platforma zpracovává škálování, dostupnost a výkon. Logic Apps je zvláště užitečné pro případy použití a scénáře, kdy potřebujete koordinovat akce napříč různými systémy a službami.
 
 V tomto článku se dozvíte o schopnostech a vzorech, které Azure Logic Apps podporuje. Tento článek popisuje běžné úvodní body, příklady a scénáře.
 
@@ -126,9 +126,9 @@ Můžete plně vyvíjet a nasazovat aplikace logiky pomocí sady Visual Studio, 
 
 ## <a name="handle-content-types-conversions-and-transformations"></a>Zpracování typů obsahu, převodů a transformací
 
-Pomocí mnoha funkcí v [jazyce Azure Logic Apps definice pracovního postupu](https://aka.ms/logicappsdocs)můžete získat přístup k více typům obsahu, převést je a transformovat. Například můžete převádět mezi řetězci, JSON a XML pomocí výrazů pracovního postupu `@json()` and. `@xml()` Modul Logic Apps zachovává typy obsahu pro zajištění bezztrátového přenosu obsahu mezi službami.
+Pomocí mnoha funkcí v [jazyce Azure Logic Apps definice pracovního postupu](https://aka.ms/logicappsdocs)můžete získat přístup k více typům obsahu, převést je a transformovat. Například můžete převádět mezi řetězci, JSON a XML pomocí `@json()` `@xml()` výrazů pracovního postupu and. Modul Logic Apps zachovává typy obsahu pro zajištění bezztrátového přenosu obsahu mezi službami.
 
-* [Zpracování typů obsahu v Azure Logic Apps](../logic-apps/logic-apps-content-type.md), například `application/`, `application/octet-stream`a`multipart/formdata`
+* [Zpracování typů obsahu v Azure Logic Apps](../logic-apps/logic-apps-content-type.md), například `application/` , `application/octet-stream` a`multipart/formdata`
 * [Referenční příručka k používání funkcí ve výrazech pro Azure Logic Apps a automatizaci](../logic-apps/workflow-definition-language-functions-reference.md)
 * [Schéma jazyka definice pracovního postupu pro Azure Logic Apps](../logic-apps/logic-apps-workflow-definition-language.md)
 

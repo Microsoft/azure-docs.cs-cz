@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: d57eb2718f79e9243426a59245abc44c98dc6249
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e5af5c6b30c6f03930a61200a11bfa0bd2f72093
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118610"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196452"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Zvýhodněné hybridní využití Azure-Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-V zřízené výpočetní úrovni v rámci nákupního modelu založeném na vCore můžete vyměňovat stávající licence pro zvýhodněné sazby Azure SQL Database a Azure SQL Managed instance pomocí [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure vám umožňuje ušetřit až 30 procent nebo ještě vyšší v SQL Database & spravované instance SQL pomocí místních SQL Server licencí se Software Assurance. Stránka [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) obsahuje kalkulačku, která vám pomůže určit úspory.  Všimněte si, že Zvýhodněné hybridní využití Azure neplatí pro Azure SQL Database bez serveru.
+V zřízené výpočetní úrovni v rámci nákupního modelu založeném na vCore můžete vyměňovat stávající licence pro zvýhodněné sazby Azure SQL Database a Azure SQL Managed instance pomocí [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/). Tato výhoda Azure vám umožní ušetřit až 30 procent nebo ještě vyšší na SQL Database & spravované instance SQL pomocí licencí SQL Server se Software Assurance. Stránka [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) obsahuje kalkulačku, která vám pomůže určit úspory.  Všimněte si, že Zvýhodněné hybridní využití Azure neplatí pro Azure SQL Database bez serveru.
 
 > [!NOTE]
 > Změna na Zvýhodněné hybridní využití Azure nevyžaduje žádné výpadky.
@@ -77,7 +77,7 @@ SQL Server zákazníkům se Software Assurance nabízíme výhody mobility licen
 Zvýhodněné hybridní využití Azure pro SQL Server se liší od mobility licencí ve dvou klíčových oblastech:
 
 - Poskytuje ekonomické výhody pro přesun vysoce virtualizovaných úloh do Azure. Zákazníci edice SQL Server Enterprise můžou získat čtyři jádra v Azure v rámci Pro obecné účely SKU pro každé jádro, které vlastní místní pro vysoce virtualizované aplikace. Mobilita licencí neumožňuje žádné speciální náklady na přesun virtualizovaných úloh do cloudu.
-- Poskytuje pro PaaS cíl v Azure (SQL Database spravované instance), který je vysoce kompatibilní s SQL Serverem v místním prostředí.
+- Poskytuje pro PaaS cíl v Azure (SQL Database Managed instance), která je vysoce kompatibilní s SQL Server.
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Jaká jsou specifická práva Zvýhodněné hybridní využití Azure pro SQL Server?
 

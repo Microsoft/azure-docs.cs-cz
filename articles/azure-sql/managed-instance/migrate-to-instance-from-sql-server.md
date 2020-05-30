@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: douglas, carlrab
 ms.date: 07/11/2019
-ms.openlocfilehash: 27336028fb6b141d8ece4d975b7590b3daf875f2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c0b34e17c202cb060773c53aa5775343ade9c2ee
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050958"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193775"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>Migrace instance SQL Server do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -42,7 +42,7 @@ V případě vysoké úrovně proces migrace databáze vypadá takto:
 
 ## <a name="assess-sql-managed-instance-compatibility"></a>Posouzení kompatibility spravované instance SQL
 
-Nejdřív Zjistěte, jestli je spravovaná instance SQL kompatibilní s požadavky na databázi vaší aplikace. Spravovaná instance SQL je navržená tak, aby poskytovala snadnou migraci pomocí přezvednutí a posunutí pro většinu stávajících aplikací, které používají SQL Server místně nebo na virtuálních počítačích. Někdy ale můžete vyžadovat funkce nebo možnosti, které ještě nejsou podporované, a náklady na implementaci alternativního řešení jsou moc vysoké.
+Nejdřív Zjistěte, jestli je spravovaná instance SQL kompatibilní s požadavky na databázi vaší aplikace. Spravovaná instance SQL je navržená tak, aby poskytovala snadnou migraci pomocí přezvednutí a posunutí pro většinu stávajících aplikací, které používají SQL Server. Někdy ale můžete vyžadovat funkce nebo možnosti, které ještě nejsou podporované, a náklady na implementaci alternativního řešení jsou moc vysoké.
 
 Použijte [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) k detekci potenciálních problémů s kompatibilitou, které mají vliv na funkčnost databáze v Azure SQL Database. Pokud dojde k nějakým chybám blokujícím blokování, možná budete muset vzít v úvahu jinou možnost, například [SQL Server na virtuálních počítačích Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Zde je několik příkladů:
 
@@ -121,7 +121,7 @@ Další informace o tomto scénáři a postupu konfigurace pro DMS najdete v té
 
 ### <a name="native-restore-from-url"></a>Nativní obnovení z adresy URL
 
-OBNOVENÍ nativních záloh (souborů. bak) pořízených z SQL Server místně nebo [SQL Server na virtuálních počítačích](https://azure.microsoft.com/services/virtual-machines/sql-server/), která jsou k dispozici v [Azure Storage](https://azure.microsoft.com/services/storage/), je jednou z klíčových funkcí spravované instance SQL, která umožňuje rychlou a jednoduchou migraci offline databáze.
+OBNOVENÍ nativních záloh (souborů. bak) pořízených z SQL Server instance, která je k dispozici v [Azure Storage](https://azure.microsoft.com/services/storage/), je jednou z klíčových funkcí spravované instance SQL, která umožňuje rychlou a jednoduchou migraci offline databáze.
 
 Následující diagram poskytuje podrobný přehled procesu:
 

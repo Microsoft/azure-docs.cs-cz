@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 1121b5324368f8b8c6c062868f5072f4a0e7ac86
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ebb25d49250b71ab8d948833ac982ef244225539
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654373"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216445"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Monitorování virtuálních počítačů Azure pomocí Azure Monitor
 Tento článek popisuje, jak pomocí Azure Monitor shromažďovat a analyzovat data monitorování z virtuálních počítačů Azure a udržovat jejich stav. Virtuální počítače je možné monitorovat z hlediska dostupnosti a výkonu pomocí Azure Monitor jako u jakéhokoli [jiného prostředku Azure](monitor-azure-resource.md), ale jsou jedinečné od jiných prostředků, protože potřebujete také monitorovat hostovaný operační systém a systémy a úlohy, které jsou v něm spuštěné. 
@@ -110,9 +110,7 @@ Metriky platformy a protokol aktivit shromážděné pro každého hostitele vir
 Shromážděte metriky platforem s nastavením diagnostiky pro virtuální počítač. Na rozdíl od jiných prostředků Azure nelze vytvořit nastavení diagnostiky pro virtuální počítač v Azure Portal, ale je nutné použít [jinou metodu](../platform/diagnostic-settings.md#create-diagnostic-settings-using-powershell). Následující příklady znázorňují, jak shromažďovat metriky pro virtuální počítač pomocí PowerShellu i rozhraní příkazového řádku.
 
 ```powershell
-Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/monitor diagnostic-settings create \
-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/monitor diagnostic-settings create \
-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
+Set-AzDiagnosticSetting -Name vm-diagnostics -ResourceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/my-resource-group/providers/Microsoft.Compute/virtualMachines/my-vm" -Enabled $true -MetricCategory AllMetrics -workspaceId "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
 ```
 
 ```CLI
@@ -137,7 +135,7 @@ Jakmile nakonfigurujete shromažďování dat monitorování pro virtuální po�
 | Přehled | Zobrazí [metriky platforem](../platform/data-platform-metrics.md) pro hostitele virtuálního počítače. Pokud chcete s těmito daty pracovat v [Průzkumníkovi metrik](../platform/metrics-getting-started.md), klikněte na graf. |
 | Protokol aktivit | Položky [protokolu aktivit](../platform/activity-log-view.md) filtrované pro aktuální virtuální počítač. |
 | Insights | Otevře [Azure monitor pro virtuální počítače](../insights/vminsights-overview.md) s mapou pro vybraný aktuální virtuální počítač. |
-| Upozornění | Zobrazí [výstrahy](../platform/alerts-overview.md) pro aktuální virtuální počítač.  |
+| Výstrahy | Zobrazí [výstrahy](../platform/alerts-overview.md) pro aktuální virtuální počítač.  |
 | Metriky | Otevřete [Průzkumníka metrik](../platform/metrics-getting-started.md) s oborem nastaveným na aktuální virtuální počítač. |
 | Nastavení diagnostiky | Povolí a nakonfiguruje [diagnostické rozšíření](../platform/diagnostics-extension-overview.md) pro aktuální virtuální počítač. |
 | Doporučení Advisoru | Doporučení pro aktuální virtuální počítač z [Azure Advisor](/azure/advisor/). |
@@ -175,7 +173,7 @@ Azure Monitor pro virtuální počítače umožňuje kolekci předem určené sa
 > Údaje o výkonu shromážděné agentem Log Analytics zapisuje do tabulky *perf* , zatímco Azure monitor pro virtuální počítače se shromáždí do tabulky *InsightsMetrics* . Jedná se o stejná data, ale tabulky mají jinou strukturu. Pokud máte dotazy na základě *výkonu*, bude nutné je přepsat, aby používaly *InsightsMetrics*.
 
 
-## <a name="alerts"></a>Upozornění
+## <a name="alerts"></a>Výstrahy
 [Výstrahy](../platform/alerts-overview.md) v Azure monitor proaktivně upozorňují na to, že jsou ve vašich datech monitorování zjištěny důležité podmínky, a potenciálně spustí akci, jako je například spuštění aplikace logiky nebo volání Webhooku. Pravidla výstrah definují logiku použitou k určení, kdy se má vytvořit výstraha. Azure Monitor shromažďuje data používaná pravidly výstrah, ale je potřeba vytvořit pravidla pro definování podmínek upozorňování ve vašem předplatném Azure.
 
 V následujících částech jsou popsány typy pravidel a doporučení pro výstrahy, kdy byste je měli použít. Toto doporučení je založené na funkcích a nákladech typu pravidla výstrahy. Podrobnosti o cenách výstrah najdete v tématu [Azure monitor ceny](https://azure.microsoft.com/pricing/details/monitor/).

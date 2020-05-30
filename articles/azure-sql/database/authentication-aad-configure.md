@@ -1,7 +1,7 @@
 ---
 title: Konfigurace ověřování Azure Active Directory
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
-description: Přečtěte si, jak se připojit k SQL Database, spravované instanci SQL a Azure synapse Analytics pomocí ověřování Azure Active Directory – po nakonfigurování služby Azure AD.
+description: Po nakonfigurování služby Azure AD se naučíte připojit se k SQL Database, spravované instanci SQL a Azure synapse Analytics pomocí ověřování Azure Active Directory.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,17 +12,18 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: 6bb3bf215f6611dd0af9d4f30ffd105fb8fa1b99
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9e4ec8ae9f62ccf1ff7f98ff06a43218b90e6c75
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041483"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190347"
 ---
-# <a name="configure-and-manage-azure-active-directory-authentication-with-sql"></a>Konfigurace a Správa ověřování Azure Active Directory pomocí SQL
+# <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurace a Správa ověřování Azure AD pomocí Azure SQL
+
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-V tomto článku se dozvíte, jak vytvořit a naplnit Azure AD a potom použít Azure AD s [Azure SQL Database](sql-database-paas-overview.md), [Azure SQL Managed instance](../managed-instance/sql-managed-instance-paas-overview.md)a [azure synapse Analytics (dřív Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled najdete v tématu [Azure Active Directory Authentication](authentication-aad-overview.md).
+V tomto článku se dozvíte, jak vytvořit a naplnit instanci služby Azure Active Directory (Azure AD), a pak použít Azure AD s [Azure SQL Database](sql-database-paas-overview.md), [spravovanou instancí SQL Azure](../managed-instance/sql-managed-instance-paas-overview.md)a [analýzou azure synapse Analytics (dříve Azure SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md). Přehled najdete v tématu [Azure Active Directory Authentication](authentication-aad-overview.md).
 
 ## <a name="azure-ad-authentication-methods"></a>Metody ověřování Azure AD
 
@@ -35,19 +36,17 @@ Ověřování Azure AD podporuje následující metody ověřování:
     - Předávací ověřování Azure AD
   - Federované ověřování
 
-Další informace o metodách ověřování Azure AD a o tom, která z nich si můžete vybrat, najdete v článku:
+Další informace o metodách ověřování Azure AD a o tom, která z nich si můžete vybrat, najdete v tématu [Volba správné metody ověřování pro Azure Active Directory řešení hybridní identity](../../active-directory/hybrid/choose-ad-authn.md).
 
-- [Vyberte správnou metodu ověřování pro Azure Active Directory řešení hybridní identity.](../../active-directory/hybrid/choose-ad-authn.md)
-
-Další informace o hybridních identitách Azure AD, nastavení a synchronizaci najdete v následujících článcích:
+Další informace o hybridních identitách, nastaveních a synchronizaci Azure AD najdete v těchto tématech:
 
 - Ověřování hodnotou hash hesla – [implementace synchronizace hodnot hash hesel pomocí Azure AD Connect synchronizace](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md)
 - Předávací ověřování – [Azure Active Directory předávací ověřování](../../active-directory/hybrid/how-to-connect-pta-quick-start.md)
 - Federované ověřování – [nasazení Active Directory Federation Services (AD FS) v Azure](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs) a [Azure AD Connect a federace](../../active-directory/hybrid/how-to-connect-fed-whatis.md)
 
-## <a name="create-and-populate-an-azure-ad"></a>Vytvoření a naplnění služby Azure AD
+## <a name="create-and-populate-an-azure-ad-instance"></a>Vytvoření a naplnění instance Azure AD
 
-Vytvořte Azure AD a naplňte ho uživateli a skupinami. Azure AD může být počáteční doménou spravovanou službou Azure AD. Azure AD může být také místní Active Directory Domain Services, která je federované s Azure AD.
+Vytvořte instanci Azure AD a naplňte ji uživateli a skupinami. Azure AD může být počáteční doménou spravovanou službou Azure AD. Azure AD může být také místní Active Directory Domain Services, která je federované s Azure AD.
 
 Další informace najdete v tématech [Integrování místních identit do služby Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md), [Přidání vlastního názvu domény do Azure AD](../../active-directory/fundamentals/add-custom-domain.md), [Microsoft Azure podporuje federaci s Windows Server Active Directory](https://azure.microsoft.com/blog/20../../windows-azure-now-supports-federation-with-windows-server-active-directory/), [Správa adresáře služby Azure AD](../../active-directory/fundamentals/active-directory-whatis.md), [Správa služby Azure AD pomocí rozhraní Windows PowerShell](/powershell/azure/overview) a [Porty a protokoly, které vyžaduje hybridní identita](../../active-directory/hybrid/reference-connect-ports.md).
 
@@ -84,7 +83,7 @@ Pokud chcete vašemu účtu SQL Managed instance udělit oprávnění ke čtení
 
 2. Vyberte správnou službu Active Directory jako výchozí službu Azure AD.
 
-   Tento krok propojí předplatné přidružené ke službě Active Directory se službou SQL Managed instance a zajistí, že se stejné předplatné používá pro Azure AD i pro spravovanou instanci SQL.
+   Tento krok propojí předplatné přidružené ke službě Active Directory se službou SQL Managed instance a zajistěte, aby se stejné předplatné používalo jak pro instanci služby Azure AD, tak pro spravovanou instanci SQL.
 
 3. Přejděte do spravované instance SQL, kterou chcete použít pro integraci služby Azure AD.
 
@@ -102,7 +101,7 @@ Pokud chcete vašemu účtu SQL Managed instance udělit oprávnění ke čtení
 
     ![Nastavení – správce](./media/authentication-aad-configure/set-admin.png)
 
-7. Na stránce Správce AAD vyhledejte uživatele, vyberte uživatele nebo skupinu, kterým chcete správce, a pak vyberte **Vybrat**.
+7. Na stránce správce Azure AD vyhledejte uživatele, vyberte uživatele nebo skupinu, které chcete správce, a pak vyberte **Vybrat**.
 
    Na stránce Správce služby Active Directory se zobrazují všichni členové a skupiny služby Active Directory. Uživatele nebo skupiny, které jsou zobrazené šedě, nejde vybrat, protože nejsou podporované jako správci Azure AD. Podívejte se na seznam podporovaných správců ve [funkcích a omezeních služby Azure AD](authentication-aad-overview.md#azure-ad-features-and-limitations). Řízení přístupu na základě role (RBAC) platí jenom pro Azure Portal a není šířené do SQL Database, spravované instance SQL ani do Azure synapse.
 
@@ -121,7 +120,7 @@ Po zřízení správce Azure AD pro spravovanou instanci SQL můžete začít vy
 
 ### <a name="powershell"></a>PowerShell
 
-Pokud chcete vaší službě SQL Managed instance udělit oprávnění ke čtení Azure AD pomocí PowerShellu, spusťte tento skript:
+Pokud chcete udělit oprávnění ke čtení Azure AD spravované instance SQL pomocí PowerShellu, spusťte tento skript:
 
 ```powershell
 # Gives Azure Active Directory read permission to a Service Principal representing the SQL Managed Instance.
@@ -140,7 +139,7 @@ if ($role -eq $null) {
     $role = Get-AzureADDirectoryRole | Where-Object {$_.displayName -eq $roleName}
 }
 
-# Get service principal for SQL Managed Instance
+# Get service principal for your SQL Managed Instance
 $roleMember = Get-AzureADServicePrincipal -SearchString $managedInstanceName
 $roleMember.Count
 if ($roleMember -eq $null) {
@@ -187,9 +186,9 @@ Pokud chcete zřídit správce Azure AD, spusťte následující příkazy Azure
 - Connect – AzAccount
 - Vybrat – AzSubscription
 
-Rutiny používané ke zřízení a správě správce Azure AD pro spravovanou instanci SQL:
+Rutiny používané ke zřízení a správě správce Azure AD pro vaši spravovanou instanci SQL jsou uvedené v následující tabulce:
 
-| Název rutiny | Description |
+| Název rutiny | Popis |
 | --- | --- |
 | [Set-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlinstanceactivedirectoryadministrator) |Zřídí správce Azure AD pro spravovanou instanci SQL v aktuálním předplatném. (Musí být z aktuálního předplatného)|
 | [Remove-AzSqlInstanceActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlinstanceactivedirectoryadministrator) |Odebere správce Azure AD pro spravovanou instanci SQL v aktuálním předplatném. |
@@ -217,9 +216,9 @@ Remove-AzSqlInstanceActiveDirectoryAdministrator -ResourceGroupName "ResourceGro
 
 Správce Azure AD pro spravovanou instanci SQL můžete také zřídit voláním následujících příkazů rozhraní příkazového řádku:
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
-|[AZ SQL mi AD-admin Create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | Zřídí správce Azure Active Directory pro spravovanou instanci SQL. (Musí být z aktuálního předplatného) |
+|[AZ SQL mi AD-admin Create](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-create) | Zřídí správce Azure Active Directory pro spravovanou instanci SQL (musí být z aktuálního předplatného). |
 |[AZ SQL mi AD-admin DELETE](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-delete) | Odebere správce Azure Active Directory pro spravovanou instanci SQL. |
 |[AZ SQL mi AD – seznam správců](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-list) | Vrátí informace o Správci Azure Active Directory aktuálně nakonfigurovaném pro spravovanou instanci SQL. |
 |[AZ SQL mi AD – aktualizace pro správce](/cli/azure/sql/mi/ad-admin#az-sql-mi-ad-admin-update) | Aktualizuje Správce služby Active Directory pro spravovanou instanci SQL. |
@@ -280,7 +279,7 @@ Pokud chcete spustit rutiny PowerShellu, musíte mít Azure PowerShell nainstalo
 
 Rutiny používané ke zřízení a správě správce Azure AD pro SQL Database a Azure synapse:
 
-| Název rutiny | Description |
+| Název rutiny | Popis |
 | --- | --- |
 | [Set-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/set-azsqlserveractivedirectoryadministrator) |Zřídí správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. (Musí být z aktuálního předplatného) |
 | [Remove-AzSqlServerActiveDirectoryAdministrator](/powershell/module/az.sql/remove-azsqlserveractivedirectoryadministrator) |Odebere správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse.|
@@ -325,7 +324,7 @@ Remove-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -Se
 
 Správce Azure AD můžete zřídit voláním následujících příkazů rozhraní příkazového řádku:
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 |[AZ SQL Server AD-admin Create](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) | Zřídí správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. (Musí být z aktuálního předplatného) |
 |[AZ SQL Server AD – odstranění správce](/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) | Odebere správce Azure Active Directory pro server hostující SQL Database nebo Azure synapse. |
@@ -358,12 +357,12 @@ Tyto požadavky můžete splnit:
 
 ## <a name="create-contained-users-mapped-to-azure-ad-identities"></a>Vytvoření obsažených uživatelů mapovaných na identity Azure AD
 
-Vzhledem k tomu, že spravovaná instance SQL podporuje objekty zabezpečení serveru Azure AD (přihlášení), není nutné používat uživatele databáze s omezením. Objekty zabezpečení serveru Azure AD (přihlášení) umožňují vytvářet přihlášení z uživatelů, skupin a aplikací Azure AD. To znamená, že můžete ověřit pomocí služby SQL Managed instance pomocí přihlašovacích údajů serveru Azure AD, nikoli uživatele s omezením databáze. Další informace najdete v tématu [Přehled spravované instance SQL](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). Syntaxi při vytváření objektů zabezpečení serveru Azure AD (přihlášení) najdete v tématu věnovaném <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Vytvoření přihlašovacích</a>údajů.
+Protože spravovaná instance SQL podporuje objekty zabezpečení serveru Azure AD (přihlášení), není nutné používat uživatele databáze s omezením. Objekty zabezpečení serveru Azure AD (přihlášení) umožňují vytvářet přihlášení z uživatelů, skupin a aplikací Azure AD. To znamená, že můžete ověřit pomocí SQL spravované instance pomocí přihlašovacích údajů serveru Azure AD, nikoli uživatele databáze s omezením. Další informace najdete v tématu [Přehled spravované instance SQL](../managed-instance/sql-managed-instance-paas-overview.md#azure-active-directory-integration). Syntaxi při vytváření objektů zabezpečení serveru Azure AD (přihlášení) najdete v tématu věnovaném <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Vytvoření přihlašovacích</a>údajů.
 
 Ověřování pomocí Azure Active Directory s SQL Database a Azure synapse ale vyžaduje používání uživatelů databáze s omezením na základě identity Azure AD. Uživatel databáze s omezením nemá přihlašovací údaje v hlavní databázi a mapuje se na identitu ve službě Azure AD, která je přidružená k databázi. Identitou Azure AD může být buď jednotlivý uživatelský účet, nebo skupina. Další informace o uživatelích databáze s omezením najdete v tématu databáze [uživatelů s omezením – vytvoření přenosné](https://msdn.microsoft.com/library/ff929188.aspx)databáze.
 
 > [!NOTE]
-> Uživatele databáze (s výjimkou správců) nelze vytvořit pomocí Azure Portal. Role RBAC se nešíří do SQL Database, spravované instance SQL nebo Azure synapse. Role Azure RBAC se používají ke správě prostředků Azure a nevztahují se na oprávnění databáze. Například role **přispěvatel SQL Server** neuděluje přístup pro připojení k SQL Database, spravované instanci SQL nebo Azure synapse. Přístupové oprávnění musí být uděleno přímo v databázi pomocí příkazů jazyka Transact-SQL.
+> Uživatele databáze (s výjimkou správců) nelze vytvořit pomocí Azure Portal. Role RBAC se nešíří do databáze nástroje SQL Database, spravované instance SQL nebo Azure synapse. Role Azure RBAC se používají ke správě prostředků Azure a nevztahují se na oprávnění databáze. Například role **přispěvatel SQL Server** neuděluje přístup pro připojení k databázi v SQL Database, spravované instanci SQL nebo Azure synapse. Přístupové oprávnění musí být uděleno přímo v databázi pomocí příkazů jazyka Transact-SQL.
 
 > [!WARNING]
 > Speciální znaky jako dvojtečka `:` nebo ampersand, `&` Pokud jsou zahrnuty jako uživatelská jména v příkazech T-SQL a, nejsou `CREATE LOGIN` `CREATE USER` podporovány.
@@ -396,7 +395,7 @@ CREATE USER [appName] FROM EXTERNAL PROVIDER;
 ```
 
 > [!NOTE]
-> Tento příkaz vyžaduje, aby služba SQL Access Azure AD ("externí poskytovatel") jménem přihlášeného uživatele. Někdy nastane situace, které způsobí, že Azure AD vrátí výjimku zpátky do SQL. V těchto případech se uživateli zobrazí chyba SQL 33134, která by měla obsahovat chybovou zprávu specifickou pro AAD. Ve většině případů tato chyba znamená, že přístup je odepřený nebo že se uživatel musí zaregistrovat v MFA pro přístup k prostředku nebo že přístup mezi aplikacemi první strany musí být zpracován prostřednictvím předvedení. V prvních dvou případech je problém obvykle způsoben zásadami podmíněného přístupu, které jsou nastaveny v tenantovi AAD uživatele: zabrání uživateli v přístupu k externímu poskytovateli. Aktualizace zásad certifikační autority tak, aby povolovala přístup k aplikaci "00000002-0000-0000-C000-000000000000" (ID aplikace Graph API AAD) by měla tento problém vyřešit. V případě, že chyba znamená, že přístup mezi aplikacemi první strany musí být zpracován prostřednictvím předvedení, problém je proto, že uživatel je přihlášený jako instanční objekt. Příkaz by měl být úspěšný, pokud ho spustí uživatel.
+> Tento příkaz vyžaduje, aby služba SQL Access Azure AD ("externí poskytovatel") jménem přihlášeného uživatele. Někdy nastane situace, které způsobí, že Azure AD vrátí výjimku zpátky do SQL. V těchto případech se uživateli zobrazí chyba SQL 33134, která by měla obsahovat chybovou zprávu specifickou pro Azure AD. Ve většině případů tato chyba znamená, že přístup je odepřený nebo že se uživatel musí zaregistrovat v MFA pro přístup k prostředku nebo že přístup mezi aplikacemi první strany musí být zpracován prostřednictvím předvedení. V prvních dvou případech je problém obvykle způsoben zásadami podmíněného přístupu, které jsou nastaveny v tenantovi Azure AD uživatele: znemožňuje uživateli přístup k externímu poskytovateli. Aktualizace zásad certifikační autority tak, aby povolovala přístup k aplikaci "00000002-0000-0000-C000-000000000000" (ID aplikace Graph API Azure AD) by měla tento problém vyřešit. V případě, že chyba znamená, že přístup mezi aplikacemi první strany musí být zpracován prostřednictvím předvedení, problém je proto, že uživatel je přihlášený jako instanční objekt. Příkaz by měl být úspěšný, pokud ho spustí uživatel.
 
 > [!TIP]
 > Nemůžete přímo vytvořit uživatele z jiné Azure Active Directory než Azure Active Directory, která je přidružená k vašemu předplatnému Azure. Do skupiny služby Active Directory ve službě Active Directory klienta se ale dají přidat i členové jiných aktivních adresářů, které jsou importované uživatele v přidružené službě Active Directory (označované jako externí uživatelé). Když pro tuto skupinu AD vytvoříte uživatele databáze s omezením, můžou uživatelé z externí služby Active Directory získat přístup k SQL Database.
@@ -435,7 +434,7 @@ Tuto metodu použijte, pokud jste se přihlásili k Windows pomocí přihlašova
 
    ![Vybrat integrované ověřování Active Directory][11]
 
-2. Vyberte tlačítko **Možnosti** a na stránce **Vlastnosti připojení** do pole **připojit k databázi** zadejte název uživatelské databáze, ke které se chcete připojit. Další informace najdete v článku [vícefaktorové ověřování AAD](authentication-mfa-ssms-overview.md#azure-ad-domain-name-or-tenant-id-parameter) na rozdílech mezi vlastnostmi připojení pro SSMS 17. x a 18. x.
+2. Vyberte tlačítko **Možnosti** a na stránce **Vlastnosti připojení** do pole **připojit k databázi** zadejte název uživatelské databáze, ke které se chcete připojit. Další informace najdete v článku [vícefaktorové ověřování Azure AD](authentication-mfa-ssms-overview.md#azure-ad-domain-name-or-tenant-id-parameter) na rozdíl mezi vlastnostmi připojení pro SSMS 17. x a 18. x.
 
    ![Vyberte název databáze.][13]
 
@@ -443,7 +442,7 @@ Tuto metodu použijte, pokud jste se přihlásili k Windows pomocí přihlašova
 
 Tuto metodu použijte při připojení k hlavnímu názvu Azure AD pomocí spravované domény Azure AD. Můžete ji také použít pro federované účty bez přístupu k doméně, například při vzdálené práci.
 
-Tuto metodu použijte k ověření SQL Database nebo spravované instance SQL pomocí uživatelů identity jenom s cloudem Azure AD nebo těch, kteří používají hybridní identity Azure AD. Tato metoda podporuje uživatele, kteří chtějí používat pověření systému Windows, ale jejich místní počítač není připojen k doméně (například pomocí vzdáleného přístupu). V takovém případě může uživatel systému Windows označit svůj doménový účet a heslo a ověřit je SQL Database, spravované instanci SQL nebo Azure synapse.
+Tuto metodu použijte, chcete-li provést ověření v databázi v SQL Database nebo spravované instanci SQL s uživateli identity pouze cloudu Azure AD, nebo s použitím hybridních identit Azure AD. Tato metoda podporuje uživatele, kteří chtějí používat pověření systému Windows, ale jejich místní počítač není připojen k doméně (například pomocí vzdáleného přístupu). V takovém případě může uživatel systému Windows označit svůj účet domény a heslo a ověřit ho v databázi v SQL Database, spravované instanci SQL nebo Azure synapse.
 
 1. Spusťte Management Studio nebo datové nástroje a v dialogovém okně **připojit k serveru** (nebo **se připojte k databázovému stroji**) v poli **ověřování** vyberte možnost **Azure Active Directory-heslo**.
 
@@ -457,9 +456,9 @@ Tuto metodu použijte k ověření SQL Database nebo spravované instance SQL po
 
 ### <a name="active-directory-interactive-authentication"></a>Interaktivní ověřování služby Active Directory
 
-Tuto metodu použijte pro interaktivní ověřování s nebo bez služby Multi-Factor Authentication (MFA) s heslem, které se požaduje interaktivně. Tato metoda se dá použít k ověření SQL Database, spravované instance SQL a Azure synapse pro uživatele identity jenom pro cloudové služby Azure AD nebo pro uživatele, kteří používají hybridní identity Azure AD.
+Tuto metodu použijte pro interaktivní ověřování s nebo bez Multi-Factor Authentication (MFA) s heslem, které se požaduje interaktivně. Tato metoda se dá použít k ověření databáze v SQL Database, spravované instanci SQL a Azure synapse pro uživatele identity jenom pro cloudové identity Azure AD nebo pro uživatele, kteří používají hybridní identity Azure AD.
 
-Další informace najdete v tématu [použití vícefaktorového ověřování AAD s SQL Database a Azure synapse (podpora SSMS pro MFA)](authentication-mfa-ssms-overview.md).
+Další informace najdete v tématu [použití ověřování Multi-Factor Azure AD s SQL Database a Azure synapse (podpora SSMS pro MFA)](authentication-mfa-ssms-overview.md).
 
 ## <a name="using-an-azure-ad-identity-to-connect-from-a-client-application"></a>Připojení z klientské aplikace pomocí identity Azure AD
 
@@ -499,7 +498,7 @@ Přečtěte si další informace o metodách ověřování Azure AD pomocí uká
 
 ## <a name="azure-ad-token"></a>Token Azure AD
 
-Tato metoda ověřování umožňuje službám střední vrstvy získat tokeny [JSON web tokeny (Jwt)](../../active-directory/develop/id-tokens.md) pro připojení k SQL Database, spravované instanci SQL nebo Azure synapse získáním tokenu z Azure Active Directory (AAD). Tato metoda umožňuje různé scénáře aplikací, včetně identit služeb, instančních objektů a aplikací pomocí ověřování založeného na certifikátech. Chcete-li použít ověřování pomocí tokenu Azure AD, musíte provést čtyři základní kroky:
+Tato metoda ověřování umožňuje službám střední vrstvy získat tokeny [JSON web tokeny (Jwt)](../../active-directory/develop/id-tokens.md) pro připojení k databázi v SQL Database, spravované instanci SQL nebo Azure synapse získáním tokenu z Azure AD. Tato metoda umožňuje různé scénáře aplikací, včetně identit služeb, instančních objektů a aplikací pomocí ověřování založeného na certifikátech. Chcete-li použít ověřování pomocí tokenu Azure AD, musíte provést čtyři základní kroky:
 
 1. Zaregistrujte svoji aplikaci pomocí Azure Active Directory a Získejte ID klienta pro svůj kód.
 2. Vytvořte uživatele databáze reprezentující aplikaci. (Dokončeno dříve v kroku 6.)
@@ -529,7 +528,7 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -G
 sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyAADPassword -G -l 30
 ```
 
-## <a name="troubleshooting-azure-ad-authentication"></a>Řešení potíží s ověřováním Azure AD
+## <a name="troubleshoot-azure-ad-authentication"></a>Řešení potíží s ověřováním Azure AD
 
 Pokyny k řešení problémů s ověřováním Azure AD najdete na následujícím blogu:<https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 

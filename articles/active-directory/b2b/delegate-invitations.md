@@ -11,14 +11,14 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf872991adbf1361a482f6618e57304e33ec1261
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: fa2b5f17af466d5ea2b6e3ba942fafc24cc94713
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83591280"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204255"
 ---
-# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Povolit externí spolupráci B2B a spravovat, kdo může pozvat hosty
+# <a name="enable-b2b-external-collaboration-and-manage-who-can-invite-guests"></a>Povolení externí spolupráce B2B a správa toho, kdo může zvát hosty
 
 Tento článek popisuje, jak povolit spolupráci B2B v Azure Active Directory (Azure AD) a určit, kdo může pozvat hosty. Ve výchozím nastavení mohou všichni uživatelé a hosté ve vašem adresáři pozvat hosty i v případě, že nejsou přiřazeni k roli správce. Nastavení externí spolupráce vám umožní zapnout nebo vypnout pozvánky hostů pro různé typy uživatelů ve vaší organizaci. Můžete také delegovat pozvánky na jednotlivé uživatele přiřazením rolí, které jim umožní pozvat hosty.
 
@@ -48,6 +48,9 @@ Ve výchozím nastavení mohou všichni uživatelé, včetně hostů, pozvat už
    - **Hosté můžou pozvat**: Pokud chcete, aby hosty mohli pozvat další hosty, nastavte tuto zásadu na **Ano**.
    - **Povolení e-mailového hesla pro hosty (Preview)**: Další informace o funkci jednorázového hesla najdete v tématu e- [mailové ověřování heslem jednorázového hesla (Preview)](one-time-passcode.md).
    - **Omezení spolupráce**: Další informace o povolení nebo blokování pozvánek ke konkrétním doménám najdete v tématu [Povolení nebo blokování pozvánek uživatelům B2B z konkrétních organizací](allow-deny-list.md).
+   
+   > [!NOTE]
+   > Pokud je možné, že **členové můžou pozvat** na možnost **ne** a **Správci a uživatelé v roli pozvat pozvánky hosta** je nastavená na **Ano**, uživatelé v roli **pozvání hosta** budou mít i nadále možnost pozvat hosty.
 
 ## <a name="assign-the-guest-inviter-role-to-a-user"></a>Přiřazení role pozvánky hosta uživateli
 
@@ -66,5 +69,4 @@ Přečtěte si následující články o spolupráci Azure AD B2B:
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 - [Přidání uživatelů typu Host pro spolupráci B2B bez pozvánky](add-user-without-invite.md)
 - [Přidání uživatele spolupráce B2B do role](add-guest-to-role.md)
-
 

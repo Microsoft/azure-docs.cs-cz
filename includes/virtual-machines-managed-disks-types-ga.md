@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/28/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 6740ea320f2d950386da12eb44726e2c826b60a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d263a1fb329f5a18fec760413300296643768c1d
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80386083"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200387"
 ---
 ## <a name="premium-ssd"></a>SSD úrovně Premium
 
@@ -70,6 +70,6 @@ Při použití spravovaných disků platí následující doporučení pro faktu
 - Přenosy odchozích dat
 - Počet transakcí
 
-**Velikost spravovaného disku**: spravované disky se účtují podle zřízené velikosti. Azure namapuje zřízenou velikost (zaokrouhlenou nahoru) na nejbližší nabízenou velikost disku. Podrobnosti o nabízených velikostech disků najdete v předchozích tabulkách. Každý disk se mapuje na podporovanou nabídku velikosti zřízeného disku a účtuje se odpovídajícím způsobem. Pokud jste například zřídili 200 GiB SSD úrovně Standard, namapuje se na nabídku velikost disku E15 (256 GiB). Fakturace za libovolný zřízený disk se účtuje po hodinách pomocí měsíčních cen za nabídku Premium Storage. Pokud jste například zřídili disk E10 a odstranili jste ho po 20 hodinách, bude se vám účtovat částka nabídky E10 na 20 hodin. To je bez ohledu na množství skutečných dat zapsaných na disk.
+**Velikost spravovaného disku**: spravované disky se účtují podle zřízené velikosti. Azure namapuje zřízenou velikost (zaokrouhlenou nahoru) na nejbližší nabízenou velikost disku. Podrobnosti o nabízených velikostech disků najdete v předchozích tabulkách. Každý disk se mapuje na podporovanou nabídku velikosti zřízeného disku a účtuje se odpovídajícím způsobem. Pokud jste například zřídili 200 GiB SSD úrovně Standard, namapuje se na nabídku velikost disku E15 (256 GiB). Fakturace za libovolný zřízený disk se účtuje po hodinách za použití měsíčních cen za nabídku úložiště. Pokud jste například zřídili disk E10 a odstranili jste ho po 20 hodinách, bude se vám účtovat částka nabídky E10 na 20 hodin. To je bez ohledu na množství skutečných dat zapsaných na disk.
 
 **Snímky**: snímky se účtují na základě použité velikosti. Pokud třeba vytvoříte snímek spravovaného disku s zřízenou kapacitou 64 GiB a skutečná velikost využitých dat je 10 GiB, bude se snímek fakturovat jenom za využitou velikost dat 10 GiB.

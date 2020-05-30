@@ -1,6 +1,6 @@
 ---
-title: Načtení dat do Azure SQL Data Warehouse
-description: Použití Azure Data Factory ke kopírování dat do Azure SQL Data Warehouse
+title: Načtení dat do služby Azure synapse Analytics
+description: Použití Azure Data Factory ke kopírování dat do služby Azure synapse Analytics
 services: data-factory
 ms.author: jingwang
 author: linda33wj
@@ -10,38 +10,38 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 04/16/2020
-ms.openlocfilehash: e0a9a00aa6abd35ad723f02a30869e8f7734b1f3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 2f3932f3374367e260685ae5145da8858384c3a2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020553"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194766"
 ---
-# <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Načtení dat do služby Azure SQL Data Warehouse pomocí služby Azure Data Factory
+# <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Načtení dat do služby Azure synapse Analytics pomocí Azure Data Factory
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-[Azure SQL Data Warehouse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) je cloudová, škálovatelná databáze, která dokáže zpracovávat obrovské objemy dat, jak relační, tak i nerelační. SQL Data Warehouse je postaven na architektuře MPP (Theed Parallel Processing), která je optimalizována pro úlohy podnikového datového skladu. Nabízí cloudovou flexibilitu, díky které můžete nezávisle škálovat úložiště a výpočetní výkon.
+[Azure synapse Analytics (dříve SQL DW)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) je cloudová databáze s možností škálování na více instancí, která dokáže zpracovávat obrovské objemy dat, jak relační, tak i nerelační. Azure synapse Analytics je postavená na architektuře MPP (Theed Parallel Processing), která je optimalizovaná pro úlohy podnikového datového skladu. Nabízí cloudovou flexibilitu, díky které můžete nezávisle škálovat úložiště a výpočetní výkon.
 
-Začínáme s Azure SQL Data Warehouse je teď při použití Azure Data Factory jednodušší než kdy dřív. Azure Data Factory je plně spravovaná cloudová služba pro integraci dat. Službu můžete použít k naplnění SQL Data Warehouse daty ze stávajícího systému a šetří čas při sestavování analytických řešení.
+Začínáme s Azure synapse Analytics je teď při použití Azure Data Factory jednodušší než kdy dřív. Azure Data Factory je plně spravovaná cloudová služba pro integraci dat. Službu můžete použít k naplnění analýzy Azure synapse daty ze stávajícího systému a ušetřit čas při vytváření analytických řešení.
 
-Azure Data Factory nabízí následující výhody pro načítání dat do Azure SQL Data Warehouse:
+Azure Data Factory nabízí následující výhody pro načítání dat do služby Azure synapse Analytics:
 
 * **Snadné nastavení**: intuitivní průvodce 5 kroky bez nutnosti skriptování.
 * **Bohatá Podpora úložiště dat**: Integrovaná podpora pro bohatou sadu místních a cloudových úložišť dat. Podrobný seznam najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
 * **Zabezpečení a dodržování předpisů**: data se přenáší přes protokol HTTPS nebo ExpressRoute. Přítomnost globální služby zajišťuje, že vaše data nikdy neopustí zeměpisnou hranici.
-* **Neparalelní výkon pomocí základu**: základem je nejúčinnější způsob, jak přesunout data do Azure SQL Data Warehouse. Pomocí funkce pracovního objektu blob můžete dosáhnout vysoké rychlosti zatížení ze všech typů úložišť dat, včetně služby Azure Blob Storage a Data Lake Store. (Základem podporuje službu Azure Blob Storage a Azure Data Lake Store ve výchozím nastavení.) Podrobnosti najdete v tématu o [výkonu aktivity kopírování](copy-activity-performance.md).
+* **Neparalelní výkon pomocí základu**: základem je nejúčinnější způsob, jak přesouvat data do Azure synapse Analytics. Pomocí funkce pracovního objektu blob můžete dosáhnout vysoké rychlosti zatížení ze všech typů úložišť dat, včetně služby Azure Blob Storage a Data Lake Store. (Základem podporuje službu Azure Blob Storage a Azure Data Lake Store ve výchozím nastavení.) Podrobnosti najdete v tématu o [výkonu aktivity kopírování](copy-activity-performance.md).
 
-V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování dat _načíst data z Azure SQL Database do Azure SQL Data Warehouse_. Můžete postupovat podle podobných kroků a kopírovat data z jiných typů úložišť dat.
+V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování dat _načíst data z Azure SQL Database do služby Azure synapse Analytics_. Můžete postupovat podle podobných kroků a kopírovat data z jiných typů úložišť dat.
 
 > [!NOTE]
-> Další informace najdete v tématu [kopírování dat do nebo z Azure SQL Data Warehouse pomocí Azure Data Factory](connector-azure-sql-data-warehouse.md).
+> Další informace najdete v tématu [kopírování dat do nebo ze služby Azure synapse Analytics pomocí Azure Data Factory](connector-azure-sql-data-warehouse.md).
 
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure: Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
-* Azure SQL Data Warehouse: datový sklad obsahuje data, která se kopírují z databáze SQL. Pokud nemáte Azure SQL Data Warehouse, přečtěte si pokyny v tématu [vytvoření SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
+* Azure synapse Analytics: datový sklad obsahuje data, která se kopírují z databáze SQL. Pokud nemáte Azure synapse Analytics, přečtěte si pokyny v tématu [Vytvoření služby Azure synapse Analytics](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md).
 * Azure SQL Database: v tomto kurzu se kopírují data z Azure SQL Database s ukázkovými daty Adventure Works LT. SQL Database můžete vytvořit podle pokynů v tématu [Vytvoření databáze SQL Azure](../azure-sql/database/single-database-create-quickstart.md).
 * Účet úložiště Azure: Azure Storage se používá jako _pracovní_ objekt BLOB v operaci hromadného kopírování. Pokud účet úložiště Azure nemáte, přečtěte si pokyny v tématu [Vytvoření účtu úložiště](../storage/common/storage-account-create.md).
 
@@ -64,7 +64,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
    Výběrem dlaždice **Author & Monitor** (Vytvořit a monitorovat) otevřete na samostatné kartě aplikaci pro integraci dat.
 
-## <a name="load-data-into-azure-sql-data-warehouse"></a>Načtení dat do Azure SQL Data Warehouse
+## <a name="load-data-into-azure-synapse-analytics"></a>Načtení dat do služby Azure synapse Analytics
 
 1. Na stránce **Začínáme** vyberte dlaždici **Kopírovat data**. Spustí se nástroj pro kopírování dat.
 
@@ -115,7 +115,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 1. Na stránce **mapování tabulek** zkontrolujte obsah a vyberte **Další**. Zobrazí se mapování inteligentní tabulky. Zdrojové tabulky jsou namapovány na cílové tabulky založené na názvech tabulek. Pokud zdrojová tabulka v cíli neexistuje, Azure Data Factory ve výchozím nastavení vytvoří cílovou tabulku se stejným názvem. Zdrojovou tabulku můžete také namapovat na existující cílovou tabulku.
 
    > [!NOTE]
-   > Automatické vytvoření tabulky pro SQL Data Warehouse jímka se vztahuje, pokud je zdroj SQL Server nebo Azure SQL Database. Pokud kopírujete data z jiného zdrojového úložiště dat, budete muset před spuštěním kopie dat předem vytvořit schéma v Azure SQL Data Warehouse jímky.
+   > Automatické vytváření tabulek pro jímku Azure synapse Analytics se používá, pokud je zdroj SQL Server nebo Azure SQL Database. Pokud kopírujete data z jiného zdrojového úložiště dat, budete muset před spuštěním kopie dat předem vytvořit schéma v jímky Azure synapse Analytics.
 
    ![Stránka Mapování tabulek](./media/load-azure-sql-data-warehouse/table-mapping.png)
 
@@ -125,7 +125,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 1. Na stránce **Nastavení** proveďte následující kroky:
 
-    a. V části **pracovní nastavení** klikněte na **+ Nová** a nové pracovní úložiště. Úložiště se používá pro přípravu dat, než se načte do SQL Data Warehouse pomocí základu. Po dokončení kopírování se dočasná data v Azure Blob Storage automaticky vyčistí.
+    a. V části **pracovní nastavení** klikněte na **+ Nová** a nové pracovní úložiště. Úložiště se používá pro přípravu dat před jejich načtením do Azure synapse Analytics pomocí základu. Po dokončení kopírování se dočasná data v Azure Blob Storage automaticky vyčistí.
 
     b. Na stránce **Nová propojená služba** vyberte svůj účet úložiště a vyberte **vytvořit** a nasaďte propojenou službu.
 
@@ -152,7 +152,7 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 ## <a name="next-steps"></a>Další kroky
 
-V následujícím článku se dozvíte o podpoře Azure SQL Data Warehouse:
+V následujícím článku se dozvíte o podpoře Azure synapse Analytics:
 
 > [!div class="nextstepaction"]
->[Konektor Azure SQL Data Warehouse](connector-azure-sql-data-warehouse.md)
+>[Konektor Azure synapse Analytics](connector-azure-sql-data-warehouse.md)

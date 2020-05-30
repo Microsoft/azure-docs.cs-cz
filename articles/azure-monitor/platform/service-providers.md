@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: MeirMen
 ms.author: meirm
 ms.date: 02/03/2020
-ms.openlocfilehash: ed398e12ee90f2eef2cfa78e2ed02701e6012517
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b23cc2f69e78135998dcaa8a182f3d3ccc0eba82
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77658876"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190418"
 ---
 # <a name="azure-monitor-logs-for-service-providers"></a>Protokoly Azure Monitor pro poskytovatele služeb
 
@@ -19,7 +19,7 @@ Log Analytics pracovní prostory v Azure Monitor mohou pomáhat poskytovatelům 
 
 Velké podniky sdílí spoustu podobností s poskytovateli služeb, zejména v případě, že existuje centralizovaný tým IT, který je zodpovědný za jeho správu v mnoha různých obchodních jednotkách. Pro zjednodušení tento dokument používá *poskytovatele služeb* , ale stejné funkce jsou dostupné i pro podniky a další zákazníky.
 
-Pro partnery a poskytovatele služeb, kteří jsou součástí programu [Cloud Solution Provider (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) , je Log Analytics v Azure monitor jedna ze služeb Azure dostupných v předplatných Azure CSP.
+Pro partnery a poskytovatele služeb, kteří jsou součástí programu [Cloud Solution Provider (CSP)](https://partner.microsoft.com/en-US/membership/cloud-solution-provider) , je Log Analytics v Azure monitor jedna ze služeb Azure dostupných v předplatných Azure CSP.
 
 Log Analytics v Azure Monitor může také používat poskytovatel služeb, který spravuje prostředky zákazníka prostřednictvím funkce správy delegovaných prostředků Azure v [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/overview).
 

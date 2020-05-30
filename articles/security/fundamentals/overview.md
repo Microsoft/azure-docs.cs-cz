@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: b39eb24b5611e36d14b151aaec96941ff52f3dfa
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 401317f6b47c97a76ef2ded603063821a420933a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731691"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192543"
 ---
 # <a name="introduction-to-azure-security"></a>Seznámení se zabezpečením Azure
 ## <a name="overview"></a>Přehled
@@ -218,10 +218,10 @@ Síť Azure podporuje různé scénáře zabezpečeného vzdáleného přístupu
 ### <a name="vpn-gateway"></a>VPN Gateway
 Pokud chcete odesílat síťový provoz mezi Virtual Network Azure a vaší místní lokalitou, musíte pro Azure Virtual Network vytvořit bránu VPN. [Brána sítě VPN](../../vpn-gateway/vpn-gateway-about-vpngateways.md) je typem brány virtuální sítě, která odesílá šifrovaný provoz přes veřejné připojení. Brány VPN můžete použít také k posílání provozu mezi virtuálními sítěmi Azure přes síťové prostředky infrastruktury Azure.
 
-### <a name="express-route"></a>ExpressRoute
+### <a name="express-route"></a>Express Route
 Microsoft Azure [ExpressRoute](../../expressroute/expressroute-introduction.md) je vyhrazené propojení WAN, které umožňuje rozšiřování místních sítí do cloudu Microsoftu přes vyhrazené soukromé připojení, které usnadňuje poskytovatel připojení.
 
-![ExpressRoute](./media/overview/azure-security-fig1.png)
+![Express Route](./media/overview/azure-security-fig1.png)
 
 Pomocí ExpressRoute může vytvořit připojení ke cloudovým službám Microsoftu, jako je například Microsoft Azure, Office 365 a CRM Online. Co se týká připojení, může se jednat o síť typu any-to-any (IP VPN), síť Ethernet typu point-to-point nebo virtuální křížové připojení prostřednictvím poskytovatele připojení ve společném umístění.
 
@@ -308,7 +308,7 @@ Důležitou součástí strategie [pro kontinuitu podnikových procesů a zotave
 
 Služba Azure Key Vault (integrace) je navržená tak, aby vylepšila zabezpečení a správu těchto klíčů v zabezpečeném a vysoce dostupném umístění. Konektor SQL Serveru umožňuje SQL Server používat tyto klíče z Azure Key Vault.
 
-Pokud používáte SQL Server s místními počítači, můžete postupovat podle pokynů k přístupu k Azure Key Vault z místního počítače SQL Server. Ale pro SQL Server ve virtuálních počítačích Azure můžete ušetřit čas pomocí funkce Integrace Azure Key Vault. Pomocí několika rutin Azure PowerShell pro povolení této funkce můžete automatizovat konfiguraci nutnou k tomu, aby virtuální počítač SQL měl přístup k trezoru klíčů.
+Pokud používáte SQL Server s místními počítači, můžete postupovat podle pokynů pro přístup k Azure Key Vault z vaší místní instance SQL Server. Ale pro SQL Server ve virtuálních počítačích Azure můžete ušetřit čas pomocí funkce Integrace Azure Key Vault. Pomocí několika rutin Azure PowerShell pro povolení této funkce můžete automatizovat konfiguraci nutnou k tomu, aby virtuální počítač SQL měl přístup k trezoru klíčů.
 
 ### <a name="vm-disk-encryption"></a>Šifrování disku virtuálního počítače
 [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) je nová funkce, která vám pomůže s šifrováním disků virtuálních počítačů s Windows a Linux IaaS. Použije standardní funkci nástroje BitLocker systému Windows a funkci DM-crypt systému Linux k poskytnutí šifrování svazku pro operační systém a datové disky. Řešení je integrované s Azure Key Vault, které vám pomůžou s řízením a správou klíčů a tajných kódů na disku v předplatném Key Vault. Řešení také zajišťuje, že všechna data na discích virtuálních počítačů jsou v klidovém stavu zašifrovaná v úložišti Azure.

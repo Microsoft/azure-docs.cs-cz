@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 5b1170f721cf8521cfe1762df0cc616c938ddf28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281558"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194922"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Vložení dat do indexu služby Azure Kognitivní hledání pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -47,7 +47,7 @@ Bez ohledu na to, jestli používáte nástroje nebo rozhraní API, provedete n�
 2. Vytvořte datové **sady** , které reprezentují vstupní a výstupní data pro operaci kopírování.
 3. Vytvořte **kanál** s aktivitou kopírování, která převezme datovou sadu jako vstup a datovou sadu jako výstup.
 
-Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Entity Data Factory (propojené služby, datové sady a kanál). Pokud používáte nástroje/rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON.  Ukázku s definicemi JSON pro Data Factory entity, které se používají ke kopírování dat do indexu vyhledávání, najdete v tématu [JSON example: kopírování dat z místního SQL Server do indexu služby Azure kognitivní hledání](#json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index) v tomto článku.
+Při použití Průvodce se automaticky vytvoří definice JSON pro tyto Entity Data Factory (propojené služby, datové sady a kanál). Pokud používáte nástroje/rozhraní API (s výjimkou rozhraní .NET API), definujete tyto Data Factory entit pomocí formátu JSON.  Ukázku s definicemi JSON pro Data Factory entity, které se používají ke kopírování dat do indexu vyhledávání, najdete v části [JSON example: kopírování dat z SQL Server do indexu služby Azure kognitivní hledání](#json-example-copy-data-from-sql-server-to-azure-cognitive-search-index) tohoto článku.
 
 Následující části obsahují podrobné informace o vlastnostech JSON, které se používají k definování Data Factory entit specifických pro vyhledávací index:
 
@@ -55,19 +55,19 @@ Následující části obsahují podrobné informace o vlastnostech JSON, které
 
 Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pro propojenou službu Azure Kognitivní hledání.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | -------- | ----------- | -------- |
-| type | Vlastnost Type musí být nastavená na: **AzureSearch**. | Ano |
+| typ | Vlastnost Type musí být nastavená na: **AzureSearch**. | Ano |
 | url | Adresa URL služby vyhledávání | Ano |
-| key | Klíč správce pro vyhledávací službu. | Ano |
+| Klíč | Klíč správce pro vyhledávací službu. | Ano |
 
 ## <a name="dataset-properties"></a>Vlastnosti datové sady
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [vytvoření datových sad](data-factory-create-datasets.md) . Oddíly, jako jsou struktura, dostupnost a zásady pro datovou sadu JSON, jsou podobné pro všechny typy datových sad. Oddíl **typeProperties** se liší pro každý typ datové sady. Oddíl typeProperties pro datovou sadu typu **AzureSearchIndex** má následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 | -------- | ----------- | -------- |
-| type | Vlastnost Type musí být nastavená na **AzureSearchIndex**.| Ano |
+| typ | Vlastnost Type musí být nastavená na **AzureSearchIndex**.| Ano |
 | indexName | Název indexu hledání Data Factory nevytváří index. Index musí existovat v Azure Kognitivní hledání. | Ano |
 
 
@@ -76,10 +76,10 @@ Následující tabulka uvádí popisy pro prvky JSON, které jsou specifické pr
 
 V případě aktivity kopírování, pokud je jímka typu **AzureSearchIndexSink**, jsou v oddílu typeProperties k dispozici následující vlastnosti:
 
-| Vlastnost | Popis | Povolené hodnoty | Požaduje se |
+| Vlastnost | Popis | Povolené hodnoty | Vyžadováno |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).| Sloučení (výchozí)<br/>Odeslat| Ne |
-| WriteBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) . | 1 až 1 000. Výchozí hodnota je 1000. | Ne |
+| WriteBehavior | Určuje, zda se má sloučit nebo nahradit, když dokument v indexu již existuje. Podívejte se na [vlastnost WriteBehavior](#writebehavior-property).| Sloučení (výchozí)<br/>Odeslat| No |
+| WriteBatchSize | Když velikost vyrovnávací paměti dosáhne writeBatchSize, nahraje data do indexu vyhledávání. Podrobnosti najdete ve [vlastnosti WriteBatchSize](#writebatchsize-property) . | 1 až 1 000. Výchozí hodnota je 1000. | No |
 
 ### <a name="writebehavior-property"></a>Vlastnost WriteBehavior
 AzureSearchSink upsertuje při zápisu dat. Jinými slovy, když při psaní dokumentu už klíč dokumentu ve vyhledávacím indexu existuje, Azure Kognitivní hledání aktualizuje existující dokument, ale nevyvolává výjimku konfliktu.
@@ -99,16 +99,16 @@ Následující tabulka určuje, jestli je datový typ Azure Kognitivní hledán�
 
 | Datový typ Azure Kognitivní hledání | Podporováno v jímky Azure Kognitivní hledání |
 | ---------------------- | ------------------------------ |
-| Řetězec | Ano |
-| Int32 | Ano |
-| Int64 | Ano |
-| Double | Ano |
-| Logická hodnota | Ano |
-| DataTimeOffset | Ano |
-| Pole řetězců | Ne |
-| GeographyPoint | Ne |
+| Řetězec | Y |
+| Int32 | Y |
+| Int64 | Y |
+| Double | Y |
+| Logická hodnota | Y |
+| DataTimeOffset | Y |
+| Pole řetězců | N |
+| GeographyPoint | N |
 
-## <a name="json-example-copy-data-from-on-premises-sql-server-to-azure-cognitive-search-index"></a>Příklad JSON: kopírování dat z místních SQL Server do Azure Kognitivní hledání index
+## <a name="json-example-copy-data-from-sql-server-to-azure-cognitive-search-index"></a>Příklad JSON: kopírování dat z SQL Server do Azure Kognitivní hledání index
 
 Následující příklad ukazuje:
 
@@ -118,7 +118,7 @@ Následující příklad ukazuje:
 4. Výstupní [datová sada](data-factory-create-datasets.md) typu [AzureSearchIndex](#dataset-properties).
 4. [Kanál](data-factory-create-pipelines.md) s aktivitou kopírování, která používá [SqlSource](data-factory-sqlserver-connector.md#copy-activity-properties) a [AzureSearchIndexSink](#copy-activity-properties).
 
-Ukázka kopíruje data časových řad z místní databáze SQL Server do indexu vyhledávání po hodinách. Vlastnosti JSON použité v této ukázce jsou popsány v oddílech následujících po ukázkách.
+Ukázka kopíruje data časových řad z databáze SQL Server do doby hledání v indexu. Vlastnosti JSON použité v této ukázce jsou popsány v oddílech následujících po ukázkách.
 
 Jako první krok nastavte bránu pro správu dat na místním počítači. Pokyny najdete v článku [přesun dat mezi místními umístěními a cloudem](data-factory-move-data-between-onprem-and-cloud.md) .
 
@@ -255,7 +255,7 @@ Kanál obsahuje aktivitu kopírování, která je nakonfigurovaná tak, aby pou�
 }
 ```
 
-Pokud kopírujete data z cloudového úložiště dat do Azure Kognitivní hledání, `executionLocation` vlastnost je povinná. Následující fragment kódu JSON ukazuje změnu potřebnou v rámci aktivity `typeProperties` kopírování jako příklad. V části [Kopírovat data mezi datovými úložišti cloudu](data-factory-data-movement-activities.md#global) najdete podporované hodnoty a další podrobnosti.
+Pokud kopírujete data z cloudového úložiště dat do Azure Kognitivní hledání, `executionLocation` vlastnost je povinná. Následující fragment kódu JSON ukazuje změnu potřebnou v rámci aktivity kopírování `typeProperties` jako příklad. V části [Kopírovat data mezi datovými úložišti cloudu](data-factory-data-movement-activities.md#global) najdete podporované hodnoty a další podrobnosti.
 
 ```JSON
 "typeProperties": {
@@ -271,7 +271,7 @@ Pokud kopírujete data z cloudového úložiště dat do Azure Kognitivní hled�
 
 
 ## <a name="copy-from-a-cloud-source"></a>Kopírování ze zdroje cloudu
-Pokud kopírujete data z cloudového úložiště dat do Azure Kognitivní hledání, `executionLocation` vlastnost je povinná. Následující fragment kódu JSON ukazuje změnu potřebnou v rámci aktivity `typeProperties` kopírování jako příklad. V části [Kopírovat data mezi datovými úložišti cloudu](data-factory-data-movement-activities.md#global) najdete podporované hodnoty a další podrobnosti.
+Pokud kopírujete data z cloudového úložiště dat do Azure Kognitivní hledání, `executionLocation` vlastnost je povinná. Následující fragment kódu JSON ukazuje změnu potřebnou v rámci aktivity kopírování `typeProperties` jako příklad. V části [Kopírovat data mezi datovými úložišti cloudu](data-factory-data-movement-activities.md#global) najdete podporované hodnoty a další podrobnosti.
 
 ```JSON
 "typeProperties": {

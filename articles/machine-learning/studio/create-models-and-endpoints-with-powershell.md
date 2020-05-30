@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: a2f55798afe7b817ab366e8fa55f07078277352d
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 1dd17d3ac715c2b32f645602203aa2551c91b42a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117300"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195350"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Vytvoření více koncových bodů webové služby z jednoho experimentu pomocí ML Studio (Classic) a PowerShellu
 
@@ -50,7 +50,7 @@ Všimněte si, že modul **výstupu webové služby** byl přidán do modulu **v
 Pokud je tento experiment nasazen jako webová služba, koncový bod spojený s tímto výstupem vrátí školený model ve formátu souboru. ilearner.
 
 Všimněte si také, že jste nastavili parametr webové služby, který definuje adresu URL, kterou používá modul **Import dat** . To umožňuje použít parametr k určení jednotlivých školicích datových sad pro výuku modelu pro každé umístění.
-Existují i jiné způsoby, jak to provést. K získání dat z databáze SQL Azure můžete použít dotaz SQL s parametrem webové služby. Nebo můžete použít vstupní modul **webové služby** k předání datové sady webové službě.
+Existují i jiné způsoby, jak to provést. K získání dat z databáze v Azure SQL Database můžete použít dotaz SQL s parametrem webové služby. Nebo můžete použít vstupní modul **webové služby** k předání datové sady webové službě.
 
 ![Školený výstup modulu modelu do výstupního modulu webové služby](./media/create-models-and-endpoints-with-powershell/web-service-output.png)
 

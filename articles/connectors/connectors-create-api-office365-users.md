@@ -7,19 +7,19 @@ ms.reviewer: klam, logicappspm
 ms.date: 08/18/2016
 ms.topic: article
 tags: connectors
-ms.openlocfilehash: 179c7538d8072f0e1a4f7d049cf521971efd7a21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0361d42ea614b394142e32a9193ab1d48d1a4a6c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75666852"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194241"
 ---
 # <a name="get-and-manage-profiles-in-office-365-users-by-using-azure-logic-apps"></a>Získání a Správa profilů v uživatelích Office 365 pomocí Azure Logic Apps
 
 Připojte se k uživatelům Office 365, abyste získali profily, mohli hledat uživatele a další. Uživatelé Office 365 můžou:
 
 * Sestavte svůj obchodní tok na základě dat, která dostanete od uživatelů Office 365. 
-* Použijte akce, které získají přímé sestavy, Získejte uživatelský profil manažera a další. Tyto akce obdrží odpověď a následně zpřístupní výstup pro jiné akce. Můžete například získat přímé podřízené osoby a následně tyto informace a aktualizace databáze SQL Azure. 
+* Použijte akce, které získají přímé sestavy, Získejte uživatelský profil manažera a další. Tyto akce obdrží odpověď a následně zpřístupní výstup pro jiné akce. Můžete například získat přímé podřízené osoby a následně tyto informace a aktualizaci databáze v Azure SQL Database. 
 
 Můžete začít vytvořením aplikace logiky hned teď v tématu [Vytvoření aplikace logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 

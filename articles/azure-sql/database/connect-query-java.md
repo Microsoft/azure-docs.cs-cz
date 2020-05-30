@@ -11,17 +11,17 @@ ms.author: andrela
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-java-july2019. seo-java-august2019, sqldbrb=2 
-ms.openlocfilehash: bd84aab9903aa02aaf7845de87797900ee7b7a87
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4e5ee26b1cfa686eb501e0c6b6ba7905ea687094
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054255"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84189472"
 ---
-# <a name="quickstart-use-java-to-query-a-microsoft-azure-sql-database"></a>Rychlý Start: použití jazyka Java k dotazování na Microsoft Azure SQL Database
+# <a name="quickstart-use-java-to-query-a-database-in-azure-sql-database"></a>Rychlý Start: použití jazyka Java k dotazování databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-V tomto rychlém startu pomocí Java se připojíte k databázi SQL Azure a použijete k dotazování dat příkazy T-SQL.
+V tomto rychlém startu použijete Java k připojení k databázi v Azure SQL Database a k dotazování dat použijete příkazy T-SQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -29,13 +29,13 @@ K dokončení tohoto rychlého startu je potřeba:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-  || SQL Database | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
+  || Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
   |:--- |:--- |:---|:---|
   | Vytvořit| [Azure Portal](single-database-create-quickstart.md) | [Azure Portal](../managed-instance/instance-create-quickstart.md) | [Azure Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [Rozhraní příkazového řádku](scripts/create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
   || [PowerShell](scripts/create-and-configure-database-powershell.md) | [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md) | [PowerShell](../virtual-machines/windows/sql-vm-create-powershell-quickstart.md)
   | Konfigurace | [Pravidlo brány firewall protokolu IP na úrovni serveru](firewall-create-server-level-portal-quickstart.md)| [Připojení z virtuálního počítače](../managed-instance/connect-vm-instance-configure.md)|
-  |||[Připojení z webu](../managed-instance/point-to-site-p2s-configure.md) | [Připojení k SQL Serveru](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
+  |||[Připojení z místního prostředí](../managed-instance/point-to-site-p2s-configure.md) | [Připojení k instanci SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   |Načtení dat|Načtený Adventure Works pro každý rychlý Start|[Obnovení celosvětových dovozců](../managed-instance/restore-sample-database-quickstart.md) | [Obnovení celosvětových dovozců](../managed-instance/restore-sample-database-quickstart.md) |
   |||Obnovení nebo import Adventure Works ze souboru [BacPac](database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)| Obnovení nebo import Adventure Works ze souboru [BacPac](database-import.md) z [GitHubu](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
   |||
@@ -48,7 +48,7 @@ K dokončení tohoto rychlého startu je potřeba:
 
   # <a name="ubuntu"></a>[Ubuntu](#tab/ubuntu)
 
-  Nainstalujte Java, Java Development Kit a pak nainstalujte Maven pomocí kroků **1,2**, **1,3**a **1,4** v části [vytváření aplikací Java pomocí SQL Server v Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
+  Nainstalujte Java, nainstalujte sadu Java Development Kit a pak nainstalujte Maven pomocí kroků **1,2**, **1,3**a **1,4** v části [vytváření aplikací Java pomocí SQL Server v Ubuntu](https://www.microsoft.com/sql-server/developer-get-started/java/ubuntu/).
 
   # <a name="windows"></a>[Windows](#tab/windows)
 
@@ -62,22 +62,22 @@ K dokončení tohoto rychlého startu je potřeba:
 > [!NOTE]
 > Volitelně můžete zvolit použití spravované instance Azure SQL.
 >
-> K vytvoření a konfiguraci použijte [Azure Portal](../managed-instance/instance-create-quickstart.md), [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md)nebo rozhraní příkazového [řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)a pak nastavte připojení [na pracovišti](../managed-instance/point-to-site-p2s-configure.md) nebo [virtuálním počítači](../managed-instance/connect-vm-instance-configure.md) .
+> K vytvoření a konfiguraci použijte [Azure Portal](../managed-instance/instance-create-quickstart.md), [PowerShell](../managed-instance/scripts/create-configure-managed-instance-powershell.md)nebo [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)a pak nastavte [místní nebo](../managed-instance/point-to-site-p2s-configure.md) konektivitu [virtuálních počítačů](../managed-instance/connect-vm-instance-configure.md) .
 >
 > Pokud chcete načíst data, přečtěte si téma [Restore with BacPac](database-import.md) se souborem [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) nebo si přečtěte část [obnovení databáze World Importers](../managed-instance/restore-sample-database-quickstart.md).
 
-## <a name="get-sql-server-connection-information"></a>Získat informace o připojení k SQL serveru
+## <a name="get-server-connection-information"></a>Získat informace o připojení k serveru
 
-Získejte informace o připojení, které potřebujete pro připojení ke službě Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
+Získejte informace o připojení, které potřebujete pro připojení k databázi v Azure SQL Database. Pro nadcházející postupy budete potřebovat plně kvalifikovaný název serveru nebo název hostitele, název databáze a přihlašovací údaje.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Vyberte **databáze SQL** nebo otevřete stránku **spravované instance SQL** .
 
-3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server ve virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
+3. Na stránce **Přehled** zkontrolujte plně kvalifikovaný název serveru vedle **názvu serveru** pro databázi v Azure SQL Database nebo plně kvalifikovaného názvu serveru (nebo IP adresy) vedle **hostitele** spravované instance Azure SQL nebo SQL Server na virtuálním počítači Azure. Pokud chcete zkopírovat název serveru nebo název hostitele, najeďte na něj ukazatelem myši a vyberte ikonu **kopírování** .
 
 > [!NOTE]
-> Informace o připojení pro SQL Server na virtuálním počítači Azure najdete v tématu [připojení k SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server)
+> Informace o připojení pro SQL Server na virtuálním počítači Azure najdete v tématu [připojení k SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md#connect-to-sql-server).
 
 ## <a name="create-the-project"></a>Vytvoření projektu
 
@@ -108,7 +108,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
 
 1. Soubor *pom.xml* uložte a zavřete.
 
-## <a name="add-code-to-query-database"></a>Přidání kódu do databáze dotazů
+## <a name="add-code-to-query-the-database"></a>Přidání kódu pro dotaz do databáze
 
 1. V projektu Maven byste už měli mít soubor s názvem *App. Java* , který najdete tady:
 
@@ -172,7 +172,7 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
     ```
 
    > [!NOTE]
-   > Příklad kódu používá ukázkovou databázi **AdventureWorksLT** pro Azure SQL.
+   > Příklad kódu používá ukázkovou databázi **AdventureWorksLT** v Azure SQL Database.
 
 ## <a name="run-the-code"></a>Spuštění kódu
 
@@ -183,12 +183,10 @@ Získejte informace o připojení, které potřebujete pro připojení ke služb
     mvn -q exec:java "-Dexec.mainClass=com.sqldbsamples.App"
     ```
 
-1. Ověřte, že se vrátí prvních 20 řádků a okno aplikace zavřete.
+1. Ověřte, zda je vráceno prvních 20 řádků a okno aplikace zavřete.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Návrh prvního Azure SQL Database](design-first-database-tutorial.md)  
-
+- [Návrh první databáze v Azure SQL Database](design-first-database-tutorial.md)  
 - [Ovladač Microsoft JDBC pro SQL Server](https://github.com/microsoft/mssql-jdbc)  
-
 - [Hlášení problémů / kladení dotazů](https://github.com/microsoft/mssql-jdbc/issues)  

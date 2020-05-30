@@ -1,5 +1,5 @@
 ---
-title: SQL Server dat pro SQL Azure pomocí procesu vědeckého zpracování dat Azure Data Factory – tým
+title: SQL Server dat pro SQL Database pomocí procesu vědeckého zpracování dat Azure Data Factory – tým
 description: Nastavte kanál ADF, který bude vytvářet dvě aktivity migrace dat, které společně přesouvá data mezi databázemi místně a v cloudu.
 services: machine-learning
 author: marktab
@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8f696f1c6c414cd9db082e79e0f34c56156e1ee0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a484a6c9a55eac4d166a711a9eae7990c4305cb4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76722488"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194413"
 ---
-# <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Přesun dat z místního SQL serveru do SQL Azure s využitím Azure Data Factory
+# <a name="move-data-from-a-sql-server-database-to-sql-database-with-azure-data-factory"></a>Přesunout data z databáze SQL Server do SQL Database pomocí Azure Data Factory
 
-V tomto článku se dozvíte, jak přesunout data z místní databáze SQL Server do databáze SQL Azure prostřednictvím služby Azure Blob Storage pomocí Azure Data Factory (ADF): Tato metoda je podporovaným starším přístupem, který má výhody replikované pracovní kopie, ale [doporučujeme podívat se na stránku migrace dat](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1), kde najdete nejnovější možnosti.
+V tomto článku se dozvíte, jak přesunout data z databáze SQL Server do Azure SQL Database prostřednictvím služby Azure Blob Storage pomocí Azure Data Factory (ADF): Tato metoda je podporovaným starším přístupem, který má výhody replikované pracovní kopie, ale [doporučujeme podívat se na naši stránku migrace dat](https://datamigration.microsoft.com/scenario/sql-to-azuresqldb?step=1), kde najdete nejnovější možnosti.
 
 Tabulka, která shrnuje různé možnosti přesunutí dat na Azure SQL Database, najdete v tématu [přesun dat do Azure SQL Database Azure Machine Learning](move-sql-azure.md).
 
@@ -37,13 +37,13 @@ Zvažte použití ADF:
 ADF umožňuje plánovat a monitorovat úlohy pomocí jednoduchých skriptů JSON, které pravidelně spravují pohyb dat. ADF má také další možnosti, jako je podpora složitých operací. Další informace o ADF najdete v dokumentaci na adrese [Azure Data Factory (ADF)](https://azure.microsoft.com/services/data-factory/).
 
 ## <a name="the-scenario"></a><a name="scenario"></a>Scénář
-Nastavili jsme kanál ADF, který bude vytvářet dvě aktivity migrace dat. Společně přesouvá data na denní bázi mezi místními SQL Database a Azure SQL Database v cloudu. Tyto dvě aktivity jsou:
+Nastavili jsme kanál ADF, který bude vytvářet dvě aktivity migrace dat. Společně přesouvá data každý den mezi SQL Server databáze a Azure SQL Database. Tyto dvě aktivity jsou:
 
-* kopírování dat z místní databáze SQL Server do účtu Azure Blob Storage
+* Kopírování dat z SQL Server databáze do účtu Azure Blob Storage
 * Zkopírujte data z účtu Azure Blob Storage do Azure SQL Database.
 
 > [!NOTE]
-> Výše uvedené kroky se přizpůsobují z podrobnějšího kurzu, který poskytuje tým ADF: [kopírování dat z místní SQL serverové databáze do Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) odkazy na relevantní části tohoto tématu jsou uvedené v případě potřeby.
+> Popsané kroky byly přizpůsobené z podrobnějšího kurzu poskytnutého týmem ADF: [kopírování dat z databáze SQL Server do Azure Blob Storage](https://docs.microsoft.com/azure/data-factory/tutorial-hybrid-copy-portal/) odkazy na relevantní části tohoto tématu jsou uvedené v případě potřeby.
 >
 >
 
@@ -60,10 +60,10 @@ V tomto kurzu se předpokládá, že máte následující:
 >
 >
 
-## <a name="upload-the-data-to-your-on-premises-sql-server"></a><a name="upload-data"></a>Nahrajte data do místních SQL Server
+## <a name="upload-the-data-to-your-sql-server-instance"></a><a name="upload-data"></a>Nahrajte data do instance SQL Server.
 K předvedení procesu migrace používáme [datovou sadu NYC taxislužby](https://chriswhong.com/open-data/foil_nyc_taxi/) . Datová sada taxislužby NYC je k dispozici, jak je uvedeno v tomto příspěvku, v datech Azure Blob Storage [NYC taxislužby](https://www.andresmh.com/nyctaxitrips/). Data obsahují dva soubory, soubor trip_data. csv, který obsahuje podrobnosti o cestě, a soubor trip_far. csv, který obsahuje podrobnosti o tarifu placeného pro každou cestu. Ukázka a popis těchto souborů jsou k dispozici v [popisu datové sady NYC taxislužby TRIPS](sql-walkthrough.md#dataset).
 
-Můžete buď upravit proceduru, která je zde uvedena, do sady vlastních dat nebo postupovat podle kroků popsaných v datové sadě taxislužby NYC. Pokud chcete nahrát datovou sadu taxislužby NYC do místní databáze SQL Server, postupujte podle pokynů uvedených v [hromadném importu dat do databáze SQL Server](sql-walkthrough.md#dbload). Tyto pokyny jsou pro SQL Server na virtuálním počítači Azure, ale postup odesílání do místní SQL Server je stejný.
+Můžete buď upravit proceduru, která je zde uvedena, do sady vlastních dat nebo postupovat podle kroků popsaných v datové sadě taxislužby NYC. Pokud chcete nahrát datovou sadu taxislužby NYC do databáze SQL Server, postupujte podle pokynů uvedených v [hromadném importu dat do SQL Server databáze](sql-walkthrough.md#dbload).
 
 ## <a name="create-an-azure-data-factory"></a><a name="create-adf"></a>Vytvoření Azure Data Factory
 K dispozici jsou pokyny pro vytvoření nové Azure Data Factory a skupiny prostředků v [Azure Portal](https://portal.azure.com/) [Vytvoření Azure Data Factory](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-data-factory). Pojmenujte novou instanci ADF *adfdsp* a pojmenujte skupinu prostředků, kterou vytvořila *adfdsprg*.
@@ -87,13 +87,13 @@ Podrobný postup pro vytváření propojených služeb je k dispozici v části 
 Pomocí následujících postupů založených na skriptech vytvořte tabulky, které určují strukturu, umístění a dostupnost datových sad. Soubory JSON se používají k definování tabulek. Další informace o struktuře těchto souborů naleznete v tématu [datové sady](../../data-factory/concepts-datasets-linked-services.md).
 
 > [!NOTE]
-> Před spuštěním rutiny `Add-AzureAccount` [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) byste měli spustit rutinu, abyste zkontrolovali, jestli je pro provedení příkazu vybraný správné předplatné Azure. Dokumentaci k této rutině najdete v tématu [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0).
+> `Add-AzureAccount`Před spuštěním rutiny [New-AzureDataFactoryTable](https://msdn.microsoft.com/library/azure/dn835096.aspx) byste měli spustit rutinu, abyste zkontrolovali, jestli je pro provedení příkazu vybraný správné předplatné Azure. Dokumentaci k této rutině najdete v tématu [Add-AzureAccount](/powershell/module/servicemanagement/azure/add-azureaccount?view=azuresmps-3.7.0).
 >
 >
 
 Definice založené na formátu JSON v tabulkách používají následující názvy:
 
-* **název tabulky** v místním SQL serveru je *nyctaxi_data*
+* **název tabulky** v SQL Server je *nyctaxi_data*
 * **název kontejneru** v účtu Azure Blob Storage je *ContainerName* .
 
 Pro tento kanál ADF jsou potřeba tři definice tabulek:
@@ -108,7 +108,7 @@ Pro tento kanál ADF jsou potřeba tři definice tabulek:
 >
 
 ### <a name="sql-on-premises-table"></a><a name="adf-table-onprem-sql"></a>Místní tabulka SQL
-Definice tabulky pro místní SQL Server je určena v následujícím souboru JSON:
+Definice tabulky pro SQL Server je určena v následujícím souboru JSON:
 
 ```json
 {
@@ -226,12 +226,12 @@ Pomocí výše uvedených definic tabulek je definice kanálu pro ADF uvedená n
     "name": "AMLDSProcessPipeline",
     "properties":
     {
-        "description" : "This pipeline has one Copy activity that copies data from an on-premises SQL to Azure blob",
+        "description" : "This pipeline has one Copy activity that copies data from SQL Server to Azure blob",
         "activities":
         [
             {
                 "name": "CopyFromSQLtoBlob",
-                "description": "Copy data from on-premises SQL server to blob",
+                "description": "Copy data from SQL Server to blob",
                 "type": "CopyActivity",
                 "inputs": [ {"name": "OnPremSQLTable"} ],
                 "outputs": [ {"name": "OutputBlobTable"} ],

@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 7b5f566757dd77a61f252b123d0c9c1b74303fbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06efebb1c92b03036f4ae0b904ebfcc4c0c0f8ff
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74034125"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220018"
 ---
 # <a name="azcopy-jobs-show"></a>azcopy jobs show
 
@@ -25,7 +25,7 @@ Pokud je k dispozici pouze ID úlohy bez příznaku, bude vrácena souhrn průb�
 
 Počty bajtů a procento dokončení, které se zobrazí po spuštění tohoto příkazu, odrážejí pouze soubory, které jsou dokončeny v rámci úlohy. Nereflektují částečně dokončené soubory.
 
-Pokud je `with-status` příznak nastaven, zobrazí se seznam přenosů v úloze s danou hodnotou.
+Pokud `with-status` je příznak nastaven, zobrazí se seznam přenosů v úloze s danou hodnotou.
 
 ```azcopy
 azcopy jobs show [jobID] [flags]
@@ -51,6 +51,7 @@ azcopy jobs show [jobID] [flags]
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
+|--Trusted – řetězec Microsoft-přípony   |Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí hodnota je *. Core.Windows.NET;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.|
 
 ## <a name="see-also"></a>Viz také
 

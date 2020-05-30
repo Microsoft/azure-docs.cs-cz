@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c5643b0ce9d93c28372b30e6fc114816cafbce6
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: b45b2294d56de896849dca0f387a4e26b845aa93
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690470"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204187"
 ---
 # <a name="what-is-conditional-access-report-only-mode"></a>Co je režim pouze pro sestavy podmíněného přístupu?
 
@@ -30,7 +30,7 @@ Režim pouze pro sestavy je nový stav zásad podmíněného přístupu, který 
 - Zákazníci s předplatným Azure Monitor můžou monitorovat dopad zásad podmíněného přístupu pomocí sešitu s přehledem podmíněného přístupu.
 
 > [!WARNING]
-> Zásady v režimu pouze pro sestavy, které vyžadují vyhovující zařízení, mohou uživatele v systému Mac, iOS a Android vyzvat k výběru certifikátu zařízení během vyhodnocování zásad, a to i v případě, že není vynuceno dodržování předpisů zařízením. Tyto výzvy se můžou opakovat, dokud zařízení nedodržuje předpisy. Pokud chcete koncovým uživatelům zabránit v přijímání výzev během přihlašování, vylučte platformy Mac, iOS a Android ze zásad pouze pro sestavy, které provádějí kontroly dodržování předpisů zařízením.
+> Zásady v režimu pouze pro sestavy, které vyžadují vyhovující zařízení, mohou uživatele v systému Mac, iOS a Android vyzvat k výběru certifikátu zařízení během vyhodnocování zásad, a to i v případě, že není vynuceno dodržování předpisů zařízením. Tyto výzvy se můžou opakovat, dokud zařízení nedodržuje předpisy. Pokud chcete koncovým uživatelům zabránit v přijímání výzev během přihlašování, vylučte platformy Mac, iOS a Android ze zásad pouze pro sestavy, které provádějí kontroly dodržování předpisů zařízením. Režim pouze pro sestavy nelze použít pro zásady certifikační autority s oborem "akce uživatele".
 
 ![Karta pouze pro sestavy v protokolu přihlášení ke službě Azure AD](./media/concept-conditional-access-report-only/report-only-detail-in-sign-in-log.png)
 

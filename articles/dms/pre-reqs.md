@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/25/2020
-ms.openlocfilehash: 904ebb2e97ef84e1b0c2a83e5cb153bdb7e44746
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9aaf334b328b2e20ed94f0c7c87727add1f2baee
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018918"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195671"
 ---
 # <a name="overview-of-prerequisites-for-using-the-azure-database-migration-service"></a>Přehled požadavků pro používání služby Azure Database Migration Service
 
@@ -125,9 +125,9 @@ Při použití Azure Database Migration Service k provádění SQL Server k Azur
    > Úplný seznam požadavků nutných k použití Azure Database Migration Service k provedení migrace z SQL Server na Azure SQL Database najdete v kurzu [migrace SQL Server na Azure SQL Database](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-azure-sql).
    >
 
-## <a name="prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance"></a>Předpoklady pro migraci SQL Server do spravované instance Azure SQL Database
+## <a name="prerequisites-for-migrating-sql-server-to-azure-sql-managed-instance"></a>Předpoklady pro migraci SQL Server do spravované instance Azure SQL
 
-* Vytvořte Azure SQL Database spravovanou instanci podle podrobných informací v článku [vytvoření Azure SQL Database spravované instance v Azure Portal](https://aka.ms/sqldbmi).
+* Vytvořte spravovanou instanci SQL podle podrobných pokynů v článku [Vytvoření spravované instance Azure SQL v Azure Portal](https://aka.ms/sqldbmi).
 * Otevřete brány firewall, aby se povolil provoz SMB na portu 445 pro Azure Database Migration Service IP adresa nebo rozsah podsítě.
 * Otevřete bránu Windows Firewall a povolte službě Azure Database Migration Service přístup ke zdrojovému SQL Serveru, který ve výchozím nastavení probíhá přes port TCP 1433.
 * Pokud provozujete několik pojmenovaných instancí SQL Serveru s využitím dynamických portů, možná budete chtít povolit službu SQL Browser a přístup k portu UDP 1434 přes vaše brány firewall, aby se služba Azure Database Migration Service mohla připojit k pojmenované instanci na vašem zdrojovém serveru.
@@ -138,7 +138,7 @@ Při použití Azure Database Migration Service k provádění SQL Server k Azur
 * Vytvořte kontejner objektů BLOB a načtěte jeho identifikátor URI SAS pomocí kroků v článku [Správa prostředků Azure Blob Storage pomocí Průzkumník služby Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-explorer-blobs#get-the-sas-for-a-blob-container). Při vytváření identifikátoru URI SAS nezapomeňte vybrat všechna oprávnění (čtení, zápis, odstranění, seznam) v okně zásad.
 
    > [!NOTE]
-   > Úplný seznam požadavků nutných k použití Azure Database Migration Service k provedení migrace z SQL Server na Azure SQL Database spravované instance najdete v kurzu [migrace SQL Server do Azure SQL Database Managed instance](https://aka.ms/migratetomiusingdms).
+   > Úplný seznam požadavků nutných k použití Azure Database Migration Service k provedení migrace z SQL Server na spravovanou instanci SQL najdete v kurzu [migrace SQL Server do spravované instance SQL](https://aka.ms/migratetomiusingdms).
 
 ## <a name="next-steps"></a>Další kroky
 

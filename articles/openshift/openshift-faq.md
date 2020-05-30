@@ -5,65 +5,189 @@ author: jimzim
 ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 92529c2d60b32e9c8b57b897008b5333adc2a4d4
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.date: 05/29/2020
+ms.openlocfilehash: 0c4c5ddfebe9e2b5b37a2c28ec4941f6c38668f1
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594963"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219223"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Nejčastější dotazy k Azure Red Hat OpenShift
 
-Tento článek se věnuje nejčastějším dotazům o Microsoft Azure Red Hat OpenShift.
+Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Microsoft Azure Red Hat OpenShift.
 
-## <a name="which-azure-regions-are-supported"></a>Které oblasti Azure jsou podporované?
+## <a name="installation-and-upgrade"></a>Instalace a upgrade
 
-Seznam globálních oblastí, kde se podporuje Azure Red Hat OpenShift, najdete v tématu [podporované prostředky](supported-resources.md#azure-regions) .
+### <a name="which-azure-regions-are-supported"></a>Které oblasti Azure jsou podporované?
 
-## <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Můžu nasadit cluster do existující virtuální sítě?
+Seznam podporovaných oblastí pro Azure Red Hat OpenShift 4. x najdete v tématu [dostupné oblasti](https://docs.openshift.com/aro/4/welcome/index.html#available-regions).
 
-Ne. Můžete ale připojit cluster Azure Red Hat OpenShift ke stávající virtuální síti prostřednictvím partnerského vztahu. Podrobnosti najdete v tématu [připojení virtuální sítě clusteru k existující virtuální síti](tutorial-create-cluster.md#create-the-cluster) .
+Seznam podporovaných oblastí pro Azure Red Hat OpenShift 3,11 najdete v tématu [Dostupné produkty v jednotlivých oblastech](supported-resources.md#azure-regions).
 
-## <a name="what-cluster-operations-are-available"></a>Jaké operace clusteru jsou k dispozici?
+### <a name="what-virtual-machine-sizes-can-i-use"></a>Jaké velikosti virtuálních počítačů můžu použít?
 
-Navýšení nebo snížení kapacity můžete provést pouze v rámci počtu výpočetních uzlů. Po vytvoření nejsou povoleny žádné další úpravy `Microsoft.ContainerService/openShiftManagedClusters` prostředku. Maximální počet výpočetních uzlů je omezený na 20.
+Seznam podporovaných velikostí virtuálních počítačů pro Azure Red Hat OpenShift 4 najdete v tématu [podporované prostředky pro Azure Red Hat OpenShift 4](support-policies-v4.md).
 
-## <a name="what-virtual-machine-sizes-can-i-use"></a>Jaké velikosti virtuálních počítačů můžu použít?
+Seznam podporovaných velikostí virtuálních počítačů pro Azure Red Hat OpenShift 3,11 najdete v tématu [podporované prostředky pro Azure Red Hat OpenShift 3,11](supported-resources.md).
 
-Seznam velikostí virtuálních počítačů, které můžete použít v clusteru Azure Red Hat OpenShift, najdete v tématu [velikosti virtuálních počítačů Azure Red Hat OpenShift](supported-resources.md#virtual-machine-sizes) .
+### <a name="what-is-the-maximum-number-of-pods-in-an-azure-red-hat-openshift-cluster--what-is-the-maximum-number-of-pods-per-node-in-azure-red-hat-openshift"></a>Jaký je maximální počet lusků v clusteru Azure Red Hat OpenShift?  Jaký je maximální počet lusků na uzel v Azure Red Hat OpenShift?
 
-## <a name="is-data-on-my-cluster-encrypted"></a>Jsou data v clusteru zašifrovaná?
+Skutečný počet podporovaných lusků závisí na požadavcích aplikace na paměť, procesor a úložiště.
 
-Ve výchozím nastavení je šifrování v klidovém stavu. Platforma Azure Storage automaticky šifruje vaše data před jejich uložením a dešifruje data před jejich načtením. Podrobnosti najdete v tématu [šifrování služby Azure Storage pro data v klidovém provozu](https://docs.microsoft.com/azure/storage/common/storage-service-encryption) .
+Azure Red Hat OpenShift 4. x má limit 250 pod 1 a 100 limit počtu výpočetních uzlů. Tato Verzálky maximální počet lusků podporovaných v clusteru až 250 &times; 100 = 25 000.
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-my-applications"></a>Můžu pomocí Prometheus/Grafana monitorovat své aplikace?
+Azure Red Hat OpenShift 3,11 má limit 50 pod uzlem a 20 omezení výpočetních uzlů. Tato Verzálky maximální počet lusků podporovaných v clusteru až 50 &times; 20 = 1 000.
 
-Ano, Prometheus můžete nasadit do svého oboru názvů a monitorovat aplikace ve vašem oboru názvů.
+### <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Může cluster počítat výpočetní uzly napříč několika oblastmi Azure?
 
-## <a name="can-i-use-prometheusgrafana-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Můžu pomocí Prometheus/Grafana monitorovat metriky související s stavem a kapacitou clusteru?
+No. Všechny uzly v clusteru Azure Red Hat OpenShift musí pocházet ze stejné oblasti Azure.
 
-Ne, v současné době.
+### <a name="can-a-cluster-be-deployed-across-multiple-availability-zones"></a>Dá se cluster nasadit napříč několika zónami dostupnosti?
 
-## <a name="is-the-docker-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Je registr Docker dostupný externě, takže můžu používat nástroje, jako je Jenkinse?
+Ano. K tomu dojde automaticky v případě, že je váš cluster nasazený do oblasti Azure, která podporuje zóny dostupnosti. Další informace najdete v tématu [zóny dostupnosti](../availability-zones/az-overview.md#availability-zones).
 
-Registr Docker je `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` ale k dispozici, ale silný odolnost úložiště se neposkytuje. Můžete také použít [Azure Container Registry](https://azure.microsoft.com/services/container-registry/).
+### <a name="are-control-plane-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>Jsou uzly řídicí plochy abstraktní, protože se jedná o službu Azure Kubernetes Service (AKS)?
 
-## <a name="is-cross-namespace-networking-supported"></a>Je síť mezi obory názvů podporována?
+No. Všechny prostředky, včetně hlavních uzlů clusteru, se spouštějí v rámci zákaznického předplatného. Tyto typy prostředků jsou vloženy do skupiny prostředků jen pro čtení.
 
-Zákazníci a jednotliví Správci projektu mohou přizpůsobit sítě mezi obory názvů (včetně jejich odepření) na základě jednotlivých projektů `NetworkPolicy` pomocí objektů.
+### <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Je cluster umístěn v rámci předplatného zákazníka? 
 
-## <a name="can-an-admin-manage-users-and-quotas"></a>Může správce spravovat uživatele a kvóty?
+Spravovaná aplikace Azure bydlí v uzamčené skupině prostředků s předplatným zákazníka. Zákazníci si můžou zobrazit objekty v dané skupině prostředků, ale nemůžou je upravovat.
+
+### <a name="is-there-any-element-in-azure-red-hat-openshift-shared-with-other-customers-or-is-everything-independent"></a>Je nějaký element v Azure Red Hat OpenShift sdílený s ostatními zákazníky? Nebo je vše nezávislé?
+
+Každý cluster Azure Red Hat OpenShift je vyhrazený pro daného zákazníka a v rámci předplatného zákazníka. 
+
+### <a name="are-infrastructure-nodes-available"></a>Jsou k dispozici uzly infrastruktury?
+
+V clusterech Azure Red Hat OpenShift 4. x nejsou uzly infrastruktury aktuálně k dispozici.
+
+Ve výchozím nastavení jsou v clusterech Azure Red Hat OpenShift 3,11 zahrnuté uzly infrastruktury.
+
+## <a name="upgrades"></a>Programů
+
+###  <a name="what-is-the-general-upgrade-process"></a>Jaký je obecný proces upgradu?
+
+Opravy se automaticky aplikují do vašeho clusteru. Nemusíte provádět žádnou akci, abyste mohli přijímat upgrady oprav v clusteru.
+
+Spuštění upgradu je bezpečný proces ke spuštění a neměl by rušit Clusterové služby. Společný tým Microsoft-Red Hat může aktivovat proces upgradu, pokud jsou k dispozici nové verze nebo běžné chyby zabezpečení a ohrožení. Dostupné aktualizace se testují v přípravném prostředí a pak se aplikují na produkční clustery. Následující osvědčené postupy pomáhají zajistit minimální a žádné výpadky.
+
+Plánovaná údržba není u zákazníka předplánována. Oznámení související s údržbou je možné odeslat e-mailem.
+
+### <a name="what-is-the-azure-red-hat-openshift-maintenance-process"></a>Co je proces údržby Azure Red Hat OpenShift?
+
+Existují dva typy údržby pro Azure Red Hat OpenShift: upgrady a údržba iniciovaná poskytovatelem cloudu.
+- Mezi upgrady patří upgrady softwaru a časté chyby zabezpečení a ohrožení.
+- Údržba iniciovaná poskytovatelem cloudu zahrnuje sítě, úložiště a oblastní výpadky. Údržba závisí na poskytovateli cloudu a spoléhá na aktualizace poskytované zprostředkovatelem.
+
+### <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Co je v nouzi a v plánovaných oknech údržby?
+
+Mezi těmito dvěma typy údržby nerozlišujeme. Naši týmy jsou k dispozici 24/7/365 a nepoužívají tradiční plánovaná časová období údržby "mimo špičku".
+
+### <a name="how-will-the-host-operating-system-and-openshift-software-be-updated"></a>Jak se bude aktualizovat hostitelský operační systém a OpenShift software?
+
+Hostitelský operační systém a OpenShift software se aktualizují, protože Azure Red Hat OpenShift spotřebovává drobné verze vydaných verzí a opravy z nadřazeného rozhraní kontejneru OpenShift.
+
+### <a name="whats-the-process-to-reboot-the-updated-node"></a>Jaký je proces restartování aktualizovaného uzlu?
+
+Uzly se restartují jako součást upgradu.
+
+## <a name="cluster-operations"></a>Operace clusteru
+
+### <a name="can-i-use-prometheus-to-monitor-my-applications"></a>Můžu použít Prometheus k monitorování mých aplikací?
+
+Prometheus je součástí předinstalovaného a nakonfigurovaného pro clustery Azure Red Hat OpenShift 4. x. Přečtěte si další informace o [monitorování clusteru](https://docs.openshift.com/container-platform/3.11/install_config/prometheus_cluster_monitoring.html).
+
+Pro clustery Azure Red Hat OpenShift 3,11 můžete v oboru názvů nasadit Prometheus a monitorovat aplikace ve vašem oboru názvů. Další informace najdete v tématu [nasazení instance Prometheus v clusteru Azure Red Hat OpenShift](howto-deploy-prometheus.md).
+
+### <a name="can-i-use-prometheus-to-monitor-metrics-related-to-cluster-health-and-capacity"></a>Můžu pomocí Prometheus monitorovat metriky související s stavem a kapacitou clusteru?
+
+V Azure Red Hat OpenShift 4. x: Ano.
+
+V Azure Red Hat OpenShift 3,11: ne.
+
+### <a name="can-logs-of-underlying-vms-be-streamed-out-to-a-customer-log-analysis-system"></a>Můžou se do systému pro analýzu protokolů zákazníků zasílat protokoly podkladových virtuálních počítačů?
+
+Protokoly z podkladových virtuálních počítačů jsou zpracovávány spravovanou službou a nejsou vystaveny zákazníkům.
+
+### <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-azure-red-hat-openshift-cluster"></a>Jak může zákazník získat přístup k metrikám, jako je CPU/paměť na úrovni uzlu, aby bylo možné provést akci škálování, problémů ladění atd.? Nemůžu spustit kubectl v clusteru Azure Red Hat OpenShift.
+
+Pro clustery Azure Red Hat OpenShift 4. x obsahuje webová konzola OpenShift všechny metriky na úrovni uzlu. Další informace najdete v dokumentaci k Red Hat o [zobrazení informací o clusteru](https://docs.openshift.com/aro/4/web_console/using-dashboard-to-get-cluster-information.html).
+
+Pro clustery Azure Red Hat OpenShift 3,11 můžou zákazníci získat přístup k metrikám CPU nebo paměti na úrovni uzlu pomocí příkazu `oc adm top nodes` nebo `kubectl top nodes` s rolí clusteru Customer-admin. Zákazníci můžou k metrikám CPU nebo paměti přistoupit také `pods` pomocí příkazu `oc adm top pods` nebo `kubectl top pods` .
+
+### <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>Pokud jsme nastavili horizontální navýšení kapacity, jak se namapuje domény selhání Azure na umístění pod tím, aby se vykrojly selhání v jedné doméně selhání?
+
+K dispozici jsou výchozí pět domén selhání při používání služby Virtual Machine Scale Sets v Azure. Každá instance virtuálního počítače v sadě škálování se dostane do jedné z těchto domén selhání. Tím se zajistí, že se aplikace nasazené do výpočetních uzlů v clusteru umístí do samostatných domén selhání.
+
+Další informace najdete v tématu [Volba správného počtu domén selhání pro sadu škálování virtuálního počítače](../virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains.md).
+
+### <a name="is-there-a-way-to-manage-pod-placement"></a>Existuje způsob, jak spravovat umístění pod.
+
+Zákazníci mají možnost získávat uzly a zobrazovat popisky jako správce zákazníka. Díky tomu bude možné cílit na libovolný virtuální počítač v sadě škálování.
+
+Při použití určitých popisků se musí použít upozornění:
+
+- Název hostitele nesmí být použit. Název hostitele se často otáčí s upgrady a aktualizacemi a má zaručenou změnu.
+- Pokud zákazník obsahuje požadavek na konkrétní štítky nebo strategii nasazení, může to být dosaženo, ale vyžaduje technické úsilí a ještě dnes není podporovaný.
+
+Další informace najdete v tématu [řízení umístění pod](https://docs.openshift.com/aro/4/nodes/scheduling/nodes-scheduler-about.html).
+
+### <a name="is-the-image-registry-available-externally-so-i-can-use-tools-such-as-jenkins"></a>Je registr image externě dostupný, takže můžu používat nástroje, jako je Jenkinse?
+
+U clusterů 4. x je nutné vystavit zabezpečený registr a nakonfigurovat ověřování. Další informace najdete v následující dokumentaci k Red Hat:
+
+- [Zveřejňuje se registr.](https://docs.openshift.com/aro/4/registry/securing-exposing-registry.html)
+- [Přístup k registru](https://docs.openshift.com/aro/4/registry/accessing-the-registry.html)
+
+V případě clusterů 3,11 je k dispozici registr Docker image. Registr Docker je k dispozici z `https://docker-registry.apps.<clustername>.<region>.azmosa.io/` . Můžete také použít Azure Container Registry.
+
+## <a name="networking"></a>Sítě
+
+### <a name="can-i-deploy-a-cluster-into-an-existing-virtual-network"></a>Můžu nasadit cluster do existující virtuální sítě?
+
+V clusterech se 4. x můžete nasadit cluster do existující virtuální sítě.
+
+V clusterech 3,11 nemůžete nasadit cluster do existující virtuální sítě. Cluster Azure Red Hat OpenShift 3,11 můžete připojit k existující virtuální síti prostřednictvím partnerského vztahu.
+
+### <a name="is-cross-namespace-networking-supported"></a>Je síť mezi obory názvů podporována?
+
+Zákazníci a jednotliví Správci projektu mohou přizpůsobit sítě mezi obory názvů (včetně jejich odepření) na základě jednotlivých projektů pomocí `NetworkPolicy` objektů.
+
+### <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Snažím se vytvořit partnerský vztah k virtuální síti v jiném předplatném, ale při neúspěšném získání chyby CIDR virtuální sítě.
+
+V předplatném, které má virtuální síť, nezapomeňte zaregistrovat `Microsoft.ContainerService` poskytovatele pomocí následujícího příkazu:`az provider register -n Microsoft.ContainerService --wait`
+
+### <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Můžeme zadat rozsahy IP adres pro nasazení na privátní virtuální síti a vyhnout se konfliktům s ostatními podnikovými virtuální sítě po sobě partnerských vztahů?
+
+V clusterech se 4. x můžete zadat vlastní rozsahy IP adres.
+
+V clusterech 3,11 Azure Red Hat OpenShift podporuje partnerský vztah virtuálních sítí a umožňuje zákazníkovi poskytnout virtuální síť pro partnerský vztah a virtuální síť CIDR, ve které bude síť OpenShift fungovat.
+
+Virtuální síť vytvořená pomocí Azure Red Hat OpenShift bude chráněná a nebude přijímat změny konfigurace. Virtuální síť, která je v partnerském vztahu, je řízená zákazníkem a nachází se ve svém předplatném.
+
+### <a name="is-the-software-defined-network-module-configurable"></a>Je modul softwarově definované sítě konfigurovatelný?
+
+Softwarově definovaná síť je `openshift-ovs-networkpolicy` a nelze ji konfigurovat.
+
+### <a name="what-azure-load-balancer-is-used-by-azure-red-hat-openshift--is-it-standard-or-basic-and-is-it-configurable"></a>Který nástroj pro vyrovnávání zatížení Azure používá Azure Red Hat OpenShift?  Je Standard nebo Basic a je konfigurovatelná?
+
+Azure Red Hat OpenShift používá standardní Azure Load Balancer a nedá se konfigurovat.
+
+## <a name="permissions"></a>Oprávnění
+
+### <a name="can-an-admin-manage-users-and-quotas"></a>Může správce spravovat uživatele a kvóty?
 
 Ano. Správce Azure Red Hat OpenShift může kromě přístupu ke všem vytvořeným projektům spravovat i uživatele a kvóty.
 
-## <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Můžu cluster omezit jenom na určité uživatele Azure AD?
+### <a name="can-i-restrict-a-cluster-to-only-certain-azure-ad-users"></a>Můžu cluster omezit jenom na určité uživatele Azure AD?
 
-Ano. Pomocí konfigurace aplikace Azure AD můžete omezit, kteří uživatelé Azure AD se můžou přihlašovat ke clusteru. Podrobnosti najdete v tématu [Postup: omezení aplikace na skupinu uživatelů.](https://docs.microsoft.com/azure/active-directory/develop/howto-restrict-your-app-to-a-set-of-users)
+Ano. Pomocí konfigurace aplikace Azure AD můžete omezit, kteří uživatelé Azure AD se můžou přihlašovat ke clusteru. Podrobnosti najdete v tématu [Postup: omezení aplikace na sadu uživatelů](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md).
 
-## <a name="can-i-restrict-users-from-creating-projects"></a>Můžu uživatelům zabránit v vytváření projektů?
+### <a name="can-i-restrict-users-from-creating-projects"></a>Můžu uživatelům zabránit v vytváření projektů?
 
-Ano. Přihlaste se ke svému clusteru jako správce Azure Red Hat OpenShift a spusťte tento příkaz:
+Ano. Přihlaste se ke svému clusteru jako správce a spusťte tento příkaz:
 
 ```
 oc adm policy \
@@ -71,138 +195,43 @@ oc adm policy \
     system:authenticated:oauth
 ```
 
-Další informace najdete v dokumentaci k OpenShift o [vypnutí samoobslužného zřizování](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning).
+Další informace najdete v dokumentaci OpenShift o zakázání samoobslužného zřizování pro vaši verzi clusteru:
 
-## <a name="can-a-cluster-have-compute-nodes-across-multiple-azure-regions"></a>Může cluster počítat výpočetní uzly napříč několika oblastmi Azure?
+- [Zakázání samoobslužného zřizování v clusterech 4,3](https://docs.openshift.com/aro/4/applications/projects/configuring-project-creation.html#disabling-project-self-provisioning_configuring-project-creation)
+- [Zakázání samoobslužného zřizování v clusterech 3,11](https://docs.openshift.com/container-platform/3.11/admin_guide/managing_projects.html#disabling-self-provisioning)
 
-Ne. Všechny uzly v clusteru Azure Red Hat OpenShift musí pocházet ze stejné oblasti Azure.
+### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Která práva systému UNIX (v IaaS) jsou k dispozici pro uzly Master/infrastruktura/aplikace?
 
-## <a name="are-master-and-infrastructure-nodes-abstracted-away-as-they-are-with-azure-kubernetes-service-aks"></a>Jsou hlavní uzly a uzly infrastruktury abstraktní, protože se jedná o službu Azure Kubernetes Service (AKS)?
+V případě clusterů 4. x je přístup k uzlu dostupný prostřednictvím role Správce clusteru. Další informace najdete v tématu [Přehled RBAC](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
 
-Ne. Všechny prostředky, včetně hlavního serveru clusteru, se spouštějí v rámci zákaznického předplatného. Tyto typy prostředků jsou vloženy do skupiny prostředků jen pro čtení.
+V případě clusterů 3,11 je přístup k uzlu zakázán.
 
-## <a name="is-open-service-broker-for-azure-osba-supported"></a>Je otevřená Service Broker pro Azure (OSBA) podporovaná?
+### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Jaká práva OCP máme? Správce clusteru? Projekt – správce?
 
-Ano. OSBA můžete použít s Azure Red Hat OpenShift. Další informace najdete v tématu [otevření Service Broker pro Azure](https://github.com/Azure/open-service-broker-azure#openshift-project-template) .
+Pro clustery s frekvencí 4. x je k dispozici role Správce clusteru. Další informace najdete v tématu [Přehled RBAC](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
 
-## <a name="i-am-trying-to-peer-into-a-virtual-network-in-a-different-subscription-but-getting-failed-to-get-vnet-cidr-error"></a>Snažím se vytvořit partnerský vztah k virtuální síti v jiném předplatném, `Failed to get vnet CIDR` ale došlo k chybě.
+Clustery 3,11 najdete v tématu [Přehled správy clusteru](https://docs.openshift.com/aro/admin_guide/index.html) , kde najdete další podrobnosti.
 
-V předplatném, které má virtuální síť, nezapomeňte zaregistrovat `Microsoft.ContainerService` poskytovatele s`az provider register -n Microsoft.ContainerService --wait` 
+### <a name="which-identity-providers-are-available"></a>Kteří zprostředkovatelé identity jsou k dispozici?
 
-## <a name="what-is-the-azure-red-hat-openshift-aro-maintenance-process"></a>Co je proces údržby Azure Red Hat OpenShift (ARO)?
+U clusterů 4. x nakonfigurujete vlastního poskytovatele identity. Další informace najdete v dokumentaci k Red Hat týkající se [Konfigurace identity prodivers](https://docs.openshift.com/aro/4/authentication/identity_providers/configuring-ldap-identity-provider.html).
 
-Existují tři typy údržby pro společnosti ARO: upgrady, zálohování a obnovení dat etcd a údržba iniciovaná poskytovatelem cloudu.
+Pro clustery 3,11 můžete použít integraci Azure AD. 
 
-+ Mezi upgrady patří upgrady softwaru a CVEs. CVE napravení probíhá při spuštění spuštěním `yum update` a poskytuje okamžité zmírnění.  V paralelním případě se vytvoří nové sestavení image pro budoucí vytváření clusterů.
+## <a name="storage"></a>Storage
 
-+ Zálohování a správa dat etcd je automatizovaný proces, který může vyžadovat výpadky clusteru v závislosti na akci. Pokud se databáze etcd obnovuje ze zálohy, dojde k výpadkům. Zálohujte etcd každou hodinu a zachovejte posledních 6 hodin zálohování.
+### <a name="is-data-on-my-cluster-encrypted"></a>Jsou data v clusteru zašifrovaná?
 
-+ Údržba iniciovaná poskytovatelem cloudu zahrnuje sítě, úložiště a oblastní výpadky. Údržba závisí na poskytovateli cloudu a spoléhá na aktualizace poskytované zprostředkovatelem.
+Ve výchozím nastavení jsou data v klidovém stavu šifrovaná. Platforma Azure Storage automaticky šifruje vaše data před jejich uložením a dešifruje data před jejich načtením. Další informace najdete v tématu [šifrování služby Azure Storage pro](../storage/common/storage-service-encryption.md)neaktivní neaktivní data.
 
-## <a name="what-is-the-general-upgrade-process"></a>Jaký je obecný proces upgradu?
+### <a name="is-data-stored-in-etcd-encrypted-on-azure-red-hat-openshift"></a>Jsou data uložená v etcd zašifrovaná na Azure Red Hat OpenShift?
 
-Spuštění upgradu by mělo být bezpečný proces ke spuštění a nemělo by rušit Clusterové služby. SRE může aktivovat proces upgradu, pokud jsou k dispozici nové verze nebo pokud CVEs nejsou v oběhu.
+Pro clustery Azure Red Hat OpenShift 4 nejsou data ve výchozím nastavení zašifrovaná, ale máte možnost povolit šifrování. Další informace najdete v příručce k [šifrování etcd](https://docs.openshift.com/container-platform/4.3/authentication/encrypting-etcd.html).
 
-Dostupné aktualizace se testují v prostředí fáze a pak se aplikují na produkční clustery. Při použití je nový uzel dočasně přidán a uzly budou aktualizovány rotujícím způsobem tak, aby lusky zachovaly počty replik. Následující osvědčené postupy pomáhají zajistit minimální a žádné výpadky.
+V případě clusterů 3,11 nejsou data na úrovni etcd šifrovaná. Možnost zapnout šifrování není momentálně podporovaná. OpenShift podporuje tuto funkci, ale k jejímu vytváření na mapě se vyžadují technické úsilí. Data se šifrují na úrovni disku. Další informace najdete [v tématu šifrování dat ve vrstvě úložiště dat](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) .
 
-V závislosti na závažnosti nedokončeného upgradu nebo aktualizace se tento proces může lišit v tom, že se aktualizace dají rychle použít ke zmírnění ohrožení služby na CVE. Novou bitovou kopii bude sestavena asynchronně, testována a zahrnuta jako upgrade clusteru. Kromě toho se nejedná o rozdíl mezi mimořádnou a plánovanou údržbou. Plánovaná údržba není u zákazníka předplánována.
+### <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>Můžeme zvolit trvalé řešení úložiště, jako je třeba OCS? 
 
-Oznámení se můžou posílat pomocí ICM a e-mailu, pokud se vyžaduje komunikace se zákazníkem.
+Pro clustery 4. x je disk Azure (Premium_LRS) nakonfigurovaný jako výchozí třída úložiště. Další poskytovatele úložiště a podrobnosti o konfiguraci (včetně souboru Azure) najdete v dokumentaci k Red Hat v [trvalém úložišti](https://docs.openshift.com/aro/4/storage/understanding-persistent-storage.html).
 
-## <a name="what-about-emergency-vs-planned-maintenance-windows"></a>Co je v nouzi a v plánovaných oknech údržby?
-
-Mezi těmito dvěma typy údržby nerozlišujeme. Naši týmy jsou k dispozici 24/7/365 a nepoužívají tradiční plánovaná časová období údržby "mimo špičku".
-
-## <a name="how-will-host-operating-system-and-openshift-software-be-updated"></a>Jak se bude hostovat operační systém a OpenShift software se aktualizuje?
-
-Hostitelský operační systém a OpenShift software se aktualizují prostřednictvím našeho obecného procesu sestavení pro upgrade a image.
-
-## <a name="whats-the-process-to-reboot-the-updated-node"></a>Jaký je proces restartování aktualizovaného uzlu?
-
-To by mělo být zpracováno jako součást upgradu.
-
-## <a name="is-data-stored-in-etcd-encrypted-on-aro"></a>Jsou data uložená v etcd zašifrovaná v ARO společnosti?
-
-Není zašifrovaný na úrovni etcd. Možnost zapnutí této funkce je aktuálně Nepodporovaná. OpenShift podporuje tuto funkci, ale k jejímu vytváření na mapě se vyžadují technické úsilí. Data se šifrují na úrovni disku. Další informace najdete [v tématu šifrování dat ve vrstvě úložiště dat](https://docs.openshift.com/container-platform/3.11/admin_guide/encrypting_data.html) .
-
-## <a name="can-logs-of-underlying-vms-be-streamed-out-to-a-customer-log-analysis-system"></a>Můžou se do systému pro analýzu protokolů zákazníků zasílat protokoly podkladových virtuálních počítačů?
-
-Služba Syslog, protokoly Docker, deník a dmesg se zpracovávají pomocí spravované služby a nezveřejňují se zákazníkům.
-
-## <a name="how-can-a-customer-get-access-to-metrics-like-cpumemory-at-the-node-level-to-take-action-to-scale-debug-issues-etc-i-cannot-seem-to-run-kubectl-top-on-an-aro-cluster"></a>Jak může zákazník získat přístup k metrikám, jako je CPU/paměť na úrovni uzlu, aby bylo možné provést akci škálování, problémů ladění atd. Nemůžu spustit `kubectl top` v clusteru ARO.
-
-Zákazníci mohou získat přístup k metrikám CPU nebo paměti na úrovni uzlu pomocí příkazu `oc adm top nodes` nebo `kubectl top nodes` pomocí clusterrole pro správce zákazníka.  Zákazníci mají přístup také k metrikám CPU nebo paměti `pods` s příkazem nebo `oc adm top pods``kubectl top pods`
-
-## <a name="what-is-the-default-pod-scheduler-configuration-for-aro"></a>Jaká je výchozí konfigurace plánovače pro ARO společnosti?
-
-Služba ARO používá výchozí Plánovač, který je dodáván v OpenShift. V ARO společnosti se nepodporují několik dalších mechanismů. Další podrobnosti najdete v dokumentaci k [výchozímu plánovači](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/scheduler.html#generic-scheduler) a v [dokumentaci k hlavnímu plánovači](https://github.com/openshift/openshift-azure/blob/master/pkg/startup/v16/data/master/etc/origin/master/scheduler.json) .
-
-Rozšířené nebo vlastní plánování nejsou aktuálně podporovány. Další podrobnosti najdete v [dokumentaci plánování](https://docs.openshift.com/container-platform/3.11/admin_guide/scheduling/index.html) .
-
-## <a name="if-we-scale-up-the-deployment-how-do-azure-fault-domains-map-into-pod-placement-to-ensure-all-pods-for-a-service-do-not-get-knocked-out-by-a-failure-in-a-single-fault-domain"></a>Pokud jsme nastavili horizontální navýšení kapacity, jak se namapuje domény selhání Azure na umístění pod tím, aby se vykrojly selhání v jedné doméně selhání?
-
-K dispozici jsou výchozí pět domén selhání při používání služby Virtual Machine Scale Sets v Azure. Každá instance virtuálního počítače v sadě škálování se dostane do jedné z těchto domén selhání. Tím se zajistí, že se aplikace nasazené do výpočetních uzlů v clusteru umístí do samostatných domén selhání.
-
-Další podrobnosti najdete [v tématu Volba správného počtu domén selhání pro sadu škálování virtuálního počítače](https://docs.microsoft.com//azure/virtual-machine-scale-sets/virtual-machine-scale-sets-manage-fault-domains) .
-
-## <a name="is-there-a-way-to-manage-pod-placement"></a>Existuje způsob, jak spravovat umístění pod.
-
-Zákazníci mají možnost získávat uzly a zobrazovat popisky jako správce zákazníka.  Díky tomu bude možné cílit na libovolný virtuální počítač v sadě škálování.
-
-Při použití určitých popisků se musí použít upozornění:
-
-- Název hostitele nesmí být použit. Název hostitele se často otáčí s upgrady a aktualizacemi a má zaručenou změnu.
-
-- Pokud zákazník obsahuje požadavek na konkrétní štítky nebo strategii nasazení, může to být dosaženo, ale vyžaduje technické úsilí a ještě dnes není podporovaný.
-
-## <a name="what-is-the-maximum-number-of-pods-in-an-aro-cluster-what-is-the-maximum-number-of-pods-per-node-in-aro"></a>Jaký je maximální počet lusků v clusteru ARO?Jaký je maximální počet lusků na jeden uzel v ARO společnosti?
-
- Služba Azure Red Hat OpenShift 3,11 má limit 50 na uzel pod na jeden uzel s [limitem 20 výpočetních uzlů](https://docs.microsoft.com/azure/openshift/openshift-faq#what-cluster-operations-are-available), aby nedošlo k omezení maximálního počtu lusků podporovaných v clusteru ARO na 50 * 20 = 1000.
-
-## <a name="can-we-specify-ip-ranges-for-deployment-on-the-private-vnet-avoiding-clashes-with-other-corporate-vnets-once-peered"></a>Můžeme zadat rozsahy IP adres pro nasazení na privátní virtuální síti a vyhnout se konfliktům s ostatními podnikovými virtuální sítě po sobě partnerských vztahů?
-
-Azure Red Hat OpenShift podporuje partnerský vztah virtuálních sítí a umožňuje zákazníkům poskytnout virtuální síť pro partnerský vztah a virtuální síť CIDR, ve které bude síť OpenShift fungovat.
-
-Virtuální síť, kterou vytvořila služba ARO společnosti, bude chráněná a nebude přijímat změny konfigurace. Virtuální síť, která je v partnerském vztahu, je řízená zákazníkem a nachází se ve svém předplatném.
-
-## <a name="does-the-cluster-reside-in-a-customer-subscription"></a>Je cluster umístěn v rámci předplatného zákazníka? 
-
-Spravovaná aplikace Azure bydlí v uzamčené skupině prostředků s předplatným zákazníka. Zákazník může zobrazit objekty v tomto RG, ale ne upravovat.
-
-## <a name="is-the-sdn-module-configurable"></a>Je modul SDN konfigurovatelný?
-
-SDN je OpenShift-OVS-networkpolicy a nedá se konfigurovat.
-
-## <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Která práva systému UNIX (v IaaS) jsou k dispozici pro uzly Master/infrastruktura/aplikace?
-
-Neplatí pro tuto nabídku. Přístup k uzlu je zakázaný.
-
-## <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Jaká práva OCP máme? Správce clusteru? Projekt – správce?
-
-Podrobnosti najdete v tématu [Přehled správy clusteru](https://docs.openshift.com/aro/admin_guide/index.html)Azure Red Hat OpenShift.
-
-## <a name="which-kind-of-federation-with-ldap"></a>Jaký druh federace se službou LDAP?
-
-To se dá dosáhnout prostřednictvím integrace služby Azure AD. 
-
-## <a name="is-there-any-element-in-aro-shared-with-other-customers-or-is-everything-independent"></a>Sdílí se s ostatními zákazníky nějaký prvek v ARO společnosti? Nebo je vše nezávislé?
-
-Každý cluster Azure Red Hat OpenShift je vyhrazený pro daného zákazníka a v rámci předplatného zákazníka. 
-
-## <a name="can-we-choose-any-persistent-storage-solution-like-ocs"></a>Můžeme zvolit trvalé řešení úložiště, jako je třeba OCS? 
-
-K dispozici jsou dvě třídy úložiště pro výběr z disku: disk Azure a soubor Azure.
-
-## <a name="how-is-a-cluster-updated-including-majors-and-minors-due-to-vulnerabilities"></a>Jak se cluster aktualizoval (včetně hlavních a podřízených) z důvodu ohrožení zabezpečení?
-
-Podívejte [se, jaký je obecný proces upgradu?](https://docs.microsoft.com/azure/openshift/openshift-faq#what-is-the-general-upgrade-process)
-
-## <a name="what-azure-load-balancer-is-used-by-aro-is-it-standard-or-basic-and-is-it-configurable"></a>Co služba pro vyrovnávání zatížení Azure používá v ARO?Je Standard nebo Basic a je konfigurovatelná?
-
-ARO používá standardní Azure Load Balancer a nedá se konfigurovat.
-
-## <a name="can-aro-use-netapp-based-storage"></a>Můžou ARO používat úložiště založené na NetApp?
-
-V současné době jsou jedinou podporovanou možností úložiště třídy úložiště disků a souborů Azure. 
-
-
+Pro clustery 3,11 jsou ve výchozím nastavení k dispozici dvě třídy úložiště: jeden pro disk Azure (Premium_LRS) a jeden pro soubor Azure.

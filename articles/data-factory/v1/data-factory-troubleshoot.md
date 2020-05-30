@@ -13,12 +13,12 @@ ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
 robots: noindex
-ms.openlocfilehash: 81ae5c3c702108d854e4dfde93001d5c99875666
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45aa444393ed81bc320a770203ca114c35e16107
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74931586"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195903"
 ---
 # <a name="troubleshoot-data-factory-issues"></a>Poradce při potížích se službou Data Factory
 > [!NOTE]
@@ -49,7 +49,7 @@ Pravděpodobně pro Azure PowerShell nepoužíváte správné předplatné nebo 
 
 1. Connect-AzAccount – použijte správné ID a heslo uživatele.
 2. Get-AzSubscription – zobrazí všechna předplatná pro tento účet.
-3. Název &lt;&gt; předplatného Select-AzSubscription – vyberte správné předplatné. Použijte stejný ten, který použijete k vytvoření datové továrny na Azure Portal.
+3. &lt;Název předplatného Select-AzSubscription &gt; – Vyberte správné předplatné. Použijte stejný ten, který použijete k vytvoření datové továrny na Azure Portal.
 
 ### <a name="problem-fail-to-launch-data-management-gateway-express-setup-from-azure-portal"></a>Problém: Nepodařilo se spustit Správa dat instalaci brány Express z Azure Portal
 Expresní instalace pro Bránu pro správu dat vyžaduje Internet Explorer nebo webový prohlížeč kompatibilní s technologií Microsoft ClickOnce. Pokud se expresní instalace nezdaří, použijte jeden z následujících postupů:
@@ -61,10 +61,10 @@ Expresní instalace pro Bránu pro správu dat vyžaduje Internet Explorer nebo 
     To samé udělejte pro Firefox (instalovat doplněk). Na panelu nástrojů klikněte na tlačítko Otevřít nabídku (tři vodorovné čáry v pravém horním rohu), klikněte na Doplňky, dejte hledat klíčové slovo ClickOnce, vyberte některé z rozšíření ClickOnce a nainstalujte je.
 * Použijte odkaz na **ruční instalaci** , který je zobrazený ve stejném okně na portálu. Tento přístup slouží ke stažení instalačního souboru a jeho spuštění ručně. Po úspěšném dokončení instalace se zobrazí dialogové okno Správa dat konfigurace brány. Zkopírujte **klíč** z okna portálu a použijte ho ve správci konfigurace k ruční registraci brány v příslušné službě.  
 
-### <a name="problem-fail-to-connect-to-on-premises-sql-server"></a>Problém: Nepodařilo se připojit k místnímu SQL Server
+### <a name="problem-fail-to-connect-to-sql-server"></a>Problém: připojení k SQL Server se nezdařilo
 Na počítači brány spusťte **Správa dat Configuration Manager brány** a pomocí karty **Poradce při potížích** otestujte připojení k SQL Server z počítače brány. Tipy k odstraňování potíží souvisejících s připojením nebo bránou najdete v tématu řešení potíží s [bránou](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) .   
 
-### <a name="problem-input-slices-are-in-waiting-state-for-ever"></a>Problém: vstupní řezy jsou ve stavu čekání na minulosti.
+### <a name="problem-input-slices-are-in-waiting-state-forever"></a>Problém: vstupní řezy jsou ve stavu čekání navždy.
 Řezy mohou být ve stavu **čekání** z různých důvodů. Jedním z běžných důvodů je, že vlastnost **External** není nastavená na **hodnotu true**. Jakákoli datová sada vytvořená mimo rozsah Azure Data Factory by měla být označená **externí** vlastností. Tato vlastnost označuje, že data jsou externá a nezálohovaná žádnými kanály v rámci datové továrny. Jakmile jsou data v příslušných úložištích dostupná, datové řezy se označí jako **připravené**.
 
 Použití vlastnosti **external** si můžete prohlédnout v následujícím příkladu. Volitelně můžete zadat **externalData***, pokud nastavíte možnost externí na hodnotu true.

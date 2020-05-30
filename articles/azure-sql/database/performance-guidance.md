@@ -12,12 +12,12 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: carlrab; jrasnick
 ms.date: 03/10/2020
-ms.openlocfilehash: 8536c1cfbeefc36774b5423aee39f345dc23cd18
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 50322f69ff1cbb58cd5461646ca057718696e0eb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042705"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193875"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Ladění aplikací a databází pro výkon v Azure SQL Database a spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -31,7 +31,7 @@ V tomto článku se předpokládá, že už jste pracovali s [doporučeními Azu
 
 ## <a name="tune-your-application"></a>Optimalizace aplikace
 
-V tradičních místních SQL Server proces prvotního plánování kapacity je často oddělený od procesu spuštění aplikace v produkčním prostředí. Nejprve se kupují hardwarové a produktové licence a optimalizace výkonu se provádí později. Pokud používáte Azure SQL Database nebo Azure SQL Managed instance, je vhodné, abyste propravili proces spuštění aplikace a její vyladění. Díky modelu uplatnění kapacity na vyžádání můžete svou aplikaci vyladit tak, aby místo nadměrného zřizování na hardwaru používala minimální prostředky, které jsou potřeba k tomu, aby se prováděly nepřesné požadavky na hardware, a to na základě odhadu budoucích plánů růstu pro aplikaci, které jsou často nesprávné. Někteří zákazníci si můžou zvolit, že nemají ladit aplikaci, a místo toho se rozhodnou prostředky hardwaru. Tento přístup může být dobrý nápad, pokud nechcete během zaneprázdněného období měnit klíčovou aplikaci. Ladění aplikace ale může minimalizovat požadavky na prostředky a snížit měsíční faktury při používání úrovní služeb v Azure SQL Database a Azure SQL Managed instance.
+V tradičních místních SQL Server proces prvotního plánování kapacity je často oddělený od procesu spuštění aplikace v produkčním prostředí. Nejprve se kupují hardwarové a produktové licence a optimalizace výkonu se provádí později. Pokud používáte Azure SQL, je vhodné, abyste propravili proces spuštění aplikace a její optimalizaci. Díky modelu uplatnění kapacity na vyžádání můžete svou aplikaci vyladit tak, aby místo nadměrného zřizování na hardwaru používala minimální prostředky, které jsou potřeba k tomu, aby se prováděly nepřesné požadavky na hardware, a to na základě odhadu budoucích plánů růstu pro aplikaci, které jsou často nesprávné. Někteří zákazníci si můžou zvolit, že nemají ladit aplikaci, a místo toho se rozhodnou prostředky hardwaru. Tento přístup může být dobrý nápad, pokud nechcete během zaneprázdněného období měnit klíčovou aplikaci. Ladění aplikace ale může minimalizovat požadavky na prostředky a snížit měsíční faktury při používání úrovní služeb v Azure SQL Database a Azure SQL Managed instance.
 
 ### <a name="application-characteristics"></a>Vlastnosti aplikace
 

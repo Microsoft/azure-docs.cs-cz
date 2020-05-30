@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f7fdced5a777c5303e402a5cc58048e076b104b4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: bfb273ec0013925076669c99f08933bd10ffc465
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049264"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197129"
 ---
 # <a name="prerequisites-for-creating-always-on-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Předpoklady pro vytváření skupin dostupnosti Always On na SQL Server ve virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,7 +42,7 @@ V tomto kurzu se předpokládá, že máte základní znalosti skupin dostupnost
 Potřebujete mít účet Azure. Můžete si [otevřít bezplatný účet Azure](https://signup.azure.com/signup?offer=ms-azr-0044p&appId=102&ref=azureplat-generic&redirectURL=https:%2F%2Fazure.microsoft.com%2Fget-started%2Fwelcome-to-azure%2F&correlationId=24f9d452-1909-40d7-b609-2245aa7351a6&l=en-US) nebo [aktivovat výhody pro předplatitele sady Visual Studio](https://docs.microsoft.com/visualstudio/subscriptions/subscriber-benefits).
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 2. Kliknutím **+** vytvoříte nový objekt na portálu.
 
    ![Nový objekt](./media/availability-group-manually-configure-prerequisites-tutorial-/01-portalplus.png)
@@ -230,7 +230,7 @@ V následujících krocích nakonfigurujte počítač **AD-Primary-DC** jako řa
 12. Ve sloupci **Akce** v dialogu **Podrobnosti úlohy serveru** klikněte na **povýšit tento server na řadič domény**.
 13. V **Průvodci konfigurací Active Directory Domain Services**použijte následující hodnoty:
 
-    | **Page** | Nastavení |
+    | **Stránka** | Nastavení |
     | --- | --- |
     | **Konfigurace nasazení** |**Přidat novou doménovou strukturu**<br/> **Název kořenové domény** = Corp.contoso.com |
     | **Možnosti řadiče domény** |**DSRM Password** = contoso! 0000<br/>**Potvrzení hesla** = contoso! 0000 |
@@ -376,7 +376,7 @@ Dále vytvořte tři virtuální počítače – dva SQL Server virtuální poč
 <br/>
 
 > [!NOTE]
-> Doporučené velikosti počítačů jsou určeny pro testování skupin dostupnosti ve virtuálních počítačích Azure. Nejlepší výkon pro produkční úlohy najdete v doporučeních pro SQL Server velikosti počítačů a konfiguraci v tématu [osvědčené postupy pro SQL Server na virtuálních počítačích Azure](performance-guidelines-best-practices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+> Doporučené velikosti počítačů jsou určeny pro testování skupin dostupnosti ve virtuálních počítačích Azure. Nejlepší výkon pro produkční úlohy najdete v doporučeních pro SQL Server velikosti virtuálních počítačů a konfiguraci v tématu [osvědčené postupy pro SQL Server na virtuálních počítačích Azure](performance-guidelines-best-practices.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 >
 >
 

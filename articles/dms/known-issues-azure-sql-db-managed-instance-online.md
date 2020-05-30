@@ -1,6 +1,6 @@
 ---
-title: Známé problémy a omezení pro online migrace Azure SQL Database spravované instance
-description: Přečtěte si o známých problémech nebo omezeních migrace souvisejících s online migracemi pro Azure SQL Database spravované instance.
+title: Známé problémy a omezení pro online migrace do spravované instance Azure SQL
+description: Přečtěte si o známých problémech nebo omezeních migrace spojených s online migracemi do spravované instance Azure SQL.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -11,16 +11,16 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 88e2b5894686ee93caecf33e04940803eb75f394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 65bbc9f66ceb732a8f773f0b49cd46f99750a7d5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77648661"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196312"
 ---
-# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-database-managed-instance"></a>Známé problémy/omezení migrace pro online migrace Azure SQL Database spravované instance
+# <a name="known-issuesmigration-limitations-with-online-migrations-to-azure-sql-managed-instance"></a>Známé problémy/omezení migrace pro online migrace do spravované instance Azure SQL
 
-Známé problémy a omezení související s online migracemi z SQL Server do Azure SQL Database spravované instance jsou popsány níže.
+Známé problémy a omezení související s online migracemi z SQL Server do spravované instance Azure SQL jsou popsány níže.
 
 > [!IMPORTANT]
 > S online migracemi SQL Server Azure SQL Database není podporována migrace datových typů SQL_variant.
@@ -29,7 +29,7 @@ Známé problémy a omezení související s online migracemi z SQL Server do Az
 
 - **Zálohování pomocí kontrolního součtu**
 
-    Azure Database Migration Service používá metodu zálohování a obnovení k migraci místních databází do SQL Database spravované instance. Azure Database Migration Service podporuje jenom zálohy vytvořené pomocí kontrolního součtu.
+    Azure Database Migration Service používá metodu zálohování a obnovení k migraci místních databází do spravované instance SQL. Azure Database Migration Service podporuje jenom zálohy vytvořené pomocí kontrolního součtu.
 
     [Povolit nebo zakázat kontrolní součet zálohování během zálohování nebo obnovení (SQL Server)](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server?view=sql-server-2017)
 
@@ -52,16 +52,16 @@ Známé problémy a omezení související s online migracemi z SQL Server do Az
 
 - **FileStream/tabulky**
 
-    SQL Database spravovaná instance v současné době nepodporuje FileStream a tabulky typu. Pro úlohy, které jsou na těchto funkcích závislé, doporučujeme, abyste pro SQL servery běžící na virtuálních počítačích Azure jako cíl Azure zavedli výslovný souhlas.
+    Spravovaná instance SQL aktuálně nepodporuje FileStream a tabulky typu. Pro úlohy, které jsou na těchto funkcích závislé, doporučujeme, abyste pro SQL servery běžící na virtuálních počítačích Azure jako cíl Azure zavedli výslovný souhlas.
 
 - **Tabulky v paměti**
 
-    OLTP v paměti je k dispozici v úrovních Premium a Pro důležité obchodní informace pro SQL Database Managed instance; Pro obecné účely vrstva nepodporuje OLTP v paměti.
+    OLTP v paměti je k dispozici v úrovních Premium a Pro důležité obchodní informace pro spravovanou instanci SQL. Pro obecné účely vrstva nepodporuje OLTP v paměti.
 
 ## <a name="migration-resets"></a>Obnovení migrace
 
 - **Nasazení**
 
-    SQL Database Managed instance je služba PaaS s automatickými opravami a aktualizacemi verzí. Během migrace spravované instance SQL Database se Nekritická aktualizace může zvýšit až na 36 hodin. Pokud dojde k přerušení migrace a následně (a pro důležité aktualizace), proces se obnoví do stavu úplného obnovení.
+    SQL Managed instance je služba PaaS s automatickými opravami a aktualizacemi verzí. Během migrace spravované instance SQL vám nejsou důležité aktualizace, které vám pomůžou až 36 hodin. Pokud dojde k přerušení migrace a následně (a pro důležité aktualizace), proces se obnoví do stavu úplného obnovení.
 
     Přímou migraci migrace lze volat pouze po obnovení úplného zálohování a zachycení se všemi zálohami protokolu. Pokud se to týká cutoversí produkční migrace, obraťte se na [alias zpětné vazby Azure DMS](mailto:dmsfeedback@microsoft.com).

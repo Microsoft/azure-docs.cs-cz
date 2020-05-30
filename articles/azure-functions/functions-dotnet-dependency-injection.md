@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 97e8a34f3b8639990f8de736a8f1f7429ebfd448
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 26816a545cb83e0a3d996a8056b96154830e58b6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739137"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195512"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Použití injektáže závislostí ve službě Azure Functions pro .NET
 
@@ -251,7 +251,7 @@ public class HttpTrigger
 Další podrobnosti týkající se práce s možnostmi najdete [v tématu vzor možností v ASP.NET Core](https://docs.microsoft.com/aspnet/core/fundamentals/configuration/options) .
 
 > [!WARNING]
-> Vyhněte se pokusu o čtení hodnot ze souborů, jako je *Local. Settings. JSON* nebo *appSettings. { Environment}. JSON* pro plán spotřeby Hodnoty načtené z těchto souborů souvisejících s triggery triggeru nejsou k dispozici, protože hostitelská infrastruktura nemá přístup k informacím o konfiguraci.
+> Vyhněte se pokusu o čtení hodnot ze souborů, jako je *Local. Settings. JSON* nebo *appSettings. { Environment}. JSON* pro plán spotřeby Hodnoty načtené z těchto souborů souvisejících s triggery triggeru nejsou k dispozici, protože tato aplikace se škáluje, protože hostitelská infrastruktura nemá přístup k informacím o konfiguraci, protože řadič škálování vytváří nové instance aplikace.
 
 ## <a name="next-steps"></a>Další kroky
 

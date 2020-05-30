@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
 ms.date: 03/13/2020
-ms.openlocfilehash: dd3e77610749eb5d146b0c0b7cf9d307fba0dd83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e63f073c4f7166cd205b85ef06589f6056b2a70f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79370232"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195678"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Rychlý Start: vytvoření instance hybridního režimu pomocí Azure Portal & Azure Database Migration Service
 
@@ -26,7 +26,7 @@ Azure Database Migration Service hybridní režim spravuje migrace databáze pom
 >[!NOTE]
 >V současné době Azure Database Migration Service spuštěná v hybridním režimu podporuje migrace SQL Server na:
 >
->- Azure SQL Database spravované instance s téměř nulovým výpadkem (online).
+>- Spravovaná instance Azure SQL s téměř nulovým výpadkem (online)
 >- Azure SQL Database izolovanou databázi s nějakým výpadkem (offline).
 >- MongoDb se do Azure CosmosDB s téměř nulovým výpadkem (online).
 >- MongoDb se do Azure CosmosDB s nějakým výpadkem (offline).
@@ -191,5 +191,5 @@ Vyplňte parametry v horní části skriptu a spusťte skript z instance prostř
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
-> [Migrace SQL Server do online](tutorial-sql-server-managed-instance-online.md)
-> migrace Azure SQL Database spravované instance[SQL Server do izolované databáze nebo databáze ve fondu v Azure SQL Database offline](tutorial-sql-server-to-azure-sql.md)
+> [Migrace SQL Server do online spravované instance služby Azure SQL](tutorial-sql-server-managed-instance-online.md) 
+>  [Migrace SQL Server pro Azure SQL Database offline](tutorial-sql-server-to-azure-sql.md)

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: storage
 ms.subservice: blobs
 ms.reviewer: sadodd
-ms.openlocfilehash: 4287bd766d73d7fae42aec54950ad5a3f09b5ba3
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bf22e10bc0a4b969c41d4a377ddba7fcadd9c147
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120415"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193384"
 ---
 # <a name="change-feed-support-in-azure-blob-storage-preview"></a>Změna podpory kanálu v Azure Blob Storage (Preview)
 
@@ -37,7 +37,7 @@ Podpora změny kanálu je vhodná pro scénáře, které zpracovávají data na 
 
   - Vytvářejte propojené kanály aplikací, které reagují na změny událostí nebo naplánujte provádění na základě vytvořeného nebo změněného objektu.
   
-Změna kanálu je předpokladem pro obnovení určitého [bodu v čase pro objekty blob bloku](point-in-time-restore-overview.md).
+Změna kanálu je požadovaná funkce pro [replikaci objektů](object-replication-overview.md) a [obnovení k určitému bodu v čase pro objekty blob bloku](point-in-time-restore-overview.md).
 
 > [!NOTE]
 > Změna kanálu poskytuje trvalý a seřazený model protokolu změn, ke kterým došlo u objektu BLOB. Změny se zapisují a zpřístupňují v protokolu kanálu změn během několika minut od změny. Pokud vaše aplikace musí reagovat na události, které jsou mnohem rychlejší, zvažte místo toho použití [BLOB Storagech událostí](storage-blob-event-overview.md) . [Události BLOB Storage](storage-blob-event-overview.md) poskytují jednorázové události v reálném čase, které umožňují vašim Azure Functionsám nebo aplikacím rychle reagovat na změny, ke kterým dojde v objektu BLOB. 

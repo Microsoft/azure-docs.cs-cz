@@ -3,16 +3,17 @@ title: Přepsání výchozích koncových bodů sady SDK v Azure Application Ins
 description: Upravte výchozí Azure Monitor koncové body sady Application Insights SDK pro oblasti, jako je Azure Government.
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: f5bf5b07f7c058b4778e7695f150fdc71e048182
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.custom: references_regions
+ms.openlocfilehash: d0c9467497a8bd108d37a340d2cdbb887061e3a6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629180"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194839"
 ---
 # <a name="application-insights-overriding-default-endpoints"></a>Application Insights přepsání výchozích koncových bodů
 
-Pokud chcete odesílat data z Application Insights do určitých oblastí, budete muset přepsat výchozí adresy koncových bodů. Každá sada SDK vyžaduje mírně odlišnou změnu, která je popsána v tomto článku. Tyto změny vyžadují, abyste si naupravovali vzorový kód a nahradili zástupné hodnoty pro `QuickPulse_Endpoint_Address`, `TelemetryChannel_Endpoint_Address`a `Profile_Query_Endpoint_address` skutečnými adresami koncových bodů pro konkrétní oblast. Na konci tohoto článku najdete odkazy na adresy koncových bodů v oblastech, kde je tato konfigurace nutná.
+Pokud chcete odesílat data z Application Insights do určitých oblastí, budete muset přepsat výchozí adresy koncových bodů. Každá sada SDK vyžaduje mírně odlišnou změnu, která je popsána v tomto článku. Tyto změny vyžadují, abyste si naupravovali vzorový kód a nahradili zástupné hodnoty pro `QuickPulse_Endpoint_Address` , `TelemetryChannel_Endpoint_Address` a `Profile_Query_Endpoint_address` skutečnými adresami koncových bodů pro konkrétní oblast. Na konci tohoto článku najdete odkazy na adresy koncových bodů v oblastech, kde je tato konfigurace nutná.
 
 > [!NOTE]
 > [Připojovací řetězce](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) jsou novou upřednostňovanou metodou nastavení vlastních koncových bodů v rámci Application Insights.
@@ -59,7 +60,7 @@ Upravte soubor appSettings. JSON v projektu následujícím způsobem a upravte 
   }
 ```
 
-Hodnoty pro živé metriky a koncový bod dotazu profilu lze nastavit pouze prostřednictvím kódu. Chcete-li přepsat výchozí hodnoty pro všechny hodnoty koncového bodu prostřednictvím kódu, proveďte následující změny `ConfigureServices` v metodě `Startup.cs` souboru:
+Hodnoty pro živé metriky a koncový bod dotazu profilu lze nastavit pouze prostřednictvím kódu. Chcete-li přepsat výchozí hodnoty pro všechny hodnoty koncového bodu prostřednictvím kódu, proveďte následující změny v `ConfigureServices` metodě `Startup.cs` souboru:
 
 ```csharp
 using Microsoft.ApplicationInsights.Extensibility.Implementation.ApplicationId;
@@ -76,7 +77,7 @@ using Microsoft.ApplicationInsights.Extensibility.PerfCounterCollector.QuickPuls
 
 # <a name="azure-functions"></a>[Azure Functions](#tab/functions)
 
-Pro Azure Functions se teď doporučuje použít [připojovací řetězce](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) nastavené v nastavení aplikace funkce. Chcete-li získat přístup k nastavení aplikace pro funkci v podokně funkce vyberte **Nastavení** > **Konfigurace** > **nastavení aplikace**. 
+Pro Azure Functions se teď doporučuje použít [připojovací řetězce](https://docs.microsoft.com/azure/azure-monitor/app/sdk-connection-string?tabs=net) nastavené v nastavení aplikace funkce. Chcete-li získat přístup k nastavení aplikace pro funkci v podokně funkce vyberte **Nastavení**  >  **Konfigurace**  >  **nastavení aplikace**. 
 
 Název: `APPLICATIONINSIGHTS_CONNECTION_STRING` hodnota:`Connection String Value`
 

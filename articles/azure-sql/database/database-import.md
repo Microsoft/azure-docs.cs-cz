@@ -1,6 +1,6 @@
 ---
-title: Import souboru BACPAC pro vytvoření databáze v Azure SQL
-description: Vytvoří novou Azure SQL Database nebo databázi Azure SQL Managed instance ze souboru BACPAC.
+title: Import souboru BACPAC pro vytvoření databáze v Azure SQL Database
+description: Vytvoří novou databázi v Azure SQL Database nebo spravované instanci Azure SQL ze souboru BACPAC.
 services: sql-database
 ms.service: sql-database
 ms.subservice: migration
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/20/2019
-ms.openlocfilehash: 25e8790ed0fd5a9a9d93458c3c247632defa778a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 81a77e3a5fac19b4d6116a74221d3506d603bff9
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050671"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84218812"
 ---
 # <a name="quickstart-import-a-bacpac-file-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: Import souboru BACPAC do databáze ve službě Azure SQL Database nebo Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-SQL Serverovou databázi můžete importovat do Azure SQL Database nebo spravované instance SQL pomocí souboru [BacPac](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) . Data můžete importovat ze `BACPAC` souboru uloženého v Azure Blob Storage (jenom úložiště úrovně Standard) nebo z místního úložiště v místním umístění. Pokud chcete zajistit rychlejší import s využitím většího množství rychlejších prostředků, škálujte databázi během procesu importu na vyšší úroveň služby a velikost výpočetních prostředků. Po úspěšném dokončení importu pak můžete kapacitu vertikálně snížit.
+SQL Serverovou databázi můžete importovat do Azure SQL Database nebo spravované instance SQL pomocí souboru [BacPac](https://docs.microsoft.com/sql/relational-databases/data-tier-applications/data-tier-applications#bacpac) . Můžete importovat data ze souboru BACPAC uloženého ve službě Azure Blob Storage (pouze v úložišti úrovně Standard) nebo z místního úložiště v místním umístění. Pokud chcete zajistit rychlejší import s využitím většího množství rychlejších prostředků, škálujte databázi během procesu importu na vyšší úroveň služby a velikost výpočetních prostředků. Po úspěšném dokončení importu pak můžete kapacitu vertikálně snížit.
 
 > [!NOTE]
 > Úroveň kompatibility importované databáze je založena na úrovni kompatibility zdrojové databáze.
@@ -35,7 +35,7 @@ Podívejte se na toto video, kde se dozvíte, jak naimportovat ze souboru BACPAC
 
 > [!VIDEO https://channel9.msdn.com/Shows/Data-Exposed/Its-just-SQL-Restoring-a-database-to-Azure-SQL-DB-from-backup/player?WT.mc_id=dataexposed-c9-niner]
 
-[Azure Portal](https://portal.azure.com) podporuje *pouze* vytvoření jednoho Azure SQL Database a *pouze* ze souboru BacPac uloženého v úložišti objektů BLOB v Azure.
+[Azure Portal](https://portal.azure.com) podporuje *pouze* vytváření izolovaných databází v Azure SQL Database a *pouze* ze souboru BacPac uloženého v úložišti objektů BLOB v Azure.
 
 K migraci databáze do [spravované instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md) ze souboru BACPAC použijte SQL Server Management Studio nebo SQLPackage, použití Azure Portal nebo Azure PowerShell není momentálně podporované.
 
@@ -48,7 +48,7 @@ K migraci databáze do [spravované instance Azure SQL](../managed-instance/sql-
 
 1. Vyberte účet úložiště a kontejner pro soubor BACPAC a pak vyberte soubor BACPAC, ze kterého se má importovat.
 
-1. Zadejte novou velikost databáze (obvykle stejný jako zdroj) a zadejte přihlašovací údaje pro cíl SQL Server. Seznam možných hodnot pro nové Azure SQL Database naleznete v tématu [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
+1. Zadejte novou velikost databáze (obvykle stejný jako zdroj) a zadejte přihlašovací údaje pro cíl SQL Server. Seznam možných hodnot pro novou databázi v Azure SQL Database najdete v tématu [Create Database](https://docs.microsoft.com/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).
 
    ![Import2 databáze](./media/database-import/sql-server-import-database-settings.png)
 
@@ -81,7 +81,7 @@ Tento příklad ukazuje, jak importovat databázi pomocí SqlPackage s univerzá
 sqlpackage.exe /a:Import /sf:testExport.bacpac /tdn:NewDacFX /tsn:apptestserver.database.windows.net /ua:True /tid:"apptest.onmicrosoft.com"
 ```
 
-## <a name="using-powershell"></a>Použití PowerShellu
+## <a name="using-powershell"></a>Pomocí prostředí PowerShell
 
 > [!NOTE]
 > [Spravovaná instance SQL](../managed-instance/sql-managed-instance-paas-overview.md) v současné době nepodporuje migraci databáze do databáze instancí ze souboru BACPAC pomocí Azure PowerShell. Pro import do spravované instance SQL použijte SQL Server Management Studio nebo SQLPackage.
@@ -157,7 +157,7 @@ Můžete také použít tyto průvodce.
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o tom, jak se připojit k Azure SQL Database a dotazovat se na něj, najdete v tématu [rychlý Start: Azure SQL Database: použití SQL Server Management Studio k připojení a dotazování dat](connect-query-ssms.md).
+- Další informace o tom, jak se připojit k databázi a dotazovat se na ni v Azure SQL Database, najdete v tématu [rychlý Start: Azure SQL Database: použití SQL Server Management Studio k připojení a dotazování dat](connect-query-ssms.md).
 - Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://techcommunity.microsoft.com/t5/DataCAT/Migrating-from-SQL-Server-to-Azure-SQL-Database-using-Bacpac/ba-p/305407).
 - Diskuzi o celém procesu migrace databáze SQL Server, včetně doporučení týkajících se výkonu, najdete v tématu [SQL Server migrace databáze na Azure SQL Database](migrate-to-database-from-sql-server.md).
 - Informace o tom, jak bezpečně spravovat a sdílet klíče úložiště a signatury sdíleného přístupu, najdete v tématu [Azure Storage Průvodce zabezpečením](https://docs.microsoft.com/azure/storage/common/storage-security-guide).

@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: sstein
 ms.date: 12/05/2019
-ms.openlocfilehash: ab104463ad0bd3db88af47176d541dd4074037d7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9069ec574af54c5c44efac5a6a9df1da62053219
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048438"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195093"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Přehled elastického dotazu Azure SQL Database (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Funkce elastického dotazu (ve verzi Preview) umožňuje spustit dotaz Transact-
 
 ### <a name="azure-sql-database"></a>Azure SQL Database
 
-Dotazování napříč databázemi v Azure SQL Database zcela v T-SQL. To umožňuje dotazování vzdálených databází jen pro čtení a poskytuje možnost pro současné místní SQL Server zákazníkům migrovat aplikace pomocí názvů tří a čtyř částí nebo propojeného serveru na SQL Database.
+Dotazování napříč databázemi v Azure SQL Database zcela v T-SQL. To umožňuje dotazovat se na vzdálené databáze jen pro čtení a poskytuje možnost pro stávající SQL Server zákazníkům migrovat aplikace pomocí názvů tří a čtyř částí nebo propojeného serveru na SQL Database.
 
 ### <a name="available-on-standard-tier"></a>K dispozici na úrovni Standard
 
@@ -146,7 +146,7 @@ Elastický dotaz je zahrnutý v ceně Azure SQL Database. Mějte na paměti, že
 * S výjimkou nvarchar (max) nejsou v definicích externích tabulek podporovány typy LOB (včetně prostorových typů). Jako alternativní řešení můžete vytvořit zobrazení na vzdálené databázi, která přenese typ LOB do nvarchar (max), definovat externí tabulku přes zobrazení místo základní tabulky a následně ji přetypovat zpátky na původní typ LOB v dotazech.
 * Sloupce datového typu nvarchar (max) ve výsledné sadě zakazují pokročilou dávkovou Technics dávkování použitou v implementaci elastického dotazu a mohou ovlivnit výkon dotazů na určité místo, nebo dokonce dva objednávky v nekanonickém případě použití, kdy se velké množství neagregovaných dat přenáší jako výsledek dotazu.
 * Statistiky sloupců v externích tabulkách nejsou aktuálně podporovány. Statistiky tabulek jsou podporovány, ale je nutné je vytvořit ručně.
-* Elastický dotaz funguje pouze s Azure SQL Database. Nemůžete ho použít k dotazování na místní SQL Server nebo SQL Server na virtuálním počítači.
+* Elastický dotaz funguje pouze s Azure SQL Database. Nemůžete ho použít pro dotazování instance SQL Server.
 
 ## <a name="feedback"></a>Váš názor
 

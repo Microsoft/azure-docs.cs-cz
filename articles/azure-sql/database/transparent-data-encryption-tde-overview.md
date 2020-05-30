@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 04/10/2020
-ms.openlocfilehash: 023f00e30809126a1be7df5330f27453477ed9cf
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 05bd4b83a6387eefb243ed8058c3fe833615cfb4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048032"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84188290"
 ---
 # <a name="transparent-data-encryption-for-sql-database-sql-managed-instance--azure-synapse"></a>Transparentní šifrování dat pro SQL Database, Managed instance SQL & Azure synapse
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -65,7 +65,7 @@ Nemusíte dešifrovat databáze pro operace v rámci Azure. Nastavení TDE ve zd
 
 Pokud exportujete databázi chráněnou TDE, exportovaný obsah databáze nebude zašifrovaný. Tento exportovaný obsah je uložený v nešifrovaných souborech BACPAC. Nezapomeňte vhodně chránit soubory BACPAC a po dokončení importu nové databáze povolte TDE.
 
-Například pokud je soubor BACPAC exportován z místní instance SQL Server, importovaný obsah nové databáze nebude automaticky šifrován. Podobně platí, že pokud je soubor BACPAC exportován do místní instance SQL Server, nová databáze není také automaticky šifrována.
+Například pokud je soubor BACPAC exportován z instance SQL Server, importovaný obsah nové databáze není automaticky šifrován. Podobně platí, že pokud je soubor BACPAC importován do instance SQL Server, nová databáze také není automaticky šifrována.
 
 Jedinou výjimkou je při exportu do a z SQL Database. V nové databázi je povolený TDE, ale samotný soubor BACPAC ještě není zašifrovaný.
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat TDE prostřednictvím PowerShellu, musíte být při
 
 Pro Azure SQL Database a Azure synapse použijte následující rutiny:
 
-| Rutina | Description |
+| Rutina | Popis |
 | --- | --- |
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |Povoluje nebo zakazuje transparentní šifrování dat pro databázi.|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |Získá transparentní stav šifrování dat pro databázi. |
@@ -120,7 +120,7 @@ Spravujte TDE pomocí jazyka Transact-SQL.
 
 Připojte se k databázi pomocí přihlašovacího jména, které je správcem nebo členem role **dbmanager** v hlavní databázi.
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) | NASTAVENÍ šifrování ZAPNUTo nebo vypnuto šifrování nebo dešifrování databáze |
 | [sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Vrátí informace o stavu šifrování databáze a přidružených šifrovacích klíčích databáze. |
@@ -136,7 +136,7 @@ Spravujte TDE pomocí REST API.
 Pokud chcete nakonfigurovat TDE prostřednictvím REST API, musíte být připojeni jako vlastník Azure, přispěvatel nebo správce zabezpečení SQL.
 Pro Azure SQL Database a Azure synapse použijte následující sadu příkazů:
 
-| Příkaz | Description |
+| Příkaz | Popis |
 | --- | --- |
 |[Vytvořit nebo aktualizovat server](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Přidá do serveru Azure Active Directoryovou identitu. (slouží k udělení přístupu k Key Vault)|
 |[Vytvořit nebo aktualizovat klíč serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|Přidá do serveru Key Vault klíč.|

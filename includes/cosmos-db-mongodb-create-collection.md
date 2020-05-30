@@ -5,15 +5,15 @@ services: cosmos-db
 author: LuisBosquez
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 04/08/2020
+ms.date: 04/15/2020
 ms.author: lbosq
 ms.custom: include file
-ms.openlocfilehash: 55236e3083ded0e8e07afd406e87f61f53451e9d
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 0f471c5aefdb39396ea189984d32a9e8f5419182
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701718"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200406"
 ---
 Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření rozhraní API Azure Cosmos DB pro databázi a kontejner MongoDB. 
 
@@ -28,8 +28,8 @@ Nyní můžete použít nástroj Průzkumník dat v Azure Portal k vytvoření r
     |Nastavení|Navrhovaná hodnota|Popis
     |---|---|---|
     |**ID databáze**|inženýr|Jako název nové databáze zadejte *DB* . Názvy databází musí obsahovat 1 až 255 znaků a nesmí obsahovat ani mezeru `/, \\, #, ?` . Ověřte možnost **zřízení propustnosti databáze** , která umožňuje sdílení propustnosti zřízené do databáze napříč všemi kontejnery v rámci databáze. Tato možnost také pomáhá při úsporách nákladů. |
-    |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit. Můžete také zvolit [režim autopilot](https://docs.microsoft.com/azure/cosmos-db/provision-throughput-autopilot), který vám poskytne rozsah ru/s, který bude v případě potřeby dynamicky zvyšovat a snižovat.| 
-    |**ID kolekce**|coll|Jako název nového kontejneru zadejte *coll* . Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
+    |**Propustnost**|400|Nechte propustnost na 400 jednotek žádostí za sekundu (RU/s). Pokud budete chtít snížit latenci, můžete propustnost později navýšit. Můžete také zvolit [režim automatického škálování](https://docs.microsoft.com/azure/cosmos-db/provision-throughput-autoscale), který vám poskytne rozsah ru/s, který se podle potřeby dynamicky zvětšuje a zmenšuje.| 
+    |**ID kolekce**|coll|`coll`Jako název nového kontejneru zadejte. Pro ID kontejnerů platí stejné požadavky týkající se použitých znaků jako pro názvy databází.|
     |**Kapacita úložiště**|Pevná (10 GB)|Pro tuto aplikaci zadejte *pevná (10gb)* . Pokud vyberete možnost *neomezeno*, bude nutné vytvořit `Shard Key` , které položky budou vyžadovat.|
     |**Horizontálních oddílů klíč**| /_id| Ukázka popsaná v tomto článku nepoužívá klíč horizontálních oddílů, takže jeho nastavení na */_ID* bude používat automaticky generované pole ID jako klíč horizontálních oddílů. Přečtěte si další informace o horizontálního dělení, označované taky jako dělení do oddílů, v [oddílu Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/partitioning-overview)|
         

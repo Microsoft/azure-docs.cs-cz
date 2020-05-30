@@ -11,18 +11,18 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: conceptual
 ms.date: 03/28/2017
-ms.openlocfilehash: 3da51d1e08676d2794c6e95e7ffb359aff26084a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: aa8500e0e301de5f015d074646bf4da82e4de0a1
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118409"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192561"
 ---
 # <a name="deploy-azure-machine-learning-studio-classic-web-services-that-use-data-import-and-data-export-modules"></a>Nasazení webových služeb Azure Machine Learning Studio (Classic), které používají moduly importu a exportu dat
 
 Při vytváření prediktivní experimentu obvykle přidáte vstup a výstup webové služby. Při nasazení experimentu mohou uživatelé odesílat a přijímat data z webové služby prostřednictvím vstupů a výstupů. U některých aplikací mohou být data spotřebitele k dispozici z datového kanálu nebo již nacházejí v externím zdroji dat, jako je například úložiště objektů BLOB v Azure. V těchto případech nepotřebují číst a zapisovat data pomocí vstupů a výstupů webové služby. Můžou místo toho použít službu Batch Execution Service (BES) ke čtení dat ze zdroje dat pomocí modulu import dat a zápis výsledků bodování do jiného umístění dat pomocí modulu export dat.
 
-Datové moduly pro import dat a export můžou číst z různých umístění dat, jako je webová adresa URL prostřednictvím protokolu HTTP, dotaz na podregistr, Azure SQL Database, Azure Table Storage, Azure Blob Storage, datový kanál nebo místní databáze SQL.
+Datové moduly importu dat a exportu mohou číst a zapisovat do různých umístění dat, jako je webová adresa URL přes HTTP, dotaz na podregistr, Azure SQL Database, Azure Table Storage, Azure Blob Storage, datový kanál nebo databáze SQL Server.
 
 V tomto tématu se používá Ukázka 5: výuka, test, vyhodnocení binární klasifikace: datová sada pro dospělé a předpokládá, že datová sada již byla načtena do tabulky Azure SQL s názvem censusdata.
 

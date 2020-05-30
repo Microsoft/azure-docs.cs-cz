@@ -6,13 +6,13 @@ ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: ccompy
-ms.custom: seodec18
-ms.openlocfilehash: 4c25c64268b38e5929c73891f7c48e79b9b8593e
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: seodec18, references_regions
+ms.openlocfilehash: e56e5878c2f3528bee50137b4d40d947feda3ece
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856041"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197168"
 ---
 # <a name="locking-down-an-app-service-environment"></a>Uzamčení App Service Environment
 
@@ -92,7 +92,7 @@ Pokud znáte rozsah adres, ze kterého bude požadavek na provoz vaší aplikace
 
 Toto použití Application Gateway je pouze jedním z příkladů konfigurace systému. Pokud jste použili tuto cestu, pak byste museli přidat trasu do tabulky směrování podsítě pomocného mechanismu, aby přenos odpovědí odeslaných do Application Gateway přešel přímo. 
 
-## <a name="logging"></a>protokolování 
+## <a name="logging"></a>Protokolování 
 
 Azure Firewall může odesílat protokoly do Azure Storage, centra událostí nebo protokolů Azure Monitor. Pokud chcete svou aplikaci integrovat s jakýmkoli podporovaným cílem, na portálu Azure Firewall > diagnostické protokoly a povolte protokoly pro požadovaný cíl. Pokud provádíte integraci s protokoly Azure Monitor, můžete zobrazit protokolování pro veškerý provoz odeslaný do Azure Firewall. Pokud chcete zobrazit zamítnutý provoz, otevřete Log Analytics portálu pracovního prostoru > protokoly a zadejte dotaz jako 
 
@@ -225,7 +225,7 @@ U Azure Firewall automaticky získáte vše, co je nakonfigurováno pomocí zna�
 
 | Koncový bod |
 |----------|
-|GR-prod-\*. cloudapp.NET:443 |
+|GR-prod- \* . cloudapp.NET:443 |
 | \*. management.azure.com:443 |
 | \*. update.microsoft.com:443 |
 | \*. windowsupdate.microsoft.com:443 |

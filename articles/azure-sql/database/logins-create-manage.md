@@ -1,7 +1,7 @@
 ---
 title: Autorizovat přístup k serveru a databázi pomocí přihlašovacích údajů a uživatelských účtů
 titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
-description: Přečtěte si, jak Azure SQL Database, spravované instance SQL a Azure synapse ověřují uživatele pro přístup pomocí přihlašovacích údajů a uživatelských účtů. Naučíte se také, jak role databáze a explicitní oprávnění k autorizaci přihlašovacích údajů a uživatelů provádět akce a data dotazů.
+description: Přečtěte si, jak Azure SQL Database, Managed instance SQL a Azure synapse ověřují uživatele pro přístup pomocí přihlašovacích údajů a uživatelských účtů. Také se dozvíte, jak udělit databázové role a explicitní oprávnění k autorizaci přihlašovacích údajů a uživatelů k provádění akcí a dotazování na data.
 keywords: zabezpečení databáze SQL,správa zabezpečení databáze,zabezpečení přihlášení,zabezpečení databáze,přístup k databázi
 services: sql-database
 ms.service: sql-database
@@ -13,20 +13,20 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 0bf5a16624579a5dc15382b3ec9f2b5641a3b9fc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 296bf84c22313723c328e1775f697ee19dcb8f04
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048389"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220554"
 ---
-# <a name="authorizing-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Ověření přístupu k databázi SQL Database, spravované instance SQL a Azure synapse Analytics
+# <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorizace přístupu k databázi SQL Database, spravované instanci SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 V tomto článku se dozvíte o:
 
-- Možnosti konfigurace Azure SQL Database, spravované instance Azure SQL a Azure synapse Analytics (dříve Azure SQL Data Warehouse), aby uživatelé mohli provádět úlohy správy a přístup k datům uloženým v těchto databázích.
-- Konfigurace přístupu a autorizace po počátečním vytvoření nového serveru. 
+- Možnosti konfigurace Azure SQL Database, spravované instance Azure SQL a služby Azure synapse Analytics (dříve Azure SQL Data Warehouse), aby uživatelé mohli provádět úlohy správy a přistupovat k datům uloženým v těchto databázích.
+- Konfigurace přístupu a autorizace po počátečním vytvoření nového serveru.
 - Přidání přihlašovacích údajů a uživatelských účtů do hlavní databáze a uživatelských účtů a udělení těchto účtů oprávnění správce.
 - Postup přidání uživatelských účtů v uživatelských databázích, a to buď přidružených k přihlašovacím jménům, nebo jako obsažené uživatelské účty.
 - Nakonfigurujte uživatelské účty s oprávněním v uživatelských databázích pomocí databázových rolí a explicitních oprávnění.
@@ -44,7 +44,7 @@ Když se uživatel pokusí připojit k databázi, poskytne uživatelskému účt
   Pomocí této metody ověřování uživatel pro navázání připojení odešle název uživatelského účtu a přidružené heslo. Toto heslo je uloženo v hlavní databázi pro uživatelské účty propojené s přihlašovacími údaji nebo uložené v databázi obsahující uživatelské účty, které *nejsou* propojeny s přihlašovacími údaji.
 - [Ověřování Azure Active Directory](authentication-aad-overview.md)
 
-  Pomocí této metody ověřování uživatel odesílá název uživatelského účtu a požaduje, aby služba používala informace přihlašovacích údajů uložené v Azure Active Directory.
+  Pomocí této metody ověřování uživatel odesílá název uživatelského účtu a požaduje, aby služba používala informace přihlašovacích údajů uložené v Azure Active Directory (Azure AD).
 
 **Přihlášení a uživatelé**: uživatelský účet v databázi může být přidružen k přihlašovacímu jménu, které je uloženo v hlavní databázi, nebo může být uživatelské jméno, které je uloženo v individuální databázi.
 
@@ -57,8 +57,8 @@ Když se uživatel pokusí připojit k databázi, poskytne uživatelskému účt
 
 Při prvním nasazení Azure SQL zadejte přihlašovací jméno správce a přidružené heslo pro toto přihlášení. Tento účet správce se nazývá **Správce serveru**. Během nasazení dojde k následující konfiguraci přihlašovacích údajů a uživatelů v hlavní databázi a uživatelských databázích:
 
-- Přihlašovací jméno SQL s oprávněními správce se vytvoří pomocí zadaného přihlašovacího jména. [Přihlášení](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) je individuální uživatelské účty pro přihlášení k SQL Database, spravované instanci SQL a Azure synapse.
-- Tomuto přihlášení je uděleno úplné oprávnění správce pro všechny databáze jako [objekt zabezpečení na úrovni serveru](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine). Toto přihlášení má všechna dostupná oprávnění a nedá se omezit. V rámci spravované instance SQL se toto přihlášení přidá do [pevné role serveru sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) (Tato role v Azure SQL Database neexistuje).
+- Přihlašovací jméno SQL s oprávněními správce se vytvoří pomocí zadaného přihlašovacího jména. [Přihlášení](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine#sa-login) je individuální uživatelský účet pro přihlášení k SQL Database, spravované instanci SQL a Azure synapse.
+- Tomuto přihlášení je uděleno úplné oprávnění správce pro všechny databáze jako [objekt zabezpečení na úrovni serveru](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine). Přihlášení má všechna dostupná oprávnění a nedá se omezit. V rámci spravované instance SQL se toto přihlášení přidá do [pevné role serveru sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) (Tato role v Azure SQL Database neexistuje).
 - [user account](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/getting-started-with-database-engine-permissions#database-users) `dbo` Pro toto přihlášení se vytvoří uživatelský účet s názvem v každé uživatelské databázi. Uživatel [dbo](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/principals-database-engine) má všechna oprávnění databáze v databázi a je namapován na `db_owner` pevně danou databázovou roli. Další pevné databázové role jsou popsány dále v tomto článku.
 
 Chcete-li identifikovat účty správců pro databázi, otevřete Azure Portal a přejděte na kartu **vlastnosti** serveru nebo spravované instance.
@@ -76,21 +76,21 @@ V tuto chvíli je váš server nebo spravovaná instance nakonfigurovaný jenom 
 
 - **Vytvoření účtu správce Azure Active Directory s úplnými oprávněními správce**
 
-  Povolte Azure Active Directory ověřování a vytvořte přihlašovací jméno správce Azure AD. Jeden Azure Active Directory účet lze nakonfigurovat jako správce nasazení SQL s úplnými oprávněními pro správu. Tento účet může být buď jednotlivý účet, nebo účet skupiny zabezpečení. Pokud chcete použít účty Azure AD pro připojení k SQL Database, spravované instanci SQL nebo Azure synapse, **musí** být nakonfigurovaný správce Azure AD. Podrobné informace o povolení ověřování Azure AD pro všechny typy nasazení SQL najdete v následujících článcích:
+  Povolte Azure Active Directory ověřování a vytvořte přihlašovací jméno správce Azure AD. Jeden Azure Active Directory účet může být nakonfigurovaný jako správce nasazení Azure SQL s úplnými oprávněními pro správu. Tento účet může být buď jednotlivý účet, nebo účet skupiny zabezpečení. Pokud chcete použít účty Azure AD pro připojení k SQL Database, spravované instanci SQL nebo Azure synapse, **musí** být nakonfigurovaný správce Azure AD. Podrobné informace o povolení ověřování Azure AD pro všechny typy nasazení Azure SQL najdete v následujících článcích:
 
   - [Pro ověřování pomocí SQL použít Azure Active Directory ověřování](authentication-aad-overview.md)
   - [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](authentication-aad-configure.md)
 
 - **Ve spravované instanci SQL vytvořte přihlašovací údaje SQL s úplnými oprávněními pro správu.**
 
-  - Vytvoření dalšího přihlášení SQL v hlavní databázi
+  - V hlavní databázi vytvořte další přihlášení SQL.
   - Pomocí příkazu [ALTER Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) přidejte přihlašovací údaje k [pevné roli serveru sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) . Toto přihlášení bude mít úplná oprávnění správce.
   - Případně můžete pomocí syntaxe [Create Login](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) vytvořit [přihlašovací #provision služby Azure AD](authentication-aad-configure.md)– Azure-AD-admin-SQL-Managed-instance.
 
-- **V SQL Database Vytvořte přihlašovací údaje SQL s omezenými oprávněními správce.**
+- **V SQL Database Vytvořte přihlašovací údaje SQL s omezenými oprávněními pro správu.**
 
-  - Vytvoření dalšího přihlášení SQL v hlavní databázi
-  - Vytvoření uživatelského účtu v hlavní databázi přidružené k tomuto novému přihlášení
+  - V hlavní databázi vytvořte další přihlášení SQL.
+  - Vytvořte uživatelský účet v hlavní databázi přidružené k tomuto novému přihlášení.
   - Přidejte uživatelský účet do role, do `dbmanager` `loginmanager` role nebo do obou v `master` databázi pomocí příkazu [ALTER Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) (pro Azure synapse použijte příkaz [sp_addrolemember](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql) ).
 
   > [!NOTE]
@@ -115,10 +115,10 @@ V tuto chvíli je váš server nebo spravovaná instance nakonfigurovaný jenom 
   - Pomocí SQL Database můžete tento typ uživatelského účtu vždycky vytvořit.
   - Pomocí spravované instance SQL podporující [objekty zabezpečení serveru Azure AD](authentication-aad-configure.md#create-contained-users-mapped-to-azure-ad-identities)můžete vytvářet uživatelské účty pro ověřování ve spravované instanci SQL, aniž by bylo nutné vytvořit uživatele databáze jako uživatel databáze s omezením.
 
-  V případě tohoto přístupu jsou informace o ověřování uživatele uloženy v každé databázi a automaticky replikovány do geograficky replikovaných databází. Pokud však stejný účet existuje ve více databázích a používáte ověřování SQL, je nutné uchovat hesla ručně. Navíc platí, že pokud má uživatel účet v různých databázích s různými hesly, může se stát, že tato hesla budou mít potíže.
+  V případě tohoto přístupu jsou informace o ověřování uživatele uloženy v každé databázi a automaticky replikovány do geograficky replikovaných databází. Pokud však stejný účet existuje ve více databázích a používáte ověřování Azure SQL, je nutné uchovat hesla ručně. Navíc platí, že pokud má uživatel účet v různých databázích s různými hesly, může se stát, že tato hesla budou mít potíže.
 
 > [!IMPORTANT]
-> Pokud chcete vytvořit obsažené uživatele namapované na identity Azure AD, musíte se přihlásit pomocí účtu Azure AD, který je správcem v SQL Database. V rámci spravované instance SQL může přihlášení k SQL pomocí `sysadmin` oprávnění vytvořit také přihlášení nebo uživatele služby Azure AD.
+> Pokud chcete vytvořit obsažené uživatele namapované na identity Azure AD, musíte se přihlásit pomocí účtu Azure AD, který je správcem v databázi v Azure SQL Database. V rámci spravované instance SQL může přihlášení k SQL pomocí `sysadmin` oprávnění vytvořit také přihlášení nebo uživatele služby Azure AD.
 
 Příklady, jak vytvořit přihlašovací jména a uživatele, najdete v tématech:
 
@@ -171,4 +171,4 @@ Měli byste se seznámit s následujícími funkcemi, které jde použít k omez
 
 ## <a name="next-steps"></a>Další kroky
 
-Přehled všech funkcí zabezpečení SQL Database a SQL Managed instance najdete v tématu [Přehled zabezpečení SQL](security-overview.md).
+Přehled všech funkcí zabezpečení Azure SQL Database a SQL Managed instance najdete v tématu [Přehled zabezpečení](security-overview.md).

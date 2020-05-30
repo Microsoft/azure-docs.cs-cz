@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 8570bce87aeea5473b4aadf9bd30bc0a648a6f0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 331d0cd4a20cb4351a1bc9a204c500386c499ada
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72518301"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220148"
 ---
 # <a name="azcopy-bench"></a>azcopy bench
 
@@ -43,15 +43,15 @@ azcopy bench [destination] [flags]
 
 Spustit test srovnávacího testu s výchozími parametry (vhodný pro sítě srovnávacích testů až do 1 GB/s):
 
-- AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS>"
+- AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS> "
 
 Spusťte test srovnávacího testu, který nahrává soubory 100, každý 2 GiB velikost: (vhodné pro srovnávací testy v rychlé síti, např. 10 GB/s):
 
-- AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS>" --počet souborů: 100--Size-pro soubor 2G
+- AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS> " --počet souborů: 100--Size-pro soubor 2G
 
 Stejné jako výše, ale použijte soubory 50 000, velikost 8 souborů MiB a jejich výpočetních hodnot hash MD5 (stejným způsobem jako příznak--Put-MD5 to dělá v příkazu copy). Účelem--Put-MD5 při srovnávacích testech je testovat, zda výpočet MD5 ovlivňuje propustnost pro vybraný počet a velikost souborů:
 
-- AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS>" --počet souborů: 50000--Size-podle souboru 8 min--Put-MD5
+- AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS> " --počet souborů: 50000--Size-podle souboru 8 min--Put-MD5
 
 ## <a name="options"></a>Možnosti
 
@@ -77,6 +77,8 @@ Stejné jako výše, ale použijte soubory 50 000, velikost 8 souborů MiB a jej
 
 **--výstupní** formát řetězce výstupu příkazu. Mezi možnosti patří: text, JSON. Výchozí hodnota je "text". (výchozí "text").
 
+**--Trusted – řetězec Microsoft-přípony** Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí hodnota je *. Core.Windows.NET;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.
+
 ## <a name="see-also"></a>Viz také
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

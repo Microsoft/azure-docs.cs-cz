@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 04/08/2020
-ms.openlocfilehash: 5bb5d5dd5110f176b59a99f6a3aa223184158da5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/28/2020
+ms.openlocfilehash: 3c9c5e69eea72b20da485ffb1edf806f2c9f3b41
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982306"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195305"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Povolit Azure Monitor pro virtuální počítače – přehled
 
@@ -60,7 +60,7 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 
 Pokud nemáte pracovní prostor Log Analytics, můžete ho vytvořit pomocí jednoho z prostředků:
 * [Azure CLI](../../azure-monitor/learn/quick-create-workspace-cli.md)
-* [Prostředí](../../azure-monitor/learn/quick-create-workspace-posh.md)
+* [PowerShell](../../azure-monitor/learn/quick-create-workspace-posh.md)
 * [portál Azure](../../azure-monitor/learn/quick-create-workspace.md)
 * [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md)
 
@@ -82,20 +82,20 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 
 |Verze operačního systému |Výkon |Maps |
 |-----------|------------|-----|
-|Windows Server 2019 | × | × |
-|Windows Server 2016 1803 | × | × |
-|Windows Server 2016 | × | × |
-|Windows Server 2012 R2 | × | × |
-|Windows Server 2012 | × | × |
-|Windows Server 2008 R2 | × | ×|
-|Systém Windows 10 1803 | × | × |
-|Windows 8.1 | × | × |
-|Windows 8 | × | × |
-|Windows 7 SP1 | × | × |
-|Red Hat Enterprise Linux (RHEL) 6, 7| × | ×| 
-|Ubuntu 18,04, 16,04 | × | × |
-|CentOS Linux 7, 6 | × | × |
-|SUSE Linux Enterprise Server (SLES) 12 | × | × |
+|Windows Server 2019 | X | X |
+|Windows Server 2016 1803 | X | X |
+|Windows Server 2016 | X | X |
+|Windows Server 2012 R2 | X | X |
+|Windows Server 2012 | X | X |
+|Windows Server 2008 R2 | X | X|
+|Systém Windows 10 1803 | X | X |
+|Windows 8.1 | X | X |
+|Windows 8 | X | X |
+|Windows 7 SP1 | X | X |
+|Red Hat Enterprise Linux (RHEL) 6, 7| X | X| 
+|Ubuntu 18,04, 16,04 | X | X |
+|CentOS Linux 7, 6 | X | X |
+|SUSE Linux Enterprise Server (SLES) 12 | X | X |
 |Debian 9,4, 8 | ×<sup>1</sup> | |
 
 <sup>1</sup> funkce výkonu Azure monitor pro virtuální počítače je k dispozici pouze Azure monitor. Není k dispozici přímo v levém podokně virtuálního počítače Azure.
@@ -134,7 +134,7 @@ Následující tabulka uvádí operační systémy Windows a Linux, které Azure
 
 | Verze operačního systému | Verze jádra |
 |:--|:--|
-| 18,04 | 5,0 (zahrnuje jádro Azure vyladěné)<br>4,18*<br>4,15* |
+| 18,04 | 5.3.0 – 1020<br>5,0 (zahrnuje jádro Azure vyladěné)<br>4,18* <br> 4,15* |
 | 16.04.3 | 4,15. * |
 | 16,04 | 4,13.\*<br>4,11.\*<br>4,10.\*<br>4,8.\*<br>4,4.\* |
 
@@ -169,14 +169,14 @@ Následující tabulka popisuje připojené zdroje, které funkce mapy podporuje
 |:--|:--|:--|
 | Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
 | Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | Ne | |
+| Skupina pro správu nástroje System Center Operations Manager | No | |
 
 Agenta závislostí si můžete stáhnout z těchto umístění:
 
-| File | Operační systém | Version | SHA-256 |
+| Soubor | Operační systém | Verze | SHA-256 |
 |:--|:--|:--|:--|
-| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.3.9380 | 40763BD0A5B60707DF3F9E7BCC17D917F5CE995F2F5A4633D8B733F3BE143921  |
-| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.3.9380 | BB41BB59BDD293968F02A9EF821F9639406AA1BDF1F67925DB9EE00D54AA7F0B |
+| [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.10.4.10090 | B4E1FF9C1E5CD254AA709AEF9723A81F04EC0763C327567C582CE99C0C5A0BAE  |
+| [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.10.4.10090 | A56E310D297CE3B343AE8F4A6F72980F1C3173862D6169F1C713C2CA09660A9F |
 
 ## <a name="role-based-access-control"></a>Řízení přístupu na základě role
 
@@ -199,7 +199,7 @@ Povolte Azure Monitor pro virtuální počítače pomocí jedné z metod popsan�
 
 Pokud je Azure Monitor pro virtuální počítače povolená a nakonfigurovaná pomocí pracovního prostoru Log Analytics, Management Pack se přepošle do všech počítačů se systémem Windows, které do tohoto pracovního prostoru hlásí. Pokud jste [System Center Operations Manager skupinu pro správu](../../azure-monitor/platform/om-agents.md) s pracovním prostorem Log Analytics, Service map Management Pack je nasazen ze skupiny pro správu do počítačů se systémem Windows, které se hlásí do skupiny pro správu.  
 
-Management Pack má název *Microsoft. IntelligencePacks. ApplicationDependencyMonitor*. Jeho zápis do `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\` složky. Zdroj dat, který používá Management Pack, je `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll`.
+Management Pack má název *Microsoft. IntelligencePacks. ApplicationDependencyMonitor*. Jeho zápis do `%Programfiles%\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs\` složky. Zdroj dat, který používá Management Pack, je `%Program files%\Microsoft Monitoring Agent\Agent\Health Service State\Resources\<AutoGeneratedID>\Microsoft.EnterpriseManagement.Advisor.ApplicationDependencyMonitorDataSource.dll` .
 
 ## <a name="diagnostic-and-usage-data"></a>Diagnostika a data o používání
 

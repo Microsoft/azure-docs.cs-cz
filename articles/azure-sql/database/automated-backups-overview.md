@@ -13,14 +13,15 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 0d6ab6152d7025098006c580673848fe0268346b
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 7ee69feccb59270d14e86185d0cd6112e5e2ab4a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141836"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190074"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Jak Azure SQL Database, tak Azure SQL Managed instance vytvoří zálohy databáze, které se uchovávají po dobu trvání nakonfigurované doby uchování. Používají [geograficky redundantní úložiště Azure s přístupem pro čtení (RA-GRS)](../../storage/common/storage-redundancy.md) k zajištění, že se zálohy uchovávají i v případě, že datové centrum není k dispozici.
@@ -43,7 +44,7 @@ Tyto zálohy rovněž umožňují:
 Chcete-li provést obnovení, přečtěte si téma [obnovení databáze ze zálohy](recovery-using-backups.md).
 
 > [!NOTE]
-> V Azure Storage pojem *replikace* označuje kopírování souborů z jednoho umístění do druhého. V jazyce SQL *replikace databáze* odkazuje na udržování více sekundárních databází synchronizovaných s primární databází.
+> V Azure Storage pojem *replikace* označuje kopírování souborů z jednoho umístění do druhého. V Azure SQL Database a spravované instanci SQL odkazuje *replikace databáze* na udržování více sekundárních databází synchronizovaných s primární databází.
 
 Některé z těchto operací můžete vyzkoušet pomocí následujících příkladů:
 
@@ -61,7 +62,7 @@ Některé z těchto operací můžete vyzkoušet pomocí následujících přík
 
 SQL Database a SQL Managed instance podporují samoobslužnou službu pro obnovení PITR (Point-in-time) tím, že automaticky vytvoří úplné zálohy, rozdílové zálohy a zálohy protokolu transakcí. Úplné zálohy databáze jsou vytvářeny týdně a rozdílové zálohy databáze se většinou vytvářejí každých 12 hodin. Zálohy protokolu transakcí se většinou vytvářejí každých 5 až 10 minut. Frekvence zálohování protokolu transakcí je založena na výpočetní velikosti a množství aktivity databáze.
 
-První úplné zálohování je naplánováno ihned po vytvoření databáze. Tato záloha se obvykle dokončí do 30 minut, ale pokud je databáze velká, může trvat déle. Například počáteční záloha může trvat déle na obnovenou databázi nebo kopii databáze. Po první úplné záloze se všechny další zálohy naplánují automaticky a budou se bezobslužně spravovat na pozadí. Přesné časování všech záloh databáze určuje služba SQL Database nebo služba SQL Managed instance, protože vyrovnává celkovou úlohu systému. Úlohy zálohování nemůžete změnit ani zakázat.
+První úplné zálohování je naplánováno ihned po vytvoření databáze. Tato záloha se obvykle dokončí do 30 minut, ale pokud je databáze velká, může trvat déle. Například počáteční záloha může trvat déle na obnovenou databázi nebo kopii databáze. Po první úplné záloze se všechny další zálohy naplánují automaticky a budou se bezobslužně spravovat na pozadí. Přesný okamžik všech záloh databáze je určený SQL Database nebo SQL Managed instance, protože vyvažuje celkovou úlohu systému. Úlohy zálohování nemůžete změnit ani zakázat.
 
 ### <a name="default-backup-retention-period"></a>Výchozí doba uchovávání záloh
 
@@ -142,7 +143,7 @@ Přidejte filtr pro **název služby**a potom v rozevíracím seznamu vyberte **
 
 ## <a name="backup-retention"></a>Uchování záloh
 
-Všechny databáze v Microsoft Azure SQL mají výchozí dobu uchovávání záloh 7 dní. [Dobu uchovávání záloh můžete změnit](#change-the-pitr-backup-retention-period) na odkudkoli mezi 1-35 dny.
+Všechny databáze v SQL Database a SQL Managed instance mají výchozí dobu uchování záloh 7 dní. [Dobu uchovávání záloh můžete změnit](#change-the-pitr-backup-retention-period) na až 35 dní.
 
 Pokud databázi odstraníte, Azure bude zálohy uchovávat stejným způsobem jako online databáze. Pokud například odstraníte databázi Basic, která má dobu uchování sedm dní, uloží se záloha se čtyřmi dny do stáří po dobu tří dalších dnů.
 
@@ -156,7 +157,7 @@ Pokud potřebujete uchovat zálohy po dobu delší, než je maximální doba uch
 
 ## <a name="encrypted-backups"></a>Šifrovaná zálohování
 
-Pokud je databáze zašifrovaná pomocí TDE, zálohy se automaticky zašifrují v klidovém stavu, včetně záloh LTR. Pokud je TDE povolená pro SQL Database nebo SQL Managed instance, zálohy se taky šifrují. Všechny nové databáze v Azure SQL jsou ve výchozím nastavení nakonfigurované s povoleným TDE. Další informace o TDE najdete v tématu [transparentní šifrování dat s SQL Database & spravované instance SQL](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+Pokud je databáze zašifrovaná pomocí TDE, zálohy se automaticky zašifrují v klidovém stavu, včetně záloh LTR. Pokud je TDE povolená pro SQL Database nebo SQL Managed instance, zálohy se taky šifrují. Všechny nové databáze v SQL Database a spravované instance SQL jsou ve výchozím nastavení nakonfigurované s povoleným TDE. Další informace o TDE najdete v tématu [transparentní šifrování dat s SQL Database & spravované instance SQL](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
 
 ## <a name="backup-integrity"></a>Integrita zálohy
 

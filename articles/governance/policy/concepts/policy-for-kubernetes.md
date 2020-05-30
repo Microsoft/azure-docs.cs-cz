@@ -3,12 +3,12 @@ title: Preview – informace Azure Policy Kubernetes
 description: Přečtěte si, jak Azure Policy používá Rego a Open Agent zásad ke správě clusterů se systémem Kubernetes v Azure nebo místním prostředí. Tato funkce je ve verzi Preview.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0d663d7bf7ce70c605551422f600258943d1efd7
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 9969bed9cb7c84faf9736bff2fb8337dc05d1bb0
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828623"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221142"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters-preview"></a>Vysvětlení Azure Policy pro clustery Kubernetes (Preview)
 
@@ -35,6 +35,9 @@ Pokud chcete povolit a používat Azure Policy s clusterem Kubernetes, proveďte
    - [Azure Kubernetes Service (AKS)](#install-azure-policy-add-on-for-aks)
    - [Kubernetes s podporou Azure Arc](#install-azure-policy-add-on-for-azure-arc-enabled-kubernetes)
    - [Modul AKS](#install-azure-policy-add-on-for-aks-engine)
+
+   > [!NOTE]
+   > Běžné problémy s instalací najdete v tématu [řešení potíží – Azure Policy doplněk](../troubleshoot/general.md#add-on-installation-errors).
 
 1. [Principy Azure Policyho jazyka pro Kubernetes](#policy-language)
 

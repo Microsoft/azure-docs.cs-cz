@@ -1,5 +1,5 @@
 ---
-title: Změna modelu licencí pro virtuální počítač s SQL Server v Azure
+title: Změna modelu licencí pro virtuální počítač s SQL v Azure
 description: Přečtěte si, jak přepínat licencování pro SQL Server virtuální počítač v Azure z průběžných plateb podle aktuálního využití Zvýhodněné hybridní využití Azure.
 services: virtual-machines-windows
 documentationcenter: na
@@ -14,20 +14,20 @@ ms.workload: iaas-sql-server
 ms.date: 11/13/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ebf8e62074d357b6c7dc91d1a88a46dcfc18bf16
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 07f5896ab43cd02abc9c83667763c1989355b8bc
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049075"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219412"
 ---
-# <a name="change-the-license-model-for-a-sql-server-virtual-machine-in-azure"></a>Změna licenčního modelu pro virtuální počítač s SQL Serverem v Azure
+# <a name="change-the-license-model-for-a-sql-virtual-machine-in-azure"></a>Změna modelu licencí pro virtuální počítač s SQL v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 
-Tento článek popisuje, jak změnit model licencí pro SQL Server virtuální počítač (VM) v Azure pomocí nového poskytovatele prostředků SQL VM, **Microsoft. SqlVirtualMachine**.
+Tento článek popisuje, jak změnit model licencí pro SQL Server virtuální počítač (VM) v Azure pomocí nového poskytovatele prostředků SQL Server virtuálního počítače, **Microsoft. SqlVirtualMachine**.
 
-Existují tři licenční modely pro virtuální počítač, který je hostitelem SQL Server: průběžné platby, Zvýhodněné hybridní využití Azure a zotavení po havárii (DR). Model licencí vašeho SQL Server virtuálního počítače můžete upravit pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu. 
+Existují tři licenční modely pro virtuální počítač, který je hostitelem SQL Server: průběžné platby, Zvýhodněné hybridní využití Azure (AHB) a zotavení po havárii (DR). Model licencí vašeho SQL Server virtuálního počítače můžete upravit pomocí Azure Portal, rozhraní příkazového řádku Azure nebo PowerShellu. 
 
 - Model s průběžnými **platbami** znamená, že náklady na spuštění virtuálního počítače Azure za sekundu zahrnují náklady na SQL Server licenci.
 - [Zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/) umožňuje používat vlastní SQL Server licenci s virtuálním počítačem, na kterém běží SQL Server. 
@@ -56,7 +56,7 @@ Změna modelu licencování virtuálního počítače s SQL Server má následuj
 
 ## <a name="vms-already-registered-with-the-resource-provider"></a>Virtuální počítače, které jsou už zaregistrované u poskytovatele prostředků 
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 [!INCLUDE [windows-virtual-machines-sql-use-new-management-blade](../../../../includes/windows-virtual-machines-sql-new-resource.md)]
 
@@ -70,7 +70,7 @@ Licenční model můžete změnit přímo z portálu:
 ![Zvýhodněné hybridní využití Azure na portálu](./media/licensing-model-azure-hybrid-benefit-ahb-change/ahb-in-portal.png)
 
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 Ke změně modelu licence můžete použít rozhraní příkazového řádku Azure CLI.  
 
@@ -131,9 +131,9 @@ Update-AzSqlVM -ResourceGroupName <resource_group_name> -Name <VM_name> -License
 
 ## <a name="vms-not-registered-with-the-resource-provider"></a>Virtuální počítače neregistrované u poskytovatele prostředků
 
-Pokud jste zřídili SQL Server virtuální počítač z Azure Marketplace imagí s průběžnými platbami, pak typ licence SQL Server bude průběžně platit. Pokud jste zřídili SQL Server virtuální počítač s použitím image s vlastní licencí z Azure Marketplace, bude typ licence AHUB. Všechny SQL Server virtuální počítače zřízené ve výchozím nastavení (průběžné platby) nebo vlastní licence Azure Marketplace se budou automaticky registrovat u poskytovatele prostředků virtuálního počítače SQL, aby mohli změnit [typ licence](#vms-already-registered-with-the-resource-provider).
+Pokud jste zřídili SQL Server virtuální počítač z Azure Marketplace imagí s průběžnými platbami, SQL Server Typ licence bude průběžné platby. Pokud jste zřídili SQL Server virtuální počítač s použitím image s vlastní licencí z Azure Marketplace, typ licence bude AHUB. Všechny SQL Server virtuální počítače zřízené ve výchozím nastavení (průběžné platby) nebo vlastní licence Azure Marketplace se budou automaticky registrovat u poskytovatele prostředků virtuálního počítače SQL, aby mohli změnit [typ licence](#vms-already-registered-with-the-resource-provider).
 
-Máte nárok jenom na samoobslužnou instalaci SQL Server na virtuálním počítači Azure prostřednictvím Zvýhodněné hybridní využití Azure. [Tyto virtuální počítače byste měli zaregistrovat u poskytovatele prostředků virtuálních počítačů SQL](sql-vm-resource-provider-register.md) , a to tak, že nastavíte licenci SQL Server jako zvýhodněné hybridní využití Azure, abyste označili zvýhodněné hybridní využití Azure využití podle podmínek produktu společnosti Microsoft.
+K virtuálnímu počítači Azure se dá pomocí Zvýhodněné hybridní využití Azure nárokovat jenom samoobslužné instalace SQL Server. [Tyto virtuální počítače byste měli zaregistrovat u poskytovatele prostředků virtuálních počítačů SQL](sql-vm-resource-provider-register.md) , a to tak, že nastavíte licenci SQL Server jako zvýhodněné hybridní využití Azure, abyste označili zvýhodněné hybridní využití Azure využití podle podmínek produktu společnosti Microsoft.
 
 Typ licence SQL Server virtuálního počítače můžete změnit jako průběžné platby nebo Zvýhodněné hybridní využití Azure, jenom když je virtuální počítač SQL Server zaregistrovaný u poskytovatele prostředků SQL VM.
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: jafreebe
 ms.reviewer: ushan
-ms.openlocfilehash: 57ca5b0880d4b027e33bc0d01fc6225eb886029b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be6b5f0af17aa8343dcb74fd5f0710d44332ce0e
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82084987"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193295"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Nasazení do App Service pomocí akcí GitHubu
 
@@ -29,7 +29,7 @@ V případě pracovního postupu Azure App Service má soubor tři části:
 |---------|---------|
 |**Authentication** | 1. definování instančního objektu <br /> 2. vytvoření tajného kódu GitHubu |
 |**Sestavení** | 1. nastavení prostředí <br /> 2. sestavení webové aplikace |
-|**Nasadit** | 1. nasazení webové aplikace |
+|**Nasazení** | 1. nasazení webové aplikace |
 
 ## <a name="create-a-service-principal"></a>Vytvoření instančního objektu
 
@@ -64,7 +64,7 @@ Můžete také použít přihlašovací údaje na úrovni aplikace, tj. profil p
     ```yaml
         - uses: azure/webapps-deploy@v2
           with:
-            creds: ${{ secrets.azureWebAppPublishProfile }}
+            publish-profile: ${{ secrets.azureWebAppPublishProfile }}
     ```
 
 5. Po definování se zobrazí tajný klíč, jak je znázorněno níže.
@@ -184,7 +184,7 @@ Následující příklady znázorňují část pracovního postupu, který vytv�
 
 K nasazení kódu do aplikace App Service použijte `azure/webapps-deploy@v2` akci. Tato akce má čtyři parametry:
 
-| **Ukazatele**  | **Vysvětlení**  |
+| **Parametr**  | **Vysvětlení**  |
 |---------|---------|
 | **název aplikace** | Požadovanou Název aplikace App Service | 
 | **publikování – profil** | Volitelné Publikování obsahu souboru profilu pomocí Nasazení webu tajných klíčů |

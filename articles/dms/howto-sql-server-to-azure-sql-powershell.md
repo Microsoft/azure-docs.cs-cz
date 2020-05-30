@@ -1,7 +1,7 @@
 ---
 title: 'PowerShell: migrace SQL Server do SQL Database'
 titleSuffix: Azure Database Migration Service
-description: Naučte se migrovat z místních SQL Server na Azure SQL Database pomocí Azure PowerShell s Azure Database Migration Service.
+description: Naučte se migrovat datagbase z SQL Server na Azure SQL Database pomocí Azure PowerShell Azure Database Migration Service.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 323d6b006d3e790a7517e90f34241976904b3ba3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 494ef67938df161915390d9adc74093bafa550f5
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021479"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192658"
 ---
-# <a name="migrate-sql-server-on-premises-to-azure-sql-database-using-azure-powershell"></a>Migrace SQL Server místně pro Azure SQL Database pomocí Azure PowerShell
+# <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Migrace databáze SQL Server pro Azure SQL Database pomocí Azure PowerShell
 
-V tomto článku migrujete databázi **Adventureworks2012** obnovenou do místní instance SQL Server 2016 nebo vyšší do Azure SQL Database pomocí Microsoft Azure PowerShell. Databáze můžete migrovat z místní instance SQL Server do Azure SQL Database pomocí `Az.DataMigration` modulu v Microsoft Azure PowerShell.
+V tomto článku migrujete databázi **Adventureworks2012** obnovenou do místní instance SQL Server 2016 nebo vyšší do Azure SQL Database pomocí Microsoft Azure PowerShell. Databáze můžete migrovat z instance SQL Server do Azure SQL Database pomocí `Az.DataMigration` modulu v Microsoft Azure PowerShell.
 
 V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]

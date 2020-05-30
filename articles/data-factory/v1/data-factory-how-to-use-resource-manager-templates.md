@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 73498b3537f4cf9313fc9e2464785f63c2af0d5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e94445a6cb16eacb496daedbec21379928a4dafd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81460728"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194465"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Vytváření Azure Data Factory entit pomocí šablon
 > [!NOTE]
@@ -25,7 +25,7 @@ ms.locfileid: "81460728"
 ## <a name="overview"></a>Přehled
 Při použití Azure Data Factory pro vaše potřeby integrace dat můžete použít stejný vzor v různých prostředích nebo implementaci stejné opakovaně úlohy ve stejném řešení. Šablony usnadňují implementaci a správu těchto scénářů. Šablony v Azure Data Factory jsou ideální pro scénáře, které zahrnují možnosti opětovné použitelnosti a opakování.
 
-Vezměte v úvahu situaci, kdy má organizace 10 výrobních závodů po celém světě. Protokoly z každé továrny se ukládají do samostatné místní databáze SQL Server. Společnost chce vytvořit jeden datový sklad v cloudu pro ad hoc analýzu. Také chce mít stejnou logiku, ale různé konfigurace pro vývojové, testovací a produkční prostředí.
+Vezměte v úvahu situaci, kdy má organizace 10 výrobních závodů po celém světě. Protokoly z každé továrny se ukládají do samostatné databáze SQL Server. Společnost chce vytvořit jeden datový sklad v cloudu pro ad hoc analýzu. Také chce mít stejnou logiku, ale různé konfigurace pro vývojové, testovací a produkční prostředí.
 
 V takovém případě se úkol musí opakovat ve stejném prostředí, ale s různými hodnotami napříč 10 datovými továrnami pro každou výrobní továrnu. V důsledku toho je **opakování** k dispozici. Šablonování umožňuje abstrakci tohoto obecného toku (to znamená, že kanály mají stejné aktivity v každém objektu pro vytváření dat), ale pro každou výrobní závod používá samostatný soubor parametrů.
 
@@ -41,14 +41,14 @@ Podrobné pokyny k vytváření Data Factory entit pomocí šablon Správce pros
 * [Kurz: vytvoření kanálu pro zpracování dat pomocí šablony Azure Resource Manager](data-factory-build-your-first-pipeline.md)
 
 ## <a name="data-factory-templates-on-github"></a>Data Factory šablon na GitHubu
-Podívejte se na následující šablony Azure Quick Start na GitHubu:
+Podívejte se na následující šablony Azure pro rychlý Start na GitHubu:
 
 * [Vytvoření datové továrny pro kopírování dat z Azure Blob Storage do Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy)
 * [Vytvoření datové továrny s aktivitou podregistru v clusteru Azure HDInsight](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-hive-transformation)
 * [Vytvoření datové továrny pro kopírování dat z Salesforce do objektů blob Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy)
 * [Vytvoření datové továrny, která řetězí aktivity: kopíruje data ze serveru FTP do objektů blob Azure, vyvolá skript podregistru v clusteru HDInsight na vyžádání pro transformaci dat a výsledky kopírování do Azure SQL Database](https://github.com/Azure/azure-quickstart-templates/tree/master/201-data-factory-ftp-hive-blob)
 
-Při [rychlém startu](https://azure.microsoft.com/documentation/templates/)můžete sdílet šablony Azure Data Factory v Azure. Přečtěte si [příručku k příspěvku](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) při vývoji šablon, které se dají sdílet přes toto úložiště.
+Své šablony Azure Data Factory můžete sdílet v [rychlém startu Azure](https://azure.microsoft.com/documentation/templates/). Přečtěte si [příručku k příspěvku](https://github.com/Azure/azure-quickstart-templates/tree/master/1-CONTRIBUTION-GUIDE) při vývoji šablon, které se dají sdílet přes toto úložiště.
 
 Následující části obsahují podrobné informace o definování Data Factorych prostředků v šabloně Správce prostředků.
 

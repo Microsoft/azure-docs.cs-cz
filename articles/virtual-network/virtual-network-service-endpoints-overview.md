@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2019
 ms.author: sumi
 ms.custom: ''
-ms.openlocfilehash: 4a2a7af23005e3c033d455d52f61cef2b7564b7f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9dd4bc79760dde00808358fe489f6e539c2b9a2e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018748"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220432"
 ---
 # <a name="virtual-network-service-endpoints"></a>Koncové body služby pro virtuální síť
 
-Koncové body služby Virtual Network (VNet) přesahují privátní adresní prostor virtuální sítě. Koncové body také šíří identitu vaší virtuální sítě do služeb Azure přes přímé připojení. Koncové body umožňují svázat vaše důležité prostředky služeb Azure pouze s vašimi virtuálními sítěmi. Provoz z vaší virtuální sítě do služby Azure vždy zůstává v páteřní síti Microsoft Azure.
+Koncový bod služby Virtual Network (VNet) poskytuje zabezpečené a přímé připojení ke službám Azure přes optimalizovanou trasu přes páteřní síť Azure. Koncové body umožňují svázat vaše důležité prostředky služeb Azure pouze s vašimi virtuálními sítěmi. Koncové body služby umožňují privátním IP adresám ve virtuální síti dosáhnout koncového bodu služby Azure bez nutnosti veřejné IP adresy ve virtuální síti.
 
 Tato funkce je k dispozici pro následující služby a oblasti Azure. *Microsoft. \* * Resource je v závorkách. Povolit tento prostředek ze strany podsítě při konfiguraci koncových bodů služby pro vaši službu:
 
@@ -88,7 +88,7 @@ Koncové body služby poskytují následující výhody:
 - Virtuální síť, ve které je koncový bod nakonfigurovaný, může být ve stejném předplatném jako prostředek služby Azure nebo v jiném předplatném. Další informace o oprávněních požadovaných pro nastavení koncových bodů a zabezpečení služeb Azure najdete v části [Zřizování](#provisioning).
 - U podporovaných služeb můžete pomocí koncových bodů služby svázat s virtuálními sítěmi nové nebo existující prostředky.
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 - Po povolení koncového bodu služby zdrojové IP adresy virtuálních počítačů v přepínači podsítě. Zdrojová IP adresa se při komunikaci se službou z dané podsítě přepne z použití veřejných adres IPv4 na používání jejich privátní IPv4 adresy. Během tohoto přepnutí se ukončí všechna existující otevřená připojení TCP ke službě. Při povolování nebo zakazování koncového bodu služby pro podsíť se ujistěte, že nejsou spuštěné žádné důležité úlohy. Také se ujistěte, že se vaše aplikace můžou po přepnutí IP adres automaticky připojit ke službám Azure.
 
@@ -151,5 +151,5 @@ Nejčastější dotazy najdete v tématu [Virtual Network časté otázky týkaj
 - [Zabezpečení Azure SQL Data Warehouse k virtuální síti](../azure-sql/database/vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fsql-data-warehouse%2ftoc.json)
 - [Integrace služeb Azure ve virtuálních sítích](virtual-network-for-azure-services.md)
 - [Virtual Network zásady koncového bodu služby](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoint-policies-overview)
-- [Šablona Azure Resource Manageru](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
+- [Šablona Azure Resource Manager](https://azure.microsoft.com/resources/templates/201-vnet-2subnets-service-endpoints-storage-integration)
 

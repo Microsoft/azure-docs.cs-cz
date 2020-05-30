@@ -4,12 +4,12 @@ description: Přečtěte si o službě Azure Migrate.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: fe6386346282cf182397f6420c541d629ba0aab3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c0fe4293b4e07152ff41ae946faf703aacc42d89
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81768396"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193598"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
@@ -23,7 +23,7 @@ Azure Migrate poskytuje následující funkce:
 - **Rozsah nástrojů**: řada nástrojů pro účely posouzení a migrace. Mezi nástroje patří Azure Migrate: vyhodnocení serveru a Azure Migrate: Migrace serveru. Azure Migrate se integruje s jinými službami Azure a dalšími nástroji a nabídkami nezávislého výrobce softwaru (ISV).
 - **Posouzení a migrace**: v centru Azure Migrate můžete vyhodnotit a migrovat:
     - **Servery**: vyhodnoťte místní servery a migrujte je na virtuální počítače Azure.
-    - **Databáze**: posouzení místních databází a jejich migrace na Azure SQL Database nebo do spravované instance Azure SQL Database.
+    - **Databáze**: vyhodnoťte místní databáze a migrujte je do Azure SQL Database nebo do spravované instance SQL.
     - **Webové aplikace**: vyhodnoťte místní webové aplikace a migrujte je na Azure App Service pomocí Pomocník s migrací Azure App Service.
     - **Virtuální plochy**: vyhodnoťte místní infrastrukturu virtuálních klientských počítačů (VDI) a migrujte ji na virtuální plochu Windows v Azure.
     - **Data**: můžete rychle a efektivně migrovat velké objemy dat do Azure pomocí Azure Data box produktů.
@@ -32,15 +32,15 @@ Azure Migrate poskytuje následující funkce:
 
 Centrum Azure Migrate zahrnuje tyto nástroje:
 
-**Nástroj** | **Posouzení a migrace** | **Zobrazí**
+**Nástroj** | **Posouzení a migrace** | **Podrobnosti**
 --- | --- | ---
 **Azure Migrate: posouzení serveru** | Vyhodnoťte servery. | Zjišťování a posouzení místních virtuálních počítačů VMware, virtuálních počítačů Hyper-V a fyzických serverů v přípravě na migraci do Azure
 **Azure Migrate: Migrace serveru** | Migrujte servery. | Migrujte virtuální počítače VMware, virtuální počítače Hyper-V, fyzické servery, další virtualizované počítače a veřejné cloudové virtuální počítače do Azure.
-**Data Migration Assistant** | Vyhodnocení místních SQL Server databází pro migraci do Azure SQL Database, Azure SQL Database spravované instance nebo virtuálních počítačů Azure se systémem SQL Server. | Data Migration Assistant pomáhá identifikovat potenciální problémy blokující migraci. Identifikuje nepodporované funkce, nové funkce, které vám po migraci můžou těžit, a správnou cestu k migraci databáze. [Další informace](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
-**Azure Database Migration Service** | Migrace místních databází do virtuálních počítačů Azure s SQL Server, Azure SQL Database nebo Azure SQL Database spravovaných instancí. | [Přečtěte si další informace](https://docs.microsoft.com/azure/dms/dms-overview) o Database Migration Service.
+**Data Migration Assistant** | Vyhodnoťte SQL Server databáze pro migraci do Azure SQL Database, spravované instance Azure SQL nebo virtuálních počítačů Azure se systémem SQL Server. | Data Migration Assistant pomáhá identifikovat potenciální problémy blokující migraci. Identifikuje nepodporované funkce, nové funkce, které vám po migraci můžou těžit, a správnou cestu k migraci databáze. [Přečtěte si další informace](https://docs.microsoft.com/sql/dma/dma-overview?view=sql-server-2017).
+**Azure Database Migration Service** | Migrace místních databází do virtuálních počítačů Azure s SQL Server, Azure SQL Database nebo spravovanými instancemi SQL. | [Přečtěte si další informace](https://docs.microsoft.com/azure/dms/dms-overview) o Database Migration Service.
 **Movere** | Vyhodnoťte servery. | [Přečtěte si další informace](#movere) o stěhovací společnosti.
 **Pomocník s migrací webové aplikace** | Vyhodnoťte místní webové aplikace a migrujte je do Azure. |  K vyhodnocení místních webů pro migraci na Azure App Service použijte Azure App Service Pomocník s migrací.<br/><br/> Pomocí Pomocník s migrací můžete migrovat webové aplikace .NET a PHP do Azure. [Přečtěte si další informace](https://appmigration.microsoft.com/) o Azure App Service Pomocník s migrací.
-**Azure Data Box** | Migrujte offline data. | Pomocí Azure Data Box produktů můžete do Azure přesunout velké objemy dat offline. [Další informace](https://docs.microsoft.com/azure/databox/).
+**Azure Data Box** | Migrujte offline data. | Pomocí Azure Data Box produktů můžete do Azure přesunout velké objemy dat offline. [Přečtěte si další informace](https://docs.microsoft.com/azure/databox/).
 
 > [!NOTE]
 > Pokud jste v Azure Government, externí integrované nástroje a nabídky ISV nemůžou odesílat data do Azure Migratech projektů. Nástroje můžete používat nezávisle.
@@ -49,7 +49,7 @@ Centrum Azure Migrate zahrnuje tyto nástroje:
 
 Azure Migrate se integruje s několika nabídkami ISV. 
 
-**ISV**    | **Funkce**
+**ISV**    | **Příznak**
 --- | ---
 [Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrujte servery.
 [Cloudamize](https://www.cloudamize.com/platform) | Vyhodnoťte servery.

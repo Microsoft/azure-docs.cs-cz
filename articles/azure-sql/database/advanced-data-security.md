@@ -1,6 +1,6 @@
 ---
 title: Pokročilé zabezpečení dat
-description: Přečtěte si o funkcích pro zjišťování a klasifikaci citlivých dat, správě ohrožení zabezpečení databáze a zjišťování aktivit neobvyklé, které by mohly signalizovat ohrožení vaší Azure SQL Database, spravované instance Azure SQL nebo Azure synapse.
+description: Přečtěte si o funkcích pro zjišťování a klasifikaci citlivých dat, správě ohrožení zabezpečení databáze a zjišťování aktivit neobvyklé, které by mohly znamenat hrozbu pro vaši databázi v Azure SQL Database, službě Azure SQL Managed instance nebo Azure synapse.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,32 +12,31 @@ author: memildin
 manager: rkarlin
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: ed7d4b10219f4d4a3c437331bd1daf870495949d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d600d174aa37c5c4d5d1011b9cb61e4487256c13
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047850"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195130"
 ---
 # <a name="advanced-data-security"></a>Pokročilé zabezpečení dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 
-Advanced Data Security (ADS) je jednotný balíček pro pokročilé funkce zabezpečení SQL. Služby ADS jsou k dispozici pro Azure SQL Database, Azure SQL Managed instance a Azure synapse. Zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, odhalování a omezování možných ohrožení zabezpečení databáze a detekci neobvyklých aktivit, které by pro vaši databázi mohly znamenat hrozbu. Poskytuje centrální místo pro povolování a správu těchto možností.
+Advanced Data Security (ADS) je jednotný balíček pro pokročilé funkce zabezpečení SQL. Služby ADS jsou k dispozici pro Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics. Zahrnuje funkce pro zjišťování a klasifikaci citlivých dat, odhalování a omezování možných ohrožení zabezpečení databáze a detekci neobvyklých aktivit, které by pro vaši databázi mohly znamenat hrozbu. Poskytuje centrální místo pro povolování a správu těchto možností.
 
 ## <a name="overview"></a>Přehled
 
-Služba ADS (Advanced Data Security) poskytuje sadu pokročilých funkcí zabezpečení SQL, včetně klasifikace dat & klasifikace, posouzení ohrožení zabezpečení a rozšířené ochrany před internetovými útoky.
+Služba ADS poskytuje sadu pokročilých funkcí zabezpečení SQL, včetně klasifikace & zjišťování dat, posouzení ohrožení zabezpečení SQL a rozšířené ochrany před internetovými útoky.
+- [Klasifikace & Discovery dat](data-discovery-and-classification-overview.md) poskytuje možnosti integrované do Azure SQL Database, spravované instance Azure SQL a Azure synapse pro zjišťování, klasifikaci, označování a vytváření sestav citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
+- [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno nakonfigurovaná služba, která může zjišťovat, sledovat a pomáhat při nápravě potenciálních ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje akční kroky pro řešení problémů se zabezpečením a vylepšení fortifications databáze.
+- [Advanced Threat Protection](threat-detection-overview.md) zjišťuje nezvyklé aktivity, které mohou ukazovat na neobvyklé a potenciálně škodlivé pokusy o přístup k vaší databázi nebo jejímu zneužití. Nepřetržitě monitoruje vaši databázi pro podezřelé aktivity a poskytuje okamžité výstrahy zabezpečení při potenciálních ohroženích zabezpečení, útocích prostřednictvím injektáže Azure SQL a neobvyklé vzory přístupu k databázi. Upozornění služby Advanced Threat Protection obsahují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.
 
-- [Klasifikace & Discovery dat](data-discovery-and-classification-overview.md) poskytuje možnosti integrované do Azure SQL Database, spravované instance Azure SQL a Azure synapse pro zjišťování, klasifikaci, označování & oznamování citlivých dat ve vašich databázích. Může sloužit k poskytování přehledu o stavu klasifikace databáze a ke sledování přístupu k citlivým datům v databázi i mimo ni.
-- [Posouzení ohrožení zabezpečení](sql-vulnerability-assessment.md) je snadno konfigurovatelná služba, která může zjišťovat, sledovat a pomáhat opravovat potenciální ohrožení zabezpečení databáze. Poskytuje přehled o stavu zabezpečení a zahrnuje praktické kroky k vyřešení problémů se zabezpečením a zlepšení ochrany databáze.
-- [Advanced Threat Protection](threat-detection-overview.md) zjišťuje nezvyklé aktivity, které mohou ukazovat na neobvyklé a potenciálně škodlivé pokusy o přístup k vaší databázi nebo jejímu zneužití. Nepřetržitě monitoruje podezřelé aktivity v databázi a okamžitě poskytuje výstrahy zabezpečení týkající se potenciálních ohrožení zabezpečení, útoků prostřednictvím injektáže SQL a neobvyklých vzorů přístupu k databázi. Upozornění služby Advanced Threat Protection obsahují podrobnosti o podezřelé aktivitě a doporučení akce k prošetření a zmírnění hrozby.
-
-Pokud chcete povolit všechny tyto zahrnuté funkce, povolte reklamu SQL. Jediným kliknutím můžete reklamu povolit pro všechny databáze na [serveru](logical-servers.md) v Azure (které hostují SQL Database nebo Azure synapse Analytics) nebo v instanci spravované instance Azure SQL. Povolení nebo Správa nastavení reklam vyžaduje, aby patřila do role [Správce zabezpečení SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) , role správce SQL Database nebo role správce systému SQL Server.
+Pokud chcete povolit všechny tyto zahrnuté funkce, povolte pokročilou zabezpečení dat. Jediným kliknutím můžete reklamu povolit pro všechny databáze na [serveru](logical-servers.md) v Azure nebo ve spravované instanci SQL. Povolení nebo Správa nastavení reklam vyžaduje, aby patřila do role [Správce zabezpečení SQL](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-security-manager) nebo jedna z rolí správce databáze nebo serveru.
 
 ADS vyrovnává ceny s Azure Security Center úrovně Standard, kde se každý chráněný Server nebo spravovaná instance počítají jako jeden uzel. Nově chráněné prostředky mají nárok na bezplatnou zkušební verzi Security Center úrovně Standard. Další informace najdete na stránce s [cenami Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-## <a name="getting-started-with-ads"></a>Začínáme s REKLAMAmi
+## <a name="getting-started-with-ads"></a>Začínáme s REKLAMami
 
 Následující kroky vám pomohou začít s REKLAMou.
 

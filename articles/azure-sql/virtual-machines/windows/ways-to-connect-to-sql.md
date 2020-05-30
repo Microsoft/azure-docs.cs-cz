@@ -1,6 +1,6 @@
 ---
 title: Připojit k SQL Servermu virtuálnímu počítači (Správce prostředků) | Microsoft Docs
-description: Naučte se, jak se připojit k SQL Server běžícímu na virtuálním počítači v Azure. Toto téma používá model nasazení Classic. Scénáře se liší v závislosti na konfiguraci sítě a umístění klienta.
+description: Přečtěte si, jak se připojit k virtuálnímu počítači s SQL Server v Azure. Toto téma používá model nasazení Classic. Scénáře se liší v závislosti na konfiguraci sítě a umístění klienta.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -14,25 +14,25 @@ ms.workload: iaas-sql-server
 ms.date: 12/12/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 60690aab0d1f8ccc618c3e147f553a8fda704047
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c014799cc0e6a2c985bb6df5872d65880e7d2a26
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041949"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219402"
 ---
-# <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojení k virtuálnímu počítači s SQL Serverem v Azure
+# <a name="connect-to-a-sql-server-virtual-machine-on-azure"></a>Připojení k virtuálnímu počítači s SQL Server v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 ## <a name="overview"></a>Přehled
 
-Toto téma popisuje, jak se připojit k instanci SQL Server běžící na virtuálním počítači Azure. Zabývá se některými [obecnými scénáři připojení](#connection-scenarios) a pak poskytuje [kroky na portálu pro změnu nastavení připojení](#change). Pokud potřebujete vyřešit nebo nakonfigurovat připojení mimo portál, přečtěte si [ruční konfiguraci](#manual) na konci tohoto tématu. 
+Toto téma popisuje, jak se připojit ke svému SQL na virtuálním počítači Azure (VM). Zabývá se některými [obecnými scénáři připojení](#connection-scenarios) a pak poskytuje [kroky na portálu pro změnu nastavení připojení](#change). Pokud potřebujete vyřešit nebo nakonfigurovat připojení mimo portál, přečtěte si [ruční konfiguraci](#manual) na konci tohoto tématu. 
 
 Pokud byste chtěli mít úplný návod k zřizování a připojení, přečtěte si téma [zřízení virtuálního počítače s SQL Server v Azure](create-sql-vm-portal.md).
 
 ## <a name="connection-scenarios"></a>Scénáře připojení
 
-Způsob, jakým se klient připojuje k SQL Server běžícímu na virtuálním počítači, se liší v závislosti na umístění klienta a konfiguraci sítě.
+Způsob připojení klienta k SQL Servermu virtuálnímu počítači se liší v závislosti na umístění klienta a konfiguraci sítě.
 
 Pokud zřídíte SQL Server virtuální počítač v Azure Portal, máte možnost určit typ **připojení SQL**.
 
@@ -40,11 +40,11 @@ Pokud zřídíte SQL Server virtuální počítač v Azure Portal, máte možnos
 
 Mezi možnosti připojení patří:
 
-| Možnost | Description |
+| Možnost | Popis |
 |---|---|
-| **Republik** | Připojení k SQL Server přes Internet |
-| **Hlášen** | Připojení k SQL Server ve stejné virtuální síti |
-| **Místní** | Připojení k SQL Server lokálně na stejném virtuálním počítači | 
+| **Republik** | Připojte se k SQL Server přes Internet. |
+| **Hlášen** | Připojte se k SQL Server ve stejné virtuální síti. |
+| **Místní** | Připojte se k SQL Server místně na stejném virtuálním počítači. | 
 
 V následujících částech jsou podrobněji vysvětleny **veřejné** a **soukromé** možnosti.
 
@@ -66,7 +66,7 @@ Každý klient s přístupem k Internetu se může připojit k instanci SQL Serv
 Server=sqlvmlabel.eastus.cloudapp.azure.com;Integrated Security=false;User ID=<login_name>;Password=<your_password>
 ```
 
-I když to umožňuje připojení klientů přes Internet, neznamená to, že se kdokoli může připojit k vašemu SQL Server. Mimo klienty musí mít správné uživatelské jméno a heslo. Pro zvýšení zabezpečení však se můžete vyhnout známému portu 1433. Pokud jste například nakonfigurovali SQL Server k naslouchání na portu 1500 a navázali jste patřičnou bránu firewall a pravidla skupiny zabezpečení sítě, můžete se připojit připojením čísla portu k názvu serveru. Následující příklad mění předchozí krok přidáním vlastního čísla portu **1500**na název serveru:
+I když tento řetězec umožňuje připojení klientů přes Internet, neznamená to, že se kdokoli může připojit k vaší SQL Server instanci. Mimo klienty musí používat správné uživatelské jméno a heslo. Pro zvýšení zabezpečení však se můžete vyhnout známému portu 1433. Pokud jste například nakonfigurovali SQL Server pro naslouchání na portu 1500 a navázali patřičná pravidla brány firewall a skupiny zabezpečení sítě, můžete se připojit připojením čísla portu k názvu serveru. Následující příklad mění předchozí krok přidáním vlastního čísla portu **1500**na název serveru:
 
 ```
 Server=sqlvmlabel.eastus.cloudapp.azure.com,1500;Integrated Security=false;User ID=<login_name>;Password=<your_password>"
@@ -82,7 +82,7 @@ Zvolíte-li možnost **privátní** pro typ **připojení SQL** na portálu, Azu
 > [!IMPORTANT]
 > Image virtuálních počítačů pro edice SQL Server Developer a Express nepovolují automaticky protokol TCP/IP. Pro edice Developer a Express musíte po vytvoření virtuálního počítače [ručně povolit protokol TCP/IP](#manualtcp) pomocí SQL Server Configuration Manager.
 
-Privátní připojení se často používá ve spojení s [Virtual Network](../../../virtual-network/virtual-networks-overview.md), což umožňuje několik scénářů. Virtuální počítače můžete připojit ve stejné virtuální síti i v případě, že tyto virtuální počítače existují v různých skupinách prostředků. A pomocí [sítě VPN typu Site-to-site](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)můžete vytvořit hybridní architekturu, která propojuje virtuální počítače s místními sítěmi a počítači.
+Privátní připojení se často používá ve spojení s [virtuální sítí](../../../virtual-network/virtual-networks-overview.md), což umožňuje několik scénářů. Virtuální počítače můžete připojit ve stejné virtuální síti i v případě, že tyto virtuální počítače existují v různých skupinách prostředků. A pomocí [sítě VPN typu Site-to-site](../../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)můžete vytvořit hybridní architekturu, která propojuje virtuální počítače s místními sítěmi a počítači.
 
 Virtuální sítě taky umožňují připojit virtuální počítače Azure k doméně. Toto je jediný způsob, jak SQL Server pomocí ověřování systému Windows. Ostatní scénáře připojení vyžadují ověřování SQL s uživatelskými jmény a hesly.
 
@@ -116,7 +116,7 @@ Nastavení připojení pro virtuální počítač s SQL Server můžete změnit 
 
 Při změně nastavení připojení SQL Server Azure nepovoluje automaticky protokol TCP/IP pro edice SQL Server Developer a Express. Následující kroky popisují ruční povolení protokolu TCP/IP, abyste se mohli vzdáleně připojit pomocí IP adresy.
 
-Nejdřív se připojte k SQL Server počítači pomocí vzdálené plochy.
+Nejdřív se připojte k virtuálnímu počítači s SQL Server pomocí vzdálené plochy.
 
 [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
 
@@ -134,21 +134,21 @@ Následující kroky ukazují, jak vytvořit volitelný popisek DNS pro virtuál
 
 I když portál poskytuje možnosti pro automatické nakonfigurování připojení, je užitečné zjistit, jak ručně nakonfigurovat připojení. Porozumění požadavkům může také pomoci při řešení potíží.
 
-V následující tabulce jsou uvedeny požadavky pro připojení k SQL Server běžícímu na virtuálním počítači Azure.
+V následující tabulce jsou uvedeny požadavky pro připojení k SQL Server na virtuálním počítači Azure.
 
-| Požadavek | Description |
+| Požadavek | Popis |
 |---|---|
-| [Povolit režim ověřování SQL Server](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Pro vzdálené připojení k virtuálnímu počítači, pokud jste nenakonfigurovali službu Active Directory v Virtual Network, je potřeba SQL Server ověřování. |
+| [Povolit režim ověřování SQL Server](/sql/database-engine/configure-windows/change-server-authentication-mode#use-ssms) | Pro vzdálené připojení k virtuálnímu počítači, pokud jste službu Active Directory ve virtuální síti nenakonfigurovali, je potřeba SQL Server ověřování. |
 | [Vytvoření přihlášení SQL](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/create-a-login) | Pokud používáte ověřování SQL, budete potřebovat přihlašovací jméno SQL s uživatelským jménem a heslem, které má také oprávnění k cílové databázi. |
 | [Povolit protokol TCP/IP](#manualtcp) | SQL Server musí umožňovat připojení přes protokol TCP. |
 | [Povolit pravidlo brány firewall pro port SQL Server](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access) | Brána firewall na virtuálním počítači musí umožňovat příchozí provoz na portu SQL Server (standardně 1433). |
 | [Vytvoření pravidla skupiny zabezpečení sítě pro TCP 1433](../../../virtual-network/manage-network-security-group.md#create-a-security-rule) | Pokud se chcete připojit přes Internet, musíte virtuálnímu počítači dovolit příjem provozu na portu SQL Server (standardně 1433). Připojení jenom pro místní a virtuální sítě to nevyžadují. Toto je jediný krok vyžadovaný v Azure Portal. |
 
 > [!TIP]
-> Postup v tabulce výše se provede při konfiguraci připojení na portálu. Pomocí těchto kroků potvrďte konfiguraci nebo ruční nastavení připojení pro SQL Server.
+> Kroky uvedené v předchozí tabulce jsou pro vás provedeny při konfiguraci připojení na portálu. Použijte tento postup jenom k potvrzení konfigurace nebo k ručnímu nastavení připojení pro SQL Server.
 
 ## <a name="next-steps"></a>Další kroky
 
 Pokyny k zřizování spolu s těmito kroky pro připojení najdete v tématu [zřízení virtuálního počítače s SQL Server v Azure](create-sql-vm-portal.md).
 
-Další témata související se spouštěním SQL Server ve virtuálních počítačích Azure najdete v tématu [SQL Server v Azure Virtual Machines](sql-server-on-azure-vm-iaas-what-is-overview.md).
+Další témata související se spouštěním SQL Server na virtuálních počítačích Azure najdete v tématu [SQL Server na virtuálních počítačích Azure](sql-server-on-azure-vm-iaas-what-is-overview.md).

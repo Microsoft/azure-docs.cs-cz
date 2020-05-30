@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 3/12/2020
 ms.author: lcozzens
-ms.openlocfilehash: f18672b9e3a368a833fc8cba279d748dfe3c2a9e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8f39c9cf159f8ce5068cf10460ba6f195baa7806
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79366764"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205054"
 ---
 # <a name="using-private-endpoints-for-azure-app-configuration"></a>Používání privátních koncových bodů pro konfiguraci aplikací Azure
 
@@ -36,7 +36,7 @@ I když konfigurace aplikace nepodporuje koncové body služby, v podsítích, k
 
 Při vytváření privátního koncového bodu pro službu ve vaší virtuální síti se ke schválení vlastníka účtu služby pošle žádost o souhlas. Pokud uživatel žádající o vytvoření privátního koncového bodu je zároveň vlastníkem účtu, je tato žádost o souhlas automaticky schválena.
 
-Vlastníci účtu služby můžou spravovat žádosti o souhlas a soukromé koncové `Private Endpoints` body prostřednictvím karty úložiště konfigurace v [Azure Portal](https://portal.azure.com).
+Vlastníci účtu služby můžou spravovat žádosti o souhlas a soukromé koncové body prostřednictvím `Private Endpoints` karty úložiště konfigurace v [Azure Portal](https://portal.azure.com).
 
 ### <a name="private-endpoints-for-app-configuration"></a>Privátní koncové body pro konfiguraci aplikace 
 
@@ -44,25 +44,21 @@ Při vytváření privátního koncového bodu je nutné zadat úložiště konf
 
 ### <a name="connecting-to-private-endpoints"></a>Připojování k soukromým koncovým bodům
 
-Azure při směrování připojení z virtuální sítě do úložiště konfigurace prostřednictvím privátního propojení spoléhá na překlad DNS. Řetězce připojení můžete rychle najít v Azure Portal tak, že vyberete úložiště konfigurace aplikace a pak vyberete **Nastavení** > **přístupové klíče**.  
+Azure při směrování připojení z virtuální sítě do úložiště konfigurace prostřednictvím privátního propojení spoléhá na překlad DNS. Řetězce připojení můžete rychle najít v Azure Portal tak, že vyberete úložiště konfigurace aplikace a pak vyberete **Nastavení**  >  **přístupové klíče**.  
 
 > [!IMPORTANT]
-> Použijte stejný připojovací řetězec pro připojení k úložišti konfigurace aplikace pomocí privátních koncových bodů, protože byste použili pro veřejný koncový bod. Nepřipojujte se k účtu úložiště pomocí `privatelink` adresy URL své subdomény.
+> Použijte stejný připojovací řetězec pro připojení k úložišti konfigurace aplikace pomocí privátních koncových bodů, protože byste použili pro veřejný koncový bod. Nepřipojujte se k úložišti pomocí `privatelink` adresy URL své subdomény.
 
 ## <a name="dns-changes-for-private-endpoints"></a>Změny DNS u privátních koncových bodů
 
-Při vytváření privátního koncového bodu se záznam prostředku CNAME DNS pro úložiště konfigurace aktualizuje na alias v subdoméně s předponou `privatelink`. Azure také vytvoří [privátní ZÓNU DNS](../dns/private-dns-overview.md) , která `privatelink` odpovídá subdoméně, a záznamy prostředků DNS pro privátní koncové body.
+Při vytváření privátního koncového bodu se záznam prostředku CNAME DNS pro úložiště konfigurace aktualizuje na alias v subdoméně s předponou `privatelink` . Azure také vytvoří [privátní ZÓNU DNS](../dns/private-dns-overview.md) , která odpovídá `privatelink` subdoméně, a záznamy prostředků DNS pro privátní koncové body.
 
-Při překladu adresy URL koncového bodu mimo virtuální síť se přeloží na veřejný koncový bod úložiště. Při řešení v rámci virtuální sítě, která je hostitelem privátního koncového bodu, se adresa URL koncového bodu přeloží na soukromý koncový bod.
-
-Přístup pro klienty mimo virtuální síť můžete řídit prostřednictvím veřejného koncového bodu pomocí služby Azure Firewall.
-
-Tento přístup umožňuje přístup k úložišti **pomocí stejného připojovacího řetězce** pro klienty ve virtuální síti, která je hostitelem privátních koncových bodů, i klientů mimo virtuální síť.
+Při překladu adresy URL koncového bodu z virtuální sítě, která je hostitelem privátního koncového bodu, se přeloží na soukromý koncový bod úložiště. Při vyřešení z vnějšku virtuální sítě se adresa URL koncového bodu převede na veřejný koncový bod. Při vytváření privátního koncového bodu je veřejný koncový bod zakázán.
 
 Pokud ve vaší síti používáte vlastní server DNS, klienti musí být schopni přeložit plně kvalifikovaný název domény (FQDN) pro koncový bod služby na IP adresu privátního koncového bodu. Nakonfigurujte server DNS tak, aby delegoval subdoménu privátního propojení s privátní zónou DNS pro virtuální síť, nebo nakonfigurujte záznamy A pro `AppConfigInstanceA.privatelink.azconfig.io` IP adresu privátního koncového bodu.
 
 > [!TIP]
-> Pokud používáte vlastní nebo místní server DNS, měli byste server DNS nakonfigurovat tak, aby přeložil název úložiště v `privatelink` subdoméně na IP adresu privátního koncového bodu. Můžete to udělat tak, že subdoménu delegujete `privatelink` do privátní zóny DNS virtuální sítě nebo nakonfigurujete zónu DNS na serveru DNS a PŘIDÁTE záznamy DNS.
+> Pokud používáte vlastní nebo místní server DNS, měli byste server DNS nakonfigurovat tak, aby přeložil název úložiště v `privatelink` subdoméně na IP adresu privátního koncového bodu. Můžete to udělat tak `privatelink` , že subdoménu delegujete do privátní zóny DNS virtuální sítě nebo nakonfigurujete ZÓNU DNS na serveru DNS a přidáte záznamy DNS.
 
 ## <a name="pricing"></a>Ceny
 

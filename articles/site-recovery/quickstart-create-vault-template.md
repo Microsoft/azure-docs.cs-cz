@@ -6,12 +6,12 @@ ms.custom: subject-armqs
 ms.date: 04/29/2020
 author: davidsmatlak
 ms.author: v-dasmat
-ms.openlocfilehash: 47c25ebd0fe18d470b04ccbcc85a8638c1ce0346
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: cf85939a1dbaf8d3e8a90a3acf10bda9faac83bc
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82598384"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84217287"
 ---
 # <a name="quickstart-create-a-recovery-services-vault-using-a-resource-manager-template"></a>Rychlý Start: vytvoření trezoru Recovery Services pomocí šablony Správce prostředků
 
@@ -23,7 +23,7 @@ Pokud nemáte aktivní předplatné Azure, můžete si před tím, než začnete
 
 ## <a name="prerequisites"></a>Požadavky
 
-Žádné.
+Žádné
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -35,7 +35,7 @@ Pokud nemáte aktivní předplatné Azure, můžete si před tím, než začnete
 
 V šabloně jsou definované dva prostředky Azure:
 
-- [Trezory Microsoft. RecoveryServices](/azure/templates/microsoft.recoveryservices/2016-06-01/vaults): vytvoří trezor.
+- [Trezory Microsoft. RecoveryServices](/azure/templates/microsoft.recoveryservices/vaults): vytvoří trezor.
 - [Microsoft. RecoveryServices/trezory/backupstorageconfig](/rest/api/backup/backupresourcestorageconfigs): konfiguruje nastavení redundance zálohy trezoru.
 
 Šablona obsahuje volitelné parametry pro konfiguraci zálohování trezoru. Nastavení redundance úložiště jsou místně redundantní úložiště (LRS) nebo geograficky redundantní úložiště (GRS). Další informace najdete v tématu [Nastavení redundance úložiště](../backup/backup-create-rs-vault.md#set-storage-redundancy).
@@ -60,7 +60,7 @@ Aby bylo možné šablonu nasadit, je nutné zadat **předplatné**, **skupinu p
    - **Název trezoru**: zadejte název trezoru.
    - **Změnit typ úložiště**: výchozí hodnota je **false**. Vyberte **true** jenom v případě, že potřebujete změnit typ úložiště trezoru.
    - **Typ úložiště trezoru**: výchozí hodnota je **GloballyRedundant**. Pokud je typ úložiště nastavený na **true**, vyberte **LocallyRedundant**.
-   - **Umístění**: ve výchozím `[resourceGroup().location]` nastavení funkce je umístění skupiny prostředků. Chcete-li změnit umístění, zadejte hodnotu, například **westus**.
+   - **Umístění**: ve `[resourceGroup().location]` výchozím nastavení funkce je umístění skupiny prostředků. Chcete-li změnit umístění, zadejte hodnotu, například **westus**.
    - Zaškrtněte políčko Souhlasím **s podmínkami a ujednáními uvedenými nahoře**.
 
 1. Nasazení trezoru spustíte tak, že vyberete tlačítko **koupit** . Po úspěšném nasazení se zobrazí oznámení.
@@ -71,7 +71,7 @@ Aby bylo možné šablonu nasadit, je nutné zadat **předplatné**, **skupinu p
 
 K potvrzení, že byl trezor vytvořen, použijte rozhraní příkazového řádku Azure nebo Azure PowerShell.
 
-# <a name="cli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the resource group name:" &&
@@ -98,7 +98,7 @@ Write-Host "Press [ENTER] to continue..."
 
 Následující výstup je výpis informací o trezoru:
 
-# <a name="cli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 ```Output
 "id": "/subscriptions/<Subscription Id>/resourceGroups/myResourceGroup
@@ -132,7 +132,7 @@ GeoRedundant
 
 Pokud plánujete používat nové prostředky, není nutné provádět žádnou akci. V opačném případě můžete odebrat skupinu prostředků a trezor, které byly vytvořené v rámci tohoto rychlého startu. Pokud chcete odstranit skupinu prostředků a její prostředky, použijte rozhraní příkazového řádku Azure CLI nebo Azure PowerShell.
 
-# <a name="cli"></a>[CLI](#tab/CLI)
+# <a name="cli"></a>[Rozhraní příkazového řádku](#tab/CLI)
 
 ```azurecli-interactive
 echo "Enter the resource group name:" &&

@@ -1,7 +1,7 @@
 ---
 title: Síťové topologie pro migrace spravované instance SQL
 titleSuffix: Azure Database Migration Service
-description: Seznamte se se zdrojovými a cílovými konfiguracemi pro Azure SQL Database migrace spravované instance pomocí Azure Database Migration Service.
+description: Seznamte se se zdrojovými a cílovými konfiguracemi pro migrace spravované instance Azure SQL pomocí Azure Database Migration Service.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,46 +12,46 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: 48485b7ba0f846afa737454b092a6c1ee986b737
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31dfae60b1967e221e294195f66bb7fe59a15e64
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78254961"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84187522"
 ---
-# <a name="network-topologies-for-azure-sql-db-managed-instance-migrations-using-azure-database-migration-service"></a>Síťové topologie pro migrace spravované instance služby Azure SQL DB pomocí Azure Database Migration Service
+# <a name="network-topologies-for-azure-sql-managed-instance-migrations-using-azure-database-migration-service"></a>Síťové topologie pro migrace spravované instance SQL Azure pomocí Azure Database Migration Service
 
-Tento článek pojednává o různých topologiích sítě, se kterými Azure Database Migration Service může pracovat, a poskytuje tak komplexní prostředí pro migraci z místních SQL serverů pro Azure SQL Database spravovanou instanci.
+Tento článek pojednává o různých topologiích sítě, se kterými Azure Database Migration Service může pracovat, a poskytuje tak komplexní prostředí pro migraci z SQL serverů do spravované instance Azure SQL.
 
-## <a name="azure-sql-database-managed-instance-configured-for-hybrid-workloads"></a>Azure SQL Database spravovaná instance nakonfigurovaná pro hybridní úlohy 
+## <a name="azure-sql-managed-instance-configured-for-hybrid-workloads"></a>Spravovaná instance Azure SQL nakonfigurovaná pro hybridní úlohy 
 
-Tuto topologii použijte, pokud je vaše Azure SQL Database spravovaná instance připojená k vaší místní síti. Tento přístup poskytuje nejjednodušší síťové směrování a poskytuje maximální propustnost dat během migrace.
+Tuto topologii použijte, pokud je vaše spravovaná instance SQL Azure připojená k vaší místní síti. Tento přístup poskytuje nejjednodušší síťové směrování a poskytuje maximální propustnost dat během migrace.
 
 ![Síťová topologie pro hybridní úlohy](media/resource-network-topologies/hybrid-workloads.png)
 
 **Požadavky**
 
-- V tomto scénáři se Azure SQL Database spravovaná instance a instance Azure Database Migration Service vytvoří ve stejné Microsoft Azure Virtual Network, ale používají jiné podsítě.  
+- V tomto scénáři jsou spravované instance SQL a instance Azure Database Migration Service vytvořeny ve stejném Microsoft Azure Virtual Network, ale používají jiné podsítě.  
 - Virtuální síť použitá v tomto scénáři je taky připojená k místní síti pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 
-## <a name="azure-sql-database-managed-instance-isolated-from-the-on-premises-network"></a>Azure SQL Database spravovaná instance izolovaná od místní sítě
+## <a name="sql-managed-instance-isolated-from-the-on-premises-network"></a>Spravovaná instance SQL izolovaná od místní sítě
 
 Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje jeden nebo více následujících scénářů:
 
-- Azure SQL Database spravovaná instance je izolovaná od místního připojení, ale vaše instance Azure Database Migration Service je připojená k místní síti.
-- Pokud jsou zásady Access Control na základě role (RBAC) na místě a potřebujete omezit uživatele na přístup ke stejnému předplatnému, které je hostitelem Azure SQL Database spravované instance.
-- Virtuální sítě používané pro Azure SQL Database Managed instance a Azure Database Migration Service jsou v různých předplatných.
+- Spravovaná instance SQL je izolovaná od místního připojení, ale vaše instance Azure Database Migration Service je připojená k místní síti.
+- Pokud jsou zásady Access Control na základě role (RBAC) na místě a potřebujete omezit uživatele na přístup ke stejnému předplatnému, které hostuje spravovanou instanci SQL.
+- Virtuální sítě používané pro spravovanou instanci SQL a Azure Database Migration Service jsou v různých předplatných.
 
 ![Síťová topologie pro spravovanou instanci izolovaná od místní sítě](media/resource-network-topologies/mi-isolated-workload.png)
 
 **Požadavky**
 
-- Virtuální síť, kterou Azure Database Migration Service používá pro tento scénář, musí být také připojená k místní síti pomocí (https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)).
-- Nastavte [partnerský vztah sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuální sítě mezi virtuální sítí použitou pro Azure SQL Database spravovanou instanci a Azure Database Migration Service.
+- Virtuální síť, kterou Azure Database Migration Service používá pro tento scénář, musí být také připojená k místní síti pomocí ( https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)).
+- Nastavte [partnerský vztah sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuální sítě mezi virtuální sítí použitou pro SPRAVOVANOU instanci SQL a Azure Database Migration Service.
 
 ## <a name="cloud-to-cloud-migrations-shared-virtual-network"></a>Migrace z cloudu do cloudu: sdílená virtuální síť
 
-Tuto topologii použijte, pokud je zdrojový SQL Server hostovaný na virtuálním počítači Azure a sdílí stejnou virtuální síť s Azure SQL Database spravované instance a Azure Database Migration Service.
+Tuto topologii použijte, pokud je zdrojový SQL Server hostovaný na virtuálním počítači Azure a sdílí stejnou virtuální síť se spravovanými instancemi SQL a Azure Database Migration Service.
 
 ![Síťová topologie pro migrace z cloudu do cloudu se sdílenou virtuální sítí](media/resource-network-topologies/cloud-to-cloud.png)
 
@@ -63,15 +63,15 @@ Tuto topologii použijte, pokud je zdrojový SQL Server hostovaný na virtuáln�
 
 Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje jeden nebo více následujících scénářů:
 
-- Azure SQL Database Managed instance se zřídí v izolované virtuální síti.
-- Pokud jsou zásady Access Control na základě role (RBAC) na místě a potřebujete omezit uživatele na přístup ke stejnému předplatnému, které je hostitelem Azure SQL Database spravované instance.
-- Virtuální sítě používané pro Azure SQL Database spravované instance a Azure Database Migration Service jsou v různých předplatných.
+- Spravovaná instance SQL se zřídí v izolované virtuální síti.
+- Pokud jsou zásady Access Control na základě role (RBAC) na místě a potřebujete omezit uživatele na přístup ke stejnému předplatnému, které je hostitelem spravované instance SQL.
+- Virtuální sítě používané pro spravovanou instanci SQL a Azure Database Migration Service jsou v různých předplatných.
 
 ![Síťová topologie pro migrace z cloudu do cloudu s izolovanou virtuální sítí](media/resource-network-topologies/cloud-to-cloud-isolated.png)
 
 **Požadavky**
 
-- Nastavte [partnerský vztah sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuální sítě mezi virtuální sítí použitou pro Azure SQL Database spravovanou instanci a Azure Database Migration Service.
+- Nastavte [partnerský vztah sítě](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuální sítě mezi virtuální sítí použitou pro SPRAVOVANOU instanci SQL a Azure Database Migration Service.
 
 ## <a name="inbound-security-rules"></a>Příchozí pravidla zabezpečení
 
@@ -92,7 +92,7 @@ Tuto topologii sítě použijte v případě, že vaše prostředí vyžaduje je
 
 ## <a name="see-also"></a>Viz také
 
-- [Migrace SQL Server do Azure SQL Database spravované instance](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
+- [Migrace SQL Server do spravované instance SQL](https://docs.microsoft.com/azure/dms/tutorial-sql-server-to-managed-instance)
 - [Přehled požadavků pro použití Azure Database Migration Service](https://docs.microsoft.com/azure/dms/pre-reqs)
 - [Vytvoření virtuální sítě pomocí webu Azure Portal](https://docs.microsoft.com/azure/virtual-network/quick-create-portal)
 

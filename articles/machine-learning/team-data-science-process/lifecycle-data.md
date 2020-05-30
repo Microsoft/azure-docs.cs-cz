@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3c299e9ec42d63812804b5ff7e50324a2de94200
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85d7159edb1bc8608165264578d77519bf09efc2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720499"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195066"
 ---
 # <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Získávání dat a porozumění fázi vědeckého zpracování týmových dat
 
@@ -55,7 +55,7 @@ TDSP poskytuje automatizovaný nástroj označovaný jako [myšlenku](https://gi
 Až budete spokojení s kvalitou vyčištěných dat, je dalším krokem lepší porozumět vzorům, které jsou v těchto datech obsaženy. Tato analýza dat vám pomůže vybrat a vyvinout vhodný prediktivní model pro váš cíl. Vyhledejte důkaz, jak dobře připojená data jsou k cíli. Pak určete, zda je k dispozici dostatek dat pro přesun vpřed s dalšími kroky modelování. Tento proces je znovu často iterativní. Možná budete muset najít nové zdroje dat s přesnější nebo důležitějšími daty, abyste mohli rozšířit sadu dat původně identifikovanou v předchozí fázi. 
 
 ### <a name="set-up-a-data-pipeline"></a>Nastavení datového kanálu
-Kromě počátečního příjmu a čištění dat je obvykle potřeba nastavit proces, který bude vyhodnocovat nová data nebo pravidelně aktualizovat data v rámci probíhajícího výukového procesu. Bodování může být dokončeno s datovým kanálem nebo pracovním postupem. [Přesunutí dat z místní instance SQL Server do Azure SQL Database s Azure Data Factory](move-sql-azure-adf.md) článkem nabízí příklad nastavení kanálu s [Azure Data Factory](https://azure.microsoft.com/services/data-factory/). 
+Kromě počátečního příjmu a čištění dat je obvykle potřeba nastavit proces, který bude vyhodnocovat nová data nebo pravidelně aktualizovat data v rámci probíhajícího výukového procesu. Bodování může být dokončeno s datovým kanálem nebo pracovním postupem. [Přesunutí dat z instance SQL Server do Azure SQL Database pomocí Azure Data Factory](move-sql-azure-adf.md) článku obsahuje příklad nastavení kanálu s [Azure Data Factory](https://azure.microsoft.com/services/data-factory/). 
 
 V této fázi vyvíjíte architekturu řešení datového kanálu. Kanál vyvíjíme paralelně s další fází projektu pro datové vědy. V závislosti na potřebách vaší firmy a omezeních stávajících systémů, do kterých je toto řešení integrováno, může kanál představovat jednu z následujících možností: 
 
@@ -63,7 +63,7 @@ V této fázi vyvíjíte architekturu řešení datového kanálu. Kanál vyvíj
    * Streamování nebo reálný čas 
    * Hybridní 
 
-## <a name="artifacts"></a>Artefakty
+## <a name="artifacts"></a>Artifacts
 V této fázi jsou následující dodávky:
 
    * [Sestava kvality dat](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Tato sestava obsahuje souhrny dat, vztahy mezi jednotlivými atributy a cíli, hodnocení proměnných a další. Nástroj [designu](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) , který je součástí TDSP, může rychle vygenerovat tuto sestavu na jakékoli tabulkové datové sadě, jako je třeba soubor CSV nebo relační tabulka. 

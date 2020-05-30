@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 8f2e99ffc9f9ee5c5553e8d933d82f83999c8ab2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4c65160cb648954ef97bd2a3d3e9ac0d38440ce7
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81732887"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193851"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service v systému Linux
 
@@ -31,7 +31,7 @@ ms.locfileid: "81732887"
 
 ## <a name="create-a-java-app"></a>Vytvoření aplikace v Javě
 
-Spusťte následující příkaz Maven na příkazovém řádku Cloud Shell k vytvoření nové aplikace s názvem `helloworld`:
+Spusťte následující příkaz Maven na příkazovém řádku Cloud Shell k vytvoření nové aplikace s názvem `helloworld` :
 
 ```bash
 mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
@@ -93,11 +93,11 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > V tomto článku pracujeme jenom s aplikacemi Java zabalenými do souborů WAR. Modul plug-in podporuje také webové aplikace JAR. Pokud si to chcete vyzkoušet, přečtěte si téma věnované [nasazení souboru Java SE JAR do služby App Service v Linuxu](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-`pom.xml` Pokud chcete zobrazit konfiguraci modulu plug-in, můžete v případě potřeby upravit další konfigurace pro App Service přímo v souboru pom:
+Pokud chcete `pom.xml` Zobrazit konfiguraci modulu plug-in, můžete v případě potřeby upravit další konfigurace pro App Service přímo v souboru pom:
 
- Vlastnost | Požaduje se | Popis | Version
+ Vlastnost | Povinné | Popis | Verze
 ---|---|---|---
-`<schemaVersion>` | false (nepravda) | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1`, `v2`. | 1.5.2
+`<schemaVersion>` | false (nepravda) | Zadejte verzi schématu konfigurace. Podporované hodnoty jsou: `v1` , `v2` . | 1.5.2
 `<resourceGroup>` | true | Skupina prostředků Azure pro vaši webovou aplikaci | 0.1.0 +
 `<appName>` | true | Název vaší webové aplikace | 0.1.0 +
 `<region>` | true | Určuje oblast, do které se webová aplikace hostuje. Výchozí hodnota je **westeurope**. Všechny platné oblasti v části [podporované oblasti](/java/api/overview/azure/maven/azure-webapp-maven-plugin/readme) . | 0.1.0 +
@@ -120,7 +120,7 @@ Po dokončení nasazení přejděte ve webovém prohlížeči pomocí následuj�
 
 ![Ukázková aplikace spuštěná v Azure App Service](media/quickstart-java/java-hello-world-in-browser-azure-app-service.png)
 
-**Blahopřejeme!** Nasadili jste svou první aplikaci v Javě do služby App Service v Linuxu.
+**Gratulujeme!** Nasadili jste svou první aplikaci v Javě do služby App Service v Linuxu.
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=app-service-linux-quickstart&step=deploy)
@@ -147,7 +147,7 @@ Spuštění tohoto příkazu může trvat přibližně minut.
 > [Připojení k Azure DB pro PostgreSQL pomocí Java](/azure/postgresql/connect-java)
 
 > [!div class="nextstepaction"]
-> [Konfigurace aplikace Java](configure-custom-container.md)
+> [Konfigurace aplikace Java](configure-language-java.md)
 
 > [!div class="nextstepaction"]
 > [CI/CD s využitím Jenkinse](/azure/jenkins/deploy-jenkins-app-service-plugin)

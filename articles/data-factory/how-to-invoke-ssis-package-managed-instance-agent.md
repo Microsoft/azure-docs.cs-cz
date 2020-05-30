@@ -1,6 +1,6 @@
 ---
 title: Spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL
-description: Naučte se spouštět balíčky SSIS pomocí agenta spravované instance Azure SQL Database.
+description: Naučte se spouštět balíčky SSIS pomocí agenta Azure SQL Managed instance.
 services: data-factory
 documentationcenter: ''
 ms.service: data-factory
@@ -9,28 +9,28 @@ ms.topic: conceptual
 ms.author: lle
 author: lle
 ms.date: 04/14/2020
-ms.openlocfilehash: fe32d67dd5d15ccf2f889cf40b79d35c890d5313
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: f911a8dad094949f0a515116a79fff698a326547
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148289"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191069"
 ---
 # <a name="run-ssis-packages-by-using-azure-sql-managed-instance-agent"></a>Spouštění balíčků SSIS pomocí agenta spravované instance Azure SQL
 
-Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integration Services) (SSIS) pomocí Azure SQL Database agenta spravované instance. Tato funkce poskytuje chování, které se podobá tomu, když naplánujete balíčky SSIS pomocí agenta SQL Server v místním prostředí.
+Tento článek popisuje, jak spustit balíček služba SSIS (SQL Server Integration Services) (SSIS) pomocí agenta Azure SQL Managed instance. Tato funkce poskytuje chování, které se podobá tomu, když naplánujete balíčky SSIS pomocí agenta SQL Server v místním prostředí.
 
-Pomocí této funkce můžete spouštět balíčky SSIS uložené v SSISDB ve spravované instanci Azure SQL Database nebo systému souborů, jako jsou soubory Azure.
+Pomocí této funkce můžete spouštět balíčky SSIS uložené v SSISDB ve spravované instanci SQL nebo v systému souborů, jako jsou soubory Azure.
 
 ## <a name="prerequisites"></a>Požadavky
 Chcete-li použít tuto funkci, [Stáhněte](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) a nainstalujte nejnovější verzi SQL Server Management Studio (SSMS), což je verze 18,5.
 
-Také je potřeba [zřídit prostředí Azure-SSIS Integration runtime](tutorial-create-azure-ssis-runtime-portal.md) v Azure Data Factory. Používá Azure SQL Database spravovanou instanci jako server koncového bodu. 
+Také je potřeba [zřídit prostředí Azure-SSIS Integration runtime](tutorial-create-azure-ssis-runtime-portal.md) v Azure Data Factory. Používá spravovanou instanci SQL jako server koncového bodu. 
 
 ## <a name="run-an-ssis-package-in-ssisdb"></a>Spuštění balíčku SSIS v SSISDB
-V tomto postupu použijete Azure SQL Database agenta spravované instance k vyvolání balíčku SSIS, který je uložený v SSISDB.
+V tomto postupu použijete agenta spravované instance SQL k vyvolání balíčku SSIS, který je uložený v SSISDB.
 
-1. V nejnovější verzi SSMS se připojte k Azure SQL Database spravované instanci.
+1. V nejnovější verzi SSMS se připojte k spravované instanci SQL.
 1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server**klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha**.
 
    ![Výběry pro vytvoření nové úlohy agenta](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
@@ -40,7 +40,7 @@ V tomto postupu použijete Azure SQL Database agenta spravované instance k vyvo
    ![Výběry pro vytvoření nového kroku úlohy SSIS](./media/how-to-invoke-ssis-package-managed-instance-agent/new-ssis-job-step.png)
 
 1. Na kartě **balíček** jako typ zdroje balíčku vyberte **katalog SSIS** .
-1. Vzhledem k tomu, že SSISDB je ve spravované instanci Azure SQL Database, nemusíte zadávat ověřování.
+1. Vzhledem k tomu, že SSISDB je ve spravované instanci SQL, nemusíte zadávat ověřování.
 1. Zadejte balíček SSIS z SSISDB.
 
    ![Karta balíček s výběry pro typ zdroje balíčku](./media/how-to-invoke-ssis-package-managed-instance-agent/package-source-ssisdb.png)
@@ -58,9 +58,9 @@ V tomto postupu použijete Azure SQL Database agenta spravované instance k vyvo
 
 
 ## <a name="run-an-ssis-package-in-the-file-system"></a>Spuštění balíčku SSIS v systému souborů
-V tomto postupu použijete Azure SQL Database agenta spravované instance ke spuštění balíčku SSIS, který je uložený v systému souborů.
+V tomto postupu použijete agenta spravované instance SQL ke spuštění balíčku SSIS, který je uložený v systému souborů.
 
-1. V nejnovější verzi SSMS se připojte k Azure SQL Database spravované instanci.
+1. V nejnovější verzi SSMS se připojte k spravované instanci SQL.
 1. Vytvoří novou úlohu agenta a nový krok úlohy. V části **Agent SQL Server**klikněte pravým tlačítkem na složku **Jobs (úlohy** ) a pak vyberte **Nová úloha**.
 
    ![Výběry pro vytvoření nové úlohy agenta](./media/how-to-invoke-ssis-package-managed-instance-agent/new-agent-job.png)
@@ -103,7 +103,7 @@ V tomto postupu použijete Azure SQL Database agenta spravované instance ke spu
 
 
 ## <a name="cancel-ssis-package-execution"></a>Zrušit provádění balíčku SSIS
-Chcete-li zrušit spuštění balíčku z úlohy agenta spravované instance Azure SQL Database, proveďte následující kroky místo přímého zastavení úlohy agenta:
+Chcete-li zrušit spuštění balíčku z úlohy agenta spravované instance SQL, proveďte následující kroky místo přímého zastavení úlohy agenta:
 
 1. Najděte svůj Agent SQL **jobId** z **msdb. dbo. tabulka sysjobs**.
 1. Pomocí tohoto dotazu Najděte odpovídající **EXECUTIONID** SSIS na základě ID úlohy:

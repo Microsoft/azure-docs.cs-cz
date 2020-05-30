@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: fd7900eb9de55b29cc06ed338514e5a46d160f11
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e36e11e4150c977b72b445e5bda7dce410c77925
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047451"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193932"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nový DBA v cloudu – Správa Azure SQL Database po migraci
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -82,7 +82,7 @@ Pokud není nakonfigurovaná skupina automatického převzetí služeb při selh
 
 ### <a name="how-does-my-disaster-recovery-plan-change-from-on-premises-to-sql-database"></a>Jak se změní plán zotavení po havárii z místního prostředí na SQL Database
 
-Tradiční místní SQL Server instalační program vyžaduje, abyste aktivně spravovali dostupnost pomocí funkcí, jako je Clustering s podporou převzetí služeb při selhání, zrcadlení databáze, replikace transakcí nebo přesouvání protokolů a údržba a Správa záloh, aby se zajistila kontinuita podnikového prostředí. S SQL Database platforma je spravuje za vás, takže se můžete soustředit na vývoj a optimalizaci databázové aplikace a nedělejte si starosti se správou havárií. Můžete mít nakonfigurované plány zálohování a zotavení po havárii a pracovat s několika kliknutími na Azure Portal (nebo několika příkazy pomocí rozhraní API PowerShellu).
+V souhrnu SQL Server instalační program vyžaduje aktivně spravovat dostupnost pomocí funkcí, jako je Clustering s podporou převzetí služeb při selhání, zrcadlení databáze, replikace transakcí nebo přesouvání protokolů a údržba a Správa záloh, aby se zajistila Kontinuita podnikových prostředí. S SQL Database platforma je spravuje za vás, takže se můžete soustředit na vývoj a optimalizaci databázové aplikace a nedělejte si starosti se správou havárií. Můžete mít nakonfigurované plány zálohování a zotavení po havárii a pracovat s několika kliknutími na Azure Portal (nebo několika příkazy pomocí rozhraní API PowerShellu).
 
 Další informace o zotavení po havárii najdete v tématu: [Azure SQL Database zotavení po havárii 101](https://azure.microsoft.com/blog/azure-sql-databases-disaster-recovery-101/)
 
@@ -170,7 +170,7 @@ V případě ochrany citlivých dat v letadlech a v klidovém prostředí SQL Da
 |**Vlastnosti**|**Funkce Always Encrypted**|**transparentní šifrování dat**|
 |---|---|---|
 |**Rozsah šifrování**|Od začátku do konce|Data na REST|
-|**Server má přístup k citlivým datům**|Ne|Ano, protože šifrování je pro neaktivní neaktivní data|
+|**Server má přístup k citlivým datům**|No|Ano, protože šifrování je pro neaktivní neaktivní data|
 |**Povolené operace T-SQL**|Porovnání rovnosti|Dostupná je celá oblast T-SQL Surface.|
 |**Změny aplikací, které jsou nutné k použití této funkce**|Minimální|Velmi minimální|
 |**Členitost šifrování**|Úroveň sloupce|úrovni databáze|
@@ -330,8 +330,8 @@ SQL Database používá některé inteligentní techniky, které jim umožňují
 
 Toho můžete dosáhnout několika způsoby:
 
-- **[Synchronizace dat](sql-data-sync-data-sql-server-sql-database.md)** – Tato funkce pomáhá synchronizovat data obousměrně mezi několika místními databázemi SQL Server a SQL Database. Chcete-li provést synchronizaci s místními SQL Server databázemi, je nutné nainstalovat a nakonfigurovat agenta synchronizace v místním počítači a otevřít odchozí port TCP 1433.
-- **[Replikace transakcí](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – pomocí replikace transakcí můžete data synchronizovat z místního prostředí, abyste je mohli Azure SQL Database s využitím místního vydavatele a Azure SQL Database odběratelem. V současné době je podporována pouze tato instalace. Další informace o tom, jak migrovat data z místního prostředí do Azure SQL s minimálním prostojem, najdete v tématu: [použití replikace transakcí](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication) .
+- **[Synchronizace dat](sql-data-sync-data-sql-server-sql-database.md)** – Tato funkce pomáhá synchronizovat data obousměrně mezi několika SQL Server databázemi a SQL Database. Chcete-li provést synchronizaci s SQL Server databázemi, je nutné nainstalovat a nakonfigurovat agenta synchronizace v místním počítači nebo virtuálním počítači a otevřít odchozí port TCP 1433.
+- **[Replikace transakcí](https://azure.microsoft.com/blog/transactional-replication-to-azure-sql-database-is-now-generally-available/)** – pomocí replikace transakcí můžete synchronizovat data z databáze SQL Server, abyste Azure SQL Database s instancí SQL Server, kterou má Vydavatel, a Azure SQL Database je předplatitelem. V současné době je podporována pouze tato instalace. Další informace o tom, jak migrovat data z databáze SQL Server do Azure SQL s minimálními výpadky, najdete v tématu: [použití replikace transakcí](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication) .
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 9cb1149073247b7f5fc3e74a1aef6f96388c7135
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 6d072cd03fa0e5c8da4593d8633a268d3b5a50fb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648113"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197064"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>Synchronizovat úložiště GitHub s konfigurací aplikace
 
@@ -92,7 +92,7 @@ jobs:
 ```
 ## <a name="sync-multiple-files-in-one-action"></a>Synchronizace více souborů v jedné akci 
 
-Pokud je vaše konfigurace ve více souborech, můžete použít následující vzor, který spustí synchronizaci při změně některého souboru. Tento model používá knihovnu glob.https://www.npmjs.com/package/glob 
+Pokud je vaše konfigurace ve více souborech, můžete použít následující vzor, který spustí synchronizaci při změně některého souboru. Tento model používá knihovnu glob https://www.npmjs.com/package/glob . Všimněte si, že pokud název konfiguračního souboru obsahuje čárku, můžete použít zpětné lomítko k označení čárky. 
 
 ```json
 on:
@@ -312,11 +312,11 @@ Vstupní parametry určují data, která akce používá během běhu.  Následu
 | formát | Ano | Formát souboru konfiguračního souboru.  Platné formáty jsou: JSON, YAML, Properties. |
 | připojovací řetězec | Ano | Připojovací řetězec pro instanci konfigurace aplikace Připojovací řetězec by měl být uložen jako tajný klíč v úložišti GitHub a v pracovním postupu by měl být použit pouze tajný název. |
 | oddělování | Ano | Oddělovač použitý při sloučení konfiguračního souboru na páry klíč-hodnota.  Platné hodnoty jsou:. , ; : - _ __ / |
-| směr | Ne | Předpona, která se má přidat na začátek klíčů |
-| label | Ne | Popisek použitý při nastavování párů klíč-hodnota Je-li tento parametr zadán, je použit popisek s hodnotou null. |
-| přísné | Ne | Logická hodnota, která určuje, zda je povolen striktní režim. Výchozí hodnota je False. |
-| úrovní | Ne | Maximální hloubka pro sloučení konfiguračního souboru.  Hloubka musí být kladné číslo.  Výchozí hodnota nebude mít žádnou maximální hloubku. |
-| tags | Ne | Určuje sadu značek pro páry klíč-hodnota.  Očekávaným formátem je dokument formulář objektu JSON následujícího obrazce: {[propertyName: String]: String;} Název každé vlastnosti – hodnota se zobrazí jako značka. |
+| směr | No | Předpona, která se má přidat na začátek klíčů |
+| label | No | Popisek použitý při nastavování párů klíč-hodnota Je-li tento parametr zadán, je použit popisek s hodnotou null. |
+| přísné | No | Logická hodnota, která určuje, zda je povolen striktní režim. Výchozí hodnota je False. |
+| úrovní | No | Maximální hloubka pro sloučení konfiguračního souboru.  Hloubka musí být kladné číslo.  Výchozí hodnota nebude mít žádnou maximální hloubku. |
+| tags | No | Určuje sadu značek pro páry klíč-hodnota.  Očekávaným formátem je dokument formulář objektu JSON následujícího obrazce: {[propertyName: String]: String;} Název každé vlastnosti – hodnota se zobrazí jako značka. |
 
 ## <a name="next-steps"></a>Další kroky
 

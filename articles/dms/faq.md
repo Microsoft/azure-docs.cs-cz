@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: a664f12843585ac7524cf8d51aef156d15d32504
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3383a16624ecf045753609865931f9d0c44b6b3f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77650977"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196578"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Nejčastější dotazy týkající se použití Azure Database Migration Service
 
@@ -49,7 +49,7 @@ Pomocí Azure Database Migration Service můžete provádět offline a online mi
 Azure Database Migration Service je upřednostňovanou metodou migrace databáze pro Microsoft Azure ve velkém měřítku. Podrobnější informace o tom, jak Azure Database Migration Service porovnává s dalšími nástroji pro migraci databáze Microsoft a doporučení týkající se používání služby pro různé scénáře, najdete v příspěvku na blogu, který [rozlišuje služby a nástroje pro migraci databáze od Microsoftu](https://techcommunity.microsoft.com/t5/microsoft-data-migration/differentiating-microsoft-s-database-migration-tools-and/ba-p/368529).
 
 **Dotaz: jak Azure Database Migration Service porovnat s nabídkou Azure Migrate?**
-Azure Migrate pomáhá s migrací místních virtuálních počítačů do Azure IaaS. Služba posuzuje vhodnost migrace a velikost na základě výkonu a poskytuje odhad nákladů na provoz místních virtuálních počítačů v Azure. Azure Migrate je užitečná pro migrace z místních virtuálních počítačů na virtuální počítače Azure s IaaS do virtuálních počítačů s využitím virtuálních počítačů. Ale na rozdíl od Azure Database Migration Service Azure Migrate není specializovaná služba migrace databáze pro platformy Azure PaaS relačních databází, jako je například Azure SQL Database nebo spravovaná instance Azure SQL Database.
+Azure Migrate pomáhá s migrací místních virtuálních počítačů do Azure IaaS. Služba posuzuje vhodnost migrace a velikost na základě výkonu a poskytuje odhad nákladů na provoz místních virtuálních počítačů v Azure. Azure Migrate je užitečná pro migrace z místních virtuálních počítačů na virtuální počítače Azure s IaaS do virtuálních počítačů s využitím virtuálních počítačů. Ale na rozdíl od Azure Database Migration Service Azure Migrate není specializovaná služba migrace databáze pro platformy Azure PaaS relačních databází, jako je například Azure SQL Database nebo spravovaná instance Azure SQL.
 
 ## <a name="setup"></a>Nastavení
 

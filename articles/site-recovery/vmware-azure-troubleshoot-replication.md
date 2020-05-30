@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 08/2/2019
 ms.author: mayg
-ms.openlocfilehash: 3a3d8ee1d0c1625c9e7d3d83b590f38dcd8847fe
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 1db32d506cc455b020fc6c0f2bba10361e961324
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83836409"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197047"
 ---
 # <a name="troubleshoot-replication-issues-for-vmware-vms-and-physical-servers"></a>Řešení potíží s replikací pro virtuální počítače VMware a fyzické servery
 
@@ -77,7 +77,7 @@ Problém vyřešíte takto:
     - Přejděte do okna disky ovlivněného replikovaného počítače a zkopírujte název disku repliky.
     - Přejít na tento spravovaný disk repliky
     - V okně Přehled se může zobrazit informační zpráva s informací o tom, že se vygenerovala adresa URL SAS. Klikněte na tuto hlavičku a zrušte export. Pokud se banner nezobrazuje, tento krok ignorujte.
-    - Jakmile se adresa URL SAS odvolá, přejdete do okna konfigurace spravovaného disku a zvýšíte velikost tak, aby ASR podporovala pozorovanou četnost změn na zdrojovém disku.
+    - Jakmile se adresa URL SAS odvolá, otevřete okno konfigurace spravovaného disku a zvyšte velikost tak, aby Azure Site Recovery podporovala pozorovanou četnost změn na zdrojovém disku.
 - Pokud jsou pozorované změny dočasné, počkejte několik hodin, než se nahrávání čekajících dat zachytí a vytvoří body obnovení.
 - Pokud disk obsahuje Nekritická data, jako jsou dočasné protokoly, data testů atd., zvažte přesunutí těchto dat jinde nebo zcela vyloučit tento disk z replikace.
 - Pokud se problém opakuje, použijte [Plánovač nasazení](site-recovery-deployment-planner.md#overview) Site Recovery, který vám může pomáhat s plánováním replikace.
@@ -146,6 +146,8 @@ Níže jsou uvedené některé z nejběžnějších problémů.
 #### <a name="cause-3-known-issue-in-sql-server-2016-and-2017"></a>Příčina 3: známý problém v SQL Server 2016 a 2017
 **Jak opravit** : Přečtěte si [článek](https://support.microsoft.com/help/4493364/fix-error-occurs-when-you-back-up-a-virtual-machine-with-non-component) znalostní báze
 
+#### <a name="cause-4-app-consistency-not-enabled-on-linux-servers"></a>Příčina 4: konzistence aplikací není na serverech se systémem Linux povolena
+**Oprava** : Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s možnostmi před a po odeslání bude použit agentem Azure Site Recovery mobility pro konzistenci aplikací. [Tady](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#replication) je postup, jak ho povolit.
 
 ### <a name="more-causes-due-to-vss-related-issues"></a>Další příčiny v důsledku potíží souvisejících se službou VSS:
 
