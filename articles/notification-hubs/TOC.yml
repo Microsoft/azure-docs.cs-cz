@@ -14,6 +14,7 @@
     - name: Vytvoření centra oznámení – Azure CLI
       href: create-notification-hub-azure-cli.md
     - name: Vytvoření centra oznámení – šablona ARM
+      displayName: Resource Manager
       href: create-notification-hub-template.md
     - name: Konfigurace centra oznámení
       href: configure-notification-hub-portal-pns-settings.md
@@ -23,21 +24,23 @@
       items:
         - name: Zasílání zpráv v cloudu Firebase
           items:
-            - name: Nabízená oznámení pro všechny registrace
+            - name: Odesílání nabízených oznámení všem registracím (SDK verze 1.0.0-preview1)
+              href: android-sdk.md
+            - name: Odesílání nabízených oznámení všem registracím (SDK verze 0.6)
               href: notification-hubs-android-push-notification-google-fcm-get-started.md
-            - name: Nabízená oznámení odesílaná konkrétním zařízením
+            - name: Odesílání nabízených oznámení konkrétním zařízením
               href: push-notifications-android-specific-devices-firebase-cloud-messaging.md
-            - name: Nabízená oznámení odesílaná konkrétním uživatelům
+            - name: Odesílání nabízených oznámení konkrétním uživatelům
               href: push-notifications-android-specific-users-firebase-cloud-messaging.md
-            - name: Nabízená oznámení odesílaná aplikacím pro Xamarin Android
+            - name: Odesílání nabízených oznámení aplikacím pro Xamarin Android
               href: xamarin-notification-hubs-push-notifications-android-gcm.md
         - name: Google Cloud Messaging (zastaralé)
           items:
-            - name: Nabízená oznámení pro všechny registrace
+            - name: Odesílání nabízených oznámení všem registracím
               href: notification-hubs-android-push-notification-google-gcm-get-started.md
-            - name: Nabízená oznámení odesílaná konkrétním zařízením
+            - name: Odesílání nabízených oznámení konkrétním zařízením
               href: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-            - name: Nabízená oznámení odesílaná konkrétním uživatelům
+            - name: Odesílání nabízených oznámení konkrétním uživatelům
               href: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
     - name: iOS
       items:
@@ -139,7 +142,7 @@
     - name: Registrace s využitím back-endu aplikací
       href: notification-hubs-ios-aspnet-register-user-from-backend-to-push-notification.md
     - name: Použití ověřování na základě token pro zařízení Apple
-      href: notification-hubs-push-notification-http2-token-authentification.md
+      href: notification-hubs-push-notification-http2-token-authentication.md
     - name: Řešení potíží s vynechanými oznámeními
       href: notification-hubs-push-notification-fixer.md
     - name: Nabízená oznámení odesílaná s využitím nabízených oznámení cloudu Baidu
