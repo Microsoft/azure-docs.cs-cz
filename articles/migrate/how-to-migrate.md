@@ -3,12 +3,12 @@ title: Přidání nástrojů pro migraci do Azure Migrate
 description: Naučte se přidávat nástroje pro migraci do Azure Migrate.
 ms.topic: article
 ms.date: 04/26/2020
-ms.openlocfilehash: e7d36a642f41b77e3b4c4125bae64f02def3b306
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: 670341adca7ab2958d43132aab164d7bba0f87d0
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82901471"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195825"
 ---
 # <a name="add-migration-tools"></a>Přidání nástrojů pro migraci
 
@@ -23,7 +23,7 @@ Tento článek popisuje, jak přidat nástroje pro migraci do [Azure Migrate](mi
 2. Vyberte scénář migrace, který chcete použít:
 
     - K migraci počítačů a úloh do Azure vyberte možnost **zhodnotit a migrovat servery**.
-    - Chcete-li migrovat místní počítače SQL, vyberte možnost **vyhodnotit a migrovat databáze**.
+    - Chcete-li migrovat místní databáze SQL Server, vyberte možnost **vyhodnotit a migrovat databáze**.
     - Pokud chcete migrovat místní webové aplikace, vyberte možnost **vyhodnotit a migrovat webové aplikace**.
     - Pokud chcete migrovat velké objemy místních dat do Azure v režimu offline, vyberte **objednat data box**.
 

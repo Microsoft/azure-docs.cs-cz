@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d07d1a706635a7f269a9a51769ae6f8bbf57df3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d2adca661882ea11d04ebe55afe25f7f9c2ef4e
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80295408"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219964"
 ---
 # <a name="azcopy-login"></a>azcopy login
 
@@ -101,7 +101,7 @@ Zajistěte, aby se/path/to/my/CERT považovala za cestu k souboru PEM nebo PKCS1
 
 |Možnost|Popis|
 |--|--|
-|--AAD-koncový bod|Koncový bod Azure Active Directory, který se má použít. Výchozí hodnota (`https://login.microsoftonline.com`) je správná pro veřejný cloud Azure. Nastavte tento parametr při ověřování v národním cloudu. Viz [koncové body ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
+|--AAD-koncový bod|Koncový bod Azure Active Directory, který se má použít. Výchozí hodnota ( `https://login.microsoftonline.com` ) je správná pro veřejný cloud Azure. Nastavte tento parametr při ověřování v národním cloudu. Viz [koncové body ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud#azure-ad-authentication-endpoints).
 Tento příznak není pro Identita spravované služby potřebný.|
 |--ID aplikace – řetězec|ID aplikace identity přiřazené uživatelem Vyžaduje se pro ověřování instančního objektu.|
 |--Certificate-cesta – řetězec|Cesta k certifikátu pro ověřování hlavního názvu služby (SPN) Vyžaduje se pro ověřování instančního objektu založeného na certifikátech.|
@@ -119,7 +119,8 @@ Tento příznak není pro Identita spravované služby potřebný.|
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
+|--Trusted – řetězec Microsoft-přípony   |Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí hodnota je *. Core.Windows.NET;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.|
 
 ## <a name="see-also"></a>Viz také
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

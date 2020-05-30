@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: c803d489b70cda6910865f6096d21c2021c4ae3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 41b7dc2b7ddcf5d8bd15043d117a25771a278f95
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393700"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204867"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: Horká, studená a archivní úroveň přístupu
 
@@ -59,9 +59,9 @@ Studená úroveň přístupu má nižší náklady na úložiště a vyšší n�
 
 ## <a name="archive-access-tier"></a>Úroveň přístupu Archive
 
-Úroveň přístupu archivu má nejnižší náklady na úložiště. Ale má vyšší náklady na načtení dat ve srovnání s horkou a studenou úrovní. Načtení dat v archivní úrovni může trvat několik hodin. Data musí zůstat v archivní úrovni po dobu minimálně 180 dní nebo musí platit poplatky za předčasné odstranění.
+Úroveň přístupu archivu má nejnižší náklady na úložiště. Ale má vyšší náklady na načtení dat ve srovnání s horkou a studenou úrovní. Data musí zůstat v archivní úrovni po dobu minimálně 180 dní nebo musí platit poplatky za předčasné odstranění. Načtení dat v archivní úrovni může trvat několik hodin v závislosti na prioritě vysazování. U malých objektů může být rehydratovanécí objekt z archivu v průběhu 1 hodiny načítán. Další informace najdete v tématu [dehydratované data objektů BLOB z archivní úrovně](storage-blob-rehydration.md) .
 
-Když je objekt BLOB v archivním úložišti, data objektů BLOB jsou offline a nejde je přečíst, přepsat ani změnit. Chcete-li číst nebo stahovat objekt BLOB v archivu, je nutné jej nejprve znovu vyprogramovat do online úrovně. Nemůžete pořizovat snímky objektu BLOB v archivním úložišti. Metadata objektu BLOB zůstávají ale online a k dispozici, což vám umožní zobrazit seznam objektů BLOB a jejích vlastností. V případě objektů BLOB v archivu jsou jedinými platnými operacemi GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier, CopyBlob a DeleteBlob. Další informace najdete v tématu [dehydratované data objektů BLOB z archivní úrovně](storage-blob-rehydration.md) .
+Když je objekt BLOB v archivním úložišti, data objektů BLOB jsou offline a nejde je přečíst, přepsat ani změnit. Chcete-li číst nebo stahovat objekt BLOB v archivu, je nutné jej nejprve znovu vyprogramovat do online úrovně. Nemůžete pořizovat snímky objektu BLOB v archivním úložišti. Metadata objektu BLOB zůstávají ale online a k dispozici, což vám umožní zobrazit seznam objektů blob, vlastností, metadat a indexů objektů BLOB. Nastavení nebo úprava metadat objektů BLOB v archivu není povolená; Můžete ale nastavit a upravit značky indexu objektu BLOB. V případě objektů BLOB v archivu jsou jedinými platnými operacemi GetBlobProperties, GetBlobMetadata, SetBlobTags, GetBlobTags, FindBlobsByTags, ListBlobs, SetBlobTier, CopyBlob a DeleteBlob.
 
 Mezi scénáře použití archivní úrovně přístupu patří:
 
@@ -119,7 +119,7 @@ V následující tabulce jsou popsány porovnání úložiště objektů blob bl
 | ----------------------------------------- | ------------------------- | ------------ | ------------------- | ----------------- |
 | **Dostupnost**                          | 99,9 %                     | 99,9 %        | 99 %                 | Offline           |
 | **Dostupnost** <br> **(přístupy pro čtení RA-GRS)**  | –                       | 99,99 %       | 99,9 %               | Offline           |
-| **Poplatky za využití**                         | Vyšší náklady na úložiště, nižší náklady na přístup a transakce | Vyšší náklady na úložiště, nižší přístup a náklady na transakce | Snížení nákladů na úložiště, vyššího přístupu a transakčních nákladů | Nejnižší náklady na úložiště, nejvyšší přístup a náklady na transakce |
+| **Poplatky za využití**                         | Vyšší náklady na úložiště, nižší přístup a náklady na transakce | Vyšší náklady na úložiště, nižší přístup a náklady na transakce | Snížení nákladů na úložiště, vyššího přístupu a transakčních nákladů | Nejnižší náklady na úložiště, nejvyšší přístup a náklady na transakce |
 | **Minimální velikost objektu**                   | –                       | –          | –                 | –               |
 | **Minimální doba uložení**              | –                       | –          | 30 dnů<sup>1</sup> | 180 dnů
 | **Latence** <br> **(čas do prvního bajtu)** | Jednociferné číslo milisekund | milisekundy | milisekundy        | hodiny<sup>2</sup> |
@@ -140,7 +140,7 @@ V této části se při použití Azure Portal a PowerShellu ukázaly následuj�
 
 ### <a name="change-the-default-account-access-tier-of-a-gpv2-or-blob-storage-account"></a>Změna výchozí úrovně přístupu u účtu GPv2 nebo Blob Storage
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
@@ -155,8 +155,8 @@ V této části se při použití Azure Portal a PowerShellu ukázaly následuj�
 
 ![Změna úrovně účtu úložiště](media/storage-tiers/account-tier.png)
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
-Ke změně úrovně účtu se dá použít následující skript PowerShellu. `$rgName` Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName` Proměnná musí být inicializována s názvem vašeho účtu úložiště. 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Ke změně úrovně účtu se dá použít následující skript PowerShellu. `$rgName`Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName`Proměnná musí být inicializována s názvem vašeho účtu úložiště. 
 ```powershell
 #Initialize the following with your resource group and storage account names
 $rgName = ""
@@ -168,7 +168,7 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 ---
 
 ### <a name="change-the-tier-of-a-blob-in-a-gpv2-or-blob-storage-account"></a>Změna úrovně objektu BLOB v účtu GPv2 nebo BLOB Storage
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. V Azure Portal vyhledejte a vyberte **všechny prostředky**.
@@ -185,8 +185,8 @@ Set-AzStorageAccount -ResourceGroupName $rgName -Name $accountName -AccessTier H
 
 ![Změna úrovně účtu úložiště](media/storage-tiers/blob-access-tier.png)
 
-# <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
-Ke změně úrovně objektu BLOB se dá použít následující skript PowerShellu. `$rgName` Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName` Proměnná musí být inicializována s názvem vašeho účtu úložiště. `$containerName` Proměnná musí být inicializována s názvem kontejneru. `$blobName` Proměnná musí být inicializována s vaším názvem objektu BLOB. 
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Ke změně úrovně objektu BLOB se dá použít následující skript PowerShellu. `$rgName`Proměnná musí být inicializována s názvem vaší skupiny prostředků. `$accountName`Proměnná musí být inicializována s názvem vašeho účtu úložiště. `$containerName`Proměnná musí být inicializována s názvem kontejneru. `$blobName`Proměnná musí být inicializována s vaším názvem objektu BLOB. 
 ```powershell
 #Initialize the following with your resource group, storage account, container, and blob names
 $rgName = ""
@@ -238,7 +238,7 @@ Ano, výchozí úroveň účtu můžete změnit nastavením atributu **úroveň 
 
 **Můžu u účtu nastavit výchozí úroveň přístupu na archivní?**
 
-Ne. Jako výchozí úroveň přístupu se dá nastavit jenom horká a studená úroveň přístupu. Archivní úroveň je možné nastavit pouze na úrovni objektu. Při nahrávání objektů BLOB určíte úroveň přístupu podle vaší volby na horkou, studenou nebo archivní, a to bez ohledu na výchozí úroveň účtu. Tato funkce umožňuje zapisovat data přímo do archivní úrovně a ušetřit tak náklady od chvíle, kdy vytvoříte data v úložišti objektů BLOB.
+No. Jako výchozí úroveň přístupu se dá nastavit jenom horká a studená úroveň přístupu. Archivní úroveň je možné nastavit pouze na úrovni objektu. Při nahrávání objektů BLOB určíte úroveň přístupu podle vaší volby na horkou, studenou nebo archivní, a to bez ohledu na výchozí úroveň účtu. Tato funkce umožňuje zapisovat data přímo do archivní úrovně a ušetřit tak náklady od chvíle, kdy vytvoříte data v úložišti objektů BLOB.
 
 **Ve kterých oblastech jsou horké, studené a archivní úrovně přístupu dostupné v?**
 
@@ -252,7 +252,7 @@ Objekty blob ve studené úrovni přístupu mají mírně nižší dostupnost sl
 
 **Jsou operace mezi horkou, studenou a archivní úrovní stejné?**
 
-Všechny operace mezi horkou a studenou úrovní jsou 100% konzistentní. Všechny platné archivní operace, včetně GetBlobProperties, GetBlobMetadata, ListBlobs, SetBlobTier a DeleteBlob, jsou 100% v souladu s horkou a studenou. Data objektu BLOB nelze číst ani upravovat, pokud je v archivní úrovni, dokud není znovu vyměněno. v archivu jsou podporovány pouze operace čtení metadat objektů BLOB.
+Všechny operace mezi horkou a studenou úrovní jsou 100% konzistentní. Všechny platné archivní operace, včetně GetBlobProperties, GetBlobMetadata, SetBlobTags, GetBlobTags, FindBlobsByTags, ListBlobs, SetBlobTier a DeleteBlob, jsou 100% v souladu s horkou a studenou. Data objektu BLOB nelze číst ani upravovat, pokud je v archivní úrovni, dokud není znovu vyměněno. v archivu jsou podporovány pouze operace čtení metadat objektů BLOB. V archivu je ale možné číst, nastavovat nebo upravovat značky indexu objektů BLOB.
 
 **Jak se dozvím o dokončení dosazování objektu blob z archivní úrovně do horké nebo studené úrovně?**
 

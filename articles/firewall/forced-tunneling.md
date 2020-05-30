@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 05/18/2020
 ms.author: victorh
-ms.openlocfilehash: cf0af93d95c5af56be6168bc8e4f79d3005e2ec2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d9afb93611712109d5e8fcc8a686f4f9196f3396
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649592"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204034"
 ---
 # <a name="azure-firewall-forced-tunneling"></a>Azure Firewall vynucené tunelování
 
@@ -28,7 +28,7 @@ Pokud máte výchozí trasu inzerovanou přes protokol BGP, abyste vynutili prov
 
 V rámci této konfigurace může *AzureFirewallSubnet* nyní zahrnovat trasy k jakékoli místní bráně firewall nebo síťové virtuální zařízení ke zpracování provozu před předáním na Internet. Tyto trasy můžete také publikovat prostřednictvím protokolu BGP do *AzureFirewallSubnet* , pokud je v této podsíti povolená **šíření tras brány virtuální sítě** .
 
-Můžete například vytvořit výchozí trasu v *AzureFirewallSubnet* s bránou VPN jako další segment, který se dostane k místnímu zařízení. Nebo můžete povolit **šíření tras brány virtuální sítě** , abyste získali vhodné trasy k místní síti.
+Můžete například vytvořit výchozí trasu v *AzureFirewallSubnet* s bránou VPN jako další segment směrování, který se dostane na vaše místní zařízení. Nebo můžete povolit **šíření tras brány virtuální sítě** , abyste získali vhodné trasy k místní síti.
 
 ![Šíření tras brány virtuální sítě](media/forced-tunneling/route-propagation.png)
 

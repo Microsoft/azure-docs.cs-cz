@@ -1,5 +1,5 @@
 ---
-title: Konfigurace Always Encrypted s využitím úložiště certifikátů Windows
+title: Konfigurace Always Encrypted pomocí úložiště certifikátů Windows
 description: V tomto článku se dozvíte, jak zabezpečit citlivá data v Azure SQL Database s šifrováním databáze pomocí Průvodce Always Encrypted v SQL Server Management Studio (SSMS). Také se dozvíte, jak ukládat šifrovací klíče do úložiště certifikátů Windows.
 keywords: šifrování dat, šifrování SQL, šifrování databáze, citlivá data, Always Encrypted
 services: sql-database
@@ -12,17 +12,18 @@ author: VanMSFT
 ms.author: vanto
 ms.reviwer: ''
 ms.date: 04/23/2020
-ms.openlocfilehash: 0287e5a965710ea5c3b1ada73fc32dda49c05819
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8b1b8297f285a5481909e2e2d91118e15d7d5095
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047703"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84190392"
 ---
-# <a name="configure-always-encrypted-using-windows-certificate-store"></a>Konfigurace Always Encrypted s využitím úložiště certifikátů Windows
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb-sqlmi.md)]
+# <a name="configure-always-encrypted-by-using-the-windows-certificate-store"></a>Konfigurace Always Encrypted pomocí úložiště certifikátů Windows
 
-V tomto kurzu se dozvíte, jak zabezpečit citlivá data v databázi v Azure SQL Database nebo v Azure SQL Managed instance s šifrováním databáze pomocí [průvodce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-wizard) v [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). Také se dozvíte, jak ukládat šifrovací klíče do úložiště certifikátů Windows.
+[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+
+Tento článek popisuje, jak zabezpečit citlivá data v Azure SQL Database nebo spravované instanci Azure SQL pomocí šifrování databáze pomocí [průvodce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-wizard) v [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). Také se dozvíte, jak ukládat šifrovací klíče do úložiště certifikátů Windows.
 
 Always Encrypted je technologie pro šifrování dat, která pomáhá chránit citlivá data umístěná na serveru, během pohybu mezi klientem a serverem a i když se data používají, a zajišťuje tak, že se citlivá data v rámci databázového systému nikdy neobjeví jako prostý text. Po zašifrování dat budou mít přístup k datům nešifrovaných dat jenom klientské aplikace nebo aplikační servery, které mají přístup k klíčům. Podrobné informace najdete v tématu [Always Encrypted (databázový stroj)](https://msdn.microsoft.com/library/mt163865.aspx).
 
@@ -56,7 +57,7 @@ Chcete-li získat ID a *klíč* *aplikace* , postupujte podle kroků v části [
 
 ## <a name="connect-with-ssms"></a>Připojení přes SSMS
 
-Otevřete SQL Server Managed Studio (SSMS) a připojte se k serveru nebo ho můžete spravovat pomocí vaší databáze.
+Otevřete SQL Server Management Studio (SSMS) a připojte se k serveru nebo ho můžete spravovat pomocí vaší databáze.
 
 1. Otevřete aplikaci SSMS. (Klikněte na **připojit**  >  **Databázový stroj** pro otevření okna **připojit k serveru** , pokud není otevřeno).
 2. Zadejte název svého serveru a přihlašovací údaje.

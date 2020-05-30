@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 60df6597d13ea5c8ca265959b0dba5cb83bcdcba
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a45fc5f4e56ff3a5d7f0be167c5d758aa0e47caf
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044735"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196356"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Osvědčené postupy pro Synchronizaci dat SQL Azure 
 
@@ -34,7 +34,7 @@ Přehled Synchronizace dat SQL najdete v tématu [Synchronizace dat mezi několi
 ### <a name="client-agent"></a>Agent klienta
 
 -   Nainstalujte klientského agenta pomocí nejmenšího privilegovaného uživatelského účtu, který má přístup k síťové službě.  
--   Nainstalujte agenta klienta na počítač, který není místním SQL Serverm počítačem.  
+-   Do počítače, který není SQL Server počítač, nainstalujte agenta klienta.  
 -   Neregistrujte místní databázi s více než jedním agentem.    
     -   Vyhněte se tomu i v případě, že synchronizujete různé tabulky pro různé skupiny synchronizace.  
     -   Registrace místní databáze s více agenty klienta představuje problémy při odstraňování jedné ze skupin synchronizace.
@@ -197,7 +197,7 @@ V některých případech může zrušení registrace databáze u agenta klienta
 
 #### <a name="scenario"></a>Scénář
 
-1. Skupina synchronizace A byla vytvořena pomocí instance SQL Database a místní databáze SQL Server, která je přidružena k místnímu agentovi 1.
+1. Skupina synchronizace A byla vytvořena pomocí instance SQL Database a databáze SQL Server, která je přidružena k místnímu agentovi 1.
 2. Stejná místní databáze je zaregistrovaná u místního agenta 2 (Tento agent není přidružený k žádné skupině synchronizace).
 3. Zrušení registrace místní databáze z místního agenta 2 odebere sledování a meta tabulky pro skupinu synchronizace a pro místní databázi.
 4. Skupina synchronizace A operace se nezdaří, s touto chybou: "aktuální operace nemohla být dokončena, protože databáze není zřízená pro synchronizaci nebo nemáte oprávnění k tabulkám konfigurace synchronizace."
@@ -232,8 +232,8 @@ Pokud chcete tento problém zmírnit, nahorizontální navýšení kapacity data
 Další informace o Synchronizace dat SQL najdete v tématech:
 
 -   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí Azure synchronizace dat SQL](sql-data-sync-data-sql-server-sql-database.md)
--   Nastavit Synchronizace dat SQL
-    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním](sql-data-sync-sql-server-configure.md) prostředím
+-   Nastavení synchronizace dat SQL
+    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server](sql-data-sync-sql-server-configure.md)
     - S využitím PowerShellu
         -  [Použití PowerShellu k synchronizaci mezi několika databázemi v Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi databází v SQL Database a databází v instanci SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

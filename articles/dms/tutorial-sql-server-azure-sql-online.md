@@ -1,7 +1,7 @@
 ---
 title: 'Kurz: migrace SQL Server Online do databáze SQL Single'
 titleSuffix: Azure Database Migration Service
-description: Naučte se provádět online migraci z SQL Server místně do izolované databáze nebo databáze ve fondu v Azure SQL Database pomocí Azure Database Migration Service.
+description: Naučte se provádět online migraci z SQL Server k Azure SQL Database pomocí Azure Database Migration Service.
 services: dms
 author: pochiraju
 ms.author: rajpo
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 01/21/2020
-ms.openlocfilehash: 84f734b733478450bfb21fee77e1a4942fe63e3e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6e7ef31f7d48096fe94570ca9f3275bda23452f9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019003"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194165"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Kurz: migrace SQL Server do izolované databáze nebo ve fondu databáze v Azure SQL Database online pomocí DMS
 
-Pomocí služby Azure Database Migration Service můžete migrovat databáze z místní instance SQL Serveru do služby [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) s minimálními výpadky. V tomto kurzu migrujete databázi **Adventureworks2012** obnovenou do místní instance SQL Server 2016 (nebo novější) do jedné databáze nebo do fondu databáze v Azure SQL Database pomocí Azure Database Migration Service.
+Azure Database Migration Service můžete použít k migraci databází z instance SQL Server na [Azure SQL Database](https://docs.microsoft.com/azure/sql-database/) s minimálními výpadky. V tomto kurzu migrujete databázi **Adventureworks2012** obnovenou do místní instance SQL Server 2016 (nebo novější) do jedné databáze nebo do fondu databáze v Azure SQL Database pomocí Azure Database Migration Service.
 
 V tomto kurzu se naučíte:
 > [!div class="checklist"]
@@ -127,7 +127,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 ## <a name="assess-your-on-premises-database"></a>Posouzení místní databáze
 
-Než budete moct migrovat data z místní instance SQL Server do izolované databáze nebo databáze ve fondu v Azure SQL Database, je nutné vyhodnotit SQL Server databázi pro všechny blokující problémy, které by mohly bránit migraci. Proveďte posouzení místní databáze pomocí nástroje Data Migration Assistant verze 3.3 nebo novější a postupujte při tom podle kroků popsaných v článku [Posuzování migrace SQL Serveru](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem).
+Předtím, než budete moci migrovat data z SQL Server instance do Azure SQL Database, je nutné vyhodnotit SQL Server databázi pro všechny blokující problémy, které by mohly bránit migraci. Proveďte posouzení místní databáze pomocí nástroje Data Migration Assistant verze 3.3 nebo novější a postupujte při tom podle kroků popsaných v článku [Posuzování migrace SQL Serveru](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem).
 
 K vyhodnocení místní databáze proveďte následující kroky:
 
@@ -155,7 +155,7 @@ K vyhodnocení místní databáze proveďte následující kroky:
     Pro izolované databáze nebo databáze ve fondu v Azure SQL Database posouzení identifikují problémy s paritou funkcí a blokující problémy při nasazení do izolované databáze nebo databáze ve fondu.
 
     - Kategorie **Parita funkcí SQL Serveru** poskytuje komplexní sadu doporučení, alternativní postupy, které jsou v Azure k dispozici, a postupy pro zmírnění problémů, které vám pomůžou naplánovat náročnost projektů migrace.
-    - Kategorie **Problémy s kompatibilitou** identifikuje částečně podporované nebo nepodporované funkce, které odrážejí problémy, které můžou blokovat migraci místních databází SQL Serveru do služby Azure SQL Database. K dispozici jsou také doporučení, která vám pomůžou tyto problémy vyřešit.
+    - Kategorie **problémy s kompatibilitou** identifikuje částečně podporované nebo nepodporované funkce, které odráží problémy s kompatibilitou, které by mohly blokovat migraci SQL Server databází do Azure SQL Database. K dispozici jsou také doporučení, která vám pomůžou tyto problémy vyřešit.
 
 6. Výběrem konkrétních možností zkontrolujte výsledky posouzení z hlediska problémů blokujících migraci a problémů s paritou funkcí.
 

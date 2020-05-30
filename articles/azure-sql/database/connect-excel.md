@@ -1,6 +1,6 @@
 ---
 title: Propojení s Excelem
-description: Naučte se, jak připojit Microsoft Excel k Azure SQL Database. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy.
+description: Naučte se, jak připojit Microsoft Excel k databázi v Azure SQL Database. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,27 +11,28 @@ author: joseidz
 ms.author: craigg
 ms.reviewer: ''
 ms.date: 02/12/2019
-ms.openlocfilehash: 08bf78e6cc548ed717d6bc57946067a16ec13e2b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 332620699e30facb2fbbfee90e3328b8dcf1e179
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043447"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195488"
 ---
-# <a name="connect-excel-to-azure-sql-database-and-create-a-report"></a>Připojení Excelu k Azure SQL Database a vytvoření sestavy
+# <a name="connect-excel-to-a-database-in-azure-sql-database-and-create-a-report"></a>Připojení Excelu k databázi v Azure SQL Database a vytvoření sestavy
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Připojení Excelu k Azure SQL Database a import dat a vytváření tabulek a grafů na základě hodnot v databázi. V tomto kurzu nastavíte připojení mezi Excelem a databázovou tabulkou, uložíte soubor, ve kterém jsou uložená data a informace o připojení pro Excel, a pak z hodnot v databázi vytvoříte kontingenční graf.
+Můžete připojit aplikaci Excel k databázi aplikace Azure SQL Database a poté importovat data a vytvořit tabulky a grafy založené na hodnotách v databázi. V tomto kurzu nastavíte připojení mezi Excelem a databázovou tabulkou, uložíte soubor, ve kterém jsou uložená data a informace o připojení pro Excel, a pak z hodnot v databázi vytvoříte kontingenční graf.
 
-Abyste mohli začít, budete potřebovat SQL Database. Pokud ho ještě nemáte, přečtěte si téma [vytvoření Azure SQL Database](single-database-create-quickstart.md) a [Vytvoření brány firewall protokolu IP na úrovni serveru](firewall-create-server-level-portal-quickstart.md) , abyste získali SQL Database s ukázkovými daty v průběhu několika minut.
+Než začnete, budete muset vytvořit databázi v SQL Database. Pokud ho ještě nemáte, přečtěte si téma [Vytvoření databáze v Azure SQL Database](single-database-create-quickstart.md) a [Vytvoření brány firewall protokolu IP na úrovni serveru](firewall-create-server-level-portal-quickstart.md) pro získání databáze s ukázkovými daty po dobu běhu.
 
 V tomto článku naimportujete do Excelu ukázková data z tohoto článku, ale můžete postupovat podle podobných kroků s vlastními daty.
 
 Budete také potřebovat Excel. V tomto článku používáme [Microsoft Excel 2016](https://products.office.com/).
 
-## <a name="connect-excel-to-a-sql-database-and-load-data"></a>Připojení Excelu k SQL Database a načítání dat
+## <a name="connect-excel-and-load-data"></a>Připojit Excel a načíst data
 
-1. Chcete-li připojit aplikaci Excel k SQL Database, otevřete aplikaci Excel a pak vytvořte nový sešit nebo otevřete existující sešit aplikace Excel.
+1. Chcete-li připojit aplikaci Excel k databázi v SQL Database, otevřete aplikaci Excel a pak vytvořte nový sešit nebo otevřete existující sešit aplikace Excel.
 2. V řádku nabídek v horní části stránky vyberte kartu **data** , vyberte **získat data**, vyberte z Azure a pak vyberte **z Azure SQL Database**.
 
    ![Vyberte zdroj dat: připojení Excelu k SQL Database.](./media/connect-excel/excel_data_source.png)
@@ -53,7 +54,7 @@ Budete také potřebovat Excel. V tomto článku používáme [Microsoft Excel 2
 
 ## <a name="import-the-data-into-excel-and-create-a-pivot-chart"></a>Import dat do Excelu a vytvoření kontingenčního grafu
 
-Teď, když jste navázali připojení, máte k dispozici několik různých možností, jak načíst data. Následující kroky například vytvoří kontingenční graf na základě dat nalezených ve vašem SQL Database.
+Teď, když jste navázali připojení, máte k dispozici několik různých možností, jak načíst data. Následující kroky například vytvoří kontingenční graf na základě dat nalezených ve vaší databázi v SQL Database.
 
 1. Postupujte podle kroků v předchozí části, ale tentokrát místo výběru možnosti **načíst**vyberte **načíst do** v rozevíracím seznamu **načíst** .
 2. V dalším kroku vyberte, jak chcete zobrazit tato data v sešitu. Zvolili jsme možnost **Kontingenční graf**. Můžete také zvolit možnost **Nový list** nebo **Přidat tato data do datového modelu**. Další informace o datových modelech najdete v tématu [Vytvoření datového modelu v Excelu](https://support.office.com/article/Create-a-Data-Model-in-Excel-87E7A54C-87DC-488E-9410-5C75DBCB0F7B).

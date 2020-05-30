@@ -8,12 +8,12 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: d855019be7f357a35a26d14e68ba3d427d984e17
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4b43b590b147335a70877a7c3c0b07f8b818e3c
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086024"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221059"
 ---
 # <a name="azcopy-sync"></a>azcopy sync
 
@@ -42,7 +42,7 @@ Příkaz synchronizovat se v několika ohledech liší od příkazu pro kopírov
 - [Přenos dat pomocí AzCopy a úložiště souborů](storage-use-azcopy-files.md)
 - [Konfigurace, optimalizace a řešení potíží s AzCopy](storage-use-azcopy-configure.md)
 
-### <a name="advanced"></a>Upřesnit
+### <a name="advanced"></a>Pokročilý
 
 Pokud nezadáte příponu souboru, AzCopy automaticky detekuje typ obsahu souborů při nahrávání z místního disku na základě přípony souboru nebo obsahu (Pokud není zadané žádné rozšíření).
 
@@ -67,7 +67,7 @@ azcopy sync "/path/to/file.txt" "https://[account].blob.core.windows.net/[contai
 ```
 
 > [!NOTE]
-> Cílový objekt BLOB *musí* existovat. Slouží `azcopy copy` ke zkopírování jednoho souboru, který ještě v cílovém umístění neexistuje. V opačném případě dojde k následující `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container`chybě:.
+> Cílový objekt BLOB *musí* existovat. Slouží `azcopy copy` ke zkopírování jednoho souboru, který ještě v cílovém umístění neexistuje. V opačném případě dojde k následující chybě: `Cannot perform sync due to error: sync must happen between source and destination of the same type, e.g. either file <-> file, or directory/container <-> directory/container` .
 
 Stejné jako výše, ale tentokrát také vypočítat hodnotu hash MD5 obsahu souboru a uložit ji jako vlastnost content-MD5 objektu BLOB:
 
@@ -81,7 +81,7 @@ Synchronizovat celý adresář včetně jeho podsložek (Všimněte si, že ve v
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]"
 ```
 
-– nebo –
+or
 
 ```azcopy
 azcopy sync "/path/to/dir" "https://[account].blob.core.windows.net/[container]/[path/to/virtual/dir]" --put-md5
@@ -144,13 +144,13 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 
 **--Exclude vyloučení – řetězec cesty** vyloučí tyto cesty při kopírování. Tato možnost nepodporuje zástupné znaky (*). Kontroluje předponu relativní cesty (například: myFolder; myFolder/subDirName/File. PDF). Pokud se používá v kombinaci s procházením účtu, cesty neobsahují název kontejneru.
 
-**--vyloučit-vzorové** soubory vyloučení, kde název odpovídá seznamu vzorů. Například: \*. jpg; \*. PDF; Exact
+**--vyloučit-vzorové** soubory vyloučení, kde název odpovídá seznamu vzorů. Například: \* . jpg; \* . PDF; přesný
 
 **-h,--** Help Help pro synchronizaci
 
 **--include-** Attribute String (pouze Windows) obsahují pouze soubory, jejichž atributy odpovídají seznamu atributů. Příklad: A; Pracují Í
 
-**--include – řetězec vzorů** zahrnuje pouze soubory, u kterých se název shoduje se seznamem vzorů. Například: \*. jpg; \*. PDF; Exact
+**--include – řetězec vzorů** zahrnuje pouze soubory, u kterých se název shoduje se seznamem vzorů. Například: \* . jpg; \* . PDF; přesný
 
 **--řetězec na úrovni protokolu** definuje podrobnosti protokolu pro soubor protokolu, dostupné úrovně: informace (všechny žádosti a odpovědi), upozornění (pomalé odezvy), chybu (pouze neúspěšné žádosti) a žádné (žádné protokoly výstupu). (výchozí informace). (výchozí "informace")
 
@@ -164,7 +164,8 @@ azcopy sync "https://[account].file.core.windows.net/[share]/[path/to/dir]?[SAS]
 |---|---|
 |--Cap – Mbps|Velká rychlost přenosu v megabajtech za sekundu. Okamžitá propustnost se může mírně lišit od Cap. Pokud je tato možnost nastavená na hodnotu nula nebo je vynechána, propustnost nebude omezené.|
 |--výstupní řetězec typu|Formát výstupu příkazu Mezi možnosti patří: text, JSON. Výchozí hodnota je "text".|
+|--Trusted – řetězec Microsoft-přípony   |Určuje další přípony domén, kde se můžou odesílat přihlašovací tokeny Azure Active Directory.  Výchozí hodnota je *. Core.Windows.NET;*. core.chinacloudapi.cn; *. Core.cloudapi.de;*. core.usgovcloudapi.net '. Zde uvedené jsou přidány do výchozího nastavení. Z důvodu zabezpečení byste měli sem umístit jenom Microsoft Azure domény. Více položek oddělte středníkem.|
 
 ## <a name="see-also"></a>Viz také
 
-- [azcopy](storage-ref-azcopy.md)
+- [AzCopy](storage-ref-azcopy.md)

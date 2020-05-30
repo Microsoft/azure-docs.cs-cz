@@ -3,12 +3,12 @@ title: Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 description: Využijte poradce k optimalizaci výkonu nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: ff9b8fb9494c887397947f009b22cdc89d8f70b5
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 230466c7c0e8de2681737bbf9d74341dea7f7b8f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82787936"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196416"
 ---
 # <a name="improve-performance-of-azure-applications-with-azure-advisor"></a>Zlepšení výkonu aplikací Azure pomocí Azure Advisor
 
@@ -22,7 +22,7 @@ Azure Advisor identifikuje profily Traffic Manager s delší hodnotou TTL nakonf
 
 ## <a name="improve-database-performance-with-sql-db-advisor"></a>Zlepšení výkonu databáze s využitím funkce SQL DB Advisor
 
-Advisor nabízí konzistentní a konsolidované zobrazení doporučení pro všechny prostředky Azure. Integruje se s SQL Database Advisor a dává vám doporučení pro zlepšení výkonu databáze SQL Azure.SQL Database Advisor vyhodnocuje výkon vašich SQL Azure databází analýzou historie využití. Potom nabízí doporučení, která jsou nejvhodnější pro spuštění typického zatížení databáze.
+Advisor nabízí konzistentní a konsolidované zobrazení doporučení pro všechny prostředky Azure. Integruje se s SQL Database Advisor a dává vám doporučení pro zlepšení výkonu databáze.SQL Database Advisor vyhodnocuje výkon vašich databází analýzou historie využití. Potom nabízí doporučení, která jsou nejvhodnější pro spuštění typického zatížení databáze.
 
 > [!NOTE]
 > Aby bylo možné získat doporučení, musí mít databáze přibližně týden využití a v tomto týdnu musí být konzistentní aktivita. SQL Database Advisor se dá snadněji optimalizovat pro konzistentní vzory dotazů, než pro náhodné nárůsty aktivity.
@@ -80,19 +80,19 @@ Oblast Azure může podporovat maximálně 250 účtů úložiště na jedno př
 
 ## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-adress-high-p2s-use"></a>Zvažte zvýšení velikosti SKU brány virtuální sítě na adresu vysoká P2S využití.
 
-Každá SKU brány může podporovat jenom zadaný počet souběžných připojení P2S. Pokud se počet připojení blíží limitu brány, může dojít k selhání dalších pokusů o připojení. Zvýšení velikosti brány vám umožní podporovat více souběžných uživatelů P2S. Advisor poskytuje doporučení a kroky, které je potřeba provést.
+Každá skladová položka brány může podporovat pouze určitý počet souběžných připojení typu point-to-site. Pokud se počet připojení blíží limitu brány, může dojít k selhání dalších pokusů o připojení. Zvýšení velikosti brány vám umožní podporovat více souběžných uživatelů P2S. Advisor poskytuje doporučení a kroky, které je potřeba provést.
 
-## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Zvažte zvýšení velikosti SKU brány virtuální sítě na řešení vysokého výkonu procesoru.
+## <a name="consider-increasing-the-size-of-your-vnet-gateway-sku-to-address-high-cpu"></a>Zvážení zvětšení velikosti skladové položky služby VNet Gateway za účelem řešení vysokého využití procesoru
 
-V případě vysokého zatížení může Brána sítě VPN vyřadit pakety z důvodu vysokého využití procesoru. Měli byste zvážit upgrade VPN Gateway SKU, protože vaše síť VPN byla konzistentně spuštěna v. Zvětšením velikosti brány VPN se zajistí, že připojení nebudou vyřazena z důvodu vysokého využití procesoru. Doporučení provdes Advisoru k proaktivnímu řešení tohoto problému. 
+V případě velkého přenosového zatížení může ve službě VPN Gateway docházet k zahazování paketů kvůli vysokému využití procesoru. Měli byste zvážit upgrade VPN Gateway SKU, protože vaše síť VPN byla konzistentně spuštěna v. Zvětšením velikosti brány VPN se zajistí, že připojení nebudou vyřazena z důvodu vysokého využití procesoru. Doporučení provdes Advisoru k proaktivnímu řešení tohoto problému. 
 
-## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>Zvýšit velikost dávky při načítání pro maximalizaci propustnosti zatížení, komprimace dat a výkonu dotazů
+## <a name="increase-batch-size-when-loading-to-maximize-load-throughput-data-compression-and-query-performance"></a>Maximalizace propustnosti nahrávání, komprese dat a výkonu dotazů zvětšením velikosti dávky při nahrávání
 
-Služba Advisor dokáže zjistit, že můžete zvýšit výkon a propustnost zatížení tím, že zvýšíte velikost dávky při načítání do vaší databáze. Můžete zvážit použití příkazu COPY. Pokud nemůžete použít příkaz COPY, zvažte zvýšení velikosti dávky při použití nástrojů načítání nástrojů, jako je SQLBulkCopy API nebo BCP – dobré pravidlo pro palec je velikost dávky mezi 100 tisíc a 1 milionem řádků. Tím se zvýší propustnost zatížení, komprese dat a výkon dotazů.
+Služba Advisor dokáže zjistit, že můžete zvýšit výkon a propustnost zatížení tím, že zvýšíte velikost dávky při načítání do vaší databáze. Můžete zvážit použití příkazu COPY. Pokud nemůžete použít příkaz COPY, zvažte zvětšení velikosti dávky při použití nástrojů pro nahrávání, jako jsou rozhraní SQLBulkCopy API nebo BCP –⁠ obecně je vhodné, aby velikost dávky byla mezi 100 tisíci a 1 milionem řádků. Tím se zvýší propustnost zatížení, komprese dat a výkon dotazů.
 
-## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>Společně umístit účet úložiště ve stejné oblasti, aby se minimalizovala latence při načítání
+## <a name="co-locate-the-storage-account-within-the-same-region-to-minimize-latency-when-loading"></a>Minimalizace latence při nahrávání umístění účtu úložiště do stejné oblasti
 
-Poradce dokáže zjistit, že načítáte z oblasti, která se liší od vašeho fondu SQL. Měli byste zvážit načtení z účtu úložiště, který je ve stejné oblasti jako váš fond SQL, abyste minimalizovali latenci při načítání dat. To vám pomůže minimalizovat latenci a zvýšit výkon zatížení.
+Poradce dokáže zjistit, že načítáte z oblasti, která se liší od vašeho fondu SQL. Pokud chcete minimalizovat latenci při nahrávání dat, měli byste zvážit nahrávání z účtu úložiště, který je ve stejné oblasti jako váš fond SQL. To vám pomůže minimalizovat latenci a zvýšit výkon zatížení.
 
 ## <a name="unsupported-kubernetes-version-is-detected"></a>Zjistila se Nepodporovaná verze Kubernetes.
 
@@ -107,7 +107,7 @@ Velmi vysoké využití procesoru po delší dobu může způsobit pomalý výko
 Poměr přístupů do mezipaměti může mít za následek pomalejší výkon dotazů a zvýšené IOPS. Příčinou může být špatný plán dotazů nebo spuštění úlohy náročné na paměť. Řešení plánu dotazů nebo [zvýšení paměti](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) Azure Database for PostgreSQL databázového serveru, serveru Azure MySQL nebo serveru Azure MariaDB vám pomůže optimalizovat provádění databázových úloh. Azure Advisor identifikuje servery ovlivněné z důvodu této vysoké změny fondu vyrovnávací paměti a doporučuje buď opravit plán dotazů, přejít na vyšší SKU s větší pamětí nebo zvýšit velikost úložiště a získat tak více IOPS.
 
 ### <a name="use-a-azure-mysql-or-azure-postgresql-read-replica-to-scale-out-reads-for-read-intensive-workloads"></a>Použití Azure MySQL nebo repliky pro čtení Azure PostgreSQL k horizontálnímu navýšení kapacity pro úlohy náročné na čtení
-Azure Advisor využívá heuristiky založené na úlohách, jako je poměr čtení a zápisů na serveru za posledních sedm dní k identifikaci úloh náročných na čtení. Prostředek Azure Database for PostgreSQL nebo Azure Database for MySQL s velmi vysokým poměrem pro čtení a zápis může vést k tomu, že by došlo k zpomalení výkonu procesoru nebo paměti. Přidání [repliky](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) vám pomůže škálovat čtení na server repliky a zabránit omezením procesoru nebo paměti na primárním serveru. Advisor bude identifikovat servery s těmito vysokými úlohami náročnými na čtení a doporučit přidání  [repliky pro čtení](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas), aby bylo možné přesměrovat některé úlohy čtení.
+Azure Advisor využívá heuristiky založené na úlohách, jako je poměr čtení a zápisů na serveru za posledních sedm dní k identifikaci úloh náročných na čtení. Prostředek Azure Database for PostgreSQL nebo Azure Database for MySQL s velmi vysokým poměrem pro čtení a zápis může vést k tomu, že by došlo k zpomalení výkonu procesoru nebo paměti. Přidání [repliky](https://docs.microsoft.com/azure/postgresql/howto-read-replicas-portal) vám pomůže škálovat čtení na server repliky a zabránit omezením procesoru nebo paměti na primárním serveru. Advisor bude identifikovat servery s těmito vysokými úlohami náročnými na čtení a doporučit přidání [repliky pro čtení](https://docs.microsoft.com/azure/postgresql/concepts-read-replicas), aby bylo možné přesměrovat   některé úlohy čtení.
 
 
 ### <a name="scale-your-azure-mysql-azure-postgresql-or-azure-mariadb-server-to-a-higher-sku-to-prevent-connection-constraints"></a>Škálujte svůj server Azure MySQL, Azure PostgreSQL nebo Azure MariaDB na vyšší SKU, aby nedocházelo k omezením připojení.

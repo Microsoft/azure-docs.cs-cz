@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 89b33f22cf5e6f08b42fca0e8966a36001bdb29f
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: d3b337a697151f7f9ae1e3a1fb75795068da9e68
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116757"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84204969"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -24,7 +24,7 @@ ms.locfileid: "84116757"
 Tento článek shrnuje a vysvětluje rozdíly mezi syntaxí a chováním mezi spravovanou instancí Azure SQL a SQL Server. 
 
 
-Spravovaná instance SQL poskytuje vysokou kompatibilitu s místními SQL Server databázovým strojem a většina funkcí je podporovaná ve spravované instanci SQL.
+Spravovaná instance SQL poskytuje vysokou kompatibilitu s SQL Server databázovým strojem a většina funkcí je podporovaná ve spravované instanci SQL.
 
 ![Migrace](./media/transact-sql-tsql-differences-sql-server/migration.png)
 
@@ -506,6 +506,9 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 - Virtuální síť se dá nasadit pomocí modelu prostředků – model klasický pro virtuální síť se nepodporuje.
 - Po vytvoření spravované instance SQL se nepodporují přesunutí spravované instance SQL nebo virtuální sítě do jiné skupiny prostředků nebo předplatného.
 - Některé služby, jako jsou App Service prostředí, Logic Apps a spravované instance SQL (používané pro geografickou replikaci, transakční replikaci nebo přes propojené servery), nemají přístup ke spravovaným instancím SQL v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globálního partnerského vztahu](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
+
+### <a name="failover-groups"></a>Skupiny převzetí služeb při selhání
+Systémové databáze nejsou replikovány do sekundární instance ve skupině převzetí služeb při selhání. Proto by scénáře závislé na objektech ze systémových databází nemohly být na sekundární instanci možné, pokud nejsou objekty ručně vytvořeny na sekundárním objektu.
 
 ### <a name="tempdb"></a>DATABÁZE
 

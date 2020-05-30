@@ -11,14 +11,15 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 07af9fa20fd6a331313050d3ba2cfbbe9c3fe7e8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: dfd8051c7fc803d57a14cd740a830b8f6b63d9ac
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050300"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195106"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
+
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto článku jsou uvedené Azure SQL Database a funkce spravované instance Azure SQL, které jsou momentálně ve verzi Public Preview. Aktualizace a vylepšení pro SQL Database a SQL spravované instance najdete v tématu [SQL Database & aktualizace služby Managed instance SQL](https://azure.microsoft.com/updates/?product=sql-database). Aktualizace a vylepšení dalších služeb Azure najdete v tématu [aktualizace služby](https://azure.microsoft.com/updates).
@@ -29,7 +30,7 @@ Dokumentace pro Azure SQL Database a Azure SQL Managed instance byla rozdělena 
 
 Provedli jsme to proto, že některé funkce a funkce se výrazně liší mezi izolovanou databází a spravovanou instancí a je stále větší než jedna z výzev k vysvětlení složitých drobné odlišnosti mezi Azure SQL Database a Azure SQL Managed instance v jednotlivých "sdílených" článcích.
 
-Toto vyjasnění mezi různými produkty Azure SQL by mělo zjednodušit a zjednodušit proces práce s databázovým strojem SQL Server v Azure, ať už se jedná o jedinou spravovanou databázi v Azure SQL Database, plně podrobnějším spravovanou instanci, která hostuje více databází ve spravované instanci Azure SQL, nebo známý místní SQL Server produkt, ale je hostovaný na virtuálním počítači v Azure.
+Toto vyjasnění mezi různými produkty Azure SQL by mělo zjednodušit a zjednodušit proces práce s databázovým strojem SQL Server v Azure, ať už se jedná o jedinou spravovanou databázi v Azure SQL Database, plně podrobnějším spravovanou instanci, která hostuje více databází ve spravované instanci Azure SQL, nebo známý SQL Server produkt hostovaný na virtuálním počítači v Azure.
 
 Vezměte v úvahu, že se jedná o probíhající práci, a ne každý článek ještě nebyl aktualizován. Například dokumentace k příkazům jazyka Transact-SQL (T-SQL), uloženým procedurám a mnoha funkcím sdíleným mezi Azure SQL Database a Azure SQL Managed instance ještě není dokončená, takže vám děkujeme za vaši trpělivost, abyste mohli dál vyjasnit obsah. 
 
@@ -48,7 +49,7 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 
 ### <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
-| Funkce | Podrobnosti |
+| Příznak | Podrobnosti |
 | ---| --- |
 | Nové generace hardwaru řady Fsv2-Series a M-Series| Informace najdete v tématu [hardwarové generace](service-tiers-vcore.md#hardware-generations).|
 | Urychlené obnovení databáze s izolovanými databázemi a elastickými fondy | Informace najdete v tématu [urychlení obnovení databáze](../accelerated-database-recovery.md).|
@@ -67,7 +68,7 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 
 ### <a name="azure-sql-managed-instance"></a>[Spravovaná instance Azure SQL](#tab/managed-instance)
 
-| Funkce | Podrobnosti |
+| Příznak | Podrobnosti |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Fondy instancí</a> | Pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvoření přihlášení na úrovni instance pomocí příkazu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit přihlášení z externího poskytovatele</a> . |
@@ -92,7 +93,7 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené tyto funkce:
   - Podpora předplatných s <a href="https://aka.ms/sql-mi-visual-studio-subscribers">měsíčním kreditem Azure pro předplatitele sady Visual Studio</a> a zvýšená [regionální omezení](../managed-instance/resource-limits.md#regional-resource-limitations).
   - Podpora pro <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 a SharePoint 2019 </a> a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>
   - Vytvořte spravované instance SQL s <a href="https://aka.ms/managed-instance-collation">kolací na úrovni instance</a> a <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">časovou zónou</a> dle vašeho výběru.
-  - SQL Managed nstances je teď chráněná [integrovanou bránou firewall](../managed-instance/management-endpoint-verify-built-in-firewall.md).
+  - Spravované instance SQL jsou teď chráněné pomocí [integrované brány firewall](../managed-instance/management-endpoint-verify-built-in-firewall.md).
   - Nakonfigurujte spravované instance SQL tak, aby používaly [veřejné koncové body](../managed-instance/public-endpoint-configure.md), připojení [přepsání proxy serveru](connectivity-architecture.md#connection-policy) , abyste získali lepší výkon sítě, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuální jádra na generaci hardwaru Gen5</a> nebo <a href="https://aka.ms/managed-instance-configurable-backup-retention">nakonfigurujte uchovávání záloh až na 35 dnů</a> pro obnovení k bodu v čase. [Dlouhodobé uchovávání záloh](long-term-retention-overview.md#managed-instance-support) (až 10 let) je aktuálně ve verzi Public Preview omezeno.  
   - Nové funkce umožňují <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">geograficky obnovit databázi do jiného datového centra pomocí prostředí PowerShell</a>, [Přejmenovat databázi](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [odstranit virtuální cluster](../managed-instance/virtual-cluster-delete.md).
   - Nová Vestavěná [role přispěvatele instance](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) umožňuje oddělení povinností (SOD) dodržovat zásady zabezpečení a dodržování předpisů v podnikových normách.

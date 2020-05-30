@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: eebf0bb2a5f2a813ff282854b62f10957475e3b1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ec0aebc10d47b3e9945e63e818240da7bf2451e4
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046436"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84192956"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikace do Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Můžete nakonfigurovat Azure SQL Database jako předplatitele nabízené replik
 
 Aby bylo možné úspěšně provést replikaci do Azure SQL Database, SQL Server vydavatelé a distributoři musí použít (aspoň) jednu z následujících verzí: 
 
-Publikování do libovolného Azure SQL Database z místního SQL Server je podporované v následujících verzích SQL Server:
+Publikování do libovolného Azure SQL Database z databáze SQL Server podporuje následující verze SQL Server:
 
 - SQL Server 2016 a vyšší
 - SQL Server 2014 [RTM CU10 (12.0.4427.24)](https://support.microsoft.com/help/3094220/cumulative-update-10-for-sql-server-2014) nebo [SP1 CU3 (12.0.2556.4)](https://support.microsoft.com/help/3094221/cumulative-update-3-for-sql-server-2014-service-pack-1)
@@ -58,7 +58,7 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 | [**Snímek**](https://docs.microsoft.com/sql/relational-databases/replication/snapshot-replication) | Ano (jenom jako předplatitel) | Ano|
 | [**Sloučit replikaci**](https://docs.microsoft.com/sql/relational-databases/replication/merge/merge-replication) | Ne | Ne|
 | [**Peer-to-peer**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/peer-to-peer-transactional-replication) | Ne | Ne|
-| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | Ne | Ano|
+| [**Obousměrné**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/bidirectional-transactional-replication) | No | Ano|
 | [**Odběry, které by možné aktualizovat**](https://docs.microsoft.com/sql/relational-databases/replication/transactional/updatable-subscriptions-for-transactional-replication) | Ne | Ne|
 | &nbsp; | &nbsp; | &nbsp; |
 
@@ -84,13 +84,13 @@ Existují různé [typy replikace](https://docs.microsoft.com/sql/relational-dat
 
 ### <a name="typical-replication-scenario"></a>Scénář typické replikace  
 
-1. Vytvoření publikace transakční replikace v místní databázi SQL Server.  
-2. Na místních SQL Server použijte **Průvodce novým předplatným** nebo příkazy jazyka Transact-SQL k vytvoření nabízeného oznámení do předplatného pro Azure SQL Database.  
+1. Vytvoření publikace transakční replikace v databázi SQL Server.  
+2. V SQL Server použijte **Průvodce novým odběrem** nebo příkazy jazyka Transact-SQL k vytvoření nabízeného oznámení do předplatného pro Azure SQL Database.  
 3. Při použití jedné a sdružené databáze v Azure SQL Database je počáteční datová sada snímkem vytvořeným agentem snímku, který distribuuje a používá agent distribuce. Pomocí vydavatele spravované instance SQL můžete také použít zálohu databáze k osazení Azure SQL Database předplatitele.
 
 ### <a name="data-migration-scenario"></a>Scénář migrace dat  
 
-1. K replikaci dat z místní databáze SQL Server do Azure SQL Database můžete použít transakční replikaci.  
+1. K replikaci dat z databáze SQL Server do Azure SQL Database můžete použít transakční replikaci.  
 2. Přesměrujte klienta nebo aplikace střední vrstvy, aby bylo možné aktualizovat kopii databáze.  
 3. Ukončení aktualizace verze SQL Server tabulky a odebrání publikace.  
 

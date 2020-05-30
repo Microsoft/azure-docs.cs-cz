@@ -10,13 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
+ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 88ae3c45126403161e35ec46e5ccc2666c3edb55
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4abc2dee6b83820169173d965d53381ead9f4d0b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80050062"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194018"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Přihlášení k virtuálnímu počítači s Windows v Azure pomocí ověřování Azure Active Directory (Preview)
 
@@ -33,7 +34,7 @@ K přihlášení k virtuálním počítačům s Windows v Azure přinášíme sp
 - Už nemusíte spravovat účty místních správců.
 - Azure RBAC vám umožňuje udělit odpovídající přístup k virtuálním počítačům podle potřeby a odebrat je, když už nepotřebujete.
 - Než povolíte přístup k virtuálnímu počítači, podmíněný přístup Azure AD může vynutil další požadavky, jako třeba: 
-   - Ověřování pomocí služby Multi-Factor Authentication
+   - Vícefaktorové ověřování
    - Kontroly rizika přihlašování
 - Automatizujte a škálujte připojení Azure AD k virtuálním počítačům Azure s Windows, které jsou součástí nasazení infrastruktury virtuálních klientských počítačů.
 
@@ -59,14 +60,14 @@ Ve verzi Preview této funkce se aktuálně podporují tyto oblasti Azure:
 > [!IMPORTANT]
 > Chcete-li použít tuto funkci verze Preview, nasaďte pouze podporované distribuce oken a v podporované oblasti Azure. Tato funkce se v cloudech Azure Government nebo svrchovaného v tuto chvíli nepodporuje.
 
-### <a name="network-requirements"></a>Síťové požadavky
+### <a name="network-requirements"></a>Požadavky sítě
 
 Pokud chcete povolit ověřování Azure AD pro virtuální počítače s Windows v Azure, musíte zajistit, aby konfigurace sítě virtuálních počítačů povolovala odchozí přístup k následujícím koncovým bodům přes port TCP 443:
 
-- https:\//enterpriseregistration.Windows.NET
+- https: \/ /enterpriseregistration.Windows.NET
 - https:\//login.microsoftonline.com
-- https:\//Device.Login.microsoftonline.com
-- https:\//pas.Windows.NET
+- https: \/ /Device.Login.microsoftonline.com
+- https: \/ /pas.Windows.NET
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Povolení přihlášení Azure AD pro virtuální počítač s Windows v Azure
 
@@ -141,7 +142,7 @@ az vm extension set \
     --vm-name myVM
 ```
 
-Po `provisioningState` instalaci `Succeeded` rozšíření na virtuálním počítači se zobrazí část z.
+`provisioningState` `Succeeded` Po instalaci rozšíření na virtuálním počítači se zobrazí část z.
 
 ## <a name="configure-role-assignments-for-the-vm"></a>Konfigurace přiřazení rolí pro virtuální počítač
 
@@ -188,7 +189,7 @@ az role assignment create \
 ```
 
 > [!NOTE]
-> Pokud se vaše doména AAD a doména přihlášení k uživatelskému jménu neshodují, je nutné zadat ID objektu vašeho uživatelského `--assignee-object-id`účtu s příponou, nikoli `--assignee`jenom s uživatelským jménem pro. ID objektu pro svůj uživatelský účet můžete získat pomocí [seznamu AZ AD User list](/cli/azure/ad/user#az-ad-user-list).
+> Pokud se vaše doména AAD a doména přihlášení k uživatelskému jménu neshodují, je nutné zadat ID objektu vašeho uživatelského účtu s `--assignee-object-id` příponou, nikoli jenom s uživatelským jménem pro `--assignee` . ID objektu pro svůj uživatelský účet můžete získat pomocí [seznamu AZ AD User list](/cli/azure/ad/user#az-ad-user-list).
 
 Další informace o tom, jak pomocí RBAC spravovat přístup k prostředkům předplatného Azure, najdete v následujících článcích:
 
@@ -243,21 +244,21 @@ Aby virtuální počítač dokončil proces připojení k Azure AD, musí se ús
    | `curl -H @{"Metadata"="true"} "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01"` | Platný přístupový token vydaný Azure Active Directory pro spravovanou identitu, která je přiřazená k tomuto virtuálnímu počítači |
 
    > [!NOTE]
-   > Přístupový token se dá dekódovat pomocí nástroje, jako [http://calebb.net/](http://calebb.net/)je. Ověřte, že "AppID" v přístupovém tokenu odpovídá spravované identitě přiřazené k virtuálnímu počítači.
+   > Přístupový token se dá dekódovat pomocí nástroje, jako je [http://calebb.net/](http://calebb.net/) . Ověřte, že "AppID" v přístupovém tokenu odpovídá spravované identitě přiřazené k virtuálnímu počítači.
 
 1. Ujistěte se, že požadované koncové body jsou dostupné z virtuálního počítače pomocí příkazového řádku:
    
-   - oblé https:\//Login.microsoftonline.com/-D –
-   - oblé https:\//Login.microsoftonline.com/`<TenantID>`/-D –
+   - oblé https: \/ /Login.microsoftonline.com/-D –
+   - oblé https: \/ /Login.microsoftonline.com/ `<TenantID>` /-D –
 
    > [!NOTE]
-   > Nahraďte `<TenantID>` ID TENANTA Azure AD, které je přidružené k předplatnému Azure.
+   > Nahraďte `<TenantID>` ID tenanta Azure AD, které je přidružené k předplatnému Azure.
 
-   - oblé https:\//enterpriseregistration.Windows.NET/-D –
-   - oblé https:\//Device.Login.microsoftonline.com/-D –
-   - oblé https:\//pas.Windows.NET/-D –
+   - oblé https: \/ /enterpriseregistration.Windows.NET/-D –
+   - oblé https: \/ /Device.Login.microsoftonline.com/-D –
+   - oblé https: \/ /pas.Windows.NET/-D –
 
-1. Stav zařízení lze zobrazit spuštěním `dsregcmd /status`. Cílem je stav zařízení, který se má zobrazit `AzureAdJoined : YES`jako.
+1. Stav zařízení lze zobrazit spuštěním `dsregcmd /status` . Cílem je stav zařízení, který se má zobrazit jako `AzureAdJoined : YES` .
 
    > [!NOTE]
    > Aktivita připojení Azure AD se zachycuje v prohlížeči událostí v protokolu Registration\Admin uživatelského zařízení.
@@ -282,17 +283,17 @@ Tento ukončovací kód se přeloží na DSREG_AUTOJOIN_DISC_FAILED, protože ro
 
 1. Ověřte dostupnost požadovaných koncových bodů z virtuálního počítače pomocí příkazového řádku:
 
-   - oblé https:\//Login.microsoftonline.com/-D –
-   - oblé https:\//Login.microsoftonline.com/`<TenantID>`/-D –
+   - oblé https: \/ /Login.microsoftonline.com/-D –
+   - oblé https: \/ /Login.microsoftonline.com/ `<TenantID>` /-D –
    
    > [!NOTE]
-   > Nahraďte `<TenantID>` ID TENANTA Azure AD, které je přidružené k předplatnému Azure. Pokud potřebujete najít ID tenanta, můžete ukazatel myši umístit na název účtu a získat tak ID adresáře nebo tenanta, nebo v Azure Portal vybrat Azure Active Directory > vlastností > ID adresáře.
+   > Nahraďte `<TenantID>` ID tenanta Azure AD, které je přidružené k předplatnému Azure. Pokud potřebujete najít ID tenanta, můžete ukazatel myši umístit na název účtu a získat tak ID adresáře nebo tenanta, nebo v Azure Portal vybrat Azure Active Directory > vlastností > ID adresáře.
 
-   - oblé https:\//enterpriseregistration.Windows.NET/-D –
-   - oblé https:\//Device.Login.microsoftonline.com/-D –
-   - oblé https:\//pas.Windows.NET/-D –
+   - oblé https: \/ /enterpriseregistration.Windows.NET/-D –
+   - oblé https: \/ /Device.Login.microsoftonline.com/-D –
+   - oblé https: \/ /pas.Windows.NET/-D –
 
-1. Pokud některý z příkazů selhává s názvem "nelze přeložit hostitele `<URL>`", zkuste spustit tento příkaz, který určí server DNS, který je používán virtuálním počítačem.
+1. Pokud některý z příkazů selhává s názvem "nelze přeložit hostitele `<URL>` ", zkuste spustit tento příkaz, který určí server DNS, který je používán virtuálním počítačem.
    
    `nslookup <URL>`
 
@@ -315,7 +316,7 @@ V Public Preview je rozšíření AADLoginForWindows určeno pouze pro instalaci
 
 Některé běžné chyby při pokusu o připojení RDP s přihlašovacími údaji služby Azure AD zahrnují žádné role RBAC přiřazené, neautorizovaného klienta nebo 2FA Metoda přihlašování, která je povinná. Tyto problémy opravíte pomocí následujících informací.
 
-Stav zařízení a jednotného přihlašování se dá zobrazit tak `dsregcmd /status`, že se spustí. Cílem je stav zařízení, který se má zobrazit `AzureAdJoined : YES` jako `SSO State` a zobrazit `AzureAdPrt : YES`.
+Stav zařízení a jednotného přihlašování se dá zobrazit tak, že se spustí `dsregcmd /status` . Cílem je stav zařízení, který se má zobrazit jako `AzureAdJoined : YES` a `SSO State` Zobrazit `AzureAdPrt : YES` .
 
 Přihlášení RDP pomocí účtů Azure AD se taky zachycuje v prohlížeči událostí v protokolech událostí AAD\Operational.
 

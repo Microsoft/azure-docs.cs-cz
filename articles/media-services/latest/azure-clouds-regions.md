@@ -3,20 +3,21 @@ title: Cloudy a oblasti, ve kterých je Azure Media Services V3 k dispozici
 description: Tento článek pojednává o cloudech a oblastech Azure, ve kterých je k dispozici Azure Media Services V3.
 services: media-services
 documentationcenter: ''
-author: Juliako
+author: IngridAtMicrosoft
 manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 01/21/2020
-ms.author: juliako
-ms.openlocfilehash: 1257bf4dfb0d5b2c4995cac760290f97293a0c0f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 5/28/2020
+ms.author: inhenkel
+ms.custom: references_regions
+ms.openlocfilehash: cefd366e29fe1c6f68ec38816247f78bb53cd6e6
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382966"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196243"
 ---
 # <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Cloudy a oblasti, ve kterých existuje Azure Media Services V3
 
@@ -24,14 +25,27 @@ Azure Media Services V3 je k dispozici prostřednictvím Azure Resource Manager 
 
 ## <a name="feature-availability-in-azure-clouds"></a>Dostupnost funkcí v cloudech Azure
 
-| Funkce|Globální oblasti Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| Příznak|Globální oblasti Azure | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici. | Není k dispozici. | Není k dispozici. | Není k dispozici. |
-| [StandardEncoderPreset](encoding-concept.md) | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
-| [LiveEvents](live-streaming-overview.md) | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
-| [Starají](streaming-endpoint-concept.md) | K dispozici. | K dispozici. | K dispozici. | K dispozici. |
+| [Azure EventGrid](reacting-to-media-services-events.md) | K dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
+| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
+| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
+| [StandardEncoderPreset](encoding-concept.md) | K dispozici | K dispozici | K dispozici | K dispozici |
+| [LiveEvents](live-streaming-overview.md) | K dispozici | K dispozici | K dispozici | K dispozici |
+| [Starají](streaming-endpoint-concept.md) | K dispozici | K dispozici | K dispozici | K dispozici |
+
+## <a name="feature-availability-in-preview"></a>Dostupnost funkcí ve verzi Preview
+
+[LiveTranscription](live-transcription.md) je k dispozici v následujících oblastech:
+
+- Jihovýchodní Asie
+- Západní Evropa
+- Severní Evropa
+- USA – východ
+- USA – střed
+- USA – středojih
+- USA – západ 2
+- Brazílie – jih
 
 ## <a name="regionsgeographieslocations"></a>Oblasti/geografické oblasti/umístění
 
@@ -98,7 +112,7 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 
 ## <a name="see-also"></a>Viz také
 
-* [Oblasti Azure](https://azure.microsoft.com/global-infrastructure/regions/)
+* [Oblast Azure](https://azure.microsoft.com/global-infrastructure/regions/)
 * [Zeměpisné oblasti Azure](https://azure.microsoft.com/global-infrastructure/geographies/)
 * [Umístění Azure](https://azure.microsoft.com/global-infrastructure/locations/)
 

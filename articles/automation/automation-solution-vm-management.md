@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: e2f23f4045f0326ffea14ddeb4d588261872188f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 7c0cc2b4996c1002aae0656234c356c805923811
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743709"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84205122"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Přehled Start/Stop VMs during off-hours
 
@@ -50,24 +50,24 @@ Pokud chcete povolit virtuální počítače pro funkci Start/Stop VMs during of
 
 | Oprávnění | Rozsah|
 | --- | --- |
-| Microsoft. Automation/automationAccounts/Read | Resource Group |
-| Microsoft. Automation/automationAccounts/Variables/Write | Resource Group |
-| Microsoft. Automation/automationAccounts/Schedules/Write | Resource Group |
-| Microsoft. Automation/automationAccounts/Runbooky/Write | Resource Group |
-| Microsoft. Automation/automationAccounts/Connections/Write | Resource Group |
-| Microsoft. Automation/automationAccounts/Certificates/Write | Resource Group |
-| Microsoft. Automation/automationAccounts/modules/Write | Resource Group |
-| Microsoft. Automation/automationAccounts/Module/Read | Resource Group |
-| Microsoft. Automation/automationAccounts/jobSchedules/Write | Resource Group |
-| Microsoft. Automation/automationAccounts/Jobs/Write | Resource Group |
-| Microsoft. Automation/automationAccounts/Jobs/Read | Resource Group |
-| Microsoft. OperationsManagement/Solutions/Write | Resource Group |
-| Microsoft. OperationalInsights/pracovní prostory/* | Resource Group |
-| Microsoft. Insights/diagnosticSettings/Write | Resource Group |
-| Microsoft. Insights/ActionGroups/Write | Resource Group |
-| Microsoft. Insights/ActionGroups/Read | Resource Group |
-| Microsoft. Resources/Subscriptions/resourceGroups/Read | Resource Group |
-| Microsoft. Resources/nasazení/* | Resource Group |
+| Microsoft. Automation/automationAccounts/Read | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Variables/Write | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Schedules/Write | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Runbooky/Write | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Connections/Write | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Certificates/Write | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/modules/Write | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Module/Read | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/jobSchedules/Write | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Jobs/Write | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Jobs/Read | Skupina prostředků |
+| Microsoft. OperationsManagement/Solutions/Write | Skupina prostředků |
+| Microsoft. OperationalInsights/pracovní prostory/* | Skupina prostředků |
+| Microsoft. Insights/diagnosticSettings/Write | Skupina prostředků |
+| Microsoft. Insights/ActionGroups/Write | Skupina prostředků |
+| Microsoft. Insights/ActionGroups/Read | Skupina prostředků |
+| Microsoft. Resources/Subscriptions/resourceGroups/Read | Skupina prostředků |
+| Microsoft. Resources/nasazení/* | Skupina prostředků |
 
 ### <a name="permissions-for-new-automation-account-and-new-log-analytics-workspace"></a>Oprávnění k novému účtu Automation a novému pracovnímu prostoru Log Analytics
 
@@ -83,10 +83,10 @@ Virtuální počítače pro funkci Start/Stop VMs during off-hours můžete povo
 | Microsoft. Authorization/oprávnění/čtení |Předplatné|
 | Microsoft. Authorization/roleAssignments/Read | Předplatné |
 | Microsoft.Authorization/roleAssignments/write | Předplatné |
-| Microsoft. Authorization/roleAssignments/DELETE | Předplatné || Microsoft. Automation/automationAccounts/Connections/Read | Resource Group |
-| Microsoft. Automation/automationAccounts/Certificates/Read | Resource Group |
-| Microsoft. Automation/automationAccounts/Write | Resource Group |
-| Microsoft. OperationalInsights/pracovní prostory/zápis | Resource Group |
+| Microsoft. Authorization/roleAssignments/DELETE | Předplatné || Microsoft. Automation/automationAccounts/Connections/Read | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Certificates/Read | Skupina prostředků |
+| Microsoft. Automation/automationAccounts/Write | Skupina prostředků |
+| Microsoft. OperationalInsights/pracovní prostory/zápis | Skupina prostředků |
 
 ## <a name="components"></a>Komponenty
 
@@ -104,15 +104,15 @@ Všechny nadřazené Runbooky obsahují `WhatIf` parametr. Při nastavení na ho
 |Runbook | Parametry | Popis|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se z nadřazeného Runbooku. Tato sada Runbook vytváří výstrahy na základě jednotlivých prostředků pro scénář automatického zastavení.|
-|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true nebo false  | Vytvoří nebo aktualizuje pravidla upozornění Azure na virtuálních počítačích v cílovém předplatném nebo ve skupinách prostředků. <br> `VMList`je čárkami oddělený seznam virtuálních počítačů. Například, `vm1, vm2, vm3`.<br> `WhatIf`povolí ověřování logiky sady Runbook bez provedení.|
-|AutoStop_Disable | Žádné | Zakáže automatické zastavení výstrah a výchozí plán.|
+|AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true nebo false  | Vytvoří nebo aktualizuje pravidla upozornění Azure na virtuálních počítačích v cílovém předplatném nebo ve skupinách prostředků. <br> `VMList`je čárkami oddělený seznam virtuálních počítačů (bez prázdných znaků), například `vm1,vm2,vm3` .<br> `WhatIf`povolí ověřování logiky sady Runbook bez provedení.|
+|AutoStop_Disable | Žádná | Zakáže automatické zastavení výstrah a výchozí plán.|
 |AutoStop_VM_Child | WebHookData | Volá se z nadřazeného Runbooku. Pravidla výstrah volají tuto sadu Runbook, aby zastavila klasický virtuální počítač.|
 |AutoStop_VM_Child_ARM | WebHookData |Volá se z nadřazeného Runbooku. Pravidla výstrah volají tuto sadu Runbook, aby zastavila virtuální počítač.  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Akce: spustit nebo zastavit<br> VMList  | Provede akci spustit nebo zastavit ve skupině klasických virtuálních počítačů Cloud Services. |
 |ScheduledStartStop_Child | VMName <br> Akce: spustit nebo zastavit <br> ResourceGroupName | Volá se z nadřazeného Runbooku. Provede akci spuštění nebo zastavení pro naplánované zastavení.|
 |ScheduledStartStop_Child_Classic | VMName<br> Akce: spustit nebo zastavit<br> ResourceGroupName | Volá se z nadřazeného Runbooku. Provede akci spuštění nebo zastavení pro naplánované zastavení klasických virtuálních počítačů. |
 |ScheduledStartStop_Parent | Akce: spustit nebo zastavit <br>VMList <br> WhatIf: true nebo false | Spustí nebo zastaví všechny virtuální počítače v rámci předplatného. Upravte proměnné a spouštějte je `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` jenom u těchto cílových skupin prostředků. Pomocí aktualizace proměnné můžete také vyloučit konkrétní virtuální počítače `External_ExcludeVMNames` .|
-|SequencedStartStop_Parent | Akce: spustit nebo zastavit <br> WhatIf: true nebo false<br>VMList| Vytvoří značky s názvem **sequencestart** a **sequencestop** na každém virtuálním počítači, pro který chcete sekvenci aktivity spustit/zastavit. U těchto názvů značek se rozlišují malá a velká písmena. Hodnota značky by měla být kladné celé číslo (1, 2, 3), které odpovídá pořadí, ve kterém chcete spustit nebo zastavit. <br>**Poznámka**: virtuální počítače musí být v rámci skupin prostředků definovaných v `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` proměnných, a `External_ExcludeVMNames` . Aby se akce projevily, musí mít odpovídající značky.|
+|SequencedStartStop_Parent | Akce: spustit nebo zastavit <br> WhatIf: true nebo false<br>VMList| Vytvoří značky s názvem **sequencestart** a **sequencestop** na každém virtuálním počítači, pro který chcete sekvenci aktivity spustit/zastavit. U těchto názvů značek se rozlišují malá a velká písmena. Hodnota značky by měla být seznam kladných celých čísel, například, `1,2,3` která odpovídají pořadí, ve kterém chcete spustit nebo zastavit. <br>**Poznámka**: virtuální počítače musí být v rámci skupin prostředků definovaných v `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` proměnných, a `External_ExcludeVMNames` . Aby se akce projevily, musí mít odpovídající značky.|
 
 ### <a name="variables"></a>Proměnné
 
@@ -170,7 +170,7 @@ Pro použití funkce s klasickými virtuálními počítači potřebujete účet
 Pokud máte více než 20 virtuálních počítačů na cloudovou službu, tady je několik doporučení:
 
 * Vytvořte více plánů s nadřazeným runbookm **ScheduledStartStop_Parent** a určete 20 virtuálních počítačů na jeden plán. 
-* Ve vlastnostech plánu použijte `VMList` parametr a zadejte názvy virtuálních počítačů jako seznam oddělený čárkami. 
+* Ve vlastnostech plánu použijte `VMList` parametr a zadejte názvy virtuálních počítačů jako seznam oddělený čárkami (žádné prázdné znaky). 
 
 V opačném případě, pokud se úloha automatizace pro tuto funkci spustí déle než tři hodiny, dočasně se uvolní nebo zastaví na základě [spravedlivého](automation-runbook-execution.md#fair-share) limitu sdílení.
 

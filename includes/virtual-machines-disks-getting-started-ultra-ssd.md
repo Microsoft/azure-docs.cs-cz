@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/11/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 10b3a6bb9592c955d16b070ae412374b8a1f4444
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4468025f6389d31269d9e587fca25390f19bdbbc
+ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83196938"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84200433"
 ---
 Disky Azure Ultra nabízejí vysokou propustnost, vysoké IOPS a konzistentní diskové úložiště s nízkou latencí pro virtuální počítače Azure s IaaS. Tato nová nabídka poskytuje horní část výkonu linky na stejné úrovni dostupnosti jako naše nabídky stávajících disků. Jednou z hlavních výhod Ultra disks je schopnost dynamicky měnit výkon jednotky SSD společně s vašimi úlohami, aniž by bylo nutné restartovat virtuální počítače. Disky Ultra jsou vhodné pro úlohy náročné na data, jako jsou úlohy SAP HANA, databáze nejvyšší úrovně a úlohy s velkým počtem transakcí.
 
@@ -30,11 +30,11 @@ K využití disků Ultra je potřeba určit, kterou zónu dostupnosti máte. Ne 
 #### <a name="cli"></a>Rozhraní příkazového řádku
 
 ```azurecli
-$subscription = "<yourSubID>"
+subscription = "<yourSubID>"
 # example value is southeastasia
-$region = "<yourLocation>"
+region = "<yourLocation>"
 # example value is Standard_E64s_v3
-$vmSize = "<yourVMSize>"
+vmSize = "<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
@@ -51,9 +51,9 @@ Odpověď bude podobná následujícímu formuláři, kde X je zóna, která se 
 
 Zachovat hodnotu **zón** , představuje vaši zónu dostupnosti a Vy ji budete potřebovat k nasazení Ultra disku.
 
-|ResourceType  |Name  |Umístění  |Zóny  |Omezení  |Schopnost  |Hodnota  |
+|ResourceType  |Název  |Umístění  |Zóny  |Omezení  |Schopnost  |Hodnota  |
 |---------|---------|---------|---------|---------|---------|---------|
-|disků     |UltraSSD_LRS         |eastus2         |×         |         |         |         |
+|disků     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
 > [!NOTE]
 > Pokud se z příkazu nepoužila žádná odpověď, vybraná velikost virtuálního počítače se pro disky s Ultra ve vybrané oblasti nepodporuje.
@@ -65,10 +65,10 @@ Teď, když víte, kterou zónu nasadit do, postupujte podle kroků nasazení v 
 Disky Ultra nasazené v Západní USA musí být nasazené bez možností redundance. V této oblasti ale nemusí být všechny velikosti disků podporující Ultra disks. Chcete-li zjistit, které z Západní USA podporují disky Ultra, můžete použít některý z následujících fragmentů kódu. Nejdřív nahraďte `vmSize` `subscription` hodnoty a:
 
 ```azurecli
-$subscription = "<yourSubID>"
-$region = "westus"
+subscription = "<yourSubID>"
+region = "westus"
 # example value is Standard_E64s_v3
-$vmSize = "<yourVMSize>"
+vmSize = "<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].capabilities" --subscription $subscription
 ```
@@ -219,12 +219,12 @@ az vm start -n $vmName -g $rgName
 Teď, když máte virtuální počítač schopný připojit disky Ultra disks, můžete k němu vytvořit a připojit disk Ultra.
 
 ```azurecli-interactive
-$location="eastus2"
-$subscription="xxx"
-$rgname="ultraRG"
-$diskname="ssd1"
-$vmname="ultravm1"
-$zone=123
+location="eastus2"
+subscription="xxx"
+rgname="ultraRG"
+diskname="ssd1"
+vmname="ultravm1"
+zone=123
 
 #create an ultra disk
 az disk create `
@@ -244,10 +244,10 @@ az disk create `
 Případně, pokud je váš stávající virtuální počítač v oblasti oblast/dostupnosti, která je schopná používat disky Ultra, můžete využít Ultra disks bez nutnosti vytvářet nový virtuální počítač.
 
 ```azurecli
-$rgName = "<yourResourceGroupName>"
-$vmName = "<yourVMName>"
-$diskName = "<yourDiskName>"
-$subscriptionId = "<yourSubscriptionID>"
+rgName = "<yourResourceGroupName>"
+vmName = "<yourVMName>"
+diskName = "<yourDiskName>"
+subscriptionId = "<yourSubscriptionID>"
 
 az vm disk attach -g $rgName --vm-name $vmName --disk $diskName --subscription $subscriptionId
 ```

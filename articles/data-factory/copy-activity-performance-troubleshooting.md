@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/11/2020
-ms.openlocfilehash: 6df1903e828c0c4cafa6589d4a85f4016bed893e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 13e41f6346f2ce32ed65aefb7d50680d1302ca26
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414146"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193713"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Řešení potíží s výkonem aktivity kopírování
 
@@ -70,7 +70,7 @@ Pokud výkon aktivity kopírování nevyhovuje vaší očekávání, při řeše
 
 - **"Zdroj výpisu přenosu" má nefunkční dobu trvání**: znamená to, že výčet zdrojových souborů nebo oddílů dat zdrojové databáze je pomalý.
 
-  - Pokud kopírujete data ze zdrojového souboru, pokud použijete **Filtr zástupných znaků** pro cestu ke složce nebo`wildcardFolderPath` název `wildcardFileName`souboru (nebo), nebo použijete **Filtr pro čas poslední změny** souboru (`modifiedDatetimeStart` nebo`modifiedDatetimeEnd`), poznamenejte si, že by tento filtr způsobil, že aktivita kopírování obsahuje všechny soubory v zadané složce na straně klienta a potom použije filtr. Tento výčet souborů by se mohl stát kritickým bodem, zejména když pravidlo filtru splní jenom malá sada souborů.
+  - Pokud kopírujete data ze zdrojového souboru, pokud použijete **Filtr zástupných znaků** pro cestu ke složce nebo název souboru ( `wildcardFolderPath` nebo) `wildcardFileName` , nebo použijete **Filtr pro čas poslední změny** souboru ( `modifiedDatetimeStart` nebo), `modifiedDatetimeEnd` Poznamenejte si, že by tento filtr způsobil, že aktivita kopírování obsahuje všechny soubory v zadané složce na straně klienta a potom použije filtr. Tento výčet souborů by se mohl stát kritickým bodem, zejména když pravidlo filtru splní jenom malá sada souborů.
 
     - Ověřte, zda můžete [Kopírovat soubory založené na cestě k oddílu DateTime a názvu souboru](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Takovým způsobem nepřinese zatížení při výpisu zdrojové strany.
 
@@ -124,7 +124,7 @@ Pokud výkon kopírování nevyhovuje vaší očekávání, při odstraňování
 
   - Ověřte, jestli je v místním počítači IR počítač s nízkou latencí připojení ke zdrojovému úložišti dat. Pokud je váš zdroj v Azure, můžete [Tento nástroj](http://www.azurespeed.com/Azure/Latency) použít ke kontrole latence z místního počítače IR v místním prostředí do oblasti Azure. tím menší je lepší.
 
-  - Pokud kopírujete data ze zdrojového souboru, pokud použijete **Filtr zástupných znaků** pro cestu ke složce nebo`wildcardFolderPath` název `wildcardFileName`souboru (nebo), nebo použijete **Filtr pro čas poslední změny** souboru (`modifiedDatetimeStart` nebo`modifiedDatetimeEnd`), poznamenejte si, že by tento filtr způsobil, že aktivita kopírování obsahuje všechny soubory v zadané složce na straně klienta a potom použije filtr. Tento výčet souborů by se mohl stát kritickým bodem, zejména když pravidlo filtru splní jenom malá sada souborů.
+  - Pokud kopírujete data ze zdrojového souboru, pokud použijete **Filtr zástupných znaků** pro cestu ke složce nebo název souboru ( `wildcardFolderPath` nebo) `wildcardFileName` , nebo použijete **Filtr pro čas poslední změny** souboru ( `modifiedDatetimeStart` nebo), `modifiedDatetimeEnd` Poznamenejte si, že by tento filtr způsobil, že aktivita kopírování obsahuje všechny soubory v zadané složce na straně klienta a potom použije filtr. Tento výčet souborů by se mohl stát kritickým bodem, zejména když pravidlo filtru splní jenom malá sada souborů.
 
     - Ověřte, zda můžete [Kopírovat soubory založené na cestě k oddílu DateTime a názvu souboru](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Takovým způsobem nepřinese zatížení při výpisu zdrojové strany.
 
@@ -181,7 +181,7 @@ Tady je sledování výkonu a ladění odkazů pro některá z podporovaných ú
 * Azure SQL Database: můžete [monitorovat výkon](../sql-database/sql-database-single-database-monitor.md) a kontrolovat procento transakčních jednotek databáze (DTU).
 * Azure SQL Data Warehouse: jeho schopnost se měří v jednotkách datového skladu (DWU). Viz [Správa výpočetního výkonu v Azure SQL Data Warehouse (přehled)](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 * Azure Cosmos DB: [úrovně výkonu v Azure Cosmos DB](../cosmos-db/performance-levels.md).
-* Místní SQL Server: [monitorování a optimalizace výkonu](https://msdn.microsoft.com/library/ms189081.aspx).
+* SQL Server: [monitorování a optimalizace výkonu](https://msdn.microsoft.com/library/ms189081.aspx).
 * Místní souborový server: [optimalizace výkonu pro souborové servery](https://msdn.microsoft.com/library/dn567661.aspx).
 
 ## <a name="next-steps"></a>Další kroky

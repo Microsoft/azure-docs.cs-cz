@@ -10,12 +10,12 @@ ms.date: 04/21/2020
 ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
-ms.openlocfilehash: cea5fb507225f063e2d48c56fae254e123a8f72b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3408970bcf5e34ce9f0f0afe9e723b4877dcd694
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81772116"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193410"
 ---
 # <a name="query-acceleration-sql-language-reference-preview"></a>Referenční dokumentace jazyka SQL pro zrychlení dotazů (Preview)
 
@@ -32,7 +32,7 @@ Jediným příkazem jazyka SQL podporovaným zrychlením dotazu je příkaz SELE
 SELECT * FROM table [WHERE expression] [LIMIT limit]
 ```
 
-Pro data ve formátu CSV musí *table* být `BlobStorage`tabulka.  To znamená, že dotaz bude spuštěn proti libovolnému objektu blob, který byl zadán ve volání REST.
+Pro data ve formátu CSV musí být *tabulka* `BlobStorage` .  To znamená, že dotaz bude spuštěn proti libovolnému objektu blob, který byl zadán ve volání REST.
 V případě dat ve formátu JSON je *tabulka* "popisovač tabulky".   Viz část s [popisovači tabulky](#table-descriptors) v tomto článku.
 
 V následujícím příkladu pro každý řádek, pro který *výraz* WHERE vrátí hodnotu true, vrátí tento příkaz Nový řádek, který je vytvořen z vyhodnocení každého výrazu projekce.
@@ -54,7 +54,7 @@ Následující příklad vrátí vhodné posuny pro rozdělení objektu BLOB ve 
 SELECT sys.split(split_size)FROM BlobStorage
 ```
 
-<a id="data-types" />
+<a id="data-types"></a>
 
 ## <a name="data-types"></a>Typy dat
 
@@ -109,7 +109,7 @@ Tady je několik příkladů:
 |SUBSTRING|``SUBSTRING('123456789', 1, 5)``|``23456``|
 |TRIM|``TRIM(BOTH '123' FROM '1112211Microsoft22211122')``|``Microsoft``|
 
-Funkce [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) vám pomůže vyhledat vzor. Zde je několik příkladů použití funkce [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) k hledání datového řetězce ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i ``.
+Funkce [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) vám pomůže vyhledat vzor. Zde je několik příkladů použití funkce [Like](https://docs.microsoft.com/sql/t-sql/language-elements/like-transact-sql?view=sql-server-ver15) k hledání datového řetězce ``abc,abd,cd\ntest,test2,test3\na_bc,xc%d^e,gh[i `` .
 
 |Dotaz|Příklad|
 |--|--|
@@ -129,7 +129,7 @@ V současné době převádíme všechny [formáty data Standard IS08601](https:
 
 #### <a name="date_add-function"></a>DATE_ADD funkce
 
-Jazyk SQL pro zrychlení dotazů podporuje pro ``DATE_ADD`` funkci rok, měsíc, den, hodinu, minutu a sekundu.
+Jazyk SQL pro zrychlení dotazů podporuje pro funkci rok, měsíc, den, hodinu, minutu a sekundu ``DATE_ADD`` .
 
 Příklady:
 
@@ -140,7 +140,7 @@ DATE_ADD('minute', 1, CAST('2017-01-02T03:04:05.006Z' AS TIMESTAMP)
 
 #### <a name="date_diff-function"></a>DATE_DIFF funkce
 
-Jazyk SQL pro zrychlení dotazů podporuje pro ``DATE_DIFF`` funkci rok, měsíc, den, hodinu, minutu a sekundu.
+Jazyk SQL pro zrychlení dotazů podporuje pro funkci rok, měsíc, den, hodinu, minutu a sekundu ``DATE_DIFF`` .
 
 ```sql
 DATE_DIFF(datepart, timestamp, timestamp)
@@ -149,7 +149,7 @@ DATE_DIFF('hour','2018-11-09T00:00+05:30','2018-11-09T01:00:23-08:00')
 
 #### <a name="extract-function"></a>EXTRAHOVAT funkci
 
-Pro EXTRAKCi jinou než datum podporované pro ``DATE_ADD`` funkci podporuje jazyk SQL Acceleration (Query acceleration) timezone_hour a timezone_minute jako součást data.
+Pro EXTRAKCi jinou než datum podporované pro ``DATE_ADD`` funkci podporuje jazyk SQL Acceleration (Query Acceleration) timezone_hour a timezone_minute jako součást data.
 
 Příklady:
 
@@ -192,7 +192,7 @@ Tato tabulka popisuje řetězce, které lze použít k určení výstupního for
 |S                |Zlomek sekund (0,1 – 0.9)        |
 |SS               |Zlomek sekund (0,01 – 0,99)      |
 |POVĚŘENÍ              |Zlomek sekund (0,001 – 0.999)    |
-|×                |Posun v hodinách                      |
+|X                |Posun v hodinách                      |
 |XX nebo XXXX       |Posun v hodinách a minutách (+ 0430)  |
 |XXX nebo XXXXX     |Posun v hodinách a minutách (-07:00) |
 |x                |Posun v hodinách (7)                  |
@@ -211,16 +211,16 @@ TO_TIMESTAMP('2007T')
 ```
 
 > [!NOTE]
-> K získání systémového času můžete ``UTCNOW`` použít také funkci.
+> ``UTCNOW``K získání systémového času můžete použít také funkci.
 
 
 ## <a name="aggregate-expressions"></a>Agregační výrazy
 
 Příkaz SELECT může obsahovat jeden nebo více výrazů projekce nebo jeden agregační výraz.  Podporovány jsou následující agregační výrazy:
 
-|Expression|Popis|
+|Výraz|Popis|
 |--|--|
-|[COUNT (\*)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Vrátí počet záznamů, které odpovídají výrazu predikátu.|
+|[COUNT ( \* )](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Vrátí počet záznamů, které odpovídají výrazu predikátu.|
 |[COUNT (výraz)](https://docs.microsoft.com/sql/t-sql/functions/count-transact-sql?view=sql-server-ver15)    |Vrátí počet záznamů, pro které výraz má hodnotu null.|
 |[AVERAGE (výraz)](https://docs.microsoft.com/sql/t-sql/functions/avg-transact-sql?view=sql-server-ver15)    |Vrátí průměr hodnot výrazu, které nejsou null.|
 |[MIN (výraz)](https://docs.microsoft.com/sql/t-sql/functions/min-transact-sql?view=sql-server-ver15)    |Vrátí minimální hodnotu výrazu, která není null.|
@@ -229,13 +229,13 @@ Příkaz SELECT může obsahovat jeden nebo více výrazů projekce nebo jeden a
 
 ### <a name="missing"></a>NENAŠEL
 
-``IS MISSING`` Operátor je jediným nestandardním jazykem, který podporuje jazyk SQL pro zrychlení dotazování.  Pokud v případě dat JSON chybí pole v určitém vstupním záznamu, pole ``IS MISSING`` výrazu se vyhodnotí na logickou hodnotu true.
+``IS MISSING``Operátor je jediným nestandardním jazykem, který podporuje jazyk SQL pro zrychlení dotazování.  Pokud v případě dat JSON chybí pole v určitém vstupním záznamu, pole výrazu ``IS MISSING`` se vyhodnotí na logickou hodnotu true.
 
-<a id="table-descriptors" />
+<a id="table-descriptors"></a>
 
 ## <a name="table-descriptors"></a>Deskriptory tabulky
 
-V případě dat CSV je název tabulky vždycky `BlobStorage`.  Příklad:
+V případě dat CSV je název tabulky vždycky `BlobStorage` .  Příklad:
 
 ```sql
 SELECT * FROM BlobStorage
@@ -279,7 +279,7 @@ Tato ukázková data:
 }
 ```
 
-Může vás zajímat jenom objekt `warehouses` JSON z výše uvedených dat. `warehouses` Objekt je typ pole JSON, takže ho můžete uvést v klauzuli FROM. Vzorový dotaz může vypadat přibližně takto.
+Může vás zajímat jenom `warehouses` objekt JSON z výše uvedených dat. `warehouses`Objekt je typ pole JSON, takže ho můžete uvést v klauzuli FROM. Vzorový dotaz může vypadat přibližně takto.
 
 ```sql
 SELECT latitude FROM BlobStorage[*].warehouses[*]
@@ -287,7 +287,7 @@ SELECT latitude FROM BlobStorage[*].warehouses[*]
 
 Dotaz získá všechna pole, ale vybere pouze zeměpisnou šířku.
 
-Pokud jste chtěli přístup pouze k hodnotě `dimensions` objektu JSON, můžete použít odkaz na tento objekt v dotazu. Příklad:
+Pokud jste chtěli přístup pouze k `dimensions` hodnotě objektu JSON, můžete použít odkaz na tento objekt v dotazu. Příklad:
 
 ```sql
 SELECT length FROM BlobStorage[*].dimensions
@@ -300,9 +300,9 @@ SELECT weight,warehouses[0].longitude,id,tags[1] FROM BlobStorage[*]
 ```
 
 > [!NOTE]
-> BlobStorage a BlobStorage [\*] odkazují na celý objekt. Pokud ale máte cestu v klauzuli FROM, budete muset použít BlobStorage [\*]. Path.
+> BlobStorage a BlobStorage [ \* ] odkazují na celý objekt. Pokud ale máte cestu v klauzuli FROM, budete muset použít BlobStorage [ \* ]. Path.
 
-<a id="sys-split" />
+<a id="sys-split"></a>
 
 ## <a name="syssplit"></a>Sys. Split
 

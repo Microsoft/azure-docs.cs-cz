@@ -12,12 +12,12 @@ author: juliemsft
 ms.author: jrasnick
 ms.reviewer: carlrab
 ms.date: 04/19/2020
-ms.openlocfilehash: 757b11c7fd6eaeac1ef0d6d3bb8cea9be2af983c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 68ae42faaf4f3aea851fa1649ba033f60f2b199a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047143"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193922"
 ---
 # <a name="monitoring-microsoft-azure-sql-database-and-azure-sql-managed-instance-performance-using-dynamic-management-views"></a>Monitorování Microsoft Azure SQL Database a výkonu spravované instance Azure SQL pomocí zobrazení dynamické správy
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -43,7 +43,7 @@ GRANT VIEW DATABASE STATE TO database_user;
 
 Dotaz na zobrazení dynamické správy ve spravované instanci Azure SQL vyžaduje oprávnění **Zobrazit stav serveru** . Další informace najdete v tématu [zobrazení dynamické správy systému](/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views#required-permissions).
 
-V instanci místních SQL Server a ve spravované instanci SQL Azure vrací dynamická zobrazení správy informace o stavu serveru. V Azure SQL Database vrátí pouze informace týkající se aktuální logické databáze.
+V instanci SQL Server a ve spravované instanci Azure SQL vracejí zobrazení dynamické správy informace o stavu serveru. V Azure SQL Database vrátí pouze informace týkající se aktuální logické databáze.
 
 Tento článek obsahuje kolekci dotazů DMV, které můžete spustit pomocí SQL Server Management Studio nebo Azure Data Studio k detekci následujících typů problémů s výkonem dotazů:
 
@@ -673,7 +673,7 @@ SELECT COUNT(*) AS [Concurrent_Requests]
 FROM sys.dm_exec_requests R;
 ```
 
-Pokud chcete analyzovat úlohy místní databáze SQL Server, upravte tento dotaz tak, aby se vyfiltroval konkrétní databáze, kterou chcete analyzovat. Například pokud máte místní databázi s názvem MyDatabase, tento dotaz Transact-SQL vrátí počet souběžných žádostí v této databázi:
+Chcete-li analyzovat zatížení databáze SQL Server, upravte tento dotaz tak, aby vyfiltroval konkrétní databázi, kterou chcete analyzovat. Například pokud máte místní databázi s názvem MyDatabase, tento dotaz Transact-SQL vrátí počet souběžných žádostí v této databázi:
 
 ```sql
 SELECT COUNT(*) AS [Concurrent_Requests]
@@ -702,7 +702,7 @@ SELECT COUNT(*) AS [Sessions]
 FROM sys.dm_exec_connections
 ```
 
-Pokud analyzujete místní úlohu SQL Server, upravte dotaz tak, aby se zazaměřil na konkrétní databázi. Tento dotaz vám pomůže určit možné potřeby relace pro databázi, Pokud zvažujete jejich přesun do Azure.
+Pokud analyzujete úlohu SQL Server, upravte dotaz tak, aby se soustředit na konkrétní databázi. Tento dotaz vám pomůže určit možné potřeby relace pro databázi, Pokud zvažujete jejich přesun do Azure.
 
 ```sql
 SELECT COUNT(*) AS [Sessions]

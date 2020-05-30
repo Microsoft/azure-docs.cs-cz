@@ -1,6 +1,6 @@
 ---
 title: Agent synchronizace dat pro Synchronizace dat SQL
-description: Naučte se, jak nainstalovat a spustit agenta pro synchronizaci dat pro Synchronizace dat SQL v Azure, abyste mohli synchronizovat data s místními SQL Server databázemi.
+description: Přečtěte si, jak nainstalovat a spustit agenta pro synchronizaci dat pro Synchronizace dat SQL v Azure, abyste mohli synchronizovat data s SQL Server databázemi.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: 0026f160c247d2b0bfdd32613676b04d6f350081
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8033e64924b5faa1cfdc9c04cdd8711850185dca
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049782"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195463"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>Agent synchronizace dat pro Synchronizace dat SQL
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Synchronizujte data s místními SQL Server databáze tak, že nainstalujete a nakonfigurujete agenta synchronizace dat pro Synchronizace dat SQL v Azure. Další informace o Synchronizace dat SQL najdete v tématu [synchronizace dat napříč více cloudy a místními databázemi pomocí synchronizace dat SQL](sql-data-sync-data-sql-server-sql-database.md).
+Synchronizujte data s SQL Server databáze tak, že nainstalujete a nakonfigurujete agenta synchronizace dat pro Synchronizace dat SQL v Azure. Další informace o Synchronizace dat SQL najdete v tématu [synchronizace dat napříč více cloudy a místními databázemi pomocí synchronizace dat SQL](sql-data-sync-data-sql-server-sql-database.md).
 
 > [!IMPORTANT]
 > Synchronizace dat SQL v tuto **chvíli nepodporuje spravovanou** instanci SQL Azure.
@@ -36,7 +36,7 @@ K tiché instalaci agenta synchronizace dat z příkazového řádku zadejte př
 
 - Pokud nezadáte hodnotu pro **targetDir**, výchozí hodnota je `C:\Program Files (x86)\Microsoft SQL Data Sync 2.0` .
 
-- Pokud zadáte `LocalSystem` hodnotu **SERVICEACCOUNT**, použijte ověřování SQL Server, když nakonfigurujete agenta tak, aby se připojil k místnímu SQL Server.
+- Pokud zadáte `LocalSystem` hodnotu **SERVICEACCOUNT**, použijte ověřování SQL Server, když nakonfigurujete agenta pro připojení k SQL Server.
 
 - Pokud jako hodnotu **SERVICEACCOUNT**zadáte účet uživatele domény nebo místní uživatelský účet, musíte zadat také heslo s argumentem **SERVICEPASSWORD** . Například, `SERVICEACCOUNT="<domain>\<user>"  SERVICEPASSWORD="<password>"`.
 
@@ -44,9 +44,9 @@ K tiché instalaci agenta synchronizace dat z příkazového řádku zadejte př
 msiexec /i "SQLDataSyncAgent-2.0-x86-ENU.msi" TARGETDIR="C:\Program Files (x86)\Microsoft SQL Data Sync 2.0" SERVICEACCOUNT="LocalSystem" /qn
 ```
 
-## <a name="sync-data-with-sql-server-on-premises"></a>Synchronizace dat s SQL Server v místním prostředí
+## <a name="sync-data-with-a-sql-server-database"></a>Synchronizace dat s databází SQL Server
 
-Pokud chcete nakonfigurovat agenta pro synchronizaci dat, abyste mohli synchronizovat data s jednou nebo více místními databázemi SQL Server, přečtěte si téma [Přidání místní databáze SQL Server](sql-data-sync-sql-server-configure.md#add-on-prem).
+Chcete-li konfigurovat agenta synchronizace dat, aby bylo možné synchronizovat data s jednou nebo více SQL Server databázemi, přečtěte si téma [Přidání databáze SQL Server](sql-data-sync-sql-server-configure.md#add-on-prem).
 
 ## <a name="data-sync-agent-faq"></a><a name="agent-faq"></a>Nejčastější dotazy k agentovi synchronizace dat
 
@@ -321,7 +321,7 @@ Další informace o Synchronizace dat SQL najdete v následujících článcích
 
 -   Přehled – [synchronizace dat napříč několika cloudy a místními databázemi pomocí synchronizace dat SQL v Azure](sql-data-sync-data-sql-server-sql-database.md)
 -   Nastavení synchronizace dat
-    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server místním](sql-data-sync-sql-server-configure.md) prostředím
+    - Na portálu – [kurz: nastavení synchronizace dat SQL pro synchronizaci dat mezi Azure SQL Database a SQL Server](sql-data-sync-sql-server-configure.md)
     - S využitím PowerShellu
         -  [Použití PowerShellu k synchronizaci mezi několika databázemi v Azure SQL Database](scripts/sql-data-sync-sync-data-between-sql-databases.md)
         -  [Použití PowerShellu k synchronizaci mezi databází v Azure SQL Database a databází v instanci SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md)

@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: conceptual
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: jamesbak
-ms.openlocfilehash: b7f7793016d2a408d6b286f417e3e89e7a22ca91
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 375dac3fffc1a49cc3d10999c4969a7365dfb49c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232372"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193439"
 ---
 # <a name="migrate-from-on-prem-hdfs-store-to-azure-storage-with-azure-data-box"></a>Migrace z úložiště Prem HDFS do Azure Storage s využitím Azure Data Box
 
@@ -59,7 +59,7 @@ Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro
 
 2. V dialogu pro přístup k účtu úložiště a nahrávání dat zkopírujte **BLOB Service koncový bod** a **klíč účtu úložiště**. Z koncového bodu služby objektů BLOB vynechejte `https://` a koncové lomítko.
 
-    V tomto případě je koncový bod: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/`. Část hostitele identifikátoru URI, kterou budete používat, je: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com`. Příklad najdete v tématu Jak se [připojit k REST přes protokol HTTP](/azure/databox/data-box-deploy-copy-data-via-rest). 
+    V tomto případě je koncový bod: `https://mystorageaccount.blob.mydataboxno.microsoftdatabox.com/` . Část hostitele identifikátoru URI, kterou budete používat, je: `mystorageaccount.blob.mydataboxno.microsoftdatabox.com` . Příklad najdete v tématu Jak se [připojit k REST přes protokol HTTP](/azure/databox/data-box-deploy-copy-data-via-rest). 
 
      ![Dialogová okna přístup k účtu úložiště a nahrání dat](media/data-lake-storage-migrate-on-premises-HDFS-cluster/data-box-connection-string-http.png)
 
@@ -71,9 +71,9 @@ Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro
 
     Pokud používáte nějaký jiný mechanismus pro DNS, měli byste zajistit, aby bylo možné přeložit koncový bod Data Box.
 
-4. Nastavte proměnnou `azjars` prostředí na umístění `hadoop-azure` souborů `azure-storage` jar. Tyto soubory najdete v instalačním adresáři Hadoop.
+4. Nastavte proměnnou prostředí `azjars` na umístění `hadoop-azure` `azure-storage` souborů JAR. Tyto soubory najdete v instalačním adresáři Hadoop.
 
-    Chcete-li zjistit, zda tyto soubory existují, použijte následující `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure`příkaz:. `<hadoop_install_dir>` Zástupný text nahraďte cestou k adresáři, do kterého jste nainstalovali Hadoop. Nezapomeňte použít plně kvalifikované cesty.
+    Chcete-li zjistit, zda tyto soubory existují, použijte následující příkaz: `ls -l $<hadoop_install_dir>/share/hadoop/tools/lib/ | grep azure` . `<hadoop_install_dir>`Zástupný text nahraďte cestou k adresáři, do kterého jste nainstalovali Hadoop. Nezapomeňte použít plně kvalifikované cesty.
 
     Příklady:
 
@@ -88,13 +88,13 @@ Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro
     -mkdir -p  wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * `<blob_service_endpoint>` Zástupný symbol nahraďte názvem vašeho koncového bodu služby BLOB Service.
+    * `<blob_service_endpoint>`Zástupný symbol nahraďte názvem vašeho koncového bodu služby BLOB Service.
 
-    * `<account_key>` Zástupný symbol nahraďte přístupovým klíčem vašeho účtu.
+    * `<account_key>`Zástupný symbol nahraďte přístupovým klíčem vašeho účtu.
 
-    * `<container-name>` Zástupný symbol nahraďte názvem vašeho kontejneru.
+    * `<container-name>`Zástupný symbol nahraďte názvem vašeho kontejneru.
 
-    * `<destination_directory>` Zástupný symbol nahraďte názvem adresáře, do kterého chcete zkopírovat data.
+    * `<destination_directory>`Zástupný symbol nahraďte názvem adresáře, do kterého chcete zkopírovat data.
 
 6. Spuštěním příkazu seznam zkontrolujte, zda byl vytvořen kontejner a adresář.
 
@@ -105,11 +105,11 @@ Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro
     -ls -R  wasb://<container_name>@<blob_service_endpoint>/
     ```
 
-   * `<blob_service_endpoint>` Zástupný symbol nahraďte názvem vašeho koncového bodu služby BLOB Service.
+   * `<blob_service_endpoint>`Zástupný symbol nahraďte názvem vašeho koncového bodu služby BLOB Service.
 
-   * `<account_key>` Zástupný symbol nahraďte přístupovým klíčem vašeho účtu.
+   * `<account_key>`Zástupný symbol nahraďte přístupovým klíčem vašeho účtu.
 
-   * `<container-name>` Zástupný symbol nahraďte názvem vašeho kontejneru.
+   * `<container-name>`Zástupný symbol nahraďte názvem vašeho kontejneru.
 
 7. Zkopírujte data ze služby Hadoop HDFS do úložiště objektů BLOB Data Box do kontejneru, který jste vytvořili dříve. Pokud adresář, který kopírujete do, nebyl nalezen, příkaz jej automaticky vytvoří.
 
@@ -123,21 +123,21 @@ Pomocí těchto kroků zkopírujte data prostřednictvím rozhraní REST API pro
            wasb://<container_name>@<blob_service_endpoint>/<destination_directory>
     ```
 
-    * `<blob_service_endpoint>` Zástupný symbol nahraďte názvem vašeho koncového bodu služby BLOB Service.
+    * `<blob_service_endpoint>`Zástupný symbol nahraďte názvem vašeho koncového bodu služby BLOB Service.
 
-    * `<account_key>` Zástupný symbol nahraďte přístupovým klíčem vašeho účtu.
+    * `<account_key>`Zástupný symbol nahraďte přístupovým klíčem vašeho účtu.
 
-    * `<container-name>` Zástupný symbol nahraďte názvem vašeho kontejneru.
+    * `<container-name>`Zástupný symbol nahraďte názvem vašeho kontejneru.
 
-    * `<exlusion_filelist_file>` Zástupný text nahraďte názvem souboru, který obsahuje seznam vyloučení souborů.
+    * `<exlusion_filelist_file>`Zástupný text nahraďte názvem souboru, který obsahuje seznam vyloučení souborů.
 
-    * `<source_directory>` Zástupný text nahraďte názvem adresáře, který obsahuje data, která chcete kopírovat.
+    * `<source_directory>`Zástupný text nahraďte názvem adresáře, který obsahuje data, která chcete kopírovat.
 
-    * `<destination_directory>` Zástupný symbol nahraďte názvem adresáře, do kterého chcete zkopírovat data.
+    * `<destination_directory>`Zástupný symbol nahraďte názvem adresáře, do kterého chcete zkopírovat data.
 
-    `-libjars` Možnost slouží k zpřístupnění `hadoop-azure*.jar` a závislých `azure-storage*.jar` souborů pro `distcp`. K tomu může již dojít u některých clusterů.
+    `-libjars`Možnost slouží k zpřístupnění `hadoop-azure*.jar` a závislých `azure-storage*.jar` souborů pro `distcp` . K tomu může již dojít u některých clusterů.
 
-    Následující příklad ukazuje, `distcp` jak se příkaz používá ke kopírování dat.
+    Následující příklad ukazuje, jak `distcp` se příkaz používá ke kopírování dat.
 
     ```
      hadoop distcp \
@@ -215,7 +215,7 @@ Tento příkaz vygeneruje seznam kopírovaných souborů s jejich oprávněními
    ./copy-acls.py -s ./filelist.json -i ./id_map.json -g
    ```
 
-   Tento skript vygeneruje soubor s `id_map.json` názvem, který obsahuje identity, které potřebujete mapovat na identity založené na doplňku.
+   Tento skript vygeneruje soubor s názvem `id_map.json` , který obsahuje identity, které potřebujete mapovat na identity založené na doplňku.
 
 3. Otevřete `id_map.json` soubor v textovém editoru.
 
@@ -229,17 +229,17 @@ Spuštěním tohoto příkazu můžete použít oprávnění pro data, která js
 ./copy-acls.py -s ./filelist.json -i ./id_map.json  -A <storage-account-name> -C <container-name> --dest-spn-id <application-id>  --dest-spn-secret <client-secret>
 ```
 
-* `<storage-account-name>` Zástupný symbol nahraďte názvem vašeho účtu úložiště.
+* `<storage-account-name>`Zástupný symbol nahraďte názvem vašeho účtu úložiště.
 
-* `<container-name>` Zástupný symbol nahraďte názvem vašeho kontejneru.
+* `<container-name>`Zástupný symbol nahraďte názvem vašeho kontejneru.
 
-* Nahraďte `<application-id>` zástupné symboly a `<client-secret>` pomocí ID aplikace a tajného klíče klienta, který jste shromáždili při vytváření instančního objektu.
+* Nahraďte `<application-id>` `<client-secret>` zástupné symboly a pomocí ID aplikace a tajného klíče klienta, který jste shromáždili při vytváření instančního objektu.
 
 ## <a name="appendix-split-data-across-multiple-data-box-devices"></a>Příloha: rozdělení dat napříč více Data Box zařízeních
 
 Před přesunutím dat do zařízení Data Box budete muset stáhnout některé pomocné skripty, zajistit, aby vaše data byla uspořádaná do Data Box zařízení a vyloučila všechny nepotřebné soubory.
 
-<a id="download-helper-scripts" />
+<a id="download-helper-scripts"></a>
 
 ### <a name="download-helper-scripts-and-set-up-your-edge-node-to-run-them"></a>Stáhněte si pomocné skripty a nastavte si hraniční uzel, ve kterém se budou spouštět.
 

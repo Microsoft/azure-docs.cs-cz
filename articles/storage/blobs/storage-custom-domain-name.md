@@ -9,12 +9,12 @@ ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 9d05677ec47851557594ef47499da653accad141
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 82f3f26ae5c70c9660a44ce50a90de79340bc1c2
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370470"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195233"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Mapování vlastní domény na koncový bod Azure Blob Storage
 
@@ -23,9 +23,9 @@ Můžete namapovat vlastní doménu na koncový bod služby BLOB Service nebo na
 [!INCLUDE [updated-for-az](../../../includes/storage-data-lake-gen2-support.md)]
 
 > [!NOTE] 
-> Toto mapování funguje pouze pro subdomény (například: `www.contoso.com`). Pokud chcete, aby byl váš webový koncový bod dostupný v kořenové doméně (například: `contoso.com`), budete muset použít Azure CDN. Pokyny najdete v části [Mapování vlastní domény s povoleným protokolem HTTPS](#enable-https) v tomto článku. Vzhledem k tomu, že v této části tohoto článku je umožněna kořenová doména vlastní domény, je krok v této části pro povolení protokolu HTTPS volitelný. 
+> Toto mapování funguje pouze pro subdomény (například: `www.contoso.com` ). Pokud chcete, aby byl váš webový koncový bod dostupný v kořenové doméně (například: `contoso.com` ), budete muset použít Azure CDN. Pokyny najdete v části [Mapování vlastní domény s povoleným protokolem HTTPS](#enable-https) v tomto článku. Vzhledem k tomu, že v této části tohoto článku je umožněna kořenová doména vlastní domény, je krok v této části pro povolení protokolu HTTPS volitelný. 
 
-<a id="enable-http" />
+<a id="enable-http"></a>
 
 ## <a name="map-a-custom-domain-with-only-http-enabled"></a>Mapování vlastní domény s povoleným pouze protokolem HTTP
 
@@ -33,7 +33,7 @@ Tento přístup je jednodušší, ale umožňuje jenom přístup přes protokol 
 
 Pokud chcete povolit přístup pomocí protokolu HTTPS, přečtěte si část [Mapování vlastní domény s povoleným protokolem HTTPS](#enable-https) v tomto článku. 
 
-<a id="map-a-domain" />
+<a id="map-a-domain"></a>
 
 ### <a name="map-a-custom-domain"></a>Mapování vlastní domény
 
@@ -50,7 +50,7 @@ Pokud se nerozhodnete, že je doména krátce nedostupná pro vaše uživatele, 
 
 : heavy_check_mark: Krok 4: Testování vlastní domény.
 
-<a id="endpoint" />
+<a id="endpoint"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>Krok 1: získání názvu hostitele vašeho koncového bodu úložiště 
 
@@ -71,7 +71,7 @@ Název hostitele je adresa URL koncového bodu úložiště bez identifikátoru 
   
    Tuto hodnotu nastavte pro pozdější verzi.
 
-<a id="create-cname-record" />
+<a id="create-cname-record"></a>
 
 #### <a name="step-2-create-a-canonical-name-cname-record-with-your-domain-provider"></a>Krok 2: vytvoření záznamu kanonického názvu (CNAME) u vašeho poskytovatele domény
 
@@ -87,11 +87,11 @@ Vytvořte záznam CNAME, který bude odkazovat na název hostitele. Záznam CNAM
 
 3. Vytvoří záznam CNAME. Jako součást tohoto záznamu zadejte následující položky: 
 
-   - Alias subdomény, jako je `www` například `photos`nebo. Subdoména je povinná, kořenové domény se nepodporují. 
+   - Alias subdomény, jako je například `www` nebo `photos` . Subdoména je povinná, kořenové domény se nepodporují. 
       
    - Název hostitele, který jste získali v části [získání názvu hostitele vašeho koncového bodu úložiště](#endpoint) výše v tomto článku. 
 
-<a id="register" />
+<a id="register"></a>
 
 #### <a name="step-3-register-your-custom-domain-with-azure"></a>Krok 3: Registrace vlastní domény pomocí Azure
 
@@ -105,7 +105,7 @@ Vytvořte záznam CNAME, který bude odkazovat na název hostitele. Záznam CNAM
 
 3. Do textového pole **název domény** zadejte název vlastní domény, včetně subdomény.  
    
-   Pokud je vaše doména například *contoso.com* a alias subdomény je *www*, zadejte `www.contoso.com`. Pokud je vaše subdoména *fotografie*, `photos.contoso.com`zadejte.
+   Pokud je vaše doména například *contoso.com* a alias subdomény je *www*, zadejte `www.contoso.com` . Pokud je vaše subdoména *fotografie*, zadejte `photos.contoso.com` .
 
 4. Pokud chcete zaregistrovat vlastní doménu, klikněte na tlačítko **Uložit** .
 
@@ -117,7 +117,7 @@ Pokud chcete potvrdit, že je vaše vlastní doména namapovaná na koncový bod
 
 Pokud například chcete získat přístup k webovému formuláři v kontejneru *myforms* ve vlastní subdoméně *photos.contoso.com* , můžete použít následující identifikátor URI:`http://photos.contoso.com/myforms/applicationform.htm`
 
-<a id="zero-down-time" />
+<a id="zero-down-time"></a>
 
 ### <a name="map-a-custom-domain-with-zero-downtime"></a>Mapování vlastní domény s nulovými výpadky
 
@@ -136,7 +136,7 @@ Pokud vaše doména aktuálně podporuje aplikaci se smlouvou o úrovni služeb 
 
 : heavy_check_mark: Krok 5: Testování vlastní domény.
 
-<a id="endpoint-2" />
+<a id="endpoint-2"></a>
 
 #### <a name="step-1-get-the-host-name-of-your-storage-endpoint"></a>Krok 1: získání názvu hostitele vašeho koncového bodu úložiště 
 
@@ -171,13 +171,13 @@ Vytvořte dočasný záznam CNAME, který bude odkazovat na název hostitele. Z�
 
 3. Vytvoří záznam CNAME. Jako součást tohoto záznamu zadejte následující položky: 
 
-   - Alias subdomény, jako je `www` například `photos`nebo. Subdoména je povinná, kořenové domény se nepodporují.
+   - Alias subdomény, jako je například `www` nebo `photos` . Subdoména je povinná, kořenové domény se nepodporují.
 
-     `asverify` Přidejte subdoménu do aliasu. Například: `asverify.www` nebo `asverify.photos`.
+     Přidejte `asverify` subdoménu do aliasu. Například: `asverify.www` nebo `asverify.photos` .
        
    - Název hostitele, který jste získali v části [získání názvu hostitele vašeho koncového bodu úložiště](#endpoint) výše v tomto článku. 
 
-     Přidejte subdoménu `asverify` do názvu hostitele. Například: `asverify.mystorageaccount.blob.core.windows.net`.
+     Přidejte subdoménu `asverify` do názvu hostitele. Příklad: `asverify.mystorageaccount.blob.core.windows.net`.
 
 4. Pokud chcete zaregistrovat vlastní doménu, klikněte na tlačítko **Uložit** .
 
@@ -197,7 +197,7 @@ Když předem zaregistrujete vlastní doménu pomocí Azure, umožníte Azure ro
 
 3. Do textového pole **název domény** zadejte název vlastní domény, včetně subdomény.  
    
-   Pokud je vaše doména například *contoso.com* a alias subdomény je *www*, zadejte `www.contoso.com`. Pokud je vaše subdoména *fotografie*, `photos.contoso.com`zadejte.
+   Pokud je vaše doména například *contoso.com* a alias subdomény je *www*, zadejte `www.contoso.com` . Pokud je vaše subdoména *fotografie*, zadejte `photos.contoso.com` .
 
 4. Zaškrtněte políčko **použít nepřímé ověřování CNAME** .
 
@@ -219,7 +219,7 @@ Vytvořte dočasný záznam CNAME, který bude odkazovat na název hostitele.
 
 3. Vytvoří záznam CNAME. Jako součást tohoto záznamu zadejte následující položky: 
 
-   - Alias subdomény, jako je `www` například `photos`nebo. Subdoména je povinná, kořenové domény se nepodporují.
+   - Alias subdomény, jako je například `www` nebo `photos` . Subdoména je povinná, kořenové domény se nepodporují.
       
    - Název hostitele, který jste získali v části [získání názvu hostitele vašeho koncového bodu úložiště](#endpoint-2) výše v tomto článku. 
 
@@ -233,7 +233,7 @@ Pokud například chcete získat přístup k webovému formuláři v kontejneru 
 
 Chcete-li odebrat vlastní mapování domény, zrušte registraci vlastní domény. Použijte jeden z následujících postupů.
 
-#### <a name="portal"></a>[Portál](#tab/azure-portal)
+#### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
 Pokud chcete odebrat vlastní nastavení domény, udělejte toto:
 
@@ -250,7 +250,7 @@ Po úspěšném odebrání vlastní domény se zobrazí oznámení na portálu, 
 
 #### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Pokud chcete odebrat vlastní registraci domény, použijte příkaz [AZ Storage Account Update](https://docs.microsoft.com/cli/azure/storage/account) CLI a pak zadejte prázdný řetězec (`""`) pro hodnotu `--custom-domain` argumentu.
+Pokud chcete odebrat vlastní registraci domény, použijte příkaz [AZ Storage Account Update](https://docs.microsoft.com/cli/azure/storage/account) CLI a pak zadejte prázdný řetězec ( `""` ) pro `--custom-domain` hodnotu argumentu.
 
 * Formát příkazu:
 
@@ -270,11 +270,11 @@ Pokud chcete odebrat vlastní registraci domény, použijte příkaz [AZ Storage
       --custom-domain ""
   ```
 
-#### <a name="powershell"></a>[Prostředí](#tab/azure-powershell)
+#### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Pokud chcete odebrat vlastní registraci domény, použijte rutinu [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) prostředí PowerShell a pak zadejte prázdný řetězec (`""`) pro hodnotu `-CustomDomainName` argumentu.
+Pokud chcete odebrat vlastní registraci domény, použijte rutinu [set-AzStorageAccount](/powershell/module/az.storage/set-azstorageaccount) prostředí PowerShell a pak zadejte prázdný řetězec ( `""` ) pro `-CustomDomainName` hodnotu argumentu.
 
 * Formát příkazu:
 
@@ -295,7 +295,7 @@ Pokud chcete odebrat vlastní registraci domény, použijte rutinu [set-AzStorag
   ```
 ---
 
-<a id="enable-https" />
+<a id="enable-https"></a>
 
 ## <a name="map-a-custom-domain-with-https-enabled"></a>Mapování vlastní domény s povoleným protokolem HTTPS
 

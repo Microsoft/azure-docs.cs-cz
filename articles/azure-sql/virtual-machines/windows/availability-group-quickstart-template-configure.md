@@ -15,19 +15,19 @@ ms.date: 01/04/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 01e8eae154172cc48decb209e4964dc5ff0d835f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8476029fb189db846eca3eba31fe8cc62d3726f8
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049138"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219458"
 ---
-# <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-an-azure-vm"></a>Použití šablon pro rychlý Start Azure ke konfiguraci skupiny dostupnosti pro SQL Server na virtuálním počítači Azure
+# <a name="use-azure-quickstart-templates-to-configure-an-availability-group-for-sql-server-on-azure-vm"></a>Použití šablon pro rychlý Start Azure ke konfiguraci skupiny dostupnosti pro SQL Server na virtuálním počítači Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Tento článek popisuje, jak pomocí šablon Azure pro rychlý Start částečně automatizovat nasazení konfigurace skupiny dostupnosti Always On pro SQL Server virtuálních počítačů v Azure. V tomto procesu se používají dvě šablony pro rychlý Start Azure: 
 
-   | Šablona | Description |
+   | Šablona | Popis |
    | --- | --- |
    | [101-SQL-VM-AG-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-ag-setup) | Vytvoří cluster s podporou převzetí služeb při selhání Windows a připojí k němu SQL Server virtuální počítače. |
    | [101-SQL-VM-aglistener-Setup](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-vm-aglistener-setup) | Vytvoří naslouchací proces skupiny dostupnosti a nakonfiguruje interní nástroj pro vyrovnávání zatížení. Tuto šablonu lze použít pouze v případě, že byl vytvořen cluster s podporou převzetí služeb při selhání systému Windows pomocí šablony **101-SQL-VM-AG-Setup** . |
@@ -47,11 +47,11 @@ K automatizaci nastavení skupiny dostupnosti Always On pomocí šablon pro rych
 Následující oprávnění jsou nutná ke konfiguraci skupiny dostupnosti Always On pomocí šablon Azure pro rychlý Start: 
 
 - Existující účet uživatele domény, který má v doméně oprávnění **vytvořit objekt počítače** .  Například účet správce domény má obvykle dostatečná oprávnění (například: account@domain.com ). _Tento účet by měl být taky součástí místní skupiny správců na každém virtuálním počítači, aby se vytvořil cluster._
-- Účet uživatele domény, který řídí službu SQL Server. 
+- Uživatelský účet domény, který řídí SQL Server. 
 
 
 ## <a name="step-1-create-the-failover-cluster-and-join-sql-server-vms-to-the-cluster-by-using-a-quickstart-template"></a>Krok 1: Vytvoření clusteru s podporou převzetí služeb při selhání a připojení SQL Server virtuálních počítačů ke clusteru pomocí šablony pro rychlý Start 
-Po registraci SQL Server virtuálních počítačů u poskytovatele prostředků virtuálního počítače SQL můžete připojit své virtuální počítače SQL Server k *SqlVirtualMachineGroups*. Tento prostředek definuje metadata clusteru s podporou převzetí služeb při selhání systému Windows. Metadata obsahují verze, edice, plně kvalifikovaný název domény, účty služby Active Directory pro správu clusteru i služby SQL Server a účet úložiště jako disk s kopií cloudu. 
+Po registraci SQL Server virtuálních počítačů u poskytovatele prostředků virtuálního počítače SQL můžete připojit své virtuální počítače SQL Server k *SqlVirtualMachineGroups*. Tento prostředek definuje metadata clusteru s podporou převzetí služeb při selhání systému Windows. Metadata obsahují verze, edici, plně kvalifikovaný název domény, účty služby Active Directory pro správu clusteru i SQL Server a účet úložiště jako disk s kopií cloudu. 
 
 Přidáním SQL Server virtuálních počítačů do skupiny prostředků *SqlVirtualMachineGroups* se služba Cluster s podporou převzetí služeb při selhání systému Windows pokusí vytvořit cluster a pak tyto SQL Server virtuální počítače připojí do tohoto clusteru. Tento krok je automatizovaný pomocí šablony rychlého startu **101-SQL-VM-AG-Setup** . Můžete ji implementovat pomocí následujících kroků:
 
@@ -71,10 +71,10 @@ Přidáním SQL Server virtuálních počítačů do skupiny prostředků *SqlVi
    | **Existující doménový účet** | Existující účet uživatele domény, který má v doméně oprávnění **vytvořit objekt počítače** jako [objekt CNO](/windows-server/failover-clustering/prestage-cluster-adds) , se vytvoří během nasazování šablony. Například účet správce domény má obvykle dostatečná oprávnění (například: account@domain.com ). *Tento účet by měl být taky součástí místní skupiny správců na každém virtuálním počítači, aby se vytvořil cluster.*| 
    | **Heslo účtu domény** | Heslo pro dříve uvedený účet uživatele domény. | 
    | **Existující účet služby SQL** | Uživatelský účet domény, který řídí [službu SQL Server](/sql/database-engine/configure-windows/configure-windows-service-accounts-and-permissions) během nasazování skupiny dostupnosti (například: account@domain.com ). |
-   | **Heslo služby SQL** | Heslo, které používá účet uživatele domény, který řídí službu SQL Server. |
+   | **Heslo služby SQL** | Heslo, které používá účet uživatele domény, který řídí SQL Server. |
    | **Název sdílené složky v cloudu** | Vytvoří se nový účet Azure Storage, který se vytvoří a použije pro disk s kopií cloudu. Tento název můžete změnit. |
    | **\_Umístění artefaktů** | Toto pole je nastavené ve výchozím nastavení a nemělo by se měnit. |
-   | **\_Token SAS umístění artefaktů** | Toto pole je úmyslně ponecháno prázdné. |
+   | **\_Token SaS umístění artefaktů** | Toto pole je úmyslně ponecháno prázdné. |
    | &nbsp; | &nbsp; |
 
 1. Pokud souhlasíte s podmínkami a ujednáními, zaškrtněte políčko Souhlasím **s podmínkami a ujednáními uvedenými nahoře** . Pak výběrem **koupit** dokončíte nasazení šablony pro rychlý Start. 
@@ -188,7 +188,7 @@ Pokud chcete toto chování vyřešit, odeberte naslouchací proces pomocí [Pow
 K této chybě může dojít, pokud nasazujete šablonu **101-SQL-VM-aglistener-Setup** , pokud byl naslouchací proces odstraněn prostřednictvím SQL Server Management Studio (SSMS), ale nebyl odstraněn z poskytovatele prostředků virtuálního počítače SQL. Odstraněním naslouchacího procesu prostřednictvím SSMS se neodstraní metadata naslouchacího procesu z poskytovatele prostředků virtuálního počítače SQL. Naslouchací proces musí být odstraněn z poskytovatele prostředků prostřednictvím [PowerShellu](#remove-the-availability-group-listener). 
 
 ### <a name="domain-account-does-not-exist"></a>Doménový účet neexistuje.
-Tato chyba může mít dvě příčiny. Buď zadaný doménový účet neexistuje, nebo chybí data [hlavního názvu uživatele (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) . Šablona **101-SQL-VM-AG-Setup** očekává účet domény ve formátu hlavního názvu uživatele (tj *user@domain.com* .), ale některé účty domény ho můžou chybět. K tomu obvykle dochází, když je místní uživatel migrován jako první účet správce domény, když byl server povýšen na řadič domény, nebo když byl uživatel vytvořen prostřednictvím PowerShellu. 
+Tato chyba může mít dvě příčiny. Buď zadaný doménový účet neexistuje, nebo chybí data [hlavního názvu uživatele (UPN)](/windows/desktop/ad/naming-properties#userprincipalname) . Šablona **101-SQL-VM-AG-Setup** očekává účet domény ve formátu hlavního názvu uživatele (tj user@domain.com .), ale některé účty domény ho můžou chybět. K tomu obvykle dochází, když je místní uživatel migrován jako první účet správce domény, když byl server povýšen na řadič domény, nebo když byl uživatel vytvořen prostřednictvím PowerShellu. 
 
 Ověřte, že účet existuje. Pokud k tomu dochází, možná budete pracovat v druhé situaci. Pokud ho chcete vyřešit, udělejte toto:
 

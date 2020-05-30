@@ -3,12 +3,12 @@ title: Vytvoření skupin pro správu pro uspořádání prostředků – zásad
 description: Naučte se vytvářet skupiny pro správu Azure pro správu více prostředků pomocí portálu, Azure PowerShell a Azure CLI.
 ms.date: 04/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 34815089367512c4aa54f148c118a669625d0ea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0abecf02062dd4461274a9bc3722d46e6e7cc3d1
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81381590"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220756"
 ---
 # <a name="create-management-groups-for-resource-organization-and-management"></a>Vytvoření skupin pro správu pro organizaci a správu prostředků
 
@@ -27,11 +27,9 @@ Skupinu pro správu můžete vytvořit pomocí portálu, [Správce prostředků 
 
 1. Přihlaste se na [Azure Portal](https://portal.azure.com).
 
-1. Vyberte **všechny služby** > **Správa a zásady správného řízení**.
+1. Vyberte **všechny služby**  >  **Správa a zásady správného řízení**.
 
-1. Vybrat **cost management + fakturace**
-
-1. Na stránce Cost Management + fakturace – skupiny pro správu vyberte **skupiny pro správu**
+1. Vyberte **skupiny pro správu**.
 
 1. Vyberte **+ Přidat skupinu pro správu**.
 

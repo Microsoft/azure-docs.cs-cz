@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/27/2020
-ms.openlocfilehash: 68f6977059af84fc7fa98fe5817f9f5b4fbdcf90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a2ec92573870ea1e43c45f4b4fc5c552b2932f1c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045414"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195160"
 ---
 # <a name="what-is-azure-sql"></a>Co je Azure SQL? 
 [!INCLUDE[appliesto-asf](includes/appliesto-asf.md)]
@@ -26,7 +26,7 @@ ms.locfileid: "84045414"
 Azure SQL je rodina spravovaných, zabezpečených a inteligentních databázových produktů SQL Server.
 
 - **Azure SQL Database**: podporují moderní cloudové aplikace na inteligentní, spravované databázové službě, která zahrnuje výpočetní výkon bez serveru. 
-- **Spravovaná instance Azure SQL**: modernizovat své stávající aplikace SQL Server ve velkém měřítku s využitím inteligentní plně spravované instance jako služby s téměř 100% paritou funkcí pro SQL Server v místním prostředí, na které jste použili. Nejvhodnější pro většinu migrací do cloudu.
+- **Spravovaná instance Azure SQL**: modernizovat své stávající aplikace SQL Server ve velkém měřítku s využitím inteligentní plně spravované instance jako služby s téměř 100% paritou funkcí s databázovým strojem SQL Server. Nejvhodnější pro většinu migrací do cloudu.
 - **SQL Server na virtuálních počítačích Azure**: snadno a znovu shift úlohy SQL Server a udržovat 100% SQL Server kompatibility a přístup na úrovni operačního systému. 
  
 Azure SQL je založený na známém SQL Server Engine, takže můžete snadno migrovat aplikace a dál používat nástroje, jazyky a prostředky, které znáte. Vaše dovednosti a zkušenosti se přenášejí do cloudu, takže můžete dělat ještě víc s tím, co už máte. 
@@ -98,7 +98,7 @@ V následující tabulce jsou uvedeny další rozdíly, ale ***SQL Database i sp
 
 | Azure SQL Database | Spravovaná instance Azure SQL | SQL Server na virtuálním počítači Azure |
 | :--- | :--- | :--- |
-|Podporuje většinu místních funkcí na úrovni databáze. K dispozici jsou nejčastěji používané SQL Server funkce.<br/>je zaručeno 99,995% dostupnosti.<br/>Předdefinované zálohy, opravy a obnovení.<br/>Nejnovější stabilní verze databázového stroje.<br/>Možnost přiřazení nezbytných prostředků (CPU/úložiště) k jednotlivým databázím.<br/>Integrovaná Pokročilá logika a zabezpečení<br/>Online Změna prostředků (CPU/Storage).| Podporuje téměř všechny místní funkce na úrovni instance a databáze. Vysoká kompatibilita s SQL Serverem v místním prostředí.<br/>je zaručeno 99,99% dostupnosti.<br/>Předdefinované zálohy, opravy a obnovení.<br/>Nejnovější stabilní verze databázového stroje.<br/>Snadná migrace z SQL Server.<br/>Privátní IP adresa v rámci virtuální sítě Azure.<br/>Integrovaná Pokročilá logika a zabezpečení<br/>Online Změna prostředků (CPU/Storage).| Máte plnou kontrolu nad SQL Server modulem. Podporuje všechny místní funkce.<br/>Až 99,99% dostupnost.<br/>Úplná parita se stejnou verzí místních SQL Server.<br/>Opravená, dobře známá verze databázového stroje.<br/>Snadná migrace z SQL Server v místním prostředí.<br/>Privátní IP adresa v rámci virtuální sítě Azure.<br/>Máte možnost nasadit aplikace nebo služby na hostitele, kde je umístěn SQL Server.|
+|Podporuje většinu místních funkcí na úrovni databáze. K dispozici jsou nejčastěji používané SQL Server funkce.<br/>je zaručeno 99,995% dostupnosti.<br/>Předdefinované zálohy, opravy a obnovení.<br/>Nejnovější stabilní verze databázového stroje.<br/>Možnost přiřazení nezbytných prostředků (CPU/úložiště) k jednotlivým databázím.<br/>Integrovaná Pokročilá logika a zabezpečení<br/>Online Změna prostředků (CPU/Storage).| Podporuje téměř všechny místní funkce na úrovni instance a databáze. Vysoká kompatibilita s SQL Server.<br/>je zaručeno 99,99% dostupnosti.<br/>Předdefinované zálohy, opravy a obnovení.<br/>Nejnovější stabilní verze databázového stroje.<br/>Snadná migrace z SQL Server.<br/>Privátní IP adresa v rámci virtuální sítě Azure.<br/>Integrovaná Pokročilá logika a zabezpečení<br/>Online Změna prostředků (CPU/Storage).| Máte plnou kontrolu nad SQL Server modulem. Podporuje všechny místní funkce.<br/>Až 99,99% dostupnost.<br/>Úplná parita se stejnou verzí místních SQL Server.<br/>Opravená, dobře známá verze databázového stroje.<br/>Snadná migrace z SQL Server.<br/>Privátní IP adresa v rámci virtuální sítě Azure.<br/>Máte možnost nasadit aplikace nebo služby na hostitele, kde je umístěn SQL Server.|
 |Migrace z SQL Server může být náročná.<br/>Některé funkce SQL Server nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.<br/>Privátní IP adresu nelze přiřadit (přístup můžete omezit pomocí pravidel brány firewall).|Stále je k dispozici nějaký minimální počet funkcí SQL Server, které nejsou k dispozici.<br/>Žádná záruka přesné doby údržby (ale skoro transparentní).<br/>Kompatibilitu s SQL Server verzí lze dosáhnout pouze pomocí úrovní kompatibility databáze.|Musíte spravovat zálohy a opravy.<br>Musíte implementovat vlastní řešení s vysokou dostupností.<br/>Při změně prostředků (CPU/úložiště) dochází k výpadku.|
 | Databáze o až 100 TB. | Až 8 TB. | Instance SQL Server s až 256 TB úložiště. Instance může podporovat tolik databází, kolik je potřeba. |
 | Místní aplikace má přístup k datům v Azure SQL Database. | [Implementace nativní virtuální sítě](managed-instance/vnet-existing-add-subnet.md) a připojení k místnímu prostředí pomocí Azure Express Route nebo VPN Gateway. | S virtuálními počítači SQL můžete mít aplikace, které běží částečně v cloudu, a částečně místně. Můžete si například rozšířit místní síť a služby Active Directory Domain do cloudu přes [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Další informace o hybridních cloudových řešeních najdete v tématu [rozšíření místních datových řešení do cloudu](https://docs.microsoft.com/azure/architecture/data-guide/scenarios/hybrid-on-premises-and-cloud). |

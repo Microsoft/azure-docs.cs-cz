@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/28/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 3405a322b8498b0b1a29399811ddf188ea766ca8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: efb873f8e66c3ab71b5b7345d776629fbe603af3
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170592"
+ms.locfileid: "84193421"
 ---
 # <a name="object-replication-for-block-blobs-preview"></a>Replikace objektů pro objekty blob bloku (Preview)
 
@@ -73,7 +73,9 @@ Během období Preview se replikace dat mezi účty úložiště nevztahují na 
 
 ### <a name="prerequisites-for-object-replication"></a>Předpoklady pro replikaci objektů
 
-Replikace objektů vyžaduje, aby byly povolené následující funkce Azure Storage:
+Replikace objektů vyžaduje, aby byly povolené následující funkce Azure Storage: 
+- [Změnit kanál](storage-blob-change-feed.md)
+- [Správa verzí](versioning-overview.md)
 
 Před konfigurací replikace objektů povolte příslušné požadavky. Ve zdrojovém účtu musí být povolený kanál změn a na zdrojovém i cílovém účtu musí být povolená Správa verzí objektů BLOB. Další informace o povolení těchto funkcí najdete v těchto článcích:
 
@@ -157,3 +159,5 @@ Chcete-li klást otázky týkající se náhledu replikace objektů nebo poskytn
 ## <a name="next-steps"></a>Další kroky
 
 - [Konfigurace replikace objektů (Preview)](object-replication-configure.md)
+- [Změna podpory kanálu v Azure Blob Storage (Preview)](storage-blob-change-feed.md)
+- [Povolení a správa verzí objektů BLOB](versioning-enable.md)

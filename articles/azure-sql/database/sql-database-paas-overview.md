@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/08/2019
-ms.openlocfilehash: 635cf32fa27a8bc5be12964852c451190e7f1aae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 643c94736d6ee519907913bc9ec59f808081f089
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050755"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216408"
 ---
 # <a name="what-is-azure-sql-database"></a>Co je Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -32,7 +32,7 @@ SQL Database umožňuje snadno definovat a škálovat výkon v rámci dvou různ
 
 ## <a name="deployment-models"></a>Modely nasazení
 
-Azure SQL Database poskytuje následující možnosti nasazení databáze Azure SQL:
+Azure SQL Database poskytuje pro databázi následující možnosti nasazení:
 
 - [Samostatná databáze](single-database-overview.md) představuje plně spravovanou izolovanou databázi. Tuto možnost můžete použít, pokud máte moderní cloudové aplikace a mikroslužby, které potřebují jeden spolehlivý zdroj dat. Jedna databáze je podobná databázi s [omezením](https://docs.microsoft.com/sql/relational-databases/databases/contained-databases?toc=/azure/sql-database/toc.json) v [Microsoft SQL Server databázovém stroji](https://docs.microsoft.com/sql/sql-server/sql-server-technical-documentation?toc=/azure/sql-database/toc.json).
 - [Elastický fond](elastic-pool-overview.md) je kolekce izolovaných [databází](single-database-overview.md) se sdílenou sadou prostředků, jako je například procesor nebo paměť. Jednotlivé databáze lze přesunout do elastického fondu nebo z něj.
@@ -190,18 +190,13 @@ SQL Database umožňuje centrálně spravovat identity uživatele databáze a da
 
 SQL Database zjednodušuje a zefektivňuje vytváření a správu aplikací. SQL Database vám umožňuje soustředit se na to, v čem jste nejlepší – na vytváření skvělých aplikací. Můžete spravovat a vyvíjet v SQL Database pomocí nástrojů a dovedností, které už máte.
 
-- [Azure Portal](https://portal.azure.com/):
-
-  Webová aplikace pro správu všech služeb Azure.
-- [SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms):
-
-  Bezplatná klientská aplikace ke stažení pro správu jakékoli infrastruktury SQL, od SQL Server po SQL Database.
-- [Nástroje pro SQL Server dat v aplikaci Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt):
-
-  Bezplatná klientská aplikace ke stažení pro vývoj SQL Server relačních databází, Microsoft Azure databází SQL, balíčků integračních služeb, Analysis Services datových modelů a sestav služby Reporting Services.
-- [Visual Studio Code](https://code.visualstudio.com/docs):
-
-  Bezplatný a Open Source Editor kódu pro Windows, macOS a Linux. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a Azure SQL Data Warehouse.
+|Nástroj|Popis|
+|:---|:---|
+|[Azure Portal](https://portal.azure.com/)|Webová aplikace pro správu všech služeb Azure.|
+|[Azure Data Studio](/sql/azure-data-studio/)|Databázový Nástroj pro různé platformy, který běží na Windows, MacOS a Linux.|
+|[SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms)|Bezplatná klientská aplikace ke stažení pro správu jakékoli infrastruktury SQL, od SQL Server po SQL Database.|
+|[Nástroje pro SQL Server dat v aplikaci Visual Studio](https://docs.microsoft.com/sql/ssdt/download-sql-server-data-tools-ssdt)|Bezplatná klientská aplikace ke stažení pro vývoj SQL Server relačních databází, Microsoft Azure databází SQL, balíčků integračních služeb, Analysis Services datových modelů a sestav služby Reporting Services.|
+|[Visual Studio Code](https://code.visualstudio.com/docs)|Bezplatný a Open Source Editor kódu pro Windows, macOS a Linux. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování Microsoft SQL Server, Azure SQL Database a Azure SQL Data Warehouse.|
 
 SQL Database podporuje vytváření aplikací pomocí jazyků Python, Java, Node. js, PHP, Ruby a .NET v systémech macOS, Linux a Windows. SQL Database podporuje stejné [knihovny připojení](connect-query-content-reference-guide.md#libraries) jako SQL Server.
 

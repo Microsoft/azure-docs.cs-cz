@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 3eef7476a729c7b83290b9d8d86ba06524bed72b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4421ad4260ff8eada87cdebc031d09922860324f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80297104"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196333"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>Řešení chyb DMS při připojování ke zdrojovým databázím
 
@@ -30,9 +30,9 @@ Potenciální problémy spojené s připojením ke zdrojové SQL Server databáz
 | Chyba         | Příčina a podrobnosti odstraňování potíží |
 | ------------- | ------------- |
 | Připojení SQL se nezdařilo. Při navazování připojení k SQL Serveru došlo k chybě související se sítí nebo konkrétní instancí. Server se nenašel nebo nebyl dostupný. Ověřte, zda je název instance správný a zda je SQL Server nakonfigurovaná tak, aby povolovala vzdálená připojení.<br> | K této chybě dojde, pokud služba nemůže najít zdrojový server. Chcete-li vyřešit tento problém, přečtěte si článek [Chyba připojení ke zdrojovému SQL Server při použití dynamického portu nebo pojmenované instance](https://docs.microsoft.com/azure/dms/known-issues-troubleshooting-dms#error-connecting-to-source-sql-server-when-using-dynamic-port-or-named-instance). |
-| **Chyba 53** -připojení SQL se nezdařilo. (Také pro kódy chyb 1, 2, 5, 53, 233, 258, 1225, 11001)<br><br> | K této chybě dojde, pokud se služba nemůže připojit ke zdrojovému serveru. Pokud chcete tento problém vyřešit, přečtěte si následující zdroje a zkuste to znovu. <br><br>  [Interaktivní uživatelská příručka pro řešení potíží s připojením](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [Předpoklady pro migraci SQL Server do Azure SQL Database](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [Předpoklady pro migraci SQL Server do spravované instance Azure SQL Database](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
+| **Chyba 53** -připojení SQL se nezdařilo. (Také pro kódy chyb 1, 2, 5, 53, 233, 258, 1225, 11001)<br><br> | K této chybě dojde, pokud se služba nemůže připojit ke zdrojovému serveru. Pokud chcete tento problém vyřešit, přečtěte si následující zdroje a zkuste to znovu. <br><br>  [Interaktivní uživatelská příručka pro řešení potíží s připojením](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server)<br><br> [Předpoklady pro migraci SQL Server do Azure SQL Database](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-azure-sql-database) <br><br> [Předpoklady pro migraci SQL Server do spravované instance Azure SQL](https://docs.microsoft.com/azure/dms/pre-reqs#prerequisites-for-migrating-sql-server-to-an-azure-sql-database-managed-instance) |
 | **Chyba 18456** : přihlášení se nezdařilo.<br> | K této chybě dojde, pokud se služba nemůže připojit ke zdrojové databázi pomocí zadaných přihlašovacích údajů T-SQL. Pokud chcete problém vyřešit, ověřte zadané přihlašovací údaje. Můžete také použít [MSSQLSERVER_18456](https://docs.microsoft.com/sql/relational-databases/errors-events/mssqlserver-18456-database-engine-error?view=sql-server-2017) nebo k dokumentům pro řešení problémů, které jsou uvedeny v poznámce pod touto tabulkou, a akci opakovat. |
-| Poskytla{0}se chybná hodnota účtu. Očekávaný formát pro účet Account je název_domény \ uživatelské_jméno.<br> | K této chybě dojde, pokud uživatel vybere ověřování systému Windows, ale uživatelské jméno bude v neplatném formátu. Pokud chcete tento problém vyřešit, zadejte uživatelské jméno ve správném formátu pro ověřování systému Windows nebo vyberte **ověřování SQL**. |
+| Poskytla se chybná hodnota účtu {0} . Očekávaný formát pro účet Account je název_domény \ uživatelské_jméno.<br> | K této chybě dojde, pokud uživatel vybere ověřování systému Windows, ale uživatelské jméno bude v neplatném formátu. Pokud chcete tento problém vyřešit, zadejte uživatelské jméno ve správném formátu pro ověřování systému Windows nebo vyberte **ověřování SQL**. |
 
 ## <a name="aws-rds-mysql"></a>AWS VP MySQL
 

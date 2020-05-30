@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/30/2016
 ms.author: allensu
-ms.openlocfilehash: 97d78b5bc77fef30bf7e3ad082a70f16a2ec74d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 820e50d9fe60b76639bf74067129e65c7394ff4c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82146597"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194219"
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-portal"></a>Přiřazení více IP adres k virtuálním počítačům pomocí Azure Portal
 
@@ -38,7 +38,7 @@ K síťovému rozhraní Azure můžete přidat privátní a veřejné IP adresy,
 
 ### <a name="core-steps"></a><a name="coreadd"></a>Základní kroky
 
-1. V https://portal.azure.com případě potřeby vyhledejte Azure Portal a přihlaste se k ní.
+1. V případě potřeby vyhledejte Azure Portal https://portal.azure.com a přihlaste se k ní.
 2. Na portálu klikněte na **Další služby** > do pole Filtr zadejte *virtuální počítače* a potom klikněte na **virtuální počítače**.
 3. V podokně **virtuální počítače** klikněte na virtuální počítač, do kterého chcete přidat IP adresy. Přejděte na kartu **sítě** . na stránce klikněte na **síťové rozhraní** . Jak je znázorněno na obrázku níže: 
 
@@ -52,8 +52,8 @@ K síťovému rozhraní Azure můžete přidat privátní a veřejné IP adresy,
 
 Chcete-li přidat novou privátní IP adresu, proveďte následující kroky:
 
-1. Proveďte kroky v části [základní kroky](#coreadd) tohoto článku.
-2. Klikněte na tlačítko **Add** (Přidat). V podokně **Přidat konfiguraci protokolu IP** , které se zobrazí, vytvořte konfiguraci protokolu IP s názvem *ipconfig-4* s *10.0.0.7* jako se *statickou* privátní IP adresou a pak klikněte na **OK**.
+1. Proveďte kroky v části [základní kroky](#coreadd) tohoto článku a ujistěte se, že jste v části **Konfigurace protokolu IP** v síťovém rozhraní virtuálního počítače.  Zkontrolujte podsíť zobrazenou jako výchozí (například 10.0.0.0/24).
+2. Klikněte na tlačítko **Add** (Přidat). V podokně **Přidat konfiguraci protokolu IP** , které se zobrazí, vytvořte konfiguraci protokolu IP s názvem *ipconfig-4* s novou *statickou* privátní IP adresou, a to tak, že vydáte nové číslo pro výsledný oktet a kliknete na **OK**.  (Pro podsíť 10.0.0.0/24 by se měla *10.0.0.7*příklad IP adresa.)
 
     > [!NOTE]
     > Když přidáváte statickou IP adresu, musíte v podsíti, ke které je připojená síťová karta, zadat nepoužitou platnou adresu. Pokud vybraná adresa není k dispozici, portál zobrazí X pro IP adresu a Vy musíte vybrat jinou.
@@ -74,8 +74,8 @@ Veřejná IP adresa se přidá pomocí přidružení prostředku veřejné IP ad
 
 Veřejná IP adresa je jedno nastavení pro prostředek veřejné IP adresy. Pokud máte prostředek veřejné IP adresy, který není aktuálně přidružený ke konfiguraci protokolu IP, kterou chcete přidružit ke konfiguraci protokolu IP, přeskočte následující postup a proveďte kroky uvedené v jedné z následujících částí, jak budete potřebovat. Pokud nemáte dostupný prostředek veřejné IP adresy, proveďte následující kroky, abyste ho vytvořili:
 
-1. V https://portal.azure.com případě potřeby vyhledejte Azure Portal a přihlaste se k ní.
-3. Na portálu klikněte na **vytvořit prostředek** > **síť** > **Veřejná IP adresa**.
+1. V případě potřeby vyhledejte Azure Portal https://portal.azure.com a přihlaste se k ní.
+3. Na portálu klikněte na **vytvořit prostředek**  >  **síť**  >  **Veřejná IP adresa**.
 4. V podokně **vytvořit veřejnou IP adresu** , která se zobrazí, zadejte **název**, vyberte typ **přiřazení IP adresy** , **předplatné**, **skupinu prostředků**a **umístění**a pak klikněte na **vytvořit**, jak je znázorněno na následujícím obrázku:
 
     ![Vytvoření prostředku veřejné IP adresy](./media/virtual-network-multiple-ip-addresses-portal/figure5.png)

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 281a6b713c5480c6bd25539eeacc304670352667
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76710325"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194349"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Jak určit scénáře a plánovat zpracování dat pokročilé analýzy
 
@@ -75,7 +75,7 @@ Zvažte použití Azure Data Factory (ADF), když je potřeba průběžně migro
 * hybridní scénář, který zahrnuje místní i cloudové prostředky
 * scénář, ve kterém jsou data v průběhu migrace zpracovávána, upravena nebo měněna obchodní logikou
 
-Další informace najdete v tématu [přesun dat z místního SQL serveru pro SQL Azure s Azure Data Factory](move-sql-azure-adf.md).
+Další informace najdete v tématu [přesun dat z databáze SQL Server do SQL Azure pomocí Azure Data Factory](move-sql-azure-adf.md).
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Kolik dat se má přesunout do Azure?
 
@@ -90,7 +90,7 @@ Tyto otázky jsou klíčem k plánování prostředí úložiště a zpracován�
 * Číselné
 * Kategorické
 * Řetězce
-* binární
+* Binární
 
 ### <a name="how-is-your-data-formatted"></a>Jak vaše data jsou formátovaná?
 

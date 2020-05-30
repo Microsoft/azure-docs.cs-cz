@@ -3,12 +3,13 @@ title: Mapování oblastí Azure Monitor pro kontejnery
 description: Tento článek popisuje mapování oblastí podporované mezi Azure Monitor pro kontejnery, Log Analytics pracovním prostorem a vlastními metrikami.
 ms.topic: conceptual
 ms.date: 06/26/2019
-ms.openlocfilehash: a058f9cac987bb5c7130019f50370c6a176b09ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: references_regions
+ms.openlocfilehash: 3e8ead78c5e0e534e07c1e2ab0e25eb3f5a90c38
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75403428"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194993"
 ---
 # <a name="region-mappings-supported-by-azure-monitor-for-containers"></a>Mapování oblastí podporované Azure Monitor pro kontejnery
 

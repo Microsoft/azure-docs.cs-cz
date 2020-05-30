@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5e4e80af106de7c4bc8f09bdbecbc84199c2b3
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: bbdf4c57e1bf6e7f3f581b9a6186567e10743d52
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171153"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221175"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Pravidla dynamického členství pro skupiny v Azure Active Directory
 
@@ -36,7 +36,7 @@ Když se změní kterýkoli atribut uživatele nebo zařízení, systém vyhodno
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Tvůrce pravidel v Azure Portal
 
-Azure AD poskytuje tvůrci pravidel pro rychlejší vytváření a aktualizaci důležitých pravidel. Tvůrce pravidel podporuje vytváření až pěti výrazů. Tvůrce pravidel usnadňuje vytvoření pravidla s několika jednoduchými výrazy, ale nelze ho použít k reprodukování všech pravidel. Pokud tvůrce pravidel nepodporuje pravidlo, které chcete vytvořit, můžete použít textové pole.
+Azure AD poskytuje tvůrci pravidel pro rychlejší vytváření a aktualizaci důležitých pravidel. Tvůrce pravidel podporuje konstrukci až pěti výrazů. Tvůrce pravidel usnadňuje vytvoření pravidla s několika jednoduchými výrazy, ale nelze ho použít k reprodukování všech pravidel. Pokud tvůrce pravidel nepodporuje pravidlo, které chcete vytvořit, můžete použít textové pole.
 
 Tady jsou některé příklady pokročilých pravidel nebo syntaxe, pro které doporučujeme sestavit pomocí textového pole:
 
