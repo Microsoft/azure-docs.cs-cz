@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: diberry
-ms.openlocfilehash: ec997c802f83b0d1eea54c0710b0ebc4684397fe
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 42717b1e9b4ba12c2fe42dbd13ef44223ef2ba43
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83584616"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220203"
 ---
 # <a name="cognitive-services-and-machine-learning"></a>Cognitive Services a strojové učení
 
@@ -26,7 +26,7 @@ Cognitive Services poskytuje možnosti strojového učení, které řeší Obecn
 |--|--|
 |[Rozhodnutí](https://azure.microsoft.com/services/cognitive-services/directory/decision/)|Sestavujte aplikace, které zveřejňují doporučení pro informované a efektivní rozhodování.|
 |[Jazyk](https://azure.microsoft.com/services/cognitive-services/directory/lang/)|Umožněte svým aplikacím, aby zpracovávaly přirozený jazyk s využitím předem sestavených skriptů, vyhodnocovaly subjektivní hodnocení a naučily se rozpoznávat, co uživatelé chtějí.|
-|[Hledat](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Přidejte do svých aplikací rozhraní API pro Vyhledávání Bingu a využijte možnosti pročesávat miliardy webů, obrázků, videí a novinek pomocí jediného volání rozhraní API.|
+|[Vyhledávání](https://azure.microsoft.com/services/cognitive-services/directory/search/)|Přidejte do svých aplikací rozhraní API pro Vyhledávání Bingu a využijte možnosti pročesávat miliardy webů, obrázků, videí a novinek pomocí jediného volání rozhraní API.|
 |[Řeč](https://azure.microsoft.com/services/cognitive-services/directory/speech/)|Převádějte řeč na text a text na přirozeně znějící řeč. Překládejte z jednoho jazyka do druhého a používejte možnost ověření a rozpoznání mluvčího.|
 |[Obraz](https://azure.microsoft.com/services/cognitive-services/directory/vision/)|Využijte možnost rozpoznávat, identifikovat, indexovat a moderovat vaše obrázky, videa a obsah digitálního rukopisu a opatřovat je titulky.|
 ||||
@@ -93,10 +93,10 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |--|--|--|--|
 |[Detektor anomálií](./Anomaly-Detector/overview.md)|x|x|x|
 |Vyhledávání pomocí služby Bing |x|||
-|[Počítačové zpracování obrazu](./Computer-vision/Home.md)|x|||
+|[Computer Vision](./Computer-vision/Home.md)|x|||
 |[Content Moderator](./Content-Moderator/overview.md)|x||x|
 |[Custom Vision](./Custom-Vision-Service/home.md)||x||
-|[Rozpoznávání tváře](./Face/Overview.md)|x|x||
+|[Tvář](./Face/Overview.md)|x|x||
 |[Rozpoznávání formulářů](./form-recognizer/overview.md)||x||
 |[Asistivní čtečka](./immersive-reader/overview.md)|x|||
 |[Rozpoznávání rukopisu](./Ink-recognizer/overview.md)|x|x||
@@ -108,7 +108,7 @@ Následující data kategorizují každou službu podle druhu dat, která povolu
 |[Převod řeči na text (STT)](speech-service/speech-to-text.md)|x|x||
 |[Překlad řeči](speech-service/speech-translation.md)|x|||
 |[Analýza textu](./text-analytics/overview.md)|x|||
-|[Translator](./translator/translator-info-overview.md)|x|||
+|[Překladač](./translator/translator-info-overview.md)|x|||
 |[Překladatel – vlastní Překladatel](./translator/custom-translator/overview.md)||x||
 
 * Přizpůsobený modul potřebuje jenom školicí data shromážděná službou (stejně jako v reálném čase) k vyhodnocení vašich zásad a dat. Přizpůsobování nepotřebuje velké historické datové sady pro školení předem nebo Batch. 

@@ -11,23 +11,23 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: b756ad44c9702d7b8a2e1fe02c1404e0309f4f10
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d9c387a095f81978bc57f6ce6365596cafffc39c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054111"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196997"
 ---
-# <a name="use-powershell-to-add-an-azure-sql-database-elastic-pool-to-a-failover-group"></a>Přidání elastického fondu Azure SQL Database do skupiny převzetí služeb při selhání pomocí PowerShellu
+# <a name="use-powershell-to-add-an-elastic-pool-to-a-failover-group"></a>Přidání elastického fondu do skupiny převzetí služeb při selhání pomocí PowerShellu
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Tento ukázkový skript PowerShellu vytvoří izolovanou databázi, přidá ji do elastického fondu, vytvoří skupinu převzetí služeb při selhání a otestuje převzetí služeb při selhání.
+Tento příklad skriptu Azure PowerShell vytvoří databázi v Azure SQL Database, přidá ji do elastického fondu, vytvoří skupinu převzetí služeb při selhání a otestuje převzetí služeb při selhání.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, je nutné, aby tento kurz byl AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="sample-scripts"></a>Ukázkové skripty
 

@@ -1,6 +1,6 @@
 ---
 title: 'PowerShell: Přesun databáze mezi elastickými fondy'
-description: Azure PowerShell ukázkový skript pro přesunutí databáze do SQL Database mezi dvěma elastickými fondy pomocí PowerShellu.
+description: Pomocí ukázkového skriptu Azure PowerShell můžete přesunout databázi v SQL Database mezi dvěma elastickými fondy.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,27 +11,28 @@ author: stevestein
 ms.reviewer: ''
 ms.author: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: f2811fd16dbda13a98ae7e7cb3de0671b278d698
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: de26542c56eeddefc560c17a9d7b03f18f7c15a3
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053703"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196781"
 ---
-# <a name="use-powershell-to-create-elastic-pools-and-move-databases-between-elastic-pools"></a>Vytvoření elastických fondů a přesun databází mezi elastickými fondy pomocí PowerShellu
+# <a name="use-powershell-to-create-elastic-pools-and-move-a-database-between-them"></a>Použití PowerShellu k vytváření elastických fondů a přesunu databáze mezi nimi
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Tento ukázkový skript PowerShellu vytvoří dva elastické fondy a přesune databázi v SQL Database z jednoho elastického fondu do jiného elastického fondu a pak přesune databázi z elastického fondu do jediné výpočetní velikosti databáze.
+Tento ukázkový skript PowerShellu vytvoří dva elastické fondy, přesune databázi ve fondu v SQL Database z jednoho elastického fondu SQL do jiného elastického fondu SQL a pak přesune databázi ve fondu do elastického fondu SQL, aby byla jedinou databází v Azure SQL Database.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, musíte použít AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, je nutné, aby tento kurz byl AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
-[!code-powershell-interactive[main](../../../../powershell_scripts/sql-database/move-database-between-pools-and-standalone/move-database-between-pools-and-standalone.ps1?highlight=18-19 "Move database between pools")]
+[!code-powershell-interactive[main](../../../../powershell_scripts/sql-database/move-database-between-pools-and-standalone/move-database-between-pools-and-standalone.ps1?highlight=18-19 "Move a database between pools")]
 
 ## <a name="clean-up-deployment"></a>Vyčištění nasazení
 
@@ -57,6 +58,6 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+Další informace o Azure PowerShell najdete v [dokumentaci k Azure PowerShell](/powershell/azure/overview).
 
 Další ukázkové skripty PowerShellu pro službu SQL Database najdete v tématu [Skripty PowerShellu pro službu Azure SQL Database](../powershell-script-content-guide.md).

@@ -4,13 +4,13 @@ description: Vytvořte definici OpenAPI, která umožní ostatním aplikacím a 
 ms.topic: tutorial
 ms.date: 04/21/2020
 ms.reviewer: sunayv
-ms.custom: mvc, cc996988-fb4f-47
-ms.openlocfilehash: 7d63d5ea17184ffa6e456877079da0821a75d59e
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: mvc, cc996988-fb4f-47, references_regions
+ms.openlocfilehash: 87f7b47354d3d76d5185b1bf956fd0c422c092bd
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121395"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197025"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>Vytvoření definice OpenAPI pro rozhraní API bez serveru s využitím Azure API Management
 

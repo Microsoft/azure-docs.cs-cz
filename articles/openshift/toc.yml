@@ -75,9 +75,9 @@
       href: /rest/api/openshift
 - name: Zdroje a prostředky
   items:
-    - name: Časté dotazy
+    - name: Nejčastější dotazy
       href: openshift-faq.md
-    - name: Řešení potíží
+    - name: Odstraňování potíží
       href: troubleshoot.md
     - name: Podporované prostředky pro Azure Red Hat OpenShift 3.11
       href: supported-resources.md

@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: vytvoření samostatné databáze'
-description: Pomocí tohoto ukázkového skriptu Azure CLI vytvořte jednu Azure SQL Database.
+title: 'Rozhraní příkazového řádku Azure CLI: vytvoření samostatné databáze'
+description: Pomocí tohoto ukázkového skriptu Azure CLI vytvořte jedinou databázi.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,17 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: ab847f13b6c75eeb31c4d20877d7a314e53f47ac
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: de554f48297c228df9345a6e822096d05b85652f
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054087"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196866"
 ---
-# <a name="use-the-azure-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>Vytvoření jednoho Azure SQL Database a konfigurace pravidla brány firewall pomocí Azure CLI
+# <a name="use-the-azure-cli-to-create-a-single-database-and-configure-a-firewall-rule"></a>Použití rozhraní příkazového řádku Azure k vytvoření jedné databáze a konfiguraci pravidla brány firewall
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Tento ukázkový skript Azure CLI vytvoří Azure SQL Database a nakonfiguruje pravidlo brány firewall na úrovni serveru. Po úspěšném spuštění skriptu bude služba SQL Database přístupná ze všech služeb Azure a nakonfigurovaných IP adres.
+Tento ukázkový skript Azure CLI vytvoří v Azure SQL Database jedinou databázi a nakonfiguruje pravidlo brány firewall na úrovni serveru. Po úspěšném spuštění skriptu se k databázi dostanete ze všech služeb Azure a nakonfigurované IP adresy.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 

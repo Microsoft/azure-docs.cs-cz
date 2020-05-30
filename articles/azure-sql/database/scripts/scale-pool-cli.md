@@ -1,6 +1,6 @@
 ---
-title: 'AZ CL: Scale elastický fond'
-description: Ukázkový skript Azure CLI pro horizontální navýšení kapacity elastického fondu v Azure SQL Database
+title: 'Azure CLI: škálování elastického fondu'
+description: K horizontálnímu škálování elastického fondu v Azure SQL Database použijte ukázkový skript Azure CLI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: elastic-pools
@@ -11,19 +11,20 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
-ms.openlocfilehash: 04736fbfeef9cf0584cf7c1f1a5daf91813ecbc7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 30862a85796fbe4373a88d80d9a6d26c8cf98901
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053943"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196740"
 ---
-# <a name="use-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Použití CLI k horizontálnímu škálování elastického fondu v Azure SQL Database
+# <a name="use-the-azure-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Použití rozhraní příkazového řádku Azure k horizontálnímu navýšení kapacity elastického fondu v Azure SQL Database
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
 Tento ukázkový skript Azure CLI vytvoří elastické fondy v Azure SQL Database, přesune databáze ve fondu a změní výpočetní velikosti elastického fondu.
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít Azure CLI verze 2,0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Ukázkový skript
 

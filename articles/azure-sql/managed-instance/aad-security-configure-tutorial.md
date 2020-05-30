@@ -10,20 +10,20 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
-ms.openlocfilehash: 54195652cfdf476f364a31bf710852dab33fb154
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5152f78b428008d3f9a76264f2253167e6c5a138
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053481"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219811"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Kurz: zabezpečení ve spravované instanci Azure SQL pomocí objektů zabezpečení serveru Azure AD (přihlášení)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-SQL Managed instance poskytuje téměř všechny funkce zabezpečení, které má nejnovější SQL Server databázový stroj místní edice (Enterprise Edition):
+Azure SQL Managed instance poskytuje skoro všechny funkce zabezpečení, které má nejnovější databázový stroj SQL Server (Enterprise Edition):
 
 - Omezení přístupu v izolovaném prostředí
-- Použití ověřovacích mechanismů, které vyžadují identitu (Azure AD, ověřování SQL)
+- Použití ověřovacích mechanismů, které vyžadují identitu: Azure Active Directory (Azure AD) a ověřování SQL
 - Ověřování pomocí členství a oprávnění na základě rolí
 - Povolit funkce zabezpečení
 
@@ -31,8 +31,8 @@ V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
-> - Vytvoření objektu Azure Active Directory (AD) Server (přihlášení) pro spravovanou instanci SQL
-> - Udělení oprávnění pro objekty zabezpečení serveru Azure AD (přihlášení) ve spravované instanci SQL
+> - Vytvoření objektu zabezpečení serveru Azure AD (přihlášení) pro spravovanou instanci
+> - Udělení oprávnění pro objekty zabezpečení serveru Azure AD (přihlášení) ve spravované instanci
 > - Vytváření uživatelů Azure AD z objektů zabezpečení serveru Azure AD (přihlášení)
 > - Přiřazení oprávnění pro uživatele Azure AD a správu zabezpečení databáze
 > - Použití zosobnění s uživateli Azure AD
@@ -46,33 +46,33 @@ Další informace najdete v tématu [Přehled spravované instance Azure SQL](sq
 K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
-- Spravovaná instance SQL
-  - Postupujte podle tohoto článku: [rychlý Start: vytvoření spravované instance SQL](instance-create-quickstart.md)
-- Možnost přístupu ke spravované instanci SQL a [zřízení správce Azure AD pro spravovanou instanci SQL](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) Další informace naleznete v tématu:
-  - [Připojení aplikace k spravované instanci SQL](connect-application-instance.md)
+- Spravovaná instance
+  - Postupujte podle tohoto článku: [rychlý Start: vytvoření spravované instance](instance-create-quickstart.md)
+- Přístup k spravované instanci a [zřízení správce Azure AD pro spravovanou instanci](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance). Další informace naleznete v tématu:
+  - [Připojení aplikace ke spravované instanci](connect-application-instance.md)
   - [Architektura připojení spravované instance SQL](connectivity-architecture-overview.md)
   - [Konfigurace a Správa ověřování Azure Active Directory pomocí SQL](../database/authentication-aad-configure.md)
 
 ## <a name="limit-access"></a>Omezení přístupu 
 
-Ke spravovaným instancím SQL je možné přistupovat prostřednictvím privátní IP adresy. Podobně jako izolované SQL Server místní prostředí potřebují aplikace nebo uživatelé přístup k síti spravované instance SQL (VNet), aby bylo možné navázat připojení. Další informace najdete v následujícím článku [připojení aplikace k spravované instanci SQL](connect-application-instance.md).
+K spravovaným instancím je možné přistupovat prostřednictvím privátní IP adresy. Podobně jako izolované SQL Server prostředí potřebují aplikace nebo uživatelé přístup k síti spravované instance SQL (VNet), než může být navázáno připojení. Další informace najdete v tématu [připojení aplikace k spravované instanci SQL](connect-application-instance.md).
 
-Je také možné nakonfigurovat koncový bod služby na spravované instanci SQL, která umožňuje veřejné připojení stejným způsobem jako Azure SQL Database.
-Další informace najdete v následujícím článku [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL](public-endpoint-configure.md).
+Je také možné nakonfigurovat koncový bod služby ve spravované instanci, která umožňuje veřejné připojení stejným způsobem jako u Azure SQL Database.
+Další informace najdete v tématu [Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL](public-endpoint-configure.md).
 
 > [!NOTE]
 > I s povolenými koncovými body služby [Azure SQL Database pravidla brány firewall](../database/firewall-configure.md) neplatí. Spravovaná instance Azure SQL má svou vlastní [vestavěnou bránu firewall](management-endpoint-verify-built-in-firewall.md) pro správu připojení.
 
 ## <a name="create-an-azure-ad-server-principal-login-using-ssms"></a>Vytvoření objektu zabezpečení serveru Azure AD (přihlášení) pomocí SSMS
 
-První objekt zabezpečení serveru Azure AD (přihlášení) se dá vytvořit pomocí standardního účtu správce SQL (mimo Azure AD), `sysadmin` nebo správce Azure AD pro spravovanou instanci SQL vytvořenou během procesu zřizování. Další informace najdete v tématu [zřízení správce Azure Active Directory pro vaši spravovanou instanci SQL](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance).
+První objekt zabezpečení serveru Azure AD (přihlášení) se dá vytvořit pomocí standardního účtu správce SQL (mimo Azure AD), `sysadmin` nebo správce Azure AD pro spravovanou instanci vytvořenou během procesu zřizování. Další informace najdete v tématu [zřízení správce Azure Active Directory pro spravovanou instanci SQL](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance).
 
 Příklady připojení ke spravované instanci SQL najdete v následujících článcích:
 
 - [Rychlý Start: konfigurace virtuálního počítače Azure pro připojení ke spravované instanci SQL](connect-vm-instance-configure.md)
 - [Rychlý Start: Konfigurace připojení typu Point-to-site k spravované instanci SQL z místního prostředí](point-to-site-p2s-configure.md)
 
-1. Přihlaste se ke spravované instanci SQL pomocí standardního přihlašovacího účtu SQL (mimo Azure AD), který je `sysadmin` správcem Azure AD pro mi, pomocí [SQL Server Management Studio](point-to-site-p2s-configure.md#connect-with-ssms).
+1. Přihlaste se ke svojí spravované instanci pomocí standardního přihlašovacího účtu SQL (mimo Azure AD), který je `sysadmin` správcem Azure AD pro spravovanou instanci SQL, a to pomocí [SQL Server Management Studio](point-to-site-p2s-configure.md#connect-with-ssms).
 
 2. V **Průzkumník objektů**klikněte pravým tlačítkem myši na server a vyberte možnost **Nový dotaz**.
 
@@ -121,11 +121,11 @@ Aby bylo možné vytvářet další objekty zabezpečení serveru Azure AD (při
 - Pokud chcete nově vytvořenému objektu zabezpečení serveru Azure AD (přihlášení) povolit možnost vytvářet další přihlášení pro ostatní uživatele, skupiny nebo aplikace Azure AD, udělte `sysadmin` roli přihlášení nebo `securityadmin` serveru.
 - Aby bylo možné vytvářet další objekty zabezpečení serveru Azure AD (přihlášení), musí být pro objekt zabezpečení serveru Azure AD (přihlášení) k dispozici alespoň Změna oprávnění k **přihlášení** .
 - Ve výchozím nastavení má standardní oprávnění udělené nově vytvořeným objektům zabezpečení serveru Azure AD (přihlášení) v hlavní databázi: **Connect SQL** a **zobrazení jakékoli databáze**.
-- `sysadmin`Role serveru může být udělena mnoha objektům zabezpečení serveru Azure AD (přihlášení) v rámci spravované instance SQL.
+- `sysadmin`Role serveru může být udělena mnoha objektům zabezpečení serveru Azure AD (přihlášeními) v rámci spravované instance.
 
 Přidání přihlašovacích údajů do `sysadmin` role serveru:
 
-1. Přihlaste se znovu ke službě SQL Managed instance nebo použijte existující připojení ke Správci služby Azure AD nebo objektu zabezpečení SQL, který je `sysadmin` .
+1. Přihlaste se ke spravované instanci znovu nebo použijte existující připojení ke Správci služby Azure AD nebo objektu zabezpečení SQL, který je `sysadmin` .
 
 1. V **Průzkumník objektů**klikněte pravým tlačítkem myši na server a vyberte možnost **Nový dotaz**.
 
@@ -147,7 +147,7 @@ Přidání přihlašovacích údajů do `sysadmin` role serveru:
 
 Po vytvoření objektu zabezpečení serveru Azure AD (přihlášení) a jeho `sysadmin` použití s oprávněním může přihlášení vytvořit další přihlášení pomocí klauzule **z externího poskytovatele** s příkazem **vytvořit přihlášení**.
 
-1. Pomocí SQL Server Management Studio se připojte k spravované instanci SQL pomocí objektu zabezpečení serveru Azure AD (přihlášení). Zadejte název hostitele spravované instance SQL. Pro ověřování v SSMS existují tři možnosti, ze kterých si můžete vybrat, když se přihlásíte pomocí účtu Azure AD:
+1. Připojte se ke spravované instanci pomocí objektu zabezpečení serveru Azure AD (přihlášení) pomocí SQL Server Management Studio. Zadejte název hostitele spravované instance SQL. Pro ověřování v SSMS existují tři možnosti, ze kterých si můžete vybrat, když se přihlásíte pomocí účtu Azure AD:
 
    - Active Directory – univerzální s podporou vícefaktorového ověřování
    - Active Directory – heslo
@@ -155,9 +155,9 @@ Po vytvoření objektu zabezpečení serveru Azure AD (přihlášení) a jeho `s
 
      ![SSMS-Login-prompt. png](./media/aad-security-configure-tutorial/ssms-login-prompt.png)
 
-     Další informace najdete v následujícím článku: [univerzální ověřování (podpora SSMS pro MFA)](../database/authentication-mfa-ssms-overview.md) .
+     Další informace najdete v tématu [univerzální ověřování (podpora SSMS pro Multi-Factor Authentication)](../database/authentication-mfa-ssms-overview.md).
 
-1. Vyberte **Active Directory – univerzální s podporou vícefaktorového ověřování**. Tím se zobrazí okno přihlášení Multi-Factor Authentication (MFA). Přihlaste se pomocí svého hesla služby Azure AD.
+1. Vyberte **Active Directory – univerzální s podporou vícefaktorového ověřování**. Tím se zobrazí okno přihlášení Multi-Factor Authentication. Přihlaste se pomocí svého hesla služby Azure AD.
 
     ![MFA-Login-prompt. png](./media/aad-security-configure-tutorial/mfa-login-prompt.png)
 
@@ -171,7 +171,7 @@ Po vytvoření objektu zabezpečení serveru Azure AD (přihlášení) a jeho `s
     GO
     ```
 
-    Tento příklad vytvoří přihlášení pro uživatele Azure AD bob@aadsqlmi.net , jehož domain aadsqlmi.NET je federované pomocí Azure ad aadsqlmi.onmicrosoft.com.
+    Tento příklad vytvoří přihlášení pro uživatele Azure AD bob@aadsqlmi.net , jehož doména aadsqlmi.NET je federované s doménou Azure ad aadsqlmi.onmicrosoft.com.
 
     Spusťte následující příkaz T-SQL. Účty federované služby Azure AD jsou nahrazeními spravované instance SQL pro místní přihlášení a uživatele Windows.
 
@@ -182,7 +182,7 @@ Po vytvoření objektu zabezpečení serveru Azure AD (přihlášení) a jeho `s
     GO
     ```
 
-1. Vytvořte databázi ve spravované instanci SQL pomocí syntaxe [Create Database](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) . Tato databáze bude sloužit k testování přihlášení uživatelů v následující části.
+1. Vytvořte databázi ve spravované instanci pomocí syntaxe [Create Database](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-mi-current) . Tato databáze bude sloužit k testování přihlášení uživatelů v následující části.
     1. V **Průzkumník objektů**klikněte pravým tlačítkem myši na server a vyberte možnost **Nový dotaz**.
     1. V okně dotazu vytvořte pomocí následující syntaxe databázi s názvem **MyMITestDB**.
 
@@ -195,7 +195,7 @@ Po vytvoření objektu zabezpečení serveru Azure AD (přihlášení) a jeho `s
 
 1. Otevřete nové okno dotazu v SQL Server Management Studio.
 
-    V tomto příkladu se předpokládá, že ve službě Azure AD existuje skupina s názvem _MYGROUP_ . Spusťte následující příkaz:
+    V tomto příkladu se předpokládá, že existuje skupina s názvem _MYGROUP_ ve službě Azure AD. Spusťte následující příkaz:
 
     ```sql
     USE master
@@ -204,7 +204,7 @@ Po vytvoření objektu zabezpečení serveru Azure AD (přihlášení) a jeho `s
     GO
     ```
 
-1. Jako test se přihlaste ke spravované instanci SQL pomocí nově vytvořeného přihlášení nebo skupiny. Otevřete nové připojení ke spravované instanci SQL a při ověřování použijte nové přihlašovací údaje.
+1. Jako test se přihlaste ke spravované instanci s nově vytvořeným přihlášením nebo skupinou. Otevřete nové připojení ke spravované instanci a při ověřování použijte nové přihlašovací údaje.
 1. V **Průzkumník objektů**klikněte pravým tlačítkem myši na server a vyberte **Nový dotaz** pro nové připojení.
 1. Ověřte oprávnění serveru k nově vytvořenému objektu zabezpečení serveru Azure AD (přihlášení) spuštěním následujícího příkazu:
 
@@ -214,13 +214,13 @@ Po vytvoření objektu zabezpečení serveru Azure AD (přihlášení) a jeho `s
       ```
 
 > [!NOTE]
-> Uživatelé Azure AD hosta se podporují pro přihlašovací údaje spravované instance SQL jenom v případě, že se přidají jako součást skupiny Azure AD. Uživatel typu Host služby Azure AD je účet, který je pozván do Azure AD, ke kterému patří spravovaná instance SQL, z jiné služby Azure AD. Například joe@contoso.com (účet Azure AD) nebo steve@outlook.com (účet MSA) se dají přidat do skupiny ve službě Azure AD aadsqlmi. Po přidání uživatelů do skupiny se přihlašovací jméno dá vytvořit v **hlavní** databázi spravované instance SQL pro skupinu pomocí syntaxe **Vytvoření přihlašovacích** údajů. Uživatelé typu Host, kteří jsou členy této skupiny, se mohou připojit k spravované instanci SQL pomocí jejich aktuálních přihlášení (například joe@contoso.com nebo steve@outlook.com ).
+> Uživatelé Azure AD hosta se podporují pro přihlašovací údaje spravované instance SQL jenom v případě, že se přidají jako součást skupiny Azure AD. Uživatel typu Host služby Azure AD je účet, který je pozván do instance služby Azure AD, ke které patří spravovaná instance, z jiné instance služby Azure AD. Například joe@contoso.com (účet Azure AD) nebo steve@outlook.com (účet Microsoft) se dají přidat do skupiny v instanci Azure AD aadsqlmi. Po přidání uživatelů do skupiny se přihlašovací jméno dá vytvořit v **hlavní** databázi spravované instance SQL pro skupinu pomocí syntaxe **Vytvoření přihlašovacích** údajů. Uživatelé typu Host, kteří jsou členy této skupiny, se mohou připojit ke spravované instanci pomocí jejich aktuálních přihlášení (například joe@contoso.com nebo steve@outlook.com ).
 
 ## <a name="create-an-azure-ad-user-from-the-azure-ad-server-principal-login"></a>Vytvoření uživatele služby Azure AD z objektu zabezpečení serveru Azure AD (přihlášení)
 
-Autorizace pro jednotlivé databáze funguje v podstatě stejným způsobem jako ve spravované instanci SQL, protože se SQL Server v místním prostředí. Uživatele je možné vytvořit z existujícího přihlašovacího jména v databázi a poskytnout je s oprávněními k této databázi nebo přidat k databázové roli.
+Autorizace pro jednotlivé databáze funguje v podstatě stejným způsobem jako ve spravované instanci SQL, stejně jako u databází v SQL Server. Uživatele je možné vytvořit z existujícího přihlašovacího jména v databázi a poskytnout je s oprávněními k této databázi nebo přidat k databázové roli.
 
-Teď, když jsme vytvořili databázi s názvem **MyMITestDB**a přihlašovací jméno, které má jenom výchozí oprávnění, je dalším krokem vytvoření uživatele z tohoto přihlašovacího jména. V tuto chvíli se přihlášení může připojit k spravované instanci SQL a zobrazit všechny databáze, ale nemůže s databázemi pracovat. Pokud se přihlásíte pomocí účtu Azure AD, který má výchozí oprávnění, a pokusíte se rozšířit nově vytvořenou databázi, zobrazí se následující chyba:
+Teď, když jsme vytvořili databázi s názvem **MyMITestDB**a přihlašovací jméno, které má jenom výchozí oprávnění, je dalším krokem vytvoření uživatele z tohoto přihlašovacího jména. V tuto chvíli se přihlašovací jméno může připojit ke spravované instanci a zobrazit všechny databáze, ale nemůže s databázemi pracovat. Pokud se přihlásíte pomocí účtu Azure AD, který má výchozí oprávnění, a pokusíte se rozšířit nově vytvořenou databázi, zobrazí se následující chyba:
 
 ![SSMS-DB-not-Accessible. png](./media/aad-security-configure-tutorial/ssms-db-not-accessible.png)
 
@@ -228,7 +228,7 @@ Další informace o udělení oprávnění databáze najdete v tématu [Začín�
 
 ### <a name="create-an-azure-ad-user-and-create-a-sample-table"></a>Vytvoření uživatele Azure AD a vytvoření ukázkové tabulky
 
-1. Přihlaste se ke spravované instanci SQL pomocí `sysadmin` účtu pomocí SQL Server Management Studio.
+1. Přihlaste se ke svojí spravované instanci pomocí `sysadmin` účtu pomocí SQL Server Management Studio.
 1. V **Průzkumník objektů**klikněte pravým tlačítkem myši na server a vyberte možnost **Nový dotaz**.
 1. Pomocí následující syntaxe v okně dotazu vytvořte uživatele Azure AD z objektu zabezpečení serveru Azure AD (přihlášení):
 
@@ -250,7 +250,7 @@ Další informace o udělení oprávnění databáze najdete v tématu [Začín�
 
 1. Také se podporuje vytvoření uživatele služby Azure AD z objektu zabezpečení serveru Azure AD (přihlášení), který je skupina.
 
-    Následující příklad vytvoří přihlášení pro skupinu Azure AD _MYGROUP_ , která existuje ve službě Azure AD.
+    Následující příklad vytvoří přihlášení pro skupinu Azure AD _MYGROUP_ , která existuje ve vaší instanci Azure AD.
 
     ```sql
     USE MyMITestDB
@@ -259,7 +259,7 @@ Další informace o udělení oprávnění databáze najdete v tématu [Začín�
     GO
     ```
 
-    Všichni uživatelé, kteří patří do **MYGROUP** , mají přístup k databázi **MyMITestDB** .
+    Všichni uživatelé, kteří patří do *MYGROUP* , mají přístup k databázi **MyMITestDB** .
 
     > [!IMPORTANT]
     > Při vytváření **uživatele** z objektu zabezpečení serveru Azure AD (přihlášení) zadejte user_name jako stejný Login_name od **přihlášení**.
@@ -293,7 +293,7 @@ Další informace o udělení oprávnění databáze najdete v tématu [Začín�
 
 Aby mohl uživatel zobrazit data v databázi, můžeme uživatelům poskytnout role na [úrovni databáze](/sql/relational-databases/security/authentication-access/database-level-roles) .
 
-1. Přihlaste se ke spravované instanci SQL pomocí `sysadmin` účtu pomocí SQL Server Management Studio.
+1. Přihlaste se ke svojí spravované instanci pomocí `sysadmin` účtu pomocí SQL Server Management Studio.
 
 1. V **Průzkumník objektů**klikněte pravým tlačítkem myši na server a vyberte možnost **Nový dotaz**.
 
@@ -316,14 +316,14 @@ Aby mohl uživatel zobrazit data v databázi, můžeme uživatelům poskytnout r
     GO
     ```
 
-1. Pomocí následujícího příkazu ověřte, že uživatel služby Azure AD, který byl vytvořen v databázi, existuje:
+1. Ověřte, že uživatel Azure AD, který byl vytvořen v databázi, existuje spuštěním následujícího příkazu:
 
     ```sql
     SELECT * FROM sys.database_principals
     GO
     ```
 
-1. Vytvořte nové připojení k spravované instanci SQL pomocí uživatele, který byl přidán do `db_datareader` role.
+1. Vytvořte nové připojení ke spravované instanci pomocí uživatele, který byl přidán do `db_datareader` role.
 1. Rozbalením databáze v **Průzkumník objektů** zobrazíte tabulku.
 
     ![SSMS-test-Table. png](./media/aad-security-configure-tutorial/ssms-test-table.png)
@@ -345,7 +345,7 @@ Spravovaná instance SQL podporuje zosobnění objektů zabezpečení na úrovni
 
 ### <a name="test-impersonation"></a>Zosobnění testu
 
-1. Přihlaste se ke spravované instanci SQL pomocí `sysadmin` účtu pomocí SQL Server Management Studio.
+1. Přihlaste se ke svojí spravované instanci pomocí `sysadmin` účtu pomocí SQL Server Management Studio.
 
 1. V **Průzkumník objektů**klikněte pravým tlačítkem myši na server a vyberte možnost **Nový dotaz**.
 
@@ -387,7 +387,7 @@ Spravovaná instance SQL podporuje zosobnění objektů zabezpečení na úrovni
 
 Mezidatabázové dotazy jsou podporovány pro účty Azure AD s objekty zabezpečení serveru Azure AD (přihlašovací údaje). Abychom mohli otestovat dotaz mezi databázemi pomocí skupiny Azure AD, musíme vytvořit další databázi a tabulku. Můžete přeskočit vytvoření další databáze a tabulky, pokud již existuje.
 
-1. Přihlaste se ke spravované instanci SQL pomocí `sysadmin` účtu pomocí SQL Server Management Studio.
+1. Přihlaste se ke svojí spravované instanci pomocí `sysadmin` účtu pomocí SQL Server Management Studio.
 1. V **Průzkumník objektů**klikněte pravým tlačítkem myši na server a vyberte možnost **Nový dotaz**.
 1. V okně dotazu vytvořte pomocí následujícího příkazu databázi s názvem **MyMITestDB2** a tabulku s názvem **TestTable2**:
 
@@ -416,7 +416,7 @@ Mezidatabázové dotazy jsou podporovány pro účty Azure AD s objekty zabezpe�
     GO
     ```
 
-1. Přihlaste se k spravované instanci SQL pomocí SQL Server Management Studio jako člena skupiny Azure AD _MYGROUP_. Otevřete nové okno dotazu a spusťte příkaz pro výběr mezi databázemi:
+1. Přihlaste se ke spravované instanci pomocí SQL Server Management Studio jako člen skupiny Azure AD _MYGROUP_. Otevřete nové okno dotazu a spusťte příkaz pro výběr mezi databázemi:
 
     ```sql
     USE MyMITestDB
@@ -440,7 +440,7 @@ Mezidatabázové dotazy jsou podporovány pro účty Azure AD s objekty zabezpe�
 
 ### <a name="enable-security-features"></a>Povolit funkce zabezpečení
 
-Úplný seznam způsobů, jak zabezpečit databázi, najdete v článku následující [funkce zabezpečení funkcí spravovaných instancí SQL](sql-managed-instance-paas-overview.md#security-features) . Projednávají se následující funkce zabezpečení:
+Úplný seznam způsobů, jak zabezpečit databázi, najdete v článku [funkce zabezpečení spravované instance SQL](sql-managed-instance-paas-overview.md#security-features) . Projednávají se následující funkce zabezpečení:
 
 - [Auditování spravované instance SQL](auditing-configure.md)
 - [Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
@@ -449,7 +449,7 @@ Mezidatabázové dotazy jsou podporovány pro účty Azure AD s objekty zabezpe�
 - [Zabezpečení na úrovni řádku](/sql/relational-databases/security/row-level-security)
 - [Transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
-### <a name="managed-instance-capabilities"></a>Možnosti spravované instance
+### <a name="sql-managed-instance-capabilities"></a>Možnosti spravované instance SQL
 
 Úplný přehled funkcí spravované instance SQL najdete v těchto tématech:
 

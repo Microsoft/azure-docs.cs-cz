@@ -1,6 +1,6 @@
 ---
-title: 'Azure CLI: Přidání databáze do skupiny převzetí služeb při selhání'
-description: Ukázkový skript Azure CLI, který vytvoří Azure SQL Database, přidá ho do skupiny automatického převzetí služeb při selhání a otestuje převzetí služeb při selhání.
+title: 'Rozhraní příkazového řádku Azure CLI: Přidání databáze do skupiny převzetí služeb při selhání'
+description: Pomocí ukázkového skriptu Azure CLI můžete vytvořit databázi v Azure SQL Database, přidat ji do skupiny automatického převzetí služeb při selhání a otestovat převzetí služeb při selhání.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,18 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
-ms.openlocfilehash: fcad936c6fe4b50e0e16b6a059e9565418b5bdad
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 09c98f626d9f32a2a6f9f3e31e0db0e4751adacb
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053949"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196978"
 ---
-# <a name="use-cli-to-add-an-azure-sql-database-into-a-failover-group"></a>Přidání Azure SQL Database do skupiny převzetí služeb při selhání pomocí rozhraní příkazového řádku
+# <a name="use-the-azure-cli-to-add-a-database-to-a-failover-group"></a>Přidání databáze do skupiny převzetí služeb při selhání pomocí Azure CLI
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqldb.md)]
 
-Tento ukázkový skript Azure CLI vytvoří Azure SQL Database, vytvoří skupinu převzetí služeb při selhání, přidá do ní databázi a otestuje převzetí služeb při selhání.
+Tento ukázkový skript Azure CLI vytvoří v Azure SQL Database databázi, vytvoří skupinu převzetí služeb při selhání, přidá do ní databázi a otestuje převzetí služeb při selhání.
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku (CLI) místně, musíte mít spuštěnou verzi Azure CLI 2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI]( /cli/azure/install-azure-cli).
 

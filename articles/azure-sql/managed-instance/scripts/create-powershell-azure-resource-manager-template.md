@@ -1,7 +1,7 @@
 ---
-title: 'Vytvoření instance (šablona ARM & PowerShell) '
+title: Vytvoření spravované instance (šablona ARM & PowerShell)
 titleSuffix: Azure SQL Managed Instance
-description: Pomocí tohoto ukázkového skriptu Azure PowerShell vytvořit spravovanou instanci SQL Azure.
+description: Pomocí tohoto Azure PowerShell příkladu skriptu vytvořte spravovanou instanci.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,27 +12,28 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 55b0c8f569a91075d4cd87541af7aeff5da69f9a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9024759f87d30cddfa2f3b7ea6b965ce03632f59
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053967"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220872"
 ---
-# <a name="use-powershell-with-azure-resource-manager-template-to-create-an-azure-sql-managed-instance"></a>Použití PowerShellu se šablonou Azure Resource Manager k vytvoření spravované instance Azure SQL
+# <a name="use-powershell-with-an-azure-resource-manager-template-to-create-a-managed-instance"></a>Použití PowerShellu se šablonou Azure Resource Manager k vytvoření spravované instance
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqlmi.md)]
 
-Spravovanou instanci Azure SQL je možné vytvořit pomocí knihovny Azure PowerShell a šablon Azure Resource Manager.
+Spravovanou instanci můžete vytvořit pomocí knihovny Azure PowerShell a šablon Azure Resource Manager.
 
 [!INCLUDE [quickstarts-free-trial-note](../../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, je nutné, aby tento kurz byl AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, spusťte příkaz `Connect-AzAccount` a vytvořte připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento kurz Azure PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, spusťte příkaz `Connect-AzAccount` a vytvořte připojení k Azure.
 
 Azure PowerShell příkazy mohou spustit nasazení pomocí předdefinované Azure Resource Manager šablony. V šabloně lze zadat následující vlastnosti:
 
-- Název spravované instance SQL
+- Název spravované instance
 - Uživatelské jméno a heslo správce SQL.
 - Velikost instance (počet jader a maximální velikost úložiště).
 - Virtuální síť a podsíť, do které bude instance umístěna.
@@ -42,10 +43,10 @@ Název instance, uživatelské jméno správce SQL, virtuální síť/podsíť a
 
 ## <a name="prerequisites"></a>Požadavky
 
-V této ukázce se předpokládá, že jste [vytvořili platné síťové prostředí](../virtual-network-subnet-create-arm-template.md) nebo [upravili stávající virtuální síť](../vnet-existing-add-subnet.md) pro spravovanou instanci SQL. V případě potřeby můžete v případě potřeby připravit síťové prostředí pomocí samostatné [spravované šablony prostředků Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment). 
+V této ukázce se předpokládá, že jste [vytvořili platné síťové prostředí](../virtual-network-subnet-create-arm-template.md) nebo [upravili stávající virtuální síť](../vnet-existing-add-subnet.md) pro spravovanou instanci. V případě potřeby můžete v případě potřeby připravit síťové prostředí pomocí samostatné [šablony Azure Resource Manager](https://github.com/Azure/azure-quickstart-templates/tree/master/101-sql-managed-instance-azure-environment). 
 
 
-Ukázka používá rutiny [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork) , takže se ujistěte, že máte nainstalované následující moduly PowerShellu:
+Ukázka používá rutiny [New-AzResourceGroupDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azresourcegroupdeployment) a [Get-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/get-azvirtualnetwork), takže se ujistěte, že máte nainstalované následující moduly PowerShellu:
 
 ```powershell
 Install-Module Az.Network
@@ -112,7 +113,7 @@ Aktualizujte následující skript PowerShellu se správnou cestou k souboru. JS
 $subscriptionId = "ed827499-xxxx-xxxx-xxxx-xxxxxxxxxx"
 Select-AzSubscription -SubscriptionId $subscriptionId
 
-# Managed Instance properties
+# Managed instance properties
 $resourceGroup = "rg_mi"
 $location = "West Central US"
 $name = "managed-instance-name"
@@ -127,16 +128,16 @@ $vNet = Get-AzVirtualNetwork -Name $vNetName -ResourceGroupName $vNetResourceGro
 $subnet = Get-AzVirtualNetworkSubnetConfig -Name $SubnetName -VirtualNetwork $vNet
 $subnetId = $subnet.Id
 
-# Deploy Instance using Azure Resource Manager template:
+# Deploy instance using Azure Resource Manager template:
 New-AzResourceGroupDeployment  -Name MyDeployment -ResourceGroupName $resourceGroup  `
                                     -TemplateFile 'C:\...\create-managed-instance.json' `
                                     -instance $name -user $user -pwd $secpasswd -subnetId $subnetId
 ```
 
-Po dokončení skriptu se ke spravované instanci SQL dostanete ze všech služeb Azure a nakonfigurovaných IP adres.
+Po dokončení skriptu se ke spravované instanci dostanete ze všech služeb Azure a nakonfigurovaných IP adres.
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o Azure PowerShellu najdete v [dokumentaci k Azure PowerShellu](/powershell/azure/overview).
+Další informace o Azure PowerShell najdete v [dokumentaci k Azure PowerShell](/powershell/azure/overview).
 
-Další ukázkové skripty PowerShellu spravované instance SQL najdete v [skriptech PowerShell spravované instance Azure SQL](../../database/powershell-script-content-guide.md).
+Další ukázkové skripty PowerShellu pro spravovanou instanci Azure SQL najdete ve [skriptech PowerShellu spravovaných instancí Azure SQL](../../database/powershell-script-content-guide.md).

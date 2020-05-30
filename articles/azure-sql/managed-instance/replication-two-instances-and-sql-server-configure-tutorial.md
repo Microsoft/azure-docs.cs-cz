@@ -10,12 +10,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: 33c83beccd13fd0e7d9991ab878289a8f2a89b06
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a34ac27459a84048ac5fc9ef10f6f55def6cec78
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118693"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84221325"
 ---
 # <a name="tutorial-configure-transactional-replication-between-azure-sql-managed-instance-and-sql-server"></a>Kurz: Konfigurace transakční replikace mezi spravovanou instancí Azure SQL a SQL Server
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -28,11 +28,11 @@ V tomto kurzu se naučíte:
 > - Nakonfigurujte spravovanou instanci jako distributora replikace.
 > - Nakonfigurujte SQL Server jako předplatitele.
 
-![Replikace mezi SQL MI Pub, SQL MI DIST a SQL Server sub](./media/replication-two-instances-and-sql-server-configure-tutorial/sqlmi-to-sql-replication.png)
+![Replikace mezi vydavatelem spravované instance, distributorem spravované instance a předplatitelem SQL Server](./media/replication-two-instances-and-sql-server-configure-tutorial/sqlmi-to-sql-replication.png)
 
-Tento kurz je určený pro zkušené publikum a předpokládá, že uživatel je obeznámen s nasazením a připojením ke spravovaným instancím a s SQL Servermi virtuálními počítači v rámci Azure. V takovém případě jsou některé kroky v tomto kurzu vyleskované.
+Tento kurz je určený pro zkušené publikum a předpokládá, že uživatel je obeznámen s nasazením a připojením ke spravovaným instancím a SQL Server virtuálním počítačům v rámci Azure. V takovém případě jsou některé kroky v tomto kurzu vyleskované.
 
-Další informace najdete v článku [Přehled spravované instance Azure SQL](sql-managed-instance-paas-overview.md)a v článcích o [transakční replikaci SQL](replication-transactional-overview.md) .
+Další informace najdete v článcích [Přehled spravované instance SQL Azure](sql-managed-instance-paas-overview.md) a [transakční replikace SQL](replication-transactional-overview.md) .
 
 Chcete-li nakonfigurovat replikaci mezi vydavatelem spravované instance a odběratelem spravované instance, přečtěte si téma [Konfigurace transakční replikace mezi dvěma spravovanými instancemi](replication-between-two-instances-configure-tutorial.md).
 
@@ -42,10 +42,10 @@ K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
 - [Předplatné Azure](https://azure.microsoft.com/free/).
 - Možnosti nasazení dvou spravovaných instancí v rámci stejné virtuální sítě.
-- SQL Server předplatitelem, ať už místní, nebo virtuální počítač Azure. V tomto kurzu se používá virtuální počítač Azure.  
+- Předplatitel SQL Server, buď místně, nebo na virtuálním počítači Azure. V tomto kurzu se používá virtuální počítač Azure.  
 - [SQL Server Management Studio (SSMS) 18,0 nebo vyšší](/sql/ssms/download-sql-server-management-studio-ssms).
 - Nejnovější verze [Azure PowerShell](/powershell/azure/install-az-ps?view=azps-1.7.0).
-- Porty 445 a 1433 umožňují provoz SQL na Azure Firewall i bráně Windows Firewall.
+- Porty 445 a 1433 umožňují provoz SQL v bráně firewall Azure i bráně Windows Firewall.
 
 ## <a name="1---create-the-resource-group"></a>1. Vytvoření skupiny prostředků
 
@@ -64,12 +64,12 @@ New-AzResourceGroup -Name  $ResourceGroupName -Location $Location
 
 Pomocí [Azure Portal](https://portal.azure.com)vytvořte v rámci této nové skupiny prostředků dvě spravované instance.
 
-- Název spravované instance vydavatele by měl být: `sql-mi-publisher` (spolu s několika znaky pro náhodnost) a název virtuální sítě by měl být `vnet-sql-mi-publisher` .
-- Název spravované instance distributora by měl: `sql-mi-distributor` (spolu s několika znaky pro náhodnost) a měl by být _ve stejné virtuální síti jako spravovaná instance vydavatele_.
+- Název spravované instance vydavatele by měl být `sql-mi-publisher` (spolu s několika znaky pro náhodnost) a název virtuální sítě by měl být `vnet-sql-mi-publisher` .
+- Název spravované instance distributora by měl být `sql-mi-distributor` (spolu s několika znaky pro náhodnost) a měl by být _ve stejné virtuální síti jako spravovaná instance vydavatele_.
 
    ![Použití virtuální sítě vydavatele pro distributora](./media/replication-two-instances-and-sql-server-configure-tutorial/use-same-vnet-for-distributor.png)
 
-Další informace o vytváření spravované instance najdete v tématu [Vytvoření spravované instance na portálu](instance-create-quickstart.md) .
+Další informace o vytváření spravované instance najdete v tématu [Vytvoření spravované instance na portálu](instance-create-quickstart.md).
 
   > [!NOTE]
   > V zájmu jednoduchosti a vzhledem k tomu, že se jedná o nejběžnější konfiguraci, tento kurz navrhuje umístění spravované instance distributora ve stejné virtuální síti jako vydavatel. Distributor je však možné vytvořit v samostatné virtuální síti. Provedete to tak, že budete muset nakonfigurovat partnerský vztah VPN mezi virtuálními sítěmi vydavatele a distributora a potom nakonfigurovat partnerský vztah VPN mezi virtuálními sítěmi distributora a odběratele.
@@ -83,7 +83,7 @@ Vytvořte virtuální počítač s SQL Server pomocí [Azure Portal](https://por
 - Skupina prostředků: stejná jako spravovaná instance
 - Virtuální síť:`sql-vm-sub-vnet`
 
-Další informace o nasazení SQL Server virtuálního počítače do Azure najdete v tématu [rychlý Start: vytvoření SQL Server virtuálního počítače](../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
+Další informace o nasazení SQL Server virtuálního počítače do Azure najdete v tématu [rychlý Start: Vytvoření virtuálního počítače s SQL Server](../virtual-machines/windows/sql-vm-create-portal-quickstart.md).
 
 ## <a name="4---configure-vpn-peering"></a>4. konfigurace partnerského vztahu VPN
 
@@ -118,13 +118,13 @@ Add-AzVirtualNetworkPeering `
   -VirtualNetwork $virtualNetwork2 `
   -RemoteVirtualNetworkId $virtualNetwork1.Id
 
-# Check status of peering on the publisher vNet; should say connected
+# Check status of peering on the publisher VNet; should say connected
 Get-AzVirtualNetworkPeering `
  -ResourceGroupName $resourceGroup `
  -VirtualNetworkName $pubvNet `
  | Select PeeringState
 
-# Check status of peering on the subscriber vNet; should say connected
+# Check status of peering on the subscriber VNet; should say connected
 Get-AzVirtualNetworkPeering `
  -ResourceGroupName $resourceGroup `
  -VirtualNetworkName $subvNet `
@@ -132,17 +132,17 @@ Get-AzVirtualNetworkPeering `
 
 ```
 
-Po navázání partnerského vztahu VPN, otestujte připojení tak, že na SQL Server spustíte SQL Server Management Studio (SSMS) a připojíte se ke spravovaným instancím. Další informace o připojení ke spravované instanci pomocí SSMS najdete v tématu [použití SSMS pro připojení k mi](point-to-site-p2s-configure.md#connect-with-ssms).
+Po navázání partnerského vztahu VPN se otestuje připojení spuštěním SQL Server Management Studio (SSMS) na SQL Server a připojením ke spravovaným instancím. Další informace o připojení ke spravované instanci pomocí SSMS najdete v tématu [použití SSMS pro připojení ke spravované instanci SQL](point-to-site-p2s-configure.md#connect-with-ssms).
 
 ![Test připojení ke spravovaným instancím](./media/replication-two-instances-and-sql-server-configure-tutorial/test-connectivity-to-mi.png)
 
-## <a name="5---create-private-dns-zone"></a>5 – Vytvoření privátní zóny DNS
+## <a name="5---create-a-private-dns-zone"></a>5. Vytvoření privátní zóny DNS
 
 Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a SQL Server.
 
-### <a name="create-private-dns-zone"></a>Vytvořit privátní zónu DNS
+### <a name="create-a-private-dns-zone"></a>Vytvoření privátní zóny DNS
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Pokud chcete vytvořit nový prostředek Azure, vyberte **vytvořit prostředek** .
 1. Hledat `private dns zone` na Azure Marketplace.
 1. Zvolte prostředek **zóny privátní DNS** publikovaný Microsoftem a pak vyberte **vytvořit** a vytvořte zónu DNS.
@@ -153,13 +153,13 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 
 1. Vyberte **Zkontrolovat a vytvořit**. Zkontrolujte parametry vaší privátní zóny DNS a pak vyberte **vytvořit** a vytvořte prostředek.
 
-### <a name="create-a-record"></a>Vytvoření záznamu
+### <a name="create-an-a-record"></a>Vytvoření záznamu A
 
 1. Přejít do nové **zóny privátní DNS** a vyberte **Přehled**.
-1. Vyberte **+ Sada záznamů** a vytvořte nový záznam a.
+1. Vyberte **+ Sada záznamů** a vytvořte nový záznam.
 1. Zadejte název vašeho virtuálního počítače SQL Server a privátní interní IP adresu.
 
-   ![Konfigurace záznamu](./media/replication-two-instances-and-sql-server-configure-tutorial/configure-a-record.png)
+   ![Konfigurace záznamu A](./media/replication-two-instances-and-sql-server-configure-tutorial/configure-a-record.png)
 
 1. Vyberte **OK** a vytvořte záznam A.
 
@@ -176,9 +176,9 @@ Privátní zóna DNS umožňuje směrování DNS mezi spravovanými instancemi a
 1. Vyberte **OK** a propojte svoji virtuální síť.
 1. Opakováním těchto kroků přidejte odkaz pro virtuální síť předplatitele s názvem, jako je například `Sub-link` .
 
-## <a name="6---create-azure-storage-account"></a>6. vytvoření účtu Azure Storage
+## <a name="6---create-an-azure-storage-account"></a>6. vytvoření účtu úložiště Azure
 
-[Vytvořte účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílenou složku](../../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště.
+[Vytvořte účet úložiště Azure](https://docs.microsoft.com/azure/storage/common/storage-create-storage-account#create-a-storage-account) pro pracovní adresář a pak vytvořte [sdílenou složku](../../storage/files/storage-how-to-create-file-share.md) v rámci účtu úložiště.
 
 Zkopírujte cestu ke sdílené složce ve formátu:`\\storage-account-name.file.core.windows.net\file-share-name`
 
@@ -192,11 +192,11 @@ Další informace najdete v tématu [Správa přístupových klíčů účtu úl
 
 ## <a name="7---create-a-database"></a>7. vytvoření databáze
 
-Vytvoří novou databázi na vydavateli MI. Postup je následující:
+Vytvoří novou databázi na spravované instanci vydavatele. Postup je následující:
 
-1. Na SQL Server spusťte SQL Server Management Studio (SSMS).
+1. Spustí SQL Server Management Studio na SQL Server.
 1. Připojte se ke `sql-mi-publisher` spravované instanci.
-1. Otevřete **nové okno dotazu** a spusťte následující dotaz T-SQL k vytvoření databáze:
+1. Otevřete **nové okno dotazu** a spusťte následující dotaz T-SQL k vytvoření databáze.
 
 ```sql
 -- Create the databases
@@ -242,7 +242,7 @@ GO
 
 Jakmile se naváže připojení a máte ukázkovou databázi, můžete nakonfigurovat distribuci na `sql-mi-distributor` spravované instanci. Postup je následující:
 
-1. Na SQL Server spusťte SQL Server Management Studio (SSMS).
+1. Spustí SQL Server Management Studio na SQL Server.
 1. Připojte se ke `sql-mi-distributor` spravované instanci.
 1. Otevřete **nové okno dotazu** a spusťte následující kód Transact-SQL ke konfiguraci distribuce na spravované instanci distributora:
 
@@ -264,16 +264,16 @@ Jakmile se naváže připojení a máte ukázkovou databázi, můžete nakonfigu
 1. Připojte se ke `sql-mi-publisher` spravované instanci.
 1. Otevřete **nové okno dotazu** a spusťte následující kód Transact-SQL k registraci distributora na vydavateli:
 
-```sql
-Use MASTER
-EXEC sys.sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
-```
+   ```sql
+   Use MASTER
+   EXEC sys.sp_adddistributor @distributor = 'sql-mi-distributor.b6bf57.database.windows.net', @password = '<distributor_admin_password>'
+   ```
 
 ## <a name="9---create-the-publication"></a>9. vytvoření publikace
 
 Po nakonfigurování distribuce teď můžete vytvořit publikaci. Postup je následující:
 
-1. Na SQL Server spusťte SQL Server Management Studio (SSMS).
+1. Spustí SQL Server Management Studio na SQL Server.
 1. Připojte se ke `sql-mi-publisher` spravované instanci.
 1. V **Průzkumník objektů**rozbalte uzel **replikace** a klikněte pravým tlačítkem myši na složku **místní publikace** . Vybrat **novou publikaci...**.
 1. Kliknutím na tlačítko **Další** přejdete za úvodní stránku.
@@ -282,7 +282,7 @@ Po nakonfigurování distribuce teď můžete vytvořit publikaci. Postup je ná
 1. Na stránce **články** zaškrtněte políčko vedle pole **tabulky**. Vyberte **Další**.
 1. Na stránce **Filtrovat řádky tabulky** vyberte **Další** bez přidání jakýchkoli filtrů.
 1. Na stránce **Agent snímku** zaškrtněte políčko vedle **vytvořit snímek hned a nechte snímek dostupný pro inicializaci předplatných**. Vyberte **Další**.
-1. Na stránce **zabezpečení agenta** vyberte **nastavení zabezpečení.**.. Zadejte SQL Server přihlašovací přihlašovací údaje pro použití pro agenta snímku a připojení k vydavateli. Výběrem **OK** zavřete stránku **zabezpečení agenta snímků** . Vyberte **Další**.
+1. Na stránce **zabezpečení agenta** vyberte **nastavení zabezpečení...**. Zadejte SQL Server přihlašovací přihlašovací údaje pro použití pro agenta snímku a připojení k vydavateli. Výběrem **OK** zavřete stránku **zabezpečení agenta snímků** . Vyberte **Další**.
 
    ![Konfigurace zabezpečení agenta snímků](./media/replication-two-instances-and-sql-server-configure-tutorial/snapshot-agent-security.png)
 
@@ -294,7 +294,7 @@ Po nakonfigurování distribuce teď můžete vytvořit publikaci. Postup je ná
 
 Po vytvoření publikace můžete vytvořit předplatné. Postup je následující:
 
-1. Na SQL Server spusťte SQL Server Management Studio (SSMS).
+1. Spustí SQL Server Management Studio na SQL Server.
 1. Připojte se ke `sql-mi-publisher` spravované instanci.
 1. Otevřete **nové okno dotazu** a spusťte následující kód Transact-SQL pro přidání agenta pro odběr a distribuci. Jako součást názvu předplatitele použijte DNS.
 
@@ -344,7 +344,7 @@ INSERT INTO ReplTest (ID, c1) VALUES (15, 'pub')
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
 1. Přejděte do skupiny prostředků v [Azure Portal](https://portal.azure.com).
-1. Vyberte spravované instance a pak vyberte **Odstranit**. `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**. Dokončení tohoto procesu může nějakou dobu trvat na pozadí a až do té doby, nebudete moct *virtuální cluster* ani žádné jiné závislé prostředky odstranit. Sledujte odstranění na kartě aktivita a potvrďte, že se vaše spravovaná instance odstranila.
+1. Vyberte spravované instance a pak vyberte **Odstranit**. `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**. Dokončení tohoto procesu může nějakou dobu trvat na pozadí a až do dokončení, nebudete moci odstranit *virtuální cluster* ani žádné jiné závislé prostředky. Sledujte odstranění na kartě **aktivita** a potvrďte, že se vaše spravovaná instance odstranila.
 1. Po odstranění spravované instance odstraňte *virtuální cluster* tak, že ho vyberete ve vaší skupině prostředků, a pak zvolíte **Odstranit**. `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**.
 1. Odstraňte všechny zbývající prostředky. `yes`Do textového pole zadejte a potvrďte, že chcete odstranit prostředek, a pak vyberte **Odstranit**.
 1. Odstraňte skupinu prostředků výběrem možnosti **Odstranit skupinu prostředků**, zadáním názvu skupiny prostředků `myResourceGroup` a pak výběrem možnosti **Odstranit**.
@@ -368,7 +368,9 @@ Pravděpodobnou příčinou je to, že port 445 je uzavřený buď v bráně fir
 `Connecting to Azure Files Storage '\\replstorage.file.core.windows.net\replshare' Failed to connect to Azure Storage '' with OS error: 55.`
 
 Tato chyba může způsobit použití lomítka místo zpětného lomítka v cestě k souboru pro sdílenou složku.
-To je v pořádku: `\\replstorage.file.core.windows.net\replshare` může to způsobit chybu operačního systému 55:`'\\replstorage.file.core.windows.net/replshare'`
+  
+  - To je v pořádku:`\\replstorage.file.core.windows.net\replshare`
+  - Příčinou může být Chyba operačního systému 55:`'\\replstorage.file.core.windows.net/replshare'`
 
 ### <a name="could-not-connect-to-subscriber"></a>Nepovedlo se připojit k předplatiteli.
 
@@ -382,7 +384,7 @@ Možná řešení:
 - Zajistěte, aby byl na odběrateli povolen protokol TCP/IP.
 - Potvrďte, že se název DNS použil při vytváření odběratele.
 - Ověřte, že jsou vaše virtuální sítě správně propojené v privátní zóně DNS.
-- Ověřte, jestli je záznam A správně nakonfigurovaný.
+- Ověřte, zda je záznam A správně nakonfigurován.
 - Ověřte, že je nakonfigurován partnerský vztah VPN správně.
 
 ### <a name="no-publications-to-which-you-can-subscribe"></a>Žádné publikace, ke kterým se můžete přihlásit k odběru
@@ -397,7 +399,7 @@ I když je možné, že tato chybová zpráva je přesná a na vydavateli, ke kt
 
 ### <a name="enable-security-features"></a>Povolit funkce zabezpečení
 
-Úplný seznam způsobů, jak zabezpečit databázi, najdete v článku [funkce zabezpečení funkcí spravované instance](sql-managed-instance-paas-overview.md#security-features) . Projednávají se následující funkce zabezpečení:
+Úplný seznam způsobů zabezpečení databáze najdete v článku [co je Azure SQL Managed instance?](sql-managed-instance-paas-overview.md#advanced-security-and-compliance) . Projednávají se následující funkce zabezpečení:
 
 - [Auditování spravované instance SQL](auditing-configure.md)
 - [Funkce Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine)

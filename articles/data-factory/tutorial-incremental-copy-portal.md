@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: b1660c3a6d3bfe262493722c5aad0a08778b1964
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: f5a7bc3cd22d49a65ba3b83d2a9ff41112d07c1a
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119145"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194545"
 ---
 # <a name="incrementally-load-data-from-an-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Přírůstkové načtení dat z Azure SQL Database do úložiště objektů BLOB v Azure pomocí Azure Portal
 
@@ -204,7 +204,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     7. Potvrďte, že je pro **propojenou službu**vybraná možnost **AzureSqlDatabaseLinkedService** .
 
         ![Okno Nová propojená služba](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
-    8. Vyberte **Finish** (Dokončit).
+    8. Vyberte **Dokončit**.
 9. Na kartě **připojení** vyberte **[dbo]. [ vodotisk]** pro **tabulku**. Pokud chcete zobrazit náhled dat v tabulce, klikněte na **Náhled dat**.
 
     ![Datová sada meze – nastavení připojení](./media/tutorial-incremental-copy-portal/watermark-dataset-connection-settings.png)
@@ -217,7 +217,7 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
 13. V okně **Nová datová sada** vyberte **Azure SQL Database**a klikněte na **pokračovat**.
 14. V okně **nastavit vlastnosti** jako **název**zadejte **SourceDataset** . Jako **Propojená služba** vyberte **AzureSqlDatabaseLinkedService**.
 15. Vyberte **[dbo]. [ data_source_table]** pro tabulku. Později v tomto kurzu pro tuto datovou sadu zadáte dotaz. Dotaz má přednost před tabulkou, kterou zadáte v tomto kroku.
-16. Vyberte **Finish** (Dokončit).
+16. Vyberte **Dokončit**.
 17. Přepněte na editor kanálu kliknutím na kartu kanálu v horní části nebo kliknutím na název kanálu ve stromovém zobrazení vlevo. V okně Vlastnosti aktivity **Vyhledávání** ověřte, že je v poli **Zdrojová datová sada** vybraná datová sada **SourceDataset**.
 18. V poli **Použít dotaz** vyberte **Dotaz** a zadejte následující dotaz: vybíráte pouze maximální hodnotu **LastModifytime** z tabulky **tabulka_zdroje_dat**. Ujistěte se prosím, že jste taky zkontrolovali **jenom první řádek**.
 
@@ -272,9 +272,9 @@ V tomto kurzu vytvoříte kanál se dvěma aktivitami vyhledávání, jednou akt
     1. Jako **název uložené procedury**vyberte **usp_write_watermark**.
     2. Pokud chcete zadat hodnoty parametrů uložené procedury, klikněte na **Importovat parametr** a zadejte následující hodnoty parametrů:
 
-        | Name | Typ | Hodnota |
+        | Název | Typ | Hodnota |
         | ---- | ---- | ----- |
-        | LastModifiedtime | Datum a čas | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
+        | LastModifiedtime | DateTime | @{activity('LookupNewWaterMarkActivity').output.firstRow.NewWatermarkvalue} |
         | TableName | Řetězec | @{activity('LookupOldWaterMarkActivity').output.firstRow.TableName} |
 
     ![Aktivita Uložená procedura – nastavení uložené procedury](./media/tutorial-incremental-copy-portal/sproc-activity-stored-procedure-settings.png)
@@ -398,7 +398,7 @@ V tomto kurzu jste provedli následující kroky:
 > * Monitorování druhého spuštění kanálu
 > * Kontrola výsledků druhého spuštění
 
-V tomto kurzu kanál zkopíroval data z jedné tabulky v databázi SQL do úložiště objektů blob. Přejděte na následující kurz, abyste se dozvěděli o kopírování dat z více tabulek v místní databázi SQL Serveru do databáze SQL.
+V tomto kurzu kanál zkopíroval data z jedné tabulky v databázi SQL do úložiště objektů blob. Přejděte k následujícímu kurzu, kde se dozvíte, jak kopírovat data z několika tabulek v databázi SQL Server do SQL Database.
 
 > [!div class="nextstepaction"]
 >[Přírůstkové načtení dat z více tabulek v SQL Serveru do Azure SQL Database](tutorial-incremental-copy-multiple-tables-portal.md)

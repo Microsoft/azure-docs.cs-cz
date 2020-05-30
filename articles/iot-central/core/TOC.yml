@@ -87,8 +87,6 @@
           href: howto-manage-devices.md
         - name: Konfigurace pravidel
           href: howto-configure-rules.md
-        - name: Použití pracovních postupů pro integraci s ostatními službami
-          href: howto-configure-rules-advanced.md
         - name: Analýza dat zařízení
           href: howto-create-analytics.md
         - name: Přidání dlaždic na řídicí panel
@@ -103,6 +101,8 @@
           href: howto-export-data.md
         - name: Vytváření webhooků pro pravidla
           href: howto-create-webhooks.md
+        - name: Použití pracovních postupů pro integraci s ostatními službami
+          href: howto-configure-rules-advanced.md
         - name: Připojení skupin akcí Azure Monitoru k pravidlům
           href: howto-use-action-groups.md
         - name: Vytvoření vlastních rolí

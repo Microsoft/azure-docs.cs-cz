@@ -46,6 +46,8 @@
               href: class-type-mobile-dev-android-studio.md
             - name: Analýzy velkých objemů dat
               href: class-type-big-data-analytics.md
+            - name: MATLAB
+              href: class-type-matlab.md
 - name: Návody
   items:
     - name: Příručka správce

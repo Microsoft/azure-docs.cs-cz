@@ -7,12 +7,12 @@ ms.service: cache
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 03/30/2018
-ms.openlocfilehash: e8b8feff0b66aa0b48c88b43049594003b20e5c0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ca70262a7980df9d427fbd7e58e08b41c37d7133
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75411938"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84195576"
 ---
 # <a name="tutorial-create-a-cache-aside-leaderboard-on-aspnet"></a>Kurz: Vytvoření tabulky výsledků s principem s doplňováním mezipaměti aplikací v ASP.NET
 
@@ -250,7 +250,7 @@ V rychlém startu jste už nainstalovali balíček klientské knihovny *StackExc
 
     ![Kontroler Teams](./media/cache-web-app-cache-aside-leaderboard/cache-teamscontroller.png)
 
-1. Do TeamsController.cs přidejte následující `using` dva příkazy **TeamsController.cs**:
+1. Do TeamsController.cs přidejte následující dva `using` příkazy **TeamsController.cs**:
 
     ```csharp
     using System.Configuration;
@@ -642,9 +642,9 @@ Spuštění aplikace místně:
 
 ## <a name="publish-and-run-in-azure"></a>Publikování a spuštění v Azure
 
-### <a name="provision-a-sql-azure-database-for-the-app"></a>Zřízení databáze SQL Azure pro aplikaci
+### <a name="provision-a-database-for-the-app"></a>Zřízení databáze pro aplikaci
 
-V této části zřídíte novou databázi SQL Azure pro aplikaci, která se bude používat při hostování v Azure.
+V této části zřídíte novou databázi v SQL Database, aby se aplikace používala při hostování v Azure.
 
 1. V levém horním rohu portálu [Azure Portal](https://portal.azure.com/) klikněte na **Vytvořit prostředek**.
 

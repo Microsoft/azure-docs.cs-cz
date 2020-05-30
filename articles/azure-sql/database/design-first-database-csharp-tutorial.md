@@ -10,12 +10,12 @@ author: MightyPen
 ms.author: genemi
 ms.reviewer: carlrab
 ms.date: 07/29/2019
-ms.openlocfilehash: db2ff5916b8a90b0ef3ec8ff8af2de7ae3265f6a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 057ffcdc8a21567e909d768236e454ee10036115
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053895"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216564"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-cx23-and-adonet"></a>Kurz: návrh relační databáze v Azure SQL Database C&#x23; a ADO.NET
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,11 +40,11 @@ Azure SQL Database je relační databáze jako služba (DBaaS) v Microsoft Cloud
 
 Instalace sady [Visual Studio 2019](https://www.visualstudio.com/downloads/) nebo novější.
 
-## <a name="create-a-blank-azure-sql-database"></a>Vytvořit prázdnou Azure SQL Database
+## <a name="create-a-blank-database-in-azure-sql-database"></a>Vytvoření prázdné databáze v Azure SQL Database
 
-Vytvoří se Azure SQL Database s definovanou sadou výpočetních prostředků a prostředků úložiště. Databáze se vytvoří v rámci [skupiny prostředků Azure](../../active-directory-b2c/overview.md) a spravuje se pomocí [logického SQL serveru](logical-servers.md).
+Databáze v Azure SQL Database se vytvoří s definovanou sadou výpočetních prostředků a prostředků úložiště. Databáze se vytvoří v rámci [skupiny prostředků Azure](../../active-directory-b2c/overview.md) a spravuje se pomocí [logického SQL serveru](logical-servers.md).
 
-Pomocí těchto kroků můžete vytvořit prázdnou SQL Database.
+Pomocí těchto kroků vytvořte prázdnou databázi.
 
 1. Klikněte na **Vytvořit prostředek** v levém horním rohu webu Azure Portal.
 2. Na stránce **Nový** v části Azure Marketplace vyberte **Databases** a potom klikněte v části **Doporučené** na **SQL Database**.
@@ -53,7 +53,7 @@ Pomocí těchto kroků můžete vytvořit prázdnou SQL Database.
 
 3. Do formuláře **SQL Database** zadejte následující informace, jak je znázorněno na předchozím obrázku:
 
-    | Nastavení       | Navrhovaná hodnota | Description |
+    | Nastavení       | Navrhovaná hodnota | Popis |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Název databáze** | *yourDatabase* | Platné názvy databází najdete v tématu [identifikátory databáze](/sql/relational-databases/databases/database-identifiers). |
     | **Předplatné** | *yourSubscription*  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
@@ -62,11 +62,11 @@ Pomocí těchto kroků můžete vytvořit prázdnou SQL Database.
 
 4. Pokud chcete použít existující server nebo vytvořit a nakonfigurovat nový server, klikněte na **Server** . Buď vyberte existující server, nebo klikněte na **vytvořit nový server** a vyplňte formulář **nového serveru** pomocí následujících informací:
 
-    | Nastavení       | Navrhovaná hodnota | Description |
+    | Nastavení       | Navrhovaná hodnota | Popis |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
     | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [identifikátory databáze](/sql/relational-databases/databases/database-identifiers). |
-    | **Heslo** | Libovolné platné heslo | Heslo musí mít alespoň osm znaků a musí obsahovat znaky ze tří z následujících kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
+    | **Heslo** | Libovolné platné heslo | Heslo musí mít aspoň osm znaků a musí obsahovat znaky ze tří z těchto kategorií: velká písmena, malá písmena, číslice a jiné než alfanumerické znaky. |
     | **Umístění** | Libovolné platné umístění | Informace o oblastech najdete v tématu [Oblasti služeb Azure](https://azure.microsoft.com/regions/). |
 
     ![create database-server](./media/design-first-database-csharp-tutorial/create-database-server.png)
@@ -86,12 +86,12 @@ Pomocí těchto kroků můžete vytvořit prázdnou SQL Database.
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Vytvoření pravidla brány firewall protokolu IP na úrovni serveru
 
-Služba SQL Database vytvoří bránu firewall protokolu IP na úrovni serveru. Tato brána firewall zabraňuje externím aplikacím a nástrojům v připojení k serveru a libovolné databázi na serveru, pokud pravidlo brány firewall nepovoluje jejich IP adresu přes bránu firewall. Pokud chcete povolit externí připojení k vaší databázi, musíte nejdřív přidat pravidlo brány firewall protokolu IP pro vaši IP adresu (nebo rozsah IP adres). Pomocí těchto kroků vytvořte [pravidlo brány firewall protokolu IP na úrovni serveru](firewall-configure.md).
+SQL Database vytvoří bránu firewall protokolu IP na úrovni serveru. Tato brána firewall zabraňuje externím aplikacím a nástrojům v připojení k serveru a libovolné databázi na serveru, pokud pravidlo brány firewall nepovoluje jejich IP adresu přes bránu firewall. Pokud chcete povolit externí připojení k vaší databázi, musíte nejdřív přidat pravidlo brány firewall protokolu IP pro vaši IP adresu (nebo rozsah IP adres). Pomocí těchto kroků vytvořte [pravidlo brány firewall protokolu IP na úrovni serveru](firewall-configure.md).
 
 > [!IMPORTANT]
-> Služba SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit k této službě v rámci podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k databázi, pokud správce neotevře port 1433.
+> SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit k této službě v rámci podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k databázi, pokud správce neotevře port 1433.
 
-1. Po dokončení nasazení klikněte v nabídce na levé straně na **databáze SQL** a pak na stránce **databáze SQL** klikněte na *yourDatabase* . Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný **název serveru** (například *yourserver.Database.Windows.NET*), který poskytuje možnosti pro další konfiguraci.
+1. Po dokončení nasazení klikněte na **databáze SQL** z nabídky na levé straně a pak na stránce **databáze SQL** klikněte na *yourDatabase* . Otevře se stránka s přehledem pro vaši databázi, na které se zobrazí plně kvalifikovaný **název serveru** (například *yourserver.Database.Windows.NET*), který poskytuje možnosti pro další konfiguraci.
 
 2. Zkopírujte tento plně kvalifikovaný název serveru, abyste ho mohli použít pro připojení k serveru a databázím z SQL Server Management Studio.
 
@@ -110,7 +110,7 @@ Služba SQL Database vytvoří bránu firewall protokolu IP na úrovni serveru. 
 Vaše IP adresa teď může projít bránou firewall protokolu IP. Nyní se můžete připojit k databázi pomocí SQL Server Management Studio nebo jiného nástroje podle vašeho výběru. Ujistěte se, že používáte účet správce serveru, který jste předtím vytvořili.
 
 > [!IMPORTANT]
-> Ve výchozím nastavení je přístup prostřednictvím brány firewall SQL Database IP adres povolený pro všechny služby Azure. Kliknutím na **OFF** na této stránce provedete zákaz pro všechny služby Azure.
+> Ve výchozím nastavení je přístup prostřednictvím brány firewall SQL Database IP adres povolený pro všechny služby Azure. Kliknutím na **vypnout** na této stránce zakážete přístup pro všechny služby Azure.
 
 [!INCLUDE [sql-database-csharp-adonet-create-query-2](../../../includes/sql-database-csharp-adonet-create-query-2.md)]
 

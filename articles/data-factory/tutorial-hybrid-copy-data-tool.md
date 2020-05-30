@@ -1,6 +1,6 @@
 ---
 title: Kopírování místních dat pomocí nástroje Azure Kopírování dat
-description: Vytvořte datovou továrnu Azure a pak pomocí nástroje pro kopírování dat zkopírujte data z místní databáze SQL Serveru do úložiště objektů blob v Azure.
+description: Vytvořte datovou továrnu Azure a pak pomocí nástroje Kopírování dat zkopírujte data z databáze SQL Server do úložiště objektů BLOB v Azure.
 services: data-factory
 ms.author: abnarain
 author: nabhishek
@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 04/09/2018
-ms.openlocfilehash: 6b4df324fec38d08355754146d8be76d225e6cb7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: badf6ed4e4a330aae288cd6a2b102941901a0461
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81418588"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194593"
 ---
-# <a name="copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure pomocí nástroje pro kopírování dat
+# <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopírování dat z databáze SQL Server do úložiště objektů BLOB v Azure pomocí nástroje Kopírování dat
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 > * [Aktuální verze](tutorial-hybrid-copy-data-tool.md)
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-V tomto kurzu pomocí webu Azure Portal vytvoříte datovou továrnu. Pak pomocí nástroje pro kopírování dat vytvoříte kanál, který kopírujte data z místní databáze SQL Serveru do úložiště objektů blob v Azure.
+V tomto kurzu pomocí webu Azure Portal vytvoříte datovou továrnu. Pak použijete nástroj Kopírování dat k vytvoření kanálu, který kopíruje data z databáze SQL Server do úložiště objektů BLOB v Azure.
 
 > [!NOTE]
 > - Pokud se službou Azure Data Factory teprve začínáte, přečtěte si téma [Seznámení se službou Data Factory](introduction.md).
@@ -47,7 +47,7 @@ Pro vytvoření instancí služby Data Factory musí být uživatelský účet, 
 Pokud chcete zobrazit oprávnění, která v předplatném máte, přejděte na web Azure Portal. V pravém horním rohu vyberte své uživatelské jméno a pak vyberte **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázkové pokyny pro přidání uživatele k roli najdete v článku o [správě přístupu pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 a 2017
-V tomto kurzu použijete místní databázi SQL Serveru jako *zdrojové* úložiště dat. Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z této místní databáze SQL Serveru (zdroj) do úložiště objektů blob (jímka). Pak vytvoříte tabulku s názvem **EMP** v databázi SQL Server a do tabulky vložíte několik vzorových položek.
+V tomto kurzu použijete databázi SQL Server jako *zdrojové* úložiště dat. Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z této SQL Server databáze (zdroj) do úložiště objektů BLOB (jímka). Pak vytvoříte tabulku s názvem **EMP** v databázi SQL Server a do tabulky vložíte několik vzorových položek.
 
 1. Spusťte aplikaci SQL Server Management Studio. Pokud na vašem počítači ještě není nainstalovaná, přejděte na stránku pro [stažení aplikace SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
@@ -74,7 +74,7 @@ V tomto kurzu použijete místní databázi SQL Serveru jako *zdrojové* úloži
     ```
 
 ### <a name="azure-storage-account"></a>Účet služby Azure Storage
-V tomto kurzu použijete účet úložiště Azure (konkrétně úložiště objektů blob) pro obecné účely jako cílové úložiště dat nebo úložiště dat jímky. Pokud účet úložiště pro obecné účely nemáte, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete pokyny k jeho vytvoření. Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z místní databáze SQL Serveru (zdroj) do tohoto úložiště objektů blob (jímka). 
+V tomto kurzu použijete účet úložiště Azure (konkrétně úložiště objektů blob) pro obecné účely jako cílové úložiště dat nebo úložiště dat jímky. Pokud účet úložiště pro obecné účely nemáte, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md), kde najdete pokyny k jeho vytvoření. Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z databáze SQL Server (zdroj) do tohoto úložiště objektů BLOB (jímka). 
 
 #### <a name="get-the-storage-account-name-and-account-key"></a>Získání názvu a klíče účtu úložiště
 V tomto kurzu použijete název a klíč svého účtu úložiště. Název a klíč svého účtu úložiště získáte pomocí následujícího postupu:
@@ -109,7 +109,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce na levé straně vyberte **+ vytvořit** > **Analytics** > **Data Factory**analýzy prostředků.
+1. V nabídce na levé straně vyberte **+ vytvořit**  >  **Analytics**  >  **Data Factory**analýzy prostředků.
 
    ![Vytvoření nové datové továrny](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -169,13 +169,13 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
     a. V části **Název** zadejte **SqlServerLinkedService**.
 
-    b. V části **Název serveru** zadejte název vaší instance místního SQL Serveru.
+    b. V části **Název serveru** zadejte název vaší instance SQL Serveru.
 
     c. V části **Název databáze** zadejte název vaší místní databáze.
 
     d. V části **Typ ověřování** vyberte odpovídající typ ověřování.
 
-    e. V části **Uživatelské jméno** zadejte jméno uživatele s přístupem k místnímu SQL Serveru.
+    e. V části **uživatelské jméno**zadejte jméno uživatele s přístupem k SQL Server.
 
     f. Zadejte **heslo** pro uživatele.
 
@@ -202,7 +202,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
    c. V části **Název účtu úložiště** vyberte z rozevíracího seznamu svůj účet úložiště.
 
-   d. Vyberte **Finish** (Dokončit).
+   d. Vyberte **Dokončit**.
 
 1. V dialogu **cílové úložiště dat** se ujistěte, že je vybraná možnost **Azure Blob Storage** . Pak vyberte **Další**.
 
@@ -233,7 +233,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 
 ## <a name="next-steps"></a>Další kroky
-Kanál v této ukázce kopíruje data z místní databáze SQL Serveru do úložiště objektů blob. Naučili jste se tyto postupy:
+Kanál v této ukázce kopíruje data z databáze SQL Server do úložiště objektů BLOB. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 > * Vytvoření datové továrny

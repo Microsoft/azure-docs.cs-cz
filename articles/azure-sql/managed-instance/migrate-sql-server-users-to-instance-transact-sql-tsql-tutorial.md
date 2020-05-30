@@ -1,6 +1,6 @@
 ---
 title: Migrace SQL Server uživatelů a skupin systému Windows do spravované instance SQL pomocí T-SQL
-description: Přečtěte si, jak migrovat SQL Server místních uživatelů a skupin Windows do spravované instance Azure SQL.
+description: Přečtěte si, jak migrovat uživatele a skupiny Windows v instanci SQL Server do spravované instance Azure SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -10,14 +10,14 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: aba5013bbba95efcb5f27af5aa61f91d880601aa
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 79a9f59b4fb6f7ae71c1e6866e8c50baa4e7974b
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053553"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193755"
 ---
-# <a name="tutorial-migrate-sql-server-on-premises-windows-users-and-groups-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Kurz: migrace SQL Server místních uživatelů a skupin Windows do spravované instance Azure SQL pomocí syntaxe jazyka T-SQL
+# <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Kurz: Migrace uživatelů a skupin systému Windows v instanci SQL Server do spravované instance Azure SQL pomocí syntaxe jazyka T-SQL DDL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 > [!NOTE]
@@ -53,7 +53,7 @@ K dokončení tohoto kurzu platí následující předpoklady:
 
 ## <a name="t-sql-ddl-syntax"></a>Syntaxe jazyka T-SQL DDL
 
-Níže jsou uvedená syntaxe jazyka T-SQL DDL, která slouží k podpoře SQL Server místních uživatelů a skupin Windows do spravované instance SQL pomocí ověřování Azure AD.
+Níže uvádíme syntaxi T-SQL DDL, která slouží k podpoře migrace uživatelů a skupin systému Windows z SQL Server instance do spravované instance SQL pomocí ověřování Azure AD.
 
 ```sql
 -- For individual Windows users with logins
@@ -63,7 +63,7 @@ ALTER USER [domainName\userName] WITH LOGIN = [loginName@domainName.com];
 ALTER USER [domainName\groupName] WITH LOGIN=[groupName]
 ```
 
-## <a name="arguments"></a>Argumenty
+## <a name="arguments"></a>Arguments
 
 _domainName_</br>
 Určuje název domény uživatele.
@@ -77,7 +77,7 @@ Přemapuje uživatele na přihlašovací údaje služby Azure AD.
 _Parametr_</br>
 Určuje název skupiny identifikované v rámci databáze.
 
-## <a name="part-1-create-logins-for-sql-server-on-premises-users-and-groups"></a>Část 1: vytvoření přihlašovacích údajů pro SQL Server místních uživatelů a skupin
+## <a name="part-1-create-logins-in-sql-server-for-windows-users-and-groups"></a>Část 1: vytvoření přihlášení v SQL Server pro uživatele a skupiny systému Windows
 
 > [!IMPORTANT]
 > Následující syntaxe vytvoří uživatele a přihlášení skupiny ve vašem SQL Server. Před provedením níže uvedené syntaxe se musíte ujistit, že uživatel a skupina existují v rámci služby Active Directory (AD). </br> </br>

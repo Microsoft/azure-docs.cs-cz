@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 07/29/2019
-ms.openlocfilehash: 382dff156c088f367200f0dd46c3758193ade189
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4979129331114cf22f459ce632ac3674a7d866d1
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75889230"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84197179"
 ---
 # <a name="tutorial-sentiment-analysis-on-streaming-data-using-azure-databricks"></a>Kurz: Analýza mínění na streamovaných datech pomocí Azure Databricks
 
@@ -63,7 +63,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com/?WT.mc_id=sparkeven
 
 V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azure Databricks.
 
-1. V Azure Portal vyberte **vytvořit prostředek** > **data a analýzy** > **Azure Databricks**.
+1. V Azure Portal vyberte **vytvořit prostředek**  >  **data a analýzy**  >  **Azure Databricks**.
 
     ![Datacihly na Azure Portal](./media/databricks-sentiment-analysis-cognitive-services/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
@@ -77,7 +77,7 @@ V této části vytvoříte pomocí portálu Azure pracovní prostor služby Azu
     |---------|---------|
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
-    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/management/overview.md). |
+    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/management/overview.md). |
     |**Umístění**     | Vyberte **USA – východ 2**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/?WT.mc_id=sparkeventhubs-docs-alehall).        |
     |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/?WT.mc_id=sparkeventhubs-docs-alehall).       |
 
@@ -148,7 +148,7 @@ V tomto kurzu k odesílání tweetů do služby Event Hubs použijete rozhraní 
 
      ![Zadat souřadnice Maven](./media/databricks-sentiment-analysis-cognitive-services/databricks-add-library-search-dialogue.png "Hledat souřadnice Maven")
 
-3. Vyberte **Install** (Nainstalovat).
+3. Vyberte **Nainstalovat**.
 
 4. V nabídce cluster zajistěte, aby byly správně nainstalovány a připojeny obě knihovny.
 
@@ -164,7 +164,7 @@ V tomto kurzu použijete [rozhraní API služby Azure Cognitive Services analýz
 
 2. Vyberte **+ Vytvořit prostředek**.
 
-3. V části Azure Marketplace vyberte **AI a Cognitive Services** > **rozhraní API pro analýzu textu**.
+3. V části Azure Marketplace vyberte **AI a Cognitive Services**  >  **rozhraní API pro analýzu textu**.
 
     ![Vytvořit účet služby pro rozpoznávání](./media/databricks-sentiment-analysis-cognitive-services/databricks-cognitive-services-text-api.png "Vytvořit účet služby pro rozpoznávání")
 
@@ -216,7 +216,7 @@ V této části vytvoříte v pracovním prostoru Databricks dva poznámkové bl
 Do poznámkového bloku **SendTweetsToEventHub** vložte následující kód a nahraďte zástupné hodnoty hodnotami pro váš obor názvů Event Hubs a aplikaci Twitter, kterou jste vytvořili dříve. Tento poznámkový blok v reálném čase streamuje tweety s klíčovým slovem Azure do služby Event Hubs.
 
 > [!NOTE]
-> Rozhraní Twitter API má určitá omezení požadavků a [kvóty](https://developer.twitter.com/en/docs/basics/rate-limiting.html). Pokud nesplňujete standardní omezení rychlosti v rozhraní Twitter API, můžete v tomto příkladu vygenerovat textový obsah bez použití rozhraní Twitter API. Chcete-li to provést, **dataSource** nastavte proměnnou `test` DataSource na `twitter` místo a naplňte seznam **testSource** s preferovaným vstupem testu.
+> Rozhraní Twitter API má určitá omezení požadavků a [kvóty](https://developer.twitter.com/en/docs/basics/rate-limiting.html). Pokud nesplňujete standardní omezení rychlosti v rozhraní Twitter API, můžete v tomto příkladu vygenerovat textový obsah bez použití rozhraní Twitter API. Chcete-li to provést, nastavte proměnnou **DataSource** na `test` místo `twitter` a naplňte seznam **testSource** s preferovaným vstupem testu.
 
 ```scala
     import scala.collection.JavaConverters._
@@ -324,7 +324,7 @@ Pokud chcete poznámkový blok spustit, stiskněte **SHIFT + ENTER**. Zobrazí s
 
     Sent event: 4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie
 
-    Sent event: Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
+    Sent event: Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk
 
     Sent event: Top 10 Tricks to #Save Money with #Azure Virtual Machines https://t.co/F2wshBXdoz #Cloud
 
@@ -429,7 +429,7 @@ Výstup teď vypadá podobně jako následující fragment kódu:
     |0     |2018-03-09 05:49:08.86 |1520574548|Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
     https://t.co/7vs7cKtvah
     #cloudcomputing #Azure          |
-    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
+    |168   |2018-03-09 05:49:24.752|1520574564|Migrate your databases to a fully managed service with SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |
     |0     |2018-03-09 05:49:02.936|1520574542|@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|
     |176   |2018-03-09 05:49:20.801|1520574560|4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |
     +------+-----------------+----------+-------+
@@ -463,7 +463,7 @@ case class RequestToTextApi(documents: Array[RequestToTextApiDocument]) extends 
 case class RequestToTextApiDocument(id: String, text: String, var language: String = "") extends Serializable
 ```
 
-Přidejte novou buňku kódu a vložte do ní níže uvedený fragment kódu. Tento fragment kódu definuje objekt, který obsahuje funkce pro volání rozhraní API pro analýzu textu za účelem spuštění detekce jazyka a analýzy mínění. Zástupný text `<PROVIDE ACCESS KEY HERE>` nahraďte hodnotou, kterou jste načetli pro svůj Cognitive Services účet.
+Přidejte novou buňku kódu a vložte do ní níže uvedený fragment kódu. Tento fragment kódu definuje objekt, který obsahuje funkce pro volání rozhraní API pro analýzu textu za účelem spuštění detekce jazyka a analýzy mínění. Zástupný text nahraďte `<PROVIDE ACCESS KEY HERE>` hodnotou, kterou jste načetli pro svůj Cognitive Services účet.
 
 ```scala
 import javax.net.ssl.HttpsURLConnection
@@ -607,14 +607,14 @@ Zobrazený výstup by měl vypadat přibližně jako následující fragment kó
     +--------------------------------+------------------+
     |Public preview of Java on App Service, built-in support for Tomcat and OpenJDK
     https://t.co/7vs7cKtvah   #cloudcomputing #Azure          |0.7761918306350708|
-    |Migrate your databases to a fully managed service with Azure SQL Database Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |0.8558163642883301|
+    |Migrate your databases to a fully managed service with Azure SQL Managed Instance | #Azure | #Cloud https://t.co/sJHXN4trDk    |0.8558163642883301|
     |@Microsoft and @Esri launch Geospatial AI on Azure https://t.co/VmLUCiPm6q via @geoworldmedia #geoai #azure #gis #ArtificialIntelligence|0.5               |
     |4 Killer #Azure Features for #Data #Performance https://t.co/kpIb7hFO2j by @RedPixie                                                    |0.5               |
     +--------------------------------+------------------+
 
 Hodnota ve sloupci **Sentiment** (Mínění) blížící se **1** značí skvělé zkušenosti s Azure. Hodnota blížící se **0** značí, že se uživatel při práci s Microsoft Azure setkal s problémy.
 
-A to je vše! Pomocí Azure Databricks jste úspěšně streamovaná data do služby Azure Event Hubs, využili jste data datového proudu pomocí konektoru Event Hubs a potom jsme spustili mínění analýzu dat streamování téměř v reálném čase.
+A je to! Pomocí Azure Databricks jste úspěšně streamovaná data do služby Azure Event Hubs, využili jste data datového proudu pomocí konektoru Event Hubs a potom jsme spustili mínění analýzu dat streamování téměř v reálném čase.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

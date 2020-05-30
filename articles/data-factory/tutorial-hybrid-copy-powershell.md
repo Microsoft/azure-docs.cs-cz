@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 70bc79470cd72ce01007265c6c1236c951ddd7d0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 6eec9c197f0bc17a5237a05e198b12cb769da89d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81411439"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194578"
 ---
-# <a name="tutorial-copy-data-from-an-on-premises-sql-server-database-to-azure-blob-storage"></a>Kurz: Kopírování dat z místní databáze SQL Serveru do úložiště objektů blob v Azure
+# <a name="tutorial-copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Kurz: kopírování dat z databáze SQL Server do úložiště objektů BLOB v Azure
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat.
+V tomto kurzu použijete Azure PowerShell k vytvoření kanálu datové továrny, který kopíruje data z databáze SQL Server do úložiště objektů BLOB v Azure. Vytvoříte a použijete místní prostředí Integration Runtime, které přesouvá data mezi místním a cloudovým úložištěm dat.
 
 > [!NOTE]
 > Tento článek neposkytuje podrobný úvod do služby Data Factory. Další informace najdete v tématu [Úvod do Azure Data Factory](introduction.md).
@@ -48,7 +48,7 @@ Pro vytvoření instancí služby Data Factory musí být uživatelský účet, 
 Pokud chcete zobrazit oprávnění, která v předplatném máte, přejděte na web Azure Portal, v pravém horním rohu vyberte své uživatelské jméno a pak vyberte **Oprávnění**. Pokud máte přístup k několika předplatným, vyberte odpovídající předplatné. Ukázkové pokyny pro přidání uživatele k roli najdete v článku o [správě přístupu pomocí RBAC a webu Azure Portal](../role-based-access-control/role-assignments-portal.md).
 
 ### <a name="sql-server-2014-2016-and-2017"></a>SQL Server 2014, 2016 a 2017
-V tomto kurzu použijete místní databázi SQL Serveru jako *zdrojové* úložiště dat. Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z této místní databáze SQL Serveru (zdroj) do úložiště objektů blob v Azure (jímka). Ve své databázi SQL Serveru pak vytvoříte tabulku **emp** a vložíte do ní několik ukázkových záznamů.
+V tomto kurzu použijete databázi SQL Server jako *zdrojové* úložiště dat. Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z této SQL Server databáze (zdroj) do úložiště objektů BLOB v Azure (jímka). Ve své databázi SQL Serveru pak vytvoříte tabulku **emp** a vložíte do ní několik ukázkových záznamů.
 
 1. Spusťte aplikaci SQL Server Management Studio. Pokud na vašem počítači ještě není nainstalovaná, přejděte na stránku pro [stažení aplikace SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms).
 
@@ -76,7 +76,7 @@ V tomto kurzu použijete místní databázi SQL Serveru jako *zdrojové* úloži
 
 
 ### <a name="azure-storage-account"></a>Účet služby Azure Storage
-V tomto kurzu použijete účet úložiště Azure (konkrétně úložiště objektů blob v Azure) pro obecné účely jako cílové úložiště dat nebo úložiště dat jímky. Pokud nemáte účet úložiště Azure pro obecné účely, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md). Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z místní databáze SQL Serveru (zdroj) do tohoto úložiště objektů blob v Azure (jímka). 
+V tomto kurzu použijete účet úložiště Azure (konkrétně úložiště objektů blob v Azure) pro obecné účely jako cílové úložiště dat nebo úložiště dat jímky. Pokud nemáte účet úložiště Azure pro obecné účely, přečtěte si téma [Vytvoření účtu úložiště](../storage/common/storage-account-create.md). Kanál v datové továrně, který vytvoříte v tomto kurzu, kopíruje data z databáze SQL Server (zdroj) do tohoto úložiště objektů BLOB v Azure (jímka). 
 
 #### <a name="get-storage-account-name-and-account-key"></a>Získání názvu a klíče účtu úložiště
 V tomto kurzu použijete název a klíč svého účtu úložiště Azure. Získejte název a klíč vašeho účtu úložiště pomocí následujícího postupu:
@@ -309,7 +309,7 @@ V této části vytvoříte místní prostředí Integration Runtime a přidruž
     Všechny předchozí hodnoty si poznamenejte pro pozdější použití v rámci tohoto kurzu.
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
-Vytvořte v datové továrně propojené služby, abyste svá úložiště dat a výpočetní služby propojili s datovou továrnou. V tomto kurzu propojíte s úložištěm dat svůj účet úložiště Azure a místní instanci SQL Serveru. Propojené služby mají informace o připojení, které služba Data Factory používá pro připojení za běhu.
+Vytvořte v datové továrně propojené služby, abyste svá úložiště dat a výpočetní služby propojili s datovou továrnou. V tomto kurzu propojíte účet služby Azure Storage a instanci SQL Server s úložištěm dat. Propojené služby mají informace o připojení, které služba Data Factory používá pro připojení za běhu.
 
 ### <a name="create-an-azure-storage-linked-service-destinationsink"></a>Vytvoření propojené služby Azure Storage (cíl/jímka)
 V tomto kroku s datovou továrnou propojíte svůj účet úložiště Azure.
@@ -317,7 +317,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet úložiště Azure.
 1. Ve složce *C:\ADFv2Tutorial* vytvořte soubor JSON s názvem *AzureStorageLinkedService.json* s následujícím kódem. Pokud složka *ADFv2Tutorial* neexistuje, vytvořte ji.  
 
     > [!IMPORTANT]
-    > Než soubor uložíte, položky \<accountName> a \<accountKey> nahraďte názvem svého účtu úložiště Azure a jeho klíčem. Tyto hodnoty jste si poznamenali v části [Požadavky](#get-storage-account-name-and-account-key).
+    > Než soubor uložíte, nahraďte \<accountName> a \<accountKey> názvem a klíčem účtu úložiště Azure. Tyto hodnoty jste si poznamenali v části [Požadavky](#get-storage-account-name-and-account-key).
 
    ```json
     {
@@ -355,7 +355,7 @@ V tomto kroku s datovou továrnou propojíte svůj účet úložiště Azure.
     Pokud se zobrazí chyba Soubor nenalezen, spusťte příkaz `dir` a ověřte, že soubor existuje. Pokud má název souboru příponu *.txt* (například AzureStorageLinkedService.json.txt), odeberte ji a pak spusťte příkaz PowerShellu znovu.
 
 ### <a name="create-and-encrypt-a-sql-server-linked-service-source"></a>Vytvoření a šifrování propojené služby SQL Serveru (zdroj)
-V tomto kroku s datovou továrnou propojíte místní instanci SQL Serveru.
+V tomto kroku propojíte instanci SQL Server s datovou továrnou.
 
 1. Ve složce *C:\ADFv2Tutorial* vytvořte soubor JSON s názvem *SQLServerLinkedService.json* s následujícím kódem:
 
@@ -413,9 +413,9 @@ V tomto kroku s datovou továrnou propojíte místní instanci SQL Serveru.
 
     > [!IMPORTANT]
     > - Vyberte odpovídající část na základě ověřování, které používáte pro připojení k vaší instanci SQL Serveru.
-    > - Nahraďte ** \<název prostředí Integration runtime>** názvem vašeho prostředí Integration runtime.
-    > - Než soubor uložíte, nahraďte parametr ** \<servername>**, ** \<DatabaseName>**, ** \<username>** a ** \<>hesla** hodnotami vaší instance SQL Server.
-    > - Pokud v názvu uživatelského účtu nebo serveru potřebujete použít zpětné lomítko (\\), vložte před něj řídicí znak (\\). Použijte například *MyDomain\\\\MyUser*.
+    > - Nahraďte **\<integration runtime name>** názvem vašeho prostředí Integration runtime.
+    > - Před uložením souboru, nahraďte **\<servername>** , **\<databasename>** , **\<username>** a **\<password>** s hodnotami vaší instance SQL Server.
+    > - Pokud v názvu uživatelského účtu nebo serveru potřebujete použít zpětné lomítko (\\), vložte před něj řídicí znak (\\). Použijte například *MyDomain \\ \\ MyUser*.
 
 1. Pokud chcete šifrovat citlivá data (uživatelské jméno, heslo atd.), spusťte rutinu `New-AzDataFactoryV2LinkedServiceEncryptedCredential`.  
     Toto šifrování zajišťuje šifrování přihlašovacích údajů pomocí rozhraní Data Protection API. Zašifrované přihlašovací údaje jsou uložené místně v uzlu místního prostředí Integration Runtime (místní počítač). Výstupní datovou část je možné přesměrovat do jiného souboru JSON (v tomto případě *encryptedLinkedService.json*), který obsahuje zašifrované přihlašovací údaje.
@@ -432,7 +432,7 @@ V tomto kroku s datovou továrnou propojíte místní instanci SQL Serveru.
 
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
-V tomto kroku vytvoříte vstupní a výstupní datové sady. Ty představují vstupní a výstupní data pro operaci kopírování, která kopíruje data z místní databáze SQL Serveru do úložiště objektů blob v Azure.
+V tomto kroku vytvoříte vstupní a výstupní datové sady. Představují vstupní a výstupní data pro operaci kopírování, která kopíruje data z databáze SQL Server do úložiště objektů BLOB v Azure.
 
 ### <a name="create-a-dataset-for-the-source-sql-server-database"></a>Vytvoření datové sady pro zdrojovou databázi SQL Serveru
 V tomto kroku definujete datovou sadu, která představuje data v instanci databáze SQL Serveru. Tato datová sada je typu SqlServerTable. Odkazuje na propojenou službu SQL Serveru, kterou jste vytvořili v předchozím kroku. Propojená služba má informace o připojení, které služba Data Factory používá pro připojení k vaší instanci SQL Serveru za běhu. Tato datová sada určuje tabulku SQL v databázi, která obsahuje data. V tomto kurzu zdrojová data obsahuje tabulka **emp**.

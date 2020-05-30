@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: b3616a338666dbb10fe7500bad8c1e8239fd2c92
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: ffbfd3214242d8df5fe33faf465bc1da3eb9986d
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561629"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84196642"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v"></a>Kurz: zřízení Azure Data Box Gateway v Hyper-V
 
@@ -31,7 +31,7 @@ V tomto kurzu se naučíte:
 > * Zřízení virtuálního zařízení v hypervisoru
 > * Spuštění virtuálního zařízení a získání IP adresy
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -64,8 +64,8 @@ Před nasazením zařízení se ujistěte, že:
 
 Než začnete:
 
-- Projděte si požadavky na síť pro nasazení služby Data Box Gateway a nakonfigurujte podle těchto požadavků síť datacentra. Další informace najdete v tématu popisujícím [požadavky na síť pro službu Data Box Gateway](data-box-gateway-system-requirements.md#networking-port-requirements).
-- Ujistěte se, že je šířka internetového pásma minimálně 20 Mb/s, aby zařízení mohlo fungovat optimálně.
+* Projděte si požadavky na síť pro nasazení služby Data Box Gateway a nakonfigurujte podle těchto požadavků síť datacentra. Další informace najdete v tématu popisujícím [požadavky na síť pro službu Data Box Gateway](data-box-gateway-system-requirements.md#networking-port-requirements).
+* Ujistěte se, že je šířka internetového pásma minimálně 20 Mb/s, aby zařízení mohlo fungovat optimálně.
 
 ## <a name="check-the-host-system"></a>Kontrola hostitelského systému
 
@@ -75,11 +75,17 @@ K vytvoření virtuálního zařízení potřebujete:
 * Správce technologie Microsoft Hyper-V na klientovi Microsoft Windows připojeném k hostiteli.
 * Zajistit, aby základní hardware (hostitelský systém), na kterém virtuální zařízení vytváříte, mohl pro vaše virtuální zařízení vyhradit následující prostředky:
 
-    * Minimálně 4 virtuální procesory.
-    * Minimálně 8 GB paměti RAM
-    * Jedno síťové rozhraní připojené k síti, která podporuje směrování provozu do internetu. 
-    * 250GB disk s operačním systémem
-    * 2TB virtuální disk pro data systému
+  * Minimálně 4 virtuální procesory.
+  * Minimálně 8 GB paměti RAM
+  * Jedno síťové rozhraní připojené k síti, která podporuje směrování provozu do internetu.
+  * 250GB disk s operačním systémem
+  * 2TB virtuální disk pro data systému
+
+## <a name="bitlocker-considerations"></a>Požadavky nástroje BitLocker
+
+* Doporučujeme povolit nástroj BitLocker na svém virtuálním počítači s Data Box Gateway. Ve výchozím nastavení není BitLocker povolený. Další informace naleznete v tématu:
+  * [Nastavení podpory šifrování ve Správci technologie Hyper-V](hhttps://docs.microsoft.com/windows-server/virtualization/hyper-v/learn-more/generation-2-virtual-machine-security-settings-for-hyper-v#encryption-support-settings-in-hyper-v-manager)
+  * [Podpora BitLockeru ve virtuálním počítači](https://kb.vmware.com/s/article/2036142)
 
 ## <a name="provision-a-virtual-device-in-hypervisor"></a>Zřízení virtuálního zařízení v hypervisoru
 
@@ -136,7 +142,7 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte zařízení.
 
     ![Zadat název a stránku umístění](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
 19. Na stránce **Konfigurovat disk** vyberte možnost **Vytvořit nový prázdný virtuální pevný disk** a jako velikost zadejte **2 TB** (nebo více).
-    
+
     Minimální požadavek je 2 TB, ale vždy můžete zřídit větší disk. Mějte na paměti, že disk po zřízení už není možné zmenšit. Při pokusu o zmenšení disku dojde ke ztrátě všech místních dat v zařízení. Rozšíření datového disku není podporováno. Klikněte na **Další**.
 
     ![Stránka konfigurace disku](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
@@ -148,37 +154,38 @@ Pomocí následujících kroků ve svém hypervisoru zřiďte zařízení.
     ![Stránka Nastavení](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
 
 ## <a name="start-the-virtual-device-and-get-the-ip"></a>Spuštění virtuálního zařízení a získání IP adresy
+
 Pomocí následujících kroků spusťte své virtuální zařízení a připojte se k němu.
 
 #### <a name="to-start-the-virtual-device"></a>Spuštění virtuálního zařízení
+
 1. Spusťte virtuální zařízení.
 
    ![Spustit virtuální zařízení](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
 2. Jakmile bude zařízení spuštěné, vyberte ho, klikněte na něj pravým tlačítkem a vyberte **Připojit**.
 
-3. Možná budete muset 10 až 15 minut počkat, než se zařízení připraví. V konzole se zobrazí zpráva o stavu značící průběh. Jakmile bude zařízení připravené, přejděte do části **Akce**. Stisknutím `Ctrl + Alt + Delete` klávesy se přihlaste k virtuálnímu zařízení. Výchozí uživatel je *EdgeUser* a výchozí heslo je *Password1*.
+3. Možná budete muset 10 až 15 minut počkat, než se zařízení připraví. V konzole se zobrazí zpráva o stavu značící průběh. Jakmile bude zařízení připravené, přejděte do části **Akce**. Stisknutím klávesy `Ctrl + Alt + Delete` se přihlaste k virtuálnímu zařízení. Výchozí uživatel je *EdgeUser* a výchozí heslo je *Password1*.
 
    ![Přihlaste se k virtuálnímu zařízení.](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
-   
-6. Kroky 5 až 7 proveďte pouze v případě, že zařízení spouštíte v jiném prostředí než DHCP. Pokud jste v prostředí DHCP, přeskočte tyto kroky. Pokud jste zařízení spustili v jiném prostředí než DHCP, zobrazí se o tom zpráva.
-    
-7. Pokud chcete nakonfigurovat síť, použijte příkaz `Get-HcsIpAddress`, který vypíše povolená síťová rozhraní na vašem virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
 
-8. Pomocí rutiny `Set-HcsIpAddress` nakonfigurujte síť. Prohlédněte si následující příklad:
+4. Kroky 5 až 7 proveďte pouze v případě, že zařízení spouštíte v jiném prostředí než DHCP. Pokud jste v prostředí DHCP, přeskočte tyto kroky. Pokud jste zařízení spustili v jiném prostředí než DHCP, zobrazí se o tom zpráva.
+
+5. Pokud chcete nakonfigurovat síť, použijte příkaz `Get-HcsIpAddress`, který vypíše povolená síťová rozhraní na vašem virtuálním zařízení. Pokud má vaše zařízené povolené jediné síťové rozhraní, výchozí název přiřazený tomuto rozhraní je `Ethernet`.
+
+6. Pomocí rutiny `Set-HcsIpAddress` nakonfigurujte síť. Prohlédněte si následující příklad:
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
-    
-9. Po dokončení počátečního nastavení a spuštění zařízení se zobrazí text banneru zařízení. Poznamenejte si IP adresu a adresu URL pro správu zařízení, které se zobrazí v textu banneru. Pomocí této IP adresy se připojte k webovému uživatelskému rozhraní vašeho virtuálního zařízení a dokončete místní nastavení a aktivaci.
+
+7. Po dokončení počátečního nastavení a spuštění zařízení se zobrazí text banneru zařízení. Poznamenejte si IP adresu a adresu URL pro správu zařízení, které se zobrazí v textu banneru. Pomocí této IP adresy se připojte k webovému uživatelskému rozhraní vašeho virtuálního zařízení a dokončete místní nastavení a aktivaci.
 
    ![Banner virtuálního zařízení s IP adresou a adresou URL připojení](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
-      
 
 Pokud vaše zařízení nesplňuje minimální požadavky na konfiguraci, zobrazí se v textu banneru chyba. Upravte konfiguraci zařízení tak, aby měl počítač dostatečné prostředky ke splnění minimálních požadavků. Pak můžete zařízení restartovat a připojit se k němu. Projděte si minimální požadavky na konfiguraci při [kontrole, jestli hostitelský systém splňuje minimální požadavky na virtuální zařízení](#check-the-host-system).
 
 Pokud se při počáteční konfiguraci s použitím místního webového uživatelského rozhraní zobrazí nějaká chyba, přečtěte si následující pracovní postupy:
 
-- [Spusťte diagnostické testy pro řešení potíží s instalací webového uživatelského rozhraní](data-box-gateway-troubleshoot.md#run-diagnostics).
-- [Generování souboru protokolu a zobrazení souborů protokolu](data-box-gateway-troubleshoot.md#collect-support-package).
+* [Spusťte diagnostické testy pro řešení potíží s instalací webového uživatelského rozhraní](data-box-gateway-troubleshoot.md#run-diagnostics).
+* [Generování souboru protokolu a zobrazení souborů protokolu](data-box-gateway-troubleshoot.md#collect-support-package).
 
 ## <a name="next-steps"></a>Další kroky
 

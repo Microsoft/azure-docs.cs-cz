@@ -1237,6 +1237,8 @@
       href: whitepapers.md
     - name: Partneři
       href: partners-migration-cosmosdb.md
+    - name: Stránka s dotazy na Microsoft Q&A
+      href: 'https://docs.microsoft.com/answers/topics/azure-cosmos-db.html'
     - name: Videa
       href: 'https://azure.microsoft.com/resources/videos/index/?services=cosmos-db'
     - name: Plány Azure do budoucna

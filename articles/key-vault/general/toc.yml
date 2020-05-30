@@ -1,6 +1,7 @@
 - name: Obecné
   href: index.yml
 - name: Přehled
+  expanded: true
   items:
     - name: Informace o službě Azure Key Vault
       href: overview.md

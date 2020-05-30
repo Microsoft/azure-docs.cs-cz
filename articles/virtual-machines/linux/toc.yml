@@ -422,6 +422,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: Vytvoření virtuálního počítače
                   items:
+                    - name: Specializovaná
+                      href: ../vm-specialized-image-version-cli.md
                     - name: Generalizovaná
                       href: ../vm-generalized-image-version-cli.md
                 - name: Aktualizace prostředků imagí

@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 03/18/2020
 ms.custom: seodec18
-ms.openlocfilehash: bcc9e748cb5f88084b9cd3254654f9dc0fbc8aa1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 60f539dfad4f5f3942be92f35b84cc42968f95a0
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115563"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220733"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Kurz: analýza modelů klasifikace obrázků pomocí MNIST ručně zapsaných dat a scikit – učení 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Přečtěte si, jak provést následující akce:
 
 Naučíte se, jak vybrat model a nasadit ho v [části 2 tohoto kurzu](tutorial-deploy-models-with-aml.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 >[!NOTE]
 > Kód v tomto článku byl testován pomocí [sady Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) 1.0.83 verze.
@@ -84,7 +84,7 @@ print("Azure ML SDK Version: ", azureml.core.VERSION)
 
 ### <a name="connect-to-a-workspace"></a>Připojení k pracovnímu prostoru
 
-Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. `Workspace.from_config()`přečte soubor **config. JSON** a načte podrobnosti do objektu s názvem `ws`:
+Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru. `Workspace.from_config()`přečte soubor **config. JSON** a načte podrobnosti do objektu s názvem `ws` :
 
 ```python
 # load workspace configuration from the config.json file in the current folder.
@@ -107,7 +107,7 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 Pomocí Azure Machine Learning výpočetní služby, spravované služby, mohou odborníci na data poučení modely strojového učení v clusterech virtuálních počítačů Azure. Mezi příklady patří virtuální počítače s podporou GPU. V tomto kurzu vytvoříte Azure Machine Learning COMPUTE jako školicí prostředí. Později v tomto kurzu odešlete kód Pythonu, který se bude spouštět na tomto virtuálním počítači. 
 
-Následující kód vytvoří výpočetní clustery za vás, pokud už ve vašem pracovním prostoru neexistují.
+Následující kód vytvoří výpočetní clustery za vás, pokud už ve vašem pracovním prostoru neexistují. Nastaví cluster, který se bude škálovat dolů na 0, pokud se nepoužívá, a může škálovat až na 4 uzly. 
 
  **Vytvoření cíle výpočtů trvá asi pět minut.** Pokud je výpočetní prostředek již v pracovním prostoru, kód ho použije a přeskočí proces vytváření.
 
@@ -161,7 +161,7 @@ Než začnete pracovat s modelem, potřebujete pochopit data, která používát
 
 K získání nezpracovaných datových souborů MNIST ručně zapsaných použijte Azure Open DataSets. [Otevřené datové sady v Azure](https://docs.microsoft.com/azure/open-datasets/overview-what-are-open-datasets) jsou spravované veřejné datové sady, které můžete použít k přidání funkcí specifických pro konkrétní scénář do řešení Machine Learning pro přesnější modely. Každá datová sada má odpovídající třídu, `MNIST` v tomto případě pro načtení dat různými způsoby.
 
-Tento kód načte data jako `FileDataset` objekt, který je podtřídou třídy. `Dataset` Odkazuje `FileDataset` na jeden nebo více souborů libovolného formátu v úložišti dat nebo veřejných adresách URL. Třída poskytuje možnost stahovat nebo připojovat soubory do výpočetních prostředků tím, že vytvoří odkaz na umístění zdroje dat. Navíc zaregistrujete datovou sadu do svého pracovního prostoru pro snadné načtení během školení.
+Tento kód načte data jako `FileDataset` objekt, který je podtřídou třídy `Dataset` . `FileDataset`Odkazuje na jeden nebo více souborů libovolného formátu v úložišti dat nebo veřejných adresách URL. Třída poskytuje možnost stahovat nebo připojovat soubory do výpočetních prostředků tím, že vytvoří odkaz na umístění zdroje dat. Navíc zaregistrujete datovou sadu do svého pracovního prostoru pro snadné načtení během školení.
 
 Pokud chcete získat další informace o datových sadách a jejich využití v sadě [SDK, postupujte](how-to-create-register-datasets.md) podle pokynů.
 
@@ -183,7 +183,7 @@ mnist_file_dataset = mnist_file_dataset.register(workspace=ws,
 
 ### <a name="display-some-sample-images"></a>Zobrazení některých ukázkových obrázků
 
-Načtěte komprimované soubory do pole `numpy`. Pak pomocí `matplotlib` vykreslete 30 náhodných obrázků z datové sady s jejich popisky nad nimi. Tento krok vyžaduje `load_data` funkci, která je součástí `util.py` souboru. Tento soubor je umístěný ve složce s ukázkou. Ujistěte se, že je umístěn ve stejné složce jako tento poznámkový blok. `load_data` Funkce jednoduše analyzuje komprimované soubory do polí numpy.
+Načtěte komprimované soubory do pole `numpy`. Pak pomocí `matplotlib` vykreslete 30 náhodných obrázků z datové sady s jejich popisky nad nimi. Tento krok vyžaduje `load_data` funkci, která je součástí `util.py` souboru. Tento soubor je umístěný ve složce s ukázkou. Ujistěte se, že je umístěn ve stejné složce jako tento poznámkový blok. `load_data`Funkce jednoduše analyzuje komprimované soubory do polí numpy.
 
 ```python
 # make sure utils.py is in the same directory as this code
@@ -300,7 +300,7 @@ Všimněte si, jak skript získává data a ukládá modely:
 
 + Školicí skript uloží model do adresáře s názvem **výstupy**. Vše, co je v tomto adresáři zapsáno, se automaticky nahraje do vašeho pracovního prostoru. K vašemu modelu přistupujete z tohoto adresáře později v tomto kurzu. `joblib.dump(value=clf, filename='outputs/sklearn_mnist_model.pkl')`
 
-+ Školicí skript vyžaduje, aby soubor `utils.py` správně načetl datovou sadu. Následující kód zkopíruje `utils.py` do, `script_folder` aby k souboru bylo možné přihlédnout společně se školicím skriptem na vzdáleném prostředku.
++ Školicí skript vyžaduje, aby soubor `utils.py` správně načetl datovou sadu. Následující kód zkopíruje `utils.py` do `script_folder` , aby k souboru bylo možné přihlédnout společně se školicím skriptem na vzdáleném prostředku.
 
   ```python
   import shutil

@@ -7,12 +7,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: d8c3bde0f32c1df6c98f6a71f6ab830c21256903
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 62ee95db0e3b35c996cb4ee68d772a21c00778fb
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76906288"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220270"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Kurz: nasazení Azure Stream Analytics jako modulu IoT Edge
 
@@ -60,7 +60,7 @@ V této části vytvoříte úlohu Azure Stream Analytics, která provede násle
 
 Když vytvoříte úlohu Azure Stream Analytics, která se má spouštět na zařízení IoT Edge, je potřeba ji uložit tak, aby ji bylo možné volat ze zařízení. Můžete použít existující účet Azure Storage nebo vytvořit nový.
 
-1. V Azure Portal klikněte na **vytvořit prostředek** > **úložiště** > **účet úložiště**.
+1. V Azure Portal klikněte na **vytvořit prostředek**  >  **úložiště**  >  **účet úložiště**.
 
 1. Zadejte následující hodnoty pro vytvoření účtu úložiště:
 
@@ -77,7 +77,7 @@ Když vytvoříte úlohu Azure Stream Analytics, která se má spouštět na za�
 
 ### <a name="create-a-new-job"></a>Vytvoření nové úlohy
 
-1. V Azure Portal klikněte na **vytvořit prostředek** > **Internet věcí** > **Stream Analytics úlohu**.
+1. V Azure Portal klikněte na **vytvořit prostředek**  >  **Internet věcí**  >  **Stream Analytics úlohu**.
 
 1. Zadejte následující hodnoty pro vytvoření úlohy:
 
@@ -169,7 +169,7 @@ Pro účely tohoto kurzu nasadíte dva moduly. První je **SimulatedTemperatureS
    1. Klikněte na **Přidat** a vyberte **Modul IoT Edge**.
    1. Jako název zadejte **SimulatedTemperatureSensor**.
    1. Jako identifikátor URI obrázku zadejte **mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0**.
-   1. Ostatní nastavení ponechte beze změny a vyberte **Uložit**.
+   1. Ostatní nastavení ponechte beze změny a vyberte **Přidat**.
 
 1. Přidejte úlohu Azure Stream Analytics Edge následujícím postupem:
 
@@ -187,13 +187,13 @@ Pro účely tohoto kurzu nasadíte dva moduly. První je **SimulatedTemperatureS
 
    Ve výchozím nastavení má modul Stream Analytics stejný název jako úloha, na které je založena. Název modulu na této stránce můžete změnit, pokud chcete, ale není to nutné.
 
-1. Vyberte **Zrušit** nebo **Uložit**.
+1. Vyberte **aktualizovat** nebo **Zrušit**.
 
 1. Poznamenejte si název vašeho modulu Stream Analytics, protože ho budete potřebovat v dalším kroku, vyberte **Další: trasy** pro pokračování.
 
-1. Na kartě **trasy** definujete, jak jsou zprávy předávány mezi moduly a IoT Hub. Zprávy se vytvářejí pomocí párů název/hodnota. Nahraďte výchozí `route` hodnoty `upstream` a název a hodnoty dvojicemi, které jsou uvedené v následující tabulce, následující páry název/hodnota, které nahradí instance typu _{module}_ názvem vašeho modulu Azure Stream Analytics.
+1. Na kartě **trasy** definujete, jak jsou zprávy předávány mezi moduly a IoT Hub. Zprávy se vytvářejí pomocí párů název/hodnota. Nahraďte výchozí `route` `upstream` hodnoty a název a hodnoty dvojicemi, které jsou uvedené v následující tabulce, následující páry název/hodnota, které nahradí instance typu _{Module}_ názvem vašeho modulu Azure Stream Analytics.
 
-    | Název | Hodnota |
+    | Name | Hodnota |
     | --- | --- |
     | `telemetryToCloud` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream` |
     | `alertsToCloud` | `FROM /messages/modules/{moduleName}/* INTO $upstream` |

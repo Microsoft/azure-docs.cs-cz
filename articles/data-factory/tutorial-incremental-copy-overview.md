@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/22/2018
-ms.openlocfilehash: 00d54f9adcab93152881852b6fcac417e9d7c7d9
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f1fb209f44ae7922de87277100fbf55add184766
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81409908"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194497"
 ---
 # <a name="incrementally-load-data-from-a-source-data-store-to-a-destination-data-store"></a>Přírůstkové načtení dat ze zdrojového úložiště dat do cílového úložiště dat
 
@@ -32,7 +32,7 @@ V tomto případě definujete mez ve zdrojové databázi. Mez je sloupec, který
 
 Podrobné pokyny najdete v následujících kurzech: 
 - [Přírůstkové kopírování dat z jedné tabulky ve službě Azure SQL Database do úložiště Azure Blob Storage](tutorial-incremental-copy-powershell.md)
-- [Přírůstkové kopírování dat z více tabulek v místním SQL Serveru do služby Azure SQL Database](tutorial-incremental-copy-multiple-tables-powershell.md)
+- [Přírůstkové kopírování dat z více tabulek v instanci SQL Server do Azure SQL Database](tutorial-incremental-copy-multiple-tables-powershell.md)
 
 V případě šablon se podívejte na tyto informace:
 - [Rozdílové kopírování s kontrolní tabulkou](solution-template-delta-copy-with-control-table.md)

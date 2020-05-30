@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 07/29/2019
 ms.custom: sqldbrb=1
-ms.openlocfilehash: 35754270b560b219f762652c6ea9bd0f15e6f661
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b56dd81cd0cdc5d9a6917b0bf43c3fceeff63c4a
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053835"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84216547"
 ---
 # <a name="tutorial-design-a-relational-database-in-azure-sql-database-using-ssms"></a>Kurz: návrh relační databáze v Azure SQL Database pomocí SSMS
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -48,11 +48,11 @@ Pro dokončení tohoto kurzu se ujistěte, že jste nainstalovali:
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
-## <a name="create-a-blank-sql-database"></a>Vytvořit prázdnou SQL Database
+## <a name="create-a-blank-database-in-azure-sql-database"></a>Vytvoření prázdné databáze v Azure SQL Database
 
-Vytvoří se Azure SQL Database s definovanou sadou výpočetních prostředků a prostředků úložiště. Databáze se vytvoří v rámci [skupiny prostředků Azure](../../active-directory-b2c/overview.md) a spravuje se pomocí [logického SQL serveru](logical-servers.md).
+Databáze v Azure SQL Database se vytvoří s definovanou sadou výpočetních prostředků a prostředků úložiště. Databáze se vytvoří v rámci [skupiny prostředků Azure](../../active-directory-b2c/overview.md) a spravuje se pomocí [logického SQL serveru](logical-servers.md).
 
 Pomocí těchto kroků vytvořte prázdnou databázi.
 
@@ -63,7 +63,7 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 
 3. Do formuláře **SQL Database** zadejte následující informace, jak je znázorněno na předchozím obrázku:
 
-    | Nastavení       | Navrhovaná hodnota | Description |
+    | Nastavení       | Navrhovaná hodnota | Popis |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Název databáze** | *yourDatabase* | Platné názvy databází najdete v tématu [identifikátory databáze](/sql/relational-databases/databases/database-identifiers). |
     | **Předplatné** | *yourSubscription*  | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
@@ -72,7 +72,7 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 
 4. Pokud chcete použít existující server nebo vytvořit a nakonfigurovat nový server, klikněte na **Server** . Buď vyberte existující server, nebo klikněte na **vytvořit nový server** a vyplňte formulář **nového serveru** pomocí následujících informací:
 
-    | Nastavení       | Navrhovaná hodnota | Description |
+    | Nastavení       | Navrhovaná hodnota | Popis |
     | ------------ | ------------------ | ------------------------------------------------- |
     | **Název serveru** | Libovolný globálně jedinečný název | Platné názvy serverů najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
     | **Přihlašovací jméno správce serveru** | Libovolné platné jméno | Platná přihlašovací jména najdete v tématu [identifikátory databáze](/sql/relational-databases/databases/database-identifiers). |
@@ -96,10 +96,10 @@ Pomocí těchto kroků vytvořte prázdnou databázi.
 
 ## <a name="create-a-server-level-ip-firewall-rule"></a>Vytvoření pravidla brány firewall protokolu IP na úrovni serveru
 
-Služba SQL Database vytvoří bránu firewall protokolu IP na úrovni serveru. Tato brána firewall zabraňuje externím aplikacím a nástrojům v připojení k serveru a libovolné databázi na serveru, pokud pravidlo brány firewall nepovoluje jejich IP adresu přes bránu firewall. Pokud chcete povolit externí připojení k vaší databázi, musíte nejdřív přidat pravidlo brány firewall protokolu IP pro vaši IP adresu (nebo rozsah IP adres). Pomocí těchto kroků vytvořte [pravidlo brány firewall protokolu IP na úrovni serveru](firewall-configure.md).
+Azure SQL Database vytvoří bránu firewall protokolu IP na úrovni serveru. Tato brána firewall zabraňuje externím aplikacím a nástrojům v připojení k serveru a libovolné databázi na serveru, pokud pravidlo brány firewall nepovoluje jejich IP adresu přes bránu firewall. Pokud chcete povolit externí připojení k vaší databázi, musíte nejdřív přidat pravidlo brány firewall protokolu IP pro vaši IP adresu (nebo rozsah IP adres). Pomocí těchto kroků vytvořte [pravidlo brány firewall protokolu IP na úrovni serveru](firewall-configure.md).
 
 > [!IMPORTANT]
-> Služba SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit k této službě v rámci podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k databázi, pokud správce neotevře port 1433.
+> Azure SQL Database komunikuje přes port 1433. Pokud se pokoušíte připojit k této službě v rámci podnikové sítě, nemusí být odchozí provoz přes port 1433 bránou firewall vaší sítě povolený. Pokud ano, nemůžete se připojit k databázi, pokud správce neotevře port 1433.
 
 1. Po dokončení nasazení vyberte **databáze SQL** z nabídky Azure Portal nebo vyhledejte a vyberte *databáze SQL* z libovolné stránky.  
 
@@ -131,7 +131,7 @@ K navázání připojení k databázi použijte [SQL Server Management Studio](/
 1. Otevřete SQL Server Management Studio.
 2. V dialogovém okně **Připojení k serveru** zadejte následující informace:
 
-   | Nastavení       | Navrhovaná hodnota | Description |
+   | Nastavení       | Navrhovaná hodnota | Popis |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Typ serveru** | Databázový stroj | Tato hodnota se vyžaduje. |
    | **Název serveru** | Plně kvalifikovaný název serveru | Například *yourserver.Database.Windows.NET*. |

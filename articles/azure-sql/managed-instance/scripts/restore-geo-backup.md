@@ -1,6 +1,6 @@
 ---
 title: 'PowerShell: obnovení geografického zálohování pro spravovanou instanci Azure SQL'
-description: Azure PowerShell ukázkový skript pro obnovení spravované instance Azure SQL z geograficky redundantní zálohy.
+description: Azure PowerShell ukázkový skript pro obnovení databáze spravované instance Azure SQL z geograficky redundantní zálohy.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -11,14 +11,15 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
-ms.openlocfilehash: 3ec73fd54ddb482e9d8df6d406b77f57596b95e7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: eeb20f51b22805775ed491267b69d0ba60c90bc3
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053457"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84220847"
 ---
 # <a name="use-powershell-to-restore-an-azure-sql-managed-instance-database-to-another-geo-region"></a>Použití PowerShellu k obnovení databáze spravované instance Azure SQL do jiné geografické oblasti
+
 [!INCLUDE[appliesto-sqldb](../../includes/appliesto-sqlmi.md)]
 
 Tento ukázkový skript PowerShellu obnoví databázi spravované instance Azure SQL ze vzdálené geografické oblasti (geografické obnovení).  
@@ -27,7 +28,7 @@ Tento ukázkový skript PowerShellu obnoví databázi spravované instance Azure
 [!INCLUDE [updated-for-az](../../../../includes/updated-for-az.md)]
 [!INCLUDE [cloud-shell-try-it.md](../../../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat PowerShell místně, je nutné, aby tento kurz byl AZ PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
+Pokud se rozhodnete nainstalovat a používat PowerShell místně, vyžaduje tento kurz Azure PowerShell 1.4.0 nebo novější. Pokud potřebujete upgrade, přečtěte si téma [Instalace modulu Azure PowerShell](/powershell/azure/install-az-ps). Pokud používáte PowerShell místně, je také potřeba spustit příkaz `Connect-AzAccount` pro vytvoření připojení k Azure.
 
 ## <a name="sample-script"></a>Ukázkový skript
 
@@ -83,4 +84,4 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 
 Další informace o PowerShellu najdete v [dokumentaci k Azure PowerShell](/powershell/azure/overview).
 
-Další ukázkové skripty PowerShellu pro službu SQL Database najdete v tématu [Skripty PowerShellu pro službu Azure SQL Database](../../database/powershell-script-content-guide.md).
+Další ukázkové skripty PowerShellu pro Azure SQL Database najdete v [Azure SQL Database skriptech PowerShellu](../../database/powershell-script-content-guide.md).

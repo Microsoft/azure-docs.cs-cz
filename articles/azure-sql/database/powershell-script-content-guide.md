@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 2d80291909b29576c60f39afc63ec174c091f1c5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 93fac2e3ae8d83f0fa49f94a3ba7880a2ecc2b4c
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053355"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84193892"
 ---
 # <a name="azure-powershell-samples-for-azure-sql-database-and-azure-sql-managed-instance"></a>Ukázky Azure PowerShell pro Azure SQL Database a Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -54,7 +54,7 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure PowerShellu p
 | [Import databáze ze souboru BacPac](scripts/import-from-bacpac-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Tento skript PowerShellu importuje databázi do Azure SQL Database ze souboru BacPac. |
 | **Synchronizace dat mezi databázemi**||
 | [Synchronizace dat mezi databázemi SQL](scripts/sql-data-sync-sync-data-between-sql-databases.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu nakonfiguruje synchronizaci dat pro synchronizaci mezi několika databázemi v Azure SQL Database. |
-| [Synchronizace dat mezi službou SQL Database a místním SQL Serverem](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu nakonfiguruje synchronizaci dat pro synchronizaci mezi databází v Azure SQL Database a místní databází SQL Server. |
+| [Synchronizace dat mezi SQL Database a SQL Server](scripts/sql-data-sync-sync-data-between-azure-onprem.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu nakonfiguruje synchronizaci dat pro synchronizaci mezi databází v Azure SQL Database a databází SQL Server. |
 | [Aktualizace schématu synchronizace pro Synchronizaci dat SQL](scripts/update-sync-schema-in-sync-group.md?toc=%2fpowershell%2fmodule%2ftoc.json) | Tento skript PowerShellu přidá položky do schématu synchronizace pro Synchronizaci dat nebo je z něj odebere. |
 |||
 

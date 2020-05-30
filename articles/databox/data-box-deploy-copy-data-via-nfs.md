@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: f0a4bb23d8a868e7c11153748259eba23a0cca38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 81732f13b85a7c0b514aad61c40802f4547957c2
+ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79501820"
+ms.lasthandoff: 05/30/2020
+ms.locfileid: "84219129"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-via-nfs"></a>Kurz: kopírování dat do Azure Data Box přes systém souborů NFS
 
@@ -93,8 +93,10 @@ Po připojení ke sdíleným složkám Data Boxu je dalším krokem zkopírován
   * V názvu se zachová velká a malá písmena.
   * V souborech se nerozlišují malá a velká písmena.
 
-    Například při kopírování `SampleFile.txt` a `Samplefile.Txt`zachová se v názvu při zkopírování do data box, ale druhý soubor přepíše první soubor, který se považuje za stejný soubor.
-* Zajistěte, abyste zachovali kopii zdrojových dat, dokud nebudete moci potvrdit, že Data Box přenesla vaše data do Azure Storage.
+    Například při kopírování `SampleFile.txt` a `Samplefile.Txt` zachová se v názvu při zkopírování do data box, ale druhý soubor přepíše první soubor, který se považuje za stejný soubor.
+
+> [!IMPORTANT]
+> Zajistěte, abyste zachovali kopii zdrojových dat, dokud nebudete moci potvrdit, že Data Box přenesla vaše data do Azure Storage.
 
 Pokud používáte hostitelský počítač s Linuxem, použijte podobný nástroj pro kopírování jako Robocopy. Mezi dostupné alternativy v Linuxu patří [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) nebo [Ultracopier](https://ultracopier.first-world.info/).  
 
@@ -102,31 +104,31 @@ Jednou z nejlepších možností, jak zkopírovat adresář, je příkaz `cp`. D
 
 Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte podle těchto pokynů:
 
- - V závislosti na systému souborů, který používá váš klient Linuxu, nainstalujte balíček **CIFS Utils** nebo **NFS Utils**.
+* V závislosti na systému souborů, který používá váš klient Linuxu, nainstalujte balíček **CIFS Utils** nebo **NFS Utils**.
 
     `sudo apt-get install cifs-utils`
 
     `sudo apt-get install nfs-utils`
 
- -  Nainstalujte **Rsync** a **Parallel** (liší se v závislosti na distribuované verzi Linuxu).
+* Nainstalujte **rsync** a **Parallel** (liší se v závislosti na distribuované verzi systému Linux).
 
     `sudo apt-get install rsync`
    
     `sudo apt-get install parallel` 
 
- - Vytvořte přípojný bod.
+* Vytvořte přípojný bod.
 
     `sudo mkdir /mnt/databox`
 
- - Připojte svazek.
+* Připojte svazek.
 
     `sudo mount -t NFS4  //Databox IP Address/share_name /mnt/databox` 
 
- - Zrcadlete adresářovou strukturu složky.  
+* Zrcadlete adresářovou strukturu složky.  
 
     `rsync -za --include='*/' --exclude='*' /local_path/ /mnt/databox`
 
- - Zkopírujte soubory. 
+* Zkopírujte soubory.
 
     `cd /local_path/; find -L . -type f | parallel -j X rsync -za {} /mnt/databox/{}`
 
@@ -140,22 +142,20 @@ Pokud používáte možnost rsync ke kopírování s více vlákny, postupujte p
 Otevřete cílovou složku, zobrazte zkopírované soubory a ověřte je. Pokud během procesu kopírování dojde k nějakým chybám, stáhněte si soubory s chybami, abyste mohli vyřešit případné potíže. Další informace najdete v tématu věnovaném [zobrazení protokolů chyb při kopírování dat do Data Boxu](data-box-logs.md#view-error-log-during-data-copy). Podrobný seznam chyb při kopírování dat najdete v tématu [Řešení potíží s Data Boxem](data-box-troubleshoot.md).
 
 Aby se zajistila integrita dat, při kopírování dat se počítá kontrolní součet. Po dokončení kopírování zkontrolujte využité a volné místo na zařízení.
-    
-   ![Kontrola volného a využitého místa na řídicím panelu](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
+   ![Kontrola volného a využitého místa na řídicím panelu](media/data-box-deploy-copy-data/verify-used-space-dashboard.png)
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto kurzu jste se dozvěděli o tématech spojených se službou Azure Data Box Disk, jako jsou:
 
 > [!div class="checklist"]
+>
 > * Požadavky
 > * Připojení k Data Boxu
 > * Kopírování dat do Data Boxu
-
 
 V dalším kurzu se dozvíte, jak Data Box odeslat zpět do Microsoftu.
 
 > [!div class="nextstepaction"]
 > [Odeslání Azure Data Boxu do Microsoftu](./data-box-deploy-picked-up.md)
-
