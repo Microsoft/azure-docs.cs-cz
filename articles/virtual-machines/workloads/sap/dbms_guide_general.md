@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 12/04/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: a852ddc68a6f51e677e5ff2e641ada25f4bf0105
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 581efde3128294a326bdfd08e622a8dcabe5784d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70101366"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232658"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Důvody pro nasazení Azure Virtual Machines DBMS pro úlohy SAP
 [1114181]:https://launchpad.support.sap.com/#/notes/1114181
@@ -77,7 +77,7 @@ V celém dokumentu se používají tyto výrazy:
 
 Některá dokumentace Microsoftu popisuje různé scénáře různých scénářů, a to hlavně v případě konfigurací s vysokou dostupností systému DBMS. V případě dokumentů souvisejících s SAP se scénář mezi místními systémy doloží na připojení typu Site-to-site nebo Private [ExpressRoute](https://azure.microsoft.com/services/expressroute/) a na šířku SAP, která je distribuována mezi místními a Azure.
 
-## <a name="resources"></a>Prostředky
+## <a name="resources"></a>Zdroje a prostředky
 V úlohách SAP v Azure jsou k dispozici další články. Začněte s [úlohou SAP v Azure:](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/get-started) začněte a pak zvolte svou oblast zájmu.
 
 Následující poznámky SAP souvisejí s SAP v Azure v souvislosti s oblastí pokrytou v tomto dokumentu.
@@ -280,7 +280,7 @@ Tyto osvědčené postupy jsou výsledkem stovek nasazení zákazníků:
 
 - Virtuální sítě, ke kterým je aplikace SAP nasazená, nemají přístup k Internetu.
 - Virtuální počítače databáze běží ve stejné virtuální síti jako aplikační vrstva.
-- Virtuální počítače v rámci virtuální sítě mají statické přidělení privátní IP adresy. Další informace najdete v tématu [typy IP adres a metody přidělování v Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm).
+- Virtuální počítače v rámci virtuální sítě mají statické přidělení privátní IP adresy. Další informace najdete v tématu [typy IP adres a metody přidělování v Azure](../../../virtual-network/public-ip-addresses.md).
 - Omezení směrování do a z virtuálních počítačů s DBMS *nejsou nastavená* pomocí bran firewall nainstalovaných na místních virtuálních počítačích DBMS. Místo toho je směrování provozu definované se [skupinami zabezpečení sítě (skupin zabezpečení sítě)](https://docs.microsoft.com/azure/virtual-network/security-overview).
 - Pokud chcete provoz oddělit a izolovat k virtuálnímu počítači DBMS, přiřaďte k virtuálnímu počítači různé síťové adaptéry. Každé síťové rozhraní získá jinou IP adresu a každá síťová karta je přiřazena k jiné podsíti virtuální sítě. Každá podsíť má odlišná pravidla NSG. Izolaci nebo oddělení síťových přenosů je míra pro směrování. Nepoužívá se k nastavení kvót pro propustnost sítě.
 

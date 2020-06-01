@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 8cf6d59d93a1b26d79911fc9fa9251ea3d0689ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 78aac1e49b23cf7fd294314f335aa429e8458639
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098437"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233368"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Běžné příkazy PowerShellu pro virtuální sítě Azure
 
@@ -31,7 +31,7 @@ Některé proměnné mohou být užitečné při spuštění více než jednoho 
 | ---- | ------- |
 | Vytvoření konfigurací podsítí |$subnet 1 = [New-AzVirtualNetworkSubnetConfig](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetworksubnetconfig) -Name "mySubnet1"-AddressPrefix xx. X. X. X/XX<BR>$subnet 2 = New-AzVirtualNetworkSubnetConfig-Name "mySubnet2"-AddressPrefix XX. X. X. X/XX<BR><BR>Typická síť může mít podsíť pro [internetový nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-internet-overview.md) a samostatnou podsíť pro [interní nástroj pro vyrovnávání zatížení](../../load-balancer/load-balancer-internal-overview.md). |
 | Vytvoření virtuální sítě |$vnet = [New-AzVirtualNetwork](https://docs.microsoft.com/powershell/module/az.network/new-azvirtualnetwork) -Name "myVNet"-ResourceGroupName $MyResourceGroup-Location $Location-AddressPrefix xx. X. X. X/XX-podsíť $subnet 1, $subnet 2 |
-| Testování jedinečného názvu domény |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" – Umístění $Location<BR><BR>Pro [prostředek veřejné IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)adresy můžete zadat název domény DNS, který vytvoří mapování pro domainname.Location.cloudapp.Azure.com na veřejnou IP adresu na serverech DNS spravovaných Azure. Název může obsahovat pouze písmena, číslice a pomlčky. První a poslední znak musí být písmeno nebo číslo a název domény musí být v rámci svého umístění Azure jedinečný. Pokud je vrácena **hodnota true** , je navržený název globálně jedinečný. |
+| Testování jedinečného názvu domény |[Test-AzDnsAvailability](https://docs.microsoft.com/powershell/module/az.network/test-azdnsavailability) -DomainNameLabel "myDNS" – Umístění $Location<BR><BR>Pro [prostředek veřejné IP](../../virtual-network/public-ip-addresses.md)adresy můžete zadat název domény DNS, který vytvoří mapování pro domainname.Location.cloudapp.Azure.com na veřejnou IP adresu na serverech DNS spravovaných Azure. Název může obsahovat pouze písmena, číslice a pomlčky. První a poslední znak musí být písmeno nebo číslo a název domény musí být v rámci svého umístění Azure jedinečný. Pokud je vrácena **hodnota true** , je navržený název globálně jedinečný. |
 | Vytvoření veřejné IP adresy |$pip = [New-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/new-azpublicipaddress) -Name "myPublicIp"-ResourceGroupName $MyResourceGroup-DomainNameLabel "myDNS"-Location $Location-element allocationmethod Dynamic<BR><BR>Veřejná IP adresa používá název domény, který jste dříve otestovali a kterou používá konfigurace front-endu nástroje pro vyrovnávání zatížení. |
 | Vytvoření konfigurace IP adresy front-endu |$frontendIP = [New-AzLoadBalancerFrontendIpConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerfrontendipconfig) -Name "myFrontendIP"-PublicIpAddress $PIP<BR><BR>Konfigurace front-endu zahrnuje veřejnou IP adresu, kterou jste dříve vytvořili pro příchozí síťový provoz. |
 | Vytvoření fondu back-endových adres |$beAddressPool = [New-AzLoadBalancerBackendAddressPoolConfig](https://docs.microsoft.com/powershell/module/az.network/new-azloadbalancerbackendaddresspoolconfig) -Name "myBackendAddressPool"<BR><BR>Poskytuje interní adresy pro back-end nástroje pro vyrovnávání zatížení, ke kterým se používá síťové rozhraní. |

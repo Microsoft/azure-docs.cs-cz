@@ -9,14 +9,14 @@ ms.date: 05/23/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
 ms.custom: storage-accounts
-ms.openlocfilehash: 130764ad5504ded398a9fdf9fa27d6cb936fbacc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 31b8200b63780388fb53db588c418951c500ac19
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82099780"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232908"
 ---
-# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Vytvoření image nespravovaného virtuálního počítače z virtuálního počítače Azure
+# <a name="how-to-create-an-unmanaged-vm-image-from-an-azure-vm"></a>Vytvoření nespravované image z virtuálního počítače Azure
 
 Tento článek se zabývá používáním účtů úložiště. Doporučujeme místo účtu úložiště používat spravované disky a spravované image. Další informace najdete v tématu [zachycení spravované image zobecněného virtuálního počítače v Azure](capture-image-resource.md).
 
@@ -38,7 +38,7 @@ Virtuální počítač se systémem Linux můžete také zobecnit pomocí `sudo 
 
 
 1. Přihlaste se k virtuálnímu počítači s Windows.
-2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%WINDIR%\system32\sysprep**a potom spusťte příkaz `sysprep.exe`.
+2. Otevřete okno příkazového řádku jako správce. Změňte adresář na **%WINDIR%\system32\sysprep**a potom spusťte příkaz `sysprep.exe` .
 3. V dialogovém okně **Nástroj pro přípravu systému** vyberte **Zobrazit prostředí prvního spuštění počítače** a ujistěte se, že je zaškrtnuté políčko **Generalizovat**.
 4. V **Možnosti vypnutí**vyberte **vypnout**.
 5. Klikněte na tlačítko **OK**.
@@ -97,7 +97,7 @@ Virtuální počítač se systémem Linux můžete také zobecnit pomocí `sudo 
 
 ## <a name="create-the-image"></a>Vytvoření image
 
-Pomocí tohoto příkazu vytvořte image nespravovaného virtuálního počítače v cílovém kontejneru úložiště. Obrázek se vytvoří ve stejném účtu úložiště jako původní virtuální počítač. `-Path` Parametr uloží kopii šablony JSON pro zdrojový virtuální počítač do místního počítače. `-DestinationContainerName` Parametr je název kontejneru, do kterého chcete uložit obrázky. Pokud kontejner neexistuje, vytvoří se za vás.
+Pomocí tohoto příkazu vytvořte image nespravovaného virtuálního počítače v cílovém kontejneru úložiště. Obrázek se vytvoří ve stejném účtu úložiště jako původní virtuální počítač. `-Path`Parametr uloží kopii šablony JSON pro zdrojový virtuální počítač do místního počítače. `-DestinationContainerName`Parametr je název kontejneru, do kterého chcete uložit obrázky. Pokud kontejner neexistuje, vytvoří se za vás.
    
 ```powershell
 Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
@@ -105,7 +105,7 @@ Save-AzVMImage -ResourceGroupName <resourceGroupName> -Name <vmName> `
     -Path <C:\local\Filepath\Filename.json>
 ```
    
-Adresu URL obrázku můžete získat ze šablony souboru JSON. Pro úplnou cestu k imagi použijte oddíl **Resources** > **URI** **Image** > **storageProfile** > **osDisk** > . Adresa URL obrázku vypadá takto: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd`.
+Adresu URL obrázku můžete získat ze šablony souboru JSON. Pro úplnou cestu k imagi použijte oddíl **Resources**  >  **storageProfile**  >  **osDisk**  >  **image**  >  **URI** image storageProfile osDisk. Adresa URL obrázku vypadá takto: `https://<storageAccountName>.blob.core.windows.net/system/Microsoft.Compute/Images/<imagesContainer>/<templatePrefix-osDisk>.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` .
    
 Identifikátor URI můžete také ověřit na portálu. Obrázek se zkopíruje do kontejneru s názvem **System** v účtu úložiště. 
 
@@ -115,7 +115,7 @@ Nyní můžete vytvořit jeden nebo více virtuálních počítačů z nespravov
 
 ### <a name="set-the-uri-of-the-vhd"></a>Nastavte identifikátor URI virtuálního pevného disku.
 
-Identifikátor URI pro virtuální pevný disk, který se má použít, je ve formátu: https://**mystorageaccount**. blob.Core.Windows.NET/**myContainer**/**MyVhdName**. VHD. V tomto příkladu je virtuální pevný disk s názvem **myVHD** v účtu úložiště **mystorageaccount** v kontejneru **myContainer**.
+Identifikátor URI pro virtuální pevný disk, který se má použít, je ve formátu: https://**mystorageaccount**. blob.Core.Windows.NET/**myContainer** / **MyVhdName**. VHD. V tomto příkladu je virtuální pevný disk s názvem **myVHD** v účtu úložiště **mystorageaccount** v kontejneru **myContainer**.
 
 ```powershell
 $imageURI = "https://mystorageaccount.blob.core.windows.net/mycontainer/myVhd.vhd"
@@ -142,7 +142,7 @@ Vytvořte virtuální síť a podsíť [virtuální sítě](../../virtual-networ
     ```    
 
 ### <a name="create-a-public-ip-address-and-network-interface"></a>Vytvoření veřejné IP adresy a síťového rozhraní
-Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti, budete potřebovat [veřejnou adresu IP](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) a síťové rozhraní.
+Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti, budete potřebovat [veřejnou adresu IP](../../virtual-network/public-ip-addresses.md) a síťové rozhraní.
 
 1. Vytvořte veřejnou IP adresu. Tento příklad vytvoří veřejnou IP adresu s názvem **myPip**. 
    
@@ -243,7 +243,7 @@ Následující prostředí PowerShell dokončí konfigurace virtuálních počí
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Ověřte, že byl virtuální počítač vytvořen.
-Po dokončení by se měl nově vytvořený virtuální počítač zobrazit v [Azure Portal](https://portal.azure.com) v části **Procházet** > **virtuální počítače**nebo pomocí následujících příkazů PowerShellu:
+Po dokončení by se měl nově vytvořený virtuální počítač zobrazit v [Azure Portal](https://portal.azure.com) v části **Procházet**  >  **virtuální počítače**nebo pomocí následujících příkazů PowerShellu:
 
 ```powershell
     $vmList = Get-AzVM -ResourceGroupName $rgName

@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5825466c099a8c57477f2d9d0420da74ccb2e96d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 195668886a0c1ba9f96939a7e5e3960a6932dee5
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615393"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235893"
 ---
 # <a name="tenant-and-host-pool-creation"></a>Vytvoření tenanta a fondu hostitelů
 
@@ -28,13 +28,29 @@ Navštivte [technickou komunitu pro virtuální počítače s Windows](https://t
 
 ## <a name="acquiring-the-windows-10-enterprise-multi-session-image"></a>Získání bitové kopie Windows 10 Enterprise s více relacemi
 
-Pokud chcete použít bitovou kopii Windows 10 Enterprise s více relacemi, **Přečtěte si Azure Marketplace, vyberte** > Začínáme s**Microsoft Windows 10** > a [Windows 10 Enterprise pro virtuální plochy verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
+Pokud chcete použít bitovou kopii Windows 10 Enterprise s více relacemi, **Přečtěte si Azure Marketplace, vyberte Začínáme**s  >  **Microsoft Windows 10** > a [Windows 10 Enterprise pro virtuální plochy verze 1809](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsdesktop.windows-10?tab=PlansAndPrice).
 
 ![Snímek obrazovky s výběrem Windows 10 Enterprise pro virtuální plochy verze 1809](../media/AzureMarketPlace.png)
 
 ## <a name="creating-windows-virtual-desktop-tenant"></a>Vytváří se tenant virtuální plochy Windows.
 
 Tato část se věnuje potenciálním problémům při vytváření tenanta virtuálních klientů Windows.
+
+### <a name="error-aadsts650052-the-app-needs-access-to-a-service"></a>Chyba: AADSTS650052 aplikace potřebuje přístup ke službě.
+
+Příklad nezpracované chyby:
+
+```Error
+AADSTS650052 Message The app needs access to a service(\"{name}\") that your organization
+\"{organization}\" has not subscribed to or enabled. Contact your IT Admin to review the 
+configuration of your service subscriptions.650052 Message The app needs access to a service
+(\"{name}\") that your organization \"{organization}\" has not subscribed to or enabled. 
+Contact your IT Admin to review the configuration of your service subscriptions.
+```
+
+**Příčina:** V instanci Azure Active Directory se neudělí souhlas s virtuálním počítačem s Windows.
+
+**Oprava:** [podle tohoto průvodce](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) udělíte souhlas.
 
 ### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Chyba: uživatel nemá oprávnění pro dotaz na službu správy.
 
@@ -122,7 +138,7 @@ Při řešení neúspěšného nasazení Azure Resource Manager šablon a prost�
 3. Po identifikaci chyby použijte chybovou zprávu a prostředky v tématu [řešení běžných chyb nasazení Azure pomocí Azure Resource Manager](../../azure-resource-manager/resource-manager-common-deployment-errors.md) k vyřešení problému.
 4. Odstraňte všechny prostředky vytvořené během předchozího nasazení a zkuste šablonu znovu nasadit.
 
-### <a name="error-your-deployment-failedhostnamejoindomain"></a>Chyba: nasazení nebylo úspěšné....\<název hostitele>/JoinDomain
+### <a name="error-your-deployment-failedhostnamejoindomain"></a>Chyba: nasazení nebylo úspěšné... \<hostname> /JoinDomain
 
 ![Nasazování se nepovedlo snímek obrazovky.](../media/e72df4d5c05d390620e07f0d7328d50f.png)
 

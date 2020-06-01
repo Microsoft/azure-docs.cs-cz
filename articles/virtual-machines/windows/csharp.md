@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: 07c66b2955f3df1ffae1a0cb0c2b0888bdc790e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4fd7ccc7b6df85397fd547f8e1e48b776f12c0df
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82082879"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234522"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-c"></a>Vytvoření a správa virtuálních počítačů s Windows v Azure pomocí jazyka C # #
 
@@ -32,14 +32,14 @@ Provedení těchto kroků trvá přibližně 20 minut.
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
 1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Na stránce úlohy vyberte **vývoj pro desktopy .NET** a pak klikněte na **nainstalovat**. V souhrnu vidíte, že se pro vás automaticky vybraly **.NET Framework nástroje pro vývoj 4-4,6** . Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohu rozhraní .NET pomocí spouštěče sady Visual Studio.
-2. V aplikaci Visual Studio klikněte na **soubor** > **Nový** > **projekt**.
-3. V **šablonách** > **Visual C#** vyberte **Konzolová aplikace (.NET Framework)**, jako název projektu zadejte *myDotnetProject* , vyberte umístění projektu a pak klikněte na **OK**.
+2. V aplikaci Visual Studio klikněte na **soubor**  >  **Nový**  >  **projekt**.
+3. V **šablonách**  >  **Visual C#** vyberte **Konzolová aplikace (.NET Framework)**, jako název projektu zadejte *myDotnetProject* , vyberte umístění projektu a pak klikněte na **OK**.
 
 ## <a name="install-the-package"></a>Instalace balíčku
 
 Balíčky NuGet představují nejjednodušší způsob, jak nainstalovat knihovny, které potřebujete k dokončení těchto kroků. Chcete-li získat knihovny, které potřebujete v aplikaci Visual Studio, proveďte tyto kroky:
 
-1. Klikněte na **nástroje** > **Správce balíčků NuGet**a pak klikněte na **Konzola správce balíčků**.
+1. Klikněte na **nástroje**  >  **Správce balíčků NuGet**a pak klikněte na **Konzola správce balíčků**.
 2. Do konzoly zadejte tento příkaz:
 
     ```
@@ -52,7 +52,7 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
 
 ### <a name="create-the-authorization-file"></a>Vytvoření autorizačního souboru
 
-1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject* > **Přidat** > **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *azureauth. Properties*a pak klikněte na **Přidat**.
+1. V Průzkumník řešení klikněte pravým tlačítkem myši na *myDotnetProject*  >  **Přidat**  >  **novou položku**a pak vyberte **textový soubor** v *položkách jazyka Visual C#*. Pojmenujte soubor *azureauth. Properties*a pak klikněte na **Přidat**.
 2. Přidejte tyto vlastnosti autorizace:
 
     ```
@@ -66,7 +66,7 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
     graphURL=https://graph.microsoft.com/
     ```
 
-    Nahraďte ** &lt;&gt; ID** předplatného identifikátorem vašeho předplatného, ** &lt;ID&gt; aplikace** s identifikátorem aplikace služby Active Directory, ** &lt;&gt; ** klíčem pro ověřování a klíčovým klíčem aplikace a ** &lt;ID&gt; tenanta** s identifikátorem tenanta.
+    Nahraďte ** &lt; ID &gt; ** předplatného identifikátorem vašeho předplatného, ** &lt; ID &gt; aplikace** s identifikátorem aplikace služby Active ** &lt; &gt; ** Directory, klíčem pro ověřování a klíčovým klíčem aplikace a ** &lt; ID &gt; tenanta** s identifikátorem tenanta.
 
 3. Uložte soubor azureauth. Properties. 
 4. V systému Windows nastavte proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k autorizačnímu souboru, který jste vytvořili. Například můžete použít následující příkaz prostředí PowerShell:
@@ -136,7 +136,7 @@ var availabilitySet = azure.AvailabilitySets.Define("myAVSet")
 
 ### <a name="create-the-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-[Veřejná IP adresa](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) je potřeba ke komunikaci s virtuálním počítačem.
+[Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) je potřeba ke komunikaci s virtuálním počítačem.
 
 Pro vytvoření veřejné IP adresy pro virtuální počítač přidejte tento kód do metody Main:
    

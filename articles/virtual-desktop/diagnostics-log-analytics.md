@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: bd28117350913bc25f5bf7cec08d28683ad9daca
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 04c02cb493941d101cf230b1ca3dab32aaa7a2fc
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020060"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234562"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Použití Log Analytics pro diagnostickou funkci
 
@@ -117,6 +117,9 @@ K Log Analytics pracovním prostorům můžete přistupovat Azure Portal nebo Az
 4. Podle pokynů na stránce protokolování nastavte obor dotazu.  
 
 5. Jste připraveni na dotaz na diagnostiku. Všechny tabulky diagnostiky mají předponu "WVD".
+
+>[!NOTE]
+>Podrobnější informace o tabulkách uložených v protokolech Azure Monitor najdete v části [Azure monitor data](https://docs.microsoft.com/azure/azure-monitor/reference/). Všechny tabulky související s virtuálním počítačem s Windows jsou označené jako "WVD".
 
 ## <a name="cadence-for-sending-diagnostic-events"></a>Tempo pro odesílání diagnostických událostí
 
@@ -239,10 +242,32 @@ WVDErrors
 | render barchart 
 ```
 
+Zjištění výskytu chyby napříč všemi uživateli:
+
+```kusto
+WVDErrors 
+| where ServiceError =="false" 
+| summarize usercount = count(UserName) by CodeSymbolic 
+| sort by usercount desc
+| render barchart 
+```
+
+Chcete-li se dotazovat aplikace na uživatele otevřené, spusťte tento dotaz:
+
+```kusto
+WVDCheckpoints 
+| where TimeGenerated > ago(7d)
+| where Name == "LaunchExecutable"
+| extend App = parse_json(Parameters).filename
+| summarize Usage=count(UserName) by tostring(App)
+| sort by Usage desc
+| render columnchart
+```
 >[!NOTE]
->Nejdůležitější tabulka pro řešení potíží je WVDErrors. Tento dotaz vám pomůže pochopit, k jakým problémům dochází u uživatelských aktivit, jako jsou připojení nebo informační kanály, když se uživatel přihlásí k odběru seznamu aplikací nebo počítačů. V tabulce se zobrazí chyby správy a také problémy s registrací hostitele.
->
->Pokud v rámci veřejné verze Preview potřebujete při řešení problému nápovědu, ujistěte se, že v žádosti o nápovědu udělíte ID korelace pro chybu. Také se ujistěte, že hodnota chyb služby vždy říká ServiceError = "false". Hodnota false znamená, že problém může vyřešit úloha správce na konci. Pokud ServiceError = "true", budete muset problém vyřešit společnosti Microsoft.
+>- Když uživatel otevře celou plochu, jejich využití aplikace v relaci není sledováno jako kontrolní body v tabulce WVDCheckpoints.
+>- Sloupec ResourcesAlias v tabulce WVDConnections ukazuje, jestli se uživatel připojil k celé ploše nebo publikované aplikaci. V tomto sloupci se zobrazuje jenom první aplikace, kterou otevřel během připojení. Všechny publikované aplikace, které uživatel otevře, jsou sledovány v WVDCheckpoints.
+>- V tabulce WVDErrors se zobrazují chyby správy, problémy s registrací hostitele a další problémy, ke kterým dochází, když se uživatel přihlásí k odběru seznamu aplikací nebo stolních počítačů.
+>- WVDErrors vám pomůže identifikovat problémy, které mohou být vyřešeny úlohami správce. Hodnota v ServiceError vždy říká "false" pro tyto typy problémů. Pokud ServiceError = "true", budete muset problém vyřešit společnosti Microsoft. Ujistěte se, že jste zadali ID korelace pro chyby, které chcete eskalovat.
 
 ## <a name="next-steps"></a>Další kroky 
 

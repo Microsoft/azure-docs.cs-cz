@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/29/2020
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 9cb38037b905e9d7f938b648954bcb9e419be5af
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 57a8d308955719be0d84b87fb3a23c6f510c2836
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217425"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234902"
 ---
 # <a name="use-the-content-aware-encoding-preset-to-find-the-optimal-bitrate-value-for-a-given-resolution"></a>K vyhledání optimální přenosové hodnoty pro dané řešení použijte předvolbu kódování zohledňující obsah.
 
@@ -55,9 +55,10 @@ Níže jsou uvedeny výsledky jiné kategorie zdrojového obsahu, kde kodér dok
 
 Transformace, které používají tuto předvolbu, můžete vytvořit následujícím způsobem. 
 
-> [!TIP]
-> Kurzy, které používají výstupy transformace, najdete v části [Další kroky](#next-steps) . Výstupní Asset se dá doručovat z Media Services koncových bodů streamování v protokolech, jako jsou MPEG-SPOJOVNÍKy a HLS (jak je znázorněno v kurzech).
+Kurzy, které používají výstupy transformace, najdete v části [Další kroky](#next-steps) . Výstupní Asset se dá doručovat z Media Services koncových bodů streamování v protokolech, jako jsou MPEG-SPOJOVNÍKy a HLS (jak je znázorněno v kurzech).
 
+> [!NOTE]
+> Ujistěte se, že jste použili předvolbu **ContentAwareEncoding** , která není ContentAwareEncodingExperimental.
 
 ```csharp
 TransformOutput[] output = new TransformOutput[]
@@ -77,8 +78,6 @@ TransformOutput[] output = new TransformOutput[]
 
 > [!NOTE]
 > Úlohy kódování s použitím `ContentAwareEncoding` přednastavení se účtují na základě výstupních minut. 
-
-Ujistěte se, že jste použili předvolbu **ContentAwareEncoding** , která není ContentAwareEncodingExperimental.
   
 ## <a name="next-steps"></a>Další kroky
 

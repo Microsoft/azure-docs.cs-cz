@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/01/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 4559a49a64688545e519f6172798997c2d695672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a665c3c27cca03a084896895ae51c56732ceb7b6
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461799"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237732"
 ---
 Když vytváříte virtuální počítač Azure, musíte vytvořit [virtuální síť](../articles/virtual-network/virtual-networks-overview.md) (VNet), nebo použít existující VNet. Také musíte rozhodnout, jak budou vaše virtuální počítače v síti VNet dostupné. Je důležité [plánovat před vytvořením prostředků](../articles/virtual-network/virtual-network-vnet-plan-design-arm.md) a dobře porozumět [omezením síťových prostředků](../articles/azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits).
 
@@ -51,7 +51,7 @@ Tato tabulka shrnuje metody, které můžete použít k vytvoření síťového 
 
 ## <a name="ip-addresses"></a>IP adresy 
 
-Síťovému rozhraní v Azure můžete přiřadit tyto typy [IP adres](../articles/virtual-network/virtual-network-ip-addresses-overview-arm.md):
+Síťovému rozhraní v Azure můžete přiřadit tyto typy [IP adres](../articles/virtual-network/public-ip-addresses.md):
 
 - **Veřejné IP adresy** – Slouží k příchozí a odchozí komunikaci (bez překladu adres (NAT)) s internetem a dalšími prostředky Azure, které nejsou připojené k virtuální síti. Přiřazení veřejné IP adresy síťovému rozhraní je volitelné. Veřejné IP adresy mají nominální poplatek a maximální počet, který je možné použít pro každé předplatné.
 - **Privátní IP adresy** – Slouží ke komunikaci v rámci virtuální sítě, místní sítě a internetu (s NAT). Virtuálnímu počítači je nutné přiřadit alespoň jeden privátní IP adresu. Další informace o NAT v Azure najdete v článku [Principy odchozích připojení v Azure](../articles/load-balancer/load-balancer-outbound-connections.md).

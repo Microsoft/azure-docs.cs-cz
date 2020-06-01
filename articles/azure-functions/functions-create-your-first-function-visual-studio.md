@@ -5,22 +5,18 @@ ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.topic: quickstart
 ms.date: 03/06/2020
 ms.custom: mvc, devcenter, vs-azure, 23113853-34f2-4f
-ms.openlocfilehash: a4549bd2947332d7140f4f440a5344f417430554
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: aa1999df83c3a3926f3410ea7ee48af75b2dd515
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122744"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231538"
 ---
 # <a name="quickstart-create-your-first-function-in-azure-using-visual-studio"></a>Rychlý Start: Vytvoření první funkce v Azure pomocí sady Visual Studio
 
-Azure Functions umožňuje spuštění kódu v prostředí bez serveru, aniž byste nejdřív museli vytvořit virtuální počítač nebo publikovat webovou aplikaci.
+V tomto článku vytvoříte pomocí sady Visual Studio funkci založenou na knihovně jazyka C#, která reaguje na požadavky HTTP. Po místním testování kódu ho nasadíte do prostředí Azure Functions bez serveru.  
 
-V tomto rychlém startu se naučíte, jak pomocí sady Visual Studio 2019 místně vytvořit a otestovat aktivační událost "Hello World" s funkcí jazyka C#, kterou pak publikujete do Azure. 
-
-![Odezva místního hostitele funkce v prohlížeči](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-local-final.png)
-
-Tento rychlý Start je určený pro Visual Studio 2019. 
+Po dokončení tohoto rychlého startu dojde v účtu Azure k malým nákladům na několik centů nebo méně.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -34,11 +30,19 @@ Pokud ještě nemáte [předplatné Azure](../guides/developer/azure-developer-g
 
 [!INCLUDE [Create a project using the Azure Functions template](../../includes/functions-vstools-create.md)]
 
-Visual Studio vytvoří projekt a třídu, která obsahuje často používaný kód pro typ funkce triggeru protokolu HTTP. `FunctionName`Atribut Method nastaví název funkce, která je ve výchozím nastavení nastavena na `Function1` . `HttpTrigger`Atribut určuje, že funkce je aktivována požadavkem http. Často používaný kód odešle odpověď HTTP obsahující hodnotu z textu žádosti nebo řetězce dotazu.
+Visual Studio vytvoří projekt a třídu, která obsahuje často používaný kód pro typ funkce triggeru protokolu HTTP. Často používaný kód odešle odpověď HTTP obsahující hodnotu z textu žádosti nebo řetězce dotazu. `HttpTrigger`Atribut určuje, že funkce je aktivována požadavkem http. 
 
-Rozšiřte možnosti vaší funkce se vstupními a výstupními vazbami, a to použitím příslušných atributů pro metodu. Další informace najdete v části [Triggery a vazby](functions-dotnet-class-library.md#triggers-and-bindings) v [referenčních informacích pro vývojáře v jazyce C# v Azure Functions](functions-dotnet-class-library.md).
+## <a name="rename-the-function"></a>Přejmenování funkce
 
-Teď, když jste vytvořili projekt funkcí a funkci triggeru HTTP, ji můžete otestovat na místním počítači.
+`FunctionName`Atribut Method nastaví název funkce, která je ve výchozím nastavení generována jako `Function1` . Vzhledem k tomu, že nástroje neumožňují při vytváření projektu přepsat výchozí název funkce, vytvoření lepšího názvu pro třídu funkce, soubor a metadata vydejte za minutu.
+
+1. V **Průzkumníku souborů**klikněte pravým tlačítkem na soubor function1.cs a přejmenujte ho na `HttpExample.cs` .
+
+1. V kódu přejmenujte třídu Function1 na ' HttpExample '.
+
+1. V `HttpTrigger` metodě s názvem `run` , přejmenujte `FunctionName` atribut Method na `HttpExample` .
+
+Teď, když jste přejmenovali funkci, ji můžete otestovat na místním počítači.
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
 
@@ -56,19 +60,41 @@ Než budete moct projekt publikovat, musíte mít ve svém předplatném Azure a
 
 ## <a name="test-your-function-in-azure"></a>Testování funkce v Azure
 
-1. Zkopírujte základní adresu URL aplikace Function App ze stránky profil **publikování** . Nahraďte `localhost:port` část adresy URL, kterou jste použili k místnímu otestování funkce, novou základní adresou URL. Připojí řetězec dotazu `?name=<YOUR_NAME>` k této adrese URL a spustí žádost.
+1. V Průzkumníku cloudu by se měla vybrat nová aplikace Function App. Pokud ne, rozbalte své předplatné > **App Services**a vyberte svou novou aplikaci Function App.
+
+1. Klikněte pravým tlačítkem na aplikaci Function App a vyberte **otevřít v prohlížeči**. Tím se otevře kořen vaší aplikace Function App ve výchozím webovém prohlížeči a zobrazí se stránka, která indikuje, že je spuštěná vaše aplikace Function App. 
+
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/function-app-running-azure.png" alt-text="Spuštěná aplikace Function App":::
+
+1. Do panelu Adresa v prohlížeči přidejte řetězec `/api/HttpExample?name=Functions` k základní adrese URL a spusťte požadavek.
 
     Adresa URL, která volá funkci triggeru HTTP, je v následujícím formátu:
 
-    `http://<APP_NAME>.azurewebsites.net/api/<FUNCTION_NAME>?name=<YOUR_NAME>`
+    `http://<APP_NAME>.azurewebsites.net/api/HttpExample?name=Functions`
 
-2. Vložte tuto novou adresu URL pro požadavek HTTP do panelu Adresa prohlížeče. Na následujícím obrázku je znázorněna odpověď v prohlížeči na žádost o vzdálený přístup získanou funkcí:
+2. Přejděte na tuto adresu URL a v prohlížeči se zobrazí odpověď na požadavek na vzdálenou kopii vrácenou funkcí, který vypadá podobně jako v následujícím příkladu:
 
-    ![Odezva funkce v prohlížeči](./media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png)
+    :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-create-your-first-function-visual-studio-browser-azure.png" alt-text="Odezva funkce v prohlížeči":::
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-[!INCLUDE [Clean-up resources](../../includes/functions-quickstart-cleanup.md)]
+Další rychlé starty v této kolekci jsou postavené na tomto rychlém startu. Pokud plánujete pracovat s dalšími rychlými starty, kurzy nebo se všemi službami, které jste v tomto rychlém startu vytvořili, neprovádějte čištění prostředků.
+
+*Prostředky* v Azure odkazují na aplikace funkcí, funkce, účty úložiště atd. Jsou seskupené do *skupin prostředků*a odstraněním skupiny můžete všechno odstranit ze skupiny. 
+
+Vytvořili jste prostředky k dokončení těchto rychlých startů. Tyto prostředky se vám mohou fakturovat, a to v závislosti na [stavu účtu](https://azure.microsoft.com/account/) a [cenách služeb](https://azure.microsoft.com/pricing/). Pokud prostředky už nepotřebujete, můžete k jejich odstranění použít tento postup:
+
+1. V Průzkumníku cloudu rozbalte své předplatné > **App Services**, klikněte pravým tlačítkem myši na svou aplikaci Function App a vyberte **otevřít na portálu**. 
+
+1. Na stránce Function App vyberte kartu **Přehled** a potom vyberte odkaz v části **Skupina prostředků**.
+
+   :::image type="content" source="media/functions-create-your-first-function-visual-studio/functions-app-delete-resource-group.png" alt-text="Vyberte skupinu prostředků, kterou chcete odstranit ze stránky Function App.":::
+
+2. Na stránce **Skupina prostředků** zkontrolujte seznam zahrnutých prostředků a ověřte, že se jedná o ty, které chcete odstranit.
+ 
+3. Vyberte **Odstranit skupinu prostředků** a postupujte podle pokynů.
+
+   Odstranění může trvat několik minut. Po jeho dokončení se na několik sekund zobrazí oznámení. K zobrazení tohoto oznámení můžete také vybrat ikonu zvonku v horní části stránky.
 
 ## <a name="next-steps"></a>Další kroky
 

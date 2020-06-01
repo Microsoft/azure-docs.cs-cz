@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 92f7ba30e2a3c66218974ab65502c35139ab1f8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 562b1f80397c730b5ea72fe2cd4f3dfdaea1e3f3
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086211"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235543"
 ---
 # <a name="how-to-connect-and-sign-on-to-an-azure-virtual-machine-running-windows"></a>Jak se připojit a přihlásit k virtuálnímu počítači Azure s Windows
 Pomocí tlačítka **Připojit** na webu Azure Portal spustíte z počítače s Windows relaci Vzdálené plochy (protokol RDP). Nejdřív se připojíte k virtuálnímu počítači a potom se přihlásíte.
@@ -40,7 +40,7 @@ Pokud se chcete připojit k virtuálnímu počítači s Windows z počítače Ma
 
 
    > [!TIP]
-   > Pokud je tlačítko **připojit** na portálu šedé a nejste připojeni k Azure prostřednictvím [expresního postupu](../../expressroute/expressroute-introduction.md) nebo připojení [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) , budete muset před použitím protokolu RDP vytvořit a přidružit virtuální počítač k veřejné IP adrese. Další informace najdete v tématu [veřejné IP adresy v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md).
+   > Pokud je tlačítko **připojit** na portálu šedé a nejste připojeni k Azure prostřednictvím [expresního postupu](../../expressroute/expressroute-introduction.md) nebo připojení [VPN typu Site-to-site](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md) , budete muset před použitím protokolu RDP vytvořit a přidružit virtuální počítač k veřejné IP adrese. Další informace najdete v tématu [veřejné IP adresy v Azure](../../virtual-network/public-ip-addresses.md).
    > 
    > 
 

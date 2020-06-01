@@ -9,22 +9,25 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2e0b1ee5584420ab38fda8897ef610794b09c29a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9c90bc9527bffff55d7478150cc1f31827bacc46
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658842"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235286"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Odkaz na Azure synapse (Preview) pro Azure Cosmos DB podporované funkce
 
-Tento článek popisuje funkce, které jsou aktuálně podporované v tématu Azure synapse Link pro Azure Cosmos DB. 
+Tento článek popisuje funkce, které jsou aktuálně podporované v tématu Azure synapse Link pro Azure Cosmos DB.
 
 ## <a name="azure-synapse-support"></a>Podpora Azure synapse
 
 V Azure Cosmos DB existují dva typy kontejnerů:
 * Kontejner HTAP-kontejner s povoleným odkazem synapse Tento kontejner obsahuje transakční úložiště i analytické úložiště. 
 * Kontejner OLTP – kontejner s pouze úložištěm transakcí; Odkaz synapse není povolený. 
+
+> [!IMPORTANT]
+> Odkaz na službu Azure synapse pro Azure Cosmos DB je aktuálně podporován pro pracovní prostory, které nemají povolenou spravovanou virtuální síť. 
 
 Můžete se připojit k kontejneru Azure Cosmos DB bez povolení odkazu synapse. v takovém případě můžete jen číst a zapisovat do transakčního úložiště. Co následuje seznam aktuálně podporovaných funkcí v rámci odkazu na synapse pro Azure Cosmos DB. 
 
@@ -43,8 +46,8 @@ Můžete se připojit k kontejneru Azure Cosmos DB bez povolení odkazu synapse.
 
 | Gesto              | Popis |OLTP |HTAP  |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
-| **Načíst do datového rámce** |Načtení a načtení dat do datového rámce Spark |×| ✓ |
-| **Vytvořit tabulku Spark** |Vytvoření tabulky ukazující na kontejner Azure Cosmos DB|×| ✓ |
+| **Načíst do datového rámce** |Načtení a načtení dat do datového rámce Spark |X| ✓ |
+| **Vytvořit tabulku Spark** |Vytvoření tabulky ukazující na kontejner Azure Cosmos DB|X| ✓ |
 | **Zapsat datový rámec do kontejneru** |Zápis dat do kontejneru|✓| ✓ |
 | **Načíst datový proud streamování z kontejneru** |Streamování dat pomocí Azure Cosmos DB změny kanálu|✓| ✓ |
 | **Zápis datového proudu streamování do kontejneru** |Streamování dat pomocí Azure Cosmos DB změny kanálu|✓| ✓ |
@@ -55,8 +58,8 @@ Můžete se připojit k kontejneru Azure Cosmos DB bez povolení odkazu synapse.
 
 | Gesto              | Popis |OLTP |HTAP |
 | -------------------- | ----------------------------------------------------------- |----------------------------------------------------------- |----------------------------------------------------------- |
-| **Vyberte horní 100.** |Náhled prvních 100 položek z kontejneru|×| ✓ |
-| **Vytvořit zobrazení** |Vytvoření zobrazení pro přímý přístup k aplikaci BI v kontejneru prostřednictvím synapse SQL|×| ✓ |
+| **Vyberte horní 100.** |Náhled prvních 100 položek z kontejneru|X| ✓ |
+| **Vytvořit zobrazení** |Vytvoření zobrazení pro přímý přístup k aplikaci BI v kontejneru prostřednictvím synapse SQL|X| ✓ |
 
 ## <a name="next-steps"></a>Další kroky
 

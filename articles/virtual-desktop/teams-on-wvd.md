@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 65f0cf66dc6cef33e98258106e5f1573efdf39e5
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 90432d3aa0ce9ebdecc7d0314b1352e46db0ac47
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84203852"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234569"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
@@ -94,7 +94,7 @@ Po instalaci služby WebSocket a desktopové aplikace Teams použijte následuj�
 
 3. Vyberte svůj obrázek profilu uživatele a pak vyberte **Nastavení**.
 
-      Pokud se načtou optimalizace médií, budou se zvuková zařízení a kamery dostupné místně zobrazit v nabídce zařízení. Pokud se v nabídce zobrazuje **vzdálené zvuky**, ukončete aplikaci teams a zkuste to znovu. Pokud se zařízení v nabídce ještě nezobrazují, ověřte, že jste provedli všechny výše uvedené kroky instalace.
+      Pokud se načtou optimalizace médií, budou se zvuková zařízení a kamery dostupné místně zobrazit v nabídce zařízení. Pokud se v nabídce zobrazuje **vzdálené zvuky**, ukončete aplikaci teams a zkuste to znovu. Pokud se zařízení v nabídce ještě nezobrazují, vraťte se zpátky k [instalaci Microsoft Teams](#install-microsoft-teams) a ujistěte se, že jste dokončili proces instalace.
 
 ## <a name="known-issues-and-limitations"></a>Známé problémy a omezení
 
@@ -140,10 +140,8 @@ Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu h
 
 Nastavte následující vlastnosti protokolu RDP, aby se povolilo přesměrování mikrofonu a kamery:
 
-|Vlastnosti protokolu RDP   | Popis |
-|-----------------|-------------|
-|audiocapturemode: i: 1  | Povolit zachytávání zvuku z místního zařízení a přesměrování na zvukovou aplikaci ve vzdálené relaci |
-|audiomode: i: 0         | Přehrát zvuk v místním počítači |
-|camerastoredirect: s: * | Přesměrovat všechny kamery |
+- `audiocapturemode:i:1`povolí záznam zvuku z místních zařízení a aplikací redirets audio ve vzdálené relaci.
+- `audiomode:i:0`přehrává zvuk na místním počítači.
+- `camerastoredirect:s:*`přesměruje všechny kamery.
 
 Další informace najdete v podrobnostech o [Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) pro fond hostitelů](customize-rdp-properties.md).

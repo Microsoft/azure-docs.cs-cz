@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 11/27/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: efe7a68f7102da0b39def676306ce96ad00f5ff8
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 56d461e2efb0923367a149e9b4234d03ed204a9c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204952"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84229899"
 ---
 # <a name="what-is-sql-server-on-azure-virtual-machines-windows"></a>Co je SQL Server na virtuálních počítačích Azure? (Windows)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -144,7 +144,7 @@ Program Zlepšování softwaru a služeb na základě zkušeností uživatelů (
 
 ### <a name="networking"></a>Sítě
 * [Přehled služby Virtual Network](../../../virtual-network/virtual-networks-overview.md)
-* [IP adresy v Azure](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [IP adresy v Azure](../../../virtual-network/public-ip-addresses.md)
 * [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](../../../virtual-machines/linux/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL

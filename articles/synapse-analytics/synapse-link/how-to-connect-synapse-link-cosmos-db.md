@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6bdc2eca3bdf02814ee851ff266e04bb57f7978c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 32087b1b2340508f7f868455e2db476046eaa4b5
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658824"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235270"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Připojení ke službě Azure synapse Link (Preview) pro Azure Cosmos DB
 
@@ -23,6 +23,9 @@ Tento článek popisuje, jak získat přístup k databázi Azure Cosmos DB z Azu
 ## <a name="prerequisites"></a>Požadavky
 
 Před připojením databáze Azure Cosmos DB k pracovnímu prostoru budete potřebovat následující:
+
+> [!IMPORTANT]
+> Odkaz na službu Azure synapse pro Azure Cosmos DB je aktuálně podporován pro pracovní prostory, které nemají povolenou spravovanou virtuální síť. 
 
 * Existující databáze Azure Cosmos DB nebo vytvořit nový účet za tímto [rychlým startem](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-database-account)
 * Existující pracovní prostor synapse nebo vytvořit nový pracovní prostor za tímto [rychlým startem](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace) 

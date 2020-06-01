@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: 97b38d9db53db5c53090df54b283e6e2c85f3e88
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: a91415e7e3d91c2950cc4df2235c3d58df284cc0
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172337"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235986"
 ---
 # <a name="create-a-private-endpoint---resource-manager-template"></a>Vytvoření privátního koncového bodu – šablona Správce prostředků
 
@@ -38,17 +38,16 @@ Tato šablona vytvoří privátní koncový bod pro Azure SQL Server.
 
 V šabloně je definováno víc prostředků Azure:
 
-
 - [**Microsoft. Network/privateEndpoints**](/azure/templates/microsoft.network/privateendpoints) : privátní koncový bod pro přístup k privátnímu serveru Azure SQL Server
-- [**Microsoft. Network/privateDnsZones**](/azure/templates/microsoft.network/privatednszones) : používá se k překladu IP adresy privátního koncového bodu. 
+- [**Microsoft. Network/privateDnsZones**](/azure/templates/microsoft.network/privatednszones) : používá se k překladu IP adresy privátního koncového bodu.
 - [**Microsoft. Network/privateDnsZones/virtualNetworkLinks**](/azure/templates/microsoft.network/privatednszones/virtualnetworklinks)
 - [**Microsoft. Network/privateEndpoints/privateDnsZoneGroups**](/azure/templates/microsoft.network/privateendpoints/privateDnsZoneGroups) : pro přidružení privátního koncového bodu k privátní zóně DNS
 - [**Microsoft. SQL/servery**](/azure/templates/microsoft.sql/servers) : Azure SQL Server s ukázkovou databází
 - [**Microsoft. SQL/servery/databáze**](/azure/templates/microsoft.sql/servers/databases) : Ukázková databáze
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : Virtual Network při nasazení privátního koncového bodu 
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : Virtual Network při nasazení privátního koncového bodu
 - [**Microsoft. Network/publicIpAddresses**](/azure/templates/microsoft.network/publicIpAddresses) : veřejná IP adresa pro přístup k virtuálnímu počítači
 - [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : virtuální počítač pro otestování privátního připojení s privátním koncovým bodem na Azure SQL Server
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : síťové rozhraní pro virtuální počítač 
+- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : síťové rozhraní pro virtuální počítač
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -58,65 +57,67 @@ Nasadit šablonu Správce prostředků do Azure:
 
    [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
 
-2. Vyberte nebo vytvořte skupinu prostředků.
+2. Vyberte nebo vytvořte skupinu prostředků,
 3. Zadejte přihlašovací jméno a heslo správce SQL.
-3. Zadejte uživatelské jméno a heslo správce virtuálního počítače.
-3. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře** a pak vyberte **koupit**. Dokončení nasazení může trvat až 20 minut nebo i déle.
+4. Zadejte uživatelské jméno a heslo správce virtuálního počítače.
+5. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře** a pak vyberte **koupit**. Dokončení nasazení může trvat až 20 minut nebo i déle.
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
+
 > [!NOTE]
 > Šablona ARM vygeneruje jedinečný název pro prostředek myVm<b>{UniqueID}</b> a pro prostředek Azure SQL Server SQLServer<b>{UniqueID}</b> , nahraďte <b>{UniqueID}</b> svou generovanou hodnotou.
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
-Připojte se k virtuálnímu počítači *myVm {UniqueID}* z Internetu následujícím způsobem:
+Připojte se k virtuálnímu počítači _myVm {UniqueID}_ z Internetu následujícím způsobem:
 
-1. Na panelu hledání na portálu zadejte *myVm {UniqueID}*.
+1. Na panelu hledání na portálu zadejte _myVm {UniqueID}_.
 
-1. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
+2. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
 
-1. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) (*. RDP*) a stáhne ho do vašeho počítače.
+3. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) (_. RDP_) a stáhne ho do vašeho počítače.
 
-1. Otevřete stažený soubor. RDP *.
+4. Otevřete stažený soubor. RDP \* .
 
-    1. Pokud se zobrazí výzva, vyberte **Připojit**.
+   a. Pokud se zobrazí výzva, vyberte **Připojit**.
 
-    1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
+   b. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
-        > [!NOTE]
-        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+      > [!NOTE]
+      > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
-1. Vyberte **OK**.
+5. Vyberte **OK**.
 
-1. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
+6. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
 
-1. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.  
+7. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.
 
 ### <a name="access-sql-database-server-privately-from-the-vm"></a>Přístup k serveru SQL Database soukromě z virtuálního počítače
 
 V této části se připojíte k serveru SQL Database z virtuálního počítače pomocí privátního koncového bodu.
 
- 1. Ve vzdálené ploše *myVM {UniqueID}* otevřete PowerShell.
- 2. Zadejte příkaz nslookup SQLServer {UniqueID}. Database. Windows. NET   obdržíte zprávu podobnou této: 
+1.  Ve vzdálené ploše _myVM {UniqueID}_ otevřete PowerShell.
+2.  Zadejte příkaz nslookup SQLServer {UniqueID}. Database. Windows. NET   obdržíte zprávu podobnou této:
 
-```
-      Server:  UnKnown 
-      Address:  168.63.129.16 
-      Non-authoritative answer: 
-      Name:    sqlserver.privatelink.database.windows.net 
-      Address:  10.0.0.5 
-      Aliases:  sqlserver.database.windows.net 
-```
- 3. Nainstalovat SQL Server Management Studio 
- 4. V připojení k serveru zadejte nebo vyberte tyto informace: typ serveru: vyberte možnost databázový stroj.
- Název serveru: vyberte SQLServer {UniqueID}. Database. Windows. NET username: zadejte uživatelské jméno, které jste zadali při vytváření.
- Heslo: zadejte heslo, které jste zadali při vytváření.
- Pamatovat heslo: vyberte Ano.
- 
- 5. Vyberte **Připojit**.
- 6. Procházet **databáze** z levé nabídky
- 7. Volitelně Vytvoření nebo dotazování informací z *ukázky – DB*
- 8. Zavřete připojení ke vzdálené ploše na *myVm {UniqueID}*.
+    ```
+      Server:  UnKnown
+      Address:  168.63.129.16
+      Non-authoritative answer:
+      Name:    sqlserver.privatelink.database.windows.net
+      Address:  10.0.0.5
+      Aliases:  sqlserver.database.windows.net
+    ```
+
+3.  Nainstalovat SQL Server Management Studio
+4.  V připojení k serveru zadejte nebo vyberte tyto informace: typ serveru: vyberte možnost databázový stroj.
+    Název serveru: vyberte SQLServer {UniqueID}. Database. Windows. NET username: zadejte uživatelské jméno, které jste zadali při vytváření.
+    Heslo: zadejte heslo, které jste zadali při vytváření.
+    Pamatovat heslo: vyberte Ano.
+
+5.  Vyberte **Připojit**.
+6.  Procházet **databáze** z levé nabídky
+7.  Volitelně Vytvoření nebo dotazování informací z _ukázky – DB_
+8.  Zavřete připojení ke vzdálené ploše na _myVm {UniqueID}_.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
@@ -129,4 +130,5 @@ Remove-AzResourceGroup -Name <your resource group name>
 ```
 
 ## <a name="next-steps"></a>Další kroky
+
 - Další informace o [privátním propojení Azure](private-link-overview.md)

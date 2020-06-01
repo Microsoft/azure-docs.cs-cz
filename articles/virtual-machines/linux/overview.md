@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9921db093cc111917d50acfccc10165c0eab6b0f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 98a118ef662abd323854911e9fc1ffc6b7374db2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930739"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232983"
 ---
 # <a name="linux-virtual-machines-in-azure"></a>Virtuální počítače s Linuxem v Azure
 
@@ -108,7 +108,7 @@ Azure podporuje pro [Cloud-init](https://cloud-init.io/) napříč většinou Li
 
 ## <a name="networking"></a>Sítě
 * [Přehled Virtual Network](../../virtual-network/virtual-networks-overview.md)
-* [IP adresy v Azure](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [IP adresy v Azure](../../virtual-network/public-ip-addresses.md)
 * [Otevření portů k virtuálnímu počítači s Linuxem v Azure](nsg-quickstart.md)
 * [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](portal-create-fqdn.md)
 
@@ -117,7 +117,7 @@ Azure podporuje pro [Cloud-init](https://cloud-init.io/) napříč většinou Li
 
 Vytvořte svůj první virtuální počítač!
 
-- [Portál](quick-create-portal.md)
+- [Azure Portal](quick-create-portal.md)
 - [Azure CLI](quick-create-cli.md)
 - [PowerShell](quick-create-powershell.md)
 

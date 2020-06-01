@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de89b7f5a4b14bd4142ea3e9b9c8c0dceabd63dd
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 7fc447b97b35cefbe2ab8d44db6f9f6279c8533e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82779956"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236216"
 ---
 # <a name="administrator-roles-by-admin-task-in-azure-active-directory"></a>Role správce podle úlohy správce v Azure Active Directory
 
@@ -52,7 +52,7 @@ Vytváření, čtení, aktualizace a odstraňování uživatelských toků uprav
 Vytváření, čtení, aktualizace a odstraňování toků přihlašování uživatelů | Správce toku B2C uživatele | 
 Vytváření, čtení, aktualizace a odstraňování toku uživatelů při registraci |Správce toku B2C uživatele | 
 Vytváření, čtení, aktualizace a odstraňování atributů uživatele | Správce atributů toku uživatele B2C | 
-Vytváření, čtení, aktualizace a odstraňování uživatelů | Správce uživatelů
+Vytváření, čtení, aktualizace a odstraňování uživatelů | Správce uživatele
 Načíst veškerou konfiguraci | Globální čtenář | 
 Čtení protokolů auditu B2C | Globální čtenář ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-faqs)) | 
 
@@ -144,7 +144,7 @@ Aktualizovat vlastnosti jednotného přihlašování | Vlastník podnikové apli
 ## <a name="entitlement-management"></a>Správa nároků
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
-Přidání prostředků do katalogu | Správce uživatele | Díky správě nároků můžete tuto úlohu delegovat na vlastníka katalogu ([Viz dokumentace](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)).
+Přidání prostředků do katalogu | Správce uživatelů | Díky správě nároků můžete tuto úlohu delegovat na vlastníka katalogu ([Viz dokumentace](../governance/entitlement-management-catalog-create.md#add-additional-catalog-owners)).
 Přidat weby SharePointu Online do katalogu | Globální správce
 
 
@@ -152,18 +152,19 @@ Přidat weby SharePointu Online do katalogu | Globální správce
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
-Přiřadit licenci | Správce uživatele | 
-Vytvoření skupiny | Správce uživatele | 
-Vytvoření, aktualizace nebo odstranění kontroly přístupu skupiny nebo aplikace | Správce uživatele | 
-Správa vypršení platnosti skupiny | Správce uživatele | 
-Správa nastavení skupin | Správce skupin | Správce uživatelů | 
+Přiřadit licenci | Správce uživatelů | 
+Vytvoření skupiny | Správce skupin | Správce uživatelů
+Vytvoření, aktualizace nebo odstranění kontroly přístupu skupiny nebo aplikace | Správce uživatelů | 
+Správa vypršení platnosti skupiny | Správce uživatelů | 
+Správa nastavení skupin | Správce skupin | Správce uživatele | 
 Načíst veškerou konfiguraci (s výjimkou skrytého členství) | Čtečky adresářů | Výchozí role uživatele ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
 Číst skryté členství | Člen skupiny | Vlastník skupiny, správce hesel, správce serveru Exchange, Správce služby SharePoint, správce týmů, Správce uživatelů
 Číst členství skupin s skrytým členstvím | Správce helpdesku | Správce uživatele, správci týmů
-Odvolat licenci | Správce licencí | Správce uživatele
-Aktualizace členství ve skupině | Vlastník skupiny ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Správce uživatele
-Aktualizovat vlastníky skupiny | Vlastník skupiny ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Správce uživatele
-Aktualizovat vlastnosti skupiny | Vlastník skupiny ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Správce uživatele
+Odvolat licenci | Správce licencí | Správce uživatelů
+Aktualizace členství ve skupině | Vlastník skupiny ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Správce uživatelů
+Aktualizovat vlastníky skupiny | Vlastník skupiny ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Správce uživatelů
+Aktualizovat vlastnosti skupiny | Vlastník skupiny ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions)) | Správce uživatelů
+Odstranění skupiny | Správce skupin | Správce uživatelů
 
 ## <a name="identity-protection"></a>Identity Protection
 
@@ -184,9 +185,9 @@ Načíst veškerou konfiguraci | Čtecí modul zabezpečení |
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
-Přiřadit licenci | Správce licencí | Správce uživatele
+Přiřadit licenci | Správce licencí | Správce uživatelů
 Načíst veškerou konfiguraci | Čtečky adresářů | Výchozí role uživatele ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions))
-Odvolat licenci | Správce licencí | Správce uživatele
+Odvolat licenci | Správce licencí | Správce uživatelů
 Vyzkoušet nebo koupit předplatné | Správce fakturace | 
 
 
@@ -202,7 +203,7 @@ Vyzkoušet nebo koupit předplatné | Správce fakturace |
 ---- | --------------------- | ----------------
 Čtení protokolů přihlášení | Čtečka sestav | Čtenář zabezpečení, správce zabezpečení
 
-## <a name="multi-factor-authentication"></a>Ověřování pomocí služby Multi-Factor Authentication
+## <a name="multi-factor-authentication"></a>Vícefaktorové ověřování
 
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
@@ -247,9 +248,9 @@ Konfigurace metod ověřování | Globální správce |
 Konfigurace přizpůsobení | Globální správce |
 Konfigurovat oznámení | Globální správce |
 Konfigurace místní integrace | Globální správce |
-Konfigurovat vlastnosti resetování hesla | Správce uživatelů | Globální správce
+Konfigurovat vlastnosti resetování hesla | Správce uživatele | Globální správce
 Konfigurace registrace | Globální správce |
-Načíst veškerou konfiguraci | Správce zabezpečení | Správce uživatelů |
+Načíst veškerou konfiguraci | Správce zabezpečení | Správce uživatele |
 
 ## <a name="privileged-identity-management"></a>Privileged Identity Management
 
@@ -323,21 +324,21 @@ Načíst veškerou konfiguraci | Čtecí modul zabezpečení |
 Úkol | Nejnižší privilegovaná role | Další role
 ---- | --------------------- | ----------------
 Přidat uživatele do role adresáře | Správce privilegovaných rolí | 
-Přidat uživatele do skupiny | Správce uživatele | 
-Přiřadit licenci | Správce licencí | Správce uživatele
-Vytvořit uživatele typu Host | Pozvánka hosta | Správce uživatele
-Vytvořit uživatele | Správce uživatele | 
-Odstranění uživatelů | Správce uživatele | 
-Zrušení platnosti aktualizačních tokenů omezených správců (viz dokumentace) | Správce uživatele | 
-Zrušení platnosti aktualizačních tokenů bez oprávnění správce (viz dokumentace) | Správce hesel | Správce uživatele
+Přidat uživatele do skupiny | Správce uživatelů | 
+Přiřadit licenci | Správce licencí | Správce uživatelů
+Vytvořit uživatele typu Host | Pozvánka hosta | Správce uživatelů
+Vytvořit uživatele | Správce uživatelů | 
+Odstranění uživatelů | Správce uživatelů | 
+Zrušení platnosti aktualizačních tokenů omezených správců (viz dokumentace) | Správce uživatelů | 
+Zrušení platnosti aktualizačních tokenů bez oprávnění správce (viz dokumentace) | Správce hesel | Správce uživatelů
 Zrušení platnosti aktualizačních tokenů privilegovaných správců (viz dokumentace) | Správce privilegovaného ověřování | 
 Přečíst základní konfiguraci | Výchozí role uživatele ([Viz dokumentace](https://docs.microsoft.com/azure/active-directory/fundamentals/users-default-permissions) | 
-Resetování hesla pro omezené správce (viz dokumentace) | Správce uživatele | 
-Resetování hesla bez správců (viz dokumentace) | Správce hesel | Správce uživatele
+Resetování hesla pro omezené správce (viz dokumentace) | Správce uživatelů | 
+Resetování hesla bez správců (viz dokumentace) | Správce hesel | Správce uživatelů
 Resetování hesla privilegovaných správců | Správce privilegovaného ověřování | 
-Odvolat licenci | Správce licencí | Správce uživatele
-Aktualizovat všechny vlastnosti kromě hlavního názvu uživatele | Správce uživatele | 
-Aktualizace hlavního názvu uživatele pro omezené správce (viz dokumentace) | Správce uživatele | 
+Odvolat licenci | Správce licencí | Správce uživatelů
+Aktualizovat všechny vlastnosti kromě hlavního názvu uživatele | Správce uživatelů | 
+Aktualizace hlavního názvu uživatele pro omezené správce (viz dokumentace) | Správce uživatelů | 
 Aktualizace vlastnosti hlavního názvu uživatele u privilegovaných správců (viz dokumentace) | Globální správce | 
 Aktualizace uživatelských nastavení | Globální správce | 
 

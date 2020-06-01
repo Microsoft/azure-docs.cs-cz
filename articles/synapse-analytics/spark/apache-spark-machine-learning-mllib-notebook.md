@@ -8,12 +8,12 @@ ms.reviewer: jrasnick, carlrab
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: c2e1dbba61399ee3a4435f4f287b47f4bfd6f872
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: f00df1bc204e4d271f1c903ec50759cba3c56774
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774440"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235875"
 ---
 # <a name="build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Vytvoření aplikace Machine Learning pomocí Apache Spark MLlib a Azure synapse Analytics
 
@@ -70,48 +70,32 @@ V následujících krocích vyvíjíte model, který předpovídá, jestli konkr
 
 Vzhledem k tomu, že nezpracovaná data jsou ve formátu Parquet, můžete pomocí kontextu Spark načíst soubor do paměti jako datový rámec přímo. Zatímco následující kód používá výchozí možnosti, je možné vynutit mapování datových typů a dalších atributů schématu v případě potřeby.
 
-1. Spusťte následující řádky a vytvořte tak datový rámec Spark vložením kódu do nové buňky. První část přiřadí informace o přístupu k Azure Storage do proměnných. Druhá část umožňuje Sparku vzdáleně číst z úložiště objektů BLOB. Poslední řádek kódu načte Parquet, ale v tomto okamžiku nejsou načtena žádná data.
+1. Spusťte následující řádky a vytvořte tak datový rámec Spark vložením kódu do nové buňky. To načte data prostřednictvím rozhraní API Open DataSet. Po přijetí všech těchto dat se vygeneruje přibližně 1 500 000 000 řádků. V závislosti na velikosti vašeho fondu Spark (Preview) mohou být nezpracovaná data příliš velká nebo mohou trvat příliš dlouho, než budou fungovat. Tato data můžete filtrovat dolů na něco menšího. Použití start_date a end_date používá filtr, který vrací měsíc dat.
 
     ```python
-    # Azure storage access info
-    blob_account_name = "azureopendatastorage"
-    blob_container_name = "nyctlc"
-    blob_relative_path = "yellow"
-    blob_sas_token = r""
+    from azureml.opendatasets import NycTlcYellow
 
-    # Allow SPARK to read from Blob remotely
-    wasbs_path = 'wasbs://%s@%s.blob.core.windows.net/%s' % (blob_container_name, blob_account_name, blob_relative_path)
-    spark.conf.set('fs.azure.sas.%s.%s.blob.core.windows.net' % (blob_container_name, blob_account_name),blob_sas_token)
-
-    # SPARK read parquet, note that it won't load any data yet by now
-    df = spark.read.parquet(wasbs_path)
+    end_date = parser.parse('2018-06-06')
+    start_date = parser.parse('2018-05-01')
+    nyc_tlc = NycTlcYellow(start_date=start_date, end_date=end_date)
+    filtered_df = nyc_tlc.to_spark_dataframe()
     ```
 
-2. Po přijetí všech těchto dat se vygeneruje přibližně 1 500 000 000 řádků. V závislosti na velikosti vašeho fondu Spark (Preview) mohou být nezpracovaná data příliš velká nebo mohou trvat příliš dlouho, než budou fungovat. Tato data můžete filtrovat dolů na něco menšího. V případě potřeby přidejte následující řádky pro filtrování dat o více než 2 000 000 řádků, aby bylo lépe reagovat. Pomocí těchto parametrů můžete načíst jeden týden dat.
-
-    ```python
-    # Create an ingestion filter
-    start_date = '2018-05-01 00:00:00'
-    end_date = '2018-05-08 00:00:00'
-
-    filtered_df = df.filter('tpepPickupDateTime > "' + start_date + '" and tpepPickupDateTime < "' + end_date + '"')
-    ```
-
-3. Nevýhodou jednoduchého filtrování je, že ze statistické perspektivy může dojít k posunu dat. Dalším přístupem je použití vzorkování integrovaných do Sparku. Následující kód zmenší datovou sadu dolů na přibližně 2000 řádků, pokud se použije po výše uvedeném kódu. Tento krok vzorkování se dá použít místo jednoduchého filtru nebo ve spojení s jednoduchým filtrem.
+2. Nevýhodou jednoduchého filtrování je, že ze statistické perspektivy může dojít k posunu dat. Dalším přístupem je použití vzorkování integrovaných do Sparku. Následující kód zmenší datovou sadu dolů na přibližně 2000 řádků, pokud se použije po výše uvedeném kódu. Tento krok vzorkování se dá použít místo jednoduchého filtru nebo ve spojení s jednoduchým filtrem.
 
     ```python
     # To make development easier, faster and less expensive down sample for now
     sampled_taxi_df = filtered_df.sample(True, 0.001, seed=1234)
     ```
 
-4. Nyní se můžete podívat na data, abyste viděli, co bylo čteno. Obvykle je lepší zkontrolovat data s podmnožinou a nikoli plnou sadou v závislosti na velikosti datové sady. Následující kód nabízí dva způsoby, jak zobrazit data: bývalá základní a druhá z nich poskytuje mnohem bohatší možnosti práce s mřížkou a také možnost vizualizovat data graficky.
+3. Nyní se můžete podívat na data, abyste viděli, co bylo čteno. Obvykle je lepší zkontrolovat data s podmnožinou a nikoli plnou sadou v závislosti na velikosti datové sady. Následující kód nabízí dva způsoby, jak zobrazit data: bývalá základní a druhá z nich poskytuje mnohem bohatší možnosti práce s mřížkou a také možnost vizualizovat data graficky.
 
     ```python
-    sampled_taxi_df.show(5)
-    display(sampled_taxi_df.show(5))
+    #sampled_taxi_df.show(5)
+    display(sampled_taxi_df)
     ```
 
-5. V závislosti na velikosti vygenerované velikosti datové sady a potřebě experimentu nebo spuštění poznámkového bloku může být vhodné datovou sadu ukládat místně v pracovním prostoru. Existují tři způsoby, jak provést explicitní ukládání do mezipaměti:
+4. V závislosti na velikosti vygenerované velikosti datové sady a potřebě experimentu nebo spuštění poznámkového bloku může být vhodné datovou sadu ukládat místně v pracovním prostoru. Existují tři způsoby, jak provést explicitní ukládání do mezipaměti:
 
    - Uložit datový rámec místně jako soubor
    - Uložit datový rámec jako dočasnou tabulku nebo zobrazení

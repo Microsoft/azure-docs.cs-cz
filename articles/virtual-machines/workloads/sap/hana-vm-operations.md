@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c4f3ec2727d06528eab788a2a24a6190fe26533
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0ede0f5d74ceb5ce79cdfc095b3ffeccd96a1b3b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606150"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84230141"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>Konfigurace infrastruktury SAP HANA a operace v Azure
 Tento dokument poskytuje pokyny pro konfiguraci infrastruktury Azure a operačních SAP HANA systémů, které jsou nasazené na nativních virtuálních počítačích Azure (VM). Dokument obsahuje také informace o konfiguraci pro SAP HANA škálování pro SKU virtuálního počítače M128s. Tento dokument nemá za cíl nahradit standardní dokumentaci SAP, která zahrnuje následující obsah:
@@ -104,7 +104,7 @@ Pro nasazení, která jsou dlouhodobá, je ale potřeba vytvořit v Azure archit
 >Přenosy dat mezi virtuální sítí a koncovou sítí rozbočovače s využitím [partnerského vztahu](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview) virtuálních sítí Azure se vztahují na další [náklady](https://azure.microsoft.com/pricing/details/virtual-network/). Na základě těchto nákladů možná budete muset vzít v úvahu, že byste měli zvážit kompromisy mezi spuštěním striktního síťového návrhu centra a paprsku a spuštěním několika [bran Azure ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways) , které se připojíte k paprskům, aby se vynechal partnerský vztah virtuálních sítí. Brány Azure ExpressRoute ale také zavádí další [náklady](https://azure.microsoft.com/pricing/details/vpn-gateway/) . Také se můžete setkat s dalšími náklady na software třetích stran, který používáte pro protokolování, auditování a monitorování síťových přenosů. V závislosti na nákladech na výměnu dat prostřednictvím partnerského vztahu virtuálních sítí na jedné straně a na náklady, které vytváří další brány Azure ExpressRoute a další licence softwaru, se můžete rozhodnout pro mikrosegmentaci v rámci jedné virtuální sítě pomocí podsítí jako izolační jednotky namísto virtuální sítě.
 
 
-Přehled různých metod pro přiřazování IP adres najdete v tématu [typy IP adres a metody přidělování v Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm). 
+Přehled různých metod pro přiřazování IP adres najdete v tématu [typy IP adres a metody přidělování v Azure](../../../virtual-network/public-ip-addresses.md). 
 
 Pro virtuální počítače se systémem SAP HANA byste měli pracovat se přiřazenými statickými IP adresami. Důvodem je, že některé atributy konfigurace odkazují na IP adresy pro HANA.
 
@@ -175,7 +175,7 @@ Vzhledem k tomu, že je nasazená Infrastruktura virtuálních počítačů Azur
 - Instalace uzlu SAP HANA Master podle dokumentace SAP
 - V případě použití Azure Premium Storage nebo úložiště Ultra disk s nesdílenými disky/Hana/data a/Hana/log je třeba změnit soubor Global. ini a přidat parametr ' basepath_shared = No ' do souboru Global. ini. Tento parametr umožňuje, aby SAP HANA běžely s možností horizontálního navýšení kapacity bez "sdílených" **/Hana/data** a **/Hana/log** svazků mezi uzly. Podrobnosti jsou popsány v dokumentaci [SAP #2080991](https://launchpad.support.sap.com/#/notes/2080991). Pokud používáte svazky NFS založené na ANF pro/Hana/data a/Hana/log, nemusíte tuto změnu dělat.
 - Po případné změně v parametru Global. ini Restartujte instanci SAP HANA.
-- Přidejte další pracovní uzly. Viz také <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html>. Určete interní síť pro SAP HANA komunikaci mezi uzly během instalace, nebo pak použijte například místní hdblcm. Podrobnější dokumentaci najdete v tématu také o [#2183363 SAP Note](https://launchpad.support.sap.com/#/notes/2183363). 
+- Přidejte další pracovní uzly. Viz také <https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.00/en-US/0d9fe701e2214e98ad4f8721f6558c34.html> . Určete interní síť pro SAP HANA komunikaci mezi uzly během instalace, nebo pak použijte například místní hdblcm. Podrobnější dokumentaci najdete v tématu také o [#2183363 SAP Note](https://launchpad.support.sap.com/#/notes/2183363). 
 
 Podrobné informace o nastavení SAP HANA systému škálování na více systémů s pohotovostním uzlem na SUSE Linux je podrobněji popsán v tématu [nasazení SAP HANA systému škálování na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files na SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse). Ekvivalentní dokumentaci pro Red Hat najdete v článku [nasazení SAP HANA systému se škálováním na více systémů s pohotovostním uzlem na virtuálních počítačích Azure pomocí Azure NetApp Files na Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel). 
 

@@ -4,12 +4,12 @@ description: Naučte se, jak přidat výstupní vazbu pro připojení funkcí kn
 ms.date: 07/22/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 171479a0f60741b545a171315e99cc5e4e8bc843
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b18401037bf14c99ed198eb3754438ece5718c9b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74849203"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235373"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio"></a>Připojení funkcí k Azure Storage pomocí sady Visual Studio
 
@@ -17,13 +17,13 @@ ms.locfileid: "74849203"
 
 V tomto článku se dozvíte, jak pomocí sady Visual Studio připojit funkci, kterou jste vytvořili v [předchozím článku rychlý Start] , a Azure Storage. Výstupní vazba, kterou do této funkce přidáte, zapisuje data z požadavku HTTP do zprávy ve frontě úložiště Azure Queue. 
 
-Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Pro snazší použití účtu úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage`.  
+Většina vazeb vyžaduje uložený připojovací řetězec, který funkce používá pro přístup k vázané službě. Pro snazší použití účtu úložiště, který jste vytvořili v aplikaci Function App. Připojení k tomuto účtu je již Uloženo v nastavení aplikace s názvem `AzureWebJobsStorage` .  
 
 ## <a name="prerequisites"></a>Požadavky
 
 Než začnete tento článek, musíte: 
 
- - Vyplňte [část 1 rychlého startu sady Visual Studio](./functions-create-first-function-vs-code.md). 
+ - Vyplňte [část 1 rychlého startu sady Visual Studio](./functions-create-your-first-function-visual-studio.md). 
 
 - Přihlaste se ke svému předplatnému Azure ze sady Visual Studio.
 
@@ -45,7 +45,7 @@ Vazba úložiště, která používá `AzureWebJobsStorage` nastavení pro přip
 
 Vzhledem k tomu, že používáte výstupní vazbu úložiště front, budete potřebovat rozšíření vazby úložiště nainstalované před spuštěním projektu. S výjimkou triggerů HTTP a Timer jsou vazby implementovány jako balíčky rozšíření. 
 
-1. V nabídce **nástroje** vyberte možnost >  **Správce balíčků NuGet****Konzola správce balíčků**. 
+1. V nabídce **nástroje** vyberte možnost **Správce balíčků NuGet**  >  **Konzola správce balíčků**. 
 
 1. V konzole nástroje spusťte následující příkaz [Install-Package](/nuget/tools/ps-ref-install-package) pro instalaci rozšíření úložiště:
 
@@ -69,13 +69,13 @@ Po definování vazby můžete použít `name` vazbu na k přístupu jako atribu
 
 [!INCLUDE [functions-run-function-test-local-vs](../../includes/functions-run-function-test-local-vs.md)]
 
-Při prvním použití výstupní `outqueue` vazby se ve vašem účtu úložiště vytvoří nová fronta s názvem. modul runtime Functions. Pomocí Průzkumníka cloudu ověříte, že se vytvořila fronta spolu s novou zprávou.
+`outqueue`Při prvním použití výstupní vazby se ve vašem účtu úložiště vytvoří nová fronta s názvem. modul runtime Functions. Pomocí Průzkumníka cloudu ověříte, že se vytvořila fronta spolu s novou zprávou.
 
 ## <a name="examine-the-output-queue"></a>Prozkoumání výstupní fronty
 
 1. V aplikaci Visual Studio v nabídce **zobrazení** vyberte **Průzkumník cloudu**.
 
-1. V **Průzkumníku cloudu**rozbalte předplatné Azure a **účty úložiště**a potom rozbalte účet úložiště, který funkce používá. Pokud si název účtu úložiště nepamatujete, ověřte nastavení `AzureWebJobsStorage` připojovacího řetězce v souboru *Local. Settings. JSON* .  
+1. V **Průzkumníku cloudu**rozbalte předplatné Azure a **účty úložiště**a potom rozbalte účet úložiště, který funkce používá. Pokud si název účtu úložiště nepamatujete, ověřte `AzureWebJobsStorage` nastavení připojovacího řetězce v souboru *Local. Settings. JSON* .  
 
 1. Rozbalte uzel **fronty** a pak dvakrát klikněte **na frontu s názvem front** -to pro zobrazení obsahu fronty v aplikaci Visual Studio. 
 
@@ -91,7 +91,7 @@ Teď je čas na opětovné publikování aktualizované aplikace Function App do
 
 1. V **Průzkumník řešení**klikněte pravým tlačítkem na projekt a vyberte **publikovat**a pak klikněte na **publikovat** , aby se projekt znovu publikoval do Azure.
 
-1. Po dokončení nasazení můžete znovu použít prohlížeč k otestování znovu nasazené funkce. Stejně jako dřív přidejte řetězec `&name=<yourname>` dotazu k adrese URL.
+1. Po dokončení nasazení můžete znovu použít prohlížeč k otestování znovu nasazené funkce. Stejně jako dřív přidejte řetězec dotazu `&name=<yourname>` k adrese URL.
 
 1. Opětovným [zobrazením zprávy ve frontě úložiště](#examine-the-output-queue) ověřte, zda výstupní vazba znovu generuje novou zprávu ve frontě.
 

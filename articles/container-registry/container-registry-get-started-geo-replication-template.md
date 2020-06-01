@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
-ms.openlocfilehash: 1345cc67137a4fb3b6d54443e71f1a8813b5b06c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6e76e2966cd2bcba2606f6b87c99cb34208f8f24
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122812"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234454"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-a-resource-manager-template"></a>Rychlý Start: vytvoření geograficky replikovaného registru kontejnerů pomocí šablony Správce prostředků
 
@@ -31,7 +31,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/). Šablona nastaví registr a dodatečnou místní repliku.
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-container-registry-geo-replication/). Šablona nastaví registr a dodatečnou místní repliku.
 
 :::code language="json" source="~/quickstart-templates/101-container-registry-geo-replication/azuredeploy.json" range="1-81" highlight="45-74" :::
 
@@ -64,7 +64,7 @@ Další příklady šablon Azure Container Registry najdete v [galerii šablon r
 
      :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Oznámení portálu":::
 
- Azure Portal slouží k nasazení šablony. Kromě Azure Portal můžete použít Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-cli.md).
+ K nasazení šablony se použije Azure Portal. Kromě Azure Portal můžete použít Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../azure-resource-manager/templates/deploy-cli.md).
 
 ## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
 
@@ -94,4 +94,4 @@ V tomto rychlém startu jste vytvořili Azure Container Registry se šablonou Sp
 Podrobný kurz, který vás provede procesem vytvoření šablony, najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](/azure/azure-resource-manager/templates/template-tutorial-create-first-template.md)
+> [Kurz: vytvoření a nasazení první šablony Azure Resource Manager](../azure-resource-manager/templates/template-tutorial-create-first-template.md)

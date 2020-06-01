@@ -12,12 +12,12 @@ ms.workload: iaas-sql-server
 ms.date: 04/10/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e916e005687c1f0a197f8c97f643e5a26552c23c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b60b815c62b34fb0dc5024a85d7dcb905f3df9da
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046198"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234309"
 ---
 # <a name="overview-of-sql-server-on-azure-virtual-machines-linux"></a>Přehled SQL Serveru na virtuálních počítačích Azure (Linux)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -69,7 +69,7 @@ Při konfiguraci SQL Serveru v Linuxu nainstalujete balíček databázového str
 ### <a name="networking"></a>Sítě
 
 * [Přehled služby Virtual Network](../../../virtual-network/virtual-networks-overview.md)
-* [IP adresy v Azure](../../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* [IP adresy v Azure](../../../virtual-network/public-ip-addresses.md)
 * [Vytvoření plně kvalifikovaného názvu domény (FQDN) na webu Azure Portal](../../../virtual-machines/windows/portal-create-fqdn.md)
 
 ### <a name="sql"></a>SQL

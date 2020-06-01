@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 82edee84317b5d542bf65e29514286f96c18bbcc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d5a10e3fe2803c7b9a10abe9bf959a694030cc8c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744226"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235436"
 ---
 # <a name="query-parquet-nested-types-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Dotazy Parquet vnořené typy pomocí SQL na vyžádání (Preview) ve službě Azure synapse Analytics
 
@@ -41,7 +41,9 @@ FROM
 
 ## <a name="access-elements-from-nested-columns"></a>Přístup k prvkům z vnořených sloupců
 
-Následující dotaz přečte soubor *structExample. Parquet* a ukazuje, jak surfovat prvky vnořeného sloupce:
+Následující dotaz přečte soubor *structExample. Parquet* a ukazuje, jak surfovat prvky vnořeného sloupce. Existují dva způsoby, jak odkazovat na vnořenou hodnotu:
+- Určení výrazu cesty vnořené hodnoty po specifikaci typu.
+- Formátování názvu sloupce jako vnořené cesty pomocí příkazu do "." odkazuje na pole.
 
 ```sql
 SELECT
@@ -53,15 +55,15 @@ FROM
         FORMAT='PARQUET'
     )
     WITH (
-        -- you can see original n"sted columns values by uncommenting lines below
+        -- you can see original nested columns values by uncommenting lines below
         --DateStruct VARCHAR(8000),
-        [DateStruct.Date] DATE,
+        [DateValue] DATE '$.DateStruct.Date',
         --TimeStruct VARCHAR(8000),
         [TimeStruct.Time] TIME,
         --TimestampStruct VARCHAR(8000),
         [TimestampStruct.Timestamp] DATETIME2,
         --DecimalStruct VARCHAR(8000),
-        [DecimalStruct.Decimal] DECIMAL(18, 5),
+        DecimalValue DECIMAL(18, 5) '$.DecimalStruct.Decimal',
         --FloatStruct VARCHAR(8000),
         [FloatStruct.Float] FLOAT
     ) AS [r];

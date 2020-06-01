@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 8896aba104a99d323b3c39cfaeab6043d1c12f9d
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 620628b244bf107ad0dc2e2242d174ef798450da
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832006"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235626"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -92,16 +92,22 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="cross-domain-sync"></a>
   **Můžu ve stejné skupině synchronizovat servery připojené k doméně a jiné domény?**  
-    Yes. Skupina synchronizace může obsahovat koncové body serveru, které mají jiné členství ve službě Active Directory, a to i v případě, že nejsou připojeny k doméně. I když tato konfigurace technicky funguje, nedoporučujeme ji používat jako typickou konfiguraci, protože seznamy řízení přístupu (ACL), které jsou definované pro soubory a složky na jednom serveru, nemusí být možné vyhovět jinými servery ve skupině synchronizace. Pro dosažení nejlepších výsledků doporučujeme synchronizovat mezi servery, které jsou ve stejné doménové struktuře služby Active Directory, mezi servery, které jsou v různých doménových strukturách služby Active Directory, ale mají vytvořené vztahy důvěryhodnosti, nebo mezi servery, které nejsou v doméně. Doporučujeme, abyste se vyhnuli používání kombinace těchto konfigurací.
+    Ano. Skupina synchronizace může obsahovat koncové body serveru, které mají jiné členství ve službě Active Directory, a to i v případě, že nejsou připojeny k doméně. I když tato konfigurace technicky funguje, nedoporučujeme ji používat jako typickou konfiguraci, protože seznamy řízení přístupu (ACL), které jsou definované pro soubory a složky na jednom serveru, nemusí být možné vyhovět jinými servery ve skupině synchronizace. Pro dosažení nejlepších výsledků doporučujeme synchronizovat mezi servery, které jsou ve stejné doménové struktuře služby Active Directory, mezi servery, které jsou v různých doménových strukturách služby Active Directory, ale mají vytvořené vztahy důvěryhodnosti, nebo mezi servery, které nejsou v doméně. Doporučujeme, abyste se vyhnuli používání kombinace těchto konfigurací.
 
 * <a id="afs-change-detection"></a>
   **Vytvořili jsme soubor přímo ve sdílené složce Azure pomocí protokolu SMB nebo na portálu. Jak dlouho trvá, než se soubor synchronizuje se servery ve skupině synchronizace?**  
     [!INCLUDE [storage-sync-files-change-detection](../../../includes/storage-sync-files-change-detection.md)]
 
+
+* <a id="afs-sync-time"></a>
+  **Jak dlouho trvá Azure File Sync nahrávání 1TiB dat?**
+  
+    Výkon se bude lišit v závislosti na nastaveních prostředí, konfiguraci a na tom, jestli se jedná o počáteční nebo trvalou synchronizaci. Další informace najdete v tématu [Azure File Sync metriky výkonu](storage-files-scale-targets.md#azure-file-sync-performance-metrics) .
+
 * <a id="afs-conflict-resolution"></a>**Pokud se stejný soubor na dvou serverech změní přibližně na stejný čas, co se stane?**  
     Azure File Sync používá jednoduchou strategii řešení konfliktů: obě změny souborů, které jsou na dvou serverech změněny současně. Poslední zapsaná změna zachovává původní název souboru. Starší soubor má "zdrojový" počítač a číslo konfliktu připojené k názvu. Sleduje tuto taxonomii: 
    
-    \<FileNameWithoutExtension \> - \< nazev_pocitace \> \[ -# \] . \< rozšířeného\>  
+    \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
     Například první konflikt CompanyReport. docx by se stal CompanyReport-CentralServer. docx, pokud CentralServer v místě, kde došlo k dřívějšímu zápisu. Druhý konflikt by byl pojmenovaný CompanyReport-CentralServer-1. docx. Azure File Sync podporuje soubory konfliktů 100 na jeden soubor. Po dosažení maximálního počtu souborů konfliktů se soubor nesynchronizuje, dokud nebude počet konfliktních souborů menší než 100.
 
@@ -212,7 +218,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="encryption-at-rest"></a>
 **Jak se dá zajistit, aby byla moje sdílená složka Azure šifrovaná v klidovém stavu?**  
 
-    Yes. Další informace najdete v tématu [šifrování služby Azure Storage](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    Ano. Další informace najdete v tématu [šifrování služby Azure Storage](../common/storage-service-encryption.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="access-via-browser"></a>
 **Jak můžu poskytnout přístup ke konkrétnímu souboru pomocí webového prohlížeče?**  
@@ -227,7 +233,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="ip-restrictions"></a>
 **Můžu pro sdílenou složku Azure implementovat omezení IP adres?**  
 
-    Yes. Přístup ke sdílené složce Azure se může omezit na úrovni účtu úložiště. Další informace najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
+    Ano. Přístup ke sdílené složce Azure se může omezit na úrovni účtu úložiště. Další informace najdete v tématu [konfigurace Azure Storage bran firewall a virtuálních sítí](../common/storage-network-security.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 * <a id="data-compliance-policies"></a>
 **Jaké zásady dodržování předpisů podporují soubory Azure?**  
@@ -304,7 +310,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="snapshot-limits"></a>
 **Existují omezení počtu snímků sdílené složky, které můžu použít?**  
-    Yes. Soubory Azure můžou uchovávat maximálně 200 snímků sdílené složky. Snímky sdílené složky se nepočítají směrem k kvótě sdílení, takže neexistují žádné limity pro sdílení na celkovém prostoru, který používají všechny snímky sdílené složky. Omezení účtu úložiště se pořád používají. Po 200 sdílení snímků musíte odstranit starší snímky pro vytvoření nových snímků sdílené složky.
+    Ano. Soubory Azure můžou uchovávat maximálně 200 snímků sdílené složky. Snímky sdílené složky se nepočítají směrem k kvótě sdílení, takže neexistují žádné limity pro sdílení na celkovém prostoru, který používají všechny snímky sdílené složky. Omezení účtu úložiště se pořád používají. Po 200 sdílení snímků musíte odstranit starší snímky pro vytvoření nových snímků sdílené složky.
 
 * <a id="snapshot-cost"></a>
 **Kolik stojí sdílení snímků?**  
@@ -345,7 +351,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="restore-snapshotted-file-to-other-share"></a>
 **Můžu obnovit data ze snímku sdílené složky na jiný účet úložiště?**  
-    Yes. Soubory ze snímku sdílené složky můžete zkopírovat do původního umístění nebo do alternativního umístění, které obsahuje buď stejný účet úložiště, nebo jiný účet úložiště, a to buď ve stejné oblasti, nebo v různých oblastech. Můžete také kopírovat soubory do místního umístění nebo do jakéhokoli jiného cloudu.    
+    Ano. Soubory ze snímku sdílené složky můžete zkopírovat do původního umístění nebo do alternativního umístění, které obsahuje buď stejný účet úložiště, nebo jiný účet úložiště, a to buď ve stejné oblasti, nebo v různých oblastech. Můžete také kopírovat soubory do místního umístění nebo do jakéhokoli jiného cloudu.    
   
 ### <a name="clean-up-share-snapshots"></a>Vyčištění snímků sdílených složek
 * <a id="delete-share-keep-snapshots"></a>

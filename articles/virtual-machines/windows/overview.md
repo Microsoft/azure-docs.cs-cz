@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 7973ef9c56b70b6b43256db947e7f6f7210c178f
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: bf1e3abc1d4fceaa6547f63346ecd64e1128eac2
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930433"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234965"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuální počítače s Windows v Azure
 
@@ -92,12 +92,12 @@ Pomocí rozšíření můžete provádět tyto běžné úlohy:
 ### <a name="related-resources"></a>Související prostředky
 Prostředky v této tabulce používá virtuální počítač a je nutné, aby existovaly nebo byly vytvořeny při vytváření virtuálního počítače.
 
-| Prostředek | Požaduje se | Popis |
+| Prostředek | Povinné | Popis |
 | --- | --- | --- |
 | [Skupina prostředků](../../azure-resource-manager/management/overview.md) |Ano |Virtuální počítač musí být součástí skupiny prostředků. |
 | [Účet úložiště](../../storage/common/storage-create-storage-account.md) |Ano |Virtuální počítač potřebuje účet úložiště k ukládání svých virtuálních pevných disků. |
 | [Virtuální síť](../../virtual-network/virtual-networks-overview.md) |Ano |Virtuální počítač musí být členem virtuální sítě. |
-| [Veřejná IP adresa](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) |No |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
+| [Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) |No |Virtuální počítač může mít přiřazenou veřejnou IP adresu pro umožnění vzdáleného přístupu. |
 | [Síťové rozhraní](../../virtual-network/virtual-network-network-interface.md) |Ano |Virtuální počítač potřebuje síťové rozhraní ke komunikaci v síti. |
 | [Datové disky](attach-managed-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) |No |Virtuální počítač může zahrnovat datové disky pro rozšíření možností úložiště. |
 
@@ -105,7 +105,7 @@ Prostředky v této tabulce používá virtuální počítač a je nutné, aby e
 
 Vytvořte svůj první virtuální počítač!
 
-- [Portál](quick-create-portal.md)
+- [Azure Portal](quick-create-portal.md)
 - [PowerShell](quick-create-powershell.md)
 - [Azure CLI](quick-create-cli.md)
 

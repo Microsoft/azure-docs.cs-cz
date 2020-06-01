@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 8ef16f581a4b945d3a5e6ef58166eeed900f3bb3
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9d607f0ad1ab9d9924cd05ce1a66bee34e4ff18d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140884"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84229868"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
@@ -57,21 +57,19 @@ Také jsme otestovali nejběžnější ovladače aplikací, na konci této strá
 
 Jedná se o kroky, které bude uživatel nebo aplikace potřebovat k ověření pomocí služby Azure AD popsané níže:
 
+### <a name="prerequisites"></a>Požadavky
+
+Můžete postupovat podle pokynů v částech Azure Cloud Shell, virtuální počítač Azure nebo na místním počítači. Ujistěte se, že máte nainstalované rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>Krok 1: ověření pomocí Azure AD
 
-Ujistěte se, že máte nainstalované rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
-
-Vyvolejte nástroj Azure CLI pro ověřování pomocí Azure AD. Vyžaduje vám zadání ID uživatele a hesla služby Azure AD.
+Začněte ověřováním pomocí Azure AD pomocí nástroje Azure CLI. Tento krok není v Azure Cloud Shell vyžadován.
 
 ```
 az login
 ```
 
-Tento příkaz otevře okno prohlížeče na stránce ověřování Azure AD.
-
-> [!NOTE]
-> K provedení těchto kroků můžete také použít Azure Cloud Shell.
-> Uvědomte si prosím, že při načítání přístupového tokenu Azure AD v Azure Cloud Shell budete muset explicitně zavolat `az login` a znovu se přihlásit (v samostatném okně s kódem). Po přihlášení `get-access-token` bude příkaz fungovat podle očekávání.
+Příkaz otevře okno prohlížeče na stránce ověřování Azure AD. Vyžaduje vám zadání ID uživatele a hesla služby Azure AD.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>Krok 2: načtení přístupového tokenu Azure AD
 
@@ -79,19 +77,19 @@ Vyvolejte nástroj Azure CLI, který získá přístupový token pro ověřenéh
 
 Příklad (pro veřejný cloud):
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource https://ossrdbms-aad.database.windows.net
 ```
 
 Výše uvedená hodnota prostředku musí být zadaná přesně tak, jak je znázorněno. U ostatních cloudů se hodnota prostředku dá vyhledat pomocí:
 
-```shell
+```azurecli-interactive
 az cloud show
 ```
 
 Pro Azure CLI verze 2.0.71 a novější je možné příkaz zadat v následující pohodlnější verzi pro všechny cloudy:
 
-```shell
+```azurecli-interactive
 az account get-access-token --resource-type oss-rdbms
 ```
 
@@ -138,7 +136,7 @@ Pokud chcete do databáze Azure Database for MySQL přidat uživatele Azure AD, 
 2. Přihlaste se ke své instanci Azure Database for MySQL jako uživatel s oprávněními správce Azure AD.
 3. Vytvoří uživatele `<user>@yourtenant.onmicrosoft.com` v Azure Database for MySQL.
 
-**Případě**
+**Příklad:**
 
 ```sql
 CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
@@ -159,7 +157,7 @@ CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShor
 
 Pokud chcete skupině Azure AD povolit přístup k vaší databázi, použijte stejný mechanismus jako u uživatelů, ale místo toho zadejte název skupiny:
 
-**Případě**
+**Příklad:**
 
 ```sql
 CREATE AADUSER 'Prod_DB_Readonly';

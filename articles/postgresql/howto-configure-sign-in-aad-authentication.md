@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 91435c2c5ca825793988e002c1ab9f6caacf2b17
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 81d02b32bc1eb6edf22845a4d02ba2ba02536855
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652545"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236323"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-postgresql"></a>Použití Azure Active Directory k ověřování pomocí PostgreSQL
 
@@ -54,21 +54,19 @@ V současné době jsme otestovali následující klienty:
 
 Jedná se o kroky, které bude uživatel nebo aplikace potřebovat k ověření pomocí služby Azure AD popsané níže:
 
+### <a name="prerequisites"></a>Požadavky
+
+Můžete postupovat podle pokynů v částech Azure Cloud Shell, virtuální počítač Azure nebo na místním počítači. Ujistěte se, že máte nainstalované rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+
 ### <a name="step-1-authenticate-with-azure-ad"></a>Krok 1: ověření pomocí Azure AD
 
-Ujistěte se, že máte nainstalované rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+Začněte ověřováním pomocí Azure AD pomocí nástroje Azure CLI. Tento krok není v Azure Cloud Shell vyžadován.
 
-Vyvolejte nástroj Azure CLI pro ověřování pomocí Azure AD. Vyžaduje vám zadání ID uživatele a hesla služby Azure AD.
-
-```azurecli-interactive
+```
 az login
 ```
 
-Tento příkaz otevře okno prohlížeče na stránce ověřování Azure AD.
-
-> [!NOTE]
-> K provedení těchto kroků můžete také použít Azure Cloud Shell.
-> Uvědomte si prosím, že při načítání přístupového tokenu Azure AD v Azure Cloud Shell budete muset explicitně zavolat `az login` a znovu se přihlásit (v samostatném okně s kódem). Po přihlášení `get-access-token` bude příkaz fungovat podle očekávání.
+Příkaz otevře okno prohlížeče na stránce ověřování Azure AD. Vyžaduje vám zadání ID uživatele a hesla služby Azure AD.
 
 ### <a name="step-2-retrieve-azure-ad-access-token"></a>Krok 2: načtení přístupového tokenu Azure AD
 
@@ -144,7 +142,7 @@ Pokud chcete do databáze Azure Database for PostgreSQL přidat uživatele Azure
 3. Vytvořit roli `<user>@yourtenant.onmicrosoft.com` v Azure Database for PostgreSQL.
 4. Vytvořte `<user>@yourtenant.onmicrosoft.com` člena role azure_ad_user. Tento postup je třeba udělit jenom uživatelům Azure AD.
 
-**Případě**
+**Příklad:**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
@@ -157,7 +155,7 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 
 Pokud chcete skupině Azure AD povolit přístup k vaší databázi, použijte stejný mechanismus jako u uživatelů, ale místo toho zadejte název skupiny:
 
-**Případě**
+**Příklad:**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;

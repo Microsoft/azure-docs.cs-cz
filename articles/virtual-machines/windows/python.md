@@ -7,12 +7,12 @@ ms.workload: infrastructure
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: cynthn
-ms.openlocfilehash: b2172d44b4136b51c0ea459868ebd5b0572bb004
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81b8f83115a8bcb953fc4445899f7ea9afc1007c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82098064"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233349"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-python"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Pythonu
 
@@ -32,8 +32,8 @@ Provedení těchto kroků trvá přibližně 20 minut.
 ## <a name="create-a-visual-studio-project"></a>Vytvoření projektu ve Visual Studiu
 
 1. Pokud jste to ještě neudělali, nainstalujte [Visual Studio](https://docs.microsoft.com/visualstudio/install/install-visual-studio). Na stránce úlohy vyberte **vývoj v Pythonu** a pak klikněte na **nainstalovat**. V souhrnu vidíte, že je pro vás automaticky vybraný **Python 3 64-bit (3.6.0)** . Pokud jste již nainstalovali aplikaci Visual Studio, můžete přidat úlohu Pythonu pomocí spouštěče sady Visual Studio.
-2. Po instalaci a spuštění sady Visual Studio klikněte na **soubor** > **Nový** > **projekt**.
-3. Klikněte na **šablony** > **Python** > **Python Application**, jako název projektu zadejte *myPythonProject* , vyberte umístění projektu a pak klikněte na **OK**.
+2. Po instalaci a spuštění sady Visual Studio klikněte na **soubor**  >  **Nový**  >  **projekt**.
+3. Klikněte na **šablony**  >  **Python**  >  **Python Application**, jako název projektu zadejte *myPythonProject* , vyberte umístění projektu a pak klikněte na **OK**.
 
 ## <a name="install-packages"></a>Nainstalovat balíčky
 
@@ -164,7 +164,7 @@ Všechny prostředky musí být obsaženy ve [skupině prostředků](../../azure
     input('Availability set created. Press enter to continue...')
     ```
 
-[Veřejná IP adresa](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) je potřeba ke komunikaci s virtuálním počítačem.
+[Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) je potřeba ke komunikaci s virtuálním počítačem.
 
 1. Pro vytvoření veřejné IP adresy pro virtuální počítač přidejte tuto funkci za proměnné v souboru. py:
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 5d4fb87ae5edd4919923e66336760aadf23d1888
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1822f6a5bf0d3ac4217a43978dfcc739044e812
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657245"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235553"
 ---
 # <a name="identify-and-diagnose-issues"></a>Identifikace a diagnostika problémů
 
@@ -161,7 +161,7 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 
 |Číselný kód|Kód chyby|Navrhované řešení|
 |---|---|---|
-|-2147467259|ConnectionFailedAdErrorNoSuchMember|Uživatel není členem Azure Active Directory. Pokud je chcete přidat, postupujte podle pokynů v [Centrum správy služby Active Directory](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) .|
+|-2147467259|ConnectionFailedAdErrorNoSuchMember|Uživatel není členem služby Active Directory. Pokud je chcete přidat, postupujte podle pokynů v [Centrum správy služby Active Directory](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) .|
 |-2147467259|ConnectionFailedAdTrustedRelationshipFailure|Hostitel relace není správně připojen ke službě Active Directory.|
 |-2146233088|ConnectionFailedUserHasValidSessionButRdshIsUnhealthy|Připojení se nezdařilo, protože hostitel relace není k dispozici. Ověřte stav hostitele relace.|
 |-2146233088|ConnectionFailedClientDisconnect|Pokud se tato chyba zobrazí často, ujistěte se, že je počítač uživatele připojený k síti.|
@@ -172,6 +172,7 @@ V následující tabulce jsou uvedeny běžné chyby, ke kterým můžou správc
 |8|ConnectionBroken|Spojení mezi klientem a bránou nebo serverem bylo vyřazeno. Není nutná žádná akce, pokud dojde k neočekávanému chování.|
 |14|UnexpectedNetworkDisconnect|Připojení k síti bylo vyřazeno. Požádejte uživatele, aby se připojil znovu.|
 |24|ReverseConnectFailed|Hostitelský virtuální počítač nemá žádný přímý dohled, který by Brána VP. Zajistěte, aby se IP adresa brány mohla přeložit.|
+|1322|ConnectionFailedNoMappingOfSIDinAD|Uživatel není členem služby Active Directory. Pokud je chcete přidat, postupujte podle pokynů v [Centrum správy služby Active Directory](/windows-server/identity/ad-ds/get-started/adac/active-directory-administrative-center) .|
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 03/11/2020
-ms.openlocfilehash: 4a49d4ba4d0e82273c06afa178630be32ca1c463
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 47879ab55a91904cdc41d9a486d77d55ed27f706
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043069"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235695"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -300,7 +300,7 @@ Můžete nastavit úroveň služby, výpočetní velikost a množství úložiš
 |Maximální velikost dat databáze TempDB (GB)|512|576|640|768|1024|1280|2560|
 |Typ úložiště|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|Vzdálený disk SSD|
 |Latence v/v (přibližná)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|5-7 ms (zápis)<br>5-10 ms (čtení)|
-|Maximální počet datových IOPS *|5120|5760|6400|7680|10240|12800|25600|
+|Maximální počet datových IOPS *|5120|5760|6400|7680|10240|12800|12800|
 |Maximální rychlost protokolu (MB/s)|30|30|30|30|30|30|30|
 |Maximální počet souběžných pracovních procesů (požadavků)|1600|1800|2000|2400|3200|4000|8000|
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|

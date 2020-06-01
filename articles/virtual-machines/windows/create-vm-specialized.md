@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 10/10/2019
 ms.author: cynthn
-ms.openlocfilehash: 2939726898abc2abc0e62d0e36feedbfe7ba3645
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d378f111104feb678d3d89f4a4c51998c67f2e1
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82086398"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234537"
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk-by-using-powershell"></a>Vytvoření virtuálního počítače s Windows ze specializovaného disku pomocí PowerShellu
 
@@ -112,7 +112,7 @@ $snapShot = New-AzSnapshot `
 ```
 
 
-Pokud chcete pomocí tohoto snímku vytvořit virtuální počítač, který musí být vysoký, přidejte do příkazu New- `-AccountType Premium_LRS` AzSnapshotConfig parametr. Tento parametr vytvoří snímek tak, aby byl uložen jako spravovaný disk úrovně Premium. Premium Managed Disks jsou dražší než standard, takže před použitím tohoto parametru se ujistěte, že budete potřebovat prémii.
+Pokud chcete pomocí tohoto snímku vytvořit virtuální počítač, který musí být vysoký, přidejte do `-AccountType Premium_LRS` příkazu New-AzSnapshotConfig parametr. Tento parametr vytvoří snímek tak, aby byl uložen jako spravovaný disk úrovně Premium. Premium Managed Disks jsou dražší než standard, takže před použitím tohoto parametru se ujistěte, že budete potřebovat prémii.
 
 ### <a name="create-a-new-disk-from-the-snapshot"></a>Vytvoření nového disku ze snímku
 
@@ -193,7 +193,7 @@ $nsg = New-AzNetworkSecurityGroup `
 Další informace o koncových bodech a pravidlech NSG najdete v tématu [otevření portů k virtuálnímu počítači v Azure pomocí PowerShellu](nsg-quickstart-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="create-a-public-ip-address-and-nic"></a>Vytvoření veřejné IP adresy a síťové karty
-Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti, budete potřebovat [veřejnou IP adresu](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) a síťové rozhraní.
+Pokud chcete povolit komunikaci s virtuálním počítačem ve virtuální síti, budete potřebovat [veřejnou IP adresu](../../virtual-network/public-ip-addresses.md) a síťové rozhraní.
 
 1. Vytvořte veřejnou IP adresu. V tomto příkladu je název veřejné IP adresy nastavený na *myIP*.
    
@@ -261,7 +261,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
 ```
 
 ### <a name="verify-that-the-vm-was-created"></a>Ověřte, že byl virtuální počítač vytvořen.
-Nově vytvořený virtuální počítač by se měl zobrazit buď v [Azure Portal](https://portal.azure.com) v části **Procházet** > **virtuální počítače**, nebo pomocí následujících příkazů PowerShellu.
+Nově vytvořený virtuální počítač by se měl zobrazit buď v [Azure Portal](https://portal.azure.com) v části **Procházet**  >  **virtuální počítače**, nebo pomocí následujících příkazů PowerShellu.
 
 ```powershell
 $vmList = Get-AzVM -ResourceGroupName $destinationResourceGroup

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 10/01/2019
-ms.openlocfilehash: 3a3bbe384b91307471786fe904e880fb7e1a9af8
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 65d7cb60d0d3df43323833f254278c20abacc9d1
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049887"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231221"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -100,7 +100,7 @@ Stránkové servery jsou systémy, které představují modul úložiště s hor
 
 Protokolová služba přijímá záznamy protokolu z primární repliky služby COMPUTE, uchovává je v odolné mezipaměti a předávají záznamy protokolu na zbytek výpočetních replik (takže může aktualizovat jejich mezipaměti) i na relevantní stránky, aby se data mohla aktualizovat. Tímto způsobem se všechny změny dat z primární repliky COMPUTE šíří prostřednictvím služby protokolování na všechny sekundární výpočetní repliky a servery stránky. Nakonec jsou záznamy protokolu odesílány do dlouhodobého úložiště v Azure Storage, což je prakticky nekonečné úložiště úložiště. Tento mechanismus odebere nutnost častého zkracování protokolů. Protokolová služba má také místní mezipaměť pro urychlení přístupu k záznamům protokolu.
 
-### <a name="azure-storage"></a>Úložiště Azure
+### <a name="azure-storage"></a>Azure Storage
 
 Azure Storage obsahuje všechny datové soubory v databázi. Stránky serverů udržují datové soubory v Azure Storage aktuálním stavu. Toto úložiště se používá pro účely zálohování a také pro replikaci mezi oblastmi Azure. Zálohy jsou implementovány pomocí snímků úložiště datových souborů. Operace obnovení využívající snímky jsou rychlé bez ohledu na velikost dat. Data je možné obnovit do libovolného bodu v čase v rámci doby uchovávání záloh databáze.
 
@@ -207,22 +207,22 @@ Pokud chcete vytvořit databázi s škálovatelným škálováním v oblasti, kt
 
 Jedná se o aktuální omezení úrovně služby škálování na úrovni služeb (GA).  Aktivně pracujeme na odebrání tolika těchto omezení, co je možné.
 
-| Problém | Description |
+| Problém | Popis |
 | :---- | :--------- |
-| Podokno Správa zálohování serveru nezobrazuje databáze s škálovatelným škálováním, které se budou filtrovat ze zobrazení.  | Vlastní škálování má samostatnou metodu pro správu záloh a jako takové dlouhodobé uchovávání a nastavení uchovávání záloh v čase se nevztahují nebo neověřují. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování. |
-| Obnovení k určitému bodu v čase | Databázi s škálováním na úrovni cloudu můžete obnovit do Neškálovatelné databáze v rámci doby uchování databáze bez škálování. Nemůžete obnovit databázi s neškálovatelnou škálou do databáze v rámci škálování na více databází.|
+| Podokno Správa zálohování serveru nezobrazuje databáze s škálovatelným škálováním, které se budou filtrovat ze zobrazení.  | Vlastní škálování má samostatnou metodu pro správu záloh a jako takové dlouhodobé uchovávání se nevztahují nastavení uchovávání záloh v čase. Proto se databáze s škálovatelným škálováním nezobrazí v podokně Správa zálohování.|
+| Obnovení k určitému bodu v čase | Nemůžete obnovit databázi v nestránkovaném měřítku jako databázi s škálováním na více databází a databázi s měřítkem s více instancemi nelze obnovit jako databázi s jiným rozsahem. V případě databáze bez škálování na úrovni služby, která byla migrována do škálování, změnou její úrovně služeb, obnovení do bodu v čase před migrací a v rámci doby uchovávání záloh databáze je možné [programově](recovery-using-backups.md#programmatically-performing-recovery-by-using-automated-backups). Obnovená databáze nebude škálovatelná. |
 | Pokud má databáze minimálně jeden datový soubor větší než 1 TB, migrace se nezdařila | V některých případech je možné tento problém obejít tak, že velké soubory zmenšíte na méně než 1 TB. Pokud migrujete databázi používanou během procesu migrace, ujistěte se, že žádný soubor nezíská větší velikost než 1 TB. Pomocí následujícího dotazu určete velikost databázových souborů. `SELECT *, name AS file_name, size * 8. / 1024 / 1024 AS file_size_GB FROM sys.database_files WHERE type_desc = 'ROWS'`;|
 | Spravovaná instance SQL | Spravovaná instance Azure SQL se v současné době nepodporuje u databází s podporou škálování na více instancí. |
-| Elastické fondy |  Elastické fondy se v současnosti nepodporují u SQL Databaseho škálování.|
+| Elastické fondy |  Elastické fondy se v současné době nepodporují s měřítkem.|
 | Migrace do škálování je momentálně jednosměrnou operací. | Jakmile se databáze migruje do škálování, nedá se migrovat přímo na úroveň služby, která není na úrovni služby. V současné době jediný způsob, jak migrovat databázi z velkého měřítka do neškálovatelného škálování, je exportovat a importovat pomocí souboru BacPac nebo jiných technologií pro přesun dat (hromadné kopírování, Azure Data Factory, Azure Databricks, SSIS atd.). BacPac exportujte/Azure Portal importujte z prostředí PowerShell pomocí rutiny [New-AzSqlDatabaseExport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseexport) nebo [New-AzSqlDatabaseImport](https://docs.microsoft.com/powershell/module/az.sql/new-azsqldatabaseimport)z Azure CLI pomocí příkazového řádku [AZ SQL DB export](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-export) a [AZ SQL DB import](https://docs.microsoft.com/cli/azure/sql/db?view=azure-cli-latest#az-sql-db-import)a z [REST API](https://docs.microsoft.com/rest/api/sql/databases%20-%20import%20export) se nepodporuje. Import/export BacPac pro menší databáze s více škálováními (až 200 GB) se podporuje pomocí SSMS a [SqlPackage](https://docs.microsoft.com/sql/tools/sqlpackage) verze 18,4 a novější. Pro větší databáze může BacPac export/import trvat delší dobu a může dojít k selhání z různých důvodů.|
-| Migrace databází pomocí trvalých objektů v paměti | Pro škálování podporuje pouze netrvalé objekty v paměti (typy tabulek, nativní aktualizace SPs a funkce).  Trvalé tabulky v paměti a další objekty je nutné vyřadit a znovu vytvořit jako objekty, které nejsou v paměti, před migrací databáze na úroveň služby pro škálování na úrovni služby.|
+| Migrace databází s trvalými OLTP objekty v paměti | Pro škálování podporuje pouze netrvalé objekty OLTP v paměti (typy tabulek, nativní aktualizace SPs a funkce).  Trvalé tabulky OLTP v paměti a další objekty je nutné vyřadit a znovu vytvořit jako objekty založené na discích před migrací databáze na úroveň služby s velkým měřítkem.|
 | Geografická replikace  | U Azure SQL Databaseho škálování se ještě nedá konfigurovat geografickou replikaci. |
 | Kopie databáze | Ještě nemůžete použít kopii databáze k vytvoření nové databáze ve službě Azure SQL s škálovatelným škálováním. |
-| Integrace TDE/integrace | Transparentní šifrování databáze pomocí Azure Key Vault (obecně označované jako BYOK) ještě není podporované pro Azure SQL Database škálování, ale TDE se spravovanými klíči služby se plně podporuje. |
-|Funkce inteligentní databáze | S výjimkou možnosti "vynutit plán" nejsou všechny ostatní možnosti automatického ladění zatím podporovány v rámci škálování: možnosti mohou být povoleny, ale nebudou zde učiněna žádná doporučení ani akce. |
-|Query Performance Insights | Dotazy na výkon dotazů se v současné době nepodporují pro databáze s škálovatelnými škálováními. |
+| Integrace TDE/integrace | Transparentní šifrování databáze pomocí Azure Key Vault (obvykle označované jako vlastní klíč nebo BYOK) je aktuálně ve verzi Preview. |
+| Funkce inteligentní databáze | S výjimkou možnosti "vynutit plán" nejsou všechny ostatní možnosti automatického ladění zatím podporovány v rámci škálování: možnosti mohou být povoleny, ale nebudou zde učiněna žádná doporučení ani akce. |
+| Query Performance Insights | Dotazy na výkon dotazů se v současné době nepodporují pro databáze s škálovatelnými škálováními. |
 | Zmenšit databázi | Příkaz DBCC SHRINKDATABASE nebo DBCC SHRINKFILE není v současné době podporován pro databáze s měřítkem. |
-| Kontrola integrity databáze | Příkaz DBCC CHECKDB není v současné době podporován pro databáze s měřítkem. Podrobnosti o správě integrity dat v Azure SQL Database najdete v tématu [Integrita dat v Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) . |
+| Kontrola integrity databáze | Příkaz DBCC CHECKDB není v současné době podporován pro databáze s měřítkem. Příkaz DBCC CHECKFILEGROUP a DBCC CHECKTABLE lze použít jako alternativní řešení. Podrobnosti o správě integrity dat v Azure SQL Database najdete v tématu [Integrita dat v Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/) . |
 
 ## <a name="next-steps"></a>Další kroky
 

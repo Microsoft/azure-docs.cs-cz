@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
-ms.date: 03/09/2020
-ms.openlocfilehash: a437cd1b3cb8018229cf6445e23314cf17bf10a2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.date: 05/28/2020
+ms.openlocfilehash: 88d5c36829e2920e18a1be44ba43d7defe883d3e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219862"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231242"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database--sql-managed-instance"></a>Výběr mezi modely nákupu vCore a DTU – Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -82,15 +82,7 @@ Nákupní model založený na vCore vám umožňuje nezávisle vybrat výpočetn
 
 Pokud vaše Azure SQL Database spotřebovává více než 300 DTU, může převod na model nákupu na základě vCore snížit vaše náklady. Můžete převést pomocí rozhraní API podle vlastního výběru nebo pomocí Azure Portal bez výpadků. Konverze ale není povinná a neprovádí se automaticky. Pokud nákupní model založený na DTU splňuje vaše požadavky na výkon a podnikání, měli byste ho dál používat.
 
-Chcete-li provést převod z nákupního modelu založeného na DTU na nákupní model založený na vCore, vyberte výpočetní velikost pomocí následujících pravidel pro palec:
-
-- Každé 100 DTU na úrovni Standard vyžaduje aspoň 1 vCore v úrovni služby Pro obecné účely.
-- Každé 125 DTU na úrovni Premium vyžaduje alespoň 1 vCore v úrovni služby Pro důležité obchodní informace.
-
-> [!NOTE]
-> Pokyny ke změně velikosti DTU na vCore jsou přibližné a poskytují se při počátečním odhadu cíle cílové databázové služby. Optimální konfigurace cílové databáze je závislá na úlohách.
->
-> Dosažení optimálního poměru cen a výkonu může vyžadovat využití flexibility modelu vCore k úpravě počtu virtuální jádra, [generování hardwaru](service-tiers-vcore.md#hardware-generations), [služby](service-tiers-vcore.md#service-tiers) a [výpočetních](service-tiers-vcore.md#compute-tiers) vrstev a také k ladění dalších parametrů konfigurace databáze, jako je například [Maximální stupeň paralelismu](https://docs.microsoft.com/sql/relational-databases/query-processing-architecture-guide#parallel-query-processing).
+Chcete-li provést převod z nákupního modelu založeného na DTU na nákupní model založený na vCore, přečtěte si téma [migrace z DTU na Vcore](migrate-dtu-to-vcore.md).
 
 ## <a name="dtu-based-purchasing-model"></a>Nákupní model založený na DTU
 

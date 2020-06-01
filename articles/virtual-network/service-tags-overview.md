@@ -4,21 +4,21 @@ titlesuffix: Azure Virtual Network
 description: Přečtěte si o značkách služby. Značky služeb pomůžou minimalizovat složitost vytváření pravidel zabezpečení.
 services: virtual-network
 documentationcenter: na
-author: jispar
+author: allegradomel
 ms.service: virtual-network
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
-ms.author: jispar
+ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: bfeded391f582ab0ac6f3c15d2086789228f1494
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: fbf63a8082bbfabd3b5e4a4d62afbe63d18c983c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660600"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234495"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
@@ -43,15 +43,15 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | Značka | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ActionGroup** | Skupina akcí. | Příchozí | Ne | Ne |
-| **ApiManagement** | Provoz správy pro nasazení ve službě Azure API Management vyhrazena. <br/><br/>*Poznámka:* Tato značka představuje koncový bod služby Azure API Management pro rovinu ovládacího prvku na oblast. To zákazníkům umožňuje provádět operace správy na rozhraních API, operacích, zásadách a NamedValues nakonfigurovaných ve službě API Management.  | Příchozí | Ano | Ano |
+| **Správa rozhraní API** | Provoz správy pro nasazení ve službě Azure API Management vyhrazena. <br/><br/>*Poznámka:* Tato značka představuje koncový bod služby Azure API Management pro rovinu ovládacího prvku na oblast. To zákazníkům umožňuje provádět operace správy na rozhraních API, operacích, zásadách a NamedValues nakonfigurovaných ve službě API Management.  | Příchozí | Ano | Ano |
 | **ApplicationInsightsAvailability** | Application Insights dostupnost. | Příchozí | Ne | Ne |
 | **AppConfiguration** | Konfigurace aplikace | Odchozí | Ne | Ne |
 | **AppService**    | Azure App Service. Tato značka se doporučuje pro odchozí pravidla zabezpečení na front-endy webové aplikace. | Odchozí | Ano | Ano |
-| **AppServiceManagement** | Provoz správy pro nasazení vyhrazená pro App Service Environment. | Obojí | Ne | Ano |
-| **Azureactivedirectory selhala** | Azure Active Directory | Odchozí | Ne | Ano |
-| **AzureActiveDirectoryDomainServices** | Provoz správy pro nasazení vyhrazená pro Azure Active Directory Domain Services. | Obojí | Ne | Ano |
+| **AppServiceManagement** | Provoz správy pro nasazení vyhrazená pro App Service Environment. | Obojí | No | Ano |
+| **Azureactivedirectory selhala** | Azure Active Directory | Odchozí | No | Ano |
+| **AzureActiveDirectoryDomainServices** | Provoz správy pro nasazení vyhrazená pro Azure Active Directory Domain Services. | Obojí | No | Ano |
 | **AzureAdvancedThreatProtection** | Rozšířená ochrana před internetovými útoky Azure. | Odchozí | Ne | Ne |
-| **AzureBackup** |Azure Backup.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **úložiště** a **azureactivedirectory selhala** . | Odchozí | Ne | Ano |
+| **AzureBackup** |Azure Backup.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **úložiště** a **azureactivedirectory selhala** . | Odchozí | No | Ano |
 | **AzureBotService** | Azure Bot Service. | Odchozí | Ne | Ne |
 | **AzureCloud** | Všechny [veřejné IP adresy Datacenter](https://www.microsoft.com/download/details.aspx?id=56519) | Odchozí | Ano | Ano |
 | **AzureCognitiveSearch** | Kognitivní hledání Azure. <br/><br/>Tato značka nebo IP adresy, na které se vztahuje tato značka, se dají použít k udělení zabezpečeného přístupu indexerům k datovým zdrojům. Další podrobnosti najdete v [dokumentaci k připojení indexeru](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors) . <br/><br/> *Poznámka*: IP adresa vyhledávací služby není zahrnutá v seznamu ROZSAHŮ IP adres pro tuto značku služby a musí se **taky přidat** do brány firewall IP zdrojů dat. | Příchozí | Ne | Ne |
@@ -60,7 +60,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **AzureCosmosDB** | Azure Cosmos DB. | Odchozí | Ano | Ano |
 | **AzureDatabricks** | Azure Databricks. | Obojí | Ne | Ne |
 | **AzureDataExplorerManagement** | Správa Azure Průzkumník dat. | Příchozí | Ne | Ne |
-| **AzureDataLake** | Azure Data Lake Storage Gen1. | Odchozí | Ne | Ano |
+| **AzureDataLake** | Azure Data Lake Storage Gen1. | Odchozí | No | Ano |
 | **AzureDevSpaces** | Azure Dev Spaces. | Odchozí | Ne | Ne |
 | **AzureEventGrid** | Azure Event Grid. <br/><br/>*Poznámka:* Tato značka se zabývá Azure Event Gridmi koncovými body v USA (střed) – jih, USA – východ, USA – východ 2, USA – západ 2 a USA – střed. | Obojí | Ne | Ne |
 | **AzureFrontDoor. front-end** <br/> **AzureFrontDoor. back-end** <br/> **AzureFrontDoor.FirstParty**  | Přední dveře Azure. | Obojí | Ne | Ne |
@@ -68,8 +68,8 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **AzureIoTHub** | IoT Hub Azure. | Odchozí | Ne | Ne |
 | **AzureKeyVault** | Azure Key Vault.<br/><br/>*Poznámka:* Tato značka má závislost na značce **azureactivedirectory selhala** . | Odchozí | Ano | Ano |
 | **AzureLoadBalancer** | Nástroj pro vyrovnávání zatížení infrastruktury Azure. Značka se přeloží na [virtuální IP adresu hostitele](security-overview.md#azure-platform-considerations) (168.63.129.16), ve které vznikly sondy stavu Azure. Nezahrnuje provoz do vašeho prostředku Azure Load Balancer. Pokud nepoužíváte Azure Load Balancer, můžete toto pravidlo přepsat. | Obojí | Ne | Ne |
-| **AzureMachineLearning** | Azure Machine Learning. | Obojí | Ne | Ano |
-| **AzureMonitor** | Log Analytics, Application Insights, AzMon a vlastní metriky (koncové body 4Gigový).<br/><br/>*Poznámka:* U Log Analytics má tato značka závislost na značce **úložiště** . | Odchozí | Ne | Ano |
+| **AzureMachineLearning** | Azure Machine Learning. | Obojí | No | Ano |
+| **AzureMonitor** | Log Analytics, Application Insights, AzMon a vlastní metriky (koncové body 4Gigový).<br/><br/>*Poznámka:* U Log Analytics má tato značka závislost na značce **úložiště** . | Odchozí | No | Ano |
 | **AzureOpenDatasets** | Otevřené datové sady Azure<br/><br/>*Poznámka:* Tato značka má závislost na značce **AzureFrontDoor. front** a **Storage** . | Odchozí | Ne | Ne |
 | **AzurePlatformDNS** | Služba DNS základní infrastruktury (výchozí).<br/><br>Pomocí této značky můžete zakázat výchozí DNS. Při použití této značky buďte opatrní. Doporučujeme, abyste si přečetli [informace o platformě Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Doporučujeme také, abyste před použitím této značky provedli testování. | Odchozí | Ne | Ne |
 | **AzurePlatformIMDS** | Azure Instance Metadata Service (IMDS), což je základní služba infrastruktury.<br/><br/>Pomocí této značky můžete zakázat výchozí IMDS. Při použití této značky buďte opatrní. Doporučujeme, abyste si přečetli [informace o platformě Azure](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Doporučujeme také, abyste před použitím této značky provedli testování. | Odchozí | Ne | Ne |
@@ -77,17 +77,17 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **AzureResourceManager** | Azure Resource Manager. | Odchozí | Ne | Ne |
 | **AzureSignalR** | Signál Azure. | Odchozí | Ne | Ne |
 | **AzureSiteRecovery** | Azure Site Recovery.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **azureactivedirectory selhala**, **AzureKeyVault**, **EventHub**,**GuestAndHybridManagement** a **Storage** . | Odchozí | Ne | Ne |
-| **AzureTrafficManager** | IP adresy služby Azure Traffic Manager PROBE.<br/><br/>Další informace o Traffic Manager IP adres sondy najdete v tématu [Nejčastější dotazy k Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Příchozí | Ne | Ano |  
-| **BatchNodeManagement** | Provoz správy pro nasazení vyhrazená pro Azure Batch. | Obojí | Ne | Ano |
+| **AzureTrafficManager** | IP adresy služby Azure Traffic Manager PROBE.<br/><br/>Další informace o Traffic Manager IP adres sondy najdete v tématu [Nejčastější dotazy k Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-faqs). | Příchozí | No | Ano |  
+| **BatchNodeManagement** | Provoz správy pro nasazení vyhrazená pro Azure Batch. | Obojí | No | Ano |
 | **CognitiveServicesManagement** | Rozsah adres pro přenos pro Azure Cognitive Services. | Obojí | Ne | Ne |
 | **DataFactory**  | Azure Data Factory | Obojí | Ne | Ne |
 | **DataFactoryManagement** | Provoz správy pro Azure Data Factory. | Odchozí | Ne | Ne |
-| **Dynamics365ForMarketingEmail** | Rozsah adres pro marketingovou e-mailovou službu Dynamics 365. | Odchozí | Ano | Ne |
+| **Dynamics365ForMarketingEmail** | Rozsah adres pro marketingovou e-mailovou službu Dynamics 365. | Odchozí | Ano | No |
 | **ElasticAFD** | Elastické přední dveře Azure. | Obojí | Ne | Ne |
 | **Centrum událostí** | Event Hubs Azure. | Odchozí | Ano | Ano |
 | **GatewayManager** | Provoz správy pro nasazení vyhrazená pro Azure VPN Gateway a Application Gateway. | Příchozí | Ne | Ne |
-| **GuestAndHybridManagement** | Azure Automation a konfigurace hostů. | Odchozí | Ne | Ano |
-| **HDInsight** | Azure HDInsight. | Příchozí | Ano | Ne |
+| **GuestAndHybridManagement** | Azure Automation a konfigurace hostů. | Odchozí | No | Ano |
+| **HDInsight** | Azure HDInsight. | Příchozí | Ano | No |
 | **Internet** | Adresní prostor IP adres, který je mimo virtuální síť a dosažitelný veřejným internetem.<br/><br/>Rozsah adres zahrnuje [veřejný adresní prostor IP adres ve vlastnictví Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Obojí | Ne | Ne |
 | **LogicApps** | Logic Apps. | Obojí | Ne | Ne |
 | **LogicAppsManagement** | Provoz správy pro Logic Apps. | Příchozí | Ne | Ne |
@@ -97,10 +97,10 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **ServiceBus** | Azure Service Bus provoz, který využívá úroveň služby Premium. | Odchozí | Ano | Ano |
 | **ServiceFabric** | Service Fabric Azure.<br/><br/>*Poznámka:* Tato značka představuje koncový bod služby Service Fabric pro rovinu ovládacího prvku na oblast. To zákazníkům umožňuje provádět operace správy pro své Service Fabric clustery ze své virtuální sítě (koncové body). https://westus.servicefabric.azure.com) | Obojí | Ne | Ne |
 | **SQL** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL a Azure SQL Data Warehouse.<br/><br/>*Poznámka:* Tato značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure SQL Database, ale ne konkrétní server nebo databázi SQL. Tato značka se nevztahuje na spravovanou instanci SQL. | Odchozí | Ano | Ano |
-| **SqlManagement** | Provoz správy pro nasazení vyhrazená SQL. | Obojí | Ne | Ano |
+| **SqlManagement** | Provoz správy pro nasazení vyhrazená SQL. | Obojí | No | Ano |
 | **Storage** | Azure Storage. <br/><br/>*Poznámka:* Tato značka představuje službu, ale ne konkrétní instance služby. Značka například představuje službu Azure Storage, ale ne konkrétní účet služby Azure Storage. | Odchozí | Ano | Ano |
 | **StorageSyncService** | Služba synchronizace úložiště. | Obojí | Ne | Ne |
-| **WindowsVirtualDesktop** | Virtuální klient Windows. | Obojí | Ne | Ano |
+| **WindowsVirtualDesktop** | Virtuální klient Windows. | Obojí | No | Ano |
 | **VirtualNetwork** | Adresní prostor virtuální sítě (všechny rozsahy IP adres definované pro virtuální síť), všechny připojené místní adresní prostory, [partnerské](virtual-network-peering-overview.md) virtuální sítě, virtuální sítě připojené k [bráně virtuální sítě](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%3ftoc.json), [virtuální IP adresu hostitele](security-overview.md#azure-platform-considerations)a předpony adres používané na [trasách definovaných uživatelem](virtual-networks-udr-overview.md). Tato značka může obsahovat také výchozí trasy. | Obojí | Ne | Ne |
 
 >[!NOTE]

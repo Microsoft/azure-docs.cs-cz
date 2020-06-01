@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/19/2020
+ms.date: 05/29/2020
 ms.author: b-juche
-ms.openlocfilehash: 6cb3fa56e679bc911f12e99379152fc8e1fb7526
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ef54eddd52d67f595fe78cd8bba9f308a4f19a94
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832811"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235229"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Vytvoření svazku SMB pro Azure NetApp Files
 
@@ -29,7 +29,7 @@ Azure NetApp Files podporuje svazky NFS a SMBv3. Spotřeba kapacity svazku se po
 Musíte mít už nastavený fond kapacity.   
 [Nastavení fondu kapacity](azure-netapp-files-set-up-capacity-pool.md)   
 Podsíť musí být delegovaná na Azure NetApp Files.  
-[Delegování podsítě do Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
+[Delegování podsítě na službu Azure NetApp Files](azure-netapp-files-delegate-subnet.md)
 
 ## <a name="requirements-for-active-directory-connections"></a>Požadavky na připojení služby Active Directory
 
@@ -175,9 +175,6 @@ Toto nastavení se konfiguruje v **připojeních služby Active Directory** pod 
     Zobrazí se připojení služby Active Directory, které jste vytvořili.
 
     ![Připojení ke službě Active Directory](../media/azure-netapp-files/azure-netapp-files-active-directory-connections-created.png)
-
-> [!NOTE] 
-> Po uložení připojení služby Active Directory můžete upravit pole uživatelského jména a hesla. Po uložení připojení nelze upravovat žádné další hodnoty. Pokud potřebujete změnit jiné hodnoty, musíte nejdřív odstranit všechny nasazené svazky SMB a pak odstranit a znovu vytvořit připojení ke službě Active Directory.
 
 ## <a name="add-an-smb-volume"></a>Přidat svazek SMB
 

@@ -9,16 +9,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/05/2019
+ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510a5562740260eb2946ded074a5c37804c55375
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ec74b9391c780cf673fe47bd82cc6d92534eb56d
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67109522"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234090"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>Jak Azure AD nabízí cloudovou správu pro místní úlohy
 
@@ -93,7 +93,7 @@ V organizaci, která už používá místního zprostředkovatele identity, umo�
 
 ![Vývoj pro Azure AD](media/cloud-governed-management-for-on-premises/image5.png)
 
-Pokud chcete začít migrovat federované aplikace do služby Azure AD jako zprostředkovatele identity, Projděte si téma https://aka.ms/migrateapps , které obsahuje odkazy na:
+Pokud chcete začít migrovat federované aplikace do služby Azure AD jako zprostředkovatele identity, Projděte si https://aka.ms/migrateapps téma, které obsahuje odkazy na:
 
 * Dokument White Paper, který [migruje vaše aplikace do Azure Active Directory](https://aka.ms/migrateapps/whitepaper), který představuje výhody migrace a popisuje, jak naplánovat migraci ve čtyřech jasně stanovených fázích: zjišťování, klasifikace, migrace a průběžná správa. Provedete vás postupem, jak se zamyslet na proces a rozdělte projekt na snadno ovladatelné části. V celém dokumentu jsou odkazy na důležité prostředky, které vám pomůžou na cestě.
 
@@ -117,4 +117,4 @@ V hybridních prostředích má strategie Microsoftu možnost povolit nasazení,
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o tom, jak začít s touto cestou, najdete v tématu plány nasazení služby Azure AD, které <https://aka.ms/deploymentplans> se nacházejí v. Poskytují ucelené pokyny k nasazení možností služby Azure Active Directory (Azure AD). Každý plán vysvětluje obchodní hodnotu, požadavky na plánování, návrh a provozní postupy potřebné k úspěšnému zavedení běžných funkcí služby Azure AD. Microsoft průběžně aktualizuje plány nasazení s doporučenými postupy zjištěnými při zákaznických nasazeních a dalších názorech, když přidáváme nové funkce pro správu z cloudu pomocí Azure AD.
+Další informace o tom, jak začít s touto cestou, najdete v tématu plány nasazení služby Azure AD, které se nacházejí v <https://aka.ms/deploymentplans> . Poskytují ucelené pokyny k nasazení možností služby Azure Active Directory (Azure AD). Každý plán vysvětluje obchodní hodnotu, požadavky na plánování, návrh a provozní postupy potřebné k úspěšnému zavedení běžných funkcí služby Azure AD. Microsoft průběžně aktualizuje plány nasazení s doporučenými postupy zjištěnými při zákaznických nasazeních a dalších názorech, když přidáváme nové funkce pro správu z cloudu pomocí Azure AD.

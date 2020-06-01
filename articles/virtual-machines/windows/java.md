@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
-ms.openlocfilehash: a99924983bf0e78bd8c8901e25819a363583169a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e6218906760baad0673b6599a278d50c6c73e1a0
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81870030"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84232974"
 ---
 # <a name="create-and-manage-windows-vms-in-azure-using-java"></a>Vytváření a správa virtuálních počítačů s Windows v Azure pomocí Java
 
@@ -45,7 +45,7 @@ Provedení těchto kroků trvá přibližně 20 minut.
 
 ## <a name="add-dependencies"></a>Přidat závislosti
 
-1. Ve `testAzureApp` složce otevřete `pom.xml` soubor a přidejte do &lt;projektu&gt; konfiguraci sestavení, aby bylo možné sestavit aplikaci:
+1. Ve `testAzureApp` složce otevřete `pom.xml` soubor a přidejte do projektu konfiguraci sestavení, &lt; &gt; aby bylo možné sestavit aplikaci:
 
     ```xml
     <build>
@@ -127,14 +127,14 @@ Než začnete tento krok, ujistěte se, že máte přístup k [instančnímu obj
     graphURL=https://graph.microsoft.com/
     ```
 
-    Nahraďte ** &lt;&gt; ID** předplatného identifikátorem vašeho předplatného, ** &lt;ID&gt; aplikace** s identifikátorem aplikace služby Active Directory, ** &lt;&gt; ** klíčem pro ověřování a klíčovým klíčem aplikace a ** &lt;ID&gt; tenanta** s identifikátorem tenanta.
+    Nahraďte ** &lt; ID &gt; ** předplatného identifikátorem vašeho předplatného, ** &lt; ID &gt; aplikace** s identifikátorem aplikace služby Active ** &lt; &gt; ** Directory, klíčem pro ověřování a klíčovým klíčem aplikace a ** &lt; ID &gt; tenanta** s identifikátorem tenanta.
 
 2. Uložte soubor.
 3. V prostředí nastavte proměnnou prostředí s názvem AZURE_AUTH_LOCATION s úplnou cestou k ověřovacímu souboru.
 
 ### <a name="create-the-management-client"></a>Vytvořit klienta pro správu
 
-1. Otevřete `App.java` soubor v části `src\main\java\com\fabrikam` a ujistěte se, že je tento příkaz balíčku v horní části:
+1. Otevřete `App.java` soubor v části a ujistěte se, `src\main\java\com\fabrikam` že je tento příkaz balíčku v horní části:
 
     ```java
     package com.fabrikam.testAzureApp;
@@ -211,7 +211,7 @@ AvailabilitySet availabilitySet = azure.availabilitySets()
 ```
 ### <a name="create-the-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-[Veřejná IP adresa](../../virtual-network/virtual-network-ip-addresses-overview-arm.md) je potřeba ke komunikaci s virtuálním počítačem.
+[Veřejná IP adresa](../../virtual-network/public-ip-addresses.md) je potřeba ke komunikaci s virtuálním počítačem.
 
 Pro vytvoření veřejné IP adresy pro virtuální počítač přidejte tento kód do bloku try v metodě Main:
 
