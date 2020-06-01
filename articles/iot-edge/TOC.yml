@@ -177,6 +177,8 @@
       items:
         - name: Monitorování nasazení IoT Edge
           href: how-to-monitor-iot-edge-deployments.md
+        - name: Monitorování dvojčat modulu
+          href: how-to-monitor-module-twins.md
         - name: Přímé metody EdgeAgenta
           href: how-to-edgeagent-direct-method.md
     - name: Použití zařízení IoT Edge jako bran

@@ -49,6 +49,8 @@
       href: spring-cloud-quotas.md
     - name: Principy metrik v Azure Spring Cloudu
       href: spring-cloud-concept-metrics.md
+    - name: Správa a monitorování aplikací s využitím ovladače Azure Spring Boot
+      href: spring-cloud-concept-manage-monitor-app-spring-boot-actuator.md
     - name: Ovládací prvky zabezpečení pro službu Azure Spring Cloud
       href: spring-cloud-concept-security-controls.md
     - name: Principy stavu aplikací v Azure Spring Cloudu

@@ -60,20 +60,34 @@
           href: ./samples/pattern-group-with-initiative.md
         - name: Nasazení prostředků
           href: ./samples/pattern-deploy-resources.md
+    - name: Integrované moduly dodržování legislativní předpisů
+      items:
+        - name: Srovnávací test zabezpečení Azure
+          href: ./samples/azure-security-benchmark.md
+        - name: Srovnávací test CIS Microsoft Azure Foundations 1.1.0
+          href: ./samples/cis-azure-1-1-0.md
+        - name: NIST SP 800-53 R4
+          href: ./samples/nist-sp-800-53-r4.md
 - name: Koncepty
   items:
-    - name: Struktura definic Azure Policy
+    - name: Struktura definic
       displayName: 'parameters, location, rule, alias, initiatives'
       href: ./concepts/definition-structure.md
-    - name: Vysvětlení efektu služby Policy
+    - name: Vysvětlení efektů
       displayName: 'order, evaluation'
       href: ./concepts/effects.md
-    - name: Struktura přiřazení Azure Policy
+    - name: Struktura iniciativy
+      displayName: 'parameters, groups, domains, policies'
+      href: ./concepts/initiative-definition-structure.md
+    - name: Struktura přiřazení
       displayName: 'parameters, enforcementmode, policyDefinitionId'
       href: ./concepts/assignment-structure.md
     - name: Vyhodnocení dopadu nové zásady
       displayName: 'audit, enforcementmode, compliance'
       href: ./concepts/evaluate-impact.md
+    - name: Dodržování legislativní předpisů
+      displayName: 'standards, domains, controls'
+      href: ./concepts/regulatory-compliance.md
     - name: Návrh pracovních postupů pro zásady jako kód
       displayName: 'devops, infrastructure as code, iac, release, continuous, delivery, deploy'
       href: ./concepts/policy-as-code.md
@@ -127,6 +141,8 @@
         - name: Povolení Azure Monitoru pro virtuální počítače (Preview)
           displayName: 'monitor, insights, log analytics, builtin'
           href: ../../azure-monitor/insights/vminsights-enable-at-scale-policy.md?toc=/azure/governance/policy/toc.json&bc=/azure/governance/policy/breadcrumb/toc.json
+- name: Řešení potíží
+  href: ./troubleshoot/general.md
 - name: Referenční informace
   items:
     - name: Azure CLI
@@ -198,7 +214,7 @@
     - name: GitHub – úložiště zásad komunity
       href: 'https://github.com/Azure/Community-Policy'
     - name: Microsoft Q&A pro Azure Policy
-      href: /answers/topics/azure-policy.html.html
+      href: /answers/topics/azure-policy.html
     - name: Kanál YouTube pro zásady správného řízení
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: Videa konfigurace hosta

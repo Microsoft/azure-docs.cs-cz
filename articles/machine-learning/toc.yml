@@ -67,15 +67,17 @@
         - name: Vytvoření prvního experimentu ML (R)
           href: tutorial-1st-r-experiment.md
     - name: Machine Learning CLI
-      href: tutorial-train-deploy-model-cli.md
+      items:
+        - name: Trénování a nasazení s využitím CLI
+          href: tutorial-train-deploy-model-cli.md
+        - name: Vytváření pracovních prostorů a s využitím šablon Resource Manageru
+          href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:
         - name: Nastavení rozšíření Azure Machine Learningu
           href: tutorial-setup-vscode-extension.md
         - name: Trénování a nasazení modelu klasifikace obrázků TensorFlow
           href: tutorial-train-deploy-image-classification-model-vscode.md
-    - name: Vytvoření pracovního prostoru s využitím šablony Resource Manageru
-      href: tutorial-resource-manager-workspace.md
 - name: ukázky
   items:
     - name: Poznámkové bloky Jupyter

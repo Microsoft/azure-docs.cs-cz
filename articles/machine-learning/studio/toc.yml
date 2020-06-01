@@ -58,7 +58,7 @@
       items:
         - name: Import dat
           href: import-data.md
-        - name: Použití dat z místního SQL
+        - name: Použití dat z SQL Serveru
           displayName: on-premises
           href: use-data-from-an-on-premises-sql-server.md
     - name: Trénování modelů

@@ -24,28 +24,28 @@
           href: work-remotely-support.md
     - name: Modely připojení
       href: expressroute-connectivity-models.md
-    - name: Okruhy a peering
-      href: expressroute-circuit-peerings.md
     - name: Umístění a partneři
       items:
         - name: Poskytovatelé podle umístění
           href: expressroute-locations-providers.md
         - name: Umístění podle poskytovatele
           href: expressroute-locations.md
-    - name: Informace o branách virtuální sítě
-      href: expressroute-about-virtual-network-gateways.md
     - name: Požadavky
       href: expressroute-prerequisites.md
     - name: Pracovní postupy
       href: expressroute-workflows.md
     - name: Požadavky směrování
       href: expressroute-routing.md
+    - name: Okruhy a peering
+      items:
+        - name: Informace o okruzích a peeringu
+          href: expressroute-circuit-peerings.md
+        - name: Přesun okruhů z modelu nasazení Classic do Resource Manager
+          href: expressroute-move.md
     - name: BFD přes ExpressRoute
       href: expressroute-bfd.md
     - name: Požadavky QoS
       href: expressroute-qos.md
-    - name: Informace o přesunu okruhů z modelu nasazení Classic do Resource Manageru
-      href: expressroute-move.md
     - name: Informace o službě ExpressRoute FastPath
       href: about-fastpath.md
     - name: O službě ExpressRoute Direct
@@ -54,6 +54,10 @@
       href: expressroute-global-reach.md
     - name: Informace o šifrování ExpressRoute
       href: expressroute-about-encryption.md
+    - name: Ovládací prvky zabezpečení
+      href: expressroute-security-controls.md
+    - name: Informace o branách virtuální sítě
+      href: expressroute-about-virtual-network-gateways.md
     - name: Připojení Azure k veřejným cloudům
       href: expressroute-connect-azure-to-public-cloud.md
     - name: Interoperabilita možností připojení back-endu
@@ -68,11 +72,9 @@
           href: ../networking/connectivty-interoperability-data-plane.md?toc=%2fazure%2fexpressroute%2ftoc.json
     - name: Možnosti připojení mezi sítěmi
       href: cross-network-connectivity.md
-    - name: Integrované ovládací prvky zabezpečení
-      href: expressroute-security-controls.md
-    - name: Návrh pro vysokou dostupnost
+    - name: Vysoká dostupnost – návrh
       href: designing-for-high-availability-with-expressroute.md
-    - name: Návrh pro zotavení po havárii
+    - name: Zotavení po havárii – návrh
       items:
         - name: Soukromý partnerský vztah
           href: designing-for-disaster-recovery-with-expressroute-privatepeering.md
@@ -165,6 +167,8 @@
           href: expressroute-monitoring-metrics-alerts.md
         - name: Konfigurace Network Performance Monitoru pro ExpressRoute
           href: how-to-npm.md
+        - name: Konfigurace vlastních upozornění pro monitorování inzerovaných tras
+          href: how-to-custom-route-alert.md
     - name: Classic a články starší verze
       items:
         - name: Úprava okruhu

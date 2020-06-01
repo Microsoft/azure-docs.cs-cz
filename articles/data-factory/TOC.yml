@@ -25,6 +25,8 @@
       href: quickstart-create-data-factory-rest-api.md
     - name: Vytvoření datové továrny – šablona Resource Manageru
       href: quickstart-create-data-factory-resource-manager-template.md
+    - name: Zabezpečení – povolení šifrování klíčů spravovaných zákazníkem
+      href: quickstart-enable-customer-managed-key.md
     - name: Vytvoření toku dat
       href: data-flow-create.md
 - name: Kurzy
@@ -39,7 +41,7 @@
               href: tutorial-copy-data-portal.md
             - name: .NET
               href: tutorial-copy-data-dot-net.md
-        - name: Z místní databáze SQL Serveru do Azure Blob Storage
+        - name: Z databáze SQL Serveru do služby Azure Blob Storage
           items:
             - name: Nástroj pro kopírování dat
               href: tutorial-hybrid-copy-data-tool.md
@@ -76,7 +78,7 @@
                   href: tutorial-incremental-copy-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-powershell.md
-            - name: Z několika místních tabulek SQL Serveru
+            - name: Z několika databázových tabulek SQL Serveru
               items:
                 - name: Uživatelské rozhraní
                   href: tutorial-incremental-copy-multiple-tables-portal.md
@@ -605,6 +607,10 @@
           href: self-hosted-integration-runtime-proxy-ssis.md
         - name: Povolení ověřování Azure AD pro Azure-SSIS IR
           href: enable-aad-authentication-azure-ssis-ir.md
+        - name: "Připojení k datům s\_ověřováním systému Windows"
+          href: ssis-azure-connect-with-windows-auth.md
+        - name: Ukládání souborů a připojení ke sdíleným složkám
+          href: ssis-azure-files-file-shares.md
         - name: Zřízení Enterprise Edition pro Azure-SSIS IR
           href: how-to-configure-azure-ssis-ir-enterprise-edition.md
         - name: Integrované a předinstalované komponenty v Azure-SSIS IR
@@ -623,6 +629,8 @@
           href: how-to-use-sql-managed-instance-with-ir.md
         - name: Migrace úloh SSIS s využitím SSMS
           href: how-to-migrate-ssis-job-ssms.md
+        - name: Správa balíčků s využitím úložiště balíčků Azure-SSIS IR
+          href: azure-ssis-integration-runtime-package-store.md
     - name: Vytvoření aktivačních událostí
       items:
         - name: Vytvoření aktivační události na základě událostí

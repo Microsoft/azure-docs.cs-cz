@@ -98,6 +98,8 @@
               href: virtual-wan-route-table.md
         - name: Zobrazení efektivních tras virtuálního centra
           href: effective-routes-virtual-hub.md
+        - name: Několik odkazů poskytovatele internetových služeb – výběr cesty Azure
+          href: path-selection-multiple-links.md
     - name: Zabezpečení
       items:
         - name: Instalace Azure Firewallu do centra

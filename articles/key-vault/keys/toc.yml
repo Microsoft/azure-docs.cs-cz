@@ -17,12 +17,12 @@
       href: quick-create-python.md
 - name: Kurzy
   items:
-    - name: Import klíčů chráněných pomocí HSM
+    - name: Import klíčů chráněných modulem HSM (přehled)
       href: hsm-protected-keys.md
-    - name: Import klíčů chráněných modulem HSM (Preview)
-      href: hsm-protected-keys-vendor-agnostic-byok.md
-    - name: Import klíčů chráněných modulem HSM (starší verze)
-      href: hsm-protected-keys-legacy.md
+    - name: Import klíčů chráněných modulem HSM (BYOK)
+      href: hsm-protected-keys-byok.md
+    - name: Import klíčů chráněných modulem HSM (nCipher)
+      href: hsm-protected-keys-ncipher.md
 - name: ukázky
   items:
     - name: Integrované služby Azure Policy
@@ -47,6 +47,8 @@
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.keyvault/allversions
       displayName: ARM
+    - name: Specifikace používání vlastního klíče
+      href: byok-specification.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

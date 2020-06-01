@@ -449,6 +449,8 @@
                       href: ../image-version-another-gallery-cli.md
                 - name: Vytvoření virtuálního počítače
                   items:
+                    - name: Specializovaná
+                      href: ../vm-specialized-image-version-cli.md
                     - name: Generalizovaná
                       href: ../vm-generalized-image-version-cli.md
                 - name: Aktualizace prostředků imagí
@@ -664,7 +666,7 @@
                       items:
                         - name: Virtuální počítač
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vm.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-                        - name: Škálovací sada virtuálních počítačů
+                        - name: Škálovací sada
                           href: ../../azure-monitor/platform/collect-custom-metrics-guestos-resource-manager-vmss.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                     - name: Odeslání do Event Hubs
                       href: ../../azure-monitor/platform/diagnostics-extension-stream-event-hubs.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

@@ -11,12 +11,12 @@ metadata:
   author: msmbaldwin
   ms.author: mbaldwin
   ms.date: 04/07/2020
-  ms.openlocfilehash: d5394200164d4f254ceca7a18035df95cc401747
-  ms.sourcegitcommit: b80aafd2c71d7366838811e92bd234ddbab507b6
+  ms.openlocfilehash: 580f1982478c996d5a9d0406a73df6aa200d3000
+  ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/16/2020
-  ms.locfileid: "81423356"
+  ms.lasthandoff: 05/29/2020
+  ms.locfileid: "84193646"
 landingContent:
 - title: Klíče
   linkLists:
@@ -40,10 +40,8 @@ landingContent:
   linkLists:
   - linkListType: tutorial
     links:
-    - text: Import klíčů chráněných modulem HSM do služby Key Vault
+    - text: Import klíčů chráněných modulem HSM (přehled)
       url: hsm-protected-keys.md
-    - text: Import klíčů chráněných modulem HSM bez ohledu na dodavatele
-      url: hsm-protected-keys-vendor-agnostic-byok.md
 - title: Další informace o službě Key Vault
   linkLists:
   - linkListType: overview

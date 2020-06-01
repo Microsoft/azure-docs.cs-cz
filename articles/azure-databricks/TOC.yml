@@ -12,7 +12,6 @@
         - name: Portál
           href: quickstart-create-databricks-workspace-portal.md
         - name: Šablona ARM
-          displayName: Resource Manager
           href: quickstart-create-databricks-workspace-resource-manager-template.md
         - name: Virtuální síť
           href: quickstart-create-databricks-workspace-vnet-injection.md
@@ -368,6 +367,9 @@
           maintainContext: true
         - name: Použití poznámkových bloků
           href: /azure/databricks/notebooks/notebooks-use
+          maintainContext: true
+        - name: Knihovny Pythonu v rámci poznámkových bloků
+          href: /azure/databricks/notebooks/notebooks-python-libraries
           maintainContext: true
         - name: Správa verzí
           items:
@@ -1029,7 +1031,7 @@
               href: /azure/databricks/security/access-control/pool-acl
               maintainContext: true
             - name: Řízení přístupu k úlohám
-              href: /azure/databricks/security/access-control/jobs-acl
+              href: /azure/databricks/security/access-control/job-acl
               maintainContext: true
             - name: Řízení přístupu k tabulkám
               items:
@@ -1665,7 +1667,7 @@
                 - name: Rozhraní API SCIM (uživatelé)
                   href: /azure/databricks/dev-tools/api/latest/scim/scim-users
                 - name: Rozhraní API SCIM (skupiny)
-                  href: /azure/databricks/dev-tools/api/latest/scim/scim-groups
+                  href: /azure/databricks/dev-tools/api/latest/scim/scim-group
               maintainContext: true
             - name: Tajné kódy
               href: /azure/databricks/dev-tools/api/latest/secrets
@@ -1721,6 +1723,8 @@
       href: /rest/api/databricks
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.databricks/workspaces
+    - name: Azure CLI
+      href: 'https://docs.microsoft.com/cli/azure/ext/databricks/databricks?view=azure-cli-latest'
 - name: Zdroje a prostředky
   items:
     - name: Apache Spark
@@ -1862,13 +1866,13 @@
                 - name: Databricks Runtime 7.0 Genomics (beta verze)
                   href: /azure/databricks/release-notes/runtime/7.0genomics
                   maintainContext: true
-                - name: Databricks Runtime 6.6 (beta verze)
+                - name: Databricks Runtime 6.6
                   href: /azure/databricks/release-notes/runtime/6.6
                   maintainContext: true
-                - name: Databricks Runtime 6.6 ML (beta verze)
+                - name: Databricks Runtime 6.6 ML
                   href: /azure/databricks/release-notes/runtime/6.6ml
                   maintainContext: true
-                - name: Databricks Runtime 6.6 Genomics (beta verze)
+                - name: Databricks Runtime 6.6 Genomics
                   href: /azure/databricks/release-notes/runtime/6.6genomics
                   maintainContext: true
                 - name: Databricks Runtime 6.5

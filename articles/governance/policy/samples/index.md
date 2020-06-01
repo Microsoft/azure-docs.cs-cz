@@ -1,14 +1,14 @@
 ---
 title: Index ukázek zásad
 description: Index předdefinovaných funkcí pro Azure Policy Značky kategorií, dodržování předpisů, Key Vault, Kubernetes, konfigurace hostů a další.
-ms.date: 03/25/2020
+ms.date: 05/29/2020
 ms.topic: sample
-ms.openlocfilehash: 41a08a70df24f80ea324860d6d1db16c9ed99760
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 6e9c3b92942f24ae0a9972fa61340775262af761
+ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697183"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84203898"
 ---
 # <a name="azure-policy-samples"></a>Ukázky Azure Policy
 
@@ -32,6 +32,14 @@ Následují příklady různých vzorů s využitím jazyka a operátorů ve slu
 - [Operátor počtu](./pattern-count-operator.md)
 - [Seskupení definic zásad v iniciativě](./pattern-group-with-initiative.md)
 - [Nasazování prostředků s využitím deployIfNotExists](./pattern-deploy-resources.md)
+
+## <a name="regulatory-compliance"></a>Dodržování legislativní předpisů
+
+Toto jsou integrované moduly [dodržování legislativní předpisů](../concepts/regulatory-compliance.md):
+
+- [Srovnávací test zabezpečení Azure](./azure-security-benchmark.md)
+- [Srovnávací test CIS Microsoft Azure Foundations v1.1.0](./cis-azure-1-1-0.md)
+- [NIST SP 800-53 R4](./nist-sp-800-53-r4.md)
 
 ## <a name="other-samples"></a>Další ukázky
 
