@@ -1,17 +1,17 @@
 ---
 title: Předdefinované definice zásad pro Azure Managed Applications
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Managed Applications. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.topic: sample
 author: tfitzmac
 ms.author: tomfitz
 ms.custom: subject-policy-samples
-ms.openlocfilehash: 133e5190d45eb9affb591cdc2cd671582acfaf0f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 5f730a13a540e758d065214158ae36e1c4e1e8e9
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652416"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234679"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-managed-applications"></a>Azure Policy předdefinované definice zásad pro Azure Managed Applications
 

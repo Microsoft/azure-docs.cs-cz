@@ -2,30 +2,30 @@
 title: Nastavení modulů IoT Edge v Azure SQL Edge
 description: V třetí části tohoto kurzu Azure SQL Edge pro předpověď nečistot železa nastavíte IoT Edge moduly a připojení.
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: tutorial
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: bbbbe09aac30165a2f9b7bbe54f58e0c09a6cf09
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: a4087ef56712e098443009bd0457029394ea7b51
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599683"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235022"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>Nastavení IoT Edgech modulů a připojení
 
 V druhé části tohoto kurzu pro předpověď nečistot železa ve službě Azure SQL Edge nastavíte následující IoT Edge moduly:
 
-- Edge Azure SQL
+- Azure SQL Edge
 - Modul IoT Edge generátoru dat
 
 ## <a name="create-azure-stream-analytics-module"></a>Vytvořit modul Azure Stream Analytics
 
-Vytvořte modul Azure Stream Analytics, který se použije v tomto kurzu. Další informace o používání úloh streamování pomocí SQL Edge najdete v tématu [použití úloh streamování s SQL Database Edge](https://docs.microsoft.com/azure/sql-database-edge/stream-analytics#using-streaming-jobs-with-sql-database-edge).
+Vytvořte modul Azure Stream Analytics, který se použije v tomto kurzu. Další informace o používání úloh streamování pomocí SQL Edge najdete v tématu [používání úloh streamování s SQL Edge](stream-analytics.md).
 
 Po vytvoření úlohy Azure Stream Analytics s hostitelským prostředím nastaveným jako Edge nastavte vstupy a výstupy pro tento kurz.
 
@@ -34,8 +34,8 @@ Po vytvoření úlohy Azure Stream Analytics s hostitelským prostředím nastav
    Pole|Hodnota
    -----|-----
    Formát serializace události|JSON
-   Encoding|UTF-8
-   Typ komprese události|Žádné
+   Kódování|UTF-8
+   Typ komprese události|Žádná
 
 2. **Výstup**vytvoříte tak, že kliknete na **+ přidat** a zvolíte SQL Database. Vyplňte část Podrobnosti pomocí následujících informací.
 
@@ -44,11 +44,11 @@ Po vytvoření úlohy Azure Stream Analytics s hostitelským prostředím nastav
 
    Pole|Hodnota
    -----|-----
-   databáze|IronOreSilicaPrediction
+   Databáze|IronOreSilicaPrediction
    Název serveru|TCP:., 1433
    Uživatelské jméno|sa
    Heslo|Zadat silné heslo
-   Tabulka|IronOreMeasurements1
+   Table|IronOreMeasurements1
 
 3. Přejděte do části **dotaz** a nastavte dotaz následujícím způsobem:
 
@@ -77,7 +77,7 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
 
    _Pole_|_Hodnota_
    -------|-------
-   Name|Název registru
+   Název|Název registru
    Adresa|Přihlašovací server
    Uživatelské jméno|Uživatelské jméno
    Heslo|Heslo
@@ -91,7 +91,7 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
 
    *přihlašovací server containerregistry* / *název úložiště*:*název značky*
 
-   Například:
+   Příklad:
 
    ```
    ASEdemocontregistry.azurecr.io/silicaprediction:amd64
@@ -101,7 +101,7 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
 
 ## <a name="deploy-the-azure-sql-edge-module"></a>Nasazení modulu Edge Azure SQL
 
-1. Nasaďte modul Azure SQL Edge podle kroků uvedených v části [nasazení Azure SQL Database Edge Preview](https://docs.microsoft.com/azure/sql-database-edge/deploy-portal#deploy-sql-database-edge).
+1. Nasaďte modul Azure SQL Edge podle kroků uvedených v části [nasazení Azure SQL Edge (Preview)](https://docs.microsoft.com/azure/azure-sql-edge/deploy-portal).
 
 2. Na stránce **Zadejte cestu** k **nastaveným modulům** zadejte trasy pro modul, aby IoT Edge komunikaci centra, jak je znázorněno níže. 
 
@@ -110,7 +110,7 @@ Nyní zadejte pověření kontejneru v modulu IoT Edge.
    BrokeredEndpoint("/modules/<your_azure_sql_edge_module>/inputs/<your_input_stream_name>")
    ```
 
-   Například:
+   Příklad:
 
    ```
    FROM /messages/modules/ASEDataGenerator/outputs/IronOreMeasures INTO BrokeredEndpoint("/modules/AzureSQLEdge/inputs/Input1")

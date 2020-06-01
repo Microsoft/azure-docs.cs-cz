@@ -2,19 +2,19 @@
 title: Vytvoření úlohy streamování T-SQL ve službě Azure SQL Edge (Preview)
 description: Další informace o vytváření úloh Stream Analytics ve službě Azure SQL Edge (Preview)
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 7db7f9548a3daa86a53dd37fbe088661e8b7b17e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 323ec00667350917e6b16827f908ac1abeee77d6
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685172"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233308"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Vytvoření úlohy Stream Analytics v Azure SQL Edge (Preview) 
 
@@ -44,10 +44,10 @@ Azure SQL Edge aktuálně podporuje jenom následující zdroje dat jako vstupy 
 
 | Typ zdroje dat | Vstup | Výstup | Popis |
 |------------------|-------|--------|------------------|
-| Centrum Azure IoT Edge | Ano | Ano | Zdroj dat pro čtení a zápis streamování dat do centra Azure IoT Edge. Další informace o centru Azure IoT Edge najdete v [centru IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)|
-| SQL Database | Ne | Ano | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. SQL Database může být místní databáze SQL Edge nebo vzdálený SQL Server nebo Azure SQL Database|
-| Azure Blob Storage | Ne | Ano | Zdroj dat pro zápis dat do objektu BLOB v účtu úložiště Azure. |
-| Kafka | Ano | Ne | Zdroj dat pro čtení dat streamování z tématu Kafka. Tento adaptér je teď dostupný jenom pro Azure SQL Edge verze Intel/AMD a není k dispozici pro ARM64 verzi SQL Edge.|
+| Centrum Azure IoT Edge | Y | Y | Zdroj dat pro čtení a zápis streamování dat do centra Azure IoT Edge. Další informace o centru Azure IoT Edge najdete v [centru IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)|
+| Databáze SQL | N | Y | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. SQL Database může být místní databáze SQL Edge nebo vzdálený SQL Server nebo Azure SQL Database|
+| Azure Blob Storage | N | Y | Zdroj dat pro zápis dat do objektu BLOB v účtu úložiště Azure. |
+| Kafka | Y | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Tento adaptér je teď dostupný jenom pro Azure SQL Edge verze Intel/AMD a není k dispozici pro ARM64 verzi SQL Edge.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Příklad: vytvoření objektu vstupu/výstupu externího datového proudu pro Azure IoT Edge hub
 

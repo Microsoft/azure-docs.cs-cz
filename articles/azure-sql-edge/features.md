@@ -2,19 +2,19 @@
 title: Podporované funkce Edge SQL Azure (Preview)
 description: Seznamte se s podrobnostmi o funkcích podporovaných Azure SQL Edge (Preview).
 keywords: Seznámení s SQL Edgem, co je SQL Edge, Přehled SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: f0994ac1d28118869f0d5c2844a034623d101ee8
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e3bac1cbb0e57f9be4a489207f2fe8b30b5d457e
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684363"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233217"
 ---
 # <a name="supported-features-of-azure-sql-edge-preview"></a>Podporované funkce Edge SQL Azure (Preview) 
 
@@ -30,7 +30,7 @@ Azure SQL Edge je k dispozici ve dvou různých edicích nebo softwarových plá
    |**Plán**  |**Popis**  |
    |---------|---------|
    |Vývojář Azure SQL Edge  |  Jenom vývojová SKU, každý kontejner pro vývojáře Azure SQL Edge je omezený na až 4 jádra a 32 GB paměti.  |
-   |Edge Azure SQL    |  Produkční skladová jednotka, každý kontejner Azure SQL Edge je omezený na až 8 jader a 64 GB paměti.  |
+   |Azure SQL Edge    |  Produkční skladová jednotka, každý kontejner Azure SQL Edge je omezený na až 8 jader a 64 GB paměti.  |
 
 ## <a name="operating-system"></a>Operační systém
 
@@ -68,7 +68,7 @@ Níže uvedený seznam obsahuje funkce SQL Server 2019 pro Linux, které se v Az
 | &nbsp; | Funkce Stretch DB a související příkazy jazyka DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy |
 | &nbsp; | Fulltextové indexy a hledání a související příkazy DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy|
 | &nbsp; | Soubory FileTable, FILESTREAM a související příkazy DDL a funkce jazyka Transact-SQL, zobrazení katalogu a zobrazení dynamické správy|
-| **Databázový stroj** | Replikace: Azure SQL Edge se ale dá nakonfigurovat jako nabízený odběratel replikační topologie. |
+| **Databázový stroj** | Umístění. Azure SQL Edge se ale dá nakonfigurovat jako nabízený odběratel replikační topologie. |
 | &nbsp; | PolyBase. Azure SQL Edge se ale dá nakonfigurovat jako cíl pro externí tabulky v základu. |
 | &nbsp; | Rozšiřitelnost jazyků přes Java a Spark |
 | &nbsp; | Integrace Active Directory |
@@ -86,7 +86,7 @@ Níže uvedený seznam obsahuje funkce SQL Server 2019 pro Linux, které se v Az
 | &nbsp; | Rozšíření fondu vyrovnávací paměti |
 | &nbsp; | Databázová pošta |
 | **Agent SQL Server** |  Subsystémy: CmdExec, PowerShell, čtečka front, SSIS, SSAS, SSRS |
-| &nbsp; | Upozornění |
+| &nbsp; | Výstrahy |
 | &nbsp; | Spravované zálohování |
 | **Vysoká dostupnost** | Skupiny dostupnosti Always On  |
 | &nbsp; | Základní skupiny dostupnosti |

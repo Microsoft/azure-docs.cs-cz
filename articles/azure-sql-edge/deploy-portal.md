@@ -2,19 +2,19 @@
 title: Nasazení Azure SQL Edge (Preview) pomocí Azure Portal
 description: Přečtěte si, jak nasadit Azure SQL Edge (Preview) pomocí Azure Portal
 keywords: nasazení Edge SQL
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 0ddfc445ee8bd67b39de4ddd013a25f20fd75315
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 43359b66ba747dba7b3294d022a2c1aa2a3e624c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681221"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233246"
 ---
 # <a name="deploy-azure-sql-edge-preview"></a>Nasazení Azure SQL Edge (Preview) 
 
@@ -23,7 +23,7 @@ Azure SQL Edge (Preview) je relační databázový stroj optimalizovaný pro nas
 ## <a name="before-you-begin"></a>Před zahájením
 
 * Pokud nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/).
-* Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+* Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 * Vytvořte [IoT Hub Azure](../iot-hub/iot-hub-create-through-portal.md).
 * Zaregistruje [zařízení IoT Edge z Azure Portal](../iot-edge/how-to-register-device-portal.md).
 * Připravte zařízení IoT Edge, aby se [IoT Edge modul nasadil z Azure Portal](../iot-edge/how-to-deploy-modules-portal.md).
@@ -55,9 +55,9 @@ Azure Marketplace je tržiště aplikací a služeb online, kde můžete prochá
 
 5. V podokně **IoT Edge vlastní moduly** zadejte požadované hodnoty pro proměnné prostředí a/nebo Přizpůsobte možnosti vytvoření a požadované vlastnosti pro modul. Úplný seznam podporovaných proměnných prostředí naleznete [SQL Server proměnných prostředí kontejneru](/sql/linux/sql-server-linux-configure-environment-variables/).
 
-   |**Ukazatele**  |**Popis**|
+   |**Parametr**  |**Popis**|
    |---------|---------|
-   | Name | Název modulu. |
+   | Název | Název modulu. |
    |SA_PASSWORD  | Zadejte silné heslo pro účet správce SQL Edge. |
    |MSSQL_LCID   | Nastaví ID jazyka, který se má použít pro SQL Server. Například 1036 je francouzština. |
    |MSSQL_COLLATION | Nastaví výchozí kolaci pro SQL Server. Toto nastavení přepíše výchozí mapování ID jazyka (LCID) na kolaci. |

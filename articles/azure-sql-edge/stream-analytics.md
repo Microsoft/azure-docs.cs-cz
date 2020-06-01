@@ -2,19 +2,19 @@
 title: Použití úloh Azure Stream Analytics Edge s Azure SQL Edge (Preview)
 description: Informace o použití úloh Stream Analytics ve službě Azure SQL Edge (Preview)
 keywords: SQL Edge, Stream Analytics,
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 3b57cb8cae80381a6c2cd88358dd9284ba56c919
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 7c15312b48e7118517894d8ffd4807e4892e03a3
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597314"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233144"
 ---
 # <a name="using-azure-stream-analytics-jobs-with-sql-edge"></a>Použití úloh Azure Stream Analytics s okrajem SQL
 
@@ -52,11 +52,11 @@ Azure SQL Edge má nativní implementaci modulu Stream Analytics runtime. Tato i
     |Pole      | Popis |
     |---------------|-------------|
     |Alias pro výstup | Název aliasu výstupu.|
-    |databáze | Název databáze SQL. Musí se jednat o platný název databáze, která existuje v instanci SQL Edge.|
+    |Databáze | Název databáze SQL. Musí se jednat o platný název databáze, která existuje v instanci SQL Edge.|
     |Název serveru | Název (nebo IP adresa) a podrobnosti o číslech portů pro instanci SQL. Pro nasazení SQL Edge můžete pro název serveru použít **TCP:., 1433** .|
     |Uživatelské jméno | Přihlašovací účet SQL, který má čtečku dat a přístup k datům zapisovače dat k databázi, kterou jste zadali dříve.|
     |Heslo | Heslo pro přihlašovací účet SQL, který jste zadali dříve.|
-    |Tabulka | Název tabulky, která bude výstupem pro úlohu streamování.|
+    |Table | Název tabulky, která bude výstupem pro úlohu streamování.|
     |Zdědit dělení| Povoluje dědění schématu dělení předchozího kroku dotazu nebo vstupu. Když je tato možnost povolená, můžete očekávat lepší propustnost při psaní do tabulky založené na disku a mít plně paralelní topologii pro vaši úlohu.|
     |Velikost dávky| Maximální počet záznamů, které jsou odeslány při každé transakci hromadného vložení.|
 

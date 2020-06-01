@@ -11,12 +11,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: e4b56f18bf8a2ed1c22b00b8a57efdbf06eb7fa2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9bf7339e500a006c168311145a9a5d992b07f145
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183311"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84231822"
 ---
 # <a name="tutorial-enable-authentication-in-a-web-application-using-azure-active-directory-b2c"></a>Kurz: povolení ověřování ve webové aplikaci pomocí Azure Active Directory B2C
 
@@ -50,7 +50,7 @@ K aktualizaci aplikace můžete použít aktuální prostředí **aplikací** ne
 1. Ujistěte se, že používáte adresář, který obsahuje Azure AD B2C tenanta, a to tak, že v horní nabídce vyberete filtr **adresář + předplatné** a zvolíte adresář, který obsahuje vašeho tenanta.
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **aplikace**a pak vyberte aplikaci *WebApp1* .
-1. V části **Adresa URL odpovědi**přidejte `https://localhost:44316`.
+1. V části **Adresa URL odpovědi**přidejte `https://localhost:44316` .
 1. Vyberte **Uložit**.
 1. Na stránce Vlastnosti Poznamenejte ID aplikace pro použití v pozdějším kroku při konfiguraci webové aplikace.
 
@@ -61,7 +61,7 @@ K aktualizaci aplikace můžete použít aktuální prostředí **aplikací** ne
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací (Preview)**, vyberte kartu **vlastněné aplikace** a pak vyberte aplikaci *WebApp1* .
 1. Vyberte **ověřování**a pak vyberte **vyzkoušet nové prostředí** (Pokud je zobrazeno).
-1. V části **Web**vyberte odkaz **Přidat identifikátor URI** , zadejte `https://localhost:44316`a potom vyberte **Uložit**.
+1. V části **Web**vyberte odkaz **Přidat identifikátor URI** , zadejte `https://localhost:44316` a potom vyberte **Uložit**.
 1. Vyberte **Přehled**.
 1. Poznamenejte si **ID aplikace (klienta)** pro použití v pozdějším kroku při konfiguraci webové aplikace.
 
@@ -92,12 +92,13 @@ Aktualizujte nastavení v souboru Web. config tak, aby fungovala s vaším uživ
 
 1. Otevřete řešení **B2C-WebAPI-DotNet** v sadě Visual Studio.
 1. V projektu **TaskWebApp** otevřete soubor **Web. config** .
-    1. Aktualizujte hodnotu `ida:Tenant` a `ida:AadInstance` s názvem klienta Azure AD B2C, který jste vytvořili. Například Nahraďte parametr `fabrikamb2c` `contoso`.
+    1. Aktualizujte hodnotu `ida:Tenant` a `ida:AadInstance` s názvem klienta Azure AD B2C, který jste vytvořili. Například Nahraďte parametr `fabrikamb2c` `contoso` .
+    1. Nahraďte hodnotu `ida:TenantId` ID adresáře, kterou najdete ve vlastnostech vašeho tenanta Azure B2C (v Azure Portal v části **Azure Active Directory**  >  **vlastnosti**  >  **ID adresáře**).
     1. Nahraďte hodnotu hodnotou `ida:ClientId` ID aplikace, kterou jste si poznamenali.
-    1. Nahraďte hodnotu `ida:ClientSecret` klíčem, který jste si poznamenali. Pokud tajný`<`klíč klienta obsahuje předdefinované entity XML, například menší než (), větší než (`>`), ampersand (`&`) nebo dvojité uvozovky (`"`), musíte tyto znaky před přidáním do souboru Web. config zakódovat pomocí kódu XML.
-    1. Hodnotu nahraďte hodnotou `ida:SignUpSignInPolicyId` `b2c_1_signupsignin1`.
-    1. Hodnotu nahraďte hodnotou `ida:EditProfilePolicyId` `b2c_1_profileediting1`.
-    1. Hodnotu nahraďte hodnotou `ida:ResetPasswordPolicyId` `b2c_1_passwordreset1`.
+    1. Nahraďte hodnotu `ida:ClientSecret` klíčem, který jste si poznamenali. Pokud tajný klíč klienta obsahuje předdefinované entity XML, například menší než ( `<` ), větší než () `>` , ampersand ( `&` ) nebo dvojité uvozovky ( `"` ), musíte tyto znaky před přidáním do souboru Web. config zakódovat pomocí kódu XML.
+    1. Hodnotu nahraďte hodnotou `ida:SignUpSignInPolicyId` `b2c_1_signupsignin1` .
+    1. Hodnotu nahraďte hodnotou `ida:EditProfilePolicyId` `b2c_1_profileediting1` .
+    1. Hodnotu nahraďte hodnotou `ida:ResetPasswordPolicyId` `b2c_1_passwordreset1` .
 
 ## <a name="run-the-sample"></a>Spuštění ukázky
 

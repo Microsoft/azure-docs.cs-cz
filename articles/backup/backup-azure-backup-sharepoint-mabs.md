@@ -3,12 +3,12 @@ title: Zálohování farmy služby SharePoint do Azure pomocí MABS
 description: Pomocí Azure Backup Server můžete zálohovat a obnovovat data služby SharePoint. Tento článek poskytuje informace o konfiguraci farmy služby SharePoint, aby bylo možné ukládat požadovaná data do Azure. Chráněná data služby SharePoint můžete obnovit z disku nebo z Azure.
 ms.topic: conceptual
 ms.date: 04/26/2020
-ms.openlocfilehash: 7e429eeb5319a12c3483510072fd82c69c8d8ab3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 62fcb434ef00df43ce2950a5df569e346a06903a
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83657285"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234792"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>Zálohování farmy služby SharePoint do Azure pomocí MABS
 
@@ -68,10 +68,9 @@ Chcete-li zálohovat farmu služby SharePoint, nakonfigurujte ochranu pro služb
 
     * Zadejte přihlašovací údaje správce farmy. Tento účet musí být členem místní skupiny Správci na serveru WFE. Pokud správce farmy není místní správce, udělte na serveru WFE tato oprávnění:
 
-        * Udělte skupině WSS \_ admin \_ WPG úplnou kontrolu nad složkou MABS \( % Program Files% \\ Data Protection Manager \\ DPM \) .
-            -A
+        * Udělte skupině **WSS_Admin_WPG** úplné řízení ke složce MABS ( `%Program Files%\Data Protection Manager\DPM\` ).
 
-        * Udělte skupině WSS \_ admin \_ WPG přístup pro čtení ke klíči registru MABS \( HKEY \_ místního \_ počítačového \\ softwaru \\ Microsoft \\ Microsoft Data Protection Manager \) .
+        * Udělte skupině **WSS_Admin_WPG** oprávnění ke čtení klíče registru MABS ( `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager` ).
 
         Po spuštění ConfigureSharePoint. exe ho budete muset znovu spustit, pokud dojde ke změně v přihlašovacích údajích pro správce farmy služby SharePoint.
 

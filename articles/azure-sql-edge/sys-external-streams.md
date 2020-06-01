@@ -2,21 +2,21 @@
 title: sys. external_streams (Transact-SQL) – Azure SQL Edge (Preview)
 description: Další informace o použití sys. external_streams ve službě Azure SQL Edge (Preview)
 keywords: sys. external_streams, Edge SQL
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: d47139b0b2a20ecfcf92bfc55a8b47c8e3cf7dab
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 8200d1814537a76db357704d6baf3bf482c587e7
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597279"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235110"
 ---
-# <a name="sysexternal_streams-transact-sql"></a>sys. external_streams (Transact-SQL)
+# <a name="sysexternal_streams-transact-sql"></a>sys.external_streams (Transact-SQL)
 
 Vrátí řádek pro každý objekt externího datového proudu vytvořený v rámci oboru databáze.
 
@@ -29,8 +29,8 @@ Vrátí řádek pro každý objekt externího datového proudu vytvořený v rá
 |**parent_object_id**|**účet**| identifikační číslo objektu pro nadřazený objekt tohoto datového proudu. V aktuální implementaci je tato hodnota vždycky null.|
 |**textový**|**char (2)**|Typ objektu. U objektů Stream je typ vždycky "ES".|
 |**type_desc**|**nvarchar (60)**| Popis typu objektu U objektů Stream je typ vždycky EXTERNAL_STREAM.|
-|**create_date**|**datetime**| Datum, kdy byl objekt vytvořen.|
-|**modify_date**|**datetime**| Datum, kdy byl objekt naposledy změněn pomocí příkazu ALTER.|
+|**create_date**|**hodnotu**| Datum, kdy byl objekt vytvořen.|
+|**modify_date**|**hodnotu**| Datum, kdy byl objekt naposledy změněn pomocí příkazu ALTER.|
 |**is_ms_shipped**|**bit**| Objekt vytvořený interní komponentou.|  
 |**is_published**|**bit**|Objekt je publikovaný.|  
 |**is_schema_published**|**bit**|Je Publikováno pouze schéma objektu.|

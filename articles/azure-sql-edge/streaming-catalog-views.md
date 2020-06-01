@@ -2,19 +2,19 @@
 title: Zobrazení katalogu streamování (Transact-SQL) – Azure SQL Edge (Preview)
 description: Přečtěte si o dostupných zobrazeních katalogu streamování a zobrazeních dynamické správy ve službě Azure SQL Edge (Preview).
 keywords: sys. external_streams, Edge SQL
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: f947d4ee84f4d08f3b0e40b54ab3fc4598460a03
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5b1cd58b8947e376ac70ee307041ae7864ed7e24
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597300"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233109"
 ---
 # <a name="streaming-catalog-views-transact-sql"></a>Zobrazení katalogu streamování (Transact-SQL)
 

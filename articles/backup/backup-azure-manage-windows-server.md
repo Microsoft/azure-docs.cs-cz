@@ -3,12 +3,12 @@ title: Správa serverů a trezorů služby Azure Recovery Services
 description: V tomto článku se dozvíte, jak pomocí řídicího panelu přehled služby Recovery Services trezor monitorovat a spravovat vaše trezory Recovery Services.
 ms.topic: conceptual
 ms.date: 07/08/2019
-ms.openlocfilehash: 1a4d23c157700f42422cfe7ca8fa1c49e2cf128a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 598e9198ee7e153d8008389f97c0be399a0186ba
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80131977"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234612"
 ---
 # <a name="monitor-and-manage-recovery-services-vaults"></a>Monitorování a správa trezorů služby Recovery Services
 
@@ -95,7 +95,7 @@ V seznamu výstrahy zálohování se zobrazí vybrané informace pro filtrovaná
 
 | Alert Level | Události, které generují výstrahy |
 | ----------- | ----------- |
-| Kritická | Zobrazí se důležité výstrahy, když se nezdaří úlohy zálohování, úlohy obnovení selžou a když zastavíte ochranu na serveru, ale zachováte data.|
+| Kritické | Zobrazí se důležité výstrahy, když se nezdaří úlohy zálohování, úlohy obnovení selžou a když zastavíte ochranu na serveru, ale zachováte data.|
 | Upozornění | Upozornění se zobrazí, když se úlohy zálohování dokončí s upozorněními, například pokud je méně než 100 souborů nezálohovaných kvůli problémům s poškozením nebo při úspěšném zálohování více než 1 000 000 souborů. |
 | Informační | v současné době se nepoužívají žádné informativní výstrahy. |
 
@@ -231,7 +231,7 @@ Typ položky je typ správy zálohování chráněné instance. Existují čtyř
 Můžete zobrazit jednu operaci nebo všechny operace. Nemůžete vybrat dvě nebo tři operace. K dispozici jsou tyto operace:
 
 * Všechny operace
-* Zaregistrovat
+* Registrovat
 * Konfigurace zálohování
 * Backup
 * Obnovení
@@ -244,7 +244,7 @@ Můžete zobrazit všechny stavy nebo jeden. Nemůžete vybrat dva nebo tři sta
 
 * Všechny stavy
 * Dokončeno
-* Probíhá
+* Rozpracované
 * Failed
 * Zrušeno
 * Dokončeno s upozorněními
@@ -274,7 +274,7 @@ Dlaždice úložiště zálohování na řídicím panelu zobrazuje úložiště
 
 **Problém:** Úlohy a výstrahy od agenta Azure Backup se nezobrazí na portálu.
 
-**Postup řešení potíží:** Proces ```OBRecoveryServicesManagementAgent```, odešle data úlohy a výstrahy do služby Azure Backup. Občas se může stát, že se tento proces zablokuje nebo vypne.
+**Postup řešení potíží:** Proces, ```OBRecoveryServicesManagementAgent``` odešle data úlohy a výstrahy do služby Azure Backup. Občas se může stát, že se tento proces zablokuje nebo vypne.
 
 1. Pokud chcete ověřit, že proces není spuštěný, otevřete **Správce úloh**a zkontrolujte, jestli ```OBRecoveryServicesManagementAgent``` je spuštěný.
 

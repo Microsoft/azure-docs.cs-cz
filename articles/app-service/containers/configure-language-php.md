@@ -4,12 +4,12 @@ description: Přečtěte si, jak nakonfigurovat předem sestavený kontejner PHP
 ms.devlang: php
 ms.topic: article
 ms.date: 03/28/2019
-ms.openlocfilehash: 97ccc309e6fd4efd48a609ab558e9842f376ccf5
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 9933205095587d9e8e0d8a5641d213f159512450
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142108"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234938"
 ---
 # <a name="configure-a-linux-php-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux PHP pro Azure App Service
 
@@ -109,7 +109,7 @@ Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím
 Pokud potřebujete provést změny v instalaci PHP, můžete změnit libovolné [direktivy php. ini](https://www.php.net/manual/ini.list.php) pomocí následujících kroků.
 
 > [!NOTE]
-> Nejlepším způsobem, jak zobrazit verzi PHP a aktuální konfiguraci *php. ini* , je volat [phpinfo ()](https://php.net/manual/function.phpinfo.php) ve vaší aplikaci.
+> Nejlepším způsobem, jak zobrazit verzi PHP a aktuální konfiguraci *php. ini* , je volat [phpinfo ()](https://www.php.net/manual/function.phpinfo.php) ve vaší aplikaci.
 >
 
 ### <a name="customize-non-php_ini_system-directives"></a><a name="Customize-non-PHP_INI_SYSTEM directives"></a>Přizpůsobení – direktivy bez PHP_INI_SYSTEM
@@ -193,7 +193,7 @@ Aby se změny projevily, restartujte aplikaci.
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud se funkční aplikace v PHP chová odlišně v App Service nebo obsahuje chyby, zkuste následující:
 

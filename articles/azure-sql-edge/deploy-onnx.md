@@ -2,19 +2,19 @@
 title: Nasazení a vytvoření předpovědi pomocí ONNX ve službě Azure SQL Edge (Preview)
 description: Naučte se, jak vytvořit model, převést ho na ONNX, nasadit ho do Azure SQL Edge (Preview) a pak spustit nativní prediktivní zpracování dat pomocí nahraného ONNX modelu.
 keywords: nasazení Edge SQL
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.subservice: ''
 ms.topic: conceptual
 author: dphansen
 ms.author: davidph
 ms.date: 05/19/2020
-ms.openlocfilehash: 2dd5af1a23618b063f094e4974f705a51a1b2bcf
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 66e2fb663d14ed2590af9c0cc62e6dad119d086f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171017"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233264"
 ---
 # <a name="deploy-and-make-predictions-with-an-onnx-model-in-azure-sql-edge-preview"></a>Nasazení a vytvoření předpovědi s modelem ONNX ve službě Azure SQL Edge (Preview)
 

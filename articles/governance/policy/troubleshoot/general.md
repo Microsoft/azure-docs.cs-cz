@@ -3,12 +3,12 @@ title: Odstraňování běžných chyb
 description: Naučte se řešit problémy s vytvářením definic zásad, různých SDK a doplňku pro Kubernetes.
 ms.date: 05/22/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 8935176badabf559d494c3d60fb1dec236efbdc2
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b1cb8ab51ecc00610f1e04532ba3063be5415607
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221374"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84234172"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Řešení chyb pomocí Azure Policy
 
@@ -130,7 +130,7 @@ Vygenerované heslo obsahuje čárku ( `,` ), na které se Helm graf.
 
 #### <a name="resolution"></a>Řešení
 
-`,`Při spuštění `helm install azure-policy-addon` s mezerou () zařídí čárku () v hodnotě hesla `\` .
+`,`Při spuštění `helm install azure-policy-addon` s zpětným lomítkem () zařídí čárku () v hodnotě hesla `\` .
 
 ### <a name="scenario-install-using-helm-chart-fails-as-name-already-exists"></a>Scénář: instalace pomocí grafu Helm se nezdařila, protože název už existuje.
 

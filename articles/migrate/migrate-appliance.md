@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 98398510acb1eec29ea603d869f1e9ec383cb210
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5995242f84738eca1b2be680e3f744e36831d78f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758941"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235342"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -84,7 +84,7 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Podporované nasazení** | Nasaďte jako vyhrazený fyzický počítač nebo virtuální počítač pomocí instalačního skriptu PowerShellu. Skript je k dispozici ke stažení na portálu.
 **Podpora projektu** |  Zařízení může být přidruženo k jednomu projektu. <br/> K jednomu projektu může být přidružen libovolný počet zařízení.<br/> 
 **Omezení zjišťování** | Zařízení může zjistit až 250 fyzických serverů.
-**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller. ps1) do složky zip z portálu. [Další informace](tutorial-assess-physical.md#set-up-the-appliance). Případně [si přímo Stáhněte](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> Velikost ke stažení je 59,7 MB.
+**Skript prostředí PowerShell** | Stáhněte si skript (AzureMigrateInstaller. ps1) do složky zip z portálu. [Přečtěte si další informace](tutorial-assess-physical.md#set-up-the-appliance). Případně [si přímo Stáhněte](https://go.microsoft.com/fwlink/?linkid=2105112).<br/><br/> Velikost ke stažení je 59,7 MB.
 **Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 32-GB RAM, 8 vCPU, kolem 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení potřebuje statickou nebo dynamickou IP adresu a vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.<br/> Spuštění zařízení na počítači s Windows serverem 2019 se nepodporuje.
 **Hodnota hash** | [Ověřte](deploy-appliance-script.md#verify-file-security) hodnoty hash skriptu PowerShellu.
 
@@ -180,7 +180,7 @@ IPv6 adresy | síť. Guest.Net
 Propustnost čtení (MB za sekundu) | NET. Received. Average
 Propustnost zápisu (MB za sekundu) | NET. přenášeno. Average
 **Podrobnosti o cestě inventáře** | 
-Name | vnitřního. GetType (). Jméno
+Název | vnitřního. GetType (). Jméno
 Typ podřízeného objektu | vnitřního. ChildType
 Referenční informace | vnitřního. MoRef
 Podrobnosti nadřazené položky | Kontejner. Parent
@@ -206,11 +206,77 @@ Počet operací zápisu na disk za sekundu | virtualDisk. numberWriteAveraged. A
 Propustnost čtení síťových adaptérů (MB za sekundu) | NET. Received. Average | Výpočet pro velikost virtuálního počítače
 Síťová karta zapisuje propustnost (MB za sekundu) | NET. přenášeno. Average  |Výpočet pro velikost virtuálního počítače
 
+
+### <a name="installed-apps-metadata"></a>Metadata instalovaných aplikací
+
+Funkce zjišťování aplikací shromažďuje nainstalované aplikace a data operačního systému.
+
+#### <a name="windows-vm-apps-data"></a>Data aplikací pro virtuální počítače s Windows
+
+Tady je nainstalovaná data aplikace, která zařízení shromažďuje z každého virtuálního počítače povoleného pro zjišťování aplikací. Tato data se odesílají do Azure.
+
+**Data** | **Umístění registru** | **Zkrat**
+--- | --- | ---
+Název aplikace  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
+Verze  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
+Poskytovatel  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | Publisher
+
+#### <a name="windows-vm-features-data"></a>Data funkcí virtuálních počítačů s Windows
+
+Tady jsou funkce data, která zařízení shromažďuje z každého virtuálního počítače, který je povolený pro zjišťování aplikací. Tato data se odesílají do Azure.
+
+**Data**  | **Rutina PowerShellu** | **Vlastnost**
+--- | --- | ---
+Název  | Get – WindowsFeature  | Název
+Typ funkce | Get – WindowsFeature  | FeatureType
+Nadřazený  | Get – WindowsFeature  | Nadřazený
+
+#### <a name="windows-vm-sql-server-metadata"></a>Metadata SQL Server virtuálních počítačů s Windows
+
+Tady jsou metadata SQL serveru, která zařízení shromažďuje z virtuálních počítačů se systémem Microsoft SQL Server, který je povolený pro zjišťování aplikací. Tato data se odesílají do Azure.
+
+**Data**  | **Umístění registru**  | **Zkrat**
+--- | --- | ---
+Název  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Edice  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Edice 
+Aktualizace Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
+Verze  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verze 
+
+#### <a name="windows-vm-operating-system-data"></a>Data operačního systému Windows VM
+
+Zde jsou data operačního systému, která zařízení shromažďují každý virtuální počítač, který je povolený pro zjišťování aplikací. Tato data se odesílají do Azure.
+
+Data  | Třída WMI  | Vlastnost třídy WMI
+--- | --- | ---
+Název  | Win32_operatingsystem  | Titulek
+Verze  | Win32_operatingsystem  | Verze
+Architektura  | Win32_operatingsystem  | OSArchitecture
+
+#### <a name="linux-vm-apps-data"></a>Data aplikací pro virtuální počítače se systémem Linux
+
+Tady je nainstalovaná data aplikace, která zařízení shromažďuje z každého virtuálního počítače povoleného pro zjišťování aplikací. V závislosti na operačním systému virtuálního počítače se spustí jeden nebo více příkazů. Tato data se odesílají do Azure.
+
+Data  | Příkaz
+--- | --- 
+Název | ot./min., bázi dpkg – dotaz, přichycení
+Verze | ot./min., bázi dpkg – dotaz, přichycení
+Poskytovatel | ot./min., bázi dpkg – dotaz, přichycení
+
+#### <a name="linux-vm-operating-system-data"></a>Data operačního systému Linux VM
+
+Zde jsou data operačního systému, která zařízení shromažďují každý virtuální počítač, který je povolený pro zjišťování aplikací. Tato data se odesílají do Azure.
+
+**Data**  | **Příkaz** 
+--- | --- | ---
+Název <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Architektura | uname
+
+
 ### <a name="app-dependencies-metadata"></a>Metadata závislostí aplikace
 
 Analýza závislosti bez agentů shromažďuje data o připojení a zpracování.
 
-#### <a name="connection-data"></a>Data připojení
+#### <a name="windows-vm-app-dependencies-data"></a>Data závislostí aplikací virtuálních počítačů s Windows
 
 Tady jsou data připojení, která zařízení shromažďuje z každého virtuálního počítače, který je povolený pro analýzu závislostí bez agentů. Tato data se odesílají do Azure.
 
@@ -224,7 +290,7 @@ Stav připojení TCP | netstat
 ID procesu | netstat
 Počet aktivních připojení | netstat
 
-#### <a name="process-data"></a>Zpracování dat
+
 Tady jsou data procesu, která zařízení shromažďuje z každého virtuálního počítače, který je povolený pro analýzu závislostí bez agentů. Tato data se odesílají do Azure.
 
 **Data** | **Třída WMI** | **Vlastnost třídy WMI**
@@ -233,7 +299,7 @@ Název procesu | Win32_Process | ExecutablePath
 Argumenty procesu | Win32_Process | CommandLine
 Název aplikace | Win32_Process | VersionInfo. ProductName – parametr vlastnosti ExecutablePath
 
-#### <a name="linux-vm-data"></a>Data virtuálních počítačů Linux
+#### <a name="linux-vm-app-dependencies-data"></a>Data závislostí aplikací pro virtuální počítače se systémem Linux
 
 Tady je připojení a zpracování dat, která zařízení shromažďuje z každého virtuálního počítače Linux povoleného pro analýzu závislostí bez agentů. Tato data se odesílají do Azure.
 

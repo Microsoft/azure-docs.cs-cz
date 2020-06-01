@@ -2,19 +2,19 @@
 title: Vytvoření externího datového proudu (Transact-SQL) – Azure SQL Edge (Preview)
 description: Přečtěte si o příkazu CREATE EXTERNAL STREAM ve službě Azure SQL Edge (Preview).
 keywords: ''
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: d4ad446d43c90eee1c48ee2ba94585242805fa7d
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9e1f672a62ee7687fec9cea96ca03240c893ba95
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597930"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233337"
 ---
 # <a name="create-external-stream-transact-sql"></a>VYTVOŘIT externí datový proud (Transact-SQL)
 
@@ -60,7 +60,7 @@ WITH
 ```
 
 
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Argumenty
 
 
 - [EXTERNÍ ZDROJ DAT](/sql/t-sql/statements/create-external-data-source-transact-sql/)
@@ -118,7 +118,7 @@ Parametry:
 - Vstup nebo výstup
   - Alias 
   - Formát serializace události 
-  - Encoding 
+  - Kódování 
 - Pouze vstup: 
   - Typ komprese události 
 
@@ -157,7 +157,7 @@ Parametry:
 - Server (požadováno pro SQL Database) 
 - Uživatelské jméno (povinné pro SQL Database) 
 - Heslo (požadováno pro SQL Database) 
-- Tabulka 
+- Table 
 - Sloučí všechny vstupní oddíly do jednoho nebo zděděného schématu oddílu předchozího kroku dotazu nebo vstupu (vyžaduje se pro SQL Database). 
 - Maximální počet dávek 
 
@@ -253,7 +253,7 @@ Parametry:
   - Formát data 
   - Formát času 
   - Formát serializace události 
-  - Encoding 
+  - Kódování 
 - Pouze vstup: 
   - Oddíly (vstup) 
   - Typ komprese události (vstup) 
@@ -315,7 +315,7 @@ Parametry:
   - Název zásad centra událostí 
   - Klíč zásad centra událostí 
   - Formát serializace události 
-  - Encoding 
+  - Kódování 
 - Pouze vstup: 
   - Skupina uživatelů centra událostí 
   - Typ komprese události 
@@ -376,7 +376,7 @@ Parametry:
 - Klíč zásad sdíleného přístupu 
 - Skupina uživatelů 
 - Formát serializace události 
-- Encoding 
+- Kódování 
 - Typ komprese události 
 
 Syntaxe:
@@ -417,11 +417,11 @@ WITH
 Typ: výstup<br>
 Parametry:
 - Alias pro výstup 
-- databáze 
+- Databáze 
 - Server 
 - Uživatelské jméno 
 - Heslo 
-- Tabulka 
+- Table 
 - Pracovní oblast (pro kopírování) 
 
 Syntaxe:
@@ -501,7 +501,7 @@ Parametry:
 - Sloupce vlastností 
 - Sloupce systémových vlastností 
 - Formát serializace události 
-- Encoding 
+- Kódování 
 
 Syntaxe:
 
@@ -547,7 +547,7 @@ Parametry:
 - Alias pro výstup 
 - Account ID 
 - Klíč účtu 
-- databáze 
+- Databáze 
 - Název kontejneru 
 - ID dokumentu 
 

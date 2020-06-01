@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 14503299b241b87459517818b0d0b2be6dde9072
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3d9e4e54d2b1186278afc72c72cdd6bcf33dd41b
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219251"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235461"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>Řešení potíží s Azure Migrate zařízením a zjišťováním
 
@@ -168,37 +168,38 @@ Azure Migrate podporuje zjišťování aplikací, rolí a funkcí pomocí Azure 
 Typické chyby zjišťování aplikací jsou shrnuté v tabulce. 
 
 **Chyba** | **Příčina** | **Akce**
---- | --- | --- 
-10000: "nelze zjistit aplikace nainstalované na serveru". | K tomu může dojít, pokud operační systém počítače není Windows nebo Linux. | Používejte jenom zjišťování aplikací pro Windows/Linux.
+--- | --- | --- | ---
+10000: nepovedlo se zjistit aplikace nainstalované na serveru. | K tomu může dojít, pokud operační systém počítače není Windows nebo Linux. | Používejte jenom zjišťování aplikací pro Windows/Linux.
 10001: nelze načíst aplikace nainstalované serverem. | Vnitřní chyba – některé chybějící soubory v zařízení. | Obraťte se na podporu Microsoftu.
 10002: nelze načíst aplikace nainstalované serverem. | Agent zjišťování na zařízení nemusí správně fungovat. | Pokud se problém nepodaří vyřešit během 24 hodin, obraťte se na podporu.
-10003 "nelze načíst aplikace nainstalovaná na serveru". | Agent zjišťování na zařízení nemusí správně fungovat. | Pokud se problém nepodaří vyřešit během 24 hodin, obraťte se na podporu.
-10004: "nepovedlo se zjistit nainstalované aplikace pro <počítače> Windows/Linux." |  Přihlašovací údaje pro přístup k <počítačům> systému Windows/Linux nejsou v zařízení k dispozici.| Přidejte přihlašovací údaje k zařízení, které má přístup k <počítačům> Windows/Linux.
-10005: "nepovedlo se získat přístup k místnímu serveru". | Přístup k přihlašovacím údajům může být chybný. | Aktualizujte přihlašovací údaje zařízení a ujistěte se, že k příslušnému počítači máte přístup. 
-10006: "nepovedlo se získat přístup k místnímu serveru". | K tomu může dojít, pokud operační systém počítače není Windows nebo Linux.|  Používejte jenom zjišťování aplikací pro Windows/Linux.
+10003 "nepovedlo se načíst aplikace nainstalovaná na serveru" | Agent zjišťování na zařízení nemusí správně fungovat. | Pokud se problém nepodaří vyřešit během 24 hodin, obraťte se na podporu.
+10004: "nepovedlo se zjistit nainstalované aplikace pro <počítače> Windows/Linux". |  Přihlašovací údaje pro přístup k <počítačům> systému Windows/Linux nejsou v zařízení k dispozici.| Přidejte přihlašovací údaje k zařízení, které má přístup k <počítačům> Windows/Linux.
+10005: nejde získat přístup k místnímu serveru. | Přístup k přihlašovacím údajům může být chybný. | Aktualizujte přihlašovací údaje zařízení a ujistěte se, že k příslušnému počítači máte přístup. 
+10006: nejde získat přístup k místnímu serveru. | K tomu může dojít, pokud operační systém počítače není Windows nebo Linux.|  Používejte jenom zjišťování aplikací pro Windows/Linux.
 10007: Nepodařilo se zpracovat načtená metadata. | K této vnitřní chybě došlo při pokusu o deserializaci JSON. | Kontaktování podpora Microsoftu pro řešení
-9000/9001/9002: "nelze zjistit aplikace nainstalované na serveru". | Nástroje VMware pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Na příslušný počítač nainstalujte nebo přeinstalujte nástroje VMware a ověřte, že je spuštěný.
-9003: nelze zjistit aplikace nainstalované na serveru. | K tomu může dojít, pokud operační systém počítače není Windows nebo Linux. | Používejte jenom zjišťování aplikací pro Windows/Linux.
-9004: "nelze zjistit aplikace nainstalované na serveru". | K tomu může dojít v případě, že je virtuální počítač vypnutý. | Pro zjišťování se ujistěte, že je virtuální počítač zapnutý.
+9000/9001/9002: nepovedlo se zjistit aplikace nainstalované na serveru. | Nástroje VMware pravděpodobně nejsou nainstalovány nebo jsou poškozeny. | Na příslušný počítač nainstalujte nebo přeinstalujte nástroje VMware a ověřte, že je spuštěný.
+9003: nepovedlo se zjistit aplikace nainstalované na serveru. | K tomu může dojít, pokud operační systém počítače není Windows nebo Linux. | Používejte jenom zjišťování aplikací pro Windows/Linux.
+9004: nepovedlo se zjistit aplikace nainstalované na serveru. | K tomu může dojít v případě, že je virtuální počítač vypnutý. | Pro zjišťování se ujistěte, že je virtuální počítač zapnutý.
 9005: nepovedlo se zjistit aplikace nainstalované na virtuálním počítači. | K tomu může dojít, pokud operační systém počítače není Windows nebo Linux. | Používejte jenom zjišťování aplikací pro Windows/Linux.
 9006/9007: nelze načíst aplikace nainstalované serverem. | Agent zjišťování na zařízení nemusí správně fungovat. | Pokud se problém nepodaří vyřešit během 24 hodin, obraťte se na podporu.
 9008: nelze načíst aplikace nainstalované serverem. | Může se jednat o vnitřní chybu.  | TF problém se nedokáže vyřešit během 24 hodin, obraťte se na podporu.
 9009: nelze načíst aplikace nainstalované serverem. | Může dojít v případě, že nastavení řízení uživatelských účtů (UAC) systému Windows na serveru jsou omezující a znemožňuje zjišťování nainstalovaných aplikací. | Vyhledejte nastavení řízení uživatelských účtů na serveru a nakonfigurujte nastavení nástroje řízení uživatelských účtů na serveru na jednu z nižších dvou úrovní.
-9010: nelze načíst aplikace nainstalované serverem. | Může se jednat o vnitřní chybu.  | TF problém se nedokáže vyřešit během 24 hodin, obraťte se na podporu.
+9010: virtuální počítač je vypnutý. | Virtuální počítač je vypnutý.  | Ujistěte se, že je virtuální počítač zapnutý.
 9011: soubor ke stažení z hosta se nenašel na virtuálním počítači hosta. | K tomuto problému může dojít z důvodu vnitřní chyby. | Problém by se měl automaticky vyřešit během 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu.
 9012: obsah souboru výsledků je prázdný. | K tomuto problému může dojít z důvodu vnitřní chyby. | Problém by se měl automaticky vyřešit během 24 hodin. Pokud problém přetrvává, kontaktujte prosím podpora Microsoftu.
-9013: "pro každé přihlášení k virtuálnímu počítači VMware je vytvořen nový dočasný profil" | Pro každé přihlášení k virtuálnímu počítači se vytvoří nový dočasný profil. | Ujistěte se, že uživatelské jméno, které je zadáno v přihlašovacích údajích k hostovanému virtuálnímu počítači, je ve formátu UPN. Když změníte uživatelské jméno, které je zadané v přihlašovacích údajích k hostovanému virtuálnímu počítači, do formátu hlavního názvu uživatele (UPN), ve Správci úloh na zařízení restartujte službu Microsoft Azure VMWare Discovery, abyste našli nové zjišťování.
-9015: Nelze se připojit k virtuálním počítačům VMware z důvodu nedostatečných oprávnění na vCenter. | Role operace hosta není povolena na uživatelském účtu vCenter. | Zajistěte, aby byla na uživatelském účtu vCenter povolená role operace hosta.
+9013: "pro každé přihlášení k virtuálnímu počítači VMware je vytvořen nový dočasný profil" | Pro každé přihlášení k virtuálnímu počítači se vytvoří nový dočasný profil. | Ujistěte se, že uživatelské jméno zadané v přihlašovacích údajích k hostovanému virtuálnímu počítači je ve formátu UPN.
+9014: Nepodařilo se načíst metadata ze systému souborů hostovaného virtuálního počítače. | Došlo k potížím při připojování k hostiteli ESXi. | Ujistěte se, že se zařízení může připojit k portu 443 na hostiteli ESXi, na kterém běží virtuální počítač.
+9015: Nelze se připojit k virtuálním počítačům VMware z důvodu nedostatečných oprávnění na vCenter. | Role operace hosta není v uživatelském účtu vCenter povolena. | Zajistěte, aby byla na uživatelském účtu vCenter povolená role operace hosta.
 9016: nejde se připojit k virtuálním počítačům VMware, protože agent operací hosta je mimo data. | Nástroje VMware nejsou správně nainstalované nebo nejsou aktuální. | Ujistěte se, že jsou nástroje VMware správně nainstalované a aktuální.
 9017: na virtuálním počítači se nenašel soubor se zjištěnými metadaty. | K tomuto problému může dojít z důvodu vnitřní chyby. | Pro řešení kontaktujte podpora Microsoftu.
-9018: na virtuálních počítačích hosta není nainstalovaný PowerShell. | Prostředí PowerShell není v hostovaném virtuálním počítači k dispozici. | Nainstalujte PowerShell do virtuálního počítače hosta.
+9018: PowerShell není nainstalovaný na virtuálních počítačích hosta. | Prostředí PowerShell není v hostovaném virtuálním počítači k dispozici. | Nainstalujte PowerShell do virtuálního počítače hosta.
 9019: "nelze zjistit z důvodu selhání operací virtuálních počítačů hosta" | Operace hosta VMware se na virtuálním počítači nezdařila. | Ujistěte se, že přihlašovací údaje virtuálního počítače jsou platné a že uživatelské jméno zadané v přihlašovacích údajích k hostovanému virtuálnímu počítači má formát UPN.
 9020: oprávnění k vytvoření souboru bylo odepřeno. | Role přidružená k uživateli nebo zásadám skupiny omezuje uživatele na vytvoření souboru ve složce. | Zkontroluje, jestli zadaný uživatel typu host má oprávnění k vytvoření souboru ve složce. Viz **oznámení** v tématu vyhodnocování serveru pro název složky.
 9021: v dočasné cestě systému složek se zamítlo oprávnění k vytvoření souboru. | Verze nástroje VMware na virtuálním počítači není podporovaná. | Upgradujte si verzi nástroje VMware nad 10.2.0.
-9022: "získání přístupu k objektům WMI bylo odepřeno." | Role přidružená k uživateli nebo zásadám skupiny omezuje uživatele na přístup k objektu rozhraní WMI. | Kontaktujte prosím podpora Microsoftu.
+9022: "získat přístup k objektům WMI byl odepřen" | Role přidružená k uživateli nebo zásadám skupiny omezuje uživatele na přístup k objektu rozhraní WMI. | Kontaktujte prosím podpora Microsoftu.
 9023: hodnota proměnné prostředí SystemRoot je prázdná. | Neznámo | Kontaktujte prosím podpora Microsoftu.
 9024: hodnota proměnné prostředí TEMP je prázdná. | Neznámo | Kontaktujte prosím podpora Microsoftu.
-9025: "prostředí PowerShell je poškozeno na virtuálních počítačích hosta". | Neznámo | Přeinstalujte PowerShell v hostovaném virtuálním počítači a ověřte, jestli je možné spustit PowerShell na virtuálním počítači hosta.
+9025: "prostředí PowerShell je poškozeno na virtuálních počítačích hosta" | Neznámo | Přeinstalujte PowerShell v hostovaném virtuálním počítači a ověřte, jestli je možné spustit PowerShell na virtuálním počítači hosta.
 8084: nepovedlo se zjistit aplikace z důvodu chyby VMware  <Exception from VMware> : | Zařízení Azure Migrate používá rozhraní API VMware ke zjišťování aplikací. K tomuto problému může dojít, pokud se při pokusu o zjištění aplikací vyvolá výjimka vCenter Server. Zpráva o chybě z VMware se zobrazí v chybové zprávě zobrazené na portálu. | Vyhledejte zprávu v [dokumentaci k VMware](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html)a proveďte opravu pomocí těchto kroků. Pokud nemůžete opravit, obraťte se na podporu Microsoftu.
 
 

@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: bb5c01bac512504fc6bee52be7cf619f29bdf959
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: cb136fa9a3dc63144d26820b7170250b3598ba77
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117173"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84235415"
 ---
 # <a name="query-folders-and-multiple-csv-files"></a>Složky dotazů a více souborů CSV  
 
@@ -27,10 +27,6 @@ SQL na vyžádání podporuje čtení více souborů nebo složek pomocí zástu
 Prvním krokem je **Vytvoření databáze** , ve které budete spouštět dotazy. Pak inicializujte objekty spuštěním [instalačního skriptu](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) v této databázi. Tento instalační skript vytvoří zdroje dat, přihlašovací údaje v oboru databáze a formáty externích souborů, které jsou použity v těchto ukázkách.
 
 K provedení ukázkových dotazů použijete složku *CSV/taxislužby* . Obsahuje NYC taxislužby – žlutá Taxislužbyová cesta zaznamenává data z července 2016 do června 2018. Soubory ve *formátu CSV/taxislužby* se pojmenují po rocích a měsících pomocí následujícího vzoru: yellow_tripdata_ <year> - <month> . csv.
-        
-Každý soubor má následující strukturu:
-        
-    [First 10 rows of the CSV file](./media/querying-folders-and-multiple-csv-files/nyc-taxi.png)
 
 ## <a name="read-all-files-in-folder"></a>Číst všechny soubory ve složce
     

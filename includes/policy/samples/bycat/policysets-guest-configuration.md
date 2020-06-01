@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: cfdb41f9be83f8a410dff089b9150739017403cb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d3efad49fe3fac7fb87c2dffc1f5c007c3289500
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639376"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233998"
 ---
-|Name |Popis |Zásady |Verze |
+|Název |Popis |Zásady |Verze |
 |---|---|---|---|
 |[Auditovat virtuální počítače Linux, u kterých nejsou nainstalované zadané aplikace](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_InstalledApplicationLinux.json) |V této iniciativě se nasadí požadavky na zásady a Audituje virtuální počítače Linux, u kterých nejsou nainstalované zadané aplikace. Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.1.0 |
 |[Auditovat virtuální počítače Linux, ve kterých jsou nainstalované zadané aplikace](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policySetDefinitions/Guest%20Configuration/GuestConfiguration_NotInstalledApplicationLinux.json) |V této iniciativě se nasadí požadavky na zásady a Audituje virtuální počítače Linux s nainstalovanými zadanými aplikacemi. Pokud chcete získat další informace o zásadách konfigurace hostů, navštivte prosím.[https://aka.ms/gcpol](https://aka.ms/gcpol) |2 |1.1.0 |

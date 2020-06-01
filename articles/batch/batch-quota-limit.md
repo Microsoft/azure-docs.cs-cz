@@ -4,12 +4,12 @@ description: Přečtěte si o výchozích Azure Batch kvótách, omezeních a om
 ms.topic: conceptual
 ms.date: 08/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: b172800e6ed2a28315da3b45eb39f2207f8f1c16
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 3168c6fc60b2552129e9a11fbf6e8e24d9b37b14
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780007"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84229839"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -37,7 +37,7 @@ Pokud jste vytvořili účet Batch s režimem přidělování fondů nastaveným
 
 Omezení velikosti fondu nastavuje služba Batch. Na rozdíl od [kvót prostředků](#resource-quotas)nelze tyto hodnoty změnit. Omezení odlišná od standardní kvóty mají jenom fondy, které mají komunikaci mezi uzly a vlastní image.
 
-| **Prostředek** | **Maximální omezení** |
+| **Prostředek** | **Maximální limit** |
 | --- | --- |
 | **Výpočetní uzly ve [fondu s povolenými komunikacemi mezi uzly](batch-mpi.md)**  ||
 | Režim přidělování fondů služby Batch | 100 |
@@ -52,7 +52,7 @@ Omezení velikosti fondu nastavuje služba Batch. Na rozdíl od [kvót prostřed
 
 Další omezení nastavená službou Batch. Na rozdíl od [kvót prostředků](#resource-quotas)nelze tyto hodnoty změnit.
 
-| **Prostředek** | **Maximální omezení** |
+| **Prostředek** | **Maximální limit** |
 | --- | --- |
 | [Souběžné úkoly](batch-parallel-node-tasks.md) na výpočetní uzel | 4 x počet jader uzlů |
 | Počet [aplikací](batch-application-packages.md) na účet Batch | 20 |
@@ -126,7 +126,7 @@ Po odeslání žádosti o podporu vás bude kontaktovat podpora Azure. Žádosti
 Fondy služby Batch v konfiguraci virtuálního počítače nasazené ve virtuální síti Azure automaticky přidělují další síťové prostředky Azure. Pro každý uzel fondu 50 ve virtuální síti jsou potřeba tyto prostředky:
 
 * Jedna [Skupina zabezpečení sítě](../virtual-network/security-overview.md#network-security-groups)
-* Jedna [Veřejná IP adresa](../virtual-network/virtual-network-ip-addresses-overview-arm.md)
+* Jedna [Veřejná IP adresa](../virtual-network/public-ip-addresses.md)
 * Jeden [Nástroj pro vyrovnávání zatížení](../load-balancer/load-balancer-overview.md)
 
 Tyto prostředky se přidělují v rámci předplatného, které obsahuje virtuální síť, která se zadala při vytváření fondu Batch. Pro tyto prostředky platí omezení [kvót prostředků](../azure-resource-manager/management/azure-subscription-service-limits.md) předplatného. Pokud plánujete nasazení rozsáhlých fondů ve virtuální síti, Prohlédněte si kvóty předplatného pro tyto prostředky. V případě potřeby požádejte o zvýšení Azure Portal tím, že vyberete **help + podpora**.

@@ -11,12 +11,12 @@ metadata:
   author: PatAltimore
   ms.author: patricka
   ms.date: 10/23/2019
-  ms.openlocfilehash: a0e43171e70923cfb3af551391204f118be01970
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  ms.openlocfilehash: 11c3c464de5efc9b38426fa7ea015f63b37a8b52
+  ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "75932668"
+  ms.lasthandoff: 05/31/2020
+  ms.locfileid: "84235499"
 productDirectory:
   items:
   - title: Služba Azure Blockchain
@@ -32,13 +32,6 @@ productDirectory:
     - url: ./workbench/overview.md
       text: Co je Azure Blockchain Workbench?
     - url: ./workbench/index.yml
-      text: Zobrazit víc >
-  - title: Azure Blockchain Tokens
-    imageSrc: ./media/index/blockchain-tokens.svg
-    links:
-    - url: ./tokens/overview.md
-      text: Co je služba Azure Blockchain Tokens?
-    - url: ./tokens/index.yml
       text: Zobrazit víc >
 conceptualContent:
   title: Začínáme
@@ -71,17 +64,6 @@ conceptualContent:
     - url: https://channel9.msdn.com/Shows/Blocktalk/Building-your-first-Azure-Blockchain-Workbench-application
       itemType: video
       text: Jak vytvořit první aplikaci
-  - title: Vytvoření a správa tokenů
-    links:
-    - url: ./tokens/templates.md
-      itemType: concept
-      text: Definování tokenu pomocí předem připravené šablony
-    - url: ./tokens/account-management.md
-      itemType: concept
-      text: Správa tokenů s využitím služby Azure Blockchain Tokens
-    - url: https://aka.ms/ABTokensPartI
-      itemType: video
-      text: Sledování základního přehledu služby Azure Blockchain Tokens
   - title: Publikování dat blockchainu s využitím Blockchain Data Manageru
     links:
     - url: ./service/data-manager.md

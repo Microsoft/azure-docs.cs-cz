@@ -2,19 +2,19 @@
 title: Date_Bucket (Transact-SQL) – Azure SQL Edge (Preview)
 description: Informace o použití Date_Bucket ve službě Azure SQL Edge (Preview)
 keywords: Date_Bucket, Edge SQL
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: reference
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
-ms.openlocfilehash: 7cedc19c1b2a19fb26677a9426300d19c5396bd4
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: c2f63abeb9f935236b4c35decb278eb86e0e2a82
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682733"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233295"
 ---
 # <a name="date_bucket-transact-sql"></a>Date_Bucket (Transact-SQL)
 
@@ -32,7 +32,7 @@ Přehled všech datových typů a dat v jazyce Transact-SQL najdete v tématu [d
 DATE_BUCKET (datePart, number, date)
 ```
 
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Argumenty
 
 *datePart*
 
@@ -50,7 +50,7 @@ DATE_BUCKET (datePart, number, date)
 |**první**|**SS**, **s**|  
 |**komponentu**|**Arial**|  
 
-*číslo*
+*Automatické*
 
 Celé číslo, které určuje šířku kontejneru v kombinaci s argumentem *datePart* . To představuje šířku kontejnerů DataParts od počátečního času. **`This argument cannot be a negative integer value`**. 
 
@@ -59,7 +59,7 @@ Celé číslo, které určuje šířku kontejneru v kombinaci s argumentem *date
 Výraz, který může být přeložen na jednu z následujících hodnot:
 
 + **Datum**
-+ **datetime**
++ **hodnotu**
 + **DateTimeOffset**
 + **datetime2**
 + **smalldatetime**
@@ -134,7 +134,7 @@ Použijte `DATE_BUCKET` v následujících klauzulích:
 + GROUP BY
 + HAVING
 + ORDER BY
-+ Vyberte \< seznam>
++ VYBRALI\<list>
 + WHERE
 
 ## <a name="examples"></a>Příklady

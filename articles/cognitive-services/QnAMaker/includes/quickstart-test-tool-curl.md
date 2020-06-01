@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: d890fcb6a43b43e0be0df8e6f6ff0817bdd03115
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 161dde34a4f459640d262197fd5ccbb16ac51d04
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83998103"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237715"
 ---
 Tento rychlý Start založený na složeném startu vás provede tím, že získáte odpověď ze znalostní báze.
 
@@ -80,6 +80,8 @@ Použijte znalostní bázi z předchozího rychlého dotazu pro odpověď na zá
     Pokud existuje pár otázek a odpovědí, které nevyhověly hledanému termínu, ale nesplnila tento filtr, nebude vrácen. Místo toho se vrátí obecná odpověď `No good match found in KB.` .
 
 ## <a name="use-debug-query-property"></a>Použít vlastnost dotazu pro ladění
+> [!NOTE]
+>Pro žádnou závislost nedoporučujeme používat vlastnost ladění. Tato vlastnost byla přidána pro pomoc s produktovým týmem při řešení potíží.
 
 Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I když je to užitečné, není nutné. Pokud chcete vygenerovat odpověď s ladicími informacemi, přidejte `debug` vlastnost:
 

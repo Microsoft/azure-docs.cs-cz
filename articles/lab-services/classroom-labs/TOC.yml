@@ -24,6 +24,8 @@
       href: classroom-labs-concepts.md
     - name: Základy architektury testovacích prostředí v učebnách
       href: classroom-labs-fundamentals.md
+    - name: Omezení kapacity
+      href: capacity-limits.md
     - name: Scénáře
       items:
         - name: Využití testovacích prostředí při výuce

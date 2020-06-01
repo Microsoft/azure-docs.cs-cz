@@ -3,13 +3,13 @@ title: Partneři, kteří integrují Azure Monitor
 description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete získat přístup k dokumentaci pro integraci s nimi.
 ms.subservice: ''
 ms.topic: conceptual
-ms.date: 03/14/2019
-ms.openlocfilehash: a9ba9972bcdd5b7e4bd1c4b489dcea08b5502a72
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.date: 05/29/2020
+ms.openlocfilehash: 3224a9420d5a434ed9e3d8902f430f4e1ee28bcd
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854934"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233404"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -108,6 +108,9 @@ Grafana je open source aplikace, která umožňuje vizualizovat data metrik čas
 
 InfluxData, autor InfluxDB, nabízí moderní open source platformu sestavenou od základů pro analýzu metrik a událostí (data časových řad) pro aplikace DevOps a IoT. Bez ohledu na to, jestli data pocházejí z lidí, senzorů nebo počítačů, InfluxData vývojářům umožňuje rychle a rychleji vytvářet monitorování, analýzy a aplikace IoT v nové generaci. V závislosti na síti San Francisco jsou zákazníci InfluxData více než 420, kteří zahrnují Cisco, eBay, IBM a Siemens.
 
+InfluxData je tvůrce InfluxDB a otevřená zdrojová databáze časových řad. Naše technologie je navržená tak, aby zpracovávala obrovské objemy dat s časovými razítky vytvořenými zařízeními IoT, aplikacemi, sítěmi, kontejnery a počítači. Pracujeme na tom, abychom pomohli vývojářům a organizacím, jako jsou IBM, Visa, Siemens, Tesla a NASA, ukládat a analyzovat data v reálném čase, což jim umožňuje sestavovat transformativní monitorování, analýzy a aplikace IoT rychleji a škálovat. Pomocí InfluxData agenta telegraf můžete rozšířit možnosti shromažďování metrik a událostí monitoru, aby uživatelé Microsoftu využili výhod řešení Database pro celou dobu, a využívat rostoucí příspěvky open source na telegraf. Microsoft Azure
+
+
 [Přejít na dokumentaci.][influxdata-doc]
 
 
@@ -115,7 +118,7 @@ InfluxData, autor InfluxDB, nabízí moderní open source platformu sestavenou o
 
 ![Logo monitorování logiky](./media/partners/logicmonitor.png)
 
-LogicMonitor&reg; je špičková platforma pro monitorování výkonu založená na SaaS pro komplexní IT infrastrukturu. LogicMonitor s pokrytím pro tisíce technologií poskytuje podrobné přehledy o výkonu infrastruktury a aplikací. Komplexní monitorování Azure cloudu LM umožňuje uživatelům korelovat výkon cloudu Azure, místních i hybridních cloudových prostředků – a to vše z jedné platformy. Automatizované zjišťování prostředků, předdefinované šablony pro monitorování, prahové hodnoty předkonfigurovaných pro výstrahy a přizpůsobitelné řídicí panely, aby poskytovaly rychlost, flexibilitu a viditelnost, které musí být úspěšné.
+LogicMonitor &reg; je špičková platforma pro monitorování výkonu založená na SaaS pro komplexní IT infrastrukturu. LogicMonitor s pokrytím pro tisíce technologií poskytuje podrobné přehledy o výkonu infrastruktury a aplikací. Komplexní monitorování Azure cloudu LM umožňuje uživatelům korelovat výkon cloudu Azure, místních i hybridních cloudových prostředků – a to vše z jedné platformy. Automatizované zjišťování prostředků, předdefinované šablony pro monitorování, prahové hodnoty předkonfigurovaných pro výstrahy a přizpůsobitelné řídicí panely, aby poskytovaly rychlost, flexibilitu a viditelnost, které musí být úspěšné.
 
 [Přejít na dokumentaci.][logicmonitor-doc]
 

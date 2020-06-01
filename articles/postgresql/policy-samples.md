@@ -1,18 +1,18 @@
 ---
 title: Předdefinované definice zásad pro Azure Database for PostgreSQL
 description: Vypíše Azure Policy předdefinované definice zásad pro Azure Database for PostgreSQL. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
-ms.date: 05/13/2020
+ms.date: 05/29/2020
 ms.topic: sample
 author: jonels-msft
 ms.author: jonels
 ms.service: postgresql
 ms.custom: subject-policy-samples
-ms.openlocfilehash: a9df316ca6b51733a4497fe4a045a2b31010184b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 148bafe65935ad358184d93cf994866ac87d24bf
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653409"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233050"
 ---
 # <a name="azure-policy-built-in-policy-definitions-for-azure-database-for-postgresql"></a>Azure Policy předdefinované definice zásad pro Azure Database for PostgreSQL
 

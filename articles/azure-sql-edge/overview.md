@@ -2,19 +2,19 @@
 title: Co je Azure SQL Edge (Preview)?
 description: Další informace o Azure SQL Edge (Preview)
 keywords: Seznámení s SQL Edgem, co je SQL Edge, Přehled SQL Edge
-services: sql-database-edge
-ms.service: sql-database-edge
+services: sql-edge
+ms.service: sql-edge
 ms.topic: conceptual
 author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 40128c68caeba793919a680ba2beeb35eb3aa3be
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: 1c70950426b2f34d94bd66d2287550e19253874c
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712804"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84233154"
 ---
 # <a name="what-is-azure-sql-edge-preview"></a>Co je Azure SQL Edge (Preview)?
 

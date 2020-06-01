@@ -3,12 +3,12 @@ title: Prostředky Azure – QnA Maker
 description: QnA Maker používá několik zdrojů Azure, z nichž každý má jiný účel. Porozumět tomu, jak se používají samostatně, vám umožní naplánovat a vybrat správnou cenovou úroveň nebo zjistit, kdy se má změnit cenová úroveň. Princip použití v kombinaci vám pomůže najít a opravit problémy, když k nim dojde.
 ms.topic: conceptual
 ms.date: 03/25/2020
-ms.openlocfilehash: 581029d2372f7a2ef704dcf02f266b66440aa246
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 916f5b9b012d233c6a28d5cbb75ea0b4e073d064
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80873901"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84236090"
 ---
 # <a name="azure-resources-for-qna-maker"></a>Prostředky Azure pro QnA Maker
 
@@ -72,7 +72,7 @@ Pomocí [aktualizace App Service v Azure Portal](../how-to/set-up-qnamaker-servi
 
 ## <a name="resource-naming-considerations"></a>Požadavky na pojmenovávání prostředků
 
-Název prostředku QnA Maker prostředku, například `qna-westus-f0-b`, se používá také k pojmenování dalších prostředků.
+Název prostředku QnA Maker prostředku, například `qna-westus-f0-b` , se používá také k pojmenování dalších prostředků.
 
 Okno Azure Portal vytvořit umožňuje vytvořit prostředek QnA Maker a vybrat cenové úrovně pro ostatní prostředky.
 
@@ -146,11 +146,11 @@ QnA Maker vytvoří několik prostředků Azure. Pokud chcete snížit úroveň 
 
 |Služba|Sdílet|Důvod|
 |--|--|--|
-|Cognitive Services|×|Není možné podle návrhu|
+|Cognitive Services|X|Není možné podle návrhu|
 |Plán služby App Service|✔|Pevné místo na disku přidělené pro plán App Service. Pokud jiné aplikace sdílející stejný plán App Service používají významné místo na disku, dojde k problémům s instancí App Service Qnamakerem.|
-|App Service|×|Není možné podle návrhu|
+|App Service|X|Není možné podle návrhu|
 |Application Insights|✔|Může být sdíleno|
-|Služba Search|✔|1. `testkb` je vyhrazeným názvem pro službu qnamakerem. nedají se použít jiní uživatelé.<br>2. pro službu Qnamakerem je vyhrazená mapa synonym podle názvu `synonym-map` .<br>3. počet publikovaných znalostní báze je omezený na úrovni služby vyhledávání. Pokud jsou dostupné bezplatné indexy, můžou je používat i jiné služby.|
+|Služba Search|✔|1. `testkb` je rezervovaný název pro službu qnamakerem; nemůže ji použít jiný.<br>2. `synonym-map` pro službu qnamakerem je vyhrazená mapa synonym podle názvu.<br>3. počet publikovaných znalostní báze je omezený na úrovni služby vyhledávání. Pokud jsou dostupné bezplatné indexy, můžou je používat i jiné služby.|
 
 ### <a name="using-a-single-cognitive-search-service"></a>Použití jedné Kognitivní hledání služby
 
@@ -182,6 +182,14 @@ Tyto klíče použijte při provádění požadavků na službu prostřednictví
 Klíčovým bodem pro vytváření a dotazování podmínek jsou opravné výrazy. Předchozí termín byl **klíč předplatného**. Pokud se vám v dokumentaci k klíčům předplatného zobrazí další dokumentace, jsou ekvivalentní klíčům koncových bodů pro vytváření a dotazování (používá se v modulu runtime).
 
 Musíte znát, k čemu má klíč přístup, správu znalostní báze nebo dotazování znalostní báze, abyste věděli, který klíč potřebujete najít.
+
+## <a name="recommended-settings-for-network-isolation"></a>Doporučené nastavení pro izolaci sítě
+
+* Chraňte prostředek služby Service od veřejného přístupu [konfigurací virtuální sítě](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?tabs=portal).
+* Chránit App Service (QnA Runtime) z veřejného přístupu:
+    * Povoluje provoz jenom z IP adres služeb rozpoznávání. Ty jsou už součástí značky služby "CognitiveServicesManagement". To se vyžaduje pro vytváření rozhraní API (vytvořit/aktualizovat KB) pro vyvolání služby App Service a aktualizaci služby Azure Search.
+    * Ujistěte se, že taky povolíte další vstupní body, jako je robot Service, QnA Maker Portal (může to být váš Corpnet) atd. předpověď přístupu k rozhraní API GenerateAnswer.
+    * Podívejte se na [Další informace o značkách služby.](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
 
 ## <a name="next-steps"></a>Další kroky
 

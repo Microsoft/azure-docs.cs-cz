@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 095f3396c483f4b8f80ab6c31ee369f2082f560c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a5af58c645720f0643e9245dc106248e36f2658f
+ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83998123"
+ms.lasthandoff: 05/31/2020
+ms.locfileid: "84237731"
 ---
 Tento rychlý Start založený na držiteli vás provede tím, že získáte odpověď ze znalostní báze.
 
@@ -37,7 +37,7 @@ Pomocí tohoto postupu nakonfigurujete příkaz post a potom si přečtěte jedn
 
 1. Na stránce **Nastavení** znalostní báze vyberte kartu **publikovat** a zobrazte tak konfiguraci používanou k vygenerování odpovědi ze znalostní báze. Zkopírujte následující informace, které se použijí v poli post.
 
-    |Name|Nastavení|Účel a hodnota|
+    |Název|Nastavení|Účel a hodnota|
     |--|--|--|
     |`POST`| `/knowledgebases/replace-with-your-knowledge-base-id/generateAnswer`|Toto je metoda HTTP a trasa pro adresu URL.|
     |`Host`|`https://YOUR-RESOURCE_NAME.azurewebsites.net/qnamaker`|Toto je hostitel adresy URL. Po zřetězení hodnoty host a post získáte úplnou adresu URL generateAnswer.|
@@ -108,7 +108,7 @@ V předchozím rychlém startu se metadata přidaly do dvou párů QnA a rozliš
 ## <a name="use-debug-query-property"></a>Použít vlastnost dotazu pro ladění
 
 > [!NOTE]
->Pro žádnou závislost nedoporučujeme používat poreperty pro ladění. Tato vlastnost byla přidána pro pomoc s produktovým týmem při řešení potíží.
+>Pro žádnou závislost nedoporučujeme používat vlastnost ladění. Tato vlastnost byla přidána pro pomoc s produktovým týmem při řešení potíží.
 
 Informace o ladění vám pomůžou pochopit, jak byla zjištěna odpověď. I když je to užitečné, není nutné. Pokud chcete vygenerovat odpověď s ladicími informacemi, přidejte `debug` vlastnost:
 
