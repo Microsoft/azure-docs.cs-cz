@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: 1242aa0e6c8255d778da55b0e574f3d12f61c381
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a6ce0f2a4d45f0a703676c76f429dbe07a4517f4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83872014"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263495"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
 
@@ -97,7 +97,7 @@ Pokud chcete tento problém vyřešit, aktualizujte instalaci [Azure CLI](/cli/a
 
 Tato chyba se může zobrazit, když se Azure Dev Spaces nedokáže připojit k serveru rozhraní API clusteru AKS.
 
-Pokud je přístup k serveru API clusteru AKS uzamčený nebo pokud máte povolené [rozsahy IP adres serveru API](../aks/api-server-authorized-ip-ranges.md) pro váš cluster AKS, musíte taky [vytvořit](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) nebo [aktualizovat](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) cluster a [Povolit další rozsahy založené na vaší oblasti](https://github.com/Azure/dev-spaces/tree/master/public-ips).
+Pokud je přístup k serveru API clusteru AKS uzamčený nebo pokud máte povolené [rozsahy IP adres serveru API](../aks/api-server-authorized-ip-ranges.md) pro váš cluster AKS, musíte taky [vytvořit](../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled) nebo [aktualizovat](../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges) cluster a [Povolit další rozsahy na základě vaší oblasti](configure-networking.md#aks-cluster-network-requirements) .
 
 Zajistěte, aby byl server rozhraní API dostupný spuštěním příkazů kubectl. Pokud server rozhraní API není k dispozici, obraťte se prosím na podporu AKS a zkuste to znovu, až Server API funguje.
 
@@ -150,7 +150,7 @@ K této chybě dochází, pokud klient Helm již nemůže komunikovat s pokladno
 
 Chcete-li tento problém vyřešit, restartujte uzly agenta v clusteru.
 
-### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Chyba "Release azds- \< identifikátor \> - \< Space \> - \< ServiceName \> se nezdařil: služby" \< ServiceName " \> již existují" nebo "přístup pro přístup k přístupu byl odepřen pro \< ServiceName \> , úložiště neexistuje nebo může vyžadovat" Docker login ".
+### <a name="error-release-azds-identifier-spacename-servicename-failed-services-servicename-already-exists-or-pull-access-denied-for-servicename-repository-does-not-exist-or-may-require-docker-login"></a>Chyba "verze azds – \<identifier\> - \<spacename\> - \<servicename\> neúspěšná: služby" \<servicename\> už existují "nebo" přístup k přístupu na vyžádání "byl odepřen pro \<servicename\> , úložiště neexistuje nebo může vyžadovat" Docker login ".
 
 K těmto chybám může docházet v případě, že ve stejném vývojovém prostoru budete kombinovat spuštěné příkazy Helm (například `helm install` , `helm upgrade` nebo `helm delete` ) s příkazy pro vývoj prostorů (například `azds up` a `azds down` ). K nim dochází, protože vývojové prostory mají svou vlastní instanci pokladny, která je v konfliktu s vaší vlastní instancí pokladny spuštěnou ve stejném vývojovém prostoru.
 
@@ -272,7 +272,7 @@ Chcete-li například zastavit a zakázat službu *Windows BranchCache* :
 * Volitelně ho můžete zakázat nastavením *Typ spuštění* na *zakázáno*.
 * Klikněte na tlačítko *OK*.
 
-### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Chyba "nenašel se žádný AzureAssignedIdentity pro pod: azds/azds-Webhook-Deployment- \< ID \> v přiřazeném stavu".
+### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Chyba "nenašel se žádný AzureAssignedIdentity pro pod: azds/azds-Webhook-nasazení- \<id\> v přiřazeném stavu"
 
 Když spustíte službu s Azure Dev Spaces v clusteru AKS s nainstalovanou spravovanými [identitami spravované identity](../aks/use-managed-identity.md) a [pod](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) , proces se může po kroku *instalace grafu* zablokovat. Pokud provedete kontrolu *azds-injektor-Webhooku* v prostoru názvů *azds* , může se zobrazit tato chyba.
 
@@ -591,7 +591,7 @@ Pokud chcete povolit Azure Dev Spaces v clusteru AKS, pro který je omezený pro
 | storage.googleapis.com | HTTP: 443 | Načtení imagí Helm/překladen|
 | azds- <guid> . <location> . azds.io | HTTPS: 443 | Pro komunikaci se službou Azure Dev Spaces back-end pro váš kontroler. Přesný plně kvalifikovaný název domény najdete v části "dataplaneFqdn" v% USERPROFILE% \. azds\settings.JSON|
 
-### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Chyba: nepovedlo se najít \< cluster clusteru \> v předplatném \< SubscriptionId \> .
+### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Chyba: nepovedlo se najít cluster \<cluster\> v předplatném. \<subscriptionId\>
 
 Tato chyba se může zobrazit v případě, že váš soubor kubeconfig cílí na jiný cluster nebo předplatné, než se snažíte použít s Azure Dev Spaces nástrojů na straně klienta. Nástroje Azure Dev Spaces na straně klienta replikují chování *kubectl*, které používá [jeden nebo více souborů kubeconfig](https://kubernetes.io/docs/tasks/access-application-cluster/configure-access-multiple-clusters/) k výběru a komunikaci s clusterem.
 

@@ -4,12 +4,12 @@ description: Získejte přehled o tom, co můžete dělat s výstrahami metrik a
 ms.date: 03/17/2020
 ms.topic: conceptual
 ms.subservice: alerts
-ms.openlocfilehash: 310d484fa1c88b2c54918fff84020a3438db9ae0
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 603df6f9b00c9261885937a3d85052b3806ff4f8
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82855040"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248817"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Principy fungování upozornění na metriky ve službě Azure Monitor
 
@@ -34,7 +34,7 @@ Můžete definovat pravidlo výstrahy metriky zadáním cílového prostředku, 
 
 Od okamžiku vytvoření pravidla výstrahy se monitor spouští každých 1 min a hledá metriky za posledních 5 minut a zkontroluje, jestli průměr těchto hodnot překračuje 70. Pokud je splněna podmínka, průměrná procentuální hodnota procesoru za posledních 5 minut překračuje 70, pravidlo výstrahy aktivuje aktivované oznámení. Pokud jste nakonfigurovali akci e-mail nebo webový zavěšení ve skupině akcí přidružené k pravidlu výstrahy, obdržíte i aktivované oznámení.
 
-Pokud v jednom pravidle používáte více podmínek, pravidlo "and" tyto podmínky pohromadě.  To znamená, že výstraha se aktivuje, když se všechny podmínky ve výstraze vyhodnotí jako pravdivé, a vyřešte, když jedna z podmínek už není pravdivá. A příkladem tohoto typu výstrahy bude upozornění, když je procesor vyšší než 90% a délka fronty je více než 300 položek. 
+Pokud v jednom pravidle používáte více podmínek, pravidlo "and" tyto podmínky pohromadě. To znamená, že výstraha se aktivuje, když se všechny podmínky v pravidle výstrahy vyhodnotí jako true, a vyřešte, pokud jedna z podmínek už není pravdivá. Příkladem tohoto typu pravidla výstrahy je monitorování virtuálního počítače Azure a upozornění, když je "procentuální procesor větší než 90%" a "délka fronty je více než 300 položek".
 
 ### <a name="alert-rule-with-dynamic-condition-type"></a>Pravidlo upozornění s dynamickým typem podmínky
 
@@ -129,9 +129,9 @@ Tato funkce se v současné době podporuje pro metriky platforem (ne pro vlastn
 | Služba | Veřejné Azure | Státní správa | Čína |
 |:--------|:--------|:--------|:--------|
 | Virtuální počítače  | **Ano** | Ne | Ne |
-| Databáze systému SQL Server | **Ano** | **Ano** | No |
-| Elastické fondy SQL serveru | **Ano** | **Ano** | No |
-| Hraniční zařízení datového boxu | **Ano** | **Ano** | No |
+| Databáze systému SQL Server | **Ano** | **Ano** | Ne |
+| Elastické fondy SQL serveru | **Ano** | **Ano** | Ne |
+| Hraniční zařízení datového boxu | **Ano** | **Ano** | Ne |
 
 Můžete určit rozsah monitorování jedním pravidlem výstrahy metriky jedním ze tří způsobů. Například u virtuálních počítačů můžete obor zadat jako:  
 

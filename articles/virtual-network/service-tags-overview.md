@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: fbf63a8082bbfabd3b5e4a4d62afbe63d18c983c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: ea756b965a2539886e695585c9b5f5034eac7684
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234495"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263184"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
@@ -62,7 +62,7 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **AzureDataExplorerManagement** | Správa Azure Průzkumník dat. | Příchozí | Ne | Ne |
 | **AzureDataLake** | Azure Data Lake Storage Gen1. | Odchozí | No | Ano |
 | **AzureDevSpaces** | Azure Dev Spaces. | Odchozí | Ne | Ne |
-| **AzureEventGrid** | Azure Event Grid. <br/><br/>*Poznámka:* Tato značka se zabývá Azure Event Gridmi koncovými body v USA (střed) – jih, USA – východ, USA – východ 2, USA – západ 2 a USA – střed. | Obojí | Ne | Ne |
+| **AzureEventGrid** | Azure Event Grid. | Obojí | Ne | Ne |
 | **AzureFrontDoor. front-end** <br/> **AzureFrontDoor. back-end** <br/> **AzureFrontDoor.FirstParty**  | Přední dveře Azure. | Obojí | Ne | Ne |
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Poznámka:* Tato značka má závislost na značkách **azureactivedirectory selhala**, **AzureFrontDoor. front.** a **AzureFrontDoor. FirstParty** . | Odchozí | Ne | Ne |
 | **AzureIoTHub** | IoT Hub Azure. | Odchozí | Ne | Ne |
@@ -82,12 +82,12 @@ Ve výchozím nastavení značky služby odráží rozsahy celého cloudu. Někt
 | **CognitiveServicesManagement** | Rozsah adres pro přenos pro Azure Cognitive Services. | Obojí | Ne | Ne |
 | **DataFactory**  | Azure Data Factory | Obojí | Ne | Ne |
 | **DataFactoryManagement** | Provoz správy pro Azure Data Factory. | Odchozí | Ne | Ne |
-| **Dynamics365ForMarketingEmail** | Rozsah adres pro marketingovou e-mailovou službu Dynamics 365. | Odchozí | Ano | No |
+| **Dynamics365ForMarketingEmail** | Rozsah adres pro marketingovou e-mailovou službu Dynamics 365. | Odchozí | Ano | Ne |
 | **ElasticAFD** | Elastické přední dveře Azure. | Obojí | Ne | Ne |
 | **Centrum událostí** | Event Hubs Azure. | Odchozí | Ano | Ano |
 | **GatewayManager** | Provoz správy pro nasazení vyhrazená pro Azure VPN Gateway a Application Gateway. | Příchozí | Ne | Ne |
 | **GuestAndHybridManagement** | Azure Automation a konfigurace hostů. | Odchozí | No | Ano |
-| **HDInsight** | Azure HDInsight. | Příchozí | Ano | No |
+| **HDInsight** | Azure HDInsight. | Příchozí | Ano | Ne |
 | **Internet** | Adresní prostor IP adres, který je mimo virtuální síť a dosažitelný veřejným internetem.<br/><br/>Rozsah adres zahrnuje [veřejný adresní prostor IP adres ve vlastnictví Azure](https://www.microsoft.com/download/details.aspx?id=41653). | Obojí | Ne | Ne |
 | **LogicApps** | Logic Apps. | Obojí | Ne | Ne |
 | **LogicAppsManagement** | Provoz správy pro Logic Apps. | Příchozí | Ne | Ne |

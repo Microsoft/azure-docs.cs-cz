@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
-ms.openlocfilehash: 0383a512dfb7c2bb1ae2422b9ade1e3c7387a70c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85021af94c3cc88f45b391690d7481d5498c40a9
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478302"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84246879"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>Řešení potíží s konfiguračním serverem
 
@@ -43,15 +43,17 @@ Zdrojový počítač se registruje s konfiguračním serverem při instalaci age
     4. Při řešení problémů se sítí zkuste registraci zopakovat podle pokynů v části [registrace zdrojového počítače s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
 6. Pokud se nedaří najít **požadavek post typu String (7) – nelze se připojit k serveru** , vyhledejte ve stejném souboru protokolu požadavek na řetězec **: (60)-partnerský certifikát nelze pomocí daných certifikátů certifikační autority ověřit**. K této chybě může dojít, protože vypršela platnost certifikátu konfiguračního serveru nebo zdrojový počítač nepodporuje protokoly TLS 1,0 nebo novější. K tomu může dojít také v případě, že brána firewall blokuje komunikaci TLS mezi zdrojovým a konfiguračním serverem. Pokud se řetězec najde: 
-    1. Pokud ho chcete vyřešit, připojte se k IP adrese konfiguračního serveru pomocí webového prohlížeče na zdrojovém počítači. Použijte identifikátor URI https:\/ \/<IP adresa\>konfiguračního serveru: 443/. Ujistěte se, že zdrojový počítač může získat přístup ke konfiguračnímu serveru prostřednictvím portu 443.
+    1. Pokud ho chcete vyřešit, připojte se k IP adrese konfiguračního serveru pomocí webového prohlížeče na zdrojovém počítači. Použijte identifikátor URI https: \/ \/<IP adresa konfiguračního serveru \> : 443/. Ujistěte se, že zdrojový počítač může získat přístup ke konfiguračnímu serveru prostřednictvím portu 443.
     2. Ověřte, jestli je potřeba přidat nebo odebrat pravidla firewallu na zdrojovém počítači, aby mohl zdrojový počítač komunikovat s konfiguračním serverem. Z důvodu nejrůznějšího softwaru brány firewall, který se může používat, nemůžeme zobrazit seznam všech požadovaných konfigurací brány firewall. Pokud chcete odblokovat problémy s připojením, spolupracujte se správci vaší sítě.
     3. Zajistěte, aby se z antivirového softwaru vyloučily složky uvedené v [Site Recovery složky vyloučené z antivirových programů](vmware-azure-set-up-source.md#azure-site-recovery-folder-exclusions-from-antivirus-program) .  
     4. Po vyřešení těchto problémů zkuste registraci zopakovat podle pokynů v části [registrace zdrojového počítače s konfiguračním serverem](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server).
 
-7. Pokud je v systému Linux hodnota platformy v <INSTALLATION_DIR\>/etc/drscout.conf poškozená, registrace se nezdařila. Chcete-li tento problém identifikovat, otevřete soubor/var/log/ua_install. log. Vyhledejte **konfiguraci přerušování řetězce, protože VM_PLATFORM hodnota je buď null, nebo není VMware/Azure**. Platforma by měla být nastavená buď na **VMware** , nebo na **Azure**. Pokud je soubor drscout. conf poškozený, doporučujeme, abyste [agenta mobility odinstalovali](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) a pak znovu přeinstalovali agenta mobility. Pokud se odinstalace nezdařila, proveďte následující kroky: a. Otevřete soubor Installation_Directory/Uninstall.sh a zakomentujte volání funkce **StopServices** .
+7. Pokud je v systému Linux hodnota platformy v <INSTALLATION_DIR \> /etc/drscout.conf poškozená, registrace se nezdařila. Chcete-li tento problém identifikovat, otevřete soubor/var/log/ua_install. log. Vyhledejte **konfiguraci přerušování řetězce, protože VM_PLATFORM hodnota je buď null, nebo není VMware/Azure**. Platforma by měla být nastavená buď na **VMware** , nebo na **Azure**. Pokud je soubor drscout. conf poškozený, doporučujeme, abyste [agenta mobility odinstalovali](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) a pak znovu přeinstalovali agenta mobility. Pokud se odinstalace nezdařila, proveďte následující kroky: a. Otevřete soubor Installation_Directory/Uninstall.sh a zakomentujte volání funkce **StopServices** .
     b. Otevřete soubor Installation_Directory/VX/bin/Uninstall.sh a zakomentujte volání funkce **stop_services** .
     c. Otevřete soubor Installation_Directory/FX/Uninstall.sh a zakomentujte celý oddíl, který se pokouší zastavit službu FX.
     d. [Odinstalujte](vmware-physical-manage-mobility-service.md#uninstall-mobility-service) agenta mobility. Po úspěšné odinstalaci restartujte systém a pak zkuste agenta mobility znovu nainstalovat.
+
+8. Zajistěte, aby se pro uživatelský účet nepovolilo Multi-Factor Authentication. Azure Site Recovery pro uživatelský účet nyní nepodporuje službu Multi-Factor Authentication. Zaregistrujte konfigurační server bez povoleného uživatelského účtu pro službu Multi-Factor Authentication.  
 
 ## <a name="installation-failure-failed-to-load-accounts"></a>Chyba instalace: Nepodařilo se načíst účty.
 
@@ -97,7 +99,7 @@ Na zdrojovém počítači spusťte následující příkaz:
 
 Nastavení | Podrobnosti
 --- | ---
-Využití | UnifiedAgentConfigurator. exe/CSEndPoint <IP adresa\> konfiguračního serveru/PassphraseFilePath <cesta k souboru s heslem\>
+Využití | UnifiedAgentConfigurator. exe/CSEndPoint < IP adresa konfiguračního serveru \> /PassphraseFilePath < cesta k souboru s heslem\>
 Protokoly konfigurace agenta | Nacházející se pod%ProgramData%\ASRSetupLogs\ASRUnifiedAgentConfigurator.log.
 /CSEndPoint | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
 /PassphraseFilePath |  Povinné. Umístění přístupového hesla. Použijte jakoukoli platnou cestu UNC nebo místní cestu k souboru.
@@ -112,7 +114,7 @@ Na zdrojovém počítači spusťte následující příkaz:
 
 Nastavení | Podrobnosti
 --- | ---
-Využití | /usr/local/ASR/Vx/bin CD<br /><br /> UnifiedAgentConfigurator.sh-i <IP adresa\> konfiguračního serveru-P <cesta k souboru hesla\>
+Využití | /usr/local/ASR/Vx/bin CD<br /><br /> UnifiedAgentConfigurator.sh-i <IP adresa konfiguračního serveru \> -P <cesta k souboru hesla\>
 -i | Povinný parametr. Určuje IP adresu konfiguračního serveru. Použijte jakoukoli platnou IP adresu.
 -P |  Povinné. Úplná cesta k souboru, ve kterém je heslo uloženo. Použijte libovolnou platnou složku.
 
@@ -203,7 +205,7 @@ Obvykle je to kvůli chybě s portem 443. Pomocí následujících kroků odblok
 
 Chcete-li ověřit, zda může hlavní cílový agent vytvořit relaci protokolu TCP pro IP adresu konfiguračního serveru, vyhledejte v protokolech hlavního cílového agenta trasování podobné následujícímu:
 
-TCP \<nahraďte IP adresou cs>:52739 \<nahraďte IP adresou cs>:443 SYN_SENT 
+TCP \<Replace IP with CS IP here> : 52739 \<Replace IP with CS IP here> : 443 SYN_SENT 
 
 TCP 192.168.1.40:52739 192.168.1.40:443 SYN_SENT//nahraďte IP adresou CS.
 

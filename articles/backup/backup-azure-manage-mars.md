@@ -4,12 +4,12 @@ description: Naučte se spravovat a monitorovat zálohy agenta Microsoft Azure R
 ms.reviewer: srinathv
 ms.topic: conceptual
 ms.date: 10/07/2019
-ms.openlocfilehash: a88ec4dc9283114e06eed424172dbb958850c2e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0afe83edc638cba4cd14cc27b84a98937175fc86
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025097"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248596"
 ---
 # <a name="manage-microsoft-azure-recovery-services-mars-agent-backups-by-using-the-azure-backup-service"></a>Správa záloh agenta Microsoft Azure Recovery Services (MARS) pomocí služby Azure Backup
 
@@ -22,7 +22,7 @@ Když upravíte zásady zálohování, můžete přidat nové položky, odebrat 
 - **Přidat položky** tuto možnost použijte pouze v případě, že chcete přidat nové položky k zálohování. Chcete-li odebrat existující položky, použijte možnost **Odebrat položky** nebo **Nastavení vyloučení** .  
 - **Odebráním položek** pomocí této možnosti odeberete položky, které se mají zálohovat.
   - Použijte **Nastavení vyloučení** pro odebrání všech položek ve svazku namísto **Odebrání položek**.
-  - Vymazání všech výběrů ve svazku způsobí, že se staré zálohy položek uchovávají jako nastavení uchovávání v době poslední zálohy bez rozsahu úprav.
+  - Vymazání všech výběrů ve svazku způsobí, že se původní zálohy položek uchovávají v závislosti na nastavení uchování v době poslední zálohy bez rozsahu pro úpravy.
   - Když se tyto položky znovu vyberou, navedou se k prvnímu úplnému zálohování a nové změny zásad se pro staré zálohy neaplikují.
   - Když se vybere celý svazek, zachová se minulá záloha bez jakéhokoli oboru pro úpravu zásad uchovávání informací.
 - **Nastavení vyloučení** Tato možnost slouží k vyloučení určitých položek, které se mají zálohovat.
@@ -125,7 +125,7 @@ Existují dva způsoby, jak zabránit ochraně zálohování souborů a složek:
 
     ![Zastavte naplánované zálohování.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. Zobrazí se výzva k zadání bezpečnostního kódu PIN (osobní identifikační číslo), které musíte vygenerovat ručně. Abyste to mohli udělat, nejdřív se přihlaste k Azure Portal.
-5. Přejít na**vlastnosti** > **Nastavení** >  **trezoru Recovery Services**.
+5. Přejít na vlastnosti nastavení **trezoru Recovery Services**  >  **Settings**  >  **Properties**.
 6. V části **bezpečnostní kód PIN**vyberte **Generovat**. Zkopírujte tento kód PIN. PIN kód je platný jenom po dobu pěti minut.
 7. V konzole pro správu vložte kód PIN a pak vyberte **OK**.
 
@@ -156,7 +156,7 @@ Pokud jste zastavili ochranu při zachování dat a rozhodli jste se obnovit och
 
 K šifrování a dešifrování dat se používá přístupové heslo při zálohování nebo obnovení místního nebo místního počítače pomocí agenta MARS do systému nebo z Azure. Pokud jste heslo ztratili nebo zapomněli, můžete heslo znovu vygenerovat (Pokud je váš počítač pořád zaregistrovaný v trezoru Recovery Services a konfigurace zálohování), postupujte podle následujících kroků:
 
-- V konzole agenta Mars přejděte do **podokna** > akce**změnit vlastnosti** >. Pak přejdete na **kartu šifrování**.<br>
+- V konzole agenta Mars přejděte do **podokna akce**  >  **změnit vlastnosti** >. Pak přejdete na **kartu šifrování**.<br>
 - Zaškrtněte políčko **změnit heslo** .<br>
 - Zadejte nové heslo nebo klikněte na **vygenerovat heslo**.
 - Kliknutím na tlačítko **Procházet** uložte nové heslo.

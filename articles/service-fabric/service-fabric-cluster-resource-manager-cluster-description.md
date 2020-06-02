@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a9699eae17657e96b38b3bccc95e8f84326efbb3
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258769"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259469"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Popište Cluster Service Fabric pomocí Správce prostředků clusteru.
 Funkce Správce prostředků clusteru v Azure Service Fabric poskytuje několik mechanismů pro popis clusteru:
@@ -83,9 +83,9 @@ Následující diagram znázorňuje tři domény upgradu rozložené ve třech d
 
 Existují specialisty a nevýhody pro velký počet domén upgradu. Více domén upgradu znamená, že každý krok upgradu je podrobněji podrobnější a má vliv na menší počet uzlů nebo služeb. Méně služeb se musí pohybovat v čase, což vede k menšímu množství změn v systému. To má za následek zlepšení spolehlivosti, protože k menšímu množství služeb dochází při potížích zavedených během upgradu. Další domény upgradu také znamenají, že potřebujete méně dostupnou vyrovnávací paměť na jiných uzlech, abyste mohli zpracovat dopad upgradu. 
 
-Pokud máte například pět domén upgradu, budou mít uzly v každé z nich zpracování přibližně 20 procent provozu. Pokud potřebujete vzít v úvahu upgrade upgradovací domény, musí se tato zátěže obvykle nacházet někde. Vzhledem k tomu, že máte čtyři zbývající domény pro upgrade, musí mít každý z nich místo pro 5 procent celkového provozu. Víc domén upgradu znamená, že pro uzly v clusteru potřebujete méně vyrovnávací paměti. 
+Pokud máte například pět domén upgradu, budou mít uzly v každé z nich zpracování přibližně 20 procent provozu. Pokud potřebujete vzít v úvahu upgrade upgradovací domény, musí se tato zátěže obvykle nacházet někde. Vzhledem k tomu, že máte čtyři zbývající domény pro upgrade, musí mít každý z nich místo 25 procent celkového provozu. Víc domén upgradu znamená, že pro uzly v clusteru potřebujete méně vyrovnávací paměti.
 
-Vezměte v úvahu, jestli jste místo toho měli 10 upgradovacích domén. V takovém případě by každá upgradovací doména mohla zpracovávat pouze přibližně 10 procent celkového provozu. V případě kroků upgradu přes cluster by každá doména musela mít místo pouze přibližně 1,1% celkového provozu. Další domény upgradu obvykle umožňují spouštět uzly s vyšším využitím, protože potřebujete méně rezervovanou kapacitu. Totéž platí pro domény selhání.  
+Vezměte v úvahu, jestli jste místo toho měli 10 upgradovacích domén. V takovém případě by každá upgradovací doména mohla zpracovávat pouze přibližně 10 procent celkového provozu. Když provedete kroky upgradu v rámci clusteru, musí mít každá doména prostor jenom pro přibližně 11 procent celkového provozu. Další domény upgradu obvykle umožňují spouštět uzly s vyšším využitím, protože potřebujete méně rezervovanou kapacitu. Totéž platí pro domény selhání.  
 
 Nevýhodou s mnoha doménami upgradu je, že inovace mají za následek delší dobu. Service Fabric čeká krátkou dobu po dokončení upgradovací domény a provede kontrolu před zahájením upgradu dalšího. Tato zpoždění umožňují zjistit problémy zavedené upgradem před pokračováním upgradu. Kompromisy jsou přijatelné, protože zabraňují chybovým změnám v tom, aby ovlivnily příliš velkou část služby najednou.
 
@@ -363,7 +363,7 @@ Pro podporu těchto řazení konfigurací Service Fabric obsahuje značky, kter�
 ### <a name="built-in-node-properties"></a>Předdefinované vlastnosti uzlu
 Service Fabric definuje některé výchozí vlastnosti uzlů, které se dají použít automaticky, takže je nemusíte definovat. Výchozí vlastnosti definované na jednotlivých uzlech jsou **NodeType** a **Node**. 
 
-Můžete například zapsat omezení umístění jako `"(NodeType == NodeType03)"`. **NodeType** je běžně používaná vlastnost. To je užitečné, protože odpovídá 1:1 s typem počítače. Každý typ počítače odpovídá typu úlohy v tradiční n-vrstvé aplikaci.
+Můžete například zapsat omezení umístění jako `"(NodeType == NodeType03)"` . **NodeType** je běžně používaná vlastnost. To je užitečné, protože odpovídá 1:1 s typem počítače. Každý typ počítače odpovídá typu úlohy v tradiční n-vrstvé aplikaci.
 
 <center>
 
@@ -447,7 +447,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 New-ServiceFabricService -ApplicationName $applicationName -ServiceName $serviceName -ServiceTypeName $serviceType -Stateful -MinReplicaSetSize 3 -TargetReplicaSetSize 3 -PartitionSchemeSingleton -PlacementConstraint "HasSSD == true && SomeProperty >= 4"
 ```
 
-Pokud jsou všechny uzly NodeType01 platné, můžete také vybrat tento typ uzlu s omezením `"(NodeType == NodeType01)"`.
+Pokud jsou všechny uzly NodeType01 platné, můžete také vybrat tento typ uzlu s omezením `"(NodeType == NodeType01)"` .
 
 Omezení umístění služby je možné během běhu aktualizovat dynamicky. Pokud potřebujete, můžete přesunout službu v rámci clusteru, přidat a odebrat požadavky a tak dále. Service Fabric zajistí, že služba zůstane v provozu a dostupná i v případě, že jsou provedeny tyto typy změn.
 

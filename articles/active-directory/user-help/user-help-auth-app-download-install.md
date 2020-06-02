@@ -9,24 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 18c34e270f1849ef8d8d692b68567eab7d103b13
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d4053d4979861146705489dc02e628f03f3c4d85
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741374"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266215"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Stažení a instalace aplikace Microsoft Authenticator
 
 >[!Important]
->Tento obsah je určený pro uživatele. Pokud jste správce, najdete další informace o nastavení a správě vašeho prostředí Azure Active Directory (Azure AD) v [dokumentaci k Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+>Tento obsah je určený pro uživatele. Pokud jste správce, můžete najít další informace o tom, jak nastavit a spravovat prostředí služby Azure Active Directory (Azure AD) v [dokumentaci pro správu pro Azure Active Directory](https://docs.microsoft.com/azure/active-directory).
+>
+> Pokud máte problémy s přihlášením k účtu, přečtěte si téma [nemůžete se přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429) , kde najdete nápovědu.  Navíc můžete získat další informace o tom, co dělat, když se při pokusu o přihlášení ke účet Microsoft zobrazí zpráva ["tato účet Microsoft neexistují"](https://support.microsoft.com/help/13811) .
 
-Aplikace Microsoft Authenticator vám pomůže přihlásit se k vašim účtům, pokud použijete dvojúrovňové ověřování. Dvojúrovňové ověřování vám pomůže zajistit bezpečnější přístup k účtům, zejména při prohlížení citlivých informací. Vzhledem k tomu, že hesla můžou být zapomenutá, odcizená nebo ohrožená, je dvoustupňové ověřování další krok zabezpečení, který pomáhá chránit váš účet tím, že je těžší, aby ostatní uživatelé mohli rušit.
-
-Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi které patří:
+Aplikace Microsoft Authenticator vám pomůže přihlásit se k vašim účtům, pokud použijete dvojúrovňové ověřování. Dvojúrovňové ověřování vám pomůže bezpečněji používat vaše účty, protože hesla můžou být zapomenutá, odcizená nebo ohrožená. Dvojúrovňové ověřování používá druhý faktor, jako je váš telefon, aby bylo obtížnější ostatním lidem přerušit váš účet. Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi které patří:
 
 - **Dvojúrovňové ověřování.** Standardní metoda ověřování, kde jeden z faktorů je vaše heslo. Po přihlášení pomocí uživatelského jména a hesla můžete buď schválit oznámení, nebo zadat poskytnutý ověřovací kód.
 
@@ -34,13 +34,9 @@ Aplikaci Microsoft Authenticator můžete použít několika způsoby, mezi kter
 
 - **Generování kódu.** Jako generátor kódu pro všechny ostatní účty, které podporují ověřovací aplikace.
 
-> [!Important]
-> Aplikace Microsoft Authenticator pracuje s jakýmkoli účtem, který používá dvojúrovňové ověřování a podporuje standardy založené na čase na základě hesla (TOTP).
->
-> Vaše organizace může vyžadovat, abyste použili ověřovací aplikaci pro přihlášení a přístup k datům a dokumentům vaší organizace. I když se vaše uživatelské jméno může zobrazit v aplikaci, účet není ve skutečnosti nastavený tak, aby fungoval jako metoda ověřování, dokud nedokončíte proces registrace. Další informace najdete v tématu [Přidání pracovního nebo školního účtu](user-help-auth-app-add-work-school-account.md).
-> 
-> [!NOTE]
-> Pokud máte problémy s přihlášením k účtu, přečtěte si téma [nemůžete se přihlásit k vašemu účet Microsoft](https://support.microsoft.com/help/12429) , kde najdete nápovědu.  Získejte další informace o tom, co dělat, když se při pokusu o přihlášení ke účet Microsoft zobrazí zpráva ["tato účet Microsoft neexistují"](https://support.microsoft.com/help/13811) .
+Ověřovatel funguje s libovolným účtem, který používá dvojúrovňové ověřování a podporuje standardy pro jednorázové heslo (TOTP).
+
+Vaše organizace může vyžadovat, abyste pomocí ověřovací aplikace přihlásili a měli přístup k datům a dokumentům vaší organizace. I když se v aplikaci zobrazí vaše uživatelské jméno, účet není nastaven jako metoda ověřování, dokud nedokončíte registraci. Další informace najdete v tématu [Přidání pracovního nebo školního účtu](user-help-auth-app-add-work-school-account.md).
 
 ## <a name="download-and-install-the-app"></a>Stažení a instalace aplikace
 
@@ -55,7 +51,7 @@ Nainstalujte nejnovější verzi Microsoft Authenticator aplikace na základě v
 
 ## <a name="next-steps"></a>Další kroky
 
-Po stažení a instalaci aplikace je nutné přidat různé účty. Další informace naleznete v tématu:
+Po stažení a instalaci aplikace se podívejte na [Přehled aplikace ověřovatel](user-help-auth-app-overview.md) , kde se dozvíte víc. Další možnosti instalace najdete v těchto tématech:
 
 - **Ověřovací aplikace** Stáhněte a použijte ověřovací aplikaci k získání oznámení o schválení nebo náhodně generovaného kódu schválení pro dvoustupňové ověřování nebo resetování hesla. Podrobné pokyny k nastavení a používání aplikace Microsoft Authenticator najdete v tématu [Nastavení bezpečnostních údajů pro použití ověřovací aplikace](security-info-setup-auth-app.md).
 

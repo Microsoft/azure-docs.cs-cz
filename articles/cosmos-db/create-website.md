@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 03/11/2019
 ms.author: sngun
-ms.openlocfilehash: 2306dbe234e171ac613c33458df1990b767637df
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d1080abb35e556e97c34e77fdce4d553c169ee9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79128372"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266861"
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Nasazení Azure Cosmos DB a Azure App Service Web Apps pomocí šablony Azure Resource Manager
 V tomto kurzu se dozvíte, jak použít šablonu Azure Resource Manager k nasazení a integraci [Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) webové aplikace a ukázkové webové aplikace.
@@ -36,8 +36,8 @@ Než budete postupovat podle pokynů v tomto kurzu, ujistěte se, že máte pře
 ## <a name="step-1-download-the-template-files"></a><a id="CreateDB"></a>Krok 1: stažení souborů šablon
 Pojďme začít stažením souborů šablon, které tento kurz vyžaduje.
 
-1. Stáhněte si [účet vytvořit Azure Cosmos DB, Web Apps a nasaďte ukázkovou šablonu ukázkové aplikace](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) do místní složky (například C:\Azure Cosmos DBTemplates). Tato šablona nasadí účet Azure Cosmos DB, webovou aplikaci App Service a webovou aplikaci.  Také automaticky nakonfiguruje webovou aplikaci tak, aby se připojovala k účtu Azure Cosmos DB.
-2. Stáhněte si šablonu [vytvořit účet Azure Cosmos DB a Web Apps ukázkové](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json) šablony do místní složky (například C:\Azure Cosmos DBTemplates). Tato šablona nasadí účet Azure Cosmos DB, App Service webovou aplikaci, a upraví nastavení aplikace webu tak, aby bylo možné snadno obcházet informace Azure Cosmos DB připojení, ale nezahrnuje webovou aplikaci.  
+1. Stáhněte si **účet vytvořit Azure Cosmos DB, Web Apps a nasaďte ukázkovou ukázkovou aplikaci** ( `https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json` ) šablony do místní složky (například C:\Azure Cosmos DBTemplates). Tato šablona nasadí účet Azure Cosmos DB, webovou aplikaci App Service a webovou aplikaci.  Také automaticky nakonfiguruje webovou aplikaci tak, aby se připojovala k účtu Azure Cosmos DB.
+2. Stáhněte si šablonu **vytvořit účet Azure Cosmos DB a Web Apps Sample** ( `https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json` ) do místní složky (například C:\Azure Cosmos DBTemplates). Tato šablona nasadí účet Azure Cosmos DB, App Service webovou aplikaci, a upraví nastavení aplikace webu tak, aby bylo možné snadno obcházet informace Azure Cosmos DB připojení, ale nezahrnuje webovou aplikaci.  
 
 <a id="Build"></a>
 
@@ -51,12 +51,12 @@ Teď nasadíme vaši první šablonu.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com), klikněte na nový a vyhledejte "Template Deployment".
     ![Snímek obrazovky uživatelského rozhraní nasazení šablony](./media/create-website/TemplateDeployment1.png)
-2. Vyberte Template Deployment položku a klikněte na **vytvořit** ![snímek obrazovky uživatelského rozhraní nasazení šablony.](./media/create-website/TemplateDeployment2.png)
+2. Vyberte Template deployment položku a klikněte na **vytvořit** ![ snímek obrazovky uživatelského rozhraní nasazení šablony.](./media/create-website/TemplateDeployment2.png)
 3. Klikněte na **Upravit šablonu**, vložte obsah souboru šablony DocDBWebsiteTodo. JSON a klikněte na **Uložit**.
    ![Snímek obrazovky uživatelského rozhraní nasazení šablony](./media/create-website/TemplateDeployment3.png)
 4. Klikněte na **Upravit parametry**, zadejte hodnoty pro každý z povinných parametrů a klikněte na **OK**.  Funkce má následující parametry:
    
-   1. NÁZEV_WEBU: Určuje App Service název webové aplikace a slouží k vytvoření adresy URL, kterou používáte pro přístup k webové aplikaci (například pokud zadáte "mydemodocdbwebapp", adresa URL, ke které přistupujete do webové aplikace, je `mydemodocdbwebapp.azurewebsites.net`).
+   1. NÁZEV_WEBU: Určuje App Service název webové aplikace a slouží k vytvoření adresy URL, kterou používáte pro přístup k webové aplikaci (například pokud zadáte "mydemodocdbwebapp", adresa URL, ke které přistupujete do webové aplikace, je `mydemodocdbwebapp.azurewebsites.net` ).
    2. HOSTINGPLANNAME: Určuje název plánu hostování App Service, který se má vytvořit.
    3. Umístění: Určuje umístění Azure, ve kterém se mají vytvořit prostředky Azure Cosmos DB a webové aplikace.
    4. DATABASEACCOUNTNAME: Určuje název účtu Azure Cosmos DB, který se má vytvořit.   
@@ -69,7 +69,7 @@ Teď nasadíme vaši první šablonu.
    ![Snímek obrazovky uživatelského rozhraní nasazení šablony](./media/create-website/TemplateDeployment6.png)
 7. Po dokončení nasazení se otevře podokno skupina prostředků.
    ![Snímek obrazovky s podoknem skupiny prostředků](./media/create-website/TemplateDeployment7.png)  
-8. Chcete-li použít aplikaci, přejděte na adresu URL webové aplikace (v příkladu výše bude adresa URL `http://mydemodocdbwebapp.azurewebsites.net`).  Zobrazí se následující webová aplikace:
+8. Chcete-li použít aplikaci, přejděte na adresu URL webové aplikace (v příkladu výše bude adresa URL `http://mydemodocdbwebapp.azurewebsites.net` ).  Zobrazí se následující webová aplikace:
    
    ![Ukázková aplikace todo](./media/create-website/image2.png)
 9. Pokračujte a vytvořte ve webové aplikaci několik úkolů a pak se vraťte do podokna Skupina prostředků v Azure Portal. V seznamu prostředky klikněte na prostředek účtu Azure Cosmos DB a pak klikněte na **Průzkumník dat**.
@@ -88,7 +88,7 @@ Teď nasadíme druhou šablonu.  Tato šablona je užitečná k tomu, abyste vid
 
 1. Na webu [Azure Portal](https://portal.azure.com)klikněte na nový a vyhledejte "Template Deployment".
     ![Snímek obrazovky uživatelského rozhraní nasazení šablony](./media/create-website/TemplateDeployment1.png)
-2. Vyberte Template Deployment položku a klikněte na **vytvořit** ![snímek obrazovky uživatelského rozhraní nasazení šablony.](./media/create-website/TemplateDeployment2.png)
+2. Vyberte Template deployment položku a klikněte na **vytvořit** ![ snímek obrazovky uživatelského rozhraní nasazení šablony.](./media/create-website/TemplateDeployment2.png)
 3. Klikněte na **Upravit šablonu**, vložte obsah souboru šablony DocDBWebSite. JSON a klikněte na **Uložit**.
    ![Snímek obrazovky uživatelského rozhraní nasazení šablony](./media/create-website/TemplateDeployment3.png)
 4. Klikněte na **Upravit parametry**, zadejte hodnoty pro každý z povinných parametrů a klikněte na **OK**.  Funkce má následující parametry:
@@ -106,7 +106,7 @@ Teď nasadíme druhou šablonu.  Tato šablona je užitečná k tomu, abyste vid
    ![Snímek obrazovky uživatelského rozhraní nasazení šablony](./media/create-website/TemplateDeployment6.png)
 7. Po dokončení nasazení se otevře podokno skupina prostředků.
    ![Snímek obrazovky s podoknem skupiny prostředků](./media/create-website/TemplateDeployment7.png)  
-8. Klikněte na prostředek webové aplikace v seznamu prostředky a potom klikněte na snímek obrazovky **Nastavení** ![aplikace pro skupinu prostředků.](./media/create-website/TemplateDeployment9.png)  
+8. Klikněte na prostředek webové aplikace v seznamu prostředky a potom klikněte na snímek obrazovky **nastavení aplikace** ![ pro skupinu prostředků.](./media/create-website/TemplateDeployment9.png)  
 9. Všimněte si, jak jsou k dispozici nastavení aplikace pro koncový bod Azure Cosmos DB a všechny hlavní klíče Azure Cosmos DB.
 
     ![Snímek obrazovky s nastavením aplikace](./media/create-website/TemplateDeployment10.png)  
@@ -115,7 +115,7 @@ Teď nasadíme druhou šablonu.  Tato šablona je užitečná k tomu, abyste vid
 <a name="NextSteps"></a>
 
 ## <a name="next-steps"></a>Další kroky
-Blahopřejeme! Nasadili jste Azure Cosmos DB, App Service webové aplikace a ukázkovou webovou aplikaci pomocí šablon Azure Resource Manager.
+Gratulujeme! Nasadili jste Azure Cosmos DB, App Service webové aplikace a ukázkovou webovou aplikaci pomocí šablon Azure Resource Manager.
 
 * Pokud se chcete dozvědět víc o Azure Cosmos DB, klikněte [sem](https://azure.microsoft.com/services/cosmos-db/).
 * Další informace o Azure App Service Web Apps získáte kliknutím [sem](https://go.microsoft.com/fwlink/?LinkId=325362).

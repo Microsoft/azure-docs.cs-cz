@@ -7,17 +7,26 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/13/2020
-ms.openlocfilehash: 6961b7bd94c9b3fe70365055851c488efa2cbeca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 193aa168cff436512dc2044d0986df508fd6bfa9
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480007"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248732"
 ---
 # <a name="azure-monitor-logs-connector-for-logic-apps-and-flow"></a>Konektor protokolů Azure Monitor pro Logic Apps a flow
 [Azure Logic Apps](/azure/logic-apps/) a [Power](https://ms.flow.microsoft.com) Automata umožňují vytvářet automatizované pracovní postupy s využitím stovek akcí pro nejrůznější služby. Konektor protokolů Azure Monitor umožňuje vytvářet pracovní postupy, které načítají data z pracovního prostoru Log Analytics nebo Application Insights aplikace v Azure Monitor. Tento článek popisuje akce, které konektor obsahuje, a poskytuje návod k sestavení pracovního postupu pomocí těchto dat.
 
 Můžete například vytvořit aplikaci logiky, která bude používat data protokolu Azure Monitor v e-mailovém oznámení ze sady Office 365, vytvořit chybu v Azure DevOps nebo odeslat zprávu o časové rezervě.  Pracovní postup můžete aktivovat jednoduchým plánem nebo z nějaké akce v připojené službě, jako je například doručení e-mailu nebo. 
+
+## <a name="connector-limits"></a>Omezení konektoru
+Konektor Azure Monitorch protokolů má tato omezení:
+* Maximální velikost dat: 16 MB
+* Maximální velikost odpovědi na dotaz 100 MB
+* Maximální počet záznamů: 500 000
+* Maximální časový limit dotazu 110 sekunda.
+
+V závislosti na velikosti dat a použitém dotazu může konektor dosáhnout svého limitu a selhání. Tyto případy můžete obejít při úpravách opakování triggeru, aby se spouštěly častěji a aby se dotazoval méně dat. Dotazy, které agreguje vaše data, můžete použít k vrácení méně záznamů a sloupců.
 
 ## <a name="actions"></a>Akce
 Následující tabulka popisuje akce, které jsou součástí konektoru protokolů Azure Monitor. Oba umožňují spustit dotaz protokolu pro Log Analytics pracovní prostor nebo Application Insights aplikaci. Rozdíl je v způsobu, jakým jsou vrácena data.

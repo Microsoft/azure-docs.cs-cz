@@ -1,6 +1,7 @@
 ---
 title: Použití Node. js k dotazování databáze
-description: Jak pomocí Node. js vytvořit program, který se připojí k databázi v Azure SQL Database a provede dotaz pomocí příkazů T-SQL.
+description: Jak pomocí Node. js vytvořit program, který se připojí k databázi ve službě Azure SQL Database nebo Azure SQL Managed instance, a dotazuje se pomocí příkazů T-SQL.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -9,19 +10,19 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-ms.date: 03/25/2019
+ms.date: 05/29/2020
 ms.custom: seo-javascript-september2019, seo-javascript-october2019, sqldbrb=2 
-ms.openlocfilehash: b666e053c16e4dcac50505e3d36012f2a8677eb2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6860aa07d7547df6eeebf5d35fa9a921f0f9dada
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189359"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267371"
 ---
-# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database"></a>Rychlý Start: použití Node. js k dotazování databáze v Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-nodejs-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití Node. js k dotazování databáze ve službě Azure SQL Database nebo spravované instanci Azure SQL
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-V tomto rychlém startu pomocí Node. js se připojíte k databázi v Azure SQL Database a použijete příkazy T-SQL k dotazování dat.
+V tomto rychlém startu použijete Node. js k připojení k databázi a dotazování na data.
 
 ## <a name="prerequisites"></a>Požadavky
 

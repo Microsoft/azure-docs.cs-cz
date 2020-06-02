@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: fd10468e823201bfa67aaf7c570071bd075ec4ac
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 99204657b7604250826ff0a4a870ad92fdb4df32
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80420825"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249140"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -32,7 +32,7 @@ Hyper-V bez Virtual Machine Manager | V Azure můžete provést zotavení po hav
 
 **Server** | **Požadavky** | **Zobrazí**
 --- | --- | ---
-Hyper-V (běžící bez Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (včetně instalace jádra serveru), Windows Server 2012 R2 s nejnovějšími aktualizacemi | Pokud jste už nakonfigurovali Windows Server 2012 R2 s/nebo SCVMM 2012 R2 s Azure Site Recovery a plánujete upgradovat operační systém, postupujte podle pokynů v [dokumentaci.](upgrade-2012R2-to-2016.md) 
+Hyper-V (běžící bez Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (včetně instalace jádra serveru), Windows Server 2012 R2 s nejnovějšími aktualizacemi | Pokud jste už nakonfigurovali Windows Server 2012 R2 s/nebo SCVMM 2012 R2 s Azure Site Recovery a plánujete upgradovat operační systém, postupujte podle pokynů v [dokumentaci.](upgrade-2012R2-to-2016.md) <br/><br/> Poznámka: navrácení služeb po obnovení není podporované pro verzi jádra serveru Windows Server 2019.
 Hyper-V (běžící s Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Pokud se používá Virtual Machine Manager, hostitelé Windows serveru 2019 by měli být spravováni v Virtual Machine Manager 2019. Podobně by hostitelé systému Windows Server 2016 měli být spravováni v Virtual Machine Manager 2016.<br/><br/> Poznámka: navrácení služeb po obnovení do alternativního umístění není podporováno pro hostitele systému Windows Server 2019.
 
 
@@ -64,7 +64,7 @@ Síť hostitele: IPv4 | Ano | Ano
 Síť hostitele: IPv6 | Ne | Ne
 Síť virtuálních počítačů hosta: seskupování síťových adaptérů | Ne | Ne
 Síť virtuálních počítačů hosta: IPv4 | Ano | Ano
-Síť virtuálních počítačů hosta: IPv6 | Ne | Ano
+Síť virtuálních počítačů hosta: IPv6 | No | Ano
 Host VM Network: statická IP adresa (Windows) | Ano | Ano
 Síť virtuálních počítačů hosta: statická IP adresa (Linux) | Ne | Ne
 Host VM Network: více síťových karet | Ano | Ano
@@ -92,7 +92,7 @@ Akcelerované síťové služby | Ne | Ne
 
 **Storage** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | --- 
-NFS | Není k dispozici | Není k dispozici
+NFS | NA | NA
 SMB 3.0 | Ano | Ano
 SÍŤ SAN (ISCSI) | Ano | Ano
 Multipath (multi-Path). Testováno pomocí:<br></br> Microsoft DSM, EMC PowerPath 5,7 SP4, EMC PowerPath DSM pro CLARiiON | Ano | Ano
@@ -101,15 +101,15 @@ Multipath (multi-Path). Testováno pomocí:<br></br> Microsoft DSM, EMC PowerPat
 
 **Storage** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
-FORMÁTU | Není k dispozici | Není k dispozici
+FORMÁTU | NA | NA
 VHD/VHDX | Ano | Ano
 Virtuální počítač generace 2 | Ano | Ano
 ROZHRANÍ EFI/UEFI<br></br>Migrovaný virtuální počítač v Azure se automaticky převede na spouštěcí virtuální počítač se systémem BIOS. Na virtuálním počítači by měl běžet jenom Windows Server 2012 a novější. Disk s operačním systémem by měl mít až pět oddílů nebo méně a velikost disku s operačním systémem by měla být menší než 300 GB.| Ano | Ano
 Disk sdíleného clusteru | Ne | Ne
 Zašifrovaný disk | Ne | Ne
-NFS | Není k dispozici | Není k dispozici
+NFS | NA | NA
 SMB 3.0 | Ne | Ne
-RDM | Není k dispozici | Není k dispozici
+RDM | NA | NA
 Disk >1 TB | Ano, až 4 095 GB | Ano, až 4 095 GB
 Disk: 4K logický a fyzický sektor | Nepodporováno: Obecná 1/fin 2 | Nepodporováno: Obecná 1/fin 2
 Disk: 4K fyzický sektor a logický sektor 512-byte | Ano |  Ano
@@ -135,7 +135,7 @@ Objekty blob bloku | Ne | Ne
 Premium Storage | Ano | Ano
 Služba import/export | Ne | Ne
 Účty Azure Storage s povolenou bránou firewall | Ano. Pro cílové úložiště a mezipaměť. | Ano. Pro cílové úložiště a mezipaměť.
-Úprava účtu úložiště | Ne. Cílový Azure Storage účet se po povolení replikace nedá změnit. Chcete-li upravit, zakázat a znovu povolit zotavení po havárii. | Ne
+Úprava účtu úložiště | No. Cílový Azure Storage účet se po povolení replikace nedá změnit. Chcete-li upravit, zakázat a znovu povolit zotavení po havárii. | Ne
 
 
 ## <a name="azure-compute-features"></a>Funkce Azure COMPUTE

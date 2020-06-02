@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: 1e7eaf49fb8b62259b8c619c89edffd629dfde7f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa778aa395d013bd644f69886ea5ebc2399e6f54
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685515"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265246"
 ---
 # <a name="use-id-broker-preview-for-credential-management"></a>Použití zprostředkovatele ID (Preview) pro správu přihlašovacích údajů
 
@@ -47,7 +47,7 @@ Funkce zprostředkovatel ID přidá do clusteru jeden další virtuální počí
 ![Možnost povolení zprostředkovatele ID](./media/identity-broker/identity-broker-enable.png)
 
 ### <a name="using-azure-resource-manager-templates"></a>Použití šablon Azure Resource Manageru
-Pokud přidáte novou roli s názvem `idbrokernode` s následujícími atributy do výpočetního profilu šablony, cluster se vytvoří s povoleným uzlem ID zprostředkovatele:
+Pokud přidáte novou roli `idbrokernode` s názvem s následujícími atributy do výpočetního profilu šablony, cluster se vytvoří s povoleným uzlem ID zprostředkovatele:
 
 ```json
 .
@@ -92,7 +92,7 @@ Pokud přidáte novou roli s názvem `idbrokernode` s následujícími atributy 
 
 ## <a name="ssh-access-without-a-password-hash-in-azure-ad-ds"></a>Přístup SSH bez hodnoty hash hesla v Azure služba AD DS
 
-Jakmile je zprostředkovatel ID povolený, budete pořád potřebovat hodnotu hash hesla uloženou v Azure služba AD DS pro scénáře SSH s doménovým účtem. Pro SSH na virtuální počítač připojený k doméně nebo pro spuštění `kinit` příkazu musíte zadat heslo. 
+Jakmile je zprostředkovatel ID povolený, budete pořád potřebovat hodnotu hash hesla uloženou v Azure služba AD DS pro scénáře SSH s doménovým účtem. Pro SSH na virtuální počítač připojený k doméně nebo pro spuštění příkazu musíte `kinit` zadat heslo. 
 
 Ověřování SSH vyžaduje, aby byla hodnota hash k dispozici v Azure služba AD DS. Pokud chcete použít SSH jenom pro scénáře správy, můžete vytvořit jenom jeden účet jenom pro Cloud a použít ho ke clusteru SSH. Jiní uživatelé stále můžou používat Ambari nebo nástroje HDInsight (například modul plug-in IntelliJ), aniž by byl k dispozici hodnota hash hesla v Azure služba AD DS.
 
@@ -100,7 +100,7 @@ Ověřování SSH vyžaduje, aby byla hodnota hash k dispozici v Azure služba A
 
 V instalačním programu služby ID se můžou vlastní aplikace a klienti, kteří se připojují k bráně, aktualizovat tak, aby nejdřív získaly požadovaný token OAuth. Pomocí kroků v tomto [dokumentu](https://docs.microsoft.com/azure/storage/common/storage-auth-aad-app) můžete získat token s následujícími informacemi:
 
-*   Identifikátor URI prostředku OAuth:https://hib.azurehdinsight.net 
+*   Identifikátor URI prostředku OAuth:`https://hib.azurehdinsight.net` 
 * AppId: 7865c1d2-F040-46cc-875f-831a1ef6a28a
 *   Oprávnění: (název: cluster. v/v, ID: 8f89faa0-ffef-4007-974d-4989b39ad77d)
 

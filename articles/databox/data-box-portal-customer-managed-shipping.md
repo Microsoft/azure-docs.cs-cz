@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 2933eb216b7faed7b28fb53d79fec2f50bc4458d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c26f50d858d316cab0d4533187494e023cea5071
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749414"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266164"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-in-the-azure-portal"></a>Použití samoobslužného expedice pro Azure Data Box v Azure Portal
 
@@ -29,7 +29,7 @@ Samostatně spravovaná dodávka je k dispozici jako možnost při [objednání 
 * Singapur
 * Jižní Korea
 
-## <a name="use-self-managed-shipping"></a>Použití samoobslužného expedice
+## <a name="use-self-managed-shipping"></a>Použití samoobslužné expedice
 
 Když umístíte Data Box pořadí, můžete vybrat možnost samostatně spravovaná dodávka.
 
@@ -41,7 +41,7 @@ Když umístíte Data Box pořadí, můžete vybrat možnost samostatně spravov
 3. Po zadání dodací adresy ji budete muset ověřit a dokončit objednávku.
    ![Samostatně spravovaná dodávka](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. Po přípravě zařízení můžete naplánovat vyzvednutí.
+4. Po přípravě zařízení a obdržení e-mailových oznámení můžete naplánovat vyzvednutí.
 
    V pořadí Azure Data Box klikněte na **Přehled** a pak vyberte **Naplánovat vyzvednutí**.
 
@@ -57,7 +57,7 @@ Když umístíte Data Box pořadí, můžete vybrat možnost samostatně spravov
 
    ![Zobrazení autorizačního kódu](media\data-box-portal-customer-managed-shipping\data-box-portal-auth-01b.png)
 
-   Poznamenejte si tento **autorizační kód**. Podle požadavků na zabezpečení, v době plánování a vyřazení, je nutné, abyste si poznamenali jméno osoby, která se dostala k výběru a vyřazení.
+   Poznamenejte si tento **autorizační kód**. Podle požadavků na zabezpečení je při plánování plánování nutné předložit jméno osoby, která by byla přijata k výběru.
 
    Je také potřeba zadat podrobnosti o tom, kdo bude mít k dispozici datové centrum pro účely vyzvednutí. Vy nebo kontaktní bod musí mít ID fotografie schválené státní správou, která bude ověřena v datacentru.
 

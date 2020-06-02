@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 77cba087ec578a478f4de9c8eebec3eb1e8d41b2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 51f583b946d6f5a18325e77cfe12404daab83d22
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022397"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84268040"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -570,7 +570,7 @@ Nezapomeňte přidat skripty Data Factory do kanálu CI/CD před a po úloze nas
 
 Pokud nemáte nakonfigurovaný Git, můžete k propojeným šablonám přistupovat pomocí **šablony pro export ARM** v seznamu **šablon ARM** .
 
-## <a name="hotfix-production-branch"></a>Produkční větev s opravou hotfix
+## <a name="hotfix-production-environment"></a>Produkční prostředí s opravou hotfix
 
 Pokud nasadíte továrnu do produkčního prostředí a zjistíte chybu, kterou je potřeba opravit hned, ale nemůžete nasadit aktuální větev spolupráce, možná budete muset nasadit opravu hotfix. Tento přístup je známý jako rychlý opravový technický nebo QFE.
 
@@ -611,7 +611,7 @@ Pokud používáte integraci Git s datovou továrnou a máte kanál CI/CD, kter�
 - Data Factory tak, že neumožňuje vybírání položek potvrzení nebo selektivního publikování prostředků. Publikování budou zahrnovat všechny změny provedené v datové továrně.
 
     - Entity Data Factory jsou vzájemně závislé. Například triggery závisejí na kanálech a kanály závisí na datových sadách a dalších kanálech. Selektivní publikování podmnožiny prostředků by mohlo vést k neočekávanému chování a chybám.
-    - Ve výjimečných případech když potřebujete selektivní publikování, zvažte použití opravy hotfix. Další informace najdete v tématu [produkční větev hotfix](#hotfix-production-branch).
+    - Ve výjimečných případech když potřebujete selektivní publikování, zvažte použití opravy hotfix. Další informace najdete v tématu [provozní prostředí oprav hotfix](#hotfix-production-environment).
 
 -   Nemůžete publikovat z privátních větví.
 

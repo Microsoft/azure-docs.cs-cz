@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 71d28a19316bf1b618ec9008a5e96a503687b202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bec5e68b334cada7f83c5dbeb9ba50203835d770
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81681961"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265314"
 ---
 # <a name="how-to-use-the-microsoft-smooth-streaming-plugin-for-the-adobe-open-source-media-framework"></a>Jak používat modul plug-in Microsoft Smooth Streaming pro rozhraní Adobe Open Source Media Framework  
 ## <a name="overview"></a>Přehled
@@ -43,7 +43,7 @@ Modul plug-in podporuje načítání a přehrávání obsahu Smooth Streaming na
 * Přepínání vícejazyčného jazyka pomocí integrovaných rozhraní API OSMF
 * Maximální velikost výběru kvality přehrávání s integrovanými rozhraními API OSMF
 * Titulky titulků na postranení s modulem plug-in OSMF titulků
-* Adobe&reg; Flash&reg; Player 11,4 nebo vyšší.
+* Adobe &reg; Flash &reg; Player 11,4 nebo vyšší.
 * Tato verze podporuje pouze OSMF 2,0.
 
 ## <a name="supported-features-and-known-issues"></a>Podporované funkce a známé problémy
@@ -328,10 +328,10 @@ balíček
 }
 
 ## <a name="strobe-media--playback-with-the-ss-odmf-dynamic-plugin"></a>Přehrávání nevracení médií pomocí dynamického modulu plug-in ODMF SS
-Smooth Streaming pro dynamický modul plug-in OSMF je kompatibilní s [přehráváním médií (SMP)](http://osmf.org/strobe_mediaplayback.html). K přidání Smooth Streaming přehrávání obsahu do SMP můžete použít modul plug-in SS pro OSMF. Uděláte to tak, že zkopírujete soubor "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" pod webový server pro načtení HTTP pomocí následujících kroků:
+Smooth Streaming pro dynamický modul plug-in OSMF je kompatibilní s [přehráváním médií (SMP)](https://sourceforge.net/adobe/smp/home/Strobe%20Media%20Playback/). K přidání Smooth Streaming přehrávání obsahu do SMP můžete použít modul plug-in SS pro OSMF. Uděláte to tak, že zkopírujete soubor "MSAdaptiveStreamingPlugin-v 1.0.3-OSMF 2.0. swf" pod webový server pro načtení HTTP pomocí následujících kroků:
 
 1. Projděte si [stránku nastavení přehrávání média impulzu](http://osmf.org/dev/2.0gm/setup.html). 
-2. Nastavte src na zdroj Smooth Streaming (např. http:\//devplatem.vo.msecnd.NET/Sintel/Sintel_H264.ISM/manifest). 
+2. Nastavte src na zdroj Smooth Streaming (např. http: \/ /devplatem.vo.msecnd.NET/Sintel/Sintel_H264.ISM/manifest). 
 3. Proveďte požadované změny konfigurace a klikněte na náhled a aktualizovat.
    
    **Poznámka:** Webový server obsahu potřebuje platný soubor crossdomain. XML. 
@@ -380,8 +380,8 @@ Smooth Streaming pro dynamický modul plug-in OSMF je kompatibilní s [přehráv
         </embed>
         </object>
         </html>
-2. Uložte stránku HTML a publikujte ji na webový server. Přejděte na publikovanou webovou stránku pomocí internetového prohlížeče povoleného&reg; v přehrávači Flash (Internet Explorer, Chrome, Firefox atd.).
-3. Užívejte Smooth Streaming obsahu uvnitř Adobe&reg; Flash&reg; Playeru.
+2. Uložte stránku HTML a publikujte ji na webový server. Přejděte na publikovanou webovou stránku pomocí &reg; internetového prohlížeče povoleného v přehrávači Flash (Internet Explorer, Chrome, Firefox atd.).
+3. Užívejte Smooth Streaming obsahu uvnitř Adobe &reg; Flash &reg; Playeru.
 
 Další informace o obecném vývoji OSMF najdete na oficiální [stránce OSMF Development](http://osmf.org/resources.html).
 

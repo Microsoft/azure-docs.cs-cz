@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: dfd8051c7fc803d57a14cd740a830b8f6b63d9ac
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4ad793ee27d00359dd63f3394b8d7fd4a70b297f
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195106"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266674"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 
@@ -49,26 +49,22 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 
 ### <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
-| Příznak | Podrobnosti |
+| Funkce | Podrobnosti |
 | ---| --- |
 | Nové generace hardwaru řady Fsv2-Series a M-Series| Informace najdete v tématu [hardwarové generace](service-tiers-vcore.md#hardware-generations).|
 | Urychlené obnovení databáze s izolovanými databázemi a elastickými fondy | Informace najdete v tématu [urychlení obnovení databáze](../accelerated-database-recovery.md).|
-|Přibližný počet DISTINCT|Informace najdete v tématu [přibližný počet jedinečných](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#approximate-query-processing).|
-|Režim dávky na Rowstore (pod úrovní kompatibility 150)|Informace najdete v tématu [režim dávky v Rowstore](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#batch-mode-on-rowstore).|
 | Zjišťování a klasifikace dat  |Informace najdete v tématu [Azure SQL Database a Azure synapse Analytics data discovery & klasifikací](data-discovery-and-classification-overview.md).|
 | Úlohy elastické databáze | Informace najdete v tématu [vytváření, konfigurace a Správa elastických úloh](elastic-jobs-overview.md). |
 | Elastické dotazy | Informace najdete v tématu [Přehled elastického dotazu](elastic-query-overview.md). |
 | Elastické transakce | [Distribuované transakce v cloudových databázích](elastic-transactions-overview.md) |
-|Zpětná vazba o udělení paměti (režim řádku) (v části úroveň kompatibility 150)|Informace najdete v článku o [zpětné vazbě přidělení paměti (režim řádku)](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#row-mode-memory-grant-feedback).|
 | Editor dotazů v Azure Portal |Informace najdete v tématu [použití Editoru dotazů SQL Azure Portal k připojení a dotazování dat](connect-query-portal.md).|
 | Služba R Services/strojové učení s izolovanými databázemi a elastickými fondy |Informace najdete v tématu [Machine Learning Services v Azure SQL Database](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services?view=sql-server-2017#machine-learning-services-in-azure-sql-database).|
 |SQL Analytics|Informace najdete v tématu [Azure SQL Analytics](../../azure-monitor/insights/azure-sql.md).|
-|Odložená kompilace proměnné tabulky (pod úrovní kompatibility 150)|Informace naleznete v tématu [odložená kompilace proměnné tabulky](https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing#table-variable-deferred-compilation).|
 | &nbsp; |
 
 ### <a name="azure-sql-managed-instance"></a>[Spravovaná instance Azure SQL](#tab/managed-instance)
 
-| Příznak | Podrobnosti |
+| Funkce | Podrobnosti |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Fondy instancí</a> | Pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvoření přihlášení na úrovni instance pomocí příkazu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit přihlášení z externího poskytovatele</a> . |

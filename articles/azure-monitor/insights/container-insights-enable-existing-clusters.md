@@ -3,12 +3,12 @@ title: Monitorování nasazeného clusteru AKS (Azure Kubernetes Service) | Micr
 description: Naučte se, jak povolit monitorování clusteru Azure Kubernetes Service (AKS) s Azure Monitor pro kontejnery, které jsou už ve vašem předplatném nasazené.
 ms.topic: conceptual
 ms.date: 09/12/2019
-ms.openlocfilehash: 8589ea71b5c7affadc61d5e4543f734a660ab543
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b7450f5eb132dab9961de712d8cddb33bd2c521
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79275448"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264195"
 ---
 # <a name="enable-monitoring-of-azure-kubernetes-service-aks-cluster-already-deployed"></a>Povolení monitorování clusteru Azure Kubernetes Service (AKS) již nasazeného
 
@@ -19,7 +19,7 @@ Můžete povolit monitorování clusteru AKS, který je už nasazený, pomocí j
 * Azure CLI
 * Terraform
 * [Z Azure monitor](#enable-from-azure-monitor-in-the-portal) nebo [přímo z clusteru AKS](#enable-directly-from-aks-cluster-in-the-portal) v Azure Portal
-* S [poskytnutou šablonou Azure Resource Manager](#enable-using-an-azure-resource-manager-template) pomocí rutiny `New-AzResourceGroupDeployment` Azure POWERSHELL nebo pomocí Azure CLI.
+* S [poskytnutou šablonou Azure Resource Manager](#enable-using-an-azure-resource-manager-template) pomocí rutiny Azure PowerShell `New-AzResourceGroupDeployment` nebo pomocí Azure CLI.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
@@ -27,7 +27,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 ## <a name="enable-using-azure-cli"></a>Povolit pomocí Azure CLI
 
-Následující krok umožňuje monitorovat cluster AKS pomocí Azure CLI. V tomto příkladu nemusíte pro každý vytvořit nebo zadat existující pracovní prostor. Tento příkaz zjednodušuje proces vytvořením výchozího pracovního prostoru ve výchozí skupině prostředků v rámci předplatného clusteru AKS, pokud ještě neexistuje v oblasti.  Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace-\<GUID\<>> oblasti *.  
+Následující krok umožňuje monitorovat cluster AKS pomocí Azure CLI. V tomto příkladu nemusíte pro každý vytvořit nebo zadat existující pracovní prostor. Tento příkaz zjednodušuje proces vytvořením výchozího pracovního prostoru ve výchozí skupině prostředků v rámci předplatného clusteru AKS, pokud ještě neexistuje v oblasti.  Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace- \<GUID> - \<Region> *.  
 
 ```azurecli
 az aks enable-addons -a monitoring -n MyExistingManagedCluster -g MyExistingManagedClusterRG  
@@ -41,7 +41,7 @@ provisioningState       : Succeeded
 
 ### <a name="integrate-with-an-existing-workspace"></a>Integrace s existujícím pracovním prostorem
 
-Pokud místo toho budete chtít provést integraci s existujícím pracovním prostorem, proveďte následující kroky, abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního prostoru `--workspace-resource-id` požadovaného pro daný parametr, a pak spuštěním příkazu povolíte doplněk monitorování v zadaném pracovním prostoru.  
+Pokud místo toho budete chtít provést integraci s existujícím pracovním prostorem, proveďte následující kroky, abyste nejdřív identifikovali úplné ID prostředku Log Analytics pracovního prostoru požadovaného pro daný `--workspace-resource-id` parametr, a pak spuštěním příkazu povolíte doplněk monitorování v zadaném pracovním prostoru.  
 
 1. Vypíše seznam všech předplatných, ke kterým máte přístup, pomocí následujícího příkazu:
 
@@ -110,7 +110,7 @@ Pokud chcete povolit monitorování clusteru AKS v Azure Portal z Azure Monitor,
 
 3. Na stránce **monitor – kontejnery** vyberte **nemonitorované clustery**.
 
-4. V seznamu nemonitorovaných clusterů Najděte kontejner v seznamu a klikněte na **Povolit**.   
+4. V seznamu nemonitorovaných clusterů Najděte kontejner v seznamu a klikněte na **Povolit**.
 
 5. Pokud máte existující pracovní prostor Log Analytics v rámci stejného předplatného jako cluster, vyberte v rozevíracím seznamu na stránce **připojování k Azure monitor for Containers** .  
     Seznam předchází výchozí pracovní prostor a umístění, do kterého je kontejner AKS nasazený v rámci předplatného.
@@ -167,7 +167,7 @@ Pokud nejste obeznámeni s konceptem nasazení prostředků pomocí šablony, p�
 
 * [Nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../../azure-resource-manager/templates/deploy-cli.md)
 
-Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.59 nebo novější. Pro identifikaci vaší verze spusťte `az --version`. Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud se rozhodnete používat rozhraní příkazového řádku Azure, musíte nejdřív nainstalovat a používat rozhraní příkazového řádku (CLI). Musíte používat Azure CLI verze 2.0.59 nebo novější. Pro identifikaci vaší verze spusťte `az --version` . Pokud potřebujete nainstalovat nebo upgradovat rozhraní příkazového řádku Azure CLI, přečtěte si téma [instalace Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 ### <a name="create-and-execute-a-template"></a>Vytvoření a spuštění šablony
 

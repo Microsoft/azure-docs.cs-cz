@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab, bonova
 ms.date: 12/14/2018
-ms.openlocfilehash: 74975c050ef77c02e8912ce6cdd9404ac5bba019
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c750912e942d5dadeb97e6675427f1730912704a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054729"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267575"
 ---
 # <a name="quickstart-restore-a-database-to-an-azure-sql-managed-instance-with-ssms"></a>Rychlý Start: obnovení databáze do spravované instance Azure SQL pomocí SSMS
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -96,6 +96,7 @@ V SQL Server Management Studio (SSMS) postupujte podle těchto kroků a obnovte 
 
 ## <a name="next-steps"></a>Další kroky
 
+- Pokud v kroku 5 dojde k ukončení obnovení databáze s ID zprávy 22003, vytvořte nový záložní soubor obsahující kontrolní součet zálohy a znovu proveďte obnovení. Viz [Povolení nebo zakázání kontrolního součtu zálohování během zálohování nebo obnovení](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server).
 - Řešení potíží se zálohováním na adresu URL najdete v tématu [SQL Server služby Backup na adresu URL osvědčené postupy a řešení potíží](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).
 - Přehled možností připojení aplikace najdete v tématu [připojení aplikací k spravované instanci SQL](connect-application-instance.md).
 - Dotazování pomocí oblíbených nástrojů nebo jazyků najdete v tématu [rychlý Start: Azure SQL Database připojení a dotazování](../database/connect-query-content-reference-guide.md).

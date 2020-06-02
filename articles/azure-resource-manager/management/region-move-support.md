@@ -4,14 +4,14 @@ description: Zobrazí seznam typů prostředků Azure, které se dají přesunou
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 01/20/2020
+ms.date: 05/31/2020
 ms.author: raynew
-ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f59bbb4711d79fdcb59e39378c25c031ac68af8
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760704"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249055"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Podpora přesunu prostředků Azure napříč oblastmi
 
@@ -186,7 +186,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | služba |  Ano | 
+> | služba |  Ano (pomocí šablony) <br/><br/> [Přesunutí API Management napříč oblastmi](../../api-management/api-management-howto-migrate.md). | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
@@ -200,7 +200,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | apiapps | Ne | 
+> | apiapps | Ano (pomocí šablony)<br/><br/> [Přesunutí aplikace App Service do jiné oblasti](../../app-service/manage-move-across-regions.md) | 
 > | appidentities | Ne | 
 > | brány | Ne | 
 
@@ -217,7 +217,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | automationaccounts | Ne | 
+> | automationaccounts | Ano (pomocí šablony) <br/><br/> [Použití geografické replikace](../../automation/automation-managing-data.md#geo-replication-in-azure-automation) |  
 > | automationaccounts/konfigurace | Ne | 
 > | automationaccounts/Runbooky | Ne | 
 
@@ -249,7 +249,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | batchaccounts | Ne |
+> | batchaccounts |  Ano (pomocí šablony)<br/><br/> [Přesunutí účtu Batch mezi oblasti](../../batch/best-practices.md#moving-batch-accounts-across-regions) |
 
 ## <a name="microsoftbatchai"></a>Microsoft. BatchAI
 
@@ -355,6 +355,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
 > | accounts | Ne | 
+> | Cognitive Search | Ano (pomocí šablony)<br/><br/> [Přesunutí služby Kognitivní hledání do jiné oblasti](../../search/search-howto-move-across-regions.md)
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
@@ -588,6 +589,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
 > | kontrolery | Ne | 
+> | Cluster AKS | Ne<br/><br/> [Přečtěte si další informace](../../dev-spaces/faq.md#can-i-migrate-my-aks-cluster-with-azure-dev-spaces-to-another-region) o přesunu do jiné oblasti.
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. DevTestLab
 
@@ -636,7 +638,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
 > | existující | Ne |  
-> | obsažené | Ne | 
+> | obsažené | Ano (se šablonou)<br/><br/> [Přesunutí oboru názvů centra událostí do jiné oblasti](../../event-hubs/move-across-regions.md) | 
 
 ## <a name="microsoftgenomics"></a>Microsoft. genomika
 
@@ -713,7 +715,15 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | iotapps |  Ne |  
+> | checknameavailability |  Ne
+> | zapisovací | Ne
+
+## <a name="microsoftiothub"></a>Microsoft. IoTHub
+
+> [!div class="mx-tableFixed"]
+> | Typ prostředku | Přesunutí oblasti | 
+> | ------------- | ----------- |
+> |  iothub |  Ano (klonovat centrum) <br/><br/> [Klonování služby IoT Hub do jiné oblasti](../../iot-hub/iot-hub-how-to-clone.md)
 
 ## <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
 
@@ -897,7 +907,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | expressrouteports | Ne | 
 > | frontdoors | Ne | 
 > | frontdoorwebapplicationfirewallpolicies | Ne | 
-> | loadbalancers | Ano – základní SKU<br>No – standardní SKU | Ano – základní SKU<br> -Ano standardní SKU |
+> | loadbalancers | Ano <br/><br/> Existující konfiguraci můžete exportovat jako šablonu a šablonu nasadit do nové oblasti. Přečtěte si, jak přesunout [externí](../..//load-balancer/move-across-regions-external-load-balancer-portal.md) nebo [interní](../../load-balancer/move-across-regions-internal-load-balancer-portal.md) Nástroj pro vyrovnávání zatížení. |
 > | localnetworkgateways |  Ne | 
 > | natgateways |  Ne | 
 > | networkintentpolicies |  Ne | 
@@ -913,7 +923,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > | privatednszones / virtualnetworklinks |  Ne |  
 > | privateendpoints | Ne | 
 > | privatelinkservices | Ne | 
-> | publicipaddresses | Ano – základní SKU<br>No – standardní SKU | Ano – základní SKU<br>No – standardní SKU |
+> | publicipaddresses | Ano<br/><br/> Existující konfiguraci veřejné IP adresy můžete exportovat jako šablonu a nasadit šablonu do nové oblasti. [Přečtěte si další informace](../../virtual-network/move-across-regions-publicip-portal.md) o přesunu veřejné IP adresy. |
 > | publicipprefixes | Ne | 
 > | routefilters | Ne | 
 > | routetables |  Ne | 
@@ -1001,7 +1011,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | trezory | Ne. [Zakázat trezor a znovu vytvořit](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) pro Site Recovery  | 
+> | trezory | No. [Zakázat trezor a znovu vytvořit](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions) pro Site Recovery  | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay
@@ -1142,7 +1152,7 @@ Přejít na obor názvů poskytovatele prostředků:
 > [!div class="mx-tableFixed"]
 > | Typ prostředku | Přesunutí oblasti | 
 > | ------------- | ----------- |
-> | storageaccounts | Ano | 
+> | storageaccounts | Ano<br/><br/> [Přesunutí účtu Azure Storage do jiné oblasti](../../storage/common/storage-account-move.md) | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 

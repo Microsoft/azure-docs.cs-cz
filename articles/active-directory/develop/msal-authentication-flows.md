@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: ce81af90baeeda519f1b56d1e10a46923ebd22c2
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 47978317b1ae914e952b764def854d8a011293e0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772127"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266606"
 ---
 # <a name="authentication-flows"></a>Toky ověřování
 
@@ -43,7 +43,7 @@ V závislosti na tom, jak je váš klient sestavený, může použít jeden (neb
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Tok autorizačního kódu](v2-oauth2-auth-code-flow.md) | | x | x | x | x|  
 |[Implicitní tok](v2-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |
-|[Hybridní tok OIDC](v2-protocols-oidc.md#get-access-tokens)| | x  | |          |            x   |
+|[Hybridní tok OIDC](v2-protocols-oidc.md#protocol-diagram-access-token-acquisition)| | x  | |          |            x   |
 |[Aktualizovat uplatnění tokenu](v2-oauth2-auth-code-flow.md#refresh-the-access-token) | aktualizovat token | x | x | x| |
 |[Tok On-Behalf-Of](v2-oauth2-on-behalf-of-flow.md) | přístupový token| x| x| x| |
 |[Tok kódu zařízení](v2-oauth2-device-code.md) | | x| x| x| |
@@ -87,7 +87,7 @@ V předchozím diagramu aplikace:
 1. Požádá o autorizační kód, který je uplatněn pro přístupový token.
 2. Pomocí přístupového tokenu zavolá webové rozhraní API.
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
 - Autorizační kód můžete použít jenom jednou pro uplatnění tokenu. Nepokoušejte se získat token několikrát se stejným autorizačním kódem (výslovně ho zakázal standardní specifikace protokolu). Pokud kód přiřadíte několikrát, nebo protože si nejste vědomi, že pro vás to architektura provede, zobrazí se následující chyba:`AADSTS70002: Error validating credentials. AADSTS54005: OAuth2 Authorization code was already redeemed, please retry with a new valid code or use an existing refresh token.`
 

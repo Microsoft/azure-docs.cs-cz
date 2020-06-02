@@ -3,12 +3,12 @@ title: Datový model Azure Monitor protokolů
 description: V tomto článku se dozvíte informace o Azure Monitor Log Analytics datových modelů pro Azure Backup data.
 ms.topic: conceptual
 ms.date: 02/26/2019
-ms.openlocfilehash: 78d43e4c65f31b47f4b6070f071c932692cee883
-ms.sourcegitcommit: a3c6efa4d4a48e9b07ecc3f52a552078d39e5732
+ms.openlocfilehash: ba50e10eee61c571249a9b99c7e3b53d74474382
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83707985"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248919"
 ---
 # <a name="log-analytics-data-model-for-azure-backup-data"></a>Log Analytics datový model pro Azure Backup data
 
@@ -168,7 +168,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s úlohou.
 | ResourceProvider |Text |Poskytovatel prostředků, pro který se shromažďují data Například Microsoft. RecoveryServices |
 | ResourceType |Text |Typ prostředku, pro který se shromažďují data Například trezory |
 
-### <a name="policy"></a>Zásada
+### <a name="policy"></a>Zásady
 
 Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 
@@ -204,7 +204,7 @@ Tato tabulka poskytuje podrobnosti o polích souvisejících s zásadami.
 | YearlyRetentionDaysOfTheMonth_s |Text ||Data v měsíci vybraná pro roční uchování |
 | SynchronisationFrequencyPerDay_s |Celé číslo |v2|Počet pokusů za den, kdy je záloha souborů synchronizovaná pro SC DPM a MABS |
 | DiffBackupFormat_s |Text |v2|Formát pro rozdílové zálohování SQL v zálohování virtuálních počítačů Azure |
-| DiffBackupTime_s |Time |v2|Čas rozdílového zálohování SQL v zálohování virtuálních počítačů Azure|
+| DiffBackupTime_s |Čas |v2|Čas rozdílového zálohování SQL v zálohování virtuálních počítačů Azure|
 | DiffBackupRetentionDuration_s |Desetinné číslo |v2|Doba uchování rozdílového zálohování pro SQL v zálohování virtuálních počítačů Azure|
 | LogBackupFrequency_s |Desetinné číslo |v2|Frekvence zálohování protokolů pro SQL|
 | LogBackupRetentionDuration_s |Desetinné číslo |v2|Doba uchování pro zálohování protokolů pro SQL v zálohování virtuálních počítačů Azure|

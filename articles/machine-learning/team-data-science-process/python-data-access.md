@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4c5269488b1c449580d56a0c1506c59b89c76ca6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76720975"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267992"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Náhled klientské knihovny Microsoft Azure Machine Learning Pythonu může povolit zabezpečený přístup k vašim datovým sadám Azure Machine Learning z místního prostředí Pythonu a umožňuje vytváření a správu datových sad v pracovním prostoru.
@@ -40,7 +40,7 @@ Má závislost na následujících balíčcích:
 * Python – dateutil
 * PANDAS
 
-Doporučujeme použít distribuci Pythonu, jako je [Anaconda](http://continuum.io/downloads#all) nebo [zápoje](https://store.enthought.com/downloads/), která se dodává s Pythonem, IPython a třemi balíčky uvedenými výše. I když IPython není bezpodmínečně nutné, jedná se o Skvělé prostředí pro interaktivní práci a vizualizaci dat.
+Doporučujeme použít distribuci Pythonu, jako je [Anaconda](https://www.anaconda.com/) nebo [zápoje](https://store.enthought.com/downloads/), která se dodává s Pythonem, IPython a třemi balíčky uvedenými výše. I když IPython není bezpodmínečně nutné, jedná se o Skvělé prostředí pro interaktivní práci a vizualizaci dat.
 
 ### <a name="how-to-install-the-azure-machine-learning-python-client-library"></a><a name="installation"></a>Postup instalace klientské knihovny Azure Machine Learning Pythonu
 Nainstalujte klientskou knihovnu Azure Machine Learning Python pro dokončení úkolů popsaných v tomto tématu. Tato knihovna je k dispozici z [indexu balíčku Pythonu](https://pypi.python.org/pypi/azureml). Pokud ho chcete nainstalovat do prostředí Pythonu, spusťte následující příkaz z místního prostředí Pythonu:
@@ -110,7 +110,7 @@ Podporovány jsou následující formáty (konstanty pro tyto formáty jsou ve `
 
 Formát můžete určit tak, že najedete myší na uzel výstupu modulu. Zobrazuje se spolu s názvem uzlu v popisu tlačítka.
 
-Některé moduly, například [rozdělený][split] modul, výstup do formátu s názvem `Dataset`, který není podporován knihovnou klienta Python.
+Některé moduly, například [rozdělený][split] modul, výstup do formátu s názvem `Dataset` , který není podporován knihovnou klienta Python.
 
 ![Formát datové sady][dataset-format]
 
@@ -310,9 +310,9 @@ Volitelně můžete nastavit nový název zadáním hodnoty `name` parametru. Od
     print(ws.datasets['existing dataset v2'].name) # 'existing dataset v2'
     print(ws.datasets['existing dataset'].name)    # IndexError
 
-`data_type_id`jsou volitelné a výchozí jejich předchozí `name` `description` hodnota. `dataframe` Parametr je vždy vyžadován.
+`data_type_id`Parametry a `name` `description` jsou volitelné a výchozí jejich předchozí hodnota. `dataframe`Parametr je vždy vyžadován.
 
-Pokud jsou vaše data už serializovaná, `update_from_raw_data` použijte místo `update_from_dataframe`. Pokud pouze předáte `raw_data` místo `dataframe`, funguje podobným způsobem.
+Pokud jsou vaše data už serializovaná, použijte `update_from_raw_data` místo `update_from_dataframe` . Pokud pouze předáte `raw_data` místo `dataframe` , funguje podobným způsobem.
 
 <!-- Images -->
 [security]:./media/python-data-access/security.png

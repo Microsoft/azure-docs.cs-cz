@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: jingwang
-ms.openlocfilehash: 8a704c3891c687edbb7c5aac206f4b6c7766fa8c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba5105c6183c88ca7e5641cdacaa5d80ea529bc6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81409993"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263886"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopírování dat z Xero pomocí Azure Data Factory
 
@@ -35,7 +35,7 @@ Data z Xero můžete kopírovat do libovolného podporovaného úložiště dat 
 
 Konkrétně tento konektor Xero podporuje:
 
-- Xero [privátní aplikace](https://developer.xero.com/documentation/getting-started/api-application-types) , ale ne veřejnou aplikaci.
+- Xero [privátní aplikace](https://developer.xero.com/documentation/getting-started/getting-started-guide) , ale ne veřejnou aplikaci.
 - Všechny tabulky Xero (koncové body rozhraní API) s výjimkou "Reports". 
 
 Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
@@ -50,12 +50,12 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu Xero jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Xero** . | Ano |
-| host | Koncový bod serveru Xero (`api.xero.com`).  | Ano |
+| typ | Vlastnost Type musí být nastavená na: **Xero** . | Ano |
+| host | Koncový bod serveru Xero ( `api.xero.com` ).  | Ano |
 | consumerKey | Klíč příjemce přidružený k aplikaci Xero Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| privateKey | Privátní klíč ze souboru. pem, který byl vygenerován pro vaši privátní aplikaci Xero, najdete v tématu [Vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/api-guides/create-publicprivate-key). Poznámka k **vygenerování PrivateKey. pem s numbitsou 512** pomocí `openssl genrsa -out privatekey.pem 512`; 1024 není podporován. Zahrňte veškerý text ze souboru. pem, včetně konců řádků systému UNIX (\n), viz ukázka níže.<br/><br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
+| privateKey | Privátní klíč ze souboru. pem, který byl vygenerován pro vaši privátní aplikaci Xero, najdete v tématu [Vytvoření páru veřejného a privátního klíče](https://developer.xero.com/documentation/auth-and-limits/create-publicprivate-key). Poznámka pro **vygenerování PrivateKey. pem s numbits 512** . `openssl genrsa -out privatekey.pem 512` 1024 není podporována. Zahrňte veškerý text ze souboru. pem, včetně konců řádků systému UNIX (\n), viz ukázka níže.<br/><br/>Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
 | useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
 | useHostVerification | Určuje, jestli se v certifikátu serveru vyžaduje název hostitele, který se bude shodovat s názvem hostitele serveru při připojení přes protokol TLS. Výchozí hodnotou je hodnota true.  | Ne |
 | usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
@@ -96,9 +96,9 @@ Zahrňte veškerý text ze souboru. pem, včetně konců řádků UNIX (\n).
 
 Chcete-li kopírovat data z Xero, nastavte vlastnost Type datové sady na **XeroObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **XeroObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **XeroObject** . | Ano |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
 **Případě**
@@ -126,9 +126,9 @@ Chcete-li kopírovat data z Xero, nastavte vlastnost Type datové sady na **Xero
 
 Chcete-li kopírovat data z Xero, nastavte typ zdroje v aktivitě kopírování na **XeroSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **XeroSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **XeroSource** . | Ano |
 | query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Contacts"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Případě**
@@ -165,9 +165,9 @@ Chcete-li kopírovat data z Xero, nastavte typ zdroje v aktivitě kopírování 
 
 Při zadávání dotazu Xero Pamatujte na následující:
 
-- Tabulky se složitými položkami budou rozděleny na více tabulek. Například bankovní transakce má komplexní strukturu dat "položky řádku", takže data bankovních transakcí jsou namapována na tabulku `Bank_Transaction` a `Bank_Transaction_Line_Items`s `Bank_Transaction_ID` využitím cizího klíče, aby je bylo možné propojit dohromady.
+- Tabulky se složitými položkami budou rozděleny na více tabulek. Například bankovní transakce má komplexní strukturu dat "položky řádku", takže data bankovních transakcí jsou namapována na tabulku `Bank_Transaction` a s využitím `Bank_Transaction_Line_Items` `Bank_Transaction_ID` cizího klíče, aby je bylo možné propojit dohromady.
 
-- Xero data jsou dostupná prostřednictvím dvou schémat: `Minimal` (výchozí) a `Complete`. Kompletní schéma obsahuje tabulky volání požadovaných součástí, které před provedením požadovaného dotazu vyžadují další data (například sloupec ID).
+- Xero data jsou dostupná prostřednictvím dvou schémat: `Minimal` (výchozí) a `Complete` . Kompletní schéma obsahuje tabulky volání požadovaných součástí, které před provedením požadovaného dotazu vyžadují další data (například sloupec ID).
 
 Následující tabulky obsahují stejné informace v rámci minimálního a úplného schématu. Chcete-li snížit počet volání rozhraní API, použijte minimální schéma (výchozí).
 

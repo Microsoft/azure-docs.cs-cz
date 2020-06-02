@@ -4,12 +4,12 @@ description: Přečtěte si o partnerech Azure Monitor a o tom, jak můžete zí
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 05/29/2020
-ms.openlocfilehash: 3224a9420d5a434ed9e3d8902f430f4e1ee28bcd
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: be309bf6caeb716fee86e4542363f5554b4568fb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233404"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248967"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor integrace partnerů
 
@@ -105,8 +105,6 @@ Grafana je open source aplikace, která umožňuje vizualizovat data metrik čas
 ## <a name="influxdata"></a>InfluxData
 
 ![Logo InfluxData](./media/partners/Influxdata.png)
-
-InfluxData, autor InfluxDB, nabízí moderní open source platformu sestavenou od základů pro analýzu metrik a událostí (data časových řad) pro aplikace DevOps a IoT. Bez ohledu na to, jestli data pocházejí z lidí, senzorů nebo počítačů, InfluxData vývojářům umožňuje rychle a rychleji vytvářet monitorování, analýzy a aplikace IoT v nové generaci. V závislosti na síti San Francisco jsou zákazníci InfluxData více než 420, kteří zahrnují Cisco, eBay, IBM a Siemens.
 
 InfluxData je tvůrce InfluxDB a otevřená zdrojová databáze časových řad. Naše technologie je navržená tak, aby zpracovávala obrovské objemy dat s časovými razítky vytvořenými zařízeními IoT, aplikacemi, sítěmi, kontejnery a počítači. Pracujeme na tom, abychom pomohli vývojářům a organizacím, jako jsou IBM, Visa, Siemens, Tesla a NASA, ukládat a analyzovat data v reálném čase, což jim umožňuje sestavovat transformativní monitorování, analýzy a aplikace IoT rychleji a škálovat. Pomocí InfluxData agenta telegraf můžete rozšířit možnosti shromažďování metrik a událostí monitoru, aby uživatelé Microsoftu využili výhod řešení Database pro celou dobu, a využívat rostoucí příspěvky open source na telegraf. Microsoft Azure
 

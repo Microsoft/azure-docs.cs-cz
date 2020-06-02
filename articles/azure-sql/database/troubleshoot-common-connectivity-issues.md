@@ -13,12 +13,12 @@ manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 53bfe029038e9bf2a85cc8c571417be462fd4502
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4aa8d35e48c28cadecb6acc1f56ca6c44a145719
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188055"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266963"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Řešení chyb přechodného připojení v SQL Database a spravované instanci SQL
 
@@ -357,7 +357,7 @@ V oboru názvů **Microsoft. Practices. EnterpriseLibrary. TransientFaultHandlin
 Tady jsou některé odkazy na informace o EntLib60:
 
 - Stažení bezplatné knihy: [Příručka pro vývojáře k Microsoft Enterprise Library, druhá edice](https://www.microsoft.com/download/details.aspx?id=41145).
-- Osvědčené postupy: Podrobnější [pokyny pro opakování](/architecture/best-practices/transient-faults) mají vynikající podrobná diskuzi o logice opakování.
+- Osvědčené postupy: Podrobnější [pokyny pro opakování](/azure/architecture/best-practices/transient-faults) mají vynikající podrobná diskuzi o logice opakování.
 - Stažení NuGet: [Podniková knihovna – blok aplikace pro zpracování přechodných chyb 6,0](https://www.nuget.org/packages/EnterpriseLibrary.TransientFaultHandling/).
 
 <a id="entlib60-the-logging-block" name="entlib60-the-logging-block"></a>

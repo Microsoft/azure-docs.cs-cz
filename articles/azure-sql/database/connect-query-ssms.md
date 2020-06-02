@@ -12,16 +12,16 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/10/2020
-ms.openlocfilehash: bc1e767227f0bdd4ac6b90124c9ccca8f4a0669b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 05/29/2020
+ms.openlocfilehash: 5ecf180b71c43d5df25d7c3c948a59482dd06a1c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054375"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267303"
 ---
-# <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database"></a>Rychlý Start: použití SSMS pro připojení k a dotazování Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití SSMS pro připojení k a dotazování Azure SQL Database nebo spravované instance Azure SQL
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto rychlém startu se dozvíte, jak pomocí SQL Server Management Studio (SSMS) se připojit k Azure SQL Database nebo spravované instanci SQL Azure a spustit některé dotazy.
 
@@ -33,7 +33,7 @@ Dokončení tohoto rychlého startu vyžaduje následující položky:
 
 - Databáze v Azure SQL Database. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
 
-  || SQL Database | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
+  || Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
   |:--- |:--- |:---|:---|
   | Vytvořit| [Azure Portal](single-database-create-quickstart.md) | [Azure Portal](../managed-instance/instance-create-quickstart.md) | [Azure Portal](../virtual-machines/windows/sql-vm-create-portal-quickstart.md)
   || [Rozhraní příkazového řádku](scripts/create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
@@ -53,7 +53,7 @@ Pokud chcete jenom spustit některé dotazy ad-hoc bez instalace SSMS, přečtě
 
 Získejte informace o připojení, které potřebujete pro připojení k vaší databázi. K dokončení tohoto rychlého startu budete potřebovat plně kvalifikovaný název [serveru](logical-servers.md) nebo název hostitele, název databáze a přihlašovací informace.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 2. Přejděte do **databáze** nebo **spravované instance** , pro kterou chcete zadat dotaz.
 
@@ -73,7 +73,7 @@ V SSMS se připojte k vašemu serveru.
 
 2. Zobrazí se dialogové okno **Připojení k serveru**. Zadejte následující informace:
 
-   | Nastavení      | Navrhovaná hodnota    | Description |
+   | Nastavení      | Navrhovaná hodnota    | Popis |
    | ------------ | ------------------ | ----------- |
    | **Typ serveru** | Databázový stroj | Požadovaná hodnota. |
    | **Název serveru** | Plně kvalifikovaný název serveru | Něco jako: **servername.Database.Windows.NET**. |
@@ -96,7 +96,7 @@ V SSMS se připojte k vašemu serveru.
 
 ## <a name="query-data"></a>Dotazování dat
 
-Spuštěním tohoto příkazu [Vyberte](https://msdn.microsoft.com/library/ms189499.aspx) kód Transact-SQL pro dotazování na prvních 20 produktů podle kategorie.
+Spuštěním tohoto příkazu [Vyberte](/sql/t-sql/queries/select-transact-sql/) kód Transact-SQL pro dotazování na prvních 20 produktů podle kategorie.
 
 1. V Průzkumník objektů klikněte pravým tlačítkem na **mySampleDatabase** a vyberte **Nový dotaz**. Otevře se nové okno dotazu připojené k vaší databázi.
 
@@ -115,7 +115,7 @@ Spuštěním tohoto příkazu [Vyberte](https://msdn.microsoft.com/library/ms189
 
 ### <a name="insert-data"></a>Vložení dat
 
-Spuštěním tohoto příkazu [vložte](https://msdn.microsoft.com/library/ms174335.aspx) kód Transact-SQL k vytvoření nového produktu v `SalesLT.Product` tabulce.
+Spuštěním tohoto příkazu [vložte](/sql/t-sql/statements/insert-transact-sql/) kód Transact-SQL k vytvoření nového produktu v `SalesLT.Product` tabulce.
 
 1. Nahraďte předchozí dotaz tímto.
 
@@ -155,7 +155,7 @@ Spuštěním tohoto příkazu [vložte](https://msdn.microsoft.com/library/ms174
 
 ### <a name="update-data"></a>Aktualizace dat
 
-Spusťte tento [kód](https://msdn.microsoft.com/library/ms177523.aspx) Transact-SQL pro úpravu nového produktu.
+Spusťte tento [kód](/sql/t-sql/statements/update-transact-sql) Transact-SQL pro úpravu nového produktu.
 
 1. Nahraďte předchozí dotaz tímto výsledkem, který vrátí nový záznam, který jste vytvořili dříve:
 
@@ -169,7 +169,7 @@ Spusťte tento [kód](https://msdn.microsoft.com/library/ms177523.aspx) Transact
 
 ### <a name="delete-data"></a>Odstranění dat
 
-Spuštěním tohoto příkazu [odstraňte](https://msdn.microsoft.com/library/ms189835.aspx) kód Transact-SQL, abyste mohli nový produkt odebrat.
+Spuštěním tohoto příkazu [odstraňte](/sql/t-sql/statements/delete-transact-sql/) kód Transact-SQL, abyste mohli nový produkt odebrat.
 
 1. Nahraďte předchozí dotaz tímto.
 
@@ -182,7 +182,7 @@ Spuštěním tohoto příkazu [odstraňte](https://msdn.microsoft.com/library/ms
 
 ## <a name="next-steps"></a>Další kroky
 
-- Informace o SSMS naleznete v tématu [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx).
+- Informace o SSMS naleznete v tématu [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms/).
 - Informace o připojení a dotazování pomocí Azure Portal najdete v tématu [připojení a dotazování pomocí Editoru dotazů SQL Azure Portal](connect-query-portal.md).
 - Informace o připojení a dotazování pomocí Visual Studio Code najdete v tématu [Připojení a dotazování pomocí Visual Studio Code](connect-query-vscode.md).
 - Informace o připojení a dotazování pomocí .NET najdete v tématu [Připojení a dotazování pomocí .NET](connect-query-dotnet-visual-studio.md).

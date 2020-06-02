@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: bf09994e8ebae09771ce110f9284aa3e99fc1816
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 309649fe099d5226ba6a4972e22a4e3d7ff0e526
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122476"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267116"
 ---
 # <a name="configure-minimal-tls-version-in-azure-sql-managed-instance"></a>Konfigurace minimální verze protokolu TLS ve spravované instanci Azure SQL
 Nastavení verze [protokolu TLS (minimální přenosná vrstva zabezpečení)](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) umožňuje zákazníkům řídit verzi TLS, kterou používá jejich spravovaná instance SQL Azure.
@@ -24,7 +24,7 @@ V současnosti podporujeme TLS 1,0, 1,1 a 1,2. Nastavení minimální verze prot
 
 Pro zákazníky s aplikacemi, které spoléhají na starší verze TLS, doporučujeme nastavit minimální verzi TLS podle požadavků vašich aplikací. Pro zákazníky, kteří spoléhají na aplikace, aby se připojili pomocí nešifrovaného připojení, doporučujeme nenastavit žádnou minimální verzi TLS. 
 
-Další informace najdete v tématu [požadavky na TLS pro SQL Database připojení](../database/connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity).
+Další informace najdete v tématu [požadavky na TLS pro SQL Database připojení](../database/connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 
 Po nastavení minimální verze protokolu TLS se pokusy o přihlášení od klientů, kteří používají verzi protokolu TLS nižší než minimální verze protokolu TLS serveru, nezdaří s následující chybou:
 

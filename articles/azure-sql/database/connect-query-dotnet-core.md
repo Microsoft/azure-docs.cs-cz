@@ -1,6 +1,7 @@
 ---
-title: Použít .NET Core k dotazování
-description: V tomto tématu se dozvíte, jak pomocí .NET Core vytvořit program, který se připojí k databázi v Azure SQL Database a provede dotaz pomocí příkazů jazyka Transact-SQL.
+title: Připojení a dotazování databáze pomocí .NET Core
+description: V tomto tématu se dozvíte, jak pomocí .NET Core vytvořit program, který se připojí k databázi v Azure SQL Database nebo Azure SQL Managed instance a provede dotazování pomocí příkazů jazyka Transact-SQL.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,18 +11,18 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 07/29/2019
-ms.openlocfilehash: ff90cf7de3bb83a235f866d8035ccb036e021b83
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 87acf1ab1591dadd5b3ac9c96fa36654bcbb4368
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189579"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267439"
 ---
-# <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database"></a>Rychlý Start: použití .NET Core (C#) k dotazování databáze v Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-net-core-c-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití .NET Core (C#) k dotazování databáze v Azure SQL Database nebo spravované instanci SQL Azure
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-V tomto rychlém startu použijete kód [.NET Core](https://www.microsoft.com/net/) a C# pro připojení k databázi v Azure SQL Database. Pak spustíte příkaz Transact-SQL k dotazování dat.
+V tomto rychlém startu použijete k připojení k databázi kód [.NET Core](https://www.microsoft.com/net/) a C#. Pak spustíte příkaz Transact-SQL k dotazování dat.
 
 > [!TIP]
 > Následující Microsoft Learn modul vám pomůže naučit se zdarma [, jak vyvíjet a konfigurovat aplikaci ASP.NET, která se dotazuje databáze v Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
@@ -31,7 +32,7 @@ V tomto rychlém startu použijete kód [.NET Core](https://www.microsoft.com/ne
 K dokončení tohoto rychlého startu je potřeba:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Databáze v Azure SQL Database. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
+- Databáze. K vytvoření a konfiguraci databáze můžete použít jeden z těchto rychlých startů:
 
   || Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
   |:--- |:--- |:---|:---|
@@ -204,6 +205,6 @@ namespace sqltest
 ## <a name="next-steps"></a>Další kroky
 
 - [Začínáme s .NET Core v systému Windows, Linux nebo macOS pomocí příkazového řádku](/dotnet/core/tutorials/using-with-xplat-cli)
-- Naučte se [připojit a dotazovat databázi v Azure SQL Database pomocí .NET Framework a sady Visual Studio](connect-query-dotnet-visual-studio.md).  
-- Naučte se, jak [navrhnout první databázi v Azure SQL Database pomocí SSMS](design-first-database-tutorial.md) nebo [navrhnout databázi v Azure SQL Database a připojit se pomocí C# a ADO.NET](design-first-database-csharp-tutorial.md).
+- Naučte se [připojit a dotazovat Azure SQL Database nebo spravované instance Azure SQL pomocí .NET Framework a sady Visual Studio](connect-query-dotnet-visual-studio.md).  
+- Přečtěte si, jak [navrhnout první databázi pomocí SSMS](design-first-database-tutorial.md) nebo [navrhnout databázi a jak se připojit pomocí C# a ADO.NET](design-first-database-csharp-tutorial.md).
 - Další informace o .NET najdete v [dokumentaci rozhraní .NET](https://docs.microsoft.com/dotnet/).

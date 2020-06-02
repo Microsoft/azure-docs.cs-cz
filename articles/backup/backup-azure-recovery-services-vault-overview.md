@@ -3,12 +3,12 @@ title: Přehled trezorů služby Recovery Services
 description: Přehled a porovnání mezi trezory Recovery Services a trezory Azure Backup.
 ms.topic: conceptual
 ms.date: 08/10/2018
-ms.openlocfilehash: a0dacd82b7cf4258c0147bbaf9dc39ee6fc0fa25
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 798f49629ad1012e8cc9ac3ed43f5beddd6eefeb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82597942"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248902"
 ---
 # <a name="recovery-services-vaults-overview"></a>Přehled trezorů služby Recovery Services
 
@@ -20,7 +20,7 @@ V rámci předplatného Azure můžete vytvořit až 500 Recovery Services trezo
 
 Pokud stále máte trezory služby Backup, jsou automaticky upgradovány na Recovery Services trezory. Od listopadu 2017 byly všechny trezory služby Backup upgradovány na Recovery Services trezory.
 
-Trezory Recovery Services jsou založené na modelu Azure Resource Manager Azure, zatímco trezory služby Backup byly založené na modelu Azure Service Manager. Když provedete upgrade trezoru služby Backup na Recovery Services trezor, data zálohování zůstanou během procesu upgradu i po něm beze změny. Trezory Recovery Services poskytují funkce, které nejsou k dispozici pro trezory služby Backup, například:
+Trezory Recovery Services jsou založené na modelu Azure Resource Manager Azure, ale trezory služby Backup byly založené na modelu Azure Service Manager. Když provedete upgrade trezoru služby Backup na Recovery Services trezor, data zálohování zůstanou během procesu upgradu i po něm beze změny. Trezory Recovery Services poskytují funkce, které nejsou k dispozici pro trezory služby Backup, například:
 
 - **Rozšířené možnosti, které vám pomůžou zabezpečit**zálohovaná data: pomocí Recovery Services trezorů Azure Backup poskytuje možnosti zabezpečení pro ochranu cloudových záloh. Funkce zabezpečení zajistí, že budete moci zabezpečit zálohy a bezpečně obnovit data, i když dojde k ohrožení produkčního a záložního serveru. [Další informace](backup-azure-security-feature.md)
 

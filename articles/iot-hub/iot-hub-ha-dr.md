@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: philmea
-ms.openlocfilehash: 615dc1b7bd1a31069a542ebb7ea44693c404cb40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87932887edd0aac536a2c7fbd25a02d2442f9db9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79499112"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267626"
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>Vysoká dostupnost služby IoT Hub a zotavení po havárii
 
@@ -60,7 +60,7 @@ Obě tyto možnosti převzetí služeb při selhání nabízejí následující 
 Až se operace převzetí služeb při selhání pro Centrum IoT dokončí, očekává se, že všechny operace ze zařízení a back-endové aplikace budou pokračovat v práci bez nutnosti ručního zásahu. To znamená, že zprávy ze zařízení do cloudu by měly fungovat i nadále a celý registr zařízení zůstane beze změny. Události emitované prostřednictvím Event Grid můžou být využívány prostřednictvím stejných předplatných nakonfigurovaných dříve, dokud jsou tyto Event Grid odběry i nadále k dispozici.
 
 > [!CAUTION]
-> - Název a koncový IoT Hub bod, který je kompatibilní s centrem událostí, se po převzetí služeb při selhání změní na koncový bod a nakonfigurované skupiny uživatelů (Jedná se o chybu, která bude opravena před 2020). Při přijímání zpráv telemetrie z integrovaného koncového bodu pomocí klienta centra událostí nebo hostitele procesoru událostí byste měli připojení vytvořit [pomocí připojovacího řetězce služby IoT Hub](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) . Tím zajistíte, že vaše back-endové aplikace budou dál fungovat, aniž by bylo nutné ruční zásah po převzetí služeb při selhání. Pokud v aplikaci přímo použijete název a koncový bod kompatibilní s centrem událostí, budete muset [znovu nakonfigurovat skupinu uživatelů, kterou používají, a](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) po převzetí služeb při selhání načíst nový koncový bod kompatibilní s centrem událostí, aby bylo možné pokračovat v operacích. Pokud k připojení předdefinovaného koncového bodu použijete Azure Functions nebo Azure Stream Analytics, možná budete muset provést **restart**.
+> - Název a koncový bod, který je kompatibilní s centrem událostí, se po převzetí služeb při selhání změní na koncový bod IoT Hub integrovaných událostí. Při přijímání zpráv telemetrie z integrovaného koncového bodu pomocí klienta centra událostí nebo hostitele procesoru událostí byste měli připojení vytvořit [pomocí připojovacího řetězce služby IoT Hub](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) . Tím zajistíte, že vaše back-endové aplikace budou dál fungovat, aniž by bylo nutné ruční zásah po převzetí služeb při selhání. Pokud v aplikaci přímo použijete název a koncový bod kompatibilní s centrem událostí, budete muset po převzetí služeb při selhání [Načíst nový koncový bod kompatibilní](iot-hub-devguide-messages-read-builtin.md#read-from-the-built-in-endpoint) s centrem událostí, aby bylo možné pokračovat v operacích. Pokud k připojení předdefinovaného koncového bodu použijete Azure Functions nebo Azure Stream Analytics, možná budete muset provést **restart**.
 >
 > - Při směrování do úložiště doporučujeme vypsat objekty blob nebo soubory a potom je v nich vymezit, aby se zajistilo, že všechny objekty blob nebo soubory budou čteny bez nutnosti vytvářet žádné předpoklady oddílu. Rozsah oddílu se může během převzetí služeb při selhání nebo ručního převzetí služeb při selhání iniciovat společnosti Microsoft změnit. K vytvoření výčtu seznamů objektů BLOB nebo [seznamu adls Gen2 rozhraní API](https://docs.microsoft.com/rest/api/storageservices/datalakestoragegen2/path/list) pro seznam souborů můžete použít [rozhraní list API blobů](https://docs.microsoft.com/rest/api/storageservices/list-blobs) . 
 

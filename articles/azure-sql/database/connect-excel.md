@@ -1,30 +1,30 @@
 ---
 title: Propojení s Excelem
-description: Naučte se, jak připojit Microsoft Excel k databázi v Azure SQL Database. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy.
+description: Naučte se připojit Microsoft Excel k databázi ve službě Azure SQL Database nebo Azure SQL Managed instance. Naimportujte si data do Excelu, kde můžete data dále zkoumat a vytvářet z nich sestavy.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
-author: joseidz
-ms.author: craigg
+author: stevestein
+ms.author: sstein
 ms.reviewer: ''
-ms.date: 02/12/2019
-ms.openlocfilehash: 332620699e30facb2fbbfee90e3328b8dcf1e179
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: e0a413847142ee516a06f924dd058578047fb3a8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195488"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267507"
 ---
-# <a name="connect-excel-to-a-database-in-azure-sql-database-and-create-a-report"></a>Připojení Excelu k databázi v Azure SQL Database a vytvoření sestavy
+# <a name="connect-excel-to-a-database-in-azure-sql-database-or-azure-sql-managed-instance-and-create-a-report"></a>Připojení Excelu k databázi ve službě Azure SQL Database nebo Azure SQL Managed instance a vytvoření sestavy
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+Můžete připojit aplikaci Excel k databázi a následně importovat data a vytvářet tabulky a grafy založené na hodnotách v databázi. V tomto kurzu nastavíte připojení mezi Excelem a databázovou tabulkou, uložíte soubor, ve kterém jsou uložená data a informace o připojení pro Excel, a pak z hodnot v databázi vytvoříte kontingenční graf.
 
-Můžete připojit aplikaci Excel k databázi aplikace Azure SQL Database a poté importovat data a vytvořit tabulky a grafy založené na hodnotách v databázi. V tomto kurzu nastavíte připojení mezi Excelem a databázovou tabulkou, uložíte soubor, ve kterém jsou uložená data a informace o připojení pro Excel, a pak z hodnot v databázi vytvoříte kontingenční graf.
-
-Než začnete, budete muset vytvořit databázi v SQL Database. Pokud ho ještě nemáte, přečtěte si téma [Vytvoření databáze v Azure SQL Database](single-database-create-quickstart.md) a [Vytvoření brány firewall protokolu IP na úrovni serveru](firewall-create-server-level-portal-quickstart.md) pro získání databáze s ukázkovými daty po dobu běhu.
+Abyste mohli začít, musíte vytvořit databázi. Pokud ho ještě nemáte, přečtěte si téma [Vytvoření databáze v Azure SQL Database](single-database-create-quickstart.md) a [Vytvoření brány firewall protokolu IP na úrovni serveru](firewall-create-server-level-portal-quickstart.md) pro získání databáze s ukázkovými daty po dobu běhu.
 
 V tomto článku naimportujete do Excelu ukázková data z tohoto článku, ale můžete postupovat podle podobných kroků s vlastními daty.
 
@@ -101,6 +101,6 @@ Chcete-li uložit podrobnosti o připojení trvale, můžete vytvořit soubor. o
 
 ## <a name="next-steps"></a>Další kroky
 
-* Zjistěte, jak se [připojit k SQL Database přes SQL Server Management Studio](connect-query-ssms.md) a provádět pokročilé dotazy a analýzy.
+* Naučte [se připojit a dotazovat se SQL Server Management Studio](connect-query-ssms.md) pro pokročilou dotazování a analýzu.
 * Další informace o výhodách [elastických fondů](elastic-pool-overview.md).
-* Zjistěte, jak [vytvořit webovou aplikaci, která se připojuje k SQL Database na back-endu](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md).
+* Naučte se [, jak vytvořit webovou aplikaci, která se připojuje k Azure SQL Database na back-endu](../../app-service/app-service-web-tutorial-dotnet-sqldatabase.md).

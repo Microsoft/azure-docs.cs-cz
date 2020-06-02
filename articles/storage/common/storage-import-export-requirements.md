@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: 58997b20c01f33037a5e5e149caa59e1630373ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ded8aa0587ecb6bb756f3faa07cc816b7d46b561
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79255311"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259571"
 ---
 # <a name="azure-importexport-system-requirements"></a>Požadavky na systém Azure Import/Export
 
@@ -24,14 +24,14 @@ Tento článek popisuje důležité požadavky na službu Azure import/export. D
 Pro přípravu pevných disků pomocí nástroje WAImportExport jsou podporovány následující **64 operační systémy, které podporují nástroj BitLocker Drive Encryption** .
 
 
-|Platforma |Version |
+|Platforma |Verze |
 |---------|---------|
 |Windows     | Windows 7 Enterprise, Windows 7 Ultimate <br> Windows 8 pro, Windows 8 Enterprise, Windows 8.1 pro, Windows 8.1 Enterprise <br> Windows 10        |
 |Windows Server     |Windows Server 2008 R2 <br> Windows Server 2012, Windows Server 2012 R2         |
 
 ## <a name="other-required-software-for-windows-client"></a>Další požadovaný software pro klienta Windows
 
-|Platforma |Version |
+|Platforma |Verze |
 |---------|---------|
 |.NET Framework    | 4.5.1       |
 | BitLocker        |  _          |
@@ -50,7 +50,7 @@ Další informace o účtech úložiště najdete v tématu [Přehled účtů Az
 Každou úlohu můžete použít k přenosu dat do nebo z jednoho účtu úložiště. Jinými slovy, jedna úloha importu/exportu nemůže být rozložená mezi několik účtů úložiště. Informace o vytvoření nového účtu úložiště najdete v tématu [Vytvoření účtu úložiště](storage-account-create.md).
 
 > [!IMPORTANT]
-> Služba Azure import export nepodporuje účty úložiště, ve kterých je povolená funkce  [koncových bodů služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md). 
+> Služba Azure import export nepodporuje účty úložiště, ve kterých je povolená funkce [koncových bodů služby Virtual Network](../../virtual-network/virtual-network-service-endpoints-overview.md)   . 
 
 ## <a name="supported-storage-types"></a>Podporované typy úložiště
 
@@ -78,11 +78,13 @@ Následující seznam disků je podporován pro použití se službou Import/exp
 |HDD     |  2,5 "<br>3,5 "       |SATA II, SATA III         |
 
 Následující typy disků nejsou podporovány:
+
 - USBs.
 - Externí HDD s integrovaným adaptérem USB
 - Disky, které se nacházejí v malých a velkých jednotkách externího pevného disku.
 
 Jedna úloha importu/exportu může mít tyto:
+
 - Maximálně 10 HDD/SSD.
 - Kombinace HDD/SSD libovolné velikosti.
 
@@ -90,9 +92,6 @@ Velký počet jednotek může být rozložen mezi více úloh a neexistuje žád
 
 Když připravujete pevné disky a kopírujete data pomocí nástroje WAImportExport, můžete použít externí adaptéry USB. Většina adaptérů USB 3,0 nebo vyšší musí být funkční.
 
-
 ## <a name="next-steps"></a>Další kroky
 
-* [Nastavení nástroje WAImportExport](storage-import-export-tool-how-to.md)
 * [Přenos dat pomocí nástroje příkazového řádku AzCopy](storage-use-azcopy.md)
-* [Ukázka REST API exportu pro import do Azure](https://github.com/Azure-Samples/storage-dotnet-import-export-job-management/)
