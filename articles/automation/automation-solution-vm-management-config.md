@@ -3,14 +3,14 @@ title: Konfigurace Azure Automation Start/Stop VMs during off-hours
 description: Tento článek obsahuje informace o tom, jak nakonfigurovat funkci Start/Stop VMs during off-hours pro podporu různých případů nebo scénářů použití.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/01/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: b2f2939c6b7d07e128688f43e98b2a6b29595e1f
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 3fbd6292f654071f74b4dfccc5e4de393ccfff02
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204385"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266708"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurace Start/Stop VMs during off-hours
 
@@ -46,11 +46,11 @@ Můžete povolit buď cílení akce na předplatné a skupinu prostředků, nebo
 
 1. Spusťte sadu **ScheduledStartStop_Parent** Runbook s **akcí** nastavenou na **Start**.
 
-2. Do pole parametr **VMList** přidejte čárkami oddělený seznam virtuálních počítačů (bez prázdných znaků). Seznam příkladů je `vm1,vm2,vm3` .
+2. Do pole parametr **VMList** přidejte čárkami oddělený seznam virtuálních počítačů (bez mezer). Seznam příkladů je `vm1,vm2,vm3` .
 
 3. Nastavte pole parametr **WHATIF** na hodnotu true.
 
-4. Nakonfigurujte `External_ExcludeVMNames` proměnnou pomocí čárkami odděleného seznamu virtuálních počítačů (VM1, VM2, VM3).
+4. Nakonfigurujte `External_ExcludeVMNames` proměnnou pomocí čárkami odděleného seznamu virtuálních počítačů (VM1, VM2, VM3) bez mezer mezi hodnotami oddělenými čárkou.
 
 5. Tento scénář nedodržuje `External_Start_ResourceGroupNames` proměnné a `External_Stop_ResourceGroupnames` . V tomto scénáři potřebujete vytvořit vlastní plán automatizace. Podrobnosti najdete v tématu [Naplánování runbooku v Azure Automation](shared-resources/schedules.md).
 
@@ -77,11 +77,11 @@ V prostředí, které obsahuje dvě nebo více součástí na více virtuálníc
 
 2. Spusťte sadu **SequencedStartStop_Parent** Runbook s **akcí** nastavenou na **Start**.
 
-3. Do pole parametr **VMList** přidejte čárkami oddělený seznam virtuálních počítačů (bez prázdných znaků). Seznam příkladů je `vm1,vm2,vm3` .
+3. Do pole parametr **VMList** přidejte čárkami oddělený seznam virtuálních počítačů (bez mezer). Seznam příkladů je `vm1,vm2,vm3` .
 
 4. Nastavte vlastnost **WHATIF** na hodnotu true. 
 
-5. Nakonfigurujte `External_ExcludeVMNames` proměnnou se seznamem virtuálních počítačů oddělených čárkami.
+5. Nakonfigurujte `External_ExcludeVMNames` proměnnou se seznamem virtuálních počítačů oddělených čárkami, bez mezer mezi hodnotami oddělenými čárkami.
 
 6. Tento scénář nedodržuje `External_Start_ResourceGroupNames` proměnné a `External_Stop_ResourceGroupnames` . V tomto scénáři potřebujete vytvořit vlastní plán automatizace. Podrobnosti najdete v tématu [Naplánování runbooku v Azure Automation](shared-resources/schedules.md).
 
@@ -128,7 +128,7 @@ Když spustíte **AutoStop_CreateAlert_Parent** Runbook, ověří, že existuje 
 
 1. Vytvořte nový [plán](shared-resources/schedules.md#create-a-schedule) a propojte ho s **AutoStop_CreateAlert_Parent** sadou Runbook a přidejte do parametru seznam názvů virtuálních počítačů oddělených čárkami `VMList` .
 
-2. Případně, pokud chcete vyloučit některé virtuální počítače z akce automatického zastavení, můžete do proměnné přidat čárkami oddělený seznam názvů virtuálních počítačů `External_ExcludeVMNames` .
+2. Případně, pokud chcete vyloučit některé virtuální počítače z akce automatického zastavení, můžete do proměnné přidat čárkami oddělený seznam názvů virtuálních počítačů (bez mezer) `External_ExcludeVMNames` .
 
 ## <a name="configure-email-notifications"></a>Konfigurace e-mailových oznámení
 
@@ -159,13 +159,13 @@ Tato funkce umožňuje přidat virtuální počítače, které mají být cílen
 
 Existují dva způsoby, jak zajistit, aby byl virtuální počítač zahrnutý při spuštění funkce:
 
-* Každá z nadřazených [runbooků](automation-solution-vm-management.md#runbooks) funkce má `VMList` parametr. K tomuto parametru můžete předat čárkami oddělený seznam názvů virtuálních počítačů při plánování příslušné nadřazené sady Runbook pro vaši situaci. Tyto virtuální počítače budou zahrnuty při spuštění funkce.
+* Každá z nadřazených [runbooků](automation-solution-vm-management.md#runbooks) funkce má `VMList` parametr. K tomuto parametru můžete předat seznam názvů virtuálních počítačů oddělených čárkami (bez mezer) při plánování příslušné nadřazené sady Runbook pro vaši situaci. Tyto virtuální počítače budou zahrnuty při spuštění funkce.
 
 * Pokud chcete vybrat víc virtuálních počítačů, nastavte `External_Start_ResourceGroupNames` a `External_Stop_ResourceGroupNames` s názvy skupin prostředků, které obsahují virtuální počítače, které chcete spustit nebo zastavit. Můžete také nastavit proměnné na hodnotu, `*` aby se funkce spouštěla pro všechny skupiny prostředků v rámci předplatného.
 
 ### <a name="exclude-a-vm"></a>Vyloučení virtuálního počítače
 
-Pokud chcete vyloučit virtuální počítač z virtuálních počítačů Stop/Start v době mimo špičku, můžete do proměnné přidat její název `External_ExcludeVMNames` . Tato proměnná je čárkami oddělený seznam konkrétních virtuálních počítačů, které se mají vyloučit z této funkce. Tento seznam je omezený na 140 virtuálních počítačů. Pokud do tohoto seznamu přidáte více než 140 virtuálních počítačů, virtuální počítače, které mají být vyloučeny, mohou být neúmyslně spuštěny nebo zastaveny.
+Pokud chcete vyloučit virtuální počítač z virtuálních počítačů Stop/Start v době mimo špičku, můžete do proměnné přidat její název `External_ExcludeVMNames` . Tato proměnná je čárkami oddělený seznam specifických virtuálních počítačů (bez mezer), které se mají vyloučit z funkce. Tento seznam je omezený na 140 virtuálních počítačů. Pokud do tohoto seznamu přidáte více než 140 virtuálních počítačů, virtuální počítače, které mají být vyloučeny, mohou být neúmyslně spuštěny nebo zastaveny.
 
 ## <a name="modify-the-startup-and-shutdown-schedules"></a>Změna plánů spouštění a vypínání
 

@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: ff7a22c0006d124f8d89b2f933dd213499dc1771
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 547b268a43cdd4b362d56b34cf9129a8b5efe16e
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997573"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266419"
 ---
-# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mariadb-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for MariaDB
+# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-mariadb-server"></a>Rychlý Start: použití šablony Správce prostředků k vytvoření serveru Azure Database for MariaDB
 
 Azure Database for MariaDB je spravovaná služba, pomocí které můžete spouštět, spravovat a škálovat vysoce dostupné databáze MariaDB v cloudu. V tomto rychlém startu použijete šablonu ARM k vytvoření serveru Azure Database for MariaDB v Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 
@@ -44,7 +44,7 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou výpočetních
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mariadb-with-vnet/).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-managed-mariadb-with-vnet/).
 
 :::code language="json" source="~/quickstart-templates/101-managed-mariadb-with-vnet/azuredeploy.json" range="001-231" highlight="149,162,176,199,213":::
 
@@ -58,7 +58,7 @@ Server Azure Database for MariaDB vytvoříte s definovanou sadou výpočetních
 
 Další ukázky šablon Azure Database for MariaDB najdete v [šablonách rychlý Start pro Azure](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb&pageNumber=1&sort=Popular).
 
-## <a name="deploy-the-template"></a>Nasazení šablony
+### <a name="deploy-the-template"></a>Nasazení šablony
 
 # <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: fd69e8b50fdd66267b5751e9c706d5181f7795a0
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: d551f05dd0700a93a94c6b836b896a99d7f5d96c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148187"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267082"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurace klíčů spravovaných zákazníkem pro váš účet služby Azure Cosmos DB s využitím služby Azure Key Vault
 
@@ -222,7 +222,7 @@ az cosmosdb show \
 
 ## <a name="error-handling"></a>Zpracování chyb
 
-Při použití klíčů spravovaných zákazníkem (CMK) v Azure Cosmos DB, pokud dojde k chybám, Azure Cosmos DB vrátí podrobnosti chyby spolu s podstavovým kódem HTTP v odpovědi. Tento druhotný stavový kód můžete použít k ladění hlavní příčiny problému. Seznam podporovaných kódů dílčího stavu HTTP najdete v článku [kódy stavu HTTP pro Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb.md) .
+Při použití klíčů spravovaných zákazníkem (CMK) v Azure Cosmos DB, pokud dojde k chybám, Azure Cosmos DB vrátí podrobnosti chyby spolu s podstavovým kódem HTTP v odpovědi. Tento druhotný stavový kód můžete použít k ladění hlavní příčiny problému. Seznam podporovaných kódů dílčího stavu HTTP najdete v článku [kódy stavu HTTP pro Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) .
 
 ## <a name="frequently-asked-questions"></a>Nejčastější dotazy
 

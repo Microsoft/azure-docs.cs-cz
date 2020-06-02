@@ -1,6 +1,7 @@
 ---
 title: Použití Pythonu k dotazování databáze
 description: V tomto tématu se dozvíte, jak pomocí Pythonu vytvořit program, který se připojí k databázi v Azure SQL Database a provede dotaz pomocí příkazů jazyka Transact-SQL.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,18 +11,18 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: 4a6bcee7e2868c80491471640f33bb7709f740a5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 1d1d4ca6d3ccd20d851f0a88d1879f9e9a8175c4
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189175"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267320"
 ---
-# <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database"></a>Rychlý Start: použití Pythonu k dotazování databáze v Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-python-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití Pythonu k dotazování databáze ve Azure SQL Database nebo spravované instanci SQL Azure
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-V tomto rychlém startu pomocí Pythonu se připojíte k databázi SQL Azure a použijete k dotazování dat příkazy T-SQL.
+V tomto rychlém startu pomocí Pythonu se připojíte k Azure SQL Database nebo spravované instanci SQL Azure a pro dotazování dat použijete příkazy T-SQL.
 
 ## <a name="prerequisites"></a>Požadavky
 

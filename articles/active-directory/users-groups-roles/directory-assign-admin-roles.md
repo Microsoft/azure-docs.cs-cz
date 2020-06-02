@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 451d0709a8b0a1c0993ff879d675eb056e721c36
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b4ed0b011e7b82ce95c002d2af68e577f1d10c84
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116641"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266198"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -459,6 +459,9 @@ Uživatelé s touto rolí mají globální oprávnění v rámci služby Microso
 > [!NOTE]
 > V rozhraní Microsoft Graph API a Azure AD PowerShell je tato role označená jako "Správce služby SharePoint". Je to "Správce služby SharePoint" v [Azure Portal](https://portal.azure.com).
 
+> [!NOTE]
+> Tato role také uděluje vymezená oprávnění Microsoft Graph rozhraní API pro Microsoft Intune a umožňuje tak správu a konfiguraci zásad souvisejících se zdroji na SharePointu a OneDrive.
+
 ### <a name="skype-for-business--lync-administrator"></a>[Správce Skypu pro firmy/Lync](#lync-service-administrator-permissions)
 
 Uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Skype pro firmy, když je služba přítomná, a také spravovat atributy uživatelů pro Skype v Azure Active Directory. Kromě toho tato role uděluje možnost spravovat lístky podpory a monitorovat stav služeb a přistupovat k týmům a centru pro správu Skypu pro firmy. Účet musí být také licencován pro týmy nebo nemůže spustit rutiny prostředí PowerShell pro týmy. Další informace najdete v části informace o licencích [pro role správce Skypu pro firmy](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) a týmy na [webu Skype pro firmy a v doplňku pro licencování Microsoft Teams](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing) .
@@ -482,7 +485,7 @@ Uživatelé v této roli můžou řešit problémy s komunikací v rámci Micros
 
 Uživatelé v této roli můžou spravovat všechny aspekty úloh Microsoft Teams prostřednictvím Microsoft Teams & centra pro správu Skypu pro firmy a příslušné moduly PowerShellu. Mezi další oblasti patří i všechny nástroje pro správu, které se týkají telefonního subsystému, zasílání zpráv, schůzek a týmů. Tato role navíc uděluje možnost vytvářet a spravovat všechny skupiny Office 365, spravovat lístky podpory a monitorovat stav služby.
 
-### <a name="user-administrator"></a>[Správce uživatelů](#user-administrator-permissions)
+### <a name="user-administrator"></a>[Správce uživatele](#user-administrator-permissions)
 
 Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny aspekty uživatelů s některými omezeními (viz níže) a můžou aktualizovat zásady vypršení platnosti hesla. Uživatelé s touto rolí můžou navíc vytvářet a spravovat všechny skupiny. Tato role také zahrnuje možnost vytvářet a spravovat zobrazení uživatelů, spravovat lístky podpory a monitorovat stav služby. Správci uživatelů nemají oprávnění ke správě některých uživatelských vlastností pro uživatele ve většině rolí správce. Uživatel s touto rolí nemá oprávnění ke správě vícefaktorového ověřování. Role, které jsou výjimkou tohoto omezení, jsou uvedeny v následující tabulce.
 
@@ -490,7 +493,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 | --- | --- |
 |Obecná oprávnění|<p>Vytváření uživatelů a skupin</p><p>Vytvářet a spravovat zobrazení uživatelů</p><p>Správa lístků podpory Office<p>Aktualizace zásad vypršení platnosti hesla|
 |<p>U všech uživatelů, včetně všech správců</p>|<p>Správa licencí</p><p>Spravovat všechny vlastnosti uživatele kromě hlavního názvu uživatele</p>
-|Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatelů|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
+|Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatele|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
 > Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
@@ -1900,7 +1903,7 @@ Týmy Communications support inženýr | Týmy Communications support inženýr 
 Týmy Communications support specialisty | Týmy Communications support specialisty | fcf91098-03e3-41a9-b5ba-6f0ec8188a12
 Správce služby Teams | Správce služby Teams | 69091246-20e8-4a56-aa4d-066075b2a7a8
 Uživatel | Nezobrazeno, protože nemůže být použit | a0b1b346-4d3e-4e8b-98f8-753987be4970
-Správce účtu uživatele | Správce uživatele | fe930be7-5e62-47db-91af-98c3a49a38b1
+Správce účtu uživatele | Správce uživatelů | fe930be7-5e62-47db-91af-98c3a49a38b1
 Připojení zařízení na pracovišti | Zastaralé | c34f683f-4d5a-4403-affd-6615e00e3a7f
 
 ## <a name="deprecated-roles"></a>Zastaralé role

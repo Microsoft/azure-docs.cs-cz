@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 9870b239ca0501e63df3d800b8e4847cb0f390ac
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 81a83c629a1cdcde77ec43751f32ebfe1dfb3425
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860932"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266844"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Výrazy a funkce ve službě Azure Data Factory
 
@@ -195,7 +195,7 @@ Tyto funkce jsou užitečné v rámci podmínek, které je možné použít k vy
   
 | Funkce logického porovnání | Úkol |
 | --------------------------- | ---- |
-| [ani](control-flow-expression-language-functions.md#and) | Ověřte, zda jsou všechny výrazy pravdivé. |
+| [a](control-flow-expression-language-functions.md#and) | Ověřte, zda jsou všechny výrazy pravdivé. |
 | [equals](control-flow-expression-language-functions.md#equals) | Zkontroluje, jestli jsou obě hodnoty ekvivalentní. |
 | [greater](control-flow-expression-language-functions.md#greater) | Ověřte, zda je první hodnota větší než druhá hodnota. |
 | [greaterOrEquals](control-flow-expression-language-functions.md#greaterOrEquals) | Ověřte, zda je první hodnota větší než nebo rovna druhé hodnotě. |
@@ -532,26 +532,26 @@ A vrátí výsledek pomocí volitelného formátu "D":`"Tuesday, January 2, 2018
 
 ### <a name="and"></a>a
 
-Ověřte, zda jsou všechny výrazy pravdivé.
-Vrátí hodnotu true, pokud mají všechny výrazy hodnotu true, nebo vrátí hodnotu false, pokud je alespoň jeden výraz nepravdivý.
+Ověřte, zda jsou oba výrazy pravdivé.
+Vrátí hodnotu true, pokud mají oba výrazy hodnotu true, nebo vrátí hodnotu false, pokud je alespoň jeden výraz nepravdivý.
 
 ```
-and(<expression1>, <expression2>, ...)
+and(<expression1>, <expression2>)
 ```
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*výraz1*>, <*Výraz2*>,... | Ano | Logická hodnota | Výrazy, které mají být zkontrolovány |
+| <*výraz1*>, <*Výraz2*> | Ano | Logická hodnota | Výrazy, které mají být zkontrolovány |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | -----| ----------- |
-| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud jsou všechny výrazy pravdivé. Vrátí hodnotu false, pokud je alespoň jeden výraz nepravdivý. |
+| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud jsou oba výrazy pravdivé. Vrátí hodnotu false, pokud je alespoň jeden výraz nepravdivý. |
 ||||
 
 *Příklad 1*
 
-Tyto příklady kontrolují, jestli jsou všechny zadané logické hodnoty pravdivé:
+Tyto příklady kontrolují, zda jsou zadané logické hodnoty pravdivé:
 
 ```
 and(true, true)
@@ -567,7 +567,7 @@ A vrátí tyto výsledky:
 
 *Příklad 2*
 
-Tyto příklady kontrolují, jestli jsou všechny zadané výrazy pravdivé:
+Tyto příklady kontrolují, jestli jsou splněné konkrétní výrazy:
 
 ```
 and(equals(1, 1), equals(2, 2))
@@ -2389,20 +2389,20 @@ A vrátí tyto výsledky:
 ### <a name="or"></a>nebo
 
 Ověřte, zda je alespoň jeden výraz pravdivý.
-Vrátí hodnotu true, pokud má alespoň jeden výraz hodnotu true, nebo vrátí hodnotu false, pokud všechny mají hodnotu false.
+Vrátí hodnotu true, pokud má alespoň jeden výraz hodnotu true, nebo vrátí hodnotu false, pokud jsou obě hodnoty false.
 
 ```
-or(<expression1>, <expression2>, ...)
+or(<expression1>, <expression2>)
 ```
 
 | Parametr | Požaduje se | Typ | Popis |
 | --------- | -------- | ---- | ----------- |
-| <*výraz1*>, <*Výraz2*>,... | Ano | Logická hodnota | Výrazy, které mají být zkontrolovány |
+| <*výraz1*>, <*Výraz2*> | Ano | Logická hodnota | Výrazy, které mají být zkontrolovány |
 |||||
 
 | Vrácená hodnota | Typ | Popis |
 | ------------ | ---- | ----------- |
-| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud má alespoň jeden výraz hodnotu true. Vrátí hodnotu false, pokud jsou všechny výrazy nepravdivé. |
+| true nebo false | Logická hodnota | Vrátí hodnotu true, pokud má alespoň jeden výraz hodnotu true. Vrátí hodnotu false, pokud jsou oba výrazy nepravdivé. |
 ||||
 
 *Příklad 1*

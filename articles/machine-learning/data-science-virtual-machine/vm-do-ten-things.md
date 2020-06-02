@@ -9,12 +9,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: a2eba958ca2d4a90cb3706839d726fdd0a48ed4f
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: acada42cd50d607925d7c4583820c2590ff76639
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82994048"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266555"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>10 věcí, které můžete dělat na Windows Data Science Virtual Machine
 
@@ -55,13 +55,13 @@ Pro R můžete použít IDE, jako je RStudio, který najdete v nabídce Start ne
 
 Pro Python můžete použít integrované vývojové prostředí (IDE), jako je Visual Studio Community Edition, které má předinstalované rozšíření Python Tools for Visual Studio (PTVS). Ve výchozím nastavení je v PTVS nakonfigurovaná jenom Python 3,6, kořenové prostředí conda. Pokud chcete povolit Anaconda Python 2,7, proveďte následující kroky:
 
-1. Vytvořte vlastní prostředí pro každou verzi tak, že přejdete na **nástroje** > **Python Tools** > **Python prostředí**a potom v edici Visual Studio Community Edition vyberete **+ Custom** .
+1. Vytvořte vlastní prostředí pro každou verzi tak, že přejdete na **nástroje**  >  **Python Tools**  >  **Python prostředí**a potom v edici Visual Studio Community Edition vyberete **+ Custom** .
 1. Zadejte popis a nastavte cestu k předponě prostředí jako **c:\anaconda\envs\python2** pro anaconda Python 2,7.
-1. Chcete-li uložit prostředí, vyberte možnost **automaticky zjišťovat** > **použití** .
+1. **Auto Detect**  >  Chcete-li uložit prostředí, vyberte možnost automaticky zjišťovat**použití** .
 
 Další podrobnosti o tom, jak vytvářet prostředí Pythonu, najdete v [dokumentaci k PTVS](https://aka.ms/ptvsdocs) .
 
-Teď jste nastavili vytvoření nového projektu v Pythonu. Přejít na **soubor** > **Nový** > **projekt** > **Python** a vyberte typ aplikace Python, kterou vytváříte. Prostředí Python pro aktuální projekt můžete nastavit na požadovanou verzi (Python 2,7 nebo 3,6) tak, že kliknete pravým tlačítkem na **prostředí Pythonu** a pak vyberete **Přidat nebo odebrat prostředí Pythonu**. Další informace o práci s PTVS najdete v [dokumentaci k produktu](https://aka.ms/ptvsdocs).
+Teď jste nastavili vytvoření nového projektu v Pythonu. Přejít na **soubor**  >  **Nový**  >  **projekt**  >  **Python** a vyberte typ aplikace Python, kterou vytváříte. Prostředí Python pro aktuální projekt můžete nastavit na požadovanou verzi (Python 2,7 nebo 3,6) tak, že kliknete pravým tlačítkem na **prostředí Pythonu** a pak vyberete **Přidat nebo odebrat prostředí Pythonu**. Další informace o práci s PTVS najdete v [dokumentaci k produktu](https://aka.ms/ptvsdocs).
 
 ## <a name="use-jupyter-notebooks"></a>Použití poznámkových bloků Jupyter
 Jupyter Notebook poskytuje integrované vývojové prostředí (IDE) založené na prohlížeči pro zkoumání a modelování dat. V Jupyter poznámkovém bloku můžete použít Python 2, Python 3 nebo R (Open Source i Microsoft R Server).
@@ -72,7 +72,7 @@ Po spuštění Jupyter přejděte do `/notebooks` adresáře, kde najdete ukázk
 
 * Vyberte Poznámkový blok pro zobrazení kódu.
 * Spusťte každou buňku výběrem SHIFT + ENTER.
-* Spusťte celý Poznámkový blok výběrem možnosti**spuštění** **buněk** > .
+* Spusťte celý Poznámkový blok **Cell**výběrem možnosti  >  **spuštění**buněk.
 * Vytvořte nový Poznámkový blok tak, že vyberete ikonu Jupyter (v levém horním rohu), kliknete na tlačítko **Nový** a pak zvolíte jazyk poznámkového bloku (označovaný také jako jádra).   
 
 > [!NOTE]
@@ -129,11 +129,11 @@ IrisPredictor(3,2,3,4)
 ```
 
 ### <a name="build-and-operationalize-r-models"></a>Vytváření a zprovoznění modelů R
-Modely R vytvořené na Data Science Virtual Machine nebo jinde můžete nasadit do Azure Machine Learning způsobem, který se podobá tomu, jak se to dělá v Pythonu. Postup je následující:
+Modely R vytvořené na Data Science Virtual Machine nebo jinde můžete nasadit do Azure Machine Learning způsobem, který se podobá tomu, jak se to dělá v Pythonu. Postupujte takto:
 
 1. Vytvořte soubor Settings. JSON, který poskytne ID pracovního prostoru a ověřovací token. 
 2. Napište obálku pro funkci předpovědi modelu.
-3. Chcete ```publishWebService``` -li předat obálku funkce, zavolejte v knihovně Azure Machine Learning.  
+3. ```publishWebService```Chcete-li předat obálku funkce, zavolejte v knihovně Azure Machine Learning.  
 
 Použijte následující proceduru a fragmenty kódu k nastavení, sestavení, publikování a využívání modelu jako webové služby v Azure Machine Learning.
 
@@ -171,7 +171,7 @@ ep <- publishWebService(ws, fun = sleepyPredict, name="sleepy lm", inputSchema =
 ```
 
 #### <a name="consume-the-model-deployed-in-azure-machine-learning"></a>Využití modelu nasazeného v Azure Machine Learning
-Pokud chcete model využívat z klientské aplikace, pomocí knihovny Azure Machine Learning vyhledejte publikovanou webovou službu podle názvu. K určení `services` koncového bodu použijte volání rozhraní API. Pak stačí zavolat `consume` funkci a předat do něj datový rámec, který chcete předpovědět.
+Pokud chcete model využívat z klientské aplikace, pomocí knihovny Azure Machine Learning vyhledejte publikovanou webovou službu podle názvu. `services`K určení koncového bodu použijte volání rozhraní API. Pak stačí zavolat `consume` funkci a předat do něj datový rámec, který chcete předpovědět.
 
 Použijte následující kód pro využívání modelu publikovaného jako Azure Machine Learning webové služby:
 
@@ -266,7 +266,7 @@ Azure Blob Storage je spolehlivá, ekonomická služba pro cloudové úložišt�
 
    ![Snímek obrazovky procesu vytváření účtu úložiště v Azure Portal](./media/vm-do-ten-things/create-azure-blob.png)
 
-* Potvrďte, že je nástroj příkazového řádku AzCopy předem nainstalován: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```. Adresář, který obsahuje AzCopy. exe, již je ve vaší proměnné prostředí PATH, takže se můžete vyhnout psaní úplné cesty k příkazu při spuštění tohoto nástroje. Další informace o nástroji AzCopy najdete v [dokumentaci k AzCopy](../../storage/common/storage-use-azcopy.md).
+* Potvrďte, že je nástroj příkazového řádku AzCopy předem nainstalován: ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe``` . Adresář, který obsahuje AzCopy. exe, již je ve vaší proměnné prostředí PATH, takže se můžete vyhnout psaní úplné cesty k příkazu při spuštění tohoto nástroje. Další informace o nástroji AzCopy najdete v [dokumentaci k AzCopy](../../storage/common/storage-use-azcopy.md).
 * Spusťte Nástroj Průzkumník služby Azure Storage. Můžete si ho stáhnout z [webové stránky Průzkumník služby Storage](https://storageexplorer.com/). 
 
    ![Snímek obrazovky Průzkumník služby Azure Storage přístupu k účtu úložiště](./media/vm-do-ten-things/AzureStorageExplorer_v4.png)
@@ -298,8 +298,8 @@ Po spuštění příkazu AzCopy ke zkopírování do objektu blob Azure se soubo
 
 Data z místního souboru na VIRTUÁLNÍm počítači můžete také nahrát pomocí Průzkumník služby Azure Storage:
 
-* Pokud chcete nahrát data do kontejneru, vyberte cílový kontejner a vyberte tlačítko **nahrát** . ![Snímek obrazovky s tlačítkem nahrát v Průzkumník služby Azure Storage](./media/vm-do-ten-things/storage-accounts.png)
-* Vyberte tři tečky (**...**) napravo od pole **soubory** , vyberte jeden nebo více souborů, které se mají nahrát ze systému souborů, a vyberte **nahrát** a začněte nahrávat soubory. ![Snímek obrazovky dialogového okna nahrát soubory](./media/vm-do-ten-things/upload-files-to-blob.png)
+* Pokud chcete nahrát data do kontejneru, vyberte cílový kontejner a vyberte tlačítko **nahrát** . ![ Snímek obrazovky s tlačítkem nahrát v Průzkumník služby Azure Storage](./media/vm-do-ten-things/storage-accounts.png)
+* Vyberte tři tečky (**...**) napravo od pole **soubory** , vyberte jeden nebo více souborů, které se mají nahrát ze systému souborů, a vyberte **nahrát** a začněte nahrávat soubory. ![ Snímek obrazovky dialogového okna nahrát soubory](./media/vm-do-ten-things/upload-files-to-blob.png)
 
 #### <a name="read-data-from-an-azure-blob-machine-learning-reader-module"></a>Čtení dat z objektu blob Azure: modul Machine Learning Reader
 
@@ -454,10 +454,10 @@ Azure Cosmos DB je databáze NoSQL v cloudu. Můžete ji použít k práci s dok
 
 Pro přístup k Azure Cosmos DB z DSVM použijte následující požadované kroky:
 
-1. Sada SDK Azure Cosmos DB Python je už v DSVM nainstalovaná. Pokud ho chcete aktualizovat, ```pip install pydocumentdb --upgrade``` spusťte z příkazového řádku.
+1. Sada SDK Azure Cosmos DB Python je už v DSVM nainstalovaná. Pokud ho chcete aktualizovat, spusťte ```pip install pydocumentdb --upgrade``` z příkazového řádku.
 2. Vytvořte účet Azure Cosmos DB a databázi z [Azure Portal](https://portal.azure.com).
 3. Stáhněte nástroj pro migraci dat Azure Cosmos DB z webu [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=53595) a rozbalte ho do libovolného adresáře.
-4. Importujte data JSON (Volcano data) uložená ve [veřejném objektu BLOB](https://https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) do Azure Cosmos DB s použitím následujících parametrů příkazu pro nástroj pro migraci. (Použijte dtui. exe z adresáře, do kterého jste nainstalovali nástroj pro migraci dat Azure Cosmos DB.) Zadejte zdrojové a cílové umístění s těmito parametry:
+4. Importujte data JSON (Volcano data) uložená ve [veřejném objektu BLOB](https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json) do Azure Cosmos DB s použitím následujících parametrů příkazu pro nástroj pro migraci. (Použijte dtui. exe z adresáře, do kterého jste nainstalovali nástroj pro migraci dat Azure Cosmos DB.) Zadejte zdrojové a cílové umístění s těmito parametry:
    
     `/s:JsonFile /s.Files:https://data.humdata.org/dataset/a60ac839-920d-435a-bf7d-25855602699d/resource/7234d067-2d74-449a-9c61-22ae6d98d928/download/volcano.json /t:DocumentDBBulk /t.ConnectionString:AccountEndpoint=https://[DocDBAccountName].documents.azure.com:443/;AccountKey=[[KEY];Database=volcano /t.Collection:volcano1`
 
@@ -466,11 +466,11 @@ Po importu dat můžete přejít na Jupyter a otevřít poznámkový blok s náz
 ## <a name="use-power-bi-reports-and-dashboards"></a>Použití sestav Power BI a řídicích panelů 
 Soubor JSON Volcano můžete vizualizovat z předchozího Azure Cosmos DB příkladu v Power BI Desktop a získat tak vizuální přehledy o datech. Podrobné pokyny jsou k dispozici v [článku Power BI](../../cosmos-db/powerbi-visualize.md). Tady je postup vysoké úrovně:
 
-1. Otevřete Power BI Desktop a vyberte **Načíst data**. Zadejte adresu URL jako: `https://cahandson.blob.core.windows.net/samples/volcano.json`.
+1. Otevřete Power BI Desktop a vyberte **Načíst data**. Zadejte adresu URL jako: `https://cahandson.blob.core.windows.net/samples/volcano.json` .
 2. Měly by se zobrazit záznamy JSON importované jako seznam. Převeďte seznam na tabulku, aby Power BI s ní mohl pracovat.
 4. Rozbalte sloupce tak, že vyberete ikonu rozbalit (šipka).
 5. Všimněte si, že umístění je pole **záznamu** . Rozbalte záznam a vyberte pouze souřadnice. **Souřadnice** je sloupec seznamu.
-6. Přidejte nový sloupec, který převede sloupec souřadnic seznamu na sloupec **LatLong** s oddělovači v podobě čárky. Zřetězení dvou prvků v poli se seznamem souřadnic pomocí vzorce ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```.
+6. Přidejte nový sloupec, který převede sloupec souřadnic seznamu na sloupec **LatLong** s oddělovači v podobě čárky. Zřetězení dvou prvků v poli se seznamem souřadnic pomocí vzorce ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})``` .
 7. Převeďte sloupec **zvýšení úrovně** na typ Decimal a vyberte tlačítka pro **zavření** a **použití** .
 
 Místo předchozích kroků můžete vložit následující kód. Skriptuje kroky používané v Rozšířený editor v Power BI k zápisu transformací dat do dotazovacího jazyka.
@@ -508,7 +508,7 @@ Podobně může být potřeba snížit kapacitu pro zpracování virtuálních p
 ## <a name="add-more-tools"></a>Přidat další nástroje
 Nástroje předem připravené do DSVM mohou řešit mnoho běžných potřeb datových analýz. Tím ušetříte čas, protože nemusíte instalovat a konfigurovat prostředí jeden po druhém. Ušetří vám také peníze, protože platíte jenom za prostředky, které využijete.
 
-K vylepšení svého analytického prostředí můžete použít další služby Azure Data and Analytics profilované v tomto článku. V některých případech možná budete potřebovat další nástroje, včetně některých vlastních partnerských nástrojů. Máte úplný přístup správce k virtuálnímu počítači, abyste mohli nainstalovat nové nástroje, které potřebujete. Můžete také nainstalovat další balíčky v Pythonu a R, které nejsou předem nainstalované. Pro Python můžete použít buď ```conda``` nebo. ```pip``` Pro R můžete ```install.packages()``` použít v konzole r, nebo použít IDE a vybrat **balíčky** > **instalovat balíčky**.
+K vylepšení svého analytického prostředí můžete použít další služby Azure Data and Analytics profilované v tomto článku. V některých případech možná budete potřebovat další nástroje, včetně některých vlastních partnerských nástrojů. Máte úplný přístup správce k virtuálnímu počítači, abyste mohli nainstalovat nové nástroje, které potřebujete. Můžete také nainstalovat další balíčky v Pythonu a R, které nejsou předem nainstalované. Pro Python můžete použít buď ```conda``` nebo ```pip``` . Pro R můžete použít ```install.packages()``` v konzole r, nebo použít IDE a vybrat **balíčky**  >  **instalovat balíčky**.
 
 ## <a name="deep-learning"></a>Hloubkové učení
 

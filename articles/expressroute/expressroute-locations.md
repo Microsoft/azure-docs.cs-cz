@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 9d60a17207f06333f81da9b28acd9aabe7e8db47
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 62bda3b63b753632f33ddbdcc90f87afcec49da0
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221238"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266283"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -51,7 +51,7 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Oceánie** | Austrálie – jihovýchod, Austrálie – východ |Auckland, Melbourne, Perth, Sydney, Sydney2 |
 | **Jižní Korea** | Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
 | **Spojené arabské emiráty** | Spojené arabské emiráty Central, Spojené arabské emiráty sever | Dubaj, Dubai2 |
-| **Jihoafrická republika** | Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
+| **Jižní Afrika** | Jižní Afrika – západ, Jižní Afrika – sever |Kapské město, Johannesburg |
 | **Jižní Amerika** | Brazílie – jih |Sao Paulo |
 
 
@@ -84,7 +84,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[AT&amp;T NetBond](https://www.synaptic.att.com/clouduser/html/productdetail/ATT_NetBond.htm)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Praha, Frankfurt, Londýn, Silicon sedlo, Singapur, Sydney, Tokio, Toronto, Washington DC |
 | **[V BRNĚ](https://www.attokyo.com/service/cloudsconnection/forazure.html)** | Podporuje se | Podporuje se | Tokyo2 |
 | **[BBIX](https://www.bbix.net/en/service/ix/)** | Podporuje se | Podporuje se | Tokio |
-| **[BCX](https://www.bcx.co.za/solutions)** |Podporuje se |Podporuje se |Kapské město, Johannesburg|
+| **[BCX](https://www.bcx.co.za/solutions/connectivity/data-networks)** |Podporuje se |Podporuje se |Kapské město, Johannesburg|
 | **[Bell Canada](https://business.bell.ca/shop/enterprise/cloud-connect-access-to-cloud-partner-services)** |Podporuje se |Podporuje se |Montreal, Toronto, Quebec City |
 | **[British Telecom](https://www.globalservices.bt.com/en/solutions/products/cloud-connect-azure)** |Podporuje se |Podporuje se |Amsterdam, Hongkong – zvláštní správní oblast, Johannesburg, Londýn, Newport (Wales), Svatý Paulo, Silicon sedl, Singapur, Sydney, Tokio, Washington DC |
 | **[C3ntro](https://www.c3ntro.com/data1/express-route1.php)** |Podporuje se |Podporuje se |Miami |
@@ -95,9 +95,8 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **China Telecom Global** |Podporuje se |Podporuje se |Hongkong, Hongkong Kong2 |
 | **Čína UNICOM Global** |Podporuje se |Podporuje se | Singapur2 |
 | **[Chunghwa Telecom](https://www.cht.com.tw/en/home/cht/about-cht/products-and-services/International/Cloud-Service)** |Podporuje se |Podporuje se |WAN |
-| **[Claro](https://www.usclaro.com/enterprise-mnc/connectivity/mpls/)** | Podporuje se | Podporuje se | Miami |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Podporuje se |Podporuje se |Chicago, Praha, Montreal, Toronto, Vancouver, Washington DC |
-| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Podporuje se |Podporuje se |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londýn, London2, Newport, New York, Ósaka, Paříž, Silicon sedl, Silicon Valley2, Singapur2, Tokio, Washington DC |
+| **[Colt](https://www.colt.net/direct-connect/azure/)** |Podporuje se |Podporuje se |Amsterdam, Amsterdam2, Chicago, Dublin, Frankfurt, Londýn, London2, Newport, New York, Ósaka, Paříž, Silicon sedl, Silicon Valley2, Singapur2, Tokio, Washington DC |
 | **[Comcastu](https://business.comcast.com/landingpage/microsoft-azure)** |Podporuje se |Podporuje se |Chicago, Silicon Valley, Washington DC |
 | **[CoreSite](https://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |Podporuje se |Podporuje se |Chicago, Denver, Los Angeles, New York, Silicon sedl, Silicon Valley2, Washington DC, Washington DC2 |
 | **[DE-CIX](https://www.de-cix.net/en/de-cix-service-world/cloud-exchange/find-a-cloud-service/detail/microsoft-azure)** | Podporuje se |Podporuje se |Amsterdam2, Frankfurt, Marseille|
@@ -133,7 +132,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Podporuje se |Podporuje se |Newport(Wales) |
 | **[NEXTDC](https://www.nextdc.com/services/axon-ethernet/microsoft-expressroute)** |Podporuje se |Podporuje se |Melbourne, Perth, Sydney, Sydney2 |
 | **[NTT komunikace](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Podporuje se |Podporuje se |Amsterdam, Hongkong – zvláštní správní oblast, Londýn, Los Angeles, Ósaka, Singapur, Sydney, Tokio, Washington DC |
-| **[NTT EAST](https://flets.com/cloudgateway/crossconnect/)** |Podporuje se |Podporuje se |Tokio |
+| **[NTT EAST](https://business.ntt-east.co.jp/service/crossconnect/)** |Podporuje se |Podporuje se |Tokio |
 | **[NTT globální datacentra EMEA](https://www.ntt.com/en/services/data-center.html)** |Podporuje se |Podporuje se |Berlín |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |Podporuje se |Podporuje se |Ósaka |
 | **[Cloudové připojení Ooredoo](https://www.ooredoo.qa/portal/OoredooQatar/cloud-connect-expressroute)** |Podporuje se |Podporuje se |Marseille |
@@ -160,7 +159,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Telus](https://www.telus.com)** |Podporuje se |Podporuje se |Montreal, Seattle, Toronto |
 | **[Teraco](https://www.teraco.co.za/services/africa-cloud-exchange/)** |Podporuje se |Podporuje se |Kapské město, Johannesburg |
 | **[ČASOVÉ dotCom](https://www.time.com.my/enterprise/connectivity/direct-cloud)** | Podporuje se | Podporuje se | Kuala Lumpur |
-| **[Transtelco](https://transtelco.net/enterprise-services/)** |Podporuje se |Podporuje se |Praha, Mexiko, Los Angeles|
+| **[Transtelco](https://transtelco.net/enterprise-services/)** |Podporuje se |Podporuje se |Dallas, Los Angeles|
 | **[UOLDIVEO](https://www.uoldiveo.com.br/)** |Podporuje se |Podporuje se |Sao Paulo |
 | **[Verizon](https://enterprise.verizon.com/products/network/application-enablement/secure-cloud-interconnect/)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Praha, Hongkong – zvláštní správní oblast, Londýn, Bombaj, Silicon sedla, Singapur, Sydney, Tokio, Toronto, Washington DC |
 | **[Viasat](http://www.directcloud.viasatbusiness.com/)** | Podporuje se | Podporuje se | Washington DC2 |
@@ -200,7 +199,7 @@ Další informace najdete v tématu [ExpressRoute v Číně](http://www.windowsa
 
 | **Poskytovatel služeb** | **Microsoft Azure** | **Office 365** | **Umístění** |
 | --- | --- | --- | --- |
-| **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Podporuje se |Nepodporuje se |Frankfurt |
+| **[Colt](https://www.colt.net/direct-connect/azure/)** |Podporuje se |Nepodporuje se |Frankfurt |
 | **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Podporuje se |Nepodporuje se |Frankfurt |
 | **[e-shelter](https://www.e-shelter.de/en/microsoft-expressroutetm)** |Podporuje se |Nepodporuje se |Berlín |
 | **Interxion** |Podporuje se |Nepodporuje se |Frankfurt |
@@ -255,7 +254,7 @@ Pokud jste vzdáleně a nemáte připojení k vláknu nebo chcete prozkoumat dal
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | Amsterdam | 
 | **[CMC Telecom](https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | Singapur | 
 | **[APTUM technologie](https://aptum.com/services/cloud/managed-azure/)**| Equinix | Montreal, Toronto |
-| **[CoreAzure](http://www.coreazure.com/expressroute/)**| Equinix | Londýn |
+| **[CoreAzure](http://www.coreazure.com/)**| Equinix | Londýn |
 | **[Cox Business](https://www.cox.com/business/networking/cloud-connectivity.html)**| Equinix | Dallas, Silicon Valley, Washington DC |
 | **[Castle na koruna](https://fiber.crowncastle.com/solutions/added/cloud-connect)**| Equinix | Brno, Chicago, Praha, Los Angeles, New York, Washington DC |
 | **[Data Foundry](https://www.datafoundry.com/services/cloud-connect)** | Megaport | Dallas |

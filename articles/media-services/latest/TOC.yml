@@ -1,5 +1,7 @@
 - name: Dokumentace ke službě Media Services
   href: ./index.yml
+- name: Přepnout na dokumentaci k analýze živého videa ve službě IoT Edge
+  href: ../live-video-analytics-edge/overview.md
 - name: Přehled
   items:
     - name: Informace o Media Services
@@ -369,7 +371,7 @@
         - name: Python
           href: 'https://aka.ms/ams-v3-python-ref'
         - name: Node.js
-          href: 'https://aka.ms/ams-v3-nodejs-ref'
+          href: 'https://docs.microsoft.com/javascript/api/overview/azure/mediaservices/management'
         - name: Přejít
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Šablona Resource Manageru

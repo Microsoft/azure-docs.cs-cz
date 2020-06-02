@@ -1,6 +1,7 @@
 ---
 title: Použít PHP k dotazování
-description: Jak pomocí PHP vytvořit program, který se připojí k databázi v Azure SQL Database a provede dotaz pomocí příkazů T-SQL.
+description: Jak pomocí PHP vytvořit program, který se připojí k databázi v Azure SQL Database nebo Azure SQL Managed instance, a Dotazujte ji pomocí příkazů T-SQL.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -9,26 +10,26 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: v-masebo
-ms.date: 02/12/2019
+ms.date: 05/29/2020
 ms.custom: sqldbrb=2 
-ms.openlocfilehash: 8c6ba33ac522272e36b8cd297ca525ec9f97875f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5443955bd24ed269ebf35f974be8c0497e2bfb60
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189326"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267337"
 ---
 # <a name="quickstart-use-php-to-query-a-database-in-azure-sql-database"></a>Rychlý Start: použití PHP k dotazování databáze v Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Tento článek ukazuje, jak použít [php](https://php.net/manual/en/intro-whatis.php) pro připojení k databázi v Azure SQL Database. Pak můžete použít příkazy T-SQL k dotazování dat.
+Tento článek ukazuje, jak použít [php](https://php.net/manual/en/intro-whatis.php) pro připojení k databázi v Azure SQL Database nebo v Azure SQL Managed instance. Pak můžete použít příkazy T-SQL k dotazování dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu je potřeba:
 
 - Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-- Databáze v Azure SQL Database. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
+- Databáze v Azure SQL Database nebo spravované instanci Azure SQL. K vytvoření a konfiguraci databáze můžete použít jeden z těchto rychlých startů:
 
   || Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
   |:--- |:--- |:---|:---|

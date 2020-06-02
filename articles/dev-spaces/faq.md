@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Vyhledejte odpovědi na některé běžné otázky týkající se Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: b5a380f20640b9bc328aa30289ff7f915cc0b73c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6328515232b257e01b9b453de4ca0aca820c4038
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414312"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267490"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Nejčastější dotazy týkající se Azure Dev Spaces
 
@@ -30,7 +30,7 @@ Ano, pokud chcete přesunout cluster AKS s Azure Dev Spaces do jiné [podporovan
 
 ## <a name="can-i-use-azure-dev-spaces-with-existing-dockerfiles-or-helm-charts"></a>Můžu použít Azure Dev Spaces se stávajícími grafy fázemi nebo Helm?
 
-Ano, pokud projekt již obsahuje souboru Dockerfile nebo Helm, můžete tyto soubory použít s Azure Dev Spaces. Při spuštění `azds prep`použijte `--chart` parametr a zadejte umístění grafu. Azure Dev Spaces bude stále generovat soubor *azds. yaml* a *souboru Dockerfile. vývoj* , ale nenahradí ani nezmění existující souboru Dockerfile nebo graf Helm. Je možné, že budete muset upravit soubory *azds. yaml* a *souboru Dockerfile. vývoj* , aby vše správně fungovalo se stávající aplikací při spuštění `azds up`.
+Ano, pokud projekt již obsahuje souboru Dockerfile nebo Helm, můžete tyto soubory použít s Azure Dev Spaces. Při spuštění `azds prep` použijte `--chart` parametr a zadejte umístění grafu. Azure Dev Spaces bude stále generovat soubor *azds. yaml* a *souboru Dockerfile. vývoj* , ale nenahradí ani nezmění existující souboru Dockerfile nebo graf Helm. Je možné, že budete muset upravit soubory *azds. yaml* a *souboru Dockerfile. vývoj* , aby vše správně fungovalo se stávající aplikací při spuštění `azds up` .
 
 Při použití vlastního grafu souboru Dockerfile nebo Helm existují tato omezení:
 * Pokud používáte jenom jeden souboru Dockerfile, musí obsahovat všechno, co potřebujete k povolení vývojářských scénářů, jako je například jazyková sada SDK, nikoli jenom modul runtime. Pokud používáte samostatné souboru Dockerfile pro Azure Dev Spaces, jako je například souboru Dockerfile. vývoj, je nutné do tohoto souboru Dockerfile zahrnout všechno, co potřebujete k povolení vývojářských scénářů.
@@ -99,7 +99,6 @@ V tuto chvíli nemůžete použít Azure Dev Spaces s mřížkami služeb, jako 
 
 [aks-auth-range]: ../aks/api-server-authorized-ip-ranges.md
 [aks-auth-range-create]: ../aks/api-server-authorized-ip-ranges.md#create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled
-[aks-auth-range-ranges]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [aks-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-migration]: ../aks/aks-migration.md
 [aks-pod-managed-id]: ../aks/developer-best-practices-pod-security.md#use-pod-managed-identities

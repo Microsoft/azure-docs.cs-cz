@@ -9,21 +9,22 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 75c8d52a750567d3b34ad2aea236477ca8c97245
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 24a34ae6f00eca7154021162184f5e71503da06b
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171408"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248324"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Začínáme s využitím Azure synapse Analytics
 
-Tento kurz vás provede všemi základními kroky potřebnými k instalaci a používání služby Azure synapse Analytics.
+Tento dokument vás provede všemi základními kroky potřebnými k instalaci a používání služby Azure synapse Analytics.
 
 ## <a name="prepare-a-storage-account-for-use-with-a-synapse-workspace"></a>Příprava účtu úložiště pro použití v pracovním prostoru synapse
 
 * Otevřete [Azure Portal](https://portal.azure.com)
 * Vytvořte nový účet úložiště s následujícími nastaveními:
+
     |Karta|Nastavení | Navrhovaná hodnota | Popis |
     |---|---|---|---|
     |Základy|**Název účtu úložiště**| Můžete mu dát libovolný název.|V tomto dokumentu se na něj budeme odkazovat jako na `contosolake` .|
@@ -32,14 +33,18 @@ Tento kurz vás provede všemi základními kroky potřebnými k instalaci a pou
     |Pokročilý|**Data Lake Storage Gen2**|`Enabled`| Azure synapse funguje jenom s účty úložiště, kde je toto nastavení povolené.|
 
 1. Po vytvoření účtu úložiště v levém navigačním panelu vyberte **řízení přístupu (IAM)** . Pak přiřaďte následující role nebo ověřte, zda jsou již přiřazeny. 
+
     a. * Přiřaďte sami sobě roli **vlastníka** v účtu úložiště b. * Přiřaďte se k roli **vlastníka dat objektu BLOB úložiště** v účtu úložiště.
+
 1. V levém navigačním panelu vyberte **kontejnery** a vytvořte kontejner. Můžete mu dát libovolný název. Přijměte výchozí **úroveň veřejného přístupu**. V tomto dokumentu budeme volat kontejner `users` . Vyberte **Vytvořit**. 
+
+V následujícím kroku nakonfigurujete pracovní prostor synapse, který bude používat tento účet úložiště jako primární účet úložiště, a kontejner pro ukládání dat pracovního prostoru. Pracovní prostor bude ukládat data v Apache Sparkch tabulkách a v protokolech aplikací Spark v tomto účtu do složky s názvem `/synapse/workspacename` .
 
 ## <a name="create-a-synapse-workspace"></a>Vytvoření pracovního prostoru synapse
 
 * Otevřete [Azure Portal](https://portal.azure.com) a v horní části hledání `Synapse` .
 * Ve výsledcích hledání v části **služby**vyberte **Azure synapse Analytics (pracovní prostory verze Preview)** .
-* Vyberte **+ Přidat** a vytvořte nový pracovní prostor s těmito nastaveními.
+* Vyberte **+ Přidat** a vytvořte pracovní prostor s tímto nastavením.
 
     |Karta|Nastavení | Navrhovaná hodnota | Popis |
     |---|---|---|---|
@@ -47,8 +52,6 @@ Tento kurz vás provede všemi základními kroky potřebnými k instalaci a pou
     |Základy|**Oblast**|Porovnává s oblastí účtu úložiště.|
 
 1. V části **vybrat data Lake Storage Gen 2**vyberte účet a kontejner, který jste vytvořili dříve.
-    > [!NOTE]
-    > V pracovním prostoru synapse odkazujeme na účet úložiště, který jste zvolili jako primární účet úložiště. Tento účet se používá k ukládání dat v tabulkách Apache Spark a pro protokoly vytvořené při vytváření fondů Spark nebo spuštění aplikací Spark.
 
 1. Vyberte **Zkontrolovat a vytvořit**. Vyberte **Vytvořit**. Pracovní prostor bude připraven během několika minut.
 
@@ -61,7 +64,7 @@ To může být pro vás již provedeno. V každém případě byste měli ověř
     a. Přiřaďte identitu pracovního prostoru k roli **Přispěvatel dat objektů BLOB úložiště** v účtu úložiště. Identita pracovního prostoru má stejný název jako pracovní prostor. V tomto dokumentu je název pracovního prostoru `myworkspace` tak, aby identita pracovního prostoru byla`myworkspaced`
 1. Vyberte **Uložit**.
     
-## <a name="launch-synapse-studio"></a>Spustit synapse Studio
+## <a name="launch-synapse-studio"></a>Spuštění funkce Synapse Studio
 
 Po vytvoření pracovního prostoru synapse máte dva způsoby, jak otevřít synapse Studio:
 * Otevřete pracovní prostor synapse v [Azure Portal](https://portal.azure.com) a v horní části **přehledu** vyberte **Spustit synapse Studio** .
@@ -70,10 +73,6 @@ Po vytvoření pracovního prostoru synapse máte dva způsoby, jak otevřít sy
 ## <a name="create-a-sql-pool"></a>Vytvoření fondu SQL
 
 1. V synapse studiu na levé straně navigace vyberte **spravovat > fondů SQL** .
-
-    > [!NOTE] 
-    > Všechny pracovní prostory synapse se dodávají s předem vytvořeným fondem s názvem **SQL na vyžádání**.
-
 1. Vyberte **+ Nová** a zadejte tato nastavení:
 
     |Nastavení | Navrhovaná hodnota | 
@@ -82,14 +81,9 @@ Po vytvoření pracovního prostoru synapse máte dva způsoby, jak otevřít sy
     |**Úroveň výkonu**|`DW100C`|
 
 1. Vyberte **zkontrolovat + vytvořit** a pak vyberte **vytvořit**.
-1. Váš fond SQL bude připravený během několika minut.
+1. Váš fond SQL bude připravený během několika minut. Když se vytvoří fond SQL, bude se taky přidružit k databázi fondu SQL s názvem **SQLDB1**.
 
-    > [!NOTE]
-    > Synapse fond SQL odpovídá, co se používá pro volání "Azure SQL Data Warehouse".
-
-Fond SQL spotřebovává Fakturovatelné prostředky, pokud je spuštěný. V takovém případě můžete v případě potřeby pozastavit fond a snížit náklady.
-
-Když se vytvoří fond SQL, bude se taky přidružit k databázi fondu SQL s názvem **SQLDB1**.
+Fond SQL spotřebovává Fakturovatelné prostředky, pokud je aktivní. Fond můžete později pozastavit a snížit tak náklady.
 
 ## <a name="create-an-apache-spark-pool"></a>Vytvoření fondu Apache Spark
 
@@ -136,7 +130,7 @@ Každý pracovní prostor obsahuje předem sestavený nebo neodstranitelné fond
 1. Přejděte do **tabulky SQLDB1 >**. Uvidíte, že se načetly několik tabulek.
 1. Klikněte pravým tlačítkem na **dbo. Tabulka cest** a výběr **nového skriptu SQL > vybrat prvních 100 řádků**
 1. Vytvoří se nový skript SQL, který se automaticky spustí.
-1. Všimněte si, že v horní části SQL Script **Connect** se automaticky nastaví fond SQL s názvem SQLDB1.
+1. Všimněte si, že v horní části SQL Script **Connect** se automaticky nastaví fond SQL s názvem `SQLDB1` .
 1. Nahraďte text skriptu SQL tímto kódem a spusťte ho.
 
     ```sql
@@ -154,7 +148,7 @@ Každý pracovní prostor obsahuje předem sestavený nebo neodstranitelné fond
 
 ## <a name="load-the-nyc-taxi-sample-data-into-the-spark-nyctaxi-database"></a>Načtení ukázkových dat NYC taxislužby do databáze Spark nyctaxi
 
-K dispozici jsou data v tabulce v `SQLDB1` . Nyní ji nahrajeme do databáze Spark s názvem "nyctaxi".
+K dispozici jsou data v tabulce v `SQLDB1` . Nyní ji nahrajeme do databáze Spark s názvem `nyctaxi` .
 
 1. V synapse studiu přejděte do centra pro **vývoj** .
 1. Výběr **+** a výběr **poznámkového bloku**
@@ -176,7 +170,7 @@ K dispozici jsou data v tabulce v `SQLDB1` . Nyní ji nahrajeme do databáze Spa
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analýza dat taxislužby NYC pomocí Sparku a poznámkových bloků
 
 1. Vrátit se do poznámkového bloku
-1. Vytvořte novou buňku kódu, zadejte následující text a spusťte buňku, abyste mohli například NYC data taxislužby, která jsme načetli do sady `nyctaxi` Spark DB.
+1. Vytvořte novou buňku kódu, zadejte následující text a spusťte buňku, která bude obsahovat příklad dat NYC taxislužby, která jsme načetli do `nyctaxi` databáze Spark.
 
    ```py
    %%pyspark
@@ -286,8 +280,8 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. Vybrat **propojené**
 1. Přejděte na **účty úložiště > MyWorkspace (Primary-contosolake)** .
 1. Vybrat **uživatele (primární) "**
-1. Měla by se zobrazit složka s názvem "NYCTaxi". Uvnitř by se měly zobrazit dvě složky "PassengerCountStats. csv" a "PassengerCountStats. Parquet".
-1. Přejděte do složky PassengerCountStats. Parquet.
+1. Měla by se zobrazit složka s názvem `NYCTaxi` . Uvnitř byste měli vidět dvě složky `PassengerCountStats.csv` a `PassengerCountStats.parquet` .
+1. Přejděte do `PassengerCountStats.parquet` složky.
 1. Klikněte pravým tlačítkem na soubor Parquet a vyberte **Nový Poznámkový blok**. vytvoří se Poznámkový blok s buňkou, jako je tato:
 
     ```py

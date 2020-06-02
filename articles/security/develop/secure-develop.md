@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 58f5d2e641cfe4913d6a06621b663d8a61cd00bb
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: f9ed611ae530e49ad8e776c47450bc9b7ece3190
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800289"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266759"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Vývoj zabezpečených aplikací v Azure
 V tomto článku jsou uvedeny bezpečnostní aktivity a ovládací prvky, které je potřeba vzít v úvahu při vývoji aplikací pro Cloud. Pojednává o bezpečnostních otázkách a konceptech, které je potřeba vzít v úvahu během fáze implementace a ověření v rámci služby [SDL (Microsoft Security Development Lifecycle)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) . Cílem je pomáhat vám definovat aktivity a služby Azure, které můžete použít k vývoji bezpečnější aplikace.
@@ -128,7 +128,7 @@ Testování dynamického zabezpečení aplikací (DAST) je proces testování ap
 
 DAST se liší od statického testování zabezpečení aplikací (SAST). Nástroje SAST analyzují zdrojový kód nebo zkompilované verze kódu, když kód není spuštěn, aby bylo možné najít chyby zabezpečení.
 
-Proveďte DAST, nejlépe s asistencí odborníka na zabezpečení ( [Tester pro průnik](../fundamentals/pen-testing.md) nebo posuzovatel ohrožení zabezpečení). Pokud není k dispozici specialista zabezpečení, můžete DAST sami provádět pomocí webového proxy serveru a některých školení. Připojte se k DAST skeneru na začátku, abyste se ujistili, že do kódu nepřinášíte zjevné problémy zabezpečení. Seznam skenerů ohrožení zabezpečení webových aplikací najdete na webu [OWASP](https://www.owasp.org/index.php/Category:Vulnerability_Scanning_Tools) .
+Proveďte DAST, nejlépe s asistencí odborníka na zabezpečení ( [Tester pro průnik](../fundamentals/pen-testing.md) nebo posuzovatel ohrožení zabezpečení). Pokud není k dispozici specialista zabezpečení, můžete DAST sami provádět pomocí webového proxy serveru a některých školení. Připojte se k DAST skeneru na začátku, abyste se ujistili, že do kódu nepřinášíte zjevné problémy zabezpečení. Seznam skenerů ohrožení zabezpečení webových aplikací najdete na webu [OWASP](https://owasp.org/www-community/Vulnerability_Scanning_Tools) .
 
 ### <a name="perform-fuzz-testing"></a>Provést testování fuzzy
 

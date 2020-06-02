@@ -3,16 +3,16 @@ title: Informace o tom, jak auditovat obsah virtuálních počítačů
 description: Přečtěte si, jak Azure Policy používá agenta konfigurace hosta k auditování nastavení v rámci virtuálních počítačů.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6ff24f14281712497798f2c5231a8d98d7d89055
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f37364f62550a76360ea0dbb35b92f8aac67f22f
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684291"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259146"
 ---
 # <a name="understand-azure-policys-guest-configuration"></a>Vysvětlení konfigurace hosta Azure Policy
 
-Kromě auditování a [Oprava](../how-to/remediate-resources.md) prostředků Azure může Azure Policy auditovat nastavení v rámci počítače. Ověřování se provádí pomocí rozšíření Konfigurace hosta a prostřednictvím klienta. Toto rozšíření prostřednictvím klienta ověřuje nastavení, jako například:
+Azure Policy může auditovat nastavení v rámci počítače. Ověřování se provádí pomocí rozšíření Konfigurace hosta a prostřednictvím klienta. Toto rozšíření prostřednictvím klienta ověřuje nastavení, jako například:
 
 - Konfigurace operačního systému
 - Konfigurace nebo přítomnost aplikací
@@ -46,8 +46,8 @@ V následující tabulce je uveden seznam místních nástrojů používaných p
 
 |Operační systém|Nástroj pro ověření|Poznámky|
 |-|-|-|
-|Windows|[Konfigurace požadovaného stavu prostředí Windows PowerShell](/powershell/scripting/dsc/overview/overview) v2| |
-|Linux|[Nespec](https://www.chef.io/inspec/)| Pokud Ruby a Python nejsou v počítači, jsou nainstalovány pomocí rozšíření konfigurace hosta. |
+|Windows|[Konfigurace požadovaného stavu prostředí PowerShell](/powershell/scripting/dsc/overview/overview) v2| Po straně bylo načteno do složky, kterou používá Azure Policy. Nekoliduje s Windows PowerShell DSC. PowerShell Core není přidaný do systémové cesty.|
+|Linux|[Nespec](https://www.chef.io/inspec/)| Nainstaluje 2.2.61 INSPEC verze ve výchozím umístění a přidá se do systémové cesty. Dependenices pro balíček INSPEC, včetně Ruby a Pythonu, jsou nainstalované také. |
 
 ### <a name="validation-frequency"></a>Frekvence ověřování
 
@@ -87,7 +87,7 @@ Zásady **DeployIfNotExists** , které přidávají rozšíření do virtuální
 
 ## <a name="guest-configuration-definition-requirements"></a>Požadavky na definici konfigurace hosta
 
-Každý audit spouštěný pomocí konfigurace hosta vyžaduje dvě definice zásad, definici **DeployIfNotExists** a definici **AuditIfNotExists** .
+Každý audit spouštěný pomocí konfigurace hosta vyžaduje dvě definice zásad, definici **DeployIfNotExists** a definici **AuditIfNotExists** . Definice zásad **DeployIfNotExists** spravují závislosti pro provádění auditů na každém počítači.
 
 Definice zásad **DeployIfNotExists** ověří a opraví následující položky:
 

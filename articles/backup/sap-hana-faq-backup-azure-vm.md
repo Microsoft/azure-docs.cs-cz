@@ -3,12 +3,12 @@ title: Nejčastější dotazy – zálohování databází SAP HANA na virtuáln
 description: V tomto článku najdete odpovědi na běžné dotazy týkající se zálohování SAP HANA databází pomocí služby Azure Backup.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 56f98dddb00eb3ffc87eb27da73066de807a1ee1
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 08e0eaf5f744ebb0ada07a944f627cc1ff1ac496
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701009"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248800"
 ---
 # <a name="frequently-asked-questions--back-up-sap-hana-databases-on-azure-vms"></a>Nejčastější dotazy – zálohování SAP HANA databází na virtuálních počítačích Azure
 
@@ -86,6 +86,10 @@ Zajistěte, aby při obnovení byla vybrána možnost **Vynutit přepsání** .
 ### <a name="why-do-i-see-the-source-and-target-systems-for-restore-are-incompatible-error"></a>Proč se zobrazuje chyba "zdrojový a cílový systém pro obnovení jsou nekompatibilní"?
 
 Informace o tom, jaké typy obnovení se aktuálně podporují, najdete v SAP HANA Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) .
+
+### <a name="can-i-use-a-backup-of-a-database-running-on-sles-to-restore-to-a-rhel-hana-system-or-vice-versa"></a>Můžu pro obnovení do systému RHEL HANA použít zálohu databáze běžící na SLES nebo naopak?
+
+Ano, zálohy streamování aktivované v databázi HANA běžící na SLES můžete použít k obnovení do systému RHEL HANA a naopak. To znamená, že při zálohování přes streamování je možné provést obnovení mezi různými operačními systémy. Budete ale muset zajistit, aby systém HANA, do kterého chcete obnovit, a systém HANA, který se používá k obnovení, byly kompatibilní pro obnovení podle SAP. Chcete-li zjistit, které typy obnovení jsou kompatibilní, přečtěte si SAP HANA Note [1642148](https://launchpad.support.sap.com/#/notes/1642148) .
 
 ## <a name="next-steps"></a>Další kroky
 

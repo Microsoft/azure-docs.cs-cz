@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 50ce0d57ec7395c69bf65e41b67f0cb005a43cb8
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d46b9f9386e8b16d4806e054820cbd82d83ef56b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82854979"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266984"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -61,7 +61,7 @@ var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=wi
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Posílání telemetrie do Azure Portal
 
-Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromáždí řadu položek telemetrie, které jsou užitečné při určování stavu aplikace a podkladového uživatelského prostředí. Mezi ně patří:
+Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromáždí řadu položek telemetrie, které jsou užitečné při určování stavu aplikace a podkladového uživatelského prostředí. Tady jsou některé z nich:
 
 - **Nezachycené výjimky** v aplikaci, včetně informací o
     - Trasování zásobníku
@@ -80,9 +80,9 @@ Ve výchozím nastavení Application Insights JavaScript SDK automaticky shromá
 - **informace o relaci**,
 
 ### <a name="telemetry-initializers"></a>Inicializátory telemetrie
-Inicializátory telemetrie slouží k úpravě obsahu shromážděné telemetrie před jejich odesláním z prohlížeče uživatele. Můžete je také použít k zabránění odeslání určité telemetrie, a to vrácením `false`. Do instance Application Insights lze přidat více inicializátorů telemetrie a jsou spouštěny v pořadí jejich přidávání.
+Inicializátory telemetrie slouží k úpravě obsahu shromážděné telemetrie před jejich odesláním z prohlížeče uživatele. Můžete je také použít k zabránění odeslání určité telemetrie, a to vrácením `false` . Do instance Application Insights lze přidat více inicializátorů telemetrie a jsou spouštěny v pořadí jejich přidávání.
 
-Vstupní argument `addTelemetryInitializer` pro je zpětné volání, které [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer) přijímá jako argument a vrací `boolean` nebo. `void` Při vrácení `false`se položka telemetrie nepošle, jinak pokračuje k dalšímu inicializátoru telemetrie, pokud existuje, nebo se pošle do koncového bodu kolekce telemetrie.
+Vstupní argument pro `addTelemetryInitializer` je zpětné volání, které přijímá [`ITelemetryItem`](https://github.com/microsoft/ApplicationInsights-JS/blob/master/API-reference.md#addTelemetryInitializer) jako argument a vrací `boolean` nebo `void` . Při vrácení se `false` položka telemetrie nepošle, jinak pokračuje k dalšímu inicializátoru telemetrie, pokud existuje, nebo se pošle do koncového bodu kolekce telemetrie.
 
 Příklad použití inicializátorů telemetrie:
 ```ts
@@ -97,7 +97,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ```
 
 ## <a name="configuration"></a>Konfigurace
-Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s `instrumentationKey`výjimkou.
+Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
 | Name | Výchozí | Popis |
 |------|---------|-------------|
@@ -109,7 +109,7 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | maxBatchInterval | 15 000 | Doba, po kterou se má telemetrie v dávce před odesláním (milisekundy) |
 | disableExceptionTracking | false (nepravda) | Je-li nastavena hodnota true, výjimky nebudou shromažďovány. Výchozí hodnota je false. |
 | disableTelemetry | false (nepravda) | Pokud je nastaveno na true, telemetrie se neshromažďuje ani neposílá. Výchozí hodnota je false. |
-| enableDebug | false (nepravda) | Při hodnotě true se **interní** data ladění vydávají jako výjimka **namísto** zaznamenávání bez ohledu na nastavení protokolování SDK. Výchozí hodnota je false. <br>***Poznámka:*** Povolení tohoto nastavení způsobí, že dojde k zahození telemetrie při každém výskytu vnitřní chyby. To může být užitečné, pokud chcete rychle identifikovat problémy s konfigurací nebo využitím sady SDK. Pokud nechcete při ladění přijít o telemetrii, zvažte použití `consoleLoggingLevel` nebo `telemetryLoggingLevel` místo. `enableDebug` |
+| enableDebug | false (nepravda) | Při hodnotě true se **interní** data ladění vydávají jako výjimka **namísto** zaznamenávání bez ohledu na nastavení protokolování SDK. Výchozí hodnota je false. <br>***Poznámka:*** Povolení tohoto nastavení způsobí, že dojde k zahození telemetrie při každém výskytu vnitřní chyby. To může být užitečné, pokud chcete rychle identifikovat problémy s konfigurací nebo využitím sady SDK. Pokud nechcete při ladění přijít o telemetrii, zvažte použití `consoleLoggingLevel` nebo `telemetryLoggingLevel` místo `enableDebug` . |
 | loggingLevelConsole | 0 | Zaznamená **vnitřní** chyby Application Insights do konzoly. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
 | loggingLevelTelemetry | 1 | Odesílá **interní** chyby Application Insights jako telemetrii. <br>0: vypnuto, <br>1: jenom kritické chyby, <br>2: vše (chyby & upozornění) |
 | diagnosticLogInterval | 10000 | vnitřních Interval dotazování (v MS) pro interní frontu protokolování |
@@ -136,10 +136,10 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | appId | null | AppId se používá pro korelaci mezi závislostmi AJAX, které probíhají na straně klienta s požadavky na straně serveru. Pokud je zapnuté rozhraní API pro signalizaci, nedá se použít automaticky, ale v konfiguraci je možné ho nastavit ručně. Výchozí hodnota je null. |
 | enableCorsCorrelation | false (nepravda) | V případě hodnoty true SDK přidá dvě hlavičky (' Request-ID ' a ' Request-Context ') do všech požadavků CORS ke sladění odchozích závislostí AJAX s odpovídajícími požadavky na straně serveru. Výchozí hodnota je false. |
 | namePrefix | nedefinované | Volitelná hodnota, která bude použita jako přípona názvu pro localStorage a název souboru cookie.
-| enableAutoRouteTracking | false (nepravda) | Automatické sledování změn směrování v aplikacích s jednou stránkou (SPA). Pokud má hodnotu true, každá změna trasy pošle nové PageView Application Insights. Změny trasy algoritmu`example.com/foo#bar`hash () jsou také zaznamenávány jako nová zobrazení stránky.
+| enableAutoRouteTracking | false (nepravda) | Automatické sledování změn směrování v aplikacích s jednou stránkou (SPA). Pokud má hodnotu true, každá změna trasy pošle nové PageView Application Insights. Změny trasy algoritmu hash ( `example.com/foo#bar` ) jsou také zaznamenávány jako nová zobrazení stránky.
 | enableRequestHeaderTracking | false (nepravda) | Pokud je nastaveno na true, jsou sledovány hlavičky požadavku Fetch & AJAX, výchozí hodnota je false.
 | enableResponseHeaderTracking | false (nepravda) | Pokud je nastaveno na true, jsou sledovány hlavičky odpovědi požadavku načítající & AJAX, výchozí hodnota je false.
-| distributedTracingMode | `DistributedTracingModes.AI` | Nastaví režim distribuovaného trasování. Pokud je nastaven režim AI_AND_W3C nebo W3C, budou se vygenerovat hlavičky kontextu trasování W3C (traceparent/tracestate) a budou zahrnuty do všech odchozích požadavků. AI_AND_W3C se poskytuje kvůli zpětné kompatibilitě se všemi staršími službami Application Insights instrumentované služby.
+| distributedTracingMode | `DistributedTracingModes.AI` | Nastaví režim distribuovaného trasování. Pokud je nastaven režim AI_AND_W3C nebo W3C, budou se vygenerovat hlavičky kontextu trasování W3C (traceparent/tracestate) a budou zahrnuty do všech odchozích požadavků. AI_AND_W3C se poskytuje kvůli zpětné kompatibilitě se všemi staršími službami Application Insights instrumentované služby. Viz příklad [zde](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps).
 
 ## <a name="single-page-applications"></a>Jednostránkové aplikace
 
@@ -148,11 +148,11 @@ Ve výchozím nastavení tato sada SDK **nezpracovává změny** směrování na
 V současné době nabízíme samostatný [modul plug-in pro reakce](#react-extensions), který můžete inicializovat pomocí této sady SDK. Bude také plnit sledování změn směrování pro vás a shromažďovat [Další reakce na konkrétní telemetrii](https://github.com/microsoft/ApplicationInsights-JS/blob/17ef50442f73fd02a758fbd74134933d92607ecf/extensions/applicationinsights-react-js/README.md).
 
 > [!NOTE]
-> Použijte `enableAutoRouteTracking: true` pouze v případě, že **nepoužíváte** modul plug-in reakce. Obě jsou schopné posílat nové PageViews při změně trasy. Pokud jsou obě povolené, může se odeslat duplicitní PageViews.
+> Použijte `enableAutoRouteTracking: true` pouze v případě, **not** že nepoužíváte modul plug-in reakce. Obě jsou schopné posílat nové PageViews při změně trasy. Pokud jsou obě povolené, může se odeslat duplicitní PageViews.
 
 ## <a name="configuration-autotrackpagevisittime"></a>Konfigurace: autoTrackPageVisitTime
 
-Nastavením `autoTrackPageVisitTime: true`se sleduje čas strávený uživateli na každé stránce. V každém novém PageView je doba, kterou uživatel strávil na *Předchozí* stránce, odeslána jako [vlastní metrika](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) s názvem `PageVisitTime`. Tato vlastní metrika je zobrazitelná v [Průzkumník metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) jako metrika založená na protokolu.
+Nastavením se `autoTrackPageVisitTime: true` sleduje čas strávený uživateli na každé stránce. V každém novém PageView je doba, kterou uživatel strávil na *Předchozí* stránce, odeslána jako [vlastní metrika](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-custom-overview) s názvem `PageVisitTime` . Tato vlastní metrika je zobrazitelná v [Průzkumník metrik](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-getting-started) jako metrika založená na protokolu.
 
 ## <a name="react-extensions"></a>Rozšíření reakce
 
@@ -183,7 +183,7 @@ Vyberte **prohlížeč** a pak zvolte **selhání** nebo **výkon**.
 
 ### <a name="analytics"></a>Analýzy
 
-Chcete-li zadat dotaz na telemetrii shromážděnou sadou JavaScript SDK, vyberte tlačítko **Zobrazit v protokolech (Analytics)** . Přidáním `where` příkazu `client_Type == "Browser"`se zobrazí pouze data z sady JavaScript SDK a všechny telemetrie na straně serveru shromážděné jinými sadami SDK budou vyloučeny.
+Chcete-li zadat dotaz na telemetrii shromážděnou sadou JavaScript SDK, vyberte tlačítko **Zobrazit v protokolech (Analytics)** . Přidáním `where` příkazu `client_Type == "Browser"` se zobrazí pouze data z sady JavaScript SDK a všechny telemetrie na straně serveru shromážděné jinými sadami SDK budou vyloučeny.
  
 ```kusto
 // average pageView duration by name
@@ -220,7 +220,7 @@ Pro zjednodušené prostředí můžete místo toho nainstalovat základní verz
 ```
 npm i --save @microsoft/applicationinsights-web-basic
 ```
-Tato verze je dodávána s minimálním počtem funkcí a funkcemi, které vám závisí na jejich sestavování podle potřeby. Například neprovede žádnou Autocollection (nezachycené výjimky, AJAX atd.). Tato verze neobsahuje rozhraní API pro odesílání určitých typů `trackTrace`telemetrie `trackException`, například, atd., takže budete muset zadat vlastní obálku. K dispozici je `track`jediné rozhraní API. Tady se nachází [Ukázka](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) .
+Tato verze je dodávána s minimálním počtem funkcí a funkcemi, které vám závisí na jejich sestavování podle potřeby. Například neprovede žádnou Autocollection (nezachycené výjimky, AJAX atd.). Tato verze neobsahuje rozhraní API pro odesílání určitých typů telemetrie, například, `trackTrace` `trackException` atd., takže budete muset zadat vlastní obálku. K dispozici je jediné rozhraní API `track` . Tady se nachází [Ukázka](https://github.com/Azure-Samples/applicationinsights-web-sample1/blob/master/testlightsku.html) .
 
 ## <a name="examples"></a>Příklady
 
@@ -231,10 +231,10 @@ Příklady spustitelný naleznete v tématu [Application Insights JavaScript SDK
 Přerušující se změny v verzi sady SDK v2:
 - Pro lepší signatury rozhraní API se některá volání rozhraní API, například trackPageView a trackException, aktualizovala. Spuštění v aplikaci Internet Explorer 8 a starších verzích prohlížeče se nepodporuje.
 - Obálka telemetrie má název pole a strukturu, které se mění kvůli aktualizacím schématu dat.
-- `context.operation` Přesunuto `context.telemetryTrace`do. Některá pole se také změnila`operation.id` --> `telemetryTrace.traceID`().
-  - Chcete-li ručně aktualizovat aktuální ID PageView (například v aplikacích SPA), použijte `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()`.
+- Přesunuto `context.operation` do `context.telemetryTrace` . Některá pole se také změnila ( `operation.id`  -->  `telemetryTrace.traceID` ).
+  - Chcete-li ručně aktualizovat aktuální ID PageView (například v aplikacích SPA), použijte `appInsights.properties.context.telemetryTrace.traceID = Util.generateW3CId()` .
     > [!NOTE]
-    > Aby ID trasování bylo jedinečné, kde jste předtím používali `Util.newId()`, teď použijte `Util.generateW3CId()`. Oba nakonec mají ID operace.
+    > Aby ID trasování bylo jedinečné, kde jste předtím používali `Util.newId()` , teď použijte `Util.generateW3CId()` . Oba nakonec mají ID operace.
 
 Pokud používáte aktuální sadu SDK 1.0.20 (Application Insights produkční SDK) a chcete zjistit, jestli nová sada SDK funguje v modulu runtime, aktualizujte adresu URL v závislosti na vašem aktuálním scénáři načítání sady SDK.
 
@@ -243,7 +243,7 @@ Pokud používáte aktuální sadu SDK 1.0.20 (Application Insights produkční 
    "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js"
    ```
 
-- scénář npm: volání `downloadAndSetup` ke stažení úplného skriptu APPLICATIONINSIGHTS z CDN a jeho inicializaci pomocí klíče instrumentace:
+- scénář npm: volání `downloadAndSetup` ke stažení úplného skriptu ApplicationInsights z CDN a jeho inicializaci pomocí klíče instrumentace:
 
    ```ts
    appInsights.downloadAndSetup({

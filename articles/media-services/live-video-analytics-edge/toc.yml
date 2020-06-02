@@ -1,0 +1,82 @@
+- name: Dokumentace k analýze živého videa ve službě IoT Edge (Preview)
+  href: index.yml
+- name: Přepnout na dokumentaci ke službě Azure Media Services v3
+  href: ../latest/index.yml
+- name: Přehled
+  items:
+    - name: Informace k analýze živého videa ve službě IoT Edge
+      href: overview.md
+    - name: Terminologie
+      href: terminology.md
+    - name: Co je nového
+      items:
+        - name: "Poznámky k\_verzi"
+          href: release-notes.md
+- name: Rychlé starty
+  items:
+    - name: Začínáme – analýza živého videa ve službě IoT Edge
+      href: get-started-detect-motion-emit-events-quickstart.md
+    - name: 'Detekce pohybu, nahrávání videa do Media Services'
+      href: detect-motion-record-video-clips-media-services-quickstart.md
+    - name: Detekce pohybu a generování událostí
+      href: detect-motion-emit-events-quickstart.md
+    - name: 'Detekce pohybu, nahrávání videa na hraničních zařízeních'
+      href: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - name: Spuštění analýzy živého videa s využitím vlastního modelu
+      href: use-your-model-quickstart.md
+- name: Kurzy
+  items:
+    - name: Nepřetržité nahrávání videa
+      href: continuous-video-recording-tutorial.md
+    - name: Nahrávání videa na základě událostí
+      href: event-based-video-recording-tutorial.md
+    - name: Přehrávání záznamů z několika dnů
+      href: playback-multi-day-recordings-tutorial.md
+- name: ukázky
+  items:
+    - name: 'Ukázky v C# pro analýzu živého videa ve službě IoT Edge'
+      href: 'https://github.com/Azure-Samples/live-video-analytics-iot-edge-csharp'
+- name: Koncepty
+  items:
+    - name: Graf médií
+      href: media-graph-concept.md
+    - name: Záznam videa
+      href: video-recording-concept.md
+    - name: Přehrávání videa
+      href: video-playback-concept.md
+    - name: Scénáře
+      items:
+        - name: Nepřetržité nahrávání videa
+          href: continuous-video-recording-concept.md
+        - name: Nahrávání videa na základě událostí
+          href: event-based-video-recording-concept.md
+        - name: Analýza živého videa bez nahrávání videa
+          href: analyze-live-video-concept.md
+- name: Návody
+  items:
+    - name: Vytvoření vlastní role Azure Resource Manageru
+      href: create-custom-azure-resource-manager-role-how-to.md
+    - name: Nasazení do zařízení IoT Edge
+      href: deploy-iot-edge-device.md
+    - name: Monitorování a protokolování
+      href: monitoring-logging.md
+    - name: Přehrávání záznamu
+      href: playback-recordings-how-to.md
+    - name: Správa zásad nahrávání
+      href: manage-recording-policy-how-to.md
+    - name: Analýza živého videa s využitím AI dle vašeho výběru
+      href: analyze-with-ai-your-choice-how-to.md
+    - name: Řešení potíží
+      href: troubleshoot-how-to.md
+- name: Referenční informace
+  items:
+    - name: Přímé metody
+      href: direct-methods.md
+    - name: Schéma konfigurace dvojčat modulů
+      href: module-twin-configuration-schema.md
+    - name: Kvóty a omezení
+      href: quotas-limitations.md
+    - name: Nejčastější dotazy
+      href: faq.md
+    - name: Připravenost na produkční prostředí a osvědčené postupy
+      href: production-readiness.md

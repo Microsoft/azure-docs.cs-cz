@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: c51f2db698f30368c9d4090d3d571fa0c131178a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f79e257eb61cebe000ed9ab831a4da4a5748132
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79299052"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267830"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Použití privátních koncových bodů pro Azure Storage
 
@@ -79,17 +79,17 @@ Při překladu adresy URL koncového bodu úložiště mimo virtuální síť s 
 
 V zobrazeném příkladu se v záznamech o prostředcích DNS pro účet úložiště "StorageAccountA" po vyřešení mimo virtuální síť hostující soukromý koncový bod:
 
-| Název                                                  | Typ  | Hodnota                                                 |
+| Name                                                  | Typ  | Hodnota                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
-| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<veřejný koncový bod služby úložiště\>                   |
-| \<veřejný koncový bod služby úložiště\>                   | A     | \<Veřejná IP adresa služby úložiště\>                 |
+| ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
+| \<storage service public endpoint\>                   | A     | \<storage service public IP address\>                 |
 
 Jak už jsme uvedli, můžete odepřít nebo řídit přístup pro klienty mimo virtuální síť prostřednictvím veřejného koncového bodu pomocí brány firewall úložiště.
 
 Záznamy prostředků DNS pro StorageAccountA, když je klient ve virtuální síti hostující soukromý koncový bod, budou:
 
-| Název                                                  | Typ  | Hodnota                                                 |
+| Name                                                  | Typ  | Hodnota                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | zákazníka 10.1.1.5                                              |
@@ -137,7 +137,7 @@ Toto omezení je výsledkem změn DNS provedených při vytváření privátníh
 
 ### <a name="network-security-group-rules-for-subnets-with-private-endpoints"></a>Pravidla skupin zabezpečení sítě pro podsítě s privátními koncovými body
 
-V současné době nemůžete konfigurovat pravidla [skupiny zabezpečení sítě](../../virtual-network/security-overview.md) (NSG) a trasy definované uživatelem pro privátní koncové body. Pravidla NSG použitá pro podsíť hostující soukromý koncový bod se aplikují na soukromý koncový bod. Omezené řešení tohoto problému je implementace pravidel přístupu pro privátní koncové body ve zdrojových podsítích, i když tento přístup může vyžadovat vyšší režijní náklady na správu.
+V současné době nemůžete konfigurovat pravidla [skupiny zabezpečení sítě](../../virtual-network/security-overview.md) (NSG) a trasy definované uživatelem pro privátní koncové body. Pravidla NSG použitá pro podsíť hostující soukromý koncový bod se aplikují jenom na jiné koncové body (například síťové adaptéry) než privátní koncový bod. Omezené řešení tohoto problému je implementace pravidel přístupu pro privátní koncové body ve zdrojových podsítích, i když tento přístup může vyžadovat vyšší režijní náklady na správu.
 
 ## <a name="next-steps"></a>Další kroky
 

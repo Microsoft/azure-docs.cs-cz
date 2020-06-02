@@ -10,12 +10,12 @@ ms.custom: subject-armqs
 ms.workload: identity
 ms.date: 05/21/2020
 ms.author: rolyon
-ms.openlocfilehash: 56d2647c3da84e9534220e7b237ea24b2b45e8b3
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 4cb25b0398dca05f32f944962e2fc8630ea10870
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83854574"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267643"
 ---
 # <a name="quickstart-add-an-azure-role-assignment-using-an-azure-resource-manager-template"></a>Rychlý Start: přidání přiřazení role Azure pomocí šablony Azure Resource Manager
 
@@ -43,7 +43,7 @@ Chcete-li přidat přiřazení role, je nutné zadat tři prvky: objekt zabezpe�
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
 1. Určete svou e-mailovou adresu, která je přidružená k vašemu předplatnému Azure. Nebo určete e-mailovou adresu jiného uživatele ve vašem adresáři.
 

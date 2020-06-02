@@ -390,7 +390,7 @@
           href: voice-assistants.md
     - name: Vlastní příkazy (Preview)
       items:
-        - name: Co je aplikace Vlastní příkazy?
+        - name: Co jsou vlastní příkazy?
           href: custom-commands.md
         - name: Rychlé starty
           items:
@@ -454,6 +454,18 @@
           href: speech-devices-sdk-kws-guidelines.md
         - name: Rozpoznávání vlastních klíčových slov
           href: speech-devices-sdk-create-kws.md
+- name: Rozpoznávání mluvčího
+  items:
+    - name: Přehled
+      items:
+        - name: Co je rozpoznávání mluvčího?
+          href: speaker-recognition-overview.md
+    - name: Referenční informace
+      items:
+        - name: Rozhraní REST API
+          items:
+            - name: Rozhraní REST API pro rozpoznávání řeči
+              href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hostování
   items:
     - name: Dokumentace k hostování

@@ -11,6 +11,8 @@
       href: virtual-machines-availability-set-supportability.md
 - name: Pokyny k nasazení virtuálního počítače
   items:
+    - name: Upgrade na SLES 15 SP1
+      href: linux-upgrade-suse-15sp1.md
     - name: Nová nasazení virtuálních počítačů
       items:
         - name: Linux

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/19/2019
-ms.openlocfilehash: 99c8d4e7e5263b8a7caf30833a899976d3cc829b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 935fba3869367bff971e6067b22b05b3a0d9119f
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133702"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266878"
 ---
 # <a name="monitor-and-tune-azure-database-for-postgresql---single-server"></a>Monitorování a ladění Azure Database for PostgreSQL – jeden server
 Sledování dat o vašich serverech vám pomůže při řešení potíží a optimalizaci pro vaše úlohy. Azure Database for PostgreSQL poskytuje různé možnosti monitorování, které poskytují přehled o chování serveru.
@@ -74,7 +74,7 @@ Funkce [doporučení k výkonu](concepts-performance-recommendations.md) identif
 Podrobné informace o tom, jak vytvořit **výstrahy týkající se stavu služby**, najdete [v tématu vytváření výstrah protokolu aktivit u oznámení služby](../service-health/alerts-activity-log-service-notifications.md).
 
 > [!IMPORTANT]
-> Plánovaná oznámení o údržbě jsou momentálně ve verzi Preview.
+> Plánovaná oznámení o údržbě jsou v tuto chvíli k dispozici ve verzi Preview ve všech oblastech **kromě** středozápadní USA
 
 ## <a name="next-steps"></a>Další kroky
 - Pokyny k vytvoření výstrahy na metrikě najdete v tématu [Nastavení výstrah](howto-alert-on-metric.md) .

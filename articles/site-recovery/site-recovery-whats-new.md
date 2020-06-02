@@ -2,13 +2,13 @@
 title: Co je nového v Azure Site Recovery
 description: Obsahuje souhrn nových funkcí a nejnovější aktualizace služby Azure Site Recovery.
 ms.topic: conceptual
-ms.date: 03/03/2020
-ms.openlocfilehash: abb1592bcacf025e9a052d7a9222f6fb3d2b72d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.openlocfilehash: e0015aa9de51e3cb43473a079d09698fcbeef9a0
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257430"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259214"
 ---
 # <a name="whats-new-in-site-recovery"></a>Co je nového ve službě Site Recovery
 
@@ -22,16 +22,27 @@ Pro Site Recovery komponenty podporujeme N-4 verze, kde N je nejnovější vydan
 
 **Aktualizace** |  **Sjednocené nastavení** | **Vajíčka konfiguračního serveru** | **Agent služby mobility** | **Poskytovatel Site Recovery** | **Agent Recovery Services**
 --- | --- | --- | --- | --- | ---
+[Kumulativní aktualizace 46](https://support.microsoft.com/help/4564347/) | 9.33.5598.1 | 5.1.5900.0 | 9.33.5598.1 | 5.1.5900.0 | 2.0.9175.0
 [Kumulativní aktualizace 45](https://support.microsoft.com/help/4550047/) | 9.32.5487.1 | 5.1.5400.0 | 9.32.5487.1 | 5.1.5400.0 | 2.0.9165.0
 [Kumulativní aktualizace 43](https://support.microsoft.com/help/4537047/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [Kumulativní aktualizace 42](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [Kumulativní aktualizace 41](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
-[Kumulativní aktualizace 40](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 
 [Přečtěte si další informace](service-updates-how-to.md) o instalaci a podpoře aktualizací.
 
 > [!NOTE]
 > Kumulativní aktualizace 44 není v tabulce zobrazená, protože neobsahovala aktualizace pro poskytovatele Site Recovery a agenty.
+
+## <a name="updates-june-2020"></a>Aktualizace (červen 2020)
+
+### <a name="update-rollup-46"></a>Kumulativní aktualizace 46
+
+[Kumulativní aktualizace 46](https://support.microsoft.com/help/4564347/update-rollup-46-for-azure-site-recovery) poskytuje následující aktualizace:
+
+**Aktualizace** | **Zobrazí**
+--- | ---
+**Zprostředkovatelé a agenti** | Aktualizace Site Recovery agentů a zprostředkovatelů, jak je popsáno v souhrnu.
+**Opravy a vylepšení problémů** | Řada oprav a vylepšení, jak je popsáno v souhrnu.
 
 ## <a name="updates-march-2020"></a>Aktualizace (březen 2020)
 

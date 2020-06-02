@@ -56,6 +56,10 @@
           href: howto-legacy-exchange-portal.md
         - name: Azure PowerShell
           href: howto-legacy-exchange-powershell.md
+    - name: Vytvoření nebo úprava peeringu typu Exchange se serverem trasy
+      items:
+        - name: Portál
+          href: how-to-exchange-route-server-portal.md
 - name: Referenční informace
   items:
     - name: Azure CLI

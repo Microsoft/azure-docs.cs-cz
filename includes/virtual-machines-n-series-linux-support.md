@@ -8,25 +8,22 @@ ms.topic: include
 ms.date: 02/11/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5dccdb6c357635e78b076b1560bf6c0c62c03753
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 279f4cb1d8891f64fb01f4f8abb6b23a004c2b4d
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77135100"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84269145"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Podporované distribuce a ovladače
 
 ### <a name="nvidia-cuda-drivers"></a>Ovladače NVIDIA CUDA
 
-Ovladače NVIDIA CUDA pro virtuální počítače s NC, NCv2, NCv3, ND a NDv2-Series (volitelné pro řady NV) se podporují jenom v distribucích systému Linux uvedených v následující tabulce. Informace o ovladači CUDA jsou aktuální v okamžiku publikování. Nejnovější ovladače CUDA najdete na webu [NVIDIA](https://developer.nvidia.com/cuda-zone) . Ujistěte se, že jste nainstalovali nebo upgradovali nejnovější ovladače CUDA pro vaši distribuci. 
+Ovladače NVIDIA CUDA pro virtuální počítače s NC, NCv2, NCv3, ND a NDv2-Series (volitelné pro řady NV) se podporují jenom v distribucích systému Linux uvedených v následující tabulce. Informace o ovladači CUDA jsou aktuální v okamžiku publikování. Nejnovější ovladače CUDA a podporované operační systémy najdete na webu [NVIDIA](https://developer.nvidia.com/cuda-zone) . Ujistěte se, že jste nainstalovali nebo upgradovali nejnovější ovladače CUDA pro vaši distribuci. 
 
 > [!TIP]
 > Jako alternativu k ruční instalaci ovladače CUDA na virtuálním počítači se systémem Linux můžete nasadit image Azure [Data Science Virtual Machine](../articles/machine-learning/data-science-virtual-machine/overview.md) . Edice DSVM pro Ubuntu 16,04 LTS nebo CentOS 7,4: předinstalace ovladačů NVIDIA CUDA, CUDA s hloubkou neuronové síťové knihovny a dalších nástrojů.
 
-| Distribuce | Ovladač |
-| --- | -- | 
-| Ubuntu 16,04 LTS, 18,04 LTS<br/><br/> Red Hat Enterprise Linux 7,3, 7,4, 7,5, 7,6<br/><br/> CentOS-based 7,3, 7,4, 7,5, 7,6, CentOS 7,4 prostředí HPC | NVIDIA CUDA 10,1, R418 Branch ovladačů |
 
 ### <a name="nvidia-grid-drivers"></a>Ovladače pro MŘÍŽKu NVIDIA
 
@@ -34,7 +31,7 @@ Microsoft redistribuuje instalační programy ovladačů NVIDIA GRID pro virtuá
 
 | Distribuce | Ovladač |
 | --- | -- |
-|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,0 až 7,6<br/><br/>CentOS-based 7,0 až 7,6<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 10,1, R440 větví ovladače|
+|Ubuntu 18,04 LTS<br/><br/>Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7,0 až 7,7<br/><br/>CentOS-based 7,0 až 7,7<br/><br/>SUSE Linux Enterprise Server 12 SP2 | NVIDIA GRID 10,1, R440 větví ovladače|
 
 > [!WARNING] 
 > Instalace softwaru třetích stran na produkty Red Hat může mít vliv na podmínky podpory Red Hat. Informace najdete v [článku znalostní báze Red Hat](https://access.redhat.com/articles/1067).

@@ -1,6 +1,7 @@
 ---
 title: Použití sady Visual Studio s .NET a C# k dotazování
-description: Pomocí sady Visual Studio můžete vytvořit aplikaci v jazyce C#, která se připojí k databázi v Azure SQL Database a provede dotaz pomocí příkazů jazyka Transact-SQL.
+description: Pomocí sady Visual Studio můžete vytvořit aplikaci v jazyce C#, která se připojuje k databázi ve službě Azure SQL Database nebo Azure SQL Managed instance a spouští dotazy.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,16 +11,16 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 12/31/2019
-ms.openlocfilehash: 37567e09fc87a8677934ede4f110d029902c1373
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 94f005ee4b2542e4cc0908880d589a2ee6a4d798
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189568"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267422"
 ---
-# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database"></a>Rychlý Start: použití .NET a C# v aplikaci Visual Studio k připojení a dotazování databáze v Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-net-and-c-in-visual-studio-to-connect-to-and-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití .NET a C# v aplikaci Visual Studio k připojení a dotazování databáze ve službě Azure SQL Database nebo Azure SQL Managed instance
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 V tomto rychlém startu se dozvíte, jak používat kód [.NET Framework](https://www.microsoft.com/net/) a C# v aplikaci Visual Studio k dotazování databáze v Azure SQL Database s příkazy jazyka Transact-SQL.
 

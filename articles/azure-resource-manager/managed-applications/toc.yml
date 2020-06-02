@@ -46,6 +46,8 @@
           href: test-createuidefinition.md
         - name: Vyžádání přístupu za běhu
           href: request-just-in-time-access.md
+        - name: Použití existující virtuální sítě
+          href: existing-vnet-integration.md
         - name: Aktualizace spravovaných prostředků
           href: update-managed-resources.md
         - name: Použití portálu k publikování definice aplikace

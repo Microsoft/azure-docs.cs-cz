@@ -12,12 +12,12 @@ ms.date: 04/30/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 51567ff07930599b0c13d8a9546ebeca396c4b45
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: dabaecfd31ac9ec6250e7b482fde7699a13df044
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83993537"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266589"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Kódy chyb ověřování a autorizace Azure AD
 
@@ -48,7 +48,7 @@ Tady je Ukázková chybová odpověď:
 }
 ```
 
-| Parametr         | Description    |
+| Parametr         | Popis    |
 |-------------------|----------------|
 | `error`       | Řetězec kódu chyby, který lze použít ke klasifikaci typů chyb, ke kterým dojde, a měl by být použit k reakci na chyby. |
 | `error_description` | Konkrétní chybová zpráva, která může vývojářům pomáhat najít hlavní příčinu chyby ověřování. Nikdy nepoužívejte toto pole k reakci na chybu ve vašem kódu. |
@@ -60,10 +60,10 @@ Tady je Ukázková chybová odpověď:
 
 `error`Pole má několik možných hodnot – Přečtěte si odkazy na dokumentaci k protokolu a specifikace OAuth 2,0, abyste se dozvěděli víc o specifických chybách (například `authorization_pending` v [toku kódu zařízení](v2-oauth2-device-code.md)) a jak na ně reagovat.  Zde jsou uvedeny některé běžné položky:
 
-| Kód chyby         | Description        | Akce klienta    |
+| Kód chyby         | Popis        | Akce klienta    |
 |--------------------|--------------------|------------------|
 | `invalid_request`  | Chyba protokolu, například chybějící požadovaný parametr. | Opravte a odešlete požadavek znovu.|
-| `invalid_grant`    | Některé materiály pro ověřování (ověřovací kód, token aktualizace, přístupový token, PKCE) byly neplatné, neanalyzovatelné, chybějící nebo jinak nedostupné. | Vyzkoušejte nový požadavek na `/authorize` koncový bod, abyste získali nový autorizační kód.  Zvažte možnost zkontrolovat a ověřit používání protokolů v této aplikaci. |
+| `invalid_grant`    | Některé materiály pro ověřování (ověřovací kód, token aktualizace, přístupový token, PKCE) byly neplatné, neanalyzovatelné, chybějící nebo jinak nepoužitelné. | Vyzkoušejte nový požadavek na `/authorize` koncový bod, abyste získali nový autorizační kód.  Zvažte možnost zkontrolovat a ověřit používání protokolů v této aplikaci. |
 | `unauthorized_client` | Ověřený klient nemá autorizaci k použití tohoto autorizačního typu udělení. | K tomu obvykle dochází, když klientská aplikace není registrovaná v Azure AD nebo není přidaná do tenanta Azure AD uživatele. Aplikace může uživatele vyzvat k instalaci aplikace a jejímu přidání do Azure AD. |
 | `invalid_client` | Ověření klienta se nezdařilo.  | Pověření klienta nejsou platná. Chcete-li opravit, správce aplikace aktualizuje pověření.   |
 | `unsupported_grant_type` | Autorizační Server nepodporuje typ udělení autorizace. | Změňte typ udělení v žádosti. Tento typ chyby by měl nastat pouze během vývoje a zjištěn při počátečním testování. |
@@ -78,7 +78,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 
 ## <a name="aadsts-error-codes"></a>Kódy chyb AADSTS
 
-| Chyba | Description |
+| Chyba | Popis |
 |---|---|
 | AADSTS16000 | SelectUserAccount – Toto je přerušení vyvolané službou Azure AD, které vede k uživatelskému rozhraní, které umožňuje uživateli vybrat z několika platných relací jednotného přihlašování. Tato chyba je poměrně častá a může se vrátit do aplikace, pokud `prompt=none` je zadaná. |
 | AADSTS16001 | UserAccountSelectionInvalid – Tato chyba se zobrazí, pokud uživatel klikne na dlaždici, že byla logika výběru relace odmítnuta. Když se aktivuje Tato chyba, umožní uživateli obnovení z aktualizovaného seznamu dlaždic nebo relací nebo výběrem jiného účtu. K této chybě může dojít z důvodu vady kódu nebo stavu časování. |
@@ -126,8 +126,8 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS50059 | MissingTenantRealmAndNoUserInformationProvided – informace identifikující tenant se v požadavku nenašly ani nevedly v zadaných přihlašovacích údajích. Uživatel může požádat správce tenanta, aby vám tento problém mohl vyřešit. |
 | AADSTS50061 | SignoutInvalidRequest – žádost o odhlášení není platná. |
 | AADSTS50064 | CredentialAuthenticationError – ověření přihlašovacích údajů u uživatelského jména nebo hesla se nezdařilo. |
-| AADSTS50068 | SignoutInitiatorNotParticipant – registrace se nezdařila. Aplikace, která iniciovala odhlášení, není účastníkem aktuální relace. |
-| AADSTS50070 | SignoutUnknownSessionIdentifier – registrace se nezdařila. Požadavek na registraci zadal identifikátor názvu, který neodpovídá existujícím relacím. |
+| AADSTS50068 | SignoutInitiatorNotParticipant – odhlášení se nezdařilo. Aplikace, která iniciovala odhlášení, není účastníkem aktuální relace. |
+| AADSTS50070 | SignoutUnknownSessionIdentifier – odhlášení se nezdařilo. Požadavek odhlášení zadal identifikátor názvu, který neodpovídá existujícím relacím. |
 | AADSTS50071 | SignoutMessageExpired – vypršela platnost žádosti o odhlášení. |
 | AADSTS50072 | UserStrongAuthEnrollmentRequiredInterrupt – uživatel se musí zaregistrovat pro druhé faktor ověřování (Interactive). |
 | AADSTS50074 | UserStrongAuthClientAuthNRequiredInterrupt – vyžaduje se silné ověřování a uživatel nevyhověl při ověřování MFA. |
@@ -173,14 +173,14 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS50187 | DeviceInformationNotProvided – službě se nepodařilo provést ověřování zařízení. |
 | AADSTS50196 | LoopDetected – zjistila se smyčka klienta. Zkontrolujte logiku aplikace a ujistěte se, že je naimplementovaná mezipaměť tokenů a že se chybové stavy zpracovávají správně.  Aplikace provedla příliš krátkou řadu stejných požadavků v příliš krátkém období, což značí, že je v chybném stavu, nebo se jedná o urážlivý požadavek na tokeny. |
 | AADSTS50197 | ConflictingIdentities – nepovedlo se najít uživatele. Zkuste se znovu přihlásit. |
-| AADSTS50199 | CmsiInterrupt – z bezpečnostních důvodů je pro tento požadavek vyžadováno potvrzení uživatele.  Vzhledem k tomu, že se jedná o chybu "interaction_required", klient by měl provést interaktivní ověřování.  K tomu dochází, protože k vyžádání tokenu pro nativní aplikaci bylo použito systémové rozhraní WebView – uživatel musí být vyzván, aby požádal o to, jestli se jednalo o aplikaci, ke které se přihlašuje.|
+| AADSTS50199 | CmsiInterrupt – z bezpečnostních důvodů je pro tento požadavek vyžadováno potvrzení uživatele.  Vzhledem k tomu, že se jedná o chybu "interaction_required", klient by měl provést interaktivní ověřování.  K tomu dochází, protože k vyžádání tokenu pro nativní aplikaci bylo použito systémové rozhraní WebView – uživatel musí být vyzván, aby požádal o to, jestli se jednalo o aplikaci, ke které se přihlašuje. Chcete-li se této výzvě vyhnout, identifikátor URI přesměrování by měl být součástí následujícího seznamu bezpečných: <br />http://<br />https://<br />msauth://(jenom iOS)<br />msauthv2://(jenom iOS)<br />Chrome – rozšíření://(jenom Prohlížeč Desktop Chrome) |
 | AADSTS51000 | RequiredFeatureNotEnabled – Tato funkce je zakázaná. |
 | AADSTS51001 | Pomocný parametr DomainHintMustbePresent-Domain musí být přítomen u místního identifikátoru zabezpečení nebo místního hlavního názvu uživatele (UPN). |
 | AADSTS51004 | UserAccountNotInDirectory – uživatelský účet v adresáři neexistuje. |
 | AADSTS51005 | TemporaryRedirect – ekvivalent stavu HTTP 307, který indikuje, že požadované informace jsou umístěné na identifikátoru URI, který je zadaný v hlavičce umístění. Když obdržíte tento stav, použijte hlavičku umístění přidruženou k odpovědi. Pokud byla metoda původní žádosti POST, přesměrovaný požadavek použije také metodu POST. |
 | AADSTS51006 | ForceReauthDueToInsufficientAuth – vyžaduje se integrované ověřování systému Windows. Uživatel přihlášený pomocí tokenu relace, u kterého chybí deklarace identity integrovaného ověřování systému Windows. Požádejte uživatele, aby se znovu přihlásil. |
 | AADSTS52004 | DelegationDoesNotExistForLinkedIn – uživatel neposkytl souhlas pro přístup k prostředkům LinkedIn. |
-| AADSTS53000 | DeviceNotCompliant – zásada podmíněného přístupu vyžaduje vyhovující zařízení a zařízení nedodržuje předpisy. Uživatel musí zaregistrovat své zařízení pomocí schváleného poskytovatele MDM, jako je Intune. |
+| AADSTS53000 | DeviceNotCompliant – zásada podmíněného přístupu vyžaduje vyhovující zařízení a zařízení nedodržuje předpisy. Uživatel musí své zařízení zaregistrovat u schváleného zprostředkovatele správy mobilních zařízení, jako je Intune. |
 | AADSTS53001 | DeviceNotDomainJoined – zásada podmíněného přístupu vyžaduje zařízení připojené k doméně a zařízení není připojené k doméně. Uživatel musí používat zařízení připojené k doméně. |
 | AADSTS53002 | ApplicationUsedIsNotAnApprovedApp – použitá aplikace není schválenou aplikací pro podmíněný přístup. Aby uživatel mohl získat přístup, musí použít jednu z aplikací ze seznamu schválených aplikací. |
 | AADSTS53003 | BlockedByConditionalAccess – zásady podmíněného přístupu zablokovaly přístup. Zásady přístupu nepovolují vystavení tokenu. |
@@ -314,7 +314,7 @@ Vyhledejte číselnou část vráceného kódu chyby.  Pokud například obdrž�
 | AADSTS700022 | InvalidMultipleResourcesScope – zadaná hodnota oboru vstupních parametrů není platná, protože obsahuje více než jeden prostředek. |
 | AADSTS700023 | InvalidResourcelessScope – zadaná hodnota oboru vstupních parametrů není platná, pokud požaduje přístupový token. |
 | AADSTS7000215 | Je zadaný neplatný tajný klíč klienta. Chyba vývojáře – aplikace se pokouší přihlásit bez správných parametrů ověřování.|
-| AADSTS7000222| InvalidClientSecretExpiredKeysProvided – platnost zadaných tajných klíčů klienta vypršela. Přejděte na web Azure Portal a vytvořte nové klíče pro vaši aplikaci, nebo zvažte použití přihlašovacích údajů k certifikátu pro zvýšení zabezpečení:https://aka.ms/certCreds |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided – platnost zadaných tajných klíčů klienta vypršela. Přejděte na Azure Portal pro vytvoření nových klíčů pro aplikaci nebo zvažte použití přihlašovacích údajů k certifikátu pro zvýšení zabezpečení:[https://aka.ms/certCreds](https://aka.ms/certCreds) |
 | AADSTS700005 | Autorizační kód poskytnutý InvalidGrantRedeemAgainstWrongTenant je určený pro použití s jiným klientem, tedy odmítnutý. Autorizační kód OAuth2 se musí uplatnit u stejného tenanta, kterého se získal pro (/běžné nebo/{tenant-ID} podle potřeby). |
 | AADSTS1000000 | UserNotBoundError – rozhraní API pro vázání vyžaduje, aby uživatel Azure AD ověřil i s externím IDP, ke kterému ještě nedošlo. |
 | AADSTS1000002 | BindCompleteInterruptError – vazba byla úspěšně dokončena, ale uživatel musí být informován. |

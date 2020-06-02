@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32ec55a2ed6e0158a05f81067dc834fdc1e6e765
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: cd1bd85e76bdda52e2f3b3b60c705792ca82a6eb
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738247"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247984"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Začínáme s vlastními zásadami v Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ ms.locfileid: "83738247"
 
 ## <a name="add-signing-and-encryption-keys"></a>Přidat podpisové a šifrovací klíče
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled v části **zásady**vyberte **Architektura prostředí identity**.
@@ -78,7 +78,7 @@ Pokud chcete zaregistrovat aplikaci ve vašem tenantovi Azure AD B2C, můžete p
 
 #### <a name="applications"></a>[Aplikace](#tab/applications/)
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
 1. V nabídce přehled **Azure Active Directory** v části **Spravovat**vyberte **Registrace aplikací (starší verze)**.
 1. Vyberte **Registrace nové aplikace**.
@@ -151,7 +151,7 @@ Nyní udělte oprávnění k oboru rozhraní API, který jste dříve vystavili 
 1. Vyberte **udělit souhlas správce pro (název vašeho tenanta)**.
 1. Vyberte aktuálně přihlášený účet správce nebo se přihlaste pomocí účtu v Azure AD B2C tenantovi, kterému byla přiřazena alespoň role *správce cloudové aplikace* .
 1. Vyberte **Přijmout**.
-1. Vyberte **aktualizovat**a pak ověřte, že "uděleno pro..." zobrazí se pod položkou **stav** pro oba obory. Rozšíření oprávnění může trvat několik minut.
+1. Vyberte **aktualizovat**a pak ověřte, že "uděleno pro..." zobrazí se pod položkou **stav** pro obory – offline_access, openid a user_impersonation. Rozšíření oprávnění může trvat několik minut.
 
 * * *
 

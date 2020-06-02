@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-grpr
-ms.openlocfilehash: 74828bfd3a110739afc211a530c11c74387b70ed
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 70c37b60d3b01c939b9b06d6b053b526e036904a
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749309"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266504"
 ---
 # <a name="use-self-managed-shipping-for-azure-data-box-disk-in-the-azure-portal"></a>Použití samoobslužného expedice pro Azure Data Box Disk v Azure Portal
 
@@ -29,7 +29,7 @@ Samostatně spravovaná dodávka je k dispozici jako možnost při [objednání 
 * Singapur
 * Jižní Korea
 
-## <a name="use-self-managed-shipping"></a>Použití samoobslužného expedice
+## <a name="use-self-managed-shipping"></a>Použití samoobslužné expedice
 
 Když umístíte Data Box Disk pořadí, můžete vybrat možnost samostatně spravovaná dodávka.
 
@@ -43,7 +43,7 @@ Když umístíte Data Box Disk pořadí, můžete vybrat možnost samostatně sp
 
    ![Samostatně spravovaná dodávka](media\data-box-portal-customer-managed-shipping\choose-self-managed-shipping-2.png)
 
-4. Po přípravě zařízení můžete naplánovat vyzvednutí. V pořadí Azure Data Box Disk klikněte na **Přehled** a pak vyberte **Naplánovat vyzvednutí**.
+4. Po přípravě zařízení a obdržení e-mailového oznámení můžete naplánovat vyzvednutí. V pořadí Azure Data Box Disk klikněte na **Přehled** a pak vyberte **Naplánovat vyzvednutí**.
 
    ![Objednávání zařízení Data Box pro vyzvednutí](media\data-box-disk-portal-customer-managed-shipping\data-box-disk-user-pickup-01b.png)
 
@@ -57,11 +57,11 @@ Když umístíte Data Box Disk pořadí, můžete vybrat možnost samostatně sp
 
    Poznamenejte si tento **autorizační kód**.
 
-   Podle požadavků na zabezpečení, v době plánování a vyřazení, je nutné, abyste si poznamenali jméno osoby, která se dostala k výběru a vyřazení.
+   Podle požadavků na zabezpečení je při plánování naplánování potřeba, abyste si vybrali jméno osoby, která bude přicházet k výběru.
 
    Je také potřeba zadat podrobnosti o tom, kdo bude mít k dispozici datové centrum pro účely vyzvednutí. Vy nebo kontaktní bod musí mít ID fotografie schválené státní správou, která bude ověřena v datacentru.
 
-   Kromě toho musí mít uživatel, který je vyzvednutím zařízení, také **autorizační kód**. Autorizační kód se ověří v průběhu vyzvednutí datacentra.
+   Kromě toho musí mít uživatel, který je vyzvednutím zařízení, také **autorizační kód**. Autorizační kód je jedinečný pro vyzvednutí nebo odložení a je ověřený v datacentru.
 
 7. Jakmile se zařízení z datového centra vybralo, vaše objednávka se automaticky přesune na stav **vyskladněno** .
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: 301e2be0c8b971a0236de6a8b5c8bd5f278c3aee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686758"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267973"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Průvodce Azure AI pro prediktivní správu řešení
 
@@ -231,7 +231,7 @@ Mezi příklady statických funkcí patří technické specifikace zařízení, 
 
 Přípravné úsilí na přípravu dat by mělo vést k sestavování dat, jak vidíte níže. Data o školeních, testováních a ověřováních by měla mít toto logické schéma (v tomto příkladu se zobrazuje čas v jednotkách dnů).
 
-| ID assetu | Time | \<Sloupce funkce> | Popisek |
+| ID assetu | Čas | \<Feature Columns> | Popisek |
 | ---- | ---- | --- | --- |
 | A123 |Den 1 | . . . | . |
 | A123 |Den 2 | . . . | . |
@@ -427,12 +427,11 @@ Poslední část tohoto průvodce poskytuje seznam šablon řešení PdM, kurzů
 |--:|:------|-------------|
 | 2 | [Šablona řešení prediktivní údržby Azure](https://github.com/Azure/AI-PredictiveMaintenance) | Open Source šablona řešení, která předvádí modelování Azure ML a kompletní infrastrukturu Azure s podporou scénářů prediktivní údržby v kontextu vzdáleného monitorování IoT. |
 | 3 | [Hloubkové učení pro prediktivní údržbu](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Poznámkový blok Azure s ukázkovým řešením použití LSTM (dlouhodobě krátkodobé paměti) (třída opakujících se sítí neuronové) pro prediktivní údržbu s [blogovým příspěvkem k této ukázce](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
-| 4 | [Průvodce modelováním prediktivní údržby v jazyce R](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | Průvodce modelováním PdM se skripty v jazyce R.|
-| 5 | [Prediktivní údržba Azure pro Aerospace](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Jedna z prvních šablon řešení PdM založená na Azure ML v 1.0 pro údržbu letadel. Tato příručka pochází z tohoto projektu. |
-| 6 | [Sada nástrojů Azure AI pro IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI v IoT Edge pomocí TensorFlow; sada Toolkit balí modely hloubkového učení v kontejnerech Docker kompatibilních s Azure IoT Edge a zpřístupňuje tyto modely jako rozhraní REST API.
-| 7 | [Prediktivní údržba Azure IoT](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite počítače – předkonfigurované řešení. PdM šablona pro údržbu letadla pomocí IoT Suite. [Jiný dokument](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) a [návod](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) vztahující se ke stejnému projektu. |
-| 8 | [Šablona prediktivní údržby pomocí SQL Server R Services](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Ukázka zbývajícího scénáře životního cyklu na základě služeb jazyka R. |
-| 9 | [Průvodce modelováním prediktivní údržby](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Funkce sady datová sada pro správu letadel, která je navržená pomocí jazyka R s [experimenty](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) a [datovými sadami](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) a [notebookem](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) a [experimenty](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2) Azure v AzureML|
+| 4 | [Prediktivní údržba Azure pro Aerospace](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Jedna z prvních šablon řešení PdM založená na Azure ML v 1.0 pro údržbu letadel. Tato příručka pochází z tohoto projektu. |
+| 5 | [Sada nástrojů Azure AI pro IoT Edge](https://github.com/Azure/ai-toolkit-iot-edge) | AI v IoT Edge pomocí TensorFlow; sada Toolkit balí modely hloubkového učení v kontejnerech Docker kompatibilních s Azure IoT Edge a zpřístupňuje tyto modely jako rozhraní REST API.
+| 6 | [Prediktivní údržba Azure IoT](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite počítače – předkonfigurované řešení. PdM šablona pro údržbu letadla pomocí IoT Suite. [Jiný dokument](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) a [návod](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) vztahující se ke stejnému projektu. |
+| 7 | [Šablona prediktivní údržby pomocí SQL Server R Services](https://gallery.azure.ai/Tutorial/Predictive-Maintenance-Template-with-SQL-Server-R-Services-1) | Ukázka zbývajícího scénáře životního cyklu na základě služeb jazyka R. |
+| 8 | [Průvodce modelováním prediktivní údržby](https://gallery.azure.ai/Collection/Predictive-Maintenance-Modelling-Guide-1) | Funkce sady datová sada pro správu letadel, která je navržená pomocí jazyka R s [experimenty](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Experiment-1) a [datovými sadami](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Modelling-Guide-Data-Sets-1) a notebookem a [experimenty](https://gallery.azure.ai/Experiment/Predictive-Maintenance-Step-1-of-3-data-preparation-and-feature-engineering-2) Azure v AzureML|
 
 ## <a name="training-resources-for-predictive-maintenance"></a>Školicí materiály pro prediktivní údržbu
 

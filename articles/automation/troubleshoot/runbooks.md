@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.service: automation
 manager: carmonm
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1ee6920d1870b7449f4b77394aaf918947f57ea5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6ebca3df6971d545234f45551ebd008a4ad90c1d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744315"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266062"
 ---
-# <a name="troubleshoot-runbook-issues"></a>Řešení potíží s Runbook
+# <a name="troubleshoot-runbook-issues"></a>Řešení problémů s runbooky
 
  Tento článek popisuje problémy sady Runbook, které mohou nastat, a způsob jejich řešení. Obecné informace najdete v tématu [Spuštění Runbooku v Azure Automation](../automation-runbook-execution.md).
 
@@ -50,7 +50,7 @@ Když při spuštění sady Runbook v Azure Automation dojde k chybám, můžete
 
 1. Tento krok proveďte, pokud úloha sady Runbook nebo prostředí na Hybrid Runbook Worker nereaguje.
 
-    Pokud vaše Runbooky spouštíte na Hybrid Runbook Worker, nikoli v Azure Automation, možná budete muset [vyřešit problémy samotného hybridního pracovního procesu](https://docs.microsoft.com/azure/automation/troubleshoot/hybrid-runbook-worker).
+    Pokud vaše Runbooky spouštíte na Hybrid Runbook Worker, nikoli v Azure Automation, možná budete muset [vyřešit problémy samotného hybridního pracovního procesu](hybrid-runbook-worker.md).
 
 ## <a name="scenario-runbook-fails-with-a-no-permission-or-forbidden-403-error"></a><a name="runbook-fails-no-permission"></a>Scénář: sada Runbook se nezdařila s oprávněním nebo zakázanou chybou 403
 
@@ -64,7 +64,7 @@ Vaše sada Runbook se nezdařila s oprávněním nebo zakázanou chybou 403 nebo
 
 ### <a name="resolution"></a>Řešení
 
-Ujistěte se, že váš účet Spustit jako má [oprávnění pro přístup k jakýmkoli prostředkům](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) používaným ve vašem skriptu.
+Ujistěte se, že váš účet Spustit jako má [oprávnění pro přístup k jakýmkoli prostředkům](../../role-based-access-control/role-assignments-portal.md) používaným ve vašem skriptu.
 
 ## <a name="scenario-sign-in-to-azure-account-failed"></a><a name="sign-in-failed"></a>Scénář: přihlášení k účtu Azure selhalo.
 
@@ -99,7 +99,7 @@ Chcete-li zjistit, co je chybné, postupujte podle následujících kroků:
    Connect-AzAccount –Credential $Cred
    ```
 
-1. Pokud se ověření nepovede místně, nenastavíte správně své přihlašovací údaje pro Azure Active Directory (Azure AD). Pokud chcete účet Azure AD správně nastavit, přečtěte si Blogový příspěvek [pro ověřování do Azure pomocí Azure Active Directory](https://azure.microsoft.com/blog/azure-automation-authenticating-to-azure-using-azure-active-directory/).
+1. Pokud se ověření nepovede místně, nenastavíte správně své přihlašovací údaje pro Azure Active Directory (Azure AD). Pokud chcete správně nastavit účet Azure AD, přečtěte si článek [ověřování v Azure pomocí Azure Active Directory](../automation-use-azure-ad.md).
 
 1. Pokud se zdá, že chyba je přechodná, zkuste do rutiny ověřování přidat logiku opakování, aby se ověřování zajistilo robustnější.
 
@@ -137,7 +137,7 @@ Run Login-AzureRMAccount to login.
 
 ### <a name="cause"></a>Příčina
 
-K této chybě může dojít, pokud nepoužíváte účet Spustit jako nebo vypršela platnost účtu Spustit jako. Další informace najdete v tématu [Správa účtů spustit jako Azure Automation](https://docs.microsoft.com/azure/automation/manage-runas-account).
+K této chybě může dojít, pokud nepoužíváte účet Spustit jako nebo vypršela platnost účtu Spustit jako. Další informace najdete v tématu [Správa účtů spustit jako Azure Automation](../manage-runas-account.md).
 
 Tato chyba má dvě primární příčiny:
 
@@ -274,7 +274,7 @@ Pokud máte ve svém účtu Azure vícefaktorové ověřování, nemůžete k ov
 
 ### <a name="resolution"></a>Řešení
 
-Pokud chcete použít certifikát s rutinami modelu nasazení Azure Classic, přečtěte si téma [Vytvoření a přidání certifikátu pro správu služeb Azure](https://blogs.technet.com/b/orchestrator/archive/2014/04/11/managing-azure-services-with-the-microsoft-azure-automation-preview-service.aspx). Pokud chcete použít instanční objekt s rutinami Azure Resource Manager, přečtěte si téma [Vytvoření instančního objektu pomocí Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) a [ověřování instančního objektu pomocí Azure Resource Manager](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
+Pokud chcete použít účet Spustit jako pro Classic s rutinami modelu nasazení Azure Classic, přečtěte si téma [Vytvoření účtu Spustit jako pro Azure Classic pro správu služeb Azure](../automation-create-standalone-account.md#create-a-classic-run-as-account). Pokud chcete použít instanční objekt s rutinami Azure Resource Manager, přečtěte si téma [Vytvoření instančního objektu pomocí Azure Portal](../../active-directory/develop/howto-create-service-principal-portal.md) a [ověřování instančního objektu pomocí Azure Resource Manager](../../active-directory/develop/howto-authenticate-service-principal-powershell.md).
 
 ## <a name="scenario-runbook-fails-with-a-task-was-canceled-error-message"></a><a name="task-was-cancelled"></a>Scénář: sada Runbook se nezdařila s chybovou zprávou "úloha byla zrušena"
 
@@ -383,7 +383,7 @@ Add-AzAccount : Object reference not set to an instance of an object
 
 ### <a name="cause"></a>Příčina
 
-K této chybě může dojít, pokud sada Runbook neprovádí správné kroky před voláním `Add-AzAccount` pro přidání účtu Automation. Příkladem jednoho z nezbytných kroků je přihlášení pomocí účtu Spustit jako. Správné operace, které se mají použít ve vašem Runbooku, najdete v tématu [Spuštění Runbooku v Azure Automation](https://docs.microsoft.com/azure/automation/automation-runbook-execution).
+K této chybě může dojít, pokud sada Runbook neprovádí správné kroky před voláním `Add-AzAccount` pro přidání účtu Automation. Příkladem jednoho z nezbytných kroků je přihlášení pomocí účtu Spustit jako. Správné operace, které se mají použít ve vašem Runbooku, najdete v tématu [Spuštění Runbooku v Azure Automation](../automation-runbook-execution.md).
 
 ## <a name="scenario-object-reference-not-set-to-an-instance-of-an-object"></a><a name="child-runbook-object"></a>Scénář: odkaz na objekt není nastavený na instanci objektu.
 
@@ -652,16 +652,16 @@ Možné příčiny tohoto problému:
 
 #### <a name="not-using-a-run-as-account"></a>Nepoužívat účet Spustit jako
 
-Postupujte podle [kroku 5 – přidejte ověřování pro správu prostředků Azure](https://docs.microsoft.com/azure/automation/automation-first-runbook-textual-powershell#add-authentication-to-manage-azure-resources) , abyste měli jistotu, že používáte účet Spustit jako pro přístup k Key Vault.
+Postupujte podle [kroku 5 – přidejte ověřování pro správu prostředků Azure](../automation-first-runbook-textual-powershell.md#add-authentication-to-manage-azure-resources) , abyste měli jistotu, že používáte účet Spustit jako pro přístup k Key Vault.
 
 #### <a name="insufficient-permissions"></a>Nedostatečná oprávnění
 
-[Přidejte oprávnění pro Key Vault](https://docs.microsoft.com/azure/automation/manage-runas-account#add-permissions-to-key-vault) , abyste měli jistotu, že účet Spustit jako má dostatečná oprávnění pro přístup k Key Vault.
+[Přidejte oprávnění pro Key Vault](../manage-runas-account.md#add-permissions-to-key-vault) , abyste měli jistotu, že účet Spustit jako má dostatečná oprávnění pro přístup k Key Vault.
 
 ## <a name="recommended-documents"></a>Doporučené dokumenty
 
 * [Spouštění runbooků ve službě Azure Automation](../automation-runbook-execution.md)
-* [Spuštění Runbooku v Azure Automation](https://docs.microsoft.com/azure/automation/automation-starting-a-runbook)
+* [Spuštění Runbooku v Azure Automation](../automation-starting-a-runbook.md)
 
 ## <a name="next-steps"></a>Další kroky
 

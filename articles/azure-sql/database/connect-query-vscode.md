@@ -1,7 +1,7 @@
 ---
 title: Připojení a dotazování pomocí Visual Studio Code
 titleSuffix: Azure SQL Database & SQL Managed Instance
-description: Přečtěte si, jak se připojit k Azure SQL Database nebo k spravované instanci SQL na Azure pomocí Visual Studio Code. Potom spustíte příkazy jazyka Transact-SQL (T-SQL) k dotazování a úpravě dat.
+description: Přečtěte si, jak se připojit k Azure SQL Database nebo ke spravované instanci SQL na Azure pomocí Visual Studio Code. Potom spustíte příkazy jazyka Transact-SQL (T-SQL) k dotazování a úpravě dat.
 keywords: Připojení k službě SQL Database
 services: sql-database
 ms.service: sql-database
@@ -12,24 +12,24 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: ed7cd7db24e26ea8705628916e31ce95b5c17a6e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: e0554711aa6db436bc0c3076ec468555c47fff39
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189024"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267252"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-and-query"></a>Rychlý Start: použití Visual Studio Code k připojení a dotazování 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 [Visual Studio Code](https://code.visualstudio.com/docs) je grafický editor kódu pro Linux, MacOS a Windows. Podporuje rozšíření, včetně [rozšíření MSSQL](https://aka.ms/mssql-marketplace) pro dotazování instance SQL Server, Azure SQL Database, spravované instance Azure SQL a databáze ve službě Azure synapse Analytics. V tomto rychlém startu použijete Visual Studio Code k připojení k Azure SQL Database nebo spravované instanci SQL Azure a potom spustíte příkazy jazyka Transact-SQL k dotazování, vkládání, aktualizaci a odstraňování dat.
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Databáze v Azure SQL Database nebo spravované instanci SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
+- Databáze v Azure SQL Database nebo spravované instanci Azure SQL. K vytvoření a konfiguraci databáze v Azure SQL Database můžete použít jeden z těchto rychlých startů:
 
-  || Databáze SQL | Spravovaná instance SQL |
+  || Azure SQL Database | Spravovaná instance Azure SQL |
   |:--- |:--- |:---|
   | Vytvořit| [Azure Portal](single-database-create-quickstart.md) | [Azure Portal](../managed-instance/instance-create-quickstart.md) |
   || [Rozhraní příkazového řádku](scripts/create-and-configure-database-cli.md) | [Rozhraní příkazového řádku](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |

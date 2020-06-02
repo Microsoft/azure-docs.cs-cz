@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: d3b337a697151f7f9ae1e3a1fb75795068da9e68
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: f6909acc5e4d4f56fb301a225f6dd854ba6f21e4
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204969"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259554"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -389,7 +389,7 @@ Další informace najdete v tématu [tabulky](/sql/relational-databases/blob/fil
 
 Propojené servery ve spravovaných instancích SQL podporují omezený počet cílů:
 
-- Podporované cíle jsou spravované instance SQL, SQL Database a instance SQL Server. 
+- Podporované cíle jsou spravované instance SQL, SQL Database, Azure synapse SQL a SQL Server instance. 
 - Propojené servery nepodporují distribuované transakce s možností zápisu (MS DTC).
 - Nepodporované cíle jsou soubory, Analysis Services a další RDBMS. Zkuste použít nativní Import souborů CSV z Azure Blob Storage použití `BULK INSERT` nebo `OPENROWSET` jako alternativu pro import souborů.
 
@@ -502,7 +502,7 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 - Počet virtuální jádra a typů instancí, které můžete nasadit v oblasti, mají některá [omezení a omezení](resource-limits.md#regional-resource-limitations).
 - Existují některá [pravidla zabezpečení, která je nutné použít v podsíti](connectivity-architecture-overview.md#network-requirements).
 
-### <a name="vnet"></a>SÍTĚ
+### <a name="vnet"></a>Virtuální síť
 - Virtuální síť se dá nasadit pomocí modelu prostředků – model klasický pro virtuální síť se nepodporuje.
 - Po vytvoření spravované instance SQL se nepodporují přesunutí spravované instance SQL nebo virtuální sítě do jiné skupiny prostředků nebo předplatného.
 - Některé služby, jako jsou App Service prostředí, Logic Apps a spravované instance SQL (používané pro geografickou replikaci, transakční replikaci nebo přes propojené servery), nemají přístup ke spravovaným instancím SQL v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globálního partnerského vztahu](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.

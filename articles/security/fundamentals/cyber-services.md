@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/14/2019
 ms.author: terrylan
-ms.openlocfilehash: 997bd480fd8b552d7cff61d7a4798e0a3d4db5bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6242580e3f4199578d663456c14ee160603b372d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548643"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266147"
 ---
 # <a name="microsoft-services-in-cybersecurity"></a>Služby Microsoftu v kyberbezpečnosti
 
@@ -32,12 +32,12 @@ Náš tým odborných odborníků se skládá z vysoce vycvičených expertů, k
 
 Další informace o službách poskytovaných službami Microsoftu:
 
-* [Posouzení rizik zabezpečení](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-security-risk-assessment-solution-brief.pdf)
+* [Posouzení rizik zabezpečení](https://download.microsoft.com/download/5/D/0/5D06F4EA-EAA1-4224-99E2-0C0F45E941D0/Microsoft%20Security%20Risk%20Asessment%20Datasheet.pdf)
 * [Vyhodnocení rozhraní Dynamic identity Framework](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/dynamic-identity-framework-identity-assessment-datasheet.pdf)
-* [Online posouzení pro služby Active Directory](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/offline-assessment-for-active-directory-security-datasheet.pdf)
-* [Rozšířené prostředí pro správu zabezpečení](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/enhanced-security-administrative-environment-solution-brief.pdf)
+* [Online posouzení pro služby Active Directory](https://download.microsoft.com/download/1/C/1/1C15BA51-840E-498D-86C6-4BD35D33C79E/Prerequisites_Offline_AD.pdf)
+* [Rozšířené prostředí pro správu zabezpečení](https://download.microsoft.com/download/A/C/5/AC5D21A6-E04B-4DC4-B1F2-AE060319A4D7/Premier_Support_for_Security/Popis/Enhanced-Security-Admin-Environment-Solution-Datasheet-%5BEN%5D.pdf)
 * [Služby implementace Azure AD](https://download.microsoft.com/download/0/7/F/07FA8BFC-17D5-4F55-AD4F-3A987A7324AA/azure-active-directory-implementation-services-solution-brief.pdf)
-* [Zabezpečení před pohybem na bočním účtu](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/pop-securing-lateral-account-movement.pdf)
-* [Reakce na incidenty a obnovení](https://download.microsoft.com/download/5/1/6/516F59A7-91EE-4463-8612-C85FD3BEBDC7/microsoft-incident-response-and-recovery-process-brief.pdf)
+* [Zabezpečení před pohybem na bočním účtu](https://docs.microsoft.com/azure-advanced-threat-protection/use-case-lateral-movement-path)
+* [Reakce na incidenty a obnovení](https://docs.microsoft.com/microsoft-365/compliance/gdpr-breach-microsoft-support-professional-services?view=o365-worldwide#data-protection-incident-response-overview)
 
 [Přečtěte si další informace](https://aka.ms/cyberserv) o konzultačních službách zabezpečení služeb společnosti Microsoft.

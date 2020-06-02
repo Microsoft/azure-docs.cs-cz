@@ -1,6 +1,7 @@
 ---
 title: Použít Ruby k dotazování
-description: V tomto tématu se dozvíte, jak pomocí Ruby vytvořit program, který se připojí k databázi v Azure SQL Database a provede dotaz pomocí příkazů jazyka Transact-SQL.
+description: V tomto tématu se dozvíte, jak pomocí Ruby vytvořit program, který se připojí k databázi a provede dotaz pomocí příkazů jazyka Transact-SQL.
+titleSuffix: Azure SQL Database & SQL Managed Instance
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,24 +11,24 @@ ms.topic: quickstart
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 03/25/2019
-ms.openlocfilehash: d8d5ca8c6d583ec50788ef42632a07310d043f41
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: c297a40a5452938d8e706bf2e0791e4a7d03210c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84189065"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267286"
 ---
-# <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database"></a>Rychlý Start: použití Ruby k dotazování databáze v Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
+# <a name="quickstart-use-ruby-to-query-a-database-in-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití Ruby k dotazování databáze ve Azure SQL Database nebo spravované instanci SQL Azure
+[!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Tento rychlý Start ukazuje, jak se pomocí [Ruby](https://www.ruby-lang.org) připojit k databázi v Azure SQL Database a dotazovat data pomocí příkazů jazyka Transact-SQL.
+Tento rychlý Start ukazuje, jak se pomocí [Ruby](https://www.ruby-lang.org) připojit k databázi a dotazovat data pomocí příkazů jazyka Transact-SQL.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení tohoto rychlého startu potřebujete následující požadavky:
 
-- Databáze v Azure SQL Database. K vytvoření a konfiguraci databáze můžete použít jeden z těchto rychlých startů:
+- Databáze. K vytvoření a konfiguraci databáze můžete použít jeden z těchto rychlých startů:
 
   || Databáze SQL | Spravovaná instance SQL | SQL Server na virtuálním počítači Azure |
   |:--- |:--- |:---|:---|

@@ -410,6 +410,8 @@
               href: id-tokens.md
             - name: Přístupové tokeny
               href: access-tokens.md
+            - name: Koncový bod UserInfo
+              href: userinfo.md
             - name: Přihlašovací údaje ve formě certifikátu
               href: active-directory-certificate-credentials.md
         - name: Protokol SAML 2.0

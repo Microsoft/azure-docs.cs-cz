@@ -1,0 +1,89 @@
+### YamlMime:Landing
+title: Dokumentace k analýze živého videa ve službě IoT Edge
+summary: Jak využívat analýzu živého videa ve službě IoT Edge
+metadata:
+  title: Dokumentace k analýze živého videa ve službě IoT Edge
+  description: Jak využívat analýzu živého videa ve službě IoT Edge
+  services: media-services
+  ms.service: media-services
+  ms.subservice: 
+  ms.topic: landing-page
+  ms.collection: collection
+  author: 
+  ms.author: 
+  ms.date: 10/12/2019
+  ms.openlocfilehash: ef82f7ccfabce330c5604a26d74f0491876a1634
+  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 06/01/2020
+  ms.locfileid: "84259885"
+landingContent:
+- title: Informace k analýze živého videa ve službě IoT Edge (Preview)
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Informace k analýze živého videa ve službě IoT Edge
+      url: overview.md
+  - linkListType: concept
+    links:
+    - text: Graf médií
+      url: media-graph-concept.md
+    - text: Záznam videa
+      url: video-recording-concept.md
+    - text: Přehrávání videa
+      url: video-playback-concept.md
+  - linkListType: learn
+    links:
+    - text: Nepřetržité nahrávání videa
+      url: continuous-video-recording-concept.md
+    - text: Nahrávání videa na základě událostí
+      url: event-based-video-recording-concept.md
+    - text: Analýza živých videí
+      url: analyze-live-video-concept.md
+- title: Scénáře
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Začínáme – analýza živého videa ve službě IoT Edge
+      url: get-started-detect-motion-emit-events-quickstart.md
+    - text: Detekce pohybu, nahrávání videoklipů do Azure Media Services
+      url: detect-motion-record-video-clips-media-services-quickstart.md
+    - text: Detekce pohybu a generování událostí
+      url: detect-motion-emit-events-quickstart.md
+    - text: Detekce pohybu, nahrávání videa do hraničních zařízení
+      url: detect-motion-record-video-clips-edge-devices-quickstart.md
+    - text: Spuštění analýzy živého videa s využitím vlastního modelu
+      url: use-your-model-quickstart.md
+  - linkListType: tutorial
+    links:
+    - text: Nepřetržité nahrávání videa
+      url: continuous-video-recording-tutorial.md
+    - text: Nahrávání videa na základě událostí
+      url: event-based-video-recording-tutorial.md
+    - text: Přehrávání záznamů z několika dnů
+      url: playback-multi-day-recordings-tutorial.md
+- title: Vývoj
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření vlastní role Azure Resource Manageru
+      url: create-custom-azure-resource-manager-role-how-to.md
+    - text: Nasazení do zařízení IoT Edge
+      url: deploy-iot-edge-device.md
+    - text: Monitorování a protokolování
+      url: monitoring-logging.md
+    - text: Přehrávání záznamu
+      url: playback-recordings-how-to.md
+    - text: Správa zásad nahrávání
+      url: manage-recording-policy-how-to.md
+    - text: Řešení potíží
+      url: troubleshoot-how-to.md
+  - linkListType: reference
+    links:
+    - text: Přímé metody
+      url: direct-methods.md
+    - text: Schéma konfigurace dvojčat modulů
+      url: module-twin-configuration-schema.md
+    - text: Kvóty a omezení
+      url: quotas-limitations.md

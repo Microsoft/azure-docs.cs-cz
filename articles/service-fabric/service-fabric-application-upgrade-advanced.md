@@ -3,12 +3,12 @@ title: Témata rozšířeného upgradu aplikací
 description: Tento článek se věnuje několika pokročilým tématům, která se týkají upgradu aplikace Service Fabric.
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: a12d2ec55bda95c1c61d4a73c76f4a777f4237f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 98d8213cc50f73ef2c053e1fe5574fe33a2f3cb6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414497"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263087"
 ---
 # <a name="service-fabric-application-upgrade-advanced-topics"></a>Upgrade Service Fabric aplikace: Pokročilá témata
 
@@ -20,18 +20,18 @@ Podobně lze typy služeb odebrat z aplikace jako součást upgradu. Před pokra
 
 ## <a name="avoid-connection-drops-during-stateless-service-planned-downtime"></a>Vyhněte se výpadkům připojení během plánovaného výpadku služby
 
-U plánovaných výpadků nestavových instancí, jako je například upgrade aplikace nebo clusteru nebo deaktivace uzlu, je připojení možné vyřadit, protože po ukončení instance dojde k odebrání koncového bodu, což vede k vynucenému ukončení připojení.
+U plánovaných výpadků nestavových instancí, jako je například upgrade aplikace nebo clusteru nebo deaktivace uzlu, je připojení možné vyřadit, protože po ukončení instance dojde k odebrání vystaveného koncového bodu, což vede k vynucení uzavírání připojení.
 
-Pokud tomu chcete předejít, nakonfigurujte funkci *RequestDrain* (Preview) přidáním *instance doba zpoždění ukončení* v konfiguraci služby, aby bylo umožněno vyprázdnění při přijímání požadavků z jiných služeb v rámci clusteru a používání reverzního proxy serveru nebo použití funkce přeložit rozhraní API s modelem oznámení pro aktualizaci koncových bodů. Tím se zajistí, že se koncový bod oznamovaný bezstavovou instancí odebere před tím, *než* se zahájí zpoždění před uzavřením instance. Tato prodleva umožní řádný odtok stávajících požadavků předtím, než se instance skutečně ukončí. Klienti jsou upozorněni na změnu koncového bodu pomocí funkce zpětného volání v době spuštění zpoždění, aby mohli znovu přeložit koncový bod a vyhnout se odesílání nových požadavků do instance, která se chystá.
+Pokud tomu chcete předejít, nakonfigurujte funkci *RequestDrain* přidáním *instance doba zpoždění uzavření* v konfiguraci služby, aby mohly existující požadavky v rámci clusteru vyprázdnit z vystavených koncových bodů. K tomu je potřeba, aby byl koncový bod inzerovaný nestavovou instancí odebrán před tím, *než* se zahájí zpoždění před uzavřením instance. Tato prodleva umožní řádný odtok stávajících požadavků předtím, než se instance skutečně ukončí. Klienti jsou upozorněni na změnu koncového bodu pomocí funkce zpětného volání v době spuštění zpoždění, aby mohli znovu přeložit koncový bod a vyhnout se odesílání nových požadavků do instance, která se chystá. Tyto požadavky můžou pocházet z klientů pomocí [reverzního proxy serveru](https://docs.microsoft.com/azure/service-fabric/service-fabric-reverseproxy) nebo pomocí rozhraní API pro překlad koncového bodu služby s modelem oznámení ([ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription)) pro aktualizaci koncových bodů.
 
 ### <a name="service-configuration"></a>Konfigurace služeb
 
 Existuje několik způsobů, jak nakonfigurovat zpoždění na straně služby.
 
- * **Při vytváření nové služby**zadejte `-InstanceCloseDelayDuration`:
+ * **Při vytváření nové služby**zadejte `-InstanceCloseDelayDuration` :
 
     ```powershell
-    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>`
+    New-ServiceFabricService -Stateless [-ServiceName] <Uri> -InstanceCloseDelayDuration <TimeSpan>
     ```
 
  * **Při definování služby v části výchozí v manifestu aplikace**přiřaďte `InstanceCloseDelayDurationSeconds` vlastnost:
@@ -42,10 +42,37 @@ Existuje několik způsobů, jak nakonfigurovat zpoždění na straně služby.
           </StatelessService>
     ```
 
- * **Při aktualizaci existující služby**zadejte `-InstanceCloseDelayDuration`:
+ * **Při aktualizaci existující služby**zadejte `-InstanceCloseDelayDuration` :
 
     ```powershell
     Update-ServiceFabricService [-Stateless] [-ServiceName] <Uri> [-InstanceCloseDelayDuration <TimeSpan>]`
+    ```
+
+ * **Při vytváření nebo aktualizaci existující služby prostřednictvím šablony ARM**zadejte `InstanceCloseDelayDuration` hodnotu (minimální podporovaná verze rozhraní API: 2019-11-01-Preview):
+
+    ```ARM template to define InstanceCloseDelayDuration of 30seconds
+    {
+      "apiVersion": "2019-11-01-preview",
+      "type": "Microsoft.ServiceFabric/clusters/applications/services",
+      "name": "[concat(parameters('clusterName'), '/', parameters('applicationName'), '/', parameters('serviceName'))]",
+      "location": "[variables('clusterLocation')]",
+      "dependsOn": [
+        "[concat('Microsoft.ServiceFabric/clusters/', parameters('clusterName'), '/applications/', parameters('applicationName'))]"
+      ],
+      "properties": {
+        "provisioningState": "Default",
+        "serviceKind": "Stateless",
+        "serviceTypeName": "[parameters('serviceTypeName')]",
+        "instanceCount": "-1",
+        "partitionDescription": {
+          "partitionScheme": "Singleton"
+        },
+        "serviceLoadMetrics": [],
+        "servicePlacementPolicies": [],
+        "defaultMoveCost": "",
+        "instanceCloseDelayDuration": "00:00:30.0"
+      }
+    }
     ```
 
 ### <a name="client-configuration"></a>Konfigurace klienta
@@ -55,7 +82,7 @@ Oznámení o změně je indikaci, že se koncové body změnily, klient by měl 
 
 ### <a name="optional-upgrade-overrides"></a>Volitelné přepsání upgradu
 
-Kromě nastavení výchozích dob trvání zpoždění na službu můžete také přepsat zpoždění během upgradu aplikace nebo clusteru pomocí stejné možnosti (`InstanceCloseDelayDurationSec`):
+Kromě nastavení výchozích dob trvání zpoždění na službu můžete také přepsat zpoždění během upgradu aplikace nebo clusteru pomocí stejné `InstanceCloseDelayDurationSec` Možnosti ():
 
 ```powershell
 Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationTypeVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
@@ -63,15 +90,17 @@ Start-ServiceFabricApplicationUpgrade [-ApplicationName] <Uri> [-ApplicationType
 Start-ServiceFabricClusterUpgrade [-CodePackageVersion] <String> [-ClusterManifestVersion] <String> [-InstanceCloseDelayDurationSec <UInt32>]
 ```
 
-Doba trvání prodlevy se vztahuje pouze na vyvolanou instanci upgradu a jinak nemění konfigurace zpoždění jednotlivých služeb. Můžete například použít k určení zpoždění `0` pro přeskočení všech předkonfigurovaných zpoždění upgradu.
+Přepsané trvání prodlevy platí pouze pro vyvolanou instanci upgradu a jinak nemění konfigurace zpoždění jednotlivých služeb. Můžete například použít k určení zpoždění `0` pro přeskočení všech předkonfigurovaných zpoždění upgradu.
 
 > [!NOTE]
-> Pro žádosti od služby Azure Load Balancer se neuplatňují nastavení pro vyprázdnění požadavků. Toto nastavení se nerespektuje, pokud volající služba používá řešení na základě stížnosti.
+> * Nastavení vyprázdnit požadavky nebude moci zabránit nástroji pro vyrovnávání zatížení Azure posílat nové žádosti do koncových bodů, které procházejí vyprázdněním.
+> * Mechanismus řešení založený na stížnostech nevede k řádnému vyprázdnění požadavků, protože aktivuje řešení služby po selhání. Jak bylo popsáno výše, mělo by se místo toho rozšířit, aby se přihlásil k odběru oznámení změn koncových bodů pomocí [ServiceNotificationFilterDescription](https://docs.microsoft.com/dotnet/api/system.fabric.description.servicenotificationfilterdescription).
+> * Tato nastavení se neuplatňují, pokud upgrade neovlivní nějaký význam. v případě, že repliky nebudou během upgradu zavedeny.
 >
 >
 
 > [!NOTE]
-> Tato funkce se dá nakonfigurovat v existujících službách pomocí rutiny Update-ServiceFabricService, jak je uvedeno výše, pokud je verze kódu clusteru 7.1.XXX nebo vyšší.
+> Tato funkce se dá nakonfigurovat v existujících službách pomocí rutiny Update-ServiceFabricService nebo šablony ARM, jak je uvedeno výše, pokud je verze kódu clusteru 7.1.XXX nebo vyšší.
 >
 >
 

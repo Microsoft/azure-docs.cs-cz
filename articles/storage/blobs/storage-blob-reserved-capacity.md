@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 06/01/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 4ba54736abe335b53a3b8c6733063efcb34ea29a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c06bbc412a51fc919b862aeb3f62ec58feec89cf
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856820"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259197"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>Optimalizace nákladů na službu Blob Storage s využitím rezervované kapacity
 
@@ -35,7 +35,7 @@ Můžete zakoupit Azure Storage rezervovanou kapacitu v jednotkách od 100 TB do
 
 Azure Storage Rezervovaná kapacita je k dispozici pro jedno předplatné nebo pro více předplatných (sdílený rozsah). V případě oboru na jedno předplatné se sleva za rezervaci použije jenom pro vybrané předplatné. Při vymezení více předplatných se sleva rezervace sdílí v rámci těchto předplatných v rámci fakturačního kontextu zákazníka.
 
-Když si koupíte Azure Storage rezervovanou kapacitu, můžete použít rezervaci pro objekty blob bloku i Azure Data Lake Storage Gen2 data. Rezervace se aplikuje na vaše využití v rámci zakoupeného oboru a nedá se omezit na konkrétní účet úložiště, kontejner nebo objekt v rámci předplatného. Rezervaci nelze rozdělit mezi několik předplatných.
+Když si koupíte Azure Storage rezervovanou kapacitu, můžete použít rezervaci pro objekty blob bloku i Azure Data Lake Storage Gen2 data. Rezervace se aplikuje na vaše využití v rámci zakoupeného oboru a nedá se omezit na konkrétní účet úložiště, kontejner nebo objekt v rámci předplatného.
 
 Rezervace Azure Storage pokrývá jenom množství dat, která jsou uložená v rámci předplatného nebo sdílené skupiny prostředků. V rezervaci nejsou zahrnuty poplatky za předčasné odstranění, provoz, šířku pásma a přenos dat. Jakmile si koupíte rezervaci, účtují se poplatky za kapacitu odpovídající atributům rezervace za zlevněné sazby, a ne podle tarifů průběžných plateb. Další informace o rezervacích Azure najdete v tématu [co jsou Azure reservations?](/azure/billing/billing-save-compute-costs-reservations).
 
@@ -82,12 +82,12 @@ K zakoupení rezervované kapacity použijte následující postup:
    |---------|---------|
    |**Rozsah**   |  Označuje, kolik předplatných může využívat fakturační výhody spojené s rezervací. Také určuje, jak se rezervace aplikují na konkrétní předplatná. <br/><br/> Pokud vyberete **Shared (sdílená**), použije se sleva rezervace pro Azure Storage kapacity v jakémkoli předplatném v rámci vašeho fakturačního kontextu. Fakturační kontext vychází z toho, jak jste se zaregistrovali do Azure. U podnikových zákazníků je sdíleným oborem registrace a zahrnuje všechna předplatná v rámci registrace. Pro zákazníky s průběžnými platbami, sdílený obor zahrnuje všechna jednotlivá předplatná s tarify průběžných plateb vytvořenými správcem účtu.  <br/><br/>  Pokud vyberete **jedno předplatné**, použije se sleva rezervace pro Azure Storage kapacity ve vybraném předplatném. <br/><br/> Když vyberete **jednu skupinu prostředků**, použije se sleva rezervace pro Azure Storage kapacity ve vybraném předplatném a v rámci daného předplatného. <br/><br/> Po zakoupení rezervace můžete obor rezervací změnit.  |
    |**Předplatné**  | Předplatné, které se používá k placení Azure Storage rezervace. Způsob platby ve vybraném předplatném se používá při zpoplatnění nákladů. Předplatné musí být jeden z následujících typů: <br/><br/>  Smlouva Enterprise (počet nabídek: MS-AZR-0017P nebo MS-AZR-0148P): u podnikového předplatného se poplatky odečtou z bilance peněžního závazku registrace nebo se účtují jako nadlimitní využití. <br/><br/> Individuální předplatné s tarify průběžných plateb (čísla nabídek: MS-AZR-0003P nebo MS-AZR-0023P): u jednotlivých předplatných s tarify pro průběžné platby se poplatky účtují na základě platební karty nebo platby faktury v předplatném.    |
-   | **Věřitel** | Oblast, ve které je rezervace platná. |
+   | **Oblast** | Oblast, ve které je rezervace platná. |
    | **Access tier (Vrstva přístupu)** | Úroveň přístupu, kde má být rezervace platná. Mezi možnosti patří *horká*, *studená*nebo *archivní*. Další informace o úrovních přístupu najdete v tématu [Azure Blob Storage: horká, studená a archivní úroveň přístupu](storage-blob-storage-tiers.md). |
    | **Redundance** | Možnost redundance pro rezervaci. Mezi možnosti patří *LRS*, *ZRS*, *GRS*, *GZRS*, *RA-GRS*a *RA-GZRS*. Další informace o možnostech redundance najdete v tématu [Azure Storage redundance](../common/storage-redundancy.md). |
    | **Četnost fakturace** | Určuje, jak často se účtuje účet pro rezervaci. Mezi možnosti patří *měsíční* nebo *předem*. |
    | **Velikost** | Oblast, ve které je rezervace platná. |
-   |**Doby**  | Jeden rok nebo tři roky.   |
+   |**Pojem**  | Jeden rok nebo tři roky.   |
 
 1. Po výběru parametrů pro rezervaci Azure Portal zobrazí náklady. Na portálu se také zobrazuje procento slevy při fakturaci s průběžnými platbami.
 
@@ -129,5 +129,5 @@ Pokud máte dotazy nebo potřebujete pomoc, [vytvořte žádost o podporu](https
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Co jsou Azure Reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Co jsou rezervace Azure?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [Vysvětlení uplatňování slevy za rezervaci ve službě Azure Storage](../../cost-management-billing/reservations/understand-storage-charges.md)

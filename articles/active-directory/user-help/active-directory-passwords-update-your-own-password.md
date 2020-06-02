@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/15/2020
+ms.date: 05/28/2020
 ms.author: curtand
-ms.openlocfilehash: 9606bf0108186cd73adbdb38aef3ac428da229d6
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 58ec2c00e75b12d6010b106ca7daed0da234bf1d
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83828402"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266113"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Resetujte své pracovní nebo školní heslo pomocí bezpečnostních údajů
 
 Pokud jste zapomněli své pracovní nebo školní heslo, nikdy nebudete mít heslo z vaší organizace nebo jste jeho uzamčením nedostali svůj účet, můžete k resetování svého pracovního nebo školního hesla použít své bezpečnostní údaje a mobilní zařízení. Správce musí tuto funkci zapnout, abyste mohli nastavit vaše informace a [resetovat svoje vlastní heslo](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-reset-register).
 
-Pokud znáte heslo, ale chcete ho změnit, přečtěte si část [Změna kroků hesla](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) v tomto článku.
+Pokud znáte heslo a chcete ho změnit, přečtěte si část [Změna kroků hesla](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) v tomto článku.
 
 >[!Important]
 >Tento článek je určený pro uživatele, kteří se pokoušejí obnovit zapomenuté nebo neznámé heslo pracovního nebo školního účtu. Pokud jste správcem a hledáte informace o tom, jak zapnout Samoobslužné resetování hesla pro vaše zaměstnance nebo jiné uživatele, přečtěte si téma [nasazení samoobslužného resetování hesla Azure AD a dalších článků](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment).
@@ -103,7 +103,7 @@ Pokud nemůžete získat přístup k účtu Azure Active Directory (Azure AD), m
 
      Pokud stále nemáte přístup k vašemu účtu, měli byste požádat o další nápovědu správce vaší organizace.
 
-Po resetování hesla se může zobrazit potvrzovací e-mail, který pochází z účtu, jako je Microsoft jménem \< *your_organization*>. Pokud obdržíte podobný e-mail, ale nedávno jste neobnovili heslo, musíte se hned obrátit na správce vaší organizace.
+Po resetování hesla se může zobrazit potvrzovací e-mail, který pochází z účtu, jako je Microsoft jménem \<*your_organization*> . Pokud obdržíte podobný e-mail, ale nedávno jste neobnovili heslo, musíte se hned obrátit na správce vaší organizace.
 
 ## <a name="how-to-change-your-password"></a>Jak si změnit heslo
 
