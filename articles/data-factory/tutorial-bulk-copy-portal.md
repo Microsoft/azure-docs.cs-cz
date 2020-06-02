@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 02/27/2020
-ms.openlocfilehash: fd14945069b2786fa4acb994c37c17d3b434893e
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 05/28/2020
+ms.openlocfilehash: f8b72037046d05b39587c2fd57794b4109a85ae3
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118291"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84249174"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
 
@@ -213,7 +213,8 @@ Kanál **IterateAndCopySQLTables** jako parametr používá seznam tabulek. Pro 
 1. V levém podokně klikněte na symbol **+ (plus)** a pak klikněte na **Kanál**.
 
     ![Nabídka Nový kanál](./media/tutorial-bulk-copy-portal/new-pipeline-menu.png)
-1. Na kartě **Obecné** zadejte název **IterateAndCopySQLTables**. 
+ 
+1. Na panelu Obecné v části **vlastnosti**zadejte **IterateAndCopySQLTables** pro **název**. Pak panel sbalíte kliknutím na ikonu vlastnosti v pravém horním rohu.
 
 1. Přepněte na kartu **Parametry** a proveďte následující akce: 
 

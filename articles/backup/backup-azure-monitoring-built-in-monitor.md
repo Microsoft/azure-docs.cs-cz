@@ -4,16 +4,16 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: de5a82f5ad1d8113b27c07484f2f08f4cf97c759
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8c72c192f3bd12169703b70cbee76599b15eb560
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80294926"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247049"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
-Azure Backup poskytuje několik zálohovacích řešení na základě požadavků na zálohování a topologie infrastruktury (místní vs Azure). Každý uživatel nebo správce zálohování by měl vidět, co se ve všech řešeních a očekává, že budou informováni v důležitých scénářích. Tento článek podrobně popisuje možnosti monitorování a oznámení poskytované službou Azure Backup Service.
+Azure Backup poskytuje několik zálohovacích řešení na základě požadavků na zálohování a topologie infrastruktury (místní vs Azure). Každý uživatel nebo správce zálohování by měl vidět, co se ve všech řešeních používá, a očekává se, že bude informován v důležitých scénářích. Tento článek podrobně popisuje možnosti monitorování a oznámení poskytované službou Azure Backup Service.
 
 ## <a name="backup-jobs-in-recovery-services-vault"></a>Úlohy zálohování v trezoru Recovery Services
 
@@ -33,7 +33,7 @@ Tady jsou uvedené úlohy z následujících řešení Azure Backup:
 Úlohy z nástroje System Center Data Protection Manager (SC-DPM), Microsoft Azure Backup Server (MABS) se nezobrazí.
 
 > [!NOTE]
-> Úlohy Azure, jako jsou zálohování SQL a SAP HANA v rámci virtuálních počítačů Azure, mají velký počet úloh zálohování. Například zálohování protokolů může běžet každých 15 minut. Proto se pro tyto úlohy databáze zobrazí jenom operace aktivované uživatelem. Naplánované operace zálohování se nezobrazují.
+> Úlohy Azure, jako jsou zálohování SQL a SAP HANA v rámci virtuálních počítačů Azure, mají velký počet úloh zálohování. Například zálohování protokolů může běžet každých 15 minut. Pro takové databázové úlohy se ale zobrazí jenom operace aktivované uživatelem. Naplánované operace zálohování se nezobrazují.
 
 ## <a name="backup-alerts-in-recovery-services-vault"></a>Výstrahy zálohování v trezoru Recovery Services
 
@@ -59,7 +59,7 @@ Následující scénáře jsou definovány službou jako scénáře s možností
 
 ### <a name="consolidated-alerts"></a>Konsolidované výstrahy
 
-V případě řešení zálohování úloh Azure, jako je SQL a SAP HANA, se zálohy protokolů dají generovat velmi často (až každých 15 minut podle zásady). Je také možné, že selhání zálohování protokolu jsou také velmi časté (až do 15 minut). V tomto scénáři bude koncový uživatel zahlcený, pokud dojde k vyvolání výstrahy pro každý výskyt selhání. Proto se pošle výstraha na první výskyt a v případě, že se jedná o stejnou hlavní příčinu selhání, nebudou vygenerovány další výstrahy. První upozornění se aktualizuje podle počtu selhání. Pokud však uživatel výstrahu deaktivuje, další výskyt spustí další výstrahu, která bude považována za první upozornění pro daný výskyt. Tímto způsobem Azure Backup provádí konsolidaci výstrah pro SQL a zálohování SAP HANA.
+V případě řešení zálohování úloh Azure, jako je SQL a SAP HANA, se zálohy protokolů dají generovat velmi často (až každých 15 minut podle zásady). Je také možné, že selhání zálohování protokolu jsou také velmi časté (až do 15 minut). V tomto scénáři bude koncový uživatel zahlcený, pokud dojde k vyvolání výstrahy pro každý výskyt selhání. Proto se pošle výstraha na první výskyt a v případě pozdějšího selhání z důvodu stejné hlavní příčiny nebudou vygenerovány další výstrahy. První upozornění se aktualizuje podle počtu selhání. Pokud však uživatel výstrahu deaktivuje, další výskyt spustí další výstrahu, která bude považována za první upozornění pro daný výskyt. Tímto způsobem Azure Backup provádí konsolidaci výstrah pro SQL a zálohování SAP HANA.
 
 ### <a name="exceptions-when-an-alert-is-not-raised"></a>Výjimky při vyvolání výstrahy
 
@@ -78,7 +78,7 @@ Na základě závažnosti výstrahy je možné výstrahy definovat ve třech typ
 
 - **Kritické**: v zásadě by jakékoli selhání zálohování nebo obnovení (naplánované nebo aktivované uživatelem) vedlo k vytvoření výstrahy a zobrazilo se jako kritická výstraha a také ničivé operace, jako je odstranění zálohy.
 - **Upozornění**: Pokud se operace zálohování zdaří úspěšně, ale s malým počtem upozornění, zobrazí se jako varovné výstrahy.
-- **Informativní**: od dnešního dne se služba Azure Backup Service negeneruje žádná informační výstraha.
+- **Informativní**: v současné době není Azure Backup službě generována žádná informační výstraha.
 
 ## <a name="notification-for-backup-alerts"></a>Oznámení pro výstrahy zálohování
 
@@ -91,7 +91,7 @@ Po vyvolání výstrahy budou uživatelé upozorněni. Azure Backup poskytuje in
 
 Po nakonfigurování oznámení obdržíte uvítací nebo úvodní e-mail. Tím se potvrdí, že při vyvolání výstrahy Azure Backup může posílat e-maily na tyto adresy.<br>
 
-Pokud byla frekvence nastavena na hodinový výtah a výstraha byla vyvolána a vyřešena během hodiny, nebude součástí nadcházející hodinové mineralizace.
+Pokud byla frekvence nastavena na hodinový výtah a výstraha byla vyvolána a vyřešena během hodiny, nebude součástí nadcházející hodinové Digest.
 
 > [!NOTE]
 >

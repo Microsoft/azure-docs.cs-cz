@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: cb88fb24ceed943d4104da6914959e4b79c35571
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 879834567b6905a070aada3dae2a41a672635c6c
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231913"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267235"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Referenční příručka k sadě pro moderní čtečku SDK
 
@@ -41,20 +41,20 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Parametry
 
-| Název | Typ | Popis |
+| Name | Typ | Description |
 | ---- | ---- |------------ |
 | `token` | řetězec | Ověřovací token Azure AD. |
 | `subdomain` | řetězec | Vlastní subdoména prostředku pro moderní čtečku v Azure. |
 | `content` | [Obsah](#content) | Objekt obsahující obsah, který se má zobrazit v moderní čtečce. |
 | `options` | [Možnosti](#options) | Možnosti pro konfiguraci určitého chování moderního čtecího zařízení. Nepovinný parametr. |
 
-### <a name="returns"></a>Vrací
+### <a name="returns"></a>Návraty
 
-Vrátí `Promise<LaunchResponse>`, který se vyřeší, když se nahraje moderní čtečka. `Promise` Překládá na [`LaunchResponse`](#launchresponse) objekt.
+Vrátí `Promise<LaunchResponse>` , který se vyřeší, když se nahraje moderní čtečka. `Promise`Překládá na [`LaunchResponse`](#launchresponse) objekt.
 
 ### <a name="exceptions"></a>Výjimky
 
-Vrácený `Promise` [`Error`](#error) objekt se odmítne s objektem, pokud se nepovede načíst moderní čtecí zařízení. Další informace najdete v tématu [kódy chyb](#error-codes).
+Vrácený `Promise` objekt se odmítne s [`Error`](#error) objektem, pokud se nepovede načíst moderní čtecí zařízení. Další informace najdete v tématu [kódy chyb](#error-codes).
 
 ## <a name="close"></a>close
 
@@ -68,7 +68,7 @@ close(): void;
 
 ## <a name="renderbuttons"></a>renderButtons
 
-Tato funkce styly a aktualizuje prvky tlačítka pro moderní čtečku dokumentu. Pokud ```options.elements``` je k dispozici, bude tato funkce vykreslovat ```options.elements```tlačítka v rámci. V opačném případě se tlačítka vykreslí v rámci prvků dokumentu, které mají třídu ```immersive-reader-button```.
+Tato funkce styly a aktualizuje prvky tlačítka pro moderní čtečku dokumentu. Pokud ```options.elements``` je k dispozici, bude tato funkce vykreslovat tlačítka v rámci ```options.elements``` . V opačném případě se tlačítka vykreslí v rámci prvků dokumentu, které mají třídu ```immersive-reader-button``` .
 
 Tato funkce je automaticky volána sadou SDK při načtení okna.
 
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Parametry
 
-| Název | Typ | Popis |
+| Name | Typ | Popis |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | Možnosti pro konfiguraci určitého chování funkce renderButtons Nepovinný parametr. |
 
@@ -111,7 +111,7 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-Obsahuje odpověď od volání `ImmersiveReader.launchAsync`.
+Obsahuje odpověď od volání `ImmersiveReader.launchAsync` .
 
 ```typescript
 {
@@ -188,16 +188,16 @@ Obsahuje informace o chybě.
 
 #### <a name="error-codes"></a>Kódy chyb
 
-| kód | Popis |
+| Kód | Popis |
 | ---- | ----------- |
-| BadArgument | Zadaný argument je neplatný. Podrobnosti `message` naleznete v tématu. |
+| BadArgument | Zadaný argument je neplatný. Podrobnosti naleznete v tématu `message` . |
 | Časový limit | V rámci zadaného časového limitu se nepovedlo načíst moderní čtečku. |
 | TokenExpired | Platnost zadaného tokenu vypršela. |
 | Omezené | Překročilo se omezení četnosti volání. |
 
 ## <a name="launching-the-immersive-reader"></a>Spuštění moderního čtecího zařízení
 
-Sada SDK poskytuje výchozí styl pro tlačítko pro spuštění moderního čtecího zařízení. Pro povolení `immersive-reader-button` tohoto stylu použijte atribut class. Další podrobnosti najdete v [tomto článku](./how-to-customize-launch-button.md) .
+Sada SDK poskytuje výchozí styl pro tlačítko pro spuštění moderního čtecího zařízení. `immersive-reader-button`Pro povolení tohoto stylu použijte atribut class. Další podrobnosti najdete v [tomto článku](./how-to-customize-launch-button.md) .
 
 ```html
 <div class='immersive-reader-button'></div>
@@ -209,8 +209,8 @@ Pomocí následujících atributů můžete nakonfigurovat vzhled a chování tl
 
 | Atribut | Popis |
 | --------- | ----------- |
-| `data-button-style` | Nastaví styl tlačítka. Může být `icon`, `text`, nebo `iconAndText`. Výchozí hodnota `icon`je. |
-| `data-locale` | Nastaví národní prostředí. Příkladem je `en-US` nebo `fr-FR`. Výchozí hodnota je `en`angličtina. |
+| `data-button-style` | Nastaví styl tlačítka. Může být `icon` , `text` , nebo `iconAndText` . Výchozí hodnota je `icon` . |
+| `data-locale` | Nastaví národní prostředí. Příkladem je `en-US` nebo `fr-FR`. Výchozí hodnota je angličtina `en` . |
 | `data-icon-px-size` | Nastaví velikost ikony v pixelech. Výchozí hodnota je 20px. |
 
 ## <a name="browser-support"></a>Podpora prohlížečů
@@ -226,4 +226,4 @@ K dosažení nejlepšího prostředí pro moderní čtečku použijte nejnověj�
 ## <a name="next-steps"></a>Další kroky
 
 * Prozkoumejte [sadu moderních čtenářů na GitHubu](https://github.com/microsoft/immersive-reader-sdk)
-* [Rychlý Start: Vytvoření webové aplikace, která spustí moderní čtečku (C#)](./quickstart.md)
+* [Rychlý Start: Vytvoření webové aplikace, která spustí moderní čtečku (C#)](./quickstarts/client-libraries.md?pivots=programming-language-csharp)

@@ -3,12 +3,12 @@ title: 'Rychlý Start: Přidání otázek a odpovědí na portálu QnA Maker'
 description: V tomto rychlém startu se dozvíte, jak přidat páry dotazů a odpovědí k metadatům, aby vaši uživatelé mohli najít správnou odpověď na jejich otázku.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: fc40c6a6e0543d4d558da2c8a17c155fbb7cbf1f
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994659"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266572"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Rychlý Start: Přidání otázek a odpovědí pomocí portálu QnA Maker
 
@@ -85,7 +85,7 @@ Přidání metadat do dvojice otázek a odpovědí umožňuje klientské aplikac
 1. Přidejte páry metadat pro stejné dvě Tagy metadat:
 
     `link_in_answer` : `true`<br>
-    `server`: `qna_maker`
+    `service`: `qna_maker`
 
     Teď máte dvě otázky se stejnými tagy metadat s různými hodnotami.
 

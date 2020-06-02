@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90432d3aa0ce9ebdecc7d0314b1352e46db0ac47
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 3a14ffc9f103e58681418eacbb35b72b704f2d61
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234569"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267133"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
@@ -32,8 +32,9 @@ Díky optimalizaci médií pro Microsoft Teams klient pro stolní počítače s 
 Než budete moct používat Microsoft Teams na virtuálním počítači s Windows, musíte provést tyto akce:
 
 - [Připravte síť](/microsoftteams/prepare-network/) pro Microsoft Teams.
-- Nainstalujte [desktopový klient Windows](connect-windows-7-and-10.md) na zařízení s Windows 10, které splňuje [hardwarové požadavky](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/)Microsoft Teams.
+- Nainstalujte [desktopový klient Windows](connect-windows-7-and-10.md) na zařízení s Windows 10, které splňuje hardwarové požadavky Microsoft Teams [pro týmy na počítači s Windows](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Připojte se k virtuálnímu počítači s Windows 10 nebo Windows 10 Enterprise (VM).
+- Nainstalujte desktopovou aplikaci Teams Desktop na hostitele pomocí instalace vázaná na počítač. Optimalizace médií pro Microsoft Teams vyžaduje týmy aplikace pro stolní počítače verze 1.3.00.4461 nebo novější.
 
 ## <a name="install-the-teams-desktop-app"></a>Instalace desktopové aplikace Teams
 
@@ -46,7 +47,7 @@ Pokud chcete povolit týmy pro instalaci na počítač, nastavte na hostiteli n�
 1. V nabídce Start spusťte program **Regedit** jako správce. Přejděte na **HKEY_LOCAL_MACHINE \software\microsoft\teams**.
 2. Pro klíč Teams vytvořte následující hodnotu:
 
-| Název             | Typ   | Data/hodnota  |
+| Name             | Typ   | Data/hodnota  |
 |------------------|--------|-------------|
 | IsWVDEnvironment | DWORD  | 1           |
 
@@ -59,6 +60,10 @@ Nainstalujte do image virtuálního počítače [službu WebSocket](https://quer
 Aplikaci Teams Desktop můžete nasadit pomocí instalace pro jednotlivé počítače. Instalace Microsoft Teams do prostředí virtuálních počítačů s Windows:
 
 1. Stáhněte [balíček MSI Teams](/microsoftteams/teams-for-vdi#deploy-the-teams-desktop-app-to-the-vm/) , který odpovídá vašemu prostředí. Doporučujeme použít 64 instalačního programu na 64 operačním systému.
+
+      > [!NOTE]
+      > Optimalizace médií pro Microsoft Teams vyžaduje týmy aplikace pro stolní počítače verze 1.3.00.4461 nebo novější.
+
 2. Spuštěním tohoto příkazu nainstalujete MSI na hostitelský virtuální počítač.
 
       ```console
@@ -138,7 +143,7 @@ Pokud chcete kontaktovat podporu Microsoft teams, otevřete [Centrum pro správu
 
 Přizpůsobení vlastností protokol RDP (Remote Desktop Protocol) (RDP) fondu hostitelů, jako je například prostředí pro více monitorů nebo povolení přesměrování mikrofonu a zvuku, umožňuje poskytovat optimální prostředí pro uživatele podle svých potřeb.
 
-Nastavte následující vlastnosti protokolu RDP, aby se povolilo přesměrování mikrofonu a kamery:
+Povolení přesměrování zařízení není nutné při použití týmů s optimalizací médií. Pokud používáte týmy bez optimalizace médií, nastavte následující vlastnosti protokolu RDP tak, aby umožňovaly přesměrování mikrofonu a kamery:
 
 - `audiocapturemode:i:1`povolí záznam zvuku z místních zařízení a aplikací redirets audio ve vzdálené relaci.
 - `audiomode:i:0`přehrává zvuk na místním počítači.

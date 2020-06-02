@@ -3,12 +3,12 @@ title: Novinky v Microsoft Azure Backup Serveru
 description: Microsoft Azure Backup Server poskytuje rozšířené možnosti zálohování pro ochranu virtuálních počítačů, souborů a složek, úloh a dalších. Přečtěte si, jak nainstalovat nebo upgradovat na Azure Backup Server v3.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 61430ce06d3e441fcfe0443eaaf5de3755b04624
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 358de6f2986036621accde90550e2afcc47f9135
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77582802"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247542"
 ---
 # <a name="whats-new-in-microsoft-azure-backup-server"></a>Novinky v Microsoft Azure Backup Serveru
 
@@ -26,7 +26,7 @@ V podnicích je MABS spravován týmem správců. I když existují pokyny pro �
 
 ## <a name="custom-size-allocation"></a>Přidělení vlastní velikosti
 
-Moderní úložiště zálohování (MBS) spotřebovává úložiště dynamicky a v případě potřeby. Pokud to chcete udělat, MABS vypočítá velikost zálohovaných dat, když je nakonfigurovaná na ochranu. Pokud je však mnoho souborů a složek zálohováno společně, jako v případě souborového serveru, výpočet velikosti může trvat dlouhou dobu. Pomocí MABS V3 můžete nakonfigurovat MABS tak, aby přijímala velikost svazku jako výchozí místo výpočtu velikosti každého souboru, takže ušetří čas.
+Moderní úložiště zálohování (MBS) spotřebovává úložiště dynamicky a v případě potřeby. Pokud to chcete udělat, MABS vypočítá velikost zálohovaných dat, když je nakonfigurovaná na ochranu. Pokud je však mnoho souborů a složek zálohováno společně, jako v případě souborového serveru, výpočet velikosti může trvat dlouhou dobu. Pomocí MABS V3 můžete nakonfigurovat MABS tak, aby přijímal velikost svazku jako výchozí místo výpočtu velikosti každého souboru, který šetří čas.
 
 ## <a name="optimized-cc-for-rct-vms"></a>Optimalizované virtuální počítače CC pro RCT
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2020
 ms.author: yelevin
-ms.openlocfilehash: 79d29ef228fc27655da30edbeb64abcb01e45d5e
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 5edba7f5a7576cac189aa44936f9d8f24f3ffcaf
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237175"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248991"
 ---
 # <a name="use-logstash-to-connect-data-sources-to-azure-sentinel"></a>Použití Logstash k připojení zdrojů dat k Sentinel Azure
 
@@ -51,7 +51,7 @@ Modul plug-in Azure Sentinel Output pro Logstash odesílá data ve formátu JSON
 - [Přečtěte si další informace o REST API Log Analytics](https://docs.microsoft.com/rest/api/loganalytics/create-request).
 - [Přečtěte si další informace o vlastních protokolech](https://docs.microsoft.com/azure/azure-monitor/platform/data-sources-custom-logs).
 
-## <a name="installing-and-configuring-the-azure-sentinel-output-plugin-in-logstash"></a>Instalace a konfigurace modulu plug-in Azure Sentinel pro výstup v Logstash
+## <a name="deploying-the-azure-sentinel-output-plugin-in-logstash"></a>Nasazení výstupního modulu plug-in Azure Sentinel v Logstash
 
 1. **Instalace**
 
@@ -112,11 +112,11 @@ Modul plug-in Azure Sentinel Output pro Logstash odesílá data ve formátu JSON
 
     1. V nabídce navigace v Azure Sentinel klikněte na **protokoly**. V záhlaví **tabulky** rozbalte kategorii **vlastní protokoly** . Vyhledejte a klikněte na název tabulky, kterou jste zadali (s `_CL` příponou) v konfiguraci.
 
-        ![Vlastní protokoly Logstash](./media/connect-logstash/logstash-custom-logs-menu.png)
+        :::image type="content" source="./media/connect-logstash/logstash-custom-logs-menu.png" alt-text="Vlastní protokoly Logstash":::
 
     1. Chcete-li zobrazit záznamy v tabulce, proveďte dotaz na tabulku pomocí názvu tabulky jako schématu.
 
-        ![Dotaz na vlastní protokoly Logstash](./media/connect-logstash/logstash-custom-logs-query.png)
+        :::image type="content" source="./media/connect-logstash/logstash-custom-logs-query.png" alt-text="Dotaz na vlastní protokoly Logstash":::
 
 ## <a name="monitor-output-plugin-audit-logs"></a>Monitorování protokolů auditu výstupního modulu plug-in
 

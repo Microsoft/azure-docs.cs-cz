@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: philmea
-ms.openlocfilehash: 5f88a21efd04c9dd24fe31e925a3b911b5ec9df2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 380e354beb2f58b958e3c88d9f93ad0bda655971
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77045911"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266470"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Spuštění Azure IoT Edge v systému Windows Server Virtual Machines
 
@@ -22,11 +22,11 @@ Azure IoT Edge modul runtime je tím, že zařízení přepíná do IoT Edge za�
 
 Další informace o tom, jak modul runtime IoT Edge funguje a jaké součásti jsou zahrnuté, najdete v tématu [pochopení Azure IoT Edge runtime a jeho architektury](iot-edge-runtime.md).
 
-V tomto článku jsou uvedené kroky, jak spustit modul runtime Azure IoT Edge na virtuálním počítači s Windows serverem 2019 pomocí nabídky [Windows server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace. Postupujte podle pokynů v tématu [Instalace modulu runtime Azure IoT Edge](how-to-install-iot-edge-windows.md) ve Windows pro použití s jinými verzemi.
+V tomto článku jsou uvedené kroky, jak spustit modul runtime Azure IoT Edge na virtuálním počítači s Windows serverem 2019 pomocí nabídky [Windows server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure Marketplace. Postupujte podle pokynů v tématu [Instalace modulu runtime Azure IoT Edge](how-to-install-iot-edge-windows.md) ve Windows pro použití s jinými verzemi.
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Nasazení z Azure Marketplace
 
-1. Přejděte na nabídku [Windows server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace nebo vyhledejte v části Windows server na [Azure Marketplace](https://azuremarketplace.microsoft.com/)
+1. Přejděte na nabídku [Windows server](https://www.microsoft.com/cloud-platform/windows-server-pricing) Azure Marketplace nebo vyhledejte v části Windows server na [Azure Marketplace](https://azuremarketplace.microsoft.com/)
 2. Vyberte **získat hned**
 3. V části **plán softwaru**Najděte "Windows Server 2019 Datacenter Server Core with Containers" a potom v dalším dialogovém okně vyberte **pokračovat** .
     * Tyto pokyny můžete použít také pro jiné verze Windows serveru s kontejnery.
@@ -88,7 +88,7 @@ V tomto článku jsou uvedené kroky, jak spustit modul runtime Azure IoT Edge n
    ```
 
    * Tento příkaz vás vyzve k zadání hesla, ale můžete přidat možnost `--admin-password` pro jednodušší nastavení skriptu.
-   * Základní image Windows serveru obsahuje podporu příkazového řádku jenom se vzdálenou plochou, takže pokud chcete, aby se jako image zobrazovala `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` úplná plocha, zadejte jako obrázek.
+   * Základní image Windows serveru obsahuje podporu příkazového řádku jenom se vzdálenou plochou, takže pokud chcete, aby se jako image zobrazovala úplná plocha, zadejte `MicrosoftWindowsServer:WindowsServer:2019-Datacenter-with-Containers:latest` jako obrázek.
 
 1. Nastavení připojovacího řetězce zařízení (Pokud nejste obeznámeni s tímto procesem, můžete postup [načíst připojovací řetězec pomocí Azure CLI](how-to-register-device.md#retrieve-the-connection-string-with-the-azure-cli) ):
 

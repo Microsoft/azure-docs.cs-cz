@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: 910a0d9b70a63fc93aebd47896db7c3493c846b2
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: a345b5a8a4d6a99b1b3928d61b22dfba0ba2735b
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684031"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248834"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 
@@ -62,7 +62,7 @@ Všechny kontejnery vytvořené v databázi s zřízenou propustností se musí 
 
 Pokud zatížení na logickém oddílu spotřebovává více než propustnost, která je přidělena konkrétnímu logickému oddílu, jsou operace omezené na míru. Pokud dojde k omezení rychlosti, můžete buď zvýšit propustnost pro celou databázi, nebo opakovat operace. Další informace o dělení najdete v tématu [logické oddíly](partition-data.md).
 
-Kontejnery ve sdílené databázi propustnosti sdílejí propustnost (RU/s) přidělenou této databázi. V databázi můžete mít až čtyři kontejnery s minimálně 400 RU/s. Při standardní (ruční) zřízené propustnosti budou mít každý nový kontejner po prvních čtyřech dalších minimálních 100 RU/s. Pokud máte například sdílenou databázi propustnosti s osmi kontejnery, minimální RU/s v databázi bude 800 RU/s. Díky zajištění vysoce škálovatelné propustnosti můžete mít až kontejnery v databázi s automatickém škálováním na maximum RU/s 4000 RU/s (škály 400-4000 RU/s).
+Kontejnery ve sdílené databázi propustnosti sdílejí propustnost (RU/s) přidělenou této databázi. V databázi můžete mít až čtyři kontejnery s minimálně 400 RU/s. Při standardní (ruční) zřízené propustnosti budou mít každý nový kontejner po prvních čtyřech dalších minimálních 100 RU/s. Pokud máte například sdílenou databázi propustnosti s osmi kontejnery, minimální RU/s v databázi bude 800 RU/s. Díky zajištěné propustnosti v rámci automatického škálování můžete mít až 25 kontejnerů v databázi s AutoScale Max/s 4000 RU/s (škály 400-4000 RU/s).
 
 > [!NOTE]
 > V únoru 2020 jsme představili změnu, která vám umožní mít ve sdílené databázi propustnosti maximálně 25 kontejnerů, což lépe umožňuje sdílení propustnosti v kontejnerech. Po prvních 25 kontejnerech můžete do databáze přidat další kontejnery pouze v případě, že jsou [zřízeny s vyhrazenou propustností](#set-throughput-on-a-database-and-a-container), která je oddělená od sdílené propustnosti databáze.<br>
@@ -104,7 +104,7 @@ Zřízenou propustnost kontejneru nebo databáze můžete kdykoli škálovat. P�
 ## <a name="comparison-of-models"></a>Porovnání modelů
 Tato tabulka ukazuje porovnání mezi zřizováním standardní (ruční) propustností databáze vs. v kontejneru. 
 
-|**Ukazatele**  |**Standardní (ruční) propustnost v databázi**  |**Standardní (ruční) propustnost na kontejneru**|**Automatické škálování propustnosti v databázi** | **Automatické škálování propustnosti na kontejneru**|
+|**Parametr**  |**Standardní (ruční) propustnost v databázi**  |**Standardní (ruční) propustnost na kontejneru**|**Automatické škálování propustnosti v databázi** | **Automatické škálování propustnosti na kontejneru**|
 |---------|---------|---------|---------|---------|
 |Vstupní bod (minimální RU/s) |400 RU/s. Po prvních čtyřech kontejnerech vyžaduje každý další kontejner minimálně 100 RU/s.</li> |400| Automatické škálování mezi 400 – 4000 RU/s. Může mít až 25 kontejnerů bez minimálního minima RU/s na jeden kontejner.</li> | Automatické škálování mezi 400 – 4000 RU/s.|
 |Minimální RU/s na kontejner|100|400|--|Automatické škálování mezi 400 – 4000 RU/s|

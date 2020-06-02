@@ -9,32 +9,32 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: skamal
-ms.openlocfilehash: f68112095bc8a8fd9bcc1bd67ff77827d6d00fd7
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: d4fa61f8290f3bf9e2f065ec841fa94d8ecaaac1
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195617"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267201"
 ---
 # <a name="tutorial-integrate-multiple-immersive-reader-resources"></a>Kurz: Integrace více prostředků moderního čtecího zařízení
 
-V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čtečka a jak implementuje osvědčené techniky pro zlepšení porozumění čtení pro jazykové učení, vznikající čtenáři a studenty s rozdíly v učení. V [rychlém startu Node. js](./quickstart-nodejs.md)jste zjistili, jak používat moderní čtečku s jedním prostředkem. V tomto kurzu se dozvíte, jak integrovat více prostředků moderního čtecího zařízení do stejné aplikace. V tomto kurzu se naučíte:
+V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čtečka a jak implementuje osvědčené techniky pro zlepšení porozumění čtení pro jazykové učení, vznikající čtenáři a studenty s rozdíly v učení. V [rychlém startu Node. js](./quickstarts/client-libraries.md?pivots=programming-language-nodejs)jste zjistili, jak používat moderní čtečku s jedním prostředkem. V tomto kurzu se dozvíte, jak integrovat více prostředků moderního čtecího zařízení do stejné aplikace. V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření více prostředků moderního čtecího zařízení v existující skupině prostředků
 > * Spuštění moderního čtečky s využitím několika prostředků
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Postupujte podle pokynů v [rychlém](./quickstart-nodejs.md) startu a vytvořte webovou aplikaci, která spustí moderní čtečku pomocí NodeJS. V tomto rychlém startu nakonfigurujete jeden prostředek pro moderní čtečku. V tomto kurzu se budeme sestavovat nahoru.
+* Postupujte podle pokynů v [rychlém](./quickstarts/client-libraries.md?pivots=programming-language-nodejs) startu a vytvořte webovou aplikaci, která spustí moderní čtečku pomocí NodeJS. V tomto rychlém startu nakonfigurujete jeden prostředek pro moderní čtečku. V tomto kurzu se budeme sestavovat nahoru.
 
 ## <a name="create-the-immersive-reader-resources"></a>Vytvoření prostředků pro moderní čtečku
 
-Podle [těchto pokynů](./how-to-create-immersive-reader.md) vytvořte každý prostředek pro moderní čtečku. Ve skriptu **Create-ImmersiveReaderResource** jsou `ResourceName`parametry `ResourceSubdomain`, a `ResourceLocation` . Ty by měly být pro každý vytvořený prostředek jedinečné. Zbývající parametry by měly být stejné jako ty, které jste použili při nastavování prvního prostředku pro moderní čtečku. Tímto způsobem je možné každý prostředek propojit se stejnou skupinou prostředků Azure a aplikací Azure AD.
+Podle [těchto pokynů](./how-to-create-immersive-reader.md) vytvořte každý prostředek pro moderní čtečku. Ve skriptu **Create-ImmersiveReaderResource** jsou `ResourceName` `ResourceSubdomain` parametry, a `ResourceLocation` . Ty by měly být pro každý vytvořený prostředek jedinečné. Zbývající parametry by měly být stejné jako ty, které jste použili při nastavování prvního prostředku pro moderní čtečku. Tímto způsobem je možné každý prostředek propojit se stejnou skupinou prostředků Azure a aplikací Azure AD.
 
-Následující příklad ukazuje, jak vytvořit dva prostředky, jeden v WestUS a druhý v EastUS. Všimněte si, že jedinečné `ResourceName`hodnoty `ResourceSubdomain`pro, `ResourceLocation`a.
+Následující příklad ukazuje, jak vytvořit dva prostředky, jeden v WestUS a druhý v EastUS. Všimněte si, že jedinečné hodnoty pro `ResourceName` , `ResourceSubdomain` a `ResourceLocation` .
 
 ```azurepowershell-interactive
 Create-ImmersiveReaderResource
@@ -64,7 +64,7 @@ Create-ImmersiveReaderResource
 
 ## <a name="add-resources-to-environment-configuration"></a>Přidat prostředky do konfigurace prostředí
 
-V rychlém startu jste vytvořili konfigurační soubor prostředí, který obsahuje parametry `TenantId`, `ClientId`, `ClientSecret`a `Subdomain` . Vzhledem k tomu, že všechny vaše prostředky používají stejnou aplikaci Azure AD, můžeme použít stejné hodnoty pro `TenantId`, `ClientId`a. `ClientSecret` Jedinou změnou, kterou je třeba udělat, je vypsat každou subdoménu pro každý prostředek.
+V rychlém startu jste vytvořili konfigurační soubor prostředí, který obsahuje `TenantId` parametry, `ClientId` , `ClientSecret` a `Subdomain` . Vzhledem k tomu, že všechny vaše prostředky používají stejnou aplikaci Azure AD, můžeme použít stejné hodnoty pro `TenantId` , `ClientId` a `ClientSecret` . Jedinou změnou, kterou je třeba udělat, je vypsat každou subdoménu pro každý prostředek.
 
 Nový soubor __. env__ by teď měl vypadat nějak takto:
 
@@ -258,7 +258,7 @@ Koncový bod rozhraní API **getimmersivereaderlaunchparams** by měl být zabez
     npm start
     ```
 
-4. Otevřete prohlížeč a přejděte na `http://localhost:3000`. Na stránce byste měli vidět výše uvedený obsah. Klikněte na tlačítko **EastUS pro moderní čtení** nebo na tlačítko **WestUS pro moderní čtení** a spusťte moderní čtečku s využitím příslušných prostředků.
+4. Otevřete prohlížeč a přejděte na `http://localhost:3000` . Na stránce byste měli vidět výše uvedený obsah. Klikněte na tlačítko **EastUS pro moderní čtení** nebo na tlačítko **WestUS pro moderní čtení** a spusťte moderní čtečku s využitím příslušných prostředků.
 
 ## <a name="next-steps"></a>Další kroky
 

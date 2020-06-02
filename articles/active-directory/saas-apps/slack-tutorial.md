@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/19/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 395aa82d47f4f84070af557c2c3b741776fb51ba
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 70caf48163483b449fa2cf3576681b5c9c15f4f2
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834403"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259282"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-slack"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s časovou rezervou
 
@@ -40,7 +40,7 @@ Chcete-li začít, potřebujete následující položky:
 * Předplatné s povoleným jednotným přihlašováním (SSO).
 
 > [!NOTE]
-> Identifikátorem této aplikace je pevná řetězcová hodnota, takže v jednom tenantovi může být nakonfigurovaná jenom jedna instance.
+> Pokud potřebujete provést integraci s více než jednou instancí časové rezervy v jednom klientovi, identifikátor pro každou aplikaci může být proměnná.
 
 ## <a name="scenario-description"></a>Popis scénáře
 
@@ -93,20 +93,24 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     > [!NOTE]
     > Hodnota adresy URL pro přihlášení není v reálném čase. Aktualizujte hodnotu skutečnou adresou URL pro přihlášení. Pro získání hodnoty se obraťte na [tým podpory pracovní rezervy klienta](https://slack.com/help/contact) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    
+    > [!NOTE]
+    > Hodnota **identifikátoru (ID entity)** může být proměnná, pokud máte více než jednu instanci časové rezervy, kterou potřebujete integrovat s klientem. Použijte vzorek `https://<DOMAIN NAME>.slack.com` . V tomto scénáři je také nutné spárovat s jiným nastavením v časové rezervě pomocí stejné hodnoty.
 
 1. Aplikace časové rezervy očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
     ![image](common/edit-attribute.png)
 
-1. Kromě výše očekává aplikace s časovou rezervou v odpovědi SAML několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků. Pokud uživatelé nemají e-mailovou adresu, namapujte **EmailAddress** na **User. userPrincipalName**.
+1. Kromě výše očekává aplikace s časovou rezervou v odpovědi SAML několik atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků. Také je nutné přidat `email` atribut. Pokud uživatel nemá e-mailovou adresu, namapujte **EmailAddress** na **User. userPrincipalName** a namapujte **e-mail** na **User. userPrincipalName**.
 
     | Name | Zdrojový atribut |
     | -----|---------|
     | EmailAddress | User. userPrincipalName |
+    | e-mail | User. userPrincipalName |
     | | |
 
-> [!NOTE]
-    > Aby bylo možné nastavit konfiguraci poskytovatele služeb (SP), je nutné na stránce konfigurace SAML kliknout na **Rozbalit** vedle **Možnosti Pokročilá nastavení** . Do pole **Vystavitel poskytovatele služeb** zadejte adresu URL pracovního prostoru. Výchozí hodnota je slack.com. 
+   > [!NOTE]
+   > Aby bylo možné nastavit konfiguraci poskytovatele služeb (SP), je nutné na stránce konfigurace SAML kliknout na **Rozbalit** vedle **Možnosti Pokročilá nastavení** . Do pole **Vystavitel poskytovatele služeb** zadejte adresu URL pracovního prostoru. Výchozí hodnota je slack.com. 
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -172,9 +176,12 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
     ![Konfigurace jednotného přihlašování na straně aplikace](./media/slack-tutorial/tutorial-slack-004.png)
 
-    e. Klikněte na **Rozbalit** a zadejte `https://slack.com` do textového pole **vystavitele zprostředkovatele identity** .
+    e. Klikněte na **Rozbalit** a zadejte `https://slack.com` do textového pole **vystavitele poskytovatele služby** .
 
     f.  Klikněte na **Uložit konfiguraci**.
+    
+    > [!NOTE]
+    > Pokud máte více než jednu instanci časové rezervy, kterou potřebujete integrovat s Azure AD, nastavte `https://<DOMAIN NAME>.slack.com` na **vystavitele poskytovatele služeb** , aby se mohl spárovat s nastavením **identifikátoru** aplikace Azure.
 
 ### <a name="create-slack-test-user"></a>Vytvořit testovacího uživatele pro časovou rezervu
 

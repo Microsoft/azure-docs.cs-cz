@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: cb1fc4c1b9bfa2025850f16d175ba83bd5ee1470
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 31958a4d4e3af4f747ab2f9de7b1bc67560e87d7
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747216"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248239"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -22,6 +22,9 @@ V tomto kurzu se dozvíte, jak zálohovat SAP HANA databáze běžící na virtu
 
 [Tady](sap-hana-backup-support-matrix.md#scenario-support) jsou všechny scénáře, které momentálně podporujeme.
 
+>[!NOTE]
+>[Začínáme](https://docs.microsoft.com/azure/backup/tutorial-backup-sap-hana-db) se službou SAP HANA Backup Preview pro RHEL (7,4, 7,6, 7,7 nebo 8,1). Další dotazy zapište do nás na [AskAzureBackupTeam@microsoft.com](mailto:AskAzureBackupTeam@microsoft.com) .
+
 ## <a name="prerequisites"></a>Požadavky
 
 Před konfigurací zálohování se ujistěte, že jste provedli následující kroky:
@@ -34,9 +37,7 @@ Před konfigurací zálohování se ujistěte, že jste provedli následující 
 * Spusťte skript konfigurace zálohování SAP HANA (předregistrující skript) ve virtuálním počítači, kde je nainstalovaná verze HANA, jako uživatel root. [Tento skript](https://aka.ms/scriptforpermsonhana) NAČTE systém Hana, který je připravený k zálohování. Další informace o skriptu před registrací najdete v části [co je to skript](#what-the-pre-registration-script-does) pro předběžnou registraci.
 
 >[!NOTE]
->Azure Backup se při zálohování databáze SAP HANA běžící na virtuálním počítači Azure automaticky neupraví na letní čas při ukládání.
->
->Zásadu podle potřeby upravte ručně.
+>Skript předregistrování nainstaluje SAP HANA **unixODBC234** pro úlohy, které běží na RHEL (7,4, 7,6 a 7,7), a **unixODBC** pro RHEL 8,1. [Tento balíček je umístěný v RHEL for SAP Hana (pro úložiště RPM (RHEL 7 Server) Update Services for SAP Solutions ()](https://access.redhat.com/solutions/5094721).  Pro bitovou kopii Azure Marketplace RHEL úložiště **rhui-RHEL-SAP-HANA-for-RHEL-7-Server-rhui-e4s-RPM**.
 
 ## <a name="set-up-network-connectivity"></a>Nastavení připojení k síti
 
@@ -88,7 +89,7 @@ Vytvoření pravidla pomocí prostředí PowerShell:
 
 Možnosti připojení zahrnují následující výhody a nevýhody:
 
-**Nastavení** | **Výhody** | **Nevýhody**
+**Možnost** | **Výhody** | **Nevýhody**
 --- | --- | ---
 Povoluje rozsahy IP adres. | Žádné další náklady | Složitá Správa, protože se rozsahy IP adres v průběhu času mění <br/><br/> Poskytuje přístup k celé službě Azure, ne jen Azure Storage
 Použití značek služby NSG | Jednodušší Správa jako změny rozsahu se sloučí automaticky. <br/><br/> Žádné další náklady <br/><br/> | Dá se použít jenom s skupin zabezpečení sítě <br/><br/> Poskytuje přístup k celé službě.

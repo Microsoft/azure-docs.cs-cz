@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: yinhew
-ms.openlocfilehash: 555ae9e48f538c1100bab8b35ce61742baa88451
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 7664ce89c01c543544bc576c5eee3fd288d323d5
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659832"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248511"
 ---
 # <a name="speech-to-text-rest-api"></a>Rozhraní REST API pro převod řeči na text
 
@@ -115,7 +115,7 @@ var pronAssessmentHeader = Convert.ToBase64String(pronAssessmentParamsBytes);
 ```
 
 >[!NOTE]
->Funkce hodnocení výslovnosti je aktuálně dostupná jenom v `westus` `eastasia` oblastech a. A tato funkce je aktuálně dostupná jenom pro `en-US` jazyk.
+>Funkce posouzení výslovnosti je aktuálně dostupná pouze v `westus` `eastasia` oblastech a `centralindia` . A tato funkce je aktuálně dostupná jenom pro `en-US` jazyk.
 
 ## <a name="sample-request"></a>Ukázková žádost
 

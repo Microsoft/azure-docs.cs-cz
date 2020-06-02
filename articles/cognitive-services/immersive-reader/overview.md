@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 01/4/2020
 ms.author: metan
-ms.openlocfilehash: 2eab7ab62f6a7a105dab33aa889af9f2be3a3fa3
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: b9efe70e8658e25d61decffbe44dec776890b17b
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80052379"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267269"
 ---
 # <a name="what-is-immersive-reader"></a>Co je Asistivní čtečka?
 
@@ -55,12 +55,12 @@ Moderní čtečka je navržená tak, aby pro každého mohla být přičtená.
 
 ## <a name="how-does-immersive-reader-work"></a>Jak funguje moderní čtečka?
 
-Moderní čtečka je samostatná webová aplikace, která při vyvolání pomocí sady SDK pro moderní čtečku se zobrazuje na vaší stávající webové aplikaci přes `iframe`. Když zavoláte rozhraní API za účelem spuštění moderního čtecího modulu, zadáte obsah, který chcete zobrazit v moderní čtečce. Naše sada SDK zpracovává vytváření a stylování `iframe` a komunikaci s back-end službou pro moderní čtečku, která zpracovává obsah pro části řeči, převod textu na řeč, překlad atd.
+Moderní čtečka je samostatná webová aplikace, která při vyvolání pomocí sady SDK pro moderní čtečku se zobrazuje na vaší stávající webové aplikaci přes `iframe` . Když zavoláte rozhraní API za účelem spuštění moderního čtecího modulu, zadáte obsah, který chcete zobrazit v moderní čtečce. Naše sada SDK zpracovává vytváření a stylování `iframe` a komunikaci s back-end službou pro moderní čtečku, která zpracovává obsah pro části řeči, převod textu na řeč, překlad atd.
 
 ## <a name="next-steps"></a>Další kroky
 
 Začínáme s Asistivní čtečkou:
 
-* Přechod k [rychlému](./quickstart.md) startu
+* Přechod na [rychlé starty](./quickstarts/client-libraries.md?pivots=programming-language-csharp)
 * Prozkoumejte [sadu moderních čtenářů na GitHubu](https://github.com/microsoft/immersive-reader-sdk)
 * Přečtěte si [referenční informace k sadě pro moderní čtečku SDK](./reference.md)

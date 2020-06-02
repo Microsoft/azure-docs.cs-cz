@@ -1,28 +1,32 @@
 ---
 title: Rozsahy privátních IP adres Azure Firewall SNAT
-description: Můžete nakonfigurovat privátní rozsahy IP adres, aby brána firewall nenarušila provoz na tyto IP adresy.
+description: Rozsahy IP adres můžete nakonfigurovat pro SNAT.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 03/20/2020
+ms.date: 06/01/2020
 ms.author: victorh
-ms.openlocfilehash: ed8cef00b7de67458c607373c724a3717f14a7cb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 28ec61c4aefeacb8014e0a5d48d0259cf7fcf7f3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064811"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267017"
 ---
 # <a name="azure-firewall-snat-private-ip-address-ranges"></a>Rozsahy privátních IP adres Azure Firewall SNAT
 
-Pokud je cílová IP adresa v rozsahu privátních IP adres na [IANA RFC 1918](https://tools.ietf.org/html/rfc1918), Azure firewall nesnat s pravidly sítě. Pravidla aplikací se vždycky aplikují pomocí [transparentního proxy serveru](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) bez ohledu na cílovou IP adresu.
+Azure Firewall poskytuje automatické SNAT pro veškerý odchozí provoz na veřejné IP adresy. Ve výchozím nastavení Azure Firewall nesnat s pravidly sítě, pokud je cílová IP adresa v rozsahu privátních IP adres na [úřad IANA RFC 1918](https://tools.ietf.org/html/rfc1918). Pravidla aplikací se vždycky aplikují pomocí [transparentního proxy serveru](https://wikipedia.org/wiki/Proxy_server#Transparent_proxy) bez ohledu na cílovou IP adresu.
+
+Tato logika funguje dobře při směrování provozu přímo na Internet. Pokud jste ale povolili [vynucené tunelování](forced-tunneling.md), před jejich vstupem se internetový provoz na jednu z privátních IP adres brány firewall v AzureFirewallSubnet, takže se tento zdroj skryje z místní brány firewall.
 
 Pokud vaše organizace používá pro privátní sítě rozsah veřejných IP adres, Azure Firewall SNATs provoz na jednu z privátních IP adres brány firewall v AzureFirewallSubnet. Můžete ale nakonfigurovat Azure Firewall **, aby** nesnat na svůj rozsah veřejných IP adres.
 
-## <a name="configure-snat-private-ip-address-ranges"></a>Konfigurovat rozsahy privátních IP adres SNAT
+Pokud chcete nakonfigurovat Azure Firewall na nikdy SNAT bez ohledu na cílovou IP adresu, použijte jako rozsah privátních IP adres **0.0.0.0/0** . V této konfiguraci Azure Firewall moci nikdy směrovat přenosy přímo na Internet. Pokud chcete nakonfigurovat bránu firewall tak, aby vždycky byla v nezávisle na cílové adrese, použijte jako rozsah privátních IP adres **255.255.255.255/32** .
 
-Pomocí Azure PowerShell můžete zadat rozsah IP adres, které brána firewall nesnat.
+## <a name="configure-snat-private-ip-address-ranges---azure-powershell"></a>Nakonfigurujte rozsahy privátních IP adres SNAT – Azure PowerShell
+
+Pomocí Azure PowerShell můžete zadat rozsahy privátních IP adres pro bránu firewall.
 
 ### <a name="new-firewall"></a>Nová brána firewall
 
@@ -47,7 +51,7 @@ Set-AzFirewall -AzureFirewall $azfw
 
 ### <a name="templates"></a>Šablony
 
-Do `additionalProperties` části můžete přidat následující:
+Do části můžete přidat následující `additionalProperties` :
 
 ```
 "additionalProperties": {
@@ -55,6 +59,20 @@ Do `additionalProperties` části můžete přidat následující:
                 },
 ```
 
+## <a name="configure-snat-private-ip-address-ranges---azure-portal"></a>Nakonfigurujte rozsahy privátních IP adres SNAT – Azure Portal
+
+Pomocí Azure Portal můžete pro bránu firewall zadat rozsahy privátních IP adres.
+
+1. Vyberte skupinu prostředků a potom vyberte bránu firewall.
+2. Na stránce **Přehled** **rozsahy privátních IP adres**vyberte výchozí hodnotu **IANA RFC 1918**.
+
+   Otevře se stránka **Upravit předpony privátních IP adres** :
+
+   :::image type="content" source="media/snat-private-range/private-ip.png" alt-text="Upravit předpony privátních IP adres":::
+
+1. Ve výchozím nastavení je **IANAPrivateRanges** nakonfigurovaný.
+2. Upravte rozsahy privátních IP adres pro vaše prostředí a pak vyberte **Uložit**.
+
 ## <a name="next-steps"></a>Další kroky
 
-- Přečtěte si, jak [nasadit a nakonfigurovat Azure firewall](tutorial-firewall-deploy-portal.md).
+- Přečtěte si o [Azure firewall vynucené tunelování](forced-tunneling.md).

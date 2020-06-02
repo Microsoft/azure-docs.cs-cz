@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 15bfb1e4d21e4f91cb37fed6e43b4e03f5643b13
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: a6a4712f88a6f5351845233f4179e82e4b473ded
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692208"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266720"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Integrace s partnery virtuálních počítačů s Windows
 
@@ -245,7 +245,7 @@ sepago byl založen v 2002 čtyřmi přáteli v Cologne. Dnes sepago je konzulta
 sepago a vývojové laboratoře pro vývoj vytváří inteligentní řešení s využitím technologií Big data a AI. Tato řešení se zaměřují na vylepšení obchodních a uživatelských zkušeností a správ partnerských produktů, jako je například virtuální klient Windows.
 
 - [Podívejte se na stručné řešení](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4qMsm).
-- [Přejít na web partnera](https://www.sepago.de/wvd-value-add-tools/).
+- [Přejít na web partnera](https://www.sepago.de/en/).
 
 ## <a name="thinprint"></a>ThinPrint
 

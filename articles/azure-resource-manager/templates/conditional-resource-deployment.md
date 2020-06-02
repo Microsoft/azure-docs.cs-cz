@@ -2,17 +2,20 @@
 title: Podmíněné nasazení se šablonami
 description: Popisuje postup podmíněného nasazení prostředku v šabloně Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 001a1a7d6d15fe29b0f3184b75892f4ec75cef27
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/01/2020
+ms.openlocfilehash: effa7fe6ee1393e44a124bc087609da5d4898210
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017490"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259316"
 ---
 # <a name="conditional-deployment-in-arm-templates"></a>Podmíněné nasazení v šablonách ARM
 
 Někdy potřebujete volitelně nasadit prostředek v šabloně Azure Resource Manager (ARM). Použijte `condition` element k určení, zda je prostředek nasazen. Hodnota pro tento prvek je přeložena na hodnotu true nebo false. Pokud je hodnota true, je prostředek vytvořen. Pokud je hodnota false, prostředek se nevytvoří. Hodnota se dá použít jenom u celého prostředku.
+
+> [!NOTE]
+> Podmíněné nasazení není kaskádou do [podřízených prostředků](child-resource-name-type.md). Pokud chcete podmíněně nasadit prostředek a jeho podřízené prostředky, je nutné použít stejnou podmínku pro každý typ prostředku.
 
 ## <a name="new-or-existing-resource"></a>Nový nebo existující prostředek
 
@@ -81,7 +84,7 @@ Použijte funkci [if](template-functions-logical.md#if) a ujistěte se, že je f
 
 Prostředek můžete nastavit [tak,](define-resource-dependency.md) aby byl závislý na podmíněném prostředku přesně stejně jako jakýkoliv jiný prostředek. Pokud není podmíněný prostředek nasazený, Azure Resource Manager ho automaticky odebere z požadovaných závislostí.
 
-## <a name="condition-with-complete-mode"></a>Podmínka s režimem úplného zobrazení
+## <a name="complete-mode"></a>Režim dokončení
 
 Pokud nasadíte šablonu s [režimem úplného](deployment-modes.md) nasazení a prostředek není nasazen, protože podmínka je vyhodnocena jako NEPRAVDA, výsledek závisí na tom, která REST API verze, kterou použijete k nasazení šablony. Pokud používáte verzi starší než 2019-05-10, prostředek se **neodstraní**. Při 2019-05-10 nebo novějším se prostředek **odstraní**. Nejnovější verze Azure PowerShell a Azure CLI odstraní prostředek, pokud je podmínka nepravdivá.
 

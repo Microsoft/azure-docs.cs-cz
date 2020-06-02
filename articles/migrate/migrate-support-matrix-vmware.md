@@ -3,12 +3,12 @@ title: Podpora pro vyhodnocení VMware v Azure Migrate
 description: Přečtěte si o podpoře vyhodnocení virtuálních počítačů VMware pomocí posouzení serveru Azure Migrate.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 0ec7006ce240df8c6e07afffa886e78ca9bc2a4d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 8e0b6f3babcc862e1a78effcdb1a61f430c01646
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849361"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267881"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Matice podpory pro vyhodnocení VMware 
 
@@ -18,7 +18,7 @@ K vyhodnocení virtuálních počítačů VMware vytvoříte Azure Migrate proje
 
 ## <a name="limitations"></a>Omezení
 
-**Podpora** | **Podrobnosti**
+**Podpora** | **Zobrazí**
 --- | ---
 **Omezení projektu** | V předplatném Azure můžete vytvořit více projektů.<br/><br/> V jednom [projektu](migrate-support-matrix.md#azure-migrate-projects)můžete zjistit a posoudit až 35 000 virtuálních počítačů VMware. Projekt může také zahrnovat fyzické servery a virtuální počítače Hyper-V, a to až do limitů hodnocení pro každé z nich.
 **Rozpoznávání** | Zařízení Azure Migrate může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.
@@ -31,7 +31,7 @@ K vyhodnocení virtuálních počítačů VMware vytvoříte Azure Migrate proje
 
 Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikace, role a funkce běžící na počítačích. Zjišťování inventáře aplikací vám umožní identifikovat a naplánovat cestu migrace přizpůsobenou pro vaše místní úlohy. 
 
-**Podpora** | **Podrobnosti**
+**Podpora** | **Zobrazí**
 --- | ---
 **Podporované počítače** | Zjišťování aplikací se v současné době podporuje jenom pro virtuální počítače VMware.
 **Rozpoznávání** | Zjišťování aplikací je bez agenta. Používá přihlašovací údaje hosta počítače a vzdáleně přistupuje k počítačům pomocí volání WMI a SSH.
@@ -47,9 +47,9 @@ Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikac
 
 ## <a name="vmware-requirements"></a>Požadavky VMware
 
-**Hostiteli** | **Podrobnosti**
+**Hostiteli** | **Zobrazí**
 --- | ---
-**Virtuální počítače VMware** | Posouzení je podporováno pro všechny operační systémy Windows a Linux.
+**Virtuální počítače VMware** | Pro migraci se dají zhodnotit všechny operační systémy. 
 **vCenter Server** | Počítače, které chcete zjišťovat a hodnotit, se musí spravovat pomocí vCenter Server verze 5,5, 6,0, 6,5 nebo 6,7.
 **Oprávnění (posouzení)** | vCenter Server účet jen pro čtení.
 **Oprávnění (zjišťování aplikací)** | vCenter Server účet s přístupem jen pro čtení a oprávnění povolená pro **virtuální počítače > operace hostů**.
@@ -77,7 +77,7 @@ Hostitelé ESXi (zjišťování aplikací/analýza závislostí bez agenta) | Po
 
 Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikace, role a funkce běžící na počítačích. Zjišťování inventáře aplikací vám umožní identifikovat a naplánovat cestu migrace přizpůsobenou pro vaše místní úlohy. 
 
-**Podpora** | **Podrobnosti**
+**Podpora** | **Zobrazí**
 --- | ---
 **Podporované počítače** | Zjišťování aplikací se v současné době podporuje jenom pro virtuální počítače VMware.
 **Rozpoznávání** | Zjišťování aplikací je bez agenta. Používá přihlašovací údaje hosta počítače a vzdáleně přistupuje k počítačům pomocí volání WMI a SSH.
@@ -94,7 +94,7 @@ Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikac
 
 [Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat závislosti mezi místními počítači, které chcete vyhodnotit a migrovat do Azure. Tabulka shrnuje požadavky na nastavení analýzy závislostí bez agentů. 
 
-**Požadavek** | **Podrobnosti**
+**Požadavek** | **Zobrazí**
 --- | --- 
 **Před nasazením** | Měli byste mít Azure Migrate projekt, pomocí nástroje pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjišťování místních počítačů VMWare.<br/><br/> [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/> [Přečtěte si, jak](how-to-set-up-appliance-vmware.md) nastavit zařízení Azure Migrate pro posouzení virtuálních počítačů VMware.
 **Podpora virtuálních počítačů** | Aktuálně se podporuje jenom pro virtuální počítače VMware.
@@ -113,7 +113,7 @@ Kromě zjišťování počítačů může posouzení serveru zjišťovat aplikac
 
 [Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat závislosti mezi místními počítači, které chcete vyhodnotit a migrovat do Azure. Tabulka shrnuje požadavky na nastavení analýzy závislostí založené na agentech. 
 
-**Požadavek** | **Podrobnosti** 
+**Požadavek** | **Zobrazí** 
 --- | --- 
 **Před nasazením** | Měli byste mít Azure Migrate projekt, a to pomocí Azure Migrate: Nástroj pro vyhodnocení serveru přidaný do projektu.<br/><br/>  Vizualizace závislostí nasadíte po nastavení zařízení Azure Migrate pro zjištění vašich místních počítačů.<br/><br/> [Naučte](create-manage-projects.md) se, jak poprvé vytvořit projekt.<br/> [Přečtěte si, jak](how-to-assess.md) přidat nástroj pro vyhodnocení do existujícího projektu.<br/> Naučte se, jak nastavit zařízení Azure Migrate pro posouzení [technologie Hyper-V](how-to-set-up-appliance-hyper-v.md), [VMware](how-to-set-up-appliance-vmware.md)nebo fyzických serverů.
 **Azure Government** | Vizualizace závislostí není v Azure Government k dispozici.

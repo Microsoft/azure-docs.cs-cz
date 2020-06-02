@@ -3,12 +3,12 @@ title: Použití Azure Backup Server k zálohování úloh
 description: V tomto článku se dozvíte, jak připravit prostředí pro ochranu a zálohování úloh pomocí Microsoft Azure Backup serveru (MABS).
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: bbe3e21840f094fbd3f34d94e7af64ca98d884df
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2cf6d88ad37ec1368e53c7213ea771c028a56643
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83735867"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247270"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Instalace a upgrade Azure Backup Server
 
@@ -54,7 +54,7 @@ Ochrana úloh pomocí Azure Backup Server má spoustu drobné odlišnosti. Tato 
 
 Pokud nechcete spustit základní server v Azure, můžete server spustit na virtuálním počítači Hyper-V, na virtuálním počítači VMware nebo na fyzickém hostiteli. Doporučené minimální požadavky na hardware serveru jsou dvě jádra a 8 GB paměti RAM. Podporované operační systémy jsou uvedené v následující tabulce:
 
-| Operační systém | Platforma | Skladová jednotka (SKU) |
+| Operační systém | Platforma | SKU |
 |:--- | --- |:--- |
 | Windows Server 2019 |64bitová verze |Standard, Datacenter, Essentials |
 | Windows Server 2016 a nejnovější aktualizace service packu |64bitová verze |Standard, Datacenter, Essentials  |
@@ -95,7 +95,7 @@ Chcete-li upravit nastavení replikace úložiště:
 
 ### <a name="downloading-the-software-package"></a>Stažení softwarového balíčku
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 2. Pokud už máte otevřený trezor Recovery Services, pokračujte krokem 3. Pokud nemáte otevřený trezor Recovery Services, ale nachází se v Azure Portal, v hlavní nabídce klikněte na tlačítko **Procházet**.
 
    * V seznamu prostředků zadejte **Recovery Services**.
@@ -174,7 +174,7 @@ Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu 
 
     ![Kontroly Azure Backup Server-SQL](./media/backup-azure-microsoft-azure-backup/sql/01.png)
 
-    Pokud dojde k selhání s doporučením pro restartování počítače, udělejte to a znovu klikněte na **znovu spustit**. Pokud dojde k nějakým problémům s konfigurací SQL, překonfigurujte SQL podle pokynů pro SQL a zkuste instalaci/upgrade MABS pomocí existující instance SQL.
+    Pokud dojde k selhání s doporučením pro restartování počítače, udělejte to a znovu klikněte na **znovu spustit**. Pokud dojde k nějakým problémům s konfigurací SQL, překonfigurujte SQL podle pokynů SQL a zkuste instalaci/upgrade MABS pomocí existující instance SQL.
 
    **Ruční konfigurace**
 
@@ -186,9 +186,9 @@ Po dokončení procesu extrakce zaškrtněte políčko pro spuštění programu 
 
     Pro konfiguraci služby SSRS použijte následující hodnoty:
     * Účet služby: použít předdefinovaný účet by měl být síťová služba
-    * Adresa URL webové služby: virtuální adresář by měl být ReportServer_ \< SQLInstanceName>
-    * Databáze: DatabaseName by měla být ReportServer $ \< SQLInstanceName>
-    * Adresa URL webového portálu: virtuální adresář by měl být Reports_ \< SQLInstanceName>
+    * Adresa URL webové služby: virtuální adresář by měl být ReportServer_\<SQLInstanceName>
+    * Databáze: DatabaseName by měl být ReportServer $\<SQLInstanceName>
+    * Adresa URL webového portálu: virtuální adresář by měl být Reports_\<SQLInstanceName>
 
     [Přečtěte si další informace](https://docs.microsoft.com/sql/reporting-services/report-server/configure-and-administer-a-report-server-ssrs-native-mode?view=sql-server-2017) o konfiguraci služby SSRS.
 
@@ -312,7 +312,7 @@ Pokud používáte partnerský vztah Microsoftu ExpressRoute, vyberte prosím n�
 
 * Azure Active Directory (12076:5060)
 * Oblast Microsoft Azure (podle umístění vašeho trezoru Recovery Services)
-* Azure Storage (jak na umístění vašeho trezoru Recovery Services)
+* Azure Storage (podle umístění vašeho trezoru Recovery Services)
 
 Další podrobnosti najdete v [požadavcích na směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).
 
@@ -343,7 +343,7 @@ K upgradu MABS použijte následující postup:
 
    > [!NOTE]
    >
-   > Neukončujte během upgradu instance SQL, ukončení odinstaluje instanci generování sestav SQL, a proto se pokus o opětovné provedení upgradu MABS nezdaří.
+   > Neukončujte během upgradu instance SQL, ukončení odinstaluje instanci generování sestav SQL, takže pokus o opětovné provedení upgradu MABS se nezdaří.
 
    > [!IMPORTANT]
    >

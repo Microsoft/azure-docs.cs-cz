@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/03/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 2e3a08521e503a9f73bdccca3a125c7d2416b534
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 13cafdcd7ac4b7f46bd5f7c3b007372228234ba6
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219659"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267796"
 ---
 # <a name="automated-backup-v2-for-azure-virtual-machines-resource-manager"></a>Automatizované zálohování v2 pro virtuální počítače Azure (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,13 +37,11 @@ Pokud chcete používat automatizované zálohování v2, Projděte si následuj
 
 **Operační systém**:
 
-- Windows Server 2012 R2
-- Windows Server 2016
+- Windows Server 2012 R2 nebo novější
 
 **SQL Server verze/edice**:
 
-- SQL Server 2016: Developer, Standard nebo Enterprise
-- SQL Server 2017: Developer, Standard nebo Enterprise
+- SQL Server 2016 nebo vyšší: Developer, Standard nebo Enterprise
 
 > [!IMPORTANT]
 > Automatizované zálohování v2 funguje s SQL Server 2016 nebo novějším. Pokud používáte SQL Server 2014, můžete k zálohování databází použít automatické zálohování v1. Další informace najdete v tématu [automatizovaná záloha pro SQL Server 2014 virtuálních počítačů Azure (VM)](automated-backup-sql-2014.md).

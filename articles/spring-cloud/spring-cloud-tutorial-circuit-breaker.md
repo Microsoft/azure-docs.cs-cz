@@ -6,12 +6,12 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: tutorial
 ms.date: 04/06/2020
-ms.openlocfilehash: e5fbb14477275ca329243797b75550cfe92077b6
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: a92c5fde68227bf94342dd380250429675bd084d
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83701553"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248851"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Použití řídicího panelu pro dělení na okruhy pomocí Azure jarního cloudu
 Jarní [cloudová Netflix turbína](https://github.com/Netflix/Turbine) se běžně používá k agregaci více datových proudů [hystrix](https://github.com/Netflix/Hystrix) metrik, aby bylo možné datové proudy sledovat v jednom zobrazení pomocí řídicího panelu hystrix. V tomto kurzu se dozvíte, jak je používat v Azure jarním cloudu.
@@ -59,7 +59,7 @@ Až budou všechny aplikace spuštěné a zjistitelný, přístup k `user-servic
 Ověřte použití veřejných koncových bodů nebo privátních koncových bodů testu.
 
 ### <a name="using-public-endpoints"></a>Použití veřejných koncových bodů
-Přístup k hystrix-turbíně s cestou `https://<SERVICE-NAME>-hystrix-turbine azuremicroservices.io/hystrix` z prohlížeče.  Následující obrázek ukazuje řídicí panel hystrix běžící v této aplikaci.
+Přístup k hystrix-turbíně s cestou `https://<SERVICE-NAME>-hystrix-turbine.azuremicroservices.io/hystrix` z prohlížeče.  Následující obrázek ukazuje řídicí panel hystrix běžící v této aplikaci.
 
 ![Řídicí panel hystrix](media/spring-cloud-circuit-breaker/hystrix-dashboard.png)
 

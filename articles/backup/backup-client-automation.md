@@ -3,12 +3,12 @@ title: Použití PowerShellu k zálohování Windows serveru do Azure
 description: V tomto článku se naučíte, jak pomocí PowerShellu nastavit Azure Backup pro Windows Server nebo klienta Windows a spravovat zálohování a obnovení.
 ms.topic: conceptual
 ms.date: 12/2/2019
-ms.openlocfilehash: bd7a48fa44d33274fe2378d0efdce13eae86aff4
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 696da2c94a439e5efaebbd148f6e05a9e0e15f37
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84234657"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84247746"
 ---
 # <a name="deploy-and-manage-backup-to-azure-for-windows-serverwindows-client-using-powershell"></a>Nasazení a správa zálohování do Azure pro servery Windows / klienty Windows pomocí PowerShellu
 
@@ -694,7 +694,7 @@ Odinstalace binárních souborů agenta z počítače má nějaký důsledek v �
 * Z počítače se odeberou všechny informace o zásadách, ale informace o zásadách se v této službě budou dál ukládat.
 * Všechny plány zálohování se odeberou a neprovádí se žádné další zálohy.
 
-Data uložená v Azure ale zůstanou a v rámci nastavení zásad uchovávání informací se uchovávají. Starší body jsou automaticky zastaraly.
+Data uložená v Azure ale zůstanou a uchovávají se podle nastavení zásad uchovávání informací. Starší body jsou automaticky zastaraly.
 
 ## <a name="remote-management"></a>Vzdálená správa
 

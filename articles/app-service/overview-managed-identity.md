@@ -3,15 +3,15 @@ title: Spravované identity
 description: Přečtěte si, jak spravované identity fungují v Azure App Service a Azure Functions, jak nakonfigurovat spravovanou identitu a generovat token pro prostředek back-endu.
 author: mattchenderson
 ms.topic: article
-ms.date: 04/14/2020
+ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
-ms.openlocfilehash: 0bb17ab98dc17bbe7623467451acc65a126bcaf1
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: d206ff114cd08f2ab3f2068076bf7cadb047a689
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779969"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258449"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Použití spravovaných identit pro App Service a Azure Functions
 
@@ -79,7 +79,9 @@ Následující kroky vás provedou vytvořením webové aplikace a přiřazením
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-Následující kroky vás provedou vytvořením webové aplikace a přiřazením identity pomocí Azure PowerShell:
+Následující kroky vás provedou vytvořením aplikace a přiřazením identity pomocí Azure PowerShell. Pokyny pro vytvoření webové aplikace a aplikace Function App se liší.
+
+#### <a name="using-azure-powershell-for-a-web-app"></a>Použití Azure PowerShell pro webovou aplikaci
 
 1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/overview)a pak spuštěním rutiny `Login-AzAccount` vytvořte připojení k Azure.
 
@@ -87,20 +89,39 @@ Následující kroky vás provedou vytvořením webové aplikace a přiřazením
 
     ```azurepowershell-interactive
     # Create a resource group.
-    New-AzResourceGroup -Name myResourceGroup -Location $location
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
 
     # Create an App Service plan in Free tier.
-    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName myResourceGroup -Tier Free
+    New-AzAppServicePlan -Name $webappname -Location $location -ResourceGroupName $resourceGroupName -Tier Free
 
     # Create a web app.
-    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName myResourceGroup
+    New-AzWebApp -Name $webappname -Location $location -AppServicePlan $webappname -ResourceGroupName $resourceGroupName
     ```
 
 3. Spusťte `Set-AzWebApp -AssignIdentity` příkaz pro vytvoření identity pro tuto aplikaci:
 
     ```azurepowershell-interactive
-    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName myResourceGroup 
+    Set-AzWebApp -AssignIdentity $true -Name $webappname -ResourceGroupName $resourceGroupName 
     ```
+
+#### <a name="using-azure-powershell-for-a-function-app"></a>Použití Azure PowerShell pro aplikaci Function App
+
+1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/overview)a pak spuštěním rutiny `Login-AzAccount` vytvořte připojení k Azure.
+
+2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions):
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a function app with a system-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType SystemAssigned
+    ```
+
+Místo toho můžete také aktualizovat existující aplikaci Function App `Update-AzFunctionApp` .
 
 ### <a name="using-an-azure-resource-manager-template"></a>Použití šablony Azure Resource Manager
 
@@ -176,6 +197,35 @@ Nejdřív budete muset vytvořit prostředek identity přiřazené uživatelem.
 6. Vyhledejte identitu, kterou jste vytvořili dříve, a vyberte ji. Klikněte na tlačítko **Add** (Přidat).
 
     ![Spravovaná identita v App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
+
+### <a name="using-azure-powershell"></a>Použití Azure Powershell
+
+[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
+
+Následující kroky vás provedou vytvořením aplikace a přiřazením identity pomocí Azure PowerShell.
+
+> [!NOTE]
+> Aktuální verze Azure PowerShell rutin pro Azure App Service nepodporuje identity přiřazené uživatelem. Následující pokyny jsou k disAzure Functions.
+
+1. V případě potřeby nainstalujte Azure PowerShell pomocí pokynů uvedených v [příručce Azure PowerShell](/powershell/azure/overview)a pak spuštěním rutiny `Login-AzAccount` vytvořte připojení k Azure.
+
+2. Vytvořte aplikaci funkcí pomocí Azure PowerShell. Další příklady použití Azure PowerShell s Azure Functions najdete v tématu [AZ. Functions](https://docs.microsoft.com/powershell/module/az.functions/?view=azps-4.1.0#functions). Níže uvedený skript také využívá k `New-AzUserAssignedIdentity` tomu, že se musí nainstalovat samostatně podle potřeby pro [Vytvoření, výpis nebo odstranění spravované identity přiřazené uživatelem pomocí Azure PowerShell](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
+
+    ```azurepowershell-interactive
+    # Create a resource group.
+    New-AzResourceGroup -Name $resourceGroupName -Location $location
+
+    # Create a storage account.
+    New-AzStorageAccount -Name $storageAccountName -ResourceGroupName $resourceGroupName -SkuName $sku
+
+    # Create a user-assigned identity. This requires installation of the "Az.ManagedServiceIdentity" module.
+    $userAssignedIdentity = New-AzUserAssignedIdentity -Name $userAssignedIdentityName -ResourceGroupName $resourceGroupName
+
+    # Create a function app with a user-assigned identity.
+    New-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -Location $location -StorageAccountName $storageAccountName -Runtime $runtime -IdentityType UserAssigned -IdentityId $userAssignedIdentity.Id
+    ```
+
+Místo toho můžete také aktualizovat existující aplikaci Function App `Update-AzFunctionApp` .
 
 ### <a name="using-an-azure-resource-manager-template"></a>Použití šablony Azure Resource Manager
 
@@ -428,7 +478,11 @@ V případě aplikací a funkcí Java nejjednodušší způsob, jak pracovat se 
 
 ## <a name="remove-an-identity"></a><a name="remove"></a>Odebrání identity
 
-Identitu přiřazenou systémem je možné odebrat tak, že ji zakážete pomocí portálu, PowerShellu nebo rozhraní příkazového řádku stejným způsobem, jakým jste ji vytvořili. Uživatelsky přiřazené identity je možné odebrat jednotlivě. Pokud chcete odebrat všechny identity, nastavte v [šabloně ARM](#using-an-azure-resource-manager-template)typ na None (žádné):
+Identitu přiřazenou systémem je možné odebrat tak, že ji zakážete pomocí portálu, PowerShellu nebo rozhraní příkazového řádku stejným způsobem, jakým jste ji vytvořili. Uživatelsky přiřazené identity je možné odebrat jednotlivě. Pokud chcete odebrat všechny identity, nastavte typ identity na None (žádné).
+
+Odebrání identity přiřazené systémem tímto způsobem ji odstraní také z Azure AD. Identity přiřazené systémem se při odstranění prostředku aplikace automaticky odeberou z Azure AD.
+
+Odebrání všech identit v [šabloně ARM](#using-an-azure-resource-manager-template):
 
 ```json
 "identity": {
@@ -436,7 +490,12 @@ Identitu přiřazenou systémem je možné odebrat tak, že ji zakážete pomoc�
 }
 ```
 
-Odebrání identity přiřazené systémem tímto způsobem ji odstraní také z Azure AD. Identity přiřazené systémem se při odstranění prostředku aplikace automaticky odeberou z Azure AD.
+Chcete-li odebrat všechny identity v Azure PowerShell (pouze Azure Functions):
+
+```azurepowershell-interactive
+# Update an existing function app to have IdentityType "None".
+Update-AzFunctionApp -Name $functionAppName -ResourceGroupName $resourceGroupName -IdentityType None
+```
 
 > [!NOTE]
 > Existuje také nastavení aplikace, které lze nastavit, WEBSITE_DISABLE_MSI, což zakazuje pouze místní službu tokenů. Ale ponechá identitu na místě a nástroj bude stále zobrazovat spravovanou identitu jako zapnuto nebo povoleno. V důsledku toho se použití tohoto nastavení nedoporučuje.

@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
-ms.openlocfilehash: 31d326b19c560981531ebf0716b614046b2337b6
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 1b2db92106e0dad79c90188c904b07d7bb1d7212
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84217239"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258636"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Přidání rozhraní API do služby Azure static Web Apps Preview pomocí Azure Functions
 
@@ -31,7 +31,7 @@ Do služby Azure static Web Apps můžete přidat rozhraní API bez serveru pros
 
 Následující kroky ukazují, jak vytvořit nové úložiště a klonovat soubory do počítače.
 
-1. Pro https://github.com/staticwebdev/vanilla-basic/generate Vytvoření nového úložiště přejděte na.
+1. Ujistěte se, že jste přihlášeni k GitHubu, a přejděte k https://github.com/staticwebdev/vanilla-basic/generate Vytvoření nového úložiště.
 1. Do pole _název úložiště_ zadejte **My-Vanilla-API**.
 1. Klikněte na **vytvořit úložiště ze šablony**.
 

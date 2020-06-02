@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: e2cc04be5a79009f92e275f9de46df60a8e23c8b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d5b4986c24a1db61527e6a9ff7be249f189d6248
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106572"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248545"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Nejčastější dotazy – obecné otázky týkající se Azure Security Center
 
@@ -59,7 +59,7 @@ Zásady zabezpečení, které jsou povolené v Azure Security Center, doporučen
 
 
 ## <a name="who-can-modify-a-security-policy"></a>Kdo může upravit zásady zabezpečení?
-Pokud chcete upravit zásady zabezpečení, musíte být správcem zabezpečení nebo vlastníkem nebo přispěvatelem daného předplatného.
+Pokud chcete upravit zásady zabezpečení, musíte být **správcem zabezpečení** nebo **vlastníkem** tohoto předplatného.
 
 Informace o tom, jak nakonfigurovat zásady zabezpečení, najdete [v tématu Nastavení zásad zabezpečení v Azure Security Center](tutorial-security-policy.md).
 

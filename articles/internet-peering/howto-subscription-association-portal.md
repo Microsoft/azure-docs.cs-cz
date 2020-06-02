@@ -3,21 +3,21 @@ title: Přidružení partnerského čísla ASN k předplatnému Azure s využit�
 titleSuffix: Azure
 description: Přidružení partnerského čísla ASN k předplatnému Azure s využitím portálu
 services: internet-peering
-author: prmitiki
+author: derekolo
 ms.service: internet-peering
 ms.topic: article
-ms.date: 11/27/2019
-ms.author: prmitiki
-ms.openlocfilehash: ee4fb0708d437c21bea8e77864f210c42b5df019
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 5/18/2020
+ms.author: derekol
+ms.openlocfilehash: 9feefa8801892a668784ed7406f46dba2afd69da
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683960"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266946"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Přidružení partnerského čísla ASN k předplatnému Azure s využitím portálu
 
-Před odesláním žádosti o vytvoření partnerského vztahu byste nejdřív měli přidružit své ASN k předplatnému Azure pomocí následujících kroků.
+Před odesláním žádosti o vytvoření partnerského vztahu jako poskytovatel internetových služeb nebo poskytovatele internetového Exchange byste nejdřív měli k předplatnému Azure přidružit své ASN pomocí následujících kroků.
 
 Pokud budete chtít, můžete tuto příručku dokončit pomocí [PowerShellu](howto-subscription-association-powershell.md).
 
@@ -55,8 +55,7 @@ Pomocí následujícího postupu zaregistrujte pro poskytovatele prostředků pa
     > ![Registrace dokončena](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>Vytvořit PeerAsn
-Jako poskytovatel internetových služeb nebo poskytovatel internetového Exchange můžete vytvořit nový prostředek PeerAsn pro přiřazení čísla autonomního systému (ASN) k předplatnému Azure. K předplatnému můžete přidružit několik čísla asnů, a to tak, že přejdete na [stránku přidružit PeerASN](https://go.microsoft.com/fwlink/?linkid=2129592) pro každé číslo ASN, které potřebujete přidružit.
-
+Jako poskytovatel internetových služeb nebo poskytovatel internetového Exchange můžete vytvořit nový prostředek PeerAsn pro přidružení autonomního systému k předplatnému Azure na [stránce přidružit rovnocenné číslo ASN](https://go.microsoft.com/fwlink/?linkid=2129592) . K předplatnému můžete přidružit více čísla ASN vytvořením **PeerAsn** pro každé číslo ASN, které potřebujete přidružit.
 
 1. Na stránce **přidružit partnerské číslo ASN** na kartě **základy** vyplňte pole, jak vidíte níže.
 

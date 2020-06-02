@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea44355795f0685f42de1306e979707f34d8f142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8f8f5a2f605f8e8b7109267e5223593eb1e2cfb9
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742759"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84264362"
 ---
 # <a name="best-practices-for-azure-maps-search-service"></a>Osvědčené postupy pro Azure Maps Search Service
 
-Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) obsahuje rozhraní API, která nabízejí různé možnosti. Například rozhraní API pro vyhledávání může najít body zájmu (POI) nebo data v okolí určitého umístění. 
+Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) obsahuje rozhraní API, která nabízejí různé možnosti, které vývojářům umožňují hledat adresy, místa, obchodní výpisy podle názvu nebo kategorie a další geografické informace. [Rozhraní API pro vyhledávání s fuzzy logikou](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) například umožňuje uživatelům vyhledat adresu nebo bod zájmu (POI).
 
 Tento článek vysvětluje, jak použít zvukové postupy při volání dat z Azure Maps Search Service. Dozvíte se, jak provést tyto akce:
 
-* Sestavujte dotazy pro vrácení odpovídajících shod.
-* Omezí výsledky hledání.
-* Seznamte se s rozdíly mezi typy výsledků.
-* Přečtěte si strukturu odpovědi na hledání adres.
+* Sestavení dotazů pro vrácení odpovídajících shod
+* Omezení výsledků hledání
+* Informace o rozdílech mezi typy výsledků
+* Přečíst strukturu hledání adres – odpověď
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -33,7 +33,7 @@ Chcete-li volat rozhraní API služby Azure Maps, potřebujete účet Azure Maps
 Informace o ověřování v Azure Maps najdete v tématu [Správa ověřování v Azure Maps](./how-to-manage-authentication.md).
 
 > [!TIP]
-> K dotazování Search Service můžete k sestavení volání REST použít [aplikaci pro post](https://www.getpostman.com/apps) . Nebo můžete použít jakékoli vývojové prostředí API, které dáváte přednost.
+> K dotazování Search Service můžete použít [aplikaci](https://www.getpostman.com/apps) pro vystavení REST API volání. Nebo můžete použít jakékoli vývojové prostředí API, které dáváte přednost.
 
 ## <a name="best-practices-to-geocode-addresses"></a>Osvědčené postupy pro používání adres pro INCODE
 
@@ -61,7 +61,7 @@ Chcete-li výsledky geografického posunu do příslušné oblasti pro uživatel
 
 #### <a name="fuzzy-search-parameters"></a>Parametry hledání přibližné vyhledávání
 
-Doporučujeme, abyste používali Azure Maps [hledání přibližného rozhraní API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) , pokud neznáte vstupy uživatelů pro vyhledávací dotaz. Rozhraní API kombinuje POI vyhledávání a geografické kódování do kanonického *víceřádkového vyhledávání*: 
+Doporučujeme, abyste používali Azure Maps [hledání přibližného rozhraní API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) , pokud neznáte vstupy uživatelů pro vyhledávací dotaz. Například vstup od uživatele může být adresa nebo typ bodu zájmu (POI), jako je třeba *nákup malé*. Rozhraní API kombinuje POI vyhledávání a geografické kódování do kanonického *víceřádkového vyhledávání*: 
 
 * `minFuzzyLevel`Parametry a `maxFuzzyLevel` vrátí relevantní shody i v případě, že parametry dotazu se přesně neshodují s informacemi, které uživatel chce. Pro maximalizaci výkonu a omezení neobvyklých výsledků nastavte vyhledávací dotazy na výchozí hodnoty `minFuzzyLevel=1` a `maxFuzzyLevel=2` . 
 
@@ -85,7 +85,7 @@ Doporučujeme, abyste používali Azure Maps [hledání přibližného rozhraní
 
 ### <a name="reverse-geocode-and-filter-for-a-geography-entity-type"></a>Inverzní a filtr pro typ geografických entit
 
-Když provedete zpětné vyhledávání v [rozhraní API pro reverzní vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), může služba vracet mnohoúhelníky pro oblasti správy.Chcete-li zúžit hledání na konkrétní typy geografických entit, zahrňte `entityType` parametr do svých požadavků. 
+Když provedete zpětné vyhledávání v [rozhraní API pro reverzní vyhledávání](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse), může služba vracet mnohoúhelníky pro oblasti správy. Například Yoi může chtít načíst mnohoúhelník oblasti pro město města.Chcete-li zúžit hledání na konkrétní typy geografických entit, zahrňte `entityType` parametr do svých požadavků. 
 
 Výsledná odpověď obsahuje geografické ID a typ entity, které se shodovaly. Pokud zadáte více než jednu entitu, vrátí koncový bod *nejnižší dostupnou entitu*. Pomocí vráceného ID geometrie můžete získat geometrii geograficky prostřednictvím [služby mnohoúhelníku hledání](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon).
 

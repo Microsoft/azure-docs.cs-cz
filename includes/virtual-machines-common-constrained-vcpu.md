@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: virtual-machines
-author: jonbeck7
+author: mimckitt
 ms.service: virtual-machines
 ms.topic: include
 ms.date: 03/09/2018
-ms.author: azcspmt;jonbeck;cynthn
+ms.author: mimckitt
 ms.custom: include file
-ms.openlocfilehash: 24fbab2bb637edf6c7e31215cdc7ac82bdb0ebab
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 8ee5238fd8043161271eef2c130a8e0a385a0bc0
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67175002"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84268860"
 ---
 Některé databázové úlohy, jako je SQL Server nebo Oracle, vyžadují vysoké množství paměti, úložiště a vstupně-výstupních operací, ale ne vysoký počet jader. Mnoho úloh databáze není náročné na procesor. Azure nabízí určité velikosti virtuálních počítačů, ve kterých můžete omezit počet vCPU virtuálních počítačů a snížit tak náklady na licencování softwaru a zároveň zachovat stejnou velikost paměti, úložiště a vstupně-výstupní šířky pásma.
 
@@ -24,7 +24,7 @@ Aktuální velikost virtuálního počítače Standard_GS5 například přináš
 Licenční poplatky účtované za SQL Server nebo Oracle jsou omezené na nový počet vCPU a další produkty by se měly účtovat na základě nového počtu vCPU. Výsledkem je 50% až 75% zvýšení poměru specifikací virtuálních počítačů na aktivní (fakturovatelný) vCPU. Tyto nové velikosti virtuálních počítačů umožňují zákaznickým úlohám při optimalizaci nákladů na software využívat stejnou paměť, úložiště a I/O šířku pásma. V tomto okamžiku zůstává náklady na výpočetní výkon, včetně licencování operačního systému, stejné jako původní velikost. Další informace najdete v tématu [velikosti virtuálních počítačů Azure pro cenově výhodné databázové úlohy](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/).
 
 
-| Název                | Virtuální procesory | Specifikace           |
+| Name                | Virtuální procesory | Specifikace           |
 |---------------------|------|-----------------|
 | Standard_M8 – 2 MS     | 2    | Stejné jako M8ms    |
 | Standard_M8 – 4ms     | 4    | Stejné jako M8ms    |
@@ -45,6 +45,15 @@ Licenční poplatky účtované za SQL Server nebo Oracle jsou omezené na nový
 | Standard_E32 – 8s_v3  | 8    | Stejné jako E32s_v3 |
 | Standard_E64 – 32s_v3 | 32   | Stejné jako E64s_v3 |
 | Standard_E64 – 16s_v3 | 16   | Stejné jako E64s_v3 |
+| Standard_E4 – 2ds_v4  | 2    | Stejné jako E4ds_v4 |
+| Standard_E8 – 4ds_v4  | 4    | Stejné jako E8ds_v4 |
+| Standard_E8 – 2ds_v4  | 2    | Stejné jako E8ds_v4 |
+| Standard_E16 – 8ds_v4 | 8    | Stejné jako E16ds_v4|
+| Standard_E16 – 4ds_v4 | 4    | Stejné jako E16ds_v4|
+| Standard_E32 – 16ds_v4| 16   | Stejné jako E32ds_v4|
+| Standard_E32 – 8ds_v4 | 8    | Stejné jako E32ds_v4|
+| Standard_E64 – 32ds_v4| 32   | Stejné jako E64ds_v4|
+| Standard_E64 – 16ds_v4| 16   | Stejné jako E64ds_v4|
 | Standard_GS4-8      | 8    | Stejné jako GS4 úrovně     |
 | Standard_GS4-4      | 4    | Stejné jako GS4 úrovně     |
 | Standard_GS5-16     | 16   | Stejné jako GS5     |

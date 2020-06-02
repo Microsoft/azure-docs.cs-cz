@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: 59c121f09858114cecfaeb45e257315d1ab92935
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 241aad3e9bf78d587c7f31d8046de171bd2638b3
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403431"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84263988"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-java"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a Javy
 
 V tomto rychlém startu použijete REST API Azure Face a Java k detekci lidských plošek v obraze.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,7 +43,7 @@ Otevřete hlavní třídu projektu. Zde přidáte kód potřebný k načtení ob
 
 ### <a name="import-packages"></a>Import balíčků
 
-Na začátek souboru `import` přidejte následující příkazy.
+`import`Na začátek souboru přidejte následující příkazy.
 
 ```java
 // This sample uses Apache HttpComponents:
@@ -69,7 +69,7 @@ Nahraďte **Hlavní** třídu následujícím kódem. Tato data určují, jak se
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
-`faceAttributes` Pole je jednoduše seznamem určitých typů atributů. Určí, které informace se mají načíst o zjištěných plochách.
+`faceAttributes`Pole je jednoduše seznamem určitých typů atributů. Určí, které informace se mají načíst o zjištěných plochách.
 
 ```Java
 public class Main {
@@ -248,7 +248,7 @@ Zkompilujte kód a spusťte jej. Úspěšná odpověď zobrazí tvářená data 
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto rychlém startu jste vytvořili jednoduchou konzolovou aplikaci v jazyce Java, která používá volání REST k Azure Face API k detekci ploch v obrázku a vrácení jejich atributů. V dalším kroku se dozvíte, jak s touto funkcí v aplikaci pro Android dělat víc.
+V tomto rychlém startu jste vytvořili jednoduchou konzolovou aplikaci v jazyce Java, která používá volání REST k Azure Face API k detekci ploch v obrázku a vrácení jejich atributů. Dále si Projděte referenční dokumentaci Face API, kde najdete další informace o podporovaných scénářích.
 
 > [!div class="nextstepaction"]
-> [Kurz: Vytvoření aplikace pro Android pro detekci a orámování řezů](../Tutorials/FaceAPIinJavaForAndroidTutorial.md)
+> [Rozhraní API pro rozpoznávání tváře](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

@@ -1,6 +1,6 @@
 ---
 title: Osvědčené postupy pro Azure Maps Route Service | Mapy Microsoft Azure
-description: Naučte se, jak efektivně směrovat pomocí Route Service ze Microsoft Azure Maps.
+description: Naučte se směrovat vozidla pomocí Route Service ze Microsoft Azure Maps.
 author: philmea
 ms.author: philmea
 ms.date: 03/11/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85ce29d088b8fbd110988db67776d89346215e5a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 24fa4c48f6ca03e4049483a9acfff067d5a6a736
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80335415"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84266691"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Osvědčené postupy pro službu Azure Maps Route
 
@@ -58,10 +58,10 @@ Tady je porovnání, ve kterém se zobrazují některé možnosti směrových ce
 
 | Rozhraní API pro Azure Maps | Maximální počet dotazů v žádosti | Nepoužívat oblasti | Směrování nákladní a elektrické vozidlo | Optimalizace prodejců Waypoints a cestování | Podpůrné body |
 | :--------------: |  :--------------: |  :--------------: | :--------------: | :--------------: | :--------------: |
-| Získat směr směrování | 1 | | × | × | |
-| Pokyny pro odeslání trasy | 1 | × | × | × | × |
-| Batch – itinerář trasy | 700 | | × | × | |
-| Vyjednaná matice směrování | 700 | | × | | |
+| Získat směr směrování | 1 | | X | X | |
+| Pokyny pro odeslání trasy | 1 | X | X | X | X |
+| Batch – itinerář trasy | 700 | | X | X | |
+| Vyjednaná matice směrování | 700 | | X | | |
 
 Další informace o možnostech směrování u elektrických vozidel najdete v našem kurzu o [Směrování elektrických vozidel pomocí Azure Notebooks s Pythonem](tutorial-ev-routing.md).
 
@@ -129,7 +129,7 @@ Odpověď obsahuje souhrn, jak je znázorněno níže. Z důvodu zahlcení je ho
 
 ## <a name="request-route-and-leg-details"></a>Podrobnosti o trasách a odnože
 
-Ve výchozím nastavení bude služba Směrování vracet pole souřadnic. Odpověď bude obsahovat souřadnice, které tvoří cestu v seznamu s názvem `points`. Reakce na trase také zahrnuje vzdálenost od začátku trasy a odhadovaný uplynulý čas. Pomocí těchto hodnot lze vypočítat průměrnou rychlost pro celou trasu.
+Ve výchozím nastavení bude služba Směrování vracet pole souřadnic. Odpověď bude obsahovat souřadnice, které tvoří cestu v seznamu s názvem `points` . Reakce na trase také zahrnuje vzdálenost od začátku trasy a odhadovaný uplynulý čas. Pomocí těchto hodnot lze vypočítat průměrnou rychlost pro celou trasu.
 
 Následující obrázek znázorňuje `points` element.
 
@@ -149,7 +149,7 @@ Rozbalením `point` prvku zobrazíte seznam souřadnic pro cestu:
 
 Rozhraní API pro itinerář trasy podporují různé formáty instrukcí, které lze použít zadáním parametru **instructionsType** . Chcete-li naformátovat pokyny pro snadné zpracování počítačů, použijte **instructionsType = Code**. Použijte **instructionsType = Tagged** k zobrazení instrukcí jako textu pro uživatele. Pokyny je také možné formátovat jako text, kde jsou označeny některé prvky instrukcí a instrukce se zobrazí se speciálním formátováním. Další informace najdete v [seznamu podporovaných typů instrukcí](https://docs.microsoft.com/rest/api/maps/route/postroutedirections#routeinstructionstype).
 
-Po vyžádání pokynů vrátí odpověď nový element s názvem `guidance`. `guidance` Element obsahuje dvě informace: pokyny pro zapnutí a shrnutí.
+Po vyžádání pokynů vrátí odpověď nový element s názvem `guidance` . `guidance`Element obsahuje dvě informace: pokyny pro zapnutí a shrnutí.
 
 <center>
 
@@ -157,7 +157,7 @@ Po vyžádání pokynů vrátí odpověď nový element s názvem `guidance`. `g
 
 </center>
 
-`instructions` Element obsahuje přepínat směr pro cestu a `instructionGroups` obsahuje shrnuté pokyny. Každý souhrn instrukcí pokrývá segment cesty, který může pokrývat více cest. Rozhraní API mohou vracet podrobnosti o oddílech trasy. například souřadnice rozsahu zaseknutých přenosů nebo aktuální rychlost provozu.
+`instructions`Element obsahuje přepínat směr pro cestu a `instructionGroups` obsahuje shrnuté pokyny. Každý souhrn instrukcí pokrývá segment cesty, který může pokrývat více cest. Rozhraní API mohou vracet podrobnosti o oddílech trasy. například souřadnice rozsahu zaseknutých přenosů nebo aktuální rychlost provozu.
 
 <center>
 
@@ -213,7 +213,7 @@ S rozhraními API směr Azure Mapsho směrování můžou vývojáři požádat 
 
 ### <a name="sample-query"></a>Ukázkový dotaz
 
-Následující dotaz nastaví `sectionType` na `traffic`. Vyžádá si oddíly, které obsahují informace o provozu z Seattlu do San Diegu.
+Následující dotaz nastaví na `sectionType` `traffic` . Vyžádá si oddíly, které obsahují informace o provozu z Seattlu do San Diegu.
 
 ```http
 https://atlas.microsoft.com/route/directions/json?subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&api-version=1.0&sectionType=traffic&query=47.6062,-122.3321:32.7157,-117.1611
@@ -249,7 +249,7 @@ Pokud chcete optimalizovat nejlepší pořadí pro návštěvě daného waypoint
 
 ### <a name="sample-query"></a>Ukázkový dotaz
 
-Následující dotaz požádá o cestu pro šest Waypoints s `computeBestOrder` parametrem nastaveným na `false`. Je to také výchozí hodnota `computeBestOrder` parametru.
+Následující dotaz požádá o cestu pro šest Waypoints s `computeBestOrder` parametrem nastaveným na `false` . Je to také výchozí hodnota `computeBestOrder` parametru.
 
 ```http
 https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=false&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861
@@ -275,7 +275,7 @@ Toto pořadí bod na trase trasy je: 0, 1, 2, 3, 4, 5 a 6.
 
 ### <a name="sample-query"></a>Ukázkový dotaz
 
-Následující dotaz požádá o cestu ke stejnému šesti waypoints, jako ve výše uvedené ukázce. V tuto chvíli je `computeBestOrder` parametr nastavený na `true` (optimalizace na cestách pro prodej).
+Následující dotaz požádá o cestu ke stejnému šesti waypoints, jako ve výše uvedené ukázce. V tuto chvíli je `computeBestOrder` Parametr nastavený na `true` (optimalizace na cestách pro prodej).
 
 ```http
 https://atlas.microsoft.com/route/directions/json?api-version=1.0&subscription-key=<Your-Azure-Maps-Primary-Subscription-Key>&computeBestOrder=true&query=47.606544,-122.336502:47.759892,-122.204821:47.670682,-122.120415:47.480133,-122.213369:47.615556,-122.193689:47.676508,-122.206054:47.495472,-122.360861

@@ -15,16 +15,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: yelevin
-ms.openlocfilehash: 2e1b1a4786670974a40b22d44fc219c6be5d97a3
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 9fa10dd1b278b48eb714affb74af59140c8baa09
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744747"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259333"
 ---
 # <a name="permissions-in-azure-sentinel"></a>Oprávnění v Azure Sentinel
 
-Služba Azure Sentinel používá [Access Control na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md)k poskytování [předdefinovaných rolí](../role-based-access-control/built-in-roles.md) , které se dají přiřadit uživatelům, skupinám a službám v Azure.
+Služba Azure Sentinel používá [Access Control na základě rolí (RBAC)](../role-based-access-control/role-assignments-portal.md)k poskytování [předdefinovaných rolí](../role-based-access-control/built-in-roles.md)   , které se dají přiřadit uživatelům, skupinám a službám v Azure.
 
 Pomocí RBAC můžete použít a vytvořit role v rámci vašeho týmu zabezpečení provozu a udělit odpovídající přístup k Sentinel Azure. Na základě rolí máte detailní kontrolu nad tím, co můžou uživatelé s přístupem k Azure Sentinel sledovat. Role RBAC můžete přiřadit přímo do pracovního prostoru Azure Sentinel nebo do předplatného nebo skupiny prostředků, do které pracovní prostor patří.
 
@@ -58,10 +58,10 @@ V následující tabulce jsou uvedeny role a povolené akce ve službě Azure Se
 
 | Role | Vytvoření a spuštění playbooky| Vytváření a úpravy řídicích panelů, analytických pravidel a dalších prostředků Sentinel Azure | Spravovat incidenty (zavřít, přiřadit atd.) | Zobrazení dat, incidentů, řídicích panelů a dalších prostředků Sentinel Azure |
 |--- |---|---|---|---|
-| Čtečka Sentinel Azure | -- | -- | -- | × |
-| Respondér služby Azure Sentinel|--|--| × | × |
-| Přispěvatel Sentinel Azure | -- | × | × | × |
-| Přispěvatel Azure Sentinel + Přispěvatel aplikace logiky | × | × | × | × |
+| Čtečka Sentinel Azure | -- | -- | -- | X |
+| Respondér služby Azure Sentinel|--|--| X | X |
+| Přispěvatel Sentinel Azure | -- | X | X | X |
+| Přispěvatel Azure Sentinel + Přispěvatel aplikace logiky | X | X | X | X |
 
 
 > [!NOTE]

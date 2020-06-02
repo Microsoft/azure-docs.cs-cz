@@ -1,5 +1,5 @@
 ---
-title: Připojit data Office 365 k Azure Sentinel | Microsoft Docs
+title: Připojení protokolů Office 365 ke službě Azure Sentinel | Microsoft Docs
 description: Naučte se připojit data Office 365 k Azure Sentinel.
 services: sentinel
 documentationcenter: na
@@ -9,49 +9,54 @@ editor: ''
 ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/12/2020
+ms.date: 05/21/2020
 ms.author: yelevin
-ms.openlocfilehash: c3e63063b3ea4e7fba3997ddd645aa59fe857488
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: bcd00247486faeea47ef4a4a43fa1df5420321e6
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758567"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248936"
 ---
-# <a name="connect-data-from-office-365-logs"></a>Připojení dat z protokolů Office 365
+# <a name="connect-office-365-logs-to-azure-sentinel"></a>Připojení protokolů Office 365 ke službě Azure Sentinel
 
-
-
-Protokoly auditu ze [sady Office 365](https://docs.microsoft.com/office365/admin/admin-home?view=o365-worldwide) můžete streamovat do Azure Sentinel jediným kliknutím. Protokoly auditu ze sady Office 365 můžete streamovat do vašeho pracovního prostoru Sentinel Azure ve stejném tenantovi. Konektor protokolu aktivit Office 365 nabízí přehled o probíhajících činnostech uživatelů. Získáte informace o různých akcích uživatelů, správců, systémových nastavení a událostech ze sady Office 365. Připojením sady Office 365 do Azure Sentinel můžete tato data použít k zobrazení řídicích panelů, vytváření vlastních výstrah a zlepšení procesu šetření.
-
-> [!IMPORTANT]
-> Pokud máte licenci E3, musíte předtím, než budete mít přístup k datům prostřednictvím rozhraní API aktivity správy sady Office 365, povolit jednotné protokolování auditu pro vaši organizaci sady Office 365. Provedete to tak, že zapnete protokol auditu Office 365. Pokyny najdete v tématu [Zapnutí nebo vypnutí prohledávání protokolu auditu systému Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off). Další informace najdete v referenčních informacích k [rozhraní API pro správu Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference).
+Konektor protokolu [sady Office 365](https://docs.microsoft.com/office/) přináší informace o probíhajících uživatelských a administrativních činnostech v **systému Exchange** a **SharePoint** (včetně **OneDrivu**) do Azure Sentinel. Tyto informace obsahují podrobnosti o akcích, jako jsou například soubory ke stažení, odeslané požadavky na přístup, změny v událostech skupiny a operace poštovních schránek a také informace o uživateli, který akce provedl. Připojení protokolů Office 365 k Azure Sentinel umožňuje zobrazit a analyzovat tato data v sešitech, dotazovat se na ně a vytvořit vlastní výstrahy a začlenit je ke zvýšení vašeho procesu šetření, což vám poskytne lepší přehled o zabezpečení sady Office 365.
 
 ## <a name="prerequisites"></a>Požadavky
 
+- Musíte mít oprávnění ke čtení a zápisu v pracovním prostoru Sentinel Azure.
+
 - Musíte být globálním správcem nebo správcem zabezpečení vašeho tenanta.
-- Váš tenant musí mít povolený jednotný audit. Klienti s licencemi Office 365 E3 nebo E5 mají ve výchozím nastavení povolené jednotné auditování. <br>Pokud váš tenant nemá jednu z těchto licencí, je nutné ve svém tenantovi povolit jednotné auditování pomocí jedné z těchto metod:
-    - [Pomocí rutiny Set-AdminAuditLogConfig](https://docs.microsoft.com/powershell/module/exchange/policy-and-compliance-audit/set-adminauditlogconfig?view=exchange-ps) a povolte parametr "UnifiedAuditLogIngestionEnabled").
-    - [Pomocí uživatelského rozhraní centra dodržování předpisů & Security](https://docs.microsoft.com/office365/securitycompliance/search-the-audit-log-in-security-and-compliance#before-you-begin).
-   
+
+- Vaše nasazení Office 365 musí být ve stejném tenantovi jako váš pracovní prostor Azure Sentinel.
+
+> [!IMPORTANT]
+> - Aby mohl konektor získat přístup k datům prostřednictvím rozhraní API aktivity správy Office 365, musíte mít v nasazení sady Office 365 zapnuté **jednotné protokolování auditu** . V závislosti na typu licence Office 365/Microsoft 365, kterou máte, může nebo nemusí být ve výchozím nastavení povolená. V [Centru zabezpečení a dodržování předpisů pro Office 365](https://docs.microsoft.com/office365/servicedescriptions/office-365-platform-service-description/office-365-securitycompliance-center) zkontrolujte stav jednotného protokolování auditu podle typu vaší licence.
+> - Můžete také ručně povolit, zakázat a kontrolovat aktuální stav protokolu Unified audit pro Office 365. Pokyny najdete v tématu [Zapnutí nebo vypnutí prohledávání protokolu auditu systému Office 365](https://docs.microsoft.com/office365/securitycompliance/turn-audit-log-search-on-or-off).
+> - Další informace najdete v referenčních informacích k [rozhraní API aktivity správy Office 365](https://docs.microsoft.com/office/office-365-management-api/office-365-management-activity-api-reference).
+
+
    > [!NOTE]
-   > V současné době datový konektor O365 zachytí pouze Exchange a SharePoint aktivity, jak je uvedeno na stránce konektoru v části datové typy. Doporučujeme, abyste [v tomto článku v případě, že budete vyžadovat, aby týmy ověřovaly data a chránili týmy pomocí Sentinel](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761). 
+   > Jak je uvedeno výše, a jak vidíte na stránce konektor v části **datové typy**, konektor Azure Sentinel Office 365 aktuálně podporuje přijímání protokolů auditu jenom z Microsoft Exchange a SharePointu (včetně OneDrivu). Existuje však několik externích řešení, pokud se zajímáte o [přenos dat z týmů](https://techcommunity.microsoft.com/t5/azure-sentinel/protecting-your-teams-with-azure-sentinel/ba-p/1265761) nebo [jiných dat Office](https://techcommunity.microsoft.com/t5/azure-sentinel/ingesting-office-365-alerts-with-graph-security-api/ba-p/984888) do služby Azure Sentinel. 
 
-## <a name="connect-to-office-365"></a>Připojení k Office 365
+## <a name="enable-the-office-365-log-connector"></a>Povolení konektoru protokolu systému Office 365
 
-1. V Azure Sentinel vyberte **datové konektory** a pak klikněte na dlaždici **Office 365** .
+1. V navigační nabídce Azure Sentinel vyberte **datové konektory**.
 
-2. Pokud jste to ještě nepovolili, můžete to udělat tak, že v okně **datové konektory** vyberete konektor **Office 365** . Tady můžete kliknout na **stránku Open Connector** a v části konfigurační oddíl s názvem **Konfigurace** vybrat všechny protokoly aktivit Office 365, které chcete připojit k Azure Sentinel. 
+1. V seznamu **konektory dat** klikněte na možnost **Office 365**a pak na pravé straně tlačítko **otevřít stránku konektoru** .
+
+1. V části s názvem **Konfigurace**zaškrtněte políčka protokoly aktivit Office 365, které chcete připojit ke službě Azure Sentinel, a klikněte na **použít změny**. 
+
    > [!NOTE]
-   > Pokud jste už provedli připojení více tenantů v předchozí podporované verzi konektoru Office 365 ve službě Azure Sentinel, budete moct zobrazit a upravit protokoly, které shromáždíte od každého tenanta. Nebudete moct přidávat další klienty, ale můžete odebrat dřív přidané klienty.
-3. Pokud chcete použít příslušné schéma v Log Analytics pro protokoly Office 365, vyhledejte **OfficeActivity**.
+   > Pokud jste dříve připojili více tenantů k Azure Sentinel pomocí starší verze konektoru sady Office 365, který to podporuje, budete moci zobrazit a upravit protokoly, které shromáždíte z každého tenanta. Nebudete moct přidávat další klienty, ale můžete odebrat dřív přidané klienty.
 
+1. K dotazování na data protokolu Office 365 v Log Analytics zadejte `OfficeActivity` první řádek okna dotazu.
 
 ## <a name="next-steps"></a>Další kroky
 V tomto dokumentu jste zjistili, jak připojit Office 365 ke službě Azure Sentinel. Další informace o Sentinel Azure najdete v následujících článcích:
-- Naučte se [, jak získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
-- Začněte [s detekcí hrozeb pomocí služby Azure Sentinel](tutorial-detect-threats-built-in.md).
+- Naučte se, jak [získat přehled o vašich datech a potenciálních hrozbách](quickstart-get-visibility.md).
+- Začněte s detekcí hrozeb pomocí služby Azure Sentinel a pomocí [předdefinovaných](tutorial-detect-threats-built-in.md) nebo [vlastních](tutorial-detect-threats-custom.md) pravidel.
 

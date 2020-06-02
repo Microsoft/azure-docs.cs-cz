@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 850b06153a25020f36a4c7df1863e5a576495f3b
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 2e563cd0f9a8a25e57312494f1313f895c3b4628
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744159"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267150"
 ---
 # <a name="threat-protection-in-azure-security-center"></a>Ochrana před hrozbami v Azure Security Center
 
@@ -162,11 +162,15 @@ Další informace naleznete v tématu:
 
 ## <a name="threat-protection-for-azure-storage"></a>Ochrana před hrozbami pro Azure Storage<a name="azure-storage"></a>
 
-Rozšířená ochrana před internetovými útoky pro úložiště detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby, aniž byste museli být odborníkem na zabezpečení a pomáhají spravovat systémy monitorování zabezpečení.
+Rozšířená ochrana před internetovými útoky pro Azure Storage detekuje neobvyklé a potenciálně nebezpečné pokusy o přístup k účtům úložiště nebo jejich zneužití. Tato vrstva ochrany umožňuje řešit hrozby, aniž byste museli být odborníkem na zabezpečení a pomáhají spravovat systémy monitorování zabezpečení. 
 
-Rozšířená ochrana před internetovými útoky pro Azure Storage je aktuálně dostupná jenom pro [BLOB Storage](https://azure.microsoft.com/services/storage/blobs/). 
+Výstrahy zabezpečení se aktivují, když dojde k podezřelým aktivitám vašeho účtu úložiště nebo když se zjistí chování neobvyklé. Podezřelé aktivity můžou zahrnovat nahrávání objektu blob, který je podezřelý z obsahujícího malwaru. Výstrahy chování neobvyklé obsahují změny ve vzoru přístupu k účtu úložiště.
 
-Tato služba je dostupná ve všech veřejných cloudech a v cloudech USA, ale ne v oblastech cloudových nebo Azure Governmentch cloudových oblastí.
+Výstrahy obsahují podrobnosti o incidentu, který je aktivoval, a také doporučení k tomu, jak tyto hrozby prozkoumat a opravit.
+
+Ochrana před hrozbami pro Azure Storage je aktuálně dostupná jenom pro [BLOB Storage](https://azure.microsoft.com/services/storage/blobs/). 
+
+Tato služba je dostupná ve všech veřejných cloudech a v cloudech USA, ale ne v oblastech cloudových nebo Azure Governmentch cloudových oblastí. 
 
 Podrobnosti o cenách, včetně bezplatné 30denní zkušební verze, najdete na stránce s [cenami Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 

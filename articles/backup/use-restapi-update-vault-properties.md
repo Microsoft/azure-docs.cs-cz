@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak aktualizovat konfiguraci trezoru 
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.assetid: 9aafa5a0-1e57-4644-bf79-97124db27aa2
-ms.openlocfilehash: 4c604fe067e73f5f9a17f4b5f810708121cff767
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: eadcebdaf4db3dbe6c0a62b8631ff7d76fa50fad
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744566"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248222"
 ---
 # <a name="update-azure-recovery-services-vault-configurations-using-rest-api"></a>Aktualizace konfigurace služby Azure Recovery Services trezoru pomocí REST API
 
@@ -21,7 +21,7 @@ Odstranění záloh chráněné položky je významnou operací, kterou je třeb
 
 Ale v některých případech se tato možnost nevyžaduje. Trezor služby Azure Recovery Services nelze odstranit, pokud v něm existují zálohované položky, a to i obnovitelné odstranění. Může to představovat problém, pokud je potřeba trezor okamžitě odstranit. Například: operace nasazení často vyčistí vytvořené prostředky ve stejném pracovním postupu. Nasazení může vytvořit trezor, nakonfigurovat zálohování pro položku, provést test obnovení a pak pokračovat v odstraňování zálohovaných položek a trezoru. Pokud odstranění trezoru selže, může dojít k selhání celého nasazení. Vypnutí obnovitelného odstranění je jediným způsobem, jak zaručit okamžité odstranění.
 
-Zákazník si proto musí pečlivě vybrat, jestli se má v závislosti na scénáři zakázat obnovitelné odstraňování konkrétního trezoru. Další informace najdete v článku o [obnovitelném odstranění](backup-azure-security-feature-cloud.md).
+Proto je třeba pečlivě určit, jestli se má v závislosti na scénáři zakázat obnovitelné odstranění pro určitý trezor. Další informace najdete v článku o [obnovitelném odstranění](backup-azure-security-feature-cloud.md).
 
 ### <a name="fetch-soft-delete-state-using-rest-api"></a>Načíst stav obnovitelného odstranění pomocí REST API
 
@@ -33,13 +33,13 @@ Pokud chcete načíst aktuální stav obnovitelného odstranění trezoru, použ
 GET https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-Identifikátor URI Get má `{subscriptionId}`parametr `{vaultName}`, `{vaultresourceGroupName}` , parametry. V tomto příkladu `{vaultName}` je "testVault" a `{vaultresourceGroupName}` je "testVaultRG". Všechny požadované parametry jsou uvedeny v identifikátoru URI, takže nemusíte mít samostatný text požadavku.
+Identifikátor URI Get má `{subscriptionId}` `{vaultName}` parametr,, `{vaultresourceGroupName}` parametry. V tomto příkladu `{vaultName}` je "testVault" a `{vaultresourceGroupName}` je "testVaultRG". Všechny požadované parametry jsou uvedeny v identifikátoru URI, takže nemusíte mít samostatný text požadavku.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-#### <a name="responses"></a>Odezvy
+#### <a name="responses"></a>Odpovědi
 
 Úspěšná odpověď pro operaci GET je uvedená níže:
 
@@ -71,7 +71,7 @@ Chcete-li aktualizovat stav obnovitelného odstranění trezoru služby Recovery
 PATCH https://management.azure.com/Subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.RecoveryServices/vaults/{vaultName}/backupconfig/vaultconfig?api-version=2019-05-13
 ```
 
-Identifikátor URI opravy má `{subscriptionId}`, `{vaultName}`, `{vaultresourceGroupName}` parametry. V tomto příkladu `{vaultName}` je "testVault" a `{vaultresourceGroupName}` je "testVaultRG". Pokud identifikátor URI nahradíte výše uvedenými hodnotami, identifikátor URI bude vypadat takto.
+Identifikátor URI opravy má `{subscriptionId}` , `{vaultName}` , `{vaultresourceGroupName}` parametry. V tomto příkladu `{vaultName}` je "testVault" a `{vaultresourceGroupName}` je "testVaultRG". Pokud identifikátor URI nahradíte výše uvedenými hodnotami, identifikátor URI bude vypadat takto.
 
 ```http
 PATCH https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Microsoft.RecoveryServices/vaults/testVault/backupconfig/vaultconfig?api-version=2019-05-13
@@ -103,7 +103,7 @@ Následující příklad slouží k aktualizaci stavu obnovitelného odstraněn�
 }
 ```
 
-#### <a name="responses"></a>Odezvy
+#### <a name="responses"></a>Odpovědi
 
 Úspěšná odpověď pro operaci PATCH je uvedená níže:
 

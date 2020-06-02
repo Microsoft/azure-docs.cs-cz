@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 1ac42a5451da0347779475e96ce557633a02c59f
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 98a2765b7adf31465fa0317cc626157137933af7
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834573"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248341"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné otázky: zotavení po havárii z Azure do Azure
 
@@ -28,7 +28,7 @@ Každá instance, která je chráněná pomocí Azure Site Recovery, je pro prvn
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Během prvních 31 dnů se mi účtují nějaké další poplatky za Azure?
 
-Yes. I když je během prvních 31 dní chráněné instance Azure Site Recovery volná, můžou se vám účtovat poplatky za Azure Storage, transakce úložiště a datové přenosy. U obnoveného virtuálního počítače můžou být účtovány i poplatky za výpočetní výkon Azure. Získejte podrobné informace o cenách za [Azure Site Recovery ceny](https://azure.microsoft.com/pricing/details/site-recovery).
+Ano. I když je během prvních 31 dní chráněné instance Azure Site Recovery volná, můžou se vám účtovat poplatky za Azure Storage, transakce úložiště a datové přenosy. U obnoveného virtuálního počítače můžou být účtovány i poplatky za výpočetní výkon Azure. Získejte podrobné informace o cenách za [Azure Site Recovery ceny](https://azure.microsoft.com/pricing/details/site-recovery).
 
 ### <a name="what-are-the-best-practices-for-azure-virtual-machines-disaster-recovery"></a>Jaké jsou osvědčené postupy pro zotavení po havárii Azure Virtual Machines?
 
@@ -46,7 +46,7 @@ Tým Site Recovery týmu a Azure Capacity Management plánuje dostatečnou kapac
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Můžu replikovat virtuální počítače povolené prostřednictvím služby Azure Disk Encryption?
 
-Yes. Site Recovery podporuje zotavení po havárii virtuálních počítačů, které mají povolený Azure Disk Encryption. Když povolíte replikaci, Azure zkopíruje všechny požadované šifrovací klíče disku a tajné klíče ze zdrojové oblasti do cílové oblasti v kontextu uživatele. Pokud nemáte příslušná oprávnění, správce zabezpečení může ke kopírování klíčů a tajných kódů použít skript.
+Ano. Site Recovery podporuje zotavení po havárii virtuálních počítačů, které mají povolený Azure Disk Encryption. Když povolíte replikaci, Azure zkopíruje všechny požadované šifrovací klíče disku a tajné klíče ze zdrojové oblasti do cílové oblasti v kontextu uživatele. Pokud nemáte příslušná oprávnění, správce zabezpečení může ke kopírování klíčů a tajných kódů použít skript.
 
 - Site Recovery podporuje Azure Disk Encryption pro virtuální počítače Azure s Windows.
 - Site Recovery podporuje Azure Disk Encryption verze 0,1, která má schéma, které vyžaduje Azure Active Directory (Azure AD). Site Recovery také podporuje verzi 1,1, která nevyžaduje službu Azure AD. [Přečtěte si další informace o schématu rozšíření pro Azure Disk Encryption](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema).
@@ -173,6 +173,10 @@ První vygenerovaný bod obnovení má úplnou kopii. Všechny úspěšné body 
 
 Ano, Pokud zvýšíte dobu uchovávání dat z 24 hodin na 72 hodin, Site Recovery bude body obnovení ukládat po dobu dalších 48 hodin. Přidaný čas účtuje poplatky za úložiště. Například jeden bod obnovení může mít rozdílové změny 10 GB s $0,16 za GB za měsíc. Další poplatky by byly $1,60 × 48 za měsíc.
 
+### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Můžu povolit replikaci s konzistencí aplikací na serverech se systémem Linux?
+
+Ano. Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s předchozími a post-možnostmi bude používat agent Azure Site Recovery mobility během konzistence aplikací. [Další informace](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
+
 ## <a name="multi-vm-consistency"></a>Konzistence s více virtuálními počítači
 
 ### <a name="what-is-multi-vm-consistency"></a>Co je konzistence více virtuálních počítačů?
@@ -234,7 +238,7 @@ Možnost **nejnovější (nejnižší RPO)** nejprve zpracuje všechna data, kte
 
 ### <a name="do-latest-lowest-rpo-recovery-points-have-an-impact-on-failover-rto"></a>Mají dopad na RTO pro převzetí služeb při selhání **nejnovější (nejnižší RPO)** body obnovení?
 
-Yes. Site Recovery zpracovává všechna nevyřízená data před převzetím služeb při selhání, takže tato možnost má vyšší cíl času obnovení (RTO) ve srovnání s jinými možnostmi.
+Ano. Site Recovery zpracovává všechna nevyřízená data před převzetím služeb při selhání, takže tato možnost má vyšší cíl času obnovení (RTO) ve srovnání s jinými možnostmi.
 
 ### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>Co znamená **poslední zpracovaná** možnost v bodech obnovení?
 

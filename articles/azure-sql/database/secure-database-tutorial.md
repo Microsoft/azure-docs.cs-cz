@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 12c1a8c5231e0a6d6674ca55be78a491074a3d3a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7181dd74963a1af05438b16e00e2442478daac03
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053637"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267909"
 ---
 # <a name="tutorial-secure-an-azure-sql-database"></a>Kurz: zabezpečení Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -219,7 +219,7 @@ Aby bylo zajištěno zabezpečené šifrované připojení mezi klientskou aplik
 - Vyžádat šifrované připojení
 - Certifikát serveru není důvěryhodný.
 
-Připojení se naváže pomocí protokolu TLS (Transport Layer Security) a snižuje riziko útoku prostředníkem. Připojovací řetězce jsou k dispozici pro každou databázi a jsou předem nakonfigurované pro podporu klientských ovladačů, jako jsou ADO.NET, JDBC, ODBC a PHP. Informace o protokolu TLS a možnostech připojení najdete v části věnované [důležitým informacím o protokolu TLS](connect-query-content-reference-guide.md#tls-considerations-for-sql-database-connectivity).
+Připojení se naváže pomocí protokolu TLS (Transport Layer Security) a snižuje riziko útoku prostředníkem. Připojovací řetězce jsou k dispozici pro každou databázi a jsou předem nakonfigurované pro podporu klientských ovladačů, jako jsou ADO.NET, JDBC, ODBC a PHP. Informace o protokolu TLS a možnostech připojení najdete v části věnované [důležitým informacím o protokolu TLS](connect-query-content-reference-guide.md#tls-considerations-for-database-connectivity).
 
 Postup při kopírování zabezpečeného připojovacího řetězce:
 

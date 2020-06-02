@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 03/24/2020
-ms.openlocfilehash: a41dcc9c7ec86f41c64a69ea1aba762b960b2633
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cdff42c6ff0cadb5ce4b3d7fc469d648349d1e88
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80283017"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84265195"
 ---
 # <a name="getting-started-with-ai-enrichment"></a>Začínáme s obohacením AI
 
@@ -102,7 +102,7 @@ Indexy jsou generovány z schématu indexu definující pole, atributy a další
 
 1. Definujte [schéma indexu](https://docs.microsoft.com/rest/api/searchservice/create-index). Kolekce *polí* obsahuje pole ze zdrojových dat. Měli byste také odhlásit další pole, která budou obsahovat vygenerované hodnoty pro obsah vytvořený během obohacení.
 
-1. Definujte [indexer](https://docs.microsoft.com/rest/api/searchservice/create-skillset) , který odkazuje na zdroj dat, dovednosti a index.
+1. Definujte [indexer](https://docs.microsoft.com/rest/api/searchservice/create-indexer) , který odkazuje na zdroj dat, dovednosti a index.
 
 1. V indexeru přidejte *outputFieldMappings*. Tento oddíl mapuje výstup z dovednosti (v kroku 3) na pole vstupy ve schématu indexu (v kroku 4).
 
@@ -120,4 +120,4 @@ Indexy jsou generovány z schématu indexu definující pole, atributy a další
 + [Kurz: informace o rozhraních API pro obohacení AI](cognitive-search-tutorial-blob.md)
 + [Knowledge Store (Preview)](knowledge-store-concept-intro.md)
 + [Vytvoření úložiště znalostí v REST](knowledge-store-create-rest.md)
-+ [Rady pro řešení potíží](cognitive-search-concept-troubleshooting.md)
++ [Tipy pro řešení potíží](cognitive-search-concept-troubleshooting.md)

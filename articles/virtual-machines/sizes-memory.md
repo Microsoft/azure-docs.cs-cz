@@ -15,24 +15,26 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 5a20e9c64b6ef948167333b54b16b34e84dc0e32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ab4c95e3525caa42b979b15fa8118e9dd21bb74a
+ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81273575"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84248290"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Paměťově optimalizované velikosti virtuálních počítačů
 
 Paměťově optimalizované velikosti virtuálních počítačů nabízejí vysoký poměr paměti k procesoru, který je skvělý pro servery relačních databází, střední až velké mezipaměti a analýzu v paměti. Tento článek poskytuje informace o počtu vCPU, datových discích a síťových adaptérů i propustnosti úložiště a šířce pásma sítě pro každou velikost v tomto seskupení.
 
-- [Dv2 a DSv2-Series](dv2-dsv2-series-memory.md), následné až do původní řady D-Series, nabízí výkonnější procesor. Dv2-Series má přibližně 35% rychlejší než řada D-Series. &reg; Běží na Intel xeon&reg; 8171M 2,1 GHz (Skylake) nebo Intel&reg; Xeon&reg; E5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel&reg; Xeon&reg; E5-2673 V3 2,4 GHz (Haswell) a s 2,0 technologií Intel Turbo zvyšovat. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
+- [Dv2 a DSv2-Series](dv2-dsv2-series-memory.md), následné až do původní řady D-Series, nabízí výkonnější procesor. Dv2-Series má přibližně 35% rychlejší než řada D-Series. Běží na Intel &reg; Xeon &reg; 8171M 2,1 GHz (Skylake) nebo Intel &reg; Xeon &reg; e5-2673 V4 2,3 GHz (Broadwell) nebo procesory Intel &reg; xeon &reg; E5-2673 V3 2,4 ghz (Haswell) a s 2,0 technologií Intel Turbo zvyšovat. Řada Dv2-series má stejnou konfiguraci paměti a disku jako řada D.
 
     Dv2 a DSv2-Series jsou ideální pro aplikace, které vyžadují rychlejší vCPU, lepší dočasný výkon úložiště nebo mají vyšší nároky na paměť. Nabízejí výkonnou kombinaci pro mnoho podnikových aplikací.
 
 - [Eav4 a Easv4-Series](eav4-easv4-series.md) využívají procesor AMD 2.35 EPYC<sup>TM</sup> 7452 v konfiguraci s více VLÁKNy s až 256Mb mezipamětí L3 a zvyšují možnosti spouštění většiny paměťově optimalizovaných úloh. Řady Eav4-Series a Easv4-Series mají stejnou konfiguraci paměti a disku jako Ev3 & Esv3-Series.
 
-- [Ev3 a Esv3-Series](ev3-esv3-series.md) Intel&reg; &reg; Xeon 8171M 2,1 GHz (Skylake) nebo procesor Intel&reg; Xeon&reg; E5-2673 2,3 v4 (Broadwell) v konfiguraci s více vlákny, které poskytují lepší hodnotu pro většinu úloh pro obecné účely a přinášejí Ev3 do sblížení s virtuálními počítači pro obecné účely většiny ostatních cloudů. Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, které je možné přesunout do technologie Hyper-Threading. Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
+- [Ev3 a Esv3-Series](ev3-esv3-series.md) Intel &reg; Xeon &reg; 8171M 2,1 GHz (Skylake) nebo procesor Intel &reg; Xeon &reg; E5-2673 2,3 v4 (Broadwell) v konfiguraci s více vlákny, které poskytují lepší hodnotu pro většinu úloh pro obecné účely a přinášejí Ev3 do sblížení s virtuálními počítači pro obecné účely většiny ostatních cloudů. Paměť se rozšířila (od 7 GiB/vCPU do 8 GiB/vCPU), zatímco limity disku a sítě se přizpůsobily na základě počtu jader, které je možné přesunout do technologie Hyper-Threading. Ev3 je následná velikost virtuálních počítačů s vysokou pamětí pro řady D/Dv2.
+
+- [Edv4 a Edsv4-Series](edv4-edsv4-series.md) běží na 2 generaci &reg; procesorů Intel Xeon &reg; Platinum 8272CL (Cascade Lake), ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti. Nabízí veškerou základní rychlost Turbo 3,4 GHz a nabízí [ &reg; technologii Intel Turbo rozbušky 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [ &reg; technologii Intel Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) a [Intel &reg; Advanced Vector Extensions 512 (Intel AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). 
 
 - [Řada M-Series](m-series.md) nabízí vysoký počet vCPU (až 128 vCPU) a velké množství paměti (až 3,8 TIB). Je to také ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti.
 

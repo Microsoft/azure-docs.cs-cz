@@ -16,12 +16,12 @@ ms.workload: data-services
 ms.custom: seodec18
 ms.date: 04/28/2020
 ms.author: shvija
-ms.openlocfilehash: b9dcf35b3ea178894a0387e650b6814c0f920926
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: cb47119fdddad70f8b7d5de94f9a2d35efd80d76
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649793"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84259299"
 ---
 # <a name="set-up-diagnostic-logs-for-an-azure-event-hub"></a>Nastavení diagnostických protokolů pro centra událostí Azure
 
@@ -247,7 +247,7 @@ Kód JSON klíče uživatele spravovaný klíčem zákazníka obsahuje prvky uve
 
 ## <a name="next-steps"></a>Další kroky
 - [Úvod do Event Hubs](event-hubs-what-is-event-hubs.md)
-- [Přehled rozhraní API služby Event Hubs](event-hubs-api-overview.md)
+- [Ukázky Event Hubs](sdks.md)
 - Začínáme se službou Event Hubs
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)

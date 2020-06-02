@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 6e780268d4b8c1a512ce82b1ca10a2f6b7b894b7
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: bbf569e95c59e888b830876f0458b063bd3920da
+ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125753"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84258806"
 ---
 # <a name="topic-filters-and-actions"></a>Akce a filtry témat
 
@@ -39,7 +39,7 @@ Service Bus podporuje tři podmínky filtru:
      - **ReplyTo**
      - **ReplyToSessionId**
      - **SessionId** 
-     - **Akce**
+     - **Schopn**
      - jakékoli uživatelsky definované vlastnosti. 
      
      Shoda existuje, pokud je hodnota doručené zprávy pro vlastnost rovna hodnotě zadané ve filtru korelace. U řetězcových výrazů porovnávání rozlišuje velká a malá písmena. Pokud zadáte více vlastností shody, filtr je zkombinuje jako logický operátor AND, což znamená, že aby se filtr shodoval, všechny podmínky se musí shodovat.
@@ -64,7 +64,7 @@ Směrování používá filtry k distribuci zpráv mezi předplatnými tématu, 
 
 
 > [!NOTE]
-> V současné době Azure Portal neumožňují zadat pravidla filtru pro odběry. K definování pravidel předplatného můžete použít kterýkoli z podporovaných sad SDK nebo Azure Resource Manager šablon. 
+> Vzhledem k tomu, že Azure Portal nyní podporuje funkce Průzkumníka Service Bus, je možné vytvořit nebo upravit filtry předplatného na portálu. 
 
 ## <a name="next-steps"></a>Další kroky
 Podívejte se na následující ukázky: 

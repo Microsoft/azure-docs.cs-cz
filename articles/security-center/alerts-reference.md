@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: ed44d6ad5c7594552e14aea0a16d3d23c99806fb
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f5ae8b2b2b2be578b76f4b54866dd1b7ed3e92d8
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745080"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267456"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Výstrahy zabezpečení – referenční příručka
 
@@ -293,7 +293,7 @@ V dolní části této stránky je k dispozici Tabulka popisující Azure Securi
 |**Přístup z uzlu pro ukončení mandátu do účtu úložiště**|Indikuje, že se tento účet úspěšně přistupoval z IP adresy, která se označuje jako aktivní odesílací uzel systému (anonymizace proxy server). Závažnost této výstrahy je považována za použitý typ ověřování (pokud existuje) a zda se jedná o první případ takového přístupu. Možnou příčinou může být útočník, který získal účet úložiště pomocí systému pro práci, nebo legitimního uživatele, který získal účet úložiště pomocí systému.|Zjišťování/využívání|Vysoká|
 |**Přístup z neobvyklého umístění do účtu úložiště**|Indikuje, že došlo ke změně vzoru přístupu k účtu Azure Storage. Někdo k tomuto účtu přistupoval z IP adresy považované za neznámou, pokud je v porovnání s poslední aktivitou. Buď útočník získal přístup k účtu, nebo byl oprávněný uživatel připojen z nového nebo neobvyklého zeměpisného umístění. Příkladem druhé z nich je Vzdálená údržba z nové aplikace nebo vývojáře.|Využívání|Nízká|
 |**Anonymní přístup k účtu úložiště**|Indikuje, že došlo ke změně vzoru přístupu k účtu úložiště. K účtu se například přistupuje anonymně (bez ověřování), které se ve srovnání s nedávným vzorem přístupu na tomto účtu neočekávalo. Možnou příčinou je, že útočník zneužije veřejný přístup pro čtení kontejneru, který obsahuje úložiště objektů BLOB.|Využívání|Vysoká|
-|**Potenciální malware nahraný do účtu úložiště**|Indikuje, že se do účtu úložiště nahrál objekt BLOB obsahující potenciální malware. Tato výstraha je analýzou reputace hodnot hash vycházející z výkonu analýzy hrozeb Microsoftu, která zahrnuje hodnoty hash pro viry, trojské koně, spyware a ransomwarem. Možné příčiny můžou zahrnovat úmyslné nahrání malwaru útočníkem nebo neúmyslné nahrání potenciálně škodlivého objektu BLOB legitimním uživatelem. Další informace o možnostech logiky hrozeb Microsoftu:https://go.microsoft.com/fwlink/?linkid=2128684 |LateralMovement|Vysoká|
+|**Potenciální malware nahraný do účtu úložiště**|Indikuje, že se do účtu úložiště nahrál objekt BLOB obsahující potenciální malware. Tato výstraha je založená na analýze reputace hodnot hash, která využívá sílu Microsoft Threat Intelligence, včetně hodnot hash pro viry, trojské koně, spyware a ransomwarem. Možné příčiny můžou zahrnovat úmyslné nahrání malwaru útočníkem nebo neúmyslné nahrání potenciálně škodlivého objektu BLOB legitimním uživatelem. Další informace o možnostech logiky hrozeb Microsoftu:https://go.microsoft.com/fwlink/?linkid=2128684 |LateralMovement|Vysoká|
 |**Neobvyklá kontrola přístupu v účtu úložiště**|Označuje, že přístupová oprávnění účtu úložiště byla v porovnání s poslední aktivitou tohoto účtu prověřena neobvyklým způsobem. Možnou příčinou je, že útočník provedl rekognoskace k budoucímu útoku.|Kolekce|Střední|
 |**Neobvyklé množství dat extrahovaných z účtu úložiště**|Indikuje, že se v porovnání s poslední aktivitou tohoto kontejneru úložiště extrahuje neobvykle velké množství dat. Možnou příčinou je, že útočník extrahuje velké množství dat z kontejneru, který obsahuje úložiště objektů BLOB.|Exfiltrace|Střední|
 |**Neobvyklá aplikace, ke kterým se získal účet úložiště**|Indikuje, že se k tomuto účtu úložiště přistupovala neobvyklá aplikace. Možnou příčinou je, že útočník získal k vašemu účtu úložiště pomocí nové aplikace.|Využívání|Střední|
@@ -398,8 +398,7 @@ Podporované záměry dezaktivačního řetězu Security Center jsou založené 
 
 |Záměr|Popis|
 |------|-------|
-|**Předútok**|Předběžná útok může být buď pokus o přístup k určitému prostředku bez ohledu na škodlivý záměr, nebo neúspěšný pokus o získání přístupu k cílovému systému za účelem shromažďování informací před zneužitím. Tento krok se obvykle detekuje jako pokus, pochází z vnějšku sítě, kontroluje cílový systém a identifikuje vstupní bod. </br>Další podrobnosti o fázi předútoků si můžete přečíst na [stránce Mitre](https://attack.mitre.org/matrices/pre/).|
-|**InitialAccess**|InitialAccess je fáze, kde útočník spravuje, aby získal dostane pro napadený prostředek. Tato fáze je relevantní pro výpočetní hostitele a prostředky, jako jsou uživatelské účty, certifikáty atd. Aktéri hrozeb budou často moci řídit prostředek po této fázi.|
+|**Předútok**|Předběžná útok může být buď pokus o přístup k určitému prostředku bez ohledu na škodlivý záměr, nebo neúspěšný pokus o získání přístupu k cílovému systému za účelem shromažďování informací před zneužitím. Tento krok se obvykle detekuje jako pokus, pochází z vnějšku sítě, kontroluje cílový systém a identifikuje vstupní bod. </br>Další podrobnosti o fázi předútoků si můžete přečíst na [stránce Mitre](https://attack.mitre.org/matrices/pre/).||**InitialAccess**|InitialAccess je fáze, kde útočník spravuje, aby získal dostane pro napadený prostředek. Tato fáze je relevantní pro výpočetní hostitele a prostředky, jako jsou uživatelské účty, certifikáty atd. Aktéri hrozeb budou často moci řídit prostředek po této fázi.|
 |**Uchování**|Persistence je jakýkoli přístup, akce nebo změna konfigurace systému, který útočníkovi v tomto systému poskytne trvalou přítomnost. Aktéri hrozeb často potřebují zachovat přístup k systémům prostřednictvím přerušení, jako je restartování systému, ztráta přihlašovacích údajů nebo jiné chyby, které by vyžadovaly restartování nástroje vzdáleného přístupu nebo zadání alternativního zadní vrátkau pro opětovné získání přístupu.|
 |**PrivilegeEscalation**|Eskalace oprávnění je výsledkem akcí, které umožňují nežádoucí osoba získat vyšší úroveň oprávnění pro systém nebo síť. Některé nástroje nebo akce vyžadují vyšší úroveň oprávnění pro práci a jsou nejspíš potřeba v mnoha bodech v průběhu operace. Uživatelské účty s oprávněním pro přístup ke konkrétním systémům nebo provádění specifických funkcí nezbytných pro nežádoucí osoby k dosažení jejich cíle může být také považována za eskalaci oprávnění.|
 |**DefenseEvasion**|Daňová povinnost ochrany se skládá z technik, které může nežádoucí osoba použít k obcházení detekce nebo k zamezení jiné obrany. Někdy jsou tyto akce stejné jako (nebo variace) technik v jiných kategoriích, které mají přidané výhody přeměny určité obrany nebo zmírnění rizik.|
