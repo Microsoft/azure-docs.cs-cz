@@ -50,6 +50,8 @@
               href: database/advanced-data-security.md
             - name: Rozšířená ochrana před internetovými útoky
               href: database/threat-detection-overview.md
+            - name: Zjišťování a klasifikace dat
+              href: database/data-discovery-and-classification-overview.md
             - name: Dynamické maskování dat
               href: database/dynamic-data-masking-overview.md
             - name: Posouzení ohrožení zabezpečení SQL
@@ -73,8 +75,6 @@
                   href: database/transparent-data-encryption-tde-overview.md
                 - name: Používání vlastního klíče (BYOK)
                   href: database/transparent-data-encryption-byok-overview.md
-                - name: Zjišťování a klasifikace dat
-                  href: database/data-discovery-and-classification-overview.md
         - name: Kontinuita podnikových procesů
           displayName: 'Backup, back up, restore, recovery'
           items:

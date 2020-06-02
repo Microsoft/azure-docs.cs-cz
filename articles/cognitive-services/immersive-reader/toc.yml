@@ -7,12 +7,8 @@
 - name: Rychlé starty
   expanded: true
   items:
-    - name: 'Pomocí C#'
-      href: Quickstart.md
-    - name: Pomocí Node.js
-      href: quickstart-nodejs.md
-    - name: Použití Swiftu (iOS)
-      href: ios-quickstart.md
+    - name: S využitím klientské knihovny
+      href: ./quickstarts/client-libraries.md
 - name: Kurzy
   items:
     - name: Spuštění Asistivní čtečky (Python)

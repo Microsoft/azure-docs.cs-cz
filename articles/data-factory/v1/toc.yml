@@ -199,8 +199,6 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Případové studie
       href: data-factory-customer-case-studies.md
-    - name: Postup výuky
-      href: 'https://azure.microsoft.com/documentation/learning-paths/data-factory'
     - name: Stránka s dotazy na Microsoft Q&A
       href: 'https://docs.microsoft.com/answers/topics/azure-data-factory.html'
     - name: Ceny

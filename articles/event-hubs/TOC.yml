@@ -221,6 +221,8 @@
           href: resource-manager-exceptions.md
 - name: Referenční informace
   items:
+    - name: Sady SDK
+      href: sdks.md
     - name: .NET
       items:
         - name: Klientská knihovna
@@ -271,6 +273,12 @@
               href: /javascript/api/@azure/event-hubs/?view=azure-node-legacy
         - name: Knihovna správy
           href: /javascript/api/@azure/arm-eventhub/?view=azure-node-latest
+    - name: Přejít
+      items:
+        - name: Klientská knihovna
+          href: 'https://pkg.go.dev/github.com/Azure/azure-event-hubs-go?tab=doc'
+        - name: Knihovna správy
+          href: 'https://pkg.go.dev/github.com/Azure/azure-sdk-for-go/services/eventhub/mgmt/2017-04-01/eventhub?tab=doc'
     - name: REST
       href: /rest/api/eventhub
     - name: Šablona Resource Manageru

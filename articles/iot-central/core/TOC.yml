@@ -123,6 +123,8 @@
               href: howto-customize-ui.md
             - name: Export vaší aplikace
               href: howto-use-app-templates.md
+            - name: Monitorování stavu aplikace
+              href: howto-monitor-application-health.md
         - name: Správa z jiných míst
           items:
             - name: Správa z webu Azure Portal

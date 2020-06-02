@@ -190,7 +190,7 @@
     - name: Plány Azure do budoucna
       href: 'https://azure.microsoft.com/roadmap/?category=compute'
     - name: Postup výuky
-      href: 'https://azure.microsoft.com/documentation/learning-paths/cloud-services/'
+      href: /learn/paths/azure-fundamentals/
     - name: Stránka s dotazy na Microsoft Q&A
       href: 'https://docs.microsoft.com/answers/topics/azure-cloud-services.html'
     - name: Ceny

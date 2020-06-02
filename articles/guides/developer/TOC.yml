@@ -8,7 +8,7 @@
   items:
     - name: Web Apps
       href: 'https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html'
-    - name: Virtual Machines
+    - name: Virtuální počítače
       items:
         - name: Linux
           href: 'https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal'
@@ -44,7 +44,7 @@
       href: 'https://docs.microsoft.com/azure/azure-functions/functions-create-an-azure-connected-function'
     - name: Nasazení webové aplikace Dockeru v Linuxu
       href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-docker-go'
-- name: Ukázky
+- name: ukázky
   items:
     - name: Azure CLI
       items:
@@ -54,7 +54,7 @@
           href: 'https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples'
         - name: Virtuální počítač s Windows
           href: 'https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples'
-    - name: Azure Powershell
+    - name: Azure PowerShell
       items:
         - name: Web Apps
           href: 'https://docs.microsoft.com/azure/app-service/samples-powershell'
@@ -70,7 +70,7 @@
       href: /azure/architecture/guide/technology-choices/compute-decision-tree
     - name: Co je App Service?
       href: 'https://docs.microsoft.com/azure/app-service/overview'
-    - name: Virtual Machines
+    - name: Virtuální počítače
       items:
         - name: Virtuální počítače s Linuxem
           href: 'https://docs.microsoft.com/azure/virtual-machines/linux/overview'
@@ -128,7 +128,7 @@
       items:
         - name: Webové a mobilní aplikace
           href: 'https://docs.microsoft.com/azure/app-service/manage-scale-up'
-        - name: Virtual Machines
+        - name: Virtuální počítače
           href: 'https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview'
         - name: Aplikace mikroslužeb
           href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability'
@@ -140,7 +140,7 @@
       items:
         - name: Webové a mobilní aplikace
           href: 'https://docs.microsoft.com/azure/app-service/manage-backup'
-        - name: Virtual Machines
+        - name: Virtuální počítače
           href: 'https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction'
     - name: Monitorování
       items:
@@ -175,14 +175,14 @@
         - name: PHP
           href: 'https://github.com/Azure/azure-sdk-for-php/blob/master/README.md'
         - name: Python
-          href: 'http://azure-sdk-for-python.readthedocs.io/en/latest/'
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/README.md'
         - name: Ruby
           href: 'https://github.com/Azure/azure-sdk-for-ruby/blob/master/README.md'
     - name: Rozhraní příkazového řádku
       items:
         - name: Azure CLI
           href: 'https://docs.microsoft.com/cli/azure/'
-        - name: Azure Powershell
+        - name: Azure PowerShell
           href: 'https://docs.microsoft.com/powershell/'
     - name: Fakturace
       href: 'https://docs.microsoft.com/azure/billing/billing-usage-rate-card-overview'
@@ -196,7 +196,7 @@
       href: 'https://azure.microsoft.com/roadmap/'
     - name: Cenová kalkulačka
       href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Ukázky
+    - name: ukázky
       href: 'https://azure.microsoft.com/resources/samples/'
     - name: Videa
       href: 'https://azure.microsoft.com/resources/videos/home/'
