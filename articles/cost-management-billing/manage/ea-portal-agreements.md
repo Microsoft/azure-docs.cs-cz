@@ -3,16 +3,16 @@ title: Smlouvy k Azure EA a jejich změny
 description: Tento článek vysvětluje, jak smlouvy k Azure EA a jejich změny ovlivňují vaše používání portálu Azure EA.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/07/2020
+ms.date: 06/01/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: boalcsva
-ms.openlocfilehash: 356b08526d96b6aa51a537a3dd1f7266cbf47141
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4904390ce0642d0331e82610e8aef4b735b56f1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648177"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298138"
 ---
 # <a name="azure-ea-agreements-and-amendments"></a>Smlouvy k Azure EA a jejich změny
 
@@ -43,7 +43,7 @@ Registrace má jednu z následujících hodnot stavu. Každá hodnota určuje, j
 
 **Platnost vypršela:** Když registrace EA dosáhne koncového data smlouvy Enterprise, její platnost vyprší. Zákazník EA je výslovně vyřazen z období prodloužení a všechny jeho služby se deaktivují.
 
-Od 1. srpna 2019 nepřijímáme žádné další žádosti o výslovné vyřazení u komerčních zákazníků Azure. Místo toho budou všechny registrace přecházet do neurčeného období prodloužení. Pokud chcete služby Azure přestat používat, uzavřete vaše předplatné na [webu Azure EA Portal](https://portal.azure.com). Nebo může žádost o ukončení podat partner na adrese https://www.explore.ms. U zákazníků s typy smluv pro státní instituce se nic nemění.
+Od 1. srpna 2019 nepřijímáme žádné další žádosti o výslovné vyřazení u komerčních zákazníků Azure. Místo toho budou všechny registrace přecházet do neurčeného období prodloužení. Pokud chcete služby Azure přestat používat, uzavřete své předplatné na webu [Azure Portal](https://portal.azure.com). Nebo může žádost o ukončení podat partner na adrese https://www.explore.ms. U zákazníků s typy smluv pro státní instituce se nic nemění.
 
 **Přesunuto:** Stav Přesunuto se použije u registrací, jejichž přidružené účty a služby byly přesunuty do nové registrace. Registrace se nepřesouvají automaticky, pokud se při prodloužení vygeneruje nové číslo registrace. Aby mohl proběhnout automatický přenos, je třeba do žádosti zákazníka o prodloužení zahrnout předchozí číslo registrace.
 

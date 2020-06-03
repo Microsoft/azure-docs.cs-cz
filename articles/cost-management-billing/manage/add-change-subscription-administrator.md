@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/12/2020
 ms.author: banders
-ms.openlocfilehash: 3e4ad74a55504367de18a3dc9f0a7d33c462b329
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 309016821eb13ef6332ba248a11593fec8da9f75
+ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199836"
+ms.lasthandoff: 06/01/2020
+ms.locfileid: "84267558"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Přidání nebo změna správců předplatného Azure
 
@@ -71,7 +71,7 @@ Pokud si nejste jisti, kdo je správcem účtu předplatného, zjistíte to nás
 
 * [Co je řízení přístupu na základě role (RBAC)?](../../role-based-access-control/overview.md)
 * [Vysvětlení různých rolí v Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Postup: Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
+* [Přiřazení nebo přidání předplatného Azure do tenanta Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md)
 * [Oprávnění role správce v Azure Active Directory](../../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
