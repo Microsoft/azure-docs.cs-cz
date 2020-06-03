@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cd1bd85e76bdda52e2f3b3b60c705792ca82a6eb
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: bcc1affb953a737c12ca5bdb70ba7eadee20cd97
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247984"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295520"
 ---
 # <a name="get-started-with-custom-policies-in-azure-active-directory-b2c"></a>Začínáme s vlastními zásadami v Azure Active Directory B2C
 
@@ -32,7 +32,7 @@ ms.locfileid: "84247984"
 
 ## <a name="add-signing-and-encryption-keys"></a>Přidat podpisové a šifrovací klíče
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
 1. Na stránce Přehled v části **zásady**vyberte **Architektura prostředí identity**.
@@ -74,22 +74,9 @@ Tyto dvě aplikace je potřeba zaregistrovat ve svém tenantovi Azure AD B2C jen
 
 ### <a name="register-the-identityexperienceframework-application"></a>Registrace aplikace IdentityExperienceFramework
 
-Pokud chcete zaregistrovat aplikaci ve vašem tenantovi Azure AD B2C, můžete použít **Registrace aplikací (starší verze)** nebo naše nové prostředí Unified **Registrace aplikací (Preview)** . [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
+K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít **Registrace aplikací** prostředí.
 
-#### <a name="applications"></a>[Aplikace](#tab/applications/)
-
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. V Azure Portal vyhledejte a vyberte **Azure Active Directory**.
-1. V nabídce přehled **Azure Active Directory** v části **Spravovat**vyberte **Registrace aplikací (starší verze)**.
-1. Vyberte **Registrace nové aplikace**.
-1. Jako **název**zadejte `IdentityExperienceFramework` .
-1. Jako **Typ aplikace**vyberte **Webová aplikace/rozhraní API**.
-1. Pro **přihlašovací adresu URL**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` , kde `your-tenant-name` je váš Azure AD B2C název domény tenanta. Všechny adresy URL by teď měly používat [b2clogin.com](b2clogin.md).
-1. Vyberte **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
-
-#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
-
-1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
+1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
 1. Jako **název**zadejte `IdentityExperienceFramework` .
 1. V části **podporované typy účtů**vyberte **účty jenom v tomto organizačním adresáři**.
 1. V části **identifikátor URI pro přesměrování**vyberte **Web**a pak zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com` , kde `your-tenant-name` je váš Azure AD B2C název domény tenanta.
@@ -111,21 +98,7 @@ V dalším kroku vystavte rozhraní API přidáním oboru:
 
 ### <a name="register-the-proxyidentityexperienceframework-application"></a>Registrace aplikace ProxyIdentityExperienceFramework
 
-#### <a name="applications"></a>[Aplikace](#tab/applications/)
-
-1. V **Registrace aplikací (starší verze)** vyberte možnost **Registrace nové aplikace**.
-1. Jako **název**zadejte `ProxyIdentityExperienceFramework` .
-1. Jako **Typ aplikace**vyberte možnost **nativní**.
-1. Jako **identifikátor URI přesměrování**zadejte `myapp://auth` .
-1. Vyberte **Vytvořit**. Po vytvoření zkopírujte ID aplikace a uložte ho pro pozdější použití.
-1. Vyberte **Nastavení**, pak vyberte **požadovaná oprávnění**a pak vyberte **Přidat**.
-1. Zvolte **Vybrat rozhraní API**, vyhledejte a vyberte **IdentityExperienceFramework**a potom klikněte na **Vybrat**.
-1. Zaškrtněte políčko vedle **přístupu k IdentityExperienceFramework**, klikněte na **Vybrat**a potom na **Hotovo**.
-1. Vyberte **udělit oprávnění**a pak potvrďte výběrem možnosti **Ano**.
-
-#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
-
-1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **Nová registrace**.
+1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
 1. Jako **název**zadejte `ProxyIdentityExperienceFramework` .
 1. V části **podporované typy účtů**vyberte **účty jenom v tomto organizačním adresáři**.
 1. V části **identifikátor URI pro přesměrování**vyberte v rozevíracím seznamu možnost **veřejný klient/nativní (mobilní & Desktop)**.
@@ -137,7 +110,6 @@ V dalším kroku vystavte rozhraní API přidáním oboru:
 Dále určete, že aplikace by měla být považována za veřejného klienta:
 
 1. V části **Spravovat**vyberte **ověřování**.
-1. Vyberte **vyzkoušet nové prostředí** (Pokud je zobrazeno).
 1. V části **Upřesnit nastavení**povolte možnost **považovat aplikaci za veřejného klienta** (vyberte **Ano**). Zajistěte, aby v manifestu aplikace bylo nastaveno **"allowPublicClient": true** . 
 1. Vyberte **Uložit**.
 

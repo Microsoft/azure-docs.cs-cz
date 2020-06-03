@@ -9,25 +9,25 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: egeaney
-ms.openlocfilehash: cafe170c4f4485791bbd65471a43d1d5f9726775
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 782e03f572f007b8523c3ae797dd626c383a01f4
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202246"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310712"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Rozpoznávání vydaných dat v klidovém formátu
 
 Nástroj pro rozpoznávání formulářů Azure automaticky šifruje vaše data při trvalém uložení do cloudu. Šifrování ve formě rozpoznávání formulářů chrání vaše data a umožňuje splnit závazky zabezpečení a dodržování předpisů v organizaci.
 
-[!INCLUDE [cognitive-services-about-encryption](../../../includes/cognitive-services-about-encryption.md)]
+[!INCLUDE [cognitive-services-about-encryption](../includes/cognitive-services-about-encryption.md)]
 
 > [!IMPORTANT]
 > Klíče spravované zákazníkem jsou dostupné jenom prostředky vytvořené po 11. května 2020. Pokud chcete používat CMK s nástrojem pro rozpoznávání formulářů, budete muset vytvořit nový prostředek pro rozpoznávání formulářů. Po vytvoření prostředku můžete k nastavení spravované identity použít Azure Key Vault.
 
-[!INCLUDE [cognitive-services-cmk](../../../includes/cognitive-services-cmk-regions.md)]
+[!INCLUDE [cognitive-services-cmk](../includes/cognitive-services-cmk-regions.md)]
 
-[!INCLUDE [cognitive-services-cmk](../../../includes/cognitive-services-cmk.md)]
+[!INCLUDE [cognitive-services-cmk](../includes/configure-customer-managed-keys.md)]
 
 ## <a name="next-steps"></a>Další kroky
 

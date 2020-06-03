@@ -13,12 +13,12 @@ ms.topic: overview
 ms.custom: mvc, seodec18
 ms.date: 12/07/2018
 ms.author: mbaldwin
-ms.openlocfilehash: ad3c9d702384b8a32a9d4f0c8aebe44de4bb526e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fc7d4caecb2ca3d35d7b1b8d0cd5f9ff380d7674
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80337173"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310100"
 ---
 # <a name="troubleshooting"></a>Řešení potíží
 
@@ -29,11 +29,11 @@ Vyhrazená služba HSM v Azure má dvě odlišné charakteristiky. Za prvé, reg
 
 ## <a name="hsm-registration"></a>Registrace HSM
 
-Vyhrazený modul hardwarového zabezpečení (HSM) není volně dostupný pro použití, protože dodává hardwarové prostředky v cloudu, a proto je cenným prostředkem, který je potřeba chránit. Proto používáme proces přidávání do seznamu povolených adres HSMrequest@microsoft.comprostřednictvím e-mailu. 
+Vyhrazený modul hardwarového zabezpečení (HSM) není volně dostupný pro použití, protože dodává hardwarové prostředky v cloudu, a proto je cenným prostředkem, který je potřeba chránit. Proto používáme proces přidávání do seznamu povolených adres prostřednictvím e-mailu HSMrequest@microsoft.com . 
 
 ### <a name="getting-access-to-dedicated-hsm"></a>Získání přístupu k vyhrazenému modulu HSM
 
-Pokud jste přesvědčeni, že modul HARDWAROVÉho zabezpečení bude vyhovovat vašim požadavkům HSMrequest@microsoft.com na úložiště klíčů, pak e-mail s žádostí o přístup. Osnova aplikace, oblastí, které byste chtěli HSM, a objemu HSM, které hledáte. Pokud pracujete se zástupcem Microsoftu, jako je například vedoucí pro vedení účtu nebo architekt cloudového řešení, pak je zahrňte do libovolné žádosti.
+Pokud jste přesvědčeni, že modul HARDWAROVÉho zabezpečení bude vyhovovat vašim požadavkům na úložiště klíčů, pak e-mail HSMrequest@microsoft.com s žádostí o přístup. Osnova aplikace, oblastí, které byste chtěli HSM, a objemu HSM, které hledáte. Pokud pracujete se zástupcem Microsoftu, jako je například vedoucí pro vedení účtu nebo architekt cloudového řešení, pak je zahrňte do libovolné žádosti.
 
 ## <a name="hsm-provisioning"></a>Zřizování modulu HSM
 
@@ -63,10 +63,10 @@ az resource show --ids /subscriptions/<subid>/resourceGroups/<myresourcegroup>/p
 ```
 
 ### <a name="deployment-failure-based-on-quota"></a>Selhání nasazení na základě kvóty
-Nasazení můžou selhat, pokud překročíte 2 HSM na razítko a 4 HSM na oblast. Abyste se vyhnuli této situaci, před opětovným nasazením se ujistěte, že jste odstranili prostředky z dříve neúspěšných nasazení. Chcete-li kontrolovat prostředky, přečtěte si níže uvedenou položku Návody viz HSM. Pokud se domníváte, že tuto kvótu potřebujete překročit, což je primárně v rámci ochrany, pak prosím HSMrequest@microsoft.com pošlete e-mail s podrobnostmi.
+Nasazení můžou selhat, pokud překročíte 2 HSM na razítko a 4 HSM na oblast. Abyste se vyhnuli této situaci, před opětovným nasazením se ujistěte, že jste odstranili prostředky z dříve neúspěšných nasazení. Chcete-li kontrolovat prostředky, přečtěte si níže uvedenou položku Návody viz HSM. Pokud se domníváte, že tuto kvótu potřebujete překročit, což je primárně v rámci ochrany, pak prosím pošlete e-mail HSMrequest@microsoft.com s podrobnostmi.
 
 ### <a name="deployment-failure-based-on-capacity"></a>Selhání nasazení na základě kapacity
-Když se konkrétní razítko nebo oblast zaplní, to znamená, že jsou skoro všechny bezplatné HSM zřízené, může to vést k selháním nasazení. Každé razítko má k dispozici 11 HSM pro zákazníky, což znamená 22 na oblast. V každém razítku jsou také 3 náhr a 1 testovací zařízení. Pokud se domníváte, že jste si myslíte, že HSMrequest@microsoft.com jste dosáhli limitu, pak můžete poslat informace na úrovni výplně konkrétních razítek.
+Když se konkrétní razítko nebo oblast zaplní, to znamená, že jsou skoro všechny bezplatné HSM zřízené, může to vést k selháním nasazení. Každé razítko má k dispozici 11 HSM pro zákazníky, což znamená 22 na oblast. V každém razítku jsou také 3 náhr a 1 testovací zařízení. Pokud se domníváte, že jste si myslíte, že jste dosáhli limitu, pak můžete poslat HSMrequest@microsoft.com informace na úrovni výplně konkrétních razítek.
 
 ###  <a name="how-do-i-see-hsms-when-provisioned"></a>Návody se při zřizování zobrazuje HSM?
 Vzhledem k vyhrazenému modulu HSM, který je na seznamu povolených služeb, se v Azure Portal považuje za "skrytý typ". Chcete-li zobrazit prostředky HSM, je nutné zaškrtnout políčko Zobrazit skryté typy, jak je znázorněno níže. Prostředek síťových adaptérů vždy sleduje modul hardwarového zabezpečení (HSM) a je dobrým místem, kde můžete zjistit IP adresu modulu HARDWAROVÉho zabezpečení před použitím SSH pro připojení.
@@ -105,7 +105,7 @@ Poskytování nesprávných přihlašovacích údajů HSM může mít destruktiv
 | HSM | 3 |  Modul hardwarového zabezpečení (HSM) je nulový (všechny identity objektů HSM a všechny oddíly se odešlou).  |  Modul HARDWAROVÉho zabezpečení musí být znovu inicializovaný. Obsah je možné obnovit ze zálohy. | 
 | Rozdělit na oddíly | 10 |  Oddíl je nulový. |  Oddíl je nutné znovu inicializovat. Obsah se může obnovit ze zálohy. |  
 | Auditování | 10 | Účtů | Po 10 minutách odemčení automaticky. |  
-| Kryptografický pracovník | 10 (může být sníženo) | Pokud zásada HSM 15: Povolit resetování kódu PIN oddílu na hodnotu 1 (povoleno), jsou role CO a CU zamčené.<br>Pokud zásada HSM 15: Povolit resetování kódu PIN oddílu na hodnotu 0 (zakázáno), role CO a CU se trvale zamkne a obsah oddílu už nebude přístupný. Toto je výchozí nastavení. | Role CO musí být odemčená a přihlašovací údaje, které oddíl vynulovat, `role resetpw -name co`pomocí.<br>Oddíl se musí znovu inicializovat a klíč se obnovil ze zálohovacího zařízení. |  
+| Kryptografický pracovník | 10 (může být sníženo) | Pokud zásada HSM 15: Povolit resetování kódu PIN oddílu na hodnotu 1 (povoleno), jsou role CO a CU zamčené.<br>Pokud zásada HSM 15: Povolit resetování kódu PIN oddílu na hodnotu 0 (zakázáno), role CO a CU se trvale zamkne a obsah oddílu už nebude přístupný. Toto je výchozí nastavení. | Role CO musí být odemčená a přihlašovací údaje, které oddíl vynulovat, pomocí `role resetpw -name co` .<br>Oddíl se musí znovu inicializovat a klíč se obnovil ze zálohovacího zařízení. |  
 
 ## <a name="hsm-configuration"></a>Konfigurace HSM 
 
@@ -120,7 +120,7 @@ Při konfiguraci sítě v rámci modulu HARDWAROVÉho zabezpečení buďte opatr
 
 ### <a name="hsm-device-reboot"></a>Restartování zařízení HSM
 
-Některé změny konfigurace vyžadují, aby byl modul hardwarového zabezpečení (HSM) nebo restartován z elektrického počítače. Testování modulu HARDWAROVÉho zabezpečení v Azure bylo zjištěno, že v některých případech může restart reagovat. Denásobení je, že žádost o podporu musí být vytvořena v Azure Portal požadujícím pevný restart, což může trvat až 48 hodin, než se dokončí ruční zpracování v datovém centru Azure.  Abyste se vyhnuli této situaci, ujistěte se, že jste nasadili opravu restartování dostupnou přímo z Thales. Další informace najdete v tématu [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) v tématu Thales Luna Network HSM 7,2 downloads pro doporučenou opravu pro problém se započetím restartování. (Poznámka: budete muset být registrováni na portálu podpory Thales ke stažení).
+Některé změny konfigurace vyžadují, aby byl modul hardwarového zabezpečení (HSM) nebo restartován z elektrického počítače. Testování modulu HARDWAROVÉho zabezpečení v Azure bylo zjištěno, že v některých případech může restartování přestat reagovat. Denásobení je, že žádost o podporu musí být vytvořena v Azure Portal požadujícím pevný restart, což může trvat až 48 hodin, než se dokončí ruční zpracování v datovém centru Azure.  Abyste se vyhnuli této situaci, ujistěte se, že jste nasadili opravu restartování dostupnou přímo z Thales. Další informace najdete v tématu [KB0019789](https://supportportal.gemalto.com/csm?sys_kb_id=d66911e2db4ffbc0d298728dae9619b0&id=kb_article_view&sysparm_rank=1&sysparm_tsqueryId=d568c35bdb9a4850d6b31f3b4b96199e&sysparm_article=KB0019789) v tématu Thales Luna Network HSM 7,2 downloads pro doporučenou opravu pro problém se započetím restartování. (Poznámka: budete muset být registrováni na portálu podpory Thales ke stažení).
 
 ### <a name="ntls-certificates-out-of-sync"></a>Nesynchronizované certifikáty NTLS
 Klient může přijít o připojení ke HARDWAROVÉmu zabezpečení, pokud vyprší platnost certifikátu nebo byl přepsán prostřednictvím aktualizací konfigurace. Konfigurace klienta Certificate Exchange by se měla znovu použít s každým modulem HSM.

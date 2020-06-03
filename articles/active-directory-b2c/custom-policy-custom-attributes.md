@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b5990f79891a9cbc0d18c3499691a3d7ef309a73
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15623d622a40fa80889a8704e0b7f19d358a052c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81678258"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295401"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: povolení vlastních atributů v zásadách vlastního profilu
 
@@ -46,10 +46,10 @@ Atributy rozšíření se dají registrovat jenom u objektu aplikace, i když m�
 
 ## <a name="get-the-application-properties"></a>Získat vlastnosti aplikace
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Registrace aplikací (Preview)** a pak vyberte **všechny aplikace**.
+1. Vyberte **Registrace aplikací**a pak vyberte **všechny aplikace**.
 1. Vyberte `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` aplikaci.
 1. Zkopírujte do schránky následující identifikátory a uložte je:
     * **ID aplikace** Příklad: `11111111-1111-1111-1111-111111111111`.
@@ -59,7 +59,7 @@ Atributy rozšíření se dají registrovat jenom u objektu aplikace, i když m�
 
 Pokud chcete v zásadách povolit vlastní atributy, zadejte **ID aplikace** a **ID objektu** aplikace v metadatech technického profilu pro AAD-Common. Technický profil *AAD-Common* se nachází v základním profilu [Azure Active Directory](active-directory-technical-profile.md) Technical a poskytuje podporu pro správu uživatelů Azure AD. Další technické profily Azure AD zahrnují konfiguraci AAD, která je společná pro využití své konfigurace. V souboru s příponou popište běžný technický profil AAD.
 
-1. Otevřete soubor rozšíření vaší zásady. Například <em> `SocialAndLocalAccounts/` </em>.
+1. Otevřete soubor rozšíření vaší zásady. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Vyhledejte element ClaimsProviders. Přidejte nový ClaimsProvider do elementu ClaimsProviders.
 1. Nahraďte `ApplicationObjectId` ID objektu, který jste předtím nahráli. Potom nahraďte `ClientId` ID aplikace, které jste předtím nahráli v níže uvedeném fragmentu kódu.
 
@@ -81,7 +81,7 @@ Pokud chcete v zásadách povolit vlastní atributy, zadejte **ID aplikace** a *
 
 ## <a name="upload-your-custom-policy"></a>Nahrání vlastních zásad
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Ujistěte se, že používáte adresář, který obsahuje vašeho tenanta Azure AD, a to tak, že v horní nabídce vyberete adresář a filtr **předplatného** a zvolíte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 3. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Registrace aplikací**.
 4. Vyberte **architekturu prostředí identity**.
@@ -96,7 +96,7 @@ Mezi integrovanými a vlastními zásadami se sdílí stejné atributy rozšíř
 
 Tyto atributy můžete vytvořit pomocí uživatelského rozhraní portálu před nebo po jejich použití ve vlastních zásadách. Postupujte podle pokynů pro [definování vlastních atributů v Azure Active Directory B2C](user-flow-custom-attributes.md). Když vytvoříte atribut **loyaltyId** na portálu, je nutné na něj odkazovat následujícím způsobem:
 
-|Název     |Použito v |
+|Name     |Použito v |
 |---------|---------|
 |`extension_loyaltyId`  | Vlastní zásady|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|
@@ -137,7 +137,7 @@ Postupujte podle pokynů pro [Přidání deklarací identity a přizpůsobení u
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
+Přečtěte si další informace:
 
 - [Azure AD B2C atributů profilu uživatele](user-profile-attributes.md)
 - [Definice atributů rozšíření](user-profile-attributes.md#extension-attributes)

@@ -4,12 +4,12 @@ description: Tento kurz podrobně popisuje zálohování místních Windows Serv
 ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
-ms.openlocfilehash: d29983bec7dbe379bfb2898e0f068a02b01ae726
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 560a4907fc812aae027ad9e1a1c262fc994c0da9
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79238745"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84295537"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Zálohování Windows Serveru do Azure
 
@@ -23,7 +23,7 @@ Pomocí služby Azure Backup můžete chránit svůj Windows Server před poško
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com.>.
+Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com>.
 
 ## <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 

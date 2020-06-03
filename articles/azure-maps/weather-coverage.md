@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 60761f7641d8cf87121992fce9050aea0f0b434b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac4df0b63d48e590bfdfc49f1c8b5607b4651cd5
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80333573"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310185"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps povětrnostní pokrytí
 
@@ -45,7 +45,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Bonaire                                  | ✓ |   |  ✓| 
 | Brazílie                                   | ✓ |   |  ✓| 
 | Britské Panenské ostrovy                   | ✓ |   |  ✓| 
-| Kanada                                   | ✓ | ✓ |  ✓| 
+| Canada                                   | ✓ | ✓ |  ✓| 
 | Kajmanské ostrovy                           | ✓ |   |  ✓| 
 | Chile                                    | ✓ |   |  ✓| 
 | Kolumbie                                 | ✓ |   |  ✓| 
@@ -85,10 +85,10 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Jižní Georgie a Jižní Sandwichovy ostrovy | ✓ |   |  ✓| 
 | Surinam                                 | ✓ |   |  ✓| 
 | Trinidad a Tobago                      | ✓ |   |  ✓| 
-| Turks a Caicos                 | ✓ |   |  ✓| 
-| Odlehlé ostrovy USA                    | ✓ |   |  ✓| 
+| Ostrovy Turks a Caicos                 | ✓ |   |  ✓| 
+| Menší odlehlé ostrovy USA                    | ✓ |   |  ✓| 
 | Americké Panenské ostrovy                      | ✓ |   |  ✓| 
-| Spojené státy                            | ✓ | ✓ |  ✓| 
+| Česká republika                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
 | Venezuela                                | ✓ |   |  ✓| 
 
@@ -166,7 +166,6 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Tunisko                     | ✓               |                              |        ✓| 
 | Uganda                      | ✓               |                              |        ✓| 
 | Spojené arabské emiráty        | ✓               |                              |        ✓| 
-| Západní Sahara              | ✓               |                              |        ✓| 
 | Jemen                       | ✓               |                              |        ✓| 
 | Zambie                      | ✓               |                              |        ✓| 
 | Zimbabwe                    | ✓               |                              |        ✓| 
@@ -178,7 +177,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 |-----------------------------|:----------------:|:-----------------:|:--------:|  
 | Afghánistán                       | ✓ |   |  ✓| 
 | Americká Samoa                    | ✓ |   |  ✓| 
-| Austrálie                         | ✓ | ✓ |  ✓| 
+| Australia                         | ✓ | ✓ |  ✓| 
 | Bangladéš                        | ✓ |   |  ✓| 
 | Bhútán                            | ✓ |   |  ✓| 
 | Britské indickooceánské území    | ✓ |   |  ✓| 
@@ -192,10 +191,10 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Francouzská Polynésie                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
 | Heardův ostrov a MacDonaldovy ostrovy | ✓ |   |  ✓| 
-| Hongkong – zvláštní správní oblast                     | ✓ |   |  ✓| 
-| Indie                             | ✓ |   |  ✓| 
+| Hongkong – zvláštní administrativní oblast                     | ✓ |   |  ✓| 
+| India                             | ✓ |   |  ✓| 
 | Indonésie                         | ✓ |   |  ✓| 
-| Japonsko                             | ✓ | ✓ |  ✓| 
+| Japan                             | ✓ | ✓ |  ✓| 
 | Kazachstán                        | ✓ |   |  ✓| 
 | Kiribati                          | ✓ |   |  ✓| 
 | Jižní Korea                             | ✓ | ✓ |  ✓| 
@@ -239,7 +238,7 @@ Následující tabulka poskytuje informace o tom, jaký druh informací o počas
 | Wallis a Futuna                 | ✓ |   |  ✓| 
 
 
-## <a name="europe"></a>Evropa
+## <a name="europe"></a>Europe
 
 | Země              |  Satelitní dlaždice | Minutová prognóza, paprskové dlaždice | Jiná | 
 |-----------------------------|:----------------:|:-----------------:|:--------:|

@@ -2,14 +2,14 @@
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 07/10/2019
+ms.date: 06/01/2020
 ms.author: danlep
-ms.openlocfilehash: 8106b1a77f11874b1b13f41bfc9e62ea800afc98
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: b9e275cbdaf264df3d0a40f032693fd93553e520
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68361528"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317780"
 ---
 ### <a name="database-tier"></a>Databázová vrstva
 
@@ -17,7 +17,7 @@ Databázová vrstva obsahuje databázové instance aplikace. Databáze může b�
 
 Pokud se rozhodnete použít Oracle DB, může být instance databáze nasazená v Azure prostřednictvím Oracle DBch imagí, které jsou k dispozici na Azure Marketplace. Alternativně můžete použít propojení mezi Azure a OCI k nasazení Oracle DB v modelu PaaS na OCI.
 
-Pro Oracle RAC můžete nasadit Oracle RAC pro Azure CloudSimple v modelu IaaS nebo v OCI v modelu PaaS. Doporučuje se použít systém RAC se dvěma uzly. 
+Pro Oracle RAC můžete použít OCI v modelu PaaS. Doporučuje se použít systém RAC se dvěma uzly. I když je možné nasadit Oracle RAC pro Azure CloudSimple v modelu IaaS, nejedná se o podporovanou konfiguraci Oracle. Podívejte se na [Programy Oracle, které mají nárok na autorizované cloudová prostředí](http://www.oracle.com/us/corporate/pricing/authorized-cloud-environments-3493562.pdf).
 
 Nakonec pro systémy Exadata použijte rozhraní OCI Interconnect a nasaďte systém Exadata v rozhraní OCI. Předchozí diagram architektury výše ukazuje systém Exadata nasazený v rozhraní OCI napříč dvěma podsítěmi.
 
