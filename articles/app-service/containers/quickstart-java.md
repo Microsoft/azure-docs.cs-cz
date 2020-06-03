@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ac4290963891a029f153bd26f94d5c671329f632
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 1ed7126f2698294ac6706aafcb85e3229a7491bb
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248953"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300059"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service v systému Linux
 
@@ -34,7 +34,7 @@ ms.locfileid: "84248953"
 Spusťte následující příkaz Maven na příkazovém řádku Cloud Shell k vytvoření nové aplikace s názvem `helloworld` :
 
 ```bash
-mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp"
+mvn archetype:generate "-DgroupId=example.demo" "-DartifactId=helloworld" "-DarchetypeArtifactId=maven-archetype-webapp" -Dversion=1.0-SNAPSHOT
 ```
 Pak změňte pracovní adresář na složku projektu:
 
@@ -89,7 +89,13 @@ Confirm (Y/N)? : Y
 > [!NOTE]
 > V tomto článku pracujeme jenom s aplikacemi Java zabalenými do souborů WAR. Modul plug-in podporuje také webové aplikace JAR. Pokud si to chcete vyzkoušet, přečtěte si téma věnované [nasazení souboru Java SE JAR do služby App Service v Linuxu](https://docs.microsoft.com/java/azure/spring-framework/deploy-spring-boot-java-app-with-maven-plugin?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json).
 
-Pokud chcete `pom.xml` Zobrazit konfiguraci modulu plug-in, můžete v případě potřeby upravit další konfigurace pro App Service přímo v souboru pom:
+Otevřete a `pom.xml` Zobrazte aktualizovanou konfiguraci.
+
+```bash
+code pom.xml
+```
+
+Konfigurace pro App Service můžete v případě potřeby upravit přímo v souboru pom:
 
  Vlastnost | Povinné | Popis | Verze
 ---|---|---|---
