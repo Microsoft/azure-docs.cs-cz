@@ -12,12 +12,12 @@ ms.date: 04/24/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
-ms.openlocfilehash: 9709cd3b6036b384fd9212a522c191d0695b9bb4
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 764600d61704378b1bc0937dd1399260a1266150
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161720"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308622"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>Microsoft Identity Platform Developer Glosář
 
@@ -115,7 +115,7 @@ Další informace najdete v tématu o [souhlasu](consent-framework.md) .
 
 Další podrobnosti najdete v referenčních informacích k [tokenům platformy Microsoft Identity Platform][AAD-Tokens-Claims] .
 
-## <a name="microsoft-identity-platform"></a>Microsoft identity platform
+## <a name="microsoft-identity-platform"></a>Microsoft Identity Platform
 
 Platforma Microsoft Identity Platform vznikla z platformy pro vývojáře a službu identit Azure Active Directory (Azure AD). Umožňuje vývojářům vytvářet aplikace, které přihlašují všechny identity od Microsoftu a získávají tokeny pro volání Microsoft Graphu, dalších rozhraní API od Microsoftu nebo rozhraní API, která vytvořili vývojáři. Je to plně vybavená platforma, která se skládá ze služby ověřování, knihoven, registrace a konfigurace aplikací, úplné dokumentace pro vývojáře, ukázek kódu a dalšího obsahu pro vývojáře. Microsoft Identity Platform podporuje standardní oborové protokoly, jako jsou OAuth 2.0 a OpenID Connect. Další podrobnosti najdete v tématu [o platformě Microsoft Identity](about-microsoft-identity-platform.md) .
 
@@ -129,7 +129,7 @@ Další podrobnosti najdete v tématu [jak se přihlásit k libovolnému uživat
 
 Typ [klientské aplikace](#client-application) , která je nainstalovaná nativně na zařízení. Vzhledem k tomu, že je veškerý kód spuštěný v zařízení, považuje se za "veřejný" klient, protože jeho neschopnost ukládat přihlašovací údaje soukromě/důvěrné. Další podrobnosti najdete v tématu [typy a profily klienta OAuth2][OAuth2-Client-Types] .
 
-## <a name="permissions"></a>nastaven
+## <a name="permissions"></a>oprávnění
 
 [Klientská aplikace](#client-application) získá přístup k [serveru prostředků](#resource-server) tím, že deklaruje žádosti o oprávnění. K dispozici jsou dva typy:
 
@@ -202,7 +202,7 @@ Instance adresáře služby Azure AD je označována jako tenant služby Azure A
 * ověřování uživatelských účtů a registrovaných aplikací
 * Koncové body REST vyžadované pro podporu různých protokolů, včetně OAuth2 a SAML, včetně [koncového bodu autorizace](#authorization-endpoint), [koncového bodu tokenu](#token-endpoint) a "společného" koncového bodu používaného [více aplikacemi tenantů](#multi-tenant-application).
 
-Tenant Azure AD se vytváří/přidružit k předplatným Azure a Office 365 během registrace a poskytují funkce pro správu přístupu identity & pro předplatné. Správci předplatného Azure můžou také vytvářet další klienty Azure AD prostřednictvím Azure Portal. Podrobnosti o různých způsobech přístupu ke klientovi získáte v tématu [Jak získat klienta Azure Active Directory][AAD-How-To-Tenant] . Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v článku [o tom, jak jsou předplatná Azure přidružená k Azure Active Directory][AAD-How-Subscriptions-Assoc] .
+Tenant Azure AD se vytváří/přidružit k předplatným Azure a Office 365 během registrace a poskytují funkce pro správu přístupu identity & pro předplatné. Správci předplatného Azure můžou také vytvářet další klienty Azure AD prostřednictvím Azure Portal. Podrobnosti o různých způsobech přístupu ke klientovi získáte v tématu [Jak získat klienta Azure Active Directory][AAD-How-To-Tenant] . Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v tématu [přidružení nebo přidání předplatného Azure do vašeho tenanta Azure Active Directory][AAD-How-Subscriptions-Assoc] . pokyny k přidružení nebo přidání předplatného k TENANTOVI Azure AD.
 
 ## <a name="token-endpoint"></a>koncový bod tokenu
 

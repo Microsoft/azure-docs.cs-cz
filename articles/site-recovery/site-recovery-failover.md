@@ -4,12 +4,12 @@ description: Jak převzít služby při selhání virtuálních počítačů neb
 ms.service: site-recovery
 ms.topic: article
 ms.date: 12/10/2019
-ms.openlocfilehash: 99a197e8f5ebac8a3b0be1b567ee41b43a2c4476
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bebc4cd56f248d09579dcde2fc234f63dd65a09f
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79471264"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309964"
 ---
 # <a name="run-a-failover-from-on-premises-to-azure"></a>Spuštění převzetí služeb při selhání z místního prostředí do Azure
 
@@ -32,7 +32,7 @@ Pokud se chcete připojit k virtuálním počítačům Azure pomocí protokolu R
 
 **Po převzetí služeb při selhání** | **Umístění** | **Akce**
 --- | --- | ---
-**Virtuální počítač Azure s Windows** | Místní počítač před převzetím služeb při selhání | Pokud chcete získat přístup k virtuálnímu počítači Azure přes Internet, povolte RDP a ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné**a že protokol RDP je povolený pro všechny profily v**povolených aplikacích** **brány Windows Firewall** > .<br/><br/> Pokud chcete získat přístup k virtuálnímu počítači Azure přes připojení typu Site-to-site, povolte na počítači protokol RDP a zajistěte, aby byl v **bráně Windows Firewall** -> **povolené aplikace a funkce**pro **domény a privátní** sítě povolený protokol RDP.<br/><br/> <br/><br/> Odeberte všechny statické trvalé trasy a proxy WinHTTP. Ujistěte se, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Další informace](https://support.microsoft.com/kb/3031135).<br/><br/> Při aktivaci převzetí služeb při selhání se ujistěte, že na virtuálním počítači nečekají žádné aktualizace Windows. Windows Update se může spustit, když převezmete služby při selhání a nebudete se moct přihlásit k virtuálnímu počítači, dokud se aktualizace nedokončí.
+**Virtuální počítač Azure s Windows** | Místní počítač před převzetím služeb při selhání | Pokud chcete získat přístup k virtuálnímu počítači Azure přes Internet, povolte RDP a ujistěte se, že jsou přidaná pravidla TCP a UDP pro **veřejné**a že protokol RDP je povolený pro všechny profily v povolených aplikacích **brány Windows Firewall**  >  **Allowed Apps**.<br/><br/> Pokud chcete získat přístup k virtuálnímu počítači Azure přes připojení typu Site-to-site, povolte na počítači protokol RDP a zajistěte, aby byl v **bráně Windows Firewall**  ->  **povolené aplikace a funkce**pro **domény a privátní** sítě povolený protokol RDP.<br/><br/> <br/><br/> Odeberte všechny statické trvalé trasy a proxy WinHTTP. Ujistěte se, že je zásada SAN operačního systému nastavená na **OnlineAll**. [Přečtěte si další informace](https://support.microsoft.com/kb/3031135).<br/><br/> Při aktivaci převzetí služeb při selhání se ujistěte, že na virtuálním počítači nečekají žádné aktualizace Windows. Windows Update se může spustit, když převezmete služby při selhání a nebudete se moct přihlásit k virtuálnímu počítači, dokud se aktualizace nedokončí.
 **Virtuální počítač Azure se systémem Linux** | Místní počítač před převzetím služeb při selhání | Ujistěte se, že je služba Secure Shell na virtuálním počítači nastavená tak, aby se automaticky spouštěla při spuštění systému.<br/><br/> Zkontrolujte, jestli pravidla brány firewall umožňují službě SSH připojit se k ní.
 
 
@@ -43,15 +43,16 @@ Tento postup popisuje, jak spustit převzetí služeb při selhání pro [plán 
 
 Spusťte plán obnovení převzetí služeb při selhání následujícím způsobem:
 
-1. V Site Recovery trezoru vyberte **plány** > obnovení*recoveryplan_name*.
+1. V Site Recovery trezoru vyberte **plány obnovení**  >  *recoveryplan_name*.
 2. Klikněte na **převzetí služeb při selhání**.
 
     ![Převzetí služeb při selhání](./media/site-recovery-failover/Failover.png)
 
-3. V části**směr převzetí**služeb **při** > selhání přenechejte výchozí nastavení, pokud se chystáte replikovat do Azure.
+3. V **Failover**  >  části**směr převzetí**služeb při selhání přenechejte výchozí nastavení, pokud se chystáte replikovat do Azure.
 4. V části **převzetí služeb při selhání**vyberte **bod obnovení** , u kterého chcete převzít služby při selhání.
 
     - **Nejnovější**: použijte nejnovější bod. Tato operace zpracuje všechna data, která jsou odeslána do služby Site Recovery Service, a vytvoří bod obnovení pro každý počítač. Tato možnost poskytuje nejnižší cíl bodu obnovení (RPO), protože virtuální počítač vytvořený po převzetí služeb při selhání má všechna data, která se replikují do Site Recovery při aktivaci převzetí služeb při selhání.
+    Počítejte s tím, že pokud zdrojová oblast nefunguje, není možné žádné další zpracování protokolu. Proto budete muset převzít převzetí služeb při selhání na nejnovější zpracovaný bod obnovení. Podívejte se na další bod, kde najdete další informace.
    - **Poslední zpracovaná**: tuto možnost použijte, pokud chcete převzít služby virtuálních počítačů na nejnovější bod obnovení, který už Site Recovery zpracoval. V případě, že se na virtuálním počítači nacházejí **nejnovější body obnovení**, můžete vidět nejnovější zpracovaný bod obnovení. Tato možnost poskytuje nízkou RTOi, protože nestráví zpracováním nezpracovaných dat žádného času.
    - **Nejnovější konzistentní vzhledem k aplikacím**: tuto možnost použijte, pokud chcete provést selhání virtuálních počítačů do nejnovějšího bodu obnovení konzistentního vzhledem k aplikacím, který byl zpracován Site Recovery.
    - **Poslední zpracovaná aplikace pro více virtuálních počítačů**: s touto možností virtuální počítače, které jsou součástí replikační skupiny, převzetí služeb při selhání nejnovějším běžným bodem obnovení s více virtuálními počítači. U ostatních virtuálních počítačů převezme služby při selhání nejnovější zpracovaný bod obnovení. Tato možnost je dostupná jenom pro plány obnovení, které mají aspoň jeden virtuální počítač s povolenou konzistencí pro víc virtuálních počítačů.
@@ -137,7 +138,7 @@ Při řešení problémů s připojením po převzetí služeb při selhání po
     - Zachovat stejnou IP adresu: můžete použít stejnou IP adresu na VIRTUÁLNÍm počítači Azure jako počítač přidělený místnímu počítači.
     - Použijte jinou IP adresu: pro virtuální počítač Azure můžete použít jinou IP adresu.
     - [Přečtěte si další informace](concepts-on-premises-to-azure-networking.md#assign-an-internal-address) o nastavení interních IP adres.
-- **Externí IP adresy**: veřejné IP adresy můžete uchovávat při převzetí služeb při selhání. Virtuálním počítačům Azure vytvořeným v rámci procesu převzetí služeb při selhání musí být k dispozici veřejná IP adresa Azure dostupná v oblasti Azure. Veřejnou IP adresu můžete přiřadit buď ručně, nebo automatizací procesu s plánem obnovení. [Další informace](concepts-public-ip-address-with-site-recovery.md).
+- **Externí IP adresy**: veřejné IP adresy můžete uchovávat při převzetí služeb při selhání. Virtuálním počítačům Azure vytvořeným v rámci procesu převzetí služeb při selhání musí být k dispozici veřejná IP adresa Azure dostupná v oblasti Azure. Veřejnou IP adresu můžete přiřadit buď ručně, nebo automatizací procesu s plánem obnovení. [Přečtěte si další informace](concepts-public-ip-address-with-site-recovery.md).
 
 
 ## <a name="next-steps"></a>Další kroky

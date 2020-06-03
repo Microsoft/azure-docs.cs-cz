@@ -12,16 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2019
+ms.date: 06/02/2020
 ms.author: b-juche
-ms.openlocfilehash: 996fbcc7c3c9af0da9160216785ecd54840660e8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa243071b9e5dcec0e49c3b49b3bf77ec6fe0e65
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "65957042"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299600"
 ---
-# <a name="develop-for-azure-netapp-files-with-rest-api"></a>Vývoj pro Azure NetApp Files s využitím REST API 
+# <a name="develop-for-azure-netapp-files-with-rest-api"></a>Vývoj pro službu Azure NetApp Files s využitím rozhraní REST API 
 
 REST API služby Azure NetApp Files definuje operace HTTP s prostředky, jako je účet NetApp, fond kapacit, svazky a snímky. Tento článek vám pomůže začít s používáním Azure NetApp Files REST API.
 
@@ -38,9 +38,9 @@ Specifikace REST API pro Azure NetApp Files je publikovaná prostřednictvím [G
 2. Vytvoření instančního objektu v Azure Active Directory (Azure AD):
    1. Ověřte, zda máte [dostatečná oprávnění](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
 
-   1. V Azure CLI zadejte následující příkaz:  
+   2. V Azure CLI zadejte následující příkaz:  
 
-           az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE--password $YOURGENERATEDPASSWORDGOESHERE
+           az ad sp create-for-rbac --name $YOURSPNAMEGOESHERE
 
       Výstup příkazu je podobný následujícímu příkladu:  
 
@@ -52,11 +52,11 @@ Specifikace REST API pro Azure NetApp Files je publikovaná prostřednictvím [G
                "tenant": "tenantIDgoeshere" 
            } 
 
-      Ponechte výstup příkazu.  Budete potřebovat hodnoty `appId`, `password`a. `tenant` 
+      Ponechte výstup příkazu.  Budete potřebovat `appId` `password` hodnoty, a `tenant` . 
 
 3. Vyžádání přístupového tokenu OAuth:
 
-    Příklady v tomto článku používají oblé.  Můžete také použít různé nástroje API, jako je například [post](https://www.getpostman.com/), [režimu spánku](https://insomnia.rest/)a [privilegovaným přístupem](https://paw.cloud/).  
+    Příklady v tomto článku používají oblé. Můžete také použít různé nástroje API, jako je například [post](https://www.getpostman.com/), [režimu spánku](https://insomnia.rest/)a [privilegovaným přístupem](https://paw.cloud/).  
 
     Nahraďte proměnné v následujícím příkladu příkazem výstup z kroku 2 výše. 
 
@@ -71,47 +71,47 @@ Specifikace REST API pro Azure NetApp Files je publikovaná prostřednictvím [G
 
 4. Odeslat testovací hovor a zahrnout token pro ověření přístupu k REST API:
 
-        curl -X GET -H "Authorization: Bearer [TOKEN]" -H "Content-Type: application/json" https://management.azure.com/subscriptions/[SUBSCRIPTION_ID]/providers/Microsoft.Web/sites?api-version=2016-08-01
+        curl -X GET -H "Authorization: Bearer [TOKEN]" -H "Content-Type: application/json" https://management.azure.com/subscriptions/[SUBSCRIPTION_ID]/providers/Microsoft.Web/sites?api-version=2019-11-01
 
 ## <a name="examples-using-the-api"></a>Příklady použití rozhraní API  
 
 Tento článek používá následující adresu URL pro směrný plán požadavků. Tato adresa URL odkazuje na kořen oboru názvů Azure NetApp Files. 
 
-`https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15`
+`https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01`
 
-Hodnoty `subID` a `resourceGroups` v následujících příkladech byste měli nahradit vlastními hodnotami. 
+`SUBIDGOESHERE` `RESOURCEGROUPGOESHERE` Hodnoty a v následujících příkladech byste měli nahradit vlastními hodnotami. 
 
 ### <a name="get-request-examples"></a>Příklady získání požadavků
 
 Použijete požadavek GET k dotazování objektů Azure NetApp Files v předplatném, jak ukazují následující příklady: 
 
         #get NetApp accounts 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2017-08-15
+        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts?api-version=2019-11-01
 
         #get capacity pools for NetApp account 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools?api-version=2017-08-15
+        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools?api-version=2019-11-01
 
         #get volumes in NetApp account & capacity pool 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes?api-version=2017-08-15
+        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes?api-version=2019-11-01
 
         #get snapshots for a volume 
-        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/VOLUMEGOESHERE/snapshots?api-version=2017-08-15
+        curl -X GET -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/VOLUMEGOESHERE/snapshots?api-version=2019-11-01
 
 ### <a name="put-request-examples"></a>Příklady požadavků PUT
 
-K vytvoření nových objektů v Azure NetApp Files použijte požadavek PUT, jak ukazuje následující příklad. Tělo žádosti o vložení může obsahovat data ve formátu JSON pro změny, nebo může určit soubor, ze kterého se má číst. 
+K vytvoření nových objektů v Azure NetApp Files použijte požadavek PUT, jak ukazuje následující příklad. Tělo žádosti o vložení může obsahovat data ve formátu JSON pro změny. Musí být součástí příkazu složeného jako text nebo odkazy jako soubor. Chcete-li odkazovat na tělo jako soubor, uložte příklad JSON do souboru a přidejte `-d @<filename>` jej do příkazu složeného.
 
         #create a NetApp account  
-        curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE?api-version=2017-08-15
+        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE?api-version=2019-11-01
 
         #create a capacity pool  
-        curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE?api-version=2017-08-15
+        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE?api-version=2019-11-01
 
         #create a volume  
-        curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME?api-version=2017-08-15
+        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME?api-version=2019-11-01
 
         #create a volume snapshot  
-        curl -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME/Snapshots/SNAPNAME?api-version=2017-08-15
+        curl -d @<filename> -X PUT -H "Authorization: Bearer TOKENGOESHERE" -H "Content-Type: application/json" https://management.azure.com/subscriptions/SUBIDGOESHERE/resourceGroups/RESOURCEGROUPGOESHERE/providers/Microsoft.NetApp/netAppAccounts/NETAPPACCOUNTGOESHERE/capacityPools/CAPACITYPOOLGOESHERE/volumes/MYNEWVOLUME/Snapshots/SNAPNAME?api-version=2019-11-01
 
 ### <a name="json-examples"></a>Příklady JSON
 
@@ -133,13 +133,13 @@ Následující příklad ukazuje, jak vytvořit fond kapacit:
         "type": "Microsoft.NetApp/netAppAccounts/capacityPools",
         "location": "westus2",
         "properties": {
-            "name": "POOLNAME"
+            "name": "POOLNAME",
             "size": "4398046511104",
             "serviceLevel": "Premium"
         }
     }
 
-Následující příklad ukazuje, jak vytvořit nový svazek: 
+Následující příklad ukazuje, jak vytvořit nový svazek. (Výchozí protokol pro svazek je NFSV3.) 
 
     {
         "name": "MYNEWVOLUME",

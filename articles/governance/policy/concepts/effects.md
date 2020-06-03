@@ -3,12 +3,12 @@ title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 6c2dc8303b630eb01de5c3ad9e3504dfec5256bc
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 223acb523b8a7e4bc14d894c0eb6781d147b8923
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83746902"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308876"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -316,7 +316,7 @@ Příklad: vyhodnotí SQL Server databáze a určí, jestli je povolený transpa
 
 Tento efekt je vhodný pro situace při testování nebo v případě, že definice zásad má vliv na parametry. Díky této flexibilitě je možné zakázat jedno přiřazení místo zakázání všech těchto přiřazení zásad.
 
-Alternativa k zakázanému efektu je * * enforcementMode, která je nastavená u přiřazení zásady.
+Alternativa k zakázanému efektu je **enforcementMode**, která je nastavená u přiřazení zásady.
 Když **enforcementMode** je enforcementMode _zakázaný_, prostředky se ještě vyhodnocují. Protokolování, jako jsou protokoly aktivit a vliv zásad, se neprojeví. Další informace najdete v tématu věnovaném [přiřazení zásad – režim vynucení](./assignment-structure.md#enforcement-mode).
 
 
@@ -491,7 +491,7 @@ Pole vlastností **Operations** umožňuje změnit několik značek různými zp
 
 Vlastnost **Operation** má následující možnosti:
 
-|Operace |Description |
+|Operace |Popis |
 |-|-|
 |addOrReplace |Přidá do prostředku definovanou značku a hodnotu, i když značka již existuje s jinou hodnotou. |
 |Přidat |Přidá do prostředku definovanou značku a hodnotu. |
@@ -547,7 +547,7 @@ Příklad 2: odebrání `env` značky a přidání `environment` značky nebo n�
 
 ## <a name="layering-policy-definitions"></a>Definice zásad vrstvení
 
-Prostředek může být ovlivněn několika přiřazeními. Tato přiřazení můžou být ve stejném oboru nebo v různých oborech. U každého z těchto přiřazení je také pravděpodobně definován jiný efekt. Podmínka a účinek pro jednotlivé zásady jsou nezávisle vyhodnoceny. Příklad:
+Prostředek může být ovlivněn několika přiřazeními. Tato přiřazení můžou být ve stejném oboru nebo v různých oborech. U každého z těchto přiřazení je také pravděpodobně definován jiný efekt. Podmínka a účinek pro jednotlivé zásady jsou nezávisle vyhodnoceny. Například:
 
 - Zásady 1
   - Omezí umístění prostředku na ' westus '.

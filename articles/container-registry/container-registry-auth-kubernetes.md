@@ -5,13 +5,13 @@ ms.topic: article
 author: karolz-ms
 ms.author: karolz
 ms.reviewer: danlep
-ms.date: 02/10/2020
-ms.openlocfilehash: 0608ca0e0e53acf2f19910a7f1107dacf67d4e61
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/28/2020
+ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77154891"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309811"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Vyžádání imagí z Azure Container Registry do clusteru Kubernetes
 
@@ -20,7 +20,7 @@ Můžete použít službu Azure Container Registry jako zdroj imagí kontejneru 
 > [!TIP]
 > Pokud používáte spravovanou [službu Azure Kubernetes](../aks/intro-kubernetes.md), můžete [cluster integrovat](../aks/cluster-container-registry-integration.md?toc=/azure/container-registry/toc.json&bc=/azure/container-registry/breadcrumb/toc.json) do cílového registru kontejneru Azure pro stažení imagí. 
 
-V tomto článku se předpokládá, že jste už vytvořili privátní službu Azure Container Registry. Musíte mít i cluster Kubernetes spuštěný a přístupný prostřednictvím nástroje `kubectl` příkazového řádku.
+V tomto článku se předpokládá, že jste už vytvořili privátní službu Azure Container Registry. Musíte mít i cluster Kubernetes spuštěný a přístupný prostřednictvím `kubectl` nástroje příkazového řádku.
 
 [!INCLUDE [container-registry-service-principal](../../includes/container-registry-service-principal.md)]
 
@@ -36,14 +36,14 @@ Tento příkaz vrátí nové platné heslo k instančnímu objektu.
 
 Kubernetes používá k ukládání informací potřebných k ověření vašeho registru *tajný klíč pro získání bitové kopie* . Pokud chcete vytvořit tajný kód pro vyžádání obsahu pro službu Azure Container Registry, zadejte ID instančního objektu, heslo a adresu URL registru. 
 
-Pomocí následujícího `kubectl` příkazu vytvořte tajný klíč pro vyžádání Image:
+Pomocí následujícího příkazu vytvořte tajný klíč pro vyžádání image `kubectl` :
 
 ```console
 kubectl create secret docker-registry <secret-name> \
-  --namespace <namespace> \
-  --docker-server=https://<container-registry-name>.azurecr.io \
-  --docker-username=<service-principal-ID> \
-  --docker-password=<service-principal-password>
+    --namespace <namespace> \
+    --docker-server=<container-registry-name>.azurecr.io \
+    --docker-username=<service-principal-ID> \
+    --docker-password=<service-principal-password>
 ```
 kde:
 
@@ -51,30 +51,30 @@ kde:
 | :--- | :--- |
 | `secret-name` | Název tajného klíče pro čtení z image, například *ACR-Secret* |
 | `namespace` | Kubernetes obor názvů pro vložení tajného kódu do <br/> Nutné pouze v případě, že chcete tajný klíč umístit v jiném oboru názvů, než je výchozí obor názvů |
-| `container-registry-name` | Název vašeho registru kontejneru Azure |
+| `container-registry-name` | Název služby Azure Container Registry, například *myregistry*<br/><br/>`--docker-server`Je plně kvalifikovaný název přihlašovacího serveru registru.  |
 | `service-principal-ID` | ID instančního objektu, který bude Kubernetes používat pro přístup k registru |
 | `service-principal-password` | Heslo instančního objektu |
 
 ## <a name="use-the-image-pull-secret"></a>Použít tajný klíč pro vyžádání image
 
-Po vytvoření bitové kopie pro vyžádání obsahu image můžete použít k vytváření Kubernetesch lusků a nasazení. Zadejte název tajného kódu do části `imagePullSecrets` v souboru nasazení. Příklad:
+Po vytvoření bitové kopie pro vyžádání obsahu image můžete použít k vytváření Kubernetesch lusků a nasazení. Zadejte název tajného kódu do části `imagePullSecrets` v souboru nasazení. Například:
 
 ```yaml
 apiVersion: v1
 kind: Pod
 metadata:
-  name: your-awesome-app-pod
+  name: my-awesome-app-pod
   namespace: awesomeapps
 spec:
   containers:
     - name: main-app-container
-      image: your-awesome-app:v1
+      image: myregistry.azurecr.io/my-awesome-app:v1
       imagePullPolicy: IfNotPresent
   imagePullSecrets:
     - name: acr-secret
 ```
 
-V předchozím příkladu `your-awesome-app:v1` je název obrázku, který se má načíst ze služby Azure Container Registry, a `acr-secret` je název tajného kódu pro vyžádání, který jste vytvořili pro přístup k registru. Když nasadíte pod, Kubernetes automaticky načte image z registru, pokud ještě není v clusteru.
+V předchozím příkladu `my-awesome-app:v1` je název obrázku, který se má načíst ze služby Azure Container Registry, a `acr-secret` je název tajného kódu pro vyžádání, který jste vytvořili pro přístup k registru. Když nasadíte pod, Kubernetes automaticky načte image z registru, pokud ještě není v clusteru.
 
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,15 +4,15 @@ description: Popisuje klientské knihovny vyžadované pro připojení klientsk�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 06/01/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 5ee3de593e7795f155e8ca38ffac02cfaa80d171
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8c02be378febacc4db0b077a3be69339ff9710a0
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82232951"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300905"
 ---
 # <a name="client-libraries-for-connecting-to-analysis-services"></a>Klientské knihovny pro připojení k Analysis Services
 
@@ -22,10 +22,10 @@ Klientské knihovny jsou nezbytné pro připojení klientských aplikací a nás
 
 |Stáhnout  |Verze produktu  | 
 |---------|---------|
-|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.37.40    |
-|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.37.40       |
-|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   18.7.0.1    |
-|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    18.7.0.1     |
+|[MSOLAP (amd64)](https://go.microsoft.com/fwlink/?linkid=829576)    |    15.1.42.26    |
+|[MSOLAP (x86)](https://go.microsoft.com/fwlink/?linkid=829575)     |     15.1.42.26       |
+|[AMO](https://go.microsoft.com/fwlink/?linkid=829578)     |   19.2.0.2    |
+|[ADOMD](https://go.microsoft.com/fwlink/?linkid=829577)     |    19.2.0.2     |
 
 ## <a name="amo-and-adomd-nuget-packages"></a>AMO a ADOMD (balíčky NuGet)
 
@@ -33,8 +33,8 @@ ADOMDs Management Objects (AMO) a klientské knihovny jsou k dispozici jako Inst
 
 |Balíček  | Verze produktu  | 
 |---------|---------|
-|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    18.7.0.1     |
-|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   18.7.0.1      |
+|[AMO](https://www.nuget.org/packages/Microsoft.AnalysisServices.retail.amd64/)    |    19.2.0.2     |
+|[ADOMD](https://www.nuget.org/packages/Microsoft.AnalysisServices.AdomdClient.retail.amd64/)     |   19.2.0.2      |
 
 Sestavení balíčků NuGet AssemblyVersion sledují sémantickou verzi: hlavní. Moll. Použita. Odkazy na NuGet načítají očekávanou verzi i v případě, že v mezipaměti GAC je odlišná verze (výsledná z instalace MSI). Oprava se zvyšuje pro každou verzi. Verze AMO a ADOMD jsou udržovány v synchronizaci.
 
@@ -54,11 +54,11 @@ Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat
   
  Zprostředkovatel Analysis Services OLE DB se automaticky nainstaluje pomocí většiny nástrojů a klientských aplikací používaných pro přístup k databázím Analysis Services. Musí být nainstalovaný na počítačích, které se používají pro přístup k Analysis Services dat.  
   
- Poskytovatelé OLE DB jsou často určení v připojovacích řetězcích. Připojovací řetězec Analysis Services používá pro odkazování na zprostředkovatele OLE DB jinou klasifikaci: MSOLAP. \<verze>. dll.
+ Poskytovatelé OLE DB jsou často určení v připojovacích řetězcích. Připojovací řetězec Analysis Services používá pro odkazování na zprostředkovatele OLE DB jinou klasifikaci: MSOLAP. \<version> . DLL.
 
 ### <a name="amo"></a>AMO  
 
- AMO je spravovaná Klientská knihovna, která se používá pro správu serveru a definici dat. Je nainstalována a používána nástroji a klientskými aplikacemi. Například SQL Server Management Studio (SSMS) používá nástroj AMO pro připojení k Analysis Services. Připojení pomocí AMO má obvykle minimální hodnotu, která se `"data source=\<servername>"`skládá z. Po navázání připojení použijete rozhraní API pro práci s kolekcemi databáze a hlavními objekty. Visual Studio i SSMS používají pro připojení k instanci Analysis Services sadu AMO.  
+ AMO je spravovaná Klientská knihovna, která se používá pro správu serveru a definici dat. Je nainstalována a používána nástroji a klientskými aplikacemi. Například SQL Server Management Studio (SSMS) používá nástroj AMO pro připojení k Analysis Services. Připojení pomocí AMO má obvykle minimální hodnotu, která se skládá z `"data source=\<servername>"` . Po navázání připojení použijete rozhraní API pro práci s kolekcemi databáze a hlavními objekty. Visual Studio i SSMS používají pro připojení k instanci Analysis Services sadu AMO.  
 
   
 ### <a name="adomd"></a>ADOMD
@@ -74,7 +74,7 @@ Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat
   
 1.  Přejděte do části `C:\Program Files\Microsoft Analysis Services\AS OLEDB\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku, vyberte vyšší číslo.
   
-2.  Klikněte pravým tlačítkem na**Podrobnosti****vlastností** >  **MSOLAP. dll** > . Pokud název souboru je msolap140. dll, je starší než nejnovější verze a měl by být upgradován.
+2.  Klikněte pravým tlačítkem na podrobnosti vlastností **MSOLAP. dll**  >  **Properties**  >  **Details**. Pokud název souboru je msolap140. dll, je starší než nejnovější verze a měl by být upgradován.
     
     ![Podrobnosti klientské knihovny](media/analysis-services-data-providers/aas-msolap-details.png)
     
@@ -82,12 +82,12 @@ Klientské knihovny pro připojení klienta se liší od zprostředkovatelů dat
 ### <a name="amo"></a>AMO
 
 1. Přejděte do části `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku, vyberte vyšší číslo.
-2. Klikněte pravým tlačítkem na**Podrobnosti****vlastností** >  **Microsoft. AnalysisServices** > .  
+2. Klikněte pravým tlačítkem na podrobnosti vlastností **Microsoft. AnalysisServices**  >  **Properties**  >  **Details**.  
 
 ### <a name="adomd"></a>ADOMD
 
 1. Přejděte do části `C:\Windows\Microsoft.NET\assembly\GAC_MSIL\Microsoft.AnalysisServices.AdomdClient\` (Soubor > Nový > Jiné). Pokud máte více než jednu složku, vyberte vyšší číslo.
-2. Klikněte pravým tlačítkem na**Podrobnosti****vlastností** >  **Microsoft. AnalysisServices. klienta AdomdClient** > .  
+2. Klikněte pravým tlačítkem na podrobnosti vlastností **Microsoft. AnalysisServices. klienta AdomdClient**  >  **Properties**  >  **Details**.  
 
 
 ## <a name="next-steps"></a>Další kroky

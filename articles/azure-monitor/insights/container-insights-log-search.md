@@ -2,35 +2,35 @@
 title: Dotazování protokolů z Azure Monitor pro kontejnery | Microsoft Docs
 description: Azure Monitor pro kontejnery shromažďuje metriky a data protokolů a tento článek popisuje záznamy a obsahuje vzorové dotazy.
 ms.topic: conceptual
-ms.date: 03/26/2020
-ms.openlocfilehash: ff7cbff708b794847d8be69ca8f829e622d7c7ab
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.openlocfilehash: 392aac8f81ac3894fca8b6f70570834a5af16ade
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80333478"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298299"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Postup dotazování protokolů z Azure Monitor pro kontejnery
 
-Azure Monitor pro kontejnery shromažďují metriky výkonu, data inventáře a informace o stavu z hostitelů a kontejnerů kontejnerů a předávají je do pracovního prostoru Log Analytics v Azure Monitor. Data se shromažďují každé tři minuty. Tato data jsou k dispozici pro [dotazy](../../azure-monitor/log-query/log-query-overview.md) v Azure monitor. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
+Azure Monitor pro kontejnery shromažďují metriky výkonu, data inventáře a informace o stavu z hostitelů a kontejnerů kontejnerů. Data se shromažďují každé tři minuty a předávají se do pracovního prostoru Log Analytics v Azure Monitor. Tato data jsou k dispozici pro [dotazy](../../azure-monitor/log-query/log-query-overview.md) v Azure monitor. Tato data můžete použít ve scénářích, které zahrnují plánování migrace, analýzu kapacity, zjišťování a řešení potíží s výkonem na vyžádání.
 
 ## <a name="container-records"></a>Záznamy kontejneru
 
-Příklady záznamů, které jsou shromažďovány Azure Monitor pro kontejnery a typy dat, které se zobrazují ve výsledcích prohledávání protokolu, jsou uvedeny v následující tabulce:
+V následující tabulce jsou uvedeny podrobnosti o záznamech shromažďovaných Azure Monitor pro kontejnery. 
 
-| Datový typ | Datový typ v hledání v protokolu | Pole |
-| --- | --- | --- |
-| Výkon pro hostitele a kontejnery | `Perf` | Počítač, ObjectName, CounterName &#40;% času procesoru, čtení z disku MB, zápisy na disk MB, využití paměti MB, počet přijatých bajtů sítě, počet bajtů pro odesílání, využití procesoru sec, síť&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem |
-| Inventář kontejneru | `ContainerInventory` | TimeGenerated, počítač, název kontejneru, ContainerHostname, image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
-| Protokol kontejneru | `ContainerLog` | TimeGenerated, počítač, ID image, název kontejneru, LogEntrySource, LogEntry, SourceSystem, ContainerID |
-| Inventář uzlů kontejneru | `ContainerNodeInventory`| TimeGenerated, počítač, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
-| Inventář lusků v clusteru Kubernetes | `KubePodInventory` | TimeGenerated, Computer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, Controller, ContainerStatus, ContainerStatusReason, ContainerID, ContainerName, název, PodLabel, obor názvů, PodStatus, název_clusteru, PodIp, SourceSystem |
-| Část inventáře uzlů v clusteru Kubernetes | `KubeNodeInventory` | TimeGenerated, Computer, název_clusteru, ClusterId, LastTransitionTimeReady, Labels, status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
-| Události Kubernetes | `KubeEvents` | TimeGenerated, počítač, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, zpráva, SourceSystem | 
-| Služby v clusteru Kubernetes | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
-| Metriky výkonu pro uzly součástí clusteru Kubernetes | &#124; výkonu, kde ObjectName = = "K8SNode" | Počítač, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
-| Metriky výkonu pro kontejnery část clusteru Kubernetes | &#124; výkonu, kde ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
-| Vlastní metriky |`InsightsMetrics` | Počítač, název, obor názvů, počátek, SourceSystem, značky<sup>1</sup>, TimeGenerated, Type, Va, _ResourceId | 
+| Data | Zdroj dat | Datový typ | Pole |
+|------|-------------|-----------|--------|
+| Výkon pro hostitele a kontejnery | Metriky využití se získávají z cAdvisor a omezení z rozhraní Kube API. | `Perf` | Počítač, ObjectName, CounterName &#40;% času procesoru, čtení z disku MB, zápisy na disk MB, využití paměti MB, počet přijatých bajtů sítě, počet bajtů pro odesílání, využití procesoru sec, síť&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem |
+| Inventář kontejneru | Docker | `ContainerInventory` | TimeGenerated, počítač, název kontejneru, ContainerHostname, image, ImageTag, ContainerState, ExitCode, EnvironmentVar, Command, CreatedTime, StartedTime, FinishedTime, SourceSystem, ContainerID, ImageID |
+| Protokol kontejneru | Docker | `ContainerLog` | TimeGenerated, počítač, ID image, název kontejneru, LogEntrySource, LogEntry, SourceSystem, ContainerID |
+| Inventář uzlů kontejneru | Rozhraní API pro Kube | `ContainerNodeInventory`| TimeGenerated, počítač, ClassName_s, DockerVersion_s, OperatingSystem_s, Volume_s, Network_s, NodeRole_s, OrchestratorType_s, InstanceID_g, SourceSystem|
+| Inventář lusků v clusteru Kubernetes | Rozhraní API pro Kube | `KubePodInventory` | TimeGenerated, Computer, ClusterId, ContainerCreationTimeStamp, PodUid, PodCreationTimeStamp, ContainerRestartCount, PodRestartCount, PodStartTime, ContainerStartTime, ServiceName, ControllerKind, Controller, ContainerStatus, ContainerStatusReason, ContainerID, ContainerName, název, PodLabel, obor názvů, PodStatus, název_clusteru, PodIp, SourceSystem |
+| Část inventáře uzlů v clusteru Kubernetes | Rozhraní API pro Kube | `KubeNodeInventory` | TimeGenerated, Computer, název_clusteru, ClusterId, LastTransitionTimeReady, Labels, status, KubeletVersion, KubeProxyVersion, CreationTimeStamp, SourceSystem | 
+| Události Kubernetes | Rozhraní API pro Kube | `KubeEvents` | TimeGenerated, počítač, ClusterId_s, FirstSeen_t, LastSeen_t, Count_d, ObjectKind_s, Namespace_s, Name_s, Reason_s, Type_s, TimeGenerated_s, SourceComponent_s, ClusterName_s, zpráva, SourceSystem | 
+| Služby v clusteru Kubernetes | Rozhraní API pro Kube | `KubeServices` | TimeGenerated, ServiceName_s, Namespace_s, SelectorLabels_s, ClusterId_s, ClusterName_s, ClusterIP_s, ServiceType_s, SourceSystem | 
+| Metriky výkonu pro uzly součástí clusteru Kubernetes || &#124; výkonu, kde ObjectName = = "K8SNode" | Počítač, ObjectName, CounterName &#40;cpuAllocatableBytes, memoryAllocatableBytes, cpuCapacityNanoCores, memoryCapacityBytes, memoryRssBytes, cpuUsageNanoCores, memoryWorkingsetBytes, restartTimeEpoch&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Metriky výkonu pro kontejnery část clusteru Kubernetes || &#124; výkonu, kde ObjectName = = "K8SContainer" | CounterName &#40; cpuRequestNanoCores, memoryRequestBytes, cpuLimitNanoCores, memoryWorkingSetBytes, restartTimeEpoch, cpuUsageNanoCores, memoryRssBytes&#41;, CounterValue, TimeGenerated, CounterPath, SourceSystem | 
+| Vlastní metriky ||`InsightsMetrics` | Počítač, název, obor názvů, počátek, SourceSystem, značky<sup>1</sup>, TimeGenerated, Type, Va, _ResourceId | 
 
 <sup>1</sup> vlastnost *tagss* představuje [více dimenzí](../platform/data-platform-metrics.md#multi-dimensional-metrics) pro odpovídající metriku. Další informace o metrikách shromážděných a uložených v `InsightsMetrics` tabulce a popisu vlastností záznamu naleznete v tématu [InsightsMetrics Overview](https://github.com/microsoft/OMS-docker/blob/vishwa/june19agentrel/docs/InsightsMetrics.md).
 
@@ -80,7 +80,7 @@ InsightsMetrics
 
 ```
 
-Pokud chcete zobrazit Prometheus metriky, které jsou vyAzure Monitor filtrované podle oboru názvů, zadejte "Prometheus". Tady je ukázkový dotaz pro zobrazení metrik Prometheus z oboru názvů `default` Kubernetes.
+Pokud chcete zobrazit Prometheus metriky, které jsou vyAzure Monitor filtrované podle oboru názvů, zadejte "Prometheus". Tady je ukázkový dotaz pro zobrazení metrik Prometheus z `default` oboru názvů Kubernetes.
 
 ```
 InsightsMetrics 
@@ -99,13 +99,13 @@ InsightsMetrics
 
 ### <a name="query-config-or-scraping-errors"></a>Konfigurace dotazů nebo chyby při vyřazení
 
-Pokud chcete prozkoumat chyby konfigurace nebo vyřazení, vrátí následující ukázkový dotaz z `KubeMonAgentEvents` tabulky informativní události.
+Pokud chcete prozkoumat chyby konfigurace nebo vyřazení, vrátí následující ukázkový dotaz z tabulky informativní události `KubeMonAgentEvents` .
 
 ```
 KubeMonAgentEvents | where Level != "Info" 
 ```
 
-Ve výstupu se zobrazí výsledky podobné následujícímu:
+Výstup zobrazuje výsledky podobné následujícímu příkladu:
 
 ![Protokolování výsledků dotazů informativních událostí z agenta](./media/container-insights-log-search/log-query-example-kubeagent-events.png)
 

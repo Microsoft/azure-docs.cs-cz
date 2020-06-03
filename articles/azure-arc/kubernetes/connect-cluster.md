@@ -9,23 +9,23 @@ ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions
-ms.openlocfilehash: 097301a8704da24918dac70760f0540576975353
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 868964361e6089eb3417b0f2e2681d82d4aa0b75
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84191724"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299639"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
-Připojte cluster Kubernetes ke službě Azure ARC. 
+Připojte cluster Kubernetes ke službě Azure ARC.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
 Ověřte, že máte připravené tyto požadavky:
 
 * Cluster Kubernetes, který je v provozu
-* Budete potřebovat přístup s kubeconfig a přístupem správce clusteru. 
+* Budete potřebovat přístup s kubeconfig a přístupem správce clusteru.
 * Uživatel nebo instanční objekt použitý s `az login` příkazy a `az connectedk8s connect` musí mít oprávnění číst a zapsat pro typ prostředku Microsoft. Kubernetes/connectedclusters. Roli "připojení Azure ARC pro Kubernetes s těmito oprávněními" lze použít pro přiřazení rolí pro uživatele nebo instanční objekt používaný s Azure CLI pro registraci.
 * Nejnovější verze rozšíření *connectedk8s* a *k8sconfiguration*
 
@@ -70,7 +70,8 @@ az provider show -n Microsoft.Kubernetes -o table
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
 
-## <a name="install-azure-cli-extensions"></a>Nainstalovat rozšíření Azure CLI
+## <a name="install-azure-cli-and-arc-enabled-kubernetes-extensions"></a>Instalace rozšíření Kubernetes pro rozhraní příkazového řádku Azure a ARC
+Pro instalaci rozšíření CLI s povoleným Kubernetes rozhraním Azure se vyžaduje Azure CLI verze 2.3 + +. Nainstalujte rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nebo aktualizujte na nejnovější verzi, abyste měli jistotu, že máte Azure CLI verze 2.3 +.
 
 Nainstalujte `connectedk8s` rozšíření, které vám pomůže připojit clustery Kubernetes do Azure:
 
@@ -90,6 +91,9 @@ Spuštěním následujících příkazů aktualizujte rozšíření na nejnověj
 az extension update --name connectedk8s
 az extension update --name k8sconfiguration
 ```
+
+## <a name="install-helm"></a>Nainstalovat Helm
+K registraci clusteru pomocí rozšíření connectedk8s se vyžaduje Helm 3. Pro splnění tohoto požadavku [nainstalujte nejnovější verzi Helm 3](https://helm.sh/docs/intro/install) .
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -167,6 +171,8 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
+Tento prostředek můžete zobrazit také na [portálu Azure Preview](https://preview.portal.azure.com/). Jakmile máte portál otevřený v prohlížeči, přejděte do skupiny prostředků a prostředku Kubernetes s povoleným ARC Azure na základě názvů prostředků a názvů skupin prostředků, které se použily dříve v `az connectedk8s connect` příkazu.
+
 Kubernetes s povoleným obloukem Azure nasadí několik operátorů do `azure-arc` oboru názvů. Tato nasazení a lusky můžete zobrazit tady:
 
 ```console
@@ -211,11 +217,18 @@ Kubernetes s povoleným ARC Azure se skládá z několika agentů (operátorů),
 
 Prostředek můžete odstranit `Microsoft.Kubernetes/connectedcluster` pomocí rozhraní příkazového řádku Azure CLI nebo Azure Portal.
 
-Příkaz rozhraní příkazového řádku Azure `az connectedk8s delete` odebere `Microsoft.Kubernetes/connectedCluster` prostředek v Azure. Azure CLI odstraní všechny přidružené `sourcecontrolconfiguration` prostředky v Azure. Rozhraní příkazového řádku Azure využívá odinstalaci Helm k odebrání agentů v clusteru.
 
-Azure Portal odstraní `Microsoft.Kubernetes/connectedcluster` prostředek v Azure a odstraní všechny přidružené `sourcecontrolconfiguration` prostředky v Azure.
+* **Odstranění pomocí Azure CLI: pomocí**následujícího příkazu rozhraní PŘÍKAZového řádku Azure můžete iniciovat odstranění prostředku Kubernetes s povoleným ARC Azure.
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
+  Tím se odstraní `Microsoft.Kubernetes/connectedCluster` prostředek a všechny související `sourcecontrolconfiguration` prostředky v Azure. Rozhraní příkazového řádku Azure používá k odebrání agentů spuštěných v clusteru také Helm Uninstall.
 
-Chcete-li odebrat agenty v clusteru, které je třeba spustit, `az connectedk8s delete` nebo `helm uninstall azurearcfork8s` .
+* **Odstranění při Azure Portal**: odstranění prostředku Kubernetes s povoleným ARC Azure na Azure Portal odstraní `Microsoft.Kubernetes/connectedcluster` prostředek a všechny přidružené `sourcecontrolconfiguration` prostředky v Azure, ale neodstraní agenty spuštěné v clusteru. Chcete-li odstranit agenty spuštěné v clusteru, spusťte následující příkaz.
+
+  ```console
+  az connectedk8s delete --name AzureArcTest1 --resource-group AzureArcTest
+  ```
 
 ## <a name="next-steps"></a>Další kroky
 

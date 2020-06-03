@@ -6,8 +6,6 @@
   items:
     - name: Co je Data Science Virtual Machine (DVSM)?
       href: overview.md
-    - name: Co je Data Science Virtual Machine s Geo AI?
-      href: geo-ai-dsvm-overview.md
     - name: 'Nástroje, které jsou součástí prostředí Data Science Virtual Machine'
       href: tools-included.md
 - name: Rychlé starty
@@ -17,8 +15,6 @@
       href: provision-vm.md
     - name: Vytvoření prostředí Data Science Virtual Machine s Ubuntu
       href: dsvm-ubuntu-intro.md
-    - name: Vytvoření prostředí Data Science Virtual Machine s Geo AI
-      href: provision-geo-ai-dsvm.md
 - name: Koncepty
   items:
     - name: Architektura AI a hloubkového učení
@@ -45,8 +41,6 @@
       href: vm-do-ten-things.md
     - name: Použití prostředí Data Science Virtual Machine s Linuxem
       href: linux-dsvm-walkthrough.md
-    - name: Použití prostředí Data Science Virtual Machine s Geo AI
-      href: use-geo-ai-dsvm.md
     - name: Vytvoření fondu Data Science Virtual Machine s automatickým škálováním
       href: dsvm-pools.md
     - name: Integrace se službou Active Directory

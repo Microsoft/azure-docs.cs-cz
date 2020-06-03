@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: memildin
-ms.openlocfilehash: 19fdcc7b590c6ad6873c7808ae26d218bbda7f5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c30fef5c82f831365a11bcb14559b0914a9eda4c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158961"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299940"
 ---
 # <a name="export-security-alerts-and-recommendations"></a>Export doporučení a výstrah zabezpečení
 
@@ -28,6 +28,21 @@ Pomocí těchto nástrojů můžete:
 * Exportovat do sdíleného svazku clusteru (jednorázový)
 
 
+
+
+## <a name="availability"></a>Dostupnost
+
+- Stav verze: **všeobecně dostupné**
+- Požadované role a oprávnění:
+    - **Čtenář** v předplatném, který obsahuje konfiguraci exportu
+    - **Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)
+    - Musí mít taky oprávnění k zápisu pro cílový prostředek.
+- Cloud 
+    - ✔ Komerční cloudy
+    - ✔ US Gov
+    - ✘ Čína gov, ostatní gov
+
+
 ## <a name="setting-up-a-continuous-export"></a>Nastavení průběžného exportu
 
 Následující postup je nezbytný, ať už nastavujete průběžný export do Log Analyticsho pracovního prostoru nebo Azure Event Hubs.
@@ -38,7 +53,7 @@ Následující postup je nezbytný, ať už nastavujete průběžný export do L
     
 1. Z postranního panelu stránky nastavení daného předplatného vyberte **průběžný export**.
 
-    Možnosti exportu v Azure Security Center [ ![](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) Tady vidíte možnosti exportu. Pro každý dostupný cíl exportu je k dispozici karta. 
+    [ ![ Možnosti exportu v Azure Security Center](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) tady vidíte možnosti exportu. Pro každý dostupný cíl exportu je k dispozici karta. 
 
 1. Vyberte datový typ, který chcete exportovat, a vyberte filtry u jednotlivých typů (například exportovat pouze upozornění s vysokou závažností).
 
@@ -128,5 +143,5 @@ Související materiály najdete v následující dokumentaci:
 
 - [Dokumentace ke službě Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/)
 - [Dokumentace k ověřovacím službám Azure](https://docs.microsoft.com/azure/sentinel/)
-- [Dokumentace k Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
+- [Dokumentace ke službě Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/)
 - [Schémata datových typů automatizace a průběžného exportu pracovního postupu](https://aka.ms/ASCAutomationSchemas)

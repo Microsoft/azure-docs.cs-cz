@@ -6,18 +6,25 @@ ms.author: ofmanor
 ms.topic: reference
 ms.date: 03/16/2020
 ms.subservice: alerts
-ms.openlocfilehash: beb47f961c6f24453bd49aa5807c9d801fc199a3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3e9eb9d0910e4c0e00e57eac80c09910f214db6a
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80132330"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300769"
 ---
-# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Řešení potíží s výstrahami Azure Monitor 
+# <a name="troubleshooting-problems-in-azure-monitor-alerts"></a>Řešení potíží s výstrahami Azure Monitor
 
-Tento článek popisuje běžné problémy při Azure Monitor upozorňování.
+Tento článek popisuje běžné problémy při Azure Monitor upozorňování a oznámeních.
 
 Azure Monitor výstrahy proaktivně upozorní na to, že se ve vašich datech monitorování nacházejí důležité podmínky. Umožňují identifikovat a řešit problémy předtím, než si ji uživatelé vašeho systému všimnete. Další informace o upozorňování najdete v tématu [Přehled výstrah v Microsoft Azure](alerts-overview.md).
+
+Pokud máte problém s vypálením nebo vypálením výstrahy v případě, že jste očekávali, podívejte se na články níže. Výstrahy "aktivované" můžete zobrazit v Azure Portal.
+
+- [Řešení potíží s Azure Monitor výstrahami metrik v Microsoft Azure](alerts-troubleshoot-metric.md)  
+- [Řešení potíží s Azure Monitor výstrahami protokolu v Microsoft Azure](alerts-troubleshoot-metric.md)
+
+Pokud se výstraha aktivuje podle Azure Portal, ale neproběhne správná oznámení, použijte informace ve zbývající části tohoto článku k vyřešení tohoto problému.
 
 ## <a name="action-or-notification-on-my-alert-did-not-work-as-expected"></a>Akce nebo oznámení na mém upozornění nefungovalo podle očekávání
 
@@ -25,180 +32,180 @@ Pokud se zobrazí výstraha aktivované v Azure Portal, ale došlo k potížím 
 
 ## <a name="did-not-receive-expected-email"></a>Nedostal se očekávaný e-mail.
 
-Pokud se v Azure Portal zobrazí výstraha aktivované, ale nedostala jste e-mailem, který jste si nakonfigurovali, postupujte takto: 
+Pokud se na webu Azure Portal zobrazuje aktivované upozornění, ale neobdrželi jste e-mail, který jste pro upozornění nakonfigurovali, postupujte následovně:
 
-1. **Byl e-mail potlačen [pravidlem akce](alerts-action-rules.md)**? 
+1. **Byl e-mail potlačen [pravidlem akce](alerts-action-rules.md)**?
 
-    Zkontrolujte kliknutím na výstrahu aktivované na portálu a podívejte se na kartu Historie pro potlačené [skupiny akcí](action-groups.md): 
+    Kontrolu provedete tak, že na portálu kliknete na aktivované upozornění a na kartě Historie vyhledáte potlačené [skupiny akcí](action-groups.md):
 
     ![Historie potlačení pravidla akce výstrahy](media/alerts-troubleshoot/history-action-rule.png)
 
 1. **Je typ akce Azure Resource Manager role e-mailu?**
 
-    Tato akce se zabývá pouze Azure Resource Manager přiřazení rolí, která jsou v oboru předplatného, a typu *uživatel*.  Ujistěte se, že máte přiřazenou roli na úrovni předplatného, a ne na úrovni prostředků nebo skupiny prostředků.
+    Tato akce se zabývá pouze Azure Resource Manager přiřazení rolí, která jsou v oboru předplatného, a typu *uživatel*.  Ujistěte se, že jste roli přiřadili na úrovni předplatného, a ne na úrovni prostředku nebo skupiny prostředků.
 
 1. **Přijímá váš e-mailový server a poštovní schránku externí e-maily?**
 
-    Ověřte, že e-maily z těchto tří adres nejsou blokované:
+    Ověřte, že nedochází k blokování e-mailů z těchto tří adres:
       - azure-noreply@microsoft.com  
       - azureemail-noreply@microsoft.com
       - alerts-noreply@mail.windowsazure.com
 
-    Je běžné, že interní seznamy adresátů nebo distribuční seznamy blokují e-maily z externích e-mailových adres. Musíte na výše uvedené e-mailové adresy povolit.  
-    Chcete-li otestovat, přidejte do skupiny akcí standardní pracovní e-mailovou adresu (nikoli seznam adresátů) a zjistěte, zda výstrahy přicházejí do tohoto e-mailu. 
+    Interní seznamy adresátů nebo distribuční seznamy běžně blokují e-maily z externích e-mailových adres. Je nutné, abyste povolili poštu z výše uvedených e-mailových adres.  
+    Pokud chcete provést test, přidejte do skupiny akcí normální pracovní e-mailovou adresu (a ne seznam adresátů) a zjistěte, jestli na tento e-mail přicházejí upozornění.
 
-1. **Byl e-mail zpracován pomocí pravidel doručené pošty nebo filtru spamu?** 
+1. **Byl e-mail zpracován pomocí pravidel doručené pošty nebo filtru spamu?**
 
-    Ověřte, že nejsou k dispozici žádná pravidla doručených zpráv, která tyto e-maily odstraní, nebo je přesuňte do složky na straně Pravidla doručené pošty například můžou zachytit konkrétní odesílatele nebo konkrétní slova v předmětu.
+    Ověřte, že neexistují žádná pravidla doručené pošty, která tyto e-maily odstraňují nebo přesouvají do vedlejší složky. Pravidla doručené pošty například můžou zachytit konkrétní odesílatele nebo konkrétní slova v předmětu.
 
-    Také ověřte:
-    
-      - nastavení spamu e-mailového klienta (jako je Outlook, Gmail)
-      - nastavení omezení odesílatele/spamu/nastavení karantény e-mailového serveru (jako Exchange, Office 365, G-Suite)
-      - nastavení vašeho zařízení zabezpečení e-mailu (například Barracuda, Cisco). 
+    Zkontrolujte také následující:
 
-1. **Omylem jste odhlásili odběr skupiny akcí?** 
+   - nastavení spamu ve vašem e-mailovém klientovi (jako je Outlook nebo Gmail)
+      - limity odesílatele, nastavení spamu nebo nastavení karantény na vašem e-mailovém serveru (jako je Exchange, Office 365 nebo G-suite)
+      - nastavení vašeho zařízení zabezpečení e-mailu (například Barracuda, Cisco).
 
-    E-maily s výstrahou poskytují odkaz na zrušení odběru skupiny akcí. Pokud chcete zjistit, jestli jste omylem odhlásili odběr této skupiny akcí, postupujte takto:
+1. **Omylem jste odhlásili odběr skupiny akcí?**
 
-    1. Otevřete na portálu skupinu akcí a ve sloupci Stav ověřte:
+    E-mailová upozornění obsahují odkaz k odhlášení odběru skupiny akcí. Pokud chcete zkontrolovat, jestli jste se omylem neodhlásili z odběru této skupiny akcí, postupujte následovně:
 
-    ![sloupec stavu skupiny akcí](media/alerts-troubleshoot/action-group-status.png)
+    1. Na portálu otevřete skupinu akcí a zkontrolujte sloupec Stav:
 
-    2. Vyhledejte e-mail s potvrzením zrušení odběru:
+    ![Sloupec Stav ve skupině akcí](media/alerts-troubleshoot/action-group-status.png)
 
-    ![zrušení odběru skupiny akcí výstrah](media/alerts-troubleshoot/unsubscribe-action-group.png)
+    2. Případně ve svém e-mailu vyhledejte potvrzení o odhlášení odběru:
 
-    Pro opětovné přihlášení – buď použijte odkaz v e-mailu s potvrzením o odhlášení, který jste přijali, nebo odeberte e-mailovou adresu ze skupiny akcí a pak ji znovu přidejte. 
+    ![Odhlášení odběru skupiny akcí upozornění](media/alerts-troubleshoot/unsubscribe-action-group.png)
+
+    Pokud se chcete znovu přihlásit k odběru, použijte odkaz v přijatém e-mailu s potvrzením o odhlášení odběru nebo odeberte e-mailovou adresu ze skupiny akcí a pak ji znovu přidejte. 
  
-1. **Dosáhli jste limitu omezeného z důvodu velkého počtu e-mailů na jednu e-mailovou adresu?** 
+1. **Dosáhli jste limitu omezeného z důvodu velkého počtu e-mailů na jednu e-mailovou adresu?**
 
-    Počet e-mailů je [omezen](alerts-rate-limiting.md) na více než 100 e-mailů každé hodiny na každou e-mailovou adresu. Pokud předáte tuto prahovou hodnotu, budou další e-mailová oznámení vyřazena.  Ověřte, jestli jste obdrželi zprávu s oznámením, že vaše e-mailová adresa je dočasně omezená: 
+    E-mail je [rychlostně omezený](alerts-rate-limiting.md) na maximálně 100 emailů na jednotlivé e-mailové adresy za hodinu. Pokud tuto prahovou hodnotu překročíte, všechna další e-mailová oznámení se zahodí.  Zkontrolujte, jestli jste neobdrželi zprávu s informací o dočasném rychlostním omezení vaší e-mailové adresy: 
  
-   ![Omezená e-mailová rychlost](media/alerts-troubleshoot/email-paused.png)
+   ![Rychlostní omezení e-mailu](media/alerts-troubleshoot/email-paused.png)
 
-   Pokud chcete dostávat velké množství oznámení bez omezení rychlosti, zvažte použití jiné akce, jako je Webhook, aplikace logiky, funkce Azure Functions nebo Runbooky Automation. žádná z nich není omezená. 
+   Pokud chcete, aby vám přicházelo velké množství oznámení, aniž by docházelo k rychlostnímu omezení, zvažte použití jiné akce, jako jsou webhook, aplikace logiky, funkce Azure nebo runbooky služby Automation, které nejsou rychlostně omezené. 
 
 ## <a name="did-not-receive-expected-sms-voice-call-or-push-notification"></a>Nedostalo se očekávané služby SMS, hlasový hovor nebo nabízené oznámení.
 
-Pokud se na portálu zobrazí aktivované upozornění, ale neobdrželo SMS, hlasový hovor nebo nabízené oznámení, které o něm jste nakonfigurovali, postupujte takto: 
+Pokud se na portálu zobrazuje aktivované upozornění, ale neobdrželi jste SMS, hlasový hovor nebo nabízené oznámení, které jste pro upozornění nakonfigurovali, postupujte následovně: 
 
-1. **Byla akce potlačena [pravidlem akce](alerts-action-rules.md)?** 
+1. **Byla akce potlačena [pravidlem akce](alerts-action-rules.md)?**
 
-    Zkontrolujte kliknutím na výstrahu aktivované na portálu a podívejte se na kartu Historie pro potlačené [skupiny akcí](action-groups.md): 
+    Kontrolu provedete tak, že na portálu kliknete na aktivované upozornění a na kartě Historie vyhledáte potlačené [skupiny akcí](action-groups.md): 
 
     ![Historie potlačení pravidla akce výstrahy](media/alerts-troubleshoot/history-action-rule.png)
 
-   Pokud to nebylo úmyslné, můžete pravidlo akce upravit, zakázat nebo odstranit.
+   Pokud to nebylo záměrné, můžete příslušné pravidlo akce upravit, zakázat nebo odstranit.
  
 1. **SMS/hlas: správné je telefonní číslo?**
 
-   V případě překlepů v kódu země nebo telefonním čísle ověřte akci SMS. 
+   Zkontrolujte, jestli akce SMS neobsahuje překlepy v kódu země nebo telefonním čísle.
  
-1. **SMS/hlas: dosáhli jste limitu pro omezený počet?** 
+1. **SMS/hlas: dosáhli jste limitu pro omezený počet?**
 
-    Počet volání SMS a hlasových hovorů je omezen na více než jedno oznámení každých pět minut na jedno telefonní číslo. Pokud předáte tuto prahovou hodnotu, budou oznámení vyhozena. 
+    SMS a hlasové hovory jsou pro každé telefonní číslo rychlostně omezené na maximálně jedno oznámení každých pět minut. Pokud tuto prahovou hodnotu překročíte, oznámení se zahodí.
 
-      - Hlasový hovor – Zkontrolujte historii hovorů a podívejte se, jestli jste v předchozích pěti minutách nastavili jiné volání z Azure. 
-      - SMS – Projděte si historii zprávy SMS s oznámením, že vaše telefonní číslo je omezené. 
+      - Hlasový hovor – v historii volání zkontrolujte, jestli jste během posledních pěti minut neobdrželi z Azure jiný hovor.
+      - SMS – v historii SMS zkontrolujte, jestli nemáte zprávu s informací o rychlostním omezení vašeho telefonního čísla.
 
-    Pokud chcete dostávat velké množství oznámení bez omezení rychlosti, zvažte použití jiné akce, jako je Webhook, aplikace logiky, funkce Azure Functions nebo Runbooky Automation. žádná z nich není omezená. 
+    Pokud chcete, aby vám přicházelo velké množství oznámení, aniž by docházelo k rychlostnímu omezení, zvažte použití jiné akce, jako jsou webhook, aplikace logiky, funkce Azure nebo runbooky služby Automation, které nejsou rychlostně omezené. 
  
 1. **SMS: omylem jste odhlásili odběr skupiny akcí?**
 
-    Otevřete historii serveru SMS a ověřte, zda jste si z této konkrétní skupiny akcí vykázali doručování služby SMS (pomocí odpovědi action_group_short_name zakázat), nebo ze všech skupin akcí (pomocí odpovědi na STOPu). Chcete-li se přihlásit k odběru znovu, buď odešlete příslušný příkaz serveru SMS (povolte action_group_short_name nebo spustit), nebo odeberte akci serveru SMS ze skupiny akcí a pak ji znovu přidejte.  Další informace najdete v tématu [chování výstrah SMS ve skupinách akcí](alerts-sms-behavior.md).
+    Otevřete historii serveru SMS a ověřte, zda jste si z této konkrétní skupiny akcí vykázali doručování služby SMS (pomocí odpovědi action_group_short_name zakázat), nebo ze všech skupin akcí (pomocí odpovědi na STOPu). Pokud se chcete znovu přihlásit k odběru, odešlete příslušný příkaz SMS (ENABLE krátký_název_skupiny_akcí nebo START) nebo odeberte akci SMS ze skupiny akcí a pak ji znovu přidejte.  Další informace najdete v tématu [Chování upozornění SMS ve skupinách akcí](alerts-sms-behavior.md).
 
 1. **Nechtěně jste zablokovali oznámení na telefonu?**
 
-   Většina mobilních telefonů vám umožní zablokovat volání nebo SMS ze specifických telefonních čísel nebo krátkých kódů nebo blokovat nabízená oznámení ze specifických aplikací (například Mobilní aplikace Azure). Pokud chcete zkontrolovat, jestli jste oznámení na telefonu omylem zablokovali, vyhledejte dokumentaci specifickou pro váš operační systém a model, nebo otestujte pomocí jiného telefonu a telefonního čísla. 
+   Většina mobilních telefonů umožňuje zablokovat volání nebo SMS z konkrétních telefonních čísel nebo krátkých kódů nebo zablokovat nabízená oznámení z konkrétních aplikací (jako je mobilní aplikace Azure). Pokud chcete zkontrolovat, jestli jste na svém telefonu omylem nezablokovali oznámení, prohledejte dokumentaci k operačnímu systému a modelu vašeho telefonu nebo proveďte test s jiným telefonem a telefonním číslem.
 
 ## <a name="expected-another-type-of-action-to-trigger-but-it-did-not"></a>Byl očekáván jiný typ akce, která má být aktivována, ale nebyla 
+   
+Pokud se na portálu zobrazuje aktivované upozornění, ale jeho nakonfigurovaná akce se neaktivovala, postupujte následovně:
 
-Pokud na portálu vidíte aktivované upozornění, ale jeho konfigurovaná akce nebyla aktivována, postupujte podle těchto kroků: 
+1. **Byla akce potlačena pravidlem akce?**
 
-1. **Byla akce potlačena pravidlem akce?** 
-
-    Zkontrolujte kliknutím na výstrahu aktivované na portálu a podívejte se na kartu Historie pro potlačené [skupiny akcí](action-groups.md): 
+    Kontrolu provedete tak, že na portálu kliknete na aktivované upozornění a na kartě Historie vyhledáte potlačené [skupiny akcí](action-groups.md):
 
     ![Historie potlačení pravidla akce výstrahy](media/alerts-troubleshoot/history-action-rule.png)
  
-    Pokud to nebylo úmyslné, můžete pravidlo akce upravit, zakázat nebo odstranit. 
+    Pokud to nebylo záměrné, můžete příslušné pravidlo akce upravit, zakázat nebo odstranit.
 
 1. **Neaktivoval se Webhook?**
 
     1. **Byly zdrojové IP adresy blokované?**
     
-       Seznam povolených [IP adres](action-groups.md#action-specific-information) , ze kterých se volá Webhook
+       Přidejte [IP adresy](action-groups.md#action-specific-information) , ze kterých se Webhook volá, do seznamu povolených.
 
     1. **Funguje koncový bod Webhooku správně?**
 
-       Ověřte, že je koncový bod Webhooku, který jste nakonfigurovali, správný a koncový bod funguje správně. Zkontrolujte protokoly Webhooku nebo Instrumentujte svůj kód, abyste mohli prozkoumat (například protokolovat příchozí datovou část). 
+       Ověřte správnost a správné fungování koncového bodu webhooku, který jste nakonfigurovali. Projděte si protokoly webhooku nebo instrumentujte jeho kód, abyste mohli provést šetření (například nastavte protokolování příchozí datové části).
 
     1. **Zavoláte si časovou rezervu nebo Microsoft Teams?**  
-    Každý z těchto koncových bodů očekává konkrétní formát JSON. Postupujte podle [těchto pokynů](action-groups-logic-app.md) a místo toho nakonfigurujte akci aplikace logiky.
+    Každý z těchto koncových bodů očekává specifický formát JSON. Postupujte podle [těchto pokynů](action-groups-logic-app.md) a nakonfigurujte místo toho akci aplikace logiky.
 
     1. **Přestal Webhook reagovat nebo vrátil chyby?** 
 
-        Doba vypršení platnosti pro odpověď Webhooku je 10 sekund. Volání Webhooku se bude opakovat až do dvou dodatečných časů, kdy se vrátí následující stavové kódy HTTP: 408, 429, 503, 504 nebo když koncový bod HTTP nereaguje. První opakování se provede po 10 sekundách. Druhý a konečný pokus proběhne po 100 sekundách. Pokud druhé opakování selže, koncový bod se nebude volat znovu dalších 30 minut, a to pro všechny skupiny akcí.
+        Náš časový limit pro odpověď webhooku je 10 sekund. Volání webhooku se bude znovu opakovat až dvakrát v případě, že se vrátí následující stavové kódy HTTP: 408, 429, 503, 504 nebo když koncový bod HTTP neodpovídá. První opakování se provede po 10 sekundách. Druhé a poslední opakování se provede po 100 sekundách. Pokud druhé opakování selže, koncový bod se nebude volat znovu dalších 30 minut, a to pro všechny skupiny akcí.
 
 ## <a name="action-or-notification-happened-more-than-once"></a>Akce nebo oznámení se stala více než jednou. 
 
-Pokud jste obdrželi oznámení o výstraze (třeba k e-mailu nebo SMS) více než jednou, nebo se akce výstrahy (například Webhooku nebo Azure Function) aktivovala několikrát, postupujte podle těchto kroků: 
+Pokud jste obdrželi více než jedno oznámení o upozornění (například e-mail nebo SMS) nebo se vícekrát aktivovala akce upozornění (například webhook nebo funkce Azure), postupujte následovně: 
 
 1. **Je to opravdu stejná výstraha?** 
 
-    V některých případech se současně spustí více podobných výstrah. To znamená, že se může zdát, že stejná výstraha několikrát aktivovala své akce. Například pravidlo upozornění protokolu aktivit může být nakonfigurované tak, aby se aktivovalo při spuštění události, a když je dokončená (úspěšná nebo neúspěšná), a to tak, že se nefiltruje v poli stav události. 
+    V některých případech se může přibližně ve stejnou dobu aktivovat více podobných upozornění. Proto se může zdát, že jedno upozornění aktivovalo své akce vícekrát. Například pravidlo upozornění protokolu aktivit může být nakonfigurované tak, aby se aktivovalo při spuštění události i při jejím dokončení (úspěšném nebo neúspěšném), pokud neprovádí filtrování podle pole stavu události. 
 
-    Pokud chcete zjistit, jestli tyto akce nebo oznámení pocházejí z různých výstrah, Projděte si podrobnosti výstrahy, jako je jeho časové razítko a ID výstrahy nebo ID korelace. Případně můžete na portálu zaškrtnout seznam aktivované výstrahy. V takovém případě byste potřebovali upravit logiku pravidla výstrahy nebo jinak nakonfigurovat zdroj výstrahy. 
+    Pokud chcete zkontrolovat, jestli tyto akce nebo oznámení pocházejí z různých upozornění, prozkoumejte podrobnosti o upozornění, například jeho časové razítko a ID upozornění nebo ID korelace. Případně si projděte seznam aktivovaných upozornění na portálu. V takovém případě byste potřebovali upravit logiku pravidla výstrahy nebo jinak nakonfigurovat zdroj výstrahy. 
 
 1. **Opakuje se akce ve více skupinách akcí?** 
 
-    Při vyvolání výstrahy se každá z jejích skupin akcí zpracuje nezávisle. Takže pokud se v několika aktivovaných skupinách akcí zobrazí akce (například e-mailová adresa), bude se volat jednou pro skupinu akcí. 
+    Když se aktivuje upozornění, jeho jednotlivé skupiny akcí se zpracovávají nezávisle na sobě. Takže pokud se nějaká akce (například e-mailová adresa) vyskytuje ve více aktivovaných skupinách akcí, zavolá se jednou pro každou skupinu akcí. 
 
-    Chcete-li zjistit, které skupiny akcí byly aktivovány, podívejte se na kartu Historie výstrah. V pravidle výstrahy se zobrazí obě skupiny akcí a skupiny akcí přidané do výstrah podle pravidel akcí: 
+    Pokud chcete zjistit, které skupiny akcí se aktivovaly, zkontrolujte kartu Historie upozornění. Zobrazí se skupiny akcí definované v pravidlu upozornění i skupiny akcí přidané do upozornění pravidly akcí: 
 
     ![Akce se opakuje ve více skupinách akcí.](media/alerts-troubleshoot/action-repeated-multi-action-groups.png)
 
 ## <a name="action-or-notification-has-an-unexpected-content"></a>Akce nebo oznámení má neočekávaný obsah.
 
-Pokud jste obdrželi výstrahu, ale domníváte se, že některá pole chybí nebo jsou nesprávná, postupujte podle následujících kroků: 
+Pokud vám upozornění přišlo, ale myslíte si, že některá z jeho polí chybí nebo jsou nesprávná, postupujte následovně: 
 
 1. **Vybrali jste pro akci správný formát?** 
 
-    Každý typ akce (e-mail, Webhook atd.) má dva formáty – výchozí formát, starší verze a [novější formát Common Schema](alerts-common-schema.md). Když vytvoříte skupinu akcí, určíte požadovaný formát pro akci – různé akce ve skupinách akcí mohou mít různé formáty. 
+    Každý typ akce (e-mail, Webhook atd.) má dva formáty – výchozí formát, starší verze a [novější formát Common Schema](alerts-common-schema.md). Při vytváření skupiny akcí zadáváte, jaký formát pro jednotlivé akce chcete použít – různé akce ve skupinách akcí můžou mít různé formáty. 
 
     Například pro akci Webhooku: 
 
     ![možnost schématu akce Webhooku](media/alerts-troubleshoot/webhook.png)
 
-    Ověřte, zda je formát zadaný na úrovni akce očekávaný. Mohli jste například vytvořit kód, který reaguje na výstrahy (Webhook, funkce, aplikace logiky atd.), očekával se jeden formát, ale později v akci, kterou jste vy nebo jiný uživatel uvedli jiný formát.  
+    Zkontrolujte, jestli je na úrovni akce zadaný očekávaný formát. Mohli jste například vytvořit kód, který reaguje na upozornění (webhook, funkce, aplikace logiky atd.) a očekává určitý formát, ale později jste vy nebo někdo jiný v akci zadali jiný formát.  
 
-    Také pro výstrahy metriky [(Application Insights](alerts-log-webhook.md) i Log Analytics) pro upozornění na [metriky](alerts-metric-near-real-time.md#payload-schema)pro [běžné schéma výstrah](alerts-common-schema-definitions.md)a pro nepoužívané [klasické výstrahy metriky](alerts-webhooks.md)si prohlédněte formát datové části (JSON) pro výstrahy [protokolu aktivit](activity-log-alerts-webhook.md).
+    Zkontrolujte také, jestli formát datové části neobsahuje [upozornění protokolu aktivit](activity-log-alerts-webhook.md), [upozornění prohledávání protokolu](alerts-log-webhook.md) (pro Application Insights i Log Analytics), [upozornění na metriky](alerts-metric-near-real-time.md#payload-schema), [společné schéma upozornění](alerts-common-schema-definitions.md) nebo zastaralá [klasická upozornění na metriky](alerts-webhooks.md).
 
  
 1. **Výstrahy protokolu aktivit: jsou k dispozici informace v protokolu aktivit?** 
 
-    [Výstrahy protokolu aktivit](activity-log-alerts.md) jsou výstrahy založené na událostech zapsaných do protokolu aktivit Azure, jako jsou například události týkající se vytváření, aktualizace nebo odstraňování prostředků Azure, stavu služeb a událostí stavu prostředků nebo zjištění z Azure Advisor a Azure Policy. Pokud jste obdrželi výstrahu na základě protokolu aktivit, ale některá pole, která potřebujete, chybí nebo jsou nesprávná, nejprve ověřte události v samotném protokolu aktivit. Pokud prostředek Azure nezapsal pole, která hledáte v události protokolu aktivit, tato pole nebudou zahrnutá do příslušné výstrahy. 
+    [Výstrahy protokolu aktivit](activity-log-alerts.md) jsou výstrahy založené na událostech zapsaných do protokolu aktivit Azure, jako jsou například události týkající se vytváření, aktualizace nebo odstraňování prostředků Azure, stavu služeb a událostí stavu prostředků nebo zjištění z Azure Advisor a Azure Policy. Pokud jste obdrželi upozornění založené na protokolu aktivit, ale některá požadovaná pole chybí nebo jsou nesprávná, nejprve zkontrolujte události v samotném protokolu aktivit. Pokud prostředek Azure do své události protokolu aktivit požadovaná pole nezapíše, příslušné upozornění tato pole nebude obsahovat. 
 
 ## <a name="action-rule-is-not-working-as-expected"></a>Pravidlo akce nefunguje podle očekávání 
 
-Pokud na portálu vidíte aktivované upozornění, ale související pravidlo akce nefungovalo podle očekávání, postupujte podle těchto kroků: 
+Pokud se na portálu zobrazuje aktivované upozornění, ale související pravidlo akce nefungovalo podle očekávání, postupujte následovně: 
 
 1. **Je pravidlo akce povolené?** 
 
-    Zkontrolujte sloupec stav pravidla akce a ověřte, zda je povolena role související akce. 
+    Ve sloupci Stav pravidla akce ověřte, že je související pravidlo akce povolené. 
 
     ![objekty](media/alerts-troubleshoot/action-rule-status.png) 
 
-    Pokud není povolená, můžete pravidlo akce povolit tak, že ho vyberete a kliknete na Povolit. 
+    Pokud pravidlo akce není povolené, můžete ho povolit tím, že ho vyberete a kliknete na Povolit. 
 
 1. **Je to upozornění na stav služby?** 
 
-    Pravidla akcí neovlivňují upozornění na stav služby (monitor Service = "Service Health"). 
+    Na upozornění na stav služby (služba monitorování = Service Health) se pravidla akcí nevztahují. 
 
 1. **Jednalo pravidlo akce u vaší výstrahy?** 
 
-    Zkontrolujte, jestli pravidlo akce zpracovalo upozornění kliknutím na výstrahu aktivované na portálu a podívejte se na kartu Historie.
+    Zkontrolujte, jestli pravidlo akce zpracovalo vaše upozornění. Provedete to tak, že na portálu kliknete na aktivované upozornění a podíváte se na kartu Historie.
 
     Tady je příklad pravidla akce, které potlačuje všechny skupiny akcí: 
  
@@ -211,7 +218,7 @@ Pokud na portálu vidíte aktivované upozornění, ale související pravidlo a
 
 1. **Odpovídá rozsah pravidla a filtr akcí aktivovanému upozornění?** 
 
-    Pokud se domníváte, že pravidlo akce by mělo být aktivováno, ale nedošlo k jeho vyvolání, pečlivě zkontrolujte rozsah pravidla akcí a podmínky filtru oproti vlastnostem aktivované výstrahy. 
+    Pokud si myslíte, že se pravidlo akce mělo aktivovat, ale neaktivovalo se, nebo že se nemělo aktivovat, ale aktivovalo se, pečlivě prozkoumejte rozsah a podmínky filtru pravidla akce a porovnejte je s vlastnostmi aktivovaného upozornění. 
 
 
 ## <a name="how-to-find-the-alert-id-of-a-fired-alert"></a>Jak najít ID výstrahy aktivované výstrahy

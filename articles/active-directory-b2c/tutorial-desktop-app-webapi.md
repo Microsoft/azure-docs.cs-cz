@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 59670cda68f54e4c0b20b361f0688e6766acba61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8ebfbeeb4533f21bc0fa10a5fee7b88ef069c262
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183366"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298839"
 ---
 # <a name="tutorial-grant-access-to-a-nodejs-web-api-from-a-desktop-app-using-azure-active-directory-b2c"></a>Kurz: Poskytnutí přístupu k webovému rozhraní API Node.js z desktopové aplikace pomocí Azure Active Directory B2C
 
@@ -43,7 +43,7 @@ Obory poskytují způsob řízení přístupu k chráněným prostředkům. Webo
 
 [!INCLUDE [active-directory-b2c-scopes](../../includes/active-directory-b2c-scopes.md)]
 
-Poznamenejte si `demo.read` hodnotu **rozsah,** který se má použít v pozdějším kroku při konfiguraci aplikace klasické pracovní plochy. Úplná hodnota oboru je podobná `https://contosob2c.onmicrosoft.com/api/demo.read`.
+Poznamenejte si hodnotu **SCOPES** `demo.read` rozsah, který se má použít v pozdějším kroku při konfiguraci aplikace klasické pracovní plochy. Úplná hodnota oboru je podobná `https://contosob2c.onmicrosoft.com/api/demo.read` .
 
 ## <a name="grant-permissions"></a>Udělení oprávnění
 
@@ -51,17 +51,11 @@ Chcete-li volat chráněné webové rozhraní API z nativní klientské aplikace
 
 V kurzu požadavků jste zaregistrovali nativní klientskou aplikaci s názvem *nativeapp1*. Následující postup nakonfiguruje registraci nativní aplikace pomocí oborů rozhraní API, které jste vystavili pro *webapi1* v předchozí části. To umožňuje aplikaci klasické pracovní plochy získat přístupový token z Azure AD B2C, kterou může webové rozhraní API použít k ověření a poskytování vymezeného přístupu k prostředkům. V tomto kurzu nakonfigurujete a spustíte i ukázky kódu desktopové aplikace i webové rozhraní API.
 
-#### <a name="applications"></a>[Aplikace](#tab/applications/)
+K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
 
-1. Vyberte **aplikace**a pak vyberte *nativeapp1*.
-1. Vyberte **přístup přes rozhraní API**a pak vyberte **Přidat**.
-1. V rozevíracím seznamu **Vyberte rozhraní API** vyberte možnost *webapi1*.
-1. V rozevíracím seznamu **Vybrat obory** vyberte obory, které jste definovali dříve. Například *demo. Read* a *demo. Write*.
-1. Vyberte **OK**.
+#### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
-#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
-
-1. Vyberte **Registrace aplikací (Preview)** a pak vyberte nativní klientskou aplikaci, která by měla mít přístup k rozhraní API. Například *nativeapp1*.
+1. Vyberte **Registrace aplikací**a pak vyberte nativní klientskou aplikaci, která by měla mít přístup k rozhraní API. Například *nativeapp1*.
 1. V části **Spravovat**vyberte **oprávnění rozhraní API**.
 1. V části **konfigurovaná oprávnění**vyberte **Přidat oprávnění**.
 1. Vyberte kartu **Moje rozhraní API** .
@@ -72,6 +66,14 @@ V kurzu požadavků jste zaregistrovali nativní klientskou aplikaci s názvem *
 1. Vyberte aktuálně přihlášený účet správce nebo se přihlaste pomocí účtu v Azure AD B2C tenantovi, kterému byla přiřazena alespoň role *správce cloudové aplikace* .
 1. Vyberte **Přijmout**.
 1. Vyberte **aktualizovat**a pak ověřte, že "uděleno pro..." zobrazí se pod položkou **stav** pro oba obory. Rozšíření oprávnění může trvat několik minut.
+
+#### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
+
+1. Vyberte **aplikace (starší verze)** a pak vyberte *nativeapp1*.
+1. Vyberte **přístup přes rozhraní API**a pak vyberte **Přidat**.
+1. V rozevíracím seznamu **Vyberte rozhraní API** vyberte možnost *webapi1*.
+1. V rozevíracím seznamu **Vybrat obory** vyberte obory, které jste definovali dříve. Například *demo. Read* a *demo. Write*.
+1. Vyberte **OK**.
 
 * * *
 
@@ -85,9 +87,9 @@ Když je teď webové rozhraní API zaregistrované a máte nastavené obory a o
 
 V předpokladech tohoto článku jste upravili [desktopovou aplikaci WPF](https://github.com/Azure-Samples/active-directory-b2c-dotnet-desktop) , která umožňuje přihlášení pomocí toku uživatele v Azure AD B2C tenantovi. V této části aktualizujete stejnou aplikaci tak, aby odkazovala na webové rozhraní API, které jste předtím zaregistrovali, *webapi1*.
 
-1. Otevřete řešení **Active-Directory-B2C-WPF** (`active-directory-b2c-wpf.sln`) v aplikaci Visual Studio.
+1. Otevřete řešení **Active-Directory-B2C-WPF** ( `active-directory-b2c-wpf.sln` ) v aplikaci Visual Studio.
 1. V projektu **Active-Directory-B2C-WPF** otevřete soubor *App.XAML.cs* a vyhledejte následující definice proměnných.
-    1. Nahraďte hodnotu `ApiScopes` proměnné hodnotou, kterou jste si poznamenali dříve, když jste definovali obor **demo. Read** .
+    1. Nahraďte hodnotu proměnné hodnotou `ApiScopes` , kterou jste si poznamenali dříve, když jste definovali obor **demo. Read** .
     1. Nahraďte hodnotu `ApiEndpoint` proměnné **identifikátorem URI přesměrování** , který jste si poznamenali dříve, když jste zaregistrovali webové rozhraní API (například *webapi1*) ve vašem tenantovi.
 
     Tady je příklad:
@@ -118,7 +120,7 @@ Ukázka webového rozhraní API Node.js s využitím knihovny Passport.js umož�
     var tenantIdGuid = "<your-b2c-tenant>.onmicrosoft.com";
     var policyName = "B2C_1_signupsignin1";
     ```
-1. Vzhledem k tomu, že používáte rozhraní API místně, aktualizujte cestu v trase pro metodu GET `/` na místo umístění ukázkové aplikace `/hello`:
+1. Vzhledem k tomu, že používáte rozhraní API místně, aktualizujte cestu v trase pro metodu GET na `/` místo umístění ukázkové aplikace `/hello` :
 
     ```nodejs
     app.get("/",

@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Naučte se řešit problémy a řešit běžné problémy při povolování a používání Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, Helm, síť pro služby, směrování sítě pro služby, kubectl, k8s '
-ms.openlocfilehash: a6ce0f2a4d45f0a703676c76f429dbe07a4517f4
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 51846c8630e4e8c60205f8d92fb7f74f92de3f41
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263495"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309641"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Řešení potíží s Azure Dev Spaces
 
@@ -27,6 +27,14 @@ V sadě Visual Studio nastavte `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` prom
 V rozhraní příkazového řádku můžete při provádění příkazu pomocí přepínače vymezit výstup dalších informací `--verbose` . Můžete také procházet podrobnější protokoly v nástroji `%TEMP%\Azure Dev Spaces` . V počítači Mac můžete *dočasný* adresář najít spuštěním `echo $TMPDIR` z okna terminálu. V počítači se systémem Linux je *dočasný* adresář obvykle `/tmp` . Dále ověřte, že je v [konfiguračním souboru Azure CLI](/cli/azure/azure-cli-configuration?view=azure-cli-latest#cli-configuration-values-and-environment-variables)povolené protokolování.
 
 Azure Dev Spaces také funguje nejlépe při ladění jedné instance nebo pod. `azds.yaml`Soubor obsahuje nastavení *replicaCount*, které označuje počet lusků, které Kubernetes pro vaši službu spustí. Změníte-li *replicaCount* pro konfiguraci aplikace tak, aby spouštěla více lusků pro danou službu, ladicí program se připojí k prvnímu pod, pokud je uveden abecedně. Ladicí program se připojí k jinému pod při recyklování původní pod, což může vést k neočekávanému chování.
+
+## <a name="common-issues-when-using-local-process-with-kubernetes"></a>Běžné problémy při používání místního procesu s Kubernetes
+
+### <a name="fail-to-restore-original-configuration-of-deployment-on-cluster"></a>Nepodařilo se obnovit původní konfiguraci nasazení v clusteru.
+
+Pokud při použití místního procesu se službou Kubernetes dojde k náhlému ukončení místního procesu s klientem Kubernetes nebo jeho ukončení, služba, která je v Kubernetes, se nedá obnovit do původního stavu před tím, než se k místnímu procesu připojí Kubernetes.
+
+Chcete-li tento problém vyřešit, znovu nasaďte službu do clusteru.
 
 ## <a name="common-issues-when-enabling-azure-dev-spaces"></a>Běžné problémy při povolování Azure Dev Spaces
 
@@ -52,13 +60,13 @@ Opětovné vytvoření kontroleru se dá provést z rozhraní příkazového ř�
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>Řadič se nepodařilo vytvořit kvůli délce názvu kontroleru.
 
-Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Příklad:
+Název kontroleru Azure Dev Spaces nemůže být delší než 31 znaků. Pokud je název řadiče v clusteru AKS nebo vytvoření kontroleru delší než 31 znaků, dojde k chybě. Například:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Příklad:
+Chcete-li tento problém vyřešit, vytvořte kontrolér s alternativním názvem. Například:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -162,7 +170,7 @@ Předpokládejme například, že použijete příkaz Helm ke spuštění celé 
 
 Azure Dev Spaces lze nakonfigurovat tak, aby odkazovaly na konkrétní _souboru Dockerfile_ v projektu. Pokud se zobrazí Azure Dev Spaces nepoužívá _souboru Dockerfile_ , kterou očekáváte k sestavování kontejnerů, možná budete muset explicitně sdělit Azure dev Spaces které souboru Dockerfile se mají použít. 
 
-Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Příklad:
+Chcete-li tento problém vyřešit, otevřete soubor _azds. yaml_ , který Azure dev Spaces vygeneroval v projektu. *Konfigurace aktualizací: vývoj: sestavení: souboru Dockerfile* odkazuje na souboru Dockerfile, který chcete použít. Například:
 
 ```yaml
 ...
@@ -209,7 +217,7 @@ install:
 
 Tato chyba se může zobrazit, když se kód služby nepovede spustit. Příčinou je často v uživatelském kódu. Pokud chcete získat další diagnostické informace, při spouštění služby povolte podrobnější protokolování.
 
-Z příkazového řádku, použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output` . Příklad:
+Z příkazového řádku, použijte `--verbose` k povolení podrobnějšího protokolování. Výstupní formát můžete zadat také pomocí `--output` . Například:
 
 ```cmd
 azds up --verbose --output json
@@ -259,7 +267,7 @@ K této chybě dochází, protože Azure Dev Spaces v současné době nepodporu
 
 ### <a name="network-traffic-is-not-forwarded-to-your-aks-cluster-when-connecting-your-development-machine"></a>Při připojování vývojového počítače se síťový provoz nepřepošle do vašeho clusteru AKS
 
-Při použití [Azure dev Spaces k připojení clusteru AKS k vývojovému počítači](how-to/connect.md)se může vyskytnout problém, kdy se síťový provoz nepředává mezi vaším vývojovým počítačem a clusterem AKS.
+Při použití [Azure dev Spaces k připojení clusteru AKS k vývojovému počítači](how-to/local-process-kubernetes-vs-code.md)se může vyskytnout problém, kdy se síťový provoz nepředává mezi vaším vývojovým počítačem a clusterem AKS.
 
 Při připojování vývojového počítače ke clusteru AKS Azure Dev Spaces předávány síťový provoz mezi clusterem AKS a vývojovým počítačem úpravou souboru vývojového počítače `hosts` . Azure Dev Spaces vytvoří položku `hosts` s adresou služby Kubernetes, kterou nahrazujete jako název hostitele. Tato položka se používá s předáváním portů pro přímý přenos síťového provozu mezi vývojovým počítačem a clusterem AKS. Je-li služba na vašem vývojovém počítači v konfliktu s portem služby Kubernetes, kterou nahrazujete, Azure Dev Spaces nemůže dopředt síťový provoz pro službu Kubernetes. Například služba *BranchCache systému Windows* je obvykle svázaná s *hodnotou 0.0.0.0:80*, což může způsobit konflikt pro port 80 na všech místních IP adresách.
 
@@ -274,7 +282,7 @@ Chcete-li například zastavit a zakázat službu *Windows BranchCache* :
 
 ### <a name="error-no-azureassignedidentity-found-for-podazdsazds-webhook-deployment-id-in-assigned-state"></a>Chyba "nenašel se žádný AzureAssignedIdentity pro pod: azds/azds-Webhook-nasazení- \<id\> v přiřazeném stavu"
 
-Když spustíte službu s Azure Dev Spaces v clusteru AKS s nainstalovanou spravovanými [identitami spravované identity](../aks/use-managed-identity.md) a [pod](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) , proces se může po kroku *instalace grafu* zablokovat. Pokud provedete kontrolu *azds-injektor-Webhooku* v prostoru názvů *azds* , může se zobrazit tato chyba.
+Když spustíte službu s Azure Dev Spaces v clusteru AKS s nainstalovanou spravovanými [identitami spravované identity](../aks/use-managed-identity.md) a [pod](../aks/developer-best-practices-pod-security.md#use-pod-managed-identities) , proces může po kroku *instalace grafu* přestat reagovat. Pokud provedete kontrolu *azds-injektor-Webhooku* v prostoru názvů *azds* , může se zobrazit tato chyba.
 
 Služby Azure Dev Spaces v clusteru používají spravovanou identitu clusteru ke komunikaci se službami back-endu Azure Dev Spaces mimo cluster. Když je nainstalovaná spravovaná identita pod, na uzlech clusteru se nakonfigurují Síťová pravidla, která budou přesměrovat všechna volání pro spravovaná pověření identity na [NMI (Node Managed identity) DaemonSet nainstalovanou v clusteru](https://github.com/Azure/aad-pod-identity#node-managed-identity). Tento NMI DaemonSet identifikuje volající a zajistí, že pod ním byl označen odpovídajícím způsobem přístup k požadované spravované identitě. Azure Dev Spaces nemůže zjistit, jestli je v clusteru nainstalovaná spravovaná identita, a nemůže provést potřebnou konfiguraci, aby služby Azure Dev Spaces mohly přistupovat ke spravované identitě clusteru. Vzhledem k tomu, že služba Azure Dev Spaces Services nebyla nakonfigurovaná pro přístup ke spravované identitě clusteru, DaemonSet NMI jim neumožní získat token AAD pro spravovanou identitu a nebude komunikovat se službami Azure Dev Spaces back-end.
 
@@ -320,7 +328,7 @@ Chcete-li zobrazit podrobnosti o spravované identitě, spusťte následující 
 az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
 ```
 
-Výše uvedený příkaz vypíše *ClientID* a *ResourceID* pro spravovanou identitu. Příklad:
+Výše uvedený příkaz vypíše *ClientID* a *ResourceID* pro spravovanou identitu. Například:
 
 ```json
 {
@@ -361,7 +369,7 @@ kubectl apply -f clusteridentity.yaml
 kubectl apply -f clusteridentitybinding.yaml
 ```
 
-Až nasadíte objekty *AzureIdentity* a *AzureIdentityBinding* , budou mít všechny úlohy s jmenovkou *aadpodidbinding: My-Label-Value* přístup ke spravované identitě clusteru. Přidejte tento popisek a znovu nasaďte všechny úlohy spuštěné v jakémkoli vývojovém prostoru. Příklad:
+Až nasadíte objekty *AzureIdentity* a *AzureIdentityBinding* , budou mít všechny úlohy s jmenovkou *aadpodidbinding: My-Label-Value* přístup ke spravované identitě clusteru. Přidejte tento popisek a znovu nasaďte všechny úlohy spuštěné v jakémkoli vývojovém prostoru. Například:
 
 ```yaml
 apiVersion: apps/v1
@@ -445,7 +453,7 @@ Pokud chcete tento problém vyřešit:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>Chyba autorizace "Microsoft. DevSpaces/Register/Action"
 
-Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Příklad:
+Ke správě Azure Dev Spaces potřebujete ve svém předplatném Azure přístup *vlastníka* nebo *přispěvatele* . Pokud se pokoušíte spravovat vývojové prostory a nemáte oprávnění *vlastníka* nebo *přispěvatele* k přidruženému předplatnému Azure, může se zobrazit chyba autorizace. Například:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.
@@ -589,7 +597,8 @@ Pokud chcete povolit Azure Dev Spaces v clusteru AKS, pro který je omezený pro
 | cloudflare.docker.com | HTTPS: 443 | Vyžádat si Linux Alpine a jiné Azure Dev Spaces image |
 | gcr.io | HTTP: 443 | Načtení imagí Helm/překladen|
 | storage.googleapis.com | HTTP: 443 | Načtení imagí Helm/překladen|
-| azds- <guid> . <location> . azds.io | HTTPS: 443 | Pro komunikaci se službou Azure Dev Spaces back-end pro váš kontroler. Přesný plně kvalifikovaný název domény najdete v části "dataplaneFqdn" v% USERPROFILE% \. azds\settings.JSON|
+
+Aktualizujte bránu firewall nebo konfiguraci zabezpečení tak, aby povolovaly síťový provoz do a ze všech výše uvedených plně kvalifikovaných názvů domény a [služby Azure dev Spaces infrastruktury](../dev-spaces/configure-networking.md#virtual-network-or-subnet-configurations).
 
 ### <a name="error-could-not-find-the-cluster-cluster-in-subscription-subscriptionid"></a>Chyba: nepovedlo se najít cluster \<cluster\> v předplatném. \<subscriptionId\>
 
@@ -604,7 +613,7 @@ Pokud chcete tento problém vyřešit:
 
 Po [otočení certifikátů v clusteru AKS](../aks/certificate-rotation.md)se některé operace, například `azds space list` a, `azds up` nezdaří. Po otočení certifikátů v clusteru je také potřeba aktualizovat certifikáty na řadiči Azure Dev Spaces.
 
-Pokud chcete tento problém vyřešit, ujistěte se, že vaše *kubeconfig* má aktualizované certifikáty, a `az aks get-credentials` pak `azds controller refresh-credentials` příkaz spusťte. Příklad:
+Pokud chcete tento problém vyřešit, ujistěte se, že vaše *kubeconfig* má aktualizované certifikáty, a `az aks get-credentials` pak `azds controller refresh-credentials` příkaz spusťte. Například:
 
 ```azurecli
 az aks get-credentials -g <resource group name> -n <cluster name>

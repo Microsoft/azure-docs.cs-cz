@@ -12,12 +12,12 @@ ms.date: 03/12/2020
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: 0e2247e94b20846f19c2ed26c96a5dc53972e770
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a45160db09b3f6bf68bda3f25e40a29a1154099d
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80883809"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308485"
 ---
 # <a name="quickstart-set-up-a-tenant"></a>Rychlý Start: nastavení tenanta
 
@@ -73,4 +73,4 @@ Pokud chcete začít vytvářet aplikace s přihlašováním účtů na sociáln
 
 * [Zaregistrujte aplikaci](quickstart-register-app.md) a integrujte ji s platformou Microsoft identity. 
 * Seznamte se se [základy ověřování](authentication-scenarios.md).
-* Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v článku [o tom, jak jsou předplatná Azure přidružená k Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .
+* Podrobnosti o vztahu mezi předplatnými a klientem služby Azure AD najdete v tématu [přidružení nebo přidání předplatného Azure ke svému klientovi Azure Active Directory](../fundamentals/active-directory-how-subscriptions-associated-directory.md) .

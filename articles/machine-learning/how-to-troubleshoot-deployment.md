@@ -1,5 +1,5 @@
 ---
-title: Průvodce řešením problémů s nasazením
+title: Řešení potíží s nasazením Docker
 titleSuffix: Azure Machine Learning
 description: Naučte se řešit, řešit a řešit běžné chyby nasazení Docker pomocí služby Azure Kubernetes a Azure Container Instances pomocí Azure Machine Learning.
 services: machine-learning
@@ -10,31 +10,17 @@ author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
-ms.custom: seodec18
-ms.openlocfilehash: d51fd5af5ce553bbe9325154e3f854cdf5410d4d
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.custom: contperfq4
+ms.openlocfilehash: f65b263bb90356a4d739ebc963458cc7e992863c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873388"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307941"
 ---
-# <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Řešení potíží s Azure Machine Learning služby Azure Kubernetes a nasazení Azure Container Instances
+# <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Řešení potíží s nasazením v Docker modelů pomocí služby Azure Kubernetes a Azure Container Instances 
 
-Naučte se, jak obejít nebo vyřešit běžné chyby nasazení Docker pomocí Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí Azure Machine Learning.
-
-Při nasazování modelu v Azure Machine Learning systém provádí řadu úloh.
-
-Doporučený a nejaktuálnější přístup k nasazení modelu je prostřednictvím rozhraní API [modelu. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) pomocí objektu [prostředí](how-to-use-environments.md) jako vstupní parametr. V tomto případě naše služba vytvoří základní image Docker za vás během fáze nasazení a všechny požadované modely připojte v jednom volání. Základní úlohy nasazení:
-
-1. Zaregistrujte model v registru modelu pracovního prostoru.
-
-2. Definovat odvozenou konfiguraci:
-    1. Vytvořte objekt [prostředí](how-to-use-environments.md) na základě závislostí, které zadáte v souboru YAML prostředí, nebo použijte jedno z našich pořízených prostředí.
-    2. Vytvořte odvozenou konfiguraci (objekt InferenceConfig) na základě prostředí a hodnoticího skriptu.
-
-3. Nasaďte model do služby Azure Container instance (ACI) nebo do služby Azure Kubernetes Service (AKS).
-
-Další informace o tomto procesu najdete v úvodu [Správa modelů](concept-model-management-and-deployment.md) .
+Přečtěte si, jak řešit a řešit běžné chyby nasazení Docker pomocí Azure Container Instances (ACI) a Azure Kubernetes Service (AKS) pomocí Azure Machine Learning.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,6 +31,22 @@ Další informace o tomto procesu najdete v úvodu [Správa modelů](concept-mod
 * Chcete-li ladit místně, je nutné mít v místním systému funkční instalaci Docker.
 
     K ověření instalace Docker použijte příkaz `docker run hello-world` z terminálu nebo příkazového řádku. Informace o instalaci Docker nebo odstraňování potíží s chybami Docker najdete v [dokumentaci k Docker](https://docs.docker.com/).
+
+## <a name="steps-for-docker-deployment-of-machine-learning-models"></a>Postup pro nasazení Docker modelů strojového učení
+
+Při nasazování modelu v Azure Machine Learning systém provádí řadu úloh.
+
+Doporučený přístup k nasazení modelu je prostřednictvím rozhraní API [modelu. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) pomocí objektu [prostředí](how-to-use-environments.md) jako vstupní parametr. V tomto případě služba vytvoří během fáze nasazení základní image Docker a všechny požadované modely připojí v jednom volání. Základní úlohy nasazení:
+
+1. Zaregistrujte model v registru modelu pracovního prostoru.
+
+2. Definovat odvozenou konfiguraci:
+    1. Vytvořte objekt [prostředí](how-to-use-environments.md) na základě závislostí, které zadáte v souboru YAML prostředí, nebo použijte jedno z našich pořízených prostředí.
+    2. Vytvořte odvozenou konfiguraci (objekt InferenceConfig) na základě prostředí a hodnoticího skriptu.
+
+3. Nasaďte model do služby Azure Container instance (ACI) nebo do služby Azure Kubernetes Service (AKS).
+
+Další informace o tomto procesu najdete v úvodu [Správa modelů](concept-model-management-and-deployment.md) .
 
 ## <a name="before-you-begin"></a>Před zahájením
 
@@ -124,7 +126,7 @@ service.wait_for_deployment(True)
 print(service.port)
 ```
 
-Počítejte s tím, že pokud definujete vlastní conda specifikace YAML, je nutné vytvořit seznam AzureML-Defaults s verzí >= 1.0.45 jako závislost PIP. Tento balíček obsahuje funkce potřebné pro hostování modelu jako webové služby.
+Pokud definujete vlastní conda Specification YAML, je nutné jako závislost PIP vytvořit seznam AzureML-Defaults s Version >= 1.0.45. Tento balíček obsahuje funkce potřebné pro hostování modelu jako webové služby.
 
 V tuto chvíli můžete pracovat se službou jako normální. Například následující kód ukazuje odeslání dat do služby:
 
@@ -209,7 +211,7 @@ Nastavení úrovně protokolování na ladění může způsobit, že budou prot
 
 ## <a name="function-fails-runinput_data"></a>Neúspěšná funkce: Run (input_data)
 
-Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce Přidat příkaz pro zachycení chyb, `run(input_data)` aby se místo toho vrátila podrobná chybová zpráva. Příklad:
+Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce Přidat příkaz pro zachycení chyb, `run(input_data)` aby se místo toho vrátila podrobná chybová zpráva. Například:
 
 ```python
 def run(input_data):

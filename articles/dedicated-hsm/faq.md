@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 8f9e759372f01d2a1b48562aef2bace1e8435a67
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16c3676a881dc5dc979891dfd870274581be255b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81683315"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310381"
 ---
 # <a name="frequently-asked-questions-faq"></a>Nejčastější dotazy
 
@@ -106,7 +106,7 @@ Ano, místní HSM můžete synchronizovat s vyhrazeným HSM. Připojení [typu P
 
 ### <a name="q-can-i-encrypt-data-used-by-other-azure-services-using-keys-stored-in-dedicated-hsm"></a>Otázka: můžu šifrovat data používaná jinými službami Azure pomocí klíčů uložených v vyhrazeném modulu HSM?
 
-Ne. Vyhrazené HSM Azure jsou dostupné jenom v rámci vaší virtuální sítě.
+No. Vyhrazené HSM Azure jsou dostupné jenom v rámci vaší virtuální sítě.
 
 ### <a name="q-can-i-import-keys-from-an-existing-on-premises-hsm-to-dedicated-hsm"></a>Otázka: mohu importovat klíče z existujícího místního modulu HARDWAROVÉho zabezpečení do vyhrazeného modulu HSM?
 
@@ -115,7 +115,7 @@ Ano, pokud máte místní identita Gemalto SafeNet HSM. Existuje více metod. In
 ### <a name="q-what-operating-systems-are-supported-by-dedicated-hsm-client-software"></a>Otázka: Jaké operační systémy podporuje vyhrazený klientský software HSM?
 
 * Windows, Linux, Solaris, AIX, HP-UX, FreeBSD
-* Virtuální: VMware, HyperV, Xen, KVM
+* Virtuální: VMware, Hyper-V, Xen, KVM
 
 ### <a name="q-how-do-i-configure-my-client-application-to-create-a-high-availability-configuration-with-multiple-partitions-from-multiple-hsms"></a>Otázka: Návody nakonfigurovat klientskou aplikaci, aby vytvořila konfiguraci s vysokou dostupností s více oddíly z více HSM?
 
@@ -131,7 +131,7 @@ PKCS # 11, Java (JCA/JCE), Microsoft CAPI a CNG, OpenSSL
 
 ### <a name="q-can-i-importmigrate-keys-from-luna-56-hsms-to-azure-dedicated-hsms"></a>Otázka: mohu importovat/migrovat klíče z Luna 5/6 HSM do Azure vyhrazené HSM?
 
-Ano. Přečtěte si příručku k migraci identita Gemalto. 
+Yes. Přečtěte si příručku k migraci identita Gemalto. 
 
 ## <a name="using-your-hsm"></a>Použití modulu HARDWAROVÉho zabezpečení
 
@@ -152,13 +152,13 @@ Vyhrazený modul HARDWAROVÉho zabezpečení Azure je vhodný pro scénáře mig
 
 ### <a name="q-can-dedicated-hsm-be-used-with-office-365-customer-key-azure-information-protection-azure-data-lake-store-disk-encryption-azure-storage-encryption-azure-sql-tde"></a>Otázka: je možné použít vyhrazený modul HARDWAROVÉho zabezpečení s klíčem zákazníka Office 365, Azure Information Protection, Azure Data Lake Store, šifrování disku, Azure Storage šifrování, Azure SQL TDE?
 
-Ne. Vyhrazený modul HARDWAROVÉho zabezpečení se zřizuje přímo v adresním prostoru privátních IP adres zákazníka, takže není přístupný pro jiné služby Azure nebo Microsoft.
+No. Vyhrazený modul HARDWAROVÉho zabezpečení se zřizuje přímo v adresním prostoru privátních IP adres zákazníka, takže není přístupný pro jiné služby Azure nebo Microsoft.
 
 ## <a name="administration-access-and-control"></a>Správa, přístup a řízení
 
 ### <a name="q-does-the-customer-get-full-exclusive-control-over-the-hsms-with-dedicated-hsms"></a>Otázka: provede zákazníka úplnou kontrolu nad HSM pomocí vyhrazeného HSM?
 
-Ano. Každé zařízení HSM je plně vyhrazené jednomu zákazníkovi a nikdo jiný nemá administrativní řízení, když se zřídí a heslo správce se změnilo.
+Yes. Každé zařízení HSM je plně vyhrazené jednomu zákazníkovi a nikdo jiný nemá administrativní řízení, když se zřídí a heslo správce se změnilo.
 
 ### <a name="q-what-level-of-access-does-microsoft-have-to-my-hsm"></a>Otázka: jakou úroveň přístupu Microsoft potřebuje k mému HARDWAROVÉmu zabezpečení?
 
@@ -170,7 +170,7 @@ Zařízení HSM se dodává s výchozím uživatelem správce s obvyklým výcho
 
 ### <a name="q-can-microsoft-or-anyone-at-microsoft-access-keys-in-my-dedicated-hsm"></a>Otázka: v mém vyhrazeném modulu HSM může společnost Microsoft nebo kdokoli na klíčích Microsoft Access.
 
-Ne. Společnost Microsoft nemá žádný přístup k klíčům uloženým ve vyhrazeném modulu HARDWAROVÉho zabezpečení přiděleného zákazníky.
+No. Společnost Microsoft nemá žádný přístup k klíčům uloženým ve vyhrazeném modulu HARDWAROVÉho zabezpečení přiděleného zákazníky.
 
 ### <a name="q-can-i-upgrade-softwarefirmware-on-hsms-allocated-to-me"></a>Otázka: můžu upgradovat software/firmware na HSM přidělený mně?
 
@@ -190,21 +190,21 @@ Zákazník má úplný přístup k protokolům aktivit HSM prostřednictvím pro
 
 ### <a name="q-can-i-get-full-access-log-of-all-hsm-operations-from-dedicated-hsm"></a>Otázka: mohu získat úplný přístup ke všem operacím HSM z vyhrazeného modulu HSM?
 
-Ano. Protokoly ze zařízení HSM můžete odeslat na server syslog.
+Yes. Protokoly ze zařízení HSM můžete odeslat na server syslog.
 
 ## <a name="high-availability"></a>Vysoká dostupnost
 
 ### <a name="q-is-it-possible-to-configure-high-availability-in-the-same-region-or-across-multiple-regions"></a>Otázka: je možné nakonfigurovat vysokou dostupnost ve stejné oblasti nebo ve více oblastech?
 
-Ano. Konfigurace a nastavení vysoké dostupnosti se provádí v klientském softwaru HSM, který poskytuje identita Gemalto. HSM ze stejné virtuální sítě nebo jiného virtuální sítě ve stejné oblasti nebo v různých oblastech nebo místní HSM připojená k virtuální síti pomocí VPN typu Site-to-site nebo Point-to-Point VPN je možné přidat do stejné konfigurace vysoké dostupnosti. Je potřeba poznamenat, že tato funkce synchronizuje jenom materiál klíče, a ne konkrétní položky konfigurace, jako třeba role.
+Yes. Konfigurace a nastavení vysoké dostupnosti se provádí v klientském softwaru HSM, který poskytuje identita Gemalto. HSM ze stejné virtuální sítě nebo jiného virtuální sítě ve stejné oblasti nebo v různých oblastech nebo místní HSM připojená k virtuální síti pomocí VPN typu Site-to-site nebo Point-to-Point VPN je možné přidat do stejné konfigurace vysoké dostupnosti. Je potřeba poznamenat, že tato funkce synchronizuje jenom materiál klíče, a ne konkrétní položky konfigurace, jako třeba role.
 
 ### <a name="q-can-i-add-hsms-from-my-on-premises-network-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Otázka: mohu přidat HSM z místní sítě do skupiny vysoké dostupnosti pomocí vyhrazeného modulu HARDWAROVÉho zabezpečení Azure?
 
-Ano. Musí splňovat požadavky vysoké dostupnosti pro SafeNet Luna Network HSM 7.
+Yes. Musí splňovat požadavky vysoké dostupnosti pro SafeNet Luna Network HSM 7.
 
 ### <a name="q-can-i-add-luna-56-hsms-from-on-premises-networks-to-a-high-availability-group-with-azure-dedicated-hsm"></a>Otázka: mohu přidat Luna 5/6 HSM z místních sítí do skupiny vysoké dostupnosti pomocí vyhrazeného modulu HARDWAROVÉho zabezpečení Azure?
 
-Ne.
+No.
 
 ### <a name="q-how-many-hsms-can-i-add-to-the-same-high-availability-configuration-from-one-single-application"></a>Otázka: kolik HSM můžu přidat ke stejné konfiguraci vysoké dostupnosti z jedné aplikace?
 
@@ -242,7 +242,7 @@ Microsoft není schopen se připojit k HSM přidělenému zákazníkům. Zákazn
 
 ### <a name="q-what-if-i-need-to-reboot-my-hsm"></a>Otázka: Co když potřebuji restartovat modul HARDWAROVÉho zabezpečení?
 
-Modul hardwarového zabezpečení (HSM) obsahuje možnost restartování z příkazového řádku, ale v takovém případě dochází k potížím s chybou při zablokování. 
+Modul hardwarového zabezpečení (HSM) obsahuje možnost restartování z příkazového řádku, ale došlo k potížím, když restart přestane reagovat občas a z tohoto důvodu se doporučuje pro nejbezpečnější restart, který vyžádáte, aby se zařízení fyzicky restartovalo. 
 
 ## <a name="cryptography-and-standards"></a>Kryptografie a standardy
 
@@ -276,7 +276,7 @@ Vyhrazená služba HSM zřídí zařízení SafeNet Network HSM 7. Podporují ce
 
 ### <a name="q-is-dedicated-hsm-fips-140-2-level-3-validated"></a>Otázka: je ověřena rezervovaná úroveň Standard HSM FIPS 140-2 úrovně 3?
 
-Ano. Vyhrazená služba HSM zřídí zařízení SafeNet Network HSM 7, která používají ověřená HSM Standard FIPS 140-2 úrovně 3.
+Yes. Vyhrazená služba HSM zřídí zařízení SafeNet Network HSM 7, která používají ověřená HSM Standard FIPS 140-2 úrovně 3.
 
 ### <a name="q-what-do-i-need-to-do-to-make-sure-i-operate-dedicated-hsm-in-fips-140-2-level-3-validated-mode"></a>Otázka: co potřebuji k tomu, abyste se ujistili, že provozovat vyhrazený HSM v režimu ověřování FIPS 140-2 Level 3?
 

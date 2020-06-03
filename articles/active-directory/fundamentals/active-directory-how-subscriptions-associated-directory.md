@@ -8,17 +8,17 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: fundamentals
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 06/01/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 104bf51fb03d88ab0e5efd25ebebb0e3060bc264
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e2737da028d8fea1c31b728c8e9864ad421d08ec
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457922"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309584"
 ---
 # <a name="associate-or-add-an-azure-subscription-to-your-azure-active-directory-tenant"></a>Přiřazení nebo přidání předplatného Azure do tenanta Azure Active Directory
 
@@ -42,7 +42,7 @@ Všichni uživatelé mají jeden *Domovský* adresář pro ověřování. Uživa
 
 Než budete moct přidružit nebo přidat svoje předplatné, proveďte následující úlohy:
 
-- Přečtěte si následující seznam změn a o tom, jak to může být ovlivněno:
+- Projděte si následující seznam změn, ke kterým dojde po přidružení nebo přidání předplatného a o tom, jak to může být ovlivněno:
 
   - Uživatelé, kterým byly přiřazené role pomocí RBAC, ztratí přístup.
   - Správce služeb a spolusprávci ztratí přístup
@@ -71,13 +71,13 @@ Pokud chcete přidružit existující předplatné k adresáři služby Azure AD
 
     ![Změňte stránku adresáře, kde se zobrazí adresář, který se má změnit.](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
-    Pro odběr se změnil adresář a zobrazí se zpráva o úspěchu.
+    Po změně adresáře pro předplatné se zobrazí zpráva o úspěchu.
 
-    ![Zpráva o úspěchu změny adresáře](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)
+  1. Vyberte **přepínač adresáře** na stránce odběr a přejděte k novému adresáři. 
 
-Pomocí **přepínače Adresář** přejděte do nového adresáře. Aby se všechno zobrazovalo správně, může trvat několik hodin. Pokud se zdá, že trvá příliš dlouho, podívejte se na **globální filtr předplatného**. Ujistěte se, že přesunuté předplatné není skryté. Možná se budete muset odhlásit z Azure Portal a znovu se přihlásit a zobrazit nový adresář.
+      ![Stránka přepínač adresáře s ukázkovými informacemi](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
 
-![Stránka přepínač adresáře s ukázkovými informacemi](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+      Aby se všechno zobrazovalo správně, může trvat několik hodin. Pokud se zdá, že trvá příliš dlouho, podívejte se na **globální filtr předplatného**. Ujistěte se, že přesunuté předplatné není skryté. Možná se budete muset odhlásit z Azure Portal a znovu se přihlásit a zobrazit nový adresář.
 
 Změna adresáře předplatného je operace na úrovni služby, takže nemá vliv na vlastnictví fakturace předplatného. Správce účtu může stále změnit správce služby z [centra účtů](https://account.azure.com/subscriptions). Pokud chcete odstranit původní adresář, musíte přenést vlastnictví fakturace předplatného na nového správce účtu. Další informace o přenosu vlastnictví fakturace najdete v tématu [převod vlastnictví předplatného Azure na jiný účet](../../cost-management-billing/manage/billing-subscription-transfer.md).
 

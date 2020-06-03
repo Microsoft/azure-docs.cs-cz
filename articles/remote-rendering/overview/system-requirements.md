@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: article
-ms.openlocfilehash: 8573a88d5371bbde07a541c789f52e6c44f1e279
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9754636063e29592595ee57d09164ae1134341a1
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81411135"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300602"
 ---
 # <a name="system-requirements"></a>Požadavky na systém
 
@@ -69,6 +69,9 @@ Informace o řešení problémů se sítí najdete v [Průvodci odstraňováním
 Musí být nainstalovaný následující software:
 
 * Nejnovější verzi sady **Visual Studio 2019** [(Stáhnout)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* [Visual Studio Tools pro Mixed reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Konkrétně jsou nutné následující instalace *úloh* :
+  * **Vývoj desktopových aplikací v C++**
+  * **Vývoj Univerzální platforma Windows (UWP)**
 * **Windows SDK 10.0.18362.0** [(Stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
 * **Git** [(Stáhnout)](https://git-scm.com/downloads)
 * Volitelné: Pokud chcete zobrazit datový proud videa ze serveru na stolním počítači, potřebujete **rozšíření videa HEVC** [(odkaz Microsoft Store)](https://www.microsoft.com/p/hevc-video-extensions/9nmzlz57r3t7).

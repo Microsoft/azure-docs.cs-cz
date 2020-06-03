@@ -3,14 +3,14 @@ title: Konfigurace sítě kubenet ve službě Azure Kubernetes Service (AKS)
 description: Naučte se konfigurovat síť kubenet (Basic) ve službě Azure Kubernetes Service (AKS), která umožňuje nasadit cluster AKS do existující virtuální sítě a podsítě.
 services: container-service
 ms.topic: article
-ms.date: 06/26/2019
+ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 060e98f2617da503068911ec1e687241d909dabc
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: a393e87963eabf2e3cf41148233c0e350dc6e380
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120908"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309664"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Používání sítě kubenet s vlastními rozsahy IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -139,7 +139,7 @@ VNET_ID=$(az network vnet show --resource-group myResourceGroup --name myAKSVnet
 SUBNET_ID=$(az network vnet subnet show --resource-group myResourceGroup --vnet-name myAKSVnet --name myAKSSubnet --query id -o tsv)
 ```
 
-Nyní přiřaďte instančnímu objektu oprávnění *přispěvatele* clusteru AKS ve virtuální síti pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Zadejte vlastní * \< appId>* , jak je znázorněno ve výstupu z předchozího příkazu k vytvoření instančního objektu:
+Nyní přiřaďte instančnímu objektu oprávnění *přispěvatele* clusteru AKS ve virtuální síti pomocí příkazu [AZ role Assignment Create][az-role-assignment-create] . Zadejte vlastní *\<appId>* , jak je znázorněno ve výstupu z předchozího příkazu k vytvoření instančního objektu:
 
 ```azurecli-interactive
 az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
@@ -147,7 +147,7 @@ az role assignment create --assignee <appId> --scope $VNET_ID --role Contributor
 
 ## <a name="create-an-aks-cluster-in-the-virtual-network"></a>Vytvoření clusteru AKS ve virtuální síti
 
-Nyní jste vytvořili virtuální síť a podsíť a vytvořili a přiřadili jste oprávnění instančnímu objektu pro použití těchto síťových prostředků. Teď ve své virtuální síti a podsíti vytvořte cluster AKS pomocí příkazu [AZ AKS Create][az-aks-create] . Definujte vlastní identifikátor * \< appId>* a * \< heslo>*, jak je znázorněno ve výstupu z předchozího příkazu pro vytvoření instančního objektu.
+Nyní jste vytvořili virtuální síť a podsíť a vytvořili a přiřadili jste oprávnění instančnímu objektu pro použití těchto síťových prostředků. Teď ve své virtuální síti a podsíti vytvořte cluster AKS pomocí příkazu [AZ AKS Create][az-aks-create] . Definujte vlastní instanční objekt *\<appId>* *\<password>* , jak je znázorněno ve výstupu z předchozího příkazu pro vytvoření instančního objektu.
 
 V rámci procesu vytváření clusteru se definují taky tyto rozsahy IP adres:
 
@@ -195,7 +195,22 @@ az aks create \
     --client-secret <password>
 ```
 
-Při vytváření clusteru AKS se vytvoří skupina zabezpečení sítě a směrovací tabulka. Tyto síťové prostředky se spravují pomocí roviny ovládacího prvku AKS. Skupina zabezpečení sítě je automaticky přidružená k virtuálním síťovým kartám na vašich uzlech. Tabulka směrování je automaticky přidružena k podsíti virtuální sítě. Pravidla skupiny zabezpečení sítě a směrovací tabulky se automaticky aktualizují při vytváření a vystavování služeb.
+Při vytváření clusteru AKS se automaticky vytvoří skupina zabezpečení sítě a směrovací tabulka. Tyto síťové prostředky se spravují pomocí roviny ovládacího prvku AKS. Skupina zabezpečení sítě je automaticky přidružená k virtuálním síťovým kartám na vašich uzlech. Tabulka směrování je automaticky přidružena k podsíti virtuální sítě. Pravidla skupiny zabezpečení sítě a směrovací tabulky se automaticky aktualizují při vytváření a vystavování služeb.
+
+## <a name="bring-your-own-subnet-and-route-table-with-kubenet"></a>Využijte vlastní podsíť a směrovací tabulku pomocí kubenet
+
+V kubenet musí existovat směrovací tabulka v těchto podsítích clusteru. AKS podporuje uvedení vlastní existující podsítě a směrovací tabulky.
+
+Pokud vaše vlastní podsíť neobsahuje směrovací tabulku, vytvoří AKS jednu za vás a přidá do ní pravidla. Pokud vaše vlastní podsíť obsahuje směrovací tabulku při vytváření clusteru, AKS potvrdí existující směrovací tabulku během operací clusteru a podle toho aktualizuje pravidla pro operace poskytovatele cloudu.
+
+Omezení:
+
+* Oprávnění musí být přiřazena před vytvořením clusteru, ujistěte se, že používáte instanční objekt s oprávněním k zápisu do vlastní podsítě a vlastní směrovací tabulky.
+* Spravované identity se v současnosti nepodporují s vlastními směrovacími tabulkami v kubenet.
+* Vlastní směrovací tabulka musí být přidružena k podsíti před vytvořením clusteru AKS. Tuto tabulku směrování nelze aktualizovat a všechna pravidla směrování musí být přidána nebo odebrána z počáteční tabulky směrování před vytvořením clusteru AKS.
+* Všechny podsítě v rámci virtuální sítě AKS musí používat ke stejné směrovací tabulce.
+* Každý cluster AKS musí používat jedinečnou směrovací tabulku. Směrovací tabulku nelze znovu použít s více clustery.
+
 
 ## <a name="next-steps"></a>Další kroky
 

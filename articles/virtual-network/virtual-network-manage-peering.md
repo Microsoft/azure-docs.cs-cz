@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/01/2019
 ms.author: altambaw
-ms.openlocfilehash: ba4acf32e13304c62ec5091670fe0b45ec3cb32c
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 452cef0a65dd9c994b5d010676e402013b195ed3
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235252"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300626"
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>Vytvoření, změna nebo odstranění partnerského vztahu virtuální sítě
 
@@ -121,7 +121,7 @@ Pokud chcete, aby virtuální sítě mohly někdy komunikovat, ale ne vždy, mí
 - Virtuální sítě mohou být ve stejném nebo jiném předplatném. Při vytváření partnerského vztahu virtuálních sítí v různých předplatných je možné oba odběry přidružit ke stejnému nebo jinému klientovi Azure Active Directory. Pokud ještě nemáte tenanta služby AD, můžete si [ho vytvořit](../active-directory/develop/quickstart-create-new-tenant.md?toc=%2fazure%2fvirtual-network%2ftoc.json-a-new-azure-ad-tenant). Podpora partnerského vztahu mezi virtuálními sítěmi z předplatných přidružených k různým klientům Azure Active Directory není k dispozici na portálu. Můžete použít rozhraní příkazového řádku, PowerShellu nebo šablony.
 - Virtuální sítě, u kterých je partnerský uzel, musí mít překrývající se adresní prostory IP adres.
 - Po navázání partnerského vztahu virtuální sítě s jinou virtuální sítí nemůžete přidat rozsah adres do nebo odstranit rozsahy adres z adresního prostoru virtuální sítě. Pokud chcete přidat nebo odebrat rozsahy adres, odstraňte partnerský vztah, přidejte nebo odeberte rozsahy adres a potom vytvořte partnerský vztah znovu. Pokud chcete přidat rozsahy adres do nebo odebrat rozsahy adres z virtuálních sítí, přečtěte si téma [Správa virtuálních sítí](manage-virtual-network.md).
-- Partnerské vztahy mezi dvěma virtuálními sítěmi nasazenými prostřednictvím Správce prostředků nebo virtuální sítí nasazené prostřednictvím Správce prostředků můžete vytvořit pomocí virtuální sítě nasazené prostřednictvím modelu nasazení Classic. Nemůžete vytvořit partnerské vztahy mezi dvěma virtuálními sítěmi vytvořenými prostřednictvím modelu nasazení Classic. Pokud nejste obeznámeni s modely nasazení Azure, přečtěte si článek [vysvětlení modelů nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . K propojení dvou virtuálních sítí vytvořených prostřednictvím modelu nasazení Classic můžete použít službu [VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).
+- Partnerské vztahy mezi dvěma virtuálními sítěmi nasazenými prostřednictvím Správce prostředků nebo virtuální sítí nasazené prostřednictvím Správce prostředků můžete vytvořit pomocí virtuální sítě nasazené prostřednictvím modelu nasazení Classic. Nemůžete vytvořit partnerské vztahy mezi dvěma virtuálními sítěmi vytvořenými prostřednictvím modelu nasazení Classic. Pokud nejste obeznámeni s modely nasazení Azure, přečtěte si článek [vysvětlení modelů nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) . K propojení dvou virtuálních sítí vytvořených prostřednictvím modelu nasazení Classic můžete použít službu [VPN Gateway](../vpn-gateway/design.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V).
 - Pokud navazujete partnerský vztah mezi dvěma virtuálními sítěmi vytvořenými prostřednictvím Resource Manageru, v partnerském vztahu musí být nakonfigurován partnerský vztah pro každou virtuální síť. Pro stav partnerského vztahu se zobrazí jeden z následujících typů: 
   - *Zahájeno:* Když vytváříte partnerský vztah k druhé virtuální síti z první virtuální sítě, stav partnerského vztahu je *zahájeno*. 
   - *Připojeno:* Při vytváření partnerského vztahu z druhé virtuální sítě k první virtuální síti je stav partnerského vztahu *připojen*. Pokud zobrazíte stav partnerského vztahu pro první virtuální síť, zobrazí se jeho stav změněno z *iniciované* na *připojeno*. Partnerský vztah není úspěšně navázán, dokud není *propojen*stav partnerského vztahu obou partnerských vztahů virtuálních sítí.
@@ -146,7 +146,7 @@ Pokud chcete, aby virtuální sítě mohly někdy komunikovat, ale ne vždy, mí
 
 Pokud váš účet není přiřazený k jedné z předchozích rolí, musí být přiřazený k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazená k potřebným akcím z následující tabulky:
 
-| Akce                                                          | Název |
+| Akce                                                          | Name |
 |---                                                              |---   |
 | Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write  | Vyžaduje se vytvoření partnerského vztahu z virtuální sítě A do virtuální sítě B. virtuální síť musí být virtuální síť (Správce prostředků).          |
 | Microsoft. Network/virtualNetworks/peer/Action                   | Vyžaduje se k vytvoření partnerského vztahu z virtuální sítě B (Správce prostředků) k virtuální síti.                                                       |

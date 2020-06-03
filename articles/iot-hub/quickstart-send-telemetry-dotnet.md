@@ -11,13 +11,13 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - mqtt
-ms.date: 06/21/2019
-ms.openlocfilehash: b1ee14afcf46dfbedfb9d696b6a0add22ccd39cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/01/2020
+ms.openlocfilehash: 2efd2c982fcd4c799a6c9daa1d89fde25e7f2c64
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81769120"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307608"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Rychlý Start: odeslání telemetrie ze zařízení do služby IoT Hub a jejich čtení pomocí back-endové aplikace (.NET)
 
@@ -29,11 +29,11 @@ V tomto rychlém startu se používají dvě předem napsané aplikace C#, jedna
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí C#. Na počítači používaném pro vývoj musíte mít .NET Core SDK 2.1.0 nebo vyšší.
+Dvě ukázkové aplikace, které spustíte v tomto rychlém startu, jsou napsány pomocí C#. Ve vývojovém počítači potřebujete .NET Core SDK 3,0 nebo vyšší.
 
 Sadu .NET Core SDK pro různé platformy si můžete stáhnout z webu [.NET](https://www.microsoft.com/net/download/all).
 
@@ -43,6 +43,9 @@ Aktuální verzi C# na počítači používaném pro vývoj můžete ověřit po
 dotnet --version
 ```
 
+> [!NOTE]
+> Pro kompilaci kódu služby Event Hubs používaného pro čtení telemetrie v tomto rychlém startu se doporučuje .NET Core SDK 3,0 nebo vyšší. .NET Core SDK 2,1 můžete použít, pokud nastavíte jazykovou verzi pro kód služby na náhled, jak je uvedeno v části [přečtení telemetrie z vašeho centra](#read-the-telemetry-from-your-hub) .
+
 Spuštěním následujícího příkazu přidejte do instance služby Cloud Shell Microsoft Azure rozšíření IoT pro rozhraní příkazového řádku Azure. Rozšíření IOT přidá do Azure CLI příkazy určené pro služby IoT Hub, IoT Edge a IoT Device Provisioning Service (DPS).
 
 ```azurecli-interactive
@@ -51,7 +54,7 @@ az extension add --name azure-iot
 
 [!INCLUDE [iot-hub-cli-version-info](../../includes/iot-hub-cli-version-info.md)]
 
-Stáhněte si ukázky pro Azure IoT C# [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) z webu a Extrahujte archiv zip.
+Stáhněte si ukázky pro Azure IoT C# z webu [https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) a Extrahujte archiv zip.
 
 Ujistěte se, že je v bráně firewall otevřený port 8883. Ukázka zařízení v tomto rychlém startu používá protokol MQTT, který komunikuje přes port 8883. Tento port může být blokovaný v některých podnikových a vzdělávacích prostředích sítě. Další informace a způsoby, jak tento problém obejít, najdete v tématu [připojení k IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
@@ -125,7 +128,7 @@ Aplikace simulovaného zařízení se připojuje ke koncovému bodu vašeho cent
 
     Následující snímek obrazovky ukazuje výstup, zatímco aplikace simulovaného zařízení odesílá telemetrická data do vašeho centra IoT:
 
-    ![Spuštění simulovaného zařízení](media/quickstart-send-telemetry-dotnet/SimulatedDevice.png)
+    ![Spuštění simulovaného zařízení](media/quickstart-send-telemetry-dotnet/simulated-device.png)
 
 ## <a name="read-the-telemetry-from-your-hub"></a>Čtení telemetrických dat z centra
 
@@ -137,9 +140,12 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
     | Proměnná | Hodnota |
     | -------- | ----------- |
-    | `s_eventHubsCompatibleEndpoint` | Nahraďte hodnotu proměnné pomocí koncového bodu kompatibilního s Event Hubs, který jste si poznamenali dříve. |
-    | `s_eventHubsCompatiblePath`     | Nahraďte hodnotu proměnné cestou kompatibilní s Event Hubs, kterou jste si poznamenali dříve. |
-    | `s_iotHubSasKey`                | Nahraďte hodnotu proměnné primárním klíčem služby, který jste si poznamenali dříve. |
+    | `EventHubsCompatibleEndpoint` | Nahraďte hodnotu proměnné pomocí koncového bodu kompatibilního s Event Hubs, který jste si poznamenali dříve. |
+    | `EventHubName`                | Nahraďte hodnotu proměnné cestou kompatibilní s Event Hubs, kterou jste si poznamenali dříve. |
+    | `IotHubSasKey`                | Nahraďte hodnotu proměnné primárním klíčem služby, který jste si poznamenali dříve. |
+
+    > [!NOTE]
+    > Pokud používáte .NET Core SDK 2,1, musíte nastavit jazykovou verzi na náhled pro zkompilování kódu. Provedete to tak, že otevřete soubor **Read-D2C-Messages. csproj** a nastavíte hodnotu `<LangVersion>` elementu na `preview` .
 
 3. V okně místního terminálu pomocí následujících příkazů nainstalujte požadované knihovny pro back-endovou aplikaci:
 
@@ -155,7 +161,7 @@ Back-endová aplikace se připojí ke koncovému bodu **Events** na straně slu�
 
     Následující snímek obrazovky ukazuje výstup, zatímco back-endová aplikace přijímá telemetrická data odeslaná simulovaným zařízením do centra:
 
-    ![Spuštění back-endové aplikace](media/quickstart-send-telemetry-dotnet/ReadDeviceToCloud.png)
+    ![Spuštění back-endové aplikace](media/quickstart-send-telemetry-dotnet/read-device-to-cloud.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

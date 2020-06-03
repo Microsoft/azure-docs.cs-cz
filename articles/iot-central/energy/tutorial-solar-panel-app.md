@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Vytvoření aplikace pro monitorování od antitrestných aplikací pomocí IoT Central'
+title: 'Kurz: Vytvoření aplikace pro monitorování pomocí panelu slunečního příIoT Central'
 description: 'Kurz: Naučte se, jak vytvořit aplikaci v programu slunečního panelu pomocí šablon aplikací Azure IoT Central.'
 author: op-ravi
 ms.author: omravi
@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: abjork
-ms.openlocfilehash: d5ea3d3420cb598693ccaede7ee10d2f8c4fd839
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5a48ea0747a110720a29a9c34fa2dca0f5a74f16
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77025771"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309998"
 ---
 # <a name="tutorial-create-and-walk-through-the-solar-panel-monitoring-app-template"></a>Kurz: vytvoření a Projděte si šablonu aplikace pro monitorování panelu slunečního příběhu 
 
@@ -31,7 +31,7 @@ V tomto kurzu Vás provedeme procesem vytvoření aplikace pro monitorování na
 Pokud předplatné nemáte, [Vytvořte si bezplatný zkušební účet](https://azure.microsoft.com/free)
 
 ## <a name="prerequisites"></a>Požadavky
-- Žádná
+- Žádné
 - Doporučuje se předplatné Azure, ale není to nutné.
 
 
@@ -110,4 +110,3 @@ Pokud se rozhodnete, že tuto aplikaci nebudete používat, odstraňte aplikaci 
 * Další informace o architektuře aplikací na panelu slunečního příčtěte si [článek o konceptu](https://docs.microsoft.com/azure/iot-central/energy/concept-iot-central-solar-panel-app)
 * Vytváření šablon aplikací pro sluneční použití, zdarma: [aplikace v panelu slunečního](https://apps.azureiotcentral.com/build/new/solar-panel-monitoring) programu
 * Další informace o IoT Central najdete v tématu [IoT Central Overview](https://docs.microsoft.com/azure/iot-central/) .
-

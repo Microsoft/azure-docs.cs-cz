@@ -4,12 +4,12 @@ description: Naučte se zabezpečit cluster pomocí rozsahu IP adres pro příst
 services: container-service
 ms.topic: article
 ms.date: 11/05/2019
-ms.openlocfilehash: 357c8ea4da2a07864215225f7d618f9eb58b7e49
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 45f82d5a6531b2a9584140d6ff309a799656926a
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266181"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299566"
 ---
 # <a name="secure-access-to-the-api-server-using-authorized-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Zabezpečený přístup k serveru rozhraní API pomocí rozsahů povolených IP adres ve službě Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Další informace o serveru rozhraní API a dalších součástech clusteru najd
 
 ## <a name="create-an-aks-cluster-with-api-server-authorized-ip-ranges-enabled"></a>Vytvoření clusteru AKS s povoleným rozsahem IP adres autorizovaným serverem API
 
-Rozsahy povolených IP adres serveru API fungují jenom pro nové clustery AKS. Vytvořte cluster pomocí funkce [AZ AKS Create][az-aks-create] a zadáním parametru *--API-Server-autorizovaná-IP-Ranges* uveďte seznam autorizovaných rozsahů IP adres. Tyto rozsahy IP adres jsou obvykle rozsahy adres používané vašimi místními sítěmi nebo veřejnými IP adresami. Když zadáte rozsah CIDR, začněte první IP adresou v rozsahu. Například *137.117.106.90/29* je platný rozsah, ale ujistěte se, že jste zadali první IP adresu v rozsahu, například *137.117.106.88/29*.
+Rozsahy povolených IP adres serveru API fungují jenom pro nové clustery AKS a pro privátní clustery AKS se nepodporuje. Vytvořte cluster pomocí funkce [AZ AKS Create][az-aks-create] a zadáním parametru *--API-Server-autorizovaná-IP-Ranges* uveďte seznam autorizovaných rozsahů IP adres. Tyto rozsahy IP adres jsou obvykle rozsahy adres používané vašimi místními sítěmi nebo veřejnými IP adresami. Když zadáte rozsah CIDR, začněte první IP adresou v rozsahu. Například *137.117.106.90/29* je platný rozsah, ale ujistěte se, že jste zadali první IP adresu v rozsahu, například *137.117.106.88/29*.
 
 > [!IMPORTANT]
 > Ve výchozím nastavení používá váš cluster nástroj pro [Vyrovnávání zatížení Standard SKU][standard-sku-lb] , který můžete použít ke konfiguraci odchozí brány. Když povolíte rozsah IP adres povolených serverem API během vytváření clusteru, ve výchozím nastavení se kromě rozsahů, které určíte, povoluje taky veřejná IP adresa pro váš cluster. Pokud zadáte *""* nebo žádnou hodnotu pro *--API-Server-autorizováno-IP-rozsahy*, budou zakázány rozsahy IP adres ověřené serverem API zakázané. Všimněte si, že pokud používáte PowerShell, použijte *--API-server-autorizován-IP-Ranges = ""* (s znaménkem rovná se), abyste se vyhnuli jakýmkoli problémům s analýzou.
@@ -64,7 +64,7 @@ az aks create \
 
 ### <a name="specify-the-outbound-ips-for-the-standard-sku-load-balancer"></a>Zadejte odchozí IP adresy pro nástroj pro vyrovnávání zatížení Standard SKU.
 
-Pokud při vytváření clusteru AKS zadáte odchozí IP adresy nebo předpony pro cluster, jsou povoleny také tyto adresy nebo předpony. Příklad:
+Pokud při vytváření clusteru AKS zadáte odchozí IP adresy nebo předpony pro cluster, jsou povoleny také tyto adresy nebo předpony. Například:
 
 ```azurecli-interactive
 az aks create \
@@ -116,7 +116,7 @@ V případě, že zadáte parametr *--API-Server-IP-Ranges* , můžete použít 
 
 ## <a name="disable-authorized-ip-ranges"></a>Zakázat autorizované rozsahy IP adres
 
-Pokud chcete zakázat rozsahy povolených IP adres, použijte příkaz [AZ AKS Update][az-aks-update] a zadáním prázdného rozsahu zakažte rozsahy IP adres autorizovaných serverem API. Příklad:
+Pokud chcete zakázat rozsahy povolených IP adres, použijte příkaz [AZ AKS Update][az-aks-update] a zadáním prázdného rozsahu zakažte rozsahy IP adres autorizovaných serverem API. Například:
 
 ```azurecli-interactive
 az aks update \

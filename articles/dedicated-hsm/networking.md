@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mbaldwin
-ms.openlocfilehash: 044930c9df7b54515b9b66426a6b05aa9517a3a1
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 06cd02177d7d5c478f3378eb05517f1a37297e92
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70881284"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300728"
 ---
 # <a name="azure-dedicated-hsm-networking"></a>Vyhrazené sítě HSM v Azure
 
@@ -78,7 +78,7 @@ Zařízení HSM mají schopnost přes knihovny softwaru přesměrovat provoz do 
 
 ### <a name="cross-region-ha-using-vpn-gateway"></a>HA v různých oblastech pomocí brány VPN
 
-U globálně distribuovaných aplikací nebo pro regionální scénáře převzetí služeb při selhání s vysokou dostupností je potřeba propojit virtuální sítě napříč různými oblastmi. S vyhrazeným modulem HARDWAROVÉho zabezpečení Azure je možné dosáhnout vysoké dostupnosti pomocí VPN Gateway, která poskytuje zabezpečené tunelové propojení mezi oběma virtuálními sítěmi. Další informace o připojeních VNet-to-VNet pomocí VPN Gateway naleznete v článku s názvem [co je VPN Gateway?](../vpn-gateway/vpn-gateway-about-vpngateways.md#V2V)
+U globálně distribuovaných aplikací nebo pro regionální scénáře převzetí služeb při selhání s vysokou dostupností je potřeba propojit virtuální sítě napříč různými oblastmi. S vyhrazeným modulem HARDWAROVÉho zabezpečení Azure je možné dosáhnout vysoké dostupnosti pomocí VPN Gateway, která poskytuje zabezpečené tunelové propojení mezi oběma virtuálními sítěmi. Další informace o připojeních VNet-to-VNet pomocí VPN Gateway naleznete v článku s názvem [co je VPN Gateway?](../vpn-gateway/design.md#V2V)
 
 > [!NOTE]
 > Globální partnerské vztahy virtuálních sítí nejsou v současné době k dispozici ve scénářích připojení pro různé oblasti s vyhrazeným HSM a měli byste místo toho použít službu VPN Gateway. 
@@ -91,5 +91,5 @@ U globálně distribuovaných aplikací nebo pro regionální scénáře převze
 - [Možnosti podpory](supportability.md)
 - [Vysoká dostupnost](high-availability.md)
 - [Fyzické zabezpečení](physical-security.md)
-- [Monitorování](monitoring.md)
+- [Sledování](monitoring.md)
 - [Architektura nasazení](deployment-architecture.md)

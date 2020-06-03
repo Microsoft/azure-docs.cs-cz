@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: c6f3a912a9b3c9ff65fb9975eaf13b38ee3d9483
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 85376e1861108089cd7918b3b261f05433b59217
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195294"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298022"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Hugo ve službě Azure static Web Apps Preview
 
@@ -109,7 +109,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. V _skupiny prostředků_vyberte **Nový**. Do _název nové skupiny prostředků_zadejte **Hugo-static-App** a vyberte **OK**.
 
-1. Potom do pole **název** zadejte globálně jedinečný název vaší aplikace. Mezi platné znaky `a-z` patří `A-Z` , `0-9` a `-` . Tato hodnota se používá jako předpona adresy URL vaší statické aplikace ve formátu `https://<APP_NAME>....` .
+1. Dále do pole **název** zadejte název vaší aplikace. Mezi platné znaky `a-z` patří `A-Z` , `0-9` a `-` .
 
 1. V _oblasti oblast_vyberte dostupnou oblast, která je blízko vás.
 

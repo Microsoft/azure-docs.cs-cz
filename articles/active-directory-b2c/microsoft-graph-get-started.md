@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 32117d4bfcf0c0af94eced095b94ab0c1b6f88af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b62f30f428a0aaf5a564e2f2d2ad8d753dff7767
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78184335"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298911"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
 
@@ -36,9 +36,11 @@ Existují dva režimy komunikace, které můžete použít při práci s rozhran
 
 * **Interaktivní** – vhodný pro úlohy spouštěné po jednom použití účtu správce v tenantovi B2C k provádění úloh správy. Tento režim vyžaduje, aby se správce přihlásil pomocí svých přihlašovacích údajů před voláním rozhraní Microsoft Graph API.
 
-* **Automatizovaná** – pro naplánované nebo průběžné spouštění úloh používá tato metoda účet služby, který nakonfigurujete s oprávněními potřebnými k provádění úloh správy. Účet služby vytvoříte v Azure AD B2C tím, že zaregistrujete aplikaci, kterou vaše aplikace a skripty používají pro ověřování pomocí jejího *ID aplikace (klienta)* a udělení přihlašovacích údajů klienta OAuth 2,0. V tomto případě aplikace funguje stejně jako volání rozhraní API Microsoft Graph, nikoli uživatel s oprávněními správce jako v dříve popsané interaktivní metodě.
+* **Automatizovaná** – pro naplánované nebo průběžné spouštění úloh používá tato metoda účet služby, který nakonfigurujete s oprávněními potřebnými k provádění úloh správy. Účet služby vytvoříte v Azure AD B2C tím, že zaregistrujete aplikaci, kterou vaše aplikace a skripty používají pro ověřování pomocí jejího *ID aplikace (klienta)* a udělení **přihlašovacích údajů klienta OAuth 2,0** . V tomto případě aplikace funguje stejně jako volání rozhraní API Microsoft Graph, nikoli uživatel s oprávněními správce jako v dříve popsané interaktivní metodě.
 
 Scénář **automatizované** interakce povolíte tak, že vytvoříte registraci aplikace, která je uvedená v následujících částech.
+
+I když služba Azure AD B2C Authentication Service aktuálně nepodporuje tok udělení přihlašovacích údajů klienta OAuth 2,0, můžete nastavit tok přihlašovacích údajů klienta pomocí Azure AD a koncového bodu Microsoft Identity Platform/token pro aplikaci ve vašem tenantovi Azure AD B2C. Tenant Azure AD B2C sdílí některé funkce s klienty Azure AD Enterprise.
 
 ## <a name="register-management-application"></a>Registrovat aplikaci pro správu
 
@@ -70,12 +72,13 @@ Pokud vaše aplikace nebo skript potřebuje odstranit uživatele nebo aktualizov
 1. Vyberte roli **správce uživatele** .
 1. Vyberte **Přidat přiřazení**.
 1. Do textového pole pro **Výběr** zadejte název aplikace, kterou jste zaregistrovali dříve, například *managementapp1*. Vyberte aplikaci, která se zobrazí ve výsledcích hledání.
-1. Vyberte **Přidat**. Aby bylo možné plně šířit oprávnění, může trvat několik minut.
+1. Vyberte možnost **Přidat**. Aby bylo možné plně šířit oprávnění, může trvat několik minut.
 
 ## <a name="next-steps"></a>Další kroky
+Teď, když jste zaregistrovali aplikaci pro správu a udělili jí požadovaná oprávnění, můžou vaše aplikace a služby (například Azure Pipelines) používat své přihlašovací údaje a oprávnění k interakci s rozhraním Microsoft Graph API. 
 
-Teď, když jste zaregistrovali aplikaci pro správu a udělili jí požadovaná oprávnění, můžou vaše aplikace a služby (například Azure Pipelines) používat své přihlašovací údaje a oprávnění k interakci s rozhraním Microsoft Graph API.
-
+* [Získání přístupového tokenu z Azure AD](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
+* [Použití přístupového tokenu pro volání Microsoft Graph](https://docs.microsoft.com/graph/auth-v2-service#4-get-an-access-token)
 * [Operace B2C podporované nástrojem Microsoft Graph](microsoft-graph-operations.md)
 * [Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph](manage-user-accounts-graph-api.md)
 * [Získání protokolů auditu pomocí rozhraní API pro vytváření sestav Azure AD](view-audit-logs.md#get-audit-logs-with-the-azure-ad-reporting-api)

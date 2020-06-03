@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 91e7b1c0be9a38c3d79440f07d944d182980dc10
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 038d9ff39f388d1ef7b09b951c09dbe3420858b7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80159230"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298223"
 ---
 # <a name="use-visual-studio-and-visual-studio-code-to-build-iot-plug-and-play-devices"></a>Použití sady Visual Studio a Visual Studio Code k sestavování zařízení IoT technologie Plug and Play
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak:
 - Použijte vygenerovaný kód v projektu zařízení.
 - Iterujte tak, že znovu vygenerujete kostru kódu.
 
-Další informace o použití VS Code k vývoji zařízení IoT najdete v tématu [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench).
+Další informace o použití VS Code k vývoji zařízení IoT najdete v tématu [https://github.com/microsoft/vscode-iot-workbench](https://github.com/microsoft/vscode-iot-workbench) .
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -53,11 +53,11 @@ V VS Code pomocí **kombinace kláves CTRL + SHIFT + P** otevřete paletu přík
 
 - **Typ projektu**. Generátor kódu také generuje projekt CMake nebo Arduino. V současné době jsou podporované typy projektů:
 
-    - **Projekt cmake ve Windows**: pro projekt zařízení, který používá [cmake](https://cmake.org/) jako systém sestavení v systému Windows. Tato možnost generuje `CMakeLists.txt` s KONFIGURACEMI sady SDK pro zařízení ve stejné složce jako kód jazyka C.
-    - **Projekt cmake v systému Linux**: pro projekt zařízení, který používá [cmake](https://cmake.org/) jako systém sestavení na platformě Linux. Tato možnost generuje `CMakeLists.txt` s KONFIGURACEMI sady SDK pro zařízení ve stejné složce jako kód jazyka C.
+    - **Projekt cmake ve Windows**: pro projekt zařízení, který používá [cmake](https://cmake.org/) jako systém sestavení v systému Windows. Tato možnost generuje `CMakeLists.txt` s konfiguracemi sady SDK pro zařízení ve stejné složce jako kód jazyka C.
+    - **Projekt cmake v systému Linux**: pro projekt zařízení, který používá [cmake](https://cmake.org/) jako systém sestavení na platformě Linux. Tato možnost generuje `CMakeLists.txt` s konfiguracemi sady SDK pro zařízení ve stejné složce jako kód jazyka C.
     - **MXChip IoT DevKit Project**: pro projekt zařízení, který běží na zařízení [MXChip IoT DevKit](https://aka.ms/iot-devkit) . Tato možnost generuje projekt Arduino, který můžete [použít v vs Code](https://docs.microsoft.com/azure/iot-hub/iot-hub-arduino-iot-devkit-az3166-get-started) nebo v integrovaném vývojovém prostředí Arduino pro sestavování a spouštění na zařízení IoT DevKit.
 
-- **Typ sady SDK pro zařízení**. Pokud vyberete možnost CMake jako typ projektu, jedná se o krok ke konfiguraci způsobu, jakým bude generovaný kód zahrnovat sadu SDK pro zařízení `CMakeLists.txt`Azure IoT C v nástroji:
+- **Typ sady SDK pro zařízení**. Pokud vyberete možnost CMake jako typ projektu, jedná se o krok ke konfiguraci způsobu, jakým bude generovaný kód zahrnovat sadu SDK pro zařízení Azure IoT C v nástroji `CMakeLists.txt` :
 
     - **Prostřednictvím zdrojového kódu**: vygenerovaný kód spoléhá na [zdrojový kód sady SDK pro zařízení](https://github.com/Azure/azure-iot-sdk-c) , který se má zahrnout do a společně s ním společně sestavit. To se doporučuje, když jste upravili zdrojový kód sady SDK pro zařízení.
     - **Prostřednictvím Vcpkg**: generovaný kód spoléhá na to, že [sada SDK pro zařízení Vcpkg](https://github.com/microsoft/vcpkg/tree/master/ports/azure-iot-sdk-c) se má zahrnout do a sestavit společně s ní. Toto je doporučený způsob pro zařízení s Windows, Linux nebo macOS.
@@ -71,7 +71,7 @@ Po dokončení generování kódu rozšíření otevře nové okno VS Code s kó
 
 1. V VS Code pomocí **kombinace kláves CTRL + SHIFT + P** otevřete paletu příkazů, zadejte a vyberte **C/C++: upravit konfigurace (JSON)** a otevřete soubor **c_cpp_properties. JSON** .
 
-1. Do `includePath` části přidejte cestu k sadě SDK pro zařízení:
+1. Do části přidejte cestu k sadě SDK pro zařízení `includePath` :
 
     ```json
     "includePath": [
@@ -92,14 +92,14 @@ Sestavte kód zařízení společně se sadou SDK zařízení C Vcpkg pomocí CM
 
 1. Otevřete aplikaci terminálu.
 
-1. `apt-get` Pomocí příkazu nainstalujte **RSZ**, `cmake` **Git**, a všechny závislosti:
+1. Pomocí příkazu nainstalujte **RSZ**, **Git**, `cmake` a všechny závislosti `apt-get` :
 
     ```bash
     sudo apt-get update
     sudo apt-get install -y git cmake build-essential curl libcurl4-openssl-dev libssl-dev uuid-dev
     ```
 
-    Ověřte, že verze `cmake` nástroje je nad **2.8.12** a verze **RSZ** je vyšší než **4.4.7**.
+    Ověřte, že verze nástroje `cmake` je nad **2.8.12** a verze **RSZ** je vyšší než **4.4.7**.
 
     ```bash
     cmake --version
@@ -127,7 +127,7 @@ Sestavte kód zařízení společně se sadou SDK zařízení C Vcpkg pomocí CM
     ./vcpkg install azure-iot-sdk-c[public-preview,use_prov_client]
     ```
 
-1. `cmake` Vytvoření podadresáře ve složce obsahuje zástupný kód generovaného kódu a přejděte do této složky:
+1. Vytvoření `cmake` podadresáře ve složce obsahuje zástupný kód generovaného kódu a přejděte do této složky:
 
     ```bash
     mkdir cmake
@@ -193,7 +193,7 @@ Následující kroky ukazují, jak vytvořit kód zařízení spolu se zdrojový
 
 1. Otevřete aplikaci Terminal.
 
-1. K instalaci všech závislostí použijte [homebrew](https://homebrew.sh) :
+1. K instalaci všech závislostí použijte [homebrew](https://brew.sh) :
 
     ```bash
     brew update
@@ -247,7 +247,7 @@ Generátor kódu může znovu vygenerovat kód, pokud aktualizujete soubory DCM 
 
 1. Vyberte **znovu vytvořit kód pro {Project Name}**.
 
-1. Generátor kódu používá předchozí nastavení, které jste nakonfigurovali a znovu generuje kód. Nepřepisuje však soubory, které mohou obsahovat uživatelský kód, například `main.c` a. `{project_name}_impl.c`
+1. Generátor kódu používá předchozí nastavení, které jste nakonfigurovali a znovu generuje kód. Nepřepisuje však soubory, které mohou obsahovat uživatelský kód, například `main.c` a `{project_name}_impl.c` .
 
 > [!NOTE]
 > Pokud aktualizujete identifikátor URN v souboru rozhraní, bude zpracován jako nové rozhraní. Když kód znovu vygenerujete, generátor kódu vygeneruje kód pro rozhraní, ale nepřepíše původní `{project_name}_impl.c` soubor v souboru.

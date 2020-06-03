@@ -3,12 +3,12 @@ title: Zálohování Azure File Share
 description: Naučte se zálohovat sdílené složky Azure v trezoru Recovery Services.
 ms.topic: conceptual
 ms.date: 03/05/2020
-ms.openlocfilehash: 5d4129b3618810d80df7d5289a7a7417d74fd077
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 0a03871b61ab00f2dae18ba11a5a9127680a646b
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259013"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299226"
 ---
 # <a name="about-azure-file-share-backup"></a>Zálohování Azure File Share
 
@@ -16,12 +16,12 @@ Zálohování sdílené složky Azure je nativní cloudové řešení zálohová
 
 ## <a name="key-benefits-of-azure-file-share-backup"></a>Klíčové výhody zálohování Azure File Share
 
-* Nulová infrastruktura: ke konfiguraci ochrany sdílených složek není nutné žádné nasazení.
-* Přizpůsobené uchovávání: v závislosti na vašich požadavcích můžete nakonfigurovat zálohy s denním/týdenním/měsíčním/ročním uchováváním.
-* Integrované možnosti správy: můžete naplánovat zálohování a zadat požadovanou dobu uchování bez další režie vyřazování dat.
-* Okamžité obnovení: zálohování sdílené složky Azure používá snímky sdílené složky, takže můžete vybrat jenom soubory, které se mají okamžitě obnovit.
-* Výstrahy a vytváření sestav: můžete nakonfigurovat výstrahy pro selhání zálohování a obnovení a použít řešení pro vytváření sestav, které poskytuje Azure Backup, abyste získali přehled o zálohách ve sdílených složkách souborů.
-* Ochrana před náhodným odstraněním sdílených složek: Azure Backup povoluje [funkci obnovitelného odstranění](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) na úrovni účtu úložiště s dobou uchování 14 dní. I když škodlivý objekt actor odstraní sdílenou složku, obsah sdílené složky a body obnovení (snímky) se uchovávají pro konfigurovatelnou dobu uchování, což umožňuje úspěšné a úplné obnovení zdrojového obsahu a snímků bez ztráty dat.
+* **Nulová infrastruktura**: ke konfiguraci ochrany sdílených složek není nutné žádné nasazení.
+* **Přizpůsobené uchovávání**: v závislosti na vašich požadavcích můžete nakonfigurovat zálohy s denním/týdenním/měsíčním/ročním uchováváním.
+* **Integrované možnosti správy**: můžete naplánovat zálohování a zadat požadovanou dobu uchování bez další režie vyřazování dat.
+* **Okamžité obnovení**: zálohování sdílené složky Azure používá snímky sdílené složky, takže můžete vybrat jenom soubory, které se mají okamžitě obnovit.
+* **Výstrahy a vytváření sestav**: můžete nakonfigurovat výstrahy pro selhání zálohování a obnovení a použít řešení pro vytváření sestav, které poskytuje Azure Backup, abyste získali přehled o zálohách ve sdílených složkách souborů.
+* **Ochrana před náhodným odstraněním sdílených složek**: Azure Backup povoluje [funkci obnovitelného odstranění](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion) na úrovni účtu úložiště s dobou uchování 14 dní. I když škodlivý objekt actor odstraní sdílenou složku, obsah sdílené složky a body obnovení (snímky) se uchovávají pro konfigurovatelnou dobu uchování, což umožňuje úspěšné a úplné obnovení zdrojového obsahu a snímků bez ztráty dat.
 
 ## <a name="architecture"></a>Architektura
 

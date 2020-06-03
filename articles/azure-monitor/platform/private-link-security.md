@@ -6,12 +6,12 @@ ms.author: nikiest
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.subservice: ''
-ms.openlocfilehash: 4ef7e4058c4f9cb458f4036ad4b315f5e85036b1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 95345ba864d498190186e1a366c8551be97c33f5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170711"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299632"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Monitor
 
@@ -74,11 +74,17 @@ Pokud se například vaše interní virtuální sítě VNet1 a VNet2 by měly p�
 
 Začněte vytvořením prostředku oboru privátního propojení Azure Monitor.
 
-1. V Azure Portal **vytvořte prostředek** a vyhledejte **Azure monitor oboru privátního odkazu**. 
-2. Klikněte na **vytvořit**. 
-3. Vyberte předplatné a skupinu prostředků. 
-4. Zadejte název AMPLS. Je nejvhodnější použít název, který je jasný a jaký je účel a hranice zabezpečení, pro které se rozsah používá, aby někdo nechtěně nenarušil hranice zabezpečení sítě. Například "AppServerProdTelem". 
+1. V Azure Portal **vytvořte prostředek** a vyhledejte **Azure monitor oboru privátního odkazu**.
+
+   ![Najít Azure Monitor oboru privátního odkazu](./media/private-link-security/ampls-find-1c.png)
+
+2. Klikněte na **vytvořit**.
+3. Vyberte předplatné a skupinu prostředků.
+4. Zadejte název AMPLS. Je nejvhodnější použít název, který je jasný a jaký je účel a hranice zabezpečení, pro které se rozsah používá, aby někdo nechtěně nenarušil hranice zabezpečení sítě. Například "AppServerProdTelem".
 5. Klikněte na tlačítko **zkontrolovat + vytvořit**. 
+
+   ![Vytvořit Azure Monitor obor privátních odkazů](./media/private-link-security/ampls-create-1d.png)
+
 6. Potvrďte ověření a pak klikněte na **vytvořit**.
 
 ## <a name="connect-azure-monitor-resources"></a>Připojit Azure Monitor prostředky
@@ -224,3 +230,6 @@ Pokud chcete, aby mohl agent Log Analytics stahovat balíčky řešení, přidej
 |Azure Government | usbn1oicore.blob.core.usgovcloudapi.net | 443 |  Odchozí
 |Azure (Čína) 21Vianet      | mceast2oicore.blob.core.chinacloudapi.cn| 443 | Odchozí
 
+## <a name="next-steps"></a>Další kroky
+
+- Informace o [privátním úložišti](private-storage.md)

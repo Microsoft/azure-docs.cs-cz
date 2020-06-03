@@ -9,12 +9,12 @@ ms.date: 01/21/2020
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 321417813346e7d5c92876c22516c627aff5ab12
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76310114"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300745"
 ---
 # <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Kurz: Aktualizace zásob pomocí portálu Azure Portal a témat/odběrů
 
@@ -55,7 +55,7 @@ Každý [odběr tématu](service-bus-messaging-overview.md#topics) může přij�
 
 Pokud zřídíte obor názvů a téma s odběry a máte potřebná pověření, můžete u odběrů vytvořit pravidla filtrů a poté odesílat a přijímat zprávy. Kód si můžete zkontrolovat v [této složce s ukázkami na GitHubu](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/azure-servicebus/TopicFilters).
 
-### <a name="send-and-receive-messages"></a>Odesílání a příjem zpráv
+## <a name="send-and-receive-messages"></a>Odesílání a příjem zpráv
 
 Při spuštění kódu postupujte takto:
 

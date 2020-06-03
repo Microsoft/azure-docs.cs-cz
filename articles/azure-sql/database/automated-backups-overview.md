@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
 manager: craigg
 ms.date: 12/13/2019
-ms.openlocfilehash: 7ee69feccb59270d14e86185d0cd6112e5e2ab4a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a99045359d9d6c6a327ef646ba15457c3e4fbbda
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190074"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299804"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -36,8 +36,8 @@ SQL Database i spravované instance SQL používají SQL Server technologie k vy
 
 Tyto zálohy rovněž umožňují:
 
-- **Obnovte stávající databázi k určitému bodu v čase v minulosti** v době uchování pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. Pro databáze s jednou a ve fondu vytvoří tato operace novou databázi na stejném serveru jako původní databázi. Ve spravované instanci může tato operace vytvořit kopii databáze nebo stejnou nebo jinou spravovanou instanci v rámci stejného předplatného.
-- **Obnovení odstraněné databáze na čas odstranění** nebo kdykoli v rámci doby uchování. Odstraněnou databázi lze obnovit pouze na stejném serveru nebo ve spravované instanci, kde byla vytvořena původní databáze.
+- **Obnovte stávající databázi k určitému bodu v čase v minulosti** v době uchování pomocí Azure Portal, Azure PowerShell, rozhraní příkazového řádku Azure nebo REST API. Pro databáze s jednou a ve fondu vytvoří tato operace novou databázi na stejném serveru ve stejném předplatném jako původní databáze. Ve spravované instanci může tato operace vytvořit kopii databáze nebo stejnou nebo jinou spravovanou instanci v rámci stejného předplatného.
+- **Obnovení odstraněné databáze na čas odstranění** nebo kdykoli v rámci doby uchování. Odstraněnou databázi lze obnovit pouze na stejném serveru nebo spravované instanci a ve stejném předplatném, ve kterém byla vytvořena původní databáze.
 - **Obnovte databázi do jiné geografické oblasti**. Geografické obnovení umožňuje obnovení z geografické havárie, když nemůžete získat přístup k serveru a databázi. Vytvoří novou databázi na jakémkoli existujícím serveru, kdekoli na světě.
 - **Obnovte databázi z konkrétní dlouhodobé zálohy** na izolovanou databázi nebo databázi ve fondu, pokud je databáze nakonfigurovaná s použitím dlouhodobých zásad uchovávání informací (LTR). LTR umožňuje obnovit starou verzi databáze pomocí [Azure Portal](long-term-backup-retention-configure.md#using-azure-portal) nebo [Azure PowerShell](long-term-backup-retention-configure.md#using-powershell) , aby splňovala požadavek na dodržování předpisů nebo spustil starou verzi aplikace. Další informace najdete v tématu [Dlouhodobé uchovávání](long-term-retention-overview.md).
 

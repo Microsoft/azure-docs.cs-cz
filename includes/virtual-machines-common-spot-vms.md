@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 10/23/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 2f8d55669798765cf24e13e95b261cbe4f0e9e3a
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e7dbac1f4fad940b817befa3a45447cf7367c28c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83868021"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317442"
 ---
 Použití přímých virtuálních počítačů vám umožní využít výhod naší nevyužité kapacity s významnou úsporou nákladů. V jakémkoli okamžiku, kdy Azure potřebuje kapacitu zpátky, vyřadí infrastruktura Azure virtuální počítače na místě. Proto jsou virtuální počítače Skvělé pro úlohy, které mohou zpracovávat přerušení, jako jsou úlohy dávkového zpracování, vývojové a testovací prostředí, velké výpočetní úlohy a další.
 
@@ -90,7 +90,7 @@ S proměnnými cenami máte možnost nastavit maximální cenu v USD (USD), kter
 | Poskytovatel cloudových služeb (CSP) | [Obraťte se na svého partnera.](https://docs.microsoft.com/partner-center/azure-plan-get-started) |
 | Smlouva se zákazníkem Microsoftu | Ano                               |
 | Výhody                     | Není k dispozici                     |
-| Financovan                    | Není k dispozici                     |
+| Financovan                    | Ano                               |
 | Bezplatná zkušební verze                   | Není k dispozici                     |
 
 

@@ -5,14 +5,14 @@ author: harelbr
 ms.author: harelbr
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 2/24/2020
+ms.date: 6/2/2020
 ms.subservice: alerts
-ms.openlocfilehash: 02424d7df24305d6642c364f12e3ed6e8674a01d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9a1980eccb42342ebc5cb739b2c1f5a539e9f18
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80677012"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299294"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Vytvoření upozornění na metriku pomocí šablony Resource Manageru
 
@@ -21,7 +21,7 @@ ms.locfileid: "80677012"
 V tomto článku se dozvíte, jak můžete pomocí [šablony Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md) nakonfigurovat [novější výstrahy metriky](../../azure-monitor/platform/alerts-metric-near-real-time.md) v Azure monitor. Šablony Správce prostředků umožňují programově nastavit výstrahy konzistentně a reprodukovatelným způsobem napříč vašimi prostředími. V [této sadě typů prostředků](../../azure-monitor/platform/alerts-metric-near-real-time.md#metrics-and-dimensions-supported)jsou aktuálně k dispozici novější výstrahy metriky.
 
 > [!IMPORTANT]
-> Šablona prostředků pro vytváření výstrah metrik pro typ prostředku: pracovní prostor Azure Log Analytics (tj. `Microsoft.OperationalInsights/workspaces`) vyžaduje další kroky. Podrobnosti najdete v článku o [výstraze metriky pro protokoly – šablona prostředků](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
+> Šablona prostředků pro vytváření výstrah metrik pro typ prostředku: pracovní prostor Azure Log Analytics (tj.) `Microsoft.OperationalInsights/workspaces` vyžaduje další kroky. Podrobnosti najdete v článku o [výstraze metriky pro protokoly – šablona prostředků](../../azure-monitor/platform/alerts-metric-logs.md#resource-template-for-metric-alerts-for-logs).
 
 Základní postup je následující:
 
@@ -567,7 +567,7 @@ Novější výstrahy metrik podporují upozorňování na multidimenzionální m
 
 Při použití dimenzí v pravidle výstrahy obsahujícím více kritérií Pamatujte na následující omezení:
 - V rámci každého kritéria můžete vybrat jenom jednu hodnotu na dimenzi.
-- Jako hodnotu dimenze nelze\*použít "".
+- \*Jako hodnotu dimenze nelze použít "".
 - Pokud metriky, které jsou konfigurovány v různých kriteriích, podporují stejnou dimenzi, pak musí být nakonfigurovaná hodnota dimenze explicitně nastavena stejným způsobem pro všechny tyto metriky (v příslušných kritériích).
     - V následujícím příkladu, protože **transakce** i metriky **SuccessE2ELatency** mají dimenzi **ApiName** a *Criterion1* Určuje hodnotu *getblob* pro dimenzi **ApiName** , pak *criterion2* musí také nastavit hodnotu *getblob* pro dimenzi **ApiName** .
 
@@ -807,7 +807,7 @@ Pomocí následující šablony můžete vytvořit pravidlo statické výstrahy 
 Jedno pravidlo výstrahy může sledovat několik časových řad metrik najednou, což má za následek méně pravidel upozornění, která se mají spravovat.
 
 V následujícím příkladu pravidlo výstrahy monitoruje kombinace hodnot dimenzí **ResponseType** a **ApiName** dimenzí pro metriku **transakcí** :
-1. **ResponsType** – použití\*zástupného znaku znamená, že pro každou hodnotu dimenze **ResponseType** , včetně budoucích hodnot, se monitoruje různou časovou řadou individuálně.
+1. **ResponsType** – použití \* zástupného znaku znamená, že pro každou hodnotu dimenze **ResponseType** , včetně budoucích hodnot, se monitoruje různou časovou řadou individuálně.
 2. **ApiName** -jiná časová řada se monitoruje pouze pro hodnoty dimenze **getblob** a **PutBlob** .
 
 Například několik možných časových řad, které jsou monitorovány pomocí tohoto pravidla výstrahy:
@@ -3549,7 +3549,6 @@ Následující kód JSON uložte jako availabilityalert. JSON pro účely tohoto
         ],
         "evaluationFrequency": "PT1M",
         "windowSize": "PT5M",
-        "templateType": 0,
         "criteria": {
           "odata.type": "Microsoft.Azure.Monitor.WebtestLocationAvailabilityCriteria",
           "webTestId": "[resourceId('Microsoft.Insights/webtests', variables('pingTestName'))]",
@@ -3572,7 +3571,7 @@ Hodnoty parametrů můžete nastavit buď na příkazovém řádku, nebo pomocí
 
 > [!NOTE]
 >
-> `&amp`; je odkaz na entitu HTML pro &. Parametry adresy URL jsou pořád oddělené jednou &, ale pokud si adresu URL ve formátu HTML zmiňujete, budete ji muset zakódovat. Takže pokud máte v hodnotě parametru pingURL nějaké "&", musíte ho řídicím znakem "`&amp`;".
+> `&amp`; je odkaz na entitu HTML pro &. Parametry adresy URL jsou pořád oddělené jednou &, ale pokud si adresu URL ve formátu HTML zmiňujete, budete ji muset zakódovat. Takže pokud máte v hodnotě parametru pingURL nějaké "&", musíte ho řídicím znakem " `&amp` ;".
 
 Níže uvedený formát JSON uložte jako availabilityalert. Parameters. JSON a upravte ho podle potřeby.
 

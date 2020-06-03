@@ -3,12 +3,12 @@ title: Ukázky šablon Azure Resource Manager
 description: Vyhledání ukázek šablon Azure Resource Manager k nasazení Azure Container Instances v různých konfiguracích
 ms.topic: article
 ms.date: 03/07/2019
-ms.openlocfilehash: a8f3c81c539562a3c56e4822cf6e4df77d04928f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7208e1b4b67879979507cc451d40a188a84373de
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75981653"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299753"
 ---
 # <a name="azure-resource-manager-templates-for-azure-container-instances"></a>Šablony Azure Resource Manager pro Azure Container Instances
 
@@ -30,7 +30,7 @@ Možnosti nasazení najdete v části věnované [nasazení](#deployment) . Chce
 | **Sítě** ||
 | [Kontejner vystavený UDP][net-udp] | Nasadí kontejner systému Windows nebo Linux, který zveřejňuje port UDP. |
 | [Kontejner pro Linux s veřejnou IP adresou][net-publicip] | Nasadí jeden kontejner pro Linux přístupný prostřednictvím veřejné IP adresy. |
-| [Nasazení skupiny kontejnerů pomocí virtuální sítě (Preview)][net-vnet] | Nasadí novou virtuální síť, podsíť, síťový profil a skupinu kontejnerů. |
+| [Nasazení skupiny kontejnerů pomocí virtuální sítě][net-vnet] | Nasadí novou virtuální síť, podsíť, síťový profil a skupinu kontejnerů. |
 | **Prostředky Azure** ||
 | [Vytvoření sdílené složky Azure Storage účtu a souborů][az-files] | Pomocí Azure CLI v instanci kontejneru vytvoří účet úložiště a sdílenou složku služby soubory Azure.
 

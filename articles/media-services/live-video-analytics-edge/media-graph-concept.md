@@ -1,16 +1,16 @@
 ---
 title: Koncept Media graphu – Azure
-description: Media Graph umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde se mají výsledky doručovat. Tento článek obsahuje podrobný popis konceptu Media graphu.
+description: Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. Tento článek obsahuje podrobný popis konceptu Media graphu.
 ms.topic: conceptual
-ms.date: 04/27/2020
-ms.openlocfilehash: ee055c34fd37d2d1cc5e7d0bb5147c945dcbff94
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.date: 05/01/2020
+ms.openlocfilehash: 02e960e917a059afdb0d688c7429d27d8e8a48eb
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84260964"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300803"
 ---
-# <a name="media-graph-concept"></a>Koncept Media graphu
+# <a name="media-graph"></a>Graf médií
 
 ## <a name="suggested-pre-reading"></a>Navrhované před čtením
 
@@ -19,10 +19,11 @@ ms.locfileid: "84260964"
 
 ## <a name="overview"></a>Přehled
 
-Media Graph umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde se mají výsledky doručovat. Mediální graf se skládá z uzlů zdrojového, procesoru a jímky. Diagram níže poskytuje grafické znázornění grafu médií.   
+Mediální graf umožňuje definovat, odkud se mají média zachytit, jak by měla být zpracována a kde by měly být doručeny výsledky. To provedete tak, že podle potřeby propojíte součásti nebo uzly. Diagram níže poskytuje grafické znázornění grafu médií.  
 
 ![Grafická reprezentace mediálního grafu](./media/media-graph/overview.png)
 
+Live video Analytics na IoT Edge podporuje různé typy zdrojů, procesorů a jímky.
 
 * **Zdrojové uzly** umožňují zachytávání médií do mediálního grafu. Médium v tomto kontextu je koncepční, může se jednat o zvukový stream, datový proud videa, datový proud nebo datový proud, který v jednom datovém proudu obsahuje zvuk, video nebo data dohromady.
 * **Uzly procesoru** umožňují zpracování médií v mediálním grafu.
@@ -30,7 +31,9 @@ Media Graph umožňuje definovat, odkud se mají média zachytit, jak by měla b
 
 ## <a name="media-graph-topologies-and-instances"></a>Topologie a instance mediálního grafu 
 
-Live video Analytics na IoT Edge umožňuje spravovat mediální grafy prostřednictvím dvou konceptů – "topologie grafu" a "instance grafu". Topologie grafu umožňuje definovat podrobný plán grafu s parametry jako zástupné symboly pro hodnoty. Topologie definuje, které uzly se použijí v mediálním grafu a jak jsou připojené v rámci Media graphu. Hodnoty parametrů lze zadat při vytváření instancí grafu odkazujících na topologii. To umožňuje vytvořit více instancí odkazujících na stejnou topologii, ale s různými hodnotami pro parametry zadané v topologii. 
+Live video Analytics na IoT Edge umožňuje spravovat mediální grafy prostřednictvím dvou konceptů – "topologie grafu" a "instance grafu". Topologie grafu umožňuje definovat podrobný plán grafu s parametry jako zástupné symboly pro hodnoty. Topologie definuje, které uzly se použijí v mediálním grafu a jak jsou připojené v rámci Media graphu. Pokud byste například chtěli nahrávat informační kanál z kamery, museli byste graf se zdrojovým uzlem, který přijímá video, a uzlem jímky, který zapisuje video.
+
+Hodnoty pro parametry v topologii jsou určeny při vytváření instancí grafu, které odkazují na topologii. To umožňuje vytvořit více instancí odkazujících na stejnou topologii, ale s různými hodnotami pro parametry zadané v topologii. V předchozím příkladu byste mohli použít parametry, které reprezentují IP adresu kamery, a název zaznamenaného videa. Můžete vytvořit mnoho instancí grafu s touto topologií-jedna instance pro každou kameru v budově, třeba, každou s konkrétní IP adresou a konkrétním názvem.
 
 ## <a name="media-graph-states"></a>Stavy mediálního grafu  
 
@@ -56,11 +59,11 @@ Live video Analytics na IoT Edge podporuje následující typy uzlů v rámci me
 
 #### <a name="rtsp-source"></a>Zdroj RTSP 
 
-Zdroj RTSP povoluje záznamová média ze serveru [RTSP](https://tools.ietf.org/html/rfc2326) . Protokol RTSP slouží k navázání a řízení relací multimédií mezi serverem a klientem. Uzel zdroje RTSP v mediálním grafu funguje jako klient a může vytvořit relaci se zadaným serverem RTSP. Řada zařízení, jako je většina [fotoaparátů IP](https://en.wikipedia.org/wiki/IP_camera) , má integrovaný server RTSP. [ONVIF](https://www.onvif.org/) pověření RTSP, která budou podporována v definici [profilů G, S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibilních zařízení. Uzel zdroje RTSP v aplikaci Media Graph vyžaduje zadání adresy URL služby RTSP spolu s přihlašovacími údaji pro povolení ověřeného připojení.
+Zdrojový uzel RTSP umožňuje ingestovat média z [RTSP] ( https://tools.ietf.org/html/rfc2326 serveru. Fotoaparáty a kamery založené na protokolu IP odesílají data do protokolu s názvem RTSP (Real-time-streaming Protocol), který se liší od jiných typů zařízení, jako jsou telefony a video kamery. Tento protokol se používá k navázání a řízení relací multimédií mezi serverem (fotoaparátem) a klientem. Uzel zdroje RTSP v mediálním grafu funguje jako klient a může vytvořit relaci se serverem RTSP. Řada zařízení, jako je většina [fotoaparátů IP](https://en.wikipedia.org/wiki/IP_camera) , má integrovaný server RTSP. [ONVIF](https://www.onvif.org/) pověření RTSP, která budou podporována v definici [profilů G, S & T](https://www.onvif.org/wp-content/uploads/2019/12/ONVIF_Profile_Feature_overview_v2-3.pdf) kompatibilních zařízení. Zdrojový uzel RTSP vyžaduje, abyste zadali adresu URL protokolu RTSP spolu s přihlašovacími údaji, aby bylo možné povolit ověřované připojení.
 
 #### <a name="iot-hub-message-source"></a>IoT Hub zdroj zprávy 
 
-Stejně jako u jiných [IoT Edgech modulů](../../iot-edge/iot-edge-glossary.md#iot-edge-module)může analýza živých videí v IoT Edge modulu přijímat zprávy prostřednictvím [centra IoT Edge](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). Tyto zprávy lze odesílat z jiných modulů nebo aplikací spuštěných na hraničním zařízení nebo z cloudu. Tyto zprávy mohou být doručeny (směrovány) do [pojmenovaného vstupu](../../iot-edge/module-composition.md#sink) v modulu. Zdroj zprávy IoT Hub umožňuje směrovat tyto zprávy do instance mediálního grafu. Tyto zprávy nebo signály se pak dají použít interně v mediálním grafu, obvykle aktivovat brány signálu (viz [procesor brány signálu](#signal-gate-processor) níže). 
+Stejně jako u jiných [IoT Edgech modulů](../../iot-edge/iot-edge-glossary.md#iot-edge-module)může analýza živých videí v IoT Edge modulu přijímat zprávy prostřednictvím [centra IoT Edge](../../iot-edge/iot-edge-glossary.md#iot-edge-hub). Tyto zprávy lze odesílat z jiných modulů nebo aplikací spuštěných na hraničním zařízení nebo z cloudu. Tyto zprávy jsou doručeny (směrovány) do [pojmenovaného vstupu](../../iot-edge/module-composition.md#sink) v modulu. Uzel zdroje zprávy IoT Hub umožňuje takovým zprávám dosáhnout multimediálního grafu. Tyto zprávy nebo signály se pak dají v mediálním grafu použít interně, obvykle aktivovat brány signálu (viz oznámení [signálů](#signal-gate-processor) níže). 
 
 Můžete mít například modul IoT Edge, který generuje zprávu při otevření dvířek. Zpráva z tohoto modulu se dá směrovat do centra IoT Edge, ze kterého se pak dá směrovat do zdroje zpráv služby IoT Hub v mediálním grafu. V mediálním grafu může zdroj zprávy služby IoT Hub předat událost procesoru brány signálu, který potom může zapnout záznam videa ze zdroje RTSP do souboru. 
 
@@ -68,42 +71,46 @@ Můžete mít například modul IoT Edge, který generuje zprávu při otevřen�
 
 #### <a name="motion-detection-processor"></a>Procesor detekce pohybu 
 
-Procesor detekce pohybu umožňuje detekovat pohyb v živém videu. Prověřuje příchozí video a určí, jestli se ve videu nachází pohyb. Pokud se zjistí pohyb, předá se videu do uzlu pro příjem dat a vygeneruje událost. Procesor detekce pohybu (ve spojení s jinými uzly multimediálního grafu) se dá použít k aktivaci nahrávání příchozího videa, když se zjistí pohyb.
+Uzel procesoru pro detekci pohybu umožňuje detekovat pohyb v živém videu. Prověřuje příchozí snímky videa a určí, zda se ve videu nachází pohyb. Pokud se zjistí pohyb, předá se snímky videa komponentě pro příjem dat a vygeneruje událost. Uzel procesoru pro detekci pohybu (ve spojení s ostatními uzly) se dá použít k aktivaci nahrávání příchozího videa, když se zjistí pohyb.
 
 #### <a name="frame-rate-filter-processor"></a>Procesor filtru snímkové rychlosti  
 
-Procesor filtru frekvence snímků vám umožní vzorkovat snímky z příchozího streamu videa v zadaném kmitočtu snímků. Díky tomu můžete snížit počet rámců odeslaných do uzlů nefunkčních toků (například procesor rozšíření HTTP) pro další zpracování.
+Uzel procesor filtru frekvence snímků umožňuje vzorkovat snímky z příchozího streamu videa v zadané míře. Díky tomu můžete snížit počet rámců poslaných komponentám mimo datový proud (například uzel procesoru rozšíření HTTP) pro další zpracování.
 
-#### <a name="http-extension-processor"></a>Procesor rozšíření HTTP 
+#### <a name="http-extension-processor"></a>Procesor rozšíření HTTP
 
-Procesor rozšíření HTTP umožňuje zapojit vlastní AI do mediálního grafu. Procesor rozšíření HTTP přebírá jako vstupní Dekódovatelné snímky videa a přenáší takové snímky na koncový bod HTTP. Procesor nabízí možnost ověřování v případě potřeby u koncového bodu HTTP. Kromě toho procesor obsahuje vestavěný formátovací modul obrázku, který umožňuje škálování a kódování snímků videa před jejich přeposíláním. Změna měřítka obsahuje možnosti pro poměr stran obrazu, které mají být zachovány, doplněny nebo roztaženy, zatímco kódování poskytuje možnosti pro různá kódování obrázků, jako je JPEG, PNG nebo BMP.
+Uzel procesoru rozšíření HTTP umožňuje připojit vlastní modul IoT Edge k mediálnímu grafu. Tento uzel přijímá jako vstup Dekódovatelné snímky videa a přenáší takové snímky do koncového bodu HTTP REST vystaveného vaším modulem. V případě potřeby je možné tento uzel ověřit pomocí koncového bodu REST. Kromě toho má uzel vestavěný formátovací modul obrázků pro škálování a kódování snímků videa před jejich přenosem do koncového bodu REST. Měřítko obsahuje možnosti pro poměr stran obrázku, který má být zachován, doplněn nebo roztažen. Image Encoder podporuje formáty JPEG, PNG nebo BMP.
 
 #### <a name="signal-gate-processor"></a>Procesor brány signálu  
 
-Procesor brány signálu umožňuje podmíněné přeposílání médií z jednoho uzlu do druhého. Funguje taky jako vyrovnávací paměť, která umožňuje synchronizaci médií a událostí. Příkladem případu použití je vložení procesoru brány signálu mezi zdroj RTSP a jímku assetu a používání výstupu procesoru snímače pohybu ke spuštění brány. Pomocí takového mediálního grafu můžete aktivovat nahrávání médií jenom v případě, že se ve příchozím videu zjistí pohyb. 
+Uzel procesoru brány signálu umožňuje podmíněně předává média z jednoho uzlu do druhého. Funguje taky jako vyrovnávací paměť, která umožňuje synchronizaci médií a událostí. Typickým případem použití je vložení uzlu procesoru brány signálu mezi zdrojovým uzlem RTSP a uzlem jímky assetu a použitím výstupu uzlu procesoru snímače pohybu aktivovat tuto bránu. V takovém mediálním grafu budete nahrávat video jenom v případě, že se zjistí pohyb.
 
 ### <a name="sinks"></a>Jímky  
 
 #### <a name="asset-sink"></a>Jímka assetu  
 
-Jímka assetu umožňuje mediálnímu grafu zapisovat data médií (videa nebo zvuku) do prostředku Azure Media Services. Další informace o prostředcích a jejich roli při zaznamenávání a přehrávání médií najdete v části [Asset](terminology.md#asset) .  
+Uzel jímka assetu umožňuje zapisovat data médií (videa nebo zvuku) do prostředku Azure Media Services. V mediálním grafu může být pouze jeden uzel jímky assetu. Další informace o prostředcích a jejich roli při zaznamenávání a přehrávání médií najdete v části [Asset](terminology.md#asset) . Podrobnosti o tom, jak se používají vlastnosti tohoto uzlu, najdete v článku o [průběžném nahrávání videa](continuous-video-recording-concept.md) .
 
 #### <a name="file-sink"></a>Jímka souborů  
 
-Jímka souborů umožňuje mediálnímu grafu zapisovat data médií (videa nebo zvuku) do umístění v místním systému souborů IoT Edgeho zařízení. Jímka souboru musí být pro procesor brány signálu. Tím se omezí doba trvání výstupních souborů na hodnoty zadané ve vlastnostech procesoru brány signálu.
+Uzel jímky souborů umožňuje zapisovat data médií (videa nebo zvuku) do umístění v místním systému souborů IoT Edgeho zařízení. V mediálním grafu může být jenom jeden uzel jímky souborů a musí se jednat o uzel procesoru brány signálu. Tím se omezí doba trvání výstupních souborů na hodnoty zadané ve vlastnostech uzlu procesoru brány signálu.
 
 #### <a name="iot-hub-message-sink"></a>IoT Hub jímka zpráv  
 
-IoT Hub jímka zpráv umožňuje publikovat události do centra IoT Edge. Hraniční centrum může následně směrovat data do jiných modulů nebo aplikací na hraničním zařízení nebo do IoT Hub v cloudu (na trasách uvedených v manifestu nasazení). Jímka IoT Hub zpráv může přijímat události z nadřazených procesorů, jako je procesor detekce pohybu, nebo z externí služby odvození přes procesor rozšíření HTTP.
+Uzel jímky zpráv IoT Hub umožňuje publikovat události do centra IoT Edge. Centrum IoT Edge pak může směrovat data do jiných modulů nebo aplikací na hraničním zařízení nebo do IoT Hub v cloudu (na trasách uvedených v manifestu nasazení). Uzel jímky zpráv IoT Hub může přijímat události z nadřazených procesorů, jako je například uzel procesoru detekce pohybu, nebo externí odvozenou službu přes uzel procesoru rozšíření HTTP.
+
+## <a name="rules-on-the-use-of-nodes"></a>Pravidla pro použití uzlů
+
+Další pravidla týkající se použití různých uzlů v mediálním grafu najdete v tématu [kvóty](quotas-limitations.md#limitations-on-graph-topologies-at-preview) .
 
 ## <a name="scenarios"></a>Scénáře
 
-Pomocí kombinace uzlů zdrojového kódu, procesoru a jímky, které jsou definované výše, můžete vytvářet grafy médií pro celou řadu scénářů. Následují příklady scénářů:
+Pomocí kombinace zdrojů, procesorů a umyvadel definovaných výše můžete vytvořit graf médií pro celou řadu scénářů, které zahrnují analýzu živého videa. Příklady scénářů:
 
 * [Nepřetržité nahrávání videa](continuous-video-recording-concept.md)
-* [Nahrávání videa založeného na událostech](event-based-video-recording-concept.md)
-* [Živé video analýza bez nahrávání videa](analyze-live-video-concept.md)
+* [Nahrávání videa na základě událostí](event-based-video-recording-concept.md)
+* [Analýza živého videa bez nahrávání videa](analyze-live-video-concept.md)
 
 ## <a name="next-steps"></a>Další kroky
 
-Postupujte podle pokynů v tématu [rychlý Start: spuštění živé analýzy videí pomocí vlastního modelu](use-your-model-quickstart.md) a podívejte se, jak můžete spustit detekci pohybů na živém informačním kanálu videa.
+Pokud chcete zjistit, jak můžete spustit detekci pohybu na živém informačním kanálu, přečtěte si téma [rychlý Start: spuštění živé analýzy videí pomocí vlastního modelu](use-your-model-quickstart.md).

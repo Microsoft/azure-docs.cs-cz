@@ -11,12 +11,12 @@ manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
 ms.date: 05/29/2020
-ms.openlocfilehash: 91674aaaedc828122602ce1dd9373056db4bf33d
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 8566b5d1d1beb87ccf7cd2b25f536732bb8d1f8e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220490"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298053"
 ---
 # <a name="copy-data-to-and-from-azure-sql-managed-instance-by-using-azure-data-factory"></a>Kopírování dat do a ze spravované instance SQL Azure pomocí Azure Data Factory
 
@@ -235,7 +235,7 @@ Chcete-li kopírovat data do a z spravované instance SQL, jsou podporovány ná
 | tabulka | Název tabulky/zobrazení |Ne pro zdroj, Ano pro jímku  |
 | tableName | Název tabulky nebo zobrazení se schématem. Tato vlastnost je podporována z důvodu zpětné kompatibility. Pro nové úlohy použijte `schema` a `table` . | Ne pro zdroj, Ano pro jímku |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -601,7 +601,7 @@ Když se data zkopírují do spravované instance SQL a z ní, používají se k
 | xml |XML |
 
 >[!NOTE]
-> Pro datové typy, které jsou mapovány na mezihodnotový průběžný typ, aktuálně Azure Data Factory podporuje přesnost až 28. Pokud máte data, která vyžadují přesnost větší než 28, zvažte převod na řetězec v dotazu SQL.
+> Pro datové typy, které jsou mapovány na mezihodnotový průběžný typ, aktuálně aktivita kopírování podporuje přesnost až na 28. Pokud máte data, která vyžadují přesnost větší než 28, zvažte převod na řetězec v dotazu SQL.
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
@@ -631,7 +631,7 @@ A konkrétně:
 
     - Použití **spravovaného ověřování Identity Data Factory**: 
 
-        1. Pro vytvoření uživatele databáze pro spravovanou identitu použijte stejný [předpoklady](#managed-identity) a udělte v databázi správnou roli.
+        1. Při vytváření uživatele databáze pro spravovanou identitu použijte stejné [předpoklady](#managed-identity) a udělte v databázi správnou roli.
         2. V části propojená služba zadejte připojovací řetězec ODBC následujícím způsobem a pak vyberte **anonymní** ověřování, které označuje samotný připojovací řetězec `Authentication=ActiveDirectoryMsi` .
 
         ```

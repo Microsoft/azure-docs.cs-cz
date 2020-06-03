@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 98a2765b7adf31465fa0317cc626157137933af7
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: b4b92b907d9cd6d469163bc7bf457da42e9b673c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248341"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299778"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Běžné otázky: zotavení po havárii z Azure do Azure
 
@@ -28,7 +28,7 @@ Každá instance, která je chráněná pomocí Azure Site Recovery, je pro prvn
 
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Během prvních 31 dnů se mi účtují nějaké další poplatky za Azure?
 
-Ano. I když je během prvních 31 dní chráněné instance Azure Site Recovery volná, můžou se vám účtovat poplatky za Azure Storage, transakce úložiště a datové přenosy. U obnoveného virtuálního počítače můžou být účtovány i poplatky za výpočetní výkon Azure. Získejte podrobné informace o cenách za [Azure Site Recovery ceny](https://azure.microsoft.com/pricing/details/site-recovery).
+Yes. I když je během prvních 31 dní chráněné instance Azure Site Recovery volná, můžou se vám účtovat poplatky za Azure Storage, transakce úložiště a datové přenosy. U obnoveného virtuálního počítače můžou být účtovány i poplatky za výpočetní výkon Azure. Získejte podrobné informace o cenách za [Azure Site Recovery ceny](https://azure.microsoft.com/pricing/details/site-recovery).
 
 ### <a name="what-are-the-best-practices-for-azure-virtual-machines-disaster-recovery"></a>Jaké jsou osvědčené postupy pro zotavení po havárii Azure Virtual Machines?
 
@@ -46,12 +46,20 @@ Tým Site Recovery týmu a Azure Capacity Management plánuje dostatečnou kapac
 
 ### <a name="can-i-replicate-vms-enabled-through-azure-disk-encryption"></a>Můžu replikovat virtuální počítače povolené prostřednictvím služby Azure Disk Encryption?
 
-Ano. Site Recovery podporuje zotavení po havárii virtuálních počítačů, které mají povolený Azure Disk Encryption. Když povolíte replikaci, Azure zkopíruje všechny požadované šifrovací klíče disku a tajné klíče ze zdrojové oblasti do cílové oblasti v kontextu uživatele. Pokud nemáte příslušná oprávnění, správce zabezpečení může ke kopírování klíčů a tajných kódů použít skript.
+Yes. Site Recovery podporuje zotavení po havárii virtuálních počítačů, které mají povolený Azure Disk Encryption. Když povolíte replikaci, Azure zkopíruje všechny požadované šifrovací klíče disku a tajné klíče ze zdrojové oblasti do cílové oblasti v kontextu uživatele. Pokud nemáte příslušná oprávnění, správce zabezpečení může ke kopírování klíčů a tajných kódů použít skript.
 
 - Site Recovery podporuje Azure Disk Encryption pro virtuální počítače Azure s Windows.
 - Site Recovery podporuje Azure Disk Encryption verze 0,1, která má schéma, které vyžaduje Azure Active Directory (Azure AD). Site Recovery také podporuje verzi 1,1, která nevyžaduje službu Azure AD. [Přečtěte si další informace o schématu rozšíření pro Azure Disk Encryption](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schema).
   - Pro Azure Disk Encryption verze 1,1 je nutné použít virtuální počítače s Windows se službou Managed disks.
   - [Přečtěte si další informace](azure-to-azure-how-to-enable-replication-ade-vms.md) o povolení replikace pro šifrované virtuální počítače.
+
+### <a name="can-i-select-an-automation-account-from-a-different-resource-group"></a>Můžu vybrat účet Automation z jiné skupiny prostředků?
+
+To se v tuto chvíli nepodporuje přes portál, ale můžete si vybrat účet Automation z jiné skupiny prostředků přes PowerShell.
+
+### <a name="after-specifying-an-automation-account-that-is-in-a-different-resource-group-than-the-vault-am-i-permitted-to-delete-the-runbook-if-there-is-no-other-vault-to-specify"></a>Po zadání účtu Automation, který je v jiné skupině prostředků než trezor, mám povolený pokus odstranit sadu Runbook, pokud neexistuje jiný trezor pro zadání?
+
+Vytvořená vlastní sada Runbook je nástrojem a je bezpečné ji odstranit, pokud to již není nutné.
 
 ### <a name="can-i-replicate-vms-to-another-subscription"></a>Můžu virtuální počítače replikovat do jiného předplatného?
 
@@ -175,7 +183,7 @@ Ano, Pokud zvýšíte dobu uchovávání dat z 24 hodin na 72 hodin, Site Recove
 
 ### <a name="can-i-enable-replication-with-app-consistency-in-linux-servers"></a>Můžu povolit replikaci s konzistencí aplikací na serverech se systémem Linux?
 
-Ano. Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s předchozími a post-možnostmi bude používat agent Azure Site Recovery mobility během konzistence aplikací. [Další informace](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
+Yes. Azure Site Recovery pro operační systém Linux podporuje vlastní skripty aplikace pro konzistenci aplikací. Vlastní skript s předchozími a post-možnostmi bude používat agent Azure Site Recovery mobility během konzistence aplikací. [Další informace](https://docs.microsoft.com/azure/site-recovery/site-recovery-faq#can-i-enable-replication-with-app-consistency-in-linux-servers)
 
 ## <a name="multi-vm-consistency"></a>Konzistence s více virtuálními počítači
 
@@ -238,7 +246,7 @@ Možnost **nejnovější (nejnižší RPO)** nejprve zpracuje všechna data, kte
 
 ### <a name="do-latest-lowest-rpo-recovery-points-have-an-impact-on-failover-rto"></a>Mají dopad na RTO pro převzetí služeb při selhání **nejnovější (nejnižší RPO)** body obnovení?
 
-Ano. Site Recovery zpracovává všechna nevyřízená data před převzetím služeb při selhání, takže tato možnost má vyšší cíl času obnovení (RTO) ve srovnání s jinými možnostmi.
+Yes. Site Recovery zpracovává všechna nevyřízená data před převzetím služeb při selhání, takže tato možnost má vyšší cíl času obnovení (RTO) ve srovnání s jinými možnostmi.
 
 ### <a name="what-does-the-latest-processed-option-in-recovery-points-mean"></a>Co znamená **poslední zpracovaná** možnost v bodech obnovení?
 

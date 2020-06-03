@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
-ms.openlocfilehash: 649d96a158682752e0d4a31bf7ec73eb7c442f0f
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: d739f9f5c0e1be80005d5f3c6db5aa94ff6cc85d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660538"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299838"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Přehled aplikací a řešení Oracle v Azure
 
@@ -29,7 +29,9 @@ Spouštějte databáze Oracle v infrastruktuře Azure pomocí Oracle Database v 
 
 * Oracle Database 12,1, 12,2 a 18,3 Enterprise Edition 
 
-* Oracle Database 12,1, 12,2 a 18,3 Standard Edition 
+* Oracle Database 12,1, 12,2 a 18,3 Standard Edition
+
+* Oracle Database 19,3
 
 Můžete se také rozhodnout nastavit Oracle Database na neOracle Linux image dostupné v Azure. řešení můžete založit na vlastní imagi, kterou vytvoříte úplně od začátku v Azure, nebo nahrát vlastní image z místního prostředí.
 
@@ -45,7 +47,7 @@ Spouštějte podnikové aplikace v Azure v podporovaných operačních systémec
 
 * Oracle WebLogic server 12.1.2
 
-* Oracle Linux s neUEKm podnikovým jádrem () 6,8, 6,9, 6,10, 7,3, 7,4, 7,5 a 7,6 
+* Oracle Linux s neUEKm podnikovým jádrem () 6,8, 6,9, 6,10, 7,3 až 7,7, 8,0, 8,1. 
 
 ## <a name="high-availability-and-disaster-recovery-options"></a>Možnosti vysoké dostupnosti a zotavení po havárii
 
@@ -72,8 +74,7 @@ Spouštějte aplikace Oracle v infrastruktuře Azure, připojené k back-endu da
 
 Použijte šablony Terraformu k nastavení infrastruktury Azure a instalaci aplikací Oracle. 
 
-> [!IMPORTANT]
-> Oracle tyto aplikace osvědčí, aby běžely v Azure při použití řešení Cloud Interconnect Azure/Oracle od května 2020.
+Od května 2020 jsou v Azure při použití řešení Cloud Interconnect v Azure a Oracle certifikovány tyto aplikace Oracle:
 
 * Sada E-Business
 * ŘEŠENÍ JD Edwards EnterpriseOne

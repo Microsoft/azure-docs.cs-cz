@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: 6014e98d01755f29da74160fb1ef38ba29a74ba6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 661cfb4798ef553918ddc238a5388b11a54e23f9
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80547502"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298682"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mysql"></a>Architektura připojení v Azure Database for MySQL
 Tento článek popisuje architekturu připojení Azure Database for MySQL a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MySQL od klientů v rámci i mimo Azure.
@@ -44,6 +44,7 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | USA – východ | 40.121.158.30, 191.238.6.43  |
 | USA – východ 2 |40.79.84.180, 191.239.224.107, 52.177.185.181, 40.70.144.38, 52.167.105.38  |
 | Francie – střed | 40.79.137.0, 40.79.129.1  |
+| Francie – jih | 40.79.177.0     |
 | Německo – střed | 51.4.144.100     |
 | Německo – sever východ | 51.5.144.179  |
 | Indie – střed | 104.211.96.159     |

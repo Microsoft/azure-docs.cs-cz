@@ -17,12 +17,12 @@ ms.date: 08/01/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 08/01/2019
-ms.openlocfilehash: 0e4354fa7466efcf27f430bbce7edb30bb9a304c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 06be9e7c4ce41ff01494ecef84a800b52db6b82e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72387652"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308128"
 ---
 # <a name="tutorial-send-push-notifications-to-xamarinandroid-apps-using-notification-hubs"></a>Kurz: odesílání nabízených oznámení do aplikací pro Xamarin. Android pomocí Notification Hubs
 
@@ -102,7 +102,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 
 1. Zkopírujte `google-services.json` soubor, který jste stáhli z konzoly Google Firebase do složky projektu.
 2. Přidejte `google-services.json` do projektu.
-3. V `google-services.json` okně **Průzkumník řešení** vyberte.
+3. `google-services.json`V okně **Průzkumník řešení** vyberte.
 4. V podokně **Vlastnosti** nastavte akci sestavení na **GoogleServicesJson**. Pokud se **GoogleServicesJson** nezobrazuje, zavřete Visual Studio a znovu ho spusťte. Pak znovu otevřete projekt a zkuste to znovu.
 
     ![Akce sestavení GoogleServicesJson](./media/partner-xamarin-notification-hubs-android-get-started/google-services-json-build-action.png)
@@ -111,7 +111,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
 
 #### <a name="registering-with-firebase-cloud-messaging"></a>Registrace ve službě Firebase Cloud Messaging
 
-1. Otevřete `AndroidManifest.xml` soubor a vložte do `<receiver>` `<application>` prvku následující prvky:
+1. Otevřete `AndroidManifest.xml` soubor a vložte `<receiver>` do prvku následující prvky `<application>` :
 
     ```xml
     <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdInternalReceiver" android:exported="false" />
@@ -148,7 +148,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     }
     ```
 
-6. Přidejte následující příkazy using do `MainActivity.cs`:
+6. Přidejte následující příkazy using do `MainActivity.cs` :
 
     ```csharp
     using Android.Util;
@@ -210,7 +210,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     }
     ```
 
-10. Do `MainActivity.cs`přidejte následující kód `OnCreate` po `base.OnCreate(savedInstanceState)`:
+10. Do `MainActivity.cs` přidejte následující kód `OnCreate` po `base.OnCreate(savedInstanceState)` :
 
     ```csharp
     if (Intent.Extras != null)
@@ -229,8 +229,8 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     CreateNotificationChannel();
     ```
 
-15. Přidejte do projektu třídu `MyFirebaseMessagingService` s názvem. 
-16. Přidejte následující příkazy using do `MyFirebaseMessagingService.cs`.
+15. Přidejte do projektu třídu s názvem `MyFirebaseMessagingService` . 
+16. Přidejte následující příkazy using do `MyFirebaseMessagingService.cs` .
 
     ```csharp
     using Android.Util;
@@ -239,7 +239,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     using WindowsAzure.Messaging;
     ```
 
-17. Do deklarace třídy přidejte následující a vaše třída zdědí `FirebaseMessagingService`:
+17. Do deklarace třídy přidejte následující a vaše třída zdědí `FirebaseMessagingService` :
 
     ```csharp
     [Service]
@@ -248,7 +248,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
     public class MyFirebaseMessagingService : FirebaseMessagingService
     ```
 
-18. Přidejte následující kód pro `MyFirebaseMessagingService.cs` zpracování přijatých zpráv. 
+18. Do třídy přidejte následující kód `MyFirebaseMessagingService` pro zpracování zpráv, které jsou přijaty. 
 
     ```csharp
         const string TAG = "MyFirebaseMsgService";
@@ -292,7 +292,7 @@ Vaše centrum oznámení je nakonfigurováno pro práci se službou FCM. Zárove
         }
     ```
 
-19. Přidejte následující metody do třídy MyFirebaseMessagingService, abyste získali registrační token FCM a odesílali je do instance Notification Hubs (centra). 
+19. Přidejte následující metody do třídy MyFirebaseMessagingService (napravo pod kódem přidaným v předchozím kroku) k získání registračního tokenu FCM a jeho odeslání do instance Notification Hubs (centra). 
 
     ```csharp
         public override void OnNewToken(string token)
@@ -361,7 +361,7 @@ V tomto kurzu jste poslali oznámení všem zařízením s Androidem registrovan
 [JavaScript and HTML]: /develop/mobile/tutorials/get-started-with-push-js
 [Visual Studio s Xamarinem]: https://docs.microsoft.com/visualstudio/install/install-visual-studio
 [Visual Studio pro Mac]: https://www.visualstudio.com/vs/visual-studio-mac/
-[portál Azure]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [wns object]: https://go.microsoft.com/fwlink/p/?LinkId=260591
 [Notification Hubs Guidance]: https://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs How-To for Android]: https://msdn.microsoft.com/library/dn282661.aspx

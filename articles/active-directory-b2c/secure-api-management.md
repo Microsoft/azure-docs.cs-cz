@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0ffadca550a3a28b0ab490dd43c3b884602c93df
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8b0362f9bb80af9f98dad032790a9e88651284a1
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83638484"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298869"
 ---
 # <a name="secure-an-azure-api-management-api-with-azure-ad-b2c"></a>Zabezpečení rozhraní API služby Azure API Management pomocí Azure AD B2C
 
@@ -35,23 +35,23 @@ Než budete pokračovat v krocích v tomto článku, budete potřebovat následu
 
 Když Zabezpečete rozhraní API v Azure API Management s Azure AD B2C, potřebujete pro [příchozí zásadu](../api-management/api-management-howto-policies.md) , kterou vytvoříte v APIM, několik hodnot. Nejdřív si poznamenejte ID aplikace, kterou jste dříve vytvořili ve svém tenantovi Azure AD B2C. Pokud používáte aplikaci, kterou jste vytvořili v části požadavky, použijte ID aplikace pro *webbapp1*.
 
-K získání ID aplikace můžete použít aktuální prostředí **aplikací** nebo naše nové prostředí Unified **Registrace aplikací (Preview)** . [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
+K registraci aplikace ve vašem tenantovi Azure AD B2C můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
 
-#### <a name="applications"></a>[Aplikace](#tab/applications/)
-
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
-1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
-1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. V části **Spravovat**vyberte **aplikace**.
-1. Poznamenejte si hodnotu ve sloupci **ID aplikace** pro *WebApp1* nebo jinou aplikaci, kterou jste vytvořili dříve.
-
-#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
 1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. Vyberte **Registrace aplikací (Preview)** a pak vyberte kartu **vlastněné aplikace** .
+1. Vyberte **Registrace aplikací**a pak vyberte kartu **vlastněné aplikace** .
 1. Poznamenejte si hodnotu ve sloupci **ID aplikace (klienta)** pro *WebApp1* nebo jinou aplikaci, kterou jste vytvořili dříve.
+
+#### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
+
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
+1. V části **Spravovat**vyberte **aplikace (starší verze)**.
+1. Poznamenejte si hodnotu ve sloupci **ID aplikace** pro *WebApp1* nebo jinou aplikaci, kterou jste vytvořili dříve.
 
 * * *
 

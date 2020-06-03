@@ -5,12 +5,12 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.custom: references_regions
-ms.openlocfilehash: 986bb835f319cebf3006d7e1bd31bd7f04a1ae82
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 2df0ad675f03b25363ab0f5b13dceb762a657ed7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193994"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299549"
 ---
 # <a name="azure-kubernetes-service-aks-uptime-sla"></a>Smlouva SLA pro Azure Kubernetes Service (AKS) pro provozuschopnost
 
@@ -26,18 +26,6 @@ Zákazníci můžou pořád vytvářet neomezený počet bezplatných clusterů 
 ## <a name="sla-terms-and-conditions"></a>Podmínky a ujednání SLA
 
 Smlouva SLA pro dobu provozu je placená funkce a je povolená pro jednotlivé clustery. Ceny smlouvy SLA pro dobu provozu určují počet diskrétních clusterů, a ne velikost jednotlivých clusterů. Další informace najdete v [podrobnostech o cenách smlouvy SLA pro dobu provozu](https://azure.microsoft.com/pricing/details/kubernetes-service/) .
-
-## <a name="region-availability"></a>Dostupnost oblasti
-
-Smlouva SLA pro dobu provozu je dostupná v následujících oblastech:
-
-* Austrálie – východ
-* Střední Kanada
-* USA – východ
-* USA – východ 2
-* USA – středojih
-* Jihovýchodní Asie
-* USA – západ 2
 
 ## <a name="before-you-begin"></a>Před zahájením
 

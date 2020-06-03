@@ -3,12 +3,12 @@ title: Statická IP adresa pro skupinu kontejnerů
 description: Vytvoření skupiny kontejnerů ve virtuální síti a použití služby Azure Application Gateway k vystavení statické IP adresy front-endu pro kontejnerové webové aplikace
 ms.topic: article
 ms.date: 03/16/2020
-ms.openlocfilehash: 5c3a14f93af3ecc614dc296f0a4d2815d7a64a66
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a27cf20b7d04fedb0b9e0ab408de24d37f2935c7
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481785"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299158"
 ---
 # <a name="expose-a-static-ip-address-for-a-container-group"></a>Zveřejňuje statickou IP adresu pro skupinu kontejnerů.
 
@@ -17,7 +17,7 @@ Tento článek ukazuje jeden ze způsobů, jak zveřejnit statickou veřejnou IP
 V tomto článku vytvoříte pomocí rozhraní příkazového řádku Azure CLI prostředky pro tento scénář:
 
 * Virtuální síť Azure
-* Skupina kontejnerů nasazená [ve virtuální síti (Preview)](container-instances-vnet.md) , která hostuje malou webovou aplikaci
+* Skupina kontejnerů nasazená [ve virtuální síti](container-instances-vnet.md) , která je hostitelem malé webové aplikace
 * Aplikační brána s veřejnou IP adresou front-end, naslouchací proces pro hostování webu v bráně a směrování do back-endové skupiny kontejnerů.
 
 Pokud je Aplikační brána spuštěná a skupina kontejnerů zpřístupňuje stabilní privátní IP adresu v delegované podsíti sítě, je tato skupina kontejnerů přístupná na této veřejné IP adrese.
@@ -29,7 +29,7 @@ Pokud je Aplikační brána spuštěná a skupina kontejnerů zpřístupňuje st
 
 V typickém případě už můžete mít virtuální síť Azure. Pokud ho ještě nemáte, vytvořte ho tak, jak je znázorněno v následujících ukázkových příkazech. Virtuální síť potřebuje samostatné podsítě pro aplikační bránu a skupinu kontejnerů.
 
-Pokud ho potřebujete, vytvořte skupinu prostředků Azure. Příklad:
+Pokud ho potřebujete, vytvořte skupinu prostředků Azure. Například:
 
 ```azureci
 az group create --name myResourceGroup --location eastus
@@ -136,7 +136,7 @@ az network public-ip show \
 --output tsv
 ```
 
-Výstupem je veřejná IP adresa, která se podobá: `52.142.18.133`.
+Výstupem je veřejná IP adresa, která se podobá: `52.142.18.133` .
 
 Pokud chcete po úspěšné konfiguraci běžící webové aplikace zobrazit, přejděte v prohlížeči do veřejné IP adresy brány. Úspěšný přístup je podobný následujícímu:
 

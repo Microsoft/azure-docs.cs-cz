@@ -5,14 +5,14 @@ author: mimckitt
 ms.service: virtual-machines-windows
 ms.topic: article
 ms.workload: infrastructure-services
-ms.date: 02/22/2018
+ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: 7c33f29ab00605f68d41358b79284bf49188fece
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: c888a28607101cdf41fcd9b47cf25a2fc5da6337
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83715864"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299515"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače se systémem Linux
 
@@ -52,7 +52,7 @@ Naplánované události jsou doručovány do:
 
 - Samostatné Virtual Machines.
 - Všechny virtuální počítače v cloudové službě.
-- Všechny virtuální počítače v rámci skupiny dostupnosti nebo zóny dostupnosti. 
+- Všechny virtuální počítače ve skupině dostupnosti.
 - Všechny virtuální počítače ve skupině umístění sady škálování 
 
 Výsledkem je, že `Resources` v poli v události zjistíte, které virtuální počítače jsou ovlivněné.
@@ -60,7 +60,7 @@ Výsledkem je, že `Resources` v poli v události zjistíte, které virtuální 
 ### <a name="endpoint-discovery"></a>Zjišťování koncových bodů
 Pro virtuální počítače s povolenými VIRTUÁLNÍmi sítěmi je Metadata Service k dispozici ze statické IP adresy nonroutable `169.254.169.254` . Úplný koncový bod pro nejnovější verzi Scheduled Events je: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01`
 
 Pokud se virtuální počítač nevytvoří v rámci Virtual Network, výchozí případy cloudových služeb a klasických virtuálních počítačů vyžadují další logiku pro zjištění IP adresy, která se má použít. Další informace o tom, jak [zjistit koncový bod hostitele](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm), najdete v této ukázce.
 
@@ -69,6 +69,8 @@ Služba Scheduled Events má verzi. Verze jsou povinné. aktuální verze je `20
 
 | Verze | Typ verze | Oblasti | Zpráva k vydání verze | 
 | - | - | - | - | 
+| 2019-08-01 | Obecná dostupnost | Vše | <li> Přidání podpory pro EventSource |
+| 2019-04-01 | Obecná dostupnost | Vše | <li> Přidání podpory pro popis události |
 | 2019-01-01 | Obecná dostupnost | Vše | <li> Přidaná podpora pro virtuální počítač Scale Sets EventType ' ukončit ' |
 | 2017-11-01 | Obecná dostupnost | Vše | <li> Přidání podpory pro vyřazení virtuálních počítačů s názvem EventType<br> | 
 | 2017-08-01 | Obecná dostupnost | Vše | <li> Z názvů prostředků pro virtuální počítače s IaaS se odebraly předpony s podtržítkem.<br><li>Požadavek na hlavičku metadat vynutil pro všechny požadavky | 
@@ -98,7 +100,7 @@ Dotaz na naplánované události můžete provést provedením následujícího 
 
 #### <a name="bash"></a>Bash
 ```
-curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-01-01
+curl -H Metadata:true http://169.254.169.254/metadata/scheduledevents?api-version=2019-08-01
 ```
 
 Odpověď obsahuje pole naplánovaných událostí. Prázdné pole znamená, že aktuálně nejsou žádné události naplánovány.
@@ -113,7 +115,9 @@ V případě naplánovaných událostí obsahuje odpověď pole událostí.
             "ResourceType": "VirtualMachine",
             "Resources": [{resourceName}],
             "EventStatus": "Scheduled" | "Started",
-            "NotBefore": {timeInUTC},              
+            "NotBefore": {timeInUTC},       
+            "Description": {eventDescription},
+            "EventSource" : "Platform" | "User",
         }
     ]
 }
@@ -128,6 +132,8 @@ V případě naplánovaných událostí obsahuje odpověď pole událostí.
 | Zdroje a prostředky| Seznam prostředků, které tato událost ovlivňuje V seznamu je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Stav této události <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánována na spuštění po uplynutí doby zadané ve `NotBefore` Vlastnosti.<li>`Started`: Tato událost je spuštěná.</ul> `Completed`Není k dispozici žádný nebo podobný stav. Událost již není vrácena po dokončení události.
 | NotBefore| Čas, po kterém může být tato událost spuštěna. <br><br> Příklad: <br><ul><li> Pondělí 19. září 2016 18:29:47 GMT  |
+| Popis | Popis této události <br><br> Příklad: <br><ul><li> Hostitelský server prochází údržbou. |
+| EventSource | Iniciátor události. <br><br> Příklad: <br><ul><li> `Platform`: Tato událost je iniciována pomocí Platform. <li>`User`: Tato událost je iniciována uživatelem. |
 
 ### <a name="event-scheduling"></a>Plánování událostí
 Každé události je naplánováno minimální množství času v budoucnu na základě typu události. Tato doba se projeví ve vlastnosti události `NotBefore` . 
@@ -197,9 +203,14 @@ def handle_scheduled_events(data):
         eventtype = evt['EventType']
         resourcetype = evt['ResourceType']
         notbefore = evt['NotBefore'].replace(" ", "_")
+    description = evt['Description']
+    eventSource = evt['EventSource']
         if this_host in resources:
             print("+ Scheduled Event. This host " + this_host +
-                " is scheduled for " + eventtype + " not before " + notbefore)
+                " is scheduled for " + eventtype + 
+        " by " + eventSource + 
+        " with description " + description +
+        " not before " + notbefore)
             # Add logic for handling events here
 
 

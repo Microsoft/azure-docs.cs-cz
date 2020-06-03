@@ -4,16 +4,16 @@ description: Vytvořte testovací certifikáty a Naučte se, jak je nainstalovat
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 04/23/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9540913cd86b74fd51e96aa9d1d1dd34c5d60631
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 921a9c5f7136713f278d9c50bf67f02d9742a470
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82129793"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309131"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Vytvoření ukázkových certifikátů pro otestování IoT Edgech funkcí zařízení
 
@@ -25,7 +25,7 @@ Platnost těchto certifikátů vyprší během 30 dnů a neměly by se používa
 
 Můžete vytvořit certifikáty na jakémkoli počítači a pak je zkopírovat do zařízení IoT Edge.
 K vytvoření certifikátů je snazší použít primární počítač místo jejich generování na svém IoT Edge samotném zařízení.
-Pomocí primárního počítače můžete nastavit skripty jednou a potom tento postup zopakovat, abyste vytvořili certifikáty pro více zařízení.
+Pomocí primárního počítače můžete nastavit skripty jednou a pak je použít k vytvoření certifikátů pro více zařízení.
 
 Při vytváření ukázkových certifikátů pro testování IoT Edge scénář použijte následující postup:
 
@@ -84,7 +84,7 @@ V této části naklonujte úložiště IoT Edge a spustíte skripty.
    git clone https://github.com/Azure/iotedge.git
    ```
 
-3. Přejděte do adresáře, ve kterém chcete pracovat. V celém tomto článku budeme volat tento adresář * \<WRKDIR>*. V tomto pracovním adresáři se vytvoří všechny certifikáty a klíče.
+3. Přejděte do adresáře, ve kterém chcete pracovat. V celém tomto článku budeme tento adresář volat *\<WRKDIR>* . V tomto pracovním adresáři se vytvoří všechny certifikáty a klíče.
 
 4. Zkopírujte konfigurační soubory a soubory skriptu z klonovaného úložiště do svého pracovního adresáře.
 
@@ -125,7 +125,7 @@ K vytvoření ukázkových certifikátů na zařízení s Windows je potřeba kl
    git clone https://github.com/Azure/iotedge.git
    ```
 
-2. Přejděte do adresáře, ve kterém chcete pracovat. Do tohoto adresáře odkazujeme v celém článku jako * \<WRKDIR>*. V tomto adresáři se vytvoří všechny soubory certifikátů a klíčů.
+2. Přejděte do adresáře, ve kterém chcete pracovat. Do tohoto adresáře odkazujeme v celém článku *\<WRKDIR>* . V tomto adresáři se vytvoří všechny soubory certifikátů a klíčů.
   
 3. Zkopírujte soubory config a Script z naklonovaného IoT Edge úložiště do svého pracovního adresáře.
 
@@ -181,54 +181,6 @@ Než budete pokračovat s postupem v této části, postupujte podle kroků v od
 
    * `<WRKDIR>/certs/azure-iot-test-only.root.ca.cert.pem`  
 
-## <a name="create-iot-edge-device-ca-certificates"></a>Vytvoření certifikátů certifikační autority IoT Edge zařízení
-
-Každé IoT Edge zařízení, které bude v produkčním prostředí potřebovat certifikát certifikační autority zařízení, na který se odkazuje v souboru config. yaml.
-Certifikát certifikační autority zařízení zodpovídá za vytváření certifikátů pro moduly běžící na zařízení.
-Je to také způsob, jakým zařízení IoT Edge ověřuje svou identitu při připojování k zařízením pro příjem dat.
-
-Certifikáty certifikační autority zařízení najdete v části **certifikát** v souboru config. yaml na zařízení IoT Edge.
-
-Než budete postupovat podle kroků v této části, postupujte podle kroků v částech [nastavení skriptů](#set-up-scripts) a [Vytvoření certifikátu kořenové certifikační autority](#create-root-ca-certificate) .
-
-### <a name="windows"></a>Windows
-
-1. Přejděte do pracovního adresáře, který obsahuje skripty generování certifikátů a certifikát kořenové certifikační autority.
-
-2. Pomocí následujícího příkazu vytvořte certifikát certifikační autority IoT Edge zařízení a privátní klíč. Zadejte název certifikátu certifikační autority, například **MyEdgeDeviceCA**, který se použije k pojmenování výstupních souborů.
-
-   ```powershell
-   New-CACertsEdgeDevice "MyEdgeDeviceCA"
-   ```
-
-   Tento příkaz skriptu vytvoří několik souborů certifikátů a klíčů. Následující pár certifikátů a klíčů je nutné zkopírovat do zařízení IoT Edge a odkazuje v souboru config. yaml:
-
-   * `<WRKDIR>\certs\iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
-   * `<WRKDIR>\private\iot-edge-device-MyEdgeDeviceCA.key.pem`
-
-Název zařízení brány předaný do těchto skriptů by neměl být stejný jako parametr HostName v souboru config. YAML nebo ID zařízení v IoT Hub.
-Tyto skripty vám pomůžou zabránit jakýmkoli problémům připojením řetězce ". ca" k názvu zařízení brány, aby se zabránilo kolizi názvů pro případ, že uživatel nastaví IoT Edge se stejným názvem na obou místech.
-Je však dobré se vyhnout použití stejného názvu.
-
-### <a name="linux"></a>Linux
-
-1. Přejděte do pracovního adresáře, který obsahuje skripty generování certifikátů a certifikát kořenové certifikační autority.
-
-2. Pomocí následujícího příkazu vytvořte certifikát certifikační autority IoT Edge zařízení a privátní klíč. Zadejte název certifikátu certifikační autority, například **MyEdgeDeviceCA**, který se použije k pojmenování výstupních souborů.
-
-   ```bash
-   ./certGen.sh create_edge_device_certificate "MyEdgeDeviceCA"
-   ```
-
-   Tento příkaz skriptu vytvoří několik souborů certifikátů a klíčů. Následující pár certifikátů a klíčů je nutné zkopírovat do zařízení IoT Edge a odkazuje v souboru config. yaml:
-
-   * `<WRKDIR>/certs/iot-edge-device-MyEdgeDeviceCA-full-chain.cert.pem`
-   * `<WRKDIR>/private/iot-edge-device-MyEdgeDeviceCA.key.pem`
-
-Název zařízení brány předaný do těchto skriptů by neměl být stejný jako parametr HostName v souboru config. YAML nebo ID zařízení v IoT Hub.
-Tyto skripty vám pomůžou zabránit jakýmkoli problémům připojením řetězce ". ca" k názvu zařízení brány, aby se zabránilo kolizi názvů pro případ, že uživatel nastaví IoT Edge se stejným názvem na obou místech.
-Je však dobré se vyhnout použití stejného názvu.
-
 ## <a name="create-iot-edge-device-identity-certificates"></a>Vytvoření certifikátů identit IoT Edge zařízení
 
 Certifikáty identit zařízení slouží ke zřízení IoT Edgech zařízení prostřednictvím [Azure IoT Hub Device Provisioning Service (DPS)](../iot-dps/index.yml).
@@ -269,9 +221,58 @@ Skript vytvoří několik souborů certifikátů a klíčů, včetně tří, kte
 * `<WRKDIR>/certs/iot-edge-device-identity-<name>.cert.pem`
 * `<WRKDIR>/private/iot-edge-device-identity-<name>.key.pem`
 
+## <a name="create-iot-edge-device-ca-certificates"></a>Vytvoření certifikátů certifikační autority IoT Edge zařízení
+
+Každé IoT Edge zařízení, které bude v produkčním prostředí potřebovat certifikát certifikační autority zařízení, na který se odkazuje v souboru config. yaml.
+Certifikát certifikační autority zařízení zodpovídá za vytváření certifikátů pro moduly běžící na zařízení.
+Je taky potřeba pro scénáře bran, protože certifikát certifikační autority zařízení je způsob, jakým IoT Edge zařízení ověřuje svoji identitu pro zařízení se stavem pro příjem dat.
+
+Certifikáty certifikační autority zařízení najdete v části **certifikát** v souboru config. yaml na zařízení IoT Edge.
+
+Než budete postupovat podle kroků v této části, postupujte podle kroků v částech [nastavení skriptů](#set-up-scripts) a [Vytvoření certifikátu kořenové certifikační autority](#create-root-ca-certificate) .
+
+### <a name="windows"></a>Windows
+
+1. Přejděte do pracovního adresáře, který obsahuje skripty generování certifikátů a certifikát kořenové certifikační autority.
+
+2. Pomocí následujícího příkazu vytvořte certifikát certifikační autority IoT Edge zařízení a privátní klíč. Zadejte název certifikátu certifikační autority.
+
+   ```powershell
+   New-CACertsEdgeDevice "<CA cert name>"
+   ```
+
+   Tento příkaz vytvoří několik souborů certifikátů a klíčů. Následující pár certifikátů a klíčů je nutné zkopírovat do zařízení IoT Edge a odkazuje v souboru config. yaml:
+
+   * `<WRKDIR>\certs\iot-edge-device-<CA cert name>-full-chain.cert.pem`
+   * `<WRKDIR>\private\iot-edge-device-<CA cert name>.key.pem`
+
+Název předaný příkazu **New-CACertsEdgeDevice** by neměl být stejný jako parametr HostName v souboru config. YAML nebo ID zařízení v IoT Hub.
+Tento skript pomáhá zabránit jakýmkoli problémům připojením řetězce ". ca" k názvu certifikátu, aby se zabránilo kolizi názvů pro případ, že uživatel nastaví IoT Edge se stejným názvem na obou místech.
+Je však dobré se vyhnout použití stejného názvu.
+
+### <a name="linux"></a>Linux
+
+1. Přejděte do pracovního adresáře, který obsahuje skripty generování certifikátů a certifikát kořenové certifikační autority.
+
+2. Pomocí následujícího příkazu vytvořte certifikát certifikační autority IoT Edge zařízení a privátní klíč. Zadejte název certifikátu certifikační autority.
+
+   ```bash
+   ./certGen.sh create_edge_device_certificate "<CA cert name>"
+   ```
+
+   Tento příkaz skriptu vytvoří několik souborů certifikátů a klíčů. Následující pár certifikátů a klíčů je nutné zkopírovat do zařízení IoT Edge a odkazuje v souboru config. yaml:
+
+   * `<WRKDIR>/certs/iot-edge-device-<CA cert name>-full-chain.cert.pem`
+   * `<WRKDIR>/private/iot-edge-device-<CA cert name>.key.pem`
+
+Název předaný příkazu **create_edge_device_certificate** nesmí být stejný jako parametr HostName v souboru config. YAML nebo ID zařízení v IoT Hub.
+Tento skript pomáhá zabránit jakýmkoli problémům připojením řetězce ". ca" k názvu certifikátu, aby se zabránilo kolizi názvů pro případ, že uživatel nastaví IoT Edge se stejným názvem na obou místech.
+Je však dobré se vyhnout použití stejného názvu.
+
 ## <a name="create-downstream-device-certificates"></a>Vytvoření certifikátů pro příjem zařízení
 
-Pokud nastavujete pro scénář brány podřízené zařízení IoT, můžete vygenerovat ukázkové certifikáty pro ověřování X. 509.
+Pokud nastavujete pro scénář brány podřízené zařízení IoT a chcete použít ověřování pomocí X. 509, můžete pro zařízení pro příjem dat vygenerovat ukázkové certifikáty.
+Pokud chcete používat ověřování pomocí symetrického klíče, nepotřebujete pro zařízení pro příjem dat žádné certifikáty.
 Existují dva způsoby, jak ověřit zařízení IoT pomocí certifikátů X. 509: pomocí certifikátů podepsaných svým držitelem nebo pomocí certifikátů podepsaných certifikační autoritou (CA).
 Pro ověřování X. 509 podepsané svým držitelem, které se někdy označuje jako ověřování kryptografickým otiskem, je potřeba vytvořit nové certifikáty, které se mají na zařízení IoT umístit.
 Tyto certifikáty obsahují kryptografický otisk, který sdílíte s IoT Hub pro ověřování.
@@ -292,7 +293,7 @@ Vaše zařízení IoT taky potřebuje kopii svých certifikátů zařízení, ab
 
 1. Přejděte do pracovního adresáře, který obsahuje skripty generování certifikátů a certifikát kořenové certifikační autority.
 
-2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Příklad:
+2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Například:
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -322,7 +323,7 @@ Vaše zařízení IoT taky potřebuje kopii svých certifikátů zařízení, ab
 
 1. Přejděte do pracovního adresáře, který obsahuje skripty generování certifikátů a certifikát kořenové certifikační autority.
 
-2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Příklad:
+2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Například:
 
    ```bash
    ./certGen.sh create_device_certificate "<device name>-primary"
@@ -358,7 +359,7 @@ Certifikáty v této části jsou popsané v tématu [nastavení zabezpečení X
 
 #### <a name="windows"></a>Windows
 
-1. Nahrajte soubor certifikátu kořenové certifikační autority z pracovního adresáře `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`do služby IoT Hub.
+1. Nahrajte soubor certifikátu kořenové certifikační autority z pracovního adresáře `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` do služby IoT Hub.
 
 2. Pomocí kódu uvedeného v Azure Portal ověřte, zda vlastníte certifikát kořenové certifikační autority.
 
@@ -381,7 +382,7 @@ Certifikáty v této části jsou popsané v tématu [nastavení zabezpečení X
 
 #### <a name="linux"></a>Linux
 
-1. Nahrajte soubor certifikátu kořenové certifikační autority z pracovního adresáře `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem`do služby IoT Hub.
+1. Nahrajte soubor certifikátu kořenové certifikační autority z pracovního adresáře `<WRKDIR>\certs\azure-iot-test-only.root.ca.cert.pem` do služby IoT Hub.
 
 2. Pomocí kódu uvedeného v Azure Portal ověřte, zda vlastníte certifikát kořenové certifikační autority.
 

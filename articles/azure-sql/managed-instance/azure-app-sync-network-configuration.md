@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 12/13/2018
-ms.openlocfilehash: 6e4f6789be2faa8d1af0fd75830541f8a9e27a7e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8aca5a4f76504f1e9c33f55101f697ea6b3b6856
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044567"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309896"
 ---
 # <a name="sync-networking-configuration-for-azure-app-service-hosting-plan-with-azure-sql-managed-instance"></a>Synchronizace konfigurace sítě pro Azure App Service plán hostování s použitím spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,19 +30,19 @@ Provedete to podle těchto kroků:
 
 1. Přejít do svého plánu App Service Web Apps.
 
-   ![plán služby App Service](./media/azure-app-sync-network-configuration/app-service-plan.png)
+   ![Snímek obrazovky s plánem App Service](./media/azure-app-sync-network-configuration/app-service-plan.png)
 
 2. Vyberte **sítě** a pak **pro správu vyberte kliknutím sem**.
 
-   ![Správa plánu služeb](./media/azure-app-sync-network-configuration/manage-plan.png)
+   ![Snímek obrazovky s plánem správy služeb](./media/azure-app-sync-network-configuration/manage-plan.png)
 
 3. Vyberte **virtuální síť** a klikněte na **synchronizovat síť**.
 
-   ![synchronizovat síť](./media/azure-app-sync-network-configuration/sync.png)
+   ![Snímek obrazovky se synchronizací sítě](./media/azure-app-sync-network-configuration/sync.png)
 
 4. Počkejte na dokončení synchronizace.
   
-   ![synchronizace dokončena](./media/azure-app-sync-network-configuration/sync-done.png)
+   ![Snímek obrazovky s dokončenou synchronizací](./media/azure-app-sync-network-configuration/sync-done.png)
 
 Teď jste připraveni zkusit znovu navázat připojení ke spravované instanci SQL.
 

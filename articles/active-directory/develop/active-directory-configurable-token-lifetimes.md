@@ -13,12 +13,12 @@ ms.date: 04/17/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: 3e66cd6a05a7c616b22eefffdd9d132aa0f4d36d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: bf53afc0168417bc223a55cd73f9a97b5bb3ac47
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853966"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299974"
 ---
 # <a name="configurable-token-lifetimes-in-azure-active-directory-preview"></a>Konfigurovatelné životnosti tokenů v Azure Active Directory (Preview)
 
@@ -47,7 +47,7 @@ Klienti používají přístupové tokeny pro přístup k chráněnému prostře
 
 Tokeny SAML používá mnoho webových aplikací SAAS, které se získávají pomocí koncového bodu protokolu typu Saml2 v systému Azure Active Directory. Využívají je i aplikace, které používají WS-Federation. Výchozí doba platnosti tokenu je 1 hodina. V perspektivě aplikace je doba platnosti tokenu určena hodnotou NotOnOrAfter `<conditions …>` elementu v tokenu. Po ukončení doby platnosti tokenu musí klient iniciovat nový požadavek na ověření, který se často splní bez interaktivního přihlášení v důsledku tokenu relace jednotného přihlašování (SSO).
 
-Hodnotu NotOnOrAfter lze změnit pomocí `AccessTokenLifetime` parametru v. `TokenLifetimePolicy` Nastaví se na životní cyklus nakonfigurovanou v zásadě, pokud existuje, a koeficient pro zešikmení s hodinami 5 minut.
+Hodnotu NotOnOrAfter lze změnit pomocí `AccessTokenLifetime` parametru v `TokenLifetimePolicy` . Nastaví se na životní cyklus nakonfigurovanou v zásadě, pokud existuje, a koeficient pro zešikmení s hodinami 5 minut.
 
 Všimněte si, že NotOnOrAfter potvrzení předmětu zadané v `<SubjectConfirmationData>` elementu není ovlivněné konfigurací životnosti tokenu. 
 
@@ -58,11 +58,11 @@ Když klient získá přístupový token pro přístup k chráněnému prostřed
 Je důležité rozlišovat mezi důvěrnými a veřejnými klienty, protože to ovlivňuje, jak se dají použít dlouhotrvající tokeny aktualizace. Další informace o různých typech klientů najdete v [dokumentu RFC 6749](https://tools.ietf.org/html/rfc6749#section-2.1).
 
 #### <a name="token-lifetimes-with-confidential-client-refresh-tokens"></a>Životnost tokenů s důvěrnými aktualizačními tokeny klienta
-Důvěrné klienty jsou aplikace, které můžou bezpečně ukládat heslo klienta (tajné). Mohou prokázat, že požadavky pocházejí z zabezpečené klientské aplikace a nikoli ze škodlivého objektu actor. Webová aplikace je například důvěrný klient, protože může ukládat tajný klíč klienta na webový server. Nezveřejňuje se. Vzhledem k tomu, že jsou tyto toky bezpečnější, je `until-revoked`výchozí doba platnosti obnovovacích tokenů vydaných pro tyto toky, nedá se změnit pomocí zásad a nebude se odvolat při dobrovolných resetování hesla.
+Důvěrné klienty jsou aplikace, které můžou bezpečně ukládat heslo klienta (tajné). Mohou prokázat, že požadavky pocházejí z zabezpečené klientské aplikace a nikoli ze škodlivého objektu actor. Webová aplikace je například důvěrný klient, protože může ukládat tajný klíč klienta na webový server. Nezveřejňuje se. Vzhledem k tomu, že jsou tyto toky bezpečnější, je výchozí doba platnosti obnovovacích tokenů vydaných pro tyto toky `until-revoked` , nedá se změnit pomocí zásad a nebude se odvolat při dobrovolných resetování hesla.
 
 #### <a name="token-lifetimes-with-public-client-refresh-tokens"></a>Životnost tokenů s obnovovacími tokeny veřejného klienta
 
-Veřejné klienty nemohou bezpečně ukládat heslo klienta (tajný kód). Například aplikace pro iOS/Android nemůže odvažovat tajný klíč od vlastníka prostředku, takže se považuje za veřejného klienta. Můžete nastavit zásady pro prostředky, aby se zabránilo aktualizačním tokenům z veřejných klientů starších než v zadaném období, od získání nového páru přístupů nebo obnovovacího tokenu. (K tomu je potřeba použít vlastnost maximální neaktivní čas tokenu aktualizace (`MaxInactiveTime`).) Pomocí zásad můžete také nastavit dobu, po kterou se obnovovací tokeny už nepřijímají. (Chcete-li to provést, použijte vlastnost maximální stáří obnovovacího tokenu.) Dobu platnosti obnovovacího tokenu můžete upravit tak, aby bylo možné řídit, kdy a jak často musí uživatel při použití veřejné klientské aplikace znovu zadat přihlašovací údaje.
+Veřejné klienty nemohou bezpečně ukládat heslo klienta (tajný kód). Například aplikace pro iOS/Android nemůže odvažovat tajný klíč od vlastníka prostředku, takže se považuje za veřejného klienta. Můžete nastavit zásady pro prostředky, aby se zabránilo aktualizačním tokenům z veřejných klientů starších než v zadaném období, od získání nového páru přístupů nebo obnovovacího tokenu. (K tomu je potřeba použít vlastnost maximální neaktivní čas tokenu aktualizace ( `MaxInactiveTime` ).) Pomocí zásad můžete také nastavit dobu, po kterou se obnovovací tokeny už nepřijímají. (Chcete-li to provést, použijte vlastnost maximální stáří obnovovacího tokenu.) Dobu platnosti obnovovacího tokenu můžete upravit tak, aby bylo možné řídit, kdy a jak často musí uživatel při použití veřejné klientské aplikace znovu zadat přihlašovací údaje.
 
 > [!NOTE]
 > Vlastnost maximální stáří představuje dobu, po kterou lze použít jeden token. 
@@ -116,7 +116,7 @@ Další informace o vztahu mezi objekty aplikace a instančními objekty služby
 
 Platnost tokenu je vyhodnocena v době, kdy je token použit. Zásady s nejvyšší prioritou u aplikace, ke které se přistupoval, se projeví.
 
-Všechny časové rozsahy, které jsou zde použity, jsou formátovány podle objektu [TimeSpan](/dotnet/api/system.timespan) jazyka C# – D. hh: mm: ss.  Tedy 80 dní a 30 minut `80.00:30:00`.  Úvodní znak D se může vyřadit, pokud je nula, takže 90 `00:90:00`minut.  
+Všechny časové rozsahy, které jsou zde použity, jsou formátovány podle objektu [TimeSpan](/dotnet/api/system.timespan) jazyka C# – D. hh: mm: ss.  Tedy 80 dní a 30 minut `80.00:30:00` .  Úvodní znak D se může vyřadit, pokud je nula, takže 90 minut `00:90:00` .  
 
 > [!NOTE]
 > Tady je příklad scénáře.
@@ -545,3 +545,9 @@ Remove-AzureADServicePrincipalPolicy -Id <ObjectId of ServicePrincipal>  -Policy
 | --- | --- | --- |
 | <code>&#8209;Id</code> |**ObjectID (ID)** aplikace | `-Id <ObjectId of Application>` |
 | <code>&#8209;PolicyId</code> |**Identifikátor objectID** zásady | `-PolicyId <ObjectId of Policy>` |
+
+## <a name="license-requirements"></a>Licenční požadavky
+
+Použití této funkce vyžaduje licenci Azure AD Premium P1. Správnou licenci pro vaše požadavky najdete v tématu [porovnání všeobecně dostupných funkcí edice Free a Premium](https://azure.microsoft.com/pricing/details/active-directory/).
+
+Zákazníci s [licencemi Microsoft 365 Business](https://docs.microsoft.com/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) mají taky přístup k funkcím podmíněného přístupu.

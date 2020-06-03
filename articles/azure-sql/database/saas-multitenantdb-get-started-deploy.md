@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/16/2018
-ms.openlocfilehash: 274f8d985304ee27776017dfee7d263df8271fbc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 59a7fbbd6f948ec5207522814a1375b806536810
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047101"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310083"
 ---
 # <a name="deploy-and-explore-a-sharded-multi-tenant-application"></a>Nasazení a zkoumání horizontálně dělené aplikace pro více tenantů
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -265,7 +265,7 @@ V tomto kurzu jste se dozvěděli:
 > - Jak zobrazit využití fondu pro monitorování aktivity tenanta
 > - Jak odstranit ukázkové prostředky pro zastavení související fakturace
 
-Teď Vyzkoušejte [kurz zřízení a katalog](saas-dbpertenant-provision-and-catalog.md).
+Teď Vyzkoušejte [kurz zřízení a katalog](saas-multitenantdb-provision-and-catalog.md).
 
 
 <!--  Link references.
