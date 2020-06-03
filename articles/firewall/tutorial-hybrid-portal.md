@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 208a7a677bdf0b76ffed83e679c6f1ff3041d50d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7da5e6fa3c977d309ad028cb446cd411a9d4fbaf
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80239687"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298954"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Kurz: nasazení a konfigurace Azure Firewall v hybridní síti pomocí Azure Portal
 
@@ -67,14 +67,14 @@ Postup vytvoření těchto tras najdete v části [Vytvoření pravidel](#create
 >[!NOTE]
 >Provoz mezi přímo rovnocenným virtuální sítě je směrován přímo, i když jako výchozí bránu UDR body Azure Firewall. Aby bylo možné odeslat podsíť do brány firewall v tomto scénáři, musí UDR v obou podsítích explicitně obsahovat předponu sítě cílové podsítě.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="create-the-firewall-hub-virtual-network"></a>Vytvoření virtuální sítě centra firewallu
 
 Nejdřív vytvořte skupinu prostředků, která bude obsahovat prostředky pro tento kurz:
 
 1. Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://portal.azure.com).
-2. Na domovské stránce Azure Portal vyberte **skupiny** > prostředků**Přidat**.
+2. Na domovské stránce Azure Portal vyberte **skupiny prostředků**  >  **Přidat**.
 3. Jako **název skupiny prostředků**zadejte **FW-Hybrid-test**.
 4. V části **Předplatné** vyberte své předplatné.
 5. V **oblasti oblast**vyberte **východní USA**. Všechny prostředky, které vytvoříte později, musí být ve stejném umístění.
@@ -131,18 +131,6 @@ Nyní vytvořte druhou podsíť pro bránu.
 4. Pro **Rozsah adres (blok CIDR)** zadejte **192.168.2.0/24**.
 5. Vyberte **OK**.
 
-### <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
-
-Tato veřejná IP adresa se používá pro místní bránu.
-
-1. Na domovské stránce Azure Portal vyberte **vytvořit prostředek**.
-2. Do textového pole Hledat zadejte **veřejnou IP adresu** a stiskněte klávesu **ENTER**.
-3. Vyberte **Veřejná IP adresa** a pak vyberte **vytvořit**.
-4. Jako název zadejte **VNet-OnPrem-GS-PIP**.
-5. Jako skupinu prostředků zadejte **FW-Hybrid-test**.
-6. V části **Umístění** vyberte dříve použité umístění.
-7. Přijměte ostatní výchozí hodnoty a pak vyberte **vytvořit**.
-
 ## <a name="configure-and-deploy-the-firewall"></a>Konfigurace a nasazení brány firewall
 
 Teď nasaďte bránu firewall do virtuální sítě centra brány firewall.
@@ -153,12 +141,12 @@ Teď nasaďte bránu firewall do virtuální sítě centra brány firewall.
 
    |Nastavení  |Hodnota  |
    |---------|---------|
-   |Předplatné     |\<Vaše předplatné\>|
+   |Předplatné     |\<your subscription\>|
    |Skupina prostředků     |**FW – Hybrid-test** |
-   |Název     |**AzFW01**|
+   |Name     |**AzFW01**|
    |Umístění     |Vyberte dříve použité umístění.|
    |Volba virtuální sítě     |**Použít existující**:<br> **Virtuální síť – centrum**|
-   |Veřejná IP adresa     |Create new (Vytvořit novou): <br>**Název** - **FW-PIP** |
+   |Veřejná IP adresa     |Create new (Vytvořit novou): <br>**Název**  -  **FW-PIP** |
 
 5. Vyberte **Zkontrolovat a vytvořit**.
 6. Zkontrolujte souhrn a pak vyberte **vytvořit** a vytvořte bránu firewall.
@@ -194,7 +182,7 @@ Na řádku druhý pravidlo zadejte následující informace:
 4. Jako **zdroj**zadejte **192.168.1.0/24**.
 5. Pro **cílovou adresu**zadejte **10.6.0.0/16** .
 6. V případě **cílových portů**zadejte **3389**.
-7. Vyberte **Přidat**.
+7. Vyberte možnost **Přidat**.
 
 ## <a name="create-and-connect-the-vpn-gateways"></a>Vytvoření a propojení bran VPN
 
@@ -242,7 +230,7 @@ V tomto kroku vytvoříte připojení z virtuální sítě rozbočovače k míst
 
 1. Otevřete skupinu prostředků- **Hybrid-test FW** a vyberte bránu **GS-hub** .
 2. V levém sloupci vyberte **připojení** .
-3. Vyberte **Přidat**.
+3. Vyberte možnost **Přidat**.
 4. Název připojení, typ **hub-to-OnPrem**.
 5. Pro **Typ připojení**vyberte **VNet-to-VNet** .
 6. Pro **druhou bránu virtuální sítě**vyberte **GS-OnPrem**.
@@ -253,7 +241,7 @@ Vytvořte připojení k virtuální síti z místního prostředí k rozbočova�
 
 1. Otevřete skupinu prostředků " **Hybrid-test FW** " a vyberte bránu **GS-OnPrem** .
 2. V levém sloupci vyberte **připojení** .
-3. Vyberte **Přidat**.
+3. Vyberte možnost **Přidat**.
 4. Název připojení zadejte **OnPrem-to-hub**.
 5. Pro **Typ připojení**vyberte **VNet-to-VNet** .
 6. Pro **druhou bránu virtuální sítě**vyberte **GS-hub**.
@@ -273,7 +261,7 @@ Nyní můžete vytvořit partnerský vztah mezi virtuálními sítěmi hub a pap
 
 1. Otevřete skupinu prostředků " **Hybrid-test FW** " a vyberte virtuální síť **centra VNet** .
 2. V levém sloupci vyberte **partnerské vztahy**.
-3. Vyberte **Přidat**.
+3. Vyberte možnost **Přidat**.
 4. Jako **název**zadejte **HubtoSpoke**.
 5. Pro **virtuální síť**vyberte **VNet-paprsek** .
 6. Jako název partnerského vztahu z VNetSpoke do služby VNet-hub zadejte **SpoketoHub**.
@@ -307,7 +295,7 @@ Dále vytvořte několik tras:
 9. Vyberte **Vytvořit**.
 10. Po vytvoření směrovací tabulky vyberte ji a otevřete stránku směrovací tabulka.
 11. V levém sloupci vyberte možnost **trasy** .
-12. Vyberte **Přidat**.
+12. Vyberte možnost **Přidat**.
 13. Jako název trasy zadejte **ToSpoke**.
 14. Jako předponu adresy zadejte **10.6.0.0/16**.
 15. V poli Typ dalšího segmentu směrování vyberte **virtuální zařízení**.
@@ -336,7 +324,7 @@ Nyní vytvořte výchozí trasu z podsítě paprsků.
 1. Vyberte **Vytvořit**.
 2. Po vytvoření směrovací tabulky vyberte ji a otevřete stránku směrovací tabulka.
 3. V levém sloupci vyberte možnost **trasy** .
-4. Vyberte **Přidat**.
+4. Vyberte možnost **Přidat**.
 5. Jako název trasy zadejte **ToHub**.
 6. Jako předponu adresy zadejte **0.0.0.0/0**.
 7. V poli Typ dalšího segmentu směrování vyberte **virtuální zařízení**.
@@ -402,7 +390,7 @@ Toto je virtuální počítač, který používáte k připojení pomocí vzdál
 2. V části **Oblíbené**vyberte **Windows Server 2016 Datacenter**.
 3. Zadejte pro virtuální počítač tyto hodnoty:
     - **Skupina prostředků** – vyberte existující a pak vyberte **FW-Hybrid-test**.
-    - **Virtuální počítač název** - *VM-OnPrem*.
+    - **Název**  -  virtuálního počítače *VM-OnPrem*.
     - **Oblast se** stejnou oblastí, kterou jste použili dříve.
     - **Uživatelské jméno**: *azureuser*.
     - **Heslo**: *Azure123456!*.
@@ -422,9 +410,9 @@ Toto je virtuální počítač, který používáte k připojení pomocí vzdál
 <!---2. Open a Windows PowerShell command prompt on **VM-Onprem**, and ping the private IP for **VM-spoke-01**.
 
    You should get a reply.--->
-3. Otevřete webový prohlížeč na **virtuálním počítači-OnPrem**a vyhledejte privátní IP\<adresu\>virtuálního počítače http://-paprsek-01.
+3. Otevřete webový prohlížeč na **virtuálním počítači-OnPrem**a přejděte na http:// \<VM-spoke-01 private IP\> .
 
-   Měla by se zobrazit webová stránka **VM-paprsek-01** webová ![stránka VM-paprsk-01.](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
+   Měla by se zobrazit webová stránka **VM-paprsek-01** webová stránka ![ VM-paprsk-01.](media/tutorial-hybrid-portal/VM-Spoke-01-web.png)
 
 4. Z virtuálního počítače **VM-OnPrem** otevřete vzdálenou plochu **virtuálního počítače-paprsek-01** na privátní IP adrese.
 

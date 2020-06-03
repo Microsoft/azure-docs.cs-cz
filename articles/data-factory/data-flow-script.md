@@ -6,13 +6,13 @@ ms.author: nimoolen
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: 0ac33a0912d52405cf3d2ae18d5102930a94f3ff
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/02/2020
+ms.openlocfilehash: 27de2d3926a1f03cbd9169216e8f68c8ca81f2a5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890875"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298597"
 ---
 # <a name="data-flow-script-dfs"></a>Skript toku dat (DFS)
 
@@ -52,7 +52,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Pokud se rozhodnete přidat odvozenou transformaci, nejdřív musíme vytvořit základní transformační text, který má jednoduchý výraz pro přidání nového sloupce velkými písmeny s názvem `upperCaseTitle`:
+Pokud se rozhodnete přidat odvozenou transformaci, nejdřív musíme vytvořit základní transformační text, který má jednoduchý výraz pro přidání nového sloupce velkými písmeny s názvem `upperCaseTitle` :
 ```
 derive(upperCaseTitle = upper(title)) ~> deriveTransformationName
 ```
@@ -71,7 +71,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-A teď přesměrujte příchozí datový proud tím, že určíte, kterou transformaci chceme, aby se nová transformace nacházela po (v tomto případě `source1`) a kopírovala název streamu do nové transformace:
+A teď přesměrujte příchozí datový proud tím, že určíte, kterou transformaci chceme, aby se nová transformace nacházela po (v tomto případě `source1` ) a kopírovala název streamu do nové transformace:
 ```
 source(output(
         movieId as string,
@@ -85,7 +85,7 @@ source1 sink(allowSchemaDrift: true,
     validateSchema: false) ~> sink1
 ```
 
-Nakonec identifikujeme transformaci, kterou chceme přijít po této nové transformaci, a nahraďte její vstupní datový proud (v `sink1`tomto případě) s názvem výstupního datového proudu naší nové transformace:
+Nakonec identifikujeme transformaci, kterou chceme přijít po této nové transformaci, a nahraďte její vstupní datový proud (v tomto případě `sink1` ) s názvem výstupního datového proudu naší nové transformace:
 ```
 source(output(
         movieId as string,
@@ -173,7 +173,7 @@ aggregate(groupBy(movie),
 ```
 
 ### <a name="create-row-hash-fingerprint"></a>Vytvoření otisku hash řádku 
-Použijte tento kód ve vašem skriptu toku dat k vytvoření nového odvozeného sloupce s ```DWhash``` názvem, který ```sha1``` vytvoří hodnotu hash se třemi sloupci.
+Použijte tento kód ve vašem skriptu toku dat k vytvoření nového odvozeného sloupce ```DWhash``` s názvem, který vytvoří ```sha1``` hodnotu hash se třemi sloupci.
 
 ```
 derive(DWhash = sha1(Name,ProductNumber,Color))
@@ -192,6 +192,16 @@ Tento kód bude fungovat jako funkce T-SQL ```string_agg()``` a bude agregovat �
 source1 aggregate(groupBy(year),
     string_agg = collect(title)) ~> Aggregate1
 Aggregate1 derive(string_agg = toString(string_agg)) ~> DerivedColumn2
+```
+
+### <a name="count-number-of-updates-upserts-inserts-deletes"></a>Počet aktualizací, upsertuje, vložení, odstranění
+Když použijete transformaci ALTER Row, možná budete chtít spočítat počet aktualizací, upsertuje, vložení a odstraní je z vašich zásad ALTER Row. Přidejte agregační transformaci po změně řádku a vložte tento skript toku dat do agregované definice pro tyto počty:
+
+```
+aggregate(updates = countIf(isUpdate(), 1),
+        inserts = countIf(isInsert(), 1),
+        upserts = countIf(isUpsert(), 1),
+        deletes = countIf(isDelete(),1)) ~> RowCount
 ```
 
 ## <a name="next-steps"></a>Další kroky

@@ -6,94 +6,101 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 96b1bd86576f8cf34428eb60e2d3f476312311c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 85aaefa12f0cef21e3a367700d1a4899a75e8a90
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79249422"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298336"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Vytváření, zobrazování a správa výstrah protokolu pomocí Azure Monitor
 
 ## <a name="overview"></a>Přehled
-V tomto článku se dozvíte, jak nastavit výstrahy protokolu pomocí rozhraní výstrahy v Azure Portal. Definice pravidla výstrahy je ve třech částech:
+V tomto článku se dozvíte, jak vytvářet a spravovat výstrahy protokolu pomocí rozhraní výstrahy v rámci Azure Portal. Pravidla výstrah jsou definována třemi součástmi:
 - Cíl: konkrétní prostředek Azure, který se má monitorovat
-- Kritéria: specifická podmínka nebo logika, která se zobrazila v signálu, by měla aktivovat akci.
+- Kritéria: podmínku nebo logiku, která se má vyhodnotit jako pravdy. Při hodnotě true se výstraha aktivuje.  
 - Action: konkrétní volání odeslané příjemci oznámení – e-mail, SMS, Webhook atd.
 
-Pojem **výstrahy protokolu** , které popisují výstrahy v případě, že je signál dotazem protokolu v [log Analyticsm pracovním prostoru](../learn/tutorial-viewdata.md) nebo [Application Insights](../app/analytics.md). Přečtěte si další informace o funkcích, terminologii a typech z [Upozornění protokolů – přehled](alerts-unified-log.md).
+Pojem **Výstraha protokolu** popisuje výstrahy, ve kterých je vyhodnocen dotaz protokolu v [Log Analytics pracovní prostor](../learn/tutorial-viewdata.md) nebo [Application Insights](../app/analytics.md) , a výstrahu, která je vyvolána, pokud je výsledek true. Přečtěte si další informace o funkcích, terminologii a typech z [Upozornění protokolů – přehled](alerts-unified-log.md).
 
 > [!NOTE]
-> Oblíbená data protokolu z [Log Analytics pracovního prostoru](../../azure-monitor/learn/tutorial-viewdata.md) jsou teď dostupná také na platformě metrik v Azure monitor. Pro zobrazení podrobností, [Výstraha metriky pro protokoly](alerts-metric-logs.md)
+> Data protokolu z [log Analyticsho pracovního prostoru](../../azure-monitor/learn/tutorial-viewdata.md) je také možné směrovat do databáze Azure monitor metrik. Výstrahy metrik mají [různé chování](alerts-metric-overview.md), což může být více žádoucí v závislosti na datech, se kterými pracujete.   Informace o tom, co a jak můžete směrovat protokoly do metrik, najdete v tématu [Upozornění na metriky pro protokoly](alerts-metric-logs.md).
 
-## <a name="managing-log-alerts-from-the-azure-portal"></a>Správa výstrah protokolu z Azure Portal
+## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Vytvořte pravidlo upozornění protokolu s Azure Portal
 
-Podrobný návod, jak používat výstrahy protokolu pomocí rozhraní Azure Portal.
+1. Na [portálu](https://portal.azure.com/)vyberte **monitorování**. V této části vyberte **výstrahy**.
 
-### <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Vytvořte pravidlo upozornění protokolu s Azure Portal
+    ![Sledování](media/alerts-log/AlertsPreviewMenu.png)
 
-1. Na [portálu](https://portal.azure.com/)vyberte **monitorování** a v části Monitorování – zvolte **výstrahy**.
-
-    ![Monitorování](media/alerts-log/AlertsPreviewMenu.png)
-
-1. Kliknutím na tlačítko **nové pravidlo výstrahy** vytvoříte novou výstrahu v Azure.
+1. Klikněte na **nové pravidlo výstrahy**. 
 
     ![Přidat výstrahu](media/alerts-log/AlertsPreviewOption.png)
 
-1. Oddíl vytvořit výstrahu se zobrazí se třemi částmi, které se skládají z: *definovat podmínku upozornění*, *definovat podrobnosti výstrahy*a *definovat skupinu akcí*.
+1. Zobrazí se podokno **vytvořit výstrahu** . Obsahuje čtyři části: 
+    - Prostředek, na který se výstraha vztahuje
+    - Podmínka, která má být zkontrolována
+    - Akce, která se má provést, pokud je podmínka pravdivá
+    - Podrobnosti o pojmenování a popsání výstrahy. 
 
     ![Vytvořit pravidlo](media/alerts-log/AlertsPreviewAdd.png)
 
-1. Určete podmínku upozornění pomocí odkazu **Vybrat prostředek** a zadáním cíle výběrem prostředku. Filtrovat podle výběru _předplatného_, _typu prostředku_a požadovaného _prostředku_.
+1. Určete podmínku upozornění pomocí odkazu **Vybrat prostředek** a zadáním cíle výběrem prostředku. Filtrovat podle výběru *předplatného*, *typu prostředku*a požadovaného *prostředku*. 
 
-   > [!NOTE]
-   > Pro vytvoření upozornění protokolu – před pokračováním ověřte, že je signál **protokolu** pro vybraný prostředek k dispozici.
-   >  ![Vybrat prostředek](media/alerts-log/Alert-SelectResourceLog.png)
+   ![Vybrat prostředek](media/alerts-log/Alert-SelectResourceLog.png)
 
-1. *Výstrahy protokolu*: Ujistěte se, že **typ prostředku** je zdroj analýz, jako je *Log Analytics* nebo *Application Insights* a typ signálu jako **log**, potom klikněte na *hotový* **prostředek** . V dalším kroku použijte tlačítko **Přidat kritéria** k zobrazení seznamu možností signálu dostupných pro prostředek a ze zvolené možnosti **hledání vlastního protokolu** v seznamu signálů pro vybranou službu log monitor, jako je *Log Analytics* nebo *Application Insights*.
+1. Ujistěte se, že **typ prostředku** je zdroj analýzy, jako je *Log Analytics* nebo *Application Insights* a typ signálu jako *log*. Klikněte na **Done** (Hotovo). V dalším kroku použijte tlačítko **Přidat kritéria** k zobrazení seznamu možností signálu dostupných pro daný prostředek. V závislosti na tom, kde se nacházejí data pro výstrahy protokolu, najděte a vyberte možnost **hledání vlastního protokolu** pro *Log Analytics* nebo *Application Insights*.
 
    ![Výběr prostředku – hledání vlastního protokolu](media/alerts-log/AlertsPreviewResourceSelectionLog.png)
 
    > [!NOTE]
    > 
-   > Seznamy výstrah můžou importovat dotaz Analytics jako typ signálu – **protokol (uložený dotaz)**, jak vidíte na obrázku výše. Takže si uživatelé můžou dokonalý dotaz analyzovat a pak je uložit pro budoucí použití v upozorněních – další podrobnosti o použití ukládání dotazů, které jsou k dispozici [v Azure monitor](../log-query/log-query-overview.md) nebo ve [sdílených dotazech služby Application Insights Analytics](../app/app-insights-overview.md).
+   > Seznamy výstrah můžou importovat dotaz Analytics jako typ signálu – **protokol (uložený dotaz)**, jak vidíte na obrázku výše. Takže si uživatelé můžou dokonalý dotaz analyzovat a pak je uložit pro budoucí použití v upozorněních. Další informace o používání uložených dotazů najdete v tématu [použití dotazu protokolu v Azure monitor](../log-query/log-query-overview.md) a [sdíleného dotazu v Application Insights Analytics](../app/app-insights-overview.md).
 
-1. *Výstrahy protokolu*: po výběru se dotaz na upozorňování dá zadat v poli **vyhledávacího dotazu** . Pokud je syntaxe dotazu nesprávná, pole zobrazí ČERVENou chybu. Pokud je syntaxe dotazu správná – pro odkaz na historické údaje uvedeného dotazu se zobrazí jako graf s možností pro vylepšení časového okna z posledních šesti hodin do minulého týdne.
+1. Po výběru vytvořte dotaz výstrah v poli **vyhledávacího dotazu** . Pokud je syntaxe dotazu nesprávná, pole zobrazí červenou a chybu. 
+
+1. Pokud je syntaxe dotazu správná, pak se historická data pro dotaz zobrazí jako graf s možností selepšit časový interval z posledních šesti hodin na poslední týden.
 
     ![Konfigurovat pravidlo výstrahy](media/alerts-log/AlertsPreviewAlertLog.png)
 
-   > [!NOTE]
-   > 
-   > Historická vizualizace dat se dá zobrazit, jenom pokud výsledky dotazu mají časové údaje. Pokud je výsledkem dotazu souhrnná data nebo konkrétní hodnoty sloupce – stejné, jako v jednotném vykreslení se zobrazí stejné.
-   > Pro měření metriky, které protokolují výstrahy pomocí Application Insights nebo [Přepnutí na nové rozhraní API](alerts-log-api-switch.md), můžete určit, která konkrétní proměnná má seskupovat data pomocí možnosti **agregace on** ; Jak je znázorněno níže:
-   > 
-   > ![možnost agregace při](media/alerts-log/aggregate-on.png)
+   Vizualizace historických dat se zobrazí pouze v případě, že výsledky dotazu obsahují informace o čase. Pokud výsledkem dotazu jsou souhrnná data nebo konkrétní hodnoty sloupce, zobrazí se v zobrazení jeden graf.
+  
+   Pro měření metrik pomocí Application Insights nebo [rozhraní API Log Analytics](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)můžete určit konkrétní proměnnou, která má seskupovat data pomocí možnosti **agregace on** ; Jak je znázorněno zde: 
+  
+   ![možnost agregace při](media/alerts-log/aggregate-on.png)
 
-1. *Výstrahy protokolu*: když je vybraná vizualizace, můžete **logiku výstrahy** vybrat ze zobrazených možností podmínka, agregace a konečné prahové hodnoty. Nakonec zadejte v logice čas, který se má vyhodnotit pro zadanou podmínku, a to za použití možnosti **perioda** . Společně s tím, jak často se má výstraha spouštět, vyberte **četnost**. **Výstrahy protokolu** můžou být založené na:
+
+
+1. V dalším kroku vyberte podmínku **logiky výstrahy** , agregaci a prahovou hodnotu. 
+
+1. Vyberte časový interval, za který se má vyhodnotit zadaná podmínka, a to pomocí možnosti **perioda** . 
+
+1. Vyberte, jak často se výstraha spouští v **četnosti**. 
+
+    **Výstrahy protokolu** můžou být založené na:
     - [Počet záznamů](../../azure-monitor/platform/alerts-unified-log.md#number-of-results-alert-rules): výstraha se vytvoří, pokud je počet záznamů vrácených dotazem větší nebo menší než poskytnutá hodnota.
     - [Měření metriky](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules): je vytvořena výstraha, pokud každá *agregovaná hodnota* ve výsledcích překračuje stanovenou prahovou hodnotu a je *seskupena podle* zvolené hodnoty. Počet porušení pro výstrahu je počet překročení prahové hodnoty ve zvoleném časovém období. Můžete určit celkový počet porušení pro libovolnou kombinaci porušení v rámci sady výsledků nebo po sobě jdoucí porušení předpisů, aby se v následných vzorcích vyžadovalo, aby v nich došlo k narušení.
 
 
-1. Jako druhý krok definujte v poli **název pravidla výstrahy** název vaší výstrahy spolu s **popisem** podrobností o konkrétní výstraze a hodnotě **závažnosti** z dostupných možností. Tyto podrobnosti se znovu použijí ve všech e-mailech výstrah, oznámeních nebo nabízených oznámeních Azure Monitor. Kromě toho může uživatel zvolit, že se pravidlo výstrahy při vytváření okamžitě aktivuje, a to tak, že **po vytvoření zvolí pravidlo Povolit** .
+1. Klikněte na **Done** (Hotovo). 
 
-    V případě **výstrah pouze protokolu** jsou v podrobnostech výstrahy k dispozici některé další funkce:
+1. Zadejte název upozornění v poli **název pravidla výstrahy** spolu s **popisem** podrobností o výstraze a hodnotě **závažnosti** z poskytnutých možností. Tyto podrobnosti se znovu použijí ve všech e-mailech s výstrahami, oznámeních nebo nabízených oznámeních, které provádí Azure Monitor. Kliknutím na **Povolit pravidlo při vytváření**můžete také zvolit, že se má pravidlo výstrahy při vytváření okamžitě aktivovat.
 
-    - **Potlačit výstrahy**: Když zapnete potlačení pro pravidlo výstrahy, akce pro pravidlo se po vytvoření nové výstrahy vypnou po určenou dobu. Pravidlo je stále spuštěno a vytváří záznamy výstrah za předpokladu, že jsou splněna kritéria. Umožňuje vám čas opravit problém bez spuštění duplicitních akcí.
+1. Vyberte, jestli chcete **výstrahy potlačit** po určitou dobu.  Když zapnete potlačení pro pravidlo výstrahy, akce pro pravidlo jsou po vytvoření nové výstrahy neaktivní po určenou dobu. Pravidlo se pořád spustí a vytvoří záznamy výstrah, které doplní kritéria. Toto nastavení umožňuje opravit problém bez spuštění duplicitních akcí.
 
-        ![Potlačit výstrahy pro výstrahy protokolu](media/alerts-log/AlertsPreviewSuppress.png)
+   ![Potlačit výstrahy pro výstrahy protokolu](media/alerts-log/AlertsPreviewSuppress.png)
 
-        > [!TIP]
-        > Zadejte potlačit hodnotu výstrahy větší než frekvence výstrahy, aby se zajistilo, že se oznámení zastaví bez překrytí.
+    > [!TIP]
+    > Zadejte potlačit hodnotu výstrahy větší, než je frekvence výstrahy, aby se zajistilo, že se oznámení zastaví bez překrytí.
 
-1. Jako třetí a poslední krok určete, jestli se má pro pravidlo upozornění při splnění podmínky upozornění aktivovat jakákoli **Skupina akcí** . Můžete zvolit libovolnou existující skupinu akcí s výstrahou nebo vytvořit novou skupinu akcí. V závislosti na vybrané skupině akcí se při aktivaci výstrahy Azure: Odeslat e-mail, poslat SMS, zavolat webhookům, opravit je pomocí runbooků Azure, nahrajte ho do nástroje ITSM atd. Přečtěte si další informace o [skupinách akcí](action-groups.md).
+1. Jako třetí a poslední krok určete, zda má pravidlo upozornění aktivovat jednu nebo více **skupin akcí** , pokud je splněna podmínka výstrahy. Můžete zvolit libovolnou existující skupinu akcí nebo vytvořit novou. Pomocí skupin akcí můžete odeslat několik akcí, jako je například odesílání e-mailů, posílání zpráv SMS, volání webhooků, napravení pomocí runbooků Azure, vložení do nástroje ITSM a další. Přečtěte si další informace o [skupinách akcí](action-groups.md).
 
     > [!NOTE]
-    > Omezení počtu datových částí sady Runbook aktivovaných pro výstrahy protokolu pomocí skupin akcí Azure najdete v tématu [omezení služby předplatného Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md) .
+    > Omezení akcí, které je možné provést, najdete v části [omezení služby předplatného Azure](../../azure-resource-manager/management/azure-subscription-service-limits.md) .  
 
-    Pro **výstrahy protokolu** jsou k dispozici některé další funkce pro přepsání výchozích akcí:
+    K dispozici jsou některé další funkce pro přepsání výchozích akcí:
 
-    - **E-mailové oznámení**: přepíše *Předmět e-mailu* v e-mailu odeslaného prostřednictvím skupiny akcí; Pokud v dané skupině akcí existuje jedna nebo více e-mailových akcí. Text e-mailu nelze upravit a toto pole **není** pro e-mailovou adresu.
-    - **Zahrnout vlastní datovou část JSON**: přepíše Webhook JSON používaný skupinami akcí; Pokud v dané skupině akcí existuje jedna nebo více akcí Webhooku. Uživatel může určit formát JSON, který se má použít pro všechny Webhooky nakonfigurované v přidružené skupině akcí. Další informace o formátech webhooků najdete v tématu [Akce Webhooku pro výstrahy protokolu](../../azure-monitor/platform/alerts-log-webhook.md). Možnost zobrazení Webhooku je k dispozici pro kontrolu formátu pomocí ukázkových dat JSON.
+    - **E-mailové oznámení**: přepíše *Předmět e-mailu* v e-mailu odeslaném prostřednictvím skupiny akcí. Text e-mailu nelze upravit a toto pole **není** pro e-mailovou adresu.
+    - **Zahrnout vlastní datovou část JSON**: přepíše Webhook JSON používaný skupinami akcí, když skupina akcí obsahuje typ Webhooku. Další informace o formátech webhooků najdete v tématu [Akce Webhooku pro výstrahy protokolu](../../azure-monitor/platform/alerts-log-webhook.md). Možnost zobrazení Webhooku je k dispozici pro kontrolu formátu pomocí ukázkových dat JSON.
 
         ![Přepsání akcí pro výstrahy protokolu](media/alerts-log/AlertsPreviewOverrideLog.png)
 
@@ -121,7 +128,7 @@ Uživatelé můžou také dokončit dotaz Analytics v [Log Analytics](../log-que
 
 ## <a name="managing-log-alerts-using-azure-resource-template"></a>Správa výstrah protokolu pomocí šablony prostředků Azure
 
-Výstrahy protokolu v Azure Monitor jsou přidruženy k typu `Microsoft.Insights/scheduledQueryRules/`prostředku. Další informace o tomto typu prostředku najdete v tématu [Azure monitor – Reference k rozhraní API pro pravidla dotazů na naplánované dotazy](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Výstrahy protokolu pro Application Insights nebo Log Analytics můžete vytvořit pomocí [naplánovaných rozhraní API pravidel dotazů](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
+Výstrahy protokolu v Azure Monitor jsou přidruženy k typu prostředku `Microsoft.Insights/scheduledQueryRules/` . Další informace o tomto typu prostředku najdete v tématu [Azure monitor – Reference k rozhraní API pro pravidla dotazů na naplánované dotazy](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/). Výstrahy protokolu pro Application Insights nebo Log Analytics můžete vytvořit pomocí [naplánovaných rozhraní API pravidel dotazů](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
 > [!NOTE]
 > Výstrahy protokolu pro Log Analytics je taky možné spravovat pomocí starších [Log Analytics rozhraní API pro upozornění](api-alerts.md) a starších šablon [Log Analytics uložená hledání a upozornění](../insights/solutions-resources-searches-alerts.md) . Další informace o tom, jak se ve výchozím nastavení používá nové rozhraní API ScheduledQueryRules, najdete v tématu [Přepnutí na nové rozhraní API pro Log Analytics výstrahy](alerts-log-api-switch.md).
@@ -305,22 +312,23 @@ Vzorový JSON výše se dá uložit jako (řekněme) sampleScheduledQueryRule. J
 
 Azure Monitor – [rozhraní API pro plánovaná pravidla dotazů](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) je REST API a plně kompatibilní s Azure Resource Manager REST API. A níže uvedené rutiny prostředí PowerShell jsou k dispozici pro využití [naplánovaných rozhraní API pravidel dotazů](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
-1. [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) : PowerShell Rutina pro vytvoření nového pravidla upozornění protokolu
-1. Rutina [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) : PowerShell aktualizuje existující pravidlo upozornění protokolu.
-1. [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu, který určuje zdrojové parametry výstrahy protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
-1. [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry plánu pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
-1. [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry akce pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
-1. [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu, který určuje parametry skupin akcí pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) .
-1. [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry podmínky triggeru pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) .
-1. [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry podmínky triggeru metriky pro [výstrahu protokolu typu měření metriky](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules). Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) .
-1. [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) : PowerShell Rutina pro výpis stávajících pravidel upozornění protokolů nebo konkrétního pravidla výstrahy protokolu
-1. [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) : rutina prostředí PowerShell pro povolení nebo zakázání pravidla upozornění protokolu
-1. [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell Rutina pro odstranění existujícího pravidla upozornění protokolu
+- [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) : PowerShell Rutina pro vytvoření nového pravidla upozornění protokolu
+- Rutina [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) : PowerShell aktualizuje existující pravidlo upozornění protokolu.
+- [New-AzScheduledQueryRuleSource](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulesource) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu, který určuje zdrojové parametry výstrahy protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
+- [New-AzScheduledQueryRuleSchedule](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleSchedule): rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry plánu pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
+- [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry akce pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrule) a [set-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/set-azscheduledqueryrule) .
+- [New-AzScheduledQueryRuleAznsActionGroup](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruleaznsactiongroup) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu, který určuje parametry skupin akcí pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) .
+- [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry podmínky triggeru pro výstrahu protokolu. Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleAlertingAction](https://docs.microsoft.com/powershell/module/az.monitor/New-AzScheduledQueryRuleAlertingAction) .
+- [New-AzScheduledQueryRuleLogMetricTrigger](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryrulelogmetrictrigger) : rutina prostředí PowerShell pro vytvoření nebo aktualizaci objektu určujícího parametry podmínky triggeru metriky pro [výstrahu protokolu typu měření metriky](../../azure-monitor/platform/alerts-unified-log.md#metric-measurement-alert-rules). Používá se jako vstup pomocí rutiny [New-AzScheduledQueryRuleTriggerCondition](https://docs.microsoft.com/powershell/module/az.monitor/new-azscheduledqueryruletriggercondition) .
+- [Get-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/get-azscheduledqueryrule) : PowerShell Rutina pro výpis stávajících pravidel upozornění protokolů nebo konkrétního pravidla výstrahy protokolu
+- [Update-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/update-azscheduledqueryrule) : rutina prostředí PowerShell pro povolení nebo zakázání pravidla upozornění protokolu
+- [Remove-AzScheduledQueryRule](https://docs.microsoft.com/powershell/module/az.monitor/remove-azscheduledqueryrule): PowerShell Rutina pro odstranění existujícího pravidla upozornění protokolu
 
 > [!NOTE]
 > Rutiny PowerShellu pro ScheduledQueryRules můžou spravovat jenom pravidla vytvořená samotným rutinou nebo [rozhraní API pro naplánovaná pravidla dotazování](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/)pomocí Azure monitor. Pravidla upozornění protokolů vytvořená pomocí starších [Log Analytics rozhraní API výstrah](api-alerts.md) a starších šablon [Log Analytics uložených hledání a upozornění](../insights/solutions-resources-searches-alerts.md) se dají spravovat pomocí rutin prostředí ScheduledQueryRules PowerShellu, jenom když uživatel [přepne předvolby rozhraní API pro Log Analytics výstrahy](alerts-log-api-switch.md).
 
 V následujícím seznamu jsou uvedené kroky pro vytvoření ukázkového pravidla upozornění protokolu pomocí rutin PowerShellu pro scheduledQueryRules.
+
 ```powershell
 $source = New-AzScheduledQueryRuleSource -Query 'Heartbeat | summarize AggregatedValue = count() by bin(TimeGenerated, 5m), _ResourceId' -DataSourceId "/subscriptions/a123d7efg-123c-1234-5678-a12bc3defgh4/resourceGroups/contosoRG/providers/microsoft.OperationalInsights/workspaces/servicews"
 

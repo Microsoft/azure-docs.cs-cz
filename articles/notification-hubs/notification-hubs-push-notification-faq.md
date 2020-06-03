@@ -17,12 +17,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 29ef1ec551169bb84680f343e38949f73724f5ae
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76263825"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307380"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: nejčastější dotazy
 
@@ -56,7 +56,7 @@ U úrovní Basic a Standard Notification Hubs mohou správně nakonfigurované a
 
 ### <a name="how-do-i-upgrade-or-downgrade-my-hub-or-namespace-to-a-different-tier"></a>Návody upgradovat nebo downgradovat můj rozbočovač nebo obor názvů na jinou úroveň?
 
-Přejít na **[Azure Portal]** > **obory názvů Notification Hubs** nebo **Notification Hubs**. Vyberte prostředek, který chcete aktualizovat, a pak přejít na **cenovou úroveň**. Vezměte na vědomí následující požadavky:
+Přejít na **[Azure Portal]**  >  **obory názvů Notification Hubs** nebo **Notification Hubs**. Vyberte prostředek, který chcete aktualizovat, a pak přejít na **cenovou úroveň**. Vezměte na vědomí následující požadavky:
 
 * Aktualizovaná cenová úroveň se vztahuje na *všechna* centra v oboru názvů, se kterým pracujete.
 * Pokud počet zařízení překročí limit vrstvy, na kterou se chystáte přejít, budete muset před přechodem do downgradu odstranit zařízení.
@@ -79,7 +79,7 @@ Notification Hubs odesílá oznámení do zařízení s mobilními aplikacemi. N
 
 Podrobnosti o počtu podporovaných zařízení najdete na stránce s [cenami Notification Hubs] .
 
-Pokud potřebujete podporu více než 10 000 000 registrovaných zařízení, je nutné rozdělit zařízení na více rozbočovačů.
+Pokud potřebujete podporu více než 10 000 000 registrovaných zařízení, je nutné rozdělit zařízení do více oborů názvů.
 
 ### <a name="how-many-push-notifications-can-i-send-out"></a>Kolik nabízených oznámení můžu odeslat?
 
@@ -121,7 +121,7 @@ Vzhledem k povaze nabízených oznámení (jsou dodávány externím PNS specifi
 
 Při registraci mobilní aplikace portálu pro vývojáře platformy (například Apple nebo Google) se odesílají identifikátory aplikace a tokeny zabezpečení. Back-end aplikace poskytuje tyto tokeny PNS platformy, aby bylo možné odesílat nabízená oznámení do zařízení. Tokeny zabezpečení můžou být ve formě certifikátů (například Apple iOS nebo Windows Phone) nebo klíčů zabezpečení (například Google Android nebo Windows). Musí být nakonfigurovány v centrech oznámení. Konfigurace se obvykle provádí na úrovni centra oznámení, ale je možné ji také provést na úrovni oboru názvů ve scénáři s více klienty.
 
-#### <a name="namespaces"></a>Jmenné prostory
+#### <a name="namespaces"></a>Obory názvů
 
 Obory názvů lze použít pro seskupení nasazení. Můžou se také použít k reprezentaci všech Center oznámení pro všechny klienty stejné aplikace ve scénáři s více klienty.
 
@@ -181,7 +181,7 @@ Azure Notification Hubs šifruje všechna neaktivní zákaznická data s výjimk
 
 ### <a name="is-there-audit-log-capability"></a>Je k dispozici možnost protokolu auditu?
 
-Ano. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
+Yes. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
 
@@ -193,7 +193,7 @@ Azure Notification Hubs poskytuje několik funkcí pro řešení potíží, zejm
 
 Azure Notification Hubs umožňuje zobrazit data telemetrie v [Azure Portal]. Podrobnosti o metrikách jsou k dispozici na stránce [Notification Hubs metriky] .
 
-Můžete také programově přistupovat k metrikám. Další informace najdete v těchto článcích:
+Můžete také programově přistupovat k metrikám. Další informace najdete v následujících článcích:
 
 - [Načtěte metriky Azure monitor pomocí .NET](https://azure.microsoft.com/resources/samples/monitor-dotnet-metrics-api/). V této ukázce se používá uživatelské jméno a heslo. Chcete-li použít certifikát, přetížením metody FromServicePrincipal poskytněte certifikát, jak je znázorněno v [tomto příkladu](https://github.com/Azure/azure-libraries-for-net/blob/master/src/ResourceManagement/ResourceManager/Authentication/AzureCredentialsFactory.cs). 
 - [Získání metrik a protokolů aktivit pro prostředek](https://azure.microsoft.com/resources/samples/monitor-dotnet-query-metrics-activitylogs/)
@@ -215,6 +215,6 @@ Můžete také programově přistupovat k metrikám. Další informace najdete v
 [Řešení potíží s Notification Hubs]: https://azure.microsoft.com/documentation/articles/notification-hubs-diagnosing/
 [Notification Hubs metriky]: ../azure-monitor/platform/metrics-supported.md#microsoftnotificationhubsnamespacesnotificationhubs
 [Registrace – export/import]: https://docs.microsoft.com/azure/notification-hubs/export-modify-registrations-bulk
-[portál Azure]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com
 [complete samples]: https://github.com/Azure/azure-notificationhubs-samples
 [App Service Pricing]: https://azure.microsoft.com/pricing/details/app-service/

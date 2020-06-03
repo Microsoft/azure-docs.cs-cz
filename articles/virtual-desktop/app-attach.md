@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: a222e5a0602a676872eb8119e565f243f2ecc1b4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c23528fbb60b471a7613f372fe5316a4883ae733
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742934"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310610"
 ---
 # <a name="set-up-msix-app-attach"></a>Nastavení připojení aplikace MSIX
 
 > [!IMPORTANT]
-> Připojení aplikace MSIX je aktuálně ve verzi Private Preview.
+> Připojení aplikace MSIX je aktuálně ve verzi Public Preview.
 > Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 V tomto tématu se dozvíte, jak nastavit připojení aplikace MSIX v prostředí virtuálních počítačů s Windows.
@@ -28,13 +28,14 @@ V tomto tématu se dozvíte, jak nastavit připojení aplikace MSIX v prostřed�
 Než začnete, je potřeba nakonfigurovat připojení aplikace MSIX:
 
 - Přístup k portálu Windows Insider pro získání verze Windows 10 s podporou aplikace MSIX připojit rozhraní API.
-- Funkční nasazení virtuálních počítačů s Windows. Informace najdete v tématu [Vytvoření tenanta ve virtuálním počítači s Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md).
+- Funkční nasazení virtuálních počítačů s Windows. Pokud chcete zjistit, jak nasadit virtuální plochu Windows na verzi 2019, přečtěte si téma [Vytvoření tenanta ve virtuálním počítači s Windows](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Další informace o nasazení vydaných verzí Windows Virtual Desktop na jaře 2020 najdete v tématu [Vytvoření fondu hostitelů s Azure Portal](./create-host-pools-azure-marketplace.md).
+
 - Nástroj pro zabalení MSIX
 - Sdílená síťová složka v rámci nasazení virtuálního počítače s Windows, kde bude uložený balíček MSIX
 
-## <a name="get-the-os-image"></a>Získat bitovou kopii operačního systému
+## <a name="get-the-os-image-from-the-technology-adoption-program-tap-portal"></a>Získání image operačního systému z programu pro přijetí technologie (klepněte) na portálu
 
-Nejdřív musíte získat image operačního systému, kterou budete používat pro aplikaci MSIX. Získání bitové kopie operačního systému:
+Získání image operačního systému z portálu Windows Insider:
 
 1. Otevřete [portál Windows Insider](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0) a přihlaste se.
 
@@ -49,6 +50,21 @@ Nejdřív musíte získat image operačního systému, kterou budete používat 
      >V současné době je anglicky jediný jazyk, který byl testován pomocí funkce. Můžete vybrat jiné jazyky, ale nemusí se zobrazovat tak, jak mají.
     
 4. Po vygenerování odkazu ke stažení vyberte **64 stáhnout** a uložte ho na místní pevný disk.
+
+## <a name="get-the-os-image-from-the-azure-portal"></a>Získat bitovou kopii operačního systému z Azure Portal
+
+Získání bitové kopie operačního systému z Azure Portal:
+
+1. Otevřete [Azure Portal](https://portal.azure.com) a přihlaste se.
+
+2. Přejít na **vytvořit virtuální počítač**.
+
+3. Na kartě **základní** vyberte **Windows 10 Enterprise multi-session verze 2004**.
+      
+4. Dokončete vytváření virtuálního počítače podle zbývajících pokynů.
+
+     >[!NOTE]
+     >Tento virtuální počítač můžete použít k přímému testování připojení aplikace MSIX. Pokud se chcete dozvědět víc, přeskočte dopředu, jak [vygenerovat balíček VHD nebo VHDX pro MSIX](#generate-a-vhd-or-vhdx-package-for-msix). V opačném případě ponechte tento oddíl dál číst.
 
 ## <a name="prepare-the-vhd-image-for-azure"></a>Příprava image VHD pro Azure 
 
@@ -77,7 +93,7 @@ sc config wuauserv start=disabled
 Po zakázání automatických aktualizací musíte povolit technologii Hyper-V, protože pro přípravu a odpojení VHD k odinstalaci použijete příkaz mety-VHD. 
 
 ```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V-All
+Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
 ```
 >[!NOTE]
 >Tato změna bude vyžadovat, abyste virtuální počítač restartovali.
@@ -187,7 +203,7 @@ Pokud vaše aplikace používá certifikát, který není veřejný nebo podepsa
 5. Pokud se instalační program zeptá, jestli chcete aplikaci umožnit, aby na svém zařízení provedla změny, vyberte **Ano**.
 6. Vyberte možnost **umístit všechny certifikáty do následujícího úložiště**a pak vyberte **Procházet**.
 7. Když se zobrazí okno vybrat úložiště certifikátů, vyberte **Důvěryhodné osoby**a pak vyberte **OK**.
-8. Vyberte **Finish** (Dokončit).
+8. Vyberte **Dokončit**.
 
 ## <a name="prepare-powershell-scripts-for-msix-app-attach"></a>Příprava skriptů PowerShellu pro připojení aplikace MSIX
 

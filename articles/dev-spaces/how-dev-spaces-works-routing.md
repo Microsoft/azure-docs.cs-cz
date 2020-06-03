@@ -5,12 +5,12 @@ ms.date: 03/24/2020
 ms.topic: conceptual
 description: V této části najdete popis procesů, které Azure Dev Spaces výkonu a způsobu fungování směrování.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, kontejnery
-ms.openlocfilehash: e9bc1875c053335da6a8e2603406bcdb34a6dd04
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 126a534cec2ee4b07aa3a127fb3f47f9931f0031
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80241384"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307414"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Jak funguje směrování s Azure Dev Spaces
 
@@ -20,21 +20,21 @@ Tento článek popisuje, jak funguje směrování s využitím vývojových pros
 
 ## <a name="how-routing-works"></a>Jak funguje směrování
 
-Vývojové místo je postavené na AKS a používá stejné [Koncepty sítě](../aks/concepts-network.md). Azure Dev Spaces má taky centralizovanou službu *ingressmanager* a nasadí svůj vlastní kontroler příchozího přenosu do clusteru AKS. Služba *ingressmanager* monitoruje clustery AKS pomocí vývojových prostorů a rozšiřuje Azure dev Spaces řadič příchozího přenosu v clusteru s objekty příchozího přenosu dat pro směrování do lusků aplikací. Kontejner devspaces-proxy v každém z nich přidá hlavičku `azds-route-as` http pro přenosy HTTP do vývojového prostoru založeného na adrese URL. Například požadavek na adresu URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* získá hlavičku HTTP s. `azds-route-as: azureuser` Kontejner devspaces-proxy nebude přidávat `azds-route-as` hlavičku, pokud již existuje.
+Vývojové místo je postavené na AKS a používá stejné [Koncepty sítě](../aks/concepts-network.md). Azure Dev Spaces má taky centralizovanou službu *ingressmanager* a nasadí svůj vlastní kontroler příchozího přenosu do clusteru AKS. Služba *ingressmanager* monitoruje clustery AKS pomocí vývojových prostorů a rozšiřuje Azure dev Spaces řadič příchozího přenosu v clusteru s objekty příchozího přenosu dat pro směrování do lusků aplikací. Kontejner devspaces-proxy v každém z nich přidá `azds-route-as` hlavičku HTTP pro přenosy HTTP do vývojového prostoru založeného na adrese URL. Například požadavek na adresu URL *http://azureuser.s.default.serviceA.fedcba09...azds.io* získá HLAVIČKU http s `azds-route-as: azureuser` . Kontejner devspaces-proxy nebude přidávat `azds-route-as` hlavičku, pokud již existuje.
 
 Když se ve službě mimo cluster provede požadavek HTTP, požadavek přejde do kontroleru příchozího přenosu dat. Kontroler příchozího přenosu trasuje požadavek přímo na příslušné pole na základě jeho objektů a pravidel příchozího přenosu dat. Kontejner devspaces-proxy v rámci obdrží požadavek, přidá `azds-route-as` hlavičku na základě adresy URL a potom směruje požadavek do kontejneru aplikace.
 
 Pokud se ve službě v rámci clusteru provede požadavek HTTP služby z jiné služby, požadavek se nejprve doprovází do kontejneru devspaces-proxy služby volající služby. Kontejner devspaces-proxy vyhledává požadavek HTTP a kontroluje `azds-route-as` hlavičku. V závislosti na záhlaví kontejner devspaces-proxy vyhledá IP adresu služby přidružené k hodnotě hlavičky. Pokud je nalezena IP adresa, kontejner devspaces-proxy přesměruje požadavek na tuto IP adresu. Pokud se IP adresa nenajde, kontejner devspaces-proxy směruje požadavek do nadřazeného kontejneru aplikace.
 
-Například *Služba* Applications a *serviceB* jsou nasazeny do nadřazeného vývojového prostoru s názvem *Default*. *služba Service* spoléhá na *serviceB* a provede volání http. Uživatel Azure vytvoří podřízený prostor pro vývoj založený na *výchozím* prostoru s názvem *azureuser*. Uživatel Azure také nasadí svou vlastní verzi *služby* do jejich podřízeného prostoru. Když se zavede požadavek *http://azureuser.s.default.serviceA.fedcba09...azds.io*:
+Například *Služba* Applications a *serviceB* jsou nasazeny do nadřazeného vývojového prostoru s názvem *Default*. *služba Service* spoléhá na *serviceB* a provede volání http. Uživatel Azure vytvoří podřízený prostor pro vývoj založený na *výchozím* prostoru s názvem *azureuser*. Uživatel Azure také nasadí svou vlastní verzi *služby* do jejich podřízeného prostoru. Když se zavede požadavek *http://azureuser.s.default.serviceA.fedcba09...azds.io* :
 
 ![Směrování Azure Dev Spaces](media/how-dev-spaces-works/routing.svg)
 
 1. Kontroler příchozího přenosu dat vyhledá adresu pod adresou URL, která je přidružená k adrese URL, která je *Service. azureuser*.
 1. Kontroler příchozího přenosu dat vyhledá na zařízení pod vývojovým místem uživatele Azure a směruje požadavek do *služby Service. azureuser* pod.
-1. Kontejner devspaces-proxy v rámci *služby Service. azureuser* pod ní obdrží požadavek a přidá `azds-route-as: azureuser` ho jako hlavičku HTTP.
+1. Kontejner devspaces-proxy v rámci *služby Service. azureuser* pod ní obdrží požadavek a přidá ho `azds-route-as: azureuser` jako hlavičku HTTP.
 1. Kontejner devspaces-proxy v nástroji *Service. azureuser* pod směruje požadavek do kontejneru Application aplikace *služby* v této *službě. azureuser* pod.
-1. Aplikace *služby* v nástroji *Service. Azureuser* pod volá *serviceB*. Aplikace *služby* také obsahuje kód pro zachování existující `azds-route-as` hlavičky, v tomto případě je `azds-route-as: azureuser`to.
+1. Aplikace *služby* v nástroji *Service. Azureuser* pod volá *serviceB*. Aplikace *služby* také obsahuje kód pro zachování existující `azds-route-as` hlavičky, v tomto případě je to `azds-route-as: azureuser` .
 1. Kontejner devspaces-proxy v *Service. azureuser* pod obdrží požadavek a VYHLEDÁ IP adresu *serviceB* na základě hodnoty `azds-route-as` záhlaví.
 1. Kontejner devspaces-proxy v nástroji *Service. azureuser* pod nenalezne IP adresu pro *serviceB. azureuser*.
 1. Kontejner devspaces-proxy v rámci *služby Service. azureuser* vyhledá v nadřazeném prostoru IP adresu *serviceB* , která je *serviceB. Default*.
@@ -55,7 +55,7 @@ Můžete také vytvořit nové vývojové místo, které je odvozeno z jiného v
 
 Odvozené místo pro vývoj také inteligentně směruje požadavky mezi vlastní aplikace a aplikace sdílené z jejího nadřazeného objektu. Směrování funguje tak, že se pokusí směrovat požadavek do aplikace v odvozeném vývojovém prostoru a vrátit se do sdílené aplikace z nadřazeného vývojového prostoru. Směrování se vrátí do sdílené aplikace v prostoru No, pokud aplikace není v nadřazeném prostoru.
 
-Příklad:
+Například:
 * *Výchozí* místo pro vývoj má aplikace *Service* a *serviceB*.
 * Vývojové místo *azureuser* je odvozeno od *výchozího nastavení*.
 * Do *azureuser*se nasadí aktualizovaná verze *služby Service* .
@@ -64,12 +64,12 @@ Při použití *azureuser*budou všechny požadavky na *službu* směrovány do 
 
 ## <a name="next-steps"></a>Další kroky
 
-Některé příklady, jak Azure Dev Spaces používá směrování k zajištění rychlé iterace a vývoje, najdete v tématu [Jak připojit vývojový počítač k vašemu][how-it-works-connect]vývojovému prostoru, [jak vzdálené ladění kódu pomocí Azure dev Spaces funguje][how-it-works-remote-debugging]a [Akce GitHubu & službě Azure Kubernetes][pr-flow].
+Pokud chcete zobrazit některé příklady, jak Azure Dev Spaces používá směrování k zajištění rychlé iterace a vývoje, přečtěte si téma [jak místní proces s Kubernetes funguje][how-it-works-local-process-kubernetes], [jak vzdálené ladění kódu pomocí Azure dev Spaces funguje][how-it-works-remote-debugging]a [Akce GitHubu & službě Azure Kubernetes][pr-flow].
 
 Chcete-li začít používat směrování s Azure Dev Spaces pro vývoj týmu, přečtěte si téma [vývoj týmu v Azure dev Spaces][quickstart-team] rychlý Start.
 
 [helm-upgrade]: https://helm.sh/docs/intro/using_helm/#helm-upgrade-and-helm-rollback-upgrading-a-release-and-recovering-on-failure
-[how-it-works-connect]: how-dev-spaces-works-connect.md
+[how-it-works-local-process-kubernetes]: how-dev-spaces-works-local-process-kubernetes.md
 [how-it-works-remote-debugging]: how-dev-spaces-works-remote-debugging.md
 [pr-flow]: how-to/github-actions.md
 [quickstart-team]: quickstart-team-development.md

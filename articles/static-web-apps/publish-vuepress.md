@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: bd9eaad0c141eda815da159e3c13d6c51f5e6200
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: cc1bf52190cb47bc4ffd6efe159ed88cac560e02
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599737"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297988"
 ---
 # <a name="tutorial-publish-a-vuepress-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu VuePress ve službě Azure static Web Apps Preview
 
 Tento článek ukazuje, jak vytvořit a nasadit webovou aplikaci v [VuePress](https://vuepress.vuejs.org/) do [azure Azure static Web Apps](overview.md). Konečný výsledek je nová aplikace statického Web Apps Azure s přidruženými akcemi GitHubu, která vám umožní řídit, jak je aplikace sestavená a publikovaná.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
@@ -120,7 +120,7 @@ Následující kroky ukazují, jak vytvořit novou statickou Web Apps aplikaci a
 
 1. V _skupiny prostředků_vyberte **Nový**. Do _název nové skupiny prostředků_zadejte **vuepress-static-App** a vyberte **OK**.
 
-1. Potom do pole **název** zadejte globálně jedinečný název vaší aplikace. Mezi platné znaky `a-z` patří `A-Z` , `0-9` a `-` . Tato hodnota se používá jako předpona adresy URL vaší statické aplikace ve formátu `https://<APP_NAME>.azurestaticapps.net` .
+1. Dále do pole **název** zadejte název vaší aplikace. Mezi platné znaky `a-z` patří `A-Z` , `0-9` a `-` .
 
 1. V _oblasti oblast_vyberte dostupnou oblast, která je blízko vás.
 

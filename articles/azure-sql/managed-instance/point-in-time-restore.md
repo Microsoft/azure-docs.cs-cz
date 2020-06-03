@@ -1,7 +1,7 @@
 ---
 title: Obnovení k bodu v čase (PITR)
 titleSuffix: Azure SQL Managed Instance
-description: Obnovte databázi na spravované instanci Azure SQL k předchozímu bodu v čase.
+description: Obnovte databázi na spravované instanci Azure SQL pro předchozí bod v čase.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,17 +12,17 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: 238d9ec814b19499e73533d067202641193aa574
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 379d5e59024174c8f6cfbc185b3514287b7d5031
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046898"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310168"
 ---
-# <a name="restore-an-azure-sql-managed-instance-database-to-a-previous-point-in-time"></a>Obnovení databáze spravované instance Azure SQL k předchozímu bodu v čase
+# <a name="restore-a-database-in-azure-sql-managed-instance-to-a-previous-point-in-time"></a>Obnovení databáze ve spravované instanci Azure SQL k předchozímu bodu v čase
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Použijte obnovení k určitému bodu v čase (PITR) k vytvoření databáze jako kopie jiné databáze z nějaké doby v minulosti. Tento článek popisuje, jak provést obnovení databáze v určitém bodě v čase ve spravované instanci Azure SQL.
+Použijte obnovení k určitému bodu v čase (PITR) k vytvoření databáze jako kopie jiné databáze z nějaké doby v minulosti. Tento článek popisuje, jak provést obnovení databáze v rámci spravované instance Azure SQL pomocí určitého bodu v čase.
 
 Obnovení k bodu v čase je užitečné ve scénářích obnovení, jako jsou incidenty způsobené chybami, nesprávně načtená data nebo mazání důležitých dat. Můžete ho také použít pro testování nebo auditování. Záložní soubory se uchovávají 7 až 35 dní v závislosti na nastaveních databáze.
 
@@ -36,17 +36,17 @@ Obnovení k určitému bodu v čase může obnovit databázi:
 
 Obnovení bodu v čase do spravované instance SQL má následující omezení:
 
-- Při obnovování z jedné spravované instance SQL do jiné musí být obě instance ve stejném předplatném a oblasti. Obnovení mezi různými oblastmi a mezi předplatnými není aktuálně podporováno.
+- Při obnovování z jedné instance spravované instance SQL do jiné musí být obě instance ve stejném předplatném a oblasti. Obnovení mezi různými oblastmi a mezi předplatnými není aktuálně podporováno.
 - Obnovení celé spravované instance SQL na určitém bodu v čase není možné. Tento článek vysvětluje jenom to, co je možné: obnovení databáze, která je hostovaná na spravované instanci SQL, k určitému bodu v čase.
 
 > [!WARNING]
 > Pamatujte na velikost úložiště spravované instance SQL. V závislosti na velikosti dat, která mají být obnovena, je možné, že dojde k vyzkoušení instance úložiště. Pokud není dostatek místa pro obnovená data, použijte jiný přístup.
 
-Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravované instance SQL:
+Následující tabulka uvádí scénáře obnovení k bodu v čase pro spravovanou instanci SQL:
 
-|           |Obnovit existující databázi do stejné spravované instance SQL| Obnovit existující databázi do jiné spravované instance SQL|Obnovit vyřazenou databázi do stejné spravované instance SQL|Obnovit vyřazenou databázi do jiné spravované instance SQL|
+|           |Obnovení existující databáze na stejnou instanci spravované instance SQL| Obnovit existující databázi do jiné spravované instance SQL|Obnovit vyřazenou databázi do stejné spravované instance SQL|Obnovit vyřazenou databázi do jiné spravované instance SQL|
 |:----------|:----------|:----------|:----------|:----------|
-|**portál Azure**| Ano|Ne |Ano|Ne|
+|**portál Azure**| Ano|No |Ano|No|
 |**Azure CLI**|Ano |Ano |Ne|Ne|
 |**PowerShell**| Ano|Ano |Ano|Ano|
 
@@ -245,7 +245,7 @@ Připojte se přímo k spravované instanci SQL a spusťte SQL Server Management
 ALTER DATABASE WorldWideImportersPITR MODIFY NAME = WorldWideImporters;
 ```
 
-Pomocí jedné z následujících metod se připojte k databázi ve spravované instanci SQL:
+Pro připojení k databázi ve spravované instanci SQL použijte jednu z následujících metod:
 
 - [Virtuální počítač Azure](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-vm)
 - [Point-to-site](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)

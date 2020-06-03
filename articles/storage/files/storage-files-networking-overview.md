@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 383ad5e5063a0a207320a517c34f3b41cc57804a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067153"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296523"
 ---
 # <a name="azure-files-networking-considerations"></a>Požadavky na síť pro Azure Files 
 Ke sdílené složce Azure se můžete připojit dvěma způsoby:
@@ -51,7 +51,7 @@ Azure Files podporuje následující mechanismy pro tunelování provozu mezi m�
 
 - [Azure VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md): Brána VPN je konkrétní typ brány virtuální sítě, která se používá k posílání šifrovaného provozu mezi virtuální sítí Azure a alternativním umístěním (jako je místní) přes Internet. Azure VPN Gateway je prostředek Azure, který se dá nasadit ve skupině prostředků na straně účtu úložiště nebo jiných prostředků Azure. Brány VPN zpřístupňují dva různé typy připojení:
     - Připojení brány [VPN typu Point-to-Site (P2S)](../../vpn-gateway/point-to-site-about.md) , což jsou připojení VPN mezi Azure a jednotlivými klienty. Toto řešení je primárně užitečné pro zařízení, která nejsou součástí místní sítě vaší organizace, jako jsou například dojíždění, kteří chtějí mít možnost připojit svou sdílenou složku Azure z domova, z kavárny nebo hotelu na cestách. Pokud chcete použít připojení VPN P2S se soubory Azure, bude nutné nakonfigurovat připojení VPN P2S pro každého klienta, který se chce připojit. Pokud chcete zjednodušit nasazení připojení k síti VPN P2S, přečtěte si téma [Konfigurace sítě VPN typu Point-to-Site (P2S) ve Windows pro použití se soubory Azure](storage-files-configure-p2s-vpn-windows.md) a [Konfigurace sítě VPN typu Point-to-Site (P2S) na platformě Linux pro použití se soubory Azure](storage-files-configure-p2s-vpn-linux.md).
-    - Síť [VPN typu Site-to-Site (S2S)](../../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti), která je připojení VPN mezi Azure a sítí vaší organizace. Připojení VPN S2S umožňuje nakonfigurovat připojení VPN jednou, pro server VPN nebo zařízení hostované v síti vaší organizace, a ne pro každé klientské zařízení, které potřebuje mít přístup ke sdílené složce Azure. Pokud chcete zjednodušit nasazení připojení S2S VPN, přečtěte si téma [Konfigurace sítě VPN typu Site-to-Site (S2S) pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
+    - Síť [VPN typu Site-to-Site (S2S)](../../vpn-gateway/design.md#s2smulti), která je připojení VPN mezi Azure a sítí vaší organizace. Připojení VPN S2S umožňuje nakonfigurovat připojení VPN jednou, pro server VPN nebo zařízení hostované v síti vaší organizace, a ne pro každé klientské zařízení, které potřebuje mít přístup ke sdílené složce Azure. Pokud chcete zjednodušit nasazení připojení S2S VPN, přečtěte si téma [Konfigurace sítě VPN typu Site-to-Site (S2S) pro použití se soubory Azure](storage-files-configure-s2s-vpn.md).
 - [ExpressRoute](../../expressroute/expressroute-introduction.md), která umožňuje vytvořit definovanou trasu mezi Azure a místní sítí, která neprojde internetem. Vzhledem k tomu, že ExpressRoute poskytuje vyhrazenou cestu mezi místním datacentrem a Azure, může být ExpressRoute užitečné v případě, že se výkon sítě zvažuje. ExpressRoute je také dobrou volbou v případě, že požadavky nebo předpisy vaší organizace vyžadují deterministické cesty k prostředkům v cloudu.
 
 Bez ohledu na to, kterou metodu tunelování používáte pro přístup ke sdíleným složkám Azure, potřebujete mechanismus, který zajistí, aby přenos dat do vašeho účtu úložiště procházel tunelovým propojením, a ne s běžným připojením k Internetu. Je technicky možné směrovat na veřejný koncový bod účtu úložiště, ale to vyžaduje, aby byly všechny IP adresy pro clustery Azure Storage v určité oblasti pevně zakódovaných, protože účty úložiště můžete kdykoli přesouvat mezi clustery úložiště. To také vyžaduje nepřetržitou aktualizaci mapování IP adres, protože nové clustery se přidávají kdykoli.
@@ -74,15 +74,15 @@ Pokud chcete vytvořit privátní koncový bod, přečtěte si téma [Konfigurac
 Při vytváření privátního koncového bodu se ve výchozím nastavení vytvoří také privátní zóna DNS (nebo aktualizace stávající), která odpovídá `privatelink` subdoméně. Výhradně řečeno, vytvoření privátní zóny DNS není vyžadováno pro použití privátního koncového bodu pro váš účet úložiště, ale při připojování sdílené složky Azure s objektem zabezpečení služby Active Directory nebo přístupu z rozhraní REST API se důrazně doporučuje obecně a explicitně vyžadovat.
 
 > [!Note]  
-> Tento článek používá příponu DNS účtu úložiště pro veřejné oblasti Azure, `core.windows.net`. Tento komentář platí také pro cloudy Azure, jako je Cloud pro státní správu USA a Azure Čína, stačí nahradit příslušné přípony vašeho prostředí. 
+> Tento článek používá příponu DNS účtu úložiště pro veřejné oblasti Azure, `core.windows.net` . Tento komentář platí také pro cloudy Azure, jako je Cloud pro státní správu USA a Azure Čína, stačí nahradit příslušné přípony vašeho prostředí. 
 
-V privátní zóně DNS vytvoříme záznam `storageaccount.privatelink.file.core.windows.net` a a záznam CNAME pro běžný název účtu úložiště, který následuje za vzorem. `storageaccount.file.core.windows.net` Vzhledem k tomu, že vaše privátní zóna DNS Azure je připojená k virtuální síti obsahující soukromý koncový bod, můžete sledovat konfiguraci DNS při volání `Resolve-DnsName` rutiny z PowerShellu ve virtuálním počítači Azure `nslookup` (střídavě v systému Windows a Linux):
+V privátní zóně DNS vytvoříme záznam `storageaccount.privatelink.file.core.windows.net` a a záznam CNAME pro běžný název účtu úložiště, který následuje za vzorem `storageaccount.file.core.windows.net` . Vzhledem k tomu, že vaše privátní zóna DNS Azure je připojená k virtuální síti obsahující soukromý koncový bod, můžete sledovat konfiguraci DNS při volání `Resolve-DnsName` rutiny z PowerShellu ve virtuálním počítači Azure (střídavě `nslookup` v systému Windows a Linux):
 
 ```powershell
 Resolve-DnsName -Name "storageaccount.file.core.windows.net"
 ```
 
-V tomto příkladu se účet `storageaccount.file.core.windows.net` úložiště přeloží na soukromou IP adresu privátního koncového bodu, který se stane `192.168.0.4`.
+V tomto příkladu se účet úložiště `storageaccount.file.core.windows.net` přeloží na soukromou IP adresu privátního koncového bodu, který se stane `192.168.0.4` .
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -109,7 +109,7 @@ TimeToExpiration       : 2419200
 DefaultTTL             : 300
 ```
 
-Pokud spustíte stejný příkaz z místního prostředí, uvidíte, že stejný název účtu úložiště se přeloží na veřejnou IP adresu účtu úložiště. `storageaccount.file.core.windows.net` je záznam CNAME pro `storageaccount.privatelink.file.core.windows.net`, který je zase záznam CNAME pro cluster úložiště Azure hostující účet úložiště:
+Pokud spustíte stejný příkaz z místního prostředí, uvidíte, že stejný název účtu úložiště se přeloží na veřejnou IP adresu účtu úložiště. `storageaccount.file.core.windows.net`je záznam CNAME pro `storageaccount.privatelink.file.core.windows.net` , který je zase záznam CNAME pro cluster úložiště Azure hostující účet úložiště:
 
 ```Output
 Name                              Type   TTL   Section    NameHost
@@ -128,9 +128,9 @@ IP4Address : 52.239.194.40
 
 To odráží skutečnost, že účet úložiště může vystavit veřejný koncový bod a jeden nebo několik privátních koncových bodů. Aby se zajistilo, že se název účtu úložiště přeloží na privátní IP adresu privátního koncového bodu, musíte změnit konfiguraci na místních serverech DNS. To lze provést několika způsoby:
 
-- Změna souboru hostitelů ve vašich klientských počítačích tak, `storageaccount.file.core.windows.net` aby se přeložila na privátní IP adresu požadovaného privátního koncového bodu. U produkčních prostředí se důrazně nedoporučuje, protože je potřeba provést tyto změny každému klientovi, který chce připojit sdílené složky Azure a změnit účet úložiště, nebo privátní koncový bod nebude automaticky zpracován.
-- Vytvoření záznamu A pro `storageaccount.file.core.windows.net` na místních serverech DNS. To má výhodu, že klienti v místním prostředí budou moci automaticky přeložit účet úložiště, aniž by museli konfigurovat každého klienta, ale toto řešení je podobně poměrně křehký na úpravu souboru hostitelů, protože se neprojeví změny. I když je toto řešení poměrně křehký, může být pro některá prostředí nejlepší volbou.
-- Dodejte `core.windows.net` zónu z místních serverů DNS do privátní zóny DNS Azure. K privátnímu hostiteli DNS Azure se dá získat přístup prostřednictvím speciální IP adresy`168.63.129.16`(), která je dostupná jenom ve virtuálních sítích, které jsou propojené s privátní zónou DNS Azure. Chcete-li toto omezení vyřešit, můžete spustit další servery DNS v rámci virtuální sítě, které `core.windows.net` budou předány do privátní zóny DNS Azure. Pro zjednodušení tohoto nastavení jsme zadali rutiny PowerShellu, které budou automaticky nasazovat servery DNS ve vaší virtuální síti Azure a nakonfigurovat je podle potřeby. Informace o tom, jak nastavit předávání DNS, najdete v tématu [Konfigurace DNS se soubory Azure](storage-files-networking-dns.md).
+- Změna souboru hostitelů ve vašich klientských počítačích tak, aby se `storageaccount.file.core.windows.net` přeložila na privátní IP adresu požadovaného privátního koncového bodu. U produkčních prostředí se důrazně nedoporučuje, protože je potřeba provést tyto změny každému klientovi, který chce připojit sdílené složky Azure a změnit účet úložiště, nebo privátní koncový bod nebude automaticky zpracován.
+- Vytvoření záznamu A pro na `storageaccount.file.core.windows.net` místních serverech DNS. To má výhodu, že klienti v místním prostředí budou moci automaticky přeložit účet úložiště, aniž by museli konfigurovat každého klienta, ale toto řešení je podobně poměrně křehký na úpravu souboru hostitelů, protože se neprojeví změny. I když je toto řešení poměrně křehký, může být pro některá prostředí nejlepší volbou.
+- Dodejte `core.windows.net` zónu z místních serverů DNS do privátní zóny DNS Azure. K privátnímu hostiteli DNS Azure se dá získat přístup prostřednictvím speciální IP adresy ( `168.63.129.16` ), která je dostupná jenom ve virtuálních sítích, které jsou propojené s privátní zónou DNS Azure. Chcete-li toto omezení vyřešit, můžete spustit další servery DNS v rámci virtuální sítě, které budou předány `core.windows.net` do privátní zóny DNS Azure. Pro zjednodušení tohoto nastavení jsme zadali rutiny PowerShellu, které budou automaticky nasazovat servery DNS ve vaší virtuální síti Azure a nakonfigurovat je podle potřeby. Informace o tom, jak nastavit předávání DNS, najdete v tématu [Konfigurace DNS se soubory Azure](storage-files-networking-dns.md).
 
 ## <a name="storage-account-firewall-settings"></a>Nastavení brány firewall účtu úložiště
 Brána firewall je zásada sítě, která řídí, které požadavky mají povolený přístup k veřejnému koncovému bodu pro účet úložiště. Pomocí brány firewall účtu úložiště můžete omezit přístup k veřejnému koncovému bodu účtu úložiště na určité IP adresy nebo rozsahy nebo na virtuální síť. Obecně platí, že většina zásad brány firewall pro účet úložiště omezí přístup k síti na jednu nebo více virtuálních sítí. 

@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 04/13/2020
+ms.date: 06/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 294a59ed94344ecf590eb9b34f991deaaa10db69
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: c2ffd22c8b3e3ca1786e0a1f905cd07d0568fcf2
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607380"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296353"
 ---
 # <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files
 
@@ -45,7 +45,7 @@ Než budete moct vytvořit kontejner profilu FSLogix pro fond hostitelů, musít
 
 Abyste mohli začít, musíte nastavit účet Azure NetApp Files.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Ujistěte se, že váš účet má oprávnění přispěvatele nebo správce.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Ujistěte se, že váš účet má oprávnění přispěvatele nebo správce.
 
 2. Vyberte **ikonu Azure Cloud Shell** napravo od panelu hledání a otevřete Azure Cloud Shell.
 
@@ -132,7 +132,7 @@ V dalším kroku budete muset vytvořit nový svazek.
     - V případě **virtuální sítě**vyberte existující virtuální síť, která má připojení k řadiči domény z rozevírací nabídky.
     - V části **podsíť**vyberte **vytvořit novou**. Pamatujte, že tato podsíť bude delegována na Azure NetApp Files.
 
-3.  Výběrem **Další: protokol \> ** otevřete kartu protokol a nakonfigurujte parametry přístupu ke svazku.
+3.  Výběrem **Další: protokol \> \> ** otevřete kartu protokol a nakonfigurujte parametry přístupu ke svazku.
 
 ## <a name="configure-volume-access-parameters"></a>Konfigurace parametrů přístupu ke svazkům
 
@@ -158,19 +158,19 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
 2. Extrahování staženého souboru.
 
-3. V souboru, přejdete na **x64** > **releases** a spusťte **FSLogixAppsSetup. exe**. Otevře se nabídka instalace.
+3. V souboru, přejdete na **x64**  >  **releases** a spusťte **FSLogixAppsSetup. exe**. Otevře se nabídka instalace.
 
 4.  Pokud máte kód Product Key, zadejte ho do textového pole kód Product Key.
 
 5. Zaškrtněte políčko vedle Souhlasím **s licenčními podmínkami a ujednáními**.
 
-6. Vyberte **Install** (Nainstalovat).
+6. Vyberte **Nainstalovat**.
 
-7. Přejděte do **C:\\Program Files\\FSLogix\\Apps** a potvrďte, že je agent nainstalovaný.
+7. Přejděte do **C: \\ Program Files \\ FSLogix \\ Apps** a potvrďte, že je agent nainstalovaný.
 
 8. V nabídce Start spusťte program **Regedit** jako správce.
 
-9. Přejděte na **počítač\\HKEY_LOCAL_MACHINE\\software\\FSLogix**.
+9. Přejděte na **počítač \\ HKEY_LOCAL_MACHINE \\ software \\ FSLogix**.
 
 10. Vytvořte klíč s názvem **Profiles**.
 
@@ -210,7 +210,7 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
 ## <a name="make-sure-users-can-access-the-azure-netapp-file-share"></a>Ujistěte se, že uživatelé mají přístup ke sdílené složce Azure NetApp.
 
-1. Otevřete internetový prohlížeč a pokračujte na <https://rdweb.wvd.microsoft.com/arm/webclient>.
+1. Otevřete internetový prohlížeč a pokračujte na <https://rdweb.wvd.microsoft.com/arm/webclient> .
 
 2. Přihlaste se pomocí přihlašovacích údajů uživatele přiřazeného ke skupině Vzdálená plocha.
 
@@ -222,7 +222,7 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 
 5. Přejít na kartu **Přehled** a ověřte, že kontejner profilu FSLogix používá místo.
 
-6. Připojte se přímo k libovolné části virtuálního počítače fondu hostitele pomocí vzdálené plochy a otevřete **Průzkumníka souborů.** Pak přejděte do **cesty pro připojení** (v následujícím příkladu se \\ \\jedná o cestu pro připojení ANF-SMB-3863.gt1107.onmicrosoft.com\\ANF-VOL).
+6. Připojte se přímo k libovolné části virtuálního počítače fondu hostitele pomocí vzdálené plochy a otevřete **Průzkumníka souborů.** Pak přejděte do **cesty pro připojení** (v následujícím příkladu se jedná o cestu pro připojení \\ \\ ANF-SMB-3863.gt1107.onmicrosoft.com \\ ANF-VOL).
 
    V rámci této složky by měl existovat profil VHD (nebo VHDX), jako je ten v následujícím příkladu.
 
@@ -231,3 +231,5 @@ Tato část je založená na [vytvoření kontejneru profilu pro fond hostitelů
 ## <a name="next-steps"></a>Další kroky
 
 Kontejnery profilů FSLogix můžete použít k nastavení sdílené složky profilu uživatele. Informace o tom, jak vytvořit sdílené složky profilů uživatelů pomocí nových kontejnerů, najdete v tématu [vytvoření kontejneru profilů pro fond hostitelů pomocí sdílené složky](create-host-pools-user-profile.md).
+
+Můžete také vytvořit sdílenou složku souborů Azure, do které se uloží profil FSLogix. Další informace najdete v tématu [Vytvoření sdílené složky souborů Azure s řadičem domény](create-file-share.md).

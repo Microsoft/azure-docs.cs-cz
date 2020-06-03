@@ -10,12 +10,12 @@ author: GitHubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/30/2019
-ms.openlocfilehash: 79a9f59b4fb6f7ae71c1e6866e8c50baa4e7974b
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a050e38f037ee0ed2741cfa2e509e21fa9e1151d
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193755"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310219"
 ---
 # <a name="tutorial-migrate-windows-users-and-groups-in-a-sql-server-instance-to-azure-sql-managed-instance-using-t-sql-ddl-syntax"></a>Kurz: Migrace uživatelů a skupin systému Windows v instanci SQL Server do spravované instance Azure SQL pomocí syntaxe jazyka T-SQL DDL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -314,7 +314,7 @@ Provedením příkazu ALTER USER dokončíte proces migrace na spravované insta
 
 Otestujte ověřování ve spravované instanci SQL pomocí dříve namapovaného uživatele na přihlašovací údaje Azure AD pomocí syntaxe ALTER USER.
 
-1. Přihlaste se k federovanému virtuálnímu počítači pomocí svého předplatného MI jako`aadsqlmi\testUser1`
+1. Přihlaste se k federovanému virtuálnímu počítači pomocí předplatného Azure SQL Managed instance jako`aadsqlmi\testUser1`
 1. Pomocí SQL Server Management Studio (SSMS) se přihlaste ke spravované instanci SQL pomocí **integrovaného ověřování služby Active Directory** a připojte se k databázi `migration` .
     1. Můžete se také přihlásit pomocí testUser1@aadsqlmi.net přihlašovacích údajů s možností SSMS **Active Directory – Universal s podporou vícefaktorového ověřování**. V tomto případě ale nemůžete použít mechanismus jednotného přihlašování a musíte zadat heslo. K přihlášení do spravované instance SQL nebudete muset použít federovaný virtuální počítač.
 1. V rámci **výběru**člena role můžete vybrat z `test` tabulky.
@@ -325,8 +325,8 @@ Otestujte ověřování ve spravované instanci SQL pomocí dříve namapovanéh
 
 Otestujte ověřování u spravované instance SQL pomocí členu skupiny systému Windows `migration` . `aadsqlmi\testGroupUser`Před migrací by uživatel měl být přidán do skupiny `migration` .
 
-1. Přihlaste se k federovanému virtuálnímu počítači pomocí svého předplatného MI jako`aadsqlmi\testGroupUser`
-1. Použití SSMS s **integrovaným ověřováním služby Active Directory** , připojení k serveru mi a databázi`migration`
+1. Přihlaste se k federovanému virtuálnímu počítači pomocí předplatného Azure SQL Managed instance jako`aadsqlmi\testGroupUser`
+1. Pomocí SSMS s **integrovaným ověřováním Active Directory** se připojte k serveru Azure SQL Managed instance a databázi.`migration`
     1. Můžete se také přihlásit pomocí testGroupUser@aadsqlmi.net přihlašovacích údajů s možností SSMS **Active Directory – Universal s podporou vícefaktorového ověřování**. V tomto případě ale nemůžete použít mechanismus jednotného přihlašování a musíte zadat heslo. K přihlášení do spravované instance SQL nebudete muset použít federovaný virtuální počítač.
 1. V rámci `db_owner` role můžete vytvořit novou tabulku.
 

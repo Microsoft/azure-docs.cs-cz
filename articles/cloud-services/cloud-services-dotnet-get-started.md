@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: 9ce69e3c783ad8d2fb42be4c358cd1c292bbe026
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: dcaa87b8bf37cc0410c052b82014209327d5fe99
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84015365"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310644"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
@@ -530,7 +530,7 @@ Soubor *Views\Home\Index.cshtml* zobrazuje na domovské stránce odkazy na kateg
 ### <a name="contosoadsweb---adcontrollercs"></a>ContosoAdsWeb – AdController.cs
 V souboru *AdController.cs* volá konstruktor metodu `InitializeStorage`, aby vytvořil objekty knihovny klienta služby Azure Storage, které poskytují rozhraní API pro práci s objekty blob a frontami.
 
-Potom kód získá odkaz na kontejner objektů blob s *obrázky*, jak už jste viděli v souboru *Global.asax.cs*. Během toho nastaví výchozí [zásady opakování](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling), které jsou vhodné pro webovou aplikaci. Výchozí zásady opakování exponenciálního omezení rychlosti můžou způsobit, že webová aplikace přestane při opakovaných pokusech reagovat na dobu delší než jednu minutu. Důvodem může být přechodná chyba. Zde určené zásady opakování čekají po každém pokusu tři sekundy a celkem provádějí tři pokusy.
+Potom kód získá odkaz na kontejner objektů blob s *obrázky*, jak už jste viděli v souboru *Global.asax.cs*. Během toho nastaví výchozí [zásady opakování](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/transient-fault-handling), které jsou vhodné pro webovou aplikaci. Výchozí zásada exponenciálního opakování omezení rychlosti by mohla způsobit, že webová aplikace přestane reagovat po opakovaných pokusech o opakovaných pokusech o přechodnou chybu po dobu delší než minutu. Zde určené zásady opakování čekají po každém pokusu tři sekundy a celkem provádějí tři pokusy.
 
 ```csharp
 var blobClient = storageAccount.CreateCloudBlobClient();
@@ -776,6 +776,3 @@ Další informace najdete v následujících materiálech:
 * [Jak spravovat Cloud Services](cloud-services-how-to-manage-portal.md)
 * [Azure Storage](https://docs.microsoft.com/azure/storage/)
 * [Jak vybrat poskytovatele cloudových služeb](https://azure.microsoft.com/overview/choosing-a-cloud-service-provider/)
-
-
-

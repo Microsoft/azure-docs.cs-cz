@@ -5,12 +5,12 @@ ms.date: 03/17/2020
 ms.topic: conceptual
 description: Popisuje požadavky na síť pro provozování Azure Dev Spaces ve službě Azure Kubernetes.
 keywords: Azure Dev Spaces, vývojářské prostory, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Containers, CNI, kubenet, SDN, Network
-ms.openlocfilehash: a5cac4eaf1f87e6e704bb643279637902c792c7c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: c3ee84819172fe28aef779493d01e2433ccca336
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267524"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300687"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Konfigurace sítě pro Azure Dev Spaces v různých topologiích sítě
 
@@ -72,7 +72,7 @@ Azure Dev Spaces má možnost vystavovat koncové body pro vaše služby běží
 * *Privátní* koncový bod nasadí kontroler příchozího přenosu s privátní IP adresou. Pomocí privátní IP adresy je nástroj pro vyrovnávání zatížení pro váš cluster přístupný jenom v rámci virtuální sítě clusteru. Privátní IP adresa nástroje pro vyrovnávání zatížení je zaregistrovaná na DNS clusteru, aby bylo možné ke službám uvnitř virtuální sítě clusteru přistupovat pomocí adresy URL. Tuto adresu URL můžete zobrazit pomocí `azds list-uris` .
 * Nastavení *žádné* pro možnost koncový bod nezpůsobí nasazení žádného kontroleru příchozího přenosu dat. Bez nasazení adaptéru pro příchozí přenos dat nebudou [Možnosti směrování Azure dev Spaces][dev-spaces-routing] fungovat. Volitelně můžete implementovat vlastní řešení řadiče příchozího přenosu dat pomocí [traefik][traefik-ingress] nebo [Nginx][nginx-ingress]. Tím umožníte, aby funkce směrování znovu fungovaly.
 
-Pokud chcete nakonfigurovat možnost koncového bodu, použijte parametr *-e* nebo *--endpoint* při povolování Azure dev Spaces v clusteru. Příklad:
+Pokud chcete nakonfigurovat možnost koncového bodu, použijte parametr *-e* nebo *--endpoint* při povolování Azure dev Spaces v clusteru. Například:
 
 > [!NOTE]
 > Možnost Endpoint vyžaduje, abyste spustili Azure CLI verze 2.2.0 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
@@ -83,7 +83,7 @@ az aks use-dev-spaces -g MyResourceGroup -n MyAKS -e private
 
 ## <a name="client-requirements"></a>Požadavky na klienty
 
-Azure Dev Spaces používá klientské nástroje, jako je rozšíření CLI Azure Dev Spaces, Visual Studio Code rozšíření a rozšíření sady Visual Studio, ke komunikaci s clusterem AKS pro ladění. Chcete-li použít Azure Dev Spaces nástrojů na straně klienta, povolte provoz z vývojových počítačů do domény *azds- \* . azds.IO* . *dataplaneFqdn* `USERPROFILE\.azds\settings.json` Přesný plně kvalifikovaný název domény najdete v tématu dataplaneFqdn v. Pokud používáte [rozsahy IP adres autorizovaných serverem API][auth-range-section], musíte taky povolit IP adresu všech vývojových počítačů, které se připojují ke clusteru AKS, aby se mohly připojit k vašemu serveru API.
+Azure Dev Spaces používá klientské nástroje, jako je rozšíření CLI Azure Dev Spaces, Visual Studio Code rozšíření a rozšíření sady Visual Studio, ke komunikaci s clusterem AKS pro ladění. Chcete-li použít Azure Dev Spaces nástrojů na straně klienta, povolte provoz z vývojových počítačů do [infrastruktury Azure dev Spaces][dev-spaces-allow-infrastructure]. Pokud používáte [rozsahy IP adres autorizovaných serverem API][auth-range-section], musíte taky povolit IP adresu všech vývojových počítačů, které se připojují ke clusteru AKS, aby se mohly připojit k vašemu serveru API.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -103,6 +103,7 @@ Přečtěte si, jak Azure Dev Spaces pomáhá vyvíjet složitější aplikace n
 [aks-private-clusters]: ../aks/private-clusters.md
 [auth-range-section]: #using-api-server-authorized-ip-ranges
 [azure-cli-install]: /cli/azure/install-azure-cli
+[dev-spaces-allow-infrastructure]: #virtual-network-or-subnet-configurations
 [dev-spaces-routing]: how-dev-spaces-works-routing.md
 [endpoint-options]: #using-different-endpoint-options
 [firewall-service-tags]: ../firewall/service-tags.md

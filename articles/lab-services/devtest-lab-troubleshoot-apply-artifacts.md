@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/03/2019
 ms.author: spelluru
-ms.openlocfilehash: fc5051667100a2ebaa01b7815f825fadd766b08f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8da33f5a553b4a671d9d7b9b223f77b301b8440b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75456986"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310270"
 ---
 # <a name="troubleshoot-issues-when-applying-artifacts-in-an-azure-devtest-labs-virtual-machine"></a>Řešení potíží při aplikování artefaktů ve Azure DevTest Labsm virtuálním počítači
 Použití artefaktů na virtuálním počítači může z různých důvodů selhat. Tento článek vás provede některými metodami, které vám pomůžou identifikovat možné příčiny.
@@ -57,8 +57,9 @@ Můžete řešit potíže s virtuálními počítači vytvořenými pomocí DevT
 
 ## <a name="symptoms-causes-and-potential-resolutions"></a>Příznaky, příčiny a možná řešení 
 
-### <a name="artifact-appears-to-hang"></a>Zdá se, že artefakt přestane reagovat.   
-Zdá se, že artefakt přestane reagovat, dokud nevyprší předem definovaný časový limit a artefakt se označí jako **neúspěšný**.
+### <a name="artifact-appears-to-stop-responding"></a>Artefakt se zdá, že přestane reagovat.
+
+Artefakt se zdá, že přestane reagovat, dokud nevyprší předem definovaný časový limit a artefakt je označený jako **neúspěšný**.
 
 Když se zdá, že artefakt přestane reagovat, nejprve určete, kde je zablokované. Artefakt může být během provádění zablokovaný v některém z následujících kroků:
 
@@ -66,15 +67,15 @@ Když se zdá, že artefakt přestane reagovat, nejprve určete, kde je zablokov
     - K protokolu aktivit můžete přistupovat z navigačního panelu stránky testovacího virtuálního počítače. Když vyberete tuto možnost, zobrazí se položka pro **aplikování artefaktů na virtuální počítač** (Pokud se operace použít artefakty aktivovala přímo) nebo **přidá nebo upraví virtuální počítače** (Pokud operace aplikování artefaktů byla součástí procesu vytváření virtuálního počítače).
     - Vyhledejte chyby pod těmito položkami. V některých případech se chyba nebude označit příznakem odpovídajícím způsobem a bude nutné prozkoumat každou položku.
     - Při zkoumání podrobností každého záznamu nezapomeňte zkontrolovat obsah datové části JSON. V dolní části dokumentu se může zobrazit chyba.
-- **Při pokusu o spuštění artefaktu**. Důvodem může být problémy se sítí nebo úložištěm. Podrobnosti najdete v příslušné části dále v tomto článku. Může k tomu také dojít z důvodu způsobu, jakým je skript vytvořen. Příklad:
-    - Skript PowerShellu má **povinné parametry**, ale jednomu z nich se nepovede zadat jeho hodnotu, buď proto, že uživateli povolíte jeho prázdné pole, nebo protože nemáte výchozí hodnotu pro vlastnost v definičním souboru artifactfile. JSON. Skript se zablokuje, protože čeká na vstup uživatele.
+- **Při pokusu o spuštění artefaktu**. Důvodem může být problémy se sítí nebo úložištěm. Podrobnosti najdete v příslušné části dále v tomto článku. Může k tomu také dojít z důvodu způsobu, jakým je skript vytvořen. Například:
+    - Skript PowerShellu má **povinné parametry**, ale jednomu z nich se nepovede zadat jeho hodnotu, buď proto, že uživateli povolíte jeho prázdné pole, nebo protože nemáte výchozí hodnotu pro vlastnost v definičním souboru artifactfile. JSON. Skript přestane reagovat, protože čeká na vstup uživatele.
     - Skript PowerShellu **vyžaduje vstup uživatele** jako součást provádění. Skripty musí být zapsány pro tichou práci bez nutnosti zásahu uživatele.
 - **Agent virtuálního počítače bude mít dobu potřebnou k přípravě**. Při prvním spuštění virtuálního počítače nebo při první instalaci rozšíření vlastních skriptů k obsluze žádosti o použití artefaktů může virtuální počítač vyžadovat buď upgrade agenta virtuálního počítače, nebo počkat na inicializaci agenta virtuálního počítače. Může se jednat o služby, na kterých agent virtuálního počítače závisí na tom, že se při inicializaci trvá dlouhou dobu. V takových případech najdete další informace o řešení potíží v tématu [Přehled agenta virtuálních počítačů Azure](../virtual-machines/extensions/agent-windows.md) .
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-script"></a>Ověření, zda se artefakt jeví jako zablokované kvůli skriptu
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-script"></a>Ověření, zda se artefakt zdá, že přestane reagovat z důvodu skriptu
 
 1. Přihlaste se k danému virtuálnímu počítači.
-2. Zkopírujte skript místně na virtuálním počítači nebo ho vyhledejte na virtuálním počítači v části `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>`. Je to místo, kde se stáhnou skripty artefaktů.
+2. Zkopírujte skript místně na virtuálním počítači nebo ho vyhledejte na virtuálním počítači v části `C:\Packages\Plugins\Microsoft.Compute.CustomScriptExtension\<version>` . Je to místo, kde se stáhnou skripty artefaktů.
 3. Pomocí příkazového řádku se zvýšenými oprávněními spusťte skript místně a zadejte stejné hodnoty parametrů, které se použijí k tomu, aby mohl problém způsobovat.
 4. Určete, jestli se skript nevyskytne při jakémkoli nežádoucím chování. Pokud ano, požádejte o aktualizaci artefaktu (Pokud se jedná o veřejné úložiště); nebo proveďte opravy sami (Pokud je z vašeho privátního úložiště).
 
@@ -83,7 +84,7 @@ Když se zdá, že artefakt přestane reagovat, nejprve určete, kde je zablokov
 > 
 > Informace o vytváření vlastních artefaktů naleznete v tématu [AUTHORING.MD](https://github.com/Azure/azure-devtestlab/blob/master/Artifacts/AUTHORING.md) Document.
 
-### <a name="to-verify-if-the-artifact-appears-to-hang-because-of-the-vm-agent"></a>Ověření, zda se artefakt zdá jako při zablokování kvůli agentovi virtuálního počítače:
+### <a name="to-verify-if-the-artifact-appears-to-stop-responding-because-of-the-vm-agent"></a>Chcete-li ověřit, zda artefakt přestane reagovat z důvodu agenta virtuálního počítače:
 1. Přihlaste se k danému virtuálnímu počítači.
 2. Pomocí Průzkumníka souborů přejděte na **C:\WindowsAzure\logs**.
 3. Vyhledejte a otevřete soubor **WaAppAgent. log**.
@@ -119,7 +120,7 @@ Výše uvedená chyba se zobrazí v části **zpráva nasazení** na stránce **
 ### <a name="to-ensure-communication-to-the-azure-storage-service-isnt-being-blocked"></a>Aby se zajistilo, že komunikace se službou Azure Storage není blokovaná:
 
 - **Kontrolovat přidané skupiny zabezpečení sítě (NSG)**. Je možné, že se přidala zásada předplatného, kde skupin zabezpečení sítě se automaticky nakonfigurují ve všech virtuálních sítích. Má vliv také na výchozí virtuální síť testovacího prostředí, pokud se používá, nebo na jinou virtuální síť nakonfigurovanou v testovacím prostředí, která se používá pro vytváření virtuálních počítačů.
-- **Ověřte výchozí účet úložiště testovacího prostředí** (tj. první účet úložiště vytvořený při vytvoření testovacího prostředí, jehož název obvykle začíná písmenem "a" a končí s více číslicemi, což je\<labname\>#).
+- **Ověřte výchozí účet úložiště testovacího prostředí** (tj. první účet úložiště vytvořený při vytvoření testovacího prostředí, jehož název obvykle začíná písmenem "a" a končí číslicí \<labname\> #).
     1. Přejděte do skupiny prostředků testovacího prostředí.
     2. Vyhledejte prostředek typu **účet úložiště**, jehož název odpovídá konvenci.
     3. Přejděte na stránku účtu úložiště s názvem **brány firewall a virtuální sítě**.
@@ -137,4 +138,3 @@ Existují další méně časté možné zdroje chyb. Nezapomeňte je vyhodnotit
 
 ## <a name="next-steps"></a>Další kroky
 Pokud nedošlo k žádné z těchto chyb a stále nemůžete použít artefakty, můžete začlenit incident podpory Azure. Přejít na [web podpory Azure](https://azure.microsoft.com/support/options/) a vyberte **získat podporu**.
-

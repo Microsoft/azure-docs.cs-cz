@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 89d2105ab080309639c4341072c3f5f36608dfce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 555e4bf9dfa2318796cde124d07867d09adc229d
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424766"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310253"
 ---
 # <a name="manage-access-to-workspaces-data-and-pipelines"></a>Správa přístupu k pracovním prostorům, datům a kanálům
 
@@ -34,42 +34,60 @@ V případě produkčního nasazení do pracovního prostoru Azure synapse dopor
 
 1. Vytvořit skupinu zabezpečení nazvanou`Synapse_WORKSPACENAME_Users`
 2. Vytvořit skupinu zabezpečení nazvanou`Synapse_WORKSPACENAME_Admins`
-3. Přidání `Synapse_WORKSPACENAME_Admins` do `ProjectSynapse_WORKSPACENAME_Users`
+3. Přidání `Synapse_WORKSPACENAME_Admins` do `Synapse_WORKSPACENAME_Users`
+
+> [!NOTE]
+> Naučte se vytvořit skupinu zabezpečení v [tomto článku](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal).
+>
+> Naučte se přidat skupinu zabezpečení z jiné skupiny zabezpečení v [tomto článku](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-membership-azure-portal).
+>
+> PRACOVNÍ prostor – tuto část byste měli nahradit skutečným názvem vašeho pracovního prostoru.
 
 ### <a name="step-2-prepare-the-default-adls-gen2-account"></a>Krok 2: Příprava výchozího účtu ADLS Gen2
 
-Když jste zřídili pracovní prostor, museli jste vybrat účet ADLSGEN2 a kontejner pro systém souborů, který má pracovní prostor použít.
+Když jste zřídili pracovní prostor, museli jste vybrat účet [Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction) a kontejner pro systém souborů, který má pracovní prostor použít.
 
 1. Otevřete [Azure Portal](https://portal.azure.com)
-2. Přejít na účet ADLSGEN2
+2. Přejít na účet Azure Data Lake Storage Gen2
 3. Přejít do kontejneru (FileSystem), který jste vybrali pro pracovní prostor Azure synapse
 4. Klikněte na **Access Control (IAM)** .
 5. Přiřaďte následující role:
    1. Role **čtecího modulu** :`Synapse_WORKSPACENAME_Users`
-   2. Role **vlastníka dat objektu BLOB služby Storage** :`Synapse_WORKSPACENAME_Admins`
-   3. Role **Přispěvatel dat objektu BLOB služby Storage** :`Synapse_WORKSPACENAME_Users`
-   4. Role **vlastníka dat objektu BLOB služby Storage** :`WORKSPACENAME`
-  
+   2. Role **vlastníka dat objektu BLOB úložiště** :`Synapse_WORKSPACENAME_Admins`
+   3. Role **přispěvatele dat objektu BLOB služby Storage** :`Synapse_WORKSPACENAME_Users`
+   4. Role **vlastníka dat objektu BLOB úložiště** :`WORKSPACENAME`
+
+> [!NOTE]
+> PRACOVNÍ prostor – tuto část byste měli nahradit skutečným názvem vašeho pracovního prostoru.
+
 ### <a name="step-3-configure-the-workspace-admin-list"></a>Krok 3: Konfigurace seznamu správců pracovního prostoru
 
 1. Přejít do [ **webového uživatelského rozhraní Azure synapse**](https://web.azuresynapse.net)
-2. Přejít na **Správa**  > **Security** > **řízení přístupu** zabezpečení
+2. Přejít na **Správa**   >  **Security**  >  **řízení přístupu** zabezpečení
 3. Klikněte na **přidat správce**a vyberte`Synapse_WORKSPACENAME_Admins`
 
 ### <a name="step-4-configure-sql-admin-access-for-the-workspace"></a>Krok 4: Konfigurace přístupu správce SQL pro pracovní prostor
 
-1. Přejděte na web [Azure Portal](https://portal.azure.com).
+1. Přejít na [Azure Portal](https://portal.azure.com)
 2. Přejděte do pracovního prostoru.
-3. Přejít na **Nastavení** > **Správce služby Active Directory**
+3. Přejít na **Nastavení**  >  **Správce služby Active Directory**
 4. Klikněte na **nastavit správce** .
 5. Vyberte `Synapse_WORKSPACENAME_Admins`
 6. klikněte na **Vybrat** .
 7. klikněte na **Uložit** .
 
+> [!NOTE]
+> PRACOVNÍ prostor – tuto část byste měli nahradit skutečným názvem vašeho pracovního prostoru.
+
 ### <a name="step-5-add-and-remove-users-and-admins-to-security-groups"></a>Krok 5: Přidání a odebrání uživatelů a správců do skupin zabezpečení
 
 1. Přidat uživatele, kteří potřebují přístup správce k`Synapse_WORKSPACENAME_Admins`
 2. Přidat všechny ostatní uživatele do`Synapse_WORKSPACENAME_Users`
+
+> [!NOTE]
+> Naučte se, jak přidat uživatele jako člena do skupiny zabezpečení v [tomto článku](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-groups-members-azure-portal) .
+> 
+> PRACOVNÍ prostor – tuto část byste měli nahradit skutečným názvem vašeho pracovního prostoru.
 
 ## <a name="access-control-to-data"></a>Access Control k datům
 
@@ -82,9 +100,13 @@ Když jste zřídili pracovní prostor, museli jste vybrat účet ADLSGEN2 a kon
 ## <a name="access-control-to-sql-databases"></a>Řízení přístupu k databázím SQL
 
 > [!TIP]
-> Níže uvedené kroky musí být spuštěny pro **každou** databázi SQL, aby bylo možné udělit uživatelům přístup ke všem databázím SQL.
+> Níže uvedené kroky musí být spuštěny pro **každou** databázi SQL, aby bylo možné udělit uživatelům přístup ke všem databázím SQL s výjimkou [oprávnění na úrovni serveru](#server-level-permission) , kde můžete přiřadit uživatele k roli sysadmin.
 
 ### <a name="sql-on-demand"></a>SQL na vyžádání
+
+V této části najdete příklady, jak udělit uživateli oprávnění ke konkrétní databázi nebo úplnému oprávnění serveru.
+
+#### <a name="database-level-permission"></a>Oprávnění na úrovni databáze
 
 Pokud chcete uživateli udělit přístup k **jedné** databázi SQL na vyžádání, postupujte podle kroků v tomto příkladu:
 
@@ -93,7 +115,7 @@ Pokud chcete uživateli udělit přístup k **jedné** databázi SQL na vyžád�
     ```sql
     use master
     go
-    CREATE LOGIN [John.Thomas@microsoft.com] FROM EXTERNAL PROVIDER;
+    CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
     go
     ```
 
@@ -102,7 +124,7 @@ Pokud chcete uživateli udělit přístup k **jedné** databázi SQL na vyžád�
     ```sql
     use yourdb -- Use your DB name
     go
-    CREATE USER john FROM LOGIN [John.Thomas@microsoft.com];
+    CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
 
 3. Přidat uživatele do členů zadané role
@@ -110,8 +132,20 @@ Pokud chcete uživateli udělit přístup k **jedné** databázi SQL na vyžád�
     ```sql
     use yourdb -- Use your DB name
     go
-    alter role db_owner Add member john -- Type USER name from step 2
+    alter role db_owner Add member alias -- Type USER name from step 2
     ```
+
+> [!NOTE]
+> Nahraďte alias aliasem uživatele, kterému chcete udělit přístup a doménu k doméně společnosti, kterou používáte.
+
+#### <a name="server-level-permission"></a>Oprávnění na úrovni serveru
+
+Pokud chcete uživateli udělit úplný přístup ke **všem** databázím SQL na vyžádání, postupujte podle kroků v tomto příkladu:
+
+```sql
+CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
+ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+```
 
 ### <a name="sql-pools"></a>Fondy SQL
 
@@ -151,7 +185,7 @@ Po vytvoření uživatelů ověřte, jestli se může SQL na vyžádání dotazo
 > [!IMPORTANT]
 > Aby bylo možné úspěšně spustit kanály, které zahrnují datové sady nebo aktivity odkazující na fond SQL, je nutné identitám pracovního prostoru udělit přímý přístup ke fondu SQL.
 
-Spusťte následující příkazy v každém fondu SQL, abyste umožnili spravovanému pracovnímu prostoru používat kanály v databázi fondu SQL:
+Spuštěním následujících příkazů v každém z fondů SQL umožněte, aby identita spravovaná pracovním prostorem spouštěla kanály v databázi fondu SQL:
 
 ```sql
 --Create user in DB
@@ -173,4 +207,4 @@ DROP USER [<workspacename>];
 
 ## <a name="next-steps"></a>Další kroky
 
-Přehled přístupu a řízení v synapse SQL najdete v tématu [synapse SQL Access Control](../sql/access-control.md). Další informace o objektech zabezpečení databáze naleznete v tématu [objekty zabezpečení](https://msdn.microsoft.com/library/ms181127.aspx). Další informace o databázových rolích najdete v článku [databázové role](https://msdn.microsoft.com/library/ms189121.aspx) .
+Přehled identity spravované v pracovním prostoru synapse najdete v tématu [spravovaná identita Azure synapse Workspace](../security/synapse-workspace-managed-identity.md). Další informace o objektech zabezpečení databáze naleznete v tématu [objekty zabezpečení](https://msdn.microsoft.com/library/ms181127.aspx). Další informace o databázových rolích najdete v článku [databázové role](https://msdn.microsoft.com/library/ms189121.aspx) .

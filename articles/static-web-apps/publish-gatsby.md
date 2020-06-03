@@ -7,18 +7,18 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 14706b623c6973c09b499e4fcd905e3eed430898
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 24d5ee132444f19118613f6b1b798fd763e46e3c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599617"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299305"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Gatsby ve službě Azure static Web Apps Preview
 
 Tento článek ukazuje, jak vytvořit a nasadit webovou aplikaci v [Gatsby](https://gatsbyjs.org) do služby [Azure static Web Apps](overview.md). Konečný výsledek je nový statický Web Apps Web (s přidruženými akcemi GitHubu), který vám umožní řídit, jak je aplikace sestavená a publikovaná.
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
@@ -95,7 +95,7 @@ Následující kroky ukazují, jak vytvořit novou aplikaci statické lokality a
 
 1. V _skupiny prostředků_vyberte **Nový**. Do _název nové skupiny prostředků_zadejte **Gatsby-static-Web-App** a vyberte **OK**.
 
-1. Potom do pole **název** zadejte globálně jedinečný název vaší aplikace. Mezi platné znaky `a-z` patří `A-Z` , `0-9` a `-` . Tato hodnota se používá jako předpona adresy URL vaší statické webové aplikace ve formátu `https://<YOUR_APP_NAME>.azurestaticapps.net` .
+1. Dále do pole **název** zadejte název vaší aplikace. Mezi platné znaky `a-z` patří `A-Z` , `0-9` a `-` .
 
 1. V _oblasti oblast_vyberte dostupnou oblast, která je blízko vás.
 
