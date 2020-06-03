@@ -4,12 +4,12 @@ description: V tomto článku se dozvíte, jak vytvořit Recovery Services trezo
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 05/30/2019
-ms.openlocfilehash: 6ac1c7e887f80767d6ff1819476e91cb4b06bf1b
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: f1f1a66bd6e0fbd28be59b0211a1ac17f030022e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744945"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298614"
 ---
 # <a name="create-a-recovery-services-vault"></a>Vytvoření trezoru Služeb zotavení
 
@@ -90,9 +90,6 @@ Pro tento proces se na úrovni úložiště účtují cenové dopady.
 >- Seznam podporovaných spravovaných typů a oblastí najdete v [matici podpory](backup-support-matrix.md#cross-region-restore) .
 >- Funkce obnovení mezi oblastmi (CRR) je teď v současnosti zobrazená ve všech veřejných oblastech Azure.
 >- CRR je funkce výslovných přihlášení na úrovni trezoru pro libovolný trezor GRS (ve výchozím nastavení vypnutý).
->- K připojení předplatného pro tuto funkci použijte prosím následující příkaz:<br>
->  `Register-AzProviderFeature -FeatureName CrossRegionRestore -ProviderNamespace Microsoft.RecoveryServices`
->- Pokud jste se k této funkci připojili ve verzi Public Limited Preview, bude e-mail s potvrzením schválení obsahovat podrobnosti o cenové zásadě.
 >- Po odsouhlasení může trvat až 48 hodin, než se zálohované položky zpřístupní v sekundárních oblastech.
 >- Aktuálně se podporuje jenom CRR typu správy zálohování – ARM Azure (klasický virtuální počítač Azure se nepodporuje).  Když další typy správy podporují CRR, pak se **automaticky** zaregistrují.
 

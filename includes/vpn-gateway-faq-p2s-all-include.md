@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 02/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: ec684e5e6fa2ef8e9ed30be49f59e8aa7ef3a28b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3c10ca35ee2f085d4ce41e862a895ff17ff63a0
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79117147"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317557"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Kolik koncových bodů klienta VPN je možné mít v konfiguraci připojení Point-to-Site?
 
 Závisí na SKU brány. Další informace o počtu podporovaných připojení najdete v tématu [SKU brány](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku).
 
-### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Jaké klientské operační systémy je možné používat s připojeními typu Point-to-Site?
+### <a name="what-client-operating-systems-can-i-use-with-point-to-site"></a><a name="supportedclientos"></a>Jaké klientské operační systémy je možné používat s Point-to-site?
 
 Podporovány jsou následující operační systémy:
 
@@ -29,6 +29,7 @@ Podporovány jsou následující operační systémy:
 * Windows Server 2012 (pouze 64bitové verze)
 * Windows Server 2012 R2 (pouze 64bitové verze)
 * Windows Server 2016 (pouze 64bitové verze)
+* Windows Server 2019 (pouze 64)
 * Windows 10
 * Mac OS X verze 10,11 nebo vyšší
 * Linux (StrongSwan)
@@ -56,7 +57,7 @@ Automatické opětné připojení a DDNS se u sítí VPN s připojením Point-to
 
 ### <a name="can-i-have-site-to-site-and-point-to-site-configurations-coexist-for-the-same-virtual-network"></a>Je možné současně používat konfigurace Site-to-Site a Point-to-Site pro stejnou virtuální síť?
 
-Ano. Pro model nasazení Resource Manageru musíte mít bránu typu VPN RouteBased. Pro model nasazení Classic je potřebná dynamická brána. Připojení Point-to-Site se pro brány VPN se statickým směrováním ani pro brány VPN PolicyBased nepodporuje.
+Yes. Pro model nasazení Resource Manageru musíte mít bránu typu VPN RouteBased. Pro model nasazení Classic je potřebná dynamická brána. Připojení Point-to-Site se pro brány VPN se statickým směrováním ani pro brány VPN PolicyBased nepodporuje.
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-network-gateways-at-the-same-time"></a>Můžu nakonfigurovat klienta Point-to-site pro připojení k několika branám virtuální sítě ve stejnou dobu?
 
@@ -72,7 +73,7 @@ Určit přesnou propustnost tunelových propojení sítí VPN je obtížné. IPs
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>Je možné pro připojení Point-to-Site použít libovolného softwarového klienta sítě VPN, pokud podporuje protokol SSTP a/nebo IKEv2?
 
-Ne. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a pro IKEv2 nativního klienta VPN v systému Mac. K připojení přes protokol OpenVPN ale můžete použít klienta OpenVPN na všech platformách. Podrobnosti najdete v seznamu podporovaných klientských operačních systémů.
+No. Pro SSTP můžete použít jenom nativního klienta VPN v systému Windows a pro IKEv2 nativního klienta VPN v systému Mac. K připojení přes protokol OpenVPN ale můžete použít klienta OpenVPN na všech platformách. Podrobnosti najdete v seznamu podporovaných klientských operačních systémů.
 
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Podporuje Azure IKEv2 VPN s Windows?
 

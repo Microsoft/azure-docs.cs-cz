@@ -8,12 +8,12 @@ ms.service: cost-management-billing
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: 76d73b57202acabdf42ce0bec6b9b33cde15592f
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: a8fbdcc9176b2297d160a4166b7d9079ff1b7fb5
+ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199275"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "84022346"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Získání nákladů na rezervace a jejich využití u smlouvy Enterprise
 
@@ -157,7 +157,7 @@ Další informace o rezervacích Azure najdete v následujících článcích:
 
 - [Co jsou rezervace Azure?](save-compute-costs-reservations.md)
 - [Předplacení virtuálních počítačů se službou Azure Reserved VM Instances](../../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../../sql-database/sql-database-reserved-capacity.md)
+- [Předplacení výpočetních prostředků SQL Database se záložní kapacitou služby Azure SQL Database](../../azure-sql/database/reserved-capacity-overview.md)
 - [Správa rezervací Azure](manage-reserved-vm-instance.md)
 - [Vysvětlení způsobu uplatnění slevy za rezervaci](../manage/understand-vm-reservation-charges.md)
 - [Vysvětlení využití rezervací u předplatného s průběžnými platbami](understand-reserved-instance-usage.md)
