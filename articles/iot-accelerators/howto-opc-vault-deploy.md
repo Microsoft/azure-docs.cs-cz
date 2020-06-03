@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 7ee186684b702a42335c6e1a7832cc5c761a69d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3c6385ff804b047cca11587ce5da5a0a682fdce8
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686940"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84307924"
 ---
 # <a name="build-and-deploy-the-opc-vault-certificate-management-service"></a>Sestavení a nasazení služby správy certifikátů úložiště OPC
 
@@ -51,11 +51,11 @@ Případně můžete klonovat úložiště přímo v aplikaci Visual Studio 2017
 PowerShellový skript nabízí snadný způsob nasazení mikroslužby trezoru OPC a aplikace.
 
 1. Otevřete okno PowerShellu v kořenovém adresáři úložiště. 
-3. Přejít do složky `cd deploy`Deploy (nasadit).
+3. Přejít do složky Deploy (nasadit) `cd deploy` .
 3. Vyberte název `myResourceGroup` , který není pravděpodobně příčinou konfliktu s jinými nasazenými webové stránky. V části dále v tomto článku najdete informace o tom, že se už používá název webu.
 5. Spusťte nasazení pomocí `.\deploy.ps1` příkazu pro interaktivní instalaci nebo zadejte úplný příkazový řádek:  
 `.\deploy.ps1  -subscriptionName "MySubscriptionName" -resourceGroupLocation "East US" -tenantId "myTenantId" -resourceGroupName "myResourceGroup"`
-7. Pokud plánujete vývoj s tímto nasazením, přidejte `-development 1` , abyste POVOLILI uživatelské rozhraní Swagger a nasadili sestavení ladění.
+7. Pokud plánujete vývoj s tímto nasazením, přidejte, `-development 1` abyste povolili uživatelské rozhraní Swagger a nasadili sestavení ladění.
 6. Pokud se chcete přihlásit ke svému předplatnému a zadat další informace, postupujte podle pokynů ve skriptu.
 9. Po úspěšné operaci sestavení a nasazení by se měla zobrazit následující zpráva:
    ```
@@ -76,13 +76,13 @@ PowerShellový skript nabízí snadný způsob nasazení mikroslužby trezoru OP
    > V případě problémů se v části řešení potíží s nasazením v tomto článku přečtěte v části "selhání nasazení.
 
 8. Otevřete oblíbený prohlížeč a otevřete stránku aplikace:`https://myResourceGroup.azurewebsites.net`
-8. Poskytněte webové aplikaci a mikroslužbu trezoru OPC pár minut, než se zahřívá po nasazení. Domovská stránka webu může po dobu až minutu přereagovat, dokud nezískáte první odpovědi.
+8. Poskytněte webové aplikaci a mikroslužbu trezoru OPC pár minut, než se zahřívá po nasazení. Domovská stránka webu může při prvním použití přestat reagovat, dokud neobdržíte první odpověď.
 11. Pokud si chcete prohlédnout rozhraní Swagger API, otevřete:`https://myResourceGroup-service.azurewebsites.net`
-13. Pokud chcete spustit místní GDS Server pomocí dotnet, spusťte `.\myResourceGroup-gds.cmd`. V Docker začněte `.\myResourceGroup-dockergds.cmd`.
+13. Pokud chcete spustit místní GDS Server pomocí dotnet, spusťte `.\myResourceGroup-gds.cmd` . V Docker začněte `.\myResourceGroup-dockergds.cmd` .
 
 Je možné znovu nasadit sestavení s přesně stejnými nastaveními. Počítejte s tím, že taková operace obnoví všechny tajné klíče aplikace a může resetovat některá nastavení v Azure Active Directory (Azure AD) registrace aplikací.
 
-Je také možné znovu nasadit pouze binární soubory webové aplikace. S parametrem `-onlyBuild 1`jsou nové balíčky zip služby a aplikace nasazeny do webových aplikací.
+Je také možné znovu nasadit pouze binární soubory webové aplikace. S parametrem `-onlyBuild 1` jsou nové balíčky zip služby a aplikace nasazeny do webových aplikací.
 
 Po úspěšném nasazení můžete začít používat služby. Viz [Správa služby správy certifikátů trezoru OPC](howto-opc-vault-manage.md).
 
@@ -90,12 +90,12 @@ Po úspěšném nasazení můžete začít používat služby. Viz [Správa slu�
 
 Zde je uveden postup:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Přejít do skupiny prostředků, ve které byla služba nasazena.
 3. Vyberte **Odstranit skupinu prostředků** a potvrďte tuto akci.
 4. Po krátké době se všechny nasazené součásti služby odstraní.
-5. Přejít na **Azure Active Directory** > **Registrace aplikací**.
-6. Pro každou nasazenou skupinu prostředků by měly být uvedené tři registrace. Registrace mají následující názvy: `resourcegroup-client`, `resourcegroup-module`,. `resourcegroup-service` Každou registraci odstraňte samostatně.
+5. Přejít na **Azure Active Directory**  >  **Registrace aplikací**.
+6. Pro každou nasazenou skupinu prostředků by měly být uvedené tři registrace. Registrace mají následující názvy: `resourcegroup-client` , `resourcegroup-module` , `resourcegroup-service` . Každou registraci odstraňte samostatně.
 
 Všechny nasazené součásti se teď odeberou.
 
@@ -107,7 +107,7 @@ Použijte krátký a jednoduchý název skupiny prostředků. Název se použív
 
 ### <a name="website-name-already-in-use"></a>Název webu se už používá.
 
-Je možné, že název webu se už používá. Musíte použít jiný název skupiny prostředků. Názvy hostitelů používané skriptem nasazení jsou: https:\//ResourceGroupName.azurewebsites.NET a https:\//resourgroupname-Service.azurewebsites.NET.
+Je možné, že název webu se už používá. Musíte použít jiný název skupiny prostředků. Názvy hostitelů používané skriptem nasazení jsou: https: \/ /ResourceGroupName.azurewebsites.NET a https: \/ /resourgroupname-Service.azurewebsites.NET.
 Jiné názvy služeb jsou sestaveny kombinací krátkých hodnot hash názvů a pravděpodobně nejsou v konfliktu s jinými službami.
 
 ### <a name="azure-ad-registration"></a>Registrace v Azure AD 

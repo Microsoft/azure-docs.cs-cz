@@ -136,7 +136,7 @@ Chcete-li vytvořit výstrahu, která používá protokoly Azure Monitor, prove�
 
 1.  V Azure Portal vyberte **prohledávání protokolu**.
 
-2.  Vytvořte dotaz pro výběr chyb a upozornění podle skupin synchronizace v intervalu, který jste vybrali. Příklad:
+2.  Vytvořte dotaz pro výběr chyb a upozornění podle skupin synchronizace v intervalu, který jste vybrali. Například:
 
     `DataSyncLog_CL | where LogLevel_s != "Success" | summarize AggregatedValue = count() by bin(TimeGenerated,60m),SyncGroupName_s`
 

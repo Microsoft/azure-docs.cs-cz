@@ -25,7 +25,7 @@ Azure Media Services V3 je k dispozici prostřednictvím Azure Resource Manager 
 
 ## <a name="feature-availability-in-azure-clouds"></a>Dostupnost funkcí v cloudech Azure
 
-| Příznak|Globální oblasti Azure | Azure Government|Azure Germany|Azure China 21Vianet|
+| Příznak|Globální oblasti Azure | Azure Government|Azure Germany|Azure (Čína) 21Vianet|
 | --- | --- | --- | --- | --- |
 | [Azure EventGrid](reacting-to-media-services-events.md) | K dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
 | [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  K dispozici | Není k dispozici | Není k dispozici | Není k dispozici |
@@ -102,7 +102,7 @@ Následující koncové body jsou důležité pro informace o připojení k Medi
 | Authentication | `https://login.microsoftonline.de/` |
 | Cílová skupina tokenů | `https://management.core.cloudapi.de/`|
 
-### <a name="azure-china-21vianet"></a>Azure China 21Vianet
+### <a name="azure-china-21vianet"></a>Azure (Čína) 21Vianet
 
 |Koncové body||
 | --- | --- |
