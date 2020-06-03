@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/21/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 0aa90aa054f99e8f65233887703965eedcd6bd90
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: ccaa1945101c252f7dd32be6f9340b51541ed48d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84264498"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296630"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Povolení ověřování Azure Active Directory Domain Services u souborů Azure
 
@@ -22,6 +22,7 @@ Přehled ověřování Azure AD pomocí protokolu SMB pro sdílené složky Azur
 
 > [!NOTE]
 > Soubory Azure podporují ověřování pomocí protokolu Kerberos s Azure služba AD DS s šifrováním RC4-HMAC. Šifrování AES Kerberos ještě není podporované.
+> Služba soubory Azure podporuje ověřování pro Azure služba AD DS s plnou synchronizací s modul AD. Pokud jste povolili synchronizaci s vymezeným oborem v Azure služba AD DS, že se jenom synchronizuje omezená sada identit z Azure AD, ověřování a autorizace se nepodporuje.
 
 ## <a name="prerequisites"></a>Požadavky
 
