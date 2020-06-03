@@ -7,12 +7,12 @@ ms.topic: include
 ms.date: 04/16/2020
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5cb3e6d53f6840b8f4e535976739c188daed18b2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 5af9deef7b6c3e2ea688f9e8ad5cc498f79c784e
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82789028"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84317407"
 ---
 Galerie sdílených imagí je služba, která pomáhá sestavovat strukturu a organizaci kolem spravovaných imagí. Galerie sdílených imagí poskytují:
 
@@ -48,7 +48,7 @@ Definice obrázků jsou logické seskupení pro verze image. Definice image obsa
 
 Existují tři parametry pro každou definici obrázku, které jsou používány v kombinaci – **Vydavatel**, **Nabídka** a **SKU**. Slouží k vyhledání konkrétní definice obrázku. Můžete mít verze bitové kopie, které sdílejí jednu nebo dvě, ale ne všechny tři hodnoty.  Tady jsou například tři definice obrázků a jejich hodnoty:
 
-|Definice image|Vydavatel|Nabídka|Skladová jednotka (SKU)|
+|Definice image|Publisher|Nabídka|Skladová jednotka (SKU)|
 |---|---|---|---|
 |myImage1|Contoso|Finance|Back-end|
 |myImage2|Contoso|Finance|Front-end|
@@ -71,14 +71,14 @@ Níže jsou uvedené další parametry, které je možné nastavit v definici im
 
 ## <a name="generalized-and-specialized-images"></a>Generalizované a specializované image
 
-Galerie sdílených imagí podporuje dva stavy operačních systémů. Image obvykle vyžadují, aby byl virtuální počítač použitý k vytvoření image zobecněný předtím, než Image převezme. Generalizace je proces, který z virtuálního počítače odebere informace specifické pro počítač a uživatele. V systému Windows se používá také nástroj Sysprep. Pro Linux můžete použít [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` nebo `-deprovision+user` parametry.
+Galerie sdílených imagí podporuje dva stavy operačních systémů. Image obvykle vyžadují, aby byl virtuální počítač použitý k vytvoření image zobecněný předtím, než Image převezme. Generalizace je proces, který z virtuálního počítače odebere informace specifické pro počítač a uživatele. Pro Windows se používá nástroj Sysprep. Pro Linux můžete použít [waagent](https://github.com/Azure/WALinuxAgent) `-deprovision` nebo `-deprovision+user` parametry.
 
 Specializované virtuální počítače neprošly procesem odebrání informací a účtů specifických pro konkrétní počítač. Virtuální počítače vytvořené z specializovaných imagí navíc `osProfile` k nim přidruženy nejsou. To znamená, že speciální obrázky budou mít kromě některých výhod nějaká omezení.
 
 - Virtuální počítače a sady škálování vytvořené z specializovaných imagí můžou být spuštěné rychleji. Vzhledem k tomu, že jsou vytvořeny ze zdroje, který již byl při prvním spuštění spuštěn, jsou virtuální počítače vytvořené z těchto imagí rychlejší.
 - Účty, které se dají použít k přihlášení k virtuálnímu počítači, se dají použít taky na jakémkoli virtuálním počítači vytvořeném pomocí specializované image, která se vytvoří z tohoto virtuálního počítače.
 - Virtuální počítače budou mít **název počítače** , ze kterého se image povedla. Měli byste změnit název počítače, aby se předešlo kolizím.
-- `osProfile` Je způsob, jakým se do virtuálního počítače předávají nějaké citlivé `secrets`informace pomocí. To může způsobovat problémy s využitím trezoru klíčů, WinRM a dalších `secrets` funkcí, `osProfile`které používají. V některých případech můžete tato omezení obejít pomocí identit spravované služby (MSI).
+- `osProfile`Je způsob, jakým se do virtuálního počítače předávají nějaké citlivé informace pomocí `secrets` . To může způsobovat problémy s využitím trezoru klíčů, WinRM a dalších funkcí, které používají `secrets` `osProfile` . V některých případech můžete tato omezení obejít pomocí identit spravované služby (MSI).
 
 ## <a name="regional-support"></a>Místní podpora
 
@@ -146,7 +146,7 @@ Vzhledem k tomu, že je galerie sdílených imagí, definice obrázku a verze im
 | Sdíleno s uživatelem     | Sdílená galerie obrázků | Definice image | Verze image |
 |----------------------|----------------------|--------------|----------------------|
 | Sdílená galerie obrázků | Ano                  | Ano          | Ano                  |
-| Definice image     | Ne                   | Ano          | Ano                  |
+| Definice image     | No                   | Ano          | Ano                  |
 
 Pro nejlepší prostředí doporučujeme sdílení na úrovni galerie. Nedoporučujeme sdílet jednotlivé verze imagí. Další informace o RBAC najdete v tématu [Správa přístupu k prostředkům Azure pomocí RBAC](../articles/role-based-access-control/role-assignments-portal.md).
 
@@ -233,7 +233,7 @@ Další informace najdete v tématu **Správa prostředků Galerie** pomocí [Az
 
 ### <a name="can-i-move-my-existing-image-to-the-shared-image-gallery"></a>Můžu existující image přesunout do galerie sdílených imagí?
  
-Ano. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
+Yes. Existují tři scénáře založené na typech imagí, které máte pravděpodobně k dispozici.
 
  Scénář 1: Pokud máte spravovanou bitovou kopii, můžete z ní vytvořit definici image a její verzi. Další informace najdete v tématu **migrace ze spravované image na verzi image** pomocí [Azure CLI](../articles/virtual-machines/image-version-managed-image-cli.md) nebo [PowerShellu](../articles/virtual-machines/image-version-managed-image-powershell.md).
 
@@ -293,7 +293,7 @@ Chcete-li určit počet místních replik, předejte umístění spolu s počtem
 
 Pokud se pro každé umístění nezadá počet místních replik, bude výchozí počet replik stejný jako společný počet replik, který jste zadali. 
 
-Pokud chcete v rozhraní `az sig image-version create` příkazového řádku určit společný počet replik, použijte v příkazu argument **--Replica-Count** .
+Pokud chcete v rozhraní příkazového řádku určit společný počet replik, použijte v příkazu argument **--Replica-Count** `az sig image-version create` .
 
 ### <a name="can-i-create-the-shared-image-gallery-in-a-different-location-than-the-one-for-the-image-definition-and-image-version"></a>Je možné galerii sdílených imagí vytvořit v jiném umístění než u definice image a verze image?
 

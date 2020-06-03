@@ -3,45 +3,27 @@ title: Přizpůsobení uživatelsky definovaných tras (UDR) ve službě Azure K
 description: Naučte se definovat vlastní výstupní trasu ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 03/16/2020
-ms.openlocfilehash: babfd70a6a9732113531be13073af212a6820557
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/05/2020
+ms.openlocfilehash: d62f40fb835bfe6993ad31ddd20cfdea1d9135c2
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83677883"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310865"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route-preview"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy (Preview)
+# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy
 
-Odchozí přenos dat z clusteru AKS se dá přizpůsobit tak, aby vyhovoval specifickým scénářům. Ve výchozím nastavení AKS zřídí standardní SKU Load Balancer nastavit a použít k odchozímu přenosu dat. Výchozí nastavení ale nemusí splňovat požadavky všech scénářů, pokud jsou veřejné IP adresy zakázané nebo jsou pro odchozí přenosy nutné další segmenty směrování.
+Odchozí přenos dat z clusteru AKS se dá přizpůsobit tak, aby vyhovoval specifickým scénářům. Ve výchozím nastavení AKS zřídí standardní SKU Load Balancer, který se má nastavit a použít k odchozímu přenosu dat. Výchozí nastavení ale nemusí splňovat požadavky všech scénářů, pokud jsou veřejné IP adresy zakázané nebo jsou pro odchozí přenosy nutné další segmenty směrování.
 
 Tento článek vás seznámí s postupem přizpůsobení odchozí trasy clusteru pro podporu vlastních síťových scénářů, jako jsou například ty, které nepovolují veřejné IP adresy a vyžadují, aby se cluster zacházel za virtuálním síťovým zařízením (síťové virtuální zařízení).
 
-> [!IMPORTANT]
-> Funkce AKS ve verzi Preview jsou samoobslužné a jsou nabízeny na základě výslovného souhlasu. Verze Preview jsou *k dispozici* *tak, jak* jsou, a jsou vyloučené z smlouvy o úrovni služeb (SLA) a omezené záruky. AKS verze Preview jsou částečně pokryté zákaznickou podporou, a to s ohledem na *nejlepší úsilí* . Proto funkce nejsou určeny pro použití v produkčním prostředí. Další informace najdete v následujících článcích podpory:
->
-> * [Zásady podpory AKS](support-policies.md)
-> * [Nejčastější dotazy k podpoře Azure](faq.md)
-
 ## <a name="prerequisites"></a>Požadavky
 * Azure CLI verze 2.0.81 nebo vyšší
-* Rozšíření Azure CLI Preview verze 0.4.28 nebo vyšší
 * Verze rozhraní API `2020-01-01` nebo vyšší
 
-## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Nainstalovat nejnovější rozšíření Azure CLI AKS Preview
-K nastavení odchozího typu clusteru potřebujete rozšíření Azure CLI AKS Preview verze 0.4.18 nebo novější. Nainstalujte rozšíření Azure CLI AKS Preview pomocí příkazu AZ Extension Add a potom zkontrolujte, jestli jsou dostupné aktualizace, pomocí následujícího příkazu AZ Extension Update:
-
-```azure-cli
-# Install the aks-preview extension
-az extension add --name aks-preview
-
-# Update the extension to make sure you have the latest version installed
-az extension update --name aks-preview
-```
 
 ## <a name="limitations"></a>Omezení
-* Během období Preview se `outboundType` dá definovat jenom při vytváření clusteru a nedá se aktualizovat později.
-* Ve verzi Preview `outboundType` by clustery AKS měly používat Azure CNI. Kubenet je konfigurovatelné, použití vyžaduje ruční přidružení směrovací tabulky k podsíti AKS.
+* OutboundType se dá definovat jenom v době vytváření clusteru a nedá se aktualizovat později.
 * Nastavení `outboundType` vyžaduje clustery AKS s `vm-set-type` `VirtualMachineScaleSets` a `load-balancer-sku` z `Standard` .
 * Nastavení `outboundType` na hodnotu `UDR` vyžaduje trasu definovanou uživatelem s platným odchozím připojením pro cluster.
 * Nastavení `outboundType` na hodnotu `UDR` znamená, že IP adresa příchozího přenosu dat směrovaného do nástroje pro vyrovnávání zatížení nemusí **odpovídat** cílové adrese odchozího výstupu clusteru.
@@ -53,14 +35,17 @@ Cluster AKS se dá přizpůsobit jedinečným typem pro `outboundType` Vyrovnáv
 > [!IMPORTANT]
 > Typ odchozího přenosu ovlivňuje jenom výstupní přenos vašeho clusteru. Další informace najdete v tématu [nastavení řadičů](ingress-basic.md) příchozího přenosu dat.
 
+> [!NOTE]
+> Můžete použít vlastní [směrovací tabulku][byo-route-table] s udr a kubenet sítí.
+
 ### <a name="outbound-type-of-loadbalancer"></a>Odchozí typ vyrovnávání zatížení
 
-Pokud `loadBalancer` je nastavená, AKS se automaticky dokončí následující nastavení. Nástroj pro vyrovnávání zatížení se používá k odchozímu přenosu prostřednictvím AKS s přiřazenou veřejnou IP adresou. Odchozí typ `loadBalancer` podporuje služby Kubernetes typu `loadBalancer` , které očekávají výstup z nástroje pro vyrovnávání zatížení vytvořeného poskytovatelem prostředků AKS.
+Pokud `loadBalancer` je nastavená, AKS dokončí následující konfiguraci automaticky. Nástroj pro vyrovnávání zatížení se používá k odchozímu přenosu prostřednictvím AKS s přiřazenou veřejnou IP adresou. Odchozí typ `loadBalancer` podporuje služby Kubernetes typu `loadBalancer` , které očekávají výstup z nástroje pro vyrovnávání zatížení vytvořeného poskytovatelem prostředků AKS.
 
-Následující nastavení se provádí pomocí AKS.
+Následující konfigurace se provádí pomocí AKS.
    * Veřejná IP adresa se zřídí pro odchozí výstup clusteru.
    * Veřejné IP adresy se přiřadí prostředku nástroje pro vyrovnávání zatížení.
-   * Back-endové fondy pro nástroj pro vyrovnávání zatížení jsou instalačním programem uzlů agentů v clusteru.
+   * Back-endové fondy pro nástroj pro vyrovnávání zatížení jsou nastaveny pro uzly agentů v clusteru.
 
 Níže je síťová topologie nasazená v clusterech AKS ve výchozím nastavení, která `outboundType` používají `loadBalancer` .
 
@@ -173,9 +158,9 @@ az network vnet subnet create \
     --address-prefix 100.64.3.0/24
 ```
 
-## <a name="create-and-setup-an-azure-firewall-with-a-udr"></a>Vytvoření a nastavení Azure Firewall pomocí UDR
+## <a name="create-and-set-up-an-azure-firewall-with-a-udr"></a>Vytvoření a nastavení Azure Firewall s UDR
 
-Musí být nakonfigurovaná pravidla příchozího a odchozího Azure Firewall. Hlavním účelem brány firewall je umožnit organizacím nastavovat pravidla pro příchozí a odchozí přenos dat do clusteru AKS a z něj.
+Musí být nakonfigurovaná pravidla příchozího a odchozího Azure Firewall. Hlavním účelem brány firewall je umožnit organizacím konfigurovat podrobná pravidla příchozího provozu a odchozí přenos dat do clusteru AKS a z něj.
 
 ![Brána firewall a UDR](media/egress-outboundtype/firewall-udr.png)
 
@@ -217,7 +202,13 @@ FWPUBLIC_IP=$(az network public-ip show -g $RG -n $FWPUBLICIP_NAME --query "ipAd
 FWPRIVATE_IP=$(az network firewall show -g $RG -n $FWNAME --query "ipConfigurations[0].privateIpAddress" -o tsv)
 ```
 
+> [!Note]
+> Pokud používáte zabezpečený přístup k serveru rozhraní AKS API s [povolenými rozsahy IP adres](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges), musíte přidat veřejnou IP adresu brány firewall do povoleného rozsahu IP adres.
+
 ### <a name="create-a-udr-with-a-hop-to-azure-firewall"></a>Vytvoření UDR s segmentem směrování na Azure Firewall
+
+> [!IMPORTANT]
+> Výstupní typ UDR vyžaduje trasu pro 0.0.0.0/0 a cíl dalšího segmentu směrování síťové virtuální zařízení (síťové virtuální zařízení) v tabulce směrování.
 
 Azure automaticky směruje provoz mezi podsítěmi Azure, virtuálními sítěmi a místními sítěmi. Pokud chcete změnit některý z výchozích směrování Azure, provedete to tak, že vytvoříte směrovací tabulku.
 
@@ -284,7 +275,7 @@ az network vnet subnet update -g $RG --vnet-name $VNET_NAME --name $AKSSUBNET_NA
 
 ## <a name="deploy-aks-with-outbound-type-of-udr-to-the-existing-network"></a>Nasazení AKS s odchozím typem UDR do existující sítě
 
-Cluster AKS se teď dá nasadit do stávajícího nastavení virtuální sítě. Aby bylo možné nastavit typ odchozího clusteru na uživatelem definované směrování, musí být k dispozici existující podsíť AKS.
+Cluster AKS se teď dá nasadit do existující virtuální sítě. Aby bylo možné nastavit typ odchozího clusteru na uživatelem definované směrování, musí být k dispozici existující podsíť AKS.
 
 ![AKS – nasazení](media/egress-outboundtype/outboundtype-udr.png)
 
@@ -321,7 +312,7 @@ A konečně, cluster AKS se dá nasadit do existující podsítě, kterou jsme p
 SUBNETID="/subscriptions/$SUBID/resourceGroups/$RG/providers/Microsoft.Network/virtualNetworks/$VNET_NAME/subnets/$AKSSUBNET_NAME"
 ```
 
-Určíme typ odchozího připojení, který bude následovat po UDR, který existuje v podsíti, a povolením AKS přeskočit nastavení a zřizování IP pro nástroj pro vyrovnávání zatížení, který je teď naprosto interní.
+Definujte typ odchozího připojení, který se bude řídit UDR, která existuje v podsíti, a umožňuje AKS přeskočit nastavení a zřizování IP pro nástroj pro vyrovnávání zatížení, který teď může být výhradně interní.
 
 Funkci AKS pro [rozsahy IP adres autorizovaných serverem API](api-server-authorized-ip-ranges.md) lze přidat k omezení přístupu serveru rozhraní API pouze k veřejnému koncovému bodu brány firewall. Funkce autorizované rozsahy IP adres je v diagramu označena jako NSG, která musí být předána pro přístup k rovině ovládacího prvku. Když povolíte funkci schváleného rozsahu IP adres pro omezení přístupu k serveru rozhraní API, nástroje pro vývojáře musí použít JumpBox z virtuální sítě brány firewall nebo musíte přidat všechny koncové body pro vývojáře do povoleného rozsahu IP adres.
 
@@ -345,7 +336,7 @@ az aks create -g $RG -n $AKS_NAME -l $LOC \
 
 ### <a name="enable-developer-access-to-the-api-server"></a>Povolení přístupu pro vývojáře k serveru rozhraní API
 
-Vzhledem k nastavení povolených rozsahů IP adres pro cluster musíte přidat IP adresy vývojářských nástrojů do seznamu clusterů AKS schválených rozsahů IP adres pro přístup k serveru rozhraní API. Další možností je nakonfigurovat JumpBox s potřebnými nástroji v samostatné podsíti ve virtuální síti brány firewall.
+Kvůli povoleným rozsahům IP adres clusteru musíte přidat IP adresy vývojářských nástrojů do seznamu clusterů AKS schválených rozsahů IP adres pro přístup k serveru rozhraní API. Další možností je nakonfigurovat JumpBox s potřebnými nástroji v samostatné podsíti ve virtuální síti brány firewall.
 
 Pomocí následujícího příkazu přidejte do schválených rozsahů další IP adresu.
 
@@ -364,9 +355,9 @@ az aks update -g $RG -n $AKS_NAME --api-server-authorized-ip-ranges $CURRENT_IP/
  az aks get-credentials -g $RG -n $AKS_NAME
  ```
 
-### <a name="setup-the-internal-load-balancer"></a>Nastavení interního nástroje pro vyrovnávání zatížení
+### <a name="set-up-the-internal-load-balancer"></a>Nastavení interního nástroje pro vyrovnávání zatížení
 
-AKS nasadil Nástroj pro vyrovnávání zatížení s clusterem, který se může nastavit jako [interní nástroj pro vyrovnávání zatížení](internal-lb.md).
+AKS nasadil Nástroj pro vyrovnávání zatížení s clusterem, který se dá nastavit jako [interní nástroj pro vyrovnávání zatížení](internal-lb.md).
 
 Pokud chcete vytvořit interní nástroj pro vyrovnávání zatížení, vytvořte v něm manifest služby s názvem Internal-9,1. yaml s typem služby a službou Azure-Load Balancer – interní anotaci, jak je znázorněno v následujícím příkladu:
 
@@ -542,3 +533,4 @@ Přečtěte si téma [jak vytvořit, změnit nebo odstranit směrovací tabulku]
 
 <!-- LINKS - internal -->
 [az-aks-get-credentials]: /cli/azure/aks?view=azure-cli-latest#az-aks-get-credentials
+[byo-route-table]: configure-kubenet.md#bring-your-own-subnet-and-route-table-with-kubenet

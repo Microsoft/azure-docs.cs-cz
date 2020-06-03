@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 40285c811cd6f407c20c40bf3a90ec5b779a9c18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08a1d655d19b5e7deb81e42ca5bebdfe4f18aeef
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264398"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297900"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: nejčastější dotazy (FAQ)
 
@@ -35,9 +35,9 @@ Azure AD B2C nelze použít k ověřování uživatelů pro systém Microsoft Of
 
 ### <a name="what-are-local-accounts-in-azure-ad-b2c-how-are-they-different-from-work-or-school-accounts-in-azure-ad"></a>Co jsou místní účty v Azure AD B2C? Jak se liší od pracovních nebo školních účtů ve službě Azure AD?
 
-V tenantovi Azure AD uživatelé patřící do přihlášení tenanta pomocí e-mailové adresy formuláře `<xyz>@<tenant domain>`. `<tenant domain>` Je jednou z ověřených domén v tenantovi nebo v počáteční `<...>.onmicrosoft.com` doméně. Tento typ účtu je pracovní nebo školní účet.
+V tenantovi Azure AD uživatelé patřící do přihlášení tenanta pomocí e-mailové adresy formuláře `<xyz>@<tenant domain>` . `<tenant domain>`Je jednou z ověřených domén v tenantovi nebo v počáteční `<...>.onmicrosoft.com` doméně. Tento typ účtu je pracovní nebo školní účet.
 
-V tenantovi Azure AD B2C se většina aplikací chce přihlašovat pomocí libovolné e-mailové joe@comcast.netadresy (například bob@gmail.com sarah@contoso.com,, nebo jim@live.com). Tento typ účtu je místní účet. Také podporujeme libovolná uživatelská jména jako místní účty (například Jana, Bob, Sarah nebo jim). Při konfiguraci zprostředkovatelů identity pro Azure AD B2C v Azure Portal můžete zvolit jeden z těchto dvou místních typů účtů. Ve vašem tenantovi Azure AD B2C vyberte **Zprostředkovatelé identity**, vyberte **místní účet**a pak vyberte **uživatelské jméno**.
+V tenantovi Azure AD B2C se většina aplikací chce přihlašovat pomocí libovolné e-mailové adresy (například,, joe@comcast.net bob@gmail.com sarah@contoso.com nebo jim@live.com ). Tento typ účtu je místní účet. Také podporujeme libovolná uživatelská jména jako místní účty (například Jana, Bob, Sarah nebo jim). Při konfiguraci zprostředkovatelů identity pro Azure AD B2C v Azure Portal můžete zvolit jeden z těchto dvou místních typů účtů. Ve vašem tenantovi Azure AD B2C vyberte **Zprostředkovatelé identity**, vyberte **místní účet**a pak vyberte **uživatelské jméno**.
 
 Uživatelské účty pro aplikace se dají vytvořit pomocí uživatelského toku registrace, uživatelského toku registrace nebo přihlašování, rozhraní Microsoft Graph API nebo Azure Portal.
 
@@ -49,7 +49,7 @@ Azure AD B2C také podporuje [vlastní zásady](custom-policy-overview.md). Vlas
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>Můžu nakonfigurovat obory pro shromažďování dalších informací o uživatelích z různých poskytovatelů sociálních identit?
 
-Ne. Výchozí obory používané pro naši podporovanou sadu zprostředkovatelů sociálních identit jsou:
+No. Výchozí obory používané pro naši podporovanou sadu zprostředkovatelů sociálních identit jsou:
 
 * Facebook: e-mail
 * Google +: e-mail
@@ -134,21 +134,20 @@ Momentálně ne. Tato funkce je v našem plánu. Ověření domény na kartě **
 
 Chcete-li odstranit svého tenanta Azure AD B2C, postupujte podle těchto kroků.
 
-Můžete použít aktuální prostředí **aplikací** nebo naše nové sjednocené **Registrace aplikací (ve verzi Preview)** . [Další informace o novém prostředí](https://aka.ms/b2cappregintro).
+Můžete využít nové jednotné prostředí pro **Registrace aplikací** nebo naše starší verze **aplikací (zastaralé)** . [Další informace o novém prostředí](https://aka.ms/b2cappregtraining).
 
-#### <a name="applications"></a>[Aplikace](#tab/applications/)
+#### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/)
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako *Správce předplatného*. Použijte stejný pracovní nebo školní účet nebo stejnou účet Microsoft, jakou jste použili k registraci do Azure.
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. Odstraňte všechny **toky uživatelů (zásady)** ve vašem tenantovi Azure AD B2C.
-1. Odstraňte všechny **aplikace** , které jste zaregistrovali ve vašem tenantovi Azure AD B2C.
-1. V nabídce na levé straně vyberte **Azure Active Directory** .
-1. V části **Spravovat** vyberte **Uživatele**.
+1. Odstraní všechny **toky uživatelů (zásady)** ve vašem tenantovi Azure AD B2C.
+1. Vyberte **Registrace aplikací**a pak vyberte kartu **všechny aplikace** .
+1. Odstraňte všechny aplikace, které jste zaregistrovali.
+1. Odstraňte **B2C-Extensions-App**.
+1. V části **Spravovat** vyberte **Uživatelé**.
 1. Vyberte možnost jednotliví uživatelé zase (vyloučit *Správce předplatného* , kterého jste právě přihlášeni jako uživatel). V dolní části stránky vyberte **Odstranit** a po zobrazení výzvy vyberte **Ano** .
-1. V části **Spravovat**vyberte **Registrace aplikací** (nebo **Registrace aplikací (starší verze)**).
-1. Vybrat **Zobrazit všechny aplikace**
-1. Vyberte aplikaci s názvem **B2C-Extensions-App**, vyberte **Odstranit**a po zobrazení výzvy vyberte **Ano** .
+1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. V části **Spravovat**vyberte **uživatelská nastavení**.
 1. Pokud je k dispozici, vyberte v části **připojení k účtu LinkedIn**možnost **ne**a pak vyberte **Uložit**.
 1. V části **Spravovat**vyberte **vlastnosti** .
@@ -157,18 +156,19 @@ Můžete použít aktuální prostředí **aplikací** nebo naše nové sjednoce
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
 1. Na stránce **Přehled** vyberte **odstranit adresář**. Dokončete proces podle pokynů na obrazovce.
 
-#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com/) jako *Správce předplatného*. Použijte stejný pracovní nebo školní účet nebo stejnou účet Microsoft, jakou jste použili k registraci do Azure.
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
-1. Odstraní všechny **toky uživatelů (zásady)** ve vašem tenantovi Azure AD B2C.
-1. Vyberte **Registrace aplikací (Preview)** a pak vyberte kartu **všechny aplikace** .
-1. Odstraňte všechny aplikace, které jste zaregistrovali.
-1. Odstraňte **B2C-Extensions-App**.
-1. V části **Spravovat** vyberte **Uživatele**.
-1. Vyberte možnost jednotliví uživatelé zase (vyloučit *Správce předplatného* , kterého jste právě přihlášeni jako uživatel). V dolní části stránky vyberte **Odstranit** a po zobrazení výzvy vyberte **Ano** .
+1. Odstraňte všechny **toky uživatelů (zásady)** ve vašem tenantovi Azure AD B2C.
+1. Odstraňte všechny **aplikace (starší verze)** , které jste zaregistrovali ve vašem tenantovi Azure AD B2C.
 1. V nabídce na levé straně vyberte **Azure Active Directory** .
+1. V části **Spravovat** vyberte **Uživatelé**.
+1. Vyberte možnost jednotliví uživatelé zase (vyloučit *Správce předplatného* , kterého jste právě přihlášeni jako uživatel). V dolní části stránky vyberte **Odstranit** a po zobrazení výzvy vyberte **Ano** .
+1. V části **Spravovat** vyberte **Registrace aplikací**.
+1. Vybrat **Zobrazit všechny aplikace**
+1. Vyberte aplikaci s názvem **B2C-Extensions-App**, vyberte **Odstranit**a po zobrazení výzvy vyberte **Ano** .
 1. V části **Spravovat**vyberte **uživatelská nastavení**.
 1. Pokud je k dispozici, vyberte v části **připojení k účtu LinkedIn**možnost **ne**a pak vyberte **Uložit**.
 1. V části **Spravovat**vyberte **vlastnosti** .

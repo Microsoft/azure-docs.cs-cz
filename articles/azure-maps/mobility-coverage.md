@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 85988d74d21c411586a368e12972450116259a45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db53e09957b5907e9b742c264b6a41f51041df1c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334388"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310236"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Pokrytí Azure Maps mobility
 
@@ -35,7 +35,7 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 | Argentina       | <p>Bahía Blanca, Buenos Aires, Caleta Olivia, Chivilcoy, Comodoro Rivadavia, Córdoba, Corrientes, obecné Pico, La Rioja, březen del Plata, Mendoza, Miramar, Neuquén, Oberá, Olavarría, Paraná, Posadas, Rio tercero, Rosario, Salta, San Carlos de Bariloche, San Luis, San Pedro, Santa Fe, Tandil, Ushuaia, Victoria, Villa, María</p>|
 | Barbados       |  Barbados |
 | Brazílie         | <p>Angra dos Reis, Anápolis, Apucarana, Aracaju, Araraquara, Araxa, Araçatuba, Bage, Barretos, Bauru, Belem, Belo Horizonte, Blumenau, Boa Vista, Brazílie, Caldas Novas, Campina Grande, Campinas, Campo Belo, Campo Grande, Caraguatatuba, Cascavel, Cataguases, Caxias, Leopoldina e Região, Catalão, Caxias Sul, Chapecó, Cianorte, Conselheiro Lafaiete, Corumbá, Criciúma, Cruzeiro, Sul, Cuiabá, Curitiba, Curitibanos, Curvelo, Diamantina, Divinópolis, Dourados, Estrela, Feira, Santana, Fernando, Noronha, de Florianópolis, Fortaleza, Foz do Iguaçu, Franca, Garanhuns, Goiania, Governador Valadares, Guarapuava, Imperatriz, Ipatinga, Irati, Itabira, Itabuna, Itajaí, Ituiutaba, Jaraguá do Sul, Joao Pessoa, Joinville, Juazeiro do Norte, Juiz de Fora, Jundiaí, Lages, Londrina, Macapa, Macaé, Maceió, Mafra e Rio Negro, Manaus, Manhuacu, Maringá, Marília, Monte Carmelo, Montes Claros, Mossoró, Natal, Osorio, Ourinhos, Ouro Preto, Palmas, Paracatu, Paranaguá, Parnaíba, Passo Fundo , Passos, Patos de Minas Patrocínio, Pelotas, Piracicaba, pocos de Caldas, Ponta Grossa, Porto Alegre, Porto Ferreira, Porto Seguro, Porto Velho, Praia Grande, Recife, Ribeirão Preto, Rio, Branco, Rondonópolis, Salinas, Salvador, Santa Cruz do Sul, Santa Marie, Rita, Sapucaí e Santarem, Svatý Jose do Rio Preto, Svatý Mateus, Svatý Paulo, Sorocaba, Svatý Carlos, Svatý Francisco do Sul, Svatý v systému DOS Campos, svatého Lourenço, svatého Luís, Taubaté, Telemaco Borba, Teofilo Otoni, Teresina, Toledo, Três Lagoas, Tucurui, Ubatuba, Uberaba, Uberlândia, Ubá, Uruguaiana, Varginha, Vicosa, Videira & Fraiburgo, Vitória, Vitória, Conquista, Volta Redonda, Votuporanga </p>|
-| Kanada | Banff (AB), Brandon (MB), Calgary (AB), Comox sedl (BC), Cowichan sedl (BC), Edmonton (AB), Fort St. Jan, Fredericton (NB), větší Sudbury (ON), větší Vancouver (BC), Halifax (NS), Kamloops (BC), Kelowna (BC), Kingston (ON), Londýn (ON), Moncton (NB), Montrealský (QC), Nanaimo (BC), Ottawa (ON), Prince Jiří (BC), Québec City (QC), Deer (QC), Regina (SK), Rimouski (QC), Saskatoon (SK), Sherbrooke (QC), Squamish (QC) , Svatý Jan (NL), slunečno pobřeží, Thunder pozice (ZAPNUTo), Toronto (ON), Victoria (BC), Whistler (BC), Windsor (ON), Winnipeg (MB), Woodstock</p>|
+| Canada | Banff (AB), Brandon (MB), Calgary (AB), Comox sedl (BC), Cowichan sedl (BC), Edmonton (AB), Fort St. Jan, Fredericton (NB), větší Sudbury (ON), větší Vancouver (BC), Halifax (NS), Kamloops (BC), Kelowna (BC), Kingston (ON), Londýn (ON), Moncton (NB), Montrealský (QC), Nanaimo (BC), Ottawa (ON), Prince Jiří (BC), Québec City (QC), Deer (QC), Regina (SK), Rimouski (QC), Saskatoon (SK), Sherbrooke (QC), Squamish (QC) , Svatý Jan (NL), slunečno pobřeží, Thunder pozice (ZAPNUTo), Toronto (ON), Victoria (BC), Whistler (BC), Windsor (ON), Winnipeg (MB), Woodstock</p>|
 | Chile  | <p>Antofagasta, Arica, Aysén, Chillán, Concepción, Constitución, Copiapó, Curicó, Iquique, La Serena y Coquimbo, Linares, Los Angeles (Chile), Los Lagos, Punta Arenas, Rancagua, Santiago de Chile, Talca, Temuco, Valdivia, Valparaíso, Viña del březen</p>|
 | Kolumbie | <p>Barranquilla, Bogotá, Bucaramanga, Cali, Kartagenské, Ibagué, Medellín, Pasto, Popayán, Santa Marta, Sincelejo, Valledupar</p>|  
 | Kostarika | Síť San|
@@ -54,13 +54,13 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 
 | Země |  Město (pole metro) |
 |--------|---------|
-| Austrálie      | <p>Adelaide, Alice pružiny, Bowen, Brisbane, Bundaberg QLD, hořák, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, mackayovou, magnetické ostrovy, Maryborough-Hervey pozice, Melbourne, New Jižní Wales, Perth, RockHampton, jižní východ Queenslandu, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
+| Australia      | <p>Adelaide, Alice pružiny, Bowen, Brisbane, Bundaberg QLD, hořák, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, mackayovou, magnetické ostrovy, Maryborough-Hervey pozice, Melbourne, New Jižní Wales, Perth, RockHampton, jižní východ Queenslandu, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | Čína | <p> Changchun, Changsha, Chengdu, Čchung-čching, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanking, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, yixing, Zhuhai, Shanghai, Peking, Guangzhou, Shenzhen, Zhengzhou</P>| 
-| Hongkong – zvláštní správní oblast | Hongkong – zvláštní správní oblast *|
+| Hongkong – zvláštní administrativní oblast | Hongkong – zvláštní správní oblast *|
 | Macao – zvláštní administrativní oblast | Macao – zvláštní administrativní oblast *|
-| Indie | Ahmedabad, Bengaluru, Dillí, Bombaj, Mysuru, Pune|
+| India | Ahmedabad, Bengaluru, Dillí, Bombaj, Mysuru, Pune|
 | Indonésie | Bandung, Banyuwangi, Batam, Denpasar, Jakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
-| Japonsko | Shizuoka Prefektura, Tokio, Wakkanai, Yamanashi Prefektura |
+| Japan | Shizuoka Prefektura, Tokio, Wakkanai, Yamanashi Prefektura |
 | Malajsie | Ipoh, Johar Bahru, Kuala Lumpur, Penang |
 | Nový Zéland | Auckland, Christchurch, Dunedin, Queenstown, Timaru, Wellington|
 | Filipíny | Manila |
@@ -71,7 +71,7 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 | Vietnam | Hanoj, do chí Minovo City | 
 
 
-## <a name="europe"></a>Evropa
+## <a name="europe"></a>Europe
 
 | Země |  Město (pole metro) |
 |----------------|---------|

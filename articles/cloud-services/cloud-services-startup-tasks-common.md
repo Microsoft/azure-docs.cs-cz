@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: 4fe1ee3ccf2849943959889838ba0f22fb64bb9a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 73762c431c84de01ce3561d586c5a12bfd26ac81
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273056"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310121"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Běžné úlohy po spuštění cloudové služby
 Tento článek popisuje několik příkladů běžných úloh po spuštění, které můžete chtít provést ve své cloudové službě. Úlohy po spuštění můžete použít k provádění operací před spuštěním role. Operace, které můžete chtít provést, zahrnují instalaci komponenty, registraci komponent modelu COM, nastavení klíčů registru nebo spuštění dlouhotrvajícího procesu. 
@@ -67,7 +67,7 @@ Příkaz "Appcmd. exe" vrácený funkcí *Appcmd. exe* je uveden v souboru WinEr
 ### <a name="example-of-managing-the-error-level"></a>Příklad správy úrovně chyby
 Tento příklad přidá kompresní oddíl a položku komprese pro JSON do souboru *Web. config* s zpracováním a protokolováním chyb.
 
-Zde jsou uvedeny relevantní oddíly souboru [ServiceDefinition. csdef] , které zahrnují nastavení atributu `elevated` [ExecutionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) pro udělení oprávnění *Appcmd. exe* pro změnu nastavení v souboru *Web. config* :
+Zde jsou uvedeny relevantní oddíly souboru [ServiceDefinition. csdef] , které zahrnují nastavení atributu [ExecutionContext](/previous-versions/azure/reference/gg557552(v=azure.100)#task) pro `elevated` udělení oprávnění *Appcmd. exe* pro změnu nastavení v souboru *Web. config* :
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -138,7 +138,7 @@ Azure vytvoří pravidla brány firewall pro procesy spuštěné v rámci vašic
 </ServiceDefinition>
 ```
 
-Chcete-li přidat pravidlo brány firewall, je nutné použít `netsh advfirewall firewall` příslušné příkazy ve spouštěcím dávkovém souboru. V tomto příkladu úloha po spuštění vyžaduje zabezpečení a šifrování pro port TCP 80.
+Chcete-li přidat pravidlo brány firewall, je nutné použít příslušné `netsh advfirewall firewall` příkazy ve spouštěcím dávkovém souboru. V tomto příkladu úloha po spuštění vyžaduje zabezpečení a šifrování pro port TCP 80.
 
 ```cmd
 REM   Add a firewall rule in a startup task.
@@ -300,7 +300,7 @@ Můžete mít spouštěcí úlohu, pokud je v cloudu v porovnání s tím, kdy s
 
 Tato možnost provádění různých akcí s emulátorem výpočtů a cloudem je možné dosáhnout vytvořením proměnné prostředí v souboru [ServiceDefinition. csdef] . Pak otestujete proměnnou prostředí pro hodnotu v úloze po spuštění.
 
-Chcete-li vytvořit proměnnou prostředí, přidejte element [Variable]/[RoleInstanceValue] a vytvořte hodnotu XPath `/RoleEnvironment/Deployment/@emulated`. Hodnota proměnné prostředí **% ComputeEmulatorRunning%** je `true` spuštěna v emulátoru služby COMPUTE a `false` při spuštění v cloudu.
+Chcete-li vytvořit proměnnou prostředí, přidejte element [Variable] / [RoleInstanceValue] a vytvořte hodnotu XPath `/RoleEnvironment/Deployment/@emulated` . Hodnota proměnné prostředí **% ComputeEmulatorRunning%** je `true` spuštěna v emulátoru služby COMPUTE a `false` při spuštění v cloudu.
 
 ```xml
 <ServiceDefinition name="MyService" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
@@ -383,9 +383,9 @@ Visual Studio neposkytuje ladicí program pro procházení souborů Batch, takž
 
 Chcete-li zjednodušit XML, můžete vytvořit soubor *cmd cmd* , který volá všechny úlohy po spuštění společně s protokolováním a zajišťuje, že každá podřízená úloha sdílí stejné proměnné prostředí.
 
-Může se stát, že na konci každé `>> "%TEMP%\StartupLog.txt" 2>&1` úlohy po spuštění bude aplikace nepříjemné. Protokolování úloh můžete vynutil vytvořit obálku, která vám zpracuje protokolování. Tato obálka volá skutečný dávkový soubor, který chcete spustit. Libovolný výstup z cílového dávkového souboru bude přesměrován do souboru *Startuplog. txt* .
+Může se stát, že na `>> "%TEMP%\StartupLog.txt" 2>&1` konci každé úlohy po spuštění bude aplikace nepříjemné. Protokolování úloh můžete vynutil vytvořit obálku, která vám zpracuje protokolování. Tato obálka volá skutečný dávkový soubor, který chcete spustit. Libovolný výstup z cílového dávkového souboru bude přesměrován do souboru *Startuplog. txt* .
 
-Následující příklad ukazuje, jak přesměrovat všechny výstupy z spouštěcího dávkového souboru. V tomto příkladu vytvoří soubor ServerDefinition. csdef úlohu po spuštění, která volá *logwrap. cmd*. *logwrap. cmd* volá *Startup2. cmd*a přesměruje veškerý výstup do **% TEMP%\\StartupLog. txt**.
+Následující příklad ukazuje, jak přesměrovat všechny výstupy z spouštěcího dávkového souboru. V tomto příkladu vytvoří soubor ServerDefinition. csdef úlohu po spuštění, která volá *logwrap. cmd*. *logwrap. cmd* volá *Startup2. cmd*a přesměruje veškerý výstup do **% TEMP% \\ StartupLog. txt**.
 
 ServiceDefinition. cmd:
 
@@ -459,7 +459,7 @@ Ukázkový výstup v souboru **StartupLog. txt** :
 ```
 
 > [!TIP]
-> Soubor **StartupLog. txt** je umístěný ve složce *C:\Resources\temp\\{identifikátor role} \RoleTemp* .
+> Soubor **StartupLog. txt** je umístěný ve složce *C:\Resources\temp \\ {identifikátor role} \RoleTemp* .
 > 
 > 
 
@@ -468,7 +468,7 @@ Nastavte patřičná oprávnění pro úlohu po spuštění. Někdy se úlohy po
 
 Atribut [executionContext][Task] ExecutionContext nastaví úroveň oprávnění pro úlohu po spuštění. Použití `executionContext="limited"` znamená, že úloha po spuštění má stejnou úroveň oprávnění jako role. Použití `executionContext="elevated"` znamená, že úloha po spuštění má oprávnění správce, což umožňuje, aby úloha po spuštění prováděla úlohy správce bez udělení oprávnění správce vaší roli.
 
-Příkladem úlohy po spuštění, která vyžaduje zvýšená oprávnění, je úloha po spuštění, která používá nástroj **Appcmd. exe** ke konfiguraci služby IIS. Soubor **Appcmd. exe** vyžaduje `executionContext="elevated"`.
+Příkladem úlohy po spuštění, která vyžaduje zvýšená oprávnění, je úloha po spuštění, která používá nástroj **Appcmd. exe** ke konfiguraci služby IIS. Soubor **Appcmd. exe** vyžaduje `executionContext="elevated"` .
 
 ### <a name="use-the-appropriate-tasktype"></a>Použijte odpovídající taskType
 Atribut [taskType][úlohy] taskType určuje způsob, jakým je spouštěn úkol při spuštění. Existují tři hodnoty: **jednoduché**, **pozadí**a **popředí**. Úlohy na pozadí a na popředí jsou spouštěny asynchronně a jednoduché úkoly jsou spouštěny synchronně po jednom.
@@ -478,12 +478,12 @@ Pomocí **jednoduchých** úloh po spuštění můžete nastavit pořadí, ve kt
 Rozdíl mezi úlohami při spuštění na **pozadí** a úlohami spouštěnými v **popředí** je, že úlohy na **popředí** udržují roli spuštěnou až do ukončení úlohy na **popředí** . To také znamená, že pokud úloha na **popředí** přestane reagovat nebo dojde k selhání, nebude role recyklovat, dokud není úloha na **popředí** vynucena zavřena. Z tohoto důvodu se doporučuje úlohy na **pozadí** pro asynchronní úlohy po spuštění, pokud tuto funkci úlohy na **popředí** nepotřebujete.
 
 ### <a name="end-batch-files-with-exit-b-0"></a>Ukončit dávkové soubory s UKONČENÍm/B 0
-Role se spustí jenom v případě, že se hodnota **errorlevel** z každého jednoduchého spouštěcího úkolu rovná nule. Ne všechny programy nastavily správně **errorlevel** (ukončovací kód), takže dávkový soubor by měl končit na `EXIT /B 0` , pokud všechno běželo správně.
+Role se spustí jenom v případě, že se hodnota **errorlevel** z každého jednoduchého spouštěcího úkolu rovná nule. Ne všechny programy nastavily správně **errorlevel** (ukončovací kód), takže dávkový soubor by měl končit na, `EXIT /B 0` Pokud všechno běželo správně.
 
 Chybějící `EXIT /B 0` na konci spouštěcího dávkového souboru je běžnou příčinou rolí, které se nespouštějí.
 
 > [!NOTE]
-> Zjistili jsme, že vnořené dávkové soubory někdy při použití `/B` parametru zamrzne. Možná budete chtít mít jistotu, že tento problém se zachováním neproběhne, když jiný dávkový soubor zavolá aktuální dávkový soubor, jako kdybyste použili [obálku protokolu](#always-log-startup-activities). V tomto případě můžete `/B` parametr vynechat.
+> Zjistili jsme, že vnořené dávkové soubory někdy při použití parametru přestanou reagovat `/B` . Možná budete chtít zajistit, aby k tomuto problému nedocházelo, pokud jiný dávkový soubor volá aktuální dávkový soubor, jako kdybyste použili [obálku protokolu](#always-log-startup-activities). `/B`V tomto případě můžete parametr vynechat.
 > 
 > 
 
@@ -512,6 +512,3 @@ Přečtěte si další informace o práci s [úkoly](cloud-services-startup-task
 [LocalStorage]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalStorage
 [LocalResources]: https://msdn.microsoft.com/library/azure/gg557552.aspx#LocalResources
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
-
-
-
