@@ -1,5 +1,5 @@
 ---
-title: Konfigurace spravované instance s veřejným koncovým bodem
+title: Konfigurace veřejného koncového bodu – spravovaná instance Azure SQL
 description: Zjistěte, jak nakonfigurovat veřejný koncový bod pro spravovanou instanci Azure SQL.
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto, carlrab
 ms.date: 05/07/2019
-ms.openlocfilehash: e11e8181ba17f9833cd4add7650ad9f81a158fd9
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: a6d4ea22d3b05b14ce0d3e63912ea8bb7a432e57
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118754"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310151"
 ---
 # <a name="configure-public-endpoint-in-azure-sql-managed-instance"></a>Konfigurace veřejného koncového bodu ve spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -94,11 +94,11 @@ Set-AzSqlInstance -PublicDataEndpointEnabled $false -force
 
 1. Vyberte kartu **příchozí pravidla zabezpečení** a **přidejte** pravidlo, které má vyšší prioritu než pravidlo **deny_all_inbound** s následujícím nastavením: </br> </br>
 
-    |Nastavení  |Navrhovaná hodnota  |Description  |
+    |Nastavení  |Navrhovaná hodnota  |Popis  |
     |---------|---------|---------|
     |**Zdroj**     |Jakákoli IP adresa nebo značka služby         |<ul><li>U služeb Azure, jako je Power BI, vyberte značku cloudová služba Azure.</li> <li>Pro váš počítač nebo virtuální počítač Azure použijte IP adresu překladu adres (NAT).</li></ul> |
     |**Rozsahy zdrojových portů**     |* |Nechte to * (any), protože zdrojové porty se obvykle dynamicky přiřazují a jako nepředvídatelné. |
-    |**Tabulka**     |Všechny         |Ponechání cíle jako pro povolení provozu do podsítě spravované instance |
+    |**Cíl**     |Všechny         |Ponechání cíle jako pro povolení provozu do podsítě spravované instance |
     |**Rozsahy cílových portů**     |3342         |Rozsah cílového portu na 3342, který je veřejným koncovým bodem spravované instance TDS |
     |**Protocol (Protokol)**     |TCP         |Spravovaná instance SQL používá protokol TCP pro TDS. |
     |**Akce**     |Povolit         |Povolit příchozí provoz do spravované instance prostřednictvím veřejného koncového bodu |

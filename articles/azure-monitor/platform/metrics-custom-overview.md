@@ -5,14 +5,14 @@ author: ancav
 ms.author: ancav
 services: azure-monitor
 ms.topic: conceptual
-ms.date: 04/23/2020
+ms.date: 06/01/2020
 ms.subservice: metrics
-ms.openlocfilehash: b2d2d14f89fa25bba1a19538c758aa0c930b3964
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2aca113e21d759416580c8876ec2092762893da5
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018527"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299821"
 ---
 # <a name="custom-metrics-in-azure-monitor-preview"></a>Vlastní metriky v Azure Monitor (Preview)
 
@@ -30,9 +30,9 @@ Vlastní metriky je možné odesílat Azure Monitor prostřednictvím několika 
 - Nainstalujte na virtuální počítač Azure Linux [agenta InfluxData telegraf](collect-custom-metrics-linux-telegraf.md) a odešlete metriky pomocí modulu plug-in Azure monitor Output.
 - Odešlete vlastní metriky [přímo do Azure Monitor REST API](../../azure-monitor/platform/metrics-store-custom-rest-api.md), `https://<azureregion>.monitoring.azure.com/<AzureResourceID>/metrics` .
 
-## <a name="pricing-model-and-rentention"></a>Cenový model a uchovávání
+## <a name="pricing-model-and-retention"></a>Cenový model a uchování
 
-Podrobnosti o tom, kdy se má povolit pro dotazy na vlastní metriky a metriky, najdete na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) . Konkrétní podrobnosti o ceně pro všechny metriky, včetně vlastních metrik a dotazů metrik, jsou na této stránce k dispozici. V souhrnu se neúčtují žádné náklady na ingestování standardní metriky (metriky platforem) do úložiště metriky Azure Monitor, ale vlastní metriky budou při zadávání obecné dostupnosti účtovány náklady. Dotazy rozhraní API metriky se účtují náklady.
+Podrobnosti o tom, kdy se má povolit pro dotazy na vlastní metriky a metriky, najdete na [stránce s cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) . Konkrétní podrobnosti o ceně pro všechny metriky, včetně vlastních metrik a dotazů metrik, jsou na této stránce k dispozici. V souhrnu se neúčtují žádné náklady na ingestování standardní metriky (metriky platforem) do úložiště metrik Azure Monitor, ale při zadávání obecné dostupnosti budou mít vlastní metriky náklady. V dotazech rozhraní API metriky se účtují náklady.
 
 Vlastní metriky se uchovávají po [stejnou dobu jako metriky platforem](data-platform-metrics.md#retention-of-metrics). 
 
@@ -78,7 +78,7 @@ Obory názvů představují způsob kategorizace nebo seskupení podobných metr
 **Název** je název metriky, která je hlášena. Obvykle je název dostatečně popisný, aby mohl lépe identifikovat, co je měřené. Příkladem je metrika, která měří počet bajtů paměti použitých na daném virtuálním počítači. Může mít název metriky, například **používané paměťové bajty**.
 
 ### <a name="dimension-keys"></a>Klíče dimenzí
-Dimenze je dvojice klíč-hodnota, která pomáhá popsat další charakteristiky shromažďované metriky. Pomocí dalších charakteristik můžete shromažďovat další informace o této metrikě, což umožňuje získat hlubší přehledy. Například metrika **paměti při použití** může mít klíč dimenze s názvem **proces** , který zachycuje počet bajtů paměti, které každý proces na virtuálním počítači spotřebovává. Pomocí tohoto klíče můžete vyfiltrovat metriku a zjistit, kolik procesů konkrétní paměti využívá nebo k identifikaci horních pěti procesů podle využití paměti.
+Dimenze je dvojice klíč-hodnota, která pomáhá popsat další charakteristiky shromažďované metriky. Pomocí dalších charakteristik můžete shromažďovat další informace o této metrikě, což umožňuje získat hlubší přehledy. Například metrika **paměti při použití** může mít klíč dimenze s názvem **proces** , který zachycuje počet bajtů paměti, které každý proces na virtuálním počítači spotřebovává. Pomocí tohoto klíče můžete vyfiltrovat metriku a zjistit, kolik procesů specifických pro paměť využívá nebo k identifikaci horních pěti procesů podle využití paměti.
 Dimenze jsou volitelné, ne všechny metriky mohou mít rozměry. Vlastní metrika může mít až 10 dimenzí.
 
 ### <a name="dimension-values"></a>Hodnoty dimenzí
@@ -196,7 +196,8 @@ Ve verzi Public Preview je možnost publikovat vlastní metriky k dispozici pouz
 |USA – střed      | https: \/ /centralus.Monitoring.Azure.com |
 |Střední Kanada | https: \/ /canadacentral.Monitoring.Azure.comc
 |USA – východ| https: \/ /eastus.Monitoring.Azure.com/ |
-| **Evropa** | |
+|USA – východ 2 | https: \/ /eastus2.Monitoring.Azure.com/
+| **Europe** | |
 |Severní Evropa    | https: \/ /northeurope.Monitoring.Azure.com/ |
 |Západní Evropa     | https: \/ /westeurope.Monitoring.Azure.com/ |
 |Spojené království – jih | https: \/ /uksouth.Monitoring.Azure.com

@@ -181,7 +181,7 @@ Pokus o odstranění skupiny synchronizace se nezdaří. Při odstranění skupi
     d. Pravým tlačítkem myši klikněte na službu **synchronizace dat SQL** .  
     e. Pokud je služba spuštěná, zastavte ji.  
     f. Pravým tlačítkem myši klikněte na službu a pak vyberte **Spustit**.  
-    g. Ověřte, zda je databáze stále registrována. Pokud už není zaregistrované, budete hotovi. V opačném případě pokračujte dalším krokem.
+    například Ověřte, zda je databáze stále registrována. Pokud už není zaregistrované, budete hotovi. V opačném případě pokračujte dalším krokem.
   1. Otevřete aplikaci agenta klienta (SqlAzureDataSyncAgent).
   1. Vyberte **Upravit přihlašovací údaje**a potom zadejte přihlašovací údaje pro databázi.
   1. Pokračujte v zrušení registrace.

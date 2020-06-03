@@ -11,15 +11,15 @@ ms.service: virtual-machines
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/12/2020
+ms.date: 06/01/2020
 ms.author: borisb
 ms.custom: ''
-ms.openlocfilehash: 077fd70f0908dcef3af0c1e037fe137d636a4ac4
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 9fc14a6a8211308ef9f1cd98cd4b831070a99e22
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660558"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84299872"
 ---
 # <a name="oracle-application-solutions-integrating-microsoft-azure-and-oracle-cloud-infrastructure"></a>Řešení aplikací Oracle integrující Microsoft Azure a Oracle cloudovou infrastrukturu
 
@@ -35,10 +35,7 @@ Pokud vás zajímá nasazení řešení Oracle výhradně do infrastruktury Azur
 
 Připojení mezi cloudy poskytuje řešení pro spouštění špičkových aplikací od Oracle a vašich vlastních aplikací na virtuálních počítačích Azure a současně přináší výhody hostovaných databázových služeb v rozhraní OCI. 
 
-> [!IMPORTANT]
-> Oracle tyto aplikace osvědčí, aby běžely v Azure při použití řešení Cloud Interconnect Azure/Oracle od května 2020.
-
-Mezi aplikace, které můžete spustit v konfiguraci mezi cloudy patří:
+Od května 2020 jsou v konfiguraci mezi cloudy certifikovány následující aplikace:
 
 * Sada E-Business
 * ŘEŠENÍ JD Edwards EnterpriseOne

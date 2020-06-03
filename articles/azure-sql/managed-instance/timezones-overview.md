@@ -1,5 +1,5 @@
 ---
-title: Časová pásma spravované instance
+title: Časová pásma spravované instance Azure SQL
 description: Další informace o konkrétních časových pásmech spravované instance Azure SQL
 services: sql-database
 ms.service: sql-database
@@ -10,12 +10,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: ef8572f03ddb3df8dae5f823c2d8d6d12f3e1a31
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: df4d91cf6dffaeb9309c5304382b415f7adde8b5
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046814"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309658"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Časová pásma ve spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -25,7 +25,7 @@ Koordinovaný světový čas (UTC) je doporučeným časovým pásmem pro datovo
 Funkce T-SQL, jako je [GETDATE ()](/sql/t-sql/functions/getdate-transact-sql) nebo CLR Code, sledují časové pásmo nastavené na úrovni instance. Úlohy agenta SQL Server sledují také plány podle časového pásma instance.
 
   > [!NOTE]
-  > Azure SQL Database nepodporuje nastavení časového pásma. vždy se řídí časem UTC. Použijte v [časovém pásmu](/sql/t-sql/queries/at-time-zone-transact-sql) v DATABÁZÍch SQL, pokud potřebujete interpretovat informace o datu a času v časovém pásmu, které není UTC.
+  > Azure SQL Database nepodporuje nastavení časového pásma. vždy se řídí časem UTC. Použijte v [časovém pásmu](/sql/t-sql/queries/at-time-zone-transact-sql) v SQL Database, pokud potřebujete interpretovat informace o datu a čase v časovém pásmu UTC.
 
 ## <a name="supported-time-zones"></a>Podporovaná časová pásma
 
