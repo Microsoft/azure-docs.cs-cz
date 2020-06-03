@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: d68a3b1291d2e001c535a0c5a6b0c754c9d2b2e1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7901f12763cb97fa76c0908e76755247ae934a20
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021343"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300585"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Kurz: vytvoření projektu Unity od začátku
 
@@ -31,7 +31,10 @@ Pro tento kurz potřebujete:
 
 * Informace o vašem účtu (ID účtu, klíč účtu, ID předplatného). Pokud účet nemáte, [vytvořte účet](../../how-tos/create-an-account.md).
 * Windows SDK 10.0.18362.0 [(Stáhnout)](https://developer.microsoft.com/windows/downloads/windows-10-sdk)
-* Nejnovější verzi sady Visual Studio 2019 [(Stáhnout)](https://visualstudio.microsoft.com/vs/older-downloads/)
+* Nejnovější verzi sady Visual Studio 2019 [(Stáhnout)](https://visualstudio.microsoft.com/vs/older-downloads/). 
+* [Visual Studio Tools pro Mixed reality](https://docs.microsoft.com/windows/mixed-reality/install-the-tools). Konkrétně jsou nutné následující instalace *úloh* :
+  * **Vývoj desktopových aplikací v C++**
+  * **Vývoj Univerzální platforma Windows (UWP)**
 * GIT [(Stáhnout)](https://git-scm.com/downloads)
 * Unity 2019.3.1 [(Stáhnout)](https://unity3d.com/get-unity/download)
   * Nainstalujte tyto moduly v Unity:

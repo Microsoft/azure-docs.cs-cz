@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5d947cf41e13abdea9a2fd29f8a740d0c101dc6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9e905e78a835c833abe415d8b76c09ce672f849c
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80397914"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300110"
 ---
 # <a name="workflow-automation"></a>Automatizace pracovních postupů
 
@@ -25,15 +25,25 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 > Pokud jste dříve použili zobrazení Playbooky (Preview) na bočním panelu, najdete stejné funkce společně s rozšířenými funkcemi na stránce Nová automatizace pracovního postupu.
 
 
-## <a name="requirements"></a>Požadavky
 
-* Pokud chcete pracovat s Azure Logic Apps pracovními postupy, musíte mít následující Logic Apps role/oprávnění:
+## <a name="availability"></a>Dostupnost
 
-    * Jsou vyžadována oprávnění [operátora aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) nebo přístup pro čtení/aktivaci aplikace logiky (Tato role nemůže vytvářet ani upravovat aplikace logiky. *spouštějte* pouze existující)
+- Stav verze: **všeobecně dostupné**
+- Požadované role a oprávnění:
+    - **Čtenář** v předplatném, který obsahuje konfiguraci exportu
+    - **Role správce zabezpečení** ve skupině prostředků (nebo **vlastníkovi**)
+    - Musí mít taky oprávnění k zápisu pro cílový prostředek.
+    - Aby bylo možné pracovat s Azure Logic Apps pracovními postupy, musíte mít následující Logic Apps role/oprávnění:
 
-    * Pro vytváření a úpravu aplikace logiky se vyžadují oprávnění [Přispěvatel aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) .
+        * Jsou vyžadována oprávnění [operátora aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-operator) nebo přístup pro čtení/aktivaci aplikace logiky (Tato role nemůže vytvářet ani upravovat aplikace logiky. *spouštějte* pouze existující)
 
-* Pokud chcete používat konektory aplikací logiky, budete možná potřebovat další přihlašovací údaje pro přihlášení ke svým příslušným službám (například k instancím aplikace Outlook/Teams nebo časové rezervy).
+        * Pro vytváření a úpravu aplikace logiky se vyžadují oprávnění [Přispěvatel aplikace logiky](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#logic-app-contributor) .
+
+        * Pokud chcete používat konektory aplikací logiky, budete možná potřebovat další přihlašovací údaje pro přihlášení ke svým příslušným službám (například k instancím aplikace Outlook/Teams nebo časové rezervy).
+- Cloud 
+    - ✔ Komerční cloudy
+    - ✔ US Gov
+    - ✘ Čínština gov, ostatní gov
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Vytvoření aplikace logiky a definování jejího automatického spuštění 
@@ -77,7 +87,7 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 
 1. Po definování aplikace logiky se vraťte do podokna definice automatizace pracovního postupu (přidat automatizaci pracovního postupu). Kliknutím na **aktualizovat** zajistěte, aby byla nová aplikace logiky dostupná pro výběr.
 
-    ![Obnovení](media/workflow-automation/refresh-the-list-of-logic-apps.png)
+    ![Aktualizovat](media/workflow-automation/refresh-the-list-of-logic-apps.png)
 
 1. Vyberte svou aplikaci logiky a uložte automatizaci. Všimněte si, že v rozevírací nabídce aplikace logiky se zobrazí pouze Logic Apps s podpůrnými Security Center konektory uvedenými výše.
 

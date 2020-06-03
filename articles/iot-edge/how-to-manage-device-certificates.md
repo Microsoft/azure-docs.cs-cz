@@ -4,16 +4,16 @@ description: Vytvářejte testovací certifikáty, nainstalujte je a spravujte j
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 03/02/2020
+ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c18c3d560adb3c3cae54bda808ee5842c260fd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b13944e30c339357997fbc5f0919e5eb8485a0a9
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79539205"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308774"
 ---
 # <a name="manage-certificates-on-an-iot-edge-device"></a>Správa certifikátů na zařízení IoT Edge
 
@@ -23,10 +23,10 @@ Všechna IoT Edge zařízení používají certifikáty k vytváření zabezpeč
 
 Když poprvé nainstalujete IoT Edge a zřídíte zařízení, zařízení se nastaví s dočasnými certifikáty, abyste mohli službu otestovat.
 Platnost těchto dočasných certifikátů vyprší za 90 dní nebo se dá resetovat restartováním počítače.
-Jakmile budete připraveni přesunout vaše zařízení do produkčního scénáře nebo chcete vytvořit scénář brány, musíte zadat vlastní certifikáty.
+Až přejdete do produkčního scénáře nebo chcete vytvořit zařízení brány, musíte zadat vlastní certifikáty.
 Tento článek popisuje kroky pro instalaci certifikátů do zařízení IoT Edge.
 
-Další informace o různých typech certifikátů a jejich rolích ve IoT Edge scénáři najdete v tématu [Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty](iot-edge-certs.md).
+Další informace o různých typech certifikátů a jejich rolích najdete v tématu [Vysvětlení způsobu, jakým Azure IoT Edge používá certifikáty](iot-edge-certs.md).
 
 >[!NOTE]
 >Pojem "Kořenová CA", který se používá v celém tomto článku, odkazuje na veřejný certifikát certifikační autority pro vaše řešení IoT. Nemusíte používat kořen certifikátu pro neoprávněnou certifikační autoritu nebo kořen certifikační autority vaší organizace. V mnoha případech je ve skutečnosti veřejný certifikát zprostředkující certifikační autority.
@@ -69,24 +69,24 @@ Pokud jste například použili ukázkové skripty k [Vytvoření ukázkových c
    * Systému`C:\ProgramData\iotedge\config.yaml`
    * Linux`/etc/iotedge/config.yaml`
 
-1. Nastavte vlastnosti **certifikátu** v souboru config. yaml na úplnou cestu k certifikátu a souborům klíčů na zařízení IoT Edge. Odeberte `#` znak předtím, než vlastnosti certifikátu Odkomentujte čtyři řádky. Ujistěte se, že **certifikáty:** řádek neobsahuje žádné předchozí prázdné znaky a že vnořené položky jsou odsazeny o dva mezery. Příklad:
+1. V souboru config. yaml nastavte vlastnosti **certifikátu** na cestu k identifikátoru URI souboru certifikátu a souborů klíčů na zařízení IoT Edge. Odeberte `#` znak předtím, než vlastnosti certifikátu Odkomentujte čtyři řádky. Ujistěte se, že **certifikáty:** řádek neobsahuje žádné předchozí prázdné znaky a že vnořené položky jsou odsazeny o dva mezery. Například:
 
    * Windows:
 
       ```yaml
       certificates:
-        device_ca_cert: "c:\\<path>\\device-ca.cert.pem"
-        device_ca_pk: "c:\\<path>\\device-ca.key.pem"
-        trusted_ca_certs: "c:\\<path>\\root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///C:/<path>/<device CA cert>"
+        device_ca_pk: "file:///C:/<path>/<device CA key>"
+        trusted_ca_certs: "file:///C:/<path>/<root CA cert>"
       ```
 
    * Linux:
 
       ```yaml
       certificates:
-        device_ca_cert: "<path>/device-ca.cert.pem"
-        device_ca_pk: "<path>/device-ca.key.pem"
-        trusted_ca_certs: "<path>/root-ca.root.ca.cert.pem"
+        device_ca_cert: "file:///<path>/<device CA cert>"
+        device_ca_pk: "file:///<path>/<device CA key>"
+        trusted_ca_certs: "file:///<path>/<root CA cert>"
       ```
 
 1. V zařízeních se systémem Linux se ujistěte, že uživatel **iotedge** má oprávnění ke čtení pro adresář, který obsahuje certifikáty.

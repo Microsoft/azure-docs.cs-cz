@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 05/21/2020
 ms.author: apimpm
 ms.custom: references_regions
-ms.openlocfilehash: 016a907e3e660ca6da9dc637b2c9c844b7077b84
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f7a036a382ac3b16093529a67abe9ef78b897274
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193971"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300066"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Použití služby Azure API Management s virtuálními sítěmi
 Virtuální sítě Azure umožňují umístit jakékoli prostředky Azure do jiné než internetové sítě podporující směrování, ke které můžete řídit přístup. Tyto sítě je pak možné připojit k místním sítím pomocí různých technologií VPN. Další informace o virtuálních sítích Azure najdete tady: [Přehled Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -139,7 +139,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Veřejný partnerský vztah Azure      | <ul><li>gcs.prod.monitoring.core.windows.net (**nové**)</li><li>prod.warmpath.msftcloudes.com (**bude zastaralé**)</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>global.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.microsoftmetrics.com (**nové**)</li><li>prod3-black.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-red.prod.microsoftmetrics.com (**nové**)</li><li>prod3-red.prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>gcs.prod.warm.ingestion.monitoring.azure.com</li></ul> |
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>global.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.us</li></ul>                                                                                                                                                                                                                                                |
-    | Azure China 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>global.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
+    | Azure (Čína) 21Vianet     | <ul><li>mooncake.warmpath.chinacloudapi.cn</li><li>global.prod.microsoftmetrics.com (**nové**)</li><li>global.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2.prod.microsoftmetrics.com (**nové**)</li><li>shoebox2.metrics.nsatc.net (**bude zastaralé**)</li><li>shoebox2-red.prod.microsoftmetrics.com</li><li>shoebox2-black.prod.microsoftmetrics.com</li><li>shoebox2-red.shoebox2.metrics.nsatc.net</li><li>shoebox2-black.shoebox2.metrics.nsatc.net</li><li>prod3.prod.microsoftmetrics.com (**nové**)</li><li>prod3.metrics.nsatc.net (**bude zastaralé**)</li><li>prod3-black.prod.microsoftmetrics.com</li><li>prod3-red.prod.microsoftmetrics.com</li><li>prod5.prod.microsoftmetrics.com</li><li>prod5-black.prod.microsoftmetrics.com</li><li>prod5-red.prod.microsoftmetrics.com</li><li>gcs.prod.warm.ingestion.monitoring.azure.cn</li></ul>                                                                                                                                                                                                                                                |
 
   >[!IMPORTANT]
   > Změna clusterů výše se zónou DNS **. nsatc.NET** na **. Microsoftmetrics.com** je většinou změnou DNS. IP adresa clusteru se nezmění.
@@ -166,7 +166,7 @@ Následuje seznam běžných potíží s chybou konfigurace, ke kterým může d
       - Předávání SMTP
       - Portál pro vývojáře CAPTCHA
 
-## <a name="troubleshooting"></a><a name="troubleshooting"> </a>Odstraňování potíží
+## <a name="troubleshooting"></a><a name="troubleshooting"> </a>Řešení potíží
 * **Počáteční nastavení**: když počáteční nasazení služby API Management do podsítě neproběhne úspěšně, doporučuje se nejdřív nasadit virtuální počítač do stejné podsítě. Další Vzdálená plocha na virtuální počítač a ověřte, že existuje připojení k jednomu z prostředků níže v předplatném Azure.
     * Azure Storage objekt BLOB
     * Azure SQL Database
@@ -250,12 +250,12 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Veřejný partnerský vztah Azure| Německo – sever| 51.116.0.0|
 | Veřejný partnerský vztah Azure| Norsko – východ| 51.120.2.185|
 | Veřejný partnerský vztah Azure| Norsko – západ| 51.120.130.134|
-| Azure China 21Vianet| Čína – sever (globální)| 139.217.51.16|
-| Azure China 21Vianet| Čína – východ (globální)| 139.217.171.176|
-| Azure China 21Vianet| Čína – sever| 40.125.137.220|
-| Azure China 21Vianet| Čína – východ| 40.126.120.30|
-| Azure China 21Vianet| Čína – sever 2| 40.73.41.178|
-| Azure China 21Vianet| Čína – východ 2| 40.73.104.4|
+| Azure (Čína) 21Vianet| Čína – sever (globální)| 139.217.51.16|
+| Azure (Čína) 21Vianet| Čína – východ (globální)| 139.217.171.176|
+| Azure (Čína) 21Vianet| Čína – sever| 40.125.137.220|
+| Azure (Čína) 21Vianet| Čína – východ| 40.126.120.30|
+| Azure (Čína) 21Vianet| Čína – sever 2| 40.73.41.178|
+| Azure (Čína) 21Vianet| Čína – východ 2| 40.73.104.4|
 | Azure Government| USGov) – Virginia (globální)| 52.127.42.160|
 | Azure Government| USGov Texas (Global)| 52.127.34.192|
 | Azure Government| USGov Virginie| 52.227.222.92|
@@ -266,7 +266,7 @@ IP adresy se dělí **prostředím Azure**. Pokud je povolená IP adresa přích
 | Azure Government| USDoD východ| 52.181.32.192|
 
 ## <a name="related-content"></a><a name="related-content"> </a>Související obsah
-* [Připojení Virtual Network k back-endu pomocí služby VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md#s2smulti)
+* [Připojení Virtual Network k back-endu pomocí služby VPN Gateway](../vpn-gateway/design.md#s2smulti)
 * [Připojení Virtual Network z různých modelů nasazení](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Jak používat inspektora rozhraní API k trasování volání v Azure API Management](api-management-howto-api-inspector.md)
 * [Virtual Network nejčastějších dotazech](../virtual-network/virtual-networks-faq.md)

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.reviewer: sngun
-ms.openlocfilehash: d7028018501c5e6580d7345938a739ccc983ff48
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b1ad7b44b34b678eac3348ba3b3ec54fcc508fcf
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83873258"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310661"
 ---
 # <a name="migrate-your-application-to-use-the-azure-cosmos-db-java-sdk-v4"></a>Migrace aplikace na používání sady Azure Cosmos DB Java SDK v4
 
@@ -30,7 +30,7 @@ Tento článek vysvětluje, jak upgradovat stávající aplikaci Java, která po
 
 V následující tabulce jsou uvedeny různé Azure Cosmos DB Java SDK, název balíčku a informace o verzi:
 
-| Java SDK| Datum vydání | Sada rozhraní API   | Maven jar  | Název balíčku Java  |Referenční materiály k rozhraní API   | Poznámky k verzi  |
+| Java SDK| Datum vydání | Sada rozhraní API   | Maven jar  | Název balíčku Java  |Referenční materiály k rozhraní API   | Zpráva k vydání verze  |
 |-------|------|-----------|-----------|--------------|-------------|---------------------------|
 | Async 2. x. x  | Červen 2018    | Asynchronní (RxJava)  | `com.microsoft.azure::azure-cosmosdb` | `com.microsoft.azure.cosmosdb.rx` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Zpráva k vydání verze](sql-api-sdk-async-java.md) |
 | Synchronizace 2. x. x     | Září 2018    | Sync   | `com.microsoft.azure::azure-documentdb` | `com.microsoft.azure.cosmosdb` | [Rozhraní API](https://azure.github.io/azure-cosmosdb-java/2.0.0/) | [Zpráva k vydání verze](sql-api-sdk-java.md)  |
@@ -148,7 +148,7 @@ client.createDatabaseIfNotExists("YourDatabaseName")
 # <a name="java-sdk-3xx-async-api"></a>[Rozhraní Java SDK 3. x. x Async API](#tab/java-v3-async)
 
 ```java
-ConnectionPolicy defaultPolicy = ConnectionPolicy.defaultPo"ic"();
+ConnectionPolicy defaultPolicy = ConnectionPolicy.defaultPolicy();
 //  Setting the preferred location to Cosmos DB Account region
 defaultPolicy.preferredLocations(Lists.newArrayList("Your Account Location"));
 
