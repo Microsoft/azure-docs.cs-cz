@@ -7,19 +7,28 @@ ms.topic: include
 ms.date: 03/04/2019
 ms.author: antchu
 ms.custom: include file
-ms.openlocfilehash: 73d4d4e1a5f148dce6099b2d747ee1c290bcf7c1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 2af9c1dfd13d3aeafa7cf1ac76537117ecc15aff
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67175378"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84317642"
 ---
 ## <a name="run-the-web-application"></a>Spuštění webové aplikace
 
-1. Abychom vám to usnadnili, je v GitHubu hostovaná ukázková jednostránková webová aplikace. Otevřete prohlížeč na [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/).
+1. Chcete-li zjednodušit testování klientů, otevřete prohlížeč v naší ukázkové webové aplikaci s jednou stránkou [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/) . 
 
     > [!NOTE]
-    > Zdroj souboru HTML je umístěný na [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html).
+    > Zdroj souboru HTML je umístěný na [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html). A pokud chcete kód HTML hostovat sami, spusťte prosím v adresáři */docs/demo/chat-v2* místní server http, například [http-Server](https://www.npmjs.com/package/http-server) . Zajistěte, aby byl počátek přidán do `CORS` nastavení v souboru *Local. Settings. JSON* , který je podobný ukázce.
+    > 
+    > ```javascript
+    > "Host": {
+    >  "LocalHttpPort": 7071,
+    >  "CORS": "http://localhost:8080,https://azure-samples.github.io",
+    >  "CORSCredentials": true
+    > }
+    >
+    > ```
 
 1. Když se zobrazí výzva k zadání základní adresy URL aplikace funkcí, zadejte `http://localhost:7071`.
 
@@ -32,6 +41,3 @@ ms.locfileid: "67175378"
     ![Spuštění aplikace](../media/signalr-quickstart-azure-functions-csharp/signalr-quickstart-run-application.png)
 
 1. Otevřete další instanci webové aplikace v jiném okně prohlížeče. Uvidíte, že všechny odeslané zprávy se zobrazují ve všech instancích aplikace.
-
-> [!IMPORTANT]
-> Vzhledem k tomu, že se stránka HTML obsluhuje pomocí protokolu HTTPS, ale místní Azure Functions modul runtime standardně používá protokol HTTP, může váš prohlížeč (například Firefox) vyhovět zásadám smíšeného obsahu, které blokují požadavky z webové stránky do vašich funkcí. Chcete-li tento problém vyřešit, použijte prohlížeč, který nemá toto omezení, nebo spusťte místní server HTTP, například [http-Server](https://www.npmjs.com/package/http-server) , v adresáři */docs/demo/chat-v2* . Zajistěte, aby byl počátek `CORS` přidán do nastavení v *Local. Settings. JSON*.

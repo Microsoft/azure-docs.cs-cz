@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/10/2019
 ms.author: mimckitt
-ms.openlocfilehash: 573bd0797e63fc512e59b0e0882c718e4569111c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e6a8fddc61e05bc2e354d77c9e56c55e354a45b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262889"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309828"
 ---
 # <a name="proactively-ensuring-you-have-access-to-grub-and-sysrq-could-save-you-lots-of-down-time"></a>Proaktivní zajištění přístupu k GRUB a SysRq vám může ušetřit spoustu času.
 
@@ -76,7 +76,7 @@ Ujistěte se, že máte přístup ke konzole sériového rozhraní Azure a GRUB 
 
 - Výměna disku – můžete automatizovat pomocí těchto akcí:
 
-   - [Skripty pro obnovení Power Shell](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
+   - [Skripty pro obnovení PowerShellu](https://github.com/Azure/azure-support-scripts/tree/master/VMRecovery/ResourceManager)
    - [Skripty pro obnovení bash](https://github.com/sribs/azure-support-scripts)
 
 - Legacy – metoda
@@ -98,7 +98,7 @@ V tomto článku si probereme různé distribuce systému Linux a konfigurace do
 Klíč SysRq je ve výchozím nastavení povolený u některých novějších distribuce systému Linux, i když u jiných může být nakonfigurovaný pro přijímání hodnot jenom pro určité funkce SysRq.
 Na starším distribuce může být zcela zakázán.
 
-Funkce SysRq je užitečná pro restartování chybných nebo nereagujících virtuálních počítačů přímo z konzole Azure Serial Console, a to i v části získání přístupu k nabídce GRUB, případně restartování virtuálního počítače z jiného okna portálu nebo relace SSH může odpojit vaše aktuální připojení konzoly, takže vypršení časových limitů GRUB, které se použijí k zobrazení nabídky GRUB.
+Funkce SysRq je užitečná pro restartování chybných nebo nereagujících virtuálních počítačů přímo z konzole Azure Serial Console, která je také užitečná při získávání přístupu do nabídky GRUB, nebo při restartování virtuálního počítače z jiného okna portálu nebo relace SSH může vyřadit aktuální připojení konzoly, čímž vyprší časový limit GRUB, který se použije k zobrazení nabídky GRUB.
 Virtuální počítač musí být nakonfigurovaný tak, aby pro parametr jádra přijímal hodnotu 1, která umožňuje všechny funkce SysRq nebo 128, což umožňuje restart/stavu PowerOff.
 
 
@@ -123,7 +123,7 @@ Pomocí funkce Azure Portal Operations-> spustit příkaz > RunShellScript vyža
 
 `sysctl -w kernel.sysrq=1 ; echo kernel.sysrq = 1 >> /etc/sysctl.conf`
 
-Jak je znázorněno ![zde: povolení sysrq2](./media/virtual-machines-serial-console/enabling-sysrq-2.png)
+Jak je znázorněno zde: ![ Povolení sysrq2](./media/virtual-machines-serial-console/enabling-sysrq-2.png)
 
 Po dokončení se můžete pokusit o přístup k **SysRq** a měli byste vidět, že je možné restartovat počítač.
 
@@ -173,7 +173,7 @@ GRUB_TIMEOUT_STYLE=countdown
 ```
 
 
-## <a name="ubuntu-1204"></a>Ubuntu 12\.04
+## <a name="ubuntu-1204"></a>Ubuntu 12 \. 04
 
 Ubuntu 12,04 umožní přístup ke konzole sériového portu, ale nenabízí možnost pracovat. **Přihlášení:** výzva se nezobrazuje.
 
@@ -236,7 +236,7 @@ Pokud vše proběhne správně, uvidíte tyto další možnosti, které vám mů
 
 ## <a name="red-hat-grub-configuration"></a>Konfigurace Red Hat GRUB
 
-## <a name="red-hat-74-grub-configuration"></a>GRUB konfigurace Red\.Hat\+ 7 4
+## <a name="red-hat-74-grub-configuration"></a>GRUB konfigurace Red Hat 7 \. 4 \+
 Výchozí konfigurace/etc/default/grub na těchto verzích je vhodně nakonfigurovaná.
 
 ```
@@ -256,7 +256,7 @@ Povolit klíč SysRq
 sysctl -w kernel.sysrq=1;echo kernel.sysrq = 1 >> /etc/sysctl.conf;sysctl -a | grep -i sysrq
 ```
 
-## <a name="red-hat-72-and-73-grub-configuration"></a>GRUB konfigurace Red\.Hat 7 2\.a 7 3
+## <a name="red-hat-72-and-73-grub-configuration"></a>GRUB konfigurace Red Hat 7 \. 2 a 7 \. 3
 Soubor, který se má upravit, je/etc/default/grub – výchozí konfigurace vypadá jako v tomto příkladu:
 
 ```
@@ -320,8 +320,8 @@ Případně můžete konfigurovat GRUB a SysRq pomocí jednoho řádku buď v pr
 `cp /etc/default/grub /etc/default/grub.bak; sed -i 's/GRUB_TIMEOUT=1/GRUB_TIMEOUT=5/g' /etc/default/grub; sed -i 's/GRUB_TERMINAL_OUTPUT="console"/GRUB_TERMINAL="serial console"/g' /etc/default/grub; echo "GRUB_SERIAL_COMMAND=\"serial --speed=115200 --unit=0 --word=8 --parity=no --stop=1\"" >> /etc/default/grub;grub2-mkconfig -o /boot/grub2/grub.cfg;sysctl -w kernel.sysrq=1;echo kernel.sysrq = 1 /etc/sysctl.conf;sysctl -a | grep -i sysrq`
 
 
-## <a name="red-hat-6x-grub-configuration"></a>Konfigurace Red Hat\.6 x grub
-Soubor, který se má upravit, je/boot/grub/grub.conf.. `timeout` Hodnota určuje, jak dlouho se má grub zobrazovat.
+## <a name="red-hat-6x-grub-configuration"></a>Konfigurace Red Hat 6 \. x grub
+Soubor, který se má upravit, je/boot/grub/grub.conf.. `timeout`Hodnota určuje, jak dlouho se má grub zobrazovat.
 
 ```
 #boot=/dev/vda
