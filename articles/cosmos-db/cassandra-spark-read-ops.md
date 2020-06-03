@@ -2,20 +2,20 @@
 title: Čtení dat rozhraní API Cassandra tabulky pomocí Sparku
 titleSufix: Azure Cosmos DB
 description: Tento článek popisuje, jak číst data z rozhraní API Cassandra tabulky v Azure Cosmos DB.
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
-ms.date: 12/06/2018
+ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 01a9582062d8eb0d039473a03901fc83fe179020
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c01d9970de1ab610333c129505cef75dfcaa35b1
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60893385"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309713"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Čtení dat z Azure Cosmos DB rozhraní API Cassandra tabulek pomocí Sparku
 
@@ -83,7 +83,7 @@ readBooksDF.show
 
 ### <a name="apply-filters"></a>Použití filtrů
 
-V současné době se nepodporuje predikáty směrem dolů. následující ukázky odrážejí filtrování na straně klienta. 
+K zajištění lepších optimalizovaných dotazů Spark můžete do databáze přejít predikáty. Predikát je podmínka pro dotaz, který vrací hodnotu true nebo false, která se obvykle nachází v klauzuli WHERE. Predikát push dolů filtruje data v databázovém dotazu, snižuje počet položek načtených z databáze a zvyšuje výkon dotazů. Rozhraní API datové sady Spark standardně automaticky přeskočí platné klauzule WHERE do databáze. 
 
 ```scala
 val readBooksDF = spark
@@ -102,6 +102,10 @@ readBooksDF.printSchema
 readBooksDF.explain
 readBooksDF.show
 ```
+
+Část PushedFilters fyzického plánu zahrnuje filtr push GreaterThan. 
+
+![partitions](./media/cassandra-spark-read-ops/pushdown-predicates.png)
 
 ## <a name="rdd-api"></a>ROZHRANÍ API PRO RDD
 
@@ -142,6 +146,6 @@ Níže najdete další články o práci s Azure Cosmos DB rozhraní API Cassand
  
  * [Operace Upsert](cassandra-spark-upsert-ops.md)
  * [Operace odstranění](cassandra-spark-delete-ops.md)
- * [Agregační operace](cassandra-spark-aggregation-ops.md)
+ * [Operace agregace](cassandra-spark-aggregation-ops.md)
  * [Operace kopírování tabulky](cassandra-spark-table-copy-ops.md)
 

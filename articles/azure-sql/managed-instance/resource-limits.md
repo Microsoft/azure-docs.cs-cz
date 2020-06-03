@@ -1,7 +1,7 @@
 ---
 title: Omezení prostředků
 titleSuffix: Azure SQL Managed Instance
-description: Tento článek poskytuje přehled omezení prostředků pro spravované instance Azure SQL.
+description: Tento článek poskytuje přehled omezení prostředků pro spravovanou instanci Azure SQL.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,20 +12,20 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: 27b46a5511313e8ebc31618fe382e7108cdaa160
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b72195c818e418cfca9c88fe666b27b277aa7bda
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118654"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309097"
 ---
-# <a name="overview-azure-sql-managed-instance-resource-limits"></a>Přehled omezení prostředků spravované instance Azure SQL
+# <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Přehled omezení prostředků spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Tento článek poskytuje přehled technických charakteristik a omezení prostředků pro spravovanou instanci Azure SQL a poskytuje informace o tom, jak požádat o zvýšení těchto limitů.
 
 > [!NOTE]
-> Rozdíly v podporovaných funkcích a příkazech T-SQL najdete v tématu [rozdíly](../database/features-comparison.md) ve funkcích a [Podpora příkazů t-SQL](transact-sql-tsql-differences-sql-server.md). Obecné rozdíly mezi úrovněmi služeb pro SQL Database a spravované instance SQL najdete v tématu [porovnání úrovně služby](../database/service-tiers-general-purpose-business-critical.md#service-tier-comparison).
+> Rozdíly v podporovaných funkcích a příkazech T-SQL najdete v tématu [rozdíly](../database/features-comparison.md) ve funkcích a [Podpora příkazů t-SQL](transact-sql-tsql-differences-sql-server.md). Obecné rozdíly mezi úrovněmi služeb pro Azure SQL Database a spravované instance SQL najdete v tématu [porovnání úrovně služby](../database/service-tiers-general-purpose-business-critical.md#service-tier-comparison).
 
 ## <a name="hardware-generation-characteristics"></a>Charakteristiky generování hardwaru
 
@@ -40,8 +40,8 @@ SQL Managed instance má charakteristiky a omezení prostředků, které závis�
 | Maximální rezervované úložiště instancí |  Pro obecné účely: 8 TB<br/>Pro důležité obchodní informace: 1 TB | Pro obecné účely: 8 TB<br/> V závislosti na počtu jader Pro důležité obchodní informace 1 TB, 2 TB nebo 4 TB. |
 
 > [!IMPORTANT]
-> - COMPUTE GEN4 – hardware je vyladěný a již není pro nová nasazení k dispozici. Všechny nové spravované instance SQL musí být nasazené na Gen5 hardwaru.
-> - Zvažte [přesunutí spravovaných instancí SQL na hardware Gen 5](../database/service-tiers-vcore.md) a vyzkoušejte si širší škálu Vcore a škálovatelnosti úložiště, akcelerované síťové služby, nejlepší vstupně-výstupní výkon a minimální latenci.
+> - COMPUTE GEN4 – hardware je vyladěný a již není pro nová nasazení k dispozici. Všechny nové instance spravované instance SQL musí být nasazené na Gen5 hardwaru.
+> - Zvažte [přesunutí vaší instance spravované instance SQL na hardware s Gen 5](../database/service-tiers-vcore.md) a vyzkoušejte si širší škálu Vcore a škálovatelnosti úložiště, akcelerované síťové služby, nejlepší vstupně-výstupní výkon a minimální latenci.
 
 ### <a name="in-memory-oltp-available-space"></a>OLTP volné místo v paměti 
 
@@ -65,7 +65,7 @@ Služba SQL Managed instance má dvě úrovně služeb: [pro obecné účely](..
 > [!Important]
 > Úroveň služby Pro důležité obchodní informace Service poskytuje další integrovanou kopii spravované instance SQL (sekundární replika), kterou je možné použít pro úlohu určenou jen pro čtení. Pokud můžete oddělit dotazy pro čtení a zápis a dotazy jen pro čtení a analýzu nebo vytváření sestav, získáte dvojnásobek virtuální jádra a paměti za stejnou cenu. Sekundární replika může prodlevu pár sekund za primární instancí, aby bylo možné přesměrovat úlohy vytváření sestav a analýzy, které nepotřebují přesný aktuální stav dat. V následující tabulce jsou **dotazy jen pro čtení** . Jedná se o dotazy, které se spouštějí u sekundární repliky.
 
-| **Funkce** | **Pro obecné účely** | **Pro důležité obchodní informace** |
+| **Příznak** | **Pro obecné účely** | **Pro důležité obchodní informace** |
 | --- | --- | --- |
 | Počet virtuálních jader\* | COMPUTE GEN4 –: 8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | COMPUTE GEN4 –: 8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*Stejný počet virtuální jádra je vyhrazen pro dotazy jen pro čtení. |
 | Maximální velikost paměti | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore)<br/>Přidejte další virtuální jádra, abyste získali více paměti. | COMPUTE GEN4 –: 56 GB-168 GB (7GB/vCore)<br/>Gen5:20,4 GB-408 GB (5.1 GB/vCore) pro dotazy pro čtení i zápis<br/>+ dalších 20,4 GB až 408 GB (5.1 GB/vCore) pro dotazy jen pro čtení.<br/>Přidejte další virtuální jádra, abyste získali více paměti. |
@@ -111,7 +111,7 @@ U maximální propustnosti zápisu protokolu (což je 22 MB/s) je taky omezení 
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
-Spravované instance SQL lze vytvořit pouze v [podporovaných oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Pokud chcete vytvořit spravovanou instanci SQL v oblasti, která není aktuálně podporovaná, můžete [Odeslat žádost o podporu prostřednictvím Azure Portal](../database/quota-increase-request.md).
+Spravovanou instanci SQL lze vytvořit pouze v [podporovaných oblastech](https://azure.microsoft.com/global-infrastructure/services/?products=sql-database&regions=all). Pokud chcete vytvořit spravovanou instanci SQL v oblasti, která není aktuálně podporovaná, můžete [Odeslat žádost o podporu prostřednictvím Azure Portal](../database/quota-increase-request.md).
 
 ## <a name="supported-subscription-types"></a>Podporované typy předplatného
 
@@ -128,11 +128,11 @@ Spravovaná instance SQL aktuálně podporuje nasazení pouze u následujících
 
 Podporované typy předplatného můžou obsahovat omezený počet prostředků na oblast. SQL Managed instance má dvě výchozí omezení na každou oblast Azure (to se dá zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](../database/quota-increase-request.md) v závislosti na typu typu předplatného:
 
-- **Limit podsítě**: maximální počet podsítí, ve kterých jsou spravované instance SQL nasazené v jedné oblasti.
+- **Limit podsítě**: maximální počet podsítí, ve kterých jsou instance spravované instance SQL nasazeny v jedné oblasti.
 - **limit jednotky Vcore**: maximální počet jednotek Vcore, které se dají nasadit napříč všemi instancemi v jedné oblasti. Jedna vCorea GP používá jednu vCore jednotku a jedna BC vCore přijímá 4 jednotky vCore. Celkový počet instancí není omezený, pokud se nachází v rámci limitu vCore jednotek.
 
 > [!Note]
-> Tato omezení představují výchozí nastavení a nejedná se o technická omezení. Omezení lze zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](../database/quota-increase-request.md) , pokud v aktuální oblasti potřebujete více spravovaných instancí SQL. Jako alternativu můžete vytvořit nové spravované instance SQL v jiné oblasti Azure bez nutnosti odesílat žádosti o podporu.
+> Tato omezení představují výchozí nastavení a nejedná se o technická omezení. Omezení se dají zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](../database/quota-increase-request.md) , pokud v aktuální oblasti potřebujete víc instancí. Jako alternativu můžete vytvořit nové instance spravované instance SQL v jiné oblasti Azure bez nutnosti odesílat žádosti o podporu.
 
 Následující tabulka ukazuje **výchozí regionální omezení** pro podporované typy předplatného (pomocí žádosti o podporu popsanou níže můžete rozšířit výchozí omezení):
 
@@ -146,13 +146,13 @@ Následující tabulka ukazuje **výchozí regionální omezení** pro podporova
 |Visual Studio Enterprise|2 |64|
 |Visual Studio Professional a MSDN Platforms|2|32|
 
-\*Při plánování nasazení Vezměte v úvahu, že úroveň služby Pro důležité obchodní informace (BC) vyžaduje čtyři (4) větší kapacitu vCore než úroveň služby Pro obecné účely (GP). Příklad: 1 GP vCore = 1 vCore jednotka a 1 BC vCore = 4 jednotky vCore. Abyste zjednodušili analýzu spotřeby proti výchozím omezením, Shrňte jednotky vCore ve všech podsítích v oblasti, ve které jsou nasazené spravované instance SQL, a porovnejte výsledky s omezeními jednotky instance pro váš typ předplatného. **Maximální počet Vcore jednotek** se vztahuje na každé předplatné v oblasti. Pro jednotlivé podsítě neplatí žádné omezení s tím rozdílem, že součet všech virtuální jádra nasazených napříč více podsítěmi musí být nižší nebo roven **maximálnímu počtu Vcore jednotek**.
+\*Při plánování nasazení Vezměte v úvahu, že úroveň služby Pro důležité obchodní informace (BC) vyžaduje čtyři (4) větší kapacitu vCore než úroveň služby Pro obecné účely (GP). Příklad: 1 GP vCore = 1 vCore jednotka a 1 BC vCore = 4 jednotky vCore. Chcete-li zjednodušit analýzu spotřeby proti výchozím omezením, Shrňte jednotky vCore ve všech podsítích v oblasti, kde je nasazena spravovaná instance SQL, a porovnejte výsledky s omezeními jednotky instance pro váš typ předplatného. **Maximální počet Vcore jednotek** se vztahuje na každé předplatné v oblasti. Pro jednotlivé podsítě neplatí žádné omezení s tím rozdílem, že součet všech virtuální jádra nasazených napříč více podsítěmi musí být nižší nebo roven **maximálnímu počtu Vcore jednotek**.
 
 \*\*Větší podsíť a omezení vCore jsou k dispozici v následujících oblastech: Austrálie – východ, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Západní USA 2.
 
 ## <a name="request-a-quota-increase"></a>Požádat o zvýšení kvóty
 
-Pokud ve svých současných oblastech potřebujete více spravovaných instancí SQL, odešlete žádost o podporu, která tuto kvótu rozšiřuje pomocí Azure Portal. Další informace najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](../database/quota-increase-request.md).
+Pokud ve svých současných oblastech potřebujete víc instancí, pošlete žádost o podporu, která tuto kvótu rozšiřuje pomocí Azure Portal. Další informace najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](../database/quota-increase-request.md).
 
 ## <a name="next-steps"></a>Další kroky
 
