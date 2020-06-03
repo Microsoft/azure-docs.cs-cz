@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 04/16/2020
+ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: ada451b6bb3578a2903e9bd832b98981d7029d1d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605803"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310452"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal
 
@@ -71,7 +71,7 @@ Před přihlášením k odběru událostí úložiště objektů blob vytvořím
 4. Na stránce **Skupina prostředků** v seznamu prostředků vyberte webovou aplikaci, kterou jste vytvořili. V tomto seznamu se zobrazí také plán App Service a účet úložiště. 
 
     ![Vybrat web](./media/blob-event-quickstart-portal/resource-group-resources.png)
-5. Na stránce **App Service** vaší webové aplikace vyberte adresu URL, která se má přejít na web. Adresa URL by měla být v tomto formátu `https://<your-site-name>.azurewebsites.net`:.
+5. Na stránce **App Service** vaší webové aplikace vyberte adresu URL, která se má přejít na web. Adresa URL by měla být v tomto formátu: `https://<your-site-name>.azurewebsites.net` .
     
     ![Přejít na web](./media/blob-event-quickstart-portal/web-site.png)
 
@@ -86,16 +86,22 @@ Před přihlášením k odběru událostí úložiště objektů blob vytvořím
 K odběru tématu se přihlašujete, aby služba Event Grid věděla, které události chcete sledovat a kam má tyto události odesílat.
 
 1. Na portálu přejděte na účet Azure Storage, který jste vytvořili dříve. V nabídce vlevo vyberte **všechny prostředky** a vyberte svůj účet úložiště. 
-2. Na stránce **účet úložiště** v nabídce vlevo vyberte položku **události** .
+2. Na stránce **účet úložiště** v nabídce vlevo vyberte položku **události** . 
 1. Vyberte **Další možnosti** a **Webhook**. Události posíláte do aplikace prohlížeče pomocí webového zavěšení pro koncový bod. 
 
    ![Výběr webhooku](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. Na stránce **vytvořit odběr události** proveďte následující kroky: 
     1. Zadejte **název** odběru události.
+    2. Zadejte **název** **systémového tématu**. 
+
+       ![Zadejte názvy pro odběr událostí a systémové téma.](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
+
+       > [!NOTE]
+       > Když jste dřív vytvořili předplatné pro událost vyvolanou zdroji v Azure, Služba Event Grid automaticky vytvořila systémové téma s náhodně generovaným názvem. Nyní můžete pomocí tohoto textového pole zadat název systémového tématu. Pomocí tohoto systémového tématu můžete zjišťovat metriky a diagnostické protokoly.
     2. Vyberte **webový Hook** pro **Typ koncového bodu**. 
 
        ![Vybrat typ koncového bodu webového zavěšení](./media/blob-event-quickstart-portal/select-web-hook-end-point-type.png)
-4. V případě **koncového bodu**klikněte na **Vybrat koncový bod**a zadejte adresu URL webové aplikace a přidejte `api/updates` ji na domovskou stránku URL (například: `https://spegridsite.azurewebsites.net/api/updates`) a pak vyberte **potvrdit výběr**.
+4. V případě **koncového bodu**klikněte na **Vybrat koncový bod**a zadejte adresu URL webové aplikace a přidejte `api/updates` ji na domovskou stránku URL (například: `https://spegridsite.azurewebsites.net/api/updates` ) a pak vyberte **potvrdit výběr**.
 
    ![Potvrdit výběr koncového bodu](./media/blob-event-quickstart-portal/confirm-endpoint-selection.png)
 5. Nyní na stránce **vytvořit odběr události** vyberte **vytvořit** a vytvořte odběr události. 

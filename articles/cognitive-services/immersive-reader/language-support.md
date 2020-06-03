@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: overview
 ms.date: 04/13/2020
 ms.author: metan
-ms.openlocfilehash: c4dae18a5040d475c246d244ea7702ccfdf85cd9
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: cdf21ed85933c2a629c5752659e9cc50107a3762
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538744"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84309301"
 ---
 # <a name="language-support-for-immersive-reader"></a>Podpora jazyků pro moderní čtečku
 
@@ -29,22 +29,22 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Arabština (Egypt) | ar – např. |
 | Arabština (Saúdská Arábie) | ar-SA |
 | Bulharština | BG |
-| bulharština (Bulharsko) | bg-BG |
+| Bulharština (Bulharsko) | bg-BG |
 | Katalánština | ca-ES |
-| Chinese | ZH |
+| Čínština | ZH |
 | Čínština (Čína) | zh-CN |
-| Čínština (Hongkong) | zh – HK |
-| Čínština (Macao) | ZH-MO |
+| Čínština (Hongkong – zvláštní administrativní oblast) | zh – HK |
+| Čínština (Macao – zvláštní administrativní oblast) | ZH-MO |
 | Čínština (Singapur) | ZH – SG |
 | Čínština (Tchaj-wan) | zh-TW |
 | Čínština (zjednodušená) | zh – Hans |
 | Zjednodušená čínština (Čína) | zh-Hans-CN |
 | Zjednodušená čínština (Singapur) | zh-Hans-SG |
 | Čínština (tradiční) | zh-Hant-CN |
-| Tradiční čínština (Hongkong) | zh-Hant-HK |
-| Tradiční čínština (Macao) | zh-Hant-MO |
+| Tradiční čínština (Hongkong – zvláštní administrativní oblast) | zh-Hant-HK |
+| Tradiční čínština (Macao – zvláštní administrativní oblast) | zh-Hant-MO |
 | Tradiční čínština (Tchaj-wan) | zh – Hant – TW |
-| Chorvatština | hr |
+| Chorvatština | hod |
 | chorvatština (Chorvatsko) | hr-HR |
 | Čeština | cs |
 | čeština (Česká republika) | cs-CZ |
@@ -72,7 +72,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
 | Řečtina | El |
-| řečtina (Řecko) | el-GR |
+| Řečtina (Řecko) | el-GR |
 | Hebrejština | uvede |
 | Hebrejština (Izrael) | he-IL |
 | Hindština | Ahoj |
@@ -80,7 +80,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Maďarština | hu |
 | maďarština (Maďarsko) | hu-HU |
 | Indonéština | id |
-| indonéština (Indonésie) | id-ID |
+| Indonéština (Indonésie) | id-ID |
 | Italština | její |
 | italština (Itálie) | it-IT |
 | Japonština | dža |
@@ -131,22 +131,22 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Bengálština | bn |
 | Bosenština | BS |
 | Bulharština | BG |
-| bulharština (Bulharsko) | bg-BG |
+| Bulharština (Bulharsko) | bg-BG |
 | Katalánština | ca-ES |
-| Chinese | ZH |
+| Čínština | ZH |
 | Čínština (Čína) | zh-CN |
-| Čínština (Hongkong) | zh – HK |
-| Čínština (Macao) | ZH-MO |
+| Čínština (Hongkong – zvláštní administrativní oblast) | zh – HK |
+| Čínština (Macao – zvláštní administrativní oblast) | ZH-MO |
 | Čínština (Singapur) | ZH – SG |
 | Čínština (Tchaj-wan) | zh-TW |
 | Čínština (zjednodušená) | zh – Hans |
 | Zjednodušená čínština (Čína) | zh-Hans-CN |
 | Zjednodušená čínština (Singapur) | zh-Hans-SG |
 | Čínština (tradiční) | zh-Hant-CN |
-| Tradiční čínština (Hongkong) | zh-Hant-HK |
-| Tradiční čínština (Macao) | zh-Hant-MO |
+| Tradiční čínština (Hongkong – zvláštní administrativní oblast) | zh-Hant-HK |
+| Tradiční čínština (Macao – zvláštní administrativní oblast) | zh-Hant-MO |
 | Tradiční čínština (Tchaj-wan) | zh – Hant – TW |
-| Chorvatština | hr |
+| Chorvatština | hod |
 | chorvatština (Chorvatsko) | hr-HR |
 | Čeština | cs |
 | čeština (Česká republika) | cs-CZ |
@@ -177,7 +177,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
 | Řečtina | El |
-| řečtina (Řecko) | el-GR |
+| Řečtina (Řecko) | el-GR |
 | Haitská (kreolština) | HT |
 | Hebrejština | uvede |
 | Hebrejština (Izrael) | he-IL |
@@ -188,7 +188,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | maďarština (Maďarsko) | hu-HU |
 | Islandština | is |
 | Indonéština | id |
-| indonéština (Indonésie) | id-ID |
+| Indonéština (Indonésie) | id-ID |
 | Irština | GA |
 | Italština | její |
 | italština (Itálie) | it-IT |
@@ -261,16 +261,16 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Arabština (Saúdská Arábie) | ar-SA |
 | Baskičtina | Balijšitna |
 | Bulharština | BG |
-| bulharština (Bulharsko) | bg-BG |
+| Bulharština (Bulharsko) | bg-BG |
 | Katalánština | ca-ES |
 | Čínština (zjednodušená) | zh – Hans |
 | Zjednodušená čínština (Čína) | zh-Hans-CN |
 | Zjednodušená čínština (Singapur) | zh-Hans-SG |
 | Čínština (tradiční) | zh-Hant-CN |
-| Tradiční čínština (Hongkong) | zh-Hant-HK |
-| Tradiční čínština (Macao) | zh-Hant-MO |
+| Tradiční čínština (Hongkong – zvláštní administrativní oblast) | zh-Hant-HK |
+| Tradiční čínština (Macao – zvláštní administrativní oblast) | zh-Hant-MO |
 | Tradiční čínština (Tchaj-wan) | zh – Hant – TW |
-| Chorvatština | hr |
+| Chorvatština | hod |
 | chorvatština (Chorvatsko) | hr-HR |
 | Čeština | cs |
 | čeština (Česká republika) | cs-CZ |
@@ -300,7 +300,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
 | Řečtina | El |
-| řečtina (Řecko) | el-GR |
+| Řečtina (Řecko) | el-GR |
 | Hebrejština | uvede |
 | Hebrejština (Izrael) | he-IL |
 | Hindština | Ahoj |
@@ -309,7 +309,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | maďarština (Maďarsko) | hu-HU |
 | Islandština | is |
 | Indonéština | id |
-| indonéština (Indonésie) | id-ID |
+| Indonéština (Indonésie) | id-ID |
 | Italština | její |
 | italština (Itálie) | it-IT |
 | Japonština | dža |
@@ -323,7 +323,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | malajština (Malajsie) | ms-MY |
 | Norština – Bokmal| NB |
 | Norština, Bokmål (Norsko) | nb-NO |
-| Norština Nynorsk | nn |
+| Norština (Nynorsk) | nn |
 | Polština | pl |
 | polština (Polsko) | pl-PL |
 | Portugalština | pt |
@@ -364,9 +364,9 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 |----------|-----|
 | Baskičtina | Balijšitna |
 | Bulharština | BG |
-| bulharština (Bulharsko) | bg-BG |
+| Bulharština (Bulharsko) | bg-BG |
 | Katalánština | ca-ES |
-| Chorvatština | hr |
+| Chorvatština | hod |
 | chorvatština (Chorvatsko) | hr-HR |
 | Čeština | cs |
 | čeština (Česká republika) | cs-CZ |
@@ -396,7 +396,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | němčina (Německo) | de-DE |
 | Němčina (Švýcarsko)| de-CH |
 | Řečtina | El |
-| řečtina (Řecko) | el-GR |
+| Řečtina (Řecko) | el-GR |
 | Maďarština | hu |
 | maďarština (Maďarsko) | hu-HU |
 | Islandština | is |
@@ -407,7 +407,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | Litevština | lt |
 | Norština – Bokmal| NB |
 | Norština, Bokmål (Norsko) | nb-NO |
-| Norština Nynorsk | nn |
+| Norština (Nynorsk) | nn |
 | Polština | pl |
 | polština (Polsko) | pl-PL |
 | Portugalština | pt |
@@ -520,7 +520,7 @@ V tomto článku jsou uvedeny podporované lidské jazyky pro funkce moderního 
 | korejština (Jižní Korea) | ko-KR |
 | Norština – Bokmal| NB |
 | Norština, Bokmål (Norsko) | nb-NO |
-| Norština Nynorsk | nn |
+| Norština (Nynorsk) | nn |
 | Polština | pl |
 | polština (Polsko) | pl-PL |
 | Portugalština | pt |

@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, carlrab, bonova, danil
 ms.date: 03/11/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: f6909acc5e4d4f56fb301a225f6dd854ba6f21e4
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 190d0bd242a685487480d4da613f354277663d9c
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259554"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308009"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Rozdíly v jazyce T-SQL mezi SQL Server & spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -54,7 +54,7 @@ Dočasné známé problémy, které jsou zjištěny ve spravované instanci SQL 
 
 ### <a name="backup"></a>Backup
 
-Spravované instance SQL mají automatické zálohování, takže uživatelé můžou vytvářet úplné `COPY_ONLY` zálohy databáze. Zálohy rozdílů, protokolů a snímků souborů se nepodporují.
+Spravovaná instance SQL má automatické zálohování, takže uživatelé můžou vytvářet úplné `COPY_ONLY` zálohy databáze. Zálohy rozdílů, protokolů a snímků souborů se nepodporují.
 
 - Pomocí spravované instance SQL můžete zálohovat databázi instancí jenom do účtu Azure Blob Storage:
   - `BACKUP TO URL`Podporuje se jenom.
@@ -69,14 +69,14 @@ Omezení:
 
 - Pomocí spravované instance SQL můžete zálohovat databázi instance do zálohy s až 32 proužky, které jsou pro databáze až 4 TB v případě, že se používá zálohování zálohy, v případě, že je použita komprese záloh.
 - Nemůžete provést `BACKUP DATABASE ... WITH COPY_ONLY` na databázi, která je zašifrovaná pomocí transparentní šifrování dat pro správu spravovaných službou (TDE). TDE spravované službou vynutí šifrování záloh pomocí interního TDE klíče. Klíč nelze exportovat, takže nelze obnovit zálohu. Použijte automatické zálohování a obnovení k bodu v čase nebo použijte místo toho [TDE spravované zákazníkem (BYOK)](../database/transparent-data-encryption-tde-overview.md#customer-managed-transparent-data-encryption---bring-your-own-key) . Šifrování můžete také zakázat v databázi.
-- Maximální velikost záložního proužku pomocí `BACKUP` příkazu ve spravované instanci SQL je 195 GB, což je maximální velikost objektu BLOB. Zvyšte počet pruhů v příkazu Backup, abyste snížili velikost jednotlivých pruhů a zůstali v rámci tohoto limitu.
+- Maximální velikost proložení při zálohování pomocí `BACKUP` příkazu ve spravované instanci SQL je 195 GB, což je maximální velikost objektu BLOB. Zvyšte počet pruhů v příkazu Backup, abyste snížili velikost jednotlivých pruhů a zůstali v rámci tohoto limitu.
 
     > [!TIP]
     > Pokud chcete toto omezení obejít, můžete při zálohování databáze z libovolného SQL Server v místním prostředí nebo ve virtuálním počítači:
     >
     > - Zálohování na `DISK` místo zálohování do `URL` .
     > - Nahrajte záložní soubory do úložiště objektů BLOB.
-    > - Proveďte obnovení do spravované instance SQL.
+    > - Obnovit do spravované instance SQL
     >
     > `Restore`Příkaz ve spravované instanci SQL podporuje v záložních souborech větší velikosti objektů blob, protože pro ukládání nahraných záložních souborů se používá jiný typ objektu BLOB.
 
@@ -130,7 +130,7 @@ Viz [Vytvoření přihlašovacích údajů](/sql/t-sql/statements/create-credent
 
 ### <a name="cryptographic-providers"></a>Zprostředkovatelé kryptografických služeb
 
-Spravovaná instance SQL nemůže získat přístup k souborům, takže zprostředkovatele kryptografických služeb nelze vytvořit:
+Spravovaná instance SQL nemá přístup k souborům, takže zprostředkovatele kryptografických služeb nelze vytvořit:
 
 - `CREATE CRYPTOGRAPHIC PROVIDER`není podporováno. Viz [vytvořit zprostředkovatele kryptografických služeb](/sql/t-sql/statements/create-cryptographic-provider-transact-sql).
 - `ALTER CRYPTOGRAPHIC PROVIDER`není podporováno. Přečtěte si téma [Změna zprostředkovatele kryptografických služeb](/sql/t-sql/statements/alter-cryptographic-provider-transact-sql).
@@ -165,13 +165,13 @@ Spravovaná instance SQL nemůže získat přístup k souborům, takže zprostř
     - Exportujte databázi ze spravované instance SQL a importujte ji do SQL Database v rámci stejné domény služby Azure AD. 
     - Exportujte databázi z SQL Database a importujte ji do spravované instance SQL ve stejné doméně Azure AD.
     - Exportujte databázi ze spravované instance SQL a importujte ji do SQL Server (verze 2012 nebo novější).
-      - V této konfiguraci jsou všichni uživatelé Azure AD vytvořeni jako objekty SQL Database (uživatelé) bez přihlášení. Typ uživatelů je uveden jako SQL (zobrazený jako SQL_USER v sys. database_principals). Jejich oprávnění a role zůstávají v SQL Server metadatech databáze a lze je použít pro zosobnění. Nedají se ale použít k přístupu k SQL Server a k jejich přihlášení pomocí svých přihlašovacích údajů.
+      - V této konfiguraci se všechny uživatele Azure AD vytvoří jako SQL Server objekty databáze (uživatelé) bez přihlášení. Typ uživatelů je uveden jako `SQL` a je viditelný jako v zobrazení `SQL_USER` sys. database_principals). Jejich oprávnění a role zůstávají v SQL Server metadatech databáze a lze je použít pro zosobnění. Nedají se ale použít k přístupu k SQL Server a k jejich přihlášení pomocí svých přihlašovacích údajů.
 
 - Pouze hlavní přihlášení na úrovni serveru, které je vytvořeno procesem zřizování spravované instance SQL, členové rolí serveru, jako je například `securityadmin` nebo `sysadmin` , nebo jiná přihlášení s OPRÁVNĚNÍMI změnit libovolné přihlašovací oprávnění na úrovni serveru, mohou vytvořit objekty zabezpečení serveru Azure AD (přihlášení) v hlavní databázi pro SPRAVOVANOU instanci SQL.
 - Pokud je přihlášení objektem zabezpečení SQL, `sysadmin` můžou k vytvoření přihlašovacích údajů pro účet Azure AD používat jenom přihlášení, která jsou součástí této role.
 - Přihlášení Azure AD musí být členem služby Azure AD v rámci stejného adresáře, který se používá pro spravovanou instanci Azure SQL.
 - Objekty zabezpečení serveru Azure AD (přihlášení) se zobrazují v Průzkumník objektů počínaje verzí SQL Server Management Studio 18,0 Preview 5.
-- Překrývající se objekty zabezpečení serveru Azure AD (přihlášení) s účtem správce Azure AD jsou povolené. Objekty zabezpečení serveru Azure AD (přihlášení) mají přednost před správcem Azure AD při vyřešení objektu zabezpečení a uplatnění oprávnění pro spravovanou instanci SQL.
+- Překrývající se objekty zabezpečení serveru Azure AD (přihlášení) s účtem správce Azure AD jsou povolené. Objekty zabezpečení serveru Azure AD (přihlášení) mají přednost před správcem Azure AD při řešení zabezpečení a uplatnění oprávnění pro spravovanou instanci SQL.
 - Při ověřování se pro řešení ověřování objektu zabezpečení používá následující sekvence:
 
     1. Pokud účet Azure AD existuje přímo namapovaný na objekt zabezpečení serveru Azure AD (přihlášení), který se nachází v sys. server_principals jako typ "E", udělit přístup a použít oprávnění pro objekt zabezpečení serveru Azure AD (přihlášení).
@@ -243,7 +243,7 @@ Další informace najdete v tématu [Vytvoření databáze](/sql/t-sql/statement
 
 Některé vlastnosti souboru nejde nastavit nebo změnit:
 
-- V příkazu t-SQL nejde zadat cestu k souboru `ALTER DATABASE ADD FILE (FILENAME='path')` . Odebrat `FILENAME` ze skriptu, protože soubory spravované instance SQL automaticky umístí soubory. 
+- V příkazu t-SQL nejde zadat cestu k souboru `ALTER DATABASE ADD FILE (FILENAME='path')` . Odeberte `FILENAME` ze skriptu, protože spravované instance SQL soubory automaticky umístí. 
 - Název souboru se nedá změnit pomocí `ALTER DATABASE` příkazu.
 
 Ve výchozím nastavení jsou nastaveny následující možnosti a nelze je změnit:
@@ -291,8 +291,8 @@ Další informace najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter
     - Krok úlohy sloučení replikace se nepodporuje. 
     - Čtečka fronty není podporována. 
     - Příkazové prostředí se zatím nepodporuje.
-  - Spravované instance SQL nemůžou přistupovat k externím prostředkům, třeba ke sdíleným složkám prostřednictvím nástroje Robocopy. 
-  - SQL Server Analysis Services nejsou podporovány.
+  - Spravovaná instance SQL nemá přístup k externím prostředkům, například ke sdíleným složkám sítě prostřednictvím nástroje Robocopy. 
+  - SQL Server Analysis Services se nepodporuje.
 - Oznámení jsou částečně podporovaná.
 - E-mailové oznámení je podporované, i když vyžaduje, abyste nakonfigurovali profil Databázová pošta. Agent SQL Server může používat jenom jeden profil Databázová pošta a musí se volat `AzureManagedInstance_dbmail_profile` . 
   - Pager není podporován.
@@ -329,7 +329,7 @@ Spravovaná instance SQL nemůže přistupovat ke sdíleným složkám souborů 
 
 - `DATASOURCE`v příkazu se vyžaduje `BULK INSERT` při importu souborů z úložiště objektů BLOB v Azure. Viz [Bulk INSERT](/sql/t-sql/statements/bulk-insert-transact-sql).
 - `DATASOURCE`se ve funkci vyžaduje `OPENROWSET` při čtení obsahu souboru z úložiště objektů BLOB v Azure. Viz [OpenRowset](/sql/t-sql/functions/openrowset-transact-sql).
-- `OPENROWSET`dá se použít ke čtení dat z jiných samostatných databází SQL Azure, spravovaných instancí SQL nebo instancí SQL Server. Jiné zdroje, například databáze Oracle nebo excelové soubory, nejsou podporovány.
+- `OPENROWSET`dá se použít ke čtení dat z Azure SQL Database, spravované instance Azure SQL nebo instancí SQL Server. Jiné zdroje, například databáze Oracle nebo excelové soubory, nejsou podporovány.
 
 ### <a name="clr"></a>CLR
 
@@ -345,7 +345,7 @@ Spravovaná instance SQL nemůže přistupovat ke sdíleným složkám souborů 
  
 ### <a name="dbcc"></a>NÁSTROJI
 
-Nedokumentované příkazy DBCC povolené v SQL Server nejsou ve spravovaných instancích SQL podporovány.
+Nedokumentované příkazy DBCC povolené v SQL Server nejsou ve spravované instanci SQL podporovány.
 
 - Podporován je pouze omezený počet globálních příznaků trasování. Úroveň relace `Trace flags` není podporována. Viz [příznaky trasování](/sql/t-sql/database-console-commands/dbcc-traceon-trace-flags-transact-sql).
 - [DBCC TRACEOFF kterým](/sql/t-sql/database-console-commands/dbcc-traceoff-transact-sql) a [DBCC TRACEON](/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) fungují s omezeným počtem globálních příznaků Trace-Flags.
@@ -353,7 +353,7 @@ Nedokumentované příkazy DBCC povolené v SQL Server nejsou ve spravovaných i
 
 ### <a name="distributed-transactions"></a>Distribuované transakce
 
-MSDTC a [elastické transakce](../database/elastic-transactions-overview.md) aktuálně nejsou ve spravovaných instancích SQL podporovány.
+MSDTC a [elastické transakce](../database/elastic-transactions-overview.md) aktuálně nejsou ve spravované instanci SQL podporovány.
 
 ### <a name="extended-events"></a>Rozšířené události
 
@@ -387,7 +387,7 @@ Další informace najdete v tématu [tabulky](/sql/relational-databases/blob/fil
 
 ### <a name="linked-servers"></a>Propojené servery
 
-Propojené servery ve spravovaných instancích SQL podporují omezený počet cílů:
+Propojené servery ve spravované instanci SQL podporují omezený počet cílů:
 
 - Podporované cíle jsou spravované instance SQL, SQL Database, Azure synapse SQL a SQL Server instance. 
 - Propojené servery nepodporují distribuované transakce s možností zápisu (MS DTC).
@@ -409,8 +409,8 @@ Externí tabulky, které odkazují na soubory v HDFS nebo Azure Blob Storage, se
 
 - Podporují se typy snímků a obousměrné replikace. Slučovací replikace, replikace peer-to-peer a aktualizovatelné odběry nejsou podporovány.
 - [Transakční replikace](replication-transactional-overview.md) je k dispozici pro verzi Public Preview na spravované instanci SQL s některými omezeními:
-    - Všechny typy účastníků replikace (vydavatel, distributor, předplatitelé pro vyžádání obsahu a nabízený předplatitelé) se dají umístit na spravované instance SQL, ale Vydavatel a distributor musí být v cloudu i v místním prostředí.
-    - Spravované instance SQL můžou komunikovat s nejnovějšími verzemi SQL Server. Další informace najdete v [matici podporované verze](replication-transactional-overview.md#supportability-matrix) .
+    - Všechny typy účastníků replikace (vydavatel, distributor, předplatitelé pro vyžádání obsahu a nabízený předplatitelé) je možné umístit do spravované instance SQL, ale Vydavatel a distributor musí být v cloudu i v místním prostředí.
+    - Spravovaná instance SQL může komunikovat s nejnovějšími verzemi SQL Server. Další informace najdete v [matici podporované verze](replication-transactional-overview.md#supportability-matrix) .
     - Transakční replikace obsahuje některé [Další požadavky na síť](replication-transactional-overview.md#requirements).
 
 Další informace o konfiguraci transakční replikace najdete v následujících kurzech:
@@ -505,7 +505,7 @@ Následující proměnné, funkce a zobrazení vrací různé výsledky:
 ### <a name="vnet"></a>Virtuální síť
 - Virtuální síť se dá nasadit pomocí modelu prostředků – model klasický pro virtuální síť se nepodporuje.
 - Po vytvoření spravované instance SQL se nepodporují přesunutí spravované instance SQL nebo virtuální sítě do jiné skupiny prostředků nebo předplatného.
-- Některé služby, jako jsou App Service prostředí, Logic Apps a spravované instance SQL (používané pro geografickou replikaci, transakční replikaci nebo přes propojené servery), nemají přístup ke spravovaným instancím SQL v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globálního partnerského vztahu](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
+- Některé služby, jako jsou App Service prostředí, Logic Apps a SQL Managed instance (používané pro geografickou replikaci, transakční replikaci nebo přes propojené servery), nemají přístup ke spravované instanci SQL v různých oblastech, pokud jsou jejich virtuální sítě připojené pomocí [globálního partnerského vztahu](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers). K těmto prostředkům se můžete připojit prostřednictvím ExpressRoute nebo VNet-to-VNet prostřednictvím bran virtuální sítě.
 
 ### <a name="failover-groups"></a>Skupiny převzetí služeb při selhání
 Systémové databáze nejsou replikovány do sekundární instance ve skupině převzetí služeb při selhání. Proto by scénáře závislé na objektech ze systémových databází nemohly být na sekundární instanci možné, pokud nejsou objekty ručně vytvořeny na sekundárním objektu.
@@ -540,7 +540,7 @@ Spravovaná instance SQL umístí podrobné informace do protokolů chyb. K disp
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o spravovaných instancích SQL najdete v tématu [co je Managed instance SQL?](sql-managed-instance-paas-overview.md)
+- Další informace o spravované instanci SQL najdete v tématu [co je Managed instance SQL?](sql-managed-instance-paas-overview.md)
 - Seznam funkcí a porovnání najdete v tématu [porovnání funkcí spravované instance Azure SQL](../database/features-comparison.md).
 - Informace o aktualizacích vydaných verzí a známých problémech najdete v tématu [poznámky k verzi spravované instance SQL](../database/doc-changes-updates-release-notes.md) .
 - Rychlý Start, který ukazuje, jak vytvořit novou spravovanou instanci SQL, najdete v tématu [Vytvoření spravované instance SQL](instance-create-quickstart.md).

@@ -6,13 +6,13 @@ ms.author: nisgoel
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 05/22/2020
-ms.openlocfilehash: fdc90ffaf3cef3c594e7d84e32af9ef78fe08b0d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 05/28/2020
+ms.openlocfilehash: e9438e2e82a6d903b74973fe489b0a67d66c9a72
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849446"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296948"
 ---
 # <a name="integrate-apache-spark-and-apache-hive-with-hive-warehouse-connector-in-azure-hdinsight"></a>Integrace Apache Spark a Apache Hive pomocí konektoru skladu s podregistru v Azure HDInsight
 
@@ -93,9 +93,17 @@ Kromě konfigurací uvedených v předchozí části přidejte následující ko
 
     | Konfigurace | Hodnota |
     |----|----|
-    | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<headnode-FQDN>@<AAD-Domain>` |
+    | `spark.sql.hive.hiveserver2.jdbc.url.principal`    | `hive/<llap-headnode>@<AAD-Domain>` |
     
-    Nahraďte `<headnode-FQDN>` plně kvalifikovaným názvem domény hlavního uzlu clusteru interaktivních dotazů. Nahraďte `<AAD-DOMAIN>` názvem Azure Active Directory (AAD), ke které je cluster připojený. Pro hodnotu použijte velká písmena `<AAD-DOMAIN>` , jinak se přihlašovací údaje nenašly. V případě potřeby vyhledejte v/etc/krb5.conf názvy sféry.
+    * Ve webovém prohlížeči přejděte do `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` umístění název_clusteru, kde je název clusteru interaktivních dotazů. Klikněte na **HiveServer2 Interactive (interaktivní**). Zobrazí se plně kvalifikovaný název domény (FQDN) hlavního uzlu, na kterém běží LLAP, jak je znázorněno na snímku obrazovky. Nahraďte `<llap-headnode>` touto hodnotou.
+
+        ![Hlavní uzel konektoru skladu podregistru](./media/apache-hive-warehouse-connector/head-node-hive-server-interactive.png)
+
+    * Pomocí [příkazu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md) se připojte ke clusteru interaktivních dotazů. Vyhledejte `default_realm` parametr v `/etc/krb5.conf` souboru. Nahraďte `<AAD-DOMAIN>` touto hodnotou jako řetězec velkými písmeny, jinak se přihlašovací údaje nenaleznou.
+
+        ![Doména AAD konektoru skladu v podregistru](./media/apache-hive-warehouse-connector/aad-domain.png)
+
+    * Například `hive/hn0-ng36ll.mjry42ikpruuxgs2qy2kpg4q5e.cx.internal.cloudapp.net@PKRSRVUQVMAE6J85.D2.INTERNAL.CLOUDAPP.NET` .
     
 1. Podle potřeby uložte změny a restartujte součásti.
 
@@ -215,7 +223,7 @@ kinit USERNAME
 
 ## <a name="next-steps"></a>Další kroky
 
-* [Operace umožní a Apache Spark](./apache-hive-warehouse-connector-operations.md)
+* [Provoz Apache Sparku a HWC](./apache-hive-warehouse-connector-operations.md)
 * [Použití Interactive Query se službou HDInsight](./apache-interactive-query-get-started.md).
-* [Integrace umožní s Apache Zeppelin](./apache-hive-warehouse-connector-zeppelin.md)
+* [Integrace HWC s Apache Zeppelinem](./apache-hive-warehouse-connector-zeppelin.md)
 * [Příklady interakce s konektorem skladiště v podregistru pomocí Zeppelin, Livy, Spark-Submit a pyspark](https://community.hortonworks.com/articles/223626/integrating-apache-hive-with-apache-spark-hive-war.html)
