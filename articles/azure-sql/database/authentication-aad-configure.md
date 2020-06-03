@@ -12,12 +12,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto, carlrab
 ms.date: 03/27/2020
-ms.openlocfilehash: 9e4ec8ae9f62ccf1ff7f98ff06a43218b90e6c75
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: eaad361ba82ee6adf139174c728c2ef9ffa94849
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190347"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310899"
 ---
 # <a name="configure-and-manage-azure-ad-authentication-with-azure-sql"></a>Konfigurace a Správa ověřování Azure AD pomocí Azure SQL
 
@@ -52,7 +52,7 @@ Další informace najdete v tématech [Integrování místních identit do služ
 
 ## <a name="associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Přiřazení nebo přidání předplatného Azure do služby Azure Active Directory
 
-1. Přidružte své předplatné Azure k Azure Active Directory tím, že adresář považujete za důvěryhodný adresář pro předplatné Azure hostující databázi. Podrobnosti najdete v tématu [jak jsou předplatná Azure přidružená k Azure AD](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+1. Přidružte své předplatné Azure k Azure Active Directory tím, že adresář považujete za důvěryhodný adresář pro předplatné Azure hostující databázi. Podrobnosti najdete v tématu [přidružení nebo přidání předplatného Azure ke svému tenantovi Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 2. Pomocí přepínání adresářů v Azure Portal přepněte do předplatného přidruženého k doméně.
 

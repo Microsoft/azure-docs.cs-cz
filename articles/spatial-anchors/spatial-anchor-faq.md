@@ -5,15 +5,15 @@ author: ramonarguelles
 manager: vriveras
 services: azure-spatial-anchors
 ms.author: rgarcia
-ms.date: 02/24/2019
+ms.date: 05/18/2020
 ms.topic: overview
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 046e438304991c4af7ea4a208e51b7a695a5bf23
-ms.sourcegitcommit: ac4a365a6c6ffa6b6a5fbca1b8f17fde87b4c05e
+ms.openlocfilehash: 4bf55daa64319cfd47efd2e38a368d76f3814b4e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/10/2020
-ms.locfileid: "83004477"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84296665"
 ---
 # <a name="frequently-asked-questions-about-azure-spatial-anchors"></a>Nejčastější dotazy týkající se prostorových kotev Azure
 
@@ -61,8 +61,8 @@ K zajištění transparentnosti níže je obrázek prostředí a odvozeného clo
 
 Prostorové kotvy Azure vyhovují [podmínkám smlouvy o poskytování služeb Azure](https://go.microsoft.com/fwLink/?LinkID=522330&amp;amp;clcid=0x9)a [prohlášením o zásadách ochrany osobních údajů společnosti Microsoft](https://go.microsoft.com/fwlink/?LinkId=521839&amp;clcid=0x409).
 
-![Prostředí a jeho odvozený cloudový](./media/sparse-point-cloud.png)
-bod *– Obrázek 1: prostředí a jeho odvozený Cloud s zhuštěným bodem*
+![Prostředí a jeho odvozený cloudový bod ](./media/sparse-point-cloud.png)
+ *– Obrázek 1: prostředí a jeho odvozený Cloud s zhuštěným bodem*
 
 **Otázka: existuje způsob, jak mohu odeslat diagnostické informace společnosti Microsoft?**
 
@@ -72,21 +72,21 @@ Odpověď **: Ano**. Prostorové kotvy Azure mají režim diagnostiky, který m�
 
 **Otázka: zadáváte smlouvu SLA?**
 
-**A:** Jako standard pro služby Azure cílíme na dostupnost větší než 99,9%. Všimněte si, že prostorové kotvy Azure jsou momentálně ve verzi Preview a že se používají [Doplňkové podmínky pro verzi Preview](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) .
+**A:** Jako standard pro služby Azure cílíme na dostupnost větší než 99,9%. 
 
 **Otázka: Můžu své aplikace publikovat pomocí prostorových kotev Azure do obchodů s aplikacemi? Můžu použít prostorové kotvy Azure pro kritické provozní scénáře?**
 
-**A:** Prostorové kotvy Azure jsou momentálně ve verzi Preview a během této doby vás zve k vývoji aplikací, [poskytování zpětné vazby](https://feedback.azure.com/forums/919252-azure-spatial-anchors) k produktu a naplánování produkčních nasazení.
-
-Data obecné dostupnosti (GA) budou brzy oznámena.
+**A:** Ano, prostorové kotvy Azure jsou všeobecně dostupné a mají standardní smlouvu SLA služeb Azure. Budeme vás zvát, abyste mohli vyvíjet aplikace pro produkční nasazení a [sdílet svůj názor](https://feedback.azure.com/forums/919252-azure-spatial-anchors) na produkt s námi.
 
 **Otázka: Existují nějaká omezení omezování?**
 
-Odpověď **: Ano**, máme omezení omezování.  Neočekáváme, že získáte typické vývoj a testování aplikací. U produkčních nasazení jsme připraveni podporovat vysoce škálovatelné požadavky našich zákazníků. [Kontaktujte nás, abychom](mailto:azuremrs@microsoft.com) mohli diskutovat. V této fázi Preview jsme ještě nepublikovali naši vrstvu a cenovou strukturu, ale očekáváme, že to uděláte brzo.
+Odpověď **: Ano**, máme omezení omezování.  Neočekáváme, že získáte typické vývoj a testování aplikací. U produkčních nasazení jsme připraveni podporovat vysoce škálovatelné požadavky našich zákazníků. [Kontaktujte nás, abychom](mailto:azuremrs@microsoft.com) mohli diskutovat. 
 
 **Otázka: v jakých oblastech jsou k dispozici prostorové kotvy Azure?**
 
-**A:** Účet prostorových kotev Azure můžete v současnosti vytvořit v oblasti Azure Východní USA 2. To znamená, že tato služba je v této oblasti výpočetní i úložná. V takovém případě neexistují žádná omezení, kde se nacházejí vaši klienti. V budoucnu budeme rozšiřovat regionální dostupnost služby do všech primárních oblastí Azure.
+**A:** Prostorové kotvy Azure jsou v tuto chvíli dostupné v Západní USA 2, Východní USA, Východní USA 2, Střed USA – jih, Západní Evropa, Severní Evropa, Velká Británie – jih a Austrálii – východ. Další oblasti budou v budoucnu k dispozici.
+
+To znamená, že tato služba je v těchto oblastech i v případě, že výpočetní výkon i úložiště jsou v provozu. V takovém případě neexistují žádná omezení, kde se nacházejí vaši klienti. 
 
 **Otázka: Chcete účtovat za prostorové kotvy Azure? Budete někdy účtovat?**
 

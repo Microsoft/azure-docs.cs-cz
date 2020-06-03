@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 62bda3b63b753632f33ddbdcc90f87afcec49da0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: f45bbd010bca8bbf42be13eeaac327a98f564864
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266283"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298240"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -43,11 +43,11 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Geopolitická oblast** | **Oblast Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
 | **Australská vláda** |Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
-| **Evropa** | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – západ, Velká Británie – jih, Západní Evropa |Amsterdam, Amsterdam2, Berlín, Kodaň, Dublin, Frankfurt, Ženeva, Londýn, London2, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych |
+| **Europe** | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – západ, Velká Británie – jih, Západní Evropa |Amsterdam, Amsterdam2, Berlín, Kodaň, Dublin, Frankfurt, Ženeva, Londýn, London2, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych |
 | **Severní Amerika** |USA – východ, USA – západ, USA – východ 2, USA – západ 2, USA – střed, USA – středojih, USA – středosever, USA – středozápad, Kanada – střed, Kanada – východ |Brno, Chicago, Praha, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon sedl, Silicon Valley2, Washington DC, Washington DC2, Montrealský, Quebec City, Toronto, Vancouver |
 | **Asie** | Východní Asie, Jihovýchodní Asie | Bangkok, Hongkong, Hongkong, Kong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
-| **Indie** | Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
-| **Japonsko** | Japonsko – západ, Japonsko – východ |Ósaka, Tokio, Tokyo2 |
+| **India** | Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
+| **Japan** | Japonsko – západ, Japonsko – východ |Ósaka, Tokio, Tokyo2 |
 | **Oceánie** | Austrálie – jihovýchod, Austrálie – východ |Auckland, Melbourne, Perth, Sydney, Sydney2 |
 | **Jižní Korea** | Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
 | **Spojené arabské emiráty** | Spojené arabské emiráty Central, Spojené arabské emiráty sever | Dubaj, Dubai2 |
@@ -126,7 +126,7 @@ Následující tabulka uvádí umístění podle poskytovatele služby. Pokud ch
 | **[Level 3 Communications](http://your.level3.com/LP=882?WT.tsrc=02192014LP882AzureVanityAzureText)** |Podporuje se |Podporuje se |Amsterdam, Chicago, Praha, Londýn, Newport (Wales), Svatý Paulo, Seattle, Silicon sedl, Singapur, Washington DC |
 | **LG CNS** |Podporuje se |Podporuje se |Busan, Soul |
 | **[Liquid Telecom](https://www.liquidtelecom.com/products-and-services/cloud.html)** |Podporuje se |Podporuje se |Kapské město, Johannesburg |
-| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Podporuje se |Podporuje se |Amsterdam, Brno, Auckland, Chicago, Praha, Denver, Dubai2, Dublin, Frankfurt, Ženeva, Hongkong – zvláštní správní oblast, Las Vegas, Londýn, London2, Los Angeles, Melbourne, Miami, Montreal, New York, Oslo, Perth, Quebec City, San Antonio, Seattle, Silicon sedl, Singapur, Singapur2, Stavanger, Stockholm, Sydney, Sydney2, Tokio, Tokyo2 Toronto, Washington DC, Curych |
+| **[Megaport](https://www.megaport.com/services/microsoft-expressroute/)** |Podporuje se |Podporuje se |Amsterdam, Brno, Auckland, Chicago, Praha, Denver, Dubai2, Dublin, Frankfurt, Ženeva, Hongkong – zvláštní administrativní oblast, Las Vegas, Londýn, London2, Los Angeles, Melbourne, Miami, Montreal, New York, Oslo, Perth, Quebec City, San Antonio, Seattle, Silicon sedl, Singapur, Singapur2, Stavanger, Stockholm, Sydney, Sydney2, Tokio, Tokyo2 Toronto, Washington DC, Washington DC2, Curych |
 | **[MTN](https://www.mtnbusiness.com/en/enterprise/Pages/microsoft-express-route.aspx)** |Podporuje se |Podporuje se |Londýn |
 | **[Neutrona Networks](https://www.neutrona.com/index.php/azure-expressroute/)** |Podporuje se |Podporuje se |Praha, Los Angeles, Miami, Svatý Paulo, Washington DC |
 | **[Next Generation Data](https://www.nextgenerationdata.co.uk/ngd-cloud-gateway/)** |Podporuje se |Podporuje se |Newport(Wales) |
@@ -336,25 +336,25 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 
 | **Systémový integrátor** | **Kontinent** |
 | --- | --- |
-| **[Altogee](https://altogee.be/diensten/express-route/)** | Evropa |
+| **[Altogee](https://altogee.be/diensten/express-route/)** | Europe |
 | **[Avanade Inc.](https://www.avanade.com/)** | Asie, Evropa, Severní Amerika, Jižní Amerika |
-| **[Bright Skies GmbH](https://bskies.io/expressroute)** | Evropa
+| **[Bright Skies GmbH](https://bskies.io/expressroute)** | Europe
 | **[Ensyst](https://www.ensyst.com.au)** | Asie
 | **[Equinix Professional Services](https://www.equinix.com/services/consulting/)** | Severní Amerika |
 | **[FlexManage](https://www.flexmanage.com/cloud)** | Severní Amerika |
 | **[Lightstream](https://www.lightstream.tech/partners/microsoft-azure/)** | Severní Amerika |
-| **[The IT Consultancy Group](https://itconsult.com.au/)** | Austrálie |
-| **[MOQdigital](https://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | Austrálie |
+| **[The IT Consultancy Group](https://itconsult.com.au/)** | Australia |
+| **[MOQdigital](https://www.moqdigital.com.au/insights/technical/network-connectivity-options-for-azure)** | Australia |
 | **[MSG Services](https://www.msg-services.de/it-services/managed-services/cloud-outsourcing/)** | Evropa (Německo) |
-| **[Nelite](https://www.exakis-nelite.com/offres/)** | Evropa |
-| **[Nový podpis](https://newsignature.com/technologies/express-route/)** | Evropa |
+| **[Nelite](https://www.exakis-nelite.com/offres/)** | Europe |
+| **[Nový podpis](https://newsignature.com/technologies/express-route/)** | Europe |
 | **[OneAs1a](https://www.oneas1a.com/connectivity.html)** | Asie |
-| **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | Evropa |
+| **[Orange Networks](https://orange-networks.com/blog/88-azureexpressroute)** | Europe |
 | **[Perficient](https://www.perficient.com/Partners/Microsoft/Cloud/Azure-ExpressRoute)** | Severní Amerika |
 | **[Presidio](https://info.presidio.com/microsoft-azure-expressroute)** | Severní Amerika |
-| **[sol-tec](https://www.sol-tec.com/what-we-do/)** | Evropa |
+| **[sol-tec](https://www.sol-tec.com/what-we-do/)** | Europe |
 | **[Venha Pra Nuvem](https://venhapranuvem.com.br/)** | Jižní Amerika |
-| **[Vigilant.IT](https://vigilant.it/expressroute)** | Austrálie |
+| **[Vigilant.IT](https://vigilant.it/expressroute)** | Australia |
 
 ## <a name="next-steps"></a>Další kroky
 * Další informace o ExpressRoute najdete v tématu [ExpressRoute – Nejčastější dotazy](expressroute-faqs.md).

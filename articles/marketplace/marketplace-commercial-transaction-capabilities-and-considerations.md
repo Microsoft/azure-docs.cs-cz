@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: dsindona
-ms.openlocfilehash: 6cac7218c8f1fc48734b426c9e041831bf0b1f71
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 8818b06e84f6ffe05398087c4aaeba282adc8b2e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800051"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298206"
 ---
 # <a name="commercial-marketplace-transact-capabilities"></a>Možnosti Transact-The pro komerční web Marketplace
 
@@ -53,7 +53,7 @@ V závislosti na použité možnosti transakce jsou licenční poplatky za softw
 - **Zdarma** – bez poplatků za licence na software.
 - **Přineste si vlastní licenci** (BYOL) – veškeré použitelné poplatky za licence na software se spravují přímo mezi vydavatelem a zákazníkem. Microsoft předává jenom poplatky za využití infrastruktury Azure. To platí jenom pro Virtual Machines a aplikace Azure.
 - Průběžné **platby** – poplatky za software se účtují jako ceny za každou hodinu (vCPU), a to na základě používané infrastruktury Azure. To platí jenom pro Virtual Machines a aplikace Azure.
-- **Ceny předplatného** – poplatky za licence na software se zobrazují jako měsíční nebo roční poplatek za paušální cenu nebo za pracovní stanici. To platí jenom pro aplikace SaaS a aplikace spravované v Azure.
+- **Ceny předplatného** – poplatky za licence na software se zobrazují jako měsíční nebo roční poplatek za paušální cenu nebo za pracovní stanici. To platí pro aplikace SaaS (měsíční nebo roční) a aplikace Azure spravované aplikacemi (měsíčně).
 - **Bezplatná zkušební verze softwaru** – bez poplatků za licence na software po dobu 30 až 90 dnů.
 
 ### <a name="free-and-bring-your-own-license-byol-pricing"></a>Ceny zdarma a s využitím vlastních licencí (BYOL)

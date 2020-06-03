@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 0e18fd0c52fd4090477599f53cd0ef0bc05855f2
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83587336"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84310593"
 ---
 # <a name="long-audio-api-preview"></a>Dlouhé zvukové rozhraní API (Preview)
 
@@ -48,7 +48,7 @@ Při přípravě textového souboru se ujistěte, že:
   * U prostého textu je každý odstavec oddělený příkladem **zadání a návratového** [vstupu v prostém textu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/en-US.txt) .
   * V případě textu SSML se každý SSMLový kus považuje za odstavec. SSML části musí být oddělené různými odstavci – [Příklad textového vstupu SSML textu](https://github.com/Azure-Samples/Cognitive-Speech-TTS/blob/master/CustomVoice-API-Samples/Java/SSMLTextInputSample.txt)
 > [!NOTE]
-> Pro čínštinu (kontinentální), čínština (Hongkong), čínština (Tchaj-wan), japonština a korejština, se jedno slovo bude počítat jako dva znaky. 
+> Pro čínštinu (kontinentální), čínština (Hongkong – zvláštní administrativní oblast), čínština (Tchaj-wan), japonština a korejština, se jedno slovo bude počítat jako dva znaky. 
 
 ## <a name="submit-synthesis-requests"></a>Odeslání žádostí o Shrnutí
 

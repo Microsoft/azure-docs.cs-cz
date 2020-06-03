@@ -4,16 +4,16 @@ description: Připojení soukromě k webové aplikaci pomocí privátního konco
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: article
-ms.date: 03/12/2020
+ms.date: 06/02/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: 2f10c7378ae7681b14df6e96b6a6f1adac832d1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34ea9961c257f398ebed3baaf4ed2ee5b6f3547e
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287811"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298699"
 ---
 # <a name="connect-privately-to-a-web-app-using-azure-private-endpoint-preview"></a>Připojení soukromě k webové aplikaci pomocí privátního koncového bodu Azure (Preview)
 
@@ -23,7 +23,7 @@ V tomto rychlém startu se dozvíte, jak nasadit webovou aplikaci s privátním 
 Další informace najdete v tématu [použití privátních koncových bodů pro webovou aplikaci Azure][privatenedpointwebapp].
 
 > [!Note]
->Verze Preview je dostupná v oblastech Východní USA a Západní USA 2 pro všechny systémy PremiumV2 Windows a Linux Web Apps. 
+>Verze Preview je dostupná ve veřejných oblastech pro PremiumV2 Windows a Linux Web Apps a elastické funkce Premium. 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -37,7 +37,7 @@ V této části vytvoříte virtuální síť a podsíť, která bude hostovat v
 
 V této části vytvoříte virtuální síť a podsíť.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť** nebo ve vyhledávacím poli vyhledejte **virtuální síť** .
+1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť** nebo ve vyhledávacím poli vyhledejte **virtuální síť** .
 
 1. V části **vytvořit virtuální síť**zadejte nebo vyberte tyto informace na kartě základy:
 
@@ -60,7 +60,7 @@ V této části vytvoříte virtuální síť a podsíť.
 
 ### <a name="create-virtual-machine"></a>Vytvoření virtuálního počítače
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit** > **Compute** > **virtuální počítač** Compute.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač** Compute.
 
 1. V nástroji vytvořit virtuální počítač základy zadejte nebo vyberte tyto informace:
 
@@ -89,7 +89,7 @@ V této části vytvoříte soukromou webovou aplikaci s použitím privátního
 
 ### <a name="web-app"></a>Webová aplikace
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek** > **Webová** > **Webová aplikace** .
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit prostředek**  >  **Webová**  >  **Webová aplikace** .
 
 1. V nástroji vytvořit webovou aplikaci – základy zadejte nebo vyberte tyto informace:
 
@@ -102,7 +102,7 @@ V této části vytvoříte soukromou webovou aplikaci s použitím privátního
 
 ### <a name="create-the-private-endpoint"></a>Vytvoření privátního koncového bodu
 
-1. Ve vlastnostech webové aplikace vyberte **Nastavení** > **sítě** a klikněte na **Konfigurace připojení privátního koncového bodu** .
+1. Ve vlastnostech webové aplikace vyberte **Nastavení**  >  **sítě** a klikněte na **Konfigurace připojení privátního koncového bodu** .
 
    > [!div class="mx-imgBorder"]
    >![Sítě webové aplikace][7]
@@ -120,8 +120,8 @@ V této části vytvoříte soukromou webovou aplikaci s použitím privátního
 1. Kontrola vytvoření privátního koncového bodu
 
    > [!div class="mx-imgBorder"]
-   >![Zkontrolujte][10]
-   >![finální zobrazení privátního koncového bodu.][11]
+   >![Zkontrolujte ][10]
+   > ![ finální zobrazení privátního koncového bodu.][11]
 
 ## <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 

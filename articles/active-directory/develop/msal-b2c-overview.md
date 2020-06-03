@@ -1,5 +1,5 @@
 ---
-title: Použití MSAL s Azure Active Directory B2CLearn | Azure
+title: Použití MSAL. js s Azure AD B2C
 titleSuffix: Microsoft identity platform
 description: Knihovna Microsoft Authentication Library pro JavaScript (MSAL. js) umožňuje aplikacím pracovat s Azure AD B2C a získat tokeny pro volání zabezpečených webových rozhraní API. Tato webová rozhraní API můžou být Microsoft Graph, jiná rozhraní API Microsoftu, webová rozhraní API od ostatních nebo vaše vlastní webové rozhraní API.
 services: active-directory
@@ -9,44 +9,42 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/16/2019
+ms.date: 06/05/2020
 ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8e076dfd6670265d458eb35d8e1b3e4500009a12
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f43711652bb205c75870fdb969c44298087a2b07
+ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81534478"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84308559"
 ---
-# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-active-directory-b2c"></a>Použití knihovny Microsoft Authentication Library pro jazyk JavaScript pro práci s Azure Active Directory B2C
+# <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>Použití knihovny Microsoft Authentication Library pro jazyk JavaScript pro práci s Azure AD B2C
 
-[Knihovna Microsoft Authentication Library pro JavaScript (MSAL. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) umožňuje vývojářům JavaScriptu ověřovat uživatele pomocí sociálních a místních identit pomocí [Azure Active Directory B2C (Azure AD B2C)](https://docs.microsoft.com/azure/active-directory-b2c/). Pomocí Azure AD B2C jako služby správy identit můžete přizpůsobit a řídit, jak se zákazníci při používání vašich aplikací přihlásí, přihlásí a budou spravovat jejich profily.
+[Knihovna Microsoft Authentication Library pro JavaScript (MSAL. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js) umožňuje vývojářům JavaScriptu ověřovat uživatele pomocí sociálních a místních identit pomocí [Azure Active Directory B2C](../../active-directory-b2c/overview.md) (Azure AD B2C).
 
-Azure AD B2C také vám umožní přizpůsobit uživatelské rozhraní svých aplikací během procesu ověřování za účelem zajištění bezproblémového prostředí pro vaše zákazníky.
+Pomocí Azure AD B2C jako služby správy identit můžete přizpůsobit a řídit, jak se vaši zákazníci při používání vašich aplikací přihlásí, přihlásíte a spravují své profily. Azure AD B2C také umožňují vytvořit vlastní uživatelské rozhraní, které vaše aplikace zobrazí během procesu ověřování.
 
-Tento článek ukazuje, jak pomocí MSAL. js pracovat s Azure AD B2C a shrnuje klíčové body, o kterých byste měli vědět. Kompletní diskuzi a kurz najdete v [dokumentaci Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/overview).
+Následující části ukazují, jak:
+
+- Ochrana webového rozhraní API Node. js
+- Podpora přihlašování v aplikaci s jednou stránkou (SPA) *a volání* chráněného webového rozhraní API
+- Povolit podporu resetování hesel
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud jste ještě nevytvořili vlastního [klienta Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant), začněte tím, že ho vytvoříte hned (můžete také použít stávajícího klienta Azure AD B2C, pokud ho už máte).
-
-Tato ukázka obsahuje dvě části:
-
-- Jak chránit webové rozhraní API.
-- Jak zaregistrovat jednostránkovou aplikaci pro ověřování *a volání webového* rozhraní API
+Pokud jste to ještě neudělali, vytvořte [tenanta Azure AD B2C](../../active-directory-b2c/tutorial-create-tenant.md).
 
 ## <a name="nodejs-web-api"></a>Webové rozhraní API Node.js
 
-> [!NOTE]
-> V tomto okamžiku je MSAL. js pro uzel stále ve vývoji (viz [plán](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap)). Mezitím doporučujeme používat [Passport-Azure-AD](https://github.com/AzureAD/passport-azure-ad), což je knihovna ověřování pro Node. js vyvinutá a podporovaná Microsoftem.
-
 Následující kroky ukazují, jak může **webové rozhraní API** použít Azure AD B2C k ochraně sebe sama a vystavit vybrané obory klientské aplikaci.
+
+MSAL. js pro uzel je aktuálně ve vývoji. Další informace najdete v tématu [plán](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki#roadmap) na GitHubu. V současnosti doporučujeme používat [Passport – Azure-AD](https://github.com/AzureAD/passport-azure-ad), knihovna ověřování pro Node. js vyvinutá a podporovaná Microsoftem.
 
 ### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 
-Pokud chcete své webové rozhraní API chránit pomocí Azure AD B2C, musíte ho nejdřív zaregistrovat. Podrobný postup najdete v tématu věnovaném [registraci aplikace](https://docs.microsoft.com/azure/active-directory-b2c/add-web-application?tabs=applications) .
+Pokud chcete své webové rozhraní API chránit pomocí Azure AD B2C, musíte ho nejdřív zaregistrovat. Podrobný postup najdete v tématu věnovaném [registraci aplikace](../../active-directory-b2c/add-web-application.md) .
 
 ### <a name="step-2-download-the-sample-application"></a>Krok 2: stažení ukázkové aplikace
 
@@ -71,19 +69,17 @@ const policyName = "<Name of your sign in / sign up policy, e.g. B2C_1_signupsig
 
 Další informace najdete v [ukázce tohoto ukázkového webového rozhraní API pro Node. js B2C](https://github.com/Azure-Samples/active-directory-b2c-javascript-nodejs-webapi).
 
----
-
 ## <a name="javascript-spa"></a>JavaScript SPA
 
 Následující kroky ukazují, jak může **aplikace s jednou stránkou** používat Azure AD B2C k registraci, přihlášení a volání chráněného webového rozhraní API.
 
 ### <a name="step-1-register-your-application"></a>Krok 1: Registrace aplikace
 
-Chcete-li implementovat ověřování, musíte nejprve zaregistrovat aplikaci. Podrobný postup najdete v tématu věnovaném [registraci aplikace](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications) .
+Chcete-li implementovat ověřování, musíte nejprve zaregistrovat aplikaci. Podrobný postup najdete v tématu věnovaném [registraci aplikace](../../active-directory-b2c/tutorial-register-applications.md) .
 
 ### <a name="step-2-download-the-sample-application"></a>Krok 2: stažení ukázkové aplikace
 
-Stáhněte si ukázku jako soubor ZIP nebo ho naklonujte z GitHubu:
+Stáhněte si ukázku kódu [. Archiv ZIP](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) nebo naklonujte úložiště GitHub:
 
 ```console
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
@@ -96,7 +92,7 @@ Při konfiguraci aplikace je potřeba mít dva důležité skutečnosti:
 - Konfigurace koncového bodu rozhraní API a vystavených oborů
 - Konfigurace parametrů ověřování a oborů tokenů
 
-1. Otevřete `apiConfig.js` soubor v ukázce.
+1. V ukázce otevřete soubor *apiConfig. js* .
 
 2. Nakonfigurujte ukázku pomocí parametrů, které jste získali dříve během registrace webového rozhraní API. Změňte následující řádky kódu nahrazením hodnot adresou vašeho webového rozhraní API a vystavenými obory.
 
@@ -108,9 +104,9 @@ Při konfiguraci aplikace je potřeba mít dva důležité skutečnosti:
     };
    ```
 
-3. Otevřete `authConfig.js` soubor v ukázce.
+1. V ukázce otevřete soubor *authConfig. js* .
 
-4. Nakonfigurujte ukázku pomocí parametrů, které jste získali dříve při registraci jednostránkové aplikace. Změňte následující řádky kódu nahrazením hodnot hodnotami ID ClientId, autority a žádostí o tokeny.
+1. Nakonfigurujte ukázku pomocí parametrů, které jste získali dříve při registraci jednostránkové aplikace. Změňte následující řádky kódu nahrazením hodnot hodnotami ID ClientId, autority a žádostí o tokeny.
 
    ```javascript
     // Config object to be passed to Msal on creation.
@@ -134,11 +130,85 @@ Při konfiguraci aplikace je potřeba mít dva důležité skutečnosti:
 
 Další informace najdete v tomto [ukázkovém B2C aplikaci pro JavaScript](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp).
 
----
+## <a name="support-password-reset"></a>Podpora resetování hesla
+
+V této části rozšíříte jednostránkovou aplikaci tak, aby používala tok uživatele Azure AD B2C resetování hesla. I když MSAL. js v současné době nepodporuje více uživatelských toků nebo vlastních zásad nativně, můžete knihovnu použít ke zpracování běžných případů použití jako resetování hesla.
+
+V následujících krocích se předpokládá, že jste už provedli kroky uvedené v předchozí části s kódem [JavaScript Spa](#javascript-spa) .
+
+### <a name="step-1-define-the-authority-string-for-password-reset-user-flow"></a>Krok 1: definování řetězce autority pro tok uživatele resetování hesla
+
+1. Nejprve vytvořte objekt, kam uložíte identifikátor URI autority:
+
+    ```javascript
+        const b2cPolicies = {
+            names: {
+                signUpSignIn: "b2c_1_susi",
+                forgotPassword: "b2c_1_reset"
+            },
+            authorities: {
+                signUpSignIn: {
+                    authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_susi",
+                },
+                forgotPassword: {
+                    authority: "https://fabrikamb2c.b2clogin.com/fabrikamb2c.onmicrosoft.com/b2c_1_reset",
+                },
+            },
+        }
+    ```
+
+1. Dále inicializujte objekt MSAL se `signInSignUp` zásadami jako výchozí (viz předchozí fragment kódu). Když se uživatel pokusí přihlásit, zobrazí se vám následující obrazovka:
+
+    :::image type="content" source="media/msal-b2c-overview/user-journey-01-signin.png" alt-text="Přihlašovací obrazovka zobrazovaná Azure AD B2C":::
+
+### <a name="step-2-catch-and-handle-authentication-errors-in-your-login-method"></a>Krok 2: zachycení a zpracování chyb ověřování v metodě přihlášení
+
+Když uživatel vybere **zapomenuté heslo**, vaše aplikace vyvolá chybu, kterou byste měli zachytit ve svém kódu, a pak ji zpracovat tak, že prezentuje příslušný tok uživatele. V tomto případě je to `b2c_1_reset` tok resetování hesla.
+
+1. Metodu přihlašování rozšíříte takto:
+
+    ```javascript
+    function signIn() {
+      myMSALObj.loginPopup(loginRequest)
+        .then(loginResponse => {
+            console.log("id_token acquired at: " + new Date().toString());
+
+            if (myMSALObj.getAccount()) {
+              updateUI();
+            }
+
+        }).catch(function (error) {
+          console.log(error);
+
+          // error handling
+          if (error.errorMessage) {
+            // check for forgot password error
+            if (error.errorMessage.indexOf("AADB2C90118") > -1) {
+
+              //call login method again with the password reset user flow
+              myMSALObj.loginPopup(b2cPolicies.authorities.forgotPassword)
+                .then(loginResponse => {
+                  console.log(loginResponse);
+                  window.alert("Password has been reset successfully. \nPlease sign-in with your new password.");
+                })
+            }
+          }
+        });
+    }
+    ```
+
+1. Předchozí fragment kódu ukazuje, jak zobrazit obrazovku pro resetování hesla po zachycení chyby s kódem `AADB2C90118` .
+
+    Po resetování hesla se uživatel vrátí zpátky do aplikace, aby se znovu přihlásil.
+
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Obrazovky toku resetování hesla zobrazené Azure AD B2C" border="false":::
+
+    Další informace o kódech chyb a o zpracování výjimek naleznete v tématu [MSAL Error and Exception Codes](msal-handling-exceptions.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace:
-- [Toky uživatelů](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows)
-- [Vlastní zásady](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started)
-- [Přizpůsobení uživatelského prostředí](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-configure-user-input)
+Přečtěte si další informace o těchto Azure AD B2C konceptech:
+
+- [Toky uživatelů](../../active-directory-b2c/tutorial-create-user-flows.md)
+- [Vlastní zásady](../../active-directory-b2c/custom-policy-get-started.md)
+- [Přizpůsobení uživatelského prostředí](../../active-directory-b2c/custom-policy-configure-user-input.md)

@@ -5,29 +5,20 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: 9d394b07ff17ab24305b2580efc8bedfc5e7d384
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: bbbc606497b53a0790d667a63b45101a3c18bbc4
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183367"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84297479"
 ---
-#### <a name="applications"></a>[Aplikace](#tab/applications/)
-
-1. Vyberte **aplikace**.
-1. Výběrem aplikace *webapi1* otevřete její stránku **vlastností** .
-1. Vyberte **publikované obory**. Publikované obory lze použít pro udělení určitých oprávnění k webovému rozhraní API klientské aplikaci.
-1. Pro **Rozsah**zadejte `demo.read`, a pro **Popis**zadejte `Read access to the web API`.
-1. Pro **Rozsah**zadejte `demo.write`, a pro **Popis**zadejte `Write access to the web API`.
-1. Vyberte **Uložit**.
-
 #### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
 
 1. Vyberte **Registrace aplikací (Preview)**.
 1. Výběrem aplikace *webapi1* otevřete její stránku **Přehled** .
 1. V části **Spravovat**vyberte **zveřejnit rozhraní API**.
 1. Vedle pole **identifikátor URI ID aplikace**vyberte odkaz **nastavit** .
-1. Nahraďte výchozí hodnotu (identifikátor GUID) `api`hodnotou a potom vyberte **Uložit**. Zobrazí se úplný identifikátor URI a měl by být ve formátu `https://your-tenant-name.onmicrosoft.com/api`. Pokud vaše webová aplikace požaduje přístupový token pro rozhraní API, měl by tento identifikátor URI přidat jako předponu pro každý obor, který definujete pro rozhraní API.
+1. Nahraďte výchozí hodnotu (identifikátor GUID) hodnotou `api` a potom vyberte **Uložit**. Zobrazí se úplný identifikátor URI a měl by být ve formátu `https://your-tenant-name.onmicrosoft.com/api` . Pokud vaše webová aplikace požaduje přístupový token pro rozhraní API, měl by tento identifikátor URI přidat jako předponu pro každý obor, který definujete pro rozhraní API.
 1. V části **obory definované tímto rozhraním API**vyberte **Přidat obor**.
 1. Zadejte následující hodnoty pro vytvoření oboru, který definuje přístup pro čtení k rozhraní API, a pak vyberte **Přidat obor**:
     1. **Název oboru**:`demo.read`
@@ -37,3 +28,12 @@ ms.locfileid: "78183367"
     1. **Název oboru**:`demo.write`
     1. **Zobrazovaný název souhlasu správce**:`Write access to demo API`
     1. **Popis souhlasu správce**:`Allows write access to the demo API`
+
+#### <a name="applications"></a>[Aplikace](#tab/applications/)
+
+1. Vyberte **aplikace**.
+1. Výběrem aplikace *webapi1* otevřete její stránku **vlastností** .
+1. Vyberte **publikované obory**. Publikované obory lze použít pro udělení určitých oprávnění k webovému rozhraní API klientské aplikaci.
+1. Pro **Rozsah**zadejte, `demo.read` a pro **Popis**zadejte `Read access to the web API` .
+1. Pro **Rozsah**zadejte, `demo.write` a pro **Popis**zadejte `Write access to the web API` .
+1. Vyberte **Uložit**.

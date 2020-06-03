@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/26/2019
+ms.date: 05/29/2020
 ms.author: jingwang
-ms.openlocfilehash: 4560560b3677030a66e277e96eb552d39f5c82c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7fd5cb3c6c8a991a8b5ef9b6460e9dce35dd873
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416324"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298580"
 ---
 # <a name="binary-format-in-azure-data-factory"></a>Binární formát v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,13 +30,13 @@ Můžete použít binární datovou sadu v aktivitě [kopírování](copy-activi
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných binární datovou sadou.
 
-| Vlastnost         | Popis                                                  | Požaduje se |
+| Vlastnost         | Popis                                                  | Vyžadováno |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Vlastnost Type datové sady musí být nastavená na **Binary**. | Ano      |
-| location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v `location`rámci. **Podrobnosti najdete v článku o konektoru – > vlastnosti datové sady**. | Ano      |
-| komprese | Skupina vlastností pro konfiguraci komprese souborů. Tuto část nakonfigurujte, pokud chcete během provádění aktivit provést kompresi nebo dekompresi. | Ne |
-| type | Kompresní kodek používaný pro čtení a zápis binárních souborů. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **Deflate**, **ZipDeflate**. pro použití při ukládání souboru.<br>Poznámka: při použití aktivity kopírování k dekompresi souborů ZipDeflate a zápisu do úložiště dat jímky založeného na souborech se soubory extrahují do složky: `<path specified in dataset>/<folder named as source zip file>/`. | Ne       |
-| level | Kompresní poměr Použijte, pokud se datová sada používá v jímky aktivity kopírování.<br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **Nejrychlejší:** Kompresní operace by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **Optimální**: komprese by měla být optimálně komprimována i v případě, že dokončení operace trvá delší dobu. Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | Ne       |
+| typ             | Vlastnost Type datové sady musí být nastavená na **Binary**. | Ano      |
+| location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location` . **Podrobnosti najdete v článku o konektoru – > vlastnosti datové sady**. | Ano      |
+| komprese | Skupina vlastností pro konfiguraci komprese souborů. Tuto část nakonfigurujte, pokud chcete během provádění aktivit provést kompresi nebo dekompresi. | No |
+| typ | Kompresní kodek používaný pro čtení a zápis binárních souborů. <br>Povolené hodnoty jsou **bzip2**, **gzip**, **Deflate**, **ZipDeflate**. pro použití při ukládání souboru.<br>**Poznámka:** při použití aktivity kopírování k dekompresi souborů **ZipDeflate** a zápisu do úložiště dat jímky založeného na souborech se ve výchozím nastavení extrahují soubory do složky: `<path specified in dataset>/<folder named as source zip file>/` pomocí `preserveZipFileNameAsFolder` [zdroje aktivity kopírování](#binary-as-source) můžete určit, jestli se má zachovat název souboru ZIP jako struktura složek.| No       |
+| úroveň | Kompresní poměr Použijte, pokud se datová sada používá v jímky aktivity kopírování.<br>Povolené hodnoty jsou **optimální** nebo **nejrychlejší**.<br>- **Nejrychlejší:** Kompresní operace by se měla dokončit co nejrychleji, a to i v případě, že výsledný soubor není optimálně komprimován.<br>- **Optimální**: komprese by měla být optimálně komprimována i v případě, že dokončení operace trvá delší dobu. Další informace najdete v tématu [úroveň komprese](https://msdn.microsoft.com/library/system.io.compression.compressionlevel.aspx) . | No       |
 
 Níže je příklad binární datové sady v Azure Blob Storage:
 
@@ -72,21 +72,57 @@ Níže je příklad binární datové sady v Azure Blob Storage:
 
 ### <a name="binary-as-source"></a>Binární jako zdroj
 
-V části *** \*zdroj\* *** aktivity kopírování jsou podporovány následující vlastnosti.
+V části *** \* zdroj \* *** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost      | Popis                                                  | Požaduje se |
+| Vlastnost      | Popis                                                  | Vyžadováno |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **BinarySource**. | Ano      |
-| storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají v rámci `storeSettings`své vlastní podporované nastavení pro čtení. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
+| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **BinarySource**. | Ano      |
+| formatSettings | Skupina vlastností Další informace najdete v tabulce **Nastavení binárního čtení** níže. | No       |
+| storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají v rámci své vlastní podporované nastavení pro čtení `storeSettings` . **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | No       |
+
+Podporovaná **Nastavení binárního čtení** v rámci `formatSettings` :
+
+| Vlastnost      | Popis                                                  | Vyžadováno |
+| ------------- | ------------------------------------------------------------ | -------- |
+| typ          | Typ formatSettings musí být nastaven na hodnotu **BinaryReadSettings**. | Ano      |
+| compressionProperties | Skupina vlastností, jak dekomprimovat data pro daný Kompresní kodek. | No       |
+| preserveZipFileNameAsFolder<br>(*pod `compressionProperties` *) | Platí v případě, že je vstupní datová sada nakonfigurovaná s **ZipDeflate** kompresí. Určuje, jestli se má při kopírování zachovat název zdrojového souboru ZIP jako struktura složek. Pokud je nastavená hodnota true (výchozí), Data Factory zapisuje soubory unzip do `<path specified in dataset>/<folder named as source zip file>/` ; při nastavení na hodnotu false Data Factory zapisuje soubory unzip přímo do `<path specified in dataset>` .  | No |
+
+```json
+"activities": [
+    {
+        "name": "CopyFromBinary",
+        "type": "Copy",
+        "typeProperties": {
+            "source": {
+                "type": "BinarySource",
+                "storeSettings": {
+                    "type": "AzureBlobStorageReadSettings",
+                    "recursive": true
+                },
+                "formatSettings": {
+                    "type": "BinaryReadSettings",
+                    "compressionProperties": {
+                        "type": "ZipDeflateReadSettings",
+                        "preserveZipFileNameAsFolder": false
+                    }
+                }
+            },
+            ...
+        }
+        ...
+    }
+]
+```
 
 ### <a name="binary-as-sink"></a>Binární jako jímka
 
-V části *** \*jímka\* *** aktivity kopírování jsou podporovány následující vlastnosti.
+V části *** \* jímka \* *** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost      | Popis                                                  | Požaduje se |
+| Vlastnost      | Popis                                                  | Vyžadováno |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **BinarySink**. | Ano      |
-| storeSettings | Skupina vlastností, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má vlastní podporované nastavení zápisu v rámci `storeSettings`. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
+| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **BinarySink**. | Ano      |
+| storeSettings | Skupina vlastností, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má vlastní podporované nastavení zápisu v rámci `storeSettings` . **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | No       |
 
 ## <a name="next-steps"></a>Další kroky
 

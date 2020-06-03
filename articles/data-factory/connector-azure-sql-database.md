@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
-ms.openlocfilehash: 7f937c18e2012baa430129ff16200a5e6b215f28
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4c79779d9ce87a2596e5ccd3888e323fd27e0115
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220313"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84298070"
 ---
 # <a name="copy-and-transform-data-in-azure-sql-database-by-using-azure-data-factory"></a>Kopírování a transformace dat v Azure SQL Database pomocí Azure Data Factory
 
@@ -197,7 +197,7 @@ Pokud chcete použít spravované ověřování identity, postupujte podle těch
 
 4. Nakonfigurujte propojenou službu Azure SQL Database v Azure Data Factory.
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -644,7 +644,7 @@ Když se data zkopírují z nebo do Azure SQL Database, použijí se následují
 | xml |XML |
 
 >[!NOTE]
-> Pro datové typy, které jsou mapovány na mezihodnotový průběžný typ, aktuálně Azure Data Factory podporuje přesnost až 28. Pokud máte data s přesností větší než 28, zvažte převod na řetězec v dotazu SQL.
+> Pro datové typy, které jsou mapovány na mezihodnotový průběžný typ, aktuálně aktivita kopírování podporuje přesnost až na 28. Pokud máte data s přesností větší než 28, zvažte převod na řetězec v dotazu SQL.
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 
@@ -674,7 +674,7 @@ A konkrétně:
 
     - Použití **spravovaného ověřování Identity Data Factory**: 
 
-        1. Pro vytvoření uživatele databáze pro spravovanou identitu použijte stejný [předpoklady](#managed-identity) a udělte v databázi správnou roli.
+        1. Při vytváření uživatele databáze pro spravovanou identitu použijte stejné [předpoklady](#managed-identity) a udělte v databázi správnou roli.
         2. V části propojená služba zadejte připojovací řetězec ODBC následujícím způsobem a pak vyberte **anonymní** ověřování, které označuje samotný připojovací řetězec `Authentication=ActiveDirectoryMsi` .
 
         ```

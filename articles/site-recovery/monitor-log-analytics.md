@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
-ms.openlocfilehash: 0b3f5963572368cb9c884984418140b4bbc0dea3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0cf0ed943dd2135a3e8d545b76eda35285dae24d
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82131191"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300786"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>Monitorování Site Recovery s využitím protokolů Azure Monitoru
 
@@ -36,13 +36,13 @@ Zde je seznam toho, co k tomu potřebujete:
 
 - Aspoň jeden počítač chráněný v úložišti Recovery Services.
 - Log Analytics pracovní prostor pro ukládání protokolů Site Recovery. [Přečtěte si o](../azure-monitor/learn/quick-create-workspace.md) nastavení pracovního prostoru.
-- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Další informace](../azure-monitor/log-query/get-started-portal.md).
+- Základní informace o tom, jak zapisovat, spouštět a analyzovat dotazy protokolu v Log Analytics. [Přečtěte si další informace](../azure-monitor/log-query/get-started-portal.md).
 
 Než začnete, doporučujeme, abyste si přečtěte [běžné otázky týkající se monitorování](monitoring-common-questions.md) .
 
 ## <a name="configure-site-recovery-to-send-logs"></a>Konfigurace Site Recovery pro odesílání protokolů
 
-1. V trezoru klikněte > na **nastavení diagnostiky****Přidat nastavení diagnostiky**.
+1. V trezoru klikněte na **nastavení diagnostiky**  >  **Přidat nastavení diagnostiky**.
 
     ![Vybrat protokolování prostředků](./media/monitoring-log-analytics/add-diagnostic.png)
 
@@ -252,7 +252,7 @@ AzureDiagnostics 
 
 ## <a name="set-up-alerts---examples"></a>Nastavení upozornění – příklady
 
-Můžete nastavit Site Recovery výstrahy na základě Azure Monitor dat. [Přečtěte si další informace](../azure-monitor/platform/alerts-log.md#managing-log-alerts-from-the-azure-portal) o nastavení upozornění protokolu. 
+Můžete nastavit Site Recovery výstrahy na základě Azure Monitor dat. [Přečtěte si další informace](../azure-monitor/platform/alerts-log.md#create-a-log-alert-rule-with-the-azure-portal) o nastavení upozornění protokolu. 
 
 > [!NOTE]
 > Některé příklady používají **replicationProviderName_s** nastavené na **A2A**. Tím se nastaví výstrahy pro virtuální počítače Azure, které se replikují do sekundární oblasti Azure. V těchto příkladech můžete měnit **A2A** pomocí **InMageAzureV2** , pokud chcete nastavit upozornění pro místní virtuální počítače VMware nebo fyzické servery replikované do Azure.

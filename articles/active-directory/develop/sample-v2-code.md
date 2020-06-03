@@ -2,22 +2,22 @@
 title: Ukázky kódu pro Microsoft Identity Platform
 description: Poskytuje index dostupných ukázek kódu platformy Microsoft Identity Platform (v 2.0) uspořádaných podle scénáře.
 services: active-directory
-author: rwike77
+author: mmacy
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 07/15/2019
-ms.author: ryanwi
+ms.date: 06/01/2020
+ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 713fa09319f1b95fe2bcc0d15c973a2096a250ec
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 309d9f24030b4d1cb31cdc3ebd10663c50958fbe
+ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801144"
+ms.lasthandoff: 06/02/2020
+ms.locfileid: "84300025"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform Code Samples (koncový bod verze 2.0)
 
@@ -41,13 +41,13 @@ Tyto ukázky ukazují, jak napsat jednostránkovou aplikaci zabezpečenou techno
 
 | Platforma | Popis | Odkaz |
 | -------- | --------------------- | -------- |
-| ![Tento obrázek ukazuje JavaScript logo](media/sample-v2-code/logo_js.png) JavaScript [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) . | Volání Microsoft Graph |[JavaScript – graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
-| ![Tento obrázek ukazuje JavaScript logo](media/sample-v2-code/logo_js.png) JavaScript [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) . | Volá Microsoft Graph pomocí toku kódu ověřování s/PKCE. |[JavaScript – v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
-| ![Tento obrázek ukazuje JavaScript logo](media/sample-v2-code/logo_js.png) JavaScript [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) . | Volá B2C |[B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
-| ![Na tomto obrázku je znázorněný](media/sample-v2-code/logo_angular.png) JavaScript s logem úhlu [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| Volá vlastní webové rozhraní API. | [MS-identity-JavaScript-úhlové ověřování – aspnetcore-WebApi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
-| ![Na tomto obrázku je znázorněný](media/sample-v2-code/logo_angular.png) JavaScript s logem úhlu [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| Volání Microsoft Graph  | [Active-Directory-JavaScript-singlepageapp-úhlová](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
-| ![Na tomto obrázku je znázorněný](media/sample-v2-code/logo_react.png) JavaScript s logem reakce [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) .| Volá vlastní webové rozhraní API, které zase volá Microsoft Graph.  | [MS-identity-JavaScript-reakci-Spa-dotnetcore-WebApi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
-| ![Na tomto obrázku je znázorněný](media/sample-v2-code/logo_angular.png) JavaScript s logem úhlu [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | Volá B2C |[Active-Directory-B2C-JavaScript-úhlů-Spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
+| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) . | Volání Microsoft Graph |[JavaScript – graphapi-v2](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2) |
+| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) . | Volá Microsoft Graph pomocí toku kódu ověřování s/PKCE. |[JavaScript – v2](https://github.com/Azure-Samples/ms-identity-javascript-v2) |
+| ![Tento obrázek ukazuje JavaScript logo JavaScript ](media/sample-v2-code/logo_js.png) [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) . | Volá B2C |[B2C-JavaScript-msal-singlepageapp](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp) |
+| ![Na tomto obrázku je znázorněný JavaScript s logem úhlu ](media/sample-v2-code/logo_angular.png) [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| Volá vlastní webové rozhraní API. | [MS-identity-JavaScript-úhlové ověřování – aspnetcore-WebApi](https://github.com/Azure-Samples/ms-identity-javascript-angular-spa-aspnetcore-webapi) |
+| ![Na tomto obrázku je znázorněný JavaScript s logem úhlu ](media/sample-v2-code/logo_angular.png) [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) .| Volání Microsoft Graph  | [Active-Directory-JavaScript-singlepageapp-úhlová](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-angular) |
+| ![Na tomto obrázku je znázorněný JavaScript s logem reakce ](media/sample-v2-code/logo_react.png) [(msal. js)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-core) .| Volá vlastní webové rozhraní API, které zase volá Microsoft Graph.  | [MS-identity-JavaScript-reakci-Spa-dotnetcore-WebApi-OBO](https://github.com/Azure-Samples/ms-identity-javascript-react-spa-dotnetcore-webapi-obo) |
+| ![Na tomto obrázku je znázorněný JavaScript s logem úhlu ](media/sample-v2-code/logo_angular.png) [(MSALý úhlový)](https://github.com/AzureAD/microsoft-authentication-library-for-js/blob/dev/lib/msal-angular) . | Volá B2C |[Active-Directory-B2C-JavaScript-úhlů-Spa](https://github.com/Azure-Samples/active-directory-b2c-javascript-angular-spa) |
 
 ## <a name="web-applications"></a>Webové aplikace
 
