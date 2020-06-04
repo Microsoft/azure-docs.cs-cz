@@ -11,7 +11,8 @@
       href: create-member.md
     - name: Vytvoření člena s využitím CLI
       href: create-member-cli.md
-    - name: Vytvoření člena s využitím šablony
+    - name: Vytvoření člena s využitím šablony ARM
+      displayName: Resource Manager
       href: create-member-template.md
     - name: Připojení k transakčnímu uzlu
       items:

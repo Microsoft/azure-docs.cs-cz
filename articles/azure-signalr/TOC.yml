@@ -4,7 +4,7 @@
   items:
     - name: Informace o službě Azure SignalR
       href: signalr-overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: 'ASP.NET Core – C#'
@@ -29,7 +29,7 @@
       items:
         - name: Použití diagnostických protokolů k monitorování služby SignalR
           href: signalr-tutorial-diagnostic-logs.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky kódů
       href: 'https://github.com/aspnet/AzureSignalR-samples'
@@ -57,7 +57,7 @@
       href: signalr-concept-messages-and-connections.md
     - name: Otázky výkonu
       href: signalr-concept-performance.md
-    - name: Ověřování
+    - name: Authentication
       href: signalr-concept-authenticate-oauth.md
     - name: Zpracování událostí
       href: signalr-concept-event-grid-integration.md
@@ -73,6 +73,12 @@
       items:
         - name: Obměna přístupových klíčů
           href: signalr-howto-key-rotation.md
+        - name: Použití značek služeb Azure
+          href: howto-service-tags.md
+        - name: Použití privátních koncových bodů Azure
+          href: howto-private-endpoints.md
+        - name: Správa řízení přístupu k síti
+          href: howto-network-access-control.md
     - name: Integrace
       items:
         - name: Vazby služby Azure Functions

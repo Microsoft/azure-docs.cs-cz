@@ -860,8 +860,10 @@
               href: disks-enable-ultra-ssd.md
             - name: Srovnávací test disku
               href: disks-benchmarks.md
-        - name: Vyhledání nepřipojených disků
+        - name: Vyhledání nepřipojených disků – PowerShell
           href: find-unattached-disks.md
+        - name: Vyhledání nepřipojených disků – portál
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Nejčastější dotazy k diskům
           href: faq-for-disks.md
     - name: Správa sítí

@@ -50,6 +50,8 @@
           href: create-fslogix-profile-container.md
         - name: Použití Azure Files a Azure AD DS
           href: create-profile-container-adds.md
+    - name: Vytvoření sdílených složek kontejneru profilu
+      href: create-file-share.md
     - name: Konfigurace nastavení fondu hostitelů
       items:
         - name: Vlastnosti protokolu RDP
@@ -134,6 +136,8 @@
       href: 'https://docs.microsoft.com/windows-server/remote/remote-desktop-services/virtual-machine-recs?context=/azure/virtual-desktop/context/context'
 - name: Zdroje a prostředky
   items:
+    - name: PowerShell
+      href: '/powershell/module/az.desktopvirtualization/?view=azps-4.2.0#desktopvirtualization'
     - name: Experience Estimator
       href: 'https://azure.microsoft.com/services/virtual-desktop/assessment/'
     - name: Cenová kalkulačka

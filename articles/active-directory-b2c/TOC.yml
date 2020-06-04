@@ -87,11 +87,11 @@
         - name: Registrace poskytovatele služeb SAML
           href: connect-with-saml-service-providers.md
           displayName: 'SP, RP, service provider, connect'
-        - name: Registrace aplikace Graph
+        - name: Registrace aplikace Microsoft Graph
           href: microsoft-graph-get-started.md
           displayName: 'migrate, migration, microsoft graph'
         - name: Přidání aplikace webového rozhraní API
-          href: add-web-application.md
+          href: add-web-api-application.md
         - name: Přidání nativní klientské aplikace
           href: add-native-application.md
         - name: iOS ObjC s využitím ověřování aplikace
@@ -397,6 +397,8 @@
           href: user-migration.md
 - name: Referenční informace
   items:
+    - name: Registrace aplikací
+      href: app-registrations-training-guide.md
     - name: Model fakturace
       href: billing.md
     - name: Ukázky kódů

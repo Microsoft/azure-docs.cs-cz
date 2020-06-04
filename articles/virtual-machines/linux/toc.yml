@@ -952,8 +952,10 @@
               href: configure-raid.md
             - name: Konfigurace LVM
               href: configure-lvm.md
-        - name: Vyhledání nepřipojených disků
+        - name: Vyhledání nepřipojených disků – CLI
           href: find-unattached-disks.md
+        - name: Vyhledání nepřipojených disků – portál
+          href: ../disks-find-unattached-portal.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
         - name: Použití úložiště souborů
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: Nejčastější dotazy k diskům

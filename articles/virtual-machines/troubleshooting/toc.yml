@@ -69,6 +69,8 @@
       items:
         - name: Diagnostika spouštění
           href: boot-diagnostics.md
+        - name: Chyba spuštění – došlo k chybě čtení z disku
+          href: boot-error-disk-read-error-occurred.md
         - name: Chyby nástroje BitLocker
           href: troubleshoot-bitlocker-boot-error.md
         - name: Chyby typu modrá obrazovka

@@ -194,6 +194,8 @@
           href: metrics.md
 - name: Návody
   items:
+    - name: 'Vytvoření, zobrazení a správa systémových témat'
+      href: create-view-manage-system-topics.md
     - name: Publikování ve vlastním tématu
       href: post-to-custom-topic.md
     - name: Přihlášení k odběru událostí Auth0

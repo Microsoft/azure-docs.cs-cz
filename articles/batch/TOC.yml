@@ -129,6 +129,8 @@
           href: batch-custom-images.md
         - name: Vytvoření fondu ve virtuální síti
           href: batch-virtual-network.md
+        - name: Vytvoření fondu s veřejnými IP adresami
+          href: create-pool-public-ip.md
         - name: Připojení virtuálního systému souborů
           href: virtual-file-mount.md
         - name: Připojení sdílené složky Azure

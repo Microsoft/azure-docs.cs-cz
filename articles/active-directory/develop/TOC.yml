@@ -548,6 +548,9 @@
               href: msal-js-pass-custom-state-authentication-request.md
             - name: Chování výzvy
               href: msal-js-prompt-behavior.md
+            - name: Migrace SPA z implicitní varianty do toku ověřovacího kódu
+              href: migrate-spa-implicit-to-auth-code.md
+              displayName: 'authorization, single-page app, 2.0'
         - name: MSAL pro iOS a MacOS
           items:
             - name: Rozdíly v MSAL pro iOS a macOS
