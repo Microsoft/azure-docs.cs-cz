@@ -90,6 +90,10 @@
                   href: tutorial-incremental-copy-change-tracking-feature-portal.md
                 - name: Azure PowerShell
                   href: tutorial-incremental-copy-change-tracking-feature-powershell.md
+            - name: Použití CDC v Azure SQL MI
+              items:
+                - name: Uživatelské rozhraní
+                  href: tutorial-incremental-copy-change-data-capture-feature-portal.md
             - name: Nové soubory podle data poslední úpravy
               href: tutorial-incremental-copy-lastmodified-copy-data-tool.md
             - name: Nové soubory podle názvu souboru
@@ -196,6 +200,8 @@
       items:
         - name: Vizuální vytváření datových továren
           href: author-visually.md
+        - name: Centrum správy
+          href: author-management-hub.md
         - name: Správa zdrojového kódu
           href: source-control.md
         - name: Průběžná integrace a doručování

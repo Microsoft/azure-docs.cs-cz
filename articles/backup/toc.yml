@@ -123,6 +123,8 @@
               href: backup-azure-linux-app-consistent.md
         - name: Obnovení
           items:
+            - name: Informace o obnovení virtuálních počítačů Azure
+              href: about-azure-vm-restore.md
             - name: Obnovení virtuálních počítačů Azure na portálu
               href: backup-azure-arm-restore-vms.md
             - name: Obnovení souborů ze záloh virtuálních počítačů Azure

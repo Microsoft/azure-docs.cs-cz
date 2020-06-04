@@ -70,7 +70,8 @@
       items:
         - name: Trénování a nasazení s využitím CLI
           href: tutorial-train-deploy-model-cli.md
-        - name: Vytváření pracovních prostorů a s využitím šablon Resource Manageru
+        - name: Vytváření pracovních prostorů s využitím šablony ARM
+          displayName: Resource Manager
           href: tutorial-resource-manager-workspace.md
     - name: Visual Studio Code
       items:

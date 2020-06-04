@@ -24,7 +24,7 @@
           href: batch-transcription.md
         - name: Základy rozpoznávání řeči
           href: speech-to-text-basics.md
-    - name: Rychlý start
+    - name: Rychlé starty
       items:
         - name: Rozpoznávání řeči se vstupem z mikrofonu
           href: quickstarts/speech-to-text-from-microphone.md
@@ -32,6 +32,8 @@
           href: quickstarts/speech-to-text-from-file.md
         - name: Rozpoznávání řeči uložené v úložišti objektů blob
           href: quickstarts/from-blob.md
+        - name: Testování modelu s využitím zvukových souborů v sadě Speech Studio
+          href: quickstarts/speech-studio-test-model.md
     - name: Návody
       items:
         - name: Volba režimu rozpoznávání řeči
@@ -466,7 +468,7 @@
           items:
             - name: Rozhraní REST API pro rozpoznávání řeči
               href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
-- name: Hostování
+- name: Hosting
   items:
     - name: Dokumentace k hostování
       href: index-hosting.yml
