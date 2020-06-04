@@ -10,14 +10,14 @@ ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 09/03/2019
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: 7181dd74963a1af05438b16e00e2442478daac03
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a709d0d4aa9b7c4e3ab06e6d34bbb199cb1b5917
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267909"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323922"
 ---
-# <a name="tutorial-secure-an-azure-sql-database"></a>Kurz: zabezpečení Azure SQL Database
+# <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Kurz: zabezpečení databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Co se v tomto kurzu naučíte:
@@ -25,7 +25,7 @@ Co se v tomto kurzu naučíte:
 > [!div class="checklist"]
 >
 > - Vytvoření pravidel brány firewall na úrovni serveru a databáze
-> - Konfigurace správce Azure Active Directory (AD)
+> - Konfigurace správce Azure Active Directory (Azure AD)
 > - Správa přístupu uživatele s ověřováním SQL, ověřováním Azure AD a zabezpečenými připojovacími řetězci
 > - Povolit funkce zabezpečení, jako je například rozšířené zabezpečení dat, auditování, maskování dat a šifrování
 
@@ -42,7 +42,7 @@ Azure SQL Database zabezpečuje data tím, že vám umožní:
 Další informace najdete v článcích [Přehled zabezpečení Azure SQL Database](/azure/sql-database/sql-database-security-index) a [Možnosti](security-overview.md) .
 
 > [!TIP]
-> Následující Microsoft Learn modul vám pomůže získat zdarma informace o tom, jak [zabezpečit Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/).
+> Následující Microsoft Learn modul vám pomůže získat zdarma informace o tom, jak [zabezpečit databázi v Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,7 +50,7 @@ K dokončení tohoto kurzu se ujistěte, že máte následující požadavky:
 
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms)
 - [Server](logical-servers.md) a jediná databáze
-  - Vytváření pomocí [Azure Portal](single-database-create-quickstart.md), [CLI](az-cli-script-samples-content-guide.md)nebo [PowerShellu](powershell-script-content-guide.md)
+  - Vytvořte je pomocí [Azure Portal](single-database-create-quickstart.md), [CLI](az-cli-script-samples-content-guide.md)nebo [PowerShellu](powershell-script-content-guide.md) .
 
 Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
 
@@ -119,7 +119,7 @@ Ujistěte se, že používáte příslušnou spravovanou doménu Azure Active Di
 
 Nastavení správce Azure AD:
 
-1. V Azure Portal na stránce **SQL Server** vyberte **Správce služby Active Directory**. Potom vyberte **nastavit správce**.
+1. V Azure Portal na stránce **serveru SQL** vyberte možnost **Správce služby Active Directory**. Potom vyberte **nastavit správce**.
 
     ![Výběr Active Directory](./media/secure-database-tutorial/admin-settings.png)  
 
@@ -250,7 +250,7 @@ Postup při povolení pokročilých zabezpečení dat:
 
 1. Na stránce **SQL Server** najděte část **zabezpečení** a vyberte **Upřesnit zabezpečení dat**.
 
-   1. Tuto funkci povolíte výběrem možnosti **v** části **Upřesnit zabezpečení dat** . Vyberte účet úložiště pro ukládání výsledků posouzení ohrožení zabezpečení. Potom vyberte **Uložit**.
+   1. Tuto funkci povolíte výběrem možnosti **v** části **Upřesnit zabezpečení dat** . Vyberte účet úložiště pro ukládání výsledků posouzení ohrožení zabezpečení. Pak vyberte **Uložit**.
 
       ![Navigační podokno](./media/secure-database-tutorial/threat-settings.png)
 

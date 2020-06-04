@@ -4,19 +4,19 @@ description: Přečtěte si o funkci ENDSWITH SQL System v Azure Cosmos DB a vr�
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: 0cd927af50eca04aa8162d9d8f292077d9e4165c
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 3d37786c7364b07228d1d8d6540e7b6d8a174eb5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844960"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322682"
 ---
 # <a name="endswith-azure-cosmos-db"></a>ENDSWITH (Azure Cosmos DB)
 
- Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým.  
+Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz končí druhým.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -75,6 +75,8 @@ Zvažte například dvě vlastnosti: město a země. Mohutnost města je 5 000 a
 ```
 
 První dotaz bude pravděpodobně používat více ru než druhý dotaz, protože mohutnost města je vyšší než země.
+
+Pokud je velikost vlastnosti v EndsWith větší než 1 KB u některých dokumentů, bude tento dotazovací stroj potřebovat tyto dokumenty načíst. V takovém případě dotazovací stroj nebude moci plně vyhodnotit EndsWith pomocí indexu. Náklady na RU za EndsWith budou vysoké, pokud máte velký počet dokumentů s velikostí vlastností větší než 1 KB.
 
 ## <a name="next-steps"></a>Další kroky
 

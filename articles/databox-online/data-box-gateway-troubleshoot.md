@@ -5,25 +5,26 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: b452362744d7fbf655ea043127a15f5173d04e4c
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 675ee8b19a870221488ade2f578199f4f53599b9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562453"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338987"
 ---
-# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Vyřešte potíže s Azure Data Box Gateway 
+# <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Vyřešte potíže s Azure Data Box Gateway
 
-Tento článek popisuje postup řešení potíží s Azure Data Box Gateway. V tomto článku získáte informace o těchto tématech:
+Tento článek popisuje postup řešení potíží s Azure Data Box Gateway.
+V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
+>
 > * Spuštění diagnostiky
 > * Shromáždění balíčku pro podporu
 > * Použití protokolů k řešení potíží
-
 
 ## <a name="run-diagnostics"></a>Spuštění diagnostiky
 

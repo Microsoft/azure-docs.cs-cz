@@ -11,25 +11,28 @@ author: nishankgu
 ms.author: nigup
 ms.date: 05/08/2020
 ms.custom: contperfq4
-ms.openlocfilehash: c5862ee90a12240e7293647fae6af4f18f30c164
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0fb9e0ced0cc7cacdd2247bd208e4354fffe82c8
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680385"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344913"
 ---
 # <a name="manage--increase-quotas-for-resources-with-azure-machine-learning"></a>Správa & zvýšení kvót pro prostředky pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Tento článek poskytuje [Azure Machine Learning](overview-what-is-azure-ml.md) uživatelům s podrobnostmi o předkonfigurovaných omezeních prostředků Azure pro vaše předplatné. K dispozici jsou také pokyny k vyžádání vylepšení kvóty pro jednotlivé typy prostředků. Tato omezení jsou zavedena, aby nedocházelo k překročení rozpočtu v důsledku podvodů, a k zajištění omezení kapacity Azure.
+V tomto článku se dozvíte o předem konfigurovaných omezeních prostředků Azure pro vaše předplatné [Azure Machine Learning](overview-what-is-azure-ml.md) a o tom, jaké kvóty můžete spravovat. Tato omezení jsou zavedena, aby nedocházelo k překročení rozpočtu v důsledku podvodů, a k zajištění omezení kapacity Azure. 
 
 Stejně jako u ostatních služeb Azure platí omezení pro určité prostředky spojené s Azure Machine Learning. Tato omezení omezují rozsah od limitu na počet [pracovních prostorů](concept-workspace.md) , který se má omezit na skutečné základní výpočetní prostředky, které se používají pro školení modelů nebo odvozování a bodování. 
 
 Při návrhu a škálování prostředků Azure Machine Learning pro produkční úlohy zvažte Tato omezení. Pokud například váš cluster nedosáhne cílového počtu uzlů, možná jste dosáhli limitu Azure Machine Learning výpočetních jader pro vaše předplatné. Pokud chcete limit nebo kvótu nad výchozím limitem zvýšit, otevřete online žádost o zákaznickou podporu zdarma. Mezní hodnoty se nedají vyhodnotit nad maximální hodnotou limitu uvedenou v následujících tabulkách z důvodu omezení kapacity Azure. Pokud neexistují žádné sloupce maximálního limitu, prostředek nemá nastavitelný limit.
 
+
+Spolu se správou kvót můžete také zjistit, jak [plánovat & spravovat náklady na Azure Machine Learning](concept-plan-manage-cost.md).
+
 ## <a name="special-considerations"></a>Zvláštní požadavky
 
-+ Kvóta je úvěrový limit, nikoli záruka na kapacitu. Pokud máte velké nároky na kapacitu, obraťte se na podporu Azure.
++ Kvóta je úvěrový limit, nikoli záruka na kapacitu. Pokud máte velké nároky na kapacitu, obraťte se na podporu Azure. Můžete také [zvýšit svoje kvóty](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quota-errors).
 
 + Vaše kvóta se sdílí mezi všemi službami ve vašich předplatných, včetně Azure Machine Learning. Jedinou výjimkou je Azure Machine Learning výpočetní prostředí, které má samostatnou kvótu od základní výpočetní kvóty. Počítejte s tím, že při vyhodnocování vašich potřeb kapacity budete počítat využití kvót napříč všemi službami.
 
@@ -63,7 +66,7 @@ Dostupné prostředky:
 
 + K dispozici jsou i další striktní omezení, která nelze překročit.
 
-| **Prostředek** | **Maximální limit** |
+| **Prostředek** | **Maximální omezení** |
 | --- | --- |
 | Maximální počet pracovních prostorů na skupinu prostředků | 800 |
 | Maximální počet uzlů v prostředku s jednou Azure Machine Learning COMPUTE (AmlCompute) | uzly 100 |

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: 415f76fc7c8b52a79bc864e61e1f85759e3f5d1f
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 523fd3103585865a969f6463b3dc41fe362b9130
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043377"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324705"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Kurz: implementace geografické distribuované databáze (Azure SQL Database)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -42,8 +42,8 @@ K dokončení tohoto kurzu se ujistěte, že máte nainstalované následující
 
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 - Jedna databáze v Azure SQL Database. Chcete-li vytvořit jedno použití,
-  - [Azure Portal](single-database-create-quickstart.md)
-  - [Rozhraní příkazového řádku](az-cli-script-samples-content-guide.md)
+  - [Portál Azure](single-database-create-quickstart.md)
+  - [Rozhraní příkazového řádku Azure](az-cli-script-samples-content-guide.md)
   - [PowerShell](powershell-script-content-guide.md)
 
   > [!NOTE]
@@ -92,7 +92,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourceGroup -ServerName $server -Databas
     Add-AzSqlDatabaseToFailoverGroup -ResourceGroupName $resourceGroup -ServerName $server -FailoverGroupName $failoverGroup
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 > [!IMPORTANT]
 > Spusťte `az login` , abyste se přihlásili do Azure.
@@ -344,7 +344,7 @@ Testování převzetí služeb při selhání:
     -ServerName $server -FailoverGroupName $failoverGroup
    ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 Roli serveru pro zotavení po havárii můžete zkontrolovat během testu pomocí následujícího příkazu:
 
@@ -370,7 +370,7 @@ Testování převzetí služeb při selhání:
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste nakonfigurovali Azure SQL Database a aplikaci pro převzetí služeb při selhání do vzdálené oblasti a otestovali jste plán převzetí služeb při selhání. Naučili jste se tyto postupy:
+V tomto kurzu jste nakonfigurovali databázi v Azure SQL Database a aplikaci pro převzetí služeb při selhání do vzdálené oblasti a otestovali jste plán převzetí služeb při selhání. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 >
@@ -378,7 +378,7 @@ V tomto kurzu jste nakonfigurovali Azure SQL Database a aplikaci pro převzetí 
 > - Spuštění aplikace Java pro dotazování databáze v SQL Database
 > - Testovací převzetí služeb při selhání
 
-Přejděte k dalšímu kurzu o přidání spravované instance Azure SQL do skupiny převzetí služeb při selhání:
+Přejděte k dalšímu kurzu o přidání instance spravované instance Azure SQL do skupiny převzetí služeb při selhání:
 
 > [!div class="nextstepaction"]
-> [Přidání spravované instance Azure SQL do skupiny převzetí služeb při selhání](../managed-instance/failover-group-add-instance-tutorial.md)
+> [Přidání instance spravované instance Azure SQL do skupiny převzetí služeb při selhání](../managed-instance/failover-group-add-instance-tutorial.md)

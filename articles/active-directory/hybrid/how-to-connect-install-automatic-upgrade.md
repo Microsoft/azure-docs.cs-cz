@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 06/01/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a05de8bf6a6e4ab79e63d6634ddb1b79fae6045f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 232a1b714802ce9531a9932bc2af4c6b6f35dffd
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680217"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324211"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
 Tato funkce byla představena s [1.1.105.0EM buildu (vydáno 2016. února)](reference-connect-version-history.md#111050).  Tato funkce se aktualizovala v [Build 1.1.561](reference-connect-version-history.md#115610) a teď podporuje další scénáře, které se dřív nepodporovaly.
@@ -67,7 +67,7 @@ Teď můžete zobrazit události související se stavem pro automatický upgrad
 
 Kód výsledku obsahuje předponu s přehledem stavu.
 
-| Předpona kódu výsledku | Popis |
+| Předpona kódu výsledku | Description |
 | --- | --- |
 | Úspěch |Instalace byla úspěšně upgradována. |
 | UpgradeAborted |Upgrade zastavil dočasnou podmínku. Bude znovu opakován a očekává se, že bude později úspěšné. |
@@ -75,7 +75,7 @@ Kód výsledku obsahuje předponu s přehledem stavu.
 
 Tady je seznam nejběžnějších zpráv, které najdete. Neobsahuje žádné výpisy, ale zpráva výsledku by měla být nejasná s obsahem problému.
 
-| Zpráva výsledku | Popis |
+| Zpráva výsledku | Description |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Do registru nejde zapisovat. |
@@ -89,18 +89,11 @@ Tady je seznam nejběžnějších zpráv, které najdete. Neobsahuje žádné v�
 | UpgradeAbortedSyncExeInUse |[Synchronizace uživatelského rozhraní Service Manageru](how-to-connect-sync-service-manager-ui.md) je na serveru otevřená. |
 | UpgradeAbortedSyncOrConfigurationInProgress |Spustí se Průvodce instalací nebo se naplánovala synchronizace mimo Plánovač. |
 | **UpgradeNotSupported** | |
-| UpgradeNotSupportedAdfsSignInMethod | Jako metodu přihlašování jste vybrali službu AD FS. |
 | UpgradeNotSupportedCustomizedSyncRules |Do konfigurace jste přidali vlastní pravidla. |
-| UpgradeNotSupportedDeviceWritebackEnabled |Povolili jste funkci [zpětného zápisu zařízení](how-to-connect-device-writeback.md) . |
-| UpgradeNotSupportedGroupWritebackEnabled |Povolili jste funkci zpětného zápisu skupiny. |
 | UpgradeNotSupportedInvalidPersistedState |Instalace není expresním nastavením nebo DirSyncm upgradem. |
-| UpgradeNotSupportedMetaverseSizeExceeeded |V úložišti Metaverse máte více než 100 000 objektů. |
-| UpgradeNotSupportedMultiForestSetup |Připojujete se k více než jedné doménové struktuře. Expresní instalace se připojuje jenom k jedné doménové struktuře. |
 | UpgradeNotSupportedNonLocalDbInstall |Nepoužíváte databázi SQL Server Express LocalDB. |
-| UpgradeNotSupportedNonMsolAccount |[Účet služba AD DS Connector](reference-connect-accounts-permissions.md#ad-ds-connector-account) už není výchozím MSOL_m účtem. |
-| UpgradeNotSupportedNotConfiguredSignInMethod | Při nastavování AAD Connect jste zvolili možnost *Nekonfigurovat* při výběru metody přihlašování. |
-| UpgradeNotSupportedStagingModeEnabled |Server je nastavený jako [pracovní režim](how-to-connect-sync-staging-server.md). |
-| UpgradeNotSupportedUserWritebackEnabled |Povolili jste funkci [zpětného zápisu uživatelů](how-to-connect-preview.md#user-writeback) . |
+|UpgradeNotSupportedLocalDbSizeExceeded|Velikost místní databáze je větší nebo rovna 8 GB.|
+|UpgradeNotSupportedAADHealthUploadDisabled|Nahrávání dat o stavu je na portálu zakázané.|
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si další informace o [Integrování místních identit do služby Azure Active Directory](whatis-hybrid-identity.md).

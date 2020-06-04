@@ -1,5 +1,5 @@
 ---
-title: Kopírování dat ze služby Google Cloud Storage pomocí Azure Data Factory
+title: Kopírování dat z Google Cloud Storage pomocí Azure Data Factory
 description: Přečtěte si, jak kopírovat data z Google Cloud Storage na podporovaná úložiště dat jímky pomocí Azure Data Factory.
 services: data-factory
 author: linda33wj
@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: jingwang
-ms.openlocfilehash: f6b488fc4817e360ed512441f67d2e00356e6134
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: f06f0752071781e8ca1c03f13610d80ecb763f67
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758601"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344947"
 ---
-# <a name="copy-data-from-google-cloud-storage-using-azure-data-factory"></a>Kopírování dat ze služby Google Cloud Storage pomocí Azure Data Factory
+# <a name="copy-data-from-google-cloud-storage-by-using-azure-data-factory"></a>Kopírování dat z Google Cloud Storage pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Tento článek popisuje, jak kopírovat data ze služby Google Cloud Storage (GC). Pokud se chcete dozvědět o Azure Data Factory, přečtěte si [úvodní článek](introduction.md).
@@ -31,22 +31,22 @@ Tento konektor Google Cloud Storage se podporuje pro následující činnosti:
 - [Aktivita GetMetadata](control-flow-get-metadata-activity.md)
 - [Odstranit aktivitu](delete-activity.md)
 
-Konkrétně tento konektor Google Cloud Storage podporuje kopírování souborů tak, jak jsou, nebo k analýze souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md). Využívá interoperabilitu kompatibilní se systémem GC S3.
+Konkrétně tento konektor Google Cloud Storage podporuje kopírování souborů, jako je, nebo k analýze souborů s [podporovanými formáty souborů a kompresními kodeky](supported-file-formats-and-compression-codecs.md). Využívá interoperabilitu kompatibilní s GC S3.
 
 ## <a name="prerequisites"></a>Požadavky
 
 V účtu úložiště Google Cloud se vyžaduje následující nastavení:
 
 1. Povolení interoperability pro váš účet Google Cloud Storage
-2. Nastavte výchozí projekt obsahující data, která chcete kopírovat z cílového GC kontejneru.
-3. Vytvoření účtu služby a definování správné úrovně oprávnění pomocí cloudu IAM v GCP 
-4. Generovat přístupové klíče pro tento účet služby
+2. Nastavte výchozí projekt obsahující data, která chcete kopírovat z cílového GCho kontejneru.
+3. Vytvořte účet služby a definujte správnou úroveň oprávnění pomocí cloudu IAM v GCP. 
+4. Vygenerujte přístupové klíče pro tento účet služby.
 
 ![Načíst přístupový klíč pro Google Cloud Storage](media/connector-google-cloud-storage/google-storage-cloud-settings.png)
 
 ## <a name="required-permissions"></a>Požadovaná oprávnění
 
-Pokud chcete kopírovat data ze služby Google Cloud Storage, ujistěte se, že máte udělená potřebná oprávnění. Oprávnění definovaná v účtu služby mohou obsahovat `storage.buckets.get` `storage.buckets.list` `storage.objects.get` pro operace objektů.
+Pokud chcete kopírovat data ze služby Google Cloud Storage, ujistěte se, že máte udělená potřebná oprávnění. Oprávnění definovaná v účtu služby můžou obsahovat `storage.buckets.get` `storage.buckets.list` operace s objekty, nebo `storage.objects.get` .
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -56,17 +56,17 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 ## <a name="linked-service-properties"></a>Vlastnosti propojené služby
 
-Pro propojenou službu Google Cloud Storage jsou podporovány následující vlastnosti:
+Pro propojené služby Google Cloud Storage se podporují následující vlastnosti:
 
 | Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| typ | Vlastnost Type musí být nastavená na **GoogleCloudStorage**. | Ano |
+| typ | Vlastnost **Type** musí být nastavená na **GoogleCloudStorage**. | Ano |
 | accessKeyId | ID tajného přístupového klíče Přístupovou klávesu a tajný klíč najdete v části [požadavky](#prerequisites). |Ano |
-| secretAccessKey | Tajný přístupový klíč sám o sobě. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| serviceUrl | Zadejte vlastní koncový bod GC jako **`https://storage.googleapis.com`** . | Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud je úložiště dat umístěné v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. |No |
+| secretAccessKey | Tajný přístupový klíč sám o sobě. Označte toto pole jako **SecureString** a bezpečně ho uložte do Data Factory nebo [odkazujte na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
+| serviceUrl | Zadejte vlastní koncový bod GC jako `https://storage.googleapis.com` . | Ano |
+| connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Můžete použít prostředí Azure Integration runtime nebo místní prostředí Integration runtime (Pokud je vaše úložiště dat v privátní síti). Pokud tato vlastnost není zadaná, služba použije výchozí prostředí Azure Integration runtime. |Ne |
 
-Zde naleznete příklad:
+Tady je příklad:
 
 ```json
 {
@@ -97,12 +97,12 @@ Následující vlastnosti jsou podporovány pro úložiště Google Cloud v čá
 
 | Vlastnost   | Popis                                                  | Vyžadováno |
 | ---------- | ------------------------------------------------------------ | -------- |
-| typ       | Vlastnost Type v rámci `location` datové sady musí být nastavená na **GoogleCloudStorageLocation**. | Ano      |
+| typ       | Vlastnost **Type** v rámci `location` datové sady musí být nastavená na **GoogleCloudStorageLocation**. | Ano      |
 | interval intervalu | Název intervalu GC                                          | Ano      |
-| folderPath | Cesta ke složce v daném kontejneru. Pokud chcete použít zástupný znak k filtrování složky, toto nastavení nechejte a zadejte v nastavení zdroje aktivity. | No       |
-| fileName   | Název souboru v daném intervalu + folderPath. Pokud chcete použít zástupný znak k filtrování souborů, přeskočte toto nastavení a zadejte v nastavení zdroje aktivity. | No       |
+| folderPath | Cesta ke složce v daném kontejneru. Pokud chcete použít zástupný znak k filtrování složky, toto nastavení nechejte a určete v nastavení zdroje aktivity. | Ne       |
+| fileName   | Název souboru v daném intervalu a cestě ke složce. Pokud chcete k filtrování souborů použít zástupný znak, přeskočte toto nastavení a zadejte v nastavení zdroje aktivity. | Ne       |
 
-**Případě**
+**Příklad:**
 
 ```json
 {
@@ -131,9 +131,9 @@ Následující vlastnosti jsou podporovány pro úložiště Google Cloud v čá
 
 ## <a name="copy-activity-properties"></a>Vlastnosti aktivity kopírování
 
-Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností podporovaných zdrojem Google Cloud Storage.
+Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování aktivit, najdete v článku [kanály](concepts-pipelines-activities.md) . V této části najdete seznam vlastností, které podporuje zdroj úložiště Google Cloud.
 
-### <a name="google-cloud-storage-as-source"></a>Google Cloud Storage jako zdroj
+### <a name="google-cloud-storage-as-a-source-type"></a>Google Cloud Storage jako typ zdroje
 
 [!INCLUDE [data-factory-v2-file-formats](../../includes/data-factory-v2-file-formats.md)] 
 
@@ -141,20 +141,20 @@ Následující vlastnosti jsou podporovány pro úložiště Google Cloud v čá
 
 | Vlastnost                 | Popis                                                  | Vyžadováno                                                    |
 | ------------------------ | ------------------------------------------------------------ | ----------------------------------------------------------- |
-| typ                     | Vlastnost Type v poli `storeSettings` musí být nastavená na **GoogleCloudStorageReadSettings**. | Ano                                                         |
+| typ                     | Vlastnost **Type** v poli `storeSettings` musí být nastavená na **GoogleCloudStorageReadSettings**. | Ano                                                         |
 | ***Vyhledejte soubory ke zkopírování:*** |  |  |
 | MOŽNOST 1: statická cesta<br> | Kopírovat z daného kontejneru nebo složky/cesty k souboru, které jsou zadány v datové sadě. Pokud chcete zkopírovat všechny soubory z intervalu nebo složky, zadejte také `wildcardFileName` jako `*` . |  |
-| MOŽNOST 2: Předpona GC<br>-prefix | Prefix pro název klíče GC v rámci daného intervalu nakonfigurovaného v datové sadě pro filtrování zdrojových souborů GC Jsou vybrané GC klíče, jejichž název začíná na `bucket_in_dataset/this_prefix` . Využívá filtr na straně služby GC, který poskytuje lepší výkon než filtr zástupných znaků. | No |
-| MOŽNOST 3: zástupný znak<br>- wildcardFolderPath | Cesta ke složce se zástupnými znaky v daném kontejneru nakonfigurovaném v datové sadě pro filtrování zdrojových složek. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); `^` Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte k Escape. <br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | No                                            |
-| MOŽNOST 3: zástupný znak<br>- wildcardFileName | Název souboru se zástupnými znaky v rámci daného intervalu + folderPath/wildcardFolderPath pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku); `^` Pokud vlastní název složky obsahuje zástupný znak nebo tento řídicí znak v rámci, použijte k Escape.  Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ano |
-| MOŽNOST 3: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat daná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek, který je relativní cestou k cestě nakonfigurované v datové sadě.<br/>Při použití této možnosti nezadávejte název souboru v datové sadě. Další příklady najdete v [příkladech seznamu souborů](#file-list-examples). |No |
+| MOŽNOST 2: Předpona GC<br>-prefix | Předpona pro název klíče GC v rámci daného intervalu nakonfigurovaného v datové sadě pro filtrování zdrojových souborů GC Jsou vybrané GC klíče, jejichž názvy začínají na `bucket_in_dataset/this_prefix` . Využívá filtr na straně služby GC, který poskytuje lepší výkon než filtr zástupných znaků. | Ne |
+| MOŽNOST 3: zástupný znak<br>- wildcardFolderPath | Cesta ke složce se zástupnými znaky v daném kontejneru nakonfigurovaném pro filtrování zdrojových složek. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k ukončení, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř. <br>Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ne                                            |
+| MOŽNOST 3: zástupný znak<br>- wildcardFileName | Název souboru se zástupnými znaky v daném intervalu a cestě ke složce (nebo cesta ke složce se zástupnými znaky) pro filtrování zdrojových souborů. <br>Povolené zástupné znaky jsou: `*` (odpovídá žádnému nebo více znakům) a `?` (odpovídá žádnému nebo jednomu znaku). Použijte `^` k ukončení, jestli má název složky zástupný znak nebo tento řídicí znak uvnitř.  Další příklady najdete v [příkladech složky a filtru souborů](#folder-and-file-filter-examples). | Ano |
+| MOŽNOST 3: seznam souborů<br>- fileListPath | Určuje, že se má zkopírovat daná sada souborů. Najeďte na textový soubor, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek, což je relativní cesta k cestě nakonfigurované v datové sadě.<br/>Při použití této možnosti nezadávejte název souboru v datové sadě. Další příklady najdete v [příkladech seznamu souborů](#file-list-examples). |Ne |
 | ***Další nastavení:*** |  | |
-| zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je rekurzivní nastavení nastaveno na hodnotu true a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky. <br>Povolené hodnoty jsou **true** (výchozí) a **false**.<br>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . |No |
-| modifiedDatetimeStart    | Filtr souborů na základě atributu: Naposledy změněno <br>Soubory budou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br> Vlastnosti mohou mít hodnotu NULL, což znamená, že pro datovou sadu nebude použit filtr atributů souboru.  Pokud `modifiedDatetimeStart` má hodnota DateTime `modifiedDatetimeEnd` , ale je null, znamená to, že budou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Pokud `modifiedDatetimeEnd` má hodnota DateTime `modifiedDatetimeStart` , ale je null, znamená to, že jsou soubory, jejichž naposledy upravený atribut je menší než hodnota DateTime, bude vybrána.<br/>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . | No                                            |
-| modifiedDatetimeEnd      | Stejné jako výše.                                               | No                                                          |
-| maxConcurrentConnections | Počet připojení, která se mají souběžně připojit k úložišti úložiště Určete pouze v případě, že chcete omezit souběžné připojení k úložišti dat. | No                                                          |
+| zahrnout | Určuje, zda mají být data rekurzivně čtena z podsložek nebo pouze ze zadané složky. Všimněte si, že pokud je **rekurzivní** nastavení nastaveno na **hodnotu true** a jímka je úložiště založené na souborech, prázdná složka nebo podsložka není kopírována ani vytvořena v jímky. <br>Povolené hodnoty jsou **true** (výchozí) a **false**.<br>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . |Ne |
+| modifiedDatetimeStart    | Soubory jsou filtrovány na základě atributu: Naposledy změněno. <br>Soubory budou vybrány, pokud čas poslední změny spadá do časového rozsahu mezi `modifiedDatetimeStart` a `modifiedDatetimeEnd` . Čas se použije na časové pásmo UTC ve formátu "2018-12-01T05:00:00Z". <br> Vlastnosti mohou mít **hodnotu null**, což znamená, že pro datovou sadu nebude použit filtr atributů souborů.  Když `modifiedDatetimeStart` má hodnotu DateTime, ale `modifiedDatetimeEnd` je **null**, budou vybrány soubory, jejichž atribut Last Modified je větší nebo roven hodnotě DateTime.  Když `modifiedDatetimeEnd` má hodnotu DateTime, ale `modifiedDatetimeStart` je **null**, soubory, jejichž atribut Last Modified je menší než hodnota DateTime, se vybere.<br/>Tato vlastnost se při konfiguraci nepoužívá `fileListPath` . | Ne                                            |
+| modifiedDatetimeEnd      | Stejné jako výše.                                               | Ne                                                          |
+| maxConcurrentConnections | Počet souběžných připojení k úložišti. Určete pouze v případě, že chcete omezit souběžná připojení k úložišti dat. | Ne                                                          |
 
-**Případě**
+**Příklad:**
 
 ```json
 "activities":[
@@ -210,9 +210,9 @@ Tato část popisuje výsledné chování cesty ke složce a názvu souboru s fi
 
 Tato část popisuje výsledné chování při použití cesty seznamu souborů ve zdroji aktivity kopírování.
 
-Za předpokladu, že máte následující strukturu zdrojové složky a chcete soubory zkopírovat tučně:
+Předpokládejme, že máte následující strukturu zdrojové složky a chcete soubory zkopírovat tučně:
 
-| Ukázka zdrojové struktury                                      | Obsah v FileListToCopy. txt                             | Konfigurace ADF                                            |
+| Ukázka zdrojové struktury                                      | Obsah v FileListToCopy. txt                             | Konfigurace Data Factory                                            |
 | ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------------------------ |
 | blocích<br/>&nbsp;&nbsp;&nbsp;&nbsp;Složka<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**Soubor1. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Soubor2. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Subfolder1<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File3. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;File4. JSON<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;**File5. csv**<br/>&nbsp;&nbsp;&nbsp;&nbsp;Mezipaměť<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FileListToCopy. txt | Soubor1. csv<br>Subfolder1/file3. csv<br>Subfolder1/File5. csv | **V datové sadě:**<br>Blocích`bucket`<br>– Cesta ke složce:`FolderA`<br><br>**Ve zdroji aktivity kopírování:**<br>– Cesta k seznamu souborů:`bucket/Metadata/FileListToCopy.txt` <br><br>Cesta k seznamu souborů odkazuje na textový soubor ve stejném úložišti dat, který obsahuje seznam souborů, které chcete zkopírovat, jeden soubor na řádek s relativní cestou k cestě, která je nakonfigurovaná v datové sadě. |
 
@@ -222,15 +222,15 @@ Chcete-li získat informace o vlastnostech, ověřte [aktivitu vyhledávání](c
 
 ## <a name="getmetadata-activity-properties"></a>Vlastnosti aktivity GetMetadata
 
-Pokud se chcete dozvědět víc o vlastnostech, podívejte se na [aktivitu GetMetadata](control-flow-get-metadata-activity.md) . 
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu GetMetadata](control-flow-get-metadata-activity.md). 
 
 ## <a name="delete-activity-properties"></a>Odstranit vlastnosti aktivity
 
-Další informace o vlastnostech najdete v části [Odstranění aktivity](delete-activity.md) .
+Chcete-li získat informace o vlastnostech, ověřte [aktivitu odstranit](delete-activity.md).
 
 ## <a name="legacy-models"></a>Starší modely
 
-Pokud jste pomocí konektoru Amazon S3 zkopírovali data z Google Cloud Storage, je stále podporovaná tak, jak je kvůli zpětné kompatibilitě. Navrhnete použití nového modelu uvedeného výše v předchozích částech a uživatelské rozhraní pro vytváření ADF bylo přepnuto na generování nového modelu.
+Pokud jste pomocí konektoru Amazon S3 zkopírovali data z Google Cloud Storage, je stále podporovaná, jak je kvůli zpětné kompatibilitě. Doporučujeme, abyste používali nový model uvedený výše, dokud se uživatelské rozhraní Data Factory pro vytváření obsahu nepřepne na generování nového modelu.
 
 ## <a name="next-steps"></a>Další kroky
-Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, pomocí aktivity kopírování v Azure Data Factory najdete v tématu [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).
+Seznam úložišť dat, která aktivita kopírování v Azure Data Factory podporuje jako zdroje a jímky, najdete v tématu [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats).

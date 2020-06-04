@@ -12,23 +12,23 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: cfd0aa6cf62c4f70365ecc06ad75efdda9563470
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 5cc5adf54b522f9209b386fa1fbb457ef6a3e8ff
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310812"
+ms.locfileid: "84322341"
 ---
 # <a name="configure-advanced-threat-protection-in-azure-sql-managed-instance"></a>Konfigurace rozšířené ochrany před internetovými útoky ve spravované instanci SQL Azure
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 [Rozšířená ochrana před internetovými útoky](../database/threat-detection-overview.md) pro [SPRAVOVANOU instanci Azure SQL](sql-managed-instance-paas-overview.md) detekuje aktivity neobvyklé s neobvyklými a potenciálně škodlivými pokusy o přístup k databázím nebo jejich zneužití. Rozšířená ochrana před internetovými útoky může identifikovat **potenciální INJEKTÁŽE SQL**, **přístup z neobvyklého umístění nebo datového centra**, **přístup z neznámého objektu zabezpečení nebo potenciálně škodlivé aplikace**a **hrubou silou přihlašovacích údajů SQL** – další podrobnosti najdete v tématu [výstrahy rozšířené ochrany před hrozbami](../database/threat-detection-overview.md#alerts)
 
-Můžete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailových oznámení](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event) nebo [Azure Portal](../database/threat-detection-overview.md#explore-alerts-in-azure-portal)
+Můžete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailových oznámení](../database/threat-detection-overview.md#explore-detection-of-a-suspicious-event) nebo [Azure Portal](../database/threat-detection-overview.md#explore-alerts-in-the-azure-portal)
 
 [Rozšířená ochrana před internetovými útoky](../database/threat-detection-overview.md) je součástí [rozšířené nabídky zabezpečení dat](../database/advanced-data-security.md) , což je jednotný balíček pro pokročilé funkce zabezpečení SQL. Správa Advanced Threat Protection je dostupná prostřednictvím centrálního portálu SQL ADS.
 
-##  <a name="azure-portal"></a>portál Azure
+##  <a name="azure-portal"></a>Portál Azure Portal
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com). 
 2. Přejděte na stránku konfigurace instance spravované instance SQL, kterou chcete chránit. Na stránce **Nastavení** vyberte **Upřesnit zabezpečení dat**.
@@ -39,7 +39,7 @@ Můžete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mai
    - Vyberte **typy rozšířené ochrany před hrozbami** , které byste chtěli nakonfigurovat. Přečtěte si další informace o [výstrahách rozšířené ochrany před hrozbami](../database/threat-detection-overview.md).
 4. Kliknutím na **Uložit** uložte nové nebo aktualizované zásady zabezpečení dat.
 
-   ![Rozšířená ochrana před internetovými útoky](./media/threat-detection-configure/threat-detection.png)
+   ![Advanced Threat Protection](./media/threat-detection-configure/threat-detection.png)
 
 
 ## <a name="next-steps"></a>Další kroky

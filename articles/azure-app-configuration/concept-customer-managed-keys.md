@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/18/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: ace34cf4a72b871ba6646b279007b8ce21c03e9b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d312346accc4fb6781744343911158bb538c0ccf
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81457429"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324075"
 ---
 # <a name="use-customer-managed-keys-to-encrypt-your-app-configuration-data"></a>Použití klíčů spravovaných zákazníkem k šifrování dat konfigurace aplikace
 Konfigurace aplikace Azure [šifruje citlivé informace v klidovém umístění](../security/fundamentals/encryption-atrest.md). Použití klíčů spravovaných zákazníkem poskytuje rozšířenou ochranu dat tím, že vám umožní spravovat šifrovací klíče.  Při použití spravovaného šifrování klíčů se všechny citlivé informace v konfiguraci aplikace šifrují pomocí Azure Key Vaultho klíče zadaného uživatelem.  Tato možnost umožňuje otočit šifrovací klíč na vyžádání.  Také umožňuje odvolat přístup ke konfiguraci aplikací Azure pro citlivé informace tím, že odvolává přístup instance konfigurace aplikace k tomuto klíči.
@@ -36,7 +36,7 @@ Aby bylo možné úspěšně povolit klíčovou funkci spravovanou zákazníkům
 
 Po nakonfigurování těchto zdrojů zůstanou dva kroky, aby konfigurace aplikace Azure používala klíč Key Vault:
 1. Přiřazení spravované identity k instanci konfigurace aplikace Azure
-2. Udělte identitě `GET`, `WRAP`a `UNWRAP` oprávněním v zásadách přístupu k cílovému Key Vault.
+2. Udělte identitě `GET` , `WRAP` a `UNWRAP` oprávněním v zásadách přístupu k cílovému Key Vault.
 
 ## <a name="enable-customer-managed-key-encryption-for-your-azure-app-configuration-instance"></a>Povolení šifrování klíčů spravovaného zákazníkem pro instanci konfigurace aplikace Azure
 Začněte tím, že budete potřebovat správnou nakonfigurovanou instanci konfigurace aplikace Azure. Pokud ještě nemáte k dispozici instanci konfigurace aplikace, postupujte podle jednoho z těchto rychlých startů a nastavte jednu z nich:
@@ -49,25 +49,25 @@ Začněte tím, že budete potřebovat správnou nakonfigurovanou instanci konfi
 > Azure Cloud Shell je bezplatné interaktivní prostředí, které můžete použít ke spuštění instrukcí příkazového řádku v tomto článku.  Má předinstalované běžné nástroje Azure, včetně .NET Core SDK. Pokud jste přihlášeni ke svému předplatnému Azure, spusťte [Azure Cloud Shell](https://shell.azure.com) z Shell.Azure.com.  Další informace o Azure Cloud Shell najdete v [naší dokumentaci](../cloud-shell/overview.md) .
 
 ### <a name="create-and-configure-an-azure-key-vault"></a>Vytvoření a konfigurace Azure Key Vault
-1. Vytvořte Azure Key Vault pomocí Azure CLI.  Všimněte si, `vault-name` že `resource-group-name` a jsou zadány uživatelem a musí být jedinečné.  V těchto `contoso-vault` příkladech používáme a `contoso-resource-group` .
+1. Vytvořte Azure Key Vault pomocí Azure CLI.  Všimněte si, že `vault-name` a `resource-group-name` jsou zadány uživatelem a musí být jedinečné.  `contoso-vault` `contoso-resource-group` V těchto příkladech používáme a.
 
     ```azurecli
     az keyvault create --name contoso-vault --resource-group contoso-resource-group
     ```
     
-1. Povolí pro Key Vault ochranu obnovitelného odstranění a vyprázdnění. Nahraďte názvy Key Vault (`contoso-vault`) a skupiny prostředků (`contoso-resource-group`) vytvořené v kroku 1.
+1. Povolí pro Key Vault ochranu obnovitelného odstranění a vyprázdnění. Nahraďte názvy Key Vault ( `contoso-vault` ) a skupiny prostředků ( `contoso-resource-group` ) vytvořené v kroku 1.
 
     ```azurecli
     az keyvault update --name contoso-vault --resource-group contoso-resource-group --enable-purge-protection --enable-soft-delete
     ```
     
-1. Vytvořte Key Vault klíč. Zadejte pro tento `key-name` klíč jedinečný a nahraďte názvy Key Vault (`contoso-vault`) vytvořené v kroku 1. Určete, zda dáváte `RSA` přednost `RSA-HSM` nebo šifrování.
+1. Vytvořte Key Vault klíč. Zadejte `key-name` pro tento klíč jedinečný a nahraďte názvy Key Vault ( `contoso-vault` ) vytvořené v kroku 1. Určete, zda dáváte přednost `RSA` nebo `RSA-HSM` šifrování.
 
     ```azurecli
     az keyvault key create --name key-name --kty {RSA or RSA-HSM} --vault-name contoso-vault
     ```
     
-    Výstup z tohoto příkazu zobrazuje ID klíče ("Kid") pro vygenerovaný klíč.  Poznamenejte si ID klíče pro pozdější použití v tomto cvičení.  ID klíče má formát: `https://{my key vault}.vault.azure.net/keys/{key-name}/{Key version}`.  ID klíče má tři důležité komponenty:
+    Výstup z tohoto příkazu zobrazuje ID klíče ("Kid") pro vygenerovaný klíč.  Poznamenejte si ID klíče pro pozdější použití v tomto cvičení.  ID klíče má formát: `https://{my key vault}.vault.azure.net/keys/{key-name}/{Key version}` .  ID klíče má tři důležité komponenty:
     1. Identifikátor URI Key Vault: https://{My Trezor klíčů}. trezor. Azure. NET
     1. Key Vault název klíče: {název klíče}
     1. Verze Key Vault klíče: {Key Version}
@@ -75,7 +75,7 @@ Začněte tím, že budete potřebovat správnou nakonfigurovanou instanci konfi
 1. Vytvořte spravovanou identitu přiřazenou systémem pomocí Azure CLI a nahraďte název vaší instance konfigurace vaší aplikace a skupiny prostředků použité v předchozích krocích. Spravovaná identita se použije pro přístup ke spravovanému klíči. Používáme `contoso-app-config` k ilustraci názvu instance konfigurace aplikace:
     
     ```azurecli
-    az appconfig identity assign --na1. me contoso-app-config --group contoso-resource-group --identities [system]
+    az appconfig identity assign --name contoso-app-config --resource-group contoso-resource-group --identities [system]
     ```
     
     Výstup tohoto příkazu zahrnuje ID objektu zabezpečení ("principalId") a ID tenanta ("tenandId") identity přiřazené systémem.  Tato akce bude sloužit k udělení přístupu identit ke spravovanému klíči.
@@ -89,13 +89,13 @@ Začněte tím, že budete potřebovat správnou nakonfigurovanou instanci konfi
     }
     ```
 
-1. Spravovaná identita instance konfigurace aplikace Azure potřebuje k tomuto klíči přístup, aby bylo možné provést ověření klíče, šifrování a dešifrování. Konkrétní sada akcí, ke kterým potřebuje přístup, zahrnuje: `GET`, `WRAP`a `UNWRAP` pro klíče.  Udělení přístupu vyžaduje ID objektu zabezpečení spravované identity instance konfigurace aplikace. Tato hodnota byla získána v předchozím kroku. Zobrazuje se níže jako `contoso-principalId`. Udělte oprávnění ke spravovanému klíči pomocí příkazového řádku:
+1. Spravovaná identita instance konfigurace aplikace Azure potřebuje k tomuto klíči přístup, aby bylo možné provést ověření klíče, šifrování a dešifrování. Konkrétní sada akcí, ke kterým potřebuje přístup, zahrnuje: `GET` , `WRAP` a `UNWRAP` pro klíče.  Udělení přístupu vyžaduje ID objektu zabezpečení spravované identity instance konfigurace aplikace. Tato hodnota byla získána v předchozím kroku. Zobrazuje se níže jako `contoso-principalId` . Udělte oprávnění ke spravovanému klíči pomocí příkazového řádku:
 
     ```azurecli
     az keyvault set-policy -n contoso-vault --object-id contoso-principalId --key-permissions get wrapKey unwrapKey
     ```
 
-1. Jakmile má instance konfigurace aplikace Azure přístup ke spravovanému klíči, můžeme povolit klíčovou funkci spravovanou zákazníkem ve službě pomocí rozhraní příkazového řádku Azure CLI. Během postupu vytváření klíčů odvolat následující vlastnosti: `key name` `key vault URI`.
+1. Jakmile má instance konfigurace aplikace Azure přístup ke spravovanému klíči, můžeme povolit klíčovou funkci spravovanou zákazníkem ve službě pomocí rozhraní příkazového řádku Azure CLI. Během postupu vytváření klíčů odvolat následující vlastnosti: `key name` `key vault URI` .
 
     ```azurecli
     az appconfig update -g contoso-resource-group -n contoso-app-config --encryption-key-name key-name --encryption-key-version key-version --encryption-key-vault key-vault-Uri

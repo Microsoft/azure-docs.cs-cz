@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/25/2019
-ms.openlocfilehash: 7d071a98b8d82d6f11278b59e1dfc91882a9bfcc
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: f826113abc756654fbf02e7d643b8ac1f9d9f98a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192866"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338052"
 ---
 # <a name="linked-services-in-azure-data-factory"></a>Propojené služby v Azure Data Factory
 
@@ -71,7 +71,7 @@ Vlastnost | Popis | Vyžadováno |
 name | Název propojené služby. Viz [pravidla pro Pojmenovávání Azure Data Factory](naming-rules.md). |  Ano |
 typ | Typ propojené služby. Například: Azure Storage (úložiště dat) nebo AzureBatch (COMPUTE). Podívejte se na popis pro typeProperties. | Ano |
 typeProperties | Vlastnosti typu jsou pro každé úložiště dat nebo výpočetní prostředky odlišné. <br/><br/> Podporované typy úložiště dat a jejich vlastnosti typu najdete v tabulce [Typ datové sady](concepts-datasets-linked-services.md#dataset-type) v tomto článku. Přejděte do článku konektor úložiště dat, kde se dozvíte o vlastnostech typu specifických pro úložiště dat. <br/><br/> Podporované typy výpočtů a jejich vlastnosti typu najdete v tématu [propojené služby COMPUTE](compute-linked-services.md). | Ano |
-connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. | No
+connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Můžete použít Azure Integration Runtime nebo místní Integration Runtime (Pokud se vaše úložiště dat nachází v privátní síti). Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne
 
 ## <a name="linked-service-example"></a>Příklad propojené služby
 
@@ -95,7 +95,10 @@ Následující propojená služba je Azure Storage propojená služba. Všimnět
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 
-Propojené služby můžete vytvořit pomocí jednoho z těchto nástrojů nebo sad SDK: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager Template a Azure Portal
+Propojené služby je možné vytvořit v prostředí Azure Data Factorye prostřednictvím [centra pro správu](author-management-hub.md) a všech aktivit, datových sad nebo toků dat, které na ně odkazují.
+
+Propojené služby můžete vytvořit pomocí jednoho z těchto nástrojů nebo sad SDK: [.NET API](quickstart-create-data-factory-dot-net.md), [PowerShell](quickstart-create-data-factory-powershell.md), [REST API](quickstart-create-data-factory-rest-api.md), Azure Resource Manager Template a Azure Portal.
+
 
 ## <a name="data-store-linked-services"></a>Propojené služby úložiště dat
 

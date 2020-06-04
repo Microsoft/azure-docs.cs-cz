@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: mimart
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fda84a68921500e8ba40aa6d04bfb5939f79a1ef
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: dd3958022a5947a04b8bca4db4bee3ad059c7e17
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83736479"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331946"
 ---
 # <a name="configure-custom-domains-with-azure-ad-application-proxy"></a>Konfigurace vlastních domén pomocí Azure Proxy aplikací služby AD
 
@@ -87,7 +87,7 @@ Publikování aplikace prostřednictvím proxy aplikací s vlastní doménou:
    
 4. V poli **externí adresa URL** vyřaďte seznam a vyberte vlastní doménu, kterou chcete použít.
    
-5. Vyberte **Přidat**.
+5. Vyberte možnost **Přidat**.
    
    ![Vybrat vlastní doménu](./media/application-proxy-configure-custom-domain/application-proxy.png)
    
@@ -138,7 +138,7 @@ Nedoporučujeme používat privátní kořenovou certifikační autoritu, proto�
 
 Správa všech certifikátů probíhá prostřednictvím stránek jednotlivých aplikací. Pro přístup k poli **certifikátu** přejděte na stránku **proxy aplikací** aplikace.
 
-Stejný certifikát můžete použít pro více aplikací. Pokud nahraný certifikát funguje s jinou aplikací, použije se automaticky. Po přidání nebo konfiguraci aplikace se vám nezobrazí výzva k jejímu nahrání. 
+Po nahrání certifikátu pro aplikaci se taky automaticky použije na **nové** nakonfigurované aplikace, které používají stejný certifikát. Certifikát budete muset znovu nahrát pro existující aplikace ve vašem tenantovi.
 
 Po vypršení platnosti certifikátu se zobrazí upozornění, abyste si nahráli jiný certifikát. Pokud je certifikát odvolaný, můžou se uživatelům při přístupu k aplikaci zobrazit upozornění zabezpečení. Pokud chcete aktualizovat certifikát pro aplikaci, přejděte na stránku **proxy aplikace** pro aplikaci, vyberte **certifikát**a nahrajte nový certifikát. Pokud starý certifikát nepoužívá jiné aplikace, automaticky se odstraní. 
 

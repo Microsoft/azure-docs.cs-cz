@@ -13,17 +13,18 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 968cc9ed9d938bb04d1243102855c134147ddf3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7464a9d13e1ffccbc3fab3256fe6c7ab1cb10495
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81269869"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321492"
 ---
 # <a name="network-security-groups"></a>Skupiny zabezpečení sítě
 <a name="network-security-groups"></a>
 
 Skupinu zabezpečení sítě Azure můžete použít k filtrování síťového provozu do a z prostředků Azure ve službě Azure Virtual Network. Skupina zabezpečení sítě obsahuje [pravidla zabezpečení](#security-rules) , která povolují nebo odmítají příchozí síťový provoz nebo odchozí síťový provoz z několika typů prostředků Azure. Pro každé pravidlo můžete určit zdroj a cíl, port a protokol.
+
 Tento článek popisuje vlastnosti pravidla skupiny zabezpečení sítě, použitých [výchozích pravidel zabezpečení](#default-security-rules) a vlastností pravidla, které můžete upravit a vytvořit tak [Rozšířená pravidla zabezpečení](#augmented-security-rules).
 
 ## <a name="security-rules"></a><a name="security-rules"></a>Pravidla zabezpečení
@@ -32,9 +33,9 @@ Skupina zabezpečení sítě nemusí obsahovat žádná pravidla nebo může pod
 
 |Vlastnost  |Vysvětlení  |
 |---------|---------|
-|Název|Jedinečný název v rámci skupiny zabezpečení sítě.|
+|Name|Jedinečný název v rámci skupiny zabezpečení sítě.|
 |Priorita | Číslo v rozsahu od 100 do 4096. Pravidla se zpracovávají v pořadí podle priority, přičemž nižší čísla, která mají vyšší prioritu, se zpracovávají před vyššími čísly. Jakmile provoz odpovídá pravidlu, zpracování se zastaví. V důsledku toho se nezpracují žádná existující pravidla s nižší prioritou (vyšší čísla), která mají stejné atributy jako pravidla s vyšší prioritou.|
-|Zdroj nebo cíl| Všechny nebo určitá IP adresa, blok CIDR (například 10.0.0.0/24), [značka služby](service-tags-overview.md) nebo [skupina zabezpečení aplikace](#application-security-groups). Pokud zadáváte adresu prostředku Azure, zadejte privátní IP adresu přiřazenou k tomuto prostředku. Skupiny zabezpečení sítě se zpracovávají poté, co Azure přeloží veřejnou IP adresu na privátní IP adresu pro příchozí provoz, a před tím, než Azure přeloží privátní IP adresu na veřejnou IP adresu pro odchozí provoz. Další informace o [IP adresách](virtual-network-ip-addresses-overview-arm.md) Azure. Zadání rozsahu, značky služby nebo skupiny zabezpečení aplikace umožňuje vytvářet méně pravidel zabezpečení. Možnost zadat několik jednotlivých IP adres a rozsahů (v pravidle nemůžete zadat více značek služeb ani skupin aplikací), které jsou označovány jako [Rozšířená pravidla zabezpečení](#augmented-security-rules). Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat více IP adres ani rozsahů IP adres. Další informace o [modelech nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).|
+|Zdroj nebo cíl| Všechny nebo určitá IP adresa, blok CIDR (například 10.0.0.0/24), značka služby nebo skupina zabezpečení aplikace Pokud zadáváte adresu prostředku Azure, zadejte privátní IP adresu přiřazenou k tomuto prostředku. Skupiny zabezpečení sítě se zpracovávají poté, co Azure přeloží veřejnou IP adresu na privátní IP adresu pro příchozí provoz, a před tím, než Azure přeloží privátní IP adresu na veřejnou IP adresu pro odchozí provoz. . Zadání rozsahu, značky služby nebo skupiny zabezpečení aplikace umožňuje vytvářet méně pravidel zabezpečení. Možnost zadat několik jednotlivých IP adres a rozsahů (v pravidle nemůžete zadat více značek služeb ani skupin aplikací), které jsou označovány jako [Rozšířená pravidla zabezpečení](#augmented-security-rules). Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat více IP adres ani rozsahů IP adres.|
 |Protocol (Protokol)     | TCP, UDP, ICMP nebo Any.|
 |Směr| Určuje, jestli se pravidlo vztahuje na příchozí nebo odchozí provoz.|
 |Rozsah portů     |Můžete zadat určitý port nebo rozsah portů. Můžete zadat například 80 nebo 10000-10005. Zadání rozsahů umožňuje vytvářet méně pravidel zabezpečení. Rozšířená pravidla zabezpečení je možné vytvářet pouze ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Resource Manager. Ve skupinách zabezpečení sítě vytvořených prostřednictvím modelu nasazení Classic není možné zadat několik portů ani rozsahů portů ve stejném pravidlu zabezpečení.   |
@@ -148,7 +149,7 @@ Agregovaná pravidla použitá na síťové rozhraní můžete snadno zobrazit v
 > Skupiny zabezpečení sítě jsou přidruženy k podsítím nebo virtuálním počítačům a cloudovým službám nasazeným v modelu nasazení Classic a k podsítím nebo síťovým rozhraním v modelu nasazení Správce prostředků. Další informace o modelech nasazení Azure najdete v článku [Vysvětlení modelů nasazení Azure](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 > [!TIP]
-> Pokud k tomu nemáte konkrétní důvod, doporučujeme přidružit skupinu zabezpečení sítě k podsíti nebo k síťovému rozhraní, ale ne k oběma. Vzhledem k tomu, že může docházet ke konfliktům mezi pravidly ve skupině zabezpečení sítě přidružené k podsíti a pravidly ve skupině zabezpečení sítě přidružené k síťovému rozhraní, můžou nastat neočekávané problémy s komunikací vyžadující řešení.
+> Pokud nemáte konkrétní důvod, doporučujeme přidružit skupinu zabezpečení sítě k podsíti nebo síťovému rozhraní, ale ne obojímu. Vzhledem k tomu, že může docházet ke konfliktům mezi pravidly ve skupině zabezpečení sítě přidružené k podsíti a pravidly ve skupině zabezpečení sítě přidružené k síťovému rozhraní, můžou nastat neočekávané problémy s komunikací vyžadující řešení.
 
 ## <a name="azure-platform-considerations"></a>Důležité informace o platformě Azure
 

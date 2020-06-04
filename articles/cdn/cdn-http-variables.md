@@ -14,27 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: allensu
-ms.openlocfilehash: 57a3bab06e4c0a1e4fd8df5d0794a89904a88954
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: f9768d4d20380e8e0c4ca6f7c71fddd68bb93d5c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747652"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340670"
 ---
 # <a name="http-variables-for-azure-cdn-rules-engine"></a>Proměnné HTTP pro modul pravidel Azure CDN
 Proměnné HTTP poskytují prostředky, pomocí kterých můžete načíst metadata žádosti a odpovědi HTTP. Tato metadata pak můžete použít k dynamické změně žádosti nebo odpovědi. Použití proměnných HTTP je omezeno na následující funkce stroje pravidel:
 
-- [Přepsání klíče do mezipaměti](cdn-verizon-premium-rules-engine-reference-features.md#cache-key-rewrite)
-- [Upravit hlavičku žádosti klienta](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-request-header)
-- [Upravit hlavičku odpovědi klienta](cdn-verizon-premium-rules-engine-reference-features.md#modify-client-response-header)
-- [Přesměrování adresy URL](cdn-verizon-premium-rules-engine-reference-features.md#url-redirect)
-- [Přepsání adresy URL](cdn-verizon-premium-rules-engine-reference-features.md#url-rewrite)
+- [Přepsání klíče do mezipaměti](https://docs.vdms.com/cdn/Content/HRE/F/Cache-Key-Rewrite.htm)
+- [Upravit hlavičku žádosti klienta](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Request-Header.htm)
+- [Upravit hlavičku odpovědi klienta](https://docs.vdms.com/cdn/Content/HRE/F/Modify-Client-Response-Header.htm)
+- [Přesměrování adresy URL](https://docs.vdms.com/cdn/Content/HRE/F/URL-Redirect.htm)
+- [Přepsání adresy URL](https://docs.vdms.com/cdn/Content/HRE/F/URL-Rewrite.htm)
 
 ## <a name="definitions"></a>Definice
 Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GEOGRAFICKá metadata (například PSČ) nejsou pro konkrétní požadavek k dispozici, vrátí se prázdná hodnota.
 
 
-| Name | Proměnná | Popis | Ukázková hodnota |
+| Name | Proměnná | Description | Ukázková hodnota |
 | ---- | -------- | ----------- | ------------ |
 | ASN (žadatel) | % {geo_asnum} | Označuje žadatele jako číslo. <br /><br />**Zastaralé:** % {virt_dst_asnum}. <br />Tato proměnná se už nepoužívá namísto% {geo_asnum}. I když pravidlo, které používá tuto zastaralou proměnnou, bude fungovat i nadále, měli byste je aktualizovat, aby používala novou proměnnou. | AS15133 |
 | Město (žadatel) | % {geo_city} | Označuje město žadatele. | Los Angeles |
@@ -69,7 +69,7 @@ Následující tabulka popisuje podporované proměnné protokolu HTTP. Pokud GE
 V následující tabulce jsou popsány správné syntaxe pro určení proměnné HTTP.
 
 
-| Syntaxe | Příklad | Popis |
+| Syntaxe | Příklad | Description |
 | ------ | -------- | ---------- |
 | % { &lt; HTTPVariable &gt; } | % {Host} | Tuto syntaxi použijte k získání celé hodnoty odpovídající zadanému &lt; HTTPVariable &gt; . |
 | % { &lt; HTTPVariableDelimiter &gt; } | % {Host,} | Tuto syntaxi použijte k nastavení velikosti písmen pro celou hodnotu odpovídající zadanému &lt; HTTPVariableDelimiter &gt; . |
@@ -92,7 +92,7 @@ Oddělovač lze zadat za proměnnou HTTP, aby bylo možné provést některý z 
 
 Oddělovače jsou popsány v následující tabulce.
 
-| Oddělovač | Popis |
+| Oddělovač | Description |
 | --------- | ----------- |
 | := | Označuje, že výchozí hodnota bude přiřazena proměnné, pokud je buď: <br />– Chybějící <br />-Nastavit na hodnotu NULL. |
 | :+ | Označuje, že se k proměnné přiřadí výchozí hodnota, když je jí přiřazena hodnota. |
@@ -125,7 +125,7 @@ Výchozí hodnota může být přiřazena k hlavičce, pokud splňuje některou 
 
 Následující tabulka popisuje, jak definovat výchozí hodnotu.
 
-| Podmínka | Syntaxe | Příklad | Popis |
+| Podmínka | Syntaxe | Příklad | Description |
 | --------- | ------ | --------| ----------- |
 | Nastavte hlavičku na výchozí hodnotu, pokud splňuje některou z následujících podmínek: <br /><br />– Chybějící hlavička <br /><br />-Hodnota hlavičky je nastavena na hodnotu NULL.| % {Proměnná: = hodnota} | % {http_referrer: = Neurčeno} | Záhlaví odkazujícího serveru bude nastaveno na *Neurčeno* , pokud buď chybí, nebo nastaveno na hodnotu null. Žádná akce se neprovede, pokud byla nastavena. |
 | Nastavte hlavičku na výchozí hodnotu, pokud chybí. | % {Variable = hodnota} | % {http_referrer = Neurčeno} | Záhlaví odkazujícího serveru bude nastaveno na *Neurčeno* , pokud chybí. Žádná akce se neprovede, pokud byla nastavena. |

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 75c25454451b733870f8a674b292cd131454f4d2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f3f4d49b42fa4b978db93fd3fee08e3f9017667e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045883"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342846"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>Konfigurace SQL Server instance clusteru s podporou převzetí služeb při selhání na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -56,7 +56,7 @@ Díky licencování s průběžnými platbami se instance clusteru s podporou p�
 
 Pokud máte smlouva Enterprise se Software Assurance, můžete pro každý aktivní uzel použít jeden bezplatný pasivní uzel FCI. Pokud chcete tuto výhodu využít v Azure, použijte image virtuálních počítačů BYOL a stejnou licenci používejte v aktivních i pasivních uzlech FCI. Další informace najdete v tématu [smlouva Enterprise](https://www.microsoft.com/Licensing/licensing-programs/enterprise.aspx).
 
-Pokud chcete porovnat BYOL s průběžnými platbami a licencováním pro SQL Server na virtuálních počítačích Azure, přečtěte si téma Začínáme s virtuálními počítači [SQL](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms).
+Pokud chcete porovnat BYOL s průběžnými platbami a licencováním pro SQL Server na virtuálních počítačích Azure, přečtěte si téma Začínáme s virtuálními počítači [SQL](sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms).
 
 Úplné informace o licenčních SQL Server najdete v tématu [ceny](https://www.microsoft.com/sql-server/sql-server-2017-pricing).
 
@@ -88,7 +88,7 @@ Měli byste mít také obecné porozumění těmto technologiím:
 
 Před dokončením kroků v tomto článku byste už měli mít:
 
-- Microsoft Azure předplatné.
+- Předplatné Microsoft Azure
 - Doména Windows na virtuálních počítačích Azure.
 - Účet, který má oprávnění k vytváření objektů na virtuálních počítačích Azure i ve službě Active Directory.
 - Virtuální síť Azure a podsíť s dostatkem adresního prostoru IP adres pro tyto součásti:
@@ -366,7 +366,7 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. V Azure Portal přejdete do skupiny prostředků, která obsahuje virtuální počítače.
 
-1. Vyberte **Přidat**. Vyhledejte **Load Balancer**Azure Marketplace. Vyberte **Load Balancer**.
+1. Vyberte možnost **Přidat**. Vyhledejte **Load Balancer**Azure Marketplace. Vyberte **Load Balancer**.
 
 1. Vyberte **Vytvořit**.
 
@@ -402,7 +402,7 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. V okně nástroje pro vyrovnávání zatížení vyberte **sondy stavu**.
 
-1. Vyberte **Přidat**.
+1. Vyberte možnost **Přidat**.
 
 1. V okně **Přidat sondu stavu** <a name="probe"></a> nastavte parametry sondy stavu.
 
@@ -418,7 +418,7 @@ Vytvoření nástroje pro vyrovnávání zatížení:
 
 1. V okně nástroje pro vyrovnávání zatížení vyberte **pravidla vyrovnávání zatížení**.
 
-1. Vyberte **Přidat**.
+1. Vyberte možnost **Přidat**.
 
 1. Nastavte parametry pravidla vyrovnávání zatížení:
 

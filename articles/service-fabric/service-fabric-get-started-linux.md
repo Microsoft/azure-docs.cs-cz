@@ -3,12 +3,12 @@ title: Nastavení vývojového prostředí v systému Linux
 description: Nainstalujte modul runtime a sadu SDK a vytvořte místní vývojový cluster v Linuxu. Po dokončení této instalace a nastavení budete moci sestavovat aplikace.
 ms.topic: conceptual
 ms.date: 2/23/2018
-ms.openlocfilehash: 000d615d779ed14eb1698cf297075480a07c71ef
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38ea94e14a182671b3540a87c3bf90e861479fe5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193407"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338460"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Příprava vývojového prostředí v Linuxu
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ Instalace sady SDK a modulu runtime Service Fabric v subsystému Windows pro Lin
 
 Pro vývoj jsou podporovány tyto verze operačních systémů.
 
-* Ubuntu 16.04 (`Xenial Xerus`)
+* Ubuntu 16,04 ( `Xenial Xerus` ), 18,04 ( `Bionic Beaver` )
 
     Ujistěte se, že je nainstalován balíček `apt-transport-https`.
          
@@ -60,46 +60,41 @@ Pokud chcete nainstalovat sadu SDK a přidružený balíček modulu runtime pomo
 ### <a name="ubuntu"></a>Ubuntu
 
 1. Otevřete terminál.
-2. Přidejte do seznamu zdrojů úložiště Service Fabric.
+
+2. Přidejte do seznamu zdrojů úložiště `dotnet`.
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
-    ```
-
-3. Přidejte do seznamu zdrojů úložiště `dotnet`.
-
-    ```bash
-    wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb
+    wget -q https://packages.microsoft.com/config/ubuntu/18.04/packages-microsoft-prod.deb
     sudo dpkg -i packages-microsoft-prod.deb
     ```
 
-4. Přidejte do své klíčenky APT nový klíč GPG (Gnu Privacy Guard neboli GnuPG).
+3. Přidejte do své klíčenky APT nový klíč GPG (Gnu Privacy Guard neboli GnuPG).
 
     ```bash
     curl -fsSL https://packages.microsoft.com/keys/msopentech.asc | sudo apt-key add -
     ```
 
-5. Přidejte do své klíčenky APT oficiální klíč GPG Dockeru.
+4. Přidejte do své klíčenky APT oficiální klíč GPG Dockeru.
 
     ```bash
     sudo apt-get install curl
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
     ```
 
-6. Nastavte úložiště Dockeru.
+5. Nastavte úložiště Dockeru.
 
     ```bash
     sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
     ```
 
-7. Přidejte klíč JDK Azul do svého správce klíčů APT a nastavte jeho úložiště.
+6. Přidejte klíč JDK Azul do svého správce klíčů APT a nastavte jeho úložiště.
 
     ```bash
     sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0xB1998361219BD9C9
     sudo apt-add-repository "deb http://repos.azul.com/azure-only/zulu/apt stable main"
     ```
 
-8. Obnovte seznamy balíčků na základě nově přidaných úložišť.
+7. Obnovte seznamy balíčků na základě nově přidaných úložišť.
 
     ```bash
     sudo apt-get update
@@ -179,7 +174,7 @@ Po dokončení instalace spusťte místní cluster.
     sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
     ```
 
-2. Otevřete webový prohlížeč a přejdete na **Service Fabric Explorer** (`http://localhost:19080/Explorer`). Po spuštění clusteru by se měl zobrazit řídicí panel Service Fabric Exploreru. Úplné nastavení clusteru může trvat několik minut. Pokud se v prohlížeči nepodaří otevřít adresu URL nebo pokud se v Service Fabric Exploreru nezobrazí připravený systém, počkejte několik minut a zkuste to znovu.
+2. Otevřete webový prohlížeč a přejdete na **Service Fabric Explorer** ( `http://localhost:19080/Explorer` ). Po spuštění clusteru by se měl zobrazit řídicí panel Service Fabric Exploreru. Úplné nastavení clusteru může trvat několik minut. Pokud se v prohlížeči nepodaří otevřít adresu URL nebo pokud se v Service Fabric Exploreru nezobrazí připravený systém, počkejte několik minut a zkuste to znovu.
 
     ![Service Fabric Explorer v Linuxu][sfx-linux]
 
@@ -261,13 +256,13 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 > 
 > V Ubuntu doporučujeme provést instalaci přímo z webu Eclipse, a nepoužívat instalační program balíčků (`apt` nebo `apt-get`). Tím zajistíte, že budete mít nejnovější verzi Eclipse. Můžete nainstalovat integrované vývojové prostředí Eclipse pro vývojáře v Javě nebo v Javě EE.
 
-1. V Eclipse se ujistěte, že máte nainstalovanou verzi Eclipse Neon nebo novější a Buildship verze 2.2.1 nebo novější. Verze nainstalovaných komponent zkontrolujete tak, že vyberete **nápovědu** > **o** > **podrobnostech instalace**na zatmění. Buildship můžete aktualizovat pomocí pokynů v článku [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Moduly plug-in Eclipse pro Gradle).
+1. V Eclipse se ujistěte, že máte nainstalovanou verzi Eclipse Neon nebo novější a Buildship verze 2.2.1 nebo novější. Verze nainstalovaných komponent zkontrolujete tak, že vyberete **nápovědu**  >  **o**  >  **podrobnostech instalace**na zatmění. Buildship můžete aktualizovat pomocí pokynů v článku [Eclipse Buildship: Eclipse Plug-ins for Gradle][buildship-update] (Eclipse Buildship: Moduly plug-in Eclipse pro Gradle).
 
-2. Pokud chcete nainstalovat modul plug-in Service Fabric, vyberte **help** > **instalovat nový software**.
+2. Pokud chcete nainstalovat modul plug-in Service Fabric, vyberte **help**  >  **instalovat nový software**.
 
-3. Do pole **work with (pracovat s** ) zadejte **https:\//dl.Microsoft.com/Eclipse**.
+3. Do pole **work with (pracovat s** ) zadejte **https: \/ /dl.Microsoft.com/Eclipse**.
 
-4. Vyberte **Přidat**.
+4. Vyberte možnost **Přidat**.
 
     ![Stránka Available Software (Dostupný software)][sf-eclipse-plugin]
 
@@ -275,7 +270,7 @@ Modul plug-in Eclipse pro Service Fabric můžete nainstalovat z integrovaného 
 
 6. Proveďte kroky instalace. Potom přijměte licenční smlouvu s koncovým uživatelem.
 
-Pokud už máte modul plug-in Service Fabric Eclipse nainstalovaný, ověřte, že používáte nejnovější verzi. Vyberte **nápovědu** > **o** > **podrobnostech instalace**zatmění. Pak vyhledejte Service Fabric v seznamu nainstalovaných modulů plug-in. Pokud je k dispozici novější verze, vyberte **aktualizovat** .
+Pokud už máte modul plug-in Service Fabric Eclipse nainstalovaný, ověřte, že používáte nejnovější verzi. Vyberte **nápovědu**  >  **o**  >  **podrobnostech instalace**zatmění. Pak vyhledejte Service Fabric v seznamu nainstalovaných modulů plug-in. Pokud je k dispozici novější verze, vyberte **aktualizovat** .
 
 Další informace najdete v tématu [Modul plug-in Service Fabric pro vývoj aplikací v Eclipse Javě](service-fabric-get-started-eclipse.md).
 

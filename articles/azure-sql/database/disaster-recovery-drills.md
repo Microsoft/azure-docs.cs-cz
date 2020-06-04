@@ -11,14 +11,14 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 12/18/2018
-ms.openlocfilehash: b2ba1d07983021e376a950fba789db0b51c11d4b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e32f2bf6f353e32fe96cd3c8b109d698cd3d40ef
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050426"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344573"
 ---
-# <a name="performing-disaster-recovery-drill"></a>Přechod na další postup zotavení po havárii
+# <a name="performing-disaster-recovery-drills"></a>Probíhají podrobné analýzy zotavení po havárii.
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Doporučuje se pravidelně provádět ověřování připravenosti aplikací pro pracovní postup obnovení. Ověření chování aplikace a důsledky ztráty dat a/nebo přerušení, které zahrnuje převzetí služeb při selhání, je dobrým technickým postupem. V rámci certifikace provozní kontinuity je to také požadavky na většinu průmyslových standardů.

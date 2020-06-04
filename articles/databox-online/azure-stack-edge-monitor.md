@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/15/2019
 ms.author: alkohli
-ms.openlocfilehash: ac762450b19f2d3f82b6859de23e07afe2d10629
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 9e4050a4a75432e8bcc840a2406660dce268c5a4
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780351"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339548"
 ---
 # <a name="monitor-your-azure-stack-edge"></a>Monitorování Azure Stack Edge
 
@@ -57,12 +57,12 @@ Tato část popisuje metriky monitorování na vašem zařízení. Metriky mohou
 
 Úplný seznam metrik je uveden v následující tabulce:
 
-|Metriky kapacity                     |Popis  |
+|Metriky kapacity                     |Description  |
 |-------------------------------------|-------------|
 |**Dostupná kapacita**               | Odkazuje na velikost dat, která se dají zapsat do zařízení. Jinými slovy, to je kapacita, kterou lze v zařízení zpřístupnit. <br></br>Kapacitu zařízení můžete uvolnit tak, že odstraníte místní kopii souborů, která má kopii na zařízení i v cloudu.        |
 |**Celková kapacita**                   | Odkazuje na celkový počet bajtů na zařízení, do kterého se mají zapisovat data. To se také označuje jako celková velikost místní mezipaměti. <br></br> Kapacitu stávajícího virtuálního zařízení teď můžete zvýšit přidáním datového disku. Přidejte datový disk prostřednictvím správy hypervisoru pro virtuální počítač a pak restartujte virtuální počítač. Místní fond úložiště zařízení brány se rozšíří tak, aby odpovídal nově přidanému datovému disku. <br></br>Další informace získáte, když přejdete na [Přidat pevný disk pro virtuální počítač Hyper-V](https://www.youtube.com/watch?v=EWdqUw9tTe4). |
 
-|Transakční metriky              | Popis         |
+|Transakční metriky              | Description         |
 |-------------------------------------|---------|
 |**Odeslané bajty v cloudu (zařízení)**    | Součet všech bajtů odeslaných napříč všemi sdílenými složkami ve vašem zařízení        |
 |**Odeslané bajty v cloudu (sdílená složka)**     | Počet odeslaných bajtů na sdílenou složku. Může to být: <br></br> Střední, což je (součet všech odeslaných bajtů na sdílenou položku/počet sdílených složek),  <br></br>Max, což je maximální počet bajtů odeslaných ze sdílené složky <br></br>Min, což je minimální počet bajtů odeslaných ze sdílené složky      |
@@ -73,7 +73,7 @@ Tato část popisuje metriky monitorování na vašem zařízení. Metriky mohou
 |**Propustnost čtení (síť)**           | Zahrnuje propustnost systémové sítě pro všechny přečtené bajty z cloudu. Toto zobrazení může obsahovat data, která nejsou omezená na sdílené složky. <br></br>Při rozdělování se zobrazí přenos všech síťových adaptérů na zařízení. To zahrnuje adaptéry, které nejsou připojené nebo nejsou povolené.      |
 |**Propustnost zápisu (síť)**       | Zahrnuje propustnost systémové sítě pro všechny bajty zapsané do cloudu. Toto zobrazení může obsahovat data, která nejsou omezená na sdílené složky. <br></br>Při rozdělování se zobrazí přenos všech síťových adaptérů na zařízení. To zahrnuje adaptéry, které nejsou připojené nebo nejsou povolené.          |
 
-| Hraniční výpočetní metriky              | Popis         |
+| Hraniční výpočetní metriky              | Description         |
 |-------------------------------------|---------|
 |**Výpočet využití paměti na hraničních zařízeních**      |           |
 |**Výpočetní prostředí Edge – procento využití procesoru**    |         |

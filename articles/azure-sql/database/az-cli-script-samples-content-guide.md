@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: 1006b8719a1141bd38792bdbbe116d0c477071dd
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a17b5d80817637f1038996b034f926ee74cf54e9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190063"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344658"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Ukázky v Azure CLI pro Azure SQL Database a SQL Managed instance 
  
@@ -57,7 +57,7 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro sprá
 | [Import databáze ze souboru BACPAC](../../sql-database/scripts/sql-database-import-from-bacpac-cli.md)| Importuje databázi do SQL Database ze souboru BACPAC. |
 |||
 
-Přečtěte si další informace o [rozhraní Azure CLI API pro jednu databázi](single-database-manage.md#azure-cli).
+Přečtěte si další informace o [rozhraní Azure CLI API pro jednu databázi](single-database-manage.md#the-azure-cli).
 
 # <a name="azure-sql-managed-instance"></a>[Spravovaná instance Azure SQL](#tab/managed-instance)
 

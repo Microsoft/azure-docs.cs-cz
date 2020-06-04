@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.openlocfilehash: 51f583b946d6f5a18325e77cfe12404daab83d22
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 74f89629c783a444633fe276d99dc75d6c7fc8d8
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268040"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331963"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Průběžná integrace a doručování v Azure Data Factory
 
@@ -98,7 +98,7 @@ Následuje návod pro nastavení Azure Pipelines vydání, které automatizuje n
 
     ![Zobrazení fáze](media/continuous-integration-deployment/continuous-integration-image14.png)
 
-    b.  Vytvoří nový úkol. Vyhledejte **nasazení skupiny prostředků Azure**a pak vyberte **Přidat**.
+    b.  Vytvoří nový úkol. Vyhledejte **nasazení šablony ARM**a pak vyberte **Přidat**.
 
     c.  V úloze nasazení vyberte předplatné, skupinu prostředků a umístění pro cílovou datovou továrnu. V případě potřeby zadejte přihlašovací údaje.
 
@@ -108,7 +108,7 @@ Následuje návod pro nastavení Azure Pipelines vydání, které automatizuje n
 
     f.  Vybrat **...** vedle pole **parametry šablony** pro výběr souboru parametrů. Vyhledejte soubor `ARMTemplateParametersForFactory.json` ve <FactoryName> složce adf_publish větve.
 
-    g.  Vybrat **...** vedle pole **parametry šablony přepsání** a zadejte požadované hodnoty parametrů pro cílovou datovou továrnu. Pro přihlašovací údaje pocházející z Azure Key Vault zadejte název tajného kódu mezi dvojité uvozovky. Pokud je například název tajného klíče cred1, zadejte pro tuto hodnotu **"$ (cred1)"** .
+    například  Vybrat **...** vedle pole **parametry šablony přepsání** a zadejte požadované hodnoty parametrů pro cílovou datovou továrnu. Pro přihlašovací údaje pocházející z Azure Key Vault zadejte název tajného kódu mezi dvojité uvozovky. Pokud je například název tajného klíče cred1, zadejte pro tuto hodnotu **"$ (cred1)"** .
 
     h. Vyberte **přírůstkový** **režim nasazení**.
 

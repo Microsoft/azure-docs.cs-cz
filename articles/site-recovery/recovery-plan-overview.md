@@ -3,12 +3,12 @@ title: O plánech obnovení v Azure Site Recovery
 description: Přečtěte si o plánech obnovení v Azure Site Recovery.
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d191781cacc37242dd1be31d6cb87ef196e5e7a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257768"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343910"
 ---
 # <a name="about-recovery-plans"></a>Plány obnovení
 
@@ -17,7 +17,7 @@ Tento článek poskytuje přehled plánů obnovení v [Azure Site Recovery](site
 Plán obnovení shromažďuje počítače do skupin obnovení pro účely převzetí služeb při selhání. Plán obnovení vám pomůže definovat proces systematického obnovení tím, že vytvoří malé nezávislé jednotky, u kterých můžete převzít služby při selhání. Jednotka obvykle představuje aplikaci ve vašem prostředí.
 
 - Plán obnovení definuje, jak počítače převezmou služby při selhání, a pořadí, ve kterém se spouštějí po převzetí služeb při selhání.
-- Plány obnovení se používají pro převzetí služeb při selhání do Azure, ale nedají se použít k navrácení služeb po obnovení z Azure.
+- Plány obnovení se dají použít při převzetí služeb při selhání i navrácení služeb po obnovení z Azure.
 - Do jednoho plánu obnovení lze přidat až 100 chráněných instancí.
 - Plán můžete přizpůsobit tak, že do něj přidáte pořadí, pokyny a úkoly.
 - Po definování plánu můžete na něm spustit převzetí služeb při selhání.

@@ -4,13 +4,13 @@ description: V tomto rychlém startu se dozvíte, jak začít s rozhraními REST
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: ecc3fb144fb4b4e27182567925199f841b1c4357
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: b42bc3be0d425a84da8bb545ebb29e261a6b0780
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851671"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342727"
 ---
 # <a name="quickstart-qna-maker-rest-apis-for-nodejs"></a>Rychlý Start: QnA Maker rozhraní REST API pro Node. js
 
@@ -25,7 +25,7 @@ Pro Node. js použijte QnA Maker rozhraní REST API pro:
 * Stáhnout znalostní bázi
 * Získat stav operace
 
-[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase) | –[ukázky Node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
+[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)  |  [Ukázky Node. js](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/tree/master/documentation-samples/quickstarts/rest-api)
 
 [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 
@@ -41,7 +41,7 @@ Pro Node. js použijte QnA Maker rozhraní REST API pro:
 
 Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro QnA Maker pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači.
 
-Po získání klíče z prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro prostředek s názvem `QNAMAKER_RESOURCE_KEY` a. `QNAMAKER_AUTHORING_ENDPOINT` Použijte hodnoty klíč a koncový bod, které najdete na stránce **rychlý Start** prostředku v Azure Portal.
+Po získání klíče z prostředku [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro prostředek s názvem `QNAMAKER_RESOURCE_KEY` a `QNAMAKER_AUTHORING_ENDPOINT` . Použijte hodnoty klíč a koncový bod, které najdete na stránce **rychlý Start** prostředku v Azure Portal.
 
 ### <a name="create-a-new-nodejs-application"></a>Vytvoření nové aplikace Node.js
 
@@ -51,13 +51,13 @@ V okně konzoly (například cmd, PowerShell nebo bash) vytvořte nový adresá�
 mkdir myapp && cd myapp
 ```
 
-Spuštěním `npm init -y` příkazu vytvořte soubor uzlu `package.json` .
+Spuštěním `npm init -y` příkazu vytvořte `package.json` soubor uzlu.
 
 ```console
 npm init -y
 ```
 
-Přidejte balíčky `reqeuestretry` a `request` npm:
+Přidejte `reqeuestretry` balíčky a `request` npm:
 
 ```console
 npm install requestretry request --save
@@ -89,7 +89,7 @@ Vytvořte proměnné pro koncový bod a klíč Azure prostředku. Pokud jste po 
 Nastavte následující hodnoty prostředí:
 
 * `QNAMAKER_RESOURCE_KEY`- **Klíč** je řetězec znaků 32 a je k dispozici v Azure Portal na prostředku QnA maker na stránce **rychlý Start** . To není totéž jako klíč koncového bodu předpovědi.
-* `QNAMAKER_AUTHORING_ENDPOINT`– Váš koncový bod pro vytváření obsahu ve formátu `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com`obsahuje název vašeho **prostředku**. Nejedná se o stejnou adresu URL, která se používá k dotazování koncového bodu předpovědi.
+* `QNAMAKER_AUTHORING_ENDPOINT`– Váš koncový bod pro vytváření obsahu ve formátu `https://YOUR-RESOURCE-NAME.cognitiveservices.azure.com` obsahuje název vašeho **prostředku**. Nejedná se o stejnou adresu URL, která se používá k dotazování koncového bodu předpovědi.
 
 [!code-javascript[Add Azure resources from environment variables](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/rest-api/rest-api.js?name=authorization)]
 
@@ -136,7 +136,7 @@ Po dokončení používání znalostní báze ho odstraňte.
 
 ## <a name="get-status-of-an-operation"></a>Získat stav operace
 
-Dlouhotrvající procesy, jako je například proces vytváření, vrací ID operace, které je nutné zkontrolovat pomocí samostatného REST API volání. Tato funkce přijímá tělo odpovědi Create. Důležitý klíč je, který `operationState`určuje, jestli je potřeba pokračovat v dotazování.
+Dlouhotrvající procesy, jako je například proces vytváření, vrací ID operace, které je nutné zkontrolovat pomocí samostatného REST API volání. Tato funkce přijímá tělo odpovědi Create. Důležitý klíč je `operationState` , který určuje, jestli je potřeba pokračovat v dotazování.
 
 Pomocí [REST API můžete monitorovat operace ve znalostní bázi](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/operations/getdetails).
 
@@ -156,7 +156,7 @@ node rest-apis.js
 
 Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
 
-* [Portál](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Další kroky

@@ -4,19 +4,19 @@ description: Tento rychlý Start založený na REST vás provede tím, že vám 
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 37a8925f8460e448dce3b66354f5181fe103a6a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 3899fdb84e2263ea78aa70669a5fde88088b6fc5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851792"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342812"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-go"></a>Rychlý Start: získání odpovědí na otázku ze znalostní báze se službou přejít
 
 V tomto rychlém startu se dozvíte, jak programově získat odpověď z publikované QnA Maker znalostní báze. Znalostní báze obsahuje otázky a odpovědi ze [zdrojů dat](../Concepts/knowledge-base.md) , jako jsou nejčastější dotazy. [Otázka](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odešle do služby QnA maker. [Odpověď](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obsahuje horní předpokládanou odpověď.
 
-[Ukázka Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [Sample](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/get-answer/get-answer.go)
+[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  [Ukázka](https://github.com/Azure-Samples/cognitive-services-qnamaker-go/blob/master/documentation-samples/quickstarts/get-answer/get-answer.go)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -59,7 +59,7 @@ Následující kód provede požadavek HTTPS na rozhraní API služby QnA Maker 
 
 [!code-go[Add a POST request to send question to knowledge base](~/samples-qnamaker-go/documentation-samples/quickstarts/get-answer/get-answer.go?range=35-48 "Add a POST request to send question to knowledge base")]
 
-Hodnota `Authorization` hlavičky obsahuje řetězec `EndpointKey`.
+`Authorization`Hodnota hlavičky obsahuje řetězec `EndpointKey` .
 
 Přečtěte si další informace o [žádosti](../how-to/metadata-generateanswer-usage.md#generateanswer-request) a [odpovědi](../how-to/metadata-generateanswer-usage.md#generateanswer-response).
 

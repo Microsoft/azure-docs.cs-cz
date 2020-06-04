@@ -4,13 +4,13 @@ description: Díky tomu bude rychlý Start založený na REST publikovat vaši z
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 4ce655bdc7a913ecb281ce8a75e7ec4f2009a2ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 4bfa523c6a42c8848f30ceb88770d3ce3fb03fae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851693"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342710"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-go"></a>Rychlý start: Publikování znalostní báze ve službě QnA Maker pomocí jazyka Go
 
@@ -24,7 +24,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 * [Go 1.10.1](https://golang.org/dl/)
 * Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
 
-* V adrese URL parametru řetězce `kbid` dotazu bylo nalezeno QnA maker znalostní báze (KB), jak je uvedeno níže.
+* V adrese URL parametru řetězce dotazu bylo nalezeno QnA Maker znalostní báze (KB) `kbid` , jak je uvedeno níže.
 
     ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
@@ -35,7 +35,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 
 ## <a name="create-a-go-file"></a>Vytvoření souboru přejít
 
-Otevřete VSCode a vytvořte nový soubor s názvem `publish-kb.go`.
+Otevřete VSCode a vytvořte nový soubor s názvem `publish-kb.go` .
 
 ## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 

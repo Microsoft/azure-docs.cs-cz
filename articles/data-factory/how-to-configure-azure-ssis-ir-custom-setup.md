@@ -11,27 +11,27 @@ ms.author: sawinark
 manager: mflasko
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 04/15/2020
-ms.openlocfilehash: d2a5928d8326c4a0628ebc1bfb7eec3cd20f9254
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 06/03/2020
+ms.openlocfilehash: 576861265771977f7e13140dd595f47bf556e585
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747507"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331895"
 ---
 # <a name="customize-the-setup-for-an-azure-ssis-integration-runtime"></a>Přizpůsobení nastavení pro Azure-SSIS Integration Runtime
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
-Vlastní nastavení pro Azure-služba SSIS (SQL Server Integration Services) Integration Runtime (Azure-SSIS IR) poskytuje rozhraní pro přidání vlastních kroků během instalace nebo opětovné konfigurace Azure-SSIS IR. 
+Vlastní nastavení pro Azure-služba SSIS (SQL Server Integration Services) (SSIS) Integration Runtime (IR) v Azure Data Factory (ADF) poskytuje rozhraní pro přidání vlastních kroků během zřizování nebo opětovné konfigurace Azure-SSIS IR. 
 
-Pomocí vlastní instalace můžete změnit výchozí konfiguraci konfigurace nebo prostředí, například spustit další služby systému Windows, zachovat přístup k přihlašovacím údajům pro sdílené složky nebo použít silný kryptografický protokol/vyšší zabezpečený síťový protokol (TLS 1,2). Případně můžete do každého uzlu Azure-SSIS IR nainstalovat další komponenty, jako jsou například sestavení, ovladače nebo rozšíření.
+Pomocí vlastní instalace můžete změnit výchozí konfiguraci konfigurace nebo prostředí, například spustit další služby systému Windows, zachovat přístup k přihlašovacím údajům pro sdílené složky nebo použít silný kryptografický protokol/vyšší zabezpečený síťový protokol (TLS 1,2). Případně můžete do každého uzlu Azure-SSIS IR nainstalovat další komponenty vlastní/třetí strany, například sestavení, ovladače nebo rozšíření. Další informace o předdefinovaných/předinstalovaných součástech najdete v tématu [vestavěné/předinstalované komponenty na Azure-SSIS IR](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime).
 
 Vlastní nastavení můžete provést na svém Azure-SSIS IR jedním ze dvou způsobů: 
-* **Expresní vlastní nastavení bez skriptu**: Spusťte některé běžné konfigurace systému a příkazy systému Windows nebo nainstalujte některé oblíbené nebo Doporučené dodatečné součásti bez použití skriptů.
 * **Standardní vlastní nastavení pomocí skriptu**: Připravte skript a jeho přidružené soubory a nahrajte je dohromady do kontejneru objektů BLOB v účtu úložiště Azure. Když nastavíte nebo znovu nakonfigurujete Azure-SSIS IR, zadáte identifikátor URI (Uniform Resource Identifier) sdíleného přístupového podpisu (SAS) pro váš kontejner. Každý uzel vaší Azure-SSIS IR pak stáhne skript a jeho přidružené soubory z vašeho kontejneru a spustí vlastní instalaci se zvýšenými oprávněními. Po dokončení vlastní instalace každý uzel nahraje standardní výstup spuštění a další protokoly do vašeho kontejneru.
+* **Expresní vlastní nastavení bez skriptu**: Spusťte některé běžné konfigurace systému a příkazy systému Windows nebo nainstalujte některé oblíbené nebo Doporučené dodatečné součásti bez použití skriptů.
 
-Můžete nainstalovat bezplatné, nelicencované komponenty a placené a licencované komponenty s vlastními nastaveními Express a Standard. Pokud jste nezávislý výrobce softwaru (ISV), přečtěte si téma [vývoj placených nebo licencovaných komponent pro Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md).
+Můžete nainstalovat bezplatné, nelicencované komponenty a placené, licencované komponenty se standardními a expresními vlastními nastaveními. Pokud jste nezávislý výrobce softwaru (ISV), přečtěte si téma [vývoj placených nebo licencovaných komponent pro Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md).
 
 > [!IMPORTANT]
 > Pro výhody budoucích vylepšení doporučujeme pro vaši Azure-SSIS IR použít pro vlastní instalaci řadu uzlů V3 nebo novější.
@@ -62,7 +62,11 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující položky:
 
 ## <a name="instructions"></a>Pokyny
 
-1. Pokud chcete nastavit nebo znovu nakonfigurovat Azure-SSIS IR pomocí PowerShellu, Stáhněte a nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps). Pro expresní vlastní nastavení přejděte na krok 4.
+Můžete zřídit nebo znovu nakonfigurovat Azure-SSIS IR vlastními nastaveními v uživatelském rozhraní ADF. Pokud chcete stejný postup provést pomocí PowerShellu, Stáhněte a nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps).
+
+### <a name="standard-custom-setup"></a>Standardní vlastní nastavení
+
+Pokud chcete zřídit nebo znovu nakonfigurovat Azure-SSIS IR se standardními vlastními nastaveními, proveďte následující kroky.
 
 1. Připravte vlastní instalační skript a jeho přidružené soubory (například. bat,. cmd,. exe,. dll,. msi nebo. ps1).
 
@@ -70,7 +74,7 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující položky:
    * Abyste měli jistotu, že se skript dá spustit bezobslužně, doporučujeme ho nejdřív otestovat na svém místním počítači.  
    * Pokud chcete, aby se další protokoly vygenerovaly jinými nástroji (například *Msiexec. exe*), které se mají nahrát do kontejneru, zadejte předdefinovanou proměnnou prostředí, `CUSTOM_SETUP_SCRIPT_LOG_DIR` jako složku protokolu ve vašich skriptech (například *msiexec/i xxx. msi/quiet/LV% CUSTOM_SETUP_SCRIPT_LOG_DIR% \ Install. log*).
 
-1. Stáhněte, nainstalujte a otevřete [Průzkumník služby Azure Storage](https://storageexplorer.com/). Postupujte následovně:
+1. Stáhněte, nainstalujte a otevřete [Průzkumník služby Azure Storage](https://storageexplorer.com/).
 
    a. V části **(místní a připojené)** klikněte pravým tlačítkem na **účty úložiště**a pak vyberte **připojit k Azure Storage**.
 
@@ -96,7 +100,7 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující položky:
 
       ![Získání sdíleného přístupového podpisu pro kontejner](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image6.png)
 
-   g. Vytvořte identifikátor URI SAS pro váš kontejner s dostatečně dlouhou dobou vypršení platnosti a s oprávněním pro čtení/zápis/seznam. Identifikátor URI SAS potřebujete ke stažení a spuštění skriptu vlastní instalace a jeho přidružených souborů pokaždé, když se kterýkoli uzel Azure-SSIS IR obnoví nebo restartuje. Pro nahrání protokolů spuštění instalace potřebujete oprávnění k zápisu.
+   například Vytvořte identifikátor URI SAS pro váš kontejner s dostatečně dlouhou dobou vypršení platnosti a s oprávněním pro čtení/zápis/seznam. Identifikátor URI SAS potřebujete ke stažení a spuštění skriptu vlastní instalace a jeho přidružených souborů pokaždé, když se kterýkoli uzel Azure-SSIS IR obnoví nebo restartuje. Pro nahrání protokolů spuštění instalace potřebujete oprávnění k zápisu.
 
       > [!IMPORTANT]
       > Zajistěte vypršení platnosti identifikátoru URI SAS a vlastní prostředky instalace budou vždy k dispozici během celého životního cyklu Azure-SSIS IR, od vytvoření po odstranění, zejména v případě, že během této doby pravidelně zastavíte a zahájíte Azure-SSIS IR.
@@ -107,11 +111,17 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující položky:
 
       ![Zkopírování a uložení sdíleného přístupového podpisu](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image8.png)
 
-1. Když nastavíte nebo znovu nakonfigurujete Azure-SSIS IR s uživatelským rozhraním služby Data Factory, můžete přidat nebo odebrat vlastní nastavení tak, že v části **Upřesnit nastavení** v podokně **instalace prostředí Integration runtime** zaškrtnete políčko **přizpůsobit Azure-SSIS Integration runtime pomocí dalších systémových konfigurací/instalací součástí** . 
+1. Při zřizování nebo překonfigurování Azure-SSIS IR v uživatelském rozhraní ADF zaškrtněte políčko **přizpůsobit Azure-SSIS Integration runtime pomocí dalších systémových konfigurací/instalací součástí** na stránce **Upřesnit nastavení** v podokně **instalace prostředí Integration runtime** a zadejte identifikátor URI SAS kontejneru do pole **vlastní nastavení identifikátoru URI SAS kontejneru** .
 
-   Pokud chcete přidat standardní vlastní nastavení, zadejte identifikátor URI SAS vašeho kontejneru do pole **identifikátor URI SAS kontejneru vlastního nastavení** . 
-   
-   Chcete-li přidat expresní vlastní nastavení, vyberte možnost **Nový** a otevřete tak podokno **Přidat vlastní nastavení Express** a potom vyberte typ v rozevíracím seznamu **typ vlastní instalace Express** :
+   ![Rozšířená nastavení s vlastními nastaveními](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
+
+### <a name="express-custom-setup"></a>Expresní vlastní instalace
+
+Pokud chcete zřídit nebo znovu nakonfigurovat Azure-SSIS IR pomocí expresních vlastních nastavení, proveďte následující kroky.
+
+1. Při zřizování nebo překonfigurování Azure-SSIS IR v uživatelském rozhraní ADF zaškrtněte políčko **přizpůsobit Azure-SSIS Integration runtime pomocí dalších systémových konfigurací/instalací součástí** na stránce **Upřesnit nastavení** v podokně **instalace prostředí Integration runtime** . 
+
+1. Výběrem **nové** otevřete podokno **Přidat vlastní nastavení Express** a potom vyberte typ v rozevíracím seznamu **typ vlastní instalace Express** :
 
    * Když vyberete typ **příkazu Spustit** účet, můžete zachovat přihlašovací údaje pro sdílené složky nebo sdílené složky Azure v Azure-SSIS IR tak, že do polí **/Add**, **/User**a **/Pass** zadáte cílový název počítače nebo název domény, název účtu nebo uživatelské jméno a klíč nebo heslo účtu. To se podobá spuštění příkazu Windows [cmdkey](https://docs.microsoft.com/windows-server/administration/windows-commands/cmdkey) na místním počítači.
    
@@ -131,12 +141,16 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující položky:
 
      * Pokud vyberete **Xtrahovat software Theobald** , můžete nainstalovat [xtrahovat je](https://theobald-software.com/en/xtract-is/) sada konektorů pro systém SAP (ERP, s/4HANA, černobílá) od Theobald softwaru na vašich Azure-SSIS IR přetažením & ze souboru s **licenčním souborem** , který jste si z nich koupili, do pole soubor s licencí. Aktuální integrovaná verze je **6.1.1.3**.
 
-   Přidaná expresní vlastní nastavení se zobrazí v části **Upřesnit nastavení** . Pokud je chcete odebrat, zaškrtněte příslušná políčka a potom vyberte **Odstranit**.
+Přidaná expresní vlastní nastavení se zobrazí na stránce **Upřesnit nastavení** . Pokud je chcete odebrat, zaškrtněte příslušná políčka a potom vyberte **Odstranit**.
 
-   ![Rozšířená nastavení s vlastními nastaveními](./media/tutorial-create-azure-ssis-runtime-portal/advanced-settings-custom.png)
+### <a name="azure-powershell"></a>Azure PowerShell
 
-1. Když nastavíte nebo znovu nakonfigurujete Azure-SSIS IR pomocí prostředí PowerShell, můžete přidat nebo odebrat vlastní nastavení spuštěním `Set-AzDataFactoryV2IntegrationRuntime` rutiny před zahájením Azure-SSIS IR.
-   
+Při zřizování nebo překonfigurování Azure-SSIS IR vlastními nastaveními pomocí Azure PowerShell proveďte následující kroky.
+
+1. Pokud je vaše Azure-SSIS IR už spuštěná nebo spuštěná, zastavte ho jako první.
+
+1. Pak můžete přidat nebo odebrat vlastní nastavení spuštěním `Set-AzDataFactoryV2IntegrationRuntime` rutiny před zahájením Azure-SSIS IR.
+
    ```powershell
    $ResourceGroupName = "[your Azure resource group name]"
    $DataFactoryName = "[your data factory name]"
@@ -214,10 +228,14 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující položky:
        -Name $AzureSSISName `
        -Force
    ```
-   
-   Po dokončení vlastní vlastní instalace a spuštění Azure-SSIS IR můžete najít standardní výstup *Main. cmd* a dalších protokolů spuštění ve složce *Main. cmd. log* kontejneru úložiště.
 
-1. Pokud chcete zobrazit některé ukázky standardních vlastních nastavení, připojte se k našemu Public Preview kontejneru pomocí Průzkumník služby Azure Storage.
+1. Po dokončení standardní vlastní instalace a spuštění Azure-SSIS IR můžete najít standardní výstup *Main. cmd* a dalších protokolů spuštění ve složce *Main. cmd. log* vašeho kontejneru.
+
+### <a name="standard-custom-setup-samples"></a>Ukázky standardních vlastních nastavení
+
+Pokud chcete zobrazit a znovu použít některé ukázky standardních vlastních nastavení, proveďte následující kroky.
+
+1. Připojte se k našemu Public Preview kontejneru pomocí Průzkumník služby Azure Storage.
 
    a. V části **(místní a připojená)** klikněte pravým tlačítkem na **účty úložiště**, vyberte **připojit k Azure Storage**, vyberte **Použít připojovací řetězec nebo identifikátor URI sdíleného přístupového podpisu**a pak vyberte **Další**.
 
@@ -295,13 +313,15 @@ K přizpůsobení Azure-SSIS IR budete potřebovat následující položky:
 
         ![Složky ve složce scénáře pro uživatele](media/how-to-configure-azure-ssis-ir-custom-setup/custom-setup-image12.png)
 
-   f. Chcete-li vyzkoušet tyto vlastní instalační ukázky, zkopírujte obsah z vybrané složky do kontejneru.
+   f. Chcete-li znovu použít tyto standardní ukázky pro vlastní nastavení, zkopírujte obsah vybrané složky do kontejneru.
+
+1. Při zřizování nebo překonfigurování Azure-SSIS IR v uživatelském rozhraní ADF zaškrtněte políčko **přizpůsobit Azure-SSIS Integration runtime pomocí dalších systémových konfigurací/instalací součástí** na stránce **Upřesnit nastavení** v podokně **instalace prostředí Integration runtime** a zadejte identifikátor URI SAS kontejneru do pole **vlastní nastavení identifikátoru URI SAS kontejneru** .
    
-      Když nastavíte nebo znovu nakonfigurujete Azure-SSIS IR pomocí uživatelského rozhraní Data Factory, zaškrtněte políčko **přizpůsobit Azure-SSIS Integration runtime ostatním konfiguracím systému/instalací součástí** v části **Upřesnit nastavení** a pak zadejte identifikátor URI SAS vašeho kontejneru do pole **identifikátor SAS SAS vlastního nastavení** .
-   
-      Když nastavíte nebo znovu nakonfigurujete Azure-SSIS IR pomocí prostředí PowerShell, spusťte `Set-AzDataFactoryV2IntegrationRuntime` rutinu s identifikátorem URI SAS vašeho kontejneru jako hodnotu `SetupScriptContainerSasUri` parametru.
+1. Když zřídíte nebo překonfigurujete Azure-SSIS IR pomocí Azure PowerShell, zastavte ho, pokud už je spuštěný nebo spuštěný, spusťte `Set-AzDataFactoryV2IntegrationRuntime` rutinu s identifikátorem URI SAS vašeho kontejneru jako hodnotu `SetupScriptContainerSasUri` parametru a pak spusťte Azure-SSIS IR.
+
+1. Po dokončení standardní vlastní instalace a spuštění Azure-SSIS IR můžete najít standardní výstup *Main. cmd* a dalších protokolů spuštění ve složce *Main. cmd. log* vašeho kontejneru.
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Nastavte edici Enterprise Azure-SSIS Integration Runtime](how-to-configure-azure-ssis-ir-enterprise-edition.md)
-- [Vývoj placených nebo licencovaných vlastních komponent pro Azure-SSIS Integration Runtime](how-to-develop-azure-ssis-ir-licensed-components.md)
+- [Nastavte edici Enterprise Azure-SSIS IR](how-to-configure-azure-ssis-ir-enterprise-edition.md)
+- [Vývoj placených nebo licencovaných komponent pro Azure-SSIS IR](how-to-develop-azure-ssis-ir-licensed-components.md)

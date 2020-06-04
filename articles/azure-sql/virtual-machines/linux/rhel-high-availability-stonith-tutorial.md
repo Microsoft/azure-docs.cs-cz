@@ -1,5 +1,5 @@
 ---
-title: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure – Linux Virtual Machines | Microsoft Docs
+title: Konfigurace skupin dostupnosti pro SQL Server na virtuálních počítačích RHEL ve virtuálních počítačích Azure-Linux | Microsoft Docs
 description: Přečtěte si o nastavení vysoké dostupnosti v prostředí clusteru RHEL a nastavení STONITH.
 ms.service: virtual-machines-linux
 ms.subservice: ''
@@ -8,12 +8,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 02/27/2020
-ms.openlocfilehash: 445ab97e2e980cdcafe333fa05a340c0e5fef24b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d323d89b13a89a8dd9f2dac6292a01215bf6068a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053685"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343770"
 ---
 # <a name="tutorial-configure-availability-groups-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace skupin dostupnosti pro SQL Server virtuálních počítačů s RHEL v Azure 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -21,12 +21,12 @@ ms.locfileid: "84053685"
 > [!NOTE]
 > Uvedený kurz je ve **verzi Public Preview**. 
 >
-> V tomto kurzu používáme SQL Server 2017 s RHEL 7,6, je ale možné použít SQL Server 2019 v RHEL 7 nebo RHEL 8 ke konfiguraci HA. Příkazy pro konfiguraci prostředků skupiny dostupnosti se v RHEL 8 změnily. Chcete-li získat další informace o správných příkazech, přečtěte si článek o tom, jak [vytvořit prostředek skupiny dostupnosti](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) a prostředky RHEL 8.
+> V tomto kurzu používáme SQL Server 2017 s RHEL 7,6, ale ke konfiguraci vysoké dostupnosti je možné použít SQL Server 2019 v RHEL 7 nebo RHEL 8. Příkazy pro konfiguraci prostředků skupiny dostupnosti se v RHEL 8 změnily. Chcete-li získat další informace o správných příkazech, přečtěte si článek [vytvoření prostředku skupiny dostupnosti](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) a prostředků RHEL 8.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> - Vytvořit novou skupinu prostředků, skupinu dostupnosti a Azure Linux Virtual Machines (virtuální počítač)
+> - Vytvořit novou skupinu prostředků, skupinu dostupnosti a virtuální počítače se systémem Linux
 > - Povolit vysokou dostupnost (HA)
 > - Vytvoření clusteru Pacemaker
 > - Konfigurace agenta pro oplocení vytvořením zařízení STONITH
@@ -35,7 +35,7 @@ V tomto kurzu se naučíte:
 > - Konfigurace prostředků skupiny dostupnosti (AG) v clusteru Pacemaker
 > - Testování převzetí služeb při selhání a agenta pro oplocení
 
-V tomto kurzu budete k nasazení prostředků v Azure používat rozhraní příkazového řádku (CLI) Azure.
+Tento kurz použije Azure CLI k nasazení prostředků v Azure.
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
@@ -95,7 +95,7 @@ Po dokončení příkazu byste měli získat následující výsledky:
 >
 > Abyste se vyhnuli "dvojitému fakturaci", při vytváření virtuálního počítače Azure použijte image RHEL HA. Obrázky, které jsou nabízené jako image RHEL-HA, jsou také PAYG image s úložištěm HA předem povolenou.
 
-1. Získat seznam imagí virtuálních počítačů, které nabízejí RHEL s HA:
+1. Získejte seznam imagí virtuálních počítačů, které nabízejí RHEL s HA:
 
     ```azurecli-interactive
     az vm image list --all --offer "RHEL-HA"
@@ -472,7 +472,7 @@ sudo firewall-cmd --reload
 
 ## <a name="install-sql-server-and-mssql-tools"></a>Instalace SQL Server a MSSQL-Tools
  
-Pomocí níže uvedeného oddílu můžete na virtuální počítače nainstalovat SQL Server a nástroje MSSQL. Proveďte každou z těchto akcí na všech uzlech. Další informace najdete v tématu [instalace SQL Server virtuálního počítače Red Hat](/sql/linux/quickstart-install-connect-red-hat).
+Pomocí níže uvedeného oddílu můžete na virtuální počítače nainstalovat SQL Server a nástroje MSSQL. Proveďte každou z těchto akcí na všech uzlech. Další informace najdete v tématu [instalace SQL Server na virtuálním počítači Red Hat](/sql/linux/quickstart-install-connect-red-hat).
 
 ### <a name="installing-sql-server-on-the-vms"></a>Instalace SQL Server na virtuální počítače
 
@@ -531,13 +531,13 @@ Měl by se zobrazit následující výstup:
            └─11640 /opt/mssql/bin/sqlservr
 ```
 
-## <a name="configure-sql-server-always-on-availability-group"></a>Konfigurace skupiny dostupnosti Always On SQL Server
+## <a name="configure-an-availability-group"></a>Konfigurace skupiny dostupnosti
 
-Následující postup použijte ke konfiguraci skupiny dostupnosti Always On pro vaše virtuální počítače v SQL Server. Další informace najdete v tématu [Konfigurace skupiny dostupnosti Always On SQL Server pro zajištění vysoké dostupnosti v systému Linux](/sql/linux/sql-server-linux-availability-group-configure-ha) .
+Následující postup použijte ke konfiguraci skupiny dostupnosti Always On SQL Server pro vaše virtuální počítače. Další informace najdete v tématu [Konfigurace skupin dostupnosti Always On SQL Server pro zajištění vysoké dostupnosti v systému Linux](/sql/linux/sql-server-linux-availability-group-configure-ha) .
 
-### <a name="enable-alwayson-availability-groups-and-restart-mssql-server"></a>Povolení skupin dostupnosti AlwaysOn a restartování serveru MSSQL
+### <a name="enable-always-on-availability-groups-and-restart-mssql-server"></a>Povolit skupiny dostupnosti Always On a restartovat server MSSQL
 
-Povolte skupiny dostupnosti AlwaysOn na každém uzlu, který je hostitelem instance SQL Server. Pak restartujte server MSSQL. Spusťte tento skript:
+V každém uzlu, který je hostitelem instance SQL Server, povolte skupiny dostupnosti Always On. Pak restartujte server MSSQL. Spusťte tento skript:
 
 ```
 sudo /opt/mssql/bin/mssql-conf set hadr.hadrenabled 1
@@ -566,19 +566,19 @@ V současné době nepodporujeme ověřování AD na koncový bod AG. Proto je n
 1. Připojte se k primární replice pomocí SSMS nebo SQL CMD. V následujících příkazech se vytvoří certifikát na `/var/opt/mssql/data/dbm_certificate.cer` `var/opt/mssql/data/dbm_certificate.pvk` primárním SQL Server replice a privátní klíč:
 
     - Nahraďte `<Private_Key_Password>` vlastními hesly.
-
-```sql
-CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
-GO
-
-BACKUP CERTIFICATE dbm_certificate
-   TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
-   WITH PRIVATE KEY (
-           FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
-           ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
-       );
-GO
-```
+    
+    ```sql
+    CREATE CERTIFICATE dbm_certificate WITH SUBJECT = 'dbm';
+    GO
+    
+    BACKUP CERTIFICATE dbm_certificate
+       TO FILE = '/var/opt/mssql/data/dbm_certificate.cer'
+       WITH PRIVATE KEY (
+               FILE = '/var/opt/mssql/data/dbm_certificate.pvk',
+               ENCRYPTION BY PASSWORD = '<Private_Key_Password>'
+           );
+    GO
+    ```
 
 Ukončete relaci SQL CMD spuštěním `exit` příkazu a vraťte se zpět do relace SSH.
  
@@ -631,7 +631,7 @@ Ukončete relaci SQL CMD spuštěním `exit` příkazu a vraťte se zpět do rel
 
 ### <a name="create-the-database-mirroring-endpoints-on-all-replicas"></a>Vytvoření koncových bodů zrcadlení databáze ve všech replikách
 
-Spusťte následující skript na všech instancích SQL pomocí SQL CMD nebo SSMS:
+Spusťte následující skript na všech instancích SQL Server pomocí SQL CMD nebo SSMS:
 
 ```sql
 CREATE ENDPOINT [Hadr_endpoint]
@@ -687,7 +687,7 @@ GO
 
 ### <a name="create-a-sql-server-login-for-pacemaker"></a>Vytvoření SQL Server přihlašovacího jména pro Pacemaker
 
-Na všech serverech SQL Server vytvořte přihlašovací údaje SQL pro Pacemaker. Následující příkaz Transact-SQL vytvoří přihlášení.
+U všech instancí SQL Server vytvořte SQL Server přihlášení pro Pacemaker. Následující příkaz Transact-SQL vytvoří přihlášení.
 
 - Nahraďte `<password>` vlastními složitými hesly.
 
@@ -702,7 +702,7 @@ ALTER SERVER ROLE [sysadmin] ADD MEMBER [pacemakerLogin];
 GO
 ```
 
-Na všech serverech SQL Server uložte pověření používaná pro přihlášení SQL Server. 
+V části všechny SQL Server instance uložte přihlašovací údaje používané pro přihlášení SQL Server. 
 
 1. Vytvořte soubor:
 
@@ -745,7 +745,7 @@ Na všech serverech SQL Server uložte pověření používaná pro přihlášen
     GO
     ```
 
-1. Spusťte následující skript Transact-SQL na primární replice a na všech sekundárních replikách:
+1. Spusťte následující skript Transact-SQL na primární replice a na každé sekundární replice:
 
     ```sql
     GRANT ALTER, CONTROL, VIEW DEFINITION ON AVAILABILITY GROUP::ag1 TO pacemakerLogin;
@@ -790,7 +790,7 @@ GO
 SELECT DB_NAME(database_id) AS 'database', synchronization_state_desc FROM sys.dm_hadr_database_replica_states;
 ```
 
-Pokud je `synchronization_state_desc` seznam synchronizovaný pro `db1` , znamená to, že repliky se synchronizují. Sekundární `db1` replika se zobrazuje v primární replice.
+Pokud jsou `synchronization_state_desc` seznamy synchronizované pro `db1` , znamená to, že repliky se synchronizují. Sekundární `db1` replika se zobrazuje v primární replice.
 
 ## <a name="create-availability-group-resources-in-the-pacemaker-cluster"></a>Vytvoření prostředků skupiny dostupnosti v clusteru Pacemaker
 
@@ -917,7 +917,7 @@ Daemon Status:
 
 Abychom zajistili, že se konfigurace úspěšně provedla, otestujeme převzetí služeb při selhání. Další informace najdete v tématu [převzetí služeb při selhání skupiny dostupnosti Always On v systému Linux](/sql/linux/sql-server-linux-availability-group-failover-ha).
 
-1. Spusťte následující příkaz pro ruční převzetí služeb při selhání primární replikou na `<VM2>` . Nahraďte `<VM2>` hodnotou názvu vašeho serveru.
+1. Spusťte následující příkaz, který ručně převezme služby primární repliky na `<VM2>` . Nahraďte `<VM2>` hodnotou názvu vašeho serveru.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
@@ -985,7 +985,7 @@ Další informace o testování ochranného zařízení najdete v následující
 
 ## <a name="next-steps"></a>Další kroky
 
-Aby bylo možné využít naslouchací proces skupiny dostupnosti pro vaše SQL servery, budete muset vytvořit a nakonfigurovat nástroj pro vyrovnávání zatížení.
+Aby bylo možné využít naslouchací proces skupiny dostupnosti pro instance SQL Server, budete muset vytvořit a nakonfigurovat nástroj pro vyrovnávání zatížení.
 
 > [!div class="nextstepaction"]
 > [Kurz: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure](rhel-high-availability-listener-tutorial.md)

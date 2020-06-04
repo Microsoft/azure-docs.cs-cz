@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: 6597a8d5f1f8f4aa34ba9f59d4e08b5dc6d66728
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: f8ddc3ef56aefc6ea613af19d91cd0122435efd7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682462"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344199"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Co je nového v Azure Kognitivní hledání
 
@@ -29,7 +29,7 @@ Zjistěte, co je nového ve službě. Pomocí záložky můžete tuto stránku u
 
 + K nastavení připojení ke zdroji dat Azure pro indexování použijte [systémově spravovanou identitu (Preview)](search-howto-managed-identities-data-sources.md) . Platí pro [indexery](search-indexer-overview.md) , které ingestují obsah ze zdrojů dat Azure, jako jsou Azure SQL Database, Azure Cosmos DB a Azure Storage.
 
-+ Změňte základ pro vypočítání výsledků hledání z horizontálních oddílů na All-horizontálních oddílů pomocí [parametru scoringStatistics = Global Query](index-similarity-and-scoring.md#scoring-statistics).
++ Změňte základ pro vypočítání výsledků hledání z horizontálních oddílů na All-horizontálních oddílů pomocí parametrů [scoringStatistics = Global](index-similarity-and-scoring.md#scoring-statistics) a SessionID.
 
 ### <a name="march-2020"></a>Březen 2020
 

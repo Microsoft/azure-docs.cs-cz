@@ -3,12 +3,12 @@ title: Posouzení v Azure Migrate posouzení serveru
 description: Další informace o hodnoceních v Azure Migrate posouzení serveru
 ms.topic: conceptual
 ms.date: 05/27/2020
-ms.openlocfilehash: bfae3f23dd16b0d1a09b49f56efbca88a7bea08f
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ee6b13edd12109b7f748abeaf13a5e8f3ded2a8e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171000"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343944"
 ---
 # <a name="assessments-in-azure-migrate-server-assessment"></a>Posouzení v Azure Migrate: posouzení serveru
 
@@ -25,7 +25,7 @@ Posouzení pomocí nástroje pro posouzení serveru měří připravenost a odha
 
 Posouzení, která vytvoříte pomocí posouzení serveru, jsou snímkem dat k určitému bodu v čase. Vyhodnocování serveru nabízí dva typy posouzení.
 
-**Typ posouzení** | **Podrobnosti** | **Data**
+**Typ posouzení** | **Zobrazí** | **Data**
 --- | --- | ---
 **Na základě výkonu** | Posouzení, která vytvářejí doporučení na základě shromážděných údajů o výkonu | Doporučení na velikost virtuálního počítače vychází z dat využití procesoru a paměti RAM.<br/><br/> Doporučení pro typ disku vychází z počtu vstupně-výstupních operací za sekundu (IOPS) a propustnosti místních disků. Typy disků jsou Azure HDD úrovně Standard, Azure SSD úrovně Standard a Azure Premium disks.
 **V místním prostředí** | Posouzení, které nepoužívají údaje o výkonu k vytváření doporučení | Doporučení na velikost virtuálního počítače je založené na velikosti místního virtuálního počítače.<br/><br> Doporučený typ disku je založený na vybraném typu úložiště pro posouzení.
@@ -110,7 +110,7 @@ Vlastnost | Podrobnosti
 **Cílové umístění** | Umístění, do kterého chcete migrovat. Posouzení serveru aktuálně podporuje tyto cílové oblasti Azure:<br/><br/> Austrálie – východ, Austrálie – jihovýchod, Brazílie – jih, Kanada – střed, Kanada – východ, Střed Indie, Střed USA, Čína – východ, Čína – sever, Východní Asie, východní USA, Východní USA 2, Německo – střed, Německo – severovýchod, Japonsko – východ, Japonsko – západ, Korea – jih, střed USA – sever, Severní Evropa, střed USA – jih, jihovýchodní Asie, Jižní Indie, Velká Británie – jih, Velká Británie – západ, US Gov – Arizona, US gov – Texas, US gov – Virginie , Středozápadní USA, Západní Evropa, Západní Indie, Západní USA a Západní USA 2.
 **Cílový disk úložiště (stejně jako velikost)** | Typ disku, který se má použít pro úložiště v Azure. <br/><br/> Zadejte cílový disk úložiště jako spravovaný SSD úrovně Standard spravovaný na úrovni Premium nebo HDD úrovně Standard.
 **Cílový disk úložiště (Změna velikosti na základě výkonu)** | Určuje typ cílového úložného disku jako automatické, spravované na úrovni Premium, HDD úrovně Standard spravovaný nebo SSD úrovně Standard spravovaný.<br/><br/> **Automaticky**: doporučení na disku vychází z údajů o výkonu disků, což znamená vstupně-výstupní operace a propustnost.<br/><br/>**Premium nebo Standard**: posouzení doporučuje SKU disku v rámci vybraného typu úložiště.<br/><br/> Pokud požadujete smlouvu SLA s jednou instancí služby (SLA) 99,9%, zvažte použití disků spravovaných na úrovni Premium. Tím se zajistí, že se všechny disky v posouzení doporučují jako disky spravované na úrovni Premium.<br/><br/> Azure Migrate podporuje pro vyhodnocení migrace pouze spravované disky.
-**Azure Reserved VM Instances** | Určuje [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/) , aby se odhady nákladů v rámci posouzení zohlednily v úvahu.<br/><br/> Pokud jsou vybrané rezervované instance, nechte výchozí nastavení ve slevě (%). a vlastnosti pro dobu provozu virtuálního počítače.<br/><br/> Azure Migrate aktuálně podporuje Azure Reserved VM Instances jenom pro nabídky s průběžnými platbami.
+**Azure Reserved VM Instances** | Určuje [rezervované instance](https://azure.microsoft.com/pricing/reserved-vm-instances/) , aby se odhady nákladů v rámci posouzení zohlednily v úvahu.<br/><br/> Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít.<br/><br/> Azure Migrate aktuálně podporuje Azure Reserved VM Instances jenom pro nabídky s průběžnými platbami.
 **Kritéria změny velikosti** | Používá se k nastavte správnou velikost virtuálního počítače Azure.<br/><br/> Použijte změnu velikosti nebo určení velikosti na základě výkonu.
 **Historie výkonu** | Používá se při změně velikosti na základě výkonu. Historie výkonu určuje dobu použitou při vyhodnocování údajů o výkonu.
 **Percentilové využití** | Používá se při změně velikosti na základě výkonu. Procento využití Určuje hodnotu percentilu pro vzorek výkonu, který se používá pro snižování.
@@ -154,11 +154,12 @@ Vlastnost | Podrobnosti | Stav připravenosti na Azure
 Při kontrole vlastností virtuálního počítače se posouzení serveru vyhledá v hostovaném operačním systému počítače a určí, jestli se dá spustit na Azure.
 
 > [!NOTE]
-> Pro zpracování analýzy hostů pro virtuální počítače VMware používá posouzení serveru operační systém, který je zadaný pro virtuální počítač v vCenter Server. U virtuálních počítačů se systémem Linux běžících na VMware vyhodnocování serveru aktuálně neidentifikuje verzi jádra hostovaného operačního systému.
+> Pro zpracování analýzy hostů pro virtuální počítače VMware používá posouzení serveru operační systém, který je zadaný pro virtuální počítač v vCenter Server. VCenter Server ale neposkytuje verzi jádra pro operační systémy Linux VM. Chcete-li zjistit verzi, je třeba nastavit [zjišťování aplikací](https://docs.microsoft.com/azure/migrate/how-to-discover-applications). Zařízení pak zjistí informace o verzi pomocí přihlašovacích údajů hosta, které zadáte při nastavení zjišťování aplikací.
+
 
 Posouzení serveru používá následující logiku k identifikaci připravenosti na Azure na základě operačního systému:
 
-**Operační systém** | **Podrobnosti** | **Stav připravenosti na Azure**
+**Operační systém** | **Zobrazí** | **Stav připravenosti na Azure**
 --- | --- | ---
 Windows Server 2016 a všechny SPs | Azure poskytuje plnou podporu. | Připraveno pro Azure.
 Windows Server 2012 R2 a všechny SPs | Azure poskytuje plnou podporu. | Připraveno pro Azure.
@@ -199,7 +200,8 @@ Pokud použijete změnu velikosti na základě výkonu, vyhodnocování serveru 
 
 V případě velikosti úložiště se Azure Migrate pokusí namapovat každý disk, který je připojený k počítači, na disk Azure. Velikost funguje takto:
 
-1. Posouzení serveru přidá IOPS čtení a zápisu disku, aby bylo možné získat celkový počet požadovaných IOPS. Podobně přidá hodnoty propustnosti čtení a zápisu k získání celkové propustnosti každého disku.
+1. Posouzení serveru přidá IOPS čtení a zápisu disku, aby bylo možné získat celkový počet požadovaných IOPS. Podobně přidá hodnoty propustnosti čtení a zápisu k získání celkové propustnosti každého disku. V případě posouzení na základě importu máte možnost poskytnout celkový počet vstupně-výstupních operací za sekundu, celkovou propustnost a celkový počet. disků v importovaném souboru bez zadání nastavení jednotlivých disků. Pokud to uděláte, přeskočí se velikost jednotlivých disků a dodaná data se použijí přímo k výpočtu velikosti a vyberte příslušnou SKU virtuálního počítače.
+
 1. Pokud jste typ úložiště určili jako automatický, je vybraný typ založený na platných hodnotách IOPS a propustnosti. Vyhodnocování serveru určuje, jestli se má namapovat disk na disk s HDD úrovně Standard, SSD úrovně Standard nebo Premium v Azure. Pokud je typ úložiště nastavený na jeden z těchto typů disků, vyhodnocování serveru se pokusí najít SKU disku v rámci vybraného typu úložiště.
 1. Disky jsou vybrané takto:
     - Pokud server Assessment nenalezne disk s požadovanými vstupně-výstupními operacemi a propustností, označí počítač jako nevhodný pro Azure.

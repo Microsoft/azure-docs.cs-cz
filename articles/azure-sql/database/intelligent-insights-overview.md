@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 08904b3a5a1053d64e3b54582189da5d82f62dee
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 133ca6503a2e0fa9ff19fa55cf126b9556b741e0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051924"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344046"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights používání AI k monitorování a řešení potíží s výkonem databáze (Preview)
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -75,7 +75,7 @@ Dostupné možnosti Intelligent Insights jsou:
 | :----------------------------- | ----- | ----- |
 | **Nakonfigurujte Intelligent Insights** – nakonfigurujte Intelligent Insights analýzy pro vaše databáze. | Ano | Ano |
 | **Stream Insights do Azure SQL Analytics** --Stream insights pro Azure SQL Analytics. | Ano | Ano |
-| **Streamování přehledů do centra událostí** – Stream Insights vám umožní Event Hubs pro další vlastní integrace. | Ano | Ano |
+| **Stream Insights do Azure Event Hubs** -Stream insights pro Event Hubs pro další vlastní integrace. | Ano | Ano |
 | **Stream Insights do Azure Storage** -Stream Insights, které Azure Storage k další analýze a dlouhodobé archivaci. | Ano | Ano |
 
 ## <a name="configure-the-export-of-the-intelligent-insights-log"></a>Konfigurace exportu protokolu Intelligent Insights
@@ -86,7 +86,7 @@ Výstup Intelligent Insights může být streamování do jednoho z několika c�
 - Výstup streamování do Azure Event Hubs se dá použít pro vývoj vlastních scénářů monitorování a upozorňování.
 - Výstup streamování do Azure Storage lze použít pro vlastní vývoj aplikací, například pro vlastní vytváření sestav, dlouhodobé archivaci dat a tak dále.
 
-Integrace Azure SQL Analytics, centra událostí Azure, Azure Storage nebo produktů třetích stran pro spotřebu se provádí pomocí prvního povolení Intelligent Insightsho protokolování (protokol "SQLInsights") v okně nastavení diagnostiky databáze a následným nastavením dat protokolu Intelligent Insights pro streamování do jednoho z těchto cílů.
+Integrace Azure SQL Analytics, Azure Event Hubs, Azure Storage nebo produktů třetích stran pro účely spotřeby se provádí prostřednictvím prvního povolení protokolu Intelligent Insights (protokol "SQLInsights") v okně nastavení diagnostiky databáze a následnou konfigurací Intelligent Insights dat protokolu pro streamování do jednoho z těchto cílů.
 
 Další informace o tom, jak povolit protokolování Intelligent Insights a jak nakonfigurovat data metrik a protokolu prostředků pro streamování do náročného produktu, najdete v tématu [metriky a protokolování diagnostiky](metrics-diagnostic-telemetry-logging-streaming-export-configure.md).
 
@@ -133,7 +133,7 @@ Všechny metriky se v různých vztazích berou v úvahu prostřednictvím věde
 
 - Podrobnosti zjištěného problému s výkonem.
 - Zjistila se analýza problému hlavní příčinou.
-- Doporučení k vylepšení výkonu monitorované databáze SQL, pokud je to možné.
+- Doporučení pro zlepšení výkonu monitorované databáze, pokud je to možné.
 
 ## <a name="query-duration"></a>Doba trvání dotazu
 

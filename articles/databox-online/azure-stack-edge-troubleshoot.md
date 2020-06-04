@@ -5,17 +5,17 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/15/2019
 ms.author: alkohli
-ms.openlocfilehash: 8e3c595720d8900acbc5f7f18dc01d96d71ffac9
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 692944b792738b7102f41baa7ef0192cb580b95e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569235"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339378"
 ---
-# <a name="troubleshoot-your-azure-stack-edge-issues"></a>Řešení potíží s Azure Stack Edge 
+# <a name="troubleshoot-your-azure-stack-edge-issues"></a>Řešení potíží s Azure Stack Edge
 
 Tento článek popisuje, jak řešit problémy na Azure Stack hraničních zařízeních. 
 

@@ -10,12 +10,12 @@ ms.author: daperlov
 ms.reviewer: ''
 manager: anandsub
 ms.date: 05/15/2020
-ms.openlocfilehash: 79b89c6a6a7598dd3fbdfc5030fd59fe1aab6625
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: ac51fd63adcc0328ff67f5fbe13dbfdb768f4bfe
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83832773"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343105"
 ---
 # <a name="visual-authoring-in-azure-data-factory"></a>Vytváření vizuálů v Azure Data Factory
 
@@ -42,6 +42,12 @@ U prostředků nejvyšší úrovně, jako jsou kanály, datové sady a toky dat,
 ![Plátno pro vytváření obsahu](media/author-visually/properties-pane.png)
 
 V podokně vlastnosti se při vytváření prostředků otevírá pouze standardně. Pokud ho chcete upravit, klikněte na ikonu podokna Vlastnosti umístěnou v pravém horním rohu plátna.
+
+## <a name="management-hub"></a>Centrum správy
+
+Centrum pro správu, ke kterému přistupovala karta *Spravovat* v prostředí Azure Data Factory, je portál, který hostuje globální akce správy pro vaši datovou továrnu. Tady můžete spravovat připojení k úložištím dat a externím výpočtům, konfiguraci správy zdrojového kódu a nastavením aktivačních událostí. Další informace najdete v informacích o možnostech [centra pro správu](author-management-hub.md).
+
+![Správa propojených služeb](media/author-management-hub/management-hub-linked-services.png)
 
 ## <a name="expressions-and-functions"></a>Výrazy a funkce
 

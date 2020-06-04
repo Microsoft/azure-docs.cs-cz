@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: dde29d02f3dbf10ca068d6b3f1ef6c326c206370
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9d08526334a9891788df63b156cdf65f55c587ca
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82195039"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344930"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -22,6 +22,10 @@ Pro jednu mezipaměť můžete definovat až deset různých cílů úložiště
 Mějte na paměti, že exporty úložiště musí být dostupné z virtuální sítě vaší mezipaměti. U místních hardwarových úložišť možná budete muset nastavit server DNS, který dokáže přeložit názvy hostitelů pro přístup k úložišti NFS. Další informace najdete v tématu věnovaném [přístupu DNS](hpc-cache-prereqs.md#dns-access).
 
 Přidejte cíle úložiště po vytvoření mezipaměti. Postup se mírně liší v závislosti na tom, zda přidáváte službu Azure Blob Storage nebo export systému souborů NFS. Podrobnosti jsou uvedené níže.
+
+Kliknutím na obrázek níže si můžete přehrát [ukázku](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) pro vytvoření mezipaměti a Přidání cíle úložiště.
+
+[![Miniatura videa: mezipaměť prostředí Azure HPC: Instalační program (kliknutím můžete navštívit stránku video)](media/video4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="open-the-storage-targets-page"></a>Otevřete stránku cíle úložiště.
 
@@ -70,7 +74,7 @@ Postup přidání rolí RBAC:
 
 1. Otevřete stránku **řízení přístupu (IAM)** pro účet úložiště. (Odkaz na stránce **Přidat cíl úložiště** automaticky otevře tuto stránku pro vybraný účet.)
 
-1. **+** Klikněte na v horní části stránky a vyberte **Přidat přiřazení role**.
+1. Klikněte na v **+** horní části stránky a vyberte **Přidat přiřazení role**.
 
 1. V seznamu vyberte roli Přispěvatel účtu úložiště.
 
@@ -149,15 +153,15 @@ Tato tabulka shrnuje rozdíly v modelu použití:
 
 | Model využití | Režim ukládání do mezipaměti | Ověření back-endu | Maximální zpoždění před zpětným zápisem |
 | ---- | ---- | ---- | ---- |
-| Čtení těžkých, nečastých zápisů | Čtení | Never (Nikdy) | Žádná |
-| Více než 15% zápisů | Čtení/zápis | Never (Nikdy) | 1 hodina |
-| Klienti obcházejí mezipaměť | Čtení | 30 sekund | Žádná |
+| Čtení těžkých, nečastých zápisů | Čtení | Nikdy | Žádné |
+| Více než 15% zápisů | Čtení/zápis | Nikdy | 1 hodina |
+| Klienti obcházejí mezipaměť | Čtení | 30 sekund | Žádné |
 
 ## <a name="next-steps"></a>Další kroky
 
 Po vytvoření cílů úložiště Vezměte v úvahu jednu z těchto úloh:
 
-* [Připojení mezipaměti HPC Azure](hpc-cache-mount.md)
+* [Připojení služby Azure HPC Cache](hpc-cache-mount.md)
 * [Přesun dat do služby Azure Blob Storage](hpc-cache-ingest.md)
 
 Pokud potřebujete aktualizovat nastavení, můžete [cíl úložiště upravit](hpc-cache-edit-storage.md).

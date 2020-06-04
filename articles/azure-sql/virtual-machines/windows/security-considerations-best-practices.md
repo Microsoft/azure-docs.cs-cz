@@ -1,5 +1,5 @@
 ---
-title: Požadavky na zabezpečení pro SQL Server v Azure | Microsoft Docs
+title: Otázky zabezpečení | Microsoft Docs
 description: V tomto tématu najdete obecné pokyny pro zabezpečení SQL Server běžících na virtuálním počítači Azure.
 services: virtual-machines-windows
 documentationcenter: na
@@ -15,14 +15,14 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f04620430571a1f86d601eac2b1b662c77499a76
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a9c3588d75bbad3ed7feb2d8a53c0a698286861a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047262"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342540"
 ---
-# <a name="security-considerations-for-sql-server-in-azure-virtual-machines"></a>Informace o zabezpečení pro SQL Server v Azure Virtual Machines
+# <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Požadavky na zabezpečení pro SQL Server v Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Toto téma obsahuje obecné pokyny pro zabezpečení, které vám pomůžou navázat zabezpečený přístup k SQL Server instancí na virtuálním počítači Azure (VM).
@@ -31,7 +31,7 @@ Azure vyhovuje několika oborovým předpisům a standardům, které vám umožn
 
 [!INCLUDE [learn-about-deployment-models](../../../../includes/learn-about-deployment-models-both-include.md)]
 
-## <a name="control-access-to-the-sql-vm"></a>Řízení přístupu k virtuálnímu počítači SQL
+## <a name="control-access-to-the-sql-virtual-machine"></a>Řízení přístupu k virtuálnímu počítači SQL
 
 Při vytváření virtuálního počítače s SQL Server zvažte pečlivé řízení, kdo má přístup k počítači a SQL Server. Obecně platí, že byste měli provést následující akce:
 
@@ -46,7 +46,7 @@ Když vytvoříte virtuální počítač s SQL Server s imagí galerie, možnost
 
 ![SQL Server připojení](./media/security-considerations-best-practices/sql-vm-connectivity-option.png)
 
-Pro zajištění nejlepšího zabezpečení vyberte nejvíce omezující možnost pro váš scénář. Například pokud používáte aplikaci, která přistupuje k SQL Server na stejném virtuálním počítači, pak je **místní** volba nejbezpečnější. Pokud používáte aplikaci Azure, která vyžaduje přístup k SQL Server, pak **privátní** zabezpečená komunikace pro SQL Server jenom v rámci zadaného [Virtual Network Azure](../../../virtual-network/virtual-networks-overview.md). Pokud požadujete **veřejný** přístup k virtuálnímu počítači s SQL Server (Internet), nezapomeňte podle dalších osvědčených postupů v tomto tématu snížit prostor pro útoky.
+Pro zajištění nejlepšího zabezpečení vyberte nejvíce omezující možnost pro váš scénář. Například pokud používáte aplikaci, která přistupuje k SQL Server na stejném virtuálním počítači, pak je **místní** volba nejbezpečnější. Pokud používáte aplikaci Azure, která vyžaduje přístup k SQL Server, pak **soukromá** zabezpečená komunikace s SQL Server jenom v rámci zadané [virtuální sítě Azure](../../../virtual-network/virtual-networks-overview.md). Pokud požadujete **veřejný** přístup k virtuálnímu počítači s SQL Server (Internet), nezapomeňte podle dalších osvědčených postupů v tomto tématu snížit prostor pro útoky.
 
 Vybrané možnosti portálu používají pravidla zabezpečení příchozí pro [skupinu zabezpečení sítě](../../../active-directory/identity-protection/security-overview.md) (NSG) virtuálního počítače a povolují nebo zakazují síťový provoz na virtuálním počítači. Můžete upravit nebo vytvořit nová příchozí pravidla NSG, která povolí provoz na port SQL Server (standardně 1433). Můžete také zadat konkrétní IP adresy, které můžou komunikovat přes tento port.
 
@@ -54,7 +54,7 @@ Vybrané možnosti portálu používají pravidla zabezpečení příchozí pro 
 
 Kromě pravidel NSG, jak omezit síťový provoz, můžete také použít bránu Windows Firewall na virtuálním počítači.
 
-Pokud používáte koncové body s modelem nasazení Classic, odeberte všechny koncové body na virtuálním počítači, pokud je nepoužíváte. Pokyny k používání seznamů ACL s koncovými body najdete v tématu [Správa seznamu ACL na koncovém bodu](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). To není nutné pro virtuální počítače, které používají Správce prostředků.
+Pokud používáte koncové body s modelem nasazení Classic, odeberte všechny koncové body na virtuálním počítači, pokud je nepoužíváte. Pokyny k používání seznamů ACL s koncovými body najdete v tématu [Správa seznamu ACL na koncovém bodu](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#manage-the-acl-on-an-endpoint). To není nutné pro virtuální počítače, které používají Azure Resource Manager.
 
 Nakonec zvažte povolení šifrovaných připojení pro instanci databázového stroje SQL Server na virtuálním počítači Azure. Nakonfigurujte instanci systému SQL Server s podepsaným certifikátem. Další informace najdete v tématu [Povolení šifrovaných připojení k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-encrypted-connections-to-the-database-engine) a [syntaxi připojovacího řetězce](https://msdn.microsoft.com/library/ms254500.aspx).
 

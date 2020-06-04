@@ -1,14 +1,14 @@
 ---
 title: Migrace základů znalostní báze – QnA Maker
 description: Migrace znalostní báze vyžaduje export z jedné znalostní báze a pak se importuje do jiného.
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2020
-ms.openlocfilehash: 13e5e79bf4eaf6ec59e41b3e12aa1bb23f2c1578
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e2d6c1795b816d3b7ac046ea4055402b9107e20b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80258086"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343084"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrace znalostní báze pomocí exportu a importu
 

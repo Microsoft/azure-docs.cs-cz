@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 05/20/2020
-ms.openlocfilehash: 8bff8cf1111675446c1c9fb2e5dde8b19e2ef5c1
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 9a80adbbeda2754f9f08a4d2f16b8caf9263b087
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310882"
+ms.locfileid: "84340843"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Azure Monitor klíč spravovaný zákazníkem 
 
@@ -40,7 +40,7 @@ Azure Monitor využívá spravovanou identitu přiřazenou systémem k udělení
 Po konfiguraci CMK se všechna data ingestovaná do pracovních prostorů přidružených k vašemu prostředku *clusteru* šifrují pomocí vašeho klíče v Key Vault. Kdykoli můžete zrušit přidružení pracovních prostorů ke zdroji *clusteru* . Nová data se ingestují do Log Analytics úložiště a šifrují pomocí klíče Microsoft Key, zatímco můžete bez problémů zadávat dotazy na nová a stará data.
 
 
-![CMK – přehled](media/customer-managed-keys/cmk-overview-8bit.png)
+![CMK – přehled](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
 2. Log Analytics prostředek *clusteru* , který má spravovanou identitu s oprávněními Key Vault – identita se rozšíří na Log Analytics vyhrazené úložiště clusteru s Underlay
@@ -80,7 +80,7 @@ Procedura není momentálně v uživatelském rozhraní podporovaná a proces z�
 > [!IMPORTANT]
 > Jakýkoli požadavek rozhraní API musí v hlavičce požadavku zahrnovat autorizační token nosiče.
 
-Například:
+Příklad:
 
 ```rst
 GET https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2020-03-01-preview

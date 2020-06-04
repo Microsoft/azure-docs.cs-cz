@@ -13,15 +13,15 @@ ms.workload: iaas-sql-server
 ms.date: 10/21/2019
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 49b669627507af0e3e7386f31e344082cc4686df
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: d7ce3a19ddb5f14e53a8821cf070500f8e3eb061
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219308"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338437"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Registrace několika virtuálních počítačů SQL v Azure pomocí poskytovatele prostředků virtuálního počítače SQL
-[!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)][!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
+[!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 Tento článek popisuje, jak pomocí rutiny PowerShellu hromadně zaregistrovat vaše SQL Server virtuální počítače v Azure pomocí poskytovatele prostředků virtuálního počítače SQL `Register-SqlVMs` .
 
@@ -35,7 +35,7 @@ Další informace o poskytovateli prostředků najdete v tématu [poskytovatel p
 
 Pokud chcete zaregistrovat SQL Server virtuální počítač s poskytovatelem prostředků, budete potřebovat následující: 
 
-- [Předplatné Azure](https://azure.microsoft.com/free/) , které je [zaregistrované u poskytovatele prostředků](sql-vm-resource-provider-register.md#register-subscription-with-rp) a obsahuje neregistrované virtuální počítače SQL Server. 
+- [Předplatné Azure](https://azure.microsoft.com/free/) , které je [zaregistrované u poskytovatele prostředků](sql-vm-resource-provider-register.md#register-a-subscription-with-the-resource-provider) a obsahuje neregistrované virtuální počítače SQL Server. 
 - Pověření klienta používaná k registraci virtuálních počítačů existují v kterékoli z následujících rolí RBAC: přispěvatel, **Přispěvatel**nebo **vlastník** **virtuálního počítače**. 
 - Nejnovější verzi [AZ PowerShellu](/powershell/azure/new-azureps-module-az) 
 - Nejnovější verzi [AZ. SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0).
@@ -78,7 +78,7 @@ Register-SqlVMs -SubscriptionList SubscriptionId1,SubscriptionId2
 Příklad výstupu: 
 
 ```
-Number of Subscriptions registration failed for 
+Number of subscriptions registration failed for 
 because you do not have access or credentials are wrong: 1
 Total VMs Found: 10
 VMs Already registered: 1
@@ -155,7 +155,7 @@ Please find the detailed report in file RegisterSqlVMScriptReport1571314821.txt
 Please find the error details in file VMsNotRegisteredDueToError1571314821.log
 ```
 
-## <a name="register-specific-vms-in-single-resource-group"></a>Registrovat konkrétní virtuální počítače v jedné skupině prostředků
+## <a name="register-specific-vms-in-a-single-resource-group"></a>Registrace konkrétních virtuálních počítačů v jedné skupině prostředků
 
 K registraci konkrétních SQL Server virtuálních počítačů v rámci jedné skupiny prostředků použijte následující rutinu:
 

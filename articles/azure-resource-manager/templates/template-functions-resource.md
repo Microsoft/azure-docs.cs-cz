@@ -3,12 +3,12 @@ title: Funkce šablon – prostředky
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot o prostředcích.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: a31aadb02ed3fff83ee6dc62a71aa32d0b716629
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 15b1610dfcacb37bce2e265b4e16f675e944b9db
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259435"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331504"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -34,7 +34,7 @@ Vrátí ID prostředku pro [prostředek rozšíření](../management/extension-r
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | resourceId |Ano |řetězec |ID prostředku prostředku, na který se prostředek rozšíření používá |
 | resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
@@ -101,8 +101,8 @@ Následující příklad vrátí ID prostředku pro zámek skupiny prostředků.
 }
 ```
 
-<a id="listkeys" />
-<a id="list" />
+<a id="listkeys"></a>
+<a id="list"></a>
 
 ## <a name="list"></a>seznamu
 
@@ -112,7 +112,7 @@ Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementa
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName nebo resourceIdentifier |Ano |řetězec |Jedinečný identifikátor prostředku |
 | apiVersion |Ano |řetězec |Verze rozhraní API stavu modulu runtime prostředku Obvykle ve formátu **yyyy-MM-DD**. |
@@ -361,7 +361,7 @@ Vrátí informace o poskytovateli prostředků a jeho podporovaných typech pros
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | providerNamespace |Ano |řetězec |Obor názvů poskytovatele |
 | resourceType |Ne |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
@@ -436,7 +436,7 @@ Vrátí objekt představující běhový stav prostředku.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | resourceName nebo resourceIdentifier |Ano |řetězec |Název nebo jedinečný identifikátor prostředku Při odkazování na prostředek v aktuální šabloně zadejte jako parametr jenom název prostředku. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
 | apiVersion |Ne |řetězec |Verze rozhraní API zadaného prostředku **Tento parametr je vyžadován, pokud prostředek není zřízen v rámci stejné šablony.** Obvykle ve formátu **yyyy-MM-DD**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
@@ -759,7 +759,7 @@ Vrátí jedinečný identifikátor prostředku. Tuto funkci použijete, pokud je
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Ne |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků nebo předplatného. |
 | resourceGroupName |Ne |řetězec |Výchozí hodnota je aktuální skupina prostředků. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiné skupině prostředků. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků. |
@@ -955,7 +955,7 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni předplatn
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | subscriptionId |Ne |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. |
 | resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
@@ -1037,7 +1037,7 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni tenanta.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Popis |
+| Parametr | Požaduje se | Typ | Description |
 |:--- |:--- |:--- |:--- |
 | resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
 | resourceName1 |Ano |řetězec |Název prostředku |

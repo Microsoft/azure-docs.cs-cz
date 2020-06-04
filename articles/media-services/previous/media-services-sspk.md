@@ -1,6 +1,6 @@
 ---
-title: Licencování&reg; sady pro portování klienta Microsoft Smooth Streaming
-description: Přečtěte si, jak licencovat&reg; sadu Microsoft Smooth streaminging SDK pro přenos klientů.
+title: Licencování &reg; sady pro portování klienta Microsoft Smooth Streaming
+description: Přečtěte si, jak licencovat &reg; sadu Microsoft Smooth streaminging SDK pro přenos klientů.
 services: media-services
 documentationcenter: ''
 author: xpouyat
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: bd77c53a195a9549f6aaad9ee2928206f5324b0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 423597da44a74afb60e69c4e32cbd6353f81e726
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686902"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344029"
 ---
-# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licencování&reg; sady pro portování klienta Microsoft Smooth Streaming 
+# <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licencování &reg; sady pro portování klienta Microsoft Smooth Streaming 
 ## <a name="overview"></a>Přehled
 Sada Microsoft Smooth Streaming Client porting kit (**SSPK** pro krátké) je Smooth Streaming implementace klienta optimalizovaná tak, aby pomáhala vestavěným výrobcům zařízení, kabelovým a mobilním operátorům, poskytovatelům služeb obsahu, výrobcům na sluchátkách, nezávislým výrobcům softwaru (ISV) a poskytovatelům řešení vytvářet produkty a služby pro adaptivní obsah streamování ve formátu Smooth Streaming. SSPK je implementace klienta Smooth Streaming nezávislá na platformě, kterou může licence přenést na jakékoli zařízení a platformu. 
 
@@ -29,7 +29,7 @@ Níže je uveden seznam architektury vysoké úrovně a služba IIS Smooth Strea
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Popis
+## <a name="description"></a>Description
 SSPK je licencovaná pro výrazy, které nabízejí skvělou obchodní hodnotu. SSPK License poskytuje odvětví s:
 
 * Zdroj Smooth Streaminging Kit pro portování v C++ 
@@ -75,7 +75,7 @@ E-mail [sspkinfo@microsoft.com](mailto:sspkinfo@microsoft.com) pro všechny dota
 
 Portál pro distribuci SSPK má přístup k registrovaným průběžným licencím.
 
-Dočasné a konečné licence SSPK mohou odesílat technické dotazy [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com).
+Dočasné a konečné licence SSPK mohou odesílat technické dotazy [smoothpk@microsoft.com](mailto:smoothpk@microsoft.com) .
 
 ## <a name="microsoft-smooth-streaming-client-interim-product-agreement-licensees"></a>Microsoft Smooth Streaming klientských provizorních licencí k produktu
 
@@ -144,6 +144,7 @@ Dočasné a konečné licence SSPK mohou odesílat technické dotazy [smoothpk@m
 * Shenzhen Chuangwei – RGB Electronics Co., Ltd.
 * Shenzhenická elektronika CO., LTD
 * Shenzhen Jiuzhou elektrických co., Ltd
+* Shenzhen KTC Technology Co., Ltd. 
 * Digitální technologie Shenzhen Skyworth co., Ltd
 * Iština Changhong elektrických co., Ltd.
 * Skardin průmyslová Corp.

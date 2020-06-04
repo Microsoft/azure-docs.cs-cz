@@ -1,0 +1,115 @@
+---
+title: Reference k úložišti objektů BLOB v Azure
+description: Vyhledejte Reference k rozhraní API služby Azure Blob Storage, soubory Readme a balíčky klientské knihovny.
+author: mhopkins-msft
+ms.author: mhopkins
+ms.date: 06/02/2020
+ms.service: storage
+ms.subservice: blobs
+ms.topic: conceptual
+ms.reviewer: ripohane
+ms.openlocfilehash: d470864dd12f5ded511f9a6e02b3e4cab0ee66d7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.translationtype: MT
+ms.contentlocale: cs-CZ
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84346077"
+---
+# <a name="azure-blob-storage-reference"></a>Reference k úložišti objektů BLOB v Azure
+
+Vyhledejte Reference k rozhraní API služby Azure Blob Storage, balíčky knihoven, soubory Readme a úvodní články.
+
+## <a name="net-client-libraries"></a>Klientské knihovny .NET
+
+Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní .NET API služby Azure Blob Storage.
+
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
+| :-------: | ----------------------- | ------- | ---------- |
+| 12. x | [Klientská knihovna pro úložiště objektů BLOB v Azure pro .NET](/dotnet/api/overview/azure/storage.blobs-readme) | [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs/) | [Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro .NET](/azure/storage/blobs/storage-quickstart-blobs-dotnet) |
+| 11. x | [Obor názvů Microsoft. Azure. Storage. blob](/dotnet/api/microsoft.azure.storage.blob) | [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | [Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V11 pro .NET](/azure/storage/blobs/storage-quickstart-blobs-dotnet-legacy) |
+
+### <a name="storage-management"></a>Správa úložiště
+
+V následující tabulce jsou uvedeny referenční dokumentace pro rozhraní API pro Azure Storage Management .NET.
+
+|  Verze  | Referenční dokumentace | Balíček |
+| :-------: | ----------------------- | ------- |
+| 16. x | [Microsoft.Azure.Management.Storage](/dotnet/api/microsoft.azure.management.storage) | [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/) |
+
+### <a name="data-movement"></a>Přesuny dat
+
+V následující tabulce jsou uvedeny referenční dokumentace pro Azure Storage rozhraní .NET API pro přesun dat.
+
+|  Verze  | Referenční dokumentace | Balíček |
+| :-------: | ----------------------- | ------- |
+| verze | [Pohyb dat](/dotnet/api/microsoft.azure.storage.datamovement) | [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.DataMovement/) |
+
+## <a name="java-client-libraries"></a>Klientské knihovny Java
+
+Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní API Java služby Azure Blob Storage.
+
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
+| :-------: | ----------------------- | ------- | ---------- |
+| 12. x | [Azure Storage – objekty blob](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html) | [Balíček (Maven)](https://mvnrepository.com/artifact/com.azure/azure-storage-blob) | [Rychlý Start: Správa objektů BLOB pomocí sady Java V12 SDK](/azure/storage/blobs/storage-quickstart-blobs-java) |
+| 8.x | [com. Microsoft. Azure. Storage. blob](/java/api/com.microsoft.azure.storage.blob) | [Balíček (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) | [Rychlý Start: Správa objektů BLOB pomocí sady Java V8 SDK](/azure/storage/blobs/storage-quickstart-blobs-java-legacy) |
+
+### <a name="storage-management"></a>Správa úložiště
+
+V následující tabulce jsou uvedeny referenční dokumentace k rozhraním API pro správu Azure Storage v jazyce Java.
+
+|  Verze  | Referenční dokumentace | Balíček |
+| :-------: | ----------------------- | ------- |
+| 0.9. x | [com. Microsoft. Azure. Management. Storage](/java/api/overview/azure/storage/management) | [Balíček (Maven)](https://mvnrepository.com/artifact/com.microsoft.azure/azure-svc-mgmt-storage) |
+
+## <a name="python-client-libraries"></a>Klientské knihovny Pythonu
+
+Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní API Pythonu pro službu Azure Blob Storage.
+
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
+| :-------: | ----------------------- | ------- | ---------- |
+| 12. x | [Klientská knihovna Azure Storage objektů BLOB pro Python](/python/api/overview/azure/storage-blob-readme) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-blob/) | [Rychlý Start: Správa objektů BLOB pomocí sady Python V12 SDK](/azure/storage/blobs/storage-quickstart-blobs-python) |
+| 2.x | [Azure – Storage – objekt BLOB](/python/api/azure-storage-blob/?view=azure-python-previous) | [Balíček (PyPI)](https://pypi.org/project/azure-storage-blob/2.1.0/) | [Rychlý Start: Správa objektů BLOB pomocí Pythonu v 2.1 SDK](/azure/storage/blobs/storage-quickstart-blobs-python-legacy) |
+
+## <a name="javascript-client-libraries"></a>JavaScript – klientské knihovny
+
+Následující tabulka obsahuje referenční dokumentaci a ukázkovou dokumentaci pro JavaScriptová rozhraní API pro Azure Blob Storage.
+
+|  Verze  | Referenční dokumentace | Balíček | Rychlé zprovoznění |
+| :-------: | ----------------------- | ------- | ---------- |
+| 12. x | [Klientská knihovna Azure Storage Blob pro JavaScript](/javascript/api/overview/azure/storage-blob-readme) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-blob) | [Rychlý Start: Správa objektů BLOB pomocí sady JavaScript V12 SDK v Node. js](/azure/storage/blobs/storage-quickstart-blobs-nodejs) <br/> [Rychlý Start: Správa objektů BLOB pomocí sady JavaScript V12 SDK v prohlížeči](/azure/storage/blobs/quickstart-blobs-javascript-browser) |
+| 10. x | [@azure/storage-blob](/javascript/api/@azure/storage-blob/?view=azure-node-legacy) | [Balíček (npm)](https://www.npmjs.com/package/@azure/storage-blob/v/10.5.0) | [Rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v Node. js](/azure/storage/blobs/storage-quickstart-blobs-nodejs-legacy) <br/> [Rychlý Start: Správa objektů BLOB pomocí sady JavaScript v10 za účelem SDK v prohlížeči](/azure/storage/blobs/storage-quickstart-blobs-javascript-client-libraries-legacy)|
+
+## <a name="rest-apis"></a>Rozhraní REST API
+
+Následující tabulka uvádí referenční dokumentaci a ukázkovou dokumentaci pro rozhraní REST API služby Azure Blob Storage.
+
+| Referenční dokumentace | Přehled |
+| ----------------------- | -------- |
+| [Blob service REST API](/rest/api/storageservices/blob-service-rest-api) | [Koncepty služby Blob service](/rest/api/storageservices/blob-service-concepts) |
+
+### <a name="other-rest-reference"></a>Další odkazy REST
+
+- [REST API importu a exportu Azure Storage](/rest/api/storageimportexport/) pomáhá spravovat úlohy importu a exportu pro přenos dat do nebo z úložiště objektů BLOB.
+
+## <a name="other-languages-and-platforms"></a>Jiné jazyky a platformy
+
+Následující seznam obsahuje odkazy na knihovny pro jiné programovací jazyky a platformy.
+
+- [Volat](https://azure.github.io/azure-storage-cpp)
+- [Ruby](https://azure.github.io/azure-storage-ruby)
+- [PHP](https://azure.github.io/azure-storage-php/)
+- [iOS](https://azure.github.io/azure-storage-ios/)
+- [Android](https://azure.github.io/azure-storage-android)
+
+## <a name="powershell"></a>PowerShell
+
+Následující tabulka obsahuje odkazy na nejnovější verzi referenčního obsahu.
+
+| Verze | Platforma |
+| ------- | -------- |
+|  3.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-3.8.0) |
+|  2.x  | [PowerShell](https://docs.microsoft.com/powershell/module/az.storage/?view=azps-2.8.0) |
+
+## <a name="azure-cli"></a>Azure CLI
+
+- [Azure CLI](/cli/azure/storage)

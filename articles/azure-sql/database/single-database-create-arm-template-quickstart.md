@@ -11,15 +11,14 @@ author: mumian
 ms.author: jgao
 ms.reviewer: carlrab
 ms.date: 06/28/2019
-ms.openlocfilehash: 03d598e0c0756cd304248ab19ab28a25836c57ab
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 02e0947de3e7e5c6ce5110740127571ea393b168
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054333"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343859"
 ---
 # <a name="quickstart-create-a-single-database-in-azure-sql-database-using-the-azure-resource-manager-template"></a>Rychlý Start: vytvoření jedné databáze v Azure SQL Database pomocí šablony Azure Resource Manager
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Vytvoření [jedné databáze](single-database-overview.md) je nejrychlejší a nejjednodušší možnost pro vytvoření databáze v Azure SQL Database. V tomto rychlém startu se dozvíte, jak vytvořit jedinou databázi pomocí šablony Azure Resource Manager.
 
@@ -37,7 +36,7 @@ Jedna databáze má definovanou sadu výpočetních, paměťových, vstupně-vý
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-sql-logical-server/).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://azure.microsoft.com/resources/templates/101-sql-logical-server/).
 
 :::code language="json" source="~/quickstart-templates/101-sql-logical-server/azuredeploy.json" range="1-163" highlight="63-132":::
 
@@ -73,7 +72,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri
 Read-Host -Prompt "Press [ENTER] to continue ..."
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 ```azurecli-interactive
 $projectName = Read-Host -Prompt "Enter a project name that is used for generating resource names"
@@ -112,7 +111,7 @@ $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
 Remove-AzResourceGroup -Name $resourceGroupName
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 ```azurecli-interactive
 echo "Enter the Resource Group name:" &&
@@ -131,3 +130,4 @@ az group delete --name $resourceGroupName
 - Pokud chcete vytvořit izolovanou databázi pomocí Azure CLI, přečtěte si [ukázky v Azure CLI](az-cli-script-samples-content-guide.md).
 - Chcete-li vytvořit izolovanou databázi pomocí Azure PowerShell, přečtěte si téma [Azure PowerShell Samples](powershell-script-content-guide.md).
 - Další informace o vytváření šablon Správce prostředků najdete v tématu [Vytvoření první šablony](../../azure-resource-manager/templates/template-tutorial-create-first-template.md).
+ 

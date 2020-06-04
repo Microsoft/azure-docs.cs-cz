@@ -1,7 +1,7 @@
 ---
 title: Správa po migraci
 titleSuffix: Azure SQL Database
-description: Naučte se spravovat jednu a ve fondu databáze po migraci na Azure SQL Database.
+description: Naučte se spravovat jednotlivé a sdružené databáze po migraci na Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: service
@@ -12,17 +12,17 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: e36e11e4150c977b72b445e5bda7dce410c77925
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 17c0e02aa091d1271967b5a238f71123cc7aeede
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193932"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322665"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Nový DBA v cloudu – Správa Azure SQL Database po migraci
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Přesun z tradičního samostatného prostředí s asistencí do prostředí PaaS se může zdát, že se napřed nachází v bitovém zahlcení. Jako vývojář aplikací nebo v DBA byste chtěli znát základní možnosti platformy, které vám pomohou zajistit dostupnost aplikace, výkonná, bezpečná a odolná – vždy. Tento článek se zaměřuje přesně na to. Článek stručně organizuje prostředky a poskytuje pokyny k tomu, jak nejlépe využít klíčové funkce SQL Database s databázemi s jedinou a sdruženou správou a zajištěním efektivního fungování vaší aplikace a dosažení optimálních výsledků v cloudu. Typickým cílovou skupinou pro tento článek budou tyto osoby:
+Přesun z tradičního samostatného prostředí s asistencí do prostředí PaaS se může zdát, že se napřed nachází v bitovém zahlcení. Jako vývojář aplikací nebo v DBA byste chtěli znát základní možnosti platformy, které vám pomohou zajistit dostupnost aplikace, výkonná, bezpečná a odolná – vždy. Tento článek se zaměřuje přesně na to. Článek stručně organizuje prostředky a poskytuje pokyny k tomu, jak nejlépe využít klíčové funkce Azure SQL Database s databázemi s jedinou a sdruženou správou a zajištěním efektivního fungování vaší aplikace a dosažení optimálních výsledků v cloudu. Typickým cílovou skupinou pro tento článek budou tyto osoby:
 
 - Vyhodnocuje migraci svých aplikací na Azure SQL Database – modernizaci vaše aplikace.
 - Jsou v procesu migrace jejich aplikací – probíhající scénář migrace.
@@ -30,7 +30,7 @@ Přesun z tradičního samostatného prostředí s asistencí do prostředí Paa
 
 Tento článek popisuje některé základní charakteristiky Azure SQL Database jako platformu, kterou můžete snadno využít při práci s izolovanými databázemi a databázemi ve fondu v elastických fondech. Jsou to tyto:
 
-- Monitorování databáze pomocí Azure Portal
+- Monitorování databází na portálu Azure
 - Provozní kontinuita a zotavení po havárii (BCDR)
 - Zabezpečení a dodržování předpisů
 - Inteligentní monitorování a údržba databáze
@@ -90,7 +90,7 @@ Další informace o zotavení po havárii najdete v tématu: [Azure SQL Database
 
 SQL Database zabezpečení a ochrany osobních údajů velmi vážně. Zabezpečení v rámci SQL Database je k dispozici na úrovni databáze a na úrovni platformy a je nejlépe porozumět při kategorizaci do několika vrstev. V každé vrstvě se dostanete k řízení a získáte optimální zabezpečení pro vaši aplikaci. Vrstvy jsou:
 
-- Ověřování identity & (ověřování[SQL a ověřování Azure Active Directory [AAD]](logins-create-manage.md))
+- Ověřování identity & ([ověřování SQL a Azure Active Directory [Azure AD] ověřování](logins-create-manage.md)).
 - Sledování aktivity ([auditování](../../azure-sql/database/auditing-overview.md) a [detekce hrozeb](threat-detection-configure.md)).
 - Ochrana skutečných dat ([transparentní šifrování dat [TDE]](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql) a [Always Encrypted [AE]](/sql/relational-databases/security/encryption/always-encrypted-database-engine)).
 - Řízení přístupu k citlivým a privilegovaným datům ([zabezpečení na úrovni řádků](/sql/relational-databases/security/row-level-security) a [dynamické maskování dat](/sql/relational-databases/security/dynamic-data-masking)).
@@ -104,13 +104,13 @@ V SQL Database jsou k dispozici dvě metody ověřování:
 - [Ověřování Azure Active Directory](authentication-aad-overview.md)
 - [Ověřování pomocí SQL](https://docs.microsoft.com/sql/relational-databases/security/choose-an-authentication-mode#connecting-through-sql-server-authentication)
 
-Tradiční ověřování systému Windows není podporováno. Azure Active Directory (AD) je centralizovaná služba pro správu identit a přístupu. Díky tomu můžete snadno poskytnout přístup s jednotným přihlašováním (SSO) všem pracovníkům ve vaší organizaci. To znamená, že přihlašovací údaje se sdílejí napříč všemi službami Azure pro jednodušší ověřování. AAD podporuje [MFA (Multi-Factor Authentication)](authentication-mfa-ssms-overview.md) a [několik kliknutí na](../../active-directory/hybrid/how-to-connect-install-express.md) AAD se dá integrovat do služby Windows Server Active Directory. Ověřování SQL funguje stejně, jako byste ji používali v minulosti. Zadejte uživatelské jméno a heslo a můžete ověřovat uživatele na všech databázích na daném serveru. To také umožňuje SQL Database a SQL Data Warehouse nabízet služby Multi-Factor Authentication a uživatelské účty hosta v doméně služby Azure AD. Pokud již máte místní službu Active Directory, můžete federovat adresář s Azure Active Directory pro rozšiřování adresáře do Azure.
+Tradiční ověřování systému Windows není podporováno. Azure Active Directory (Azure AD) je centralizovaná služba pro správu identit a přístupu. Díky tomu můžete snadno poskytnout přístup s jednotným přihlašováním (SSO) všem pracovníkům ve vaší organizaci. To znamená, že přihlašovací údaje se sdílejí napříč všemi službami Azure pro jednodušší ověřování. Azure AD podporuje [azure Multi-Factor Authentication](authentication-mfa-ssms-overview.md) a [pár kliknutí](../../active-directory/hybrid/how-to-connect-install-express.md) na Azure AD se dá integrovat do služby Windows Server Active Directory. Ověřování SQL funguje stejně, jako byste ji používali v minulosti. Zadejte uživatelské jméno a heslo a můžete ověřovat uživatele na všech databázích na daném serveru. Tato možnost také umožňuje SQL Database a SQL Data Warehouse nabízet účty uživatelů Multi-Factor Authentication a hosta v doméně služby Azure AD. Pokud již máte místní službu Active Directory, můžete federovat adresář s Azure Active Directory pro rozšiřování adresáře do Azure.
 
 |**Pokud...**|**SQL Database/SQL Data Warehouse**|
 |---|---|
-|Raději nepoužívat Azure Active Directory (AD) v Azure|Použít [ověřování SQL](security-overview.md)|
+|Raději nepoužívejte Azure Active Directory (Azure AD) v Azure.|Použít [ověřování SQL](security-overview.md)|
 |Služba AD se používá v místní SQL Server.|[FEDEROVAT AD s Azure AD](../../active-directory/hybrid/whatis-hybrid-identity.md)a používejte ověřování Azure AD. Díky tomu můžete použít jednotné přihlašování.|
-|Je potřeba vymáhat vícefaktorové ověřování (MFA).|Vyžadovat MFA jako zásadu prostřednictvím [podmíněného přístupu Microsoft](conditional-access-configure.md)a použít [univerzální ověřování Azure AD s podporou vícefaktorového ověřování](authentication-mfa-ssms-overview.md).|
+|Je potřeba vyhovět Multi-Factor Authentication|Vyžadovat Multi-Factor Authentication jako zásadu prostřednictvím [podmíněného přístupu Microsoft](conditional-access-configure.md)a použít [univerzální ověřování Azure AD s podporou Multi-Factor Authentication](authentication-mfa-ssms-overview.md).|
 |Mít účty hostů z účtů Microsoft (live.com, outlook.com) nebo jiné domény (gmail.com).|Využijte [Azure AD Universal Authentication](authentication-mfa-ssms-overview.md) v SQL Database/datovém skladu, který využívá [spolupráci Azure AD B2B](../../active-directory/b2b/what-is-b2b.md).|
 |Přihlášení k systému Windows pomocí přihlašovacích údajů Azure AD ze federované domény|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
 |Přihlášení k systému Windows pomocí přihlašovacích údajů z domény, která není federované s Azure|Použijte [integrované ověřování Azure AD](authentication-aad-configure.md).|
@@ -170,7 +170,7 @@ V případě ochrany citlivých dat v letadlech a v klidovém prostředí SQL Da
 |**Vlastnosti**|**Funkce Always Encrypted**|**transparentní šifrování dat**|
 |---|---|---|
 |**Rozsah šifrování**|Od začátku do konce|Data na REST|
-|**Server má přístup k citlivým datům**|No|Ano, protože šifrování je pro neaktivní neaktivní data|
+|**Server má přístup k citlivým datům**|Ne|Ano, protože šifrování je pro neaktivní neaktivní data|
 |**Povolené operace T-SQL**|Porovnání rovnosti|Dostupná je celá oblast T-SQL Surface.|
 |**Změny aplikací, které jsou nutné k použití této funkce**|Minimální|Velmi minimální|
 |**Členitost šifrování**|Úroveň sloupce|úrovni databáze|
@@ -211,13 +211,13 @@ Následující diagram znázorňuje možnosti úložiště klíčů pro hlavní 
 
 ### <a name="how-can-i-optimize-and-secure-the-traffic-between-my-organization-and-sql-database"></a>Jak můžu optimalizovat a zabezpečit provoz mezi mojí organizací a SQL Database
 
-Síťový provoz mezi vaší organizací a SQL Database by byl obecně směrován přes veřejnou síť. Pokud se ale rozhodnete tuto cestu optimalizovat a zvýšit zabezpečení, můžete se podívat na Express Route. Express Route v podstatě umožňuje rozšiřování podnikové sítě na platformu Azure prostřednictvím privátního připojení. Provedete to tak, že nebudete přecházet přes veřejný Internet. Získáte také vyšší úroveň zabezpečení, spolehlivosti a směrování, která překládá na nižší latenci sítě a mnohem rychlejší, než byste normálně procházíte přes veřejný Internet. Pokud plánujete přenos významného bloku dat mezi vaší organizací a Azure, můžete využít výhod expresního postupu. Pro připojení z vaší organizace k Azure si můžete vybrat ze tří různých modelů připojení:
+Síťový provoz mezi vaší organizací a SQL Database by byl obecně směrován přes veřejnou síť. Pokud se ale rozhodnete tuto cestu optimalizovat a zvýšit zabezpečení, můžete se podívat do Azure ExpressRoute. ExpressRoute v podstatě umožňuje, aby se vaše firemní síť rozšířila na platformu Azure prostřednictvím privátního připojení. Provedete to tak, že nebudete přecházet přes veřejný Internet. Získáte také vyšší úroveň zabezpečení, spolehlivosti a směrování, která překládá na nižší latenci sítě a mnohem rychlejší, než byste normálně procházíte přes veřejný Internet. Pokud plánujete přenos významného bloku dat mezi vaší organizací a Azure, můžete využít výhod služby ExpressRoute. Pro připojení z vaší organizace k Azure si můžete vybrat ze tří různých modelů připojení:
 
 - [Společné umístění cloudového systému Exchange](../../expressroute/expressroute-connectivity-models.md#CloudExchange)
 - [Any-to-Any](../../expressroute/expressroute-connectivity-models.md#IPVPN)
 - [Point-to-Point](../../expressroute/expressroute-connectivity-models.md#Ethernet)
 
-Express Route také umožňuje zvýšit až dvojnásobek limitu šířky pásma, který zakoupíte bez dalších poplatků. Je také možné nakonfigurovat připojení mezi oblastmi pomocí expresní trasy. Pokud chcete zobrazit seznam poskytovatelů připojení ER, přečtěte si téma: [partneři a umístění partnerského vztahu pro Express Route](../../expressroute/expressroute-locations.md). Následující články popisují Express Route podrobněji:
+ExpressRoute také umožňuje zvýšit až dvojnásobek limitu šířky pásma, který zakoupíte bez dalších poplatků. Je také možné nakonfigurovat připojení mezi oblastmi pomocí ExpressRoute. Pokud chcete zobrazit seznam zprostředkovatelů připojení ExpressRoute, přečtěte si téma: [partneři ExpressRoute a umístění partnerských vztahů](../../expressroute/expressroute-locations.md). Následující články popisují Express Route podrobněji:
 
 - [Úvod do expresní trasy](../../expressroute/expressroute-introduction.md)
 - [Požadavky](../../expressroute/expressroute-prerequisites.md)
@@ -237,7 +237,7 @@ Po migraci databáze na SQL Database budete chtít monitorovat vaši databázi (
 
 ### <a name="performance-monitoring-and-optimization"></a>Sledování a optimalizace výkonu
 
-Díky dotazům na výkon dotazů můžete získat navržená doporučení pro vaši databázovou úlohu, aby vaše aplikace mohly běžet na optimální úrovni – vždy. Můžete ji také nastavit tak, aby se tato doporučení automaticky uplatnila a nemuseli bother provádět úlohy údržby. Pomocí Index Advisor můžete automaticky implementovat doporučení indexu na základě vaší úlohy – to se nazývá automatické ladění. Doporučení se budou vyvíjet jako úlohy vaší aplikace, aby vám poskytovaly nejrelevantnější návrhy. Získáte také možnost ručně zkontrolovat tato doporučení a použít je podle svého uvážení.  
+Díky dotazům na výkon dotazů můžete získat navržená doporučení pro vaši databázovou úlohu, aby vaše aplikace mohly běžet na optimální úrovni – vždy. Můžete ji také nastavit tak, aby se tato doporučení automaticky uplatnila a nemuseli bother provádět úlohy údržby. Pomocí SQL Database Advisor můžete automaticky implementovat doporučení indexu na základě vaší úlohy – to se nazývá automatické ladění. Doporučení se budou vyvíjet jako úlohy vaší aplikace, aby vám poskytovaly nejrelevantnější návrhy. Získáte také možnost ručně zkontrolovat tato doporučení a použít je podle svého uvážení.  
 
 ### <a name="security-optimization"></a>Optimalizace zabezpečení
 
@@ -259,7 +259,7 @@ Tuto analýzu můžete zobrazit také v části poradce.
 
 V SQL Database můžete využít inteligentní přehledy platformy, abyste mohli monitorovat výkon a odpovídajícím způsobem ho optimalizovat. Využití výkonu a prostředků v SQL Database můžete monitorovat pomocí následujících metod:
 
-#### <a name="azure-portal"></a>portál Azure
+#### <a name="azure-portal"></a>Portál Azure Portal
 
 Azure Portal zobrazuje využití databáze tak, že se vybere databáze a klikne na graf v podokně Přehled. Graf můžete upravit tak, aby zobrazoval více metrik, včetně procenta využití procesoru, procenta DTU, procentuální hodnoty v/v, procentu relací a procenta velikosti databáze.
 
@@ -281,7 +281,7 @@ Můžete zadat dotaz na zobrazení dynamické správy [Sys. dm_db_resource_stats
 
 #### <a name="azure-sql-analytics-preview-in-azure-monitor-logs"></a>Azure SQL Analytics (Preview) v protokolech Azure Monitor
 
-[Protokoly Azure monitor](../../azure-monitor/insights/azure-sql.md) umožňují shromažďovat a vizualizovat klíčovou Azure SQL Databaseou metriku výkonu a podporují až 150 000 databází sql a 5 000 elastických fondů SQL na pracovní prostor. Můžete ji použít k monitorování a přijímání oznámení. Metriky SQL Database a elastického fondu můžete monitorovat v několika předplatných Azure a elastických fondech a lze je použít k identifikaci problémů v každé vrstvě aplikačního zásobníku.
+[Protokoly Azure monitor](../../azure-monitor/insights/azure-sql.md) umožňují shromažďovat a vizualizovat klíčovou Azure SQL Databaseou metriku výkonu, podporovat až 150 000 databází a 5 000 elastických fondů SQL na pracovní prostor. Můžete ji použít k monitorování a přijímání oznámení. Metriky SQL Database a elastického fondu můžete monitorovat v několika předplatných Azure a elastických fondech a lze je použít k identifikaci problémů v každé vrstvě aplikačního zásobníku.
 
 ### <a name="i-am-noticing-performance-issues-how-does-my-sql-database-troubleshooting-methodology-differ-from-sql-server"></a>Všímáte problémy s výkonem: jak se SQL Database metodologie řešení potíží liší od SQL Server
 

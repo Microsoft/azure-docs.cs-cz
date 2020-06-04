@@ -1,6 +1,6 @@
 ---
 title: Řešení rozdílů v T-SQL – migrace
-description: Příkazy jazyka Transact-SQL, které služba Azure SQL Database plně nepodporuje
+description: Příkazy jazyka Transact-SQL, které jsou menší než plně podporované v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,23 +11,22 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/03/2018
-ms.openlocfilehash: a1db4c1548fa7f878075e557fc637d3558467680
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c4c340282becf34ae34bf9e48bceeb86d68f237b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049705"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345321"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Řešení rozdílů v jazyce Transact-SQL během migrace na SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Při [migraci databáze](migrate-to-database-from-sql-server.md) z SQL Server do Azure SQL Database můžete zjistit, že vaše databáze vyžaduje před migrací SQL Server nějaké nové strojírenství. V tomto článku najdete pokyny, které vám pomůžou při provádění tohoto přetváření a porozumění základním důvodům, proč je nutné je znovu inženýrovat. K detekci nekompatibility použijte [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
+Při [migraci databáze](migrate-to-database-from-sql-server.md) z SQL Server do Azure SQL Database můžete zjistit, že vaše SQL Server databáze před migrací vyžaduje nějaké přepracovanou inženýry. V tomto článku najdete pokyny, které vám pomůžou při provádění tohoto přetváření a porozumění základním důvodům, proč je nutné je znovu inženýrovat. K detekci nekompatibility použijte [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).
 
 ## <a name="overview"></a>Přehled
 
-Většina funkcí Transact-SQL, které aplikace používá, je plně podporovaná v Microsoft SQL Server i Azure SQL Database. Například základní komponenty SQL, jako jsou datové typy, operátory, řetězce, aritmetické funkce, logické a kurzorové funkce, fungují stejně v SQL Server a SQL Database. Existuje však několik rozdílů v jazyce T-SQL v prvcích DDL (Data-Definition Language) a DML (data pro manipulaci s daty), které jsou výsledkem příkazů T-SQL a dotazů, které jsou pouze částečně podporovány (což se zabývá dále v tomto článku).
+Většina funkcí Transact-SQL, které aplikace používá, je plně podporovaná v Microsoft SQL Server i Azure SQL Database. Například základní komponenty SQL, jako jsou datové typy, operátory, řetězce, aritmetické funkce, logické a kurzorové funkce fungují stejně v SQL Server a SQL Database. Existuje však několik rozdílů v jazyce T-SQL v prvcích DDL (Data-Definition Language) a DML (data pro manipulaci s daty), které jsou výsledkem příkazů T-SQL a dotazů, které jsou pouze částečně podporovány (což se zabývá dále v tomto článku).
 
-Kromě toho existují některé funkce a syntaxe, které nejsou vůbec podporovány, protože Azure SQL Database slouží k izolaci funkcí ze závislostí v hlavní databázi a v operačním systému. Proto většina aktivit na úrovni serveru není pro SQL Database vhodná. Příkazy T-SQL a možnosti nejsou k dispozici, pokud konfigurují možnosti na úrovni serveru, součásti operačního systému nebo určují konfiguraci systému souborů. Pokud jsou tyto možnosti požadovány, je vhodná alternativa často k dispozici jiným způsobem než SQL Database nebo z jiné funkce nebo služby Azure.
+Kromě toho existují některé funkce a syntaxe, které nejsou vůbec podporovány, protože Azure SQL Database jsou určeny k izolaci funkcí ze závislostí v hlavní databázi a v operačním systému. Proto většina aktivit na úrovni serveru není pro SQL Database vhodná. Příkazy T-SQL a možnosti nejsou k dispozici, pokud konfigurují možnosti na úrovni serveru, součásti operačního systému nebo určují konfiguraci systému souborů. Pokud jsou tyto možnosti požadovány, je vhodná alternativa často k dispozici jiným způsobem než SQL Database nebo z jiné funkce nebo služby Azure.
 
 Například vysoká dostupnost je integrována do Azure SQL Database s využitím technologie podobně jako u [skupin dostupnosti Always On](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server). Příkazy T-SQL související se skupinami dostupnosti nejsou podporovány nástrojem SQL Database a zobrazení dynamické správy související se skupinami dostupnosti Always On nejsou také podporována.
 
@@ -46,7 +45,7 @@ Základní příkazy DDL (Data Definition Language) jsou k dispozici, ale někte
 Kromě příkazů jazyka Transact-SQL, které souvisejí s nepodporovanými funkcemi popsanými v [Azure SQL Database porovnání funkcí](features-comparison.md), nejsou podporovány následující příkazy a skupiny příkazů. Pokud vaše databáze, která má být migrována, používá některou z následujících funkcí, proveďte znovu analýzu jazyka T-SQL pro odstranění těchto funkcí a příkazů T-SQL.
 
 - Kolace systémových objektů
-- Související s připojením: příkazy Endpoint. Služba SQL Database nepodporuje ověřování Windows, ale podporuje podobné ověřování Azure Active Directory. Některé typy ověřování vyžadují nejnovější verzi SQL Server Management Studia (SSMS). Další informace najdete v tématu [Připojení k SQL Database nebo SQL Data Warehouse pomocí ověřování služby Azure Active Directory](authentication-aad-overview.md).
+- Související s připojením: příkazy Endpoint. SQL Database nepodporuje ověřování systému Windows, ale podporuje podobné ověřování Azure Active Directory. Některé typy ověřování vyžadují nejnovější verzi SQL Server Management Studia (SSMS). Další informace najdete v tématu [připojení k SQL Database nebo Azure SQL Data Warehouse pomocí Azure Active Directory ověřování](authentication-aad-overview.md).
 - Mezidatabázové dotazy, které používají tři nebo čtyři názvy částí (mezidatabázové dotazy jen pro čtení jsou podporované prostřednictvím [dotazů do Elastic Database](elastic-query-overview.md)).
 - Mezidatabázové řetězení vlastnictví, nastavení `TRUSTWORTHY`
 - `EXECUTE AS LOGIN` Místo toho použijte EXECUTE AS USER.
@@ -54,7 +53,7 @@ Kromě příkazů jazyka Transact-SQL, které souvisejí s nepodporovanými funk
 - Události: události, oznámení události, oznámení dotazů
 - Umístění souboru: syntaxe související s umístěním souboru databáze, velikostí a soubory databáze, které jsou automaticky spravovány Microsoft Azure.
 - Vysoká dostupnost: syntaxe související s vysokou dostupností, která je spravovaná prostřednictvím účtu Microsoft Azure. Patří sem syntaxe zálohování, obnovení, Always On, zrcadlení databáze, přesouvání protokolu a režimů obnovení.
-- Čtečka protokolů: syntaxe, která spoléhá na čtecí modul protokolu, který není k dispozici v SQL Database: nabízená replikace, Change Data Capture. SQL Database může být odběratelem článku nabízené replikace.
+- Čtečka protokolů: syntaxe, která spoléhá na čtečku protokolů, která není dostupná na SQL Database: nabízená replikace, Change Data Capture. SQL Database může být odběratelem článku nabízené replikace.
 - Funkce: `fn_get_sql`, `fn_virtualfilestats`, `fn_virtualservernodes`
 - Hardware: syntaxe související s nastavením serveru souvisejícího s hardwarem: například paměť, pracovní vlákna, spřažení procesoru, příznaky trasování. Místo toho používejte úrovně služeb a výpočetní velikosti.
 - `KILL STATS JOB`
@@ -62,7 +61,7 @@ Kromě příkazů jazyka Transact-SQL, které souvisejí s nepodporovanými funk
 - .NET Framework: Integrace modulu CLR s SQL Server
 - Sémantické vyhledávání
 - Přihlašovací údaje serveru: místo toho použijte [přihlašovací údaje v oboru databáze](https://msdn.microsoft.com/library/mt270260.aspx) .
-- Položky na úrovni serveru: role serveru, `sys.login_token` . K dispozici nejsou příkazy `GRANT`, `REVOKE` a `DENY` serverových oprávnění, i když některé z nich jsou nahrazené oprávněními na úrovni databáze. Některá praktická serverová zobrazení dynamických zpráv (DMV) mají odpovídající databázová zobrazení dynamických zpráv.
+- Položky na úrovni serveru: role serveru, `sys.login_token` . `GRANT``REVOKE`a oprávnění na `DENY` úrovni serveru nejsou k dispozici, i když některé jsou nahrazené oprávněními na úrovni databáze. Některá praktická serverová zobrazení dynamických zpráv (DMV) mají odpovídající databázová zobrazení dynamických zpráv.
 - `SET REMOTE_PROC_TRANSACTIONS`
 - `SHUTDOWN`
 - `sp_addmessage`
@@ -83,7 +82,7 @@ Další informace o gramatikě, použití a příkladech jazyka Transact-SQL naj
 
 ### <a name="about-the-applies-to-tags"></a>Informace o značkách „Platí pro“
 
-Odkaz v jazyce Transact-SQL zahrnuje články týkající se SQL Server verzí 2008 pro stávající. Pod názvem článku je panel ikon, seznam čtyř SQL Server platforem a jejich použitelnost. Například skupiny dostupnosti byly zavedeny v SQL Serveru 2012. Článek [vytvořit skupinu dostupnosti](https://msdn.microsoft.com/library/ff878399.aspx)   označuje, že se příkaz vztahuje na **SQL Server (počínaje 2012)**. Příkaz neplatí pro SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure SQL Data Warehouse ani pro Parallel Data Warehouse.
+Odkaz v jazyce Transact-SQL zahrnuje články týkající se SQL Server verzí 2008 pro stávající. Pod nadpisem článku najdete panel ikon, seznam čtyř SQL Server platforem a indikace použitelnosti. Například skupiny dostupnosti byly zavedeny v SQL Serveru 2012. Článek [vytvořit skupinu dostupnosti](https://msdn.microsoft.com/library/ff878399.aspx)   označuje, že se příkaz vztahuje na **SQL Server (počínaje 2012)**. Příkaz se nevztahuje na SQL Server 2008, SQL Server 2008 R2, Azure SQL Database, Azure SQL Data Warehouse nebo paralelní datový sklad.
 
 V některých případech je možné v produktu použít obecný předmět článku, ale existují drobné rozdíly mezi produkty. Rozdíly jsou podle potřeby uvedeny v různých umístěních v článku. V některých případech je možné v produktu použít obecný předmět článku, ale existují drobné rozdíly mezi produkty. Rozdíly jsou podle potřeby uvedeny v různých umístěních v článku. Například článek vytvořit aktivační událost je k dispozici v SQL Database. Ale možnost **všechny servery** pro aktivační události na úrovni serveru označuje, že triggery na úrovni serveru nejde v SQL Database použít. Místo toho použijte triggery na úrovni databáze.
 

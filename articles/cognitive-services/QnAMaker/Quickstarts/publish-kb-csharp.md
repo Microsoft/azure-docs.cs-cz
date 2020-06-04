@@ -4,13 +4,13 @@ description: Tento rychlý Start založený na REST v C# publikuje vaši znalost
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 0a2f64795d82928e33a10c7e9d162f2333cdf7bf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 7eaa8d7f7d86e215ea2e9906075c27dd2916dcd5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851704"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342744"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-c"></a>Rychlý start: Publikování znalostní báze ve službě QnA Maker pomocí jazyka C#
 
@@ -23,7 +23,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 
 * Nejnovější verze sady [**Visual Studio Community Edition**](https://www.visualstudio.com/downloads/).
 * Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
-* V adrese URL parametru řetězce `kbid` dotazu bylo nalezeno QnA maker znalostní báze (KB), jak je uvedeno níže.
+* V adrese URL parametru řetězce dotazu bylo nalezeno QnA Maker znalostní báze (KB) `kbid` , jak je uvedeno níže.
 
     ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
@@ -35,7 +35,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 ## <a name="create-knowledge-base-project"></a>Vytvoření projektu znalostní báze
 
 1. Otevřete Visual Studio 2019 Community Edition.
-1. Vytvořte nový projekt **Konzolová aplikace (.NET Core)** a pojmenujte `QnaMakerQuickstart`projekt. U zbývajících nastavení přijměte výchozí hodnoty.
+1. Vytvořte nový projekt **Konzolová aplikace (.NET Core)** a pojmenujte projekt `QnaMakerQuickstart` . U zbývajících nastavení přijměte výchozí hodnoty.
 
 ## <a name="add-required-dependencies"></a>Přidání požadovaných závislostí
 

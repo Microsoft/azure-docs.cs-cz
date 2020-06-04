@@ -1,6 +1,6 @@
 ---
 title: Konfigurace úložiště pro virtuální počítače s SQL Server | Microsoft Docs
-description: Toto téma popisuje, jak Azure nakonfiguruje úložiště pro SQL Server virtuálních počítačů během zřizování (Správce prostředků modelu nasazení). Vysvětluje taky, jak můžete nakonfigurovat úložiště pro stávající virtuální počítače s SQL Server.
+description: Toto téma popisuje, jak Azure nakonfiguruje úložiště pro SQL Server virtuálních počítačů během zřizování (Azure Resource Manager modelu nasazení). Vysvětluje taky, jak můžete nakonfigurovat úložiště pro stávající virtuální počítače s SQL Server.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -13,17 +13,17 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: f5f71f342152a1f7d524053f1a2f82937784dbd1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e84c58ba1b3037f770f4809d48356d5ec3f9a138
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044266"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342393"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Konfigurace úložiště pro virtuální počítače SQL Serveru
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Když nakonfigurujete image virtuálního počítače s SQL Server v Azure, portál vám pomůže automatizovat konfiguraci úložiště. To zahrnuje připojení úložiště k virtuálnímu počítači, zpřístupnění tohoto úložiště pro SQL Server a konfiguraci pro optimalizaci pro konkrétní požadavky na výkon.
+Když nakonfigurujete image virtuálního počítače s SQL Server v Azure, Azure Portal pomůže automatizovat konfiguraci úložiště. To zahrnuje připojení úložiště k virtuálnímu počítači, zpřístupnění tohoto úložiště pro SQL Server a konfiguraci pro optimalizaci pro konkrétní požadavky na výkon.
 
 V tomto tématu se dozvíte, jak Azure nakonfiguruje úložiště pro vaše SQL Server virtuální počítače jak během zřizování, tak i u stávajících virtuálních počítačů. Tato konfigurace je založená na [osvědčených postupech výkonu](performance-guidelines-best-practices.md) pro virtuální počítače Azure s SQL Server.
 
@@ -41,7 +41,7 @@ Pokud chcete použít nastavení konfigurace automatizovaného úložiště, vá
 
 Následující části popisují, jak nakonfigurovat úložiště pro nové virtuální počítače SQL Server.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 Při zřizování virtuálního počítače Azure pomocí Image Galerie SQL Server vyberte **změnit konfiguraci** na kartě **nastavení SQL Server** a otevřete stránku konfigurace optimalizovaného úložiště pro výkon. Můžete buď ponechat hodnoty ve výchozím nastavení, nebo upravit typ konfigurace disku, který nejlépe vyhovuje vašim potřebám na základě vašich úloh. 
 
@@ -76,7 +76,7 @@ Na základě vašich voleb provede Azure po vytvoření virtuálního počítač
 
 Další podrobnosti o tom, jak Azure nakonfiguruje nastavení úložiště, najdete v [části věnované konfiguraci úložiště](#storage-configuration). Úplný návod, jak vytvořit SQL Server virtuální počítač v Azure Portal, najdete v [kurzu zřizování](../../../azure-sql/virtual-machines/windows/create-sql-vm-portal.md).
 
-### <a name="resource-manage-templates"></a>Zdroje – Správa šablon
+### <a name="resource-manager-templates"></a>Šablony Resource Manageru
 
 Pokud použijete následující šablony Správce prostředků, standardně se připojí dva datové disky Premium bez konfigurace fondu úložiště. Tyto šablony však můžete přizpůsobit a změnit počet disků prémiových dat, které jsou připojeny k virtuálnímu počítači.
 
@@ -113,7 +113,7 @@ Můžete upravit nastavení disku pro jednotky, které byly nakonfigurované bě
 
 ## <a name="storage-configuration"></a>Konfigurace úložiště
 
-V této části najdete referenční informace ke změnám konfigurace úložiště, které Azure během zřizování a konfigurace virtuálního počítače SQL automaticky provede během Azure Portal.
+V této části najdete referenční informace o změnách konfigurace úložiště, které Azure automaticky provede během SQL Server zřizování a konfigurace virtuálních počítačů v Azure Portal.
 
 * Azure nakonfiguruje fond úložiště z úložiště vybraného z virtuálního počítače. V další části tohoto tématu najdete podrobné informace o konfiguraci fondu úložiště.
 * Automatická konfigurace úložiště vždycky používá datové disky [Premium SSD](../../../virtual-machines/windows/disks-types.md) P30. V důsledku toho je k dispozici mapování 1:1 mezi vybraným počtem terabajtů a počtem datových disků připojených k VIRTUÁLNÍmu počítači.
@@ -148,7 +148,7 @@ Následující tabulka popisuje tři dostupné možnosti typu úlohy a jejich od
 | **Datové sklady** |Optimalizuje úložiště pro analytické a generování sestav úloh. |Příznak trasování 610<br/>Příznak trasování 1117 |
 
 > [!NOTE]
-> Typ úlohy můžete zadat jenom při zřizování virtuálního počítače SQL, a to tak, že ho vyberete v kroku konfigurace úložiště.
+> Typ úlohy můžete zadat, jenom když zřídíte virtuální počítač SQL Server tím, že ho vyberete v kroku konfigurace úložiště.
 
 ## <a name="next-steps"></a>Další kroky
 

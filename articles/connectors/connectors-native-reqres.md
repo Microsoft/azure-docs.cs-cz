@@ -5,39 +5,26 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 05/29/2020
 tags: connectors
-ms.openlocfilehash: a44e0e9f2427fc5fcb44a78fb0a1798b219f9200
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 9f3f361b3e9fafdb350f943c0a8adcd87fa06c78
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249157"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325129"
 ---
 # <a name="receive-and-respond-to-inbound-https-requests-in-azure-logic-apps"></a>Příjem a odpověď na příchozí požadavky HTTPS v Azure Logic Apps
 
 Pomocí [Azure Logic Apps](../logic-apps/logic-apps-overview.md) a integrované akce triggeru požadavků a odpovědí můžete vytvářet automatizované úlohy a pracovní postupy, které přijímají příchozí požadavky HTTPS a reagují na ně. Můžete mít například aplikaci logiky:
 
 * Přijetí a odpověď na požadavek HTTPS na data v místní databázi.
+
 * Aktivuje pracovní postup, když dojde k externí události Webhooku.
+
 * Přijímat a reagovat na volání HTTPS z jiné aplikace logiky.
 
 Aktivační událost žádosti podporuje [Azure Active Directory otevřené ověřování](../active-directory/develop/about-microsoft-identity-platform.md) (Azure AD OAuth) pro autorizaci příchozích volání do vaší aplikace logiky. Další informace o povolení tohoto ověřování najdete v tématu [zabezpečený přístup a data v Azure Logic Apps – povolení ověřování Azure AD OAuth](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth).
-
-> [!NOTE]
-> Aktivační událost žádosti podporuje pro příchozí volání *pouze* zabezpečení TLS (Transport Layer Security) 1,2. Odchozí hovory podporují TLS 1,0, 1,1 a 1,2. Další informace najdete v tématu [řešení problému s protokolem TLS 1,0](https://docs.microsoft.com/security/solving-tls1-problem).
->
-> Pokud se zobrazí chyby handshake TLS, ujistěte se, že používáte TLS 1,2. 
-> V případě příchozích volání jsou zde podporované šifrovací sady:
->
-> * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
-> * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
-> * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
-> * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -45,13 +32,37 @@ Aktivační událost žádosti podporuje [Azure Active Directory otevřené ově
 
 * Základní znalosti o [Logic Apps](../logic-apps/logic-apps-overview.md) Pokud s Logic Apps začínáte, přečtěte si, [jak vytvořit svou první aplikaci logiky](../logic-apps/quickstart-create-first-logic-app-workflow.md).
 
+<a name="tls-support"></a>
+
+## <a name="transport-layer-security-tls"></a>Protokol TLS (Transport Layer Security)
+
+* Příchozí volání podporují *pouze* TLS (Transport Layer Security) 1,2. Pokud se zobrazí chyby handshake TLS, ujistěte se, že používáte TLS 1,2. Další informace najdete v tématu [řešení problému s protokolem TLS 1,0](https://docs.microsoft.com/security/solving-tls1-problem). Odchozí volání podporují TLS 1,0, 1,1 a 1,2 na základě schopnosti cílového koncového bodu.
+
+* Příchozí volání podporují tyto šifrovací sady:
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+
+  * TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256
+
+  * TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384
+
+  * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256
+
 <a name="add-request"></a>
 
 ## <a name="add-request-trigger"></a>Přidat aktivační událost žádosti
 
 Tato integrovaná aktivační událost vytvoří ručně koncový bod HTTPS, který může přijímat *jenom* příchozí požadavky HTTPS. Když dojde k této události, Trigger se aktivuje a spustí aplikaci logiky. Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto aktivační událost, najdete v tématu [typ triggeru žádosti](../logic-apps/logic-apps-workflow-actions-triggers.md#request-trigger) a [pracovní postupy volání, triggeru nebo vnoření do koncových bodů HTTPS v Azure Logic Apps](../logic-apps/logic-apps-http-endpoint.md).
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvoření prázdné aplikace logiky
 
 1. Po otevření návrháře aplikace logiky zadejte do vyhledávacího pole `http request` jako filtr. V seznamu triggery vyberte aktivační událost **při přijetí požadavku HTTP** , což je první krok v pracovním postupu aplikace logiky.
 
@@ -207,7 +218,7 @@ Další informace o základní definici JSON triggeru a o tom, jak zavolat tuto 
 
 Zde jsou další informace o výstupech z triggeru požadavku:
 
-| Název vlastnosti JSON | Datový typ | Popis |
+| Název vlastnosti JSON | Datový typ | Description |
 |--------------------|-----------|-------------|
 | `headers` | Objekt | Objekt JSON, který popisuje hlavičky z požadavku |
 | `body` | Objekt | Objekt JSON, který popisuje obsah těla žádosti |

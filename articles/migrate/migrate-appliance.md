@@ -3,12 +3,12 @@ title: Zařízení Azure Migrate
 description: Poskytuje přehled zařízení Azure Migrate používaných při posuzování a migraci serveru.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 5995242f84738eca1b2be680e3f744e36831d78f
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 8d385e956aaa2888d72d711571fa8e7cb91da772
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235342"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323803"
 ---
 # <a name="azure-migrate-appliance"></a>Zařízení Azure Migrate
 
@@ -49,7 +49,7 @@ Následující tabulka shrnuje požadavky na zařízení Azure Migrate pro VMwar
 **Omezení zjišťování** | Zařízení může na vCenter Server zjistit až 10 000 virtuálních počítačů VMware.<br/> Zařízení se může připojit k jednomu vCenter Server.
 **Šablona vajíček** | Stáhněte si z portálu nebo z https://aka.ms/migrate/appliance/vmware .<br/><br/> Velikost ke stažení je 11,2 GB.<br/><br/> Stažená šablona zařízení je součástí zkušební licence Windows Server 2016, která je platná po dobu 180 dnů. Pokud se zkušební období blíží vypršení platnosti, doporučujeme, abyste si stáhli a nasadili nové zařízení nebo aktivovali licenci k operačnímu systému virtuálního počítače zařízení.
 **Skript prostředí PowerShell** | [Stažení](https://go.microsoft.com/fwlink/?linkid=2105112)skriptu.<br/><br/> 
-**Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 32-GB RAM, 8 vCPU, kolem 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud spustíte zařízení na virtuálním počítači VMware, budete potřebovat dostatek prostředků na vCenter Server k přidělení virtuálního počítače, který splňuje požadavky.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware. 
+**Software a hardware** |  Zařízení by mělo běžet na počítači s Windows serverem 2016, 32-GB RAM, 8 vCPU, kolem 80 GB diskového úložiště a externím virtuálním přepínačem.<br/> Zařízení vyžaduje přístup k Internetu, a to buď přímo, nebo prostřednictvím proxy serveru.<br/><br/> Pokud spustíte zařízení na virtuálním počítači VMware, budete potřebovat dostatek prostředků na vCenter Server k přidělení virtuálního počítače, který splňuje požadavky.<br/><br/> Pokud zařízení spouštíte na fyzickém počítači, ujistěte se, že je spuštěný systém Windows Server 2016 a splňuje požadavky na hardware.
 **Požadavky VMware** | Pokud zařízení nasadíte jako virtuální počítač VMware, musí být nasazen na hostiteli ESXi se spuštěnou verzí 5,5 nebo novější.<br/><br/> vCenter Server se spouští 5,5, 6,0, 6,5 nebo 6,7.
 **VDDK (migrace bez agenta)** | Pokud zařízení nasadíte jako virtuální počítač VMware a máte spuštěnou migraci bez agenta, musí být na virtuálním počítači zařízení nainstalovaná VMware vSphere VDDK.
 **Hodnota hash – VAJÍČKa** | [Ověřte](tutorial-assess-vmware.md#verify-security) hodnoty hash šablony vajíček.
@@ -98,7 +98,7 @@ Zařízení Azure Migrate potřebuje připojení k Internetu.
 
 ### <a name="public-cloud-urls"></a>Adresy URL veřejného cloudu
 
-**URL** | **Podrobnosti**  
+**URL** | **Zobrazí**  
 --- | --- |
 *.portal.azure.com  | Přejděte na Azure Portal.
 *.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *.live.com | Přihlaste se ke svému předplatnému Azure.
@@ -115,7 +115,7 @@ download.microsoft.com/download | Povolí stahování ze služby Stažení softw
 
 ### <a name="government-cloud-urls"></a>Adresy URL cloudu pro státní správu
 
-**URL** | **Podrobnosti**  
+**URL** | **Zobrazí**  
 --- | --- |
 *. portal.azure.us  | Přejděte na Azure Portal.
 graph.windows.net | Přihlaste se ke svému předplatnému Azure.
@@ -180,7 +180,7 @@ IPv6 adresy | síť. Guest.Net
 Propustnost čtení (MB za sekundu) | NET. Received. Average
 Propustnost zápisu (MB za sekundu) | NET. přenášeno. Average
 **Podrobnosti o cestě inventáře** | 
-Název | vnitřního. GetType (). Jméno
+Name | vnitřního. GetType (). Jméno
 Typ podřízeného objektu | vnitřního. ChildType
 Referenční informace | vnitřního. MoRef
 Podrobnosti nadřazené položky | Kontejner. Parent
@@ -215,7 +215,7 @@ Funkce zjišťování aplikací shromažďuje nainstalované aplikace a data ope
 
 Tady je nainstalovaná data aplikace, která zařízení shromažďuje z každého virtuálního počítače povoleného pro zjišťování aplikací. Tato data se odesílají do Azure.
 
-**Data** | **Umístění registru** | **Zkrat**
+**Data** | **Umístění registru** | **Klíč**
 --- | --- | ---
 Název aplikace  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\* <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayName
 Verze  | HKLM: \ Software\Microsoft\Windows\CurrentVersion\Uninstall\*  <br/> HKLM: \ Software\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\*  | DisplayVersion 
@@ -227,7 +227,7 @@ Tady jsou funkce data, která zařízení shromažďuje z každého virtuálníh
 
 **Data**  | **Rutina PowerShellu** | **Vlastnost**
 --- | --- | ---
-Název  | Get – WindowsFeature  | Název
+Name  | Get – WindowsFeature  | Name
 Typ funkce | Get – WindowsFeature  | FeatureType
 Nadřazený  | Get – WindowsFeature  | Nadřazený
 
@@ -235,9 +235,9 @@ Nadřazený  | Get – WindowsFeature  | Nadřazený
 
 Tady jsou metadata SQL serveru, která zařízení shromažďuje z virtuálních počítačů se systémem Microsoft SQL Server, který je povolený pro zjišťování aplikací. Tato data se odesílají do Azure.
 
-**Data**  | **Umístění registru**  | **Zkrat**
+**Data**  | **Umístění registru**  | **Klíč**
 --- | --- | ---
-Název  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
+Name  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server\Instance Names\SQL  | installedInstance
 Edice  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Edice 
 Aktualizace Service Pack  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | SP
 Verze  | HKLM: \ SOFTWARE\Microsoft\Microsoft SQL Server \\ \<InstanceName> \setup  | Verze 
@@ -248,7 +248,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 Data  | Třída WMI  | Vlastnost třídy WMI
 --- | --- | ---
-Název  | Win32_operatingsystem  | Titulek
+Name  | Win32_operatingsystem  | Titulek
 Verze  | Win32_operatingsystem  | Verze
 Architektura  | Win32_operatingsystem  | OSArchitecture
 
@@ -258,7 +258,7 @@ Tady je nainstalovaná data aplikace, která zařízení shromažďuje z každé
 
 Data  | Příkaz
 --- | --- 
-Název | ot./min., bázi dpkg – dotaz, přichycení
+Name | ot./min., bázi dpkg – dotaz, přichycení
 Verze | ot./min., bázi dpkg – dotaz, přichycení
 Poskytovatel | ot./min., bázi dpkg – dotaz, přichycení
 
@@ -268,7 +268,7 @@ Zde jsou data operačního systému, která zařízení shromažďují každý v
 
 **Data**  | **Příkaz** 
 --- | --- | ---
-Název <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
+Name <br/> verze | Shromážděno z jednoho nebo více následujících souborů:<br/> <br/>/etc/os-release  <br> /usr/lib/os-release  <br> /etc/enterprise-release  <br> /etc/redhat-release  <br> /etc/oracle-release  <br> /etc/SuSE-release  <br> /etc/lsb-release  <br> /etc/debian_version 
 Architektura | uname
 
 

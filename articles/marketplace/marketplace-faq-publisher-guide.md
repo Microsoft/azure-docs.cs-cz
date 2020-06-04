@@ -7,12 +7,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: dsindona
-ms.openlocfilehash: 1eae45eea35a118be51dc1e2f95055238212560d
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 79ca7381c1d06d897202320632b55f91e4a50d91
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800656"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340466"
 ---
 # <a name="common-questions-about-microsoft-commercial-marketplace"></a>Běžné otázky týkající se komerčního tržiště Microsoftu
 
@@ -274,9 +274,12 @@ Zákazníci se obvykle účtují měsíčně za všechny nákupy v předchozím 
 
 ### <a name="how-often-will-i-receive-payouts-for-sales-through-the-commercial-marketplace"></a>Jak často budu dostávat výběry pro prodej prostřednictvím komerčního tržiště?
 
-Výběry se vyskytují měsíčně. Kolekce zpracované za předchozí měsíc jsou vypláceny najednou a prodej musí mít minimální kombinovanou hodnotu $50,00.
+Výběry se vyskytují měsíčně. Podrobnosti o platebních plánech, hledání nadcházejících výběrů v partnerském centru a o tom, jak se zabývat zákazníky neplatbami, najdete v [podrobnostech o vyřazení podrobností o zásadách](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payout-policy-details).
 
-Předplatné a nákupy kreditních karet se účtují měsíčně a faktury na zákaznickou smlouvu Microsoftu nebo smlouva Enterprise můžou být méně časté. Od okamžiku, kdy se zákazníkům fakturují, přidělíme jim za 30 dní platbu. Po přijetí platby se transakce kreditních karet dostanou do 30 dnů v úschově období.
+- V případě transakcí, kde zákazník použil smlouva Enterprise, jsou vydávány výběry v dalším cyklu vydaných po 30 dnech odeslání faktury zákazníkovi. 
+- V případě transakcí, kde zákazník použil platební kartu, je po obdržení platby k dispozici další 30denní v úschově období, po kterém se doručí za to, že prostředky budou jasné a nehrozí žádné vratek nebo podezření na podvod.
+
+Výběry se vydávají jenom v případě, že prodeje dosáhly minimální kombinované hodnoty $50,00.
 
 Další informace najdete v tématu [prahové hodnoty pro platby, metody a časové rámce](https://docs.microsoft.com/azure/marketplace/partner-center-portal/payment-thresholds-methods-timeframes).
 

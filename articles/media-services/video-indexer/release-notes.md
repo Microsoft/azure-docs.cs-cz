@@ -10,14 +10,14 @@ ms.service: media-services
 ms.subservice: video-indexer
 ms.workload: na
 ms.topic: article
-ms.date: 04/20/2020
+ms.date: 06/02/2020
 ms.author: juliako
-ms.openlocfilehash: d78390aac51ea6fa70e1285b15dcc7ade74434ee
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5bd4c9aa3fde9e3fa596ce5a18b892edfab60af5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83124580"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325061"
 ---
 # <a name="azure-media-services-video-indexer-release-notes"></a>Poznámky k verzi Azure Media Services Video Indexer
 
@@ -29,6 +29,20 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 * Známé problémy
 * Opravy chyb
 * Zastaralé funkce
+
+## <a name="may-2020"></a>Květen 2020
+
+### <a name="video-indexer-deployed-in-the-east-us"></a>Video Indexer nasazena v Východní USA
+
+Nyní můžete vytvořit Video Indexer placeného účtu v Východní USA oblasti.
+ 
+### <a name="video-indexer-url"></a>Adresa URL Video Indexer
+
+Video Indexer místní koncové body byly sjednoceny jenom se službou www. Není požadována žádná položka akce.
+
+Od této chvíle dosáhnete www.videoindexer.ai, jestli je pro vkládání widgetů nebo přihlašování do Video Indexer webových aplikací.
+
+Wus.videoindexer.ai se také přesměruje na www. Další informace jsou k dispozici v [vkládání video indexer widgetech v aplikacích](video-indexer-embed-widgets.md).
 
 ## <a name="april-2020"></a>Duben 2020
 

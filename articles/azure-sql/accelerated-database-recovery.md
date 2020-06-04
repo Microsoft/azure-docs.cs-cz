@@ -1,7 +1,7 @@
 ---
 title: Zrychlené obnovení databáze
 titleSuffix: Azure SQL
-description: Urychlené obnovení databáze poskytuje rychlé a konzistentní obnovení databáze, okamžité vrácení transakcí a agresivní zkracování protokolů pro databáze ve službě Azure SQL Service portfolio.
+description: Urychlené obnovení databáze poskytuje rychlé a konzistentní obnovení databáze, okamžité vrácení transakcí a agresivní zkracování protokolů pro databáze v portfoliu SQL Azure.
 ms.service: sql-database
 ms.subservice: high-availability
 ms.custom: sqldbrb=4
@@ -11,17 +11,17 @@ author: mashamsft
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 05/19/2020
-ms.openlocfilehash: c0243ecea778a02238b205f1659d796165f7b316
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: a6d95bbcb0873086a799dcf216beab4a6b0d33de
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044357"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344692"
 ---
 # <a name="accelerated-database-recovery-in-azure-sql"></a>Urychlené obnovení databáze v Azure SQL 
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-**Accelerated Database Recovery (ADR)** je funkce stroje SQL Database, která významně vylepšuje dostupnost databáze, zejména v případě existence dlouhotrvajících transakcí, přenavrhováním procesu obnovení SQL Database Engine. Pravidlo automatického nasazení je v tuto chvíli k dispozici pro Azure SQL Database, Azure SQL Managed instance, SQL Server na virtuálních počítačích Azure a databází v Azure synapse (aktuálně ve verzi Preview). Hlavní výhody ADR jsou:
+**Accelerated Database Recovery (ADR)** je funkce databázového stroje SQL Server, která významně vylepšuje dostupnost databáze, zejména v případě existence dlouhotrvajících transakcí, a to tak, že přenavrhování SQL Serverho procesu obnovení databázového stroje. Pravidlo automatického nasazení je aktuálně dostupné pro Azure SQL Database, Azure SQL Managed instance, SQL Server na virtuálním počítači Azure a databází ve službě Azure synapse Analytics (aktuálně ve verzi Preview). Hlavní výhody ADR jsou:
 
 - **Rychlá a konzistentní obnova databáze**
 
@@ -53,15 +53,15 @@ Obnovení databáze sleduje model obnovení [Aries](https://people.eecs.berkeley
 
   Pro každou transakci, která byla aktivní v době selhání, projde protokol zpět a vrátí operace, které tato transakce provedla.
 
-V závislosti na tomto návrhu je čas, který modul SQL Database potřebuje k obnovení z neočekávaného restartování (přibližně) úměrný velikosti nejdelší aktivní transakce v systému v době selhání. Obnovení vyžaduje vrácení zpět všech neúplných transakcí. Požadovaná doba je úměrná práci, kterou transakce provedla, a času, kdy byla transakce aktivní. Proto může proces obnovení trvat dlouhou dobu v přítomnosti dlouhotrvajících transakcí (například rozsáhlé operace hromadného vložení nebo operace sestavení indexu s velkou tabulkou).
+Na základě tohoto návrhu je čas potřebný k zotavení z neočekávaného restartu SQL Server databázový stroj (přibližně) úměrný velikosti nejdelší aktivní transakce v systému v době selhání. Obnovení vyžaduje vrácení zpět všech neúplných transakcí. Požadovaná doba je úměrná práci, kterou transakce provedla, a času, kdy byla transakce aktivní. Proto může proces obnovení trvat dlouhou dobu v přítomnosti dlouhotrvajících transakcí (například rozsáhlé operace hromadného vložení nebo operace sestavení indexu s velkou tabulkou).
 
 I zrušení nebo vrácení velkých transakcí na základě tohoto návrhu může také trvat dlouhou dobu, protože používá stejnou fázi vrácení zpět, jak je popsáno výše.
 
-Kromě toho stroj SQL Database nemůže zkrátit transakční protokol, pokud existují dlouhotrvající transakce, protože jejich odpovídající záznamy protokolu jsou nutné pro procesy obnovení a vrácení zpět. V důsledku tohoto návrhu stroje SQL Database se někteří zákazníci využili k problému s tím, že velikost transakčního protokolu roste velmi velká a spotřebovává velké množství místa na disku.
+Kromě toho databázový stroj SQL Server nemůže zkrátit transakční protokol, pokud existují dlouhotrvající transakce, protože odpovídající záznamy protokolu jsou nutné pro procesy obnovení a vrácení zpět. V důsledku tohoto návrhu SQL Server databázového stroje se někteří zákazníci využili k problému s tím, že velikost transakčního protokolu roste velmi velká a spotřebovává velké množství místa na disku.
 
 ## <a name="the-accelerated-database-recovery-process"></a>Proces urychleného obnovení databáze
 
-ADR řeší výše uvedené problémy tím, že zcela přenavrhuje proces obnovení SQL Database Engine na:
+ADR řeší výše uvedené problémy tím, že zcela přenavrhování SQL Serverho procesu obnovení databázového stroje na:
 
 - Zajistěte si neustálou dobu a okamžitou nemusíte kontrolovat protokol od/po začátek nejstarší aktivní transakce. V případě pravidla automatického nasazení se transakční protokol zpracovává jenom z posledního úspěšného kontrolního bodu (nebo nejstarší stránky pořadového čísla LSN). V důsledku toho čas obnovení není ovlivněn dlouhodobě běžícími transakcemi.
 - Minimalizujte požadovaný prostor protokolu transakcí, protože již není nutné zpracovávat protokol pro celou transakci. V důsledku toho může být transakční protokol zkráceně, protože došlo k kontrolním bodům a zálohování.
@@ -97,7 +97,7 @@ Mezi čtyři klíčové součásti pravidla automatického nasazení patří:
 
 - **Trvalé úložiště verzí (PVS)**
 
-  Trvalé úložiště verzí je nový mechanismus SQL Database Engine pro zachování verzí řádků vygenerovaných v samotné databázi místo z tradičního `tempdb` úložiště verzí. PVS umožňuje izolaci prostředků a také zlepšuje dostupnost čitelných sekundárních.
+  Trvalé úložiště verzí je nový mechanismus SQL Server databázového stroje pro uchování verzí řádků vygenerovaných v samotné databázi namísto tradičního `tempdb` úložiště verzí. PVS umožňuje izolaci prostředků a také zlepšuje dostupnost čitelných sekundárních.
 
 - **Logické vrácení**
 

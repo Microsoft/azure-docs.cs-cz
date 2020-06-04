@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/14/2020
-ms.openlocfilehash: 70def2584cf8855e8fdf4a74081dc5a9a8c46f68
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 28671484460407efac8798505f630c13ec0b4918
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205105"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325078"
 ---
-# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití šablony Správce prostředků k vytvoření Azure Database for PostgreSQL-Single server
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-postgresql---single-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for PostgreSQL-Single
 
 Azure Database for PostgreSQL je spravovaná služba, pomocí které spouštíte, spravujete a škálujete vysoce dostupné databáze PostgreSQL v cloudu. V tomto rychlém startu použijete šablonu ARM k vytvoření Azure Database for PostgreSQLho jednoho serveru v Azure Portal, PowerShellu nebo Azure CLI.
 

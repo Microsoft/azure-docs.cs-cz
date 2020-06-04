@@ -13,12 +13,12 @@ ms.reviewer: carlrab
 manager: cgronlun
 ms.date: 11/20/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6e3bd464b5b93155e8ca8c3ba012b883f2b08f80
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c45d52b89d23b2b030f6292a2257dfd732e8f766
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051434"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344760"
 ---
 # <a name="azure-sql-database-machine-learning-services-with-r-preview"></a>Azure SQL Database Machine Learning Services s R (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -57,3 +57,4 @@ Kromě předem nainstalovaných balíčků můžete [nainstalovat další balí�
 - Podívejte se na [klíčové rozdíly od SQL Server Machine Learning Services](machine-learning-services-differences.md).
 - Pokud se chcete dozvědět, jak použít R k dotazování Azure SQL Database Machine Learning Services (Preview), přečtěte si [příručku pro rychlý Start](connect-query-r.md).
 - Pokud chcete začít s některými jednoduchými skripty jazyka R, přečtěte si téma [Vytvoření a spuštění jednoduchých skriptů r v Azure SQL Database Machine Learning Services (Preview)](r-script-create-quickstart.md).
+ 

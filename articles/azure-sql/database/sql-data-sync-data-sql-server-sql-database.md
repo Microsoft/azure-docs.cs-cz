@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 08/20/2019
-ms.openlocfilehash: c2c0e6d1d3ffd9ec3091e92530ec5c191f3f7ca6
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 94479bda00e2ea7fa7cf2d0b7cd8001a070a5703
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297951"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343264"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Co je Synchronizace dat SQL pro Azure?
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Synchronizace dat SQL je služba založená na Azure SQL Database, která umožňuje synchronizovat data, která jste vybrali obousměrně napříč více databázemi v místním prostředí i v cloudu. 
 
@@ -149,7 +148,7 @@ Zřizování a rušení zřizování během vytváření skupiny synchronizace, 
 
 #### <a name="unsupported-column-types"></a>Nepodporované typy sloupců
 
-Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Například:
+Synchronizace dat nemůže synchronizovat sloupce generované jen pro čtení ani systémem. Příklad:
 
 - Vypočítané sloupce.
 - Systémem generované sloupce pro dočasné tabulky.
@@ -200,16 +199,16 @@ Yes. Pro hostování databáze centra musíte mít účet SQL Database.
 
 Ne přímo. Je možné synchronizovat mezi SQL Servermi databázemi nepřímo, ale vytvořením databáze centra v Azure a následným přidáním místních databází do skupiny synchronizace.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-subscriptions"></a>Můžu použít synchronizaci dat pro synchronizaci mezi databázemi SQL, které patří do různých předplatných
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-subscriptions"></a>Můžu použít synchronizaci dat pro synchronizaci mezi databázemi v SQL Database, které patří do různých předplatných.
 
-Yes. Můžete synchronizovat mezi databázemi SQL, které patří do skupin prostředků vlastněných různými předplatnými.
+Yes. Můžete synchronizovat mezi databázemi patřícími do skupin prostředků vlastněných různými předplatnými.
 
 - Pokud předplatná patří ke stejnému tenantovi a máte oprávnění ke všem předplatným, můžete skupinu synchronizace nakonfigurovat v Azure Portal.
 - V opačném případě je nutné použít PowerShell k přidání členů synchronizace, kteří patří do různých předplatných.
 
-### <a name="can-i-use-data-sync-to-sync-between-sql-databases-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Můžu použít synchronizaci dat pro synchronizaci mezi databázemi SQL, které patří do různých cloudů (například veřejný cloud Azure a Azure Čína 21Vianet).
+### <a name="can-i-use-data-sync-to-sync-between-databases-in-sql-database-that-belong-to-different-clouds-like-azure-public-cloud-and-azure-china-21vianet"></a>Můžu použít synchronizaci dat pro synchronizaci mezi databázemi v SQL Database, které patří do různých cloudů (například veřejný cloud Azure a Azure Čína 21Vianet).
 
-Yes. Můžete synchronizovat mezi databázemi SQL, které patří do různých cloudů. k přidání členů synchronizace, kteří patří do různých předplatných, musíte použít PowerShell.
+Yes. Můžete synchronizovat mezi databázemi, které patří do různých cloudů. K přidání členů synchronizace, kteří patří do různých předplatných, musíte použít PowerShell.
 
 ### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-sync-them"></a>Můžu použít synchronizaci dat k osazení dat z mé provozní databáze do prázdné databáze a pak je synchronizovat
 
@@ -259,3 +258,4 @@ Další informace o Azure SQL Database najdete v následujících článcích:
 
 - [Přehled služby SQL Database](sql-database-paas-overview.md)
 - [Správa životního cyklu databáze](https://msdn.microsoft.com/library/jj907294.aspx)
+ 

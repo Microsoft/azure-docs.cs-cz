@@ -6,16 +6,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 886a25fbf78f6071db55c02517621146b507f4ac
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 16b26d63c11bce073c544848db4a9cc9987efd77
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221281"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338420"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrace na cloudové ověřování pomocí připraveného zavedení (Preview)
 
@@ -82,8 +82,6 @@ Následující scénáře nejsou podporovány pro fáze zavedení:
 
 - Když poprvé přidáte skupinu zabezpečení pro dvoufázové zavedení, budete omezeni na 200 uživatelů, aby nedocházelo k vypršení časového limitu uživatelského prostředí. Po přidání skupiny můžete podle potřeby přidat do ní další uživatele přímo.
 
->[!NOTE]
-> Vzhledem k tomu, že koncové body klienta neodesílají pomocné parametry přihlášení, nejsou podporovány pro připravené zavedení. 
 
 ## <a name="get-started-with-staged-rollout"></a>Začínáme s fází uvedení do provozu
 

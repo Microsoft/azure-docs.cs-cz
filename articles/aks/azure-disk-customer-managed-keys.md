@@ -4,12 +4,12 @@ description: Přineste si vlastní klíče (BYOK) k šifrování AKS operačníh
 services: container-service
 ms.topic: article
 ms.date: 01/12/2020
-ms.openlocfilehash: ac6c4d2c4b3f309e2098ff6a6513aab8a3f8ea5f
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: c16bdb613c60a8eef3efd1be8d7ab1a78e002f98
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84141530"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84325095"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Přineste si vlastní klíče (BYOK) s disky Azure ve službě Azure Kubernetes Service (AKS).
 
@@ -110,9 +110,8 @@ az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset
 
 Když se do clusteru vytvořeného výše přidá nové fondy uzlů, klíč spravovaný zákazníkem, který se poskytuje během vytváření, se použije k zašifrování disku s operačním systémem.
 
-## <a name="encrypt-your-aks-cluster-data-disk"></a>Šifrování datového disku clusteru AKS
-
-Datové disky AKS můžete také šifrovat pomocí vlastních klíčů.
+## <a name="encrypt-your-aks-cluster-data-diskoptional"></a>Šifrování datového disku clusteru AKS (volitelné)
+Šifrovací klíč disku s operačním systémem se použije k zašifrování datového disku, pokud se pro datový disk z 1.17.2 neposkytne klíč, a můžete taky šifrovat datové disky AKS s ostatními klíči.
 
 > [!IMPORTANT]
 > Ujistěte se, že máte správné přihlašovací údaje AKS. Instanční objekt bude muset mít přístup přispěvatele ke skupině prostředků, ve které je nasazená služba diskencryptionset. V opačném případě se zobrazí chyba naznačující, že objekt služby nemá oprávnění.
@@ -166,11 +165,9 @@ kubectl apply -f byok-azure-disk.yaml
 ## <a name="limitations"></a>Omezení
 
 * BYOK je aktuálně dostupná jenom v GA a ve verzi Preview v určitých [oblastech Azure][supported-regions] .
-* Šifrování disku s operačním systémem s podporou Kubernetes verze 1,17 a vyšší   
+* Šifrování datových disků podporované s Kubernetes verzí 1,17 a vyšší   
 * K dispozici pouze v oblastech, kde je podporována podpora BYOK
 * Šifrování pomocí klíčů spravovaných zákazníkem se momentálně používá jenom pro nové clustery AKS. stávající clustery nejde upgradovat.
-* AKS Virtual Machine Scale Sets cluster se vyžaduje, není dostupná žádná podpora pro sady dostupnosti virtuálních počítačů.
-
 
 ## <a name="next-steps"></a>Další kroky
 

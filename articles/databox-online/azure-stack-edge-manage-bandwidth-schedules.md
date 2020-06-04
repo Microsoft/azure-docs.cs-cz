@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/22/2019
 ms.author: alkohli
-ms.openlocfilehash: a21828413b8d8750827fafa077002863439f8643
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 9e5361c1082424a76699affee653b4b9fc798116
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569586"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339753"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-stack-edge"></a>Použití Azure Portal ke správě plánů šířky pásma na hranici Azure Stack  
 
@@ -44,7 +44,7 @@ Chcete-li přidat plán, proveďte následující kroky v Azure Portal.
    2. Pokud má být tento plán běžet celý den, ověřte možnost **všechny dny** .
    3. **Rychlost šířky pásma** je šířka pásma v megabitech za sekundu (Mb/s), používaná vašim zařízením při operacích zahrnujících cloud (nahrávání i stahování). Zadejte číslo mezi 20 a 1 000 000 007 pro toto pole.
    4. Pokud nechcete omezit nahrávání a stahování dat, zaškrtněte možnost **Neomezená šířka pásma**.
-   5. Vyberte **Přidat**.
+   5. Vyberte možnost **Přidat**.
 
       ![Přidat plán](media/azure-stack-edge-manage-bandwidth-schedules/add-schedule-2.png)
 

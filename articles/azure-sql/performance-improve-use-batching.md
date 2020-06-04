@@ -11,19 +11,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 0b0ece8adf58d894d9ccafbbc97dea9fba2b3c5d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 01e1c63a4cfea367a0f721ac33986abade8b5b35
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046793"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343825"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>Jak používat dávkování ke zlepšování Azure SQL Database a výkonu aplikací spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Dávkové operace s Azure SQL Database a Azure SQL Managed instance významně zvyšují výkon a škálovatelnost vašich aplikací. Aby bylo možné pochopit výhody, první část tohoto článku se zabývá některými ukázkovými výsledky testů, které porovnávají sekvenční a dávkové požadavky na databázi ve službě Azure SQL Database nebo Azure SQL Managed instance. Zbývající část článku ukazuje techniky, scénáře a požadavky, které vám pomůžou úspěšně používat dávkování v aplikacích Azure.
 
-## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>Proč je dávkování důležité pro Azure SQL Database a Azure SQL Managed instance
+## <a name="why-is-batching-important-for-azure-sql-database-and-azure-sql-managed-instance"></a>Proč je dávkování důležité pro Azure SQL Database a Azure SQL Managed instance?
 
 Dávkování volání vzdálené služby je dobře známá strategie pro zvýšení výkonu a škálovatelnosti. Existují pevné náklady na zpracování jakýchkoli interakcí se vzdálenou službou, jako je serializace, přenos v síti a deserializace. Balení mnoha samostatných transakcí do jedné dávky minimalizuje tyto náklady.
 
@@ -331,7 +331,7 @@ V našich testech neexistovala obvykle žádná výhoda pro rozdělení velkých
 > [!NOTE]
 > Výsledky nejsou srovnávacími testy. Podívejte se na [poznámku o výsledcích časování v tomto článku](#note-about-timing-results-in-this-article).
 
-Můžete vidět, že nejlepší výkon pro 1000 řádků je odeslat najednou. V ostatních testech (zde nejsou uvedeny) byl pro přerušení dávky 10000 řádků na dvě dávky 5000. Schéma tabulky pro tyto testy je poměrně jednoduché, takže byste měli provádět testy na konkrétní data a velikosti dávek, abyste ověřili tyto závěry.
+Můžete vidět, že nejlepší výkon pro 1000 řádků je odeslat najednou. V ostatních testech (zde nejsou uvedeny) bylo zvýšení výkonu pro přerušení dávky 10000 řádků na dvě dávky 5000. Schéma tabulky pro tyto testy je poměrně jednoduché, takže byste měli provádět testy na konkrétní data a velikosti dávek, abyste ověřili tyto závěry.
 
 Dalším faktorem, který je třeba zvážit, je to, že pokud celková dávka přestala být příliš velká, Azure SQL Database nebo spravovaná instance Azure SQL může omezit a odmítat zápis dávky. Nejlepších výsledků dosáhnete, když otestujete konkrétní scénář a určíte, jestli je k dispozici ideální velikost dávky. Nastavit velikost dávky za běhu za účelem umožnění rychlých úprav na základě výkonu nebo chyb.
 

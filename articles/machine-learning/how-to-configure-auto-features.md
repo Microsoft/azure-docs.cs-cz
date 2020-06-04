@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/28/2020
 ms.custom: seodec18
-ms.openlocfilehash: 93e18a95e30c21a44f9ca7df92925323930a9ce8
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 87cb5714a1f4b362e2f73879d93f5739f0fc20cf
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122427"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324279"
 ---
 # <a name="featurization-with-automated-machine-learning"></a>Featurization pomocí automatizovaného strojového učení
 
@@ -99,7 +99,7 @@ Následující tabulka popisuje aktuálně podporované guardrails dat a souvise
 Guardrail|Status|Podmínka &nbsp; pro &nbsp; aktivační událost
 ---|---|---
 **Chybějící hodnoty funkcí imputace** |*Předaný* <br><br><br> *hotovo*| Ve školicích datech se nezjistily žádné chybějící hodnoty funkcí. Přečtěte si další informace o [imputaci chybějících hodnot.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Ve vašich školicích datech se zjistily chybějící hodnoty funkcí a imputované.
-**Zpracování funkcí vysoké mohutnosti** |*Předaný* <br><br><br> *hotovo*| Vaše vstupy byly analyzovány a nebyly zjištěny žádné funkce vysoké mohutnosti. Přečtěte si další informace o [detekci funkcí vysoké mohutnosti.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> Ve vašich vstupech se zjistily funkce vysoké mohutnosti a zpracovaly se.
+**Zpracování funkcí vysoké mohutnosti** |*Předaný* <br><br><br> *hotovo*| Vaše vstupy byly analyzovány a nebyly zjištěny žádné funkce vysoké mohutnosti. Přečtěte si další informace o [detekci funkcí vysoké mohutnosti.](#automatic-featurization) <br><br> Ve vašich vstupech se zjistily funkce vysoké mohutnosti a zpracovaly se.
 **Zpracování děleného ověřování** |*hotovo*| Konfigurace ověření byla nastavena na hodnotu auto a školicí data obsahují **méně než 20 000 řádků**. <br> Každá iterace proučeného modelu byla ověřena prostřednictvím křížového ověření. Přečtěte si další informace o [ověřovacích datech.](https://docs.microsoft.com/azure/machine-learning/how-to-configure-auto-train#train-and-validation-data) <br><br> Konfigurace ověření byla nastavena na hodnotu auto a školicí data obsahují **více než 20 000 řádků**. <br> Vstupní data byla rozdělena na školicí datovou sadu a datovou sadu ověřování pro ověřování modelu.
 **Detekce vyrovnávání tříd** |*Předaný* <br><br><br><br><br> *Upozorněni* | Vaše vstupy byly analyzovány a všechny třídy jsou ve vašich školicích datech vyváženy. Datová sada je považována za vyváženou, pokud každá třída má v datové sadě dobrý reprezentace, měřená podle počtu a poměru vzorků. <br><br><br> Ve vašich vstupech se zjistily nevyvážené třídy. Pokud chcete opravit posun modelu, vyřešte problém s vyrovnáváním. Přečtěte si další informace o [vyrovnaných datech.](https://docs.microsoft.com/azure/machine-learning/concept-manage-ml-pitfalls#identify-models-with-imbalanced-data)
 **Detekce problémů paměti** |*Předaný* <br><br><br><br> *hotovo* |<br> Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a nebyly zjištěny žádné potenciální problémy způsobené nedostatkem paměti. Přečtěte si další informace o [konfiguracích prognózování](https://docs.microsoft.com/azure/machine-learning/how-to-auto-train-forecast#configure-and-run-experiment) časových řad. <br><br><br>Vybrané hodnoty {horizont, lag, kumulovaný interval} byly analyzovány a mohou způsobit nedostatek paměti experimentu. Konfigurace zpoždění nebo posuvných oken byla vypnuta.

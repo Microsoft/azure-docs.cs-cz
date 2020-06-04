@@ -8,20 +8,16 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 795891f56985504a3584089d7377f753605ba4dd
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: d6f70e00bc33430cba13895b6d0c9a0aac5ef246
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263036"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338681"
 ---
-# <a name="edv4-and-edsv4-series"></a>Edv4 a Edsv4 – Series
+# <a name="edv4-and-edsv4-series"></a>Řada Edv4 a Edsv4
 
 Edv4 a Edsv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s vlákny typu Hyper a jsou ideální pro různé podnikové aplikace náročné na paměť a funkce až 504 GIB paměti RAM, [Intel Turbo &reg; Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [ &reg; technologie Intel Hyper-threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) a [Intel &reg; Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Tyto nové velikosti virtuálních počítačů budou mít 50% větší místní úložiště a taky lepší počet vstupně-výstupních operací pro čtení i zápis ve srovnání s [Ev3/Esv3mi](https://docs.microsoft.com/azure/virtual-machines/ev3-esv3-series) [virtuálními počítači Gen2](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2)
-
-
-> [!IMPORTANT]
-> Pokud nasazujete nový virtuální počítač pomocí řady Edv4 nebo Edsv4 a hodláte použít image pro Linux, musíte použít buď RHEL 8. x, CentOS 8. x nebo Oracle 7. x nebo novější. Pokud zvolíte RHEL 7. x, CentOS 7. x nebo Orcale 6. x dojde k nenouzové chybě jádra. Microsoft aktivně nasazuje opravu. Ovlivněny jsou jenom RHEL, CentOS a Oracle.
 
 ## <a name="edv4-series"></a>Edv4-Series
 

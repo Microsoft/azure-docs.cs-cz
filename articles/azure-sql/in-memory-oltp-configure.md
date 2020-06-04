@@ -10,12 +10,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: MightyPen
 ms.date: 11/07/2018
-ms.openlocfilehash: 870182af6a00e4d2e2a762ce92b569fb9eeb7f0a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d31fd8cca9df2ea21bf19beed26810568fc6481e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046912"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345304"
 ---
 # <a name="use-in-memory-oltp-to-improve-your-application-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Použití OLTP v paměti ke zlepšení výkonu aplikace v Azure SQL Database a spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -23,7 +23,7 @@ ms.locfileid: "84046912"
 [OLTP v paměti](in-memory-oltp-overview.md) lze použít ke zlepšení výkonu zpracování transakcí, přijímání dat a přechodných scénářů dat v databázích [úrovně Premium a pro důležité obchodní informace](database/service-tiers-vcore.md) bez zvýšení cenové úrovně.
 
 > [!NOTE]
-> Přečtěte si [, jak kvorum podvoje úlohy klíčové databáze při snižování DTU o 70% s SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+> Přečtěte si [, jak kvorum podvoje úlohy klíčové databáze při snižování DTU o 70% s Azure SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 Pomocí těchto kroků můžete v existující databázi přijmout OLTP v paměti.
 

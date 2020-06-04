@@ -6,12 +6,12 @@ author: sauryadas
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: saudas
-ms.openlocfilehash: 77d64391888957a1697a5823a1485413686682d1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5f396ba6ec1ecc6bd111e048ce34e3546c7364dc
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77593440"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345032"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Podporované verze Kubernetes ve službě Azure Kubernetes Service (AKS)
 
@@ -95,10 +95,10 @@ New Supported Version List
 * Pro nové **menší** verze Kubernetes
   * Všichni uživatelé budou veřejně vyrozuměni o nové verzi a jaká verze bude odebrána.
   * Při vydání nové verze opravy se ve stejnou chvíli odebere nejstarší verze opravy.
-  * Zákazníci mají **30 dnů** od data veřejného oznámení pro upgrade na podporovanou verzi dílčí verze.
+  * Podpora Azure poskytuje zákazníkům **30 dnů** od data veřejné oznámení k upgradu na podporovanou verzi dílčí verze. Po uplynutí 30 dnů budete muset aktualizovat podverzi, aby nadále přijímala podporu.
 * Pro nové verze **patch** Kubernetes
   * Všem uživatelům se zobrazí oznámení o vydání nové verze opravy a k upgradu na nejnovější verzi opravy.
-  * Aby uživatelé před odebráním nejstarší verze napřed odebrali novější, podporovaná verze opravy byly **30 dní** .
+  * Podpora Azure poskytuje zákazníkům **30 dní** na upgrade na podporovanou verzi opravy po odebrání starší verze opravy. Po uplynutí 30 dnů budete muset aktualizovat verzi opravy, aby nadále přijímala podporu.
 
 AKS definuje "vydanou verzi" jako všeobecně dostupné verze, která je povolená u všech oblastí SLO/Quality of Service měření a dostupná ve všech oblastech. AKS může podporovat i verze Preview, které jsou explicitně označené a podléhají podmínkám a ujednáním ve verzi Preview.
 
@@ -134,7 +134,7 @@ Pokud chcete zjistit, jaké verze jsou aktuálně k dispozici pro vaše předpla
 az aks get-versions --location eastus --output table
 ```
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Co se stane, když zákazník upgraduje cluster Kubernetes s menší verzí, která není podporovaná?**
 
@@ -155,7 +155,7 @@ Pro podverze, které AKS nepodporuje, by se škálování nebo oddálení mělo 
 
 **Může zákazník stále ve verzi Kubernetes zůstat?**
 
-Ano. Pokud se ale cluster nepoužívá v některé z verzí, které podporuje AKS, cluster neplatí pro zásady podpory AKS. Azure neupgraduje cluster automaticky ani neodstraní.
+Pokud byl cluster nepodporován pro více než 3 podverze a byl nalezen pro rizika zabezpečení, Azure vám umožní proaktivně upgradovat cluster. Pokud neprovedete žádnou akci, Azure si vyhrazuje právo vynutit upgrade vašeho clusteru vaším jménem.
 
 **Jakou verzi ovládací plocha podporuje, pokud fond uzlů není v některé z podporovaných verzí AKS?**
 

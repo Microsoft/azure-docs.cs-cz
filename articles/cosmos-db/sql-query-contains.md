@@ -4,19 +4,19 @@ description: Přečtěte si, jak funkce CONTAINS SQL System v Azure Cosmos DB vr
 author: ginamr
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 06/02/2020
 ms.author: girobins
 ms.custom: query-reference
-ms.openlocfilehash: a08fe47122d7e9ddd1c9038bb5f15ebbb0be30fa
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 4877272fc2db521977a4111317118380399d27c5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848970"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322699"
 ---
 # <a name="contains-azure-cosmos-db"></a>OBSAHUJE (Azure Cosmos DB)
 
- Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz obsahuje sekundu.  
+Vrátí logickou hodnotu, která označuje, zda první řetězcový výraz obsahuje sekundu.  
   
 ## <a name="syntax"></a>Syntaxe
   
@@ -75,6 +75,8 @@ Zvažte například dvě vlastnosti: město a země. Mohutnost města je 5 000 a
 ```
 
 První dotaz bude pravděpodobně používat více ru než druhý dotaz, protože mohutnost města je vyšší než země.
+
+Pokud je velikost vlastnosti v poli obsahuje více než 1 KB pro některé dokumenty, stroj dotazů bude potřebovat tyto dokumenty načíst. V takovém případě dotazovací stroj nebude moci plně vyhodnotit, pokud obsahuje index. Pokud máte velký počet dokumentů s velikostmi vlastností větší než 1 KB, bude poplatek za RU v rámci obsahovat vysoký.
 
 ## <a name="next-steps"></a>Další kroky
 

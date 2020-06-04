@@ -1,6 +1,6 @@
 ---
 title: Přehled modelu nákupu vCore
-titleSuffix: Azure SQL Database & SQL Managed Instance
+titleSuffix: Azure SQL Database & Azure SQL Managed Instance
 description: Model nákupu vCore vám umožňuje nezávisle škálovat výpočetní prostředky a prostředky úložiště, odpovídat místnímu výkonu a optimalizovat ceny pro Azure SQL Database a Azure SQL Managed instance.
 services: sql-database
 ms.service: sql-database
@@ -10,19 +10,19 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: 1a6546ad587fa308ab5559d04814191c503ecdc3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1f7d0d411ffbff6aad7d134711a0190251f68aa8
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044091"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324432"
 ---
-# <a name="vcore-model-overview---azure-sql-database--sql-managed-instance"></a>Přehled modelu vCore-Azure SQL Database & spravované instance SQL 
+# <a name="vcore-model-overview---azure-sql-database-and-azure-sql-managed-instance"></a>Přehled modelu vCore – Azure SQL Database a Azure SQL Managed instance 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
 Model nákupu Virtual Core (vCore), který používá Azure SQL Database a Azure SQL Managed instance, nabízí několik výhod:
 
-- Vyšší omezení výpočetních prostředků, paměti, vstupně-výstupních operací a úložiště.
+- Vyšší omezení výpočetní kapacity, paměti, vstupně-výstupních operací a úložiště.
 - Řízení vytváření hardwaru pro lepší porovnání požadavků na výpočetní a paměťové úlohy.
 - Cenové slevy pro [zvýhodněné hybridní využití Azure (AHB)](../azure-hybrid-benefit.md) a [REZERVOVANOU instanci (ri)](reserved-capacity-overview.md).
 - Větší transparentnost v podrobnostech o hardwaru, které vysílaly výpočetní výkon; usnadňuje plánování migrací z místních nasazení.
@@ -31,7 +31,7 @@ Model nákupu Virtual Core (vCore), který používá Azure SQL Database a Azure
 
 Mezi možnosti vrstvy služeb v modelu vCore patří Pro obecné účely, Pro důležité obchodní informace a měřítko. Vrstva služeb obecně definuje architekturu úložiště, omezení místa a vstupně-výstupních operací a možnosti provozní kontinuity související s dostupností a zotavením po havárii.
 
-||**Obecné účely**|**Důležité pro podnikání**|**Hyperškálování**|
+||**Pro obecné účely**|**Pro důležité obchodní informace**|**Hyperškálování**|
 |---|---|---|---|
 |Nejvhodnější pro|Většina obchodních úloh. Nabízí uživatelsky orientované, vyvážené a škálovatelné možnosti výpočtů a úložiště. |Nabízí podnikovým aplikacím nejvyšší odolnost proti chybám pomocí několika izolovaných replik a poskytuje nejvyšší výkon vstupně-výstupních operací na jednu repliku databáze.|Většina obchodních úloh s vysokou škálovatelností úložiště a požadavky na škálování pro čtení.  Nabízí vyšší odolnost proti chybám tím, že umožňuje konfiguraci více než jedné repliky izolované databáze. |
 |Storage|Používá vzdálené úložiště.<br/>**SQL Database zřízené výpočetní**prostředky:<br/>5 GB – 4 TB<br/>**Výpočetní**prostředí bez serveru:<br/>5 GB – 3 TB<br/>**Spravovaná instance SQL**: 32 GB až 8 TB |Používá místní úložiště SSD.<br/>**SQL Database zřízené výpočetní**prostředky:<br/>5 GB – 4 TB<br/>**Spravovaná instance SQL**:<br/>32 GB AŽ 4 TB |Flexibilní autogrow úložiště podle potřeby. Podporuje až 100 TB úložiště. Používá místní úložiště SSD pro místní mezipaměť fondu vyrovnávací paměti a místní úložiště dat. Používá vzdálené úložiště Azure jako konečné dlouhodobé úložiště dat. |
@@ -46,7 +46,7 @@ Mezi možnosti vrstvy služeb v modelu vCore patří Pro obecné účely, Pro d�
 
 Informace o výběru úrovně služby pro konkrétní úlohu najdete v následujících článcích:
 
-- [Kdy zvolit úroveň služby pro obecné účely](service-tier-general-purpose.md#when-to-choose-this-service-tier)
+- [Kdy zvolit úroveň služby Pro obecné účely](service-tier-general-purpose.md#when-to-choose-this-service-tier)
 - [Kdy zvolit úroveň služby Pro důležité obchodní informace](service-tier-business-critical.md#when-to-choose-this-service-tier)
 - [Kdy zvolit úroveň služby na úrovni služeb](service-tier-hyperscale.md#who-should-consider-the-hyperscale-service-tier)
 
@@ -112,7 +112,7 @@ Další informace o omezeních prostředků najdete v tématech [omezení prost�
 
 ### <a name="selecting-a-hardware-generation"></a>Výběr hardwarového generování
 
-V Azure Portal můžete vybrat generování hardwaru pro SQL Database nebo fond v době vytváření, nebo můžete změnit vygenerování hardwaru existující databáze nebo fondu SQL.
+V Azure Portal můžete vybrat generování hardwaru pro databázi nebo fond v SQL Database v době vytváření, nebo můžete změnit vygenerování hardwaru existující databáze nebo fondu SQL.
 
 **Výběr generování hardwaru při vytváření SQL Database nebo fondu**
 
@@ -147,7 +147,7 @@ Na kartě **základy** vyberte odkaz **Konfigurovat databázi** v části **COMP
   
 **Změna hardwarového generování existující spravované instance SQL**
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 Na stránce spravovaná instance SQL vyberte odkaz **cenová úroveň** umístěný v části nastavení.
 
@@ -165,7 +165,7 @@ Set-AzSqlInstance -Name "managedinstance1" -ResourceGroupName "ResourceGroup01" 
 
 Další podrobnosti najdete v příkazu [set-AzSqlInstance](https://docs.microsoft.com/powershell/module/az.sql/set-azsqlinstance) .
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 Použijte následující příkaz CLI:
 
@@ -228,7 +228,7 @@ Informace o tom, jak začít, najdete v těchto tématech:
 
 Podrobnosti o cenách najdete na [stránce s cenami Azure SQL Database](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
-Podrobnosti o specifických úložištích a velikostech úložiště dostupných v úrovních služeb pro obecné účely a důležité pro firmy najdete v těchto tématech: 
+Podrobnosti o specifických úložištích a velikostech úložiště dostupných v úrovních služeb pro obecné účely a důležité pro firmy najdete v těchto tématech:
 
 - [omezení prostředků založené na Vcore pro Azure SQL Database](resource-limits-vcore-single-databases.md).
 - [omezení prostředků založené na Vcore pro fond Azure SQL Database](resource-limits-vcore-elastic-pools.md).

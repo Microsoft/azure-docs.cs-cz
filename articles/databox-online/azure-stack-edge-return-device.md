@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/26/2020
 ms.author: alkohli
-ms.openlocfilehash: bb73494dd5fe22c3be645f732f9d0958e48edb64
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 6e0581912a619bec11be6d322e2987a4498c5170
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743636"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339361"
 ---
 # <a name="return-or-replace-your-azure-stack-edge-device"></a>Vrácení nebo nahrazení Azure Stack hraničního zařízení
 
@@ -22,6 +22,7 @@ Tento článek popisuje, jak vymazat data a vrátit zařízení Azure Stack Edge
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
+>
 > * Vymazání dat z datových disků v zařízení
 > * Otevření lístku podpory pro vrácení zařízení
 > * Sbalení zařízení a naplánování výdeje

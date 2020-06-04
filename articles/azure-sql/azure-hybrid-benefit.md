@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: e5af5c6b30c6f03930a61200a11bfa0bd2f72093
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: fcb1e5f45bc4f8d234952e338052a18d4b03ee0f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196452"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344675"
 ---
 # <a name="azure-hybrid-benefit---azure-sql-database--sql-managed-instance"></a>Zvýhodněné hybridní využití Azure-Azure SQL Database & spravované instance SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -30,7 +30,7 @@ V zřízené výpočetní úrovni v rámci nákupního modelu založeném na vCo
 
 ## <a name="choose-a-license-model"></a>Zvolit model licence
 
-Pomocí Zvýhodněné hybridní využití Azure se můžete rozhodnout platit jenom za základní infrastrukturu Azure pomocí vaší stávající licence SQL Server pro samotný stroj SQL Database (základní výpočetní ceny), nebo můžete platit jak pro základní infrastrukturu, tak pro SQL Server licenci (včetně ceny za licenci).
+Pomocí Zvýhodněné hybridní využití Azure se můžete rozhodnout platit jenom za základní infrastrukturu Azure, a to pomocí své stávající licence SQL Server pro SQL Server databázového stroje (základní výpočetní prostředky), nebo můžete platit za základní infrastrukturu i pro SQL Serverou licenci (ceny zahrnuté v licenci).
 
 Licenční model můžete vybrat nebo změnit pomocí Azure Portal nebo pomocí některého z následujících rozhraní API:
 
@@ -77,7 +77,7 @@ SQL Server zákazníkům se Software Assurance nabízíme výhody mobility licen
 Zvýhodněné hybridní využití Azure pro SQL Server se liší od mobility licencí ve dvou klíčových oblastech:
 
 - Poskytuje ekonomické výhody pro přesun vysoce virtualizovaných úloh do Azure. Zákazníci edice SQL Server Enterprise můžou získat čtyři jádra v Azure v rámci Pro obecné účely SKU pro každé jádro, které vlastní místní pro vysoce virtualizované aplikace. Mobilita licencí neumožňuje žádné speciální náklady na přesun virtualizovaných úloh do cloudu.
-- Poskytuje pro PaaS cíl v Azure (SQL Database Managed instance), která je vysoce kompatibilní s SQL Server.
+- Poskytuje pro PaaS cíl v Azure (spravovaná instance SQL), která je vysoce kompatibilní s SQL Server.
 
 #### <a name="what-are-the-specific-rights-of-the-azure-hybrid-benefit-for-sql-server"></a>Jaká jsou specifická práva Zvýhodněné hybridní využití Azure pro SQL Server?
 

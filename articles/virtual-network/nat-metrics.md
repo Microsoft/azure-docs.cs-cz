@@ -7,6 +7,7 @@ documentationcenter: na
 author: asudbring
 manager: KumudD
 ms.service: virtual-network
+ms.subservice: nat
 Customer intent: As an IT administrator, I want to understand available Azure Monitor metrics and alerts for Virtual Network NAT.
 ms.devlang: na
 ms.topic: overview
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
-ms.openlocfilehash: 1c3a73cba6a2ece0c9c7459b3515f053a648d683
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 7b4f433ec5782c7a819ffcd6f48bf277d7b13de2
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81408614"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341350"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Metriky služby Azure Virtual Network NAT
 
@@ -35,7 +36,7 @@ Prostředky brány Azure Virtual Network NAT poskytují multidimenzionální met
 
 Prostředky brány NAT poskytují v Azure Monitor následující multidimenzionální metriky:
 
-| Metrika | Popis | Doporučená agregace | Dimenze |
+| Metric | Popis | Doporučená agregace | Dimenze |
 |---|---|---|---|
 | Bajty | Příchozí a odchozí bajty zpracované | Součet | Směr (v; Out), protokol (6 TCP; 17 UDP) |
 | Rámců | Příchozí a odchozí pakety zpracované | Součet | Směr (v; Out), protokol (6 TCP; 17 UDP) |

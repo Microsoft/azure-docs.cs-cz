@@ -4,13 +4,13 @@ description: Tento rychlý Start založený na REST Java publikuje vaši znalost
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 149d7963f29bf041cda75fffaac533e0a62ee7a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: e8df1fcc61d6b838c08f8daca9298e73820590f5
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851682"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342693"
 ---
 # <a name="quickstart-publish-a-knowledge-base-in-qna-maker-using-java"></a>Rychlý start: Publikování znalostní báze ve službě QnA Maker pomocí Javy
 
@@ -28,7 +28,7 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
     * Commons-Logging-1.2. jar
 * [Visual Studio Code](https://code.visualstudio.com/)
 * Musíte mít [službu QnA Maker](../How-To/set-up-qnamaker-service-azure.md). Pokud chcete načíst svůj klíč a koncový bod (včetně názvu prostředku), vyberte pro prostředek v Azure Portal **rychlý Start** .
-* V adrese URL parametru řetězce `kbid` dotazu bylo nalezeno QnA maker znalostní báze (KB), jak je uvedeno níže.
+* V adrese URL parametru řetězce dotazu bylo nalezeno QnA Maker znalostní báze (KB) `kbid` , jak je uvedeno níže.
 
     ![ID znalostní báze ve službě QnA Maker](../media/qnamaker-quickstart-kb/qna-maker-id.png)
 
@@ -39,11 +39,11 @@ Tento rychlý start volá rozhraní API služby QnA Maker:
 
 ## <a name="create-a-java-file"></a>Vytvoření souboru Java
 
-Otevřete VSCode a vytvořte nový soubor s názvem `PublishKB.java`.
+Otevřete VSCode a vytvořte nový soubor s názvem `PublishKB.java` .
 
 ## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
-V horní části `PublishKB.java`nad třídou přidejte následující řádky pro přidání nezbytných závislostí do projektu:
+V horní části `PublishKB.java` nad třídou přidejte následující řádky pro přidání nezbytných závislostí do projektu:
 
 [!code-java[Add the required dependencies](~/samples-qnamaker-java/documentation-samples/quickstarts/publish-knowledge-base/PublishKB.java?range=1-13 "Add the required dependencies")]
 

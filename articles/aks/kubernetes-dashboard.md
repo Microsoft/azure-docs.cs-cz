@@ -2,36 +2,44 @@
 title: Správa clusteru služby Azure Kubernetes pomocí webového řídicího panelu
 description: Naučte se používat integrovaný řídicí panel webového uživatelského rozhraní Kubernetes ke správě clusteru Azure Kubernetes Service (AKS).
 services: container-service
+author: mlearned
 ms.topic: article
-ms.date: 10/08/2018
-ms.openlocfilehash: 15fcf765be0a754575713eebcdaa7d68e1c299b9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.author: mlearned
+ms.openlocfilehash: 40de6f4084630839a0161891ff80f7e4cabc1db7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77595344"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345103"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Přístup k webovému řídicímu panelu Kubernetes ve službě Azure Kubernetes (AKS)
 
 Kubernetes zahrnuje webový řídicí panel, který se dá použít pro základní operace správy. Tento řídicí panel umožňuje zobrazit základní stav a metriky pro vaše aplikace, vytvářet a nasazovat služby a upravovat stávající aplikace. V tomto článku se dozvíte, jak získat přístup k řídicímu panelu Kubernetes pomocí rozhraní příkazového řádku Azure, a pak vás provede několik základních operací řídicích panelů.
 
-Další informace o řídicím panelu Kubernetes najdete v tématu [řídicí panel webového uživatelského rozhraní Kubernetes][kubernetes-dashboard].
+Další informace o řídicím panelu Kubernetes najdete v tématu [řídicí panel webového uživatelského rozhraní Kubernetes][kubernetes-dashboard]. AKS využívá řídicí panel open source verze 2,0 a vyšší.
 
 ## <a name="before-you-begin"></a>Před zahájením
 
-Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili cluster AKS a navázali `kubectl` připojení k tomuto clusteru. Pokud potřebujete vytvořit cluster AKS, přečtěte si téma [rychlý Start AKS][aks-quickstart].
+Kroky popsané v tomto dokumentu předpokládají, že jste vytvořili cluster AKS a navázali připojení k `kubectl` tomuto clusteru. Pokud potřebujete vytvořit cluster AKS, přečtěte si téma [rychlý Start AKS][aks-quickstart].
 
-Také musíte mít nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.46 nebo novější. Verzi zjistíte spuštěním příkazu  `az --version` . Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.6.0 nebo novější. Verzi zjistíte spuštěním příkazu  `az --version` . Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ## <a name="start-the-kubernetes-dashboard"></a>Spuštění řídicího panelu Kubernetes
 
-Řídicí panel Kubernetes spustíte pomocí příkazu [AZ AKS Browse][az-aks-browse] . Následující příklad otevře řídicí panel pro cluster s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
+> [!WARNING]
+> **Doplněk předdefinovaných řídicích panelů je nastaven pro vyřazení.** V současné době je řídicí panel Kubernetes ve výchozím nastavení povolený pro všechny clustery, na kterých běží Kubernetes verze nižší než 1,18.
+> Doplněk řídicího panelu bude ve výchozím nastavení zakázán pro všechny nové clustery vytvořené v Kubernetes 1,18 nebo novějším. AKS s dostupností Kubernetes 1,19 ve verzi Preview už nebude podporovat instalaci spravovaného doplňku Kube-Dashboard. Existující clustery s již nainstalovaným doplňkem nebudou ovlivněny. Uživatelé budou moci ručně nainstalovat open source řídicí panel jako software nainstalovaný uživatelem.
+
+Chcete-li spustit řídicí panel Kubernetes v clusteru, použijte příkaz [AZ AKS Browse][az-aks-browse] . Tento příkaz vyžaduje instalaci doplňku Kube-Dashboard na cluster, který je ve výchozím nastavení zahrnutý v clusterech s libovolnou verzí starší než Kubernetes 1,18.
+
+Následující příklad otevře řídicí panel pro cluster s názvem *myAKSCluster* ve skupině prostředků s názvem *myResourceGroup*:
 
 ```azurecli
 az aks browse --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Tento příkaz vytvoří proxy server mezi vývojovým systémem a rozhraním API Kubernetes a otevře webový prohlížeč na řídicím panelu Kubernetes. Pokud se webový prohlížeč neotevře na řídicím panelu Kubernetes, zkopírujte a vložte adresu URL, kterou jste si poznamenali `http://127.0.0.1:8001`v Azure CLI, obvykle.
+Tento příkaz vytvoří proxy server mezi vývojovým systémem a rozhraním API Kubernetes a otevře webový prohlížeč na řídicím panelu Kubernetes. Pokud se webový prohlížeč neotevře na řídicím panelu Kubernetes, zkopírujte a vložte adresu URL, kterou jste si poznamenali v Azure CLI, obvykle `http://127.0.0.1:8001` .
 
 <!--
 ![The login page of the Kubernetes web dashboard](./media/kubernetes-dashboard/dashboard-login.png)
@@ -62,22 +70,47 @@ You have the following options to sign in to your cluster's dashboard:
 > For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
 
 After you choose a method to sign in, the Kubernetes dashboard is displayed. If you chose to use *token* or *skip*, the Kubernetes dashboard will use the permissions of the currently logged in user to access the cluster.
--->
 
 > [!IMPORTANT]
-> Pokud cluster AKS používá RBAC, musí být vytvořen *ClusterRoleBinding* , aby bylo možné správně přistupovat k řídicímu panelu. Ve výchozím nastavení je řídicí panel Kubernetes nasazený s minimálním přístupem pro čtení a zobrazuje chyby přístupu RBAC. Řídicí panel Kubernetes v současné době nepodporuje uživatelsky zadané přihlašovací údaje k určení úrovně přístupu, místo toho používá role udělené účtu služby. Správce clusteru se může rozhodnout pro udělení dalšího přístupu k účtu služby *Kubernetes-Dashboard* , ale může se jednat o vektor pro eskalaci oprávnění. Můžete také integrovat Azure Active Directory ověřování a zajistit tak podrobnější úroveň přístupu.
+> If your AKS cluster uses RBAC, a *ClusterRoleBinding* must be created before you can correctly access the dashboard. By default, the Kubernetes dashboard is deployed with minimal read access and displays RBAC access errors. The Kubernetes dashboard does not currently support user-provided credentials to determine the level of access, rather it uses the roles granted to the service account. A cluster administrator can choose to grant additional access to the *kubernetes-dashboard* service account, however this can be a vector for privilege escalation. You can also integrate Azure Active Directory authentication to provide a more granular level of access.
 > 
-> K vytvoření vazby použijte příkaz [kubectl Create clusterrolebinding][kubectl-create-clusterrolebinding] . Následující příklad ukazuje, jak vytvořit ukázkovou vazbu, ale Tato vzorová vazba nepoužívá žádné další ověřovací komponenty a může vést k nezabezpečenému použití. Řídicí panel Kubernetes je otevřený pro kohokoli, kdo má přístup k adrese URL. Nezveřejňujte řídicí panel Kubernetes veřejně.
+> To create a binding, use the [kubectl create clusterrolebinding][kubectl-create-clusterrolebinding] command. The following example shows how to create a sample binding, however, this sample binding does not apply any additional authentication components and may lead to insecure use. The Kubernetes dashboard is open to anyone with access to the URL. Do not expose the Kubernetes dashboard publicly.
 >
 > ```console
 > kubectl create clusterrolebinding kubernetes-dashboard --clusterrole=cluster-admin --serviceaccount=kube-system:kubernetes-dashboard
 > ```
 > 
-> Další informace o používání různých metod ověřování najdete v článku wiki řídicího panelu Kubernetes na [ovládacím prvku Access Controls][dashboard-authentication].
+> For more information on using the different authentication methods, see the Kubernetes dashboard wiki on [access controls][dashboard-authentication].
+-->
+
+## <a name="login-to-the-dashboard"></a>Přihlášení k řídicímu panelu
+
+> [!IMPORTANT]
+> Od verze [1.10.1 řídicího panelu Kubernetes](https://github.com/kubernetes/dashboard/releases/tag/v1.10.1) se účet služby Kubernetes-Dashboard už nedá použít k načtení prostředků z důvodu [opravy zabezpečení v této verzi](https://github.com/kubernetes/dashboard/pull/3400). V důsledku toho požadavky bez ověřovacích údajů vrátí chybu 401 s neoprávněným přístupem. Nosný token načtený z účtu služby se pořád používá jako v tomto [příkladu řídicího panelu Kubernetes](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/#accessing-the-dashboard-ui), ale to má vliv na tok přihlášení doplňku na řídicí panel v porovnání se staršími verzemi.
+
+Úvodní zobrazená obrazovka vyžaduje kubeconfig nebo token. Obě možnosti vyžadují oprávnění prostředků pro zobrazení těchto prostředků na řídicím panelu.
+
+![přihlašovací obrazovka](./media/kubernetes-dashboard/login.png)
+
+**Použití kubeconfig**
+1. Nastavte kubeconfig správce na`az aks get-credentials -a --resource-group <RG_NAME> --name <CLUSTER_NAME>`
+1. Výběrem `Kubeconfig` a kliknutím `Choose kubeconfig file` Otevřete selektor souborů.
+1. Vyberte soubor kubeconfig (výchozí nastavení $HOME/.Kube/config).
+1. Klikněte na `Sign In`.
+
+**Použití tokenu**
+1. Spusťte `kubectl config view`.
+1. Zkopírování požadovaného tokenu přidruženého k účtu vašeho clusteru
+1. Vložení do možnosti token při přihlášení
+1. Klikněte na `Sign In`.
+
+Po úspěšném zobrazení se zobrazí stránka podobná této.
 
 ![Stránka s přehledem webového řídicího panelu Kubernetes](./media/kubernetes-dashboard/dashboard-overview.png)
 
 ## <a name="create-an-application"></a>Vytvoření aplikace
+
+Následující kroky vyžadují oprávnění k mnoha prostředkům. Při testování těchto schopností se doporučuje použít účet správce.
 
 Pokud chcete zjistit, jak může řídicí panel Kubernetes snižovat složitost úloh správy, vytvoříme aplikaci. Aplikaci můžete z řídicího panelu Kubernetes vytvořit zadáním textového zadání, souboru YAML nebo pomocí grafického průvodce.
 

@@ -10,12 +10,12 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: sstein
 ms.date: 10/18/2019
-ms.openlocfilehash: c9b69b751067ba36daad614b84367aee882d17b1
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 7bd2b404627e21a80fc41a4561300d7252d1519c
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051945"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324384"
 ---
 # <a name="sql-hyperscale-performance-troubleshooting-diagnostics"></a>Diagnostika řešení potíží s výkonem s škálovatelným škálováním SQL
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Každá Azure SQL Database úroveň služby má omezení četnosti generování 
 
 Následující typy čekání (v [Sys. dm_os_wait_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-os-wait-stats-transact-sql/)) popisují důvody, proč je možné omezit rychlost protokolu u primární repliky Compute:
 
-|Typ čekání    |Popis                         |
+|Typ čekání    |Description                         |
 |-------------          |------------------------------------|
 |RBIO_RG_STORAGE        | Vyvolá se v případě, že je míra generování protokolu primárního výpočetního uzlu databáze škálováním v důsledku omezené spotřeby protokolu na stránkách.         |
 |RBIO_RG_DESTAGE        | Vyvolá se v případě, že se omezuje rychlost generování protokolu databáze výpočetních uzlů v rámci škálování z důvodu opožděné spotřeby protokolu pomocí dlouhodobého úložiště protokolů.         |
@@ -41,7 +41,7 @@ Výpočetní repliky neukládá do mezipaměti úplnou kopii databáze místně.
 
 Pokud je ve výpočetní replice vydaný objekt pro čtení, pokud data ve fondu vyrovnávací paměti nebo v místní mezipaměti RBPEX neexistují, volání funkce GetPage (pageId, LSN) a stránka se načte z odpovídajícího serveru stránky. Čtení ze stránkovacích serverů je vzdálené čtení a proto je pomalejší než čtení z místní RBPEX. Při řešení potíží s výkonem souvisejících s vstupně-výstupních operací potřebujeme vědět, kolik IOs bylo provedeno prostřednictvím poměrně pomalejšího čtení vzdáleného serveru stránky.
 
-Několik zobrazení dynamické správy a rozšířených událostí obsahuje sloupce a pole, která určují počet vzdálených čtení ze stránkového serveru, který je možné porovnat s celkovými čteními. Úložiště dotazů také zachycuje vzdálené čtení v rámci statistik doby běhu dotazu.
+Některá dynamická spravovaná zobrazení (zobrazení dynamické správy) a rozšířené události obsahují sloupce a pole, která určují počet vzdálených čtení ze stránky, který se dá porovnat s celkovými čteními. Úložiště dotazů také zachycuje vzdálené čtení v rámci statistik doby běhu dotazu.
 
 - Sloupce pro čtení na serveru sestav jsou k dispozici v zobrazení dynamické správy provádění a zobrazení katalogu, jako je například:
 
@@ -79,10 +79,10 @@ Poměr čtení provedených v RBPEX pro agregované čtení provedené u všech 
 
 ### <a name="data-reads"></a>Čtení dat
 
-- Pokud jsou čtení vydávány databázovým strojem SQL na výpočetní replice, mohou být obsluhovány buď místní mezipamětí RBPEX, nebo pomocí vzdálené stránky nebo kombinací dvou, pokud je čteno více stránek.
+- Když jsou čtení vydávány databázovým strojem SQL Server na výpočetní replice, mohou být obsluhovány buď místní mezipamětí RBPEX, nebo pomocí vzdálené stránky nebo kombinací dvou, pokud je čteno více stránek.
 - Když výpočetní replika přečte některé stránky z konkrétního souboru, například file_id 1, pokud se tato data nacházejí výhradně v místní mezipaměti RBPEX, všechny vstupně-výstupní operace pro toto čtení se započítávají na file_id 0 (RBPEX). Pokud je některá část těchto dat v místní mezipaměti RBPEX a některá část je na vzdáleném serveru stránky, v/v je k dis 0 pro součást obsluhované z RBPEX a část obsluhovaná ze serveru vzdálené stránky je k disfile_id k file_id 1.
 - Když výpočetní replika požádá o stránku na konkrétní hodnotu [LSN](/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide/) ze stránky serveru, pokud server stránky nezachytil požadavek na hodnotu LSN, přečtení na výpočetní replice počká, dokud se server stránky nepřed vrátí do výpočetní repliky. Pro všechny čtení ze stránky serveru na výpočetní replice se zobrazí PAGEIOLATCH_ * typ čekání, pokud čeká na tuto vstupně-výstupní operaci. V měřítku tato čekací doba zahrnuje čas potřebný k zaznamenání požadované stránky na straně serveru na požadovanou hodnotu LSN a čas potřebný k přenosu stránky ze serveru stránky do výpočetní repliky.
-- Velké čtení, jako je čtení předem, se často provádí pomocí [čtení "bodového shromažďování"](/sql/relational-databases/reading-pages/). To umožňuje čtení až 4 MB stránek najednou, považuje se za jeden načtený v databázovém stroji SQL. Pokud jsou však čtena data v RBPEX, jsou tyto čtení účtovány jako více individuálních čtení 8 KB, protože fond vyrovnávací paměti a RBPEX vždy používají stránky 8 KB. V důsledku toho může být počet čtení v IOs, který se zobrazuje u RBPEX, větší než skutečný počet IOs, který modul provedl.
+- Velké čtení, jako je čtení předem, se často provádí pomocí [čtení "bodového shromažďování"](/sql/relational-databases/reading-pages/). To umožňuje čtení až 4 MB stránek najednou, považuje se za jeden načtený v modulu SQL Server Database Engine. Pokud jsou však čtena data v RBPEX, jsou tyto čtení účtovány jako více individuálních čtení 8 KB, protože fond vyrovnávací paměti a RBPEX vždy používají stránky 8 KB. V důsledku toho může být počet čtení v IOs, který se zobrazuje u RBPEX, větší než skutečný počet IOs, který modul provedl.
 
 ### <a name="data-writes"></a>Zápisy dat
 
@@ -97,9 +97,9 @@ Poměr čtení provedených v RBPEX pro agregované čtení provedené u všech 
 
 ## <a name="data-io-in-resource-utilization-statistics"></a>Data v/v statistiky využití prostředků
 
-V Neškálovatelné databázi jsou kombinované vstupně-výstupní operace čtení a zápisu [proti datovým](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) souborům v zobrazení [Sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) uvedeny ve `avg_data_io_percent` sloupci. Na portálu se nahlásí stejná hodnota jako _procento vstupně-výstupních dat_.
+V Neškálovatelné databázi jsou kombinované vstupně-výstupní operace čtení a zápisu [proti datovým](/azure/sql-database/sql-database-resource-limits-database-server#resource-governance) souborům v zobrazení [Sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) a [Sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) uvedeny ve `avg_data_io_percent` sloupci. Stejná hodnota je hlášena v Azure Portal jako _procento vstupně-výstupních dat_.
 
-V databázi s velkým měřítkem se v tomto sloupci zprávy týkají využití data IOPS vzhledem k limitu pro místní úložiště pouze v případě výpočetní repliky, konkrétně v/v na RBPEX a `tempdb` . Hodnota 100% v tomto sloupci udává, že zásady správného řízení prostředků omezují místní úložiště IOPS. Pokud se to koreluje s problémem s výkonem, vyladěním úlohy vygenerujte méně vstupně-výstupní operace nebo zvyšte cíl databázové služby, abyste zvýšili _maximální počet datových IOPS_ pro řízení [prostředků.](resource-limits-vcore-single-databases.md) V případě zásad správného řízení prostředků čtení a zápisu RBPEX systém počítá jednotlivé systémy 8 – KB a nikoli větší IOs, které může vydávat stroj SQL Database.
+V databázi s velkým měřítkem se v tomto sloupci zprávy týkají využití data IOPS vzhledem k limitu pro místní úložiště pouze v případě výpočetní repliky, konkrétně v/v na RBPEX a `tempdb` . Hodnota 100% v tomto sloupci udává, že zásady správného řízení prostředků omezují místní úložiště IOPS. Pokud se to koreluje s problémem s výkonem, vyladěním úlohy vygenerujte méně vstupně-výstupní operace nebo zvyšte cíl databázové služby, abyste zvýšili _maximální počet datových IOPS_ pro řízení [prostředků.](resource-limits-vcore-single-databases.md) V případě zásad správného řízení prostředků čtení a zápisu RBPEX systém počítá jednotlivé systémy 8 – KB a nikoli větší IOs, které může vydávat SQL Server databázový stroj.
 
 Data v datovém vstupu na serverech vzdálené stránky nejsou hlášena v zobrazeních využití prostředků nebo na portálu, ale jsou uvedena v DMFu [Sys. dm_io_virtual_file_stats ()](/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql/) , jak je uvedeno výše.
 

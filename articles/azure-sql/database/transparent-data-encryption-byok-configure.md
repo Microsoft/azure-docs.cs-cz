@@ -1,7 +1,7 @@
 ---
 title: Povolit SQL TDE s Azure Key Vault
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Naučte se konfigurovat Azure SQL Database a Azure synapse Analytics, abyste mohli začít používat transparentní šifrování dat (TDE) pro šifrování v klidovém formátu pomocí PowerShellu nebo rozhraní příkazového řádku.
+description: Naučte se konfigurovat Azure SQL Database a Azure synapse Analytics, abyste mohli začít používat transparentní šifrování dat (TDE) pro šifrování v klidovém prostředí pomocí PowerShellu nebo rozhraní příkazového řádku Azure CLI.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,17 +12,17 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/12/2019
-ms.openlocfilehash: 7a71d4f2d724584509f25c7ae458ed6ab1b415af
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 136bea5ffa33210362e4785f8f3003f5cd5cc8fa
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051175"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321406"
 ---
-# <a name="powershell-and-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku: povolení transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
+# <a name="powershell-and-the-azure-cli-enable-transparent-data-encryption-with-customer-managed-key-from-azure-key-vault"></a>PowerShell a rozhraní příkazového řádku Azure CLI: povolení transparentní šifrování dat s klíčem spravovaným zákazníkem z Azure Key Vault
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-Tento článek vás seznámí s postupem použití klíče z Azure Key Vault pro transparentní šifrování dat (TDE) v Azure SQL Database nebo ve službě Azure synapse Analytics (dřív SQL DW). Další informace o TDE s podporou Azure Key Vault Integration-Bring Your Own Key (BYOK) najdete v části [TDE s klíči spravovanými zákazníky v Azure Key Vault](transparent-data-encryption-byok-overview.md).
+Tento článek vás seznámí s postupem použití klíče z Azure Key Vault pro transparentní šifrování dat (TDE) v Azure SQL Database nebo ve službě Azure synapse Analytics (dříve SQL Data Warehouse). Další informace o TDE s podporou Azure Key Vault Integration-Bring Your Own Key (BYOK) najdete v části [TDE s klíči spravovanými zákazníky v Azure Key Vault](transparent-data-encryption-byok-overview.md).
 
 ## <a name="prerequisites-for-powershell"></a>Předpoklady pro PowerShell
 
@@ -47,9 +47,9 @@ Konkrétní informace o Key Vault najdete v tématu [pokyny pro PowerShell z Key
 > [!IMPORTANT]
 > Modul Azure Resource Manager PowerShellu (RM) je stále podporován, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
-## <a name="assign-an-azure-ad-identity-to-your-server"></a>Přiřazení identity Azure AD k vašemu serveru
+## <a name="assign-an-azure-active-directory-azure-ad-identity-to-your-server"></a>Přiřazení identity Azure Active Directory (Azure AD) vašemu serveru
 
-Pokud máte existující [Server](logical-servers.md), přidejte na server IDENTITU Azure AD pomocí následujících kroků:
+Pokud máte existující [Server](logical-servers.md), použijte následující postup k přidání identity Azure Active Directory (Azure AD) na server:
 
    ```powershell
    $server = Set-AzSqlServer -ResourceGroupName <SQLDatabaseResourceGroupName> -ServerName <LogicalServerName> -AssignIdentity
@@ -121,11 +121,11 @@ Get-AzSqlDatabaseTransparentDataEncryptionActivity -ResourceGroupName <SQLDataba
    -ServerName <LogicalServerName> -DatabaseName <DatabaseName>  
 ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
-Pokud chcete nainstalovat požadované rozhraní příkazového řádku verze 2,0 nebo novější a připojit se k předplatnému Azure, přečtěte si téma [instalace a konfigurace 2,0 rozhraní příkazového řádku Azure pro více platforem](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Pokud chcete nainstalovat požadovanou verzi Azure CLI (verze 2,0 nebo novější) a připojit se k předplatnému Azure, přečtěte si téma [instalace a konfigurace 2,0 rozhraní příkazového řádku Azure pro více platforem](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
-Konkrétní informace o Key Vault najdete v tématech [správa Key Vault pomocí rozhraní příkazového řádku cli 2,0](../../key-vault/general/manage-with-cli2.md) a [Jak používat Key Vault obnovitelné odstranění pomocí](../../key-vault/general/soft-delete-cli.md)rozhraní příkazového řádku.
+Konkrétní informace o Key Vault najdete v tématech [správa Key Vault pomocí rozhraní příkazového řádku (cli 2,0](../../key-vault/general/manage-with-cli2.md) ) a [Jak používat Key Vault obnovitelného odstranění pomocí rozhraní](../../key-vault/general/soft-delete-cli.md)příkazového řádku.
 
 ## <a name="assign-an-azure-ad-identity-to-your-server"></a>Přiřazení identity Azure AD k vašemu serveru
 
@@ -207,7 +207,7 @@ az sql db tde show --database <dbname> --server <servername> --resource-group <r
    Remove-AzSqlServerKeyVaultKey -KeyId <KeyVaultKeyId> -ServerName <LogicalServerName> -ResourceGroupName <SQLDatabaseResourceGroupName>
    ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 - Obecné nastavení databáze najdete v tématu [AZ SQL](/cli/azure/sql).
 
@@ -229,7 +229,7 @@ Pokud dojde k problému, podívejte se na následující:
    Get-AzSubscription -SubscriptionId <SubscriptionId>
    ```
 
-   # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+   # <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
    ```powershell
    az account show - s <SubscriptionId>

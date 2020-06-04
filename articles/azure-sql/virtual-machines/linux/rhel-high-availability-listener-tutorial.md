@@ -1,5 +1,5 @@
 ---
-title: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure – Linux Virtual Machines | Microsoft Docs
+title: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL ve virtuálních počítačích Azure-Linux | Microsoft Docs
 description: Přečtěte si o nastavení naslouchacího procesu skupiny dostupnosti v SQL Server na virtuálních počítačích s RHEL v Azure.
 ms.service: virtual-machines-linux
 ms.subservice: ''
@@ -8,20 +8,20 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
-ms.openlocfilehash: edd9b83de0feff3b9ef12c67cdca19501eaa63a2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f60cb3f28c57d6df4a309a7630d078c593d75410
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053919"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343757"
 ---
-# <a name="tutorial-configure-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure
+# <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Kurz: Konfigurace naslouchacího procesu skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!NOTE]
 > Uvedený kurz je ve **verzi Public Preview**. 
 >
-> V tomto kurzu používáme SQL Server 2017 s RHEL 7,6, je ale možné použít SQL Server 2019 v RHEL 7 nebo RHEL 8 ke konfiguraci HA. Příkazy pro konfiguraci prostředků skupiny dostupnosti se v RHEL 8 změnily. Chcete-li získat další informace o správných příkazech, přečtěte si článek o tom, jak [vytvořit prostředek skupiny dostupnosti](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) a prostředky RHEL 8.
+> V tomto kurzu používáme SQL Server 2017 s RHEL 7,6, ale ke konfiguraci vysoké dostupnosti je možné použít SQL Server 2019 v RHEL 7 nebo RHEL 8. Příkazy pro konfiguraci prostředků skupiny dostupnosti se v RHEL 8 změnily. Chcete-li získat další informace o správných příkazech, přečtěte si článek [vytvoření prostředku skupiny dostupnosti](/sql/linux/sql-server-linux-availability-group-cluster-rhel#create-availability-group-resource) a prostředků RHEL 8.
 
 V tomto kurzu se dozvíte, jak vytvořit naslouchací proces skupiny dostupnosti pro SQL Server na virtuálních počítačích s RHEL v Azure. V tomto kurzu se naučíte:
 
@@ -37,7 +37,7 @@ V tomto kurzu se dozvíte, jak vytvořit naslouchací proces skupiny dostupnosti
 
 ## <a name="prerequisite"></a>Požadavek
 
-Dokončený [ **kurz: Konfigurace skupin dostupnosti pro SQL Server na virtuálních počítačích RHEL v Azure**](rhel-high-availability-stonith-tutorial.md)
+Dokončený [kurz: Konfigurace skupin dostupnosti pro SQL Server na virtuálních počítačích RHEL v Azure](rhel-high-availability-stonith-tutorial.md)
 
 ## <a name="create-the-load-balancer-in-the-azure-portal"></a>Vytvoření nástroje pro vyrovnávání zatížení v Azure Portal
 
@@ -130,7 +130,7 @@ Pravidla vyrovnávání zatížení konfigurují způsob, jakým nástroj pro vy
    | **Název** |Textový název reprezentující pravidla vyrovnávání zatížení. Například **SQLAlwaysOnEndPointListener**. |
    | **Protocol (Protokol)** |**TCP** |
    | **Přístavní** |*1433* |
-   | **Back-endový port** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)**. |
+   | **Port back-endu** |*1433*. Tato hodnota se ignoruje, protože toto pravidlo používá **plovoucí IP adresu (přímá návratová hodnota serveru)**. |
    | **Sonda** |Použijte název testu, který jste vytvořili pro tento nástroj pro vyrovnávání zatížení. |
    | **Trvalost relace** |**Žádné** |
    | **Časový limit nečinnosti (minuty)** |*4* |
@@ -220,7 +220,7 @@ V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížen
 
 ## <a name="test-the-listener-and-a-failover"></a>Testování naslouchacího procesu a převzetí služeb při selhání
 
-### <a name="test-logging-into-sql-server-using-the-availability-group-listener"></a>Testování přihlášení do SQL Server pomocí naslouchacího procesu skupiny dostupnosti
+### <a name="test-logging-in-to-sql-server-using-the-availability-group-listener"></a>Otestujte přihlášení k SQL Server pomocí naslouchacího procesu skupiny dostupnosti.
 
 1. Pomocí nástroje SQLCMD se přihlaste k primárnímu uzlu SQL Server pomocí názvu naslouchacího procesu skupiny dostupnosti:
 
@@ -238,11 +238,11 @@ V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížen
 
     Výstup by měl zobrazovat aktuální primární uzel. To by mělo být `VM1` , pokud jste nikdy neotestovali převzetí služeb při selhání.
 
-    Ukončete relaci SQL zadáním `exit` příkazu.
+    Ukončete relaci SQL Server zadáním `exit` příkazu.
 
 ### <a name="test-a-failover"></a>Testování převzetí služeb při selhání
 
-1. Spusťte následující příkaz k ručnímu převzetí služeb při selhání primární repliky do `<VM2>` nebo jiné repliky. Nahraďte `<VM2>` hodnotou názvu vašeho serveru.
+1. Spusťte následující příkaz, který selže při selhání primární repliky do `<VM2>` nebo jiné repliky. Nahraďte `<VM2>` hodnotou názvu vašeho serveru.
 
     ```bash
     sudo pcs resource move ag_cluster-master <VM2> --master
@@ -274,13 +274,13 @@ V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížen
         virtualip  (ocf::heartbeat:IPaddr2):       Started <VM2>
     ```
 
-1. Pomocí nástroje SQLCMD se do primární repliky přihlaste pomocí názvu naslouchacího procesu:
+1. Pomocí nástroje SQLCMD se přihlaste k primární replice pomocí názvu naslouchacího procesu:
 
     - Použijte přihlašovací jméno, které bylo dříve vytvořeno a nahraďte `<YourPassword>` správným heslem. Následující příklad používá `sa` přihlášení, které bylo vytvořeno pomocí SQL Server.
 
     ```bash
     sqlcmd -S ag1-listener -U sa -P <YourPassword>
-    ```
+     ```
 
 1. Ověřte server, ke kterému jste připojeni. V SQLCMD spusťte následující příkaz:
 
@@ -295,4 +295,4 @@ V tomto okamžiku má skupina prostředků Nástroj pro vyrovnávání zatížen
 Další informace o nástrojích pro vyrovnávání zatížení v Azure najdete v těchto tématech:
 
 > [!div class="nextstepaction"]
-> [Konfigurace nástroje pro vyrovnávání zatížení pro skupinu dostupnosti na virtuálních počítačích Azure SQL Server](../windows/availability-group-load-balancer-portal-configure.md)
+> [Konfigurace vyrovnávání zatížení pro skupinu dostupnosti v SQL Server na virtuálních počítačích Azure](../windows/availability-group-load-balancer-portal-configure.md)

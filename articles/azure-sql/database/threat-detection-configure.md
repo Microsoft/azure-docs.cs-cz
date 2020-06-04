@@ -10,19 +10,19 @@ author: rmatchoro
 ms.author: ronmat
 ms.reviewer: vanto, carlrab
 ms.date: 08/05/2019
-ms.openlocfilehash: e5af2a0b88ba46dd1c4751a8aeee4c118ca1b8ae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2f4e9841a44252829fae283a12ba804219204022
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049712"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321539"
 ---
 # <a name="configure-advanced-threat-protection-for-azure-sql-database"></a>Konfigurace rozšířené ochrany před internetovými útoky pro Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 [Rozšířená ochrana před internetovými útoky](threat-detection-overview.md) pro Azure SQL Database detekuje aktivity neobvyklé, které označují neobvyklé a potenciálně škodlivé pokusy o přístup k databázím nebo jejich zneužití. Rozšířená ochrana před internetovými útoky může identifikovat **potenciální INJEKTÁŽE SQL**, **přístup z neobvyklého umístění nebo datového centra**, **přístup z neznámého objektu zabezpečení nebo potenciálně škodlivé aplikace**a **hrubou silou přihlašovacích údajů SQL** – další podrobnosti najdete v tématu [výstrahy rozšířené ochrany před hrozbami](threat-detection-overview.md#alerts)
 
-Můžete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailových oznámení](threat-detection-overview.md#explore-detection-of-a-suspicious-event) nebo [Azure Portal](threat-detection-overview.md#explore-alerts-in-azure-portal)
+Můžete dostávat oznámení o zjištěných hrozbách prostřednictvím [e-mailových oznámení](threat-detection-overview.md#explore-detection-of-a-suspicious-event) nebo [Azure Portal](threat-detection-overview.md#explore-alerts-in-the-azure-portal)
 
 [Rozšířená ochrana před internetovými útoky](threat-detection-overview.md) je součástí [rozšířené nabídky zabezpečení dat](advanced-data-security.md) , což je jednotný balíček pro pokročilé funkce zabezpečení SQL. Rozšířená ochrana před internetovými útoky je dostupná a spravovaná prostřednictvím centrálního portálu SQL Advanced Data Security.
 

@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 04/14/2020
+ms.date: 06/02/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45ca11af061e37cf4f804ce2d7ceed72a9448294
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 608c8206227a129a320a560e752cf31a4843dca3
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393064"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321678"
 ---
 # <a name="licensing-requirements-for-azure-active-directory-self-service-password-reset"></a>Licenční požadavky pro Azure Active Directory Samoobslužné resetování hesla
 
-Pokud se uživatel nemůže přihlásit ke svému zařízení nebo aplikaci, aby se snížila pravděpodobnost volání helpdesku a ztráty produktivity, můžou být pro Samoobslužné resetování hesla (SSPR) povolené uživatelské účty v Azure Active Directory (Azure AD). K funkcím, které tvoří SSPR, patří změna hesla, resetování, odemčení a zpětný zápis do místního adresáře. Základní funkce SSPR jsou k dispozici pro Office 365 a všechny uživatele Azure AD bez jakýchkoli nákladů.
+Pokud se uživatel nemůže přihlásit ke svému zařízení nebo aplikaci, aby se snížila pravděpodobnost volání helpdesku a ztráty produktivity, můžou být pro Samoobslužné resetování hesla (SSPR) povolené uživatelské účty v Azure Active Directory (Azure AD). K funkcím, které tvoří SSPR, patří změna hesla, resetování, odemčení a zpětný zápis do místního adresáře. Základní funkce SSPR jsou k dispozici ve Microsoft 365 Business Standard nebo vyšší a všechny Azure AD Premium SKU bez nákladů.
 
 Tento článek podrobně popisuje různé způsoby, kterými se dá Samoobslužné resetování hesla licencovat a používat. Konkrétní podrobnosti o cenách a fakturaci najdete na [stránce s cenami služby Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
@@ -30,14 +30,14 @@ SSPR má licenci na uživatele. Aby bylo možné zajistit dodržování předpis
 
 Následující tabulka popisuje různé scénáře SSPR pro změnu hesla, resetování nebo místní zpětný zápis a které skladové položky tuto funkci poskytují.
 
-| Funkce | Azure AD Free | Office 365 Business Premium | Microsoft 365 Business | Azure AD Premium P1 nebo P2 |
+| Příznak | Azure AD Free | Microsoft 365 Business Standard | Microsoft 365 Business Premium | Azure AD Premium P1 nebo P2 |
 | --- |:---:|:---:|:---:|:---:|
 | **Změna hesla jenom pro Cloud uživatele**<br />Když uživatel ve službě Azure AD zná heslo a chce ho změnit na něco nového. | ● | ● | ● | ● |
 | **Resetování hesla uživatele jenom pro Cloud**<br />Když uživatel v Azure AD zapomněl heslo a potřebuje ho resetovat. | | ● | ● | ● |
 | **Změna nebo resetování hesla hybridního uživatele pomocí zpětného zápisu Prem**<br />Když uživatel v Azure AD, který je synchronizovaný z místního adresáře pomocí Azure AD Connect, chce změnit nebo resetovat heslo a zapsat nové heslo zpátky do Prem. | | | ● | ● |
 
 > [!WARNING]
-> Samostatné plány licencování Office 365 nepodporují SSPR s místním zpětným zápisem. Tyto plány licencování Office 365 vyžadují Azure AD Premium P1, Premium P2 nebo Microsoft 365 Business, aby tato funkce fungovala.
+> Samostatné Microsoft 365 základní a standardní plány licencování nepodporují SSPR s místním zpětným zápisem. Funkce místního zpětného zápisu vyžaduje Azure AD Premium P1, Premium P2 nebo Microsoft 365 Business Premium.
 
 Další informace o licencování, včetně nákladů, najdete na následujících stránkách:
 
@@ -51,7 +51,7 @@ Další informace o licencování, včetně nákladů, najdete na následující
 
 Azure AD podporuje licencování na základě skupin. Správci můžou hromadně přiřazovat licence skupině uživatelů, ale nepřiřazovat je po jednom. Další informace najdete v tématu [přiřazení, ověření a řešení problémů s licencemi](../users-groups-roles/licensing-groups-assign.md#step-1-assign-the-required-licenses).
 
-Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních. Před přiřazením licence uživateli musí správce zadat pro uživatele vlastnost **umístění používání** . Přiřazení licencí se dá udělat v části**Nastavení** **profilu** >  **uživatele** > v Azure Portal. *Když použijete přiřazení skupinové licence, všichni uživatelé bez zadaného umístění pro použití zdědí umístění adresáře.*
+Některé služby společnosti Microsoft nejsou k dispozici ve všech umístěních. Před přiřazením licence uživateli musí správce zadat pro uživatele vlastnost **umístění používání** . Přiřazení licencí se dá udělat v **User**  >  **Profile**  >  části**Nastavení** profilu uživatele v Azure Portal. *Když použijete přiřazení skupinové licence, všichni uživatelé bez zadaného umístění pro použití zdědí umístění adresáře.*
 
 ## <a name="next-steps"></a>Další kroky
 

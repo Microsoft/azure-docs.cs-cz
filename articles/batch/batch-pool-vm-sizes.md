@@ -1,15 +1,15 @@
 ---
 title: Volba velikostí virtuálních počítačů pro fondy
 description: Jak vybrat z dostupných velikostí virtuálních počítačů pro výpočetní uzly ve fondech Azure Batch
-ms.topic: how-to
-ms.date: 09/12/2019
+ms.topic: conceptual
+ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 2e0d403f405d58c0d7488ac6d0c306be2f2d79ea
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 1e3bcc51fafe10f4a753bdc79795f9afd00821d7
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779152"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323820"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Vyberte velikost virtuálního počítače pro výpočetní uzly ve fondu Azure Batch.
 
@@ -35,9 +35,11 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny v
 | DC | Žádné |
 | Dv2, DSv2 | Všechny velikosti |
 | Dv3, Dsv3 | Všechny velikosti |
-| Dav4, Dasv4 | Žádný – zatím není k dispozici |
+| Dav4<sup>1</sup> | Žádný – zatím není k dispozici |
+| Dasv4<sup>1</sup> | Všechny velikosti kromě Standard_D48as_v4 Standard_D64as_v4 Standard_D96as_v4 |
 | Ev3, Esv3 | Všechny velikosti kromě E64is_v3 a E64i_v3 |
-| Eav4, Easv4 | Žádný – zatím není k dispozici |
+| Eav4<sup>1</sup> | Všechny velikosti kromě Standard_E48a_v4 Standard_E64a_v4 Standard_E96a_v4 |
+| Easv4<sup>1</sup> | Všechny velikosti kromě Standard_E48as_v4 Standard_E64as_v4 Standard_E96as_v4 |
 | F, FS | Všechny velikosti |
 | Fsv2 | Všechny velikosti |
 | G, GS | Všechny velikosti |
@@ -46,8 +48,8 @@ Fondy dávek v konfiguraci virtuálního počítače podporují skoro všechny v
 | HBv2<sup>1</sup> | Všechny velikosti |
 | HC<sup>1</sup> | Všechny velikosti |
 | Ls | Všechny velikosti |
-| Lsv2 | Žádný – zatím není k dispozici |
-| M<sup>1</sup> | Všechny velikosti, s výjimkou M64, M64m, M128, M128m |
+| Lsv2<sup>1</sup> | Všechny velikosti |
+| M<sup>1</sup> | Všechny velikosti |
 | Mv2 | Žádný – zatím není k dispozici |
 | NC | Všechny velikosti |
 | NCv2<sup>1</sup> | Všechny velikosti |

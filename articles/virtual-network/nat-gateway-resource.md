@@ -7,6 +7,7 @@ documentationcenter: na
 author: asudbring
 manager: KumudD
 ms.service: virtual-network
+ms.subservice: nat
 Customer intent: As an IT administrator, I want to learn more about how to design virtual networks with NAT gateway resources.
 ms.devlang: na
 ms.topic: overview
@@ -14,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2020
 ms.author: allensu
-ms.openlocfilehash: 6bb53539c105cda99c842b6b0fa236f0e18a85ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 640a1795c5f2223563f6615c97a3f450a8c6fc7d
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82182476"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341129"
 ---
 # <a name="designing-virtual-networks-with-nat-gateway-resources"></a>Navrhování virtuálních sítí pomocí prostředků brány NAT
 
@@ -337,11 +338,11 @@ Chceme zjistit, jak můžeme službu vylepšit. Chybí funkce? Udělejte si př�
 * Kurz pro ověření brány NAT
   - [Azure CLI](tutorial-create-validate-nat-gateway-cli.md)
   - [PowerShell](tutorial-create-validate-nat-gateway-powershell.md)
-  - [Portál](tutorial-create-validate-nat-gateway-portal.md)
+  - [Azure Portal](tutorial-create-validate-nat-gateway-portal.md)
 * Rychlý Start pro nasazení prostředku brány NAT
   - [Azure CLI](./quickstart-create-nat-gateway-cli.md)
   - [PowerShell](./quickstart-create-nat-gateway-powershell.md)
-  - [Portál](./quickstart-create-nat-gateway-portal.md)
+  - [Azure Portal](./quickstart-create-nat-gateway-portal.md)
   - [Šablona](./quickstart-create-nat-gateway-template.md)
 * Další informace o rozhraní API prostředků brány NAT
   - [REST API](https://docs.microsoft.com/rest/api/virtualnetwork/natgateways)

@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/18/2019
 ms.author: rajanaki
-ms.openlocfilehash: ecfe993a137ca63c84438870ec54ac1e6d6707da
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 123ef7de338bfe872948db60c68c0c5743f5cda1
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257482"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345134"
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>Přidání runbooků Azure Automation do plánů obnovení
 
@@ -56,6 +56,9 @@ Když se skript spustí, vloží kontext plánu obnovení do Runbooku. Kontext o
 | CloudServiceName |Název cloudové služby Azure, pod kterou se vytvořil virtuální počítač. |
 | RoleName (Název role) |Název virtuálního počítače Azure. |
 | RecoveryPointId|Časové razítko pro obnovení virtuálního počítače. |
+
+>[!Note]
+>Hodnota proměnné ' FailoverDirection ' bude v případě převzetí služeb při selhání a ' SecondaryToPrimary ' v případě navrácení služeb po obnovení ' PrimaryToSecondary '.
 
 Následující příklad ukazuje kontextovou proměnnou:
 
@@ -112,12 +115,12 @@ Blog Aman Sharma v rámci [sběru cloudů](http://harvestingclouds.com) má uži
 ## <a name="customize-the-recovery-plan"></a>Přizpůsobení plánu obnovení
 
 1. V trezoru vyberte **plány obnovení (Site Recovery)** .
-2. Pokud chcete vytvořit plán obnovení, klikněte na **+ plán obnovení**. [Další informace](site-recovery-create-recovery-plans.md). Pokud již máte plán obnovení, vyberte jej a otevřete ho.
+2. Pokud chcete vytvořit plán obnovení, klikněte na **+ plán obnovení**. [Přečtěte si další informace](site-recovery-create-recovery-plans.md). Pokud již máte plán obnovení, vyberte jej a otevřete ho.
 3. Na stránce plán obnovení klikněte na **přizpůsobit**.
 
     ![Klikněte na tlačítko přizpůsobit.](media/site-recovery-runbook-automation-new/custom-rp.png)
 
-2. Klikněte na tlačítko se třemi tečkami (...) vedle **skupiny 1: zahájit** > **akci přidat příspěvek**.
+2. Klikněte na tlačítko se třemi tečkami (...) vedle **skupiny 1: zahájit**  >  **akci přidat příspěvek**.
 3. V části **Vložit akci**ověřte, že je vybraný **skript** , a zadejte název skriptu (**Hello World**).
 4. Zadejte účet Automation a vyberte Runbook. Chcete-li skript uložit, klikněte na tlačítko **OK**. Skript se přidá do **skupiny 1: kroky po**.
 

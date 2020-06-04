@@ -11,21 +11,21 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0db72e30fbced17665c112ad56510d7c2ca23d12
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c51863cd95deff5e460707b004206f6fde54cac4
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83639626"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337746"
 ---
-# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Povolení služby Azure Multi-Factor Authentication pro jednotlivé uživatele k zabezpečení přihlašovacích událostí
+# <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Povolení vícefaktorového ověřování Azure pro jednotlivé uživatele za účelem zabezpečení událostí přihlášení
 
 Existují dva způsoby, jak zabezpečit události přihlašování uživatelů pomocí služby Multi-Factor Authentication ve službě Azure AD. První a upřednostňovaná možnost je nastavit zásadu podmíněného přístupu, která za určitých podmínek vyžaduje vícefaktorové ověřování. Druhou možností je povolit každému uživateli Azure Multi-Factor Authentication. Když jsou uživatelé povoleni samostatně, provádějí službu Multi-Factor Authentication pokaždé, když se přihlásí (s některými výjimkami, například když se přihlásí z důvěryhodných IP adres nebo když je zapnutá funkce _zapamatovaných zařízení_ ).
 
 > [!NOTE]
-> Doporučený postup je povolení Azure Multi-Factor Authentication pomocí zásad podmíněného přístupu. Změna stavů uživatele se už nedoporučuje, pokud vaše licence nezahrnují podmíněný přístup, protože vyžadují, aby uživatelé prováděli MFA při každém přihlášení.
+> Doporučený postup je povolení Azure Multi-Factor Authentication pomocí zásad podmíněného přístupu. Změna stavů uživatele se už nedoporučuje, pokud vaše licence nezahrnují podmíněný přístup, protože vyžadují, aby uživatelé prováděli MFA při každém přihlášení. Pokud chcete začít používat podmíněný přístup, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 >
-> Pokud chcete začít používat podmíněný přístup, přečtěte si téma [kurz: zabezpečení událostí přihlašování uživatelů pomocí Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+> Pro klienty bezplatné služby Azure AD bez podmíněného přístupu můžete [použít výchozí nastavení zabezpečení k ochraně uživatelů](../fundamentals/concept-fundamentals-security-defaults.md).
 
 ## <a name="azure-multi-factor-authentication-user-states"></a>Stavy uživatelů v Azure Multi-Factor Authentication
 
@@ -39,8 +39,8 @@ Uživatelské účty v Azure Multi-Factor Authentication mají následující t�
 | Status | Popis | Neprohlížečové aplikace ovlivněny | Ovlivněné aplikace v prohlížeči | Moderní ověřování ovlivněno |
 |:---:| --- |:---:|:--:|:--:|
 | Zakázáno | Výchozí stav nového uživatele, který není zaregistrovaný v Azure Multi-Factor Authentication. | Ne | Ne | Ne |
-| Povoleno | Uživatel je zaregistrovaný v Azure Multi-Factor Authentication, ale nezaregistroval. Obdrží výzvu k registraci při příštím přihlášení. | Ne.  Budou dál fungovat, dokud se proces registrace nedokončí. | Ano. Po vypršení platnosti relace se vyžaduje registrace služby Azure Multi-Factor Authentication.| Ano. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure Multi-Factor Authentication. |
-| Vynuceno | Uživatel je zaregistrovaný a dokončil proces registrace pro Azure Multi-Factor Authentication. | Ano. Aplikace vyžadují hesla aplikací. | Ano. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. | Ano. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. |
+| Povoleno | Uživatel je zaregistrovaný v Azure Multi-Factor Authentication, ale nezaregistroval. Obdrží výzvu k registraci při příštím přihlášení. | No.  Budou dál fungovat, dokud se proces registrace nedokončí. | Yes. Po vypršení platnosti relace se vyžaduje registrace služby Azure Multi-Factor Authentication.| Yes. Po vypršení platnosti přístupového tokenu se vyžaduje registrace Azure Multi-Factor Authentication. |
+| Vynuceno | Uživatel je zaregistrovaný a dokončil proces registrace pro Azure Multi-Factor Authentication. | Yes. Aplikace vyžadují hesla aplikací. | Yes. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. | Yes. Při přihlášení se vyžaduje Azure Multi-Factor Authentication. |
 
 Stav uživatele odráží, jestli ho správce zaregistroval v Azure Multi-Factor Authentication a jestli dokončil proces registrace.
 

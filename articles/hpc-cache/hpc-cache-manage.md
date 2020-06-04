@@ -4,14 +4,14 @@ description: Jak spravovat a aktualizovat mezipaměť HPC Azure pomocí Azure Po
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 1/29/2020
-ms.author: rohogue
-ms.openlocfilehash: 57d6a2024cd6fd979426ca5de5e261f110f6156f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: 34f29eda703cb019cca3e9ca293e31288c6e151b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537946"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343659"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Správa mezipaměti z Azure Portal
 
@@ -30,6 +30,10 @@ Tlačítka v horní části stránky vám pomůžou spravovat mezipaměť:
 * [**Odstranit**](#delete-the-cache) – trvale zničí mezipaměť
 
 Přečtěte si další informace o těchto možnostech.
+
+Klikněte na obrázek níže a sledujte [video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) , které ukazuje úlohy správy mezipaměti.
+
+[![Miniatura videa: Azure HPC cache: Manage (kliknutím můžete navštívit stránku video)](media/video5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
 
 ## <a name="stop-the-cache"></a>Zastavení mezipaměti
 

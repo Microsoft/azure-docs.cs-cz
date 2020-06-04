@@ -11,12 +11,12 @@ author: danimir
 ms.author: danil
 ms.reviewer: jrasnik, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: 2008dd5e1e583a99756f62bc25f27e8f9832646e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9b92454abcb985a21952389f9f618c1f58d45182
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045603"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344777"
 ---
 # <a name="troubleshoot-azure-sql-database-and-azure-sql-managed-instance-performance-issues-with-intelligent-insights"></a>Řešení potíží s Azure SQL Database a problémy s výkonem spravované instance Azure SQL pomocí Intelligent Insights
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -90,7 +90,7 @@ Diagnostický protokol vystaví počet dotazů, jejichž spuštění se zvýšil
 
 Můžete uvažovat o rovnoměrné distribuci úloh do databáze. Zvažte optimalizaci dotazu, který má vliv na výkon přidáním indexů. Vaše úlohy můžete také distribuovat mezi více databází. Pokud tato řešení nejsou možná, zvažte zvýšení cenové úrovně vašeho předplatného databáze a zvyšte množství dostupných prostředků.
 
-## <a name="memory-pressure"></a>Zatížení paměti
+## <a name="memory-pressure"></a>Přetížení paměti
 
 ### <a name="what-is-happening"></a>Co se děje
 
@@ -283,7 +283,7 @@ Změny konfigurace v rámci databáze lze nastavit pro každou jednotlivou datab
 
 ### <a name="troubleshooting"></a>Řešení potíží
 
-Diagnostický protokol má za následek změny konfigurace v rozsahu databáze, které byly nedávno způsobeny snížením výkonu v porovnání s předchozím 7 denním chováním úloh. Změny konfigurace můžete vrátit zpět na předchozí hodnoty. Můžete také ladit hodnotu podle hodnoty, dokud nebude dosaženo požadované úrovně výkonu. Hodnoty konfigurace pro rozsah databáze můžete kopírovat z podobné databáze s uspokojivým výkonem. Pokud se vám nedaří vyřešit výkon, vraťte se k výchozím výchozím hodnotám a pokuste se vyladit od tohoto směrného plánu.
+Diagnostický protokol má za následek změny konfigurace v rozsahu databáze, které byly nedávno způsobeny snížením výkonu v porovnání s předchozím 7 denním chováním úloh. Změny konfigurace můžete vrátit zpět na předchozí hodnoty. Můžete také ladit hodnotu podle hodnoty, dokud nebude dosaženo požadované úrovně výkonu. Hodnoty konfigurace pro rozsah databáze můžete kopírovat z podobné databáze s uspokojivým výkonem. Pokud se vám nedaří vyřešit výkon, vraťte se k výchozím hodnotám a pokuste se vyladit od tohoto směrného plánu.
 
 Další informace o optimalizaci konfigurace s rozsahem databáze a syntaxi T-SQL při změně konfigurace najdete v tématu [Změna konfigurace v oboru databáze (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 

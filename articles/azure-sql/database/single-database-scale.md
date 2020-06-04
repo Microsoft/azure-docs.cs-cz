@@ -11,19 +11,18 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/30/2020
-ms.openlocfilehash: cbd15e2356e9ceb781d7314cb9a0114d2d47d412
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84e9593884f40fce8affce628b7817c528b3c31d
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041775"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343281"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Škálování jednoho databázového prostředku v Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Tento článek popisuje, jak škálovat výpočetní prostředky a prostředky úložiště dostupné pro Azure SQL Database v zřízené výpočetní úrovni. [Výpočetní úroveň bez serveru](serverless-tier-overview.md) navíc poskytuje výpočetní automatické škálování a platby za sekundu pro využité výpočetní prostředky.
+Tento článek popisuje, jak škálovat výpočetní prostředky a prostředky úložiště dostupné pro Azure SQL Database v zřízené výpočetní úrovni. [Výpočetní úroveň bez serveru](serverless-tier-overview.md) navíc poskytuje výpočetní automatické škálování a účtuje se za sekundu za použití výpočtů.
 
-Po počátečním výběru počtu virtuální jádra nebo DTU můžete dynamicky škálovat jednu databázi na základě aktuálního prostředí pomocí [Azure Portal](single-database-manage.md#azure-portal), [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
+Po počátečním výběru počtu virtuální jádra nebo DTU můžete dynamicky škálovat jednu databázi na základě aktuálního prostředí pomocí [Azure Portal](single-database-manage.md#the-azure-portal), [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/update).
 
 Následující video ukazuje dynamicky se měnící úroveň služby a výpočetní velikost, aby se zvýšila dostupnost DTU pro izolovanou databázi.
 
@@ -36,13 +35,13 @@ Následující video ukazuje dynamicky se měnící úroveň služby a výpočet
 
 Změna úrovně služby nebo výpočetní velikosti hlavně zahrnuje službu, která provádí následující kroky:
 
-1. Vytvořit novou výpočetní instanci pro databázi  
+1. Vytvořte novou instanci služby COMPUTE pro databázi. 
 
     Vytvoří se nová instance COMPUTE s požadovanou úrovní služeb a výpočetní velikostí. V případě některých kombinací úrovně služeb a výpočtů velikosti se musí replika databáze vytvořit v nové výpočetní instanci, která zahrnuje kopírování dat a může silně ovlivnit celkovou latenci. Bez ohledu na to, že databáze zůstane v průběhu tohoto kroku online, připojení budou dál směrována do databáze v původní výpočetní instanci.
 
-2. Přepnout směrování připojení na novou výpočetní instanci
+2. Přepněte směrování připojení k nové výpočetní instanci.
 
-    Existující připojení k databázi v původní výpočetní instanci jsou vyhozena. Všechna nová připojení jsou navázána na databázi v nové instanci Compute. V případě některých kombinací úrovně služby a velikosti výpočetních souborů jsou soubory databáze odpojeny a připojeny během přepínače.  Přepínač může mít za následek krátké přerušení služby, když databáze není k dispozici, obvykle po dobu kratší než 30 sekund a často jenom pár sekund. Pokud při vyřazení připojení dojde k nespuštěným transakcím, může trvat delší dobu trvání tohoto kroku, aby bylo možné obnovit přerušené transakce. [Urychlené obnovení databáze](../accelerated-database-recovery.md) může snížit dopad přerušení dlouho probíhajících transakcí.
+    Existující připojení k databázi v původní výpočetní instanci jsou vyhozena. Všechna nová připojení jsou navázána na databázi v nové instanci Compute. V případě některých kombinací úrovně služby a velikosti výpočetních souborů jsou soubory databáze odpojeny a připojeny během přepínače.  Přepínač může mít za následek krátké přerušení služby, když databáze není k dispozici, obvykle po dobu kratší než 30 sekund a často jenom pár sekund. Pokud existují dlouhotrvající transakce běžící po vyřazení připojení, může trvat delší dobu trvání tohoto kroku, aby bylo možné obnovit přerušené transakce. [Urychlené obnovení databáze](../accelerated-database-recovery.md) může snížit dopad přerušení dlouho probíhajících transakcí.
 
 > [!IMPORTANT]
 > Během žádného kroku pracovního postupu nebudou ztracena žádná data. Ujistěte se, že jste implementovali nějakou [logiku opakování](troubleshoot-common-connectivity-issues.md) v aplikacích a součástech, které při změně úrovně služby používají Azure SQL Database.
@@ -78,7 +77,7 @@ WHERE s.type_desc IN ('ROWS', 'LOG');
 
 Operaci změny měřítka úrovně služby nebo operace přeškálování výpočetních prostředků je možné zrušit.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="the-azure-portal"></a>Azure Portal
 
 V okně Přehled databáze přejděte na **oznámení** a klikněte na dlaždici, která indikuje, že se jedná o probíhající operaci:
 
@@ -109,9 +108,9 @@ else {
 - Aby bylo možné downgradovat databázi, musí být využité místo v databázi menší než maximální povolená velikost cílové úrovně služby a výpočetní velikosti.
 - Při přechodu z úrovně **Premium** na úroveň **Standard** se platí dodatečné náklady na úložiště, pokud je maximální velikost databáze podporována v cílové výpočetní velikosti a (2) maximální velikost překračuje zahrnutou velikost úložiště cílové výpočetní velikosti. Pokud je například databáze P1 s maximální velikostí 500 GB zmenšován do S3, platí dodatečné náklady na úložiště, protože S3 podporuje maximální velikost 1 TB a velikost zahrnutého úložiště je pouze 250 GB. Navíc je velikost dodatečného úložiště 500 GB – 250 GB = 250 GB. Ceny dodatečného úložiště najdete v tématu [Azure SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/). Pokud je skutečné množství využitého místa menší než zahrnuté množství úložiště, je možné tyto dodatečné náklady vyvarovat snížením maximální velikosti databáze na zahrnutou částku.
 - Při upgradu databáze s povolenou [geografickou replikací](active-geo-replication-configure-portal.md) Upgradujte své sekundární databáze na požadovanou úroveň služby a výpočetní velikost před upgradem primární databáze (Obecné pokyny pro nejlepší výkon). Při upgradu na jinou edici je nutné nejprve upgradovat sekundární databázi.
-- Když se downgrade databáze s povolenou [geografickou replikací](active-geo-replication-configure-portal.md) , downgrade primárních databází na požadovanou úroveň služby a výpočetní velikost před přechodem na sekundární databázi (Obecné pokyny pro nejlepší výkon). Při downgradu na jinou edici je nutné, aby byla primární databáze nejprve downgradovaná.
-- Nabídky služeb pro obnovení se u různých úrovní služby liší. Pokud přecházíte na úroveň **Basic** , je k dispozici nižší doba uchovávání záloh. Viz [zálohy Azure SQL Database](automated-backups-overview.md).
-- Nové vlastnosti databáze se nepoužijí, dokud nebudou změny dokončeny.
+- Když se downgrade databáze s povolenou [geografickou replikací](active-geo-replication-configure-portal.md) , downgrade primárních databází na požadovanou úroveň služby a výpočetní velikost před přechodem na sekundární databázi (Obecné pokyny pro nejlepší výkon). Při downgradu na jinou edici je požadavek, aby byla primární databáze nejprve downgradovaná.
+- Nabídky služeb pro obnovení se u různých úrovní služby liší. Pokud se chystáte přejít na úroveň **Basic** , je k dispozici nižší doba uchovávání záloh. Viz [zálohy Azure SQL Database](automated-backups-overview.md).
+- Nové vlastnosti databáze nejsou aplikovány, dokud nebudou změny dokončeny.
 
 ## <a name="billing"></a>Fakturace
 
@@ -121,7 +120,7 @@ Fakturuje se vám každá hodina existence databáze na nejvyšší úrovni slu�
 
 ### <a name="vcore-based-purchasing-model"></a>Nákupní model založený na virtuálních jádrech
 
-- Úložiště se dá zřídit až do limitu maximální velikosti úložiště dat, a to s využitím 1 GB přírůstků. Minimální konfigurovatelné úložiště dat je 1 GB. Pro jednotlivé [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md) pro omezení maximální velikosti úložiště dat v každém cíli služby viz stránky dokumentace k omezením prostředků.
+- Úložiště se dá zřídit až do limitu maximální velikosti úložiště dat s použitím přírůstku o velikosti 1 GB. Minimální konfigurovatelné úložiště dat je 1 GB. Pro jednotlivé [databáze](resource-limits-vcore-single-databases.md) a [elastické fondy](resource-limits-vcore-elastic-pools.md) pro omezení maximální velikosti úložiště dat v každém cíli služby viz stránky dokumentace k omezením prostředků.
 - Úložiště dat pro izolovanou databázi je možné zřídit zvýšením nebo snížením jeho maximální velikosti pomocí [Azure Portal](https://portal.azure.com), [jazyka Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), [PowerShellu](/powershell/module/az.sql/set-azsqldatabase), rozhraní příkazového [řádku Azure](/cli/azure/sql/db#az-sql-db-update)nebo [REST API](https://docs.microsoft.com/rest/api/sql/databases/update). Pokud je hodnota maximální velikosti zadána v bajtech, musí být násobkem 1 GB (1073741824 bajtů).
 - Množství dat, které lze uložit v datových souborech databáze, je omezeno nakonfigurovanou maximální velikostí úložiště dat. Kromě tohoto úložiště Azure SQL Database automaticky přiděluje 30% větší úložiště, které se má použít pro transakční protokol.
 - Azure SQL Database pro databázi automaticky přiděluje 32 GB za vCore `tempdb` . `tempdb`se nachází v místním úložišti SSD ve všech úrovních služby.
@@ -147,12 +146,13 @@ Chcete-li změnit velikost databáze replikované sekundární databáze, změň
 
 Ve všech oblastech je aktuálně k dispozici více než 1 TB úložiště na úrovni Premium s výjimkou: Čína – východ, Čína – sever, Německo – střed, Německo – severovýchod, Středozápadní USA, US DoD oblasti a státní správy USA – střed. V těchto oblastech je maximální velikost úložiště na úrovni Premium omezená na 1 TB. Následující hlediska a omezení se vztahují na databáze P11 a P15 s maximální velikostí větší než 1 TB:
 
-- Pokud byla maximální velikost databáze P11 nebo P15 nastavena na hodnotu větší než 1 TB, pak ji lze obnovit nebo zkopírovat pouze do databáze P11 nebo P15.  V důsledku toho může být databáze znovu škálovaná na jinou výpočetní velikost, a to za předpokladu, že množství místa přidělené v době operace změny škálování nepřekračuje omezení maximální velikosti nové výpočetní velikosti.
+- Pokud byla maximální velikost databáze P11 nebo P15 nastavena na hodnotu větší než 1 TB, pak ji lze obnovit nebo zkopírovat pouze do databáze P11 nebo P15.  Následně je možné databázi znovu škálovat na jinou výpočetní velikost, a to za předpokladu, že velikost přiděleného místa v době operace přeškálování nepřekračuje omezení maximální velikosti nové výpočetní velikosti.
 - Scénáře aktivní geografické replikace:
-  - Nastavení vztahu geografické replikace: Pokud je primární databáze P11 nebo P15, sekundární (y) musí být také P11 nebo P15; nižší výpočetní velikost je odmítnuta jako sekundární, protože nepodporují více než 1 TB.
-  - Upgrade primární databáze v relaci geografické replikace: Změna maximální velikosti na více než 1 TB v primární databázi spustí stejnou změnu v sekundární databázi. Aby se změny na primárním počítači projevily, musí být oba upgrady úspěšné. Omezení oblastí pro možnost použít více než 1 TB. Pokud je sekundární v oblasti, která nepodporuje více než 1 TB, primární verze se neupgraduje.
+  - Nastavení vztahu geografické replikace: Pokud je primární databáze P11 nebo P15, sekundární (y) musí být také P11 nebo P15. Nižší výpočetní velikost je odmítnuta jako sekundární, protože nepodporují více než 1 TB.
+  - Upgrade primární databáze v relaci geografické replikace: Změna maximální velikosti na více než 1 TB v primární databázi spustí stejnou změnu v sekundární databázi. Aby se změny na primárním počítači projevily, musí být oba upgrady úspěšné. Omezení oblastí pro možnost použít více než 1 TB. Pokud je sekundární v oblasti, která nepodporuje více než 1 TB, primární upgrade se neupgraduje.
 - Používání služby Import/export pro načítání databází P11/P15 s více než 1 TB se nepodporuje. K [importu](database-import.md) a [exportu](database-export.md) dat použijte SqlPackage. exe.
 
 ## <a name="next-steps"></a>Další kroky
 
 Celkové omezení prostředků najdete v tématu [Azure SQL Database omezení prostředků na základě Vcore – izolované databáze](resource-limits-vcore-single-databases.md) a [Azure SQL Database omezení prostředků na bázi DTU – jednotlivé databáze](resource-limits-dtu-single-databases.md).
+ 

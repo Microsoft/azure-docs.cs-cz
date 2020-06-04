@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/02/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1ea47dbc743c980b0509a3da42da13d294bc64fc
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f8b31b97752a39724a4b1b7073c2d4282bc54763
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300124"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344845"
 ---
 # <a name="create-an-azure-files-file-share-with-a-domain-controller"></a>Vytvoření sdílené složky souborů Azure s řadičem domény
 
@@ -43,7 +43,7 @@ Nastavení účtu úložiště:
     - Zadejte jedinečný název účtu úložiště.
     - Pro **umístění**doporučujeme vybrat stejné umístění jako fond hostitelů virtuálních počítačů s Windows.
     - **Výkon** – vyberte **Standard**. (V závislosti na požadavcích na IOPS. Další informace najdete v tématu [Možnosti úložiště pro kontejnery profilů FSLogix ve virtuálním počítači s Windows](store-fslogix-profile.md).)
-    - Jako **typ účtu**vyberte **StorageV2**.
+    - Jako **typ účtu**vyberte **StorageV2** nebo **úložiště**.
     - V případě **replikace**vyberte **místně redundantní úložiště (LRS)**.
 
 5. Až budete hotovi, vyberte **zkontrolovat + vytvořit**a pak vybrat **vytvořit**.
@@ -64,15 +64,15 @@ Vytvoření sdílené složky:
 
 4. Vyberte **Vytvořit**.
 
-## <a name="enable-azure-active-directory-authentication"></a>Povolit ověřování Azure Active Directory
+## <a name="enable-active-directory-authentication"></a>Povolit ověřování služby Active Directory
 
-V dalším kroku budete muset povolit ověřování Azure Active Directory (AD). Pokud chcete tuto zásadu povolit, musíte postupovat podle pokynů v počítači, který je už připojený k doméně. Pokud chcete povolit ověřování, postupujte podle těchto pokynů na virtuálním počítači, na kterém běží řadič domény:
+V dalším kroku budete muset povolit ověřování služby Active Directory (AD). Pokud chcete tuto zásadu povolit, musíte postupovat podle pokynů v počítači, který je už připojený k doméně. Pokud chcete povolit ověřování, postupujte podle těchto pokynů na virtuálním počítači, na kterém běží řadič domény:
 
 1. Protokol RDP (Remote Desktop Protocol) do virtuálního počítače připojeného k doméně.
 
 2. Podle pokynů v části [Povolení ověřování azure služba AD DS pro sdílené složky Azure](../storage/files/storage-files-identity-ad-ds-enable.md) nainstalujte modul AzFilesHybrid a povolte ověřování.
 
-3.  Otevřete Azure Portal, otevřete svůj účet úložiště, vyberte **Konfigurace**a potvrďte, že **Azure Active Directory (AD)** je nastavené na **povoleno**.
+3.  Otevřete Azure Portal, otevřete svůj účet úložiště, vyberte **Konfigurace**a potvrďte, že **Služba Active Directory (AD)** je nastavená na **povoleno**.
 
      ![Snímek obrazovky konfigurační stránky s povoleným Azure Active Directory (AD).](media/active-directory-enabled.png)
 
@@ -178,7 +178,7 @@ Konfigurace oprávnění systému souborů NTFS:
      - Nahraďte <připojeného písmene> písmenem jednotky, kterou jste použili k namapování jednotky.
      - Nahraďte <uživatelem-e-mailem> pomocí hlavního názvu uživatele (UPN) uživatele nebo skupiny Active Directory, který obsahuje uživatele, kteří budou vyžadovat přístup ke sdílené složce.
 
-     Například:
+     Příklad:
 
      ```powershell
      icacls <mounted-drive-letter>: /grant john.doe@contoso.com:(M)

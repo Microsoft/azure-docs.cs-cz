@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: reference
-ms.date: 05/11/2020
+ms.date: 06/03/2020
 ms.author: anfeldma
-ms.openlocfilehash: 53ae3217e77a9301cbe0d3d63ce0712a0b9b7f1e
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 799f38cff1c10da1b0d280121a7a5ab4a380152d
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171612"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331419"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
@@ -41,12 +41,18 @@ Toto je původní Azure Cosmos DB synchronizovat sadu Java SDK v2 pro rozhraní 
 |---|---|
 |**Stažení sady SDK**|[Maven](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**Dokumentace k rozhraní API**|[Referenční dokumentace k rozhraní Java API](/java/api/com.microsoft.azure.documentdb)|
-|**Přispívání do sady SDK**|[GitHubu](https://github.com/Azure/azure-documentdb-java/)|
+|**Přispívání do sady SDK**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Začínáme**|[Začínáme se sadou Java SDK](sql-api-java-get-started.md)|
 |**Kurz webové aplikace**|[Vývoj webových aplikací pomocí Azure Cosmos DB](sql-api-java-application.md)|
 |**Minimální podporovaná doba běhu**|[Java Development Kit (JDK) 7 +](/java/azure/jdk/?view=azure-java-stable)|
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="251"></a><a name="2.5.1"></a>2.5.1
+* Opravuje problém mezipaměti hlavního oddílu v dotazucollection dokumentu.
+
+### <a name="250"></a><a name="2.5.0"></a>2.5.0
+* Byla přidána podpora pro 449 opakování vlastní konfigurace.
 
 ### <a name="247"></a><a name="2.4.7"></a>2.4.7
 * Opravuje problém s vypršením časového limitu fondu připojení.
@@ -268,6 +274,8 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 
 | Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
+| [2.5.1](#2.5.1) |03. června 2020 |--- |
+| [2.5.0](#2.5.0) |12. května 2020 |--- |
 | [2.4.7](#2.4.7) |20. února 2020 |--- |
 | [2.4.6](#2.4.6) |24. ledna 2020 |--- |
 | [2.4.5](#2.4.5) |10. listopadu 2019 |--- |
@@ -322,7 +330,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 | 0.9.1 – zapůjčení |19. prosince 2014 |29. února 2016 |
 | 0.9.0 – zapůjčení |10. prosince 2014 |29. února 2016 |
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také

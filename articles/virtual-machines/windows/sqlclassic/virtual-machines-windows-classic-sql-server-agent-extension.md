@@ -15,17 +15,17 @@ ms.workload: iaas-sql-server
 ms.date: 07/12/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 384b66020b3d18064ea1cd9f162911878caa598d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fe899eebb0139dffabef96da32ab1641c983f726
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84017528"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338403"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-with-the-sql-server-agent-extension-classic"></a>Automatizace úloh správy v Azure Virtual Machines s rozšířením agenta SQL Server (Classic)
 > [!div class="op_single_selector"]
 > * [Resource Manager](../../../azure-sql/virtual-machines/windows/sql-server-iaas-agent-extension-automate-management.md)
-> * [Klasický](virtual-machines-windows-classic-sql-server-agent-extension.md)
+> * [Classic](virtual-machines-windows-classic-sql-server-agent-extension.md)
 > 
 >
  
@@ -82,7 +82,7 @@ Pokud aktualizujete na nejnovější verzi rozšíření agenta SQL IaaS, musít
 > Klasické virtuální počítače nemají možnost nainstalovat a nakonfigurovat rozšíření agenta SQL IaaS prostřednictvím portálu.
 
 > [!NOTE]
-> Rozšíření agenta SQL Server IaaS se podporuje jenom v [imagí Galerie virtuálních počítačů v SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-vms) (průběžné platby nebo vlastní licence). Není podporováno, pokud SQL Server nainstalujete ručně na virtuální počítač se systémem Windows Server pouze v operačním systému nebo pokud nasadíte přizpůsobený virtuální pevný disk SQL Server virtuálního počítače. V těchto případech může být možné ručně nainstalovat a spravovat rozšíření pomocí PowerShellu, ale důrazně se doporučuje nainstalovat Image Galerie virtuálních počítačů SQL Server a pak ji přizpůsobit.
+> Rozšíření agenta SQL Server IaaS se podporuje jenom v [imagí Galerie virtuálních počítačů v SQL Server](../../../azure-sql/virtual-machines/windows/sql-server-on-azure-vm-iaas-what-is-overview.md#get-started-with-sql-server-vms) (průběžné platby nebo vlastní licence). Není podporováno, pokud SQL Server nainstalujete ručně na virtuální počítač se systémem Windows Server pouze v operačním systému nebo pokud nasadíte přizpůsobený virtuální pevný disk SQL Server virtuálního počítače. V těchto případech může být možné ručně nainstalovat a spravovat rozšíření pomocí PowerShellu, ale důrazně se doporučuje nainstalovat Image Galerie virtuálních počítačů SQL Server a pak ji přizpůsobit.
 
 ## <a name="status"></a>Status
 Jedním ze způsobů, jak ověřit, že je rozšíření nainstalované, je zobrazit stav agenta na webu Azure Portal. Vyberte virtuální počítač uvedený v okně virtuální počítač a pak klikněte na **rozšíření**. Měla by se zobrazit uvedená rozšíření **SQLIaaSAgent** .

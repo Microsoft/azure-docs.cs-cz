@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/20/2019
-ms.openlocfilehash: 5adb09389e1d5be13f766240d9fac5a644190d6d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: fd8c3c7eaaee6a31acbc4cf513adb3e0e0fa566b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051007"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341996"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-purchasing-model---azure-sql-database"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu DTU – Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Omezení prostředků modelu nákupu pro elastické fondy najdete v tématu [ome
 
 ## <a name="single-database-storage-sizes-and-compute-sizes"></a>Samostatná databáze: velikosti úložiště a velikosti výpočtů
 
-V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici pro izolovanou databázi v každé úrovni služby a výpočetní velikost. Můžete nastavit úroveň služby, výpočetní velikost a množství úložiště pro jednu databázi pomocí [Azure Portal](single-database-manage.md#azure-portal), [jazyka Transact-SQL](single-database-manage.md#transact-sql-t-sql), [PowerShellu](single-database-manage.md#powershell), rozhraní příkazového [řádku Azure](single-database-manage.md#azure-cli)nebo [REST API](single-database-manage.md#rest-api).
+V následujících tabulkách jsou uvedeny prostředky, které jsou k dispozici pro izolovanou databázi v každé úrovni služby a výpočetní velikost. Můžete nastavit úroveň služby, výpočetní velikost a množství úložiště pro jednu databázi pomocí [Azure Portal](single-database-manage.md#the-azure-portal), [jazyka Transact-SQL](single-database-manage.md#transact-sql-t-sql), [PowerShellu](single-database-manage.md#powershell), rozhraní příkazového [řádku Azure](single-database-manage.md#the-azure-cli)nebo [REST API](single-database-manage.md#rest-api).
 
 > [!IMPORTANT]
 > Pokyny a požadavky pro škálování najdete v tématu [škálování izolované databáze](single-database-scale.md) .

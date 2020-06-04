@@ -12,17 +12,14 @@ ms.workload: identity
 ms.date: 03/05/2020
 ms.author: hahamil
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 1ede6592b3da979136d70b873142af6d2bb8b593
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6d869243f7f125ef7a795d6049d0b4f70fc51361
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83201333"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322766"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-an-angular-single-page-application"></a>Kurz: přihlášení uživatelů a volání rozhraní Microsoft Graph API z úhlové aplikace s jednou stránkou
-
-> [!IMPORTANT]
-> Tato funkce je aktuálně ve verzi Preview. Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Některé aspekty této funkce se můžou před všeobecnou dostupností změnit (GA).
 
 V tomto kurzu se dozvíte, jak může jednorozměrná aplikace s jednou stránkou (SPA):
 - Přihlaste se do osobních účtů, pracovních účtů nebo školních účtů.
@@ -46,7 +43,7 @@ V tomto scénáři se po přihlášení uživatele vyžádá přístupový token
 
 V tomto kurzu se používá následující knihovna:
 
-|Knihovna|Popis|
+|Knihovna|Description|
 |---|---|
 |[msal. js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Microsoft Authentication Library pro JavaScript – úhlová obálka|
 

@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6dee5d6e1bb2802114d7bba14a57b91dbab09e19
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 37cc50a31f2f31c0cb7fc49102328f2072c6570a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054789"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324585"
 ---
 # <a name="quickstart-create-and-train-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Rychlý Start: vytvoření a výuka prediktivního modelu v R s Azure SQL Database Machine Learning Services (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,9 +53,9 @@ Požadavky na lineární model jsou jednoduché:
 
 V následujících krocích nastavíte školicí údaje, vytvoříte regresní model, provedete ho pomocí školicích dat a pak uložíte model do tabulky SQL.
 
-1. Otevřete **SQL Server Management Studio** a připojte se k databázi SQL.
+1. Otevřete **SQL Server Management Studio** a připojte se k databázi.
 
-   Pokud potřebujete pomáhat s připojením, přečtěte si téma [rychlý Start: použití SQL Server Management Studio k připojení a dotazování databáze SQL Azure](connect-query-ssms.md).
+   Pokud potřebujete pomáhat s připojením, přečtěte si téma [rychlý Start: použití SQL Server Management Studio k připojení a dotazování databáze v Azure SQL Database](connect-query-ssms.md).
 
 1. Vytvořte tabulku **CarSpeed** k uložení školicích dat.
 

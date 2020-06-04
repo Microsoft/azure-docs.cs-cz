@@ -7,14 +7,14 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 05/19/2020
-ms.openlocfilehash: ef3813840b1ecb3ad091a5b420ff8cfff9f6059a
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 9f38ba439a5f2facbc1c80493b802b5205a54691
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800201"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323582"
 ---
-# <a name="quickstart-use-a-resource-manager-template-to-create-an-azure-database-for-mysql-server"></a>Rychlý Start: použití šablony Správce prostředků k vytvoření serveru Azure Database for MySQL
+# <a name="quickstart-use-an-arm-template-to-create-an-azure-database-for-mysql-server"></a>Rychlý Start: použití šablony ARM k vytvoření serveru Azure Database for MySQL
 
 Azure Database for MySQL je spravovaná služba, pomocí které můžete spouštět, spravovat a škálovat vysoce dostupné databáze MySQL v cloudu. V tomto rychlém startu použijete šablonu ARM k vytvoření serveru Azure Database for MySQL s integrací virtuální sítě. Server můžete vytvořit v Azure Portal, Azure CLI nebo Azure PowerShell.
 
@@ -44,7 +44,7 @@ Server Azure Database for MySQL vytvoříte s definovanou sadou výpočetních p
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-managed-mysql-with-vnet/).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-managed-mysql-with-vnet/).
 
 :::code language="json" source="~/quickstart-templates/101-managed-mysql-with-vnet/azuredeploy.json" range="001-231" highlight="149,162,176,199,213":::
 

@@ -14,12 +14,12 @@ ms.date: 04/08/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 62ed33b8344d0d5a79cd956274c5f7ddd62a714a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6d96737e276dce69b7f3867ab16727119a38d4b1
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047241"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342437"
 ---
 # <a name="extend-support-for-sql-server-2008-and-sql-server-2008-r2-with-azure"></a>Rozšiřování podpory SQL Server 2008 a SQL Server 2008 R2 s Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -43,7 +43,7 @@ Image nasazené prostřednictvím Azure Marketplace se dodávají s předinstalo
 > [!NOTE]
 > I když se SQL Server **vytvářet** a **Spravovat** okna, budou v Azure Portal fungovat s imagí SQL Server 2008 R2, nejsou _podporovány_následující funkce: automatické zálohování, Integrace Azure Key Vault, služby R a konfigurace úložiště.
 
-## <a name="licensing"></a>Licencování
+## <a name="licensing"></a>Licensing
 Nasazení s průběžnými platbami SQL Server 2008 R2 se dá převést na [zvýhodněné hybridní využití Azure](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 Pokud chcete převést licenci na základě programu Software Assurance (SA) na průběžné platby, měli by se zákazníci zaregistrovat u [poskytovatele prostředků](sql-vm-resource-provider-register.md)virtuálního počítače SQL. Po této registraci se typ licence SQL zamění mezi Zvýhodněné hybridní využití Azure a průběžnými platbami.
@@ -61,7 +61,7 @@ SQL Server vyžaduje pro zajištění obnovení Azure Site Recovery snímky konz
 
 ### <a name="database-migration-service"></a>Database Migration Service
 
-[Database Migration Service](/azure/dms/dms-overview) je možnost pro zákazníky, pokud se migrují z místního prostředí do virtuálního počítače Azure upgradem SQL Server na verzi 2012 nebo novější.
+[Azure Database Migration Service](/azure/dms/dms-overview) je možnost pro zákazníky, pokud se migrují z místního prostředí do virtuálního počítače Azure upgradem SQL Server na verzi 2012 nebo novější.
 
 ## <a name="disaster-recovery"></a>Zotavení po havárii
 
@@ -74,7 +74,7 @@ SQL Server vyžaduje pro zajištění obnovení Azure Site Recovery snímky konz
 ## <a name="security-patching"></a>Opravy zabezpečení
 Rozšířené aktualizace zabezpečení pro SQL Server virtuálních počítačů se doručí prostřednictvím kanálů Microsoft Update po registraci SQL Server virtuálního počítače u [poskytovatele prostředků](sql-vm-resource-provider-register.md)virtuálního počítače SQL. Opravy lze stáhnout ručně nebo automaticky.
 
-*Automatizované opravy* jsou ve výchozím nastavení povolené. Automatizované opravy umožňují na platformě Azure automaticky opravovat SQL Server a operační systém. Pokud je nainstalováno rozšíření SQL Server IaaS, můžete zadat den v týdnu, čas a dobu trvání okna údržby. V té době pak Azure nainstaluje potřebné opravy. V rámci plánování intervalu údržby se pro čas používá národní prostředí virtuálních počítačů.  Další informace najdete v tématu [automatizované opravy pro SQL Server v Azure Virtual Machines](automated-patching.md).
+*Automatizované opravy* jsou ve výchozím nastavení povolené. Automatizované opravy umožňují na platformě Azure automaticky opravovat SQL Server a operační systém. Pokud je nainstalováno rozšíření SQL Server IaaS, můžete zadat den v týdnu, čas a dobu trvání okna údržby. V té době pak Azure nainstaluje potřebné opravy. V rámci plánování intervalu údržby se pro čas používá národní prostředí virtuálních počítačů. Další informace najdete v tématu [automatizované opravy pro SQL Server v Azure Virtual Machines](automated-patching.md).
 
 
 ## <a name="next-steps"></a>Další kroky

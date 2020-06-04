@@ -3,14 +3,14 @@ title: Přehled Azure Automation Change Tracking a inventáře
 description: Tento článek popisuje funkci Change Tracking a inventáře, která vám pomůže identifikovat změny softwaru a služeb Microsoftu ve vašem prostředí.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 01/28/2019
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7a1c5d5371663f3520e76060c9c2a8df0a18449c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: cef323fd5b73b1befec5261e56357751ac72adae
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117532"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342914"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
@@ -52,7 +52,9 @@ Change Tracking a inventarizace v současné době dochází k následujícím p
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
-Change Tracking a inventář se podporují ve všech operačních systémech, které splňují požadavky agenta Log Analytics. Oficiální verze operačního systému jsou Windows Server 2008 SP1 nebo novější a Windows 7 SP1 nebo novější. Tato funkce je také podporována v řadě operačních systémů Linux. Operační systémy podporující Log Analytics najdete v tématu [Přehled agenta Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent). 
+Change Tracking a inventář se podporují ve všech operačních systémech, které splňují požadavky agenta Log Analytics. Oficiální verze operačního systému jsou Windows Server 2008 SP1 nebo novější a Windows 7 SP1 nebo novější. Tato funkce je také podporována v řadě operačních systémů Linux. Operační systémy podporující Log Analytics najdete v tématu [Přehled agenta Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent).
+
+Informace o požadavcích klienta na TLS 1,2 najdete v tématu [vynucení TLS 1,2 pro Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 ## <a name="network-requirements"></a>Požadavky sítě
 
@@ -158,7 +160,7 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 
 | **Prostředek** | **Počtu** |
 |---|---|---|
-|File|500|
+|Soubor|500|
 |Registr|250|
 |Software Windows (nezahrnuje opravy hotfix) |250|
 |Balíčky Linux|1250|

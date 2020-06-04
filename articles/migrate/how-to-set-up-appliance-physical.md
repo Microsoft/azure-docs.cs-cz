@@ -4,12 +4,12 @@ description: Přečtěte si, jak nastavit zařízení Azure Migrate pro posouzen
 ms.service: azure-migrate
 ms.topic: article
 ms.date: 04/15/2020
-ms.openlocfilehash: ddc70ee9430d3a767ce01191824c150a4dbd5e6f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d9cc071ad5d81a09a14b12fe2acdf564c2ea6c8
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81538269"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331776"
 ---
 # <a name="set-up-an-appliance-for-physical-servers"></a>Nastavení zařízení pro fyzické servery
 
@@ -35,8 +35,8 @@ Nastavení zařízení:
 
 Stáhněte si soubor zip pro zařízení.
 
-1. V Azure Migrate **cíle** > migrace na**servery** > **: vyhodnocování serveru**klikněte na **zjistit**.
-2. V nabídce **zjistit** > počítače**jsou vaše počítače virtualizované?** klikněte na **nevirtualizované/jiné**.
+1. V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
+2. V nabídce **zjistit**počítače  >  **jsou vaše počítače virtualizované?** klikněte na **nevirtualizované/jiné**.
 3. Kliknutím na **Stáhnout** Stáhněte soubor zip.
 
     ![Stáhnout virtuální počítač](./media/tutorial-assess-physical/download-appliance.png)
@@ -51,20 +51,19 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklad použití pro veřejný cloud:```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller.zip SHA256 ```
     - Příklad použití pro oficiální Cloud:```  C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5 ```
-3.  Ověřit hodnoty hash:
+3.  Ověřte nejnovější verzi zařízení a hodnoty hash:
  
-    - Pro veřejný cloud (pro nejnovější verzi zařízení):
+    - Pro veřejný cloud:
 
-        **Algoritmus** | **Hodnota hash**
-          --- | ---
-          MD5 | 1e92ede3e87c03bd148e56a708cdd33f
-          SHA256 | a3fa78edc8ff8aff9ab5ae66be1b64e66de7b9f475b6542beef114b20bfdac3c
+        **Scénář** | **Stáhnout*** | **Hodnota hash**
+        --- | --- | ---
+        Fyzický (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2105112) | 0a27adf13cc5755e4b23df0c05732c6ac08d1fe8850567cb57c9906fbc3b85a0
 
-    - Pro vládu Azure (pro nejnovější verzi zařízení):
+    - Pro Azure Government:
 
-        **Algoritmus** | **Hodnota hash**
-          --- | ---
-          MD5 | f81c155fc4a1409901caea948713913f
+        **Scénář** | **Stáhnout*** | **Hodnota hash**
+        --- | --- | ---
+        Fyzický (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
 
 
 ## <a name="run-the-azure-migrate-installer-script"></a>Spusťte skript instalačního programu Azure Migrate
@@ -72,7 +71,7 @@ Skript instalačního programu provede následující akce:
 
 - Nainstaluje agenty a webovou aplikaci pro zjišťování a hodnocení fyzických serverů.
 - Nainstalujte role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhněte a nainstalujte zapisovatelný modul IIS. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhněte a nainstalujte zapisovatelný modul IIS. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) o trvalé podrobnosti nastavení pro Azure Migrate.
 - Vytvoří následující soubory pod cestou:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -108,7 +107,7 @@ Nastavte zařízení poprvé.
 2. Ve webové aplikaci > **nastavení požadavků**postupujte takto:
     - **Licence**: přijměte licenční podmínky a přečtěte si informace třetích stran.
     - **Připojení**: aplikace kontroluje, jestli má virtuální počítač přístup k Internetu. Pokud virtuální počítač používá proxy server:
-        - Klikněte na **nastavení proxy serveru**a zadejte adresu proxy serveru a port naslouchání ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN.
+        - Klikněte na **nastavení proxy serveru**a zadejte adresu proxy serveru a port naslouchání ve formuláři http://ProxyIPAddress nebo http://ProxyFQDN .
         - Pokud proxy server potřebuje přihlašovací údaje, zadejte je.
         - Podporuje se jen proxy protokolu HTTP.
     - **Časová synchronizace**: čas je ověřený. Čas v zařízení by měl být synchronizovaný s internetovým časem, aby zjišťování virtuálních počítačů fungovalo správně.
@@ -123,7 +122,7 @@ Nastavte zařízení poprvé.
 3. Po úspěšném přihlášení se vraťte k webové aplikaci.
 4. Vyberte předplatné, ve kterém byl vytvořen Azure Migrate projekt. Pak vyberte projekt.
 5. Zadejte název zařízení. Název by měl být alfanumerický a nesmí obsahovat více než 14 znaků.
-6. Klikněte na **zaregistrovat**.
+6. Klikněte na **Zaregistrovat**.
 
 
 ## <a name="start-continuous-discovery"></a>Spustit průběžné zjišťování
@@ -146,7 +145,7 @@ Spustí se zjišťování. Zobrazení metadat zjištěných virtuálních počí
 Po dokončení zjišťování můžete ověřit, že se servery zobrazují na portálu.
 
 1. Otevřete řídicí panel Azure Migrate.
-2. V **Azure Migrate-servery** > **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
+2. V **Azure Migrate-servery**  >  **Azure Migrate: na stránce posouzení serveru** klikněte na ikonu, která zobrazuje počet **zjištěných serverů**.
 
 
 ## <a name="next-steps"></a>Další kroky

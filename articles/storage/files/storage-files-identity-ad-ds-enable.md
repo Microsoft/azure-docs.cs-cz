@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/02/2020
 ms.author: rogarana
-ms.openlocfilehash: 5592a3c53a57e9cd96468bfca187e02faef28b05
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 4423067fde70728a5449485434cc40c5c3d3ee8f
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268503"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324092"
 ---
 # <a name="part-one-enable-ad-ds-authentication-for-your-azure-file-shares"></a>Část 1: povolení ověřování služba AD DS pro sdílené složky Azure 
 
@@ -89,7 +89,18 @@ Nejdřív je potřeba, abyste zkontrolovali stav svého prostředí. Konkrétně
 
 ### <a name="creating-an-identity-representing-the-storage-account-in-your-ad-manually"></a>Ruční vytvoření identity představující účet úložiště ve službě AD
 
-Pokud chcete tento účet vytvořit ručně, vytvořte nový klíč Kerberos pro svůj účet úložiště pomocí `New-AzStorageAccountKey -KeyName kerb1` . Pak použijte tento klíč Kerberos jako heslo pro váš účet. Tento klíč se používá jenom během instalace a nedá se použít pro žádné operace ovládacího prvku nebo roviny dat na účtu úložiště. Jakmile budete mít tento klíč, vytvořte v rámci své organizační jednotky účet služby nebo počítače. Použijte následující specifikaci (Nezapomeňte nahradit vzorový text názvem svého účtu úložiště):
+Pokud chcete tento účet vytvořit ručně, vytvořte nový klíč Kerberos pro svůj účet úložiště. Pak použijte tento klíč Kerberos jako heslo pro váš účet pomocí rutin PowerShellu níže. Tento klíč se používá jenom během instalace a nedá se použít pro žádné operace ovládacího prvku nebo roviny dat na účtu úložiště. 
+
+```PowerShell
+# Create the Kerberos key on the storage account and get the Kerb1 key as the password for the AD identity to represent the storage account
+$ResourceGroupName = "<resource-group-name-here>"
+$StorageAccountName = "<storage-account-name-here>"
+
+New-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -KeyName kerb1
+Get-AzStorageAccountKey -ResourceGroupName $ResourceGroupName -Name $StorageAccountName -ListKerbKey | where-object{$_.Keyname -contains "kerb1"}
+```
+
+Jakmile budete mít tento klíč, vytvořte v rámci své organizační jednotky účet služby nebo počítače. Použijte následující specifikaci (Nezapomeňte nahradit vzorový text názvem svého účtu úložiště):
 
 SPN: "CIFS/Your-Storage-Account-Name-. soubor. Core. Windows. NET" heslo: klíč protokolu Kerberos pro váš účet úložiště.
 

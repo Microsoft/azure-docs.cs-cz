@@ -1,6 +1,6 @@
 ---
 title: Vytvoření izolované databáze
-description: Vytvořte jeden Azure SQL Database pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure. Dotaz na databázi pomocí Editoru dotazů v Azure Portal.
+description: Vytvořte v Azure SQL Database izolovanou databázi pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure CLI. Dotaz na databázi pomocí Editoru dotazů v Azure Portal.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,23 +11,22 @@ author: sachinpMSFT
 ms.author: ninarn
 ms.reviewer: carlrab, sstein, vanto
 ms.date: 04/19/2020
-ms.openlocfilehash: 8b4e057fe41bdf76612888e9d4715d7cdee0ce29
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1ae3159365e63159b8ed62c09bc20441ba65d8aa
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054771"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343842"
 ---
 # <a name="quickstart-create-an-azure-sql-database-single-database"></a>Rychlý Start: vytvoření samostatné databáze Azure SQL Database
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-V tomto rychlém startu pomocí Azure Portal, skriptu PowerShellu nebo skriptu Azure CLI vytvoříte jeden Azure SQL Database. Pak Dotazujte databázi pomocí **Editoru dotazů** v Azure Portal.
+V tomto rychlém startu pomocí Azure Portal, skriptu PowerShellu nebo skriptu Azure CLI vytvoříte v Azure SQL Database jednu databázi. Pak Dotazujte databázi pomocí **Editoru dotazů** v Azure Portal.
 
 [Jediná databáze](single-database-overview.md) je nejrychlejší a nejjednodušší možnost Azure SQL Database. Na [serveru](logical-servers.md)můžete spravovat izolovanou databázi, která se nachází v zadané oblasti Azure v rámci [skupiny prostředků Azure](../../active-directory-b2c/overview.md) . V tomto rychlém startu vytvoříte novou skupinu prostředků a server pro novou databázi.
 
 Izolovanou databázi můžete vytvořit na výpočetní úrovni *zřízené* nebo *neserverového serveru* . Zřízená databáze je předem přidělena pevná množství výpočetních prostředků, včetně procesoru a paměti, a používá jeden ze dvou [nákupních modelů](purchasing-models.md). Tento rychlý Start vytvoří zřízenou databázi pomocí nákupního modelu [založeného na Vcore](service-tiers-vcore.md) , ale můžete také zvolit model [založený na DTU](service-tiers-dtu.md) .
 
-Výpočetní vrstva bez serveru je dostupná jenom v nákupním modelu založeném na vCore a má automaticky škálované výpočetní prostředky, včetně procesoru a paměti. Pokud chcete vytvořit izolovanou databázi na výpočetní úrovni bez serveru, přečtěte si téma [Vytvoření databáze bez serveru](serverless-tier-overview.md#create-new-database-in-serverless-compute-tier).
+Výpočetní vrstva bez serveru je dostupná jenom v nákupním modelu založeném na vCore a má přidaný rozsah výpočetních prostředků, včetně procesoru a paměti. Pokud chcete vytvořit izolovanou databázi na výpočetní úrovni bez serveru, přečtěte si téma [Vytvoření databáze bez serveru](serverless-tier-overview.md#create-a-new-database-in-the-serverless-compute-tier).
 
 ## <a name="prerequisite"></a>Požadavek
 
@@ -68,7 +67,7 @@ Ponechte skupinu prostředků, server a izolovanou databázi, abyste přešli na
 
 Po dokončení používání těchto prostředků můžete odstranit vytvořenou skupinu prostředků, která také odstraní Server a samostatnou databázi.
 
-### <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+### <a name="the-azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 Chcete-li odstranit **myResourceGroup** a všechny jeho prostředky pomocí Azure Portal:
 
@@ -76,7 +75,7 @@ Chcete-li odstranit **myResourceGroup** a všechny jeho prostředky pomocí Azur
 1. Na stránce skupina prostředků vyberte **Odstranit skupinu prostředků**.
 1. V části **Zadejte název skupiny prostředků**zadejte *myResourceGroup*a pak vyberte **Odstranit**.
 
-### <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+### <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 Pokud chcete odstranit skupinu prostředků a všechny její prostředky, spusťte následující příkaz rozhraní příkazového řádku Azure a použijte název vaší skupiny prostředků:
 
@@ -98,5 +97,7 @@ Remove-AzResourceGroup -Name <your resource group>
 
 [Připojení a dotazování](connect-query-content-reference-guide.md) databáze pomocí různých nástrojů a jazyků:
 > [!div class="nextstepaction"]
-> [Připojení a dotazování pomocí SQL Server Management Studio](connect-query-ssms.md) 
->  [Připojení a dotazování pomocí Azure Data Studio](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+> [Připojení a dotazování pomocí SQL Server Management Studia](connect-query-ssms.md)
+>
+> [Připojení a dotazování pomocí Azure Data Studia](/sql/azure-data-studio/quickstart-sql-database?toc=/azure/sql-database/toc.json)
+ 

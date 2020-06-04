@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/25/2019
 ms.author: alkohli
-ms.openlocfilehash: ee69015b52024ba4edaaa414a0d9dda753510b3e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 445e86f1979d52496052572c1682e0b894d512dd
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82570093"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339871"
 ---
 # <a name="manage-an-azure-stack-edge-device-via-windows-powershell"></a>Správa zařízení Azure Stack Edge přes Windows PowerShell
 

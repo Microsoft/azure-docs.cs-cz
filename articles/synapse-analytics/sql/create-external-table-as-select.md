@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: d73e895371764d9dd28290648551d84181e022cd
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 97e0b53aeac5a0adc939c87304ea35bb967eac52
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84117580"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345066"
 ---
 # <a name="store-query-results-to-storage-using-sql-on-demand-preview-using-azure-synapse-analytics"></a>Uložení výsledků dotazu do úložiště pomocí SQL na vyžádání (ve verzi Preview) pomocí Azure synapse Analytics
 
@@ -43,7 +43,7 @@ WITH IDENTITY = 'SHARED ACCESS SIGNATURE',
 GO
 
 CREATE EXTERNAL DATA SOURCE [MyDataSource] WITH (
-    LOCATION = 'https://<storage account name>.blob.core.windows.net/csv', CREDENTIAL [SasTokenWrite]
+    LOCATION = 'https://<storage account name>.blob.core.windows.net/csv', CREDENTIAL = [SasTokenWrite]
 );
 GO
 
@@ -64,7 +64,7 @@ FROM
     OPENROWSET(
         BULK 'csv/population-unix/population.csv',
         DATA_SOURCE = 'sqlondemanddemo',
-        FORMAT = 'CSV', PARSER_VERSION = '2.0',
+        FORMAT = 'CSV', PARSER_VERSION = '2.0'
     ) WITH (
         CountryCode varchar(4),
         CountryName varchar(64),

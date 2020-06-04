@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6645b50a6cd2d2145f9510ca2e2de0ee702fc3ad
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9b78b696b42431c744c30c91a730fdc7ec8c1032
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054693"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324602"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Rychlý Start: vytvoření a spuštění jednoduchých skriptů R v Azure SQL Database Machine Learning Services (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,7 +41,7 @@ V tomto příkladu se používá uložená procedura [sp_execute_external_script
 
 Pokud chcete spustit skript jazyka R, předáte ho jako argument do systémové uložené procedury, [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql).
 
-V následujících krocích spustíte v SQL Database tento příklad skriptu jazyka R:
+V následujících krocích spustíte v databázi tento příklad skriptu jazyka R:
 
 ```r
 a <- 1
@@ -51,9 +51,9 @@ d <- a*b
 print(c(c, d))
 ```
 
-1. Otevřete **SQL Server Management Studio** a připojte se k databázi SQL.
+1. Otevřete **SQL Server Management Studio** a připojte se k databázi.
 
-   Pokud potřebujete pomáhat s připojením, přečtěte si téma [rychlý Start: použití SQL Server Management Studio k připojení a dotazování databáze SQL Azure](connect-query-ssms.md).
+   Pokud potřebujete pomáhat s připojením, přečtěte si téma [rychlý Start: použití SQL Server Management Studio k připojení a dotazování databáze v Azure SQL Database](connect-query-ssms.md).
 
 1. Předejte kompletní skript R do uložené procedury [sp_execute_external_script](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-execute-external-script-transact-sql) .
 
@@ -70,7 +70,7 @@ print(c(c, d))
     '
     ```
 
-   Pokud se zobrazí nějaké chyby, může to být proto, že služba Machine Learning Services (s jazykem R) verze Public Preview není pro vaši databázi SQL povolená. Viz [předpoklady](#prerequisites) výše.
+   Pokud dojde k chybám, může to být proto, že verze Public Preview Machine Learning Services (s R) není pro vaši databázi povolená. Viz [předpoklady](#prerequisites) výše.
 
    > [!NOTE]
    > Pokud jste správce, můžete externí kód spustit automaticky. Oprávnění ostatním uživatelům můžete udělit pomocí příkazu:
@@ -196,7 +196,7 @@ Prozatím použijeme výchozí vstupní a výstupní proměnné [sp_execute_exte
 
 ## <a name="check-r-version"></a>Kontrola verze jazyka R
 
-Pokud chcete zjistit, která verze jazyka R je nainstalována ve vaší databázi SQL, spusťte následující skript.
+Pokud chcete zjistit, která verze jazyka R je nainstalována ve vaší databázi, spusťte následující skript.
 
 ```sql
 EXECUTE sp_execute_external_script @language = N'R'
@@ -229,7 +229,7 @@ nickname       Someone to Lean On
 
 ## <a name="list-r-packages"></a>Výpis balíčků R
 
-Microsoft poskytuje v rámci služby Machine Learning Services v databázi SQL řadu předinstalovaných balíčků R.
+Společnost Microsoft poskytuje několik balíčků R předinstalovaných s Machine Learning Services ve vaší databázi.
 
 Chcete-li zobrazit seznam, které balíčky jazyka R jsou nainstalovány, včetně verze, závislostí, licence a informací o cestě ke knihovně, spusťte následující skript.
 

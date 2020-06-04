@@ -2,14 +2,14 @@
 title: Matice podpory pro zotavení po havárii virtuálního počítače Azure pomocí Azure Site Recovery
 description: Shrnuje podporu zotavení po havárii virtuálních počítačů Azure do sekundární oblasti pomocí Azure Site Recovery.
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 06/03/2020
 ms.author: raynew
-ms.openlocfilehash: 484a0e6e7c4beaffc86aaf26964ea1ec1736dd52
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 9be07290762a7f012417c4442f93f648889c452f
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171425"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323225"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -20,7 +20,7 @@ Tento článek shrnuje podporu a předpoklady pro zotavení po havárii virtuál
 
 **Nasazení** |  **Podpora**
 --- | ---
-**portál Azure** | Podporuje se.
+**Portál Azure Portal** | Podporuje se.
 **PowerShell** | Podporuje se. [Další informace](azure-to-azure-powershell.md)
 **REST API** | Podporuje se.
 **Rozhraní příkazového řádku** | Aktuálně se nepodporuje.
@@ -28,7 +28,7 @@ Tento článek shrnuje podporu a předpoklady pro zotavení po havárii virtuál
 
 ## <a name="resource-support"></a>Podpora prostředků
 
-**Akce prostředku** | **Podrobnosti**
+**Akce prostředku** | **Zobrazí**
 --- | ---
 **Přesun trezorů mezi skupinami prostředků** | Nepodporuje se
 **Přesun prostředků COMPUTE/Storage/sítě mezi skupinami prostředků** | Není podporováno.<br/><br/> Pokud po replikaci virtuálního počítače přesunete virtuální počítač nebo přidružené součásti, jako je úložiště nebo síť, musíte pro tento virtuální počítač Zakázat a znovu povolit replikaci.
@@ -66,7 +66,7 @@ Omezené oblasti rezervované pro zotavení po havárii v zemi |Německo – sev
 
 Tato tabulka shrnuje podporu účtu úložiště mezipaměti používaného Site Recovery během replikace.
 
-**Nastavení** | **Podpora** | **Podrobnosti**
+**Nastavení** | **Podpora** | **Zobrazí**
 --- | --- | ---
 Účty úložiště pro obecné účely v2 (horká a studená vrstva) | Podporuje se | Použití GPv2 se nedoporučuje, protože náklady na transakce pro v2 jsou podstatně vyšší než V1 účty úložiště.
 Premium Storage | Nepodporuje se | Účty úložiště úrovně Standard se používají pro úložiště mezipaměti, které vám pomůžou optimalizovat náklady.
@@ -80,7 +80,7 @@ Site Recovery podporuje replikaci virtuálních počítačů Azure s operačním
 ### <a name="windows"></a>Windows
 
 
-**Operační systém** | **Podrobnosti**
+**Operační systém** | **Zobrazí**
 --- | ---
 Windows Server 2019 | Podporováno pro jádro serveru, server s desktopovým prostředím.
 Windows Server 2016  | Podporován jádro serveru, server s desktopovým prostředím.
@@ -96,10 +96,10 @@ Windows 7 (x64) s aktualizací SP1 a vyšší | Z verze [9,30](https://support.m
 
 #### <a name="linux"></a>Linux
 
-**Operační systém** | **Podrobnosti**
+**Operační systém** | **Zobrazí**
 --- | ---
-Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [8,0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), 8,1
-CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, 8,0, 8,1
+Red Hat Enterprise Linux | 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6,[7,7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7,8, 8,0, 8,1](https://support.microsoft.com/help/4564347/) [8.0](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery)
+CentOS | 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4, 7,5, 7,6, 7,7, [7,8](https://support.microsoft.com/help/4564347/), 8,0, 8,1
 Server Ubuntu 14,04 LTS | [Podporované verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Server Ubuntu 16,04 LTS | [Podporovaná verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Ubuntu servery s použitím ověřování a přihlášení pomocí hesla a balíčku Cloud-init ke konfiguraci cloudových virtuálních počítačů můžou mít při převzetí služeb při selhání zakázané přihlášení (v závislosti na konfiguraci cloudinit). Přihlášení založené na heslech na virtuálním počítači můžete znovu povolit tím, že resetujete heslo z nabídky nastavení > řešení potíží s >em (u virtuálního počítače, u kterého došlo k převzetí služeb při selhání v Azure Portal.
 Server Ubuntu 18,04 LTS | [Podporovaná verze jádra](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
@@ -116,16 +116,18 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4 [, 7,
 
 **Předběžné** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-14,04 LTS | 9,32| 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
+14,04 LTS | 9,32, [9,33](https://support.microsoft.com/help/4564347/)| 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
 14,04 LTS | 9,31 | 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
 14,04 LTS | 9,30 | 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
 14,04 LTS | 9,29 | 3.13.0-24 – obecné pro 3.13.0-170 – obecné,<br/>3.16.0-25 – obecný pro 3.16.0-77-Generic,<br/>3.19.0-18 – obecný pro 3.19.0 – 80 – obecné,<br/>4.2.0-18 – obecný pro 4.2.0-42 – obecné,<br/>4.4.0-21 – obecné až 4.4.0 – 148 – obecné,<br/>4.15.0-1023 – Azure do 4.15.0 – 1045 – Azure |
 |||
+16,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.4.0-21 – obecné pro 4.4.0-178-Generic,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné pro 4.15.0-99 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1082 – Azure|
 16,04 LTS | 9,32 | 4.4.0-21 – obecný pro 4.4.0-171 – obecné,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné pro 4.15.0-74 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1066 – Azure|
 16,04 LTS | 9,31 | 4.4.0-21 – obecné pro 4.4.0-170 – obecné,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné pro 4.15.0-72 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1063 – Azure|
 16,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.4.0-21 – obecné pro 4.4.0 – 166 – obecné,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné k 4.15.0 – 66 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1061 – Azure|
 16,04 LTS | 9,29 | 4.4.0-21 – obecné k 4.4.0-164 – obecné,<br/>4.8.0-34-obecné až 4.8.0 – 58 – obecné,<br/>4.10.0-14 – obecný pro 4.10.0-42 – obecné,<br/>4.11.0-13 – Obecné pro 4.11.0-14 – obecný,<br/>4.13.0-16 – obecný pro 4.13.0-45 – obecný,<br/>4.15.0-13 – Obecné pro 4.15.0-64 – obecné<br/>4.11.0-1009 – Azure do 4.11.0-1016-Azure<br/>4.13.0 – 1005 – Azure do 4.13.0 – 1018 – Azure <br/>4.15.0-1012 – Azure do 4.15.0-1059 – Azure|
 |||
+18,04 LTS | [9,33](https://support.microsoft.com/help/4564347/) | 4.15.0-20 – obecný pro 4.15.0-99 – obecné </br> 4.18.0-13 – Obecné pro 4.18.0-25 – obecné </br> 5.0.0-15 – obecný pro 5.0.0-47 – obecné </br> 5.3.0-19 – obecný pro 5.3.0-51 – obecné </br> 4.15.0-1009 – Azure do 4.15.0-1082 – Azure </br> 4.18.0-1006 – Azure až 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure do 5.0.0-1036 – Azure </br> 5.3.0-1007 – Azure do 5.3.0-1020 – Azure|
 18,04 LTS | 9,32| 4.15.0-20 – obecný pro 4.15.0-74 – obecné </br> 4.18.0-13 – Obecné pro 4.18.0-25 – obecné </br> 5.0.0-15 – obecný pro 5.0.0-37 – obecné </br> 5.3.0-19 – Obecné k 5.3.0 – 24 – obecné </br> 4.15.0-1009 – Azure do 4.15.0-1037 – Azure </br> 4.18.0-1006 – Azure až 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure do 5.0.0-1028 – Azure </br> 5.3.0-1007 – Azure do 5.3.0-1009 – Azure|
 18,04 LTS | 9,31| 4.15.0-20 – obecný pro 4.15.0-72 – obecné </br> 4.18.0-13 – Obecné pro 4.18.0-25 – obecné </br> 5.0.0-15 – obecný pro 5.0.0-37 – obecné </br> 5.3.0-19 – Obecné k 5.3.0 – 24 – obecné </br> 4.15.0-1009 – Azure do 4.15.0-1037 – Azure </br> 4.18.0-1006 – Azure až 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure do 5.0.0-1025-Azure </br> 5.3.0-1007 – Azure|
 18,04 LTS | [9,30](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery) | 4.15.0-20 – obecný pro 4.15.0-66 – obecné </br> 4.18.0-13 – Obecné pro 4.18.0-25 – obecné </br> 5.0.0-15 – obecný pro 5.0.0 – 32 – obecné </br> 4.15.0-1009 – Azure do 4.15.0-1037 – Azure </br> 4.18.0-1006 – Azure až 4.18.0 – 1025 – Azure </br> 5.0.0-1012 – Azure do 5.0.0-1023-Azure|
@@ -136,16 +138,16 @@ Oracle Linux | 6,4, 6,5, 6,6, 6,7, 6,8, 6,9, 6,10, 7,0, 7,1, 7,2, 7,3, 7,4 [, 7,
 
 **Předběžné** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-Debian 7 | 9.28,9.29,9.30,9.31 | 3.2.0-4-amd64 až 3.2.0-6-AMD64, 3.16.0 -0. BPO. 4 – amd64 |
+Debian 7 | 9.28, 9.29, 9.30, 9.31, 9,32, [9,33](https://support.microsoft.com/help/4564347/) | 3.2.0-4-amd64 až 3.2.0-6-AMD64, 3.16.0 -0. BPO. 4 – amd64 |
 |||
-Debian 8 | 9.29,9.30,9.31 | 3.16.0-4-amd64 pro 3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-amd64 na 4.9.0 -0. BPO. 11 – amd64 |
+Debian 8 | 9.29, 9.30, 9.31, 9,32, [9,33](https://support.microsoft.com/help/4564347/) | 3.16.0-4-amd64 pro 3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-amd64 na 4.9.0 -0. BPO. 11 – amd64 |
 Debian 8 | 9,28 | 3.16.0-4-amd64 pro 3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-amd64 na 4.9.0 -0. BPO. 9-amd64 |
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Podporované verze jádra SUSE Linux Enterprise Server 12 pro virtuální počítače Azure
 
 **Předběžné** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,32 | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.34 – Azure  |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,32, [9,33](https://support.microsoft.com/help/4564347/) | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.34 – Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,31 | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.29 – Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,30 | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.29 – Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,29 | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.23 – Azure  |
@@ -154,6 +156,7 @@ SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,29 | Podporují se vše
 
 **Předběžné** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
+SUSE Linux Enterprise Server 15 a 15 SP1 | [9,33](https://support.microsoft.com/help/4564347/) | Ve výchozím nastavení jsou podporovány všechny [SUSE jádra 15 a 15](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14-5.5 – Azure na 4.12.14 – 5.47 – Azure </br></br> 4.12.14-8,5 – Azure na 4.12.14 – 8.30 – Azure |
 SUSE Linux Enterprise Server 15 a 15 SP1 | 9,32 | Ve výchozím nastavení jsou podporovány všechny [SUSE jádra 15 a 15](https://www.suse.com/support/kb/doc/?id=000019587) .</br></br> 4.12.14-5.5 – Azure na 4.12.14 – 8.22 – Azure |
 
 
@@ -166,7 +169,7 @@ SUSE Linux Enterprise Server 15 a 15 SP1 | 9,32 | Ve výchozím nastavení jsou 
 
 ## <a name="replicated-machines---compute-settings"></a>Replikované počítače – nastavení výpočtů
 
-**Nastavení** | **Podpora** | **Podrobnosti**
+**Nastavení** | **Podpora** | **Zobrazí**
 --- | --- | ---
 Velikost | Všechny velikosti virtuálních počítačů Azure s minimálně 2 jádry procesoru a 1 GB paměti RAM | Ověřte [velikosti virtuálních počítačů Azure](../virtual-machines/windows/sizes.md).
 Skupiny dostupnosti | Podporuje se | Pokud povolíte replikaci pro virtuální počítač Azure s výchozími možnostmi, vytvoří se skupina dostupnosti automaticky na základě nastavení zdrojové oblasti. Tato nastavení můžete změnit.
@@ -184,7 +187,7 @@ Skupiny umístění blízkosti | Nepodporuje se | Virtuální počítače umíst
 
 ## <a name="replicated-machines---disk-actions"></a>Replikované počítače – diskové akce
 
-**Akce** | **Podrobnosti**
+**Akce** | **Zobrazí**
 -- | ---
 Změna velikosti disku na replikovaném virtuálním počítači | Podporováno ve zdrojovém virtuálním počítači před převzetím služeb při selhání. Není nutné zakázat nebo znovu povolit replikaci.<br/><br/> Pokud po převzetí služeb při selhání změníte zdrojový virtuální počítač, změny se nezachytí.<br/><br/> Pokud po převzetí služeb při selhání změníte velikost disku na virtuálním počítači Azure, změny nebudou zachyceny Site Recovery a navrácení služeb po obnovení do původní velikosti virtuálního počítače.
 Přidání disku do replikovaného virtuálního počítače | Podporuje se
@@ -197,7 +200,7 @@ Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový 
 - Pokud nasadíte s výchozím nastavením, Site Recovery na základě nastavení zdroje automaticky vytvoří disky a účty úložiště.
 - Pokud přizpůsobíte, ujistěte se, že dodržujete pokyny.
 
-**Komponenta** | **Podpora** | **Podrobnosti**
+**Komponenta** | **Podpora** | **Zobrazí**
 --- | --- | ---
 Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si další informace](../virtual-machines/windows/managed-disks-overview.md) o discích virtuálních počítačů.
 Dočasný disk | Nepodporuje se | Dočasný disk je vždy vyloučen z replikace.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Přečtěte si další informace](../virtual-machines/windows/managed-disks-overview.md).
@@ -254,7 +257,7 @@ Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 8 kB    | 5 MB/s | 421 GB
 Disk úrovně Premium P20 nebo P30 nebo P40 nebo P50 | 16 kB nebo větší |20 MB/s | 1684 GB na disk
 
 ## <a name="replicated-machines---networking"></a>Replikované počítače – sítě
-**Nastavení** | **Podpora** | **Podrobnosti**
+**Nastavení** | **Podpora** | **Zobrazí**
 --- | --- | ---
 NIC | Maximální podporovaný počet pro konkrétní velikost virtuálního počítače Azure | Síťové karty se vytvoří, když se virtuální počítač vytvoří během převzetí služeb při selhání.<br/><br/> Počet síťových adaptérů na VIRTUÁLNÍm počítači s podporou převzetí služeb při selhání závisí na počtu síťových adaptérů ve zdrojovém virtuálním počítači, když je replikace povolená. Pokud po povolení replikace přidáte nebo odeberete síťovou kartu, nebude to mít vliv na počet síťových adaptérů v replikovaném virtuálním počítači po převzetí služeb při selhání. <br/><br/> Pořadí síťových adaptérů po převzetí služeb při selhání není zaručené jako původní pořadí. <br/><br/> Síťové karty můžete přejmenovat v cílové oblasti na základě zásad vytváření názvů vaší organizace.
 Internetový nástroj pro vyrovnávání zatížení | Podporuje se | Přidružte předem nakonfigurovaný Nástroj pro vyrovnávání zatížení pomocí skriptu Azure Automation v plánu obnovení.

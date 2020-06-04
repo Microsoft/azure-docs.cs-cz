@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 05/29/2020
-ms.openlocfilehash: 47879ab55a91904cdc41d9a486d77d55ed27f706
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: a916d6b181acfc8b32b243ee14ed35aa8565a76e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235695"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343332"
 ---
 # <a name="resource-limits-for-single-databases-using-the-vcore-purchasing-model"></a>Omezení prostředků pro izolované databáze pomocí modelu nákupu vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Tento článek poskytuje podrobné omezení prostředků pro izolované databáz
 
 Omezení nákupních modelů pro DTU pro jednotlivé databáze na serveru najdete v tématu [Přehled omezení prostředků na serveru](resource-limits-logical-server.md).
 
-Můžete nastavit úroveň služby, výpočetní velikost a množství úložiště pro jednu databázi pomocí [Azure Portal](single-database-manage.md#azure-portal), [jazyka Transact-SQL](single-database-manage.md#transact-sql-t-sql), [PowerShellu](single-database-manage.md#powershell), rozhraní příkazového [řádku Azure](single-database-manage.md#azure-cli)nebo [REST API](single-database-manage.md#rest-api).
+Můžete nastavit úroveň služby, výpočetní velikost a množství úložiště pro jednu databázi pomocí [Azure Portal](single-database-manage.md#the-azure-portal), [jazyka Transact-SQL](single-database-manage.md#transact-sql-t-sql), [PowerShellu](single-database-manage.md#powershell), rozhraní příkazového [řádku Azure](single-database-manage.md#the-azure-cli)nebo [REST API](single-database-manage.md#rest-api).
 
 > [!IMPORTANT]
 > Pokyny a požadavky pro škálování najdete v tématu [škálování izolované databáze](single-database-scale.md).

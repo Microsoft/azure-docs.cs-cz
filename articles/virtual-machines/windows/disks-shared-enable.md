@@ -4,17 +4,17 @@ description: Nakonfigurujte Azure Managed disk se sdílenými disky (Preview), a
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 04/09/2020
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 0dbb1844d4c670abfdc5562580b0ee8b4549b6bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fdbe71ab1b4104fed9ecc7d6cd2cb637da860f6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82085479"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343468"
 ---
-# <a name="enable-shared-disk"></a>Povolit sdílený disk
+# <a name="enable-shared-disk"></a>Povolení sdíleného disku
 
 Tento článek popisuje, jak povolit funkci sdílené disky (Preview) pro Azure Managed disks. Azure Shared Disks (Preview) je nová funkce pro služby Azure Managed disks, která umožňuje současně připojit spravovaný disk k několika virtuálním počítačům (VM). Připojení spravovaného disku k několika virtuálním počítačům vám umožní nasadit do Azure nové nebo migrovat existující clusterové aplikace. 
 

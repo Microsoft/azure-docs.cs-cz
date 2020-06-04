@@ -4,20 +4,26 @@ description: Popisuje řešení Azure HPC cache, což je přístupové akcelerá
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: overview
-ms.date: 04/15/2020
+ms.date: 05/29/2020
 ms.author: v-erkel
-ms.openlocfilehash: 02013abe7050f7f193b6aeb1a441e70f46a5df48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 3cbde9564e17dc67d2b41f138efb4d8622d84abd
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82106453"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343574"
 ---
 # <a name="what-is-azure-hpc-cache"></a>Co je Azure HPC Cache?
 
 Azure HPC ukládá přístup k vašim datům pro úlohy využívající vysoce výkonné výpočetní prostředí (HPC). Díky ukládání do mezipaměti souborů v Azure přináší mezipaměť HPC Azure škálovatelnost cloud computingu do vašeho existujícího pracovního postupu. Tato služba se dá použít i pro pracovní postupy, ve kterých se vaše data ukládají přes odkazy sítě WAN, jako třeba v prostředí místního síťového úložiště (NAS) místního datacentra.
 
 Mezipaměť prostředí Azure HPC se snadno spouští a monitoruje z Azure Portal. Existující úložiště NFS nebo nové kontejnery objektů BLOB se můžou stát součástí agregovaného oboru názvů, který dá klientský přístup jednoduchý, i když změníte cíl úložiště back-endu.
+
+## <a name="overview-video"></a>Přehled – video
+
+[![Miniatura videa: Přehled Azure HPC cache – kliknutím můžete navštívit stránku video.](media/video1-overview.png)](https://azure.microsoft.com/resources/videos/hpc-cache-overview/)
+
+Klikněte na obrázek výše a podívejte se na [stručný přehled mezipaměti HPC Azure](https://azure.microsoft.com/resources/videos/hpc-cache-overview/).
 
 ## <a name="use-cases"></a>Případy použití
 

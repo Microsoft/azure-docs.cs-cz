@@ -1,6 +1,6 @@
 ---
 title: Konfigurace skupiny dostupnosti pracovní skupiny nezávislé na doméně
-description: Naučte se konfigurovat skupinu dostupnosti Always On v pracovní skupině, která je pro SQL Server Doména služby Active Directory v Azure na virtuálním počítači s nezávislá.
+description: Přečtěte si, jak nakonfigurovat skupinu dostupnosti Always On v doméně nezávislou na doméně služby Active Directory ve virtuálním počítači s SQL Server v Azure.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 36c4a141acf38d83ff925bafaa75c294847a7d74
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0d3e7e7de6d8f044355a43eb870420ad121ed61f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049327"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343689"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurace skupiny dostupnosti pracovní skupiny 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -36,7 +36,7 @@ Ke konfiguraci skupiny dostupnosti pracovních skupin budete potřebovat násled
 
 Pro referenci se v tomto článku používají následující parametry, které je ale možné upravit podle potřeby: 
 
-| **Název** | **Ukazatele** |
+| **Název** | **Parametr** |
 | :------ | :---------------------------------- |
 | **Uzel1**   | AGNode1 (10.0.0.4) |
 | **Uzel2**   | AGNode2 (10.0.0.5) |
@@ -46,7 +46,7 @@ Pro referenci se v tomto článku používají následující parametry, které 
 | **Název pracovní skupiny** | AGWorkgroup | 
 | &nbsp; | &nbsp; |
 
-## <a name="set-dns-suffix"></a>Nastavit příponu DNS 
+## <a name="set-a-dns-suffix"></a>Nastavit příponu DNS 
 
 V tomto kroku nakonfigurujte pro oba servery příponu DNS. Například, `ag.wgcluster.example.com`. To vám umožní použít název objektu, ke kterému se chcete připojit, jako plně kvalifikovanou adresu v rámci vaší sítě, například `AGNode1.ag.wgcluster.example.com` . 
 
@@ -71,13 +71,13 @@ K nakonfigurování přípony DNS použijte následující postup:
 1. Až se vám zobrazí výzva, restartujte server. 
 1. Opakujte tyto kroky na všech ostatních uzlech, které chcete použít pro skupinu dostupnosti. 
 
-## <a name="edit-host-file"></a>Upravit soubor hostitele
+## <a name="edit-a-host-file"></a>Upravit soubor hostitele
 
 Vzhledem k tomu, že neexistuje žádná služba Active Directory, neexistuje způsob, jak ověřit připojení systému Windows. V takovém případě přiřaďte důvěryhodnost úpravou souboru hostitele pomocí textového editoru. 
 
 Chcete-li upravit soubor hostitele, postupujte podle následujících kroků:
 
-1. Protokol RDP do virtuálního počítače. 
+1. Protokol RDP ve vašem virtuálním počítači. 
 1. Pomocí **Průzkumníka souborů** přejdete na `c:\windows\system32\drivers\etc` . 
 1. Klikněte pravým tlačítkem myši na soubor **hosts** a otevřete soubor pomocí **poznámkového bloku** (nebo jakéhokoli jiného textového editoru).
 1. Na konci souboru přidejte položku pro každý uzel, skupinu dostupnosti a naslouchací proces ve formě `IP Address, DNS Suffix #comment` jako: 
@@ -132,11 +132,11 @@ Po vytvoření clusteru přiřaďte IP adresu statického clusteru. Postup je n�
 
 V tomto kroku nakonfigurujte určující sdílenou složku v cloudu. Pokud nejste obeznámeni s postupem, Projděte si [kurz clusteru s podporou převzetí služeb při selhání](failover-cluster-instance-storage-spaces-direct-manually-configure.md#create-a-cloud-witness). 
 
-## <a name="enable-availability-group-feature"></a>Povolit funkci skupiny dostupnosti 
+## <a name="enable-the-availability-group-feature"></a>Povolit funkci Skupina dostupnosti 
 
 V tomto kroku povolíte funkci Skupina dostupnosti. Pokud nejste obeznámeni s postupem, Projděte si [kurz skupiny dostupnosti](availability-group-manually-configure-tutorial.md#enable-availability-groups). 
 
-## <a name="create-keys-and-certificate"></a>Vytvoření klíčů a certifikátu
+## <a name="create-keys-and-certificates"></a>Vytváření klíčů a certifikátů
 
 V tomto kroku vytvoříte certifikáty, které používá přihlášení SQL na šifrovaném koncovém bodu. V každém uzlu vytvořte složku, do které se budou ukládat zálohy certifikátů, například `c:\certs` . 
 
@@ -277,16 +277,16 @@ GO
 
 Pokud v clusteru existují nějaké jiné uzly, opakujte tyto kroky a změňte také příslušné certifikáty a uživatelská jména. 
 
-## <a name="configure-availability-group"></a>Konfigurovat skupinu dostupnosti
+## <a name="configure-an-availability-group"></a>Konfigurace skupiny dostupnosti
 
 V tomto kroku Nakonfigurujte skupinu dostupnosti a přidejte do ní své databáze. V tuto chvíli nevytvářejte naslouchací proces. Pokud nejste obeznámeni s postupem, Projděte si [kurz skupiny dostupnosti](availability-group-manually-configure-tutorial.md#create-the-availability-group). Nezapomeňte zahájit převzetí služeb při selhání a navrácení služeb po obnovení, abyste ověřili, že vše funguje tak, jak by mělo. 
 
    > [!NOTE]
    > Pokud během procesu synchronizace dojde k chybě, může být nutné udělit `NT AUTHORITY\SYSTEM` oprávnění sysadmin k vytváření prostředků clusteru v prvním uzlu, například `AGNode1` dočasně. 
 
-## <a name="configure-load-balancer"></a>Konfigurace nástroje pro vyrovnávání zatížení
+## <a name="configure-a-load-balancer"></a>Konfigurace nástroje pro vyrovnávání zatížení
 
-V tomto posledním kroku nakonfigurujte nástroj pro vyrovnávání zatížení pomocí [Azure Portal](availability-group-load-balancer-portal-configure.md) nebo [PowerShellu](availability-group-listener-powershell-configure.md) .
+V tomto posledním kroku nakonfigurujte nástroj pro vyrovnávání zatížení pomocí [Azure Portal](availability-group-load-balancer-portal-configure.md) nebo [PowerShellu](availability-group-listener-powershell-configure.md).
 
 
 ## <a name="next-steps"></a>Další kroky

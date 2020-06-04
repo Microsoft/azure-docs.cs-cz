@@ -3,12 +3,12 @@ title: Nastavení zařízení Azure Migrate v Azure Government
 description: Přečtěte si, jak nastavit zařízení Azure Migrate v Azure Government
 ms.topic: article
 ms.date: 04/16/2020
-ms.openlocfilehash: fd97161ffa075a6165ea963ef80bfabf8904576e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a7a2e90b718c50cb86fdca9911e7535d434e7afa
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81726732"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331997"
 ---
 # <a name="set-up-an-appliance-in-azure-government"></a>Nastavení zařízení v Azure Government 
 
@@ -33,8 +33,8 @@ Pokud chcete nastavit zařízení pro VMware, Stáhněte si z Azure Portal soubo
 
 ### <a name="download-the-script"></a>Stáhnout skript
 
-1.  V Azure Migrate **cíle** > migrace na**servery** > **: vyhodnocování serveru**klikněte na **zjistit**.
-2.  V možnosti **zjišťovat počítače** > **jsou vaše počítače virtualizované?** vyberte **Ano s hypervisorem VMware vSphere**.
+1.  V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
+2.  V možnosti **zjišťovat počítače**  >  **jsou vaše počítače virtualizované?** vyberte **Ano s hypervisorem VMware vSphere**.
 3.  Pro stažení souboru ZIP klikněte na **Stáhnout**. 
 
 
@@ -47,12 +47,12 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklad: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-VMWare-USGov.zip MD5```
 
-3. Ověřte vygenerované hodnoty hash. Nejnovější verzi zařízení:
+3. Ověřte nejnovější verzi a hodnotu hash zařízení:
 
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | 6316bcc8bc932204295bfe33f4be3949
-          
+    **Algoritmus** | **Stáhnout** | **SHA256**
+    --- | --- | ---
+    VMware (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120300&clcid=0x409 ) | 3d5822038646b81f458d89d706832c0a2c0e827bfa9b0a55cc478eaf2757a4de
+
 
 ### <a name="run-the-script"></a>Spuštění skriptu
 
@@ -60,7 +60,7 @@ Tento skript:
 
 - Nainstaluje agenty a webovou aplikaci.
 - Nainstaluje role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhne a nainstaluje modul IIS s možností zápisu. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhne a nainstaluje modul IIS s možností zápisu. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) s trvalým nastavením pro Azure Migrate.
 - Vytvoří protokol a konfigurační soubory následujícím způsobem:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -85,8 +85,8 @@ Pokud chcete nastavit zařízení pro Hyper-V, Stáhněte ze Azure Portal soubor
 
 ### <a name="download-the-script"></a>Stáhnout skript
 
-1.  V Azure Migrate **cíle** > migrace na**servery** > **: vyhodnocování serveru**klikněte na **zjistit**.
-2.  V rozevíracích **seznamech počítačů** > , ve**kterých jsou počítače virtualizované?** vyberte **Ano, s technologií Hyper-V**.
+1.  V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
+2.  V rozevíracích **seznamech počítačů**  >  , ve**kterých jsou počítače virtualizované?** vyberte **Ano, s technologií Hyper-V**.
 3.  Pro stažení souboru ZIP klikněte na **Stáhnout**. 
 
 
@@ -99,11 +99,12 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklad: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-HyperV-USGov.zip MD5```
 
-3. Ověřte vygenerované hodnoty hash. Nejnovější verzi zařízení:
+3. Ověřte nejnovější verzi a hodnotu hash zařízení:
 
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | 717f8b9185f565006b5aff0215ecadac
+    **Scénář** | **Stáhnout** | **SHA256**
+    --- | --- | ---
+    Hyper-V (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120200&clcid=0x409) |  2c5e73a1e5525d4fae468934408e43ab55ff397b7da200b92121972e683f9aa3
+
           
 
 ### <a name="run-the-script"></a>Spuštění skriptu
@@ -112,7 +113,7 @@ Tento skript:
 
 - Nainstaluje agenty a webovou aplikaci.
 - Nainstaluje role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhne a nainstaluje modul IIS s možností zápisu. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhne a nainstaluje modul IIS s možností zápisu. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) s trvalým nastavením pro Azure Migrate.
 - Vytvoří protokol a konfigurační soubory následujícím způsobem:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config
@@ -137,8 +138,8 @@ Pokud chcete nastavit zařízení pro VMware, Stáhněte si z Azure Portal soubo
 
 ### <a name="download-the-script"></a>Stáhnout skript
 
-1.  V Azure Migrate **cíle** > migrace na**servery** > **: vyhodnocování serveru**klikněte na **zjistit**.
-2.  V rámci **zjišťování počítačů** > **jsou vaše počítače virtualizované?** vyberte **nevirtualizované/jiné**.
+1.  V Azure Migrate **cíle migrace**  >  na**servery**  >  **: vyhodnocování serveru**klikněte na **zjistit**.
+2.  V rámci **zjišťování počítačů**  >  **jsou vaše počítače virtualizované?** vyberte **nevirtualizované/jiné**.
 3.  Pro stažení souboru ZIP klikněte na **Stáhnout**. 
 
 
@@ -151,11 +152,11 @@ Před nasazením souboru ZIP ověřte, zda je soubor zip zabezpečený.
     - ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
     - Příklad: ```C:\>CertUtil -HashFile C:\Users\administrator\Desktop\AzureMigrateInstaller-Server-USGov.zip MD5```
 
-3. Ověřte vygenerované hodnoty hash. Nejnovější verzi zařízení:
+3. Ověřte nejnovější verzi a hodnotu hash zařízení:
 
-    **Algoritmus** | **Hodnota hash**
-    --- | ---
-    MD5 | f81c155fc4a1409901caea948713913f
+    **Scénář** | **Stáhnout*** | **Hodnota hash**
+    --- | --- | ---
+    Fyzický (63,1 MB) | [Nejnovější verze](https://go.microsoft.com/fwlink/?linkid=2120100&clcid=0x409) | 93dfef131026e70acdfad2769cd208ff745ab96a96f013cdf3f9e1e61c9b37e1
           
 
 ### <a name="run-the-script"></a>Spuštění skriptu
@@ -164,7 +165,7 @@ Tento skript:
 
 - Nainstaluje agenty a webovou aplikaci.
 - Nainstaluje role Windows, včetně aktivační služby Windows, služby IIS a prostředí PowerShell ISE.
-- Stáhne a nainstaluje modul IIS s možností zápisu. [Další informace](https://www.microsoft.com/download/details.aspx?id=7435).
+- Stáhne a nainstaluje modul IIS s možností zápisu. [Přečtěte si další informace](https://www.microsoft.com/download/details.aspx?id=7435).
 - Aktualizuje klíč registru (HKLM) s trvalým nastavením pro Azure Migrate.
 - Vytvoří protokol a konfigurační soubory následujícím způsobem:
     - **Konfigurační soubory**:%ProgramData%\Microsoft Azure\Config

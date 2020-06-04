@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1bb93d54d56f25c860652b8d8f3df654796b800e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 247fdb7afd99df3d7d08ca676786b6aefe6ad200
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299341"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321695"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>Partneři ExpressRoute a umístění partnerského vztahu
 
@@ -42,11 +42,11 @@ Následující tabulka obsahuje mapování oblastí Azure na umístění Express
 | **Geopolitická oblast** | **Oblast Azure** | **Umístění ExpressRoute** |
 | --- | --- | --- |
 | **Australská vláda** | Austrálie – střed, Austrálie – střed 2 |Canberra, Canberra2 |
-| **Europe** | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – západ, Velká Británie – jih, Západní Evropa |Amsterdam, Amsterdam2, Berlín, Kodaň, Dublin, Frankfurt, Ženeva, Londýn, London2, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych, Mnichov |
+| **Evropa** | Francie – střed, Francie – jih, Německo – sever, Německo – středozápad, Severní Evropa, Norsko – východ, Norsko – západ, Švýcarsko – sever, Švýcarsko – západ, Velká Británie – západ, Velká Británie – jih, Západní Evropa |Amsterdam, Amsterdam2, Berlín, Kodaň, Dublin, Frankfurt, Ženeva, Londýn, London2, Marseille, Milán, Mnichov, Newport (Wales), Oslo, Paříž, Stavanger, Stockholm, Curych, Mnichov |
 | **Severní Amerika** | USA – východ, USA – západ, USA – východ 2, USA – západ 2, USA – střed, USA – středojih, USA – středosever, USA – středozápad, Kanada – střed, Kanada – východ |Brno, Chicago, Praha, Denver, Las Vegas, Los Angeles, Miami, New York, San Antonio, Seattle, Silicon sedl, Silicon Valley2, Washington DC, Washington DC2, Montrealský, Quebec City, Toronto, Vancouver |
 | **Asie** | Východní Asie, Jihovýchodní Asie | Bangkok, Hongkong, Hongkong, Kong2, Jakarta, Kuala Lumpur, Singapur, Singapur2, Taipei |
-| **India** | Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
-| **Japan** | Japonsko – západ, Japonsko – východ |Ósaka, Tokio, Tokyo2 |
+| **Indie** | Indie – západ, Indie – střed, Indie – jih |Čennaj, Čennaj2, Bombaj, Bombaj2 |
+| **Japonsko** | Japonsko – západ, Japonsko – východ |Ósaka, Tokio, Tokyo2 |
 | **Oceánie** | Austrálie – jihovýchod, Austrálie – východ |Auckland, Melbourne, Perth, Sydney, Sydney2 | 
 | **Jižní Korea** | Jižní Korea – střed, Jižní Korea – jih |Busan, Soul|
 | **Spojené arabské emiráty** | Spojené arabské emiráty Central, Spojené arabské emiráty sever | Dubaj, Dubai2 |
@@ -109,7 +109,6 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Los Angeles** | [CoreSite LA1](https://www.coresite.com/data-centers/locations/los-angeles/one-wilshire) | 1 | Není k dispozici | 10G | CoreSite, Equinix, Megaport, Neutrona Networks, NTT, Transtelco, Zayo |
 | **Marseille** |[Interxion MRS1](https://www.interxion.com/Locations/marseille/) | 1 | Francie – jih | Není k dispozici | DE-CIX, GEANT, Interxion, Jaguar Network, Ooredoo Cloud Connect |
 | **Melbourne** | [NextDC M1](https://www.nextdc.com/data-centres/m1-melbourne-data-centre) | 2 | Austrálie – jihovýchod | 10G, 100G | Equinix, Devoli, Equinix, Megaport, NEXTDC, Optus, Telstra Corporation, TPG Telecom |
-| **Mexiko** | [KIO sítě QR01](https://www.kionetworks.com/es-mx/) | 4 | Není k dispozici | 10G | Transtelco|
 | **Miami** | [Equinix MI1](https://www.equinix.com/locations/americas-colocation/united-states-colocation/miami-data-centers/mi1/) | 1 | Není k dispozici | 10G | Claro, C3ntro, Equinix, Megaport, sítě pro Neutrona |
 | **Milán** | [IRIDEOS](https://irideos.it/en/data-centers/) | 1 | Není k dispozici | 10G | |
 | **Montreal** | [Cologix MTL3](https://www.cologix.com/data-centers/montreal/mtl3/) | 1 | Není k dispozici | 10G, 100G | Zvon Kanada, Cologix, Megaport, Telus, Zayo |
@@ -123,6 +122,7 @@ Následující tabulka uvádí umístění připojení a poskytovatele služby p
 | **Paříž** | [Interxion PAR5](https://www.interxion.com/Locations/paris/) | 1 | Francie – střed | 10G, 100G | CenturyLink Cloud Connect, Colt, Equinix, spolucloud, Interxion, oranžová, Telia Carrier, Zayo |
 | **Perth** | [NextDC P1](https://www.nextdc.com/data-centres/p1-perth-data-centre) | 2 | Není k dispozici | 10G | Megaport, NextDC |
 | **Québec** | [Vantage](https://vantage-dc.com/data_centers/quebec-city-data-center-campus/) | 1 | Kanada – východ | Není k dispozici | Bell Canada, Megaport |
+| **Queretaro** | [KIO sítě QR01](https://www.kionetworks.com/es-mx/) | 4 | Není k dispozici | 10G | Transtelco|
 | **Quincy** | [Sabey Datacenter – sestavení](https://sabeydatacenters.com/data-center-locations/central-washington-data-centers/quincy-data-center) | 1 | USA – západ 2 | 10G, 100G | | 
 | **San Antonio** | [CyrusOne SA1](https://cyrusone.com/locations/texas/san-antonio-texas/) | 1 | USA – středojih | 10G, 100G | CenturyLink Cloud Connect, Megaport |
 | **Sao Paulo** | [Equinix SP2](https://www.equinix.com/locations/americas-colocation/brazil-colocation/sao-paulo-data-centers/sp2/) | 3 | Brazílie – jih | Není k dispozici | Aryaka Networks, Ascenty Data Centers, British Telecom, Equinix, Level 3 Communications, Neutrona Networks, Orange, Tata Communications, Telefonica, UOLDIVEO |
@@ -241,8 +241,8 @@ Povolení soukromého připojení podle vlastních potřeb může být náročn�
 | **Kontinent** | **Systémoví integrátoři** |
 | --- | --- |
 | **Asie** |Avanade Inc., OneAs1a |
-| **Australia** | Ensyst, IT Consultancy, MOQdigital, Vigilant.IT |
-| **Europe** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
+| **Austrálie** | Ensyst, IT Consultancy, MOQdigital, Vigilant.IT |
+| **Evropa** |Avanade Inc., Altogee, Bright Skies GmbH, Inframon, MSG Services, New Signature, Nelite, Orange Networks, sol-tec |
 | **Severní Amerika** |Avanade Inc., Equinix Professional Services, FlexManage, Lightstream, Perficient, Presidio |
 | **Jižní Amerika** |Avanade Inc., Venha Pra Nuvem |
 ## <a name="next-steps"></a>Další kroky

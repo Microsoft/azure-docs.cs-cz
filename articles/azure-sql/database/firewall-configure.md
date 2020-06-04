@@ -1,10 +1,10 @@
 ---
 title: Pravidla brány firewall protokolu IP
-description: Nakonfigurujte pravidla brány firewall protokolu IP na úrovni serveru pro SQL Database nebo bránu Azure synapse Analytics firewall. Spravujte přístup a nakonfigurujte pravidla brány firewall protokolu IP na úrovni databáze pro jednu nebo sdruženou databázi.
+description: Nakonfigurujte pravidla brány firewall protokolu IP na úrovni serveru pro databázi v Azure SQL Database nebo v bráně firewall služby Azure synapse Analytics. Spravujte přístup a nakonfigurujte pravidla brány firewall protokolu IP na úrovni databáze pro jednu nebo sdruženou databázi.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
-titleSuffix: Azure SQL Database and Azure Synapse
+titleSuffix: Azure SQL Database and Azure Synapse Analytics
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/18/2019
-ms.openlocfilehash: 4ebb430945a00007f3b7260da87369bf6fd61ae2
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e9755c8a895dc441fc037a07dd36a1d1c07ce5fa
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043426"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324551"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Pravidla brány firewall pro Azure SQL Database a Azure synapse
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Když vytvoříte nový server v Azure SQL Database nebo v Azure synapse s názvem *MySQLServer*, brána firewall na úrovni serveru blokuje veškerý přístup k veřejnému koncovému bodu pro server (který je přístupný na *MySQLServer.Database.Windows.NET*). Pro zjednodušení se *SQL Database* používá pro odkazování na SQL Database a Azure synapse (dříve Azure SQL Data Warehouse).
+Když vytvoříte nový server v Azure SQL Database nebo v Azure synapse Analytics s názvem *MySQLServer*, brána firewall na úrovni serveru blokuje veškerý přístup k veřejnému koncovému bodu pro server (který je přístupný na *MySQLServer.Database.Windows.NET*). Pro zjednodušení se *SQL Database* používá pro odkazování na SQL Database a Azure synapse Analytics (dříve Azure SQL Data Warehouse).
 
 > [!IMPORTANT]
 > Tento článek se *nevztahuje na* *spravovanou instanci SQL Azure*. Informace o konfiguraci sítě najdete v tématu [připojení aplikace ke spravované instanci Azure SQL](../managed-instance/connect-application-instance.md).

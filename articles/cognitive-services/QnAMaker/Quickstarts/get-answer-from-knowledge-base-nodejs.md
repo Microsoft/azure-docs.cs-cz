@@ -4,19 +4,19 @@ description: Tento rychlý Start založený na Node. js vám umožní získat od
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: 9031c320b055c0a7191655d6531eaa31d9cc8bb8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: 3003f37789634c13c2213b708f7ae963c97da873
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851726"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342778"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-nodejs"></a>Rychlý Start: získání odpovědí na dotaz ze znalostní báze s využitím Node. js
 
 V tomto rychlém startu se dozvíte, jak programově získat odpověď z publikované QnA Maker znalostní báze. Znalostní báze obsahuje otázky a odpovědi ze [zdrojů dat](../Concepts/knowledge-base.md) , jako jsou nejčastější dotazy. [Otázka](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odešle do služby QnA maker. [Odpověď](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obsahuje horní předpokládanou odpověď.
 
-[Ukázka Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [Sample](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/get-answer/get-answer.js)
+[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  [Ukázka](https://github.com/Azure-Samples/cognitive-services-qnamaker-nodejs/blob/master/documentation-samples/quickstarts/get-answer/get-answer.js)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ V tomto rychlém startu se dozvíte, jak programově získat odpověď z publiko
 
 ## <a name="create-a-nodejs-file"></a>Vytvoření souboru Node. js
 
-Otevřete VSCode a vytvořte nový soubor s názvem `get-answer.js`.
+Otevřete VSCode a vytvořte nový soubor s názvem `get-answer.js` .
 
 ## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
@@ -51,7 +51,7 @@ Následující kód provede požadavek HTTPS na rozhraní API služby QnA Maker 
 
 [!code-nodejs[Add a POST request to send question to knowledge base](~/samples-qnamaker-nodejs/documentation-samples/quickstarts/get-answer/get-answer.js?range=24-49 "Add a POST request to send question to knowledge base")]
 
-Hodnota `Authorization` hlavičky obsahuje řetězec `EndpointKey`.
+`Authorization`Hodnota hlavičky obsahuje řetězec `EndpointKey` .
 
 ## <a name="install-the-dependencies"></a>Nainstalovat závislosti
 

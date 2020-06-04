@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 484dfd7834a206dce6805dc38b0eabeae2ee352a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 519520538c16b1bde18f0810344864d37090accf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82114560"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342642"
 ---
 # <a name="assess-servers-by-using-imported-data"></a>Posouzení serverů pomocí importovaných dat
 
@@ -42,7 +42,7 @@ V tomto kurzu se naučíte:
 > [!NOTE]
 > Kurzy ukazují nejjednodušší cestu k nasazení scénáře, abyste mohli rychle nastavit zkoušku konceptu. Kurzy používají výchozí možnosti, pokud je to možné, a nezobrazují všechna možná nastavení a cesty. Podrobné pokyny najdete v tématu návody.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
 
 ## <a name="set-azure-permissions-for-azure-migrate"></a>Nastavení oprávnění Azure pro Azure Migrate
 
@@ -68,13 +68,13 @@ Nastavení nového projektu Azure Migrate:
 5. V části **Projekt migrace** vyberte své předplatné Azure a vytvořte skupinu prostředků, pokud ji ještě nemáte.
 6. V části **Project Details (podrobnosti projektu**) zadejte název projektu a zeměpisnou oblast, ve které chcete vytvořit projekt. Další informace najdete tady:
 
-    - Projděte si podporované geografické oblasti pro cloudy [veřejné](migrate-support-matrix.md#supported-geographies-public-cloud) a [státní správy](migrate-support-matrix.md#supported-geographies-azure-government).
+    - Projděte si podporované oblasti pro [veřejný cloud](migrate-support-matrix.md#supported-geographies-public-cloud) a [cloud pro státní správu](migrate-support-matrix.md#supported-geographies-azure-government).
     - Při spouštění migrace můžete vybrat jakoukoli cílovou oblast.
 
     ![Vytvoření projektu Azure Migrate](./media/tutorial-assess-import/migrate-project.png)
 
 7. Vyberte **Další**.
-8. V **nástroji vybrat nástroj pro posouzení**vyberte **Azure Migrate: vyhodnocení** > serveru**Další**.
+8. V **nástroji vybrat nástroj pro posouzení**vyberte **Azure Migrate: vyhodnocení serveru**  >  **Další**.
 
     ![Vytvoření posouzení Azure Migrate](./media/tutorial-assess-import/assessment-tool.png)
 
@@ -88,7 +88,7 @@ Stáhněte si šablonu sdíleného svazku clusteru a přidejte do ní informace 
 
 ### <a name="download-the-template"></a>Stažení šablony
 
-1. V**Servers** > **Azure Migrate** **cíle** > migrace vyberte **Vyhledat**.
+1. V **Azure Migrate cíle migrace**  >  **Servers**  >  **Azure Migrate: Server Assessment**vyberte **Vyhledat**.
 2. V možnosti **zjistit počítače**vyberte **importovat pomocí CSV**.
 3. Vyberte **Stáhnout** a stáhněte šablonu sdíleného svazku clusteru. Případně si ho můžete [stáhnout přímo](https://go.microsoft.com/fwlink/?linkid=2109031).
 
@@ -108,9 +108,10 @@ Následující tabulka shrnuje pole souborů k vyplnění:
 **Název serveru** | Ano | Doporučujeme zadat plně kvalifikovaný název domény (FQDN).
 **IP adresa** | Ne | Adresa serveru.
 **Cores** | Ano | Počet jader procesoru přidělených serveru.
-**Rezident** | Ano | Celková velikost paměti RAM (v MB) přidělená serveru.
+**Memory (Paměť)** | Ano | Celková velikost paměti RAM (v MB) přidělená serveru.
 **Název operačního systému** | Ano | Serverový operační systém. <br/> Vyhodnocování rozpoznávají názvy operačních systémů, které odpovídají nebo obsahují názvy v [tomto](#supported-operating-system-names) seznamu.
 **Verze operačního systému** | Ne | Verze operačního systému serveru.
+**Architektura operačního systému** | Ne | Architektura operačního systému serveru <br/> Platné hodnoty jsou: x64, x86, AMD64, 32-bit nebo 64-bit
 **Počet disků** | Ne | Není nutné, pokud jsou k dispozici podrobnosti o jednotlivých discích.
 **Velikost disku 1**  | Ne | Maximální velikost disku (v GB)<br/>[Přidáním sloupců](#add-multiple-disks) do šablony můžete přidat podrobnosti o dalších discích. Můžete přidat až osm disků.
 **Disk 1 operace čtení** | Ne | Operace čtení z disku za sekundu
@@ -171,7 +172,7 @@ Informace o serveru můžete aktualizovat tak, že znovu naimportujete data pro 
 Ověření, že se servery zobrazí v Azure Portal po zjištění:
 
 1. Otevřete řídicí panel Azure Migrate.
-2. Na stránce **Azure Migrate-servery** > **Azure Migrate: posouzení serveru** vyberte ikonu, která zobrazuje počet **zjištěných serverů**.
+2. Na stránce **Azure Migrate-servery**  >  **Azure Migrate: posouzení serveru** vyberte ikonu, která zobrazuje počet **zjištěných serverů**.
 3. Vyberte kartu **Import na základě** .
 
 ## <a name="set-up-and-run-an-assessment"></a>Nastavení a spuštění posouzení
@@ -192,7 +193,7 @@ Spuštění posouzení:
 
 3. V poli **vyhodnotit servery**zadejte název posouzení.
 4. Ve **zdroji zjišťování**vyberte **počítače přidané prostřednictvím importu do Azure Migrate**.
-5. Vyberte **Zobrazit vše** a zkontrolujte vlastnosti posouzení.
+5. Pokud chcete zobrazit vlastnosti posouzení, vyberte **Zobrazit vše**.
 
     ![Vlastnosti posouzení](./media/tutorial-assess-physical/view-all.png)
 
@@ -202,7 +203,7 @@ Spuštění posouzení:
 
     ![Vytvoření posouzení](./media/tutorial-assess-physical/assessment-create.png)
 
-9. Po vytvoření posouzení ho zobrazte na stránce **servery** > **Azure Migrate:** > **vyhodnocení**vyhodnocení serveru.
+9. Po vytvoření posouzení ho zobrazte na stránce **servery**  >  **Azure Migrate: vyhodnocení vyhodnocení serveru**  >  **Assessments**.
 10. Vyberte **vyhodnocování exportu** a stáhněte ho jako soubor Microsoft Excelu.
 
 ## <a name="review-an-assessment"></a>Kontrola posouzení
@@ -215,7 +216,7 @@ Posouzení popisuje:
 
 ### <a name="view-an-assessment"></a>Zobrazit posouzení
 
-1. V případě **migrace** > na**serverech**vyberte **hodnocení** v **Azure Migrate: posouzení serveru**.
+1. V případě **migrace na**  >  **serverech**vyberte **hodnocení** v **Azure Migrate: posouzení serveru**.
 2. V **posouzení**vyberte posouzení, které chcete otevřít.
 
     ![Souhrn posouzení](./media/tutorial-assess-physical/assessment-summary.png)
@@ -233,7 +234,7 @@ Posouzení popisuje:
 
 ### <a name="review-cost-details"></a>Podrobnosti o kontrole nákladů
 
-Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úložiště pro provozování virtuálních počítačů v Azure. Můžete:
+Toto zobrazení ukazuje odhadované náklady na výpočetní prostředky a úložiště pro provozování virtuálních počítačů v Azure. Další možnosti:
 
 - Projděte si měsíční náklady na výpočetní prostředky a úložiště. Náklady se sčítají pro všechny servery v hodnocené skupině.
 

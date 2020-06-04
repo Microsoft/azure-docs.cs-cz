@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: article
 ms.date: 02/06/2020
 ms.author: cherylmc
-ms.openlocfilehash: 8aa4fe143c78d2053ce8c48e4866a5522057aa0c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61f98d7de6c278416b4bb46074cad9f9e143d468
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77062933"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341061"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrace do Azure Virtual WAN
 
@@ -20,21 +20,21 @@ Azure Virtual WAN umožňuje společnostem zjednodušit globální připojení, 
 
 Informace o výhodách, které Azure Virtual WAN umožňuje podnikům, které přijímají moderní cloudovou globální síť v cloudu, najdete v tématu [globální přenosová architektura sítě a virtuální síť WAN](virtual-wan-global-transit-network-architecture.md).
 
-![střed a paprskový](./media/migrate-from-hub-spoke-topology/hub-spoke.png)
-**obrázek: Azure Virtual WAN**
+![střed a paprskový ](./media/migrate-from-hub-spoke-topology/hub-spoke.png)
+ **obrázek: Azure Virtual WAN**
 
-Model konektivity centra Azure Virtual datacentra (VDC) se přijal tisíci našich zákazníků, aby využili výchozí chování přenositelného směrování sítí Azure, aby bylo možné vytvářet jednoduché a škálovatelné cloudové sítě. Azure Virtual WAN staví na těchto konceptech a zavádí nové funkce, které umožňují globální topologie připojení, nejen mezi místními umístěními a Azure, ale také umožňují zákazníkům využít škálování sítě Microsoftu k rozšíření stávajících globálních sítí.
+Model připojení centra Azure a paprsků přijaly tisíce našich zákazníků, aby využili výchozí chování přenositelného směrování sítí Azure, aby bylo možné vytvářet jednoduché a škálovatelné cloudové sítě. Azure Virtual WAN staví na těchto konceptech a zavádí nové funkce, které umožňují globální topologie připojení, nejen mezi místními umístěními a Azure, ale také umožňují zákazníkům využít škálování sítě Microsoftu k rozšíření stávajících globálních sítí.
 
 V tomto článku se dozvíte, jak migrovat existující hybridní prostředí na virtuální síť WAN.
 
 ## <a name="scenario"></a>Scénář
 
-Contoso je globální finanční organizace s kancelářemi v Evropě i v Asii. Plánují přesunout své stávající aplikace z místního datového centra do Azure a vytvořit základní návrh založený na architektuře VDC, včetně regionálních virtuálních sítí centra spravovaných zákazníkem pro hybridní připojení. V rámci přechodu na cloudové technologie byly síťovému týmu zajišťovat, aby bylo zajištěno, že je jejich připojení optimalizované pro pohyb vpřed.
+Contoso je globální finanční organizace s kancelářemi v Evropě i v Asii. Plánují přesun svých stávajících aplikací z místního datového centra do Azure a vytvořili jsme základní návrh na základě ruční architektury centra a paprsků, včetně místních virtuálních sítí centra spravovaných zákazníkem pro hybridní připojení. V rámci přechodu na cloudové technologie byly síťovému týmu zajišťovat, aby bylo zajištěno, že je jejich připojení optimalizované pro pohyb vpřed.
 
 Následující obrázek znázorňuje nejdůležitější pohled na stávající globální síť, včetně připojení k několika oblastem Azure.
 
-![Obrázek stávající síťové topologie](./media/migrate-from-hub-spoke-topology/contoso-pre-migration.png)
-společnosti Contoso **: síťová topologie contoso stávající sítě**
+![Obrázek stávající síťové topologie společnosti Contoso ](./media/migrate-from-hub-spoke-topology/contoso-pre-migration.png)
+ **: síťová topologie contoso stávající sítě**
 
 Z existující topologie sítě se dají chápat tyto body:
 
@@ -61,8 +61,8 @@ Síťový tým byl vytvořen s poskytováním globálního síťového modelu, k
 
 Následující obrázek ukazuje podrobný pohled na aktualizovanou cílovou topologii pomocí Azure Virtual WAN, který splňuje požadavky popsané v předchozí části.
 
-![Virtuální architektura](./media/migrate-from-hub-spoke-topology/vwan-architecture.png)
-společnosti Contoso Virtual WAN**obrázek: architektura Azure Virtual WAN**
+![Virtuální architektura společnosti Contoso Virtual WAN ](./media/migrate-from-hub-spoke-topology/vwan-architecture.png)
+ **obrázek: architektura Azure Virtual WAN**
 
 Souhrn:
 
@@ -78,14 +78,14 @@ Připojení k Internetu pro vzdálené lokality, které poskytuje i služba Azur
 
 V této části se dozvíte o různých krocích migrace do Azure Virtual WAN.
 
-### <a name="step-1-vdc-hub-and-spoke-single-region"></a>Krok 1: VDC hub a jedna oblast
+### <a name="step-1-single-region-customer-managed-hub-and-spoke"></a>Krok 1: samoobslužné centrum a paprsky spravované zákazníky v jedné oblasti
 
-Zkontrolujte architekturu. Následující obrázek ukazuje topologii jedné oblasti pro společnost Contoso před zavedením Azure Virtual WAN:
+Následující obrázek ukazuje topologii jedné oblasti pro společnost Contoso před zavedením Azure Virtual WAN:
 
-![](./media/migrate-from-hub-spoke-topology/figure1.png)
-**Obrázek topologie s jednou oblastí 1: střed VDC a jedna oblast paprsků**
+![Obrázek topologie s jednou oblastí ](./media/migrate-from-hub-spoke-topology/figure1.png)
+ **1: ruční rozbočovač s jednou oblastí a paprsek**
 
-V souladu s přístupem k virtuálním VDC (Virtual data Center) obsahuje virtuální síť centra spravovaná zákazníkem několik bloků funkcí:
+V souladu s přístupem k rozbočovači a paprsku má virtuální síť centra spravovaná zákazníkem několik bloků funkcí:
 
 - Sdílené služby (jakákoli společná funkce požadovaná více paprsky). Příklad: contoso používá řadiče domény Windows serveru na virtuálních počítačích infrastruktury jako služba (IaaS).
 - Služby brány firewall protokolu IP/směrování jsou poskytovány virtuálním síťovým zařízením třetí strany a umožňují směrování IP s paprskovou a koncovou vrstvou 1.
@@ -102,8 +102,8 @@ Nasaďte v každé oblasti virtuální síť WAN hub. Nastavte virtuální centr
 > [!NOTE]
 > Azure Virtual WAN musí používat standardní SKU k povolení některých cest k provozu, které jsou uvedené v tomto článku.
 
-![Obrázek 2: nasazení](./media/migrate-from-hub-spoke-topology/figure2.png)
-virtuálních sítí WAN na úrovni cloudu **(VDC) – střed a migrace do virtuální sítě WAN**
+![Obrázek 2: nasazení virtuálních rozbočovačů WAN ](./media/migrate-from-hub-spoke-topology/figure2.png)
+ **na úrovni zákazníka a připojení k virtuální síti WAN spravované zákazníkem**
 
 ### <a name="step-3-connect-remote-sites-expressroute-and-vpn-to-virtual-wan"></a>Krok 3: připojení vzdálených lokalit (ExpressRoute a VPN) k virtuální síti WAN
 
@@ -112,39 +112,39 @@ Připojte virtuální síť WAN ke stávajícím okruhům ExpressRoute a nastavt
 > [!NOTE]
 > Okruhy Express Routes musí být upgradovány na typ SKU úrovně Premium pro připojení k virtuálnímu centru sítě WAN.
 
-![Připojení vzdálených lokalit k virtuální síti](./media/migrate-from-hub-spoke-topology/figure3.png)
-WAN**Obrázek 3: migrace VDC hub a hvězdicové na virtuální síť WAN**
+![Připojení vzdálených lokalit k virtuální síti WAN ](./media/migrate-from-hub-spoke-topology/figure3.png)
+ **Obrázek 3: migrace centra a připojení k virtuální síti WAN spravovaná zákazníkem**
 
-V tomto okamžiku začnou místní síťové zařízení přijímat trasy odrážející adresní prostor IP adres přiřazený virtuální síti rozbočovače spravovanému přes síť WAN. Vzdálené větve připojené k síti VPN v této fázi uvidí dvě cesty k jakýmkoli existujícím aplikacím ve virtuálních sítích paprsků. Tato zařízení by měla být nakonfigurovaná tak, aby pokračovala v používání tunelu k rozbočovači VDC, aby se zajistilo symetrické směrování během fáze přechodu.
+V tomto okamžiku začnou místní síťové zařízení přijímat trasy odrážející adresní prostor IP adres přiřazený virtuální síti rozbočovače spravovanému přes síť WAN. Vzdálené větve připojené k síti VPN v této fázi uvidí dvě cesty k jakýmkoli existujícím aplikacím ve virtuálních sítích paprsků. Tato zařízení by měla být nakonfigurovaná tak, aby pokračovala v používání tunelu u zákaznicky spravovaného centra, aby se zajistilo symetrické směrování během fáze přechodu.
 
 ### <a name="step-4-test-hybrid-connectivity-via-virtual-wan"></a>Krok 4: testování hybridního připojení přes virtuální síť WAN
 
 Před použitím spravovaného virtuálního centra sítě WAN pro připojení k provozu doporučujeme nastavit virtuální síť s koncovým paprskem a připojení k virtuální síti WAN. Než budete pokračovat v dalších krocích, ověřte, že připojení k tomuto testovacímu prostředí fungují přes ExpressRoute a Site-to Site VPN.
 
-![Testování hybridního připojení přes virtuální](./media/migrate-from-hub-spoke-topology/figure4.png)
-síť WAN**Obrázek 4: migrace VDC hub-and-the na virtuální síť WAN**
+![Testování hybridního připojení přes virtuální síť WAN ](./media/migrate-from-hub-spoke-topology/figure4.png)
+ **na obrázku 4: migrace centra a připojení k virtuální síti WAN spravovaná zákazníkem**
 
 ### <a name="step-5-transition-connectivity-to-virtual-wan-hub"></a>Krok 5: přechod k virtuálnímu centru WAN
 
-![Přejít na připojení k virtuální síti](./media/migrate-from-hub-spoke-topology/figure5.png)
-WAN **– Obrázek 5: VDC hub-a-paprsek na virtuální síť WAN migrace**
+![Přechod připojení na virtuální síť WAN – ](./media/migrate-from-hub-spoke-topology/figure5.png)
+ **Obrázek 5: migrace centra a paprsků na virtuální síť WAN**
 
-**a**. Odstraňte existující připojení partnerských vztahů z virtuálních sítí paprsků do starého VDC centra. Přístup k aplikacím ve virtuálních sítích s paprsky není k dispozici, dokud nebudou dokončeny kroky a-c.
+**a**. Odstraňte existující připojení partnerského vztahu z virtuálních sítí s koncovými zákazníky k původnímu centru spravovanému zákazníkem. Přístup k aplikacím ve virtuálních sítích s paprsky není k dispozici, dokud nebudou dokončeny kroky a-c.
 
 **b**. Virtuální sítě rozbočovače připojte k virtuální síti WAN prostřednictvím připojení virtuální sítě.
 
 **c**. Odeberte všechny trasy definované uživatelem (UDR) dříve používané v rámci virtuálních sítí paprsků pro komunikaci mezi paprsky a paprsky. Tato cesta je teď povolená dynamickým směrováním dostupným ve virtuálním centru WAN.
 
-**d**. Existující brány ExpressRoute a VPN v centru VDC jsou teď vyřazené z provozu a umožňují další krok (e).
+**d**. Stávající brány ExpressRoute a VPN v centru spravovaném zákazníkem jsou teď vyřazené z provozu a umožňují další krok (e).
 
-**e**. Připojte staré centrum VDC (virtuální síť rozbočovače) k virtuálnímu centru WAN prostřednictvím nového připojení virtuální sítě.
+**e**. Připojte původní centrum spravované zákazníkem (virtuální síť rozbočovače) k virtuálnímu rozbočovači WAN prostřednictvím nového připojení virtuální sítě.
 
 ### <a name="step-6-old-hub-becomes-shared-services-spoke"></a>Krok 6: starý rozbočovač se bude nacházet s paprsky sdílených služeb
 
 Nyní jsme převedli návrh naší sítě Azure, aby virtuální síť WAN měla centrální bod v naší nové topologii.
 
-![Starý rozbočovač se bude nacházet](./media/migrate-from-hub-spoke-topology/figure6.png)
-jako sdílené služby. paprskový**Obrázek 6: VDC hub-a-paprsek k virtuální síti WAN migrace**
+![Starý rozbočovač se bude nacházet jako sdílené služby Shared ](./media/migrate-from-hub-spoke-topology/figure6.png)
+ **– Obrázek 6: migrace centra a připojení k virtuální síti WAN spravovaná zákazníkem**
 
 Vzhledem k tomu, že virtuální síť WAN je spravovaná entita a neumožňuje nasazení vlastních prostředků, jako jsou virtuální počítače, blokuje služba Shared Services jako virtuální síť paprsků a hostuje funkce, jako je třeba internetové příchozí přenosy prostřednictvím Azure Application Gateway nebo síťové virtualizované zařízení. Přenos dat mezi prostředím sdílených služeb a back-end virtuálními počítači teď projíždějí virtuálním centrem spravovanému přes síť WAN.
 
@@ -152,8 +152,8 @@ Vzhledem k tomu, že virtuální síť WAN je spravovaná entita a neumožňuje 
 
 V této fázi společnost Contoso většinou dokončila své migrace obchodních aplikací do Microsoft Cloud a v místním řadiči domény zbývá jenom několik starších verzí aplikací.
 
-![Optimalizuje místní připojení, aby se plně využila](./media/migrate-from-hub-spoke-topology/figure7.png)
-virtuální síť WAN**Obrázek 7: migrace VDC hub-and-paprsek na virtuální síť WAN**
+![Optimalizuje místní připojení, aby se plně využila virtuální síť WAN ](./media/migrate-from-hub-spoke-topology/figure7.png)
+ **Obrázek 7: migrace centra a paprsků do virtuální sítě WAN spravovaná zákazníkem.**
 
 Aby bylo možné využívat všechny funkce Azure Virtual WAN, společnost Contoso se rozhodla vyřadit z provozu starší místní připojení VPN. Všechny větve, které budou mít nadále přístup k sítím sídel nebo DC, můžou přesměrovat globální síť Microsoft pomocí integrovaného tranzitního směrování Azure Virtual WAN.
 
@@ -162,8 +162,8 @@ Aby bylo možné využívat všechny funkce Azure Virtual WAN, společnost Conto
 
 ## <a name="end-state-architecture-and-traffic-paths"></a>Architektura koncových stavů a cest provozu
 
-![Architektura koncových stavů a cest](./media/migrate-from-hub-spoke-topology/figure8.png)
-provozu **: virtuální síť Dual pro duální oblast**
+![Architektura koncových stavů a cest provozu ](./media/migrate-from-hub-spoke-topology/figure8.png)
+ **: virtuální síť Dual pro duální oblast**
 
 Tato část poskytuje přehled o tom, jak tato topologie splňuje původní požadavky, a to tak, že se podíváme na několik ukázkových toků provozu.
 
@@ -231,8 +231,8 @@ Provoz se směruje takto:
 
 Společnost Contoso nyní ověřila připojení mezi všemi větvemi a virtuální sítě v souladu s požadavky uvedenými výše v tomto článku. Aby bylo možné splnit požadavky na řízení zabezpečení a izolaci sítě, musí nadále oddělit a Protokolovat provoz přes síť centrální sítě. Dřív se tato funkce prováděla síťovým virtuálním zařízením (síťové virtuální zařízení). Společnost Contoso také chce vyřadit existující proxy služby a využívat nativní služby Azure pro odchozí internetové filtrování.
 
-![Zabezpečení a řízení zásad prostřednictvím Azure firewall](./media/migrate-from-hub-spoke-topology/security-policy.png)
-**obrázek: Azure firewall ve virtuální síti WAN (zabezpečené virtuální rozbočovač)**
+![Zabezpečení a řízení zásad prostřednictvím Azure Firewall ](./media/migrate-from-hub-spoke-topology/security-policy.png)
+ **obrázek: Azure firewall ve virtuální síti WAN (zabezpečené virtuální rozbočovač)**
 
 Následující kroky vysoké úrovně jsou nutné k zavedení Azure Firewall do virtuálních rozbočovačů sítě WAN, aby bylo možné povolit sjednocený bod řízení zásad. Další informace o tomto procesu a konceptu zabezpečených virtuálních rozbočovačů najdete v tématu [Azure firewall Manager](../firewall-manager/index.yml).
 

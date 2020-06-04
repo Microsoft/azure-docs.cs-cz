@@ -4,12 +4,12 @@ description: Přečtěte si o správě certifikátů v clusteru Service Fabric z
 ms.topic: conceptual
 ms.date: 04/10/2020
 ms.custom: sfrev
-ms.openlocfilehash: ecdeb5c9e30c176e2f3525f8efeb861d9210b202
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6be9cbe77ef5e64659e56447d0a5b6be30b05272
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196241"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324738"
 ---
 # <a name="certificate-management-in-service-fabric-clusters"></a>Správa certifikátů v Service Fabric clusterech
 
@@ -82,7 +82,8 @@ Toto téma je podrobně popsáno v [dokumentaci](../key-vault/create-certificate
     - po odpovědi vystavitele (certifikační autorita) k podepsanému certifikátu se výsledek sloučí do trezoru a certifikát je k dispozici pro následující operace:
       - v části {vaultUri}/Certificates/{Name}: certifikát, včetně veřejného klíče a metadat
       - v části {vaultUri}/Keys/{Name}: privátní klíč certifikátu je dostupný pro kryptografické operace (zabalení a rozbalení, přihlášení a ověření).
-      - v části {vaultUri}/Secrets/{Name}: certifikát, včetně jeho privátního klíče, který je k dispozici pro stažení jako nechráněné soubory PFX nebo PEM, že certifikát trezoru je ve skutečnosti chronologický řádek instancí certifikátů a sdílí zásadu. Verze certifikátu se vytvoří podle atributů životnosti a obnovení zásady. Důrazně doporučujeme, aby certifikáty trezoru nesdílely předměty nebo domény/názvy DNS; v clusteru může být rušivé rušit, aby se zřídily instance certifikátů z různých certifikátů trezoru se stejnými předměty, ale s podstatně odlišnými atributy, jako je Vystavitel, použití klíčů atd.
+      - v části {vaultUri}/Secrets/{Name}: certifikát, včetně jeho privátního klíče, který je k dispozici pro stažení jako nechráněný soubor PFX nebo PEM.  
+    Odvolání certifikátu trezoru je ve skutečnosti chronologický řádek instancí certifikátů, který sdílí zásady. Verze certifikátu se vytvoří podle atributů životnosti a obnovení zásady. Důrazně doporučujeme, aby certifikáty trezoru nesdílely předměty nebo domény/názvy DNS; v clusteru může být rušivé rušit, aby se zřídily instance certifikátů z různých certifikátů trezoru se stejnými předměty, ale s podstatně odlišnými atributy, jako je Vystavitel, použití klíčů atd.
 
 V tomto okamžiku existuje certifikát v trezoru, který je připravený pro použití. Kromě:
 
@@ -202,7 +203,7 @@ Tady je výpis JSON ze šablony odpovídající takovému stavu – Poznámka: v
   ]
 ```   
 
-V podstatě uvádíme, že certifikát s kryptografickým otiskem ```json [parameters('primaryClusterCertificateTP')] ``` a nalezený ```json [parameters('clusterCertificateUrlValue')] ``` v identifikátoru URI trezoru klíčů je deklarovaný jako jediný certifikát v clusteru, podle kryptografického otisku. Dále nastavíme další prostředky, které jsou potřeba k tomu, aby se zajistila autovýměna certifikátu.
+V podstatě uvádíme, že certifikát s kryptografickým otiskem ```json [parameters('primaryClusterCertificateTP')] ``` a nalezený v identifikátoru URI trezoru klíčů ```json [parameters('clusterCertificateUrlValue')] ``` je deklarovaný jako jediný certifikát v clusteru, podle kryptografického otisku. Dále nastavíme další prostředky, které jsou potřeba k tomu, aby se zajistila autovýměna certifikátu.
 
 ### <a name="setting-up-prerequisite-resources"></a>Nastavení požadovaných prostředků
 Jak už bylo zmíněno dříve, certifikát zřízený jako tajný klíč sady virtuálních počítačů se načte z trezoru pomocí služby poskytovatele prostředků Microsoft. COMPUTE, pomocí své první identity a jménem operátoru nasazení. U automatické výměny změn, které se změní – my se přepneme na použití spravované identity přiřazené k sadě škálování virtuálního počítače a kterému se udělí oprávnění tajných kódů trezoru.
@@ -414,7 +415,7 @@ V tomto okamžiku můžete spustit výše uvedené aktualizace v jednom nasazen�
 Tato část je určena k objasnění kroků popsaných výše a také k vyčerpání důležitých aspektů.
 
 #### <a name="certificate-provisioning-explained"></a>Zřizování certifikátů, vysvětlení
-Rozšíření KVVM jako agent zřizování běží nepřetržitě na předem určené frekvenci. Při neúspěšném načtení zjištěného certifikátu by došlo k dalšímu v řádku a pak přejde do režimu hibernace až do dalšího cyklu. Rozšíření SFVM, jako zaváděcí agent clusteru, bude vyžadovat, aby deklarované certifikáty předtím, než bude moci cluster tvořit. To zase znamená, že rozšíření SFVM může běžet až po úspěšném načtení certifikátů clusteru, označených ```json "provisionAfterExtensions" : [ "KVVMExtension" ]"``` klauzulí a ```json "requireInitialSync": true``` nastavením rozšíření KeyVaultVM. To znamená, že rozšíření KVVM, které se při prvním spuštění (po nasazení nebo restartování), musí probíhat cyklicky prostřednictvím pozorovaných certifikátů, dokud se všechny úspěšně nestáhnou. Nastavení tohoto parametru na hodnotu false, společně s selháním načtení certifikátů clusteru, by způsobilo selhání nasazení clusteru. Naopak požadavek na počáteční synchronizaci s nesprávným/neplatným seznamem pozorovaných certifikátů způsobí selhání rozšíření KVVM, a proto znovu selže nasazení clusteru.  
+Rozšíření KVVM jako agent zřizování běží nepřetržitě na předem určené frekvenci. Při neúspěšném načtení zjištěného certifikátu by došlo k dalšímu v řádku a pak přejde do režimu hibernace až do dalšího cyklu. Rozšíření SFVM, jako zaváděcí agent clusteru, bude vyžadovat, aby deklarované certifikáty předtím, než bude moci cluster tvořit. To zase znamená, že rozšíření SFVM může běžet až po úspěšném načtení certifikátů clusteru, označených ```json "provisionAfterExtensions" : [ "KVVMExtension" ]"``` klauzulí a nastavením rozšíření KeyVaultVM ```json "requireInitialSync": true``` . To znamená, že rozšíření KVVM, které se při prvním spuštění (po nasazení nebo restartování), musí probíhat cyklicky prostřednictvím pozorovaných certifikátů, dokud se všechny úspěšně nestáhnou. Nastavení tohoto parametru na hodnotu false, společně s selháním načtení certifikátů clusteru, by způsobilo selhání nasazení clusteru. Naopak požadavek na počáteční synchronizaci s nesprávným/neplatným seznamem pozorovaných certifikátů způsobí selhání rozšíření KVVM, a proto znovu selže nasazení clusteru.  
 
 #### <a name="certificate-linking-explained"></a>Odkazy na certifikát – vysvětlení
 Možná jste si všimli příznaku linkOnRenewal rozšíření KVVM a fakt, že je nastavený na false. Tady řešíme chování řízené tímto příznakem a jeho dopad na fungování clusteru. Všimněte si, že toto chování je specifické pro systém Windows.
@@ -441,7 +442,7 @@ V obou případech přenos selhává a cluster může pokračovat. příznaky se
 
 Pro zmírnění těchto incidentů doporučujeme:
   - Nekombinujte sítě SAN s různými certifikáty trezoru; každý certifikát trezoru by měl sloužit k odlišnému účelu a jejich předmět a síť SAN by měly odrážet konkrétní význam
-  - v seznamu sítě SAN uveďte běžný název subjektu (jako, doslova, "CN =<subject common name>").  
+  - v seznamu sítě SAN uveďte běžný název subjektu (jako, doslova, "CN = <subject common name> ").  
   - Pokud si nejste jistí, zakažte propojování při obnovení pro certifikáty zřízené s rozšířením KVVM. 
 
 #### <a name="why-use-a-user-assigned-managed-identity-what-are-the-implications-of-using-it"></a>Proč použít spravovanou identitu přiřazenou uživatelem? Jaké jsou důsledky jeho použití?

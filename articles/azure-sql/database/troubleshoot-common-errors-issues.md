@@ -1,6 +1,6 @@
 ---
 title: Řešení běžných problémů s připojením ke službě Azure SQL Database
-description: Popisuje kroky pro řešení potíží s Azure SQL Databasemi připojení a řešení problémů specifických pro Azure SQL Database nebo SQL spravované instance.
+description: Popisuje kroky pro řešení potíží s Azure SQL Databasem připojením a řešení problémů specifických pro Azure SQL Database nebo Azure SQL Managed instance.
 services: sql-database
 ms.service: sql-database
 ms.topic: troubleshooting
@@ -9,17 +9,17 @@ author: ramakoni1
 ms.author: ramakoni
 ms.reviewer: carlrab,vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 0420138ac7366916e8b83cf40abcab1a376017bd
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: e22f962c69091e783b8f6ab55905a02025213f5e
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116806"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321389"
 ---
-# <a name="troubleshooting-connectivity-issues-and-other-errors-with-sql-database-and-sql-managed-instance"></a>Řešení potíží s připojením a dalších chyb pomocí SQL Database a spravované instance SQL
+# <a name="troubleshooting-connectivity-issues-and-other-errors-with-azure-sql-database-and-azure-sql-managed-instance"></a>Řešení potíží s připojením a dalších chyb pomocí Azure SQL Database a spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Pokud dojde k chybě připojení k Azure SQL Database nebo spravované instanci SQL, zobrazí se chybové zprávy. Tyto problémy s připojením mohou být způsobeny změnou konfigurace, nastavením brány firewall, vypršením časového limitu připojení, nesprávnými přihlašovacími informacemi nebo neúspěšným uplatněním osvědčených postupů a pokynů pro návrh během procesu [návrhu aplikace](develop-overview.md) . Kromě toho platí, že pokud je dosaženo maximálního limitu některých Azure SQL Database nebo zdrojů spravované instance SQL, nebudete se již moci připojit.
+Pokud dojde k chybě připojení k Azure SQL Database nebo spravované instanci Azure SQL, zobrazí se chybové zprávy. Tyto problémy s připojením mohou být způsobeny změnou konfigurace, nastavením brány firewall, vypršením časového limitu připojení, nesprávnými přihlašovacími informacemi nebo neúspěšným uplatněním osvědčených postupů a pokynů pro návrh během procesu [návrhu aplikace](develop-overview.md) . Kromě toho platí, že pokud je dosaženo maximálního limitu některých Azure SQL Database nebo zdrojů spravované instance SQL, nebudete se již moci připojit.
 
 ## <a name="transient-fault-error-messages-40197-40613-and-others"></a>Chybové zprávy přechodného selhání (40197, 40613 a další)
 
@@ -30,7 +30,7 @@ Když ve službě SQL Database dojde k vysokému zatížení, infrastruktura Azu
 | Kód chyby | Severity | Description |
 | ---:| ---:|:--- |
 | 4060 |16 |Nelze otevřít databázi "%. &#x2a;ls" požadovanou pro přihlášení. Přihlášení se nezdařilo. Další informace najdete v tématu [chyby 4000 až 4999](https://docs.microsoft.com/sql/relational-databases/errors-events/database-engine-events-and-errors#errors-4000-to-4999) .|
-| 40197 |17 |Služba zjistila chybu při zpracování vaší žádosti. Zkuste to prosím znovu. Kód chyby:% d.<br/><br/>Tato chyba se zobrazí, když dojde k výpadku služby kvůli softwarovým nebo hardwarovým upgradům, selháním hardwaru nebo jakýmkoli jiným problémům s podporou převzetí služeb při selhání. Kód chyby (% d) vložený v rámci zprávy Error 40197] poskytuje další informace o druhu selhání nebo převzetí služeb při selhání. Některé příklady kódů chyb jsou vložené v rámci zprávy chyby 40197 jsou 40020, 40143, 40166 a 40540.<br/><br/>Po opětovném připojení se automaticky připojí k kopii databáze, která je v pořádku. Vaše aplikace musí zachytit chybu 40197, zaprotokolovat vložený kód chyby (% d) ve zprávě pro řešení potíží a zkusit se znovu připojit k SQL Database, dokud nebudou k dispozici prostředky a připojení se znovu naváže. Další informace najdete v tématu [přechodné chyby](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
+| 40197 |17 |Služba zjistila chybu při zpracování vaší žádosti. Zkuste to prosím znovu. Kód chyby:% d.<br/><br/>Tato chyba se zobrazí, když dojde k výpadku služby kvůli softwarovým nebo hardwarovým upgradům, selháním hardwaru nebo jakýmkoli jiným problémům s podporou převzetí služeb při selhání. Kód chyby (% d) vložený v rámci zprávy chyby 40197 poskytuje další informace o druhu selhání nebo převzetí služeb při selhání. Některé příklady kódů chyb jsou vložené v rámci zprávy chyby 40197 jsou 40020, 40143, 40166 a 40540.<br/><br/>Po opětovném připojení se automaticky připojí k kopii databáze, která je v pořádku. Vaše aplikace musí zachytit chybu 40197, zaprotokolovat vložený kód chyby (% d) ve zprávě pro řešení potíží a zkusit se znovu připojit k SQL Database, dokud nebudou k dispozici prostředky a připojení se znovu naváže. Další informace najdete v tématu [přechodné chyby](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 40501 |20 |Služba je aktuálně zaneprázdněna. Požadavek opakujte po 10 sekundách. ID incidentu:% ls. Kód:% d. Další informace naleznete v tématu: <br/>&bull;&nbsp; [Omezení prostředků logického SQL serveru](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Omezení založené na DTU pro izolované databáze](service-tiers-dtu.md)<br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md)|
 | 40613 |17 |Databáze%. &#x2a;ls na serveru%. &#x2a;ls není aktuálně k dispozici. Zkuste prosím připojení znovu později. Pokud se problém opakuje, obraťte se na zákaznickou podporu a poskytněte mu ID trasování relace%. &#x2a;ls.<br/><br/> K této chybě může dojít, pokud již existuje existující vyhrazené připojení správce (DAC) pro databázi. Další informace najdete v tématu [přechodné chyby](troubleshoot-common-connectivity-issues.md#transient-errors-transient-faults).|
 | 49918 |16 |Požadavek nejde zpracovat. Pro zpracování požadavku není dostatek prostředků.<br/><br/>Služba je aktuálně zaneprázdněna. Opakujte prosím požadavek později. Další informace naleznete v tématu: <br/>&bull;&nbsp; [Omezení prostředků logického SQL serveru](resource-limits-logical-server.md)<br/>&bull;&nbsp; [Omezení založené na DTU pro izolované databáze](service-tiers-dtu.md)<br/>&bull;&nbsp; [Omezení pro elastické fondy založené na DTU](resource-limits-dtu-elastic-pools.md)<br/>&bull;&nbsp; [limity založené na Vcore pro jednotlivé databáze](resource-limits-vcore-single-databases.md)<br/>&bull;&nbsp; [omezení pro elastické fondy založené na Vcore](resource-limits-vcore-elastic-pools.md)<br/>&bull;&nbsp; [Omezení prostředků spravované instance Azure SQL](../managed-instance/resource-limits.md) |
@@ -390,4 +390,4 @@ Další informace o tom, jak povolit protokolování, najdete v tématu [Povolen
 ## <a name="next-steps"></a>Další kroky
 
 - [Architektura připojení Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-connectivity-architecture)
-- [Azure SQL Database a řízení přístupu k síti v datovém skladu](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)
+- [Azure SQL Database a Azure synapse Analytics – ovládací prvky přístupu k síti](https://docs.microsoft.com/azure/sql-database/sql-database-networkaccess-overview)

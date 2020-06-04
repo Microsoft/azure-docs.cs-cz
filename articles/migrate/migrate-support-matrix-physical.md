@@ -2,13 +2,13 @@
 title: Podpora pro posouzení fyzického serveru v Azure Migrate
 description: Další informace o podpoře pro posouzení fyzického serveru pomocí Azure Migrateho posouzení serveru
 ms.topic: conceptual
-ms.date: 04/15/2020
-ms.openlocfilehash: 2a6149da95501b106a57466ad923c0480f52e065
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.date: 06/03/2020
+ms.openlocfilehash: 058a438d722454368f3275216c92d0a2692b359c
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267921"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324313"
 ---
 # <a name="support-matrix-for-physical-server-assessment"></a>Matice podpory pro posouzení fyzického serveru 
 
@@ -54,7 +54,7 @@ Následující tabulka shrnuje požadavky na porty pro posouzení.
 **Zařízení** | **Připojení**
 --- | ---
 **Náplně** | Příchozí připojení na portu TCP 3389 umožňující připojení ke vzdálené ploše zařízení.<br/><br/> Příchozí připojení na portu 44368 pro vzdálený přístup k aplikaci pro správu zařízení pomocí adresy URL:``` https://<appliance-ip-or-name>:44368 ```<br/><br/> Odchozí připojení na portech 443 (HTTPS), která odesílají metadata zjišťování a výkonu Azure Migrate.
-**Fyzické servery** | **Windows:** Příchozí připojení na portech WinRM 5985 (HTTP) a 5986 (HTTPS) k vyžádání metadat konfigurace a výkonu ze serverů Windows. <br/><br/> **Linux:**  Příchozí připojení na portu 22 (UDP) pro vyžádání metadat konfigurace a výkonu ze serverů se systémem Linux. |
+**Fyzické servery** | **Windows:** Příchozí připojení na portech WinRM 5985 (HTTP) a 5986 (HTTPS) k vyžádání metadat konfigurace a výkonu ze serverů Windows. <br/><br/> **Linux:**  Příchozí připojení na portu 22 (TCP) k vyžádání metadat konfigurace a výkonu ze serverů se systémem Linux. |
 
 ## <a name="agent-based-dependency-analysis-requirements"></a>Požadavky na analýzu závislostí na základě agentů
 

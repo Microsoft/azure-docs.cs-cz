@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: c3ee0f335741c171c3a7ee1df3eea6dea9c4b728
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6066cd4f347ef05e6fcdb67bb1223ffbc0cae46b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82176154"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84341007"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -28,7 +28,7 @@ AzCopy je nástroj příkazového řádku, který můžete použít ke kopírov�
 
 ## <a name="configure-proxy-settings"></a>Konfigurace nastavení proxy serveru
 
-Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, `https_proxy` nastavte proměnnou prostředí. Pokud spustíte AzCopy ve Windows, AzCopy automaticky detekuje nastavení proxy serveru, takže toto nastavení nemusíte používat v systému Windows. Pokud se rozhodnete použít toto nastavení ve Windows, přepíše se automatické zjišťování.
+Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, nastavte `https_proxy` proměnnou prostředí. Pokud spustíte AzCopy ve Windows, AzCopy automaticky detekuje nastavení proxy serveru, takže toto nastavení nemusíte používat v systému Windows. Pokud se rozhodnete použít toto nastavení ve Windows, přepíše se automatické zjišťování.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
@@ -37,6 +37,17 @@ Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, `https_proxy` nast
 | **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 AzCopy v současné době nepodporuje proxy servery, které vyžadují ověřování pomocí protokolu NTLM nebo Kerberos.
+
+### <a name="bypassing-a-proxy"></a>Obejití proxy serveru ###
+
+Pokud používáte AzCopy ve Windows a chcete mu sdělit, aby nepoužívala _žádný_ proxy server (místo automatického zjišťování nastavení), použijte tyto příkazy. S těmito nastaveními nebude AzCopy vyhledávat ani se pokoušet použít žádný proxy server.
+
+| Operační systém | Prostředí | Příkazy  |
+|--------|-----------|----------|
+| **Windows** | Příkazový řádek (CMD) | `set HTTPS_PROXY=dummy.invalid` <br>`set NO_PROXY=*`|
+| **Windows** | PowerShell | `$env:HTTPS_PROXY="dummy.invalid"` <br>`$env:NO_PROXY="*"`<br>|
+
+V jiných operačních systémech stačí ponechat proměnnou HTTPS_PROXY zrušit, pokud chcete použít žádný proxy server.
 
 ## <a name="optimize-performance"></a>Optimalizace výkonu
 
@@ -58,7 +69,7 @@ Pomocí následujícího příkazu spusťte test srovnávacího testu výkonu.
 
 |    |     |
 |--------|-----------|
-| **Syntaktick** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Syntaxe** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
 | **Případě** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
@@ -68,7 +79,7 @@ Tento příkaz spustí srovnávací test výkonu odesláním testovacích dat do
 
 Podrobné referenční dokumentace najdete na [AzCopy](storage-ref-azcopy-bench.md).
 
-Chcete-li zobrazit podrobné pokyny pro nápovědu k tomuto `azcopy bench -h` příkazu, zadejte a stiskněte klávesu ENTER.
+Chcete-li zobrazit podrobné pokyny pro nápovědu k tomuto příkazu, zadejte `azcopy bench -h` a stiskněte klávesu ENTER.
 
 ### <a name="optimize-throughput"></a>Optimalizace propustnosti
 
@@ -78,9 +89,9 @@ Pomocí `cap-mbps` příznaku v příkazech můžete umístit strop pro míru pr
 azcopy jobs resume <job-id> --cap-mbps 10
 ```
 
-Při přenosu malých souborů se propustnost může snížit. Propustnost můžete zvýšit nastavením proměnné `AZCOPY_CONCURRENCY_VALUE` prostředí. Tato proměnná Určuje počet souběžných požadavků, které mohou nastat.  
+Při přenosu malých souborů se propustnost může snížit. Propustnost můžete zvýšit nastavením `AZCOPY_CONCURRENCY_VALUE` proměnné prostředí. Tato proměnná Určuje počet souběžných požadavků, které mohou nastat.  
 
-Pokud má počítač méně než 5 procesorů, pak je hodnota této proměnné nastavena na `32`. V opačném případě se výchozí hodnota rovná 16 vynásobenému počtem procesorů. Maximální výchozí hodnota této proměnné je `3000`, ale tuto hodnotu můžete nastavit ručně nebo dolů. 
+Pokud má počítač méně než 5 procesorů, pak je hodnota této proměnné nastavena na `32` . V opačném případě se výchozí hodnota rovná 16 vynásobenému počtem procesorů. Maximální výchozí hodnota této proměnné je `3000` , ale tuto hodnotu můžete nastavit ručně nebo dolů. 
 
 | Operační systém | Příkaz  |
 |--------|-----------|
@@ -88,13 +99,13 @@ Pokud má počítač méně než 5 procesorů, pak je hodnota této proměnné n
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
-`azcopy env` Pro kontrolu aktuální hodnoty této proměnné použijte. Pokud je hodnota prázdná, můžete si přečíst, která hodnota se používá, a to na začátku libovolného souboru protokolu AzCopy. Je zde uvedena vybraná hodnota a důvod, proč byla vybrána.
+`azcopy env`Pro kontrolu aktuální hodnoty této proměnné použijte. Pokud je hodnota prázdná, můžete si přečíst, která hodnota se používá, a to na začátku libovolného souboru protokolu AzCopy. Je zde uvedena vybraná hodnota a důvod, proč byla vybrána.
 
-Před nastavením této proměnné doporučujeme spustit test testu výkonnosti. Proces testování srovnávacích testů bude hlásit doporučenou hodnotu souběžnosti. Případně platí, že pokud se síťové podmínky a datové části liší, nastavte tuto proměnnou na `AUTO` slovo místo na konkrétní číslo. To způsobí, že AzCopy vždy spustí stejný proces automatického ladění, který používá testy srovnávacích testů.
+Před nastavením této proměnné doporučujeme spustit test testu výkonnosti. Proces testování srovnávacích testů bude hlásit doporučenou hodnotu souběžnosti. Případně platí, že pokud se síťové podmínky a datové části liší, nastavte tuto proměnnou na slovo `AUTO` místo na konkrétní číslo. To způsobí, že AzCopy vždy spustí stejný proces automatického ladění, který používá testy srovnávacích testů.
 
 ### <a name="optimize-memory-use"></a>Optimalizace využití paměti
 
-Nastavte proměnnou `AZCOPY_BUFFER_GB` prostředí tak, aby určovala maximální velikost systémové paměti, kterou má AzCopy použít při stahování a nahrávání souborů.
+Nastavte `AZCOPY_BUFFER_GB` proměnnou prostředí tak, aby určovala maximální velikost systémové paměti, kterou má AzCopy použít při stahování a nahrávání souborů.
 Vyjádřete tuto hodnotu v gigabajtech (GB).
 
 | Operační systém | Příkaz  |
@@ -107,19 +118,19 @@ Vyjádřete tuto hodnotu v gigabajtech (GB).
 
 Příkaz [synchronizovat](storage-ref-azcopy-sync.md) identifikuje všechny soubory v cílovém umístění a pak porovná názvy souborů a poslední změněná časová razítka před zahájením operace synchronizace. Pokud máte velký počet souborů, můžete zvýšit výkon tím, že tento proces předem vynecháte. 
 
-Pokud to chcete provést, použijte místo toho příkaz pro [kopírování AzCopy](storage-ref-azcopy-copy.md) a nastavte `--overwrite` příznak na `ifSourceNewer`. AzCopy bude porovnávat soubory při jejich kopírování bez provedení jakýchkoli kontrol a porovnání předem. V případech, kdy je k dispozici velký počet souborů k porovnání, poskytujeme hraniční výkon.
+Pokud to chcete provést, použijte místo toho příkaz pro [kopírování AzCopy](storage-ref-azcopy-copy.md) a nastavte `--overwrite` příznak na `ifSourceNewer` . AzCopy bude porovnávat soubory při jejich kopírování bez provedení jakýchkoli kontrol a porovnání předem. V případech, kdy je k dispozici velký počet souborů k porovnání, poskytujeme hraniční výkon.
 
-Příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) neodstraní soubory z cílového umístění, takže pokud chcete odstranit soubory v cílovém umístění, když už na zdroji neexistují, použijte příkaz [AzCopy Sync](storage-ref-azcopy-sync.md) s `--delete-destination` příznakem nastaveným na hodnotu `true` nebo. `prompt` 
+Příkaz [AzCopy Copy](storage-ref-azcopy-copy.md) neodstraní soubory z cílového umístění, takže pokud chcete odstranit soubory v cílovém umístění, když už na zdroji neexistují, použijte příkaz [AzCopy Sync](storage-ref-azcopy-sync.md) s `--delete-destination` příznakem nastaveným na hodnotu `true` nebo `prompt` . 
 
 ## <a name="troubleshoot-issues"></a>Řešení potíží
 
 AzCopy vytvoří soubory protokolů a plánů pro každou úlohu. Protokoly můžete použít k prozkoumání a odstraňování potíží s případnými problémy. 
 
-Protokoly budou obsahovat stav selhání (`UPLOADFAILED`, `COPYFAILED`, a `DOWNLOADFAILED`), úplnou cestu a důvod selhání.
+Protokoly budou obsahovat stav selhání ( `UPLOADFAILED` , `COPYFAILED` , a `DOWNLOADFAILED` ), úplnou cestu a důvod selhání.
 
-Ve výchozím nastavení se soubory protokolů a plánů nacházejí v `%USERPROFILE%\.azcopy` adresáři ve Windows nebo `$HOME$\.azcopy` adresáři v počítačích Mac a Linux, ale pokud chcete, můžete toto umístění změnit.
+Ve výchozím nastavení se soubory protokolů a plánů nacházejí v adresáři ve `%USERPROFILE%\.azcopy` Windows nebo `$HOME$\.azcopy` adresáři v počítačích Mac a Linux, ale pokud chcete, můžete toto umístění změnit.
 
-Relevantní chyba není nutně první chyba, která se zobrazí v souboru. V případě chyb, jako jsou chyby sítě, vypršení časového limitu a chyby zaneprázdnění serveru, bude AzCopy opakovat až 20 krát a obvykle se proces opakování zdaří.  První chyba, kterou vidíte, může být neškodná, která byla úspěšně opakována.  Takže místo toho, aby se v souboru prohledala první chyba, vyhledejte chyby, které jsou `UPLOADFAILED`blízko `COPYFAILED`, nebo `DOWNLOADFAILED`. 
+Relevantní chyba není nutně první chyba, která se zobrazí v souboru. V případě chyb, jako jsou chyby sítě, vypršení časového limitu a chyby zaneprázdnění serveru, bude AzCopy opakovat až 20 krát a obvykle se proces opakování zdaří.  První chyba, kterou vidíte, může být neškodná, která byla úspěšně opakována.  Takže místo toho, aby se v souboru prohledala první chyba, vyhledejte chyby, které jsou blízko `UPLOADFAILED` , `COPYFAILED` nebo `DOWNLOADFAILED` . 
 
 > [!IMPORTANT]
 > Při odesílání žádosti o podpora Microsoftu (nebo řešení potíží, které se týkají jakékoli třetí strany) nastavte navýšení verze příkazu, který chcete spustit. Tím se zajistí, že se SAS nebude náhodně sdílet s kdokoli. Navýšení verze se dá najít na začátku souboru protokolu.
@@ -174,7 +185,7 @@ Když úlohu obnovíte, AzCopy se podívá na soubor plánu úlohy. Soubor plán
 
 ## <a name="change-the-location-of-the-plan-and-log-files"></a>Změna umístění plánu a souborů protokolu
 
-Ve výchozím nastavení se soubory schématu a protokolu nacházejí v `%USERPROFILE%\.azcopy` adresáři ve Windows nebo v `$HOME$\.azcopy` adresáři v systému Mac a Linux. Toto umístění můžete změnit.
+Ve výchozím nastavení se soubory schématu a protokolu nacházejí v `%USERPROFILE%\.azcopy` adresáři ve Windows nebo v adresáři v systému `$HOME$\.azcopy` Mac a Linux. Toto umístění můžete změnit.
 
 ### <a name="change-the-location-of-plan-files"></a>Změna umístění souborů plánu
 
@@ -186,7 +197,7 @@ Použijte některý z těchto příkazů.
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
-`azcopy env` Pro kontrolu aktuální hodnoty této proměnné použijte. Pokud je hodnota prázdná, pak se soubory plánu zapisují do výchozího umístění.
+`azcopy env`Pro kontrolu aktuální hodnoty této proměnné použijte. Pokud je hodnota prázdná, pak se soubory plánu zapisují do výchozího umístění.
 
 ### <a name="change-the-location-of-log-files"></a>Změna umístění souborů protokolu
 
@@ -198,18 +209,18 @@ Použijte některý z těchto příkazů.
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
 | **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
-`azcopy env` Pro kontrolu aktuální hodnoty této proměnné použijte. Pokud je hodnota prázdná, protokoly se zapisují do výchozího umístění.
+`azcopy env`Pro kontrolu aktuální hodnoty této proměnné použijte. Pokud je hodnota prázdná, protokoly se zapisují do výchozího umístění.
 
 ## <a name="change-the-default-log-level"></a>Změna výchozí úrovně protokolu
 
-Ve výchozím nastavení je úroveň protokolu AzCopy nastavena na `INFO`hodnotu. Pokud chcete snížit podrobnosti protokolu, aby se ušetřilo místo na disku, přepište toto nastavení pomocí ``--log-level`` možnosti. 
+Ve výchozím nastavení je úroveň protokolu AzCopy nastavena na hodnotu `INFO` . Pokud chcete snížit podrobnosti protokolu, aby se ušetřilo místo na disku, přepište toto nastavení pomocí ``--log-level`` Možnosti. 
 
-Dostupné úrovně protokolu jsou: `NONE`, `DEBUG`, `INFO`, `WARNING`, `ERROR`, `PANIC`a `FATAL`.
+Dostupné úrovně protokolu jsou: `NONE` , `DEBUG` , `INFO` , `WARNING` , `ERROR` , a `PANIC` `FATAL` .
 
 ## <a name="remove-plan-and-log-files"></a>Odebrat soubory plánu a protokolu
 
-Pokud chcete ze svého místního počítače odebrat všechny soubory plánu a protokolu, aby se ušetřilo místo na disku, `azcopy jobs clean` použijte příkaz.
+Pokud chcete ze svého místního počítače odebrat všechny soubory plánu a protokolu, aby se ušetřilo místo na disku, použijte `azcopy jobs clean` příkaz.
 
-Chcete-li odebrat plán a soubory protokolu spojené pouze s jednou úlohou `azcopy jobs rm <job-id>`, použijte. `<job-id>` Zástupný symbol v tomto příkladu nahraďte ID úlohy úlohy.
+Chcete-li odebrat plán a soubory protokolu spojené pouze s jednou úlohou, použijte `azcopy jobs rm <job-id>` . `<job-id>`Zástupný symbol v tomto příkladu nahraďte ID úlohy úlohy.
 
 

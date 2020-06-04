@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2020
 ms.author: sohamnc
-ms.openlocfilehash: ee4bd24264be9e7730d4dc99af4e61b05a7692bc
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 716d40a0b86ec3385f236a3d81f651d24a36845a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594130"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342101"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Nejčastější dotazy pro přední dveře Azure
 
@@ -46,7 +46,7 @@ Klíčové scénáře, proč použít Application Gateway za předními dveřmi:
 
 - Přední dveře můžou vyrovnávání zatížení na základě cesty provádět jenom na globální úrovni, ale pokud jeden chce vyrovnávat zatížení provozu ještě dál v rámci své virtuální sítě (VNET), měl by použít Application Gateway.
 - Vzhledem k tomu, že přední dvířka nefungují na úrovni virtuálního počítače nebo kontejneru, nemůže připojení vyprázdnit. Application Gateway však umožňuje vyprazdňování připojení. 
-- U Application Gateway za AFD může jeden dosáhnout 100% snižování zátěže TLS/SSL a směrovat pouze požadavky HTTP v rámci své virtuální sítě (VNET).
+- U Application Gateway za předními dveřmi může jedna z nich dosáhnout 100% snižování zátěže TLS/SSL a směrovat pouze požadavky HTTP v rámci své virtuální sítě (VNET).
 - Přední dvířka a Application Gateway obojí podporují spřažení relace. Zatímco přední dveře můžou směrovat následné přenosy z uživatelské relace do stejného clusteru nebo do back-endu v dané oblasti, Application Gateway můžou spřažení provoz směrovat na stejný server v rámci clusteru.  
 
 ### <a name="can-we-deploy-azure-load-balancer-behind-front-door"></a>Můžeme nasazovat Azure Load Balancer za předními dveřmi?
@@ -79,7 +79,7 @@ Přední dvířka Azure je globálně distribuovaná služba pro více tenantů.
 
 ### <a name="is-http-https-redirection-supported"></a>Je podporováno přesměrování HTTP->HTTPS?
 
-Ano. Ve skutečnosti podporuje přední dveře Azure hostitele, cestu a přesměrování řetězce dotazu a také součást přesměrování adresy URL. Přečtěte si další informace o [přesměrování adresy URL](front-door-url-redirect.md). 
+Yes. Ve skutečnosti podporuje přední dveře Azure hostitele, cestu a přesměrování řetězce dotazu a také součást přesměrování adresy URL. Přečtěte si další informace o [přesměrování adresy URL](front-door-url-redirect.md). 
 
 ### <a name="in-what-order-are-routing-rules-processed"></a>V jakém pořadí jsou pravidla směrování zpracovaná?
 
@@ -98,7 +98,7 @@ Pokud chcete aplikaci uzamknout, aby přijímala provoz jenom z vašich konkrét
     > [!WARNING]
     > Back-endové IP místo pro front-endu se může později změnit, ale zajistíme, že budeme integrovat s [rozsahy IP adres Azure a značkami služeb](https://www.microsoft.com/download/details.aspx?id=56519). Doporučujeme, abyste se přihlásili k odběru [rozsahů IP adres Azure a značek služeb](https://www.microsoft.com/download/details.aspx?id=56519) pro jakékoli změny nebo aktualizace.
 
--    Proveďte operaci GET na front-dveřích s verzí `2020-01-01` rozhraní API nebo vyšší. V volání rozhraní API vyhledejte `frontdoorID` pole. Vyfiltrujte příchozí hlavičku**X-Azure-FDID**, kterou odeslala přední dvířka do back-endu, s hodnotou, která je `frontdoorID`v poli. 
+-    Proveďte operaci GET na front-dveřích s verzí rozhraní API `2020-01-01` nebo vyšší. V volání rozhraní API vyhledejte `frontdoorID` pole. Vyfiltrujte příchozí hlavičku**X-Azure-FDID**, kterou odeslala přední dvířka do back-endu, s hodnotou, která je v poli `frontdoorID` . 
 
 ### <a name="can-the-anycast-ip-change-over-the-lifetime-of-my-front-door"></a>Může se IP adresa libovolného vysílání změnit během životnosti mých front-dveří?
 

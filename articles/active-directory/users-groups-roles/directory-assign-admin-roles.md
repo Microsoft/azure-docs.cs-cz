@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 63a4285725db4dcb41affa93261fbbc03d11598e
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: b38ac6400a882d98c68ea39ae359e20ed237cd5f
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310746"
+ms.locfileid: "84340262"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -82,7 +82,7 @@ Uživatelé s touto rolí můžou pro některé uživatele nastavit nebo resetov
 Role [správce privilegovaného ověřování](#privileged-authentication-administrator) má oprávnění k vynucení opakované registrace a ověřování Multi-Factor Authentication pro všechny uživatele.
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
+> Uživatelé s touto rolí můžou měnit přihlašovací údaje pro uživatele, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna přihlašovacích údajů uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům ověřování. Prostřednictvím této cesty může správce ověřování předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -224,7 +224,7 @@ Tento správce spravuje federace mezi organizacemi Azure AD a externími zprost�
 
 ### <a name="global-administrator--company-administrator"></a>[Globální správce/správce společnosti](#company-administrator-permissions)
 
-Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory a také službám, které používají Azure Active Directory identity, jako je Microsoft 365 Security Center, Microsoft 365 Center pro dodržování předpisů, Exchange Online, SharePoint Online a Online Skype pro firmy. Osoba, která se zaregistruje do organizace Azure AD, se stal globálním správcem. Ve vaší společnosti může být víc než jeden globální správce. Globální správci můžou resetovat heslo kteréhokoliv uživatele a všech ostatních správců.
+Uživatelé s touto rolí mají přístup ke všem funkcím pro správu v Azure Active Directory a také službám, které používají Azure Active Directory identity, jako je Microsoft 365 Security Center, Microsoft 365 Center pro dodržování předpisů, Exchange Online, SharePoint Online a Online Skype pro firmy. Kromě toho můžou globální správci [zvýšit úroveň přístupu](https://docs.microsoft.com/azure/role-based-access-control/elevate-access-global-admin) ke správě všech předplatných Azure a skupin pro správu. Díky tomu můžou globální správci získat úplný přístup ke všem prostředkům Azure pomocí příslušného tenanta Azure AD. Osoba, která se zaregistruje do organizace Azure AD, se stal globálním správcem. Ve vaší společnosti může být víc než jeden globální správce. Globální správci můžou resetovat heslo kteréhokoliv uživatele a všech ostatních správců.
 
 > [!NOTE]
 > V rozhraní Microsoft Graph API a Azure AD PowerShell je tato role označená jako správce společnosti. Jedná se o globální správce v [Azure Portal](https://portal.azure.com).
@@ -267,7 +267,7 @@ Uživatelé s touto rolí můžou měnit hesla, zrušit platnost tokenů aktuali
 * Čtečka sestav
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům helpdesku. Prostřednictvím této cesty může správce helpdesku předpokládat identitu vlastníka aplikace a následně převzít identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.
@@ -389,7 +389,7 @@ Uživatelé s touto rolí mohou zobrazovat data vytváření sestav o využití 
 
 ### <a name="search-administrator"></a>[Správce hledání](#search-administrator-permissions)
 
-Uživatelé v této roli mají plný přístup ke všem funkcím pro správu služby Microsoft Search v centru pro správu Microsoft 365. Správce vyhledávání může delegovat role správců vyhledávání a hledání na uživatele a vytvářet a spravovat obsah, jako jsou záložky, Q&jako a umístění. Kromě toho mohou uživatelé zobrazit Centrum zpráv, monitorovat stav služeb a vytvářet žádosti o služby.
+Uživatelé v této roli mají plný přístup ke všem funkcím pro správu služby Microsoft Search v centru pro správu Microsoft 365. Kromě toho mohou uživatelé zobrazit Centrum zpráv, monitorovat stav služeb a vytvářet žádosti o služby.
 
 ### <a name="search-editor"></a>[Editor hledání](#search-editor-permissions)
 
@@ -496,7 +496,7 @@ Uživatelé s touto rolí můžou vytvářet uživatele a spravovat všechny asp
 |Pouze pro uživatele, kteří nejsou správci, nebo v některé z následujících rolí s omezeným oprávněním správce:<ul><li>Čtečky adresářů<li>Pozvánka hosta<li>Správce helpdesku<li>Čtenář centra zpráv<li>Čtečka sestav<li>Správce uživatele|<p>Odstranění a obnovení</p><p>Zakázat a povolit</p><p>Zrušit platnost obnovovacích tokenů</p><p>Spravovat všechny vlastnosti uživatele včetně hlavního názvu uživatele</p><p>Resetování hesla</p><p>Aktualizace (FIDO) – klíče zařízení</p>|
 
 > [!IMPORTANT]
-> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Například:
+> Uživatelé s touto rolí můžou měnit hesla pro lidi, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci uvnitř i mimo Azure Active Directory. Změna hesla uživatele může znamenat možnost předpokládat identitu a oprávnění tohoto uživatele. Příklad:
 >
 >- Registrace aplikace a vlastníci podnikových aplikací, kteří můžou spravovat přihlašovací údaje aplikací, které vlastní. Tyto aplikace můžou mít privilegovaná oprávnění ve službě Azure AD a jinde nejsou udělená správcům uživatelů. Prostřednictvím této cesty může správce uživatelů předpokládat identitu vlastníka aplikace a pak dále předpokládat identitu privilegované aplikace tím, že aktualizuje přihlašovací údaje pro aplikaci.
 >- Vlastníci předplatného Azure, kteří můžou mít přístup k citlivým nebo soukromým informacím nebo kritické konfiguraci v Azure.

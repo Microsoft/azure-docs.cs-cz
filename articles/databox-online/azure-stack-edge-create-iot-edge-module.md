@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/06/2019
 ms.author: alkohli
-ms.openlocfilehash: 206d63e05b68cbcec65b0d06e11da48065251ea0
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 7c12beaf30651a6cb1048a75b0f7cb353b45173a
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569989"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339888"
 ---
 # <a name="develop-a-c-iot-edge-module-to-move-files-on-azure-stack-edge"></a>Vývoj modulu C# IoT Edge pro přesunutí souborů na Azure Stack Edge
 
@@ -24,6 +24,7 @@ K transformaci dat při jejich přesunu do Azure můžete použít Azure IoT Edg
 V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
+>
 > * Vytvořte registr kontejnerů pro ukládání a správu modulů (Image Docker).
 > * Vytvořte modul IoT Edge pro nasazení na zařízení Azure Stack Edge. 
 
@@ -107,7 +108,7 @@ Vytvořte šablonu řešení v jazyce C#, kterou můžete přizpůsobit pomocí 
 
     5. Zadejte registr kontejneru, který jste vytvořili v předchozí části, jako úložiště imagí pro váš první modul. Nahraďte **localhost:5000** hodnotou pro přihlašovací server, kterou jste zkopírovali.
 
-        Výsledný řetězec vypadá takto `<Login server name>/<Module name>`:. V tomto příkladu je řetězec: `mycontreg2.azurecr.io/filecopymodule`.
+        Výsledný řetězec vypadá takto `<Login server name>/<Module name>` :. V tomto příkladu je řetězec: `mycontreg2.azurecr.io/filecopymodule` .
 
         ![Vytvořit nové řešení 3](./media/azure-stack-edge-create-iot-edge-module/create-new-solution-3.png)
 
@@ -272,7 +273,7 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
 
     *Program. cs (77, 44): upozornění CS1998: v této asynchronní metodě chybí operátory await a spustí se synchronně. Zvažte použití operátoru await pro čekání na neblokující volání rozhraní API nebo ' await Task. Run (...) ' k provedení práce vázané na procesor ve vlákně na pozadí.*
 
-4. Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresa obrázku je sestavena z informací, které jsou v souboru Module. JSON ve formátu `<repository>:<version>-<platform>`. Pro tento článek by měl vypadat nějak takto `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64`:.
+4. Úplnou adresu image kontejneru se značkou můžete vidět v integrovaném terminálu VS Code. Adresa obrázku je sestavena z informací, které jsou v souboru Module. JSON ve formátu `<repository>:<version>-<platform>` . Pro tento článek by měl vypadat nějak takto `mycontreg2.azurecr.io/filecopymodule:0.0.1-amd64` :.
 
 ## <a name="next-steps"></a>Další kroky
 

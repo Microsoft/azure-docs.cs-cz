@@ -1,21 +1,21 @@
 ---
 title: Nejčastější dotazy (FAQ) – LUIS
 description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/06/2020
 ms.author: diberry
-ms.openlocfilehash: 79cee94a0f04cb89aa65f65cde63e48b6f078d2c
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 15f2cf3c06e56656efd68d472cabd1da52c375cc
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83834998"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343532"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Nejčastější dotazy ke službě Language Understanding
 
 Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Language Understanding (LUIS).
 
-## <a name="whats-new"></a>Co je nového
+## <a name="whats-new"></a>Novinky
 
 [Přečtěte si další](whats-new.md) informace o novinkách v Language UNDERSTANDING (Luis).
 

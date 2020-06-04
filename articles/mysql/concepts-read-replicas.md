@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: d9d600b4ac34e4608b7747bee0e0a704ad2ab3be
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 1536773840693e943b1e32f0ae7358b8b2ee7ce9
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83846048"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324636"
 ---
 # <a name="read-replicas-in-azure-database-for-mysql"></a>Repliky pro čtení ve službě Azure Database for MySQL
 
@@ -106,6 +106,9 @@ Přečtěte si, jak [zastavit replikaci do repliky](howto-read-replicas-portal.m
 ### <a name="pricing-tiers"></a>Cenové úrovně
 
 Repliky čtení jsou v tuto chvíli dostupné jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
+
+> [!NOTE]
+> Náklady na spuštění serveru repliky jsou založené na oblasti, ve které je spuštěný server repliky.
 
 ### <a name="master-server-restart"></a>Restartování hlavního serveru
 

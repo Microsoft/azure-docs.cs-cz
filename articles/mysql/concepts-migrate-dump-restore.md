@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 2/27/2020
-ms.openlocfilehash: 158dd5e1f69340e233a0c2392d3f19fd5cf562ea
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: bc3411a926e71c88f0b4e4f84fcdf083b519f46a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845542"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323548"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrace databáze MySQL do služby Azure Database for MySQL pomocí výpisu a obnovení.
 Tento článek popisuje dva běžné způsoby zálohování a obnovení databází v Azure Database for MySQL
@@ -98,7 +98,8 @@ Chcete-li připravit cílový Azure Database for MySQL server pro rychlejší na
 - slow_query_log – pro vypnutí protokolu pomalého dotazu je nastavené na vypnuto. Tím se eliminuje režie způsobená pomalým protokolováním dotazů během načítání dat.
 - query_store_capture_mode – pro vypnutí úložiště dotazů nastavte na hodnotu žádné. Tím se eliminuje režie způsobená aktivitami vzorkování podle úložiště dotazů.
 - innodb_buffer_pool_size – navýšení kapacity serveru na 32 paměťově optimalizované SKU z cenové úrovně portálu během migrace, aby se zvýšila innodb_buffer_pool_size. Innodb_buffer_pool_size se dá zvýšit jenom tak, že se pro Azure Database for MySQL server škáluje výpočetní výkon.
-- innodb_write_io_threads & innodb_write_io_threads-li v parametrech serveru v Azure Portal ke zvýšení rychlosti migrace hodnotu 16, změňte hodnotu na 16.
+- innodb_io_capacity & innodb_io_capacity_max-li z parametrů serveru v Azure Portal ke zvýšení využití vstupně-výstupních operací k optimalizaci rychlosti migrace, přejděte na 9000.
+- innodb_write_io_threads & innodb_write_io_threads-li pro zvýšení rychlosti migrace v parametrech serveru v Azure Portal hodnotu 4, změňte hodnotu na 4.
 - Horizontální navýšení kapacity úložiště – IOPs pro Azure Database for MySQL server se postupně zvyšují s nárůstem úrovně úložiště. V případě rychlejšího načítání možná budete chtít zvýšit úroveň úložiště a zvýšit tak zřízenou vstupně-výstupní operace. Mějte na paměti, že úložiště lze škálovat pouze nahoru, ne dolů.
 
 Po dokončení migrace můžete vrátit zpět parametry serveru a konfiguraci výpočetních vrstev na předchozí hodnoty. 

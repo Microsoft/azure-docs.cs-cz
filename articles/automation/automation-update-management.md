@@ -3,14 +3,14 @@ title: Přehled Azure Automation Update Management
 description: Tento článek poskytuje přehled funkce Update Management, která implementuje aktualizace pro počítače se systémem Windows a Linux.
 services: automation
 ms.subservice: update-management
-ms.date: 05/22/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 4c27fa26b19b870f90f2e7d6ecd34f1f3c083323
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: fcc34f8d5a07354b31880ebfa605012e05ec3a20
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83847324"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342948"
 ---
 # <a name="update-management-overview"></a>Přehled Update Managementu
 
@@ -103,7 +103,7 @@ V následující tabulce jsou uvedeny nepodporované operační systémy:
 
 ### <a name="client-requirements"></a>Požadavky na klienty
 
-Následující informace popisují požadavky klienta specifické pro operační systém. Další pokyny najdete v tématu [Plánování sítě](#ports).
+Následující informace popisují požadavky klienta specifické pro operační systém. Další pokyny najdete v tématu [Plánování sítě](#ports).  Informace o požadavcích klienta na TLS 1,2 najdete v tématu [vynucení TLS 1,2 pro Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 #### <a name="windows"></a>Windows
 
@@ -214,7 +214,7 @@ Následující tabulka definuje klasifikace, které Update Management podporuje 
 |Balíčky funkcí     | Nové funkce produktu distribuované mimo vydání produktu.        |
 |Aktualizace Service Pack     | Kumulativní sada oprav hotfix, které se aplikují na aplikaci.        |
 |Aktualizace definic     | Aktualizace virů nebo jiných definičních souborů.        |
-|nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
+|Nástroje     | Nástroj nebo funkce, které pomáhají dokončit jednu nebo více úloh.        |
 |Aktualizace     | Aktualizace aplikace nebo souboru, který je aktuálně nainstalován.        |
 
 Následující tabulka definuje podporované klasifikace aktualizací pro Linux.

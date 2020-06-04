@@ -4,17 +4,17 @@ ms.service: data-factory
 ms.topic: include
 ms.date: 10/24/2019
 ms.author: jingwang
-ms.openlocfilehash: 8b6fe266456cfc063df613c1104b8f51c2decf78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07db83ef0ee322e8192c40cfe786add3adea7f37
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72930998"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343492"
 ---
 <!--
     Common for all ADF file-based connectors
 -->
-Azure Data Factory podporuje následující formáty souborů. Informace o nastaveních založených na formátu najdete vždy v příslušném článku.
+Azure Data Factory podporuje následující formáty souborů. Nastavení založená na formátu najdete v každém článku.
 
 - [Formát Avro](../articles/data-factory/format-avro.md)
 - [Binární formát](../articles/data-factory/format-binary.md)

@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: edge
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/24/2019
 ms.author: alkohli
-ms.openlocfilehash: 939296b1cf606401a801dd72eccbad23da766018
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 6e46d1a923eec5244bf77c201ff0b3189699c9ea
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82569612"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84339718"
 ---
 # <a name="manage-access-power-and-connectivity-mode-for-your-azure-stack-edge"></a>Správa přístupu, napájení a režimu připojení pro Azure Stack Edge
 
@@ -66,7 +66,7 @@ Při generování aktivačního klíče pro Azure Stack hraniční zařízení n
 -  Vytváří se sdílená složka s přidruženým účtem úložiště.
 -  Vytváří se uživatel, který má přístup ke sdíleným složkám na zařízení.
 
-Měli byste mít `User` přístup k Tenantovi služby Active Directory, jak potřebujete `Read all directory objects`. Nemůžete být uživatel typu Host, protože k `Read all directory objects`němu nemají oprávnění. Pokud jste Host, pak operace, jako je například generace aktivačního klíče, vytvoření sdílené složky na zařízení Azure Stack Edge, vytvoření uživatele, konfigurace hraniční výpočetní role, resetování hesla zařízení selže.
+Měli byste mít `User` přístup k Tenantovi služby Active Directory, jak potřebujete `Read all directory objects` . Nemůžete být uživatel typu Host, protože k němu nemají oprávnění `Read all directory objects` . Pokud jste Host, pak operace, jako je například generace aktivačního klíče, vytvoření sdílené složky na zařízení Azure Stack Edge, vytvoření uživatele, konfigurace hraniční výpočetní role, resetování hesla zařízení selže.
 
 Další informace o tom, jak poskytnout uživatelům přístup k Microsoft Graph rozhraní API, najdete v tématu [Microsoft Graph oprávnění](https://docs.microsoft.com/graph/permissions-reference).
 
@@ -80,7 +80,7 @@ Pro uživatele, kteří mají oprávnění k vytváření prostředků, jako je 
 
 Než se pokusíte vytvořit nějaký prostředek, ujistěte se, že je v předplatném zaregistrován poskytovatel prostředků. Pokud poskytovatel prostředků není zaregistrovaný, musíte se ujistit, že uživatel vytvářející nový prostředek má dostatečná práva k registraci požadovaného poskytovatele prostředků na úrovni předplatného. Pokud jste to ještě neudělali, zobrazí se následující chyba:
 
-*Název \<předplatného předplatného> nemá oprávnění registrovat poskytovatele prostředků: Microsoft. DataBoxEdge.*
+*Předplatné nemá \<Subscription name> oprávnění registrovat poskytovatele prostředků: Microsoft. DataBoxEdge.*
 
 
 Pokud chcete získat seznam registrovaných poskytovatelů prostředků v aktuálním předplatném, spusťte následující příkaz:
@@ -89,7 +89,7 @@ Pokud chcete získat seznam registrovaných poskytovatelů prostředků v aktuá
 Get-AzResourceProvider -ListAvailable |where {$_.Registrationstate -eq "Registered"}
 ```
 
-Pro Azure Stack hraniční zařízení `Microsoft.DataBoxEdge` by se mělo zaregistrovat. Pokud se `Microsoft.DataBoxEdge`chcete zaregistrovat, Správce předplatného by měl spustit tento příkaz:
+Pro Azure Stack hraniční zařízení `Microsoft.DataBoxEdge` by se mělo zaregistrovat. Pokud se chcete zaregistrovat `Microsoft.DataBoxEdge` , Správce předplatného by měl spustit tento příkaz:
 
 ```PowerShell
 Register-AzResourceProvider -ProviderNamespace Microsoft.DataBoxEdge

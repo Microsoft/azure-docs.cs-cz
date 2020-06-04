@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab, jovanpop, sachinp, sstein
 ms.date: 02/25/2020
-ms.openlocfilehash: b72195c818e418cfca9c88fe666b27b277aa7bda
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 8007966482ba5f046a918ddfc02025e06fadc8d6
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309097"
+ms.locfileid: "84324177"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Přehled omezení prostředků spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -82,6 +82,7 @@ Služba SQL Managed instance má dvě úrovně služeb: [pro obecné účely](..
 | Latence v/v úložiště (přibližná) | 5-10 MS | 1-2 MS |
 | OLTP v paměti | Nepodporuje se | K dispozici, [velikost závisí na počtu Vcore](#in-memory-oltp-available-space) |
 | Maximální počet relací | 30000 | 30000 |
+| Maximální počet souběžných pracovních procesů (požadavků) | COMPUTE GEN4 –: 210 * počet virtuální jádra + 800<br>Gen5:105 * počet virtuální jádra + 800 | COMPUTE GEN4 –: 210 * vCore počet + 800<br>Gen5:105 * vCore počet + 800 |
 | [Repliky jen pro čtení](../database/read-scale-out.md) | 0 | 1 (zahrnuto do ceny) |
 | Izolace výpočtů | Gen5<br/>– podporováno pro 80 virtuální jádra<br/>-není podporováno pro jiné velikosti<br/><br/>COMPUTE GEN4 – se nepodporuje, protože je zastaralá.|Gen5<br/>– podporováno pro 60, 64, 80 virtuální jádra<br/>-není podporováno pro jiné velikosti<br/><br/>COMPUTE GEN4 – se nepodporuje, protože je zastaralá.|
 
@@ -126,6 +127,9 @@ Spravovaná instance SQL aktuálně podporuje nasazení pouze u následujících
 
 ## <a name="regional-resource-limitations"></a>Omezení regionálních prostředků
 
+> [!Note]
+> Pokud chcete získat nejnovější informace o dostupnosti pro předplatná v oblasti, nejdřív si Projděte [oficiální Blogový příspěvek COVID-19](https://aka.ms/sqlcapacity).
+
 Podporované typy předplatného můžou obsahovat omezený počet prostředků na oblast. SQL Managed instance má dvě výchozí omezení na každou oblast Azure (to se dá zvýšit na vyžádání vytvořením speciální [žádosti o podporu v Azure Portal](../database/quota-increase-request.md) v závislosti na typu typu předplatného:
 
 - **Limit podsítě**: maximální počet podsítí, ve kterých jsou instance spravované instance SQL nasazeny v jedné oblasti.
@@ -149,6 +153,9 @@ Následující tabulka ukazuje **výchozí regionální omezení** pro podporova
 \*Při plánování nasazení Vezměte v úvahu, že úroveň služby Pro důležité obchodní informace (BC) vyžaduje čtyři (4) větší kapacitu vCore než úroveň služby Pro obecné účely (GP). Příklad: 1 GP vCore = 1 vCore jednotka a 1 BC vCore = 4 jednotky vCore. Chcete-li zjednodušit analýzu spotřeby proti výchozím omezením, Shrňte jednotky vCore ve všech podsítích v oblasti, kde je nasazena spravovaná instance SQL, a porovnejte výsledky s omezeními jednotky instance pro váš typ předplatného. **Maximální počet Vcore jednotek** se vztahuje na každé předplatné v oblasti. Pro jednotlivé podsítě neplatí žádné omezení s tím rozdílem, že součet všech virtuální jádra nasazených napříč více podsítěmi musí být nižší nebo roven **maximálnímu počtu Vcore jednotek**.
 
 \*\*Větší podsíť a omezení vCore jsou k dispozici v následujících oblastech: Austrálie – východ, Východní USA, Východní USA 2, Severní Evropa, Střed USA – jih, jihovýchodní Asie, Velká Británie – jih, Západní Evropa, Západní USA 2.
+
+> [!IMPORTANT]
+> V případě, že je limit vCore a podsítě 0, znamená to, že výchozí regionální limit pro váš typ předplatného není nastavený. Můžete také použít žádost o zvýšení kvóty pro získání přístupu k předplatnému v konkrétní oblasti podle stejného postupu, který poskytuje požadované hodnoty vCore a podsítí.
 
 ## <a name="request-a-quota-increase"></a>Požádat o zvýšení kvóty
 

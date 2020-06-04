@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/12/2019
-ms.openlocfilehash: f7c182fc8cd0c9ec74a35396e3cd042ce86d8ee4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: ebaddbcacbc20097b2ec5606244650ea2916edfe
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051973"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324534"
 ---
 # <a name="manage-file-space-for-databases-in-azure-sql-database"></a>Správa prostoru souborů pro databáze v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -146,7 +146,7 @@ Upravte následující příklady a vraťte tabulku se seznamem přiděleného m
 Výsledky dotazu pro určení prostoru přiděleného pro každou databázi ve fondu je možné přidat společně a určit tak celkové místo přidělené elastickému fondu. Přidělené místo elastického fondu by nemělo přesáhnout maximální velikost elastického fondu.  
 
 > [!IMPORTANT]
-> Modul Azure Resource Manager PowerShellu (RM) je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
+> Modul PowerShell Azure Resource Manager je stále podporován Azure SQL Database, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020. Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
 Skript prostředí PowerShell vyžaduje SQL Server modul prostředí PowerShell – viz téma [stažení modulu PowerShell](https://docs.microsoft.com/sql/powershell/download-sql-server-ps-module) k instalaci.
 

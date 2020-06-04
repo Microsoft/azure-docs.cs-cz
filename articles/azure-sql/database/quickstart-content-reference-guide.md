@@ -1,6 +1,6 @@
 ---
 title: Referenční informace k obsahu pro rychlý Start pro izolovanou databázi
-description: Seznamte se s obsahem všech rychlých startů, které vám pomůžou rychle začít s izolovanými databázemi v Azure SQL Database
+description: Seznamte se s obsahem všech rychlých startů, které vám pomůžou rychle začít s izolovanými databázemi v Azure SQL Database.
 services: sql-database
 ms.service: sql-database
 ms.subservice: single-database
@@ -11,21 +11,21 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 07/29/2019
-ms.openlocfilehash: c4a699a6b531feee98f9c6f83ba19cfef9d27620
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3265b1f8234e1f2a2f19fb488d5c311e501c770e
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84054603"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338273"
 ---
 # <a name="getting-started-with-single-databases-in-azure-sql-database"></a>Začínáme s izolovanými databázemi v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Jediná databáze](../index.yml) je plně spravovaná databáze PaaS jako služba (DbaaS), která je ideálním modulem úložiště pro moderní aplikace v cloudu. V této části se dozvíte, jak rychle nakonfigurovat a vytvořit izolovanou databázi v Azure SQL Database.
+[Jediná databáze](../index.yml) je plně spravovaná databáze PaaS (Platform as a Service) jako služba (DbaaS), která je ideálním modulem úložiště pro moderní aplikace v cloudu. V této části se dozvíte, jak rychle nakonfigurovat a vytvořit izolovanou databázi v Azure SQL Database.
 
 ## <a name="quickstart-overview"></a>Rychlé starty – přehled
 
-V této části se zobrazí přehled dostupných článků, které vám pomohou rychle začít s izolovanými databázemi. Následující rychlé starty vám umožní rychle vytvořit izolovanou databázi, nakonfigurovat pravidlo brány firewall na úrovni serveru a pak importovat databázi do nové izolované databáze pomocí `.bacpac` souboru:
+V této části uvidíte přehled dostupných článků, které vám pomohou rychle začít s izolovanými databázemi. Následující rychlé starty vám umožní rychle vytvořit izolovanou databázi, nakonfigurovat pravidlo brány firewall na úrovni serveru a pak importovat databázi do nové izolované databáze pomocí `.bacpac` souboru:
 
 - [Vytvořte jednu databázi pomocí Azure Portal](single-database-create-quickstart.md).
 - Po vytvoření databáze bude nutné [zabezpečit databázi konfigurací pravidel brány firewall](firewall-create-server-level-portal-quickstart.md).
@@ -48,14 +48,14 @@ Tyto rychlé starty vám umožní rychle vytvořit nebo importovat databázi do 
 Následující Microsoft Learn moduly vám pomůžou naučit se zdarma o Azure SQL Database.
 
 - [Zřízení databáze v SQL Database k ukládání dat aplikací](https://docs.microsoft.com/learn/modules/provision-azure-sql-db/)
-- [Vývoj a konfigurace aplikace ASP.NET, která se dotazuje na Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
-- [Zabezpečení Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
+- [Vývoj a konfigurace aplikace ASP.NET, která se dotazuje databáze v Azure SQL Database](https://docs.microsoft.com/learn/modules/develop-app-that-queries-azure-sql/)
+- [Zabezpečení databáze v Azure SQL Database](https://docs.microsoft.com/learn/modules/secure-your-azure-sql-database/)
 
 ## <a name="next-steps"></a>Další kroky
 
 - [Seznam podporovaných funkcí v Azure SQL Database najdete na nejvyšší úrovni](features-comparison.md).
 - Přečtěte si, jak zvýšit [zabezpečení databáze](secure-database-tutorial.md).
 - Najděte si pokročilejší postupy, [Jak používat izolovanou databázi v Azure SQL Database](how-to-content-reference-guide.md).
-- Najděte si další ukázkové skripty napsané v [PowerShellu](powershell-script-content-guide.md) a [Azure CLI](az-cli-script-samples-content-guide.md).
+- Najděte si další ukázkové skripty napsané v [PowerShellu](powershell-script-content-guide.md) a v [Azure CLI](az-cli-script-samples-content-guide.md).
 - Přečtěte si další informace o [rozhraní API pro správu](single-database-manage.md) , které můžete použít ke konfiguraci databází.
-- [Identifikujte správnou Azure SQL Database nebo SKU spravované instance SQL pro vaši místní databázi](/sql/dma/dma-sku-recommend-sql-db/).
+- [Identifikujte správnou Azure SQL Database nebo skladovou jednotku spravované instance SQL Azure pro vaši místní databázi](/sql/dma/dma-sku-recommend-sql-db/).

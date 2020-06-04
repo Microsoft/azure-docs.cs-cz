@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
-ms.openlocfilehash: aa26b0c6e30413366e06673a0890b21434fc842b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: aed1965b07a80efa3cd8dbc84e396b9ef4f99252
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047339"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345270"
 ---
 # <a name="in-memory-sample"></a>Ukázka v paměti
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ Další zjednodušený, ale vizuální odvolání výkonu pro OLTP v paměti, na
 
 ### <a name="installation-steps"></a>Kroky instalace
 
-1. V [Azure Portal](https://portal.azure.com/)vytvořte databázi Premium nebo pro důležité obchodní informace na serveru. Nastavte **zdroj** na ukázkovou databázi AdventureWorksLT. Podrobné pokyny najdete v tématu [Vytvoření první databáze SQL Azure](database/single-database-create-quickstart.md).
+1. V [Azure Portal](https://portal.azure.com/)vytvořte databázi Premium nebo pro důležité obchodní informace na serveru. Nastavte **zdroj** na ukázkovou databázi AdventureWorksLT. Podrobné pokyny najdete v tématu [Vytvoření první databáze v Azure SQL Database](database/single-database-create-quickstart.md).
 
 2. Připojte se k databázi pomocí SQL Server Management Studio [(SSMS. exe)](https://msdn.microsoft.com/library/mt238290.aspx).
 
@@ -363,9 +363,9 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 - [Použití OLTP v paměti v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
 
-#### <a name="tools"></a>nástroje
+#### <a name="tools"></a>Nástroje
 
-- [portál Azure](https://portal.azure.com/)
+- [Portál Azure Portal](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

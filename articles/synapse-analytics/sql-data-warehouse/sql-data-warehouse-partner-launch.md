@@ -11,19 +11,19 @@ ms.date: 05/18/2020
 ms.author: procha
 ms.reviewer: mabasile
 ms.custom: seo-lt-2019
-ms.openlocfilehash: e7d370c49d4571b7b46d0d5db121955afd62fd45
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e4af27d841beb21b364b499231a422112eb3ad78
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664449"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324126"
 ---
 # <a name="azure-synapse-analytics-launch-partners"></a>Partneři, kteří spouštějí Azure synapse Analytics
 
 Partneři Azure synapse Analytics se dodávají s integrovanými nástroji pro integraci & poskytováním zkušeností v odvětvích, aby naši zákazníci mohli zrychlit svou digitální transformaci pomocí analýzy cloudového škálování. Projděte si nabídky od následujících partnerů, kteří podporují spuštění veřejné verze Preview, od 19. května se sociálními zesíleními, workshopy a nabídkami.
 
 ## <a name="our-public-preview-launch-partners"></a>Naši partneři pro spuštění veřejné verze Preview
-| Partner | Popis | Odkaz na web/produkt |
+| Partner | Description | Odkaz na web/produkt |
 | ------- | ----------- | -------------------- |
 | ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>Sdružení 45000 + vyhrazené odborníky, Accenture Microsoft Business Group, využívající Avanade – umožňuje organizacím i v oblasti digitálního výpadku.|[Stránka partnerského serveru](https://www.accenture.com/us-en/services/microsoft-index)<br>|
 | ![Adatis](./media/sql-data-warehouse-partner-public-preview/adatis-logo.png) |**Adatis**<br>Adatis nabízí profesionální služby specializované na pokročilé analýzy dat, od strategie správy dat a poradenství do světové třídy pro doručování a správu. |[Stránka partnerského serveru](https://adatis.co.uk/)<br> |
@@ -40,7 +40,6 @@ Partneři Azure synapse Analytics se dodávají s integrovanými nástroji pro i
 | ![Qlik](./media/sql-data-warehouse-partner-business-intelligence/qlik_logo.png) |**Qlik Sense Enterprise**<br>Pomocí aplikace pro vizualizaci dat, kterou může kdokoli použít, můžete vyřídit funkci Insight Discovery. Díky Qlik smyslu můžou všichni ve vaší organizaci snadno vytvářet flexibilní a interaktivní vizualizace a dělat smysluplná rozhodnutí. |[Stránka produktu](https://www.qlik.com/us/products/qlik-sense/enterprise)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/qlik.qlik-sense) |
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>SqlDBM je cloudový nástroj pro modelování dat, který nabízí snadný a pohodlný způsob vývoje databáze kdekoli v jakémkoli prohlížeči. Všechny současně se zahrnutím všech potřebných databázových pravidel a objektů, jako jsou klíče databáze, schémata, indexy, omezení sloupců a vztahy. |[Stránka produktu](http://sqldbm.com/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 | ![Talend](./media/sql-data-warehouse-partner-data-integration/talend_logo.png) |**Talend Cloud**<br>Talend Cloud je podniková platforma pro integraci dat, která slouží k připojení, přístupu a transformaci všech dat v cloudu i v místním prostředí. Jedná se o integrační platformu jako službu (iPaaS), která poskytuje široké možnosti konektivity, integrované kvality dat a nativní podporu pro nejnovější velké objemy dat a cloudové technologie. |[Stránka produktu](https://www.talend.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview) |
-| ![ThoughtSpot](./media/sql-data-warehouse-partner-business-intelligence/thoughtspot-logo.png) |**ThoughtSpot**<br>Pomocí služby Search můžete získat podrobné přehledy z miliard řádků dat nebo si všimnout poznatků z otázek, které jste si nemuseli klást. ThoughtSpot pomáhá businesspeople najít přehledy ve svých firemních datech v řádu sekund. Pomocí služby Search můžete analyzovat data a získávat automatizované přehledy, když je potřebujete.|[Stránka produktu](https://www.thoughtspot.com)<br>|
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o některých našich partnerech najdete v tématech [partneři Business Intelligence](sql-data-warehouse-partner-business-intelligence.md), [partneři pro integraci dat](sql-data-warehouse-partner-data-integration.md)a [Správa dat partneři](sql-data-warehouse-partner-data-management.md).

@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 02/27/2019
 ms.author: allensu
 ms.custom: seodec18
-ms.openlocfilehash: f521cc68476e2f9df1cc8288cf41156da3851cd0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9a490550bf6652186c80268d4a99bff931897fcd
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78251878"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344182"
 ---
 # <a name="tutorial-load-balance-vms-across-availability-zones-with-a-standard-load-balancer-using-the-azure-portal"></a>Kurz: Vyrovnávání zatížení virtuálních počítačů napříč zónami dostupnosti pomocí Load Balanceru úrovně Standard na webu Azure Portal
 
@@ -39,7 +39,7 @@ Další informace o používání zón dostupnosti s Load Balancerem úrovně St
 
 Pokud chcete, můžete tento kurz absolvovat s použitím [Azure CLI](load-balancer-standard-public-zone-redundant-cli.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
@@ -49,17 +49,17 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 Load Balancer úrovně Standard podporuje pouze standardní veřejnou IP adresu. Když při vytváření nástroje pro vyrovnávání zatížení vytvoříte novou veřejnou IP adresu, automaticky se nakonfiguruje jako standardní verze SKU a je také automaticky zónově redundantní.
 
-1. V levém horním rohu obrazovky klikněte na **vytvořit prostředek** > **síť** > **Load Balancer**.
+1. V levém horním rohu obrazovky klikněte na **vytvořit prostředek**  >  **síť**  >  **Load Balancer**.
 2. Na kartě **základy** na stránce **vytvořit službu Vyrovnávání zatížení** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **zkontrolovat + vytvořit**:
 
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Předplatné               | Vyberte své předplatné.    |    
     | Skupina prostředků         | Vyberte **vytvořit nový** a do textového pole zadejte *MyResourceGroupLBAZ* .|
-    | Název                   | *myLoadBalancer*                                   |
+    | Name                   | *myLoadBalancer*                                   |
     | Oblast         | Vyberte **Západní Evropa**.                                        |
     | Typ          | Vyberte možnost **veřejné**.                                        |
-    | Skladová jednotka (SKU)           | Vyberte **Standard**.                          |
+    | SKU           | Vyberte **Standard**.                          |
     | Veřejná IP adresa | Vyberte, že chcete **vytvořit novou** IP adresu. |
     | Název veřejné IP adresy              | Do textového pole zadejte *myPublicIP* .   |
     |Zóna dostupnosti| Vyberte **zóna redundantní**.    |
@@ -75,12 +75,12 @@ V této části budete muset v krocích níže nahradit následující parametry
 
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
-| **\<Resource-Group-Name>**  | myResourceGroupLBAZ (vyberte existující skupinu prostředků) |
-| **\<název virtuální sítě>** | myVNet          |
-| **\<název oblasti>**          | Západní Evropa      |
-| **\<IPv4 –>adresního prostoru**   | 10.0.0.0 \ 16          |
-| **\<>názvů podsítí**          | myBackendSubnet        |
-| **\<podsíť-adresa>rozsahu** | 10.0.0.0 \ 24          |
+| **\<resource-group-name>**  | myResourceGroupLBAZ (vyberte existující skupinu prostředků) |
+| **\<virtual-network-name>** | myVNet          |
+| **\<region-name>**          | Západní Evropa      |
+| **\<IPv4-address-space>**   | 10.0.0.0 \ 16          |
+| **\<subnet-name>**          | myBackendSubnet        |
+| **\<subnet-address-range>** | 10.0.0.0 \ 24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -127,7 +127,7 @@ V této části vytvoříte pravidla skupiny zabezpečení sítě, která povol�
 
 Vytvořte v různých zónách (zóny 1, 2 a 3) pro danou oblast virtuální počítače, které můžou fungovat jako servery back-end pro nástroj pro vyrovnávání zatížení.
 
-1. V levém horním rohu obrazovky klikněte na **vytvořit prostředek** > **COMPUTE** > **Windows Server 2016 Datacenter** a zadejte tyto hodnoty pro virtuální počítač:
+1. V levém horním rohu obrazovky klikněte na **vytvořit prostředek**  >  **COMPUTE**  >  **Windows Server 2016 Datacenter** a zadejte tyto hodnoty pro virtuální počítač:
     - *myVM1* – název virtuálního počítače.        
     - *azureuser* – uživatelské jméno správce.    
     - *myResourceGroupLBAZ* – v části **Skupina prostředků** vyberte **Použít existující** a pak vyberte *myResourceGroupLBAZ*.
@@ -140,9 +140,6 @@ Vytvořte v různých zónách (zóny 1, 2 a 3) pro danou oblast virtuální po�
     - *myNetworkSecurityGroup* – název skupiny zabezpečení sítě (brána firewall).
 5. Kliknutím na **Zakázáno** zakažte diagnostiku spouštění.
 6. Klikněte na **OK**, na stránce souhrnu zkontrolujte nastavení a pak klikněte na **Vytvořit**.
-  
-   ![Vytvoření virtuálního počítače](./media/load-balancer-standard-public-availability-zones-portal/create-vm-standard-ip.png)
-
 7. Podle kroků 1 až 6 vytvořte druhý virtuální počítač s názvem *VM2* v zóně 2 a třetí virtuální počítač v zóně 3, s virtuální sítí *myVnet*, podsítí *myBackendSubnet* a skupinou zabezpečení sítě **myNetworkSecurityGroup*.
 
 ### <a name="install-iis-on-vms"></a>Instalace služby IIS na virtuální počítače
@@ -150,7 +147,7 @@ Vytvořte v různých zónách (zóny 1, 2 a 3) pro danou oblast virtuální po�
 1. V levé nabídce klikněte na **Všechny prostředky** a pak v seznamu prostředků klikněte na **myVM1** ve skupině prostředků *myResourceGroupLBAZ*.
 2. Na stránce **Přehled** klikněte na **Připojit** a připojte se přes RDP k virtuálnímu počítači.
 3. Přihlaste se k virtuálnímu počítači s použitím uživatelského jména *azureuser*.
-4. Na ploše serveru přejděte do části> **Nástroje pro správu Windows****Windows PowerShell**.
+4. Na ploše serveru přejděte do části **Nástroje pro správu Windows** > **Windows PowerShell**.
 5. V okně PowerShellu spuštěním následujících příkazů nainstalujte server služby IIS, odeberte výchozí soubor iisstart.htm a pak přidejte nový soubor iisstart.htm, který zobrazuje název virtuálního počítače:
    ```azurepowershell-interactive
     

@@ -8,18 +8,19 @@ author: asudbring
 manager: KumundD
 Customer intent: I want to test a NAT Gateway for outbound connectivity for my virtual network.
 ms.service: virtual-network
+ms.subservice: nat
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
-ms.openlocfilehash: ceadbb4297ad0c5ce28470dd75b3f3496c9c5152
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a076020cc35032f248534f8302631ba0753ca5ed
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82084739"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338580"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Kurz: Vytvoření brány NAT pomocí Azure Portal a testování služby NAT
 
@@ -29,7 +30,7 @@ Pokud chcete, můžete tyto kroky provést pomocí [Azure CLI](tutorial-create-v
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 ## <a name="prepare-the-source-for-outbound-traffic"></a>Příprava zdroje na odchozí provoz
 
@@ -43,12 +44,12 @@ V této části budete muset v krocích níže nahradit následující parametry
 
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
-| **\<Resource-Group-Name>**  | myResourceGroupNAT |
-| **\<název virtuální sítě>** | myVNetsource          |
-| **\<název oblasti>**          | USA – východ 2      |
-| **\<IPv4 –>adresního prostoru**   | 192.168.0.0/16          |
-| **\<>názvů podsítí**          | mySubnetsource        |
-| **\<podsíť-adresa>rozsahu** | 192.168.0.0/24          |
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetsource          |
+| **\<region-name>**          | USA – východ 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0/16          |
+| **\<subnet-name>**          | mySubnetsource        |
+| **\<subnet-address-range>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
@@ -60,16 +61,16 @@ K otestování brány NAT přiřadíme prostředek veřejné IP adresy jako veř
 
 Tento virtuální počítač můžete také vytvořit bez veřejné IP adresy a vytvořit jiný virtuální počítač pro použití jako JumpBox bez veřejné IP adresy jako cvičení.
 
-1. V levém horním rohu portálu vyberte **vytvořit Resource** > **COMPUTE** > **Ubuntu Server 18,04 LTS**nebo vyhledejte **Ubuntu Server 18,04 LTS** v hledání na webu Marketplace.
+1. V levém horním rohu portálu vyberte **vytvořit Resource**  >  **COMPUTE**  >  **Ubuntu Server 18,04 LTS**nebo vyhledejte **Ubuntu Server 18,04 LTS** v hledání na webu Marketplace.
 
 2. V části **vytvořit virtuální počítač**zadejte nebo vyberte následující hodnoty na kartě **základy** :
-   - **Subscription** > **Skupina prostředků**předplatného: vyberte **myResourceGroupNAT**.
-   - **Podrobnosti** > instance**název virtuálního počítače**: zadejte **myVMsource**.
-   - **Instance Details** > **Oblast** podrobností instance > vybrat **východní USA 2**.
-   - **Administrator account** > **Ověřování**účtu správce zadejte: vyberte **heslo**.
+   - **Předplatné**  >  **Skupina prostředků**: vyberte **myResourceGroupNAT**.
+   - **Podrobnosti instance**  >  **Název virtuálního počítače**: zadejte **myVMsource**.
+   - **Podrobnosti instance**  >  **Oblast** > vyberte **východní USA 2**.
+   - **Účet správce**  >  **Ověřování zadejte**: vyberte **heslo**.
    - **Účet správce** > zadejte **uživatelské jméno**, **heslo**a potvrzení informací o **hesle** .
-   - **Příchozí pravidla** > portů**veřejné příchozí porty**: vyberte **Povolit vybrané porty**.
-   - **Pravidla** > portů pro příchozí spojení**vybrat příchozí porty**: vybrat **SSH (22)**
+   - Pravidla portů pro **příchozí spojení**  >  **Veřejné příchozí porty**: vyberte **Povolit vybrané porty**.
+   - Pravidla portů pro **příchozí spojení**  >  **Vyberte příchozí porty**: vybrat **SSH (22)**
    - Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
 
 3. Na kartě **sítě** zkontrolujte, že jsou vybrané následující:
@@ -96,15 +97,15 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
 
 ### <a name="create-a-public-ip-address"></a>Vytvoření veřejné IP adresy
 
-1. V levém horním rohu portálu vyberte **vytvořit** > **veřejnou IP adresu****sítě** > prostředku nebo v hledání na webu Marketplace vyhledejte **veřejnou IP adresu** . 
+1. V levém horním rohu portálu vyberte **vytvořit**  >  **Networking**  >  **veřejnou IP adresu**sítě prostředku nebo v hledání na webu Marketplace vyhledejte **veřejnou IP adresu** . 
 
 2. V nástroji **vytvořit veřejnou IP adresu**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Verze protokolu IP | Vyberte **IPv4**.
-    | Skladová jednotka (SKU) | Vyberte **Standard**.
-    | Název | Zadejte **myPublicIPsource**. |
+    | SKU | Vyberte **Standard**.
+    | Name | Zadejte **myPublicIPsource**. |
     | Předplatné | Vyberte své předplatné.|
     | Skupina prostředků | Vyberte **myResourceGroupNAT**. |
     | Umístění | Vyberte **USA – východ 2**.|
@@ -113,13 +114,13 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
 
 ### <a name="create-a-public-ip-prefix"></a>Vytvoření předpony veřejné IP adresy
 
-1. V levém horním rohu portálu vyberte **vytvořit** > **předponu veřejné IP adresy****sítě** > prostředku nebo v hledání na webu Marketplace vyhledejte **předponu veřejné IP adresy** .
+1. V levém horním rohu portálu vyberte **vytvořit**  >  **Networking**  >  **předponu veřejné IP adresy**sítě prostředku nebo v hledání na webu Marketplace vyhledejte **předponu veřejné IP adresy** .
 
 2. V části **vytvořit předponu veřejné IP adresy**zadejte nebo vyberte následující hodnoty na kartě **základy** :
-   - **Subscription** > **Skupina prostředků**předplatného: vyberte **myResourceGroupNAT**>
-   - **Instance details** > **Název**podrobností instance: zadejte **myPublicIPprefixsource**.
-   - **Instance details** > **Oblast**podrobností instance: vyberte **východní USA 2**.
-   - **Instance details** > **Velikost předpony**podrobností instance: vyberte **/31 (2 adresy)**
+   - **Předplatné**  >  **Skupina prostředků**: vyberte **myResourceGroupNAT**>
+   - **Podrobnosti instance**  >  **Název**: zadejte **myPublicIPprefixsource**.
+   - **Podrobnosti instance**  >  **Oblast**: vyberte **východní USA 2**.
+   - **Podrobnosti instance**  >  **Velikost předpony**: vyberte **/31 (2 adresy)**
 
 3. Ponechte zbytek výchozí hodnoty a vyberte **zkontrolovat + vytvořit**.
 
@@ -128,13 +129,13 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
 
 ### <a name="create-a-nat-gateway-resource"></a>Vytvoření prostředku brány NAT
 
-1. V levém horním rohu portálu vyberte **vytvořit prostředek** > **síťové** > služby**NAT Gateway**nebo vyhledejte **bránu NAT** v hledání na webu Marketplace.
+1. V levém horním rohu portálu vyberte **vytvořit prostředek**  >  **síťové**služby  >  **NAT Gateway**nebo vyhledejte **bránu NAT** v hledání na webu Marketplace.
 
 2. V části **vytvořit bránu pro překlad síťových adres (NAT)** zadejte nebo vyberte následující hodnoty na kartě **základy** :
-   - **Subscription** > **Skupina prostředků**předplatného: vyberte **myResourceGroupNAT**.
-   - **Podrobnosti** > instance**název brány NAT**: zadejte **myNATgateway**.
-   - **Instance details** > **Oblast**podrobností instance: vyberte **východní USA 2**.
-   - **Instance details** > **Časový limit nečinnosti**v podrobnostech instance (minuty): zadejte **10**.
+   - **Předplatné**  >  **Skupina prostředků**: vyberte **myResourceGroupNAT**.
+   - **Podrobnosti instance**  >  **Název brány NAT**: zadejte **myNATgateway**.
+   - **Podrobnosti instance**  >  **Oblast**: vyberte **východní USA 2**.
+   - **Podrobnosti instance**  >  **Časový limit nečinnosti (minuty)**: zadejte **10**.
    - Vyberte kartu **Veřejná IP adresa** nebo vyberte **Další: veřejná IP adresa**.
 
 3. Na kartě **Veřejná IP adresa** zadejte nebo vyberte následující hodnoty:
@@ -143,7 +144,7 @@ Tato část podrobně popisuje, jak můžete vytvořit a nakonfigurovat následu
    - Vyberte kartu **podsíť** nebo vyberte **Další: podsíť**.
 
 4. Na kartě **podsíť** zadejte nebo vyberte následující hodnoty:
-   - **Virtual Network**: vyberte **myResourceGroupNAT** > **myVnetsource**.
+   - **Virtual Network**: vyberte **myResourceGroupNAT**  >  **myVnetsource**.
    - **Název podsítě**: zaškrtněte políčko vedle **mySubnetsource**.
 
 5. Vyberte **Zkontrolovat a vytvořit**.
@@ -166,27 +167,27 @@ V této části budete muset v krocích níže nahradit následující parametry
 
 | Parametr                   | Hodnota                |
 |-----------------------------|----------------------|
-| **\<Resource-Group-Name>**  | myResourceGroupNAT |
-| **\<název virtuální sítě>** | myVNetdestination          |
-| **\<název oblasti>**          | USA – východ 2      |
-| **\<IPv4 –>adresního prostoru**   | 192.168.0.0/16          |
-| **\<>názvů podsítí**          | mySubnetdestination        |
-| **\<podsíť-adresa>rozsahu** | 192.168.0.0/24          |
+| **\<resource-group-name>**  | myResourceGroupNAT |
+| **\<virtual-network-name>** | myVNetdestination          |
+| **\<region-name>**          | USA – východ 2      |
+| **\<IPv4-address-space>**   | 192.168.0.0/16          |
+| **\<subnet-name>**          | mySubnetdestination        |
+| **\<subnet-address-range>** | 192.168.0.0/24          |
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="create-destination-virtual-machine"></a>Vytvořit cílový virtuální počítač
 
-1. V levém horním rohu portálu vyberte **vytvořit Resource** > **COMPUTE** > **Ubuntu Server 18,04 LTS**nebo vyhledejte **Ubuntu Server 18,04 LTS** v hledání na webu Marketplace.
+1. V levém horním rohu portálu vyberte **vytvořit Resource**  >  **COMPUTE**  >  **Ubuntu Server 18,04 LTS**nebo vyhledejte **Ubuntu Server 18,04 LTS** v hledání na webu Marketplace.
 
 2. V části **vytvořit virtuální počítač**zadejte nebo vyberte následující hodnoty na kartě **základy** :
-   - **Subscription** > **Skupina prostředků**předplatného: vyberte **myResourceGroupNAT**.
-   - **Podrobnosti** > instance**název virtuálního počítače**: zadejte **myVMdestination**.
-   - **Instance Details** > **Oblast** podrobností instance > vybrat **východní USA 2**.
-   - **Administrator account** > **Ověřování**účtu správce zadejte: vyberte **heslo**.
+   - **Předplatné**  >  **Skupina prostředků**: vyberte **myResourceGroupNAT**.
+   - **Podrobnosti instance**  >  **Název virtuálního počítače**: zadejte **myVMdestination**.
+   - **Podrobnosti instance**  >  **Oblast** > vyberte **východní USA 2**.
+   - **Účet správce**  >  **Ověřování zadejte**: vyberte **heslo**.
    - **Účet správce** > zadejte **uživatelské jméno**, **heslo**a potvrzení informací o **hesle** .
-   - **Příchozí pravidla** > portů**veřejné příchozí porty**: vyberte **Povolit vybrané porty**.
-   - **Pravidla** > portů pro příchozí spojení**vyberte příchozí porty**: vyberte **SSH (22)** a **http (80)**.
+   - Pravidla portů pro **příchozí spojení**  >  **Veřejné příchozí porty**: vyberte **Povolit vybrané porty**.
+   - Pravidla portů pro **příchozí spojení**  >  **Vyberte příchozí porty**: vyberte **SSH (22)** a **http (80)**.
    - Vyberte kartu **síť** nebo vyberte **Další: disky**a **Další: síť**.
 
 3. Na kartě **sítě** zkontrolujte, že jsou vybrané následující:
@@ -286,13 +287,13 @@ Nyní jste připraveni otestovat službu NAT.
 
 Během přihlášení ke zdrojovému virtuálnímu počítači můžete k vygenerování požadavků na cílovou IP adresu použít **oblé** a **Hey** .
 
-Pomocí oblé načtěte soubor 100-kilobajtů.  V následujícím příkladu nahraďte ** \<IP-Address-Destination>** cílovou IP adresou, kterou jste dříve zkopírovali.  Parametr **--Output** označuje, že načtený soubor bude zahozen.
+Pomocí oblé načtěte soubor 100-kilobajtů.  **\<ip-address-destination>** V následujícím příkladu nahraďte cílovou IP adresou, kterou jste zkopírovali dříve.  Parametr **--Output** označuje, že načtený soubor bude zahozen.
 
 ```bash
 curl http://<ip-address-destination>/100k --output /dev/null
 ```
 
-Můžete také vygenerovat sérii požadavků pomocí **Hey**. Znovu nahraďte ** \<IP-Address-Destination>** cílovou IP adresou, kterou jste dříve zkopírovali.
+Můžete také vygenerovat sérii požadavků pomocí **Hey**. Znovu nahraďte **\<ip-address-destination>** cílovou IP adresou, kterou jste zkopírovali dříve.
 
 ```bash
 hey -n 100 -c 10 -t 30 --disable-keepalive http://<ip-address-destination>/100k

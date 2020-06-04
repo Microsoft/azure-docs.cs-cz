@@ -10,12 +10,12 @@ ms.author: sstein
 ms.reviewer: genemi
 ms.date: 11/14/2019
 ms.custom: sqldbrb=2
-ms.openlocfilehash: c2556cb1dcf59cdb8ae5014b7dd95fa2c431dc93
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 1d384bf4919589675dd6947fcb083585ebaf7e18
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050419"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344590"
 ---
 # <a name="application-development-overview---sql-database--sql-managed-instance"></a>Přehled vývoje aplikací – SQL Database & spravované instance SQL 
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -28,7 +28,7 @@ K připojení a dotazování Azure SQL Database můžete použít různé [progr
 
 Můžete využít Open Source nástroje, jako je [Cheetah](https://github.com/wunderlist/cheetah), [SQL-CLI](https://www.npmjs.com/package/sql-cli), [vs Code](https://code.visualstudio.com/). Kromě toho Azure SQL Database pracuje s nástroji Microsoftu jako [Visual Studio](https://www.visualstudio.com/downloads/) a [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx). Můžete také využít Azure Portal, PowerShell a rozhraní REST API, které vám pomůžou získat další produktivitu.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Přístup k Azure SQL Database je chráněný pomocí přihlašovacích údajů a bran firewall. Azure SQL Database podporuje uživatele a přihlašovací údaje ověřování SQL Server a [Azure Active Directory](authentication-aad-overview.md) . Přihlášení Azure Active Directory jsou k dispozici pouze ve spravované instanci SQL. 
 
@@ -53,7 +53,7 @@ Další informace o přípravě na plánované události údržby v Azure SQL Da
 - Na počítači, který hostuje klientský program, zajistěte, aby brána firewall umožňovala odchozí komunikaci TCP na portu 1433.  Další informace: [Konfigurace brány Azure SQL Database firewall](firewall-configure.md).
 - Pokud se klientský program připojí k SQL Database v době, kdy klient běží na virtuálním počítači Azure, musíte na VIRTUÁLNÍm počítači otevřít určité rozsahy portů. Další informace: [porty přesahující 1433 pro ADO.NET 4,5 a SQL Database](adonet-v12-develop-direct-route-ports.md).
 - Klientská připojení k Azure SQL Database někdy obcházejí proxy a komunikují přímo s databází. Na významu nabývají jiné porty než 1433. Další informace najdete v [Azure SQL Database architektury připojení](connectivity-architecture.md) a [porty nad 1433 pro ADO.NET 4,5 a SQL Database](adonet-v12-develop-direct-route-ports.md).
-- Konfigurace sítě pro spravovanou instanci SQL najdete v tématu [Konfigurace sítě pro spravované instance SQL](../managed-instance/how-to-content-reference-guide.md#network-configuration).
+- Konfigurace sítě pro instanci spravované instance SQL najdete v tématu [Konfigurace sítě pro spravovanou instanci SQL](../managed-instance/how-to-content-reference-guide.md#network-configuration).
 
 ## <a name="next-steps"></a>Další kroky
 

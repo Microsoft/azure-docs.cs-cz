@@ -3,12 +3,12 @@ title: Referenční dokumentace pro vývojáře v jazyce Java pro Azure Function
 description: Naučte se vyvíjet funkce pomocí Java.
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 6ce886fd0ca47d728a115427b354442fd259e714
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b3404920dda9225b289d82013d29c35a1297ec32
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648230"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84340330"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions příručka pro vývojáře Java
 
@@ -162,7 +162,7 @@ Další argumenty můžete zadat v nastavení aplikace s názvem `JAVA_OPTS` . D
 > [!IMPORTANT]  
 > V plánu spotřeby musíte také přidat nastavení WEBSITE_USE_PLACEHOLDER s hodnotou 0, aby přizpůsobení fungovalo. Toto nastavení zvyšuje dobu studeného startu pro funkce jazyka Java.
 
-### <a name="azure-portal"></a>portál Azure
+### <a name="azure-portal"></a>Portál Azure Portal
 
 V [Azure Portal](https://portal.azure.com)přidejte nastavení pomocí [karty nastavení aplikace](functions-how-to-use-azure-function-app-settings.md#settings) `JAVA_OPTS` .
 
@@ -391,7 +391,7 @@ V předchozím příkladu `queryValue` je svázán s parametrem řetězce dotazu
 
 ## <a name="execution-context"></a>Kontext spuštění
 
-`ExecutionContext`definované v `azure-functions-java-library` obsahuje pomocné metody pro komunikaci s modulem runtime Functions.
+`ExecutionContext`definované v `azure-functions-java-library` obsahuje pomocné metody pro komunikaci s modulem runtime Functions. Další informace najdete v [článku referenčních informací ExecutionContext](/java/api/com.microsoft.azure.functions.executioncontext).
 
 ### <a name="logger"></a>Nástroj
 

@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 07/10/2019
-ms.openlocfilehash: b30a2ae8d90a193e23229dc6743c7e92ebf83b52
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 06/03/2020
+ms.openlocfilehash: b8bf409d759b74e6a5ef0d840aebbe807a04448a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298716"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324817"
 ---
 # <a name="export-flows-from-power-automate-and-deploy-to-azure-logic-apps"></a>Export toků z Power Automate a nasazení do Azure Logic Apps
 
@@ -30,13 +30,13 @@ Pokud chcete rozšířit a rozšířit možnosti toku, můžete tento tok migrov
 
 * Tok, který chcete exportovat z automatizace výkonu
 
-## <a name="export-a-flow"></a>Export toku
+## <a name="export-your-flow"></a>Exportujte tok
 
-1. Přihlaste se k [Možnosti automatizace](https://flow.microsoft.com)a vyberte **Moje toky**. Najděte a vyberte svůj tok. Na panelu nástrojů vyberte tlačítko se třemi tečkami (**...**). Vyberte **exportovat**  >  **Logic Apps šablonu (. JSON)**.
+1. Přihlaste se k [Možnosti automatizace](https://flow.microsoft.com)a vyberte **Moje toky**. Najděte a vyberte svůj tok. Na panelu nástrojů vyberte tlačítko se třemi tečkami (**...**) > **exportovat**  >  **Logic Apps Template (. JSON)**.
 
-   ![Tok exportu](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
+   ![Exportovat tok z automatizace napájení](./media/export-from-microsoft-flow-logic-app-template/export-flow.png)
 
-1. Uložte šablonu do umístění, které chcete.
+1. Uložte soubor. JSON vaší šablony do umístění, které chcete.
 
 Další informace najdete v tématu [o nárůstu až Azure Logic Apps](https://flow.microsoft.com/blog/grow-up-to-logic-apps/).
 
@@ -44,42 +44,51 @@ Další informace najdete v tématu [o nárůstu až Azure Logic Apps](https://f
 
 1. Přihlaste se [Azure Portal](https://portal.azure.com) pomocí svého účtu Azure.
 
-1. V hlavní nabídce Azure vyberte **Vytvořit prostředek**. Do vyhledávacího pole zadejte "Deployment Template". Vyberte **template Deployment (nasadit pomocí vlastních šablon)** a pak vyberte **vytvořit**.
+1. Na domovské stránce Azure do vyhledávacího pole zadejte `custom template` . Z výsledků vyberte **nasadit vlastní šablonu**  >  **vytvořit**.
 
-   ![Vyberte Template deployment](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
+   ![Vyhledejte a vyberte "Template deployment"](./media/export-from-microsoft-flow-logic-app-template/select-template-deployment.png)
 
 1. V části **vlastní nasazení**vyberte **v editoru vytvořit vlastní šablonu**.
 
    ![V editoru vyberte sestavit vlastní šablonu.](./media/export-from-microsoft-flow-logic-app-template/build-template-in-editor.png)
 
-1. Z panelu nástrojů **Upravit šablonu** vyberte **načíst soubor**. Vyhledejte a vyberte šablonu JSON, kterou jste exportovali z Power automatu, a vyberte **otevřít**.
+1. Na panelu nástrojů pro **úpravu šablony** vyberte **načíst soubor**.
 
    ![Vyberte načíst soubor.](./media/export-from-microsoft-flow-logic-app-template/load-file.png)
 
+1. Přejděte do umístění, kam jste uložili soubor šablony JSON, který jste exportovali z automatizace Power automatu. Vyberte soubor šablony > **otevřít**.
+
 1. Poté, co editor zobrazí JSON, parametry a prostředky v šabloně, vyberte Save ( **Uložit**).
-  
+
    ![Uložení šablony](./media/export-from-microsoft-flow-logic-app-template/save-template.png)
 
-1. Nyní zadejte tyto vstupní parametry pro šablonu:
+1. Nyní zadejte další informace o aplikaci logiky.
 
-   * Předplatné Azure, které se má použít pro fakturaci
-   * Skupina prostředků Azure
-   * Umístění skupiny prostředků Azure
-   * Název pro prostředek aplikace logiky
-   * Umístění prostředku aplikace logiky, pokud se liší od skupiny prostředků Azure
-   * Název pro všechna dříve vytvořená připojení, která aplikace logiky může znovu použít
+   1. Vyberte nebo zadejte hodnoty vstupních parametrů pro šablonu.
 
-      Pokud vytváříte svou první aplikaci logiky, budou se všechna připojení vytvářet jako nová, takže můžete přijmout výchozí názvy. V opačném případě můžete zadat názvy pro dříve vytvořená připojení, která můžete použít v několika aplikacích logiky.
+      | Vlastnost | Popis |
+      |----------|-------------|
+      | **Předplatné** | Předplatné Azure, které se má použít pro fakturaci |
+      | **Skupina prostředků** | Skupina prostředků Azure, která se má použít pro vaši aplikaci logiky Můžete použít existující skupinu nebo vytvořit novou. |
+      | **Umístění** | Oblast Azure, která se má použít, pokud vytvoříte novou skupinu prostředků |
+      | **Název aplikace logiky** | Název, který se má použít pro prostředek aplikace logiky |
+      | **Umístění aplikace logiky** | Oblast Azure, ve které chcete vytvořit prostředek aplikace logiky, pokud se liší od skupiny prostředků Azure |
+      | <*název připojení*> | Jeden nebo více názvů pro všechna dříve vytvořená připojení, která aplikace logiky může znovu použít <p><p>**Poznámka**: Pokud je tato aplikace logiky vaše první, vytvoří se všechna připojení jako nová, takže můžete přijmout výchozí názvy. V opačném případě můžete zadat názvy pro dříve vytvořená připojení, která můžete použít v několika aplikacích logiky. |
+      |||
 
-   Po zadání těchto informací pro šablonu si přečtěte a potvrďte Azure Marketplace podmínky a ujednání pro vytvoření nezbytných prostředků Azure a příslušným vyúčtováním svého předplatného Azure a pak vyberte **koupit**.
-  
-   ![Zadat vstupní parametry pro šablonu](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
+      Příklad:
 
-   Azure nasadí vaši šablonu jako aplikaci logiky do zadané skupiny prostředků. Všechny Logic Apps, které migrujete z Power Automate, se nasazují v zakázaném stavu.
+      ![Zadat vstupní parametry pro šablonu](./media/export-from-microsoft-flow-logic-app-template/template-input-parameters.png)
 
-1. Před aktivací aplikace logiky autorizujte všechna nová připojení pomocí následujících kroků:
+   1. Až budete hotovi, přečtěte si **podmínky a ujednání** o vytváření potřebných prostředků Azure a podle potřeby vyfakturujte své předplatné Azure.
 
-   1. Otevřete aplikaci logiky, kterou jste vytvořili. V nabídce aplikace logiky vyberte **Návrhář aplikace logiky**.
+   1. Až budete připraveni, vyberte **Souhlasím s podmínkami a ujednáními uvedenými nad**  >  **nákupem**.
+
+      Azure nasadí vaši šablonu jako aplikaci logiky do zadané skupiny prostředků.
+
+1. Všechny Logic Apps, které migrujete z Power Automate, se nasazují v zakázaném stavu. Než povolíte aplikaci logiky, autorizujte všechna nová připojení pomocí následujících kroků:
+
+   1. V Azure Portal otevřete aplikaci logiky, kterou jste vytvořili. V nabídce aplikace logiky vyberte **Návrhář aplikace logiky**.
 
       Každé připojení, které vyžaduje autorizaci, se zobrazuje ikona upozornění:
 
@@ -91,7 +100,9 @@ Další informace najdete v tématu [o nárůstu až Azure Logic Apps](https://f
 
    1. Přihlaste se ke každé službě nebo poskytněte potřebná pověření pro autorizaci připojení.
 
-1. Uložte svou aplikaci logiky. Až budete připraveni k aktivaci aplikace logiky, v nabídce aplikace logiky vyberte **Přehled**a pak vyberte **Povolit**.
+   1. Po aktualizaci připojení vyberte na panelu nástrojů návrháře možnost **Uložit**.
+
+1. Až budete připraveni k aktivaci aplikace logiky, v nabídce aplikace logiky vyberte **Přehled**a pak vyberte **Povolit**.
 
    ![Povolit aplikaci logiky](./media/export-from-microsoft-flow-logic-app-template/enable-logic-app.png)
 
@@ -99,15 +110,17 @@ Další informace najdete v tématu [o nárůstu až Azure Logic Apps](https://f
 
 ## <a name="deploy-template-by-using-visual-studio"></a>Nasazení šablony pomocí sady Visual Studio
 
-Pokud jste nastavili sadu Visual Studio s [požadavky](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites) na vytváření aplikací logiky, můžete nasadit exportovanou šablonu ze sady Visual studio na Azure Logic Apps.
+Pokud jste nastavili sadu Visual Studio s [požadavky](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md#prerequisites) na vytváření aplikací logiky, můžete nasadit exportovanou šablonu pro Azure Logic Apps pomocí sady Visual Studio.
 
-1. V aplikaci Visual Studio otevřete soubor šablony, který jste exportovali z automatizace Power automatu.
+1. V aplikaci Visual Studio vyhledejte a otevřete soubor. JSON pro šablonu aplikace logiky, kterou jste exportovali z automatizace Power automatu.
 
-1. V aplikaci Visual Studio vytvořte projekt skupiny prostředků Azure a vyberte šablonu **Aplikace logiky** podle kroků v části [rychlý Start: vytvoření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md), například:
+1. V aplikaci Visual Studio vytvořte projekt **skupiny prostředků Azure** , který používá šablonu **Aplikace logiky** podle kroků v části [rychlý Start: vytvoření automatizovaných úloh, procesů a pracovních postupů pomocí Azure Logic Apps – Visual Studio](../logic-apps/quickstart-create-logic-apps-with-visual-studio.md).
+
+   Tento příklad vytvoří řešení sady Visual Studio s názvem "ImportedLogicApp".
 
    ![Vytvoření projektu skupiny prostředků Azure](./media/export-from-microsoft-flow-logic-app-template/create-azure-resource-group-project.png)
 
-1. Z Průzkumník řešení otevřete soubor **LogicApp. JSON** , pokud soubor ještě není otevřený.
+1. Po vytvoření řešení v Průzkumník řešení otevřete soubor **LogicApp. JSON** , pokud soubor ještě není otevřený.
 
 1. Zkopírujte obsah z exportované šablony a přepište obsah v souboru **LogicApp. JSON** .
 
@@ -143,7 +156,7 @@ Pokud jste nastavili sadu Visual Studio s [požadavky](../logic-apps/quickstart-
 
    ![Upravit parametry nasazení](./media/export-from-microsoft-flow-logic-app-template/edit-parameters-deployment.png)
 
-   Po zahájení nasazování se v okně **Výstup** sady Visual Studio zobrazí stav nasazení vaší aplikace. Pokud se stav nezobrazí, otevřete seznam **Zobrazit výstup z** a vyberte svou skupinu prostředků Azure. Například:
+   Po zahájení nasazování se v okně **Výstup** sady Visual Studio zobrazí stav nasazení vaší aplikace. Pokud se stav nezobrazí, otevřete seznam **Zobrazit výstup z** a vyberte svou skupinu prostředků Azure. Příklad:
 
    ![Výstup – okno](./media/export-from-microsoft-flow-logic-app-template/output-window.png)
 

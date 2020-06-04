@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: 197b3100190711a51cfe125fe1214a59c18e1491
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/3/2020
+ms.openlocfilehash: 4d5b858e2384ffc7dd531444aaff17ca3739b408
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79536968"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337695"
 ---
 # <a name="supported-azure-database-for-mysql-server-versions"></a>Podporované verze serveru Azure Database for MySQL
 
@@ -26,15 +26,15 @@ Azure Database for MySQL aktuálně podporuje následující verze:
 
 ## <a name="mysql-version-56"></a>MySQL verze 5,6
 
-Oprava chyby verze: 5.6.45
+Oprava chyby verze: 5.6.47
 
-Další informace o vylepšeních a opravách v této verzi najdete v [poznámkách k verzi](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-45.html) MySQL.
+Další informace o vylepšeních a opravách v této verzi najdete v [poznámkách k verzi](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-47.html) MySQL.
 
 ## <a name="mysql-version-57"></a>MySQL verze 5,7
 
-Oprava chyby verze: 5.7.27
+Oprava chyby verze: 5.7.29
 
-Další informace o vylepšeních a opravách v této verzi najdete v [poznámkách k verzi](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-27.html) MySQL.
+Další informace o vylepšeních a opravách v této verzi najdete v [poznámkách k verzi](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-29.html) MySQL.
 
 ## <a name="mysql-version-80"></a>MySQL verze 8,0
 

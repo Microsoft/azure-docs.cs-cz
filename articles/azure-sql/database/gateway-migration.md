@@ -1,6 +1,6 @@
 ---
 title: Upozornění migrace provozu brány
-description: Článek obsahuje oznámení uživatelům o migraci IP adres Azure SQL Database bran
+description: Článek obsahuje oznámení uživatelům o migraci IP adres Azure SQL Database brány.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -10,12 +10,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
-ms.openlocfilehash: f5e45a4625b1cf9422f7ef7e10e9080a7878172d
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d9ec21657f871211df575b56ff56962aad3f5c88
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84043391"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324708"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database migrace provozu na novější brány
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -42,7 +42,7 @@ První kolo migrace provozu na novější brány se plánuje na **14. října 20
 - USA – východ 2
 - Východní Asie
 
-Migrace provozu změní veřejnou IP adresu, kterou služba DNS pro váš SQL Database vyřeší.
+Při migraci provozu dojde ke změně veřejné IP adresy, kterou služba DNS pro vaši databázi v Azure SQL Database vyřeší.
 Bude to mít vliv, pokud máte následující:
 
 - Pevně zakóduje IP adresu pro konkrétní bránu v místní bráně firewall.

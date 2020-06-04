@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnick, carlrab
 ms.date: 03/10/2020
-ms.openlocfilehash: edf22c7f1086c1d13717adaff514c42aab3a4cfd
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: b33d8db9d43b151cb0405ea24e0bea87e21cbdc9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046919"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345338"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Zjistitelné typy slabých míst výkonu dotazů v Azure SQL Database
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -153,11 +153,11 @@ Pomalé dotazování, které nesouvisí s podoptimálními plány dotazů a chyb
 - Zjišťování omezení prostředků pomocí [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#reaching-resource-limits)
 - Zjištění potíží s prostředky pomocí [zobrazení dynamické správy](database/monitoring-with-dmvs.md):
 
-  - [Sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV vrací CPU, vstupně-výstupní operace a spotřebu paměti pro databázi SQL. U každého intervalu 15 sekund existuje jeden řádek, a to i v případě, že databáze neobsahuje žádné aktivity. Historická data se uchovávají po dobu jedné hodiny.
+  - [Sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV vrátí pro databázi spotřebu CPU, vstupně-výstupních operací a paměti. U každého intervalu 15 sekund existuje jeden řádek, a to i v případě, že databáze neobsahuje žádné aktivity. Historická data se uchovávají po dobu jedné hodiny.
   - [Sys. resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV vrátí využití CPU a data úložiště pro Azure SQL Database. Data se shromažďují a agregují v intervalech po pěti minutách.
   - [Mnoho jednotlivých dotazů, které kumulativně využívají vysoký procesor](database/monitoring-with-dmvs.md#many-individual-queries-that-cumulatively-consume-high-cpu)
 
-Pokud problém identifikujete jako nedostatečný prostředek, můžete upgradovat prostředky a zvýšit tak kapacitu vaší databáze SQL, aby se zvýšila nároky na procesor. Další informace najdete v tématu [škálování jednotlivých prostředků databáze ve Azure SQL Database](database/single-database-scale.md) a [škálování prostředků elastického fondu v Azure SQL Database](database/elastic-pool-scale.md). Informace o škálování spravované instance najdete v tématu [omezení prostředků na úrovni služby](managed-instance/resource-limits.md#service-tier-characteristics) .
+Pokud problém identifikujete jako nedostatečný prostředek, můžete upgradovat prostředky a zvýšit tak kapacitu vaší databáze, aby se zvýšila nároky na procesor. Další informace najdete v tématu [škálování jednotlivých prostředků databáze ve Azure SQL Database](database/single-database-scale.md) a [škálování prostředků elastického fondu v Azure SQL Database](database/elastic-pool-scale.md). Informace o škálování spravované instance najdete v tématu [omezení prostředků na úrovni služby](managed-instance/resource-limits.md#service-tier-characteristics) .
 
 ## <a name="performance-problems-caused-by-increased-workload-volume"></a>Problémy s výkonem způsobené větším objemem úloh
 

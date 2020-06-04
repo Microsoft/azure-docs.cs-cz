@@ -11,14 +11,14 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 ms.date: 06/26/2019
-ms.openlocfilehash: e172c251f629dc53bd8f4479d63fe743bbe42095
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 5cfd77cbc35248e48f60222ab617ea4d07d91ca0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046744"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343808"
 ---
-# <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Začínáme s dočasnými tabulkami v Azure SQL Database a spravované instanci Azure SQL
+# <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Začínáme s dočasnými tabulkami v Azure SQL Database a Azure SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
 Dočasné tabulky jsou programovatelností Azure SQL Database a spravované instance Azure SQL, která umožňuje sledovat a analyzovat úplnou historii změn ve vašich datech bez nutnosti vlastního kódování. Dočasné tabulky udržují data úzce související s časovým kontextem, takže uložené fakta lze interpretovat jako platné pouze v rámci konkrétního období. Tato vlastnost dočasných tabulek umožňuje efektivně analyzovat časovou analýzu a získávat přehledy z vývoje dat.

@@ -11,13 +11,13 @@ author: garyericson
 ms.author: garye
 ms.reviewer: carlrab, davidph
 manager: cgronlun
-ms.date: 05/27/2020
-ms.openlocfilehash: fb74cc3aba3ad37e36a4d7cbe726bde4cb088e90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/03/2020
+ms.openlocfilehash: 45d005e4239039d4e547e9a3fddc61877d07e8db
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045099"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331368"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services ve spravované instanci Azure SQL (Preview)
 
@@ -63,3 +63,4 @@ Machine Learning Services ve spravované instanci SQL se nedoporučuje pro produ
 - Podívejte se na [klíčové rozdíly od SQL Server Machine Learning Services](machine-learning-services-differences.md).
 - Informace o použití Pythonu v Machine Learning Services najdete v tématu [spuštění skriptů Pythonu](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-python-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15).
 - Informace o použití R v Machine Learning Services najdete v tématu [spuštění skriptů r](https://docs.microsoft.com/sql/machine-learning/tutorials/quickstart-r-create-script?context=/azure/azure-sql/managed-instance/context/ml-context&view=sql-server-ver15).
+- Další informace o strojovém učení na jiných platformách SQL najdete v [dokumentaci ke službě SQL Machine Learning](https://docs.microsoft.com/sql/machine-learning/).

@@ -2,14 +2,14 @@
 title: Jak používat klíč pro vytváření a modul runtime – LUIS
 description: Při prvním použití Language Understanding (LUIS) není nutné vytvářet klíč pro vytváření obsahu. Pokud máte v úmyslu publikovat aplikaci, pak použijte koncový bod za běhu, musíte pro aplikaci vytvořit a přiřadit klíč modulu runtime.
 services: cognitive-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/06/2020
-ms.openlocfilehash: d9235b6ef1c7cddbfbbd36f8382439d781af6d5f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c566e8fe56d19856f5a577e472929b7610497d7c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82101021"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344454"
 ---
 # <a name="create-luis-resources"></a>Vytvoření prostředků LUIS
 
@@ -51,7 +51,7 @@ Až budete připraveni k publikování koncového bodu předpovědi, [vytvořte]
 
 Pomocí rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) můžete jednotlivé prostředky vytvořit jednotlivě.
 
-Prostředek `kind`:
+Prostředek `kind` :
 
 * Zdroj`LUIS.Authoring`
 * Předpovědi`LUIS`
@@ -64,13 +64,13 @@ Prostředek `kind`:
 
     Otevře se prohlížeč, který vám umožní vybrat správný účet a zajistit ověřování.
 
-1. Vytvořte **Luis prostředek**pro `LUIS.Authoring`vytváření obsahu s `my-luis-authoring-resource` názvem ve _stávající_ skupině prostředků s názvem `my-resource-group` pro `westus` oblast.
+1. Vytvořte **Luis prostředek pro vytváření obsahu** `LUIS.Authoring` s názvem `my-luis-authoring-resource` ve _stávající_ skupině prostředků s názvem `my-resource-group` pro `westus` oblast.
 
     ```azurecli
     az cognitiveservices account create -n my-luis-authoring-resource -g my-resource-group --kind LUIS.Authoring --sku F0 -l westus --yes
     ```
 
-1. Vytvořte **prostředek koncového bodu předpovědi Luis**typu `LUIS` `my-luis-prediction-resource` s názvem ve _stávající_ skupině prostředků s názvem `my-resource-group` pro `westus` oblast. Pokud chcete vyšší propustnost, než je úroveň Free, změňte `F0` na. `S0` Přečtěte si další informace o [cenových úrovních a propustnosti](luis-limits.md#key-limits).
+1. Vytvořte **prostředek koncového bodu předpovědi Luis**typu `LUIS` s názvem `my-luis-prediction-resource` ve _stávající_ skupině prostředků s názvem `my-resource-group` pro `westus` oblast. Pokud chcete vyšší propustnost, než je úroveň Free, změňte `F0` na `S0` . Přečtěte si další informace o [cenových úrovních a propustnosti](luis-limits.md#key-limits).
 
     ```azurecli
     az cognitiveservices account create -n my-luis-prediction-resource -g my-resource-group --kind LUIS --sku F0 -l westus --yes
@@ -111,9 +111,9 @@ Pro účely automatizace, jako je například kanál CI/CD, možná budete chtí
 
     Toto rozhraní API pro POST vyžaduje následující nastavení:
 
-    |Hlavička|Hodnota|
+    |Záhlaví|Hodnota|
     |--|--|
-    |`Authorization`|Hodnota `Authorization` je `Bearer {token}`. Všimněte si, že hodnota tokenu musí předcházet slovo `Bearer` a mezera.|
+    |`Authorization`|Hodnota `Authorization` je `Bearer {token}` . Všimněte si, že hodnota tokenu musí předcházet slovo `Bearer` a mezera.|
     |`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
 
     Toto rozhraní API vrátí pole objektů JSON vašich předplatných LUIS, včetně ID předplatného, skupiny prostředků a názvu prostředku, vráceného jako název účtu. Najděte jednu položku v poli, která je prostředkem LUIS, který se má přiřadit k aplikaci LUIS.
@@ -124,11 +124,11 @@ Pro účely automatizace, jako je například kanál CI/CD, možná budete chtí
 
     |Typ|Nastavení|Hodnota|
     |--|--|--|
-    |Hlavička|`Authorization`|Hodnota `Authorization` je `Bearer {token}`. Všimněte si, že hodnota tokenu musí předcházet slovo `Bearer` a mezera.|
-    |Hlavička|`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
-    |Hlavička|`Content-type`|`application/json`|
+    |Záhlaví|`Authorization`|Hodnota `Authorization` je `Bearer {token}` . Všimněte si, že hodnota tokenu musí předcházet slovo `Bearer` a mezera.|
+    |Záhlaví|`Ocp-Apim-Subscription-Key`|Váš klíč pro vytváření obsahu.|
+    |Záhlaví|`Content-type`|`application/json`|
     |Dotaz|`appid`|ID aplikace LUIS.
-    |Tělo||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e";<br>"Znovu nasource": "Zdrojová položka-2",<br>"Account": "Luis-uswest-S0-2"}|
+    |Text||{"AzureSubscriptionId": "ddda2925-af7f-4b05-9ba1-2155c5fe8a8e";<br>"Znovu nasource": "Zdrojová položka-2",<br>"Account": "Luis-uswest-S0-2"}|
 
     Po úspěšném dokončení tohoto rozhraní API vrátí stav 201-Created.
 

@@ -1,5 +1,5 @@
 ---
-title: Technologie v paměti
+title: Paměťové technologie
 description: Technologie v paměti významně zlepšují výkon transakčních a analytických úloh v Azure SQL Database a spravované instanci Azure SQL.
 services: sql-database
 ms.service: sql-database
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: c9b25912e1386520d61412a8ba05f6b02224fbe6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 10f4a0012076deef0757743f206f937ab43dc8b8
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046891"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84345287"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimalizujte výkon pomocí technologií v paměti v Azure SQL Database a spravované instance Azure SQL.
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -111,7 +111,7 @@ SELECT * FROM sys.sql_modules WHERE uses_native_compilation=1
 
 ### <a name="data-size-and-storage-cap-for-in-memory-oltp"></a>Velikost dat a limit úložiště pro OLTP v paměti
 
-OLTP v paměti zahrnuje paměťově optimalizované tabulky, které se používají k ukládání uživatelských dat. Tyto tabulky jsou nutné pro přizpůsobení paměti. Vzhledem k tomu, že můžete spravovat paměť přímo ve službě SQL Database, máme koncept kvóty pro uživatelská data. Tento nápad se označuje jako *úložiště OLTP v paměti*.
+OLTP v paměti zahrnuje paměťově optimalizované tabulky, které se používají k ukládání uživatelských dat. Tyto tabulky jsou nutné pro přizpůsobení paměti. Vzhledem k tomu, že přímo v SQL Database spravujete paměť, máme koncept kvóty pro uživatelská data. Tento nápad se označuje jako *úložiště OLTP v paměti*.
 
 Každá podporovaná cenová úroveň jedné databáze a každá cenová úroveň elastického fondu zahrnuje určité množství OLTP úložiště v paměti.
 
@@ -149,7 +149,7 @@ Ale downgrade úrovně může mít negativní vliv na vaši databázi. Pokud va�
 
 Před downgradem databáze na Pro obecné účely, Standard nebo Basic odeberte všechny paměťově optimalizované tabulky a typy tabulek a také všechny nativně zkompilované moduly T-SQL.
 
-*Škálování prostředků v pro důležité obchodní informace vrstvě*: data v paměťově optimalizovaných tabulkách se musí vejít do úložiště OLTP v paměti, které je přidružené k úrovni databáze nebo spravované instance, nebo je k dispozici v elastickém fondu. Pokud se pokusíte škálovat vrstvu dolů nebo přesunout databázi do fondu, který nemá dost dostupného úložiště OLTP v paměti, operace se nezdařila.
+*Škálování prostředků na úrovni pro důležité obchodní informace*: data v paměťově optimalizovaných tabulkách se musí vejít do úložiště OLTP v paměti, které je přidružené k vrstvě databáze nebo spravované instanci, nebo je dostupná v elastickém fondu. Pokud se pokusíte škálovat vrstvu dolů nebo přesunout databázi do fondu, který nemá dost dostupného úložiště OLTP v paměti, operace se nezdařila.
 
 ## <a name="in-memory-columnstore"></a>Columnstore v paměti
 
@@ -183,7 +183,7 @@ Pokud je cílová úroveň nižší než S3, nemusí být *databáze na úrovni 
 Pokud máte **clusterovaný** index columnstore, celá tabulka po downgradu nebude k dispozici. Proto doporučujeme, abyste před přechodem databáze na nepodporovanou úroveň nebo úroveň vyřadíte všechny *clusterované* indexy columnstore.
 
 > [!Note]
-> Spravovaná instance podporuje indexy ColumnStore ve všech vrstvách.
+> Spravovaná instance SQL podporuje indexy ColumnStore ve všech vrstvách.
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
@@ -210,8 +210,8 @@ Pokud máte **clusterovaný** index columnstore, celá tabulka po downgradu nebu
 - [OLTP v paměti (optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Použití OLTP v paměti v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
 
-### <a name="tools"></a>nástroje
+### <a name="tools"></a>Nástroje
 
-- [portál Azure](https://portal.azure.com/)
+- [Portál Azure Portal](https://portal.azure.com/)
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 - [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

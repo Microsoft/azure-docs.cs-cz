@@ -4,12 +4,12 @@ description: Přečtěte si o scénářích zabezpečení pro cluster Azure Serv
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.custom: sfrev
-ms.openlocfilehash: c43cfbd4468a64867d50482d9c8055622602f159
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71a5891bf26cbd79ba5cfeff8324e225b3febd73
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461578"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324007"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Service Fabric scénáře zabezpečení clusteru
 
@@ -33,7 +33,7 @@ Clustery běžící v Azure a samostatné clustery, které běží v systému Wi
 
 Service Fabric používá certifikáty serveru X. 509, které zadáte jako součást konfigurace typu uzlu při vytváření clusteru. Na konci tohoto článku vidíte stručný přehled toho, co tyto certifikáty jsou a jak je můžete získat nebo vytvořit.
 
-Zabezpečení certifikátů nastavte při vytváření clusteru, a to buď v Azure Portal, pomocí Azure Resource Manager šablony, nebo pomocí samostatné šablony JSON. Výchozím chováním sady Service Fabric SDK je nasadit a nainstalovat certifikát nejdálené do budoucího vypršení platnosti certifikátu; klasické chování povoluje definování primárních a sekundárních certifikátů, aby bylo možné ručně iniciovat přecházení, a nedoporučuje se používat pro nové funkce. Primární certifikáty, které budou použity, budou nejdálené jako budoucí datum vypršení platnosti, měly by se lišit od klienta pro správu a klientských certifikátů jen pro čtení, které jste nastavili pro [zabezpečení klient-uzel](#client-to-node-security).
+Zabezpečení certifikátů nastavte při vytváření clusteru, a to buď v Azure Portal, pomocí Azure Resource Manager šablony, nebo pomocí samostatné šablony JSON. Výchozím chováním sady Service Fabric SDK je nasadit a nainstalovat certifikát od nejdále do data vypršení platnosti. klasické chování povoluje definování primárních a sekundárních certifikátů, aby bylo možné ručně iniciovat přecházení, a nedoporučuje se používat pro nové funkce. Primární certifikáty, které budou použity, budou nejdálené jako budoucí datum vypršení platnosti, měly by se lišit od klienta pro správu a klientských certifikátů jen pro čtení, které jste nastavili pro [zabezpečení klient-uzel](#client-to-node-security).
 
 Informace o tom, jak nastavit zabezpečení certifikátů v clusteru pro Azure, najdete v tématu [Nastavení clusteru pomocí šablony Azure Resource Manager](service-fabric-cluster-creation-via-arm.md).
 
@@ -113,7 +113,7 @@ Certifikát musí splňovat následující požadavky:
 
 Mezi další věci, které je potřeba vzít v úvahu:
 
-* Pole **předmětu** může mít více hodnot. Každá hodnota je předpona s inicializací k označení typu hodnoty. Obvykle se jedná o inicializaci **CN** (pro *běžný název*); například **cn = www\.contoso.com**.
+* Pole **předmětu** může mít více hodnot. Každá hodnota je předpona s inicializací k označení typu hodnoty. Obvykle se jedná o inicializaci **CN** (pro *běžný název*); například **cn = www \. contoso.com**.
 * Pole **předmětu** může být prázdné.
 * Pokud se v poli **alternativní název subjektu** naplní nepovinné pole, musí mít běžný název certifikátu i jednu položku na síť SAN. Ty se zadávají jako hodnoty **názvu DNS** . Informace o tom, jak vygenerovat certifikáty, které mají sítě SAN, najdete v tématu [Postup přidání alternativního názvu subjektu do certifikátu zabezpečeného protokolu LDAP](https://support.microsoft.com/kb/931351).
 * Hodnota pole **zamýšleného účelu** certifikátu by měla obsahovat odpovídající hodnotu, jako je **ověřování serveru** nebo **ověřování klientů**.

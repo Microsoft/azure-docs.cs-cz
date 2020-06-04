@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: d5b4986c24a1db61527e6a9ff7be249f189d6248
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 3db9dc260cb8546109870834f364c62305aa3fbb
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248545"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324517"
 ---
 # <a name="faq---general-questions-about-azure-security-center"></a>Nejčastější dotazy – obecné otázky týkající se Azure Security Center
 
@@ -37,14 +37,8 @@ Azure Security Center sleduje následující prostředky Azure:
 
 * Virtuální počítače (včetně [Cloud Services](../cloud-services/cloud-services-choose-me.md))
 * Škálovací sady virtuálních počítačů
-* Virtuální sítě Azure
-* Containers
-* Služba Azure SQL
-* Účet služby Azure Storage
-* Azure Web Apps (v [App Service Environment](../app-service/environment/intro.md))
 * Partnerská řešení integrovaná s vaším předplatným Azure, například firewall webových aplikací na virtuálních počítačích a na App Service Environment
-
-Kromě toho je možné monitorovat také počítače mimo Azure (včetně místních) pomocí Azure Security Center. Podporují se [počítače s Windows](./quick-onboard-windows-computer.md) i počítače se systémem [Linux](./quick-onboard-linux-computer.md) .
+* [Řada služeb Azure PaaS uvedených v přehledu produktu](features-paas.md)
 
 
 ## <a name="how-can-i-see-the-current-security-state-of-my-azure-resources"></a>Jak se můžu podívat na aktuální stav zabezpečení prostředků Azure?
