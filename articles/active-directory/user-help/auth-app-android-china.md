@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: end-user-help
 ms.date: 05/20/2020
 ms.author: curtand
-ms.openlocfilehash: 6d6d32a7a340ef4b07138d5ec12c561e958cf739
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 795c68fc063d98bdee6ccf59dba6ee718dc92d03
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739494"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323021"
 ---
 # <a name="microsoft-authenticator-for-android-in-the-public-cloud-in-china"></a>Microsoft Authenticator pro Android ve veřejném cloudu v Číně
 
@@ -44,7 +44,7 @@ Pokud uživatel dřív spravoval, aby v aplikaci nastavil přihlášení k telef
 
 ## <a name="multi-factor-authentication-workaround"></a>Alternativní řešení Multi-Factor Authentication
 
-Místo používání nabízených oznámení pro službu Multi-Factor Authentication můžou uživatelé nastavit MFA pro příjem ověřovacích kódů na svém zařízení, které můžou použít k ověření své identity. Tyto ověřovací kódy jsou platné po dobu 30 sekund a jejich použití vyžaduje, aby si správci povolili, aby mohli provádět ověřování pomocí ověřovacích kódů s jednorázovým heslem (TOTP).
+Místo používání nabízených oznámení pro službu Multi-Factor Authentication můžou uživatelé [nastavit svou ověřovací aplikaci tak, aby na svém zařízení přijímala ověřovací kódy](multi-factor-authentication-setup-auth-app.md#set-up-the-microsoft-authenticator-app-to-use-verification-codes) , které můžou použít pro MFA k ověření jejich identity. Tyto ověřovací kódy jsou platné po dobu 30 sekund a jejich použití vyžaduje, aby si správci povolili, aby mohli provádět ověřování pomocí ověřovacích kódů s jednorázovým heslem (TOTP).
 
 ## <a name="availability"></a>Dostupnost
 

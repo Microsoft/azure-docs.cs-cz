@@ -3,15 +3,15 @@ title: Vytváření prostředí ISEs (Integration Service Environment) pomocí L
 description: Vytvořte prostředí ISE (Integration Service Environment) pomocí REST API Logic Apps, abyste mohli získat přístup k Azure Virtual Networks (virtuální sítě) z Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-ms.reviewer: klam, logicappspm
+ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 03/11/2020
-ms.openlocfilehash: 0670331d2338b4b6419ffbff1452b5fbac91029f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/29/2020
+ms.openlocfilehash: 7b163c65c0bf781a068abcd6434d75149a1de20b
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478828"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324755"
 ---
 # <a name="create-an-integration-service-environment-ise-by-using-the-logic-apps-rest-api"></a>Vytvoření prostředí ISE (Integration Service Environment) pomocí Logic Apps REST API
 
@@ -50,13 +50,15 @@ Nasazení obvykle trvá do dvou hodin, než se dokončí. V některých případ
 
 V hlavičce požadavku zahrňte tyto vlastnosti:
 
-* `Content-type`: Nastavte tuto vlastnost na `application/json`hodnotu.
+* `Content-type`: Nastavte tuto vlastnost na hodnotu `application/json` .
 
 * `Authorization`: Nastavte tuto hodnotu vlastnosti na nosný token pro zákazníka, který má přístup k předplatnému Azure nebo skupině prostředků, kterou chcete použít.
 
-### <a name="request-body-syntax"></a>Syntaxe textu žádosti
+<a name="request-body"></a>
 
-Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají použít při vytváření ISE:
+## <a name="request-body"></a>Text požadavku
+
+Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají použít při vytváření ISE. Chcete-li vytvořit ISE, který umožňuje používat certifikát podepsaný svým držitelem, který je nainstalován v `TrustedRoot` umístění, zahrňte `certificates` objekt do oddílu definice ISE `properties` . Pro existující ISE můžete odeslat žádost o opravu pouze pro `certificates` objekt. Další informace o použití certifikátů podepsaných svým držitelem naleznete v tématu také [Certificate Connector – certifikáty podepsané svým držitelem](../connectors/connectors-native-http.md#self-signed).
 
 ```json
 {
@@ -88,6 +90,13 @@ Tady je syntaxe textu žádosti, která popisuje vlastnosti, které se mají pou
                "id": "/subscriptions/{Azure-subscription-ID}/resourceGroups/{Azure-resource-group}/providers/Microsoft.Network/virtualNetworks/{virtual-network-name}/subnets/{subnet-4}",
             }
          ]
+      },
+      // Include `certificates` object to enable self-signed certificate support
+      "certificates": {
+         "testCertificate": {
+            "publicCertificate": "{base64-encoded-certificate}",
+            "kind": "TrustedRoot"
+         }
       }
    }
 }
@@ -127,7 +136,12 @@ Tento ukázkový text požadavku zobrazuje ukázkové hodnoty:
                "id": "/subscriptions/********************/resourceGroups/Fabrikam-RG/providers/Microsoft.Network/virtualNetworks/Fabrikam-VNET/subnets/subnet-4",
             }
          ]
-      }
+      },
+      "certificates": {
+         "testCertificate": {
+            "publicCertificate": "LS0tLS1CRUdJTiBDRV...",
+            "kind": "TrustedRoot"
+         }
    }
 }
 ```

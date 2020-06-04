@@ -1,6 +1,6 @@
 ---
 title: Transparentní šifrování dat spravované zákazníkem (TDE)
-description: Podpora Bring Your Own Key (BYOK) pro transparentní šifrování dat (TDE) s Azure Key Vault pro SQL Database a Azure synapse. TDE s BYOK přehledem, výhodami, jak funguje, požadavky a doporučení.
+description: Podpora Bring Your Own Key (BYOK) pro transparentní šifrování dat (TDE) s Azure Key Vault pro SQL Database a Azure synapse Analytics. TDE s BYOK přehledem, výhodami, jak funguje, požadavky a doporučení.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 4677a16f1c3bd4a0d04e5ada5cee98e3e0f8e094
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 51187a81865d9efa098e2c25cccdead01ed6dc74
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048732"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321304"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transparentní šifrování dat s klíčem spravovaným zákazníkem
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -25,7 +25,7 @@ Azure SQL [transparentní šifrování dat (TDE)](/sql/relational-databases/secu
 
 V tomto scénáři je klíč, který se používá k šifrování šifrovacího klíče databáze (klíč DEK), označovaný jako TDE ochrana, asymetrický klíč spravovaný zákazníkem, který je uložený v cloudu a zákazníkovi spravovaném [Azure Key Vault (integrace)](../../key-vault/general/secure-your-key-vault.md), což je cloudový externí systém správy klíčů. Key Vault je vysoce dostupné a škálovatelné zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování pomocí klíče u autorizovaných entit. Klíč může být vygenerován trezorem klíčů, importován nebo [přenesen do trezoru klíčů ze zařízení Prem HSM](../../key-vault/keys/hsm-protected-keys.md).
 
-Pro Azure SQL Database a Azure synapse se ochrana TDE nastaví na úrovni serveru a děděna všemi šifrovanými databázemi přidruženými k tomuto serveru. V případě spravované instance Azure SQL je ochrana TDE nastavena na úrovni instance a zděděna všemi šifrovanými databázemi v této instanci. Pojem *Server* odkazuje na server v SQL Database a v Azure synapse a na spravovanou instanci v rámci SQL Managed instance v tomto dokumentu, pokud není uvedeno jinak.
+Pro Azure SQL Database a Azure synapse Analytics se ochrana TDE nastaví na úrovni serveru a děděna všemi šifrovanými databázemi přidruženými k tomuto serveru. V případě spravované instance Azure SQL je ochrana TDE nastavena na úrovni instance a zděděna všemi šifrovanými databázemi v této instanci. Pojem *Server* odkazuje na server v SQL Database a v Azure synapse a na spravovanou instanci v rámci SQL Managed instance v tomto dokumentu, pokud není uvedeno jinak.
 
 > [!IMPORTANT]
 > Pro ty, kteří používají TDE spravované službou, kteří chtějí začít používat TDE spravované zákazníkem, zůstanou data během přepínání přešifrovaná a nedochází k výpadkům a opětovnému šifrování souborů databáze. Přepnutí z klíče spravovaného službou na klíč spravovaný zákazníkem vyžaduje jenom opětovné šifrování klíč DEK, což je rychlá a online operace.
@@ -50,7 +50,7 @@ TDE spravovaný zákazníkem poskytuje zákazníkům tyto výhody:
 
 ![Nastavení a fungování TDE spravovaného zákazníkem](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-roles.PNG)
 
-Aby mohl server využívat ochranu TDE, která je uložená v integrace pro šifrování klíč DEK, musí správce trezoru klíčů k serveru přidělit tato přístupová práva pomocí jedinečné identity AAD:
+Aby mohl server využívat ochranu TDE, která je uložená v integrace pro šifrování klíč DEK, musí správce trezoru klíčů k serveru přidělit tato přístupová práva pomocí jedinečné identity Azure Active Directory (Azure AD):
 
 - **Get** – pro načtení veřejné části a vlastností klíče v Key Vault
 
@@ -74,9 +74,9 @@ Auditoři můžou pomocí Azure Monitor zkontrolovat protokoly AuditEvent trezor
 
 - Trezor klíčů a SQL Database/spravovaná instance musí patřit ke stejnému Azure Active Directory tenanta. Trezor klíčů mezi klienty a interakce serveru nejsou podporovány. Pokud chcete přesunout prostředky, TDE s integrace se musí překonfigurovat. Přečtěte si další informace o [přesouvání prostředků](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- V trezoru klíčů musí být povolená funkce [obnovitelného odstranění](../../key-vault/general/overview-soft-delete.md) . k ochraně před náhodným odstraněním klíče (nebo trezoru klíčů) dojde k odstranění. Obnovitelné odstraněné prostředky se uchovávají po dobu 90 dnů, pokud je zákazník neobnovil nebo nevymazal. Akce *obnovit* a *Odstranit* mají svá vlastní oprávnění přidružená do zásad přístupu trezoru klíčů. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá a dá se povolit prostřednictvím [PowerShellu](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) nebo rozhraní příkazového [řádku](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete). Nelze ji povolit prostřednictvím Azure Portal.  
+- V trezoru klíčů musí být povolená funkce [obnovitelného odstranění](../../key-vault/general/overview-soft-delete.md) . k ochraně před náhodným odstraněním klíče (nebo trezoru klíčů) dojde k odstranění. Obnovitelné odstraněné prostředky se uchovávají po dobu 90 dnů, pokud je zákazník neobnovil nebo nevymazal. Akce *obnovit* a *Odstranit* mají svá vlastní oprávnění přidružená do zásad přístupu trezoru klíčů. Funkce obnovitelného odstranění je ve výchozím nastavení vypnutá a je možné ji povolit prostřednictvím [PowerShellu](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) nebo rozhraní příkazového [řádku](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete). Nelze ji povolit prostřednictvím Azure Portal.  
 
-- Udělte serveru nebo spravované instanci přístup k trezoru klíčů (Get, wrapKey, unwrapKey) pomocí jeho Azure Active Directory identity. Při použití Azure Portal se identita služby Azure AD automaticky vytvoří. Při použití PowerShellu nebo rozhraní příkazového řádku musí být identita Azure AD explicitně vytvořená a měla by se ověřit její dokončení. Podrobné pokyny pro použití PowerShellu najdete v tématu [Konfigurace TDE s BYOK](transparent-data-encryption-byok-configure.md) a [Konfigurace TDE s BYOK pro spravovanou instanci](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) .
+- Udělte serveru nebo spravované instanci přístup k trezoru klíčů (Get, wrapKey, unwrapKey) pomocí jeho Azure Active Directory identity. Při použití Azure Portal se identita Azure AD automaticky vytvoří. Při použití PowerShellu nebo rozhraní příkazového řádku musí být identita Azure AD explicitně vytvořená a měla by se ověřit její dokončení. Podrobné pokyny při používání PowerShellu najdete v tématu [Konfigurace TDE s BYOK](transparent-data-encryption-byok-configure.md) a [Konfigurace TDE s BYOK pro spravovanou instanci SQL](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) .
 
 - Pokud používáte bránu firewall s integrace, musíte povolit možnost povolit *důvěryhodným službám Microsoftu obejít bránu firewall*.
 
@@ -133,7 +133,7 @@ Po obnovení přístupu k tomuto klíči bude zálohování databáze zpět onli
 
 Může dojít k tomu, že někdo s dostatečným oprávněním pro přístup k trezoru klíčů omylem zakáže přístup k tomuto klíči pomocí:
 
-- odvolávání oprávnění *Get*, *wrapKey*a *unwrapKey* z trezoru klíčů ze serveru
+- odvolávání oprávnění *Get*, *wrapKey*a *unwrapKey* trezoru klíčů ze serveru
 
 - klíč se odstraňuje.
 
@@ -164,7 +164,7 @@ Pokud chcete obnovit zálohu zašifrovanou pomocí ochrany TDE ochrany před Key
 
 Pokud klíč potřebný k obnovení zálohy již není cílovým serverem k dispozici, vrátí se při obnovení následující chybová zpráva: "cílový server nemá `<Servername>` přístup ke všem identifikátorům URI integrace vytvořeným mezi \<Timestamp #1> a \<Timestamp #2> . Opakujte prosím operaci po obnovení všech identifikátorů URI integrace. "
 
-Pokud ho chcete zmírnit, spusťte rutinu [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) pro cílový server nebo [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) pro cílovou spravovanou instanci, která vrátí seznam dostupných klíčů a určí chybějící. Aby bylo možné obnovit všechny zálohy, ujistěte se, že cílový server pro obnovení má přístup ke všem potřebným klíčům. Tyto klíče není nutné označit jako ochranu pomocí TDE.
+Pokud ho chcete zmírnit, spusťte rutinu [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) pro cílový server nebo rutinu [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) pro cílovou spravovanou instanci, která vrátí seznam dostupných klíčů a určí chybějící. Aby bylo možné obnovit všechny zálohy, ujistěte se, že cílový server pro obnovení má přístup ke všem potřebným klíčům. Tyto klíče není nutné označit jako ochranu pomocí TDE.
 
 Další informace o obnovení záloh pro SQL Database najdete v tématu [obnovení databáze v SQL Database](recovery-using-backups.md). Další informace o obnovení zálohy pro fond SQL najdete v tématu [obnovení fondu SQL](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md). Nativní zálohování a obnovování SQL Server pomocí spravované instance SQL najdete v tématu [rychlý Start: obnovení databáze do spravované instance SQL.](../managed-instance/restore-sample-database-quickstart.md)
 
@@ -174,9 +174,9 @@ Další aspekty pro soubory protokolu: zálohované soubory protokolu zůstávaj
 
 I v případě, že není k dispozici žádná nakonfigurovaná geografická redundance pro server, důrazně doporučujeme nakonfigurovat server tak, aby používal dvě různé trezory klíčů ve dvou různých oblastech se stejným materiálem klíče. Dá se dosáhnout vytvořením ochrany TDE pomocí primárního trezoru klíčů umístěného ve stejné oblasti jako server a klonování klíče do trezoru klíčů v jiné oblasti Azure, aby měl server přístup k druhému trezoru klíčů, aby při práci s databází probíhal výpadek primárního trezoru klíčů.
 
-Pomocí rutiny Backup-AzKeyVaultKey načtěte klíč v šifrovaném formátu z primárního trezoru klíčů a potom pomocí rutiny Restore-AzKeyVaultKey zadejte do druhé oblasti Trezor klíčů pro klonování klíče. Případně můžete pomocí Azure Portal zálohovat a obnovovat klíč. Klíč v trezoru sekundárního klíče v jiném regionu by neměl být označený jako TDE Protector a není dokonce povolený.
+Pomocí rutiny Backup-AzKeyVaultKey načtěte klíč v šifrovaném formátu z primárního trezoru klíčů a potom pomocí rutiny Restore-AzKeyVaultKey zadejte do druhé oblasti Trezor klíčů pro klonování klíče. Případně můžete k zálohování a obnovení klíče použít Azure Portal. Klíč v trezoru sekundárního klíče v jiné oblasti by neměl být označený jako TDE Protector a není ani povolený.
 
- Pokud dojde k výpadku, který má vliv na primární Trezor klíčů, pak systém automaticky přepne na druhý propojený klíč se stejným kryptografickým otiskem v sekundárním trezoru klíčů, pokud existuje. Poznámka: Tento přepínač se nestane, pokud je ochrana TDE nepřístupná z důvodu odvolaných přístupových práv, nebo protože se odstranil klíč nebo Trezor klíčů, protože by mohl zákazník záměrně chtít, aby k tomuto klíči omezil přístup serveru.
+Pokud dojde k výpadku, který má vliv na primární Trezor klíčů, systém se automaticky přepne na druhý propojený klíč se stejným kryptografickým otiskem v sekundárním trezoru klíčů, pokud existuje. Poznámka: Tento přepínač se nestane, pokud je ochrana TDE nepřístupná z důvodu odvolaných přístupových práv, nebo protože se odstranil klíč nebo Trezor klíčů, protože by mohl zákazník záměrně chtít, aby k tomuto klíči omezil přístup serveru.
 
 ![HA s jedním serverem](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-ha.png)
 
@@ -194,7 +194,7 @@ Aby nedocházelo k problémům při zřizování nebo během geografické replik
 
 ![Skupiny převzetí služeb při selhání a geografická Dr](./media/transparent-data-encryption-byok-overview/customer-managed-tde-with-bcdr.png)
 
-Chcete-li otestovat převzetí služeb při selhání, postupujte podle kroků v [přehledu aktivní geografické replikace](active-geo-replication-overview.md). Mělo by být provedeno pravidelně, aby bylo zachováno oprávnění přístupu pro SQL k trezorům klíčů.
+Chcete-li otestovat převzetí služeb při selhání, postupujte podle kroků v [přehledu aktivní geografické replikace](active-geo-replication-overview.md). Testování převzetí služeb při selhání by se mělo provádět pravidelně, aby se ověřilo, že SQL Database zachovává přístupová oprávnění ke trezorům klíčů.
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -204,4 +204,4 @@ U běžných operací se TDE spravovanými zákazníky možná budete chtít tak
 
 - [Odebrání ochrany transparentní šifrování dat (TDE) pro SQL Database pomocí prostředí PowerShell](transparent-data-encryption-byok-remove-tde-protector.md)
 
-- [Správa transparentní šifrování dat ve spravované instanci pomocí vlastního klíče pomocí PowerShellu](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)
+- [Správa transparentní šifrování dat ve spravované instanci SQL pomocí vlastního klíče pomocí PowerShellu](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)

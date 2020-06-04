@@ -31,7 +31,7 @@ K dispozici je soubor šablony ConfigMap, který umožňuje snadnou úpravu pomo
 
 Níže jsou uvedené nastavení, které lze nakonfigurovat pro řízení shromažďování dat.
 
-| Klíč | Datový typ | Hodnota | Popis |
+| Klíč | Datový typ | Hodnota | Description |
 |--|--|--|--|
 | `schema-version` | Řetězec (rozlišuje velká a malá písmena) | V1 | Toto je verze schématu používaná agentem.<br> při analýze tohoto ConfigMap.<br> Aktuálně podporovaná verze schématu je v1.<br> Úprava této hodnoty není podporována a bude<br> odmítnuto, když je vyhodnocen ConfigMap |
 | `config-version` | Řetězec |  | Podporuje schopnost sledovat tuto verzi konfiguračního souboru v systému správy zdrojů nebo v úložišti.<br> Maximální povolený počet znaků je 10 a všechny ostatní znaky jsou zkráceny. |

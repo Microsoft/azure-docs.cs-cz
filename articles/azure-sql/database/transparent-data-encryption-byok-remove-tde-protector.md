@@ -1,7 +1,7 @@
 ---
-title: Odebrání ochrany TDE (PowerShell & Azure CLI)
+title: Odebrání ochrany TDE (PowerShell & rozhraní příkazového řádku Azure)
 titleSuffix: Azure SQL Database & Azure Synapse Analytics
-description: Přečtěte si, jak reagovat na potenciálně ohrožené ochrany TDE pro Azure SQL Database nebo Azure synapse Analytics s využitím TDE s podporou funkce Přineste si vlastní klíč (BYOK).
+description: Přečtěte si, jak reagovat na potenciálně ohroženou ochranu TDE ochrany proti Azure SQL Database nebo Azure synapse Analytics s využitím TDE s podporou funkce Přineste si vlastní klíč (BYOK).
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,18 +12,18 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 02/24/2020
-ms.openlocfilehash: e0817e21369824769a9248d7ac7c947bcc98ace5
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 9ffc2af0309f8a682db04b36675a3c29725c44fe
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050965"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324449"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Odebrání ochrany transparentní šifrování dat (TDE) pomocí prostředí PowerShell
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
 
-Toto téma popisuje, jak reagovat na potenciálně ohrožené ochrany TDE pro Azure SQL Database nebo Azure synapse Analytics, která používá TDE s klíči spravovanými zákazníky v rámci podpory Azure Key Vault-Bring Your Own Key (BYOK). Další informace o podpoře BYOK pro TDE najdete na stránce s [přehledem](transparent-data-encryption-byok-overview.md).
+Toto téma popisuje, jak reagovat na potenciálně ohroženou TDE ochranu pro Azure SQL Database nebo Azure synapse Analytics, která používá TDE s klíči spravovanými zákazníky v podpoře Azure Key Vault-Bring Your Own Key (BYOK). Další informace o podpoře BYOK pro TDE najdete na stránce s [přehledem](transparent-data-encryption-byok-overview.md).
 
 > [!CAUTION]
 > Postupy popsané v tomto článku by měly být provedeny pouze v extrémních případech nebo v testovacích prostředích. Projděte si pečlivě tyto kroky, protože odstranění aktivně používaných TDE ochran z Azure Key Vault způsobí, že **databáze nebude k dispozici**.
@@ -34,8 +34,8 @@ Mějte na paměti, že jakmile se ochrana TDE odstraní v Key Vault až do 10 mi
 
 Tato příručka přechází přes dvě přístupy v závislosti na požadovaném výsledku po napadené reakci na incidenty:
 
-- Zachování databází v Azure SQL Database synapse/Azure v **dostupnosti**
-- Zpřístupnění databází v Azure SQL Database/datových skladech jako **nepřístupné**
+- Aby databáze v Azure SQL Database/Azure synapse Analytics byly **nedostupné**.
+- Aby databáze v Azure SQL Database/Azure SQL Data Warehouse **nepřístupné**.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -50,9 +50,9 @@ Tato příručka přechází přes dvě přístupy v závislosti na požadované
 > [!IMPORTANT]
 > Modul Azure Resource Manager PowerShellu (RM) se pořád podporuje, ale všechny budoucí vývojové prostředí jsou k dispozici pro modul AZ. SQL. V modulu AzureRM bude i nadále docházet k opravám chyb až do prosince 2020.  Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické. Další informace o kompatibilitě najdete v tématu [představení nového Azure PowerShell AZ Module](/powershell/azure/new-azureps-module-az).
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
-Informace o instalaci najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
+Informace o instalaci najdete v tématu [instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
 * * *
 
@@ -81,7 +81,7 @@ Alternativně můžete použít PowerShell nebo rozhraní příkazového řádku
 
 Příkaz PowerShellu **Get-AzureRmSqlServerKeyVaultKey**   poskytuje kryptografický otisk ochrany TDE, která se používá v dotazu, abyste viděli, které klíče se mají zachovat a které klíče se mají odstranit v integrace. Z Azure Key Vault můžete bezpečně odstranit jenom klíče, které už nepoužívá databáze.
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 Příkaz PowerShellu **AZ SQL Server Key show**   poskytuje kryptografický otisk ochrany TDE, která se používá v dotazu, abyste viděli, které klíče se mají zachovat a které klíče se mají odstranit v integrace. Z Azure Key Vault můžete bezpečně odstranit jenom klíče, které už nepoužívá databáze.
 
@@ -132,7 +132,7 @@ Příkaz PowerShellu **AZ SQL Server Key show**   poskytuje kryptografický ot
    Restore-AzKeyVaultKey -VaultName <KeyVaultName> -InputFile <BackupFilePath>
    ```
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 Referenční informace k příkazům najdete v [trezoru klíčů Azure CLI](/cli/azure/keyvault/key).
 

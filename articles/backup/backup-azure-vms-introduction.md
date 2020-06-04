@@ -3,12 +3,12 @@ title: Informace o zálohování virtuálních počítačů Azure
 description: V tomto článku se dozvíte, jak služba Azure Backup zálohuje virtuální počítače Azure a jak postupovat podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: f4b36f57362607a13c09896cd7109596aba0a852
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9838f4993e71f2991500af0e152abee36f996050
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79415966"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322905"
 ---
 # <a name="an-overview-of-azure-vm-backup"></a>Přehled zálohování virtuálních počítačů Azure
 
@@ -89,7 +89,7 @@ Následující tabulka vysvětluje různé typy konzistence snímků:
 **Disk** | Zálohování disků virtuálních počítačů je paralelní. Pokud například virtuální počítač obsahuje čtyři disky, Služba Backup se pokusí zálohovat všechny čtyři disky paralelně. Zálohování je přírůstkové (pouze změněná data).
 **Plánování** |  Pro snížení zátěže zálohování zálohujte různé virtuální počítače v různou dobu a ujistěte se, že se časy nepřekrývají. Zálohování virtuálních počítačů v současné době způsobuje zablokování provozu.
 **Příprava záloh** | Mějte na paměti čas potřebný k přípravě zálohy. Doba přípravy zahrnuje instalaci nebo aktualizaci rozšíření zálohování a aktivaci snímku podle plánu zálohování.
-**Přenos dat** | Zvažte dobu potřebnou pro Azure Backup k identifikaci přírůstkových změn z předchozí zálohy.<br/><br/> V přírůstkové záloze Azure Backup určuje změny pomocí výpočtu kontrolního součtu bloku. Pokud dojde ke změně bloku, je označený pro přenos do trezoru. Služba analyzuje identifikované bloky a snaží se o další minimalizaci množství dat, která se mají přenést. Po vyhodnocení všech změněných bloků Azure Backup přenese změny do trezoru.<br/><br/> Může dojít ke zpoždění mezi pořizováním snímku a jeho zkopírováním do trezoru.<br/><br/> V časech špičky může trvat až osm hodin, než se budou zálohy zpracovávat. Čas zálohování pro virtuální počítač bude pro každodenní zálohování kratší než 24 hodin.
+**Přenos dat** | Zvažte dobu potřebnou pro Azure Backup k identifikaci přírůstkových změn z předchozí zálohy.<br/><br/> V přírůstkové záloze Azure Backup určuje změny pomocí výpočtu kontrolního součtu bloku. Pokud dojde ke změně bloku, je označený pro přenos do trezoru. Služba analyzuje identifikované bloky a snaží se o další minimalizaci množství dat, která se mají přenést. Po vyhodnocení všech změněných bloků Azure Backup přenese změny do trezoru.<br/><br/> Může dojít ke zpoždění mezi pořizováním snímku a jeho zkopírováním do trezoru. V časech špičky může trvat až osm hodin, než se snímky přenesou do trezoru. Čas zálohování pro virtuální počítač bude pro každodenní zálohování kratší než 24 hodin.
 **Prvotní zálohování** | I když je celková doba zálohování přírůstkových záloh méně než 24 hodin, nemusí se jednat o případ první zálohy. Čas potřebný k prvotnímu zálohování bude záviset na velikosti dat a při zpracování zálohy.
 **Obnovit frontu** | Azure Backup procesy obnovují úlohy z více účtů úložiště ve stejnou dobu a zařadí požadavky na obnovení do fronty.
 **Obnovit kopii** | Během procesu obnovení se data zkopírují z trezoru do účtu úložiště.<br/><br/> Celková doba obnovení závisí na vstupně-výstupních operacích za sekundu (IOPS) a propustnosti účtu úložiště.<br/><br/> Pokud chcete zkrátit dobu kopírování, vyberte účet úložiště, který není načtený s jinými zápisy a čteními aplikace.

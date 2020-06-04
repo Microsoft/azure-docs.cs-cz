@@ -9,17 +9,17 @@ author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
 ms.custom: sqldbrb=1
-ms.date: 04/28/2020
-ms.openlocfilehash: 82e0cec514849eb41272e6b25dcce74eabfa2b8d
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/03/2020
+ms.openlocfilehash: 760720d133dc382ba7af4aa5f0519d4d918e93cd
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84190315"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322205"
 ---
 # <a name="sql-database-audit-log-format"></a>SQL Database formát protokolu auditu
 
-[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
+[!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
 [Azure SQL Database auditování](auditing-overview.md) sleduje události databáze a zapisuje je do protokolu auditu ve vašem účtu služby Azure Storage nebo je odesílá do centra událostí nebo Log Analytics pro zpracování a analýzu pro příjem dat.
 
@@ -46,7 +46,7 @@ Události auditu se zapisují do Log Analytics pracovního prostoru definovanéh
 
 ## <a name="audit-log-fields"></a><a id="subheading-1"></a>Pole protokolu auditu
 
-| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Popis | Typ objektu blob | Typ Event Hubs/Log Analytics |
+| Název (objekt BLOB) | Název (Event Hubs/Log Analytics) | Description | Typ objektu blob | Typ Event Hubs/Log Analytics |
 |-------------|---------------------------------|-------------|-----------|-------------------------------|
 | action_id | action_id_s | ID akce | varchar (4) | řetězec |
 | action_name | action_name_s | Název akce | – | řetězec |

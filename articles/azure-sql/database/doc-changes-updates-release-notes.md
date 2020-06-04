@@ -1,5 +1,5 @@
 ---
-title: Co je nového?
+title: Co je nového
 titleSuffix: Azure SQL Database & SQL Managed Instance
 description: Přečtěte si o nových funkcích a vylepšeních Azure SQL Database & službě SQL Managed instance a dokumentaci
 services: sql-database
@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: sstein
-ms.openlocfilehash: 4ad793ee27d00359dd63f3394b8d7fd4a70b297f
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 9d3ba2f6106171b78584d74498df0bbe3d1306a6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266674"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344794"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Co je nového v Azure SQL Database & spravované instance SQL?
 
@@ -24,7 +24,7 @@ ms.locfileid: "84266674"
 
 V tomto článku jsou uvedené Azure SQL Database a funkce spravované instance Azure SQL, které jsou momentálně ve verzi Public Preview. Aktualizace a vylepšení pro SQL Database a SQL spravované instance najdete v tématu [SQL Database & aktualizace služby Managed instance SQL](https://azure.microsoft.com/updates/?product=sql-database). Aktualizace a vylepšení dalších služeb Azure najdete v tématu [aktualizace služby](https://azure.microsoft.com/updates).
 
-## <a name="whats-new"></a>Co je nového?
+## <a name="whats-new"></a>Co je nového
 
 Dokumentace pro Azure SQL Database a Azure SQL Managed instance byla rozdělena do samostatných oddílů. Aktualizovali jsme také, jak odkazujeme na spravovanou instanci z *Azure SQL Database spravované instance* do *Azure SQL Managed instance*.
 
@@ -49,7 +49,7 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 
 ### <a name="azure-sql-database"></a>[Azure SQL Database](#tab/single-database)
 
-| Funkce | Podrobnosti |
+| Příznak | Podrobnosti |
 | ---| --- |
 | Nové generace hardwaru řady Fsv2-Series a M-Series| Informace najdete v tématu [hardwarové generace](service-tiers-vcore.md#hardware-generations).|
 | Urychlené obnovení databáze s izolovanými databázemi a elastickými fondy | Informace najdete v tématu [urychlení obnovení databáze](../accelerated-database-recovery.md).|
@@ -64,7 +64,7 @@ Tato tabulka nabízí rychlé porovnání změny v terminologii:
 
 ### <a name="azure-sql-managed-instance"></a>[Spravovaná instance Azure SQL](#tab/managed-instance)
 
-| Funkce | Podrobnosti |
+| Příznak | Podrobnosti |
 | ---| --- |
 | <a href="/azure/sql-database/sql-database-instance-pools">Fondy instancí</a> | Pohodlný a cenově výhodný způsob migrace menších instancí SQL do cloudu. |
 | <a href="https://aka.ms/managed-instance-aadlogins">Instance objektů zabezpečení serveru Azure AD na úrovni instance (přihlášení)</a> | Vytvoření přihlášení na úrovni instance pomocí příkazu <a href="https://docs.microsoft.com/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">vytvořit přihlášení z externího poskytovatele</a> . |
@@ -90,7 +90,7 @@ V modelu nasazení Managed instance SQL ve H1 2019 jsou povolené tyto funkce:
   - Podpora pro <a href="https://docs.microsoft.com/sharepoint/administration/deploy-azure-sql-managed-instance-with-sharepoint-servers-2016-2019"> SharePoint 2016 a SharePoint 2019 </a> a <a href="https://docs.microsoft.com/business-applications-release-notes/october18/dynamics365-business-central/support-for-azure-sql-database-managed-instance"> Dynamics 365 Business Central </a>
   - Vytvořte spravované instance SQL s <a href="https://aka.ms/managed-instance-collation">kolací na úrovni instance</a> a <a href="https://azure.microsoft.com/updates/managed-instance-time-zone-ga/">časovou zónou</a> dle vašeho výběru.
   - Spravované instance SQL jsou teď chráněné pomocí [integrované brány firewall](../managed-instance/management-endpoint-verify-built-in-firewall.md).
-  - Nakonfigurujte spravované instance SQL tak, aby používaly [veřejné koncové body](../managed-instance/public-endpoint-configure.md), připojení [přepsání proxy serveru](connectivity-architecture.md#connection-policy) , abyste získali lepší výkon sítě, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuální jádra na generaci hardwaru Gen5</a> nebo <a href="https://aka.ms/managed-instance-configurable-backup-retention">nakonfigurujte uchovávání záloh až na 35 dnů</a> pro obnovení k bodu v čase. [Dlouhodobé uchovávání záloh](long-term-retention-overview.md#managed-instance-support) (až 10 let) je aktuálně ve verzi Public Preview omezeno.  
+  - Nakonfigurujte spravované instance SQL tak, aby používaly [veřejné koncové body](../managed-instance/public-endpoint-configure.md), připojení [přepsání proxy serveru](connectivity-architecture.md#connection-policy) , abyste získali lepší výkon sítě, <a href="https://aka.ms/four-cores-sql-mi-update">4 virtuální jádra na generaci hardwaru Gen5</a> nebo <a href="https://aka.ms/managed-instance-configurable-backup-retention">nakonfigurujte uchovávání záloh až na 35 dnů</a> pro obnovení k bodu v čase. [Dlouhodobé uchovávání záloh](long-term-retention-overview.md#sql-managed-instance-support) (až 10 let) je aktuálně ve verzi Public Preview omezeno.  
   - Nové funkce umožňují <a href="https://medium.com/@jocapc/geo-restore-your-databases-on-azure-sql-instances-1451480e90fa">geograficky obnovit databázi do jiného datového centra pomocí prostředí PowerShell</a>, [Přejmenovat databázi](https://azure.microsoft.com/updates/azure-sql-database-managed-instance-database-rename-is-supported/), [odstranit virtuální cluster](../managed-instance/virtual-cluster-delete.md).
   - Nová Vestavěná [role přispěvatele instance](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#sql-managed-instance-contributor) umožňuje oddělení povinností (SOD) dodržovat zásady zabezpečení a dodržování předpisů v podnikových normách.
   - Spravovaná instance SQL je k dispozici v následujících oblastech Azure Government v oblasti GA (US Gov – Texas, US Gov – Arizona) a také v Čína – sever 2 a Čína – východ 2. Je také k dispozici v následujících veřejných oblastech: Austrálie – střed, Austrálie – střed 2, Brazílie – jih, Francie – jih, Spojené arabské emiráty střed, Spojené arabské emiráty sever, Jižní Afrika sever, Jižní Afrika – západ.

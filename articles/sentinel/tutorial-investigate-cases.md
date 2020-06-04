@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: yelevin
-ms.openlocfilehash: ecd8c508d05bfeb541a6cb5efbcdf2fffd3c78d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4118ef8de6d9289b67dd76c710fc11758768262
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77587188"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331816"
 ---
 # <a name="tutorial-investigate-incidents-with-azure-sentinel"></a>Kurz: zkoumání incidentů pomocí služby Azure Sentinel
 
@@ -97,7 +97,7 @@ Použití grafu šetření:
 
     ![Zobrazit související výstrahy](media/tutorial-investigate-cases/related-alerts.png)
 
-1. Pro každý dotaz průzkumu můžete vybrat možnost pro otevření nezpracovaných výsledků události a dotaz použitý v Log Analytics, a to tak, že **vyberete\>události**.
+1. Pro každý dotaz průzkumu můžete vybrat možnost pro otevření nezpracovaných výsledků události a dotaz použitý v Log Analytics, a to tak, že **vyberete \> události**.
 
 1. Aby bylo možné porozumět incidentu, graf vám nabídne paralelní časovou osu.
 
@@ -107,7 +107,21 @@ Použití grafu šetření:
 
     ![Použití časové osy v mapě k prozkoumání výstrah](media/tutorial-investigate-cases/use-timeline.png)
 
+## <a name="closing-an-incident"></a>Uzavření incidentu
 
+Po vyřešení konkrétního incidentu (například když vaše šetření dosáhlo svého uzavření) byste měli nastavit stav incidentu na **Uzavřeno**. Když to uděláte, budete požádáni o klasifikaci incidentu tím, že zadáte důvod, který ho zavíráte. Tento krok je povinný. Klikněte na **Vybrat klasifikaci** a v rozevíracím seznamu vyberte jednu z následujících možností:
+
+- Pravdivá pozitivní podezřelá aktivita
+- Neškodné kladné podezřelé, ale očekávané
+- Falešně pozitivní – nekorektní logika výstrahy
+- Falešně pozitivní – nesprávná data
+- Neurčené
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-dropdown.png" alt-text="{ALT-text}":::
+
+Po zvolení příslušné klasifikace přidejte do pole **Komentář** nějaký popisný text. To bude užitečné v případě, že se potřebujete vrátit k tomuto incidentu. Až budete hotovi, klikněte na **použít** a incident se uzavře.
+
+:::image type="content" source="media/tutorial-investigate-cases/closing-reasons-comment-apply.png" alt-text="{ALT-text}":::
 
 ## <a name="next-steps"></a>Další kroky
 V tomto kurzu jste zjistili, jak začít s vyšetřováním incidentů pomocí služby Azure Sentinel. Přejděte k kurzu, [jak reagovat na hrozby pomocí automatizovaného playbooky](tutorial-respond-threats-playbook.md).

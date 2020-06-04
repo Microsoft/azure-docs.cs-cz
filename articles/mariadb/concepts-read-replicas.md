@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: 6b738fc96a51893d8c0a0e75c5551007da60bdd2
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e3615286150723308f861456bfe2bbb0cff81707
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82793189"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321661"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Repliky pro čtení ve službě Azure Database for MariaDB
 
@@ -108,6 +108,9 @@ Přečtěte si, jak [zastavit replikaci do repliky](howto-read-replicas-portal.m
 
 Repliky čtení jsou v tuto chvíli dostupné jenom v Pro obecné účely a paměťově optimalizované cenové úrovně.
 
+> [!NOTE]
+> Náklady na spuštění serveru repliky jsou založené na oblasti, ve které je spuštěný server repliky.
+
 ### <a name="master-server-restart"></a>Restartování hlavního serveru
 
 Když vytvoříte repliku pro hlavní server, který nemá žádné existující repliky, hlavní počítač se nejprve restartuje a připraví se pro replikaci. Vezměte v úvahu a udělejte tyto operace v době mimo špičku.
@@ -145,11 +148,11 @@ Následující parametry serveru jsou uzamčené na hlavním serveru i na server
 - [`innodb_file_per_table`](https://mariadb.com/kb/en/library/innodb-system-variables/#innodb_file_per_table) 
 - [`log_bin_trust_function_creators`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#log_bin_trust_function_creators)
 
-[`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler) Parametr je uzamčen na serverech repliky.
+[`event_scheduler`](https://mariadb.com/kb/en/library/server-system-variables/#event_scheduler)Parametr je uzamčen na serverech repliky.
 
 Pokud chcete aktualizovat jeden z výše uvedených parametrů na hlavním serveru, odstraňte prosím servery repliky, aktualizujte hodnotu parametru v hlavní větvi a znovu vytvořte repliky.
 
-### <a name="other"></a>Ostatní
+### <a name="other"></a>Jiné
 
 - Vytvoření repliky repliky není podporováno.
 - Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie MariaDB pro replikaci.

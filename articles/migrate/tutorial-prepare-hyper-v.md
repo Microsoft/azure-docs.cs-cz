@@ -4,12 +4,12 @@ description: Přečtěte si, jak připravit na posouzení/migraci virtuálních 
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: ea6290eae187ed4ead39f7307a84a54a23c19c29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 22fd5bc87494eb2fc162828363e7ca70afe1bbf0
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81641638"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322161"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Příprava na posouzení a migraci virtuálních počítačů Hyper-V do Azure
 
@@ -29,7 +29,7 @@ Tento kurz je první v řadě, kde se dozvíte, jak vyhodnotit a migrovat virtu�
 > Kurzy vám ukážou nejjednodušší cestu nasazení pro scénář, abyste mohli rychle nastavit zkušební verzi. Kurzy používají výchozí možnosti, pokud je to možné, a nezobrazují všechna možná nastavení a cesty. Podrobné pokyny najdete v tématu Postupy pro vyhodnocení a migraci technologie Hyper-V.
 
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/pricing/free-trial/), ještě než začnete.
 
 
 ## <a name="prepare-azure"></a>Příprava Azure
@@ -41,8 +41,8 @@ Je nutné nastavit oprávnění pro nasazení Azure Migrate.
 **Úkol** | **Zobrazí** 
 --- | --- 
 **Vytvoření projektu Azure Migrate** | Váš účet Azure potřebuje k vytvoření projektu oprávnění přispěvatele nebo vlastníka. | 
-**Registrovat poskytovatele prostředků** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a vyhodnocení virtuálních počítačů Hyper-V s Azure Migrate vyhodnocování serveru.<br/><br/> Při registraci zařízení se poskytovatelé prostředků zaregistrovali u předplatného, které jste zvolili v zařízení. [Další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.
-**Vytvoření aplikace Azure AD** | Při registraci zařízení Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD), která se používá ke komunikaci mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. [Další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Potřebujete oprávnění k vytváření aplikací Azure AD (dostupných v rámci role vývojář aplikace).
+**Registrovat poskytovatele prostředků** | Azure Migrate využívá odlehčené Azure Migrate zařízení ke zjišťování a vyhodnocení virtuálních počítačů Hyper-V s Azure Migrate vyhodnocování serveru.<br/><br/> Při registraci zařízení se poskytovatelé prostředků zaregistrovali u předplatného, které jste zvolili v zařízení. [Přečtěte si další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Pokud chcete zaregistrovat poskytovatele prostředků, potřebujete roli přispěvatel nebo Owner v předplatném.
+**Vytvoření aplikace Azure AD** | Při registraci zařízení Azure Migrate vytvoří aplikaci Azure Active Directory (Azure AD), která se používá ke komunikaci mezi agenty běžícími na zařízení s příslušnými službami běžícími na Azure. [Přečtěte si další informace](migrate-appliance-architecture.md#appliance-registration).<br/><br/> Potřebujete oprávnění k vytváření aplikací Azure AD (dostupných v rámci role vývojář aplikace).
 
 
 
@@ -73,19 +73,19 @@ Můžete přiřadit oprávnění pro Azure Migrate vytvoření aplikace Azure AD
 
 Tenant nebo globální správce může udělit oprávnění následujícím způsobem:
 
-1. V Azure AD by měl tenant nebo globální správce přejít na **Azure Active Directory** > **Users** > **uživatelských nastavení**uživatelů.
+1. V Azure AD by měl tenant nebo globální správce přejít na **Azure Active Directory**  >  **Users**  >  **uživatelských nastavení**uživatelů.
 2. Správce by měl nastavit **Registrace aplikací** **Ano**.
 
     ![Oprávnění služby Azure AD](./media/tutorial-prepare-hyper-v/aad.png)
 
 > [!NOTE]
-> Toto je výchozí nastavení, které není citlivé. [Další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
+> Toto je výchozí nastavení, které není citlivé. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/develop/active-directory-how-applications-are-added#who-has-permission-to-add-applications-to-my-azure-ad-instance).
 
 
 
 #### <a name="assign-application-developer-role"></a>Přiřazení role vývojáře aplikace
 
-Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
+Tenant/globální správce může přiřadit roli vývojář aplikace k účtu. [Přečtěte si další informace](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal).
 
 
 ## <a name="prepare-hyper-v-for-assessment"></a>Příprava technologie Hyper-V pro posouzení
@@ -126,11 +126,10 @@ Spusťte skript následujícím způsobem:
     ```
     Příklad použití:
     ```
-    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1
-    SHA256
+    C:\>CertUtil -HashFile C:\Users\Administrators\Desktop\ MicrosoftAzureMigrate-Hyper-V.ps1 SHA256
     ```
 
-4.    Po ověření integrity skriptu spusťte skript na každém hostiteli Hyper-V pomocí tohoto příkazu PowerShellu:
+4. Po ověření integrity skriptu spusťte skript na každém hostiteli Hyper-V pomocí tohoto příkazu PowerShellu:
     ```
     PS C:\Users\Administrators\Desktop> MicrosoftAzureMigrate-Hyper-V.ps1
     ```
@@ -139,7 +138,7 @@ Spusťte skript následujícím způsobem:
 
 Hodnoty hash jsou:
 
-| **Kontrole** | **Osa** |
+| **Kontrole** | **Hodnota** |
 | --- | --- |
 | **MD5** | 0ef418f31915d01f896ac42a80dc414e |
 | **SHA256** | 0ad60e7299925eff4d1ae9f1c7db485dc9316ef45b0964148a3c07c80761ade2 |

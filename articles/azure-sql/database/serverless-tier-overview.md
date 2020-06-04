@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
 ms.date: 5/13/2020
-ms.openlocfilehash: fd552e3236732fd37b2fc5d23dd234f0a87f0f27
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3d3eee7dc57a2438ccf726851025c700824a5e3a
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84049936"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322056"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -25,7 +25,7 @@ Bez serveru je výpočetní vrstva pro izolovanou databázi SQL Azure, která au
 
 ## <a name="serverless-compute-tier"></a>Bezserverová výpočetní úroveň
 
-Výpočetní vrstva bez serveru pro jednu databázi SQL Azure je parametrizovaná pomocí rozsahu automatického škálování výpočetního rozsahu a prodlevy automatického pozastavení.  V konfiguraci těchto parametrů se tvarují možnosti výkonu databáze a náklady na výpočetní výkon.
+Výpočetní vrstva bez serveru pro izolovanou databázi v Azure SQL Database je parametrizovaná pomocí rozsahu automatického škálování COMPUTE a prodlevy automatického pozastavení. Konfigurace těchto parametrů tvaruje možnosti výkonu databáze a náklady na výpočetní výkon.
 
 ![fakturace bez serveru](./media/serverless-tier-overview/serverless-billing.png)
 
@@ -125,7 +125,7 @@ Při nasazování některých aktualizací služby, které vyžadují databázi 
 
 Automatické obnovení se aktivuje, pokud platí kterákoli z následujících podmínek v libovolnou dobu:
 
-|Funkce|Aktivační událost autoresume|
+|Příznak|Aktivační událost autoresume|
 |---|---|
 |Ověřování a autorizace|Přihlásit|
 |Detekce hrozeb|Povolení nebo zakázání nastavení detekce hrozeb na úrovni databáze nebo serveru.<br>Úprava nastavení detekce hrozeb na úrovni databáze nebo serveru.|
@@ -183,11 +183,11 @@ Vytvoření nové databáze nebo přesunutí existující databáze do výpočet
    |Prodleva při autopauze|Minimálně: 60 minut (1 hodina)<br>Maximum: 10080 minut (7 dní)<br>Zvýšení: 10 minut<br>Zakázat automatického pozastavení:-1|60 minut|
 
 
-### <a name="create-new-database-in-serverless-compute-tier"></a>Vytvořit novou databázi na výpočetní úrovni bez serveru 
+### <a name="create-a-new-database-in-the-serverless-compute-tier"></a>Vytvoření nové databáze na výpočetní úrovni bez serveru
 
 V následujících příkladech se vytvoří nová databáze na výpočetní úrovni bez serveru.
 
-#### <a name="use-azure-portal"></a>Použití webu Azure Portal
+#### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 
 Informace najdete [v tématu rychlý Start: vytvoření izolované databáze v Azure SQL Database pomocí Azure Portal](single-database-create-quickstart.md).
 
@@ -199,7 +199,7 @@ New-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -ComputeModel Serverless -Edition GeneralPurpose -ComputeGeneration Gen5 `
   -MinVcore 0.5 -MaxVcore 2 -AutoPauseDelayInMinutes 720
 ```
-#### <a name="use-azure-cli"></a>Použití Azure CLI
+#### <a name="use-the-azure-cli"></a>Použití Azure CLI
 
 ```azurecli
 az sql db create -g $resourceGroupName -s $serverName -n $databaseName `
@@ -218,7 +218,7 @@ CREATE DATABASE testdb
 
 Podrobnosti najdete v tématu [Vytvoření databáze](/sql/t-sql/statements/create-database-transact-sql?view=azuresqldb-current).  
 
-### <a name="move-database-from-provisioned-compute-tier-into-serverless-compute-tier"></a>Přesunout databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru
+### <a name="move-a-database-from-the-provisioned-compute-tier-into-the-serverless-compute-tier"></a>Přesun databáze ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru
 
 V následujících příkladech přesunete databázi ze zřízené výpočetní vrstvy do výpočetní vrstvy bez serveru.
 
@@ -231,7 +231,7 @@ Set-AzSqlDatabase -ResourceGroupName $resourceGroupName -ServerName $serverName 
   -MinVcore 1 -MaxVcore 4 -AutoPauseDelayInMinutes 1440
 ```
 
-#### <a name="use-azure-cli"></a>Použití Azure CLI
+#### <a name="use-the-azure-cli"></a>Použití Azure CLI
 
 ```azurecli
 az sql db update -g $resourceGroupName -s $serverName -n $databaseName `
@@ -250,7 +250,7 @@ MODIFY ( SERVICE_OBJECTIVE = 'GP_S_Gen5_1') ;
 
 Podrobnosti najdete v tématu [ALTER DATABASE](/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current).
 
-### <a name="move-database-from-serverless-compute-tier-into-provisioned-compute-tier"></a>Přesun databáze z výpočetní vrstvy bez serveru do zřízené výpočetní vrstvy
+### <a name="move-a-database-from-the-serverless-compute-tier-into-the-provisioned-compute-tier"></a>Přesun databáze z výpočetní vrstvy bez serveru do zřízené výpočetní vrstvy
 
 Databáze bez serveru se dá přesunout do zřízené výpočetní vrstvy stejným způsobem jako přesun zřízené výpočetní databáze do výpočetní vrstvy bez serveru.
 
@@ -260,12 +260,12 @@ Databáze bez serveru se dá přesunout do zřízené výpočetní vrstvy stejn�
 
 Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy automatického pozastavení se provádí pomocí příkazu [set-AzSqlDatabase](/powershell/module/az.sql/set-azsqldatabase) v PowerShellu pomocí `MaxVcore` argumentů, `MinVcore` a `AutoPauseDelayInMinutes` .
 
-### <a name="use-azure-cli"></a>Použití Azure CLI
+### <a name="use-the-azure-cli"></a>Použití Azure CLI
 
 Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy při automatickém pozastavení se provádí pomocí příkazu [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) v Azure CLI pomocí `capacity` `min-capacity` argumentů, a `auto-pause-delay` .
 
 
-## <a name="monitoring"></a>Monitorování
+## <a name="monitoring"></a>Sledování
 
 ### <a name="resources-used-and-billed"></a>Využité a fakturované prostředky
 
@@ -307,7 +307,7 @@ Get-AzSqlDatabase -ResourceGroupName $resourcegroupname -ServerName $servername 
   | Select -ExpandProperty "Status"
 ```
 
-#### <a name="use-azure-cli"></a>Použití Azure CLI
+#### <a name="use-the-azure-cli"></a>Použití Azure CLI
 
 ```azurecli
 az sql db show --name $databasename --resource-group $resourcegroupname --server $servername --query 'status' -o json

@@ -6,13 +6,13 @@ ms.author: makromer
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/18/2020
-ms.openlocfilehash: a90a2def874c7f081f83a34aea956083eb72879a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81686502"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322086"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>V toku mapování dat vyberte transformaci.
 
@@ -39,7 +39,10 @@ Pevné mapování lze použít k namapování podsloupce hierarchického sloupce
 
 ## <a name="rule-based-mapping"></a>Mapování na základě pravidel
 
-Pokud chcete namapovat mnoho sloupců najednou nebo předat sloupce po směru, použijte mapování na základě pravidel k definování mapování pomocí vzorů sloupců. Odpovídá na základě sloupců `name`, `type`, `stream` `position` a. Můžete mít libovolnou kombinaci s pevným mapováním a mapování na základě pravidel. Ve výchozím nastavení budou všechny projekce s více než 50 sloupci standardně mapování na základě pravidel, které se shoduje s každým sloupcem a výstupem zadaného názvu. 
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4xiXz]
+
+Pokud chcete namapovat mnoho sloupců najednou nebo předat sloupce po směru, použijte mapování na základě pravidel k definování mapování pomocí vzorů sloupců. Odpovídá na základě `name` sloupců, `type` , a `stream` `position` . Můžete mít libovolnou kombinaci s pevným mapováním a mapování na základě pravidel. Ve výchozím nastavení budou všechny projekce s více než 50 sloupci standardně mapování na základě pravidel, které se shoduje s každým sloupcem a výstupem zadaného názvu. 
 
 Chcete-li přidat mapování na základě pravidla, klikněte na tlačítko **Přidat mapování** a vyberte **mapování na základě pravidel**.
 
@@ -49,7 +52,7 @@ Každé mapování založené na pravidlech vyžaduje dva vstupy: podmínku, na 
 
 ![mapování na základě pravidel](media/data-flow/rule-based-mapping.png "Mapování na základě pravidel")
 
-Použijte `$$` syntaxi pro odkaz na vstupní název spárovaného sloupce. Pomocí výše uvedeného obrázku jako příklad si řekněme, že uživatel chce vyhledat všechny řetězcové sloupce, jejichž názvy jsou kratší než šest znaků. Pokud byl jeden příchozí sloupec pojmenován `test`, výraz `$$ + '_short'` sloupec `test_short`přejmenuje. Pokud je toto jediné mapování, které existuje, všechny sloupce, které nesplňují podmínku, se z výstupních dat ztratí.
+Použijte `$$` syntaxi pro odkaz na vstupní název spárovaného sloupce. Pomocí výše uvedeného obrázku jako příklad si řekněme, že uživatel chce vyhledat všechny řetězcové sloupce, jejichž názvy jsou kratší než šest znaků. Pokud byl jeden příchozí sloupec pojmenován `test` , výraz `$$ + '_short'` sloupec přejmenuje `test_short` . Pokud je toto jediné mapování, které existuje, všechny sloupce, které nesplňují podmínku, se z výstupních dat ztratí.
 
 Vzory odpovídají současně předaným i definovaným sloupcům. Chcete-li zjistit, které definované sloupce jsou mapovány pravidlem, klikněte na ikonu brýlí vedle pravidla. Ověřte výstup pomocí data Preview.
 
@@ -59,9 +62,9 @@ Pokud kliknete na ikonu Dvojitá šipka dolů, můžete zadat podmínku mapován
 
 ![mapování na základě pravidel](media/data-flow/regex-matching.png "Mapování na základě pravidel")
 
-Výše uvedený příklad se shoduje se vzorem `(r)` regulárního výrazu nebo libovolným názvem sloupce, který obsahuje malý případ r. Podobně jako u mapování na základě pravidel jsou všechny odpovídající sloupce změněny podmínkou na pravé straně pomocí `$$` syntaxe.
+Výše uvedený příklad se shoduje se vzorem regulárního výrazu `(r)` nebo libovolným názvem sloupce, který obsahuje malý případ r. Podobně jako u mapování na základě pravidel jsou všechny odpovídající sloupce změněny podmínkou na pravé straně pomocí `$$` syntaxe.
 
-Pokud je v názvu sloupce více shod regulárního výrazu, můžete odkazovat na konkrétní shody pomocí `$n` , kde ' n ' odkazuje na to, která shoda má. Například "$2" odkazuje na druhou shodu v rámci názvu sloupce.
+Pokud je v názvu sloupce více shod regulárního výrazu, můžete odkazovat na konkrétní shody pomocí, `$n` kde ' n ' odkazuje na to, která shoda má. Například "$2" odkazuje na druhou shodu v rámci názvu sloupce.
 
 ### <a name="rule-based-hierarchies"></a>Hierarchie založené na pravidlech
 
@@ -69,11 +72,11 @@ Pokud vaše definovaná projekce má hierarchii, můžete k mapování podsloupc
 
 ![mapování na základě pravidel](media/data-flow/rule-based-hierarchy.png "Mapování na základě pravidel")
 
-Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `a`. `a`obsahuje dva podsloupce `b` a `c`. Výstupní schéma bude obsahovat dva sloupce `b` a `c` jako podmínku "název jako". `$$`
+Výše uvedený příklad se shoduje se všemi podsloupci komplexního sloupce `a` . `a`obsahuje dva podsloupce `b` a `c` . Výstupní schéma bude obsahovat dva sloupce `b` a `c` jako podmínku "název jako" `$$` .
 
 ### <a name="parameterization"></a>Parametrizace
 
-Názvy sloupců můžete parametrizovat pomocí mapování založeného na pravidlech. Použijte klíčové slovo ```name``` pro porovnání názvů příchozích sloupců s parametrem. Například pokud máte parametr ```mycolumn```toku dat, můžete vytvořit pravidlo, které odpovídá jakémukoli názvu sloupce, který je roven. ```mycolumn``` Odpovídající sloupec můžete přejmenovat na pevně zakódovaný řetězec, jako je například obchodní klíč, a explicitně na něj odkazovat. V tomto příkladu je ```name == $mycolumn``` podmínka porovnání a podmínka názvu je "obchodní klíč". 
+Názvy sloupců můžete parametrizovat pomocí mapování založeného na pravidlech. Použijte klíčové slovo ```name``` pro porovnání názvů příchozích sloupců s parametrem. Například pokud máte parametr toku dat ```mycolumn``` , můžete vytvořit pravidlo, které odpovídá jakémukoli názvu sloupce, který je roven ```mycolumn``` . Odpovídající sloupec můžete přejmenovat na pevně zakódovaný řetězec, jako je například obchodní klíč, a explicitně na něj odkazovat. V tomto příkladu je podmínka porovnání ```name == $mycolumn``` a podmínka názvu je "obchodní klíč". 
 
 ## <a name="auto-mapping"></a>Automatické mapování
 

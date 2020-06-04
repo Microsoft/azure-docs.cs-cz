@@ -11,36 +11,36 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: c1ecd5e66986df6affc186770b9da0decf2e92c6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: cd0116a417d2710d330c4be406a5d9d770f76461
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045232"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344539"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Distribuované transakce v cloudových databázích
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Transakce elastické databáze pro Azure SQL Database umožňují spouštět transakce, které jsou rozloženy na více databází v SQL Database. Transakce elastické databáze pro SQL Database jsou k dispozici pro aplikace .NET s využitím rozhraní ADO .NET a jsou integrovány se známým programovacím prostředím pomocí tříd [System. Transactions](https://msdn.microsoft.com/library/system.transactions.aspx) . Pokud chcete získat knihovnu, přečtěte si téma [.NET Framework 4.6.1 (Webová instalační služba)](https://www.microsoft.com/download/details.aspx?id=49981).
 
-V místním prostředí se takový scénář obvykle vyžaduje, abyste spustili Microsoft DTC (Distributed Transaction Coordinator) (MSDTC). Protože MSDTC není k dispozici pro aplikaci typu platforma jako služba v Azure, možnost koordinace distribuovaných transakcí je teď přímo integrovaná do SQL Database. Aplikace se mohou připojit k jakémukoli SQL Database a spustit distribuované transakce a jedna z databází bude transparentně koordinovat distribuovanou transakci, jak je znázorněno na následujícím obrázku.
+V místním prostředí takový scénář obvykle vyžaduje spuštění Microsoft DTC (Distributed Transaction Coordinator) (MSDTC). Vzhledem k tomu, že Služba MSDTC není k dispozici pro aplikaci typu platforma jako služba v Azure, možnost koordinace distribuovaných transakcí je teď přímo integrovaná do SQL Database. Aplikace se mohou připojit k libovolné databázi v SQL Database spustit distribuované transakce a jedna z databází bude transparentně koordinovat distribuovanou transakci, jak je znázorněno na následujícím obrázku.
 
   ![Distribuované transakce s Azure SQL Database s využitím transakcí elastické databáze ][1]
 
-## <a name="common-scenarios"></a>Obvyklé scénáře
+## <a name="common-scenarios"></a>Typické scénáře
 
-Transakce elastické databáze pro SQL Database umožňují aplikacím provádět atomické změny dat uložených v několika různých databázích SQL. Verze Preview se zaměřuje na prostředí vývoje na straně klienta v jazycích C# a .NET. Prostředí na straně serveru využívající T-SQL se plánuje na pozdější dobu.  
+Transakce elastické databáze pro SQL Database umožňují aplikacím provádět atomické změny dat uložených v různých databázích v SQL Database. Verze Preview se zaměřuje na prostředí vývoje na straně klienta v jazycích C# a .NET. Prostředí na straně serveru využívající T-SQL se plánuje na pozdější dobu.  
 Transakce elastické databáze cílí na následující scénáře:
 
-* Aplikace s více databázemi v Azure: v tomto scénáři jsou data vertikálně rozdělená mezi několik databází v SQL Database tak, aby se různé druhy dat nacházely v různých databázích. Některé operace vyžadují změny dat, která jsou uchovávána ve dvou nebo více databázích. Aplikace používá transakce elastické databáze k koordinaci změn napříč databázemi a zajištění jejich nedělitelnost.
+* Aplikace s více databázemi v Azure: v tomto scénáři jsou data vertikálně rozdělená mezi několik databází v SQL Database tak, aby se různé druhy dat nacházely v různých databázích. Některé operace vyžadují změny dat, které jsou uchovávány ve dvou nebo více databázích. Aplikace používá transakce elastické databáze k koordinaci změn napříč databázemi a zajištění jejich nedělitelnost.
 * Horizontálně dělené databázové aplikace v Azure: v tomto scénáři Datová vrstva používá [elastic Database klientské knihovny](elastic-database-client-library.md) nebo horizontálního dělení k horizontálnímu rozdělení dat mezi mnoho databází v SQL Database. Jeden z nejvýraznějšího případu použití je nutnost provádět atomické změny pro horizontálně dělené aplikaci pro více tenantů při změně klientů s rozsahem. Zamyslete se nad tím, jak se instance přenosů z jednoho tenanta do druhého nacházejí v různých databázích. Druhý případ je jemně odstupňované horizontálního dělení, aby se vešly požadavky na kapacitu pro velký tenant, což zase obvykle znamená, že některé atomické operace musí roztáhnout mezi několik databází používaných pro stejného tenanta. Třetí případ je atomické aktualizace pro referenční data, která se replikují napříč databázemi. Atomické, transakční, operace na těchto řádcích se teď dají koordinovat napříč několika databázemi pomocí verze Preview.
-  Transakce elastické databáze používají dvoufázové potvrzení k zajištění atomické transakce napříč databázemi. Je vhodný pro transakce, které zahrnují méně než 100 databází v průběhu jedné transakce. Tato omezení nejsou vynutila, ale jeden z nich by měl očekávat výkon a úspěšnost pro transakce elastické databáze, které mají za následek překročení těchto limitů.
+  Transakce elastické databáze používají dvoufázové potvrzení k zajištění atomické transakce napříč databázemi. Je vhodný pro transakce, které zahrnují méně než 100 databází v rámci jedné transakce v jednom okamžiku. Tato omezení nejsou vynutila, ale při překročení těchto limitů by měla očekávat míry výkonu a úspěšnosti pro transakce elastické databáze.
 
 ## <a name="installation-and-migration"></a>Instalace a migrace
 
 Funkce pro transakce elastické databáze v SQL Database jsou k dispozici prostřednictvím aktualizací knihoven .NET System. data. dll a System. Transactions. dll. Knihovny DLL zajišťují, že se v případě potřeby použije dvoufázové potvrzení, aby se zajistila nedělitelnost. Chcete-li začít vyvíjet aplikace pomocí transakcí elastické databáze, nainstalujte [.NET Framework 4.6.1](https://www.microsoft.com/download/details.aspx?id=49981) nebo novější verzi. Při spuštění v dřívější verzi rozhraní .NET Framework se transakce nezdaří povýšit na distribuovanou transakci a vyvolá se výjimka.
 
-Po instalaci můžete použít rozhraní API distribuovaných transakcí v System. Transactions s připojeními k SQL Database. Pokud máte pomocí těchto rozhraní API existující aplikace MSDTC, jednoduše po instalaci rozhraní 4.6.1 Framework znovu sestavte své stávající aplikace pro .NET 4,6. Pokud vaše projekty cílí na .NET 4,6, budou automaticky použity aktualizované knihovny DLL z nové verze rozhraní a volání rozhraní API distribuované transakce v kombinaci s připojením k SQL Database budou nyní úspěšná.
+Po instalaci můžete použít rozhraní API distribuovaných transakcí v System. Transactions s připojeními k SQL Database. Pokud máte pomocí těchto rozhraní API existující aplikace MSDTC, jednoduše po instalaci rozhraní 4.6.1 Framework znovu sestavte své stávající aplikace pro .NET 4,6. Pokud vaše projekty cílí na .NET 4,6, budou automaticky používat aktualizované knihovny DLL z nové verze rozhraní a volání rozhraní API distribuované transakce v kombinaci s připojením k SQL Database budou nyní úspěšná.
 
 Pamatujte, že transakce elastické databáze nevyžadují instalaci MSDTC. Místo toho jsou transakce elastické databáze přímo spravovány nástrojem a v rámci SQL Database. To významně zjednodušuje cloudové scénáře, protože nasazení MSDTC není nutné k použití distribuovaných transakcí s SQL Database. Oddíl 4 podrobněji vysvětluje, jak nasadit transakce elastické databáze a požadované rozhraní .NET Framework spolu s vašimi cloudových aplikací do Azure.
 
@@ -101,7 +101,7 @@ Tento přístup je znázorněn v následujícím příkladu kódu. Předpoklád�
 
 Azure poskytuje několik nabídek pro hostování aplikací .NET. Porovnání různých nabídek je k dispozici v [Azure App Service, Cloud Services a Virtual Machines porovnání](/azure/architecture/guide/technology-choices/compute-decision-tree). Pokud je hostovaný operační systém nabídky menší než .NET 4.6.1 vyžadované pro elastické transakce, musíte upgradovat hostovaný operační systém na 4.6.1.
 
-V případě Azure App Services se v současné době nepodporují upgrady hostovaného operačního systému. V případě Azure Virtual Machines se jednoduše přihlaste k virtuálnímu počítači a spusťte instalační program pro nejnovější verzi rozhraní .NET Framework. V případě Azure Cloud Services musíte do úloh po spuštění nasazení zahrnout instalaci novější verze rozhraní .NET. Koncepty a kroky jsou popsané v části [instalace .NET v roli cloudové služby](../../cloud-services/cloud-services-dotnet-install-dotnet.md).  
+Pro Azure App Service se v současné době nepodporují upgrady hostovaného operačního systému. V případě Azure Virtual Machines se jednoduše přihlaste k virtuálnímu počítači a spusťte instalační program pro nejnovější verzi rozhraní .NET Framework. V případě Azure Cloud Services musíte do úloh po spuštění nasazení zahrnout instalaci novější verze rozhraní .NET. Koncepty a kroky jsou popsané v části [instalace .NET v roli cloudové služby](../../cloud-services/cloud-services-dotnet-install-dotnet.md).  
 
 Všimněte si, že instalační program pro .NET 4.6.1 může vyžadovat další dočasné úložiště během zaváděcího procesu ve službě Azure Cloud Services, než je instalační program pro .NET 4,6. Aby se zajistila úspěšná instalace, musíte pro cloudovou službu Azure zvětšit dočasné úložiště v souboru ServiceDefinition. csdef v části LocalResources a nastavení prostředí úlohy po spuštění, jak je znázorněno v následující ukázce:
 
@@ -152,13 +152,14 @@ Tyto zobrazení dynamické správy jsou zvláště užitečné:
 
 Následující omezení se aktuálně vztahují na transakce elastické databáze v SQL Database:
 
-* Podporují se jenom transakce napříč databázemi v SQL Database. Jiní poskytovatelé prostředků a databáze [XA](https://en.wikipedia.org/wiki/X/Open_XA) , kteří nejsou SQL Database, se nemůžou účastnit transakcí elastické databáze. To znamená, že transakce elastické databáze se nemůžou roztahovat mezi místními SQL Server a Azure SQL Database. U distribuovaných transakcí v místním prostředí používejte MSDTC.
+* Podporují se jenom transakce napříč databázemi v SQL Database. Jiní poskytovatelé prostředků a databáze [XA](https://en.wikipedia.org/wiki/X/Open_XA) , kteří nejsou SQL Database, se nemůžou zúčastnit transakcí elastické databáze. To znamená, že transakce elastické databáze se nemůžou roztahovat mezi místními SQL Server a Azure SQL Database. U distribuovaných transakcí v místním prostředí používejte MSDTC.
 * Jsou podporovány pouze transakce, které jsou koordinovány klientem z aplikace .NET. Podpora na straně serveru pro T-SQL, jako je BEGIN DISTRIBUTed TRANSACTIONed, je plánovaná, ale ještě není dostupná.
 * Transakce napříč službami WCF se nepodporují. Například máte metodu služby WCF, která provádí transakci. Uzavření volání do oboru transakce se nezdaří jako [System. ServiceModel. ProtocolException](https://msdn.microsoft.com/library/system.servicemodel.protocolexception).
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud máte otázky, obraťte se na nás na [stránce s dotazem na Microsoft Q&pro SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) a žádosti o funkce, přidejte je do [fóra SQL Database Feedback](https://feedback.azure.com/forums/217321-sql-database/).
+Pokud máte otázky, obraťte se na nás na [stránce s dotazem na Microsoft Q&SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html). V případě žádostí o funkce je prosím přidejte do [fóra SQL Database Feedback](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/elastic-transactions-overview/distributed-transactions.png
+ 
