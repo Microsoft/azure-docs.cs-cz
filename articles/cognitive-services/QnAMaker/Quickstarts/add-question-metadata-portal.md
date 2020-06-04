@@ -3,16 +3,16 @@ title: 'Rychlý Start: Přidání otázek a odpovědí na portálu QnA Maker'
 description: V tomto rychlém startu se dozvíte, jak přidat páry dotazů a odpovědí k metadatům, aby vaši uživatelé mohli najít správnou odpověď na jejich otázku.
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: e35f7437f0028fedffea7cbcb6216fb7e1fad1f8
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266572"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331385"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Rychlý Start: Přidání otázek a odpovědí pomocí portálu QnA Maker
 
-Po vytvoření znalostní báze přidejte páry otázek a odpovědí (QnA) s metadaty k filtrování odpovědi. Otázky v následující tabulce jsou o omezeních služeb Azure, ale každá z nich musí mít jinou službu Azure.
+Po vytvoření znalostní báze přidejte páry otázek a odpovědí (QnA) s metadaty k filtrování odpovědi. Otázky v následující tabulce jsou o omezeních služeb Azure, ale každá z nich musí mít jinou službu Azure Search.
 
 <a name="qna-table"></a>
 
