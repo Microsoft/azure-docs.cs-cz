@@ -1081,20 +1081,6 @@
               href: platform/view-designer-parts.md
             - name: Filtry
               href: platform/view-designer-filters.md
-        - name: Vlastní řešení
-          items:
-            - name: Návrh a sestavení
-              href: insights/solutions-creating.md
-            - name: Soubor řešení
-              href: insights/solutions-solution-file.md
-            - name: Prostředky služby Automation
-              href: insights/solutions-resources-automation.md
-            - name: Prohledávání protokolů a upozornění
-              href: insights/solutions-resources-searches-alerts.md
-            - name: Zobrazení
-              href: insights/solutions-resources-views.md
-            - name: Osvědčené postupy
-              href: insights/solutions-best-practices.md
     - name: Workbooks
       items:
         - name: Přehled
