@@ -17,12 +17,12 @@ ms.date: 08/30/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 08b9076ae81c8c8c071b03167d0242c1d933e619
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3b06252291f687e5304c36fb581c34c0b5eb50b7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047227"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342455"
 ---
 # <a name="automate-management-tasks-on-azure-virtual-machines-by-using-the-sql-server-iaas-agent-extension"></a>Automatizace úloh správy na virtuálních počítačích Azure pomocí rozšíření agenta SQL Server IaaS
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,7 +30,7 @@ ms.locfileid: "84047227"
 
 > [!div class="op_single_selector"]
 > * [Resource Manager](sql-server-iaas-agent-extension-automate-management.md)
-> * [Klasický](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
+> * [Classic](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-server-agent-extension.md)
 
 Rozšíření agenta SQL Server IaaS (SqlIaasExtension) běží na virtuálních počítačích Azure za účelem automatizace úloh správy. Tento článek poskytuje přehled služeb, které podporuje rozšíření. Tento článek také poskytuje pokyny k instalaci, stavu a odebrání rozšíření.
 
@@ -82,7 +82,7 @@ Tady jsou požadavky na použití rozšíření agenta SQL Server IaaS na vašem
 
 
 ##  <a name="installation"></a>Instalace
-Rozšíření SQL Server IaaS se nainstaluje při registraci SQL Server virtuálního počítače pomocí [poskytovatele prostředků virtuálního počítače SQL](sql-vm-resource-provider-register.md). V případě potřeby můžete ručně nainstalovat agenta SQL Server IaaS pomocí následujícího příkazu PowerShellu: 
+Rozšíření SQL Server IaaS se nainstaluje při registraci SQL Server virtuálního počítače pomocí [poskytovatele prostředků SQL Server virtuálního počítače](sql-vm-resource-provider-register.md). V případě potřeby můžete ručně nainstalovat agenta SQL Server IaaS pomocí následujícího příkazu PowerShellu: 
 
   ```powershell-interactive
     Set-AzVMSqlServerExtension -VMName "sql2017" `

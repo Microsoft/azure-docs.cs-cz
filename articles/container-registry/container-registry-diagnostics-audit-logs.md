@@ -2,13 +2,13 @@
 title: Shromažďovat & analyzovat protokoly prostředků
 description: Zaznamenává a analyzuje události protokolu prostředků pro Azure Container Registry, jako je například ověřování, vkládání obrázků a vyžádanou image.
 ms.topic: article
-ms.date: 01/03/2020
-ms.openlocfilehash: 00f9468721126bd166051df47cec1596356e9b54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.openlocfilehash: b41b1001a669fe42721471bc196e7628eabff983
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79409639"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343179"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Protokoly Azure Container Registry pro vyhodnocení a auditování diagnostiky
 
@@ -24,12 +24,14 @@ Shromažďování dat protokolu prostředků pomocí Azure Monitor může nabýv
 
 V současné době jsou protokolovány následující události na úrovni úložiště pro bitové kopie a jiné artefakty:
 
-* **Události push**
-* **Události vyžádání**
-* **Události zrušit označení**
-* **Odstranit události** (včetně událostí odstranění úložiště)
+* **Push**
+* **Spotřeby**
+* **Zrušit označení**
+* **Odstranit** (včetně událostí odstranění úložiště)
+* Vyprázdnit **značku** a **vyprázdnit manifest**
 
-Události na úrovni úložiště, které nejsou aktuálně přihlášené: vyprázdnit události
+> [!NOTE]
+> Události vyprázdnění se zaznamenávají jenom v případě, že jsou nakonfigurované [zásady uchovávání](container-registry-retention-policy.md) registru.
 
 ## <a name="registry-resource-logs"></a>Protokoly prostředků registru
 
@@ -37,7 +39,7 @@ Protokoly prostředků obsahují informace vydávané prostředky Azure, které 
 
 * **ContainerRegistryLoginEvents** – události a stav ověřování registru, včetně příchozí identity a IP adresy
 * **ContainerRegistryRepositoryEvents** – operace jako push a pull pro image a další artefakty v úložištích registru
-* **AzureMetrics** - [metrik registru kontejnerů](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , jako jsou agregovaná nabízená oznámení a počty vyžádaného čtení.
+* **AzureMetrics**  -  [Metriky registru kontejnerů](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , jako je agregovaná nabízená oznámení a počty vyžádaného čtení.
 
 V případě operací zahrnuje data protokolu:
   * Stav úspěch nebo neúspěch
@@ -83,16 +85,58 @@ Kurz týkající se použití Log Analytics v Azure Portal najdete v tématu [Za
 
 Další informace o dotazech protokolu najdete v tématu [Přehled dotazů protokolu v Azure monitor](../azure-monitor/log-query/log-query-overview.md).
 
-### <a name="additional-query-examples"></a>Další příklady dotazů
+## <a name="query-examples"></a>Příklady dotazů
 
-#### <a name="100-most-recent-registry-events"></a>100 nejnovějších událostí registru
+### <a name="error-events-from-the-last-hour"></a>Události chyb za poslední hodinu
+
+```Kusto
+union Event, Syslog // Event table stores Windows event records, Syslog stores Linux records
+| where TimeGenerated > ago(1h)
+| where EventLevelName == "Error" // EventLevelName is used in the Event (Windows) records
+    or SeverityLevel== "err" // SeverityLevel is used in Syslog (Linux) records
+```
+
+### <a name="100-most-recent-registry-events"></a>100 nejnovějších událostí registru
 
 ```Kusto
 ContainerRegistryRepositoryEvents
 | union ContainerRegistryLoginEvents
 | top 100 by TimeGenerated
-| project TimeGenerated, LoginServer , OperationName , Identity , Repository , DurationMs , Region , ResultType
+| project TimeGenerated, LoginServer, OperationName, Identity, Repository, DurationMs, Region , ResultType
 ```
+
+### <a name="identity-of-user-or-object-that-deleted-repository"></a>Identita uživatele nebo objektu, který odstranil úložiště
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Delete"
+| project LoginServer, OperationName, Repository, Identity, CallerIpAddress
+```
+
+### <a name="identity-of-user-or-object-that-deleted-tag"></a>Identita uživatele nebo objektu, který odstranil značku
+
+```Kusto
+ContainerRegistryRepositoryEvents
+| where OperationName contains "Untag"
+| project LoginServer, OperationName, Repository, Tag, Identity, CallerIpAddress
+```
+
+### <a name="reposity-level-operation-failures"></a>Selhání operací na úrovni úložišť
+
+```kusto
+ContainerRegistryRepositoryEvents 
+| where ResultDescription contains "40"
+| project TimeGenerated, OperationName, Repository, Tag, ResultDescription
+```
+
+### <a name="registry-authentication-failures"></a>Selhání ověřování registru
+
+```kusto
+ContainerRegistryLoginEvents 
+| where ResultDescription != "200"
+| project TimeGenerated, Identity, CallerIpAddress, ResultDescription
+```
+
 
 ## <a name="additional-log-destinations"></a>Další cíle protokolu
 

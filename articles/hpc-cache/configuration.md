@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: v-erkel
-ms.openlocfilehash: a3bab06166110a3627bb3a99d51ceb09b0c7ed80
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: e9eebc9e977c6065f08b996f5ab3f3e46bc1a134
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871411"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344267"
 ---
 # <a name="configure-additional-azure-hpc-cache-settings"></a>Konfigurovat další nastavení mezipaměti HPC Azure
 
@@ -22,6 +22,9 @@ Tento článek také popisuje, jak používat funkci snímků pro cíle služby 
 Nastavení zobrazíte tak, že otevřete stránku **Konfigurace** mezipaměti v Azure Portal.
 
 ![obrazovka konfigurační stránky v Azure Portal](media/configuration.png)
+
+> [!TIP]
+> [Správa videa Azure HPC cache](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) zobrazuje konfigurační stránku a její nastavení.
 
 ## <a name="adjust-mtu-value"></a>Upravit hodnotu MTU
 <!-- linked from troubleshoot-nas article -->
@@ -48,7 +51,7 @@ Pokud je povolená možnost root "squash, budou se uživatelé z klienta při od
 
 Pokud je kořenový "squash zakázaný, požadavek od uživatele root Client (UID 0) se předá do systému úložiště NFS back-end jako kořen. Tato konfigurace může umožňovat nevhodný přístup k souborům.
 
-Nastavení kořenového "squash pro mezipaměť může přispět k vynulování ``no_root_squash`` požadavků na povinná nastavení v systémech NAS, které se používají jako cíle úložiště. (Další informace o [požadavcích cíle úložiště NFS](hpc-cache-prereqs.md#nfs-storage-requirements)najdete v tématu.) Může taky zvýšit zabezpečení při použití s cíli úložiště Azure Blob.
+Nastavení kořenového "squash pro mezipaměť může přispět k vynulování požadavků na povinná ``no_root_squash`` nastavení v systémech NAS, které se používají jako cíle úložiště. (Další informace o [požadavcích cíle úložiště NFS](hpc-cache-prereqs.md#nfs-storage-requirements)najdete v tématu.) Může taky zvýšit zabezpečení při použití s cíli úložiště Azure Blob.
 
 Výchozí nastavení je **Ano**. (Mezipaměti vytvořené před dubna 2020 mohou mít výchozí nastavení **ne**.)
 
@@ -73,4 +76,4 @@ Mezipaměť HPC Azure ukládá každý den, týdně a měsíčně snímky, dokud
 * až 8 týdenních snímků
 * až 3 měsíční snímky
 
-Přihlaste se k `.snapshot` snímkům z adresáře v oboru názvů cílů služby Blob Storage.
+Přihlaste se k snímkům z `.snapshot` adresáře v oboru názvů cílů služby Blob Storage.

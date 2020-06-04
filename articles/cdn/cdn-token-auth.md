@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/17/2017
 ms.author: mazha
-ms.openlocfilehash: 3539c101b8bf146e9feee6dfc4e90f859f0ef142
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 08645fa08bdb19d9a5f29daec4035da0b21a356b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745449"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344488"
 ---
 # <a name="securing-azure-cdn-assets-with-token-authentication"></a>Zabezpečení Azure CDN prostředků pomocí ověřování tokenů
 
@@ -72,7 +72,7 @@ Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek k
 
       ```rand -hex <key length>```
 
-      Například:
+      Příklad:
 
       ```OpenSSL> rand -hex 32``` 
 
@@ -96,7 +96,7 @@ Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek k
       > <table>
       > <tr>
       >   <th>Název parametru</th> 
-      >   <th>Popis</th>
+      >   <th>Description</th>
       > </tr>
       > <tr>
       >    <td><b>ec_expire</b></td>
@@ -173,17 +173,17 @@ Následující vývojový diagram popisuje, jak Azure CDN ověřuje požadavek k
 3. V části **velký protokol HTTP**vyberte **modul pravidel**. Použijete modul pravidel k definování cest pro použití funkce, povolení funkce ověřování tokenu a povolení dalších možností souvisejících s ověřováním tokenů. Další informace najdete v tématu [Referenční příručka k modulům pravidel](cdn-rules-engine-reference.md).
 
    1. Vyberte existující pravidlo nebo vytvořte nové pravidlo k definování prostředku nebo cesty, pro kterou chcete použít ověřování pomocí tokenu. 
-   2. Pokud chcete pro pravidlo Povolit ověřování tokenu, vyberte v seznamu **funkce** možnost **[ověření tokenu](cdn-verizon-premium-rules-engine-reference-features.md#token-auth)** a pak vyberte **povoleno**. **Pokud aktualizujete pravidlo nebo pokud** vytváříte pravidlo, vyberte **aktualizovat** .
+   2. Pokud chcete pro pravidlo Povolit ověřování tokenu, vyberte v seznamu **funkce** možnost **[ověření tokenu](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth.htm)** a pak vyberte **povoleno**. **Pokud aktualizujete pravidlo nebo pokud** vytváříte pravidlo, vyberte **aktualizovat** .
         
       ![Příklad povolení ověřování tokenu modulu CDN Rules](./media/cdn-token-auth/cdn-rules-engine-enable2.png)
 
 4. V modulu pravidel můžete také povolit další funkce související s ověřováním tokenu. Pokud chcete povolit některou z následujících funkcí, vyberte ji ze seznamu **funkce** a pak vyberte **povoleno**.
     
-   - **[Odepření kódu ověření tokenu](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-denial-code)**: Určuje typ odpovědi, která se vrátí uživateli, když je žádost zamítnutá. Sada pravidel je popsána na stránce ověřování na základě tokenu, která je nastavená v části **vlastní nařízení zamítnutí** .
+   - **[Odepření kódu ověření tokenu](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Denial-Code.htm)**: Určuje typ odpovědi, která se vrátí uživateli, když je žádost zamítnutá. Sada pravidel je popsána na stránce ověřování na základě tokenu, která je nastavená v části **vlastní nařízení zamítnutí** .
 
-   - **[Případ ignorování adresy URL pro ověření tokenu](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-ignore-url-case)**: Určuje, jestli adresa URL použitá k ověření tokenu rozlišuje velká a malá písmena.
+   - **[Případ ignorování adresy URL pro ověření tokenu](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Ignore-URL-Case.htm)**: Určuje, jestli adresa URL použitá k ověření tokenu rozlišuje velká a malá písmena.
 
-   - **[Parametr auth tokenu](cdn-verizon-premium-rules-engine-reference-features.md#token-auth-parameter)**: přejmenuje parametr řetězce dotazu auth tokenu, který se zobrazí na požadované adrese URL. 
+   - **[Parametr auth tokenu](https://docs.vdms.com/cdn/Content/HRE/F/Token-Auth-Parameter.htm)**: přejmenuje parametr řetězce dotazu auth tokenu, který se zobrazí na požadované adrese URL. 
         
      ![Příklad nastavení ověřování tokenu modulu CDN Rules](./media/cdn-token-auth/cdn-rules-engine2.png)
 

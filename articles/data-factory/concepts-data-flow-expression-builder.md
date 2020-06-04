@@ -7,12 +7,12 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 04/08/2020
-ms.openlocfilehash: dda2812b5e2cc79d53658d568ba0845d593f41d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 23355abdced3a4073cf90ccf60c14af088a4e564
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605379"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324160"
 ---
 # <a name="build-expressions-in-mapping-data-flow"></a>Výrazy sestavení v mapování toku dat
 
@@ -76,16 +76,12 @@ Některé příklady interpolace řetězců:
 
 Přidejte komentáře ke svým výrazům pomocí jednoduché a víceřádkové syntaxe komentáře.
 
-![Syntaxe jednořádkového i víceřádkového komentáře](media/data-flow/comments.png "Komentáře")
-
 V následujících příkladech jsou platné komentáře:
 
 * ```/* This is my comment */```
 
 * ```/* This is a```
 *   ```multi-line comment */```
-   
-* ```// This is a single line comment```
 
 Pokud vložíte komentář na začátek výrazu, zobrazí se v textovém poli transformace, kde můžete zdokumentovat své výrazy transformace.
 
@@ -93,7 +89,7 @@ Pokud vložíte komentář na začátek výrazu, zobrazí se v textovém poli tr
 
 ## <a name="regular-expressions"></a>Regulární výrazy
 
-Mnoho funkcí jazyka Expression používá syntaxi regulárního výrazu. Pokud používáte funkce regulárního výrazu, nástroj Tvůrce výrazů se pokusí interpretovat zpětné lomítko\\() jako řídicí znak sekvence. Použijete-li zpětná lomítka v regulárním výrazu, buď vložte celý regulární výraz do značek (\`) nebo použijte dvojité zpětné lomítko.
+Mnoho funkcí jazyka Expression používá syntaxi regulárního výrazu. Pokud používáte funkce regulárního výrazu, nástroj Tvůrce výrazů se pokusí interpretovat zpětné lomítko ( \\ ) jako řídicí znak sekvence. Použijete-li zpětná lomítka v regulárním výrazu, buď vložte celý regulární výraz do značek ( \` ) nebo použijte dvojité zpětné lomítko.
 
 Příklad, který používá přetržení:
 
@@ -124,11 +120,11 @@ Pomocí funkcí výrazů, které vracejí pole, použijte hranaté závorky ([])
 
 ## <a name="convert-to-dates-or-timestamps"></a>Převést na data nebo časová razítka
 
-Chcete-li do výstupu časového razítka zahrnout řetězcové literály, ```toString()```zabalte převod do.
+Chcete-li do výstupu časového razítka zahrnout řetězcové literály, zabalte převod do ```toString()``` .
 
 ```toString(toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss'), 'MM/dd /yyyy\'T\'HH:mm:ss')```
 
-Chcete-li převést milisekundy z epocha na datum nebo časové `toTimestamp(<number of milliseconds>)`razítko, použijte. Pokud se čas koná v sekundách, vynásobte 1 000.
+Chcete-li převést milisekundy z epocha na datum nebo časové razítko, použijte `toTimestamp(<number of milliseconds>)` . Pokud se čas koná v sekundách, vynásobte 1 000.
 
 ```toTimestamp(1574127407*1000l)```
 

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 03/18/2020
-ms.openlocfilehash: 361ba17532d27a7020be1b6874993da999f48604
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/3/2020
+ms.openlocfilehash: a6d340543289fa07370e053681599348a86940cf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527703"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343400"
 ---
 # <a name="supported-azure-database-for-mariadb-server-versions"></a>Podporované verze serveru Azure Database for MariaDB
 
@@ -26,15 +26,15 @@ Azure Database for MariaDB aktuálně podporuje následující verzi:
 
 ## <a name="mariadb-version-102"></a>MariaDB verze 10,2
 
-Verze opravy: 10.2.25
+Verze opravy: 10.2.31
 
-Další informace o vylepšeních a opravách v této verzi najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/library/mariadb-10225-release-notes/) .
+Další informace o vylepšeních a opravách v této verzi najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/mariadb-10231-release-notes/) .
 
 ## <a name="mariadb-version-103"></a>MariaDB verze 10,3
 
-Verze opravy: 10.3.16
+Verze opravy: 10.3.22
 
-Další informace o vylepšeních a opravách v této verzi najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/library/mariadb-10316-release-notes/) .
+Další informace o vylepšeních a opravách v této verzi najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/mariadb-10322-release-notes/) .
 
 ## <a name="managing-updates-and-upgrades"></a>Správa aktualizací a upgradů
 Služba automaticky spravuje upgrady pro aktualizace oprav. Například 10.2.21 na 10.2.23.  

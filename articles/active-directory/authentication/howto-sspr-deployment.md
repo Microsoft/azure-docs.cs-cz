@@ -11,19 +11,19 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6151bbd9f056ef95c0875b83c7b6fccb732aebfe
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: a56f7248d5782b63befc55c4215360e0f5cb52b2
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870960"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338562"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Plánování nasazení samoobslužného resetování hesla Azure Active Directory
 
 > [!IMPORTANT]
 > Tento plán nasazení nabízí doprovodné materiály a osvědčené postupy pro nasazení samoobslužného resetování hesla služby Azure AD (SSPR).
 >
-> **Pokud jste a chcete koncového uživatele a potřebujete se zpátky do svého účtu, pokračujte na [https://aka.ms/sspr](https://aka.ms/sspr) **.
+> **Pokud jste koncový uživatel a potřebujete se vrátit zpátky k účtu, pokračujte na [https://aka.ms/sspr](https://aka.ms/sspr) **.
 
 [Samoobslužné resetování hesla (SSPR)](https://www.youtube.com/watch?v=tnb2Qf4hTP8) je funkce Azure Active Directory (AD), která uživatelům umožňuje resetovat hesla bez kontaktování pracovníků oddělení IT o nápovědu. Uživatelé můžou rychle odblokovat a pokračovat v práci bez ohledu na to, kde jsou nebo jsou v denní době. Díky tomu, že si zaměstnanci můžou odblokovat vlastní odblokování, může vaše organizace snížit neproduktivní dobu a náklady na vysokou podporu pro nejčastější problémy související s heslem.
 
@@ -56,7 +56,7 @@ Klíčové výhody povolování SSPR jsou:
 
 * **Robustní auditování a sledování využití**. Organizace může zajistit, aby obchodní systémy zůstaly zabezpečené, zatímco její uživatelé resetují svoje vlastní hesla. Robustní protokoly auditu obsahují informace o každém kroku procesu resetování hesla. Tyto protokoly jsou k dispozici z rozhraní API a umožňují uživateli importovat data do SIEM (incidentu zabezpečení) podle vlastního výběru.
 
-### <a name="licensing"></a>Licencování
+### <a name="licensing"></a>Licensing
 
 Azure Active Directory je licence vázaná na každého uživatele, což znamená, že každý uživatel vyžaduje odpovídající licenci pro funkce, které používají. Pro SSPR doporučujeme licencování na základě skupin. 
 
@@ -86,7 +86,7 @@ Další informace o cenách najdete v tématu [Azure Active Directory ceny](http
 |Kurzy |[Dokončení zavedení pilotního resetování hesla samoobslužné služby Azure AD](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-pilot) |
 | |[Povolení zpětného zápisu hesla](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-enable-writeback) |
 | |[Resetování hesla Azure AD z přihlašovací obrazovky pro Windows 10](https://docs.microsoft.com/azure/active-directory/authentication/tutorial-sspr-windows) |
-| Nejčastější dotazy|[Nejčastější dotazy ke správě hesel](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
+| Časté otázky|[Nejčastější dotazy ke správě hesel](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-faq) |
 
 
 ### <a name="solution-architecture"></a>Architektura řešení
@@ -131,7 +131,7 @@ Když projekty technologie selžou, obvykle to vznikne z důvodu neshodných oč
 | Obchodní role/osoby| Role Azure AD (v případě potřeby) |
 | - | - |
 | HelpDesk úrovně 1| Správce hesel |
-| HelpDesk úrovně 2| Správce uživatele |
+| HelpDesk úrovně 2| Správce uživatelů |
 | Správce SSPR| Globální správce |
 
 
@@ -254,7 +254,7 @@ I když SSPR obvykle nevytváří problémy s uživatelem, je důležité připr
 
 Pokud chcete, aby váš tým podpory byl úspěšný, můžete vytvořit Nejčastější dotazy na základě dotazů, které obdržíte od uživatelů. Tady je pár příkladů:
 
-| Scénáře| Popis |
+| Scénáře| Description |
 | - | - |
 | Uživatel nemá k dispozici žádné registrované metody ověřování.| Uživatel se pokusí resetovat heslo, ale nemá žádnou z metod ověřování, které jsou k dispozici (například: opustil svůj mobilní telefon na domácím a nemůže získat přístup k e-mailu). |
 | Uživatel nepřijímá text nebo volá na svém Office nebo na mobilním telefonu.| Uživatel se snaží ověřit svoji identitu prostřednictvím textu nebo volání, ale nepřijímá text nebo volání. |
@@ -323,7 +323,7 @@ Protokoly auditu pro registraci a resetování hesla jsou k dispozici po dobu 30
 
 [Využití a přehledy](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-methods-usage-insights) umožňují pochopit, jak metody ověřování pro funkce, jako je Azure MFA a SSPR, fungují ve vaší organizaci. Tato funkce vytváření sestav poskytuje vaší organizaci prostředky pro pochopení, jaké metody se registrují a jak je používat.
 
-### <a name="troubleshoot"></a>Řešení potíží
+### <a name="troubleshoot"></a>Odstranit potíže
 
 * Přečtěte si téma [řešení potíží samoobslužného resetování hesla](https://docs.microsoft.com/azure/active-directory/authentication/active-directory-passwords-troubleshoot) . 
 

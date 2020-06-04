@@ -2,14 +2,14 @@
 title: Kvóty a omezení služeb
 description: Přečtěte si o výchozích Azure Batch kvótách, omezeních a omezeních a o zvýšení kvóty.
 ms.topic: conceptual
-ms.date: 08/13/2019
+ms.date: 06/03/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3168c6fc60b2552129e9a11fbf6e8e24d9b37b14
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 45eefd10f7227509e7db8730e5e7192bd5833721
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229839"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84323875"
 ---
 # <a name="batch-service-quotas-and-limits"></a>Kvóty a omezení služby Batch
 
@@ -83,41 +83,41 @@ Pomocí těchto kroků můžete požádat o zvýšení kvóty pro účet Batch n
 1. Vyberte **nové základy žádosti o podporu**  >  **Basics**.
 1. **Základní informace**:
    
-    a. **Typ problému**  >  **Omezení služeb a předplatného (kvóty)**
+    1. **Typ problému**  >  **Omezení služeb a předplatného (kvóty)**
    
-    b. Vyberte své předplatné.
+    1. Vyberte své předplatné.
    
-    c. **Typ kvóty**  >  **Batch**
+    1. **Typ kvóty**  >  **Batch**
       
-    Vyberte **Další**.
+       Vyberte **Další**.
     
 1. Oblast **Details** (Podrobnosti) obsahuje:
       
-    a. V části **Zadejte podrobnosti**zadejte umístění, typ kvóty a účet Batch.
+    1. V části **Zadejte podrobnosti**zadejte umístění, typ kvóty a účet Batch.
     
-    ![Zvýšení kvóty dávky][quota_increase]
+       ![Zvýšení kvóty dávky][quota_increase]
 
-    Mezi typy kvót patří:
+       Mezi typy kvót patří:
 
-    * **Na účet Batch**  
-        Hodnoty specifické pro jeden účet Batch, včetně základních a s nízkou prioritou a počtu úloh a fondů.
+       * **Na účet Batch**  
+         Hodnoty specifické pro jeden účet Batch, včetně základních a s nízkou prioritou a počtu úloh a fondů.
         
-    * **Na oblast**  
-        Hodnoty, které se vztahují na všechny účty Batch v oblasti a zahrnují počet účtů Batch na oblast a předplatné.
+       * **Na oblast**  
+         Hodnoty, které se vztahují na všechny účty Batch v oblasti a zahrnují počet účtů Batch na oblast a předplatné.
 
-    Kvóta s nízkou prioritou je jednou hodnotou v rámci všech řad virtuálních počítačů. Pokud potřebujete omezené skladové jednotky, musíte vybrat **jádra s nízkou prioritou** a zahrnout do žádosti rodiny virtuálních počítačů.
+       Kvóta s nízkou prioritou je jednou hodnotou v rámci všech řad virtuálních počítačů. Pokud potřebujete omezené skladové jednotky, musíte vybrat **jádra s nízkou prioritou** a zahrnout do žádosti rodiny virtuálních počítačů.
 
-    b. Vyberte **závažnost** podle svého [obchodního dopadu][support_sev].
+    1. Vyberte **závažnost** podle svého [obchodního dopadu][support_sev].
 
-    Vyberte **Další**.
+       Vyberte **Další**.
 
 1. V **kontaktní údaje**:
    
-    a. Vyberte **upřednostňovanou metodu kontaktu**.
+    1. Vyberte **upřednostňovanou metodu kontaktu**.
    
-    b. Ověřte a zadejte požadované kontaktní údaje.
+    1. Ověřte a zadejte požadované kontaktní údaje.
    
-    Vyberte **vytvořit** a odešlete žádost o podporu.
+       Vyberte **vytvořit** a odešlete žádost o podporu.
 
 Po odeslání žádosti o podporu vás bude kontaktovat podpora Azure. Žádosti o kvótu se můžou dokončit během několika minut nebo do dvou pracovních dnů.
 

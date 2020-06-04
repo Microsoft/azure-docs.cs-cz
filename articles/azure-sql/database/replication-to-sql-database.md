@@ -1,6 +1,6 @@
 ---
-title: SQL Server replikaci do Azure SQL Database
-description: Můžete nakonfigurovat Azure SQL Database jako předplatitele nabízené replikace v jednosměrné topologii transakce nebo replikace snímků.
+title: Replikace Azure SQL Server do Azure SQL Database
+description: V rámci jednosměrné transakce nebo topologie replikace snímků můžete nakonfigurovat databázi v Azure SQL Database jako předplatitele nabízených oznámení.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: mathoma
 ms.date: 04/28/2020
-ms.openlocfilehash: ec0aebc10d47b3e9945e63e818240da7bf2451e4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 6f1eb48655c4e38e2cf0520409e5e2b38750baf5
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192956"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324143"
 ---
 # <a name="replication-to-azure-sql-database"></a>Replikace do Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -29,13 +29,13 @@ Můžete nakonfigurovat Azure SQL Database jako předplatitele nabízené replik
 ## <a name="supported-configurations"></a>Podporované konfigurace
   
 - Azure SQL Database může být pouze předplatitelem nabízených oznámení SQL Server vydavatele a distributora.  
-- SQL Server, která funguje jako Vydavatel nebo distributora, může být instance [SQL Server spuštěná v místním](https://www.microsoft.com/sql-server/sql-server-downloads)prostředí, [Azure SQL Managed instance](../managed-instance/instance-create-quickstart.md)nebo instance [SQL Server spuštěná na virtuálním počítači Azure v cloudu](../virtual-machines/windows/sql-vm-create-portal-quickstart.md). 
-- Distribuční databázi a agenty replikace nelze umístit do Azure SQL Database.  
+- Instance SQL Server fungující jako Vydavatel nebo distributor může být instancí [SQL Server spouštěnou místně](https://www.microsoft.com/sql-server/sql-server-downloads), [SPRAVOVANOU instancí Azure SQL](../managed-instance/instance-create-quickstart.md)nebo instancí [SQL Server spuštěnou na virtuálním počítači Azure v cloudu](../virtual-machines/windows/sql-vm-create-portal-quickstart.md). 
+- Distribuční databáze a agenti replikace nelze umístit do databáze v Azure SQL Database.  
 - Je podporována [snímková](/sql/relational-databases/replication/snapshot-replication) a [Jednosměrná transakční](/sql/relational-databases/replication/transactional/transactional-replication) replikace. Transakční replikace peer-to-peer a slučovací replikace se nepodporují.
 
 ### <a name="versions"></a>Verze  
 
-Aby bylo možné úspěšně provést replikaci do Azure SQL Database, SQL Server vydavatelé a distributoři musí použít (aspoň) jednu z následujících verzí: 
+Aby bylo možné úspěšně provést replikaci do databáze v Azure SQL Database, SQL Server vydavatelé a distributoři musí použít (alespoň) jednu z následujících verzí:
 
 Publikování do libovolného Azure SQL Database z databáze SQL Server podporuje následující verze SQL Server:
 
@@ -116,7 +116,6 @@ Pro Azure SQL Database odběry nejsou podporovány následující možnosti:
 - Převést hierarchyid na maximální počet datových typů  
 - Převod prostorových datových typů na maximum  
 - Kopírovat rozšířené vlastnosti  
-- Kopírovat oprávnění  
 
 ### <a name="limitations-to-be-determined"></a>Omezení, která mají být určena
 

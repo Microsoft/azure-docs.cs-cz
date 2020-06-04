@@ -8,21 +8,18 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 42b42a7477326196546ad445367691192f00569a
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 23644736370d4a875d1f9c0e65f3097fcffa07f6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263241"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338698"
 ---
-# <a name="ddv4-and-ddsv4-series"></a>Ddv4 a Ddsv4 – Series
+# <a name="ddv4-and-ddsv4-series"></a>Řada Ddv4 a Ddsv4
 
 Ddv4 a Ddsv4-Series běží na &reg; procesorech Intel Xeon &reg; Platinum 8272CL (Cascade Lake) v konfiguraci s vlákny typu Hyper a poskytují lepší polohu pro většinu úloh pro obecné účely. Nabízí trvalou veškerou rychlost Turbo, 3,4 GHz, [Intel Turbo Production &reg; Technology 2,0](https://www.intel.com/content/www/us/en/architecture-and-technology/turbo-boost/turbo-boost-technology.html), [ &reg; technologii Intel Hyper-Threading](https://www.intel.com/content/www/us/en/architecture-and-technology/hyper-threading/hyper-threading-technology.html) a [ &reg; rozšíření Intel Advanced Vector Extensions 512 (Intel &reg; AVX-512)](https://www.intel.com/content/www/us/en/architecture-and-technology/avx-512-overview.html). Tyto nové velikosti virtuálních počítačů budou mít 50% větší místní úložiště a také lepší počet vstupně-výstupních operací pro čtení i zápis ve srovnání s [Dv3/Dsv3mi](https://docs.microsoft.com/azure/virtual-machines/dv3-dsv3-series) [virtuálními počítači Gen2](https://docs.microsoft.com/azure/virtual-machines/linux/generation-2).
 
 Mezi případy použití řady D-Series patří aplikace na podnikové úrovni, relační databáze, ukládání do mezipaměti v paměti a analýzy.
-
-> [!IMPORTANT]
-> Pokud nasazujete nový virtuální počítač pomocí řady Ddv4 nebo Ddsv4 a hodláte použít image pro Linux, musíte použít buď RHEL 8. x, CentOS 8. x nebo Oracle 7. x nebo novější. Pokud zvolíte RHEL 7. x, CentOS 7. x nebo Orcale 6. x dojde k nenouzové chybě jádra. Microsoft aktivně nasazuje opravu. Ovlivněny jsou jenom RHEL, CentOS a Oracle. 
 
 ## <a name="ddv4-series"></a>Ddv4-Series
 

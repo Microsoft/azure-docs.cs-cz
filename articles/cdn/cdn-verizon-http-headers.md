@@ -14,18 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2018
 ms.author: allensu
-ms.openlocfilehash: d2208f6769c8051b38bdafb92d62ec03cb2d668c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e20f6ce9540d357b61ae2cfdf0e8f96d127dc6c0
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253556"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343213"
 ---
 # <a name="verizon-specific-http-headers-for-azure-cdn-rules-engine"></a>Hlavičky protokolu HTTP specifické pro Verizon pro modul pravidel pro Azure CDN
 
 V případě **Azure CDN Premium z produktů Verizon** se při odeslání požadavku HTTP na zdrojový server může server POP (Point-of-prezence) přidat do požadavku na adresu klienta jednu nebo více rezervovaných hlaviček (nebo speciálních hlaviček proxy serveru). Tyto hlavičky jsou kromě standardních přijatých hlaviček přesměrování. Další informace o hlavičkách standardních požadavků najdete v tématu [pole žádostí](https://en.wikipedia.org/wiki/List_of_HTTP_header_fields#Request_fields).
 
-Pokud chcete zabránit tomu, aby se jedna z těchto rezervovaných hlaviček přidala do serveru služby Azure CDN (Content Delivery Network) na zdrojový server, musíte vytvořit pravidlo s [funkcí speciální hlavičky proxy serveru](cdn-verizon-premium-rules-engine-reference-features.md#proxy-special-headers) v modulu pravidel. V tomto pravidle vylučte hlavičku, kterou chcete odebrat, z výchozího seznamu hlaviček v poli Headers. Pokud jste povolili [funkci hlavičky odpovědí mezipaměti pro ladění](cdn-verizon-premium-rules-engine-reference-features.md#debug-cache-response-headers), nezapomeňte přidat potřebné `X-EC-Debug` hlavičky. 
+Pokud chcete zabránit tomu, aby se jedna z těchto rezervovaných hlaviček přidala do serveru služby Azure CDN (Content Delivery Network) na zdrojový server, musíte vytvořit pravidlo s [funkcí speciální hlavičky proxy serveru](https://docs.vdms.com/cdn/Content/HRE/F/Proxy-Special-Headers.htm) v modulu pravidel. V tomto pravidle vylučte hlavičku, kterou chcete odebrat, z výchozího seznamu hlaviček v poli Headers. Pokud jste povolili [funkci hlavičky odpovědí mezipaměti pro ladění](https://docs.vdms.com/cdn/Content/HRE/F/Debug-Cache-Response-Headers.htm), nezapomeňte přidat potřebné `X-EC-Debug` hlavičky. 
 
 Chcete-li například odebrat `Via` hlavičku, pole Headers (hlavičky) by měla obsahovat následující seznam hlaviček: x-předávaných-for, x--a x- *Host, x-Midgress, x-Gateway-list, x-ES-Name, Host*. 
 
@@ -42,10 +42,10 @@ X-host | Určuje název hostitele žádosti. | cdn.mydomain.com
 X – Midgress | Určuje, zda byl požadavek proxy serverem prostřednictvím dalšího serveru CDN. Například server, který je na serveru POP nebo server brány POP serveru pro a. <br />Tato hlavička se přidá do žádosti pouze v případě, že dojde k midgress provozu. V tomto případě je hlavička nastavená na hodnotu 1, aby označovala, že žádost byla proxy serverem prostřednictvím dalšího serveru CDN.| 1
 [Hostitel](#host-request-header) | Identifikuje hostitele a port, kde může být nalezen požadovaný obsah. | marketing.mydomain.com:80
 [X-Gateway – seznam](#x-gateway-list-request-header) | A: identifikuje seznam převzetí služeb při selhání serverů brány a přiřazených ke zdroji zákazníka. <br />Počátek štítku: označuje sadu počátečních ochranných serverů přiřazených ke zdroji zákazníka. | `icn1,hhp1,hnd1`
-X-EC –_&lt;název&gt;_ | Hlavičky požadavku začínající *x-EC* (například x-EC-tag, [x-EC-Debug](cdn-http-debug-headers.md)) jsou vyhrazené pro použití v CDN.| WAF-produkční
+X-EC –_ &lt; název &gt; _ | Hlavičky požadavku začínající *x-EC* (například x-EC-tag, [x-EC-Debug](cdn-http-debug-headers.md)) jsou vyhrazené pro použití v CDN.| WAF-produkční
 
 ## <a name="via-request-header"></a>Přes hlavičku žádosti
-Formát, pomocí kterého hlavička `Via` požadavku IDENTIFIKUJE server POP, je určen následující syntaxí:
+Formát, pomocí kterého `Via` Hlavička požadavku identifikuje server POP, je určen následující syntaxí:
 
 `Via: Protocol from Platform (POP/ID)` 
 
@@ -54,7 +54,7 @@ Výrazy použité v syntaxi jsou definovány takto:
 
 - Platforma: Určuje platformu, na které byl obsah požadován. Pro toto pole jsou platné následující kódy: 
 
-    kód | Platforma
+    Kód | Platforma
     -----|---------
     ECAcc | Velký HTTP
     ECS   | HTTP – malý
@@ -73,8 +73,8 @@ Servery POP přepíší hlavičku, `Host` Pokud jsou splněny obě následujíc�
 - Zdroj požadovaného obsahu je zákazníkem, který je serverem původu.
 - Možnost záhlaví hostitele HTTP odpovídající počátku zákazníka není prázdná.
 
-Hlavička `Host` požadavku bude přepsána tak, aby odrážela hodnotu definovanou v hlavičce HTTP hostitele.
-Pokud je možnost Hlavička hostitele protokolu HTTP původu zákazníka nastavena na hodnotu prázdné, bude hlavička `Host` žádosti odeslaná žadatelem předána zdrojovému serveru zákazníka.
+`Host`Hlavička požadavku bude přepsána tak, aby odrážela hodnotu definovanou v HLAVIČCE http hostitele.
+Pokud je možnost Hlavička hostitele protokolu HTTP původu zákazníka nastavena na hodnotu prázdné, bude `Host` Hlavička žádosti odeslaná žadatelem předána zdrojovému serveru zákazníka.
 
 ## <a name="x-gateway-list-request-header"></a>Hlavička žádosti o seznam X-Gateway-list
 Server POP přidá nebo přepíše hlavičku žádosti "X-Gateway-list", pokud je splněna některá z následujících podmínek:

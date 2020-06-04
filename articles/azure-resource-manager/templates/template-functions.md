@@ -3,12 +3,12 @@ title: Funkce šablon
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot, práci s řetězci a čísly a načtení informací o nasazení.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a15e7dfdf01a99cd23b216fafcfb44320a716d16
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d237f5c42c1d1eaab7b2236b15a3122bcb55865b
+ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231284"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84331402"
 ---
 # <a name="arm-template-functions"></a>Funkce šablon ARM
 
@@ -18,21 +18,21 @@ Chcete-li vytvořit vlastní funkce, přečtěte si téma [uživatelsky definova
 
 Většina funkcí funguje při nasazení do skupiny prostředků, předplatného, skupiny pro správu nebo tenanta stejné. Ve všech oborech nelze použít několik funkcí. Jsou uvedeny v níže uvedených seznamech.
 
-<a id="array" aria-hidden="true" />
-<a id="concatarray" aria-hidden="true" />
-<a id="contains" aria-hidden="true" />
-<a id="createarray" aria-hidden="true" />
-<a id="empty" aria-hidden="true" />
-<a id="first" aria-hidden="true" />
-<a id="intersection" aria-hidden="true" />
-<a id="last" aria-hidden="true" />
-<a id="length" aria-hidden="true" />
-<a id="min" aria-hidden="true" />
-<a id="max" aria-hidden="true" />
-<a id="range" aria-hidden="true" />
-<a id="skip" aria-hidden="true" />
-<a id="take" aria-hidden="true" />
-<a id="union" aria-hidden="true" />
+<a id="array" aria-hidden="true"></a>
+<a id="concatarray" aria-hidden="true"></a>
+<a id="contains" aria-hidden="true"></a>
+<a id="createarray" aria-hidden="true"></a>
+<a id="empty" aria-hidden="true"></a>
+<a id="first" aria-hidden="true"></a>
+<a id="intersection" aria-hidden="true"></a>
+<a id="last" aria-hidden="true"></a>
+<a id="length" aria-hidden="true"></a>
+<a id="min" aria-hidden="true"></a>
+<a id="max" aria-hidden="true"></a>
+<a id="range" aria-hidden="true"></a>
+<a id="skip" aria-hidden="true"></a>
+<a id="take" aria-hidden="true"></a>
+<a id="union" aria-hidden="true"></a>
 
 ## <a name="array-functions"></a>Funkce pro práci s poli
 
@@ -54,12 +54,12 @@ Správce prostředků poskytuje několik funkcí pro práci s poli.
 * [nezbytná](template-functions-array.md#take)
 * [sjednocovací](template-functions-array.md#union)
 
-<a id="coalesce" aria-hidden="true" />
-<a id="equals" aria-hidden="true" />
-<a id="less" aria-hidden="true" />
-<a id="lessorequals" aria-hidden="true" />
-<a id="greater" aria-hidden="true" />
-<a id="greaterorequals" aria-hidden="true" />
+<a id="coalesce" aria-hidden="true"></a>
+<a id="equals" aria-hidden="true"></a>
+<a id="less" aria-hidden="true"></a>
+<a id="lessorequals" aria-hidden="true"></a>
+<a id="greater" aria-hidden="true"></a>
+<a id="greaterorequals" aria-hidden="true"></a>
 
 ## <a name="comparison-functions"></a>Funkce porovnání
 
@@ -72,9 +72,9 @@ Správce prostředků poskytuje několik funkcí pro porovnávání v šablonác
 * [greater](template-functions-comparison.md#greater)
 * [greaterOrEquals](template-functions-comparison.md#greaterorequals)
 
-<a id="deployment" aria-hidden="true" />
-<a id="parameters" aria-hidden="true" />
-<a id="variables" aria-hidden="true" />
+<a id="deployment" aria-hidden="true"></a>
+<a id="parameters" aria-hidden="true"></a>
+<a id="variables" aria-hidden="true"></a>
 
 ## <a name="date-functions"></a>Datové funkce
 
@@ -92,32 +92,32 @@ Správce prostředků poskytuje následující funkce pro získání hodnot z č
 * [ukazatelů](template-functions-deployment.md#parameters)
 * [proměnné](template-functions-deployment.md#variables)
 
-<a id="and" aria-hidden="true" />
-<a id="bool" aria-hidden="true" />
-<a id="if" aria-hidden="true" />
-<a id="not" aria-hidden="true" />
-<a id="or" aria-hidden="true" />
+<a id="and" aria-hidden="true"></a>
+<a id="bool" aria-hidden="true"></a>
+<a id="if" aria-hidden="true"></a>
+<a id="not" aria-hidden="true"></a>
+<a id="or" aria-hidden="true"></a>
 
 ## <a name="logical-functions"></a>Logické funkce
 
 Správce prostředků poskytuje následující funkce pro práci s logickými podmínkami:
 
-* [ani](template-functions-logical.md#and)
+* [a](template-functions-logical.md#and)
 * [bool](template-functions-logical.md#bool)
 * [if](template-functions-logical.md#if)
 * [mění](template-functions-logical.md#not)
-* [ani](template-functions-logical.md#or)
+* [nebo](template-functions-logical.md#or)
 
-<a id="add" aria-hidden="true" />
-<a id="copyindex" aria-hidden="true" />
-<a id="div" aria-hidden="true" />
-<a id="float" aria-hidden="true" />
-<a id="int" aria-hidden="true" />
-<a id="minint" aria-hidden="true" />
-<a id="maxint" aria-hidden="true" />
-<a id="mod" aria-hidden="true" />
-<a id="mul" aria-hidden="true" />
-<a id="sub" aria-hidden="true" />
+<a id="add" aria-hidden="true"></a>
+<a id="copyindex" aria-hidden="true"></a>
+<a id="div" aria-hidden="true"></a>
+<a id="float" aria-hidden="true"></a>
+<a id="int" aria-hidden="true"></a>
+<a id="minint" aria-hidden="true"></a>
+<a id="maxint" aria-hidden="true"></a>
+<a id="mod" aria-hidden="true"></a>
+<a id="mul" aria-hidden="true"></a>
+<a id="sub" aria-hidden="true"></a>
 
 ## <a name="numeric-functions"></a>Numerické funkce
 
@@ -126,7 +126,7 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 * [add](template-functions-numeric.md#add)
 * [copyIndex](template-functions-numeric.md#copyindex)
 * [div](template-functions-numeric.md#div)
-* [float](template-functions-numeric.md#float)
+* [Plovák](template-functions-numeric.md#float)
 * [int](template-functions-numeric.md#int)
 * [dlouhé](template-functions-numeric.md#min)
 * [počet](template-functions-numeric.md#max)
@@ -134,9 +134,9 @@ Správce prostředků poskytuje následující funkce pro práci s celými čís
 * [mul](template-functions-numeric.md#mul)
 * [jednotk](template-functions-numeric.md#sub)
 
-<a id="json" aria-hidden="true" />
+<a id="json" aria-hidden="true"></a>
 
-## <a name="object-functions"></a>Funkce objektů
+## <a name="object-functions"></a>Objektové funkce
 
 Správce prostředků poskytuje několik funkcí pro práci s objekty.
 
@@ -147,16 +147,16 @@ Správce prostředků poskytuje několik funkcí pro práci s objekty.
 * [časový](template-functions-object.md#length)
 * [sjednocovací](template-functions-object.md#union)
 
-<a id="extensionResourceId" aria-hidden="true" />
-<a id="listkeys" aria-hidden="true" />
-<a id="list" aria-hidden="true" />
-<a id="providers" aria-hidden="true" />
-<a id="reference" aria-hidden="true" />
-<a id="resourcegroup" aria-hidden="true" />
-<a id="resourceid" aria-hidden="true" />
-<a id="subscription" aria-hidden="true" />
-<a id="subscriptionResourceId" aria-hidden="true" />
-<a id="tenantResourceId" aria-hidden="true" />
+<a id="extensionResourceId" aria-hidden="true"></a>
+<a id="listkeys" aria-hidden="true"></a>
+<a id="list" aria-hidden="true"></a>
+<a id="providers" aria-hidden="true"></a>
+<a id="reference" aria-hidden="true"></a>
+<a id="resourcegroup" aria-hidden="true"></a>
+<a id="resourceid" aria-hidden="true"></a>
+<a id="subscription" aria-hidden="true"></a>
+<a id="subscriptionResourceId" aria-hidden="true"></a>
+<a id="tenantResourceId" aria-hidden="true"></a>
 
 ## <a name="resource-functions"></a>Funkce prostředků
 
@@ -175,36 +175,36 @@ Správce prostředků poskytuje následující funkce pro získání hodnot pros
 * [subscriptionResourceId](template-functions-resource.md#subscriptionresourceid)
 * [tenantResourceId](template-functions-resource.md#tenantresourceid)
 
-<a id="base64" aria-hidden="true" />
-<a id="base64tojson" aria-hidden="true" />
-<a id="base64tostring" aria-hidden="true" />
-<a id="concat" aria-hidden="true" />
-<a id="containsstring" aria-hidden="true" />
-<a id="datauri" aria-hidden="true" />
-<a id="datauritostring" aria-hidden="true" />
-<a id="emptystring" aria-hidden="true" />
-<a id="endswith" aria-hidden="true" />
-<a id="firststring" aria-hidden="true" />
-<a id="guid" aria-hidden="true" />
-<a id="indexof" aria-hidden="true" />
-<a id="laststring" aria-hidden="true" />
-<a id="lastindexof" aria-hidden="true" />
-<a id="lengthstring" aria-hidden="true" />
-<a id="padleft" aria-hidden="true" />
-<a id="replace" aria-hidden="true" />
-<a id="skipstring" aria-hidden="true" />
-<a id="split" aria-hidden="true" />
-<a id="startswith" aria-hidden="true" />
-<a id="string" aria-hidden="true" />
-<a id="substring" aria-hidden="true" />
-<a id="takestring" aria-hidden="true" />
-<a id="tolower" aria-hidden="true" />
-<a id="toupper" aria-hidden="true" />
-<a id="trim" aria-hidden="true" />
-<a id="uniquestring" aria-hidden="true" />
-<a id="uri" aria-hidden="true" />
-<a id="uricomponent" aria-hidden="true" />
-<a id="uricomponenttostring" aria-hidden="true" />
+<a id="base64" aria-hidden="true"></a>
+<a id="base64tojson" aria-hidden="true"></a>
+<a id="base64tostring" aria-hidden="true"></a>
+<a id="concat" aria-hidden="true"></a>
+<a id="containsstring" aria-hidden="true"></a>
+<a id="datauri" aria-hidden="true"></a>
+<a id="datauritostring" aria-hidden="true"></a>
+<a id="emptystring" aria-hidden="true"></a>
+<a id="endswith" aria-hidden="true"></a>
+<a id="firststring" aria-hidden="true"></a>
+<a id="guid" aria-hidden="true"></a>
+<a id="indexof" aria-hidden="true"></a>
+<a id="laststring" aria-hidden="true"></a>
+<a id="lastindexof" aria-hidden="true"></a>
+<a id="lengthstring" aria-hidden="true"></a>
+<a id="padleft" aria-hidden="true"></a>
+<a id="replace" aria-hidden="true"></a>
+<a id="skipstring" aria-hidden="true"></a>
+<a id="split" aria-hidden="true"></a>
+<a id="startswith" aria-hidden="true"></a>
+<a id="string" aria-hidden="true"></a>
+<a id="substring" aria-hidden="true"></a>
+<a id="takestring" aria-hidden="true"></a>
+<a id="tolower" aria-hidden="true"></a>
+<a id="toupper" aria-hidden="true"></a>
+<a id="trim" aria-hidden="true"></a>
+<a id="uniquestring" aria-hidden="true"></a>
+<a id="uri" aria-hidden="true"></a>
+<a id="uricomponent" aria-hidden="true"></a>
+<a id="uricomponenttostring" aria-hidden="true"></a>
 
 ## <a name="string-functions"></a>Funkce řetězců
 

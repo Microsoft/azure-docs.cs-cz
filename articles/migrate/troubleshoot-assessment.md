@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 205b52201edb849abab02809b58ff9dc77a32a29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 18158c867ba7a3307585eab0f950d15a6a12aa7c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80127678"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342625"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Řešení potíží s vyhodnocením a vizualizací závislostí
 
@@ -50,13 +50,16 @@ Kvůli vnitřní chybě se nepovedlo určit vhodnost pro jeden nebo víc síťov
 
 ## <a name="linux-vms-are-conditionally-ready"></a>Virtuální počítače se systémem Linux jsou připravené pro přípravu.
 
-Posouzení serveru označí virtuální počítače se systémem Linux jako podmíněně připravené z důvodu známé mezery v posuzování serveru.
+V případě virtuálních počítačů VMware a Hyper-V vyznačuje vyhodnocování serveru Linux virtuální počítače s názvem "podmíněně připravený", a to z důvodu známé mezery v posuzování serveru. 
 
 - Tato mezera brání tomu, aby zjistila podverzi operačního systému Linux nainstalovaného na místních virtuálních počítačích.
-- Například pro RHEL 6,10 aktuálně vyhodnocování serveru detekuje jako verzi operačního systému pouze RHEL 6.
+- Například pro RHEL 6,10 aktuálně vyhodnocování serveru detekuje jako verzi operačního systému pouze RHEL 6. Důvodem je to, že vCenter Server ar hostitele Hyper-V neposkytuje verzi jádra pro operační systémy Linux virtuálních počítačů.
 -  Vzhledem k tomu, že Azure schválí pouze konkrétní verze systému Linux, jsou virtuální počítače se systémem Linux v současnosti označeny jako podmíněně připravené v rámci posouzení serveru.
 - Můžete zjistit, jestli operační systém Linux běžící na místním virtuálním počítači je v Azure schválený, a to kontrolou [podpory Azure Linux](https://aka.ms/migrate/selfhost/azureendorseddistros).
 -  Po ověření schválené distribuce můžete toto upozornění ignorovat.
+
+Tuto mezeru můžete vyřešit povolením [zjišťování aplikací](https://docs.microsoft.com/azure/migrate/how-to-discover-applications) na virtuálních počítačích VMware. Posouzení serveru používá k dispozici operační systém zjištěný z virtuálního počítače pomocí zadaných přihlašovacích údajů hosta. Tato data operačního systému identifikují správné informace o operačním systému v případě virtuálních počítačů se systémem Windows i Linux.
+
 
 ## <a name="azure-skus-bigger-than-on-premises"></a>Skladové jednotky Azure větší než místní
 
@@ -102,6 +105,8 @@ Posouzení Azure Migrate serveru v současné době zohledňuje náklady na lice
 
 Nástroj Hodnocení serverů průběžně shromažďuje data o výkonu místních počítačů a používá je k doporučení skladové položky virtuálního počítače a disku v Azure. [Přečtěte si, jak](concepts-assessment-calculation.md#calculate-sizing-performance-based) se shromažďují data založená na výkonu.
 
+## <a name="why-is-my-assessment-showing-a-warning-that-it-was-created-with-an-invalid-combintion-of-reserved-instances-vm-uptime-and-discount-"></a>Proč je moje hodnocení zobrazeno upozorněním, že bylo vytvořeno s neplatným combintion rezervovaných instancí, doba provozu a slevy virtuálního počítače (%)?
+Když vyberete možnost rezervované instance, sleva (%) a vlastnosti pro dobu provozu virtuálního počítače nelze použít. Při vytváření hodnocení s neplatnou kombinací těchto vlastností jsou tlačítka upravit a přepočítat zakázaná. Vytvořte prosím nové posouzení. [Přečtěte si další informace](https://go.microsoft.com/fwlink/?linkid=2131554).
 
 ## <a name="dependency-visualization-in-azure-government"></a>Vizualizace závislostí v Azure Government
 
@@ -113,7 +118,7 @@ Po instalaci agentů Vizualizace závislostí na místní virtuální počítač
 
 Pro virtuální počítače s Windows:
 1. V Ovládacích panelech spusťte MMA.
-2. V **Microsoft Monitoring Agent vlastnosti** > **Azure Log Analytics (OMS)** zkontrolujte, že je **stav** pracovního prostoru zelený.
+2. V **Microsoft Monitoring Agent vlastnosti**  >  **Azure Log Analytics (OMS)** zkontrolujte, že je **stav** pracovního prostoru zelený.
 3. Pokud stav není zelený, zkuste odebrat pracovní prostor a znovu ho přidat do MMA.
 
     ![Stav MMA](./media/troubleshoot-assessment/mma-properties.png)
@@ -152,7 +157,7 @@ Po migraci počítačů s povolenou vizualizací závislostí do Azure se můžo
 
 Shromážděte protokoly síťového provozu následujícím způsobem:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Stisknutím klávesy F12 spusťte Vývojářské nástroje. V případě potřeby zrušte zaškrtnutí **políčka vymazat položky u nastavení navigace** .
 3. Vyberte kartu **síť** a zahajte zachytávání síťového provozu:
    - V části Chrome vyberte **zachovat protokol**. Záznam by se měl spustit automaticky. Červený kroužek indikuje, že se zaznamenává provoz. Pokud se červené kolečko nezobrazí, vyberte černý kroužek, který chcete spustit.
@@ -165,6 +170,15 @@ Shromážděte protokoly síťového provozu následujícím způsobem:
    - V prohlížeči Chrome klikněte pravým tlačítkem myši kdekoli v protokolu konzoly. Vyberte **Uložit jako**, exportovat a protokol zip.
    - V Microsoft Edge nebo Internet Exploreru klikněte pravým tlačítkem na chyby a vyberte **Kopírovat vše**.
 7. Zavřete Vývojářské nástroje.
+
+
+## <a name="where-is-the-operating-system-data-in-my-assessment-discovered-from"></a>Kde jsou v mém hodnocení zjištěna data operačního systému?
+
+- Ve výchozím nastavení jsou pro virtuální počítače VMware data operačního systému poskytovaná vCenter. 
+   - V případě virtuálních počítačů VMware Linux, pokud je povolené zjišťování aplikací, se podrobnosti o operačním systému načítají z virtuálního počítače hosta. Chcete-li zjistit, které podrobnosti o operačním systému v posouzení, přejdete na zobrazení zjištěné servery a nakurzorujte ukazatel myši na hodnotu ve sloupci operační systém. V textu, který se zobrazí, byste viděli, jestli se data operačního systému shromažďují z vCenter serveru, nebo z virtuálního počítače hosta pomocí přihlašovacích údajů k virtuálnímu počítači. 
+   - V případě virtuálních počítačů s Windows se informace o operačním systému vždy načítají z vCenter Server.
+- Pro virtuální počítače Hyper-V se data operačního systému shromažďují z hostitele Hyper-V.
+- U fyzických serverů se načte ze serveru.
 
 ## <a name="next-steps"></a>Další kroky
 

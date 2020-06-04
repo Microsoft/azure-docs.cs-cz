@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: a16b95249562db98d9382f8ca56bf4a27beba2fd
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d455490f6eed0f928dc69c8f51f8d335a1dfe145
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743496"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321321"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Použití integrovaných příkazů a funkcí poznámkového bloku v Azure Cosmos DB poznámkových blocích Pythonu (Preview)
 
@@ -23,7 +23,7 @@ Po povolení podpory poznámkových bloků pro účty Azure Cosmos můžete otev
 Do nové buňky kódu vložte a spusťte následující kód, který nahraďte ``PackageToBeInstalled`` požadovaným balíčkem Python.
 ```python
 import sys
-!{sys.executable} -m pip install PackageToBeInstalled –user
+!{sys.executable} -m pip install PackageToBeInstalled --user
 ```
 Tento balíček bude k dispozici pro použití z libovolného poznámkového bloku v pracovním prostoru účet Azure Cosmos. 
 

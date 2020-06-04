@@ -11,14 +11,14 @@ ms.service: virtual-machines-sql
 ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: ac7a836f339e86ce3705d64d04cad143f1043a81
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 767bdeef48ed78b32ad5e3b0e43002a21cb1c9b6
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259520"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343706"
 ---
-# <a name="provision-a-linux-sql-server-virtual-machine-in-the-azure-portal"></a>Zřízení virtuálního počítače s Linuxem a SQL Serverem na webu Azure Portal
+# <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>Zřízení virtuálního počítače se systémem Linux běžícího SQL Server v Azure Portal
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
@@ -28,7 +28,7 @@ ms.locfileid: "84259520"
 V tomto kurzu rychlý Start použijete Azure Portal k vytvoření virtuálního počítače se systémem Linux s nainstalovanou SQL Server 2017. Naučíte se toto: 
 
 
-* [Vytvoření virtuálního počítače s Linuxem a SQL Serverem z galerie](#create)
+* [Vytvoření virtuálního počítače se systémem Linux běžícího SQL Server z Galerie](#create)
 * [Připojení k novému virtuálnímu počítači přes SSH](#connect)
 * [Změna hesla SA](#password)
 * [Konfigurace pro vzdálená připojení](#remote)
@@ -39,7 +39,7 @@ Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https
 
 ## <a name="create-a-linux-vm-with-sql-server-installed"></a><a id="create"></a>Vytvoření virtuálního počítače s Linuxem a nainstalovaným SQL Serverem
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 1. V levém podokně vyberte **Vytvořit prostředek**.
 
@@ -125,7 +125,7 @@ Pokud používáte Windows a nemáte prostředí BASH, nainstalujte klienta SSH,
 
 Další informace o připojení k virtuálním počítačům s Linuxem najdete v tématu [Vytvoření virtuálního počítače s Linuxem v Azure pomocí portálu](https://docs.microsoft.com/azure/virtual-machines/virtual-machines-linux-quick-create-portal).
 
-> [!Note]
+> [!NOTE]
 > Pokud se zobrazí výstraha zabezpečení výstupů na klíč hostitele serveru, který není uložen do mezipaměti v registru, vyberte z následujících možností. Pokud tomuto hostiteli důvěřujete, vyberte **Ano** a přidejte klíč do mezipaměti pro výstup a pokračujte v připojování. Chcete-li provést připojení pouze jednou, aniž byste museli přidat klíč do mezipaměti, vyberte možnost **ne**. Pokud tomuto hostiteli nedůvěřujete, vyberte **Zrušit** , aby se připojení zrušilo.
 
 ## <a name="change-the-sa-password"></a><a id="password"></a>Změna hesla SA

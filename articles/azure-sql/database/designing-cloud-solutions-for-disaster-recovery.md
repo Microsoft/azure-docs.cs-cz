@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: e2414873db06ada4d0a260e007998ef2ba2f2cf9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 6a8770cfaf5acedcf3549d92f1365948acda8bc7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050496"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344641"
 ---
 # <a name="designing-globally-available-services-using-azure-sql-database"></a>Návrh globálně dostupných služeb pomocí Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,7 +45,7 @@ Následující diagram znázorňuje tuto konfiguraci před výpadkem:
 
 ![Scénář 1. Konfigurace před výpadkem.](./media/designing-cloud-solutions-for-disaster-recovery/scenario1-a.png)
 
-Po výpadku primární oblasti SQL Database zjistí, že primární databáze není dostupná, a aktivuje převzetí služeb při selhání do sekundární oblasti na základě parametrů zásady automatického převzetí služeb při selhání (1). V závislosti na vaší smlouvě SLA vaší aplikace můžete nakonfigurovat dobu odkladu, která určuje dobu mezi detekcí výpadku a samotným převzetím služeb při selhání. Je možné, že Traffic Manager iniciuje převzetí služeb při selhání před tím, než skupina převzetí služeb při selhání spustí převzetí služeb při selhání databáze. V takovém případě se webová aplikace nemůže okamžitě znovu připojit k databázi. Ale opětovné připojení proběhne automaticky, jakmile se převzetí služeb při selhání databáze dokončí. Když se neúspěšná oblast obnoví a vrátí zpět do stavu online, stará primární primární se automaticky znovu připojí jako nová sekundární. Následující obrázek znázorňuje konfiguraci po převzetí služeb při selhání.
+Po výpadku primární oblasti SQL Database zjistí, že primární databáze není dostupná, a aktivuje převzetí služeb při selhání do sekundární oblasti na základě parametrů zásady automatického převzetí služeb při selhání (1). V závislosti na vaší smlouvě SLA vaší aplikace můžete nakonfigurovat dobu odkladu, která určuje dobu mezi detekcí výpadku a samotným převzetím služeb při selhání. Je možné, že Azure Traffic Manager iniciuje převzetí služeb koncového bodu před převzetím služeb při selhání v databázi. V takovém případě se webová aplikace nemůže okamžitě znovu připojit k databázi. Ale opětovné připojení proběhne automaticky, jakmile se převzetí služeb při selhání databáze dokončí. Když se neúspěšná oblast obnoví a vrátí zpět do stavu online, stará primární primární se automaticky znovu připojí jako nová sekundární. Následující obrázek znázorňuje konfiguraci po převzetí služeb při selhání.
 
 > [!NOTE]
 > Všechny transakce potvrzené po převzetí služeb při selhání se při opětovném připojení ztratí. Po dokončení převzetí služeb při selhání se aplikace v oblasti B bude moci znovu připojit a znovu spustit zpracování uživatelských požadavků. Webová aplikace i primární databáze jsou nyní v oblasti B a zůstávají společně umístěné.
@@ -111,7 +111,7 @@ V tomto scénáři má aplikace následující vlastnosti:
 * Přístup pro zápis dat by měl být podporován ve stejné geografické oblasti pro většinu uživatelů.
 * Latence čtení je pro činnost koncového uživatele zásadní.
 
-Aby bylo možné splnit tyto požadavky, je třeba zaručit, že se zařízení uživatele **vždy** připojí k aplikaci nasazené ve stejné geografické oblasti pro operace jen pro čtení, například na data procházení, analýzy atd. Zatímco operace OLTP se zpracovávají ve **stejné geografické oblasti**. Například během dne se OLTP operace zpracování ve stejné geografické oblasti, ale v době mimo hodiny, kdy je možné je zpracovat v jiném geografickém období. Pokud činnost koncového uživatele většinou probíhá během pracovní doby, můžete zajistit optimální výkon pro většinu uživatelů v většinu času. Tato topologie je znázorněna na následujícím obrázku.
+Aby bylo možné splnit tyto požadavky, je třeba zaručit, že se zařízení uživatele **vždy** připojí k aplikaci nasazené ve stejné geografické oblasti pro operace jen pro čtení, například na data procházení, analýzy atd. Vzhledem k tomu, že operace OLTP se zpracovávají ve stejném geografickém **čase**. Například během dne se OLTP operace zpracování ve stejné geografické oblasti, ale v době mimo hodiny, kdy je možné je zpracovat v jiném geografickém období. Pokud se aktivita koncového uživatele většinou stane během pracovní doby, můžete zajistit optimální výkon pro většinu uživatelů v většinu času. Tato topologie je znázorněna na následujícím obrázku.
 
 Prostředky aplikace by se měly nasadit v každé geografické oblasti, kde máte významné nároky na využití. Například pokud se vaše aplikace aktivně používá v USA, Evropské unii a Jižní Východní Asie aplikace by měla být nasazená do všech těchto zeměpisných oblastí. Primární databáze by se měla dynamicky přepínat mezi jednotlivými geografickými oblastmi na konci pracovní doby. Tato metoda se nazývá "následovat na Sun". Úloha OLTP se vždy připojuje k databázi prostřednictvím naslouchacího procesu pro čtení i zápis ** &lt; převzetí služeb při selhání-Group-name &gt; . Database.Windows.NET** (1). Úloha jen pro čtení se připojuje k místní databázi přímo pomocí serveru koncového bodu serveru databáze ** &lt; -name &gt; . Database.Windows.NET** (2). Traffic Manager je nakonfigurována pomocí [metody směrování výkonu](../../traffic-manager/traffic-manager-configure-performance-routing-method.md). Zajišťuje, aby bylo zařízení koncového uživatele připojeno k webové službě v nejbližší oblasti. Traffic Manager by měl být nastaven s povoleným monitorováním koncových bodů pro každý koncový bod webové služby (3).
 

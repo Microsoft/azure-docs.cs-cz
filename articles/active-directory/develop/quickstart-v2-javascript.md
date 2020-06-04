@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript
-ms.openlocfilehash: 91a4d10269975152cc62f3f5dc33238a8f6f2e11
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: d0c705ffba84b9d34f8bc3d6e4c06d4bdb90fa21
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82890519"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322817"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Rychlý Start: přihlášení uživatelů a získání přístupového tokenu v ZABEZPEČENÉm kódu JavaScript
 
@@ -58,7 +58,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 > 1. Vyberte **Zaregistrovat**. Na stránce **Přehled** aplikace si poznamenejte hodnotu **ID aplikace (klienta)** pro pozdější použití.
 > 1. Tento rychlý Start vyžaduje, aby byl povolený [tok implicitního udělení](v2-oauth2-implicit-grant-flow.md) . V levém podokně registrované aplikace vyberte **ověřování**.
 > 1. V části **konfigurace platformy**vyberte **Přidat platformu**. Panel se otevře vlevo. Vyberte oblast **webové aplikace** .
-> 1. Pořád na levé straně nastavte hodnotu **identifikátoru URI přesměrování** na `http://localhost:3000/`. Pak vyberte **přístupový token** a **token ID**.
+> 1. Pořád na levé straně nastavte hodnotu **identifikátoru URI přesměrování** na `http://localhost:3000/` . Pak vyberte **přístupový token** a **token ID**.
 > 1. Vyberte **Konfigurovat**.
 
 > [!div class="sxs-lookup" renderon="portal"]
@@ -84,7 +84,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-javascript-app"></a>Krok 3: Konfigurace aplikace JavaScriptu
 >
-> Ve složce *JavaScriptSPA* upravte *authConfig. js*a nastavte `clientID`hodnoty `authority` a `redirectUri` v části. `msalConfig`
+> Ve složce *JavaScriptSPA* upravte *authConfig. js*a nastavte `clientID` `authority` `redirectUri` hodnoty a v části `msalConfig` .
 >
 > ```javascript
 >
@@ -92,7 +92,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 >  const msalConfig = {
 >    auth: {
 >      clientId: "Enter_the_Application_Id_Here",
->      authority: "Enter_the_Cloud_Instance_Id_Here_OR_Enter_the_Tenant_Info_Here",
+>      authority: "Enter_the_Cloud_Instance_Id_Here/Enter_the_Tenant_Info_Here",
 >      redirectUri: "Enter_the_Redirect_Uri_Here",
 >    },
 >    cache: {
@@ -110,9 +110,9 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 > [!div renderon="docs"]
 >
 > Kde:
-> - Enter_the_Application_Id_Here>je **ID aplikace (klienta)** pro zaregistrovanou aplikaci. * \<*
-> - Enter_the_Cloud_Instance_Id_Here>je instance cloudu Azure. * \<* V případě hlavního nebo globálního cloudu Azure stačí zadat *https://login.microsoftonline.com*. Pro **národní** cloudy (například Čína) si přečtěte téma [národní cloudy](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
-> - Enter_the_Tenant_info_here>je nastavená na jednu z následujících možností: * \<*
+> - *\<Enter_the_Application_Id_Here>* je **ID aplikace (klienta)** pro aplikaci, kterou jste zaregistrovali.
+> - *\<Enter_the_Cloud_Instance_Id_Here>* je instancí cloudu Azure. V případě hlavního nebo globálního cloudu Azure stačí zadat *https://login.microsoftonline.com* . Pro **národní** cloudy (například Čína) si přečtěte téma [národní cloudy](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud).
+> - *\<Enter_the_Tenant_info_here>* je nastavená na jednu z následujících možností:
 >    - Pokud vaše aplikace podporuje *účty v tomto organizačním adresáři*, nahraďte tuto hodnotu **ID tenanta** nebo **názvem tenanta** (například *contoso.Microsoft.com*).
 >    - Pokud vaše aplikace podporuje *účty v jakémkoli organizačním adresáři*, nahraďte tuto hodnotu **organizacemi**.
 >    - Pokud vaše aplikace podporuje *účty v libovolném organizačním adresáři a osobních účtech Microsoft*, nahraďte tuto hodnotu **běžnými**. Pokud chcete omezit podporu *jenom na osobní účty Microsoft*, nahraďte tuto hodnotu **příjemci**.
@@ -130,8 +130,8 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 > ```javascript
 >   // Add here the endpoints for MS Graph API services you would like to use.
 >   const graphConfig = {
->     graphMeEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me",
->     graphMailEndpoint: "Enter_the_Graph_Endpoint_Herev1.0/me/messages"
+>     graphMeEndpoint: "Enter_the_Graph_Endpoint_Here/v1.0/me",
+>     graphMailEndpoint: "Enter_the_Graph_Endpoint_Here/v1.0/me/messages"
 >   };
 >
 >   // Add here scopes for access token to be used at MS Graph API endpoints.
@@ -144,7 +144,7 @@ V tomto rychlém startu pomocí ukázky kódu zjistíte, jak se jednostránkové
 > [!div renderon="docs"]
 >
 > Kde:
-> - Enter_the_Graph_Endpoint_Here>je koncový bod, proti kterému se volání rozhraní API budou provádět. * \<* V případě hlavní nebo globální služby Microsoft Graph API stačí zadat `https://graph.microsoft.com`. Další informace najdete v tématu věnovaném [národním cloudovým nasazením](https://docs.microsoft.com/graph/deployments) .
+> - *\<Enter_the_Graph_Endpoint_Here>* je koncový bod, na který se bude volat volání rozhraní API. V případě hlavní nebo globální služby Microsoft Graph API stačí zadat `https://graph.microsoft.com` . Další informace najdete v tématu věnovaném [národním cloudovým nasazením](https://docs.microsoft.com/graph/deployments) .
 >
 > #### <a name="step-4-run-the-project"></a>Krok 4: spuštění projektu
 
@@ -155,7 +155,7 @@ Spusťte projekt s webovým serverem pomocí [Node. js](https://nodejs.org/en/do
     npm install
     npm start
     ```
-1. Otevřete webový prohlížeč a pokračujte na `http://localhost:3000/`.
+1. Otevřete webový prohlížeč a pokračujte na `http://localhost:3000/` .
 
 1. Vyberte **Přihlásit** se a spusťte přihlášení a pak zavolejte Microsoft Graph API.
 
@@ -207,8 +207,8 @@ const myMSALObj = new Msal.UserAgentApplication(msalConfig);
 > |Kde  |  |
 > |---------|---------|
 > |`clientId`     | ID aplikace, která je zaregistrována v Azure Portal.|
-> |`authority`    | Volitelné Adresa URL autority, která podporuje typy účtů, jak je popsáno výše v části konfigurace. Výchozí autorita je `https://login.microsoftonline.com/common`. |
-> |`redirectUri`     | Nakonfigurovaná odpověď/redirectUri registrace aplikace V tomto případě `http://localhost:3000/`. |
+> |`authority`    | Volitelné Adresa URL autority, která podporuje typy účtů, jak je popsáno výše v části konfigurace. Výchozí autorita je `https://login.microsoftonline.com/common` . |
+> |`redirectUri`     | Nakonfigurovaná odpověď/redirectUri registrace aplikace V tomto případě `http://localhost:3000/` . |
 > |`cacheLocation`  | Volitelné Nastaví úložiště prohlížeče pro stav ověřování. Výchozí hodnota je sessionStorage.   |
 > |`storeAuthStateInCookie`  | Volitelné Knihovna, ve které je uložen stav žádosti o ověření, který je požadován pro ověření toků ověřování v souborech cookie prohlížeče. Tento soubor cookie je nastaven pro prohlížeče IE a Edge, aby se zmírnily určité [známé problémy](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues). |
 
@@ -234,18 +234,18 @@ myMSALObj.loginPopup(loginRequest)
 
 > |Kde  |  |
 > |---------|---------|
-> | `scopes`   | Volitelné Obsahuje obory, které jsou požadovány pro souhlas uživatele v době přihlášení. Například `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (tj. `api://<Application ID>/access_as_user`). |
+> | `scopes`   | Volitelné Obsahuje obory, které jsou požadovány pro souhlas uživatele v době přihlášení. Například `[ "user.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (tj `api://<Application ID>/access_as_user` .). |
 
 > [!TIP]
 > Alternativně můžete chtít použít `loginRedirect` metodu pro přesměrování aktuální stránky na přihlašovací stránku místo na místní okno.
 
 ### <a name="request-tokens"></a>Žádosti o tokeny
 
-MSAL používá tři metody k získání tokenů `acquireTokenRedirect`: `acquireTokenPopup`, a.`acquireTokenSilent`
+MSAL používá tři metody k získání tokenů: `acquireTokenRedirect` , `acquireTokenPopup` a.`acquireTokenSilent`
 
 #### <a name="get-a-user-token-silently"></a>Získání tokenu uživatele bez upozornění
 
-`acquireTokenSilent` Metoda zpracovává získání a obnovení tokenu bez zásahu uživatele. Po prvním `loginRedirect` spuštění `loginPopup` metody nebo `acquireTokenSilent` se jedná o metodu, která se běžně používá k získání tokenů používaných k přístupu k chráněným prostředkům pro následná volání. Volání požadavků na požadavky nebo obnovení tokenů se provádí tiše.
+`acquireTokenSilent`Metoda zpracovává získání a obnovení tokenu bez zásahu uživatele. Po `loginRedirect` `loginPopup` prvním spuštění metody nebo `acquireTokenSilent` se jedná o metodu, která se běžně používá k získání tokenů používaných k přístupu k chráněným prostředkům pro následná volání. Volání požadavků na požadavky nebo obnovení tokenů se provádí tiše.
 
 ```javascript
 
@@ -264,7 +264,7 @@ myMSALObj.acquireTokenSilent(tokenRequest)
 
 > |Kde  |  |
 > |---------|---------|
-> | `scopes`   | Obsahuje požadované obory, které mají být vráceny v přístupovém tokenu pro rozhraní API. Například `[ "mail.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (tj. `api://<Application ID>/access_as_user`).|
+> | `scopes`   | Obsahuje požadované obory, které mají být vráceny v přístupovém tokenu pro rozhraní API. Například `[ "mail.read" ]` pro Microsoft Graph nebo `[ "<Application ID URL>/scope" ]` pro vlastní webová rozhraní API (tj `api://<Application ID>/access_as_user` .).|
 
 #### <a name="get-a-user-token-interactively"></a>Interaktivní získání tokenu uživatele
 
@@ -273,7 +273,7 @@ Existují situace, kdy potřebujete vynutit, aby uživatelé mohli pracovat s ko
 * Vaše aplikace požaduje přístup k dalším oborům prostředků, ke kterým uživatel musí vyjádřit souhlas.
 * Je vyžadováno dvojúrovňové ověřování.
 
-Obvyklý doporučený vzor pro většinu aplikací je zavolat `acquireTokenSilent` nejprve a pak zachytit výjimku a pak voláním `acquireTokenPopup` (nebo `acquireTokenRedirect`) spustit interaktivní požadavek.
+Obvyklý doporučený vzor pro většinu aplikací je zavolat `acquireTokenSilent` nejprve a pak zachytit výjimku a pak voláním `acquireTokenPopup` (nebo `acquireTokenRedirect` ) spustit interaktivní požadavek.
 
 Volání `acquireTokenPopup` výsledků v překryvném okně pro přihlášení. (Nebo `acquireTokenRedirect` má za následek přesměrování uživatelů na koncový bod Microsoft Identity Platform.) V tomto okně musí uživatelé interaktivně pracovat tím, že potvrdí své přihlašovací údaje, udělí souhlas požadovanému prostředku nebo dokončí ověřování pomocí dvou faktorů.
 
@@ -293,7 +293,7 @@ myMSALObj.acquireTokenPopup(requestObj)
 ```
 
 > [!NOTE]
-> V `loginRedirect` tomto rychlém startu `acquireTokenRedirect` se používá metoda a v aplikaci Microsoft Internet Explorer, protože se jedná o [známý problém](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) související se zpracováním překryvných oken aplikací Internet Explorer.
+> V tomto rychlém `loginRedirect` startu `acquireTokenRedirect` se používá metoda a v aplikaci Microsoft Internet Explorer, protože se jedná o [známý problém](https://github.com/AzureAD/microsoft-authentication-library-for-js/wiki/Known-issues-on-IE-and-Edge-Browser#issues) související se zpracováním překryvných oken aplikací Internet Explorer.
 
 ## <a name="next-steps"></a>Další kroky
 

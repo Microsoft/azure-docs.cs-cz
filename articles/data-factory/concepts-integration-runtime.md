@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 03/26/2020
-ms.openlocfilehash: eb5e15f5387628fea293c767202ece77b14f656c
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 81061f9f20e325d6f392c76c5e2801527abc9e2b
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84113334"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344998"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Prostředí Integration Runtime v Azure Data Factory 
 
@@ -30,6 +30,8 @@ Prostředí Integration Runtime (IR) je výpočetní infrastruktura, kterou Azur
 - **Spouštění balíčků služby SSIS**: nativní spouštění balíčků služby SQL Server Integration Services (SSIS) ve spravovaném výpočetním prostředí Azure.
 
 Aktivita ve službě Data Factory určuje akci, která se má provést. Propojená služba určuje cílové úložiště dat nebo výpočetní službu. Prostředí Integration Runtime představuje spojení mezi aktivitou a propojenými službami.  Na ni odkazuje propojená služba nebo aktivita a poskytuje výpočetní prostředí, ve kterém se aktivita buď spustí, nebo se z něj odešle. Tímto způsobem se dá aktivita co nejefektivněji provést v oblasti, která je nejblíž cílovému úložišti dat nebo výpočetní službě, a zároveň vyhovět potřebám zabezpečení a dodržování předpisů.
+
+Prostředí Integration runtime se dají vytvořit v Azure Data Factorym uživatelském rozhraní prostřednictvím [centra pro správu](author-management-hub.md) a všech aktivit, datových sad nebo toků dat, které na ně odkazují.
 
 ## <a name="integration-runtime-types"></a>Typy prostředí Integration Runtime
 

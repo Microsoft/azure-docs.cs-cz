@@ -4,18 +4,34 @@ description: Předpoklady pro použití mezipaměti HPC Azure
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 04/03/2020
-ms.author: rohogue
-ms.openlocfilehash: 4508ef7583760a7ef7503f8a6f37202af2684d81
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/01/2020
+ms.author: v-erkel
+ms.openlocfilehash: d8f345b12d635f0ab683929fc67d5d789bfea8d9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106504"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343612"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
 Než použijete Azure Portal k vytvoření nové mezipaměti prostředí Azure HPC, ujistěte se, že vaše prostředí splňuje tyto požadavky.
+
+## <a name="video-overviews"></a>Přehledy videí
+
+Podívejte se na tato videa a Získejte rychlý přehled o komponentách systému a o tom, co potřebují k vzájemné spolupráci.
+
+(Klikněte na obrázek videa nebo na odkaz pro sledování.)
+
+* [Jak to funguje](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/) – vysvětluje, jak funguje mezipaměť prostředí Azure HPC s úložištěm a klienty.
+
+  [![obrázek miniatury videa: Azure HPC cache: Jak funguje (kliknutím navštívíte stránku video)](media/video2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
+
+* [Požadavky](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) – popisuje požadavky pro úložiště NAS, úložiště objektů BLOB v Azure, přístup k síti a klientský přístup.
+
+  [![obrázek miniatury videa: předpoklady Azure HPC cache (kliknutím navštívíte stránku video)](media/video3-prereqs.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
+
+V části tohoto článku najdete konkrétní doporučení.
 
 ## <a name="azure-subscription"></a>Předplatné Azure
 
@@ -103,7 +119,7 @@ Další informace najdete v tématu [řešení problémů s cílovým úložišt
 
   Pokud chcete ověřit nastavení systému úložiště, postupujte podle tohoto postupu.
 
-  * Pro kontrolu `rpcinfo` potřebných portů vydejte příkaz do systému úložiště. Následující příkaz vypíše porty a naformátuje příslušné výsledky v tabulce. (Použijte IP adresu vašeho systému místo *<storage_IP>* termínu.)
+  * `rpcinfo`Pro kontrolu potřebných portů vydejte příkaz do systému úložiště. Následující příkaz vypíše porty a naformátuje příslušné výsledky v tabulce. (Použijte IP adresu vašeho systému místo *<storage_IP>* termínu.)
 
     Tento příkaz můžete vydat ze všech klientů se systémem Linux, na kterých je nainstalována infrastruktura systému souborů NFS. Pokud používáte klienta v podsíti clusteru, může vám také pomáhat ověřit připojení mezi podsítí a systémem úložiště.
 
@@ -136,7 +152,7 @@ Další informace najdete v tématu [řešení problémů s cílovým úložišt
 
 * **Root Access** (čtení a zápis): mezipaměť se připojuje k back-endovému systému jako ID uživatele 0. Ověřte tato nastavení v systému úložiště:
   
-  * Povolit `no_root_squash`. Tato možnost zajistí, že uživatel vzdáleného kořenového uživatele bude moci přistupovat k souborům vlastněných kořenem.
+  * Povolit `no_root_squash` . Tato možnost zajistí, že uživatel vzdáleného kořenového uživatele bude moci přistupovat k souborům vlastněných kořenem.
 
   * Zaškrtněte políčka Exportovat zásady a ujistěte se, že neobsahují omezení přístupu rootu z podsítě mezipaměti.
 

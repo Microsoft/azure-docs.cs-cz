@@ -4,19 +4,19 @@ description: Tento rychlý Start založený na REST Python vás provede tím, ž
 ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27
-ms.topic: conceptual
-ms.openlocfilehash: e290b97446d441a8218a40b528f9833d45960580
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.topic: how-to
+ms.openlocfilehash: ead33b3602c75046a71f67c5b5a556b17ae8703d
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78851715"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342761"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Rychlý Start: získání odpovědí na otázku ze znalostní báze pomocí Pythonu
 
 V tomto rychlém startu se dozvíte, jak programově získat odpověď z publikované QnA Maker znalostní báze. Znalostní báze obsahuje otázky a odpovědi ze [zdrojů dat](../Concepts/knowledge-base.md) , jako jsou nejčastější dotazy. [Otázka](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) se odešle do služby QnA maker. [Odpověď](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) obsahuje horní předpokládanou odpověď.
 
-[Ukázka Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [Sample](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
+[Referenční dokumentace](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime)  |  [Ukázka](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -31,7 +31,7 @@ V tomto rychlém startu se dozvíte, jak programově získat odpověď z publiko
 
 ## <a name="create-a-python-file"></a>Vytvoření souboru Pythonu
 
-Otevřete VSCode a vytvořte nový soubor s názvem `get-answer-3x.py`.
+Otevřete VSCode a vytvořte nový soubor s názvem `get-answer-3x.py` .
 
 ## <a name="add-the-required-dependencies"></a>Přidání požadovaných závislostí
 
@@ -55,7 +55,7 @@ Následující kód provede požadavek HTTPS na rozhraní API služby QnA Maker 
 
 [!code-python[Add a POST request to send question to knowledge base](~/samples-qnamaker-python/documentation-samples/quickstarts/get-answer/get-answer-3x.py?range=27-48 "Add a POST request to send question to knowledge base")]
 
-Hodnota `Authorization` hlavičky obsahuje řetězec `EndpointKey`.
+`Authorization`Hodnota hlavičky obsahuje řetězec `EndpointKey` .
 
 ## <a name="run-the-program"></a>Spuštění programu
 

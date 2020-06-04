@@ -1,5 +1,5 @@
 ---
-title: Migrace databáze SQL Server na jeden nebo ve fondu Azure SQL Database
+title: Migrace databáze SQL Server do jedné nebo sdružené databáze v Azure SQL Database
 description: Přečtěte si o SQL Server migrace databáze do Azure SQL Database.
 keywords: migrace databáze, migrace databáze systému sql server, nástroje pro migraci databáze, migrace databáze, migrace sql database
 services: sql-database
@@ -12,17 +12,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 02/11/2019
-ms.openlocfilehash: f1e89b46f25fd4213b09680b441d3ecfd7a1e13b
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 861c6749c7843d64a39376366544668c77883c9c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044168"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84338341"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migrace databáze SQL Server do Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-V tomto článku se dozvíte o primárních metodách migrace databáze SQL Server 2005 nebo novější na Azure SQL Database s jedním nebo sdruženým fondem. Informace o migraci na spravovanou instanci SQL Azure najdete v tématu [migrace do SQL Server instance do spravované instance Azure SQL](../managed-instance/migrate-to-instance-from-sql-server.md). Informace o migraci z jiných platforem najdete v tématu [Průvodce migrací databáze Azure](https://datamigration.microsoft.com/).
+V tomto článku se dozvíte o primárních metodách migrace databáze SQL Server 2005 nebo novější do jedné nebo ve fondu databáze v Azure SQL Database. Informace o migraci do spravované instance Azure SQL najdete v tématu [migrace Instance SQL Server do spravované instance Azure SQL](../managed-instance/migrate-to-instance-from-sql-server.md). Informace o migraci z jiných platforem najdete v tématu [Průvodce migrací databáze Azure](https://datamigration.microsoft.com/).
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>Migrace do izolovaných databází nebo databáze ve fondu
 
@@ -37,7 +37,7 @@ V obou případech je potřeba zajistit, aby byla zdrojová databáze kompatibil
 
  Tuto metodu použijte k migraci do jedné nebo databáze ve fondu, pokud si můžete dovolit nějaké výpadky nebo testujete migraci produkční databáze pro pozdější migraci. Kurz najdete v tématu [migrace databáze SQL Server](../../dms/tutorial-sql-server-to-azure-sql.md).
 
-Následující seznam obsahuje obecný pracovní postup pro migraci SQL Server databáze jedné nebo ve fondu databáze pomocí této metody. Migraci do spravované instance najdete v tématu [migrace do spravované instance](../managed-instance/migrate-to-instance-from-sql-server.md).
+Následující seznam obsahuje obecný pracovní postup pro migraci SQL Server databáze jedné nebo ve fondu databáze pomocí této metody. Migrace do spravované instance SQL najdete v tématu [migrace do spravované instance SQL](../managed-instance/migrate-to-instance-from-sql-server.md).
 
   ![Diagram migrace VSSSDT](./media/migrate-to-database-from-sql-server/azure-sql-migration-sql-db.png)
 
@@ -45,10 +45,10 @@ Následující seznam obsahuje obecný pracovní postup pro migraci SQL Server d
 2. Příprava všech nezbytných oprav ve formě skriptů Transact-SQL.
 3. Vytvořte v průběhu migrace do zdrojové databáze převedenou konzistentní kopii zdrojové databáze, která se migruje, nebo zastavte nové transakce, ke kterým dochází ve zdrojové databázi. Metody pro dosažení této druhé možnosti zahrnují zakázání připojení klienta nebo vytvoření [snímku databáze](https://msdn.microsoft.com/library/ms175876.aspx). Po dokončení migrace můžete pomocí transakční replikace aktualizovat migrované databáze o změny, ke kterým dojde po bodu přerušení migrace. Viz migrace [pomocí transakční migrace](migrate-to-database-from-sql-server.md#method-2-use-transactional-replication).  
 4. Nasazení skriptů Transact-SQL a aplikování oprav na kopii databáze.
-5. [Migrujte](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql) kopii databáze do nového Azure SQL Database pomocí Data Migration Assistant.
+5. [Migrujte](https://docs.microsoft.com/sql/dma/dma-migrateonpremsql) kopii databáze do nové databáze v Azure SQL Database pomocí Data Migration Assistant.
 
 > [!NOTE]
-> Místo použití přímého přístupu do paměti (DMA) můžete také použít soubor BACPAC. Viz [Import souboru BacPac do nového Azure SQL Database](database-import.md).
+> Místo použití přímého přístupu do paměti (DMA) můžete také použít soubor BACPAC. Viz část [Import souboru BacPac do nové databáze v Azure SQL Database](database-import.md).
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>Optimalizace výkonu přenosu dat během migrace
 
@@ -56,10 +56,10 @@ Následující seznam obsahuje doporučení pro zajištění nejlepšího výkon
 
 - Vyberte nejvyšší úroveň služby a výpočetní velikost, které váš rozpočet umožní maximalizovat výkon přenosu. Po dokončení migrace můžete vertikálně snížit kapacitu a ušetřit tak peníze.
 - Minimalizujte vzdálenost mezi souborem BACPAC a cílovým datovým centrem.
-- Zakažte během migrace automatické statistiky.
+- Zakázat automatický statistiku během migrace
 - Rozdělte tabulky a indexy na oddíly.
 - Zrušte indexovaná zobrazení a po dokončení je znovu vytvořte.
-- Odeberte zřídka dotazované historické údaje do jiné databáze a migrujte Tato historická data do samostatného Azure SQL Database. Potom můžete historická data dotazovat pomocí [elastických dotazů](elastic-query-overview.md).
+- Odeberte zřídka dotazovaná historická data do jiné databáze a migrujte Tato historická data do samostatné databáze v Azure SQL Database. Potom můžete historická data dotazovat pomocí [elastických dotazů](elastic-query-overview.md).
 
 ### <a name="optimize-performance-after-the-migration-completes"></a>Optimalizace výkonu po dokončení migrace
 
@@ -67,11 +67,11 @@ Následující seznam obsahuje doporučení pro zajištění nejlepšího výkon
 
 ## <a name="method-2-use-transactional-replication"></a>Způsob 2: Použití transakční replikace
 
-Pokud si během migrace nemůžete dovolit stažení databáze SQL Serveru z produkčního prostředí, můžete jako řešení migrace použít transakční replikaci SQL Serveru. Abyste tento způsob mohli použít, zdrojová databáze musí splňovat [požadavky pro transakční replikaci](https://msdn.microsoft.com/library/mt589530.aspx) a musí být kompatibilní se službou Azure SQL Database. Informace o replikaci SQL s Always On najdete v tématu [Konfigurace replikace pro skupiny dostupnosti Always On (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
+Když si nemůžete dovolit odebrat svou SQL Server databázi z produkčního prostředí, když k migraci dojde, můžete jako řešení migrace použít transakční replikaci SQL Server. Abyste tento způsob mohli použít, zdrojová databáze musí splňovat [požadavky pro transakční replikaci](https://msdn.microsoft.com/library/mt589530.aspx) a musí být kompatibilní se službou Azure SQL Database. Informace o replikaci SQL s Always On najdete v tématu [Konfigurace replikace pro skupiny dostupnosti Always On (SQL Server)](/sql/database-engine/availability-groups/windows/configure-replication-for-always-on-availability-groups-sql-server).
 
-Toto řešení použijete tak, že nakonfigurujete službu Azure SQL Database jako odběratele instance SQL Serveru, kterou chcete migrovat. Distributor transakční replikace synchronizuje data z databáze, která se má synchronizovat (vydavatel), zatímco se stále provádějí nové transakce.
+Chcete-li použít toto řešení, nakonfigurujete databázi v Azure SQL Database jako předplatitele instance SQL Server, kterou chcete migrovat. Distributor transakční replikace synchronizuje data z databáze, která se má synchronizovat (vydavatel), zatímco se stále provádějí nové transakce.
 
-U transakční replikace se všechny změny dat nebo schématu objeví i ve službě Azure SQL Database. Jakmile se synchronizace dokončí a budete připraveni k migraci, změňte připojovací řetězec vašich aplikací tak, aby je směroval do služby Azure SQL Database. Až transakční replikace vytáhne všechny zbývající změny ze zdrojové databáze a všechny vaše aplikace budou směrovat do databáze Azure, můžete transakční replikaci odinstalovat. Vaším produkčním systémem je nyní služba Azure SQL Database.
+Díky transakční replikaci se všechny změny dat nebo schématu zobrazí v databázi v Azure SQL Database. Jakmile se synchronizace dokončí a budete připraveni na migraci, změňte připojovací řetězec vašich aplikací tak, aby odkazoval na vaši databázi. Až transakční replikace vytáhne všechny zbývající změny ze zdrojové databáze a všechny vaše aplikace budou směrovat do databáze Azure, můžete transakční replikaci odinstalovat. Vaše databáze v Azure SQL Database je teď vaším produkčním systémem.
 
  ![Diagram přidání počátečních hodnot do cloudu pomocí transakční replikace](./media/migrate-to-database-from-sql-server/SeedCloudTR.png)
 
@@ -100,12 +100,12 @@ Některé tipy a rozdíly pro migraci do služby SQL Database
   - Tím dojde k ovlivnění výkonu serveru.
   - Pokud je dopad na výkon nepřijatelný, můžete použít jiný server. Tím ale přispějete ke složitosti správy.
 - Při výběru složky snímků se ujistěte, že je vybraná složka dostatečně velká pro uložení souborů .BACPAC všech tabulek, které chcete replikovat.
-- Vytváření snímku až do svého dokončení zamkne přidružené tabulky, proto vytvoření snímku řádně naplánujte.
+- Vytvoření snímku zamkne přidružené tabulky, dokud se nedokončí, takže svůj snímek vhodně naplánujte.
 - Služba Azure SQL Database podporuje jenom nabízené odběry. Odběratele můžete přidat pouze ze zdrojové databáze.
 
 ## <a name="resolving-database-migration-compatibility-issues"></a>Řešení problémů s kompatibilitou při migrování databáze
 
-Můžete narazit na spoustu problémů s kompatibilitou. To závisí na verzi systému SQL Server ve zdrojové databázi i na složitosti databáze, kterou migrujete. Starší verze systému SQL Server mají více problémů s kompatibilitou. Kromě cíleného prohledávání internetu s vybraným vyhledávacím strojem použijte následující prostředky:
+V závislosti na verzi SQL Server ve zdrojové databázi a složitosti databáze, kterou migrujete, může dojít k nejrůznějším problémům s kompatibilitou. Starší verze systému SQL Server mají více problémů s kompatibilitou. Kromě cíleného prohledávání internetu s vybraným vyhledávacím strojem použijte následující prostředky:
 
 - [Funkce databáze systému SQL Server nepodporované ve službě Azure SQL Database](transact-sql-tsql-differences-sql-server.md)
 - [Ukončená funkce databázového stroje v systému SQL Server 2016](https://msdn.microsoft.com/library/ms144262%28v=sql.130%29)
@@ -117,7 +117,7 @@ Můžete narazit na spoustu problémů s kompatibilitou. To závisí na verzi sy
 Kromě vyhledávání v Internetu a používání těchto prostředků použijte [stránku s otázkou Microsoft Q&pro Azure SQL Database](https://docs.microsoft.com/answers/topics/azure-sql-database.html) nebo [StackOverflow](https://stackoverflow.com/).
 
 > [!IMPORTANT]
-> Azure SQL Managed instance umožňuje migrovat stávající instanci SQL Server a její databáze s minimálním počtem problémů s kompatibilitou. Podívejte [se, co je spravovaná instance Azure SQL](../managed-instance/sql-managed-instance-paas-overview.md).
+> Azure SQL Managed instance umožňuje migrovat stávající instanci SQL Server a její databáze s minimálním počtem problémů s kompatibilitou. Podívejte [se, co je spravovaná instance](../managed-instance/sql-managed-instance-paas-overview.md).
 
 ## <a name="next-steps"></a>Další kroky
 
@@ -126,3 +126,4 @@ Kromě vyhledávání v Internetu a používání těchto prostředků použijte
 - Příspěvek na blogu zákaznického poradního týmu SQL Serveru o migraci pomocí souborů BACPAC najdete v tématu popisujícím [migraci z SQL Serveru do služby SQL Database pomocí souborů BACPAC](https://blogs.msdn.microsoft.com/sqlcat/2016/10/20/migrating-from-sql-server-to-azure-sql-database-using-bacpac-files/).
 - Informace o práci s časem UTC po migraci najdete v článku o [úpravě výchozího časového pásma na místní časové pásmo](https://blogs.msdn.microsoft.com/azuresqlemea/2016/07/27/lesson-learned-4-modifying-the-default-time-zone-for-your-local-time-zone/).
 - Informace o změně výchozího jazyka databáze po migraci najdete v článku o [změně výchozího jazyka služby Azure SQL Database](https://blogs.msdn.microsoft.com/azuresqlemea/2017/01/13/lesson-learned-16-how-to-change-the-default-language-of-azure-sql-database/).
+ 

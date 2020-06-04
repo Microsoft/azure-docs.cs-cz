@@ -7,15 +7,15 @@ manager: nitinme
 ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/17/2020
 ms.author: diberry
-ms.openlocfilehash: fa7e2321d61721e370ef6b5924dc6f820dd1f724
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 61e53e6110e545d253dae81e94f8738ee17c4141
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685285"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344471"
 ---
 # <a name="add-entities-to-extract-data"></a>Přidat entity pro extrakci dat
 
@@ -207,7 +207,7 @@ LUIS neumožňuje změnit typ entity, protože nevíte, co přidat nebo odebrat 
 > [!div class="nextstepaction"]
 > [Použití předem připravených modelů](howto-add-prebuilt-models.md)
 
-Další informace:
+Přečtěte si další informace:
 * Postup [výuky](luis-how-to-train.md)
 * Jak [testovat](luis-interactive-test.md)
 * Jak [publikovat](luis-how-to-publish-app.md)

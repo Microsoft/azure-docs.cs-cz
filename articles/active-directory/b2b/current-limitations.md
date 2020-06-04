@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ffee01488ecf658ce02a20a41252aca19288667c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 127f05298483dcf155000c2eda8f590fc069a1e9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79263358"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84337661"
 ---
 # <a name="limitations-of-azure-ad-b2b-collaboration"></a>Omezení spolupráce B2B Azure AD
 Spolupráce B2B v Azure Active Directory (Azure AD) v současné době závisí na omezeních popsaných v tomto článku.
@@ -34,12 +34,12 @@ Azure AD B2B podléhá omezením adresáře služby Azure AD. Podrobnosti o poč
 [Národní cloudy](https://docs.microsoft.com/azure/active-directory/develop/authentication-national-cloud) jsou fyzicky izolované instancemi Azure. Spolupráce B2B není podporovaná v rámci hranic národního cloudu. Pokud je například váš tenant Azure ve veřejném, globálním cloudu, nemůžete pozvat uživatele, jehož účet je v národním cloudu. Pokud chcete s uživatelem spolupracovat, požádejte je o další e-mailovou adresu nebo pro ně vytvořte uživatelský účet v adresáři.
 
 ## <a name="azure-us-government-clouds"></a>Cloudy pro státní správu Azure USA
-V cloudu pro státní správu Azure USA je spolupráce B2B v současnosti podporovaná jenom mezi klienty, kteří jsou v cloudu Azure USA a kteří podporují spolupráci B2B. Pokud uživatele v tenantovi, který není součástí cloudu pro státní správu Azure USA nebo který ještě nepodporuje spolupráci B2B, nebude tato pozvánka úspěšná nebo uživatel nebude moct pozvánku uplatnit. Podrobnosti o dalších omezeních najdete v tématu [variace Azure Active Directory Premium P1 a P2](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
+V cloudu pro státní správu Azure USA se spolupráce B2B podporuje mezi klienty, kteří jsou v cloudu Azure USA a kteří podporují spolupráci B2B. Klienti Azure USA, kteří podporují spolupráci B2B, můžou spolupracovat se sociálními uživateli i pomocí účtů Microsoft nebo Google. Pokud uživatele vydáte mimo tyto skupiny (například pokud je uživatel v tenantovi, který není součástí cloudu Azure USA nebo ještě nepodporuje spolupráci B2B), pozvání selže nebo uživatel nebude moci uplatnit pozvání. Podrobnosti o dalších omezeních najdete v tématu [variace Azure Active Directory Premium P1 a P2](https://docs.microsoft.com/azure/azure-government/documentation-government-services-securityandidentity#azure-active-directory-premium-p1-and-p2).
 
 ### <a name="how-can-i-tell-if-b2b-collaboration-is-available-in-my-azure-us-government-tenant"></a>Jak zjistím, jestli je spolupráce B2B dostupná ve vašem tenantovi Azure pro státní správu USA?
 Pokud chcete zjistit, jestli váš cloudový tenant Azure pro státní správu USA podporuje spolupráci B2B, udělejte toto:
 
-1. V prohlížeči přejdete na následující adresu URL * &lt;, kde&gt;* nahradíte název tenanta:
+1. V prohlížeči přejdete na následující adresu URL, kde nahradíte název * &lt; &gt; tenanta:*
 
    `https://login.microsoftonline.com/<tenantname>/v2.0/.well-known/openid-configuration`
 
@@ -54,4 +54,3 @@ Přečtěte si následující články o spolupráci Azure AD B2B:
 
 - [Co je spolupráce B2B ve službě Azure AD?](what-is-b2b.md)
 - [Delegovat pozvánky pro spolupráci B2B](delegate-invitations.md)
-

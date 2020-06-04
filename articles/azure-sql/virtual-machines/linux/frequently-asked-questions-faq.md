@@ -1,6 +1,6 @@
 ---
-title: Nejčastější dotazy k SQL Server on Linux Azure Virtual Machines | Microsoft Docs
-description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se spouštění SQL Server on Linux virtuálních počítačů Azure.
+title: Nejčastější dotazy k SQL Server on Linux virtuálních počítačů | Microsoft Docs
+description: Tento článek obsahuje odpovědi na nejčastější dotazy týkající se spouštění SQL Server on Linux virtuálních počítačů.
 services: virtual-machines-linux
 documentationcenter: ''
 author: MashaMSFT
@@ -12,21 +12,21 @@ ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f5447e61936b55db353404aae7cb391377d78294
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3a9660de8cba2522bf66cabb91ee8b27ba810fdf
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84048004"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343780"
 ---
-# <a name="frequently-asked-questions-for-sql-server-on-linux-azure-virtual-machines"></a>Nejčastější dotazy k SQL Server on Linux Azure Virtual Machines
+# <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Nejčastější dotazy k SQL Server on Linux virtuálním počítačům
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Windows](../windows/frequently-asked-questions-faq.md)
 > * [Linux](frequently-asked-questions-faq.md)
 
-Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se spuštění [SQL Server on Linux Azure Virtual Machines](sql-server-on-linux-vm-what-is-iaas-overview.md).
+Tento článek obsahuje odpovědi na některé nejčastější dotazy týkající se spouštění [SQL Server on Linux virtuálních počítačů](sql-server-on-linux-vm-what-is-iaas-overview.md).
 
 [!INCLUDE [support-disclaimer](../../../../includes/support-disclaimer.md)]
 
@@ -34,15 +34,15 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Jaké jsou k dispozici Image Galerie virtuálních počítačů SQL Server?**
 
-   Azure udržuje image virtuálních počítačů pro všechny podporované hlavní verze SQL Server ve všech edicích pro Linux i Windows. Další podrobnosti najdete v tématu úplný seznam [imagí virtuálních počítačů Linux](sql-server-on-linux-vm-what-is-iaas-overview.md#create) a [imagí virtuálních počítačů s Windows](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo).
+   Azure udržuje image virtuálních počítačů (VM) pro všechny podporované hlavní verze SQL Server ve všech edicích pro Linux i Windows. Další podrobnosti najdete v tématu úplný seznam [imagí virtuálních počítačů Linux](sql-server-on-linux-vm-what-is-iaas-overview.md#create) a [imagí virtuálních počítačů s Windows](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md#payasyougo).
 
 1. **Jsou existující obrázky galerie virtuálních počítačů aktualizované SQL Server?**
 
-   Každé dva měsíce SQL Server Image v galerii virtuálních počítačů se aktualizují s nejnovějšími aktualizacemi pro Linux a Windows. Pro Image Linux to zahrnuje nejnovější aktualizace systému. Pro image Windows To zahrnuje aktualizace, které jsou v web Windows Update důležité, včetně důležitých SQL Server aktualizací zabezpečení a aktualizací Service Pack. SQL Server kumulativní aktualizace se pro systémy Linux a Windows liší. V případě systému SQL Server Linux jsou do aktualizace zahrnuty také kumulativní aktualizace. Ale v tuto chvíli nejsou virtuální počítače s Windows aktualizované s SQL Server nebo kumulativními aktualizacemi Windows serveru.
+   Každé dva měsíce SQL Server Image v galerii virtuálních počítačů se aktualizují s nejnovějšími aktualizacemi pro Linux a Windows. Pro Image Linux to zahrnuje nejnovější aktualizace systému. Pro image Windows To zahrnuje všechny aktualizace, které jsou v web Windows Update označené jako důležité, včetně důležitých SQL Server aktualizací zabezpečení a aktualizací Service Pack. SQL Server kumulativní aktualizace se pro systémy Linux a Windows liší. V případě systému SQL Server Linux jsou do aktualizace zahrnuty také kumulativní aktualizace. Ale v tuto chvíli nejsou virtuální počítače s Windows aktualizované s SQL Server nebo kumulativními aktualizacemi Windows serveru.
 
 1. **Jaké související balíčky SQL Server jsou také nainstalovány?**
 
-   Pokud chcete zobrazit SQL Server balíčky, které jsou ve výchozím nastavení nainstalované na virtuálních počítačích s SQL Server Linux, přečtěte si téma [nainstalované balíčky](sql-server-on-linux-vm-what-is-iaas-overview.md#packages).
+   Pokud chcete zobrazit SQL Server balíčky, které jsou ve výchozím nastavení nainstalovány na SQL Server on Linux virtuálních počítačů, přečtěte si téma [nainstalované balíčky](sql-server-on-linux-vm-what-is-iaas-overview.md#packages).
 
 1. **SQL Server můžou se z Galerie odebrat image virtuálních počítačů?**
 
@@ -52,13 +52,13 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Návody vytvořit virtuální počítač se systémem Linux pomocí SQL Server?**
 
-   Nejjednodušším řešením je vytvoření virtuálního počítače se systémem Linux, který obsahuje SQL Server. Kurz týkající se registrace do Azure a vytvoření virtuálního počítače s SQL z portálu najdete v tématu [zřízení virtuálního počítače se systémem Linux SQL Server v Azure Portal](sql-vm-create-portal-quickstart.md). Máte také možnost ručně nainstalovat SQL Server na virtuálním počítači s jednou z licencovaných edicí (Developer nebo Express) nebo pomocí místní licence. Pokud přenesete vlastní licenci, musíte mít [License mobility prostřednictvím Software Assurance v Azure](https://azure.microsoft.com/pricing/license-mobility).
+   Nejjednodušším řešením je vytvoření virtuálního počítače se systémem Linux, který obsahuje SQL Server. Kurz týkající se registrace do Azure a vytvoření virtuálního počítače s SQL Server z portálu najdete v tématu [zřízení virtuálního počítače se systémem Linux běžícího SQL Server v Azure Portal](sql-vm-create-portal-quickstart.md). Máte také možnost ručně nainstalovat SQL Server na virtuálním počítači s jednou z licencovaných edicí (Developer nebo Express) nebo pomocí místní licence. Pokud přenesete vlastní licenci, musíte mít [License mobility prostřednictvím Software Assurance v Azure](https://azure.microsoft.com/pricing/license-mobility).
 
 1. **Proč nemůžu zřídit virtuální počítač RHEL nebo SQL Server SLES s předplatným Azure, které má limit útraty?**
 
    Virtuální počítače s RHEL a SLES vyžadují předplatné bez limitu útraty a ověřený způsob platby (obvykle platební karta) přidruženou k předplatnému. Pokud zřídíte virtuální počítač RHEL nebo SLES, aniž byste odebrali limit útraty, vaše předplatné se deaktivuje a všechny virtuální počítače/služby se zastavily. Pokud provedete spuštění do tohoto stavu, pro opětovné povolení odběru [odeberte limit útraty](https://account.windowsazure.com/subscriptions). Zbývající kredity se obnoví pro aktuální fakturační cyklus, ale příplatek za image RHEL nebo SLES se bude účtovat na platební kartu, pokud se rozhodnete ji znovu spustit a pokračovat v jejím spuštění.
 
-## <a name="licensing"></a>Licencování
+## <a name="licensing"></a>Licensing
 
 1. **Jak můžu na virtuální počítač Azure nainstalovat licencovanou kopii SQL Serveru?**
 
@@ -72,15 +72,15 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
    No. Nemůžete přepnout z licencování platby za sekundu na používání vlastní licence. Musíte vytvořit nový virtuální počítač Linux, nainstalovat SQL Server a migrovat data. Další podrobnosti o tom, jak vlastnit vlastní licenci, najdete na předchozí otázce.
 
-## <a name="administration"></a>Správa
+## <a name="administration"></a>Administration
 
-1. **Můžu spravovat virtuální počítač s SQL Server Linux pomocí SQL Server Management Studio (SSMS)?**
+1. **Můžu spravovat virtuální počítač se systémem Linux běžící SQL Server s využitím SQL Server Management Studio (SSMS)?**
 
-   Ano, ale SSMS je aktuálně nástroj jenom pro Windows. Abyste mohli používat SSMS s virtuálními počítači Linux SQL Server, musíte se vzdáleně připojit z počítače s Windows. V místním počítači se systémem Linux může nový nástroj [MSSQL-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) provádět mnoho úloh správy. Nástroj pro správu databází pro různé platformy najdete v tématu [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
+   Ano, ale SSMS je aktuálně nástroj jenom pro Windows. Abyste mohli používat SSMS s virtuálními počítači Linux se systémem SQL Server, musíte se vzdáleně připojit z počítače s Windows. V místním počítači se systémem Linux může nový nástroj [MSSQL-conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf) provádět mnoho úloh správy. Nástroj pro správu databází pro různé platformy najdete v tématu [Azure Data Studio](https://docs.microsoft.com/sql/azure-data-studio/what-is).
 
-1. **Můžu z virtuálního počítače SQL zcela odebrat SQL Server?**
+1. **Můžu z virtuálního počítače s SQL Serverem zcela odebrat SQL Server?**
 
-   Ano, ale budete se vám nadále účtovat za váš virtuální počítač SQL, jak je popsáno v tématu [doprovodné materiály k SQL Server virtuálních počítačů Azure](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). Pokud už SQL Server nepotřebujete, můžete nasadit nový virtuální počítač a migrovat na něj data a aplikace. Pak můžete odebrat virtuální počítač s SQL Serverem.
+   Ano, ale budete se nadále účtovat za váš SQL Server virtuální počítač, jak je popsáno v [doprovodnéch materiálech pro SQL Server virtuálních počítačů Azure](../windows/pricing-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2fsql%2ftoc.json). Pokud už SQL Server nepotřebujete, můžete nasadit nový virtuální počítač a migrovat na něj data a aplikace. Pak můžete odebrat virtuální počítač s SQL Serverem.
 
 ## <a name="updating-and-patching"></a>Aktualizace a opravy
 
@@ -90,7 +90,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 ## <a name="general"></a>Obecné
 
-1. **Jsou SQL Server řešení pro vysokou dostupnost podporovaná na virtuálních počítačích Azure?**
+1. **Jsou SQL Server řešení s vysokou dostupností podporovaná na virtuálních počítačích Azure?**
 
    V tuto chvíli to není možné. Skupiny dostupnosti Always On a clusteringu s podporou převzetí služeb při selhání vyžadují řešení clusteringu v systému Linux, například Pacemaker. Podporovaná distribuce systému Linux pro SQL Server v cloudu nepodporuje jejich doplňky pro vysokou dostupnost.
 
@@ -99,11 +99,11 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 **Virtuální počítače se systémem Linux**:
 
 * [Přehled SQL Server na virtuálním počítači se systémem Linux](sql-server-on-linux-vm-what-is-iaas-overview.md)
-* [Zřízení virtuálního počítače s SQL Server Linux](sql-vm-create-portal-quickstart.md)
+* [Zřízení SQL Server na virtuálním počítači se systémem Linux](sql-vm-create-portal-quickstart.md)
 * [Dokumentace k SQL Server on Linux](https://docs.microsoft.com/sql/linux/sql-server-linux-overview)
 
 **Virtuální počítače s Windows**:
 
 * [Přehled SQL Server na virtuálním počítači s Windows](../windows/sql-server-on-azure-vm-iaas-what-is-overview.md)
-* [Zřízení virtuálního počítače s SQL Server Windows](../windows/sql-vm-create-portal-quickstart.md)
+* [Zřízení SQL Server na virtuálním počítači s Windows](../windows/sql-vm-create-portal-quickstart.md)
 * [Nejčastější dotazy (Windows)](../windows/frequently-asked-questions-faq.md)

@@ -11,17 +11,17 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 04/08/2019
-ms.openlocfilehash: f6b705da74fc939cab5f72e6335278207b98dc1a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 8f92fe8e4a4ebbc2d970bf28e415859249b9f67c
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041761"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343315"
 ---
 # <a name="what-is-a-single-database-in-azure-sql-database"></a>Co je jediná databáze v Azure SQL Database?
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Typ prostředku jediné databáze vytvoří v Azure SQL Database databázi s vlastní sadou prostředků a spravuje ji prostřednictvím [serveru](logical-servers.md). V případě izolované databáze je každá databáze izolovaná od ostatních a přenosných počítačů, z nichž každá má svou vlastní úroveň služby v rámci [nákupního modelu založeného na DTU](service-tiers-dtu.md) nebo v [nákupním modelu založeném na Vcore](service-tiers-vcore.md) a zaručené výpočetní velikosti.
+Typ prostředku jediné databáze vytvoří v Azure SQL Database databázi s vlastní sadou prostředků a spravuje ji prostřednictvím [serveru](logical-servers.md). U jediné databáze je každá databáze izolovaná a přenosná. Každý má svou vlastní úroveň služby v rámci [nákupního modelu založeného na DTU](service-tiers-dtu.md) nebo na [základě Vcore](service-tiers-vcore.md) a zaručené výpočetní velikosti.
 
 > [!IMPORTANT]
 > Jedna databáze je jedním z typů prostředků Azure SQL Database. Druhá je [elastické fondy](elastic-pool-overview.md).
@@ -46,7 +46,7 @@ Izolované databáze a elastické fondy poskytují mnoho vlastností dostupnosti
 
 Většina funkcí Transact-SQL, které aplikace používá, je plně podporovaná v Microsoft SQL Server i Azure SQL Database. Například základní komponenty SQL, jako jsou datové typy, operátory, řetězce, aritmetické funkce, logické a kurzorové funkce, fungují stejně v SQL Server a SQL Database. Existuje však několik rozdílů v jazyce T-SQL v prvcích DDL (Data-Definition Language) a DML (data pro manipulaci s daty), které jsou výsledkem příkazů T-SQL a dotazů, které jsou pouze částečně podporovány (což se zabývá dále v tomto článku).
 
-Kromě toho existují některé funkce a syntaxe, které nejsou podporované, protože Azure SQL Database slouží k izolaci funkcí ze závislostí v hlavní databázi a v operačním systému. Proto většina aktivit na úrovni serveru není pro SQL Database vhodná. Příkazy T-SQL a možnosti nejsou k dispozici, pokud konfigurují možnosti na úrovni serveru, součásti operačního systému nebo určují konfiguraci systému souborů. Pokud jsou tyto možnosti požadovány, je vhodná alternativa často k dispozici jiným způsobem než SQL Database nebo z jiné funkce nebo služby Azure.
+Kromě toho existují některé funkce a syntaxe, které nejsou podporované, protože Azure SQL Database slouží k izolaci funkcí ze závislostí v hlavní databázi a v operačním systému. Proto většina aktivit na úrovni serveru není pro SQL Database vhodná. Příkazy T-SQL a možnosti nejsou k dispozici, pokud konfigurují možnosti na úrovni serveru, konfigurují součásti operačního systému nebo určují konfiguraci systému souborů. Pokud jsou tyto možnosti požadovány, je vhodná alternativa často k dispozici jiným způsobem než SQL Database nebo z jiné funkce nebo služby Azure.
 
 Další informace najdete v tématu [řešení rozdílů v jazyce Transact-SQL během migrace na SQL Database](transact-sql-tsql-differences-sql-server.md).
 
@@ -55,7 +55,7 @@ Další informace najdete v tématu [řešení rozdílů v jazyce Transact-SQL b
 SQL Database poskytuje řadu [integrovaných funkcí zabezpečení a dodržování předpisů](security-overview.md) , které vaší aplikaci pomůžou splnit různé požadavky na zabezpečení a dodržování předpisů.
 
 > [!IMPORTANT]
-> Azure SQL Database bylo certifikováno pro určitý počet standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.
+> Azure SQL Database bylo certifikováno pro určitý počet standardů dodržování předpisů. Další informace najdete v [Centru zabezpečení Microsoft Azure](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942), kde můžete najít nejaktuálnější seznam SQL Database certifikace dodržování předpisů.
 
 ## <a name="next-steps"></a>Další kroky
 

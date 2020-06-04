@@ -1,6 +1,6 @@
 ---
 title: Použití konektoru Spark s Microsoft Azure SQL a SQL Server
-description: Naučte se používat konektor Spark s Microsoft Azure SQL a SQL Server
+description: Naučte se používat konektor Spark s Azure SQL Database, spravovanou instancí Azure SQL a SQL Server.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -11,19 +11,19 @@ author: denzilribeiro
 ms.author: denzilr
 ms.reviewer: carlrab
 ms.date: 09/25/2018
-ms.openlocfilehash: b2e042f2c3a7c6e1528ff96fb4fb96f392274855
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: eb48773b2816ac801ea1ddc6752a86b13ca7dd1d
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041224"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343298"
 ---
 # <a name="accelerate-real-time-big-data-analytics-using-the-spark-connector"></a>Urychlení analýzy velkých objemů dat v reálném čase pomocí konektoru Spark 
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
 
-Konektor Spark umožňuje Azure SQL Database, spravované instance Azure SQL a databáze SQL Server fungovat jako vstupní zdroj dat nebo jímka výstupních dat pro úlohy Sparku. Umožňuje využívat transakční data v reálném čase s analýzou velkých objemů dat a uchovávat výsledky pro dotazy a vytváření sestav v režimu ad hoc. V porovnání s integrovaným konektorem JDBC poskytuje tento konektor možnost hromadného vkládání dat do databází Microsoft Azure SQL a SQL Server. Může překoná řádek po vložení řádku s 10x, aby 20krát rychlejší výkon. Konektor Spark podporuje ověřování AAD pro připojení k databázím Azure SQL. Umožňuje zabezpečené připojení k databázi SQL Azure z Azure Databricks pomocí svého účtu AAD. Poskytuje podobná rozhraní s integrovaným konektorem JDBC. K použití tohoto nového konektoru je snadné migrovat stávající úlohy Sparku.
+Konektor Spark umožňuje používat databáze v Azure SQL Database, Azure SQL Managed instance a SQL Server fungovat jako vstupní zdroj dat nebo jímka výstupních dat pro úlohy Spark. Umožňuje využívat transakční data v reálném čase s analýzou velkých objemů dat a uchovávat výsledky pro dotazy nebo generování sestav ad hoc. V porovnání s integrovaným konektorem JDBC poskytuje tento konektor možnost hromadného vkládání dat do databáze. Může překoná vkládání po řádcích s 10x, aby 20krát rychlejší výkon. Konektor Spark podporuje ověřování Azure Active Directory (Azure AD) pro připojení k Azure SQL Database a spravované instanci SQL Azure, což vám umožní připojit vaši databázi od Azure Databricks pomocí svého účtu Azure AD. Poskytuje podobná rozhraní s integrovaným konektorem JDBC. K použití tohoto nového konektoru je snadné migrovat stávající úlohy Sparku.
 
-## <a name="download-and-build-spark-connector"></a>Stažení a sestavení konektoru Spark
+## <a name="download-and-build-a-spark-connector"></a>Stažení a sestavení konektoru Spark
 
 Začněte tím, že si stáhnete konektor Spark z [úložiště Azure-SQLDB-Spark](https://github.com/Azure/azure-sqldb-spark) na GitHubu.
 
@@ -38,13 +38,13 @@ Začněte tím, že si stáhnete konektor Spark z [úložiště Azure-SQLDB-Spar
 | Azure SQL Database                    | Podporuje se                |
 | Spravovaná instance Azure SQL            | Podporuje se                |
 
-Konektor Spark využívá ovladač Microsoft JDBC pro SQL Server přesun dat mezi uzly Spark Worker a databáze SQL:
+Konektor Spark využívá ovladač Microsoft JDBC pro SQL Server k přesouvání dat mezi uzly Spark Worker a databázemi:
 
 Tok dat je následující:
 
-1. Uzel Spark Master se připojuje k databázi SQL Azure nebo SQL Server a načítá data z konkrétní tabulky nebo pomocí konkrétního dotazu SQL.
+1. Uzel Spark Master se připojuje k databázím ve SQL Database nebo SQL Server a načítá data z konkrétní tabulky nebo pomocí konkrétního dotazu SQL.
 2. Uzel Spark Master distribuuje data do uzlů pracovního procesu pro transformaci.
-3. Pracovní uzel se připojuje k databázi SQL Azure nebo SQL Server a zapisuje data do databáze. Uživatel se může rozhodnout, že se má použít vkládání řádků nebo hromadného vložení.
+3. Pracovní uzel se připojuje k databázím, které se připojují k SQL Database a SQL Server a zapisuje data do databáze. Uživatel se může rozhodnout, že se má použít vkládání řádků nebo hromadného vložení.
 
 Tok dat znázorňuje následující diagram.
 
@@ -60,7 +60,7 @@ V současné době projekt konektoru používá Maven. Pokud chcete konektor vyt
 
 ## <a name="connect-and-read-data-using-the-spark-connector"></a>Připojení a čtení dat pomocí konektoru Spark
 
-Můžete se připojit k databázi Azure SQL nebo SQL Server z úlohy Sparku, číst nebo zapisovat data. Můžete také spustit dotaz DML nebo DDL v databázi v Azure SQL a SQL Server.
+Můžete se připojit k databázím v SQL Database a SQL Server z úlohy Sparku pro čtení nebo zápis dat. Můžete také spustit dotaz DML nebo DDL v databázích v SQL Database a SQL Server.
 
 ### <a name="read-data-from-azure-sql-and-sql-server"></a>Čtení dat z Azure SQL a SQL Server
 
@@ -143,9 +143,9 @@ val config = Config(Map(
 sqlContext.sqlDBQuery(config)
 ```
 
-## <a name="connect-from-spark-to-azure-sql-using-aad-authentication"></a>Připojení ze Sparku k Azure SQL pomocí ověřování AAD
+## <a name="connect-from-spark-using-azure-ad-authentication"></a>Připojení ze Sparku pomocí ověřování Azure AD
 
-K Azure SQL se můžete připojit pomocí ověřování Azure Active Directory (AAD). Ověřování AAD slouží k centrální správě identit uživatelů databáze a jako alternativu k ověřování SQL Server.
+Můžete se připojit k Azure SQL Database a spravované instanci SQL pomocí ověřování Azure AD. Pomocí ověřování Azure AD můžete centrálně spravovat identity uživatelů databáze a jako alternativu k ověřování SQL Server.
 
 ### <a name="connecting-using-activedirectorypassword-authentication-mode"></a>Připojení pomocí režimu ověřování ActiveDirectoryPassword
 
@@ -170,13 +170,13 @@ val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
-### <a name="connecting-using-access-token"></a>Připojování pomocí přístupového tokenu
+### <a name="connecting-using-an-access-token"></a>Připojení pomocí přístupového tokenu
 
 #### <a name="setup-requirement"></a>Požadavek na instalaci
 
 Pokud používáte režim ověřování na základě přístupového tokenu, musíte si stáhnout [Azure-Active-Library-for-Java](https://github.com/AzureAD/azure-activedirectory-library-for-java) a její závislosti a zahrnout je do cesty sestavení Java.
 
-Informace o tom, jak získat přístupový token do vaší databáze v Azure SQL Database nebo spravované instanci SQL Azure, najdete v tématu [použití Azure Active Directory ověřování pro ověřování](authentication-aad-overview.md) .
+V tématu [použití Azure Active Directory ověřování pro ověřování](authentication-aad-overview.md) se dozvíte, jak získat přístupový token do vaší databáze v Azure SQL Database nebo spravované instanci SQL Azure.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.config.Config
@@ -194,9 +194,9 @@ val collection = sqlContext.read.sqlDB(config)
 collection.show()
 ```
 
-## <a name="write-data-to-azure-sql-and-sql-server-using-bulk-insert"></a>Zápis dat do Azure SQL a SQL Server použití hromadného vložení
+## <a name="write-data-using-bulk-insert"></a>Zápis dat pomocí hromadného vložení
 
-Tradiční konektor JDBC zapisuje data do Azure SQL a SQL Server používá vkládání po řádcích. Pomocí konektoru Spark můžete zapisovat data do Azure SQL a SQL Server pomocí hromadného vložení. Významně zlepšuje výkon při zápisu při načítání velkých datových sad nebo načítání dat do tabulek, ve kterých se používá index úložiště sloupců.
+Tradiční konektor JDBC zapisuje data do vaší databáze pomocí vkládání po řádcích. Konektor Spark můžete použít k zápisu dat do Azure SQL a SQL Server pomocí hromadného vložení. Významně zlepšuje výkon při zápisu při načítání velkých datových sad nebo načítání dat do tabulek, ve kterých se používá index úložiště sloupců.
 
 ```scala
 import com.microsoft.azure.sqldb.spark.bulkcopy.BulkCopyMetadata

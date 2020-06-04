@@ -11,22 +11,22 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
 ms.date: 01/14/2020
-ms.openlocfilehash: 6f7c90791025f14e743a83693503fe235792c603
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: e5fd842e47c606c8f41aafe72253c1c4a1e885f3
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051952"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84324385"
 ---
-# <a name="configure--manage-content-reference---azure-sql-database"></a>Konfigurace & Správa odkazů na obsah-Azure SQL Database
+# <a name="configure-and-manage-content-reference---azure-sql-database"></a>Konfigurace a Správa odkazu na obsah-Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvětlení, které vám pomůžou se správou a konfigurací Azure SQL Database. 
 
 ## <a name="load-data"></a>Načtení dat
 
-- [Migrace na SQL Database](migrate-to-database-from-sql-server.md)
-- Naučte se [Spravovat databázi SQL po migraci](manage-data-after-migrating-to-database.md).
+- [Migrace do služby SQL Database](migrate-to-database-from-sql-server.md)
+- Naučte se, jak [spravovat SQL Database po migraci](manage-data-after-migrating-to-database.md).
 - [Kopírování databáze](database-copy.md)
 - [Import databáze z BACPAC](database-import.md)
 - [Export databáze do BACPAC](database-export.md)
@@ -35,10 +35,10 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 
 ## <a name="configure-features"></a>Konfigurace funkcí
 
-- [Konfigurace ověřování Azure AD](authentication-aad-configure.md)
+- [Konfigurace ověřování Azure Active Directory (Azure AD)](authentication-aad-configure.md)
 - [Konfigurace podmíněného přístupu](conditional-access-configure.md)
-- [Vícefaktorové ověřování AAD](authentication-mfa-ssms-overview.md)
-- [Konfigurace vícefaktorového ověřování](authentication-mfa-ssms-configure.md)
+- [Ověřování Multi-Factor Azure AD](authentication-mfa-ssms-overview.md)
+- [Konfigurace Multi-Factor Authentication](authentication-mfa-ssms-configure.md)
 - [Konfigurace zásad dočasného uchovávání informací](temporal-tables-retention-policy.md)
 - [Transparentní šifrování dat s využitím služby BYOK](transparent-data-encryption-byok-configure.md)
 - [Obměna klíčů BYOK transparentního šifrování dat](transparent-data-encryption-byok-key-rotation.md)
@@ -128,11 +128,12 @@ V tomto článku najdete odkaz na obsah různých průvodců, skriptů a vysvět
 - [Návrh pro elastické fondy](disaster-recovery-strategies-for-applications-with-elastic-pool.md)
 - [Návrh pro upgrady aplikací](manage-application-rolling-upgrade.md)
 
-### <a name="design-multi-tenant-saas-applications"></a>Návrh aplikací SaaS pro více tenantů
+### <a name="design-multi-tenant-software-as-a-service-saas-applications"></a>Návrh aplikací SaaS (multi-tenant software jako služba)
 
 - [Způsoby návrhu SaaS](saas-tenancy-app-design-patterns.md)
 - [Indexer videa SaaS](saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [Zabezpečení aplikací SaaS](saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
 ## <a name="next-steps"></a>Další kroky
-- Přečtěte si další informace o [průvodcích pro spravovanou instanci SQL](../managed-instance/how-to-content-reference-guide.md) .
+
+- Přečtěte si další informace o [průvodcích pro Azure SQL Managed instance](../managed-instance/how-to-content-reference-guide.md) .

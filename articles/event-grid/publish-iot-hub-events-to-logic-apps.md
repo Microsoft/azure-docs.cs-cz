@@ -5,14 +5,14 @@ services: iot-hub
 author: robinsh
 ms.service: iot-hub
 ms.topic: tutorial
-ms.date: 11/21/2019
+ms.date: 06/02/2020
 ms.author: robinsh
-ms.openlocfilehash: 0b1870af6316713590eec59aee2af94ce34b7e1a
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 5a0b9b2752a2ad8b7d2e03a40af11407b97391bc
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722554"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84322022"
 ---
 # <a name="tutorial-send-email-notifications-about-azure-iot-hub-events-using-event-grid-and-logic-apps"></a>Kurz: odesílání e-mailových oznámení o událostech Azure IoT Hub pomocí Event Grid a Logic Apps
 
@@ -175,19 +175,26 @@ V této části nakonfigurujete v IoT Hubu publikování událostí, když k nim
 
 4. Vytvořte odběr události s následujícími hodnotami: 
 
-   * **Podrobnosti odběru události**: zadejte popisný název a vyberte **Event Grid schéma**.
+    1. V části **Podrobnosti odběru události** proveďte následující úlohy:
+        1. Zadejte **název** odběru události. 
+        2. Vyberte **Event Grid schéma** pro **schéma událostí**. 
+   2. V části **Podrobnosti o tématu** proveďte následující úlohy:
+       1. Potvrďte, že je **typ tématu** nastaven na **IoT Hub**. 
+       2. Potvrďte, že název služby IoT Hub je nastaven jako hodnota pro pole **zdrojového prostředku** . 
+       3. Zadejte název **systémového tématu** , které se vytvoří za vás. 
+   3. V části **typy událostí** proveďte následující úlohy: 
+        1. Pro **Filtr na typy událostí**zrušte výběr všech možností s výjimkou **vytvořeného zařízení**.
 
-   * **Typy událostí**: ve **filtru na typy událostí**zrušte výběr všech možností s výjimkou **vytvořeného zařízení**.
+           ![typy událostí předplatného](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+   4. V části **Podrobnosti o koncovém bodu** proveďte následující úlohy: 
+       1. Jako **webový Hook**vyberte **Typ koncového bodu** .
+       2. Klikněte na **Vybrat koncový bod**, vložte adresu URL, kterou jste zkopírovali z aplikace logiky, a potvrďte výběr.
 
-       ![typy událostí předplatného](./media/publish-iot-hub-events-to-logic-apps/subscription-event-types.png)
+         ![Výběr adresy URL koncového bodu](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
 
-   * **Podrobnosti koncového bodu**: Vyberte typ koncového bodu jako **Webhook** a vyberte *Vybrat koncový bod* a vložte adresu URL, kterou jste zkopírovali z aplikace logiky, a potvrďte výběr.
+         Až budete hotovi, podokno by mělo vypadat jako v následujícím příkladu: 
 
-     ![Výběr adresy URL koncového bodu](./media/publish-iot-hub-events-to-logic-apps/endpoint-webhook.png)
-
-   Až budete hotovi, podokno by mělo vypadat jako v následujícím příkladu: 
-
-    ![Ukázkový formulář odběru události](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
+        ![Ukázkový formulář odběru události](./media/publish-iot-hub-events-to-logic-apps/subscription-form.png)
 
 5. Tady byste si mohli uložit odběr události a přijímat oznámení pro každé zařízení, které se vytvoří ve vašem centru IoT. Pro tento kurz ale použijte volitelná pole k filtrování pro konkrétní zařízení. V horní části podokna vyberte **filtry** .
 

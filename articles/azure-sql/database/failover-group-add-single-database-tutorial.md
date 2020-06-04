@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: Přidání databáze do skupiny převzetí služeb při selhání'
-description: Přidejte Azure SQL Database do skupiny automatického převzetí služeb při selhání pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
+description: Do skupiny převzetí služeb při selhání přidejte Azure SQL Database databázi pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.
 services: sql-database
 ms.service: sql-database
 ms.subservice: high-availability
@@ -11,17 +11,17 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sstein, carlrab
 ms.date: 06/19/2019
-ms.openlocfilehash: 78904feac106fbd1b612dfd494a2e8a280b40b25
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4df537e8cce51cc7358784fc72ef8ae077614df7
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84051483"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344556"
 ---
-# <a name="tutorial-add-an-azure-sql-database-to-an-auto-failover-group"></a>Kurz: Přidání Azure SQL Database do skupiny automatického převzetí služeb při selhání
+# <a name="tutorial-add-an-azure-sql-database-to-an-autofailover-group"></a>Kurz: Přidání Azure SQL Database do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-[Skupina převzetí služeb při selhání](auto-failover-group-overview.md) je deklarativní vrstva abstrakce, která umožňuje seskupit více geograficky replikovaných databází. Naučte se konfigurovat skupinu převzetí služeb při selhání pro Azure SQL Database a testovací převzetí služeb při selhání pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.  V tomto kurzu se naučíte, jak:
+[Skupina převzetí služeb při selhání](auto-failover-group-overview.md) je deklarativní vrstva abstrakce, která umožňuje seskupit více geograficky replikovaných databází. Naučte se konfigurovat skupinu převzetí služeb při selhání pro Azure SQL Database a testovací převzetí služeb při selhání pomocí Azure Portal, PowerShellu nebo rozhraní příkazového řádku Azure.  V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 >
@@ -31,7 +31,7 @@ ms.locfileid: "84051483"
 
 ## <a name="prerequisites"></a>Požadavky
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portál](#tab/azure-portal)
 
 Abyste mohli absolvovat tento kurz, ujistěte se, že máte následující:
 
@@ -44,7 +44,7 @@ K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 - Předplatné Azure. Pokud ho ještě nemáte, [Vytvořte si bezplatný účet](https://azure.microsoft.com/free/) .
 - [Azure PowerShell](/powershell/azureps-cmdlets-docs)
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 
@@ -61,11 +61,11 @@ K dokončení tohoto kurzu se ujistěte, že máte následující položky:
 
 V tomto kroku vytvoříte [skupinu převzetí služeb při selhání](auto-failover-group-overview.md) mezi existujícím serverem a novým serverem v jiné oblasti. Pak přidejte ukázkovou databázi do skupiny převzetí služeb při selhání.
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portál](#tab/azure-portal)
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní svou databázi pomocí Azure Portal.
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud v seznamu není **Azure SQL** , vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
 1. Vyberte databázi vytvořenou v části 1, například `mySampleDatabase` .
 1. Skupiny převzetí služeb při selhání je možné nakonfigurovat na úrovni serveru. Kliknutím na název serveru v části **název serveru** otevřete nastavení serveru.
 
@@ -172,7 +172,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 | [Get-AzSqlDatabase](/powershell/module/az.sql/get-azsqldatabase) | Získá jednu nebo více databází v Azure SQL Database. |
 | [Add-AzSqlDatabaseToFailoverGroup](/powershell/module/az.sql/add-azsqldatabasetofailovergroup) | Přidá jednu nebo více databází do skupiny převzetí služeb při selhání v Azure SQL Database. |
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 Vytvořte skupinu převzetí služeb při selhání a přidejte do ní svou databázi pomocí Azure CLI.
 
@@ -205,13 +205,13 @@ Tato část kurzu používá následující rutiny rozhraní příkazového řá
 
 ## <a name="3---test-failover"></a>3. testování převzetí služeb při selhání
 
-V tomto kroku dojde k selhání skupiny převzetí služeb při selhání pro sekundární server a následnému navrácení služeb po obnovení pomocí Azure Portal.
+V tomto kroku navedete selhání skupiny převzetí služeb při selhání na sekundární server a pak se znovu navrátíte pomocí Azure Portal.
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portál](#tab/azure-portal)
 
 Testovací převzetí služeb při selhání pomocí Azure Portal.
 
-1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
+1. V nabídce na levé straně [Azure Portal](https://portal.azure.com)vyberte **Azure SQL** . Pokud v seznamu není **Azure SQL** , vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu.
 1. Vyberte databázi vytvořenou v části 2, například `mySampleDatbase` .
 1. Kliknutím na název serveru v části **název serveru** otevřete nastavení serveru.
 
@@ -222,13 +222,13 @@ Testovací převzetí služeb při selhání pomocí Azure Portal.
    ![Výběr skupiny převzetí služeb při selhání z portálu](./media/failover-group-add-single-database-tutorial/select-failover-group.png)
 
 1. Zkontrolujte, který server je primární a který server je sekundární.
-1. V podokně úloh vyberte **převzetí** služeb při selhání pro skupinu převzetí služeb při selhání, která obsahuje ukázkovou databázi.
+1. V podokně úloh vyberte **převzetí služeb při** selhání pro skupinu převzetí služeb při selhání, která obsahuje ukázkovou databázi.
 1. U upozornění, které vás upozorní na to, že relace TDS budou odpojeny, vyberte **Ano** .
 
-   ![Převzetí služeb při selhání ve skupině, která obsahuje vaše databáze SQL](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
+   ![Převzetí služeb při selhání ve skupině, která obsahuje vaši databázi ve službě SQL Database](./media/failover-group-add-single-database-tutorial/failover-sql-db.png)
 
-1. Zkontrolujte, který server je teď primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně zdařilo, dva servery by měly mít zaměnitelné role.
-1. Znovu vyberte **převzetí služeb při selhání** , aby se servery převedly zpátky na původní role.
+1. Zkontrolujte, který server je teď primární a který server je sekundární. Pokud se převzetí služeb při selhání úspěšně převedlo, musí mít dva servery zaměnitelné role.
+1. Znovu vyberte **převzetí služeb při selhání** , aby se servery znovu nezměnily na původní role.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -291,7 +291,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 | [Get-AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/get-azsqldatabasefailovergroup) | Získá nebo zobrazí seznam Azure SQL Database skupin převzetí služeb při selhání. |
 | [Switch – AzSqlDatabaseFailoverGroup](/powershell/module/az.sql/switch-azsqldatabasefailovergroup)| Provede převzetí služeb při selhání skupiny převzetí služeb při selhání Azure SQL Database. |
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 Testovací převzetí služeb při selhání pomocí Azure CLI.
 
@@ -331,7 +331,7 @@ Tato část kurzu používá následující rutiny rozhraní příkazového řá
 
 Vyčistěte prostředky odstraněním skupiny prostředků.
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portál](#tab/azure-portal)
 
 Odstraňte skupinu prostředků pomocí Azure Portal.
 
@@ -359,7 +359,7 @@ Tato část kurzu používá následující rutiny PowerShellu:
 |---|---|
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Odebere skupinu prostředků. |
 
-# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+# <a name="the-azure-cli"></a>[Rozhraní příkazového řádku Azure](#tab/azure-cli)
 
 Odstraňte skupinu prostředků pomocí Azure CLI.
 
@@ -419,7 +419,7 @@ Tento skript používá následující příkazy. Každý příkaz v tabulce odk
 | [AZ SQL Failover-Group set-Primary](/cli/azure/sql/failover-group?view=azure-cli-latest#az-sql-failover-group-set-primary) | Nastavte primární skupinu převzetí služeb při selhání pomocí převzetí služeb při selhání všemi databázemi z aktuálního primárního serveru. |
 | [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az-vm-extension-set) | Odstraní skupinu prostředků včetně všech vnořených prostředků. |
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="the-portal"></a>[Portál](#tab/azure-portal)
 
 Pro Azure Portal nejsou k dispozici žádné skripty.
 
@@ -429,7 +429,7 @@ Další Azure SQL Database skripty můžete najít tady: [Azure PowerShell](powe
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste přidali Azure SQL Database do skupiny převzetí služeb při selhání a otestujete převzetí služeb při selhání. Naučili jste se tyto postupy:
+V tomto kurzu jste do skupiny převzetí služeb při selhání přidali Azure SQL Database databázi a otestujete převzetí služeb při selhání. Naučili jste se tyto postupy:
 
 > [!div class="checklist"]
 >

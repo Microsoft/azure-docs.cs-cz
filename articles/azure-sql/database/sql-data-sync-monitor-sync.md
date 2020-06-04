@@ -1,6 +1,6 @@
 ---
 title: Monitorování Synchronizace dat SQL pomocí protokolů Azure Monitor
-description: Naučte se monitorovat Synchronizace dat SQL pomocí protokolů Azure Monitor
+description: Naučte se monitorovat Synchronizace dat SQL pomocí protokolů Azure Monitor.
 services: sql-database
 ms.service: sql-database
 ms.subservice: data-movement
@@ -11,15 +11,14 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 12/20/2018
-ms.openlocfilehash: b7c801d75d778deccae645e0945fba557dbc6782
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 307e501743d01b94cfca3692cc09c05cc90ed3ce
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188799"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343230"
 ---
 # <a name="monitor-sql-data-sync-with-azure-monitor-logs"></a>Monitorování Synchronizace dat SQL pomocí protokolů Azure Monitor 
-[!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
 Chcete-li kontrolovat Synchronizace dat SQL protokolu aktivit a zjišťovat chyby a upozornění, dříve bylo nutné Synchronizace dat SQL ručně kontrolovat v Azure Portal nebo použít PowerShell nebo REST API. Podle kroků v tomto článku můžete nakonfigurovat vlastní řešení, které vylepšuje prostředí pro monitorování synchronizace dat. Toto řešení můžete přizpůsobit tak, aby vyhovovalo vašemu scénáři.
 
@@ -80,7 +79,7 @@ Další informace o vytváření sad Runbook najdete v tématu [můj první powe
 
 1.  V části účet Azure Automation vyberte v části automatizace procesu kartu **Runbooky** .
 
-2.  V levém horním rohu stránky sady Runbook vyberte **Přidat sadu Runbook** .
+2.  Vyberte **Přidat sadu Runbook** v levém horním rohu stránky sady Runbook.
 
 3.  Vyberte **importovat existující Runbook**.
 
@@ -100,7 +99,7 @@ Další informace o vytváření sad Runbook najdete v tématu [můj první powe
 
     1.  Informace o Azure.
 
-    2.  Synchronizovat informace o skupině.
+    2.  synchronizovat informace o skupině.
 
     3.  Azure Monitor protokoluje informace. Tyto informace najdete v Azure Portal | Nastavení | Připojené zdroje. Další informace o posílání dat do protokolů Azure Monitor najdete v tématu [posílání dat do Azure monitor protokolů pomocí rozhraní API kolekce dat http (Preview)](../../azure-monitor/platform/data-collector-api.md).
 
@@ -136,7 +135,7 @@ Chcete-li vytvořit výstrahu, která používá protokoly Azure Monitor, prove�
 
 1.  V Azure Portal vyberte **prohledávání protokolu**.
 
-2.  Vytvořte dotaz pro výběr chyb a upozornění podle skupin synchronizace v intervalu, který jste vybrali. Například:
+2.  Vytvořte dotaz pro výběr chyb a upozornění podle skupin synchronizace v intervalu, který jste vybrali. Příklad:
 
     `DataSyncLog_CL | where LogLevel_s != "Success" | summarize AggregatedValue = count() by bin(TimeGenerated,60m),SyncGroupName_s`
 

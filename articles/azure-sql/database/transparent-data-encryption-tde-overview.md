@@ -1,7 +1,7 @@
 ---
 title: Transparentní šifrování dat
-titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse
-description: Přehled transparentního šifrování dat pro Azure SQL Database, spravovanou instanci SQL Azure a Azure synapse Tento dokument popisuje své výhody a možnosti konfigurace, mezi které patří transparentní šifrování dat spravované službou a Bring Your Own Key.
+titleSuffix: Azure SQL Database & SQL Managed Instance & Azure Synapse Analytics
+description: Přehled transparentního šifrování dat pro Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics. Tento dokument popisuje své výhody a možnosti konfigurace, mezi které patří transparentní šifrování dat spravované službou a Bring Your Own Key.
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -12,24 +12,24 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 04/10/2020
-ms.openlocfilehash: 05bd4b83a6387eefb243ed8058c3fe833615cfb4
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 4ea4ad98fcea022a22196e359e24f56cb3d0f4d8
+ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84188290"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84321372"
 ---
-# <a name="transparent-data-encryption-for-sql-database-sql-managed-instance--azure-synapse"></a>Transparentní šifrování dat pro SQL Database, Managed instance SQL & Azure synapse
+# <a name="transparent-data-encryption-for-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Transparentní šifrování dat pro SQL Database, spravovanou instanci SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-[Transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) pomáhá chránit Azure SQL Database, Azure SQL Managed instance a synapse SQL ve službě Azure synapse Analytics s hrozbou neoprávněné offline aktivity šifrováním dat v klidovém stavu. Šifruje a dešifruje databáze, související zálohy a soubory transakčních protokolů v reálném čase, a přitom nevyžaduje změny v aplikaci. Ve výchozím nastavení je TDE povolený pro všechny nově nasazené databáze a musí se ručně povolit pro starší databáze Azure SQL Database, Azure SQL Managed instance nebo Azure synapse.
+[Transparentní šifrování dat (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) pomáhá chránit Azure SQL Database, Azure SQL Managed instance a Azure synapse Analytics s hrozbou neoprávněné aktivity škodlivou v offline režimu šifrováním dat v klidovém stavu. Šifruje a dešifruje databáze, související zálohy a soubory transakčních protokolů v reálném čase, a přitom nevyžaduje změny v aplikaci. Ve výchozím nastavení je TDE povolený pro všechny nově nasazené databáze a musí se ručně povolit pro starší databáze Azure SQL Database, Azure SQL Managed instance nebo Azure synapse Analytics.
 
 TDE provádí šifrování v/v v reálném čase a dešifrování dat na úrovni stránky. Každá stránka se při načtení do paměti dešifruje a pak se před zápisem na disk zašifruje. TDE šifruje úložiště celé databáze pomocí symetrického klíče, který se nazývá šifrovací klíč databáze (klíč DEK). Při spuštění databáze se šifrované klíč DEK dešifrují a potom se používají k dešifrování a opětovnému šifrování souborů databáze v procesu SQL Server databázového stroje. KLÍČ DEK je chráněn ochranou TDE. TDE Protector je buď certifikát spravovaný službou (transparentní šifrování dat spravovaný službou), nebo asymetrický klíč uložený v [Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault) (transparentní šifrování dat spravované zákazníkem).
 
 Pro Azure SQL Database a Azure synapse se ochrana TDE nastaví na úrovni [serveru](logical-servers.md) a děděna všemi databázemi přidruženými k tomuto serveru. Pro spravovanou instanci Azure SQL (funkce BYOK ve verzi Preview) se ochrana TDE nastaví na úrovni instance a zděděná všemi šifrovanými databázemi v této instanci. Pojem *Server* v celém tomto dokumentu odkazuje na server i na instanci, pokud není uvedeno jinak.
 
 > [!IMPORTANT]
-> Všechny nově vytvořené databáze v SQL Database a v synapse Azure jsou ve výchozím nastavení šifrované pomocí transparentního šifrování dat spravovaného službou. Existující databáze SQL vytvořené před 2017 a databáze SQL vytvořené prostřednictvím obnovení, geografické replikace a kopie databáze nejsou ve výchozím nastavení šifrované. Existující databáze spravované instance vytvořené před únorem 2019 nejsou ve výchozím nastavení šifrované. Databáze spravované instance vytvořené prostřednictvím obnovení dědí stav šifrování ze zdroje.
+> Všechny nově vytvořené databáze v SQL Database a v synapse Azure jsou ve výchozím nastavení šifrované pomocí transparentního šifrování dat spravovaného službou. Existující databáze SQL vytvořené před 2017 a databáze SQL vytvořené prostřednictvím obnovení, geografické replikace a kopie databáze nejsou ve výchozím nastavení šifrované. Existující databáze spravované instance SQL vytvořené před únorem 2019 nejsou ve výchozím nastavení šifrované. Databáze spravované instance SQL vytvořené prostřednictvím obnovení dědí stav šifrování ze zdroje.
 
 > [!NOTE]
 > TDE nelze použít k zašifrování **Hlavní** databáze v SQL Database.  **Hlavní** databáze obsahuje objekty, které jsou potřebné k provedení operací TDE v uživatelských databázích.
@@ -67,11 +67,11 @@ Pokud exportujete databázi chráněnou TDE, exportovaný obsah databáze nebude
 
 Například pokud je soubor BACPAC exportován z instance SQL Server, importovaný obsah nové databáze není automaticky šifrován. Podobně platí, že pokud je soubor BACPAC importován do instance SQL Server, nová databáze také není automaticky šifrována.
 
-Jedinou výjimkou je při exportu do a z SQL Database. V nové databázi je povolený TDE, ale samotný soubor BACPAC ještě není zašifrovaný.
+Jedinou výjimkou je při exportu databáze do a z SQL Database. TDE je povolena v nové databázi, ale samotný soubor BACPAC ještě není zašifrovaný.
 
 ## <a name="manage-transparent-data-encryption"></a>Správa transparentního šifrování dat
 
-# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
+# <a name="the-azure-portal"></a>[Azure Portal](#tab/azure-portal)
 
 Správa TDE v Azure Portal.
 
@@ -99,7 +99,7 @@ Pokud chcete nakonfigurovat TDE prostřednictvím PowerShellu, musíte být při
 
 Pro Azure SQL Database a Azure synapse použijte následující rutiny:
 
-| Rutina | Popis |
+| Rutina | Description |
 | --- | --- |
 | [Set-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/set-azsqldatabasetransparentdataencryption) |Povoluje nebo zakazuje transparentní šifrování dat pro databázi.|
 | [Get-AzSqlDatabaseTransparentDataEncryption](https://docs.microsoft.com/powershell/module/az.sql/get-azsqldatabasetransparentdataencryption) |Získá transparentní stav šifrování dat pro databázi. |
@@ -120,7 +120,7 @@ Spravujte TDE pomocí jazyka Transact-SQL.
 
 Připojte se k databázi pomocí přihlašovacího jména, které je správcem nebo členem role **dbmanager** v hlavní databázi.
 
-| Příkaz | Popis |
+| Příkaz | Description |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) | NASTAVENÍ šifrování ZAPNUTo nebo vypnuto šifrování nebo dešifrování databáze |
 | [sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) |Vrátí informace o stavu šifrování databáze a přidružených šifrovacích klíčích databáze. |
@@ -136,7 +136,7 @@ Spravujte TDE pomocí REST API.
 Pokud chcete nakonfigurovat TDE prostřednictvím REST API, musíte být připojeni jako vlastník Azure, přispěvatel nebo správce zabezpečení SQL.
 Pro Azure SQL Database a Azure synapse použijte následující sadu příkazů:
 
-| Příkaz | Popis |
+| Příkaz | Description |
 | --- | --- |
 |[Vytvořit nebo aktualizovat server](https://docs.microsoft.com/rest/api/sql/servers/createorupdate)|Přidá do serveru Azure Active Directoryovou identitu. (slouží k udělení přístupu k Key Vault)|
 |[Vytvořit nebo aktualizovat klíč serveru](https://docs.microsoft.com/rest/api/sql/serverkeys/createorupdate)|Přidá do serveru Key Vault klíč.|

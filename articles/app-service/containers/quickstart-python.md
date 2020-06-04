@@ -4,12 +4,12 @@ description: Začněte s aplikacemi pro Linux v Azure App Service nasazením prv
 ms.topic: quickstart
 ms.date: 04/03/2020
 ms.custom: seo-python-october2019, cli-validate
-ms.openlocfilehash: 5b055c3ed93d5f093295b52c7a28a73e242bfe75
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 023bd8a3d53665a797848c6a9053ccd26f6015ce
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690883"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84344726"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace v Pythonu v Azure App Service v systému Linux
 
@@ -76,17 +76,17 @@ flask run
 
 ---
 
-Otevřete webový prohlížeč a v `http://localhost:5000/`části použijte ukázkovou aplikaci. Aplikace zobrazí zprávu **Hello World!**.
+Otevřete webový prohlížeč a v části použijte ukázkovou aplikaci `http://localhost:5000/` . Aplikace zobrazí zprávu **Hello World!**.
 
 ![Místní spuštění ukázkové aplikace v Pythonu](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
 
-V okně terminálu ukončete webový server stisknutím **kombinace kláves CTRL +**+**C** .
+V okně terminálu ukončete webový server stisknutím **kombinace kláves CTRL +** + **C** .
 
 ## <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
 Azure CLI poskytuje mnoho pohodlných příkazů, které můžete použít z místního terminálu ke zřízení a správě prostředků Azure z příkazového řádku. Pomocí příkazů můžete provádět stejné úlohy, které jste procházeli pomocí Azure Portal v prohlížeči. Můžete také použít příkazy rozhraní příkazového řádku ve skriptech k automatizaci procesů správy.
 
-Pokud chcete spustit příkazy Azure v rozhraní příkazového řádku Azure CLI, musíte se nejdřív `az login` přihlásit pomocí příkazu. Tento příkaz otevře prohlížeč pro shromáždění vašich přihlašovacích údajů.
+Pokud chcete spustit příkazy Azure v rozhraní příkazového řádku Azure CLI, musíte se nejdřív přihlásit pomocí `az login` příkazu. Tento příkaz otevře prohlížeč pro shromáždění vašich přihlašovacích údajů.
 
 ```azurecli
 az login
@@ -94,25 +94,20 @@ az login
 
 ## <a name="deploy-the-sample"></a>Nasazení ukázky
 
-[`az webapp up`](/cli/azure/webapp#az-webapp-up) Příkaz vytvoří webovou aplikaci na App Service a nasadí váš kód.
+[`az webapp up`](/cli/azure/webapp#az-webapp-up)Příkaz vytvoří webovou aplikaci na App Service a nasadí váš kód.
 
-Ve složce *Python-docs-Hello-World* , která obsahuje vzorový kód, spusťte následující `az webapp up` příkaz. Nahraďte `<app-name>` globálně jedinečným názvem aplikace (*platné znaky jsou `a-z`, `0-9`a `-` *).
+Ve složce *Python-docs-Hello-World* , která obsahuje vzorový kód, spusťte následující `az webapp up` příkaz. Nahraďte `<app-name>` globálně jedinečným názvem aplikace (*platné znaky jsou `a-z` , `0-9` a `-` *).
 
 
 ```azurecli
 az webapp up --sku F1 -n <app-name>
 ```
-> [!CAUTION]
-> Pokud používáte **Azure-CLI verze 2.5.0** , existuje regrese v `az webapp up` tom, kde určité scénáře selžou, pokud není `-l <location-name>` tento parametr zahrnutý. Tento problém se [sleduje tady](https://github.com/Azure/azure-cli/issues/13257).  
-> 
->Můžete zjistit, jakou verzi Azure-CLI používáte s `az --version` příkazem.
->
 
-`--sku F1` Argument vytvoří webovou aplikaci na cenové úrovni Free. Tento argument vynecháte místo toho, abyste místo toho použili úroveň Premium, což stojí za hodinu.
+`--sku F1`Argument vytvoří webovou aplikaci na cenové úrovni Free. Tento argument vynecháte místo toho, abyste místo toho použili úroveň Premium, což stojí za hodinu.
 
-Volitelně můžete `-l <location-name>` zahrnout argument, kde `<location_name>` je oblast Azure, například **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**a tak dále. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) příkazu.
+Volitelně můžete zahrnout argument `-l <location-name>` , kde `<location_name>` je oblast Azure, například **centralus**, **eastasia**, **westeurope**, **koreasouth**, **brazilsouth**, **centralindia**a tak dále. Seznam povolených oblastí pro váš účet Azure můžete načíst spuštěním [`az account list-locations`](/cli/azure/appservice?view=azure-cli-latest.md#az-appservice-list-locations) příkazu.
 
-Úplné `az webapp up` spuštění příkazu může trvat několik minut. Při spuštění se zobrazí podobné informace jako v následujícím příkladu, kde `<app-name>` bude název, který jste zadali dříve:
+`az webapp up`Úplné spuštění příkazu může trvat několik minut. Při spuštění se zobrazí podobné informace jako v následujícím příkladu, kde `<app-name>` bude název, který jste zadali dříve:
 
 <pre>
 Creating Resource group 'appsvc_rg_Linux_centralus' ...
@@ -144,13 +139,13 @@ You can launch the app at http://&lt;app-name&gt;.azurewebsites.net
 
 ## <a name="browse-to-the-app"></a>Přechod do aplikace
 
-Ve webovém prohlížeči přejděte do nasazené aplikace na adrese URL `http://<app-name>.azurewebsites.net`.
+Ve webovém prohlížeči přejděte do nasazené aplikace na adrese URL `http://<app-name>.azurewebsites.net` .
 
 Vzorový kód Pythonu spouští kontejner Linux v App Service pomocí integrované image.
 
 ![Spuštění ukázkové aplikace v Pythonu v Azure](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
 
-**Blahopřejeme!** Nasadili jste aplikaci v Pythonu, která App Service na Linux.
+**Gratulujeme!** Nasadili jste aplikaci v Pythonu, která App Service na Linux.
 
 ## <a name="redeploy-updates"></a>Znovu nasadit aktualizace
 
@@ -196,9 +191,9 @@ Aktualizujte aplikaci v prohlížeči, aby se generovaly protokoly konzoly, kter
 2020-04-03T22:54:04.236497641Z 172.16.0.1 - - [03/Apr/2020:22:54:04 +0000] "GET / HTTP/1.1" 200 12 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.83 Safari/537.36 Edg/81.0.416.41"
 </pre>
 
-Soubory protokolu můžete také zkontrolovat v prohlížeči na adrese `https://<app-name>.scm.azurewebsites.net/api/logs/docker`.
+Soubory protokolu můžete také zkontrolovat v prohlížeči na adrese `https://<app-name>.scm.azurewebsites.net/api/logs/docker` .
 
-Pokud chcete streamování protokolů kdykoli zastavit, zadejte `Ctrl` + `C`.
+Pokud chcete streamování protokolů kdykoli zastavit, zadejte `Ctrl` + `C` .
 
 ## <a name="manage-the-azure-app"></a>Správa aplikace Azure
 

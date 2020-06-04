@@ -3,14 +3,14 @@ title: Spuštění Azure Automation Runbooku z Webhooku
 description: V tomto článku se dozvíte, jak pomocí Webhooku spustit Runbook v Azure Automation z volání HTTP.
 services: automation
 ms.subservice: process-automation
-ms.date: 01/16/2020
+ms.date: 06/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2578e15a60b2021d9e599018043c4834d0c07d34
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 78ce1e46b7ea2cc82a0c478b0c81abbf701f68a9
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83830493"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84342965"
 ---
 # <a name="start-a-runbook-from-a-webhook"></a>Spuštění runbooku z webhooku
 
@@ -20,6 +20,8 @@ Webhook umožňuje externí službě spustit konkrétní sadu Runbook v Azure Au
 > Použití Webhooku ke spuštění Runbooku v Pythonu se nepodporuje.
 
 ![WebhooksOverview](media/automation-webhooks/webhook-overview-image.png)
+
+Informace o požadavcích klientů pro TLS 1,2 s Webhooky najdete v tématu [vynucení TLS 1,2 pro Azure Automation](automation-managing-data.md#tls-12-enforcement-for-azure-automation).
 
 ## <a name="webhook-properties"></a>Vlastnosti Webhooku
 
@@ -101,7 +103,8 @@ Pomocí následujícího postupu můžete vytvořit nový Webhook propojený s r
    ![Adresa URL Webhooku](media/automation-webhooks/copy-webhook-url.png)
 
 1. Klikněte na **parametry** a zadejte hodnoty parametrů Runbooku. Pokud má sada Runbook povinné parametry, nelze vytvořit Webhook, pokud nezadáte hodnoty.
-1. Kliknutím na **Vytvořit** webhook vytvořte.
+
+2. Kliknutím na **Vytvořit** webhook vytvořte.
 
 ## <a name="use-a-webhook"></a>Použití Webhooku
 
@@ -113,7 +116,7 @@ http://<Webhook Server>/token?=<Token Value>
 
 Klient obdrží z požadavku jeden z následujících návratových kódů `POST` .
 
-| Kód | Text | Popis |
+| Kód | Text | Description |
 |:--- |:--- |:--- |
 | 202 |Přijato |Požadavek byl přijat a sada Runbook byla úspěšně zařazena do fronty. |
 | 400 |Chybný požadavek |Žádost nebyla přijata z některého z následujících důvodů: <ul> <li>Platnost Webhooku vypršela.</li> <li>Webhook je zakázaný.</li> <li>Token v adrese URL je neplatný.</li>  </ul> |

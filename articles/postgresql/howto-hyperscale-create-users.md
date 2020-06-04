@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 1/8/2019
-ms.openlocfilehash: 684116f92544e61a892b3653f8539f9f8f03e0c9
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: b8d47d1036473af1b367cc0266aae3ea1bceeada
+ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82584081"
+ms.lasthandoff: 06/03/2020
+ms.locfileid: "84343927"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---hyperscale-citus"></a>Vytváření uživatelů v Azure Database for PostgreSQL – Citus (škálování)
 
@@ -28,23 +28,23 @@ Modul PostgreSQL používá [role](https://www.postgresql.org/docs/current/sql-c
 * `postgres`
 * `citus`
 
-Vzhledem k tomu, že škálovatelná služba PaaS je spravovaná, jenom společnost Microsoft se `postgres` může přihlásit pomocí role superuživatele. V `citus` případě omezeného přístupu pro správu poskytuje role měřítko.
+Vzhledem k tomu, že škálovatelná služba PaaS je spravovaná, jenom společnost Microsoft se může přihlásit pomocí `postgres` role superuživatele. V případě omezeného přístupu pro správu poskytuje `citus` role měřítko.
 
 Oprávnění pro `citus` roli:
 
 * Přečtěte si všechny proměnné konfigurace, dokonce i proměnné, které jsou obvykle viditelné pouze pro uživatele.
-* Přečtěte si\_všechna\_ \* zobrazení statistiky PG a používejte různá rozšíření související s statistikami – dokonce i zobrazení nebo rozšíření, která se běžně zobrazují jenom pro uživatele.
+* Přečtěte si \_ všechna \_ \* zobrazení statistiky PG a používejte různá rozšíření související s statistikami – dokonce i zobrazení nebo rozšíření, která se běžně zobrazují jenom pro uživatele.
 * Spouštějte funkce monitorování, které mohou mít přístup ke sdílení zámků na tabulkách, což může trvat dlouhou dobu.
-* [Vytvoření rozšíření PostgreSQL](concepts-hyperscale-extensions.md) (protože role je členem `azure_pg_admin`).
+* [Vytvoření rozšíření PostgreSQL](concepts-hyperscale-extensions.md) (protože role je členem `azure_pg_admin` ).
 
-`citus` Role má zejména určitá omezení:
+`citus`Role má zejména určitá omezení:
 
 * Nejde vytvořit role.
 * Nejde vytvořit databáze.
 
 ## <a name="how-to-create-additional-user-roles"></a>Jak vytvořit další role uživatelů
 
-Jak už bylo zmíněno, účet `citus` správce nemá oprávnění k vytváření dalších uživatelů. Chcete-li přidat uživatele, použijte rozhraní Azure Portal.
+Jak už bylo zmíněno, `citus` účet správce nemá oprávnění k vytváření dalších uživatelů. Chcete-li přidat uživatele, použijte rozhraní Azure Portal.
 
 1. Přejděte na stránku **role** pro skupinu serverů s vlastním škálováním a klikněte na **+ Přidat**:
 
@@ -60,22 +60,17 @@ Uživatel bude vytvořen v uzlu koordinátor skupiny serverů a bude šířen do
 
 Nové role uživatele se běžně používají k poskytnutí přístupu k databázi s omezenými oprávněními. Chcete-li upravit uživatelská oprávnění, použijte standardní příkazy PostgreSQL pomocí nástroje, jako je například PgAdmin nebo psql. (Další informace najdete v tématu [připojení pomocí psql](quickstart-create-hyperscale-portal.md#connect-to-the-database-using-psql) v rychlém startu (Citus).)
 
-Chcete-li například povolit `db_user` čtení `mytable`, udělte oprávnění:
+Chcete-li například povolit `db_user` čtení `mytable` , udělte oprávnění:
 
 ```sql
 GRANT SELECT ON mytable TO db_user;
 ```
 
-Citus () šíří příkazy pro udělení jedné tabulky prostřednictvím celého clusteru a používá je na všech pracovních uzlech. Granty pro systém (například pro všechny tabulky ve schématu) ale musí být spuštěny na každém uzlu data.  Použijte `run_command_on_workers()` pomocnou funkci:
+Citus () šíří příkazy pro udělení jedné tabulky prostřednictvím celého clusteru a používá je na všech pracovních uzlech. Také šíří granty, které jsou celé systému (např. pro všechny tabulky ve schématu):
 
 ```sql
--- applies to the coordinator node
+-- applies to the coordinator node and propagates to workers
 GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;
-
--- make it apply to workers as well
-SELECT run_command_on_workers(
-  'GRANT SELECT ON ALL TABLES IN SCHEMA public TO db_user;'
-);
 ```
 
 ## <a name="how-to-delete-a-user-role-or-change-their-password"></a>Jak odstranit uživatelskou roli nebo změnit heslo
@@ -84,7 +79,7 @@ Chcete-li aktualizovat uživatele, přejděte na stránku **role** pro skupinu s
 
    ![Upravit roli](media/howto-hyperscale-create-users/edit-role.png)
 
-`citus` Role má oprávnění a nelze ji odstranit.
+`citus`Role má oprávnění a nelze ji odstranit.
 
 ## <a name="next-steps"></a>Další kroky
 
