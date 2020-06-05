@@ -3,17 +3,17 @@ title: Optimalizace investic do cloudu se službou Azure Cost Management
 description: Tento článek vám pomůže maximalizovat hodnotu svých investic do cloudu, snížit náklady a vyhodnotit způsob utrácení peněz.
 author: bandersmsft
 ms.author: banders
-ms.date: 05/04/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: 759c69544c083e95cbd5198eecf9f7bb0e882aa8
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: f328f17b1d64bc9b8f0be35321aecaba0cb85fa6
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82791608"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142414"
 ---
 # <a name="how-to-optimize-your-cloud-investment-with-azure-cost-management"></a>Jak optimalizovat investice do cloudu se službou Azure Cost Management
 
@@ -131,14 +131,39 @@ Další informace najdete v tématu o službě [Azure Migrate](https://docs.micr
 
 Nechte se informovat o vývoji nákladů organizace v čase. Následující techniky vám umožní správně porozumět výdajům, abyste je mohli řídit.
 
-### <a name="organize-and-tag-your-resources"></a>Organizace prostředků a jejich označení
+### <a name="organize-resources-to-maximize-cost-insights-and-accountability"></a>Uspořádání prostředků pro zajištění maximálních přehledů o nákladech a zodpovědnosti
 
-Při organizaci svých prostředků myslete na náklady. Když vytváříte předplatná a skupiny prostředků, myslete na týmy, které odpovídají za související náklady. Dbejte na to, aby výkazy zohledňovaly vaši organizaci. Vhodnými kontejnery pro uspořádání a přiřazování nákladů v celé organizaci jsou předplatná a skupiny prostředků. K přiřazování nákladů se hodí i značky. Můžete je používat jako filtry. A můžete je použít i k seskupení, když chcete analyzovat data a zkoumat náklady. Zákazníci se smlouvou Enterprise také můžou vytvářet oddělení a přiřazovat k nim předplatná. Když Azure uspořádáte podle nákladů, pomůže vám to, aby příslušní lidé ve vaší organizaci odpovídali u svých týmů za snižování výdajů.
+Dobře naplánovaná organizační struktura pro hierarchii prostředků a fakturaci Azure vám pomůže zajistit dobrý přehled a kontrolu nad náklady při vytváření cloudové infrastruktury. Podívejte se na video věnované [nastavení hierarchií entit](https://www.youtube.com/watch?v=n3TLRaYJ1NY), kde získáte přehled o dostupných organizačních nástrojích a možnostech jejich využití. Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
 
-Podívejte se na video o [kontrole zásad značek s využitím služby Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) a seznamte se s nástroji, které máte k dispozici pro vynucení škálovatelného označování prostředků ve vaší organizaci. Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
+>[!VIDEO https://www.youtube.com/embed/n3TLRaYJ1NY]
+
+Při vyhodnocování a vytváření hierarchie, která splňuje vaše požadavky, si položte následující otázky.
+
+*Jakou hierarchii fakturace mám k dispozici a jaké rozsahy mohou využít?*
+
+Určete fakturační uspořádání vaší organizace určením typu nabídky Azure. Dostupné rozsahy pro jednotlivé fakturační ujednání v Azure jsou popsané v tématu [Vysvětlení a práce s rozsahy](understand-work-scopes.md).
+
+*Jak mám uspořádat předplatná a skupiny prostředků, když mám víc týmů?*
+
+Běžným postupem je vytvoření předplatného nebo skupiny prostředků pro každý tým. Pomohou vám rozlišit náklady a zajistit zodpovědnost jednotlivých týmů. Náklady jsou ale vázané na předplatné nebo skupinu prostředků.
+
+Pokud už máte týmy s několika předplatnými, zvažte seskupení předplatných do skupin pro správu, aby se náklady analyzovaly dohromady. Skupiny pro správu, předplatná i skupiny prostředků jsou součástí hierarchie Azure RBAC. Používejte je dohromady pro řízení přístupu ve vašich týmech.
+
+Prostředky mohou být rozložené mezi několik rozsahů, zejména pokud je sdílí více týmů nebo úloh. Zvažte identifikaci prostředků pomocí značek. Značky jsou podrobněji popsány v následující části.
+
+*Mám vývojové a provozní prostředí?*
+
+Pro vývojová prostředí zvažte vytvoření předplatných pro vývoj a testování, abyste využili snížené ceny. Pokud úlohy zasahují do několika týmů nebo rozsahů Azure, zvažte jejich identifikaci pomocí značek.
+
+### <a name="tag-shared-resources"></a>Označení sdílených prostředků pomocí značek
+
+Značky představují efektivní způsob, jak porozumět nákladům, které jsou rozložené mezi několik týmů a rozsahů Azure. Můžete například mít prostředek, jako je e-mailový server, který využívá hodně týmů. Sdílený prostředek, jako je e-mailový server, můžete umístit do předplatného, které je vyhrazené pro sdílené prostředky, nebo do už existujícího předplatného. Pokud ho umístíte do existujícího předplatného, vlastník předplatného pravděpodobně nebude chtít, aby se náklady na tento prostředek naúčtovaly jeho týmu každý měsíc. V tomto příkladu můžete použít značku k identifikaci prostředku jako sdíleného.
+
+Podobně můžete mít také webové aplikace nebo prostředí, jako je například testovací nebo provozní, které využívají prostředky napříč několika předplatnými, která vlastní různé týmy. Pro lepší pochopení kompletních nákladů na úlohy můžete označit prostředky, které používají. Pokud jsou značky nastavené správně, můžete je v analýzách nákladů použít jako filtr pro lepší pochopení trendů.
+
+Po naplánování označování prostředků můžete nakonfigurovat zásady Azure tak, aby toto označování prostředků vynutily. Podívejte se na video o [kontrole zásad značek s využitím služby Azure Cost Management](https://www.youtube.com/watch?v=nHQYcYGKuyw) a seznamte se s nástroji, které jsou k dispozici pro vynucení škálovatelného označování prostředků. Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/nHQYcYGKuyw]
-
 
 ### <a name="use-cost-analysis"></a>Použití nákladové analýzy
 

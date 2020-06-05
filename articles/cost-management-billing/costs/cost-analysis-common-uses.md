@@ -3,20 +3,69 @@ title: Běžné způsoby analýzy nákladů ve službě Azure Cost Management
 description: Tento článek vysvětluje, jak získat potřebné výsledky prostřednictvím běžných způsobů analýzy nákladů ve službě Azure Cost Management.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/10/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
-ms.openlocfilehash: 2e0e222e636f694328835e20fda97deca1d9986a
-ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+ms.openlocfilehash: 130d313c1ca549f3a4e6f1ec1bbac2a16a753709
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/13/2020
-ms.locfileid: "81261484"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142491"
 ---
 # <a name="common-cost-analysis-uses"></a>Běžné způsoby analýzy nákladů
 
 Uživatelé služby Azure Cost Management hledají často odpověď na otázky, které zajímají i mnoho dalších osob. Tento článek vás provede hledáním výsledků prostřednictvím běžných způsobů analýzy nákladů ve službě Cost Management.
+
+## <a name="view-forecasted-costs"></a>Zobrazení předpokládaných nákladů
+
+Předpokládané náklady se zobrazují v oblastech analýzy nákladů pro zobrazení plošných a skládaných sloupcových grafů. Prognóza vychází z historického využití prostředků. Na předpokládané náklady mají vliv změny využití prostředků.
+
+Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
+
+Horní graf ve výchozím zobrazení obsahuje oddíly se skutečnými/amortizovanými náklady a s předpokládanými náklady. Plnou barvou jsou v grafu zobrazené vaše skutečné/amortizované náklady. Stínovaná barva znázorňuje předpokládané náklady.
+
+[![Předpokládané náklady](./media/cost-analysis-common-uses/enrollment-forecast.png)](./media/cost-analysis-common-uses/enrollment-forecast.png#lightbox)
+
+## <a name="view-forecasted-costs-grouped-by-service"></a>Zobrazení předpokládaných nákladů seskupených podle služeb
+
+Výchozí zobrazení nezobrazuje předpokládané náklady podle služeb, takže je nutné přidat seskupení.
+
+Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
+
+Vyberte **Seskupit podle** > **Název služby**.
+
+Zobrazení ukazuje náklady seskupené pro jednotlivé služby. Předpokládané náklady nejsou vypočítané pro každou službu. Jsou rozplánované pro všechny vaše služby jako **celek**.
+
+[![Seskupení předpokládaných nákladů](./media/cost-analysis-common-uses/forecast-group-by-service.png)](./media/cost-analysis-common-uses/forecast-group-by-service.png#lightbox)
+
+## <a name="view-forecasted-costs-for-a-service"></a>Zobrazení předpokládaných nákladů pro službu
+
+Předpokládané náklady je možné zúžit na jednu službu. Můžete si například chtít zobrazit předpokládané náklady jenom pro virtuální počítače.
+
+1. Na webu Azure Portal přejděte na analýzu nákladů pro konkrétní rozsah. Příklad: **Správa nákladů a fakturace** > **Správa nákladů** > **Analýza nákladů**.
+1. Vyberte **Přidat filtr** a potom vyberte **Název služby**.
+1. V seznamu pro **výběr** zvolte službu. Můžete například vybrat **virtuální počítače**.
+
+Projděte si skutečné a předpokládané náklady pro vybranou službu.
+
+Zobrazení můžete dál upravovat.
+
+1. Přidejte druhý filtr pro **měřič** a vyberte hodnotu pro filtrování konkrétního typu měřiče pod vybraným názvem služby.
+1. Seskupení podle **prostředků** vám umožní zobrazit konkrétní prostředky, u kterých se účtují náklady. Předpokládané náklady nejsou vypočítané pro každou službu. Jsou rozplánované pro všechny vaše prostředky jako **celek**.
+
+[![Předpokládané náklady pro službu](./media/cost-analysis-common-uses/forecast-by-service.png)](./media/cost-analysis-common-uses/forecast-by-service.png#lightbox)
+
+## <a name="view-your-azure-and-aws-costs-together"></a>Zobrazení nákladů na Azure a AWS najednou  
+
+K zobrazení nákladů na Azure a AWS najednou můžete využít rozsahy skupin pro správu v Azure.
+
+1. Vytvořte skupinu pro správu nebo vyberte existující.
+1. Do skupiny pro správu přiřaďte požadovaná předplatná Azure.
+1. *Tutéž* skupinu pro správu přiřaďte k propojenému účtu konektoru.
+1. Přejděte do části Analýza nákladů a vyberte **Kumulované náklady**.
+1. Vyberte **Seskupit podle** - **Poskytovatel**.
 
 ## <a name="view-cost-breakdown-by-azure-service"></a>Zobrazení rozpisu nákladů podle služeb Azure
 
@@ -37,7 +86,6 @@ Pokud si chcete prohlédnout podrobnosti o vaší faktuře na webu Azure Portal,
 Při prohlížení podrobností o faktuře můžete určit službu, která má neočekávané náklady, a zjistit, které prostředky jsou přímo přidružené k prostředku v analýze nákladů. Pokud například chcete analyzovat poplatky za službu Virtual Machines, přejděte k zobrazení **Kumulované náklady**. Potom nastavte úroveň podrobností na **denní**, vyfiltrujte poplatky **Název služby: Virtual Machines** a seskupte je podle **prostředku**.
 
 [![Příklad znázorňující kumulované náklady pro virtuální počítače](./media/cost-analysis-common-uses/virtual-machines.png)](./media/cost-analysis-common-uses/virtual-machines.png#lightbox)
-
 
 ## <a name="view-cost-breakdown-by-azure-resource"></a>Zobrazení rozpisu nákladů podle prostředků Azure
 

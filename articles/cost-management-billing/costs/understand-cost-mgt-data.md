@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 5fce5c8de3b2224ef471b0b3eec5ff29a869a9f6
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844518"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83995645"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -75,7 +75,12 @@ Následující nabídky se dosud nepodporují:
 | **Plány podpory** | Azure Government Pro-Direct Support | Default_2014-09-01 | MS-AZR-USGOV-0042P |
 | **Plány podpory** | Azure Government Developer Support  | Default_2014-09-01 | MS-AZR-USGOV-0043P |
 
-## <a name="determine-your-offer-type"></a>Určení typu nabídky
+### <a name="free-trial-to-pay-as-you-go-upgrade"></a>Upgrade bezplatné zkušební verze na průběžné platby
+
+Informace o dostupnosti služeb úrovně Free po upgradu z bezplatné zkušební verze na ceny při průběžných platbách najdete v tématu věnovaném [nejčastějším dotazům k bezplatnému účtu Azure](https://azure.microsoft.com/free/free-account-faq/).
+
+### <a name="determine-your-offer-type"></a>Určení typu nabídky
+
 Pokud nevidíte data pro předplatné a chcete určit, zda vaše předplatné spadá do podporovaných nabídek, můžete si případnou podporu svého předplatného ověřit. Pokud chcete ověřit, zda se předplatné Azure podporuje, přihlaste se k webu [Azure Portal](https://portal.azure.com). V levém podokně nabídky vyberte **Všechny služby**. V seznamu služeb vyberte **Předplatná**. V nabídce se seznamem vyberte předplatné, které chcete ověřit. Vaše předplatné se zobrazuje na kartě Přehled, kde je uvedena také **nabídka** a **ID nabídky**. Příklad ukazuje následující obrázek.
 
 ![Příklad karty s přehledem a vyznačenou nabídkou a ID nabídky](./media/understand-cost-mgt-data/offer-and-offer-id.png)
@@ -106,7 +111,7 @@ Azure Cost Management přijímá značky jako součást jednotlivých záznamů 
 - Značky prostředků se podporují jenom pro prostředky nasazené do skupin prostředků.
 - Některé nasazené prostředky nemusí podporovat značky nebo nemusí vkládat značky do dat o využití – viz [Podpora značek pro prostředky Azure](../../azure-resource-manager/tag-support.md).
 - Značky prostředků jsou zahrnuté jenom v datech o využití, když se značka používá. Značky se neaplikují na historická data.
-- Značky prostředků jsou ve službě Cost Management dostupné jenom po aktualizaci dat – viz [Rozdíly ve frekvenci aktualizace dat o využití](#usage-data-update-frequency-varies).
+- Značky prostředků jsou ve službě Cost Management dostupné jenom po aktualizaci dat – viz [Aktualizace a uchovávání údajů o využití a nákladech](#cost-and-usage-data-updates-and-retention).
 - Značky prostředků jsou ve službě Cost Management dostupné, jenom pokud je prostředek aktivní nebo spuštěný a vytváří záznamy o využití (např. ne v případě uvolněného virtuálního počítače).
 - Správa značek vyžaduje přístup přispěvatele ke každému prostředku.
 - Správa zásad značek vyžaduje přístup buď vlastníka, nebo přispěvatele zásad ke skupině pro správu, předplatnému nebo skupině prostředků.
@@ -114,7 +119,7 @@ Azure Cost Management přijímá značky jako součást jednotlivých záznamů 
 Pokud ve službě Cost Management určitou značku nevidíte, zvažte následující okolnosti:
 
 - Použila se značka přímo na prostředek?
-- Použila se značka před více než 24 hodinami? Viz [Rozdíly ve frekvenci aktualizace dat o využití](#usage-data-update-frequency-varies)
+- Použila se značka před více než 24 hodinami? Viz [Aktualizace a uchovávání údajů o využití a nákladech](#cost-and-usage-data-updates-and-retention).
 - Podporuje typ prostředku značky? Následující typy prostředků nepodporují značky v datech o využití od 1. prosince 2019. Úplný seznam toho, co se podporuje, najdete v tématu [Podpora značek pro prostředky Azure](../../azure-resource-manager/tag-support.md).
     - Adresáře Azure Active Directory B2C
     - Brány Azure Firewall
@@ -134,24 +139,22 @@ Tady je několik tipů pro práci se značkami:
 - Použijte rozhraní API značek ve spojení s dotazem nebo podrobnostmi o využití a získejte všechny náklady na základě aktuálních značek.
 
 
-## <a name="free-trial-to-pay-as-you-go-upgrade"></a>Upgrade bezplatné zkušební verze na průběžné platby
+## <a name="cost-and-usage-data-updates-and-retention"></a>Aktualizace a uchovávání údajů o využití a nákladech
 
-Informace o dostupnosti služeb úrovně Free po upgradu z bezplatné zkušební verze na ceny při průběžných platbách najdete v tématu věnovaném [nejčastějším dotazům k bezplatnému účtu Azure](https://azure.microsoft.com/free/free-account-faq/).
+Data o nákladech a využití jsou obvykle dostupná v části Správa nákladů a fakturace na webu Azure Portal a v [podpůrných rozhraních API](../index.yml) během 8 až 24 hodin. Při kontrole nákladů byste měli brát v úvahu následující pravidla:
 
-## <a name="rated-usage-data-refresh-schedule"></a>Plán aktualizace vyhodnocených dat o využití
-
-Data o nákladech a využití jsou dostupná v části Správa nákladů a fakturace na webu Azure Portal a v [podpůrných rozhraních API](../index.yml). Při kontrole nákladů byste měli brát v úvahu následující pravidla:
-
+- Jednotlivé služby Azure (například Storage, Compute a SQL) vydávají údaje o využití v různých intervalech – data některých služeb se mohou zobrazit dřív než data jiných.
 - Odhadované poplatky pro aktuální fakturační období se aktualizují šestkrát denně.
 - Odhadované poplatky pro aktuální fakturační období se mohou změnit s tím, jak generujete větší využití.
 - Každá aktualizace je kumulativní a zahrnuje všechny řádkové položky a informace z předchozí aktualizace.
 - Azure finalizuje, neboli _uzavře_, aktuální fakturační období až 72 hodin (tři kalendářní dny) po skončení fakturačního období.
 
-Následující příklady ilustrují to, jak by mohla fakturační období skončit.
+Následující příklady ilustrují to, jak by mohla fakturační období skončit:
 
-Předplatná smlouvy Enterprise (EA) – pokud fakturační měsíc končí 31. března, odhadované poplatky se aktualizují až o 72 hodin později. V tomto příkladu k tomu dojde 4. dubna o půlnoci (UTC).
+* Předplatná smlouvy Enterprise (EA) – pokud fakturační měsíc končí 31. března, odhadované poplatky se aktualizují až o 72 hodin později. V tomto příkladu k tomu dojde 4. dubna o půlnoci (UTC).
+* Předplatná s průběžnými platbami – pokud fakturační měsíc končí 15. května, odhadované poplatky by se mohly aktualizovat až o 72 hodin později. V tomto příkladu by k tomu došlo 19. května o půlnoci (UTC).
 
-Předplatná s průběžnými platbami – pokud fakturační měsíc končí 15. května, odhadované poplatky by se mohly aktualizovat až o 72 hodin později. V tomto příkladu by k tomu došlo 19. května o půlnoci (UTC).
+Jakmile jsou údaje o nákladech a využití k dispozici v modulu Správa nákladů + fakturace, budou se uchovávat nejméně 7 let.
 
 ### <a name="rerated-data"></a>Opakovaně vyhodnocená data
 
@@ -166,16 +169,6 @@ Náklady uvedené ve službě Cost Management jsou zaokrouhlené. Náklady vrace
   - Poplatek 2: 0,004 USD
   -    Vyčíslený agregovaný poplatek: 0,004 + 0,004 = 0,008. Poplatek se zobrazí jako 0,01 USD.
 - Rozhraní API pro dotazy: Poplatky se zobrazují na osm desetinných míst a nezaokrouhlují se.
-
-
-## <a name="usage-data-update-frequency-varies"></a>Rozdíly ve frekvenci aktualizace dat o využití
-
-Dostupnost vygenerovaných dat o využití ve službě Cost Management závisí na několika faktorech, včetně těchto:
-
-- Jak často služby Azure (například Storage, Compute, CDN a SQL) generují využití.
-- Délka doby zpracování dat využití prostřednictvím modulu hodnocení a kanálu správy nákladů.
-
-Některé služby generují využití častěji než jiné. U některých služeb tak můžete ve službě Cost Management vidět data dříve než u jiných služeb, které generují data méně často. Zobrazení dat o využití služeb ve službě Cost Management obvykle trvá 8–24 hodin. Mějte na paměti, že data pro otevřený měsíc se aktualizují s tím, jak generujete další využití, protože aktualizace jsou kumulativní.
 
 ## <a name="historical-data-might-not-match-invoice"></a>Historická data nemusí odpovídat faktuře
 

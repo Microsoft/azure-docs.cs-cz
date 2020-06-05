@@ -7,20 +7,18 @@ ms.reviewer: amberb
 tags: billing
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 03/27/2020
+ms.date: 05/28/2020
 ms.author: banders
-ms.openlocfilehash: 16534343a831f0802a60a9214f567742153360e0
-ms.sourcegitcommit: efefce53f1b75e5d90e27d3fd3719e146983a780
+ms.openlocfilehash: 4e77b167f00e2cfa3838439143c6074bd4122976
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/01/2020
-ms.locfileid: "80479009"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84191262"
 ---
 # <a name="view-and-download-your-microsoft-azure-invoice"></a>Zobrazit a stáhnout fakturu Microsoft Azure
 
 Fakturu si můžete stáhnout na webu [Azure Portal](https://portal.azure.com/) nebo si ji nechat poslat e-mailem. Pokud jste zákazníkem Azure se smlouvou Enterprise (zákazníkem EA), nemůžete stahovat faktury vaší organizace. Faktury se místo toho odesílají osobě, která je nastavená jako příjemce faktur pro danou smlouvu.
-
-[!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="when-invoices-are-generated"></a>Kdy se generují faktury
 
@@ -46,7 +44,7 @@ Jan například 5. března vytvoří *předplatné Azure 01* a 10. března vytvo
 
 Pokud za Azure platíte platební kartou a zakoupíte si rezervaci, Azure okamžitě vygeneruje příslušnou fakturu. Pokud však platíte pomocí faktury, rezervace se vám bude účtovat na další měsíční faktuře.
 
-**Plán podpory Azure** –⁠ Faktura za předplatné plánu podpory se generuje každý měsíc. První faktura se vygeneruje v den nákupu nebo až o dva dny později. Následující faktury za plán podpory se normálně generují ke stejnému dni v měsíci, kdy se účet vytvořil, ale můžou se generovat až o dva dny později.
+**Plán podpory Azure** –⁠ Faktura za předplatné plánu podpory se generuje každý měsíc. První faktura se vygeneruje v den nákupu nebo až o dva dny později. Další faktury za plán podpory se normálně generují ke stejnému dni v měsíci, kdy se účet vytvořil, ale můžou se generovat až o dva dny později.
 
 ## <a name="download-your-mosp-azure-subscription-invoice"></a>Stažení faktury za předplatné Azure MOSP
 
@@ -58,7 +56,7 @@ Ke stažení faktury za předplatné musíte mít roli správce účtu daného p
 1. V části Fakturace vyberte **Faktury**.  
     ![Snímek obrazovky zachycující výběr možnosti Faktury pro předplatné](./media/download-azure-invoice/select-subscription-invoice.png)
 1. Pokud chcete stáhnout fakturu ve verzi PDF, vyberte **Stáhnout** a pak v části Faktura vyberte **Stáhnout**.  
-    [![Snímek obrazovky ukazující fakturační období, možnost stažení a celkové poplatky za každé fakturační období](./media/download-azure-invoice/download-invoice-subscription.png)](./media/download-azure-invoice/download-invoice-subscription-zoomed.png#lightbox)
+    ![Snímek obrazovky ukazující fakturační období, možnost stažení a celkové poplatky za každé fakturační období](./media/download-azure-invoice/downloadinvoice-subscription.png)
 1. Můžete si také stáhnout denní rozpis spotřebovaných prostředků a poplatků, a to výběrem možnosti **Stáhnout** v části Podrobnosti o využití. Příprava souboru CSV může trvat několik minut.  
     ![Snímek obrazovky zachycující stránku pro stažení faktury a dat o využití](./media/download-azure-invoice/usage-and-invoice-subscription.png)
 
@@ -66,39 +64,33 @@ Další informace o své faktuře najdete v tématu [Vysvětlení informací na 
 
 ## <a name="download-your-mosp-support-plan-invoice"></a>Stažení faktury za plán podpory MOSP
 
-Faktura se vygeneruje pouze za předplatné plánu podpory, které patří do fakturačního účtu MOSP. [Zkontrolujte svůj přístup k účtu MOSP](../manage/view-all-accounts.md#check-the-type-of-your-account). 
+Faktura se vygeneruje pouze za předplatné plánu podpory, které patří do fakturačního účtu MOSP. [Zkontrolujte svůj přístup k účtu MOSP](../manage/view-all-accounts.md#check-the-type-of-your-account).
 
 Ke stažení faktury za předplatné plánu podpory musíte mít roli správce účtu daného předplatného.
 
-1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1.  Vyhledejte **Cost Management a fakturace**.  
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Vyhledejte **Cost Management a fakturace**.  
     ![Snímek obrazovky zachycující hledání položky Cost Management a fakturace na portálu](./media/download-azure-invoice/search-cmb.png)
-1.  Na levé straně vyberte **Faktury**.
-1.  Vyberte své předplatné plánu podpory a pak vyberte **Stáhnout**.  
+1. Na levé straně vyberte **Faktury**.
+1. Vyberte své předplatné plánu podpory a pak vyberte **Stáhnout**.  
     [![Snímek obrazovky se seznamem fakturačních profilů](./media/download-azure-invoice/cmb-invoices.png)](./media/download-azure-invoice/cmb-invoices-zoomed-in.png#lightbox)
-1.  Pokud chcete stáhnout fakturu ve verzi PDF, vyberte **Stáhnout**.  
+1. Pokud chcete stáhnout fakturu ve verzi PDF, vyberte **Stáhnout**.  
     ![Snímek obrazovky ukazující fakturační období, možnost stažení a celkové poplatky za každé fakturační období](./media/download-azure-invoice/download-invoice-support-plan.png)
 
-## <a name="allow-others-to-download-an-mosp-subscription-invoice"></a>Povolení stahování faktur za předplatné MOSP ostatním uživatelům
-
-Verze PDF faktury obsahuje osobní údaje správce účtu, takže aby si fakturu mohli stáhnout ostatní uživatelé, správce účtu předplatného jim k tomu musí udělit oprávnění. Po udělení oprávnění můžou faktury za předplatné stahovat následující lidé a uživatelé s odpovídajícími rolemi:
-
-- Uživatelé
-- Skupiny
-- Instanční objekty s vlastníkem
-- Přispěvatel
-- Čtenář
-- Správce přístupu uživatelů
-- Čtenář fakturace
-- Spolusprávce
-- Správce služeb
+## <a name="allow-others-to-download-the-your-subscription-invoice"></a>Povolení stahování faktur za předplatné ostatním uživatelům
 
 Stažení faktury:
 
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com) jako správce účtu předplatného.
-1.  Vyhledejte **Cost Management a fakturace**.  
-1.  Na levé straně vyberte **Faktury**.
-1.  Vyberte své předplatné Azure a pak vyberte **Přístup k faktuře**.  
+
+2.  Vyhledejte **Cost Management a fakturace**.
+
+    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/download-azure-invoice/search-cmb.png)
+
+3.  Na levé straně vyberte **Faktury**.
+
+4.  Vyberte předplatné Azure a potom klikněte na **Allow others to download invoice** (Umožnit ostatním stáhnout fakturu).
+
     [![Snímek obrazovky znázorňující výběr možnosti Přístup k faktuře](./media/download-azure-invoice/cmb-select-access-to-invoice.png)](./media/download-azure-invoice/cmb-select-access-to-invoice-zoomed-in.png#lightbox)
 1.  Vyberte **Zapnuto** a pak v horní části stránky vyberte **Uložit**.  
     ![Snímek obrazovky znázorňující výběr možnosti Zapnuto v části Přístup k faktuře](./media/download-azure-invoice/cmb-access-to-invoice.png)
@@ -108,16 +100,16 @@ Stažení faktury:
 Pokud se chcete přihlásit k zasílání faktur za předplatné nebo plán podpory e-mailem, musíte mít roli správce účtu daného předplatného nebo plánu podpory. Zasílání faktur e-mailem je dostupné pouze pro předplatná a plány podpory, ne pro rezervace nebo nákupy na Azure Marketplace. Po přihlášení k zasílání můžete přidat další příjemce, kterým se také budou zasílat faktury e-mailem.
 
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1.  Vyhledejte **Cost Management a fakturace**.  
-1.  Na levé straně vyberte **Faktury**.
-1.  Vyberte své předplatné Azure nebo předplatné plánu podpory a pak vyberte **Poslat fakturu e-mailem**.  
+2.  Vyhledejte **Cost Management a fakturace**.  
+3.  Na levé straně vyberte **Faktury**.
+4.  Vyberte své předplatné Azure nebo předplatné plánu podpory a pak vyberte **Receive invoice by email** (Dostat fakturu e-mailem).  
     [![Snímek obrazovky se seznamem fakturačních profilů](./media/download-azure-invoice/cmb-email-invoice.png)](./media/download-azure-invoice/cmb-email-invoice-zoomed-in.png#lightbox)
-1. Vyberte **Přihlásit** a přijměte podmínky.  
-    ![Snímek obrazovky, který ukazuje průběh přihlášení k zasílání, krok 2](./media/download-azure-invoice/invoice-article-step02.png)
-1. Faktura se odešle na e-mailovou adresu, kterou upřednostňujete pro komunikaci. Tuto e-mailovou adresu můžete aktualizovat v [kontaktních údajích vašeho fakturačního účtu](https://portal.azure.com/#blade/Microsoft_Azure_GTM/ModernBillingMenuBlade/Properties).  
-    ![Snímek obrazovky, který ukazuje průběh přihlášení k zasílání, krok 3](./media/download-azure-invoice/invoice-article-step03-verify-email.png)
+5. Klikněte na **Email invoice** (Faktura e-mailem) a přijměte podmínky.  
+    ![Snímek obrazovky, který ukazuje průběh přihlášení k zasílání, krok 2](./media/download-azure-invoice/invoicearticlestep02.png)
+6. Faktura se odešle na e-mailovou adresu, kterou upřednostňujete pro komunikaci. Pokud chcete e-mailovou adresu aktualizovat, vyberte **Aktualizovat profil**.  
+    ![Snímek obrazovky, který ukazuje průběh přihlášení k zasílání, krok 3](./media/download-azure-invoice/invoicearticlestep03-verifyemail.png)
 
-## <a name="share-your-mosp-invoices-with-others-by-email"></a>Sdílení faktur MOSP s ostatními e-mailem
+## <a name="share-subscription-and-support-plan-invoices"></a>Sdílení faktur předplatná a plány podpory
 
 Možná budete chtít každý měsíc sdílet faktury za vaše předplatné a plán podpory s vaším účetním týmem nebo si je poslat na jinou e-mailovou adresu.
 
@@ -140,13 +132,22 @@ Na začátku kalendářního měsíce se pro každý fakturační profil na vaš
 Ke stažení faktury pro fakturační profil na webu Azure Portal musíte mít roli vlastníka, přispěvatele, čtenáře nebo správce faktur daného fakturačního profilu. Uživatelé s rolí vlastníka, přispěvatele nebo čtenáře fakturačního účtu můžou stahovat faktury pro všechny fakturační profily v daném účtu.
 
 1.  Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1.  Vyhledejte **Cost Management a fakturace**.  
-1. Na levé straně vyberte **Faktury**.
-    [![Snímek obrazovky zachycující stránku s fakturami pro fakturační účet MCA](./media/download-azure-invoice/mca-billing-profile-invoices.png)](./media/download-azure-invoice/mca-billing-profile-invoices-zoomed.png#lightbox)
-1. V tabulce s fakturami vyberte fakturu, kterou chcete stáhnout.
-1. V horní části stránky vyberte **Stáhnout fakturu v PDF**.  
-    ![Snímek obrazovky znázorňující stažení faktury v PDF](./media/download-azure-invoice/mca-billing-profile-download-invoice.png)
-1. Můžete si také stáhnout soubor CSV s denním rozpisem spotřebovaných prostředků a odhadovaných poplatků, a to výběrem možnosti **Stáhnout data o využití Azure**. Příprava souboru CSV může trvat několik minut.
+
+2.  Vyhledejte **Cost Management a fakturace**.
+
+    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/download-azure-invoice/search-cmb.png)
+
+3. Na levé straně vyberte **Faktury**.
+
+    [![Snímek obrazovky zachycující stránku s fakturami pro fakturační účet MCA](./media/download-azure-invoice/mca-billingprofile-invoices.png)](./media/download-azure-invoice/mca-billingprofile-invoices-zoomed-in.png#lightbox)
+
+4. V tabulce s fakturami vyberte fakturu, kterou chcete stáhnout.
+
+5. V horní části stránky klikněte na tlačítko **Download invoice pdf** (Stáhnout fakturu v PDF).
+
+    [![Snímek obrazovky znázorňující stažení faktury v PDF](./media/download-azure-invoice/mca-billingprofile-download-invoice.png)](./media/download-azure-invoice/mca-billingprofile-download-invoice-zoomed-in.png#lightbox)
+
+6. Můžete si také stáhnout denní rozpis spotřebovaných prostředků a odhadované poplatky, a to kliknutím na **Download Azure usage** (Stáhnout využití Azure). Příprava souboru CSV může trvat několik minut.
 
 ## <a name="get-your-billing-profiles-invoice-in-email"></a>Zaslání faktury pro váš fakturační profil e-mailem
 
@@ -160,7 +161,15 @@ K aktualizaci předvolby zasílání faktury e-mailem pro fakturační profil mu
     ![Snímek obrazovky zachycující stránku s fakturami pro fakturační účet MCA](./media/download-azure-invoice/mca-billing-profile-email-invoice.png)
 1.  Vyberte **Aktualizovat**.
 
-## <a name="give-others-access-to-mca-or-mpa-invoices"></a>Udělení přístup k fakturám MCA nebo MPA ostatním uživatelům
+2.  Vyhledejte **Cost Management a fakturace**.
+
+    ![Snímek obrazovky znázorňující hledání položky Cost Management a fakturace](./media/download-azure-invoice/search-cmb.png)
+
+3.  Na levé straně vyberte **Faktury** a pak v horní části stránky vyberte **Poslat fakturu e-mailem**.
+
+    [![Snímek obrazovky zachycující stránku s fakturami pro fakturační účet MCA](./media/download-azure-invoice/mca-billingprofile-select-emailinvoice.png)](./media/download-azure-invoice/mca-billingprofile-select-emailinvoice-zoomed-in.png)
+
+4.  Pokud máte více fakturačních profilů, vyberte fakturační profil a pak vyberte **Přihlásit**.
 
 I jiným uživatelům můžete umožnit zobrazování, stahování a placení faktur tím, že jim pro daný fakturační profil MCA nebo MPA přiřadíte roli správce faktur. Pokud jste se rozhodli pro zasílání faktur e-mailem, dostanou je i tito uživatelé stejným způsobem.
 
@@ -173,15 +182,68 @@ I jiným uživatelům můžete umožnit zobrazování, stahování a placení fa
 1. V rozevíracím seznamu Role vyberte roli **Správce faktur**. Zadejte e-mailovou adresu uživatele, kterému chcete udělit přístup. Přiřaďte roli výběrem možnosti **Uložit**.  
    ![Snímek obrazovky zachycující přidání uživatele jako správce faktur](./media/download-azure-invoice/mca-added-invoice-manager.png)
 
-## <a name="why-you-might-not-see-an-invoice"></a><a name="noinvoice"></a>Proč nemůžete zobrazit fakturu
+1. Vyhledejte **Cost Management a fakturace**.
+
+   ![Snímek obrazovky, který zobrazuje hledání předplatného na portálu](./media/download-azure-invoice/search-cmb.png)
+
+1. Na levé straně vyberte **Fakturační profily**. V seznamu fakturačních profilů vyberte profil, u kterého chcete přiřadit roli správce faktur.
+
+   ![Snímek obrazovky se seznamem fakturačních profilů](./media/download-azure-invoice/mca-select-profile-zoomed-in.png)
+
+1. Na levé straně vyberte **Řízení přístupu (IAM)** a pak v horní části stránky vyberte **Přidat**.
+
+   [![Snímek obrazovky zachycující stránku řízení přístupu](./media/download-azure-invoice/mca-select-access-control-zoomed-in.png)
+
+1. V rozevíracím seznamu Role vyberte roli **Správce faktur**. Zadejte e-mailovou adresu uživatele, kterému chcete udělit přístup. Přiřaďte roli výběrem možnosti **Uložit**.
+
+   [![Snímek obrazovky zachycující přidání uživatele jako správce faktur](./media/download-azure-invoice/mca-added-invoice-manager.png)](./media/download-azure-invoice/mca-added-invoice-manager.png#lightbox)
+   
+   
+##  <a name="why-you-might-not-see-an-invoice"></a>Proč nemůžete zobrazit fakturu?
+
+<a name="noinvoice"></a>
 
 Faktura se nemusí zobrazovat z několika důvodů:
 
-- Od vytvoření vašeho předplatného Azure uplynulo méně než 30 dnů. 
-- Azure se fakturuje několik dnů po konci fakturačního období. Proto se faktura možná ještě nevygenerovala.
-- Nemáte oprávnění k zobrazení faktur.
-    Pokud máte fakturační účet MCA nebo MPA, k zobrazení faktur musíte mít roli vlastníka, přispěvatele, čtenáře nebo správce faktur fakturačního profilu nebo roli vlastníka, přispěvatele nebo čtenáře fakturačního účtu. U jiných předplatných se může stát, že pokud nejste správcem účtu, nemusí se vám zobrazovat faktury. Další informace o získání přístupu k fakturačním údajům najdete v článku o [správě přístupu k fakturaci Azure pomocí rolí](../manage/manage-billing-access.md).
-- Pokud máte fakturační účet MOSP a zaregistrovali jste si bezplatný účet Azure nebo předplatné s měsíčním kreditem, faktura se vám vystaví pouze po překročení částky měsíčního kreditu. Pokud máte fakturační účet pro smlouvu MCA nebo MPA, faktura se vám vystaví vždy.
+- Faktura ještě není připravená.
+    
+    - Od vytvoření vašeho předplatného Azure uplynulo méně než 30 dnů. 
+
+    - Azure se fakturuje několik dnů po konci fakturačního období. Proto se faktura možná ještě nevygenerovala.
+
+- Nemáte oprávnění k zobrazení faktur. 
+    
+    - Pokud máte fakturační účet MCA nebo MPA, k zobrazení faktur musíte mít roli vlastníka, přispěvatele, čtenáře nebo správce faktur fakturačního profilu nebo roli vlastníka, přispěvatele nebo čtenáře fakturačního účtu. 
+    
+    - U jiných fakturačních účtů se může stát, že pokud nejste správcem účtu, nemusí se vám zobrazovat faktury.
+
+- Váš účet nepodporuje faktury.
+
+    - Pokud máte fakturační účet pro MOSP (Microsoft Online Services Program) a zaregistrovali jste si bezplatný účet Azure nebo předplatné s měsíčním kreditem, faktura se vám vystaví pouze po překročení částky měsíčního kreditu.
+
+    - Pokud máte fakturační účet pro Smlouvu se zákazníkem Microsoftu (MCA) nebo Smlouvu s partnerem Microsoftu (MPA), faktura se vám vystaví vždy.
+
+- K faktuře máte přístup prostřednictvím některého z vašich dalších účtů.
+
+    - K této situaci obvykle dochází, když v e-mailu kliknete na odkaz pro zobrazení faktury na portálu. Kliknete na odkaz a zobrazí se chybová zpráva: `We can't display your invoices. Please try again`. Ověřte, že jste přihlášeni pomocí e-mailové adresy, která má oprávnění k zobrazení faktur.
+
+- K faktuře máte přístup prostřednictvím jiné identity. 
+
+    - Někteří zákazníci mají dvě identity se stejnou e-mailovou adresou – pracovní účet a účet Microsoft. K zobrazení faktur ale obvykle má oprávnění jenom jedna z těchto identit. Pokud se přihlásí k identitě, která nemá příslušné oprávnění, faktury neuvidí. Ověřte, že pro přihlášení používáte správnou identitu.
+
+- Přihlásili jste se k nesprávnému tenantovi Azure Active Directory (AAD). 
+
+    - Váš fakturační účet je přidružený k tenantovi AAD. Pokud se přihlásíte k nesprávnému klientovi, ve fakturačním účtu se vám nezobrazí faktura za předplatná. Ověřte, že jste přihlášeni ke správnému tenantovi Azure Active Directory (AAD). Pokud nejste přihlášení ke správnému tenantovi, můžete pro přepnutí tenanta na webu Azure Portal použít následující postup:
+
+        1. V pravém horním rohu stránky vyberte váš e-mail.
+
+        2. Vyberte **Přepnout adresář**.
+
+           ![Snímek obrazovky zachycující výběr položky pro přepnutí adresáře na portálu](./media/download-azure-invoice/select-switch-directory.png)
+
+        3. V části **Všechny adresáře** vyberte požadovaný adresář.
+
+           ![Snímek obrazovky zachycující výběr adresáře na portálu](./media/download-azure-invoice/select-directory.png)
 
 ## <a name="need-help-contact-us"></a>Potřebujete pomoc? Kontaktujte nás.
 
@@ -200,5 +262,3 @@ Pokud máte smlouvu MCA, přečtěte si:
 - [Vysvětlení poplatků na faktuře pro váš fakturační profil](review-customer-agreement-bill.md)
 - [Vysvětlení výrazů na faktuře pro váš fakturační profil](mca-understand-your-invoice.md)
 - [Vysvětlení souboru s informacemi o využití a poplatcích za Azure pro váš fakturační profil](mca-understand-your-usage.md)
-
-

@@ -6,20 +6,22 @@ ms.reviewer: judupont
 tags: billing
 ms.service: cost-management-billing
 ms.topic: tutorial
-ms.date: 02/13/2020
+ms.date: 05/28/2020
 ms.author: banders
-ms.openlocfilehash: 8ebda9716df2e9e45050760ee8d0434c12838370
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 5a9e21cacb17743cbb8324a06c083c52aa261eb9
+ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "77199122"
+ms.lasthandoff: 05/29/2020
+ms.locfileid: "84194147"
 ---
 # <a name="tutorial-review-your-individual-azure-bill"></a>Kurz: Kontrola jednotlivého vyúčtování Azure
 
 Tento článek vám pomůže pochopit a zkontrolovat vyúčtování Azure. Pro každé fakturační období obvykle obdržíte fakturu e-mailem. Faktura představuje vyúčtování Azure. Stejné informace o nákladech jako na faktuře najdete i na webu Azure Portal. V tomto kurzu porovnáte svou fakturu se souborem s podrobným denním využitím a s analýzou nákladů na webu Azure Portal.
 
 Tento kurz se týká pouze zákazníků Azure, kteří mají jednotlivé předplatné. Běžná jednotlivá předplatná jsou předplatná s tarify průběžných plateb zakoupená přímo na webu Azure.
+
+Pokud potřebujete pomoc s vysvětlením neočekávaných poplatků, přečtěte si téma [Analýza neočekávaných poplatků](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started#analyze-unexpected-charges). Pokud potřebujete zrušit předplatné Azure, přečtěte si téma [Zrušení předplatného Azure](../manage/cancel-azure-subscription.md).
 
 V tomto kurzu se naučíte:
 
@@ -47,7 +49,7 @@ Prvním krokem při porovnání využití a nákladů je stažení faktury a sou
 
 Na webu Azure Portal do vyhledávacího pole zadejte *předplatná* a potom klikněte na [Předplatná](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
-![Přechod na předplatná](./media/review-individual-bill/navigate-subscriptions.png)
+[![Přechod na předplatná](./media/review-individual-bill/navigate-subscriptions.png)](./media/review-individual-bill/navigate-subscriptions.png#lightbox)
 
 V seznamu předplatných klikněte na předplatné.
 
@@ -147,7 +149,7 @@ Například u jednoho virtuálního počítače vytvořeného v Azure se mohou v
 
 Po vytvoření virtuálního počítače začne každý měřič generovat záznamy o využití. Toto využití a cena z měřiče se sledují v měřicím systému Azure.
 
-Na měřiče, které byly použity k výpočtu faktury, se můžete podívat v souboru CSV s využitím.
+Na měřiče, které byly použity k výpočtu faktury, se můžete podívat v souboru CSV s údaji o využití (stejně jako v předchozím příkladu).
 
 ## <a name="pay-your-bill"></a><a name="payment"></a>Úhrada faktury
 

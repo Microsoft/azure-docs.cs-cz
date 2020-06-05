@@ -3,17 +3,17 @@ title: Kurz – Vytvoření a správa exportovaných dat ze služby Azure Cost M
 description: Tento článek popisuje, jak vytvořit a spravovat exportovaná data služby Azure Cost Management tak, aby se dala používat v externích systémech.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/24/2020
+ms.date: 05/27/2020
 ms.topic: tutorial
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: f0a1515816fe7a9e1d79f69655e6bf21725a0b5d
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 90334d29ed2f649854863f9ad86f03811728a945
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80877945"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142301"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Kurz: Vytvoření a správa exportovaných dat
 
@@ -49,17 +49,15 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 ## <a name="create-a-daily-export"></a>Vytvořit každodenní export
 
-Pokud chcete vytvořit nebo zobrazit export dat nebo naplánovat export, otevřete požadovaný obor na webu Azure Portal a v nabídce vyberte **Analýza nákladů**. Přejděte například na **Předplatná**, vyberte předplatné ze seznamu a pak v nabídce vyberte **Analýza nákladů**. Nahoře na stránce Analýza nákladů vyberte **Exportovat** a zvolte možnost exportu. Vyberte například **Naplánovat export**.  
+Pokud chcete vytvořit nebo zobrazit export dat nebo naplánovat export, otevřete požadovaný obor na webu Azure Portal a v nabídce vyberte **Analýza nákladů**. Přejděte například na **Předplatná**, vyberte předplatné ze seznamu a pak v nabídce vyberte **Analýza nákladů**. V horní části stránky Analýza nákladů vyberte **Nastavení** a **Exportovat** a potom zvolte možnost exportu.
 
 > [!NOTE]
 > - Kromě předplatných můžete vytvářet exporty u skupin prostředků, účtů, oddělení a registrací. Další informace o rozsazích najdete v tématu [Vysvětlení a práce s rozsahy](understand-work-scopes.md).
 >- Pokud jste přihlášeni jako partner v oboru fakturačního účtu nebo k tenantovi zákazníka, můžete exportovat data do účtu Azure Storage, který je propojený s partnerským účtem úložiště. Musíte mít ale aktivní předplatné ve svém tenantovi CSP.
->
-
 
 Vyberte **Přidat**, zadejte název exportu a potom vyberte možnost **Denní export nákladů od začátku měsíce**. Vyberte **Další**.
 
-![Příklad nového exportu znázorňující typ exportu](./media/tutorial-export-acm-data/basics_exports.png)
+[![Příklad nového exportu znázorňující typ exportu](./media/tutorial-export-acm-data/basics_exports.png)](./media/tutorial-export-acm-data/basics_exports.png#lightbox)
 
 Zadejte předplatné pro účet úložiště Azure a vyberte účet úložiště.  Zadejte kontejner úložiště a cestu k adresáři, do kterého chcete exportovat soubor. Vyberte **Další**.
 
@@ -83,10 +81,19 @@ Existují dva typy možností exportu:
 **Vlastní** – umožňuje naplánovat týdenní a měsíční exporty s možnostmi od začátku týdne a od začátku měsíce. *Počáteční export se spustí okamžitě.*
 
 Pokud máte předplatné s průběžnými platbami, MSDN nebo předplatné sady Visual Studio, nemusí se fakturační období shodovat s kalendářním měsícem. Pro tyto typy předplatného a skupiny prostředků můžete vytvořit export, který se shoduje s vaším fakturačním obdobím nebo kalendářním měsícem. Pokud chcete vytvořit export, který se shoduje s fakturačním měsícem, přejděte na **Vlastní** a potom vyberte **Od začátku fakturačního období**.  Pokud chcete vytvořit export, který se shoduje s kalendářním měsícem, vyberte možnost **Od začátku měsíce**.
->
->
 
 ![Nový export – karta Základy znázorňující vlastní týdenní výběr od začátku týdne](./media/tutorial-export-acm-data/tutorial-export-schedule-weekly-week-to-date.png)
+
+#### <a name="create-an-export-for-multiple-subscriptions"></a>Vytvoření exportu pro více předplatných
+
+Pokud máte smlouva Enterprise, můžete použít skupinu pro správu k agregaci informací o nákladech na předplatné v jednom kontejneru. Potom pro tuto skupinu pro správu můžete vyexportovat data služby Cost Management.
+
+Export pro skupiny pro správu jiných typů předplatného se nepodporuje.
+
+1. Vytvořte skupinu pro správu a přiřaďte k ní předplatná.
+1. V části Exporty vyberte **Rozsah**.
+1. Vyberte **Vybrat tuto skupinu pro správu**.
+1. Vytvořením exportu v daném rozsahu získáte data služby Cost Management pro předplatná ve skupině pro správu.
 
 ## <a name="verify-that-data-is-collected"></a>Ověřit shromáždění dat
 
@@ -104,6 +111,18 @@ Soubor se otevře v programu nebo aplikaci, která je nastavená k otevírání 
 
 ![Příklad exportovaných dat CSV zobrazených v Excelu](./media/tutorial-export-acm-data/example-export-data.png)
 
+### <a name="download-an-exported-csv-data-file"></a>Stažení vyexportovaného datového souboru CSV
+
+Vyexportovaný soubor CSV si také můžete stáhnout na webu Azure Portal. Následující kroky vysvětlují, jak ho v analýze nákladů najít.
+
+1. V analýze nákladů vyberte **Nastavení**a pak vyberte **Exporty**.
+1. V seznamu exportů vyberte účet úložiště pro export.
+1. V účtu úložiště klikněte na **Kontejnery**.
+1. V seznamu kontejnerů vyberte požadovaný kontejner.
+1. Projděte adresáře a objekty blob úložiště k požadovanému datu.
+1. Vyberte soubor CSV a potom vyberte **Stáhnout**.
+
+[![Příklad stažení exportu](./media/tutorial-export-acm-data/download-export.png)](./media/tutorial-export-acm-data/download-export.png#lightbox)
 
 ## <a name="access-exported-data-from-other-systems"></a>Přístup k exportovaným datům z jiných systémů
 

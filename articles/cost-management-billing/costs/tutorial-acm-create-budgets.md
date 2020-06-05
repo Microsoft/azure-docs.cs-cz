@@ -3,17 +3,17 @@ title: 'Kurz: Vytváření a správa rozpočtů Azure'
 description: Tento kurz vám pomůže plánovat a zohledňovat náklady na služby Azure, které využíváte.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/22/2020
+ms.date: 05/27/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: e8afa19b6d79ce915ca41f7b0e6b4a203d7daa1b
-ms.sourcegitcommit: 086d7c0cf812de709f6848a645edaf97a7324360
+ms.openlocfilehash: ef165f63ff1f9e45bb3586192146d822e334dc54
+ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/23/2020
-ms.locfileid: "82101752"
+ms.lasthandoff: 05/28/2020
+ms.locfileid: "84142431"
 ---
 # <a name="tutorial-create-and-manage-azure-budgets"></a>Kurz: Vytváření a správa rozpočtů Azure
 
@@ -115,6 +115,15 @@ Vytvořený rozpočet se zobrazí v analýze nákladů. Zobrazení rozpočtu ve 
 
 V předchozím příkladu jste vytvořili rozpočet pro předplatné. Můžete také vytvořit rozpočet pro skupinu prostředků. Pokud chcete vytvořit rozpočet pro skupinu prostředků, přejděte na **Správa nákladů a fakturace** &gt; **Předplatné** &gt; vyberte předplatné > **Skupiny prostředků** > vyberte skupinu prostředků > **Rozpočty** > a pak kliknutím na **Přidat** přidejte rozpočet.
 
+### <a name="create-a-budget-for-combined-azure-and-aws-costs"></a>Vytvoření rozpočtu pro kombinované náklady na Azure a AWS
+
+Náklady na Azure a AWS můžete seskupit tak, že k vašemu konektoru přiřadíte skupinu pro správu a také příslušné konsolidované a propojené účty. Přiřaďte předplatná Azure ke stejné skupině pro správu. Potom vytvořte rozpočet pro kombinované náklady.
+
+1. Ve službě Cost Management vyberte **Rozpočty**.
+1. Vyberte **Přidat**.
+1. Vyberte **Změnit rozsah** a potom vyberte skupinu pro správu.
+1. Pokračujte ve vytváření rozpočtu, dokud ho nedokončíte.
+
 ## <a name="costs-in-budget-evaluations"></a>Náklady ve vyhodnocení rozpočtu
 
 Vyhodnocení rozpočtových nákladů nyní zahrnují rezervovanou instanci a data nákupu. Pokud se na vás vztahují poplatky, můžete dostávat upozornění, protože poplatky jsou začleněny do vašich hodnocení. Doporučujeme, abyste se přihlásili k webu [Azure Portal](https://portal.azure.com) a ověřili, jestli jsou prahové hodnoty rozpočtu správně nakonfigurované tak, aby zohledňovaly nové náklady. Vaše poplatky za Azure se nezměnily. Rozpočty se teď vyhodnocují na základě ucelenější sady vašich nákladů. Pokud se na vás poplatky nevztahují, chování rozpočtu se nezmění.
@@ -125,7 +134,6 @@ Jestliže chcete nové náklady vyfiltrovat, aby se rozpočty vyhodnotily jenom 
 - Typ poplatku: Využití
 
 Vyhodnocení rozpočtových nákladů vychází ze skutečných nákladů a nezahrnuje amortizaci. Další informace o možnostech filtrování, které máte k dispozici v rozpočtech, najdete v tématu týkajícím se [principů možností seskupování a filtrování](quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options).
-
 
 ## <a name="trigger-an-action-group"></a>Aktivace skupiny akcí
 

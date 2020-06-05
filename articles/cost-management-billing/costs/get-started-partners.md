@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d1425407b9d451a8c35e736c38b8fac059a7c9d8
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
+ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "79204881"
+ms.lasthandoff: 05/27/2020
+ms.locfileid: "83997124"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
@@ -246,7 +246,7 @@ Pokud je vlastnost **PartnerEarnedCreditApplied** nastavena na hodnotu _True_, z
 
 Pokud je vlastnost **PartnerEarnedCreditApplied** nastavena na hodnotu _False_, znamená to, že přidružené náklady nedosahují požadované výše, aby vznikl nárok na kredit. Nebo u koupené služby nejde uplatnit dosažený kredit partnera.
 
-Zobrazení dat o využití služeb ve službě Cost Management obvykle trvá 8–24 hodin. Další informace najdete v části [Frekvence aktualizace dat o využití se liší](understand-cost-mgt-data.md#usage-data-update-frequency-varies). Kredit PEC se zobrazí do 48 hodin od okamžiku přístupu ke službě Azure Cost Management.
+Zobrazení dat o využití služeb ve službě Cost Management obvykle trvá 8–24 hodin. Další informace najdete v tématu [Aktualizace a uchovávání údajů o využití a nákladech](understand-cost-mgt-data.md#cost-and-usage-data-updates-and-retention). Kredit PEC se zobrazí do 48 hodin od okamžiku přístupu ke službě Azure Cost Management.
 
 
 K filtrování a seskupení také můžete použít vlastnost **PartnerEarnedCreditApplied** a možnost **Seskupit podle**. Tyto možnosti můžete použít ke kontrole nákladů, u kterých je nebo není kredit PEC.
