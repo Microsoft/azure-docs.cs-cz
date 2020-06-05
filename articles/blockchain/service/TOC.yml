@@ -4,6 +4,8 @@
   items:
     - name: Informace o službě Azure Blockchain
       href: overview.md
+    - name: Co je nového
+      href: whats-new.md
 - name: Rychlé starty
   expanded: true
   items:
