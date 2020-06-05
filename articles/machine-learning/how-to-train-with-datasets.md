@@ -5,18 +5,18 @@ description: Naučte se používat datové sady při školeních.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 04/20/2020
-ms.openlocfilehash: cd72ce9fed7f821807b8604f68068c64a38293e3
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 2d573591c2ec70c0d9ec1598dca3af295d36b4c7
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996662"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433778"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Výuka s datovými sadami v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -29,7 +29,7 @@ Azure Machine Learning datové sady poskytují bezproblémovou integraci s Azure
 
 K vytváření a školení s datovými sadami potřebujete:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -42,7 +42,7 @@ K vytváření a školení s datovými sadami potřebujete:
 
 K existujícímu TabularDataset můžete přistupovat z školicího skriptu experimentu v pracovním prostoru a načíst tuto datovou sadu do PANDAS dataframe pro další zkoumání v místním prostředí.
 
-Následující kód používá [`get_context()`]() metodu ve [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) třídě pro přístup k existujícímu vstupnímu TabularDatasetu, `titanic`ve školicím skriptu. Pak pomocí [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metody načte tuto datovou sadu do PANDAS dataframe pro další zkoumání a přípravu dat před školením.
+Následující kód používá [`get_context()`]() metodu ve [`Run`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py) třídě pro přístup k existujícímu vstupnímu TabularDatasetu, `titanic` ve školicím skriptu. Pak pomocí [`to_pandas_dataframe()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset#to-pandas-dataframe-on-error--null---out-of-range-datetime--null--) metody načte tuto datovou sadu do PANDAS dataframe pro další zkoumání a přípravu dat před školením.
 
 > [!Note]
 > Pokud původní zdroj dat obsahuje NaN, prázdné řetězce nebo prázdné hodnoty, když použijete to_pandas_dataframe (), pak se tyto hodnoty nahradí jako hodnota *null* . 
@@ -85,11 +85,11 @@ Objekty TabularDataset poskytují možnost načíst data ve vaší TabularDatase
 
 K odeslání experimentu se používá objekt [Estimator](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) . Azure Machine Learning má předem nakonfigurovanou odhady pro běžné architektury strojového učení a také pro obecné Estimator.
 
-Tento kód vytvoří obecný objekt Estimator, `est`který určuje
+Tento kód vytvoří obecný objekt Estimator, `est` který určuje
 
 * Adresář skriptu pro skripty. Všechny soubory v tomto adresáři se nahrají do uzlů clusteru ke spuštění.
 * Školicí skript *train_titanic. py*.
-* Vstupní datová sada pro školení, `titanic_ds`. `as_named_input()`je nutné, aby na vstupní datovou sadu bylo možné odkazovat pomocí přiřazeného názvu `titanic` ve školicím skriptu. 
+* Vstupní datová sada pro školení, `titanic_ds` . `as_named_input()`je nutné, aby na vstupní datovou sadu bylo možné odkazovat pomocí přiřazeného názvu `titanic` ve školicím skriptu. 
 * Cílová výpočetní operace experimentu.
 * Definice prostředí pro experiment.
 

@@ -7,12 +7,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: c888a28607101cdf41fcd9b47cf25a2fc5da6337
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1f34066b9f8fa16a2889c1872ebfd3f8cf33ee69
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299515"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418105"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-linux-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače se systémem Linux
 
@@ -53,7 +53,12 @@ Naplánované události jsou doručovány do:
 - Samostatné Virtual Machines.
 - Všechny virtuální počítače v cloudové službě.
 - Všechny virtuální počítače ve skupině dostupnosti.
+- Všechny virtuální počítače v zóně dostupnosti. 
 - Všechny virtuální počítače ve skupině umístění sady škálování 
+
+> [!NOTE]
+> V rámci konkrétního virtuálního počítače v zóně dostupnosti najdou naplánované události na jednotlivé virtuální počítače v zóně.
+> Například pokud máte ve skupině dostupnosti 100 virtuálních počítačů a k jedné z nich je nějaká aktualizace, naplánovaná událost přejde na všechny 100, zatímco 100 Pokud v zóně dojde k jednomu virtuálnímu počítači, pak se do virtuálního počítače přejdou jenom ty, které mají vliv na.
 
 Výsledkem je, že `Resources` v poli v události zjistíte, které virtuální počítače jsou ovlivněné.
 
@@ -67,7 +72,7 @@ Pokud se virtuální počítač nevytvoří v rámci Virtual Network, výchozí 
 ### <a name="version-and-region-availability"></a>Dostupnost verze a oblasti
 Služba Scheduled Events má verzi. Verze jsou povinné. aktuální verze je `2019-01-01` .
 
-| Verze | Typ verze | Oblasti | Zpráva k vydání verze | 
+| Verze | Typ verze | Oblasti | Poznámky k verzi | 
 | - | - | - | - | 
 | 2019-08-01 | Obecná dostupnost | Vše | <li> Přidání podpory pro EventSource |
 | 2019-04-01 | Obecná dostupnost | Vše | <li> Přidání podpory pro popis události |
@@ -132,7 +137,7 @@ V případě naplánovaných událostí obsahuje odpověď pole událostí.
 | Zdroje a prostředky| Seznam prostředků, které tato událost ovlivňuje V seznamu je zaručeno, že bude obsahovat počítače z jedné [aktualizační domény](manage-availability.md), ale nemusí obsahovat všechny počítače v ud. <br><br> Příklad: <br><ul><li> ["FrontEnd_IN_0", "BackEnd_IN_0"] |
 | EventStatus | Stav této události <br><br> Hodnoty: <ul><li>`Scheduled`: Tato událost je naplánována na spuštění po uplynutí doby zadané ve `NotBefore` Vlastnosti.<li>`Started`: Tato událost je spuštěná.</ul> `Completed`Není k dispozici žádný nebo podobný stav. Událost již není vrácena po dokončení události.
 | NotBefore| Čas, po kterém může být tato událost spuštěna. <br><br> Příklad: <br><ul><li> Pondělí 19. září 2016 18:29:47 GMT  |
-| Popis | Popis této události <br><br> Příklad: <br><ul><li> Hostitelský server prochází údržbou. |
+| Description | Popis této události <br><br> Příklad: <br><ul><li> Hostitelský server prochází údržbou. |
 | EventSource | Iniciátor události. <br><br> Příklad: <br><ul><li> `Platform`: Tato událost je iniciována pomocí Platform. <li>`User`: Tato událost je iniciována uživatelem. |
 
 ### <a name="event-scheduling"></a>Plánování událostí

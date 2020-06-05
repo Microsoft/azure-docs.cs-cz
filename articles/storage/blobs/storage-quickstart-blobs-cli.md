@@ -7,14 +7,14 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.date: 04/23/2020
+ms.date: 06/04/2020
 ms.author: tamram
-ms.openlocfilehash: 333d9f12ff817a5264183666cd1b858075a93077
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 471a8018a608da818f5961973f23123874c63427
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82176681"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434464"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Rychlý Start: vytvoření, stažení a výpis objektů BLOB pomocí Azure CLI
 
@@ -32,7 +32,7 @@ Azure CLI je prostředí příkazového řádku Azure pro správu prostředků A
 
 Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte mít spuštěnou verzi Azure CLI 2.0.46 nebo novější. Svou verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli).
 
-Pokud používáte Azure CLI místně, musíte se přihlásit a ověřit. Tento krok není nutný, pokud používáte Azure Cloud Shell. Pokud se chcete přihlásit ke službě Azure CLI `az login` , spusťte a ověřte v okně prohlížeče:
+Pokud používáte Azure CLI místně, musíte se přihlásit a ověřit. Tento krok není nutný, pokud používáte Azure Cloud Shell. Pokud se chcete přihlásit ke službě Azure CLI, spusťte `az login` a ověřte v okně prohlížeče:
 
 ```azurecli
 az login
@@ -44,7 +44,7 @@ Další informace o ověřování pomocí rozhraní příkazového řádku Azure
 
 Přístup k úložišti objektů blob můžete autorizovat z Azure CLI buď pomocí přihlašovacích údajů Azure AD, nebo pomocí přístupového klíče účtu úložiště. Doporučuje se použít přihlašovací údaje Azure AD. Tento článek ukazuje, jak autorizovat operace BLOB Storage pomocí Azure AD.
 
-Příkazy rozhraní příkazového řádku Azure pro datové operace s `--auth-mode` úložištěm objektů BLOB podporují parametr, který umožňuje určit, jak autorizovat danou operaci. Nastavte `--auth-mode` parametr na `login` autorizaci pomocí přihlašovacích údajů Azure AD. Další informace najdete v tématu [autorizace přístupu k datům BLOB nebo Queue pomocí Azure CLI](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Příkazy rozhraní příkazového řádku Azure pro datové operace s úložištěm objektů BLOB podporují `--auth-mode` parametr, který umožňuje určit, jak autorizovat danou operaci. Nastavte `--auth-mode` parametr na `login` autorizaci pomocí přihlašovacích údajů Azure AD. Další informace najdete v tématu [autorizace přístupu k datům BLOB nebo Queue pomocí Azure CLI](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Pouze datové operace služby Blob Storage podporují `--auth-mode` parametr. Operace správy, jako je vytvoření skupiny prostředků nebo účtu úložiště, automaticky používají přihlašovací údaje Azure AD k autorizaci.
 
@@ -77,9 +77,13 @@ az storage account create \
 
 ## <a name="create-a-container"></a>Vytvoření kontejneru
 
-Objekty blob se vždy nahrávají do kontejneru. Skupiny objektů blob můžete uspořádat v kontejnerech podobně jako při organizování souborů v počítači ve složkách.
+Objekty blob se vždy nahrávají do kontejneru. Skupiny objektů blob můžete uspořádat v kontejnerech podobně jako při organizování souborů v počítači ve složkách. K vytvoření kontejneru pro ukládání objektů blob použijte příkaz [az storage container create](/cli/azure/storage/container). 
 
-K vytvoření kontejneru pro ukládání objektů blob použijte příkaz [az storage container create](/cli/azure/storage/container). Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
+Následující příklad používá účet Azure AD k autorizaci operace vytvoření kontejneru. Než vytvoříte kontejner, přiřaďte roli [Přispěvatel dat objektů BLOB úložiště](../../role-based-access-control/built-in-roles.md#storage-blob-data-contributor) sami sobě. I když jste vlastníkem účtu, potřebujete explicitní oprávnění k provádění operací s daty v účtu úložiště. Další informace o přiřazování rolí RBAC najdete v tématu [přiřazení role RBAC k přístupu pomocí Azure CLI](../common/storage-auth-aad-rbac-cli.md?toc=/azure/storage/blobs/toc.json).  
+
+K autorizaci operace vytvoření kontejneru můžete použít taky klíč účtu úložiště. Další informace o autorizaci operací s daty pomocí Azure CLI najdete v tématu [autorizace přístupu k objektům blob nebo Queue data ve frontě pomocí Azure CLI](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json).
+
+Nezapomeňte nahradit zástupné hodnoty v lomených závorkách vlastními hodnotami:
 
 ```azurecli
 az storage container create \

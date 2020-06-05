@@ -10,14 +10,14 @@ ms.reviewer: nibaccam
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/10/2020
-ms.openlocfilehash: 0938888b7343b441725faace7a5f20d8f50674c8
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: 28b687577f01d6e83f012a51bd18ad082f2bd48d
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82872064"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433261"
 ---
 # <a name="where-to-save-and-write-files-for-azure-machine-learning-experiments"></a>Kam ukládat a zapisovat soubory pro Azure Machine Learning experimenty
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -51,7 +51,7 @@ Your total snapshot size exceeds the limit of 300.0 MB
 
 Chcete-li tuto chybu vyřešit, uložte soubory experimentů do úložiště dat. Pokud nemůžete použít úložiště dat, níže uvedená tabulka nabízí možná alternativní řešení.
 
-Popis&nbsp;experimentu|Řešení omezení úložiště
+Popis experimentu &nbsp;|Řešení omezení úložiště
 ---|---
 Méně než 2000 souborů & nemůže používat úložiště dat| Přepsat omezení velikosti snímku pomocí <br> `azureml._restclient.snapshots_client.SNAPSHOT_MAX_SIZE_BYTES = 'insert_desired_size'`<br> To může trvat několik minut v závislosti na počtu a velikosti souborů.
 Musí používat konkrétní adresář skriptu.| [!INCLUDE [amlinclude-info](../../includes/machine-learning-amlignore-gitignore.md)]
@@ -64,12 +64,12 @@ Vzhledem k izolaci experimentů při výuce se změny souborů, ke kterým doch�
 
 Při psaní změn doporučujeme zapisovat soubory do úložiště dat Azure Machine Learning. Podívejte [se na přístup k datům z úložišť dat](how-to-access-data.md).
 
-Pokud nepotřebujete úložiště dat, zapište soubory do složky `./outputs` a/nebo `./logs` .
+Pokud nepotřebujete úložiště dat, zapište soubory do `./outputs` složky a/nebo `./logs` .
 
 >[!Important]
-> Dvě složky, *výstupy* a *protokoly*dostanou zvláštní zacházení Azure Machine Learning. Když při výuce zapisujete soubory do`./outputs` složky`./logs` a, budou soubory automaticky nahrány do historie spuštění, takže k nim budete mít přístup, až se vaše spuštění dokončí.
+> Dvě složky, *výstupy* a *protokoly*dostanou zvláštní zacházení Azure Machine Learning. Když při výuce zapisujete soubory do `./outputs` složky a, `./logs` budou soubory automaticky nahrány do historie spuštění, takže k nim budete mít přístup, až se vaše spuštění dokončí.
 
-* **Pro výstup, jako jsou stavové zprávy nebo výsledky bodování,** zapište `./outputs` soubory do složky, aby byly uchovány jako artefakty v historii spuštění. Je třeba mít na vědomí počet a velikost souborů zapsaných do této složky, protože při nahrávání obsahu do historie spuštění může dojít k latenci. Pokud je latence obavy, doporučuje se zapisovat soubory do úložiště dat.
+* **Pro výstup, jako jsou stavové zprávy nebo výsledky bodování,** zapište soubory do `./outputs` složky, aby byly uchovány jako artefakty v historii spuštění. Je třeba mít na vědomí počet a velikost souborů zapsaných do této složky, protože při nahrávání obsahu do historie spuštění může dojít k latenci. Pokud je latence obavy, doporučuje se zapisovat soubory do úložiště dat.
 
 * Pokud **Chcete uložit zapsaný soubor jako protokoly v historii spuštění,** zapište soubory do `./logs` složky. Protokoly se odesílají v reálném čase, takže tato metoda je vhodná pro streamování aktualizací za provozu ze vzdáleného spuštění.
 

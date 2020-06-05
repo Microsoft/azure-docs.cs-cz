@@ -3,12 +3,12 @@ title: Kurz – zálohování SAP HANA databází na virtuálních počítačíc
 description: V tomto kurzu se naučíte zálohovat SAP HANA databáze běžící na virtuálním počítači Azure do trezoru služby Azure Backup Recovery Services.
 ms.topic: tutorial
 ms.date: 02/24/2020
-ms.openlocfilehash: 31958a4d4e3af4f747ab2f9de7b1bc67560e87d7
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 52ffc6bf83ff2a2dcc22fd7c5ad8ab1480f9ce50
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248239"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417289"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm"></a>Kurz: zálohování SAP HANA databází ve virtuálním počítači Azure
 
@@ -31,7 +31,7 @@ Před konfigurací zálohování se ujistěte, že jste provedli následující 
 
 * Umožněte připojení z virtuálního počítače k Internetu, aby bylo možné získat přístup k Azure, jak je popsáno níže v postupu [Nastavení síťového připojení](#set-up-network-connectivity) .
 * Klíč by měl existovat v **hdbuserstore** , který splňuje následující kritéria:
-  * Měl by se nacházet ve výchozím **hdbuserstore**
+  * Měl by se nacházet ve výchozím **hdbuserstore**. Výchozí je účet, `<sid>adm` pod kterým je nainstalovaná SAP HANA.
   * V případě MDC by měl klíč ukazovat na port SQL **názvový server**. V případě SDC by měl odkazovat na port SQL **INDEXSERVER**
   * Měl by obsahovat přihlašovací údaje k přidávání a odstraňování uživatelů.
 * Spusťte skript konfigurace zálohování SAP HANA (předregistrující skript) ve virtuálním počítači, kde je nainstalovaná verze HANA, jako uživatel root. [Tento skript](https://aka.ms/scriptforpermsonhana) NAČTE systém Hana, který je připravený k zálohování. Další informace o skriptu před registrací najdete v části [co je to skript](#what-the-pre-registration-script-does) pro předběžnou registraci.
@@ -57,7 +57,7 @@ Vytvoření pravidla pomocí portálu:
 
   1. Ve **všech službách**klikněte na **skupiny zabezpečení sítě** a vyberte skupinu zabezpečení sítě.
   2. V části **Nastavení**vyberte **odchozí pravidla zabezpečení** .
-  3. Vyberte **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na **příznak služby** a **cílová značka služby** je nastavená na **AzureBackup**.
+  3. Vyberte možnost **Přidat**. Zadejte všechny požadované podrobnosti pro vytvoření nového pravidla, jak je popsáno v [Nastavení pravidla zabezpečení](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#security-rule-settings). Ujistěte se, že možnost **cíl** je nastavená na **příznak služby** a **cílová značka služby** je nastavená na **AzureBackup**.
   4. Klikněte na tlačítko **Přidat**a uložte nově vytvořené odchozí pravidlo zabezpečení.
 
 Vytvoření pravidla pomocí prostředí PowerShell:
@@ -100,7 +100,7 @@ Použití proxy serveru HTTP | Podrobné řízení v proxy serveru přes adresy 
 
 Spuštění předregistračního skriptu provede následující funkce:
 
-* Nainstaluje nebo aktualizuje všechny potřebné balíčky, které vyžaduje agent Azure Backup pro vaši distribuci.
+* Na základě distribuce systému Linux skript nainstaluje nebo aktualizuje všechny potřebné balíčky, které vyžaduje agent Azure Backup.
 * Provádí odchozí kontroly připojení k síti pomocí Azure Backup serverů a závislých služeb, jako je Azure Active Directory a Azure Storage.
 * Přihlásí se do systému HANA pomocí klíče uživatele uvedeného v rámci [požadavků](#prerequisites). Uživatelský klíč se používá k vytvoření zálohovacího uživatele (AZUREWLBACKUPHANAUSER) v systému HANA a klíč uživatele lze odstranit po úspěšném spuštění skriptu před registrací.
 * K AZUREWLBACKUPHANAUSER se přiřazují tyto požadované role a oprávnění:

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 6d31edaea109f2969cc68c566594dc436be203d7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 8c854a503e3c949be0165d9dda046e0169686c67
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83743545"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434159"
 ---
 # <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Implementace dynamického stylu pro tvůrci vnitřních komap
 
@@ -48,7 +48,7 @@ Následující skript implementuje událost kliknutí myší. Kód načte funkci
 /* Upon a mouse click, log the feature properties to the browser's console. */
 map.events.add("click", function(e){
 
-    var features = map.layers.getRenderedShapes(e.position, "indoor")
+    var features = map.layers.getRenderedShapes(e.position, "indoor");
 
     var result = features.reduce(function (ids, feature) {
         if (feature.layer.id == "indoor_unit_office") {

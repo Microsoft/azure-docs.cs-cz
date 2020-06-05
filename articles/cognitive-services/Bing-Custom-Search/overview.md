@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: 12c255f0e4ed11ce8acbd762530604218f8bc12b
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 010f2960693a06a50cd15ac3bac2fe35b6c0985f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75448725"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434573"
 ---
 # <a name="what-is-the-bing-custom-search-api"></a>Co je rozhraní API pro vlastní vyhledávání Bingu?
 
@@ -23,13 +23,13 @@ Rozhraní API pro vlastní vyhledávání Bingu vám umožní vytvářet uživat
 
 ## <a name="features"></a>Funkce
 
-|Funkce  |Popis  |
+|Příznak  |Description  |
 |---------|---------|
 |[Vlastní návrhy hledání v reálném čase](define-custom-suggestions.md)     | Poskytněte návrhy hledání, které se dají jako typ uživatele zobrazovat jako rozevírací seznam.       | 
 |[Prostředí pro vlastní vyhledávání obrázků](get-images-from-instance.md)     | Umožněte uživatelům vyhledávat image z domén a webů zadaných ve vaší instanci vlastního vyhledávání.        |        
 |[Prostředí pro vlastní vyhledávání videí](get-videos-from-instance.md)     | Umožněte uživatelům hledat videa z domén a webů zadaných ve vaší instanci vlastního vyhledávání.        |    
 |[Sdílení instance vlastního vyhledávání](share-your-custom-search.md)     | Spoluupravujte a otestujte vaši instanci hledání tak, že ji sdílíte se členy týmu.        | 
-|[Konfigurace uživatelského rozhraní pro aplikace a weby](hosted-ui.md)     | Spoluupravujte a otestujte vaši instanci hledání tak, že ji sdílíte se členy týmu.        | 
+|[Konfigurace uživatelského rozhraní pro aplikace a weby](hosted-ui.md)     | Poskytuje hostované uživatelské rozhraní, které můžete snadno integrovat do webových stránek a webových aplikací jako fragment kódu JavaScriptu.        | 
 ## <a name="workflow"></a>Pracovní postup
 
 Přizpůsobenou instanci hledání můžete vytvořit pomocí [portálu vlastní vyhledávání Bingu](https://customsearch.ai). Portál umožňuje vytvořit vlastní instanci hledání, která určuje domény, weby a webové stránky, které má Bing Hledat, spolu s těmi, které nechcete hledat. Portál můžete také použít pro: náhled vyhledávacího prostředí, upravit pořadí hledání, které poskytuje rozhraní API, a volitelně nakonfigurovat prohledávatelný uživatelský rozhraní, které bude vykresleno na vašich webech a v aplikacích.

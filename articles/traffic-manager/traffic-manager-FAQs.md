@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: rohink
-ms.openlocfilehash: ad6acbad57df24e5cd78c72c9d00bcd32a83219a
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 28453af7eb38f4195774d70c5960eacc8467dedd
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82731573"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417000"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Nejčastější dotazy Traffic Manager
 
@@ -59,7 +59,7 @@ Jak je vysvětleno, [jak Traffic Manager funguje](../traffic-manager/traffic-man
 
 ### <a name="can-i-use-traffic-manager-with-a-naked-domain-name"></a>Můžu použít Traffic Manager s názvem domény "holé"?
 
-Ano. Informace o tom, jak vytvořit záznam aliasu pro název vaší domény, aby odkazoval na profil Azure Traffic Manager, najdete v tématu [Konfigurace záznamu aliasu pro podporu názvů vrcholu domény pomocí Traffic Manager](../dns/tutorial-alias-tm.md).
+Yes. Informace o tom, jak vytvořit záznam aliasu pro název vaší domény, aby odkazoval na profil Azure Traffic Manager, najdete v tématu [Konfigurace záznamu aliasu pro podporu názvů vrcholu domény pomocí Traffic Manager](../dns/tutorial-alias-tm.md).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Považuje Traffic Manager adresa klientské podsítě při zpracování dotazů DNS? 
 
@@ -306,11 +306,11 @@ Ceny Zobrazení přenosů jsou založené na počtu datových bodů použitých 
 
 Použití koncových bodů z více předplatných není možné u Azure Web Apps. Azure Web Apps vyžaduje, aby se vlastní název domény používaný pro Web Apps používal jenom v rámci jednoho předplatného. Není možné použít Web Apps z více předplatných se stejným názvem domény.
 
-U ostatních typů koncových bodů je možné použít Traffic Manager s koncovými body z více než jednoho předplatného. V Správce prostředků se koncové body z jakéhokoli předplatného dají přidat do Traffic Manager, pokud osoba, která konfiguruje profil Traffic Manager, má ke koncovému bodu oprávnění ke čtení. Tato oprávnění se dají udělit pomocí [Azure Resource Manager řízení přístupu na základě role (RBAC)](../role-based-access-control/role-assignments-portal.md).
+U ostatních typů koncových bodů je možné použít Traffic Manager s koncovými body z více než jednoho předplatného. V Správce prostředků se koncové body z jakéhokoli předplatného dají přidat do Traffic Manager, pokud osoba, která konfiguruje profil Traffic Manager, má ke koncovému bodu oprávnění ke čtení. Tato oprávnění se dají udělit pomocí [Azure Resource Manager řízení přístupu na základě role (RBAC)](../role-based-access-control/role-assignments-portal.md). Koncové body z jiných předplatných je možné přidat pomocí [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.trafficmanager/new-aztrafficmanagerendpoint) nebo rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint?view=azure-cli-latest#az-network-traffic-manager-endpoint-create).
 
 ### <a name="can-i-use-traffic-manager-with-cloud-service-staging-slots"></a>Můžu použít Traffic Manager s testovacími sloty cloudové služby?
 
-Ano. Sloty "fázování" cloudové služby je možné nakonfigurovat v Traffic Manager jako externí koncové body. Kontrolám stavu se pořád účtuje sazba Koncové body Azure.
+Yes. Sloty "fázování" cloudové služby je možné nakonfigurovat v Traffic Manager jako externí koncové body. Kontrolám stavu se pořád účtuje sazba Koncové body Azure.
 
 ### <a name="does-traffic-manager-support-ipv6-endpoints"></a>Podporuje Traffic Manager koncové body IPv6?
 
@@ -351,7 +351,7 @@ Můžete také použít Azure Monitor ke sledování stavu koncových bodů a k 
 
 ### <a name="can-i-monitor-https-endpoints"></a>Můžu monitorovat koncové body HTTPS?
 
-Ano. Traffic Manager podporuje zjišťování prostřednictvím protokolu HTTPS. Nakonfigurujte **https** jako protokol v konfiguraci monitorování.
+Yes. Traffic Manager podporuje zjišťování prostřednictvím protokolu HTTPS. Nakonfigurujte **https** jako protokol v konfiguraci monitorování.
 
 Traffic Manager nemůže poskytnout žádné ověření certifikátu, včetně:
 
@@ -412,7 +412,7 @@ Když je koncový bod webové aplikace Azure zastavený, Traffic Manager zastav�
 
 ### <a name="can-i-use-traffic-manager-even-if-my-application-does-not-have-support-for-http-or-https"></a>Můžu použít Traffic Manager i v případě, že moje aplikace nepodporuje protokol HTTP nebo HTTPS?
 
-Ano. Jako monitorovací protokol můžete zadat TCP a Traffic Manager může iniciovat připojení TCP a čekat na odpověď z koncového bodu. Pokud koncový bod odpoví na požadavek připojení s odpovědí na navázání připojení, v rámci časového limitu je tento koncový bod označený jako dobrý.
+Yes. Jako monitorovací protokol můžete zadat TCP a Traffic Manager může iniciovat připojení TCP a čekat na odpověď z koncového bodu. Pokud koncový bod odpoví na požadavek připojení s odpovědí na navázání připojení, v rámci časového limitu je tento koncový bod označený jako dobrý.
 
 ### <a name="what-specific-responses-are-required-from-the-endpoint-when-using-tcp-monitoring"></a>Jaké konkrétní odpovědi z koncového bodu vyžadují při použití monitorování protokolu TCP?
 
@@ -472,7 +472,7 @@ Profily můžete vnořovat až do 10 úrovní. ' Smyčky ' nejsou povoleny.
 
 ### <a name="can-i-mix-other-endpoint-types-with-nested-child-profiles-in-the-same-traffic-manager-profile"></a>Můžu ve stejném profilu Traffic Manager kombinovat jiné typy koncových bodů s vnořenými podřízenými profily?
 
-Ano. Neexistují žádná omezení způsobu kombinování koncových bodů různých typů v rámci profilu.
+Yes. Neexistují žádná omezení způsobu kombinování koncových bodů různých typů v rámci profilu.
 
 ### <a name="how-does-the-billing-model-apply-for-nested-profiles"></a>Jak model fakturace platí pro vnořené profily?
 
@@ -487,7 +487,7 @@ Traffic Manager fakturace má dvě komponenty: kontroly stavu koncových bodů a
 
 ### <a name="is-there-a-performance-impact-for-nested-profiles"></a>Je pro vnořené profily dopad na výkon?
 
-Ne. Při použití vnořených profilů se nevyskytl dopad na výkon.
+No. Při použití vnořených profilů se nevyskytl dopad na výkon.
 
 Traffic Manager názvové servery přecházejí hierarchii profilu interně při zpracování každého dotazu DNS. Dotaz DNS na nadřazený profil může přijmout odpověď DNS s koncovým bodem z podřízeného profilu. Jeden záznam CNAME se používá bez ohledu na to, jestli používáte jeden profil nebo vnořené profily. Pro každý profil v hierarchii není nutné vytvářet záznam CNAME.
 

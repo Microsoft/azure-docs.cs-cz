@@ -5,14 +5,14 @@ services: azure-resource-manager
 author: mumian
 ms.service: azure-resource-manager
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 06/03/2020
 ms.author: jgao
-ms.openlocfilehash: 2ca6848ed8fe16baea49311ee4b4b15ae8c64b56
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: fb910260c562a41871fe0cd13d5e5e9652b2017d
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344709"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417102"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Použití skriptů nasazení v šablonách (Preview)
 
@@ -248,8 +248,9 @@ Výstupy skriptu nasazení musí být uloženy v umístění AZ_SCRIPTS_OUTPUT_P
 
 ### <a name="handle-non-terminating-errors"></a>Zpracování neukončujících chyb
 
-Pomocí proměnné [**$ErrorActionPreference**](/powershell/module/microsoft.powershell.core/about/about_preference_variables?view=powershell-7#erroractionpreference
-) ve skriptu pro nasazení můžete řídit, jak PowerShell odpoví na neukončující chyby. Služba skriptu nenastavuje nebo nemění hodnotu.  Navzdory hodnotě nastavené pro $ErrorActionPreference skript nasazení nastaví stav zřizování prostředků na *neúspěšné* , když skript narazí na chybu.
+Pomocí proměnné **$ErrorActionPreference** ve skriptu pro nasazení můžete řídit, jak PowerShell odpoví na neukončující chyby. Pokud proměnná není nastavená ve skriptu nasazení, služba skriptu použije výchozí hodnotu **pokračovat**.
+
+Služba skriptu nastaví stav zřizování prostředků na **neúspěšné** , pokud skript narazí na chybu navzdory nastavení $ErrorActionPreference.
 
 ### <a name="pass-secured-strings-to-deployment-script"></a>Předání zabezpečených řetězců skriptu nasazení
 
@@ -354,7 +355,7 @@ K provádění skriptů a odstraňování potíží je potřeba účet úložiš
 
 - **cleanupPreference**: vyčistěte předvolby, když se spuštění skriptu dostane do stavu terminálu. Podporované hodnoty jsou:
 
-  - **Always**: odstranit automaticky vytvořené prostředky, jakmile se spuštění skriptu dostane do stavu terminálu. Pokud se použije existující účet úložiště, služba skriptu odstraní sdílenou složku vytvořenou v účtu úložiště. Vzhledem k tomu, že prostředek deploymentScripts může být stále přítomen po vyčištění prostředků, skriptovací služby uchovávají výsledky spuštění skriptu, například stdout, výstupy, návratové hodnoty atd. před odstraněním prostředků.
+  - **Always**: odstranit automaticky vytvořené prostředky, jakmile se spuštění skriptu dostane do stavu terminálu. Pokud se použije existující účet úložiště, služba skriptu odstraní sdílenou složku vytvořenou v účtu úložiště. Vzhledem k tomu, že prostředek deploymentScripts může být stále přítomen po vyčištění prostředků, služba skriptu uchovává výsledky spuštění skriptu, například stdout, výstupy, návratové hodnoty atd. před odstraněním prostředků.
   - **Úspěch**: Odstraňte automaticky vytvořené prostředky pouze v případě, že je spuštění skriptu úspěšné. Pokud se použije existující účet úložiště, služba skriptu odstraní sdílenou složku, jenom když je spuštění skriptu úspěšné. K vyhledání informací o ladění máte stále přístup k prostředkům.
   - **Vypršení platnosti**: odstranit automaticky prostředky jenom v případě, že vypršela platnost nastavení **retentionInterval** Pokud se použije existující účet úložiště, služba skriptu odebere sdílenou složku, ale zachová účet úložiště.
 

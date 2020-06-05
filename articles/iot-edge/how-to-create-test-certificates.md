@@ -8,12 +8,12 @@ ms.date: 06/02/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 921a9c5f7136713f278d9c50bf67f02d9742a470
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: e2ded81c3525de6f9c49d774594c73f9da2b5696
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309131"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430664"
 ---
 # <a name="create-demo-certificates-to-test-iot-edge-device-features"></a>Vytvoření ukázkových certifikátů pro otestování IoT Edgech funkcí zařízení
 
@@ -272,7 +272,7 @@ Je však dobré se vyhnout použití stejného názvu.
 ## <a name="create-downstream-device-certificates"></a>Vytvoření certifikátů pro příjem zařízení
 
 Pokud nastavujete pro scénář brány podřízené zařízení IoT a chcete použít ověřování pomocí X. 509, můžete pro zařízení pro příjem dat vygenerovat ukázkové certifikáty.
-Pokud chcete používat ověřování pomocí symetrického klíče, nepotřebujete pro zařízení pro příjem dat žádné certifikáty.
+Pokud chcete používat ověřování pomocí symetrického klíče, nemusíte pro zařízení pro příjem dat vytvářet další certifikáty.
 Existují dva způsoby, jak ověřit zařízení IoT pomocí certifikátů X. 509: pomocí certifikátů podepsaných svým držitelem nebo pomocí certifikátů podepsaných certifikační autoritou (CA).
 Pro ověřování X. 509 podepsané svým držitelem, které se někdy označuje jako ověřování kryptografickým otiskem, je potřeba vytvořit nové certifikáty, které se mají na zařízení IoT umístit.
 Tyto certifikáty obsahují kryptografický otisk, který sdílíte s IoT Hub pro ověřování.
@@ -293,7 +293,7 @@ Vaše zařízení IoT taky potřebuje kopii svých certifikátů zařízení, ab
 
 1. Přejděte do pracovního adresáře, který obsahuje skripty generování certifikátů a certifikát kořenové certifikační autority.
 
-2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Například:
+2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Příklad:
 
    ```PowerShell
    New-CACertsDevice "<device name>-primary"
@@ -323,7 +323,7 @@ Vaše zařízení IoT taky potřebuje kopii svých certifikátů zařízení, ab
 
 1. Přejděte do pracovního adresáře, který obsahuje skripty generování certifikátů a certifikát kořenové certifikační autority.
 
-2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Například:
+2. Pro zařízení pro příjem dat vytvořte dva certifikáty (primární a sekundární). Jednoduchá konvence pojmenování, která se má použít, je vytvoření certifikátů s názvem zařízení IoT a pak primárního nebo sekundárního popisku. Příklad:
 
    ```bash
    ./certGen.sh create_device_certificate "<device name>-primary"

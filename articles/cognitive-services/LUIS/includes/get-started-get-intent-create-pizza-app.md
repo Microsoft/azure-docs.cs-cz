@@ -5,17 +5,17 @@ services: cognitive-services
 author: roy-har
 manager: diberry
 ms.service: cognitive-services
-ms.date: 05/18/2020
+ms.date: 06/03/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: roy-har
-ms.openlocfilehash: 7ab6aa5f830e335a30502207d3a49a528d03f7fd
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8e67a6d0c98a3839922a79e9b452465087da1b69
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83654282"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418004"
 ---
 1. Vyberte [Pizza-App-for-Luis-v6. JSON](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/luis/apps/pizza-app-for-luis-v6.json) a zobrazte stránku GitHub pro daný `pizza-app-for-luis.json` soubor.
 1. Klikněte pravým tlačítkem nebo dlouho klepněte na tlačítko **nezpracované** a vyberte **Uložit odkaz jako** a uložte `pizza-app-for-luis.json` ho do svého počítače.
@@ -43,7 +43,7 @@ Vaše aplikace Pizza je teď připravená k použití.
 
 ## <a name="record-the-app-id-prediction-key-and-prediction-endpoint-of-your-pizza-app"></a>Zaznamenání ID aplikace, klíč předpovědi a koncového bodu předpovědi vaší aplikace Pizza
 
-Pokud chcete používat novou aplikaci Pizza, budete potřebovat ID aplikace, klíč předpovědi a koncový bod vaší aplikace Pizza.
+Pro použití vaší nové aplikace Pizza budete potřebovat ID aplikace, klíč předpovědi a koncový bod předpovědi vaší aplikace Pizza.
 
 Vyhledání těchto hodnot:
 

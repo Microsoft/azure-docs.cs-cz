@@ -5,18 +5,18 @@ description: Naučte se, jak nasadit webovou službu pomocí modelu běžícího
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: jordane
 author: jpe316
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: 8569f4751c54d7b37aa15737a9b3f7f394c7e26e
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: ac246c5135f9c00368ccce2ca79627322f504976
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983580"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433903"
 ---
 # <a name="what-are-field-programmable-gate-arrays-fpga-and-how-to-deploy"></a>Co jsou pole – programovatelné pole brány (FPGA) a jak nasadit
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -31,7 +31,7 @@ Následující diagram a tabulka ukazují, jak FPGA porovnává s ostatními pro
 
 ![Diagram porovnání Azure Machine Learning FPGA](./media/how-to-deploy-fpga-web-service/azure-machine-learning-fpga-comparison.png)
 
-|Procesor||Popis|
+|Procesor||Description|
 |---|:-------:|------|
 |Integrované okruhy specifické pro aplikaci|ASICs|Vlastní okruhy, například jednotky procesoru Google TensorFlow (TPU), poskytují nejvyšší efektivitu. Nedají se znovu nakonfigurovat, jak se vaše potřeby mění.|
 |Pole – programovatelné pole brány|FPGA|FPGA, jako jsou ty, které jsou k dispozici v Azure, poskytují výkon blízko ASICs. Jsou také flexibilní a znovu konfigurovatelné v čase, k implementaci nové logiky.|
@@ -96,7 +96,7 @@ Model můžete nasadit jako webovou službu v FPGA s využitím [Azure Machine L
     ```
 
     > [!TIP]
-    > Další možná umístění jsou ``southeastasia``, ``westeurope``a. ``westus2``
+    > Další možná umístění jsou ``southeastasia`` , ``westeurope`` a ``westus2`` .
 
     Příkaz vrátí text podobný následujícímu:
 
@@ -108,7 +108,7 @@ Model můžete nasadit jako webovou službu v FPGA s využitím [Azure Machine L
 
     Ujistěte se, že v části __CurrentValue__máte minimálně 6 vCPU.
 
-    Pokud nemáte kvótu, odešlete žádost na [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI).
+    Pokud nemáte kvótu, odešlete žádost na [https://aka.ms/accelerateAI](https://aka.ms/accelerateAI) .
 
 - Je nainstalovaný Azure Machine Learning pracovní prostor a sada Azure Machine Learning SDK pro Python. Další informace najdete v tématu [Vytvoření pracovního prostoru](how-to-manage-workspace.md).
  
@@ -344,7 +344,7 @@ aks_service.wait_for_deployment(show_output=True)
 #### <a name="test-the-cloud-service"></a>Testování cloudové služby
 Image Docker podporuje gRPC a TensorFlow, které obsluhuje "předpověď" rozhraní API.  K získání předpovědi z modelu použijte ukázkový klient pro volání do image Docker.  Vzorový klientský kód je k dispozici:
 - [Python](https://github.com/Azure/aml-real-time-ai/blob/master/pythonlib/amlrealtimeai/client.py)
-- [R #](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
+- [C#](https://github.com/Azure/aml-real-time-ai/blob/master/sample-clients/csharp)
 
 Pokud chcete používat TensorFlow obsluhující, můžete [si stáhnout ukázkového klienta](https://www.tensorflow.org/serving/setup).
 

@@ -5,17 +5,17 @@ description: V Azure Machine Learning nastavte aplikace řízené událostmi, pr
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 05/11/2020
-ms.openlocfilehash: 4a8c9c8088126a33b28bd36382536a8fe25ff0a7
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 97253a75a089570613c1d7b378ad4acf07d798a4
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800476"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431245"
 ---
 # <a name="trigger-applications-processes-or-cicd-workflows-based-on-azure-machine-learning-events-preview"></a>Aktivovat aplikace, procesy nebo pracovní postupy CI/CD na základě Azure Machine Learningch událostí (Preview)
 
@@ -47,7 +47,7 @@ Další informace o zdrojích událostí a obslužných rutinách událostí naj
 
 Azure Machine Learning poskytuje události v různých místech životního cyklu machine learningu: 
 
-| Typ události | Popis |
+| Typ události | Description |
 | ---------- | ----------- |
 | `Microsoft.MachineLearningServices.RunCompleted` | Vyvoláno, když je dokončeno spuštění experimentu machine learningu. |
 | `Microsoft.MachineLearningServices.ModelRegistered` | Vyvolá se v případě, že je model strojového učení zaregistrován v pracovním prostoru. |

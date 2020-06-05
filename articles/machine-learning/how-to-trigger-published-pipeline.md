@@ -8,15 +8,15 @@ ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/07/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 32b3e153a98ca7de91e0dd05258414780b39dec4
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: b56b07bce558a65df79a23eaf1948aac8e4fabad
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857974"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433763"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Aktivovat spuštění kanálu Machine Learning z aplikace logiky
 
@@ -88,7 +88,7 @@ Po zřízení aplikace logiky můžete pomocí těchto kroků nakonfigurovat akt
     },
     ```
 
-    Použijte jako `DataStoreName` [součást](#prerequisites), kterou jste přidali do svého pracovního prostoru.
+    Použijte `DataStoreName` jako [součást](#prerequisites), kterou jste přidali do svého pracovního prostoru.
      
     > [!div class="mx-imgBorder"]
     > ![Nastavení HTTP](media/how-to-trigger-published-pipeline/http-settings.png)

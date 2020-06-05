@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/27/2020
-ms.openlocfilehash: 8435704963e832020ecff27a11d00793ad28890c
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 1fe0eb0a69e8522fa0eb8683e2eb706f3e60b92c
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171034"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433024"
 ---
 # <a name="quickstart-create-an-azure-databricks-workspace-by-using-the-azure-resource-manager-template"></a>Rychlý Start: vytvoření pracovního prostoru Azure Databricks pomocí šablony Azure Resource Manager
 
@@ -33,13 +33,13 @@ K dokončení tohoto článku potřebujete:
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-databricks-workspace).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-databricks-workspace/).
 
-:::code language="json" source="~/quickstart-templates/101-databricks-workspace/azuredeploy.json" range="1-53":::
+:::code language="json" source="~/quickstart-templates/101-databricks-workspace/azuredeploy.json" range="1-53" highlight="33-46":::
 
-Prostředek Azure definovaný v šabloně je Microsoft. datacihly/pracovní prostory: vytvořit pracovní prostor Azure Databricks. 
+Prostředek Azure definovaný v šabloně je [Microsoft. datacihly/pracovní prostory:](/azure/templates/microsoft.databricks/workspaces): vytvořit Azure Databricks pracovní prostor.
 
-## <a name="deploy-the-template"></a>Nasazení šablony
+### <a name="deploy-the-template"></a>Nasazení šablony
 
 V této části pomocí šablony Azure Resource Manageru vytvoříte pracovní prostor Azure Databricks.
 
@@ -56,7 +56,7 @@ V této části pomocí šablony Azure Resource Manageru vytvoříte pracovní p
    |Vlastnost  |Popis  |
    |---------|---------|
    |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
-   |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/management/overview.md). |
+   |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/management/overview.md). |
    |**Umístění**     | Vyberte **USA – východ 2**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).        |
    |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.        |
    |**Cenová úroveň**     |  Zvolte úroveň **Standard** nebo **Premium**. Další informace o těchto úrovních najdete na [stránce s cenami za Databricks](https://azure.microsoft.com/pricing/details/databricks/).       |

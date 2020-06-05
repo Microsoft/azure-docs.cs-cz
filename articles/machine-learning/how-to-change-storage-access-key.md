@@ -5,17 +5,17 @@ description: Naučte se, jak změnit přístupové klávesy pro účet Azure Sto
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: f1541c177cea2d223a5e7df576d95fab7eafb310
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f4ae4890d28236db493909243d66e28d308e2002
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80296947"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434644"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -129,4 +129,4 @@ Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, pou
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o registraci úložišť dat najdete v odkazu na [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) třídu.
+Další informace o registraci úložišť dat najdete v [`Datastore`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.datastore(class)?view=azure-ml-py) odkazu na třídu.

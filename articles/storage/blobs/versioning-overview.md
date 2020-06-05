@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 7e4bc74a51e3d6b19957bdd12512e18fa594c811
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 89d69547d793599fc669927b1a500716a858cc89
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83123832"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433590"
 ---
 # <a name="blob-versioning-preview"></a>Správa verzí objektů BLOB (Preview)
 
@@ -176,10 +176,10 @@ Správa verzí objektů BLOB je navržená tak, aby chránila vaše data před n
 
 Následující tabulka uvádí, které akce RBAC podporují odstranění objektu BLOB nebo verze objektu BLOB.
 
-| Popis | Operace Blob service | Vyžaduje se akce s daty RBAC. | Integrovaná podpora rolí RBAC |
+| Description | Operace Blob service | Vyžaduje se akce s daty RBAC. | Integrovaná podpora rolí RBAC |
 |----------------------------------------------|------------------------|---------------------------------------------------------------------------------------|-------------------------------|
-| Odstraňuje se aktuální verze objektu BLOB. | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Delete/actionDeleting** | Přispěvatel dat objektu BLOB služby Storage |
-| Odstraňuje se verze | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/deleteBlobVersion/** | Vlastník dat objektu BLOB služby Storage |
+| Odstraňuje se aktuální verze objektu BLOB. | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE** | Přispěvatel dat objektu BLOB služby Storage |
+| Odstraňuje se verze | Odstranění objektu blob | **Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/deleteBlobVersion/Action** | Vlastník dat objektu BLOB služby Storage |
 
 ### <a name="shared-access-signature-sas-parameters"></a>Parametry sdíleného přístupového podpisu (SAS)
 

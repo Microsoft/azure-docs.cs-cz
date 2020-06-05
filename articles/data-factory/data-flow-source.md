@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: b2f533e8bd9199025260aaca9cff587b13adce64
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 6da0c56e11b8531192ba77d8f0c27fa16eea5de2
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606311"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433305"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Transformace zdroje v toku dat mapování 
 
@@ -25,7 +25,23 @@ Každý tok dat vyžaduje aspoň jednu zdrojovou transformaci, ale můžete při
 
 Každá transformace zdroje je přidružená k právě jedné datové sadě Data Factory. Datová sada definuje tvar a umístění dat, ke kterým chcete zapisovat, nebo z nich číst. Pokud používáte datovou sadu založenou na souborech, můžete ve zdroji použít zástupné znaky a seznamy souborů pro práci s více než jedním souborem v jednom okamžiku.
 
-## <a name="supported-source-connectors-in-mapping-data-flow"></a>Podporované zdrojové konektory v toku dat mapování
+## <a name="inline-datasets"></a>Vložené datové sady
+
+První rozhodnutí, které uděláte při vytváření zdrojové transformace, je, jestli jsou vaše zdrojové informace definované uvnitř objektu DataSet nebo v rámci transformace zdroje. Většina formátů je k dispozici pouze v jednom nebo druhém. Pokud se chcete dozvědět, jak používat konkrétní konektor, použijte prosím odkaz na příslušný dokument konektoru.
+
+Pokud je pro vložené i v objektu DataSet podporován formát, existují výhody obou. Objekty datové sady jsou opakovaně použitelné entity, které lze využít v jiných datových tocích a aktivitách, jako je například kopírování. To je užitečné hlavně při použití zpřísněného schématu. Datové sady nejsou založené na Sparku a občas možná budete muset v transformaci zdroje přepsat určitá nastavení nebo projekce schématu.
+
+Vložené datové sady jsou doporučeny při použití flexibilních schémat, jednorázových zdrojových instancí nebo parametrizovaných zdrojů. Pokud je váš zdroj silně parametrizovaný, vložené datové sady umožňují nevytvářet "fiktivní" objekty. Vložené datové sady jsou založené na Sparku a jejich vlastnosti jsou nativní pro tok dat.
+
+Chcete-li použít vloženou datovou sadu, vyberte požadovaný formát v selektoru **typu zdroje** . Místo výběru zdrojové datové sady vyberete propojenou službu, ke které se chcete připojit.
+
+![Vložená datová sada](media/data-flow/inline-selector.png "Vložená datová sada")
+
+### <a name="supported-inline-dataset-formats"></a>Podporované formáty vložených datových sad
+
+V současné době je jediným dostupným formátem vložené datové sady [společný datový model](format-common-data-model.md#source-properties) načtený z [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md).
+
+## <a name="supported-source-datasets-in-mapping-data-flow"></a>Podporované zdrojové datové sady v toku mapování dat
 
 Mapování toku dat sleduje přístup k extrakci, načítání, transformaci (ELT) a pracuje s *přípravnými* datovými sadami, které jsou všechny v Azure. V současné době je možné v transformaci zdroje použít následující datové sady:
     

@@ -1,15 +1,15 @@
 ---
 title: Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 description: Jak nasadit a nakonfigurovat síť sdružení prostředků infrastruktury pro hlavní knihu ve službě Azure Kubernetes
-ms.date: 01/08/2020
+ms.date: 06/04/2020
 ms.topic: article
-ms.reviewer: v-umha
-ms.openlocfilehash: da4ec99f1b9d73ab67a2312094feaa1a89aee394
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.reviewer: ravastra
+ms.openlocfilehash: 98d89905c89156d05fd61389693ad8d5765ba9e1
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82980217"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434339"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hlavní kniha prostředků infrastruktury pro službu Azure Kubernetes (AKS)
 
@@ -190,7 +190,7 @@ CHANNEL_NAME=<channelName>
 > [!NOTE]
 > Na základě počtu partnerských organizace ve vaší konsorciu může být nutné opakovat rovnocenné příkazy a odpovídajícím způsobem nastavit proměnnou prostředí.
 
-**Nastavte následující proměnné prostředí pro nastavení účtu Azure Storage.**
+**Nastavte následující proměnné prostředí pro nastavení Azure Storage účtu.**
 
 ```bash
 STORAGE_SUBSCRIPTION=<subscriptionId>
@@ -200,7 +200,7 @@ STORAGE_LOCATION=<azureStorageAccountLocation>
 STORAGE_FILE_SHARE=<azureFileShareName>
 ```
 
-Pro vytváření účtů Azure Storage postupujte podle následujících kroků. Pokud už máte vytvořený účet úložiště Azure, přeskočte tyto kroky.
+Při vytváření účtu Azure Storage postupujte podle následujících kroků. Pokud už máte vytvořený účet Azure Storage, přeskočte tyto kroky.
 
 ```bash
 az account set --subscription $STORAGE_SUBSCRIPTION
@@ -208,7 +208,7 @@ az group create -l $STORAGE_LOCATION -n $STORAGE_RESOURCE_GROUP
 az storage account create -n $STORAGE_ACCOUNT -g  $STORAGE_RESOURCE_GROUP -l $STORAGE_LOCATION --sku Standard_LRS
 ```
 
-Při vytváření sdílené složky v účtu úložiště Azure postupujte podle následujících kroků. Pokud už máte vytvořenou sdílenou složku, přeskočte tyto kroky.
+Při vytváření sdílené složky v účtu Azure Storage postupujte podle následujících kroků. Pokud už máte vytvořenou sdílenou složku, přeskočte tyto kroky.
 
 ```bash
 STORAGE_KEY=$(az storage account keys list --resource-group $STORAGE_RESOURCE_GROUP  --account-name $STORAGE_ACCOUNT --query "[0].value" | tr -d '"')
@@ -273,7 +273,7 @@ Z klienta partnerské organizace, vystavení níže příkaz pro nastavení part
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY
 ```
 
-`<anchorPeersList>`je seznam uzlů oddělený mezerou, který se má nastavit jako kotvicí partner. Například:
+`<anchorPeersList>`je seznam uzlů oddělený mezerou, který se má nastavit jako kotvicí partner. Třeba
 
   - Nastavte `<anchorPeersList>` jako "peer1", pokud chcete nastavit pouze uzel peer1 jako kotvicího partnera.
   - Nastavte `<anchorPeersList>` jako "peer1" "peer3", pokud chcete jako kotvový partner nastavit uzel peer1 i peer3.
@@ -284,12 +284,12 @@ Z klienta partnerské organizace, vystavení níže příkaz pro nastavení part
 > Před zahájením jakékoli operace konsorcia se ujistěte, že je provedena počáteční instalace klientské aplikace.  
 
 V uvedeném pořadí proveďte následující příkazy, aby se do kanálu a konsorcia přidala organizace typu peer.
-1.  Z klienta partnerské organizace nahrajte organizaci partnera MSP v Azure Storage.
+1.  Z klienta partnerské organizace nahrajte partnerský subjekt MSP na Azure Storage
 
       ```bash
       ./azhlf msp export toAzureStorage -f  $AZURE_FILE_CONNECTION_STRING -o $PEER_ORG_NAME
       ```
-2.  Z klienta organizace pro objednávky Stáhněte si ze služby Azure Storage partnerský partner MSP a pak vydejte příkaz pro přidání partnerské organizace v kanálu/konsorcium.
+2.  Z klienta organizace pro objednávky Stáhněte si z Azure Storage partnerských organizací MSP a potom vydejte příkaz pro přidání partnerské organizace do kanálu nebo konsorcia.
 
       ```bash
       ./azhlf msp import fromAzureStorage -o $PEER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
@@ -297,13 +297,13 @@ V uvedeném pořadí proveďte následující příkazy, aby se do kanálu a kon
       ./azhlf consortium join -o $ORDERER_ORG_NAME  -u $ORDERER_ADMIN_IDENTITY -p $PEER_ORG_NAME
       ```
 
-3.  Z klienta organizace pro objednávky nahrajte na Azure Storage profil pro připojení k objednávce, aby se partnerské organizace mohla připojit k uzlům s použitím tohoto profilu připojení.
+3.  Z klienta organizace pro objednávky nahrajte profil připojení pro objednávku na Azure Storage tak, aby se partnerské organizace mohla připojit k uzlům s použitím tohoto profilu připojení.
 
       ```bash
       ./azhlf connectionProfile  export toAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
       ```
 
-4.  Z klienta partnerské organizace, profilu připojení k nástroji pro změnu pořadí stahování z Azure Storage a následným vydáním příkazu pro přidání partnerských uzlů do kanálu
+4.  Z klienta rovnocenné organizace stáhněte profil připojení k nástroji pro změnu pořadí z Azure Storage a potom vydejte příkaz pro přidání partnerských uzlů do kanálu.
 
       ```bash
       ./azhlf connectionProfile  import fromAzureStorage -o $ORDERER_ORG_NAME -f $AZURE_FILE_CONNECTION_STRING
@@ -368,7 +368,7 @@ Z klientské aplikace peere spusťte pod příkazem vytvoření instance chainco
 ```bash
 ./azhlf chaincode instantiate -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -p $CC_PATH -v $CC_VERSION -l $CC_LANG -c $CHANNEL_NAME -f <instantiateFunc> --args <instantiateFuncArgs>  
 ```
-Název funkce instance a seznam argumentů, které jsou odděleny mezerou `<instantiateFuncArgs>` , v a v `<instantiateFunc>` uvedeném pořadí. Například v chaincode_example02. přejít chaincode, pokud chcete vytvořit instanci chaincode sady `<instantiateFunc>` na `init`a `<instantiateFuncArgs>` na "a" "2000" "b" "1000".
+Název funkce instance a seznam argumentů, které jsou odděleny mezerou, v `<instantiateFunc>` a v `<instantiateFuncArgs>` uvedeném pořadí. Například v chaincode_example02. přejít chaincode, pokud chcete vytvořit instanci chaincode sady `<instantiateFunc>` na `init` a `<instantiateFuncArgs>` na "a" "2000" "b" "1000".
 
 > [!NOTE]
 > Spusťte příkaz pro jednu z libovolných partnerských organizací v kanálu. Po úspěšném odeslání transakce do objednávky bude objednávka distribuovat tuto transakci do všech partnerských organizací v kanálu. Proto je instance chaincode vytvořena na všech partnerských uzlech všech partnerských organizací v kanálu.  
@@ -382,7 +382,7 @@ Z klienta partnerské organizace spusťte následující příkaz, který vyvol�
 ./azhlf chaincode invoke -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <invokeFunc> -a <invokeFuncArgs>  
 ```
 
-Předejte vyvolat název funkce a seznam argumentů oddělených mezerou `<invokeFuncArgs>` v v `<invokeFunction>` uvedeném pořadí. Pokračování s chaincode_example02. přejít chaincode, aby se provedla operace vyvolání `<invokeFunction>` sady `invoke` na `<invokeFuncArgs>` a na "a" b "" 10 ".  
+Předejte vyvolat název funkce a seznam argumentů oddělených mezerou v v  `<invokeFunction>`    `<invokeFuncArgs>`   uvedeném pořadí. Pokračování s chaincode_example02. přejít chaincode, aby se provedla operace vyvolání sady  `<invokeFunction>`   na  `invoke`   a  `<invokeFuncArgs>`   na "a" b "" 10 ".  
 
 >[!NOTE]
 > Spusťte příkaz pro jednu z libovolných partnerských organizací v kanálu. Po úspěšném odeslání transakce do objednávky bude objednávka distribuovat tuto transakci do všech partnerských organizací v kanálu. Proto je celosvětový stav aktualizován na všech partnerských uzlech všech partnerských organizací v kanálu.  
@@ -395,7 +395,7 @@ Příkaz spustit pod příkazem pro dotaz na chaincode:
 ```bash
 ./azhlf chaincode query -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL_NAME -f <queryFunction> -a <queryFuncArgs>  
 ```
-Předejte název funkce dotazu a seznam argumentů oddělených `<queryFunction>` mezerami `<queryFuncArgs>` v uvedeném pořadí. Znovu se postará o chaincode_example02. přejít chaincode jako na odkaz a na hodnotu dotazu "a" ve světě `<queryFunction>`  `query` nastavenou `<queryArgs>` na a na "a".  
+Předejte název funkce dotazu a seznam argumentů oddělených mezerami v  `<queryFunction>`    `<queryFuncArgs>`   uvedeném pořadí. Znovu se postará o chaincode_example02. přejít chaincode jako na odkaz a na hodnotu dotazu "a" ve světě nastavenou  `<queryFunction>`   na  `query` a  `<queryArgs>` na "a".  
 
 ## <a name="troubleshoot"></a>Řešení potíží
 
@@ -418,3 +418,17 @@ SWITCH_TO_AKS_CLUSTER $AKS_CLUSTER_RESOURCE_GROUP $AKS_CLUSTER_NAME $AKS_CLUSTER
 kubectl describe pod fabric-tools -n tools | grep "Image:" | cut -d ":" -f 3
 
 ```
+
+## <a name="support-and-feedback"></a>Podpora a zpětná vazba
+
+Novinky ke službě Azure blockchain News najdete na [blogu Azure blockchain](https://azure.microsoft.com/blog/topics/blockchain/) , abyste měli přehled o nabídkách služeb blockchain a informacích od týmu Azure blockchain Engineering.
+
+Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce, vystavte nebo Hlasujte nápad prostřednictvím [fóra Azure Feedback pro blockchain](https://aka.ms/blockchainuservoice).
+
+### <a name="community-support"></a>Podpora komunity
+
+Spolupracujte s odborníky z Microsoftu a komunitou Azure blockchain.
+
+- [Microsoft Q&stránku s otázkou pro službu Azure blockchain](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technická podpora pro šablony Blockchain je omezená na problémy s nasazením.
+- [Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+- [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)

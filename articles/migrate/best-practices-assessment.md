@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: raynew
-ms.openlocfilehash: de6953b6648613595bc9975b17941b3a453a6d60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 635ea81f37e72cdee80fbae928745e49b103820e
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74185984"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433044"
 ---
 # <a name="best-practices-for-creating-assessments"></a>Osvědčené postupy pro vytváření hodnocení
 
@@ -83,7 +83,18 @@ Pokud po vytvoření posouzení přidáte nebo odeberete počítače ze skupiny,
 
 ### <a name="outdated-assessments"></a>Zastaralá posouzení
 
-Pokud existují místní změny virtuálních počítačů, které jsou ve skupině, která je vyhodnocena, je posouzení označeno jako **zastaralé**. Aby se změny projevily, spusťte posouzení znovu.
+Pokud existují místní změny virtuálních počítačů, které jsou ve skupině, která je vyhodnocena, je posouzení označeno jako **zastaralé**. Posouzení může být označeno jako zastaralé v důsledku jedné nebo více změn v níže uvedených vlastnostech:
+
+- Počet jader procesoru
+- Přidělená paměť
+- Typ spuštění nebo firmware
+- Název operačního systému, verze a architektura
+- Počet disků
+- Počet síťových adaptérů
+- Změna velikosti disku (přidělené GB)
+- Aktualizujte vlastnosti síťové karty. Příklad: změny adres MAC, přidání IP adresy atd.
+
+Spusťte posouzení znovu (**přepočítejte**), aby se změny projevily.
 
 ### <a name="low-confidence-rating"></a>Hodnocení nízké spolehlivosti
 

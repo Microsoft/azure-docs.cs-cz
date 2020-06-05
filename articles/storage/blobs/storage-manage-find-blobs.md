@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
-ms.openlocfilehash: 3e5507069a3e1eeadfaf4c3eeee288b2651e88a1
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 083b130d1bb02ccc922c834c09a0d16fab004ae9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996036"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433579"
 ---
 # <a name="manage-and-find-data-on-azure-blob-storage-with-blob-index-preview"></a>Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)
 
@@ -130,7 +130,7 @@ Následující tabulka uvádí všechny platné operátory pro podmíněné oper
 |     <      |  Menší než    | "Stáří" < "32" |
 |     <=     |  Menší než nebo rovno  | "Společnost" <= "contoso" |
 |    AND     |  Logický operátor and  | "Rank" >= "010" a "Rank" < "100" |
-|     NEBO     |  Logický operátor OR   | "Stav" = "dokončeno" nebo "Priorita" >= "05" |
+|     OR     |  Logický operátor OR   | "Stav" = "dokončeno" nebo "Priorita" >= "05" |
 
 > [!NOTE]
 > Existují dva další operátory, nerovnosti a logické nebo, které jsou povoleny v podmíněné hlavičce x-MS-if-Tags pro operaci objektu blob, ale v operaci FindBlobsByTags neexistují.
@@ -208,7 +208,7 @@ Volajícím, kteří používají [identitu AAD](../common/storage-auth-aad.md) 
 
 |   Operace objektu BLOB   |  Akce RBAC   |
 |---------------------|----------------|
-| Hledání objektů BLOB podle značek  | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Filter |
+| Hledání objektů BLOB podle značek  | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Filter/Action |
 | Nastavení značek objektů BLOB         | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Tags/Write | 
 | Získat značky objektu BLOB         | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Tags/Read |
 

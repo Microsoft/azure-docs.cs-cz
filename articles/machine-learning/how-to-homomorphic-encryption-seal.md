@@ -8,13 +8,13 @@ ms.date: 05/18/2020
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
-ms.openlocfilehash: b79ab513950f14cda98fc3113bb062b431ebd69e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.topic: how-to
+ms.openlocfilehash: cf85ebbc8768074b6ebb23b697955c7e7c3b9ae7
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664918"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434245"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service"></a>Nasazení šifrované webové služby Inferencing
 

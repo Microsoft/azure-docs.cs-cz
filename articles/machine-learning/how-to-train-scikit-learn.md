@@ -5,17 +5,17 @@ description: Naučte se spouštět scikité školicí skripty v podnikovém mě�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: maxluk
 author: maxluk
 ms.date: 03/09/2020
 ms.custom: seodec18
-ms.openlocfilehash: c842e0ea126ffe4c3328c4fd237e2891d6cff229
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 505211473820bdd3cdce1c2e28e27323d1053618
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84168790"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433810"
 ---
 # <a name="build-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Sestavujte modely scikit s využitím škálování pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

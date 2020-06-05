@@ -3,12 +3,12 @@ title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
 ms.date: 06/02/2020
-ms.openlocfilehash: a87d55ceee759d81d0aab823f003b4bb36a66610
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 272e6cb27b01ed971025bd273b225d4823d04501
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310321"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424428"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -174,8 +174,8 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. WindowsIoT | [Windows 10 IoT Core Services](https://docs.microsoft.com/windows-hardware/manufacture/iot/iotcoreservicesoverview) |
 | Microsoft. monitor zátěže byl<sup>1</sup> | [Azure Monitor](../../azure-monitor/index.yml) |
 
-<sup>1</sup> ve výchozím nastavení povoleno
+<sup>1</sup> registrováno ve výchozím nastavení
 
 ## <a name="next-steps"></a>Další kroky
 
-Další informace o poskytovatelích prostředků najdete v tématu [poskytovatelé a typy prostředků Azure](resource-providers-and-types.md) .
+Další informace o poskytovatelích prostředků, včetně toho, jak registrovat poskytovatele prostředků, najdete v tématu [poskytovatelé a typy prostředků Azure](resource-providers-and-types.md) .

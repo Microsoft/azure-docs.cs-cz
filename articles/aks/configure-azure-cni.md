@@ -4,12 +4,12 @@ description: Naučte se konfigurovat sítě Azure CNI (pokročilé) ve službě 
 services: container-service
 ms.topic: article
 ms.date: 06/03/2019
-ms.openlocfilehash: 592376c1ff1686429d71496099f55c5009e07f20
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: d025bcddfdee25cddac311ac9a201b7f3afebd22
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120925"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416847"
 ---
 # <a name="configure-azure-cni-networking-in-azure-kubernetes-service-aks"></a>Konfigurace sítě Azure CNI ve službě Azure Kubernetes Service (AKS)
 
@@ -151,7 +151,7 @@ Následující otázky a odpovědi se vztahují na konfiguraci sítě **Azure CN
 
 * *Můžu v naší podsíti clusteru nasazovat virtuální počítače?*
 
-  Ne. Nasazení virtuálních počítačů v podsíti používané clusterem Kubernetes není podporováno. Virtuální počítače můžou být nasazené ve stejné virtuální síti, ale v jiné podsíti.
+  Yes.
 
 * *Můžu nakonfigurovat zásady sítě vázané na základě?*
 

@@ -5,17 +5,17 @@ description: Naučte se, jak nasadit modely Azure Machine Learning jako webovou 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 12/27/2019
-ms.openlocfilehash: d460112394d7c7b7d2da4e8af41c0085b67226ec
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eddbe03225dc4f4e81e90be80e2613f633ea69c9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80475473"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433420"
 ---
 # <a name="deploy-a-model-to-azure-container-instances"></a>Nasazení modelu pro Azure Container Instances
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -43,7 +43,7 @@ Informace o dostupnosti kvót a oblastí pro ACI najdete v článku [kvóty a do
 
     Další informace o nastavení těchto proměnných najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
-- Fragmenty rozhraní příkazového __řádku__ v tomto článku předpokládají, že jste `inferenceconfig.json` vytvořili dokument. Další informace o vytváření tohoto dokumentu najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
+- Fragmenty rozhraní příkazového __řádku__ v tomto článku předpokládají, že jste vytvořili `inferenceconfig.json` dokument. Další informace o vytváření tohoto dokumentu najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 ## <a name="deploy-to-aci"></a>Nasazení do ACI
 

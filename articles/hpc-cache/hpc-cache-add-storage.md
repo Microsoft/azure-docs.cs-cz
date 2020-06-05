@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: v-erkel
-ms.openlocfilehash: 9d08526334a9891788df63b156cdf65f55c587ca
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 442c9897c5f02e9ed9cbcda96b6a540b9201f428
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344930"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434119"
 ---
 # <a name="add-storage-targets"></a>Přidání cílů úložiště
 
@@ -25,7 +25,7 @@ Přidejte cíle úložiště po vytvoření mezipaměti. Postup se mírně liš�
 
 Kliknutím na obrázek níže si můžete přehrát [ukázku](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/) pro vytvoření mezipaměti a Přidání cíle úložiště.
 
-[![Miniatura videa: mezipaměť prostředí Azure HPC: Instalační program (kliknutím můžete navštívit stránku video)](media/video4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
+[![Miniatura videa: mezipaměť prostředí Azure HPC: Instalační program (kliknutím můžete navštívit stránku video)](media/video-4-setup.png)](https://azure.microsoft.com/resources/videos/set-up-hpc-cache/)
 
 ## <a name="open-the-storage-targets-page"></a>Otevřete stránku cíle úložiště.
 

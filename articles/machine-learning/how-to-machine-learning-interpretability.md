@@ -5,17 +5,17 @@ description: Naučte se vysvětlit, proč model předpovědi pomocí sady SDK Az
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/02/2020
-ms.openlocfilehash: f4210352a9d8cd3cd9cb9afda7d9a4798d96f44b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: dd9620b690b031567a85cfd1dfc2dcbc76fb6835
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982883"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430496"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>Interpretace modelu v Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -72,7 +72,7 @@ Přečtěte si o podporovaných technikách interpretace, podporovaných modelec
 
  `azureml-interpret`používá techniky interpretace vyvinuté v [interpretství – Community](https://github.com/interpretml/interpret-community/), open source balíček Pythonu pro účely školení uživatelsky interpretované modely a pomáhá vysvětlit Blackbox systémy AI. [Interpretace – komunita](https://github.com/interpretml/interpret-community/) slouží jako hostitel pro vysvětlení podporovaná v sadě SDK a aktuálně podporuje následující techniky interpretace:
 
-|Technika interpretace|Popis|Typ|
+|Technika interpretace|Description|Typ|
 |--|--|--------------------|
 |SHAP stromové struktury| [SHAP](https://github.com/slundberg/shap)na stromové struktuře, který se zaměřuje na polynomická rychlá hodnota SHAP algoritmu odhadu, která je specifická pro **stromy a komplety stromů**.|Specifické pro model|
 |SHAP hluboký vysvětlující| Na základě vysvětlení z SHAP je hluboko vysvětlující algoritmus pro hodnoty SHAP v modelech hloubkového učení s vysokou rychlostí, který se vytváří na základě připojení s DeepLIFT popsané v [dokumentu SHAP nips](https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions). **TensorFlow** modely a modely **Keras** používající back-end TensorFlow jsou podporované (k dispozici je také předběžná podpora pro PyTorch).|Specifické pro model|
@@ -84,7 +84,7 @@ Přečtěte si o podporovaných technikách interpretace, podporovaných modelec
 
 
 
-Kromě metod interpretace popsaných výše podporujeme jiný vysvětlující SHAP, který se nazývá `TabularExplainer`. V závislosti na modelu `TabularExplainer` používá jeden z podporovaných SHAP vysvětlení:
+Kromě metod interpretace popsaných výše podporujeme jiný vysvětlující SHAP, který se nazývá `TabularExplainer` . V závislosti na modelu `TabularExplainer` používá jeden z podporovaných SHAP vysvětlení:
 
 * TreeExplainer pro všechny modely založené na stromové struktuře
 * DeepExplainer pro modely DNN
@@ -103,17 +103,17 @@ Následující diagram znázorňuje aktuální strukturu podporovaných vysvětl
 
 ## <a name="supported-machine-learning-models"></a>Podporované modely strojového učení
 
-`azureml.interpret` Balíček sady SDK podporuje modely vyškolené pomocí následujících formátů datových sad:
+`azureml.interpret`Balíček sady SDK podporuje modely vyškolené pomocí následujících formátů datových sad:
 - `numpy.array`
 - `pandas.DataFrame`
 - `iml.datatypes.DenseData`
 - `scipy.sparse.csr_matrix`
 
-Funkce vysvětlení přijímají jako vstup oba modely i kanály. Pokud je k dispozici model, model musí implementovat funkci `predict` předpovědi nebo `predict_proba` , která odpovídá Scikit konvenci. Pokud váš model tento model nepodporuje, můžete model zabalit do funkce, která generuje stejný výsledek jako `predict` nebo `predict_proba` v Scikit a použije tuto obálkovou funkci s vybraným doplňkem. Pokud je k dispozici kanál, funkce vysvětlení předpokládá, že spuštěný skript kanálu vrátí předpověď. Pomocí této techniky balení `azureml.interpret` může podporovat modely vyškolené prostřednictvím PyTorch, TensorFlow a Keras architektury hloubkového učení a také klasických modelů strojového učení.
+Funkce vysvětlení přijímají jako vstup oba modely i kanály. Pokud je k dispozici model, model musí implementovat funkci předpovědi `predict` nebo `predict_proba` , která odpovídá Scikit konvenci. Pokud váš model tento model nepodporuje, můžete model zabalit do funkce, která generuje stejný výsledek jako `predict` nebo `predict_proba` v Scikit a použije tuto obálkovou funkci s vybraným doplňkem. Pokud je k dispozici kanál, funkce vysvětlení předpokládá, že spuštěný skript kanálu vrátí předpověď. Pomocí této techniky balení `azureml.interpret` může podporovat modely vyškolené prostřednictvím PyTorch, TensorFlow a Keras architektury hloubkového učení a také klasických modelů strojového učení.
 
 ## <a name="local-and-remote-compute-target"></a>Cíl pro místní a vzdálené výpočty
 
-`azureml.interpret` Balíček je navržený tak, aby fungoval s místními i vzdálenými výpočetními cíli. Pokud spustíte místně, funkce SDK nebudou kontaktovat žádné služby Azure. 
+`azureml.interpret`Balíček je navržený tak, aby fungoval s místními i vzdálenými výpočetními cíli. Pokud spustíte místně, funkce SDK nebudou kontaktovat žádné služby Azure. 
 
 Vysvětlení můžete spustit vzdáleně na Azure Machine Learning COMPUTE a protokolovat informace o vysvětlení do služby historie spouštění Azure Machine Learning. Po zaznamenání těchto informací jsou sestavy a vizualizace z vysvětlení snadno dostupné na Azure Machine Learning Studiu pro analýzu uživatelů.
 

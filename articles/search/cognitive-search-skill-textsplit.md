@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3f80169808b1e6420f04b786d2bb06bde9c96231
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: 558f7ef250c99d85cb957162b6d098e586bc0fc4
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73479667"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433256"
 ---
 # <a name="text-split-cognitive-skill"></a>Dovednosti při rozpoznávání rozdělení textu
 
@@ -29,23 +29,23 @@ Microsoft. dovednosti. text. SplitSkill
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Název parametru     | Popis |
+| Název parametru     | Description |
 |--------------------|-------------|
 | textSplitMode      | Buď "stránky" nebo "věty" | 
-| maximumPageLength | Pokud je textSplitMode nastavené na "stránky", vztahuje se na maximální délka stránky měřená podle `String.Length`. Minimální hodnota je 100.  Pokud je textSplitMode nastavené na "stránky", algoritmus se pokusí rozdělit text na bloky, které mají velikost nejvíce "maximumPageLength". V takovém případě bude algoritmus nejlépe přerušit větu na hranici věty, takže velikost bloku dat může být mírně menší než "maximumPageLength". | 
-| defaultLanguageCode   | volitelné Jeden z následujících kódů jazyka: `da, de, en, es, fi, fr, it, ko, pt`. Výchozí hodnota je angličtina (EN). Několik věcí, které je potřeba vzít v úvahu:<ul><li>Pokud předáte formát LanguageCode-CountryCode, použije se pouze část formátu LanguageCode.</li><li>Pokud jazyk není v předchozím seznamu, rozdělená dovednost rozdělí text na hranice znaků.</li><li>Poskytnutí kódu jazyka je užitečné, abyste se vyhnuli vyjmutí slova na polovinu pro jiné než prázdné jazyky, jako jsou čínština, japonština a korejština.</li><li>Pokud neznáte jazyk (tj. je třeba rozdělit text na [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), měla by být stačit výchozí angličtina (EN). </li></ul>  |
+| maximumPageLength | Pokud je textSplitMode nastavené na "stránky", vztahuje se na maximální délka stránky měřená podle `String.Length` . Minimální hodnota je 300.  Pokud je textSplitMode nastavené na "stránky", algoritmus se pokusí rozdělit text na bloky, které mají velikost nejvíce "maximumPageLength". V takovém případě bude algoritmus nejlépe přerušit větu na hranici věty, takže velikost bloku dat může být mírně menší než "maximumPageLength". | 
+| defaultLanguageCode   | volitelné Jeden z následujících kódů jazyka: `da, de, en, es, fi, fr, it, ko, pt` . Výchozí hodnota je angličtina (EN). Několik věcí, které je potřeba vzít v úvahu:<ul><li>Pokud předáte formát LanguageCode-CountryCode, použije se pouze část formátu LanguageCode.</li><li>Pokud jazyk není v předchozím seznamu, rozdělená dovednost rozdělí text na hranice znaků.</li><li>Poskytnutí kódu jazyka je užitečné, abyste se vyhnuli vyjmutí slova na polovinu pro jiné než prázdné jazyky, jako jsou čínština, japonština a korejština.</li><li>Pokud neznáte jazyk (tj. je třeba rozdělit text na [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), měla by být stačit výchozí angličtina (EN). </li></ul>  |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název parametru       | Popis      |
+| Název parametru       | Description      |
 |----------------------|------------------|
 | text  | Text, který se má rozdělit na dílčí řetězec |
 | languageCode  | Volitelné Kód jazyka pro dokument Pokud neznáte jazyk (například potřebujete rozdělit text na vstup do [LanguageDetectionSkill](cognitive-search-skill-language-detection.md)), je možné tento vstup bezpečně odebrat.  |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností 
 
-| Název parametru     | Popis |
+| Název parametru     | Description |
 |--------------------|-------------|
 | textItems | Pole podřetězců, které byly extrahovány. |
 

@@ -5,18 +5,18 @@ description: Naučte se používat úložiště dat k zabezpečenému připojen�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: 904738d73aaa0580773a085c70cd74f4240fc4b7
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: d0f37d32b7d2306865d435bc68ea12c9bb95651c
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773937"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434709"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení ke službám Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -283,7 +283,7 @@ run_config.source_directory_data_store = "workspaceblobstore"
 
 Azure Machine Learning poskytuje několik způsobů, jak používat vaše modely pro bodování. Některé z těchto metod neposkytují přístup k úložiště dat. Následující tabulka vám pomůže pochopit, které metody umožňují přístup k úložišti dat během bodování:
 
-| Metoda | Přístup k úložišti dat | Popis |
+| Metoda | Přístup k úložišti dat | Description |
 | ----- | :-----: | ----- |
 | [Dávkové předpovědi](how-to-use-parallel-run-step.md) | ✔ | Provádějte asynchronní předpovědi velké množství dat. |
 | [Webová služba](how-to-deploy-and-where.md) | &nbsp; | Nasaďte modely jako webovou službu. |

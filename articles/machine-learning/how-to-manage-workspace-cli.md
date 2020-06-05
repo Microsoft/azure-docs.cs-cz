@@ -5,16 +5,16 @@ description: Naučte se používat rozhraní příkazového řádku Azure a vytv
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: larryfr
 author: Blackmist
 ms.date: 03/05/2020
-ms.openlocfilehash: 9a7d0b75140c50df61ff63f350e5b312a6a684c7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9131ce9b211a33fe45ef571f3a274b4ddc81739f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617787"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430390"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Vytvoření pracovního prostoru pro Azure Machine Learning pomocí Azure CLI
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -64,7 +64,7 @@ Pracovní prostor Azure Machine Learning spoléhá na tyto služby nebo entity A
 | Služba | Parametr pro určení existující instance |
 | ---- | ---- |
 | **Skupina prostředků Azure** | `-g <resource-group-name>`
-| **Účet Azure Storage** | `--storage-account <service-id>` |
+| **Účet služby Azure Storage** | `--storage-account <service-id>` |
 | **Azure Application Insights** | `--application-insights <service-id>` |
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
@@ -103,7 +103,7 @@ Další informace o práci se skupinami prostředků najdete v tématu [AZ Group
 Pokud chcete vytvořit nový pracovní prostor, ve kterém __se služby vytvoří automaticky__, použijte následující příkaz:
 
 > [!TIP]
-> Příkazy v této části vytvoří pracovní prostor základní edice. Chcete-li vytvořit pracovní prostor organizace, `--sku enterprise` použijte přepínač s `az ml workspace create` příkazem. Další informace o edicích Azure Machine Learning najdete v tématu [co je Azure Machine Learning](overview-what-is-azure-ml.md#sku).
+> Příkazy v této části vytvoří pracovní prostor základní edice. Chcete-li vytvořit pracovní prostor organizace, použijte `--sku enterprise` přepínač s `az ml workspace create` příkazem. Další informace o edicích Azure Machine Learning najdete v tématu [co je Azure Machine Learning](overview-what-is-azure-ml.md#sku).
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>

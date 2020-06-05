@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9b2a47cde4d79671aada7c280c2bffd9bb8fe759
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: c0b043bdb20cad508950a11853403958340acadf
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83596971"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434197"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Použití modulu Azure Mapsch vnitřních map
 
@@ -33,12 +33,12 @@ Modul *vnitřního Azure Maps* můžete nainstalovat a vložit jedním ze dvou z
 
 Pokud chcete použít globálně hostovanou verzi Content Delivery Network Azure *Azure Maps modulu vnitřního* prostředí, odkazujte na následující odkazy na šablonu JavaScriptu a stylů v `<head>` elementu souboru HTML:
 
-  ```html
-    <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-    <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-    <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
-  ```
+```html
+<script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+<script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+<link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+```
 
  Nebo si můžete stáhnout Azure Maps modul *vnitřního* softwaru. Modul *vnitřních Azure Maps* obsahuje klientskou knihovnu pro přístup ke službě Azure Maps Services. Pomocí následujících kroků nainstalujete a načtete modul pro *vnitřní* prostředí do své webové aplikace.  
   
@@ -47,8 +47,8 @@ Pokud chcete použít globálně hostovanou verzi Content Delivery Network Azure
   2. Nainstalujte balíček NPM. Ujistěte se, že v konzole nástroje používáte oprávnění správce:
 
       ```powershell
-        >npm install azure-maps-control
-        >npm install azure-maps-indoor
+      >npm install azure-maps-control
+      >npm install azure-maps-indoor
       ```
 
   3. Odkaz na *Azure Maps modul vnitřních* souborů a šablonu stylů v `<head>` prvku souboru HTML:
@@ -63,16 +63,20 @@ Pokud chcete použít globálně hostovanou verzi Content Delivery Network Azure
 Nejprve vytvořte *objekt mapy*. *Objekt map* se použije v dalším kroku pro vytvoření instance objektu *správce vnitřních* objektů.  Následující kód ukazuje, jak vytvořit instanci *objektu mapy*:
 
 ```javascript
-  const subscriptionKey = "<your Azure Maps Primary Subscription Key>";
+const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
 
-  const map = new atlas.Map("map-id", {
-    //use your facility's location
-    center: [-122.13315, 47.63637],
-    //or, you can use bounds: [#,#,#,#] and replace # with your map's bounds
-    style: "blank",
-    subscriptionKey,
-    zoom: 19,
-  });
+const map = new atlas.Map("map-id", {
+  //use your facility's location
+  center: [-122.13315, 47.63637],
+  //or, you can use bounds: [# west, # south, # east, # north] and replace # with your map's bounds
+  style: "blank",
+  view: 'Auto',
+  authOptions: { 
+      authType: 'subscriptionKey',
+      subscriptionKey: subscriptionKey
+  },
+  zoom: 19,
+});
 ```
 
 ## <a name="instantiate-the-indoor-manager"></a>Vytvoření instance Správce vnitřních
@@ -92,7 +96,6 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 Chcete-li povolit cyklické dotazování na data stavu, je nutné zadat `statesetId` volání a `indoorManager.setDynamicStyling(true)` . Data o stavu cyklického dotazování umožňují dynamicky aktualizovat stav dynamických vlastností nebo *stavů*. Například funkce, jako je například místnost, může mít zavolanou dynamickou vlastnost (*stav*) `occupancy` . Vaše aplikace se může chtít dotázat na všechny změny *stavu* , aby odrážely změnu ve vizuální mapě. Následující kód ukazuje, jak povolit cyklické dotazování stavu:
 
 ```javascript
-
 const tilesetId = "";
 const statesetId = "";
 
@@ -104,7 +107,6 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 if (statesetId.length > 0) {
     indoorManager.setDynamicStyling(true);
 }
-
 ```
 
 ## <a name="indoor-level-picker-control"></a>Ovládací prvek Výběr úrovně vnitřníchy
@@ -123,14 +125,14 @@ indoorManager.setOptions({ levelControl });
 ```javascript
 map.events.add("levelchanged", indoorManager, (eventData) => {
 
-    //code that you want to run after a level has been changed
-    console.log("The level has changed: ", eventData);
-
+  //code that you want to run after a level has been changed
+  console.log("The level has changed: ", eventData);
 });
+
 map.events.add("facilitychanged", indoorManager, (eventData) => {
 
-    //code that you want to run after a facility has been changed
-    console.log("The facility has changed: ", eventData);
+  //code that you want to run after a facility has been changed
+  console.log("The facility has changed: ", eventData);
 });
 ```
 
@@ -149,7 +151,7 @@ V tomto příkladu se dozvíte, jak ve webové aplikaci použít modul *vnitřn�
 4. Inicializuje *objekt mapy*. *Objekt map* podporuje následující možnosti:
     - `Subscription key`je váš Azure Maps primární klíč předplatného.
     - `center`definuje zeměpisnou šířku a délku pro umístění vašeho centra mapy na vnitřních místech. Zadejte hodnotu pro, `center` Pokud nechcete zadat hodnotu pro `bounds` . Formát by měl vypadat takto `center` : [-122,13315, 47,63637].
-    - `bounds`je nejmenší pravoúhlý tvar, který obklopuje data mapy TILESET. Nastavte hodnotu pro `bounds` , pokud nechcete nastavit hodnotu pro `center` . Mapu vazeb můžete najít voláním [rozhraní API pro seznam TILESET](https://docs.microsoft.com/rest/api/maps/tileset/listpreview). Rozhraní TILESET vypíše rozhraní API `bbox` , které můžete analyzovat a přiřadit k `bounds` . Formát by měl vypadat takto `bounds` : [#, #, #, #].
+    - `bounds`je nejmenší pravoúhlý tvar, který obklopuje data mapy TILESET. Nastavte hodnotu pro `bounds` , pokud nechcete nastavit hodnotu pro `center` . Mapu vazeb můžete najít voláním [rozhraní API pro seznam TILESET](https://docs.microsoft.com/rest/api/maps/tileset/listpreview). Rozhraní TILESET vypíše rozhraní API `bbox` , které můžete analyzovat a přiřadit k `bounds` . Formát by měl vypadat takto `bounds` : [# západ, # jih, # východ, # sever].
     - `style`umožňuje nastavit barvu pozadí. Chcete-li zobrazit bílé pozadí, definujte `style` hodnotu "prázdné".
     - `zoom`umožňuje zadat minimální a maximální úroveň přiblížení pro mapu.
 
@@ -168,10 +170,13 @@ Váš soubor by teď měl vypadat podobně jako v následujícím formátu HTML.
       <meta charset="utf-8" />
       <meta name="viewport" content="width=device-width, user-scalable=no" />
       <title>Indoor Maps App</title>
-       <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
-        <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
-        <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+      
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.css" type="text/css" />
+      <link rel="stylesheet" href="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.css" type="text/css"/>
+
+      <script src="https://atlas.microsoft.com/sdk/javascript/mapcontrol/2/atlas.min.js"></script>
+      <script src="https://atlas.microsoft.com/sdk/javascript/indoor/0.1/atlas-indoor.min.js"></script>
+        
       <style>
         html,
         body {
@@ -191,16 +196,20 @@ Váš soubor by teď měl vypadat podobně jako v následujícím formátu HTML.
     <body>
       <div id="map-id"></div>
       <script>
-        const subscriptionKey = "<your Azure Maps Primary Subscription Key>";
+        const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
         const tilesetId = "<your tilesetId>";
         const statesetId = "<your statesetId>";
 
         const map = new atlas.Map("map-id", {
           //use your facility's location
           center: [-122.13315, 47.63637],
-          //or, you can use bounds: [ # , # , # , # ] and replace # with your Map bounds
+          //or, you can use bounds: [# west, # south, # east, # north] and replace # with your Map bounds
           style: "blank",
-          subscriptionKey,
+          view: 'Auto',
+          authOptions: { 
+              authType: 'subscriptionKey',
+              subscriptionKey: subscriptionKey
+          },
           zoom: 19,
         });
 
@@ -241,7 +250,7 @@ Pokud chcete zobrazit mapu vnitřních souborů, načtěte ji do webového prohl
 Přečtěte si o rozhraních API, která souvisí s modulem *Azure Maps vnitřních* :
 
 > [!div class="nextstepaction"]
-> [Požadavky na balíček pro vykreslování](drawing-requirements.md)
+> [Požadavky balíčku pro kreslení](drawing-requirements.md)
 
 >[!div class="nextstepaction"]
 > [Autor pro mapy vnitřníchy](creator-indoor-maps.md)

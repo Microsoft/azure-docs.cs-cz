@@ -8,15 +8,15 @@ ms.subservice: user-help
 ms.service: active-directory
 ms.workload: identity
 ms.topic: end-user-help
-ms.date: 02/25/2020
+ms.date: 06/03/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f78ef7ddf48612728c0409b0f904c0964e2272b5
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: b13de16b2080d28d3b779921456cfb20d99f0af9
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83741595"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84415975"
 ---
 # <a name="back-up-and-recover-account-credentials-using-the-microsoft-authenticator-app"></a>Zálohování a obnovení přihlašovacích údajů k účtu pomocí aplikace Microsoft Authenticator
 
@@ -73,54 +73,36 @@ Přihlašovací údaje účtu můžete obnovit z účtu cloudu, musíte se nejd�
 
 Po dokončení obnovení si můžete všimnout, že se ověřovací kódy vašich osobních účet Microsoft v aplikaci Microsoft Authenticator liší mezi starými a novými telefony. Kódy se liší, protože každé zařízení má své vlastní jedinečné přihlašovací údaje, ale obojí je platné a funguje při přihlášení pomocí přidruženého telefonu.
 
-## <a name="recover-additional-accounts-requiring-more-verification"></a>Obnovení dalších účtů vyžadujících více ověření
+## <a name="recover-accounts-requiring-more-verification"></a>Obnovení účtů vyžadujících více ověření
 
 Pokud používáte nabízená oznámení s osobními nebo pracovními nebo školními účty, zobrazí se výstraha na obrazovce, která uvádí, že před obnovením informací musíte poskytnout dodatečné ověření. Protože nabízená oznámení vyžadují použití přihlašovacích údajů, která je vázaná na konkrétní zařízení a nikdy se neodesílají přes síť, musíte prokázat svoji identitu, než se na svém zařízení vytvoří přihlašovací údaje.
 
 U osobních účtů Microsoft můžete svou identitu prokázat zadáním hesla spolu s alternativním e-mailem nebo telefonním číslem. Pro pracovní nebo školní účty musíte zkontrolovat kód QR přidělený vaším poskytovatelem účtu.
 
-### <a name="to-provide-additional-verification-for-personal-accounts"></a>Poskytnutí dodatečného ověření pro osobní účty
+### <a name="to-provide-more-verification-for-personal-accounts"></a>Zajištění většího ověřování pro osobní účty
 
-1. Na obrazovce **účty** aplikace Microsoft Authenticator vyberte účet, který chcete obnovit. Na zařízení s Androidem vyberte šipku vedle účtu, který chcete obnovit.
+1. Na obrazovce **účty** aplikace Microsoft Authenticator klepněte na účet, který chcete obnovit, a otevřete zobrazení celé obrazovky tohoto účtu.
 
-    ![Aplikace Microsoft Authenticator, kde se zobrazují dostupné účty s příslušnými šipkami rozevíracího seznamu](./media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png)
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-arrow.png" alt-text="Aplikace Microsoft Authenticator, kde se zobrazují dlaždice dostupných účtů" border="true":::
 
-    V zařízení se systémem iOS klepnutím na účet, který chcete obnovit, otevřete celé zobrazení účtu.
+1. Klepněte na dlaždici pro účet, který obnovujete, a pak klepněte na možnost pro přihlášení k obnovení. Zadejte heslo a potvrďte svoji e-mailovou adresu nebo telefonní číslo jako další ověření.
 
-    ![Aplikace Microsoft Authenticator, kde se zobrazují dostupné účty s příslušnými šipkami rozevíracího seznamu](./media/user-help-auth-app-backup-recovery/ios-select-account-to-recover.png)
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/backup-and-recovery-codes.png" alt-text="Ověřovatel zobrazuje jednorázové heslo jako ověřovací kód." border="true":::
 
-2. Přihlaste se a obnovte účet. Na zařízení s Androidem vyberte **Přihlásit se a obnovte**.
+### <a name="to-provide-more-verification-for-work-or-school-accounts"></a>Poskytnutí více ověření pro pracovní nebo školní účty
 
-    ![Microsoft Authenticator aplikaci pro zadání přihlašovacích údajů v Androidu](./media/user-help-auth-app-backup-recovery/backup-and-recovery-sign-in.png)
+1. Na obrazovce **účty** aplikace Microsoft Authenticator klepněte na účet, který chcete obnovit, a otevřete zobrazení celé obrazovky tohoto účtu.
 
-    Na zařízení se systémem iOS klepněte na dlaždici účtu, kterou chcete obnovit, a potom klepněte na možnost přihlášení a obnovení. Pak zadejte své heslo a potvrďte svou e-mailovou adresu nebo telefonní číslo jako další ověření. et.
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-arrow.png" alt-text="Aplikace Microsoft Authenticator, kde se zobrazují dlaždice dostupných účtů" border="true":::
 
-    ![Microsoft Authenticator aplikaci pro zadání přihlašovacích údajů v iOS](./media/user-help-auth-app-backup-recovery/ios-sign-in-to-recover.png)
+1. V zobrazení na celé obrazovce klepněte na možnost pro skenování kódu QR pro úplné obnovení.
 
-### <a name="to-provide-additional-verification-for-work-or-school-accounts"></a>Poskytnutí dodatečného ověření pro pracovní nebo školní účty
+    :::image type="content" source="media/user-help-auth-app-backup-recovery/work-or-school-recovery-qr-code.png" alt-text="Ověřovatel zobrazuje jednorázové heslo jako ověřovací kód." border="true":::
 
-1. Přihlaste se a obnovte účet. Na zařízení s Androidem vyberte **Přihlásit se a obnovte**.
-
-    ![Microsoft Authenticator aplikaci obnovit pracovní nebo školní účet v Androidu](./media/user-help-auth-app-backup-recovery/backup-and-recovery-additional-accts.png)
-
-    Na zařízení se systémem iOS klepněte na účet, který chcete obnovit, a otevřete zobrazení celé obrazovky tohoto účtu.
-
-    ![Microsoft Authenticator aplikaci obnovit pracovní nebo školní účet v iOS](./media/user-help-auth-app-backup-recovery/ios-recover-work-or-school-account.png)
-
-2. K obnovení účtu můžete použít kód QR. Vyberte možnost **skenovat kód QR pro obnovení**a pak NASKENUJTE kód QR.
-
-    V Androidu:
-
-    ![Microsoft Authenticator aplikaci v Androidu, která vám umožní naskenovat kód QR](./media/user-help-auth-app-backup-recovery/backup-and-recovery-scan-qr-code.png)
-
-    V systému iOS:
-
-    ![Microsoft Authenticator aplikaci v iOS, která vám umožní kontrolovat kód QR](./media/user-help-auth-app-backup-recovery/ios-scan-qr-code.png)
-
-    >[!NOTE]
-    >Další informace o kódech QR a o tom, jak ho získat, najdete v tématu Začínáme [s aplikací Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) nebo [Nastavení bezpečnostních údajů pro použití ověřovací aplikace](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)na základě toho, jestli váš správce zapnul bezpečnostní údaje.
-    >
-    >Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
+>[!NOTE]
+>Další informace o kódech QR a o tom, jak ho získat, najdete v tématu Začínáme [s aplikací Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-download-install) nebo [Nastavení bezpečnostních údajů pro použití ověřovací aplikace](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app)na základě toho, jestli váš správce zapnul bezpečnostní údaje.
+>
+>Pokud Microsoft Authenticator aplikaci nakonfigurujete poprvé, může se zobrazit výzva s dotazem, jestli chcete, aby aplikace měla přístup k vaší kameře (iOS), nebo aby aplikaci mohla pořizovat snímky a nahrávat video (Android). Je nutné vybrat možnost **umožnit** , aby mohla aplikace ověřovatele získat přístup k fotoaparátu, aby pomohlo vytvořit obrázek kódu QR v dalším kroku. Pokud fotoaparát nepovolíte, můžete přesto nastavit ověřovací aplikaci, ale budete muset informace o kódu přidat ručně. Informace o tom, jak kód přidat ručně, najdete v tématu věnovaném [ručnímu přidání účtu do aplikace](user-help-auth-app-add-account-manual.md).
 
 ## <a name="troubleshoot-backup-and-recovery-problems"></a>Řešení problémů se zálohováním a obnovením
 
@@ -136,7 +118,7 @@ K dispozici je několik důvodů, proč vaše zálohování nemusí být k dispo
 
 - **Existující účty Microsoft Authenticator**: Pokud jste už v aplikaci Microsoft Authenticator nastavili účty, aplikace nebude moct obnovit vaše zálohované účty. Prevence obnovení pomáhá zajistit, aby se podrobnosti o účtu nepsaly aktuálními informacemi. V této situaci musíte před obnovením zálohy z existujících účtů, které jste nastavili v ověřovací aplikaci, odebrat všechny informace o stávajícím účtu.
 
-- **Záloha je zastaralá**: Pokud jsou informace o zálohování zastaralé, možná budete požádáni o aktualizaci informací opětovným přihlášením k účtu Microsoft Recovery. Váš účet pro obnovení je osobní účet Microsoft původně jste použili k uložení zálohy. Pokud se vyžaduje přihlášení, zobrazí se v nabídce nebo na panelu akcí červená tečka nebo se zobrazí výzva, abyste se přihlásili k dokončení obnovení ze zálohy. Po výběru ikony se zobrazí výzva, abyste se znovu přihlásili a aktualizovali vaše informace.
+- **Záloha je zastaralá**: Pokud jsou informace o zálohování zastaralé, možná budete požádáni o aktualizaci informací opětovným přihlášením k účtu Microsoft Recovery. Váš účet pro obnovení je osobní účet Microsoft původně jste použili k uložení zálohy. Pokud se vyžaduje přihlášení, zobrazí se v nabídce nebo na panelu akcí červená tečka nebo se zobrazí ikona s upozorněním, abyste se mohli dokončit obnovení ze zálohy. Po výběru příslušné ikony se zobrazí výzva, abyste se znovu přihlásili a aktualizovali vaše informace.
 
 ## <a name="next-steps"></a>Další kroky
 

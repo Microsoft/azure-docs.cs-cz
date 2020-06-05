@@ -5,16 +5,16 @@ services: event-grid
 keywords: ''
 author: spelluru
 ms.author: spelluru
-ms.date: 02/27/2020
+ms.date: 06/03/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: subject-armqs
-ms.openlocfilehash: 86dc7a4ed05ceae5c7a641ffef23bd75ec48ceea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0cf880411a5c2a8eefd592a01de40b5098f31cda
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81605527"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424122"
 ---
 # <a name="route-blob-storage-events-to-web-endpoint-by-using-azure-resource-manager-template"></a>Směrování událostí služby Blob Storage do webového koncového bodu pomocí šablony Azure Resource Manager
 
@@ -22,7 +22,7 @@ Azure Event Grid je služba zpracování událostí pro cloud. V tomto článku 
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -43,14 +43,15 @@ Před přihlášením k odběru událostí úložiště objektů blob vytvořím
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage).
+Šablona použitá v tomto rychlém startu je jednou z [šablon pro rychlý start Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage).
 
 [!code-json[<Azure Resource Manager template create Blob storage Event Grid subscription>](~/quickstart-templates/101-event-grid-subscription-and-storage/azuredeploy.json)]
 
 V šabloně jsou definované dva prostředky Azure:
 
 * [**Microsoft. Storage/storageAccounts**](/azure/templates/microsoft.storage/storageaccounts): vytvořte účet Azure Storage.
-* [**"Microsoft. Storage/storageAccounts/Providers/eventSubscriptions**](/azure/templates/microsoft.eventgrid/eventsubscriptions): vytvořte předplatné Azure Event Grid pro účet úložiště.
+* [**Microsoft. EventGrid/systemTopics**](/azure/templates/microsoft.eventgrid/systemtopics): Vytvořte systémové téma se zadaným názvem pro účet úložiště. 
+* [**Microsoft. EventGrid/systemTopics/eventSubscriptions**](/azure/templates/microsoft.eventgrid/systemtopics/eventsubscriptions): vytvořte předplatné Azure Event Grid pro systémové téma.
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
@@ -91,5 +92,5 @@ Další informace o šablonách Azure Resource Manager najdete v následujícíc
 
 * [Dokumentace k Azure Resource Manager](/azure/azure-resource-manager)
 * [Definování prostředků v šablonách Azure Resource Manager](/azure/templates/)
-* [Šablony Azure pro rychlé zprovoznění](https://azure.microsoft.com/resources/templates/)
+* [Šablony pro rychlý Start Azure](https://azure.microsoft.com/resources/templates/)
 * [Šablony Azure Event Grid](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

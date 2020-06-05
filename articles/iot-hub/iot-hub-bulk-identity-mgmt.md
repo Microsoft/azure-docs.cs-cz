@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: robinsh
-ms.openlocfilehash: 2a0394e6e7c17e0a4954bbdddb1d5b2811959746
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46eb1fe7543cbc65545eaca46e38f09466406701
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371575"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417935"
 ---
 # <a name="import-and-export-iot-hub-device-identities-in-bulk"></a>Hromadný import a export identit zařízení služby IoT Hub
 
@@ -27,8 +27,6 @@ Operace importu a exportu se provádějí v kontextu *úloh* , které umožňuj�
 Třída **RegistryManager** zahrnuje metody **ExportDevicesAsync** a **ImportDevicesAsync** , které používají architekturu **úloh** . Tyto metody umožňují exportovat, importovat a synchronizovat celý registr identit služby IoT Hub.
 
 Toto téma popisuje použití třídy **RegistryManager** a systému **úloh** k provádění hromadných importů a exportů zařízení do registru identit služby IoT Hub a z něj. Azure IoT Hub Device Provisioning Service můžete použít také k povolení nulového dotykového zřizování pro jedno nebo více rozbočovačů IoT bez nutnosti zásahu člověka. Další informace najdete v dokumentaci ke [službě zřizování](/azure/iot-dps).
-
-[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
 ## <a name="what-are-jobs"></a>Co jsou úlohy?
 
@@ -259,18 +257,18 @@ Metodu **ImportDevicesAsync** můžete použít k provedení následujících hr
 
 V rámci jednoho volání **ImportDevicesAsync** můžete provést libovolnou kombinaci předchozích operací. Můžete například zaregistrovat nová zařízení a odstranit nebo aktualizovat existující zařízení současně. Při použití spolu s metodou **ExportDevicesAsync** můžete všechna vaše zařízení migrovat z jednoho centra IoT do jiného.
 
-Pokud soubor importu obsahuje dvojitá metadata, tato metadata přepisují existující vlákna s dvojitými metadaty. Pokud soubor importu neobsahuje zdvojená metadata, aktualizují se pouze `lastUpdateTime` metadata pomocí aktuálního času.
+Pokud soubor importu obsahuje dvojitá metadata, tato metadata přepisují existující vlákna s dvojitými metadaty. Pokud soubor importu neobsahuje zdvojená metadata, `lastUpdateTime` aktualizují se pouze metadata pomocí aktuálního času.
 
 Použijte volitelnou vlastnost **importMode** v části Import dat serializace pro každé zařízení a řízení procesu importu pro jednotlivá zařízení. Vlastnost **importMode** má následující možnosti:
 
-| importMode | Popis |
+| importMode | Description |
 | --- | --- |
 | **createOrUpdate** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, stávající informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
 | **vytvořeny** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, zapíše se do souboru protokolu chyba. <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
-| **Update** |Pokud zařízení se zadaným **ID**už existuje, existující informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
+| **update** |Pokud zařízení se zadaným **ID**už existuje, existující informace se přepíší zadanými vstupními daty bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
 | **updateIfMatchETag** |Pokud zařízení se zadaným **ID**už existuje, existující informace se přepíší zadanými vstupními daty jenom v případě, že se vyskytuje shoda **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. <br/>Pokud se **značka ETag** neshoduje, do souboru protokolu se zapíše chyba. |
 | **createOrUpdateIfMatchETag** |Pokud zařízení se zadaným **ID**neexistuje, je nově zaregistrováno. <br/>Pokud zařízení už existuje, existující informace se přepíší zadanými vstupními daty jenom v případě, že se vyskytuje shoda **ETag** . <br/>Pokud se **značka ETag** neshoduje, do souboru protokolu se zapíše chyba. <br> Uživatel může volitelně zadat dvojitá data spolu s daty zařízení. Značka ETag vlákna, je-li zadána, je zpracována nezávisle na ETag zařízení. Pokud dojde k neshodě se stávající značkou ETag, zapíše se do souboru protokolu chyba. |
-| **dstranit** |Pokud zařízení se zadaným **ID**už existuje, odstraní se bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
+| **delete** |Pokud zařízení se zadaným **ID**už existuje, odstraní se bez ohledu na hodnotu **ETag** . <br/>Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. |
 | **deleteIfMatchETag** |Pokud zařízení se zadaným **ID**už existuje, odstraní se jenom v případě, že se vyskytuje shoda **ETag** . Pokud zařízení neexistuje, do souboru protokolu se zapíše chyba. <br/>Pokud se značka ETag neshoduje, do souboru protokolu se zapíše chyba. |
 
 > [!NOTE]

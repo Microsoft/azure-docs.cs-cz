@@ -363,9 +363,9 @@ V databázi s cenovou úrovní P2 můžete očekávat přibližně devět časů
 
 - [Použití OLTP v paměti v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
 
-#### <a name="tools"></a>Nástroje
+#### <a name="tools"></a>nástroje
 
-- [Portál Azure Portal](https://portal.azure.com/)
+- [portál Azure](https://portal.azure.com/)
 
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
 

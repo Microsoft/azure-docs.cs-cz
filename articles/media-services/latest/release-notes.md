@@ -9,14 +9,14 @@ editor: ''
 ms.service: media-services
 ms.workload: na
 ms.topic: article
-ms.date: 05/28/2020
+ms.date: 06/03/2020
 ms.author: juliako
-ms.openlocfilehash: e072bcb0edc741b7843f470f14c3c37153338efb
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 0833215449c92a1710dcaf4f2fe13ce9a16685ba
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647634"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434044"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Zpráva k vydání verze Azure Media Services V3
 
@@ -35,6 +35,14 @@ V tomto článku najdete informace o tom, jak se chcete zabývat aktuálním vý
 > Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](https://aka.ms/ams-v3-rest-ref), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
 Další informace najdete v tématu [pokyny k migraci pro přesun z Media Services V2 na V3](migrate-from-v2-to-v3.md#known-issues).
+
+## <a name="june-2020"></a>Červeně 2020
+
+### <a name="live-video-analytics-on-iot-edge-preview-release"></a>Live video Analytics v IoT Edge verze Preview
+
+Verze Preview živé analýzy videí na IoT Edge se stala veřejnou. Další informace najdete v [poznámkách k verzi](../live-video-analytics-edge/release-notes.md).
+
+Live video Analytics na IoT Edge je rozšířením řady mediálních služeb. Umožňuje analyzovat živé video s modely AI podle vašeho výběru na vlastních hraničních zařízeních a volitelně zachytit a zaznamenat toto video. Nyní můžete vytvářet aplikace s analýzou videa v reálném čase na hraničních zařízeních, aniž byste se museli starat o složitost sestavování a provozování živého video kanálu.
 
 ## <a name="may-2020"></a>Květen 2020
 
@@ -183,7 +191,7 @@ Media Services je teď k dispozici v oblasti Korea – střed a Korea – jih.
 
 Další informace najdete v tématu [cloudy a oblasti, ve kterých existuje Media Services V3](azure-clouds-regions.md).
 
-### <a name="performance-improvements"></a>Zlepšení výkonu
+### <a name="performance-improvements"></a>Vylepšení výkonu
 
 Byly přidány aktualizace, které zahrnují vylepšení výkonu Media Services.
 
