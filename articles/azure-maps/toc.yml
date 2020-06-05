@@ -177,6 +177,14 @@
               href: map-get-information-from-coordinate.md
             - name: Zobrazení pokynů pro trasu z A do B
               href: map-route.md
+        - name: Modul interiérových map
+          items:
+            - name: Modul interiérových map
+              href: how-to-use-indoor-module.md
+            - name: Dynamické styly pro interiérové mapy
+              href: indoor-map-dynamic-styling.md
+            - name: Vizualizér chyb kreslení
+              href: drawing-error-visualizer.md
         - name: Prostorový modul V/V
           items:
             - name: Použití prostorového modulu IO
@@ -211,14 +219,6 @@
           href: how-to-add-tile-layer-android-map.md
         - name: Zobrazení provozních dat
           href: how-to-show-traffic-android.md
-    - name: Vývoj s využitím interiérových map Creatoru
-      items:
-        - name: Modul interiérových map
-          href: how-to-use-indoor-module.md
-        - name: Dynamické styly pro interiérové mapy
-          href: indoor-map-dynamic-styling.md
-        - name: Vizualizér chyb kreslení
-          href: drawing-error-visualizer.md
     - name: Poskytnutí zpětné vazby k datům
       href: how-to-use-feedback-tool.md
 - name: Referenční informace

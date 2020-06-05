@@ -235,6 +235,10 @@
               href: howto-migrate-using-export-and-import.md
             - name: Migrace s minimem výpadků
               href: howto-migrate-online.md
+        - name: Připojení aplikací
+          items:
+            - name: Konfigurace TLS
+              href: howto-tls-configurations.md
         - name: Konfigurace parametrů serveru
           items:
             - name: portál Azure

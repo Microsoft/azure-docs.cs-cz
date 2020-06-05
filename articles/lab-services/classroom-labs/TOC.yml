@@ -82,6 +82,8 @@
           href: specify-marketplace-images.md
         - name: Zadání informací o podpoře (vlastník účtu testovacího prostředí).
           href: lab-account-owner-support-information.md
+        - name: Správa nákladů pro testovací prostředí
+          href: cost-management-guide.md
     - name: Vytvoření a konfigurace testovacích prostředí v učebnách (vyučující)
       items:
         - name: Vytváření a správa testovacích prostředí v učebnách

@@ -254,6 +254,8 @@
           href: format-binary.md
         - name: Cassandra
           href: connector-cassandra.md
+        - name: Formát Common Data Modelu
+          href: format-common-data-model.md
         - name: Common Data Service pro aplikace
           href: connector-dynamics-crm-office-365.md
         - name: Concur
@@ -276,6 +278,8 @@
           href: connector-file-system.md
         - name: FTP
           href: connector-ftp.md
+        - name: GitHubu
+          href: connector-github.md
         - name: Google AdWords
           href: connector-google-adwords.md
         - name: Google BigQuery
@@ -378,6 +382,8 @@
           href: connector-sharepoint-online-list.md
         - name: Shopify
           href: connector-shopify.md
+        - name: Snowflake
+          href: connector-snowflake.md
         - name: Spark
           href: connector-spark.md
         - name: SQL Server

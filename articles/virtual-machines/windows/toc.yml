@@ -13,6 +13,9 @@
       href: quick-create-powershell.md
     - name: Vytvoření virtuálního počítače – Azure CLI
       href: quick-create-cli.md
+    - name: Vytvoření virtuálního počítače – šablona ARM
+      displayName: 'Resource Manager, template, json'
+      href: quick-create-template.md
 - name: Kurzy
   items:
     - name: 1. Vytvoření a správa virtuálního počítače

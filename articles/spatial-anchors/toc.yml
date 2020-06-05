@@ -4,7 +4,7 @@
   items:
     - name: Informace o Spatial Anchors
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření aplikace Unity
@@ -72,13 +72,13 @@
           href: how-tos/set-up-coarse-reloc-cpp-ndk.md
         - name: V C++/WinRT
           href: how-tos/set-up-coarse-reloc-cpp-winrt.md
-- name: Ukázky
+- name: ukázky
   items:
     - name: Ukázky Azure Spatial Anchors (GitHub)
       href: 'https://github.com/Azure/azure-spatial-anchors-samples'
 - name: Koncepty
   items:
-    - name: Ověřování
+    - name: Authentication
       href: concepts/authentication.md
     - name: Relace mezi kotvami
       href: concepts/anchor-relationships-way-finding.md
@@ -100,6 +100,8 @@
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/ndk/'
     - name: SDK pro HoloLens C++/WinRT
       href: 'https://docs.microsoft.com/cpp/api/spatial-anchors/winrt/'
+    - name: Azure CLI
+      href: /cli/azure/ext/mixed-reality/spatial-anchors-account
 - name: Zdroje a prostředky
   items:
     - name: Poznámky k verzi

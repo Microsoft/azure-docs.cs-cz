@@ -114,6 +114,8 @@
   items:
     - name: Spravovat
       items:
+        - name: Úlohy automatického škálování
+          href: stream-analytics-autoscale.md
         - name: Aktualizace přihlašovacích údajů
           href: stream-analytics-login-credentials-inputs-outputs.md
         - name: Konfigurace zásad řazení událostí
@@ -611,6 +613,8 @@
       href: /rest/api/streamanalytics
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.streamanalytics/allversions
+    - name: Azure CLI
+      href: /cli/azure/ext/stream-analytics/stream-analytics
 - name: Zdroje a prostředky
   items:
     - name: Stream Analytics (Preview)

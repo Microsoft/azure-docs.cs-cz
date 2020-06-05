@@ -376,6 +376,10 @@
           href: 'https://aka.ms/ams-v3-go-ref'
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.media/allversions
+    - name: Schémata kodéru úrovně Standard
+      items:
+        - name: Výstupní metadata
+          href: output-metadata-schema.md
 - name: Zdroje a prostředky
   items:
     - name: Komunita Azure Media Services

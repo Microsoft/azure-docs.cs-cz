@@ -466,7 +466,7 @@
       items:
         - name: Rozhraní REST API
           items:
-            - name: Rozhraní REST API pro rozpoznávání řeči
+            - name: Rozhraní REST API pro rozpoznávání mluvčího
               href: 'https://docs.microsoft.com/rest/api/speakerrecognition/'
 - name: Hosting
   items:

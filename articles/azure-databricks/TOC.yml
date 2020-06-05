@@ -12,6 +12,7 @@
         - name: Portál
           href: quickstart-create-databricks-workspace-portal.md
         - name: Šablona ARM
+          displayName: Resource Manager
           href: quickstart-create-databricks-workspace-resource-manager-template.md
         - name: Virtuální síť
           href: quickstart-create-databricks-workspace-vnet-injection.md

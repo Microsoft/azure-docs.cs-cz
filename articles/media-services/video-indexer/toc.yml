@@ -23,8 +23,6 @@
       href: 'https://github.com/Azure-Samples/media-services-video-indexer'
 - name: Koncepty
   items:
-    - name: Přehled
-      href: video-indexer-concepts.md
     - name: Porovnání předvoleb Media Services a Video Indexeru
       href: compare-video-indexer-with-media-services-presets.md
     - name: Správa několika klientů

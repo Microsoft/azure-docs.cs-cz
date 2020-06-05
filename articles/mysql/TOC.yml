@@ -190,6 +190,8 @@
           href: howto-connection-string.md
         - name: Konfigurace SSL
           href: howto-configure-ssl.md
+        - name: Konfigurace TLS
+          href: howto-tls-configurations.md
         - name: Webové aplikace
           href: howto-connect-webapp.md
         - name: Připojení s přesměrováním

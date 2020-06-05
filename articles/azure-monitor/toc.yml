@@ -230,7 +230,7 @@
                     - name: Historie verzí
                       href: platform/diagnostics-extension-versions.md
                     - name: Formát protokolů prostředků řádků JSON
-                      href: platform/diagnostic-logs-append-blobs.md
+                      href: platform/resource-logs-append-blobs.md
                     - name: Řešení potíží
                       href: platform/diagnostics-extension-troubleshooting.md
                 - name: Linux
@@ -1173,8 +1173,10 @@
           href: platform/alerts-metric-near-real-time.md
     - name: Protokoly platformy
       items:
+        - name: Podporované kategorie a typy protokolů prostředků
+          href: platform/resource-logs-categories.md
         - name: Schémata protokolu prostředků
-          href: platform/diagnostic-logs-schema.md
+          href: platform/resource-logs-schema.md
         - name: Schéma protokolu aktivit
           href: platform/activity-log-schema.md
     - name: Schémata rozšíření diagnostiky

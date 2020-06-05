@@ -151,7 +151,7 @@
       href: /rest/api/datalakeanalytics/
     - name: Šablona Resource Manageru
       href: /azure/templates/microsoft.datalakeanalytics/allversions
-    - name: Rozhraní příkazového řádku
+    - name: Azure CLI
       href: 'https://docs.microsoft.com/cli/azure/dla'
 - name: Zdroje a prostředky
   items:
