@@ -5,17 +5,17 @@ description: Naučte se, jak získat vysvětlení způsobu, jakým váš model s
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.reviewer: Luis.Quintanilla
 ms.date: 04/12/2020
-ms.openlocfilehash: 39d2bf0e527d43e2a5fb9437720f249e54b4dff3
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: e0d8cb42e0dc1e161de56ca2b56eee0ce62ec25f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983631"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430715"
 ---
 # <a name="use-the-interpretability-package-to-explain-ml-models--predictions-in-python"></a>Vysvětlení modelů ML & předpovědi v Pythonu pomocí balíčku pro interpretaci
 
@@ -71,8 +71,8 @@ Následující příklad ukazuje, jak použít balíček pro interpretaci na oso
    * Chcete-li inicializovat objekt vysvětlujícího objektu, předejte svůj model a určitou výukovou data konstruktoru vysvětlujícího.
    * Chcete-li, aby vaše vysvětlení a vizualizace byly více informativní, můžete při provádění klasifikace předávat názvy funkcí a názvy výstupních tříd.
 
-   Následující bloky kódu ukazují, jak vytvořit instanci objektu vysvětlit pomocí `TabularExplainer`, `MimicExplainer`a `PFIExplainer` místně.
-   * `TabularExplainer`volá jedno ze tří SHAP vysvětlení pod (`TreeExplainer`, `DeepExplainer`nebo `KernelExplainer`).
+   Následující bloky kódu ukazují, jak vytvořit instanci objektu vysvětlit pomocí `TabularExplainer` , `MimicExplainer` a `PFIExplainer` místně.
+   * `TabularExplainer`volá jedno ze tří SHAP vysvětlení pod ( `TreeExplainer` , `DeepExplainer` nebo `KernelExplainer` ).
    * `TabularExplainer`automaticky vybere nejvhodnější z nich pro váš případ použití, ale můžete zavolat každé ze svých tří základních vysvětlujícíů přímo.
 
     ```python
@@ -85,7 +85,7 @@ Následující příklad ukazuje, jak použít balíček pro interpretaci na oso
                                  classes=classes)
     ```
 
-    or
+    nebo
 
     ```python
 
@@ -111,7 +111,7 @@ Následující příklad ukazuje, jak použít balíček pro interpretaci na oso
                                classes=classes)
     ```
 
-    or
+    nebo
 
     ```python
     from interpret.ext.blackbox import PFIExplainer
@@ -159,11 +159,11 @@ sorted_local_importance_values = local_explanation.get_ranked_local_values()
 
 ### <a name="raw-feature-transformations"></a>Nezpracované transformace funkcí
 
-Místo navržených funkcí se můžete rozhodnout, že získáte vysvětlení z nezpracovaných a netransformovaných funkcí. Pro tuto možnost předáte do vysvětlujícího kanálu kanál transformace vaší funkce `train_explain.py`. V opačném případě vysvětluje vysvětlení v souvislosti s funkcemi pro inženýry.
+Místo navržených funkcí se můžete rozhodnout, že získáte vysvětlení z nezpracovaných a netransformovaných funkcí. Pro tuto možnost předáte do vysvětlujícího kanálu kanál transformace vaší funkce `train_explain.py` . V opačném případě vysvětluje vysvětlení v souvislosti s funkcemi pro inženýry.
 
 Formát podporovaných transformací je stejný, jak je popsáno v [skriptu sklearn-PANDAS](https://github.com/scikit-learn-contrib/sklearn-pandas). Obecně platí, že všechny transformace jsou podporovány, pokud pracují v jednom sloupci, aby byly jasné, že jsou 1: n.
 
-Získejte vysvětlení pro nezpracované funkce pomocí sady `sklearn.compose.ColumnTransformer` nebo se seznamem namontovaných řazených kolekcí členů transformátoru. Následující příklad používá `sklearn.compose.ColumnTransformer`.
+Získejte vysvětlení pro nezpracované funkce pomocí sady `sklearn.compose.ColumnTransformer` nebo se seznamem namontovaných řazených kolekcí členů transformátoru. Následující příklad používá `sklearn.compose.ColumnTransformer` .
 
 ```python
 from sklearn.compose import ColumnTransformer
@@ -303,7 +303,7 @@ Po stažení vysvětlení v místním poznámkovém bloku Jupyter můžete model
 
 Následující vykreslení poskytují celkový přehled o škole modelu spolu s jeho předpovědi a vysvětleními.
 
-|Znázorněte|Popis|
+|Znázorněte|Description|
 |----|-----------|
 |Zkoumání dat| Zobrazí přehled datové sady spolu s hodnotami předpovědi.|
 |Globální důležitost|Agreguje hodnoty důležitosti funkcí jednotlivých datapoints k zobrazení celkových důležitých funkcí modelu (konfigurovatelné K). Pomáhá pochopit celkové chování základního modelu.|
@@ -317,7 +317,7 @@ Následující vykreslení poskytují celkový přehled o škole modelu spolu s 
 
 Můžete načíst zobrazení důležitosti jednotlivých funkcí pro libovolný datový bod tak, že kliknete na kterýkoli z jednotlivých datových bodů v některém z celkových vykreslení.
 
-|Znázorněte|Popis|
+|Znázorněte|Description|
 |----|-----------|
 |Místní důležitost|Zobrazuje horních K (konfigurovatelné K) důležité funkce pro jednotlivé předpovědi. Pomáhá ilustrovat místní chování základního modelu v konkrétním datovém bodě.|
 |Průzkum Perturbation (citlivostní analýza)|Umožňuje změnit hodnoty funkcí vybraného datového bodu a sledovat výsledné změny hodnoty předpovědi.|
@@ -379,7 +379,7 @@ Použijte jednu z těchto cest pro přístup k řídicímu panelu vizualizace v 
 
 Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době odvození k poskytnutí individuálních hodnot důležitosti funkcí (místní vysvětlení) pro nové nové DataPoint. Nabízíme také zapalovače s důrazem na zjednodušené hodnocení, které zlepšují výkon interpretace v době odvození. Proces nasazování vysvětlujícího bodování je podobný jako nasazení modelu a obsahuje následující kroky:
 
-1. Vytvořte objekt vysvětlení. Můžete například použít `TabularExplainer`:
+1. Vytvořte objekt vysvětlení. Můžete například použít `TabularExplainer` :
 
    ```python
     from interpret.ext.blackbox import TabularExplainer
@@ -564,7 +564,7 @@ Můžete nasadit vysvětlení spolu s původním modelem a použít ho v době o
 
 1. Vyčištění.
 
-   Chcete-li odstranit nasazenou webovou službu `service.delete()`, použijte.
+   Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()` .
 
 ## <a name="next-steps"></a>Další kroky
 

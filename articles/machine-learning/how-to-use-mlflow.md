@@ -1,32 +1,31 @@
 ---
 title: MLflow sledování experimentů ML
 titleSuffix: Azure Machine Learning
-description: Nastavte MLflow s Azure Machine Learning pro protokolování metrik a artefaktů z modelů ML vytvořených v clusterech datacihly, v místním prostředí nebo prostředí virtuálních počítačů.
+description: Nastavte MLflow s Azure Machine Learning pro protokolování metrik a artefaktů z modelů ML a nasaďte vaše ML modely jako webovou službu.
 services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: nibaccam
-ms.topic: conceptual
-ms.date: 02/03/2020
-ms.custom: seodec18
-ms.openlocfilehash: 95567a177635dc7d7ed03404487e62c76db8bdac
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.topic: how-to
+ms.date: 06/04/2020
+ms.openlocfilehash: 259c43c13f429cf04d95258f05116e9242324598
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83779126"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431110"
 ---
-# <a name="track-models-metrics-with-mlflow-and-azure-machine-learning-preview"></a>Sledování metrik modelů pomocí MLflow a Azure Machine Learning (Preview)
+# <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Sledujte metriky modelu a nasaďte modely ML pomocí MLflow a Azure Machine Learning (Preview).
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak povolit sledování identifikátorů URI a protokolovacího rozhraní API pro MLflow, označované jako [sledování MLflow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), pro propojení MLflow experimentů a Azure Machine Learning. To umožňuje sledovat a protokolovat metriky a artefakty v [pracovním prostoru Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces). Pokud již pro vaše experimenty používáte sledování MLflow, pracovní prostor poskytuje centralizované, zabezpečené a škálovatelné umístění pro ukládání výukových metrik a modelů.
+V tomto článku se dozvíte, jak povolit sledování identifikátorů URI a protokolovacího rozhraní API pro MLflow, označované jako [sledování MLflow](https://mlflow.org/docs/latest/quickstart.html#using-the-tracking-api), pro propojení MLflow experimentů a Azure Machine Learning. Umožní vám to,
 
-<!--
-+ Deploy your MLflow experiments as an Azure Machine Learning web service. By deploying as a web service, you can apply the Azure Machine Learning monitoring and data drift detection functionalities to your production models. 
--->
++ Sledujte metriky a metriky experimentů a artefakty v [pracovním prostoru Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/concept-azure-machine-learning-architecture#workspaces). Pokud již pro vaše experimenty používáte sledování MLflow, pracovní prostor poskytuje centralizované, zabezpečené a škálovatelné umístění pro ukládání výukových metrik a modelů.
+
++ Nasaďte MLflow experimenty jako webovou službu Azure Machine Learning. Nasazením jako webové služby můžete v produkčních modelech použít funkce monitorování Azure Machine Learning a detekce posunu dat. 
 
 [MLflow](https://www.mlflow.org) je open source knihovna pro správu životního cyklu experimentů ve strojovém učení. Sledování MLFlow je součást MLflow, která protokoluje a sleduje metriky běhu a artefakty modelu bez ohledu na to, jestli je vaše experimenty v místním počítači, ve vzdáleném cílovém výpočetním prostředí, virtuálním počítači nebo Azure Databricksm clusteru. 
 
@@ -229,17 +228,17 @@ run.get_metrics()
 ws.get_details()
 ```
 
-<!-- ## Deploy MLflow models as a web service
+## <a name="deploy-mlflow-models-as-a-web-service"></a>Nasazení modelů MLflow jako webové služby
 
-Deploying your MLflow experiments as an Azure Machine Learning web service allows you to leverage the Azure Machine Learning model management and data drift detection capabilities and apply them to your production models.
+Nasazení MLflow experimentů jako webové služby Azure Machine Learning umožňuje využívat možnosti Azure Machine Learning správy modelů a funkce detekce posunu dat a aplikovat je na produkční modely.
 
-The following diagram demonstrates that with the MLflow deploy API you can deploy your existing MLflow models as an Azure Machine Learning web service, despite their frameworks--PyTorch, Tensorflow, scikit-learn, ONNX, etc., and manage your production models in your workspace.
+Následující diagram znázorňuje, že s rozhraním API pro nasazení MLflow můžete nasadit stávající modely MLflow jako webovou službu Azure Machine Learning bez ohledu na jejich architektury--PyTorch, Tensorflow, scikit-učit, ONNX atd. a spravovat produkční modely v pracovním prostoru.
 
-![mlflow with azure machine learning diagram](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
+![mlflow s diagramem Azure Machine Learning](./media/how-to-use-mlflow/mlflow-diagram-deploy.png)
 
-### Log your model
+### <a name="log-your-model"></a>Protokolovat model
 
-Before you can deploy, be sure that your model is saved so you can reference it and its path location for deployment. In your training script, there should be code similar to the following [mlflow.sklearn.log_model()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) method, that saves your model to the specified outputs directory. 
+Než budete moct nasadit, ujistěte se, že je váš model uložený, abyste na něj mohli odkazovat a umístění cesty pro nasazení. Ve školicím skriptu by měl být podobný kódu jako následující metoda [mlflow. skriptu sklearn. log_model ()](https://www.mlflow.org/docs/latest/python_api/mlflow.sklearn.html) , která uloží váš model do určeného adresáře výstupů. 
 
 ```python
 # change sklearn to pytorch, tensorflow, etc. based on your experiment's framework 
@@ -249,11 +248,11 @@ import mlflow.sklearn
 mlflow.sklearn.log_model(regression_model, model_save_path)
 ```
 >[!NOTE]
-> Include the `conda_env` parameter to pass a dictionary representation of the dependencies and environment this model should be run in.
+> Zahrňte `conda_env` parametr pro předání slovníku reprezentující závislosti a prostředí, ve kterém by měl být tento model spuštěn.
 
-### Retrieve model from previous run
+### <a name="retrieve-model-from-previous-run"></a>Načíst model z předchozího běhu
 
-To retrieve the run, you need the run ID and the path in run history of where the model was saved. 
+Pro načtení běhu budete potřebovat ID běhu a cestu v historii spuštění, kde byl model uložen. 
 
 ```python
 # gets the list of runs for your experiment as an array
@@ -266,15 +265,15 @@ runid = runs[0].id
 model_save_path = 'model'
 ```
 
-### Deploy the model
+### <a name="deploy-the-model"></a>Nasazení modelu
 
-Use the Azure Machine Learning SDK to deploy the model as a web service.
+K nasazení modelu jako webové služby použijte sadu SDK Azure Machine Learning.
 
-First, specify the deployment configuration. Azure Container Instance (ACI) is a suitable choice for a quick dev-test deployment, while Azure Kubernetes Service (AKS) is suitable for scalable production deployments.
+Nejdřív zadejte konfiguraci nasazení. Azure Container instance (ACI) je vhodná volba pro nasazení s rychlým vývojem a testováním, zatímco služba Azure Kubernetes Service (AKS) je vhodná pro škálovatelná produkční nasazení.
 
-#### Deploy to ACI
+#### <a name="deploy-to-aci"></a>Nasazení do ACI
 
-Set up your deployment configuration with the [deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) method. You can also add tags and descriptions to help keep track of your web service.
+Nastavte konfiguraci nasazení pomocí metody [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Můžete také přidat značky a popisy, které vám pomohou sledovat webovou službu.
 
 ```python
 from azureml.core.webservice import AciWebservice, Webservice
@@ -287,7 +286,7 @@ aci_config = AciWebservice.deploy_configuration(cpu_cores=1,
                                                 location='eastus2')
 ```
 
-Then, register and deploy the model by using the Azure Machine Learning SDK [deploy](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) method. 
+Pak zaregistrujte a nasaďte model pomocí metody [nasazení](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) Azure Machine Learning SDK. 
 
 ```python
 (webservice,model) = mlflow.azureml.deploy( model_uri='runs:/{}/{}'.format(run.id, model_path),
@@ -299,9 +298,9 @@ Then, register and deploy the model by using the Azure Machine Learning SDK [dep
 
 webservice.wait_for_deployment(show_output=True)
 ```
-#### Deploy to AKS
+#### <a name="deploy-to-aks"></a>Nasazení do AKS
 
-To deploy to AKS, first create an AKS cluster. Create an AKS cluster using the [ComputeTarget.create()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-) method. It may take 20-25 minutes to create a new cluster.
+K nasazení na AKS nejprve vytvořte cluster AKS. Vytvořte cluster AKS pomocí metody [ComputeTarget. Create ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.computetarget?view=azure-ml-py#create-workspace--name--provisioning-configuration-) . Vytvoření nového clusteru může trvat 20-25 minut.
 
 ```python
 from azureml.core.compute import AksCompute, ComputeTarget
@@ -321,7 +320,7 @@ aks_target.wait_for_completion(show_output = True)
 print(aks_target.provisioning_state)
 print(aks_target.provisioning_errors)
 ```
-Set up your deployment configuration with the [deploy_configuration()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) method. You can also add tags and descriptions to help keep track of your web service.
+Nastavte konfiguraci nasazení pomocí metody [deploy_configuration ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.aciwebservice?view=azure-ml-py#deploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none-) . Můžete také přidat značky a popisy, které vám pomohou sledovat webovou službu.
 
 ```python
 from azureml.core.webservice import Webservice, AksWebservice
@@ -346,25 +345,23 @@ from azureml.core.webservice import AksWebservice, Webservice
 webservice.wait_for_deployment()
 ```
 
-The service deployment can take several minutes.
+Nasazení služby může trvat několik minut.
 
-## Clean up resources
+## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-If you don't plan to use the logged metrics and artifacts in your workspace, the ability to delete them individually is currently unavailable. Instead, delete the resource group that contains the storage account and workspace, so you don't incur any charges:
+Pokud neplánujete použít zaznamenané metriky a artefakty v pracovním prostoru, možnost jejich odstranění je momentálně nedostupná. Místo toho odstraňte skupinu prostředků, která obsahuje účet úložiště a pracovní prostor, takže se vám neúčtují žádné poplatky:
 
-1. In the Azure portal, select **Resource groups** on the far left.
+1. Úplně nalevo na webu Azure Portal vyberte **Skupiny prostředků**.
 
-   ![Delete in the Azure portal](./media/how-to-use-mlflow/delete-resources.png)
+   ![Odstranit v Azure Portal](./media/how-to-use-mlflow/delete-resources.png)
 
-1. From the list, select the resource group you created.
+1. V seznamu vyberte skupinu prostředků, kterou jste vytvořili.
 
-1. Select **Delete resource group**.
+1. Vyberte **Odstranit skupinu prostředků**.
 
-1. Enter the resource group name. Then select **Delete**.
+1. Zadejte název skupiny prostředků. Vyberte **Odstranit**.
 
- -->
-
- ## <a name="example-notebooks"></a>Ukázkové poznámkové bloky
+## <a name="example-notebooks"></a>Ukázkové poznámkové bloky
 
 [MLflow s poznámkovým blokům Azure ml](https://aka.ms/azureml-mlflow-examples) ukazují a rozšiřují koncepty prezentované v tomto článku.
 

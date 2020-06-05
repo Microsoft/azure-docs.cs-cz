@@ -5,17 +5,17 @@ description: Naučte se, jak můžete použít Azure Machine Learning s modely, 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/17/2020
-ms.openlocfilehash: 924bd2fdba2359e6f1108c39802ad3ce95ebdf07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2cf80a509b1a8100aaa00bf6a2fdeedbbdf143af
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79472371"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433915"
 ---
 # <a name="use-an-existing-model-with-azure-machine-learning"></a>Použít existující model s Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -36,9 +36,9 @@ Pokud máte model strojového učení, který byl vyškolený mimo Azure Machine
 * Pracovní prostor služby Azure Machine Learning. Další informace najdete v tématu [Vytvoření pracovního prostoru](how-to-manage-workspace.md).
 
     > [!TIP]
-    > V příkladech Pythonu v tomto článku se `ws` předpokládá, že je proměnná nastavená na váš pracovní prostor Azure Machine Learning.
+    > V příkladech Pythonu v tomto článku se předpokládá, že `ws` je proměnná nastavená na váš pracovní prostor Azure Machine Learning.
     >
-    > Příklady rozhraní příkazového řádku používají zástupný `myworkspace` symbol `myresourcegroup`a. Nahraďte názvem vašeho pracovního prostoru a skupinou prostředků, která ho obsahuje.
+    > Příklady rozhraní příkazového řádku používají zástupný symbol `myworkspace` a `myresourcegroup` . Nahraďte názvem vašeho pracovního prostoru a skupinou prostředků, která ho obsahuje.
 
 * [Sada Azure Machine Learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py).  
 
@@ -47,11 +47,11 @@ Pokud máte model strojového učení, který byl vyškolený mimo Azure Machine
 * Školený model. Model musí být trvale uložený na jeden nebo více souborů ve vývojovém prostředí.
 
     > [!NOTE]
-    > Aby bylo možné předvést registraci modelu vyškolený mimo Azure Machine Learning, příklady fragmentů kódu v tomto článku používají modely vytvořené v projektu mínění analýzy Ripamonti pro [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis):.
+    > Aby bylo možné předvést registraci modelu vyškolený mimo Azure Machine Learning, příklady fragmentů kódu v tomto článku používají modely vytvořené v projektu mínění analýzy Ripamonti pro: [https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis](https://www.kaggle.com/paoloripamonti/twitter-sentiment-analysis) .
 
 ## <a name="register-the-models"></a>Registrovat model (y)
 
-Registrace modelu umožňuje ukládat, uchovávat verze a sledovat metadata o modelech v pracovním prostoru. V následujících příkladech Pythonu a CLI obsahuje `models` adresář soubory `model.h5`, `model.w2v`, `encoder.pkl`a. `tokenizer.pkl` Tento příklad nahraje soubory obsažené v `models` adresáři jako novou registraci modelu s názvem: `sentiment`
+Registrace modelu umožňuje ukládat, uchovávat verze a sledovat metadata o modelech v pracovním prostoru. V následujících příkladech Pythonu a CLI `models` obsahuje adresář `model.h5` `model.w2v` soubory,, `encoder.pkl` a `tokenizer.pkl` . Tento příklad nahraje soubory obsažené v `models` adresáři jako novou registraci modelu s názvem `sentiment` :
 
 ```python
 from azureml.core.model import Model
@@ -81,7 +81,7 @@ Další informace o registraci modelů obecně najdete v tématu [Správa, nasaz
 
 Odvozená konfigurace definuje prostředí používané pro spuštění nasazeného modelu. Konfigurace odvození odkazuje na následující entity, které se používají ke spuštění modelu při jeho nasazení:
 
-* Vstupní skript. Tento soubor (pojmenovaný `score.py`) načte model při spuštění nasazené služby. Zodpovídá taky za příjem dat, předávání do modelu a vrácení odpovědi.
+* Vstupní skript. Tento soubor (pojmenovaný `score.py` ) načte model při spuštění nasazené služby. Zodpovídá taky za příjem dat, předávání do modelu a vrácení odpovědi.
 * Azure Machine Learning [prostředí](how-to-use-environments.md). Prostředí definuje závislosti softwaru potřebné ke spuštění modelu a vstupního skriptu.
 
 Následující příklad ukazuje, jak pomocí sady SDK vytvořit prostředí a pak ho použít s konfigurací odvození:
@@ -111,7 +111,7 @@ inference_config = InferenceConfig(entry_script="score.py",
                                    environment=myenv)
 ```
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 + [Jak používat prostředí](how-to-use-environments.md).
 + Odkaz na [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py)
@@ -127,7 +127,7 @@ Rozhraní příkazového řádku načte konfiguraci odvození ze souboru YAML:
 }
 ```
 
-V rozhraní příkazového řádku je prostředí conda definované v `myenv.yml` souboru, na který odkazuje konfigurace odvození. Následující YAML je obsahem tohoto souboru:
+V rozhraní příkazového řádku je prostředí conda definované v souboru, na `myenv.yml` který odkazuje konfigurace odvození. Následující YAML je obsahem tohoto souboru:
 
 ```yaml
 name: inference_environment
@@ -146,12 +146,12 @@ Další informace o konfiguraci odvození najdete v tématu [nasazení modelů p
 
 ### <a name="entry-script"></a>Vstupní skript
 
-Vstupní skript má pouze dvě požadované funkce `init()` a. `run(data)` Tyto funkce se používají k inicializaci služby při spuštění a spuštění modelu pomocí dat požadavku předaných klientem. Zbytek skriptu zpracovává načítání a spouštění modelů.
+Vstupní skript má pouze dvě požadované funkce `init()` a `run(data)` . Tyto funkce se používají k inicializaci služby při spuštění a spuštění modelu pomocí dat požadavku předaných klientem. Zbytek skriptu zpracovává načítání a spouštění modelů.
 
 > [!IMPORTANT]
 > Není k dispozici žádný skript obecného záznamu, který funguje pro všechny modely. Vždy je specifické pro model, který se používá. Musí pochopit, jak načíst model, datový formát, který model očekává, a jak určit skóre dat pomocí modelu.
 
-Následující kód Pythonu je příkladem skriptu pro vstup`score.py`():
+Následující kód Pythonu je příkladem skriptu pro vstup ( `score.py` ):
 
 ```python
 import os
@@ -258,7 +258,7 @@ Nasazení do jiného cílového výpočetního prostředí, jako je Azure Kubern
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
-Následující příklad načte informace o registrovaném modelu s názvem `sentiment`a poté jej nasadí jako službu s názvem `sentiment`. Během nasazování se k vytvoření a konfiguraci prostředí služby používá konfigurace odvození konfigurace a nasazení:
+Následující příklad načte informace o registrovaném modelu s názvem `sentiment` a poté jej nasadí jako službu s názvem `sentiment` . Během nasazování se k vytvoření a konfiguraci prostředí služby používá konfigurace odvození konfigurace a nasazení:
 
 ```python
 from azureml.core.model import Model
@@ -273,7 +273,7 @@ print("scoring URI: " + service.scoring_uri)
 
 Další informace naleznete v tématu [model. deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) reference.
 
-Chcete-li model nasadit z rozhraní příkazového řádku, použijte následující příkaz. Tento příkaz nasadí verzi 1 registrovaného modelu (`sentiment:1`) pomocí odvození a konfigurace nasazení uložené v souborech `inferenceConfig.json` a: `deploymentConfig.json`
+Chcete-li model nasadit z rozhraní příkazového řádku, použijte následující příkaz. Tento příkaz nasadí verzi 1 registrovaného modelu ( `sentiment:1` ) pomocí odvození a konfigurace nasazení uložené v `inferenceConfig.json` `deploymentConfig.json` souborech a:
 
 ```azurecli
 az ml model deploy -n myservice -m sentiment:1 --ic inferenceConfig.json --dc deploymentConfig.json

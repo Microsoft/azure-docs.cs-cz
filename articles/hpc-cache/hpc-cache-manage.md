@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: v-erkel
-ms.openlocfilehash: 34f29eda703cb019cca3e9ca293e31288c6e151b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 226483666491197013c5f4d9ab8e04911f4b1198
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343659"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432954"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>Správa mezipaměti z Azure Portal
 
@@ -33,7 +33,7 @@ Přečtěte si další informace o těchto možnostech.
 
 Klikněte na obrázek níže a sledujte [video](https://azure.microsoft.com/resources/videos/managing-hpc-cache/) , které ukazuje úlohy správy mezipaměti.
 
-[![Miniatura videa: Azure HPC cache: Manage (kliknutím můžete navštívit stránku video)](media/video5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
+[![Miniatura videa: Azure HPC cache: Manage (kliknutím můžete navštívit stránku video)](media/video-5-manage.png)](https://azure.microsoft.com/resources/videos/managing-hpc-cache/)
 
 ## <a name="stop-the-cache"></a>Zastavení mezipaměti
 

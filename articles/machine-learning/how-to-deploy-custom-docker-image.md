@@ -5,17 +5,17 @@ description: Naučte se používat vlastní základní image Docker při nasazen
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 03/16/2020
-ms.openlocfilehash: a237beb72e35a236e353c58db520a8d611fdfdcd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8d8edef2606a8689f4e9853d2b3aff7fac80bdc7
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617998"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433958"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Nasazení modelu pomocí vlastního obrázku Docker Base
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -69,7 +69,7 @@ Informace v této části předpokládají, že používáte Azure Container Reg
 
     Informace o používání instančních objektů s Azure Container Registry najdete v tématu [ověřování Azure Container Registry pomocí instančních objektů](/azure/container-registry/container-registry-auth-service-principal).
 
-* Informace o Azure Container Registry a obrázku: zadejte název image pro kohokoli, kdo ji musí použít. Například Image s názvem `myimage`, která je uložena v registru s názvem `myregistry`, je odkazována `myregistry.azurecr.io/myimage` jako při použití image pro nasazení modelu.
+* Informace o Azure Container Registry a obrázku: zadejte název image pro kohokoli, kdo ji musí použít. Například Image s názvem, která `myimage` je uložena v registru s názvem `myregistry` , je odkazována jako `myregistry.azurecr.io/myimage` při použití image pro nasazení modelu.
 
 * Požadavky na Image: Azure Machine Learning podporuje jenom image Docker, které poskytují následující software:
 
@@ -112,13 +112,13 @@ Pokud jste už provedli nebo nasadili modely pomocí Azure Machine Learning, vyt
     /subscriptions/<subscription_id>/resourceGroups/<resource_group>/providers/Microsoft.ContainerRegistry/registries/<registry_name>
     ```
 
-    `<registry_name>` Hodnota je název Azure Container registry pro váš pracovní prostor.
+    `<registry_name>`Hodnota je název Azure Container registry pro váš pracovní prostor.
 
 ### <a name="build-a-custom-base-image"></a>Vytvoření vlastní základní image
 
 Postup v této části vás seznámí s vytvořením vlastní image Docker ve vašem Azure Container Registry.
 
-1. Vytvořte nový textový soubor s názvem `Dockerfile`a jako obsah použijte následující text:
+1. Vytvořte nový textový soubor s názvem `Dockerfile` a jako obsah použijte následující text:
 
     ```text
     FROM ubuntu:16.04
@@ -145,7 +145,7 @@ Postup v této části vás seznámí s vytvořením vlastní image Docker ve va
         find / -type d -name __pycache__ -prune -exec rm -rf {} \;
     ```
 
-2. V prostředí nebo příkazovém řádku použijte následující příkaz k ověření Azure Container Registry. `<registry_name>` Nahraďte názvem registru kontejneru, do kterého chcete uložit Image:
+2. V prostředí nebo příkazovém řádku použijte následující příkaz k ověření Azure Container Registry. Nahraďte `<registry_name>` názvem registru kontejneru, do kterého chcete uložit Image:
 
     ```azurecli-interactive
     az acr login --name <registry_name>
@@ -177,7 +177,7 @@ Pokud chcete použít vlastní image, potřebujete tyto informace:
 * __Název Image__ Například `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` je cesta k základní imagi Docker, kterou poskytuje Microsoft.
 
     > [!IMPORTANT]
-    > U vlastních imagí, které jste vytvořili, nezapomeňte zahrnout všechny značky, které se s imagí používaly. Například pokud se vaše image vytvořila s konkrétní značkou, jako je například `:v1`. Pokud jste při vytváření image nepoužili konkrétní značku, použila se značka `:latest` .
+    > U vlastních imagí, které jste vytvořili, nezapomeňte zahrnout všechny značky, které se s imagí používaly. Například pokud se vaše image vytvořila s konkrétní značkou, jako je například `:v1` . Pokud jste při vytváření image nepoužili konkrétní značku, `:latest` použila se značka.
 
 * Pokud je obrázek v __privátním úložišti__, budete potřebovat následující informace:
 
@@ -190,14 +190,14 @@ Pokud chcete použít vlastní image, potřebujete tyto informace:
 
 Společnost Microsoft poskytuje několik imagí Docker pro veřejně dostupné úložiště, které je možné použít s kroky v této části:
 
-| Image | Popis |
+| Image | Description |
 | ----- | ----- |
 | `mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda` | Základní obrázek pro Azure Machine Learning |
 | `mcr.microsoft.com/azureml/onnxruntime:latest` | Obsahuje ONNX runtime pro PROCESORové Inferencing |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-cuda` | Obsahuje modul runtime ONNX a CUDA pro GPU |
 | `mcr.microsoft.com/azureml/onnxruntime:latest-tensorrt` | Obsahuje ONNX runtime a TensorRT pro GPU |
-| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Obsahuje ONNX runtime a OpenVINO pro návrh<sup> </sup> akcelerátoru Intel Vision na základě Movidius<sup>TM</sup> MyriadX VPUs |
-| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Obsahuje ONNX runtime a OpenVINO pro Intel<sup> </sup> Movidius<sup>TM</sup> USB Stick |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-vadm ` | Obsahuje ONNX runtime a OpenVINO pro <sup></sup> Návrh akcelerátoru Intel Vision na základě Movidius<sup>TM</sup> MyriadX VPUs |
+| `mcr.microsoft.com/azureml/onnxruntime:latest-openvino-myriad` | Obsahuje ONNX runtime a OpenVINO pro Intel <sup></sup> Movidius<sup>TM</sup> USB Stick |
 
 Další informace o základních imagích modulu runtime ONNX naleznete v [části ONNX runtime souboru Dockerfile](https://github.com/microsoft/onnxruntime/blob/master/dockerfiles/README.md) v úložišti GitHub.
 
@@ -207,7 +207,7 @@ Další informace o základních imagích modulu runtime ONNX naleznete v [čás
 Další informace najdete v tématu [Azure Machine Learning Containers](https://github.com/Azure/AzureML-Containers).
 
 > [!TIP]
->__Pokud je váš model vyškolený na Azure Machine Learning výpočetní__výkon, používá __1.0.22 nebo větší__ verzi Azure Machine Learning SDK, během školení se vytvoří obrázek. Chcete-li zjistit název tohoto obrázku, použijte `run.properties["AzureML.DerivedImageName"]`. Následující příklad ukazuje, jak použít tuto bitovou kopii:
+>__Pokud je váš model vyškolený na Azure Machine Learning výpočetní__výkon, používá __1.0.22 nebo větší__ verzi Azure Machine Learning SDK, během školení se vytvoří obrázek. Chcete-li zjistit název tohoto obrázku, použijte `run.properties["AzureML.DerivedImageName"]` . Následující příklad ukazuje, jak použít tuto bitovou kopii:
 >
 > ```python
 > # Use an image built during training with SDK 1.0.22 or greater
@@ -230,7 +230,7 @@ myenv.docker.enabled = True
 myenv.docker.base_image = "mcr.microsoft.com/azureml/o16n-sample-user-base/ubuntu-miniconda"
 ```
 
-Pokud chcete použít image z __privátního registru kontejnerů__ , který není ve vašem pracovním prostoru, musíte `docker.base_image_registry` použít k zadání adresy úložiště a uživatelského jména a hesla:
+Pokud chcete použít image z __privátního registru kontejnerů__ , který není ve vašem pracovním prostoru, musíte použít `docker.base_image_registry` k zadání adresy úložiště a uživatelského jména a hesla:
 
 ```python
 # Set the container registry information
@@ -325,7 +325,7 @@ Před nasazením modelu pomocí Machine Learning CLI vytvořte [prostředí](htt
 }
 ```
 
-Tento soubor se používá spolu s `az ml model deploy` příkazem. `--ic` Parametr se používá k určení konfiguračního souboru odvození.
+Tento soubor se používá spolu s `az ml model deploy` příkazem. `--ic`Parametr se používá k určení konfiguračního souboru odvození.
 
 ```azurecli
 az ml model deploy -n myservice -m mymodel:1 --ic inferenceconfig.json --dc deploymentconfig.json --ct akscomputetarget

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
-ms.openlocfilehash: 99e04c95156e40eed8c2b9aa88a2bee6f39e90c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c4069774249795073b4390de839ae9f563c8b1cb
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81392876"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424005"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Monitorování Azure AD B2C s využitím Azure Monitor
 
@@ -25,8 +25,8 @@ Pomocí Azure Monitor můžete směrovat přihlašování Azure Active Directory
 Události protokolu můžete směrovat do:
 
 * Účet služby Azure [Storage](../storage/blobs/storage-blobs-introduction.md).
-* [Centrum událostí](../event-hubs/event-hubs-about.md) Azure (a integrujte je s vašimi logickými instancemi Splunk a sumo).
 * [Pracovní prostor Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md) (pro analýzu dat, vytváření řídicích panelů a upozornění na konkrétní události).
+* [Centrum událostí](../event-hubs/event-hubs-about.md) Azure (a integrujte je s vašimi logickými instancemi Splunk a sumo).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
 
@@ -72,7 +72,7 @@ Pro usnadnění správy doporučujeme použít pro každou roli *skupiny* uživa
 
 ### <a name="create-an-azure-resource-manager-template"></a>Vytvoření šablony Azure Resource Manager
 
-Pokud chcete připojit klienta služby Azure AD ( **zákazníka**), vytvořte [šablonu Azure Resource Manager](../lighthouse/how-to/onboard-customer.md) pro vaši nabídku s následujícími informacemi. Hodnoty `mspOfferName` a `mspOfferDescription` jsou viditelné při zobrazení podrobností nabídky na [stránce poskytovatelé služeb](../lighthouse/how-to/view-manage-service-providers.md) Azure Portal.
+Pokud chcete připojit klienta služby Azure AD ( **zákazníka**), vytvořte [šablonu Azure Resource Manager](../lighthouse/how-to/onboard-customer.md) pro vaši nabídku s následujícími informacemi. `mspOfferName`Hodnoty a `mspOfferDescription` jsou viditelné při zobrazení podrobností nabídky na [stránce poskytovatelé služeb](../lighthouse/how-to/view-manage-service-providers.md) Azure Portal.
 
 | Pole   | Definice |
 |---------|------------|
@@ -87,7 +87,7 @@ Stažení šablony Azure Resource Manager a souborů parametrů:
 - [rgDelegatedResourceManagement. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.json)
 - [rgDelegatedResourceManagement. Parameters. JSON](https://github.com/Azure/Azure-Lighthouse-samples/blob/master/templates/rg-delegated-resource-management/rgDelegatedResourceManagement.parameters.json)
 
-Dále aktualizujte soubor parametrů s hodnotami, které jste si poznamenali dříve. Následující fragment kódu JSON ukazuje příklad souboru parametrů šablony Azure Resource Manager. Pro `authorizations.value.roleDefinitionId`použijte pro *roli přispěvatele* `b24988ac-6180-42a0-ab88-20f7382dd24c` [předdefinovanou hodnotu role](../role-based-access-control/built-in-roles.md) .
+Dále aktualizujte soubor parametrů s hodnotami, které jste si poznamenali dříve. Následující fragment kódu JSON ukazuje příklad souboru parametrů šablony Azure Resource Manager. Pro `authorizations.value.roleDefinitionId` použijte pro *roli přispěvatele* [předdefinovanou hodnotu role](../role-based-access-control/built-in-roles.md) `b24988ac-6180-42a0-ab88-20f7382dd24c` .
 
 ```JSON
 {
@@ -141,7 +141,7 @@ Potom přepněte do předplatného, které chcete zamítnout do tenanta Azure AD
 Select-AzSubscription <subscription ID>
 ```
 
-Nakonec nasaďte šablonu Azure Resource Manager a soubory parametrů, které jste stáhli a aktualizovali dříve. Nahraďte `Location`hodnoty `TemplateFile`, a `TemplateParameterFile` odpovídajícím způsobem.
+Nakonec nasaďte šablonu Azure Resource Manager a soubory parametrů, které jste stáhli a aktualizovali dříve. Nahraďte `Location` `TemplateFile` hodnoty, a `TemplateParameterFile` odpovídajícím způsobem.
 
 ```PowerShell
 New-AzDeployment -Name "AzureADB2C" `
@@ -193,7 +193,7 @@ Parameters              :
 
 Až šablonu nasadíte, může trvat několik minut, než se projekce prostředků dokončí. Než budete moct přejít k další části a vybrat předplatné, možná budete muset několik minut počkat (obvykle ne víc než pět).
 
-## <a name="select-your-subscription"></a>Vyberte své předplatné.
+## <a name="select-your-subscription"></a>Výběr předplatného
 
 Po nasazení šablony a dokončení projekce prostředku počkejte několik minut, přiřaďte své předplatné ke svému Azure AD B2C adresáři pomocí následujících kroků.
 
@@ -211,7 +211,7 @@ Po nasazení šablony a dokončení projekce prostředku počkejte několik minu
 
 Nastavení diagnostiky definují, kam se mají odesílat protokoly a metriky prostředku. Možné cíle:
 
-- [Účet služby Azure Storage](../azure-monitor/platform/resource-logs-collect-storage.md)
+- [Účet úložiště Azure](../azure-monitor/platform/resource-logs-collect-storage.md)
 - Řešení pro [centra událostí](../azure-monitor/platform/resource-logs-stream-event-hubs.md) .
 - [Pracovní prostor služby Log Analytics](../azure-monitor/platform/resource-logs-collect-workspace.md)
 
@@ -223,7 +223,7 @@ Jste připraveni [vytvořit nastavení diagnostiky](../active-directory/reports-
 
 Postup konfigurace nastavení monitorování pro Azure AD B2C protokoly aktivit:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. Vyberte **Azure Active Directory**
 1. V části **Monitorování** vyberte **Nastavení diagnostiky**.
@@ -234,7 +234,7 @@ Postup konfigurace nastavení monitorování pro Azure AD B2C protokoly aktivit:
 1. Dejte nastavení název, pokud ho ještě nikdo nemá.
 1. Zaškrtněte políčko pro všechny cílové umístění pro odeslání protokolů. Vyberte **Konfigurovat** a určete jejich nastavení, jak je popsáno v následující tabulce.
 
-    | Nastavení | Popis |
+    | Nastavení | Description |
     |:---|:---|
     | Archivovat v účtu úložiště | Název účtu úložiště |
     | Streamovat do centra událostí | Obor názvů, ve kterém se vytvoří centrum událostí (Pokud se jedná o vaše první přihlášení ke streamování protokolů) nebo streamování do služby (Pokud už existují prostředky streamující do tohoto oboru názvů do kategorie log).

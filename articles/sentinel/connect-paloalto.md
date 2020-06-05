@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/30/2019
 ms.author: yelevin
-ms.openlocfilehash: a79b7a1448e1decb377aa0072261df068c366567
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 337575a85b899b918162ad59c0bbbbaf742a83fe
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77588123"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417459"
 ---
 # <a name="connect-palo-alto-networks-to-azure-sentinel"></a>Připojení sítí Palo Alto k Azure Sentinel
 
@@ -34,7 +34,7 @@ Tento článek vysvětluje, jak připojit zařízení sítě Palo Alto ke služb
 Nakonfigurujte Palo Alto Networks pro přeposílání zpráv syslog ve formátu CEF do pracovního prostoru Azure prostřednictvím agenta syslog:
 1.  Přejít do [příručky konfigurace CEF (Common Event Format)](https://docs.paloaltonetworks.com/resources/cef) a stáhnout PDF pro váš typ zařízení. Podle všech pokynů v příručce nastavte zařízení sítě Palo Alto pro shromažďování událostí CEF. 
 
-1.  Přejděte ke [konfiguraci monitorování syslogu](https://aka.ms/asi-syslog-paloalto-forwarding) a postupujte podle kroků 2 a 3 ke konfiguraci předávání událostí CEF ze zařízení Palo Alto Networks do Azure Sentinel.
+1.  Přejděte ke [konfiguraci monitorování syslogu](https://docs.paloaltonetworks.com/pan-os/8-1/pan-os-admin/monitoring/use-syslog-for-monitoring/configure-syslog-monitoring) a postupujte podle kroků 2 a 3 ke konfiguraci předávání událostí CEF ze zařízení Palo Alto Networks do Azure Sentinel.
 
     1. Ujistěte se, že jste nastavili **Formát serveru syslog** na **BSD**.
 

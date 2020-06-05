@@ -5,18 +5,18 @@ description: Naučte se řešit, řešit a řešit běžné chyby nasazení Dock
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: clauren42
 ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 03/05/2020
 ms.custom: contperfq4
-ms.openlocfilehash: f65b263bb90356a4d739ebc963458cc7e992863c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 758e0b19cd249215dc8531224bc2685703b9fc85
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307941"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433721"
 ---
 # <a name="troubleshoot-docker-deployment-of-models-with-azure-kubernetes-service-and-azure-container-instances"></a>Řešení potíží s nasazením v Docker modelů pomocí služby Azure Kubernetes a Azure Container Instances 
 
@@ -211,7 +211,7 @@ Nastavení úrovně protokolování na ladění může způsobit, že budou prot
 
 ## <a name="function-fails-runinput_data"></a>Neúspěšná funkce: Run (input_data)
 
-Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce Přidat příkaz pro zachycení chyb, `run(input_data)` aby se místo toho vrátila podrobná chybová zpráva. Například:
+Pokud se služba úspěšně nasadila, ale dojde k chybě při odesílání dat do koncového bodu, můžete do funkce Přidat příkaz pro zachycení chyb, `run(input_data)` aby se místo toho vrátila podrobná chybová zpráva. Příklad:
 
 ```python
 def run(input_data):

@@ -5,18 +5,18 @@ description: Naučte se, jak začít, nastavit stav, označit a uspořádat expe
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: roastala
 author: rastala
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 01/09/2020
-ms.openlocfilehash: d6dc2eeb572eeed17281677945c93067bbadee94
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: ff3811c69aaa3643e2fce40a3ce26115870a6010
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628567"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430368"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Spuštění, monitorování a zrušení školicích běhů v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -34,7 +34,7 @@ Tento článek ukazuje příklady následujících úloh:
 
 Budete potřebovat následující položky:
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 
@@ -92,18 +92,18 @@ Pro spuštění experimentu použijte následující postup:
 
     Další informace najdete v tématu [AZ ml složka připojit](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/folder?view=azure-cli-latest#ext-azure-cli-ml-az-ml-folder-attach).
 
-2. Chcete-li spustit spuštění, použijte následující příkaz. Při použití tohoto příkazu zadejte název souboru RunConfig (text před \*. RunConfig, pokud hledáte v systému souborů) s parametrem-c.
+2. Chcete-li spustit spuštění, použijte následující příkaz. Při použití tohoto příkazu zadejte název souboru RunConfig (text před \* . RunConfig, pokud hledáte v systému souborů) s parametrem-c.
 
     ```azurecli-interactive
     az ml run submit-script -c sklearn -e testexperiment train.py
     ```
 
     > [!TIP]
-    > `az ml folder attach` Příkaz vytvořil `.azureml` podadresář, který obsahuje dva příklady souborů RunConfig.
+    > `az ml folder attach`Příkaz vytvořil `.azureml` podadresář, který obsahuje dva příklady souborů RunConfig.
     >
     > Pokud máte skript Pythonu, který vytvoří objekt konfigurace spuštění programově, můžete použít [RunConfig. Save ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py#save-path-none--name-none--separate-environment-yaml-false-) a uložit ho jako soubor RunConfig.
     >
-    > Další příklady souborů RunConfig naleznete v tématu [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/).
+    > Další příklady souborů RunConfig naleznete v tématu [https://github.com/MicrosoftDocs/pipelines-azureml/](https://github.com/MicrosoftDocs/pipelines-azureml/) .
 
     Další informace najdete v tématu [AZ ml Run odeslání-Script](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/run?view=azure-cli-latest#ext-azure-cli-ml-az-ml-run-submit-script).
 
@@ -140,7 +140,7 @@ notebook_run.complete()
 print(notebook_run.get_status())
 ```
 
-Použijete-li vzor `with...as` návrhu Pythonu, bude spuštění při nedostatku rozsahu automaticky označen jako dokončené. Nemusíte ručně označit rutinu Run jako dokončenou.
+Použijete `with...as` -li vzor návrhu Pythonu, bude spuštění při nedostatku rozsahu automaticky označen jako dokončené. Nemusíte ručně označit rutinu Run jako dokončenou.
 
 ```python
 with exp.start_logging() as notebook_run:
@@ -260,13 +260,13 @@ with exp.start_logging() as parent_run:
 > [!NOTE]
 > Při přesunu z oboru jsou podřízená spuštění automaticky označena jako dokončená.
 
-Chcete-li vytvořit mnoho podřízených spuštění efektivně [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) , použijte metodu. Vzhledem k tomu, že při každém vytváření dojde k síťovému volání, vytvoření dávky spuštění je efektivnější než jejich vytvoření po jednom.
+Chcete-li vytvořit mnoho podřízených spuštění efektivně, použijte [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) metodu. Vzhledem k tomu, že při každém vytváření dojde k síťovému volání, vytvoření dávky spuštění je efektivnější než jejich vytvoření po jednom.
 
 ### <a name="submit-child-runs"></a>Odeslat podřízená spuštění
 
 Podřízené běhy lze také odeslat z nadřazeného spuštění. To umožňuje vytvářet hierarchie nadřazených a podřízených spuštění. 
 
-Můžete chtít, aby vaše podřízená spuštění používala jinou konfiguraci spuštění než v nadřazeném spuštění. Můžete například použít méně náročnou konfiguraci založenou na PROCESORech pro nadřazený objekt při použití konfigurací založených na GPU pro vaše děti. Dalším běžným přáním je předat každý podřízený objekt různým argumentům a datům. Chcete-li přizpůsobit podřízený běh, předejte `RunConfiguration` objekt `ScriptRunConfig` konstruktoru podřízeného objektu. Tento příklad kódu, který by byl součástí skriptu nadřazeného `ScriptRunConfig` objektu:
+Můžete chtít, aby vaše podřízená spuštění používala jinou konfiguraci spuštění než v nadřazeném spuštění. Můžete například použít méně náročnou konfiguraci založenou na PROCESORech pro nadřazený objekt při použití konfigurací založených na GPU pro vaše děti. Dalším běžným přáním je předat každý podřízený objekt různým argumentům a datům. Chcete-li přizpůsobit podřízený běh, předejte `RunConfiguration` objekt konstruktoru podřízeného objektu `ScriptRunConfig` . Tento příklad kódu, který by byl součástí `ScriptRunConfig` skriptu nadřazeného objektu:
 
 - Vytvoří `RunConfiguration` načtení pojmenovaného výpočetního prostředku.`"gpu-compute"`
 - Iteruje přes různé hodnoty argumentů, které se mají předat podřízeným `ScriptRunConfig` objektům.
@@ -298,7 +298,7 @@ for child in run.get_children():
     child.wait_for_completion()
 ```
 
-Chcete-li vytvořit mnoho podřízených spuštění se stejnou konfigurací, argumenty a vstupy efektivně, [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) použijte metodu. Vzhledem k tomu, že při každém vytváření dojde k síťovému volání, vytvoření dávky spuštění je efektivnější než jejich vytvoření po jednom.
+Chcete-li vytvořit mnoho podřízených spuštění se stejnou konfigurací, argumenty a vstupy efektivně, použijte [`create_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#create-children-count-none--tag-key-none--tag-values-none-) metodu. Vzhledem k tomu, že při každém vytváření dojde k síťovému volání, vytvoření dávky spuštění je efektivnější než jejich vytvoření po jednom.
 
 V rámci podřízeného spuštění můžete zobrazit ID nadřazeného spuštění:
 
@@ -310,7 +310,7 @@ child_run.parent.id
 
 ### <a name="query-child-runs"></a>Dotaz na podřízená spuštění
 
-Chcete-li zadat dotaz na podřízená spuštění konkrétního nadřazeného [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) objektu, použijte metodu. ``recursive = True`` Argument slouží k dotazování vnořené stromové struktury podřízených a podřízené.
+Chcete-li zadat dotaz na podřízená spuštění konkrétního nadřazeného objektu, použijte [`get_children()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#get-children-recursive-false--tags-none--properties-none--type-none--status-none---rehydrate-runs-true-) metodu. ``recursive = True``Argument slouží k dotazování vnořené stromové struktury podřízených a podřízené.
 
 ```python
 print(parent_run.get_children())
@@ -324,14 +324,14 @@ V Azure Machine Learning můžete použít vlastnosti a značky, které vám pom
 
 #### <a name="using-the-sdk"></a>Použití sady SDK
 
-Chcete-li přidat hledaná metadata k vašim běhům, [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) použijte metodu. Například následující kód přidá `"author"` vlastnost do běhu:
+Chcete-li přidat hledaná metadata k vašim běhům, použijte [`add_properties()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=azure-ml-py#add-properties-properties-) metodu. Například následující kód přidá `"author"` vlastnost do běhu:
 
 ```Python
 local_script_run.add_properties({"author":"azureml-user"})
 print(local_script_run.get_properties())
 ```
 
-Vlastnosti jsou neměnné, takže vytvoří trvalý záznam pro účely auditování. Následující příklad kódu má za následek chybu, protože jsme už přidali `"azureml-user"` jako hodnotu `"author"` vlastnosti v předchozím kódu:
+Vlastnosti jsou neměnné, takže vytvoří trvalý záznam pro účely auditování. Následující příklad kódu má za následek chybu, protože jsme už přidali `"azureml-user"` jako `"author"` hodnotu vlastnosti v předchozím kódu:
 
 ```Python
 try:
@@ -350,7 +350,7 @@ local_script_run.tag("quality", "fantastic run")
 print(local_script_run.get_tags())
 ```
 
-Můžete také přidat jednoduché řetězcové značky. Když se tyto značky objeví ve slovníku značek jako klíče, mají hodnotu `None`.
+Můžete také přidat jednoduché řetězcové značky. Když se tyto značky objeví ve slovníku značek jako klíče, mají hodnotu `None` .
 
 ```Python
 local_script_run.tag("worth another look")
@@ -383,7 +383,7 @@ list(exp.get_runs(properties={"author":"azureml-user"},tags="worth another look"
 
 #### <a name="using-the-cli"></a>Použití rozhraní příkazového řádku
 
-Rozhraní příkazového řádku Azure podporuje dotazy [JMESPath](http://jmespath.org) , které lze použít k filtrování spuštění na základě vlastností a značek. Pokud chcete použít dotaz JMESPath s rozhraním příkazového řádku Azure CLI, `--query` zadejte ho s parametrem. Následující příklady znázorňují základní dotazy pomocí vlastností a značek:
+Rozhraní příkazového řádku Azure podporuje dotazy [JMESPath](http://jmespath.org) , které lze použít k filtrování spuštění na základě vlastností a značek. Pokud chcete použít dotaz JMESPath s rozhraním příkazového řádku Azure CLI, zadejte ho s `--query` parametrem. Následující příklady znázorňují základní dotazy pomocí vlastností a značek:
 
 ```azurecli-interactive
 # list runs where the author property = 'azureml-user'

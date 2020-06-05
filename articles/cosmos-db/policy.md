@@ -6,12 +6,12 @@ ms.author: paelaz
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/20/2020
-ms.openlocfilehash: 2249dbdebecc52a8f5d6decccb83d3b1fc0777f7
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a1b1c01f7cf720690decd9c7aac5fb14b92121ec
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747378"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431974"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>Použití Azure Policy k implementaci zásad správného řízení a řízení prostředků Azure Cosmos DB
 
@@ -79,21 +79,24 @@ Tyto příkazy vypíše seznam názvů aliasů vlastností pro vlastnost Azure C
 
 V [pravidlech definice vlastních zásad](../governance/policy/tutorials/create-custom-policy-definition.md#policy-rule)můžete použít libovolný název aliasu této vlastnosti.
 
-Následuje příklad definice zásady, která kontroluje, jestli je Azure Cosmos DBá propustnost SQL Database větší než maximální povolený limit 400 RU/s. Vlastní definice zásad obsahuje dvě pravidla: jeden pro kontrolu konkrétního typu aliasu vlastnosti a druhý pro konkrétní vlastnost typu. Obě pravidla používají názvy aliasů.
+Následuje příklad definice zásady, která kontroluje, jestli je účet Azure Cosmos DB nakonfigurovaný pro více umístění pro zápis. Definice vlastní zásady zahrnuje dvě pravidla: jednu pro kontrolu konkrétního typu aliasu vlastnosti a druhou pro konkrétní vlastnost typu v tomto případě pole, ve kterém je uložené nastavení vícenásobného umístění pro zápis. Obě pravidla používají názvy aliasů.
 
 ```json
 "policyRule": {
   "if": {
     "allOf": [
       {
-      "field": "type",
-      "equals": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings"
+        "field": "type",
+        "equals": "Microsoft.DocumentDB/databaseAccounts"
       },
       {
-      "field": "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/default.resource.throughput",
-      "greater": 400
+        "field": "Microsoft.DocumentDB/databaseAccounts/enableMultipleWriteLocations",
+        "notEquals": true
       }
     ]
+  },
+  "then": {
+    "effect": "Audit"
   }
 }
 ```
@@ -106,21 +109,26 @@ Po vytvoření přiřazení zásad Azure Policy vyhodnotí prostředky v oboru p
 
 Výsledky dodržování předpisů a podrobnosti o nápravě můžete zkontrolovat v [Azure Portal](../governance/policy/how-to/get-compliance-data.md#portal) nebo prostřednictvím rozhraní příkazového [řádku Azure CLI](../governance/policy/how-to/get-compliance-data.md#command-line) nebo [protokolu Azure monitor](../governance/policy/how-to/get-compliance-data.md#azure-monitor-logs).
 
-Následující snímek obrazovky ukazuje dva příklady přiřazení zásad. Jedno přiřazení vychází z předdefinované definice zásady, která kontroluje, jestli jsou prostředky Azure Cosmos DB nasazené jenom do oblastí Azure, které jsou povolené. Druhé přiřazení je založené na definici vlastní zásady. Toto přiřazení kontroluje, zda zajištěná propustnost u prostředků Azure Cosmos DB nepřekračuje zadaný maximální limit.
+Následující snímek obrazovky ukazuje dva příklady přiřazení zásad.
 
-Po nasazení přiřazení zásad zobrazí řídicí panel dodržování výsledků hodnocení. Všimněte si, že to může trvat až 30 minut po nasazení přiřazení zásady.
+Jedno přiřazení vychází z předdefinované definice zásady, která kontroluje, jestli jsou prostředky Azure Cosmos DB nasazené jenom do oblastí Azure, které jsou povolené. Dodržování prostředků zobrazuje výsledek vyhodnocení zásad (kompatibilní nebo nekompatibilní) pro prostředky v oboru.
 
-Snímek obrazovky ukazuje následující výsledky vyhodnocení dodržování předpisů:
+Druhé přiřazení je založené na definici vlastní zásady. Toto přiřazení kontroluje, že účty Cosmos DB jsou nakonfigurovány pro více umístění pro zápis.
 
-- Nula z jednoho Azure Cosmos DB účtů v zadaném oboru jsou kompatibilní s přiřazením zásad, aby bylo možné ověřit, že se prostředky nasadily do povolených oblastí.
-- Jeden ze dvou Azure Cosmos DB databází nebo prostředků kolekce v zadaném oboru odpovídá přiřazení zásady, které by kontrolovaly stanovenou propustnost překračující stanovený maximální limit.
+Po nasazení přiřazení zásad zobrazí řídicí panel dodržování výsledků hodnocení. Všimněte si, že to může trvat až 30 minut po nasazení přiřazení zásady. Kromě toho je [možné na vyžádání spustit kontroly vyhodnocení zásad](../governance/policy/how-to/get-compliance-data.md#on-demand-evaluation-scan) hned po vytvoření přiřazení zásad.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Vyhledat Azure Cosmos DB předdefinované definice zásad":::
+Snímek obrazovky ukazuje následující výsledky vyhodnocení dodržování předpisů pro Azure Cosmos DB účty v oboru:
 
-Chcete-li opravit prostředky, které nedodržují předpisy, přečtěte si článek [napravo od Azure Policy](../governance/policy/how-to/remediate-resources.md) .
+- Žádná ze dvou účtů vyhovuje zásadám, které Virtual Network (VNet) musí nakonfigurovat filtrování.
+- Žádná ze dvou účtů nedodržuje zásady, které vyžadují, aby byl účet nakonfigurovaný pro více umístění pro zápis.
+- Žádná ze dvou účtů nedodržuje zásady, které byly nasazeny do povolených oblastí Azure.
+
+:::image type="content" source="./media/policy/compliance.png" alt-text="Výsledky dodržování předpisů pro přiřazení Azure Policy v seznamu":::
+
+Chcete-li opravit prostředky, které nedodržují předpisy, přečtěte si [článek o nápravě prostředků pomocí Azure Policy](../governance/policy/how-to/remediate-resources.md).
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Kontrola ukázkových definic vlastních zásad pro Azure Cosmos DB](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB)
+- [Projděte si ukázkové definice vlastních zásad pro Azure Cosmos DB](https://github.com/Azure/azure-policy/tree/master/samples/CosmosDB), včetně výše uvedených zásad pro víc umístění zápisu a filtrování virtuální sítě.
 - [Vytvoření přiřazení zásady v Azure Portal](../governance/policy/assign-policy-portal.md)
 - [Přečtěte si Azure Policy předdefinované definice zásad pro Azure Cosmos DB](./policy-samples.md)

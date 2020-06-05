@@ -7,14 +7,14 @@ author: Blackmist
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 1cafc311c842cd5bc17fefe34eacbdfc99b7147a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f3603bf8afdcd990144897113f4e8506629f60a3
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81617737"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429748"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Kurz: výuka a nasazení modelu z rozhraní příkazového řádku
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Přečtěte si, jak provést následující akce:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 * Pokud chcete v tomto dokumentu použít příkazy rozhraní příkazového řádku z vašeho **místního prostředí**, potřebujete [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
@@ -55,7 +55,7 @@ git clone https://github.com/microsoft/MLOps.git
 
 ### <a name="training-files"></a>Školicí soubory
 
-`examples/cli-train-deploy` Adresář z projektu obsahuje následující soubory, které se používají při výuce modelu:
+`examples/cli-train-deploy`Adresář z projektu obsahuje následující soubory, které se používají při výuce modelu:
 
 * `.azureml\mnist.runconfig`: __Konfigurační soubor spuštění__ . Tento soubor definuje běhové prostředí potřebné ke školení modelu. V tomto příkladu také připojí data používaná ke výuce modelu do školicího prostředí.
 * `scripts\train.py`: Školicí skript. Tento soubor navlakuje model.
@@ -203,16 +203,16 @@ Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 }
 ```
 
-Tento příkaz vytvoří nový cíl výpočtů s názvem `cpu-cluster`s maximálně čtyřmi uzly. Vybraná velikost virtuálního počítače poskytuje virtuální počítač s prostředkem GPU. Informace o velikosti virtuálního počítače najdete v tématu [typy a velikosti virtuálních počítačů].
+Tento příkaz vytvoří nový cíl výpočtů `cpu-cluster` s názvem s maximálně čtyřmi uzly. Vybraná velikost virtuálního počítače poskytuje virtuální počítač s prostředkem GPU. Informace o velikosti virtuálního počítače najdete v tématu [typy a velikosti virtuálních počítačů].
 
 > [!IMPORTANT]
-> Název cílového výpočetního prostředí (`cpu-cluster` v tomto případě) je důležitý; na `.azureml/mnist.runconfig` něj odkazuje soubor, který se používá v další části.
+> Název cílového výpočetního `cpu-cluster` prostředí (v tomto případě) je důležitý. na něj odkazuje `.azureml/mnist.runconfig` soubor použitý v následující části.
 
 ## <a name="define-the-dataset"></a>Definovat datovou sadu
 
-Pokud chcete vytvořit výuku modelu, můžete zadat školicí data pomocí datové sady. Chcete-li vytvořit datovou sadu z rozhraní příkazového řádku, je nutné zadat soubor definice datové sady. `dataset.json` Soubor uvedený v úložišti vytvoří novou datovou sadu pomocí dat mnist ručně zapsaných. Datová sada, kterou vytváří, `mnist-dataset`má název.
+Pokud chcete vytvořit výuku modelu, můžete zadat školicí data pomocí datové sady. Chcete-li vytvořit datovou sadu z rozhraní příkazového řádku, je nutné zadat soubor definice datové sady. `dataset.json`Soubor uvedený v úložišti vytvoří novou datovou sadu pomocí dat mnist ručně zapsaných. Datová sada, kterou vytváří, má název `mnist-dataset` .
 
-Chcete-li datovou sadu `dataset.json` zaregistrovat pomocí souboru, použijte následující příkaz:
+Chcete-li datovou sadu zaregistrovat pomocí `dataset.json` souboru, použijte následující příkaz:
 
 ```azurecli-interactive
 az ml dataset register -f dataset.json --skip-validation
@@ -255,7 +255,7 @@ az ml dataset register --show-template
 
 ## <a name="reference-the-dataset"></a>Odkaz na datovou sadu
 
-Aby byla datová sada dostupná ve školicím prostředí, musíte na ni odkazovat ze souboru RunConfig. `.azureml/mnist.runconfig` Soubor obsahuje následující položky YAML:
+Aby byla datová sada dostupná ve školicím prostředí, musíte na ni odkazovat ze souboru RunConfig. `.azureml/mnist.runconfig`Soubor obsahuje následující položky YAML:
 
 ```yaml
 # The arguments to the script file.
@@ -292,29 +292,29 @@ Změňte hodnotu `id` položky tak, aby odpovídala hodnotě vrácené při regi
 
 Tato YAML má za následek následující akce během školení:
 
-* Připojí datovou sadu (na základě ID datové sady) ve školicím prostředí a uloží cestu k přípojnému bodu v proměnné `mnist` prostředí.
-* Předá do skriptu pomocí `--data-folder` argumentu umístění dat (přípojný bod) uvnitř školicího prostředí.
+* Připojí datovou sadu (na základě ID datové sady) ve školicím prostředí a uloží cestu k přípojnému bodu v `mnist` proměnné prostředí.
+* Předá do skriptu pomocí argumentu umístění dat (přípojný bod) uvnitř školicího prostředí `--data-folder` .
 
-Soubor RunConfig obsahuje také informace, které slouží ke konfiguraci prostředí používaného v rámci školicího běhu. Pokud tento soubor zkontrolujete, uvidíte, že odkazuje na `cpu-compute` výpočetní cíl, který jste vytvořili dříve. Zobrazuje také počet uzlů, které se mají použít při výuce (`"nodeCount": "4"`), a obsahuje `"condaDependencies"` část, která obsahuje seznam balíčků Python potřebných ke spuštění školicího skriptu.
+Soubor RunConfig obsahuje také informace, které slouží ke konfiguraci prostředí používaného v rámci školicího běhu. Pokud tento soubor zkontrolujete, uvidíte, že odkazuje na `cpu-compute` výpočetní cíl, který jste vytvořili dříve. Zobrazuje také počet uzlů, které se mají použít při výuce ( `"nodeCount": "4"` ), a obsahuje `"condaDependencies"` část, která obsahuje seznam balíčků Python potřebných ke spuštění školicího skriptu.
 
 > [!TIP]
-> I když je možné soubor RunConfig vytvořit ručně, byl v tomto příkladu vytvořen pomocí `generate-runconfig.py` souboru, který je součástí úložiště. Tento soubor získá odkaz na registrovanou datovou sadu, vytvoří programově config a pak ho přetrvá do souboru.
+> I když je možné soubor RunConfig vytvořit ručně, byl v tomto příkladu vytvořen pomocí souboru, který je `generate-runconfig.py` součástí úložiště. Tento soubor získá odkaz na registrovanou datovou sadu, vytvoří programově config a pak ho přetrvá do souboru.
 
 Další informace o spuštění konfiguračních souborů najdete v tématu [nastavení a použití výpočetních cílů pro školení modelů](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). Úplný odkaz na JSON najdete v [runconfigschema. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json).
 
 ## <a name="submit-the-training-run"></a>Odeslat školicí běh
 
-Pokud chcete spustit školicí běh na cílovém `cpu-cluster` výpočetním cíli, použijte následující příkaz:
+Pokud chcete spustit školicí běh na `cpu-cluster` cílovém výpočetním cíli, použijte následující příkaz:
 
 ```azurecli-interactive
 az ml run submit-script -c mnist -e myexperiment --source-directory scripts -t runoutput.json
 ```
 
-Tento příkaz určuje název experimentu (`myexperiment`). Experiment ukládá informace o tomto běhu v pracovním prostoru.
+Tento příkaz určuje název experimentu ( `myexperiment` ). Experiment ukládá informace o tomto běhu v pracovním prostoru.
 
-`-c mnist` Parametr určuje `.azureml/mnist.runconfig` soubor.
+`-c mnist`Parametr určuje `.azureml/mnist.runconfig` soubor.
 
-`-t` Parametr ukládá odkaz na tento běh v souboru JSON a bude použit v dalších krocích k registraci a stažení modelu.
+`-t`Parametr ukládá odkaz na tento běh v souboru JSON a bude použit v dalších krocích k registraci a stažení modelu.
 
 V rámci školicích procesů IT streamuje informace z cvičení cvičení na vzdáleném výpočetním prostředku. Část informací se podobá následujícímu textu:
 
@@ -325,9 +325,9 @@ Accuracy is 0.9185
 
 Tento text se zaznamená do protokolu ze školicího skriptu a zobrazí přesnost modelu. Ostatní modely budou mít různé metriky výkonu.
 
-Pokud provedete kontrolu školicího skriptu, všimnete si, že při ukládání školicího modelu do `outputs/sklearn_mnist_model.pkl`nástroje používá také hodnotu alfa.
+Pokud provedete kontrolu školicího skriptu, všimnete si, že při ukládání školicího modelu do nástroje používá také hodnotu alfa `outputs/sklearn_mnist_model.pkl` .
 
-Model byl uložen do `./outputs` adresáře ve výpočetním cíli, kde byl vyškolený. V tomto případě Azure Machine Learning výpočetní instance v cloudu Azure. Proces školení automaticky nahraje obsah `./outputs` adresáře z cílového výpočetního prostředí, kde k vašemu pracovnímu prostoru Azure Machine Learning dojde k výuce. Je uložen jako součást experimentu (`myexperiment` v tomto příkladu).
+Model byl uložen do `./outputs` adresáře ve výpočetním cíli, kde byl vyškolený. V tomto případě Azure Machine Learning výpočetní instance v cloudu Azure. Proces školení automaticky nahraje obsah `./outputs` adresáře z cílového výpočetního prostředí, kde k vašemu pracovnímu prostoru Azure Machine Learning dojde k výuce. Je uložen jako součást experimentu ( `myexperiment` v tomto příkladu).
 
 ## <a name="register-the-model"></a>Registrace modelu
 
@@ -337,7 +337,7 @@ K registraci modelu přímo z uložené verze v experimentu použijte následuj�
 az ml model register -n mymodel -f runoutput.json --asset-path "outputs/sklearn_mnist_model.pkl" -t registeredmodel.json
 ```
 
-Tento příkaz zaregistruje `outputs/sklearn_mnist_model.pkl` soubor vytvořený pomocí školicího běhu jako novou registraci modelu s `mymodel`názvem. `--assets-path` Odkazuje na cestu v experimentu. V tomto případě jsou informace o experimentech a spuštění načteny ze `runoutput.json` souboru vytvořeného pomocí příkazu pro školení. `-t registeredmodel.json` Vytvoří soubor JSON, který odkazuje na nový registrovaný model vytvořený tímto příkazem a je používán jinými příkazy rozhraní příkazového řádku, které pracují s registrovanými modely.
+Tento příkaz zaregistruje `outputs/sklearn_mnist_model.pkl` soubor vytvořený pomocí školicího běhu jako novou registraci modelu s názvem `mymodel` . `--assets-path`Odkazuje na cestu v experimentu. V tomto případě jsou informace o experimentech a spuštění načteny ze `runoutput.json` souboru vytvořeného pomocí příkazu pro školení. `-t registeredmodel.json`Vytvoří soubor JSON, který odkazuje na nový registrovaný model vytvořený tímto příkazem a je používán jinými příkazy rozhraní příkazového řádku, které pracují s registrovanými modely.
 
 Výstup tohoto příkazu je podobný následujícímu formátu JSON:
 
@@ -366,7 +366,7 @@ az ml model download -i "mymodel:1" -t .
 az ml model register -n mymodel -p "sklearn_mnist_model.pkl"
 ```
 
-První příkaz stáhne registrovaný model do aktuálního adresáře. Název souboru je `sklearn_mnist_model.pkl`, což je soubor, na který se odkazuje při registraci modelu. Druhý příkaz registruje místní model (`-p "sklearn_mnist_model.pkl"`) se stejným názvem jako předchozí registrace (`mymodel`). Tentokrát data JSON vrátí seznam verze jako 2.
+První příkaz stáhne registrovaný model do aktuálního adresáře. Název souboru je `sklearn_mnist_model.pkl` , což je soubor, na který se odkazuje při registraci modelu. Druhý příkaz registruje místní model ( `-p "sklearn_mnist_model.pkl"` ) se stejným názvem jako předchozí registrace ( `mymodel` ). Tentokrát data JSON vrátí seznam verze jako 2.
 
 ## <a name="deploy-the-model"></a>Nasazení modelu
 
@@ -379,13 +379,13 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.json --dc ac
 > [!NOTE]
 > Může se zobrazit upozornění týkající se selhání při kontrole existence LocalWebservice nebo vytvoření klienta Docker. Tuto možnost můžete bez obav ignorovat, protože neprovádíte nasazení místní webové služby.
 
-Tento příkaz nasadí novou službu s názvem `myservice`s použitím verze 1 modelu, který jste předtím zaregistrovali.
+Tento příkaz nasadí novou službu s názvem s `myservice` použitím verze 1 modelu, který jste předtím zaregistrovali.
 
-`inferenceConfig.yml` Soubor poskytuje informace o tom, jak použít model pro odvození. Například odkazuje na vstupní skript (`score.py`) a závislosti softwaru.
+`inferenceConfig.yml`Soubor poskytuje informace o tom, jak použít model pro odvození. Například odkazuje na vstupní skript ( `score.py` ) a závislosti softwaru.
 
 Další informace o struktuře tohoto souboru naleznete v tématu [schéma konfigurace odvození](reference-azure-machine-learning-cli.md#inference-configuration-schema). Další informace o vstupních skriptech najdete v tématu [nasazení modelů pomocí Azure Machine Learning](how-to-deploy-and-where.md#prepare-to-deploy).
 
-`aciDeploymentConfig.yml` Popisuje prostředí nasazení používané pro hostování služby. Konfigurace nasazení je specifická pro výpočetní typ, který používáte pro nasazení. V tomto případě se používá instance kontejneru Azure. Další informace najdete v tématu [schéma konfigurace nasazení](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
+`aciDeploymentConfig.yml`Popisuje prostředí nasazení používané pro hostování služby. Konfigurace nasazení je specifická pro výpočetní typ, který používáte pro nasazení. V tomto případě se používá instance kontejneru Azure. Další informace najdete v tématu [schéma konfigurace nasazení](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 
 Dokončení procesu nasazení bude trvat několik minut.
 
@@ -409,13 +409,13 @@ ACI service creation operation finished, operation "Succeeded"
 
 ### <a name="the-scoring-uri"></a>Identifikátor URI pro vyhodnocování
 
-`scoringUri` Vráceným nasazením je koncový bod REST pro model nasazený jako webovou službu. Tento identifikátor URI můžete získat také pomocí následujícího příkazu:
+`scoringUri`Vráceným nasazením je koncový bod REST pro model nasazený jako webovou službu. Tento identifikátor URI můžete získat také pomocí následujícího příkazu:
 
 ```azurecli-interactive
 az ml service show -n myservice
 ```
 
-Tento příkaz vrátí stejný dokument JSON, včetně `scoringUri`.
+Tento příkaz vrátí stejný dokument JSON, včetně `scoringUri` .
 
 Koncový bod REST lze použít k odeslání dat službě. Informace o vytváření klientských aplikací, které odesílají data do služby, najdete v tématu věnovaném [využívání modelu Azure Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md) .
 
@@ -434,7 +434,7 @@ az ml service run -n myservice -d @testdata.json
 > az ml service run -n myservice -d `@testdata.json
 > ```
 
-Odpověď z příkazu je podobná `[ 3 ]`.
+Odpověď z příkazu je podobná `[ 3 ]` .
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

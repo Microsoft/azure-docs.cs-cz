@@ -1,15 +1,15 @@
 ---
 title: Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
 description: Nasazení a konfigurace Ethereemé sítě konsorcia Ethereem pro více členů v Azure pomocí řešení pro kontrolu pravopisu
-ms.date: 12/18/2019
+ms.date: 06/04/2020
 ms.topic: article
-ms.reviewer: coborn
-ms.openlocfilehash: 7e9af5c501b58f6828360ee280440ea85698bf16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: ravastra
+ms.openlocfilehash: 2be87dec252aa927c6b1acfc6cb1aa23bf7d2620
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75387505"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434361"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
 
@@ -76,7 +76,7 @@ V dalších částech se dozvíte, jak nakonfigurovat nastavení prvního člena
 
 V [Azure Portal](https://portal.azure.com)v levém horním rohu vyberte **vytvořit prostředek** .
 
-Vyberte **blockchain** > **ethereem pro kontrolu-of-Authority Consortium (Preview)**.
+Vyberte **blockchain**  >  **ethereem pro kontrolu-of-Authority Consortium (Preview)**.
 
 ### <a name="basics"></a>Základy
 
@@ -144,7 +144,7 @@ Parametr | Popis | Příklad hodnoty
 ID člena konsorcia | ID přidružené ke každému členovi zapojenému do sítě konsorcia. Slouží ke konfiguraci adresních prostorů IP adres, aby se zabránilo kolizi. V případě privátní sítě by ID člena mělo být jedinečné v různých organizacích ve stejné síti.  Jedinečné ID člena je nutné i v případě, že je stejná organizace nasazena do více oblastí. Poznamenejte si hodnotu tohoto parametru, protože ho budete potřebovat sdílet s ostatními členy, abyste se ujistili, že nedochází k žádné kolizi. Platný rozsah je 0 až 255. | 0
 ID sítě | ID sítě pro nasazování sítě konsorcia Ethereem Každá Ethereem síť má své vlastní ID sítě, přičemž 1 je identifikátor veřejné sítě. Platný rozsah je 5 až 999 999 999. | 10101010
 Adresa Ethereem správce | Adresa účtu Ethereem, která se používá pro účast ve správě PoA. Pomocí MetaMask můžete vygenerovat Ethereem adresu. |
-Rozšířené možnosti | Rozšířené možnosti pro nastavení Ethereem | Povolení
+Rozšířené možnosti | Rozšířené možnosti pro nastavení Ethereem | Povolit
 Nasazení pomocí veřejné IP adresy | Pokud je vybraná privátní virtuální síť, síť se nasadí za bránu virtuální sítě a odebere přístup partnerských vztahů. U privátní virtuální sítě musí všichni členové používat bránu virtuální sítě, aby připojení bylo kompatibilní. | Veřejná IP adresa
 Limit bloku plynů | Počáteční limit bloku plynů sítě. | 50000000
 Zablokovat dobu trvání uzávěrky (s) | Frekvence, s níž budou vytvořeny prázdné bloky, pokud v síti nejsou žádné transakce. Vyšší frekvence bude mít rychlejší, ale zvýšené náklady na úložiště. | 15
@@ -160,11 +160,11 @@ Monitorování umožňuje nakonfigurovat prostředek protokolu pro vaši síť. 
 
 Parametr | Popis | Příklad hodnoty
 ----------|-------------|--------------
-Monitorování | Možnost povolení monitorování | Povolení
+Monitorování | Možnost povolení monitorování | Povolit
 Připojit k existujícím protokolům Azure Monitor | Možnost vytvoření nové instance protokolu Azure Monitor nebo připojení k existující instanci | Vytvořit nový
 Umístění | Oblast, ve které je nasazena nová instance | USA – východ
-Existující ID pracovního prostoru Log Analytics (připojit k existujícím protokolům Azure Monitor = připojit existující)|ID pracovního prostoru existující instance protokolu Azure Monitor||Není k dispozici
-Existující primární klíč Log Analytics (Připojte se k existujícím protokolům Azure Monitor = připojit existující)|Primární klíč, který se používá pro připojení ke stávající instanci Azure Monitorch protokolů||Není k dispozici
+Existující ID pracovního prostoru Log Analytics (připojit k existujícím protokolům Azure Monitor = připojit existující)|ID pracovního prostoru existující instance protokolu Azure Monitor||NA
+Existující primární klíč Log Analytics (Připojte se k existujícím protokolům Azure Monitor = připojit existující)|Primární klíč, který se používá pro připojení ke stávající instanci Azure Monitorch protokolů||NA
 
 Vyberte **OK**.
 
@@ -335,7 +335,7 @@ ssh -p 4000 poaadmin\@leader4vb.eastus.cloudapp.azure.com.
 
 Chcete-li získat další uzly transakcí, zvyšte číslo portu o jednu.
 
-Pokud jste nasadili do více než jedné oblasti, změňte příkaz na název DNS nebo IP adresu nástroje pro vyrovnávání zatížení v této oblasti. Pokud chcete najít název DNS nebo IP adresu ostatních oblastí, vyhledejte prostředek pomocí konvence ** \* \* \* \* \*pojmenování – lbpip-reg\# ** a zobrazte jeho název DNS a IP adresu.
+Pokud jste nasadili do více než jedné oblasti, změňte příkaz na název DNS nebo IP adresu nástroje pro vyrovnávání zatížení v této oblasti. Pokud chcete najít název DNS nebo IP adresu ostatních oblastí, vyhledejte prostředek pomocí konvence pojmenování ** \* \* \* \* \* – lbpip-reg \# ** a zobrazte jeho název DNS a IP adresu.
 
 ## <a name="azure-traffic-manager-load-balancing"></a>Vyrovnávání zatížení Azure Traffic Manager
 
@@ -558,7 +558,7 @@ V následujícím příkladu vytvoříte jednoduchou inteligentní kontrakt. Tru
 #### <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python je potřeba pro Truffle a Web3. Vyberte možnost instalovat, pokud chcete zahrnout Python do vaší cesty.
-* Nainstalujte Truffle v 5.0.5 `npm install -g truffle@v5.0.5`. Truffle vyžaduje instalaci několika nástrojů, včetně [Node. js](https://nodejs.org), [Gitu](https://git-scm.com/). Další informace najdete v [dokumentaci k Truffle](https://github.com/trufflesuite/truffle).
+* Nainstalujte Truffle v 5.0.5 `npm install -g truffle@v5.0.5` . Truffle vyžaduje instalaci několika nástrojů, včetně [Node. js](https://nodejs.org), [Gitu](https://git-scm.com/). Další informace najdete v [dokumentaci k Truffle](https://github.com/trufflesuite/truffle).
 
 ### <a name="create-truffle-project"></a>Vytvořit projekt Truffle
 
@@ -567,7 +567,7 @@ Předtím, než budete moci zkompilovat a nasadit inteligentní kontrakt, je nut
 1. Otevřete příkazový řádek nebo prostředí.
 1. Vytvořte složku s názvem `HelloWorld`.
 1. Změňte adresář na novou `HelloWorld` složku.
-1. Inicializujte nový projekt Truffle pomocí příkazu `truffle init`.
+1. Inicializujte nový projekt Truffle pomocí příkazu `truffle init` .
 
     ![Vytvořit nový projekt Truffle](./media/ethereum-poa-deployment/create-truffle-project.png)
 
@@ -575,7 +575,7 @@ Předtím, než budete moci zkompilovat a nasadit inteligentní kontrakt, je nut
 
 Vytvořte své inteligentní kontrakty v podadresáři **kontraktů** projektu Truffle.
 
-1. V podadresáři `postBox.sol` **kontrakty** projektu Truffle vytvořte soubor s názvem.
+1. V `postBox.sol` podadresáři **kontrakty** projektu Truffle vytvořte soubor s názvem.
 1. Do **postBox. Sol**přidejte následující kód soliding.
 
     ```javascript
@@ -623,11 +623,11 @@ Projekty Truffle obsahují konfigurační soubor pro podrobnosti o připojení k
     };
     ```
 
-1. Vzhledem k tomu, že používáme poskytovatele Truffle HD peněženky, nainstalujte modul do projektu pomocí příkazu `npm install truffle-hdwallet-provider --save`.
+1. Vzhledem k tomu, že používáme poskytovatele Truffle HD peněženky, nainstalujte modul do projektu pomocí příkazu `npm install truffle-hdwallet-provider --save` .
 
 Truffle používá skripty pro migraci k nasazení inteligentních kontraktů do sítě blockchain. K nasazení nové inteligentní smlouvy potřebujete skript pro migraci.
 
-1. Přidejte novou migraci pro nasazení nové smlouvy. V `2_deploy_contracts.js` podadresáři **migrace** projektu Truffle vytvořte soubor.
+1. Přidejte novou migraci pro nasazení nové smlouvy. `2_deploy_contracts.js`V podadresáři **migrace** projektu Truffle vytvořte soubor.
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -647,7 +647,7 @@ Truffle používá skripty pro migraci k nasazení inteligentních kontraktů do
 
 Teď, když je vaše inteligentní smlouva nasazená, můžete odeslat transakci pro volání funkce.
 
-1. V adresáři projektu Truffle vytvořte nový soubor s názvem `sendtransaction.js`.
+1. V adresáři projektu Truffle vytvořte nový soubor s názvem `sendtransaction.js` .
 1. Do **sendtransaction. js**přidejte následující obsah.
 
     ``` javascript
@@ -709,7 +709,7 @@ Monitorování je volitelná funkce. Ve výjimečných případech, kdy se nasaz
 
 ### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>Jsou nasazení veřejné IP adresy kompatibilní s nasazeními privátních sítí?
 
-Ne. Partnerský vztah vyžaduje obousměrnou komunikaci, takže celá síť musí být buď veřejná, nebo soukromá.
+No. Partnerský vztah vyžaduje obousměrnou komunikaci, takže celá síť musí být buď veřejná, nebo soukromá.
 
 ### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>Jaká je očekávaná propustnost transakce v rámci autority pro ověření?
 
@@ -718,6 +718,20 @@ Propustnost transakce bude vysoce závislá na typech transakcí a topologii sí
 ### <a name="how-do-i-subscribe-to-smart-contract-events"></a>Návody se přihlásit k odběru událostí inteligentních kontraktů?
 
 Ethereem Proofing-of-Authority teď podporuje webové sokety.  Ověřte výstup nasazení a vyhledejte adresu URL a port webového soketu.
+
+## <a name="support-and-feedback"></a>Podpora a zpětná vazba
+
+Novinky ke službě Azure blockchain News najdete na [blogu Azure blockchain](https://azure.microsoft.com/blog/topics/blockchain/) , abyste měli přehled o nabídkách služeb blockchain a informacích od týmu Azure blockchain Engineering.
+
+Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce, vystavte nebo Hlasujte nápad prostřednictvím [fóra Azure Feedback pro blockchain](https://aka.ms/blockchainuservoice).
+
+### <a name="community-support"></a>Podpora komunity
+
+Spolupracujte s odborníky z Microsoftu a komunitou Azure blockchain.
+
+* [Microsoft Q&stránku s otázkou pro službu Azure blockchain](https://docs.microsoft.com/answers/topics/azure-blockchain-workbench.html). Technická podpora pro šablony Blockchain je omezená na problémy s nasazením.
+* [Technická komunita Microsoftu](https://techcommunity.microsoft.com/t5/Blockchain/bd-p/AzureBlockchain)
+* [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-blockchain-workbench)
 
 ## <a name="next-steps"></a>Další kroky
 

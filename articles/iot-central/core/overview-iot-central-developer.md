@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: d29420d14a716e5a45e42dd681faa01f518f713a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: aa442e15dbc95709ecf3c818f69301d2f02e9b5b
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83666538"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417017"
 ---
 # <a name="iot-central-device-development-overview"></a>Přehled vývoje IoT Central zařízení
 
@@ -85,7 +85,9 @@ K implementaci chování zařízení použijte jednu ze [sad SDK pro zařízení
 - Synchronizuje hodnoty vlastností mezi zařízením a IoT Central. Šablona zařízení určuje názvy vlastností a datové typy tak, aby IoT Central mohl zobrazit informace.
 - Implementujte obslužné rutiny příkazů pro příkazy, které určuje šablona zařízení. Šablona zařízení určuje názvy příkazů a parametry, které má zařízení použít.
 
-Další informace najdete v tématu [Vytvoření a připojení klientské aplikace Node. js](./tutorial-connect-device-nodejs.md) nebo [Vytvoření a připojení klientské aplikace v Pythonu](./tutorial-connect-device-python.md).
+Další informace o roli šablon zařízení najdete v tématu [co jsou to šablony zařízení?](./concepts-device-templates.md).
+
+Ukázkový kód najdete v tématu [Vytvoření a připojení klientské aplikace Node. js](./tutorial-connect-device-nodejs.md) nebo [Vytvoření a připojení klientské aplikace v Pythonu](./tutorial-connect-device-python.md).
 
 ### <a name="languages-and-sdks"></a>Jazyky a sady SDK
 

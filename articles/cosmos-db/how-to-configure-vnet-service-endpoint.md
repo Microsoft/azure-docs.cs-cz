@@ -4,14 +4,14 @@ description: Tento dokument popisuje kroky potřebné k nastavení koncového bo
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 03/26/2020
+ms.date: 06/04/2020
 ms.author: mjbrown
-ms.openlocfilehash: 442623880c1b95f3d7e038ae44832b74853d2c4a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 904b976b5e5c811912df9421dc64be1617b30b44
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80366229"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431715"
 ---
 # <a name="configure-access-from-virtual-networks-vnet"></a>Konfigurace přístupu z virtuálních sítí (VNet)
 
@@ -52,7 +52,7 @@ Následující části popisují, jak nakonfigurovat koncový bod služby virtu�
 > K povolení koncových bodů služby virtuální sítě budete potřebovat následující oprávnění předplatného:
 >   * Předplatné s virtuální sítí: Přispěvatel sítě
 >   * Předplatné s Azure Cosmos DBm účtem: Přispěvatel účtu DocumentDB
->   * Pokud je vaše virtuální síť a účet Azure Cosmos DB v různých předplatných, ujistěte se, že odběr, který má virtuální `Microsoft.DocumentDB` síť, má taky zaregistrovaný poskytovatel prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, přečtěte si článek [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md) .
+>   * Pokud je vaše virtuální síť a účet Azure Cosmos DB v různých předplatných, ujistěte se, že odběr, který má virtuální síť, má taky `Microsoft.DocumentDB` zaregistrovaný poskytovatel prostředků. Pokud chcete zaregistrovat poskytovatele prostředků, přečtěte si článek [poskytovatelé a typy prostředků Azure](../azure-resource-manager/management/resource-providers-and-types.md) .
 
 Tady jsou pokyny pro registraci předplatného u poskytovatele prostředků.
 
@@ -257,6 +257,10 @@ az network vnet subnet update \
    --vnet-name $vnetName \
    --service-endpoints Microsoft.AzureCosmosDB
 ```
+
+## <a name="port-range-when-using-direct-mode"></a>Rozsah portů při použití přímého režimu
+
+Pokud používáte koncové body služby s účtem Azure Cosmos prostřednictvím připojení k přímému režimu, musíte zajistit, aby byl otevřený rozsah portů TCP od 10000 do 20000.
 
 ## <a name="migrating-from-an-ip-firewall-rule-to-a-virtual-network-acl"></a><a id="migrate-from-firewall-to-vnet"></a>Migrace z pravidla brány firewall protokolu IP do seznamu ACL virtuální sítě
 

@@ -9,6 +9,7 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: d5f18929-15e3-40a2-9ee3-8188bc248ed8
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -16,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
-ms.openlocfilehash: 1745ca176fac18b4903686cb556670531ee40a1a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a575462d09b64bd7a5d32c9cd5cc0a603e84694
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244755"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417765"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Vytvoření virtuálního počítače se statickou privátní IP adresou pomocí PowerShellu
 
@@ -33,7 +34,7 @@ Virtuální počítač (VM) můžete vytvořit se statickou privátní IP adreso
 
 Následující kroky můžete provést z místního počítače nebo pomocí Azure Cloud Shell. Pokud chcete použít místní počítač, ujistěte se, že máte [nainstalovanou Azure PowerShell](/powershell/azure/install-az-ps?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu libovolného příkazového řádku, který následuje. Cloud Shell vás přihlásí k Azure.
 
-1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k `Connect-AzAccount`Azure pomocí.
+1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k Azure pomocí `Connect-AzAccount` .
 2. Vytvořte skupinu prostředků pomocí příkazu [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) . Následující příklad vytvoří skupinu prostředků v Východní USA oblasti Azure:
 
    ```azurepowershell-interactive

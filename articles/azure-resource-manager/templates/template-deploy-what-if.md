@@ -3,14 +3,14 @@ title: Template deployment co-if (Preview)
 description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/04/2020
 ms.author: tomfitz
-ms.openlocfilehash: 31ef0f26043c416ff902fe792bae064c63f15b20
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 62f46d158bea9507246fda7f24750c3743a5e1f1
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84218291"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424240"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Operace nasazení šablony ARM – if (Preview)
 
@@ -19,19 +19,23 @@ Před nasazením šablony Azure Resource Manager (ARM) můžete zobrazit náhled
 > [!NOTE]
 > Operace citlivosti je aktuálně ve verzi Preview. Ve verzi Preview můžou výsledky někdy Ukázat, že se prostředek změní, když se ve skutečnosti žádná změna nestane. Pracujeme na tom, abychom tyto problémy snížili, ale potřebujeme vaši technickou podporu. Nahlaste tyto problémy na adrese [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 
-Můžete použít operaci s citlivostní operací s Azure PowerShell, Azure CLI nebo REST API operacemi.
+Můžete použít operaci s citlivostní operací s Azure PowerShell, Azure CLI nebo REST API operacemi. Co když je podporováno pro nasazení na úrovni skupiny prostředků a předplatného.
 
-## <a name="install-powershell-module"></a>Nainstalovat modul prostředí PowerShell
+## <a name="install-azure-powershell-module"></a>Nainstalovat modul Azure PowerShell
 
-Pokud chcete v PowerShellu použít co dělat, musíte nainstalovat verzi Preview modulu AZ. Resources z Galerie prostředí PowerShell. Než však modul nainstalujete, ujistěte se, že máte PowerShell Core (6. x nebo 7. x). Pokud máte PowerShell 5. x nebo starší, [aktualizujte svou verzi PowerShellu](/powershell/scripting/install/installing-powershell). Modul pro náhled nemůžete nainstalovat do PowerShellu 5. x nebo staršího.
+Pokud chcete v PowerShellu použít co v prostředí PowerShell, musíte mít verzi **4,2 nebo novější z modulu AZ Module**.
 
-### <a name="install-preview-version"></a>Verze Preview instalace
+Než ale nainstalujete požadovaný modul, ujistěte se, že máte PowerShell Core (6. x nebo 7. x). Pokud máte PowerShell 5. x nebo starší, [aktualizujte svou verzi PowerShellu](/powershell/scripting/install/installing-powershell). Požadovaný modul nejde nainstalovat do PowerShellu 5. x nebo staršího.
 
-Pokud chcete nainstalovat modul verze Preview, použijte:
+### <a name="install-latest-version"></a>Nainstalovat nejnovější verzi
+
+K instalaci modulu použijte:
 
 ```powershell
-Install-Module Az.Resources -RequiredVersion 1.12.1-preview -AllowPrerelease
+Install-Module -Name Az -Force
 ```
+
+Další informace o instalaci modulů najdete v tématu [Install Azure PowerShell](/powershell/azure/install-az-ps).
 
 ### <a name="uninstall-alpha-version"></a>Odinstalace verze Alpha
 
@@ -101,7 +105,7 @@ Resource changes: 1 to modify.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Chcete-li zobrazit náhled změn před nasazením šablony, přidejte `-Whatif` do příkazu Deployment parametr Switch.
+Chcete-li zobrazit náhled změn před nasazením šablony, použijte [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) nebo [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment). Přidejte `-Whatif` parametr Switch do příkazu pro nasazení.
 
 * `New-AzResourceGroupDeployment -Whatif`pro nasazení skupin prostředků
 * `New-AzSubscriptionDeployment -Whatif`a `New-AzDeployment -Whatif` pro nasazení na úrovni předplatného
@@ -111,19 +115,19 @@ Pomocí `-Confirm` parametru Switch můžete zobrazit náhled změn a zobrazit v
 * `New-AzResourceGroupDeployment -Confirm`pro nasazení skupin prostředků
 * `New-AzSubscriptionDeployment -Confirm`a `New-AzDeployment -Confirm` pro nasazení na úrovni předplatného
 
-Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolovat. Chcete-li získat objekt, který lze programově kontrolovat změny, použijte:
+Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolovat. Chcete-li získat objekt, který můžete programově kontrolovat změny, použijte příkaz [Get-AzResourceGroupDeploymentWhatIfResult](/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult) nebo [Get-AzSubscriptionDeploymentWhatIfResult](/powershell/module/az.resources/get-azdeploymentwhatifresult).
 
 * `$results = Get-AzResourceGroupDeploymentWhatIfResult`pro nasazení skupin prostředků
 * `$results = Get-AzSubscriptionDeploymentWhatIfResult`nebo `$results = Get-AzDeploymentWhatIfResult` pro nasazení na úrovni předplatného
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Chcete-li zobrazit náhled změn před nasazením šablony, použijte `what-if` příkaz s příkazem nasazení.
+Chcete-li zobrazit náhled změn před nasazením šablony, použijte příkaz [AZ Deployment Group Co-if](/cli/azure/deployment/group#az-deployment-group-what-if) nebo [AZ Deployment sub co if](/cli/azure/deployment/sub#az-deployment-sub-what-if).
 
 * `az deployment group what-if`pro nasazení skupin prostředků
 * `az deployment sub what-if`pro nasazení na úrovni předplatného
 
-Můžete použít `--confirm-with-what-if` přepínač (nebo jeho krátký tvar `-c` ) k zobrazení náhledu změn a zobrazení výzvy k pokračování v nasazení.
+Můžete použít `--confirm-with-what-if` přepínač (nebo jeho krátký tvar `-c` ) k zobrazení náhledu změn a zobrazení výzvy k pokračování v nasazení. Přidejte tento přepínač na [AZ Deployment Group Create](/cli/azure/deployment/group#az-deployment-group-create) nebo [AZ Deployment sub Create](/cli/azure/deployment/sub#az-deployment-sub-create).
 
 * `az deployment group create --confirm-with-what-if`nebo `-c` pro nasazení skupin prostředků
 * `az deployment sub create --confirm-with-what-if`nebo `-c` pro nasazení na úrovni předplatného

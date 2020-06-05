@@ -5,16 +5,16 @@ description: Nastavte VS Code vzdálené na interaktivní ladění kódu pomocí
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jmartens
 author: j-martens
 ms.date: 12/09/2019
-ms.openlocfilehash: 1999d29db21f820fbcdbca08f2258b657673be3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19d4b6e7994450eacacab51e9a01cbf58eab803a
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77169758"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433134"
 ---
 # <a name="debug-interactively-on-an-azure-machine-learning-compute-instance-with-vs-code-remote"></a>Interaktivně se ladit na Azure Machine Learning výpočetní instanci s VS Code Vzdálená
 
@@ -34,7 +34,7 @@ Na platformách systému Windows je nutné [nainstalovat klienta ssh kompatibiln
 
 ## <a name="get-ip-and-ssh-port"></a>Získat port IP a SSH 
 
-1. Přejít na Azure Machine Learning studia na adrese https://ml.azure.com/.
+1. Přejít na Azure Machine Learning studia na adrese https://ml.azure.com/ .
 
 2. Vyberte svůj [pracovní prostor](concept-workspace.md).
 1. Klikněte na kartu **výpočetní instance** .
@@ -70,7 +70,7 @@ Na platformách systému Windows je nutné [nainstalovat klienta ssh kompatibiln
 
 ## <a name="add-instance-as-a-host"></a>Přidat instanci jako hostitele 
 
-V editoru otevřete `~/.ssh/config` soubor (Linux) `C:\Users<username>.ssh\config` nebo (Windows) a přidejte novou položku podobnou této:
+`~/.ssh/config`V editoru otevřete soubor (Linux) nebo `C:\Users<username>.ssh\config` (Windows) a přidejte novou položku podobnou této:
 
 ```
 Host azmlci1 
@@ -86,7 +86,7 @@ Host azmlci1
 
 Zde jsou některé podrobnosti o polích: 
 
-|Pole|Popis|
+|Pole|Description|
 |----|---------|
 |Hostitel|Použijte libovolné zkratky, které chcete použít pro instanci služby Compute. |
 |HostName|Toto je IP adresa instance Compute. |
@@ -94,7 +94,7 @@ Zde jsou některé podrobnosti o polích:
 |Uživatel|To je nutné `azureuser` |
 |IdentityFile|Měl by odkazovat na soubor, kam jste uložili soukromý klíč. |
 
-Nyní byste měli být schopni získat SSH na vaši instanci služby COMPUTE pomocí zkratky, kterou jste použili výše `ssh azmlci1`. 
+Nyní byste měli být schopni získat SSH na vaši instanci služby COMPUTE pomocí zkratky, kterou jste použili výše `ssh azmlci1` . 
 
 ## <a name="connect-vs-code-to-the-instance"></a>Připojit VS Code k instanci 
 

@@ -5,18 +5,18 @@ description: Vytvářejte, kontrolujte a nasaďte automatizované modely strojov
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: nibaccam
 author: aniththa
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 05/20/2020
-ms.openlocfilehash: 20d98f8eb4971d2aba1ecfbf8abeaba261cde8c4
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 7335eee191d87ba34e32a5f7842c088d8ea4cb3e
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84115863"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431570"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Vytvářejte, kontrolujte a nasaďte automatizované modely strojového učení pomocí Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -70,7 +70,7 @@ V opačném případě se zobrazí seznam nedávných automatizovaných experime
         ----|----
         Formát souboru| Definuje rozložení a typ dat uložených v souboru.
         Oddělovač| Jeden nebo více znaků pro určení hranice mezi oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech.
-        Encoding| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
+        Kódování| Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.
     
@@ -142,7 +142,7 @@ V rámci datové sady můžete získat velké množství různých souhrnných s
 
 Údaj|Description
 ------|------
-Funkce| Název sloupce, který je sumarizován.
+Příznak| Název sloupce, který je sumarizován.
 Profil| Vložená vizualizace na základě typu odvozeného. Například řetězce, logické hodnoty a data budou mít počty hodnot, zatímco desetinná místa (číslice) mají přibližné histogramy. To vám umožní získat rychlé porozumění distribuci dat.
 Distribuce typu| Počet vložené hodnoty typů v rámci sloupce. Hodnoty null jsou jejich vlastní typ, takže tato vizualizace je užitečná pro zjištění lichých nebo chybějících hodnot.
 Typ|Odvozený typ sloupce. Možné hodnoty jsou: řetězce, logické hodnoty, kalendářní data a desetinná místa.

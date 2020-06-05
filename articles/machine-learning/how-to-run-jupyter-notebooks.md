@@ -8,14 +8,14 @@ ms.author: osomorog
 ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/21/2020
-ms.openlocfilehash: ccdb2b24499c86a54909b2617abd7e9bf294a261
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b8869eee4e44001f5d4aeafbbdb32f93f0a7e0c8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220199"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433330"
 ---
 # <a name="how-to-run-jupyter-notebooks-in-your-workspace-preview"></a>Jak spustit poznámkové bloky Jupyter v pracovním prostoru (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

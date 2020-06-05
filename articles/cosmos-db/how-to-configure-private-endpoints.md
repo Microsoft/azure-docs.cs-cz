@@ -4,14 +4,14 @@ description: Přečtěte si, jak nastavit privátní odkaz Azure pro přístup k
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 06/04/2020
 ms.author: thweiss
-ms.openlocfilehash: c5b82e8cdea49f8dd761844ff5492df0ad109943
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: b05fa32529372a89ff441b953f001dc2ab1b5606
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116666"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431654"
 ---
 # <a name="configure-azure-private-link-for-an-azure-cosmos-account"></a>Konfigurace privátního odkazu Azure pro účet Azure Cosmos
 
@@ -628,6 +628,10 @@ Při použití privátního odkazu v kombinaci s pravidly brány firewall jsou m
 
 Jak je popsáno v předchozí části, a pokud nejsou nastavená konkrétní pravidla brány firewall, přidání privátního koncového bodu zpřístupňuje účet Azure Cosmos jenom prostřednictvím privátních koncových bodů. To znamená, že účet Azure Cosmos je možné dosáhnout z veřejného provozu po jeho vytvoření a před přidáním privátního koncového bodu. Abyste se ujistili, že je přístup k veřejné síti zakázán dokonce i před vytvořením privátních koncových bodů, můžete nastavit `publicNetworkAccess` příznak `Disabled` při vytváření účtu. V [této Azure Resource Manager šabloně](https://azure.microsoft.com/resources/templates/101-cosmosdb-private-endpoint/) najdete příklad ukazující použití tohoto příznaku.
 
+## <a name="port-range-when-using-direct-mode"></a>Rozsah portů při použití přímého režimu
+
+Pokud používáte privátní propojení s účtem Azure Cosmos prostřednictvím připojení k přímému režimu, musíte zajistit, aby byl otevřený plný rozsah portů TCP (0-65535).
+
 ## <a name="update-a-private-endpoint-when-you-add-or-remove-a-region"></a>Aktualizace privátního koncového bodu při přidání nebo odebrání oblasti
 
 Přidání nebo odebrání oblastí pro účet Azure Cosmos vyžaduje, abyste přidali nebo odebrali položky DNS pro tento účet. Po přidání nebo odebrání oblastí můžete aktualizovat privátní zónu DNS podsítě tak, aby odrážela přidané nebo odebrané položky DNS a odpovídající privátní IP adresy.
@@ -642,7 +646,7 @@ Stejný postup můžete použít při odebrání oblasti. Po odebrání této ob
 
 Pokud používáte privátní propojení s účtem Azure Cosmos, platí následující omezení:
 
-* Pokud používáte privátní propojení s účtem Azure Cosmos pomocí připojení přímého režimu, můžete použít jenom protokol TCP. Protokol HTTP se v tuto chvíli nepodporuje.
+* Pokud používáte privátní propojení s účtem Azure Cosmos prostřednictvím připojení přímého režimu, můžete použít jenom protokol TCP. Protokol HTTP se v tuto chvíli nepodporuje.
 
 * Pokud používáte rozhraní API Azure Cosmos DB pro účty MongoDB, pro účty na serveru verze 3,6 se podporuje privátní koncový bod (tj. účty používající koncový bod ve formátu `*.mongo.cosmos.azure.com` ). Pro účty na serveru verze 3,2 (tj. účty používající koncový bod ve formátu) se nepodporuje privátní propojení `*.documents.azure.com` . Pro použití privátního odkazu byste měli migrovat staré účty na novou verzi.
 

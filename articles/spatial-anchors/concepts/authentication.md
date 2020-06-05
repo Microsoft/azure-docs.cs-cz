@@ -1,19 +1,19 @@
 ---
 title: Ověřování a autorizace
 description: Seznamte se s různými způsoby, jak se aplikace nebo služba může ověřit pro prostorové kotvy Azure, a úrovně řízení, které musíte mít v bráně přístup k prostorovým kotvám Azure.
-author: julianparismorgan
+author: craigktreasure
 manager: vriveras
 services: azure-spatial-anchors
-ms.author: pmorgan
+ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 9a3b326f97246ffac386ad43cfa08ce413eea899
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 8a64c8cabe91bb7bbfb533b38a32f58a82fd3351
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653371"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434384"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Ověřování a autorizace pro prostorové kotvy Azure
 
@@ -39,7 +39,6 @@ Ověřovací tokeny Azure AD lze získat dvěma způsoby:
 Nejjednodušší způsob, jak začít, je použití klíčů účtu pro přístup k účtu prostorových kotev Azure. Klíče účtu najdete na Azure Portal. Přejděte ke svému účtu a vyberte kartu klíče.
 
 ![Přehled ověřování pro prostorové kotvy Azure](../../../includes/media/spatial-anchors-get-started-create-resource/view-account-key.png)
-
 
 K dispozici jsou dva klíče, které jsou současně platné pro přístup k účtu prostorových kotev. Doporučuje se pravidelně aktualizovat klíč, který používáte pro přístup k účtu. Existují dva samostatné platné klíče, které tyto aktualizace umožňují bez výpadků; musíte aktualizovat jenom primární klíč a sekundární klíč.
 

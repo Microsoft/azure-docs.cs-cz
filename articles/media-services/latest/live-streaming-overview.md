@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 03/18/2020
 ms.author: juliako
-ms.openlocfilehash: ee9dfc11cad61d6190ae4a2382f0124207c32c4c
-ms.sourcegitcommit: c8a0fbfa74ef7d1fd4d5b2f88521c5b619eb25f8
+ms.openlocfilehash: 23ee7ba7a5456916eb307e21aa2074924614cb4b
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82801616"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418139"
 ---
 # <a name="live-streaming-with-azure-media-services-v3"></a>Živé streamování s Azure Media Services V3
 
@@ -30,12 +30,14 @@ Azure Media Services vám umožní doručovat živé události zákazníkům v c
 - Živý kodér videa, který převede signály z fotoaparátu (nebo jiného zařízení, jako je notebook) do informačního kanálu příspěvků, který je odeslán do Media Services. Informační kanál příspěvku může zahrnovat signály týkající se reklamy, jako jsou například značky SCTE-35.<br/>Seznam doporučených kodérů živého streamování najdete v tématu [kodéry živého streamování](recommended-on-premises-live-encoders.md). Podívejte se také na tento blog: [živá streamovaná výroba pomocí OBS](https://link.medium.com/ttuwHpaJeT).
 - Komponenty v Media Services, které umožňují ingestovat, zobrazovat náhled, zabalit, nahrávat, šifrovat a vysílat živou událost vašim zákazníkům nebo do sítě CDN pro další distribuci.
 
+Pro zákazníky, kteří chtějí doručovat obsah do rozsáhlých internetových cílových skupin, doporučujeme povolit CDN pro [koncový bod streamování](streaming-endpoint-concept.md).
+
 Tento článek poskytuje přehled a pokyny pro živé streamování pomocí Media Services a odkazy na další relevantní články.
  
 > [!NOTE]
 > Pomocí [Azure Portal](https://portal.azure.com/) můžete spravovat V3 [Live události](live-events-outputs-concept.md), zobrazit [prostředky](assets-concept.md)v3 a získat informace o přístupu k rozhraním API. Pro všechny ostatní úlohy správy (například transformace a úlohy) použijte [REST API](https://docs.microsoft.com/rest/api/media/), [CLI](https://aka.ms/ams-v3-cli-ref)nebo jednu z podporovaných [sad SDK](media-services-apis-overview.md#sdks).
 
-## <a name="dynamic-packaging"></a>Dynamické balení
+## <a name="dynamic-packaging-and-delivery"></a>Dynamické balení a doručování
 
 Pomocí Media Services můžete využít výhod [dynamického balení](dynamic-packaging-overview.md), které umožňuje zobrazit náhled a vysílání vašich živých streamů v [formátech MPEG pomlčky, HLS a Smooth Streaming](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming) z informačního kanálu příspěvku, který se posílá do služby. Vaši uživatelé můžou přehrát živý datový proud pomocí libovolných kompatibilních přehrávačů HLS, POMLČEK nebo Smooth Streaming. Ve webových nebo mobilních aplikacích můžete použít [Azure Media Player](https://amp.azure.net/libs/amp/latest/docs/index.html) k doručování datového proudu v libovolném z těchto protokolů.
 
@@ -46,13 +48,13 @@ Dynamické šifrování vám umožní dynamicky šifrovat živý a na vyžádán
 > [!NOTE]
 > Widevine je služba od společnosti Google Inc. v souladu s podmínkami služby a zásadami ochrany osobních údajů Google, Inc.
 
-## <a name="dynamic-manifest"></a>Dynamický manifest
+## <a name="dynamic-filtering"></a>Dynamické filtrování
 
 Dynamické filtrování se používá k řízení počtu běhů, formátů, přenosových rychlostí a oken doby prezentace, které se odesílají přehrávačům. Další informace najdete v tématu [filtry a dynamické manifesty](filters-dynamic-manifest-overview.md).
 
 ## <a name="live-event-types"></a>Typy živých událostí
 
-[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) zodpovídají za ingestování a zpracování informačních kanálů živého videa. Živá událost může být nastavená na *předávací* (místní živý kodér posílá datový proud s více přenosovými rychlostmi) nebo *živé kódování* (místní kodér Live Encoder posílá datový proud s jednou přenosovou rychlostí). Podrobnosti o živém streamování v Media Services V3 najdete v tématu [živé události a živé výstupy](live-events-outputs-concept.md).
+[Živé události](https://docs.microsoft.com/rest/api/media/liveevents) jsou zodpovědné za ingestování a zpracování aktivních informačních kanálů. Živá událost může být nastavená na *předávací* (místní živý kodér posílá datový proud s více přenosovými rychlostmi) nebo *živé kódování* (místní kodér Live Encoder posílá datový proud s jednou přenosovou rychlostí). Podrobnosti o živém streamování v Media Services V3 najdete v tématu [živé události a živé výstupy](live-events-outputs-concept.md).
 
 ### <a name="pass-through"></a>Průchod
 
@@ -78,7 +80,7 @@ Pokud používáte kódování cloudu s Media Services, nakonfigurujete svůj m�
 Abyste pochopili pracovní postup živého streamování v Media Services V3, musíte si nejdřív projít a porozumět následujícím koncepcím: 
 
 - [Koncové body streamování](streaming-endpoint-concept.md)
-- [Živé události a výstupy](live-events-outputs-concept.md)
+- [Živé události a živé výstupy](live-events-outputs-concept.md)
 - [Lokátory streamování](streaming-locators-concept.md)
 
 ### <a name="general-steps"></a>Obecné kroky
@@ -104,7 +106,7 @@ Abyste pochopili pracovní postup živého streamování v Media Services V3, mu
 
     * Zastavte odesílání datového proudu z kodéru.
     * Zastaví živou událost. Jakmile se živá událost zastaví, neúčtují se žádné poplatky. Když bude potřeba kanál znovu spustit, bude mít stejnou ingestovanou adresu URL, takže nebude nutné kodér znovu konfigurovat.
-    * Pokud nechcete pokračovat v poskytování archivu živé události ve formě datového proudu na vyžádání, můžete koncový bod streamování zastavit. Pokud je živá událost v zastaveném stavu, neúčtují se žádné poplatky.
+    * Koncový bod streamování můžete zastavit, pokud nechcete pokračovat v poskytování archivu živé události jako Stream na vyžádání. Pokud je živá událost v zastaveném stavu, neúčtují se žádné poplatky.
 
 Asset, do kterého se živý výstup archivuje, se automaticky stal Assetem na vyžádání, když se odstraní živý výstup. Aby bylo možné zastavit živou událost, je nutné odstranit všechny živé výstupy. Pomocí volitelného příznaku [removeOutputsOnStop](https://docs.microsoft.com/rest/api/media/liveevents/stop#request-body) můžete automaticky odebrat živé výstupy při zastavení. 
 

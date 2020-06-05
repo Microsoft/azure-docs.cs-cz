@@ -2,13 +2,13 @@
 title: Nasazení prostředků pomocí Azure CLI a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure CLI. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
-ms.date: 04/20/2020
-ms.openlocfilehash: 8ee15699a085178add05137be895fe6b660b715b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: a2a1c1fe63d0a841f57407ed5402d7ddca3fcea4
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685690"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432076"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-cli"></a>Nasazení prostředků pomocí šablon ARM a Azure CLI
 
@@ -26,35 +26,35 @@ Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro spr
 
 V závislosti na rozsahu nasazení použijete jiné příkazy.
 
-Pokud ho chcete nasadit do **skupiny prostředků**, použijte příkaz [AZ Deployment Group Create](/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create):
+* Pokud ho chcete nasadit do **skupiny prostředků**, použijte příkaz [AZ Deployment Group Create](/cli/azure/deployment/group?view=azure-cli-latest#az-deployment-group-create):
 
-```azurecli-interactive
-az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
-```
+  ```azurecli-interactive
+  az deployment group create --resource-group <resource-group-name> --template-file <path-to-template>
+  ```
 
-K nasazení do **předplatného**použijte [AZ Deployment sub Create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create):
+* K nasazení do **předplatného**použijte [AZ Deployment sub Create](/cli/azure/deployment/sub?view=azure-cli-latest#az-deployment-sub-create):
 
-```azurecli-interactive
-az deployment sub create --location <location> --template-file <path-to-template>
-```
+  ```azurecli-interactive
+  az deployment sub create --location <location> --template-file <path-to-template>
+  ```
 
-Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
+  Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
-Pokud ho chcete nasadit do **skupiny pro správu**, použijte příkaz [AZ Deployment mg Create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create):
+* Pokud ho chcete nasadit do **skupiny pro správu**, použijte příkaz [AZ Deployment mg Create](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-create):
 
-```azurecli-interactive
-az deployment mg create --location <location> --template-file <path-to-template>
-```
+  ```azurecli-interactive
+  az deployment mg create --location <location> --template-file <path-to-template>
+  ```
 
-Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
+  Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
 
-K nasazení do **tenanta**použijte [AZ Deployment tenant Create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create):
+* K nasazení do **tenanta**použijte [AZ Deployment tenant Create](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-create):
 
-```azurecli-interactive
-az deployment tenant create --location <location> --template-file <path-to-template>
-```
+  ```azurecli-interactive
+  az deployment tenant create --location <location> --template-file <path-to-template>
+  ```
 
-Další informace o nasazeních na úrovni tenanta najdete v tématu [vytvoření prostředků na úrovni tenanta](deploy-to-tenant.md).
+  Další informace o nasazeních na úrovni tenanta najdete v tématu [vytvoření prostředků na úrovni tenanta](deploy-to-tenant.md).
 
 Příklady v tomto článku používají nasazení skupin prostředků.
 
@@ -102,6 +102,10 @@ az deployment group create \
 
 Předchozí příklad vyžaduje pro šablonu veřejně přístupný identifikátor URI, který funguje ve většině scénářů, protože by šablona neměla obsahovat citlivá data. Pokud potřebujete zadat citlivá data (třeba heslo správce), předejte tuto hodnotu jako zabezpečený parametr. Pokud ale nechcete, aby byla šablona veřejně přístupná, můžete ji chránit uložením do privátního kontejneru úložiště. Informace o nasazení šablony, která vyžaduje token sdíleného přístupového podpisu (SAS), najdete v tématu [nasazení privátní šablony s tokenem SAS](secure-template-with-sas-token.md).
 
+## <a name="preview-changes"></a>Zobrazit náhled změn
+
+Před nasazením šablony můžete zobrazit náhled změn, které šablona provede pro vaše prostředí. Pomocí [operace citlivosti](template-deploy-what-if.md) ověřte, že šablona provádí očekávané změny. Co když zároveň ověří chyby v šabloně.
+
 [!INCLUDE [resource-manager-cloud-shell-deploy.md](../../../includes/resource-manager-cloud-shell-deploy.md)]
 
 V Cloud Shell použijte následující příkazy:
@@ -119,7 +123,7 @@ K předání hodnot parametrů můžete použít buď vložené parametry, nebo 
 
 ### <a name="inline-parameters"></a>Vložené parametry
 
-Chcete-li předat vložené parametry, zadejte hodnoty `parameters`v. Například pro předání řetězce a pole do šablony je bash shell, použijte:
+Chcete-li předat vložené parametry, zadejte hodnoty v `parameters` . Například pro předání řetězce a pole do šablony je bash shell, použijte:
 
 ```azurecli-interactive
 az deployment group create \
@@ -128,7 +132,7 @@ az deployment group create \
   --parameters exampleString='inline string' exampleArray='("value1", "value2")'
 ```
 
-Pokud používáte Azure CLI s příkazovým řádkem (CMD) nebo prostředím PowerShell pro Windows, předejte pole ve `exampleArray="['value1','value2']"`formátu:.
+Pokud používáte Azure CLI s příkazovým řádkem (CMD) nebo prostředím PowerShell pro Windows, předejte pole ve formátu: `exampleArray="['value1','value2']"` .
 
 Obsah souboru můžete také získat a poskytnout ho jako vložený parametr.
 
@@ -156,7 +160,7 @@ Místo předání parametrů jako vložených hodnot do skriptu může být snaz
 
 Další informace o souboru parametrů naleznete v tématu [Create správce prostředků Parameter File](parameter-files.md).
 
-Chcete-li předat místní soubor parametrů, `@` použijte k určení místního souboru s názvem Storage. Parameters. JSON.
+Chcete-li předat místní soubor parametrů, použijte `@` k určení místního souboru s názvem Storage. Parameters. JSON.
 
 ```azurecli-interactive
 az deployment group create \
@@ -168,7 +172,7 @@ az deployment group create \
 
 ## <a name="handle-extended-json-format"></a>Zpracovat rozšířený formát JSON
 
-Pokud chcete nasadit šablonu s víceřádkovými řetězci nebo komentáři pomocí rozhraní příkazového řádku Azure s verzí 2.3.0 nebo starší, musíte `--handle-extended-json-format` použít přepínač.  Příklad:
+Pokud chcete nasadit šablonu s víceřádkovými řetězci nebo komentáři pomocí rozhraní příkazového řádku Azure s verzí 2.3.0 nebo starší, musíte použít `--handle-extended-json-format` přepínač.  Příklad:
 
 ```json
 {
@@ -188,57 +192,6 @@ Pokud chcete nasadit šablonu s víceřádkovými řetězci nebo komentáři pom
   ],
 ```
 
-## <a name="test-a-template-deployment"></a>Testování nasazení šablony
-
-K otestování svých šablon a hodnot parametrů bez skutečného nasazení prostředků použijte příkaz [AZ Deployment Group Validate](/cli/azure/group/deployment).
-
-```azurecli-interactive
-az deployment group validate \
-  --resource-group ExampleGroup \
-  --template-file storage.json \
-  --parameters @storage.parameters.json
-```
-
-Pokud nejsou zjištěny žádné chyby, příkaz vrátí informace o testovacím nasazení. Konkrétně si všimněte, že hodnota **chyby** je null.
-
-```output
-{
-  "error": null,
-  "properties": {
-      ...
-```
-
-Pokud se zjistí chyba, vrátí příkaz chybovou zprávu. Například předáním nesprávné hodnoty SKU účtu úložiště vrátí následující chybu:
-
-```output
-{
-  "error": {
-    "code": "InvalidTemplate",
-    "details": null,
-    "message": "Deployment template validation failed: 'The provided value 'badSKU' for the template parameter
-      'storageAccountType' at line '13' and column '20' is not valid. The parameter value is not part of the allowed
-      value(s): 'Standard_LRS,Standard_ZRS,Standard_GRS,Standard_RAGRS,Premium_LRS'.'.",
-    "target": null
-  },
-  "properties": null
-}
-```
-
-Pokud má vaše šablona syntaktickou chybu, příkaz vrátí chybu oznamující, že nešlo analyzovat šablonu. Zpráva indikuje číslo řádku a umístění chyby analýzy.
-
-```output
-{
-  "error": {
-    "code": "InvalidTemplate",
-    "details": null,
-    "message": "Deployment template parse failed: 'After parsing a value an unexpected character was encountered:
-      \". Path 'variables', line 31, position 3.'.",
-    "target": null
-  },
-  "properties": null
-}
-```
-
 ## <a name="next-steps"></a>Další kroky
 
 - Chcete-li se vrátit k úspěšnému nasazení, když se zobrazí chyba, přečtěte si téma [vrácení chyby při úspěšném nasazení](rollback-on-error.md).
@@ -246,4 +199,3 @@ Pokud má vaše šablona syntaktickou chybu, příkaz vrátí chybu oznamující
 - Informace o definování parametrů v šabloně najdete v tématu [pochopení struktury a syntaxe šablon ARM](template-syntax.md).
 - Tipy k řešení běžných chyb nasazení najdete v tématu [řešení běžných chyb při nasazení Azure pomocí Azure Resource Manager](common-deployment-errors.md).
 - Informace o nasazení šablony, která vyžaduje token SAS, najdete v tématu [nasazení privátní šablony s tokenem SAS](secure-template-with-sas-token.md).
-- Pokud chcete službu bezpečně zavést do více než jedné oblasti, přečtěte si [Azure Deployment Manager](deployment-manager-overview.md).

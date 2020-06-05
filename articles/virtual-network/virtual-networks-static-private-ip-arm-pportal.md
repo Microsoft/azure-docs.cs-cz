@@ -8,18 +8,19 @@ manager: twooley
 tags: azure-resource-manager
 ms.assetid: 11245645-357d-4358-9a14-dd78e367b494
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
-ms.openlocfilehash: 946926a8a805ec3c53ea3c57dc3eded2462f7673
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 04e936fe4a6d514b000b08ddf11b52d0e524d98e
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461544"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417867"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Konfigurace privátní IP adresy pro virtuální počítač pomocí Azure Portal
 
@@ -45,10 +46,10 @@ Pokud chcete vytvořit virtuální počítač s názvem *DNS01* v podsíti *fron
 1. V nabídce [Azure Portal](https://portal.azure.com) vyberte **vytvořit prostředek**.
 
     ![Vytvořte prostředek Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-resource.png)
-2. Vyberte **výpočetní** > **virtuální počítač**.
+2. Vyberte **výpočetní**  >  **virtuální počítač**.
 
     ![Vytvoření virtuálního počítače, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
-3. V části **základy**zadejte hodnoty pro položky, jak je popsáno v následující tabulce. Pak vyberte **Další&nbsp;:&nbsp;disky** a pak **Další&nbsp;:&nbsp;sítě**.
+3. V části **základy**zadejte hodnoty pro položky, jak je popsáno v následující tabulce. Pak vyberte **Další &nbsp; : &nbsp; disky** a pak **Další &nbsp; : &nbsp; sítě**.
 
     | Položka | Hodnota |
     | --- | --- |
@@ -71,7 +72,7 @@ Pokud chcete vytvořit virtuální počítač s názvem *DNS01* v podsíti *fron
     | **Podsíť** | **FrontEnd** |
 
     ![Karta sítě, vytvořte virtuální počítač Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-networking.png)
-5. V části **Správa**vyberte v části **účet úložiště diagnostiky**možnost **vnetstorage**. Pokud se tento účet úložiště v seznamu nezobrazuje, vyberte **vytvořit nový**, zadejte **název** *vnetstorage*a vyberte **OK**. Nakonec vyberte **zkontrolovat&nbsp;+&nbsp;vytvořit**.
+5. V části **Správa**vyberte v části **účet úložiště diagnostiky**možnost **vnetstorage**. Pokud se tento účet úložiště v seznamu nezobrazuje, vyberte **vytvořit nový**, zadejte **název** *vnetstorage*a vyberte **OK**. Nakonec vyberte **zkontrolovat &nbsp; + &nbsp; vytvořit**.
 
     ![Karta Správa, vytvořit virtuální počítač, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-management.png)
 6. V části **Revize + vytvořit**zkontrolujte informace o přehledu a potom vyberte **vytvořit**.

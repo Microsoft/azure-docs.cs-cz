@@ -5,18 +5,18 @@ description: Naučte se, jak získat přístup k pracovnímu prostoru Azure Mach
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: Blackmist
 ms.date: 03/06/2020
 ms.custom: seodec18
-ms.openlocfilehash: 127a0a2b7f7573db91df9347169e90de3e14c4c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9763cc0d93e6731bb42bcc55f9d8bf9463e2b0dd
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270092"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434677"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Správa přístupu k pracovnímu prostoru Azure Machine Learning
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -42,7 +42,7 @@ Další informace o konkrétních předdefinovaných rolích najdete v tématu [
 
 Pokud jste vlastníkem pracovního prostoru, můžete přidat a odebrat role pro pracovní prostor. Role můžete přiřadit také uživatelům. Pomocí následujících odkazů zjistíte, jak spravovat přístup:
 - [Azure Portal UI](/azure/role-based-access-control/role-assignments-portal)
-- [Prostředí](/azure/role-based-access-control/role-assignments-powershell)
+- [PowerShell](/azure/role-based-access-control/role-assignments-powershell)
 - [Azure CLI](/azure/role-based-access-control/role-assignments-cli)
 - [REST API](/azure/role-based-access-control/role-assignments-rest)
 - [Šablony Azure Resource Manageru](/azure/role-based-access-control/role-assignments-template)
@@ -87,7 +87,7 @@ Chcete-li vytvořit vlastní roli, nejprve Sestavte soubor JSON definice role, k
 }
 ```
 
-`AssignableScopes` Pole můžete změnit, pokud chcete nastavit rozsah této vlastní role na úrovni předplatného, na úrovni skupiny prostředků nebo na konkrétní úrovni pracovního prostoru.
+Pole můžete změnit, pokud `AssignableScopes` chcete nastavit rozsah této vlastní role na úrovni předplatného, na úrovni skupiny prostředků nebo na konkrétní úrovni pracovního prostoru.
 
 Tato vlastní role může dělat všechno v pracovním prostoru s výjimkou následujících akcí:
 
@@ -102,7 +102,7 @@ K nasazení této vlastní role použijte následující příkaz rozhraní př�
 az role definition create --role-definition data_scientist_role.json
 ```
 
-Po nasazení bude tato role k dispozici v zadaném pracovním prostoru. Nyní můžete tuto roli přidat a přiřadit v Azure Portal. Nebo můžete tuto roli přiřadit uživateli pomocí příkazu `az ml workspace share` CLI:
+Po nasazení bude tato role k dispozici v zadaném pracovním prostoru. Nyní můžete tuto roli přidat a přiřadit v Azure Portal. Nebo můžete tuto roli přiřadit uživateli pomocí `az ml workspace share` příkazu CLI:
 
 ```azurecli-interactive
 az ml workspace share -w my_workspace -g my_resource_group --role "Data Scientist" --user jdoe@contoson.com
@@ -118,7 +118,7 @@ Další informace o operacích (akcích) použitelných s vlastními rolemi najd
 
 ### <a name="q-what-are-the-permissions-needed-to-perform-various-actions-in-the-azure-machine-learning-service"></a>Otázka: Jaká jsou oprávnění potřebná k provádění různých akcí ve službě Azure Machine Learning?
 
-Následující tabulka představuje souhrn Azure Machine Learningch aktivit a oprávnění, která jsou potřebná k jejich provedení v nejmenším rozsahu. Jako příklad, pokud je možné aktivitu provést s rozsahem pracovního prostoru (sloupce 4), budou automaticky fungovat i všechny vyšší obory s tímto oprávněním. Všechny cesty v této tabulce jsou **relativní cesty** k `Microsoft.MachineLearningServices/`.
+Následující tabulka představuje souhrn Azure Machine Learningch aktivit a oprávnění, která jsou potřebná k jejich provedení v nejmenším rozsahu. Jako příklad, pokud je možné aktivitu provést s rozsahem pracovního prostoru (sloupce 4), budou automaticky fungovat i všechny vyšší obory s tímto oprávněním. Všechny cesty v této tabulce jsou **relativní cesty** k `Microsoft.MachineLearningServices/` .
 
 | Aktivita | Rozsah na úrovni předplatného | Rozsah na úrovni skupiny prostředků | Rozsah na úrovni pracovního prostoru |
 |---|---|---|---|
@@ -139,7 +139,7 @@ az role definition list --subscription <sub-id> --custom-role-only true
 
 ### <a name="q-how-do-i-find-the-role-definition-for-a-role-in-my-subscription"></a>Otázka: Návody v předplatném najít definici role pro roli?
 
-V rozhraní příkazového řádku Azure CLI spusťte následující příkaz. Všimněte si `<role-name>` , že by měl být ve stejném formátu, vrácený výše uvedeným příkazem.
+V rozhraní příkazového řádku Azure CLI spusťte následující příkaz. Všimněte si, že `<role-name>` by měl být ve stejném formátu, vrácený výše uvedeným příkazem.
 
 ```azurecli-interactive
 az role definition list -n <role-name> --subscription <sub-id>
@@ -159,7 +159,7 @@ Všimněte si, že musíte mít oprávnění k celému oboru nové definice role
 > Použití aktualizací rolí může trvat 15 minut až hodinu, než se použije u všech přiřazení rolí v daném oboru.
 ### <a name="q-can-i-define-a-role-that-prevents-updating-the-workspace-edition"></a>Otázka: Můžu definovat roli, která brání aktualizaci edice pracovního prostoru? 
 
-Ano, můžete definovat roli, která brání aktualizaci edice pracovního prostoru. Vzhledem k tomu, že aktualizace pracovního prostoru je volání opravy v objektu pracovního prostoru, provedete to tak, že `"NotActions"` do pole ve své definici JSON zadáte následující akci: 
+Ano, můžete definovat roli, která brání aktualizaci edice pracovního prostoru. Vzhledem k tomu, že aktualizace pracovního prostoru je volání opravy v objektu pracovního prostoru, provedete to tak, že do `"NotActions"` pole ve své definici JSON zadáte následující akci: 
 
 `"Microsoft.MachineLearningServices/workspaces/write"`
 

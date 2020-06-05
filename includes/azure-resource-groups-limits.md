@@ -4,12 +4,12 @@ ms.service: azure-resource-manager
 ms.topic: include
 ms.date: 02/24/2020
 ms.author: tomfitz
-ms.openlocfilehash: c883383d3c870689bb95f808f6f60c5185c165c3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33a63280f6973d2c5e29db29f7a6f3fc68c57c77
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80334746"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424715"
 ---
 | Prostředek | Omezení |
 | --- | --- |
@@ -22,7 +22,7 @@ ms.locfileid: "80334746"
 | Délka klíče značky |512 |
 | Délka hodnoty značky |256 |
 
-<sup>1</sup> Pokud dosáhnete limitu nasazení 800 na jednu skupinu prostředků, odstraňte nasazení z historie, která už nepotřebujete. Odstranění položky z historie nasazení nemá vliv na nasazené prostředky. Další informace najdete v tématu [řešení chyb při překročení počtu nasazení na 800](../articles/azure-resource-manager/templates/deployment-quota-exceeded.md).
+<sup>1</sup> Od června 2020 se nasazení z historie automaticky odstraní, protože se blíží limitu. Odstranění položky z historie nasazení nemá vliv na nasazené prostředky. Další informace najdete v tématu [Automatické odstraňování z historie nasazení](../articles/azure-resource-manager/templates/deployment-history-deletions.md).
 
 #### <a name="template-limits"></a>Omezení šablon
 

@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 ms.assetid: 55bc21b0-2a45-4943-a5e7-8d785d0d015c
 ms.service: virtual-network
+ms.subservice: ip-services
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 8e3e37347c8c23ccc9746bbb98ef6a822743848b
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: e0d17c91c4f5052d9ada369c14980dea8a606607
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82790282"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417697"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-cli"></a>Vytvoření virtuálního počítače se statickou veřejnou IP adresou pomocí Azure CLI
 
@@ -30,14 +31,14 @@ Můžete vytvořit virtuální počítač se statickou veřejnou IP adresou. Ve�
 
 Následující kroky můžete provést z místního počítače nebo pomocí Azure Cloud Shell. Pokud chcete použít místní počítač, ujistěte se, že máte nainstalované rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json). Pokud chcete použít Azure Cloud Shell, vyberte **vyzkoušet** v pravém horním rohu libovolného příkazového řádku, který následuje. Cloud Shell vás přihlásí k Azure.
 
-1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k `az login`Azure pomocí.
+1. Pokud používáte Cloud Shell, přejděte ke kroku 2. Otevřete relaci příkazu a přihlaste se k Azure pomocí `az login` .
 2. Vytvořte skupinu prostředků pomocí příkazu [az group create](/cli/azure/group#az-group-create). Následující příklad vytvoří skupinu prostředků v Východní USA oblasti Azure:
 
    ```azurecli-interactive
    az group create --name myResourceGroup --location eastus
    ```
 
-3. Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). `--public-ip-address-allocation=static` Možnost přiřadí virtuálnímu počítači STATICKOU veřejnou IP adresu. Následující příklad vytvoří virtuální počítač s Ubuntu se statickou veřejnou IP adresou (Basic) SKU s názvem *myPublicIpAddress*:
+3. Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm#az-vm-create). `--public-ip-address-allocation=static`Možnost přiřadí virtuálnímu počítači statickou veřejnou IP adresu. Následující příklad vytvoří virtuální počítač s Ubuntu se statickou veřejnou IP adresou (Basic) SKU s názvem *myPublicIpAddress*:
 
    ```azurecli-interactive
    az vm create \

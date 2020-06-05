@@ -134,7 +134,7 @@ Pokud chcete zjistit, jaké verze jsou aktuálně k dispozici pro vaše předpla
 az aks get-versions --location eastus --output table
 ```
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 
 **Co se stane, když zákazník upgraduje cluster Kubernetes s menší verzí, která není podporovaná?**
 

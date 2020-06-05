@@ -8,15 +8,15 @@ ms.author: sanpil
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: b3e4bf19a7ec153f85483f3c5028e468e06ed7f0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3da1cea0b5e17f43d42ced4d1c4ca55d0d3050ad
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80982357"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433470"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines-in-application-insights"></a>Ladění a řešení potíží s kanály strojového učení v Application Insights
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -39,7 +39,7 @@ V případě, že se vaše protokoly nacházejí v jednom místě, budete mít k
 
 V této části je Úvod specifický pro použití OpenCensus z kanálu Azure Machine Learning. Podrobný kurz najdete v tématu [OpenCensus Azure monitor vývozců](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure) .
 
-Přidejte PythonScriptStep do kanálu Azure ML. Nakonfigurujte své [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) se závislostí na opencensus-EXT-Azure. Nakonfigurujte proměnnou `APPLICATIONINSIGHTS_CONNECTION_STRING` prostředí.
+Přidejte PythonScriptStep do kanálu Azure ML. Nakonfigurujte své [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) se závislostí na opencensus-EXT-Azure. Nakonfigurujte `APPLICATIONINSIGHTS_CONNECTION_STRING` proměnnou prostředí.
 
 ```python
 from azureml.core.conda_dependencies import CondaDependencies
@@ -142,7 +142,7 @@ logger.info("I will be sent to Application Insights with Custom Dimensions", cus
 
 OpenCensus AzureLogHandler se používá k směrování protokolů Pythonu do Application Insights. V důsledku toho by se mělo vzít v úvahu drobné odlišnosti protokolování v jazyce Python. Při vytvoření protokolovacího nástroje má výchozí úroveň protokolování a zobrazí protokoly, které jsou větší nebo rovny této úrovni. Dobrým odkazem na použití funkcí protokolování Pythonu je [protokolování kuchařka](https://docs.python.org/3/howto/logging-cookbook.html).
 
-Pro `APPLICATIONINSIGHTS_CONNECTION_STRING` knihovnu OpenCensus je potřeba proměnná prostředí. Doporučujeme nastavit tuto proměnnou prostředí, abyste ji nemuseli předávat jako parametr kanálu, aby nedocházelo k předávání řetězců připojení ve formátu prostého textu.
+`APPLICATIONINSIGHTS_CONNECTION_STRING`Pro knihovnu OpenCensus je potřeba proměnná prostředí. Doporučujeme nastavit tuto proměnnou prostředí, abyste ji nemuseli předávat jako parametr kanálu, aby nedocházelo k předávání řetězců připojení ve formátu prostého textu.
 
 ## <a name="querying-logs-in-application-insights"></a>Dotazování na protokoly v Application Insights
 

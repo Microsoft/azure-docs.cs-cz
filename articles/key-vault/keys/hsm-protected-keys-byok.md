@@ -10,12 +10,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: ambapat
-ms.openlocfilehash: b03e9c6148243376c5e1c588e2b4a82e1a1adb40
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 52214d42467dfa86b5e085a660a9416904b7de59
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298886"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416694"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>Import klíčů chráněných HSM do Key Vault (BYOK)
 
@@ -59,7 +59,7 @@ V následující tabulce jsou uvedeny předpoklady pro používání BYOK v Azur
 |Název dodavatele|Typ dodavatele|Podporované modely HSM|Další informace|
 |---|---|---|---|
 |Podpůrný software nCipher|Výrobců<br/>HSM jako služba|<ul><li>Hardwarového nShield rodina HSM</li><li>Hardwarového nShield jako služba</ul>|[Podpůrný software nCipher nový nástroj a dokumentace pro BYOK](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|
-|Thales|Výrobce|<ul><li>SafeNet Luna HSM 7 Family s firmwarem verze 7,3 nebo novější</li></ul>| [Nástroj SafeNet Luna BYOK a dokumentace](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
+|Thales|Výrobce|<ul><li>Luna HSM 7 Family s firmwarem verze 7,3 nebo novější</li></ul>| [Nástroj a dokumentace pro Luna BYOK](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
 |Fortanix|Výrobců<br/>HSM jako služba|<ul><li>Služba správy klíčů (SDKMS) pro samoobslužné naobranu</li><li>Equinix SmartKey</li></ul>|[Export klíčů SDKMS do poskytovatelů cloudu pro BYOK-Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |PERC|Výrobce|Všechny LiquidSecurity HSM s<ul><li>Firmware verze 2.0.4 nebo novější</li><li>Firmware verze 3,2 nebo novější</li></ul>|[Nástroj a dokumentace k PERC BYOK](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Enterprise Key Management System)|Několik značek HSM a modelů, včetně<ul><li>Podpůrný software nCipher</li><li>Thales</li><li>Utimaco</li></ul>Podrobnosti najdete v tématu [Cryptomathic web](https://www.cryptomathic.com/azurebyok) .|[Nástroj a dokumentace pro Cryptomathic BYOK](https://www.cryptomathic.com/azurebyok)|
@@ -68,7 +68,7 @@ V následující tabulce jsou uvedeny předpoklady pro používání BYOK v Azur
 
 ## <a name="supported-key-types"></a>Podporované typy klíčů
 
-|Název klíče|Typ klíče|Velikost klíče|Zdroj|Popis|
+|Název klíče|Typ klíče|Velikost klíče|Zdroj|Description|
 |---|---|---|---|---|
 |Klíč pro výměnu klíčů (KEK)|RSA| 2 048 – bit<br />3 072 – bit<br />4 096 – bit|Modul HSM Azure Key Vault|Pár klíčů RSA zálohovaný modulem HSM vygenerovaný v Azure Key Vault|
 |Cílový klíč|RSA|2 048 – bit<br />3 072 – bit<br />4 096 – bit|HSM dodavatele|Klíč, který se má přenést do modulu HARDWAROVÉho zabezpečení Azure Key Vault|
@@ -119,7 +119,7 @@ Přeneste soubor BYOK do připojeného počítače.
 > [!NOTE] 
 > Import klíčů RSA 1 024 není podporován. Import klíče eliptické křivky (ES) v současné době není podporován.
 > 
-> **Známý problém**: import CÍLOVÉHO klíče RSA 4k z Safenet Luna HSM se podporuje jenom pro firmware 7.4.0 nebo novější.
+> **Známý problém**: import CÍLOVÉHO klíče RSA 4k z Luna HSM se podporuje jenom se firmwarem 7.4.0 nebo novějším.
 
 ### <a name="step-4-transfer-your-key-to-azure-key-vault"></a>Krok 4: přenesení klíče do Azure Key Vault
 

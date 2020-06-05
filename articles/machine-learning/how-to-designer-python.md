@@ -5,17 +5,17 @@ description: Naučte se používat Python v Návrháři Azure Machine Learning k
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 author: peterclu
 ms.author: peterlu
 ms.date: 02/28/2020
 ms.custom: designer
-ms.openlocfilehash: e27844f9f534ea4db1aba53c12fb3947e7269846
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f37fca21b4553d7ce6892e21d8ae0470873e111f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644470"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433370"
 ---
 # <a name="execute-python-code-in-azure-machine-learning-designer"></a>Spouštění kódu v Pythonu v Návrháři Azure Machine Learning
 

@@ -4,12 +4,12 @@ description: Přehled služby Azure blockchain Workbench Preview a jejích možn
 ms.date: 05/22/2020
 ms.topic: overview
 ms.reviewer: brendal
-ms.openlocfilehash: 9f2eafb892be4134d4fb178235249e5640544459
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 384fa553204a5a86ad479f2cc623ebb70a9a6f5f
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850024"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434131"
 ---
 # <a name="what-is-azure-blockchain-workbench"></a>Co je Azure Blockchain Workbench?
 
@@ -49,7 +49,7 @@ Azure Blockchain Workbench usnadňuje analýzu blockchainových událostí a dat
 
 Novinky ke službě Azure blockchain News najdete na [blogu Azure blockchain](https://azure.microsoft.com/blog/topics/blockchain/) , abyste měli přehled o nabídkách služeb blockchain a informacích od týmu Azure blockchain Engineering.
 
-Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce, Vyhlaste si hlasování na nápad prostřednictvím [fóra Azure Feedback pro blockchain](https://aka.ms/blockchainuservoice).
+Pokud chcete poskytnout zpětnou vazbu k produktu nebo požádat o nové funkce, vystavte nebo Hlasujte nápad prostřednictvím [fóra Azure Feedback pro blockchain](https://aka.ms/blockchainuservoice).
 
 ### <a name="community-support"></a>Podpora komunity
 

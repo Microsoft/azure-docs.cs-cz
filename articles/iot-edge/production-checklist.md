@@ -11,12 +11,12 @@ services: iot-edge
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: e818de4885d3859199108d7d88e4cbcb215dc4cc
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: 128504c59690476afef03aa82a03d69769968e99
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82780738"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431926"
 ---
 # <a name="prepare-to-deploy-your-iot-edge-solution-in-production"></a>Příprava na nasazení IoT Edge řešení v produkčním prostředí
 
@@ -28,7 +28,7 @@ Informace uvedené v tomto článku nejsou stejné. Pro pomoc s určením priori
 
 IoT Edge zařízení mohou být od maliny PI až po přenosný počítač na virtuální počítač běžící na serveru. Je možné, že budete mít přístup k zařízení buď fyzicky, nebo prostřednictvím virtuálního připojení, nebo může být izolovaný po delší dobu. V obou případech se chcete ujistit, že je správně nakonfigurovaný tak, aby fungoval.
 
-* **Významná**
+* **Důležité**
   * Instalace produkčních certifikátů
   * Máte plán správy zařízení
   * Použití Moby jako modulu kontejneru
@@ -129,11 +129,11 @@ Výchozí hodnota parametru timeToLiveSecs je 7200 sekund, což je dvě hodiny.
 
 ### <a name="do-not-use-debug-versions-of-module-images"></a>Nepoužívat ladicí verze imagí modulu
 
-Při přechodu z testovacích scénářů do produkčních scénářů nezapomeňte odebrat konfigurace ladění z manifestů nasazení. Ověřte, že žádný z imagí modulu v manifestech nasazení nemá příponu ** \.ladění** . Pokud jste přidali možnosti vytváření pro vystavování portů v modulech pro ladění, odeberte taky tyto možnosti vytváření.
+Při přechodu z testovacích scénářů do produkčních scénářů nezapomeňte odebrat konfigurace ladění z manifestů nasazení. Ověřte, že žádný z imagí modulu v manifestech nasazení nemá příponu ** \. ladění** . Pokud jste přidali možnosti vytváření pro vystavování portů v modulech pro ladění, odeberte taky tyto možnosti vytváření.
 
 ## <a name="container-management"></a>Správa kontejnerů
 
-* **Významná**
+* **Důležité**
   * Správa přístupu k registru kontejneru
   * Použití značek ke správě verzí
 * **Případech**
@@ -151,7 +151,7 @@ Chcete-li vytvořit instanční objekt, spusťte dva skripty, jak je popsáno v 
 
 * První skript vytvoří instanční objekt. Vypíše ID objektu služby a heslo instančního objektu. Tyto hodnoty bezpečně ukládejte do svých záznamů.
 
-* Druhý skript vytvoří přiřazení rolí, které se udělí instančnímu objektu, který se v případě potřeby může spustit později. Doporučujeme použít pro `role` parametr roli uživatele **acrPull** . Seznam rolí najdete v tématu [Azure Container Registry role a oprávnění](../container-registry/container-registry-roles.md).
+* Druhý skript vytvoří přiřazení rolí, které se udělí instančnímu objektu, který se v případě potřeby může spustit později. Doporučujeme použít pro parametr roli uživatele **acrPull** `role` . Seznam rolí najdete v tématu [Azure Container Registry role a oprávnění](../container-registry/container-registry-roles.md).
 
 K ověřování pomocí instančního objektu zadejte ID a heslo instančního objektu, které jste získali z prvního skriptu. Zadejte tyto přihlašovací údaje v manifestu nasazení.
 
@@ -210,15 +210,15 @@ Pokud instalace sítě vyžaduje, abyste výslovně povolili připojení vytvoř
 * **Centrum IoT Edge** otevře jedno trvalé připojení AMQP nebo několik připojení MQTT k IoT Hub, možná přes objekty WebSockets.
 * **IoT Edge démon** způsobuje přerušované volání https IoT Hub.
 
-Ve všech třech případech by měl název DNS odpovídat vzoru \*. Azure-Devices.NET.
+Ve všech třech případech by měl název DNS odpovídat vzoru \* . Azure-Devices.NET.
 
 Kromě toho **kontejnerový modul** provádí volání registrů kontejnerů přes protokol HTTPS. Pokud chcete načíst image kontejneru IoT Edge runtime, název DNS je mcr.microsoft.com. Kontejnerový modul se připojuje k jiným registrům, jak jsou nakonfigurované v nasazení.
 
 Tento kontrolní seznam je výchozím bodem pro pravidla brány firewall:
 
-   | Adresa URL\* (= zástupný znak) | Odchozí porty TCP | Využití |
+   | Adresa URL ( \* = zástupný znak) | Odchozí porty TCP | Využití |
    | ----- | ----- | ----- |
-   | mcr.microsoft.com  | 443 | Microsoft Container Registry |
+   | mcr.microsoft.com  | 443 | Container Registry Microsoftu |
    | global.azure-devices-provisioning.net  | 443 | Přístup k DPS (volitelné) |
    | \*. azurecr.io | 443 | Osobní a Registry kontejnerů třetích stran |
    | \*.blob.core.windows.net | 443 | Stažení rozdílových rozdílů Azure Container Registry imagí ze služby Blob Storage |
@@ -226,6 +226,10 @@ Tento kontrolní seznam je výchozím bodem pro pravidla brány firewall:
    | \*. docker.io  | 443 | Přístup k Docker Hub (volitelné) |
 
 Některá z těchto pravidel brány firewall jsou zděděná z Azure Container Registry. Další informace najdete v tématu [Konfigurace pravidel pro přístup ke službě Azure Container Registry za bránou firewall](../container-registry/container-registry-firewall-access-rules.md).
+
+> [!NOTE]
+> Pokud chcete zajistit konzistentní plně kvalifikovaný název domény mezi koncovými body REST a daty od **15. června 2020** , změní se koncový bod služby Microsoft Container Registry data z `*.cdn.mscr.io` na.`*.data.mcr.microsoft.com`  
+> Další informace najdete v tématu [Konfigurace pravidel brány firewall klienta Microsoft Container Registry](https://github.com/microsoft/containerregistry/blob/master/client-firewall-rules.md) .
 
 Pokud nechcete bránu firewall nakonfigurovat tak, aby povolovala přístup k veřejným registrům kontejnerů, můžete ukládat image do soukromého registru kontejnerů, jak je popsáno v [kontejnerech runtime úložiště v privátním registru](#store-runtime-containers-in-your-private-registry).
 
@@ -241,7 +245,7 @@ Pokud budou vaše zařízení nasazená v síti, která používá proxy server,
 
 ### <a name="set-up-logs-and-diagnostics"></a>Nastavení protokolů a diagnostiky
 
-V systému Linux používá démon IoT Edge jako výchozí ovladač protokolování deníky. K dotazování protokolů démona můžete použít `journalctl` nástroj příkazového řádku. V systému Windows démon IoT Edge používá diagnostiku prostředí PowerShell. Slouží `Get-IoTEdgeLog` k dotazování protokolů z procesu démon. IoT Edge moduly používají ovladač JSON pro protokolování, což je výchozí nastavení.  
+V systému Linux používá démon IoT Edge jako výchozí ovladač protokolování deníky. `journalctl`K dotazování protokolů démona můžete použít nástroj příkazového řádku. V systému Windows démon IoT Edge používá diagnostiku prostředí PowerShell. Slouží `Get-IoTEdgeLog` k dotazování protokolů z procesu démon. IoT Edge moduly používají ovladač JSON pro protokolování, což je výchozí nastavení.  
 
 ```powershell
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Get-IoTEdgeLog
@@ -296,7 +300,7 @@ To můžete provést v **createOptions** každého modulu. Příklad:
 
 #### <a name="additional-options-on-linux-systems"></a>Další možnosti pro systémy Linux
 
-* Nakonfigurujte modul kontejneru tak, aby odesílal protokoly `systemd` do [deníku](https://docs.docker.com/config/containers/logging/journald/) nastavením `journald` jako výchozí ovladač protokolování.
+* Nakonfigurujte modul kontejneru tak, aby odesílal protokoly do `systemd` [deníku](https://docs.docker.com/config/containers/logging/journald/) nastavením `journald` jako výchozí ovladač protokolování.
 
 * Pomocí nástroje logrotate pravidelně odeberte staré protokoly ze zařízení. Použijte následující specifikaci souboru:
 

@@ -4,13 +4,13 @@ titleSuffix: Azure Kubernetes Service
 description: Přečtěte si o známých omezeních při spouštění fondů uzlů Windows serveru a úloh aplikací ve službě Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 12/18/2019
-ms.openlocfilehash: 935b049ce5e1951952b4af4e7df9574df764b6e8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.date: 05/28/2020
+ms.openlocfilehash: 89cfb42da4433f17298cf2cb68f1a4b3d8f9e549
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208002"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433009"
 ---
 # <a name="current-limitations-for-windows-server-node-pools-and-application-workloads-in-azure-kubernetes-service-aks"></a>Aktuální omezení pro fondy uzlů Windows serveru a úlohy aplikací ve službě Azure Kubernetes Service (AKS)
 
@@ -48,7 +48,7 @@ Clustery AKS s fondy uzlů Windows musí používat síťový model Azure CNI (r
 
 ## <a name="can-i-change-the-max--of-pods-per-node"></a>Můžu změnit maximum. počet lusků na uzel?
 
-Ano. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
+Yes. Důsledky a možnosti, které jsou k dispozici, najdete v části [maximální počet lusků][maximum-number-of-pods].
 
 ## <a name="how-do-patch-my-windows-nodes"></a>Jak mám opravit uzly Windows?
 
@@ -57,6 +57,19 @@ Uzly Windows serveru v AKS se musí *upgradovat* , aby se získaly nejnovější
 > [!NOTE]
 > Aktualizovaná image Windows serveru se použije jenom v případě, že se před upgradem fondu uzlů provede upgrade clusteru (upgrade roviny ovládacího prvku).
 >
+
+## <a name="why-am-i-seeing-an-error-when-i-try-to-create-a-new-windows-agent-pool"></a>Proč se mi při pokusu o vytvoření nového fondu agentů Windows zobrazuje chyba?
+
+Pokud jste cluster vytvořili před únorem 2020 a nikdy jste neučinili žádné operace upgradu clusteru, cluster stále používá starou bitovou kopii systému Windows. Možná jste viděli chybu, která se podobá:
+
+"Následující seznam imagí, na které odkazuje šablona nasazení, nebyl nalezen: Publisher: MicrosoftWindowsServer, nabídka: WindowsServer, SKU: 2019-Datacenter-Core-smalldisk-2004, verze: nejnovější. https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimagePokyny k hledání dostupných imagí najdete v tématu.
+
+Chcete-li tento problém vyřešit:
+
+1. Upgradujte [řídicí plochu clusteru][upgrade-cluster-cp]. Tím se aktualizuje nabídka Image a vydavatel.
+1. Vytvořte nové fondy agentů Windows.
+1. Přesuňte Windows lusky z existujících fondů agentů Windows na nové fondy agentů Windows.
+1. Odstraňte staré fondy agentů Windows.
 
 ## <a name="how-do-i-rotate-the-service-principal-for-my-windows-node-pool"></a>Návody otočit instanční objekt pro fond uzlů Windows?
 
@@ -112,6 +125,8 @@ Pokud chcete začít s kontejnery Windows serveru v AKS, [vytvořte fond uzlů, 
 [windows-node-cli]: windows-container-cli.md
 [aks-support-policies]: support-policies.md
 [aks-faq]: faq.md
+[upgrade-cluster]: upgrade-cluster.md
+[upgrade-cluster-cp]: use-multiple-node-pools.md#upgrade-a-cluster-control-plane-with-multiple-node-pools
 [azure-outbound-traffic]: ../load-balancer/load-balancer-outbound-connections.md#defaultsnat
 [nodepool-limitations]: use-multiple-node-pools.md#limitations
 [windows-container-compat]: /virtualization/windowscontainers/deploy-containers/version-compatibility?tabs=windows-server-2019%2Cwindows-10-1909

@@ -45,7 +45,7 @@ Informace o konfiguraci zařízení VPN najdete v odkazech odpovídajících př
 | Cisco |ASR |PolicyBased: iOS 15.1<br>RouteBased: iOS 15.2 |Podporuje se |Podporuje se |
 | Cisco | MANAŽER | RouteBased: IOS – XE 16,10 | (netestováno) | [Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
 | Cisco |ISR |PolicyBased: iOS 15.0<br>RouteBased*: iOS 15.1 |Podporuje se |Podporuje se |
-| Cisco |Meraki |– |Není kompatibilní |Není kompatibilní |
+| Cisco |Meraki |Není k dispozici |Není kompatibilní |Není kompatibilní |
 | Cisco | vEdge (Viptela OS) | 18.4.0 (aktivní/pasivní režim)<br><br>19,2 (aktivní/aktivní režim) | Není kompatibilní |  [Ruční konfigurace (aktivní/pasivní)](https://community.cisco.com/t5/networking-documents/how-to-configure-ipsec-vpn-connection-between-cisco-vedge-and/ta-p/3841454)<br><br>[Konfigurace cloudu OnRamp (aktivní/aktivní)](https://www.cisco.com/c/en/us/td/docs/routers/sdwan/configuration/Network-Optimization-and-High-Availability/Network-Optimization-High-Availability-book/b_Network-Optimization-and-HA_chapter_00.html) |
 | Citrix |NetScaler MPX, SDX, VPX |10.1 a vyšší |[Průvodce konfigurací](https://docs.citrix.com/en-us/netscaler/11-1/system/cloudbridge-connector-introduction/cloudbridge-connector-azure.html) |Není kompatibilní |
 | F5 |Řada BIG-IP |12.0 |[Průvodce konfigurací](https://devcentral.f5.com/articles/connecting-to-windows-azure-with-the-big-ip) |[Průvodce konfigurací](https://devcentral.f5.com/articles/big-ip-to-azure-dynamic-ipsec-tunneling) |
@@ -58,7 +58,7 @@ Informace o konfiguraci zařízení VPN najdete v odkazech odpovídajících př
 | Juniper |SSG |ScreenOS 6.2 |Podporuje se |[Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
 | Juniper |MX |JunOS 12. x|Podporuje se |[Konfigurační skript](vpn-gateway-download-vpndevicescript.md) |
 | Microsoft |Služba Směrování a vzdálený přístup |Windows Server 2012 |Není kompatibilní |Podporuje se |
-| Open Systems AG |Mission Control Security Gateway |– |[Průvodce konfigurací](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Není kompatibilní |
+| Open Systems AG |Mission Control Security Gateway |Není k dispozici |[Průvodce konfigurací](https://www.open.ch/_pdf/Azure/AzureVPNSetup_Installation_Guide.pdf) |Není kompatibilní |
 | Palo Alto Networks |Všechna zařízení se systémem PAN-OS |PAN-OS<br>PolicyBased: 6.1.5 nebo novější<br>RouteBased: 7.1.4 |Podporuje se |[Průvodce konfigurací](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
 | Sentrium (vývojář) | VyOS | VyOS 1.2.2 | (netestováno) | [Průvodce konfigurací](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
 | ShareTech | UTM příští generace (řada NU) | 9.0.1.3 | Není kompatibilní | [Průvodce konfigurací](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
@@ -152,7 +152,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 
 #### <a name="azure-gateway-as-initiator"></a>Služba Azure Gateway jako iniciátor
 
-|-  |**Šifrování**|**Ověřování**|**Skupina PFS**|
+|-  |**Šifrování**|**Authentication**|**Skupina PFS**|
 |---| ---          |---               |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádné         |
 | 2 |AES256        |SHA1              |Žádné         |
@@ -163,7 +163,7 @@ Následující tabulka uvádí nabídky IPsec SA (rychlý režim IKE). Nabídky 
 
 #### <a name="azure-gateway-as-responder"></a>Služba Azure Gateway jako respondér
 
-|-  |**Šifrování**|**Ověřování**|**Skupina PFS**|
+|-  |**Šifrování**|**Authentication**|**Skupina PFS**|
 |---| ---          | ---              |---          |
 | 1 |GCM AES256    |GCM (AES256)      |Žádné         |
 | 2 |AES256        |SHA1              |Žádné         |

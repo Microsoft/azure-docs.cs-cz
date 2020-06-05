@@ -8,13 +8,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 12/12/2019
-ms.openlocfilehash: 4b10a4c98abd6bec4074bf35764a9cbb85d5b157
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 2c57ddd88046044cccd13b0ade23144cd5649455
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605970"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433316"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Transformace jímky v toku dat mapování
 
@@ -23,6 +23,22 @@ ms.locfileid: "81605970"
 Po transformaci dat můžete data zajímky do cílové datové sady. Každý tok dat vyžaduje alespoň jednu transformaci jímky, ale můžete zapisovat do tolika umyvadel, kolik je potřeba k dokončení toku transformace. Chcete-li zapisovat do dalších umyvadel, vytvářejte nové datové proudy pomocí nových větví a podmíněných rozdělení.
 
 Každá transformace jímky je přidružená k právě jedné datové sadě Data Factory. Datová sada definuje tvar a umístění dat, do kterých chcete zapisovat.
+
+## <a name="inline-datasets"></a>Vložené datové sady
+
+Při vytváření transformace jímky vyberte, zda jsou informace jímky definovány v objektu DataSet nebo v rámci transformace jímky. Většina formátů je k dispozici pouze v jednom nebo druhém. Pokud se chcete dozvědět, jak používat konkrétní konektor, použijte prosím odkaz na příslušný dokument konektoru.
+
+Pokud je pro vložené i v objektu DataSet podporován formát, existují výhody obou. Objekty datové sady jsou opakovaně použitelné entity, které lze využít v jiných datových tocích a aktivitách, jako je například kopírování. To je užitečné hlavně při použití zpřísněného schématu. Datové sady nejsou založené na Sparku a občas možná budete muset v transformaci jímky přepsat určitá nastavení nebo projekce schématu.
+
+Vložené datové sady jsou doporučeny při použití flexibilních schémat, instancí jednorázové jímky nebo parametrizovaných umyvadel. Pokud je vaše jímka silně Parametrizovaná, vložené datové sady vám umožní vytvořit "fiktivní" objekt. Vložené datové sady jsou založené na Sparku a jejich vlastnosti jsou nativní pro tok dat.
+
+Chcete-li použít vloženou datovou sadu, vyberte požadovaný formát v selektoru **typu jímky** . Místo výběru datové sady jímky vyberete propojenou službu, ke které se chcete připojit.
+
+![Vložená datová sada](media/data-flow/inline-selector.png "Vložená datová sada")
+
+### <a name="supported-inline-dataset-formats"></a>Podporované formáty vložených datových sad
+
+V současné době je jediným dostupným formátem vložené datové sady [společný datový model](format-common-data-model.md#sink-properties) načtený z [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md).
 
 ## <a name="supported-sink-connectors-in-mapping-data-flow"></a>Podporované konektory jímky v mapování toku dat
 
@@ -37,7 +53,7 @@ V současné době lze v transformaci jímky použít následující datové sad
 
 Nastavení specifická pro tyto konektory jsou umístěna na kartě **Nastavení** . informace o těchto nastaveních najdete v dokumentaci konektoru. 
 
-Azure Data Factory má přístup k více než [90 nativním konektorům](connector-overview.md). Pokud chcete do těchto jiných zdrojů zapsat data z toku dat, pomocí aktivity kopírování načtěte tato data z jedné z podporovaných pracovních oblastí po dokončení toku dat.
+Azure Data Factory má přístup k více než [90 nativním konektorům](connector-overview.md). Pokud chcete zapsat data do těchto dalších konektorů z toku dat, pomocí aktivity kopírování načtěte tato data z jedné z podporovaných pracovních oblastí po dokončení toku dat.
 
 ## <a name="sink-settings"></a>Nastavení jímky
 

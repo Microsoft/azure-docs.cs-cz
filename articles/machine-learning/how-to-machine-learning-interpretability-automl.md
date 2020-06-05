@@ -5,16 +5,16 @@ description: Naučte se, jak získat vysvětlení toho, jak model automatizovan�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mesameki
 author: mesameki
 ms.date: 03/11/2020
-ms.openlocfilehash: e0ec6cbc4cea926dfc50cdae247aea5d765c20ca
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 6fcebb34f82565fcf83a9535e8c036231c5b3cf7
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82691222"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430525"
 ---
 # <a name="interpretability-model-explanations-in-automated-machine-learning"></a>Výklad: vysvětlení modelů v automatizovaném strojovém učení
 
@@ -22,7 +22,7 @@ ms.locfileid: "82691222"
 
 V tomto článku se dozvíte, jak získat vysvětlení automatického strojového učení (ML) v Azure Machine Learning. Automatizovaná ML vám pomůže pochopit důležitost navržených funkcí. 
 
-Všechny verze sady SDK po 1.0.85 `model_explainability=True` výchozím nastavení. V sadě SDK verze 1.0.85 a starších verzích je potřeba nastavit `model_explainability=True` v `AutoMLConfig` objektu, aby bylo možné použít interpretaci modelu. 
+Všechny verze sady SDK po 1.0.85 `model_explainability=True` výchozím nastavení. V sadě SDK verze 1.0.85 a starších verzích je potřeba nastavit `model_explainability=True` v objektu, aby `AutoMLConfig` bylo možné použít interpretaci modelu. 
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -32,16 +32,16 @@ V tomto článku získáte informace o těchto tématech:
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Funkce pro vyhodnocení. Pro `pip install azureml-interpret azureml-contrib-interpret` získání potřebných balíčků spusťte.
+- Funkce pro vyhodnocení. `pip install azureml-interpret azureml-contrib-interpret`Pro získání potřebných balíčků spusťte.
 - Znalosti o sestavování automatizovaných experimentů ML. Další informace o tom, jak používat sadu Azure Machine Learning SDK, získáte v tomto [kurzu regresní model](tutorial-auto-train-models.md) nebo v tématu Jak [Konfigurovat automatizované experimenty ml](how-to-configure-auto-train.md).
 
 ## <a name="interpretability-during-training-for-the-best-model"></a>Možnost interpretace během školení pro nejlepší model
 
-Načtěte vysvětlení z `best_run`, který obsahuje vysvětlení pro inženýrské funkce.
+Načtěte vysvětlení z `best_run` , který obsahuje vysvětlení pro inženýrské funkce.
 
 ### <a name="download-engineered-feature-importance-from-artifact-store"></a>Stažení důležitosti funkcí z úložiště artefaktů
 
-Můžete použít `ExplanationClient` ke stažení vysvětlivek k funkcím z úložiště artefaktů `best_run`. 
+Můžete použít `ExplanationClient` ke stažení vysvětlivek k funkcím z úložiště artefaktů `best_run` . 
 
 ```python
 from azureml.explain.model._internal.explanation_client import ExplanationClient
@@ -63,13 +63,13 @@ automl_run, fitted_model = local_run.get_output(metric='accuracy')
 
 ### <a name="set-up-the-model-explanations"></a>Nastavení vysvětlení modelu
 
-Použijte `automl_setup_model_explanations` k získání vysvětlivek s technickými poznámkou. `fitted_model` Může generovat následující položky:
+Použijte `automl_setup_model_explanations` k získání vysvětlivek s technickými poznámkou. `fitted_model`Může generovat následující položky:
 
 - Doporučená data z výukových nebo testovacích ukázek
 - Seznamy názvů zpracovaných funkcí
 - Najítelné třídy v popisku sloupce ve scénářích klasifikace
 
-`automl_explainer_setup_obj` Obsahuje všechny struktury ze seznamu výše.
+`automl_explainer_setup_obj`Obsahuje všechny struktury ze seznamu výše.
 
 ```python
 from azureml.train.automl.runtime.automl_explain_utilities import automl_setup_model_explanations
@@ -85,7 +85,7 @@ K vygenerování vysvětlení pro modely AutoML použijte `MimicWrapper` třídu
 
 - Objekt nastavení pro vysvětlení
 - Váš pracovní prostor
-- Náhradní model vysvětlující model `fitted_model` AUTOMATIZOVANÉho ml
+- Náhradní model vysvětlující `fitted_model` model automatizovaného ml
 
 MimicWrapper také převezme `automl_run` objekt, do kterého se nahrají inženýrská vysvětlení.
 

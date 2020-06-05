@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
-ms.date: 05/05/2020
-ms.openlocfilehash: 2d7f53862a30287460ca72297231da468514646b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/03/2020
+ms.openlocfilehash: a621ba9ebab1ffca0f9e1b8fb315714e3cf2af2f
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648169"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416167"
 ---
 # <a name="connect-to-azure-virtual-networks-from-azure-logic-apps-by-using-an-integration-service-environment-ise"></a>Připojení k virtuálním sítím Azure z Azure Logic Apps pomocí prostředí integrační služby (ISE)
 
@@ -54,20 +54,22 @@ Můžete také vytvořit ISE pomocí [ukázkové Azure Resource Manager šablony
 
   * Ujistěte se, že vaše virtuální síť [umožňuje přístup k vašemu ISE](#enable-access) , takže vaše ISE může správně fungovat a zůstat přístupná.
 
-  * [ExpressRoute](../expressroute/expressroute-introduction.md) pomáhá rozmístit vaše místní sítě do cloudu Microsoftu a připojit se ke cloudovým službám Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení. Konkrétně ExpressRoute je virtuální privátní síť, která směruje provoz přes soukromou síť místo veřejného Internetu. Logic Apps se můžou připojovat k místním prostředkům, které jsou ve stejné virtuální síti při připojování prostřednictvím ExpressRoute nebo virtuální privátní sítě. 
+  * [ExpressRoute](../expressroute/expressroute-introduction.md) pomáhá rozmístit vaše místní sítě do cloudu Microsoftu a připojit se ke cloudovým službám Microsoftu přes soukromé připojení, které usnadňuje poskytovatel připojení. Konkrétně ExpressRoute je virtuální privátní síť, která směruje provoz přes soukromou síť, nikoli prostřednictvím veřejného Internetu. Vaše aplikace logiky se můžou připojit k místním prostředkům, které jsou ve stejné virtuální síti, když se připojují prostřednictvím ExpressRoute nebo virtuální privátní sítě.
+     
+    Pokud používáte ExpressRoute, ujistěte se, že nepoužíváte [vynucené tunelování](../firewall/forced-tunneling.md). Pokud používáte vynucené tunelování, musíte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která určuje následující trasu:
   
-    Pokud používáte ExpressRoute, musíte [vytvořit směrovací tabulku](../virtual-network/manage-route-table.md) , která má následující trasu a propojit tuto tabulku s každou podsítí, kterou používá vaše ISE:
-
     **Název**: <*trasa-Name*><br>
     **Předpona adresy**: 0.0.0.0/0<br>
     **Další segment směrování**: Internet
+    
+    Tuto směrovací tabulku musíte propojit s každou podsítí, kterou používá vaše ISE. Tabulka směrování je povinná, aby Logic Apps komponenty mohly komunikovat s dalšími závislými službami Azure, jako jsou Azure Storage a Azure SQL DB. Další informace o této trase najdete v tématu [předpona adresy 0.0.0.0/0](../virtual-network/virtual-networks-udr-overview.md#default-route).
+   
+  * Pokud používáte [síťové virtuální zařízení (síťové virtuální zařízení)](../virtual-network/virtual-networks-udr-overview.md#user-defined), ujistěte se, že nepovolíte ukončení protokolu TLS/SSL nebo změníte odchozí přenosy TLS/SSL. Také se ujistěte, že nepovolíte kontrolu provozu, který pochází z podsítě ISE. Další informace najdete v tématu [směrování provozu virtuální sítě](../virtual-network/virtual-networks-udr-overview.md).
 
-    Tato směrovací tabulka se vyžaduje, když Logic Apps komponenty komunikují s dalšími závislými službami Azure, jako jsou Azure Storage a Azure SQL DB.
+  * Pokud chcete pro službu Azure Virtual Network používat vlastní servery DNS, [nastavte tyto servery pomocí následujících kroků](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ještě před nasazením ISE do virtuální sítě. Další informace o správě nastavení serveru DNS najdete v tématu [Vytvoření, změna nebo odstranění virtuální sítě](../virtual-network/manage-virtual-network.md#change-dns-servers).
 
-* Pokud chcete pro službu Azure Virtual Network používat vlastní servery DNS, [nastavte tyto servery pomocí následujících kroků](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) ještě před nasazením ISE do virtuální sítě. Další informace o správě nastavení serveru DNS najdete v tématu [Vytvoření, změna nebo odstranění virtuální sítě](../virtual-network/manage-virtual-network.md#change-dns-servers).
-
-  > [!NOTE]
-  > Pokud změníte nastavení serveru DNS nebo serveru DNS, musíte restartovat ISE, aby ISE mohl tyto změny vyzvednout. Další informace najdete v tématu [restart vaší ISE](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE).
+    > [!NOTE]
+    > Pokud změníte nastavení serveru DNS nebo serveru DNS, musíte restartovat ISE, aby ISE mohl tyto změny vyzvednout. Další informace najdete v tématu [restart vaší ISE](../logic-apps/ise-manage-integration-service-environment.md#restart-ISE).
 
 <a name="enable-access"></a>
 
@@ -144,14 +146,14 @@ V této tabulce jsou popsány porty, které vaše ISE vyžaduje k přístupu a �
 
    ![Zadání podrobností prostředí](./media/connect-virtual-network-vnet-isolated-environment/integration-service-environment-details.png)
 
-   | Vlastnost | Požaduje se | Hodnota | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Description |
    |----------|----------|-------|-------------|
    | **Předplatné** | Ano | <*Azure – předplatné – název*> | Předplatné Azure, které se má použít pro vaše prostředí |
    | **Skupina prostředků** | Ano | <*Azure-Resource-Group-Name*> | Nová nebo existující skupina prostředků Azure, ve které chcete vytvořit prostředí. |
    | **Název prostředí integrační služby** | Ano | <*Název prostředí*> | Název ISE, který může obsahovat jenom písmena, číslice, spojovníky ( `-` ), podtržítka ( `_` ) a tečky ( `.` ). |
    | **Umístění** | Ano | <*Azure – Datacenter – oblast*> | Oblast datacenter Azure, kde se má vaše prostředí nasadit |
-   | **SKLADOVÉ** | Ano | **Premium** nebo **Developer (bez smlouvy SLA)** | SKU ISE, která se má vytvořit a použít. Rozdíly mezi těmito SKU najdete v tématu [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Důležité**: Tato možnost je k dispozici pouze při vytváření ISE a nedá se změnit později. |
-   | **Další kapacita** | Premium: <br>Ano <p><p>Maximalizac <br>Neuvedeno | Premium: <br>0 až 10 <p><p>Maximalizac <br>Neuvedeno | Počet dalších jednotek zpracování, které se mají použít pro tento prostředek ISE. Pokud chcete přidat kapacitu po vytvoření, přečtěte si téma [Přidání kapacity ISE](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). |
+   | **SKU** | Ano | **Premium** nebo **Developer (bez smlouvy SLA)** | SKU ISE, která se má vytvořit a použít. Rozdíly mezi těmito SKU najdete v tématu [ISE SKU](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#ise-level). <p><p>**Důležité**: Tato možnost je k dispozici pouze při vytváření ISE a nedá se změnit později. |
+   | **Další kapacita** | Premium: <br>Ano <p><p>Maximalizac <br>Nelze použít | Premium: <br>0 až 10 <p><p>Maximalizac <br>Nelze použít | Počet dalších jednotek zpracování, které se mají použít pro tento prostředek ISE. Pokud chcete přidat kapacitu po vytvoření, přečtěte si téma [Přidání kapacity ISE](../logic-apps/ise-manage-integration-service-environment.md#add-capacity). |
    | **Koncový bod přístupu** | Ano | **Interní** nebo **externí** | Typ koncových bodů přístupu, které se mají použít pro ISE. Tyto koncové body určují, jestli triggery Request nebo Webhooku v Logic Apps ve vašem ISE můžou přijímat volání z vnějšku vaší virtuální sítě. <p><p>Váš výběr také ovlivňuje způsob zobrazení a přístupu ke vstupům a výstupům v historii spuštění aplikace logiky. Další informace najdete v tématu [ISE Endpoint Access](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md#endpoint-access). <p><p>**Důležité**: během vytváření ISE můžete vybrat koncový bod přístupu a tuto možnost nemůžete později změnit. |
    | **Virtuální síť** | Ano | <*Azure – Virtual-Network-Name*> | Virtuální síť Azure, do které chcete vložit své prostředí, aby měly aplikace logiky v tomto prostředí přístup k vaší virtuální síti. Pokud nemáte síť, [vytvořte nejdřív virtuální síť Azure](../virtual-network/quick-create-portal.md). <p><p>**Důležité**: Toto vkládání můžete provést *jenom* při vytváření ISE. |
    | **Podsítě** | Ano | <*podsíť-Resource-list*> | ISE vyžaduje čtyři *prázdné* podsítě pro vytváření a nasazování prostředků ve vašem prostředí. Chcete-li vytvořit každou podsíť, [postupujte podle kroků v této tabulce](#create-subnet). |

@@ -6,15 +6,15 @@ author: trevorbye
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: trbye
 ms.date: 03/05/2020
-ms.openlocfilehash: 73b9ae6bc3c15526bfdafd74330c7b86286631b1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92120d7eabcd4f9fe8d30c1124555588fcadd19a
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78396141"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432906"
 ---
 # <a name="enable-logging-in-azure-machine-learning"></a>Povolit přihlašování Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ Sada SDK Azure Machine Learning Pythonu vám umožňuje povolit protokolování 
 > * Školicí modely a cíle výpočtů
 > * Vytvoření obrázku
 > * Nasazené modely
-> * Nastavení `logging` Pythonu
+> * Nastavení Pythonu `logging`
 
 [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md). Pro další informace o sadě SDK použijte [Průvodce](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py) .
 
@@ -73,7 +73,7 @@ automated_ml_config = AutoMLConfig(task='regression',
                                    primary_metric="spearman_correlation")
 ```
 
-`show_output` Parametr můžete použít také při vytváření trvalého cíle výpočtů. Zadejte parametr ve `wait_for_completion` funkci, který povolí protokolování během vytváření cílového cíle.
+Parametr můžete použít také `show_output` při vytváření trvalého cíle výpočtů. Zadejte parametr ve `wait_for_completion` funkci, který povolí protokolování během vytváření cílového cíle.
 
 ```python
 from azureml.core.compute import ComputeTarget
@@ -85,7 +85,7 @@ compute.wait_for_completion(show_output=True)
 
 ## <a name="logging-for-deployed-models"></a>Protokolování nasazených modelů
 
-Chcete-li načíst protokoly z dříve nasazené webové služby, načtěte službu a `get_logs()` použijte ji. Protokoly mohou obsahovat podrobné informace o všech chybách, ke kterým došlo během nasazení.
+Chcete-li načíst protokoly z dříve nasazené webové služby, načtěte službu a použijte ji `get_logs()` . Protokoly mohou obsahovat podrobné informace o všech chybách, ke kterým došlo během nasazení.
 
 ```python
 from azureml.core.webservice import Webservice

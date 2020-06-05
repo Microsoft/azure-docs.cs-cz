@@ -8,18 +8,18 @@ ms.topic: include
 ms.date: 12/13/2019
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: d583c25afc5c328ef64a8c931e4209f0d88a14a9
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 35997f57b0a66b4f7853ea117519273fd7b6f726
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84124542"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84436047"
 ---
 | Kategorie | Úložiště dat |
 |:--- |:--- |
-| **Azure** |[Úložiště objektů BLOB v Azure](../articles/data-factory/connector-azure-blob-storage.md) |
+| **Azure** |[Azure Blob Storage](../articles/data-factory/connector-azure-blob-storage.md) |
 | &nbsp; |[Azure Cosmos DB (SQL API)](../articles/data-factory/connector-azure-cosmos-db.md) |
-| &nbsp; |[Průzkumník dat Azure](../articles/data-factory/connector-azure-data-explorer.md) |
+| &nbsp; |[Azure Data Explorer](../articles/data-factory/connector-azure-data-explorer.md) |
 | &nbsp; |[Azure Data Lake Storage Gen1](../articles/data-factory/connector-azure-data-lake-store.md) |
 | &nbsp; |[Azure Data Lake Storage Gen2](../articles/data-factory/connector-azure-data-lake-storage.md) |
 | &nbsp; |[Azure Database for MariaDB](../articles/data-factory/connector-azure-database-for-mariadb.md) |
@@ -29,8 +29,8 @@ ms.locfileid: "84124542"
 | &nbsp; |[Azure SQL Database](../articles/data-factory/connector-azure-sql-database.md) |
 | &nbsp; |[Spravovaná instance Azure SQL](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |
 | &nbsp; |[Azure Synapse Analytics (dříve SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |
-| &nbsp; |[Úložiště tabulek v Azure](../articles/data-factory/connector-azure-table-storage.md) |
-| **Databáze** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
+| &nbsp; |[Azure Table storage](../articles/data-factory/connector-azure-table-storage.md) |
+| **Database** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |
 | &nbsp; |[Drill](../articles/data-factory/connector-drill.md) |
 | &nbsp; |[Google BigQuery](../articles/data-factory/connector-google-bigquery.md) |
@@ -51,6 +51,7 @@ ms.locfileid: "84124542"
 | &nbsp; |[SAP Business Warehouse přes MDX](../articles/data-factory/connector-sap-business-warehouse.md) |
 | &nbsp; |[SAP HANA](../articles/data-factory/connector-sap-hana.md) |
 | &nbsp; |[Tabulka SAP](../articles/data-factory/connector-sap-table.md) |
+| &nbsp; |[Snowflake](../articles/data-factory/connector-snowflake.md) |
 | &nbsp; |[Spark](../articles/data-factory/connector-spark.md) |
 | &nbsp; |[SQL Server](../articles/data-factory/connector-sql-server.md) |
 | &nbsp; |[Sybase](../articles/data-factory/connector-sybase.md) |
@@ -58,7 +59,7 @@ ms.locfileid: "84124542"
 | &nbsp; |[Vertica](../articles/data-factory/connector-vertica.md) |
 | **NoSQL** |[Cassandra](../articles/data-factory/connector-cassandra.md) |
 | &nbsp; |[Couchbase (Preview)](../articles/data-factory/connector-couchbase.md) |
-| **Soubor** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
+| **File** |[Amazon S3](../articles/data-factory/connector-amazon-simple-storage-service.md) |
 | &nbsp; |[Systém souborů](../articles/data-factory/connector-file-system.md) |
 | &nbsp; |[FTP](../articles/data-factory/connector-ftp.md) |
 | &nbsp; |[Cloudové úložiště Googlu](../articles/data-factory/connector-google-cloud-storage.md) |
@@ -80,7 +81,7 @@ ms.locfileid: "84124542"
 | &nbsp; |[Marketo (Preview)](../articles/data-factory/connector-marketo.md) |
 | &nbsp; |[Oracle Eloqua (Preview)](../articles/data-factory/connector-oracle-eloqua.md) |
 | &nbsp; |[Oracle Responsys (Preview)](../articles/data-factory/connector-oracle-responsys.md) |
-| &nbsp; |[Cloud služby Oracle (Preview)](../articles/data-factory/connector-oracle-service-cloud.md) |
+| &nbsp; |[Oracle Service Cloud (Preview)](../articles/data-factory/connector-oracle-service-cloud.md) |
 | &nbsp; |[PayPal (Preview)](../articles/data-factory/connector-paypal.md) |
 | &nbsp; |[QuickBooks (Preview)](../articles/data-factory/connector-quickbooks.md) |
 | &nbsp; |[Salesforce](../articles/data-factory/connector-salesforce.md) |

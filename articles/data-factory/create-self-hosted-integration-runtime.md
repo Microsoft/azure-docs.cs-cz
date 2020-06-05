@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 03/13/2020
-ms.openlocfilehash: 6d18a8d09749b832984872b57eec8a36abc1b2e2
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 705c35570484f604e9281b9c19ceb734180ba3e1
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857692"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418258"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Vytvoření a konfigurace místního prostředí Integration Runtime
 
@@ -97,7 +97,7 @@ Instalaci v místním prostředí IR na virtuálním počítači Azure můžete 
 
 Pomocí příkazového řádku můžete nastavit nebo spravovat existující prostředí IR v místním prostředí. Toto využití může zejména přispět k automatizaci instalace a registrace hostitelských uzlů v místním prostředí.
 
-Dmgcmd. exe je součástí instalačního programu pro samoobslužné hostování. Obvykle se nachází ve složce C:\Program Files\Microsoft Integration Runtime\3.0\Shared\. Tato aplikace podporuje různé parametry a lze ji vyvolat prostřednictvím příkazového řádku pomocí skriptů služby Batch pro automatizaci.
+Dmgcmd. exe je součástí instalačního programu pro samoobslužné hostování. Obvykle se nachází ve složce C:\Program Files\Microsoft Integration Runtime\4.0\Shared\. Tato aplikace podporuje různé parametry a lze ji vyvolat prostřednictvím příkazového řádku pomocí skriptů služby Batch pro automatizaci.
 
 Použijte aplikaci následujícím způsobem:
 
@@ -107,24 +107,24 @@ dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<
 
 Zde jsou uvedeny podrobnosti o parametrech a vlastnostech aplikace: 
 
-| Vlastnost                                                    | Popis                                                  | Požaduje se |
+| Vlastnost                                                    | Popis                                                  | Vyžadováno |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem. | No       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem a názvem uzlu. | No       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | Povolením vzdáleného přístupu na aktuálním uzlu nastavte cluster s vysokou dostupností. Nebo povolte nastavení přihlašovacích údajů přímo v místním prostředí IR bez průchodu Azure Data Factory. Provedete to tak, že použijete rutinu **New-AzDataFactoryV2LinkedServiceEncryptedCredential** ze vzdáleného počítače ve stejné síti. | No       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Pokud je uzel spuštěn v kontejneru, povolte vzdálený přístup k aktuálnímu uzlu. | No       |
-| **DisableRemoteAccess**                                         | Zakáže vzdálený přístup k aktuálnímu uzlu. Pro instalaci s více uzly je potřeba vzdálený přístup. Rutina **New-AzDataFactoryV2LinkedServiceEncryptedCredential** prostředí PowerShell stále funguje i v případě, že je vzdálený přístup zakázán. Toto chování je pravdivé, pokud je rutina spuštěna ve stejném počítači jako uzel IR v místním prostředí. | No       |
-| **Klíč** "`<AuthenticationKey>`"                                 | Přepsat nebo aktualizovat předchozí ověřovací klíč Tuto akci buďte opatrní. Váš předchozí místně hostovaný uzel IR může přejít do režimu offline, pokud klíč je nového prostředí Integration runtime. | No       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Vygeneruje záložní soubor pro aktuální uzel. Záložní soubor zahrnuje přihlašovací údaje klíče uzlu a datového úložiště. | No       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Obnovte uzel ze záložního souboru.                          | No       |
-| **Restartování**                                                     | Restartujte hostitelskou službu Integration runtime v místním prostředí.   | No       |
-| **Zahájení**                                                       | Spusťte hostovanou hostitelskou službu Integration runtime.     | No       |
-| **Zastavit**                                                        | Zastavte hostitelskou službu Integration runtime v místním prostředí.        | No       |
-| **StartUpgradeService**                                         | Spusťte službu upgradu místního prostředí Integration runtime.       | No       |
-| **StopUpgradeService**                                          | Zastavte službu upgradu místního prostředí Integration runtime.        | No       |
-| **TurnOnAutoUpdate**                                            | Zapněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.        | No       |
-| **TurnOffAutoUpdate**                                           | Vypněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.       | No       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Nastavte DIAHostService tak, aby běžel jako nový účet. Pro systémové účty a virtuální účty použijte prázdné heslo. | No       |
+| **RegisterNewNode** "`<AuthenticationKey>`"                     | Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem. | Ne       |
+| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Zaregistrujte místně hostovaný uzel Integration runtime se zadaným ověřovacím klíčem a názvem uzlu. | Ne       |
+| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | Povolením vzdáleného přístupu na aktuálním uzlu nastavte cluster s vysokou dostupností. Nebo povolte nastavení přihlašovacích údajů přímo v místním prostředí IR bez průchodu Azure Data Factory. Provedete to tak, že použijete rutinu **New-AzDataFactoryV2LinkedServiceEncryptedCredential** ze vzdáleného počítače ve stejné síti. | Ne       |
+| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Pokud je uzel spuštěn v kontejneru, povolte vzdálený přístup k aktuálnímu uzlu. | Ne       |
+| **DisableRemoteAccess**                                         | Zakáže vzdálený přístup k aktuálnímu uzlu. Pro instalaci s více uzly je potřeba vzdálený přístup. Rutina **New-AzDataFactoryV2LinkedServiceEncryptedCredential** prostředí PowerShell stále funguje i v případě, že je vzdálený přístup zakázán. Toto chování je pravdivé, pokud je rutina spuštěna ve stejném počítači jako uzel IR v místním prostředí. | Ne       |
+| **Klíč** "`<AuthenticationKey>`"                                 | Přepsat nebo aktualizovat předchozí ověřovací klíč Tuto akci buďte opatrní. Váš předchozí místně hostovaný uzel IR může přejít do režimu offline, pokud klíč je nového prostředí Integration runtime. | Ne       |
+| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Vygeneruje záložní soubor pro aktuální uzel. Záložní soubor zahrnuje přihlašovací údaje klíče uzlu a datového úložiště. | Ne       |
+| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Obnovte uzel ze záložního souboru.                          | Ne       |
+| **Restartovat**                                                     | Restartujte hostitelskou službu Integration runtime v místním prostředí.   | Ne       |
+| **Zahájení**                                                       | Spusťte hostovanou hostitelskou službu Integration runtime.     | Ne       |
+| **Zastavit**                                                        | Zastavte hostitelskou službu Integration runtime v místním prostředí.        | Ne       |
+| **StartUpgradeService**                                         | Spusťte službu upgradu místního prostředí Integration runtime.       | Ne       |
+| **StopUpgradeService**                                          | Zastavte službu upgradu místního prostředí Integration runtime.        | Ne       |
+| **TurnOnAutoUpdate**                                            | Zapněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.        | Ne       |
+| **TurnOffAutoUpdate**                                           | Vypněte automatickou aktualizaci prostředí Integration runtime pro místní hostování.       | Ne       |
+| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Nastavte DIAHostService tak, aby běžel jako nový účet. Pro systémové účty a virtuální účty použijte prázdné heslo. | Ne       |
 
 
 ## <a name="command-flow-and-data-flow"></a>Tok příkazů a tok dat
@@ -151,14 +151,14 @@ Tady je souhrn kroků toku dat pro kopírování pomocí prostředí IR s místn
 - Využijte místní prostředí Integration runtime k podpoře integrace dat v rámci virtuální sítě Azure.
 - Považovat zdroj dat za místní zdroj dat, který je za bránou firewall, a to i v případě, že používáte Azure ExpressRoute. Pomocí místního prostředí Integration runtime připojte službu ke zdroji dat.
 - Využijte místní prostředí Integration runtime i v případě, že je úložiště dat v cloudu na virtuálním počítači infrastruktury Azure jako služba (IaaS).
-- Úlohy můžou selhat v místním prostředí Integration runtime, které jste nainstalovali na Windows Server, pro který je povolené šifrování kompatibilní se standardem FIPS. Pokud chcete tento problém obejít, zakažte na serveru šifrování standardu FIPS. Chcete-li zakázat šifrování kompatibilní se standardem FIPS, změňte hodnotu v následujícím podklíči registru z 1 (povoleno) na `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`0 (zakázáno):.
+- Úlohy můžou selhat v místním prostředí Integration runtime, které jste nainstalovali na Windows Server, pro který je povolené šifrování kompatibilní se standardem FIPS. Pokud chcete tento problém obejít, zakažte na serveru šifrování standardu FIPS. Chcete-li zakázat šifrování kompatibilní se standardem FIPS, změňte hodnotu v následujícím podklíči registru z 1 (povoleno) na 0 (zakázáno): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled` .
 
 ## <a name="prerequisites"></a>Požadavky
 
 - Podporované verze Windows jsou:
   + Windows 7 Service Pack 1
   + Windows 8.1
-  + Windows 10
+  + Windows 10
   + Windows Server 2008 R2 SP1
   + Windows Server 2012
   + Windows Server 2012 R2
@@ -173,7 +173,7 @@ Tady je souhrn kroků toku dat pro kopírování pomocí prostředí IR s místn
 - Spuštění aktivity kopírování probíhá s určitou frekvencí. Využití procesoru a paměti RAM na počítači se řídí stejným vzorem, ve kterém jsou špičky a časy nečinnosti. Využití prostředků také závisí na množství dat, která se přesunují. Když probíhají více úloh kopírování, vidíte využití prostředků v době špičky.
 - Úlohy mohou selhat během extrakce dat ve formátech Parquet, ORC nebo Avro. Další informace o Parquet najdete v tématu [Formát Parquet v Azure Data Factory](https://docs.microsoft.com/azure/data-factory/format-parquet#using-self-hosted-integration-runtime). Vytváření souborů běží na místním počítači pro integraci. Aby bylo možné fungovat podle očekávání, vytváření souborů vyžaduje následující požadavky:
     - [Visual C++ 2010 Redistributable](https://download.microsoft.com/download/3/2/2/3224B87F-CFA0-4E70-BDA3-3DE650EFEBA5/vcredist_x64.exe) Balíček (x64)
-    - Běhový modul Java (JRE) verze 8 od poskytovatele JRE, jako je třeba [přijmout OpenJDK](https://adoptopenjdk.net/). Ujistěte se, `JAVA_HOME` že je nastavená proměnná prostředí.
+    - Běhový modul Java (JRE) verze 8 od poskytovatele JRE, jako je třeba [přijmout OpenJDK](https://adoptopenjdk.net/). Ujistěte se, že `JAVA_HOME` je nastavená proměnná prostředí.
 
 ## <a name="installation-best-practices"></a>Osvědčené postupy instalace
 
@@ -220,7 +220,7 @@ Můžete přidružit více uzlů instalací softwaru místního prostředí Inte
 > K přidružení jednotlivých uzlů není nutné vytvářet nové prostředí Integration runtime v místním prostředí. Místní prostředí Integration runtime můžete nainstalovat na jiný počítač a zaregistrovat ho pomocí stejného ověřovacího klíče.
 
 > [!NOTE]
-> Než přidáte další uzel pro vysokou dostupnost a škálovatelnost, ujistěte se, že je v prvním uzlu povolený možnost **vzdálený přístup k intranetu** . Provedete to tak, že vyberete **Microsoft Integration runtime Configuration Manager** > **Nastavení** > **vzdáleného přístupu k intranetu**.
+> Než přidáte další uzel pro vysokou dostupnost a škálovatelnost, ujistěte se, že je v prvním uzlu povolený možnost **vzdálený přístup k intranetu** . Provedete to tak, že vyberete **Microsoft Integration runtime Configuration Manager**  >  **Nastavení**  >  **vzdáleného přístupu k intranetu**.
 
 ### <a name="scale-considerations"></a>Požadavky na škálování
 
@@ -375,9 +375,9 @@ Pomocí nástroje Configuration Manager můžete zobrazit a aktualizovat proxy s
 
 Pokud vyberete možnost **použít systémovou proxy** Server pro proxy HTTP, místní prostředí Integration runtime používá nastavení proxy v souboru diahost. exe. config a diawp. exe. config. Pokud tyto soubory neurčují žádný proxy server, místní prostředí Integration runtime se ke cloudové službě připojí přímo, aniž by museli procházet proxy serverem. Následující postup poskytuje pokyny k aktualizaci souboru diahost. exe. config:
 
-1. V Průzkumníku souborů proveďte bezpečnou kopii složky C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config jako zálohu původního souboru.
+1. V Průzkumníku souborů proveďte bezpečnou kopii složky C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config jako zálohu původního souboru.
 1. Otevřete Poznámkový blok spuštěný jako správce.
-1. V programu Poznámkový blok otevřete textový soubor C:\Program Files\Microsoft Integration Runtime\3.0\Shared\diahost.exe.config.
+1. V programu Poznámkový blok otevřete textový soubor C:\Program Files\Microsoft Integration Runtime\4.0\Shared\diahost.exe.config.
 1. Najděte výchozí značku **System.NET** , jak je znázorněno v následujícím kódu:
 
     ```xml
@@ -395,7 +395,7 @@ Pokud vyberete možnost **použít systémovou proxy** Server pro proxy HTTP, m�
     </system.net>
     ```
 
-    Značka proxy umožňuje dalším vlastnostem zadat požadovaná nastavení `scriptLocation`. Viz [ \<syntaxe\> elementu proxy (nastavení sítě)](https://msdn.microsoft.com/library/sa91de1e.aspx) .
+    Značka proxy umožňuje dalším vlastnostem zadat požadovaná nastavení `scriptLocation` . Syntaxe naleznete v tématu [ \<proxy\> element (nastavení sítě)](https://msdn.microsoft.com/library/sa91de1e.aspx) .
 
     ```xml
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
@@ -416,7 +416,7 @@ Musíte se také ujistit, že Microsoft Azure v seznamu povolených společnost�
 Pokud se zobrazí chybové zprávy podobné následujícímu, příčinou je pravděpodobně nesprávná konfigurace brány firewall nebo proxy server. Taková konfigurace brání místnímu prostředí Integration runtime, aby se mohl připojit k Data Factory a sám se ověřit. Pokud chcete zajistit správnou konfiguraci brány firewall a proxy server, přečtěte si předchozí část.
 
 * Při pokusu o registraci místního prostředí Integration runtime se zobrazí následující chybová zpráva: "nepovedlo se zaregistrovat tento Integration Runtime uzel. Potvrďte, že ověřovací klíč je platný a že je na tomto počítači spuštěná služba hostitele integrační služby.
-* Když otevřete Integration Runtime Configuration Manager, zobrazí se stav **Odpojeno** nebo **připojení**. Když zobrazíte protokoly událostí Windows, v části **Prohlížeč událostí** > **protokoly** > aplikací a služeb**Microsoft Integration runtime**se zobrazí chybové zprávy, jako je tato:
+* Když otevřete Integration Runtime Configuration Manager, zobrazí se stav **Odpojeno** nebo **připojení**. Když zobrazíte protokoly událostí Windows, v části **Prohlížeč událostí**  >  **protokoly aplikací a služeb**  >  **Microsoft Integration runtime**se zobrazí chybové zprávy, jako je tato:
 
     ```
     Unable to connect to the remote server

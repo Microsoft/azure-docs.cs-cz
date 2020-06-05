@@ -9,12 +9,12 @@ ms.date: 06/02/2020
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 3c84bf32f0d7b8b8381747e995f060d7e2dc1c9b
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 877dab3376e1a4397d9f1c6971baea957b4eea68
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310452"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424172"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Rychlý Start: směrování událostí služby Blob Storage do webového koncového bodu pomocí Azure Portal
 
@@ -92,7 +92,7 @@ K odběru tématu se přihlašujete, aby služba Event Grid věděla, které ud�
    ![Výběr webhooku](./media/blob-event-quickstart-portal/select-web-hook.png)
 3. Na stránce **vytvořit odběr události** proveďte následující kroky: 
     1. Zadejte **název** odběru události.
-    2. Zadejte **název** **systémového tématu**. 
+    2. Zadejte **název** **systémového tématu**. Když jste dřív vytvořili předplatné pro událost vyvolanou zdroji Azure, jako je Azure Blob Storage nebo Azure Event Hubs, Služba Event Grid automaticky vytvořila systémové téma s **náhodně generovaným názvem**. Nyní můžete zadat název pro systémové téma při vytváření tématu v Azure Portal, jak je znázorněno na následujícím obrázku. Pomocí tohoto systémového tématu můžete zjišťovat metriky a diagnostické protokoly.
 
        ![Zadejte názvy pro odběr událostí a systémové téma.](./media/blob-event-quickstart-portal/event-subscription-name-system-topic.png)
 

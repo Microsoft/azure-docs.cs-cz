@@ -5,18 +5,18 @@ description: Naučte se, jak povolit protokol HTTPS za účelem zabezpečení we
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: a58b0120feaba907c62bc646f4f85d9185227fed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cb766a81cda822377eeda09cab75d19111523bef
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80287335"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432859"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Použití protokolu TLS k zabezpečení webové služby prostřednictvím Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ Existují mírné rozdíly při zabezpečení napříč [cíli nasazení](how-to
 
 ## <a name="get-a-domain-name"></a>Získat název domény
 
-Pokud název domény ještě nemáte, kupte si ho od *registrátora názvu domény*. Proces a cena se v rámci registrátorů liší. Registrátor poskytuje nástroje pro správu názvu domény. Tyto nástroje slouží k mapování plně kvalifikovaného názvu domény (FQDN) (například webové\.contoso.com) na IP adresu, která je hostitelem vaší webové služby.
+Pokud název domény ještě nemáte, kupte si ho od *registrátora názvu domény*. Proces a cena se v rámci registrátorů liší. Registrátor poskytuje nástroje pro správu názvu domény. Tyto nástroje slouží k mapování plně kvalifikovaného názvu domény (FQDN) (například webové \. contoso.com) na IP adresu, která je hostitelem vaší webové služby.
 
 ## <a name="get-a-tlsssl-certificate"></a>Získání certifikátu TLS/SSL
 
@@ -63,7 +63,7 @@ Existuje mnoho způsobů, jak získat certifikát TLS/SSL (digitální certifik�
 * **Certifikát**. Certifikát musí obsahovat úplný řetěz certifikátů a musí být "PEM-encodeded".
 * **Klíč**. Klíč musí být také zakódovaný v PEM.
 
-Když vyžádáte certifikát, musíte zadat plně kvalifikovaný název domény adresy, kterou chcete používat pro webovou službu (například www\.contoso.com). Adresa, která je vyražena na certifikát a adresu, kterou používají klienti, je porovnána s cílem ověřit identitu webové služby. Pokud se tyto adresy neshodují, klient obdrží chybovou zprávu.
+Když vyžádáte certifikát, musíte zadat plně kvalifikovaný název domény adresy, kterou chcete používat pro webovou službu (například www \. contoso.com). Adresa, která je vyražena na certifikát a adresu, kterou používají klienti, je porovnána s cílem ověřit identitu webové služby. Pokud se tyto adresy neshodují, klient obdrží chybovou zprávu.
 
 > [!TIP]
 > Pokud certifikační autorita nemůže certifikát a klíč zadat jako soubory kódované PEM, můžete změnit formát pomocí nástroje, jako je třeba [OpenSSL](https://www.openssl.org/) .
@@ -87,7 +87,7 @@ Při nasazení na AKS můžete vytvořit nový cluster AKS nebo připojit existu
 
 Metoda **Enable_ssl** může používat certifikát, který poskytuje společnost Microsoft nebo certifikát, který si koupíte.
 
-  * Použijete-li certifikát od společnosti Microsoft, je nutné použít parametr *leaf_domain_label* . Tento parametr vygeneruje název DNS pro službu. Například hodnota "contoso" vytvoří název domény "contoso\<šest-Random-characters>. \<a>. cloudapp.Azure.com ", kde \<a> je oblast, která obsahuje službu. Volitelně můžete pomocí parametru *overwrite_existing_domain* přepsat existující *leaf_domain_label*.
+  * Použijete-li certifikát od společnosti Microsoft, je nutné použít parametr *leaf_domain_label* . Tento parametr vygeneruje název DNS pro službu. Například hodnota "contoso" vytvoří název domény "contoso \<six-random-characters> . \<azureregion> . cloudapp.azure.com ", kde \<azureregion> je oblast, která obsahuje službu. Volitelně můžete pomocí parametru *overwrite_existing_domain* přepsat existující *leaf_domain_label*.
 
     Chcete-li nasadit (nebo znovu nasadit) službu s povoleným protokolem TLS, nastavte parametr *ssl_enabled* na hodnotu "true", ať je to možné. Nastavte parametr *ssl_certificate* na hodnotu souboru *certifikátu* . Nastavte *ssl_key* na hodnotu souboru *klíče* .
 
@@ -172,6 +172,10 @@ Platnost certifikátů protokolu TLS/SSL vyprší a je třeba je obnovit. K tomu
 
 Pokud certifikát původně vygeneroval Microsoft (při použití *leaf_domain_label* k vytvoření služby), použijte k aktualizaci certifikátu jeden z následujících příkladů:
 
+> [!IMPORTANT]
+> * Pokud je stávající certifikát stále platný, použijte `renew=True` (SDK) nebo `--ssl-renew` (CLI), aby konfigurace vynutila jeho obnovení. Pokud je například stávající certifikát stále platný po dobu 10 dnů a nepoužijete `renew=True` , certifikát se nemusí prodloužit.
+> * Při původním nasazení této služby se `leaf_domain_label` pomocí vzoru vytvoří název DNS `<leaf-domain-label>######.<azure-region>.cloudapp.azure.net` . Chcete-li zachovat stávající název (včetně 6 číslic původně vygenerovaných), použijte původní `leaf_domain_label` hodnotu. Nezahrnujte 6 číslic, které byly vygenerovány.
+
 **Použití sady SDK**
 
 ```python
@@ -183,7 +187,7 @@ from azureml.core.compute.aks import SslConfiguration
 aks_target = AksCompute(ws, clustername)
 
 # Update the existing certificate by referencing the leaf domain label
-ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True)
+ssl_configuration = SslConfiguration(leaf_domain_label="myaks", overwrite_existing_domain=True, renew=True)
 update_config = AksUpdateConfiguration(ssl_configuration)
 aks_target.update(update_config)
 ```
@@ -191,7 +195,7 @@ aks_target.update(update_config)
 **Použití rozhraní příkazového řádku**
 
 ```azurecli
-az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True
+az ml computetarget update aks -g "myresourcegroup" -w "myresourceworkspace" -n "myaks" --ssl-leaf-domain-label "myaks" --ssl-overwrite-domain True --ssl-renew
 ```
 
 Další informace najdete v následujících dokumentech k dokumentaci:
@@ -241,7 +245,7 @@ Další informace najdete v následujících dokumentech k dokumentaci:
 
 ## <a name="disable-tls"></a>Zakázat TLS
 
-Pokud chcete protokol TLS zakázat pro model nasazený do služby Azure Kubernetes, `SslConfiguration` vytvořte `status="Disabled"`pomocí a pak proveďte aktualizaci:
+Pokud chcete protokol TLS zakázat pro model nasazený do služby Azure Kubernetes, vytvořte `SslConfiguration` pomocí `status="Disabled"` a pak proveďte aktualizaci:
 
 ```python
 from azureml.core.compute import AksCompute

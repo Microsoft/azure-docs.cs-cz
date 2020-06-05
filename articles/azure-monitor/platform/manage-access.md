@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 1e86317999a34e4ab4cb94f93fb788e3e7314cea
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b0106be09ac4c45ada712b333311aedf0402f785
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82193050"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432814"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Správa přístupu k datům a pracovním prostorům protokolu v Azure Monitor
 
@@ -132,7 +132,7 @@ Azure má dvě předdefinované role uživatelů pro Log Analytics pracovní pro
 
 Role čtecího modulu Log Analytics zahrnuje následující akce Azure:
 
-| Typ    | Oprávnění | Popis |
+| Typ    | Oprávnění | Description |
 | ------- | ---------- | ----------- |
 | Akce | `*/read`   | Možnost Zobrazit všechny prostředky a konfiguraci prostředků Azure. To zahrnuje zobrazení: <br> Stavu rozšíření virtuálního počítače <br> Konfigurace diagnostiky Azure pro prostředky <br> Všechny vlastnosti a nastavení všech prostředků. <br> U pracovních prostorů umožňuje plná neomezená oprávnění ke čtení nastavení pracovního prostoru a provádění dotazů na data. Podívejte se na podrobnější možnosti výše. |
 | Akce | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Zastaralé, není nutné je přiřazovat uživatelům. |
@@ -160,7 +160,7 @@ Role čtecího modulu Log Analytics zahrnuje následující akce Azure:
 
 Role Přispěvatel Log Analytics zahrnuje následující akce Azure:
 
-| Oprávnění | Popis |
+| Oprávnění | Description |
 | ---------- | ----------- |
 | `*/read`     | Možnost zobrazit všechny prostředky a jejich konfiguraci. To zahrnuje zobrazení: <br> Stavu rozšíření virtuálního počítače <br> Konfigurace diagnostiky Azure pro prostředky <br> Všechny vlastnosti a nastavení všech prostředků. <br> U pracovních prostorů umožňuje úplná neomezená oprávnění číst nastavení pracovního prostoru a provádět dotaz na data. Podívejte se na podrobnější možnosti výše. |
 | `Microsoft.Automation/automationAccounts/*` | Možnost vytvořit a konfigurovat účty služby Azure Automation, včetně přidávání a úprav runbooků |
@@ -168,7 +168,7 @@ Role Přispěvatel Log Analytics zahrnuje následující akce Azure:
 | `Microsoft.ClassicStorage/storageAccounts/listKeys/action` <br> `Microsoft.Storage/storageAccounts/listKeys/action` | Zobrazení klíče účtu úložiště. Požadovaný ke konfiguraci Log Analytics pro čtení protokolů z účtů služby Azure Storage |
 | `Microsoft.Insights/alertRules/*` | Přidání, aktualizace a odebrání pravidel upozornění |
 | `Microsoft.Insights/diagnosticSettings/*` | Přidání, aktualizace a odebrání nastavení diagnostiky pro prostředky Azure |
-| `Microsoft.OperationalInsights/*` | Přidání, aktualizace a odebrání konfigurace Log Analytics pracovních prostorů. Pro úpravu rozšířených nastavení pracovního prostoru, `Microsoft.OperationalInsights/workspaces/write`uživatelských potřeb. |
+| `Microsoft.OperationalInsights/*` | Přidání, aktualizace a odebrání konfigurace Log Analytics pracovních prostorů. Pro úpravu rozšířených nastavení pracovního prostoru, uživatelských potřeb `Microsoft.OperationalInsights/workspaces/write` . |
 | `Microsoft.OperationsManagement/*` | Přidání a odebrání řešení pro správu |
 | `Microsoft.Resources/deployments/*` | Vytvoření a odstranění nasazení. Požadováno pro přidávání a odebírání řešení, pracovních prostorů a účtů služby Automation |
 | `Microsoft.Resources/subscriptions/resourcegroups/deployments/*` | Vytvoření a odstranění nasazení. Požadováno pro přidávání a odebírání řešení, pracovních prostorů a účtů služby Automation |
@@ -187,12 +187,12 @@ Pro zajištění přesného řízení přístupu doporučujeme provést přiřaz
 
 Když se uživatelé dotazují v protokolech z pracovního prostoru pomocí přístupu kontextu prostředků, budou mít pro tento prostředek následující oprávnění:
 
-| Oprávnění | Popis |
+| Oprávnění | Description |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Příklady:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Možnost Zobrazit všechna data protokolu pro daný prostředek.  |
 | `Microsoft.Insights/diagnosticSettings/write` | Možnost konfigurace nastavení diagnostiky tak, aby povolovala nastavování protokolů pro tento prostředek. |
 
-`/read`oprávnění je obvykle uděleno z role, která zahrnuje _ \*/Read nebo_ _\*_ oprávnění, jako jsou například předdefinované role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) . Toto oprávnění nemusí zahrnovat vlastní role, které obsahují konkrétní akce nebo vyhrazené předdefinované role.
+`/read`oprávnění je obvykle uděleno z role, která zahrnuje _ \* /Read nebo_ oprávnění, jako jsou například _\*_ předdefinované role [Čtenář](../../role-based-access-control/built-in-roles.md#reader) a [Přispěvatel](../../role-based-access-control/built-in-roles.md#contributor) . Toto oprávnění nemusí zahrnovat vlastní role, které obsahují konkrétní akce nebo vyhrazené předdefinované role.
 
 Pokud chcete vytvořit různé řízení přístupu pro různé tabulky, přečtěte si téma [Definování řízení přístupu pro jednotlivé tabulky](#table-level-rbac) .
 
@@ -208,17 +208,17 @@ Pokud chcete vytvořit různé řízení přístupu pro různé tabulky, přečt
 
     * Konfigurace režimu řízení přístupu k pracovnímu prostoru pro **použití oprávnění k pracovnímu prostoru nebo prostředku**
 
-    * Udělte uživatelům následující oprávnění v pracovním prostoru: `Microsoft.OperationalInsights/workspaces/read` a. `Microsoft.OperationalInsights/workspaces/sharedKeys/action` Pomocí těchto oprávnění uživatelé nemůžou provádět žádné dotazy na úrovni pracovního prostoru. Mohou pouze vyčíslit pracovní prostor a použít ho jako cíl pro nastavení diagnostiky nebo konfiguraci agenta.
+    * Udělte uživatelům následující oprávnění v pracovním prostoru: `Microsoft.OperationalInsights/workspaces/read` a `Microsoft.OperationalInsights/workspaces/sharedKeys/action` . Pomocí těchto oprávnění uživatelé nemůžou provádět žádné dotazy na úrovni pracovního prostoru. Mohou pouze vyčíslit pracovní prostor a použít ho jako cíl pro nastavení diagnostiky nebo konfiguraci agenta.
 
-    * Udělte uživatelům následující oprávnění k prostředkům: `Microsoft.Insights/logs/*/read` a. `Microsoft.Insights/diagnosticSettings/write` Pokud jsou jim již přiřazena role [přispěvatel Log Analytics](../../role-based-access-control/built-in-roles.md#contributor) , přiřazená role čtenáře nebo udělená `*/read` oprávnění k tomuto prostředku, je dostatečná.
+    * Udělte uživatelům následující oprávnění k prostředkům: `Microsoft.Insights/logs/*/read` a `Microsoft.Insights/diagnosticSettings/write` . Pokud jsou jim již přiřazena role [přispěvatel Log Analytics](../../role-based-access-control/built-in-roles.md#contributor) , přiřazená role čtenáře nebo udělená `*/read` oprávnění k tomuto prostředku, je dostatečná.
 
 3. Chcete-li uživateli udělit přístup k datům protokolu ze svých prostředků, aniž by bylo možné číst události zabezpečení a odesílat data, postupujte následovně:
 
     * Konfigurace režimu řízení přístupu k pracovnímu prostoru pro **použití oprávnění k pracovnímu prostoru nebo prostředku**
 
-    * Udělte uživatelům následující oprávnění ke svým prostředkům: `Microsoft.Insights/logs/*/read`.
+    * Udělte uživatelům následující oprávnění ke svým prostředkům: `Microsoft.Insights/logs/*/read` .
 
-    * Přidejte následující neakci, pokud chcete uživatelům zablokovat čtení typu SecurityEvent `Microsoft.Insights/logs/SecurityEvent/read`:. Neakce musí být ve stejné vlastní roli jako akce, která poskytuje oprávnění ke čtení (`Microsoft.Insights/logs/*/read`). Pokud uživatel vlastní akci čtení z jiné role, která je přiřazená tomuto prostředku nebo k předplatnému nebo skupině prostředků, mohl by číst všechny typy protokolů. To platí také v případě, že `*/read`dědí, které existují například s rolí čtenář nebo Přispěvatel.
+    * Přidejte následující neakci, pokud chcete uživatelům zablokovat čtení typu SecurityEvent: `Microsoft.Insights/logs/SecurityEvent/read` . Neakce musí být ve stejné vlastní roli jako akce, která poskytuje oprávnění ke čtení ( `Microsoft.Insights/logs/*/read` ). Pokud uživatel vlastní akci čtení z jiné role, která je přiřazená tomuto prostředku nebo k předplatnému nebo skupině prostředků, mohl by číst všechny typy protokolů. To platí také v případě, `*/read` že dědí, které existují například s rolí čtenář nebo Přispěvatel.
 
 4. Pokud chcete uživateli udělit přístup k datům protokolu z jejich prostředků a číst všechna přihlášení a data protokolu Azure AD, Update Management z pracovního prostoru, udělejte toto:
 
@@ -235,7 +235,7 @@ Pokud chcete vytvořit různé řízení přístupu pro různé tabulky, přečt
         * `Microsoft.OperationalInsights/workspaces/query/Heartbeat/read`– vyžaduje se, aby bylo možné používat Update Management řešení
         * `Microsoft.OperationalInsights/workspaces/query/ComputerGroup/read`– vyžaduje se, aby bylo možné používat Update Management řešení
 
-    * Udělte uživatelům následující oprávnění k prostředkům `*/read`, která jsou přiřazená k roli Čtenář, nebo. `Microsoft.Insights/logs/*/read` 
+    * Udělte uživatelům následující oprávnění k prostředkům, která jsou `*/read` přiřazená k roli Čtenář, nebo `Microsoft.Insights/logs/*/read` . 
 
 ## <a name="table-level-rbac"></a>RBAC na úrovni tabulky
 
@@ -286,11 +286,11 @@ Alternativním přístupem ke správě přístupu k vlastním protokolům je př
 
 Někdy vlastní protokoly pocházejí ze zdrojů, které nejsou přímo přidružené ke konkrétnímu prostředku. V takovém případě vytvořte skupinu prostředků jenom pro správu přístupu k těmto protokolům. V této skupině prostředků se neúčtují žádné náklady, ale poskytuje platné ID prostředku pro řízení přístupu k vlastním protokolům. Pokud třeba konkrétní brána firewall odesílá vlastní protokoly, vytvořte skupinu prostředků s názvem "MyFireWallLogs" a ujistěte se, že požadavky rozhraní API obsahují ID prostředku "MyFireWallLogs". Záznamy protokolu brány firewall jsou pak přístupné jenom uživatelům, kterým byl udělen přístup k MyFireWallLogs nebo s úplným přístupem k pracovnímu prostoru.          
 
-### <a name="considerations"></a>Požadavky
+### <a name="considerations"></a>Důležité informace
 
-* Pokud má uživatel udělené globální oprávnění ke čtení s rolemi čtenář úrovně Standard a přispěvatel, které zahrnují akci _ \*/Read_ , potlačí řízení přístupu na jednotlivé tabulky a udělí jim přístup ke všem datům protokolu.
+* Pokud má uživatel udělené globální oprávnění ke čtení s rolemi čtenář úrovně Standard a přispěvatel, které zahrnují akci _ \* /Read_ , potlačí řízení přístupu na jednotlivé tabulky a udělí jim přístup ke všem datům protokolu.
 * Pokud je uživateli udělen přístup pro jednotlivé tabulky, ale žádná další oprávnění, by mohl získat přístup k datům protokolu z rozhraní API, ale nikoli z Azure Portal. K poskytnutí přístupu z Azure Portal jako základní roli použijte nástroj Log Analytics Reader.
-* Správci předplatného budou mít přístup ke všem datovým typům bez ohledu na všechna ostatní nastavení oprávnění.
+* Správci a vlastníci předplatného budou mít přístup ke všem datovým typům bez ohledu na všechna ostatní nastavení oprávnění.
 * Vlastníci pracovního prostoru se považují za každého jiného uživatele pro řízení přístupu k jednotlivým tabulkám.
 * Pro snížení počtu přiřazení doporučujeme přiřadit role ke skupinám zabezpečení místo jednotlivých uživatelů. Pomůže vám to také při konfiguraci a ověření přístupu pomocí existujících nástrojů pro správu skupin.
 

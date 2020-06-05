@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2019
 ms.author: spelluru
-ms.openlocfilehash: 56e5ad21f94521565b4df193b2450a1c994b66f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b03bf543226da12e5cfca5228b879a533942d384
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79503033"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424359"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-using-a-script"></a>Povolit vnořenou virtualizaci na virtuálním počítači šablony v Azure Lab Services pomocí skriptu
 
 Vnořená virtualizace umožňuje vytvořit prostředí s několika virtuálními počítači v rámci virtuálních počítačů šablon testovacího prostředí. Publikování šablony poskytne každého uživatele v testovacím prostředí s virtuálním počítačem nastaveným s několika virtuálními počítači v rámci něj.  Další informace o vnořené virtualizaci a Azure Lab Services najdete v tématu [Povolení vnořené virtualizace na virtuálním počítači šablony v Azure Lab Services](how-to-enable-nested-virtualization-template-vm.md).
 
-Postup v tomto článku se zaměřuje na nastavení vnořené virtualizace pro Windows Server 2016 nebo Windows Server 2019. K nastavení počítače s šablonou Hyper-V použijete skript.  Následující postup vás provede postupem použití [skriptů technologie Hyper-V služby testovacího prostředí](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV).
+Postup v tomto článku se zaměřuje na nastavení vnořené virtualizace pro Windows Server 2016, Windows Server 2019 nebo Windows 10. K nastavení počítače s šablonou Hyper-V použijete skript.  Následující postup vás provede postupem použití [skriptů technologie Hyper-V služby testovacího prostředí](https://github.com/Azure/azure-devtestlab/tree/master/samples/ClassroomLabs/Scripts/HyperV).
 
 >[!IMPORTANT]
 >Při vytváření testovacího prostředí vyberte možnost **Velká (vnořená virtualizace)** nebo **střední (vnořená virtualizace)** pro velikost virtuálního počítače.  Vnořená virtualizace nebude jinak fungovat.  
@@ -35,20 +35,20 @@ Postup v tomto článku se zaměřuje na nastavení vnořené virtualizace pro W
     1. Otevřete Internet Explorer.
     1. Vyberte ikonu ozubeného kolečka a zvolte **Možnosti Internetu**.  
     1. Jakmile se zobrazí dialogové okno **Možnosti Internetu** , vyberte **zabezpečení**, vyberte **Důvěryhodné servery**, klikněte na tlačítko **servery** .
-    1. Jakmile se zobrazí dialogové okno **Důvěryhodné servery** , `https://github.com` přidejte seznam důvěryhodných webů a vyberte **Zavřít**.
+    1. Jakmile se zobrazí dialogové okno **Důvěryhodné servery** , přidejte `https://github.com` seznam důvěryhodných webů a vyberte **Zavřít**.
 
         ![Důvěryhodné servery](../media/how-to-enable-nested-virtualization-template-vm-using-script/trusted-sites-dialog.png)
 1. Stáhněte si soubory úložiště Git, jak je uvedeno v následujícím postupu.
-    1. Přejít na [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/).
+    1. Přejít na [https://github.com/Azure/azure-devtestlab/](https://github.com/Azure/azure-devtestlab/) .
     1. Klikněte na tlačítko **klonovat nebo stáhnout** .
     1. Klikněte na **Stáhnout soubor zip**.
     1. Extrakce souboru ZIP
 
     >[!TIP]
-    >Úložiště Git můžete také klonovat na adrese [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git).
+    >Úložiště Git můžete také klonovat na adrese [https://github.com/Azure/azure-devtestlab.git](https://github.com/Azure/azure-devtestlab.git) .
 
 1. Spusťte **PowerShell** v režimu **správce** .
-1. V okně PowerShellu přejděte do složky se staženým skriptem. Pokud přecházíte z horní složky souborů úložiště, skript se nachází na adrese `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\`.
+1. V okně PowerShellu přejděte do složky se staženým skriptem. Pokud přecházíte z horní složky souborů úložiště, skript se nachází na adrese `azure-devtestlab\samples\ClassroomLabs\Scripts\HyperV\` .
 1. Možná budete muset změnit zásady spouštění na úspěšné spuštění skriptu. Spusťte následující příkaz:
 
     ```powershell

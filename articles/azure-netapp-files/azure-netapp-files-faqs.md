@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/27/2020
+ms.date: 06/03/2020
 ms.author: b-juche
-ms.openlocfilehash: a8c299a6f0e6732d50b40fc29bde07179fc2c412
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e9ee573ca908c41fe7c7887d0f306971369f83f
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185638"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417493"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -29,7 +29,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>Přechází se přes Internet cestu k datům NFS?  
 
-Ne. Cesta k datům NFS nepřekračuje Internet. Azure NetApp Files je nativní služba Azure, která je nasazená do Azure Virtual Network (VNet), kde je služba dostupná. Azure NetApp Files používá delegovanou podsíť a zřizuje síťové rozhraní přímo ve virtuální síti. 
+No. Cesta k datům NFS nepřekračuje Internet. Azure NetApp Files je nativní služba Azure, která je nasazená do Azure Virtual Network (VNet), kde je služba dostupná. Azure NetApp Files používá delegovanou podsíť a zřizuje síťové rozhraní přímo ve virtuální síti. 
 
 Podrobnosti najdete v tématu [pokyny pro Azure NetApp Files plánování sítě](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) .  
 
@@ -48,7 +48,7 @@ Ano, pokud vytvoříte požadované položky DNS, můžete. Azure NetApp Files p
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>Můžu u Azure NetApp Filesho svazku nastavit nebo vybrat vlastní IP adresu?  
 
-Ne. Přiřazení IP adres Azure NetApp Files svazků je dynamické. Přiřazení statických IP adres se nepodporuje. 
+No. Přiřazení IP adres Azure NetApp Files svazků je dynamické. Přiřazení statických IP adres se nepodporuje. 
  
 ## <a name="security-faqs"></a>Nejčastější dotazy týkající se zabezpečení
 
@@ -64,7 +64,7 @@ Všechny Azure NetApp Files svazky se šifrují pomocí standardu FIPS 140-2. V�
 
 Správa klíčů pro Azure NetApp Files je zpracovávána službou. Pro každý svazek se vygeneruje jedinečný datový šifrovací klíč XTS-AES-256. K šifrování a ochraně všech klíčů svazků se používá hierarchie šifrovacího klíče. Tyto šifrovací klíče se nikdy nezobrazují ani nehlásí v nešifrovaném formátu. Šifrovací klíče se odstraní hned po odstranění svazku.
 
-Podpora uživatelem spravovaných klíčů (Přineste si vlastní klíče) pomocí vyhrazeného modulu HARDWAROVÉho zabezpečení Azure je k dispozici na řízeném základě v oblastech USA – východ, US West2 a USA (střed) – jih.  Můžete požádat o přístup na **anffeedback@microsoft.com**adrese. Jakmile je kapacita k dispozici, žádosti se schvalují.
+Podpora uživatelem spravovaných klíčů (Přineste si vlastní klíče) pomocí vyhrazeného modulu HARDWAROVÉho zabezpečení Azure je k dispozici na řízeném základě v oblastech USA – východ, US West2 a USA (střed) – jih.  Můžete požádat o přístup na adrese **anffeedback@microsoft.com** . Jakmile je kapacita k dispozici, žádosti se schvalují.
 
 ### <a name="can-i-configure-the-nfs-export-policy-rules-to-control-access-to-the-azure-netapp-files-service-mount-target"></a>Můžu nakonfigurovat pravidla zásad exportu pro systém souborů NFS pro řízení přístupu k cíli připojení služby Azure NetApp Files?
 
@@ -79,7 +79,7 @@ Ne, v současné době nemůžete použít skupiny zabezpečení sítě na deleg
 
 Ano, Azure NetApp Files podporuje funkce RBAC s Azure IAM.
 
-## <a name="performance-faqs"></a>Nejčastější dotazy týkající se výkonu
+## <a name="performance-faqs"></a>Nejčastější dotazy k výkonu
 
 ### <a name="what-should-i-do-to-optimize-or-tune-azure-netapp-files-performance"></a>Co mám udělat pro optimalizaci nebo ladění výkonu Azure NetApp Files?
 
@@ -125,6 +125,10 @@ Kořenová vtěsnání se v tuto chvíli nepodporuje.
 
 ## <a name="smb-faqs"></a>Nejčastější dotazy k protokolu SMB
 
+### <a name="which-smb-versions-are-supported-by-azure-netapp-files"></a>Které verze protokolu SMB podporuje Azure NetApp Files?
+
+Azure NetApp Files podporuje SMB 2,1 a SMB 3,1 (což zahrnuje podporu protokolu SMB 3,0).    
+
 ### <a name="is-an-active-directory-connection-required-for-smb-access"></a>Vyžaduje se pro přístup přes protokol SMB připojení ke službě Active Directory? 
 
 Ano, před nasazením svazku SMB musíte vytvořit připojení ke službě Active Directory. Zadané řadiče domény musí být přístupné delegované podsíti Azure NetApp Files pro úspěšné připojení.  Podrobnosti najdete v tématu [vytvoření svazku SMB](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-create-volumes-smb) . 
@@ -139,7 +143,7 @@ Připojení AD je nakonfigurované na účet NetApp. připojení AD je viditeln�
 
 Jsou podporovány jak [služby Azure Active Directory (AD) Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/overview) , tak [Active Directory Domain Services (služba AD DS)](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) . Pomocí Azure NetApp Files můžete použít existující řadiče domény služby Active Directory. Řadiče domény se můžou nacházet v Azure jako virtuální počítače nebo místně prostřednictvím sítě VPN ExpressRoute nebo S2S. Azure NetApp Files v tuto chvíli nepodporuje službu AD JOIN pro [Azure Active Directory](https://azure.microsoft.com/resources/videos/azure-active-directory-overview/) .
 
-Pokud používáte Azure NetApp Files s Azure Active Directory Domain Services, cesta k organizační jednotce je `OU=AADDC Computers` , když pro svůj účet NetApp nakonfigurujete službu Active Directory.
+Pokud používáte Azure NetApp Files s Azure Active Directory Domain Services, cesta k organizační jednotce je, `OU=AADDC Computers` když pro svůj účet NetApp nakonfigurujete službu Active Directory.
 
 ### <a name="what-versions-of-windows-server-active-directory-are-supported"></a>Jaké verze Windows serveru Active Directory se podporují?
 
@@ -169,7 +173,7 @@ Azure NetApp Files zajišťuje fond kapacit a metriky využití svazků. K monit
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Můžu Azure NetApp Files přes Průzkumník služby Azure Storage spravovat?
 
-Ne. Průzkumník služby Azure Storage nepodporuje Azure NetApp Files.
+No. Průzkumník služby Azure Storage nepodporuje Azure NetApp Files.
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Návody zjistit, jestli se adresář blíží velikosti limitu?
 
@@ -223,11 +227,11 @@ Požadavky na replikaci Azure NetApp Filesho svazku do jiné oblasti Azure jsou 
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Je migrace s Azure Data Box podporována?
 
-Ne. Azure Data Box nepodporuje aktuálně Azure NetApp Files. 
+No. Azure Data Box nepodporuje aktuálně Azure NetApp Files. 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>Je migrace pomocí služby Azure import/export podporovaná?
 
-Ne. Služba Azure import/export nepodporuje Azure NetApp Files aktuálně.
+No. Služba Azure import/export nepodporuje Azure NetApp Files aktuálně.
 
 ## <a name="next-steps"></a>Další kroky  
 

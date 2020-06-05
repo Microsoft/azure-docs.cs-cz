@@ -6,37 +6,25 @@ author: diberry
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 04/20/2020
+ms.date: 06/03/2020
 ms.author: diberry
-ms.openlocfilehash: d9af9f788e2309cdf687e0a13b77220c150a0e1e
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 8d9f9eb22d6d28c92b8d3bb8bb644520a0406afa
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81733296"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418006"
 ---
+[Referenční dokumentace](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c08)  |  [Ukázka](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/LUIS/go-rest-predict/predict.go)
+
 ## <a name="prerequisites"></a>Požadavky
 
 * Programovací jazyk [Go](https://golang.org/)
 * [Visual Studio Code](https://code.visualstudio.com/)
-* ID aplikace LUIS – používá veřejné ID aplikace IoT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`. Dotaz uživatele použitý v kódu pro rychlý Start je specifický pro danou aplikaci.
 
-## <a name="create-luis-runtime-key-for-predictions"></a>Vytvoření klíče LUIS runtime pro předpovědi
+## <a name="create-pizza-app"></a>Vytvoření aplikace Pizza
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com)
-1. Klikněte na [vytvořit **Language Understanding** ](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesLUISAllInOne)
-1. Zadejte všechna požadovaná nastavení pro klíč **za běhu** :
-
-    |Nastavení|Hodnota|
-    |--|--|
-    |Název|Požadovaný název (2-64 znaků)|
-    |Předplatné|Vyberte odpovídající předplatné.|
-    |Umístění|Výběr libovolného okolí a dostupného umístění|
-    |Cenová úroveň|`F0`– Minimální cenová úroveň|
-    |Skupina prostředků|Vyberte dostupnou skupinu prostředků.|
-
-1. Klikněte na **vytvořit** a počkejte na vytvoření prostředku. Po vytvoření přejděte na stránku prostředků.
-1. Shromažďovat nakonfigurované `endpoint` a `key`.
+[!INCLUDE [Create pizza app](get-started-get-intent-create-pizza-app.md)]
 
 ## <a name="get-intent-programmatically"></a>Získání záměru prostřednictvím kódu programu
 
@@ -44,64 +32,15 @@ Pomocí příkazu Přejít můžete zadat dotaz na [koncový bod předpovědi](h
 
 1. Vytvořte nový soubor s názvem `predict.go`. Přidejte následující kód:
 
-    ```go
-    package main
+    [!code-go[Code snippet](~/cognitive-services-quickstart-code/go/LUIS/go-rest-predict/predict.go)]
 
-    /* Do dependencies */
-    import (
-        "fmt"
-        "net/http"
-        "net/url"
-        "io/ioutil"
-        "log"
-    )
-    func main() {
-
-        // public app
-        var appID = "df67dcdb-c37d-46af-88e1-8b97951ca1c2"
-
-        // utterance for public app
-        var utterance = "turn on all lights"
-
-        // YOUR-KEY - your **Runtime** key
-        var endpointKey = "YOUR-KEY"
-
-        // YOUR-ENDPOINT - example is your-resource-name.api.cognitive.microsoft.com
-        var endpoint = "YOUR-ENDPOINT"
-
-        endpointPrediction(appID, endpointKey, endpoint, utterance)
-    }
-    func endpointPrediction(appID string, endpointKey string, endpoint string, utterance string) {
-
-        var endpointUrl = fmt.Sprintf("https://%s/luis/prediction/v3.0/apps/%s/slots/production/predict?subscription-key=%s&verbose=true&show-all-intents=true&query=%s", endpoint, appID, endpointKey, url.QueryEscape(utterance))
-
-        response, err := http.Get(endpointUrl)
-
-        if err!=nil {
-            // handle error
-            fmt.Println("error from Get")
-            log.Fatal(err)
-        }
-
-        response2, err2 := ioutil.ReadAll(response.Body)
-
-        if err2!=nil {
-            // handle error
-            fmt.Println("error from ReadAll")
-            log.Fatal(err2)
-        }
-
-        fmt.Println("response")
-        fmt.Println(string(response2))
-    }
-    ```
-
-1. Hodnoty `YOUR-KEY` a `YOUR-ENDPOINT` nahraďte vlastním klíčovým a koncovým bodem **prostředí** předpovědi.
+1. Nahraďte hodnoty začínající `YOUR-` vlastními hodnotami.
 
     |Informace|Účel|
     |--|--|
-    |`YOUR-KEY`|Klíč **běhu** pro předpověď znaků 32.|
-    |`YOUR-ENDPOINT`| Koncový bod adresy URL předpovědi Například, `replace-with-your-resource-name.api.cognitive.microsoft.com`.|
+    |`YOUR-APP-ID`|Vaše ID aplikace Nachází se na portálu LUIS, na stránce nastavení aplikace pro vaši aplikaci.
+    |`YOUR-PREDICTION-KEY`|Klíč předpovědi znaků 32. Nachází se na portálu LUIS, stránce prostředků Azure pro vaši aplikaci.
+    |`YOUR-PREDICTION-ENDPOINT`| Koncový bod adresy URL předpovědi Nachází se na portálu LUIS, stránce prostředků Azure pro vaši aplikaci.<br>Například, `https://westus.api.cognitive.microsoft.com/`.|
 
 1. Pomocí příkazového řádku ve stejném adresáři, ve kterém jste vytvořili soubor, zadejte následující příkaz pro zkompilování souboru přejít:
 
@@ -115,60 +54,175 @@ Pomocí příkazu Přejít můžete zadat dotaz na [koncový bod předpovědi](h
     go run predict.go
     ```
 
-    Odpověď příkazového řádku je:
+1. Zkontrolujte odpověď předpovědi, která se vrátí jako JSON:
 
     ```console
-    appID has value df67dcdb-c37d-46af-88e1-8b97951ca1c2
-    endpointKey has value a7b206911f714e71a1ddae36928a61cc
-    endpoint has value westus2.api.cognitive.microsoft.com
-    utterance has value turn on all lights
     response
-    {"query":"turn on all lights","prediction":{"topIntent":"HomeAutomation.TurnOn","intents":{"HomeAutomation.TurnOn":{"score":0.5375382},"None":{"score":0.08687421},"HomeAutomation.TurnOff":{"score":0.0207554}},"entities":{"HomeAutomation.Operation":["on"],"$instance":{"HomeAutomation.Operation":[{"type":"HomeAutomation.Operation","text":"on","startIndex":5,"length":2,"score":0.724984169,"modelTypeId":-1,"modelType":"Unknown","recognitionSources":["model"]}]}}}}
+    {"query":"I want two large pepperoni pizzas on thin crust please","prediction":{"topIntent":"ModifyOrder","intents":{"ModifyOrder":{"score":1.0},"None":{"score":8.55E-09},"Greetings":{"score":1.82222226E-09},"CancelOrder":{"score":1.47272727E-09},"Confirmation":{"score":9.8125E-10}},"entities":{"Order":[{"FullPizzaWithModifiers":[{"PizzaType":["pepperoni pizzas"],"Size":[["Large"]],"Quantity":[2],"Crust":[["Thin"]],"$instance":{"PizzaType":[{"type":"PizzaType","text":"pepperoni pizzas","startIndex":17,"length":16,"score":0.9978157,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}],"Size":[{"type":"SizeList","text":"large","startIndex":11,"length":5,"score":0.9984481,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}],"Quantity":[{"type":"builtin.number","text":"two","startIndex":7,"length":3,"score":0.999770939,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}],"Crust":[{"type":"CrustList","text":"thin crust","startIndex":37,"length":10,"score":0.933985531,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}]}}],"$instance":{"FullPizzaWithModifiers":[{"type":"FullPizzaWithModifiers","text":"two large pepperoni pizzas on thin crust","startIndex":7,"length":40,"score":0.90681237,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}]}}],"ToppingList":[["Pepperoni"]],"$instance":{"Order":[{"type":"Order","text":"two large pepperoni pizzas on thin crust","startIndex":7,"length":40,"score":0.9047088,"modelTypeId":1,"modelType":"Entity Extractor","recognitionSources":["model"]}],"ToppingList":[{"type":"ToppingList","text":"pepperoni","startIndex":17,"length":9,"modelTypeId":5,"modelType":"List Entity Extractor","recognitionSources":["model"]}]}}}}
     ```
 
-    Formát JSON pro čitelnost:
+    Odpověď JSON formátovaná pro čitelnost:
 
     ```json
+    response
     {
-        "query": "turn on all lights",
-        "prediction": {
-            "topIntent": "HomeAutomation.TurnOn",
-            "intents": {
-                "HomeAutomation.TurnOn": {
-                    "score": 0.5375382
-                },
-                "None": {
-                    "score": 0.08687421
-                },
-                "HomeAutomation.TurnOff": {
-                    "score": 0.0207554
-                }
-            },
-            "entities": {
-                "HomeAutomation.Operation": [
-                    "on"
-                ],
-                "$instance": {
-                    "HomeAutomation.Operation": [
-                        {
-                            "type": "HomeAutomation.Operation",
-                            "text": "on",
-                            "startIndex": 5,
-                            "length": 2,
-                            "score": 0.724984169,
-                            "modelTypeId": -1,
-                            "modelType": "Unknown",
-                            "recognitionSources": [
-                                "model"
-                            ]
-                        }
+      "query": "I want two large pepperoni pizzas on thin crust please",
+      "prediction": {
+        "topIntent": "ModifyOrder",
+        "intents": {
+          "ModifyOrder": {
+            "score": 1
+          },
+          "None": {
+            "score": 8.55e-9
+          },
+          "Greetings": {
+            "score": 1.82222226e-9
+          },
+          "CancelOrder": {
+            "score": 1.47272727e-9
+          },
+          "Confirmation": {
+            "score": 9.8125e-10
+          }
+        },
+        "entities": {
+          "Order": [
+            {
+              "FullPizzaWithModifiers": [
+                {
+                  "PizzaType": [
+                    "pepperoni pizzas"
+                  ],
+                  "Size": [
+                    [
+                      "Large"
                     ]
+                  ],
+                  "Quantity": [
+                    2
+                  ],
+                  "Crust": [
+                    [
+                      "Thin"
+                    ]
+                  ],
+                  "$instance": {
+                    "PizzaType": [
+                      {
+                        "type": "PizzaType",
+                        "text": "pepperoni pizzas",
+                        "startIndex": 17,
+                        "length": 16,
+                        "score": 0.9978157,
+                        "modelTypeId": 1,
+                        "modelType": "Entity Extractor",
+                        "recognitionSources": [
+                          "model"
+                        ]
+                      }
+                    ],
+                    "Size": [
+                      {
+                        "type": "SizeList",
+                        "text": "large",
+                        "startIndex": 11,
+                        "length": 5,
+                        "score": 0.9984481,
+                        "modelTypeId": 1,
+                        "modelType": "Entity Extractor",
+                        "recognitionSources": [
+                          "model"
+                        ]
+                      }
+                    ],
+                    "Quantity": [
+                      {
+                        "type": "builtin.number",
+                        "text": "two",
+                        "startIndex": 7,
+                        "length": 3,
+                        "score": 0.999770939,
+                        "modelTypeId": 1,
+                        "modelType": "Entity Extractor",
+                        "recognitionSources": [
+                          "model"
+                        ]
+                      }
+                    ],
+                    "Crust": [
+                      {
+                        "type": "CrustList",
+                        "text": "thin crust",
+                        "startIndex": 37,
+                        "length": 10,
+                        "score": 0.933985531,
+                        "modelTypeId": 1,
+                        "modelType": "Entity Extractor",
+                        "recognitionSources": [
+                          "model"
+                        ]
+                      }
+                    ]
+                  }
                 }
+              ],
+              "$instance": {
+                "FullPizzaWithModifiers": [
+                  {
+                    "type": "FullPizzaWithModifiers",
+                    "text": "two large pepperoni pizzas on thin crust",
+                    "startIndex": 7,
+                    "length": 40,
+                    "score": 0.90681237,
+                    "modelTypeId": 1,
+                    "modelType": "Entity Extractor",
+                    "recognitionSources": [
+                      "model"
+                    ]
+                  }
+                ]
+              }
             }
+          ],
+          "ToppingList": [
+            [
+              "Pepperoni"
+            ]
+          ],
+          "$instance": {
+            "Order": [
+              {
+                "type": "Order",
+                "text": "two large pepperoni pizzas on thin crust",
+                "startIndex": 7,
+                "length": 40,
+                "score": 0.9047088,
+                "modelTypeId": 1,
+                "modelType": "Entity Extractor",
+                "recognitionSources": [
+                  "model"
+                ]
+              }
+            ],
+            "ToppingList": [
+              {
+                "type": "ToppingList",
+                "text": "pepperoni",
+                "startIndex": 17,
+                "length": 9,
+                "modelTypeId": 5,
+                "modelType": "List Entity Extractor",
+                "recognitionSources": [
+                  "model"
+                ]
+              }
+            ]
+          }
         }
+      }
     }
     ```
-
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

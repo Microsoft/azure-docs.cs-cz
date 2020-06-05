@@ -5,17 +5,17 @@ description: V tomto článku se naučíte, jak pomocí Azure Machine Learning n
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: b0fd537d1930e7c9d5f7a33f56ec5d00b1556562
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6442a5c4af5b9804456f0b4b9e78c8999249f25
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78398344"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433402"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Nasazení modelu hloubkového učení pro odvození pomocí GPU
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -135,11 +135,11 @@ def run(raw_data):
     return y_hat.tolist()
 ```
 
-Tento soubor má název `score.py`. Další informace o vstupních skriptech najdete v tématu [jak a kde nasadit](how-to-deploy-and-where.md).
+Tento soubor má název `score.py` . Další informace o vstupních skriptech najdete v tématu [jak a kde nasadit](how-to-deploy-and-where.md).
 
 ## <a name="define-the-conda-environment"></a>Definice prostředí conda
 
-Soubor prostředí conda určuje závislosti služby. Obsahuje závislosti vyžadované modelem i vstupním skriptem. Všimněte si, že je třeba zadat hodnotu AzureML-Defaults s verze >= 1.0.45 jako závislostí PIP, protože obsahuje funkce potřebné pro hostování modelu jako webové služby. Následující YAML definuje prostředí pro model Tensorflow. Určí `tensorflow-gpu`, že se použije GPU používané v tomto nasazení:
+Soubor prostředí conda určuje závislosti služby. Obsahuje závislosti vyžadované modelem i vstupním skriptem. Všimněte si, že je třeba zadat hodnotu AzureML-Defaults s verze >= 1.0.45 jako závislostí PIP, protože obsahuje funkce potřebné pro hostování modelu jako webové služby. Následující YAML definuje prostředí pro model Tensorflow. Určí, že se `tensorflow-gpu` použije GPU používané v tomto nasazení:
 
 ```yaml
 name: project_environment
@@ -157,7 +157,7 @@ channels:
 - conda-forge
 ```
 
-V tomto příkladu je soubor uložen jako `myenv.yml`.
+V tomto příkladu je soubor uložen jako `myenv.yml` .
 
 ## <a name="define-the-deployment-configuration"></a>Definování konfigurace nasazení
 
@@ -214,7 +214,7 @@ print(aks_service.state)
 ```
 
 > [!NOTE]
-> Pokud má `InferenceConfig` `enable_gpu=True`objekt hodnotu, musí `deployment_target` parametr odkazovat na cluster, který poskytuje GPU. V opačném případě se nasazení nezdaří.
+> Pokud `InferenceConfig` má objekt hodnotu `enable_gpu=True` , `deployment_target` musí parametr odkazovat na cluster, který poskytuje GPU. V opačném případě se nasazení nezdaří.
 
 Další informace najdete v referenční dokumentaci k [modelu](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py).
 

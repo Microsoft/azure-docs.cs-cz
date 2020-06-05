@@ -1,21 +1,21 @@
 ---
-title: Postup nasazení modelů do výpočetních instancí
+title: HDeploy modely do výpočetních instancí
 titleSuffix: Azure Machine Learning
 description: Naučte se, jak nasadit modely Azure Machine Learning jako webovou službu pomocí výpočetních instancí.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 03/05/2020
-ms.openlocfilehash: 09164580b8bdb249fc12d14e827ad799d51cab34
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07afeba8ab481da6a23862dee187c8c72df19f3b
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80756592"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429581"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Nasazení modelu pro Azure Machine Learning výpočetních instancí
 
@@ -39,7 +39,7 @@ Příklad poznámkového bloku, který ukazuje místní nasazení, je součást�
 
 1. V [Azure Machine Learning Studiu](https://ml.azure.com)vyberte své Azure Machine Learning výpočetní instance.
 
-1. `samples-*` Otevřete podadresář a pak otevřete `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb`. Po otevření spusťte Poznámkový blok.
+1. Otevřete `samples-*` podadresář a pak otevřete `how-to-use-azureml/deploy-to-local/register-model-deploy-local.ipynb` . Po otevření spusťte Poznámkový blok.
 
     ![Snímek obrazovky běžící místní služby v poznámkovém bloku](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service.png)
 
@@ -48,10 +48,10 @@ Příklad poznámkového bloku, který ukazuje místní nasazení, je součást�
     ![Snímek obrazovky běžícího portu místní služby](./media/how-to-deploy-local-container-notebook-vm/deploy-local-service-port.png)
 
 1. K otestování služby z výpočetní instance použijte `https://localhost:<local_service.port>` adresu URL. Chcete-li provést test ze vzdáleného klienta, Získejte veřejnou adresu URL služby běžící na instanci Compute. Veřejnou adresu URL lze určit pomocí následujícího vzorce: 
-    * Virtuální počítač poznámkového bloku: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score`. 
-    * Instance Compute: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score`. 
+    * Virtuální počítač poznámkového bloku: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.notebooks.azureml.net/score` . 
+    * Instance Compute: `https://<vm_name>-<local_service_port>.<azure_region_of_workspace>.instances.azureml.net/score` . 
 
-    Například: 
+    Třeba 
     * Virtuální počítač poznámkového bloku:`https://vm-name-6789.northcentralus.notebooks.azureml.net/score` 
     * Instance Compute:`https://vm-name-6789.northcentralus.instances.azureml.net/score`
 

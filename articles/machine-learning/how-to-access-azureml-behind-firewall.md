@@ -5,17 +5,17 @@ description: Řízení přístupu k pracovním prostorům Azure Machine Learning
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
-ms.openlocfilehash: 40c25dda3fefa9c54df832e16149a68a4aa5a33b
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 22136efc493b4838a8f538091d6272e3c167510e
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82981961"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434732"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Použít pracovní prostor za Azure Firewall Azure Machine Learning
 
@@ -28,7 +28,7 @@ Azure Firewall lze použít k řízení přístupu k pracovnímu prostoru Azure 
 V bráně firewall vytvořte síťové pravidlo umožňující provoz na a z adres v tomto článku.
 
 > [!TIP]
-> Když přidáváte pravidlo sítě, nastavte __protokol__ na any a porty na `*`.
+> Když přidáváte pravidlo sítě, nastavte __protokol__ na any a porty na `*` .
 >
 > Další informace o konfiguraci Azure Firewall najdete v tématu [nasazení a konfigurace Azure firewall](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule).
 

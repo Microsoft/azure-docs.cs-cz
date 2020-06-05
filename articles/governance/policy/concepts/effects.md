@@ -3,12 +3,12 @@ title: Vysvětlení fungování efektů
 description: Definice Azure Policy mají různé efekty, které určují, jak je dodržování předpisů spravované a nahlášené.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 223acb523b8a7e4bc14d894c0eb6781d147b8923
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f077548f2de06ef35a80aea0e8e33718a18ff229
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84308876"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424342"
 ---
 # <a name="understand-azure-policy-effects"></a>Pochopení Azure Policych efektů
 
@@ -115,7 +115,7 @@ Příklad: použití efektu auditu.
 
 ## <a name="auditifnotexists"></a>AuditIfNotExists
 
-AuditIfNotExists umožňuje auditování prostředků, které se shodují s podmínkou **if** , ale nemá součásti zadané v **podrobnostech** podmínky **then** .
+AuditIfNotExists umožňuje auditování prostředků _souvisejících_ s prostředkem, který odpovídá podmínce **if** , ale nemá vlastnosti zadané v **podrobnostech** podmínky **then** .
 
 ### <a name="auditifnotexists-evaluation"></a>AuditIfNotExists vyhodnocování
 
@@ -491,7 +491,7 @@ Pole vlastností **Operations** umožňuje změnit několik značek různými zp
 
 Vlastnost **Operation** má následující možnosti:
 
-|Operace |Popis |
+|Operace |Description |
 |-|-|
 |addOrReplace |Přidá do prostředku definovanou značku a hodnotu, i když značka již existuje s jinou hodnotou. |
 |Přidat |Přidá do prostředku definovanou značku a hodnotu. |
@@ -547,7 +547,7 @@ Příklad 2: odebrání `env` značky a přidání `environment` značky nebo n�
 
 ## <a name="layering-policy-definitions"></a>Definice zásad vrstvení
 
-Prostředek může být ovlivněn několika přiřazeními. Tato přiřazení můžou být ve stejném oboru nebo v různých oborech. U každého z těchto přiřazení je také pravděpodobně definován jiný efekt. Podmínka a účinek pro jednotlivé zásady jsou nezávisle vyhodnoceny. Například:
+Prostředek může být ovlivněn několika přiřazeními. Tato přiřazení můžou být ve stejném oboru nebo v různých oborech. U každého z těchto přiřazení je také pravděpodobně definován jiný efekt. Podmínka a účinek pro jednotlivé zásady jsou nezávisle vyhodnoceny. Příklad:
 
 - Zásady 1
   - Omezí umístění prostředku na ' westus '.

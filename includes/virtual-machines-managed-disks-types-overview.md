@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 08/15/2019
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 72d87142f9b9c1f7bcb2b02281851bd1e29bc9c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 45b611144d5a62171061febfd4efa98db69bacb9
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78262167"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84436134"
 ---
 Služba Azure Managed disks v současné době nabízí čtyři typy disků. každý typ je zaměřený na konkrétní scénáře zákazníků.
 
@@ -26,7 +26,7 @@ V následující tabulce najdete porovnání disků Ultra, Premium Solid-State D
 |Typ disku   |SSD   |SSD   |SSD   |HDD   |
 |Scénář   |Úlohy náročné na v/v, jako jsou [SAP HANA](../articles/virtual-machines/workloads/sap/hana-vm-operations-storage.md), databáze nejvyšší úrovně (například SQL, Oracle) a další úlohy náročné na transakce.   |Úlohy v produkčním prostředí a úlohy, u kterých záleží na výkonu   |Webové servery, málo používané podnikové aplikace a vývoj či testování   |Zálohování, úlohy, které nejsou kritické a používají se zřídka   |
 |Maximální velikost disku   |65 536 gibibajtů (GiB)    |32 767 GiB    |32 767 GiB   |32 767 GiB   |
-|Maximální propustnost   |2 000 MiB/s    |900 MiB/s   |750 MiB/s   |500 MiB/s   |
+|Maximální propustnost   |2 000 MB/s    |900 MB/s   |750 MB/s   |500 MB/s   |
 |Maximální počet vstupně-výstupních operací za sekundu   |160 000    |20 000   |6 000   |2 000   |
 
 ## <a name="ultra-disk"></a>Disky Ultra

@@ -5,18 +5,18 @@ description: Naučte se uplatňovat postupy DevOps na implementaci kanálu pro p
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 01/30/2020
-ms.openlocfilehash: d987171d41bd6d80bab4cce91ef9ecec1f0dc7a4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5ffd45eadfd2d1b0e455ea3de91bf91c11c2517
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247176"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434602"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps kanálu pro přijímání dat
 
@@ -44,7 +44,7 @@ Spolupracují a sdílejí stejné prostředky Azure, jako jsou Azure Data Factor
 
 ### <a name="python-notebook-source-code"></a>Zdrojový kód poznámkového bloku Python
 
-Data technici pracují se zdrojovým kódem poznámkového bloku Pythonu místně v integrovaném vývojovém prostředí (například [Visual Studio Code](https://code.visualstudio.com)) nebo přímo v pracovním prostoru datacihly. Druhá z nich umožňuje ladit kód ve vývojovém prostředí. V každém případě bude kód sloučen do úložiště za použití zásad větvení. Místo ve `.ipynb` formátu poznámkového bloku Jupyter se `.py` důrazně doporučuje ukládat kód do souborů. Vylepšuje čitelnost kódu a umožňuje automatické kontroly kvality kódu v procesu CI.
+Data technici pracují se zdrojovým kódem poznámkového bloku Pythonu místně v integrovaném vývojovém prostředí (například [Visual Studio Code](https://code.visualstudio.com)) nebo přímo v pracovním prostoru datacihly. Druhá z nich umožňuje ladit kód ve vývojovém prostředí. V každém případě bude kód sloučen do úložiště za použití zásad větvení. `.py`Místo ve `.ipynb` formátu poznámkového bloku Jupyter se důrazně doporučuje ukládat kód do souborů. Vylepšuje čitelnost kódu a umožňuje automatické kontroly kvality kódu v procesu CI.
 
 ### <a name="azure-data-factory-source-code"></a>Zdrojový kód Azure Data Factory
 

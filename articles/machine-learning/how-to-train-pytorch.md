@@ -5,18 +5,18 @@ description: Naučte se spouštět školicí skripty PyTorch v podnikovém měř
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: peterlu
 author: peterclu
 ms.reviewer: peterlu
 ms.date: 08/01/2019
 ms.custom: seodec18
-ms.openlocfilehash: 136ee197271fc659497c169e27a6399c3940c19e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: df49a8e5a183f56c8584e9d85fe9cfa73bc17491
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75834862"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433823"
 ---
 # <a name="train-pytorch-deep-learning-models-at-scale-with-azure-machine-learning"></a>Naučte se škálovat modely Pytorch hloubkového učení s využitím Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -90,19 +90,19 @@ experiment = Experiment(ws, name=experiment_name)
 
 ### <a name="get-the-data"></a>Získání dat
 
-Datová sada se skládá z přibližně 120 školicích snímků každého pro krůty a kuřat a s imagemi na 100 ověření pro každou třídu. Datovou sadu budeme stahovat a extrahovat jako součást našeho školicího skriptu `pytorch_train.py`. Bitové kopie jsou podmnožinou [datové sady otevřených imagí 5](https://storage.googleapis.com/openimages/web/index.html).
+Datová sada se skládá z přibližně 120 školicích snímků každého pro krůty a kuřat a s imagemi na 100 ověření pro každou třídu. Datovou sadu budeme stahovat a extrahovat jako součást našeho školicího skriptu `pytorch_train.py` . Bitové kopie jsou podmnožinou [datové sady otevřených imagí 5](https://storage.googleapis.com/openimages/web/index.html).
 
 ### <a name="prepare-training-scripts"></a>Příprava školicích skriptů
 
-V tomto kurzu už je k dispozici `pytorch_train.py`školicí skript. V praxi můžete použít libovolný vlastní školicí skript, jak je, a spustit ho pomocí Azure Machine Learning.
+V tomto kurzu `pytorch_train.py` už je k dispozici školicí skript. V praxi můžete použít libovolný vlastní školicí skript, jak je, a spustit ho pomocí Azure Machine Learning.
 
-Nahrajte školicí skript Pytorch, `pytorch_train.py`.
+Nahrajte školicí skript Pytorch, `pytorch_train.py` .
 
 ```Python
 shutil.copy('pytorch_train.py', project_folder)
 ```
 
-Pokud ale chcete použít Azure Machine Learning sledování a metriky, budete muset do školicího skriptu přidat malý kód částky. Příklady sledování metrik najdete v `pytorch_train.py`části.
+Pokud ale chcete použít Azure Machine Learning sledování a metriky, budete muset do školicího skriptu přidat malý kód částky. Příklady sledování metrik najdete v části `pytorch_train.py` .
 
 ## <a name="create-a-compute-target"></a>Vytvořit cíl výpočtů
 
@@ -132,7 +132,7 @@ Další informace o výpočetních cílech najdete v článku [co je cílový v�
 
 PyTorch Estimator je implementován prostřednictvím obecné [`estimator`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator.estimator?view=azure-ml-py) třídy, kterou lze použít k podpoře libovolného rozhraní. Další informace o školicích modelech pomocí obecného Estimator najdete v tématu [výuka modelů s Azure Machine Learning pomocí Estimator](how-to-train-ml-models.md) .
 
-Pokud váš školicí skript potřebuje ke spuštění další balíčky PIP nebo Conda, můžete mít balíčky nainstalované ve výsledné imagi Docker tím, že předáte jejich názvy pomocí argumentů `pip_packages` a `conda_packages` .
+Pokud váš školicí skript potřebuje ke spuštění další balíčky PIP nebo Conda, můžete mít balíčky nainstalované ve výsledné imagi Docker tím, že předáte jejich názvy pomocí `pip_packages` argumentů a `conda_packages` .
 
 ```Python
 script_params = {
@@ -180,7 +180,7 @@ model = run.register_model(model_name='pt-dnn', model_path='outputs/')
 > [!TIP]
 > Model, který jste právě zaregistrovali, je nasazen stejným způsobem jako jakýkoli jiný registrovaný model v Azure Machine Learning, bez ohledu na to, který Estimator jste použili pro školení. Postup nasazení obsahuje část týkající se registrace modelů, ale můžete přeskočit přímo na [Vytvoření výpočetního cíle](how-to-deploy-and-where.md#choose-a-compute-target) pro nasazení, protože již máte registrovaný model.
 
-Místní kopii modelu můžete také stáhnout pomocí objektu run. Ve školicím skriptu `pytorch_train.py`objekt PyTorch Save uchovává model do místní složky (místní do výpočetního cíle). Kopii můžete stáhnout pomocí objektu spustit.
+Místní kopii modelu můžete také stáhnout pomocí objektu run. Ve školicím skriptu `pytorch_train.py` objekt PyTorch Save uchovává model do místní složky (místní do výpočetního cíle). Kopii můžete stáhnout pomocí objektu spustit.
 
 ```Python
 # Create a model folder in the current directory
@@ -195,12 +195,12 @@ for f in run.get_file_names():
 
 ## <a name="distributed-training"></a>Distribuované trénování
 
-[`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py) Estimator také podporuje distribuované školení v rámci clusterů procesoru a GPU. Můžete snadno spouštět distribuované úlohy PyTorch a Azure Machine Learning bude orchestrace spravovat za vás.
+[`PyTorch`](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py)Estimator také podporuje distribuované školení v rámci clusterů procesoru a GPU. Můžete snadno spouštět distribuované úlohy PyTorch a Azure Machine Learning bude orchestrace spravovat za vás.
 
 ### <a name="horovod"></a>Horovod
 [Horovod](https://github.com/uber/horovod) je open source, což snižuje rámec pro distribuované školení vyvinuté pomocí Uber. Nabízí snadnou cestu k distribuovaným úlohám PyTorch GPU.
 
-Chcete-li použít Horovod, [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) zadejte objekt pro `distributed_training` parametr v konstruktoru PyTorch. Tento parametr zajišťuje, že se knihovna Horovod nainstaluje pro použití ve školicím skriptu.
+Chcete-li použít Horovod, zadejte [`MpiConfiguration`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.mpiconfiguration?view=azure-ml-py) objekt pro `distributed_training` parametr v konstruktoru PyTorch. Tento parametr zajišťuje, že se knihovna Horovod nainstaluje pro použití ve školicím skriptu.
 
 
 ```Python
@@ -216,7 +216,7 @@ estimator= PyTorch(source_directory=project_folder,
                       framework_version='1.13',
                       use_gpu=True)
 ```
-Horovod a jeho závislosti se budou instalovat za vás, takže je můžete importovat do skriptu `train.py` školení následujícím způsobem:
+Horovod a jeho závislosti se budou instalovat za vás, takže je můžete importovat do skriptu školení následujícím `train.py` způsobem:
 
 ```Python
 import torch

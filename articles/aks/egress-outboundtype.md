@@ -4,12 +4,12 @@ description: Naučte se definovat vlastní výstupní trasu ve službě Azure Ku
 services: container-service
 ms.topic: article
 ms.date: 06/05/2020
-ms.openlocfilehash: d62f40fb835bfe6993ad31ddd20cfdea1d9135c2
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 03b18a9cb8fa28d54952a77bf8721c63dd56a9ad
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310865"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84416779"
 ---
 # <a name="customize-cluster-egress-with-a-user-defined-route"></a>Přizpůsobení výstupů clusteru pomocí uživatelsky definované trasy
 
@@ -227,11 +227,11 @@ Informace o tom, jak můžete přepsat výchozí systémové trasy Azure nebo p�
 ## <a name="adding-network-firewall-rules"></a>Přidávají se pravidla brány firewall sítě.
 
 > [!WARNING]
-> Níže uvádíme jeden příklad přidání pravidla brány firewall. Všechny koncové body odchozího přenosu definované v [požadovaných koncových bodech odchozího](egress.md) přenosu musí být povoleny pravidly brány firewall aplikací pro fungování clusterů AKS. Bez povolených koncových bodů nemůže váš cluster fungovat.
+> Níže uvádíme jeden příklad přidání pravidla brány firewall. Všechny koncové body odchozího přenosu definované v [požadovaných koncových bodech odchozího](limit-egress-traffic.md) přenosu musí být povoleny pravidly brány firewall aplikací pro fungování clusterů AKS. Bez povolených koncových bodů nemůže váš cluster fungovat.
 
 Níže je uveden příklad pravidla sítě a aplikace. Přidáme síťové pravidlo, které povoluje jakýkoli protokol, zdrojovou adresu, cílovou IP adresu a cílový port. Přidáme také pravidlo aplikace pro **některé** koncové body, které vyžaduje AKS.
 
-V produkčním scénáři byste měli povolit přístup jenom k požadovaným koncovým bodům vaší aplikace a ty definované v [AKS vyžadují výstup](egress.md).
+V produkčním scénáři byste měli povolit přístup jenom k požadovaným koncovým bodům vaší aplikace a ty definované v [AKS vyžadují výstup](limit-egress-traffic.md).
 
 ```
 # Add Network FW Rules

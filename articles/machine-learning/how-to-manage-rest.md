@@ -7,14 +7,14 @@ ms.author: laobri
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/31/2020
-ms.openlocfilehash: 419dbd998abc5cbd2da64a990e13d46f3fb2efbe
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f096f432111e4e8b52ffcaff355fbf8d9e603819
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77580624"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430423"
 ---
 # <a name="create-run-and-delete-azure-ml-resources-using-rest"></a>Vytváření, spouštění a odstraňování prostředků Azure ML pomocí REST
 
@@ -37,7 +37,7 @@ V tomto článku získáte informace o těchto tématech:
 - **Předplatné Azure** , pro které máte práva správce. Pokud nemáte takové předplatné, vyzkoušejte [bezplatné nebo placené osobní předplatné](https://aka.ms/AMLFree) .
 - [Pracovní prostor Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/how-to-manage-workspace)
 - Žádosti REST pro správu používají ověřování instančního objektu. Postupujte podle kroků v části [nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy](https://docs.microsoft.com/azure/machine-learning/how-to-setup-authentication#set-up-service-principal-authentication) pro vytvoření instančního objektu v pracovním prostoru.
-- Nástroj pro **otáčení** . **Oblý** program je k dispozici v [subsystému Windows pro Linux](https://aka.ms/wslinstall/) nebo distribuci systému UNIX. V PowerShellu je **kudrlinkou** alias pro **volání metody Invoke-WebRequest** a `curl -d "key=val" -X POST uri` bude se `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri`jednat o. 
+- Nástroj pro **otáčení** . **Oblý** program je k dispozici v [subsystému Windows pro Linux](https://aka.ms/wslinstall/) nebo distribuci systému UNIX. V PowerShellu je **kudrlinkou** alias pro **volání metody Invoke-WebRequest** a `curl -d "key=val" -X POST uri` bude se jednat o `Invoke-WebRequest -Body "key=val" -Method POST -Uri uri` . 
 
 ## <a name="retrieve-a-service-principal-authentication-token"></a>Načtení ověřovacího tokenu instančního objektu
 
@@ -53,7 +53,7 @@ Načtení tokenu:
 
 1. Otevřete okno terminálu.
 1. Do příkazového řádku zadejte následující kód.
-1. Nahraďte vlastní hodnoty pro `{your-tenant-id}`, `{your-client-id}`a `{your-client-secret}`. V celém tomto článku jsou řetězce obklopené složenými závorkami proměnné, které budete muset nahradit vlastními odpovídajícími hodnotami.
+1. Nahraďte vlastní hodnoty pro `{your-tenant-id}` , a `{your-client-id}` `{your-client-secret}` . V celém tomto článku jsou řetězce obklopené složenými závorkami proměnné, které budete muset nahradit vlastními odpovídajícími hodnotami.
 1. Spuštěním příkazu
 
 ```bash
@@ -91,7 +91,7 @@ Pokud chcete načíst seznam skupin prostředků přidružených k vašemu před
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups?api-version=2019-11-01 -H "Authorization:Bearer {your-access-token}"
 ```
 
-V rámci Azure se publikuje mnoho rozhraní REST API. Každý poskytovatel služeb aktualizuje své rozhraní API na svém vlastním tempo, ale to bez přerušení stávajících programů. Poskytovatel služby používá k zajištění `api-version` kompatibility argument. Argument `api-version` se liší od služby po službu. Pro službu Machine Learning je `2019-11-01`například aktuální verze rozhraní API. V případě účtů úložiště je to `2019-06-01`. Pro trezory klíčů je to `2019-09-01`. Všechna volání REST by měla nastavit `api-version` argument na očekávanou hodnotu. Můžete spoléhat na syntaxi a sémantiku zadané verze, i když rozhraní API stále vyvíjí. Pokud odešlete požadavek poskytovateli bez `api-version` argumentu, odpověď bude obsahovat seznam podporovaných hodnot čitelných uživatelem. 
+V rámci Azure se publikuje mnoho rozhraní REST API. Každý poskytovatel služeb aktualizuje své rozhraní API na svém vlastním tempo, ale to bez přerušení stávajících programů. Poskytovatel služby používá `api-version` k zajištění kompatibility argument. `api-version`Argument se liší od služby po službu. Pro službu Machine Learning je například aktuální verze rozhraní API `2019-11-01` . V případě účtů úložiště je to `2019-06-01` . Pro trezory klíčů je to `2019-09-01` . Všechna volání REST by měla nastavit `api-version` argument na očekávanou hodnotu. Můžete spoléhat na syntaxi a sémantiku zadané verze, i když rozhraní API stále vyvíjí. Pokud odešlete požadavek poskytovateli bez `api-version` argumentu, odpověď bude obsahovat seznam podporovaných hodnot čitelných uživatelem. 
 
 Výše uvedené volání bude mít za následek zkomprimovanou odpověď ve formátu JSON: 
 
@@ -123,7 +123,7 @@ Výše uvedené volání bude mít za následek zkomprimovanou odpověď ve form
 
 ## <a name="drill-down-into-workspaces-and-their-resources"></a>Přechod k podrobnostem v pracovních prostorech a jejich prostředcích
 
-Pokud chcete načíst sadu pracovních prostorů ve skupině prostředků, spusťte následující příkaz, který nahradí `{your-subscription-id}`, `{your-resource-group}`a: `{your-access-token}` 
+Pokud chcete načíst sadu pracovních prostorů ve skupině prostředků, spusťte následující příkaz, který nahradí `{your-subscription-id}` , `{your-resource-group}` a `{your-access-token}` : 
 
 ```
 curl https://management.azure.com/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/providers/Microsoft.MachineLearningServices/workspaces/?api-version=2019-11-01 \
@@ -183,7 +183,7 @@ Pokud chcete pracovat s prostředky v pracovním prostoru, přepínejte z obecn�
 }
 ```
 
-Hodnota `api` odpovědi je adresa URL serveru, který budete používat pro další požadavky. Chcete-li zobrazit seznam experimentů, například odeslat následující příkaz. Nahraďte `regional-api-server` hodnotou `api` odpovědi (např. `centralus.api.azureml.ms`). Také `your-subscription-id`nahraďte `your-resource-group`, `your-workspace-name`, a `your-access-token` jako obvykle:
+Hodnota `api` odpovědi je adresa URL serveru, který budete používat pro další požadavky. Chcete-li zobrazit seznam experimentů, například odeslat následující příkaz. Nahraďte `regional-api-server` hodnotou `api` odpovědi (např `centralus.api.azureml.ms` .). Také nahraďte `your-subscription-id` ,, `your-resource-group` `your-workspace-name` a `your-access-token` jako obvykle:
 
 ```bash
 curl https://{regional-api-server}/history/v1.0/subscriptions/{your-subscription-id}/resourceGroups/{your-resource-group}/\
@@ -199,15 +199,15 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/mod
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Všimněte si, že `history/v1.0` Pokud chcete zobrazit seznam experimentů, na které začíná cesta a kdy se `modelmanagement/v1.0`mají vypisovat modely, začíná cesta. REST API je rozdělen do několika operačních skupin, z nichž každá má odlišnou cestu. Referenční dokumentace rozhraní API na odkazech níže uvádějí operace, parametry a kódy odpovědí pro různé operace.
+Všimněte si, že pokud chcete zobrazit seznam experimentů, na které začíná cesta `history/v1.0` a kdy se mají vypisovat modely, začíná cesta `modelmanagement/v1.0` . REST API je rozdělen do několika operačních skupin, z nichž každá má odlišnou cestu. Referenční dokumentace rozhraní API na odkazech níže uvádějí operace, parametry a kódy odpovědí pro různé operace.
 
-|Oblast|Cesta|Odkaz|
+|Oblast|Cesta|Referenční informace|
 |-|-|-|
-|Artefakty|artefakt/v 2.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/artifacts)|
-|Úložiště dat|úložiště dat/v 1.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/datastores)|
-|Ladění hyperparametrů|Hyperdrive/v 1.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
-|Modely|modelmanagement/v 1.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
-|Historie spuštění|provádění/v 1.0/a historie/v 1.0/|[Reference k rozhraní REST API](https://docs.microsoft.com/rest/api/azureml/runs)|
+|Artifacts|artefakt/v 2.0/|[Odkaz na REST API](https://docs.microsoft.com/rest/api/azureml/artifacts)|
+|Úložiště dat|úložiště dat/v 1.0/|[Odkaz na REST API](https://docs.microsoft.com/rest/api/azureml/datastores)|
+|Ladění hyperparametrů|Hyperdrive/v 1.0/|[Odkaz na REST API](https://docs.microsoft.com/rest/api/azureml/hyperparametertuning)|
+|Modely|modelmanagement/v 1.0/|[Odkaz na REST API](https://docs.microsoft.com/rest/api/azureml/modelsanddeployments/mlmodels)|
+|Historie spuštění|provádění/v 1.0/a historie/v 1.0/|[Odkaz na REST API](https://docs.microsoft.com/rest/api/azureml/runs)|
 
 REST API můžete prozkoumat pomocí obecného vzoru:
 
@@ -235,7 +235,7 @@ providers/Microsoft.MachineLearningServices/workspaces/{your-workspace-name}/com
 -H "Authorization:Bearer {your-access-token}"
 ```
 
-Pokud chcete vytvořit nebo přepsat pojmenovaný výpočetní prostředek, použijte požadavek PUT. V `your-subscription-id`následující části se kromě nově známých nahrazení, `your-resource-group` `your-workspace-name`,, a `your-access-token`, náhradou `your-compute-name`a hodnot pro `location`, `vmSize`, `vmPriority`, `scaleSettings`, `adminUserName`a. `adminUserPassword` Jak je uvedeno v odkazu na [odkaz na výpočetní prostředky služby Machine Learning – vytvořit nebo aktualizovat sadu SDK](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate), následující příkaz vytvoří vyhrazený Standard_D1 s jedním uzlem (základní výpočetní prostředek procesoru), který se bude škálovat po 30 minutách:
+Pokud chcete vytvořit nebo přepsat pojmenovaný výpočetní prostředek, použijte požadavek PUT. V následující části se kromě nově známých nahrazení,,, `your-subscription-id` `your-resource-group` `your-workspace-name` a `your-access-token` , náhradou `your-compute-name` a hodnot pro `location` , `vmSize` ,, `vmPriority` `scaleSettings` , `adminUserName` a `adminUserPassword` . Jak je uvedeno v odkazu na [odkaz na výpočetní prostředky služby Machine Learning – vytvořit nebo aktualizovat sadu SDK](https://docs.microsoft.com/rest/api/azureml/workspacesandcomputes/machinelearningcompute/createorupdate), následující příkaz vytvoří vyhrazený Standard_D1 s jedním uzlem (základní výpočetní prostředek procesoru), který se bude škálovat po 30 minutách:
 
 ```bash
 curl -X PUT \
@@ -264,7 +264,7 @@ curl -X PUT \
 ```
 
 > [!Note]
-> V terminálech Windows může být nutné při posílání dat JSON řídicí znaky vymezit. To znamená, že se jedná `"location"` o `\"location\"`text, jako je například. 
+> V terminálech Windows může být nutné při posílání dat JSON řídicí znaky vymezit. To znamená, že se jedná o text, jako je například `"location"` `\"location\"` . 
 
 Úspěšná žádost obdrží `201 Created` odpověď, ale Všimněte si, že tato odpověď jednoduše znamená, že proces zřizování začal. Budete se muset dotazovat (nebo použít portál) k potvrzení úspěšného dokončení.
 
@@ -359,7 +359,7 @@ curl
 
 ## <a name="use-rest-to-score-a-deployed-model"></a>Použití REST k určení skóre nasazeného modelu
 
-I když je možné model nasadit, aby se ověřil s instančním objektem, většina nasazení klientů používá ověřování založené na klíčích. Příslušný klíč najdete na stránce pro nasazení na kartě **koncové body** v aplikaci Studio. Ve stejném umístění se zobrazí identifikátor URI bodování vašeho koncového bodu. Vstupy vašeho modelu musí být modelovány jako pole JSON s názvem `data`:
+I když je možné model nasadit, aby se ověřil s instančním objektem, většina nasazení klientů používá ověřování založené na klíčích. Příslušný klíč najdete na stránce pro nasazení na kartě **koncové body** v aplikaci Studio. Ve stejném umístění se zobrazí identifikátor URI bodování vašeho koncového bodu. Vstupy vašeho modelu musí být modelovány jako pole JSON s názvem `data` :
 
 ```bash
 curl 'https://{scoring-uri}' \
@@ -372,7 +372,7 @@ curl 'https://{scoring-uri}' \
 
 Každý pracovní prostor Azure ML má závislost na čtyřech dalších prostředcích Azure: registr kontejnerů s povoleným správou, Trezor klíčů, Application Insights prostředek a účet úložiště. Pracovní prostor nemůžete vytvořit, dokud tyto prostředky neexistují. Podrobnosti o vytvoření každého takového prostředku najdete v referenčních informacích k REST API.
 
-Chcete-li vytvořit pracovní prostor, vložte volání podobné následujícímu `management.azure.com`. I když toto volání vyžaduje, abyste nastavili velký počet proměnných, je strukturálně stejné jako jiné volání popsané v tomto článku. 
+Chcete-li vytvořit pracovní prostor, vložte volání podobné následujícímu `management.azure.com` . I když toto volání vyžaduje, abyste nastavili velký počet proměnných, je strukturálně stejné jako jiné volání popsané v tomto článku. 
 
 ```bash
 curl -X PUT \

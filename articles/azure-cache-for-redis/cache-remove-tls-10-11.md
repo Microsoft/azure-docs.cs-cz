@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: b7b3556896f2d8bb8fea7ffc4543356e248df60d
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 69df5a65df99a7497099e71e9f41701458370c87
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848817"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84423917"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>Odeberte TLS 1,0 a 1,1 pro použití s Azure cache pro Redis.
 
@@ -31,16 +31,18 @@ Tento článek poskytuje obecné pokyny k detekci závislostí na těchto starš
 
 Datum, kdy se tyto změny projeví:
 
-| Cloud                | Počáteční datum fáze 1 | Počáteční datum fáze 2      |
-|----------------------|--------------------|-------------------------|
-| Azure (Global)       |  13. ledna 2020  | 11. května 2020            |
-| Azure Government     |  13. března 2020    | 11. května 2020            |
-| Azure (Německo)        |  13. března 2020    | 11. května 2020            |
-| Azure (Čína) 21Vianet |  13. března 2020    | 11. května 2020            |
+| Cloud                | Počáteční datum fáze 1 | Počáteční datum fáze 2         |
+|----------------------|--------------------|----------------------------|
+| Azure (Global)       |  13. ledna 2020  | Odloženo z důvodu COVID 19  |
+| Azure Government     |  13. března 2020    | Odloženo z důvodu COVID 19  |
+| Azure Germany        |  13. března 2020    | Odloženo z důvodu COVID 19  |
+| Azure China 21Vianet |  13. března 2020    | Odloženo z důvodu COVID 19  |
+
+Poznámka: nové datum pro fázi 2 ještě není určeno.
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Ověřte, zda je aplikace již kompatibilní.
 
-Nejjednodušší způsob, jak zjistit, jestli vaše aplikace bude fungovat s TLS 1,2, je nastavit **minimální hodnotu verze TLS** na TLS 1,2 v testovací nebo pracovní mezipaměti, kterou používá. **Minimální verze protokolu TLS** je v [upřesňujících nastaveních](cache-configure.md#advanced-settings) instance mezipaměti v Azure Portal. Pokud aplikace i nadále funguje podle očekávání po této změně, je to pravděpodobně vyhovující. Je možné, že budete muset nakonfigurovat některé klientské knihovny Redis, které vaše aplikace používá, konkrétně k povolení TLS 1,2, aby se mohly připojit k mezipaměti Azure pro Redis prostřednictvím tohoto protokolu zabezpečení.
+Nejjednodušší způsob, jak zjistit, jestli vaše aplikace bude fungovat s TLS 1,2, je nastavit **minimální hodnotu verze TLS** na TLS 1,2 v testovací nebo pracovní mezipaměti a pak spustit testy. **Minimální verze protokolu TLS** je v [upřesňujících nastaveních](cache-configure.md#advanced-settings) instance mezipaměti v Azure Portal.  Pokud aplikace i nadále funguje podle očekávání po této změně, je to pravděpodobně vyhovující. Možná budete muset nakonfigurovat klientskou knihovnu Redis, kterou vaše aplikace používá, aby povolovala TLS 1,2, aby se mohla připojit k Azure cache pro Redis.
 
 ## <a name="configure-your-application-to-use-tls-12"></a>Konfigurace aplikace tak, aby používala TLS 1,2
 
@@ -57,9 +59,9 @@ Redis klienti .NET standardně používají nejstarší verzi TLS ve výchozím 
 
 Redis klienti .NET Core mají výchozí verzi protokolu TLS nastavenou na operační systém, což zjevně závisí na samotném operačním systému. 
 
-V závislosti na tom, kdy byl operační systém vydán a v případě, že některé jiné opravy změnily výchozí verzi protokolu TLS, může být verze TLS operačního systému poměrně proměnlivá. I když nejsou k dispozici žádné úplné informace pro operační systém Windows, konkrétně můžete najít další informace [zde](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12). 
+V závislosti na verzi operačního systému a všech použitých opravách se může skutečná výchozí verze TLS lišit. I když existuje jeden zdroj informací, je [zde](https://docs.microsoft.com/dotnet/framework/network-programming/tls#support-for-tls-12) článek pro Windows. 
 
-Pokud ale používáte starý operační systém nebo jste chtěli, abyste měli jistotu, že doporučujeme nakonfigurovat upřednostňovanou verzi TLS ručně prostřednictvím klienta.
+Pokud ale používáte starý operační systém nebo jste si ho chtěli určitě, doporučujeme nakonfigurovat upřednostňovanou verzi TLS ručně prostřednictvím klienta.
 
 
 ### <a name="java"></a>Java

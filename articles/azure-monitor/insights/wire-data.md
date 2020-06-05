@@ -5,13 +5,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/03/2018
-ms.openlocfilehash: ee7a2f49641eb0cfe1f8a4bffb44c7f8642408fa
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 05/29/2020
+ms.openlocfilehash: afcad5df1072f2eb474e54aaeca866735a12c5c8
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77670640"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424461"
 ---
 # <a name="wire-data-20-preview-solution-in-azure-monitor"></a>Řešení Wire Data 2.0 (Preview) v Azure Monitor
 
@@ -19,12 +19,15 @@ ms.locfileid: "77670640"
 
 Data o kabelech jsou konsolidovaná data o síti a výkonu shromážděná z počítačů připojených k Windows a Linuxem připojeným pomocí agenta Log Analytics, včetně těch, které monitoruje Operations Manager ve vašem prostředí. Kvůli pomoci při korelaci dat se síťová data kombinují s jinými daty protokolu.
 
-[!INCLUDE [azure-monitor-log-analytics-rebrand](../../../includes/azure-monitor-log-analytics-rebrand.md)]
-
 Kromě agenta Log Analytics používá řešení pro přenos dat také agenty závislostí od Microsoftu, které nainstalujete do počítačů v infrastruktuře IT. Závislí agenti monitorují síťová data odesílaná do a z počítačů na úrovních sítě 2–3 v [modelu OSI](https://en.wikipedia.org/wiki/OSI_model), a to včetně různých použitých protokolů a portů. Data se pak odesílají Azure Monitor pomocí agentů.  
 
 >[!NOTE]
->Pokud jste už nasadili Service Map, nebo zvažujete Service Map nebo [Azure monitor pro virtuální počítače](../../azure-monitor/insights/vminsights-overview.md), vytvoří se nová sada dat metriky připojení, kterou shromažďují a ukládají v Azure monitor, které poskytují srovnatelné informace pro přenosová data.
+>Řešení pro přenos dat bylo nahrazeno [Service MAPM řešením](service-map.md).  Pomocí agenta Log Analytics a agenta závislostí se shromažďují data síťového připojení do Azure Monitor. 
+> 
+>Stávající zákazníci, kteří používají řešení pro přenos dat, ho můžou dál používat. Pokyny pro časovou osu migrace pro přesun na Service Map budeme publikovat.
+>
+>Noví zákazníci by měli nainstalovat [Service map řešení](service-map.md) nebo [Azure monitor pro virtuální počítače](vminsights-overview.md).  Sada dat Service Map je srovnatelná s daty o kabelech.  Azure Monitor pro virtuální počítače zahrnuje Service Map datovou sadu s dalšími údaji o výkonu a funkcemi pro analýzu. 
+
 
 Ve výchozím nastavení Azure Monitor protokoluje data o výkonu procesoru, paměti, disku a sítě z čítačů integrovaných do systémů Windows a Linux a také dalších čítačů výkonu, které lze zadat. Shromažďování síťových a jiných dat probíhá u každého agenta v reálném čase včetně podsítí a protokolů na úrovni aplikace, které počítač používá.  Řešení Wire Data sleduje síťová data na úrovni aplikace, nikoli v přenosové vrstvě TCP. Toto řešení nesleduje individuální signály ACK a SYN. Po dokončení metody handshake se připojení považuje za aktivní a označí se jako Připojeno. Toto připojení zůstává aktivní, dokud obě strany souhlasí, že je soket otevřený, a data mohou proudit tam a zpět. Jakmile se připojení ukončí, bude označeno jako odpojeno.  Proto se počítá jen šířka pásma úspěšně dokončených paketů a neoznamují se opětovně odeslané nebo neúspěšné pakety.
 
@@ -96,7 +99,7 @@ V následujících částech najdete seznam podporovaných operačních systém�
 #### <a name="windows-desktop"></a>Plocha Windows
 
 - Systém Windows 10 1803
-- Windows 10
+- Windows 10
 - Windows 8.1
 - Windows 8
 - Windows 7
@@ -153,7 +156,7 @@ V následujících částech najdete seznam podporovaných operačních systém�
 
 ### <a name="dependency-agent-downloads"></a>Soubory ke stažení agenta závislostí
 
-| File | Operační systém | Version | SHA-256 |
+| Soubor | Operační systém | Verze | SHA-256 |
 |:--|:--|:--|:--|
 | [InstallDependencyAgent-Windows.exe](https://aka.ms/dependencyagentwindows) | Windows | 9.7.4 | A111B92AB6CF28EB68B696C60FE51F980BFDFF78C36A900575E17083972989E0 |
 | [InstallDependencyAgent-Linux64.bin](https://aka.ms/dependencyagentlinux) | Linux | 9.7.4 | AB58F3DB8B1C3DEE7512690E5A65F1DFC41B43831543B5C040FCCE8390F2282C |
@@ -164,7 +167,7 @@ V následujících částech najdete seznam podporovaných operačních systém�
 
 Při konfiguraci řešení Wire Data pro vaše pracovní prostory použijte následující postup.
 
-1. Povolte řešení Activity Log Analytics z [webu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí procesu popsaného v tématu [Přidání řešení monitorování z galerie řešení](../../azure-monitor/insights/solutions.md).
+1. Povolte řešení Activity Log Analytics z [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.WireData2OMS?tab=Overview) nebo pomocí postupu popsaného v tématu [Přidání řešení monitorování z galerie řešení](../../azure-monitor/insights/solutions.md).
 2. Nainstalujte agenta závislostí do každého počítače, kde chcete získat data. Agent závislostí může monitorovat připojení k přímým sousedům, takže nebudete muset mít v každém počítači agenta.
 
 > [!NOTE]
@@ -255,7 +258,7 @@ wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDepende
 sh InstallDependencyAgent-Linux64.bin -s
 ```
 
-### <a name="desired-state-configuration"></a>Konfigurace požadovaného stavu
+### <a name="desired-state-configuration"></a>Desired State Configuration
 
 Chcete-li nasadit agenta závislostí přes konfiguraci požadovaného stavu, můžete použít modul xPSDesiredStateConfiguration a bitovou část kódu, například následující:
 

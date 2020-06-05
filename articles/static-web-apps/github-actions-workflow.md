@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: chnwamba
-ms.openlocfilehash: 44472eb697a4d191d4ed99b7879654fcca61383b
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: e2cc1e20c20c17742f2bea56f4e87e8678e4cc03
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655200"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434008"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Pracovní postupy akcí GitHubu pro Azure static Web Apps Preview
 
@@ -102,10 +102,10 @@ Každá aktivační událost události vyžaduje obslužnou rutinu události. [�
 
 V souboru pracovního postupu statického Web Apps jsou k dispozici dvě dostupné úlohy.
 
-| Name  | Popis |
+| Name  | Description |
 |---------|---------|
 |`build_and_deploy_job` | Provede se při vložení potvrzení změn nebo otevření žádosti o přijetí změn pro větev uvedenou ve `on` Vlastnosti. |
-|`close_pull_request_job` | Provede se pouze při zavření žádosti o přijetí změn. |
+|`close_pull_request_job` | Provede se jenom při zavření žádosti o přijetí změn, která odebere pracovní prostředí vytvořené z žádostí o přijetí změn. |
 
 ## <a name="steps"></a>Kroky
 
@@ -148,7 +148,7 @@ Můžete mít jemně odstupňovanou kontrolu nad tím, které příkazy se spust
 
 Nasazení vždy volá `npm install` před libovolným vlastním příkazem.
 
-| Příkaz            | Popis |
+| Příkaz            | Description |
 |---------------------|-------------|
 | `app_build_command` | Definuje vlastní příkaz, který se má spustit během nasazování aplikace statického obsahu.<br><br>Například pro konfiguraci výrobního sestavení pro úhlovou aplikaci ENTER `ng build --prod` . Pokud necháte pole prázdné, pracovní postup se pokusí spustit `npm run build` příkazy nebo `npm run build:Azure` .  |
 | `api_build_command` | Definuje vlastní příkaz, který se spustí během nasazování aplikace Azure Functions API. |

@@ -5,17 +5,17 @@ description: Vytvářejte Azure Machine Learning monitory datových sad (Preview
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: e49c621d92a8aa604b5f95291c5d80c0141f41dd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15cfa56f718290af3ae5fb87aadab70016cc8594
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81682728"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430238"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Zjištění posunu dat (Preview) u datových sad
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -37,7 +37,7 @@ Metriky a přehledy jsou dostupné prostřednictvím prostředku [Azure Applicat
 ## <a name="prerequisites"></a>Požadavky
 
 K vytváření a práci s monitory datových sad potřebujete:
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 * [Pracovní prostor Azure Machine Learning](how-to-manage-workspace.md).
 * [Nainstalovaná sada Azure Machine Learning SDK pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/install?view=azure-ml-py), která zahrnuje balíček AzureML-DataSet Sets.
 * Strukturovaná (tabulková) data s časovým razítkem zadaným v cestě k souboru, názvu souboru nebo sloupci v datech.
@@ -61,7 +61,7 @@ Můžete vytvořit monitorování datových sad pro detekci a upozorňování na
 
 V koncepčním případě existují tři primární scénáře nastavení monitorování datových sad v Azure Machine Learning.
 
-Scénář | Popis
+Scénář | Description
 ---|---
 Sledování dat modelu obsluhujících data pro zajištění posunu od školicích dat modelu | Výsledky z tohoto scénáře je možné interpretovat jako monitorování proxy serveru pro přesnost modelu. vzhledem k tomu, že se tato přesnost modelu snižuje, pokud se obsluha dat od školicích dat odkládá.
 Monitorování datové sady časových řad pro posun od předchozího časového období. | Tento scénář je obecnější a dá se použít k monitorování datových sad, které jsou v nadřazeném nebo podřízeném sestavení modelu.  Cílová datová sada musí mít sloupec časového razítka, zatímco datová sada může být libovolná tabulková sada, která má funkce společné s cílovou datovou sadou.
@@ -73,11 +73,11 @@ Pomocí Azure Machine Learning se v datových sadách monitorují data na posuno
 
 ### <a name="set-the-timeseries-trait-in-the-target-dataset"></a>Nastavení `timeseries` vlastnosti v cílové sadě dat
 
-Cílová datová sada musí mít `timeseries` nastavenou vlastnost zadáním sloupce časového razítka buď ze sloupce v datech, nebo z virtuálního sloupce odvozeného ze vzor cesty souborů. To lze provést prostřednictvím sady Python SDK nebo Azure Machine Learning studia. Aby bylo možné přidat `timeseries` vlastnost do datové sady, je nutné zadat sloupec, který představuje časové razítko "jemně zrnitého". Pokud jsou vaše data rozdělená do struktury složek s časovými informacemi, jako je například {rrrr/MM/DD}, můžete vytvořit virtuální sloupec pomocí nastavení vzoru cesty a nastavit ho jako časové razítko "hrubých", aby se zlepšila důležitost funkcí časové řady. 
+Cílová datová sada musí mít `timeseries` nastavenou vlastnost zadáním sloupce časového razítka buď ze sloupce v datech, nebo z virtuálního sloupce odvozeného ze vzor cesty souborů. To lze provést prostřednictvím sady Python SDK nebo Azure Machine Learning studia. Aby bylo možné přidat vlastnost do datové sady, je nutné zadat sloupec, který představuje časové razítko "jemně zrnitého" `timeseries` . Pokud jsou vaše data rozdělená do struktury složek s časovými informacemi, jako je například {rrrr/MM/DD}, můžete vytvořit virtuální sloupec pomocí nastavení vzoru cesty a nastavit ho jako časové razítko "hrubých", aby se zlepšila důležitost funkcí časové řady. 
 
 #### <a name="python-sdk"></a>Python SDK
 
-[`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) Metoda [`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) Class definuje sloupec časového razítka pro datovou sadu. 
+[`Dataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) [`with_timestamp_columns()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py#with-timestamp-columns-timestamp-none--partition-timestamp-none--validate-false----kwargs-) Metoda Class definuje sloupec časového razítka pro datovou sadu. 
 
 ```python 
 from azureml.core import Workspace, Dataset, Datastore
@@ -129,12 +129,12 @@ Různá nastavení monitorování datových sad jsou rozdělená do tří skupin
 
 Tato tabulka obsahuje základní nastavení použitá pro monitorování datových sad.
 
-| Nastavení | Popis | Tipy | Měnitelné | 
+| Nastavení | Description | Tipy | Měnitelné | 
 | ------- | ----------- | ---- | ------- | 
-| Název | Název monitorování datové sady | | Ne |
+| Name | Název monitorování datové sady | | Ne |
 | Základní datová sada | Tabulková datová sada, která bude použita jako základ pro porovnání cílové datové sady v průběhu času. | Základní datová sada musí mít funkce společné s cílovou datovou sadou. Obecně platí, že by měl být standardní hodnota nastavena na školicí datovou sadu modelu nebo na řez cílové datové sady. | Ne |
 | Cílová datová sada | Sada tabulkových dat se zadaným sloupcem časového razítka, která se bude analyzovat pro posun dat | Cílová datová sada musí mít funkce společné se základní datovou sadou a měla by být `timeseries` datová sada, ke které se připojí nová data. Historická data v cílové datové sadě můžete analyzovat, nebo je možné monitorovat nová data. | Ne | 
-| Frequency | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Úpravou tohoto nastavení zahrňte do směrného plánu srovnatelnou velikost dat. | Ne | 
+| Frekvence | Frekvence, která se použije k naplánování úlohy kanálu a k analýze historických dat, pokud se spustí zpětná výplň. Mezi možnosti patří denní, týdenní nebo měsíční. | Úpravou tohoto nastavení zahrňte do směrného plánu srovnatelnou velikost dat. | Ne | 
 | Funkce | Seznam funkcí, které se budou analyzovat pro posun dat v průběhu času. | Nastavte na výstupní funkce modelu pro měření posunu konceptu. Nezahrnují funkce, které se přirozeně mění v průběhu času (měsíc, rok, index atd.). Po úpravě seznamu funkcí můžete zpětně naplnit a sledovat sledování posunu dat. | Ano | 
 | Cílový výpočetní objekt | Pokud chcete spustit úlohy monitorování datových sad, Azure Machine Learning výpočetní cíl. | | Ano | 
 
@@ -142,9 +142,9 @@ Tato tabulka obsahuje základní nastavení použitá pro monitorování datový
 
 Tato nastavení se dají vytvořit v případě naplánovaných kanálů monitorování datových sad, které se vytvoří. 
 
-| Nastavení | Popis | Tipy | Měnitelné | 
+| Nastavení | Description | Tipy | Měnitelné | 
 | ------- | ----------- | ---- | ------- |
-| Povolení | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Zakažte plán k analýze historických dat s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Ano | 
+| Povolit | Povolí nebo zakáže plán na kanálu monitorování datových sad. | Zakažte plán k analýze historických dat s nastavením obnovení. Dá se povolit po vytvoření monitoru datové sady. | Ano | 
 | Latence | Čas, který je v hodinách, trvá pro doručení dat do datové sady. Pokud například trvá tři dny, než dorazí data do databáze SQL DB pro zapouzdření datové sady, nastavte latenci na 72. | Po vytvoření monitorování datové sady nelze změnit. | Ne | 
 | E-mailové adresy | E-mailové adresy pro výstrahy na základě porušení procentuální prahové hodnoty posunu dat | E-maily se odesílají prostřednictvím Azure Monitor. | Ano | 
 | Prahová hodnota | Procentuální prahová hodnota posunu dat pro e-mailové upozornění. | Další výstrahy a události můžete nastavit u mnoha dalších metrik v přidruženém prostředku Application Insights pracovního prostoru. | Ano | 
@@ -153,7 +153,7 @@ Tato nastavení se dají vytvořit v případě naplánovaných kanálů monitor
 
 Tato nastavení slouží ke spouštění zpětných dat pro metriky pro přenos dat v minulosti.
 
-| Nastavení | Popis | Tipy |
+| Nastavení | Description | Tipy |
 | ------- | ----------- | ---- |
 | Počáteční datum | Počáteční datum úlohy naplnění | | 
 | Koncové datum | Koncové datum úlohy naplnění | Koncové datum nemůže být větší než 31 * frekvence jednotek času od počátečního data. U stávajícího monitorování datových sad může být metrika zpětně vyplněna, aby bylo možné analyzovat historická data nebo nahrazovat metriky s aktualizovanými nastaveními. |
@@ -239,12 +239,12 @@ Monitorování dat vytváří dvě skupiny výsledků: posunování přehledu a 
 
 Oddíl s **přehledem posunu** obsahuje přehledy na nejvyšší úrovni pro velikost posunu dat a o tom, které funkce se mají dále prozkoumat. 
 
-| Metrika | Popis | Tipy | 
+| Metric | Popis | Tipy | 
 | ------ | ----------- | ---- | 
 | Velikost posunu dat | Zadáno jako procento mezi základní a cílovou datovou sadou v průběhu času. V rozsahu od 0 do 100, kde 0 označuje identické datové sady a 100 znamená, že funkce posunu dat Azure Machine Learning může zcela sdělit dvě datové sady od sebe. | V důsledku technik strojového učení, který se používá ke generování této velikosti, se očekává šum v přesném měřeném procentu. | 
 | Posunovat příspěvek podle funkcí | Příspěvek každé funkce v cílové datové sadě k měřené velikosti posunu. |  V důsledku covariate Shift není nutné základní distribuce funkce nutně měnit, aby měla poměrně vysokou důležitost funkcí. | 
 
-Následující obrázek představuje příklad grafů zobrazených Azure Machine Learning ve službě disNOAA **Studio, které** vyplývají z výplně [integrovaných dat Surface](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/). Data byla Navzorkovaná `stationName contains 'FLORIDA'`na, s lednem 2019 použitými jako základní datovou sadu a všemi 2019 daty použitými jako cíl.
+Následující obrázek představuje příklad grafů zobrazených Azure Machine Learning ve službě disNOAA **Studio, které** vyplývají z výplně [integrovaných dat Surface](https://azure.microsoft.com/services/open-datasets/catalog/noaa-integrated-surface-data/). Data byla Navzorkovaná na `stationName contains 'FLORIDA'` , s lednem 2019 použitými jako základní datovou sadu a všemi 2019 daty použitými jako cíl.
  
 ![Přehled posunu](./media/how-to-monitor-datasets/drift-overview.png)
 
@@ -262,7 +262,7 @@ Tyto metriky lze také načíst v sadě Python SDK prostřednictvím `get_metric
 
 Číselné funkce jsou profilované v každém spuštění monitorování datových sad. V Azure Machine Learning Studiu jsou k dispozici následující. Pro rozdělení se zobrazí Hustota pravděpodobnosti.
 
-| Metrika | Popis |  
+| Metric | Popis |  
 | ------ | ----------- |  
 | Wasserstein vzdálenost | Minimální množství práce k transformaci distribuce směrného plánu do cílové distribuce. |
 | Střední hodnota | Průměrná hodnota funkce |
@@ -275,7 +275,7 @@ Tyto metriky lze také načíst v sadě Python SDK prostřednictvím `get_metric
 
 Číselné funkce jsou profilované v každém spuštění monitorování datových sad. V Azure Machine Learning Studiu jsou k dispozici následující. Pro distribuci se zobrazí histogram.
 
-| Metrika | Popis |  
+| Metric | Popis |  
 | ------ | ----------- |  
 | Euclidian vzdálenost | Geometrická vzdálenost mezi rozstupnými a cílovými distribucí |
 | Jedinečné hodnoty | Počet jedinečných hodnot (mohutnosti) funkce |
@@ -295,7 +295,7 @@ V levém podokně v části monitorování vyberte protokoly (analýza):
 
 ![Přehled Application Insights](./media/how-to-monitor-datasets/ai-overview.png)
 
-Metriky monitorování datových sad jsou uloženy jako `customMetrics`. Můžete napsat a spustit dotaz po nastavení monitorování datové sady, abyste je mohli zobrazit:
+Metriky monitorování datových sad jsou uloženy jako `customMetrics` . Můžete napsat a spustit dotaz po nastavení monitorování datové sady, abyste je mohli zobrazit:
 
 [![Dotaz na Log Analytics](./media/how-to-monitor-datasets/simple-query.png)](media/how-to-monitor-datasets/simple-query-expanded.png)
 

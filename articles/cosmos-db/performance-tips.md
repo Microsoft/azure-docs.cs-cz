@@ -4,14 +4,14 @@ description: Seznamte se s možnostmi konfigurace klienta pro zlepšení výkonu
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 06/04/2020
 ms.author: sngun
-ms.openlocfilehash: ee2743af2f8499aec04d8b6b733e1ba4c2a82083
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b8d55e5096f3af8d91027eec090cf1f9240a82cb
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80546077"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432117"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Tipy pro zvýšení výkonu pro Azure Cosmos DB a .NET
 
@@ -33,9 +33,9 @@ Pro zlepšení výkonu doporučujeme zpracování bitového hostitelského syst�
 
 - U spustitelných aplikací lze změnit zpracování hostitele nastavením možnosti [cíl platformy](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) na hodnotu **x64** v okně **Vlastnosti projektu** na kartě **sestavení** .
 
-- U testovacích projektů založených na VSTest můžete změnit zpracování hostitele tak, že v nabídce **test** sady Visual Studio vyberete**možnost nastavení** >  **test** > testu**výchozí architektura procesoru jako x64** .
+- U testovacích projektů založených na VSTest můžete změnit zpracování hostitele tak, **Test**že  >  v nabídce Test sady Visual Studio vyberete**možnost nastavení test testu**  >  **výchozí architektura procesoru jako x64** . **Test**
 
-- Pro lokálně nasazené webové aplikace v ASP.NET můžete změnit zpracování hostitele tak, že vyberete možnost **použít 64 verze IIS Express pro weby a projekty** v nabídce **nástroje** > **Možnosti** > **projekty a řešení** > **webové projekty**.
+- Pro lokálně nasazené webové aplikace v ASP.NET můžete změnit zpracování hostitele tak, že vyberete možnost **použít 64 verze IIS Express pro weby a projekty** v nabídce **nástroje**  >  **Možnosti**  >  **projekty a řešení**  >  **webové projekty**.
 
 - Pro webové aplikace ASP.NET nasazené v Azure můžete změnit zpracování hostitele tak, že v **nastavení aplikace** v Azure Portal vyberete platformu **64** .
 
@@ -45,7 +45,7 @@ Pro zlepšení výkonu doporučujeme zpracování bitového hostitelského syst�
     
 **Zapnout uvolňování paměti na straně serveru (GC)**
 
-Omezení frekvence uvolňování paměti může v některých případech pomáhat. V rozhraní .NET nastavte [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) na `true`.
+Omezení frekvence uvolňování paměti může v některých případech pomáhat. V rozhraní .NET nastavte [gcServer](https://msdn.microsoft.com/library/ms229357.aspx) na `true` .
 
 **Horizontální navýšení kapacity úlohy klienta**
 
@@ -73,16 +73,16 @@ Způsob připojení klienta k Azure Cosmos DB má důležité dopady na výkon, 
 
 V režimu brány Azure Cosmos DB pomocí rozhraní Azure Cosmos DB API pro MongoDB používat port 443 a porty 10250, 10255 a 10256. Port 10250 se mapuje na výchozí instanci MongoDB bez geografické replikace. Porty 10255 a 10256 jsou mapovány na instanci MongoDB, která má geografickou replikaci.
      
-Pokud používáte protokol TCP v přímém režimu kromě portů brány, je nutné zajistit, aby byl rozsah portů mezi 10000 a 20000 otevřený, protože Azure Cosmos DB používá dynamické porty TCP. Pokud se tyto porty neotevřou a pokusíte se použít protokol TCP, obdržíte nedostupnou chybu služby 503. Tato tabulka zobrazuje režimy připojení dostupné pro různá rozhraní API a porty služeb používané pro každé rozhraní API:
+Pokud používáte protokol TCP v přímém režimu kromě portů brány, je nutné zajistit, aby byl rozsah portů mezi 10000 a 20000 otevřený, protože Azure Cosmos DB používá dynamické porty TCP (při použití přímého režimu na [soukromých koncových bodech](./how-to-configure-private-endpoints.md)musí být otevřen plný rozsah portů TCP-od 0 do 65535-). Pokud se tyto porty neotevřou a pokusíte se použít protokol TCP, obdržíte nedostupnou chybu služby 503. Tato tabulka zobrazuje režimy připojení dostupné pro různá rozhraní API a porty služeb používané pro každé rozhraní API:
 
 |Režim připojení  |Podporovaný protokol  |Podporované sady SDK  |Port API/Service  |
 |---------|---------|---------|---------|
 |brána  |   HTTPS    |  Všechny sady SDK    |   SQL (443), MongoDB (10250, 10255, 10256), Table (443), Cassandra (10350), Graph (443)    |
-|Direct    |     TCP    |  .NET SDK    | Porty v rozsahu 10000 až 20000 |
+|Direct    |     TCP    |  .NET SDK    | Při použití koncových bodů veřejné/služby: porty v rozsahu 10000 až 20000<br>Při použití privátních koncových bodů: porty v rozsahu 0 až 65535 |
 
 Azure Cosmos DB nabízí jednoduchý a otevřený programovací model RESTful přes protokol HTTPS. Navíc nabízí efektivní protokol TCP, který se také RESTful ve svém komunikačním modelu a je dostupný prostřednictvím klientské sady SDK pro .NET. Protokol TCP používá pro počáteční ověřování a šifrování provozu protokol TLS. Pro nejlepší výkon použijte protokol TCP, pokud je to možné.
 
-Pro sadu SDK V3 nakonfigurujete režim připojení při vytváření `CosmosClient` instance v. `CosmosClientOptions` Pamatujte, že výchozí hodnota je přímý režim.
+Pro sadu SDK V3 nakonfigurujete režim připojení při vytváření `CosmosClient` instance v `CosmosClientOptions` . Pamatujte, že výchozí hodnota je přímý režim.
 
 ```csharp
 var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -113,7 +113,7 @@ Protože je protokol TCP podporován pouze v přímém režimu, pokud používá
 
 **Zavolejte OpenAsync, aby se zamezilo latenci při spuštění prvního požadavku.**
 
-Ve výchozím nastavení má první požadavek větší latenci, protože potřebuje načíst směrovací tabulku adres. Při použití [sady SDK v2](sql-api-sdk-dotnet.md)zavolejte `OpenAsync()` při inicializaci jedenkrát, aby se předešlo této latenci při spuštění prvního požadavku:
+Ve výchozím nastavení má první požadavek větší latenci, protože potřebuje načíst směrovací tabulku adres. Při použití [sady SDK v2](sql-api-sdk-dotnet.md)zavolejte při `OpenAsync()` inicializaci jedenkrát, aby se předešlo této latenci při spuštění prvního požadavku:
 
     await client.OpenAsync();
 
@@ -125,7 +125,7 @@ Ve výchozím nastavení má první požadavek větší latenci, protože potře
 
 Pokud je to možné, umístěte všechny aplikace, které volají Azure Cosmos DB ve stejné oblasti jako databáze Azure Cosmos DB. Toto je přibližné porovnání: volání Azure Cosmos DB v rámci stejné oblasti se dokončila v rozmezí od 1 do 2 MS, ale latence mezi západním a východním pobřežím USA je větší než 50 ms. Tato latence se může lišit od požadavku na vyžádání v závislosti na trasách, kterou požadavek prochází z klienta na hranici datacentra Azure. Nejnižší možnou latenci získáte tak, že zajistíte, aby se volající aplikace nacházela ve stejné oblasti Azure jako koncový bod zřízené Azure Cosmos DB. Seznam oblastí, které jsou k dispozici, najdete v tématu [oblasti Azure](https://azure.microsoft.com/regions/#services).
 
-![Zásady](./media/performance-tips/same-region.png) připojení Azure Cosmos DB<a id="increase-threads"></a>
+![Zásady ](./media/performance-tips/same-region.png) připojení Azure Cosmos DB<a id="increase-threads"></a>
 
 **Zvýšení počtu vláken/úloh**
 
@@ -148,7 +148,7 @@ Aplikace střední vrstvy, které nevyužívají odpovědi přímo ze sady SDK, 
 
 **Použití typu Singleton Azure Cosmos DB klienta po dobu života vaší aplikace**
 
-Každá `DocumentClient` instance `CosmosClient` a je bezpečná pro přístup z více vláken a při provozu v přímém režimu provádí efektivní správu připojení a ukládání adres do mezipaměti. K zajištění efektivní správy připojení a lepšího výkonu klienta sady SDK doporučujeme, abyste `AppDomain` pro celou dobu života aplikace použili jednu instanci.
+Každá `DocumentClient` `CosmosClient` instance a je bezpečná pro přístup z více vláken a při provozu v přímém režimu provádí efektivní správu připojení a ukládání adres do mezipaměti. K zajištění efektivní správy připojení a lepšího výkonu klienta sady SDK doporučujeme, abyste `AppDomain` pro celou dobu života aplikace použili jednu instanci.
 
    <a id="max-connection"></a>
 
@@ -170,7 +170,7 @@ Upozorňujeme, že paralelní dotazy poskytují nejvíc výhod, pokud jsou data 
 
 ***Vyladění MaxBufferedItemCount***
     
-Paralelní dotaz je navržený tak, aby byly výsledky předem načteny, zatímco aktuální dávka výsledků je zpracovávána klientem. Toto předběžné načítání pomáhá zlepšit celkovou latenci dotazu. `MaxBufferedItemCount` Parametr omezuje počet předběžně načtených výsledků. Nastavte `MaxBufferedItemCount` na očekávaný počet vrácených výsledků (nebo vyšší číslo), aby dotaz mohl získat maximální přínos před načtením.
+Paralelní dotaz je navržený tak, aby byly výsledky předem načteny, zatímco aktuální dávka výsledků je zpracovávána klientem. Toto předběžné načítání pomáhá zlepšit celkovou latenci dotazu. `MaxBufferedItemCount`Parametr omezuje počet předběžně načtených výsledků. Nastavte `MaxBufferedItemCount` na očekávaný počet vrácených výsledků (nebo vyšší číslo), aby dotaz mohl získat maximální přínos před načtením.
 
 Předběžné načítání funguje stejným způsobem bez ohledu na stupeň paralelismu a existuje jedna vyrovnávací paměť pro data ze všech oddílů.  
 
@@ -199,12 +199,12 @@ Ukládání identifikátorů URI dokumentů mezipaměti, kdykoli je to možné, 
    <a id="tune-page-size"></a>
 **Vyladění velikosti stránek pro dotazy a kanály pro čtení pro lepší výkon**
 
-Když provádíte hromadnou čtení dokumentů pomocí funkce informačního kanálu pro čtení (například `ReadDocumentFeedAsync`) nebo když vydáte dotaz SQL, výsledky se vrátí segmenticky, pokud je sada výsledků příliš velká. Ve výchozím nastavení se výsledky vrátí do bloků 100 položek nebo 1 MB, podle toho, který limit se narazí jako první.
+Když provádíte hromadnou čtení dokumentů pomocí funkce informačního kanálu pro čtení (například `ReadDocumentFeedAsync` ) nebo když vydáte dotaz SQL, výsledky se vrátí segmenticky, pokud je sada výsledků příliš velká. Ve výchozím nastavení se výsledky vrátí do bloků 100 položek nebo 1 MB, podle toho, který limit se narazí jako první.
 
 Chcete-li snížit počet síťových přenosů potřebných k načtení všech použitelných výsledků, můžete zvětšit velikost stránky pomocí [x-MS-Max-Item-Count](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) pro vyžádání až 1 000 hlaviček. Pokud potřebujete zobrazit jenom pár výsledků, například pokud vaše uživatelské rozhraní nebo rozhraní API pro aplikace vrátí jenom 10 výsledků najednou, můžete také zmenšit velikost stránky na 10 a snížit tak propustnost, která se pro čtení a dotazy spotřebují.
 
 > [!NOTE] 
-> `maxItemCount` Vlastnost by se neměla používat jenom pro stránkování. Jeho hlavním použitím je zvýšit výkon dotazů omezením maximálního počtu položek vrácených na jednu stránku.  
+> `maxItemCount`Vlastnost by se neměla používat jenom pro stránkování. Jeho hlavním použitím je zvýšit výkon dotazů omezením maximálního počtu položek vrácených na jednu stránku.  
 
 Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sad SDK. Vlastnost [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) v `FeedOptions` umožňuje nastavit maximální počet položek, které mají být vráceny v rámci operace výčtu. Když `maxItemCount` je nastavená hodnota-1, sada SDK automaticky vyhledá optimální hodnotu v závislosti na velikosti dokumentu. Příklad:
     
@@ -212,7 +212,7 @@ Velikost stránky můžete nastavit také pomocí dostupných Azure Cosmos DB sa
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
 ```
     
-Při spuštění dotazu jsou výsledná data odeslána v rámci paketu TCP. Pokud zadáte příliš nízkou hodnotu pro `maxItemCount`, je počet cest potřebných k odeslání dat v rámci paketu TCP vysoký, což má vliv na výkon. Takže pokud si nejste jistí, jakou hodnotu má `maxItemCount` vlastnost nastavit, je nejlepší ji nastavit na-1 a nechat sadu SDK, aby zvolila výchozí hodnotu.
+Při spuštění dotazu jsou výsledná data odeslána v rámci paketu TCP. Pokud zadáte příliš nízkou hodnotu pro `maxItemCount` , je počet cest potřebných k odeslání dat v rámci paketu TCP vysoký, což má vliv na výkon. Takže pokud si nejste jistí, jakou hodnotu má `maxItemCount` vlastnost nastavit, je nejlepší ji nastavit na-1 a nechat sadu SDK, aby zvolila výchozí hodnotu.
 
 **Zvýšení počtu vláken/úloh**
 

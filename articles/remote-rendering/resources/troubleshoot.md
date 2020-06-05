@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 59dc64c952aab6b37e6a779ab1e7e85b9a8ab4b7
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4fccf7b786de91c8bcce0b2073e0519ef6c1f2ab
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84018816"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424382"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -171,6 +171,56 @@ Dalším důvodem pro nestabilní hologramy (wobbling, reformace, kolísání ne
 Další hodnota, kterou chcete prohledat `ARRServiceStats.LatencyPoseToReceiveAvg` , je. Mělo by se konzistentně nacházet pod 100 ms. Pokud vidíte vyšší hodnoty, znamená to, že jste připojení k datovému centru, které je příliš daleko.
 
 Seznam možných rizik najdete v [pokynech k připojení k síti](../reference/network-requirements.md#guidelines-for-network-connectivity).
+
+## <a name="z-fighting"></a>Z-boj
+
+V případě, že šipka nabízí [funkce pro zmírnění boje proti chybám](../overview/features/z-fighting-mitigation.md), je možné, že se v rámci scény stále zobrazuje z-boje. Tato příručka se zaměřuje na řešení těchto zbývajících problémů.
+
+### <a name="recommended-steps"></a>Doporučené kroky
+
+Pomocí následujícího pracovního postupu můžete zmírnit řešení z boje proti:
+
+1. Otestování scény s výchozími nastaveními ARR (omezení z hlediska boje proti hrozbám)
+
+1. Zakázat zmírnění z boje proti riziku prostřednictvím [rozhraní API](../overview/features/z-fighting-mitigation.md) 
+
+1. Změna kamery v blízkosti a daleko rovině na užší rozsah
+
+1. Řešení potíží s scénou prostřednictvím další části
+
+### <a name="investigating-remaining-z-fighting"></a>Prošetření zbývajících z-boje
+
+Pokud byly výše uvedené kroky vyčerpány a zbývající z-boje je nepřijatelná, je nutné prozkoumat základní příčinu z-boje. Jak je uvedeno na [stránce funkce zmírňování proti](../overview/features/z-fighting-mitigation.md)útokům, existují dva hlavní důvody pro odboje: na konci rozsahu hloubky a oblasti, které se protínají při coplanarí. Ztrátová přesnost hloubky je matematickou a je možné ji zmírnit jenom pomocí kroku 3 výše. Coplanar povrchy označují chybu zdrojového prostředku a jsou ve zdrojových datech lépe opraveny.
+
+Vlastnost ARR má funkci pro určení, zda by povrchy mohly z boje: [šachovnice zvýrazňování](../overview/features/z-fighting-mitigation.md). Můžete také určit vizuálně co způsobuje z-boje. Následující první animace ukazuje příklad ztráty hloubky ve vzdálenosti a druhá ukazuje příklad téměř coplanarch ploch:
+
+![Hloubka a přesnost z-boje](./media/depth-precision-z-fighting.gif)  ![coplanar-z-boj](./media/coplanar-z-fighting.gif)
+
+Tyto příklady porovnejte s vaším z-bojeem a určete příčinu nebo volitelně postupujte podle kroků tohoto podrobného pracovního postupu:
+
+1. Umístěte kameru nad zařízení z-boje, aby vypadala přímo na povrchu.
+1. Pomalu přesouváte kameru vpřed směrem od povrchu.
+1. Pokud je z-boje viditelná celá doba, povrchy jsou dokonale coplanar. 
+1. Pokud se z-boje zobrazuje většinou v čase, jsou povrchy téměř coplanar.
+1. Je-li z-boje viditelné pouze z daleko od začátku, příčinou je nedostatečná přesnost hloubky.
+
+Coplanar povrchy můžou mít řadu různých příčin:
+
+* Objekt byl duplikován exportem aplikace z důvodu chyby nebo různých přístupů k pracovnímu postupu.
+
+    Podívejte se na tyto problémy s příslušnou podporou aplikace a aplikace.
+
+* Povrchy jsou duplikovány a převráceny, aby se v zobrazovacích zařízeních používaly při použití přední nebo zadní strany.
+
+    Import prostřednictvím [převodu modelu](../how-tos/conversion/model-conversion.md) určuje hlavní sidedness modelu. Jako výchozí se předpokládá Double-sidedness. Povrch se vykreslí jako tenká stěna s fyzicky správným osvětlením z obou stran. Jeden-sidedness může být odvozen příznaky ve zdrojovém prostředku nebo explicitně vynucen během [konverze modelu](../how-tos/conversion/model-conversion.md). Kromě toho je možné, že [jeden jednostranný režim](../overview/features/single-sided-rendering.md) může být nastaven na hodnotu "normální".
+
+* Objekty protínají ve zdrojových prostředcích.
+
+     Objekty transformované způsobem, že se některé z jejich povrchů překrývají, vytváří i z boje proti. Tento problém může také vytvořit transformace částí stromu scény v importované scéně v rámci ARR.
+
+* Povrchy jsou záměrně vytvořené tak, aby se dotkly, jako je decals nebo text na stěnách.
+
+
 
 ## <a name="next-steps"></a>Další kroky
 

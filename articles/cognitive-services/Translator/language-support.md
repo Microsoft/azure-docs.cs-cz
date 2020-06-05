@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 359079ad73fcf162fb742afe74c1c1de5896c35c
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 6339b86166aff008bf17b5096d42629daf6e3401
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996070"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434281"
 ---
 # <a name="language-and-region-support-for-translator"></a>Podpora jazyků a oblastí pro překladatele
 
@@ -74,10 +74,11 @@ Překladatel podporuje následující jazyky pro převod textu na text. Neuronov
 |Irština | `ga`| Neuronové
 |Italština|    `it`    |    Neuronové|
 |Japonština|    `ja`    |    Neuronové|
-|Kannadština|`kn`| Neuronové
+|Kannadština|`kn`| Neuronové|
+|Kazaština |`kk`| Neuronové|
 |Svahilština|    `sw`    |    Ložený|
-|Klingon|    `tlh`    |    Ložený|
-|Klingon (plqaD)|    `tlh-Qaak`    |    Ložený|
+|Klingon|    `tlh-Latn`    |    Ložený|
+|Klingon (plqaD)|    `tlh-Piqd`    |    Ložený|
 |Korejština    |`ko`    |    Neuronové|
 |Lotyština|    `lv`    |    Neuronové|
 |Litevština|    `lt`    |    Neuronové|
@@ -130,20 +131,20 @@ Metoda přepisu podporuje následující jazyky. V "do/z", "<-->" označuje, že
 | Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština`Hans`| <--> | Tradiční čínština`Hant`|
 | Čínština (tradiční) | `zh-Hant` | Tradiční čínština`Hant`| <--> | Znak`Latn` |
 | Čínština (tradiční) | `zh-Hant` | Tradiční čínština`Hant`| <--> | Zjednodušená čínština`Hans` |
-| Gudžarátština | `gu`  | Gudžarátština`Gujr` | --> | Znak`Latn` |
+| Gudžarátština | `gu`  | Gudžarátština`Gujr` | <--> | Znak`Latn` |
 | Hebrejština | `he` | Hebrejština`Hebr` | <--> | Znak`Latn` |
 | Hindština | `hi` | Koncový`Deva` | <--> | Znak`Latn` |
 | Japonština | `ja` | Japonština`Jpan` | <--> | Znak`Latn` |
-| Kannadština | `kn` | Kannadština`Knda` | --> | Znak`Latn` |
-| Malajalámština | `ml` | Malajalámština`Mlym` | --> | Znak`Latn` |
-| Maráthština | `mr` | Koncový`Deva` | --> | Znak`Latn` |
+| Kannadština | `kn` | Kannadština`Knda` | <--> | Znak`Latn` |
+| Malajalámština | `ml` | Malajalámština`Mlym` | <--> | Znak`Latn` |
+| Maráthština | `mr` | Koncový`Deva` | <--> | Znak`Latn` |
 | Krí | `or` | Krí`Orya` | <--> | Znak`Latn` |
 | Paňdžábština | `pa` | Západní`Guru`  | <--> | Znak`Latn`  |
 | Srbština (cyrilice) | `sr-Cyrl` | B`Cyrl`  | --> | Znak`Latn` |
 | Srbština (latinka) | `sr-Latn` | Znak`Latn` | --> | B`Cyrl`|
-| Tamilština | `ta` | Tamilština`Taml` | --> | Znak`Latn` |
-| Telugština | `te` | Telugština`Telu` | --> | Znak`Latn` |
-| Thajština | `th` | Thajština`Thai` | --> | Znak`Latn` |
+| Tamilština | `ta` | Tamilština`Taml` | <--> | Znak`Latn` |
+| Telugština | `te` | Telugština`Telu` | <--> | Znak`Latn` |
+| Thajština | `th` | Thajština`Thai` | <--> | Znak`Latn` |
 
 ## <a name="dictionary"></a>Slovník
 
@@ -177,7 +178,7 @@ Slovník podporuje následující jazyky pro nebo z angličtiny pomocí vyhledá
 | Italština      | `it`          |
 | Japonština      | `ja`          |
 | Svahilština      | `sw`          |
-| Klingon      | `tlh`          |
+| Klingon      | `tlh-Latn`          |
 | Korejština      | `ko`          |
 | Lotyština      | `lv`          |
 | Litevština      | `lt`          |

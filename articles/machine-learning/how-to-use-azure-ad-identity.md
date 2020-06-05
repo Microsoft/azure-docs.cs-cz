@@ -8,18 +8,18 @@ ms.author: trbye
 ms.reviewer: aashishb
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 02/10/2020
-ms.openlocfilehash: f997aef59e91bed325b84af855a84f43cd639d83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 321d5c3944f3c4340da593f977919ebc6a47752e
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77122841"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431287"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Použití identity Azure AD s webovou službou Machine Learning ve službě Azure Kubernetes
 
-V tomto postupu se dozvíte, jak přiřadit identitu služby Azure Active Directory (AAD) k nasazenému modelu Machine Learning ve službě Azure Kubernetes. Projekt [AAD pod identitou](https://github.com/Azure/aad-pod-identity) umožňuje aplikacím zabezpečeně přistupovat ke cloudovým prostředkům pomocí AAD pomocí [spravovaných identit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a Kubernetes primitiv. Díky tomu může vaše webová služba zabezpečeně přistupovat k prostředkům Azure bez nutnosti vkládat přihlašovací údaje nebo spravovat tokeny přímo `score.py` ve vašem skriptu. Tento článek popisuje kroky pro vytvoření a instalaci identity Azure v clusteru služby Azure Kubernetes a přiřazení identity k nasazené webové službě.
+V tomto postupu se dozvíte, jak přiřadit identitu služby Azure Active Directory (AAD) k nasazenému modelu Machine Learning ve službě Azure Kubernetes. Projekt [AAD pod identitou](https://github.com/Azure/aad-pod-identity) umožňuje aplikacím zabezpečeně přistupovat ke cloudovým prostředkům pomocí AAD pomocí [spravovaných identit](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a Kubernetes primitiv. Díky tomu může vaše webová služba zabezpečeně přistupovat k prostředkům Azure bez nutnosti vkládat přihlašovací údaje nebo spravovat tokeny přímo ve vašem `score.py` skriptu. Tento článek popisuje kroky pro vytvoření a instalaci identity Azure v clusteru služby Azure Kubernetes a přiřazení identity k nasazené webové službě.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -94,7 +94,7 @@ spec:
   Selector: <label value to match>
 ```
 
-Úpravou nasazení přidejte popisek Azure identity Selector. V části `/spec/template/metadata/labels`použijte následující oddíl. Měli byste vidět hodnoty, jako `isazuremlapp: “true”`je například. Přidejte popisek AAD-pod-identity, jak je znázorněno níže.
+Úpravou nasazení přidejte popisek Azure identity Selector. V části použijte následující oddíl `/spec/template/metadata/labels` . Měli byste vidět hodnoty, jako je například `isazuremlapp: “true”` . Přidejte popisek AAD-pod-identity, jak je znázorněno níže.
 
 ```azurecli-interactive
     kubectl edit deployment/<name of deployment> -n azureml-<name of workspace>
@@ -129,7 +129,7 @@ Až budou lusky v provozu, webové služby pro toto nasazení teď budou mít p�
 
 ## <a name="use-azure-identity-with-your-machine-learning-web-service"></a>Použití identity Azure s webovou službou Machine Learning
 
-Nasaďte model do clusteru AKS. `score.py` Skript může obsahovat operace ukazující na prostředky Azure, ke kterým má vaše identita Azure přístup. Ujistěte se, že jste nainstalovali požadované závislosti klientské knihovny pro prostředek, ke kterému se pokoušíte získat přístup. Níže najdete několik příkladů použití identity Azure pro přístup k různým prostředkům Azure z vaší služby.
+Nasaďte model do clusteru AKS. `score.py`Skript může obsahovat operace ukazující na prostředky Azure, ke kterým má vaše identita Azure přístup. Ujistěte se, že jste nainstalovali požadované závislosti klientské knihovny pro prostředek, ke kterému se pokoušíte získat přístup. Níže najdete několik příkladů použití identity Azure pro přístup k různým prostředkům Azure z vaší služby.
 
 ### <a name="access-key-vault-from-your-web-service"></a>Přístup k Key Vault z webové služby
 

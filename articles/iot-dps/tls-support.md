@@ -5,26 +5,26 @@ services: iot-dps
 author: wesmc7777
 ms.service: iot-dps
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/04/2020
 ms.author: wesmc
-ms.openlocfilehash: 285832d80d37c8553ffc8e37c6f6eab5d7f6d943
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 0daddd2fb1368819c8f7b4cf0183c90a8c6c065e
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984847"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417969"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>Podpora TLS v Azure IoT Hub Device Provisioning Service (DPS)
 
-DPS k zabezpečení připojení ze zařízení IoT používá protokol TLS (Transport Layer Security). V současné době jsou podporovány tři verze protokolu TLS, a to verze 1,0, 1,1 a 1,2.
+DPS k zabezpečení připojení ze zařízení IoT používá protokol TLS (Transport Layer Security). Verze protokolu TLS, které podporuje DPS, zahrnují protokol TLS 1,2.
 
-TLS 1,0 a 1,1 se považují za starší verze a plánuje se jejich vyřazení. Další informace najdete v tématu [zastaralé TLS 1,0 a 1,1 pro IoT Hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md). Při připojování k DPS se důrazně doporučuje použít TLS 1,2 jako upřednostňovanou verzi protokolu TLS.
+TLS 1,0 a 1,1 se považují za starší verze a plánuje se jejich vyřazení. Další informace najdete v tématu [zastaralé TLS 1,0 a 1,1 pro IoT Hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md). 
 
 ## <a name="restrict-connections-to-tls-12"></a>Omezení připojení k TLS 1,2
 
 Pro zvýšení zabezpečení doporučujeme nakonfigurovat instance DPS tak, aby povolovaly *jenom* připojení klientů zařízení, která používají protokol TLS verze 1,2, a vynutili použití [doporučených šifr](#recommended-ciphers).
 
-Provedete to tak, že zřídíte nový prostředek DPS v některé z [podporovaných oblastí](#supported-regions) a `minTlsVersion` nastavíte `1.2` vlastnost na hodnotu ve specifikaci prostředku DPS pro šablonu Azure Resource Manager. Následující příklad šablony JSON Určuje `minTlsVersion` vlastnost pro novou instanci DPS.
+Provedete to tak, že zřídíte nový prostředek DPS v některé z [podporovaných oblastí](#supported-regions) a nastavíte `minTlsVersion` vlastnost na hodnotu `1.2` ve specifikaci prostředku DPS pro šablonu Azure Resource Manager. Následující příklad šablony JSON Určuje `minTlsVersion` vlastnost pro novou instanci DPS.
 
 ```json
 {
@@ -59,7 +59,7 @@ Další informace o vytváření prostředků DPS pomocí šablon Správce prost
 Prostředek DPS, který se vytvořil pomocí této konfigurace, odmítne zařízení, která se pokusí připojit pomocí TLS verze 1,0 a 1,1. Obdobně se protokol TLS handshake odmítne, pokud zpráva HELLo klienta zařízení neuvádí žádné [Doporučené šifry](#recommended-ciphers).
 
 > [!NOTE]
-> `minTlsVersion` Vlastnost je jen pro čtení a po vytvoření prostředku DPS ji nelze změnit. Proto je důležité, abyste správně otestovali a ověřili, jestli jsou *všechna* vaše zařízení IoT kompatibilní s TLS 1,2 a předem [doporučenými šiframi](#recommended-ciphers) .
+> `minTlsVersion`Vlastnost je jen pro čtení a po vytvoření prostředku DPS ji nelze změnit. Proto je důležité, abyste správně otestovali a ověřili, jestli jsou *všechna* vaše zařízení IoT kompatibilní s TLS 1,2 a předem [doporučenými šiframi](#recommended-ciphers) .
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
@@ -69,7 +69,7 @@ Instance IoT DPS, které vyžadují použití protokolu TLS 1,2, se dají vytvo�
 * USA (Gov) – Virginia
 
 > [!NOTE]
-> Po převzetí služeb při `minTlsVersion` selhání zůstane vlastnost DPS platná v případě převzetí služeb při selhání v geograficky spárované oblasti.
+> Po převzetí služeb při selhání `minTlsVersion` zůstane vlastnost DPS platná v případě převzetí služeb při selhání v geograficky spárované oblasti.
 
 ## <a name="recommended-ciphers"></a>Doporučené šifry
 
@@ -92,7 +92,10 @@ Pomocí níže uvedených odkazů nakonfigurujte TLS 1,2 a povolená šifra v sa
 | Java     | Verze 1.19.0 nebo novější            | [Odkaz](https://aka.ms/Tls_Java_SDK_IoT) |
 | NodeJS   | Verze 1.12.2 nebo novější            | [Odkaz](https://aka.ms/Tls_Node_SDK_IoT) |
 
+## <a name="use-tls-12-with-iot-hub"></a>Použití TLS 1,2 s IoT Hub
+
+IoT Hub se dá nakonfigurovat tak, aby při komunikaci se zařízeními používala TLS 1,2. Další informace najdete v tématu [zastaralé TLS 1,0 a 1,1 pro IoT Hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md).
 
 ## <a name="use-tls-12-with-iot-edge"></a>Použití TLS 1,2 s IoT Edge
 
-IoT Edge zařízení je možné nakonfigurovat tak, aby při komunikaci s IoT Hub a DPS používala TLS 1,2. Pro účely tohoto účelu použijte [stránku dokumentace IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).
+IoT Edge zařízení je možné nakonfigurovat tak, aby při komunikaci s IoT Hub a DPS používala TLS 1,2. Další informace najdete na [stránce dokumentace IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-modules/edgehub-proxy/README.md).

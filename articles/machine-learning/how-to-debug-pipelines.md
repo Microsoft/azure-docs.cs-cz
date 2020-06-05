@@ -5,16 +5,16 @@ description: Ladění kanálů Azure Machine Learning v Pythonu Seznamte se s b�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 03/18/2020
-ms.openlocfilehash: 4f0eb6aa92dd8999baed6868a159c86d5e7bd0c8
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: bf6a8dd0bfc4ffb9f6b6fa0c9b1d864c4298755a
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594612"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433432"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Ladění kanálů strojového učení a řešení souvisejících potíží
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -50,9 +50,9 @@ Jakmile budete mít Instalační program skriptu spuštěný v místním prostř
 
 ### <a name="debugging-scripts-from-remote-context"></a>Ladění skriptů ze vzdáleného kontextu
 
-Místní testování skriptů je skvělým způsobem, jak ladit hlavní fragmenty kódu a složitou logiku předtím, než začnete sestavovat kanál, ale v některých případech bude pravděpodobně nutné ladit skripty během samotného spuštění kanálu, zejména při diagnostice chování, ke kterému dojde během interakce mezi jednotlivými kroky kanálu. Doporučujeme, abyste ve svých `print()` skriptech použili možnost použití příkazů, abyste viděli stav objektu a očekávané hodnoty při vzdáleném spuštění, podobně jako při ladění kódu JavaScriptu.
+Místní testování skriptů je skvělým způsobem, jak ladit hlavní fragmenty kódu a složitou logiku předtím, než začnete sestavovat kanál, ale v některých případech bude pravděpodobně nutné ladit skripty během samotného spuštění kanálu, zejména při diagnostice chování, ke kterému dojde během interakce mezi jednotlivými kroky kanálu. Doporučujeme, `print()` abyste ve svých skriptech použili možnost použití příkazů, abyste viděli stav objektu a očekávané hodnoty při vzdáleném spuštění, podobně jako při ladění kódu JavaScriptu.
 
-Soubor `70_driver_log.txt` protokolu obsahuje: 
+Soubor protokolu `70_driver_log.txt` obsahuje: 
 
 * Všechny tištěné příkazy během provádění skriptu
 * Trasování zásobníku pro skript 
@@ -81,8 +81,8 @@ Následující tabulka obsahuje běžné problémy při vývoji kanálů s poten
 | Nejde předat data do `PipelineData` adresáře. | Ujistěte se, že jste ve skriptu vytvořili adresář, který odpovídá tomu, kde váš kanál očekává výstupní data kroku. Ve většině případů vstupní argument definuje výstupní adresář a pak adresář vytvoří explicitně. Použijte `os.makedirs(args.output_dir, exist_ok=True)` k vytvoření výstupního adresáře. V tomto [kurzu](tutorial-pipeline-batch-scoring-classification.md#write-a-scoring-script) najdete příklad ukázkového skriptu, který ukazuje tento vzor návrhu. |
 | Chyby závislostí | Pokud jste vytvořili a otestovali skripty lokálně, ale při spuštění ve vzdálené výpočetní službě v kanálu zjistíte problémy se závislostmi, ujistěte se, že vaše závislosti a verze prostředí COMPUTE odpovídají vašemu testovacímu prostředí. (Viz [sestavování prostředí, ukládání do mezipaměti a opakované použití](https://docs.microsoft.com/azure/machine-learning/concept-environments#environment-building-caching-and-reuse)|
 | Dvojznačné chyby s cíli výpočtů | Odstranění a opětovné vytváření výpočetních cílů může vyřešit určité problémy s cíli výpočtů. |
-| Kanál nepoužívá znovu postup | Použití tohoto kroku je ve výchozím nastavení povolené, ale ujistěte se, že jste ho neaktivovali v kroku kanálu. Pokud je opětovné použití zakázané `allow_reuse` , parametr v kroku se nastaví na `False`. |
-| Nenutně funguje kanál. | Aby se zajistilo, že se kroky spustí znovu jenom v případě, že se změní jejich podkladová data nebo skripty, oddělte adresáře pro každý krok. Pokud používáte stejný zdrojový adresář pro více kroků, může docházet k zbytečnému opakovanému spuštění. Použijte `source_directory` parametr v objektu kroku kanálu, který odkazuje na izolovaný adresář pro daný krok, a ujistěte se, že nepoužíváte `source_directory` stejnou cestu pro více kroků. |
+| Kanál nepoužívá znovu postup | Použití tohoto kroku je ve výchozím nastavení povolené, ale ujistěte se, že jste ho neaktivovali v kroku kanálu. Pokud je opětovné použití zakázané, `allow_reuse` parametr v kroku se nastaví na `False` . |
+| Nenutně funguje kanál. | Aby se zajistilo, že se kroky spustí znovu jenom v případě, že se změní jejich podkladová data nebo skripty, oddělte adresáře pro každý krok. Pokud používáte stejný zdrojový adresář pro více kroků, může docházet k zbytečnému opakovanému spuštění. Použijte `source_directory` parametr v objektu kroku kanálu, který odkazuje na izolovaný adresář pro daný krok, a ujistěte se, že nepoužíváte stejnou `source_directory` cestu pro více kroků. |
 
 ### <a name="logging-options-and-behavior"></a>Možnosti a chování protokolování
 
@@ -218,7 +218,7 @@ Pokud chcete povolit ladění, proveďte následující změny ve skriptech Pyth
     run = Run.get_context()
     ```
 
-1. Přidejte `if` příkaz, který spustí PTVSD a počká, až se ladicí program připojí. Pokud se žádný ladicí program nepřipojí před časovým limitem, skript pokračuje jako normální.
+1. Přidejte `if` příkaz, který SPUSTÍ PTVSD a počká, až se ladicí program připojí. Pokud se žádný ladicí program nepřipojí před časovým limitem, skript pokračuje jako normální.
 
     ```python
     if args.remote_debug:
@@ -287,7 +287,7 @@ if not (args.output_train is None):
 
 ### <a name="configure-ml-pipeline"></a>Konfigurovat kanál ML
 
-Aby bylo možné poskytnout balíčky Pythonu potřebné ke spuštění PTVSD a získat kontext spuštění, vytvořte prostředí a nastavte `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']`. Změňte verzi sady SDK tak, aby odpovídala hodnotě, kterou používáte. Následující fragment kódu ukazuje, jak vytvořit prostředí:
+Aby bylo možné poskytnout balíčky Pythonu potřebné ke spuštění PTVSD a získat kontext spuštění, vytvořte prostředí a nastavte `pip_packages=['ptvsd', 'azureml-sdk==1.0.83']` . Změňte verzi sady SDK tak, aby odpovídala hodnotě, kterou používáte. Následující fragment kódu ukazuje, jak vytvořit prostředí:
 
 ```python
 # Use a RunConfiguration to specify some additional requirements for this step.
@@ -312,7 +312,7 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
                                                                            pip_packages=['ptvsd', 'azureml-sdk==1.0.83'])
 ```
 
-V části [Konfigurace skriptů v Pythonu](#configure-python-scripts) byly do skriptů používaných vaším postupem kanálu ml přidány dva nové argumenty. Následující fragment kódu ukazuje, jak použít tyto argumenty pro povolení ladění pro komponentu a nastavení časového limitu. Také ukazuje, jak použít prostředí vytvořené dříve nastavením `runconfig=run_config`:
+V části [Konfigurace skriptů v Pythonu](#configure-python-scripts) byly do skriptů používaných vaším postupem kanálu ml přidány dva nové argumenty. Následující fragment kódu ukazuje, jak použít tyto argumenty pro povolení ladění pro komponentu a nastavení časového limitu. Také ukazuje, jak použít prostředí vytvořené dříve nastavením `runconfig=run_config` :
 
 ```python
 # Use RunConfig from a pipeline step
@@ -351,7 +351,7 @@ Uložte `ip_address` hodnotu. Používá se v další části.
 
     1. Z VS Code vyberte nabídku __ladění__ a pak vyberte __otevřít konfigurace__. Otevře se soubor s názvem __Launch. JSON__ .
 
-    1. V souboru __Launch. JSON__ Najděte řádek, který obsahuje `"configurations": [`, a vložte za něj následující text. Změňte `"host": "10.3.0.5"` položku na IP adresu vrácenou v protokolech z předchozí části. Změňte `"localRoot": "${workspaceFolder}/code/step"` položku na místní adresář, který obsahuje kopii laděného skriptu:
+    1. V souboru __Launch. JSON__ Najděte řádek, který obsahuje `"configurations": [` , a vložte za něj následující text. Změňte `"host": "10.3.0.5"` položku na IP adresu vrácenou v protokolech z předchozí části. Změňte `"localRoot": "${workspaceFolder}/code/step"` položku na místní adresář, který obsahuje kopii laděného skriptu:
 
         ```json
         {
@@ -374,7 +374,7 @@ Uložte `ip_address` hodnotu. Používá se v další části.
         > Pokud již existují další položky v oddílu konfigurace, přidejte čárku (,) za kód, který jste vložili.
 
         > [!TIP]
-        > Osvědčeným postupem je udržovat prostředky pro skripty v samostatných adresářích, což je důvod, proč `localRoot` se jedná o `/code/step1`ukázkovou hodnotu.
+        > Osvědčeným postupem je udržovat prostředky pro skripty v samostatných adresářích, což je důvod, proč se jedná o `localRoot` ukázkovou hodnotu `/code/step1` .
         >
         > Pokud ladíte více skriptů, v různých adresářích Vytvořte samostatný konfigurační oddíl pro každý skript.
 
@@ -389,7 +389,7 @@ Uložte `ip_address` hodnotu. Používá se v další části.
     V tomto okamžiku se VS Code připojí k PTVSD na výpočetním uzlu a zastaví se na zarážce, kterou jste předtím nastavili. Nyní můžete krokovat kód při spuštění, zobrazit proměnné atd.
 
     > [!NOTE]
-    > Pokud se v protokolu zobrazí položka informující o tom `Debugger attached = False`, že vypršel časový limit a skript pokračuje bez ladicího programu. Odešlete kanál znovu a připojte ladicí program za `Timeout for debug connection` zprávu a před vypršením časového limitu.
+    > Pokud se v protokolu zobrazí položka informující o tom `Debugger attached = False` , že vypršel časový limit a skript pokračuje bez ladicího programu. Odešlete kanál znovu a připojte ladicí program za `Timeout for debug connection` zprávu a před vypršením časového limitu.
 
 ## <a name="next-steps"></a>Další kroky
 

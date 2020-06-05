@@ -9,13 +9,13 @@ ms.topic: tutorial
 ms.author: sacartac
 ms.reviewer: nibaccam
 author: cartacioS
-ms.date: 05/19/2020
-ms.openlocfilehash: 46c11ef3b3a1fa1a1861f9e944c93ffdf94f7c5a
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/04/2020
+ms.openlocfilehash: 3786b7a2b8b8fc40b1cf393aa452c15d72c5b963
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118895"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433716"
 ---
 # <a name="tutorial-forecast-demand-with-automated-machine-learning"></a>Kurz: Předpověď poptávky pomocí automatizovaného strojového učení
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -79,7 +79,7 @@ Před konfigurací experimentu nahrajte datový soubor do svého pracovního pro
         ---|---|---
         Formát souboru|Definuje rozložení a typ dat uložených v souboru.| Oddělených
         Oddělovač|Jeden nebo více znaků pro určení hranice mezi &nbsp; oddělenými a nezávislými oblastmi v prostém textu nebo v jiných datových proudech. |Čárka
-        Encoding|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
+        Kódování|Určuje, jaká bitová tabulka schématu znaků má být použita ke čtení datové sady.| UTF-8
         Záhlaví sloupců| Určuje, jakým způsobem bude zpracována záhlaví datové sady (pokud existuje).| Použít hlavičky z prvního souboru
         Přeskočit řádky | Určuje, kolik, pokud nějaký z nich je v datové sadě vynecháno.| Žádné
 
@@ -124,7 +124,7 @@ Po načtení a konfiguraci dat nastavte vzdálený cíl výpočtů a vyberte, kt
 
     1. Vyberte **Další**.
 
-## <a name="select-task-type-and-settings"></a>Vybrat typ a nastavení úlohy
+## <a name="select-forecast-settings"></a>Vybrat nastavení prognózy
 
 Dokončete instalaci pro automatický experiment ML zadáním typu úlohy Machine Learning a nastavení konfigurace.
 

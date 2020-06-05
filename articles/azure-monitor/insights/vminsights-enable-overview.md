@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 05/28/2020
-ms.openlocfilehash: 3c9c5e69eea72b20da485ffb1edf806f2c9f3b41
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 05/29/2020
+ms.openlocfilehash: 87d8b26110eba647975de577e9d7b5b0ed138266
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195305"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84423968"
 ---
 # <a name="enable-azure-monitor-for-vms-overview"></a>Povolit Azure Monitor pro virtuální počítače – přehled
 
@@ -43,6 +43,7 @@ Azure Monitor pro virtuální počítače podporuje pracovní prostor Log Analyt
 - USA – východ 2
 - USA – střed
 - USA – středosever
+- US Gov VA
 - Střední Kanada
 - Spojené království – jih
 - Severní Evropa
@@ -165,11 +166,11 @@ V hybridním prostředí můžete agenta závislostí stáhnout a nainstalovat r
 
 Následující tabulka popisuje připojené zdroje, které funkce mapy podporuje v hybridním prostředí.
 
-| Připojený zdroj | Podporuje se | Popis |
+| Připojený zdroj | Podporuje se | Description |
 |:--|:--|:--|
 | Agenti systému Windows | Ano | Společně s [agentem Log Analytics pro Windows](../../azure-monitor/platform/log-analytics-agent.md)potřebují agenti pro Windows agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
 | Agenti systému Linux | Ano | Společně s [agentem Log Analytics pro Linux](../../azure-monitor/platform/log-analytics-agent.md)musí mít agenti pro Linux agenta závislostí. Další informace najdete v tématu [podporované operační systémy](#supported-operating-systems). |
-| Skupina pro správu nástroje System Center Operations Manager | No | |
+| Skupina pro správu nástroje System Center Operations Manager | Ne | |
 
 Agenta závislostí si můžete stáhnout z těchto umístění:
 
@@ -188,7 +189,7 @@ Další informace o tom, jak řídit přístup k pracovnímu prostoru Log Analyt
 
 Povolte Azure Monitor pro virtuální počítače pomocí jedné z metod popsaných v této tabulce:
 
-| Stav nasazení | Metoda | Popis |
+| Stav nasazení | Metoda | Description |
 |------------------|--------|-------------|
 | Jeden virtuální počítač Azure nebo sada škálování virtuálního počítače | [Povolení z virtuálního počítače](vminsights-enable-single-vm.md) | Jeden virtuální počítač Azure můžete povolit tak, že vyberete **přehledy** přímo z virtuálního počítače nebo sady škálování virtuálních počítačů. |
 | Několik virtuálních počítačů Azure nebo sady škálování virtuálních počítačů | [Povolit prostřednictvím Azure Policy](vminsights-enable-at-scale-policy.md) | Pomocí Azure Policy a dostupných definic zásad můžete povolit víc virtuálních počítačů Azure. |

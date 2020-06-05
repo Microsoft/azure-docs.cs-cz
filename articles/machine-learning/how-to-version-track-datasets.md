@@ -5,18 +5,18 @@ description: Naučte se, jak nejlépe nastavovat datové sady a jak funguje Spr�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.custom: ''
-ms.openlocfilehash: 5bd4436fc63fb570f052606ab557dbcf243cf5e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f05f778278f6ee33ff53ab47d416446444063d8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476869"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434421"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Verze a sledování datových sad v experimentech
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,7 +52,7 @@ Když zaregistrujete datovou sadu, můžete ji verze, znovu použít a sdílet m
 
 ### <a name="register-a-dataset-version"></a>Registrace verze datové sady
 
-Následující kód zaregistruje novou verzi `titanic_ds` datové sady nastavením `create_new_version` parametru na. `True` Pokud není v pracovním prostoru `titanic_ds` registrována žádná datová sada, kód vytvoří novou datovou sadu s názvem `titanic_ds` a nastaví její verzi na hodnotu 1.
+Následující kód zaregistruje novou verzi `titanic_ds` datové sady nastavením `create_new_version` parametru na `True` . Pokud není `titanic_ds` v pracovním prostoru registrována žádná datová sada, kód vytvoří novou datovou sadu s názvem `titanic_ds` a nastaví její verzi na hodnotu 1.
 
 ```Python
 titanic_ds = titanic_ds.register(workspace = workspace,
@@ -156,7 +156,7 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 ## <a name="track-datasets-in-experiments"></a>Sledovat datové sady v experimentech
 
-Pro každý Machine Learning experiment můžete snadno trasovat datové sady použité jako vstup prostřednictvím objektu experiment `Run` .
+Pro každý Machine Learning experiment můžete snadno trasovat datové sady použité jako vstup prostřednictvím `Run` objektu experiment.
 
 Následující kód používá [`get_details()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#get-details--) metodu ke sledování, které vstupní datové sady byly použity při spuštění experimentu:
 
@@ -169,9 +169,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-Můžete také vyhledat `input_datasets` z experimentů pomocí https://ml.azure.com/. 
+Můžete také vyhledat `input_datasets` z experimentů pomocí https://ml.azure.com/ . 
 
-Následující obrázek ukazuje, kde najít vstupní datovou sadu experimentu v Azure Machine Learning Studiu. V tomto příkladu přejdete do podokna **experimenty** a otevřete kartu **vlastnosti** pro konkrétní spuštění experimentu `keras-mnist`.
+Následující obrázek ukazuje, kde najít vstupní datovou sadu experimentu v Azure Machine Learning Studiu. V tomto příkladu přejdete do podokna **experimenty** a otevřete kartu **vlastnosti** pro konkrétní spuštění experimentu `keras-mnist` .
 
 ![Vstupní datové sady](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +183,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Po registraci můžete zobrazit seznam modelů registrovaných s datovou sadou pomocí Pythonu nebo přejít na https://ml.azure.com/.
+Po registraci můžete zobrazit seznam modelů registrovaných s datovou sadou pomocí Pythonu nebo přejít na https://ml.azure.com/ .
 
 Následující zobrazení je z podokna datové **sady** v části **assety**. Vyberte datovou sadu a pak vyberte kartu **modely** pro seznam modelů, které jsou zaregistrované s datovou sadou. 
 

@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.author: v-erkel
-ms.openlocfilehash: d8f345b12d635f0ab683929fc67d5d789bfea8d9
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 817c03780b91e39d43a5348f84105236ee811cc8
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343612"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433649"
 ---
 # <a name="prerequisites-for-azure-hpc-cache"></a>Předpoklady pro mezipaměť Azure HPC
 
@@ -25,11 +25,11 @@ Podívejte se na tato videa a Získejte rychlý přehled o komponentách systém
 
 * [Jak to funguje](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/) – vysvětluje, jak funguje mezipaměť prostředí Azure HPC s úložištěm a klienty.
 
-  [![obrázek miniatury videa: Azure HPC cache: Jak funguje (kliknutím navštívíte stránku video)](media/video2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
+  [![obrázek miniatury videa: Azure HPC cache: Jak funguje (kliknutím navštívíte stránku video)](media/video-2-components.png)](https://azure.microsoft.com/resources/videos/how-hpc-cache-works/)  
 
 * [Požadavky](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/) – popisuje požadavky pro úložiště NAS, úložiště objektů BLOB v Azure, přístup k síti a klientský přístup.
 
-  [![obrázek miniatury videa: předpoklady Azure HPC cache (kliknutím navštívíte stránku video)](media/video3-prereqs.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
+  [![obrázek miniatury videa: předpoklady Azure HPC cache (kliknutím navštívíte stránku video)](media/video-3-prerequisites.png)](https://azure.microsoft.com/resources/videos/hpc-cache-prerequisites/)
 
 V části tohoto článku najdete konkrétní doporučení.
 

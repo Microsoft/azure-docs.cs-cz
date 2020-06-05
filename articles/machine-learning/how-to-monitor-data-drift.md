@@ -5,17 +5,17 @@ description: Zjištění posunu dat (Preview) na nasazených modelech služby Az
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: copeters
 author: cody-dkdc
 ms.date: 11/04/2019
-ms.openlocfilehash: d1da7309b296b57db0c28d5b52fe91efa86709c8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0f56ab853983ebf9b3e27f38ae1737c0c2bce4ed
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75537003"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430291"
 ---
 # <a name="detect-data-drift-preview-on-models-deployed-to-azure-kubernetes-service-aks"></a>Detekce posunu dat (Preview) na modelech nasazených do služby Azure Kubernetes Service (AKS)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -75,7 +75,7 @@ Pomocí Azure Machine Learning jsou data unášená pomocí datových sad nebo n
     print(model_name, image_name, service_name, model)
     ```
 
-- [Povolte shromažďování dat modelu](how-to-enable-data-collection.md) pro shromažďování dat z nasazení modelu AKS a ověřte, že se data shromažďují v kontejneru `modeldata` objektů BLOB.
+- [Povolte shromažďování dat modelu](how-to-enable-data-collection.md) pro shromažďování dat z nasazení modelu AKS a ověřte, že se data shromažďují v `modeldata` kontejneru objektů BLOB.
 
 ## <a name="configure-data-drift"></a>Konfigurace posunu dat
 Pokud chcete pro svůj experiment nakonfigurovat posun dat, importujte závislosti, jak je vidět v následujícím příkladu Pythonu. 
@@ -98,7 +98,7 @@ print('Details of Datadrift Object:\n{}'.format(datadrift))
 
 ## <a name="submit-a-datadriftdetector-run"></a>Odeslání DataDriftDetector spuštění
 
-S nakonfigurovaným `DataDriftDetector` objektem můžete odeslat [Posun dat spuštěný](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#run-target-date--services-none--compute-target-none--create-compute-target-false--feature-list-none--drift-threshold-none-) v daném datu pro model. V rámci spuštění povolte výstrahy DataDriftDetector nastavením `drift_threshold` parametru. Pokud se [datadrift_coefficient](#visualize-drift-metrics) nachází nad daným `drift_threshold`, pošle se e-mail.
+S `DataDriftDetector` nakonfigurovaným objektem můžete odeslat [Posun dat spuštěný](https://docs.microsoft.com/python/api/azureml-datadrift/azureml.datadrift.datadriftdetector.datadriftdetector#run-target-date--services-none--compute-target-none--create-compute-target-false--feature-list-none--drift-threshold-none-) v daném datu pro model. V rámci spuštění povolte výstrahy DataDriftDetector nastavením `drift_threshold` parametru. Pokud se [datadrift_coefficient](#visualize-drift-metrics) nachází nad daným `drift_threshold` , pošle se e-mail.
 
 ```python
 # adhoc run today
@@ -123,7 +123,7 @@ RunDetails(dd_run).show()
 Po odeslání DataDriftDetector můžete zobrazit metriky posunu, které jsou uloženy v každé iteraci spuštění pro úlohu posunu dat:
 
 
-|Metrika|Popis|
+|Metric|Popis|
 --|--|
 wasserstein_distance|Statistická vzdálenost definovaná pro jednorozměrné číselné rozdělení.|
 energy_distance|Statistická vzdálenost definovaná pro jednorozměrné číselné rozdělení.|
@@ -132,8 +132,8 @@ datadrift_contribution|Důležitost funkcí, které přispívají k posunu.|
 
 Existují různé způsoby, jak zobrazit metriky pro posun:
 
-* `RunDetails`Použijte [widget Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
-* [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) Funkci použijte u libovolného `datadrift` objektu run.
+* Použijte `RunDetails` [widget Jupyter](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py).
+* Funkci použijte [`get_metrics()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py#get-metrics-name-none--recursive-false--run-type-none--populate-false-) u libovolného `datadrift` objektu run.
 * Metriky najdete v části **modely** v pracovním prostoru v [Azure Machine Learning Studiu](https://ml.azure.com).
 
 Následující příklad Pythonu ukazuje, jak vykreslovat relevantní metriky pro posun dat. Pomocí vrácené metriky můžete vytvářet vlastní vizualizace:
@@ -152,7 +152,7 @@ drift_figures = datadrift.show(with_details=True)
 
 ## <a name="schedule-data-drift-scans"></a>Plánování posunu dat 
 
-Když povolíte detekci posunu dat, DataDriftDetector se spustí podle zadané plánované frekvence. Pokud datadrift_coefficient dosáhne dané `drift_threshold`hodnoty, pošle se při každém plánovaném spuštění e-mail. 
+Když povolíte detekci posunu dat, DataDriftDetector se spustí podle zadané plánované frekvence. Pokud datadrift_coefficient dosáhne dané hodnoty `drift_threshold` , pošle se při každém plánovaném spuštění e-mail. 
 
 ```python
 datadrift.enable_schedule()

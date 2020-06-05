@@ -1,19 +1,19 @@
 ---
 title: Filtry zabezpečení pro oříznutí výsledků pomocí služby Active Directory
 titleSuffix: Azure Cognitive Search
-description: Řízení přístupu v Azure Kognitivní hledání obsahu pomocí filtrů zabezpečení a identit Azure Active Directory (AAD).
+description: Oprávnění zabezpečení na úrovni dokumentu pro Azure Kognitivní hledání výsledky hledání pomocí filtrů zabezpečení a identit Azure Active Directory (AAD).
 manager: nitinme
-author: brjohnstmsft
-ms.author: brjohnst
+author: HeidiSteen
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 01280b6ee9dda15af3c0fc707a385501580c624c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: bbf1aa2fe8410f6d624fb9d50b1edb6ac2c64093
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72794307"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84429510"
 ---
 # <a name="security-filters-for-trimming-azure-cognitive-search-results-using-active-directory-identities"></a>Filtry zabezpečení pro oříznutí výsledků Kognitivní hledání Azure pomocí identit služby Active Directory
 
@@ -42,11 +42,11 @@ Vaše aplikace musí být také zaregistrovaná v AAD, jak je popsáno v násled
 
 Tento krok integruje vaši aplikaci s AAD pro účely přijímání přihlášení uživatelů a skupinových účtů. Pokud nejste správcem AAD ve vaší organizaci, možná budete muset [vytvořit nového tenanta](https://docs.microsoft.com/azure/active-directory/develop/active-directory-howto-tenant) , abyste mohli provést následující kroky.
 
-1. Přejít >  **na aplikaci na** >  [**portál pro registraci aplikací**](https://apps.dev.microsoft.com)**Přidat aplikaci**
+1. Přejít na aplikaci na [**portál pro registraci aplikací**](https://apps.dev.microsoft.com)  >   **Converged app**  >  **Přidat aplikaci**
 2. Zadejte název aplikace a pak klikněte na **vytvořit**. 
 3. Na stránce Moje aplikace vyberte svou nově registrovanou aplikaci.
-4. Na stránce pro registraci aplikace > **platformy** > **Přidat platformu**vyberte **webové rozhraní API**.
-5. Pořád na stránce registrace aplikace otevřete > **Microsoft Graph oprávnění** > **Přidat**.
+4. Na stránce pro registraci aplikace > **platformy**  >  **Přidat platformu**vyberte **webové rozhraní API**.
+5. Pořád na stránce registrace aplikace otevřete > **Microsoft Graph oprávnění**  >  **Přidat**.
 6. V části vybrat oprávnění přidejte následující delegovaná oprávnění a pak klikněte na **OK**:
 
    + **Adresář. pročtení. vše**

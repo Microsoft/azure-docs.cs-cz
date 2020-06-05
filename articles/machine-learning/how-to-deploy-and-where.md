@@ -5,18 +5,18 @@ description: Naučte se, jak a kde nasadit modely Azure Machine Learning, včetn
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/28/2020
 ms.custom: seoapril2019
-ms.openlocfilehash: f9558431d65a9c0f4fecf34141d9148afa514d86
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 3b1dd474b3b5518029e7cf404cc88b97bfa23e36
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208563"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433496"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -55,7 +55,7 @@ Následující kód ukazuje, jak se připojit k pracovnímu prostoru Azure Machi
 
 + **Použití rozhraní příkazového řádku**
 
-   Při použití rozhraní příkazového řádku použijte `-w` parametr `--workspace-name` nebo k určení pracovního prostoru pro příkaz.
+   Při použití rozhraní příkazového řádku použijte `-w` `--workspace-name` parametr nebo k určení pracovního prostoru pro příkaz.
 
 + **Používání nástroje Visual Studio Code**
 
@@ -68,7 +68,7 @@ Registrovaný model je logický kontejner pro jeden nebo více souborů, které 
 > [!TIP]
 > Při registraci modelu zadáte cestu buď umístění v cloudu (z školicího běhu), nebo místního adresáře. Tato cesta je určena pouze k vyhledání souborů pro nahrání v rámci procesu registrace. Nemusí odpovídat cestě použité ve skriptu pro zadávání. Další informace najdete v tématu [vyhledání souborů modelu ve vstupním skriptu](#load-model-files-in-your-entry-script).
 
-Modely strojového učení jsou zaregistrované ve vašem pracovním prostoru Azure Machine Learning. Model může pocházet z Azure Machine Learning nebo z někde jinde. Při registraci modelu můžete volitelně zadat metadata o modelu. `tags` Slovníky `properties` a, které použijete pro registraci modelu, lze použít k filtrování modelů.
+Modely strojového učení jsou zaregistrované ve vašem pracovním prostoru Azure Machine Learning. Model může pocházet z Azure Machine Learning nebo z někde jinde. Při registraci modelu můžete volitelně zadat metadata o modelu. `tags` `properties` Slovníky a, které použijete pro registraci modelu, lze použít k filtrování modelů.
 
 Následující příklady ukazují, jak registrovat model.
 
@@ -92,7 +92,7 @@ Fragmenty kódu v této části ukazují, jak registrovat model z školicího b�
     print(model.name, model.id, model.version, sep='\t')
     ```
 
-    `model_path` Parametr odkazuje na cloudové umístění modelu. V tomto příkladu je použita cesta k jednomu souboru. Pokud chcete do registrace modelu zahrnout více souborů, nastavte `model_path` na cestu ke složce, která obsahuje soubory. Další informace najdete v dokumentaci ke [spuštění. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) .
+    `model_path`Parametr odkazuje na cloudové umístění modelu. V tomto příkladu je použita cesta k jednomu souboru. Pokud chcete do registrace modelu zahrnout více souborů, nastavte `model_path` na cestu ke složce, která obsahuje soubory. Další informace najdete v dokumentaci ke [spuštění. register_model](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run.run?view=azure-ml-py#register-model-model-name--model-path-none--tags-none--properties-none--model-framework-none--model-framework-version-none--description-none--datasets-none--sample-input-dataset-none--sample-output-dataset-none--resource-configuration-none----kwargs-) .
 
   + Registrace modelu z `azureml.train.automl.run.AutoMLRun` objektu:
 
@@ -104,7 +104,7 @@ Fragmenty kódu v této části ukazují, jak registrovat model z školicího b�
         print(run.model_id)
     ```
 
-    V tomto příkladu nejsou `metric` zadány `iteration` parametry a, takže iterace s nejlepší primární metrikou bude zaregistrována. `model_id` Hodnota vrácená z běhu se používá místo názvu modelu.
+    V tomto příkladu `metric` `iteration` nejsou zadány parametry a, takže iterace s nejlepší primární metrikou bude zaregistrována. `model_id`Hodnota vrácená z běhu se používá místo názvu modelu.
 
     Další informace najdete v dokumentaci k [AutoMLRun. register_model](/python/api/azureml-train-automl-client/azureml.train.automl.run.automlrun#register-model-model-name-none--description-none--tags-none--iteration-none--metric-none-) .
 
@@ -116,7 +116,7 @@ Fragmenty kódu v této části ukazují, jak registrovat model z školicího b�
 
   [!INCLUDE [install extension](../../includes/machine-learning-service-install-extension.md)]
 
-  `--asset-path` Parametr odkazuje na cloudové umístění modelu. V tomto příkladu je použita cesta k jednomu souboru. Pokud chcete do registrace modelu zahrnout více souborů, nastavte `--asset-path` na cestu ke složce, která obsahuje soubory.
+  `--asset-path`Parametr odkazuje na cloudové umístění modelu. V tomto příkladu je použita cesta k jednomu souboru. Pokud chcete do registrace modelu zahrnout více souborů, nastavte `--asset-path` na cestu ke složce, která obsahuje soubory.
 
 + **Používání nástroje Visual Studio Code**
 
@@ -203,7 +203,7 @@ dependencies:
 >
 > Další informace najdete v tématu [Principy conda a PIP](https://www.anaconda.com/understanding-conda-and-pip/).
 >
-> Pokud chcete zjistit, jestli je vaše závislost k dispozici prostřednictvím `conda search <package-name>` Conda, použijte příkaz nebo použijte indexy balíčku [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) v [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo)a.
+> Pokud chcete zjistit, jestli je vaše závislost k dispozici prostřednictvím Conda, použijte `conda search <package-name>` příkaz nebo použijte indexy balíčku v [https://anaconda.org/anaconda/repo](https://anaconda.org/anaconda/repo) a [https://anaconda.org/conda-forge/repo](https://anaconda.org/conda-forge/repo) .
 
 Pomocí souboru závislostí můžete vytvořit objekt prostředí a uložit ho do svého pracovního prostoru pro budoucí použití:
 
@@ -239,7 +239,7 @@ V následující tabulce je popsána hodnota AZUREML_MODEL_DIR v závislosti na 
 | Nasazení | Hodnota proměnné prostředí |
 | ----- | ----- |
 | Jeden model | Cesta ke složce obsahující model |
-| Více modelů | Cesta ke složce obsahující všechny modely Modely jsou umístěné podle názvu a verze v této složce (`$MODEL_NAME/$VERSION`). |
+| Více modelů | Cesta ke složce obsahující všechny modely Modely jsou umístěné podle názvu a verze v této složce ( `$MODEL_NAME/$VERSION` ). |
 
 Během registrace a nasazení modelu jsou modely umístěny v AZUREML_MODEL_DIR cestě a jejich původní názvy souborů jsou zachovány.
 
@@ -277,7 +277,7 @@ Tyto typy jsou aktuálně podporovány:
 * `pyspark`
 * Standardní objekt Pythonu
 
-Chcete-li použít generování schématu, zahrňte do `inference-schema` souboru závislostí Open Source balíček. Další informace o tomto balíčku najdete v tématu [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema). Definujte vstupní a výstupní ukázkové formáty v proměnných `input_sample` a `output_sample` , které reprezentují formáty požadavků a odpovědí webové služby. Tyto ukázky použijte ve funkci vstupu a výstupu dekoratéry na `run()` funkci. Následující scikit příklad používá generování schématu.
+Chcete-li použít generování schématu, zahrňte do `inference-schema` souboru závislostí Open Source balíček. Další informace o tomto balíčku najdete v tématu [https://github.com/Azure/InferenceSchema](https://github.com/Azure/InferenceSchema) . Definujte vstupní a výstupní ukázkové formáty v `input_sample` `output_sample` proměnných a, které reprezentují formáty požadavků a odpovědí webové služby. Tyto ukázky použijte ve funkci vstupu a výstupu dekoratéry na `run()` funkci. Následující scikit příklad používá generování schématu.
 
 ##### <a name="example-entry-script"></a>Ukázkový skript vstupu
 
@@ -496,7 +496,7 @@ az ml model profile -g <resource-group-name> -w <workspace-name> --inference-con
 ```
 
 > [!TIP]
-> Chcete-li zachovat informace vrácené profilací, použijte pro model značky nebo vlastnosti. Použití značek nebo vlastností ukládá data s modelem v registru modelu. Následující příklady ukazují přidání nové značky obsahující informace `requestedCpu` a: `requestedMemoryInGb`
+> Chcete-li zachovat informace vrácené profilací, použijte pro model značky nebo vlastnosti. Použití značek nebo vlastností ukládá data s modelem v registru modelu. Následující příklady ukazují přidání nové značky obsahující `requestedCpu` `requestedMemoryInGb` informace a:
 >
 > ```python
 > model.add_tags({'requestedCpu': details['requestedCpu'],
@@ -531,7 +531,7 @@ Následující tabulka uvádí příklad vytvoření konfigurace nasazení pro k
 | Azure Container Instances | `deployment_config = AciWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 | Azure Kubernetes Service | `deployment_config = AksWebservice.deploy_configuration(cpu_cores = 1, memory_gb = 1)` |
 
-Třídy pro místní, Azure Container Instances a webové služby AKS lze importovat z `azureml.core.webservice`:
+Třídy pro místní, Azure Container Instances a webové služby AKS lze importovat z `azureml.core.webservice` :
 
 ```python
 from azureml.core.webservice import AciWebservice, AksWebservice, LocalWebservice
@@ -576,7 +576,7 @@ Během nasazování modelu se může zobrazit Změna stavu služby během plnéh
 
 Následující tabulka popisuje různé stavy služby:
 
-| Stav WebService | Popis | Konečný stav?
+| Stav WebService | Description | Konečný stav?
 | ----- | ----- | ----- |
 | Přechod | Služba je v procesu nasazení. | Ne |
 | Není v pořádku | Služba je nasazená, ale v tuto chvíli není dostupná.  | Ne |
@@ -608,7 +608,7 @@ Pokud jste povolili ověřování na základě tokenů pro vaši službu, musít
 Hlavním rozdílem je, že **klíče jsou statické a dají se znovu vygenerovat ručně**a **tokeny je potřeba aktualizovat po vypršení platnosti**. Ověřování založené na klíčích se podporuje pro Azure Container instance a službu Azure Kubernetesed Web-Services a ověřování na základě tokenu je dostupné **jenom** pro nasazení služby Azure Kubernetes. Další informace a konkrétní ukázky kódu najdete v [tématu o ověřování](how-to-setup-authentication.md#web-service-authentication) .
 
 > [!TIP]
-> Po nasazení služby můžete načíst dokument JSON schématu. Použijte [vlastnost swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) z nasazené webové služby (například `service.swagger_uri`) k získání identifikátoru URI do souboru Swagger místní webové služby.
+> Po nasazení služby můžete načíst dokument JSON schématu. Použijte [vlastnost swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri) z nasazené webové služby (například `service.swagger_uri` ) k získání identifikátoru URI do souboru Swagger místní webové služby.
 
 ### <a name="request-response-consumption"></a>Spotřeba požadavků a odpovědí
 
@@ -642,7 +642,7 @@ Další informace najdete v tématu [vytváření klientských aplikací pro vyu
 
 ### <a name="web-service-schema-openapi-specification"></a>Schéma webové služby (specifikace OpenAPI)
 
-Pokud jste s vaším nasazením použili automatické generování schématu, můžete získat adresu specifikace OpenAPI pro službu pomocí [vlastnosti swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). (Například `print(service.swagger_uri)`.) K načtení specifikace použijte požadavek GET nebo otevřete identifikátor URI v prohlížeči.
+Pokud jste s vaším nasazením použili automatické generování schématu, můžete získat adresu specifikace OpenAPI pro službu pomocí [vlastnosti swagger_uri](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.local.localwebservice?view=azure-ml-py#swagger-uri). (Například `print(service.swagger_uri)` .) K načtení specifikace použijte požadavek GET nebo otevřete identifikátor URI v prohlížeči.
 
 Následující dokument JSON je příklad schématu (specifikace OpenAPI) generovaného pro nasazení:
 
@@ -978,11 +978,11 @@ Chcete-li spustit místní kontejner na základě tohoto obrázku, použijte ná
 docker run -p 6789:5001 --name mycontainer <imageid>
 ```
 
-Tento příkaz spustí nejnovější verzi image s názvem `myimage`. Mapuje místní port 6789 na port v kontejneru, ve kterém webová služba naslouchá (5001). Také přiřadí název `mycontainer` kontejneru, což usnadňuje zastavení kontejneru. Po spuštění kontejneru můžete odeslat požadavky na `http://localhost:6789/score`.
+Tento příkaz spustí nejnovější verzi image s názvem `myimage` . Mapuje místní port 6789 na port v kontejneru, ve kterém webová služba naslouchá (5001). Také přiřadí název `mycontainer` kontejneru, což usnadňuje zastavení kontejneru. Po spuštění kontejneru můžete odeslat požadavky na `http://localhost:6789/score` .
 
 ### <a name="generate-a-dockerfile-and-dependencies"></a>Vygenerovat souboru Dockerfile a závislosti
 
-Následující příklad ukazuje, jak stáhnout souboru Dockerfile, model a další prostředky potřebné k vytvoření image místně. `generate_dockerfile=True` Parametr označuje, že chcete soubory, nikoli plně sestavenou bitovou kopii.
+Následující příklad ukazuje, jak stáhnout souboru Dockerfile, model a další prostředky potřebné k vytvoření image místně. `generate_dockerfile=True`Parametr označuje, že chcete soubory, nikoli plně sestavenou bitovou kopii.
 
 ```python
 package = Model.package(ws, [model], inference_config, generate_dockerfile=True)
@@ -998,21 +998,21 @@ print("Password:", acr.password)
 
 Tento kód stáhne soubory potřebné k sestavení image do `imagefiles` adresáře. Souboru Dockerfile zahrnuté do uložených souborů odkazuje na základní image uloženou v registru služby Azure Container Registry. Při sestavování image v místní instalaci Docker musíte pro ověření v registru použít adresu, uživatelské jméno a heslo. Pomocí následujících kroků sestavíte Image pomocí místní instalace Docker:
 
-1. Z prostředí nebo relace příkazového řádku použijte následující příkaz k ověření Docker pomocí služby Azure Container Registry. Nahradí `<address>`hodnoty `<username>`, a `<password>` s hodnotami načtenými `package.get_container_registry()`.
+1. Z prostředí nebo relace příkazového řádku použijte následující příkaz k ověření Docker pomocí služby Azure Container Registry. Nahradí `<address>` `<username>` hodnoty, a `<password>` s hodnotami načtenými `package.get_container_registry()` .
 
     ```bash
     docker login <address> -u <username> -p <password>
     ```
 
-2. K sestavení image použijte následující příkaz. Nahraďte `<imagefiles>` cestou k adresáři, kam `package.save()` se soubory uložily.
+2. K sestavení image použijte následující příkaz. Nahraďte `<imagefiles>` cestou k adresáři, kam se `package.save()` soubory uložily.
 
     ```bash
     docker build --tag myimage <imagefiles>
     ```
 
-    Tento příkaz nastaví název bitové kopie na `myimage`.
+    Tento příkaz nastaví název bitové kopie na `myimage` .
 
-Chcete-li ověřit, zda je obrázek sestaven, `docker images` použijte příkaz. V seznamu by se `myimage` měla zobrazit obrázek:
+Chcete-li ověřit, zda je obrázek sestaven, použijte `docker images` příkaz. V seznamu by se měla zobrazit `myimage` obrázek:
 
 ```text
 REPOSITORY      TAG                 IMAGE ID            CREATED             SIZE
@@ -1026,7 +1026,7 @@ Chcete-li spustit nový kontejner na základě tohoto obrázku, použijte násle
 docker run -p 6789:5001 --name mycontainer myimage:latest
 ```
 
-Tento příkaz spustí nejnovější verzi image s názvem `myimage`. Mapuje místní port 6789 na port v kontejneru, ve kterém webová služba naslouchá (5001). Také přiřadí název `mycontainer` kontejneru, což usnadňuje zastavení kontejneru. Po spuštění kontejneru můžete odeslat požadavky na `http://localhost:6789/score`.
+Tento příkaz spustí nejnovější verzi image s názvem `myimage` . Mapuje místní port 6789 na port v kontejneru, ve kterém webová služba naslouchá (5001). Také přiřadí název `mycontainer` kontejneru, což usnadňuje zastavení kontejneru. Po spuštění kontejneru můžete odeslat požadavky na `http://localhost:6789/score` .
 
 ### <a name="example-client-to-test-the-local-container"></a>Příklad klienta pro otestování místního kontejneru
 
@@ -1069,8 +1069,8 @@ docker kill mycontainer
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 
-Chcete-li odstranit nasazenou webovou službu `service.delete()`, použijte.
-Pokud chcete odstranit registrovaný model, použijte `model.delete()`.
+Chcete-li odstranit nasazenou webovou službu, použijte `service.delete()` .
+Pokud chcete odstranit registrovaný model, použijte `model.delete()` .
 
 Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#delete--) a [model. Delete ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#delete--).
 
@@ -1081,7 +1081,7 @@ Další informace najdete v dokumentaci pro [WebService. Delete ()](https://docs
 
 ### <a name="binary-data"></a>Binární data
 
-Pokud váš model akceptuje binární data, jako je obrázek, musíte upravit `score.py` soubor, který se používá pro vaše nasazení, aby přijímal nezpracované požadavky HTTP. K přijetí nezpracovaných dat použijte `AMLRequest` třídu ve vašem vstupním skriptu a přidejte `@rawhttp` dekoratér do `run()` funkce.
+Pokud váš model akceptuje binární data, jako je obrázek, musíte upravit soubor, který se `score.py` používá pro vaše nasazení, aby přijímal nezpracované požadavky HTTP. K přijetí nezpracovaných dat použijte `AMLRequest` třídu ve vašem vstupním skriptu a přidejte `@rawhttp` dekoratér do `run()` funkce.
 
 Tady je příklad `score.py` , který přijímá binární data:
 
@@ -1114,7 +1114,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `AMLRequest` Třída je v `azureml.contrib` oboru názvů. Entity v tomto oboru názvů se často mění při práci za účelem vylepšení služby. Cokoli v tomto oboru názvů by mělo být považováno za verzi Preview, která není plně podporovaná společností Microsoft.
+> `AMLRequest`Třída je v `azureml.contrib` oboru názvů. Entity v tomto oboru názvů se často mění při práci za účelem vylepšení služby. Cokoli v tomto oboru názvů by mělo být považováno za verzi Preview, která není plně podporovaná společností Microsoft.
 >
 > Pokud potřebujete tuto možnost otestovat ve vašem místním vývojovém prostředí, můžete komponenty nainstalovat pomocí následujícího příkazu:
 >
@@ -1122,7 +1122,7 @@ def run(request):
 > pip install azureml-contrib-services
 > ```
 
-`AMLRequest` Třída umožňuje přístup k nezpracovaným publikovaným datům v Score.py, neexistuje žádná součást na straně klienta. Z klienta můžete data publikovat jako normální. Například následující kód Python přečte soubor obrázku a odešle data:
+`AMLRequest`Třída umožňuje přístup k nezpracovaným publikovaným datům v Score.py, neexistuje žádná součást na straně klienta. Z klienta můžete data publikovat jako normální. Například následující kód Python přečte soubor obrázku a odešle data:
 
 ```python
 import requests
@@ -1138,7 +1138,7 @@ res = request.post(url='<scoring-uri>', data=data, headers={'Content-Type': 'app
 
 Sdílení prostředků mezi zdroji je způsob, jak u prostředků na webové stránce požádat z jiné domény. CORS funguje pomocí hlaviček HTTP odeslaných s požadavkem klienta a vrácených s odpovědí služby. Další informace o CORS a platných hlavičkách najdete v tématu [sdílení prostředků mezi zdroji](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing) v Wikipedii.
 
-Pokud chcete nakonfigurovat nasazení modelu tak, aby podporovalo CORS `AMLResponse` , použijte ve svém vstupním skriptu třídu. Tato třída umožňuje nastavit záhlaví objektu Response.
+Pokud chcete nakonfigurovat nasazení modelu tak, aby podporovalo CORS, použijte `AMLResponse` ve svém vstupním skriptu třídu. Tato třída umožňuje nastavit záhlaví objektu Response.
 
 Následující příklad nastaví `Access-Control-Allow-Origin` hlavičku odpovědi z vstupního skriptu:
 
@@ -1172,7 +1172,7 @@ def run(request):
 ```
 
 > [!IMPORTANT]
-> `AMLResponse` Třída je v `azureml.contrib` oboru názvů. Entity v tomto oboru názvů se často mění při práci za účelem vylepšení služby. Cokoli v tomto oboru názvů by mělo být považováno za verzi Preview, která není plně podporovaná společností Microsoft.
+> `AMLResponse`Třída je v `azureml.contrib` oboru názvů. Entity v tomto oboru názvů se často mění při práci za účelem vylepšení služby. Cokoli v tomto oboru názvů by mělo být považováno za verzi Preview, která není plně podporovaná společností Microsoft.
 >
 > Pokud potřebujete tuto možnost otestovat ve vašem místním vývojovém prostředí, můžete komponenty nainstalovat pomocí následujícího příkazu:
 >

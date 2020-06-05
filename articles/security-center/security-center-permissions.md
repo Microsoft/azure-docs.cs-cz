@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/28/2018
+ms.date: 06/04/2020
 ms.author: memildin
-ms.openlocfilehash: 6e61571400930d4a781d6d67647bd662a7f2d350
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a4ecc7f0e11712fa3d664d1227eacb39409bd184
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106215"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84418207"
 ---
 # <a name="permissions-in-azure-security-center"></a>Oprávnění ve službě Azure Security Center
 
@@ -35,13 +35,12 @@ Kromě těchto rolí existují ve službě Security Center dvě specifické role
 > [!NOTE]
 > Role zabezpečení, čtecí modul zabezpečení a správce zabezpečení mají přístup pouze v Security Center. Role zabezpečení nemají přístup k jiným oblastem služeb Azure, jako jsou Storage, web & Mobile nebo Internet věcí.
 >
->
 
 ## <a name="roles-and-allowed-actions"></a>Role a povolené akce
 
 V následující tabulce jsou uvedeny role a povolené akce v Security Center.
 
-| Role | Upravit zásady zabezpečení | Použití doporučení zabezpečení pro prostředek</br> (včetně "rychlé opravy!") | Zavřít výstrahy a doporučení | Zobrazit výstrahy a doporučení |
+| Role | Upravit zásady zabezpečení | Použití doporučení zabezpečení pro prostředek</br> (včetně "rychlé opravy!") | Zavřít výstrahy | Zobrazit výstrahy a doporučení |
 |:--- |:---:|:---:|:---:|:---:|
 | Vlastník předplatného | ✔ | ✔ | ✔ | ✔ |
 | Přispěvatel předplatného | -- | ✔ | ✔ | ✔ |

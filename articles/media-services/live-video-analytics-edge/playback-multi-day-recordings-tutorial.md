@@ -3,12 +3,12 @@ title: Přehrávání nahrávek na více dní – Azure
 description: V tomto kurzu se naučíte používat rozhraní API služby Azure Media Service k přehrání nepřetržitého nahrávání videa.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 0b294769fce58f5aaae82fec590c783e8328d826
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 52ef33e8c4380e9c21e99c4ba45b7f25f7c57780
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261886"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433655"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Kurz: přehrávání vícedenních nahrávek  
 
@@ -57,7 +57,7 @@ V rámci [kurzu CVR](continuous-video-recording-tutorial.md)jste vytvořili úč
 }
 ```
 
-Dále v nástroji Visual Studio Code otevřete src/AMS – Asset-Player. Tato složka obsahuje potřebné soubory pro tento kurz. Otevřete soubor appSettings. JSON a zkopírujte jeho obsah do nového souboru appSettings. Developer. JSON. Proveďte následující úpravy pro druhý soubor:
+Dále v nástroji Visual Studio Code otevřete src/AMS – Asset-Player. Tato složka obsahuje potřebné soubory pro tento kurz. Otevřete soubor appSettings. JSON a zkopírujte jeho obsah do nového souboru appSettings. Development. JSON. Proveďte následující úpravy pro druhý soubor:
 
 ```
   "AMS" : {

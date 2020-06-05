@@ -5,17 +5,17 @@ description: Přečtěte si o vstupních & výstupech dat v Azure Machine Learni
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: laobri
 author: lobrien
 ms.date: 04/01/2020
 ms.custom: contperfq4
-ms.openlocfilehash: 233361fb238342cde3c692174e85fb57f69979b1
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 67af2fec75c2a4ead10e59c651dac1542c095659
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858468"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84430098"
 ---
 # <a name="moving-data-into-and-between-ml-pipeline-steps-python"></a>Přesun dat kroků kanálu ML a mezi nimi (Python)
 
@@ -30,19 +30,19 @@ Tento článek vám ukáže, jak:
 - Rozdělit `Dataset` data na podmnožiny, jako jsou například školení a podmnožiny ověřování
 - Vytvoření `PipelineData` objektů pro přenos dat do dalšího kroku kanálu
 - Použití `PipelineData` objektů jako vstupu do postupu kanálu
-- Vytvořit nové `Dataset` objekty `PipelineData` , které chcete zachovat
+- Vytvořit nové objekty, které chcete `Dataset` `PipelineData` zachovat
 
 ## <a name="prerequisites"></a>Požadavky
 
 Budete potřebovat:
 
-- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
+- Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree).
 
 - [Sada SDK Azure Machine Learning pro Python](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)nebo přístup k [Azure Machine Learning Studiu](https://ml.azure.com/).
 
 - Pracovní prostor služby Azure Machine Learning.
   
-  Buď [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) nebo použijte existující sadu pomocí sady Python SDK. Importujte třídu `Workspace` a `Datastore` a načtěte ze souboru `config.json` informace o svém předplatném pomocí funkce `from_config()`. Tato funkce ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete také zadat parametr cesty, který bude odkazovat na soubor pomocí `from_config(path="your/file/path")`.
+  Buď [Vytvořte pracovní prostor Azure Machine Learning](how-to-manage-workspace.md) nebo použijte existující sadu pomocí sady Python SDK. Importujte `Workspace` třídu a a `Datastore` načtěte ze souboru informace o svém předplatném `config.json` pomocí funkce `from_config()` . Tato funkce ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete také zadat parametr cesty, který bude odkazovat na soubor pomocí `from_config(path="your/file/path")` .
 
    ```python
    import azureml.core
@@ -59,7 +59,7 @@ Budete potřebovat:
 
 Upřednostňovaným způsobem, jak ingestovat data do kanálu, je použít objekt [DataSet](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset%28class%29?view=azure-ml-py) . `Dataset`objekty reprezentují trvalá data dostupná v celém pracovním prostoru.
 
-Existuje mnoho způsobů, jak vytvářet a registrovat `Dataset` objekty. Tabulkové datové sady jsou pro data s oddělovači k dispozici v jednom nebo více souborech. Datové sady souborů jsou pro binární data (například obrázky) nebo pro data, která budete analyzovat. Nejjednodušším programovým způsobem `Dataset` , jak vytvářet objekty, je použít existující objekty BLOB v úložišti pracovních prostorů nebo veřejných adresách URL:
+Existuje mnoho způsobů, jak vytvářet a registrovat `Dataset` objekty. Tabulkové datové sady jsou pro data s oddělovači k dispozici v jednom nebo více souborech. Datové sady souborů jsou pro binární data (například obrázky) nebo pro data, která budete analyzovat. Nejjednodušším programovým způsobem, jak vytvářet `Dataset` objekty, je použít existující objekty BLOB v úložišti pracovních prostorů nebo veřejných adresách URL:
 
 ```python
 datastore = Datastore.get(workspace, 'training_data')
@@ -75,13 +75,13 @@ Další možnosti vytváření datových sad s různými možnostmi a z různýc
 
 ### <a name="pass-datasets-to-your-script"></a>Předání datových sad vašemu skriptu
 
-Chcete-li předat cestu datové sady ke skriptu, použijte `Dataset` `as_named_input()` metodu objektu. Výsledný `DatasetConsumptionConfig` objekt můžete buď předat vašemu skriptu jako argument nebo pomocí `inputs` argumentu pro skript kanálu, můžete načíst datovou sadu pomocí. `Run.get_context().input_datasets[]`
+Chcete-li předat cestu datové sady ke skriptu, použijte `Dataset` `as_named_input()` metodu objektu. Výsledný objekt můžete buď předat `DatasetConsumptionConfig` vašemu skriptu jako argument nebo pomocí `inputs` argumentu pro skript kanálu, můžete načíst datovou sadu pomocí `Run.get_context().input_datasets[]` .
 
-Po vytvoření pojmenovaného vstupu můžete zvolit režim přístupu: `as_mount()` nebo. `as_download()` Pokud váš skript zpracovává všechny soubory v datové sadě a disk na výpočetním prostředku je pro datovou sadu dostatečně velký, je režim přístupu ke stažení lepší volbou. Režim přístupu ke stažení se vyhne režie streamování dat za běhu. Pokud váš skript přistupuje k podmnožině datové sady nebo je pro výpočetní prostředky příliš velký, použijte režim přístupu k připojení. Další informace najdete v tématu [připojení pro čtení a stahování.](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets#mount-vs-download)
+Po vytvoření pojmenovaného vstupu můžete zvolit režim přístupu: `as_mount()` nebo `as_download()` . Pokud váš skript zpracovává všechny soubory v datové sadě a disk na výpočetním prostředku je pro datovou sadu dostatečně velký, je režim přístupu ke stažení lepší volbou. Režim přístupu ke stažení se vyhne režie streamování dat za běhu. Pokud váš skript přistupuje k podmnožině datové sady nebo je pro výpočetní prostředky příliš velký, použijte režim přístupu k připojení. Další informace najdete v tématu [připojení pro čtení a stahování.](https://docs.microsoft.com/azure/machine-learning/how-to-train-with-datasets#mount-vs-download)
 
 Předání datové sady do vašeho kroku kanálu:
 
-1. Pro `TabularDataset.as_named_inputs()` vytvoření `FileDataset.as_named_input()` `DatasetConsumptionConfig` objektu použijte nebo (ne ' na konci).
+1. `TabularDataset.as_named_inputs()` `FileDataset.as_named_input()` Pro vytvoření objektu použijte nebo (ne ' na konci). `DatasetConsumptionConfig`
 1. Použijte `as_mount()` nebo `as_download()` k nastavení režimu přístupu
 1. Předání datových sad do kroků kanálu pomocí `arguments` `inputs` argumentů nebo
 
@@ -97,7 +97,7 @@ train_step = PythonScriptStep(
 )
 ```
 
-Můžete také použít metody, jako jsou `random_split()` a `take_sample()` , a vytvořit několik vstupů nebo snížit množství dat předávaných do vašeho kroku kanálu:
+Můžete také použít metody, jako jsou `random_split()` a, a `take_sample()` vytvořit několik vstupů nebo snížit množství dat předávaných do vašeho kroku kanálu:
 
 ```python
 seed = 42 # PRNG seed
@@ -114,7 +114,7 @@ train_step = PythonScriptStep(
 
 ### <a name="access-datasets-within-your-script"></a>Přístup k datovým sadám v rámci skriptu
 
-Pojmenované vstupy skriptu kroku kanálu jsou k dispozici jako slovník v rámci `Run` objektu. Načtěte aktivní `Run` objekt pomocí `Run.get_context()` a pak načtěte slovník pojmenovaných vstupů pomocí `input_datasets`. Pokud jste předali `DatasetConsumptionConfig` objekt pomocí `arguments` argumentu místo `inputs` argumentu, přístup k datům pomocí `ArgParser` kódu. Obě metody jsou znázorněny v následujícím fragmentu kódu.
+Pojmenované vstupy skriptu kroku kanálu jsou k dispozici jako slovník v rámci `Run` objektu. Načtěte aktivní `Run` objekt pomocí `Run.get_context()` a pak načtěte slovník pojmenovaných vstupů pomocí `input_datasets` . Pokud jste předali `DatasetConsumptionConfig` objekt pomocí `arguments` argumentu místo `inputs` argumentu, přístup k datům pomocí `ArgParser` kódu. Obě metody jsou znázorněny v následujícím fragmentu kódu.
 
 ```python
 # In pipeline definition script:
@@ -148,7 +148,7 @@ ds = Dataset.get_by_name(workspace=ws, name='mnist_opendataset')
 
 ## <a name="use-pipelinedata-for-intermediate-data"></a>Použít `PipelineData` pro mezilehlé data
 
-Zatímco `Dataset` objekty představují trvalá data, objekty [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) se používají pro dočasná data, která jsou v režimu výstupu z kroků kanálu. Vzhledem k tomu, že `PipelineData` životnost objektu je delší než jeden krok kanálu, je třeba je definovat ve skriptu definice kanálu. Při vytváření `PipelineData` objektu je nutné zadat název a úložiště dat, na kterém budou data umístěna. `PipelineData` `PythonScriptStep` Předání objektů _do vaší pomocí_ `arguments` `outputs` argumentů a:
+Zatímco `Dataset` objekty představují trvalá data, objekty [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) se používají pro dočasná data, která jsou v režimu výstupu z kroků kanálu. Vzhledem k tomu, že životnost `PipelineData` objektu je delší než jeden krok kanálu, je třeba je definovat ve skriptu definice kanálu. Při vytváření objektu je `PipelineData` nutné zadat název a úložiště dat, na kterém budou data umístěna. Předání `PipelineData` objektů do vaší `PythonScriptStep` pomocí _both_ `arguments` `outputs` argumentů a:
 
 ```python
 default_datastore = workspace.get_default_datastore()
@@ -164,7 +164,7 @@ dataprep_step = PythonScriptStep(
 )
 ```
 
-Můžete se rozhodnout vytvořit `PipelineData` objekt pomocí režimu přístupu, který poskytuje okamžité nahrání. `PipelineData`V takovém případě, když vytvoříte, nastavte `upload_mode` na `"upload"` a pomocí `output_path_on_compute` argumentu Určete cestu, do které budete zapisovat data:
+Můžete se rozhodnout vytvořit `PipelineData` objekt pomocí režimu přístupu, který poskytuje okamžité nahrání. V takovém případě, když vytvoříte `PipelineData` , nastavte na `upload_mode` `"upload"` a pomocí `output_path_on_compute` argumentu Určete cestu, do které budete zapisovat data:
 
 ```python
 PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", output_path_on_compute="clean_data_output/")
@@ -172,7 +172,7 @@ PipelineData("clean_data", datastore=def_blob_store, output_mode="upload", outpu
 
 ### <a name="use-pipelinedata-as-outputs-of-a-training-step"></a>Použít `PipelineData` jako výstupy krok školení
 
-V rámci vašeho kanálu `PythonScriptStep`můžete načíst dostupné výstupní cesty pomocí argumentů programu. Pokud je tento krok první a Inicializuje výstupní data, je nutné vytvořit adresář v zadané cestě. Pak můžete napsat libovolné soubory, které chcete zahrnout do `PipelineData`.
+V rámci vašeho kanálu `PythonScriptStep` můžete načíst dostupné výstupní cesty pomocí argumentů programu. Pokud je tento krok první a Inicializuje výstupní data, je nutné vytvořit adresář v zadané cestě. Pak můžete napsat libovolné soubory, které chcete zahrnout do `PipelineData` .
 
 ```python
 parser = argparse.ArgumentParser()
@@ -185,11 +185,11 @@ with open(args.output_path, 'w') as f:
     f.write("Step 1's output")
 ```
 
-`PipelineData` Pokud jste vytvořili `is_directory` s argumentem nastaveným na `True`, bylo by stačit pouze provést `os.makedirs()` volání a pak byste měli zadarmo napsat jakékoli soubory, které jste si do cesty chtěli zapisovat. Další podrobnosti najdete v referenční dokumentaci k [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) .
+Pokud jste vytvořili `PipelineData` s `is_directory` argumentem nastaveným na `True` , bylo by stačit pouze provést `os.makedirs()` volání a pak byste měli zadarmo napsat jakékoli soubory, které jste si do cesty chtěli zapisovat. Další podrobnosti najdete v referenční dokumentaci k [PipelineData](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinedata?view=azure-ml-py) .
 
 ### <a name="read-pipelinedata-as-inputs-to-non-initial-steps"></a>Číst `PipelineData` jako vstupy do jiných než počátečních kroků
 
-Jakmile krok počátečního kanálu zapíše do `PipelineData` cesty nějaká data a bude se jednat o výstup tohoto počátečního kroku, dá se použít jako vstup do pozdějšího kroku:
+Jakmile krok počátečního kanálu zapíše do cesty nějaká data `PipelineData` a bude se jednat o výstup tohoto počátečního kroku, dá se použít jako vstup do pozdějšího kroku:
 
 ```python
 step1_output_data = PipelineData("processed_data", datastore=def_blob_store, output_mode="upload")
@@ -226,9 +226,9 @@ with open(args.pd) as f:
     print(f.read())
 ```
 
-## <a name="convert-pipelinedata-objects-to-datasets"></a>Převést `PipelineData` objekty na `Dataset`s
+## <a name="convert-pipelinedata-objects-to-datasets"></a>Převést `PipelineData` objekty na `Dataset` s
 
-Pokud byste chtěli, aby byly `PipelineData` k dispozici déle než po dobu běhu, použijte její funkci k `as_dataset()` jejímu převedení na `Dataset`. Pak ho můžete zaregistrovat `Dataset`a vytvořit jako občana první třídy ve vašem pracovním prostoru. Vzhledem k `PipelineData` tomu, že váš `create_new_version` objekt bude mít `True` při každém spuštění kanálu jinou cestu, důrazně doporučujeme, abyste při registraci `Dataset` vytvořeného z `PipelineData` objektu nastavili.
+Pokud byste chtěli, aby byly `PipelineData` k dispozici déle než po dobu běhu, použijte její `as_dataset()` funkci k jejímu převedení na `Dataset` . Pak ho můžete zaregistrovat `Dataset` a vytvořit jako občana první třídy ve vašem pracovním prostoru. Vzhledem k `PipelineData` tomu, že váš objekt bude mít při každém spuštění kanálu jinou cestu, důrazně doporučujeme, abyste `create_new_version` `True` při registraci `Dataset` vytvořeného z objektu nastavili `PipelineData` .
 
 ```python
 step1_output_ds = step1_output_data.as_dataset()

@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.workload: data-services
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: e55e6d4eb4f52b8a4b64db89691cf087a30ecb73
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 3e88db734ecabb38363087d98b97f9eb4ec181ec
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612312"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434660"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Trénování modelů pomocí automatizovaného strojového učení v cloudu
 
@@ -34,7 +34,7 @@ K dispozici jsou další funkce při použití vzdáleného výpočetního cíle
 
 V tomto kurzu se naučíte[model klasifikace pomocí automatizovaného strojového učení](tutorial-auto-train-models.md)a naučíte se používat místní počítač k výuce modelu pomocí automatizovaného ml. Pracovní postup, který se lokálně školení týká, se také vztahuje na vzdálené cíle. Chcete-li se naučit vzdáleně, vytvořte nejprve vzdálené výpočetní cíle, jako je AmlCompute. Potom nakonfigurujete vzdálený prostředek a odešlete svůj kód.
 
-V tomto článku se dozvíte o dalších krocích potřebných ke spuštění automatizovaného experimentu ML na vzdáleném AmlCompute cíli. Objekt `ws`pracovního prostoru z tohoto kurzu se používá v celém kódu zde.
+V tomto článku se dozvíte o dalších krocích potřebných ke spuštění automatizovaného experimentu ML na vzdáleném AmlCompute cíli. Objekt pracovního prostoru `ws` z tohoto kurzu se používá v celém kódu zde.
 
 ```python
 ws = Workspace.from_config()
@@ -42,7 +42,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-resource"></a>Vytvoření prostředku
 
-Vytvořte [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) cíl v pracovním prostoru (`ws`), pokud ještě neexistuje.
+Vytvořte [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute%28class%29?view=azure-ml-py) cíl v pracovním prostoru ( `ws` ), pokud ještě neexistuje.
 
 **Časový odhad**: Vytvoření cíle AmlCompute trvá přibližně 5 minut.
 
@@ -85,11 +85,11 @@ Nyní můžete `compute_target` objekt použít jako cíl vzdáleného výpočtu
 
 Mezi omezení názvu clusteru patří:
 + Musí být kratší než 64 znaků.
-+ Nelze zahrnout žádný z následujících znaků: `\` ~! @ # $% ^ & * () = + _ [] {} \\ \\ |; : \' \\",  < > /?. `
++ Nelze zahrnout žádný z následujících znaků: `\` ~! @ # $% ^ & * () = + _ [] {} \\ \\ |;: \' \\ ",  < > /?. `
 
 ## <a name="access-data-using-tabulardataset-function"></a>Přístup k datům pomocí funkce TabularDataset
 
-Definováno training_data jako [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a popisek, který se předává do automatizovaného ml v [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py). `TabularDataset` Metoda `from_delimited_files`ve výchozím nastavení nastaví `infer_column_types` na hodnotu true, která bude automaticky odvodit typ sloupce. 
+Definováno training_data jako [`TabularDataset`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) a popisek, který se předává do automatizovaného ml v [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) . `TabularDataset`Metoda `from_delimited_files` ve výchozím nastavení nastaví na `infer_column_types` hodnotu true, která bude automaticky odvodit typ sloupce. 
 
 Pokud chcete ručně nastavit typy sloupců, můžete nastavit `set_column_types` argument tak, aby ručně nastavil typ každého sloupce. V následující ukázce kódu pocházejí data z balíčku skriptu sklearn.
 
@@ -125,7 +125,7 @@ training_data = Dataset.Tabular.from_delimited_files(path=ds.path('digitsdata/di
 ```
 
 ## <a name="configure-experiment"></a>Konfigurovat experiment
-Zadejte nastavení pro `AutoMLConfig`.  (Podívejte se na [úplný seznam parametrů](how-to-configure-auto-train.md#configure-experiment) a jejich možné hodnoty.)
+Zadejte nastavení pro `AutoMLConfig` .  (Podívejte se na [úplný seznam parametrů](how-to-configure-auto-train.md#configure-experiment) a jejich možné hodnoty.)
 
 ```python
 from azureml.train.automl import AutoMLConfig

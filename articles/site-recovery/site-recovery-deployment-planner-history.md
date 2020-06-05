@@ -6,18 +6,31 @@ author: Daya-Patil
 manager: carmonm
 ms.topic: article
 ms.service: site-recovery
-ms.date: 10/16/2019
+ms.date: 6/4/2020
 ms.author: dapatil
-ms.openlocfilehash: bf32809f426f3bfcabd08ec3bd95e76202aa8f84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 74b02da51603366f5ec18aa4733117bc2c59faf7
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72433412"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417850"
 ---
 # <a name="azure-site-recovery-deployment-planner-version-history"></a>Historie verze Plánovač nasazení služby Azure Site Recovery
 
 Tento článek obsahuje historii všech verzí Plánovač nasazení služby Azure Site Recovery spolu s opravami, známá omezení v jednotlivých verzích a jejich datum vydání.
+
+## <a name="version-252"></a>Verze 2,52
+
+**Datum vydání: 4. června 2020**
+
+**Řeší**
+
+- Přidání podpory pro vCenter 7,0
+- Přidání podpory pro následující operační systémy:
+
+    - SUSE Linux Enterprise 15 (se všemi dílčími verzemi)
+    - Red Hat Enterprise Linux 8 (s dílčími verzemi)
+
 
 ## <a name="version-251"></a>Verze 2,51
 
@@ -44,7 +57,7 @@ Tento článek obsahuje historii všech verzí Plánovač nasazení služby Azur
 
 - Vylepšená kompatibilita s operačním systémem, konkrétně při zpracování chyb založených na lokalizaci.
 - Do kontrolního seznamu kompatibility se přidaly virtuální počítače s až 20 MB/s přenosovou rychlostí (změny).
-- Vylepšené chybové zprávy
+- Vylepšení chybových zpráv
 - Přidání podpory pro vCenter 6,7.
 - Přidala se podpora pro Windows Server 2019 a pracovní stanici Red Hat Enterprise Linux (RHEL).
 
@@ -109,7 +122,7 @@ Tento článek obsahuje historii všech verzí Plánovač nasazení služby Azur
 
 **Známá omezení:**
 
-- Pro zotavení po havárii z Hyper-V do Azure se jako virtuální počítač s názvem, `,`který `"`obsahuje `[`tyto `]`znaky: ``` ` ``` ,,, a nepodporuje. Při profilování se generování sestav nezdaří nebo bude mít nesprávný výsledek.
+- Pro zotavení po havárii z Hyper-V do Azure se jako virtuální počítač s názvem, který obsahuje tyto znaky: `,` , `"` ,, `[` `]` a ``` ` ``` nepodporuje. Při profilování se generování sestav nezdaří nebo bude mít nesprávný výsledek.
 - Pro zotavení po havárii z VMware do Azure se virtuální počítač s názvem, který obsahuje čárka, nepodporuje. Pokud profilace, generování sestav selže nebo dojde k nesprávnému výsledku.
 
 ## <a name="version-131"></a>Verze 1.3.1

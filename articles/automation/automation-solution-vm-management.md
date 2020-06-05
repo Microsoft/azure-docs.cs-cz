@@ -3,20 +3,23 @@ title: Přehled Azure Automation Start/Stop VMs during off-hours
 description: Tento článek popisuje funkci Start/Stop VMs during off-hours, která spouští nebo zastavuje virtuální počítače v plánu a aktivně je monitoruje z protokolů Azure Monitor.
 services: automation
 ms.subservice: process-automation
-ms.date: 04/28/2020
+ms.date: 06/04/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7c0cc2b4996c1002aae0656234c356c805923811
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 3b4358651b811ba5c1e7644333a1e9f5a8da2990
+ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84205122"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84424070"
 ---
 # <a name="startstop-vms-during-off-hours-overview"></a>Přehled Start/Stop VMs during off-hours
 
 Funkce Start/Stop VMs during off-hours spustí nebo zastaví povolený virtuální počítač Azure. Spouští nebo zastavuje počítače na uživatelem definovaných plánech, poskytuje přehledy prostřednictvím protokolů Azure Monitor a odesílá volitelné e-maily pomocí [skupin akcí](../azure-monitor/platform/action-groups.md). Tuto funkci můžete pro většinu scénářů povolit na obou Azure Resource Manager i v klasických virtuálních počítačích. 
 
-Tato funkce používá ke spuštění virtuálních počítačů rutinu [Start-AzureRmVM](https://docs.microsoft.com/powershell/module/azurerm.compute/start-azurermvm?view=azurermps-6.13.0) . Pro zastavování virtuálních počítačů používá [stop-AzureRmVM](https://docs.microsoft.com/powershell/module/AzureRM.Compute/Stop-AzureRmVM?view=azurermps-6.13.0) .
+Tato funkce používá ke spuštění virtuálních počítačů rutinu [Start-AzVm](https://docs.microsoft.com/powershell/module/az.compute/start-azvm) . Pro zastavování virtuálních počítačů používá [stop-AzVM](https://docs.microsoft.com/powershell/module/az.compute/stop-azvm) .
+
+> [!NOTE]
+> I když byly Runbooky aktualizované, aby používaly nové rutiny AZ modul pro Azure, používají alias předpony AzureRM.
 
 > [!NOTE]
 > Start/Stop VMs during off-hours se aktualizovala tak, aby podporovala nejnovější verze modulů Azure, které jsou k dispozici. Aktualizovaná verze této funkce, která je k dispozici na webu Marketplace, nepodporuje moduly AzureRM, protože jsme migrovali z AzureRM na az Modules.
@@ -101,11 +104,11 @@ V následující tabulce jsou uvedeny Runbooky, které funkce nasadí do vašeho
 
 Všechny nadřazené Runbooky obsahují `WhatIf` parametr. Při nastavení na hodnotu true podporuje parametr podrobné informace o přesném chování, které sada Runbook provede, když se spustí bez parametru a ověří, jestli jsou cílové správné virtuální počítače. Sada Runbook provede pouze své definované akce, pokud `WhatIf` je parametr nastaven na hodnotu false.
 
-|Runbook | Parametry | Popis|
+|Runbook | Parametry | Description|
 | --- | --- | ---|
 |AutoStop_CreateAlert_Child | VMObject <br> AlertAction <br> WebHookURI | Volá se z nadřazeného Runbooku. Tato sada Runbook vytváří výstrahy na základě jednotlivých prostředků pro scénář automatického zastavení.|
 |AutoStop_CreateAlert_Parent | VMList<br> WhatIf: true nebo false  | Vytvoří nebo aktualizuje pravidla upozornění Azure na virtuálních počítačích v cílovém předplatném nebo ve skupinách prostředků. <br> `VMList`je čárkami oddělený seznam virtuálních počítačů (bez prázdných znaků), například `vm1,vm2,vm3` .<br> `WhatIf`povolí ověřování logiky sady Runbook bez provedení.|
-|AutoStop_Disable | Žádná | Zakáže automatické zastavení výstrah a výchozí plán.|
+|AutoStop_Disable | Žádné | Zakáže automatické zastavení výstrah a výchozí plán.|
 |AutoStop_VM_Child | WebHookData | Volá se z nadřazeného Runbooku. Pravidla výstrah volají tuto sadu Runbook, aby zastavila klasický virtuální počítač.|
 |AutoStop_VM_Child_ARM | WebHookData |Volá se z nadřazeného Runbooku. Pravidla výstrah volají tuto sadu Runbook, aby zastavila virtuální počítač.  |
 |ScheduledStartStop_Base_Classic | CloudServiceName<br> Akce: spustit nebo zastavit<br> VMList  | Provede akci spustit nebo zastavit ve skupině klasických virtuálních počítačů Cloud Services. |
@@ -121,7 +124,7 @@ V následující tabulce jsou uvedeny proměnné vytvořené v účtu Automation
 > [!NOTE]
 > Omezení pro název virtuálního počítače a skupinu prostředků jsou z velké části výsledkem proměnné velikosti. Viz [variabilní prostředky v Azure Automation](https://docs.microsoft.com/azure/automation/shared-resources/variables).
 
-|Proměnná | Popis|
+|Proměnná | Description|
 |---------|------------|
 |External_AutoStop_Condition | Podmíněný operátor vyžadovaný pro konfiguraci podmínky před aktivací výstrahy. Přijatelné hodnoty jsou `GreaterThan` , `GreaterThanOrEqual` , `LessThan` a `LessThanOrEqual` .|
 |External_AutoStop_Description | Výstraha, která zastaví virtuální počítač, pokud procento procesoru překročí prahovou hodnotu.|
@@ -132,7 +135,7 @@ V následující tabulce jsou uvedeny proměnné vytvořené v účtu Automation
 |External_AutoStop_TimeAggregationOperator | Operátor časové agregace aplikovaný na velikost vybraného okna pro vyhodnocení podmínky. Přijatelné hodnoty jsou `Average` , `Minimum` ,, a `Maximum` `Total` `Last` .|
 |External_AutoStop_TimeWindow | Velikost okna, během kterého Azure analyzuje vybrané metriky pro aktivaci výstrahy. Tento parametr akceptuje vstup ve formátu TimeSpan. Možné hodnoty jsou 5 minut až 6 hodin.|
 |External_EnableClassicVMs| Hodnota, která určuje, jestli jsou na klasických virtuálních počítačích cílem funkce. Výchozí hodnota je true (pravda). Pro předplatná Azure Cloud Solution Provider (CSP) nastavte tuto proměnnou na false. Klasické virtuální počítače vyžadují [účet Spustit jako pro Classic](automation-create-standalone-account.md#create-a-classic-run-as-account).|
-|External_ExcludeVMNames | Čárkami oddělený seznam názvů virtuálních počítačů, které se mají vyloučit, jsou omezené na 140 virtuálních počítačů. Pokud do seznamu přidáte více než 140 virtuálních počítačů, virtuální počítače, které mají být vyloučeny, mohou být neúmyslně spuštěny nebo zastaveny.|
+|External_ExcludeVMNames | Čárkami oddělený seznam názvů virtuálních počítačů, které se mají vyloučit, jsou omezené na 140 virtuálních počítačů. Pokud do seznamu přidáte více než 140 virtuálních počítačů, virtuální počítače určené k vyloučení můžou být neúmyslně spuštěny nebo zastaveny.|
 |External_Start_ResourceGroupNames | Čárkami oddělený seznam jedné nebo více skupin prostředků, které jsou zaměřeny na počáteční akce.|
 |External_Stop_ResourceGroupNames | Čárkami oddělený seznam jedné nebo více skupin prostředků, které jsou zaměřeny na operace zastavení.|
 |External_WaitTimeForVMRetrySeconds |Doba čekání v sekundách, po kterou se akce na virtuálních počítačích pro **SequencedStartStop_Parent** Runbook mají provést. Tato proměnná umožňuje sadě Runbook počkat na podřízené operace po zadaný počet sekund, než bude pokračovat další akcí. Maximální doba čekání je 10800 nebo tři hodiny. Výchozí hodnota je 2100 sekund.|
@@ -153,7 +156,7 @@ V následující tabulce jsou uvedeny všechny výchozí plány vytvořené v ú
 
 Nepovolujte všechny plány, protože se tak můžou vytvořit překrývající se akce plánování. Nejvhodnější je určit, které optimalizace chcete provést, a odpovídajícím způsobem je upravit. Další vysvětlení najdete v ukázkových scénářích v části Přehled.
 
-|Název plánu | Frekvence | Popis|
+|Název plánu | Frekvence | Description|
 |--- | --- | ---|
 |Schedule_AutoStop_CreateAlert_Parent | Každých 8 hodin | Spouští sadu Runbook **AutoStop_CreateAlert_Parent** každých 8 hodin, která zase zastavuje hodnoty založené na virtuálním počítači v `External_Start_ResourceGroupNames` `External_Stop_ResourceGroupNames` proměnných, a `External_ExcludeVMNames` . Případně můžete pomocí parametru zadat čárkami oddělený seznam virtuálních počítačů `VMList` .|
 |Scheduled_StopVM | Uživatelem definované, denní | Spustí **ScheduledStopStart_Parent** sadu Runbook s parametrem `Stop` každý den v zadaném čase.Automaticky zastaví všechny virtuální počítače, které splňují pravidla definovaná pomocí variabilních prostředků.Povolte související plán **naplánované – StartVM**.|

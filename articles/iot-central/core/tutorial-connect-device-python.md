@@ -7,12 +7,12 @@ ms.date: 03/24/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: d6c44c81db78fa76eeaf4b7181cca34fb8e81523
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ba619cc4e86b997f4e11536e6ea7b9ed906f41e4
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81758182"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84417668"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-python"></a>Kurz: vytvoření a připojení klientské aplikace k aplikaci Azure IoT Central (Python)
 
@@ -54,9 +54,9 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci v Pythonu, kter
     pip install azure-iot-device
     ```
 
-1. Ve `environmental-sensor` složce vytvořte soubor s názvem **environmental_sensor. py** .
+1. Ve složce vytvořte soubor s názvem **environmental_sensor. py** `environmental-sensor` .
 
-1. Na začátek souboru `import` **environmental_sensor. py** přidejte následující příkazy:
+1. `import`Na začátek souboru **environmental_sensor. py** přidejte následující příkazy:
 
     ```python
     import asyncio
@@ -90,11 +90,11 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci v Pythonu, kter
     asyncio.run(main())
     ```
 
-    Aktualizujte `{your Scope ID}`zástupné `{your Device ID}`symboly, `{your Primary Key}` a s hodnotami, které jste si poznamenali dříve. V reálné aplikaci nemusíte tyto informace v aplikaci zakódovat.
+    Aktualizujte zástupné symboly `{your Scope ID}` , `{your Device ID}` a `{your Primary Key}` s hodnotami, které jste si poznamenali dříve. V reálné aplikaci nemusíte tyto informace v aplikaci zakódovat.
 
     Všechny následující definice funkcí a kód jsou vnořeny do `main` funkce.
 
-1. Přidejte následující dvě funkce do `main` funkce k registraci zařízení a jeho připojení k aplikaci IoT Central. Registrace používá službu Azure Device Provisioning:
+1. Přidejte následující dvě funkce `main` do funkce k registraci zařízení a jeho připojení k aplikaci IoT Central. Registrace používá službu Azure Device Provisioning:
 
     ```python
       async def register_device():
@@ -128,7 +128,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci v Pythonu, kter
           return device_client
     ```
 
-1. Přidejte do `main` funkce následující funkci pro odeslání telemetrie do aplikace IoT Central:
+1. Přidejte do funkce následující funkci `main` pro odeslání telemetrie do aplikace IoT Central:
 
     ```python
       async def send_telemetry():
@@ -143,9 +143,9 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci v Pythonu, kter
           await asyncio.sleep(delay)
     ```
 
-    Názvy položek telemetrie (`temp` a `humid`) se musí shodovat s názvy použitými v šabloně zařízení.
+    Názvy položek telemetrie ( `temp` a `humid` ) se musí shodovat s názvy použitými v šabloně zařízení.
 
-1. Do `main` funkce přidejte následující funkce, které budou zpracovávat příkazy volané z vaší IoT Central aplikace:
+1. Do funkce přidejte následující funkce `main` , které budou zpracovávat příkazy volané z vaší IoT Central aplikace:
 
     ```python
       async def blink_command(request):
@@ -199,7 +199,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci v Pythonu, kter
           await commands[method_request.name](method_request)
     ```
 
-    `blink`Názvy příkazů ( `turnon`,, `turnoff`a `rundiagnostics`) se musí shodovat s názvy použitými v šabloně zařízení.
+    Názvy příkazů ( `blink` , `turnon` , `turnoff` a `rundiagnostics` ) se musí shodovat s názvy použitými v šabloně zařízení.
 
     V současné době IoT Central nepoužívá schéma odpovědi definované v modelu schopností zařízení. V případě synchronního příkazu může být datová část odpovědi libovolný platný kód JSON. V případě asynchronního příkazu by zařízení mělo vrátit odpověď 202 hned po dokončení práce, po které následuje aktualizace hlášené vlastnosti. Formát hlášené aktualizace vlastnosti:
 
@@ -213,7 +213,7 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci v Pythonu, kter
 
     Operátor může zobrazit datovou část odpovědi v historii příkazů.
 
-1. Do `main` funkce přidejte následující funkce, které budou zpracovávat aktualizace vlastností odeslané z vaší IoT Central aplikace:
+1. Do funkce přidejte následující funkce `main` , které budou zpracovávat aktualizace vlastností odeslané z vaší IoT Central aplikace:
 
     ```python
         async def name_setting(value, version):
@@ -243,9 +243,9 @@ Následující kroky ukazují, jak vytvořit klientskou aplikaci v Pythonu, kter
 
     Když operátor nastaví vlastnost s možností zápisu v aplikaci IoT Central, aplikace použije pro odeslání hodnoty do zařízení hodnotu, která je typu vlákna. Zařízení pak odpoví pomocí vlastnosti nedokončené hlášené v zařízení. Když IoT Central obdrží hodnotu hlášené vlastnosti, aktualizuje zobrazení vlastností se stavem **Synchronizovaný**.
 
-    Názvy vlastností (`name` a `brightness`) se musí shodovat s názvy použitými v šabloně zařízení.
+    Názvy vlastností ( `name` a `brightness` ) se musí shodovat s názvy použitými v šabloně zařízení.
 
-1. Přidejte následující funkce do `main` funkce pro řízení aplikace:
+1. Přidejte následující funkce `main` do funkce pro řízení aplikace:
 
     ```python
       # Define behavior for halting the application
@@ -307,8 +307,9 @@ Můžete zjistit, jak zařízení reaguje na příkazy a aktualizace vlastností
 
 Jako vývojář zařízení teď, když jste se naučili základy vytvoření zařízení pomocí Node. js, jsme si udělali několik navrhovaných dalších kroků:
 
-- Naučte se, jak připojit reálné zařízení k IoT Central v tématu [připojení zařízení IoT DevKit k vaší aplikaci Azure IoT Central](./howto-connect-devkit.md) .
-- Další informace o registraci zařízení pomocí IoT Central a o tom, jak IoT Central zabezpečují připojení zařízení, najdete v tématu věnovaném [připojení k Azure IoT Central](./concepts-get-connected.md) .
+* Naučte se, jak připojit reálné zařízení k IoT Central v tématu [připojení zařízení IoT DevKit k vaší aplikaci Azure IoT Central](./howto-connect-devkit.md) .
+* Přečtěte si, [co jsou šablony zařízení?](./concepts-device-templates.md) Další informace o roli šablon zařízení při implementaci kódu zařízení.
+* Další informace o registraci zařízení pomocí IoT Central a o tom, jak IoT Central zabezpečují připojení zařízení, najdete v tématu věnovaném [připojení k Azure IoT Central](./concepts-get-connected.md) .
 
 Pokud budete chtít pokračovat v IoT Central výukových kurzů a další informace o vytváření řešení IoT Central najdete tady:
 

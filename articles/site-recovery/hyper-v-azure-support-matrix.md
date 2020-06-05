@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: 99204657b7604250826ff0a4a870ad92fdb4df32
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 332b0193059c2c60cce0bc653d48bace45eca38d
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249140"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84432722"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -32,9 +32,11 @@ Hyper-V bez Virtual Machine Manager | V Azure můžete provést zotavení po hav
 
 **Server** | **Požadavky** | **Zobrazí**
 --- | --- | ---
-Hyper-V (běžící bez Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016 (včetně instalace jádra serveru), Windows Server 2012 R2 s nejnovějšími aktualizacemi | Pokud jste už nakonfigurovali Windows Server 2012 R2 s/nebo SCVMM 2012 R2 s Azure Site Recovery a plánujete upgradovat operační systém, postupujte podle pokynů v [dokumentaci.](upgrade-2012R2-to-2016.md) <br/><br/> Poznámka: navrácení služeb po obnovení není podporované pro verzi jádra serveru Windows Server 2019.
+Hyper-V (běžící bez Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 s nejnovějšími aktualizacemi (včetně instalace jádra serveru těchto operačních systémů) | Pokud jste už nakonfigurovali Windows Server 2012 R2 s/nebo SCVMM 2012 R2 s Azure Site Recovery a plánujete upgradovat operační systém, postupujte podle pokynů v [dokumentaci.](upgrade-2012R2-to-2016.md) <br/><br/> Poznámka: navrácení služeb po obnovení není podporované pro verzi jádra serveru Windows Server 2019.
 Hyper-V (běžící s Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Pokud se používá Virtual Machine Manager, hostitelé Windows serveru 2019 by měli být spravováni v Virtual Machine Manager 2019. Podobně by hostitelé systému Windows Server 2016 měli být spravováni v Virtual Machine Manager 2016.<br/><br/> Poznámka: navrácení služeb po obnovení do alternativního umístění není podporováno pro hostitele systému Windows Server 2019.
 
+> [!NOTE]
+> Zajistěte, aby na místním serveru existovala .NET Framework 4.6.2 nebo vyšší.
 
 ## <a name="replicated-vms"></a>Replikované virtuální počítače
 
@@ -134,13 +136,13 @@ Objekty blob bloku | Ne | Ne
 Šifrování v klidovém umístění (CMK) <br></br> (Jenom pro převzetí služeb při selhání pro Managed Disks)| Ano (přes PowerShell AZ 3.3.0 Module a vyšší) | Ano (přes PowerShell AZ 3.3.0 Module a vyšší)
 Premium Storage | Ano | Ano
 Služba import/export | Ne | Ne
-Účty Azure Storage s povolenou bránou firewall | Ano. Pro cílové úložiště a mezipaměť. | Ano. Pro cílové úložiště a mezipaměť.
+Účty Azure Storage s povolenou bránou firewall | Yes. Pro cílové úložiště a mezipaměť. | Yes. Pro cílové úložiště a mezipaměť.
 Úprava účtu úložiště | No. Cílový Azure Storage účet se po povolení replikace nedá změnit. Chcete-li upravit, zakázat a znovu povolit zotavení po havárii. | Ne
 
 
 ## <a name="azure-compute-features"></a>Funkce Azure COMPUTE
 
-**Funkce** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
+**Příznak** | **Hyper-V s Virtual Machine Manager** | **Hyper-V bez Virtual Machine Manager**
 --- | --- | ---
 Skupiny dostupnosti | Ano | Ano
 ZDROJ | Ano | Ano  
@@ -164,7 +166,7 @@ Disk FC | Nepodporuje se | Nepodporovaná Chyba kontroly požadovaných součás
 Formát pevného disku | VHD <br/><br/> DISKU | Při převzetí služeb při selhání do Azure Site Recovery automaticky převede VHDX na VHD. Po navrácení služeb po obnovení do místního nasazení budou virtuální počítače nadále používat formát VHDX.
 BitLocker | Nepodporuje se | Aby bylo možné povolit replikaci virtuálního počítače, musí být nástroj BitLocker zakázán.
 název virtuálního počítače | 1 až 63 znaků. Pouze písmena, číslice a pomlčky. Název virtuálního počítače musí začínat a končit písmenem nebo číslicí. | Aktualizujte hodnotu ve vlastnostech virtuálního počítače v Site Recovery.
-Typ virtuálního počítače | 1. generace<br/><br/> Generace 2 – Windows | Virtuální počítače 2. generace s typem disku operačního systému Basic (obsahující jeden nebo dva datové svazky formátované jako VHDX) a jsou podporované méně než 300 GB místa na disku.<br></br>Virtuální počítače se systémem Linux generace 2 nejsou podporovány. [Další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
+Typ virtuálního počítače | 1. generace<br/><br/> Generace 2 – Windows | Virtuální počítače 2. generace s typem disku operačního systému Basic (obsahující jeden nebo dva datové svazky formátované jako VHDX) a jsou podporované méně než 300 GB místa na disku.<br></br>Virtuální počítače se systémem Linux generace 2 nejsou podporovány. [Přečtěte si další informace](https://azure.microsoft.com/blog/2015/04/28/disaster-recovery-to-azure-enhanced-and-were-listening/).|
 
 ## <a name="recovery-services-vault-actions"></a>Akce trezoru Recovery Services
 

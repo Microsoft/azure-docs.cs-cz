@@ -5,17 +5,17 @@ description: Naučte se používat Azure Machine Learning k nasazení modelu do 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: 646254238f83166c53fe94a1821c68ff4dac8f04
-ms.sourcegitcommit: d662eda7c8eec2a5e131935d16c80f1cf298cb6b
+ms.openlocfilehash: 787c8ec88b001a55a83bfba3124c62e12800aa58
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82651932"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433940"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Nasazení modelu Machine Learning do Azure App Service (Preview)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -114,14 +114,14 @@ package.wait_for_creation(show_output=True)
 print(package.location)
 ```
 
-V `show_output=True`případě je zobrazen výstup procesu Docker Build. Po dokončení procesu se image vytvoří v Azure Container Registry pro váš pracovní prostor. Po sestavení obrázku se zobrazí umístění v Azure Container Registry. Navrácené umístění má formát `<acrinstance>.azurecr.io/package@sha256:<imagename>`. Například, `myml08024f78fd10.azurecr.io/package@sha256:20190827151241`.
+`show_output=True`V případě je zobrazen výstup procesu Docker Build. Po dokončení procesu se image vytvoří v Azure Container Registry pro váš pracovní prostor. Po sestavení obrázku se zobrazí umístění v Azure Container Registry. Navrácené umístění má formát `<acrinstance>.azurecr.io/package@sha256:<imagename>` . Například, `myml08024f78fd10.azurecr.io/package@sha256:20190827151241`.
 
 > [!IMPORTANT]
 > Uložte informace o umístění, jak se používá při nasazování bitové kopie.
 
 ## <a name="deploy-image-as-a-web-app"></a>Nasazení image jako webové aplikace
 
-1. K získání přihlašovacích údajů pro Azure Container Registry, které obsahují obrázek, použijte následující příkaz. Nahraďte `<acrinstance>` hodnotou, kterou jste dříve `package.location`vrátili:
+1. K získání přihlašovacích údajů pro Azure Container Registry, které obsahují obrázek, použijte následující příkaz. Nahraďte `<acrinstance>` hodnotou, kterou jste dříve vrátili `package.location` :
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -154,12 +154,12 @@ V `show_output=True`případě je zobrazen výstup procesu Docker Build. Po doko
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    V tomto příkladu se používá __Basic__ cenová úroveň Basic`--sku B1`().
+    V tomto příkladu se používá cenová úroveň __Basic__ ( `--sku B1` ).
 
     > [!IMPORTANT]
     > Image vytvořené Azure Machine Learning používají Linux, takže musíte použít `--is-linux` parametr.
 
-1. Pokud chcete vytvořit webovou aplikaci, použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. `<acrinstance>` Nahraďte `<imagename>` a hodnotami vrácenými `package.location` dříve:
+1. Pokud chcete vytvořit webovou aplikaci, použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. Nahraďte `<acrinstance>` a `<imagename>` hodnotami vrácenými `package.location` dříve:
 
     ```azurecli-interactive
     az webapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package@sha256:<imagename>
@@ -188,7 +188,7 @@ V `show_output=True`případě je zobrazen výstup procesu Docker Build. Po doko
     > [!IMPORTANT]
     > V tuto chvíli se vytvořila webová aplikace. Vzhledem k tomu, že jste neposkytli přihlašovací údaje Azure Container Registry, který obsahuje obrázek, není tato webová aplikace aktivní. V dalším kroku zadáte informace o ověřování pro registr kontejnerů.
 
-1. K poskytnutí přihlašovacích údajů, které jsou potřebné pro přístup k registru kontejnerů, použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. Hodnoty `<acrinstance>` a `<imagename>` nahraďte hodnotami vrácenými `package.location` dříve. `<username>` Nahraďte `<password>` a informacemi o přihlášení ACR získanými dříve:
+1. K poskytnutí přihlašovacích údajů, které jsou potřebné pro přístup k registru kontejnerů, použijte následující příkaz. Nahraďte `<app-name>` názvem, který chcete použít. `<acrinstance>`Hodnoty a nahraďte `<imagename>` hodnotami vrácenými `package.location` dříve. Nahraďte `<username>` a `<password>` informacemi o přihlášení ACR získanými dříve:
 
     ```azurecli-interactive
     az webapp config container set --name <app-name> --resource-group myresourcegroup --docker-custom-image-name <acrinstance>.azurecr.io/package@sha256:<imagename> --docker-registry-server-url https://<acrinstance>.azurecr.io --docker-registry-server-user <username> --docker-registry-server-password <password>
@@ -234,7 +234,7 @@ V tuto chvíli webová aplikace začne načítat image.
 > az webapp log tail --name <app-name> --resource-group myresourcegroup
 > ```
 >
-> Po načtení bitové kopie a umístění lokality do protokolu se zobrazí zpráva s oznámením `Container <container name> for site <app-name> initialized successfully and is ready to serve requests`.
+> Po načtení bitové kopie a umístění lokality do protokolu se zobrazí zpráva s oznámením `Container <container name> for site <app-name> initialized successfully and is ready to serve requests` .
 
 Po nasazení bitové kopie můžete název hostitele najít pomocí následujícího příkazu:
 
@@ -242,11 +242,11 @@ Po nasazení bitové kopie můžete název hostitele najít pomocí následujíc
 az webapp show --name <app-name> --resource-group myresourcegroup
 ```
 
-Tento příkaz vrátí informace podobné následujícímu názvu hostitele – `<app-name>.azurewebsites.net`. Tuto hodnotu použijte jako součást __základní adresy URL__ služby.
+Tento příkaz vrátí informace podobné následujícímu názvu hostitele – `<app-name>.azurewebsites.net` . Tuto hodnotu použijte jako součást __základní adresy URL__ služby.
 
 ## <a name="use-the-web-app"></a>Použití webové aplikace
 
-Webová služba, která předává požadavky do modelu, je umístěna `{baseurl}/score`na adrese. Například, `https://<app-name>.azurewebsites.net/score`. Následující kód Pythonu ukazuje, jak odesílat data do adresy URL a zobrazovat odpověď:
+Webová služba, která předává požadavky do modelu, je umístěna na adrese `{baseurl}/score` . Například, `https://<app-name>.azurewebsites.net/score`. Následující kód Pythonu ukazuje, jak odesílat data do adresy URL a zobrazovat odpověď:
 
 ```python
 import requests

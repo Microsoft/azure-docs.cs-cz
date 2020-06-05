@@ -5,17 +5,17 @@ description: Naučte se, jak nasadit modely Azure Machine Learning jako webovou 
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 01/16/2020
-ms.openlocfilehash: aec1b7f7bf60be34d21d52ca652a776cf3275fe8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69bb5409b6463140bba77f0e78567e6ae98003d6
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80811765"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84433922"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Nasazení modelu do clusteru služby Azure Kubernetes
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -53,7 +53,7 @@ Při nasazování do služby Azure Kubernetes nasadíte do clusteru AKS, který 
 
     Další informace o nastavení těchto proměnných najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
-- Fragmenty rozhraní příkazového __řádku__ v tomto článku předpokládají, že jste `inferenceconfig.json` vytvořili dokument. Další informace o vytváření tohoto dokumentu najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
+- Fragmenty rozhraní příkazového __řádku__ v tomto článku předpokládají, že jste vytvořili `inferenceconfig.json` dokument. Další informace o vytváření tohoto dokumentu najdete v tématu [jak a kde nasadit modely](how-to-deploy-and-where.md).
 
 ## <a name="create-a-new-aks-cluster"></a>Vytvoření nového clusteru AKS
 
@@ -67,7 +67,7 @@ Vytvoření nebo připojení clusteru AKS je jednorázový proces pro váš prac
 Pokud chcete vytvořit cluster AKS pro __vývoj__, __ověřování__a __testování__ namísto produkčního prostředí, můžete určit __účel clusteru__ pro vývoj v __testovacím__prostředí.
 
 > [!WARNING]
-> Pokud jste nastavili `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, cluster, který se vytvoří, není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám. Pro clustery pro vývoj a testování doporučujeme aspoň 2 virtuální procesory.
+> Pokud jste nastavili `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` , cluster, který se vytvoří, není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám. Pro clustery pro vývoj a testování doporučujeme aspoň 2 virtuální procesory.
 
 Následující příklady ukazují, jak vytvořit nový cluster AKS pomocí sady SDK a rozhraní příkazového řádku:
 
@@ -92,7 +92,7 @@ aks_target.wait_for_completion(show_output = True)
 ```
 
 > [!IMPORTANT]
-> V [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py)případě, že vyberete vlastní hodnoty pro `agent_count` a `vm_size`a `cluster_purpose` není `DEV_TEST`, je nutné zajistit, aby `agent_count` vynásobený hodnotou `vm_size` byla větší než nebo rovna 12 virtuálním procesorům. Pokud například použijete `vm_size` "Standard_D3_v2", která má 4 virtuální procesory, měli byste vybrat `agent_count` 3 nebo vyšší.
+> V [`provisioning_configuration()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py) případě, že vyberete vlastní hodnoty pro `agent_count` a a `vm_size` `cluster_purpose` není, je `DEV_TEST` nutné zajistit, aby `agent_count` vynásobený hodnotou `vm_size` byla větší než nebo rovna 12 virtuálním procesorům. Pokud například použijete `vm_size` "Standard_D3_v2", která má 4 virtuální procesory, měli byste vybrat `agent_count` 3 nebo vyšší.
 >
 > Sada SDK pro Azure Machine Learning neposkytuje podporu škálování clusteru AKS. Pokud chcete škálovat uzly v clusteru, použijte uživatelské rozhraní pro cluster AKS v nástroji Azure Machine Learning Studio. Můžete změnit jenom počet uzlů, nikoli velikost virtuálního počítače v clusteru.
 
@@ -124,9 +124,9 @@ Pokud už máte cluster AKS ve svém předplatném Azure a verze 1,17 nebo niž�
 
 Při připojování clusteru AKS k pracovnímu prostoru můžete definovat, jak budete cluster používat, nastavením `cluster_purpose` parametru.
 
-Pokud `cluster_purpose` parametr nezadáte nebo nastavíte `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD`, cluster musí mít k dispozici alespoň 12 virtuálních procesorů.
+Pokud parametr nezadáte `cluster_purpose` nebo nastavíte `cluster_purpose = AksCompute.ClusterPurpose.FAST_PROD` , cluster musí mít k dispozici alespoň 12 virtuálních procesorů.
 
-Pokud nastavíte `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST`, cluster nemusí mít 12 virtuálních procesorů. Pro vývoj a testování doporučujeme aspoň 2 virtuální procesory. Cluster, který je nakonfigurovaný pro vývoj a testování, ale není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám.
+Pokud nastavíte `cluster_purpose = AksCompute.ClusterPurpose.DEV_TEST` , cluster nemusí mít 12 virtuálních procesorů. Pro vývoj a testování doporučujeme aspoň 2 virtuální procesory. Cluster, který je nakonfigurovaný pro vývoj a testování, ale není vhodný pro provoz na úrovni produkčního prostředí a může prodloužit dobu odvození. Clustery pro vývoj a testování také nezaručují odolnost proti chybám.
 
 > [!WARNING]
 > Nevytvářejte více souběžných příloh ke stejnému AKS clusteru z vašeho pracovního prostoru. Například připojení jednoho clusteru AKS k pracovnímu prostoru pomocí dvou různých názvů. Každá nová příloha zruší předchozí existující přílohy.
@@ -327,7 +327,7 @@ endpoint.delete_version(version_name="versionb")
 
 Při nasazování do služby Azure Kubernetes je ve výchozím nastavení povolené ověřování __na základě klíčů__ . Můžete také povolit ověřování __na základě tokenů__ . Ověřování na základě tokenu vyžaduje, aby klienti používali účet Azure Active Directory k vyžádání ověřovacího tokenu, který se používá k provádění požadavků na nasazenou službu.
 
-Chcete-li __Zakázat__ ověřování, `auth_enabled=False` nastavte parametr při vytváření konfigurace nasazení. Následující příklad zakáže ověřování pomocí sady SDK:
+Chcete-li __Zakázat__ ověřování, nastavte `auth_enabled=False` parametr při vytváření konfigurace nasazení. Následující příklad zakáže ověřování pomocí sady SDK:
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)
@@ -337,7 +337,7 @@ Informace o ověřování od klientské aplikace najdete v tématu [využíván�
 
 ### <a name="authentication-with-keys"></a>Ověřování pomocí klíčů
 
-Pokud je povolené klíčové ověřování, můžete k načtení primárního `get_keys` a sekundárního ověřovacího klíče použít metodu:
+Pokud je povolené klíčové ověřování, můžete `get_keys` k načtení primárního a sekundárního ověřovacího klíče použít metodu:
 
 ```python
 primary, secondary = service.get_keys()
@@ -349,7 +349,7 @@ print(primary)
 
 ### <a name="authentication-with-tokens"></a>Ověřování pomocí tokenů
 
-Pokud chcete povolit ověřování pomocí tokenu `token_auth_enabled=True` , nastavte parametr při vytváření nebo aktualizaci nasazení. Následující příklad povoluje ověření tokenu pomocí sady SDK:
+Pokud chcete povolit ověřování pomocí tokenu, nastavte `token_auth_enabled=True` parametr při vytváření nebo aktualizaci nasazení. Následující příklad povoluje ověření tokenu pomocí sady SDK:
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, token_auth_enabled=True)
@@ -363,7 +363,7 @@ print(token)
 ```
 
 > [!IMPORTANT]
-> Po `refresh_by` čase tokenu budete muset požádat o nový token.
+> Po čase tokenu budete muset požádat o nový token `refresh_by` .
 >
 > Microsoft důrazně doporučuje vytvořit pracovní prostor Azure Machine Learning ve stejné oblasti jako cluster služby Azure Kubernetes. K ověřování pomocí tokenu webová služba provede volání do oblasti, ve které je vytvořen Azure Machine Learning pracovní prostor. Pokud oblast pracovního prostoru není k dispozici, nebudete moci načíst token pro webovou službu, a to i v případě, že se váš cluster nachází v jiné oblasti než váš pracovní prostor. To efektivně vede k nedostupnosti ověřování na základě tokenů, dokud nebude oblast pracovního prostoru znovu dostupná. Navíc čím větší je vzdálenost mezi oblastí vašeho clusteru a oblastí vašeho pracovního prostoru, tím déle bude trvat Načtení tokenu.
 

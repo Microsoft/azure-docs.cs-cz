@@ -2,13 +2,13 @@
 title: Nasazení prostředků pomocí PowerShellu a šablony
 description: K nasazení prostředků do Azure použijte Azure Resource Manager a Azure PowerShell. Prostředky jsou definovány v šabloně Resource Manageru.
 ms.topic: conceptual
-ms.date: 03/16/2020
-ms.openlocfilehash: e595aa8f86a24e59c8e00d24ea8e9dcb0875a8f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: af255e0248c029f42c9c2999ae7c0389d60c58fc
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80153263"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84431835"
 ---
 # <a name="deploy-resources-with-arm-templates-and-azure-powershell"></a>Nasazení prostředků pomocí šablon ARM a Azure PowerShell
 
@@ -20,35 +20,35 @@ Nasazení můžete cílit na skupinu prostředků, předplatné, skupinu pro spr
 
 V závislosti na rozsahu nasazení použijete jiné příkazy.
 
-K nasazení do **skupiny prostředků**použijte [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
+* K nasazení do **skupiny prostředků**použijte [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment):
 
-```azurepowershell
-New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateFile <path-to-template>
+  ```
 
-K nasazení do **předplatného**použijte New-AzSubscriptionDeployment:
+* K nasazení do **předplatného**použijte New-AzSubscriptionDeployment:
 
-```azurepowershell
-New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzSubscriptionDeployment -Location <location> -TemplateFile <path-to-template>
+  ```
 
-Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
+  Další informace o nasazeních na úrovni předplatného najdete v tématu [Vytvoření skupin prostředků a prostředků na úrovni předplatného](deploy-to-subscription.md).
 
-K nasazení do **skupiny pro správu**použijte [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment).
+* K nasazení do **skupiny pro správu**použijte [New-AzManagementGroupDeployment](/powershell/module/az.resources/New-AzManagementGroupDeployment).
 
-```azurepowershell
-New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzManagementGroupDeployment -Location <location> -TemplateFile <path-to-template>
+  ```
 
-Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
+  Další informace o nasazení na úrovni skupiny pro správu najdete v tématu věnovaném [vytvoření prostředků na úrovni skupiny pro správu](deploy-to-management-group.md).
 
-K nasazení do **tenanta**použijte [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
+* K nasazení do **tenanta**použijte [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
 
-```azurepowershell
-New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
-```
+  ```azurepowershell
+  New-AzTenantDeployment -Location <location> -TemplateFile <path-to-template>
+  ```
 
-Další informace o nasazeních na úrovni tenanta najdete v tématu [vytvoření prostředků na úrovni tenanta](deploy-to-tenant.md).
+  Další informace o nasazeních na úrovni tenanta najdete v tématu [vytvoření prostředků na úrovni tenanta](deploy-to-tenant.md).
 
 Příklady v tomto článku používají nasazení skupin prostředků.
 
@@ -93,11 +93,15 @@ New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
 
 Předchozí příklad vyžaduje pro šablonu veřejně přístupný identifikátor URI, který funguje ve většině scénářů, protože by šablona neměla obsahovat citlivá data. Pokud potřebujete zadat citlivá data (třeba heslo správce), předejte tuto hodnotu jako zabezpečený parametr. Pokud ale nechcete, aby byla šablona veřejně přístupná, můžete ji chránit uložením do privátního kontejneru úložiště. Informace o nasazení šablony, která vyžaduje token sdíleného přístupového podpisu (SAS), najdete v tématu [nasazení privátní šablony s tokenem SAS](secure-template-with-sas-token.md). Kurz najdete v tématu [kurz: integrace Azure Key Vault v nasazení šablony ARM](template-tutorial-use-key-vault.md).
 
+## <a name="preview-changes"></a>Zobrazit náhled změn
+
+Před nasazením šablony můžete zobrazit náhled změn, které šablona provede pro vaše prostředí. Pomocí [operace citlivosti](template-deploy-what-if.md) ověřte, že šablona provádí očekávané změny. Co když zároveň ověří chyby v šabloně.
+
 ## <a name="deploy-from-azure-cloud-shell"></a>Nasazení z Azure Cloud Shell
 
 K nasazení šablony můžete použít [Azure Cloud Shell](https://shell.azure.com) . Chcete-li nasadit externí šablonu, zadejte identifikátor URI šablony. Pokud chcete nasadit místní šablonu, musíte nejdřív načíst šablonu do účtu úložiště pro vaši Cloud Shell. Chcete-li odeslat soubory do prostředí, vyberte v okně prostředí ikonu nabídky **nahrát/stáhnout soubory** .
 
-Cloud Shell otevřete tak, že přejdete [https://shell.azure.com](https://shell.azure.com)na nebo vyberete příkaz **try-it** z následujícího oddílu kódu:
+Chcete-li otevřít Cloud Shell, přejděte na adresu [https://shell.azure.com](https://shell.azure.com) nebo vyberte příkaz **try-it** z následujícího oddílu kódu:
 
 ```azurepowershell-interactive
 $resourceGroupName = Read-Host -Prompt "Enter the Resource Group name"
@@ -169,35 +173,6 @@ Chcete-li předat externí soubor parametrů, použijte parametr **TemplateParam
 New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName ExampleResourceGroup `
   -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.json `
   -TemplateParameterUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-storage-account-create/azuredeploy.parameters.json
-```
-
-## <a name="test-template-deployments"></a>Nasazení šablon testů
-
-K otestování svých šablon a hodnot parametrů bez skutečného nasazení jakýchkoli prostředků použijte [test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). 
-
-```powershell
-Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType Standard_GRS
-```
-
-Pokud se nezjistí žádné chyby, příkaz se dokončí bez odpovědi. Pokud se zjistí chyba, vrátí příkaz chybovou zprávu. Například předáním nesprávné hodnoty SKU účtu úložiště vrátí následující chybu:
-
-```powershell
-Test-AzResourceGroupDeployment -ResourceGroupName testgroup `
-  -TemplateFile c:\MyTemplates\azuredeploy.json -storageAccountType badSku
-
-Code    : InvalidTemplate
-Message : Deployment template validation failed: 'The provided value 'badSku' for the template parameter 'storageAccountType'
-          at line '15' and column '24' is not valid. The parameter value is not part of the allowed value(s):
-          'Standard_LRS,Standard_ZRS,Standard_GRS,Standard_RAGRS,Premium_LRS'.'.
-Details :
-```
-
-Pokud má vaše šablona syntaktickou chybu, příkaz vrátí chybu oznamující, že nešlo analyzovat šablonu. Zpráva indikuje číslo řádku a umístění chyby analýzy.
-
-```powershell
-Test-AzResourceGroupDeployment : After parsing a value an unexpected character was encountered: 
-  ". Path 'variables', line 31, position 3.
 ```
 
 ## <a name="next-steps"></a>Další kroky
