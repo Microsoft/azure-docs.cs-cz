@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 03/28/2020
+ms.date: 06/03/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: d263a1fb329f5a18fec760413300296643768c1d
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 90cd1d8968963d428eb2d1de4efb458b5f89ca74
+ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84200387"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84436013"
 ---
 ## <a name="premium-ssd"></a>SSD úrovně Premium
 
