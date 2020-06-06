@@ -38,6 +38,10 @@
       href: hpc-cache-manage.md
     - name: Konfigurace volitelných nastavení
       href: configuration.md
+- name: Referenční informace
+  items:
+    - name: Azure CLI
+      href: /cli/azure/ext/hpc-cache/hpc-cache
 - name: Zdroje a prostředky
   items:
     - name: Otevření lístku podpory
