@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 04/15/2020
 ms.author: gsilva
-ms.openlocfilehash: 202acff5bae87174781dc6c914bebf0494dfcf05
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: da7164fbf9148764ef8da0205b147b0fd188de9d
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871451"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457248"
 ---
 # <a name="create-a-windows-vm-with-accelerated-networking-using-azure-powershell"></a>Vytvoření virtuálního počítače s Windows s akcelerovanými síťovými službami pomocí Azure PowerShell
 
@@ -98,7 +98,7 @@ V informacích o síťovém rozhraní vedle označení **akcelerované síťové
 
 ## <a name="vm-creation-using-powershell"></a>Vytvoření virtuálního počítače pomocí PowerShellu
 
-Než budete pokračovat, nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) verze 1.0.0 nebo novější. Pokud chcete zjistit aktuálně nainstalovanou verzi, `Get-Module -ListAvailable Az`spusťte příkaz. Pokud potřebujete nainstalovat nebo upgradovat, nainstalujte nejnovější verzi modulu AZ Module z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az). V relaci PowerShellu se přihlaste k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
+Než budete pokračovat, nainstalujte [Azure PowerShell](/powershell/azure/install-az-ps) verze 1.0.0 nebo novější. Pokud chcete zjistit aktuálně nainstalovanou verzi, spusťte příkaz `Get-Module -ListAvailable Az` . Pokud potřebujete nainstalovat nebo upgradovat, nainstalujte nejnovější verzi modulu AZ Module z [Galerie prostředí PowerShell](https://www.powershellgallery.com/packages/Az). V relaci PowerShellu se přihlaste k účtu Azure pomocí rutiny [Connect-AzAccount](/powershell/module/az.accounts/connect-azaccount).
 
 V následujících příkladech nahraďte příklady názvů parametrů vlastními hodnotami. Příklady názvů parametrů zahrnují *myResourceGroup*, *myNic*a *myVM*.
 
@@ -192,7 +192,7 @@ V následujících příkladech nahraďte příklady názvů parametrů vlastní
 
 ### <a name="create-a-vm-and-attach-the-network-interface"></a>Vytvoření virtuálního počítače a připojení síťového rozhraní
 
-1. Nastavte přihlašovací údaje k VIRTUÁLNÍmu `$cred` počítači na proměnnou pomocí [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential), který vás vyzve k přihlášení:
+1. Nastavte přihlašovací údaje k VIRTUÁLNÍmu počítači na `$cred` proměnnou pomocí [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential), který vás vyzve k přihlášení:
 
     ```azurepowershell
     $cred = Get-Credential
@@ -244,7 +244,7 @@ Po vytvoření virtuálního počítače v Azure se připojte k virtuálnímu po
 
 3. Pokud je **stav** virtuálního počítače uvedený jako **Vytvoření**, na stránce Přehled virtuálního počítače počkejte, až Azure dokončí vytváření virtuálního počítače. Po dokončení vytváření virtuálního počítače se **stav** změní na **spuštěno** .
 
-4. Na panelu nástrojů přehled virtuálního počítače vyberte **připojit** > **RDP** > **Stáhnout soubor RDP**.
+4. Na panelu nástrojů přehled virtuálního počítače vyberte **připojit**  >  **RDP**  >  **Stáhnout soubor RDP**.
 
 5. Otevřete soubor. RDP a přihlaste se k virtuálnímu počítači pomocí přihlašovacích údajů, které jste zadali v části [Vytvoření virtuálního počítače a připojení k síťovému rozhraní](#create-a-vm-and-attach-the-network-interface) . Pokud jste se nikdy nepřipojili k VIRTUÁLNÍmu počítači s Windows v Azure, přečtěte si téma [připojení k virtuálnímu počítači](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#connect-to-virtual-machine).
 
@@ -327,7 +327,7 @@ Sada škálování virtuálního počítače je mírně odlišná, ale sleduje s
 3. Nastavte použité aktualizace na automatické, aby se změny hned vybraly:
 
     ```azurepowershell
-    $vmss.UpgradePolicy.AutomaticOSUpgrade = $true
+    $vmss.UpgradePolicy.Mode = "Automatic"
     
     Update-AzVmss -ResourceGroupName "myResourceGroup" `
         -VMScaleSetName "myScaleSet" `

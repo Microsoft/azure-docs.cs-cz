@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: ninarn, carlrab
 ms.date: 04/09/2020
-ms.openlocfilehash: aa2ccf9c382ff560c081c7cdd13c4ab2199c2551
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f79eb910728286ef5dc3a28974353db012bc5a16
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044973"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449647"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-databases-in-azure-sql-database"></a>Elastické fondy vám pomůžou se správou a škálováním více databází v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,10 +31,7 @@ Vývojáři SaaS sestavují aplikace nad datovými úrovněmi velkého rozsahu, 
 - Snížení nákladů na náklady na výkon a spokojenost zákazníků během špičky – zřizování
 
 Elastické fondy tento problém řeší tím, že zajistí, že databáze získají prostředky výkonu, které potřebují, když je potřebují. Poskytují jednoduchý mechanismus přidělování prostředků v mezích předvídatelného rozpočtu. Další informace o návrhových schématech aplikací SaaS využívajících elastické fondy najdete v tématu [Návrhová schémata pro víceklientské aplikace SaaS využívající službu Azure SQL Database](saas-tenancy-app-design-patterns.md).
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Elastic-databases-helps-SaaS-developers-tame-explosive-growth/player]
 >
-
 > [!IMPORTANT]
 > Pro elastické fondy se neúčtují žádné poplatky za databázi. Fakturuje se vám každá hodina existence fondu na nejvyšší eDTU nebo virtuální jádra, bez ohledu na využití nebo na to, jestli byl fond aktivní kratší dobu než hodinu.
 

@@ -6,14 +6,14 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: cbrooks
-ms.openlocfilehash: c7211bc805f4ed1d026faedbfdc9d53d3c1dfd93
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 72185cf8bc5701e67c6126c9b1b5cc76bb80f362
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68721295"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463412"
 ---
 # <a name="how-to-use-queue-storage-from-ruby"></a>Používání úložiště Queue z Ruby
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -46,7 +46,7 @@ require "azure"
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Nastavení Azure Storageho připojení
-Modul Azure Přečtěte si informace o prostředí **Azure\_Storage\_Account** a **Azure\_Storage\_ACCESS_KEY** , kde najdete informace potřebné pro připojení k vašemu účtu úložiště Azure. Nejsou-li tyto proměnné prostředí nastaveny, je nutné zadat informace o účtu před použitím **Azure:: QueueService** s následujícím kódem:
+Modul Azure Přečtěte si informace o prostředí **Azure \_ Storage \_ account** a **Azure \_ Storage \_ ACCESS_KEY** , kde najdete informace potřebné pro připojení k vašemu účtu úložiště Azure. Nejsou-li tyto proměnné prostředí nastaveny, je nutné zadat informace o účtu před použitím **Azure:: QueueService** s následujícím kódem:
 
 ```ruby
 Azure.config.storage_account_name = "<your azure storage account>"
@@ -86,7 +86,7 @@ azure_queue_service.create_message("test-queue", "test message")
 ```
 
 ## <a name="how-to-peek-at-the-next-message"></a>Postupy: prohlížení další zprávy
-Můžete prohlížet zprávy před frontou, aniž byste je museli odebírat z fronty voláním metody **prohlížet\_zprávy ()** . Ve výchozím nastavení **je\_prohlížení zpráv ()** prohlížení v rámci jedné zprávy. Můžete také zadat, kolik zpráv chcete prohlížet.
+Můžete prohlížet zprávy před frontou, aniž byste je museli odebírat z fronty voláním metody **prohlížet \_ zprávy ()** . Ve výchozím nastavení je **prohlížení \_ zpráv ()** prohlížení v rámci jedné zprávy. Můžete také zadat, kolik zpráv chcete prohlížet.
 
 ```ruby
 result = azure_queue_service.peek_messages("test-queue",
@@ -96,10 +96,10 @@ result = azure_queue_service.peek_messages("test-queue",
 ## <a name="how-to-dequeue-the-next-message"></a>Postupy: vyřazení další zprávy z fronty
 Můžete odebrat zprávu z fronty ve dvou krocích.
 
-1. Když zavoláte **zprávy seznamu\_()**, ve výchozím nastavení se ve frontě zobrazí další zpráva. Můžete také zadat, kolik zpráv chcete získat. Zprávy vrácené ze **seznamu zpráv\_()** se budou zobrazovat neviditelnému jinému kódu, který čte zprávy z této fronty. Jako parametr předáte časový limit viditelnosti v sekundách.
+1. Když zavoláte ** \_ zprávy seznamu ()**, ve výchozím nastavení se ve frontě zobrazí další zpráva. Můžete také zadat, kolik zpráv chcete získat. Zprávy vrácené ze **seznamu \_ zpráv ()** se budou zobrazovat neviditelnému jinému kódu, který čte zprávy z této fronty. Jako parametr předáte časový limit viditelnosti v sekundách.
 2. Chcete-li dokončit odebrání zprávy z fronty, je nutné také volat **delete_message ()**.
 
-Tento dvoustupňový proces odebrání zprávy zaručuje, že pokud váš kód nedokáže zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a zkusit to znovu. Kód volá **Odstranit\_zprávu ()** hned po zpracování zprávy.
+Tento dvoustupňový proces odebrání zprávy zaručuje, že pokud váš kód nedokáže zpracovat zprávu z důvodu selhání hardwaru nebo softwaru, může jiná instance kódu získat stejnou zprávu a zkusit to znovu. Kód volá **Odstranit \_ zprávu ()** hned po zpracování zprávy.
 
 ```ruby
 messages = azure_queue_service.list_messages("test-queue", 30)
@@ -123,7 +123,7 @@ Načítání zpráv z fronty si můžete přizpůsobit dvěma způsoby.
 1. Můžete získat dávku zprávy.
 2. Můžete nastavit delší nebo kratší časový limit neviditelnosti, což umožňuje, aby váš kód měl více nebo méně času na úplné zpracování každé zprávy.
 
-Následující příklad kódu používá metodu **List\_Messages ()** k získání 15 zpráv v jednom volání. Pak vytiskne a odstraní každou zprávu. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
+Následující příklad kódu používá metodu **List \_ Messages ()** k získání 15 zpráv v jednom volání. Pak vytiskne a odstraní každou zprávu. Také se pro každou zprávu nastaví časový limit neviditelnosti 5 minut.
 
 ```ruby
 azure_queue_service.list_messages("test-queue", 300
@@ -134,7 +134,7 @@ end
 ```
 
 ## <a name="how-to-get-the-queue-length"></a>Postupy: získání délky fronty
-Můžete získat odhad počtu zpráv ve frontě. Metoda **Get\_Queue\_metadata ()** požádá službu front o vrácení přibližného počtu zpráv a metadat o frontě.
+Můžete získat odhad počtu zpráv ve frontě. Metoda **Get \_ Queue \_ metadata ()** požádá službu front o vrácení přibližného počtu zpráv a metadat o frontě.
 
 ```ruby
 message_count, metadata = azure_queue_service.get_queue_metadata(
@@ -142,7 +142,7 @@ message_count, metadata = azure_queue_service.get_queue_metadata(
 ```
 
 ## <a name="how-to-delete-a-queue"></a>Postupy: odstranění fronty
-Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte metodu **Delete\_Queue ()** objektu Queue.
+Pokud chcete odstranit frontu a všechny zprávy, které jsou v ní obsažené, zavolejte metodu **Delete \_ Queue ()** objektu Queue.
 
 ```ruby
 azure_queue_service.delete_queue("test-queue")

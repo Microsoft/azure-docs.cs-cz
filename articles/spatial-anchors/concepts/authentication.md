@@ -8,12 +8,12 @@ ms.author: crtreasu
 ms.date: 05/28/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8a64c8cabe91bb7bbfb533b38a32f58a82fd3351
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: baf5252a6b158855739546c2a03e63dceee6701e
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434384"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456500"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Ověřování a autorizace pro prostorové kotvy Azure
 
@@ -174,13 +174,14 @@ Přístupový token Azure AD se načte pomocí [knihovny MSAL](../../active-dire
         1.  V Azure Portal přejděte na **Azure Active Directory**a vyberte **Registrace aplikací** .
         2.  Vybrat **registraci nové aplikace**
         3.  Zadejte název vaší aplikace, jako typ aplikace vyberte **Webová aplikace nebo rozhraní API** a zadejte adresu URL ověřování pro vaši službu. Pak stiskněte **vytvořit**.
-        4.  V této aplikaci klikněte na **Nastavení**a pak vyberte kartu **klíče** . Zadejte název vašeho klíče, vyberte dobu trvání a klikněte na **Uložit**. Nezapomeňte uložit hodnotu klíče, která se zobrazí v daném čase, protože ji budete muset zahrnout do kódu vaší webové služby.
+        4.  V této aplikaci přejděte na **Nastavení**a pak vyberte kartu **certifikáty a tajné** kódy. Vytvořte nový tajný klíč klienta, vyberte dobu trvání a klikněte na **Přidat**. Nezapomeňte uložit tajnou hodnotu, protože ji budete muset zahrnout do kódu vaší webové služby.
     2.  Udělte vaší aplikaci nebo uživatelům přístup k vašemu prostředku:
         1.  Přejděte ke zdroji prostorových kotev v Azure Portal
         2.  Přepnout na kartu **řízení přístupu (IAM)**
         3.  Kliknutí na **Přidat přiřazení role**
         1.  [Vybrat roli](#role-based-access-control)
         2.  Do pole **Vybrat** zadejte název aplikace, kterou jste vytvořili a ke kterému chcete přiřadit přístup. Pokud chcete, aby uživatelé vaší aplikace měli různé role proti účtu prostorové kotvy, měli byste v Azure AD zaregistrovat několik aplikací a přiřadit je ke každé samostatné roli. Potom implementujte logiku autorizace pro použití správné role pro vaše uživatele.
+        3.  Poznámka: v seznamu **Přidat přiřazení role** , ke kterému chcete **přiřadit přístup** , nastavte možnost uživatel, skupina nebo INSTANČNÍ objekt služby Azure AD.
     3.  Klikněte na **Uložit**.
 2.  V kódu (Poznámka: můžete použít ukázku služby, která je součástí GitHubu):
     1.  Nezapomeňte použít ID aplikace, tajný klíč aplikace a identifikátor URI pro přesměrování vlastní aplikace Azure AD jako ID klienta, tajný klíč a parametry RedirectUri v MSAL.

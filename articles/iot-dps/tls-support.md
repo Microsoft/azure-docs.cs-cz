@@ -7,16 +7,19 @@ ms.service: iot-dps
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: wesmc
-ms.openlocfilehash: 0daddd2fb1368819c8f7b4cf0183c90a8c6c065e
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: fefae4ad1f4e10598fcc67d65155c3b13efc9ff4
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417969"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449613"
 ---
 # <a name="tls-support-in-azure-iot-hub-device-provisioning-service-dps"></a>Podpora TLS v Azure IoT Hub Device Provisioning Service (DPS)
 
-DPS k zabezpečení připojení ze zařízení IoT používá protokol TLS (Transport Layer Security). Verze protokolu TLS, které podporuje DPS, zahrnují protokol TLS 1,2.
+DPS k zabezpečení připojení ze zařízení IoT používá [protokol TLS (Transport Layer Security)](http://wikipedia.org/wiki/Transport_Layer_Security) . 
+
+Aktuální verze protokolu TLS podporované službou DPS jsou: 
+* TLS 1.2
 
 TLS 1,0 a 1,1 se považují za starší verze a plánuje se jejich vyřazení. Další informace najdete v tématu [zastaralé TLS 1,0 a 1,1 pro IoT Hub](../iot-hub/iot-hub-tls-deprecating-1-0-and-1-1.md). 
 
@@ -24,7 +27,7 @@ TLS 1,0 a 1,1 se považují za starší verze a plánuje se jejich vyřazení. D
 
 Pro zvýšení zabezpečení doporučujeme nakonfigurovat instance DPS tak, aby povolovaly *jenom* připojení klientů zařízení, která používají protokol TLS verze 1,2, a vynutili použití [doporučených šifr](#recommended-ciphers).
 
-Provedete to tak, že zřídíte nový prostředek DPS v některé z [podporovaných oblastí](#supported-regions) a nastavíte `minTlsVersion` vlastnost na hodnotu `1.2` ve specifikaci prostředku DPS pro šablonu Azure Resource Manager. Následující příklad šablony JSON Určuje `minTlsVersion` vlastnost pro novou instanci DPS.
+Provedete to tak, že zřídíte nové nastavení prostředku DPS s nastavením `minTlsVersion` vlastnosti `1.2` ve specifikaci prostředku DPS Azure Resource Manager vaší šabloně. Následující příklad šablony JSON Určuje `minTlsVersion` vlastnost pro novou instanci DPS.
 
 ```json
 {
@@ -35,7 +38,7 @@ Provedete to tak, že zřídíte nový prostředek DPS v některé z [podporovan
             "type": "Microsoft.Devices/ProvisioningServices",
             "apiVersion": "2020-01-01",
             "name": "<provide-a-valid-DPS-resource-name>",
-            "location": "<any-of-supported-regions-below>",
+            "location": "<any-region>",
             "properties": {
                 "minTlsVersion": "1.2"
             },
@@ -61,12 +64,6 @@ Prostředek DPS, který se vytvořil pomocí této konfigurace, odmítne zaříz
 > [!NOTE]
 > `minTlsVersion`Vlastnost je jen pro čtení a po vytvoření prostředku DPS ji nelze změnit. Proto je důležité, abyste správně otestovali a ověřili, jestli jsou *všechna* vaše zařízení IoT kompatibilní s TLS 1,2 a předem [doporučenými šiframi](#recommended-ciphers) .
 
-## <a name="supported-regions"></a>Podporované oblasti
-
-Instance IoT DPS, které vyžadují použití protokolu TLS 1,2, se dají vytvořit v následujících oblastech:
-
-* USA (Gov) – Arizona
-* USA (Gov) – Virginia
 
 > [!NOTE]
 > Po převzetí služeb při selhání `minTlsVersion` zůstane vlastnost DPS platná v případě převzetí služeb při selhání v geograficky spárované oblasti.

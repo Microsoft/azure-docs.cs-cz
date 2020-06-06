@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f503b21d5a7d0fdfbee79354c198775789c0b91
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: afe97fd1736fbaa6858adb2fc658b4ab34546f84
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82888785"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456842"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Principy filtrování událostí pro předplatná Event Grid
 
@@ -24,7 +24,7 @@ Tento článek popisuje různé způsoby, jak filtrovat, které události se ode
 
 ## <a name="event-type-filtering"></a>Filtrování typu události
 
-Ve výchozím nastavení jsou všechny [typy událostí](event-schema.md) pro zdroj události odesílány do koncového bodu. Do koncového bodu se můžete rozhodnout odeslat jenom určité typy událostí. Můžete například dostávat oznámení o aktualizacích vašich prostředků, ale ne upozornění na jiné operace, jako je odstranění. V takovém případě filtr podle typu `Microsoft.Resources.ResourceWriteSuccess` události. Zadejte pole s typy událostí nebo určete `All` , že se mají načíst všechny typy událostí pro zdroj události.
+Ve výchozím nastavení jsou všechny [typy událostí](event-schema.md) pro zdroj události odesílány do koncového bodu. Do koncového bodu se můžete rozhodnout odeslat jenom určité typy událostí. Můžete například dostávat oznámení o aktualizacích vašich prostředků, ale ne upozornění na jiné operace, jako je odstranění. V takovém případě filtr podle `Microsoft.Resources.ResourceWriteSuccess` typu události. Zadejte pole s typy událostí nebo určete, že `All` se mají načíst všechny typy událostí pro zdroj události.
 
 Syntaxe JSON pro filtrování podle typu události je:
 
@@ -41,7 +41,7 @@ Syntaxe JSON pro filtrování podle typu události je:
 
 Pro jednoduché filtrování podle předmětu zadejte počáteční nebo koncovou hodnotu předmětu. Například můžete určit, že má předmět ukončen, `.txt` aby se zobrazily pouze události související s odesláním textového souboru do účtu úložiště. Nebo můžete filtrovat předmět `/blobServices/default/containers/testcontainer` na začátku a získat tak všechny události pro tento kontejner, ale ne jiné kontejnery v účtu úložiště.
 
-Při publikování událostí pro vlastní témata vytvořte předměty pro události, které předplatitelům umožní snadno zjistit, jestli se o událost zajímá. Předplatitelé používají vlastnost Subject k filtrování a směrování událostí. Zvažte přidání cesty pro místo, kde došlo k události, takže předplatitelé mohou filtrovat segmenty této cesty. Cesta umožňuje předplatitelům zúžit nebo široce filtrovat události. Pokud zadáte cestu tři segmenty, `/A/B/C` například v předmětu, můžou předplatitelé filtrovat podle prvního segmentu `/A` a získat tak širokou škálu událostí. Tyto předplatitelé získají události s předměty `/A/B/C` , `/A/D/E`jako je nebo. Jiní předplatitelé mohou filtrovat `/A/B` podle a získat tak užší sadu událostí.
+Při publikování událostí pro vlastní témata vytvořte předměty pro události, které předplatitelům umožní snadno zjistit, jestli se o událost zajímá. Předplatitelé používají vlastnost Subject k filtrování a směrování událostí. Zvažte přidání cesty pro místo, kde došlo k události, takže předplatitelé mohou filtrovat segmenty této cesty. Cesta umožňuje předplatitelům zúžit nebo široce filtrovat události. Pokud zadáte cestu tři segmenty `/A/B/C` , například v předmětu, můžou předplatitelé filtrovat podle prvního segmentu `/A` a získat tak širokou škálu událostí. Tyto předplatitelé získají události s předměty, jako je `/A/B/C` nebo `/A/D/E` . Jiní předplatitelé mohou filtrovat podle `/A/B` a získat tak užší sadu událostí.
 
 Syntaxe JSON pro filtrování podle předmětu je:
 
@@ -121,7 +121,7 @@ Dostupné operátory pro **řetězce** jsou:
 
 Všechna porovnávání řetězců nerozlišují **velká a malá písmena.**
 
-### <a name="key"></a>Key
+### <a name="key"></a>Klíč
 
 Pro události ve schématu Event Grid použijte pro klíč následující hodnoty:
 
@@ -155,10 +155,10 @@ Hodnoty mohou být:
 
 Rozšířené filtrování má následující omezení:
 
-* Pět rozšířených filtrů na odběr Event gridu
+* 5 rozšířených filtrů a 25 hodnot filtru napříč všemi filtry na odběr Event gridu
 * 512 znaků na hodnotu řetězce
 * Pět hodnot pro operátor **in** a **Not in**
-* Klávesy se ** `.` znakem (tečka)** . Například: `http://schemas.microsoft.com/claims/authnclassreference` nebo `john.doe@contoso.com`. V současné době není k dispozici podpora řídicích znaků v klíčích. 
+* Klávesy se znakem ** `.` (tečka)** . Například: `http://schemas.microsoft.com/claims/authnclassreference` nebo `john.doe@contoso.com` . V současné době není k dispozici podpora řídicích znaků v klíčích. 
 
 Stejný klíč lze použít ve více než jednom filtru.
 

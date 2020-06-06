@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
-ms.openlocfilehash: 53cfb983579c8a02ed6c1d80ff4821efa5950298
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e27370c2015c4679dafa5a79a820b4c984a35ec1
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848207"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449715"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer-preview"></a>Reference k modulu & algoritmu pro návrháře Azure Machine Learning (Preview)
 
@@ -32,16 +32,16 @@ Nápovědu k výběru algoritmů najdete v tématu.
 ## <a name="data-preparation-modules"></a>Moduly pro přípravu dat
 
 
-| Funkce | Popis | Modul |
+| Funkce | Description | Modul |
 | --- |--- | --- |
 | Vstup a výstup dat | Přesuňte data z cloudových zdrojů do vašeho kanálu. Zápis výsledků nebo mezilehlých dat do Azure Storage, databáze SQL nebo podregistru, při spuštění kanálu nebo použití cloudového úložiště k výměně dat mezi kanály.  | [Ruční zadávání dat](enter-data-manually.md) <br/> [Exportovat data](export-data.md) <br/> [Importovat data](import-data.md) |
-| Transformace dat | Operace s daty, která jsou jedinečná pro strojové učení, jako je normalizace nebo binningu dat, snižování dimenzionálního omezení a převod dat mezi různými formáty souborů.| [Přidání sloupců](add-columns.md) <br/> [Přidání řádků](add-rows.md) <br/> [Použití matematických operací](apply-math-operation.md) <br/> [Použití transformace SQL](apply-sql-transformation.md) <br/> [Vyčištění chybějících dat](clean-missing-data.md) <br/> [Oříznutí hodnot](clip-values.md) <br/> [Převod na C](convert-to-csv.md) <br/> [Převod na datovou sadu](convert-to-dataset.md) <br/> [Převod na hodnoty indikátoru](convert-to-indicator-values.md) <br/> [Úpravy metadat](edit-metadata.md) <br/> [Seskupit data do přihrádek](group-data-into-bins.md) <br/> [Spojení dat](join-data.md) <br/> [Normalizace dat](normalize-data.md) <br/> [Rozdělení a ukázky](partition-and-sample.md)  <br/> [Odebrání duplicitních řádků](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Transformace pro výběr sloupců](select-columns-transform.md) <br/> [Výběr sloupců v datové sadě](select-columns-in-dataset.md) <br/> [Rozdělení dat](split-data.md) |
+| Transformace dat | Operace s daty, která jsou jedinečná pro strojové učení, jako je normalizace nebo binningu dat, snižování dimenzionálního omezení a převod dat mezi různými formáty souborů.| [Přidání sloupců](add-columns.md) <br/> [Přidání řádků](add-rows.md) <br/> [Použití matematických operací](apply-math-operation.md) <br/> [Použití transformace SQL](apply-sql-transformation.md) <br/> [Vyčištění chybějících dat](clean-missing-data.md) <br/> [Oříznutí hodnot](clip-values.md) <br/> [Převod na C](convert-to-csv.md) <br/> [Převod na datovou sadu](convert-to-dataset.md) <br/> [Převod na hodnoty indikátoru](convert-to-indicator-values.md) <br/> [Úpravy metadat](edit-metadata.md) <br/> [Seskupení dat do přihrádek](group-data-into-bins.md) <br/> [Spojení dat](join-data.md) <br/> [Normalizace dat](normalize-data.md) <br/> [Rozdělení a ukázky](partition-and-sample.md)  <br/> [Odebrání duplicitních řádků](remove-duplicate-rows.md) <br/> [SMOTE](smote.md) <br/> [Transformace pro výběr sloupců](select-columns-transform.md) <br/> [Výběr sloupců v datové sadě](select-columns-in-dataset.md) <br/> [Rozdělení dat](split-data.md) |
 | Výběr funkcí | Vyberte podmnožinu relevantních užitečných funkcí, které se použijí při sestavování analytického modelu. | [Výběr funkcí na základě filtrů](filter-based-feature-selection.md) <br/> [Důležitost funkce permutací](permutation-feature-importance.md) |
 | Statistické funkce | Poskytněte širokou škálu statistických metod, které se týkají datové vědy. | [Sumarizace dat](summarize-data.md)|
 
 ## <a name="machine-learning-algorithms"></a>Algoritmy strojového učení
 
-| Funkce | Popis | Modul |
+| Funkce | Description | Modul |
 | --- |--- | --- |
 | Regrese | Předpověď hodnoty. | [Posílená regrese rozhodovacího stromu](boosted-decision-tree-regression.md) <br/> [Regrese rozhodovacího lesa](decision-forest-regression.md) <br/> [Lineární regrese](linear-regression.md)  <br/> [Regrese neurální sítě](neural-network-regression.md)  <br/> |
 | Clustering | Seskupte data dohromady.| [Clustering K-Means](k-means-clustering.md)
@@ -49,13 +49,14 @@ Nápovědu k výběru algoritmů najdete v tématu.
 
 ## <a name="modules-for-building-and-evaluating-models"></a>Moduly pro vytváření a vyhodnocování modelů
 
-| Funkce | Popis | Modul |
+| Funkce | Description | Modul |
 | --- |--- | --- |
-| Školení modelů | Spusťte data pomocí algoritmu. |  [Trénování modelu clusteringu](train-clustering-model.md) <br/> [Trénování modelu](train-model.md)  <br/> [Ladění hyperparametrů modelů](tune-model-hyperparameters.md) |
-| Bodování a vyhodnocení modelu | Změřte přesnost vyučeného modelu. | [Použití transformace](apply-transformation.md) <br/> [Přiřazení dat do clusterů](assign-data-to-clusters.md) <br/> [Křížové ověření modelu](cross-validate-model.md) <br/> [Vyhodnocení modelu](evaluate-model.md) <br/> [Určení skóre modelu](score-model.md) |
+| Školení modelů | Spusťte data pomocí algoritmu. |  [Trénování modelu clusteringu](train-clustering-model.md) <br/> [Trénování modelu](train-model.md) <br/> [Pytorch model výuky](train-pytorch-model.md) <br/> [Ladění hyperparametrů modelů](tune-model-hyperparameters.md) |
+| Bodování a vyhodnocení modelu | Změřte přesnost vyučeného modelu. | [Použití transformace](apply-transformation.md) <br/> [Přiřazení dat do clusterů](assign-data-to-clusters.md) <br/> [Křížové ověření modelu](cross-validate-model.md) <br/> [Vyhodnocení modelu](evaluate-model.md) <br/> [Model obrázku skóre](score-image-model.md) <br/> [Určení skóre modelu](score-model.md) |
 | Jazyk Pythonu | Napište kód a vložte ho do modulu pro integraci Pythonu s vaším kanálem. | [Vytvoření modelu Pythonu](create-python-model.md) <br/> [Spouštění skriptů Pythonu](execute-python-script.md) |
 | Jazyk R | Napište kód a vložte ho do modulu pro integraci jazyka R s vaším kanálem. | [Spouštění skriptů R](execute-r-script.md) |
-| Analýza textu | Poskytněte specializované výpočetní nástroje pro práci s strukturovaným i nestrukturovaným textem. |  [Převést slovo na vektor](convert-word-to-vector.md) <br/> [Extrakce funkcí n-gramů z textu](extract-n-gram-features-from-text.md) <br/> [Hashování funkcí](feature-hashing.md) <br/> [Předzpracování textu](preprocess-text.md) <br/> [Model LDA (Latent Dirichlet Allocation)](latent-dirichlet-allocation.md) |
+| Analýza textu | Poskytněte specializované výpočetní nástroje pro práci s strukturovaným i nestrukturovaným textem. |  [Převod slova na vektor](convert-word-to-vector.md) <br/> [Extrakce funkcí n-gramů z textu](extract-n-gram-features-from-text.md) <br/> [Hashování funkcí](feature-hashing.md) <br/> [Předzpracování textu](preprocess-text.md) <br/> [Model LDA (Latent Dirichlet Allocation)](latent-dirichlet-allocation.md) |
+| Computer Vision | Předzpracování dat imagí a související moduly pro rozpoznávání imagí |  [Použít transformaci obrázku](apply-image-transformation.md) <br/> [Převést na adresář obrázků](convert-to-image-directory.md) <br/> [Transformace inicializačních imagí](init-image-transformation.md) <br/> [Rozdělit do adresáře obrázků](split-to-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
 | Doporučení | Modely doporučení pro sestavení. | [Vyhodnocení doporučovacího systému](evaluate-recommender.md) <br/> [Určení skóre doporučovacího systému SVD](score-svd-recommender.md) <br/> [Trénování doporučovacího systému SVD](train-SVD-recommender.md) |
 | Detekce anomálií | Sestavujte modely detekce anomálií. | [Detekce anomálií na základě PCA](pca-based-anomaly-detection.md) <br/> [Trénování modelu detekce anomálií](train-anomaly-detection-model.md) |
 

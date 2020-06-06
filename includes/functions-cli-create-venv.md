@@ -4,17 +4,17 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/30/2020
 ms.author: glenga
-ms.openlocfilehash: 44969063765099d350e21abfbd07792891443911
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f89383c1b7d0ccce82f35d91acbe1ff8c902db29
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673122"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448902"
 ---
 ::: zone pivot="programming-language-python"  
 ## <a name="create-and-activate-a-virtual-environment"></a><a name="create-venv"></a>Vytvoření a aktivace virtuálního prostředí
 
-Ve vhodné složce spusťte následující příkazy, abyste vytvořili a aktivovali virtuální prostředí s názvem `.venv`. Ujistěte se, že používáte Python 3,8, 3,7 nebo 3,6, které podporuje Azure Functions.
+Ve vhodné složce spusťte následující příkazy, abyste vytvořili a aktivovali virtuální prostředí s názvem `.venv` . Ujistěte se, že používáte Python 3,8, 3,7 nebo 3,6, které podporuje Azure Functions.
 
 # <a name="bash"></a>[bash](#tab/bash)
 
@@ -54,5 +54,5 @@ py -m venv .venv
 
 ---
 
-V tomto aktivovaném virtuálním prostředí spustíte všechny následné příkazy. (Chcete-li virtuální prostředí ukončit, `deactivate`spusťte příkaz.)
+V tomto aktivovaném virtuálním prostředí spustíte všechny následné příkazy.   
 ::: zone-end

@@ -9,12 +9,12 @@ ms.author: magoedte
 keywords: Automatizace Azure, DSC, PowerShell, konfigurace požadovaného stavu, Správa aktualizací, sledování změn, inventarizace, Runbooky, Python, grafický, hybridní
 ms.date: 03/24/2020
 ms.topic: overview
-ms.openlocfilehash: 95a01db7d4d889df4695390bfd0d01510d83a817
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: c9e69e221dc21baae96ab814cb9fb0b65ce98126
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648040"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449477"
 ---
 # <a name="what-is-azure-arc-for-servers-preview"></a>Co je Azure ARC pro servery (Preview)
 
@@ -37,9 +37,10 @@ Azure ARC pro servery (verze Preview) podporuje následující scénáře s při
 
 U Azure ARC pro servery (Preview) jsou podporované jenom některé oblasti:
 
+- EastUS
 - WestUS2
 - WestEurope
-- WestAsia
+- SoutheastAsia
 
 Ve většině případů umístění, které vyberete při vytváření instalačního skriptu, by mělo být oblast Azure geograficky nejblíže umístění vašeho počítače. Uložená data se uloží v rámci geografické oblasti Azure obsahující oblast, kterou zadáte, což může mít vliv i na výběr oblasti, pokud máte požadavky na umístění dat. Pokud je oblast Azure, ke které je počítač připojený, ovlivněná výpadkem, připojený počítač to neovlivní, ale operace správy používající Azure možná nebude možné dokončit. V případě pružnosti v případě výpadku v oblasti regionu, pokud máte více umístění, která poskytují geograficky redundantní službu, je nejlepší připojit počítače v každém umístění do jiné oblasti Azure.
 

@@ -5,21 +5,21 @@ author: normesta
 ms.service: storage
 ms.date: 03/20/2020
 ms.author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 04d0d23bdbdaeda6a4823c900badb3133ba9eeae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a95af730e8250539e8b33af4bd5a90dc3a604a2
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061545"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466064"
 ---
 # <a name="use-javascript-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí JavaScriptu
 
 V tomto článku se dozvíte, jak pomocí JavaScriptu vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
 
-[Package (Node Package Manager)](https://www.npmjs.com/package/@azure/storage-file-datalake) | [Samples](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)Ukázky | balíčku (Správce balíčků uzlů) –[poskytnutí zpětné vazby](https://github.com/Azure/azure-sdk-for-java/issues)
+[Balíček (Správce balíčků uzlů)](https://www.npmjs.com/package/@azure/storage-file-datalake)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-file-datalake/samples)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -94,7 +94,7 @@ function GetDataLakeServiceClientAD(accountName, clientID, clientSecret, tenantI
 
 Systém souborů funguje jako kontejner pro vaše soubory. Můžete ji vytvořit získáním instance **FileSystemClient** a následným voláním metody **FileSystemClient. Create** .
 
-Tento příklad vytvoří systém souborů s názvem `my-file-system`. 
+Tento příklad vytvoří systém souborů s názvem `my-file-system` . 
 
 ```javascript
 async function CreateFileSystem(datalakeServiceClient) {
@@ -128,7 +128,7 @@ async function CreateDirectory(fileSystemClient) {
 
 Přejmenujte nebo přesuňte adresář voláním metody **DirectoryClient. rename** . Předejte cestu k požadovanému adresáři do parametru. 
 
-Tento příklad přejmenuje podadresář na název `my-directory-renamed`.
+Tento příklad přejmenuje podadresář na název `my-directory-renamed` .
 
 ```javascript
 async function RenameDirectory(fileSystemClient) {
@@ -139,7 +139,7 @@ async function RenameDirectory(fileSystemClient) {
 }
 ```
 
-Tento příklad přesune adresář s názvem `my-directory-renamed` do podadresáře adresáře s názvem `my-directory-2`. 
+Tento příklad přesune adresář s názvem `my-directory-renamed` do podadresáře adresáře s názvem `my-directory-2` . 
 
 ```javascript
 async function MoveDirectory(fileSystemClient) {
@@ -154,7 +154,7 @@ async function MoveDirectory(fileSystemClient) {
 
 Odstraňte adresář voláním metody **DirectoryClient. Delete** .
 
-Tento příklad odstraní adresář s názvem `my-directory`.   
+Tento příklad odstraní adresář s názvem `my-directory` .   
 
 ```javascript
 async function DeleteDirectory(fileSystemClient) {
@@ -167,7 +167,7 @@ async function DeleteDirectory(fileSystemClient) {
 
 ## <a name="manage-a-directory-acl"></a>Správa seznamu ACL adresáře
 
-Tento příklad načte a potom nastaví seznam řízení přístupu k adresáři s `my-directory`názvem. Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
+Tento příklad načte a potom nastaví seznam řízení přístupu k adresáři s názvem `my-directory` . Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
 
 > [!NOTE]
 > Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -221,9 +221,9 @@ async function ManageDirectoryACLs(fileSystemClient) {
 
 ## <a name="upload-a-file-to-a-directory"></a>Nahrání souboru do adresáře
 
-Nejprve si přečtěte soubor. V tomto příkladu se používá modul node `fs` . js. Pak vytvořte odkaz na soubor v cílovém adresáři tak, že vytvoříte instanci **klienta** souborů a potom zavoláte metodu **klient. Create** . Nahrajte soubor voláním metody **klient. Append** . Ujistěte se, že jste dokončí nahrávání voláním metody **klient. Flush** .
+Nejprve si přečtěte soubor. V tomto příkladu se používá modul Node. js `fs` . Pak vytvořte odkaz na soubor v cílovém adresáři tak, že vytvoříte instanci **klienta** souborů a potom zavoláte metodu **klient. Create** . Nahrajte soubor voláním metody **klient. Append** . Ujistěte se, že jste dokončí nahrávání voláním metody **klient. Flush** .
 
-Tento příklad nahraje textový soubor do adresáře s názvem `my-directory`. '
+Tento příklad nahraje textový soubor do adresáře s názvem `my-directory` . '
 
 ```javascript
 async function UploadFile(fileSystemClient) {
@@ -249,7 +249,7 @@ async function UploadFile(fileSystemClient) {
 
 ## <a name="manage-a-file-acl"></a>Správa seznamu ACL souboru
 
-Tento příklad načte a potom nastaví seznam řízení přístupu k souboru s `upload-file.txt`názvem. Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
+Tento příklad načte a potom nastaví seznam řízení přístupu k souboru s názvem `upload-file.txt` . Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
 
 > [!NOTE]
 > Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -341,7 +341,7 @@ async function DownloadFile(fileSystemClient) {
 
 ## <a name="list-directory-contents"></a>Výpis obsahu adresáře
 
-Tento příklad vytiskne názvy jednotlivých adresářů a souborů, které jsou umístěny v adresáři s názvem `my-directory`.
+Tento příklad vytiskne názvy jednotlivých adresářů a souborů, které jsou umístěny v adresáři s názvem `my-directory` .
 
 ```javascript
 async function ListFilesInDirectory(fileSystemClient) {

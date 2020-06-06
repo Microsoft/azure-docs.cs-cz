@@ -2,16 +2,14 @@
 title: Integrace Azure NetApp Files se službou Azure Kubernetes
 description: Naučte se integrovat Azure NetApp Files se službou Azure Kubernetes.
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 09/26/2019
-ms.author: zarhoads
-ms.openlocfilehash: 1c4996df66d475c63110e3d2797f55598fd85b8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78273755"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465639"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Integrace Azure NetApp Files se službou Azure Kubernetes
 
@@ -23,7 +21,7 @@ V tomto článku se předpokládá, že máte existující cluster AKS. Pokud po
 > [!IMPORTANT]
 > Cluster AKS musí být také [v oblasti, která podporuje Azure NetApp Files][anf-regions].
 
-Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější. Verzi `az --version` zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
+Potřebujete také nainstalované a nakonfigurované rozhraní Azure CLI verze 2.0.59 nebo novější.  `az --version`Verzi zjistíte spuštěním. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [instalace Azure CLI][install-azure-cli].
 
 ### <a name="limitations"></a>Omezení
 
@@ -49,7 +47,7 @@ az provider register --namespace Microsoft.NetApp --wait
 > [!NOTE]
 > Dokončení tohoto může nějakou dobu trvat.
 
-Když vytvoříte účet Azure NetApp pro použití s AKS, musíte vytvořit účet ve skupině prostředků **uzlu** . Nejprve Získejte název skupiny prostředků pomocí příkazu [AZ AKS show][az-aks-show] a přidejte parametr `--query nodeResourceGroup` dotazu. Následující příklad načte skupinu prostředků uzlu pro cluster AKS s názvem *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
+Když vytvoříte účet Azure NetApp pro použití s AKS, musíte vytvořit účet ve skupině prostředků **uzlu** . Nejprve Získejte název skupiny prostředků pomocí příkazu [AZ AKS show][az-aks-show] a přidejte `--query nodeResourceGroup` parametr dotazu. Následující příklad načte skupinu prostředků uzlu pro cluster AKS s názvem *myAKSCluster* v názvu skupiny prostředků *myResourceGroup*:
 
 ```azurecli-interactive
 az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
@@ -148,7 +146,7 @@ az netappfiles volume show --resource-group $RESOURCE_GROUP --account-name $ANF_
 }
 ```
 
-Vytvoří `pv-nfs.yaml` definici PersistentVolume. Nahraďte `path` *creationToken* a `server` parametrem *ipAddress* z předchozího příkazu. Příklad:
+Vytvoří `pv-nfs.yaml` definici PersistentVolume. Nahraďte `path` *creationToken* a parametrem `server` *ipAddress* z předchozího příkazu. Příklad:
 
 ```yaml
 ---
@@ -246,7 +244,7 @@ Ověřte, že je pod *spuštěným* příkazem [kubectl popis][kubectl-describe]
 kubectl describe pod nginx-nfs
 ```
 
-Ověřte, že je svazek připojený k `df -h` rozhraní pod, pomocí [kubectl exec][kubectl-exec] a ověřte, jestli je svazek připojený.
+Ověřte, že je svazek připojený k rozhraní pod, pomocí [kubectl exec][kubectl-exec] a `df -h` Ověřte, jestli je svazek připojený.
 
 ```console
 $ kubectl exec -it nginx-nfs -- bash

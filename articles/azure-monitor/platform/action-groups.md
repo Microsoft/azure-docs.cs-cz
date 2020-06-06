@@ -3,15 +3,15 @@ title: Vytváření a Správa skupin akcí v Azure Portal
 description: Naučte se vytvářet a spravovat skupiny akcí v Azure Portal.
 author: dkamstra
 ms.topic: conceptual
-ms.date: 4/17/2020
+ms.date: 6/5/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: b88b6d1ea4b9d9fc2b33849157968ee1c2f8c620
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: dbc810ad7227d9d47099fe85e89a92c8fa750302
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170456"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465248"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Vytváření a Správa skupin akcí v Azure Portal
 Skupina akcí je kolekce předvoleb oznámení definovaných vlastníkem předplatného Azure. Výstrahy Azure Monitor a Service Health pomocí skupin akcí upozorní uživatele na aktivaci výstrahy. Různé výstrahy můžou v závislosti na požadavcích uživatele používat stejnou skupinu akcí nebo různé skupiny akcí. V rámci předplatného můžete nakonfigurovat až 2 000 skupin akcí.
@@ -217,7 +217,12 @@ Ve skupině akcí můžete mít omezený počet hlasových akcí.
 Ceny pro podporované země nebo oblasti najdete na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/).
 
 ### <a name="webhook"></a>Webhook
-Webhooky se zopakují pomocí následujících pravidel. Volání Webhooku se v případě vrácení následujících stavových kódů HTTP znovu pokusí o maximum 2 časy: 408, 429, 503, 504 nebo koncový bod HTTP nereaguje. První opakování se provede po 10 sekundách. Druhý pokus proběhne po 100 sekundách. Po dvou selháních nebude žádná skupina akcí volat koncový bod na 30 minut. 
+Webhooky se zpracovávají pomocí následujících pravidel.
+- Volání Webhooku se podařilo maximálně třikrát.
+- Volání se bude opakovat, pokud se odpověď neobdrží v rámci časového limitu, nebo se vrátí jeden z následujících kódů stavu HTTP: 408, 429, 503 nebo 504.
+- První volání bude čekat 10 sekund na odpověď.
+- Druhé a třetí pokusy budou čekat 30 sekund na odpověď.
+- Po 3 pokusech o volání Webhooku se nezdařila žádná skupina akcí, která bude volat koncový bod po dobu 15 minut.
 
 Zdrojové rozsahy IP adres
  - 13.72.19.232

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: kgremban
-ms.openlocfilehash: e95f68610f8469a829255d6a16115dcf728ef612
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: ba3e8b9d7649d56d1639f7f608d85a2da04ff74a
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856746"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465554"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-windows"></a>Instalace modulu runtime Azure IoT Edge ve Windows
 
@@ -42,7 +42,7 @@ Pomocí této části můžete zkontrolovat, jestli zařízení s Windows podpor
 IoT Edge pro Windows vyžaduje Windows verze 1809/Build 17763, což je nejnovější [sestavení pro dlouhodobé podpory Windows](https://docs.microsoft.com/windows/release-information/). Podporu Windows SKU najdete v tématu Co je podporováno na základě toho, jestli připravujete pro produkční scénáře nebo vývojové a testovací scénáře:
 
 * **Produkce**: nejnovější informace o tom, které operační systémy se v produkčních scénářích aktuálně podporují, najdete v tématu [Azure IoT Edge podporovaných systémech](support.md#operating-systems).
-* **Vývoj a testování**: pro scénáře vývoje a testování je možné Azure IoT Edge s kontejnery Windows nainstalovat na libovolnou verzi Windows 10 nebo windows server 2019, která podporuje funkce Containers.
+* **Vývoj a testování**: pro vývojové a testovací scénáře lze Azure IoT Edge s kontejnery Windows nainstalovat do libovolné SKU (pro, Enterprise, server atd.) windows Build 17763, který podporuje funkci Containers.
 
 Zařízení IoT Core musí zahrnovat volitelnou funkci kontejnerů Windows IoT Core pro podporu IoT Edge runtime. Pomocí následujícího příkazu ve [vzdálené relaci PowerShellu](https://docs.microsoft.com/windows/iot-core/connect-your-device/powershell) ověřte, že jsou kontejnery Windows na vašem zařízení podporované:
 
@@ -164,7 +164,7 @@ K aktualizaci IoT Edge můžete použít taky parametr cesty k instalaci offline
 
 4. Volitelně můžete stáhnout instalační program pro Visual C++ Redistributable. Například skript PowerShellu používá tuto verzi: [vc_redist. x64. exe](https://download.microsoft.com/download/0/6/4/064F84EA-D1DB-4EAA-9A5C-CC2F0FF6A638/vc_redist.x64.exe). Uložte instalační program do stejné složky v zařízení IoT jako soubory IoT Edge.
 
-5. Chcete [-li nainstalovat](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) nástroje s offline komponentami, poznamenejte si místní kopii skriptu PowerShellu. Pak použijte `-OfflineInstallationPath` parametr jako součást `Deploy-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Například:
+5. Chcete [-li nainstalovat](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) nástroje s offline komponentami, poznamenejte si místní kopii skriptu PowerShellu. Pak použijte `-OfflineInstallationPath` parametr jako součást `Deploy-IoTEdge` příkazu a zadejte absolutní cestu k adresáři souborů. Třeba
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1
@@ -175,7 +175,7 @@ K aktualizaci IoT Edge můžete použít taky parametr cesty k instalaci offline
 
 6. Spuštěním `Initialize-IoTEdge` příkazu zřídíte zařízení s identitou v IoT Hub. Buď zadejte připojovací řetězec zařízení pro ruční zřizování, nebo vyberte jednu z metod popsaných v předchozím oddílu věnovaném [automatickému zřizování](#option-2-install-and-automatically-provision) .
 
-   Pokud se vaše zařízení restartovalo po spuštění `Deploy-IoTEdge`, napřed spusťte `Initialize-IoTEdge`skript PowerShellu znovu.
+   Pokud se vaše zařízení restartovalo po spuštění `Deploy-IoTEdge` , napřed spusťte skript PowerShellu znovu `Initialize-IoTEdge` .
 
 Pokud chcete získat další informace o možnosti offline instalace, přeskočte si přečtěte si další informace o [všech parametrech instalace](#all-installation-parameters).
 
@@ -199,7 +199,7 @@ Spusťte [Nástroj pro řešení potíží](troubleshoot.md#run-the-check-comman
 iotedge check
 ```
 
-Až nasadíte svůj první modul, abyste IoT Edgei na zařízení, modul **$edgeHub** systému nebude na zařízení nasazený. V důsledku toho automatizovaná kontroly vrátí chybu pro kontrolu `Edge Hub can bind to ports on host` připojení. Tuto chybu je možné ignorovat, pokud se neobjeví po nasazení modulu do zařízení.
+Až nasadíte svůj první modul, abyste IoT Edgei na zařízení, modul **$edgeHub** systému nebude na zařízení nasazený. V důsledku toho automatizovaná kontroly vrátí chybu pro `Edge Hub can bind to ports on host` kontrolu připojení. Tuto chybu je možné ignorovat, pokud se neobjeví po nasazení modulu do zařízení.
 
 Nakonec seznam spuštěných modulů:
 
@@ -246,11 +246,11 @@ Uninstall-IoTEdge
 
 Příkaz uninstall-IoTEdge nefunguje na Windows IoT Core. Chcete-li odebrat IoT Edge ze zařízení s Windows IoT Core, je nutné znovu nasadit bitovou kopii Windows IoT Core.
 
-Další informace o možnostech odinstalace získáte pomocí příkazu `Get-Help Uninstall-IoTEdge -full`.
+Další informace o možnostech odinstalace získáte pomocí příkazu `Get-Help Uninstall-IoTEdge -full` .
 
 ## <a name="verify-installation-script"></a>Ověřit instalační skript
 
-Příkazy instalace uvedené v tomto článku používají k vyžádání instalačního skriptu z `aka.ms/iotedge-win`nástroje rutinu Invoke-WebRequest. Tento odkaz odkazuje na`IoTEdgeSecurityDaemon.ps1` skript z poslední [vydané verze IoT Edge](https://github.com/Azure/azure-iotedge/releases). Můžete si také stáhnout tento skript nebo verzi skriptu z konkrétní verze a spustit instalační příkazy na zařízení IoT Edge.
+Příkazy instalace uvedené v tomto článku používají k vyžádání instalačního skriptu z nástroje rutinu Invoke-WebRequest `aka.ms/iotedge-win` . Tento odkaz odkazuje na `IoTEdgeSecurityDaemon.ps1` skript z poslední [vydané verze IoT Edge](https://github.com/Azure/azure-iotedge/releases). Můžete si také stáhnout tento skript nebo verzi skriptu z konkrétní verze a spustit instalační příkazy na zařízení IoT Edge.
 
 Zadaný skript je podepsaný ke zvýšení zabezpečení. Podpis můžete ověřit stažením skriptu na zařízení a následným spuštěním následujícího příkazu PowerShellu:
 
@@ -266,7 +266,7 @@ Předchozí části představily běžné scénáře instalace s příklady pou�
 
 ### <a name="deploy-iotedge"></a>Nasazení – IoTEdge
 
-Příkaz Deploy-IoTEdge stáhne a nasadí démona zabezpečení IoT Edge a jeho závislosti. Příkaz nasazení akceptuje tyto společné parametry, mimo jiné. Úplný seznam získáte pomocí příkazu `Get-Help Deploy-IoTEdge -full`.  
+Příkaz Deploy-IoTEdge stáhne a nasadí démona zabezpečení IoT Edge a jeho závislosti. Příkaz nasazení akceptuje tyto společné parametry, mimo jiné. Úplný seznam získáte pomocí příkazu `Get-Help Deploy-IoTEdge -full` .  
 
 | Parametr | Přípustné hodnoty | Komentáře |
 | --------- | --------------- | -------- |
@@ -278,7 +278,7 @@ Příkaz Deploy-IoTEdge stáhne a nasadí démona zabezpečení IoT Edge a jeho 
 
 ### <a name="initialize-iotedge"></a>Inicializovat – IoTEdge
 
-Příkaz Initialize-IoTEdge nakonfiguruje IoT Edge s připojovacím řetězcem zařízení a provozními podrobnostmi. Většinu informací generovaných tímto příkazem je pak Uloženo v souboru iotedge\config.yaml. Inicializační příkaz akceptuje tyto společné parametry, mimo jiné. Úplný seznam získáte pomocí příkazu `Get-Help Initialize-IoTEdge -full`.
+Příkaz Initialize-IoTEdge nakonfiguruje IoT Edge s připojovacím řetězcem zařízení a provozními podrobnostmi. Většinu informací generovaných tímto příkazem je pak Uloženo v souboru iotedge\config.yaml. Inicializační příkaz akceptuje tyto společné parametry, mimo jiné. Úplný seznam získáte pomocí příkazu `Get-Help Initialize-IoTEdge -full` .
 
 | Parametr | Přípustné hodnoty | Komentáře |
 | --------- | --------------- | -------- |

@@ -3,12 +3,12 @@ title: Analýza závislostí v Azure Migrate Server Assessment
 description: Popisuje, jak používat analýzu závislostí pro posouzení pomocí Azure Migrateho posouzení serveru.
 ms.topic: conceptual
 ms.date: 04/15/2020
-ms.openlocfilehash: f0b956620895ae2264b53916015d440f5e586eb2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b269322f5426a68b072452bc2f79531685be3742
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82024757"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447573"
 ---
 # <a name="dependency-analysis"></a>Analýza závislostí
 
@@ -30,7 +30,7 @@ Pro nasazení analýzy závislostí existují dvě možnosti.
 - Bez **agentů**: s analýzou bez agentů nemusíte instalovat agenty na počítače, které chcete křížově kontrolovat. Tato možnost je momentálně ve verzi Preview a je dostupná jenom pro virtuální počítače VMware.
 
 > [!NOTE]
-> Analýza závislostí na základě agenta není v Azure Government k dispozici. Můžete použít analýzu závislostí bez agentů.
+> Analýza závislostí na základě agenta není v Azure Government k dispozici. Můžete využít analýzu závislostí bez agentů.
 
 ## <a name="agentless-analysis"></a>Analýza bez agentů
 
@@ -70,7 +70,7 @@ Log Analytics | Nepožadováno. | Azure Migrate používá řešení [Service ma
 Jak to funguje | Zachycuje data připojení TCP na počítačích, které jsou povoleny pro vizualizaci závislostí. Po zjištění se data shromáždí v intervalech po pěti minutách. | Agenti Service Map nainstalovaná na počítači shromažďují data o procesech TCP a příchozích a odchozích připojeních pro jednotlivé procesy.
 Data | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port. | Název zdrojového počítačového serveru, proces, název aplikace<br/><br/> Název cílového počítačového serveru, proces, název aplikace a port.<br/><br/> Pro Log Analytics dotazy se shromažďují a k dispozici informace o počtu připojení, latenci a přenosu dat. 
 Vizualizace | Mapa závislostí jednoho serveru se dá zobrazit po dobu od 1 hodiny do 30 dnů. | Mapa závislostí pro jeden server.<br/><br/> Mapu lze zobrazit pouze za hodinu.<br/><br/> Mapa závislostí skupiny serverů.<br/><br/> Přidejte nebo odeberte servery ve skupině z zobrazení mapy.
-Export dat | Momentálně se nedá stáhnout v tabulkovém formátu. | Data se dají dotazovat pomocí Log Analytics.
+Export dat | Posledních 30 dní data je možné stáhnout ve formátu CSV. | Data se dají dotazovat pomocí Log Analytics.
 
 
 

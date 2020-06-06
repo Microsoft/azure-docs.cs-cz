@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: patricka
-ms.date: 04/22/2020
-ms.openlocfilehash: 1e0e4018c79c231c69f29b2272420344198af413
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.date: 06/04/2020
+ms.openlocfilehash: 5524a8920ef49603ab9aa143ae4094cdaad9d340
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310355"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456520"
 ---
 # <a name="quickstart-create-an-azure-blockchain-service-member-using-an-azure-resource-manager-template"></a>Rychlý Start: Vytvoření členu služby Azure blockchain pomocí šablony Azure Resource Manager
 
@@ -47,7 +47,7 @@ Prostředky Azure definované v šabloně:
 
 1. Zadejte nastavení pro člena služby Azure blockchain.
 
-    Nastavení | Popis
+    Nastavení | Description
     --------|------------
     Předplatné | Vyberte předplatné Azure, které chcete použít pro vaši službu. Pokud máte více předplatných, zvolte předplatné, ve kterém se vám prostředek účtuje.
     Skupina prostředků | Vytvořte nový název skupiny prostředků nebo vyberte existující v rámci svého předplatného.
@@ -61,6 +61,12 @@ Prostředky Azure definované v šabloně:
 1. Vyberte **koupit** a šablonu nasaďte.
 
   Azure Portal se tady používá k nasazení šablony. Můžete také použít Azure PowerShell, Azure CLI a REST API. Další informace o dalších metodách nasazení najdete v tématu [Nasazení šablon](../../azure-resource-manager/templates/deploy-powershell.md).
+
+## <a name="review-deployed-resources"></a>Kontrola nasazených prostředků
+
+K zobrazení podrobností o nasazeném členu služby Azure blockchain můžete použít Azure Portal. Na portálu přejdete do skupiny prostředků, která obsahuje vašeho člena služby Azure blockchain. Vyberte člen blockchain, který jste vytvořili.
+
+![Podrobnosti o přehledu členů služby Azure blockchain v Azure Portal](./media/create-member-template/deployed-member.png)
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

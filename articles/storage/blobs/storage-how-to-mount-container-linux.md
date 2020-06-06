@@ -4,16 +4,16 @@ description: Připojení kontejneru úložiště objektů BLOB v Azure s pojistk
 author: rishabpoh
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 2/1/2019
 ms.author: ripohane
 ms.reviewer: dineshm
-ms.openlocfilehash: a0a03df59bc6ecffcb4f0a701616297f2da78fdb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3505cdaa009520f581e2ccf9f8bc60cbfb65586c
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061431"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465469"
 ---
 # <a name="how-to-mount-blob-storage-as-a-file-system-with-blobfuse"></a>Postup připojení úložiště objektů BLOB jako systému souborů pomocí blobfuse
 
@@ -43,7 +43,7 @@ Například na distribuci Enterprise Linux 6:
 sudo rpm -Uvh https://packages.microsoft.com/config/rhel/6/packages-microsoft-prod.rpm
 ```
 
-Podobně změňte adresu URL tak `.../rhel/7/...` , aby odkazovala na distribuci Enterprise Linux 7.
+Podobně změňte adresu URL tak, aby `.../rhel/7/...` odkazovala na distribuci Enterprise Linux 7.
 
 Další příklad pro distribuci Ubuntu 14,04:
 ```bash
@@ -98,7 +98,7 @@ accountName myaccount
 accountKey storageaccesskey
 containerName mycontainer
 ```
-`accountName` Je předponou pro váš účet úložiště – ne úplnou adresu URL.
+`accountName`Je předponou pro váš účet úložiště – ne úplnou adresu URL.
 
 Vytvořit tento soubor pomocí:
 
@@ -112,7 +112,7 @@ chmod 600 fuse_connection.cfg
 ```
 
 > [!NOTE]
-> Pokud jste v systému Windows vytvořili konfigurační soubor, nezapomeňte spustit `dos2unix` program, který upraví a převede soubor na formát systému UNIX. 
+> Pokud jste v systému Windows vytvořili konfigurační soubor, nezapomeňte spustit program, který upraví `dos2unix` a převede soubor na formát systému UNIX. 
 >
 
 ### <a name="create-an-empty-directory-for-mounting"></a>Vytvořit prázdný adresář pro připojení
@@ -132,7 +132,7 @@ Pro připojení blobfuse spusťte následující příkaz s vaším uživatelem.
 sudo blobfuse ~/mycontainer --tmp-path=/mnt/resource/blobfusetmp  --config-file=/path/to/fuse_connection.cfg -o attr_timeout=240 -o entry_timeout=240 -o negative_timeout=120
 ```
 
-Nyní byste měli mít přístup k objektům blob bloku prostřednictvím běžných rozhraní API systému souborů. Uživatel, který je připojuje k adresáři, je jediná osoba, která k němu má přístup, který ve výchozím nastavení přistupuje k zabezpečení přístupu. Pokud chcete přístup všem uživatelům dovolit, můžete se připojit prostřednictvím možnosti ```-o allow_other```. 
+Nyní byste měli mít přístup k objektům blob bloku prostřednictvím běžných rozhraní API systému souborů. Uživatel, který je připojuje k adresáři, je jediná osoba, která k němu má přístup, který ve výchozím nastavení přistupuje k zabezpečení přístupu. Pokud chcete přístup všem uživatelům dovolit, můžete se připojit prostřednictvím možnosti ```-o allow_other``` . 
 
 ```bash
 cd ~/mycontainer

@@ -7,13 +7,13 @@ ms.author: mhopkins
 ms.date: 08/09/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 74c023c06e7b28183a53772be6798419c91dd37a
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.topic: how-to
+ms.openlocfilehash: 3d86b6e39d6199d2f0268070cfa5456e512daa49
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82692450"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465877"
 ---
 # <a name="manage-blob-properties-and-metadata-with-net"></a>Správa vlastností a metadat objektů BLOB pomocí .NET
 
@@ -30,14 +30,14 @@ Kromě dat, která obsahují, podporují objekty blob vlastnosti systému a uži
 >
 > Další informace o této funkci najdete v tématu [Správa a hledání dat v Azure Blob Storage s využitím indexu objektů BLOB (Preview)](storage-manage-find-blobs.md).
 
-Načítání metadat a hodnot vlastností prostředku BLOB Storage je proces se dvěma kroky. Než budete moci číst tyto hodnoty, je nutné je explicitně načíst voláním metody `FetchAttributes` nebo `FetchAttributesAsync` . Výjimkou z tohoto pravidla je, že `Exists` metody `ExistsAsync` a volají odpovídající `FetchAttributes` metodu v rámci pokrývání. Při volání jedné z těchto metod není nutné volat `FetchAttributes`současně.
+Načítání metadat a hodnot vlastností prostředku BLOB Storage je proces se dvěma kroky. Než budete moci číst tyto hodnoty, je nutné je explicitně načíst voláním `FetchAttributes` metody nebo `FetchAttributesAsync` . Výjimkou z tohoto pravidla je, že `Exists` `ExistsAsync` metody a volají odpovídající `FetchAttributes` metodu v rámci pokrývání. Při volání jedné z těchto metod není nutné volat současně `FetchAttributes` .
 
 > [!IMPORTANT]
-> Pokud zjistíte, že vlastnost nebo hodnoty metadat pro prostředek úložiště nejsou naplněné, ověřte, že váš kód volá `FetchAttributes` metodu `FetchAttributesAsync` nebo.
+> Pokud zjistíte, že vlastnost nebo hodnoty metadat pro prostředek úložiště nejsou naplněné, ověřte, že váš kód volá `FetchAttributes` `FetchAttributesAsync` metodu nebo.
 
 ## <a name="set-and-retrieve-properties"></a>Nastavení a načtení vlastností
 
-Následující příklad kódu nastavuje vlastnosti systému `ContentType` a `ContentLanguage` v objektu BLOB.
+Následující příklad kódu nastavuje `ContentType` `ContentLanguage` Vlastnosti systému a v objektu BLOB.
 
 ```csharp
 public static async Task SetBlobPropertiesAsync(CloudBlob blob)
@@ -65,7 +65,7 @@ public static async Task SetBlobPropertiesAsync(CloudBlob blob)
 }
 ```
 
-Chcete-li načíst vlastnosti objektu BLOB `FetchAttributes` , `FetchAttributesAsync` zavolejte metodu or objektu BLOB a naplňte `Properties` vlastnost. Následující příklad kódu získá vlastnosti systému objektu BLOB a zobrazí některé z těchto hodnot:
+Chcete-li načíst vlastnosti objektu blob, zavolejte `FetchAttributes` `FetchAttributesAsync` metodu or objektu BLOB a naplňte `Properties` vlastnost. Následující příklad kódu získá vlastnosti systému objektu BLOB a zobrazí některé z těchto hodnot:
 
 ```csharp
 private static async Task GetBlobPropertiesAsync(CloudBlob blob)
@@ -94,7 +94,7 @@ private static async Task GetBlobPropertiesAsync(CloudBlob blob)
 
 ## <a name="set-and-retrieve-metadata"></a>Nastavení a načtení metadat
 
-Metadata můžete zadat jako jednu nebo více párů název-hodnota u prostředku BLOB nebo kontejneru. Chcete-li nastavit metadata, přidejte páry název-hodnota `Metadata` do kolekce v prostředku. Pak zavolejte jednu z následujících metod pro zápis hodnot:
+Metadata můžete zadat jako jednu nebo více párů název-hodnota u prostředku BLOB nebo kontejneru. Chcete-li nastavit metadata, přidejte páry název-hodnota do `Metadata` kolekce v prostředku. Pak zavolejte jednu z následujících metod pro zápis hodnot:
 
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.setmetadataasync)

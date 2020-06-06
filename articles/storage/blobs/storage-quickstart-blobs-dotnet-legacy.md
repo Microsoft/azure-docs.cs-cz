@@ -7,12 +7,12 @@ ms.date: 07/20/2019
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: b243d05619642e1dd3ad8dfe2bbe1d0a9661b773
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: d52877129fe256253410f1d38011fa0343dd433d
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75351303"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84455939"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v11-for-net"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V11 pro .NET
 
@@ -27,7 +27,7 @@ Použijte klientskou knihovnu Azure Blob Storage pro .NET pro:
 * Výpis všech objektů BLOB v kontejneru
 * Odstranění kontejneru
 
-[Dokumentace k referenční dokumentaci k](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet) | rozhraní API[Ukázka](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob) balíčku[zdrojového kódu](https://github.com/Azure/azure-storage-net/tree/master/Blob) | knihovny[(NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/) | 
+[Referenční dokumentace k](https://docs.microsoft.com/dotnet/api/overview/azure/storage?view=azure-dotnet)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-storage-net/tree/master/Blob)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.Storage.Blob/)  |  [Ukázky](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=blob)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -109,12 +109,11 @@ namespace blob_quickstart
 {
     class Program
     {
-        public static void Main()
+        public static async Task Main()
         {
             Console.WriteLine("Azure Blob Storage - .NET quickstart sample\n");
 
-            // Run the examples asynchronously, wait for the results before proceeding
-            ProcessAsync().GetAwaiter().GetResult();
+            await ProcessAsync();
 
             Console.WriteLine("Press any key to exit the sample application.");
             Console.ReadLine();
@@ -178,9 +177,9 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 Pro interakci s těmito prostředky použijte následující třídy .NET:
 
-* [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount): `CloudStorageAccount` třída představuje váš účet služby Azure Storage. Tato třída slouží k autorizaci přístupu k úložišti objektů BLOB pomocí přístupových klíčů k účtu.
+* [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount): `CloudStorageAccount` Třída představuje váš účet služby Azure Storage. Tato třída slouží k autorizaci přístupu k úložišti objektů BLOB pomocí přístupových klíčů k účtu.
 * [CloudBlobClient](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient): `CloudBlobClient` Třída poskytuje bod přístupu k BLOB Service ve vašem kódu.
-* [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer): `CloudBlobContainer` třída představuje kontejner objektů BLOB ve vašem kódu.
+* [CloudBlobContainer](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer): `CloudBlobContainer` Třída představuje kontejner objektů BLOB ve vašem kódu.
 * [CloudBlockBlob](/dotnet/api/microsoft.azure.storage.blob.cloudblockblob): `CloudBlockBlob` objekt představuje objekt blob bloku ve vašem kódu. Objekty blob bloku se skládají z bloků dat, které můžete spravovat jednotlivě.
 
 ## <a name="code-examples"></a>Příklady kódu
@@ -197,7 +196,7 @@ Tyto ukázkové fragmenty kódu ukazují, jak provést následující akce s kli
 
 ### <a name="authenticate-the-client"></a>Ověření klienta
 
-Následující kód kontroluje, zda proměnná prostředí obsahuje připojovací řetězec, který lze analyzovat a vytvořit tak objekt [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) odkazující na účet úložiště. Ke kontrole platnosti připojovacího řetězce použijte metodu [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet). Pokud `TryParse` je úspěšná, inicializuje `storageAccount` proměnnou a vrátí. `true`
+Následující kód kontroluje, zda proměnná prostředí obsahuje připojovací řetězec, který lze analyzovat a vytvořit tak objekt [CloudStorageAccount](/dotnet/api/microsoft.azure.storage.cloudstorageaccount?view=azure-dotnet) odkazující na účet úložiště. Ke kontrole platnosti připojovacího řetězce použijte metodu [TryParse](/dotnet/api/microsoft.azure.storage.cloudstorageaccount.tryparse?view=azure-dotnet). Pokud `TryParse` je úspěšná, inicializuje `storageAccount` proměnnou a vrátí `true` .
 
 Přidejte tento kód do `ProcessAsync` metody:
 
@@ -293,7 +292,7 @@ await cloudBlockBlob.UploadFromFileAsync(sourceFile);
 
 Vypíše objekty BLOB v kontejneru pomocí metody [ListBlobsSegmentedAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.listblobssegmentedasync) . V tomto případě byl do kontejneru přidán pouze jeden objekt blob, takže operace výpisu vrátí pouze jeden objekt BLOB.
 
-Pokud je příliš mnoho objektů blob, které se mají vrátit v jednom volání (ve výchozím nastavení je to více než `ListBlobsSegmentedAsync` 5000), pak metoda vrátí segment celkové sady výsledků dotazu a token pro pokračování. K načtení dalšího segmentu objektů blob zadáte token pro pokračování vrácený z předchozího volání a tak dále, dokud token pro pokračování není nulový. Nulový token pro pokračování značí, že se načetly všechny objekty blob. Kód ukazuje, jak použít token pro pokračování v zájmu osvědčených postupů.
+Pokud je příliš mnoho objektů blob, které se mají vrátit v jednom volání (ve výchozím nastavení je to více než 5000), pak `ListBlobsSegmentedAsync` Metoda vrátí segment celkové sady výsledků dotazu a token pro pokračování. K načtení dalšího segmentu objektů blob zadáte token pro pokračování vrácený z předchozího volání a tak dále, dokud token pro pokračování není nulový. Nulový token pro pokračování značí, že se načetly všechny objekty blob. Kód ukazuje, jak použít token pro pokračování v zájmu osvědčených postupů.
 
 ```csharp
 // List the blobs in the container.

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: spelluru
-ms.openlocfilehash: 45043718664eb1b3b6b865821b3f6b2a51199194
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: c4842c673dc5d56cd57a2131f1c522b0bc682559
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83115026"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448015"
 ---
 # <a name="class-types-overview---azure-lab-services"></a>Přehled typů tříd – Azure Lab Services
 
@@ -62,9 +62,19 @@ V Azure Lab Services můžete nastavit testovací prostředí, abyste mohli nau�
 Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro učení vývoje mobilních aplikací pomocí Android Studio](class-type-mobile-dev-android-studio.md).
 
 ## <a name="big-data-analytics"></a>Analýzy velkých objemů dat
-Můžete nastavit testovací prostředí pro výuku třídy pro analýzu velkých objemů dat. U tohoto typu třídy studenti zjistí, jak zpracovávat velké objemy dat, a použít algoritmy strojového a statistického učení k odvození přehledů dat. Klíčový cíl pro studenty je Naučte se používat nástroje pro analýzu dat, jako je open source softwarový balíček Apache Hadoop, který poskytuje nástroje pro ukládání, správu a zpracování velkých objemů dat. 
+Můžete nastavit testovací prostředí GPU pro výuku třídy analýzy velkých objemů dat. U tohoto typu třídy studenti zjistí, jak zpracovávat velké objemy dat, a použít algoritmy strojového a statistického učení k odvození přehledů dat. Klíčový cíl pro studenty je Naučte se používat nástroje pro analýzu dat, jako je open source softwarový balíček Apache Hadoop, který poskytuje nástroje pro ukládání, správu a zpracování velkých objemů dat. 
 
 Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro analýzu velkých objemů dat pomocí nasazení Docker pro datovou platformu Hortonworks](class-type-big-data-analytics.md).
+
+## <a name="matlab"></a>MATLAB
+Program [MATLAB](https://www.mathworks.com/products/matlab.html), který představuje matricovou laboratoř, je programovací platforma z [MathWorks](https://www.mathworks.com/).  Kombinuje výpočetní výkon a vizualizaci díky oblíbeným nástrojům v oblastech matematických, inženýrských, fyzika a chemie.
+
+Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro výuku programu MATLAB](class-type-matlab.md).
+
+## <a name="solidworks-computer-aided-design-cad"></a>SolidWorks – návrh s podporou počítačů (CAD)
+Můžete nastavit testovací prostředí GPU, které poskytuje technickým studentům přístup k [SolidWorks](https://www.solidworks.com/).  SolidWorks poskytuje prostředí 3D CAD pro modelování objektů Solid.  Pomocí SolidWorks můžou technici snadno vytvářet, vizualizovat, simulovat a zdokumentovat jejich návrhy.
+
+Podrobné informace o tom, jak tento typ testovacího prostředí nastavit, najdete v tématu [Nastavení testovacího prostředí pro inženýrské třídy pomocí SolidWorks](class-type-solidworks.md) .
 
 ## <a name="next-steps"></a>Další kroky
 

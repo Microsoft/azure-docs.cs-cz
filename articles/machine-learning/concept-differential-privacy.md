@@ -9,12 +9,12 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.openlocfilehash: 09ac31f31f42f5aed9e7dd464e1fce1436cfe581
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 9570724fdff3018c1dbcf76c15a9db8db0d68364
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597643"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447824"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package"></a>Zachování ochrany soukromí dat pomocí rozdílového soukromí a balíčku WhiteNoise
 
@@ -60,7 +60,7 @@ Implementace rozdílových privátních systémů je obtížná. WhiteNoise je o
 
 Základní knihovna nástroje zahrnuje následující mechanismy ochrany osobních údajů pro implementaci rozdílového privátního systému:
 
-|Součást  |Popis  |
+|Součást  |Description  |
 |---------|---------|
 |Analýza     | Graf s popisem libovolných výpočtů. |
 |Hodnocení     | Knihovna Rust, která obsahuje sadu nástrojů pro kontrolu a odvozování nezbytných podmínek pro účely analýzy rozdílných privátních.          |
@@ -71,7 +71,7 @@ Základní knihovna nástroje zahrnuje následující mechanismy ochrany osobní
 
 Systémová knihovna poskytuje následující nástroje a služby pro práci s tabulkovými a relačními daty:
 
-|Součást  |Popis  |
+|Součást  |Description  |
 |---------|---------|
 |Přístup k datům     | Knihovna, která zachycuje a zpracovává dotazy SQL a vytváří sestavy. Tato knihovna je implementovaná v Pythonu a podporuje následující zdroje dat ODBC a DBAPI:<ul><li>PostgreSQL</li><li>SQL Server</li><li>Spark</li><li>Preston</li><li>PANDAS</li></ul>|
 |Služba     | Služba spuštění, která poskytuje koncovým bodem REST pro poskytování požadavků nebo dotazů na sdílené zdroje dat. Služba je navržená tak, aby umožňovala složení rozdílových modulů ochrany osobních údajů, které pracují na žádostech s různými hodnotami delta a Epsilon, označované taky jako heterogenní požadavky. Tento referenční účet implementace má další dopad na dotazy na korelační data. |
@@ -79,4 +79,6 @@ Systémová knihovna poskytuje následující nástroje a služby pro práci s t
 
 ## <a name="next-steps"></a>Další kroky
 
-Informace o tom, jak používat komponenty WhiteNoise, najdete v článku úložiště GitHub pro [balíček WhiteNoise Core](https://github.com/opendifferentialprivacy/whitenoise-core), [balíček WhiteNoise System](https://github.com/opendifferentialprivacy/whitenoise-system) a [ukázky WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-samples).
+[Zachovat ochranu osobních údajů](how-to-differential-privacy.md) v Azure Machine Learning.
+
+Další informace o součástech WhiteNoise najdete v části úložiště GitHub pro [balíček WhiteNoise Core](https://github.com/opendifferentialprivacy/whitenoise-core), [balíček WhiteNoise System](https://github.com/opendifferentialprivacy/whitenoise-system) a [ukázky WhiteNoise](https://github.com/opendifferentialprivacy/whitenoise-samples).

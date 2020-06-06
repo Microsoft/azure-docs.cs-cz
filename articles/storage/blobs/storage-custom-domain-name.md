@@ -4,17 +4,17 @@ titleSuffix: Azure Storage
 description: Namapujte vlastní doménu na Blob Storage nebo webový koncový bod v účtu služby Azure Storage.
 author: normesta
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.subservice: blobs
-ms.openlocfilehash: 82f3f26ae5c70c9660a44ce50a90de79340bc1c2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 95fd62584ef73f3f2f198c84913652f460fc5b1a
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195233"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465537"
 ---
 # <a name="map-a-custom-domain-to-an-azure-blob-storage-endpoint"></a>Mapování vlastní domény na koncový bod Azure Blob Storage
 
@@ -177,7 +177,7 @@ Vytvořte dočasný záznam CNAME, který bude odkazovat na název hostitele. Z�
        
    - Název hostitele, který jste získali v části [získání názvu hostitele vašeho koncového bodu úložiště](#endpoint) výše v tomto článku. 
 
-     Přidejte subdoménu `asverify` do názvu hostitele. Příklad: `asverify.mystorageaccount.blob.core.windows.net`.
+     Přidejte subdoménu `asverify` do názvu hostitele. Například: `asverify.mystorageaccount.blob.core.windows.net`.
 
 4. Pokud chcete zaregistrovat vlastní doménu, klikněte na tlačítko **Uložit** .
 

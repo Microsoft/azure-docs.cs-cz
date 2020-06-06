@@ -6,15 +6,15 @@ ms.author: mhopkins
 ms.date: 12/08/2016
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: 7abcad03678131668700f5d2c64b9c971081cb89
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c7b5e679fa47437e7019884317d0ab14792055f3
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060940"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465418"
 ---
 # <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Použití služby Azure Queue k vytváření a odstraňování front z Node. js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -51,7 +51,7 @@ Pokud chcete používat službu Azure Storage, potřebujete sadu Azure Storage S
     +-- request@2.57.0 (caseless@0.10.0, aws-sign2@0.5.0, forever-agent@0.6.1, stringstream@0.0.4, oauth-sign@0.8.0, tunnel-agent@0.4.1, isstream@0.1.2, json-stringify-safe@5.0.1, bl@0.9.4, combined-stream@1.0.5, qs@3.1.0, mime-types@2.0.14, form-data@0.2.0, http-signature@0.11.0, tough-cookie@2.0.0, hawk@2.3.1, har-validator@1.8.0)
     ```
 
-3. Můžete ručně spustit příkaz **ls** a ověřit tak, že se vytvořila složka **modulů uzlů\_** . Uvnitř této složky najdete balíček **azure-storage** obsahující knihovny, které potřebujete pro přístup k úložišti.
+3. Můžete ručně spustit příkaz **ls** a ověřit tak, že se vytvořila složka ** \_ modulů uzlů** . Uvnitř této složky najdete balíček **azure-storage** obsahující knihovny, které potřebujete pro přístup k úložišti.
 
 ### <a name="import-the-package"></a>Import balíčku
 Pomocí poznámkového bloku nebo jiného textového editoru přidejte do horní části souboru **Server. js** aplikace, ve které chcete úložiště použít, následující:
@@ -61,7 +61,7 @@ var azure = require('azure-storage');
 ```
 
 ## <a name="setup-an-azure-storage-connection"></a>Nastavení Azure Storageho připojení
-Modul Azure přečte proměnnou prostředí účet úložiště\_\_Azure a\_\_přístupový\_klíč úložiště Azure nebo připojovací\_\_\_řetězec úložiště Azure pro informace požadované pro připojení k vašemu účtu úložiště Azure. Pokud tyto proměnné prostředí nejsou nastaveny, při volání **createQueueService**je nutné zadat informace o účtu.
+Modul Azure přečte proměnnou prostředí \_ účet úložiště Azure \_ a přístupový klíč úložiště \_ Azure \_ \_ nebo \_ \_ připojovací řetězec úložiště Azure \_ pro informace požadované pro připojení k vašemu účtu úložiště Azure. Pokud tyto proměnné prostředí nejsou nastaveny, při volání **createQueueService**je nutné zadat informace o účtu.
 
 ## <a name="how-to-create-a-queue"></a>Postupy: vytvoření fronty
 Následující kód vytvoří objekt **QueueService** , který vám umožní pracovat s frontami.
@@ -126,7 +126,7 @@ queueSvc.peekMessages('myqueue', function(error, results, response){
 });
 ```
 
-`result` Obsahuje zprávu.
+`result`Obsahuje zprávu.
 
 > [!NOTE]
 > V **případě, že ve** frontě nejsou žádné zprávy, nevrátí se žádná zpráva, ale nevrátí se žádné zprávy.

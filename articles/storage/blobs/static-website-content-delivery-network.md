@@ -4,15 +4,15 @@ description: Přečtěte si, jak ukládat do mezipaměti obsah statického webu 
 author: normesta
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: normesta
 ms.date: 04/07/2020
-ms.openlocfilehash: 4516e9f48174a0f1f5201c46cf114badf13d99d6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 02b7e02c33161db33420e2efe1ef4b70a138d127
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80878801"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465214"
 ---
 # <a name="integrate-a-static-website-with-azure-cdn"></a>Integrace statického webu s Azure CDN
 
@@ -41,7 +41,7 @@ Azure CDN pro váš statický Web můžete povolit přímo z účtu úložiště
    Pokud chcete najít koncový bod statického webu, přejděte k nastavení **statického webu** pro váš účet úložiště.  Zkopírujte primární koncový bod a vložte ho do konfigurace CDN.
 
    > [!IMPORTANT]
-   > Nezapomeňte odebrat identifikátor*protokolu (například*https) a koncové lomítko v adrese URL. Pokud je `https://mystorageaccount.z5.web.core.windows.net/`například koncový bod statického webu, zadejte `mystorageaccount.z5.web.core.windows.net` v poli **počáteční název hostitele** .
+   > Nezapomeňte odebrat identifikátor*protokolu (například*https) a koncové lomítko v adrese URL. Pokud je například koncový bod statického webu `https://mystorageaccount.z5.web.core.windows.net/` , zadejte `mystorageaccount.z5.web.core.windows.net` v poli **počáteční název hostitele** .
 
    Následující obrázek ukazuje příklad konfigurace koncového bodu:
 
@@ -49,7 +49,7 @@ Azure CDN pro váš statický Web můžete povolit přímo z účtu úložiště
 
 1. Vyberte **vytvořit**a potom počkejte na zřízení CDN. Koncový bod se po vytvoření zobrazí v seznamu koncových bodů. (Pokud máte ve formuláři nějaké chyby, zobrazí se vedle tohoto pole Znak vykřičníku.)
 
-1. Pokud chcete ověřit, že je koncový bod CDN správně nakonfigurovaný, přejděte kliknutím na koncový bod na jeho nastavení. V přehledu CDN pro váš účet úložiště najděte název hostitele koncového bodu a přejděte ke koncovému bodu, jak je znázorněno na následujícím obrázku. Formát koncového bodu CDN bude podobný `https://staticwebsitesamples.azureedge.net`.
+1. Pokud chcete ověřit, že je koncový bod CDN správně nakonfigurovaný, přejděte kliknutím na koncový bod na jeho nastavení. V přehledu CDN pro váš účet úložiště najděte název hostitele koncového bodu a přejděte ke koncovému bodu, jak je znázorněno na následujícím obrázku. Formát koncového bodu CDN bude podobný `https://staticwebsitesamples.azureedge.net` .
 
     ![Snímek obrazovky znázorňující přehled koncového bodu CDN](media/storage-blob-static-website-custom-domain/verify-cdn-endpoint.png)
 

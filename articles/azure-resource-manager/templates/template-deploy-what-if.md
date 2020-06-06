@@ -3,14 +3,14 @@ title: Template deployment co-if (Preview)
 description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/04/2020
+ms.date: 06/05/2020
 ms.author: tomfitz
-ms.openlocfilehash: 62f46d158bea9507246fda7f24750c3743a5e1f1
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: abe834670c5df461b523bd48717f20093bdef0a3
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424240"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457282"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Operace nasazení šablony ARM – if (Preview)
 
@@ -136,6 +136,8 @@ Předchozí příkazy vrátí textový souhrn, který můžete ručně zkontrolo
 
 * `az deployment group what-if --no-pretty-print`pro nasazení skupin prostředků
 * `az deployment sub what-if --no-pretty-print`pro nasazení na úrovni předplatného
+
+Pokud chcete vrátit výsledky bez barev, otevřete [konfigurační soubor Azure CLI](/cli/azure/azure-cli-configuration) . Nastavte **no_color** na **Ano**.
 
 ### <a name="azure-rest-api"></a>Azure REST API
 

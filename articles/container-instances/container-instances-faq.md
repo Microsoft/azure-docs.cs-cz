@@ -3,13 +3,13 @@ title: Nejčastější dotazy
 description: Odpovědi na nejčastější dotazy týkající se služby Azure Container Instances
 author: dkkapur
 ms.topic: article
-ms.date: 04/10/2020
-ms.openlocfilehash: 4fca198356c8db006c4190e0f16b20f78dc1d477
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/02/2020
+ms.openlocfilehash: 64dcd3da42083401d7086c1db6f3f930beb9a76d
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82115223"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447777"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Nejčastější dotazy týkající se Azure Container Instances
 
@@ -33,19 +33,22 @@ Přečtěte si podrobnější [pokyny](container-instances-troubleshooting.md#co
 
 ### <a name="what-windows-base-os-images-are-supported"></a>Jaké základní image operačního systému Windows jsou podporované?
 
+> [!NOTE]
+> V důsledku problémů s zpětnou kompatibilitou po aktualizacích Windows v 2020 obsahují následující verze imagí minimální číslo verze, které doporučujeme použít ve své základní imagi. Aktuální nasazení, která používají starší verze imagí, nejsou ovlivněná, ale nová nasazení by měla splňovat následující základní image. 
+
 #### <a name="windows-server-2016-base-images"></a>Základní image Windows serveru 2016
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `10.0.14393.x`,`sac2016`
-* [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`,`10.0.14393.x`
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016` `10.0.14393.3506` nebo novější
+* [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016` `10.0.14393.3506` nebo novější
 
 > [!NOTE]
 > Image Windows na základě pololetního kanálu verze 1709 nebo 1803 se nepodporují.
 
 #### <a name="windows-server-2019-and-client-base-images-preview"></a>Windows Server 2019 a základní image klienta (Preview)
 
-* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809`, `10.0.17763.914` nebo starší
-* [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019`, `1809` `10.0.17763.914` nebo starší
-* [Windows](https://hub.docker.com/_/microsoft-windows): `1809`, `10.0.17763.914` nebo starší
+* [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `1809` `10.0.17763.1040` nebo novější
+* [Jádro Windows serveru](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2019` , `1809` `10.0.17763.1040` nebo novější
+* [Windows](https://hub.docker.com/_/microsoft-windows): `1809` `10.0.17763.1040` nebo novější
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Jakou vrstvu imagí .NET nebo .NET Core mám použít v kontejneru? 
 

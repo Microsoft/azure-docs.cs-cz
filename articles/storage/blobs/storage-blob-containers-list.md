@@ -4,16 +4,16 @@ description: Přečtěte si, jak zobrazit seznam kontejnerů objektů BLOB v ú�
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/06/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 155b8f5d50c7b106daff8dab4df17200b844c988
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: da0c5bf6bc371bc512d9264afeab52b9908396fa
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135900"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463554"
 ---
 # <a name="list-blob-containers-with-net"></a>Výpis kontejnerů objektů BLOB pomocí .NET
 
@@ -30,9 +30,9 @@ Přetížení pro tyto metody poskytují další možnosti pro správu způsobu,
 
 ### <a name="manage-how-many-results-are-returned"></a>Spravujte, kolik výsledků se vrátí.
 
-Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků. Chcete-li vrátit menší sadu výsledků, zadejte při volání jedné z metod `maxresults` **ListContainerSegmented** nenulovou hodnotu parametru.
+Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků. Chcete-li vrátit menší sadu výsledků, zadejte `maxresults` při volání jedné z metod **ListContainerSegmented** nenulovou hodnotu parametru.
 
-Pokud váš účet úložiště obsahuje více než 5000 kontejnerů, nebo pokud jste zadali hodnotu pro `maxresults` takový, že operace výpisu vrátí podmnožinu kontejnerů v účtu úložiště, pak Azure Storage vrátí token pro *pokračování* se seznamem kontejnerů. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
+Pokud váš účet úložiště obsahuje více než 5000 kontejnerů, nebo pokud jste zadali hodnotu pro `maxresults` takový, že operace výpisu vrátí podmnožinu kontejnerů v účtu úložiště, pak Azure Storage vrátí *token pro pokračování* se seznamem kontejnerů. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
 
 V kódu zkontrolujte hodnotu tokenu pokračování a určete, zda má hodnotu null. Pokud má token pokračování hodnotu null, sada výsledků je dokončena. Pokud token pro pokračování není null, zavolejte znovu **ListContainersSegmented** nebo **ListContainersSegmentedAsync** , předejte do tokenu pro pokračování, aby se načetla další sada výsledků, dokud token pro pokračování nemá hodnotu null.
 
@@ -100,5 +100,5 @@ private static async Task ListContainersWithPrefixAsync(CloudBlobClient blobClie
 
 ## <a name="see-also"></a>Viz také
 
-[Vypsat kontejnery](/rest/api/storageservices/list-containers2)
-[vytváření výčtu prostředků objektů BLOB](/rest/api/storageservices/enumerating-blob-resources)
+[Seznam kontejnerů](/rest/api/storageservices/list-containers2) 
+ [Vytváření výčtu prostředků objektů BLOB](/rest/api/storageservices/enumerating-blob-resources)

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 778a18edafadc0bd043df1e9a5ab1d660fab6525
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: e432f599196a6948633d7150e1a747fbe626e1f4
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83869715"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464653"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -146,7 +146,7 @@ Podporovány jsou pouze svazky NTFS. ReFS, FAT, FAT32 a jiné systémy souborů 
 
 V následující tabulce je uveden stav spolupráce funkcí systému souborů NTFS: 
 
-| Funkce | Stav podpory | Poznámky |
+| Příznak | Stav podpory | Poznámky |
 |---------|----------------|-------|
 | Seznamy ACL | Plně podporováno | Windows – volitelné seznamy řízení přístupu se uchovávají Azure File Sync a vynutily Windows Server na koncových bodech serveru. Seznamy ACL je taky možné vyhovět při přímém připojení sdílené složky Azure, ale to vyžaduje další konfiguraci. Další informace najdete v [části Identita](#identity) . |
 | Pevné odkazy | Přeskočeno | |
@@ -254,9 +254,7 @@ Na základě zásad vaší organizace nebo jedinečných regulativních požadav
 - Nakonfigurujte Azure File Sync pro podporu proxy serveru ve vašem prostředí.
 - Omezí síťovou aktivitu z Azure File Sync.
 
-Další informace o konfiguraci síťových funkcí služby Azure File Sync najdete v těchto tématech:
-- [Nastavení proxy a brány firewall Synchronizace souborů Azure](storage-sync-files-firewall-and-proxy.md)
-- [Zajištění, že Azure File Sync je dobrým sousedem ve vašem datovém centru](storage-sync-files-server-registration.md)
+Další informace o Azure File Sync a sítích najdete v tématu [informace o Azure File Syncch sítích](storage-sync-files-networking-overview.md).
 
 ## <a name="encryption"></a>Šifrování
 Při použití Azure File Sync existují tři různé vrstvy šifrování, které je třeba vzít v úvahu: šifrování v úložišti Windows serveru v klidovém režimu, šifrování mezi agentem Azure File Sync a Azure a šifrování ve zbývající části dat ve sdílené složce Azure. 
@@ -377,7 +375,7 @@ Pokud používáte místní řešení zálohování, měli byste zálohy provád
 > Úplné obnovení systému (BMR) může způsobit neočekávané výsledky a aktuálně se nepodporuje.
 
 > [!Note]  
-> Ve verzi 9 agenta Azure File Sync se teď na svazcích, na kterých je povolená vrstva cloudu, podporují snímky služby Stínová kopie svazku (včetně karty předchozí verze). Je však nutné povolit kompatibilitu předchozí verze prostřednictvím prostředí PowerShell. [Zjistěte jak](storage-files-deployment-guide.md).
+> Ve verzi 9 agenta Azure File Sync se teď na svazcích, na kterých je povolená vrstva cloudu, podporují snímky služby Stínová kopie svazku (včetně karty předchozí verze). Je však nutné povolit kompatibilitu předchozí verze prostřednictvím prostředí PowerShell. [Přečtěte si, jak](storage-files-deployment-guide.md).
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Zásady aktualizace agenta Synchronizace souborů Azure
 [!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]

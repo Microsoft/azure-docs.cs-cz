@@ -1,5 +1,5 @@
 ---
-title: 'Kurz: Azure Active Directory integrace jednotného přihlašování se správou změn procesů | Microsoft Docs'
+title: 'Kurz: integrace služby Azure AD SSO se správou změn procesů'
 description: Přečtěte si, jak nakonfigurovat jednotné přihlašování mezi Azure Active Directory a měnit správu procesů.
 services: active-directory
 documentationCenter: na
@@ -15,137 +15,137 @@ ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ad145593d6811860fe367f5473b54de2a057d71
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: 1f803fda1d1709e60db078f7b729d7588aa725fd
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82984374"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456823"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-change-process-management"></a>Kurz: Azure Active Directory integraci jednotného přihlašování se správou změn procesů
 
 V tomto kurzu se dozvíte, jak integrovat správu procesů změn pomocí Azure Active Directory (Azure AD). Když integrujete správu změn procesu pomocí Azure AD, můžete:
 
-* Řízení ve službě Azure AD, která má přístup ke změně správy procesů.
-* Umožněte, aby se vaši uživatelé automaticky přihlásili ke změně správy procesů pomocí svých účtů Azure AD.
-* Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
+* Pomocí Azure AD můžete řídit, kdo má přístup ke správě změn procesů.
+* Umožněte uživatelům, aby se automaticky přihlásili ke změně správy procesů pomocí svých účtů Azure AD.
+* Spravujte své účty v jednom centrálním umístění: Azure Portal.
 
-Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
+Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [jednotné přihlašování k aplikacím v Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
 
 ## <a name="prerequisites"></a>Požadavky
 
 Chcete-li začít, potřebujete následující položky:
 
 * Předplatné služby Azure AD. Pokud předplatné nemáte, můžete získat [bezplatný účet](https://azure.microsoft.com/free/).
-* Umožňuje změnit odběr správy procesů jednotného přihlašování (SSO) s povoleným jednotným přihlašováním.
+* Předplatné správy procesu změny s povoleným jednotným přihlašováním (SSO).
 
-## <a name="scenario-description"></a>Popis scénáře
+## <a name="tutorial-description"></a>Popis kurzu
 
 V tomto kurzu nakonfigurujete a otestujete jednotné přihlašování Azure AD v testovacím prostředí.
 
-* Změna správy procesů podporuje jednotné přihlašování (SSO) iniciované **IDP**
-* Jakmile nakonfigurujete správu procesu změny, můžete vyhovět řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Řízení relace se rozšiřuje z podmíněného přístupu. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+Změna správy procesů podporuje jednotné přihlašování iniciované IDP.
 
-## <a name="adding-change-process-management-from-the-gallery"></a>Přidání správy změn procesů z Galerie
+Po konfiguraci správy procesu změny můžete vynutili řízení relace, které chrání exfiltrace a infiltraci citlivých dat vaší organizace v reálném čase. Ovládací prvky relace přesahují podmíněný přístup. [Přečtěte si, jak vynutili řízení relace pomocí Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
+
+## <a name="add-change-process-management-from-the-gallery"></a>Přidání změny správy procesů z Galerie
 
 Pokud chcete nakonfigurovat integraci správy změn v rámci služby Azure AD, musíte do seznamu spravovaných aplikací SaaS přidat správu změn procesů z galerie.
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo osobního účet Microsoft.
-1. V levém navigačním podokně vyberte službu **Azure Active Directory** .
-1. Přejděte na **podnikové aplikace** a pak vyberte **všechny aplikace**.
-1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
-1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **změnit správu procesů** .
+1. Přihlaste se k [Azure Portal](https://portal.azure.com) pomocí pracovního nebo školního účtu nebo pomocí osobního účet Microsoft.
+1. V levém podokně vyberte **Azure Active Directory**.
+1. Přejít na **podnikové aplikace** a pak vyberte **všechny aplikace**.
+1. Chcete-li přidat aplikaci, vyberte možnost **Nová aplikace**.
+1. V části **Přidat z Galerie** zadejte do vyhledávacího pole text **změnit správu procesu** .
 1. Na panelu výsledků vyberte **změnit správu procesů** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
 
-## <a name="configure-and-test-azure-ad-single-sign-on-for-change-process-management"></a>Konfigurace a testování jednotného přihlašování Azure AD pro správu změn procesů
+## <a name="configure-and-test-azure-ad-sso-for-change-process-management"></a>Konfigurace a testování jednotného přihlašování služby Azure AD pro správu procesu změny
 
-Nakonfigurujte a otestujte jednotné přihlašování Azure AD pomocí správy změn procesů pomocí testovacího uživatele s názvem **B. Simon**. Aby jednotné přihlašování fungovalo, musíte v rámci správy změn procesů vytvořit vztah propojení mezi uživatelem služby Azure AD a souvisejícím uživatelem.
+Pomocí testovacího uživatele s názvem B. Simon nakonfigurujete a otestujete jednotné přihlašování Azure AD se správou procesů změn. Aby jednotné přihlašování fungovalo, musíte v rámci správy změn procesů vytvořit vztah propojení mezi uživatelem služby Azure AD a odpovídajícím uživatelem.
 
-Ke konfiguraci a testování jednotného přihlašování služby Azure AD se správou procesu změn dokončete následující stavební bloky:
+Pokud chcete nakonfigurovat a otestovat jednotné přihlašování Azure AD pomocí správy změn procesů, provedete tyto kroky vysoké úrovně:
 
-1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** – umožníte uživatelům používat tuto funkci.
-    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** – k otestování jednotného přihlašování Azure AD pomocí B. Simon.
-    1. **[Přiřaďte testovacího uživatele Azure AD](#assign-the-azure-ad-test-user)** – Pokud chcete povolit B. Simon používat jednotné přihlašování Azure AD.
-1. **[Konfigurovat jednotné přihlašování správy procesu](#configure-change-process-management-sso)** – ke konfiguraci nastavení jednotného přihlašování na straně aplikace
-    1. **[Vytvořit testovacího uživatele správy procesu změny](#create-change-process-management-test-user)** – Pokud chcete mít protějšek B. Simon ve správě změn procesů, která je propojená s reprezentací uživatele Azure AD.
-1. **[Test SSO](#test-sso)** – ověřte, zda konfigurace funguje.
+1. **[NAKONFIGURUJTE jednotné přihlašování Azure AD](#configure-azure-ad-sso)** , aby vaši uživatelé mohli používat tuto funkci.
+    1. **[Vytvořte testovacího uživatele Azure AD](#create-an-azure-ad-test-user)** pro testování jednotného přihlašování Azure AD.
+    1. **[Udělte k testovacímu uživateli přístup](#grant-access-to-the-test-user)** , aby mohl uživatel používat jednotné přihlašování Azure AD.
+1. Na straně aplikace **[NAKONFIGURUJTE jednotné přihlašování pro správu procesu](#configure-change-process-management-sso)** .
+    1. **[Vytvoří testovacího uživatele správy procesu změny](#create-a-change-process-management-test-user)** jako protějšek pro uživatele reprezentace Azure AD.
+1. **[Otestujte jednotné přihlašování](#test-sso)** a ověřte, jestli konfigurace funguje.
 
 ## <a name="configure-azure-ad-sso"></a>Konfigurace jednotného přihlašování v Azure AD
 
 Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v Azure Portal.
 
-1. V [Azure Portal](https://portal.azure.com/)na stránce změnit integraci aplikací **správy procesů** najděte část **Správa** a vyberte **jednotné přihlašování**.
+1. V [Azure Portal](https://portal.azure.com/)na stránce změnit integraci aplikací **správy procesů** v části **Spravovat** vyberte **jednotné přihlašování**.
 1. Na stránce **Vyberte metodu jednotného přihlašování** vyberte **SAML**.
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** klikněte na ikonu Upravit/pero pro **základní konfiguraci SAML** a upravte nastavení.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** vyberte tlačítko tužky pro **základní konfiguraci SAML** a upravte nastavení:
 
-   ![Upravit základní konfiguraci SAML](common/edit-urls.png)
+   ![Tlačítko tužky pro základní konfiguraci SAML](common/edit-urls.png)
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** zadejte hodnoty pro následující pole:
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** proveďte tyto kroky:
 
-    a. Do textového pole **identifikátor** zadejte adresu URL pomocí následujícího vzoru:`https://<hostname>:8443/`
+    a. Do pole **identifikátor** zadejte adresu URL v následujícím vzoru:`https://<hostname>:8443/`
 
-    b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://<hostname>:8443/changepilot/saml/sso`
+    b. Do pole **Adresa URL odpovědi** zadejte adresu URL v následujícím vzoru:`https://<hostname>:8443/changepilot/saml/sso`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Obraťte se na kontakt [Change Process Client Support Team](mailto:support@realtech-us.com) pro získání těchto hodnot. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Hodnoty **adresy URL** předchozího **identifikátoru** a odpovědi nejsou aktuálními hodnotami, které byste měli použít. Pokud chcete získat skutečné hodnoty, obraťte se na [tým podpory správy změn procesů](mailto:support@realtech-us.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyberte odkaz **ke stažení** pro **certifikát (Base64)** a Stáhněte certifikát a uložte ho do počítače:
 
     ![Odkaz na stažení certifikátu](common/certificatebase64.png)
 
-1. V části **Nastavení správy procesu změny** zkopírujte příslušné adresy URL na základě vašeho požadavku.
+1. V části **Nastavení správy procesu změny** zkopírujte příslušnou adresu URL nebo adresy URL na základě vašich požadavků:
 
     ![Kopírovat adresy URL konfigurace](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
-V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
+V této části vytvoříte testovacího uživatele s názvem B. Simon ve Azure Portal.
 
-1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
+1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**. Vyberte **Uživatelé**a pak vyberte **Všichni uživatelé**.
 1. V horní části obrazovky vyberte **Nový uživatel** .
-1. Ve vlastnostech **uživatele** proveďte následující kroky:
-   1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
-   1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
-   1. Klikněte na **Vytvořit**.
+1. V části vlastnosti **uživatele** proveďte tyto kroky:
+   1. Do pole **název** zadejte **B. Simon**.  
+   1. Do pole **uživatelské jméno** zadejte \<username> @ \<companydomain> . \<extension> . Například, `B.Simon@contoso.com`.
+   1. Vyberte možnost **Zobrazit heslo**a pak zapište hodnotu, která se zobrazí v poli **heslo** .
+   1. Vyberte **Vytvořit**.
 
-### <a name="assign-the-azure-ad-test-user"></a>Přiřazení testovacího uživatele Azure AD
+### <a name="grant-access-to-the-test-user"></a>Udělení přístupu testovacímu uživateli
 
-V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte přístup ke správě změn procesu.
+V této části povolíte B. Simon pro použití jednotného přihlašování Azure tím, že udělíte tomuto uživateli přístup pro změnu správy procesů.
 
 1. V Azure Portal vyberte **podnikové aplikace**a pak vyberte **všechny aplikace**.
 1. V seznamu aplikace vyberte možnost **změnit správu procesů**.
-1. Na stránce Přehled aplikace najděte část **Správa** a vyberte **Uživatelé a skupiny**.
+1. Na stránce Přehled aplikace v části **Spravovat** vyberte **Uživatelé a skupiny**:
 
-   ![Odkaz uživatelé a skupiny](common/users-groups-blade.png)
+   ![Vyberte Uživatelé a skupiny.](common/users-groups-blade.png)
 
 1. Vyberte **Přidat uživatele**a pak v dialogovém okně **Přidat přiřazení** vyberte **Uživatelé a skupiny** .
 
-    ![Odkaz Přidat uživatele](common/add-assign-user.png)
+    ![Výběr možnosti Přidat uživatele](common/add-assign-user.png)
 
-1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu uživatelé možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
+1. V dialogovém okně **Uživatelé a skupiny** vyberte v seznamu **Uživatelé** možnost **B. Simon** a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
 1. Pokud očekáváte hodnotu role v kontrolním výrazu SAML, v dialogovém okně **Vybrat roli** vyberte v seznamu příslušnou roli pro uživatele a pak klikněte na tlačítko **Vybrat** v dolní části obrazovky.
-1. V dialogovém okně **Přidat přiřazení** klikněte na tlačítko **přiřadit** .
+1. V dialogovém okně **Přidat přiřazení** vyberte **přiřadit**.
 
 ## <a name="configure-change-process-management-sso"></a>Konfigurovat jednotné přihlašování pro správu procesů
 
-Chcete-li konfigurovat jednotné přihlašování při změně na straně **správy procesu** , je třeba odeslat stažený **certifikát (Base64)** a příslušné zkopírované adresy URL z Azure Portal pro [změnu týmu podpory správy procesů](mailto:support@realtech-us.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Chcete-li konfigurovat jednotné přihlašování na straně změnit správu procesu, je třeba odeslat stažený certifikát Base64 a příslušné adresy URL, které jste zkopírovali z Azure Portal do [týmu podpory správy změn procesů](mailto:support@realtech-us.com). Konfigurují připojení SAML pro jednotné přihlašování na obou stranách správně.
 
-### <a name="create-change-process-management-test-user"></a>Vytvořit testovacího uživatele správy procesu změny
-
-V této části vytvoříte uživatele s názvem Britta Simon ve správě změn procesu. Pracujte s [týmem podpory správy změn procesů](mailto:support@realtech-us.com) a přidejte uživatele na platformě správy změn procesů. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+### <a name="create-a-change-process-management-test-user"></a>Vytvořit testovacího uživatele správy procesu změny
+ Pracujte s [týmem podpory správy změn procesů](mailto:support@realtech-us.com) a přidejte uživatele s názvem B. Simon ve správě změn procesů. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 
-V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
+V této části otestujete konfiguraci služby Azure AD SSO pomocí přístupového panelu.
 
-Po kliknutí na dlaždici Správa změn procesu na přístupovém panelu byste měli být automaticky přihlášení ke správě změn procesu, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když na přístupovém panelu kliknete na dlaždici Správa procesu změny, měli byste být automaticky přihlášeni k instanci správy procesu změny, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>Další zdroje
 
-- [Seznam kurzů pro integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Kurzy k integraci aplikací SaaS s Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Jak ve službě Azure Active Directory probíhá přístup k aplikacím a jednotné přihlašování?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
 - [Co je podmíněný přístup v Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 

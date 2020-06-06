@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 9262d01e35bd03a9116a30b070b023f578f0b15a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/03/2020
+ms.openlocfilehash: 402fae5622219b14cfdab921ebe1a78ad5dd111e
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74112554"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462834"
 ---
 # <a name="set-rbac-roles-for-administrative-access-to-azure-cognitive-search"></a>Nastavení rolí RBAC pro přístup pro správu k Azure Kognitivní hledání
 
@@ -34,6 +34,21 @@ Pro Azure Kognitivní hledání role jsou přidružené k úrovním oprávnění
 | Čtenář |Zobrazit základy služby a metriky. Členové této role nemůžou zobrazovat index, indexer, zdroj dat ani informace o klíčích.  |
 
 Role neudělují přístupová práva ke koncovému bodu služby. Operace hledání služby, jako je například Správa indexů, naplnění indexu a dotazy na data hledání, se řídí prostřednictvím klíčů rozhraní API, nikoli rolí. Další informace najdete v tématu [Správa klíčů rozhraní API](search-security-api-keys.md).
+
+## <a name="permissions-table"></a>Tabulka oprávnění
+
+V následující tabulce najdete souhrn operací povolených v Azure Kognitivní hledání a který klíč odemkne přístup k určité operaci.
+
+| Operace | Oprávnění |
+|-----------|-------------------------|
+| Vytvoření služby | Vlastník předplatného Azure |
+| Škálování služby | Klíč správce, vlastník RBAC nebo přispěvatel na prostředku  |
+| Odstranění služby | Klíč správce, vlastník RBAC nebo přispěvatel na prostředku |
+| Vytváření, úpravy a odstraňování objektů ve službě: <br>Indexy a části komponent (včetně definic analyzátoru, profilů vyhodnocování, možností CORS), indexerů, zdrojů dat, synonym a návrhů | Klíč správce, vlastník RBAC nebo přispěvatel na prostředku |
+| Dotazování indexu | Správce nebo klíč dotazu (RBAC není k dispozici) |
+| Dotazování systémových informací, jako je vrácení statistik, počtů a seznamů objektů | Klíč správce, RBAC na prostředku (vlastník, přispěvatel, čtenář) |
+| Správa klíčů pro správu | Klíč správce, vlastník RBAC nebo přispěvatel v prostředku |
+| Správa klíčů dotazů |  Klíč správce, vlastník RBAC nebo přispěvatel v prostředku  |
 
 ## <a name="see-also"></a>Viz také
 

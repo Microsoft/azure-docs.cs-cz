@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 05/11/2017
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 8a1c91c8a8a59af26386e70e68e7c4fd93f5eaa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: a724cf309ef0677b79636f6789de9a6c8f9ba248
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68726344"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465503"
 ---
 # <a name="how-to-use-blob-storage-from-xamarin"></a>Použití Blob Storage z Xamarin
 
@@ -37,7 +37,7 @@ Nyní byste měli mít aplikaci, která vám umožní kliknout na tlačítko, kt
 
 ## <a name="create-container-and-upload-blob"></a>Vytvoření kontejneru a nahrání objektu BLOB
 
-V dalším kroku do `(Portable)` projektu přidáte nějaký kód `MyClass.cs`. Tento kód vytvoří kontejner a nahraje objekt blob do tohoto kontejneru. `MyClass.cs`by měl vypadat takto:
+V dalším kroku do `(Portable)` projektu přidáte nějaký kód `MyClass.cs` . Tento kód vytvoří kontejner a nahraje objekt blob do tohoto kontejneru. `MyClass.cs`by měl vypadat takto:
 
 ```csharp
 using Microsoft.WindowsAzure.Storage;
@@ -233,7 +233,7 @@ namespace XamarinApp.WinPhone
 
 Tuto aplikaci teď můžete spustit v emulátoru pro Android nebo Windows Phone. Tuto aplikaci můžete také spustit v emulátoru iOS, ale bude to vyžadovat Mac. Konkrétní pokyny k tomu, jak to provést, najdete v dokumentaci pro [připojení sady Visual Studio k počítači Mac](https://developer.xamarin.com/guides/ios/getting_started/installation/windows/connecting-to-mac/) .
 
-Po spuštění aplikace se kontejner `mycontainer` vytvoří ve vašem účtu úložiště. Měl by obsahovat objekt BLOB `myblob`, který obsahuje text,. `Hello, world!` Můžete to ověřit pomocí [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/).
+Po spuštění aplikace se kontejner vytvoří `mycontainer` ve vašem účtu úložiště. Měl by obsahovat objekt blob, `myblob` který obsahuje text, `Hello, world!` . Můžete to ověřit pomocí [Průzkumník služby Microsoft Azure Storage](https://storageexplorer.com/).
 
 ## <a name="next-steps"></a>Další kroky
 

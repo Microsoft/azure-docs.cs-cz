@@ -2,13 +2,13 @@
 title: Odstranění trezoru Microsoft Azure Recovery Services
 description: V tomto článku se dozvíte, jak odebrat závislosti a jak odstranit Azure Backup trezoru Recovery Services.
 ms.topic: conceptual
-ms.date: 09/20/2019
-ms.openlocfilehash: 5fcf8004cd5792b30ec57537d5d8ab0bc085dfb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: 07e6a0297d131f4a0b7dc93817d9abcf2ae109d2
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183751"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447743"
 ---
 # <a name="delete-an-azure-backup-recovery-services-vault"></a>Odstranění trezoru Azure Backup Recovery Services
 
@@ -16,33 +16,41 @@ Tento článek popisuje, jak odstranit [Azure Backup](backup-overview.md) trezor
 
 ## <a name="before-you-start"></a>Než začnete
 
-Nelze odstranit Recovery Services trezor, který obsahuje závislosti, jako jsou například chráněné servery nebo servery pro správu zálohování, které jsou k němu přidruženy.
+Trezor Recovery Services nelze odstranit pomocí žádné z následujících závislostí:
 
-- Trezory obsahující zálohovaná data se nedají odstranit (i když jste zastavili ochranu, ale zachovali data ze zálohy).
+- Nemůžete odstranit trezor, který obsahuje chráněné zdroje dat (například virtuální počítače s IaaS, databáze SQL, sdílené složky Azure atd.).  
+- Trezor, který obsahuje data zálohy, nelze odstranit. Po odstranění zálohovaná data přejde do stavu tiché odstranění.
+- Trezor, který obsahuje zálohovaná data, nelze odstranit ve stavu tichého odstranění.
+- Trezor, který má registrované účty úložiště, se nedá odstranit.
 
-- Pokud odstraníte trezor, který obsahuje závislosti, zobrazí se následující zpráva:
+Pokud se pokusíte odstranit trezor bez odebrání závislostí, dojde k jedné z následujících chybových zpráv:
 
-  ![Odstraňte chybu trezoru.](./media/backup-azure-delete-vault/error.png)
+- Trezor není možné odstranit, protože stále obsahuje prostředky. Zajistěte, aby neexistovaly žádné zálohované položky, chráněné servery nebo servery pro správu zálohování přidružené k tomuto trezoru. Než budete pokračovat v odstraňování, zrušte registraci následujících kontejnerů přidružených k tomuto trezoru.
 
-- Pokud odstraníte místní chráněnou položku z portálu, který obsahuje závislosti, zobrazí se varovná zpráva:
+- Trezor služby Recovery Services nejde odstranit, protože obsahuje zálohované položky ve stavu obnovitelného odstranění. Měkké odstraněné položky se po 14 dnech operace odstranění trvale odstraní. Zkuste prosím odstranit trezor, až se zálohované položky trvale odstraní a v trezoru zůstane v tichém odstraněném stavu žádná položka. Další informace najdete v tématu [obnovitelné odstranění pro Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
 
-  ![Odstraňte chybu chráněného serveru.](./media/backup-azure-delete-vault/error-message.jpg)
+## <a name="proper-way-to-delete-a-vault"></a>Správný způsob odstranění trezoru
 
-- Pokud se v části se zobrazí zpráva pro zálohování je stav odstraněno pod varovnou zprávou a budete muset počkat, až se trvale odstraní. Další informace najdete v tomto [článku](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud).
+>[!WARNING]
+>Následující operace je destruktivní a nelze ji vrátit zpět. Všechna zálohovaná data a zálohované položky přidružené k chráněnému serveru budou trvale odstraněny. Postupujte však opatrně.
 
-   ![Odstraňte chybu trezoru.](./media/backup-azure-delete-vault/error-message-soft-delete.png)
+Chcete-li odstranit trezor správně, je nutné postupovat podle kroků v tomto pořadí:
 
-- Trezory, které mají zaregistrované účty úložiště, se nedají odstranit. Informace o zrušení registrace účtu najdete v tématu zrušení [Registrace účtu úložiště](manage-afs-backup.md#unregister-a-storage-account).
-  
-Pokud chcete trezor odstranit, vyberte scénář, který odpovídá vašemu nastavení, a postupujte podle doporučených kroků:
+- **Krok 1**: zakažte funkci obnovitelného odstranění. Postup zakázání obnovitelného odstranění [najdete tady](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#enabling-and-disabling-soft-delete) .
 
-Scénář | Postup odebrání závislostí pro odstranění trezoru |
--- | --
-Mám místní soubory a složky chráněné pomocí agenta Azure Backup, který se zálohuje do Azure | Proveďte kroky v [části odstranění zálohových položek z konzoly pro správu Mars](#delete-backup-items-from-the-mars-management-console) .
-Mám místní počítače, které jsou chráněné pomocí MABS (Microsoft Azure Backup serveru) nebo DPM (System Center Data Protection Manager) do Azure | Proveďte kroky v [části odstranění zálohovaných položek v konzole pro správu MABS](#delete-backup-items-from-the-mabs-management-console) .
-Mám chráněné položky v cloudu (například virtuální počítač s laaS nebo sdílenou složku Azure Files)  | Provedení kroků v [části odstranění chráněných položek v cloudu](#delete-protected-items-in-the-cloud)
-Mám chráněné položky jak místně, tak i v cloudu | Proveďte kroky ve všech následujících částech v tomto pořadí: <br> 1. [odstranění chráněných položek v cloudu](#delete-protected-items-in-the-cloud)<br> 2. [odstraňte zálohované položky z konzoly pro správu Mars](#delete-backup-items-from-the-mars-management-console) . <br> 3. [odstraňte zálohované položky z konzoly pro správu MABS](#delete-backup-items-from-the-mabs-management-console) .
-Nepoužívám místní nebo cloudové chráněné položky; Pořád se ale stále zobrazuje chyba odstraňování trezoru | Proveďte kroky v části [odstranění Recovery Servicesového trezoru pomocí Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager) <br><br> Ujistěte se, že k trezoru nejsou zaregistrované žádné účty úložiště. Informace o zrušení registrace účtu najdete v tématu zrušení [Registrace účtu úložiště](manage-afs-backup.md#unregister-a-storage-account).
+- **Krok 2**: po zakázání obnovitelného odstranění ověřte, jestli ve stavu Thee Soft Deleted nejsou žádné položky. Pokud jsou položky v tichém odstraněném stavu, je nutné je *undelete* znovu odstranit a *Odstranit* . [Pomocí těchto kroků](https://docs.microsoft.com/azure/backup/backup-azure-security-feature-cloud#permanently-deleting-soft-deleted-backup-items) můžete najít obnovitelné položky odstranění a trvale je odstranit.
+
+- **Krok 3**: Chcete-li ověřit, zda jsou k dispozici chráněné položky, je nutné zkontrolovat na následujících třech místech:
+
+  - **Položky chráněné cloudem**: přejděte do nabídky řídicího panelu trezoru > **zálohované položky**. Všechny položky, které jsou zde uvedeny, je nutné odebrat pomocí nástroje **Zastavit zálohování** nebo **Odstranit zálohovaná data** společně s jejich zálohovanými daty.  [Pomocí těchto kroků tyto](#delete-protected-items-in-the-cloud) položky odeberte.
+  - **Servery chráněné Mars**: přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **servery chráněné**infrastruktury zálohování. Pokud máte chráněné servery MARS, musí se všechny uvedené položky odstranit spolu s jejich zálohovanými daty. [Pomocí těchto kroků](#delete-protected-items-on-premises) odstraňte servery chráněné serverem Mars.
+  - **MABS nebo servery pro správu DPM**: přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **servery pro správu zálohování**infrastruktury zálohování. Pokud máte aplikaci DPM nebo Azure Backup Server (MABS), musí se všechny uvedené položky odstranit nebo zrušit jejich registraci spolu s jejich zálohovanými daty. [Pomocí těchto kroků](#delete-protected-items-on-premises) odstraníte servery pro správu.
+
+- **Krok 4**: je potřeba zajistit, aby byly odstraněny všechny registrované účty úložiště. Přejděte do nabídky řídicího panelu trezoru > **Backup Infrastructure**  >  **účty úložiště**infrastruktury zálohování. Pokud zde jsou uvedené účty úložiště, musíte je zrušit. Informace o zrušení registrace účtu najdete v tématu zrušení [Registrace účtu úložiště](manage-afs-backup.md#unregister-a-storage-account).
+
+Po dokončení těchto kroků můžete trezor i nadále [Odstranit](#delete-the-recovery-services-vault).
+
+Pokud nemáte místní nebo cloudové chráněné položky, ale stále dochází k chybě odstranění trezoru, proveďte kroky v části [odstranění Recovery Servicesového trezoru pomocí Azure Resource Manager](#delete-the-recovery-services-vault-by-using-azure-resource-manager)
 
 ## <a name="delete-protected-items-in-the-cloud"></a>Odstranění chráněných položek v cloudu
 
@@ -64,7 +72,7 @@ Chcete-li zastavit ochranu a odstranit data zálohy, proveďte následující kr
 
          ![Podokno odstranit zálohovaná data.](./media/backup-azure-delete-vault/stop-backup-blade-delete-backup-data.png)
 
-3. Podívejte se **Notification** na ikonu oznámení ![: ikona oznámení.](./media/backup-azure-delete-vault/messages.png) Po dokončení procesu se ve službě zobrazí následující zpráva: *zastavte zálohování a odstraňte zálohovaná data pro "* zálohovanou položku *"*. *Operace se úspěšně dokončila*.
+3. Podívejte se na ikonu **oznámení** : ![ ikona oznámení.](./media/backup-azure-delete-vault/messages.png) Po dokončení procesu se ve službě zobrazí následující zpráva: *zastavte zálohování a odstraňte zálohovaná data pro "* zálohovanou položku *"*. *Operace se úspěšně dokončila*.
 4. V nabídce **zálohované položky** vyberte **aktualizovat** a ujistěte se, že se zálohovaná položka odstranila.
 
       ![Stránka Odstranit zálohované položky](./media/backup-azure-delete-vault/empty-items-list.png)
@@ -97,8 +105,11 @@ Nejprve si přečtěte část **[než začnete](#before-you-start)** , abyste po
 
 4. Zaškrtněte políčko souhlasu a pak vyberte **Odstranit**.
 
-5. Podívejte se **Notification** na ikonu ![oznámení odstranit zálohovaná data](./media/backup-azure-delete-vault/messages.png). Po dokončení operace se ve službě zobrazí zpráva: *zastavení zálohování a odstranění zálohovaných dat pro "zálohovanou položku".* *Operace se úspěšně dokončila*.
+5. Podívejte se na ikonu **oznámení** ![ Odstranit zálohovaná data ](./media/backup-azure-delete-vault/messages.png) . Po dokončení operace se ve službě zobrazí zpráva: *zastavení zálohování a odstranění zálohovaných dat pro "zálohovanou položku".* *Operace se úspěšně dokončila*.
 6. V nabídce **zálohované položky** vyberte **aktualizovat** a ujistěte se, že se zálohovaná položka odstranila.
+
+>[!NOTE]
+>Pokud odstraníte místní chráněnou položku z portálu, který obsahuje závislosti, zobrazí se upozornění, že odstranění registrace serveru je destruktivní operace a nelze ji vrátit zpět. Všechna zálohovaná data (body obnovení vyžadované k obnovení dat) a zálohované položky přidružené k chráněnému serveru se trvale odstraní.
 
 Po dokončení tohoto procesu můžete odstranit zálohované položky z konzoly pro správu:
 
@@ -116,7 +127,7 @@ Po dokončení tohoto procesu můžete odstranit zálohované položky z konzoly
 
     ![Zastavte naplánované zálohování.](./media/backup-azure-delete-vault/stop-schedule-backup.png)
 4. Zobrazí se výzva k zadání bezpečnostního kódu PIN (osobní identifikační číslo), které musíte vygenerovat ručně. Abyste to mohli udělat, nejdřív se přihlaste k Azure Portal.
-5. Přejít na**vlastnosti** > **Nastavení** >  **trezoru Recovery Services**.
+5. Přejít na vlastnosti nastavení **trezoru Recovery Services**  >  **Settings**  >  **Properties**.
 6. V části **bezpečnostní kód PIN**vyberte **Generovat**. Zkopírujte tento kód PIN. PIN kód je platný jenom po dobu pěti minut.
 7. V konzole pro správu vložte kód PIN a pak vyberte **OK**.
 
@@ -194,7 +205,7 @@ Zastavení ochrany a odstranění zálohovaných dat:
 
   [Přečtěte si další informace](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupautoprotection?view=azps-2.6.0) o tom, jak zakázat ochranu pro položku chráněnou Azure Backup.
 
-- Zastavte ochranu a odstraňte data pro všechny položky chráněné zálohováním v cloudu (např. virtuální počítač laaS, sdílení souborů Azure atd.):
+- Zastavte ochranu a odstraňte data pro všechny položky chráněné zálohováním v cloudu (například: IaaS VM, sdílení souborů Azure atd.):
 
     ```PowerShell
        Disable-AzRecoveryServicesBackupProtection
@@ -208,7 +219,7 @@ Zastavení ochrany a odstranění zálohovaných dat:
        [<CommonParameters>]
     ```
 
-    [Přečtěte si další](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0) informace o zakázání ochrany pro položku chráněnou zálohováním.
+    [Další informace](https://docs.microsoft.com/powershell/module/az.recoveryservices/disable-azrecoveryservicesbackupprotection?view=azps-2.6.0&viewFallbackFrom=azps-2.5.0)   o zakáže ochranu pro položku chráněnou zálohováním.
 
 - Pro místní soubory a složky chráněné pomocí agenta Azure Backup, který se zálohuje do Azure, pomocí následujícího příkazu PowerShellu odstraňte zálohovaná data z každého modulu MARS PowerShellu:
 
@@ -218,9 +229,9 @@ Zastavení ochrany a odstranění zálohovaných dat:
 
     Příspěvek, kde se zobrazí následující výzva:
 
-    *Microsoft Azure Backup jste si jisti, že chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní. <br/> [Y] Ano [A] Ano všem [N] ne [L] No všem [S] pozastavit [?] Help (výchozí je "Y"):*
+    *Microsoft Azure Backup jste si jisti, že chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní. <br/>[Y] Ano [A] Ano všem [N] ne [L] No všem [S] pozastavit [?] Help (výchozí je "Y"):*
 
-- U místních počítačů chráněných pomocí MABS (Microsoft Azure Backup serveru) nebo DPM do Azure (System Center Data Protection Manager) pomocí následujícího příkazu odstraňte zálohovaná data v Azure.
+- U místních počítačů chráněných pomocí MABS (Microsoft Azure Backup serveru) nebo DPM (System Center Data Protection Manager) do Azure použijte následující příkaz k odstranění zálohovaných dat v Azure.
 
     ```powershell
     Get-OBPolicy | Remove-OBPolicy -DeleteBackup -SecurityPIN <Security Pin>
@@ -228,7 +239,7 @@ Zastavení ochrany a odstranění zálohovaných dat:
 
     Příspěvek, kde se zobrazí následující výzva:
 
-   *Microsoft Azure Backup* Opravdu chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se zálohovaná data trvale odstraní. <br/>
+   *Microsoft Azure Backup* Opravdu chcete odebrat tyto zásady zálohování? Data odstraněných záloh se uchovávají po dobu 14 dnů. Po uplynutí této doby se data záloh trvale odstraní. <br/>
    [Y] Ano [A] Ano všem [N] ne [L] No všem [S] pozastavit [?] Help (výchozí je "Y"):*
 
 Po odstranění zálohovaných dat zrušte registraci místních kontejnerů a serverů pro správu.
@@ -342,7 +353,7 @@ Další informace o příkazu ARMClient najdete v tématu [soubor Readme pro ARM
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>?api-version=2015-03-15
    ```
 
-2. Pokud trezor není prázdný, zobrazí se následující chybová zpráva: *trezor se nedá odstranit, protože v tomto trezoru existují nějaké prostředky.* Chcete-li odebrat chráněnou položku nebo kontejner v rámci trezoru, spusťte následující příkaz:
+2. Pokud trezor není prázdný, zobrazí se tato chybová zpráva: *trezor se nedá odstranit, protože v tomto trezoru existují nějaké prostředky.* Chcete-li odebrat chráněnou položku nebo kontejner v rámci trezoru, spusťte následující příkaz:
 
    ```azurepowershell
    ARMClient.exe delete /subscriptions/<subscriptionID>/resourceGroups/<resourcegroupname>/providers/Microsoft.RecoveryServices/vaults/<recovery services vault name>/registeredIdentities/<container name>?api-version=2016-06-01
@@ -352,5 +363,5 @@ Další informace o příkazu ARMClient najdete v tématu [soubor Readme pro ARM
 
 ## <a name="next-steps"></a>Další kroky
 
-[Další informace o trezorech Recovery Services](backup-azure-recovery-services-vault-overview.md)<br/>
-[Seznamte se s monitorováním a správou trezorů Recovery Services.](backup-azure-manage-windows-server.md)
+[Další informace o trezorech Recovery Services](backup-azure-recovery-services-vault-overview.md) 
+ [Seznamte se s monitorováním a správou trezorů Recovery Services](backup-azure-manage-windows-server.md) .

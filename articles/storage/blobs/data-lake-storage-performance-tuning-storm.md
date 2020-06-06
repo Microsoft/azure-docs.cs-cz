@@ -4,16 +4,16 @@ description: Pokyny pro ladění výkonu Azure Data Lake Storage Gen2
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 125c583512f6bae34c2dd3c3dd76a1b96a181ac1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 60e0d3fc22fdfc158110e9936748cc0bda280853
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74327909"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465911"
 ---
 # <a name="tune-performance-storm-hdinsight--azure-data-lake-storage-gen2"></a>Ladění výkonu: zaplavení, HDInsight & Azure Data Lake Storage Gen2
 
@@ -63,7 +63,7 @@ Předpokládejme, že máte cluster s 8 uzly pracovního procesu s D13v2 virtuá
 Po použití základní topologie můžete zvážit, zda chcete upravit některý z parametrů:
 * **Počet JVMs na pracovní uzel** Pokud máte rozsáhlou datovou strukturu (například vyhledávací tabulku), kterou hostuje paměť, každý JVM vyžaduje samostatnou kopii. Případně můžete datovou strukturu použít napříč mnoha vlákny, pokud máte méně JVMs. V případě vstupně-výstupních operací šroubu se počet JVMs neprovádí jako rozdíl mezi počtem vláken přidaných mezi tyto JVMs. Pro zjednodušení je dobré mít jeden JVM na pracovní proces. V závislosti na tom, co vaše šroub dělá nebo jaké zpracování aplikace potřebujete, ale možná budete muset změnit toto číslo.
 * **Počet prováděcích modulů Spout** Vzhledem k tomu, že předchozí příklad používá šrouby pro zápis do Data Lake Storage Gen2, počet spoutů není přímo relevantní pro výkon šroubu. V závislosti na množství zpracování nebo vstupně-výstupních operacích v Spout je ale vhodné vyladit spoutů pro nejlepší výkon. Ujistěte se, že máte dostatek spoutů, aby bylo možné podržet šrouby obsazené. Výstupní sazby spoutů by měly odpovídat propustnosti šrouby. Skutečná konfigurace závisí na Spout.
-* **Počet úkolů.** Každý šroub se spouští jako jedno vlákno. Další úkoly na šroub neposkytují žádnou další souběžnost. V takovém případě je v případě, že váš proces potvrzování řazené kolekce členů používá velký podíl času spuštění vaší služby, jediný čas, kdy je výhoda výhodná. Před odesláním potvrzení ze šroubu je vhodné seskupit mnoho řazených kolekcí členů do většího připojení. Ve většině případů ale více úkolů neposkytuje žádné další výhody.
+* **Počet úkolů.** Každý šroub se spouští jako jedno vlákno. Další úkoly na šroub neposkytují žádnou další souběžnost. V takovém případě je v případě, že váš proces potvrzování řazené kolekce členů používá velký podíl času spuštění vaší služby, jediný čas, kdy je výhoda výhodná. Před odesláním potvrzení ze svého šroubu je dobré seskupit mnoho řazených kolekcí členů do většího připojení. Ve většině případů ale více úkolů neposkytuje žádné další výhody.
 * **Místní nebo náhodné seskupení.** Pokud je toto nastavení povoleno, budou řazeny do šrouby v rámci stejného pracovního procesu. Tím se sníží komunikace mezi procesy a síťové hovory. Tento postup je doporučený pro většinu topologií.
 
 Tento základní scénář je dobrým výchozím bodem. Otestujte vlastními daty a selepšit předchozí parametry, abyste dosáhli optimálního výkonu.
@@ -72,7 +72,7 @@ Tento základní scénář je dobrým výchozím bodem. Otestujte vlastními dat
 
 K ladění Spout můžete upravit následující nastavení.
 
-- **Časový limit řazené kolekce členů: topologie. Message. Timeout. sekund** Toto nastavení určuje dobu, po kterou je zpráva dokončena, a příjem potvrzení, než se bude považovat za neúspěšné.
+- **Časový limit řazené kolekce členů: topologie. Message. Timeout. sekund** Toto nastavení určuje dobu, po kterou se zpráva dokončí, a před tím, než se považuje za neúspěšnou, obdržení potvrzení.
 
 - **Maximální velikost paměti na pracovní proces: Work. childopts**. Toto nastavení umožňuje určit další parametry příkazového řádku pro pracovníky Java. Nejčastěji používané nastavení je XmX, které určuje maximální velikost paměti přidělené haldě JVM.
 
@@ -89,7 +89,7 @@ I když je vaše topologie spuštěná, můžete ji monitorovat v uživatelském
 
 * **Celková latence spuštění procesu.** Toto je průměrná doba, kterou bude jedna řazená kolekce členů vygenerována Spout, zpracována šroubem a potvrzena.
 
-* **Celková latence procesu šroubů** Jedná se o průměrnou dobu trvání řazené kolekce členů na šroubu, dokud neobdrží potvrzení.
+* **Celková latence procesu šroubů** Jedná se o průměrný čas strávený řazenou kolekcí členů na šroubu, dokud neobdrží potvrzení.
 
 * **Celková latence spuštění šroubu** Toto je průměrný čas strávený šroubem v metodě Execute.
 
@@ -110,8 +110,8 @@ Pokud jste dosáhli limitu šířky pásma poskytovaného Data Lake Storage Gen2
 
 Pokud chcete zjistit, jestli se vám omezilo omezení, povolte protokolování ladění na straně klienta:
 
-1. V **Ambari** > **Storm**Ambari > . log4j**Konfigurace** > **Advanced**, změňte ** &lt;kořenovou úroveň = "informace"&gt; ** na ** &lt;kořenovou úroveň = "ladění"&gt;**. Restartujte všechny uzly/služby, aby se konfigurace projevila.
-2. Sledujte protokoly rozplavení v uzlech pracovních procesů (&lt;pod/var/log/Storm/Worker-artifacts/em&gt;/&lt;/Worker.log portu&gt;) pro výjimky omezování Data Lake Storage Gen2.
+1. V **Ambari**.  >  **Storm**  >  **Config**  >  **log4j konfigurace Advanced**, změňte ** &lt; kořenovou úroveň = "informace" &gt; ** na ** &lt; kořenovou úroveň = "ladění" &gt; **. Restartujte všechny uzly/služby, aby se konfigurace projevila.
+2. Sledujte protokoly rozplavení v uzlech pracovních procesů (pod/var/log/Storm/Worker-artifacts/em &lt; &gt; / &lt; &gt; /Worker.log portu) pro výjimky omezování Data Lake Storage Gen2.
 
 ## <a name="next-steps"></a>Další kroky
 Na [tomto blogu](https://blogs.msdn.microsoft.com/shanyu/2015/05/14/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs/)se dá odkazovat na další ladění výkonu pro zaplavení.

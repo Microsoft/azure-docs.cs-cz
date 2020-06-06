@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: cb7f11f184ba8e19eb8786817da58edf8ddee44e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6b72d80f0be65af22bf334752052757346457a67
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137089"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448627"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>Zesílený modul pro regresi rozhodovacího stromu
 
@@ -99,7 +99,7 @@ Metodu zvyšování barevného přechodu lze také použít pro problémy s klas
 
 Po dokončení školení:
 
-+ Chcete-li použít model pro bodování, připojte ho k [modelu skóre](./score-model.md)a předpovídat hodnoty pro nové vstupní příklady.
++ Chcete-li použít model pro vyhodnocování, připojte model [výuky](train-model.md) k [modelu stanovení skóre](./score-model.md)a předpovídat hodnoty pro nové vstupní příklady.
 
 + Snímek trained model uložíte tak, že vyberete kartu **výstupy** na pravém panelu **trained model** a kliknete na ikona **zaregistrovat datovou sadu** . Kopie vyškolené modelu bude uložena jako modul ve stromu modulu a nebude aktualizována při následných spuštěních kanálu.
 

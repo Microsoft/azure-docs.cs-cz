@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: db488e4a9ec9aa0f4f12c8de45f123dba1a93cdf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 50b6244e5db6f812d1f9e3d23ea5fa88ea3bebea
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82112707"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456806"
 ---
 # <a name="quickstart-add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Rychlý Start: Přidání přihlašování s Microsoftem do webové aplikace ASP.NET Core
 V tomto rychlém startu se naučíte, jak může webová aplikace ASP.NET Core přihlašovat osobní účty (hotmail.com, outlook.com, ostatní) a pracovní a školní účty z jakékoli instance Azure Active Directory (Azure AD). (Podívejte [se, jak ukázka funguje](#how-the-sample-works) pro ilustraci.)
@@ -43,16 +43,16 @@ V tomto rychlém startu se naučíte, jak může webová aplikace ASP.NET Core p
 > 1. Vyberte **Nová registrace**.
 > 1. Když se zobrazí stránka **Registrace aplikace**, zadejte registrační informace vaší aplikace:
 >    - V části **Název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `AspNetCore-Quickstart`.
->    - V seznamu **identifikátor URI**pro `https://localhost:44321/`přesměrování přidejte a vyberte **Registrovat**.
+>    - V seznamu **identifikátor URI pro přesměrování**přidejte `https://localhost:44321/` a vyberte **Registrovat**.
 > 1. Vyberte nabídku **ověřování** a přidejte následující informace:
->    - V **rozevíracích** **identifikátorech URI pro přesměrování**přidejte `https://localhost:44321/signin-oidc`a vyberte Uložit.
->    - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na `https://localhost:44321/signout-oidc`.
+>    - V rozevíracích **identifikátorech URI pro přesměrování**přidejte `https://localhost:44321/signin-oidc` a vyberte **Uložit**.
+>    - V části **Upřesnit nastavení** nastavte **adresu URL pro odhlášení** na `https://localhost:44321/signout-oidc` .
 >    - V části **Implicitní udělení** zaškrtněte políčko **Tokeny ID**.
 >    - Vyberte **Uložit**.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Krok 1: Konfigurace aplikace v Azure Portal
-> Aby ukázka kódu pro tento rychlý Start fungovala, je třeba přidat adresy URL odpovědi jako `https://localhost:44321/` a `https://localhost:44321/signin-oidc`, přidat adresu URL pro odhlášení a vyžádat tokeny ID `https://localhost:44321/signout-oidc`, které budou vydány koncovým bodem autorizace.
+> Aby ukázka kódu pro tento rychlý Start fungovala, je třeba přidat adresy URL odpovědi jako `https://localhost:44321/` a `https://localhost:44321/signin-oidc` , přidat adresu URL pro odhlášení `https://localhost:44321/signout-oidc` a vyžádat tokeny ID, které budou vydány koncovým bodem autorizace.
 > > [!div renderon="portal" id="makechanges" class="nextstepaction"]
 > > [Udělat změnu za mě]()
 >
@@ -143,20 +143,20 @@ public void ConfigureServices(IServiceCollection services)
 
 Metoda `AddAuthentication` nakonfiguruje službu tak, aby přidala ověřování na základě souborů cookie, které se používá v prohlížečových scénářích a nastavení výzvy pro OpenID Connect.
 
-Řádek, který `.AddAzureAd` obsahuje, přidá do vaší aplikace ověřování Microsoft Identity Platform. Pak se nakonfiguruje tak, aby se přihlásilo pomocí koncového bodu Microsoft Identity Platform.
+Řádek, který obsahuje `.AddAzureAd` , přidá do vaší aplikace ověřování Microsoft Identity Platform. Pak se nakonfiguruje tak, aby se přihlásilo pomocí koncového bodu Microsoft Identity Platform.
 
 > |Kde  |  |
 > |---------|---------|
 > | ClientId  | ID aplikace (klienta) z aplikace zaregistrované v Azure Portal. |
-> | Autorita | Koncový bod služby STS pro uživatele, který se má ověřit Obvykle je <https://login.microsoftonline.com/{tenant}/v2.0> to pro veřejný cloud, kde {tenant} je název vašeho TENANTA nebo ID tenanta nebo *společný* odkaz na společný koncový bod (používaný pro víceklientské aplikace). |
-> | TokenValidationParameters | Seznam parametrů pro ověřování tokenů; V tomto případě `ValidateIssuer` je nastaveno `false` , aby označoval, že může přijímat přihlášení z libovolného osobního nebo pracovního nebo školního účtu. |
+> | Autorita | Koncový bod služby STS pro uživatele, který se má ověřit Obvykle je to <https://login.microsoftonline.com/{tenant}/v2.0> pro veřejný cloud, kde {tenant} je název vašeho tenanta nebo ID tenanta nebo *společný* odkaz na společný koncový bod (používaný pro víceklientské aplikace). |
+> | TokenValidationParameters | Seznam parametrů pro ověřování tokenů; V tomto případě `ValidateIssuer` je nastaveno, aby `false` označoval, že může přijímat přihlášení z libovolného osobního nebo pracovního nebo školního účtu. |
 
 
 > [!NOTE]
 > Nastavení `ValidateIssuer = false` je zjednodušení pro tento rychlý Start. Ve skutečných aplikacích potřebujete k ověření vystavitele.
 > V ukázkách si můžete uvědomit, jak to udělat.
 >
-> Všimněte si také `Configure` metody, která obsahuje dvě důležité metody `app.UserCookiePolicy()` : a`app.UseAuthentication()`
+> Všimněte si také `Configure` metody, která obsahuje dvě důležité metody: `app.UseCookiePolicy()` a`app.UseAuthentication()`
 
 ```csharp
 // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -171,7 +171,7 @@ public void Configure(IApplicationBuilder app, IHostingEnvironment env)
 
 ### <a name="protect-a-controller-or-a-controllers-method"></a>Ochrana řadiče nebo akcí řadiče
 
-Pomocí `[Authorize]` atributu můžete chránit metody kontroleru nebo kontroleru. Tento atribut omezuje přístup k řadiči nebo metodám tím, že povoluje pouze ověřené uživatele, což znamená, že je možné spustit ověřovací výzvu pro přístup k řadiči, pokud se uživatel neověřuje.
+Pomocí atributu můžete chránit metody kontroleru nebo kontroleru `[Authorize]` . Tento atribut omezuje přístup k řadiči nebo metodám tím, že povoluje pouze ověřené uživatele, což znamená, že je možné spustit ověřovací výzvu pro přístup k řadiči, pokud se uživatel neověřuje.
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 

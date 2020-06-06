@@ -5,21 +5,21 @@ author: normesta
 ms.service: storage
 ms.date: 03/20/2020
 ms.author: normesta
-ms.topic: conceptual
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: 45870dd7d3035b6b49340fd6e8016794088e775a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 15bdcbfc8e02ff06e09cb1e2a3d0621cb50e4da4
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80061558"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466098"
 ---
 # <a name="use-java-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Správa adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2 pomocí jazyka Java
 
 V tomto článku se dozvíte, jak pomocí jazyka Java vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště s povoleným hierarchickým oborem názvů (HNS). 
 
-[Package (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake) | [Samples](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake) | [API References](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html) | [Gen1 to a Gen2 Mapping](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | –[poskytnutí názoru](https://github.com/Azure/azure-sdk-for-java/issues)
+[Balíček (Maven)](https://search.maven.org/artifact/com.azure/azure-storage-file-datalake)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake)  |  Reference k rozhraní [API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.1/index.html)  |  Mapování Gen1 na [Gen2](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-java/issues)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -109,7 +109,7 @@ static public DataLakeServiceClient GetDataLakeServiceClient
 
 Systém souborů funguje jako kontejner pro vaše soubory. Můžete jej vytvořit zavoláním metody **DataLakeServiceClient. createFileSystem** .
 
-Tento příklad vytvoří systém souborů s názvem `my-file-system`. 
+Tento příklad vytvoří systém souborů s názvem `my-file-system` . 
 
 ```java
 static public DataLakeFileSystemClient CreateFileSystem
@@ -123,7 +123,7 @@ static public DataLakeFileSystemClient CreateFileSystem
 
 Vytvořte odkaz na adresář voláním metody **DataLakeFileSystemClient. createDirectory** .
 
-Tento příklad přidá adresář s názvem `my-directory` do systému souborů a následně přidá podadresář s názvem `my-subdirectory`. 
+Tento příklad přidá adresář s názvem `my-directory` do systému souborů a následně přidá podadresář s názvem `my-subdirectory` . 
 
 ```java
 static public DataLakeDirectoryClient CreateDirectory
@@ -143,7 +143,7 @@ static public DataLakeDirectoryClient CreateDirectory
 
 Přejmenujte nebo přesuňte adresář voláním metody **DataLakeDirectoryClient. rename** . Předejte cestu k požadovanému adresáři do parametru. 
 
-Tento příklad přejmenuje podadresář na název `my-subdirectory-renamed`.
+Tento příklad přejmenuje podadresář na název `my-subdirectory-renamed` .
 
 ```java
 static public DataLakeDirectoryClient
@@ -157,7 +157,7 @@ static public DataLakeDirectoryClient
 }
 ```
 
-Tento příklad přesune adresář s názvem `my-subdirectory-renamed` do podadresáře adresáře s názvem `my-directory-2`. 
+Tento příklad přesune adresář s názvem `my-subdirectory-renamed` do podadresáře adresáře s názvem `my-directory-2` . 
 
 ```java
 static public DataLakeDirectoryClient MoveDirectory
@@ -175,7 +175,7 @@ static public DataLakeDirectoryClient MoveDirectory
 
 Odstraňte adresář voláním metody **DataLakeDirectoryClient. deleteWithResponse** .
 
-Tento příklad odstraní adresář s názvem `my-directory`.   
+Tento příklad odstraní adresář s názvem `my-directory` .   
 
 ```java
 static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
@@ -189,7 +189,7 @@ static public void DeleteDirectory(DataLakeFileSystemClient fileSystemClient){
 
 ## <a name="manage-a-directory-acl"></a>Správa seznamu ACL adresáře
 
-Tento příklad načte a potom nastaví seznam řízení přístupu k adresáři s `my-directory`názvem. Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
+Tento příklad načte a potom nastaví seznam řízení přístupu k adresáři s názvem `my-directory` . Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
 
 > [!NOTE]
 > Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -236,7 +236,7 @@ static public void ManageDirectoryACLs(DataLakeFileSystemClient fileSystemClient
 
 Nejprve vytvořte odkaz na soubor v cílovém adresáři vytvořením instance třídy **DataLakeFileClient** . Nahrajte soubor voláním metody **DataLakeFileClient. Append** . Ujistěte se, že jste dokončí nahrávání voláním metody **DataLakeFileClient. FlushAsync** .
 
-Tento příklad nahraje textový soubor do adresáře s názvem `my-directory`. '
+Tento příklad nahraje textový soubor do adresáře s názvem `my-directory` . '
 
 ```java
 static public void UploadFile(DataLakeFileSystemClient fileSystemClient) 
@@ -286,7 +286,7 @@ static public void UploadFileBulk(DataLakeFileSystemClient fileSystemClient)
 
 ## <a name="manage-a-file-acl"></a>Správa seznamu ACL souboru
 
-Tento příklad načte a potom nastaví seznam řízení přístupu k souboru s `upload-file.txt`názvem. Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
+Tento příklad načte a potom nastaví seznam řízení přístupu k souboru s názvem `upload-file.txt` . Tento příklad uděluje vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním přístup pro čtení.
 
 > [!NOTE]
 > Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
@@ -359,7 +359,7 @@ static public void DownloadFile(DataLakeFileSystemClient fileSystemClient)
 
 ## <a name="list-directory-contents"></a>Výpis obsahu adresáře
 
-Tento příklad vytiskne názvy jednotlivých souborů, které jsou umístěny v adresáři s názvem `my-directory`.
+Tento příklad vytiskne názvy jednotlivých souborů, které jsou umístěny v adresáři s názvem `my-directory` .
 
 ```java
 static public void ListFilesInDirectory(DataLakeFileSystemClient fileSystemClient){

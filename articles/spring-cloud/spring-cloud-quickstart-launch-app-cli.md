@@ -6,12 +6,12 @@ ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 02/15/2020
 ms.author: brendm
-ms.openlocfilehash: c05e53bd8ad8ade8c1e42729f46c99a0059c4dce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ab6eb9b516ca30d92437bdc358e3f1f56cfe8e71
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79470856"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457214"
 ---
 # <a name="quickstart-launch-a-java-spring-application-using-the-azure-cli"></a>Rychlý Start: spuštění aplikace pružiny v jazyce Java pomocí rozhraní příkazového řádku Azure
 
@@ -154,16 +154,8 @@ az spring-cloud app update -n gateway --is-public true
 
 2. Dotazování aplikace **brány** na veřejnou IP adresu vám umožní ověřit, jestli je aplikace spuštěná:
 
-Linux:
-
 ```azurecli
-az spring-cloud app show --name gateway | grep url
-```
-
-Windows:
-
-```azurecli
-az spring-cloud app show -s <service name> -g <resource group> -n gateway -o table
+az spring-cloud app show --name gateway --query properties.url
 ```
 
 3. Pokud chcete spustit aplikaci PiggyMetrics, přejděte na adresu URL poskytnutou předchozím příkazem.
@@ -176,7 +168,7 @@ Můžete také přejít na Azure Portal a najít tak adresu URL.
 
     ![Snímek obrazovky s PiggyMetrics spuštěným](media/spring-cloud-quickstart-launch-app-cli/navigate-app1.png)
     
-4. Najít adresu URL na stránce ![s **přehledem brány** snímku obrazovky PiggyMetrics Running](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
+4. Najít adresu URL na stránce s **přehledem brány** ![ snímku obrazovky PiggyMetrics Running](media/spring-cloud-quickstart-launch-app-cli/navigate-app2-url.png)
 
 > [!div class="nextstepaction"]
 > [Narazil(a) jsem na problém](https://www.research.net/r/javae2e?tutorial=asc-cli-quickstart&step=public-endpoint)

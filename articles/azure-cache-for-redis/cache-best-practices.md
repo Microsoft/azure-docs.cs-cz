@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/06/2020
 ms.author: joncole
-ms.openlocfilehash: 105a3996753a1d1c2d71846cc8bad574e4498acf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6a1dddfbcdbf2bd49586238872db15f1da5d7ce1
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80478604"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457299"
 ---
 # <a name="best-practices-for-azure-cache-for-redis"></a>Osvědčené postupy pro Azure Cache for Redis 
 Pomocí těchto osvědčených postupů můžete maximalizovat výkon a nákladově efektivní využití vaší instance Azure cache pro Redis.
@@ -38,6 +38,8 @@ Pomocí těchto osvědčených postupů můžete maximalizovat výkon a náklado
  * **Nepoužívejte nákladné operace** – některé operace Redis, jako je příkaz [klíče](https://redis.io/commands/keys) , jsou *velmi* nákladné a měly by se jim vyhnout.  Další informace najdete v tématu některé okolnosti týkající se [dlouho běžících příkazů](cache-troubleshoot-server.md#long-running-commands) .
 
  * **Použití šifrování TLS** – služba Azure cache pro Redis vyžaduje ve výchozím nastavení ŠIFROVANOU komunikaci TLS.  V tuto chvíli jsou podporované TLS verze 1,0, 1,1 a 1,2.  TLS 1,0 a 1,1 ale mají cestu k vyřazení celého oboru, takže pokud je to možné, použijte protokol TLS 1,2.  Pokud vaše Klientská knihovna nebo nástroj nepodporuje protokol TLS, je možné povolit nešifrovaná připojení [pomocí Azure Portal](cache-configure.md#access-ports) nebo [rozhraní API pro správu](https://docs.microsoft.com/rest/api/redis/redis/update).  V takových případech, kde nejsou šifrovaná připojení možná, se doporučuje umístění mezipaměti a klientské aplikace do virtuální sítě.  Další informace o portech, které se používají ve scénáři virtuální síťové mezipaměti, najdete v této [tabulce](cache-how-to-premium-vnet.md#outbound-port-requirements).
+ 
+ * **Časový limit nečinnosti** – Azure Redis má v současnosti časový limit nečinnosti pro připojení 10 minut, takže by měl být nastavený na míň než 10 minut.
  
 ## <a name="memory-management"></a>Správa paměti
 Existuje několik věcí, které souvisí s využitím paměti v rámci instance serveru Redis, kterou byste chtěli zvážit.  Tady je několik příkladů:
@@ -67,7 +69,7 @@ Bohužel neexistuje žádná jednoduchá odpověď.  Každá aplikace musí rozh
 Pokud chcete otestovat, jak váš kód funguje v chybových podmínkách, zvažte použití [funkce restartu](cache-administration.md#reboot). Restartování vám umožní zjistit, jak připojení výkyvů ovlivní vaši aplikaci.
 
 ## <a name="performance-testing"></a>Testování výkonu
- * **Začněte tím, `redis-benchmark.exe` že použijete** k dosažení možné propustnosti/latence před zápisem vlastních testů výkonu.  Redis-srovnávací dokumentaci najdete [tady](https://redis.io/topics/benchmarks).  Upozorňujeme, že Redis-test nepodporuje TLS, takže před spuštěním testu budete muset [Povolit port bez TLS přes portál](cache-configure.md#access-ports) .  [Verzi Redis-benchmark. exe kompatibilní s Windows najdete tady.](https://github.com/MSOpenTech/redis/releases)
+ * **Začněte pomocí `redis-benchmark.exe` ** aby se dosáhlo možné propustnosti/latence před zápisem vlastních testů výkonu.  Redis-srovnávací dokumentaci najdete [tady](https://redis.io/topics/benchmarks).  Upozorňujeme, že Redis-test nepodporuje TLS, takže před spuštěním testu budete muset [Povolit port bez TLS přes portál](cache-configure.md#access-ports) .  [Verzi Redis-benchmark. exe kompatibilní s Windows najdete tady.](https://github.com/MSOpenTech/redis/releases)
  * Virtuální počítač klienta, který se používá pro testování, by měl být **ve stejné oblasti** jako instance služby Redis Cache.
  * Pro vašeho klienta **doporučujeme používat pro Dv2 řadu virtuálních počítačů** , protože mají lepší hardware a poskytnou nejlepší výsledky.
  * Ujistěte se, že virtuální počítač klienta, který používáte, má při testování mezipaměti*aspoň tolik výpočetních a šířek pásma* . 

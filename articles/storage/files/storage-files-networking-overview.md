@@ -7,20 +7,20 @@ ms.topic: overview
 ms.date: 02/22/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7d95cc08595296d697618cbb3ff0025c7c212a1f
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 804e469a01be042b4c299fd608f11426e7274b72
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296523"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464806"
 ---
 # <a name="azure-files-networking-considerations"></a>Požadavky na síť pro Azure Files 
 Ke sdílené složce Azure se můžete připojit dvěma způsoby:
 
 - Přímý přístup ke sdílené složce přes protokoly SMB nebo REST. Tento vzor přístupu se primárně používá, když chcete eliminovat tolik místních serverů, kolik jich je možné.
-- Vytvoření mezipaměti sdílené složky Azure na místním serveru pomocí Azure File Sync a přístup k datům sdílené složky z místního serveru s vaším protokolem volbou (SMB, NFS, FTPS atd.) pro váš případ použití. Tento vzor přístupu je užitečný, protože kombinuje nejlépe místní výkon i cloudovou škálu a připojené služby bez serveru, jako je Azure Backup.
+- Vytvoření mezipaměti sdílené složky Azure na místním serveru (nebo na virtuálním počítači Azure) pomocí Azure File Sync a přístup k datům sdílené složky z místního serveru s vaším protokolem, který zvolíte (SMB, NFS, FTPS atd.) pro váš případ použití. Tento vzor přístupu je užitečný, protože kombinuje nejlépe místní výkon i cloudovou škálu a připojené služby bez serveru, jako je Azure Backup.
 
-Tento článek se zaměřuje na konfiguraci sítě pro případy, kdy váš případ použití volá pro přístup ke sdílené složce Azure přímo místo použití Azure File Sync. Další informace o požadavcích na používání sítě pro nasazení Azure File Sync najdete v tématu [konfigurace Azure File Sync proxy serveru a nastavení brány firewall](storage-sync-files-firewall-and-proxy.md).
+Tento článek se zaměřuje na konfiguraci sítě pro případy, kdy váš případ použití volá pro přístup ke sdílené složce Azure přímo místo použití Azure File Sync. Další informace o požadavcích na používání sítě pro nasazení Azure File Sync najdete v tématu [informace o Azure File Syncch sítích](storage-sync-files-networking-overview.md).
 
 Konfigurace sítě pro sdílené složky Azure se provádí v účtu úložiště Azure. Účet úložiště je konstrukce správy, která představuje sdílený fond úložiště, ve kterém můžete nasadit více sdílených složek a další prostředky úložiště, jako jsou kontejnery nebo fronty objektů BLOB. Účty úložiště zpřístupňují více nastavení, která vám pomůžou zabezpečit síťový přístup ke sdíleným složkám: koncové body sítě, nastavení brány firewall účtu úložiště a šifrování při přenosu. 
 

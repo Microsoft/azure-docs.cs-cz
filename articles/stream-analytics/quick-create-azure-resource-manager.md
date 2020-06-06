@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, subject-armqs
 ms.date: 05/28/2020
-ms.openlocfilehash: 0d7dc6e09ba3d045fe48b0e91faf59b50d828253
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 127a8550b7f4ca89b8b3a8e61880b295a806e5d0
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172540"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449358"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-by-using-the-azure-resource-manager-template"></a>Rychlý Start: vytvoření úlohy Azure Stream Analytics pomocí šablony Azure Resource Manager
 
@@ -33,13 +33,13 @@ K dokončení tohoto článku potřebujete:
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/tree/master/101-streamanalytics-create).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-streamanalytics-create/).
 
-:::code language="json" source="~/quickstart-templates/101-streamanalytics-create/azuredeploy.json" range="1-66":::
+:::code language="json" source="~/quickstart-templates/101-streamanalytics-create/azuredeploy.json" range="1-66" highlight="41-60":::
 
-Prostředek Azure definovaný v šabloně je [Microsoft. StreamAnalytics/StreamingJobs](https://docs.microsoft.com/azure/templates/microsoft.streamanalytics/2016-03-01/streamingjobs): vytvořte úlohu Azure Stream Analytics. 
+Prostředek Azure definovaný v šabloně je [Microsoft. StreamAnalytics/StreamingJobs](/azure/templates/microsoft.streamanalytics/streamingjobs): vytvořte úlohu Azure Stream Analytics.
 
-## <a name="deploy-the-template"></a>Nasazení šablony
+### <a name="deploy-the-template"></a>Nasazení šablony
 
 V této části vytvoříte úlohu Azure Stream Analytics pomocí šablony Azure Resource Manager.
 
@@ -56,7 +56,7 @@ V této části vytvoříte úlohu Azure Stream Analytics pomocí šablony Azure
    |Vlastnost  |Popis  |
    |---------|---------|
    |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
-   |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/management/overview.md). |
+   |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../azure-resource-manager/management/overview.md). |
    |**Oblast**     | Vyberte **USA – východ**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).        |
    |**Název úlohy Stream Analytics**     | Zadejte název úlohy Stream Analytics.      |
    |**Počet jednotek streamování**     |  Vyberte počet jednotek streamování, které potřebujete. Další informace najdete v tématu [pochopení a úprava jednotek streamování](stream-analytics-streaming-unit-consumption.md).       |

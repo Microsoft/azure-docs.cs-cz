@@ -2,16 +2,14 @@
 title: Otočení certifikátů ve službě Azure Kubernetes (AKS)
 description: Naučte se, jak tyto certifikáty otočit v clusteru Azure Kubernetes Service (AKS).
 services: container-service
-author: zr-msft
 ms.topic: article
 ms.date: 11/15/2019
-ms.author: zarhoads
-ms.openlocfilehash: 00dcef4ae0f04fc7f550859238ae8c7e1ad19384
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ae85b544409cbf4532c221a2a7ca27940ae6f369
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549076"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465605"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Otočení certifikátů ve službě Azure Kubernetes (AKS)
 
@@ -34,10 +32,10 @@ AKS generuje a používá následující certifikáty, certifikační autority a
 * Úložiště hodnot klíčů etcd vytvoří certifikační autoritu, která podepisuje certifikáty k ověřování a autorizaci replikace dat mezi replikami etcd v clusteru AKS.
 * Agregátor rozhraní API používá certifikační autoritu clusteru k vystavování certifikátů pro komunikaci s jinými rozhraními API. Agregátor rozhraní API může mít také vlastní certifikační autoritu pro vydávání certifikátů, ale aktuálně používá certifikační autoritu clusteru.
 * Každý uzel používá token účtu služby (SA), který je podepsaný certifikační autoritou clusteru.
-* `kubectl` Klient nástroje má certifikát pro komunikaci s clusterem AKS.
+* `kubectl`Klient nástroje má certifikát pro komunikaci s clusterem AKS.
 
 > [!NOTE]
-> Clustery AKS vytvořené před vydáním března 2019 obsahují certifikáty, jejichž platnost vyprší po dvou letech. Každý cluster vytvořený po březnu 2019 nebo jakémkoli clusteru, který má jeho certifikáty otočený, má certifikáty certifikační autority clusteru, jejichž platnost vyprší po 30 letech. Platnost všech ostatních certifikátů vyprší po dvou letech. Pokud chcete ověřit, kdy byl cluster vytvořen, `kubectl get nodes` použijte k zobrazení *stáří* fondů uzlů.
+> Clustery AKS vytvořené před vydáním března 2019 obsahují certifikáty, jejichž platnost vyprší po dvou letech. Každý cluster vytvořený po březnu 2019 nebo jakémkoli clusteru, který má jeho certifikáty otočený, má certifikáty certifikační autority clusteru, jejichž platnost vyprší po 30 letech. Platnost všech ostatních certifikátů vyprší po dvou letech. Pokud chcete ověřit, kdy byl cluster vytvořen, použijte `kubectl get nodes` k zobrazení *stáří* fondů uzlů.
 > 
 > Navíc můžete kontrolovat datum vypršení platnosti certifikátu vašeho clusteru. Například následující příkaz zobrazí podrobnosti o certifikátu pro cluster *myAKSCluster* .
 > ```console
@@ -63,16 +61,16 @@ az aks rotate-certs -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME
 ```
 
 > [!IMPORTANT]
-> Dokončení může trvat až 30 minut `az aks rotate-certs` . Pokud příkaz před dokončením skončí, použijte `az aks show` k ověření stavu clusteru *otočení certifikátu*. Pokud je cluster ve stavu selhání, `az aks rotate-certs` znovu ho znovu natočit.
+> Dokončení může trvat až 30 minut `az aks rotate-certs` . Pokud příkaz před dokončením skončí, použijte `az aks show` k ověření stavu clusteru *otočení certifikátu*. Pokud je cluster ve stavu selhání, znovu ho znovu `az aks rotate-certs` natočit.
 
-Spuštěním `kubectl` příkazu ověřte, že staré certifikáty již nejsou platné. Vzhledem k tomu, že jste neaktualizovali `kubectl`certifikáty používané v, zobrazí se chyba.  Příklad:
+Spuštěním příkazu ověřte, že staré certifikáty již nejsou platné `kubectl` . Vzhledem k tomu, že jste neaktualizovali certifikáty používané v `kubectl` , zobrazí se chyba.  Příklad:
 
 ```console
 $ kubectl get no
 Unable to connect to the server: x509: certificate signed by unknown authority (possibly because of "crypto/rsa: verification error" while trying to verify candidate authority certificate "ca")
 ```
 
-Aktualizujte certifikát používaný `kubectl` spuštěním `az aks get-credentials`.
+Aktualizujte certifikát používaný spuštěním `kubectl` `az aks get-credentials` .
 
 ```azurecli
 az aks get-credentials -g $RESOURCE_GROUP_NAME -n $CLUSTER_NAME --overwrite-existing

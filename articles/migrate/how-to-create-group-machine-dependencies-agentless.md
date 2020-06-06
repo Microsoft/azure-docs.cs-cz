@@ -3,12 +3,12 @@ title: Nastavení analýzy závislostí bez agentů v serveru Azure Migrate Asse
 description: Nastavte analýzu závislostí bez agentů v Azure Migrate Server Assessment.
 ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: af767bf73a3b9a6f2a91298987f11974499fd694
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3259c861b0e64b560eb2a17a832a02b87855bebf
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455702"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449188"
 ---
 # <a name="set-up-agentless-dependency-visualization"></a>Nastavení vizualizace závislosti bez agentů 
 
@@ -50,7 +50,7 @@ Přidejte uživatelský účet do zařízení.
 1. Otevřete aplikaci pro správu zařízení. 
 2. Přejděte na panel **poskytnout podrobnosti vCenter** .
 3. V nabídce **zjistit aplikaci a závislosti na virtuálních počítačích**klikněte na **Přidat přihlašovací údaje** .
-3. Vyberte **operační systém**, zadejte popisný název účtu a**heslo** pro **uživatelské jméno**/.
+3. Vyberte **operační systém**, zadejte popisný název účtu a heslo pro **uživatelské jméno** / **Password** .
 6. Klikněte na **Uložit**.
 7. Klikněte na **Uložit a spusťte zjišťování**.
 
@@ -63,9 +63,9 @@ Vyberte počítače, u kterých chcete povolit zjišťování závislostí.
 1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
 2. Klikněte na ikonu **Analýza závislostí** .
 3. Klikněte na **Přidat servery**.
-3. Na stránce **Přidat servery** vyberte zařízení, které zjišťuje příslušné počítače.
-4. V seznamu počítač vyberte počítače.
-5. Klikněte na **Přidat servery**.
+4. Na stránce **Přidat servery** vyberte zařízení, které zjišťuje příslušné počítače.
+5. V seznamu počítač vyberte počítače.
+6. Klikněte na **Přidat servery**.
 
     ![Spustit zjišťování závislosti](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -91,6 +91,20 @@ Po spuštění zjišťování závislostí můžete vizualizovat závislosti př
 
 > [!NOTE]
 > Informace o procesu pro závislost není vždy k dispozici. Pokud není k dispozici, závislost je znázorněna s procesem označeným jako "Neznámý proces".
+
+## <a name="export-dependency-data"></a>Exportovat data závislostí
+
+1. V **Azure Migrate: vyhodnocování serveru**klikněte na **zjištěné servery**.
+2. Klikněte na ikonu **Analýza závislostí** .
+3. Klikněte na **exportovat závislosti aplikací**.
+4. Na stránce **exportovat závislosti aplikací** vyberte zařízení, které zjišťuje příslušné počítače.
+5. Vyberte čas spuštění a čas ukončení. Všimněte si, že data si můžete stáhnout jenom za posledních 30 dní.
+6. Klikněte na **exportovat závislost**.
+
+Data závislosti se exportují a stahují ve formátu CSV. Stažený soubor obsahuje data závislostí napříč všemi počítači, které jsou povoleny pro analýzu závislostí. 
+
+    ![Export dependencies](./media/how-to-create-group-machine-dependencies-agentless/export.png)
+
 
 ## <a name="stop-dependency-discovery"></a>Zastavit zjišťování závislosti
 

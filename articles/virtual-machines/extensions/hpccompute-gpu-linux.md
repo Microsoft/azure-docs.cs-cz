@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 2cfc48f7c152f0f38ca70713dc989029e4e64e8b
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: 6bfbbacd0b30e206a9c1873c4df204117155e044
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773113"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465231"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladače NVIDIA GPU pro Linux
 
@@ -39,8 +39,8 @@ Toto rozšíření podporuje následující distribuce operačního systému, v 
 | Distribuce | Verze |
 |---|---|
 | Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
-| Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6 |
-| Linux: CentOS | 7,3, 7,4, 7,5, 7,6 |
+| Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6, 7,7 |
+| Linux: CentOS | 7,3, 7,4, 7,5, 7,6, 7,7 |
 
 ### <a name="internet-connectivity"></a>Připojení k internetu
 
@@ -62,7 +62,7 @@ Následující JSON zobrazuje schéma pro rozšíření.
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.3",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -77,13 +77,13 @@ Následující JSON zobrazuje schéma pro rozšíření.
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. HpcCompute | řetězec |
 | typ | NvidiaGpuDriverLinux | řetězec |
-| typeHandlerVersion | 1.2 | int |
+| typeHandlerVersion | 1.3 | int |
 
 ### <a name="settings"></a>Nastavení
 
 Všechna nastavení jsou volitelná. Výchozím chováním je neaktualizovat jádro, pokud není pro instalaci ovladače vyžadováno, nainstalujte nejnovější podporovaný ovladač a CUDA Toolkit (podle potřeby).
 
-| Name | Popis | Výchozí hodnota | Platné hodnoty | Typ dat |
+| Name | Description | Výchozí hodnota | Platné hodnoty | Typ dat |
 | ---- | ---- | ---- | ---- | ---- |
 | updateOS | Aktualizace jádra i v případě, že není potřeba k instalaci ovladače | false (nepravda) | true, false | Boolean |
 | driverVersion | NV: verze ovladače mřížky<br> NC/ND: verze sady CUDA Toolkit. Nejnovější ovladače pro zvolené CUDA se nainstalují automaticky. | nejnovější | GRID: "430,30", "418,70", "410,92", "410,71", "390,75", "390,57", "390,42"<br> CUDA: "10.0.130"; "9.2.88"; "9.1.85" | řetězec |
@@ -113,7 +113,7 @@ Následující příklad předpokládá, že rozšíření je vnořeno do prost�
   "properties": {
     "publisher": "Microsoft.HpcCompute",
     "type": "NvidiaGpuDriverLinux",
-    "typeHandlerVersion": "1.2",
+    "typeHandlerVersion": "1.3",
     "autoUpgradeMinorVersion": true,
     "settings": {
     }
@@ -131,7 +131,7 @@ Set-AzVMExtension
     -Publisher "Microsoft.HpcCompute" `
     -ExtensionName "NvidiaGpuDriverLinux" `
     -ExtensionType "NvidiaGpuDriverLinux" `
-    -TypeHandlerVersion 1.2 `
+    -TypeHandlerVersion 1.3 `
     -SettingString '{ `
     }'
 ```
@@ -155,7 +155,7 @@ az vm extension set \
 
 ## <a name="troubleshoot-and-support"></a>Řešení potíží a podpora
 
-### <a name="troubleshoot"></a>Odstranit potíže
+### <a name="troubleshoot"></a>Řešení potíží
 
 Data o stavu nasazení rozšíření lze načíst z Azure Portal a pomocí Azure PowerShell a Azure CLI. Pokud chcete zobrazit stav nasazení rozšíření pro daný virtuální počítač, spusťte následující příkaz.
 

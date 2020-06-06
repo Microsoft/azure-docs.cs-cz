@@ -4,19 +4,19 @@ description: Přečtěte si, jak oznámení podporují vaše aktivity šetření
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 05/05/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 200ede6b4c5565a8eab95b0398abaa1c056c612f
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c7b5208d2da3635e822049859cae9c8f17b6105a
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853106"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464245"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Oznámení Azure Active Directory Identity Protection
 
@@ -43,7 +43,7 @@ Jako správce můžete nastavit:
 - **Příjemci tohoto e-mailu** – ve výchozím nastavení mají příjemci všechny globální správce. Globální správci můžou také přidat další globální správce, správce zabezpečení, čtenáře zabezpečení jako příjemce.
    - Volitelně můžete **Přidat další e-maily pro příjem oznámení o výstrahách** . Tato funkce je verze Preview a uživatelé musí mít příslušná oprávnění k zobrazení propojených sestav v Azure Portal.
 
-V **Azure Portal** v části **Azure Active Directory** > **zabezpečení** > **identity ochrany** > **uživatelů při zjištěných výstrahách**nakonfigurujte e-mailová rizika uživatelů.
+V **Azure Portal** v části **Azure Active Directory**  >  **zabezpečení**  >  **identity ochrany**  >  **uživatelů při zjištěných výstrahách**nakonfigurujte e-mailová rizika uživatelů.
 
 ## <a name="weekly-digest-email"></a>Týdenní e-mail pro výtah
 
@@ -62,7 +62,7 @@ Ve výchozím nastavení mají příjemci všechny globální správce. Globáln
 
 Jako správce můžete zapnout nebo vypnout odesílání e-mailů na týden Digest a vybrat uživatele, kteří mají přiřazený příjem e-mailů.
 
-V **Azure Portal** v části **Azure Active Directory** > **zabezpečení** > **identity** > Security –**týdenní výtah**nakonfigurujte e-maily s týdenním shrnutím.
+V **Azure Portal** v části **Azure Active Directory**  >  **zabezpečení**  >  **identity**Security –  >  **týdenní výtah**nakonfigurujte e-maily s týdenním shrnutím.
 
 ## <a name="see-also"></a>Viz také
 

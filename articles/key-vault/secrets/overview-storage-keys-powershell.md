@@ -8,16 +8,16 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 454420d9b2f4e3cf834490da79f3571691f25bc1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 8cd9c1ba85666a6556e24e4966e1e6cb9b7ef124
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121112"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449304"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Správa klíčů účtu úložiště pomocí Key Vault a Azure PowerShell
 
-Účet úložiště Azure používá přihlašovací údaje, které zahrnují název účtu a klíč. Klíč se vygeneruje automaticky a slouží jako heslo, nikoli jako kryptografický klíč. Key Vault spravuje klíče účtu úložiště tak, že je ukládá jako Key Vault tajných klíčů. 
+Účet úložiště Azure používá přihlašovací údaje, které zahrnují název účtu a klíč. Klíč se vygeneruje automaticky a slouží jako heslo, nikoli jako kryptografický klíč. Key Vault spravuje klíče účtu úložiště tím, že je pravidelně znovu generuje v účtu úložiště, a poskytuje tokeny sdíleného přístupového podpisu pro delegovaný přístup k prostředkům ve vašem účtu úložiště.
 
 Pomocí funkce klíče spravovaného účtu úložiště Key Vault můžete zobrazit (synchronizovat) klíče s účtem služby Azure Storage a pravidelně je znovu vygenerovat (otočit) klíče. Klíče můžete spravovat jak pro účty úložiště, tak pro účty klasického úložiště.
 
@@ -47,7 +47,7 @@ Key Vault je aplikace Microsoftu, která je předem registrovaná ve všech klie
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
 | Azure AD | Veřejný Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
-| Ostatní  | Všechny | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Jiné  | Všechny | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Požadavky
 

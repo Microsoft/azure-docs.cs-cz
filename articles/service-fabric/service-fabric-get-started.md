@@ -3,14 +3,14 @@ title: Nastavení vývojového prostředí pro Windows
 description: Nainstalujte modul runtime, sadu SDK a nástroje a vytvořte místní vývojový cluster. Po dokončení této instalace a nastavení budete moci sestavovat aplikace ve Windows.
 author: peterpogorski
 ms.topic: conceptual
-ms.date: 04/20/2020
+ms.date: 06/01/2020
 ms.custom: sfrev
-ms.openlocfilehash: 1b43c838537e46ffbaf6c4adcfb117f6718bd046
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e51b224bdb91d8bce0f83088791cba8cd3b2d45
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731758"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449409"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Příprava vývojového prostředí ve Windows
 
@@ -68,8 +68,8 @@ Pokud potřebujete jenom sadu SDK, můžete nainstalovat tento balíček:
 
 Aktuální verze jsou:
 
-* 4.1.409 SDK a nástroje pro Service Fabric
-* Service Fabric modulu runtime 7.1.409
+* 4.1.416 SDK a nástroje pro Service Fabric
+* Service Fabric modulu runtime 7.1.416
 
 Seznam podporovaných verzí najdete v tématu [Service Fabric verze](service-fabric-versions.md) .
 

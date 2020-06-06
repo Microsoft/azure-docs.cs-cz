@@ -5,15 +5,15 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: troubleshooting
-ms.date: 04/30/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: ce19c670df5062a11bf86e9c383a322f9033818d
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6e4459eea07f60d90dad692d6625dd45c5038093
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612006"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456959"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>PowerShell pro Windows Virtual Desktop
 
@@ -36,7 +36,7 @@ Tato část obsahuje seznam příkazů PowerShellu, které se obvykle používaj
 ### <a name="error-new-azroleassignment-the-provided-information-does-not-map-to-an-ad-object-id"></a>Chyba: New-AzRoleAssignment: poskytnuté informace nejsou namapovány na ID objektu služby AD.
 
 ```powershell
-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
+New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Desktop Virtualization User" -ResourceName "0301HP-DAG" -ResourceGroupName 0301RG -ResourceType 'Microsoft.DesktopVirtualization/applicationGroups' 
 ```
 
 **Příčina:** Uživatele zadaného parametrem *-SignInName* nelze nalézt v Azure Active Directory vázaných na prostředí virtuálních počítačů s Windows. 
@@ -73,7 +73,7 @@ Oprava: v chybové zprávě se zveřejní seznam podporovaných oblastí. Místo
 New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool
 ```
 
-**Příčina:** Došlo k neshodě umístění. Všechny fondy hostitelů, skupiny aplikací a pracovní prostory mají umístění pro ukládání metadat služby. Všechny objekty, které vytvoříte, se musí nacházet ve stejném umístění. Pokud je například fond hostitelů v `eastus`nástroji, musíte také vytvořit skupiny aplikací v `eastus`nástroji. Pokud vytváříte pracovní prostor pro registraci těchto skupin aplikací do, musí být tento pracovní prostor také `eastus` v.
+**Příčina:** Došlo k neshodě umístění. Všechny fondy hostitelů, skupiny aplikací a pracovní prostory mají umístění pro ukládání metadat služby. Všechny objekty, které vytvoříte, se musí nacházet ve stejném umístění. Pokud je například fond hostitelů v nástroji, musíte `eastus` také vytvořit skupiny aplikací v nástroji `eastus` . Pokud vytváříte pracovní prostor pro registraci těchto skupin aplikací do, musí být tento pracovní prostor `eastus` také v.
 
 **Oprava:** Načtěte umístění, ve kterém byl fond hostitelů vytvořen, a potom přiřaďte skupinu aplikací, kterou vytváříte, do stejného umístění.
 

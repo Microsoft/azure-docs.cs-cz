@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: allensu
-ms.openlocfilehash: af56adef37c65da87a6de6b6a477ee3996a4e272
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 2341fa45446078f669314561db13e640e78776b8
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259588"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463196"
 ---
 # <a name="azure-private-endpoint-dns-configuration"></a>Konfigurace DNS privátního koncového bodu Azure
 
@@ -55,18 +55,24 @@ Pro služby Azure použijte doporučené názvy zón, jak je popsáno v následu
 | Azure Database for MySQL (Microsoft. DBforMySQL/servery)/mysqlServer | privatelink.mysql.database.azure.com | mysql.database.azure.com |
 | Azure Database for MariaDB (Microsoft. DBforMariaDB/servery)/mariadbServer | privatelink.mariadb.database.azure.com | mariadb.database.azure.com |
 | Azure Key Vault (Microsoft. webrecovery/trezory)/trezor | privatelink.vaultcore.azure.net | vault.azure.net <br> vaultcore.azure.net |
-| Azure Kubernetes Service – rozhraní Kubernetes API (Microsoft. ContainerService/managedClusters)/managedCluster | privatelink. {region}. azmk8s. IO | {region}. azmk8s. IO |
+| Azure Kubernetes Service – rozhraní Kubernetes API (Microsoft. ContainerService/managedClusters)/Správa | privatelink. {region}. azmk8s. IO | {region}. azmk8s. IO |
 | Azure Search (Microsoft. Search/searchServices)/searchService | privatelink.search.windows.net | search.windows.net |
 | Azure Container Registry (Microsoft. ContainerRegistry/registrys)/registr | privatelink.azurecr.io | azurecr.io |
 | Konfigurace aplikace Azure (Microsoft. AppConfiguration/configurationStores)/configurationStore | privatelink.azconfig.io | azconfig.io |
 | Azure Backup (Microsoft. RecoveryServices/trezory)/trezor | privatelink. {region}. Backup. windowsazure. com | {region}. Backup. windowsazure. com |
 | Azure Event Hubs (Microsoft. EventHub/obory názvů)/obor názvů | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Service Bus (Microsoft. ServiceBus/obory názvů)/obor názvů | privatelink.servicebus.windows.net | servicebus.windows.net |
+| Azure IoT Hub (Microsoft. Devices/IotHubs)/iotHub | privatelink.azure-devices.net | azure-devices.net |
 | Azure Relay (Microsoft. Relay/obory názvů)/obor názvů | privatelink.servicebus.windows.net | servicebus.windows.net |
 | Azure Event Grid (Microsoft. EventGrid/témata)/téma | privatelink.eventgrid.azure.net | eventgrid.azure.net |
 | Azure Event Grid (Microsoft. EventGrid/domény)/doména | privatelink.eventgrid.azure.net | eventgrid.azure.net |
-| Azure Web Apps (Microsoft. Web/weby)/Web | privatelink.azurewebsites.net | azurewebsites.net |
+| Azure Web Apps (Microsoft. Web/weby)/lokality | privatelink.azurewebsites.net | azurewebsites.net |
 | Azure Machine Learning (Microsoft. MachineLearningServices/pracovní prostory)/pracovní prostor | privatelink.api.azureml.ms | api.azureml.ms |
+| IoT Hub (Microsoft. Devices/IotHubs)/IotHub | privatelink.azure-devices.net | azure-devices.net |
+| Signál (Microsoft. SignalRService/Signaler)/Signal | privatelink.service.signalr.net | service.signalr.net |
+| Azure Monitor (Microsoft. Insights/privateLinkScopes)/azuremonitor | privatelink.monitor.azure.com | monitor.azure.com |
+| Cognitive Services (Microsoft. Cognitiveservices Account/Accounts)/Account | privatelink.cognitiveservices.azure.com  | cognitiveservices.azure.com  |
+
  
 ## <a name="dns-configuration-scenarios"></a>Scénáře konfigurace DNS
 

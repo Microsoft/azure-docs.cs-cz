@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/19/2018
-ms.openlocfilehash: a9378d0f499814706762349a0eac2c5a26ca939a
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 02b7b7b78e2a5933d9e9cc5931ca2cd2a46a6e9e
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042033"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449290"
 ---
 # <a name="manage-schema-in-a-saas-application-using-the-database-per-tenant-pattern-with-azure-sql-database"></a>Správa schématu v aplikaci SaaS pomocí modelu databáze na tenanta s Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,12 +49,10 @@ Model databáze na tenanta izoluje data tenanta efektivně, ale zvyšuje počet 
 ![obrazovka](./media/saas-tenancy-schema-management/schema-management-dpt.png)
 
 
-## <a name="elastic-jobs-limited-preview"></a>Elastic Jobs verze Limited Preview
+## <a name="elastic-jobs-public-preview"></a>Elastické úlohy – verze Public Preview
 
-K dispozici je nová verze elastických úloh, která je teď integrovanou funkcí Azure SQL Database. Tato nová verze služby Elastic Jobs je v současnosti ve verzi Limited Preview. Tato omezená verze Preview aktuálně podporuje použití PowerShellu k vytvoření agenta úloh a T-SQL k vytváření a správě úloh.
-
-> [!NOTE]
-> Tento kurz používá funkce služby SQL Database, které fungují ve verzi Limited Preview (úlohy služby Elastic Database). Pokud chcete tento kurz udělat, zadejte ID předplatného do složky SaaSFeedback@microsoft.com Předmět = elastické úlohy ve verzi Preview. Jakmile dostanete potvrzení o aktivaci vašeho předplatného, [stáhněte a nainstalujte si nejnovější předběžnou verzi rutin úloh](https://github.com/jaredmoo/azure-powershell/releases). Tato verze Preview je omezená, takže se obraťte SaaSFeedback@microsoft.com na související otázky nebo podporu.
+K dispozici je nová verze elastických úloh, která je teď integrovanou funkcí Azure SQL Database. Tato nová verze elastických úloh je momentálně ve verzi Public Preview. Tato verze Public Preview aktuálně podporuje použití PowerShellu k vytvoření agenta úloh a T-SQL k vytváření a správě úloh.
+Další informace najdete v článku o [úlohách elastic Database](https://docs.microsoft.com/azure/azure-sql/database/elastic-jobs-overview) .
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Získání skriptů aplikace Wingtip Tickets SaaS Database na klientské aplikace
 

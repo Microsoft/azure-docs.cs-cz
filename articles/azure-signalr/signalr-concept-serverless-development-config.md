@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: antchu
-ms.openlocfilehash: e1157a695d34c75b237391427b37365421366ef8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dbacb6a5bbdead52750935c476f453423647fc0f
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77523166"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457129"
 ---
 # <a name="azure-functions-development-and-configuration-with-azure-signalr-service"></a>Vývoj a konfigurace služby Azure Functions s využitím služby Azure SignalR Service
 
@@ -32,17 +32,25 @@ V Azure Portal vyhledejte stránku *Nastavení* prostředku služby signaler. Na
 Bezserverová aplikace v reálném čase vytvořená a s využitím Azure Functions a Azure SignalR Service zpravidla vyžaduje dvě funkce Azure Functions:
 
 * Funkci „negotiate“, kterou klient volá k získání adresy URL koncového bodu a platného přístupového tokenu služby SignalR Service
-* Jednu nebo několik funkcí, které odesílají zprávy nebo spravují členství ve skupinách
+* Jedna nebo více funkcí zpracovávajících zprávy ze služby signalizace a odesílání zpráv nebo Správa členství ve skupinách
 
 ### <a name="negotiate-function"></a>funkce Negotiate
 
 Klientská aplikace vyžaduje pro připojení ke službě Azure Signal Service platný přístupový token. Přístupový token může být pro dané ID uživatele anonymní nebo ověřený. Aplikace služby signalizace bez serveru vyžadují koncový bod HTTP s názvem "Negotiate", aby získal token a jiné informace o připojení, jako je například adresa URL koncového bodu služby signalizace.
 
-Pomocí funkce Azure aktivované protokolem HTTP a vstupní vazbou *SignalRConnectionInfo* vygenerujte objekt informace o připojení. Funkce musí mít trasu HTTP, která končí na `/negotiate`.
+Pomocí funkce Azure aktivované protokolem HTTP a vstupní vazbou *SignalRConnectionInfo* vygenerujte objekt informace o připojení. Funkce musí mít trasu HTTP, která končí na `/negotiate` .
+
+U [modelu založeného na třídách](#class-based-model) v jazyce C# není potřeba vstupní vazba *SignalRConnectionInfo* a může přidat vlastní deklarace, které jsou mnohem jednodušší. Viz [dohadování prostředí v modelu založeném na třídě](#negotiate-experience-in-class-based-model)
 
 Další informace o tom, jak vytvořit funkci Negotiate, najdete v [referenčních odkazech na vstupní vazby *SignalRConnectionInfo* ](../azure-functions/functions-bindings-signalr-service-input.md).
 
 Další informace o tom, jak vytvořit ověřený token, najdete v tématu [použití ověřování App Service](#using-app-service-authentication).
+
+### <a name="handle-messages-sent-from-signalr-service"></a>Zpracování zpráv odeslaných ze služby Signal
+
+Použijte vazbu *triggeru signálu* ke zpracování zpráv odeslaných ze služby signalizace. Můžete se aktivovat, když klienti odesílají zprávy nebo se klienti připojí nebo odpojí.
+
+Další informace najdete v [odkazech na *triggery triggeru signálu* .](../azure-functions/functions-bindings-signalr-service-trigger.md)
 
 ### <a name="sending-messages-and-managing-group-membership"></a>Odesílání zpráv a Správa členství ve skupinách
 
@@ -56,6 +64,111 @@ Další informace najdete v odkazu na [výstupní vazbu *signálu* ](../azure-fu
 
 Návěstí má koncept "centra". Každé připojení klienta a každá zpráva odeslaná z Azure Functions je vymezena na konkrétní centrum. Můžete použít centra jako způsob, jak oddělit vaše připojení a zprávy do logických oborů názvů.
 
+## <a name="class-based-model"></a>Model založený na třídě
+
+Model založený na třídě je vyhrazen pro C#. Model založený na třídě může mít konzistentní prostředí pro programování na straně serveru signalizace. Má následující funkce.
+
+* Méně konfigurace funguje: název třídy se používá jako `HubName` , název metody se používá jako `Event` a `Category` automaticky se určuje podle názvu metody.
+* Automatická vazba parametrů: `ParameterNames` není ani atribut `[SignalRParameter]` není potřeba. Parametry jsou automaticky vázány na argumenty metody Azure Function v daném pořadí.
+* Pohodlné prostředí pro výstup a vyjednávání.
+
+Následující kódy demonstrují tyto funkce:
+
+```cs
+public class SignalRTestHub : ServerlessHub
+{
+    [FunctionName("negotiate")]
+    public SignalRConnectionInfo Negotiate([HttpTrigger(AuthorizationLevel.Anonymous)]HttpRequest req)
+    {
+        return Negotiate(req.Headers["x-ms-signalr-user-id"], GetClaims(req.Headers["Authorization"]));
+    }
+
+    [FunctionName(nameof(OnConnected))]
+    public async Task OnConnected([SignalRTrigger]InvocationContext invocationContext, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewConnectionTarget, new NewConnection(invocationContext.ConnectionId));
+        logger.LogInformation($"{invocationContext.ConnectionId} has connected");
+    }
+
+    [FunctionName(nameof(Broadcast))]
+    public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+    {
+        await Clients.All.SendAsync(NewMessageTarget, new NewMessage(invocationContext, message));
+        logger.LogInformation($"{invocationContext.ConnectionId} broadcast {message}");
+    }
+
+    [FunctionName(nameof(OnDisconnected))]
+    public void OnDisconnected([SignalRTrigger]InvocationContext invocationContext)
+    {
+    }
+}
+```
+
+Všechny funkce, které chtějí využít model založený na třídách, musí být metodou třídy, která dědí z **ServerlessHub**. Název třídy `SignalRTestHub` v ukázce je název centra.
+
+### <a name="define-hub-method"></a>Definovat metodu centra
+
+Všechny metody centra **musí** mít `[SignalRTrigger]` atribut a **musí** používat konstruktor bez parametrů. Pak se **název metody** považuje za **událost**parametru.
+
+Ve výchozím nastavení, `category=messages` s výjimkou názvu metody, je jedním z následujících názvů:
+
+* **Připojeno**: zpracovává se jako`category=connections, event=connected`
+* **Odpojeno**: zpracovává se jako`category=connections, event=disconnected`
+
+### <a name="parameter-binding-experience"></a>Prostředí vazeb parametrů
+
+V modelu založeném na třídě `[SignalRParameter]` není nutné, protože všechny argumenty jsou označeny jako `[SignalRParameter]` výchozí, s výjimkou jedné z následujících situací:
+
+* Argument je upraven atributem vazby.
+* Typ argumentu je `ILogger` nebo`CancellationToken`
+* Argument je upraven podle atributu.`[SignalRIgnore]`
+
+### <a name="negotiate-experience-in-class-based-model"></a>Vyjednávat prostředí v modelu založeném na třídě
+
+Místo použití vstupní vazby signálů `[SignalR]` může být vyjednávání v modelu založeném na třídě flexibilnější. Základní třída `ServerlessHub` obsahuje metodu.
+
+```cs
+SignalRConnectionInfo Negotiate(string userId = null, IList<Claim> claims = null, TimeSpan? lifeTime = null)
+```
+
+Tato funkce uživatel přizpůsobuje `userId` nebo `claims` během provádění funkce.
+
+## <a name="use-signalrfilterattribute"></a>Použití `SignalRFilterAttribute`
+
+Uživatel může dědit a implementovat abstraktní třídu `SignalRFilterAttribute` . Pokud jsou výjimky vyvolány v `FilterAsync` , `403 Forbidden` budou odeslány zpět klientům.
+
+Následující příklad ukazuje, jak implementovat filtr zákazníka, který umožňuje `admin` vyvolání pouze `broadcast` .
+
+```cs
+[AttributeUsage(AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
+internal class FunctionAuthorizeAttribute: SignalRFilterAttribute
+{
+    private const string AdminKey = "admin";
+
+    public override Task FilterAsync(InvocationContext invocationContext, CancellationToken cancellationToken)
+    {
+        if (invocationContext.Claims.TryGetValue(AdminKey, out var value) &&
+            bool.TryParse(value, out var isAdmin) &&
+            isAdmin)
+        {
+            return Task.CompletedTask;
+        }
+
+        throw new Exception($"{invocationContext.ConnectionId} doesn't have admin role");
+    }
+}
+```
+
+Využijte atribut k autorizaci funkce.
+
+```cs
+[FunctionAuthorize]
+[FunctionName(nameof(Broadcast))]
+public async Task Broadcast([SignalRTrigger]InvocationContext invocationContext, string message, ILogger logger)
+{
+}
+```
+
 ## <a name="client-development"></a>Vývoj klientů
 
 Klientské aplikace pro signalizaci mohou využívat sadu SDK pro klienty signalizace v jednom z několika jazyků ke snadnému připojení a příjmu zpráv ze služby Azure Signal.
@@ -67,7 +180,7 @@ Aby bylo možné se připojit ke službě Signaler, klient musí dokončit úsp�
 1. Pokud chcete získat platné informace o připojení, vytvořte žádost na koncový bod *Negotiate* http popsanou výše.
 1. Připojení ke službě Signaler pomocí adresy URL koncového bodu služby a přístupového tokenu získaného z koncového bodu *Negotiate*
 
-Klientské sady SDK pro Signal už obsahují logiku potřebnou k provedení metody handshake pro vyjednávání. Předejte adresu URL koncového bodu Negotiate, `negotiate` mínus segment, do sady SDK `HubConnectionBuilder`. Tady je příklad v JavaScriptu:
+Klientské sady SDK pro Signal už obsahují logiku potřebnou k provedení metody handshake pro vyjednávání. Předejte adresu URL koncového bodu Negotiate, mínus `negotiate` segment, do sady SDK `HubConnectionBuilder` . Tady je příklad v JavaScriptu:
 
 ```javascript
 const connection = new signalR.HubConnectionBuilder()
@@ -105,7 +218,7 @@ Klient jazyka JavaScript/TypeScript zpřístupňuje vyjednávání připojení p
 Při spuštění aplikace Function App na místním počítači můžete přidat `Host` oddíl do *Local. Settings. JSON* a povolit CORS. V `Host` části přidejte dvě vlastnosti:
 
 * `CORS`-Zadejte základní adresu URL, která je zdrojem klientské aplikace.
-* `CORSCredentials`– nastavte ho tak `true` , aby povoloval žádosti "withCredentials".
+* `CORSCredentials`– nastavte ho tak, aby `true` povoloval žádosti "withCredentials".
 
 Příklad:
 
@@ -167,7 +280,7 @@ Azure Functions má integrované ověřování, které podporuje oblíbené posk
 
 V Azure Portal na kartě *funkce platformy* Function App otevřete okno nastavení *ověřování/autorizace* . Podle dokumentace pro [App Service ověřování](../app-service/overview-authentication-authorization.md) nakonfigurujte ověřování pomocí poskytovatele identity dle vašeho výběru.
 
-Po nakonfigurování budou ověřené požadavky HTTP `x-ms-client-principal-name` zahrnovat `x-ms-client-principal-id` a hlavičky obsahující uživatelské jméno ověřené identity a ID uživatele v uvedeném pořadí.
+Po nakonfigurování budou ověřené požadavky HTTP zahrnovat `x-ms-client-principal-name` a `x-ms-client-principal-id` hlavičky obsahující uživatelské jméno ověřené identity a ID uživatele v uvedeném pořadí.
 
 Pomocí těchto hlaviček v konfiguraci vazby *SignalRConnectionInfo* můžete vytvářet ověřená připojení. Zde je příklad funkce Negotiate jazyka C#, která používá `x-ms-client-principal-id` hlavičku.
 

@@ -4,19 +4,19 @@ description: Povolení a konfigurace zásad rizik v Azure Active Directory Ident
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 01/06/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ffa08f7ebf013d42d6da0589ce0f1ccc97289de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e134c2e49df5b53ed37acddd86e41af17f43a048
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75707001"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464160"
 ---
 # <a name="how-to-configure-and-enable-risk-policies"></a>Postupy: konfigurace a povolení zásad rizik
 
@@ -54,24 +54,24 @@ Nakonfigurovaná důvěryhodná [Síťová umístění](../conditional-access/lo
 Pokud chcete povolit rizika uživatele a zásady rizik přihlašování, proveďte následující kroky.
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte na **Azure Active Directory** >  > **Přehled****ochrany identit****zabezpečení** > .
+1. Přejděte na **Azure Active Directory**  >  **Security**  >  **Přehled ochrany identit**zabezpečení  >  **Overview**.
 1. Vyberte **Konfigurovat zásady rizik uživatelů**.
    1. V části **přiřazení**
       1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
          1. Volitelně můžete vybrat možnost vyloučení uživatelů ze zásad.
-      1. **Podmínky** - :**riziko pro uživatele** Microsoftu je nastavit tuto možnost na **Vysoká**.
+      1. **Podmínky**  -  **Riziko uživatele** V doporučení Microsoftu je tato možnost nastavená na hodnotu **Vysoká**.
    1. Pod **ovládacími prvky**
       1. **Přístup** – doporučení Microsoftu je **Povolení přístupu** a **vyžadování změny hesla**.
-   1. **Vyhovět zásadám** - **On**
+   1. **Vyhovět zásadám**  -  **Zapnuto**
    1. **Uložit** – Tato akce vás vrátí na stránku **Přehled** .
 1. Vyberte **Konfigurovat zásady rizik přihlašování**.
    1. V části **přiřazení**
       1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
          1. Volitelně můžete vybrat možnost vyloučení uživatelů ze zásad.
-      1. **Podmínky** - **přihlašování:** Pokud chcete, aby se tato možnost nastavila na **střední a vyšší**, je jejich doporučení Microsoftu.
+      1. **Podmínky**  -  **Riziko přihlášení** Doporučení Microsoftu je nastavit tuto možnost na **střední a vyšší**.
    1. Pod **ovládacími prvky**
       1. **Přístup** – doporučení Microsoftu je **Povolení přístupu** a **vyžadování služby Multi-Factor Authentication**.
-   1. **Vyhovět zásadám** - **On**
+   1. **Vyhovět zásadám**  -  **Zapnuto**
    1. **Uložit**
 
 ## <a name="next-steps"></a>Další kroky
@@ -82,4 +82,4 @@ Pokud chcete povolit rizika uživatele a zásady rizik přihlašování, proveď
 
 - [Šetření detekce rizik](howto-identity-protection-investigate-risk.md)
 
-- [Simulace zjišťování rizik](howto-identity-protection-simulate-risk.md)
+- [Simulace detekce rizik](howto-identity-protection-simulate-risk.md)

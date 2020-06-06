@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2019
-ms.openlocfilehash: dbace6b93e07571693b221bb3d2a947010b1e476
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 9a5c03664205676d53c083bddcfa6833ace641d2
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83800002"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457146"
 ---
 # <a name="azure-monitor-overview"></a>Přehled služby Azure Monitor
 
@@ -145,7 +145,7 @@ Automatické škálování umožňuje mít ke zpracování zatížení vaší ap
 K dispozici je více rozhraní API pro čtení a zápis metrik a protokolů do a z Azure Monitor Kromě přístupu k vygenerovaným výstrahám. Můžete také nakonfigurovat a načíst výstrahy. Získáte tak v podstatě neomezené možnosti pro vytváření vlastních řešení, která se integrují s Azure Monitor.
 
 ## <a name="next-steps"></a>Další kroky
-Další informace:
+Přečtěte si další informace:
 
 * [Metriky a protokoly](platform/data-platform.md) pro data shromažďovaná nástrojem Azure monitor.
 * [Zdroje dat](platform/data-sources.md) pro způsob, jakým jednotlivé komponenty vaší aplikace odesílají telemetrii.

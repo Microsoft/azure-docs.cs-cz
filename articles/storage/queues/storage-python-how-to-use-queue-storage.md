@@ -6,15 +6,15 @@ ms.author: mhopkins
 ms.date: 09/17/2019
 ms.service: storage
 ms.subservice: queues
-ms.topic: conceptual
+ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019
-ms.openlocfilehash: ca0831fd7554058d21e315b67d6965579af1d38b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cbaf19c5c4d52a5de1ef1d63ad5465859555810
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060914"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465299"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Jak používat Azure Queue Storage v 2.1 z Pythonu
 
@@ -45,7 +45,7 @@ pip install azure-storage-queue==2.1.0
 ```
 
 > [!NOTE]
-> Pokud provádíte upgrade ze sady Azure Storage SDK pro Python verze 0,36 nebo starší, odinstalujte starší sadu SDK `pip uninstall azure-storage` pomocí nástroje před instalací nejnovějšího balíčku.
+> Pokud provádíte upgrade ze sady Azure Storage SDK pro Python verze 0,36 nebo starší, odinstalujte starší sadu SDK pomocí nástroje `pip uninstall azure-storage` před instalací nejnovějšího balíčku.
 
 Alternativní metody instalace najdete v tématu [Azure Storage SDK pro Python](https://github.com/Azure/azure-storage-python/).
 
@@ -89,7 +89,7 @@ queue_service.decode_function = QueueMessageFormat.binary_base64decode
 
 ## <a name="peek-at-the-next-message"></a>Zobrazení náhledu další zprávy
 
-Můžete prohlížet zprávy před frontou, aniž byste je museli odebírat z fronty voláním metody [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) . Ve výchozím nastavení `peek_messages` se v jedné zprávě prohlédne.
+Můžete prohlížet zprávy před frontou, aniž byste je museli odebírat z fronty voláním metody [peek_messages](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#peek-messages-queue-name--num-messages-none--timeout-none-) . Ve výchozím nastavení se `peek_messages` v jedné zprávě prohlédne.
 
 ```python
 messages = queue_service.peek_messages('taskqueue')
@@ -131,7 +131,7 @@ for message in messages:
 
 ## <a name="get-the-queue-length"></a>Získání délky fronty
 
-Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. Metoda [get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-) požádá službu front, aby vrátila metadata o frontě, a `approximate_message_count`. Výsledek je pouze přibližný, protože je možné přidat nebo odebrat zprávy poté, co služba Queue odpoví na vaši žádost.
+Podle potřeby můžete získat odhadovaný počet zpráv ve frontě. Metoda [get_queue_metadata](/python/api/azure-storage-queue/azure.storage.queue.queueservice.queueservice#get-queue-metadata-queue-name--timeout-none-) požádá službu front, aby vrátila metadata o frontě, a `approximate_message_count` . Výsledek je pouze přibližný, protože je možné přidat nebo odebrat zprávy poté, co služba Queue odpoví na vaši žádost.
 
 ```python
 metadata = queue_service.get_queue_metadata('taskqueue')

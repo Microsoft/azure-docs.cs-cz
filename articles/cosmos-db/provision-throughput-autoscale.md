@@ -5,13 +5,13 @@ author: kirillg
 ms.author: kirillg
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/11/2020
-ms.openlocfilehash: 533cd8fa69c01b8a36ff5e314ce61a4b624e62ec
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 06/04/2020
+ms.openlocfilehash: b2efca53ce8d59ca1e050a9c18100b67024f3ba3
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655821"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465656"
 ---
 # <a name="create-azure-cosmos-containers-and-databases-with-autoscale-throughput"></a>Vytvoření kontejnerů a databází Azure Cosmos s využitím propustnosti automatického škálování
 
@@ -29,7 +29,7 @@ Databáze Azure Cosmos a kontejnery, které jsou nakonfigurované s zajištěnou
 
 * **Škálovatelné:** Databáze a kontejnery automaticky škálují zřízenou propustnost podle potřeby. Nedošlo k přerušení připojení klientů, aplikací nebo vlivu na Azure Cosmos DB SLA.
 
-* **Nákladově efektivní:** Automatické škálování pomáhá optimalizovat využití RU/s a náklady díky horizontálnímu škálování, pokud se nepoužívá. Platíte jenom za prostředky, které vaše úlohy potřebují po hodinách.
+* **Nákladově efektivní:** Automatické škálování pomáhá optimalizovat využití RU/s a náklady díky horizontálnímu škálování, pokud se nepoužívá. Platíte jenom za prostředky, které vaše úlohy potřebují po hodinách. Po všech hodinách v měsíci, pokud nastavíte automatické škálování max. RU/s (tmax) a použijete celou Tmaxu na 66% z hodin nebo méně, ušetříte s automatické škálováním. Další informace najdete v článku [postup výběru mezi standardním (ručním) a zajištěným zajištěním propustnosti v rámci automatického škálování](how-to-choose-offer.md) .
 
 * **Vysoce dostupné:** Databáze a kontejnery využívající automatické škálování používají stejný globálně distribuovaný a vysoce dostupný Azure Cosmos DB back-end odolný proti chybám k zajištění odolnosti dat a vysoké dostupnosti.
 

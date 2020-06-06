@@ -5,17 +5,17 @@ services: cognitive-services
 author: roy-har
 manager: diberry
 ms.service: cognitive-services
-ms.date: 06/03/2020
+ms.date: 06/04/2020
 ms.subservice: language-understanding
 ms.topic: include
 ms.custom: include file
 ms.author: roy-har
-ms.openlocfilehash: cffc9af2ef93ec44e2af9363c0040d1f22d945f7
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 9965e4c856fdef2af17b116264ad5344ebc97eb2
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84416357"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84466909"
 ---
 Vytvořte aplikaci Pizza.
 
@@ -57,7 +57,7 @@ Pokud nemáte prostředek pro vytváření obsahu:
 
 Vaše aplikace Pizza je teď připravená k použití.
 
-## <a name="record-the-app-id-prediction-key-and-prediction-endpoint-of-your-pizza-app"></a>Zaznamenání ID aplikace, klíč předpovědi a koncového bodu předpovědi vaší aplikace Pizza
+## <a name="record-the-access-values-for-your-pizza-app"></a>Poznamenejte si hodnoty pro přístup k aplikaci Pizza.
 
 Pokud chcete používat novou aplikaci Pizza, budete potřebovat ID aplikace, vytváření klíčů a koncový bod pro vytváření aplikací pro Pizza.
 

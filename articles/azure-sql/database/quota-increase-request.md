@@ -7,13 +7,13 @@ ms.topic: conceptual
 author: sachinpMSFT
 ms.author: sachinp
 ms.reviewer: sstein
-ms.date: 02/04/2020
-ms.openlocfilehash: 53160fa5a2d24f747b0653673a6f817ae14a7975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/04/2020
+ms.openlocfilehash: bded7c33493c63a565ebab2dda2dccd320c6aecb
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118869"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456625"
 ---
 # <a name="request-quota-increases-for-azure-sql-database-and-sql-managed-instance"></a>Zvýšení kvóty požadavků pro Azure SQL Database a SQL Managed instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -51,17 +51,18 @@ Pomocí následujícího postupu můžete vytvořit novou žádost o podporu z A
 
 1. V okně **podrobností** vyberte **zadat podrobnosti** a zadejte další informace.
 
-   ![Odkaz "poskytnout podrobnosti"](./media/quota-increase-request/provide-details-link.png)
+   ![Odkaz na zadání podrobností](./media/quota-increase-request/provide-details-link.png)
 
-Kliknutím na Zobrazit **Podrobnosti** zobrazíte okno **Podrobnosti o kvótě** , které vám umožní přidat další informace. Následující části popisují různé možnosti pro **SQL Database** a SQL Database typy kvót **spravované instance** .
+Kliknutím na **zadat podrobnosti** zobrazíte okno s **podrobnostmi o kvótě** , které vám umožní přidat další informace. Následující části popisují různé možnosti pro **SQL Database** a SQL Database typy kvót **spravované instance** .
 
 ## <a name="sql-database-quota-types"></a><a id="sqldbquota"></a>SQL Database typy kvót
 
-Následující části popisují tři možnosti zvýšení kvóty pro **SQL Database** typy kvót:
+Následující části popisují možnosti zvýšení kvóty pro **SQL Database** typy kvót:
 
 - Jednotky transakcí databáze (DTU) na server
 - Servery na předplatné
-- Povolit přístup k předplatnému pro oblast
+- Přístup k oblasti řady M-Series
+- Přístup k oblasti
 
 ### <a name="database-transaction-units-dtus-per-server"></a>Jednotky transakcí databáze (DTU) na server
 
@@ -91,15 +92,32 @@ Pomocí následujících kroků můžete požádat o zvýšení počtu serverů 
 
 Další informace najdete v tématu [SQL Database omezení prostředků a zásady správného řízení prostředků](resource-limits-logical-server.md).
 
-### <a name="enable-subscription-access-to-a-region"></a><a id="other"></a>Povolit přístup k předplatnému pro oblast
+### <a name="enable-subscription-access-to-a-region"></a><a id="region"></a>Povolit přístup k předplatnému pro oblast
 
 Některé typy nabídek nejsou k dispozici v každé oblasti. Může se zobrazit chyba, například následující:
 
-`This location is not available for subscription`
+`Your subscription does not have access to create a server in the selected region. For the latest information about region availability for your subscription, go to aka.ms/sqlcapacity. Please try another region or create a support ticket to request access.`
 
-Pokud vaše předplatné potřebuje přístup v konkrétní oblasti, požádejte prosím o přístup **jinou možnost žádosti o kvótu** . V žádosti zadejte podrobnosti nabídky a skladové položky, které chcete pro oblast povolit. Pokud chcete prozkoumat možnosti nabídky a SKU, přečtěte si téma [Azure SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/single/).
+Pokud vaše předplatné potřebuje přístup v konkrétní oblasti, vyberte možnost **přístup k oblasti** . V žádosti zadejte podrobnosti nabídky a skladové položky, které chcete pro oblast povolit. Pokud chcete prozkoumat možnosti nabídky a SKU, přečtěte si téma [Azure SQL Database ceny](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
-![Podrobnosti o jiné kvótě](./media/quota-increase-request/quota-details-whitelisting.png)
+1. Vyberte typ kvóty **přístupu k oblasti** .
+
+1. V seznamu **Vybrat umístění** vyberte oblast Azure, kterou chcete použít. Kvóta je vázaná na předplatné v každé oblasti.
+
+1. Zadejte **Model nákupu**a očekávané podrobnosti o **spotřebě** .
+
+   ![Přístup k oblasti žádostí](./media/quota-increase-request/quota-details-whitelisting.png)
+
+### <a name="enable-m-series-access-to-a-region"></a><a id="mseries"></a>Povolit přístup k oblasti M-Series
+
+Pokud chcete povolit hardware řady M-Series pro předplatné a oblast, je nutné otevřít žádost o podporu.
+
+1. Vyberte typ kvóty **přístupu oblasti M-Series** .
+
+1. V seznamu **Vybrat umístění** vyberte oblast Azure, kterou chcete použít. Kvóta je vázaná na předplatné v každé oblasti.
+
+
+   ![Přístup k oblasti žádostí](./media/quota-increase-request/quota-m-series.png)
 
 ## <a name="sql-managed-instance-quota-type"></a><a id="sqlmiquota"></a>Typ kvóty spravované instance SQL
 

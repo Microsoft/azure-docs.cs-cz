@@ -8,16 +8,18 @@ ms.author: mcarter
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
-ms.openlocfilehash: 0945743fb2cf3e37345ff562250e48511944cee6
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: e55dfc692bdd625de8873f6e61c9969ed7fbf2df
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125549"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466166"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Vytvoření privátního koncového bodu pro zabezpečené připojení k Azure Kognitivní hledání
 
 V tomto článku použijete Azure Portal k vytvoření nové instance služby Azure Kognitivní hledání, ke které nelze přistupovat prostřednictvím Internetu. Dále nakonfigurujete virtuální počítač Azure ve stejné virtuální síti a použijete ho k přístupu ke službě vyhledávání přes privátní koncový bod.
+
+Soukromé koncové body poskytuje služba [Azure Private Link](../private-link/private-link-overview.md)jako samostatnou službu. Další informace o nákladech najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/private-link/).
 
 > [!Important]
 > Podporu privátního koncového bodu pro Azure Kognitivní hledání můžete nakonfigurovat pomocí Azure Portal nebo [REST API pro správu verze 2020-03-13](https://docs.microsoft.com/rest/api/searchmanagement/). Pokud je koncový bod služby privátní, některé funkce portálu jsou zakázané. Budete moct zobrazit a spravovat informace o úrovni služby, ale přístup k indexovým datům a různým součástem ve službě, jako je index, indexer a definice dovednosti, je z bezpečnostních důvodů omezený.
@@ -42,7 +44,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
 
     | Nastavení | Hodnota |
     | ------- | ----- |
-    | Předplatné | Vyberte své předplatné.|
+    | Předplatné | Výběr předplatného|
     | Skupina prostředků | Vyberte **vytvořit nový**, zadejte *myResourceGroup*a pak vyberte **OK** . |
     | Name | Zadejte *MyVirtualNetwork* |
     | Oblast | Vyberte požadovanou oblast. |
@@ -64,7 +66,7 @@ V této části vytvoříte novou službu Azure Kognitivní hledání s privátn
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **PODROBNOSTI INSTANCE** |  |
-    | zprostředkovatele identity | Zadejte jedinečný název. |
+    | URL | Zadejte jedinečný název. |
     | Umístění | Vyberte požadovanou oblast. |
     | Cenová úroveň | Vyberte **změnit cenovou úroveň** a zvolte požadovanou úroveň služby. (Nepodporuje se na úrovni **Free** . Musí být **Basic** nebo vyšší.) |
     |||

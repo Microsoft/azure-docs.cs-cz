@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: yegu
 ms.custom: mvc
-ms.openlocfilehash: 155993bb3da781e698398ed8ddffa626e8f6cb2d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 904e15611ae3032c0523d5132fea9973fbfe3f3f
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74927073"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457112"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-with-an-aspnet-web-app"></a>Rychlý Start: použití mezipaměti Azure pro Redis s webovou aplikací ASP.NET 
 
@@ -25,7 +25,7 @@ V tomto rychlém startu použijete Visual Studio 2019 k vytvoření webové apli
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
-1. Otevřete Visual Studio a pak vyberte **soubor** >**Nový** > **projekt**.
+1. Otevřete Visual Studio a pak vyberte **soubor**  > **Nový**  >  **projekt**.
 
 2. V dialogovém okně **Nový projekt** postupujte takto:
 
@@ -143,30 +143,34 @@ Modul runtime ASP.NET sloučí obsah externího souboru se značkami v elementu 
 
             // Connection refers to a property that returns a ConnectionMultiplexer
             // as shown in the previous example.
-            IDatabase cache = lazyConnection.Value.GetDatabase();
+            
+            using (ConnectionMultiplexer redis = lazyConnection.Value)
+            {
+               IDatabase cache = redis.GetDatabase();
 
-            // Perform cache operations using the cache object...
 
-            // Simple PING command
-            ViewBag.command1 = "PING";
-            ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
+               // Perform cache operations using the cache object...
 
-            // Simple get and put of integral data types into the cache
-            ViewBag.command2 = "GET Message";
-            ViewBag.command2Result = cache.StringGet("Message").ToString();
+               // Simple PING command
+               ViewBag.command1 = "PING";
+               ViewBag.command1Result = cache.Execute(ViewBag.command1).ToString();
 
-            ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
-            ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
+               // Simple get and put of integral data types into the cache
+               ViewBag.command2 = "GET Message";
+               ViewBag.command2Result = cache.StringGet("Message").ToString();
 
-            // Demonstrate "SET Message" executed as expected...
-            ViewBag.command4 = "GET Message";
-            ViewBag.command4Result = cache.StringGet("Message").ToString();
+               ViewBag.command3 = "SET Message \"Hello! The cache is working from ASP.NET!\"";
+               ViewBag.command3Result = cache.StringSet("Message", "Hello! The cache is working from ASP.NET!").ToString();
 
-            // Get the client list, useful to see if connection list is growing...
-            ViewBag.command5 = "CLIENT LIST";
-            ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
+               // Demonstrate "SET Message" executed as expected...
+               ViewBag.command4 = "GET Message";
+               ViewBag.command4Result = cache.StringGet("Message").ToString();
 
-            lazyConnection.Value.Dispose();
+               // Get the client list, useful to see if connection list is growing...
+               ViewBag.command5 = "CLIENT LIST";
+               ViewBag.command5Result = cache.Execute("CLIENT", "LIST").ToString().Replace(" id=", "\rid=");
+
+            }
 
             return View();
         }
@@ -188,7 +192,7 @@ Modul runtime ASP.NET sloučí obsah externího souboru se značkami v elementu 
 
 ### <a name="to-add-a-new-rediscache-view"></a>Přidání nového zobrazení RedisCache
 
-1. V **Průzkumníku řešení** rozbalte složku **Zobrazení** a klikněte pravým tlačítkem na složku **Domů**. Zvolit **Přidat** > **zobrazení...**.
+1. V **Průzkumníku řešení** rozbalte složku **Zobrazení** a klikněte pravým tlačítkem na složku **Domů**. Zvolit **Přidat**  >  **zobrazení...**.
 
 2. V dialogovém okně **Přidat zobrazení** jako název zobrazení zadejte **RedisCache**. Pak vyberte **Přidat**.
 
@@ -235,11 +239,11 @@ Modul runtime ASP.NET sloučí obsah externího souboru se značkami v elementu 
 Ve výchozím nastavení je projekt konfigurován pro místní hostování aplikace v [IIS Express](https://docs.microsoft.com/iis/extensions/introduction-to-iis-express/iis-express-overview) pro účely testování a ladění.
 
 ### <a name="to-run-the-app-locally"></a>Spuštění aplikace místně
-1. V aplikaci Visual Studio vyberte **ladit** > **Spustit ladění** a sestavte a spusťte aplikaci místně pro účely testování a ladění.
+1. V aplikaci Visual Studio vyberte **ladit**  >  **Spustit ladění** a sestavte a spusťte aplikaci místně pro účely testování a ladění.
 
 2. V prohlížeči na navigačním panelu vyberte **Azure cache for Redis test** .
 
-3. V následujícím příkladu měl `Message` klíč dříve hodnotu uloženou v mezipaměti, která byla nastavena pomocí konzoly Azure cache for Redis na portálu. Aplikace tuto hodnotu z mezipaměti aktualizovala. Aplikace rovněž spustila příkazy `PING` a `CLIENT LIST`.
+3. V následujícím příkladu `Message` měl klíč dříve hodnotu uloženou v mezipaměti, která byla nastavena pomocí konzoly Azure cache for Redis na portálu. Aplikace tuto hodnotu z mezipaměti aktualizovala. Aplikace rovněž spustila příkazy `PING` a `CLIENT LIST`.
 
     ![Jednoduchý test dokončený místně](./media/cache-web-app-howto/cache-simple-test-complete-local.png)
 
@@ -259,7 +263,7 @@ Jakmile aplikaci úspěšně místně otestujete, můžete ji nasadit do Azure a
 
 3. V dialogovém okně **Vytvořit plán App Service** udělejte následující změny:
 
-    | Nastavení | Doporučená hodnota | Popis |
+    | Nastavení | Doporučená hodnota | Description |
     | ------- | :---------------: | ----------- |
     | **Název aplikace** | Použijte výchozí hodnotu. | Po nasazení do Azure se název aplikace stane názvem hostitele této aplikace. Kvůli zachování jedinečnosti může být v případě potřeby tento název doplněný o časové razítko. |
     | **Předplatné** | Zvolte svoje předplatné Azure. | K tomuto předplatnému se účtují všechny související poplatky za hosting. Pokud máte několik předplatných Azure, zkontrolujte, že je vybrané to správné.|

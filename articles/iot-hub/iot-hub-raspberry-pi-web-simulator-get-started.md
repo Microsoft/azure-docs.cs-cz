@@ -10,12 +10,12 @@ ms.devlang: nodejs
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.author: wesmc
-ms.openlocfilehash: efbe41be6c923f3547df86fd6faeb56bff5e0802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c1e56eced3ed675a70cc1ec2461038c80cff233
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73954532"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449783"
 ---
 # <a name="connect-raspberry-pi-online-simulator-to-azure-iot-hub-nodejs"></a>Připojení simulátoru malinu PI online k Azure IoT Hub (Node. js)
 
@@ -23,18 +23,20 @@ ms.locfileid: "73954532"
 
 V tomto kurzu začnete seznámení se základy práce s simulátorem procesu malin. PI v online studiu. Pak se dozvíte, jak bez problémů připojit simulátor PI ke cloudu pomocí služby [Azure IoT Hub](about-iot-hub.md).
 
-Pokud máte fyzická zařízení, začněte tím, že přejdete na web [propojit malin PI s Azure IoT Hub](iot-hub-raspberry-pi-kit-node-get-started.md) .
-
 <p>
 <div id="diag" style="width:100%; text-align:center">
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted" target="_blank">
 <img src="media/iot-hub-raspberry-pi-web-simulator/3-banner.png" alt="Connect Raspberry Pi web simulator to Azure IoT Hub" width="400">
 </div>
+</p>
 <p>
 <div id="button" style="width:100%; text-align:center">
-<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#Getstarted" target="_blank">
+<a href="https://azure-samples.github.io/raspberry-pi-web-simulator/#getstarted" target="_blank">
 <img src="media/iot-hub-raspberry-pi-web-simulator/6-button-default.png" alt="Start Raspberry Pi simulator" width="400" onmouseover="this.src='media/iot-hub-raspberry-pi-web-simulator/5-button-click.png';" onmouseout="this.src='media/iot-hub-raspberry-pi-web-simulator/6-button-default.png';">
+</a>
 </div>
+</p>
+
+Pokud máte fyzická zařízení, začněte tím, že přejdete na web [propojit malin PI s Azure IoT Hub](iot-hub-raspberry-pi-kit-node-get-started.md) .
 
 ## <a name="what-you-do"></a>Co dělat
 
@@ -98,7 +100,7 @@ Webové simulátory mají tři oblasti.
 
 2. Vyberte **Spustit** nebo zadejte `npm start` a spusťte aplikaci.
 
-Měl by se zobrazit následující výstup, který zobrazuje data ze senzorů a zprávy, které se odesílají do vašich ![dat ze senzorů výstupu služby IoT Hub odeslaných z malin. PI do služby IoT Hub.](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
+Měl by se zobrazit následující výstup, který zobrazuje data ze senzorů a zprávy, které se odesílají do vašich ![ dat ze senzorů výstupu služby IoT Hub odeslaných z malin. PI do služby IoT Hub.](media/iot-hub-raspberry-pi-web-simulator/2-run-application.png)
 
 ## <a name="read-the-messages-received-by-your-hub"></a>Přečtěte si zprávy přijaté vaším rozbočovačem.
 

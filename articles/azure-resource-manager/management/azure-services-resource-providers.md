@@ -2,13 +2,13 @@
 title: Poskytovatelé prostředků podle služeb Azure
 description: Vypíše všechny obory názvů poskytovatele prostředků pro Azure Resource Manager a zobrazí službu Azure pro tento obor názvů.
 ms.topic: conceptual
-ms.date: 06/02/2020
-ms.openlocfilehash: 272e6cb27b01ed971025bd273b225d4823d04501
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.date: 06/05/2020
+ms.openlocfilehash: 70abbfe09f3200f0d26978727d21a033e1d4ee34
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424428"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462851"
 ---
 # <a name="resource-providers-for-azure-services"></a>Poskytovatelé prostředků pro služby Azure
 
@@ -25,7 +25,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. AlertsManagement | [Azure Monitor](../../azure-monitor/index.yml) |
 | Microsoft. AnalysisServices | [Azure Analysis Services](/azure/analysis-services/) |
 | Microsoft. ApiManagement | [API Management](../../api-management/index.yml) |
-| Microsoft. AppConfiguration | core |
+| Microsoft. AppConfiguration | [Azure App Configuration](../../azure-app-configuration/index.yml) |
 | Microsoft. AppPlatform | [Azure Spring Cloud](../../spring-cloud/spring-cloud-overview.md) |
 | Microsoft. Attestation | Služba Azure Attestation |
 | Microsoft. Authorization<sup>1</sup> | [Azure Resource Manager](../index.yml) |
@@ -62,7 +62,7 @@ V tomto článku se dozvíte, jak se mapují obory názvů poskytovatele prostř
 | Microsoft. ContainerService | [Azure Kubernetes Service (AKS)](/azure/aks/) |
 | Microsoft. CostManagement<sup>1</sup> | [Správa nákladů](/azure/cost-management/) |
 | Microsoft. CostManagementExports | [Správa nákladů](/azure/cost-management/) |
-| Microsoft. CustomerLockbox | Customer Lockbox pro Microsoft Azure |
+| Microsoft. CustomerLockbox | [Customer Lockbox pro Microsoft Azure](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Vlastní poskytovatelé Azure](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](/azure/databox-family/) |
 | Microsoft. DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |

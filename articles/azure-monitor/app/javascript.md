@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: d46b9f9386e8b16d4806e054820cbd82d83ef56b
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: f198e4aac08039eb7aed8468e6adb45b5b0d67b4
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266984"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464568"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights pro webové stránky
 
@@ -21,7 +21,7 @@ Application Insights můžete použít s jakýmikoli webovými stránkami – st
 ## <a name="adding-the-javascript-sdk"></a>Přidání sady JavaScript SDK
 
 1. Nejdřív potřebujete prostředek Application Insights. Pokud ještě nemáte prostředek a klíč instrumentace, postupujte podle [pokynů pro vytvoření nového prostředku](create-new-resource.md).
-2. Zkopírujte klíč instrumentace z prostředku, kde chcete odeslat telemetrii JavaScriptu.
+2. Zkopírujte _klíč instrumentace_ (označovaný také jako "ikey") pro prostředek, ve kterém chcete odeslat telemetrii JavaScriptu (z kroku 1). Přidáte ho do `instrumentationKey` nastavení Application Insights JavaScript SDK.
 3. Přidejte sadu Application Insights JavaScript SDK do své webové stránky nebo aplikace pomocí jedné z následujících dvou možností:
     * [Nastavení npm](#npm-based-setup)
     * [Fragment kódu JavaScriptu](#snippet-based-setup)
@@ -34,6 +34,14 @@ Application Insights můžete použít s jakýmikoli webovými stránkami – st
 
 ### <a name="npm-based-setup"></a>nastavení založené na npm
 
+Nainstalujte prostřednictvím NPM.
+
+```sh
+npm i --save @microsoft/applicationinsights-web
+```
+
+> *Poznámka:* **psaní jsou součástí tohoto balíčku**, takže **nemusíte** instalovat samostatný balíček pro psaní.
+    
 ```js
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
@@ -47,17 +55,63 @@ appInsights.trackPageView(); // Manually call trackPageView to establish the cur
 
 ### <a name="snippet-based-setup"></a>Nastavení na základě fragmentů kódu
 
-Pokud vaše aplikace nepoužívá NPM, můžete své webové stránky přímo instrumentovat pomocí Application Insights vložením tohoto fragmentu do horní části každé stránky. Nejlépe by měl být první skript v `<head>` oddílu, aby mohl monitorovat případné problémy se všemi vašimi závislostmi. Pokud používáte aplikaci Blazor Server, přidejte fragment kódu na začátek souboru `_Host.cshtml` v `<head>` části.
+Pokud vaše aplikace nepoužívá NPM, můžete své webové stránky přímo instrumentovat pomocí Application Insights vložením tohoto fragmentu do horní části každé stránky. V takovém případě by měl být prvním skriptem v `<head>` oddílu, aby mohl monitorovat případné problémy se všemi vašimi závislostmi a volitelně také chyby JavaScriptu. Pokud používáte aplikaci Blazor Server, přidejte fragment kódu na začátek souboru `_Host.cshtml` v `<head>` části.
+
+Abychom vám pomohli sledovat, kterou verzi fragmentu aplikace používá, počínaje verzí 2.5.5 události zobrazení stránky bude obsahovat novou značku "AI. Internal. fragment", která bude obsahovat identifikovanou verzi fragmentu.
+
+Aktuální fragment kódu (uvedený níže) bude identifikován jako verze "3".
 
 ```html
 <script type="text/javascript">
-var sdkInstance="appInsightsSDK";window[sdkInstance]="appInsights";var aiName=window[sdkInstance],aisdk=window[aiName]||function(n){var o={config:n,initialize:!0},t=document,e=window,i="script";setTimeout(function(){var e=t.createElement(i);e.src=n.url||"https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js",t.getElementsByTagName(i)[0].parentNode.appendChild(e)});try{o.cookie=t.cookie}catch(e){}function a(n){o[n]=function(){var e=arguments;o.queue.push(function(){o[n].apply(o,e)})}}o.queue=[],o.version=2;for(var s=["Event","PageView","Exception","Trace","DependencyData","Metric","PageViewPerformance"];s.length;)a("track"+s.pop());var r="Track",c=r+"Page";a("start"+c),a("stop"+c);var u=r+"Event";if(a("start"+u),a("stop"+u),a("addTelemetryInitializer"),a("setAuthenticatedUserContext"),a("clearAuthenticatedUserContext"),a("flush"),o.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4},!(!0===n.disableExceptionTracking||n.extensionConfig&&n.extensionConfig.ApplicationInsightsAnalytics&&!0===n.extensionConfig.ApplicationInsightsAnalytics.disableExceptionTracking)){a("_"+(s="onerror"));var p=e[s];e[s]=function(e,n,t,i,a){var r=p&&p(e,n,t,i,a);return!0!==r&&o["_"+s]({message:e,url:n,lineNumber:t,columnNumber:i,error:a}),r},n.autoExceptionInstrumented=!0}return o}(
-{
-  instrumentationKey:"INSTRUMENTATION_KEY"
-}
-);(window[aiName]=aisdk).queue&&0===aisdk.queue.length&&aisdk.trackPageView({});
+!function(T,l,y){var S=T.location,u="script",k="instrumentationKey",D="ingestionendpoint",C="disableExceptionTracking",E="ai.device.",I="toLowerCase",b="crossOrigin",w="POST",e="appInsightsSDK",t=y.name||"appInsights";(y.name||T[e])&&(T[e]=t);var n=T[t]||function(d){var g=!1,f=!1,m={initialize:!0,queue:[],sv:"4",version:2,config:d};function v(e,t){var n={},a="Browser";return n[E+"id"]=a[I](),n[E+"type"]=a,n["ai.operation.name"]=S&&S.pathname||"_unknown_",n["ai.internal.sdkVersion"]="javascript:snippet_"+(m.sv||m.version),{time:function(){var e=new Date;function t(e){var t=""+e;return 1===t.length&&(t="0"+t),t}return e.getUTCFullYear()+"-"+t(1+e.getUTCMonth())+"-"+t(e.getUTCDate())+"T"+t(e.getUTCHours())+":"+t(e.getUTCMinutes())+":"+t(e.getUTCSeconds())+"."+((e.getUTCMilliseconds()/1e3).toFixed(3)+"").slice(2,5)+"Z"}(),iKey:e,name:"Microsoft.ApplicationInsights."+e.replace(/-/g,"")+"."+t,sampleRate:100,tags:n,data:{baseData:{ver:2}}}}var h=d.url||y.src;if(h){function a(e){var t,n,a,i,r,o,s,c,p,l,u;g=!0,m.queue=[],f||(f=!0,t=h,s=function(){var e={},t=d.connectionString;if(t)for(var n=t.split(";"),a=0;a<n.length;a++){var i=n[a].split("=");2===i.length&&(e[i[0][I]()]=i[1])}if(!e[D]){var r=e.endpointsuffix,o=r?e.location:null;e[D]="https://"+(o?o+".":"")+"dc."+(r||"services.visualstudio.com")}return e}(),c=s[k]||d[k]||"",p=s[D],l=p?p+"/v2/track":config.endpointUrl,(u=[]).push((n="SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details)",a=t,i=l,(o=(r=v(c,"Exception")).data).baseType="ExceptionData",o.baseData.exceptions=[{typeName:"SDKLoadFailed",message:n.replace(/\./g,"-"),hasFullStack:!1,stack:n+"\nSnippet failed to load ["+a+"] -- Telemetry is disabled\nHelp Link: https://go.microsoft.com/fwlink/?linkid=2128109\nHost: "+(S&&S.pathname||"_unknown_")+"\nEndpoint: "+i,parsedStack:[]}],r)),u.push(function(e,t,n,a){var i=v(c,"Message"),r=i.data;r.baseType="MessageData";var o=r.baseData;return o.message='AI (Internal): 99 message:"'+("SDK LOAD Failure: Failed to load Application Insights SDK script (See stack for details) ("+n+")").replace(/\"/g,"")+'"',o.properties={endpoint:a},i}(0,0,t,l)),function(e,t){if(JSON){var n=T.fetch;if(n&&!y.useXhr)n(t,{method:w,body:JSON.stringify(e),mode:"cors"});else if(XMLHttpRequest){var a=new XMLHttpRequest;a.open(w,t),a.setRequestHeader("Content-type","application/json"),a.send(JSON.stringify(e))}}}(u,l))}function i(e,t){f||setTimeout(function(){!t&&m.core||a()},500)}var e=function(){var n=l.createElement(u);n.src=h;var e=y[b];return!e&&""!==e||"undefined"==n[b]||(n[b]=e),n.onload=i,n.onerror=a,n.onreadystatechange=function(e,t){"loaded"!==n.readyState&&"complete"!==n.readyState||i(0,t)},n}();y.ld<0?l.getElementsByTagName("head")[0].appendChild(e):setTimeout(function(){l.getElementsByTagName(u)[0].parentNode.appendChild(e)},y.ld||0)}try{m.cookie=l.cookie}catch(p){}function t(e){for(;e.length;)!function(t){m[t]=function(){var e=arguments;g||m.queue.push(function(){m[t].apply(m,e)})}}(e.pop())}var n="track",r="TrackPage",o="TrackEvent";t([n+"Event",n+"PageView",n+"Exception",n+"Trace",n+"DependencyData",n+"Metric",n+"PageViewPerformance","start"+r,"stop"+r,"start"+o,"stop"+o,"addTelemetryInitializer","setAuthenticatedUserContext","clearAuthenticatedUserContext","flush"]),m.SeverityLevel={Verbose:0,Information:1,Warning:2,Error:3,Critical:4};var s=(d.extensionConfig||{}).ApplicationInsightsAnalytics||{};if(!0!==d[C]&&!0!==s[C]){method="onerror",t(["_"+method]);var c=T[method];T[method]=function(e,t,n,a,i){var r=c&&c(e,t,n,a,i);return!0!==r&&m["_"+method]({message:e,url:t,lineNumber:n,columnNumber:a,error:i}),r},d.autoExceptionInstrumented=!0}return m}(y.cfg);(T[t]=n).queue&&0===n.queue.length&&n.trackPageView({})}(window,document,{
+src: "https://az416426.vo.msecnd.net/scripts/b/ai.2.min.js", // The SDK URL Source
+//name: "appInsights", // Global SDK Instance name defaults to "appInsights" when not supplied
+//ld: 0, // Defines the load delay (in ms) before attempting to load the sdk. -1 = block page load and add to head. (default) = 0ms load after timeout,
+//useXhr: 1, // Use XHR instead of fetch to report failures (if available),
+//crossOrigin: "anonymous", // When supplied this will add the provided value as the cross origin attribute on the script tag 
+cfg: { // Application Insights Configuration
+    instrumentationKey: "YOUR_INSTRUMENTATION_KEY_GOES_HERE"
+    /* ...Other Configuration Options... */
+}});
 </script>
 ```
+
+> [!NOTE]
+> Z důvodu čitelnosti a snížení možných chyb JavaScriptu jsou všechny možné možnosti konfigurace uvedeny na novém řádku ve výše uvedeném kódu fragmentu, pokud nechcete změnit hodnotu řádku s komentářem, který je možné odebrat.
+
+
+#### <a name="reporting-script-load-failures"></a>Selhání načtení skriptu vytváření sestav
+
+Tato verze fragmentu detekuje a nahlásí selhání při načítání sady SDK ze sítě CDN jako výjimku z portálu Azure Monitor (v &gt; &gt; prohlížeči výjimek), tato výjimka poskytuje přehled o chybách tohoto typu, abyste se dozvěděli, že vaše aplikace nehlásí telemetrii (nebo jiné výjimky) podle očekávání. Tento signál představuje důležité měření v porozumění, že jste ztratili telemetrii, protože sada SDK nebyla načtena nebo inicializována, což může vést k těmto akcím:
+- V části vytváření sestav o tom, jak uživatelé používají (nebo se pokoušejí použít) váš web;
+- Chybí telemetrie o tom, jak vaši koncoví uživatelé používají vaši lokalitu.
+- Došlo k chybě JavaScriptu, která by mohla potenciálně blokovat koncovým uživatelům v úspěšném použití vašeho webu.
+
+Podrobnosti o této výjimce najdete na stránce věnované odstraňování potíží [při selhání načtení sady SDK](javascript-sdk-load-failure.md) .
+
+Vytváření sestav této chyby jako výjimka z portálu nepoužívá možnost konfigurace ```disableExceptionTracking``` z konfigurace Application Insights, a proto v případě, že k této chybě dojde, bude tento fragment kódu vždy ohlášen i v případě, že je zakázána podpora Window. Error.
+
+Generování sestav selhání načtení sady SDK se konkrétně nepodporuje v IE 8 (nebo méně). To pomáhá snižovat velikost minifikovaného fragmentu za předpokladu, že většina prostředí není výhradně IE 8 nebo méně. Pokud máte tento požadavek a chcete přijmout tyto výjimky, budete potřebovat buď vyplnit Poly naplnit, nebo vytvořit vlastní verzi fragmentu, která používá ```XDomainRequest``` místo ```XMLHttpRequest``` , doporučujeme použít [poskytnutý zdrojový kód fragmentu](https://github.com/microsoft/ApplicationInsights-JS/blob/master/AISKU/snippet/snippet.js) jako výchozí bod.
+
+> [!NOTE]
+> Pokud používáte předchozí verzi fragmentu, důrazně doporučujeme, abyste aktualizovali na nejnovější verzi, abyste mohli obdržet tyto dříve neohlášené problémy.
+
+#### <a name="snippet-configuration-options"></a>Možnosti konfigurace fragmentu
+
+Všechny možnosti konfigurace se teď přesunuly na konec skriptu, aby se zabránilo nechtěnému zavlečení chyb JavaScriptu, které nezpůsobí načtení sady SDK, ale zároveň by tím bylo zakázané hlášení o selhání.
+
+Každá možnost konfigurace je uvedená výše na novém řádku, pokud nechcete přepsat výchozí hodnotu položky uvedené jako [volitelné], můžete odebrat tuto čáru, abyste minimalizovali výslednou velikost vrácené stránky.
+
+Dostupné možnosti konfigurace jsou 
+
+| Name | Typ | Description
+|------|------|----------------
+| src | řetězec **[povinné]** | Úplná adresa URL, ze které se má načíst sada SDK Tato hodnota se používá pro atribut src dynamicky přidávaného &lt; skriptu nebo &gt; značky. Můžete použít veřejné umístění CDN nebo vlastní soukromý hostovaný.
+| name | řetězec *[nepovinné]* | Globální název inicializované sady SDK, výchozí hodnota je appInsights. Proto ```window.appInsights``` bude odkaz na inicializovaná instanci. Poznámka: Pokud zadáte hodnotu názvu nebo předchozí instanci, která má být přiřazena (prostřednictvím globálního názvu appInsightsSDK), bude tato hodnota názvu také definována v globálním oboru názvů jako ```window.appInsightsSDK=<name value>``` , to je vyžadováno inicializačním kódem sady SDK, aby bylo zajištěno, že se inicializuje a aktualizuje správné kostry fragmentů a metod proxy.
+| ld | číslo v MS *[nepovinné]* | Definuje zpoždění zátěže, které se má počkat, než se pokusí načíst sadu SDK. Výchozí hodnota je 0ms a jakákoliv záporná hodnota okamžitě Přidá značku skriptu do &lt; hlavní &gt; oblasti stránky. tím se pak zablokuje událost načtení stránky, dokud není načten skript (nebo selže).
+| useXhr | logická hodnota *[nepovinné]* | Toto nastavení se používá pouze při selhání načtení sady SDK pro generování sestav. Vytváření sestav se nejprve pokusí použít metodu Fetch (), je-li k dispozici a pak přechod na XHR, nastavení této hodnoty na hodnotu true pouze obchází kontrolu načtení. Použití této hodnoty se vyžaduje jenom v případě, že se vaše aplikace používá v prostředí, kde se při načítání nepodaří odeslat události selhání.
+| crossOrigin | řetězec *[nepovinné]* | Zahrnutím tohoto nastavení se značka skriptu přidaná ke stažení SDK bude týkat atributu crossOrigin s touto řetězcovou hodnotou. Pokud není definován (výchozí), není přidán žádný atribut crossOrigin. Doporučené hodnoty nejsou definovány (výchozí nastavení); ""; nebo "anonymní" (pro všechny platné hodnoty viz [atribut HTML: dokumentace crossorigin](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) )
+| Priorita | objekt **[povinné]** | Konfigurace předaná do sady Application Insights SDK během inicializace.
 
 ### <a name="sending-telemetry-to-the-azure-portal"></a>Posílání telemetrie do Azure Portal
 
@@ -99,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfigurace
 Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na hodnotu false. Všechna pole jsou volitelná s výjimkou `instrumentationKey` .
 
-| Name | Výchozí | Popis |
+| Name | Výchozí | Description |
 |------|---------|-------------|
 | instrumentationKey | null | **Požadováno**<br>Klíč instrumentace, který jste získali z Azure Portal. |
 | accountId | null | Volitelné ID účtu, pokud vaše aplikace seskupí uživatele na účty. Žádné mezery, čárky, středníky, rovny nebo svislé čáry |
@@ -140,6 +194,11 @@ Většina polí konfigurace je pojmenována tak, aby mohla být nastavená na ho
 | enableRequestHeaderTracking | false (nepravda) | Pokud je nastaveno na true, jsou sledovány hlavičky požadavku Fetch & AJAX, výchozí hodnota je false.
 | enableResponseHeaderTracking | false (nepravda) | Pokud je nastaveno na true, jsou sledovány hlavičky odpovědi požadavku načítající & AJAX, výchozí hodnota je false.
 | distributedTracingMode | `DistributedTracingModes.AI` | Nastaví režim distribuovaného trasování. Pokud je nastaven režim AI_AND_W3C nebo W3C, budou se vygenerovat hlavičky kontextu trasování W3C (traceparent/tracestate) a budou zahrnuty do všech odchozích požadavků. AI_AND_W3C se poskytuje kvůli zpětné kompatibilitě se všemi staršími službami Application Insights instrumentované služby. Viz příklad [zde](https://docs.microsoft.com/azure/azure-monitor/app/correlation#enable-w3c-distributed-tracing-support-for-web-apps).
+| enableAjaxErrorStatusText | false (nepravda) | Výchozí hodnota je false. Pokud má hodnotu true, zahrňte text chyby odezvy v události závislosti u neúspěšných požadavků AJAX.
+| enableAjaxPerfTracking | false (nepravda) | Výchozí hodnota je false. Příznak pro povolení vyhledávání a zahrnutí dalšího okna prohlížeče. časování výkonu v hlášených metrikách AJAX (XHR a Fetch) ohlásilo metriky.
+| maxAjaxPerfLookupAttempts | 3 | Výchozí hodnota je 3. Maximální počet pokusů, kolikrát se má okno Hledat. časování výkonu (Pokud je k dispozici) je vyžadováno, protože ne všechny prohlížeče naplní okno. výkon před ohlášením konce žádosti XHR a pro žádosti o načtení, které jsou přidány po dokončení.
+| ajaxPerfLookupDelay | 25 | Výchozí hodnota je 25 ms. Doba, po kterou se má počkat, než se znovu pokusí najít Windows. časování výkonu pro požadavek AJAX, čas je v milisekundách a je předán přímo do setTimeout ().
+| enableUnhandledPromiseRejectionTracking | false (nepravda) | V případě hodnoty true budou se Neošetřená zamítnutí slíbit shromažďovat a nahlásí se jako chyba JavaScriptu. Pokud má disableExceptionTracking hodnotu true (nesleduje výjimky), konfigurační hodnota se bude ignorovat a Neošetřená zamítnutí se nebudou hlásit.
 
 ## <a name="single-page-applications"></a>Jednostránkové aplikace
 
@@ -256,12 +315,13 @@ Test v interním prostředí, aby se ověřilo, že telemetrie monitorování fu
 
 ## <a name="sdk-performanceoverhead"></a>Výkon nebo režie sady SDK
 
-V pouhých 25 KB komprimovaný jako gzip a při inicializaci jenom ~ 15 MS, Application Insights na web přidá zanedbatelné množství loadtime. Pomocí fragmentu kódu se rychle načtou minimální součásti knihovny. Do té doby se celý skript stáhne na pozadí.
+Na pouhých 36 KB komprimovaný jako gzip a při inicializaci jenom ~ 15 MS, Application Insights na web přidá zanedbatelné množství loadtime. Pomocí fragmentu kódu se rychle načtou minimální součásti knihovny. Do té doby se celý skript stáhne na pozadí.
 
 I když se skript stahuje ze sítě CDN, veškeré sledování vaší stránky je ve frontě. Po dokončení asynchronní inicializace staženého skriptu budou sledovány všechny události, které byly zařazeny do fronty. V důsledku toho nedojde ke ztrátě žádné telemetrie během celého životního cyklu stránky. Tento proces instalace poskytuje stránku se systémovou analýzou, která je pro vaše uživatele neviditelná.
 
 > Souhrn:
-> - **25 KB** komprimovaný jako gzip
+> - ![verze npm](https://badge.fury.io/js/%40microsoft%2Fapplicationinsights-web.svg)
+> - ![komprimovaná velikost gzip](https://img.badgesize.io/https://js.monitor.azure.com/scripts/b/ai.2.min.js.svg?compression=gzip)
 > - Celkový čas inicializace na **15 MS**
 > - V průběhu životního cyklu stránky nebylo vynecháno **žádné** sledování.
 
@@ -269,7 +329,15 @@ I když se skript stahuje ze sítě CDN, veškeré sledování vaší stránky j
 
 ![Chrome](https://raw.githubusercontent.com/alrra/browser-logos/master/src/chrome/chrome_48x48.png) | ![Firefox](https://raw.githubusercontent.com/alrra/browser-logos/master/src/firefox/firefox_48x48.png) | ![IE](https://raw.githubusercontent.com/alrra/browser-logos/master/src/edge/edge_48x48.png) | ![Opera](https://raw.githubusercontent.com/alrra/browser-logos/master/src/opera/opera_48x48.png) | ![Safari](https://raw.githubusercontent.com/alrra/browser-logos/master/src/safari/safari_48x48.png)
 --- | --- | --- | --- | --- |
-Nejnovější ✔ pro Chrome |  Nejnovější ✔ Firefox | Internet Explorer 9 + & Edge ✔ | Nejnovější ✔ Opera | Nejnovější ✔ Safari |
+Nejnovější ✔ pro Chrome |  Nejnovější ✔ Firefox | Internet Explorer 9 + & Edge ✔<br>Kompatibilní s IE 8 – kompatibilní | Nejnovější ✔ Opera | Nejnovější ✔ Safari |
+
+## <a name="es3ie8-compatibility"></a>Kompatibilita ES3/IE8
+
+V rámci sady SDK existuje mnoho uživatelů, kteří nemůžou řídit prohlížeče, které používají jejich zákazníci. V takovém případě je potřeba zajistit, aby tato sada SDK nadále byla "Work" a nedošlo k přerušení provádění JS, když je načtena ze staršího prohlížeče. I když by to bylo ideální pro nepodporované prohlížeče IE8 a starší generace (ES3), existuje mnoho velkých zákazníků nebo uživatelů, kteří nadále potřebují stránky na práci, a jak se jim poznamenalo, že můžou nebo nemůžou řídit, který prohlížeč má jejich koncoví uživatelé používat.
+
+To neznamená, že budeme podporovat jenom nejnižší běžnou sadu funkcí, stačí, když musíme zachovat kompatibilitu s kódem ES3 a když přidáváte nové funkce, které se budou muset přidat způsobem, který by nenarušil ES3 analýzu JavaScriptu a přidal jako volitelnou funkci.
+
+[Úplné podrobnosti o podpoře IE8 najdete na GitHubu.](https://github.com/Microsoft/ApplicationInsights-JS#es3ie8-compatibility)
 
 ## <a name="open-source-sdk"></a>Open-Source sada SDK
 
@@ -279,3 +347,4 @@ Sada Application Insights JavaScript SDK je open source, aby zobrazila zdrojový
 * [Sledování využití](usage-overview.md)
 * [Vlastní události a metriky](api-custom-events-metrics.md)
 * [Sestavení vyhodnocení poučení](usage-overview.md)
+* [Řešení potíží se selháním načtení sady SDK](javascript-sdk-load-failure.md)

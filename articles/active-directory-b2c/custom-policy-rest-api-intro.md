@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 0a62cd4ad6d992d8994fbd3e66bd0b90e45aa213
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b308e5d74f1a87ea1cebed26f602780307c77d35
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83636987"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447913"
 ---
 # <a name="integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-custom-policy"></a>Integrace REST APIch výměn deklarací identity do vlastních zásad Azure AD B2C
 
@@ -32,6 +32,9 @@ Pomocí Azure AD B2C můžete přidat vlastní obchodní logiku k cestě uživat
 - **Spusťte vlastní obchodní logiku**. Můžete odesílat nabízená oznámení, aktualizovat podnikové databáze, spouštět proces migrace uživatelů, spravovat oprávnění, auditovat databáze a provádět libovolné další pracovní postupy.
 
 ![Diagram výměny deklarací identity služby RESTful](media/custom-policy-rest-api-intro/restful-service-claims-exchange.png)
+
+> [!NOTE]
+> V případě, že dojde ke zpomalení nebo žádné odezvě služby RESTful na Azure AD B2C, je časový limit 30 sekund a počet opakování je 2 časy (to znamená, že celkový počet pokusů je 3). Nastavení časového limitu a počtu opakování se v tuto chvíli nedají konfigurovat.
 
 ## <a name="calling-a-restful-service"></a>Volání služby RESTful
 

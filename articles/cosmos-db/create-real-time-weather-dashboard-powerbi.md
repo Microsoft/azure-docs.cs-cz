@@ -1,18 +1,18 @@
 ---
 title: Vytvoření řídicího panelu v reálném čase pomocí Azure Cosmos DB, Azure Analysis Services a Power BI
 description: Naučte se, jak vytvořit živý řídicí panel počasí v Power BI pomocí Azure Cosmos DB a Azure Analysis Services.
-author: bharathsreenivas
+author: SnehaGunda
+ms.author: sngun
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/04/2019
-ms.author: bharathb
 ms.reviewer: sngun
-ms.openlocfilehash: d225a14edddcad58c08094dbc758d67df8f834e6
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: aac89de936ae709ac825391eb0515e7f36a457a6
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70376590"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465792"
 ---
 # <a name="create-a-real-time-dashboard-using-azure-cosmos-db-and-power-bi"></a>Vytvoření řídicího panelu v reálném čase pomocí Azure Cosmos DB a Power BI
 
@@ -96,9 +96,9 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
 ### <a name="connect-azure-analysis-services-to-azure-cosmos-account"></a>Připojit Azure Analysis Services k účtu Azure Cosmos
 
-1. **Vytvořte nový cluster** - Azure Analysis Services[vytvořte instanci služby Azure Analysis Services](../analysis-services/analysis-services-create-server.md) ve stejné oblasti jako účet Azure Cosmos a cluster datacihly.
+1. **Vytvořit nový cluster Azure Analysis Services**  -  [Vytvořte instanci služby Azure Analysis Services](../analysis-services/analysis-services-create-server.md) ve stejné oblasti jako účet Azure Cosmos a cluster datacihly.
 
-1. **Vytvořte nový Analysis Services tabulkový projekt v aplikaci Visual Studio** -  [nainstalujte nástroje SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) a vytvořte Analysis Services tabulkový projekt v aplikaci Visual Studio.
+1. **Vytvoření nového Analysis Services tabulkového projektu v aplikaci Visual Studio**  -   [Nainstalujte nástroje SQL Server Data Tools (SSDT)](/sql/ssdt/download-sql-server-data-tools-ssdt?view=sql-server-2017) a vytvořte Analysis Services tabulkový projekt v aplikaci Visual Studio.
 
    ![Vytvořit Azure Analysis Services projekt](./media/create-real-time-weather-dashboard-powerbi/create-analysis-services-project.png)
 
@@ -106,7 +106,7 @@ Nastavte kanál pro příjem dat, který načte [data o počasí](https://catalo
 
    ![Návrhář tabulkových modelů Azure Analysis Services](./media/create-real-time-weather-dashboard-powerbi/tabular-model-designer.png)
 
-1. **Přidejte Azure Cosmos DB zdroj dat** – přejděte do části **modely**> **data** > sources (**nový zdroj dat** ) a přidejte Azure Cosmos DB zdroj dat, jak je znázorněno na následujícím snímku obrazovky:
+1. **Přidejte Azure Cosmos DB zdroj dat** – přejděte do části **modely**Data Sources ( >  **Data Sources**  >  **nový zdroj dat** ) a přidejte Azure Cosmos DB zdroj dat, jak je znázorněno na následujícím snímku obrazovky:
 
    ![Přidat Cosmos DB zdroj dat](./media/create-real-time-weather-dashboard-powerbi/add-data-source.png)
 

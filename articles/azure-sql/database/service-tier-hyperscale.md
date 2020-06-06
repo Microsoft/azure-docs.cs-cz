@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/03/2020
-ms.openlocfilehash: 7fe29bfa7d6140f3abce8feb9e372a5c066b9692
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 2625e1f55c0b7e7df44da6c1f36e024911577d63
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343876"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457265"
 ---
 # <a name="hyperscale-service-tier"></a>Hyperškálování úrovně služby
 
@@ -171,7 +171,7 @@ Pokud potřebujete obnovit databázi v prostředí Azure SQL Database do jiné o
 Azure SQL Database úroveň škálování je dostupná ve všech oblastech, ale ve výchozím nastavení povolená je dostupná v následujících oblastech uvedených níže.
 Pokud chcete vytvořit databázi s škálovatelným škálováním v oblasti, která není uvedená jako podporovaná, můžete odeslat požadavek na registraci prostřednictvím Azure Portal. Pokyny najdete v tématu [zvýšení kvóty žádostí o Azure SQL Database](quota-increase-request.md) . Při odesílání vaší žádosti postupujte podle následujících pokynů:
 
-- Použijte jiný typ kvóty [žádosti o kvótu](quota-increase-request.md#other) pro databázi SQL.
+- Použijte typ kvóty databáze SQL pro [přístup k oblasti](quota-increase-request.md#region) .
 - V části Podrobnosti o textu přidejte SKU COMPUTE a celkový počet jader včetně čitelných replik.
 - Zadejte také odhadované TB.
 

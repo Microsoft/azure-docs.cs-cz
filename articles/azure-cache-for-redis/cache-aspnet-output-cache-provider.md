@@ -6,16 +6,16 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/22/2018
-ms.openlocfilehash: f1d8189068278b46e3ec3ea66875d79bb91e5e16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c8f91cee01273aa2ed1cbfe1812130b600a094a
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81010201"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456738"
 ---
 # <a name="aspnet-output-cache-provider-for-azure-cache-for-redis"></a>Zprostředkovatel výstupní mezipaměti ASP.NET pro Azure cache pro Redis
 
-Zprostředkovatel výstupní mezipaměti Redis je nezpracovávající mechanismus úložiště pro data výstupní mezipaměti. Tato data jsou určena konkrétně pro úplné odpovědi HTTP (ukládání výstupu stránky do mezipaměti). Zprostředkovatel se připojí k novému bodu rozšiřitelnosti zprostředkovatele výstupní mezipaměti, který byl představen v ASP.NET 4.
+Zprostředkovatel výstupní mezipaměti Redis je nezpracovávající mechanismus úložiště pro data výstupní mezipaměti. Tato data jsou určena konkrétně pro úplné odpovědi HTTP (ukládání výstupu stránky do mezipaměti). Zprostředkovatel se připojí k novému bodu rozšiřitelnosti zprostředkovatele výstupní mezipaměti, který byl představen v ASP.NET 4. V případě ASP.NET Core aplikací číst [ukládání odpovědí do mezipaměti v ASP.NET Core](https://docs.microsoft.com/aspnet/core/performance/caching/response). 
 
 Pokud chcete použít poskytovatele výstupní mezipaměti Redis, nejdřív nakonfigurujte mezipaměť a pak nakonfigurujte aplikaci ASP.NET pomocí balíčku NuGet poskytovatele výstupní mezipaměti Redis. Toto téma poskytuje pokyny ke konfiguraci aplikace pro použití poskytovatele výstupní mezipaměti Redis. Další informace o vytváření a konfiguraci mezipaměti Azure pro instanci Redis najdete v tématu [vytvoření mezipaměti](cache-dotnet-how-to-use-azure-redis-cache.md#create-a-cache).
 
@@ -51,7 +51,7 @@ Balíček NuGet stáhne a přidá požadované odkazy na sestavení a přidá n�
 
 Nakonfigurujte atributy s hodnotami z okna cache v portál Microsoft Azure a podle potřeby nakonfigurujte další hodnoty. Pokyny k přístupu k vlastnostem mezipaměti najdete v tématu [Konfigurace nastavení služby Azure cache pro Redis](cache-configure.md#configure-azure-cache-for-redis-settings).
 
-| Atribut | Typ | Výchozí | Popis |
+| Atribut | Typ | Výchozí | Description |
 | --------- | ---- | ------- | ----------- |
 | *provoz* | řetězec | místního | IP adresa nebo název hostitele serveru Redis |
 | *přístavní* | kladné celé číslo | 6379 (bez TLS/SSL)<br/>6380 (TLS/SSL) | Port serveru Redis |
@@ -84,7 +84,7 @@ Následující příklady znázorňují, jak se používá *připojovací řetě
 </connectionStrings>
 ```
 
-V `web.config`použijte místo skutečné hodnoty klíč jako hodnotu parametru.
+V `web.config` použijte místo skutečné hodnoty klíč jako hodnotu parametru.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -104,7 +104,7 @@ V `web.config`použijte místo skutečné hodnoty klíč jako hodnotu parametru.
 </appSettings>
 ```
 
-V `web.config`použijte místo skutečné hodnoty klíč jako hodnotu parametru.
+V `web.config` použijte místo skutečné hodnoty klíč jako hodnotu parametru.
 
 ```xml
 <sessionState mode="Custom" customProvider="MySessionStateStore">
@@ -193,7 +193,7 @@ Přidejte direktivu OutputCache na každou stránku, pro kterou chcete výstup u
 <%@ OutputCache Duration="60" VaryByParam="*" %>
 ```
 
-V předchozím příkladu data stránky uložená v mezipaměti zůstanou v mezipaměti po dobu 60 sekund a pro každou kombinaci parametrů se ukládá do mezipaměti jiná verze této stránky. Další informace o direktivě OutputCache naleznete v tématu [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837).
+V předchozím příkladu data stránky uložená v mezipaměti zůstanou v mezipaměti po dobu 60 sekund a pro každou kombinaci parametrů se ukládá do mezipaměti jiná verze této stránky. Další informace o direktivě OutputCache naleznete v tématu [@OutputCache](https://go.microsoft.com/fwlink/?linkid=320837) .
 
 Po provedení těchto kroků je vaše aplikace nakonfigurovaná tak, aby používala poskytovatele výstupní mezipaměti Redis.
 

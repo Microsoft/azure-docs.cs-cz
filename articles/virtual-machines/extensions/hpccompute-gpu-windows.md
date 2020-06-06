@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
-ms.openlocfilehash: c388f433327b5328483f10fbef637a6fdfd08832
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1c587275d41f9e46f6b7cd2b444330d971252513
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250540"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464381"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>Rozšíření ovladače NVIDIA GPU pro Windows
 
@@ -35,7 +35,7 @@ K dispozici je také rozšíření pro instalaci ovladačů NVIDIA GPU pro [virt
 
 Toto rozšíření podporuje následující OSs:
 
-| Distribuce | Version |
+| Distribuce | Verze |
 |---|---|
 | Windows 10 | Jádro |
 | Windows Server 2016 | Jádro |
@@ -71,11 +71,11 @@ Následující JSON zobrazuje schéma pro rozšíření.
 
 ### <a name="properties"></a>Vlastnosti
 
-| Název | Hodnota/příklad | Typ dat |
+| Name | Hodnota/příklad | Typ dat |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | date |
 | vydavatel | Microsoft. HpcCompute | řetězec |
-| type | NvidiaGpuDriverWindows | řetězec |
+| typ | NvidiaGpuDriverWindows | řetězec |
 | typeHandlerVersion | 1.2 | int |
 
 
@@ -127,13 +127,13 @@ Set-AzVMExtension
 ### <a name="azure-cli"></a>Azure CLI
 
 ```azurecli
-az vm extension set `
-  --resource-group myResourceGroup `
-  --vm-name myVM `
-  --name NvidiaGpuDriverWindows `
-  --publisher Microsoft.HpcCompute `
-  --version 1.2 `
-  --settings '{ `
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverWindows \
+  --publisher Microsoft.HpcCompute \
+  --version 1.2 \
+  --settings '{ \
   }'
 ```
 

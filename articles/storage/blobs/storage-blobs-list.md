@@ -4,16 +4,16 @@ description: Přečtěte si, jak vypsat objekty BLOB v kontejneru ve vašem Azur
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: article
-ms.date: 03/30/2020
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 76142838d1ec138b75fb6c594414b2ff5d8cd939
-ms.sourcegitcommit: d815163a1359f0df6ebfbfe985566d4951e38135
+ms.openlocfilehash: 0f0b3488bd34a31002449b9b7635064d5d835072
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82883290"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465571"
 ---
 # <a name="list-blobs-with-net"></a>Výpis objektů BLOB pomocí .NET
 
@@ -24,6 +24,15 @@ Tento článek ukazuje, jak zobrazit seznam objektů BLOB pomocí [klientské kn
 ## <a name="understand-blob-listing-options"></a>Vysvětlení možností výpisu objektů BLOB
 
 Pokud chcete zobrazit seznam objektů BLOB v účtu úložiště, zavolejte jednu z těchto metod:
+
+# <a name="net-v12-sdk"></a>[Sada .NET V12 SDK](#tab/dotnet)
+
+- [BlobContainerClient. getblobs](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobs?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)
+- [BlobContainerClient.GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet)
+
+# <a name="net-v11-sdk"></a>[Sada .NET V11 SDK](#tab/dotnet11)
 
 - [CloudBlobClient. ListBlobs](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobs)
 - [CloudBlobClient. ListBlobsSegmented](/dotnet/api/microsoft.azure.storage.blob.cloudblobclient.listblobssegmented)
@@ -37,11 +46,13 @@ Chcete-li zobrazit seznam objektů BLOB v kontejneru, zavolejte jednu z těchto 
 
 Přetížení těchto metod poskytují další možnosti pro správu způsobu, jakým operace výpisu vrací objekty blob. Tyto možnosti jsou popsány v následujících částech.
 
+---
+
 ### <a name="manage-how-many-results-are-returned"></a>Spravujte, kolik výsledků se vrátí.
 
-Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků. Chcete-li vrátit menší sadu výsledků, zadejte při volání jedné z metod `maxresults` **ListBlobs** nenulovou hodnotu parametru.
+Ve výchozím nastavení vrací operace výpisu po dobu až 5000 výsledků, ale můžete zadat počet výsledků, které mají vracet jednotlivé operace výpisu. Příklady uvedené v tomto článku vám ukážou, jak to udělat.
 
-Pokud operace výpisu vrátí více než 5000 objektů BLOB nebo pokud jste zadali hodnotu `maxresults` , kterou operace výpisu vrátí podmnožinu kontejnerů v účtu úložiště, pak Azure Storage vrátí token pro *pokračování* se seznamem objektů BLOB. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
+Pokud operace výpisu vrátí více než 5000 objektů BLOB nebo pokud počet dostupných objektů BLOB překračuje zadaný počet, pak Azure Storage vrátí *token pro pokračování* se seznamem objektů BLOB. Token pokračování je neprůhledná hodnota, kterou můžete použít k načtení další sady výsledků z Azure Storage.
 
 V kódu zkontrolujte hodnotu tokenu pokračování a určete, zda má hodnotu null. Pokud má token pokračování hodnotu null, sada výsledků je dokončena. Pokud token pro pokračování není null, pak znovu spusťte operaci výpisu, která předá token pro pokračování pro načtení další sady výsledků, dokud token pro pokračování nemá hodnotu null.
 
@@ -51,7 +62,11 @@ Chcete-li filtrovat seznam kontejnerů, zadejte řetězec pro `prefix` parametr.
 
 ### <a name="return-metadata"></a>Návratová metadata
 
-Pokud chcete vracet metadata objektu BLOB s výsledky, zadejte hodnotu **metadat** pro výčet [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) . Azure Storage zahrnuje metadata s vrácenými objekty blob, takže nemusíte v tomto kontextu volat jednu z metod **FetchAttributes** k načtení metadat objektu BLOB.
+Můžete vracet metadata objektu BLOB s výsledky. 
+
+- Pokud používáte sadu .NET V12 SDK, zadejte hodnotu **metadat** pro výčet [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits?view=azure-dotnet) .
+
+- Pokud používáte sadu .NET V11 SDK, zadejte hodnotu **metadat** pro výčet [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) . Azure Storage zahrnuje metadata s vrácenými objekty blob, takže nemusíte v tomto kontextu volat jednu z metod **FetchAttributes** k načtení metadat objektu BLOB.
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Plochý výpis versus hierarchický výpis
 
@@ -66,6 +81,12 @@ Pokud objekty blob pojmenujte pomocí oddělovače, můžete si vybrat možnost 
 Ve výchozím nastavení operace výpisu vrací objekty BLOB v nestrukturovaném seznamu. V nestrukturovaném seznamu nejsou objekty blob uspořádány pomocí virtuálního adresáře.
 
 Následující příklad vypíše seznam objektů BLOB v zadaném kontejneru pomocí plochého seznamu, který má zadanou volitelnou velikost segmentu, a zapíše název objektu blob do okna konzoly.
+
+# <a name="net-v12-sdk"></a>[Sada .NET V12 SDK](#tab/dotnet)
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
+
+# <a name="net-v11-sdk"></a>[Sada .NET V11 SDK](#tab/dotnet11)
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
@@ -85,7 +106,6 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 
             foreach (var blobItem in resultSegment.Results)
             {
-                // A flat listing operation returns only blobs, not virtual directories.
                 blob = (CloudBlob)blobItem;
 
                 // Write out some blob properties.
@@ -108,6 +128,8 @@ private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container
 }
 ```
 
+---
+
 Vzorový výstup je podobný následujícímu:
 
 ```
@@ -125,6 +147,16 @@ Blob name: FolderA/FolderB/FolderC/blob3.txt
 ## <a name="use-a-hierarchical-listing"></a>Použití hierarchického výpisu
 
 Když zavoláte operaci výpisu hierarchicky, Azure Storage vrátí virtuální adresáře a objekty blob na první úrovni hierarchie. Vlastnost [prefix](/dotnet/api/microsoft.azure.storage.blob.cloudblobdirectory.prefix) každého virtuálního adresáře je nastavena tak, aby bylo možné předat předponu v rekurzivním volání a načíst další adresář.
+
+# <a name="net-v12-sdk"></a>[Sada .NET V12 SDK](#tab/dotnet)
+
+Chcete-li zobrazit seznam objektů BLOB hierarchicky, zavolejte metodu [BlobContainerClient. GetBlobsByHierarchy](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchy?view=azure-dotnet)nebo [BlobContainerClient. GetBlobsByHierarchyAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsbyhierarchyasync?view=azure-dotnet) .
+
+Následující příklad vypíše seznam objektů BLOB v zadaném kontejneru pomocí hierarchického výpisu, který má zadanou volitelnou velikost segmentu, a zapíše název objektu blob do okna konzoly.
+
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsHierarchicalListing":::
+
+# <a name="net-v11-sdk"></a>[Sada .NET V11 SDK](#tab/dotnet11)
 
 Chcete-li zobrazit seznam objektů BLOB hierarchicky, nastavte `useFlatBlobListing` parametr metody výpisu na **false**.
 
@@ -182,6 +214,8 @@ private static async Task ListBlobsHierarchicalListingAsync(CloudBlobContainer c
     }
 }
 ```
+
+---
 
 Vzorový výstup je podobný následujícímu:
 

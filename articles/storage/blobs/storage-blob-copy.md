@@ -7,13 +7,13 @@ ms.author: mhopkins
 ms.date: 08/20/2019
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 9ffa69980f020580376aea447f40ac615f26cf03
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.topic: how-to
+ms.openlocfilehash: f4e6e2f2732d1c90e8fe669788d82692c8016fd6
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135883"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84463446"
 ---
 # <a name="copy-a-blob-with-net"></a>Kopírování objektu BLOB s využitím .NET
 
@@ -109,7 +109,7 @@ private static async Task CopyBlockBlobAsync(CloudBlobContainer container)
 
 ## <a name="abort-a-blob-copy-operation"></a>Přerušení operace kopírování objektu BLOB
 
-Přerušení operace kopírování má za následek cílový objekt BLOB s nulovou délkou pro objekty blob bloku, doplňovací objekty BLOB a objekty blob stránky. Metadata pro cílový objekt BLOB ale budou mít nové hodnoty zkopírované ze zdrojového objektu BLOB nebo explicitně nastavené ve volání [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) nebo [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) . Chcete-li zachovat původní metadata před kopírováním, vytvořte snímek cílového objektu BLOB před voláním `StartCopy` nebo. `StartCopyAsync`
+Přerušení operace kopírování má za následek cílový objekt BLOB s nulovou délkou pro objekty blob bloku, doplňovací objekty BLOB a objekty blob stránky. Metadata pro cílový objekt BLOB ale budou mít nové hodnoty zkopírované ze zdrojového objektu BLOB nebo explicitně nastavené ve volání [StartCopy](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopy?view=azure-dotnet) nebo [StartCopyAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblob.startcopyasync?view=azure-dotnet) . Chcete-li zachovat původní metadata před kopírováním, vytvořte snímek cílového objektu BLOB před voláním `StartCopy` nebo `StartCopyAsync` .
 
 Při přerušení probíhající operace kopírování objektů BLOB je cílový objekt BLOB [CopyState. status](/dotnet/api/microsoft.azure.storage.blob.copystate.status?view=azure-dotnet#Microsoft_Azure_Storage_Blob_CopyState_Status) nastavený na [CopyStatus. Aborted](/dotnet/api/microsoft.azure.storage.blob.copystatus?view=azure-dotnet).
 

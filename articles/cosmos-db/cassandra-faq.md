@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: thvankra
-ms.openlocfilehash: 7d4618382c31f0b1f2efa42fe87a6efe4bc85319
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 04708a307cd0eedfbe0510324930eb2327adf06e
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82608247"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449732"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Nejčastější dotazy týkající se rozhraní API Cassandra v Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Tento článek popisuje rozdíly mezi funkcemi Apache Cassandra a rozhraní API 
 
 ### <a name="what-protocol-version-does-the-cassandra-api-support"></a>Jakou verzi protokolu podporuje rozhraní API Cassandra?
 
-Rozhraní API Cassandra pro Azure Cosmos DB podporuje CQL verze 3. x. Jeho kompatibilita s CQL je založená na veřejném [úložišti GitHubu Apache Cassandra](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile). Pokud máte zpětnou vazbu k podpoře dalších protokolů, dejte nám vědět prostřednictvím [zpětné vazby uživatele](https://feedback.azure.com/forums/263030-azure-cosmos-db) nebo odesláním [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)e-mailu.
+Rozhraní API Cassandra pro Azure Cosmos DB podporuje CQL verze 3. x. Jeho kompatibilita s CQL je založená na veřejném [úložišti GitHubu Apache Cassandra](https://github.com/apache/cassandra/blob/trunk/doc/cql3/CQL.textile). Pokud máte zpětnou vazbu k podpoře dalších protokolů, dejte nám vědět prostřednictvím [zpětné vazby uživatele](https://feedback.azure.com/forums/263030-azure-cosmos-db) nebo odesláním e-mailu [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="why-is-choosing-throughput-for-a-table-a-requirement"></a>Proč zvolit propustnost pro tabulku, kterou požadujete?
 
@@ -85,7 +85,7 @@ Ano, klíč oddílu se použije k umístění entity do správného umístění.
 
 Azure Cosmos DB je systém založený na smlouvě o úrovni služeb (SLA). Poskytuje neomezenou škálu a zaručuje latenci, propustnost, dostupnost a konzistenci. Toto neomezené úložiště je založené na horizontálním škálování dat a používá dělení jako klíčové pojmy. Koncept dělení se dobře vysvětluje v [oddílu a měřítku v Azure Cosmos DB](partition-data.md) článku.
 
-U počtu entit nebo položek na logický oddíl byste měli dodržovat omezení o velikosti 10 GB. Aby se zajistilo, že se vaše aplikace dobře škáluje, doporučujeme, abyste nevytvořili aktivní oddíl tím, *že budete ukládat* všechny informace v jednom oddílu a dotazovat se na něj. Tato chyba se může nacházet jenom v případě, že jsou vaše data nakloněná: to znamená, že máte spoustu dat pro jeden klíč&nbsp;oddílu (víc než 10 GB). Distribuci dat můžete najít pomocí portálu úložiště. Tuto chybu lze vyřešit tak, že znovu vytvoříte tabulku a vyberete podrobný primární (klíč oddílu), který umožňuje lepší distribuci dat.
+U počtu entit nebo položek na logický oddíl byste měli dodržovat omezení o velikosti 10 GB. Aby se zajistilo, že se vaše aplikace dobře škáluje, doporučujeme, abyste nevytvořili aktivní oddíl tím, *že budete ukládat* všechny informace v jednom oddílu a dotazovat se na něj. Tato chyba se může nacházet jenom v případě, že jsou vaše data nakloněná: to znamená, že máte spoustu dat pro jeden klíč oddílu (víc než 10 &nbsp; GB). Distribuci dat můžete najít pomocí portálu úložiště. Tuto chybu lze vyřešit tak, že znovu vytvoříte tabulku a vyberete podrobný primární (klíč oddílu), který umožňuje lepší distribuci dat.
 
 ### <a name="can-i-use-the-cassandra-api-as-a-key-value-store-with-millions-or-billions-of-partition-keys"></a>Můžu použít rozhraní API Cassandra jako úložiště hodnot klíčů s miliony nebo miliardami klíčů oddílů?
 
@@ -101,15 +101,15 @@ Azure Cosmos DB je systém řízený prostředky pro aktivity dat i řízení. K
 
 ### <a name="what-is-the-maximum-number-of-tables-that-i-can-create"></a>Jaký je maximální počet tabulek, které lze vytvořit?
 
-Počet tabulek není nijak fyzickým omezením. Pokud máte velký počet tabulek (kde celková stálá velikost překročí 10 TB dat), která je potřeba vytvořit, ne běžné desítky nebo stovky, odešlete e-mail na [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)adresu.
+Počet tabulek není nijak fyzickým omezením. Pokud máte velký počet tabulek (kde celková stálá velikost překročí 10 TB dat), která je potřeba vytvořit, ne běžné desítky nebo stovky, odešlete e-mail na adresu [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="what-is-the-maximum-number-of-keyspaces-that-i-can-create"></a>Jaký je maximální počet míst, který můžu vytvořit?
 
-Neexistuje žádný fyzický limit počtu prostorů klíčů, protože se jedná o kontejnery metadat. Pokud máte velký počet paměťových prostorů, odešlete e-mail na [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com)adresu.
+Neexistuje žádný fyzický limit počtu prostorů klíčů, protože se jedná o kontejnery metadat. Pokud máte velký počet paměťových prostorů, odešlete e-mail na adresu [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="can-i-bring-in-a-lot-of-data-after-starting-from-a-normal-table"></a>Můžu po spuštění z normální tabulky dostat spoustu dat?
 
-Ano. Za předpokladu stejnoměrně distribuovaných oddílů je kapacita úložiště automaticky spravovaná a při doručování do více dat se zvyšuje. Takže můžete bez obav naimportovat tolik dat, kolik potřebujete, aniž byste museli spravovat a zřizovat uzly a další. Pokud však očekáváte hodně bezprostředního nárůstu dat, je vhodnější přímo [zřídit předpokládanou propustnost](set-throughput.md) , a to ani začít rychleji a okamžitě zvýšit.
+Yes. Za předpokladu stejnoměrně distribuovaných oddílů je kapacita úložiště automaticky spravovaná a při doručování do více dat se zvyšuje. Takže můžete bez obav naimportovat tolik dat, kolik potřebujete, aniž byste museli spravovat a zřizovat uzly a další. Pokud však očekáváte hodně bezprostředního nárůstu dat, je vhodnější přímo [zřídit předpokládanou propustnost](set-throughput.md) , a to ani začít rychleji a okamžitě zvýšit.
 
 ### <a name="can-i-use-yaml-file-settings-to-configure-api-behavior"></a>Můžu použít nastavení souboru YAML ke konfiguraci chování rozhraní API?
 
@@ -133,7 +133,7 @@ Ano, hodnota TTL je podporována.
 
 ### <a name="how-can-i-monitor-infrastructure-along-with-throughput"></a>Jak můžu monitorovat infrastrukturu spolu s propustností?
 
-Azure Cosmos DB je služba platformy, která vám pomůže zvýšit produktivitu a nedělejte si starosti se správou a monitorováním infrastruktury. Například nemusíte monitorovat stav uzlu, stav repliky, GC a parametry operačního systému dříve s různými nástroji. Stačí jenom zajistit propustnost, která je k dispozici v metrikách portálu, abyste viděli, jestli se vám omezilo omezení, a pak tuto propustnost zvýšíte nebo snížíte. Můžete:
+Azure Cosmos DB je služba platformy, která vám pomůže zvýšit produktivitu a nedělejte si starosti se správou a monitorováním infrastruktury. Například nemusíte monitorovat stav uzlu, stav repliky, GC a parametry operačního systému dříve s různými nástroji. Stačí jenom zajistit propustnost, která je k dispozici v metrikách portálu, abyste viděli, jestli se vám omezilo omezení, a pak tuto propustnost zvýšíte nebo snížíte. Další možnosti:
 
 - Monitorovat [SLA](monitor-accounts.md)
 - Použití [metrik](use-metrics.md)
@@ -141,7 +141,7 @@ Azure Cosmos DB je služba platformy, která vám pomůže zvýšit produktivitu
 
 ### <a name="which-client-sdks-can-work-with-the-cassandra-api"></a>Které klientské sady SDK můžou pracovat s rozhraní API Cassandra?
 
-Ovladače klienta sady Apache Cassandra SDK, které používají CQLv3, byly použity pro klientské programy. Pokud máte jiné ovladače, které používáte, nebo pokud máte potíže, odešlete e-mail na [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com).
+Ovladače klienta sady Apache Cassandra SDK, které používají CQLv3, byly použity pro klientské programy. Pokud máte jiné ovladače, které používáte, nebo pokud máte potíže, odešlete e-mail na [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) .
 
 ### <a name="are-composite-partition-keys-supported"></a>Jsou podporovány klíče kompozitního oddílu?
 
@@ -153,13 +153,13 @@ Ne, sstableloader se nepodporuje.
 
 ### <a name="can-i-pair-an-on-premises-apache-cassandra-cluster-with-the-cassandra-api"></a>Můžu párovat místní cluster Apache Cassandra pomocí rozhraní API Cassandra?
 
-V současné době Azure Cosmos DB má optimalizované prostředí pro cloudové prostředí bez režie provozu. Pokud požadujete párování, pošlete e-mail na [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) popis vašeho scénáře. Pracujeme na nabídce, která vám pomůžou spárovat místní nebo cloudový cluster Cassandra s rozhraní API Cassandra pro Azure Cosmos DB.
+V současné době Azure Cosmos DB má optimalizované prostředí pro cloudové prostředí bez režie provozu. Pokud požadujete párování, pošlete e-mail na [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) Popis vašeho scénáře. Pracujeme na nabídce, která vám pomůžou spárovat místní nebo cloudový cluster Cassandra s rozhraní API Cassandra pro Azure Cosmos DB.
 
 ### <a name="does-the-cassandra-api-provide-full-backups"></a>Poskytuje rozhraní API Cassandra úplné zálohy?
 
 Azure Cosmos DB poskytuje dvě bezplatné zálohy, které jsou pořízeny ve čtyřnásobných intervalech napříč všemi rozhraními API. Takže nemusíte nastavovat plán zálohování. 
 
-Pokud chcete upravit dobu uchovávání a četnosti, odešlete [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) e-mailem nebo vyvolejte případ podpory. Informace o možnostech zálohování najdete v článku [automatické online zálohování a obnovení pomocí Azure Cosmos DB](../synapse-analytics/sql-data-warehouse/backup-and-restore.md) .
+Pokud chcete upravit dobu uchovávání a četnosti, odešlete e-mailem [askcosmosdbcassandra@microsoft.com](mailto:askcosmosdbcassandra@microsoft.com) nebo vyvolejte případ podpory. Informace o možnostech zálohování najdete v článku [automatické online zálohování a obnovení pomocí Azure Cosmos DB](online-backup-and-restore.md) .
 
 ### <a name="how-does-the-cassandra-api-account-handle-failover-if-a-region-goes-down"></a>Jak účet rozhraní API Cassandra zpracovává převzetí služeb při selhání, pokud dojde k výpadku oblasti?
 
@@ -169,7 +169,7 @@ Pro účet můžete přidat tolik oblastí, kolik chcete, a určit, kde při př
 
 ### <a name="does-the-cassandra-api-index-all-attributes-of-an-entity-by-default"></a>Má rozhraní API Cassandra index všechny atributy entity ve výchozím nastavení?
 
-Ne. Rozhraní API Cassandra podporuje [sekundární indexy](cassandra-secondary-index.md), které se chovají podobně jako Apache Cassandra. Rozhraní API ve výchozím nastavení neindexuje každý atribut.  
+No. Rozhraní API Cassandra podporuje [sekundární indexy](cassandra-secondary-index.md), které se chovají podobně jako Apache Cassandra. Rozhraní API ve výchozím nastavení neindexuje každý atribut.  
 
 
 ### <a name="can-i-use-the-new-cassandra-api-sdk-locally-with-the-emulator"></a>Můžu novou rozhraní API Cassandra sadu SDK použít lokálně s emulátorem?

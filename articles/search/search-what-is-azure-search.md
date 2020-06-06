@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
 ms.date: 01/06/2020
-ms.openlocfilehash: df970ad31c3fd132f9081b90aa8877f0e29e195b
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: 87295278f39f7e7097b1f4d1ce1c729a71599c9f
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891556"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466217"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Co je kognitivní hledání Azure?
 
@@ -43,7 +43,7 @@ Azure Kognitivní hledání je vhodné pro následující scénáře aplikací:
 
 ## <a name="feature-descriptions"></a>Popis funkcí
 
-| Základní&nbsp;vyhledávání&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkce |
+| Základní &nbsp; vyhledávání&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Funkce |
 |-------------------|----------|
 |Hledání v textu volného tvaru | [**Fulltextové vyhledávání**](search-lucene-query-architecture.md) je primární případ použití pro většinu aplikací založených na vyhledávání. Dotazy se dají formulovat pomocí podporované syntaxe. <br/><br/>[**Jednoduchá syntaxe dotazů**](query-simple-syntax.md) poskytuje logické operátory, operátory pro hledání slovních spojení, operátory pro přípony a operátory priority.<br/><br/>[**Syntaxe dotazů Lucene**](query-lucene-syntax.md) zahrnuje všechny operace v jednoduché syntaxi s rozšířeními pro přibližné vyhledávání, vyhledávání blízkých výrazů, zvyšování skóre termínu a regulární výrazy.|
 | Relevance | [**Jednoduché bodování**](index-add-scoring-profiles.md) je klíčovou výhodou pro Azure kognitivní hledání. Profily vyhodnocování (bodovací profily) se používají k modelování relevance jako funkce hodnot v samotných dokumentech. Můžete například chtít, aby se novější produkty nebo produkty se slevou zobrazovaly ve výsledcích hledání na vyšších pozicích. Můžete také vytvořit profily vyhodnocování pomocí značek pro individuální vyhodnocování podle preferencí vyhledávání zákazníků, které sledujete a ukládáte odděleně. |
@@ -51,24 +51,24 @@ Azure Kognitivní hledání je vhodné pro následující scénáře aplikací:
 | Filtry a omezující vlastnosti | [**Fasetová navigace**](search-faceted-navigation.md) se aktivuje jedním parametrem dotazu. Azure Kognitivní hledání vrátí vlastnost s omezující navigační strukturou, kterou můžete použít jako kód za seznamem kategorií, pro filtrování samy sebe (například pro filtrování položek katalogu podle cenového rozsahu nebo značky). <br/><br/> [**Filtry**](query-odata-filter-orderby-syntax.md) se dají použít k začlenění fasetové navigace do uživatelského rozhraní aplikace, rozšíření možností formulování dotazu a filtrování na základě kritérií zadaných uživatelem nebo vývojářem. Filtry se vytvářejí pomocí syntaxe OData. |
 | Funkce a možnosti pro uživatele | Na panelu hledání lze povolit [**Automatické dokončování**](search-autocomplete-tutorial.md) dotazů typu dotazování. <br/><br/>[**Návrhy hledání**](https://docs.microsoft.com/rest/api/searchservice/suggesters) fungují také s částečnými textovými vstupy na panelu hledání, ale výsledky jsou skutečné dokumenty ve vašem indexu, a ne termíny dotazu. <br/><br/>[**Synonyma**](search-synonyms.md) přidružují ekvivalentní termíny, které implicitně rozšiřují rozsah dotazu, aniž by uživatel musel zadávat alternativní termíny. <br/><br/>[**Zvýrazňování nalezených položek**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) použije formátování textu na odpovídající klíčové slovo ve výsledcích hledání. Můžete si zvolit pole, která budou vracet zvýrazněné fragmenty.<br/><br/>[**Řazení**](https://docs.microsoft.com/rest/api/searchservice/Search-Documents) se poskytuje pro několik polí prostřednictvím schématu indexu. Zapíná se pak v době dotazu jedním parametrem vyhledávání.<br/><br/> [**Stránkování**](search-pagination-page-layout.md) a omezení výsledků hledání je jednoduché s jemně vyladěným ovládacím prvkem, který Azure kognitivní hledání nabízí nad výsledky hledání.  <br/><br/>|
 
-| Obohacení AI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Funkce |
+| &nbsp;Obohacení AI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;       | Funkce |
 |-------------------|----------|
 |Zpracování AI při indexování | [**Rozšíření AI**](cognitive-search-concept-intro.md) pro analýzu obrázků a textu lze použít pro kanál indexování k extrakci textových informací z nezpracovaného obsahu. Mezi příklady [integrovaných dovedností](cognitive-search-predefined-skills.md) patří optické rozpoznávání znaků (umožňuje prohledávání naskenovaných obrázků JPEG), rozpoznávání entit (identifikuje organizaci, název nebo umístění) a rozpoznávání klíčových frází. Můžete také [naprogramovat vlastní dovednosti](cognitive-search-create-custom-skill-example.md), které připojíte ke kanálu. |
 | Ukládání obohaceného obsahu pro analýzu a spotřebu ve scénářích bez vyhledávání | [**Znalostní báze Knowledge Store (Preview)**](knowledge-store-concept-intro.md) je rozšíření indexování založené na AI. Díky službě Azure Storage jako back-endu můžete ukládat rozšíření vytvořená během indexování. Tyto artefakty lze použít k návrhu lepšího dovednostií nebo k vytváření tvarů a strukturování z Amorphous nebo nejednoznačných dat. Můžete vytvořit projekce těchto struktur, které cílí na konkrétní úlohy nebo uživatele. Můžete také přímo analyzovat extrahovaná data nebo je načíst do jiných aplikací.<br/><br/> |
 | Obsah uložený v mezipaměti | [**Přírůstkové obohacení (verze Preview)**](cognitive-search-incremental-indexing-conceptual.md) omezuje zpracování na pouze dokumenty, které byly změněny konkrétní úpravou v kanálu, a to pomocí obsahu uloženého v mezipaměti pro části kanálu, které se nemění. |
 
-| Import&nbsp;/indexování dat | Funkce |
+| &nbsp;Import/indexování dat | Funkce |
 |----------------------------------|----------|
 | Zdroje dat | Indexy Azure Kognitivní hledání přijímají data z libovolného zdroje za předpokladu, že se odešlou jako datová struktura JSON. <br/><br/> [**Indexery**](search-indexer-overview.md) automatizují přijímání dat pro podporované zdroje dat Azure a zpracování serializace JSON. Připojte se k [Azure SQL Database](search-howto-connecting-azure-sql-database-to-azure-search-using-indexers.md), [Azure Cosmos DB](search-howto-index-cosmosdb.md)nebo [úložišti objektů BLOB v Azure](search-howto-indexing-azure-blob-storage.md) a extrahujte prohledávatelný obsah v primárních úložištích dat. Indexery Azure Blob můžou *pronikat do dokumentů* za účelem [extrahování textu z hlavních formátů souborů](search-howto-indexing-azure-blob-storage.md), včetně dokumentů Microsoft Office, PDF a HTML. |
 | Hierarchické a vnořené datové struktury | [**Komplexní typy**](search-howto-complex-data-types.md) a kolekce umožňují modelovat prakticky jakýkoli typ struktury JSON jako index služby Azure kognitivní hledání. Mohutnost 1: n se dá vyjádřit nativně prostřednictvím kolekcí, komplexních typů a kolekcí komplexních typů.|
 | Lingvistická analýza | Analyzátory jsou komponenty, které slouží ke zpracování textu během operací indexování a vyhledávání. Existují dva typy. <br/><br/>[**Vlastní lexikální analyzátory**](index-add-custom-analyzers.md) se používají pro komplexní vyhledávací dotazy s využitím porovnávání výslovnosti a regulárních výrazů. <br/><br/>[**Jazykové analyzátory**](index-add-language-analyzers.md) od Lucene nebo Microsoftu se používají k inteligentnímu zpracování lingvistiky pro konkrétní jazyk včetně časů sloves, rodu, nepravidelného množného čísla podstatných jmen (například anglické „mouse“ oproti „mice“), rozkladu slov, dělení slov (pro jazyky bez mezer) a dalších možností. <br/><br/>|
 
 
-| Úroveň&nbsp;platformy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Funkce |
+| &nbsp;Úroveň platformy&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| Funkce |
 |-------------------|----------|
 | Nástroje pro vytváření prototypů a kontrolu | Na portálu můžete pomocí [**Průvodce importem dat**](search-import-data-portal.md) nakonfigurovat indexery, návrháře indexů, aby sestavil index, a [**Průzkumníka služby Search**](search-explorer.md), abyste mohli testovat dotazy a upřesňovat profily vyhodnocování. Můžete také otevřít index a zobrazit jeho schéma. |
 | Monitorování a diagnostika | [**Umožněte funkcím monitorování**](search-monitor-usage.md) , abyste mohli přesáhnout metriky, které jsou vždy viditelné na portálu. Metriky pro dotazy za sekundu, latenci a omezování se zachycují a uvádějí na stránkách portálu bez další nezbytné konfigurace.|
-| Šifrování na straně serveru | [**Šifrování spravované Microsoftem v klidovém režimu**](search-security-overview.md#encrypted-transmission-and-storage) je integrované do interní vrstvy úložiště a je neodvolatelné. Volitelně můžete výchozí šifrování doplnit pomocí [**šifrovacích klíčů spravovaných zákazníkem**](search-security-manage-encryption-keys.md). Klíče, které vytvoříte a spravujete v Azure Key Vault slouží k šifrování indexů a mapování synonym v Azure Kognitivní hledání. |
+| Šifrování na straně serveru | [**Šifrování spravované Microsoftem v klidovém režimu**](search-security-overview.md#encrypted-transmissions-and-storage) je integrované do interní vrstvy úložiště a je neodvolatelné. Volitelně můžete výchozí šifrování doplnit pomocí [**šifrovacích klíčů spravovaných zákazníkem**](search-security-manage-encryption-keys.md). Klíče, které vytvoříte a spravujete v Azure Key Vault slouží k šifrování indexů a mapování synonym v Azure Kognitivní hledání. |
 | Infrastruktura | Díky **vysoce dostupné platformě** je prostředí vyhledávací služby nadmíru spolehlivé. V případě správné škály [Azure kognitivní hledání nabízí smlouvu SLA 99,9%](https://azure.microsoft.com/support/legal/sla/search/v1_0/).<br/><br/> Azure Kognitivní hledání **plně spravované a škálovatelné** jako ucelené řešení, ale vyžaduje naprostou správu infrastruktury. Služba se dá přizpůsobit na míru vašim potřebám pomocí nastavení kapacity ve dvou dimenzích, aby mohla pracovat s větším úložištěm dokumentů, vyšším objemem dotazů nebo obojím.<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Jak používat Azure Kognitivní hledání
@@ -127,7 +127,7 @@ Mezi naše zákazníky dokázali využít nejširší škálu funkcí v Azure Ko
 
 I když je možné na portálu provádět mnoho úloh, Azure Kognitivní hledání je určený pro vývojáře, kteří chtějí integrovat funkce vyhledávání do stávajících aplikací. Dostupná jsou následující programovací rozhraní.
 
-|Platforma |Popis |
+|Platforma |Description |
 |-----|------------|
 |[REST](/rest/api/searchservice/) | Příkazy HTTP podporované každou programovací platformou a jazykem, včetně Xamarinu, Javy a JavaScriptu.|
 |[.NET SDK](search-howto-dotnet-sdk.md) | Obálka .NET pro REST API nabízí efektivní kódování v jazyce C# a dalších jazycích spravovaného kódu určených pro rozhraní .NET Framework. |

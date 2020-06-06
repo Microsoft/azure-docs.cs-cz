@@ -6,13 +6,13 @@ ms.author: mhopkins
 ms.date: 11/20/2018
 ms.service: storage
 ms.subservice: blobs
-ms.topic: conceptual
-ms.openlocfilehash: 2e168abaf522fa1126e3cb4618941952b562df31
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.topic: how-to
+ms.openlocfilehash: 378c21a6904acad16847bb32955e4bc091e587df
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83831870"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465486"
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>Jak používat úložiště objektů BLOB ze systému iOS
 
@@ -82,7 +82,7 @@ Pak můžete soubor architektury importovat do aplikace pomocí následujícího
 #import <AZSClient/AZSClient.h>
 ```
 
-Pokud používáte SWIFT, budete muset vytvořit překlenovací hlavičku a importovat \< AZSClient/AZSClient. h>:
+Pokud používáte SWIFT, budete muset vytvořit hlavičku přemostění a naimportovat ji \<AZSClient/AZSClient.h> :
 
 1. Vytvořte hlavičkový soubor `Bridging-Header.h` a přidejte výše uvedený příkaz import.
 2. Přejdete na kartu *nastavení sestavení* a vyhledejte *záhlaví cíl-C přemostění*.

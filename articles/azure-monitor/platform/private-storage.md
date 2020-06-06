@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/20/2020
-ms.openlocfilehash: 7213cb10936fc1c2117b2c5c3fc32a6bfea02d30
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.openlocfilehash: 6a123fac9f199fc0b19a3e6af33ad705ce51945c
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83816777"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464449"
 ---
 # <a name="customer-owned-storage-accounts-for-log-ingestion-in-azure-monitor"></a>Účty úložiště vlastněné zákazníkem pro přijímání protokolů v Azure Monitor
 
@@ -232,4 +232,4 @@ Pokud je registrovaný účet úložiště pracovního prostoru v jiné oblasti,
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o nastavení privátního odkazu najdete v tématu [použití privátního odkazu Azure k bezpečnému připojení sítí k Azure Monitor} (Private-Link-security.md).
+- Další informace o nastavení privátního odkazu najdete v tématu [použití privátního odkazu Azure k bezpečnému připojení sítí k Azure monitor](private-link-security.md)

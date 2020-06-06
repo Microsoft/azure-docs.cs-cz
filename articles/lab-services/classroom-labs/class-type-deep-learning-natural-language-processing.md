@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2020
 ms.author: spelluru
-ms.openlocfilehash: f03d1cfeccf03614fe0a5828a05768a5ae3f56e2
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 269ad20d99f21c05d527d60af61692eb49048f08
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83699645"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84448069"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Nastavení testovacího prostředí zaměřeného na obsáhlý Learning při zpracování v přirozeném jazyce pomocí Azure Lab Services
 V tomto článku se dozvíte, jak nastavit testovací prostředí zaměřené na obsáhlý Learning při zpracování přirozeného jazyka (NLP) pomocí Azure Lab Services. Zpracování přirozeného jazyka (NLP) je forma umělé Intelligence (AI), která umožňuje počítačům s překlady, rozpoznáváním řeči a dalšími možnostmi porozumění jazyku.  
@@ -38,7 +38,7 @@ Podle [tohoto kurzu](tutorial-setup-classroom-lab.md) vytvořte nové testovací
 
 | Nastavení testovacího prostředí | Hodnota/pokyny | 
 | ------------ | ------------------ |
-| Velikost virtuálního počítače (VM) | Malý grafický procesor (COMPUTE). Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon a síťové prostředky, jako je umělá a obsáhlá výuka. |
+| Velikost virtuálního počítače (VM) | **Malý grafický procesor (COMPUTE)**. Tato velikost se nejlépe hodí pro aplikace náročné na výpočetní výkon a síťové prostředky, jako je umělá a obsáhlá výuka. |
 | Image virtuálního počítače | [Data Science Virtual Machine pro Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804). Tento obrázek poskytuje architektury a nástroje pro hloubkové učení pro Machine Learning a datové vědy. Úplný seznam nainstalovaných nástrojů na tomto obrázku si můžete prohlédnout v následujícím článku: [co je součástí DSVM?](../../machine-learning/data-science-virtual-machine/overview.md#whats-included-on-the-dsvm). |
 | Povolit připojení ke vzdálené ploše | <p>Image pro datové vědy je už nakonfigurovaná tak, aby používala X2Go, aby se učitelé a studenti mohli připojit pomocí vzdálené plochy grafického uživatelského rozhraní.  X2Go nevyžaduje *, aby bylo* povolené nastavení **Povolit připojení ke vzdálené ploše** .  Toto nastavení je potřeba povolit jenom v případě, že se rozhodnete místo toho používat protokol RDP.
 

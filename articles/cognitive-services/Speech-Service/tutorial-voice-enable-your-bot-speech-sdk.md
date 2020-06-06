@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: c55d81db848dcb1aebe9dacb03387565b3d8db48
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 69046772b81f0b5b597cce8e86aca9cbf27c49f8
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745602"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457095"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -164,7 +164,7 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
 1. Nainstalujte [emulátor systému bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) verze 4.3.0 nebo novější.
 2. Spusťte emulátor rozhraní bot Framework a otevřete robota:
    * **Soubor**  ->  **Otevřete robot**.
-3. Zadejte adresu URL pro robota. Například:
+3. Zadejte adresu URL pro robota. Příklad:
 
    ```
    http://localhost:3978/api/messages
@@ -197,6 +197,7 @@ Dalším krokem je nasazení nástroje echo bot do Azure. Existuje několik způ
    * V případě **plánu hostování**vyberte **SpeechEchoBotTutorial-AppServicePlan**
    * Pro **Application Insights**ponechat jako **žádné**
 1. Klikněte na **vytvořit** .
+1. Klikněte na **publikovat** na pravé straně nově vytvořeného profilu.
 1. V aplikaci Visual Studio by se měla zobrazit zpráva o úspěchu, která vypadá takto:
 
    ```
@@ -236,7 +237,7 @@ Teď, když jste vytvořili Azure App Service pro hostování robota, je další
 
 1. <a href="https://ms.portal.azure.com/#create/Microsoft.BotServiceConnectivityGalleryPackage" target="_blank">Vytvoření registrace kanálů pro Azure bot<span class="docon docon-navigate-external x-hidden-focus"></span></a>
 2. Zobrazí se výzva k zadání některých informací:
-   * Jako **popisovač robota**zadejte **SpeechEchoBotTutorial-BotRegistration**.
+   * Jako **popisovač robota**zadejte **SpeechEchoBotTutorial-BotRegistration-# # # #** a nahraďte **####** je číslem podle vaší volby. Poznámka: popisovač robota musí být globálně jedinečný. Pokud zadáte popisovač robota, ale zobrazí se chybová zpráva _požadované ID robota není k dispozici_, vyberte jiné číslo. V níže uvedených příkladech jsme použili 8726.
    * V případě **předplatného**vyberte **bezplatná zkušební verze**.
    * V případě **skupiny prostředků**vyberte **SpeechEchoBotTutorial-Resource**.
    * V **oblasti umístění**vyberte **západní USA**.
@@ -252,21 +253,43 @@ V tomto okamžiku ověřte skupinu prostředků **SpeechEchoBotTutorial-Resource
 |------|-------|----------|
 | EchoBot20190805125647 | App Service | USA – západ |
 | SpeechEchoBotTutorial-AppServicePlan | Plán služby App Service | USA – západ |
-| SpeechEchoBotTutorial-BotRegistration | Registrace kanálů robota | global |
+| SpeechEchoBotTutorial-BotRegistration-8726 | Registrace kanálů robota | global |
 | SpeechEchoBotTutorial – řeč | Cognitive Services | USA – západ |
 
 > [!IMPORTANT]
 > Prostředek registrace kanálů robota zobrazí globální oblast, i když jste vybrali Západní USA. To se očekává.
 
+## <a name="optional-test-in-web-chat"></a>Volitelné: test ve webovém chatu
+
+Registrační stránka kanálů robota Azure bot má v rámci **správy robotů**možnost **otestovat webový chat** . Ve výchozím nastavení nebude s robotem fungovat, protože webový chat potřebuje ověřit na robotovi. Pokud chcete otestovat nasazenou robota pomocí textového vstupu, postupujte podle následujících kroků. Všimněte si, že tyto kroky jsou volitelné a nejsou vyžadovány, aby bylo možné pokračovat v dalších krocích tohoto kurzu. 
+
+1. Vyhledejte a otevřete svůj prostředek **EchoBotTutorial-BotRegistration-# #** # # v [Azure Portal](https://portal.azure.com)
+1. V navigaci **pro správu bot** vyberte **Nastavení**. Zkopírujte hodnotu v části **ID aplikace Microsoftu** .
+1. Otevřete řešení Visual Studio EchoBot. V Průzkumníku řešení Najděte a dvakrát klikněte na **appSettings. JSON.**
+1. Nahraďte prázdný řetězec vedle **MicrosoftAppId** v souboru JSON hodnotou ZKOPÍROVANÉho ID.
+1. Vraťte se do Azure Portal, v navigaci **pro správu robota** vyberte **Nastavení**a klikněte na **(spravovat)** vedle **ID aplikace Microsoft** .
+1. Klikněte na **nový tajný klíč klienta**. Přidejte popis (např. "webový chat") a klikněte na **Přidat**. Kopírování nového tajného klíče
+1. Nahraďte prázdný řetězec vedle **MicrosoftAppPassword** v souboru JSON se zkopírovanou tajnou hodnotou.
+1. Uložte soubor JSON. Výsledek by měl vypadat přibližně takto:
+```json
+{
+  "MicrosoftAppId": "3be0abc2-ca07-475e-b6c3-90c4476c4370",
+  "MicrosoftAppPassword": "-zRhJZ~1cnc7ZIlj4Qozs_eKN.8Cq~U38G"
+}
+```
+9. Znovu publikujte aplikaci (klikněte pravým tlačítkem na projekt **EchoBot** v Průzkumníku řešení sady Visual Studio, vyberte **publikovat...** a klikněte na tlačítko **publikovat** ).
+10. Teď jste připraveni otestovat robota ve webové konverzaci!
+
 ## <a name="register-the-direct-line-speech-channel"></a>Registrace kanálu Direct line Speech
 
 Teď je čas zaregistrovat robota pomocí kanálu Direct line Speech. Tento kanál slouží k vytvoření propojení mezi robotem ozvěny a klientskou aplikací zkompilovanou sadou Speech SDK.
 
-1. Vyhledejte a otevřete prostředek **SpeechEchoBotTutorial-BotRegistration** v [Azure Portal](https://portal.azure.com).
-1. Z navigace **služeb Azure** vyberte **kanály**.
+1. Na [Azure Portal](https://portal.azure.com)Najděte a otevřete svůj prostředek **SpeechEchoBotTutorial-BotRegistration-#** # # #.
+1. Z navigace **pro správu bot** vyberte **kanály**.
    * Podívejte se na **Další kanály**, najděte a klikněte na **Direct line Speech**.
    * Projděte si text na stránce s názvem **Konfigurace přímého řádku řeč**a pak rozbalte rozevírací nabídku s názvem "účet služby pro rozpoznávání".
    * Vyberte prostředek řeči, který jste předtím vytvořili (např. **SpeechEchoBotTutorial-Speech**) z nabídky a přidružte svůj robot k vašemu klíči předplatného řeči.
+   * Ignorovat zbývající volitelná pole
    * Klikněte na **Uložit**.
 
 1. V navigaci **pro správu bot** klikněte na **Nastavení**.
@@ -289,7 +312,7 @@ Než začneme, ujistěte se, že mikrofon a reproduktory jsou povolené a funguj
    * Stáhněte balíček ZIP obsahující spustitelný soubor, který chcete spustit, nebo
    * Sestavte spustitelný soubor sami tak, že naklonujte úložiště a sestavíte projekt.
 
-1. Spusťte klientskou aplikaci a nakonfigurujte ji.
+1. Spusťte klientskou aplikaci a nakonfigurujte ji tak, aby se připojila k robotovi na základě pokynů v úložišti GitHubu.
 1. Klikněte na **znovu připojit** a ujistěte se, že se zobrazí zpráva **stiskněte tlačítko mikrofonu, nebo napište, abyste mohli začít mluvit s robotem**.
 1. Pojďme si to vyzkoušet. Klikněte na tlačítko mikrofon a mluvte několik slov v angličtině. Rozpoznaný text se zobrazí při mluvení. Až budete hotovi, robot odpoví ve svém vlastním hlasu a říká "echo" následovaný rozpoznanými slovy.
 1. K komunikaci s robotem můžete také použít text. Stačí zadat text na dolním panelu. 
@@ -331,7 +354,7 @@ Tady je ukázkový JSON aktivity, kterou klient přijal:
     },
     "entities":[],
     "from":{
-        "id":"SpeechEchoBotTutorial-BotRegistration"
+        "id":"SpeechEchoBotTutorial-BotRegistration-8726"
     },
     "id":"89841b4d-46ce-42de-9960-4fe4070c70cc",
     "inputHint":"acceptingInput",

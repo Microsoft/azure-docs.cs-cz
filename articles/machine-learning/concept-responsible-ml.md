@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: luquinta
 author: luisquintanilla
 ms.date: 05/08/2020
-ms.openlocfilehash: 3cef3c2179019f6d84de5596e61abaf8d7d3182c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: acf329092d082b9e9cece451e90e96fc0e24fa5c
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597657"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447811"
 ---
 # <a name="responsible-machine-learning-ml"></a>Zodpovědné Machine Learning (ML)
 
@@ -80,4 +80,5 @@ V následující ukázce se dozvíte, jak použít sadu SDK Azure Machine Learni
 
 ## <a name="additional-resources"></a>Další zdroje
 
+- K [nasazení šifrované webové služby Inferencing](how-to-homomorphic-encryption-seal.md)použijte šifrování homomorphic.
 - Přečtěte si další informace o pokynech pro dokumentaci k systému Machine Learning [o ml](https://www.partnershiponai.org/about-ml/) .

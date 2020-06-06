@@ -1,5 +1,5 @@
 ---
-title: Vytvoření více koncových bodů modelu
+title: Vytvoření více modelů a koncových bodů
 titleSuffix: ML Studio (classic) - Azure
 description: Pomocí PowerShellu můžete vytvořit několik modelů Machine Learning a koncových bodů webové služby se stejným algoritmem, ale s různými školicími datovými sadami.
 services: machine-learning
@@ -10,12 +10,12 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 04/04/2017
-ms.openlocfilehash: 1dd17d3ac715c2b32f645602203aa2551c91b42a
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 145ee5b458927fc4e3cda5277de614383181eed5
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84195350"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465690"
 ---
 # <a name="create-multiple-web-service-endpoints-from-one-experiment-with-ml-studio-classic-and-powershell"></a>Vytvoření více koncových bodů webové služby z jednoho experimentu pomocí ML Studio (Classic) a PowerShellu
 

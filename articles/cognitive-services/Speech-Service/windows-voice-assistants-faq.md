@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: aa71057d3819acb335153ee5b4b65960320405be
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: 3cb4dd16592f3af962b32fe3005d2ad4b241d831
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997411"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457000"
 ---
 # <a name="samples-and-faqs"></a>Ukázky a nejčastější dotazy
 
@@ -43,7 +43,7 @@ Kontaktujte winvoiceassistants@microsoft.com pro vyžádání těchto prostředk
 
 Při první aktivaci aplikace hlasem se spustí kompaktní zobrazení. Pokyny k různým zobrazením a přechodům mezi nimi pro hlasové asistenty ve Windows najdete v tématu [pokyny k návrhu pro ukázkovou aktivaci hlasu](windows-voice-assistants-best-practices.md#design-guidance-for-voice-activation-preview) .
 
-Pokud chcete přejít z kompaktního zobrazení do úplného zobrazení aplikace, použijte rozhraní appView `TryEnterViewModeAsync`API:
+Pokud chcete přejít z kompaktního zobrazení do úplného zobrazení aplikace, použijte rozhraní appView API `TryEnterViewModeAsync` :
 
 `var appView = ApplicationView.GetForCurrentView();
  await appView.TryEnterViewModeAsync(ApplicationViewMode.Default);`

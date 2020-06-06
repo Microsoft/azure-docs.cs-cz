@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/03/2020
-ms.openlocfilehash: 04566bae2a9010dde5f9d6d4a0a63c237505597b
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 2f871312b7e36288d1b78e05aa4058dab6c1942f
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429641"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449562"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Automatické škálování Stream Analytics úloh pomocí Azure Automation
 
@@ -67,7 +67,7 @@ Azure Automation umožňuje nakonfigurovat plán, který bude aktivovat vaše Ru
 ## <a name="autoscale-based-on-load"></a>Automatické škálování na základě zatížení
 Můžou nastat případy, kdy nemůžete odhadnout zatížení vstupu. V takových případech je lepší škálovat nahoru/dolů v krocích v rámci minimální a maximální vazby. Můžete nakonfigurovat pravidla upozornění v úlohách Stream Analytics pro aktivaci runbooků, pokud metriky úlohy přejdou nad nebo pod prahovou hodnotou.
 1. Ve vašem účtu Azure Automation vytvořte dvě více celočíselných proměnných s názvem **min** a **maxSU**. Tím se nastaví rozsahy, ve kterých se vaše úloha bude škálovat podle kroků.
-2. Vytvořte dvě nové Runbooky. Můžete použít [skript prostředí PowerShell StepScaleUp](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/Autoscaleup.ps1) , který zvýší službu SUs vaší úlohy v přírůstcích až do hodnoty **maxSU** . Můžete také použít [skript prostředí PowerShell StepScaleDown](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/autoscaledown.ps1) , který zmenší službu SUs v rámci kroků do dosažení hodnoty **min** . Případně můžete použít Runbooky z předchozí části, pokud máte specifické hodnoty SU, na které chcete škálovat.
+2. Vytvořte dvě nové Runbooky. Můžete použít [skript prostředí PowerShell StepScaleUp](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/StepScaleUp.ps1) , který zvýší službu SUs vaší úlohy v přírůstcích až do hodnoty **maxSU** . Můžete také použít [skript prostředí PowerShell StepScaleDown](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/StepScaleDown.ps1) , který zmenší službu SUs v rámci kroků do dosažení hodnoty **min** . Případně můžete použít Runbooky z předchozí části, pokud máte specifické hodnoty SU, na které chcete škálovat.
 3. V Stream Analytics úlohy vyberte v části **sledování**možnost **pravidla výstrah** . 
 4. Vytvořte dvě skupiny akcí. Ten, který se má použít pro operaci horizontálního navýšení kapacity a další pro operaci horizontálního rozšíření kapacity. Vyberte **Spravovat akce** a pak klikněte na **Přidat skupinu akcí**. 
 5. Vyplňte požadovaná pole. Když vyberete **typ akce**, zvolte **Runbook Automation** . Vyberte sadu Runbook, kterou chcete aktivovat, když se výstraha aktivuje. Pak vytvořte skupinu akcí.

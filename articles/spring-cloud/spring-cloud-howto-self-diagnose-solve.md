@@ -6,15 +6,15 @@ ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/29/2020
-ms.openlocfilehash: f1d5161b0efe0b8d9b9c0b84ac149050c3823ab6
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 581d77a5568b9533d85ff476b63001c8a237bc4e
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84429473"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457197"
 ---
 # <a name="how-to-self-diagnose-and-solve-problems-in-azure-spring-cloud"></a>Jak provést samočinnou diagnostiku a řešení problémů v Azure jaře cloudu
-Diagnostika App Service je interaktivní prostředí, které vám může pomoct při odstraňování potíží s aplikací. Není nutná žádná konfigurace. Když vyhledáte nějaké problémy, App Service Diagnostika ukazuje, co je špatné, a provede vás pokyny k řešení potíží a vyřešení problému.
+Diagnostika Azure jaře Cloud je interaktivní prostředí, které vám může pomoct při odstraňování potíží s aplikací. Není nutná žádná konfigurace. Když najdete problémy, diagnostika cloudu Azure vyhledá chybu a provede vás s informacemi, které vám pomůžou problém vyřešit a vyřešit.
 
 ## <a name="prerequisites"></a>Požadavky
 Pro absolvování tohoto kurzu potřebujete:

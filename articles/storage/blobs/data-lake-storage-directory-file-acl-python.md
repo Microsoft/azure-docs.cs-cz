@@ -5,21 +5,21 @@ author: normesta
 ms.service: storage
 ms.date: 04/10/2020
 ms.author: normesta
-ms.topic: article
+ms.topic: how-to
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: a79f3110206a01b9b974952f0ec0d299644be11f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06c263d751f6452e18765efb928ae6425ac50099
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81262345"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84466030"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>Použití Pythonu ke správě adresářů, souborů a seznamů ACL v Azure Data Lake Storage Gen2
 
 V tomto článku se dozvíte, jak pomocí Pythonu vytvářet a spravovat adresáře, soubory a oprávnění v účtech úložiště, které mají povolený hierarchický obor názvů (HNS). 
 
-[Package (index balíčku Python)](https://pypi.org/project/azure-storage-file-datalake/) | [ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples) | [rozhraní API](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html) | [pro Gen1 k mapování](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md) | Gen2 pro[poskytnutí zpětné vazby](https://github.com/Azure/azure-sdk-for-python/issues)
+[Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-storage-file-datalake/)  |  [Ukázky](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)  |  Reference k rozhraní [API](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0/azure.storage.filedatalake.html)  |  Mapování Gen1 na [Gen2](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)  |  [Sdělte nám svůj názor](https://github.com/Azure/azure-sdk-for-python/issues)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -97,7 +97,7 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 
 Systém souborů funguje jako kontejner pro vaše soubory. Můžete jej vytvořit zavoláním metody **FileSystemDataLakeServiceClient. create_file_system** .
 
-Tento příklad vytvoří systém souborů s názvem `my-file-system`.
+Tento příklad vytvoří systém souborů s názvem `my-file-system` .
 
 ```python
 def create_file_system():
@@ -130,7 +130,7 @@ def create_directory():
 
 Přejmenujte nebo přesuňte adresář voláním metody **DataLakeDirectoryClient. rename_directory** . Předejte cestu k požadovanému adresáři do parametru. 
 
-Tento příklad přejmenuje podadresář na název `my-subdirectory-renamed`.
+Tento příklad přejmenuje podadresář na název `my-subdirectory-renamed` .
 
 ```python
 def rename_directory():
@@ -150,7 +150,7 @@ def rename_directory():
 
 Odstraňte adresář voláním metody **DataLakeDirectoryClient. delete_directory** .
 
-Tento příklad odstraní adresář s názvem `my-directory`.  
+Tento příklad odstraní adresář s názvem `my-directory` .  
 
 ```python
 def delete_directory():
@@ -170,7 +170,7 @@ Získejte seznam řízení přístupu (ACL) adresáře voláním metody **DataLa
 > [!NOTE]
 > Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-Tento příklad načte a nastaví seznam řízení přístupu k adresáři s `my-directory`názvem. Řetězec `rwxr-xrw-` přiřadí vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním oprávnění ke čtení a zápisu.
+Tento příklad načte a nastaví seznam řízení přístupu k adresáři s názvem `my-directory` . Řetězec přiřadí `rwxr-xrw-` vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním oprávnění ke čtení a zápisu.
 
 ```python
 def manage_directory_permissions():
@@ -199,7 +199,7 @@ def manage_directory_permissions():
 
 Nejprve vytvořte odkaz na soubor v cílovém adresáři vytvořením instance třídy **DataLakeFileClient** . Nahrajte soubor voláním metody **DataLakeFileClient. append_data** . Ujistěte se, že jste dokončí nahrávání voláním metody **DataLakeFileClient. flush_data** .
 
-Tento příklad nahraje textový soubor do adresáře s názvem `my-directory`.   
+Tento příklad nahraje textový soubor do adresáře s názvem `my-directory` .   
 
 ```python
 def upload_file_to_directory():
@@ -256,7 +256,7 @@ Získání seznamu řízení přístupu (ACL) souboru voláním metody **DataLak
 > [!NOTE]
 > Pokud vaše aplikace autorizuje přístup pomocí Azure Active Directory (Azure AD), ujistěte se, že se k objektu zabezpečení, který vaše aplikace používá k autorizaci přístupu, přiřadila [role vlastníka dat objektu BLOB úložiště](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Pokud se chcete dozvědět víc o tom, jak se používají oprávnění seznamu ACL, a důsledky jejich změny, přečtěte si téma [řízení přístupu v Azure Data Lake Storage Gen2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control).
 
-Tento příklad získá a nastaví seznam řízení přístupu k souboru s `my-file.txt`názvem. Řetězec `rwxr-xrw-` přiřadí vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním oprávnění ke čtení a zápisu.
+Tento příklad získá a nastaví seznam řízení přístupu k souboru s názvem `my-file.txt` . Řetězec přiřadí `rwxr-xrw-` vlastnícímu uživateli oprávnění ke čtení, zápisu a spouštění, dává vlastnící skupině pouze oprávnění číst a spouštět a poskytuje všem ostatním oprávnění ke čtení a zápisu.
 
 ```python
 def manage_file_permissions():
@@ -313,7 +313,7 @@ def download_file_from_directory():
 
 Výpis obsahu adresáře voláním metody **FileSystemClient. get_paths** a následným vytvořením výčtu výsledků.
 
-Tento příklad vytiskne cestu každého podadresáře a souboru, který se nachází v adresáři s názvem `my-directory`.
+Tento příklad vytiskne cestu každého podadresáře a souboru, který se nachází v adresáři s názvem `my-directory` .
 
 ```python
 def list_directory_contents():

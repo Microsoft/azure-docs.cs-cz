@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
-ms.openlocfilehash: c66b521b5cd75825fcafe07b24d5d527c45f5153
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d6923ab3a2344c8496f314e2f7a23b536a534bca
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79135917"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457027"
 ---
 # <a name="manage-container-properties-and-metadata-with-net"></a>Správa vlastností kontejneru a metadat pomocí .NET
 
@@ -70,7 +70,7 @@ Metadata můžete zadat jako jednu nebo více párů název-hodnota u prostředk
 - [SetMetadata](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadata)
 - [SetMetadataAsync](/dotnet/api/microsoft.azure.storage.blob.cloudblobcontainer.setmetadataasync)
 
-Název vašich metadat musí odpovídat konvencím pojmenování identifikátorů C#. Názvy metadat zachovávají případ, se kterým byly vytvořeny, ale při nastavení nebo čtení se nerozlišují malá a velká písmena. Pokud se pro prostředek odešlou dvě nebo víc hlaviček metadat se stejným názvem, úložiště objektů BLOB vrátí kód chyby HTTP 400 (chybný požadavek).
+Název vašich metadat musí odpovídat konvencím pojmenování identifikátorů C#. Názvy metadat zachovávají případ, se kterým byly vytvořeny, ale při nastavení nebo čtení se nerozlišují malá a velká písmena. Pokud se pro prostředek odešlou dvě nebo víc hlaviček metadat se stejným názvem, služba BLOB Storage se oddělí a Zřetězí dvě hodnoty a vrátí kód odpovědi HTTP 200 (OK).
 
 Následující příklad kódu nastaví metadata na kontejneru. Jedna hodnota je nastavena pomocí metody **Add** kolekce. Druhá hodnota je nastavena pomocí implicitní syntaxe klíč/hodnota. Obě jsou platné.
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/15/2020
 ms.author: nicolela
-ms.openlocfilehash: 3035b9debdd46c1a8ba246882312e28d1a2087e4
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 5c2962fcc470525510be8ee0c89baba658d9f9d9
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83118426"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84449630"
 ---
-# <a name="set-up-a-lab-to-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Nastavení testovacího prostředí pro analýzu velkých objemů dat pomocí nasazení Docker pro datovou platformu HortonWorks
+# <a name="set-up-a-lab-for-big-data-analytics-using-docker-deployment-of-hortonworks-data-platform"></a>Nastavení testovacího prostředí pro analýzu velkých objemů dat pomocí nasazení Docker pro datovou platformu HortonWorks
 
 V tomto článku se dozvíte, jak nastavit testovací prostředí pro výuku třídy pro analýzu velkých objemů dat.  U tohoto typu třídy studenti zjistí, jak zpracovávat velké objemy dat a použít algoritmy strojového a statistického učení k odvození přehledů dat.  Klíčový cíl pro studenty je Naučte se používat nástroje pro analýzu dat, jako je [Open source softwarový balíček Apache Hadoop](https://hadoop.apache.org/) , který poskytuje nástroje pro ukládání, správu a zpracování velkých objemů dat.
 
@@ -32,7 +32,7 @@ Dalším zajímavým aspektem tohoto testovacího prostředí je, že nasadíme 
 
 ## <a name="lab-configuration"></a>Konfigurace testovacího prostředí
 
-K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete použít i existující účet testovacího prostředí.
+K nastavení tohoto testovacího prostředí potřebujete předplatné Azure a účet testovacího prostředí, abyste mohli začít. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete. Po získání předplatného Azure můžete vytvořit nový účet testovacího prostředí v Azure Lab Services. Další informace o vytvoření nového účtu testovacího prostředí najdete v [kurzu nastavení účtu testovacího prostředí](tutorial-setup-lab-account.md).  Můžete použít i existující účet testovacího prostředí.
 
 ### <a name="lab-account-settings"></a>Nastavení účtu testovacího prostředí
 

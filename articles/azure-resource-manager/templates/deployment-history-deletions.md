@@ -2,13 +2,13 @@
 title: Odstranění historie nasazení
 description: Popisuje, jak Azure Resource Manager automaticky odstranit nasazení z historie nasazení. Nasazení se odstraní, když se historie blíží k překročení limitu 800.
 ms.topic: conceptual
-ms.date: 05/27/2020
-ms.openlocfilehash: 3e48b2da00986da00f7597cf887aa74f84587710
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 06/05/2020
+ms.openlocfilehash: 2d87cc1dcc0d3a41cb32bf7750ccdd832019f8bf
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84122448"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462732"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatické odstraňování z historie nasazení
 
@@ -28,6 +28,9 @@ Nasazení se z historie nasazení odstraní jenom v případě, že se blíží 
 Kromě nasazení se také aktivují odstranění při spuštění [operace citlivosti](template-deploy-what-if.md) nebo ověření nasazení.
 
 Když zadáte stejnému nasazení stejný název jako v historii, resetujete jeho místo v historii. Nasazení se přesune na nejnovější místo v historii. Také obnovíte místo nasazení v případě, že se vrátíte [k nasazení](rollback-on-error.md) po chybě.
+
+> [!NOTE]
+> Pokud vaše skupina prostředků už je 800, při dalším nasazení dojde k chybě. Proces automatického odstranění se spustí okamžitě. Můžete vyzkoušet nasazení znovu po krátkém čekání.
 
 ## <a name="opt-out-of-automatic-deletions"></a>Odhlásit automatické odstranění
 
