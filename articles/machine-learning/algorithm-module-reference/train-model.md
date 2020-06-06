@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
-ms.openlocfilehash: 0a9728e05aee27e74054a77e2c9be7dc08968207
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4aec156821a7d38907602cc1def0459dbf996b24
+ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79455855"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84447556"
 ---
 # <a name="train-model-module"></a>Modul vlakového modelu
 
@@ -64,7 +64,7 @@ V Azure Machine Learning je vytváření a používání modelu strojového uče
   
 5.  Odešlete kanál. Pokud máte velké množství dat, může to chvíli trvat.
 
-## <a name="results"></a><a name="bkmk_results"></a>Důsledk
+## <a name="results"></a>Výsledky
 
 Po vyškolení modelu:
 

@@ -5,17 +5,17 @@ description: Naučte se vytvářet delegování uživatelů pomocí Azure Active
 services: storage
 author: tamram
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 12/18/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: blobs
-ms.openlocfilehash: e1a81b25042501a166cee122279d21e3702cd419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fa864b5b2ded092ae7834ecd8c7d271d13117716
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "75371985"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464399"
 ---
 # <a name="create-a-user-delegation-sas-for-a-container-or-blob-with-the-azure-cli"></a>Vytvoření SAS delegování uživatele pro kontejner nebo objekt BLOB pomocí Azure CLI
 
@@ -60,7 +60,7 @@ Když vytvoříte SAS delegování uživatelů pomocí Azure CLI, vytvoří se k
 
 Vzhledem k tomu, že maximální interval, po který je klíč delegování uživatele platný, je 7 dní od počátečního data, měli byste zadat čas vypršení platnosti pro SAS, který je do 7 dnů od času spuštění. Podpis SAS je po vypršení platnosti klíče pro delegování uživatele neplatný, takže platnost SAS s časem vypršení platnosti delší než 7 dní bude platit i pro 7 dní.
 
-Při vytváření SAS delegování uživatele jsou vyžadovány `--auth-mode login` a `--as-user parameters` . Zadejte *přihlašovací* údaje pro `--auth-mode` parametr, aby byly požadavky na Azure Storage autorizovány pomocí vašich přihlašovacích údajů Azure AD. Zadejte `--as-user` parametr, který označuje, že vrácený SAS by měl být SAS delegování uživatele.
+Při vytváření SAS delegování uživatele `--auth-mode login` `--as-user parameters` jsou vyžadovány a. Zadejte *přihlašovací* údaje pro `--auth-mode` parametr, aby byly požadavky na Azure Storage autorizovány pomocí vašich přihlašovacích údajů Azure AD. Zadejte `--as-user` parametr, který označuje, že VRÁCENÝ SAS by měl být SAS delegování uživatele.
 
 ### <a name="create-a-user-delegation-sas-for-a-container"></a>Vytvoření SAS pro delegování uživatelů pro kontejner
 

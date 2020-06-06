@@ -10,14 +10,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/01/2020
+ms.date: 06/05/2020
 ms.author: borisb
-ms.openlocfilehash: d739f9f5c0e1be80005d5f3c6db5aa94ff6cc85d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b738d0a04ded3e592f69075d1b113a22905efa11
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299838"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84462715"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Přehled aplikací a řešení Oracle v Azure
 
@@ -43,7 +43,7 @@ Vyberte si z nejrůznějších aplikací serveru WebLogic Server Azure, abyste u
 
 ## <a name="applications-on-oracle-linux-and-weblogic-server"></a>Aplikace na Oracle Linux a WebLogic Server
 
-Spouštějte podnikové aplikace v Azure v podporovaných operačních systémech Oracle. Následující image virtuálních počítačů jsou k dispozici v Azure Marketplace:
+Spouštějte podnikové aplikace v Azure na podporovaných Oracle Linux imagí. Následující image virtuálních počítačů jsou k dispozici v Azure Marketplace:
 
 * Oracle WebLogic server 12.1.2
 
@@ -53,7 +53,7 @@ Spouštějte podnikové aplikace v Azure v podporovaných operačních systémec
 
 * Nakonfiguruje [Oracle data Guard](https://docs.oracle.com/cd/B19306_01/server.102/b14239/concepts.htm#g1049956), [aktivní ochranu dat pomocí FSFO](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/index.html), [horizontálního dělení](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/admin/sharding-overview.html) nebo [zlaté brány](https://www.oracle.com/middleware/technologies/goldengate.html) v infrastruktuře Azure společně s [zóny dostupnosti](../../../availability-zones/az-overview.md) pro zajištění vysoké dostupnosti v oblasti. Pro přidání dostupnosti a zotavení po havárii můžete také nastavit tyto konfigurace napříč několika oblastmi Azure.
 
-* Pomocí [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) můžete orchestrovat a spravovat zotavení po havárii pro vaše Oracle Linux virtuální počítače v Azure a vašich místních nebo fyzických serverech. 
+* Pomocí [Azure Site Recovery](../../../site-recovery/site-recovery-overview.md) můžete orchestrovat a spravovat zotavení po havárii pro vaše Oracle Linux virtuální počítače v Azure a na vašich fyzických serverech. 
 
 * Pomocí [Řešení Azure VMware](https://docs.microsoft.com/azure/vmware-cloudsimple/oracle-real-application-clusters/) nebo [FlashGrid SkyCluster](https://www.flashgrid.io/oracle-rac-in-azure/)povolte v Azure reálné aplikační clustery (RAC).
 
@@ -74,7 +74,7 @@ Spouštějte aplikace Oracle v infrastruktuře Azure, připojené k back-endu da
 
 Použijte šablony Terraformu k nastavení infrastruktury Azure a instalaci aplikací Oracle. 
 
-Od května 2020 jsou v Azure při použití řešení Cloud Interconnect v Azure a Oracle certifikovány tyto aplikace Oracle:
+Oracle nastavil, aby tyto aplikace běžely v Azure při připojení k databázi Oracle prostřednictvím řešení Cloud Interconnect v Azure/Oracle:
 
 * Sada E-Business
 * ŘEŠENÍ JD Edwards EnterpriseOne
@@ -86,7 +86,7 @@ Nasaďte také vlastní aplikace v Azure, které se připojují k OCI a dalším
 
 ### <a name="set-up-oracle-databases-in-oci"></a>Nastavení databází Oracle v OCI
 
-V kombinaci s aplikacemi Oracle běžícími v Azure použijte Oracle Database Cloud Services (autonomní databáze, RAC, Exadata, DBaaS, jeden uzel). Přečtěte si další informace o [možnostech databáze OCI](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
+V kombinaci se softwarem Oracle běžícím v Azure použijte Oracle Database Cloud Services (autonomní databáze, RAC, Exadata, DBaaS, jeden uzel). Přečtěte si další informace o [možnostech databáze OCI](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
 ## <a name="licensing"></a>Licensing

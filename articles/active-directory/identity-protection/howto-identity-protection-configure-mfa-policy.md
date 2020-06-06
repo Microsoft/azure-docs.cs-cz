@@ -4,19 +4,19 @@ description: Naučte se konfigurovat zásady registrace Azure AD Identity Protec
 services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
-ms.topic: conceptual
-ms.date: 10/18/2019
+ms.topic: how-to
+ms.date: 06/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fa6a4cf184b426355f62117ea51642127eee529
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4c6b57eaa2a68906053faade48dd0e63fbf0db7
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74382143"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84464330"
 ---
 # <a name="how-to-configure-the-azure-multi-factor-authentication-registration-policy"></a>Postupy: Konfigurace zásad registrace Azure Multi-Factor Authentication
 
@@ -36,13 +36,13 @@ Další informace o Azure Multi-Factor Authentication najdete v tématu [co je a
 ## <a name="policy-configuration"></a>Konfigurace zásad
 
 1. Přejděte na [Azure Portal](https://portal.azure.com).
-1. Přejděte do **Azure Active Directory** > **zabezpečení** > **Identity Protection** > –**zásady registrace ověřování MFA**.
+1. Přejděte do **Azure Active Directory**  >  **zabezpečení**  >  **Identity Protection**–  >  **zásady registrace ověřování MFA**.
    1. V části **přiřazení**
       1. **Uživatelé** – zvolte možnost **Všichni uživatelé** nebo **Vyberte jednotlivce a skupiny,** Pokud chcete omezit zavedení.
          1. Volitelně můžete vybrat možnost vyloučení uživatelů ze zásad.
    1. Pod **ovládacími prvky**
       1. Zajistěte, aby bylo zaškrtnuté políčko **vyžadovat registraci Azure MFA** , a zvolte **Vybrat**.
-   1. **Vyhovět zásadám** - **On**
+   1. **Vyhovět zásadám**  -  **Zapnuto**
    1. **Uložit**
 
 ## <a name="user-experience"></a>Uživatelské prostředí

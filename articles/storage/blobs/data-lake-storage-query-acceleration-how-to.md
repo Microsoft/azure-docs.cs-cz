@@ -4,16 +4,16 @@ description: K načtení podmnožiny dat z vašeho účtu úložiště použijte
 author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/21/2020
 ms.author: normesta
 ms.reviewer: jamsbak
-ms.openlocfilehash: d7213bb44503fbe191a69683188bdea6976827ee
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: cc9235f07c0829abfb8be42e83d05d8428bc1806
+ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930076"
+ms.lasthandoff: 06/06/2020
+ms.locfileid: "84465860"
 ---
 # <a name="filter-data-by-using-azure-data-lake-storage-query-acceleration-preview"></a>Filtrování dat pomocí Azure Data Lake Storage akcelerace dotazů (Preview)
 
@@ -57,7 +57,7 @@ Akcelerace dotazů (Preview) je nová funkce pro Azure Data Lake Storage, která
 
 2. Extrahujte obsah tohoto souboru do adresáře projektu.
 
-3. V textovém editoru otevřete soubor projektu (*. csproj*) a přidejte tyto odkazy na balíčky uvnitř \< \> elementu projektu.
+3. V textovém editoru otevřete soubor projektu (*. csproj*) a přidejte tyto odkazy na balíčky uvnitř \<Project\> elementu.
 
    ```xml
    <ItemGroup>

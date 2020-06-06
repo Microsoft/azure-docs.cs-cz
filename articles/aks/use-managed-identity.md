@@ -2,30 +2,28 @@
 title: Použití spravovaných identit ve službě Azure Kubernetes
 description: Naučte se používat spravované identity ve službě Azure Kubernetes (AKS).
 services: container-service
-author: saudas
-manager: saudas
 ms.topic: article
-ms.date: 04/02/2020
-ms.author: saudas
-ms.openlocfilehash: 00ecc077ba55ab9f91fc58f8a47fcdf7440deea6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/04/2020
+ms.openlocfilehash: ae66c6a6fbfef2a6052a037e010ecdeb4256bfd8
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82112962"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84456432"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Použití spravovaných identit ve službě Azure Kubernetes
 
 Cluster služby Azure Kubernetes (konkrétně poskytovatel cloudu Kubernetes) vyžaduje identitu k vytváření dalších prostředků, jako jsou nástroje pro vyrovnávání zatížení a spravované disky v Azure. Tato identita může být buď *spravovaná identita* , nebo *instančního objektu*. Pokud používáte [instanční objekt](kubernetes-service-principal.md), musíte buď zadat jeden, nebo AKS ho vytvořit vaším jménem. Pokud používáte spravovanou identitu, vytvoří se pro vás AKS automaticky. Clustery s použitím instančních objektů nakonec dosáhnou stavu, ve kterém musí být instanční objekt obnovený, aby mohl cluster fungovat. Správa instančních objektů přináší složitost, což je důvod, proč je místo toho snazší použít spravované identity. Stejné požadavky oprávnění platí pro instanční objekty i spravované identity.
 
-*Spravované identity* jsou v podstatě obálkou objektů služby a zjednoduší se jejich správa. Pokud se chcete dozvědět víc, přečtěte si o [spravovaných identitách prostředků Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+*Spravované identity* jsou v podstatě obálkou objektů služby a zjednoduší se jejich správa. K rotaci přihlašovacích údajů pro MSI dojde automaticky každých 46 dní podle Azure Active Directory výchozí. Pokud se chcete dozvědět víc, přečtěte si o [spravovaných identitách prostředků Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
 AKS vytvoří dvě spravované identity:
 
-- **Spravovaná identita přiřazená systémem**: identita, kterou poskytovatel cloudových služeb Kubernetes používá k vytvoření prostředků Azure jménem uživatele. Životní cyklus identity přiřazené systémem je svázán s clusterem. Identita se odstraní, když se cluster odstraní.
-- **Spravovaná identita přiřazená uživatelem**: identita, která se používá k autorizaci v clusteru. Například identita přiřazená uživatelem se používá k autorizaci AKS k použití záznamů ACR (Azure Container Registrys) nebo k autorizaci kubelet pro získání metadat z Azure.
+- **Spravovaná identita přiřazená systémem**: identita, kterou poskytovatel cloudu Kubernetes používá k vytvoření prostředků Azure jménem uživatele, jako je třeba [Nástroj pro vyrovnávání zatížení](load-balancer-standard.md) nebo [Veřejná IP adresa](static-ip.md). Životní cyklus identity přiřazené systémem se váže k tomuto clusteru a měl by ho používat jenom poskytovatel cloudu. Identita se odstraní, když se cluster odstraní.
 
-Pomocí spravované identity se taky ověřují i doplňky. Pro každý doplněk je spravovaná identita vytvořena pomocí AKS a trvá po dobu života doplňku. 
+- **Spravovaná identita přiřazená uživatelem**: identita, která se používá k autorizaci v clusteru a cokoli jiného, co chcete ovládat. Například identita přiřazená uživatelem se používá k autorizaci AKS k použití záznamů ACR (Azure Container Registrys) nebo k autorizaci kubelet pro získání metadat z Azure.
+
+Pomocí spravované identity se taky ověřují i doplňky. Pro každý doplněk je spravovaná identita vytvořena pomocí AKS a trvá po dobu života doplňku.
 
 ## <a name="before-you-begin"></a>Před zahájením
 

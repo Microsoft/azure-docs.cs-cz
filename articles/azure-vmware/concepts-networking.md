@@ -3,12 +3,12 @@ title: Koncepty – Network vzájemné propojení
 description: Seznamte se s klíčovými aspekty a případy použití sítě a vzájemné propojení v řešení Azure VMware (AVS).
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 82e5497c30bf02313e5ff8ad24167af569a153c2
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 1d869601110266f7ad16e23b66453c44793cdf31
+ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740912"
+ms.lasthandoff: 06/05/2020
+ms.locfileid: "84457078"
 ---
 # <a name="azure-vmware-solution-avs-preview-networking-and-interconnectivity-concepts"></a>Azure VMware Solution (AVS) Preview sítě a vzájemné propojení koncepty
 
@@ -58,11 +58,11 @@ Pro připojení z místního prostředí k privátnímu cloudu v Azure se vyžad
 Po propojení s Global Reach budou dva okruhy ExpressRoute směrovat síťový provoz mezi místními prostředími a Vaším privátním cloudem. V předchozím diagramu se zobrazí vzájemné propojení z místního prostředí do privátního cloudu. Vzájemné propojení reprezentovaný v diagramu umožňuje následující případy použití:
 
 - Horká a studená vMotiona přes vCenter
-- Místní pro přístup ke správě privátního cloudu pro funkci AVS
+- Místní přístup ke správě privátního cloudu z místního prostředí
 
 Pokud chcete povolit úplné připojení, můžete v Azure Portal požádat o autorizační klíč a ID privátního partnerského vztahu pro Global Reach. Klíč a ID slouží k navázání Global Reach mezi okruhem ExpressRoute v předplatném a okruhem ExpressRoute pro váš nový privátní cloud. [Kurz pro vytvoření privátního cloudu](tutorial-create-private-cloud.md) vám poskytne postupy pro vyžádání a používání klíče a ID.
 
-Požadavky na směrování řešení vyžadují, abyste naplánovali adresní prostory sítě privátního cloudu, abyste se vyhnuli překrytí s ostatními virtuálními sítěmi a místními sítěmi. Privátní cloudy služby AVS vyžadují minimálně blok `/22` síťových adres CIDR pro podsítě, které jsou uvedené níže. Tato síť doplňuje vaše místní sítě. Aby bylo možné se připojit k místním prostředím a virtuálním sítím, musí se jednat o blok síťových adres, který se nepřekrývá.
+Požadavky na směrování řešení vyžadují, abyste naplánovali adresní prostory sítě privátního cloudu, abyste se vyhnuli překrytí s ostatními virtuálními sítěmi a místními sítěmi. Privátní cloudy služby AVS vyžadují minimálně `/22` blok síťových adres CIDR pro podsítě, které jsou uvedené níže. Tato síť doplňuje vaše místní sítě. Aby bylo možné se připojit k místním prostředím a virtuálním sítím, musí se jednat o blok síťových adres, který se nepřekrývá.
 
 Příklad `/22` bloku síťových adres CIDR:`10.10.0.0/22`
 
