@@ -195,6 +195,19 @@
         - name: Streamování
           displayName: 'failover, bcdr, HA, high availability'
           href: media-services-high-availability-streaming.md
+    - name: Řešení potíží
+      items:
+        - name: Nejčastější dotazy
+          displayName: faqs
+          href: frequently-asked-questions.md
+        - name: Kódy chyb
+          items:
+            - name: Kódy chyb koncových bodů streamování
+              href: streaming-endpoint-error-codes.md
+            - name: Kódy chyb živých událostí
+              href: live-event-error-codes.md
+            - name: Kódy chyb úlohy
+              href: job-error-codes.md
     - name: Migrace z v2 v3
       items:
         - name: v2 vs. v3
@@ -340,19 +353,6 @@
           href: download-results-howto.md
         - name: Označení popisného zvuku
           href: signal-descriptive-audio-howto.md
-    - name: Řešení potíží
-      items:
-        - name: Nejčastější dotazy
-          displayName: faqs
-          href: frequently-asked-questions.md
-        - name: Kódy chyb
-          items:
-            - name: Kódy chyb koncových bodů streamování
-              href: streaming-endpoint-error-codes.md
-            - name: Kódy chyb živých událostí
-              href: live-event-error-codes.md
-            - name: Kódy chyb úlohy
-              href: job-error-codes.md
 - name: Referenční informace
   items:
     - name: Specifikace OpenAPI (Swagger)

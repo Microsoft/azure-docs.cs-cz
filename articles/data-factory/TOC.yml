@@ -162,6 +162,10 @@
       href: concepts-pipeline-execution-triggers.md
     - name: Prostředí Integration Runtime
       href: concepts-integration-runtime.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Toky dat
       items:
         - name: Transformace dat s využitím toků dat mapování

@@ -31,6 +31,8 @@
           href: understand-cost-mgt-data.md
         - name: Vysvětlení a práce s rozsahy
           href: understand-work-scopes.md
+        - name: Správa nákladů s využitím automatizace
+          href: manage-automation.md
         - name: Migrace z rozhraní API EA na MCA
           href: migrate-cost-management-api.md
     - name: Návody

@@ -11,6 +11,8 @@
       href: whats-new.md
     - name: Novinky ve službě Microsoft 365 Government
       href: whats-new-microsoft-365-government.md
+    - name: Archiv novinek v Azure AD
+      href: whats-new-archive.md
 - name: Rychlé starty
   expanded: true
   items:
@@ -51,6 +53,8 @@
       items:
         - name: 'Nasazení 30, 90 a dál'
           href: active-directory-deployment-checklist-p2.md
+        - name: Plány nasazení Azure Active Directory
+          href: active-directory-deployment-plans.md
     - name: Úložiště dat
       items:
         - name: Úložiště dat identity pro Evropu
@@ -100,6 +104,8 @@
           href: active-directory-groups-settings-azure-portal.md
         - name: Přidání nebo odebrání vlastníků skupin
           href: active-directory-accessmanagement-managing-group-owners.md
+        - name: Správa přístupu k prostředkům s využitím skupin
+          href: active-directory-manage-groups.md
     - name: Uživatelé
       items:
         - name: Přidání nebo odstranění nového uživatele
@@ -114,14 +120,10 @@
           href: license-users-groups.md
         - name: Obnovit odstraněného uživatele
           href: active-directory-users-restore.md
-- name: Zdroje a prostředky
+- name: Řešení potíží
   expanded: true
   items:
     - name: Získání podpory pro Azure Active Directory
       href: active-directory-troubleshooting-support-howto.md
     - name: Nejčastější dotazy ke službě Azure Active Directory
       href: active-directory-faq.md
-    - name: Plány nasazení Azure Active Directory
-      href: active-directory-deployment-plans.md
-    - name: Archiv novinek v Azure AD
-      href: whats-new-archive.md

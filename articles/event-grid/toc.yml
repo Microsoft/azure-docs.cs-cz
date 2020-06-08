@@ -195,7 +195,13 @@
 - name: Návody
   items:
     - name: 'Vytvoření, zobrazení a správa systémových témat'
-      href: create-view-manage-system-topics.md
+      items:
+        - name: portál Azure
+          href: create-view-manage-system-topics.md
+        - name: Azure CLI
+          href: create-view-manage-system-topics-cli.md
+        - name: Šablona Azure Resource Manageru
+          href: create-view-manage-system-topics-arm.md
     - name: Publikování ve vlastním tématu
       href: post-to-custom-topic.md
     - name: Přihlášení k odběru událostí Auth0

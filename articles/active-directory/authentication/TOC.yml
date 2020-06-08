@@ -80,6 +80,8 @@
           href: howto-mfa-userstates.md
         - name: Konfigurace zprostředkovatelů ověřování
           href: concept-mfa-authprovider.md
+        - name: Použití hesel aplikací
+          href: howto-mfa-app-passwords.md
         - name: Directory Federation
           items:
             - name: Adaptér AD FS Windows Serveru 2016
@@ -169,6 +171,8 @@
           href: howto-mfaserver-deploy-userportal.md
         - name: Webová služba mobilní aplikace
           href: howto-mfaserver-deploy-mobileapp.md
+        - name: Konfigurace nastavení
+          href: howto-mfa-server-settings.md
         - name: Nakonfigurování vysoké dostupnosti
           href: howto-mfaserver-deploy-ha.md
         - name: Upgrade serveru MFA

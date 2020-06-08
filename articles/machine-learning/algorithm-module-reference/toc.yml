@@ -106,6 +106,8 @@
       href: train-clustering-model.md
     - name: Trénování modelu
       href: train-model.md
+    - name: Trénování modelu PyTorch
+      href: train-pytorch-model.md
     - name: Ladění hyperparametrů modelů
       href: tune-model-hyperparameters.md
 - name: Vyhodnocení a bodování modelů
@@ -118,6 +120,8 @@
       href: cross-validate-model.md
     - name: Vyhodnocení modelu
       href: evaluate-model.md
+    - name: Model určení skóre obrázků
+      href: score-image-model.md
     - name: Určení skóre modelu
       href: score-model.md
 - name: Jazyk Python
@@ -142,6 +146,20 @@
       href: preprocess-text.md
     - name: Model LDA (Latent Dirichlet Allocation)
       href: latent-dirichlet-allocation.md
+- name: Počítačové zpracování obrazu
+  items:
+    - name: Použití transformace obrázku
+      href: apply-image-transformation.md
+    - name: Převod do adresáře obrázků
+      href: convert-to-image-directory.md
+    - name: Počáteční transformace obrázku
+      href: init-image-transformation.md
+    - name: Rozdělení adresáře obrázků
+      href: split-to-image-directory.md
+    - name: DenseNet
+      href: densenet.md
+    - name: ResNet
+      href: resnet.md
 - name: Doporučení
   items:
     - name: Vyhodnocení doporučovacího systému

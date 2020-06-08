@@ -59,8 +59,6 @@
           href: ./hdinsight-selecting-vm-size.md
         - name: Plánování kapacity clusteru
           href: ./hdinsight-capacity-planning.md
-        - name: Žádost o navýšení kvóty jader procesoru
-          href: ./quota-increase-request.md
         - name: Osvědčené postupy správy clusterů
           href: ./cluster-management-best-practices.md
         - name: Dostupnost a spolehlivost
@@ -239,6 +237,8 @@
               href: ./cluster-availability-monitor-logs.md
         - name: Řešení potíží
           items:
+            - name: Žádost o navýšení kvóty jader procesoru
+              href: ./quota-increase-request.md
             - name: Řešení potíží s akcemi skriptů
               href: ./troubleshoot-script-action.md
             - name: Chyby vytváření prostředků

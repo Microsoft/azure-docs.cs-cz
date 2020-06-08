@@ -14,6 +14,7 @@
         - name: portál Azure
           href: stream-analytics-quick-create-portal.md
         - name: Šablona ARM
+          displayName: Resource Manager
           href: quick-create-azure-resource-manager.md
         - name: PowerShell
           href: stream-analytics-quick-create-powershell.md
@@ -48,6 +49,10 @@
       href: feature-comparison.md
     - name: Vývoj v místním prostředí
       href: develop-locally.md
+    - name: Zabezpečení
+      items:
+        - name: Standardní hodnoty zabezpečení
+          href: security-baseline.md
     - name: Vstupní typy pro úlohu
       items:
         - name: Přehled vstupů

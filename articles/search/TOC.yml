@@ -326,22 +326,26 @@
           href: search-api-migration.md
     - name: Zabezpečení
       items:
-        - name: Přehled zabezpečení
+        - name: Přehled
           href: search-security-overview.md
-        - name: Vytvoření privátního koncového bodu
-          href: service-create-private-endpoint.md
-        - name: Konfigurace brány firewall protokolu P
-          href: service-configure-firewall.md
-        - name: Správa klíčů služeb
-          href: search-security-api-keys.md
-        - name: Přístup správce na základě role
-          href: search-security-rbac.md
-        - name: Filtry zabezpečení
-          href: search-security-trimming-for-azure-search.md
-        - name: Filtry na identity AAD
-          href: search-security-trimming-for-azure-search-with-aad.md
-        - name: Správa šifrovacích klíčů
-          href: search-security-manage-encryption-keys.md
+        - name: Šifrování dat
+          items:
+            - name: Klíče spravované zákazníkem
+              href: search-security-manage-encryption-keys.md
+        - name: Příchozí zabezpečení
+          items:
+            - name: Přístupové klíče rozhraní API
+              href: search-security-api-keys.md
+            - name: Konfigurace brány firewall protokolu P
+              href: service-configure-firewall.md
+            - name: Vytvoření privátního koncového bodu
+              href: service-create-private-endpoint.md
+        - name: Přístup na základě identity
+          items:
+            - name: Filtry zabezpečení
+              href: search-security-trimming-for-azure-search.md
+            - name: Filtry na identity AAD
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: Spravovat
       items:
         - name: Portál
@@ -350,6 +354,8 @@
           href: search-manage-powershell.md
         - name: Přesun služby napříč oblastmi
           href: search-howto-move-across-regions.md
+        - name: Přístup správce na základě role
+          href: search-security-rbac.md
     - name: Monitorování
       items:
         - name: Základy
@@ -473,6 +479,8 @@
       href: 'https://azure.microsoft.com/updates/?product=search'
     - name: Fórum pro názory (UserVoice)
       href: 'https://feedback.azure.com/forums/263029-azure-search'
+    - name: Certifikace a dodržování předpisů
+      href: 'https://aka.ms/azurecompliance'
     - name: Ukázkové weby
       items:
         - name: Ukázka finančních souborů

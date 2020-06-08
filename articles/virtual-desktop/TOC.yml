@@ -50,8 +50,8 @@
           href: create-fslogix-profile-container.md
         - name: Použití Azure Files a Azure AD DS
           href: create-profile-container-adds.md
-    - name: Vytvoření sdílených složek kontejneru profilu
-      href: create-file-share.md
+        - name: Použití Azure Files a AD DS
+          href: create-file-share.md
     - name: Konfigurace nastavení fondu hostitelů
       items:
         - name: Vlastnosti protokolu RDP
@@ -110,7 +110,7 @@
       href: troubleshoot-set-up-overview.md
     - name: Identifikace a diagnostika problémů
       href: diagnostics-role-service.md
-    - name: Vytvoření tenanta a fondu hostitelů
+    - name: Vytvoření fondu hostitelů
       href: troubleshoot-set-up-issues.md
     - name: Konfigurace virtuálního počítače hostitele relace
       href: troubleshoot-vm-configuration.md

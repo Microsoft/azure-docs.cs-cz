@@ -9,7 +9,7 @@
   items:
     - name: Nastavení DPS
       items:
-        - name: Azure Portal
+        - name: portál Azure
           href: quick-setup-auto-provision.md
         - name: Azure CLI
           href: quick-setup-auto-provision-cli.md
@@ -95,6 +95,8 @@
       href: concepts-device.md
     - name: Zabezpečení
       href: concepts-security.md
+    - name: Podpora TLS
+      href: tls-support.md
     - name: Služba
       href: concepts-service.md
     - name: Principy IP adres DPS

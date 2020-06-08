@@ -622,6 +622,10 @@
                   href: app/javascript.md
                 - name: Sourcemap pro JavaScript
                   href: app/source-map-support.md
+                - name: Řešení potíží
+                  items:
+                    - name: Selhání načtení sad SDK
+                      href: app/javascript-sdk-load-failure.md
             - name: Souhrn rozhraní API Application Insights
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
@@ -743,6 +747,8 @@
               href: app/profiler-settings.md
             - name: Sledování požadavků pro profilaci
               href: app/profiler-trackrequests.md
+            - name: Konfigurace BYOS (používání vlastního úložiště)
+              href: app/profiler-bring-your-own-storage.md
             - name: Řešení potíží s profilerem
               href: app/profiler-troubleshooting.md
         - name: Ladicí program snímků
@@ -756,6 +762,8 @@
               href: app/snapshot-debugger-vm.md
             - name: Upgrade Snapshot Debuggeru
               href: app/snapshot-debugger-upgrade.md
+            - name: Konfigurace BYOS (používání vlastního úložiště)
+              href: app/profiler-bring-your-own-storage.md
             - name: Řešení potíží se Snapshot Debuggerem
               displayname: 'troubleshoot, troubleshooting'
               href: app/snapshot-debugger-troubleshoot.md

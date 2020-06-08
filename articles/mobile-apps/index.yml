@@ -1,0 +1,159 @@
+### YamlMime:Hub
+title: Dokumentace k Azure pro vývojáře pro mobilní zařízení
+summary: Informace, které potřebujete k vývoji mobilních aplikací v Azure
+brand: azure
+metadata:
+  title: Azure pro vývojáře pro mobilní zařízení
+  description: Informace, které potřebujete k vývoji mobilních aplikací v Azure
+  services: mobile-services
+  ms.service: mobile-services
+  ms.topic: hub-page
+  author: codemillmatt
+  ms.author: masoucou
+  ms.date: 06/01/2020
+  ms.openlocfilehash: 470928c43d0e80887ed0f3f8af1a92cadc29c05c
+  ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+  ms.translationtype: HT
+  ms.contentlocale: cs-CZ
+  ms.lasthandoff: 06/05/2020
+  ms.locfileid: "84449895"
+highlightedContent:
+  items:
+  - title: Volba architektur pro vývoj mobilních aplikací
+    itemType: architecture
+    url: concepts/front-end-development-platform.md
+  - title: Fáze vývoje mobilních aplikací Azure
+    itemType: architecture
+    url: concepts/stages-overview.md
+  - title: Sestavení celé mobilní aplikace s využitím Azure
+    itemType: video
+    url: https://channel9.msdn.com/Shows/Partly-Cloudy
+  - title: Sestavování mobilních aplikací s využitím Xamarin.Forms
+    itemType: learn
+    url: https://docs.microsoft.com/learn/paths/build-mobile-apps-with-xamarin-forms/
+conceptualContent:
+  title: Začínáme
+  summary: Použití Azure k vytváření mobilních aplikací propojených s cloudem
+  items:
+  - title: Volání webové služby
+    links:
+    - url: concepts/serverless-compute.md
+      itemType: concept
+      text: Sestavení bezserverového back-endu mobilních aplikací s využitím Azure Functions a dalších služeb
+    - url: /xamarin/xamarin-forms/data-cloud/azure-services/azure-functions.md
+      itemType: quickstart
+      text: /xamarin/xamarin-forms/data-cloud/azure-services/azure-functions.md
+    - url: /learn/modules/consume-rest-services.md
+      itemType: learn
+      text: Využití webové služby RESTful s využitím Xamarinu
+    - url: /xamarin/xamarin-forms/data-cloud/azure-services/azure-signalr.md
+      itemType: concept
+      text: Azure SignalR Service s využitím Xamarin.Forms
+    - url: ../api-management/api-management-key-concepts.md
+      itemType: overview
+      text: Přehled služby Azure API Management
+    - url: concepts/real-time.md
+      itemType: overview
+      text: Sestavování aplikací v reálném čase s využitím Azure SignalR Service
+  - title: Ukládání dat
+    links:
+    - url: concepts/data-storage.md
+      itemType: concept
+      text: Ukládání a synchronizace dat mobilních aplikací z cloudu a dotazování na ně
+    - url: ../cosmos-db/create-sql-api-xamarin-dotnet.md
+      itemType: quickstart
+      text: Ukládání dat s využitím Azure Cosmos DB
+    - url: ../cosmos-db/create-mongodb-xamarin.md
+      itemType: quickstart
+      text: Sestavení aplikace Xamarin.Forms s využitím .NET SDK a rozhraní API služby Azure Cosmos DB pro MongoDB
+    - url: concepts/azure-storage.md
+      itemType: overview
+      text: Cloudové úložiště pro vysoce zabezpečené, odolné a škálovatelné aplikace s využitím Azure Storage
+    - url: ../storage/blobs/storage-quickstart-blobs-xamarin.md
+      itemType: quickstart
+      text: Práce se službou Blob Storage
+    - url: concepts/azure-cdn.md
+      itemType: overview
+      text: Doručování obsahu s využitím služby Azure Content Delivery Network
+  - title: Odesílání nabízených oznámení
+    links:
+    - url: concepts/push-notifications.md
+      itemType: overview
+      text: Komunikace s uživateli vašich aplikací odesíláním nabízených oznámení
+    - url: ../notification-hubs/create-notification-hub-portal.md
+      itemType: quickstart
+      text: Vytvoření centra oznámení Azure na webu Azure Portal
+    - url: ../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md
+      itemType: tutorial
+      text: Odesílání nabízených oznámení do zařízení s Androidem
+    - url: ../notification-hubs/push-notifications-android-specific-devices-firebase-cloud-messaging.md
+      itemType: tutorial
+      text: Odesílání nabízených oznámení konkrétním zařízením s využitím služeb Notification Hubs a Google Firebase Cloud Messaging
+    - url: ../notification-hubs/notification-hubs-aspnet-backend-ios-apple-push-notification-service-apns-rich.md
+      itemType: how-to-guide
+      text: Odesílání formátovaného obsahu do zařízení
+  - title: Ověřování uživatelů
+    links:
+    - url: concepts/authentication.md
+      itemType: overview
+      text: Přidání ověřování a správa identit uživatelů v mobilních aplikacích
+    - url: ../active-directory/develop/tutorial-v2-android.md
+      itemType: tutorial
+      text: Přihlášení uživatelů a volání Microsoft Graphu z aplikace pro Android
+    - url: ../active-directory-b2c/add-native-application.md
+      itemType: how-to-guide
+      text: Přidání nativní klientské aplikace do tenanta Azure Active Directory B2C
+    - url: ../active-directory/develop/msal-authentication-flows.md
+      itemType: concept
+      text: Podporované toky ověřování s využitím Microsoft Authentication Library (MSAL)
+    - url: https://github.com/Azure-Samples/active-directory-b2c-ios-swift-native-msal
+      itemType: sample
+      text: Přihlašování uživatelů s aplikací Swift iOS
+  - title: DevOps
+    links:
+    - url: concepts/continuous-delivery.md
+      itemType: concept
+      text: Automatizace nasazování a vydávání mobilních aplikací s využitím služeb průběžného doručování
+    - url: concepts/continuous-integration.md
+      itemType: concept
+      text: Automatizace životního cyklu aplikací s využitím průběžného sestavování a integrace
+    - url: /azure/devops/pipelines/get-started/key-pipelines-concepts.md
+      itemType: concept
+      text: Klíčové koncepty pro nové uživatele služby Azure Pipelines
+    - url: /appcenter/distribution/uploading.md
+      itemType: how-to-guide
+      text: Vydání buildu s využitím služeb App Center
+    - url: /appcenter/distribution/codepush.md
+      itemType: overview
+      text: CodePush ve službě App Center
+  - title: Analýzy a oznamování chyb
+    links:
+    - url: concepts/analytics.md
+      itemType: concept
+      text: Analýzy a vysvětlení využití mobilních aplikací
+    - url: /appcenter/analytics/overview.md
+      itemType: overview
+      text: Analýzy služby App Center
+    - url: /appcenter/diagnostics/enabling-diagnostics.md
+      itemType: how-to-guide
+      text: Povolení diagnostiky v aplikaci
+    - url: concepts/diagnostics.md
+      itemType: concept
+      text: Monitorování selhání a chyb v reálném čase pro mobilní aplikaci
+    - url: /appcenter/analytics/log-flow.md
+      itemType: tutorial
+      text: Příjem analýz v reálném čase
+additionalContent:
+  sections:
+  - title: Sady Azure Mobile SDK
+    summary: Toto jsou některé z mobilních klientských sad SDK v Azure
+    items:
+    - title: iOS
+      summary: Klientské sady SDK pro iOS pro Microsoft Azure
+      url: https://github.com/Azure/azure-sdk-for-ios
+    - title: Android
+      summary: Klientské sady SDK pro Android pro Microsoft Azure
+      url: https://github.com/Azure/azure-sdk-for-android
+    - title: .NET/Xamarin
+      summary: Azure SDK pro .NET a Xamarin
+      url: https://azure.github.io/azure-sdk/releases/latest/dotnet.html
