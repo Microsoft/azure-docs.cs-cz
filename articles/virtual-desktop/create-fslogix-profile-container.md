@@ -5,17 +5,17 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c2ffd22c8b3e3ca1786e0a1f905cd07d0568fcf2
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 9210787c674e825c8728e3b79e261b184fbc42fa
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84296353"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484639"
 ---
-# <a name="create-an-fslogix-profile-container-for-a-host-pool-using-azure-netapp-files"></a>Vytvoření kontejneru profilu FSLogix pro fond hostitelů pomocí Azure NetApp Files
+# <a name="create-a-profile-container-with-azure-netapp-files-and-ad-ds"></a>Vytvoření kontejneru profilu pomocí Azure NetApp Files a služba AD DS
 
 Pro [službu Virtual Desktop systému Windows](overview.md)doporučujeme používat kontejnery profilů FSLogix jako řešení uživatelských profilů. Kontejnery profilů FSLogix ukládají úplný profil uživatele v jednom kontejneru a jsou navržené pro roaming profilů v netrvalých vzdálených výpočetních prostředích, jako je třeba virtuální počítač s Windows. Když se přihlásíte, kontejner se dynamicky připojí k výpočetnímu prostředí pomocí místně podporovaného virtuálního pevného disku (VHD) a virtuálního pevného disku Hyper-V (VHDX). Tyto rozšířené technologie Filter-Driver umožňují, aby byl profil uživatele hned dostupný a byl zobrazen v systému, stejně jako místní profil uživatele. Další informace o kontejnerech profilů FSLogix najdete v tématu [kontejnery profilů FSLogix a soubory Azure](fslogix-containers-azure-files.md).
 
@@ -45,7 +45,7 @@ Než budete moct vytvořit kontejner profilu FSLogix pro fond hostitelů, musít
 
 Abyste mohli začít, musíte nastavit účet Azure NetApp Files.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Ujistěte se, že váš účet má oprávnění přispěvatele nebo správce.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). Ujistěte se, že váš účet má oprávnění přispěvatele nebo správce.
 
 2. Vyberte **ikonu Azure Cloud Shell** napravo od panelu hledání a otevřete Azure Cloud Shell.
 

@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/20/2019
-ms.openlocfilehash: 78cd5945e394219be0551bbe97afef07f18b61f7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4a836ae195674556c486592a421c188f7c40e3f0
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945472"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484351"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Ověřování Azure jaře cloudu s Key Vault v akcích GitHubu
 Trezor klíčů je bezpečné místo pro ukládání klíčů. Podnikoví uživatelé potřebují ukládat přihlašovací údaje pro prostředí CI/CD v oboru, který řídí. Klíč pro získání přihlašovacích údajů v trezoru klíčů by měl být omezený na obor prostředků.  Má přístup jenom k oboru trezoru klíčů, ne k celému oboru Azure. Je to jako klíč, který může otevřít pouze silné pole, nikoli hlavní klíč, který může otevřít všechny dveře v budově. Je to způsob, jak získat klíč s jiným klíčem, který je užitečný pro CICD pracovní postup. 
@@ -46,7 +46,7 @@ V Azure Portal přejděte na řídicí panel **Key Vault** , klikněte na nabíd
 
  ![Nastavení zásad přístupu](./media/github-actions/key-vault1.png)
 
-Zkopírujte název přihlašovacích údajů, například `azure-cli-2020-01-19-04-39-02`. Otevřete nabídku **zásady přístupu** , klikněte na **+ Přidat odkaz zásady přístupu** .  Vyberte `Secret Management` možnost pro **šablonu**a pak vyberte **objekt zabezpečení**. Vložte název přihlašovacích údajů do **objektu zabezpečení**/**Vybrat** vstupní pole:
+Zkopírujte název přihlašovacích údajů, například `azure-cli-2020-01-19-04-39-02` . Otevřete nabídku **zásady přístupu** , klikněte na **+ Přidat odkaz zásady přístupu** .  Vyberte možnost `Secret Management` pro **šablonu**a pak vyberte **objekt zabezpečení**. Vložte název přihlašovacích údajů do **objektu zabezpečení** / **Vybrat** vstupní pole:
 
  ![Vyberte](./media/github-actions/key-vault2.png)
 
@@ -73,7 +73,7 @@ Znovu, výsledky:
     "managementEndpointUrl": "https://management.core.windows.net/"
 }
 ```
-Zkopírujte celý řetězec JSON.  Bo zpátky na **Key Vault** řídicí panel. Otevřete nabídku **tajné klíče** a pak klikněte na tlačítko **Generovat/importovat** . Zadejte název tajného kódu, například `AZURE-CRENDENTIALS-FOR-SPRING`. Vložte řetězec přihlašovacích údajů JSON do vstupního pole **Value (hodnota** ). Můžete si všimnout, že vstupní pole hodnoty je jednořádkové textové pole místo víceřádkové textové oblasti.  Do tohoto pole můžete vložit celý řetězec JSON.
+Zkopírujte celý řetězec JSON.  Bo zpátky na **Key Vault** řídicí panel. Otevřete nabídku **tajné klíče** a pak klikněte na tlačítko **Generovat/importovat** . Zadejte název tajného kódu, například `AZURE-CREDENTIALS-FOR-SPRING` . Vložte řetězec přihlašovacích údajů JSON do vstupního pole **Value (hodnota** ). Můžete si všimnout, že vstupní pole hodnoty je jednořádkové textové pole místo víceřádkové textové oblasti.  Do tohoto pole můžete vložit celý řetězec JSON.
 
  ![Úplné přihlašovací údaje oboru](./media/github-actions/key-vault3.png)
 
@@ -92,7 +92,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}           # Strong box key you generated in the first step
     - uses: Azure/get-keyvault-secrets@v1.0
       with:
-        keyvault: "zlhe-test"
+        keyvault: "<Your Key Vault Name>"
         secrets: "AZURE-CREDENTIALS-FOR-SPRING"           # Master key to open all doors in the building
       id: keyvaultaction
     - uses: azure/login@v1

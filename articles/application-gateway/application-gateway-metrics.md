@@ -5,14 +5,14 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 2/5/2019
+ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: a4770b3ae7c52b9a05ff704915a3e9f401fd1741
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.openlocfilehash: bf02bdc4d824a47bdaad4821ffc9562b9fe2dd40
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82889612"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482635"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriky pro Application Gateway
 
@@ -24,7 +24,7 @@ Application Gateway zveřejňuje datové body označované jako metriky, aby se 
 
 Application Gateway poskytuje několik vestavěných metrik časování vztahujících se k žádosti a odpovědi, které se měří v milisekundách. 
 
-![](./media/application-gateway-metrics/application-gateway-metrics.png)
+![Diagram metrik časování pro Application Gateway.](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >

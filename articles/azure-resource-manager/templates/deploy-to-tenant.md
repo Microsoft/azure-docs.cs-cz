@@ -3,12 +3,12 @@ title: Nasazení prostředků do tenanta
 description: Popisuje postup nasazení prostředků v oboru tenanta v šabloně Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 03/16/2020
-ms.openlocfilehash: d72b4a63e564732a9a4baaf8b8cd94d0f165e12a
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 46e8db865b022e4fa1294c96843553a0480e559f
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653331"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485449"
 ---
 # <a name="create-resources-at-the-tenant-level"></a>Vytváření prostředků na úrovni tenanta
 
@@ -72,7 +72,7 @@ Pro rozhraní příkazového řádku Azure CLI použijte [AZ Deployment tenant C
 az deployment tenant create \
   --name demoTenantDeployment \
   --location WestUS \
-  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 Pro Azure PowerShell použijte [New-AzTenantDeployment](/powershell/module/az.resources/new-aztenantdeployment).
@@ -81,7 +81,7 @@ Pro Azure PowerShell použijte [New-AzTenantDeployment](/powershell/module/az.re
 New-AzTenantDeployment `
   -Name demoTenantDeployment `
   -Location "West US" `
-  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-level-deployments/new-mg/azuredeploy.json"
+  -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/tenant-deployments/new-mg/azuredeploy.json"
 ```
 
 V případě REST API použijte [nasazení – vytvořit nebo aktualizovat v oboru tenanta](/rest/api/resources/deployments/createorupdateattenantscope).
@@ -117,7 +117,7 @@ Pro nasazení klientů existují při použití funkcí šablon důležité důl
 
 ## <a name="create-management-group"></a>Vytvoření skupiny pro správu
 
-[Následující šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/new-mg) vytvoří skupinu pro správu.
+[Následující šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/new-mg) vytvoří skupinu pro správu.
 
 ```json
 {
@@ -143,7 +143,7 @@ Pro nasazení klientů existují při použití funkcí šablon důležité důl
 
 ## <a name="assign-role"></a>Přiřadit roli
 
-[Následující šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-level-deployments/tenant-role-assignment) přiřadí roli v oboru tenanta.
+[Následující šablona](https://github.com/Azure/azure-quickstart-templates/tree/master/tenant-deployments/tenant-role-assignment) přiřadí roli v oboru tenanta.
 
 ```json
 {

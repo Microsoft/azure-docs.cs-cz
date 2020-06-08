@@ -3,12 +3,12 @@ title: Řešení potíží s chybějícími daty v nástroji Application Insight
 description: Nezobrazuje se data v Azure Application Insights? Zkuste to prosím tady.
 ms.topic: conceptual
 ms.date: 05/21/2020
-ms.openlocfilehash: 882081f28a53e347612a4b30374e294bb7352796
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 59543adaf01a8e19f0e3eefd167234f6c5d18deb
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835134"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485172"
 ---
 # <a name="troubleshooting-no-data---application-insights-for-netnet-core"></a>Řešení potíží bez Application Insights dat pro .NET/.NET Core
 
@@ -158,7 +158,6 @@ Viz [telemetrie závislostí](../../azure-monitor/app/asp-net-dependencies.md) a
 * Windows Server 2008: Ujistěte se, že máte nainstalované následující aktualizace: [KB2468871](https://support.microsoft.com/kb/2468871), [KB2533523](https://support.microsoft.com/kb/2533523), [KB2600217](https://support.microsoft.com/kb/2600217).
 
 ## <a name="i-used-to-see-data-but-it-has-stopped"></a>Zobrazil (a) jsem data, ale zastavila se
-* Podívejte se na [blog stavu](https://blogs.msdn.com/b/applicationinsights-status/).
 * Dosáhli jste měsíční kvóty datových bodů? Pokud chcete zjistit, otevřete nastavení/kvótu a ceny. Pokud ano, můžete upgradovat svůj plán nebo platit za další kapacitu. Podívejte se na téma [cenové schéma](https://azure.microsoft.com/pricing/details/application-insights/).
 
 ## <a name="i-dont-see-all-the-data-im-expecting"></a>Nezobrazují se všechna data, která očekávám

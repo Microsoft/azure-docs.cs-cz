@@ -5,17 +5,17 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: f8b31b97752a39724a4b1b7073c2d4282bc54763
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 4723c2a8fa66e4ed2c4b40975179d7d4d2b281d6
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344845"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484658"
 ---
-# <a name="create-an-azure-files-file-share-with-a-domain-controller"></a>Vytvoření sdílené složky souborů Azure s řadičem domény
+# <a name="create-a-profile-container-with-azure-files-and-ad-ds"></a>Vytvoření kontejneru profilu se soubory Azure a služba AD DS
 
 V tomto článku se dozvíte, jak vytvořit sdílenou složku Azure ověřenou řadičem domény ve stávajícím fondu hostitelů virtuálních počítačů s Windows. Tuto sdílenou složku můžete použít k ukládání profilů úložiště.
 

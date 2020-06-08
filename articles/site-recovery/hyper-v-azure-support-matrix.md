@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 1/27/2020
 ms.author: raynew
-ms.openlocfilehash: 332b0193059c2c60cce0bc653d48bace45eca38d
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 62c7a3ecec3f941971cad552af2e36f63ab67c60
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84432722"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485115"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Matice podpory pro zotavení po havárii místních virtuálních počítačů Hyper-V do Azure
 
@@ -32,11 +32,14 @@ Hyper-V bez Virtual Machine Manager | V Azure můžete provést zotavení po hav
 
 **Server** | **Požadavky** | **Zobrazí**
 --- | --- | ---
-Hyper-V (běžící bez Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 s nejnovějšími aktualizacemi (včetně instalace jádra serveru těchto operačních systémů) | Pokud jste už nakonfigurovali Windows Server 2012 R2 s/nebo SCVMM 2012 R2 s Azure Site Recovery a plánujete upgradovat operační systém, postupujte podle pokynů v [dokumentaci.](upgrade-2012R2-to-2016.md) <br/><br/> Poznámka: navrácení služeb po obnovení není podporované pro verzi jádra serveru Windows Server 2019.
-Hyper-V (běžící s Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 | Pokud se používá Virtual Machine Manager, hostitelé Windows serveru 2019 by měli být spravováni v Virtual Machine Manager 2019. Podobně by hostitelé systému Windows Server 2016 měli být spravováni v Virtual Machine Manager 2016.<br/><br/> Poznámka: navrácení služeb po obnovení do alternativního umístění není podporováno pro hostitele systému Windows Server 2019.
+Hyper-V (běžící bez Virtual Machine Manager) |  Windows Server 2019, Windows Server 2016, Windows Server 2012 R2 s nejnovějšími aktualizacemi (včetně instalace jádra serveru těchto operačních systémů) | Pokud jste už nakonfigurovali Windows Server 2012 R2 s/nebo SCVMM 2012 R2 s Azure Site Recovery a plánujete upgradovat operační systém, postupujte podle pokynů v [dokumentaci.](upgrade-2012R2-to-2016.md)
+Hyper-V (běžící s Virtual Machine Manager) | Virtual Machine Manager 2019, Virtual Machine Manager 2016, Virtual Machine Manager 2012 R2 (včetně instalace jádra serveru těchto operačních systémů) | Pokud se používá Virtual Machine Manager, hostitelé Windows serveru 2019 by měli být spravováni v Virtual Machine Manager 2019. Podobně by hostitelé systému Windows Server 2016 měli být spravováni v Virtual Machine Manager 2016.
 
 > [!NOTE]
-> Zajistěte, aby na místním serveru existovala .NET Framework 4.6.2 nebo vyšší.
+>
+> - Zajistěte, aby na místním serveru existovala .NET Framework 4.6.2 nebo vyšší.
+> - Navrácení služeb po obnovení není podporováno pro verzi jádra serveru Windows Server 2019.
+> - Navrácení služeb po obnovení do alternativního umístění není podporováno pro hostitele se systémem Windows Server 2019.
 
 ## <a name="replicated-vms"></a>Replikované virtuální počítače
 
@@ -66,7 +69,7 @@ Síť hostitele: IPv4 | Ano | Ano
 Síť hostitele: IPv6 | Ne | Ne
 Síť virtuálních počítačů hosta: seskupování síťových adaptérů | Ne | Ne
 Síť virtuálních počítačů hosta: IPv4 | Ano | Ano
-Síť virtuálních počítačů hosta: IPv6 | No | Ano
+Síť virtuálních počítačů hosta: IPv6 | No | Yes
 Host VM Network: statická IP adresa (Windows) | Ano | Ano
 Síť virtuálních počítačů hosta: statická IP adresa (Linux) | Ne | Ne
 Host VM Network: více síťových karet | Ano | Ano
@@ -137,7 +140,7 @@ Objekty blob bloku | Ne | Ne
 Premium Storage | Ano | Ano
 Služba import/export | Ne | Ne
 Účty Azure Storage s povolenou bránou firewall | Yes. Pro cílové úložiště a mezipaměť. | Yes. Pro cílové úložiště a mezipaměť.
-Úprava účtu úložiště | No. Cílový Azure Storage účet se po povolení replikace nedá změnit. Chcete-li upravit, zakázat a znovu povolit zotavení po havárii. | Ne
+Úprava účtu úložiště | No. Cílový Azure Storage účet se po povolení replikace nedá změnit. Chcete-li upravit, zakázat a znovu povolit zotavení po havárii. | No
 
 
 ## <a name="azure-compute-features"></a>Funkce Azure COMPUTE

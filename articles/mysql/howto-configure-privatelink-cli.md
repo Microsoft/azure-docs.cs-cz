@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: f83f52f1c1800803c5e1d47f1931f7b13b2c11de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: db4161379c844506b3f50b162979ad6fa312e0bd
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79368005"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485442"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-cli"></a>Vytvoření a správa privátního odkazu pro Azure Database for MySQL pomocí rozhraní příkazového řádku
 
@@ -24,7 +24,7 @@ Privátní koncový bod je základním stavebním blokem privátního propojení
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Pokud chcete najít nainstalovanou verzi, `az --version`spusťte příkaz. Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
+Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku Azure CLI místně, musíte použít Azure CLI verze 2.0.28 nebo novější. Pokud chcete najít nainstalovanou verzi, spusťte příkaz `az --version` . Informace o instalaci nebo upgradu najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli) .
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -45,7 +45,7 @@ az network vnet create \
 ```
 
 ## <a name="disable-subnet-private-endpoint-policies"></a>Zakázat zásady privátního koncového bodu podsítě 
-Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly zásady sítě privátního koncového bodu. Aktualizujte konfiguraci podsítě s názvem *mySubnet* pomocí [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
+Azure nasadí prostředky do podsítě v rámci virtuální sítě, takže musíte vytvořit nebo aktualizovat podsíť, aby se zakázaly [zásady sítě](../private-link/disable-private-endpoint-network-policy.md)privátního koncového bodu. Aktualizujte konfiguraci podsítě s názvem *mySubnet* pomocí [AZ Network VNet Subnet Update](https://docs.microsoft.com/cli/azure/network/vnet/subnet?view=azure-cli-latest#az-network-vnet-subnet-update):
 
 ```azurecli-interactive
 az network vnet subnet update \
@@ -78,7 +78,9 @@ az mysql server create \
 --sku-name GP_Gen5_2
 ```
 
-Všimněte si, že ID serveru MySQL je ```/subscriptions/subscriptionId/resourceGroups/myResourceGroup/providers/Microsoft.DBforMySQL/servers/servername.``` podobné jako v dalším kroku budete používat ID serveru MySQL. 
+> [!NOTE]
+> V některých případech jsou Azure Database for MySQL a VNet-Subnet v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
+> - Ujistěte se, že oba odběry mají zaregistrovaný poskytovatel prostředků **Microsoft. DBforMySQL** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
 
 ## <a name="create-the-private-endpoint"></a>Vytvoření privátního koncového bodu 
 Vytvořte v Virtual Network privátní koncový bod pro server MySQL: 
@@ -88,7 +90,7 @@ az network private-endpoint create \
     --resource-group myResourceGroup \  
     --vnet-name myVirtualNetwork  \  
     --subnet mySubnet \  
-    --private-connection-resource-id "<MySQL Server ID>" \  
+    --private-connection-resource-id "/subscriptions/$SubscriptionId/resourceGroups/$ResourceGroupName/providers/Microsoft.DBforMySQL/servers/$Servername" \    
     --group-ids mysqlServer \  
     --connection-name myConnection  
  ```
@@ -137,7 +139,7 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
     1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
-        > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
@@ -169,11 +171,11 @@ Připojte se k virtuálnímu počítači *myVm* z Internetu následujícím způ
     | ------- | ----- |
     | Název připojení| Vyberte název připojení, který chcete zvolit.|
     | Název hostitele | Vybrat *mydemoserver.privatelink.MySQL.Database.Azure.com* |
-    | Uživatelské jméno | Zadejte uživatelské jméno *username@servername* , které je k dispozici během vytváření serveru MySQL. |
+    | Uživatelské jméno | Zadejte uživatelské jméno, *username@servername* které je k dispozici během vytváření serveru MySQL. |
     | Heslo | Zadejte heslo, které jste zadali během vytváření serveru MySQL. |
     ||
 
-5. Vyberte Connect (Připojit).
+5. Vyberte Připojit.
 
 6. Procházet databáze z levé nabídky
 
@@ -190,3 +192,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Další kroky
 - Další informace o [tom, co je privátní koncový bod Azure](https://docs.microsoft.com/azure/private-link/private-endpoint-overview)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

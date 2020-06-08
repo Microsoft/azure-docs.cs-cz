@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/15/2019
-ms.openlocfilehash: 559c894a2212466761de820de7486ae203337802
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1a0624c01a3bb75c1a7b07b130345776417cf482
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77538460"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484317"
 ---
 # <a name="azure-spring-cloud-cicd-with-github-actions"></a>Azure jarní Cloud CI/CD s akcemi GitHubu
 
@@ -45,7 +45,7 @@ V tomto příkladu se na GitHubu používá ukázka [metriky Piggy](https://gith
 
  ![Přidat nový tajný klíč](./media/github-actions/actions1.png)
 
-Nastavte název tajného klíče `AZURE_CREDENTIALS` na a jeho hodnotu na řetězec JSON, který jste našli pod nadpisem *Nastavení úložiště GitHub a ověření*.
+Nastavte název tajného klíče na `AZURE_CREDENTIALS` a jeho hodnotu na řetězec JSON, který jste našli pod nadpisem *Nastavení úložiště GitHub a ověření*.
 
  ![Nastavení tajných dat](./media/github-actions/actions2.png)
 
@@ -99,7 +99,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
     
     - name: Azure Login
       uses: azure/login@v1
@@ -118,10 +118,10 @@ jobs:
         az spring-cloud app deploy -n auth-service --jar-path ${{ github.workspace }}/auth-service/target/auth-service.jar
 ```
 ### <a name="deploy-with-azure-cli-action"></a>Akce nasazení pomocí Azure CLI
-Příkaz AZ `run` použije nejnovější verzi rozhraní příkazového řádku Azure CLI. Pokud dojde k zásadním změnám, můžete použít také konkrétní verzi rozhraní příkazového řádku Azure CLI s Azure `action`/CLI. 
+Příkaz AZ použije `run` nejnovější verzi rozhraní příkazového řádku Azure CLI. Pokud dojde k zásadním změnám, můžete použít také konkrétní verzi rozhraní příkazového řádku Azure CLI s Azure/CLI `action` . 
 
 > [!Note] 
-> Tento příkaz se spustí v novém kontejneru, takže `env` nebude fungovat a přístup k souborům mezi akcemi může mít navíc omezení.
+> Tento příkaz se spustí v novém kontejneru, takže nebude `env` fungovat a přístup k souborům mezi akcemi může mít navíc omezení.
 
 V úložišti vytvořte soubor. GitHub/Workflow/Main. yml:
 ```
@@ -142,7 +142,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     - name: Azure Login
       uses: azure/login@v1
@@ -183,7 +183,7 @@ jobs:
     
     - name: maven build, clean
       run: |
-        mvn clean package -D skipTests
+        mvn clean package -DskipTests
         
     # Maven plugin can cosume this authentication method automatically
     - name: Azure Login
@@ -198,7 +198,7 @@ jobs:
 ```
 
 ## <a name="run-the-workflow"></a>Spustit pracovní postup
-**Akce** GitHubu by se měly povolit automaticky po `.github/workflow/main.yml` vložení do GitHubu. Akce bude aktivována při vložení nového potvrzení změn. Pokud tento soubor vytvoříte v prohlížeči, měla by být akce již spuštěna.
+**Akce** GitHubu by se měly povolit automaticky po vložení `.github/workflow/main.yml` do GitHubu. Akce bude aktivována při vložení nového potvrzení změn. Pokud tento soubor vytvoříte v prohlížeči, měla by být akce již spuštěna.
 
 Chcete-li ověřit, zda byla akce povolena, klikněte na kartu **Akce** na stránce úložiště GitHub:
 

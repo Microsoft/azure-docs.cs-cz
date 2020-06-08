@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: ebe07ec76e5b852dbe7d030ad8859d59ce5cd074
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 6895944e4ca5cb115725814e9d27cb1f5fa04cfa
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451057"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484840"
 ---
 # <a name="analyze-and-understand-mobile-application-use"></a>Analýza a pochopení použití mobilní aplikace
 Jak dobře rozumíte tomu, jak uživatelé používají vaše aplikace? Kolik aktivních uživatelů vaše aplikace má a jak se v průběhu času mění využití? Jaké funkce používá a které jsou používány nejvíc? Kde jsou tito uživatelé vycházející? Kolik uživatelů používá nejnovější verzi aplikace? Všechny tyto otázky jsou důležité k tomu, aby se vaše aplikace mohla poznat do úspěšného podnikání. K zodpovězení těchto druhů dotazů týkajících se analýzy využití je potřeba shromažďovat data o využití z vašich aplikací.

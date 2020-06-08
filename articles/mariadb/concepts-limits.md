@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/1/2020
-ms.openlocfilehash: d4450689f6865c19436e437e09a3aa9f286c6e21
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 6/5/2020
+ms.openlocfilehash: c99851125552873e63f8199bf7b206c5fad231be
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83653133"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484740"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Omezení Azure Database for MariaDB
 Následující části popisují kapacitu, podporu modulu úložiště, podporu oprávnění, podporu příkazů pro manipulaci s daty a funkční omezení v databázové službě.
@@ -32,7 +32,7 @@ Minimální a maximální hodnoty několika oblíbených parametrů serveru se u
 |Pro obecné účely|16|2500|10|5000|
 |Pro obecné účely|32|5000|10|10000|
 |Pro obecné účely|64|10000|10|20000|
-|Optimalizováno pro paměť|2|600|10|800|
+|Optimalizováno pro paměť|2|625|10|1250|
 |Optimalizováno pro paměť|4|1250|10|2500|
 |Optimalizováno pro paměť|8|2500|10|5000|
 |Optimalizováno pro paměť|16|5000|10|10000|

@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 03/06/2020
-ms.openlocfilehash: f4ae4890d28236db493909243d66e28d308e2002
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 0444ffd27b3a261268f04f0077cca3116521e6f7
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434644"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484515"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Znovu vygenerovat přístupové klíče účtu úložiště
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,27 +105,35 @@ Chcete-li aktualizovat Azure Machine Learning pro použití nového klíče, pou
 
         Tento příkaz automaticky synchronizuje nové klíče pro účet služby Azure Storage, který používá pracovní prostor.
 
-1. Pokud chcete znovu zaregistrovat úložiště dat, která používají účet úložiště, použijte hodnoty z části [co je potřeba aktualizovat](#whattoupdate) a klíč z kroku 1 s následujícím kódem:
-
-    ```python
-    # Re-register the blob container
-    ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+1. Úložiště dat, která používají účet úložiště, můžete znovu zaregistrovat pomocí sady SDK nebo [Azure Machine Learning studia](https://ml.azure.com).
+    1. **Chcete-li znovu zaregistrovat úložiště dat prostřednictvím sady Python SDK**, použijte hodnoty z oddílu [co je potřeba aktualizovat](#whattoupdate) a klíč z kroku 1 s následujícím kódem. 
+    
+        Protože `overwrite=True` je zadán, tento kód přepíše existující registraci a aktualizuje ji, aby používala nový klíč.
+    
+        ```python
+        # Re-register the blob container
+        ds_blob = Datastore.register_azure_blob_container(workspace=ws,
+                                                  datastore_name='your datastore name',
+                                                  container_name='your container name',
+                                                  account_name='your storage account name',
+                                                  account_key='new storage account key',
+                                                  overwrite=True)
+        # Re-register file shares
+        ds_file = Datastore.register_azure_file_share(workspace=ws,
                                               datastore_name='your datastore name',
-                                              container_name='your container name',
+                                              file_share_name='your container name',
                                               account_name='your storage account name',
                                               account_key='new storage account key',
                                               overwrite=True)
-    # Re-register file shares
-    ds_file = Datastore.register_azure_file_share(workspace=ws,
-                                          datastore_name='your datastore name',
-                                          file_share_name='your container name',
-                                          account_name='your storage account name',
-                                          account_key='new storage account key',
-                                          overwrite=True)
+        
+        ```
     
-    ```
-
-    Protože `overwrite=True` je zadán, tento kód přepíše existující registraci a aktualizuje ji, aby používala nový klíč.
+    1. Pokud **Chcete úložiště dat znovu zaregistrovat přes Studio**, vyberte **úložiště dat** v levém podokně studia. 
+        1. Vyberte úložiště dat, které chcete aktualizovat.
+        1. V levém horním rohu vyberte tlačítko pro **aktualizaci přihlašovacích údajů** . 
+        1. Pomocí nového přístupového klíče z kroku 1 Naplňte formulář a klikněte na **Uložit**.
+        
+            Pokud aktualizujete přihlašovací údaje pro vaše **výchozí úložiště dat**, proveďte tento krok a opakujte krok 2b a znovu synchronizujte nový klíč s výchozím úložištěm dat pracovního prostoru. 
 
 ## <a name="next-steps"></a>Další kroky
 

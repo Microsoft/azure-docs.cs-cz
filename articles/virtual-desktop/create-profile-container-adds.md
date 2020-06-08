@@ -8,14 +8,14 @@ ms.topic: conceptual
 ms.date: 04/10/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 916d34abfaf8223e3cf29977e13dfddf15a3fbf9
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 7159eac0e71819fd75abef07cae979d5425fc07c
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82607278"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484614"
 ---
-# <a name="create-an-fslogix-profile-container-with-azure-files"></a>Vytvoření kontejneru profilu FSLogix se soubory Azure
+# <a name="create-a-profile-container-with-azure-files-and-azure-ad-ds"></a>Vytvoření kontejneru profilu se službou Azure Files a Azure služba AD DS
 
 Tento článek vám ukáže, jak vytvořit kontejner profilu FSLogix pomocí souborů Azure a Azure Active Directory Domain Services (služba AD DS).
 
@@ -103,7 +103,7 @@ Získání přístupového klíče účtu úložiště:
      net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name> <storage-account-key> /user:Azure\<storage-account-name>
      ```
 
-    - Nahraďte `<desired-drive-letter>` zvoleným písmenem jednotky (například `y:`).
+    - Nahraďte `<desired-drive-letter>` zvoleným písmenem jednotky (například `y:` ).
     - Nahraďte všechny výskyty `<storage-account-name>` názvem účtu úložiště, který jste zadali dříve.
     - Nahraďte `<share-name>` názvem sdílené složky, kterou jste vytvořili dříve.
     - Nahraďte `<storage-account-key>` klíčem účtu úložiště z Azure.
@@ -137,20 +137,20 @@ Postup konfigurace kontejneru profilu FSLogix:
 
 1. Přihlaste se k virtuálnímu počítači hostitele relace, který jste nakonfigurovali na začátku tohoto článku, [a pak stáhněte a nainstalujte agenta FSLogix](/fslogix/install-ht/).
 
-2. Rozbalte soubor agenta FSLogix, který jste stáhli, klikněte na **x64** > **releases**a pak otevřete **FSLogixAppsSetup. exe**.
+2. Rozbalte soubor agenta FSLogix, který jste stáhli, klikněte na **x64**  >  **releases**a pak otevřete **FSLogixAppsSetup. exe**.
 
 3. Jakmile se instalační program spustí, vyberte Souhlasím **s licenčními podmínkami a ujednáními.** V případě potřeby zadejte nový klíč.
 
-4. Vyberte **Install** (Nainstalovat).
+4. Vyberte **Nainstalovat**.
 
-5. Otevřete **jednotku C**a pak vyhledejte **soubory Program Files** > **FSLogix** > **a ujistěte se,** že je agent FSLogix správně nainstalovaný.
+5. Otevřete **jednotku C**a pak vyhledejte **soubory Program Files**  >  **FSLogix**  >  **Apps** a ujistěte se, že je agent FSLogix správně nainstalovaný.
 
      >[!NOTE]
      > Pokud je ve fondu hostitelů víc virtuálních počítačů, budete muset pro každý virtuální počítač zopakovat kroky 1 až 5.
 
 6. Spusťte **Editor registru** (Regedit) jako správce.
 
-7. Přejděte na **počítač** > **HKEY_LOCAL_MACHINE** > **software** > **FSLogix**, klikněte pravým tlačítkem na **FSLogix**, vyberte **Nový**a pak vyberte **klíč**.
+7. Přejděte na **počítač**  >  **HKEY_LOCAL_MACHINE**  >  **software**  >  **FSLogix**, klikněte pravým tlačítkem na **FSLogix**, vyberte **Nový**a pak vyberte **klíč**.
 
 8. Vytvořte nový klíč s názvem **Profiles**.
 
@@ -158,7 +158,7 @@ Postup konfigurace kontejneru profilu FSLogix:
 
     ![Snímek obrazovky s klíčem Profile REG_DWORD soubor je zvýrazněný a jeho datová hodnota je nastavená na 1.](media/dword-value.png)
 
-10. Klikněte pravým tlačítkem na **profily**, vyberte **Nový**a potom vyberte **hodnotu s více řetězci**. Pojmenujte hodnotu **VHDLocations** a jako datovou hodnotu zadejte identifikátor URI pro `\\fsprofile.file.core.windows.net\share` sdílenou složku souborů Azure.
+10. Klikněte pravým tlačítkem na **profily**, vyberte **Nový**a potom vyberte **hodnotu s více řetězci**. Pojmenujte hodnotu **VHDLocations** a `\\fsprofile.file.core.windows.net\share` jako datovou hodnotu zadejte identifikátor URI pro sdílenou složku souborů Azure.
 
     ![Snímek obrazovky s klíčem Profiles, který ukazuje soubor VHDLocations Jeho hodnota dat zobrazuje identifikátor URI pro sdílenou složku služby soubory Azure.](media/multi-string-value.png)
 
@@ -197,7 +197,7 @@ Přiřazení uživatelů:
      Add-RdsAppGroupUser $tenant $pool1 $appgroup $user1
      ```
 
-    Stejně jako v předchozích rutinách Nezapomeňte nahradit `<your-wvd-tenant>`, `<wvd-pool>`a `<user-principal>` s odpovídajícími hodnotami.
+    Stejně jako v předchozích rutinách Nezapomeňte nahradit `<your-wvd-tenant>` , `<wvd-pool>` a `<user-principal>` s odpovídajícími hodnotami.
 
     Příklad:
 
@@ -231,7 +231,7 @@ Ověření profilu:
 
 6. Vyberte ikonu **soubory** a potom rozbalte sdílenou složku.
 
-    Pokud je všechno správně nastavené, měl by se zobrazit **adresář** s názvem, který se naformátoval takto `<user SID>-<username>`:.
+    Pokud je všechno správně nastavené, měl by se zobrazit **adresář** s názvem, který se naformátoval takto: `<user SID>-<username>` .
 
 ## <a name="next-steps"></a>Další kroky
 

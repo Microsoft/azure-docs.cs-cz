@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-0123-4678-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 7986d740eb8e963fbede19637e8e691459b742c5
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: cff95c38500a32b9b8ddc3f303ae218926bd59bd
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84451008"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483355"
 ---
 # <a name="content-delivery-network-on-azure-with-azure-content-delivery-network"></a>Content Delivery Network v Azure s využitím Azure Content Delivery Network
 [Azure Content Delivery Network](https://azure.microsoft.com/services/cdn/) nabízí vývojářům globální řešení pro rychlé doručování obsahu s vysokou šířkou pásma, jako jsou videa, obrázky nebo statické soubory, díky ukládání obsahu do mezipaměti po stovkách bodů přítomnosti po celém světě. Content Delivery Network může také urychlit dynamický obsah, který nejde ukládat do mezipaměti, aby se snížila doba načítání, ušetřila se šířka pásma a zvýšila se rychlost odezvy. Tyto výhody získáte bez ohledu na to, jestli vyvíjíte nebo spravujete weby nebo mobilní aplikace nebo zakódujete a distribuujete streamovaná média, herní software, aktualizace firmwaru nebo koncové body IoT.

@@ -8,12 +8,12 @@ ms.date: 04/10/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: dineshm
-ms.openlocfilehash: 6066cd4f347ef05e6fcdb67bb1223ffbc0cae46b
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 30244a426b6f934ef66261c6dccbb46e72f28488
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84341007"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485200"
 ---
 # <a name="configure-optimize-and-troubleshoot-azcopy"></a>Konfigurace, optimalizace a řešení potíží s AzCopy
 
@@ -34,7 +34,7 @@ Chcete-li nakonfigurovat nastavení proxy serveru pro AzCopy, nastavte `https_pr
 |--------|-----------|
 | **Windows** | V příkazovém řádku použijte:`set https_proxy=<proxy IP>:<proxy port>`<br> V prostředí PowerShell použijte:`$env:https_proxy="<proxy IP>:<proxy port>"`|
 | **Linux** | `export https_proxy=<proxy IP>:<proxy port>` |
-| **MacOS** | `export https_proxy=<proxy IP>:<proxy port>` |
+| **macOS** | `export https_proxy=<proxy IP>:<proxy port>` |
 
 AzCopy v současné době nepodporuje proxy servery, které vyžadují ověřování pomocí protokolu NTLM nebo Kerberos.
 
@@ -63,23 +63,23 @@ Tato část vám pomůže provést tyto optimalizační úlohy:
 
 ### <a name="run-benchmark-tests"></a>Spustit testy srovnávacích testů
 
-Test srovnávacího testu výkonu můžete spustit pro konkrétní kontejnery objektů BLOB a zobrazit tak obecná statistiku výkonu a kritická místa výkonu identity. 
+Test srovnávacího testu výkonu můžete spustit pro konkrétní kontejnery objektů BLOB nebo sdílené složky a zobrazit tak obecná statistiku výkonu a kritická místa výkonu identity. 
 
 Pomocí následujícího příkazu spusťte test srovnávacího testu výkonu.
 
 |    |     |
 |--------|-----------|
-| **Syntaxe** | `azcopy bench 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
-| **Případě** | `azcopy bench 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
+| **Syntaxe** | `azcopy benchmark 'https://<storage-account-name>.blob.core.windows.net/<container-name>'` |
+| **Případě** | `azcopy benchmark 'https://mystorageaccount.blob.core.windows.net/mycontainer/myBlobDirectory?sv=2018-03-28&ss=bjqt&srs=sco&sp=rjklhjup&se=2019-05-10T04:37:48Z&st=2019-05-09T20:37:48Z&spr=https&sig=%2FSOVEFfsKDqRry4bk3qz1vAQFwY5DDzp2%2B%2F3Eykf%2FJLs%3D'` |
 
 > [!TIP]
 > Tento příklad uzavře argumenty cesty s jednoduchými uvozovkami (' '). Použijte jednoduché uvozovky ve všech příkazových prostředích s výjimkou příkazového prostředí systému Windows (cmd. exe). Pokud používáte příkazové prostředí systému Windows (cmd. exe), uzavřete argumenty cesty pomocí dvojitých uvozovek ("") místo jednoduchých uvozovek (' ').
 
 Tento příkaz spustí srovnávací test výkonu odesláním testovacích dat do zadaného cíle. Testovací data jsou generována v paměti, odeslána do cíle a poté po dokončení testu odstraněna z cílového umístění. Můžete určit, kolik souborů se má vygenerovat a jakou velikost byste chtěli použít při použití volitelných parametrů příkazu.
 
-Podrobné referenční dokumentace najdete na [AzCopy](storage-ref-azcopy-bench.md).
+Podrobné referenční dokumentace najdete v tématu [AzCopy Testing](storage-ref-azcopy-bench.md).
 
-Chcete-li zobrazit podrobné pokyny pro nápovědu k tomuto příkazu, zadejte `azcopy bench -h` a stiskněte klávesu ENTER.
+Chcete-li zobrazit podrobné pokyny pro nápovědu k tomuto příkazu, zadejte `azcopy benchmark -h` a stiskněte klávesu ENTER.
 
 ### <a name="optimize-throughput"></a>Optimalizace propustnosti
 
@@ -97,7 +97,7 @@ Pokud má počítač méně než 5 procesorů, pak je hodnota této proměnné n
 |--------|-----------|
 | **Windows** | `set AZCOPY_CONCURRENCY_VALUE=<value>` |
 | **Linux** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
-| **MacOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
+| **macOS** | `export AZCOPY_CONCURRENCY_VALUE=<value>` |
 
 `azcopy env`Pro kontrolu aktuální hodnoty této proměnné použijte. Pokud je hodnota prázdná, můžete si přečíst, která hodnota se používá, a to na začátku libovolného souboru protokolu AzCopy. Je zde uvedena vybraná hodnota a důvod, proč byla vybrána.
 
@@ -112,7 +112,7 @@ Vyjádřete tuto hodnotu v gigabajtech (GB).
 |--------|-----------|
 | **Windows** | `set AZCOPY_BUFFER_GB=<value>` |
 | **Linux** | `export AZCOPY_BUFFER_GB=<value>` |
-| **MacOS** | `export AZCOPY_BUFFER_GB=<value>` |
+| **macOS** | `export AZCOPY_BUFFER_GB=<value>` |
 
 ### <a name="optimize-file-synchronization"></a>Optimalizovat synchronizaci souborů
 
@@ -193,9 +193,9 @@ Použijte některý z těchto příkazů.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **Windows** | Prostředí`$env:AZCOPY_JOB_PLAN_LOCATION="<value>"` <br> V příkazovém řádku použijte::`set AZCOPY_JOB_PLAN_LOCATION=<value>` |
 | **Linux** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_JOB_PLAN_LOCATION=<value>` |
 
 `azcopy env`Pro kontrolu aktuální hodnoty této proměnné použijte. Pokud je hodnota prázdná, pak se soubory plánu zapisují do výchozího umístění.
 
@@ -205,9 +205,9 @@ Použijte některý z těchto příkazů.
 
 | Operační systém | Příkaz  |
 |--------|-----------|
-| **Windows** | `set AZCOPY_LOG_LOCATION=<value>` |
+| **Windows** | Prostředí`$env:AZCOPY_LOG_LOCATION="<value>"` <br> V příkazovém řádku použijte::`set AZCOPY_LOG_LOCATION=<value>`|
 | **Linux** | `export AZCOPY_LOG_LOCATION=<value>` |
-| **MacOS** | `export AZCOPY_LOG_LOCATION=<value>` |
+| **macOS** | `export AZCOPY_LOG_LOCATION=<value>` |
 
 `azcopy env`Pro kontrolu aktuální hodnoty této proměnné použijte. Pokud je hodnota prázdná, protokoly se zapisují do výchozího umístění.
 

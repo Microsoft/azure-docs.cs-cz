@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 05/20/2020
 ms.custom: seodec18
-ms.openlocfilehash: 5751a7c5eac9386ecd52e172b40aacbef5247dd1
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 2db6134d49ccd73c32339fe51814d915ae88604a
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434623"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484487"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurace experimentů automatizovaného strojového učení v Pythonu
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -344,6 +344,8 @@ Existuje několik možností, které můžete definovat pro ukončení experimen
 ### <a name="explore-model-metrics"></a>Prozkoumat metriky modelu
 
 Pokud se nacházíte v poznámkovém bloku, můžete zobrazit výsledky školení v widgetu nebo v případě potřeby. Další podrobnosti najdete v tématu [sledování a vyhodnocení modelů](how-to-track-experiments.md#view-run-details) .
+
+Podrobnosti o tom, jak stáhnout nebo zaregistrovat model pro nasazení do webové služby, najdete v tématu [jak a kde nasadit model](how-to-deploy-and-where.md).
 
 ## <a name="understand-automated-ml-models"></a>Principy automatizovaných modelů ML
 

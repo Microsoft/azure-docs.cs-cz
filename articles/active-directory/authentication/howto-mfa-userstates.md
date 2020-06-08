@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c51863cd95deff5e460707b004206f6fde54cac4
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: a8ea97d7a2aa5fdc18d11e952eafe65b167b3397
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84337746"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483922"
 ---
 # <a name="enable-per-user-azure-multi-factor-authentication-to-secure-sign-in-events"></a>Povolení vícefaktorového ověřování Azure pro jednotlivé uživatele za účelem zabezpečení událostí přihlášení
 
@@ -84,7 +84,7 @@ Pokud chcete změnit stav uživatele pomocí [Azure AD PowerShellu](/powershell/
 * *Vynuceno*
 * *Disabled* (Zakázáno)  
 
-Nepřesouvat uživatele přímo do *Vynutilého* stavu. Pokud to uděláte, aplikace nezaložené na prohlížeči přestanou fungovat, protože uživatel se nedostal přes Azure Multi-Factor Authentication registraci a nezískal [heslo aplikace](howto-mfa-mfasettings.md#app-passwords).
+Nepřesouvat uživatele přímo do *Vynutilého* stavu. Pokud to uděláte, aplikace nezaložené na prohlížeči přestanou fungovat, protože uživatel se nedostal přes Azure Multi-Factor Authentication registraci a nezískal [heslo aplikace](howto-mfa-app-passwords.md).
 
 Začněte tím, že pomocí [instalačního modulu](/powershell/module/powershellget/install-module) nainstalujete modul *MSOnline* následujícím způsobem:
 

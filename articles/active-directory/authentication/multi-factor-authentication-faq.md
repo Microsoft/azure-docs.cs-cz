@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d28f93f316ac2a63be6b3a8eb0b80678bd7607f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa25cffd84ee9255fed8bbaa0f2fb6adf762b47e
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81271399"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483786"
 ---
 # <a name="frequently-asked-questions-about-azure-multi-factor-authentication"></a>Nejčastější dotazy ohledně služby Azure Multi-Factor Authentication
 
@@ -163,7 +163,7 @@ Pokud chcete zabránit neoprávněnému přístupu, odstraňte všechna hesla ap
 
 ### <a name="what-if-a-user-cant-sign-in-to-non-browser-apps"></a>Co když se uživatel nemůže přihlásit k neprohlížečovým aplikacím?
 
-Pokud vaše organizace stále používá starší klienty a Vy jste [povolili používání hesel aplikací](howto-mfa-mfasettings.md#app-passwords), nebudou se uživatelé moct k těmto starším klientům přihlašovat pomocí svého uživatelského jména a hesla. Místo toho musí [nastavovat hesla aplikací](../user-help/multi-factor-authentication-end-user-app-passwords.md). Uživatelé musí zrušit (odstranit) jejich přihlašovací údaje, restartovat aplikaci a pak se přihlašovat pomocí uživatelského jména a *hesla aplikace* místo jejich běžného hesla.
+Pokud vaše organizace stále používá starší klienty a Vy jste [povolili používání hesel aplikací](howto-mfa-app-passwords.md), nebudou se uživatelé moct k těmto starším klientům přihlašovat pomocí svého uživatelského jména a hesla. Místo toho musí [nastavovat hesla aplikací](../user-help/multi-factor-authentication-end-user-app-passwords.md). Uživatelé musí zrušit (odstranit) jejich přihlašovací údaje, restartovat aplikaci a pak se přihlašovat pomocí uživatelského jména a *hesla aplikace* místo jejich běžného hesla.
 
 Pokud vaše organizace nemá starší verze klientů, neměli byste uživatelům dovolit vytvářet hesla aplikací.
 

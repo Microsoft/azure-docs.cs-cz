@@ -8,22 +8,22 @@ ms.date: 10/16/2019
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: 331d0cd4a20cb4351a1bc9a204c500386c499ada
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 40ff6c6c76e255945681e678ef296ffcf9978f61
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220148"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485175"
 ---
-# <a name="azcopy-bench"></a>azcopy bench
+# <a name="azcopy-benchmark"></a>srovnávací AzCopy
 
 Spustí srovnávací test výkonu odesláním testovacích dat do zadaného cíle. Testovací data se generují automaticky.
 
 Příkaz srovnávacího testu spouští stejný proces nahrávání jako "Copy" s tím rozdílem, že:
 
-  - Neexistuje parametr zdroje.  Příkaz vyžaduje pouze cílovou adresu URL. V aktuální verzi musí tato cílová adresa URL odkazovat na kontejner objektů BLOB.
+  - Neexistuje parametr zdroje.  Příkaz vyžaduje pouze cílovou adresu URL. 
   
-  - Datová část je popsána v parametrech příkazového řádku, který určuje, kolik souborů se automaticky generuje a jak velká jsou. Proces generování probíhá zcela v paměti. Disk se nepoužívá.
+  - Datová část je popsána v parametrech příkazového řádku, který určuje, kolik souborů se generuje automaticky a jejich velikost. Proces generování probíhá zcela v paměti. Disk se nepoužívá.
   
   - Jsou podporovány pouze některé volitelné parametry, které jsou k dispozici pro příkaz Kopírovat.
   
@@ -38,18 +38,18 @@ Podporují se všechny běžné typy ověřování. Nejpohodlnější přístup 
 ## <a name="examples"></a>Příklady
 
 ```azcopy
-azcopy bench [destination] [flags]
+azcopy benchmark [destination] [flags]
 ```
 
 Spustit test srovnávacího testu s výchozími parametry (vhodný pro sítě srovnávacích testů až do 1 GB/s):
 
 - AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS> "
 
-Spusťte test srovnávacího testu, který nahrává soubory 100, každý 2 GiB velikost: (vhodné pro srovnávací testy v rychlé síti, např. 10 GB/s):
+Spusťte test srovnávacího testu, který nahrává soubory 100, každý 2 GiB velikost: (vhodné pro srovnávací testy v rychlé síti, například 10 GB/s):
 
 - AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS> " --počet souborů: 100--Size-pro soubor 2G
 
-Stejné jako výše, ale použijte soubory 50 000, velikost 8 souborů MiB a jejich výpočetních hodnot hash MD5 (stejným způsobem jako příznak--Put-MD5 to dělá v příkazu copy). Účelem--Put-MD5 při srovnávacích testech je testovat, zda výpočet MD5 ovlivňuje propustnost pro vybraný počet a velikost souborů:
+Spusťte test srovnávacího testu, ale použijte soubory 50 000, velikost 8 souborů MiB a jejich výpočetních hodnot hash MD5 (stejným způsobem jako `--put-md5` příznak v příkazu Kopírovat). Účelem `--put-md5` při srovnávacím testu je testování, zda výpočet MD5 ovlivňuje propustnost pro vybraný počet a velikost souborů:
 
 - AzCopy je "https://[účet]. blob. Core. Windows. NET/[kontejner]? <SAS> " --počet souborů: 50000--Size-podle souboru 8 min--Put-MD5
 

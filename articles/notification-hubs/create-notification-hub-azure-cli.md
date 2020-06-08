@@ -13,12 +13,12 @@ ms.date: 05/27/2020
 ms.author: dbradish
 ms.reviewer: sethm
 ms.lastreviewed: 03/18/2020
-ms.openlocfilehash: d6502985c0267fe6636c606e493533daf17f6b56
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: f39d5ca5e153da3d1644aabeb7e48b41d07fe253
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300008"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485149"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rychlý Start: vytvoření centra oznámení Azure pomocí Azure CLI
 
@@ -112,7 +112,7 @@ Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 
 
 2. Získá seznam oborů názvů.
 
-   Podrobnosti o vašem novém oboru názvů zobrazíte pomocí příkazu [AZ Notification-hub Namespace list](/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) .  `--resource-group`Parametr je nepovinný, pokud chcete zobrazit všechny obory názvů pro předplatné.
+   Podrobnosti o vašem novém oboru názvů zobrazíte pomocí příkazu [AZ Notification-hub Namespace list](/cli/azure/ext/notification-hub/notification-hub/namespace?view=azure-cli-latest#ext-notification-hub-az-notification-hub-namespace-list) .  `--resource-group`Parametr je nepovinný, pokud chcete zobrazit všechny obory názvů pro předplatné.
 
    ```azurecli
    az notification-hub namespace list --resource-group spnhubrg
@@ -138,7 +138,7 @@ Notification Hubs vyžaduje verzi rozhraní příkazového řádku Azure 2.0.67 
 
 3. Získejte seznam Center oznámení.
 
-   Azure CLI vrátí buď úspěch, nebo chybovou zprávu s každým provedeným příkazem; je ale možné dotazovat se na seznam Center oznámení, který se znovu zaručí.  Pro tento účel byl navržen příkaz [AZ Notification-hub list](/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) .
+   Azure CLI vrátí buď úspěch, nebo chybovou zprávu s každým provedeným příkazem; je ale možné dotazovat se na seznam Center oznámení, který se znovu zaručí.  Pro tento účel byl navržen příkaz [AZ Notification-hub list](/cli/azure/ext/notification-hub/notification-hub?view=azure-cli-latest#ext-notification-hub-az-notification-hub-list) .
 
    ```azurecli
    az notification-hub list --resource-group spnhubrg --namespace-name spnhubns --output table

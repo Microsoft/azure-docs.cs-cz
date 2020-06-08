@@ -6,18 +6,18 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 72dcf95c8ae8d8da34532fa96e3bf0371f5112fd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 244fe0d7be92cc2d8ce4c892d8f90b6b58b32408
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79370912"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484809"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for PostgreSQL pro jeden server pomocí portálu
 
 Privátní koncový bod je základním stavebním blokem privátního propojení v Azure. Umožňuje prostředkům Azure, jako je Virtual Machines (virtuální počítače), komunikovat soukromě s prostředky privátního propojení.  V tomto článku se naučíte, jak použít Azure Portal k vytvoření virtuálního počítače v Azure Virtual Network a Azure Database for PostgreSQL jednom serveru s privátním koncovým bodem Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 > [!NOTE]
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL jeden server podporuje Pro obecné účely a paměťově optimalizované cenové úrovně.
@@ -32,7 +32,7 @@ V této části vytvoříte virtuální síť a podsíť pro hostování virtuá
 ### <a name="create-the-virtual-network"></a>Vytvoření virtuální sítě
 V této části vytvoříte Virtual Network a podsíť, která bude hostovat virtuální počítač, který se používá pro přístup k prostředku privátního propojení.
 
-1. V levé horní části obrazovky vyberte **vytvořit prostředek** > **síť** > **virtuální síť**.
+1. V levé horní části obrazovky vyberte **vytvořit prostředek**  >  **síť**  >  **virtuální síť**.
 2. V nástroji **vytvořit virtuální síť**zadejte nebo vyberte tyto informace:
 
     | Nastavení | Hodnota |
@@ -49,7 +49,7 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
 
 ### <a name="create-virtual-machine"></a>Vytvořit virtuální počítač
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit** > **Compute** > **virtuální počítač**Compute.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **Compute**  >  **virtuální počítač**Compute.
 
 2. V nástroji **vytvořit virtuální počítač základy**zadejte nebo vyberte tyto informace:
 
@@ -95,11 +95,15 @@ V této části vytvoříte Virtual Network a podsíť, která bude hostovat vir
 
 1. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**.
 
+> [!NOTE]
+> V některých případech jsou Azure Database for PostgreSQL a VNet-Subnet v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
+> - Ujistěte se, že oba odběry mají zaregistrovaný poskytovatel prostředků **Microsoft. DBforPostgreSQL** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
+
 ## <a name="create-an-azure-database-for-postgresql-single-server"></a>Vytvoření jednoho serveru Azure Database for PostgreSQL
 
 V této části vytvoříte Azure Database for PostgreSQL Server v Azure. 
 
-1. V levé horní části obrazovky Azure Portal vyberte **vytvořit** > **databáze** > prostředků**Azure Database for PostgreSQL**.
+1. V levé horní části obrazovky Azure Portal vyberte **vytvořit**  >  **databáze**prostředků  >  **Azure Database for PostgreSQL**.
 
 1. V **Azure Database for PostgreSQL možnosti nasazení**vyberte **jeden server** a zadejte tyto informace:
 
@@ -108,12 +112,12 @@ V této části vytvoříte Azure Database for PostgreSQL Server v Azure.
     | **Podrobnosti o projektu** | |
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
-    | **Podrobnosti o serveru** |  |
+    | **Podrobnosti serveru** |  |
     |Název serveru  | Zadejte *MyServer*. Pokud se tento název povede, vytvořte jedinečný název.|
     | Uživatelské jméno správce| Zadejte jméno správce, které chcete zvolit. |
     | Heslo | Zadejte libovolné heslo. Heslo musí mít délku alespoň 8 znaků a musí splňovat definované požadavky. |
     | Umístění | Vyberte oblast Azure, ve které chcete, aby se server PostgreSQL nacházel. |
-    |Version  | Vyberte verzi databáze serveru PostgreSQL, která je povinná.|
+    |Verze  | Vyberte verzi databáze serveru PostgreSQL, která je povinná.|
     | Výpočty a úložiště| Vyberte cenovou úroveň, která je potřebná pro server na základě zatížení. |
     |||
  
@@ -126,7 +130,7 @@ V této části vytvoříte Azure Database for PostgreSQL Server v Azure.
 
 V této části vytvoříte server PostgreSQL a přidáte do něj privátní koncový bod. 
 
-1. V levé horní části obrazovky v Azure Portal vyberte **vytvořit prostředek** > **sítě** > **privátní odkaz**.
+1. V levé horní části obrazovky v Azure Portal vyberte **vytvořit prostředek**  >  **sítě**  >  **privátní odkaz**.
 2. V části **centrum privátních odkazů – přehled**na možnost **vytvořit privátní připojení ke službě**vyberte možnost **Spustit**.
 
     ![Přehled privátních odkazů](media/concepts-data-access-and-security-private-link/privatelink-overview.png)
@@ -139,7 +143,7 @@ V této části vytvoříte server PostgreSQL a přidáte do něj privátní kon
     | Předplatné | Vyberte své předplatné. |
     | Skupina prostředků | Vyberte **myResourceGroup**. Vytvořili jste ho v předchozí části.|
     | **Detaily instance** |  |
-    | Název | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
+    | Name | Zadejte *myPrivateEndpoint*. Pokud se tento název povede, vytvořte jedinečný název. |
     |Oblast|Vyberte **Západní Evropa**.|
     |||
 5. Vyberte **Další: prostředek**.
@@ -165,6 +169,9 @@ V této části vytvoříte server PostgreSQL a přidáte do něj privátní kon
     |Integrace s privátní zónou DNS |Vyberte **Ano**. |
     |Zóna Privátní DNS |Select *(New) privatelink. Postgres. Database. Azure. com* |
     |||
+
+    > [!Note] 
+    > Přečtěte si téma [Konfigurace zóny DNS služeb Azure](../private-link/private-endpoint-dns.md).
 
 1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
 2. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**. 
@@ -192,7 +199,7 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
     1. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače.
 
         > [!NOTE]
-        > Možná budete muset vybrat **Další volby** > **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
+        > Možná budete muset vybrat **Další volby**  >  **použít jiný účet**a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 
 1. Vyberte **OK**.
 
@@ -204,7 +211,7 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
 
 1. Ve vzdálené ploše *myVM*otevřete PowerShell.
 
-2. Zadejte `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com`. 
+2. Zadejte  `nslookup mydemopostgresserver.privatelink.postgres.database.azure.com` . 
 
     Zobrazí se zpráva podobná této:
     ```azurepowershell
@@ -223,12 +230,12 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
     | ------- | ----- |
     | Typ serveru| Vyberte **PostgreSQL**.|
     | Název serveru| Vybrat *mydemopostgresserver.privatelink.Postgres.Database.Azure.com* |
-    | Uživatelské jméno | Zadejte uživatelské jméno username@servername , které je k dispozici během vytváření PostgreSQL serveru. |
+    | Uživatelské jméno | Zadejte uživatelské jméno, username@servername které je k dispozici během vytváření PostgreSQL serveru. |
     |Heslo |Zadejte heslo, které jste zadali během vytváření PostgreSQL serveru. |
     |SSL|Vyberte možnost **požadováno**.|
     ||
 
-5. Vyberte Connect (Připojit).
+5. Vyberte Připojit.
 
 6. Procházet databáze z levé nabídky
 
@@ -239,10 +246,13 @@ Po vytvoření **myVm**se k němu připojte z Internetu následujícím způsobe
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 Až budete s použitím privátního koncového bodu, serveru PostgreSQL a virtuálního počítače, odstraňte skupinu prostředků a všechny prostředky, které obsahuje:
 
-1. Do **vyhledávacího** pole v horní části portálu zadejte *myResourceGroup* a ve výsledcích hledání vyberte *myResourceGroup* .
+1.  *myResourceGroup*   Do **vyhledávacího** pole v horní části portálu zadejte myResourceGroup a ve výsledcích hledání vyberte *myResourceGroup*   .
 2. Vyberte **Odstranit skupinu prostředků**.
 3. Zadejte myResourceGroup pro **typ název skupiny prostředků** a vyberte **Odstranit**.
 
 ## <a name="next-steps"></a>Další kroky
 
 V tomto postupu jste vytvořili virtuální počítač ve virtuální síti, Azure Database for PostgreSQL jeden server a soukromý koncový bod pro privátní přístup. Připojili jste se k jednomu virtuálnímu počítači z Internetu a bezpečně komunikovali se serverem PostgreSQL pomocí privátního odkazu. Další informace o privátních koncových bodech najdete v tématu [co je privátní koncový bod Azure](https://docs.microsoft.com/azure/private-link/private-endpoint-overview).
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

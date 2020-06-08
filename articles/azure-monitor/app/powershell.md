@@ -3,12 +3,12 @@ title: Automatizace Azure Application Insights s využitím PowerShellu | Micros
 description: Automatizujte vytváření a správu prostředků, upozornění a testů dostupnosti v PowerShellu pomocí šablony Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: a6653582a990b97775976b757198f11b2a46c46b
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: c4e7c4fe14d829338e98a4b7e73726b1e605707c
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83697918"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485426"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Správa prostředků Application Insights pomocí prostředí PowerShell
 
@@ -473,5 +473,4 @@ Další články o automatizaci:
 * [Nastavení výstrah](powershell-alerts.md)
 * [Vytvářejte webové testy](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Odesílání Azure Diagnostics do Application Insights](powershell-azure-diagnostics.md)
-* [Nasazení do Azure z GitHubu](https://blogs.msdn.com/b/webdev/archive/2015/09/16/deploy-to-azure-from-github-with-application-insights.aspx)
 * [Vytvořit poznámky k verzi](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)

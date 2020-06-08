@@ -6,25 +6,25 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 05/28/2019
+ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: f5c6562c6def1fa588724b3bc5da502536b16aa9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ad9c0f29ee10197c4dafe6ca24ee4df7b7afdb88
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80985639"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485360"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Bulk Executor Java k provádění hromadných operací s daty služby Azure Cosmos DB
 
 Tento kurz poskytuje pokyny k importu a aktualizaci dokumentů Azure Cosmos DB pomocí hromadného prováděcího modulu jazyka Java v Azure Cosmos DB. Další informace o hromadné prováděcí knihovně a o tom, jak vám pomůže využít obrovské propustnost a úložiště, najdete v článku [Přehled knihovny hromadného prováděcího modulu](bulk-executor-overview.md) . V tomto kurzu vytvoříte aplikaci Java, která generuje náhodné dokumenty a hromadně importuje do kontejneru Azure Cosmos. Po importu budete hromadně aktualizovat některé vlastnosti dokumentu. 
 
-V současné době je knihovna hromadných prováděcích modulů podporovaná jenom pomocí Azure Cosmos DB SQL API a účtů rozhraní API Gremlin. Tento článek popisuje, jak používat hromadnou prováděcí knihovnu Java s účty rozhraní SQL API. Další informace o použití knihovny hromadného prováděcího modulu .NET s rozhraním Gremlin API najdete v tématu [provádění hromadných operací v rozhraní Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md).
+V současné době je knihovna hromadných prováděcích modulů podporovaná jenom pomocí Azure Cosmos DB SQL API a účtů rozhraní API Gremlin. Tento článek popisuje, jak používat hromadnou prováděcí knihovnu Java s účty rozhraní SQL API. Další informace o použití knihovny hromadného prováděcího modulu .NET s rozhraním Gremlin API najdete v tématu [provádění hromadných operací v rozhraní Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md). Popsaná knihovna hromadného prováděcího modulu je k dispozici pro aplikace, které používají verzi Java SDK 2. x. V současné době není k dispozici pro 3. x, 4. x a novější verze sady SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) před tím, než začnete.  
+* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio), ještě než začnete.  
 
 * Můžete [vyzkoušet Azure Cosmos DB zdarma](https://azure.microsoft.com/try/cosmosdb/) bez předplatného Azure, zdarma a závazků. Nebo můžete použít [emulátor Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/local-emulator) u `https://localhost:8081` koncového bodu. Primární klíč je uvedený v části [Ověřování požadavků](local-emulator.md#authenticating-requests).  
 
@@ -105,7 +105,7 @@ Klonovaný úložiště obsahuje dvě ukázky "bulkimport" a "bulkupdate" relati
 
    Metoda pro neportál přijímá následující parametry:
  
-   |**Ukazatele**  |**Popis**  |
+   |**Parametr**  |**Popis**  |
    |---------|---------|
    |isUpsert    |   Příznak, který povolí Upsert dokumentů. Pokud dokument s daným ID již existuje, je aktualizován.  |
    |disableAutomaticIdGeneration     |   Příznak, který zakáže automatickou generaci IDENTIFIKÁTORů. Ve výchozím nastavení je nastavena na hodnotu true.   |
@@ -113,13 +113,13 @@ Klonovaný úložiště obsahuje dvě ukázky "bulkimport" a "bulkupdate" relati
 
    **Definice objektu odpovědi pro hromadné importy** Výsledek volání rozhraní API hromadného importu obsahuje následující metody Get:
 
-   |**Ukazatele**  |**Popis**  |
+   |**Parametr**  |**Popis**  |
    |---------|---------|
    |int getNumberOfDocumentsImported ()  |   Celkový počet dokumentů, které byly úspěšně naimportovány z dokumentů dodaných do volání hromadného importu rozhraní API.      |
    |Dvojitá getTotalRequestUnitsConsumed ()   |  Celkový počet jednotek žádosti (RU) spotřebovaných voláním rozhraní API hromadného importu.       |
    |Doba trvání getTotalTimeTaken ()   |    Celková doba, kterou zabere volání rozhraní API hromadného importu k dokončení provádění.     |
-   |Vypsat\<výjimku> GetErrors () |  Načte seznam chyb, pokud se nezdařila vložení některých dokumentů z dávky dodané do volání rozhraní API hromadného importu.       |
-   |Seznam\<objektů> getBadInputDocuments ()  |    Seznam dokumentů se špatným formátem, které nebyly úspěšně importovány v volání rozhraní API hromadného importu. Uživatel by měl opravit vrácené dokumenty a pokusit se o import znovu. Chybné – formátované dokumenty obsahují dokumenty, jejichž hodnota ID není řetězec (null nebo jakýkoli jiný datový typ se považuje za neplatné).     |
+   |Výpis \<Exception> GetErrors () |  Načte seznam chyb, pokud se nezdařila vložení některých dokumentů z dávky dodané do volání rozhraní API hromadného importu.       |
+   |Seznam \<Object> getBadInputDocuments ()  |    Seznam dokumentů se špatným formátem, které nebyly úspěšně importovány v volání rozhraní API hromadného importu. Uživatel by měl opravit vrácené dokumenty a pokusit se o import znovu. Chybné – formátované dokumenty obsahují dokumenty, jejichž hodnota ID není řetězec (null nebo jakýkoli jiný datový typ se považuje za neplatné).     |
 
 5. Po přípravě aplikace hromadného importu Sestavte nástroj příkazového řádku ze zdroje pomocí příkazu ' MVN Cleanup Package '. Tento příkaz vygeneruje soubor JAR v cílové složce:  
 
@@ -171,18 +171,18 @@ Existující dokumenty můžete aktualizovat pomocí rozhraní BulkUpdateAsync A
 
    Metoda updateAll přijímá následující parametry:
 
-   |**Ukazatele** |**Popis** |
+   |**Parametr** |**Popis** |
    |---------|---------|
    |maxConcurrencyPerPartitionRange   |  Maximální stupeň souběžnosti na rozsah klíče oddílu. Výchozí hodnota je 20.  |
  
    **Definice objektu odpovědi pro hromadné importy** Výsledek volání rozhraní API hromadného importu obsahuje následující metody Get:
 
-   |**Ukazatele** |**Popis**  |
+   |**Parametr** |**Popis**  |
    |---------|---------|
    |int getNumberOfDocumentsUpdated ()  |   Celkový počet dokumentů, které byly úspěšně aktualizovány z dokumentů dodaných do volání hromadné aktualizace rozhraní API.      |
    |Dvojitá getTotalRequestUnitsConsumed () |  Celkový počet jednotek žádosti (RU) spotřebovaných voláním rozhraní API hromadné aktualizace.       |
    |Doba trvání getTotalTimeTaken ()  |   Celková doba, kterou zabere volání rozhraní API hromadné aktualizace k dokončení provádění.      |
-   |Vypsat\<výjimku> GetErrors ()   |       Načte seznam chyb, pokud se nezdařila vložení některých dokumentů z dávky dodané do volání rozhraní API hromadné aktualizace.      |
+   |Výpis \<Exception> GetErrors ()   |       Načte seznam chyb, pokud se nezdařila vložení některých dokumentů z dávky dodané do volání rozhraní API hromadné aktualizace.      |
 
 3. Po dokončení aplikace hromadné aktualizace Sestavte nástroj příkazového řádku ze zdroje pomocí příkazu ' MVN Cleanup Package '. Tento příkaz vygeneruje soubor JAR v cílové složce:  
 

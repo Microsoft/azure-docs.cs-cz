@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 34a8a070-9b3c-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 1fef01ed4db7252043a8adee478b22ef2417e21f
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: ed268bf2be69aece8a5f7e51c25ef0ff539e8c7e
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450889"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483127"
 ---
 # <a name="automate-the-deployment-and-release-of-your-mobile-applications-with-continuous-delivery-services"></a>Automatizace nasazení a vydání vašich mobilních aplikací pomocí služeb průběžného doručování
 

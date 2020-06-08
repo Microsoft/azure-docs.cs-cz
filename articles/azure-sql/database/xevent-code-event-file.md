@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: MightyPen
 ms.author: genemi
 ms.reviewer: jrasnik
-ms.date: 03/12/2019
-ms.openlocfilehash: f409a4c27e2b69993406f95301d21f05b547aed6
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.date: 06/06/2020
+ms.openlocfilehash: 7c451deb04c9fd8b394512979668ad266cadf02d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84047003"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485466"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Cílový kód souboru události pro rozšířené události v Azure SQL Database
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -31,7 +31,6 @@ V tomto tématu se zobrazuje příklad dvoufázové fáze kódu:
 
 - PowerShell, chcete-li vytvořit kontejner Azure Storage v cloudu.
 - Transact-SQL:
-  
   - Chcete-li přiřadit kontejner Azure Storage k cíli souboru události.
   - Chcete-li vytvořit a spustit relaci události a tak dále.
 
@@ -71,7 +70,7 @@ Skript začíná příkazy pro vyčištění po možném předchozím spuštěn�
 
    - Pokud znovu spustíte skript bez přerušení relace, máte pohodlný možnost komentovat příkaz **Add-AzureAccount** .
 
-![Prostředí PowerShell ISE s nainstalovaným modulem Azure je připravené ke spuštění skriptu.][30_powershell_ise]
+![Prostředí PowerShell ISE s nainstalovaným modulem Azure je připravené ke spuštění skriptu.](./media/xevent-code-event-file/event-file-powershell-ise-b30.png)
 
 ### <a name="powershell-code"></a>Kód PowerShellu
 
@@ -232,6 +231,15 @@ Now shift to the Transact-SQL portion of the two-part code sample!';
 ```
 
 Poznamenejte si několik pojmenovaných hodnot, které skript PowerShellu vytiskne, když skončí. Tyto hodnoty je nutné upravit do skriptu Transact-SQL, který následuje jako fáze 2.
+
+<!--
+TODO:   Consider whether the preceding PowerShell code example deserves to be updated to the latest package (AzureRM.SQL?).
+2020/June/06   Adding the !NOTE below about "ADLS Gen2 storage accounts".
+Related to   https://github.com/MicrosoftDocs/azure-docs/issues/56520
+-->
+
+> [!NOTE]
+> V předchozím příkladu kódu PowerShellu nejsou rozšířené události SQL kompatibilní s účty úložiště ADLS Gen2.
 
 ## <a name="phase-2-transact-sql-code-that-uses-azure-storage-container"></a>Fáze 2: kód Transact-SQL, který používá kontejner Azure Storage
 
@@ -514,6 +522,3 @@ Další informace o účtech a kontejnerech ve službě Azure Storage najdete v 
 - [Lekce 1: Vytvoření zásad uloženého přístupu a sdíleného přístupového podpisu na kontejneru Azure](https://msdn.microsoft.com/library/dn466430.aspx)
   - [Lekce 2: vytvoření přihlašovacích údajů pro SQL Server pomocí sdíleného přístupového podpisu](https://msdn.microsoft.com/library/dn466435.aspx)
 - [Rozšířené události pro Microsoft SQL Server](https://docs.microsoft.com/sql/relational-databases/extended-events/extended-events)
-
-<!-- Image references. -->
-[30_powershell_ise]: ./media/xevent-code-event-file/event-file-powershell-ise-b30.png

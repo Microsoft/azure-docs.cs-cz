@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12344321-0123-4678-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: 724ad41bdafdba976939cbf9b7f88df2de6c6c18
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: dc92b187d1bef52339466cf46dbabde7662e95f9
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450665"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482549"
 ---
 # <a name="store-sync-and-query-mobile-application-data-from-the-cloud"></a>Ukládání, synchronizace a dotazování dat mobilní aplikace z cloudu
 Bez ohledu na to, jaký druh aplikace sestavíte, budete pravděpodobně generovat a zpracovávat data. Uživatelé vaší aplikace mají vysoké očekávání. Chtějí, aby aplikace fungovala rychle a hladce, a to za všech okolností. Většina aplikací funguje i napříč více zařízeními. K aplikaci můžete přistupovat z počítače nebo mobilního zařízení. Tuto aplikaci může používat více uživatelů současně a sdílet data se očekáváním, že budou mít přístup k datům v reálném čase.

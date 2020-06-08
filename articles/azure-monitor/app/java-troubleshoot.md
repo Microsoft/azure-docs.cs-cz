@@ -3,12 +3,12 @@ title: Řešení potíží s Application Insights ve webovém projektu Java
 description: Průvodce odstraňováním potíží – monitorování živých aplikací Java pomocí Application Insights.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 04e98938bc5dd17816ae873f122073212275a414
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ecc9a298d122919138683b48527574a1ff3e5edc
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77657176"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484786"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Řešení potíží a otázky a odpovědi v nástroji Application Insights
 Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady je několik tipů.
@@ -16,14 +16,14 @@ Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady 
 ## <a name="build-errors"></a>Chyby sestavení
 **V zatmění nebo IntelliJ nápadu při přidávání sady Application Insights SDK prostřednictvím Maven nebo Gradle se zobrazí chyby ověření sestavení nebo kontrolního součtu.**
 
-* Pokud element Dependency `<version>` používá vzor se zástupnými znaky (např. (Maven) `<version>[2.0,)</version>` nebo (Gradle) `version:'2.0.+'`), zkuste zadat konkrétní verzi místo toho jako. `2.0.1` Nejnovější verzi najdete v [poznámkách k verzi](https://github.com/Microsoft/ApplicationInsights-Java/releases) .
+* Pokud element Dependency `<version>` používá vzor se zástupnými znaky (např. (Maven) `<version>[2.0,)</version>` nebo (Gradle) `version:'2.0.+'` ), zkuste zadat konkrétní verzi místo toho jako `2.0.1` . Nejnovější verzi najdete v [poznámkách k verzi](https://github.com/Microsoft/ApplicationInsights-Java/releases) .
 
 ## <a name="no-data"></a>Žádná data
 **Přidal (a) jsem Application Insights úspěšně a spustil jsem aplikaci, ale na portálu se nikdy nezobrazila žádná data.**
 
 * Počkejte minutu a klikněte na tlačítko Aktualizovat. Grafy se pravidelně aktualizují, ale můžete je také aktualizovat ručně. Interval aktualizace závisí na časovém rozsahu grafu.
 * Ověřte, že máte klíč instrumentace definovaný v souboru ApplicationInsights. XML (ve složce Resources ve vašem projektu), nebo nakonfigurovaný jako proměnná prostředí.
-* Ověřte, že soubor XML `<DisableTelemetry>true</DisableTelemetry>` neobsahuje žádný uzel.
+* Ověřte, že `<DisableTelemetry>true</DisableTelemetry>` soubor XML neobsahuje žádný uzel.
 * V bráně firewall možná budete muset pro odchozí přenosy na dc.services.visualstudio.com otevřít porty TCP 80 a 443. Zobrazit [úplný seznam výjimek brány firewall](../../azure-monitor/app/ip-addresses.md)
 * Na panelu Microsoft Azure Start se podívejte na mapu stavu služby. Pokud se zobrazí upozornění, počkejte, až se vrátí do OK, a pak zavřete a znovu otevřete okno aplikace Application Insights.
 * [Zapněte protokolování](#debug-data-from-the-sdk) přidáním `<SDKLogger />` elementu pod kořenovým uzlem v souboru ApplicationInsights. XML (ve složce Resources v projektu) a vyhledejte položky s AI: informace, varování/chyba pro všechny podezřelé protokoly. 
@@ -33,7 +33,6 @@ Otázky nebo problémy s [Azure Application Insights v jazyce Java][java]? Tady 
 * Abyste se vyhnuli jakýmkoli problémům se konflikty verzí, zajistěte, aby používaly stejnou verzi Application Insights Core, webu, agenta a přihlášení.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Zobrazil (a) jsem data, ale zastavila se
-* Podívejte se na [blog stavu](https://blogs.msdn.com/b/applicationinsights-status/).
 * Dosáhli jste měsíční kvóty datových bodů? Pokud chcete zjistit, otevřete nastavení/kvótu a ceny. Pokud ano, můžete upgradovat svůj plán nebo platit za další kapacitu. Podívejte se na téma [cenové schéma](https://azure.microsoft.com/pricing/details/application-insights/).
 * Máte nedávno upgradovanou sadu SDK? Ujistěte se prosím, že v adresáři projektu jsou jenom jedinečné jar SDK. K dispozici není žádná dvě z různých verzí sady SDK.
 * Hledáte správný prostředek AI? Porovnejte iKey své aplikace s prostředkem, u kterého očekáváte telemetrii. Měly by být stejné.
@@ -93,7 +92,7 @@ Pomocí metody XML je nutné restartovat aplikaci při změně hodnoty.
 
 **Jak můžu zjistit, co dělá sada SDK?**
 
-Pokud chcete získat další informace o tom, co se děje v rozhraní `<SDKLogger/>` API, přidejte do kořenového uzlu konfiguračního souboru ApplicationInsights. XML.
+Pokud chcete získat další informace o tom, co se děje v rozhraní API, přidejte do `<SDKLogger/>` kořenového uzlu konfiguračního souboru ApplicationInsights. XML.
 
 ### <a name="applicationinsightsxml"></a>ApplicationInsights. XML
 
@@ -109,7 +108,7 @@ Můžete také instruovat protokolovací nástroj na výstup do souboru:
 
 ### <a name="spring-boot-starter"></a>Jaře Boot Starter
 
-Pokud chcete povolit protokolování sady SDK s aplikacemi pružiny, které používají Application Insights jaře Boot Starter, přidejte `application.properties` do souboru následující:
+Pokud chcete povolit protokolování sady SDK s aplikacemi pružiny, které používají Application Insights jaře Boot Starter, přidejte do `application.properties` souboru následující:
 
 ```yaml
 azure.application-insights.logger.type=file
@@ -173,10 +172,10 @@ V bráně firewall možná budete muset otevřít porty TCP 80 a 443 pro odchoz�
 Podívejte [se na uchovávání dat a ochranu osobních údajů][data].
 
 ## <a name="debug-logging"></a>Protokolování ladění
-Application Insights používá `org.apache.http`. Toto je přemístěné v rámci Application Insights Core jar pod `com.microsoft.applicationinsights.core.dependencies.http`oborem názvů. To umožňuje Application Insights zpracovávat scénáře, kde různé verze stejného `org.apache.http` typu existují v jednom základu kódu.
+Application Insights používá `org.apache.http` . Toto je přemístěné v rámci Application Insights Core jar pod oborem názvů `com.microsoft.applicationinsights.core.dependencies.http` . To umožňuje Application Insights zpracovávat scénáře, kde různé verze stejného typu `org.apache.http` existují v jednom základu kódu.
 
 >[!NOTE]
->Pokud povolíte protokolování na úrovni ladění pro všechny obory názvů v aplikaci, budou tyto moduly přijaty všemi spuštěnými moduly `org.apache.http` , včetně `com.microsoft.applicationinsights.core.dependencies.http`přejmenování. Application Insights nebude moct pro tato volání použít filtrování, protože se v knihovně Apache provádí volání protokolu. Protokolování úrovně ladění vytvoří značnou část dat protokolu a nedoporučuje se pro živé provozní instance.
+>Pokud povolíte protokolování na úrovni ladění pro všechny obory názvů v aplikaci, budou tyto moduly přijaty všemi spuštěnými moduly, včetně `org.apache.http` přejmenování `com.microsoft.applicationinsights.core.dependencies.http` . Application Insights nebude moct pro tato volání použít filtrování, protože se v knihovně Apache provádí volání protokolu. Protokolování úrovně ladění vytvoří značnou část dat protokolu a nedoporučuje se pro živé provozní instance.
 
 
 ## <a name="next-steps"></a>Další kroky
@@ -188,7 +187,7 @@ Application Insights používá `org.apache.http`. Toto je přemístěné v rám
 * [Napsat kód pro sledování využití vaší aplikace][track]
 * [Zachytávání diagnostických protokolů][javalogs]
 
-## <a name="get-help"></a>Podpora
+## <a name="get-help"></a>Získání pomoci
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/ms-application-insights)
 * [Vystavení problému na GitHubu](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 

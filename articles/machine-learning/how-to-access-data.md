@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 03/24/2020
 ms.custom: seodec18
-ms.openlocfilehash: d0f37d32b7d2306865d435bc68ea12c9bb95651c
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: ffb0cd65ed8c904098a1099540a5c3a55f605d36
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434709"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485084"
 ---
 # <a name="connect-to-azure-storage-services"></a>Připojení ke službám Azure Storage
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -101,7 +101,10 @@ Můžete najít informace, které potřebujete k naplnění `register_azure_*()`
       1. V případě tokenů SAS přejděte na **sdílené přístupové podpisy** v podokně **Nastavení** .
 
 * Pokud plánujete použít Princip služby pro ověřování, pokračujte na **Registrace aplikací** a vyberte aplikaci, kterou chcete použít. 
-    * Jeho odpovídající stránka **přehledu** bude obsahovat požadované informace, jako je ID tenanta a ID klienta.
+    * Jeho odpovídající stránka **přehledu** bude obsahovat požadované informace, jako je ID TENANTA a ID klienta.
+
+> [!IMPORTANT]
+> Z bezpečnostních důvodů možná budete muset změnit přístupové klíče pro účet Azure Storage (klíč účtu nebo token SAS). V takovém případě nezapomeňte nové přihlašovací údaje synchronizovat s vaším pracovním prostorem a s připojenými úložišti dat. Přečtěte si, jak synchronizovat aktualizované přihlašovací údaje pomocí [těchto kroků](how-to-change-storage-access-key.md). 
 
 Následující příklady ukazují, jak zaregistrovat kontejner objektů blob Azure, sdílenou složku Azure a Azure Data Lake Storage generaci 2 jako úložiště dat. Parametry uvedené v těchto příkladech jsou **požadované parametry** pro vytvoření a registraci úložiště dat. 
 
@@ -192,6 +195,9 @@ Můžete najít informace, které potřebujete k naplnění formuláře na [Azur
 * U položek ověřování, jako je klíč účtu nebo token SAS, přejděte v podokně **Nastavení** na **přístupové klíče** . 
 
 * V případě položek instančního objektu, jako je ID tenanta a ID klienta, přejdete na **Registrace aplikací** a vyberte, kterou aplikaci chcete použít. Příslušné stránky s **přehledem** budou obsahovat tyto položky. 
+
+> [!IMPORTANT]
+> Z bezpečnostních důvodů možná budete muset změnit přístupové klíče pro účet Azure Storage (klíč účtu nebo token SAS). V takovém případě nezapomeňte nové přihlašovací údaje synchronizovat s vaším pracovním prostorem a s připojenými úložišti dat. Přečtěte si, jak synchronizovat aktualizované přihlašovací údaje pomocí [těchto kroků](how-to-change-storage-access-key.md). 
 
 Následující příklad ukazuje, jak formulář vypadá při vytváření úložiště dat objektů BLOB v Azure: 
     

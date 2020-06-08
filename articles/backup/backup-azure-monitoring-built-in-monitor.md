@@ -4,12 +4,12 @@ description: V tomto článku se seznámíte s možnostmi monitorování a oznam
 ms.topic: conceptual
 ms.date: 03/05/2019
 ms.assetid: 86ebeb03-f5fa-4794-8a5f-aa5cbbf68a81
-ms.openlocfilehash: 8c72c192f3bd12169703b70cbee76599b15eb560
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: f4b91302723119e707d12a86480bbaff2eb4bec5
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247049"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485093"
 ---
 # <a name="monitoring-azure-backup-workloads"></a>Monitorování úloh Azure Backup
 
@@ -77,7 +77,7 @@ Výše uvedené výjimky jsou navržené z porozumění, že výsledek těchto o
 Na základě závažnosti výstrahy je možné výstrahy definovat ve třech typech:
 
 - **Kritické**: v zásadě by jakékoli selhání zálohování nebo obnovení (naplánované nebo aktivované uživatelem) vedlo k vytvoření výstrahy a zobrazilo se jako kritická výstraha a také ničivé operace, jako je odstranění zálohy.
-- **Upozornění**: Pokud se operace zálohování zdaří úspěšně, ale s malým počtem upozornění, zobrazí se jako varovné výstrahy.
+- **Upozornění**: Pokud se operace zálohování zdaří úspěšně, ale s malým počtem upozornění, zobrazí se jako varovné výstrahy. Výstrahy upozornění jsou aktuálně k dispozici pouze pro Azure Backup zálohy agenta.
 - **Informativní**: v současné době není Azure Backup službě generována žádná informační výstraha.
 
 ## <a name="notification-for-backup-alerts"></a>Oznámení pro výstrahy zálohování

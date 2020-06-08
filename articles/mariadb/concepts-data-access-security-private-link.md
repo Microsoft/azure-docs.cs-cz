@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: b05a202537492fe54a76cf40a3b15987e099a7e3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2e54c0c156fde8201e6c5803c2c94f67692a7fd7
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79367716"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484778"
 ---
 # <a name="private-link-for-azure-database-for-mariadb"></a>Privátní odkaz pro Azure Database for MariaDB
 
@@ -47,6 +47,10 @@ Když se připojíte k veřejnému koncovému bodu z místních počítačů, va
 
 Pomocí privátního odkazu můžete povolit přístup mezi různými místy k privátnímu koncovému bodu pomocí připojení typu [Express Route](https://azure.microsoft.com/services/expressroute/) (ER), privátního partnerského vztahu nebo [tunelového připojení VPN](https://docs.microsoft.com/azure/vpn-gateway/). Můžou následně zakázat veškerý přístup prostřednictvím veřejného koncového bodu a nepoužívat bránu firewall na základě IP adresy.
 
+> [!NOTE]
+> V některých případech jsou Azure Database for MariaDB a VNet-Subnet v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
+> - Ujistěte se, že oba odběry mají zaregistrovaný poskytovatel prostředků **Microsoft. DBforMariaDB** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
+
 ## <a name="configure-private-link-for-azure-database-for-mariadb"></a>Konfigurace privátního odkazu pro Azure Database for MariaDB
 
 ### <a name="creation-process"></a>Proces vytváření
@@ -54,7 +58,7 @@ Pomocí privátního odkazu můžete povolit přístup mezi různými místy k p
 Aby bylo možné povolit privátní propojení, jsou vyžadovány privátní koncové body. To lze provést pomocí následujících průvodců.
 
 * [portál Azure](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-portal)
-* [CLI](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-cli)
+* [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/mariadb/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Proces schválení
 
@@ -130,3 +134,6 @@ Další informace o funkcích Azure Database for MariaDB zabezpečení najdete v
 * Informace o tom, jak nakonfigurovat koncový bod služby virtuální sítě pro váš Azure Database for MariaDB, najdete v tématu [Konfigurace přístupu z virtuálních sítí](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet).
 
 * Přehled připojení Azure Database for MariaDB najdete v tématu [Architektura připojení Azure Database for MariaDB](https://docs.microsoft.com/azure/MariaDB/concepts-connectivity-architecture)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

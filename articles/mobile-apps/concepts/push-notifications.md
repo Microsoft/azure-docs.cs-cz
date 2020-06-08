@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12bbb070-9b3c-4faf-8588-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: c9ae5e268066e498b3a341a9c54391ee5d15d592
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 515583a19c576d25bd9573cbf80974d72c6df1ec
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450651"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482649"
 ---
 # <a name="engage-with-your-application-users-by-sending-push-notifications"></a>Zapojení uživatelů aplikace pomocí odesílání nabízených oznámení
 
@@ -36,24 +36,6 @@ Pro uživatele aplikace nabízená oznámení:
 - Připomínat uživatelům používání aplikace.
 
 Pomocí následujících služeb můžete povolit nabízená oznámení ve vašich mobilních aplikacích.
-
-## <a name="visual-studio-app-center"></a>Visual Studio App Center
-Pomocí [App Center push](/appcenter/push/)můžete posílat cílené zprávy uživatelům iOS, Androidu a Windows, aniž byste museli spravovat proces odesílání oznámení do zařízení pomocí služby nabízených oznámení (PNS). Tato služba je postavená na Azure Notification Hubs, eliminuje složitosti spojené s doručováním oznámení ručně tím, že poskytuje výkonný řídicí panel.
-
-**Klíčové funkce**
-- Posílání nabízených oznámení do mobilních zařízení napříč různými platformami.
-- Pomocí oznámení můžete odesílat data do aplikace, zobrazit uživateli zprávu nebo aktivovat akci aplikací.
-- Použít cíle oznámení na: 
-    - Vysílat zprávy na všechna registrovaná zařízení.
-    - Odešlete oznámení do cílových skupin na základě informací o zařízení a vlastních vlastností.
-    - Odesílat oznámení konkrétním uživatelům.
-    - Odesílat oznámení na konkrétní zařízení.
-- Využijte bohatou telemetrii na nabízených oznámeních, zařízeních a chybách, které jsou k dispozici na portálu App Center.
-- Získejte podporu platforem pro iOS, Android, macOS, Xamarin, reagovat na nativní, Unity a Cordova.
-
-**Odkazy**
-- [Zaregistrujte se Visual Studio App Center](https://appcenter.ms/signup?utm_source=Mobile%20Development%20Docs&utm_medium=Azure&utm_campaign=New%20azure%20docs)
-- [Začínáme s App Center push](/appcenter/push/)
 
 ## <a name="azure-notification-hubs"></a>Azure Notification Hubs
 [Notification Hubs](/azure/notification-hubs/notification-hubs-push-notification-overview) poskytuje snadno použitelný a Škálovatelný modul nabízených oznámení. Můžete ji použít k posílání oznámení na libovolnou platformu a z libovolného back-endu v cloudu nebo v místním prostředí.

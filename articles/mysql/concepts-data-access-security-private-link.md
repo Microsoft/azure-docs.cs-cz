@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: c2cc4986542404281424286882c046dec39f5daf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a42148bb9610b27f2c0874ffa74d9e517c2063a
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371286"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84482598"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Privátní odkaz pro Azure Database for MySQL
 
@@ -47,6 +47,10 @@ Když se připojíte k veřejnému koncovému bodu z místních počítačů, va
 
 Pomocí privátního odkazu můžete povolit přístup mezi různými místy k privátnímu koncovému bodu pomocí připojení typu [Express Route](https://azure.microsoft.com/services/expressroute/) (ER), privátního partnerského vztahu nebo [tunelového připojení VPN](https://docs.microsoft.com/azure/vpn-gateway/). Můžou následně zakázat veškerý přístup prostřednictvím veřejného koncového bodu a nepoužívat bránu firewall na základě IP adresy.
 
+> [!NOTE]
+> V některých případech jsou Azure Database for MySQL a VNet-Subnet v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
+> - Ujistěte se, že oba odběry mají zaregistrovaný poskytovatel prostředků **Microsoft. DBforMySQL** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
+
 ## <a name="configure-private-link-for-azure-database-for-mysql"></a>Konfigurace privátního odkazu pro Azure Database for MySQL
 
 ### <a name="creation-process"></a>Proces vytváření
@@ -54,7 +58,7 @@ Pomocí privátního odkazu můžete povolit přístup mezi různými místy k p
 Aby bylo možné povolit privátní propojení, jsou vyžadovány privátní koncové body. To lze provést pomocí následujících průvodců.
 
 * [portál Azure](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
-* [CLI](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
+* [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Proces schválení
 Po vytvoření privátního koncového bodu (PE) správcem sítě může správce MySQL spravovat připojení privátního koncového bodu (PEC) k Azure Database for MySQL. Tato oddělení povinností mezi správcem sítě a DBA je užitečné pro správu Azure Database for MySQLho připojení. 
@@ -129,3 +133,6 @@ Další informace o funkcích Azure Database for MySQL zabezpečení najdete v n
 * Informace o tom, jak nakonfigurovat koncový bod služby virtuální sítě pro váš Azure Database for MySQL, najdete v tématu [Konfigurace přístupu z virtuálních sítí](https://docs.microsoft.com/azure/mysql/concepts-data-access-and-security-vnet).
 
 * Přehled připojení Azure Database for MySQL najdete v tématu [Architektura připojení Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/concepts-connectivity-architecture)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

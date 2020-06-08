@@ -8,12 +8,12 @@ ms.author: delegenz
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/05/2020
-ms.openlocfilehash: 915243fb4dbc6bb274e26261bc5741811ef24592
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: e544e720f024b265e957e67d5bd2ee8af91f5c7f
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925979"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484565"
 ---
 # <a name="how-to-index-large-data-sets-in-azure-cognitive-search"></a>Indexování velkých datových sad v Azure Kognitivní hledání
 
@@ -139,7 +139,7 @@ U indexerů se kapacita zpracování volně vychází z jednoho subsystému inde
 
 1. V [Azure Portal](https://portal.azure.com)na stránce **Přehled** řídicího panelu vyhledávací služby zkontrolujte **cenovou úroveň** a potvrďte, že se může přizpůsobit paralelnímu indexování. Úrovně Basic a Standard nabízejí více replik.
 
-2. V **Nastavení** > **škálování** [zvyšte repliky](search-capacity-planning.md) pro paralelní zpracování: jednu další repliku pro každou úlohu indexeru. Ponechte dostatečný počet pro existující svazek dotazu. Omezení zatížení dotazů na indexování není dobré kompromisy.
+2. Můžete spustit libovolný počet indexerů paralelně jako počet jednotek hledání ve vaší službě. V **Nastavení**  >  **škálování**můžete [Zvětšit repliky](search-capacity-planning.md) nebo oddíly pro paralelní zpracování: jednu další repliku nebo oddíl pro každou úlohu indexeru. Ponechte dostatečný počet pro existující svazek dotazu. Omezení zatížení dotazů na indexování není dobré kompromisy.
 
 3. Distribuujte data do více kontejnerů na úrovni, které můžou Azure Kognitivní hledání indexerům dosáhnout. Může se jednat o více tabulek v Azure SQL Database, více kontejnerů v úložišti objektů BLOB v Azure nebo víc kolekcí. Definujte jeden objekt zdroje dat pro každou tabulku nebo kontejner.
 

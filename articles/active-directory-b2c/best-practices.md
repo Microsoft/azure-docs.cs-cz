@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: b16c60130836cf0e3b38092b894129f503ee6e83
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b18717b78a271bd390bc221e9ed0723cb02079ce
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82141671"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484301"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Doporučení a osvědčené postupy pro Azure Active Directory B2C
 
@@ -24,7 +24,7 @@ Následující osvědčené postupy a doporučení se týkají některých prim�
 
 ## <a name="fundamentals"></a>Základy
 
-|  |  |
+| Osvědčený postup | Description |
 |--|--|
 | Volba toků uživatelů pro většinu scénářů | Architektura prostředí identit Azure AD B2C je základní silou služby. Zásady plně popisují prostředí identity, jako je registrace, přihlašování nebo úpravy profilu. Aby vám pomohly nastavit nejběžnější úkoly identity, Azure AD B2C portál obsahuje předdefinované a konfigurovatelné zásady nazývané uživatelské toky. Díky tokům uživatelů můžete vytvořit skvělé uživatelské prostředí během několika minut. stačí jenom několik kliknutí. [Naučte se používat toky uživatelů a vlastní zásady](custom-policy-overview.md#comparing-user-flows-and-custom-policies).|
 | Registrace aplikací | Všechny aplikace (web, nativní) a rozhraní API, které je třeba zabezpečit, musí být registrovány v Azure AD B2C. Pokud má aplikace jak webovou, tak nativní verzi iOS a Android, můžete je zaregistrovat jako jednu aplikaci v Azure AD B2C se stejným ID klienta. Naučte se [Registrovat OIDC, SAML, web a nativní aplikace](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-register-applications?tabs=applications). Další informace o [typech aplikací, které lze použít v Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/application-types). |
@@ -34,7 +34,7 @@ Následující osvědčené postupy a doporučení se týkají některých prim�
 
 Definujte architekturu aplikací a služeb, aktuální systémy inventáře a naplánujte migraci na Azure AD B2C.
 
-|  |  |
+| Osvědčený postup | Description |
 |--|--|
 | Architekt kompletního řešení | Při plánování integrace Azure AD B2C Zahrňte všechny závislosti vašich aplikací. Vezměte v úvahu všechny služby a produkty, které jsou aktuálně ve vašem prostředí, nebo které je potřeba přidat do řešení, například Azure Functions, systémy správy vztahů se zákazníky (CRM), služby Azure API Management Gateway a služby úložiště. Vezměte v úvahu zabezpečení a škálovatelnost všech služeb. |
 | Zdokumentujte uživatelské prostředí | Podrobné informace o všech uživatelích cestují vaše zákazníci, kteří můžou pracovat ve vaší aplikaci. Zahrňte každou obrazovku a všechny toky větve, které se můžou setkat při interakci s aspekty identity a profilů vaší aplikace. Zahrňte do plánování použitelnost, přístupnost a lokalizace. |
@@ -43,13 +43,13 @@ Definujte architekturu aplikací a služeb, aktuální systémy inventáře a na
 | Vytvoření plánu migrace |Plánování se může udělat plynule, aby migrace proběhla rychleji. Přečtěte si další informace o [migraci uživatelů](user-migration.md).|
 | Použitelnost a zabezpečení | Vaše řešení musí mít správné rovnováhu mezi použitelností aplikace a přijatelnou úrovní rizika vaší organizace. |
 | Přesunutí místních závislostí do cloudu | Pro zajištění odolného řešení zvažte přesunutí stávajících závislostí aplikace do cloudu. |
-| Migrace stávajících aplikací na b2clogin.com | Vyřazení login.microsoftonline.com se projeví pro všechny klienty Azure AD B2C v 04. prosince 2020. [Další informace](b2clogin.md). |
+| Migrace stávajících aplikací na b2clogin.com | Vyřazení login.microsoftonline.com se projeví pro všechny klienty Azure AD B2C v 04. prosince 2020. [Přečtěte si další informace](b2clogin.md). |
 
 ## <a name="implementation"></a>Implementace
 
 Během fáze implementace Vezměte v úvahu následující doporučení.
 
-|  |  |
+| Osvědčený postup | Description |
 |--|--|
 | Úprava vlastních zásad pomocí rozšíření Azure AD B2C pro Visual Studio Code | Stáhněte si Visual Studio Code a toto rozšíření postavené na komunitě [z webu Visual Studio Code Marketplace](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c). I když není oficiální produkt společnosti Microsoft, Azure AD B2C rozšíření pro Visual Studio Code obsahuje několik funkcí, které usnadňují práci s vlastními zásadami. |
 | Postup řešení potíží s Azure AD B2C | Naučte se [řešit potíže s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/troubleshoot-custom-policies?tabs=applications) během vývoje. Naučte se, jak vypadá normální tok ověřování, a používejte nástroje pro zjišťování anomálií a chyb. Můžete například použít [Application Insights](troubleshoot-with-application-insights.md) ke kontrole výstupních protokolů cest uživatelů. |
@@ -60,21 +60,21 @@ Během fáze implementace Vezměte v úvahu následující doporučení.
 
 Testování a automatizace implementace Azure AD B2C.
 
-|  |  |
+| Osvědčený postup | Description |
 |--|--|
 | Účet pro globální provoz | K testování požadavků na výkon a lokalizaci použijte zdroje přenosů z jiné globální adresy. Ujistěte se, že všechny HTML, CSS a závislosti můžou splňovat vaše požadavky na výkon. |
 | Funkční testování uživatelského rozhraní | Otestujte toky uživatelů na konci. Přidejte syntetické testy každých několik minut pomocí programu selen, VS Web test atd. |
 | Testování perem | Než začnete pracovat s vaším řešením, provedete testování průniku, abyste ověřili, že všechny komponenty jsou zabezpečené, včetně všech závislostí třetích stran. Ověřte, že jste své rozhraní API zabezpečili pomocí přístupových tokenů a použili jste správný ověřovací protokol pro váš scénář aplikace. Přečtěte si další informace o [testování průniku](https://docs.microsoft.com/azure/security/fundamentals/pen-testing) a o [pravidlech pro testování](https://www.microsoft.com/msrc/pentest-rules-of-engagement?rtc=1)průniku v rámci zapojení do Microsoft Cloud Unified. |
 | Testování a/B | Zastavte nové funkce s malou náhodnou sadou uživatelů, než se zavedete k celému naplnění. Pomocí JavaScriptu povoleného v Azure AD B2C můžete integrovat s testovacími nástroji/B, jako je optimalizace, přehlednost a další. |
 | Zátěžové testování | Azure AD B2C se můžou škálovat, ale vaše aplikace se může škálovat jenom v případě, že se můžou škálovat všechny jeho závislosti. Zátěžové testování vašich rozhraní API a sítě CDN. |
-| Throttling |  Azure AD B2C omezuje provoz, pokud je v krátké době odesíláno příliš mnoho požadavků ze stejného zdroje. Při zátěžovém testování použijte několik zdrojů přenosů a v `AADB2C90229` aplikacích proveďte řádné zpracování kódu chyby. |
+| Throttling |  Azure AD B2C omezuje provoz, pokud je v krátké době odesíláno příliš mnoho požadavků ze stejného zdroje. Při zátěžovém testování použijte několik zdrojů přenosů a `AADB2C90229` v aplikacích proveďte řádné zpracování kódu chyby. |
 | Automation | Pomocí kanálů průběžné integrace a doručování (CI/CD) můžete automatizovat testování a nasazení, například [Azure DevOps](deploy-custom-policies-devops.md). |
 
 ## <a name="operations"></a>Operace
 
 Spravujte své Azure AD B2C prostředí.
 
-|  |  |
+| Osvědčený postup | Description |
 |--|--|
 | Vytvoření více prostředí | Pro snazší operace a zavedení nasazení vytvořte samostatná prostředí pro vývoj, testování, předprodukční prostředí a produkci. Pro každou Vytvořte Azure AD B2C klienty. |
 | Použití správy verzí pro vlastní zásady | Zvažte použití GitHubu, Azure Repos nebo jiného cloudového systému správy verzí pro vlastní zásady Azure AD B2C. |
@@ -88,7 +88,7 @@ Spravujte své Azure AD B2C prostředí.
 
 Udržujte si přehled o stavu služby a vyhledejte možnosti podpory.
 
-|  |  |
+| Osvědčený postup | Description |
 |--|--|
 | [Aktualizace služeb](https://azure.microsoft.com/updates/?product=active-directory-b2c) |  Udržujte si přehled o Azure AD B2C aktualizacích produktů a oznámeních. |
 | [Podpora společnosti Microsoft](support-options.md) | Soubor a žádost o podporu pro Azure AD B2C technické problémy. Podpora fakturace a správy předplatného se poskytuje bez jakýchkoli nákladů. |

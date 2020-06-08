@@ -4,17 +4,17 @@ description: Povolte nebo zakažte moduly shromažďování dat a přidejte čí
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.reviewer: olegan
-ms.openlocfilehash: 3375c24739da8663aa6a40deeb53e02e65d1f9bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dde2cbf227f085b751f6ad22e1f2fa95f38c5915
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81537555"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485136"
 ---
 # <a name="configuring-the-application-insights-sdk-with-applicationinsightsconfig-or-xml"></a>Konfigurace sady Application Insights SDK pomocí souboru ApplicationInsights.config nebo .xml
 Sada Application Insights .NET SDK se skládá z řady balíčků NuGet. [Základní balíček](https://www.nuget.org/packages/Microsoft.ApplicationInsights) poskytuje rozhraní API pro posílání telemetrie do Application Insights. [Další balíčky](https://www.nuget.org/packages?q=Microsoft.ApplicationInsights) poskytují *moduly* telemetrie a *Inicializátory* pro automatické sledování telemetrie z vaší aplikace a jejího kontextu. Úpravou konfiguračního souboru můžete povolit nebo zakázat moduly a Inicializátory telemetrie a nastavit parametry pro některé z nich.
 
-Konfigurační soubor má název `ApplicationInsights.config` nebo `ApplicationInsights.xml`, v závislosti na typu vaší aplikace. Automaticky se přidá do projektu při [instalaci většiny verzí sady SDK][start]. Ve výchozím nastavení se při použití automatizovaného prostředí z projektů šablon sady Visual Studio, které podporují **přidání > telemetrie Application Insights**, vytvoří soubor ApplicationInsights. config v kořenové složce projektu a v případě, že je do složky bin zkopírována hodnota splněné. Také se přidá do webové aplikace [monitorování stavu na serveru služby IIS][redfield]. Konfigurační soubor se ignoruje, pokud se použije [rozšíření pro web Azure](azure-web-apps.md) nebo [rozšíření pro virtuální počítač Azure a sadu škálování virtuálního počítače](azure-vm-vmss-apps.md) .
+Konfigurační soubor má název `ApplicationInsights.config` nebo `ApplicationInsights.xml` , v závislosti na typu vaší aplikace. Automaticky se přidá do projektu při [instalaci většiny verzí sady SDK][start]. Ve výchozím nastavení se při použití automatizovaného prostředí z projektů šablon sady Visual Studio, které podporují **přidání > telemetrie Application Insights**, vytvoří soubor ApplicationInsights. config v kořenové složce projektu a v případě, že je do složky bin zkopírována hodnota splněné. Také se přidá do webové aplikace [monitorování stavu na serveru služby IIS][redfield]. Konfigurační soubor se ignoruje, pokud se použije [rozšíření pro web Azure](azure-web-apps.md) nebo [rozšíření pro virtuální počítač Azure a sadu škálování virtuálního počítače](azure-vm-vmss-apps.md) .
 
 Pro řízení [sady SDK na webové stránce][client]není k dispozici odpovídající soubor.
 
@@ -45,7 +45,7 @@ Závislosti se dají automaticky shromáždit bez úprav kódu pomocí připojen
 * Balíček NuGet [Microsoft. ApplicationInsights. PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector)
 
 ### <a name="application-insights-diagnostics-telemetry"></a>Application Insights telemetrie diagnostiky
-`DiagnosticsTelemetryModule` Hlásí chyby v samotném kódu instrumentace Application Insights. Například pokud kód nemůže získat přístup k čítačům výkonu nebo `ITelemetryInitializer` vyvolá výjimku. Sledovací telemetrie sledovanou tímto modulem se zobrazí v [diagnostickém vyhledávání][diagnostic].
+`DiagnosticsTelemetryModule`Hlásí chyby v samotném kódu instrumentace Application Insights. Například pokud kód nemůže získat přístup k čítačům výkonu nebo `ITelemetryInitializer` vyvolá výjimku. Sledovací telemetrie sledovanou tímto modulem se zobrazí v [diagnostickém vyhledávání][diagnostic].
 
 ```
 * `Microsoft.ApplicationInsights.Extensibility.Implementation.Tracing.DiagnosticsTelemetryModule`
@@ -69,7 +69,7 @@ Oznamuje [dobu odezvy a kód výsledku](../../azure-monitor/app/asp-net.md) pož
 
 * `Microsoft.ApplicationInsights.Web.ExceptionTrackingTelemetryModule`
 * Balíček [Microsoft. ApplicationInsights. Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web) NuGet
-* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule`-sleduje [výjimky nepozorovaných úloh](https://blogs.msdn.com/b/pfxteam/archive/2011/09/28/task-exception-handling-in-net-4-5.aspx).
+* `Microsoft.ApplicationInsights.WindowsServer.UnobservedExceptionTelemetryModule`-sleduje výjimky nepozorovaných úloh.
 * `Microsoft.ApplicationInsights.WindowsServer.UnhandledExceptionTelemetryModule`-sleduje neošetřené výjimky pro role pracovního procesu, služby systému Windows a konzolové aplikace.
 * [Application Insights Windows Server](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WindowsServer/) Balíček NuGet.
 
@@ -106,28 +106,28 @@ Standardní Inicializátory jsou nastaveny buď pomocí webu, nebo WindowsServer
 
 * `AccountIdTelemetryInitializer`nastaví vlastnost AccountId.
 * `AuthenticatedUserIdTelemetryInitializer`nastaví vlastnost AuthenticatedUserId dle sady JavaScript SDK.
-* `AzureRoleEnvironmentTelemetryInitializer`Aktualizuje vlastnosti `RoleName` a `RoleInstance` `Device` kontextu pro všechny položky telemetrie s informacemi získanými z běhového prostředí Azure.
+* `AzureRoleEnvironmentTelemetryInitializer`aktualizuje `RoleName` vlastnosti a `RoleInstance` `Device` kontextu pro všechny položky telemetrie s informacemi získanými z běhového prostředí Azure.
 * `BuildInfoConfigComponentVersionTelemetryInitializer`aktualizuje `Version` vlastnost `Component` Context pro všechny položky telemetrie s hodnotou extrahovanou ze `BuildInfo.config` souboru vytvořeného pomocí sestavení MS Build.
-* `ClientIpHeaderTelemetryInitializer`aktualizuje `Ip` vlastnost `Location` kontextu všech položek telemetrie na základě hlavičky `X-Forwarded-For` http žádosti.
+* `ClientIpHeaderTelemetryInitializer`aktualizuje `Ip` vlastnost `Location` kontextu všech položek telemetrie na základě `X-Forwarded-For` hlavičky HTTP žádosti.
 * `DeviceTelemetryInitializer`aktualizuje následující vlastnosti `Device` kontextu pro všechny položky telemetrie.
   * `Type`je nastavená na "počítač"
   * `Id`je nastaven na název domény počítače, na kterém je webová aplikace spuštěna.
-  * `OemName`hodnota je nastavená na extrakci hodnoty `Win32_ComputerSystem.Manufacturer` z pole pomocí rozhraní WMI.
-  * `Model`hodnota je nastavená na extrakci hodnoty `Win32_ComputerSystem.Model` z pole pomocí rozhraní WMI.
-  * `NetworkType`je nastaven na hodnotu extrahovanou z `NetworkInterface`.
-  * `Language`je nastaven na název `CurrentCulture`.
+  * `OemName`hodnota je nastavená na extrakci hodnoty z `Win32_ComputerSystem.Manufacturer` pole pomocí rozhraní WMI.
+  * `Model`hodnota je nastavená na extrakci hodnoty z `Win32_ComputerSystem.Model` pole pomocí rozhraní WMI.
+  * `NetworkType`je nastaven na hodnotu extrahovanou z `NetworkInterface` .
+  * `Language`je nastaven na název `CurrentCulture` .
 * `DomainNameRoleInstanceTelemetryInitializer`aktualizuje `RoleInstance` vlastnost `Device` Context pro všechny položky telemetrie s názvem domény počítače, na kterém je webová aplikace spuštěná.
-* `OperationNameTelemetryInitializer`aktualizuje `Name` vlastnost `RequestTelemetry` a `Name` vlastnosti `Operation` kontextu všech položek telemetrie na základě metody HTTP a také názvů kontroléru ASP.NET MVC a akce vyvolané ke zpracování žádosti.
-* `OperationIdTelemetryInitializer`nebo `OperationCorrelationTelemetryInitializer` aktualizuje vlastnost `Operation.Id` Context všech položek telemetrie, které jsou sledovány při zpracování žádosti s automaticky vygenerovaným `RequestTelemetry.Id`objektem.
+* `OperationNameTelemetryInitializer`aktualizuje `Name` vlastnost `RequestTelemetry` a `Name` vlastnosti `Operation` kontextu všech položek TELEMETRIE na základě metody HTTP a také názvů kontroléru ASP.NET MVC a akce vyvolané ke zpracování žádosti.
+* `OperationIdTelemetryInitializer`nebo `OperationCorrelationTelemetryInitializer` aktualizuje `Operation.Id` vlastnost Context všech položek telemetrie, které jsou sledovány při zpracování žádosti s automaticky vygenerovaným objektem `RequestTelemetry.Id` .
 * `SessionTelemetryInitializer`aktualizuje `Id` vlastnost `Session` Context pro všechny položky telemetrie s hodnotou extrahovanou ze `ai_session` souboru cookie generovaného kódem instrumentace ApplicationInsights JavaScript spuštěným v prohlížeči uživatele.
-* `SyntheticTelemetryInitializer`nebo `SyntheticUserAgentTelemetryInitializer` aktualizuje vlastnosti `User`, `Session`a `Operation` kontexty všech položek telemetrie, které jsou sledovány při zpracování žádosti z syntetického zdroje, jako je například test dostupnosti nebo robot vyhledávače. Ve výchozím nastavení [Průzkumník metrik](../../azure-monitor/platform/metrics-charts.md) nezobrazuje syntetickou telemetrii.
+* `SyntheticTelemetryInitializer`nebo `SyntheticUserAgentTelemetryInitializer` aktualizuje `User` vlastnosti, `Session` a `Operation` kontexty všech položek telemetrie, které jsou sledovány při zpracování žádosti z syntetického zdroje, jako je například test dostupnosti nebo robot vyhledávače. Ve výchozím nastavení [Průzkumník metrik](../../azure-monitor/platform/metrics-charts.md) nezobrazuje syntetickou telemetrii.
 
-    `<Filters>` Sada identifikující vlastnosti požadavků.
-* `UserTelemetryInitializer`Aktualizuje vlastnosti `Id` a `AcquisitionDate` pro `User` kontext pro všechny položky telemetrie s hodnotami extrahované ze `ai_user` souboru cookie generovaného kódem Application Insights JavaScript instrumentace spuštěným v prohlížeči uživatele.
+    `<Filters>`Sada identifikující vlastnosti požadavků.
+* `UserTelemetryInitializer`aktualizuje `Id` vlastnosti a `AcquisitionDate` `User` pro kontext pro všechny položky telemetrie s hodnotami extrahované ze `ai_user` souboru cookie generovaného kódem Application Insights JavaScript instrumentace spuštěným v prohlížeči uživatele.
 * `WebTestTelemetryInitializer`nastaví ID uživatele, ID relace a syntetické vlastnosti zdroje pro požadavky HTTP, které pocházejí z [testů dostupnosti](../../azure-monitor/app/monitor-web-app-availability.md).
-  `<Filters>` Sada identifikující vlastnosti požadavků.
+  `<Filters>`Sada identifikující vlastnosti požadavků.
 
-Pro aplikace .NET běžící v Service Fabric můžete zahrnout balíček `Microsoft.ApplicationInsights.ServiceFabric` NuGet. Tento balíček zahrnuje `FabricTelemetryInitializer`, který přidává vlastnosti Service Fabric do položek telemetrie. Další informace najdete na [stránce GitHub](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) o vlastnostech přidaných tímto balíčkem NuGet.
+Pro aplikace .NET běžící v Service Fabric můžete zahrnout `Microsoft.ApplicationInsights.ServiceFabric` balíček NuGet. Tento balíček zahrnuje `FabricTelemetryInitializer` , který přidává vlastnosti Service Fabric do položek telemetrie. Další informace najdete na [stránce GitHub](https://github.com/Microsoft/ApplicationInsights-ServiceFabric/blob/master/README.md) o vlastnostech přidaných tímto balíčkem NuGet.
 
 ## <a name="telemetry-processors-aspnet"></a>Procesory telemetrie (ASP.NET)
 Procesor telemetrie může filtrovat a upravovat každou položku telemetrie těsně předtím, než se pošle z SDK na portál.
@@ -219,7 +219,7 @@ public interface IApplicationIdProvider
 ```
 
 
-Poskytujeme dvě implementace v sadě [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) SDK: `ApplicationInsightsApplicationIdProvider` a `DictionaryApplicationIdProvider`.
+Poskytujeme dvě implementace v sadě [Microsoft. ApplicationInsights](https://www.nuget.org/packages/Microsoft.ApplicationInsights) SDK: `ApplicationInsightsApplicationIdProvider` a `DictionaryApplicationIdProvider` .
 
 ### <a name="applicationinsightsapplicationidprovider"></a>ApplicationInsightsApplicationIdProvider
 
@@ -227,9 +227,9 @@ Toto je Obálka kolem našeho rozhraní API profilu. Omezí požadavky a výsled
 
 Tento poskytovatel se přidá do konfiguračního souboru při instalaci [Microsoft. ApplicationInsights. DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector) nebo [Microsoft. ApplicationInsights. Web.](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)
 
-Tato třída má volitelnou vlastnost `ProfileQueryEndpoint`.
-Ve výchozím nastavení je tato hodnota `https://dc.services.visualstudio.com/api/profiles/{0}/appId`nastavena na.
-Pokud pro tuto konfiguraci potřebujete nakonfigurovat proxy server, doporučujeme, abyste použili proxy základní adresu a včetně "/API/Profiles/{0}/appId". Všimněte si,{0}že znak "" je nahrazen za běhu na žádost s klíčem instrumentace.
+Tato třída má volitelnou vlastnost `ProfileQueryEndpoint` .
+Ve výchozím nastavení je tato hodnota nastavena na `https://dc.services.visualstudio.com/api/profiles/{0}/appId` .
+Pokud pro tuto konfiguraci potřebujete nakonfigurovat proxy server, doporučujeme, abyste použili proxy základní adresu a včetně "/API/Profiles/ {0} /appId". Všimněte si, že znak {0} "" je nahrazen za běhu na žádost s klíčem instrumentace.
 
 #### <a name="example-configuration-via-applicationinsightsconfig"></a>Příklad konfigurace prostřednictvím ApplicationInsights. config:
 ```xml
@@ -251,9 +251,9 @@ TelemetryConfiguration.Active.ApplicationIdProvider = new ApplicationInsightsApp
 
 Toto je statický zprostředkovatel, který bude spoléhat na vaše nakonfigurované páry klíč instrumentace nebo ID aplikace.
 
-Tato třída má vlastnost `Defined`, která je slovníkem<řetězec, řetězec> klíče instrumentace na páry ID aplikace.
+Tato třída má vlastnost `Defined` , která je slovníkem<řetězec, řetězec> klíče instrumentace na páry ID aplikace.
 
-Tato třída má volitelnou vlastnost `Next` , která se dá použít ke konfiguraci jiného poskytovatele, který se použije, když se požaduje klíč instrumentace, který ve vaší konfiguraci neexistuje.
+Tato třída má volitelnou vlastnost, `Next` která se dá použít ke konfiguraci jiného poskytovatele, který se použije, když se požaduje klíč instrumentace, který ve vaší konfiguraci neexistuje.
 
 #### <a name="example-configuration-via-applicationinsightsconfig"></a>Příklad konfigurace prostřednictvím ApplicationInsights. config:
 ```xml

@@ -5,20 +5,20 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 05/26/2020
+ms.date: 06/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cc75b300704ef7f8218134c9d384b0718fca1e97
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: b7b551fcace5289b9ffd9fb131b5ba1120b3fdd2
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220702"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483685"
 ---
-# <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relace ověřování pomocí podmíněného přístupu
+# <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurace správy relací ověřování pomocí podmíněného přístupu
 
 Ve složitých nasazeních můžou organizace potřebovat omezit relace ověřování. Některé scénáře můžou zahrnovat:
 
@@ -54,6 +54,8 @@ Nastavení četnosti přihlašování funguje s aplikacemi, které implementoval
 ### <a name="user-sign-in-frequency-and-multi-factor-authentication"></a>Četnost přihlašování uživatelů a ověřování Multi-Factor Authentication
 
 Četnost přihlašování se dřív používala jenom pro první ověření na zařízeních, která byla připojená k Azure AD, připojení k hybridní službě Azure AD a zaregistrované službě Azure AD. Pro naše zákazníky neexistuje snadný způsob, jak na těchto zařízeních znovu vymáhat vícefaktorové ověřování (MFA). Na základě zpětné vazby od zákazníků se pro vícefaktorové ověřování použijí i četnost přihlášení.
+
+[![Frekvence přihlášení a MFA](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart-small.png)](media/howto-conditional-access-session-lifetime/conditional-access-flow-chart.png#lightbox)
 
 ### <a name="user-sign-in-frequency-and-device-identities"></a>Četnost přihlašování uživatelů a identit zařízení
 

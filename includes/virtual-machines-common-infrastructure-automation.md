@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 04/11/2019
 ms.author: cynthn
-ms.openlocfilehash: a2083de1ddf400b368815877725d3b8dd446156b
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 3733989ad6eed113e37c87eb7da6748cec10e34d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82844574"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485760"
 ---
 Aby bylo možné vytvářet a spravovat virtuální počítače Azure konzistentním způsobem ve velkém měřítku, obvykle je žádoucí určitá forma automatizace. Existuje mnoho nástrojů a řešení, které vám umožňují automatizovat kompletní životní cyklus nasazení a správy infrastruktury Azure. V tomto článku se seznámíte s některými nástroji pro automatizaci infrastruktury, které můžete použít v Azure. Tyto nástroje se běžně vejdou do jednoho z následujících přístupů:
 
@@ -100,7 +100,7 @@ Naučte se:
 
 Naučte se:
 
-- [Nainstalujte a nakonfigurujte terraformu pomocí Azure](/azure/developer/terraform/install-configure).
+- [Nainstalujte a nakonfigurujte terraformu pomocí Azure](/azure/developer/terraform/getting-started-cloud-shell).
 - [Vytvořte infrastrukturu Azure pomocí terraformu](/azure/developer/terraform/create-linux-virtual-machine-with-infrastructure).
 
 
@@ -119,7 +119,7 @@ Naučte se:
 ## <a name="azure-devops-services"></a>Azure DevOps Services
 [Azure DevOps Services](https://www.visualstudio.com/team-services/) je sada nástrojů, které vám pomůžou sdílet a sledovat kód, používat automatizovaná sestavení a vytvářet kompletní kanál průběžné integrace a vývoje (CI/CD). Azure DevOps Services se integruje se sadou Visual Studio a dalšími editory, aby bylo možné zjednodušit využití. Azure DevOps Services taky můžou vytvářet a konfigurovat virtuální počítače Azure a potom do nich nasazovat kód.
 
-Další informace:
+Přečtěte si další informace:
 
 - [Azure DevOps Services](https://docs.microsoft.com/azure/devops/user-guide/index?view=vsts).
 

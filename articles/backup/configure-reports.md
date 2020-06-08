@@ -3,12 +3,12 @@ title: Konfigurace sestav Azure Backup
 description: Konfigurace a zobrazení sestav pro Azure Backup pomocí Log Analytics a sešitů Azure
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: e0c7418d7141a3b12f367f1b12ee740eaac64703
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: 20dcf7f3f9bbc5626c4a05ef064203b3ae5020cd
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83797533"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84484980"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurace sestav Azure Backup
 
@@ -22,7 +22,7 @@ Dnes Azure Backup poskytuje řešení pro vytváření sestav, které používá
 
 ## <a name="supported-scenarios"></a>Podporované scénáře
 
-- Sestavy zálohování se podporují pro virtuální počítače Azure, SQL ve virtuálních počítačích Azure, SAP HANA ve virtuálních počítačích Azure, Microsoft Azure Recovery Services (MARS) agent, Microsoft Azure Backup Server (MABS) a System Center Data Protection Manager (DPM). Data pro zálohování sdílené složky Azure se v sestavách zálohování aktuálně nezobrazuje.
+- Sestavy zálohování se podporují pro virtuální počítače Azure, SQL ve virtuálních počítačích Azure, SAP HANA ve virtuálních počítačích Azure, Microsoft Azure Recovery Services (MARS) agent, Microsoft Azure Backup Server (MABS) a System Center Data Protection Manager (DPM). Pro zálohování sdílené složky Azure se zobrazí data pro všechny záznamy vytvořené v nebo po 1. června 2020.
 - Pro úlohy DPM jsou sestavy zálohování podporované pro DPM verze 5.1.363.0 a novější a verze agenta 2.0.9127.0 a vyšší.
 - Pro úlohy MABS jsou sestavy zálohování podporované pro MABS verze 13.0.415.0 a vyšší a verze agenta 2.0.9170.0 a vyšší.
 - Sestavy zálohování můžete zobrazit ve všech zálohovaných položkách, trezorech, předplatných a oblastech, pokud jsou data odesílána do Log Analyticsho pracovního prostoru, ke kterému má uživatel přístup. Chcete-li zobrazit sestavy pro sadu trezorů, stačí mít přístup čtenář k pracovnímu prostoru Log Analytics, do kterého trezory odesílají svá data. Nemusíte mít přístup k jednotlivým trezorům.

@@ -5,20 +5,24 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 05/18/2020
-ms.openlocfilehash: 608206ed1c1ffe1015f579d69868385ebd32208c
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.date: 6/5/2020
+ms.openlocfilehash: 7f43e47975b797b68b250399ee31bf56e0f01d21
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83660270"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483374"
 ---
 # <a name="connect-to-azure-database-for-mysql-with-redirection"></a>Připojení k Azure Database for MySQL pomocí přesměrování
 
 Toto téma vysvětluje, jak připojit aplikaci Azure Database for MySQL server s režimem přesměrování. Přesměrování se zaměřuje na snížení latence sítě mezi klientskými aplikacemi a servery MySQL tím, že umožňuje aplikacím připojení přímo k uzlům back-end serverů.
 
 ## <a name="before-you-begin"></a>Před zahájením
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com). Vytvořte Azure Database for MySQL server s modulem verze 5,6, 5,7 nebo 8,0. Podrobnosti najdete v tématu [Postup vytvoření serveru Azure Database for MySQL z portálu](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvoření Azure Database for MySQL serveru pomocí](quickstart-create-mysql-server-database-using-azure-cli.md)rozhraní příkazového řádku (CLI).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com). Vytvořte Azure Database for MySQL server s modulem verze 5,6, 5,7 nebo 8,0. Podrobnosti najdete v tématu [Postup vytvoření serveru Azure Database for MySQL z portálu](quickstart-create-mysql-server-database-using-azure-portal.md) nebo [Vytvoření Azure Database for MySQL serveru pomocí](quickstart-create-mysql-server-database-using-azure-cli.md)rozhraní příkazového řádku (CLI).
+
+## <a name="enable-redirection"></a>Povolit přesměrování
+
+Na serveru Azure Database for MySQL nakonfigurujte `redirect_enabled` parametr tak, aby `ON` povoloval připojení s režimem přesměrování. Pokud chcete tento parametr serveru aktualizovat, použijte [Azure Portal](howto-server-parameters.md) nebo [Azure CLI](howto-configure-server-parameters-using-cli.md).
 
 ## <a name="php"></a>PHP
 

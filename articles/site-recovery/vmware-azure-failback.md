@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.date: 01/15/2019
 ms.topic: conceptual
 ms.author: mayg
-ms.openlocfilehash: cd4cc90fb102d517a47ba458619e22b8921dd498
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aed015b67aa36e7678b31d7f2f047cb1e77c6a3d
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75495322"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485323"
 ---
 # <a name="fail-back-vmware-vms-to-on-premises-site"></a>Navrácení služeb po obnovení virtuálních počítačů VMware do místní lokality
 
@@ -29,7 +29,7 @@ Tento článek popisuje, jak navrácení služeb po obnovení virtuálních poč
 
 ## <a name="run-a-failover-to-fail-back"></a>Spuštění převzetí služeb při selhání pro navrácení služeb po obnovení
 
-1. Ujistěte se, že virtuální počítače Azure jsou znovu chráněné a jsou replikovány na místní lokalitu. 
+1. Ujistěte se, že virtuální počítače Azure jsou znovu chráněné a jsou replikovány na místní lokalitu.
     - Aby virtuální počítač mohl navrácení služeb po obnovení, musí mít aspoň jeden bod obnovení.
     - Pokud naplánujete navrácení služeb při selhání plánu obnovení, musí mít všechny počítače v plánu alespoň jeden bod obnovení.
 2. V trezoru > **replikované položky**vyberte virtuální počítač. Klikněte pravým tlačítkem na virtuální počítač > **neplánované převzetí služeb při selhání**.

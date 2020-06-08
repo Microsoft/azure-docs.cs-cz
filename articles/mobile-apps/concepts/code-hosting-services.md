@@ -5,14 +5,14 @@ author: codemillmatt
 ms.assetid: 12a8a079-9b3c-4faf-2222-ccff02097224
 ms.service: mobile-services
 ms.topic: article
-ms.date: 03/24/2020
+ms.date: 06/05/2020
 ms.author: masoucou
-ms.openlocfilehash: fdac28d50b9e03445c128a87a850294ba69fcaf9
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: db939dfee5e87312c380d57cbd5bb95f116408a0
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450896"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483249"
 ---
 # <a name="cloud-hosted-source-code-management-services"></a>Služby správy zdrojového kódu hostované v cloudu
 Pokud máte vývojové týmy s více členy týmu, kteří pracují na stejném základu kódu, je nutné najít vhodné místo pro hostování vašeho kódu. Ukládání dat v cloudu a používání centralizovaného úložiště umožňuje všem ukládat, upravovat a spravovat soubory s kódem. Můžou taky spolupracovat s ostatními vývojáři na projektech. Kód může být snadno přístupný bez ohledu na to, kde jste, pokud máte připojení k Internetu.

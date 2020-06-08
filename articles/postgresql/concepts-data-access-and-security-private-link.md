@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 4216abdf8cc8aae00e3ba0c57961c4b8b7403672
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a2ed81972cd89856d0bcde689c3d1f61c5534c96
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79371677"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485048"
 ---
 # <a name="private-link-for-azure-database-for-postgresql-single-server"></a>Privátní odkaz na Azure Database for PostgreSQL – jeden server
 
@@ -47,6 +47,10 @@ Když se připojíte k veřejnému koncovému bodu z místních počítačů, va
 
 Pomocí privátního odkazu můžete povolit přístup mezi různými místy k privátnímu koncovému bodu pomocí připojení typu [Express Route](https://azure.microsoft.com/services/expressroute/) (ER), privátního partnerského vztahu nebo [tunelového připojení VPN](https://docs.microsoft.com/azure/vpn-gateway/). Můžou následně zakázat veškerý přístup prostřednictvím veřejného koncového bodu a nepoužívat bránu firewall na základě IP adresy.
 
+> [!NOTE]
+> V některých případech jsou Azure Database for PostgreSQL a VNet-Subnet v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
+> - Ujistěte se, že oba odběry mají zaregistrovaný poskytovatel prostředků **Microsoft. DBforPostgreSQL** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
+
 ## <a name="configure-private-link-for-azure-database-for-postgresql-single-server"></a>Konfigurace privátního odkazu pro Azure Database for PostgreSQL jeden server
 
 ### <a name="creation-process"></a>Proces vytváření
@@ -54,7 +58,7 @@ Pomocí privátního odkazu můžete povolit přístup mezi různými místy k p
 Aby bylo možné povolit privátní propojení, jsou vyžadovány privátní koncové body. To lze provést pomocí následujících průvodců.
 
 * [portál Azure](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-portal)
-* [CLI](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
+* [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/postgresql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Proces schválení
 Po vytvoření privátního koncového bodu (PE) správcem sítě může správce PostgreSQL spravovat připojení privátního koncového bodu (PEC) k Azure Database for PostgreSQL. Tato oddělení povinností mezi správcem sítě a DBA je užitečné pro správu Azure Database for PostgreSQLho připojení. 
@@ -129,3 +133,6 @@ Další informace o funkcích zabezpečení na jednom serveru Azure Database for
 * Informace o tom, jak nakonfigurovat koncový bod služby virtuální sítě pro váš Azure Database for PostgreSQL pro jeden server, najdete v tématu [Konfigurace přístupu z virtuálních sítí](https://docs.microsoft.com/azure/postgresql/concepts-data-access-and-security-vnet).
 
 * Přehled Azure Database for PostgreSQL připojení k jednomu serveru najdete v tématu [Architektura připojení Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-connectivity-architecture)
+
+<!-- Link references, to text, Within this same GitHub repo. -->
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

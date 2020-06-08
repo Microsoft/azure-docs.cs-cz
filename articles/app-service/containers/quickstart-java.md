@@ -8,12 +8,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 03/27/2019
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: 1ed7126f2698294ac6706aafcb85e3229a7491bb
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 1bff1e22df1583491bf8d249cdb8752e9a1e4f57
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300059"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84485383"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service-on-linux"></a>Rychlý Start: Vytvoření aplikace Java na Azure App Service v systému Linux
 
@@ -44,7 +44,7 @@ cd helloworld
 
 ## <a name="configure-the-maven-plugin"></a>Konfigurace modulu plug-in Maven
 
-Proces nasazení, který Azure App Service, může automaticky vyzvednutí přihlašovacích údajů Azure z Azure CLI. Pokud nemáte nainstalované rozhraní příkazového řádku Azure CLI, modul plug-in Maven vás přihlásí pomocí protokolu OAuth nebo přihlášení zařízení. Pokud potřebujete, Projděte si podrobné informace o [ověřování pomocí modulů plug-in Maven](https://github.com/microsoft/azure-maven-plugins/wiki/Authenticatio) .
+Proces nasazení, který Azure App Service, může automaticky vyzvednutí přihlašovacích údajů Azure z Azure CLI. Pokud nemáte nainstalované rozhraní příkazového řádku Azure CLI, modul plug-in Maven vás přihlásí pomocí protokolu OAuth nebo přihlášení zařízení. Pokud potřebujete, Projděte si podrobné informace o [ověřování pomocí modulů plug-in Maven](https://github.com/microsoft/azure-maven-plugins/wiki/Authentication) .
 
 Pokud chcete nakonfigurovat nasazení, spusťte na příkazovém řádku příkaz Maven a pomocí výchozích konfigurací stiskněte klávesu **ENTER** , dokud se nezobrazí výzva k **potvrzení (a/N)** , stiskněte klávesu **Y** a konfigurace se provede. 
 ```cmd

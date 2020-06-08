@@ -12,12 +12,12 @@ ms.date: 09/24/2019
 ms.author: marsma
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:iOS
-ms.openlocfilehash: 5ade4701c53287de5d5815531f12850b3dc839de
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 840c0157713e9758092ca5cc51ee2745428ae568
+ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169844"
+ms.lasthandoff: 06/07/2020
+ms.locfileid: "84483528"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-ios-or-macos-app"></a>Rychlý Start: přihlášení uživatelů a volání rozhraní Microsoft Graph API z aplikace pro iOS nebo macOS
 
@@ -70,56 +70,32 @@ Tento rychlý Start se týká aplikací pro iOS a macOS. Některé kroky jsou po
 >
 > > [!div id="appconfigured" class="alert alert-info"]
 > > ![Už nakonfigurované](media/quickstart-v2-ios/green-check.png) Vaše aplikace je nakonfigurovaná s těmito atributy.
-
-#### <a name="step-2-download-the-sample-project"></a>Krok 2: stažení ukázkového projektu
-
-- [Stažení ukázky kódu pro iOS](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
-- [Stažení ukázky kódu pro macOS](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
+> 
+> #### <a name="step-2-download-the-sample-project"></a>Krok 2: stažení ukázkového projektu
+> > [!div id="autoupdate_ios" class="nextstepaction"]
+> > [Stažení ukázky kódu pro iOS]()
+> 
+> > [!div id="autoupdate_macos" class="nextstepaction"]
+> > [Stažení ukázky kódu pro macOS]()
+> [!div renderon="docs"]
+> #### <a name="step-2-download-the-sample-project"></a>Krok 2: stažení ukázkového projektu
+> 
+> - [Stažení ukázky kódu pro iOS](https://github.com/Azure-Samples/active-directory-ios-swift-native-v2/archive/master.zip)
+> - [Stažení ukázky kódu pro macOS](https://github.com/Azure-Samples/active-directory-macOS-swift-native-v2/archive/master.zip)
 
 #### <a name="step-3-install-dependencies"></a>Krok 3: instalace závislostí
 
 V okně terminálu přejděte do složky s ukázkou staženého kódu a spusťte `pod install` instalaci nejnovější knihovny MSAL.
 
-#### <a name="step-4-configure-your-project"></a>Krok 4: konfigurace projektu
-
-> [!div renderon="docs"]
-> Pokud jste vybrali možnost 1 výše, můžete tento postup přeskočit.
-
 > [!div renderon="portal" class="sxs-lookup"]
-> 1. Extrahujte soubor zip a otevřete projekt v XCode.
-> 1. Upravte **soubor viewcontroller. SWIFT** a nahraďte řádek začínající řetězcem let kClientID s následujícím fragmentem kódu. Nezapomeňte aktualizovat hodnotu pro `kClientID` s ID klienta, které jste uložili při registraci aplikace na portálu dříve v rychlém startu:
->    ```swift
->    let kClientID = "Enter_the_Application_Id_Here"
->    ```
-> 1. Upravte **soubor viewcontroller. SWIFT** a nahraďte řádek začínající řetězcem let kAuthority s následujícím fragmentem kódu:
->    ```swift
->    let kAuthority = "Enter_the_Authority_Endpoint_Host_HereEnter_the_Tenant_Info_Here"
->    ```
-> 1. Upravte **soubor viewcontroller. SWIFT** a nahraďte řádek začínající řetězcem let kGraphEndpoint s následujícím fragmentem kódu:
->    ```swift
->    let kGraphEndpoint = "Enter_the_MS_Graph_Endpoint_Host_Here"
->    ```
-> 1. Otevřete nastavení projektu. V části **Identita** zadejte **identifikátor sady prostředků** , který jste zadali na portálu.
-> 1. Pouze pro iOS klikněte pravým tlačítkem na **info. plist** a vyberte **Otevřít jako**  >  **zdrojový kód**.
-> 1. Pouze pro iOS v kořenovém uzlu dict – nahraďte `CFBundleURLSchemes` ***ID sady prostředků*** , které jste zadali na portálu.
->
->    ```xml
->    <key>CFBundleURLTypes</key>
->    <array>
->       <dict>
->          <key>CFBundleURLSchemes</key>
->          <array>
->             <string>msauth.Enter_the_Bundle_Id_Here</string>
->          </array>
->       </dict>
->    </array>
->    ```
-> 1. Sestavte & spusťte aplikaci.
-> [!div class="sxs-lookup" renderon="portal"]
-> > [!NOTE]
+> #### <a name="step-4-your-app-is-configured-and-ready-to-run"></a>Krok 4: vaše aplikace je nakonfigurovaná a připravená ke spuštění.
+> Nakonfigurovali jsme projekt s hodnotami vlastností vaší aplikace a je připraven ke spuštění.
+> >  [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
+
 > [!div renderon="docs"]
->
+>#### <a name="step-4-configure-your-project"></a>Krok 4: konfigurace projektu
+> Pokud jste vybrali možnost 1 výše, můžete tento postup přeskočit.
 > 1. Extrahujte soubor zip a otevřete projekt v XCode.
 > 1. Upravte **soubor viewcontroller. SWIFT** a nahraďte řádek začínající řetězcem let kClientID s následujícím fragmentem kódu. Nezapomeňte aktualizovat hodnotu pro `kClientID` clientID, kterou jste uložili při registraci aplikace na portálu dříve v tomto rychlém startu:
 >    ```swift
@@ -136,8 +112,8 @@ V okně terminálu přejděte do složky s ukázkou staženého kódu a spusťte
 >     let kAuthority = "https://login.microsoftonline.de/common"
 >     ```
 > 1. Otevřete nastavení projektu. V části **Identita** zadejte **identifikátor sady prostředků** , který jste zadali na portálu.
-> 1. Pouze pro iOS klikněte pravým tlačítkem na **info. plist** a vyberte **Otevřít jako**  >  **zdrojový kód**.
-> 1. Pouze pro iOS v kořenovém uzlu dict – nahraďte `Enter_the_bundle_Id_Here` ***ID sady prostředků*** , které jste použili na portálu.
+> 1. Klikněte pravým tlačítkem na **info. plist** a vyberte **Otevřít jako**  >  **zdrojový kód**.
+> 1. V kořenovém uzlu dict – nahraďte `Enter_the_bundle_Id_Here` ***ID sady prostředků*** , které jste použili na portálu.
 >
 >    ```xml
 >    <key>CFBundleURLTypes</key>
