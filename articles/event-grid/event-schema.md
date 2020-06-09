@@ -83,11 +83,11 @@ Všechny události mají stejné následující data nejvyšší úrovně:
 | Vlastnost | Typ | Vyžadováno | Popis |
 | -------- | ---- | -------- | ----------- |
 | téma | řetězec | Ne, ale v případě zahrnutí, se musí přesně shodovat s Event Gridým tématem Azure Resource Manager ID. Pokud není zahrnutý, Event Grid na událost zařadí razítko. | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
-| závislosti | řetězec | Ano | Cesta k předmětu události, kterou definuje vydavatel. |
-| Typ | řetězec | Ano | Jeden z registrovaných typů události pro tento zdroj události. |
-| eventTime | řetězec | Ano | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
-| id | řetězec | Ano | Jedinečný identifikátor události |
-| data | odkazy objektů | Ne | Data události specifická pro poskytovatele prostředků. |
+| závislosti | řetězec | Yes | Cesta k předmětu události, kterou definuje vydavatel. |
+| Typ | řetězec | Yes | Jeden z registrovaných typů události pro tento zdroj události. |
+| eventTime | řetězec | Yes | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
+| id | řetězec | Yes | Jedinečný identifikátor události |
+| data | odkazy objektů | No | Data události specifická pro poskytovatele prostředků. |
 | dataVersion | řetězec | Ne, ale bude označena prázdnou hodnotou. | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Nepožadováno, ale pokud je součástí, musí přesně odpovídat schématu Event Grid `metadataVersion` (aktuálně jenom `1` ). Pokud není zahrnutý, Event Grid na událost zařadí razítko. | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
@@ -95,7 +95,7 @@ Další informace o vlastnostech v datovém objektu najdete v tématu zdroj udá
 
 * [Předplatná Azure (operace správy)](event-schema-subscriptions.md)
 * [Container Registry](event-schema-container-registry.md)
-* [Blob Storage](event-schema-blob-storage.md)
+* [Úložiště objektů BLOB](event-schema-blob-storage.md)
 * [Event Hubs](event-schema-event-hubs.md)
 * [IoT Hub](event-schema-iot-hub.md)
 * [Media Services](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)

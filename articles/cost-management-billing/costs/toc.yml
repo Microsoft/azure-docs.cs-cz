@@ -35,6 +35,8 @@
           href: manage-automation.md
         - name: Migrace z rozhraní API EA na MCA
           href: migrate-cost-management-api.md
+        - name: Možnosti filtrování a seskupení
+          href: group-filter.md
     - name: Návody
       items:
         - name: Prevence a analýza neočekávaných poplatků

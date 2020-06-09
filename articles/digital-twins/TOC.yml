@@ -1,78 +1,19 @@
 - name: Azure Digital Twins
   href: index.yml
 - name: Přehled
-  items:
-    - name: Informace o službě Azure Digital Twins
-      href: about-digital-twins.md
 - name: Rychlé starty
   expanded: true
-  items:
-    - name: Zjištění dostupných místností
-      href: quickstart-view-occupancy-dotnet.md
 - name: Kurzy
   items:
     - name: Monitorování budovy s využitím Digital Twins
-      items:
-        - name: Nasazení a konfigurace
-          href: tutorial-facilities-setup.md
-        - name: Zřízení a monitorování podmínek
-          href: tutorial-facilities-udf.md
-        - name: Upozornění s využitím služby Logic Apps
-          href: tutorial-facilities-events.md
-        - name: Vizualizace událostí s využitím Time Series Insights
-          href: tutorial-facilities-analyze.md
 - name: Koncepty
   items:
-    - name: Graf prostorové inteligence a objektový model Digital Twins
-      href: concepts-objectmodel-spatialgraph.md
-    - name: Možnosti připojení zařízení a příchozí přenos telemetrických dat
-      href: concepts-device-ingress.md
-    - name: Zpracování dat a uživatelsky definované funkce
-      href: concepts-user-defined-functions.md
-    - name: Směrování událostí a zpráv
-      href: concepts-events-routing.md
-    - name: Omezení služby ve verzi Public Preview
-      href: concepts-service-limits.md
     - name: Zabezpečení
-      items:
-        - name: Osvědčené postupy zabezpečení
-          href: security-best-practices.md
-        - name: Řízení přístupu na základě rolí
-          href: security-role-based-access-control.md
-        - name: Vytváření a správa přiřazení rolí
-          href: security-create-manage-role-assignments.md
-        - name: Ověřování rozhraní API pro správu
-          href: security-authenticating-apis.md
 - name: Návody
   items:
-    - name: Povolení víceklientských aplikací
-      href: how-to-multitenant-applications.md
-    - name: Vytváření uživatelsky definovaných funkcí
-      href: how-to-user-defined-functions.md
-    - name: Směrování událostí a zpráv přes koncové body
-      href: how-to-egress-endpoints.md
-    - name: Přidání objektů blob do objektů
-      href: how-to-add-blobs.md
-    - name: Použití Swaggeru služby Digital Twins
-      href: how-to-use-swagger.md
-    - name: Ladění uživatelsky definovaných funkcí
-      href: how-to-diagnose-user-defined-functions.md
-    - name: Konfigurace sledování
-      href: how-to-configure-monitoring.md
     - name: Dotazování rozhraní API služby Digital Twins
-      items:
-        - name: Nastavení nástroje Postman
-          href: how-to-configure-postman.md
-        - name: Použití rozhraní API služby Digital Twins
-          href: how-to-navigate-apis.md
-        - name: Běžné vzory dotazů
-          href: how-to-query-common-apis.md
 - name: Referenční informace
-  items:
-    - name: Klientská knihovna uživatelem definovaných funkcí
-      href: reference-user-defined-functions-client-library.md
 - name: Zdroje a prostředky
-  expanded: true
   items:
     - name: Materiály pro vývojáře
       items:
@@ -116,3 +57,4 @@
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22'
     - name: Aktualizace Azure IoT
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
+  expanded: true

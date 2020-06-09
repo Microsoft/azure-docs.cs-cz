@@ -447,7 +447,7 @@
             - name: Použití funkce Resource Health pro potíže s připojením
               href: database/resource-health-to-troubleshoot-connectivity.md
             - name: Migrace DTU na virtuální jádra
-              href: database/resource-health-to-troubleshoot-connectivity.md
+              href: database/migrate-dtu-to-vcore.md
             - name: Škálování prostředků databáze
               href: database/single-database-scale.md
             - name: Škálování prostředků fondu
