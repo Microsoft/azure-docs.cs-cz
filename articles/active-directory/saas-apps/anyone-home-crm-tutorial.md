@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3f2320f8a005531039a386af9192157c3091f3ac
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 4146e6de2ef23f7e12ee6b59c40045f8a678dc13
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221889"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509181"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-anyone-home-crm"></a>Kurz: Azure Active Directory integraci jednotného přihlašování s kýmkoli Home CRM
 
@@ -88,7 +88,7 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     b. Do textového pole **Adresa URL odpovědi** zadejte adresu URL pomocí následujícího vzoru:`https://app.anyonehome.com/webroot/files/simplesamlphp/www/module.php/saml/sp/saml2-acs.php/<Anyone_Home_Provided_Unique_Value>`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pro získání těchto hodnot se obraťte na [tým podpory pro všechny domácí aplikace CRM](mailto:lightson@anyonehome.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem a adresou URL odpovědi. Pro získání těchto hodnot se obraťte na [tým podpory pro všechny domácí aplikace CRM](mailto:support@anyonehome.com) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
 
@@ -126,11 +126,11 @@ V této části povolíte B. Simon pro použití jednotného přihlašování Az
 
 ## <a name="configure-anyone-home-crm-sso"></a>Konfigurace jednotného přihlašování pro všechny domácí CRM
 
-Ke konfiguraci jednotného přihlašování na straně **domovské stránky aplikace CRM** je potřeba odeslat **adresu URL federačních metadat aplikace** [týmu podpory pro kohokoli z domova](mailto:lightson@anyonehome.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
+Ke konfiguraci jednotného přihlašování na straně **domovské stránky aplikace CRM** je potřeba odeslat **adresu URL federačních metadat aplikace** [týmu podpory pro kohokoli z domova](mailto:support@anyonehome.com). Toto nastavení nastaví, aby bylo správně nastaveno připojení SAML SSO na obou stranách.
 
 ### <a name="create-anyone-home-crm-test-user"></a>Vytvořit testovacího uživatele domácí CRM pro kohokoli
 
-V této části vytvoříte uživatele s názvem Britta Simon pro kohokoli Home CRM. Spolupracujte se svým [týmem podpory pro domácí aplikace CRM](mailto:lightson@anyonehome.com) a přidejte uživatele z domácí platformy CRM pro kohokoli. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
+V této části vytvoříte uživatele s názvem Britta Simon pro kohokoli Home CRM. Spolupracujte se svým [týmem podpory pro domácí aplikace CRM](mailto:support@anyonehome.com) a přidejte uživatele z domácí platformy CRM pro kohokoli. Před použitím jednotného přihlašování je nutné vytvořit a aktivovat uživatele.
 
 ## <a name="test-sso"></a>Test SSO 
 

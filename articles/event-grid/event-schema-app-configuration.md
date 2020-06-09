@@ -2,17 +2,17 @@
 title: Konfigurace aplikace Azure jako zdroj Event Grid
 description: Tento článek popisuje, jak používat konfiguraci aplikací Azure jako zdroj události Event Grid. Poskytuje schéma a odkazy na články týkající se kurzu a postupů.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.author: babanisa
-ms.openlocfilehash: adb548ef8531698a2cb075fbc742bb20a02a434b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: e233b5d27df3e25c2d7c1464aea9a1e80dfbffb0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393430"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553155"
 ---
 # <a name="azure-app-configuration-as-an-event-grid-source"></a>Konfigurace aplikace Azure jako zdroj Event Grid
 Tento článek popisuje vlastnosti a schéma pro události konfigurace aplikací Azure. Úvod do schémat událostí najdete v tématu [Azure Event Grid schéma událostí](event-schema.md). Nabízí také seznam rychlých startů a kurzů pro použití konfigurace aplikací Azure jako zdroje událostí.
@@ -23,7 +23,7 @@ Tento článek popisuje vlastnosti a schéma pro události konfigurace aplikací
 
 Konfigurace aplikace Azure emituje následující typy událostí:
 
-| Typ události | Popis |
+| Typ události | Description |
 | ---------- | ----------- |
 | Microsoft. AppConfiguration. KeyValueModified | Je aktivována, když je vytvořena nebo nahrazena klíčová hodnota. |
 | Microsoft. AppConfiguration. KeyValueDeleted | Vyvolá se, když se odstraní hodnota klíče. |
@@ -72,22 +72,22 @@ Schéma pro událost odstranění klíč-hodnota je podobné:
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
 | závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
 | Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | ID | řetězec | Jedinečný identifikátor události |
-| data | objekt | Data události konfigurace aplikace |
+| data | odkazy objektů | Data události konfigurace aplikace |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
-| key | řetězec | Klíč hodnoty klíč-hodnota, která byla upravena nebo odstraněna. |
+| Klíč | řetězec | Klíč hodnoty klíč-hodnota, která byla upravena nebo odstraněna. |
 | label | řetězec | Popisek (pokud existuje) hodnoty klíč-hodnota, která byla upravena nebo odstraněna. |
 | značk | řetězec | Pro `KeyValueModified` ETag nového klíč-hodnota. Pro `KeyValueDeleted` značku ETag hodnoty klíč-hodnota, která byla odstraněna. |
 

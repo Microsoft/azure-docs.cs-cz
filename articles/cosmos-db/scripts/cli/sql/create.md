@@ -1,20 +1,20 @@
 ---
-title: Vytvoření databáze a kontejneru rozhraní API SQL (Core) pro Azure Cosmos DB
-description: Vytvoření databáze a kontejneru rozhraní API SQL (Core) pro Azure Cosmos DB
+title: Vytvoření databáze rozhraní API a kontejneru Core (SQL) pro Azure Cosmos DB
+description: Vytvoření databáze rozhraní API a kontejneru Core (SQL) pro Azure Cosmos DB
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 9/25/2019
-ms.openlocfilehash: ae958c7e48b1c4a93a09c607d5a2e51abf49a8ca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/03/2020
+ms.openlocfilehash: 416da39df9bfb49d6323ee789d5e67b1743a1cd7
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "71275490"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509385"
 ---
-# <a name="create-an-azure-cosmos-sql-core-api-account-database-and-container-using-azure-cli"></a>Vytvoření účtu rozhraní API Azure Cosmos (Core), databáze a kontejneru pomocí rozhraní příkazového řádku Azure
+# <a name="create-an-azure-cosmos-core-sql-api-account-database-and-container-using-azure-cli"></a>Vytvoření účtu rozhraní API pro Azure Cosmos Core (SQL), databáze a kontejneru pomocí Azure CLI
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 

@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 05/28/2020
-ms.openlocfilehash: f8b72037046d05b39587c2fd57794b4109a85ae3
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: a59fafccecaf2fc266a6c7864174c477e1831186
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84249174"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561158"
 ---
-# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Hromadné kopírování několika tabulek pomocí Azure Data Factory
+# <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Hromadné kopírování více tabulek pomocí Azure Data Factory v Azure Portal
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -125,7 +125,7 @@ V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi Az
 
     f. Pokud chcete otestovat připojení k databázi Azure SQL s použitím zadaných informací, klikněte na **Test připojení**.
   
-    g. Kliknutím na **vytvořit** uložte propojenou službu.
+    například Kliknutím na **vytvořit** uložte propojenou službu.
 
 
 ### <a name="create-the-sink-azure-synapse-analytics-formerly-sql-dw-linked-service"></a>Vytvoření propojené služby Azure synapse Analytics (dříve SQL DW) jímky
@@ -146,7 +146,7 @@ V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi Az
      
     f. Pokud chcete otestovat připojení k databázi Azure SQL s použitím zadaných informací, klikněte na **Test připojení**.
      
-    g. Klikněte na **Vytvořit**.
+    například Klikněte na **Vytvořit**.
 
 ### <a name="create-the-staging-azure-storage-linked-service"></a>Vytvoření pracovní propojené služby Azure Storage
 V tomto kurzu použijete Azure Blob Storage jako dočasné pracovní oblast, abyste zajistili lepší výkon kopírování pro funkci PolyBase.

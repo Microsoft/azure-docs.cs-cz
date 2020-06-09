@@ -8,12 +8,13 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: 5889afa033b30606f8981ddb826aa192f24efa10
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 12f5f8b1e1a20675fd08f753e515faef2f7a97ce
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81312917"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560038"
 ---
 # <a name="tutorial-azure-data-lake-storage-gen2-azure-databricks--spark"></a>Kurz: Azure Data Lake Storage Gen2, Azure Databricks & Spark
 
@@ -65,7 +66,7 @@ V tomto kurzu se k předvedení operace ETL používá letová data z statistiky
 
 V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
 
-1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků** > **Analytics** > **Azure Databricks**.
+1. V Azure Portal vyberte vytvořit Azure Databricks **prostředků**  >  **Analytics**  >  **Azure Databricks**.
 
     ![Datacihly na Azure Portal](./media/data-lake-storage-use-databricks-spark/azure-databricks-on-portal.png "Datacihly na Azure Portal")
 
@@ -75,7 +76,7 @@ V této části vytvoříte službu Azure Databricks pomocí Azure Portal.
     |---------|---------|
     |**Název pracovního prostoru**     | Zadejte název pracovního prostoru Databricks.  |
     |**Předplatné**     | Z rozevíracího seznamu vyberte své předplatné Azure.        |
-    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který obsahuje související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/management/overview.md). |
+    |**Skupina prostředků**     | Určete, jestli chcete vytvořit novou skupinu prostředků, nebo použít existující. Skupina prostředků je kontejner, který uchovává související prostředky pro řešení Azure. Další informace naleznete v tématu [Přehled skupin prostředků v Azure](../../azure-resource-manager/management/overview.md). |
     |**Umístění**     | Vyberte **USA – západ 2**. Další dostupné oblasti najdete v tématu [Dostupné služby Azure podle oblastí](https://azure.microsoft.com/regions/services/).       |
     |**Cenová úroveň**     |  Vyberte **Standard**.     |
 
@@ -129,7 +130,7 @@ Pomocí AzCopy zkopírujte data ze souboru *. csv* do účtu Data Lake Storage G
 
    * Nahraďte `<storage-account-name>` hodnotu zástupného symbolu názvem vašeho účtu úložiště.
 
-   * `<container-name>` Zástupný symbol nahraďte názvem kontejneru v účtu úložiště.
+   * `<container-name>`Zástupný symbol nahraďte názvem kontejneru v účtu úložiště.
 
 ## <a name="create-a-container-and-mount-it"></a>Vytvoření kontejneru a jeho připojení
 
@@ -161,7 +162,7 @@ V této části vytvoříte kontejner a složku ve svém účtu úložiště.
     extra_configs = configs)
     ```
 
-18. V tomto bloku kódu Nahraďte zástupné hodnoty `appId`, `storage-account-name` `clientSecret`, `tenant`a v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte `container-name` hodnotu zástupného symbolu názvem kontejneru.
+18. V tomto bloku kódu nahraďte `appId` `clientSecret` `tenant` `storage-account-name` zástupné hodnoty,, a v tomto bloku kódu hodnotami, které jste shromáždili při dokončování požadavků tohoto kurzu. Nahraďte `container-name` hodnotu zástupného symbolu názvem kontejneru.
 
 19. Stiskněte klávesy **SHIFT + ENTER** a spusťte kód v tomto bloku.
 

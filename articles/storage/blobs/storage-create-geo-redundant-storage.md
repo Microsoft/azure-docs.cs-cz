@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 04/16/2020
 ms.author: tamram
 ms.reviewer: artek
-ms.custom: mvc
+ms.custom: mvc, tracking-python
 ms.subservice: blobs
-ms.openlocfilehash: 19812ad8e8b81984bb7a314345d5fd53f917d239
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: f7c3ebb1a68d671f63e3239794266c8c24f5906a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856126"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553203"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Kurz: vytvoření vysoce dostupné aplikace s úložištěm BLOB
 
@@ -70,7 +70,7 @@ Pomocí těchto kroků vytvořte účet úložiště s přístupem Geo-Zone-redu
 2. Z **nové** stránky vyberte **účet úložiště – objekt blob, soubor, tabulka, fronta** .
 4. Vyplňte formulář účtu úložiště následujícími informacemi, jak ukazuje následující obrázek, a vyberte **Vytvořit**:
 
-   | Nastavení       | Ukázková hodnota | Popis |
+   | Nastavení       | Ukázková hodnota | Description |
    | ------------ | ------------------ | ------------------------------------------------- |
    | **Předplatné** | *Moje předplatné* | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.azure.com/Subscriptions). |
    | **ResourceGroup** | *myResourceGroup* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming). |
@@ -78,7 +78,7 @@ Pomocí těchto kroků vytvořte účet úložiště s přístupem Geo-Zone-redu
    | **Umístění** | *USA – východ* | Zvolte umístění. |
    | **Výkon** | *Standard* | Standardní výkon je dobrou možností pro ukázkový scénář. |
    | **Druh účtu** | *StorageV2* | Doporučuje se použít účet úložiště pro obecné účely v2. Další informace o typech účtů úložiště Azure najdete v tématu [Přehled účtu úložiště](../common/storage-account-overview.md). |
-   | **Replikace**| *Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)* | Primární oblast je redundantní v zóně a replikuje se do sekundární oblasti s povoleným přístupem pro čtení do sekundární oblasti. |
+   | **Umístění**| *Geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS)* | Primární oblast je redundantní v zóně a replikuje se do sekundární oblasti s povoleným přístupem pro čtení do sekundární oblasti. |
    | **Access tier (Vrstva přístupu)**| *Horká* | Pro často používaná data použijte vrstvu Hot. |
 
     ![Vytvoření účtu úložiště](media/storage-create-geo-redundant-storage/createragrsstracct.png)
@@ -117,7 +117,7 @@ git clone https://github.com/Azure-Samples/storage-node-v10-ha-ra-grs
 
 V aplikaci je potřeba zadat připojovací řetězec pro váš účet úložiště. Tento připojovací řetězec můžete uložit do proměnné prostředí v místním počítači, na kterém aplikaci spouštíte. V závislosti na operačním systém vytvořte proměnnou prostředí pomocí jednoho z následujících příkladů.
 
-Na portálu Azure Portal přejděte k účtu úložiště. V části **Nastavení** v účtu úložiště vyberte **Přístupové klíče**. Zkopírujte **připojovací řetězec** z primárního nebo sekundárního klíče. V závislosti na vašem operačním systému spusťte jeden z následujících příkazů a \<nahraďte\> yourconnectionstring skutečným připojovacím řetězcem. Tento příkaz uloží proměnnou prostředí v místním počítači. V systému Windows není k dispozici proměnná prostředí, dokud znovu nenačtete **příkazový řádek** nebo prostředí, které používáte.
+Na portálu Azure Portal přejděte k účtu úložiště. V části **Nastavení** v účtu úložiště vyberte **Přístupové klíče**. Zkopírujte **připojovací řetězec** z primárního nebo sekundárního klíče. V závislosti na vašem operačním systému spusťte jeden z následujících příkazů a nahraďte \<yourconnectionstring\> skutečným připojovacím řetězcem. Tento příkaz uloží proměnnou prostředí v místním počítači. V systému Windows není k dispozici proměnná prostředí, dokud znovu nenačtete **příkazový řádek** nebo prostředí, které používáte.
 
 ### <a name="linux"></a>Linux
 
@@ -135,7 +135,7 @@ setx storageconnectionstring "<yourconnectionstring>"
 
 V aplikaci musíte zadat přihlašovací údaje účtu úložiště. Tyto informace můžete uložit do proměnných prostředí v místním počítači, na kterém je aplikace spuštěná. Použijte jeden z následujících příkladů v závislosti na operačním systému a vytvořte proměnné prostředí.
 
-Na portálu Azure Portal přejděte k účtu úložiště. V části **Nastavení** v účtu úložiště vyberte **Přístupové klíče**. Vložte **název účtu úložiště** a hodnoty **klíče** do následujících příkazů a nahraďte zástupné\> symboly \< \<youraccountname\> a youraccountkey. Tento příkaz uloží proměnné prostředí do místního počítače. V systému Windows není k dispozici proměnná prostředí, dokud znovu nenačtete **příkazový řádek** nebo prostředí, které používáte.
+Na portálu Azure Portal přejděte k účtu úložiště. V části **Nastavení** v účtu úložiště vyberte **Přístupové klíče**. Vložte **název účtu úložiště** a hodnoty **klíče** do následujících příkazů a nahraďte \<youraccountname\> \<youraccountkey\> zástupné symboly a. Tento příkaz uloží proměnné prostředí do místního počítače. V systému Windows není k dispozici proměnná prostředí, dokud znovu nenačtete **příkazový řádek** nebo prostředí, které používáte.
 
 ### <a name="linux"></a>Linux
 
@@ -153,7 +153,7 @@ setx accountkey "<youraccountkey>"
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Pokud chcete tuto ukázku spustit, musíte do `.env.example` souboru přidat svoje přihlašovací údaje účtu úložiště a pak ho přejmenovat na `.env`.
+Pokud chcete tuto ukázku spustit, musíte do souboru přidat svoje přihlašovací údaje účtu úložiště `.env.example` a pak ho přejmenovat na `.env` .
 
 ```
 AZURE_STORAGE_ACCOUNT_NAME=<replace with your storage account name>
@@ -162,7 +162,7 @@ AZURE_STORAGE_ACCOUNT_ACCESS_KEY=<replace with your storage account access key>
 
 Tyto informace najdete v Azure Portal tak, že přejdete na svůj účet úložiště a vyberete **přístupové klíče** v části **Nastavení** .
 
-Nainstalujte požadované závislosti. Provedete to tak, že otevřete příkazový řádek, přejdete do ukázkové složky a `npm install`pak zadáte.
+Nainstalujte požadované závislosti. Provedete to tak, že otevřete příkazový řádek, přejdete do ukázkové složky a pak zadáte `npm install` .
 
 ---
 
@@ -192,7 +192,7 @@ Před stažením se definuje objekt služby [retry_callback](https://docs.micros
 
 # <a name="nodejs"></a>[Node.js](#tab/nodejs)
 
-Chcete-li spustit ukázku, otevřete příkazový řádek, přejděte do složky Sample a pak zadejte `node index.js`.
+Chcete-li spustit ukázku, otevřete příkazový řádek, přejděte do složky Sample a pak zadejte `node index.js` .
 
 Ukázka vytvoří kontejner v účtu úložiště objektů blob, nahraje do kontejneru **Hello. png** a pak opakovaně kontroluje, jestli se kontejner a image replikují do sekundární oblasti. Po dokončení replikace se zobrazí výzva k zadání **D** nebo **Q** (následovaný ENTER) ke stažení nebo ukončení. Výstup by měl vypadat podobně jako v následujícím příkladu:
 

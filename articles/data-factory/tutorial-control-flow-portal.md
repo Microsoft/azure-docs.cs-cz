@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/11/2018
-ms.openlocfilehash: 0694d6f093864231206ec2282b6d358c57ed1dc4
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 83e6498f47c36fa54890131922dc8d452a3d9220
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022125"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560485"
 ---
-# <a name="branching-and-chaining-activities-in-a-data-factory-pipeline"></a>Větvení a řetězení aktivit v kanálech Data Factory
+# <a name="branching-and-chaining-activities-in-an-azure-data-factory-pipeline-using-the-azure-portal"></a>Větvení a řetězení aktivit v Azure Data Factoryovém kanálu pomocí Azure Portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -93,7 +93,7 @@ Požadavek v návrháři aplikace logiky by měl vypadat podobně jako na násle
 
 ![Návrhář aplikace logiky – požadavek](media/tutorial-control-flow-portal/logic-app-designer-request.png)
 
-Pro akci **Odeslat e-mail** upravte, jak chcete e-mail naformátovat, a využijte přitom vlastnosti předané ve schématu JSON těla požadavku. Zde naleznete příklad:
+Pro akci **Odeslat e-mail** upravte, jak chcete e-mail naformátovat, a využijte přitom vlastnosti předané ve schématu JSON těla požadavku. Tady je příklad:
 
 ![Návrhář aplikace logiky – akce odeslání e-mailu](media/tutorial-control-flow-portal/send-email-action-2.png)
 
@@ -105,7 +105,7 @@ https://prodxxx.eastus.logic.azure.com:443/workflows/000000/triggers/manual/path
 ```
 
 ### <a name="fail-email-workflow"></a>Pracovní postup pro e-maily s informací o úspěchu
-Pomocí stejného postupu vytvořte další pracovní postup Logic Apps s názvem **CopyFailEmail**. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Zde naleznete příklad:
+Pomocí stejného postupu vytvořte další pracovní postup Logic Apps s názvem **CopyFailEmail**. Schéma `Request Body JSON schema` v triggeru požadavku je stejné. Změňte formát e-mailu, například `Subject`, tak, aby to odpovídalo neúspěchu. Tady je příklad:
 
 ![Návrhář aplikace logiky – pracovní postup pro e-maily s informací o neúspěchu](media/tutorial-control-flow-portal/fail-email-workflow-2.png)
 

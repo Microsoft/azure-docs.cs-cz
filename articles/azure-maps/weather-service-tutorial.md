@@ -8,13 +8,13 @@ ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.custom: mvc
-ms.openlocfilehash: e5292f5166e739264e9cf969480b70f415fcc75a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 41d52eff2dc2d9fc1e4c956c893a2f14c91d9f92
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80333495"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560381"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Kurz: spojení dat senzorů s daty předpovědi počasí pomocí Azure Notebooks (Python)
 
@@ -180,7 +180,7 @@ Níže uvedené grafy vizualizují data předpovědi. Změnu rychlosti větru na
 
 <center>
 
-![Rychlost větru –](./media/weather-service-tutorial/speed-date-plot.png) ![sestrojení směru větru](./media/weather-service-tutorial/direction-date-plot.png)</center>
+![Rychlost větru – sestrojení ](./media/weather-service-tutorial/speed-date-plot.png) ![ směru větru](./media/weather-service-tutorial/direction-date-plot.png)</center>
 
 
 ## <a name="next-steps"></a>Další kroky

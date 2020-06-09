@@ -5,12 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 02/25/2019
 ms.topic: conceptual
-ms.openlocfilehash: c2871c4c988675dd9a1a5749d908805994b6b309
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.custom: tracking-python
+ms.openlocfilehash: f3ba52c1396928d8c76fb85fda3f29c625e60919
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83835151"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561854"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Správa balíčků Python 2 v Azure Automation
 
@@ -48,10 +49,10 @@ Po stažení balíčků je můžete importovat do svého účtu Automation.
 
  Pokud chcete sadu Runbook získat, [importujte balíčky Python 2 z PyPI do účtu Azure Automation](https://gallery.technet.microsoft.com/scriptcenter/Import-Python-2-packages-57f7d509) z Galerie do svého účtu Automation. Ujistěte se, že jsou nastavení spuštění nastavená na **Azure** , a spusťte Runbook pomocí parametrů. Sada Runbook vyžaduje účet Spustit jako, aby mohl účet služby Automation fungovat. U každého parametru se ujistěte, že ho spustíte s přepínačem, jak je vidět v následujícím seznamu a obrázku:
 
-* -s \< SubscriptionId\>
-* – g – \< zdrojová zdrojová\>
-* – a \< automationAccount\>
-* -m \< modulePackage\>
+* -s\<subscriptionId\>
+* – g\<resourceGroup\>
+* -a\<automationAccount\>
+* -m\<modulePackage\>
 
 ![Seznam balíčků](media/python-packages/import-python-runbook.png)
 

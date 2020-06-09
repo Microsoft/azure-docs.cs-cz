@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 08/12/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 731ed4664d10d3957be160bf9e8001d5470a6f38
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0d05e48cdaf75af5acb09713679d3aa21450b433
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82201342"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509368"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Kurz: integrace společnost Sage Intacct s Azure Active Directory
 
@@ -88,13 +88,12 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     ![image](common/edit-attribute.png)
 
-1. Kromě toho aplikace společnost Sage Intacct očekává, že se v odpovědi SAML zpátky vrátí několik atributů. V části **deklarace identity uživatelů** v dialogovém okně **atributy uživatele** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
+1. Kromě toho aplikace společnost Sage Intacct očekává, že se v odpovědi SAML zpátky vrátí několik atributů. V dialogovém okně **atributy uživatele & deklarací** proveďte následující kroky pro přidání atributu tokenu SAML, jak je znázorněno v následující tabulce:
 
-    | Název  |  Zdrojový atribut|
+    | Název atributu  |  Zdrojový atribut|
     | ---------------| --------------- |
     | Název společnosti | **ID společnosti společnost Sage Intacct** |
-    | jméno | Hodnota by měla být stejná jako **ID uživatele**společnost Sage Intacct, které zadáte v **části Vytvoření společnost Sage Intacct test uživatele**, která je vysvětlena dále v tomto kurzu. |
-    | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` | Hodnota by měla být stejná jako **ID uživatele FEDEROVANÉHO jednotného přihlašování**společnost Sage Intacct, které zadáte v **části Vytvoření společnost Sage Intacct test uživatele**, která je vysvětlena dále v tomto kurzu. |
+    | name | Hodnota by měla být stejná jako **ID uživatele**společnost Sage Intacct, které zadáte v **části Vytvoření společnost Sage Intacct test uživatele**, která je vysvětlena dále v tomto kurzu. |
 
     a. Kliknutím na **Přidat novou deklaraci identity** otevřete dialogové okno **Spravovat deklarace identity uživatelů** .
 
@@ -104,11 +103,11 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
     d. Jako **atribut**vyberte zdroj.
 
-    e. V seznamu **zdrojový atribut** zadejte hodnotu atributu zobrazenou pro tento řádek.
+    e. V seznamu **zdrojový atribut** zadejte nebo vyberte hodnotu atributu zobrazenou pro tento řádek.
 
     f. Klikněte na **OK** .
 
-    g. Klikněte na **Uložit**.
+    například Klikněte na **Uložit**.
 
 1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** vyhledejte **certifikát (Base64)** a vyberte **Stáhnout** a Stáhněte certifikát a uložte ho do počítače.
 
@@ -126,7 +125,7 @@ V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B.
 1. V horní části obrazovky vyberte **Nový uživatel** .
 1. Ve vlastnostech **uživatele** proveďte následující kroky:
    1. Do pole **Název** zadejte `B.Simon`.  
-   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension. Například, `B.Simon@contoso.com`.
+   1. Do pole **uživatelské jméno** zadejte username@companydomain.extension . Například, `B.Simon@contoso.com`.
    1. Zaškrtněte políčko **Zobrazit heslo** a pak zapište hodnotu, která se zobrazí v poli **heslo** .
    1. Klikněte na **Vytvořit**.
 
@@ -207,7 +206,7 @@ Pokud chcete nastavit uživatele Azure AD tak, aby se mohli přihlásit k spole�
     
     d. Držitel účtu Azure AD obdrží e-mail a provede odkaz k potvrzení jeho účtu předtím, než se aktivuje.
 
-1. Klikněte na kartu **jednotné přihlašování** a ujistěte se, že **ID uživatele federovaného jednotného přihlašování** na obrázku pod ním a hodnotu **atributu zdroje** , která je `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` namapovaná s hodnotou v části **atributů uživatele** v Azure Portal, by měla být stejná.
+1. Klikněte na kartu **jednotné přihlašování** a ujistěte se, že **ID uživatele federovaného jednotného přihlašování** na obrázku pod ním a hodnotu **atributu zdroje** , která je namapovaná s hodnotou `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` v části **atributů uživatele** v Azure Portal, by měla být stejná.
 
     ![Informace o uživateli](./media/intacct-tutorial/ic790044.png "Informace o uživateli")
 

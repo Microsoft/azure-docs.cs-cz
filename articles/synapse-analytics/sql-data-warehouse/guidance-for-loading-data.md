@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: ''
-ms.date: 02/04/2020
+ms.date: 06/07/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: e170a789727fb0de36705895245cc638d30ee3d7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f04e5525610e86f460ab799bedf492381404c9e
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80745512"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488643"
 ---
 # <a name="best-practices-for-loading-data-using-synapse-sql-pool"></a>Osvědčené postupy načítání dat pomocí synapse fondu SQL
 
@@ -28,8 +28,6 @@ Pokud chcete minimalizovat latenci, najděte vrstvu úložiště a váš fond SQ
 
 Při exportu dat do formátu souboru ORC může dojít k chybám s nedostatkem paměti Java, pokud se zde nacházejí velké textové sloupce. Toto omezení můžete obejít tím, že importujete jen podmnožinu sloupců.
 
-Základová databáze nemůže načíst řádky, které mají více než 1 000 000 bajtů dat. Když vkládáte data do textových souborů v úložišti Azure Blob nebo ve službě Azure Data Lake Store, musí tyto soubory obsahovat méně než 1 000 000 bajtů dat. Toto omezení platí bez ohledu na schéma tabulky.
-
 Všechny formáty souborů mají jiné výkonové charakteristiky. Pokud chcete docílit nejrychlejšího načtení, použijte komprimované textové soubory s oddělovači. Rozdíl mezi výkonem kódování UTF-8 a UTF-16 je minimální.
 
 Velké komprimované soubory rozdělte do menších komprimovaných souborů.
@@ -38,38 +36,47 @@ Velké komprimované soubory rozdělte do menších komprimovaných souborů.
 
 Největší rychlosti při načítání dosáhnete, když budete spouštět vždy jen jednu úlohu načtení dat. Pokud to není proveditelné, spouštějte současně minimální počet zatížení. Pokud očekáváte velkou úlohu načítání, zvažte možnost škálovat svůj fond SQL před zatížením.
 
-Pokud chcete spouštět načítání s odpovídajícími výpočetními prostředky, vytvořte uživatele načítání vyhrazené pro spouštění načítání. Přiřaďte každého uživatele načítání do konkrétní třídy prostředku nebo skupiny úloh. Pokud chcete spustit zátěž, přihlaste se jako jeden z uživatelů načítání a potom spusťte načtení. Načítání se spustí s využitím třídy prostředků tohoto uživatele.  
-
-> [!NOTE]
-> Tato metoda je jednodušší než se pokoušet o změnu třídy prostředků uživatele podle aktuálních potřeb třídy prostředků.
+Pokud chcete spouštět načítání s odpovídajícími výpočetními prostředky, vytvořte uživatele načítání vyhrazené pro spouštění načítání. Klasifikujte každého uživatele načítání do konkrétní skupiny úloh. Pokud chcete spustit zátěž, přihlaste se jako jeden z uživatelů načítání a potom spusťte načtení. Zatížení se spouští se skupinou úloh uživatele.  
 
 ### <a name="example-of-creating-a-loading-user"></a>Příklad vytvoření uživatele načítání
 
-Tento příklad vytvoří uživatele načítání pro třídu prostředků staticrc20. Prvním krokem je **připojení k předloze** a vytvoření přihlášení.
+Tento příklad vytvoří uživatele načítání klasifikovaného na konkrétní skupinu úloh. Prvním krokem je **připojení k předloze** a vytvoření přihlášení.
 
 ```sql
    -- Connect to master
-   CREATE LOGIN LoaderRC20 WITH PASSWORD = 'a123STRONGpassword!';
+   CREATE LOGIN loader WITH PASSWORD = 'a123STRONGpassword!';
 ```
 
-Připojte se ke fondu SQL a vytvořte uživatele. Následující kód předpokládá, že jste připojeni k databázi s názvem mySampleDataWarehouse. Ukazuje, jak vytvořit uživatele s názvem LoaderRC20 a poskytuje oprávnění uživatelského ovládacího prvku pro databázi. Pak přidá uživatele jako člena role databáze staticrc20.  
+Připojte se ke fondu SQL a vytvořte uživatele. Následující kód předpokládá, že jste připojeni k databázi s názvem mySampleDataWarehouse. Ukazuje, jak vytvořit uživatele s názvem Loader a přidělí uživateli oprávnění k vytváření tabulek a načtení pomocí [příkazu copy](https://docs.microsoft.com/sql/t-sql/statements/copy-into-transact-sql?view=azure-sqldw-latest). Pak klasifikuje uživatele na skupinu úloh dataloads s maximálními prostředky. 
 
 ```sql
-   -- Connect to the database
-   CREATE USER LoaderRC20 FOR LOGIN LoaderRC20;
-   GRANT CONTROL ON DATABASE::[mySampleDataWarehouse] to LoaderRC20;
-   EXEC sp_addrolemember 'staticrc20', 'LoaderRC20';
+   -- Connect to the SQL pool
+   CREATE USER loader FOR LOGIN loader;
+   GRANT ADMINISTER DATABASE BULK OPERATIONS TO loader;
+   GRANT INSERT ON <yourtablename> TO loader;
+   GRANT SELECT ON <yourtablename> TO loader;
+   GRANT CREATE TABLE TO loader;
+   GRANT ALTER ON SCHEMA::dbo TO loader;
+   
+   CREATE WORKLOAD GROUP DataLoads
+   WITH ( 
+      MIN_PERCENTAGE_RESOURCE = 100
+       ,CAP_PERCENTAGE_RESOURCE = 100
+       ,REQUEST_MIN_RESOURCE_GRANT_PERCENT = 100
+    );
+
+   CREATE WORKLOAD CLASSIFIER [wgcELTLogin]
+   WITH (
+         WORKLOAD_GROUP = 'DataLoads'
+       ,MEMBERNAME = 'loader'
+   );
 ```
 
-Pokud chcete spustit zatížení s prostředky pro třídy prostředků staticRC20, přihlaste se jako LoaderRC20 a spusťte zátěž.
+Pokud chcete spustit zatížení s prostředky pro načtení skupiny úloh, přihlaste se jako zavaděč a spusťte zátěž.
 
-Spouštějte načítání v rámci statických, a ne dynamických, tříd prostředků. Použití statických tříd prostředků garantuje stejné prostředky bez ohledu na [jednotky datového skladu](what-is-a-data-warehouse-unit-dwu-cdwu.md). Pokud použijete dynamickou třídu prostředků, budou se prostředky lišit v závislosti na vaší úrovni služby.
+## <a name="allowing-multiple-users-to-load-polybase"></a>Povolení načtení více uživatelů (základ)
 
-V případě dynamických tříd znamená nižší úroveň služby, že pro vašeho uživatele načítání pravděpodobně musíte použít větší třídu prostředků.
-
-## <a name="allowing-multiple-users-to-load"></a>Povolení načítání více uživatelům
-
-Je často potřeba, aby data načetla více uživatelů do fondu SQL. Načítání pomocí [Create Table jako Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) vyžaduje oprávnění k řízení databáze.  Oprávnění CONTROL poskytuje přístup pro řízení ke všem schématům.
+Je často potřeba, aby data načetla více uživatelů do fondu SQL. Načítání s [Create Table jako Select (Transact-SQL)](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (základ) vyžaduje oprávnění k řízení databáze.  Oprávnění CONTROL poskytuje přístup pro řízení ke všem schématům.
 
 Pravděpodobně ale nebudete chtít, aby všichni uživatelé, kteří načítají data, měli oprávnění CONTROL pro přístup ke všem schématům. K omezení oprávnění slouží příkaz DENY CONTROL.
 
@@ -104,7 +111,7 @@ V případě nedostatku paměti nemusí index columnstore dosahovat maximální 
 
 ## <a name="increase-batch-size-when-using-sqlbulkcopy-api-or-bcp"></a>Zvýšit velikost dávky při použití rozhraní SqLBulkCopy API nebo BCP
 
-Načítání s využitím základny bude poskytovat nejvyšší propustnost s fondem SQL. Pokud nemůžete použít základnu pro načtení a musí používat [rozhraní SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nebo [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), měli byste zvážit zvýšení propustnosti tím, že budete muset zvýšit velikost dávky.
+Načtení pomocí příkazu COPY poskytne nejvyšší propustnost s fondem SQL. Pokud nemůžete použít kopírování pro načtení a musí používat [rozhraní SqLBulkCopy API](/dotnet/api/system.data.sqlclient.sqlbulkcopy?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) nebo [BCP](/sql/tools/bcp-utility?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest), měli byste zvážit zvýšení propustnosti zvětšením velikosti dávky.
 
 > [!TIP]
 > Pro určení optimální kapacity velikosti dávky je velikost dávky mezi 100 až 1 milion řádků doporučeným směrným plánem.
@@ -142,7 +149,7 @@ create statistics [Speed] on [Customer_Speed] ([Speed]);
 create statistics [YearMeasured] on [Customer_Speed] ([YearMeasured]);
 ```
 
-## <a name="rotate-storage-keys"></a>Obměna klíčů úložiště
+## <a name="rotate-storage-keys-polybase"></a>Otočení klíčů úložiště (základ)
 
 Osvědčeným postupem zabezpečení je pravidelně měnit přístupový klíč k úložišti objektů blob. Ke svému účtu úložiště objektů Blob máte dva klíče úložiště, abyste je mohli střídat.
 
@@ -168,6 +175,6 @@ V příslušných externích zdrojích dat se nevyžadují žádné další změ
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o PolyBase a návrhu procesu ELT (extrakce, načítání a transformace) najdete v tématu [Návrh ELT pro službu SQL Data Warehouse](design-elt-data-loading.md).
-- Kurz načítání najdete v tématu [Použití PolyBase k načítání dat z úložiště objektů blob v Azure do služby Azure SQL Data Warehouse](load-data-from-azure-blob-storage-using-polybase.md).
+- Další informace o příkazu COPY nebo o základu při navrhování procesu extrakce, načítání a transformace (ELT) najdete v tématu [design ELT for SQL Data Warehouse](design-elt-data-loading.md).
+- Pro kurz načítání [použijte příkaz Copy k načtení dat z úložiště objektů BLOB v Azure do synapse SQL](load-data-from-azure-blob-storage-using-polybase.md).
 - Informace o monitorování datové zátěže najdete v tématu [Monitorování úlohy pomocí zobrazení dynamické správy](sql-data-warehouse-manage-monitor.md).

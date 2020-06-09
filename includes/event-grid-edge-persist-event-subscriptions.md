@@ -2,18 +2,18 @@
 title: zahrnout soubor
 description: zahrnout soubor
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: include
 ms.date: 01/16/2020
-ms.author: babanisa
+ms.author: femila
 ms.custom: include file
-ms.openlocfilehash: 42d1ebb23cf582c3dfbc375e4886ed449c21f493
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d4f4f1563c16e276eb20ce4d4599b7fd5fca683
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76844534"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84562237"
 ---
 >[!NOTE]
 > Pokud potřebujete zajistit, aby se události, které čekají na vyřízení, trvaly v případě restartování zařízení, budete muset povolit trvalost pro odběr událostí. Další informace o tom, jak nastavit trvalost, najdete v následujících článcích: [trvalé uložení stavu v systému Linux](../articles/event-grid/edge/persist-state-linux.md) nebo [trvalého stavu ve Windows](../articles/event-grid/edge/persist-state-windows.md).

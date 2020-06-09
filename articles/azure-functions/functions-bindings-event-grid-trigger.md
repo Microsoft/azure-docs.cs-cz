@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: a92e64311d8a4f5e87c5be3d00c1c23898db551d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: fasttrack-edit, tracking-python
+ms.openlocfilehash: af22d7a81d8a778c3df38f929bfbfb0a651cebc6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648354"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561840"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Aktivační událost Azure Event Grid pro Azure Functions
 
@@ -307,7 +307,7 @@ Python nepodporuje atributy.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* . Nejsou k dispozici žádné parametry konstruktoru nebo vlastnosti, které by bylo možné nastavit v `EventGridTrigger` atributu.
 
-|Function. JSON – vlastnost |Popis|
+|Function. JSON – vlastnost |Description|
 |---------|---------|
 | **textový** | Požadováno – musí být nastavené na `eventGridTrigger` . |
 | **direction** | Požadováno – musí být nastavené na `in` . |

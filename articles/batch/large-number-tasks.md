@@ -3,12 +3,13 @@ title: Odeslání velkého počtu úkolů
 description: Jak efektivně odeslat velmi velký počet úkolů v rámci jedné Azure Batch úlohy
 ms.topic: how-to
 ms.date: 08/24/2018
-ms.openlocfilehash: 46ab5e8879167a1808c51d4c4cd5c7071cb67cff
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.custom: tracking-python
+ms.openlocfilehash: 73d81624eea43e85b7fb2526d922a34446610d84
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778958"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553355"
 ---
 # <a name="submit-a-large-number-of-tasks-to-a-batch-job"></a>Odeslání velkého počtu úkolů do dávkové úlohy
 
@@ -53,7 +54,7 @@ Přidání velké kolekce úloh do úlohy může nějakou dobu trvat – napří
 
 Následující fragmenty kódu jazyka C# ukazují nastavení ke konfiguraci při přidávání velkého počtu úkolů pomocí rozhraní API pro dávku .NET.
 
-Chcete-li zvýšit propustnost úlohy, zvyšte hodnotu vlastnosti [Z MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet). Například:
+Chcete-li zvýšit propustnost úlohy, zvyšte hodnotu vlastnosti [Z MaxDegreeOfParallelism](/dotnet/api/microsoft.azure.batch.batchclientparalleloptions.maxdegreeofparallelism) [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient?view=azure-dotnet). Příklad:
 
 ```csharp
 BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
@@ -63,7 +64,7 @@ BatchClientParallelOptions parallelOptions = new BatchClientParallelOptions()
 ...
 ```
 Přidejte do úlohy kolekci úloh pomocí vhodného přetížení metody [AddTaskAsync](/dotnet/api/microsoft.azure.batch.cloudjob.addtaskasync?view=azure-dotnet) nebo [AddTask a ta](/dotnet/api/microsoft.azure.batch.cloudjob.addtask?view=azure-dotnet
-) . Například:
+) . Příklad:
 
 ```csharp
 // Add a list of tasks as a collection
@@ -134,7 +135,7 @@ client = batch.BatchExtensionsClient(
 ...
 ```
 
-Vytvořte kolekci úkolů, které chcete přidat do úlohy. Například:
+Vytvořte kolekci úkolů, které chcete přidat do úlohy. Příklad:
 
 
 ```python

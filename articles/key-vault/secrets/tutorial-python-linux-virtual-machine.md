@@ -9,13 +9,13 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 09/05/2018
 ms.author: mbaldwin
-ms.custom: mvc
-ms.openlocfilehash: df089f0338a177c08f4d9e88d55b501fd12f88f2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 6b3fb07322009134a75621a19cd013e2f967972a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81423314"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561621"
 ---
 # <a name="tutorial-use-a-linux-vm-and-a-python-app-to-store-secrets-in-azure-key-vault"></a>Kurz: použití virtuálního počítače se systémem Linux a aplikace Python k ukládání tajných kódů v Azure Key Vault
 
@@ -36,7 +36,7 @@ Než budete pokračovat, ujistěte se, že rozumíte [základním konceptům o K
 ## <a name="prerequisites"></a>Požadavky
 
 * [Git](https://git-scm.com/downloads).
-* Předplatné Azure. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+* Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 * [Azure CLI verze 2.0.4 nebo novější](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nebo Azure Cloud Shell.
 
 [!INCLUDE [Azure Cloud Shell](../../../includes/cloud-shell-try-it.md)]
@@ -100,7 +100,7 @@ az keyvault secret set --vault-name "<YourKeyVaultName>" --name "AppSecret" --va
 
 Vytvořte virtuální počítač pomocí `az vm create` příkazu.
 
-Následující příklad vytvoří virtuální počítač **myVM** a přidá uživatelský účet **azureuser**. `--generate-ssh-keys` Parametr automaticky vygeneruje klíč SSH a umístí ho do výchozího umístění klíče (**~/.ssh**). Pokud chcete místo toho vytvořit konkrétní sadu klíčů, použijte `--ssh-key-value` možnost.
+Následující příklad vytvoří virtuální počítač **myVM** a přidá uživatelský účet **azureuser**. `--generate-ssh-keys`Parametr automaticky vygeneruje klíč SSH a umístí ho do výchozího umístění klíče (**~/.ssh**). Pokud chcete místo toho vytvořit konkrétní sadu klíčů, použijte `--ssh-key-value` možnost.
 
 ```azurecli-interactive
 az vm create \
@@ -145,7 +145,7 @@ Výstup příkazu je následující.
 }
 ```
 
-Poznamenejte si `systemAssignedIdentity`. Použijete ho v dalším kroku.
+Poznamenejte si `systemAssignedIdentity` . Použijete ho v dalším kroku.
 
 ## <a name="give-the-vm-identity-permission-to-key-vault"></a>Udělte identitě virtuálního počítače oprávnění k Key Vault
 

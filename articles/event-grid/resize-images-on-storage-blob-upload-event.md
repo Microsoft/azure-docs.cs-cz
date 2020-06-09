@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 04/01/2020
 ms.author: spelluru
 ms.custom: mvc
-ms.openlocfilehash: 77b801837be80749ca73dd4ae5c526a7980e83e0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 92962c376e2b800a327f44c4cad5cd9fdd4cab8d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652714"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560518"
 ---
 # <a name="tutorial-automate-resizing-uploaded-images-using-event-grid"></a>Kurz: automatizace změny velikosti nahraných imagí pomocí Event Grid
 
@@ -37,7 +37,7 @@ Funkce změny velikosti se do existující aplikace pro nahrávání obrázků p
 
 ---
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
 > * Vytvoření účtu služby Azure Storage
@@ -75,14 +75,19 @@ Azure Functions vyžaduje obecný účet úložiště. Kromě účtu BLOB Storag
     ```azurecli-interactive
     resourceGroupName="myResourceGroup"
     ```
-2. Nastavte proměnnou pro název nového účtu úložiště, který Azure Functions vyžaduje.
+2. Nastavte proměnnou tak, aby obsahovala umístění pro prostředky, které se mají vytvořit. 
+
+    ```azurecli-interactive
+    location="eastus"
+    ```    
+3. Nastavte proměnnou pro název nového účtu úložiště, který Azure Functions vyžaduje.
     ```azurecli-interactive
     functionstorage="<name of the storage account to be used by the function>"
     ```
-3. Vytvořte účet úložiště pro funkci Azure Functions.
+4. Vytvořte účet úložiště pro funkci Azure Functions.
 
     ```azurecli-interactive
-    az storage account create --name $functionstorage --location southeastasia \
+    az storage account create --name $functionstorage --location $location \
     --resource-group $resourceGroupName --sku Standard_LRS --kind StorageV2
     ```
 
@@ -101,7 +106,7 @@ V následujícím příkazu zadejte vlastní jedinečný název aplikace Functio
 
     ```azurecli-interactive
     az functionapp create --name $functionapp --storage-account $functionstorage \
-      --resource-group $resourceGroupName --consumption-plan-location southeastasia \
+      --resource-group $resourceGroupName --consumption-plan-location $location \
       --functions-version 2
     ```
 
@@ -114,7 +119,6 @@ Tato funkce potřebuje přihlašovací údaje pro účet úložiště objektů b
 # <a name="net-v12-sdk"></a>[\.Sada SDK pro .NET V12](#tab/dotnet)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
 storageConnectionString=$(az storage account show-connection-string --resource-group $resourceGroupName \
   --name $blobStorageAccount --query connectionString --output tsv)
 
@@ -126,8 +130,6 @@ az functionapp config appsettings set --name $functionapp --resource-group $reso
 # <a name="nodejs-v10-sdk"></a>[V10 za účelem SDK pro Node. js](#tab/nodejsv10)
 
 ```azurecli-interactive
-blobStorageAccount="<name of the Blob storage account you created in the previous tutorial>"
-
 blobStorageAccountKey=$(az storage account keys list -g $resourceGroupName \
   -n $blobStorageAccount --query [0].value --output tsv)
 
@@ -211,6 +213,7 @@ Odběr událostí udává, které události vygenerované zprostředkovatelem ch
     | **Předplatné** | Vaše předplatné Azure | Ve výchozím nastavení je vybrané vaše aktuální předplatné Azure. |
     | **Skupina prostředků** | myResourceGroup | Vyberte **Použít existující** a zvolte skupinu prostředků, které jste už používali v tomto kurzu. |
     | **Prostředek** | Váš účet služby Blob Storage | Vyberte účet služby Blob Storage, který jste vytvořili. |
+    | **Název systémového tématu** | imagestoragesystopic | Zadejte název systémového tématu. Další informace o systémových tématech najdete v tématu [Přehled systémových témat](system-topics.md). |    
     | **Typy událostí** | Vytvoření objektu blob | Zrušte zaškrtnutí všech typů komě **Vytvoření objektu blob**. Do funkce se předají jenom události typu `Microsoft.Storage.BlobCreated`. |
     | **Typ koncového bodu** | automaticky generovaný | Předem definováno jako **funkce Azure Functions**. |
     | **Služba** | automaticky generovaný | Název funkce V tomto případě je to **Miniatura**. |
