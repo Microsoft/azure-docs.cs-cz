@@ -38,7 +38,7 @@ Když nakonfigurujete odkaz na image virtuálního počítače, zadáte vlastnos
 | Publisher |Canonical |
 | Nabídka |UbuntuServer |
 | SKU |18,04 – LTS |
-| Version |nejnovější |
+| Verze |nejnovější |
 
 > [!TIP]
 > Další informace o těchto vlastnostech a způsobu vypsání imagí na Marketplace najdete v tématu [navigace a výběr imagí virtuálních počítačů se systémem Linux v Azure pomocí rozhraní příkazového řádku nebo PowerShellu](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Všimněte si, že ne všechny image Marketplace jsou aktuálně kompatibilní se službou Batch. Další informace najdete v tématu [SKU agenta uzlu](#node-agent-sku).

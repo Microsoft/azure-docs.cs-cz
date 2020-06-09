@@ -107,7 +107,7 @@ V případě indexování na základě portálu (jak je popsáno v rychlém star
 V případě [paralelního indexování](search-howto-large-index.md)umístěte data do více kontejnerů nebo více virtuálních složek uvnitř stejného kontejneru. Pak vytvořte více datových zdrojů a párů indexerů. Všechny indexery můžou používat stejný dovednosti a zapisovat do stejného cílového vyhledávacího indexu, takže si vaše vyhledávací aplikace nemusí být vědomá tohoto dělení.
 Další informace najdete v tématu [indexování velkých datových sad](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 + [Rychlý Start: vytvoření kanálu pro rozšíření AI na portálu](cognitive-search-quickstart-blob.md)
 + [Kurz: Seznámení s rozhraními REST API pro obohacení AI](cognitive-search-tutorial-blob.md)
 + [Zadání přihlašovacích údajů ke zdroji dat](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)

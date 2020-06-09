@@ -108,7 +108,7 @@ Pomocí Průzkumníka souborů Windows udělte úplným oprávněním všem adre
 5. V okně příkazového řádku pro přidání nových uživatelů zadejte cílové uživatelské jméno, kterému chcete udělit oprávnění, do pole **Zadejte názvy objektů k výběru** a vyberte možnost **kontrolovat názvy** a vyhledejte úplný název UPN cílového uživatele.
 7.    Vyberte **OK**.
 8.    Na kartě **zabezpečení** vyberte všechna oprávnění, která chcete novému uživateli udělit.
-9.    Vyberte **Použít**.
+9.    Vyberte **Apply** (Použít).
 
 ### <a name="configure-ntfs-permissions-with-icacls"></a>Konfigurace oprávnění systému souborů NTFS pomocí icacls
 K udělení úplných oprávnění všem adresářům a souborům ve sdílené složce, včetně kořenového adresáře, použijte následující příkaz Windows. Nezapomeňte nahradit hodnoty zástupných symbolů v příkladu vlastními hodnotami.

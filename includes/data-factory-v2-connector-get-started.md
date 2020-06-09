@@ -17,7 +17,7 @@ ms.locfileid: "84343491"
 K použití aktivity kopírování s kanálem můžete použít jeden z následujících nástrojů nebo sady SDK. Pro podrobné pokyny vyberte odkaz.
 
 - [Nástroj pro kopírování dat](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
-- [Portál Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
+- [Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
 - [.NET SDK](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
 - [Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)
