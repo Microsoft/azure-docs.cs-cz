@@ -2,18 +2,18 @@
 title: Příjem událostí z Azure Event Grid do koncového bodu HTTP
 description: Popisuje, jak ověřit koncový bod HTTP a pak přijímat a deserializovat události z Azure Event Grid
 services: event-grid
-author: banisadr
+author: femila
 manager: darosa
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/01/2019
-ms.author: babanisa
-ms.openlocfilehash: 7c363fd4e55fdd6fe04a099ac833a256bbfd2eb2
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.author: femila
+ms.openlocfilehash: dd7535030ea4f6d6769630e463618faab62944a0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83116964"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558473"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Příjem událostí pro koncový bod HTTP
 

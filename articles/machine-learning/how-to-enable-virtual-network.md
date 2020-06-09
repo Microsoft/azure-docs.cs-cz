@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 05/11/2020
-ms.custom: contperfq4
-ms.openlocfilehash: 50897b09f35a90c13809805a81fddb1e82d72994
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: contperfq4, tracking-python
+ms.openlocfilehash: be78681ba01cf98f087331a5a9a6c7974f3b1122
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434317"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560253"
 ---
 # <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>Zabezpečení životního cyklu služby Machine Learning pomocí privátních virtuálních sítí
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -57,7 +57,7 @@ Můžete také [Povolit privátní propojení Azure](how-to-configure-private-li
 > [!TIP]
 > Můžete kombinovat virtuální síť a privátní propojení a chránit tak komunikaci mezi vaším pracovním prostorem a dalšími prostředky Azure. Některé kombinace ale vyžadují pracovní prostor Enterprise Edition. Následující tabulka vám pomůže pochopit, jaké scénáře vyžaduje Enterprise Edition:
 >
-> | Scénář | Enterprise</br>Edition | Základní</br>Edition |
+> | Scénář | Enterprise</br>Edition | Basic</br>Edition |
 > | ----- |:-----:|:-----:| 
 > | Žádná virtuální síť ani privátní odkaz | ✔ | ✔ |
 > | Pracovní prostor bez privátního odkazu Další prostředky (kromě Azure Container Registry) ve virtuální síti | ✔ | ✔ |
@@ -463,7 +463,7 @@ Informace o použití Azure Machine Learning s Azure Firewall najdete v tématu 
 
 1. Chcete-li najít název Azure Container Registry pro váš pracovní prostor, použijte jednu z následujících metod:
 
-    __portál Azure__
+    __Azure Portal__
 
     V části Přehled pracovního prostoru se hodnota __registru__ odkazuje na Azure Container Registry.
 

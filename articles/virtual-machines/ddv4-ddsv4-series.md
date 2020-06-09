@@ -8,12 +8,12 @@ ms.custom: mimckitt
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 691584f46059032ecd02a10964b819598d1b3b09
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7a5951d15806cd2969d61c52ef929472da023386
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484592"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488715"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Řada Ddv4 a Ddsv4
 
@@ -66,7 +66,7 @@ Migrace za provozu: podporováno
 
 Aktualizace pro zachování paměti: podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (mezipaměť v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální propustnost disku neuloženého v mezipaměti: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|---|
 | Standard_D2ds_v4 | 2 | 8 | 75 | 4 | 19000/120 (50) | 3000/48 | 2/1000 |
 | Standard_D4ds_v4 | 4 | 16 | 150 | 8 | 38500/242 (100) | 6400/96 | 2/2000 |

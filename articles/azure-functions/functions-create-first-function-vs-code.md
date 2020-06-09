@@ -3,14 +3,14 @@ title: Vytvoření první funkce v Azure pomocí Visual Studio Code
 description: Vytvořte a publikujte do Azure jednoduchou funkci aktivovanou protokolem HTTP pomocí rozšíření Azure Functions ve Visual Studio Code.
 ms.topic: quickstart
 ms.date: 01/10/2020
-ms.custom: mvc, devcenter, seo
+ms.custom: mvc, devcenter, seo, tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 64c2e813743a772692efcb1d966c8ab7b52cc66d
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.openlocfilehash: ebb402da5a647d20b669442c05c47a0f1c627471
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82628176"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559924"
 ---
 # <a name="quickstart-create-a-function-in-azure-using-visual-studio-code"></a>Rychlý Start: vytvoření funkce v Azure pomocí Visual Studio Code
 
@@ -101,48 +101,48 @@ V této části použijete Visual Studio Code k vytvoření místního projektu 
 1. Zadejte následující informace na následujících dotazech:
 
     ::: zone pivot="programming-language-csharp"
-    + **Vyberte jazyk pro projekt funkce**: zvolte `C#`.
+    + **Vyberte jazyk pro projekt funkce**: zvolte `C#` .
     ::: zone-end
     ::: zone pivot="programming-language-javascript"
-    + **Vyberte jazyk pro projekt funkce**: zvolte `JavaScript`.
+    + **Vyberte jazyk pro projekt funkce**: zvolte `JavaScript` .
     ::: zone-end
     ::: zone pivot="programming-language-typescript"
-    + **Vyberte jazyk pro projekt funkce**: zvolte `TypeScript`.
+    + **Vyberte jazyk pro projekt funkce**: zvolte `TypeScript` .
     ::: zone-end
     ::: zone pivot="programming-language-powershell"
-    + **Vyberte jazyk pro projekt funkce**: zvolte `PowerShell`.
+    + **Vyberte jazyk pro projekt funkce**: zvolte `PowerShell` .
     ::: zone-end
     ::: zone pivot="programming-language-python"
-    + **Vyberte jazyk pro projekt funkce**: zvolte `Python`.
+    + **Vyberte jazyk pro projekt funkce**: zvolte `Python` .
 
     + **Vyberte alias Pythonu pro vytvoření virtuálního prostředí**: Zvolte umístění překladače Pythonu. Pokud se umístění nezobrazuje, zadejte úplnou cestu k binárnímu souboru Pythonu.  
     ::: zone-end
 
     ::: zone pivot="programming-language-java"  
-    + **Vyberte jazyk pro projekt funkce**: zvolte `Java`.
+    + **Vyberte jazyk pro projekt funkce**: zvolte `Java` .
 
-    + **Zadejte ID skupiny**: vyberte `com.function`.
+    + **Zadejte ID skupiny**: vyberte `com.function` .
 
-    + **Zadejte ID artefaktu**: vyberte `myFunction`.
+    + **Zadejte ID artefaktu**: vyberte `myFunction` .
 
-    + **Zadejte verzi**: vyberte `1.0-SNAPSHOT`.
+    + **Zadejte verzi**: vyberte `1.0-SNAPSHOT` .
 
-    + **Zadejte název balíčku**: vyberte `com.function`.
+    + **Zadejte název balíčku**: vyberte `com.function` .
 
-    + **Zadejte název aplikace**: vyberte `myFunction-12345`.
+    + **Zadejte název aplikace**: vyberte `myFunction-12345` .
     ::: zone-end  
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **Vyberte šablonu pro funkci prvního projektu**: zvolte `HTTP trigger`.
+    + **Vyberte šablonu pro funkci prvního projektu**: zvolte `HTTP trigger` .
     
-    + Zadejte **název funkce**: typ `HttpExample`.
+    + Zadejte **název funkce**: typ `HttpExample` .
     ::: zone-end  
     ::: zone pivot="programming-language-csharp"
-    + Zadejte **obor názvů**: typ `My.Functions`. 
+    + Zadejte **obor názvů**: typ `My.Functions` . 
     ::: zone-end  
     ::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-typescript,programming-language-powershell,programming-language-python"
-    + **Úroveň autorizace**: vyberte `Anonymous`, který umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
+    + **Úroveň autorizace**: vyberte `Anonymous` , který umožňuje komukoli zavolat koncový bod funkce. Další informace o úrovni autorizace najdete v tématu [autorizační klíče](functions-bindings-http-webhook-trigger.md#authorization-keys).
     ::: zone-end  
-    + **Vyberte, jak se má projekt otevřít**: zvolte `Add to workspace`.
+    + **Vyberte, jak se má projekt otevřít**: zvolte `Add to workspace` .
 
 1. Pomocí těchto informací Visual Studio Code generuje Azure Functions projekt pomocí triggeru protokolu HTTP. Můžete zobrazit soubory místních projektů v Průzkumníkovi. Další informace o souborech, které jsou vytvořeny, najdete v tématu [vygenerované soubory projektu](functions-develop-vs-code.md#generated-project-files). 
 
@@ -170,7 +170,7 @@ Po ověření, že se funkce na místním počítači spustí správně, je čas
 
     ![Zkopírujte adresu URL funkce pro nový Trigger HTTP.](./media/functions-create-first-function-vs-code/function-copy-endpoint-url.png)
 
-1. Vložte tuto adresu URL pro požadavek HTTP do adresního řádku prohlížeče, přidejte řetězec `name` dotazu `?name=Functions` na konec této adresy URL a potom spusťte požadavek. Adresa URL, která volá funkci aktivovanou protokolem HTTP, by měla být v následujícím formátu:
+1. Vložte tuto adresu URL pro požadavek HTTP do adresního řádku prohlížeče, přidejte `name` řetězec dotazu `?name=Functions` na konec této adresy URL a potom spusťte požadavek. Adresa URL, která volá funkci aktivovanou protokolem HTTP, by měla být v následujícím formátu:
 
         http://<functionappname>.azurewebsites.net/api/httpexample?name=Functions 
         

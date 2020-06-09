@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
-ms.openlocfilehash: 2f102a2a335d61326ccb02a898f425e7924f7fdb
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: d8eb4abb600e1164e6de00d3abca190d019be011
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434035"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560604"
 ---
 # <a name="azure-functions-http-trigger"></a>Aktivační událost Azure Functions HTTP
 
@@ -481,7 +482,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 |Function. JSON – vlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-| **type** | Není k dispozici| Požadováno – musí být nastavené na `httpTrigger` . |
+| **textový** | Není k dispozici| Požadováno – musí být nastavené na `httpTrigger` . |
 | **direction** | Není k dispozici| Požadováno – musí být nastavené na `in` . |
 | **Jméno** | Není k dispozici| Required – název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. |
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Určuje, které klíče (pokud existují) musí být k žádosti přítomny, aby bylo možné funkci vyvolat. Úroveň autorizace může být jedna z následujících hodnot: <ul><li><code>anonymous</code>&mdash;Není vyžadován žádný klíč rozhraní API.</li><li><code>function</code>&mdash;Klíč rozhraní API specifický pro funkci je povinný. Toto je výchozí hodnota, pokud není zadána žádná.</li><li><code>admin</code>&mdash;Hlavní klíč je povinný.</li></ul> Další informace najdete v části o [autorizačních klíčích](#authorization-keys). |

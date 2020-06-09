@@ -4,27 +4,24 @@ description: Naučte se vytvářet a používat hybridní připojení v Azure Ap
 author: ccompy
 ms.assetid: 66774bde-13f5-45d0-9a70-4e9536a4f619
 ms.topic: article
-ms.date: 06/06/2019
+ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: ec842530f3cae26b869a649617f279d204b98fcc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 07fc4fbf9305cb2688bae6356f44b80bb6a6c115
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80047776"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488150"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Azure App Service Hybrid Connections
 
 Hybrid Connections je služba v Azure a funkce v Azure App Service. Jako služba má využití a možnosti nad rámec těch, které se používají v App Service. Další informace o Hybrid Connections a jejich používání mimo App Service najdete v tématu [Azure Relay Hybrid Connections][HCService].
 
-V rámci App Service lze Hybrid Connections použít pro přístup k prostředkům aplikace v jiných sítích. Poskytuje přístup z vaší aplikace do koncového bodu aplikace. Nepovoluje přístup k vaší aplikaci alternativní možností. Jak se používá v App Service, každé hybridní připojení se koreluje s jedinou kombinací hostitele TCP a portu. To znamená, že koncový bod hybridního připojení může být v jakémkoli operačním systému a libovolné aplikaci, za předpokladu, že přistupujete k portu naslouchání TCP. Funkce Hybrid Connections neví ani nezáleží na tom, jaký je protokol aplikace nebo k čemu přistupujete. Poskytuje jenom přístup k síti.  
-
+V rámci App Service lze Hybrid Connections použít pro přístup k prostředkům aplikací v libovolné síti, která může provádět odchozí volání do Azure přes port 443. Hybrid Connections poskytuje přístup z vaší aplikace do koncového bodu TCP a nepovoluje pro přístup k aplikaci nový způsob přístupu. Jak se používá v App Service, každé hybridní připojení se koreluje s jedinou kombinací hostitele TCP a portu. Díky tomu budou mít vaše aplikace přístup k prostředkům v jakémkoli operačním systému, pokud je to koncový bod TCP. Funkce Hybrid Connections neví ani nezáleží na tom, jaký je protokol aplikace nebo k čemu přistupujete. Jednoduše poskytuje přístup k síti.  
 
 ## <a name="how-it-works"></a>Jak to funguje ##
-Funkce Hybrid Connections se skládá ze dvou odchozích volání do Azure Service Bus Relay. Existuje připojení z knihovny na hostiteli, kde je aplikace spuštěná v App Service. K dispozici je také připojení z Správce hybridního připojení (HCM) k Service Bus Relay. HCM je předávací služba, kterou nasadíte v rámci sítě hostující prostředek, ke kterému se pokoušíte získat přístup. 
-
-Přes dvě připojená připojení má vaše aplikace tunel TCP na pevný hostitel: kombinace portů na druhé straně HCM. Připojení používá TLS 1,2 pro zabezpečení a klíče sdíleného přístupového podpisu (SAS) pro ověřování a autorizaci.    
+Hybrid Connections vyžaduje, aby byl nanasazený přenosový agent, kde může dosáhnout i pro požadovaný koncový bod i pro Azure. Přenosový agent, Správce hybridního připojení (HCM), volá Azure Relay přes port 443. Z webu webové aplikace se App Service infrastruktura také připojuje k Azure Relay jménem vaší aplikace. Přes připojená připojení může aplikace získat přístup k požadovanému koncovému bodu. Připojení používá TLS 1,2 pro zabezpečení a klíče sdíleného přístupového podpisu (SAS) pro ověřování a autorizaci.    
 
 ![Diagram toku vysoké úrovně hybridního připojení][1]
 
@@ -40,11 +37,12 @@ K dispozici je několik výhod Hybrid Connections možností, včetně:
 
 - Aplikace můžou bezpečně přistupovat k místním systémům a službám.
 - Tato funkce nevyžaduje koncový bod přístupný z Internetu.
-- Nastavení je rychlé a snadné. 
+- Nastavení je rychlé a snadné. Nevyžadují se žádné brány.
 - Každé hybridní připojení se shoduje s jedním hostitelem: kombinací portů, které jsou užitečné pro zabezpečení.
 - Obvykle nevyžaduje otvory brány firewall. Připojení jsou všechna odchozí přes standardní webové porty.
 - Vzhledem k tomu, že je tato funkce na úrovni sítě, je nezávislá k jazyku, který používá vaše aplikace, a technologii, kterou koncový bod používá.
 - Dá se použít k poskytnutí přístupu v několika sítích z jedné aplikace. 
+- Podporuje se v GA pro aplikace pro Windows a je ve verzi Preview pro aplikace pro Linux.
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>Věci, které nemůžete dělat s Hybrid Connections ###
 
@@ -54,14 +52,11 @@ Mezi věci, které nemůžete Hybrid Connections, patří:
 - Použijte protokol UDP.
 - Přístup ke službám založeným na TCP, které používají dynamické porty, jako je pasivní režim FTP nebo rozšířený pasivní režim.
 - Podporuje protokol LDAP, protože může vyžadovat protokol UDP.
-- Podporuje službu Active Directory, protože se nemůžete připojit k doméně App Service pracovního procesu.
-
-### <a name="prerequisites"></a>Požadavky ###
- - Služba Windows App Service je povinná. Je k dispozici pouze v systému Windows.  
+- Podporuje službu Active Directory, protože se nemůžete připojit k doméně App Service pracovního procesu. 
 
 ## <a name="add-and-create-hybrid-connections-in-your-app"></a>Přidání a vytvoření Hybrid Connections v aplikaci ##
 
-Pokud chcete vytvořit hybridní připojení, otevřete [Azure Portal][portal] a vyberte svou aplikaci. Vyberte **sítě** > **Konfigurace koncových bodů hybridního připojení**. Tady vidíte Hybrid Connections, které jsou pro vaši aplikaci nakonfigurované.  
+Pokud chcete vytvořit hybridní připojení, otevřete [Azure Portal][portal] a vyberte svou aplikaci. Vyberte **sítě**  >  **Konfigurace koncových bodů hybridního připojení**. Tady vidíte Hybrid Connections, které jsou pro vaši aplikaci nakonfigurované.  
 
 ![Snímek obrazovky se seznamem hybridních připojení][2]
 
@@ -99,10 +94,10 @@ App Service Hybrid Connections jsou k dispozici pouze v jednotkách Basic, Stand
 
 | Cenový tarif | Počet Hybrid Connections použitelný v plánu |
 |----|----|
-| Základní | 5 |
-| Standard | 25 |
-| Premium | 200 |
-| Izolovaný | 200 |
+| Basic | 5 podle plánu |
+| Standard | 25 na plán |
+| PremiumV2 | 200 na aplikaci |
+| Izolovaný | 200 na aplikaci |
 
 Uživatelské rozhraní App Serviceho plánu ukazuje, kolik Hybrid Connections se používá a co aplikace.  
 
@@ -118,7 +113,7 @@ Kromě toho, že App Service požadavek na SKLADOVOU položku plánu, je k použ
 
 ## <a name="hybrid-connection-manager"></a>Správce hybridního připojení ##
 
-Funkce Hybrid Connections vyžaduje přenosového agenta v síti, který je hostitelem koncového bodu hybridního připojení. Agent Relay se nazývá Správce hybridního připojení (HCM). Pokud chcete stáhnout HCM, z vaší aplikace v [Azure Portal][portal]vyberte **sítě** > **Konfigurace koncových bodů hybridního připojení**.  
+Funkce Hybrid Connections vyžaduje přenosového agenta v síti, který je hostitelem koncového bodu hybridního připojení. Agent Relay se nazývá Správce hybridního připojení (HCM). Pokud chcete stáhnout HCM, z vaší aplikace v [Azure Portal][portal]vyberte **sítě**  >  **Konfigurace koncových bodů hybridního připojení**.  
 
 Tento nástroj běží na Windows Serveru 2012 a novějším. HCM se spouští jako služba a připojuje odchozí Azure Relay na portu 443.  
 
@@ -171,54 +166,34 @@ Existují pravidelné aktualizace Správce hybridního připojení, které řeš
 
 ## <a name="adding-a-hybrid-connection-to-your-app-programmatically"></a>Programové přidání hybridního připojení do aplikace ##
 
-Rozhraní API zaznamenaná níže se dají použít přímo ke správě Hybrid Connections připojených k vašim aplikacím. 
+Pro Hybrid Connections existuje podpora rozhraní příkazového řádku Azure. Zadané příkazy fungují jak na úrovni plánu aplikace, tak na App Service.  Příkazy na úrovni aplikace jsou:
 
-    /subscriptions/[subscription name]/resourceGroups/[resource group name]/providers/Microsoft.Web/sites/[app name]/hybridConnectionNamespaces/[relay namespace name]/relays/[hybrid connection name]?api-version=2016-08-01
+    az webapp hybrid-connection
 
-Objekt JSON, který je přidružený k hybridnímu připojení, vypadá takto:
+    Group
+        az webapp hybrid-connection : Methods that list, add and remove hybrid-connections from webapps.
+            This command group is in preview. It may be changed/removed in a future release.
+    Commands:
+        add    : Add a hybrid-connection to a webapp.
+        list   : List the hybrid-connections on a webapp.
+        remove : Remove a hybrid-connection from a webapp.
 
-    {
-      "name": "[hybrid connection name]",
-      "type": "Microsoft.Relay/Namespaces/HybridConnections",
-      "location": "[location]",
-      "properties": {
-        "serviceBusNamespace": "[namespace name]",
-        "relayName": "[hybrid connection name]",
-        "relayArmUri": "/subscriptions/[subscription id]/resourceGroups/[resource group name]/providers/Microsoft.Relay/namespaces/[namespace name]/hybridconnections/[hybrid connection name]",
-        "hostName": "[endpoint host name]",
-        "port": [port],
-        "sendKeyName": "defaultSender",
-        "sendKeyValue": "[send key]"
-      }
-    }
+Příkazy plánování App Service umožňují nastavit, který klíč dané hybridní připojení bude používat. Existují dva klíče nastavené pro každé hybridní připojení, primární a sekundární. Pomocí níže uvedených příkazů se můžete rozhodnout použít primární nebo sekundární klíč. To vám umožní přepínat klíče pro, kdy chcete pravidelně znovu vygenerovat klíče. 
 
-Jedním ze způsobů, jak tyto informace použít, je armclient, který můžete získat z projektu GitHub [armclient][armclient] . Tady je příklad připojení již existujícího hybridního připojení k vaší aplikaci. Vytvořte soubor JSON podle výše uvedeného schématu, jako je:
+    az appservice hybrid-connection --help
 
-    {
-      "name": "relay-demo-hc",
-      "type": "Microsoft.Relay/Namespaces/HybridConnections",
-      "location": "North Central US",
-      "properties": {
-        "serviceBusNamespace": "demo-relay",
-        "relayName": "relay-demo-hc",
-        "relayArmUri": "/subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myrelay-rg/providers/Microsoft.Relay/namespaces/demo-relay/hybridconnections/relay-demo-hc",
-        "hostName": "my-wkstn.home",
-        "port": 1433,
-        "sendKeyName": "defaultSender",
-        "sendKeyValue": "Th9is3is8a82lot93of3774stu887ff122235="
-      }
-    }
-
-Pokud chcete používat toto rozhraní API, potřebujete poslat klíč a ID prostředku Relay. Pokud jste uložili informace s názvem souboru hctest. JSON, vydejte tento příkaz k připojení hybridního připojení k vaší aplikaci: 
-
-    armclient login
-    armclient put /subscriptions/ebcidic-asci-anna-nath-rak1111111/resourceGroups/myapp-rg/providers/Microsoft.Web/sites/myhcdemoapp/hybridConnectionNamespaces/demo-relay/relays/relay-demo-hc?api-version=2016-08-01 @hctest.json
+    Group
+        az appservice hybrid-connection : A method that sets the key a hybrid-connection uses.
+            This command group is in preview. It may be changed/removed in a future release.
+    Commands:
+        set-key : Set the key that all apps in an appservice plan use to connect to the hybrid-
+                  connections in that appservice plan.
 
 ## <a name="secure-your-hybrid-connections"></a>Zabezpečení Hybrid Connections ##
 
 Existující hybridní připojení můžete přidat k ostatním App Service Web Apps všem uživatelům, kteří mají dostatečná oprávnění pro základní Azure Service Bus Relay. To znamená, že pokud musíte zabránit ostatním v používání stejného hybridního připojení (například pokud je cílový prostředek služba, která nemá k dispozici žádné další bezpečnostní opatření, aby se zabránilo neoprávněnému přístupu), musíte uzamknout přístup k Azure Service Bus Relay.
 
-Kdokoli, `Reader` kdo má přístup k Relay _, uvidí hybridní_ připojení při pokusu o jeho přidání do webové aplikace na webu Azure Portal, ale nebude ho moct _Přidat_ , protože nemá oprávnění k načtení připojovacího řetězce, který se použije k navázání spojení přenosu. Aby bylo možné úspěšně přidat hybridní připojení, musí mít `listKeys` oprávnění (`Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action`). `Contributor` Role nebo jakákoli jiná role, která zahrnuje toto oprávnění pro předávání, umožní uživatelům používat hybridní připojení a přidat ho do vlastních Web Apps.
+Kdokoli, kdo má `Reader` přístup k Relay, uvidí hybridní _see_ připojení při pokusu o jeho přidání do webové aplikace v Azure Portal, ale nebude ho moct _Přidat_ , protože nemá oprávnění k načtení připojovacího řetězce, který se používá k navázání připojení přenosu. Aby bylo možné úspěšně přidat hybridní připojení, musí mít `listKeys` oprávnění ( `Microsoft.Relay/namespaces/hybridConnections/authorizationRules/listKeys/action` ). `Contributor`Role nebo jakákoli jiná role, která zahrnuje toto oprávnění pro předávání, umožní uživatelům používat hybridní připojení a přidat ho do vlastních Web Apps.
 
 ## <a name="troubleshooting"></a>Řešení potíží ##
 
@@ -229,12 +204,6 @@ Primárním důvodem, proč se klienti nemohou připojit ke svému koncovému bo
 V App Service lze nástroj příkazového řádku **tcpping** vyvolat z konzoly Advanced Tools (Kudu). Tento nástroj vám může sdělit, jestli máte přístup k koncovému bodu TCP, ale nezjistí, jestli máte přístup k koncovému bodu hybridního připojení. Když použijete nástroj v konzole nástroje na koncový bod hybridního připojení, potvrzujete jenom to, že používá kombinaci hostitel: port.  
 
 Pokud pro koncový bod máte klienta příkazového řádku, můžete otestovat připojení z konzoly aplikace. Můžete například testovat přístup k koncovým bodům webového serveru pomocí oblé.
-
-## <a name="biztalk-hybrid-connections"></a>BizTalk Hybrid Connections ##
-
-Úvodní forma této funkce byla volána jako BizTalk Hybrid Connections. Tato funkce skončila dne 31. května 2018 a ukončila operace. Hybridní připojení BizTalk se odebrala ze všech aplikací a nejsou přístupná prostřednictvím portálu nebo rozhraní API. Pokud máte pořád tato starší připojení nakonfigurovaná v Správce hybridního připojení, zobrazí se stav zastaveno a v dolní části se zobrazí příkaz Konec životnosti.
-
-![BizTalk Hybrid Connections v HCM][12]
 
 
 <!--Image references-->

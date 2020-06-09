@@ -2,7 +2,6 @@
 title: Kopírování dat z MongoDB pomocí starší verze
 description: Naučte se, jak kopírovat data z Mongo DB do podporovaných úložišť dat jímky pomocí aktivity kopírování v kanálu Azure Data Factory.
 services: data-factory
-documentationcenter: ''
 author: linda33wj
 ms.author: jingwang
 manager: shwang
@@ -12,14 +11,14 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 08/12/2019
-ms.openlocfilehash: 803e34a93e8019cfc2577bfaab3ba13c409c6b01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ce1419c7dbb2cdecfd653995707fd1ece7798557
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418163"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558189"
 ---
-# <a name="copy-data-from-mongodb-using-azure-data-factory"></a>Kopírování dat z MongoDB pomocí Azure Data Factory
+# <a name="copy-data-from-mongodb-using-azure-data-factory-legacy"></a>Kopírování dat z MongoDB pomocí Azure Data Factory (starší verze)
 
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
 > * [Verze 1](v1/data-factory-on-premises-mongodb-connector.md)
@@ -56,9 +55,9 @@ Následující části obsahují podrobné informace o vlastnostech, které slou
 
 Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type |Vlastnost Type musí být nastavená na: **MongoDB** . |Ano |
+| typ |Vlastnost Type musí být nastavená na: **MongoDB** . |Ano |
 | server |IP adresa nebo název hostitele serveru MongoDB |Ano |
 | port |Port TCP, který server MongoDB používá k naslouchání klientským připojením. |Ne (výchozí hodnota je 27017) |
 | Databáze |Název databáze MongoDB, ke které chcete získat přístup. |Ano |
@@ -99,9 +98,9 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, najdete v tématu [datové sady a propojené služby](concepts-datasets-linked-services.md). Pro datovou sadu MongoDB jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **MongoDbCollection** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **MongoDbCollection** . | Ano |
 | collectionName |Název kolekce v databázi MongoDB |Ano |
 
 **Případě**
@@ -130,9 +129,9 @@ Pro propojenou službu MongoDB jsou podporovány následující vlastnosti:
 
 V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MongoDbSource** . | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MongoDbSource** . | Ano |
 | query |Pro čtení dat použijte vlastní dotaz SQL-92. Příklad: SELECT * FROM MyTable. |Ne (Pokud je zadaná položka "CollectionName" v sadě dat.) |
 
 **Případě**
@@ -180,7 +179,7 @@ Při kopírování dat z MongoDB se v datových typech MongoDB používají nás
 
 | Datový typ MongoDB | Typ dat interim Data Factory |
 |:--- |:--- |
-| binární |Byte [] |
+| Binární |Byte [] |
 | Logická hodnota |Logická hodnota |
 | Datum |DateTime |
 | NumberDouble |Double |
@@ -209,14 +208,14 @@ Virtuální tabulky odkazují na data v reálné tabulce a umožňují tak ovlad
 
 Například tady je tabulka MongoDB, která má jeden sloupec s polem objektů v každé buňce – faktury a jeden sloupec s polem skalárních typů – hodnocení.
 
-| _id | Jméno zákazníka | Faktury | Úroveň služby | Ratings |
+| _id | Název zákazníka | Faktury | Úroveň služby | Ratings |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", Item: "informační zpráva", Cena: "456", sleva: "0,2"}, {invoice_id: "124", položka: "sušárna", Cena: "1235", sleva: "0,2"}] |Silver |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135"; Item: "nákupem ledničky"; Price: "12543"; Discount: "0,0"}] |Gold |[1, 2] |
 
 Ovladač by vygeneroval několik virtuálních tabulek, které reprezentují tuto jedinou tabulku. První virtuální tabulka je základní tabulka s názvem "priklad Table", která je znázorněna v příkladu. Základní tabulka obsahuje všechna data původní tabulky, ale data z těchto polí byla vynechána a jsou rozbalena ve virtuálních tabulkách.
 
-| _id | Jméno zákazníka | Úroveň služby |
+| _id | Název zákazníka | Úroveň služby |
 | --- | --- | --- |
 | 1111 |ABC |Silver |
 | 2222 |XYZ |Gold |

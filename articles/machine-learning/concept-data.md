@@ -10,12 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 04/24/2020
-ms.openlocfilehash: e41d00a31a0065e2923259cbb0bb36986cbb2ec8
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.custom: tracking-python
+ms.openlocfilehash: 15cf4aa6adda26991e76ec8a5e7378766fe2a21f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82995071"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84552646"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Zabezpečení přístupu k datům v Azure Machine Learning
 

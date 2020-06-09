@@ -7,16 +7,16 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/12/2019
-ms.openlocfilehash: c0a108565a6a0f62c6252113f984e8b10967c5db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4472909b731af5067b4d38c2a04a2d10a4039242
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75461187"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559993"
 ---
 # <a name="configuring-event-ordering-policies-for-azure-stream-analytics"></a>Konfigurace zásad řazení událostí pro Azure Stream Analytics
 
-Tento článek popisuje, jak nastavit a použít zpožděné a neuspořádané zásady událostí v Azure Stream Analytics. Tyto zásady se použijí jenom v případě, že v dotazu použijete klauzuli [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) .
+Tento článek popisuje, jak nastavit a použít zpožděné a neuspořádané zásady událostí v Azure Stream Analytics. Tyto zásady se použijí jenom v případě, že použijete klauzuli [timestamp by](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics) v dotazu a použijete ji jenom pro zdroje vstupu v cloudu.
 
 ## <a name="event-time-and-arrival-time"></a>Čas události a čas přijetí
 

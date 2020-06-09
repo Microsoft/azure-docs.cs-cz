@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 03/19/2020
-ms.openlocfilehash: c232ab06d2b3a28dad7ae98a8f22f457778fd3e6
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: b138d93b400c16837c250ede1e264b54a851327c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83874074"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488745"
 ---
 # <a name="integrate-azure-stream-analytics-with-azure-machine-learning-preview"></a>Integrace Azure Stream Analytics s Azure Machine Learning (Preview)
 
@@ -24,7 +24,7 @@ Před přidáním modelu Machine Learning jako funkce do Stream Analytics úlohy
 
 1. K [nasazení modelu jako webové služby](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-and-where)použijte Azure Machine Learning.
 
-2. Váš skript bodování by měl mít [ukázkové vstupy a výstupy](../machine-learning/how-to-deploy-and-where.md#example-entry-script) , které Azure Machine Learning používá ke generování specifikace schématu. Stream Analytics používá schéma pro pochopení signatury funkce webové služby.
+2. Váš skript bodování by měl mít [ukázkové vstupy a výstupy](../machine-learning/how-to-deploy-and-where.md#example-entry-script) , které Azure Machine Learning používá ke generování specifikace schématu. Stream Analytics používá schéma pro pochopení signatury funkce webové služby. Tuto [ukázkovou definici Swagger](https://github.com/Azure/azure-stream-analytics/blob/master/Samples/AzureML/swagger-example.json) můžete použít jako referenci, abyste měli jistotu, že je správně nastavená.
 
 3. Ujistěte se, že webová služba přijímá a vrací Serializovaná data JSON.
 

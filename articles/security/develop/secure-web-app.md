@@ -16,13 +16,13 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/23/2019
 ms.author: terrylan
-ms.custom: has-adal-ref
-ms.openlocfilehash: 690cb37df4a5d195bfce6ee792f7565a6f7f1768
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 857303009b31945b0fe4f5555cb7e545cd16719d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612771"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558877"
 ---
 # <a name="develop-a-secure-web-app"></a>Vývoj zabezpečené webové aplikace
 
@@ -105,7 +105,7 @@ Tato aplikace se používá:
 - Rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) pro nasazení
 - [Docker Hub](https://hub.docker.com/) jako registr kontejneru.
 
-## <a name="security-considerations"></a>Aspekty zabezpečení
+## <a name="security-considerations"></a>Důležité informace o zabezpečení
 
 ### <a name="network"></a>Síť
 
@@ -177,11 +177,11 @@ Spusťte skripty nasazení a nastavte prostředí a předplatné:
 
 Prohlížeč se otevře, přihlaste se pomocí svých přihlašovacích údajů. Po přihlášení můžete začít nasazovat prostředky z příkazového řádku.
 
-Skripty `deploy-powershell.ps1` nasazení a `deploy-bash.sh` obsahují kód, který nasadí celou aplikaci.
+Skripty nasazení `deploy-powershell.ps1` a `deploy-bash.sh` obsahují kód, který nasadí celou aplikaci.
 Nasazení řešení:
 
 1. Pokud jste v prostředí PowerShell, spusťte `deploy-powershell.ps1` soubor zadáním `./deploy-powershell.ps1 REGION RESOURCE_GROUP_NAME` nahrazení oblasti a názvu skupiny prostředků vhodnými oblastmi Azure a názvem pro skupinu prostředků.
-2. Pokud jste v systému Linux spustili `deploy-bash.sh` soubor zadáním `/deploy-bash.sh REGION RESOURCE_GROUP_NAME`, bude pravděpodobně nutné nastavit spustitelný soubor souboru zadáním`chmod +x deploy-bash.sh`
+2. Pokud jste v systému Linux spustili soubor zadáním `deploy-bash.sh` `/deploy-bash.sh REGION RESOURCE_GROUP_NAME` , bude pravděpodobně nutné nastavit spustitelný soubor souboru zadáním`chmod +x deploy-bash.sh`
 
 Následující příklady prezentují fragmenty klíčových komponent. Můžete nasadit příklady jednotlivě nebo se zbytkem součástí spuštěním souborů nasazení.
 
@@ -311,7 +311,7 @@ Následující kód závisí na tajných klíčích PGUSERNAME a PGPASSWORD ulo�
 Po nasazení databáze je třeba uložit své přihlašovací údaje a připojovací řetězec do Azure Key Vault.
 Ve složce Scripts je `functions.sql` soubor, který obsahuje kód pl/PGSQL, který při spuštění vytvoří uložené funkce. Po spuštění tohoto souboru se parameterizes vstupy a omezí se vkládání SQL.
 
-PostgreSQL je součástí balíčku s názvem `psql` , který se používá pro připojení k databázi nástroje. Aby bylo `functions.sql`možné spustit, musíte se z místního počítače připojit k instanci Azure Database for PostgreSQL a spustit ji. Instalace nástroje psql je součástí výchozí instalace pro PostgreSQL v každém operačním systému.
+PostgreSQL je součástí balíčku s názvem `psql` , který se používá pro připojení k databázi nástroje. Aby bylo možné spustit, musíte se `functions.sql` z místního počítače připojit k instanci Azure Database for PostgreSQL a spustit ji. Instalace nástroje psql je součástí výchozí instalace pro PostgreSQL v každém operačním systému.
 Další informace najdete v [dokumentaci k psql](https://www.postgresql.org/docs/9.3/app-psql.html).
 
 Azure Cloud Shell také obsahuje `psql` nástroj. Cloud Shell můžete použít přímo z Azure Portal tak, že vyberete ikonu Cloud Shell.
@@ -437,7 +437,7 @@ USER appuser
 ENTRYPOINT ["/usr/local/bin/init.sh"]
 ```
 
-Souboru Dockerfile výše se používá k sestavení kontejneru hostovaného na Azure Container Registry `mcr.microsoft.com/samples/basic-linux-app`.
+Souboru Dockerfile výše se používá k sestavení kontejneru hostovaného na Azure Container Registry `mcr.microsoft.com/samples/basic-linux-app` .
 
 Následující kód:
 
@@ -696,7 +696,7 @@ Instance App Service lze integrovat s virtuálními sítěmi. Tato integrace umo
 
 1. Na další stránce vyberte **Přidat virtuální síť (Preview)**.
 
-1. V další nabídce vyberte virtuální síť vytvořenou v nasazení, které začíná na `hello-vnet`. Můžete buď vytvořit novou podsíť, nebo vybrat některou z existujících.
+1. V další nabídce vyberte virtuální síť vytvořenou v nasazení, které začíná na `hello-vnet` . Můžete buď vytvořit novou podsíť, nebo vybrat některou z existujících.
    V takovém případě vytvořte novou podsíť. Nastavte **Rozsah adres** na **10.0.3.0/24** a pojmenujte podsíť **AppDomain App-Subnet**.
 
    ![Konfigurace App Service virtuální sítě](./media/secure-web-app/app-vnet-config.png)
@@ -723,7 +723,7 @@ Teď, když jste povolili integraci virtuální sítě, můžete do naší aplik
 
    *Konfigurace NSG*
 
-4. V odchozích pravidlech pro bránu NSG přidejte pravidlo, které umožňuje odchozí připojení k instanci App Service vytvořením pravidla, které cílí na tag `AppService`služby:
+4. V odchozích pravidlech pro bránu NSG přidejte pravidlo, které umožňuje odchozí připojení k instanci App Service vytvořením pravidla, které cílí na tag služby `AppService` :
 
    ![Přidat odchozí pravidla pro NSG](./media/secure-web-app/nsg-outbound-allowappserviceout.png)
 
@@ -754,7 +754,7 @@ Teď, když jste povolili integraci virtuální sítě, můžete do naší aplik
 Chcete-li omezit plochu pro útok, upravte nastavení App Service sítě tak, aby umožňovalo přístup k aplikaci pouze bráně aplikace.
 Provedete to tak, že na kartě App Service síť vyberete kartu **omezení IP adres** a vytvoříte pravidlo Povolit, které umožňuje, aby se k této službě mohl přímo přistupovat jenom IP adresa služby Application Gateway.
 
-IP adresu brány můžete načíst ze své stránky s přehledem. Na kartě **IP adresa CIDR** zadejte IP adresu v tomto formátu: `<GATEWAY_IP_ADDRESS>/32`.
+IP adresu brány můžete načíst ze své stránky s přehledem. Na kartě **IP adresa CIDR** zadejte IP adresu v tomto formátu: `<GATEWAY_IP_ADDRESS>/32` .
 
 ![Povolí jenom bránu.](./media/secure-web-app/app-allow-gw-only.png)
 
@@ -783,16 +783,16 @@ V Azure Portal nakonfigurujte aplikaci tak, aby používala požadované přihla
    *Konfigurace registrace aplikace v Azure AD*
 
 4. Zobrazí se obrazovka, která zobrazuje registrovanou aplikaci a její informace. Tyto informace je nutné přidat do instance Azure Key Vault.
-   1. Zkopírujte ID aplikace (klienta) a uložte ho v Key Vault jako `CLIENTID`.
-   2. Zkopírujte identifikátor URI přesměrování, který jste zadali v předchozím kroku, a uložte ho `REDIRECTURI`jako.
-   3. Zkopírujte název výchozího adresáře služby Azure AD s *názvem*format. microsoftonline.com a uložte ho do Key Vault jako `TENANT`.
-   4. Na kartě **certifikáty & tajné klíče** aplikace Azure AD, kterou jste vytvořili dříve, vyberte **nový tajný klíč klienta**, jak je znázorněno na následujícím snímku obrazovky. Nastavte datum vypršení platnosti a potom zkopírujte vygenerovanou hodnotu a uložte ji v Key Vault jako `CLIENTSECRET`.
+   1. Zkopírujte ID aplikace (klienta) a uložte ho v Key Vault jako `CLIENTID` .
+   2. Zkopírujte identifikátor URI přesměrování, který jste zadali v předchozím kroku, a uložte ho jako `REDIRECTURI` .
+   3. Zkopírujte název výchozího adresáře služby Azure AD s *názvem*format. microsoftonline.com a uložte ho do Key Vault jako `TENANT` .
+   4. Na kartě **certifikáty & tajné klíče** aplikace Azure AD, kterou jste vytvořili dříve, vyberte **nový tajný klíč klienta**, jak je znázorněno na následujícím snímku obrazovky. Nastavte datum vypršení platnosti a potom zkopírujte vygenerovanou hodnotu a uložte ji v Key Vault jako `CLIENTSECRET` .
 
       ![Autorizační klíč autorizace Azure AD](./media/secure-web-app/ad-auth-secrets.png)
 
       *Autorizační klíč autorizace Azure AD*
 
-   5. Vygenerujte zabezpečený náhodný tajný klíč pomocí libovolného nástroje příkazového řádku/online. Uložte ho do Key Vault jako `FLASKSECRETKEY`. Aplikační rozhraní používá tento klíč k vytváření relací.
+   5. Vygenerujte zabezpečený náhodný tajný klíč pomocí libovolného nástroje příkazového řádku/online. Uložte ho do Key Vault jako `FLASKSECRETKEY` . Aplikační rozhraní používá tento klíč k vytváření relací.
         Informace o tom, jak vygenerovat tajný klíč, najdete v tématu věnovaném [relacím na baňce](http://flask.pocoo.org/docs/1.0/quickstart/#sessions).
 
 5. Po nakonfigurování přihlášení budete muset přidat uživatele do odkazu Azure AD, aby se mohly přihlašovat k prostředku. Pokud je chcete přidat, klikněte na kartu **Uživatelé** v Azure AD, vyberte **Všichni uživatelé**a pak vyberte **Nový uživatel** nebo **Nový uživatel typu Host**. Pro účely testování můžete přidat uživatele typu Host a pozvat uživatele do adresáře. Nebo můžete přidat nového uživatele, pokud je ověřená doména, ve které je aplikace spuštěná. V tomto příkladu je možné zaregistrovat přístup jenom uživatelům registrovaným v tenantovi Azure AD. Informace o přístupu pro více tenantů naleznete v dokumentaci.
@@ -804,7 +804,7 @@ V Azure Portal nakonfigurujte aplikaci tak, aby používala požadované přihla
 Po přidání konfigurace a tajných kódů Azure AD do Key Vault se uživatelé můžou do aplikace ověřit pomocí ověřování Azure OAuth.
 V kódu aplikace to zpracovává knihovna Azure Active Directory Authentication Library (ADAL).
 
-Po použití tajných kódů v Key Vault a aplikace má přístup k tajným klíčům a databázi, může být Aplikační služba dostupná prostřednictvím adresy URL aplikace brány (https:\//GATEWAY_HASH. cloudapp. NET), kterou můžete získat z svého okna.
+Po použití tajných kódů v Key Vault a aplikace má přístup k tajným klíčům a databázi, může být Aplikační služba dostupná prostřednictvím adresy URL aplikace brány (https: \/ /GATEWAY_HASH. cloudapp. NET), kterou můžete získat z svého okna.
 
 Pokud se při přihlášení ke službě Azure AD zobrazí chybová zpráva "uživatel není zaregistrován v adresáři, ke kterému se pokoušíte přihlašovat", je nutné přidat uživatele. Pokud chcete uživatele přidat, klikněte na kartu **Uživatelé** služby Azure AD a přidejte uživatele ručně zadáním jejich podrobností nebo pozváním uživatele do služby Azure AD zadáním e-mailové adresy jako uživatel typu Host v okně **pozvat Host** .
 
@@ -826,7 +826,7 @@ Po dokončení nasazení budete mít instanci Application Insights.
 Po vytvoření instance Application Insights je potřeba, aby aplikace měla na paměti klíč instrumentace, která umožňuje odesílání protokolů do cloudu. Provedete to tak, že načtete Application Insights klíč a použijete ho v knihovnách aplikací, které Azure poskytuje pro Application Insights. Osvědčeným postupem je ukládání klíčů a tajných kódů v Azure Key Vault pro zajištění zabezpečení.
 
 Pro základní ukázkovou aplikaci je po vytvoření instance Application Insights nutné, aby aplikace měla na paměti klíč instrumentace, která umožňuje odesílání protokolů do cloudu.
-V Key Vault nastavte `APPINSIGHTSKEY` tajný klíč a nastavte jeho hodnotu jako klíč instrumentace. Tím umožníte, aby aplikace odesílala protokoly a metriky do Application Insights.
+V Key Vault nastavte tajný klíč `APPINSIGHTSKEY` a nastavte jeho hodnotu jako klíč instrumentace. Tím umožníte, aby aplikace odesílala protokoly a metriky do Application Insights.
 
 #### <a name="implement-multi-factor-authentication-for-azure-active-directory"></a>Implementovat Multi-Factor Authentication pro Azure Active Directory
 
@@ -993,4 +993,4 @@ Následující články vám pomůžou při návrhu, vývoji a nasazení zabezpe
 
 - [Návrh](secure-design.md)
 - [Vývoj](secure-develop.md)
-- [Nasadit](secure-deploy.md)
+- [Nasazení](secure-deploy.md)

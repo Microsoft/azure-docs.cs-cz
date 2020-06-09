@@ -3,25 +3,26 @@ title: Vytvoření a sdílení poznámkového bloku Jupyter v Azure Notebooks Pr
 description: Rychle vytvořte a spusťte Poznámkový blok Jupyter Azure Notebooks ve verzi Preview a potom tento poznámkový blok sdílejte s ostatními.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: d3310444fa28240b8fb1344199514a9601a2c615
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 01d1035f794287e679b6ebc84fa9498b184b4791
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77064440"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561091"
 ---
 # <a name="quickstart-create-and-share-a-notebook-in-azure-notebooks-preview"></a>Rychlý Start: vytvoření a sdílení poznámkového bloku v Azure Notebooks Preview
 
 V tomto rychlém startu vytvoříte a spustíte na Azure Notebooks Poznámkový blok Jupyter a potom tento poznámkový blok nasdílíte s ostatními. Jupyter umožňuje snadno zkombinovat Markdownu text, spustitelný kód, trvalá data, grafiku a vizualizace na jednom plátně, poznámkovém bloku. Azure Notebooks je bezplatná hostovaná služba pro vývoj a spouštění poznámkových bloků Jupyter v cloudu, která nevyžaduje instalaci.
 
 ## <a name="prerequisites"></a>Požadavky
-Žádné.
+Žádné
 
 ## <a name="create-a-new-project-and-notebook"></a>Vytvořit nový projekt a Poznámkový blok
 
 [!INCLUDE [notebooks-status](../../includes/notebooks-status.md)]
 
-1. Přejít na [web Azure Notebooks (https://notebooks.azure.com) ](https://notebooks.azure.com) a přihlaste se. Podrobnosti najdete v tématu [rychlý Start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md).
+1. Přejít na [web Azure Notebooks ( https://notebooks.azure.com) ](https://notebooks.azure.com) a přihlaste se. Podrobnosti najdete v tématu [rychlý Start – přihlášení k Azure Notebooks](quickstart-sign-in-azure-notebooks.md).
 
 1. Na stránce veřejný profil vyberte v horní části stránky **Moje projekty** :
 
@@ -40,7 +41,7 @@ V tomto rychlém startu vytvoříte a spustíte na Azure Notebooks Poznámkový 
 
      ![Místní nabídka nový projekt s vyplněnými podrobnostmi](media/quickstarts/new-project-popup.png)
 
-1. Po chvíli Azure Notebooks přejít k novému projektu. Přidejte do projektu Poznámkový blok tak, že vyberete rozevírací seznam **+ Nový** (může se objevit jenom **+** jako) a pak vybrat **Poznámkový blok**:
+1. Po chvíli Azure Notebooks přejít k novému projektu. Přidejte do projektu Poznámkový blok tak, že vyberete rozevírací seznam **+ Nový** (může se objevit jenom jako **+** ) a pak vybrat **Poznámkový blok**:
 
     [![](media/quickstarts/empty-project-new-notebook-button.png "A new, empty project and add notebook command")](media/quickstarts/empty-project-new-notebook-button.png#lightbox)
 
@@ -92,7 +93,7 @@ V tomto rychlém startu vytvoříte a spustíte na Azure Notebooks Poznámkový 
 
     ![Ikona uložit na panelu nástrojů Jupyter Poznámkový blok](media/quickstarts/hello-results-save-icon.png)
 
-1. Výběrem příkazu nabídky**Zavřít a zastavit** **soubor** > zastavte Server a zavřete okno prohlížeče.
+1. Výběrem **File**  >  příkazu nabídky**Zavřít a zastavit** soubor zastavte Server a zavřete okno prohlížeče.
 
 ## <a name="share-the-notebook"></a>Sdílet Poznámkový blok
 

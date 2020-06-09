@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: d07add7950da531330fe9f64629299cef9fad1ac
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: f197dd5063f8584968277d8d55298c03d9d71ea6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734582"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558848"
 ---
 # <a name="desktop-app-that-calls-web-apis-code-configuration"></a>Aplikace klasické pracovní plochy, která volá webová rozhraní API: Konfigurace kódu
 
@@ -26,7 +26,7 @@ Teď, když jste vytvořili aplikaci, se dozvíte, jak nakonfigurovat kód pomoc
 
 Následující knihovny Microsoft Authentication Library (MSALs) podporují desktopové aplikace.
 
-  Identity a ověřování Microsoftu | Popis
+  Identity a ověřování Microsoftu | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Podporuje vytváření desktopových aplikací na různých platformách, jako jsou Linux, Windows a macOS.
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podporuje vytváření desktopových aplikací na různých platformách.
@@ -39,7 +39,7 @@ Z hlediska kódu jsou desktopové aplikace veřejné klientské aplikace. Konfig
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 
-Budete muset sestavit a manipulovat s MSAL.NET `IPublicClientApplication`.
+Budete muset sestavit a manipulovat s MSAL.NET `IPublicClientApplication` .
 
 ![IPublicClientApplication](media/scenarios/public-client-application.png)
 
@@ -52,7 +52,7 @@ IPublicClientApplication app = PublicClientApplicationBuilder.Create(clientId)
     .Build();
 ```
 
-Pokud máte v úmyslu používat interaktivní ověřování nebo tok kódu zařízení, jak bylo vidět dříve, `.WithRedirectUri` použijte modifikátor.
+Pokud máte v úmyslu používat interaktivní ověřování nebo tok kódu zařízení, jak bylo vidět dříve, použijte `.WithRedirectUri` modifikátor.
 
 ```csharp
 IPublicClientApplication app;
@@ -107,12 +107,12 @@ app = PublicClientApplicationBuilder.Create(clientId)
 
 Další informace o tom, jak nakonfigurovat desktopovou aplikaci MSAL.NET:
 
-- Seznam všech modifikátorů, které jsou k dispozici v systému `PublicClientApplicationBuilder`, naleznete v referenční dokumentaci [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
-- Popis všech možností zveřejněných v `PublicClientApplicationOptions`nástroji naleznete v tématu [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) v referenční dokumentaci.
+- Seznam všech modifikátorů, které jsou k dispozici v systému `PublicClientApplicationBuilder` , naleznete v referenční dokumentaci [PublicClientApplicationBuilder](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationbuilder#methods).
+- Popis všech možností zveřejněných v nástroji naleznete v `PublicClientApplicationOptions` tématu [PublicClientApplicationOptions](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.publicclientapplicationoptions) v referenční dokumentaci.
 
 ### <a name="complete-example-with-configuration-options"></a>Kompletní příklad s možnostmi konfigurace
 
-Představte si konzolovou aplikaci .NET Core, `appsettings.json` která má následující konfigurační soubor:
+Představte si konzolovou aplikaci .NET Core, která má následující `appsettings.json` konfigurační soubor:
 
 ```json
 {

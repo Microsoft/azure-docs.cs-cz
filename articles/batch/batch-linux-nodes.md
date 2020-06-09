@@ -3,13 +3,13 @@ title: Spuštění systému Linux na výpočetních uzlech virtuálních počít
 description: Naučte se zpracovávat paralelní výpočetní úlohy na fondech virtuálních počítačů se systémem Linux v Azure Batch.
 ms.topic: how-to
 ms.date: 06/01/2018
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cd8a39556fb0aec0ddbf6c8e639281d7329228a4
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.custom: H1Hack27Feb2017, tracking-python
+ms.openlocfilehash: 6a834e433c86eaa85b6d313d7e49020804cd69de
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83726600"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559645"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Zřizování výpočetních uzlů pro Linux ve fondech Batch
 
@@ -37,8 +37,8 @@ Když nakonfigurujete odkaz na image virtuálního počítače, zadáte vlastnos
 | --- | --- |
 | Publisher |Canonical |
 | Nabídka |UbuntuServer |
-| Skladová jednotka (SKU) |18,04 – LTS |
-| Verze |nejnovější |
+| SKU |18,04 – LTS |
+| Version |nejnovější |
 
 > [!TIP]
 > Další informace o těchto vlastnostech a způsobu vypsání imagí na Marketplace najdete v tématu [navigace a výběr imagí virtuálních počítačů se systémem Linux v Azure pomocí rozhraní příkazového řádku nebo PowerShellu](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Všimněte si, že ne všechny image Marketplace jsou aktuálně kompatibilní se službou Batch. Další informace najdete v tématu [SKU agenta uzlu](#node-agent-sku).

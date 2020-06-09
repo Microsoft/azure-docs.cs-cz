@@ -3,12 +3,13 @@ title: Vytvoření vlastního fondu pomocí Galerie sdílených imagí
 description: Vlastní image představují účinný způsob konfigurace výpočetních uzlů pro spouštění úloh služby Batch.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: 6731086bfcbe6a671c579593791fb7467b280bca
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.custom: tracking-python
+ms.openlocfilehash: bd71983a5c932b515a7d41a680a55772567694ca
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83844484"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561259"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Vytvoření vlastního fondu pomocí Galerie sdílených imagí
 

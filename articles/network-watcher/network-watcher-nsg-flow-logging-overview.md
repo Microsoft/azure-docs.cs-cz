@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: ed14d3fb1cd3d9d8af37088811ce62b050778a95
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0b25b07e3517bbbf17dce95660f209bd74bcccb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189799"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561738"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>Úvod do protokolování toků pro skupiny zabezpečení sítě
 
@@ -67,7 +67,7 @@ Protokoly toku jsou zdrojem pravdy pro všechny síťové aktivity ve vašem clo
 Protokoly toků obsahují následující vlastnosti:
 
 * **čas** , kdy se událost zaznamenala
-* **SystemId** – ID prostředku skupiny zabezpečení sítě.
+* **SystemId** – ID systému skupiny zabezpečení sítě.
 * **Category** – kategorie události. Kategorie je vždycky **NetworkSecurityGroupFlowEvent**
 * **ResourceID** – ID prostředku NSG
 * **OperationName** – vždy NetworkSecurityGroupFlowEvents
@@ -303,15 +303,15 @@ Pro pokračování ve stavech _C_ a koncových _E_ toků jsou počty bajtů a pa
 
 K povolení protokolů toku použijte odpovídající odkaz níže.
 
-- [portál Azure](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
-- [Prostředí](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-powershell)
-- [CLI](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli)
+- [Azure Portal](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal)
+- [PowerShell](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-powershell)
+- [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-cli)
 - [REST](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-rest)
 - [Azure Resource Manager](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-azure-resource-manager)
 
 ## <a name="updating-parameters"></a>Aktualizují se parametry
 
-**portál Azure**
+**Azure Portal**
 
 V Azure Portal přejděte do části protokoly toku NSG v Network Watcher. Pak klikněte na název NSG. Tím se zobrazí podokno nastavení protokolu toku. Změňte parametry, které chcete, a potom klikněte na **Uložit** , aby se změny nasadily.
 

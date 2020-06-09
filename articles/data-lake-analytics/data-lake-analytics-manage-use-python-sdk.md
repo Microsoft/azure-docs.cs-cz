@@ -9,12 +9,13 @@ ms.reviewer: jasonwhowell
 ms.assetid: d4213a19-4d0f-49c9-871c-9cd6ed7cf731
 ms.topic: conceptual
 ms.date: 06/08/2018
-ms.openlocfilehash: d40658e1510c9ae8a2e3e1f865df7ac95f61abfb
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.custom: tracking-python
+ms.openlocfilehash: 34b3801d32720b8512f056ad16e3b3e3a979ee4b
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "68355976"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559251"
 ---
 # <a name="manage-azure-data-lake-analytics-using-python"></a>Správa Azure Data Lake Analytics pomocí Pythonu
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
@@ -37,13 +38,13 @@ Nainstalujte následující moduly:
 * Modul **Azure-Správa-datalake-Store** zahrnuje operace správy účtu Azure Data Lake Store.
 * Modul **Azure-Správa – datalake-Analytics** zahrnuje operace Azure Data Lake Analytics. 
 
-Nejdřív zajistěte, abyste měli `pip` nejnovější verzi spuštěním tohoto příkazu:
+Nejdřív zajistěte, abyste měli nejnovější verzi spuštěním tohoto `pip` příkazu:
 
 ```
 python -m pip install --upgrade pip
 ```
 
-Tento dokument byl napsán pomocí `pip version 9.0.1`.
+Tento dokument byl napsán pomocí `pip version 9.0.1` .
 
 Pomocí následujících `pip` příkazů nainstalujte moduly z příkazového řádku:
 
@@ -97,7 +98,7 @@ import time
 
 Spusťte tento skript a ověřte, zda lze moduly importovat.
 
-## <a name="authentication"></a>Ověřování
+## <a name="authentication"></a>Authentication
 
 ### <a name="interactive-user-authentication-with-a-pop-up"></a>Interaktivní ověřování uživatelů pomocí automaticky otevíraného okna
 

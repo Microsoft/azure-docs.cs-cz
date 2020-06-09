@@ -5,12 +5,13 @@ author: gvashishtha
 ms.topic: tutorial
 ms.date: 02/28/2020
 ms.author: gopalv
-ms.openlocfilehash: 2dd911eff1ba98341451ef9826b8053bc8059047
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.custom: tracking-python
+ms.openlocfilehash: 399a5bf40cff673f96aea46997bc639865619571
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82581521"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560783"
 ---
 # <a name="tutorial-deploy-a-pre-trained-image-classification-model-to-azure-functions-with-pytorch"></a>Kurz: nasazení předem připraveného modelu klasifikace imagí pro Azure Functions s využitím PyTorch
 
@@ -31,7 +32,7 @@ V tomto článku se naučíte, jak pomocí Pythonu, PyTorch a Azure Functions na
 
 ### <a name="prerequisite-check"></a>Kontrola požadovaných součástí
 
-1. V terminálu nebo příkazovém okně spusťte `func --version` příkaz a ověřte, zda Azure Functions Core Tools verze 2.7.1846 nebo novější.
+1. V terminálu nebo příkazovém okně spusťte příkaz `func --version` a ověřte, zda Azure Functions Core Tools verze 2.7.1846 nebo novější.
 1. Spusťte `python --version` (Linux/MacOS) nebo `py --version` (Windows), abyste zkontrolovali, jestli verze Pythonu nahlásí verzi 3.7. x.
 
 ## <a name="clone-the-tutorial-repository"></a>Naklonujte úložiště kurzu.
@@ -55,7 +56,7 @@ V tomto článku se naučíte, jak pomocí Pythonu, PyTorch a Azure Functions na
 
 ## <a name="create-and-activate-a-python-virtual-environment"></a>Vytvoření a aktivace virtuálního prostředí Pythonu
 
-Přejděte do složky *Start* a spuštěním následujících příkazů vytvořte a aktivujte virtuální prostředí s názvem `.venv`.
+Přejděte do složky *Start* a spuštěním následujících příkazů vytvořte a aktivujte virtuální prostředí s názvem `.venv` .
 
 
 # <a name="bash"></a>[bash](#tab/bash)
@@ -90,7 +91,7 @@ py -m venv .venv
 
 ---
 
-V tomto aktivovaném virtuálním prostředí spustíte všechny následné příkazy. (Chcete-li virtuální prostředí ukončit, `deactivate`spusťte příkaz.)
+V tomto aktivovaném virtuálním prostředí spustíte všechny následné příkazy. (Chcete-li virtuální prostředí ukončit, spusťte příkaz `deactivate` .)
 
 
 ## <a name="create-a-local-functions-project"></a>Vytvoření projektu místní funkce
@@ -114,7 +115,7 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     func new --name classify --template "HTTP trigger"
     ```
 
-    Tento příkaz vytvoří složku, která odpovídá názvu funkce, *klasifikovat*. V této složce jsou dva soubory: * \_ \_init\_\_. py*, který obsahuje kód funkce a *Function. JSON*, který popisuje Trigger funkce a její vstupní a výstupní vazby. Podrobnosti o obsahu těchto souborů najdete v tématu [prohlédnutí obsahu souboru](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) v rychlém startu Pythonu.
+    Tento příkaz vytvoří složku, která odpovídá názvu funkce, *klasifikovat*. V této složce jsou dva soubory: * \_ \_ init \_ \_ . py*, který obsahuje kód funkce a *Function. JSON*, který popisuje Trigger funkce a její vstupní a výstupní vazby. Podrobnosti o obsahu těchto souborů najdete v tématu [prohlédnutí obsahu souboru](/azure/azure-functions/functions-create-first-azure-function-azure-cli?pivots=programming-language-python#optional-examine-the-file-contents) v rychlém startu Pythonu.
 
 
 ## <a name="run-the-function-locally"></a>Místní spuštění funkce
@@ -125,14 +126,14 @@ V Azure Functions je projekt funkce kontejnerem pro jednu nebo více jednotlivý
     func start
     ```
 
-1. Jakmile se ve výstupu `classify` zobrazí koncový bod, přejděte na adresu URL, ```http://localhost:7071/api/classify?name=Azure```. Zpráva "Hello Azure!" měl by se zobrazit ve výstupu.
+1. Jakmile se `classify` ve výstupu zobrazí koncový bod, přejděte na adresu URL, ```http://localhost:7071/api/classify?name=Azure``` . Zpráva "Hello Azure!" měl by se zobrazit ve výstupu.
 
-1. K zastavení hostitele použijte **kombinaci kláves CTRL +**-**C** .
+1. K zastavení hostitele použijte **kombinaci kláves CTRL +** - **C** .
 
 
 ## <a name="import-the-pytorch-model-and-add-helper-code"></a>Import modelu PyTorch a přidání kódu nápovědy
 
-Chcete-li `classify` upravit funkci pro klasifikaci obrázku na základě jeho obsahu, použijte předem připravený [ResNet](https://arxiv.org/abs/1512.03385) model. Předučený model, který pochází z [PyTorch](https://pytorch.org/hub/pytorch_vision_resnet/), klasifikuje obrázek na 1 z 1000 [tříd ImageNet](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a). Do projektu pak přidáte nějaký pomocný kód a závislosti.
+Chcete-li upravit `classify` funkci pro klasifikaci obrázku na základě jeho obsahu, použijte předem připravený [ResNet](https://arxiv.org/abs/1512.03385) model. Předučený model, který pochází z [PyTorch](https://pytorch.org/hub/pytorch_vision_resnet/), klasifikuje obrázek na 1 z 1000 [tříd ImageNet](https://gist.github.com/yrevar/942d3a0ac09ec9e5eb3a). Do projektu pak přidáte nějaký pomocný kód a závislosti.
 
 1. Ve složce *Start* spusťte následující příkaz, který zkopíruje kód předpovědi a popisky do složky *klasifikovat* .
 
@@ -180,26 +181,26 @@ Chcete-li `classify` upravit funkci pro klasifikaci obrázku na základě jeho o
 
 Instalace může trvat několik minut. během této doby můžete pokračovat v úpravách funkce v další části.
 > [!TIP]
-> >V systému Windows se může zobrazit chyba, "nelze instalovat balíčky z důvodu EnvironmentError: [errno 2] žádný takový soubor nebo adresář": "následovaný dlouhým názvem cesty k souboru, například *sharded_mutable_dense_hashtable. CPython-37. PYC*. K této chybě obvykle dochází, protože hloubka cesty ke složce se zastává příliš dlouho. V takovém případě nastavte klíč `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` `1` registru tak, aby umožňoval dlouhé cesty. Alternativně ověřte, kde je váš překladač Pythonu nainstalovaný. Pokud má toto umístění dlouhou cestu, zkuste přeinstalovat ve složce s kratší cestou.
+> >V systému Windows se může zobrazit chyba, "nelze instalovat balíčky z důvodu EnvironmentError: [errno 2] žádný takový soubor nebo adresář": "následovaný dlouhým názvem cesty k souboru, například *sharded_mutable_dense_hashtable. CPython-37. PYC*. K této chybě obvykle dochází, protože hloubka cesty ke složce se zastává příliš dlouho. V takovém případě nastavte klíč registru tak, aby `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\FileSystem@LongPathsEnabled` `1` umožňoval dlouhé cesty. Alternativně ověřte, kde je váš překladač Pythonu nainstalovaný. Pokud má toto umístění dlouhou cestu, zkuste přeinstalovat ve složce s kratší cestou.
 
 ## <a name="update-the-function-to-run-predictions"></a>Aktualizace funkce pro spuštění předpovědi
 
-1. V textovém editoru otevřete *klasifikovat/\_\_init\_\_. py* a přidejte následující řádky za existující `import` příkazy pro import standardní knihovny JSON a sady pomocníků pro *předpověď* :
+1. V textovém editoru otevřete *klasifikovat/ \_ \_ init \_ \_ . py* a přidejte následující řádky za existující `import` příkazy pro import standardní knihovny JSON a sady pomocníků pro *předpověď* :
 
     :::code language="python" source="~/functions-pytorch/end/classify/__init__.py" range="1-6" highlight="5-6":::
 
-1. Celý obsah `main` funkce nahraďte následujícím kódem:
+1. Celý obsah funkce nahraďte `main` následujícím kódem:
 
     :::code language="python" source="~/functions-pytorch/end/classify/__init__.py" range="8-19":::
 
-    Tato funkce obdrží adresu URL obrázku v parametru řetězce dotazu s názvem `img`. Pak volá `predict_image_from_url` z pomocné knihovny ke stažení a klasifikaci Image pomocí modelu PyTorch. Funkce pak vrátí odpověď HTTP s výsledky.
+    Tato funkce obdrží adresu URL obrázku v parametru řetězce dotazu s názvem `img` . Pak volá `predict_image_from_url` z pomocné knihovny ke stažení a klasifikaci Image pomocí modelu PyTorch. Funkce pak vrátí odpověď HTTP s výsledky.
 
     > [!IMPORTANT]
-    > Vzhledem k tomu, že je tento koncový bod HTTP volán webovou stránkou, která je hostována `Access-Control-Allow-Origin` v jiné doméně, odpověď obsahuje hlavičku pro splnění požadavků na sdílení prostředků mezi zdroji (CORS) v prohlížeči.
+    > Vzhledem k tomu, že je tento koncový bod HTTP volán webovou stránkou, která je hostována v jiné doméně, odpověď obsahuje `Access-Control-Allow-Origin` hlavičku pro splnění požadavků na sdílení prostředků mezi zdroji (CORS) v prohlížeči.
     >
     > V produkční aplikaci přejděte `*` na konkrétní zdroj webové stránky pro zvýšení zabezpečení.
 
-1. Uložte změny a pak za předpokladu, že se dokončí instalace závislostí, spusťte znovu hostitele `func start`místní funkce. Nezapomeňte spustit hostitele ve složce *Start* s aktivovaným virtuálním prostředím. V opačném případě se hostitel spustí, ale při volání funkce se zobrazí chyby.
+1. Uložte změny a pak za předpokladu, že se dokončí instalace závislostí, spusťte znovu hostitele místní funkce `func start` . Nezapomeňte spustit hostitele ve složce *Start* s aktivovaným virtuálním prostředím. V opačném případě se hostitel spustí, ale při volání funkce se zobrazí chyby.
 
     ```
     func start
@@ -241,7 +242,7 @@ Pokud chcete otestovat vyvolání koncového bodu funkce z jiné webové aplikac
     py -m http.server
     ```
 
-1. V prohlížeči přejděte na `localhost:8000`adresu a potom do textového pole zadejte jednu z následujících adres URL fotek nebo použijte adresu URL jakékoli veřejně přístupné image.
+1. V prohlížeči přejděte na adresu `localhost:8000` a potom do textového pole zadejte jednu z následujících adres URL fotek nebo použijte adresu URL jakékoli veřejně přístupné image.
 
     - `https://raw.githubusercontent.com/Azure-Samples/functions-python-pytorch-tutorial/master/resources/assets/Bernese-Mountain-Dog-Temperament-long.jpg`
     - `https://github.com/Azure-Samples/functions-python-pytorch-tutorial/blob/master/resources/assets/bald-eagle.jpg?raw=true`

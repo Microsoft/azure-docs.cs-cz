@@ -6,16 +6,17 @@ keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy,
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: d8a5cf428f41b130e6faf68ac87a075c15211099
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 25ce99d3dced3caf1ec4bcce13b062b28774642d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270066"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557487"
 ---
 # <a name="deep-learning-and-ai-frameworks-for-the-azure-data-science-vm"></a>Rozhraní pro hloubkové učení a AI pro Azure Data Science VM
 Architektury hloubkového učení na DSVM jsou uvedené níže.
@@ -26,8 +27,8 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | ------------- | ------------- |
 | Podporované verze | |
 | Podporované edice DSVM      | Linux (Ubuntu)     |
-| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Caffe je nainstalován v `/opt/caffe`.   Ukázky jsou v `/opt/caffe/examples`.|
-| Jak ji spustit      | pomocí X2Go se přihlaste k VIRTUÁLNÍmu počítači a potom spusťte nový terminál a zadejte následující:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Otevře se nové okno prohlížeče s ukázkami poznámkových bloků. Binární soubory jsou nainstalované v/opt/Caffe/Build/Install/bin..<br/><br/>Nainstalovaná verze Caffe vyžaduje Python 2,7 a nebude fungovat s Python 3,5, který je ve výchozím nastavení aktivovaný. Pokud chcete přejít na Python 2,7, `source activate root` spusťte příkaz a přepněte se do prostředí Anaconda.|    
+| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Caffe je nainstalován v `/opt/caffe` .   Ukázky jsou v `/opt/caffe/examples` .|
+| Jak ji spustit      | pomocí X2Go se přihlaste k VIRTUÁLNÍmu počítači a potom spusťte nový terminál a zadejte následující:<br/>`cd /opt/caffe/examples`<br/>`source activate root`<br/>`jupyter notebook`<br/><br/>Otevře se nové okno prohlížeče s ukázkami poznámkových bloků. Binární soubory jsou nainstalované v/opt/Caffe/Build/Install/bin..<br/><br/>Nainstalovaná verze Caffe vyžaduje Python 2,7 a nebude fungovat s Python 3,5, který je ve výchozím nastavení aktivovaný. Pokud chcete přejít na Python 2,7, spusťte příkaz `source activate root` a přepněte se do prostředí Anaconda.|    
 
 ## <a name="caffe2"></a>[Caffe2](https://github.com/caffe2/caffe2)
 
@@ -45,7 +46,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Podporované verze | 5,2 |
 | Podporované edice DSVM      | Linux (Ubuntu)     |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | V Pythonu 3,5 se instaluje chainer. |
-| Jak ji spustit      | Terminál: aktivujte prostředí Python 3,5, spusťte `python`a potom. `import chainer` <br/> * JupyterHub: [Připojte se k JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a pak vyhledejte ukázkové poznámkové bloky v adresáři chainer.| 
+| Jak ji spustit      | Terminál: aktivujte prostředí Python 3,5, spusťte `python` a potom `import chainer` . <br/> * JupyterHub: [Připojte se k JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a pak vyhledejte ukázkové poznámkové bloky v adresáři chainer.| 
 
 ## <a name="cuda-cudnn-nvidia-driver"></a>[CUDA, cuDNN, ovladač NVIDIA](https://developer.nvidia.com/cuda-toolkit)
 
@@ -90,7 +91,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Podporované verze | 1.3.0 |
 | Podporované edice DSVM      | Windows a Linux   |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | MXNet se instaluje do `C:\dsvm\tools\mxnet` systému Windows a `/dsvm/tools/mxnet` na Ubuntu. Vazby Pythonu jsou nainstalované v Pythonu 3,6 ve [Windows 2016](dsvm-tools-languages.md#python-windows-server-2016-edition) a Python 3,5 on [Linux](./dsvm-tools-languages.md#python-linux-edition)) vazby R jsou taky součástí Ubuntu DSVM. |
-| Jak ji spustit      | Terminál: Aktivujte správné prostředí conda a potom spusťte příkaz `import mxnet`. <br/>Jupyter: Připojte se k [Jupyter](provision-vm.md#access-the-dsvm) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a otevřete `mxnet` adresář pro ukázky. |
+| Jak ji spustit      | Terminál: Aktivujte správné prostředí conda a potom spusťte příkaz `import mxnet` . <br/>Jupyter: Připojte se k [Jupyter](provision-vm.md#access-the-dsvm) nebo [JupyterHub](dsvm-ubuntu-intro.md#how-to-access-the-ubuntu-data-science-virtual-machine)a otevřete `mxnet` adresář pro ukázky. |
 
 ## <a name="mxnet-model-server"></a>[MXNet Model Server](https://github.com/awslabs/mxnet-model-server#quick-start)
 
@@ -109,7 +110,7 @@ Architektury hloubkového učení na DSVM jsou uvedené níže.
 | Podporované edice DSVM      | Windows a Linux   |
 | K čemu slouží? | Nástroj NVIDIA pro dotazování aktivity GPU |
 | Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | `nvidia-smi`je v systémové cestě. |
-| Jak ji spustit      | Na virtuálním počítači **s grafickým procesorem**otevřete příkazový řádek (ve Windows) nebo terminálu (na platformě Linux) a potom spusťte `nvidia-smi`příkaz. |
+| Jak ji spustit      | Na virtuálním počítači **s grafickým procesorem**otevřete příkazový řádek (ve Windows) nebo terminálu (na platformě Linux) a potom spusťte příkaz `nvidia-smi` . |
 
 ## <a name="pytorch"></a>[PyTorch](https://pytorch.org/)
 

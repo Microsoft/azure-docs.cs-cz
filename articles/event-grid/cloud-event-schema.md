@@ -2,17 +2,17 @@
 title: Použití Azure Event Grid s událostmi ve schématu CloudEvents
 description: Popisuje, jak používat CloudEvents schéma pro události v Azure Event Grid. Služba podporuje události v implementaci JSON cloudových událostí.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 127095bef2c67a93097bf90bea54ca1b44b16c58
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 57827b1c5a43a3408d374e8bddb7b91113b2929a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81394381"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560695"
 ---
 # <a name="cloudevents-v10-schema-with-event-grid"></a>Schéma CloudEvents v 1.0 s Event Grid
 
@@ -56,7 +56,7 @@ Tady je příklad události Azure Blob Storage ve formátu CloudEvents:
 
 Podrobný popis dostupných polí, jejich typy a definice v CloudEvents v 1.0 jsou [k dispozici zde](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes).
 
-Hodnoty hlaviček pro události doručené ve schématu CloudEvents a schématu Event Grid jsou stejné s výjimkou `content-type`. V případě schématu CloudEvents je `"content-type":"application/cloudevents+json; charset=utf-8"`hodnota hlavičky. Pro Event Grid schéma je `"content-type":"application/json; charset=utf-8"`hodnota hlavičky.
+Hodnoty hlaviček pro události doručené ve schématu CloudEvents a schématu Event Grid jsou stejné s výjimkou `content-type` . V případě schématu CloudEvents je hodnota hlavičky `"content-type":"application/cloudevents+json; charset=utf-8"` . Pro Event Grid schéma je hodnota hlavičky `"content-type":"application/json; charset=utf-8"` .
 
 ## <a name="event-grid-for-cloudevents"></a>Event Grid pro CloudEvents
 

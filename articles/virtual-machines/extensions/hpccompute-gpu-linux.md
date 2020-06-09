@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/11/2019
 ms.author: akjosh
-ms.openlocfilehash: 6bfbbacd0b30e206a9c1873c4df204117155e044
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 55ca9232252895dd46ad3da3912f808ebd9b9533
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465231"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559674"
 ---
 # <a name="nvidia-gpu-driver-extension-for-linux"></a>Rozšíření ovladače NVIDIA GPU pro Linux
 
@@ -36,7 +36,7 @@ K dispozici je také rozšíření pro instalaci ovladačů NVIDIA GPU na [virtu
 
 Toto rozšíření podporuje následující distribuce operačního systému, v závislosti na podpoře ovladačů pro konkrétní verzi operačního systému.
 
-| Distribuce | Verze |
+| Distribuce | Version |
 |---|---|
 | Linux: Ubuntu | 16,04 LTS, 18,04 LTS |
 | Linux: Red Hat Enterprise Linux | 7,3, 7,4, 7,5, 7,6, 7,7 |
@@ -138,7 +138,7 @@ Set-AzVMExtension
 
 ### <a name="azure-cli"></a>Azure CLI
 
-Následující příklad zrcadlí výše uvedené Azure Resource Manager a příklady prostředí PowerShell a také přidá vlastní nastavení jako příklad pro nevýchozí instalaci ovladače. Konkrétně aktualizuje jádro operačního systému a nainstaluje konkrétní ovladač verze CUDA Toolkit.
+Následující příklad zrcadlí výše uvedené Azure Resource Manager a příklady prostředí PowerShell.
 
 ```azurecli
 az vm extension set \
@@ -146,10 +146,22 @@ az vm extension set \
   --vm-name myVM \
   --name NvidiaGpuDriverLinux \
   --publisher Microsoft.HpcCompute \
-  --version 1.2 \
+  --version 1.3 \
+  }'
+```
+
+Následující příklad také přidá dvě volitelná vlastní nastavení jako příklad pro jinou než výchozí instalaci ovladače. Konkrétně aktualizuje jádro operačního systému na nejnovější a nainstaluje konkrétní ovladač verze CUDA Toolkit. Znovu si všimněte, že nastavení--Settings jsou volitelná a výchozí. Všimněte si, že aktualizace jádra může prodloužit dobu instalace rozšíření. Také volba konkrétní (starší) tolkit verze CUDA nemusí být vždycky kompatibilní s novějšími jádry.
+
+```azurecli
+az vm extension set \
+  --resource-group myResourceGroup \
+  --vm-name myVM \
+  --name NvidiaGpuDriverLinux \
+  --publisher Microsoft.HpcCompute \
+  --version 1.3 \
   --settings '{ \
     "updateOS": true, \
-    "driverVersion": "9.1.85" \
+    "driverVersion": "10.0.130" \
   }'
 ```
 
@@ -167,7 +179,7 @@ Get-AzVMExtension -ResourceGroupName myResourceGroup -VMName myVM -Name myExtens
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Výstup spuštění rozšíření se zaznamená do následujícího souboru:
+Výstup spuštění rozšíření je protokolován do následujícího souboru. Pokud chcete sledovat stav (v případě dlouhotrvající) instalace a řešit případné chyby, podívejte se na tento soubor.
 
 ```bash
 /var/log/azure/nvidia-vmext-status

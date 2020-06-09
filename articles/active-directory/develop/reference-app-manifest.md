@@ -12,12 +12,12 @@ ms.date: 04/15/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: sureshja
-ms.openlocfilehash: 3338c71d37a176206ff106a8229c3b583209ddd4
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 9b2368cdd3fbd2699cb3579d922d81ad66efdc91
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737329"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558595"
 ---
 # <a name="azure-active-directory-app-manifest"></a>Azure Active Directory manifest aplikace
 
@@ -45,7 +45,7 @@ Tato část popisuje atributy nalezené v manifestu aplikace.
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| id | String |
+| id | Řetězec |
 
 Jedinečný identifikátor aplikace v adresáři Toto ID není identifikátor používaný k identifikaci aplikace v jakékoli transakci protokolu. Používá se pro odkazování na objekt v dotazech adresářů.
 
@@ -129,7 +129,7 @@ Nastavte na hodnotu true, pokud je aplikace sdílená s ostatními klienty. v op
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| appId | String |
+| appId | Řetězec |
 
 Určuje jedinečný identifikátor pro aplikaci, která je přiřazená aplikaci pomocí Azure AD.
 
@@ -153,7 +153,7 @@ Příklad:
     "appRoles": [
         {
            "allowedMemberTypes": [
-               "User"
+               "User"
            ],
            "description": "Read-only access to device information",
            "displayName": "Read Only",
@@ -168,7 +168,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| displayName | String |
+| displayName | Řetězec |
 
 Zobrazovaný název aplikace
 
@@ -179,7 +179,7 @@ Zobrazovaný název aplikace
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| errorUrl | String |
+| errorUrl | Řetězec |
 
 Neplatné.
 
@@ -187,7 +187,7 @@ Neplatné.
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-|groupMembershipClaims | String |
+|groupMembershipClaims | Řetězec |
 
 Nakonfiguruje `groups` deklaraci identity vydanou v uživatelském nebo přístupovém tokenu OAuth 2,0, který očekává aplikace. Chcete-li nastavit tento atribut, použijte jednu z následujících platných řetězcových hodnot:
 
@@ -205,7 +205,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| domovské stránky |String |
+| domovské stránky |Řetězec |
 
 Adresa URL domovské stránky aplikace
 
@@ -216,7 +216,7 @@ Adresa URL domovské stránky aplikace
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-|Objektu | String |
+|Objektu | Řetězec |
 
 Jedinečný identifikátor aplikace v adresáři
 
@@ -232,7 +232,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| optionalClaims | String |
+| optionalClaims | Řetězec |
 
 Volitelné deklarace identity vrácené v tokenu službou tokenu zabezpečení pro tuto konkrétní aplikaci.
 
@@ -264,7 +264,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| informationalUrls | String |
+| informationalUrls | Řetězec |
 
 Určuje odkazy na podmínku služby a prohlášení o zásadách ochrany osobních údajů aplikace. Podmínky služby a prohlášení o zásadách ochrany osobních údajů jsou v souladu s uživatelským prostředím týkajícím se souhlasu uživatele. Další informace najdete v tématu [Postup: Přidání podmínek služby a prohlášení o zásadách ochrany osobních údajů pro registrované aplikace služby Azure AD](howto-add-terms-of-service-privacy-statement.md).
 
@@ -321,7 +321,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| logoUrl | String |
+| logoUrl | Řetězec |
 
 Hodnota jen pro čtení, která odkazuje na adresu URL CDN na logo, které se nahrálo na portálu.
 
@@ -335,7 +335,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| logoutUrl | String |
+| logoutUrl | Řetězec |
 
 Adresa URL pro odhlášení z aplikace
 
@@ -349,7 +349,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| name | String |
+| name | Řetězec |
 
 Zobrazovaný název aplikace
 
@@ -430,7 +430,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| parentalControlSettings | String |
+| parentalControlSettings | Řetězec |
 
 - `countriesBlockedForMinors`Určuje země nebo oblasti, ve kterých je aplikace blokovaná pro nezletilé.
 - `legalAgeGroupRule`Určuje pravidlo pro věkovou skupinu platné pro uživatele aplikace. Lze nastavit na `Allow` , `RequireConsentForPrivacyServices` ,, `RequireConsentForMinors` `RequireConsentForKids` nebo `BlockMinors` .  
@@ -501,7 +501,7 @@ Tato vlastnost je k dispozici pouze v prostředí **Registrace aplikací (starš
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| publisherDomain | String |
+| publisherDomain | Řetězec |
 
 Ověřená doména vydavatele pro aplikaci. Jen pro čtení.
 
@@ -576,7 +576,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| samlMetadataUrl | String |
+| samlMetadataUrl | Řetězec |
 
 Adresa URL metadat SAML pro aplikaci
 
@@ -590,7 +590,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| signInUrl | String |
+| signInUrl | Řetězec |
 
 Určuje adresu URL domovské stránky aplikace.
 
@@ -604,7 +604,7 @@ Příklad:
 
 | Klíč | Typ hodnoty |
 | :--- | :--- |
-| signInAudience | String |
+| signInAudience | Řetězec |
 
 Určuje, jaké účty Microsoft se pro aktuální aplikaci podporují. Podporované hodnoty jsou:
 - `AzureADMyOrg`– Uživatelé s pracovním nebo školním účtem Microsoft v tenantovi Azure AD ve vaší organizaci (například jeden tenant)

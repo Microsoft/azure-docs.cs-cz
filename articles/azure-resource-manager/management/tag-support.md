@@ -3,15 +3,15 @@ title: Podpora značek pro prostředky
 description: Zobrazuje, které typy prostředků Azure podporují značky. Poskytuje podrobnosti pro všechny služby Azure.
 ms.topic: conceptual
 ms.date: 04/06/2020
-ms.openlocfilehash: 8acf2f9087646a76617368a6b61eb5097796c72c
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: 39e3f73741750f9245ec762f26d24e65eb107263
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331912"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560595"
 ---
 # <a name="tag-support-for-azure-resources"></a>Podpora značek pro prostředky Azure
-Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů. Náklady můžete zobrazit podle značek v [cost management analýza nákladů](../../cost-management-billing/costs/quick-acm-cost-analysis.md#understanding-grouping-and-filtering-options) a [fakturace Azure a data o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
+Tento článek popisuje, zda typ prostředku podporuje [značky](tag-resources.md). Sloupec s popisem **podporuje značky** označuje, zda typ prostředku má vlastnost pro značku. Sloupec s označením **značka v sestavě náklady** označuje, zda tento typ prostředku předá značku k sestavě nákladů. Náklady můžete zobrazit podle značek v [cost management analýza nákladů](../../cost-management-billing/costs/group-filter.md) a [fakturace Azure a data o denním využití](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md).
 
 Pokud chcete získat stejná data jako soubor hodnot oddělených čárkami, Stáhněte si [tag-support. csv](https://github.com/tfitzmac/resource-capabilities/blob/master/tag-support.csv).
 

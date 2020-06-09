@@ -2,17 +2,17 @@
 title: Publikování událostí s doménami událostí pomocí Azure Event Grid
 description: Ukazuje, jak spravovat velké sady témat v Azure Event Grid a publikovat do nich události pomocí domén událostí.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
-ms.author: babanisa
+ms.author: femila
 ms.topic: conceptual
 ms.date: 10/22/2019
-ms.openlocfilehash: 1d07227249806b7d54523af66817a170c19354ee
-ms.sourcegitcommit: 6a4fbc5ccf7cca9486fe881c069c321017628f20
+ms.openlocfilehash: 10a0b138c702d4e4d09608c42959c68e97790f81
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72786554"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560989"
 ---
 # <a name="manage-topics-and-publish-events-using-event-domains"></a>Správa témat a publikování událostí pomocí domén událostí
 
@@ -48,7 +48,7 @@ az eventgrid domain create \
   -l <location>
 ```
 
-# <a name="powershell"></a>[Prostředí](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 ```azurepowershell-interactive
 # If you have not already installed the module, do it now.
 # This module is required for preview features.
@@ -78,16 +78,16 @@ New-AzureRmEventGridDomain `
 }
 ```
 
-Všimněte si `endpoint` , `id` že a jsou nutné ke správě událostí domény a publikování.
+Všimněte si, že `endpoint` a jsou `id` nutné ke správě událostí domény a publikování.
 
 ## <a name="manage-access-to-topics"></a>Správa přístupu k tématům
 
 Správa přístupu k tématům se provádí prostřednictvím [přiřazení role](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli). Přiřazení role používá řízení přístupu na základě rolí k omezení operací s prostředky Azure u autorizovaných uživatelů v určitém oboru.
 
-Event Grid má dvě předdefinované role, které můžete použít k přiřazení přístupu konkrétním uživatelům k různým tématům v rámci domény. Tyto role jsou `EventGrid EventSubscription Contributor (Preview)`, což umožňuje vytvořit a odstranit odběry a `EventGrid EventSubscription Reader (Preview)`, které umožňují pouze výpis odběrů událostí.
+Event Grid má dvě předdefinované role, které můžete použít k přiřazení přístupu konkrétním uživatelům k různým tématům v rámci domény. Tyto role jsou `EventGrid EventSubscription Contributor (Preview)` , což umožňuje vytvořit a odstranit odběry a `EventGrid EventSubscription Reader (Preview)` , které umožňují pouze výpis odběrů událostí.
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azurecli)
-Následující příkaz Azure CLI omezuje `alice@contoso.com` vytváření a odstraňování odběrů událostí jenom v tématu: `demotopic1`
+Následující příkaz Azure CLI omezuje `alice@contoso.com` vytváření a odstraňování odběrů událostí jenom v tématu `demotopic1` :
 
 ```azurecli-interactive
 az role assignment create \
@@ -96,8 +96,8 @@ az role assignment create \
   --scope /subscriptions/<sub-id>/resourceGroups/<my-resource-group>/providers/Microsoft.EventGrid/domains/<my-domain-name>/topics/demotopic1
 ```
 
-# <a name="powershell"></a>[Prostředí](#tab/powershell)
-Následující příkaz prostředí PowerShell omezuje `alice@contoso.com` vytváření a odstraňování odběrů událostí pouze v tématu `demotopic1`:
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
+Následující příkaz prostředí PowerShell omezuje `alice@contoso.com` vytváření a odstraňování odběrů událostí pouze v tématu `demotopic1` :
 
 ```azurepowershell-interactive
 New-AzureRmRoleAssignment `
@@ -113,7 +113,7 @@ Další informace o správě přístupu pro operace Event Grid najdete v tématu
 
 Služba Event Grid automaticky vytvoří a spravuje příslušné téma v doméně na základě volání pro vytvoření odběru událostí pro doménu. Neexistuje žádný samostatný krok k vytvoření tématu v doméně. Podobně platí, že když se odstraní poslední odběr události pro téma, odstraní se i téma.
 
-Přihlášení k odběru tématu v doméně se shoduje s přihlášením k jakémukoli jinému prostředku Azure. V poli ID zdrojového prostředku zadejte ID domény události, které se vrátilo při dřívějším vytvoření domény. Chcete-li určit téma, ke kterému se chcete přihlásit `/topics/<my-topic>` , přidejte na konec ID zdrojového prostředku. Pokud chcete vytvořit odběr událostí oboru domény, který přijme všechny události v doméně, zadejte ID domény události bez zadání jakýchkoli témat.
+Přihlášení k odběru tématu v doméně se shoduje s přihlášením k jakémukoli jinému prostředku Azure. V poli ID zdrojového prostředku zadejte ID domény události, které se vrátilo při dřívějším vytvoření domény. Chcete-li určit téma, ke kterému se chcete přihlásit, přidejte `/topics/<my-topic>` na konec ID zdrojového prostředku. Pokud chcete vytvořit odběr událostí oboru domény, který přijme všechny události v doméně, zadejte ID domény události bez zadání jakýchkoli témat.
 
 Uživatel, kterému jste udělili přístup v předchozí části, obvykle vytvoří odběr. Pro zjednodušení tohoto článku vytvoříte předplatné. 
 
@@ -126,7 +126,7 @@ az eventgrid event-subscription create \
   --endpoint https://contoso.azurewebsites.net/api/updates
 ```
 
-# <a name="powershell"></a>[Prostředí](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 ```azurepowershell-interactive
 New-AzureRmEventGridSubscription `
@@ -137,7 +137,7 @@ New-AzureRmEventGridSubscription `
 
 ---
 
-Pokud potřebujete testovat koncový bod pro přihlášení k odběru událostí, můžete vždy nasadit [předem vytvořenou webovou aplikaci](https://github.com/Azure-Samples/azure-event-grid-viewer) , která zobrazí příchozí události. Své události můžete odeslat na zkušební web na adrese `https://<your-site-name>.azurewebsites.net/api/updates`.
+Pokud potřebujete testovat koncový bod pro přihlášení k odběru událostí, můžete vždy nasadit [předem vytvořenou webovou aplikaci](https://github.com/Azure-Samples/azure-event-grid-viewer) , která zobrazí příchozí události. Své události můžete odeslat na zkušební web na adrese `https://<your-site-name>.azurewebsites.net/api/updates` .
 
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fazure-event-grid-viewer%2Fmaster%2Fazuredeploy.json" target="_blank"><img src="https://azuredeploy.net/deploybutton.png"/></a>
 
@@ -146,7 +146,7 @@ Oprávnění nastavená pro téma jsou uložena v Azure Active Directory a je nu
 
 ## <a name="publish-events-to-an-event-grid-domain"></a>Publikování událostí do domény Event Grid
 
-Publikování událostí do domény je stejné jako [publikování do vlastního tématu](./post-to-custom-topic.md). Místo publikování do vlastního tématu ale publikujete všechny události do koncového bodu domény. V datech události JSON zadáte téma, na které chcete události přejít. Následující pole událostí by vedlo k události `"id": "1111"` s tématem `demotopic1` v době, kdy se `"id": "2222"` událost s pošle do `demotopic2`tématu:
+Publikování událostí do domény je stejné jako [publikování do vlastního tématu](./post-to-custom-topic.md). Místo publikování do vlastního tématu ale publikujete všechny události do koncového bodu domény. V datech události JSON zadáte téma, na které chcete události přejít. Následující pole událostí by vedlo k události s `"id": "1111"` tématem v `demotopic1` době, kdy se událost s `"id": "2222"` pošle do tématu `demotopic2` :
 
 ```json
 [{
@@ -192,7 +192,7 @@ az eventgrid domain key list \
   -n <my-domain>
 ```
 
-# <a name="powershell"></a>[Prostředí](#tab/powershell)
+# <a name="powershell"></a>[PowerShell](#tab/powershell)
 K získání koncového bodu domény pomocí prostředí PowerShell použijte
 
 ```azurepowershell-interactive
