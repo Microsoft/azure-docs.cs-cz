@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/03/2020
+ms.date: 06/08/2020
 ms.author: b-juche
-ms.openlocfilehash: 8e9ee573ca908c41fe7c7887d0f306971369f83f
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: d3f5095f8b8c140f704160feff9cd12ad9ca0974
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84417493"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553760"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Nejčastější dotazy týkající se Azure NetApp Files
 
@@ -29,7 +29,7 @@ Tento článek obsahuje odpovědi na nejčastější dotazy týkající se Azure
 
 ### <a name="does-the-nfs-data-path-go-over-the-internet"></a>Přechází se přes Internet cestu k datům NFS?  
 
-No. Cesta k datům NFS nepřekračuje Internet. Azure NetApp Files je nativní služba Azure, která je nasazená do Azure Virtual Network (VNet), kde je služba dostupná. Azure NetApp Files používá delegovanou podsíť a zřizuje síťové rozhraní přímo ve virtuální síti. 
+Ne. Cesta k datům NFS nepřekračuje Internet. Azure NetApp Files je nativní služba Azure, která je nasazená do Azure Virtual Network (VNet), kde je služba dostupná. Azure NetApp Files používá delegovanou podsíť a zřizuje síťové rozhraní přímo ve virtuální síti. 
 
 Podrobnosti najdete v tématu [pokyny pro Azure NetApp Files plánování sítě](https://docs.microsoft.com/azure/azure-netapp-files/azure-netapp-files-network-topologies) .  
 
@@ -48,7 +48,7 @@ Ano, pokud vytvoříte požadované položky DNS, můžete. Azure NetApp Files p
 
 ### <a name="can-i-set-or-select-my-own-ip-address-for-an-azure-netapp-files-volume"></a>Můžu u Azure NetApp Filesho svazku nastavit nebo vybrat vlastní IP adresu?  
 
-No. Přiřazení IP adres Azure NetApp Files svazků je dynamické. Přiřazení statických IP adres se nepodporuje. 
+Ne. Přiřazení IP adres Azure NetApp Files svazků je dynamické. Přiřazení statických IP adres se nepodporuje. 
  
 ## <a name="security-faqs"></a>Nejčastější dotazy týkající se zabezpečení
 
@@ -173,11 +173,11 @@ Azure NetApp Files zajišťuje fond kapacit a metriky využití svazků. K monit
 
 ### <a name="can-i-manage-azure-netapp-files-through-azure-storage-explorer"></a>Můžu Azure NetApp Files přes Průzkumník služby Azure Storage spravovat?
 
-No. Průzkumník služby Azure Storage nepodporuje Azure NetApp Files.
+Ne. Průzkumník služby Azure Storage nepodporuje Azure NetApp Files.
 
 ### <a name="how-do-i-determine-if-a-directory-is-approaching-the-limit-size"></a>Návody zjistit, jestli se adresář blíží velikosti limitu?
 
-Pomocí `stat` příkazu z klienta můžete zjistit, jestli se adresář blíží omezení maximální velikosti (320 MB).
+Pomocí `stat` příkazu z klienta můžete zjistit, jestli se adresář blíží omezení maximální velikosti pro metadata adresáře (320 MB).
 
 V případě adresáře 320 MB je počet bloků 655360, přičemž každá velikost bloku je 512 bajtů.  (To znamená 320x1024x1024/512.)  
 
@@ -227,11 +227,11 @@ Požadavky na replikaci Azure NetApp Filesho svazku do jiné oblasti Azure jsou 
 
 ### <a name="is-migration-with-azure-data-box-supported"></a>Je migrace s Azure Data Box podporována?
 
-No. Azure Data Box nepodporuje aktuálně Azure NetApp Files. 
+Ne. Azure Data Box nepodporuje aktuálně Azure NetApp Files. 
 
 ### <a name="is-migration-with-azure-importexport-service-supported"></a>Je migrace pomocí služby Azure import/export podporovaná?
 
-No. Služba Azure import/export nepodporuje Azure NetApp Files aktuálně.
+Ne. Služba Azure import/export nepodporuje Azure NetApp Files aktuálně.
 
 ## <a name="next-steps"></a>Další kroky  
 

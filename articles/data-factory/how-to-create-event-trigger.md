@@ -11,12 +11,12 @@ manager: jroth
 ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 10/18/2018
-ms.openlocfilehash: ebcdb37652e8bdf23e8403e7f152ce1f41607c61
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 10f0079f47e5d2fd99b358fcc5cfb4c80aa9bd91
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263444"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508892"
 ---
 # <a name="create-a-trigger-that-runs-a-pipeline-in-response-to-an-event"></a>Vytvoření triggeru, který spustí kanál v reakci na událost
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -50,7 +50,7 @@ V této části se dozvíte, jak vytvořit aktivační událost události v uži
 1. V rozevíracím seznamu předplatného Azure vyberte svůj účet úložiště nebo ručně použijte jeho ID prostředku účtu úložiště. Vyberte kontejner, ve kterém chcete události provést. Výběr kontejneru je nepovinný, ale nezapomeňte, že výběr všech kontejnerů může vést k velkému počtu událostí.
 
    > [!NOTE]
-   > Aktivační událost aktuálně podporuje pouze účty úložiště Azure Data Lake Storage Gen2 a obecné účely verze 2. Musíte mít aspoň oprávnění *vlastníka* na accoutn úložiště.  Z důvodu omezení Azure Event Grid Azure Data Factory podporuje maximálně 500 triggerů událostí na účet úložiště.
+   > Aktivační událost aktuálně podporuje pouze účty úložiště Azure Data Lake Storage Gen2 a obecné účely verze 2. Musíte mít aspoň oprávnění *vlastníka* k účtu úložiště.  Z důvodu omezení Azure Event Grid Azure Data Factory podporuje maximálně 500 triggerů událostí na účet úložiště.
 
 1. **Cesta k objektu BLOB začíná** a **cesta k objektu BLOB končí** vlastností umožňuje zadat kontejnery, složky a názvy objektů blob, pro které chcete události přijímat. Aktivační událost události vyžaduje, aby byla definována alespoň jedna z těchto vlastností. Můžete použít celou řadu vzorů pro **cestu objektu BLOB** , která začíná a má **cestu k objektu BLOB končící** vlastností, jak je znázorněno v příkladech dále v tomto článku.
 
@@ -94,7 +94,7 @@ V této části najdete příklady nastavení triggeru založeného na událoste
 > [!IMPORTANT]
 > Je nutné zahrnout `/blobs/` segment cesty, jak je znázorněno v následujících příkladech, kdykoli zadáte kontejner a složku, kontejner a soubor, nebo kontejner, složku a soubor. V případě **blobPathBeginsWith**bude uživatelské rozhraní Data Factory automaticky přidávat `/blobs/` mezi složku a název kontejneru ve formátu JSON triggeru.
 
-| Vlastnost | Příklad | Popis |
+| Vlastnost | Příklad | Description |
 |---|---|---|
 | **Cesta objektu BLOB začíná na** | `/containername/` | Přijímá události pro libovolný objekt BLOB v kontejneru. |
 | **Cesta objektu BLOB začíná na** | `/containername/blobs/foldername/` | Přijímá události pro všechny objekty BLOB v `containername` kontejneru a `foldername` složce. |

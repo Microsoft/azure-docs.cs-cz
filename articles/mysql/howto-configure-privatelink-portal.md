@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 29400a374c421b0d1835c94ed302c57ba45744d7
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7dbce3f2645a1ae4e01dc52d516962297ea07df6
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485404"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488847"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mysql-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for MySQL pomocí portálu
 
@@ -113,7 +113,7 @@ V této části vytvoříte Azure Database for MySQL server v Azure.
     | Uživatelské jméno správce| Zadejte jméno správce, které chcete zvolit. |
     | Heslo | Zadejte libovolné heslo. Heslo musí mít délku alespoň 8 znaků a musí splňovat definované požadavky. |
     | Umístění | Vyberte oblast Azure, ve které chcete, aby se server MySQL nacházel. |
-    |Verze  | Vyberte verzi databáze serveru MySQL, která je povinná.|
+    |Version  | Vyberte verzi databáze serveru MySQL, která je povinná.|
     | Výpočty a úložiště| Vyberte cenovou úroveň, která je potřebná pro server na základě zatížení. |
     |||
  
@@ -173,7 +173,7 @@ V této části vytvoříte Server MySQL a přidáte do něj privátní koncový
     |||
 
     > [!Note] 
-    > Přečtěte si téma [Konfigurace zóny DNS služeb Azure](../private-link/private-endpoint-dns.md).
+    > Pro vaši službu použijte předdefinovanou privátní zónu DNS nebo vytvořte novou. Podrobnosti najdete v tématu [Konfigurace zóny DNS služeb Azure](../private-link/private-endpoint-dns.md) .
 
 1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
 2. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**. 

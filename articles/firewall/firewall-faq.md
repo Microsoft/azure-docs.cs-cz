@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 05/18/2020
+ms.date: 06/08/2020
 ms.author: victorh
-ms.openlocfilehash: d1ec04a0c16feb6d404018ff9538b9572e1d71c2
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: f8bfc163fbf32a2083b6e9250daaf5ea2629d10a
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649611"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509232"
 ---
 # <a name="azure-firewall-faq"></a>Nejčastější dotazy k Azure Firewall
 
@@ -88,7 +88,7 @@ Viz [ceny Azure firewall](https://azure.microsoft.com/pricing/details/azure-fire
 
 Můžete použít metody *navrácení* a *přidělení* Azure PowerShell.
 
-Například:
+Příklad:
 
 ```azurepowershell
 # Stop an existing firewall
@@ -211,3 +211,7 @@ Test TCP se ve skutečnosti nepřipojuje k cílovému plně kvalifikovanému ná
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Existují omezení počtu IP adres podporovaných skupinami IP adres?
 
 Ano. Další informace najdete v tématu [limity, kvóty a omezení předplatného a služeb Azure](../azure-resource-manager/management/azure-subscription-service-limits.md#azure-firewall-limits) .
+
+## <a name="can-i-move-an-ip-group-to-another-resource-group"></a>Můžu přesunout skupinu IP adres do jiné skupiny prostředků?
+
+Ne, přesunutí skupiny IP adres do jiné skupiny prostředků se momentálně nepodporuje.

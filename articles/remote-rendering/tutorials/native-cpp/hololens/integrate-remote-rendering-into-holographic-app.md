@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 05/04/2020
 ms.topic: tutorial
-ms.openlocfilehash: e68cbe664facbd63153171b7d9be2cbf4850b56f
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 75f041d8ec149c67c82744a87e0812b19a22bcb1
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434413"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508518"
 ---
 # <a name="tutorial-integrate-remote-rendering-into-a-hololens-holographic-app"></a>Kurz: integrace vzdáleného vykreslování do holografické aplikace HoloLens
 
@@ -490,16 +490,22 @@ HolographicFrame HolographicAppMain::Update()
 
 ### <a name="rendering"></a>Vykreslování
 
-Poslední věc, kterou je potřeba udělat, je vyvoláno vykreslování vzdáleného obsahu. Toto volání musíme provést v přesné správné pozici v rámci kanálu vykreslování, až bude cíl vykreslování jasný. Do funkce Zamknout dovnitř vložte následující fragment kódu `UseHolographicCameraResources` `HolographicAppMain::Render` :
+Poslední věc, kterou je potřeba udělat, je vyvoláno vykreslování vzdáleného obsahu. Toto volání musíme provést v přesném pravém umístění v rámci kanálu vykreslování, poté, co cíl vykreslování vymažete a nastavíte zobrazení. Do funkce Zamknout dovnitř vložte následující fragment kódu `UseHolographicCameraResources` `HolographicAppMain::Render` :
 
 ```cpp
         ...
         // Existing clear function:
         context->ClearDepthStencilView(depthStencilView, D3D11_CLEAR_DEPTH | D3D11_CLEAR_STENCIL, 1.0f, 0);
+        
+        // ...
+
+        // Exiting check to test for valid camera:
+        bool cameraActive = pCameraResources->AttachViewProjectionBuffer(m_deviceResources);
+
 
         // Inject remote rendering: as soon as we are connected, start blitting the remote frame.
         // We do the blitting after the Clear, and before cube rendering.
-        if (m_isConnected)
+        if (m_isConnected && cameraActive)
         {
             m_graphicsBinding->BlitRemoteFrame();
         }

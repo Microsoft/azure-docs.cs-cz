@@ -9,12 +9,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/18/2017
 ms.author: tagore
-ms.openlocfilehash: b832831a2483b11a7a3c1942dd79065e8be65bf9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 93e120a0519e1fc61a716e606e088801fdf508dd
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75360714"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556366"
 ---
 # <a name="python-web-and-worker-roles-with-python-tools-for-visual-studio"></a>Webové role a role pracovních procesů Pythonu při použití nástrojů Python Tools for Visual Studio
 
@@ -323,7 +324,7 @@ V okně výstupu uvidíte průběh a pak se zobrazí okno Protokoly aktivit Micr
 Pár minut bude probíhat nasazování a pak už vám na Azure začne běžet webová role a role pracovního procesu.
 
 ### <a name="investigate-logs"></a>Prozkoumání protokolů
-Po spuštění virtuálního počítače cloudové služby a instalaci Pythonu si můžete prohlédnou protokoly a hledat případné zprávy o neúspěchu. Tyto protokoly se nacházejí ve složce **C:\Resources\Directory\\{role} \LogFiles** . Soubor **PrepPython.err.txt** obsahuje alespoň jednu chybu, protože se skript pokusil zjistit, zda je nainstalován Python, a soubor **PipInstaller.err.txt** může obsahovat zprávu ohledně zastaralé verze programu pip.
+Po spuštění virtuálního počítače cloudové služby a instalaci Pythonu si můžete prohlédnou protokoly a hledat případné zprávy o neúspěchu. Tyto protokoly se nacházejí ve složce **C:\Resources\Directory \\ {role} \LogFiles** . Soubor **PrepPython.err.txt** obsahuje alespoň jednu chybu, protože se skript pokusil zjistit, zda je nainstalován Python, a soubor **PipInstaller.err.txt** může obsahovat zprávu ohledně zastaralé verze programu pip.
 
 ## <a name="next-steps"></a>Další kroky
 Další podrobné informace o práci s webovými rolemi a rolemi pracovních procesů v nástrojích Python Tools for Visual Studio najdete v dokumentaci k těmto nástrojům:

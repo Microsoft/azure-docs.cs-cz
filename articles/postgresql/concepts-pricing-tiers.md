@@ -6,18 +6,18 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: 95795f287a369edec84b68ac920874808966ff1e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3a813a9b8c2a81a85d1c4a96d5a4da2256832d3b
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82097077"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487980"
 ---
 # <a name="pricing-tiers-in-azure-database-for-postgresql---single-server"></a>Cenové úrovně ve službě Azure Database for PostgreSQL – Jeden server
 
 Server Azure Database for PostgreSQL můžete vytvořit v jedné ze tří různých cenových úrovní: optimalizováno Basic, Pro obecné účely a paměť. Cenové úrovně jsou rozlišené o množství výpočtů v virtuální jádra, které se dá zřídit, paměť na vCore a technologie úložiště, která se používá k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru PostgreSQL. Server může mít jednu nebo více databází.
 
-|    | **Základní** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+|    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Generování výpočtů | Gen 4, fin. 5 | Gen 4, fin. 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,7 +29,7 @@ Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následujíc�
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Základní | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
+| Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
 | Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
 | Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
 
@@ -43,7 +43,7 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 
 Úložiště, které zřizujete, je množství úložné kapacity dostupné pro váš server Azure Database for PostgreSQL. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru PostgreSQL. Celková velikost úložiště, kterou zřizujete, také definuje kapacitu v/v k dispozici pro váš server.
 
-|    | **Základní** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+|    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Pro obecné účely úložiště | Pro obecné účely úložiště |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 16 TB | 5 GB až 16 TB |
@@ -51,7 +51,7 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 | IOPS | Proměnná |3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
 
 > [!NOTE]
-> Úložiště až 16TB a 20 000 IOPS je podporované v následujících oblastech: Východní USA, Východní USA 2, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jih, Austrálie – jihovýchod.
+> Úložiště až do 16TB a 20 000 IOPS je podporované v následujících oblastech: Východní USA, Východní USA 2, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jihovýchod, Západní USA 2 a Středozápadní USA.
 >
 > Všechny ostatní oblasti podporují až 4 TB úložiště a 6000 IOPS.
 >
@@ -73,7 +73,7 @@ Pokud jste například zřídili 110 GB úložiště a skutečné využití dos�
 
 Když je Server nastavený jen pro čtení, všechny existující relace jsou odpojené a nepotvrzené transakce se vrátí zpět. Jakékoli následné operace zápisu a potvrzení transakce selžou. Všechny následné dotazy pro čtení budou fungovat bez přerušení.  
 
-Můžete buď zvýšit množství zřízené úložiště na server, nebo spustit novou relaci v režimu pro čtení i zápis a uvolnit data pro uvolnění bezplatného úložiště. Spuštění `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` nastaví aktuální relaci na režim zápisu. Aby nedošlo k poškození dat, neprovádějte žádné operace zápisu, pokud je server stále ve stavu jen pro čtení.
+Můžete buď zvýšit množství zřízené úložiště na server, nebo spustit novou relaci v režimu pro čtení i zápis a uvolnit data pro uvolnění bezplatného úložiště. Spuštění `SET SESSION CHARACTERISTICS AS TRANSACTION READ WRITE;` Nastaví aktuální relaci na režim zápisu. Aby nedošlo k poškození dat, neprovádějte žádné operace zápisu, pokud je server stále ve stavu jen pro čtení.
 
 Doporučujeme zapnout automatické zvětšování úložiště nebo nastavit výstrahu, která vás upozorní, když se serverové úložiště blíží prahové hodnotě, takže se můžete vyhnout přístupu do stavu jen pro čtení. Další informace najdete v dokumentaci k [Nastavení výstrahy](howto-alert-on-metric.md).
 

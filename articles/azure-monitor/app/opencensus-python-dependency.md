@@ -5,22 +5,23 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: e400669fd96518adead74a81fc332767c5f9b23b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 4d9f4475edb9d2f44fe51549dd0dc701b638bf8e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77669926"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553967"
 ---
 # <a name="track-dependencies-with-opencensus-python"></a>Sledování závislostí pomocí OpenCensus Pythonu
 
-Závislost je externí komponenta, která je volána vaší aplikací. Data závislostí se shromažďují pomocí OpenCensus Pythonu a jejich různých integrací. Data se pak odešlou do Application Insights v části Azure Monitor `dependencies` jako telemetrie.
+Závislost je externí komponenta, která je volána vaší aplikací. Data závislostí se shromažďují pomocí OpenCensus Pythonu a jejich různých integrací. Data se pak odešlou do Application Insights v části Azure Monitor jako `dependencies` telemetrie.
 
 Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md).
 
 ## <a name="in-process-dependencies"></a>Závislosti v procesu
 
-OpenCensus Python SDK pro Azure Monitor umožňuje odeslat "vnitroprocesové" telemetrii závislostí (informace a logika, ke kterým dochází v rámci vaší aplikace). Závislosti v procesu budou mít `type` pole jako `INPROC` v části analýza.
+OpenCensus Python SDK pro Azure Monitor umožňuje odeslat "vnitroprocesové" telemetrii závislostí (informace a logika, ke kterým dochází v rámci vaší aplikace). Závislosti v procesu budou mít `type` pole jako v části `INPROC` Analýza.
 
 ```python
 from opencensus.ext.azure.trace_exporter import AzureExporter
@@ -35,9 +36,9 @@ with tracer.span(name='foo'): # <-- A dependency telemetry item will be sent for
 
 ## <a name="dependencies-with-requests-integration"></a>Závislosti s integrací požadavků
 
-Sledujte své odchozí žádosti s integrací `requests` OpenCensus.
+Sledujte své odchozí žádosti s `requests` integrací OpenCensus.
 
-Stáhněte si a `opencensus-ext-requests` nainstalujte z [PyPI](https://pypi.org/project/opencensus-ext-requests/) a přidejte je do integrace trasování. Žádosti odeslané pomocí knihovny [požadavků](https://pypi.org/project/requests/) Python budou sledovány.
+Stáhněte si a nainstalujte `opencensus-ext-requests` z [PyPI](https://pypi.org/project/opencensus-ext-requests/) a přidejte je do integrace trasování. Žádosti odeslané pomocí knihovny [požadavků](https://pypi.org/project/requests/) Python budou sledovány.
 
 ```python
 import requests
@@ -56,9 +57,9 @@ with tracer.span(name='parent'):
 
 ## <a name="dependencies-with-httplib-integration"></a>Závislosti s integrací "httplib"
 
-Sledujte své odchozí žádosti pomocí integrace `httplib` OpenCensus.
+Sledujte své odchozí žádosti pomocí `httplib` integrace OpenCensus.
 
-Stáhněte si a `opencensus-ext-httplib` nainstalujte z [PyPI](https://pypi.org/project/opencensus-ext-httplib/) a přidejte je do integrace trasování. Žádosti odeslané pomocí [http. Client](https://docs.python.org/3.7/library/http.client.html) pro python3 nebo [httplib](https://docs.python.org/2/library/httplib.html) pro Python2 se budou sledovat.
+Stáhněte si a nainstalujte `opencensus-ext-httplib` z [PyPI](https://pypi.org/project/opencensus-ext-httplib/) a přidejte je do integrace trasování. Žádosti odeslané pomocí [http. Client](https://docs.python.org/3.7/library/http.client.html) pro python3 nebo [httplib](https://docs.python.org/2/library/httplib.html) pro Python2 se budou sledovat.
 
 ```python
 import http.client as httplib
@@ -82,9 +83,9 @@ conn.close()
 
 ## <a name="dependencies-with-django-integration"></a>Závislosti s integrací "Django"
 
-Sledujte své odchozí požadavky Django s integrací `django` OpenCensus.
+Sledujte své odchozí požadavky Django s `django` integrací OpenCensus.
 
-Stáhněte si a `opencensus-ext-django` nainstalujte z [PyPI](https://pypi.org/project/opencensus-ext-django/) a přidejte následující řádek do `MIDDLEWARE` oddílu v souboru Django. `settings.py`
+Stáhněte si a nainstalujte `opencensus-ext-django` z [PyPI](https://pypi.org/project/opencensus-ext-django/) a přidejte následující řádek do `MIDDLEWARE` oddílu v souboru Django `settings.py` .
 
 ```python
 MIDDLEWARE = [
@@ -108,9 +109,9 @@ OPENCENSUS = {
 
 ## <a name="dependencies-with-mysql-integration"></a>Závislosti s integrací MySQL
 
-Sledujte závislosti MYSQL pomocí integrace OpenCensus `mysql` . Tato integrace podporuje knihovnu [MySQL-Connector](https://pypi.org/project/mysql-connector-python/) .
+Sledujte závislosti MYSQL pomocí `mysql` integrace OpenCensus. Tato integrace podporuje knihovnu [MySQL-Connector](https://pypi.org/project/mysql-connector-python/) .
 
-Stáhněte si a `opencensus-ext-mysql` nainstalujte si z [PyPI](https://pypi.org/project/opencensus-ext-mysql/) a přidejte následující řádky do kódu.
+Stáhněte si a nainstalujte si `opencensus-ext-mysql` z [PyPI](https://pypi.org/project/opencensus-ext-mysql/) a přidejte následující řádky do kódu.
 
 ```python
 from opencensus.trace import config_integration
@@ -120,9 +121,9 @@ config_integration.trace_integrations(['mysql'])
 
 ## <a name="dependencies-with-pymysql-integration"></a>Závislosti s integrací "pymysql"
 
-Sledujte závislosti PyMySQL s integrací OpenCensus `pymysql` .
+Sledujte závislosti PyMySQL s `pymysql` integrací OpenCensus.
 
-Stáhněte si a `opencensus-ext-pymysql` nainstalujte si z [PyPI](https://pypi.org/project/opencensus-ext-pymysql/) a přidejte následující řádky do kódu.
+Stáhněte si a nainstalujte si `opencensus-ext-pymysql` z [PyPI](https://pypi.org/project/opencensus-ext-pymysql/) a přidejte následující řádky do kódu.
 
 ```python
 from opencensus.trace import config_integration
@@ -132,9 +133,9 @@ config_integration.trace_integrations(['pymysql'])
 
 ## <a name="dependencies-with-postgresql-integration"></a>Závislosti s integrací "PostgreSQL"
 
-Sledujte závislosti PostgreSQL s integrací OpenCensus `postgresql` . Tato integrace podporuje knihovnu [psycopg2](https://pypi.org/project/psycopg2/) .
+Sledujte závislosti PostgreSQL s `postgresql` integrací OpenCensus. Tato integrace podporuje knihovnu [psycopg2](https://pypi.org/project/psycopg2/) .
 
-Stáhněte si a `opencensus-ext-postgresql` nainstalujte si z [PyPI](https://pypi.org/project/opencensus-ext-postgresql/) a přidejte následující řádky do kódu.
+Stáhněte si a nainstalujte si `opencensus-ext-postgresql` z [PyPI](https://pypi.org/project/opencensus-ext-postgresql/) a přidejte následující řádky do kódu.
 
 ```python
 from opencensus.trace import config_integration
@@ -144,9 +145,9 @@ config_integration.trace_integrations(['postgresql'])
 
 ## <a name="dependencies-with-pymongo-integration"></a>Závislosti s integrací "pymongo"
 
-Sledujte závislosti MongoDB s integrací OpenCensus `pymongo` . Tato integrace podporuje knihovnu [pymongo](https://pypi.org/project/pymongo/) .
+Sledujte závislosti MongoDB s `pymongo` integrací OpenCensus. Tato integrace podporuje knihovnu [pymongo](https://pypi.org/project/pymongo/) .
 
-Stáhněte si a `opencensus-ext-pymongo` nainstalujte si z [PyPI](https://pypi.org/project/opencensus-ext-pymongo/) a přidejte následující řádky do kódu.
+Stáhněte si a nainstalujte si `opencensus-ext-pymongo` z [PyPI](https://pypi.org/project/opencensus-ext-pymongo/) a přidejte následující řádky do kódu.
 
 ```python
 from opencensus.trace import config_integration
@@ -168,6 +169,6 @@ config_integration.trace_integrations(['sqlalchemy'])
 
 * [Mapa aplikace](../../azure-monitor/app/app-map.md)
 * [Dostupnost](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Hledat](../../azure-monitor/app/diagnostic-search.md)
+* [Vyhledávání](../../azure-monitor/app/diagnostic-search.md)
 * [Dotaz na protokol (Analytics)](../../azure-monitor/log-query/log-query-overview.md)
 * [Diagnostika transakcí](../../azure-monitor/app/transaction-diagnostics.md)

@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c4c1cfdb927cfd2ee607bfe2a951e06c80f9bfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: a65143394d8e6ee8a385cc5d1737cc976aae47b2
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418537"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558479"
 ---
 # <a name="the-team-data-science-process-in-action-using-azure-synapse-analytics"></a>Vědecké zpracování týmových dat v akci: používání Azure synapse Analytics
 V tomto kurzu Vás provedeme vytvořením a nasazením modelu strojového učení s využitím Azure synapse Analytics pro veřejně dostupnou datovou sadu, která je datovou sadou [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) . Model binární klasifikace vytváří předpověď bez ohledu na to, jestli je pro cestu placené nebo ne.  Mezi modely patří klasifikace s více třídami (bez ohledu na to, zda existuje Tip) a regrese (rozdělení pro placené částky Tip).
@@ -43,17 +43,17 @@ Data NYC taxislužby se skládají z přibližně 20 GB komprimovaných souborů
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-**Jedinečný klíč** , který se používá pro\_připojení k datům\_cest a služební tarif, se skládá z následujících tří polí:
+**Jedinečný klíč** , který se používá pro připojení k \_ datům cest a služební \_ tarif, se skládá z následujících tří polí:
 
 * medallion,
-* licence\_pro napadení a
-* datum\_a čas vyzvednutí
+* licence pro napadení \_ a
+* \_Datum a čas vyzvednutí
 
 ## <a name="address-three-types-of-prediction-tasks"></a><a name="mltasks"></a>Adresovat tři typy úloh předpovědi
-Pro ilustraci tří druhů úloh modelování formuluje tři problémy s předpovědí na základě *výše uvedeného popisu\_* :
+Pro ilustraci tří druhů úloh modelování formuluje tři problémy s předpovědí na základě * \_ výše uvedeného popisu* :
 
-1. **Binární klasifikace**: Chcete-li předpovědět, zda byla pro cestu vyplacena hodnota tipu, to znamená, že hodnota *tipu\_* větší než $0 je pozitivním příkladem, zatímco je *hodnota tipu\_* $0 záporná.
-2. **Klasifikace více tříd**: pro předpověď rozsahu tipu placeného pro danou cestu. *Velikost tipu\_* rozdělíme na pět přihrádek nebo tříd:
+1. **Binární klasifikace**: Chcete-li předpovědět, zda byla pro cestu vyplacena * \_ hodnota* tipu, to znamená, že hodnota tipu větší než $0 je pozitivním příkladem, zatímco je * \_ hodnota tipu* $0 záporná.
+2. **Klasifikace více tříd**: pro předpověď rozsahu tipu placeného pro danou cestu. * \_ Velikost tipu* rozdělíme na pět přihrádek nebo tříd:
 
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -77,7 +77,7 @@ Pokud chcete nastavit prostředí pro datové vědy v Azure, postupujte podle t�
 **Zřiďte svou instanci Azure synapse Analytics.**
 Pokud chcete zřídit instanci Azure synapse Analytics, postupujte podle dokumentace v části [Vytvoření a dotazování Azure SQL Data Warehouse v Azure Portal](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) . Ujistěte se, že jste provedli zápisy následujících přihlašovacích údajů služby Azure synapse Analytics, které budou použity v pozdějších krocích.
 
-* **Název serveru**: \<název serveru>. Database.Windows.NET
+* **Název serveru**: \<server Name> . Database.Windows.NET
 * **Název SQLDW (databáze)**
 * **Jmen**
 * **Heslo**
@@ -323,7 +323,7 @@ Budete se muset rozhodnout, co dělat, pokud máte duplicitní zdrojový a cílo
 
 ![Výstup z AzCopy][21]
 
-Můžete používat vlastní data. Pokud jsou vaše data v místním počítači v reálném čase, můžete i nadále používat AzCopy k odesílání místních dat do privátního úložiště objektů BLOB v Azure. Stačí změnit **zdrojové** umístění, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"`v příkazu AzCopy souboru skriptu PowerShellu do místního adresáře, který obsahuje vaše data.
+Můžete používat vlastní data. Pokud jsou vaše data v místním počítači v reálném čase, můžete i nadále používat AzCopy k odesílání místních dat do privátního úložiště objektů BLOB v Azure. Stačí změnit **zdrojové** umístění, `$Source = "http://getgoing.blob.core.windows.net/public/nyctaxidataset"` v příkazu AzCopy souboru skriptu PowerShellu do místního adresáře, který obsahuje vaše data.
 
 > [!TIP]
 > Pokud vaše data už jsou v privátním úložišti objektů BLOB v reálném čase, můžete přeskočit krok AzCopy ve skriptu PowerShellu a přímo nahrát data do Azure Azure synapse Analytics. To bude vyžadovat další úpravy skriptu pro přizpůsobení formátu vašich dat.
@@ -350,7 +350,7 @@ Tady jsou typy úloh zkoumání a vytváření funkcí provedených v této čá
 
 * Prozkoumejte distribuci dat několika polí v různých časových oknech.
 * Prozkoumejte kvalitu dat v polích Zeměpisná délka a zeměpisná šířka.
-* Vygenerujte binární a mezitřídní popisky klasifikace na **základě\_velikosti tipu**.
+* Vygenerujte binární a mezitřídní popisky klasifikace na **základě \_ velikosti tipu**.
 * Generování funkcí a výpočetních/porovnávacích vzdáleností cest.
 * Připojte se k oběma tabulkám a extrahujte náhodný vzorek, který se použije k sestavení modelů.
 
@@ -366,7 +366,7 @@ Tyto dotazy poskytují rychlé ověření počtu řádků a sloupců v tabulkác
 **Výstup:** Měli byste získat 173 179 759 řádků a 14 sloupců.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Průzkum: distribuce cest pomocí Medallion
-Tento ukázkový dotaz identifikuje medallions (taxislužby čísla), které v zadaném časovém období dokončily více než 100 cest. Dotaz by měl těžit z tabulkového přístupu s dělenou výhodou, protože je podmíněné schémam oddílu **pro\_Datum vyzvednutí**. Dotazování na celou datovou sadu použije také prohledání děleného tabulky nebo indexu.
+Tento ukázkový dotaz identifikuje medallions (taxislužby čísla), které v zadaném časovém období dokončily více než 100 cest. Dotaz by měl těžit z tabulkového přístupu s dělenou výhodou, protože je podmíněné schémam oddílu **pro \_ Datum vyzvednutí**. Dotazování na celou datovou sadu použije také prohledání děleného tabulky nebo indexu.
 
     SELECT medallion, COUNT(*)
     FROM <schemaname>.<nyctaxi_fare>
@@ -540,7 +540,7 @@ Tady je příklad volání této funkce pro generování funkcí v dotazu SQL:
 | 3 |40,761456 |-73,999886 |40,766544 |-73,988228 |0.7037227967 |
 
 ### <a name="prepare-data-for-model-building"></a>Příprava dat pro vytváření modelů
-Následující dotaz se spojí s tabulkami **nyctaxi\_TRIPS** a **\_nyctaxi tarifs** , vygeneruje **binární popisek klasifikace**, který je na ní popsán, **třídu tipů\_** klasifikační klasifikace s více třídami a extrahuje ukázku z plné připojené datové sady. Vzorkování se provádí načtením podmnožiny cest na základě doby vyzvednutí.  Tento dotaz se dá zkopírovat a vložit přímo do modulu [Azure Machine Learning Studio (Classic)](https://studio.azureml.net) [Import dat]import[-data] pro příjem přímých dat z instance SQL Database v Azure. Dotaz vyloučí záznamy s nesprávnými souřadnicemi (0, 0).
+Následující dotaz se spojí s tabulkami **nyctaxi \_ TRIPS** a **nyctaxi \_ tarifs** , vygeneruje **binární popisek klasifikace**, který je na ní popsán, ** \_ třídu tipů**klasifikační klasifikace s více třídami a extrahuje ukázku z plné připojené datové sady. Vzorkování se provádí načtením podmnožiny cest na základě doby vyzvednutí.  Tento dotaz se dá zkopírovat a vložit přímo do modulu [Azure Machine Learning Studio (Classic)](https://studio.azureml.net) [Import dat]import[-data] pro příjem přímých dat z instance SQL Database v Azure. Dotaz vyloučí záznamy s nesprávnými souřadnicemi (0, 0).
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -675,7 +675,7 @@ Doba čtení ukázkové tabulky je 14,096495 sekund.
 Počet načtených řádků a sloupců = (1000, 21).
 
 ### <a name="descriptive-statistics"></a>Popisné statistiky
-Teď jste připraveni prozkoumat data s ukázkami. Začneme s prohlížením některých popisných statistik pro **vzdálenost\_na cestách** (nebo na všech ostatních polích, která se rozhodnete zadat).
+Teď jste připraveni prozkoumat data s ukázkami. Začneme s prohlížením některých popisných statistik pro ** \_ vzdálenost na cestách** (nebo na všech ostatních polích, která se rozhodnete zadat).
 
     df1['trip_distance'].describe()
 
@@ -718,13 +718,13 @@ a
 ![Výstup vykreslení čáry][4]
 
 ### <a name="visualization-scatterplot-examples"></a>Vizualizace: příklady scatterplot
-Pro zjištění, zda existuje korelace, zobrazujeme **v grafu\_dobu provozu\_v\_sekundách** a na **služební\_dráze** .
+Pro zjištění, zda existuje korelace, zobrazujeme ** \_ v grafu dobu provozu \_ v \_ sekundách** a na **služební \_ dráze** .
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![Scatterplot výstup vztahu mezi časem a vzdáleností][6]
 
-Podobně můžeme kontrolovat vztah mezi **kódem sazby\_** a **délkou cesty\_**.
+Podobně můžeme kontrolovat vztah mezi ** \_ kódem sazby** a ** \_ délkou cesty**.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
@@ -844,7 +844,7 @@ Příklad binární klasifikace experimentu, který čte data přímo z databáz
 ![Výukový program Azure ML][10]
 
 > [!IMPORTANT]
-> V ukázkách dotazů pro extrakci a vzorkování dat modelování, které jsou uvedené v předchozích částech, **jsou v dotazu zahrnuté všechny popisky pro tři cvičení modelování**. Důležitým (vyžadovaným) krokem v každé cvičení modelování je **vyloučení** zbytečných popisků pro ostatní dva problémy a jakékoli jiné **cíle nevracení**. Například při použití binární klasifikace **použijte popisek,** který se zanechal a vyloučí pole **Třída\_Tip**, **hodnota\_tipu**a **\_celkovou částku**. Tato druhá z nich nevrací cíle, protože implikuje Tip.
+> V ukázkách dotazů pro extrakci a vzorkování dat modelování, které jsou uvedené v předchozích částech, **jsou v dotazu zahrnuté všechny popisky pro tři cvičení modelování**. Důležitým (vyžadovaným) krokem v každé cvičení modelování je **vyloučení** zbytečných popisků pro ostatní dva problémy a jakékoli jiné **cíle nevracení**. Například při použití binární klasifikace **použijte popisek,** který se zanechal a vyloučí pole ** \_ Třída Tip**, ** \_ hodnota tipu**a **celkovou \_ částku**. Tato druhá z nich nevrací cíle, protože implikuje Tip.
 >
 > Chcete-li vyloučit nepotřebné sloupce nebo nevrácené cíle, můžete použít modul [Vybrat sloupce v datové sadě][select-columns] nebo [Upravit metadata][edit-metadata]. Další informace najdete v tématu [Výběr sloupců v datové sadě][select-columns] a úpravy odkazů na [metadata][edit-metadata] .
 >

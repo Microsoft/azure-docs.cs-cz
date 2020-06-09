@@ -9,12 +9,13 @@ ms.subservice: ''
 ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
-ms.openlocfilehash: 21e3ba8cbf60cbbdc6480719016fc48db4fe390c
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.custom: tracking-python
+ms.openlocfilehash: b7ab7abb74701abeeac126b34efdf784beff2d03
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702096"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561826"
 ---
 # <a name="create-develop-and-maintain-azure-synapse-studio-preview-notebooks"></a>Vytváření, vývoj a údržba notebooků Azure synapse Studio (Preview)
 
@@ -70,7 +71,7 @@ V rozevíracím seznamu na horním panelu příkazů můžete nastavit primárn�
 
 V jednom poznámkovém bloku můžete použít více jazyků zadáním správného příkazu jazyka Magic na začátku buňky. V následující tabulce jsou uvedeny příkazy Magic pro přepínání jazyků buněk.
 
-|Magic – příkaz |Jazyk | Popis |  
+|Magic – příkaz |Jazyk | Description |  
 |---|------|-----|
 |%% pyspark| Python | Spustí dotaz **Pythonu** v kontextu Sparku.  |
 |%% Spark| Scala | Spustí dotaz **Scala** proti kontextu Spark.  |  

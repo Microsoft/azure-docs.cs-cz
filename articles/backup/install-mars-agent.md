@@ -3,12 +3,12 @@ title: Instalace agenta Microsoft Azure Recovery Services (MARS)
 description: Naučte se, jak nainstalovat agenta Microsoft Azure Recovery Services (MARS) pro zálohování počítačů s Windows.
 ms.topic: conceptual
 ms.date: 03/03/2020
-ms.openlocfilehash: d3932b66dbc41ff2631e2cccbe716c0877a509d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 767e04e45f88294ac4ffa58ec263a9a6d05eafb6
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422930"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84508756"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>Instalace agenta Azure Backup MARS
 
@@ -66,7 +66,7 @@ Postup úpravy typu replikace úložiště:
 Pokud má počítač omezený přístup k Internetu, zajistěte, aby nastavení brány firewall na počítači nebo proxy umožňovalo následující adresy URL a IP adresy:
 
 * Adresy URL
-  * `www\.msftncsi.com`
+  * `www.msftncsi.com`
   * `*.Microsoft.com`
   * `*.WindowsAzure.com`
   * `*.microsoftonline.com`
@@ -100,7 +100,7 @@ Další informace najdete v tématu [požadavky na směrování ExpressRoute](ht
 
 Všechny předchozí adresy URL a IP adresy používají protokol HTTPS na portu 443.
 
-### <a name="private-endpoints"></a>Soukromé koncové body
+### <a name="private-endpoints"></a>Privátní koncové body
 
 [!INCLUDE [Private Endpoints](../../includes/backup-private-endpoints.md)]
 
@@ -149,7 +149,7 @@ Pokud jste už agenta nainstalovali na všechny počítače, ujistěte se, že p
 
 1. Pro **instalaci**Zkontrolujte požadavky a vyberte **nainstalovat**.
 1. Po instalaci agenta vyberte **pokračovat k registraci**.
-1. V části > **Identifikace trezoru** **Průvodce registrací serveru**vyhledejte a vyberte soubor s přihlašovacími údaji, který jste stáhli. Pak vyberte **Další**.
+1. V části Identifikace trezoru **Průvodce registrací serveru**  >  **Vault Identification**vyhledejte a vyberte soubor s přihlašovacími údaji, který jste stáhli. Pak vyberte **Další**.
 
     ![Přidání přihlašovacích údajů trezoru pomocí Průvodce registrací serveru](./media/backup-configure-vault/register1.png)
 
@@ -158,7 +158,7 @@ Pokud jste už agenta nainstalovali na všechny počítače, ujistěte se, že p
     * Uložte heslo do zabezpečeného umístění. Budete ho potřebovat k obnovení zálohy.
     * Pokud heslo ztratíte nebo zapomenete, Microsoft vám nemůžete obnovit data záloh.
 
-1. Vyberte **Finish** (Dokončit). Agent je nyní nainstalován a počítač je zaregistrován do trezoru. Jste připraveni nakonfigurovat a naplánovat zálohování.
+1. Vyberte **Dokončit**. Agent je nyní nainstalován a počítač je zaregistrován do trezoru. Jste připraveni nakonfigurovat a naplánovat zálohování.
 
 ## <a name="next-steps"></a>Další kroky
 

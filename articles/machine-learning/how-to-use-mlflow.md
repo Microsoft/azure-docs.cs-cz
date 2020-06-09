@@ -10,12 +10,13 @@ ms.subservice: core
 ms.reviewer: nibaccam
 ms.topic: how-to
 ms.date: 06/04/2020
-ms.openlocfilehash: 259c43c13f429cf04d95258f05116e9242324598
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: tracking-python
+ms.openlocfilehash: 5d6e4bfb3c99d2fb570fea7aaebc7150088f1036
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84431110"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559366"
 ---
 # <a name="track-model-metrics-and-deploy-ml-models-with-mlflow-and-azure-machine-learning-preview"></a>Sledujte metriky modelu a nasaďte modely ML pomocí MLflow a Azure Machine Learning (Preview).
 

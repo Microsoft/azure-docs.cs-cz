@@ -10,13 +10,13 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 10/22/2019
 ms.author: jmprieur
-ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Python
-ms.openlocfilehash: 3c6cb6303734b5336b3e9a7646e5eb3310d0f236
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: aaddev, identityplatformtop40, tracking-python, scenarios:getting-started, languages:Python
+ms.openlocfilehash: 90954ea2754fd77f1612bd616acb7d3c88e50816
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81536042"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558650"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-from-a-python-console-app-using-apps-identity"></a>Rychlý Start: získání tokenu a volání Microsoft Graph API z konzolové aplikace Pythonu pomocí identity aplikace
 
@@ -56,7 +56,7 @@ K provedení této ukázky budete potřebovat:
 > 1. Přejděte na stránku [Registrace aplikací](https://go.microsoft.com/fwlink/?linkid=2083908) Microsoft Identity Platform for Developers.
 > 1. Vyberte **Nová registrace**.
 > 1. Jakmile se zobrazí stránka **Registrovat aplikaci** , zadejte registrační informace vaší aplikace.
-> 1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Daemon-console`vyberte možnost **Registrovat** a vytvořte aplikaci.
+> 1. V části **název** zadejte smysluplný název aplikace, který se zobrazí uživatelům aplikace, například `Daemon-console` Vyberte možnost **Registrovat** a vytvořte aplikaci.
 > 1. Po registraci vyberte nabídku **certifikáty & tajných klíčů** .
 > 1. V části **tajné klíče klienta**vyberte **+ nový tajný klíč klienta**. Zadejte název a vyberte **Přidat**. Zkopírujte tajný klíč na bezpečném místě. Budete ho potřebovat pro použití ve vašem kódu.
 > 1. Nyní vyberte nabídku **oprávnění rozhraní API** , vyberte **+ Přidat oprávnění** tlačítko a vyberte možnost **Microsoft Graph**.
@@ -92,7 +92,7 @@ K provedení této ukázky budete potřebovat:
 >
 > 1. Extrahujte soubor zip do místní složky blízko ke kořenovému adresáři disku, například **C:\Azure-Samples**.
 > 1. Přejděte do dílčí složky **1-Call-MsGraph-WithSecret**.
-> 1. Upravte **Parameters. JSON** a nahraďte hodnoty polí `authority`, `client_id`a `secret` následujícím fragmentem kódu:
+> 1. Upravte **Parameters. JSON** a nahraďte hodnoty polí `authority` , `client_id` a `secret` následujícím fragmentem kódu:
 >
 >    ```json
 >    "authority": "https://login.microsoftonline.com/Enter_the_Tenant_Id_Here",
@@ -113,7 +113,7 @@ K provedení této ukázky budete potřebovat:
 > [!div renderon="docs"]
 > #### <a name="step-4-admin-consent"></a>Krok 4: souhlas správce
 
-Pokud se pokusíte spustit aplikaci v tomto okamžiku, obdržíte chybu *HTTP 403 – zakázáno* : `Insufficient privileges to complete the operation`. K této chybě dochází, protože jakékoli *oprávnění pouze k aplikacím* vyžaduje souhlas správce: globální správce vašeho adresáře musí udělit souhlas vaší aplikaci. V závislosti na vaší roli vyberte jednu z následujících možností:
+Pokud se pokusíte spustit aplikaci v tomto okamžiku, obdržíte chybu *HTTP 403 – zakázáno* : `Insufficient privileges to complete the operation` . K této chybě dochází, protože jakékoli *oprávnění pouze k aplikacím* vyžaduje souhlas správce: globální správce vašeho adresáře musí udělit souhlas vaší aplikaci. V závislosti na vaší roli vyberte jednu z následujících možností:
 
 ##### <a name="global-tenant-administrator"></a>Globální správce klienta
 
@@ -212,7 +212,7 @@ if not result:
 
 > |Kde:| |
 > |---------|---------|
-> | `config["scope"]` | Obsahuje požadované obory. U důvěrných klientů by se měla použít formát podobný tomuto `{Application ID URI}/.default` jako k označení toho, že požadované obory jsou staticky definované v sadě objektů aplikace na webu Azure Portal (pro Microsoft Graph, `{Application ID URI}` které odkazují na `https://graph.microsoft.com`). Pro vlastní webová rozhraní API `{Application ID URI}` se definuje v části **vystavení rozhraní API** v registraci aplikace na webu Azure Portal (Preview). |
+> | `config["scope"]` | Obsahuje požadované obory. U důvěrných klientů by se měla použít formát podobný tomuto jako `{Application ID URI}/.default` k označení toho, že požadované obory jsou staticky definované v sadě objektů aplikace na webu Azure Portal (pro Microsoft Graph, `{Application ID URI}` které odkazují na `https://graph.microsoft.com` ). Pro vlastní webová rozhraní API `{Application ID URI}` se definuje v části **vystavení rozhraní API** v registraci aplikace na webu Azure Portal (Preview). |
 
 Další informace najdete v [referenční dokumentaci pro `AcquireTokenForClient` ](https://msal-python.readthedocs.io/en/latest/#msal.ConfidentialClientApplication.acquire_token_for_client)
 

@@ -1,14 +1,14 @@
 ---
 title: Omezení přístupu pomocí koncového bodu služby
-description: Omezení přístupu ke službě Azure Container Registry pomocí koncového bodu služby ve službě Azure Virtual Network
+description: Omezte přístup ke službě Azure Container Registry pomocí koncového bodu služby ve službě Azure Virtual Network. Přístup ke koncovému bodu služby je funkcí úrovně Premium Service.
 ms.topic: article
 ms.date: 05/04/2020
-ms.openlocfilehash: 5a3cc9638fb12853e0e26f3806c17dc47f522249
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 0f320bb86549c801711cafdbce4500ff7737cb89
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83685056"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509283"
 ---
 # <a name="restrict-access-to-a-container-registry-using-a-service-endpoint-in-an-azure-virtual-network"></a>Omezení přístupu k registru kontejneru pomocí koncového bodu služby ve službě Azure Virtual Network
 
@@ -34,7 +34,7 @@ Konfigurace koncového bodu služby registru je dostupná na úrovni služby **P
 
 * Pokud ještě nemáte registr kontejnerů, vytvořte ho (je potřeba Premium úrovně) a nahrajte do něj ukázkovou image, jako je například `hello-world` Docker Hub. K vytvoření registru použijte například [Azure Portal][quickstart-portal] nebo rozhraní příkazového [řádku Azure][quickstart-cli] . 
 
-* Pokud chcete omezit přístup k registru pomocí koncového bodu služby v jiném předplatném Azure, zaregistrujte poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Například:
+* Pokud chcete omezit přístup k registru pomocí koncového bodu služby v jiném předplatném Azure, zaregistrujte poskytovatele prostředků pro Azure Container Registry v tomto předplatném. Příklad:
 
   ```azurecli
   az account set --subscription <Name or ID of subscription of virtual network>
@@ -152,7 +152,7 @@ Chcete-li zobrazit seznam síťových pravidel nakonfigurovaných pro váš regi
 az acr network-rule list --name mycontainerregistry 
 ```
 
-Pro každé konfigurované pravidlo spusťte příkaz [AZ ACR Network-Rule Remove][az-acr-network-rule-remove] a odeberte ho. Například:
+Pro každé konfigurované pravidlo spusťte příkaz [AZ ACR Network-Rule Remove][az-acr-network-rule-remove] a odeberte ho. Příklad:
 
 ```azurecli
 # Remove a rule that allows access for a subnet. Substitute the subnet resource ID.

@@ -9,14 +9,14 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
-ms.openlocfilehash: aa8d7bf4b9c709c5fb7ff32e89f0af6c4e82b3e7
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: f54dd09ac82ddefeb2528462c7131aa921592d2a
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84450756"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487946"
 ---
-# <a name="init-image-transformation"></a>Transformace inicializačních imagí
+# <a name="init-image-transformation"></a>Počáteční transformace obrázku
 
 Tento článek popisuje, jak použít modul pro **transformaci init image** v Návrháři Azure Machine Learning (Preview) k inicializaci transformace obrázku, abyste určili, jak chcete transformaci obrázku transformovat.
 
@@ -51,7 +51,6 @@ Tento článek popisuje, jak použít modul pro **transformaci init image** v N�
 
 14.  V případě **náhodné perspektivy**určete, zda má být provedena transformace perspektivy daného obrázku pil náhodně s pravděpodobností 0,5.
 
-15.  V případě **náhodného mazání**určete, jestli se má náhodně vybrat oblast obdélníku v obrázku a vymažou se její pixely s pravděpodobností 0,5.
 
 16.  Připojte se k použití modulu [transformace obrázků](apply-image-transformation.md) a použijte transformaci určenou výše na vstupní datovou sadu obrázku.
 

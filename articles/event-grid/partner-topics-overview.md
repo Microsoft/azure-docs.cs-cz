@@ -2,17 +2,17 @@
 title: Témata Azure Event Grid partnerů
 description: Posílání událostí od partnerů Event Grid SaaS a PaaS od jiných výrobců přímo ke službám Azure pomocí Azure Event Grid.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.author: babanisa
-ms.openlocfilehash: f47d63ce79846e94e992df93af1768aad3c17e67
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.author: femila
+ms.openlocfilehash: 5327efea8af734c723ba76d1a00b72c08f5c88b9
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170949"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560274"
 ---
 # <a name="partner-topics-in-azure-event-grid-preview"></a>Témata o partnerech v Azure Event Grid (verze Preview)
 Pomocí témat partnerů můžete ke Azure Event Grid připojit zdroje událostí třetích stran přímo. Tato integrace vám umožní přihlásit se k odběru událostí od partnerů stejným způsobem, jakým se přihlašujete k odběru událostí ze služeb Azure. 

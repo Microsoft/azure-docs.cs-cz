@@ -15,12 +15,12 @@ ms.date: 11/17/2019
 ms.author: zhenlwa
 ms.custom: azure-functions
 ms.tgt_pltfrm: Azure Functions
-ms.openlocfilehash: ba70d5f186c1424b2019716ab7a87aeae85f8913
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 0cd86aa647655f92f4ae1b5de50f506e9aad0f4e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74185447"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558140"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-azure-functions-app"></a>Kurz: použití dynamické konfigurace v aplikaci Azure Functions
 
@@ -41,7 +41,7 @@ V tomto kurzu se naučíte:
 
 ## <a name="reload-data-from-app-configuration"></a>Znovu načíst data z konfigurace aplikace
 
-1. Otevřete *function1.cs*. `static` Kromě `Configuration`vlastnosti přidejte `static` novou vlastnost `ConfigurationRefresher` , která zachová instanci typu Singleton `IConfigurationRefresher` , která bude použita k signalizaci aktualizací konfigurace během volání funkcí později.
+1. Otevřete *function1.cs*. Kromě `static` vlastnosti `Configuration` přidejte novou `static` vlastnost, `ConfigurationRefresher` která zachová instanci typu Singleton `IConfigurationRefresher` , která bude použita k signalizaci aktualizací konfigurace během volání funkcí později.
 
     ```csharp
     private static IConfiguration Configuration { set; get; }
@@ -67,7 +67,7 @@ V tomto kurzu se naučíte:
     }
     ```
 
-3. Aktualizujte `Run` metodu a signál pro aktualizaci konfigurace pomocí `Refresh` metody na začátku volání funkce. Pokud nedosáhnete časového intervalu vypršení platnosti mezipaměti, nebude to nic. Odeberte `await` operátor, pokud dáváte přednost aktualizaci konfigurace bez blokování.
+3. Aktualizujte `Run` metodu a signál pro aktualizaci konfigurace pomocí `TryRefreshAsync` metody na začátku volání funkce. Pokud nedosáhnete časového intervalu vypršení platnosti mezipaměti, nebude to nic. Odeberte `await` operátor, pokud dáváte přednost aktualizaci konfigurace bez blokování.
 
     ```csharp
     public static async Task<IActionResult> Run(
@@ -75,7 +75,7 @@ V tomto kurzu se naučíte:
     {
         log.LogInformation("C# HTTP trigger function processed a request.");
 
-        await ConfigurationRefresher.Refresh();
+        await ConfigurationRefresher.TryRefreshAsync(); 
 
         string keyName = "TestApp:Settings:Message";
         string message = Configuration[keyName];
@@ -114,7 +114,7 @@ V tomto kurzu se naučíte:
 
 6. Vyberte **Průzkumník konfigurace**a aktualizujte hodnoty následujícího klíče:
 
-    | Key | Hodnota |
+    | Klíč | Hodnota |
     |---|---|
     | TestApp: nastavení: zpráva | Data z konfigurace aplikace Azure – Aktualizováno |
 

@@ -6,12 +6,13 @@ ms.topic: conceptual
 ms.date: 05/23/2019
 author: deborahc
 ms.author: dech
-ms.openlocfilehash: c72dbf24df850d8b0f7e5f26a873b78f5664c9e0
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.custom: tracking-python
+ms.openlocfilehash: 89d91a3c5c8a4209489ed427067a90e7e2d0b880
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82200934"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561166"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs"></a>Export certifikátů emulátoru služby Azure Cosmos DB pro použití s Javou, Pythonem a Node.js
 
@@ -70,7 +71,7 @@ Oba certifikáty je možné znovu vygenerovat kliknutím na **Resetovat data** v
 
 ## <a name="how-to-use-the-certificate-in-java"></a>Použití certifikátu v Javě
 
-Při spouštění aplikací v jazyce Java nebo aplikací MongoDB, které používají klienta Java, je snazší nainstalovat certifikát do výchozího úložiště certifikátů Java, než aby bylo `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` možné tyto příznaky předat. Například zahrnutá ukázková aplikace Java (`https://localhost:8081/_explorer/index.html`) závisí na výchozím úložišti certifikátů.
+Při spouštění aplikací v jazyce Java nebo aplikací MongoDB, které používají klienta Java, je snazší nainstalovat certifikát do výchozího úložiště certifikátů Java, než aby bylo možné tyto `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` příznaky předat. Například zahrnutá ukázková aplikace Java ( `https://localhost:8081/_explorer/index.html` ) závisí na výchozím úložišti certifikátů.
 
 Podle pokynů v tématu o [přidání certifikátu do úložiště certifikátů certifikační autority Javy](https://docs.microsoft.com/azure/java-add-certificate-ca-store) importujte certifikát X.509 do výchozího úložiště certifikátů Javy. Mějte na paměti, že při používání nástroje keytool budete pracovat v adresáři %JAVA_HOME%.
 

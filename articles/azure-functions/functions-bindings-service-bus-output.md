@@ -6,12 +6,13 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 02/19/2020
 ms.author: cshoe
-ms.openlocfilehash: d6817ac4ebc272747776eab8b11dba62f318e4ed
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.custom: tracking-python
+ms.openlocfilehash: 198cbb9f66ec5c6b84ed3cc4f20898495d8c126f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690721"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560829"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Service Bus výstupní vazba pro Azure Functions
 
@@ -21,7 +22,7 @@ Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled
 
 ## <a name="example"></a>Příklad
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která odesílá zprávu Service Bus fronty:
 
@@ -142,7 +143,7 @@ module.exports = function (context, myTimer) {
 
 Následující příklad ukazuje, jak zapisovat do fronty Service Bus v Pythonu.
 
-Definice vazby Service Bus je definována v *Function. JSON* , kde *typ* je nastaven na `serviceBus`.
+Definice vazby Service Bus je definována v *Function. JSON* , kde *typ* je nastaven na `serviceBus` .
 
 ```json
 {
@@ -174,7 +175,7 @@ Definice vazby Service Bus je definována v *Function. JSON* , kde *typ* je nast
 }
 ```
 
-`set` V * _ \_init_\_. py*můžete do fronty napsat zprávu předáním hodnoty metodě.
+V * _ \_ init_ \_ . py*můžete do fronty napsat zprávu předáním hodnoty `set` metodě.
 
 ```python
 import azure.functions as func
@@ -190,7 +191,7 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
 
 # <a name="java"></a>[Java](#tab/java)
 
-Následující příklad ukazuje funkci jazyka Java, která pošle zprávu do fronty `myqueue` Service Bus, když se aktivuje požadavkem http.
+Následující příklad ukazuje funkci jazyka Java, která pošle zprávu do fronty Service Bus, `myqueue` když se aktivuje požadavkem http.
 
 ```java
 @FunctionName("httpToServiceBusQueue")
@@ -204,7 +205,7 @@ public String pushToQueue(
  }
 ```
 
- V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@QueueOutput` anotaci u parametrů funkce, jejichž hodnota by byla zapsána do fronty Service Bus.  Typ parametru by měl být `OutputBinding<T>`, kde T je jakýkoliv nativní typ Java typu Pojo.
+ V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/functions/runtime)použijte `@QueueOutput` anotaci u parametrů funkce, jejichž hodnota by byla zapsána do fronty Service Bus.  Typ parametru by měl být `OutputBinding<T>` , kde T je jakýkoliv nativní typ Java typu Pojo.
 
 Funkce jazyka Java mohou také zapisovat do Service Busho tématu. Následující příklad používá `@ServiceBusTopicOutput` anotaci k popisu konfigurace výstupní vazby. 
 
@@ -227,7 +228,7 @@ Funkce jazyka Java mohou také zapisovat do Service Busho tématu. Následujíc�
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte rozhraní [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
@@ -242,7 +243,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-`Connection` Vlastnost můžete nastavit tak, aby určovala název nastavení aplikace, které obsahuje Service Bus připojovacího řetězce, který se má použít, jak je znázorněno v následujícím příkladu:
+Vlastnost můžete nastavit `Connection` tak, aby určovala název nastavení aplikace, které obsahuje Service Bus připojovacího řetězce, který se má použít, jak je znázorněno v následujícím příkladu:
 
 ```csharp
 [FunctionName("ServiceBusOutput")]
@@ -255,7 +256,7 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 
 Úplný příklad naleznete v tématu [Output-example](#example).
 
-`ServiceBusAccount` Atribut můžete použít k určení Service Bus účtu pro použití na úrovni třídy, metody nebo parametru.  Další informace najdete v tématu [Trigger – atributy](functions-bindings-service-bus-trigger.md#attributes-and-annotations).
+Atribut můžete použít `ServiceBusAccount` k určení Service Bus účtu pro použití na úrovni třídy, metody nebo parametru.  Další informace najdete v tématu [Trigger – atributy](functions-bindings-service-bus-trigger.md#attributes-and-annotations).
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
@@ -271,7 +272,7 @@ Python nepodporuje atributy.
 
 # <a name="java"></a>[Java](#tab/java)
 
-Poznámky `ServiceBusQueueOutput` a `ServiceBusTopicOutput` jsou k dispozici pro zápis zprávy jako výstup funkce. Parametr upravený pomocí těchto poznámek musí být deklarován jako, `OutputBinding<T>` kde `T` je typ odpovídající typu zprávy.
+`ServiceBusQueueOutput`Poznámky a `ServiceBusTopicOutput` jsou k dispozici pro zápis zprávy jako výstup funkce. Parametr upravený pomocí těchto poznámek musí být deklarován jako, `OutputBinding<T>` kde `T` je typ odpovídající typu zprávy.
 
 ---
 
@@ -279,23 +280,23 @@ Poznámky `ServiceBusQueueOutput` a `ServiceBusTopicOutput` jsou k dispozici pro
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `ServiceBus` atributu.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Popis|
+|Function. JSON – vlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | neuvedeno | Musí být nastavené na "serviceBus". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
-|**direction** | neuvedeno | Musí být nastavené na "out". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
-|**Jméno** | neuvedeno | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
+|**typ** | Není k dispozici | Musí být nastavené na "serviceBus". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal.|
+|**direction** | Není k dispozici | Musí být nastavené na "out". Tato vlastnost se nastaví automaticky při vytvoření triggeru v Azure Portal. |
+|**Jméno** | Není k dispozici | Název proměnné, která představuje zprávu fronty nebo tématu v kódu funkce. Nastavte na "$return", chcete-li odkazovat na návratovou hodnotu funkce. |
 |**Proměnné QueueName**|**Proměnné QueueName**|Název fronty  Nastavte pouze v případě, že jsou odesílány zprávy fronty, nikoli téma.
 |**téma**|**Téma**|Název tématu. Nastaveno pouze při posílání zpráv témat, nikoli pro frontu.|
 |**vázán**|**Připojení**|Název nastavení aplikace, které obsahuje připojovací řetězec Service Bus, který se má použít pro tuto vazbu. Pokud název nastavení aplikace začíná řetězcem "AzureWebJobs", můžete zadat pouze zbytek názvu. Například pokud nastavíte `connection` na "MyServiceBus", modul runtime Functions vyhledá nastavení aplikace s názvem "AzureWebJobsMyServiceBus". Pokud necháte `connection` prázdné, modul runtime Functions použije výchozí připojovací řetězec Service Bus v nastavení aplikace s názvem "AzureWebJobsServiceBus".<br><br>Pokud chcete získat připojovací řetězec, postupujte podle kroků uvedených v části [získání přihlašovacích údajů pro správu](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string). Připojovací řetězec musí být pro obor názvů Service Bus, který není omezen na konkrétní frontu nebo téma.|
-|**accessRights** (jenom V1)|**Přístup**|Přístupová práva k připojovacímu řetězci Dostupné hodnoty jsou `manage` a `listen`. Výchozí hodnota je `manage`, což znamená, že `connection` má oprávnění **Spravovat** . Pokud použijete připojovací řetězec, který nemá oprávnění **Spravovat** , nastavte `accessRights` na "naslouchání". V opačném případě může modul runtime Functions selhat při pokusu o provedení operací, které vyžadují oprávnění ke správě. V Azure Functions verze 2. x nebo vyšší není tato vlastnost k dispozici, protože nejnovější verze Service Bus SDK nepodporuje operace správy.|
+|**accessRights** (jenom V1)|**Přístup**|Přístupová práva k připojovacímu řetězci Dostupné hodnoty jsou `manage` a `listen` . Výchozí hodnota je `manage` , což znamená, že `connection` má oprávnění **Spravovat** . Pokud použijete připojovací řetězec, který nemá oprávnění **Spravovat** , nastavte `accessRights` na "naslouchání". V opačném případě může modul runtime Functions selhat při pokusu o provedení operací, které vyžadují oprávnění ke správě. V Azure Functions verze 2. x nebo vyšší není tato vlastnost k dispozici, protože nejnovější verze Service Bus SDK nepodporuje operace správy.|
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="usage"></a>Využití
 
-V Azure Functions 1. x modul runtime vytvoří frontu, pokud neexistuje a že jste nastavili `accessRights` na `manage`. V funkcích Functions verze 2. x a vyšší již musí fronta nebo téma existovat; Pokud zadáte frontu nebo téma, které neexistují, funkce se nezdaří. 
+V Azure Functions 1. x modul runtime vytvoří frontu, pokud neexistuje a že jste nastavili `accessRights` na `manage` . V funkcích Functions verze 2. x a vyšší již musí fronta nebo téma existovat; Pokud zadáte frontu nebo téma, které neexistují, funkce se nezdaří. 
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Pro výstupní vazbu použijte následující typy parametrů:
 
@@ -310,7 +311,7 @@ Při práci s funkcemi jazyka C#:
 
 * Asynchronní funkce vyžadují návratovou hodnotu nebo `IAsyncCollector` místo `out` parametru.
 
-* Chcete-li získat přístup k ID relace, [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) Připojte se k typu `sessionId` a použijte vlastnost.
+* Chcete-li získat přístup k ID relace, připojte se k [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) typu a použijte `sessionId` vlastnost.
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
@@ -327,11 +328,11 @@ Při práci s funkcemi jazyka C#:
 
 * Asynchronní funkce vyžadují návratovou hodnotu nebo `IAsyncCollector` místo `out` parametru.
 
-* Chcete-li získat přístup k ID relace, [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) Připojte se k typu `sessionId` a použijte vlastnost.
+* Chcete-li získat přístup k ID relace, připojte se k [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) typu a použijte `sessionId` vlastnost.
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Přístup ke frontě nebo tématu pomocí `context.bindings.<name from function.json>`. Můžete přiřadit řetězec, bajtové pole nebo objekt JavaScriptu (deserializovat do formátu JSON) do `context.binding.<name>`.
+Přístup ke frontě nebo tématu pomocí `context.bindings.<name from function.json>` . Můžete přiřadit řetězec, bajtové pole nebo objekt JavaScriptu (deserializovat do formátu JSON) do `context.binding.<name>` .
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -380,9 +381,9 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
     }
 }
 ```
-Pokud jste `isSessionsEnabled` nastavili `true`na, `sessionHandlerOptions` bude dodržena.  Pokud jste `isSessionsEnabled` nastavili `false`na, `messageHandlerOptions` bude dodržena.
+Pokud jste `isSessionsEnabled` nastavili na `true` , `sessionHandlerOptions` bude dodržena.  Pokud jste `isSessionsEnabled` nastavili na `false` , `messageHandlerOptions` bude dodržena.
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------|
 |prefetchCount|0|Získá nebo nastaví počet zpráv, které může příjemce zprávy současně požadovat.|
 |maxAutoRenewDuration|00:05:00|Maximální doba, během které bude zámek zprávy obnoven automaticky.|

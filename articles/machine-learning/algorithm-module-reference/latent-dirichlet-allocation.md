@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/11/2020
-ms.openlocfilehash: 1384491489c175ffc338f80a99aa8d5050f835d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: a75bf458a1c6735de42349de5d5cb6845e9ae464
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80109222"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84487963"
 ---
 # <a name="latent-dirichlet-allocation"></a>Model LDA (Latent Dirichlet Allocation)
 
@@ -68,9 +68,9 @@ Tento modul vyžaduje datovou sadu, která obsahuje sloupec textu, a to buď nez
 
 6. Vyberte možnost **normalizovat** pro převod výstupních hodnot na pravděpodobnost. Proto místo reprezentace transformovaných hodnot jako celých čísel, hodnoty ve výstupu a datové sadě funkcí budou transformovány takto:
 
-    + Hodnoty v datové sadě budou reprezentovány jako pravděpodobnost, `P(topic|document)`kde.
+    + Hodnoty v datové sadě budou reprezentovány jako pravděpodobnost, kde `P(topic|document)` .
 
-    + Hodnoty v matici tématu funkce budou vyjádřeny jako pravděpodobnost, kde `P(word|topic)`.
+    + Hodnoty v matici tématu funkce budou vyjádřeny jako pravděpodobnost, kde `P(word|topic)` .
 
     > [!NOTE] 
     > V Azure Machine Learning Designer (Preview), protože knihovna, kterou používáme, scikit-učí, již nepodporuje nenormalizovaný *doc_topic_distr* výstup z verze 0,19, proto v tomto modulu může být parametr **Normalize** použit pouze pro výstup **matice funkce** , **transformovaná datová sada** je vždy normalizována.
@@ -116,7 +116,8 @@ Modul má dva výstupy:
 
 Tento modul také výstupuje *transformaci LDA* , která aplikuje LDA na datovou sadu.
 
-Tuto transformaci můžete uložit pomocí položky zaregistrovat datovou sadu na kartě **výstupy + protokoly** v pravém podokně modulu a znovu ji použít pro jiné datové sady. To může být užitečné, pokud jste proučeni velké corpus a chcete znovu použít koeficienty nebo kategorie.
+Tuto transformaci můžete uložit znovu pro jiné datové sady. To může být užitečné, pokud jste proučeni velké corpus a chcete znovu použít koeficienty nebo kategorie.
+Pokud chcete tuto transformaci použít znovu, klikněte na ikonu **Registrovat datovou sadu** na pravém panelu modulu LDA, abyste ji zachovali jako modul v kategorii **datové sady** v seznamu modul. Pak můžete připojit tento modul a [použít transformační](apply-transformation.md) modul k opakovanému použití této transformace.
 
 ### <a name="refining-an-lda-model-or-results"></a>Úprava modelu nebo výsledků LDA
 
@@ -177,19 +178,19 @@ Po vypočítání indexů jsou jednotlivé řádky textu porovnány pomocí mír
 
 ###  <a name="module-parameters"></a>Parametry modulu
 
-|Název|Typ|Rozsah|Nepovinné|Výchozí|Popis|  
+|Name|Typ|Rozsah|Volitelné|Výchozí|Description|  
 |----------|----------|-----------|--------------|-------------|-----------------|  
-|Cílový sloupec (y)|Výběr sloupce||Požaduje se|StringFeature|Název nebo index cílového sloupce|  
-|Počet témat pro model|Integer|[1; 1000]|Požaduje se|5|Modelování distribuce dokumentu před N tématy|  
-|N-gramů|Integer|[1; 10]|Požaduje se|2|Pořadí N-gramů generovaných během hashace|  
-|Normalizovat|Logická hodnota|True nebo false|Požaduje se|true|Normalizuje výstup na pravděpodobnost.  Transformovaný objekt DataSet bude P (téma&#124;dokumentu) a matice tématu funkce bude P (Word&#124;téma).|  
-|Zobrazit všechny možnosti|Logická hodnota|True nebo false|Požaduje se|False|Uvede další parametry specifické pro scikit – Přečtěte si online LDA|  
-|Ró – parametr|Plovoucí desetinná čárka|[0.00001; 1.0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,01|Předchozí distribuce slova tématu|  
-|Parametr alfa|Plovoucí desetinná čárka|[0.00001; 1.0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,01|Téma předchozí distribuce dokumentu|  
+|Cílový sloupec (y)|Výběr sloupce||Vyžadováno|StringFeature|Název nebo index cílového sloupce|  
+|Počet témat pro model|Integer|[1; 1000]|Vyžadováno|5|Modelování distribuce dokumentu před N tématy|  
+|N-gramů|Integer|[1; 10]|Vyžadováno|2|Pořadí N-gramů generovaných během hashace|  
+|Normalizovat|Logická hodnota|True nebo false|Vyžadováno|true|Normalizuje výstup na pravděpodobnost.  Transformovaný objekt DataSet bude P (téma&#124;dokumentu) a matice tématu funkce bude P (Word&#124;téma).|  
+|Zobrazit všechny možnosti|Logická hodnota|True nebo false|Vyžadováno|False|Uvede další parametry specifické pro scikit – Přečtěte si online LDA|  
+|Ró – parametr|Float|[0.00001; 1.0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,01|Předchozí distribuce slova tématu|  
+|Parametr alfa|Float|[0.00001; 1.0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,01|Téma předchozí distribuce dokumentu|  
 |Odhadovaný počet dokumentů|Integer|[1; int. MaxValue|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|1000|Odhadovaný počet dokumentů (odpovídá parametru total_samples)|  
 |Velikost dávky|Integer|[1; 1024]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|32|Velikost dávky|  
 |Počáteční hodnota iterace použitá v plánu aktualizace studijních kurzů|Integer|[0; int. MaxValue|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0|Počáteční hodnota, která downweights kurzů pro počáteční iterace. Odpovídá parametru learning_offset|  
-|Zapnutí pro iteraci během aktualizací|Plovoucí desetinná čárka|[0,0; 1,0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,5|Napájení použité pro počet iterací za účelem řízení míry učení. Odpovídá parametru learning_decay |  
+|Zapnutí pro iteraci během aktualizací|Float|[0,0; 1,0]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|0,5|Napájení použité pro počet iterací za účelem řízení míry učení. Odpovídá parametru learning_decay |  
 |Počet iterací cvičení|Integer|[1; 1024]|Platí v případě, že je zaškrtnuto políčko **Zobrazit všechny možnosti** .|25|Počet iterací cvičení|  
 |Sestavit slovník pro ngrams|Logická hodnota|True nebo false|Platí v případě, že *není* zaškrtnuté políčko **Zobrazit všechny možnosti** .|True|Vytvoří slovník ngrams před výpočetním LDA. Užitečné pro kontrolu a výklad modelu|  
 |Maximální velikost ngram slovníku|Integer|[1; int. MaxValue|Platí v případě, že je hodnota **ngrams slovníku pro možnost Build** .|20000|Maximální velikost ngrams slovníku Pokud počet tokenů ve vstupu překračuje tuto velikost, může dojít k kolizím.|  

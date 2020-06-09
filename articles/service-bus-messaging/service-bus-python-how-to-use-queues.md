@@ -13,13 +13,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.custom: seo-python-october2019
-ms.openlocfilehash: acb0b0e84804ecf6025e05590133dee9b0d54c48
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 38e4d4a8677ca88cfe4cf8d9fab19cec6a8874d4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478654"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560071"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-python"></a>Rychlý Start: použití Azure Service Bus front s Pythonem
 
@@ -102,11 +102,11 @@ with queue_client.get_receiver() as queue_receiver:
 
 ### <a name="use-the-peek_lock-parameter"></a>Použití parametru peek_lock
 
-Volitelný `peek_lock` parametr `get_receiver` určuje, zda Service Bus odstraní zprávy z fronty při jejich čtení. Výchozí režim pro přijímání zpráv je *PeekLock*nebo `peek_lock` nastaven na **hodnotu true**, která čte (prohlédne) a uzamkne zprávy bez jejich odstranění z fronty. Každá zpráva musí být pak explicitně dokončena, aby ji bylo možné odebrat z fronty.
+Volitelný `peek_lock` parametr `get_receiver` Určuje, zda Service Bus odstraní zprávy z fronty při jejich čtení. Výchozí režim pro přijímání zpráv je *PeekLock*nebo `peek_lock` nastaven na **hodnotu true**, která čte (prohlédne) a uzamkne zprávy bez jejich odstranění z fronty. Každá zpráva musí být pak explicitně dokončena, aby ji bylo možné odebrat z fronty.
 
-Pokud chcete odstranit zprávy z fronty při jejich čtení, můžete nastavit `peek_lock` parametr `get_receiver` na false ( **NEPRAVDA**). Odstraňování zpráv v rámci operace Receive je nejjednodušší model, ale funguje pouze v případě, že aplikace může tolerovat chybějící zprávy, pokud dojde k selhání. Pro pochopení tohoto chování Vezměte v úvahu situaci, ve které spotřebitel vydá žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Pokud se zpráva odstranila při obdržení, když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu přijatou před selháním.
+Pokud chcete odstranit zprávy z fronty při jejich čtení, můžete nastavit `peek_lock` parametr `get_receiver` na **false (NEPRAVDA**). Odstraňování zpráv v rámci operace Receive je nejjednodušší model, ale funguje pouze v případě, že aplikace může tolerovat chybějící zprávy, pokud dojde k selhání. Pro pochopení tohoto chování Vezměte v úvahu situaci, ve které spotřebitel vydá žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Pokud se zpráva odstranila při obdržení, když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu přijatou před selháním.
 
-Pokud vaše aplikace nemůže tolerovat zmeškaných zpráv, je příjem operace se dvěma fázemi. PeekLock najde další zprávu, která se má spotřebovat, zamkne ji, aby zabránila ostatním příjemcům v přijetí a vrátila ji do aplikace. Po zpracování nebo uložení zprávy aplikace dokončí druhou fázi procesu příjmu voláním `complete` metody objektu **Message** .  `complete` Metoda označí zprávu jako spotřebou a odebere ji z fronty.
+Pokud vaše aplikace nemůže tolerovat zmeškaných zpráv, je příjem operace se dvěma fázemi. PeekLock najde další zprávu, která se má spotřebovat, zamkne ji, aby zabránila ostatním příjemcům v přijetí a vrátila ji do aplikace. Po zpracování nebo uložení zprávy aplikace dokončí druhou fázi procesu příjmu voláním `complete` metody objektu **Message** .  `complete`Metoda označí zprávu jako spotřebou a odebere ji z fronty.
 
 ## <a name="handle-application-crashes-and-unreadable-messages"></a>Zpracování chyb aplikace a nečitelných zpráv
 

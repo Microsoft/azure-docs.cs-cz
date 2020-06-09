@@ -1,19 +1,19 @@
 ---
 title: Sledovat témata a odběry událostí – Azure Event Grid IoT Edge | Microsoft Docs
 description: Sledovat témata a odběry událostí
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.reviewer: spelluru
 ms.date: 01/09/2020
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: ce7c92f121fb458d528d63d0af0aad025b377386
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d4fbc5232722bfb08bde9be51d44e8e8d7514570
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77086672"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554359"
 ---
 # <a name="monitor-topics-and-event-subscriptions"></a>Sledovat témata a odběry událostí
 
@@ -21,7 +21,7 @@ Event Grid na Edge zpřístupňuje řadu metrik pro témata a odběry událostí
 
 ## <a name="enable-metrics"></a>Povolit metriky
 
-Nakonfigurujte modul tak, aby generoval metriky nastavením proměnné `metrics__reporterType` prostředí na `prometheus` v možnostech vytvoření kontejneru:
+Nakonfigurujte modul tak, aby generoval metriky nastavením `metrics__reporterType` proměnné prostředí na `prometheus` v možnostech vytvoření kontejneru:
 
  ```json
         {
@@ -40,7 +40,7 @@ Nakonfigurujte modul tak, aby generoval metriky nastavením proměnné `metrics_
         }
  ```    
 
-Metriky budou k dispozici `5888/metrics` v modulu pro http a `4438/metrics` https. Například `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` pro protokol HTTP. V tomto okamžiku může modul metrik spustit dotaz na koncový bod a shromažďovat metriky jako v této [ukázkové architektuře](https://github.com/veyalla/ehm).
+Metriky budou k dispozici v `5888/metrics` modulu pro http a `4438/metrics` https. Například `http://<modulename>:5888/metrics?api-version=2019-01-01-preview` pro protokol HTTP. V tomto okamžiku může modul metrik spustit dotaz na koncový bod a shromažďovat metriky jako v této [ukázkové architektuře](https://github.com/veyalla/ehm).
 
 ## <a name="available-metrics"></a>Dostupné metriky
 
@@ -48,7 +48,7 @@ Témata a odběry událostí generují metriky, které vám poskytnou přehled o
 
 ### <a name="topic-metrics"></a>Metriky témat
 
-| Metrika | Popis |
+| Metric | Popis |
 | ------ | ----------- |
 | EventsReceived | Počet událostí publikovaných do tématu
 | UnmatchedEvents | Počet událostí publikovaných do tématu, které nesouhlasí s odběrem události a jsou vyřazeny
@@ -60,7 +60,7 @@ Témata a odběry událostí generují metriky, které vám poskytnou přehled o
 
 ### <a name="event-subscription-metrics"></a>Metriky odběru událostí
 
-| Metrika | Popis |
+| Metric | Popis |
 | ------ | ----------- |
 | DeliverySuccessCounts | Počet událostí úspěšně doručených do nakonfigurovaného koncového bodu
 | DeliveryFailureCounts | Počet událostí, které se nepodařilo doručit do nakonfigurovaného koncového bodu

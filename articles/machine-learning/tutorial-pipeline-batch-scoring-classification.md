@@ -10,13 +10,13 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: laobri
 ms.date: 03/11/2020
-ms.custom: contperfq4
-ms.openlocfilehash: 5b6b58cb205c769feeed011c0a2ba2ec569d667a
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.custom: contperfq4, tracking-python
+ms.openlocfilehash: 6abfeb1601c85f9202611b914f9dfd47ac50ea1a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857768"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560961"
 ---
 # <a name="tutorial-build-an-azure-machine-learning-pipeline-for-batch-scoring"></a>Kurz: vytvoření kanálu Azure Machine Learning pro dávkové vyhodnocování
 
@@ -38,7 +38,7 @@ V tomto kurzu provedete následující úlohy:
 > * Sestavování, spouštění a publikování kanálu
 > * Povolit koncový bod REST pro kanál
 
-Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet před tím, než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
+Pokud ještě nemáte předplatné Azure, vytvořte si bezplatný účet, ještě než začnete. Vyzkoušení [bezplatné nebo placené verze Azure Machine Learning](https://aka.ms/AMLFree) dnes
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -52,7 +52,7 @@ Pokud chcete spustit kurz nastavení ve vlastním [místním prostředí](how-to
 Vytvořte objekt pracovního prostoru z existujícího pracovního prostoru Azure Machine Learning.
 
 - [Pracovní prostor](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py) je třída, která přijímá vaše předplatné a informace o prostředcích Azure. Pracovní prostor také vytvoří cloudový prostředek, který můžete použít k monitorování a sledování spuštění modelu. 
-- `Workspace.from_config()`přečte `config.json` soubor a potom načte podrobnosti ověřování do objektu s názvem `ws`. `ws` Objekt se používá v kódu v celém tomto kurzu.
+- `Workspace.from_config()`přečte `config.json` soubor a potom načte podrobnosti ověřování do objektu s názvem `ws` . `ws`Objekt se používá v kódu v celém tomto kurzu.
 
 ```python
 from azureml.core import Workspace
@@ -61,7 +61,7 @@ ws = Workspace.from_config()
 
 ## <a name="create-a-datastore-for-sample-images"></a>Vytvoření úložiště dat pro ukázkové image
 
-Na `pipelinedata` účtu Získejte ukázku veřejné dat ImageNet Evaluation z `sampledata` veřejného kontejneru objektů BLOB. Zavolejte `register_azure_blob_container()` k zpřístupnění dat pro pracovní prostor pod názvem `images_datastore`. Pak nastavte výchozí úložiště dat pracovního prostoru jako výstupní úložiště dat. Použijte výstupní úložiště dat k určení skóre výstupu v kanálu.
+Na `pipelinedata` účtu Získejte ukázku veřejné dat ImageNet Evaluation z `sampledata` veřejného kontejneru objektů BLOB. Zavolejte `register_azure_blob_container()` k zpřístupnění dat pro pracovní prostor pod názvem `images_datastore` . Pak nastavte výchozí úložiště dat pracovního prostoru jako výstupní úložiště dat. Použijte výstupní úložiště dat k určení skóre výstupu v kanálu.
 
 ```python
 from azureml.core.datastore import Datastore
@@ -77,14 +77,14 @@ def_data_store = ws.get_default_datastore()
 
 ## <a name="create-dataset-objects"></a>Vytváření objektů DataSet
 
-Při sestavování kanálů `Dataset` se objekty používají pro čtení dat z úložiště dat v pracovním prostoru a `PipelineData` objekty slouží k přenosu mezilehlých dat mezi jednotlivými kroky kanálu.
+Při sestavování kanálů se `Dataset` objekty používají pro čtení dat z úložiště dat v pracovním prostoru a `PipelineData` objekty slouží k přenosu mezilehlých dat mezi jednotlivými kroky kanálu.
 
 > [!Important]
 > Příklad dávkového vyhodnocování v tomto kurzu používá pouze jeden krok kanálu. V případech použití, které mají více kroků, bude typický tok zahrnovat tyto kroky:
 >
-> 1. Použijte `Dataset` objekty jako *vstupy* pro načtení nezpracovaných dat, proveďte nějakou transformaci *output* a pak `PipelineData` výstup objektu.
+> 1. Použijte `Dataset` objekty jako *vstupy* pro načtení nezpracovaných dat, proveďte nějakou transformaci a pak *výstup* `PipelineData` objektu.
 >
-> 2. `PipelineData` Použijte *výstupní objekt* v předchozím kroku jako *vstupní objekt*. Opakujte postup pro následné kroky.
+> 2. Použijte `PipelineData` *výstupní objekt* v předchozím kroku jako *vstupní objekt*. Opakujte postup pro následné kroky.
 
 V tomto scénáři vytvoříte `Dataset` objekty, které odpovídají adresářům úložiště dat pro vstupní image i popisky klasifikace (hodnoty y-test). Také vytvoříte `PipelineData` objekt pro výstupní data dávkového vyhodnocování.
 
@@ -124,7 +124,7 @@ tar = tarfile.open("model.tar.gz", "r:gz")
 tar.extractall("models")
 ```
 
-Dále zaregistrujte model do svého pracovního prostoru, abyste ho mohli snadno načíst v procesu kanálu. Ve funkci `register()` static je `model_name` parametr klíč, který použijete k vyhledání modelu v rámci sady SDK.
+Dále zaregistrujte model do svého pracovního prostoru, abyste ho mohli snadno načíst v procesu kanálu. Ve `register()` funkci static `model_name` je parametr klíč, který použijete k vyhledání modelu v rámci sady SDK.
 
 ```python
 from azureml.core.model import Model
@@ -140,7 +140,7 @@ model = Model.register(model_path="models/inception_v3.ckpt",
 
 Kanály strojového učení nejde spouštět místně, takže je spouštíte na cloudových prostředcích nebo *vzdálených výpočetních cílech*. Vzdálený výpočetní cíl je opakovaně použitelný virtuální výpočetní prostředí, ve kterém spouštíte experimenty a pracovní postupy strojového učení. 
 
-Spusťte následující kód pro vytvoření cíle s povoleným [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) GPU a pak ho připojte k pracovnímu prostoru. Další informace o cílových výpočetních operacích najdete v [článku konceptu](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
+Spusťte následující kód pro vytvoření cíle s povoleným GPU [`AmlCompute`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py) a pak ho připojte k pracovnímu prostoru. Další informace o cílových výpočetních operacích najdete v [článku konceptu](https://docs.microsoft.com/azure/machine-learning/concept-compute-target).
 
 
 ```python
@@ -163,14 +163,14 @@ except ComputeTargetException:
 
 ## <a name="write-a-scoring-script"></a>Zápis vyhodnocovacího skriptu
 
-Chcete-li provést bodování, vytvořte skript vyhodnocování s `batch_scoring.py`názvem a pak ho zapište do aktuálního adresáře. Skript bere vstupní image, použije model klasifikace a pak výstup předpovědi do souboru výsledků.
+Chcete-li provést bodování, vytvořte skript vyhodnocování s názvem `batch_scoring.py` a pak ho zapište do aktuálního adresáře. Skript bere vstupní image, použije model klasifikace a pak výstup předpovědi do souboru výsledků.
 
-`batch_scoring.py` Skript přebírá následující parametry, které se předávají z `ParallelRunStep` vytvořeného nástroje později:
+`batch_scoring.py`Skript přebírá následující parametry, které se předávají z `ParallelRunStep` vytvořeného nástroje později:
 
 - `--model_name`: Název používaného modelu.
-- `--labels_name`: Název `Dataset` `labels.txt` souboru, který obsahuje soubor.
+- `--labels_name`: Název `Dataset` souboru, který obsahuje `labels.txt` soubor.
 
-Infrastruktura kanálu používá `ArgumentParser` třídu k předání parametrů do kroků kanálu. Například v následujícím kódu je první argument `--model_name` dán identifikátor `model_name`vlastnosti. Ve `init()` funkci `Model.get_model_path(args.model_name)` se používá pro přístup k této vlastnosti.
+Infrastruktura kanálu používá `ArgumentParser` třídu k předání parametrů do kroků kanálu. Například v následujícím kódu je první argument `--model_name` dán identifikátor vlastnosti `model_name` . Ve `init()` funkci `Model.get_model_path(args.model_name)` se používá pro přístup k této vlastnosti.
 
 
 ```python
@@ -259,11 +259,11 @@ def run(mini_batch):
 ```
 
 > [!TIP]
-> Kanál v tomto kurzu má pouze jeden krok a zapisuje výstup do souboru. Pro kanály s více kroky můžete použít `ArgumentParser` také k definování adresáře pro zápis výstupních dat pro vstup do následujících kroků. Příklad předávání dat mezi různými kroky kanálu pomocí vzoru `ArgumentParser` návrhu najdete v [poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
+> Kanál v tomto kurzu má pouze jeden krok a zapisuje výstup do souboru. Pro kanály s více kroky můžete použít také `ArgumentParser` k definování adresáře pro zápis výstupních dat pro vstup do následujících kroků. Příklad předávání dat mezi různými kroky kanálu pomocí `ArgumentParser` vzoru návrhu najdete v [poznámkovém bloku](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/nyc-taxi-data-regression-model-building/nyc-taxi-data-regression-model-building.ipynb).
 
 ## <a name="build-the-pipeline"></a>Vytvoření kanálu
 
-Před spuštěním kanálu vytvořte objekt, který definuje prostředí Python, a vytvoří závislosti, které váš `batch_scoring.py` skript vyžaduje. Hlavní požadovaná závislost je Tensorflow, ale nainstaluje `azureml-defaults` se i pro procesy na pozadí. Vytvořte `RunConfiguration` objekt pomocí závislostí. Také zadejte Docker a Docker-GPU support.
+Před spuštěním kanálu vytvořte objekt, který definuje prostředí Python, a vytvoří závislosti, které váš `batch_scoring.py` skript vyžaduje. Hlavní požadovaná závislost je Tensorflow, ale nainstaluje se i `azureml-defaults` pro procesy na pozadí. Vytvořte `RunConfiguration` objekt pomocí závislostí. Také zadejte Docker a Docker-GPU support.
 
 ```python
 from azureml.core import Environment
@@ -305,9 +305,9 @@ Krok kanálu je objekt, který zapouzdřuje všechno, co potřebujete ke spušt�
 * Vstupní a výstupní data a libovolné vlastní parametry
 * Odkaz na skript nebo logiku sady SDK, které se spustí během kroku
 
-Více tříd dědí z nadřazené třídy [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py). Můžete zvolit třídy pro použití specifických rozhraní nebo zásobníků k vytvoření kroku. V tomto příkladu použijete `ParallelRunStep` třídu k definování kroku logiky pomocí vlastního skriptu Pythonu. Je-li argument skriptu buď vstupem do kroku, nebo výstupem `arguments` kroku, musí být argument definován *v poli i v* `input` `output` parametru *nebo v parametru* . 
+Více tříd dědí z nadřazené třídy [`PipelineStep`](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.builder.pipelinestep?view=azure-ml-py) . Můžete zvolit třídy pro použití specifických rozhraní nebo zásobníků k vytvoření kroku. V tomto příkladu použijete `ParallelRunStep` třídu k definování kroku logiky pomocí vlastního skriptu Pythonu. Je-li argument skriptu buď vstupem do kroku, nebo výstupem kroku, musí být *argument definován v poli i* `arguments` v *and* `input` parametru nebo v `output` parametru. 
 
-Ve scénářích, kde je více než jeden krok, se odkaz na objekt `outputs` v poli zpřístupní jako *vstup* pro následný krok kanálu.
+Ve scénářích, kde je více než jeden krok, se odkaz na objekt v `outputs` poli zpřístupní jako *vstup* pro následný krok kanálu.
 
 ```python
 from azureml.contrib.pipeline.steps import ParallelRunStep
@@ -328,9 +328,9 @@ Seznam všech tříd, které lze použít pro různé typy kroků, naleznete v [
 
 ## <a name="submit-the-pipeline"></a>Odeslat kanál
 
-Teď kanál spusťte. Nejprve vytvořte `Pipeline` objekt pomocí odkazu na pracovní prostor a kroku kanálu, který jste vytvořili. `steps` Parametr je pole kroků. V tomto případě je pro dávkové vyhodnocování k dispozici pouze jeden krok. Chcete-li vytvořit kanály, které mají více kroků, umístěte kroky v tomto poli do pořadí.
+Teď kanál spusťte. Nejprve vytvořte `Pipeline` objekt pomocí odkazu na pracovní prostor a kroku kanálu, který jste vytvořili. `steps`Parametr je pole kroků. V tomto případě je pro dávkové vyhodnocování k dispozici pouze jeden krok. Chcete-li vytvořit kanály, které mají více kroků, umístěte kroky v tomto poli do pořadí.
 
-Dále pomocí `Experiment.submit()` funkce odešlete kanál ke spuštění. Zadejte také vlastní parametr `param_batch_size`. `wait_for_completion` Funkce ukládá výstupy do protokolů během procesu sestavení kanálu. Pomocí protokolů můžete zobrazit aktuální průběh.
+Dále pomocí `Experiment.submit()` funkce odešlete kanál ke spuštění. Zadejte také vlastní parametr `param_batch_size` . `wait_for_completion`Funkce ukládá výstupy do protokolů během procesu sestavení kanálu. Pomocí protokolů můžete zobrazit aktuální průběh.
 
 > [!IMPORTANT]
 > První spuštění kanálu trvá přibližně *15 minut*. Všechny závislosti je nutné stáhnout, vytvoří se image Docker a prostředí Pythonu se zřídí a vytvoří. Opětovné spuštění kanálu bude trvat mnohem méně času, protože se místo vytvoření znovu použijí tyto prostředky. Celková doba běhu pro kanál ale závisí na zatížení skriptů a procesech, které jsou spuštěné v jednotlivých krocích kanálu.
@@ -381,9 +381,9 @@ published_pipeline
 
 Pokud chcete kanál spustit z koncového bodu REST, budete potřebovat hlavičku ověřování typu OAuth2 Bearer. Následující příklad používá interaktivní ověřování (pro ilustraci), ale pro většinu produkčních scénářů, které vyžadují automatizované nebo bezobslužné ověřování, použijte ověřování instančního objektu, jak je [popsáno v tomto článku](how-to-setup-authentication.md).
 
-Ověřování instančního objektu zahrnuje vytvoření *Registrace aplikace* v *Azure Active Directory*. Nejdřív vygenerujete tajný klíč klienta a potom udělíte roli instančního objektu *přístup* k pracovnímu prostoru Machine Learning. Ke správě [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py) toku ověřování použijte třídu. 
+Ověřování instančního objektu zahrnuje vytvoření *Registrace aplikace* v *Azure Active Directory*. Nejdřív vygenerujete tajný klíč klienta a potom udělíte roli instančního objektu *přístup* k pracovnímu prostoru Machine Learning. [`ServicePrincipalAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.serviceprincipalauthentication?view=azure-ml-py)Ke správě toku ověřování použijte třídu. 
 
-Obojí [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) a `ServicePrincipalAuthentication` dědí z `AbstractAuthentication`. V obou případech použijte [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) funkci ve stejném způsobu, jak načíst hlavičku:
+Obojí [`InteractiveLoginAuthentication`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.interactiveloginauthentication?view=azure-ml-py) a `ServicePrincipalAuthentication` dědí z `AbstractAuthentication` . V obou případech použijte [`get_authentication_header()`](https://docs.microsoft.com/python/api/azureml-core/azureml.core.authentication.abstractauthentication?view=azure-ml-py#get-authentication-header--) funkci ve stejném způsobu, jak načíst hlavičku:
 
 ```python
 from azureml.core.authentication import InteractiveLoginAuthentication
@@ -394,9 +394,9 @@ auth_header = interactive_auth.get_authentication_header()
 
 Získejte adresu URL REST z `endpoint` vlastnosti publikovaného objektu kanálu. Adresu URL REST můžete také najít ve vašem pracovním prostoru v Azure Machine Learning Studiu. 
 
-Sestavte požadavek HTTP POST na koncový bod. Zadejte hlavičku ověřování v žádosti. Přidejte objekt datové části JSON, který má název experimentu a parametr velikosti dávky. Jak bylo popsáno dříve v tomto kurzu `param_batch_size` , je předáno do `batch_scoring.py` skriptu, protože jste ho definovali `PipelineParameter` jako objekt v konfiguraci kroku.
+Sestavte požadavek HTTP POST na koncový bod. Zadejte hlavičku ověřování v žádosti. Přidejte objekt datové části JSON, který má název experimentu a parametr velikosti dávky. Jak bylo popsáno dříve v tomto kurzu, `param_batch_size` je předáno do `batch_scoring.py` skriptu, protože jste ho definovali jako `PipelineParameter` objekt v konfiguraci kroku.
 
-Vytvořte žádost o aktivaci běhu. Chcete-li získat hodnotu `Id` ID běhu, přidejte kód pro přístup k klíči z slovníku odpovědí.
+Vytvořte žádost o aktivaci běhu. Chcete-li získat hodnotu ID běhu, přidejte kód pro přístup k `Id` klíči z slovníku odpovědí.
 
 ```python
 import requests

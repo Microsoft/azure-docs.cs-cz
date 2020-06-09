@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: 191a2246afdc60953d8c353f9ccdc2339130f910
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 67bf19c08d9a9309d8d4b731bf30a6db1091ebf1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159331"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558951"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-by-using-python-azure-eventhub-version-5"></a>Zaznamenání dat Event Hubs v Azure Storage a jejich čtení pomocí Pythonu (Azure-eventhub verze 5)
 

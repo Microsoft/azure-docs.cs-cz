@@ -2,17 +2,17 @@
 title: Zotavení po havárii pro vlastní témata v Azure Event Grid
 description: Tento kurz vás provede postupem nastavení architektury událostí pro obnovení, pokud služba Event Grid v oblasti není v pořádku.
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: tutorial
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 87f8f79e2cf125fa5735653153d8fcaa781f5200
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.author: femila
+ms.openlocfilehash: d2b6d8f8433d1eef34e554b0e0fccbf8b2cbab94
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76511514"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557793"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Vytvoření vlastního zotavení po havárii pro vlastní témata v Event Grid
 Zotavení po havárii se zaměřuje na obnovení z vážné ztráty funkčnosti aplikace. V tomto kurzu se dozvíte, jak nastavit architekturu událostí pro obnovení, pokud služba Event Grid v konkrétní oblasti nebude v pořádku.
@@ -93,7 +93,7 @@ Teď, když máte místně redundantní dvojici témat a odběrů, jste připrav
 
 ### <a name="basic-client-side-implementation"></a>Základní implementace na straně klienta
 
-Následující vzorový kód je jednoduchý Vydavatel .NET, který se vždycky pokusí publikovat do primárního tématu jako první. Pokud to nepomůže, bude převzetí služeb při selhání sekundárním tématem. V obou případech také kontroluje rozhraní API pro zjištění stavu druhého tématu `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health`. V případě, že je na koncovém bodu **/API/Health** proveden pokus o načtení, by mělo být v pořádku vždy reagovat na **200 OK** .
+Následující vzorový kód je jednoduchý Vydavatel .NET, který se vždycky pokusí publikovat do primárního tématu jako první. Pokud to nepomůže, bude převzetí služeb při selhání sekundárním tématem. V obou případech také kontroluje rozhraní API pro zjištění stavu druhého tématu `https://<topic-name>.<topic-region>.eventgrid.azure.net/api/health` . V případě, že je na koncovém bodu **/API/Health** proveden pokus o načtení, by mělo být v pořádku vždy reagovat na **200 OK** .
 
 ```csharp
 using System;

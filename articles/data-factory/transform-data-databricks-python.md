@@ -11,18 +11,19 @@ author: djpmsft
 ms.author: daperlov
 ms.reviewer: maghan
 manager: anandsub
-ms.openlocfilehash: e102b14d8471a19564f66edc27cc328c2a789c98
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 6ae42c9cb68b28e5d2f0b5a2ba3cf7eab74a74b4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81414598"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561128"
 ---
 # <a name="transform-data-by-running-a-python-activity-in-azure-databricks"></a>Transformujte data spuštěním aktivity Pythonu v Azure Databricks
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 
-Aktivita Azure Databricks Pythonu v [kanálu Data Factory](concepts-pipelines-activities.md) spustí v clusteru Azure Databricks soubor Pythonu. Tento článek se sestavuje na článku  [aktivity transformace dat](transform-data.md), který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
+Aktivita Azure Databricks Pythonu v [kanálu Data Factory](concepts-pipelines-activities.md) spustí v clusteru Azure Databricks soubor Pythonu. Tento článek se sestavuje na článku [aktivity transformace dat](transform-data.md)   , který představuje obecný přehled transformace dat a podporovaných transformačních aktivit.Azure Databricks je spravovaná platforma pro spouštění Apache Spark.
 
 Jedenáctiminutové představení a ukázku této funkce najdete v tomto videu:
 
@@ -63,12 +64,12 @@ Tady je ukázková definice JSON aktivity datacihly v Pythonu:
 
 Následující tabulka obsahuje popis vlastností JSON použitých v definici JSON:
 
-|Vlastnost|Popis|Požaduje se|
+|Vlastnost|Popis|Vyžadováno|
 |---|---|---|
-|jméno|Název aktivity v kanálu.|Ano|
+|name|Název aktivity v kanálu.|Ano|
 |description|Text popisující, co aktivita dělá.|Ne|
-|type|Pro aktivitu Python datacihly je typ aktivity DatabricksSparkPython.|Ano|
-|linkedServiceName|Název propojené služby datacihly, na které běží aktivita Pythonu Další informace o této propojené službě najdete v článku věnovaném [propojeným službám](compute-linked-services.md) Compute.|Ano|
+|typ|Pro aktivitu Python datacihly je typ aktivity DatabricksSparkPython.|Ano|
+|linkedServiceName|Název propojené služby datacihly, na které běží aktivita Pythonu Další informace o této propojené službě najdete v článku věnovaném [propojeným službám COMPUTE](compute-linked-services.md)   .|Ano|
 |pythonFile|Identifikátor URI souboru Pythonu, který má být spuštěn. Jsou podporovány pouze DBFS cesty.|Ano|
 |parameters|Parametry příkazového řádku, které budou předány souboru Python. Toto je pole řetězců.|Ne|
 |Knihovna|Seznam knihoven, které se mají nainstalovat na cluster, který spustí úlohu. Může to být pole <řetězec, objekt>|Ne|

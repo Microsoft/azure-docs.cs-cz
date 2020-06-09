@@ -7,18 +7,19 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: 8daf7380e859cd2f9b5890c716f7b7d95e6c3fe4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: c5ab718fdccfebe852c1522a0cb07303a541a3dd
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061334"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554249"
 ---
 # <a name="quickstart-manage-blobs-with-python-v12-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí sady Python V12 SDK
 
 V tomto rychlém startu se naučíte spravovat objekty BLOB pomocí Pythonu. Objekty blob jsou objekty, které mohou obsahovat velké objemy textových nebo binárních dat, včetně obrázků, dokumentů, datových proudů médií a dat archivu. Můžete nahrávat, stahovat a vypisovat objekty BLOB a vytvářet a odstraňovat kontejnery.
 
-[API reference documentation](/python/api/azure-storage-blob) | [Library source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)[Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples) knihovny | dokumentace k referenční dokumentaci rozhraní API[(index balíčku Python)](https://pypi.org/project/azure-storage-blob/) | 
+[Referenční dokumentace k](/python/api/azure-storage-blob)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-blob)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-storage-blob/)  |  [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -107,9 +108,9 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 Pro interakci s těmito prostředky použijte následující třídy Pythonu:
 
-* [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient): `BlobServiceClient` třída umožňuje manipulovat s Azure Storage prostředky a kontejnery objektů BLOB.
-* [ContainerClient](/python/api/azure-storage-blob/azure.storage.blob.containerclient): `ContainerClient` třída umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
-* [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient): `BlobClient` třída umožňuje manipulovat s objekty blob Azure Storage.
+* [BlobServiceClient](/python/api/azure-storage-blob/azure.storage.blob.blobserviceclient): `BlobServiceClient` Třída umožňuje manipulovat s Azure Storage prostředky a kontejnery objektů BLOB.
+* [ContainerClient](/python/api/azure-storage-blob/azure.storage.blob.containerclient): `ContainerClient` Třída umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
+* [BlobClient](/python/api/azure-storage-blob/azure.storage.blob.blobclient): `BlobClient` Třída umožňuje manipulovat s objekty blob Azure Storage.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -249,7 +250,7 @@ print("Done")
 
 Tato aplikace vytvoří testovací soubor v místní složce a nahraje ho do úložiště objektů BLOB. Příklad zobrazí seznam objektů BLOB v kontejneru a stáhne soubor s novým názvem, abyste mohli porovnat staré a nové soubory.
 
-Přejděte do adresáře obsahujícího soubor *BLOB-Quickstart-V12.py* a spuštěním následujícího `python` příkazu spusťte aplikaci.
+Přejděte do adresáře obsahujícího soubor *BLOB-Quickstart-V12.py* a `python` spuštěním následujícího příkazu spusťte aplikaci.
 
 ```console
 python blob-quickstart-v12.py

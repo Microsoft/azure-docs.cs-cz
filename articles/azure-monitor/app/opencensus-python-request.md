@@ -5,24 +5,25 @@ ms.topic: conceptual
 author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
-ms.openlocfilehash: 0396bd8d150c6145a39f36e7be9e6e2dcacef2c4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 10d54088859332ad986dc642247c6af96b378978
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77669943"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553891"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Sledování příchozích požadavků pomocí OpenCensus Pythonu
 
-Příchozí data žádosti se shromažďují pomocí OpenCensus Pythonu a jejich různých integrací. Sledovat příchozí data požadavku odesílaná do vašich webových aplikací založených na oblíbených webových rozhraních `django` `flask` a. `pyramid` Data se pak odešlou do Application Insights v části Azure Monitor `requests` jako telemetrie.
+Příchozí data žádosti se shromažďují pomocí OpenCensus Pythonu a jejich různých integrací. Sledovat příchozí data požadavku odesílaná do vašich webových aplikací založených na oblíbených webových rozhraních `django` `flask` a `pyramid` . Data se pak odešlou do Application Insights v části Azure Monitor jako `requests` telemetrie.
 
 Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCensus Python SDK](../../azure-monitor/app/opencensus-python.md).
 
 ## <a name="tracking-django-applications"></a>Sledování aplikací Django
 
-1. Stáhněte si a `opencensus-ext-django` nainstalujte si z [PyPI](https://pypi.org/project/opencensus-ext-django/) a Instrumentujte svoji `django` aplikaci pomocí middlewaru. Příchozí požadavky odeslané do vaší `django` aplikace budou sledovány.
+1. Stáhněte si a nainstalujte si `opencensus-ext-django` z [PyPI](https://pypi.org/project/opencensus-ext-django/) a Instrumentujte svoji aplikaci pomocí `django` middlewaru. Příchozí požadavky odeslané do vaší `django` aplikace budou sledovány.
 
-2. Do `opencensus.ext.django.middleware.OpencensusMiddleware` `settings.py` souboru zadejte `MIDDLEWARE`.
+2. `opencensus.ext.django.middleware.OpencensusMiddleware`Do souboru zadejte `settings.py` `MIDDLEWARE` .
 
     ```python
     MIDDLEWARE = (
@@ -32,7 +33,7 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
     )
     ```
 
-3. Ujistěte se, že je AzureExporter správně nakonfigurovaný `settings.py` v `OPENCENSUS`rámci.
+3. Ujistěte se, že je AzureExporter správně nakonfigurovaný v `settings.py` rámci `OPENCENSUS` .
 
     ```python
     OPENCENSUS = {
@@ -61,7 +62,7 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
 
 ## <a name="tracking-flask-applications"></a>Sledování aplikací v baňce
 
-1. Stáhněte si a `opencensus-ext-flask` nainstalujte si z [PyPI](https://pypi.org/project/opencensus-ext-flask/) a Instrumentujte svoji `flask` aplikaci pomocí middlewaru. Příchozí požadavky odeslané do vaší `flask` aplikace budou sledovány.
+1. Stáhněte si a nainstalujte si `opencensus-ext-flask` z [PyPI](https://pypi.org/project/opencensus-ext-flask/) a Instrumentujte svoji aplikaci pomocí `flask` middlewaru. Příchozí požadavky odeslané do vaší `flask` aplikace budou sledovány.
 
     ```python
     
@@ -86,7 +87,7 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
     
     ```
 
-2. `flask` Middleware můžete nakonfigurovat přímo v kódu. Pro žádosti z adres URL, které nechcete sledovat, je přidejte do `BLACKLIST_PATHS`.
+2. Middleware můžete nakonfigurovat `flask` přímo v kódu. Pro žádosti z adres URL, které nechcete sledovat, je přidejte do `BLACKLIST_PATHS` .
 
     ```python
     app.config['OPENCENSUS'] = {
@@ -112,7 +113,7 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
                          '.pyramid_middleware.OpenCensusTweenFactory')
     ```
 
-2. `pyramid` Doplnění můžete nakonfigurovat přímo v kódu. Pro žádosti z adres URL, které nechcete sledovat, je přidejte do `BLACKLIST_PATHS`.
+2. Doplnění můžete nakonfigurovat `pyramid` přímo v kódu. Pro žádosti z adres URL, které nechcete sledovat, je přidejte do `BLACKLIST_PATHS` .
 
     ```python
     settings = {
@@ -133,6 +134,6 @@ Nejdřív Instrumentujte svou aplikaci v Pythonu pomocí nejnovější [OpenCens
 
 * [Mapa aplikace](../../azure-monitor/app/app-map.md)
 * [Dostupnost](../../azure-monitor/app/monitor-web-app-availability.md)
-* [Hledat](../../azure-monitor/app/diagnostic-search.md)
+* [Vyhledávání](../../azure-monitor/app/diagnostic-search.md)
 * [Dotaz na protokol (Analytics)](../../azure-monitor/log-query/log-query-overview.md)
 * [Diagnostika transakcí](../../azure-monitor/app/transaction-diagnostics.md)

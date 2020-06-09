@@ -3,12 +3,13 @@ title: Referenční dokumentace pro vývojáře v Pythonu pro Azure Functions
 description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: 49577f5ac274b4e34fa07415e5495329ff650aa5
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: tracking-python
+ms.openlocfilehash: a8201b1c8443bd99ec9045fdc4b074a4f3eec4f2
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83676197"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553078"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -234,7 +235,7 @@ def main(req: func.HttpRequest,
     return message
 ```
 
-## <a name="logging"></a>Protokolování
+## <a name="logging"></a>protokolování
 
 Přístup k protokolovacímu nástroji Azure Functions runtime je k dispozici prostřednictvím kořenové [`logging`](https://docs.python.org/3/library/logging.html#module-logging) obslužné rutiny ve vaší aplikaci Function App. Tento protokolovací nástroj je svázán s Application Insights a umožňuje označit upozornění a chyby, které byly zjištěny během provádění funkce.
 
@@ -250,7 +251,7 @@ def main(req):
 
 K dispozici jsou další metody protokolování, které umožňují zapisovat do konzoly na různých úrovních trasování:
 
-| Metoda                 | Popis                                |
+| Metoda                 | Description                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | Zapíše zprávu s KRITICKou úrovní na kořenovém protokolovacím nástroji.  |
 | **`error(_message_)`**   | Zapíše zprávu s CHYBou úrovně v kořenovém protokolovacím nástroji.    |
@@ -337,7 +338,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce
 
 Chcete-li získat kontext vyvolání funkce během provádění, zahrňte [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) do jejího podpisu argument.
 
-Například:
+Příklad:
 
 ```python
 import azure.functions
