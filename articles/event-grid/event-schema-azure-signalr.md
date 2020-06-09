@@ -2,17 +2,17 @@
 title: Azure Signal jako zdroj Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro události služby Azure Signal s Azure Event Grid
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/23/2020
-ms.author: babanisa
-ms.openlocfilehash: e4ebae9597d750cea6f292655e9f03dd65ccc3f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 8fbae3fad4aeb85022c804e1ac648060360c6531
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82133722"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560635"
 ---
 # <a name="azure-event-grid-event-schema-for-signalr-service"></a>Azure Event Grid schéma událostí pro službu Signal
 
@@ -24,7 +24,7 @@ Tento článek poskytuje vlastnosti a schéma pro události služby signalizace.
 
 Služba signalizace emituje následující typy událostí:
 
-| Typ události | Popis |
+| Typ události | Description |
 | ---------- | ----------- |
 | Microsoft. SignalRService. ClientConnectionConnected | Vyvolá se, když se připojí připojení klienta. |
 | Microsoft. SignalRService. ClientConnectionDisconnected | Vyvolá se v případě, že bylo připojení klienta odpojeno. |
@@ -76,20 +76,20 @@ Schéma pro událost odpojení klientského připojení je podobné:
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
 | závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
 | Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | objekt | Data události služby signalizace. |
+| data | odkazy objektů | Data události služby signalizace. |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | časové razítko | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | hubName | řetězec | Rozbočovač, ke kterému patří připojení klienta. |

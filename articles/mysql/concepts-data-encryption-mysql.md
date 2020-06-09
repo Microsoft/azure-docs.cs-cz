@@ -6,23 +6,23 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 24b52042e037e998069550599ca006eded70d1c4
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 0873f9b55adbf54abe47bf275f953c3cc2b1cd3f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849721"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488439"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL šifrování dat pomocí klíče spravovaného zákazníkem
-
-> [!NOTE]
-> V tuto chvíli musíte požádat o přístup k používání této možnosti. Pokud to chcete udělat, kontaktujte AskAzureDBforMySQL@service.microsoft.com .
 
 Šifrování dat pomocí klíčů spravovaných zákazníkem pro službu Azure Database for MySQL umožňuje šifrovat neaktivní uložená data s použitím vlastního klíče. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. V případě šifrování spravovaného zákazníkem máte úplnou kontrolu nad životním cyklem klíčů, oprávněními k používání klíčů a auditováním operací s klíči, za které také zodpovídáte.
 
 Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for MySQL je nastaveno na úrovni serveru. Pro daný server se k zašifrování datového šifrovacího klíče (klíč DEK) používaného službou používá klíč spravovaný zákazníkem (KEK), který se nazývá klíč šifrovací klíč (). KEK je asymetrický klíč uložený v instanci [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) spravované zákazníkem a zákazníkem. Klíč šifrování klíče (KEK) a šifrovací klíč (klíč DEK) jsou podrobněji popsány dále v tomto článku.
 
 Key Vault je cloudový externí systém pro správu klíčů. Je vysoce dostupná a poskytuje škálovatelné a zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování autorizovaným entitám. Key Vault může klíč vygenerovat, naimportovat nebo [přenášet z místního zařízení HSM](../key-vault/key-Vault-hsm-protected-keys.md).
+
+> [!NOTE]
+> Tato funkce se v současné době zavádí globálně a bude brzy k dispozici ve všech oblastech. Pokud ji ve vaší oblasti nevidíte, obraťte se naAskAzureDBforMySQL@service.microsoft.com
 
 > [!NOTE]
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for MySQL podporuje cenové úrovně "Pro obecné účely" a "paměťově optimalizovaná".
@@ -129,6 +129,19 @@ Aby nedocházelo k problémům při nastavování šifrování dat spravovaného
 * Zahajte proces vytváření repliky obnovení nebo čtení z hlavního Azure Database for MySQL.
 * Nechejte nově vytvořený server (Obnovený nebo repliku) v nepřístupovém stavu, protože jeho jedinečná identita ještě nemá udělená oprávnění Key Vault.
 * Na obnoveném serveru repliky znovu ověřte klíč spravovaný zákazníkem v nastavení šifrování dat, abyste zajistili, že nově vytvořenému serveru budou udělena oprávnění k zalamování a odbalení klíče uloženého v Key Vault.
+
+## <a name="limitations"></a>Omezení
+
+V případě Azure Database for MySQL podporuje šifrování neaktivních dat pomocí CMK (Customers Key) několik omezení –
+
+* Podpora této funkce je omezená na **pro obecné účely** a **paměťově optimalizované** cenové úrovně.
+* Tato funkce je podporována pouze v oblastech a serverech, které podporují úložiště až do 16TB. Seznam oblastí Azure, které podporují úložiště až do 16TB, najdete v části úložiště [v dokumentaci.](concepts-pricing-tiers.md#storage)
+
+    > [!NOTE]
+    > - Všechny nové servery MySQL vytvořené v oblastech uvedených výše jsou **k dispozici**podpora šifrování pomocí klíčů manažera zákazníka. Obnovený bod v čase (PITR) nebo replika čtení se neprojeví, i když je teoreticky "New".
+    > - Pokud chcete ověřit, jestli zřízený Server podporuje až 16TB, můžete přejít na okno cenová úroveň na portálu a zobrazit maximální velikost úložiště podporovanou zřízeným serverem. Pokud můžete posuvník přesunout až na 4 TB, váš server možná nepodporuje šifrování se spravovanými klíči zákazníka. Data se ale šifrují pomocí klíčů spravovaných službou. AskAzureDBforMySQL@service.microsoft.comPokud máte nějaké dotazy, obraťte se na něj.
+
+* Šifrování se podporuje jenom s kryptografickým klíčem RSA 2048.
 
 ## <a name="next-steps"></a>Další kroky
 

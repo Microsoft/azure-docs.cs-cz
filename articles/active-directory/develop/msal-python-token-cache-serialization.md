@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/13/2019
 ms.author: rayluo
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 9c6edd0b3cfd6620f04553f9f6dfe89f1c7b7024
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 9bdfc3be7194c13123250f83d6f0e19a884597ca
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81536195"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558614"
 ---
 # <a name="custom-token-cache-serialization-in-msal-for-python"></a>Serializace mezipaměti vlastního tokenu v MSAL pro Python
 

@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
-ms.openlocfilehash: 4b10660302eb831a982d261cdfdaf91f4dbdfb38
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.custom: tracking-python
+ms.openlocfilehash: dd98d27f5a14d284174dd779ae20b29f534920b0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248766"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559953"
 ---
 # <a name="azure-table-storage-bindings-for-azure-functions"></a>Vazby úložiště tabulek Azure pro Azure Functions
 
@@ -554,7 +555,7 @@ V [knihovně modulu runtime Functions jazyka Java](/java/api/overview/azure/func
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `Table` atributu.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Popis|
+|Function. JSON – vlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
 |**textový** | Není k dispozici | Musí být nastaven na hodnotu `table` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
 |**direction** | Není k dispozici | Musí být nastaven na hodnotu `in` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
@@ -941,9 +942,9 @@ V [běhové knihovně funkcí jazyka Java](/java/api/overview/azure/functions/ru
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `Table` atributu.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Popis|
+|Function. JSON – vlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**typ** | Není k dispozici | Musí být nastaven na hodnotu `table` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
+|**textový** | Není k dispozici | Musí být nastaven na hodnotu `table` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal.|
 |**direction** | Není k dispozici | Musí být nastaven na hodnotu `out` . Tato vlastnost je nastavena automaticky při vytváření vazby v Azure Portal. |
 |**Jméno** | Není k dispozici | Název proměnné použitý v kódu funkce, který představuje tabulku nebo entitu. Nastavte na `$return` odkaz na návratovou hodnotu funkce.| 
 |**tableName** |**Tabulky** | Název tabulky| 

@@ -9,13 +9,14 @@ ms.topic: quickstart
 ms.custom:
 - mvc
 - seo-python-october2019
+- tracking-python
 ms.date: 11/05/2019
-ms.openlocfilehash: 6ce3dd1cbb694988af3555765342a1c4ca3850b5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 120708cc72117495e6200f41f13422e94a58c265
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81010847"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556485"
 ---
 # <a name="quickstart-create-a-python-app-that-uses-azure-cache-for-redis"></a>Rychlý Start: Vytvoření aplikace v Pythonu, která používá Azure cache pro Redis
 
@@ -41,7 +42,7 @@ Následující příklad používá *PIP3* pro Python 3 k instalaci *Redis-py* v
 
 ## <a name="read-and-write-to-the-cache"></a>Čtení z mezipaměti a zápis do mezipaměti
 
-Spusťte Python z příkazového řádku a otestujte mezipaměť pomocí následujícího kódu. Hodnoty `<Your Host Name>` a `<Your Access Key>` nahraďte hodnotami z vaší instance Azure cache pro Redis. Název hostitele má formu * \<názvu DNS>. Redis.cache.Windows.NET*.
+Spusťte Python z příkazového řádku a otestujte mezipaměť pomocí následujícího kódu. `<Your Host Name>`Hodnoty a nahraďte `<Your Access Key>` hodnotami z vaší instance Azure cache pro Redis. Název hostitele je ve formátu * \<DNS name> . Redis.cache.Windows.NET*.
 
 ```python
 >>> import redis
@@ -58,7 +59,7 @@ b'bar'
 
 ## <a name="create-a-python-sample-app"></a>Vytvoření ukázkové aplikace v Pythonu
 
-Vytvořte nový textový soubor, přidejte následující skript a uložte ho jako *PythonApplication1.py*. Hodnoty `<Your Host Name>` a `<Your Access Key>` nahraďte hodnotami z vaší instance Azure cache pro Redis. Název hostitele má formu * \<názvu DNS>. Redis.cache.Windows.NET*.
+Vytvořte nový textový soubor, přidejte následující skript a uložte ho jako *PythonApplication1.py*. `<Your Host Name>`Hodnoty a nahraďte `<Your Access Key>` hodnotami z vaší instance Azure cache pro Redis. Název hostitele je ve formátu * \<DNS name> . Redis.cache.Windows.NET*.
 
 ```python
 import redis

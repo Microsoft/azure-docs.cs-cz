@@ -6,18 +6,19 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: ff257e101ca925a554f2343d357e2042d2930b45
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 1683fba2d8f085569c7cc62a06d0fe95803d4346
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062398"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559195"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Postup připojení aplikací k Azure Database for MySQL
 Toto téma uvádí typy připojovacích řetězců, které jsou podporovány Azure Database for MySQL, spolu se šablonami a příklady. V připojovacím řetězci můžete mít různé parametry a nastavení.
 
 - Informace o získání certifikátu najdete v tématu [Jak konfigurovat protokol SSL](./howto-configure-ssl.md).
-- {your_host} = \<servername>. MySQL.Database.Azure.com
+- {your_host} = \<servername> . MySQL.Database.Azure.com
 - {your_user} @ {servername} = formát userID pro ověřování správně.  Pokud použijete identifikátor userID, ověření se nezdaří.
 
 ## <a name="adonet"></a>ADO.NET
@@ -25,7 +26,7 @@ Toto téma uvádí typy připojovacích řetězců, které jsou podporovány Azu
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-V `mydemoserver`tomto příkladu je název serveru, název databáze je `wpdb`, uživatelské jméno `WPAdmin`a heslo. `mypassword!2` V důsledku toho by měl být připojovací řetězec:
+V tomto příkladu je název serveru `mydemoserver` , název databáze je `wpdb` , uživatelské jméno `WPAdmin` a heslo `mypassword!2` . V důsledku toho by měl být připojovací řetězec:
 
 ```ado.net
 Server= "mydemoserver.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -62,7 +63,7 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Získat podrobnosti o připojovacím řetězci z Azure Portal
-V [Azure Portal](https://portal.azure.com)přejděte na Azure Database for MySQL server a pak klikněte na **připojovací řetězce** . zobrazí se seznam řetězců pro vaši instanci: ![podokno připojovací řetězce v Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+V [Azure Portal](https://portal.azure.com)přejděte na Azure Database for MySQL server a pak klikněte na **připojovací řetězce** . zobrazí se seznam řetězců pro vaši instanci: ![ podokno připojovací řetězce v Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 Řetězec poskytuje podrobnosti, jako je například ovladač, server a další parametry připojení databáze. Upravte tyto příklady tak, aby používaly vlastní parametry, jako je třeba název databáze, heslo a tak dále. Pak můžete použít tento řetězec pro připojení k serveru z kódu a aplikací.
 

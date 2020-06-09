@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.author: tisande
-ms.openlocfilehash: 2e870e6cbc16fd98d8fccb5bbe3ac5d8be634cf2
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: tracking-python
+ms.openlocfilehash: ea34ec3bd601b784afd5bf0286768bbf5f92d040
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982305"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553033"
 ---
 # <a name="how-to-register-and-use-stored-procedures-triggers-and-user-defined-functions-in-azure-cosmos-db"></a>Postup registrace a používání uložených procedur, triggerů a funkcí definovaných uživatelem ve službě Azure Cosmos DB
 
@@ -21,7 +22,7 @@ Rozhraní SQL API ve službě Azure Cosmos DB podporuje registraci a vyvoláván
 
 Uložené procedury jsou zapisovány pomocí JavaScriptu. Můžou vytvářet, aktualizovat, číst, dotazovat a odstraňovat položky v rámci kontejneru Azure Cosmos. Další informace o tom, jak zapisovat uložené procedury v Azure Cosmos DB, najdete v tématu [Postup zápisu uložených procedur v Azure Cosmos DB](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures) článku.
 
-Následující příklady ukazují, jak registrovat a volat uloženou proceduru pomocí sad Azure Cosmos DB SDK. Odkaz na [Vytvoření dokumentu můžete vytvořit](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) jako zdroj pro tuto uloženou proceduru, `spCreateToDoItem.js`která se uloží jako.
+Následující příklady ukazují, jak registrovat a volat uloženou proceduru pomocí sad Azure Cosmos DB SDK. Odkaz na [Vytvoření dokumentu můžete vytvořit](how-to-write-stored-procedures-triggers-udfs.md#create-an-item) jako zdroj pro tuto uloženou proceduru, která se uloží jako `spCreateToDoItem.js` .
 
 > [!NOTE]
 > U dělených kontejnerů při provádění uložené procedury musí být v možnostech žádosti uvedena hodnota klíče oddílu. Uložené procedury jsou vždy vymezeny na klíč oddílu. Položky, které mají jinou hodnotu klíče oddílu, nebudou viditelné pro uloženou proceduru. To se také aplikuje i na triggery.
@@ -197,7 +198,7 @@ client.ExecuteStoredProcedure(sproc_link, new_item, {'partitionKey': 'Personal'}
 
 ## <a name="how-to-run-pre-triggers"></a><a id="pre-triggers"></a>Jak spustit předběžné triggery
 
-Následující příklady ukazují, jak registrovat a volat předběžnou Trigger pomocí sad Azure Cosmos DB SDK. Podívejte se na [příklad předběžného triggeru](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) , protože zdroj pro tuto předběžnou aktivační událost `trgPreValidateToDoItemTimestamp.js`je uložen jako.
+Následující příklady ukazují, jak registrovat a volat předběžnou Trigger pomocí sad Azure Cosmos DB SDK. Podívejte se na [příklad předběžného triggeru](how-to-write-stored-procedures-triggers-udfs.md#pre-triggers) , protože zdroj pro tuto předběžnou aktivační událost je uložen jako `trgPreValidateToDoItemTimestamp.js` .
 
 Při spuštění jsou předběžné triggery předány do objektu RequestOptions zadáním `PreTriggerInclude` a následným předáním názvu triggeru do objektu list.
 
@@ -355,7 +356,7 @@ client.CreateItem(container_link, item, {
 
 ## <a name="how-to-run-post-triggers"></a><a id="post-triggers"></a>Spuštění po triggerech
 
-Následující příklady ukazují, jak registrovat aktivační událost pomocí sad Azure Cosmos DB SDK. Podívejte se na [příklad po triggeru](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) , který označuje, že zdroj pro tuto aktivační událost je `trgPostUpdateMetadata.js`uložen jako.
+Následující příklady ukazují, jak registrovat aktivační událost pomocí sad Azure Cosmos DB SDK. Podívejte se na [příklad po triggeru](how-to-write-stored-procedures-triggers-udfs.md#post-triggers) , který označuje, že zdroj pro tuto aktivační událost je uložen jako `trgPostUpdateMetadata.js` .
 
 ### <a name="post-triggers---net-sdk-v2"></a>Post-Triggers – .NET SDK v2
 
@@ -502,7 +503,7 @@ client.CreateItem(container_link, item, {
 
 ## <a name="how-to-work-with-user-defined-functions"></a><a id="udfs"></a>Jak pracovat s uživatelsky definovanými funkcemi
 
-Následující příklady ukazují, jak registrovat uživatelsky definovanou funkci pomocí sad Azure Cosmos DB SDK. Podívejte se na tento [příklad uživatelsky definované funkce](how-to-write-stored-procedures-triggers-udfs.md#udfs) , protože zdroj pro tuto aktivační událost je uložen jako `udfTax.js`.
+Následující příklady ukazují, jak registrovat uživatelsky definovanou funkci pomocí sad Azure Cosmos DB SDK. Podívejte se na tento [příklad uživatelsky definované funkce](how-to-write-stored-procedures-triggers-udfs.md#udfs) , protože zdroj pro tuto aktivační událost je uložen jako `udfTax.js` .
 
 ### <a name="user-defined-functions---net-sdk-v2"></a>Uživatelsky definované funkce – .NET SDK v2
 

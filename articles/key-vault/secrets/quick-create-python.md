@@ -7,12 +7,13 @@ ms.date: 10/20/2019
 ms.service: key-vault
 ms.subservice: secrets
 ms.topic: quickstart
-ms.openlocfilehash: b91d0ce8cb7bfed7bdcd7925a247327358a8e887
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.custom: tracking-python
+ms.openlocfilehash: 783e89d3e1802ae8788a933f493e2a865c03a3ef
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82982985"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561549"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Rychlý Start: Azure Key Vault klientskou knihovnu pro Python
 
@@ -26,7 +27,7 @@ Azure Key Vault pomáhá chránit kryptografické klíče a tajné klíče použ
 - Zjednodušte a automatizujte úlohy pro certifikáty TLS/SSL.
 - Použijte ověřený HSM úrovně 2 FIPS 140-2.
 
-[Dokumentace k referenční dokumentaci](/python/api/overview/azure/key-vault?view=azure-python) | rozhraní API balíček[zdrojového kódu](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [(index balíčku Python)](https://pypi.org/project/azure-keyvault/)
+[Referenční dokumentace k](/python/api/overview/azure/key-vault?view=azure-python)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-keyvault/)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -69,7 +70,7 @@ az keyvault create --name <your-unique-keyvault-name> -g "myResourceGroup"
 
 Nejjednodušší způsob, jak ověřit cloudovou aplikaci v Pythonu, je spravovaná identita; Podrobnosti najdete v tématu [použití spravované identity App Service pro přístup k Azure Key Vault](../general/managed-identity.md) . 
 
-V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová aplikace, která vyžaduje použití instančního objektu a zásad řízení přístupu. Vaše zásada služby vyžaduje jedinečný název ve formátu "http://&lt;my-Unique-Service-princip-name&gt;".
+V zájmu zjednodušení ale v tomto rychlém startu se vytvoří desktopová aplikace, která vyžaduje použití instančního objektu a zásad řízení přístupu. Vaše zásada služby vyžaduje jedinečný název ve formátu "http:// &lt; My-Unique-Service-princip-name &gt; ".
 
 Vytvořte zásadu služby pomocí příkazu Azure CLI [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) :
 
@@ -105,9 +106,9 @@ az keyvault set-policy -n <your-unique-keyvault-name> --spn <clientId-of-your-se
 
 #### <a name="set-environmental-variables"></a>Nastavení proměnných prostředí
 
-Metoda DefaultAzureCredential v naší aplikaci spoléhá na tři proměnné prostředí: `AZURE_CLIENT_ID`, `AZURE_CLIENT_SECRET`a. `AZURE_TENANT_ID` Nastavte tyto proměnné na hodnoty clientId, clientSecret a tenantId, které jste si poznamenali v kroku [Vytvoření instančního objektu](#create-a-service-principal) pomocí `export VARNAME=VALUE` formátu. (Tato metoda nastavuje jenom proměnné pro vaše aktuální prostředí a procesy vytvořené z prostředí. Pokud chcete tyto proměnné do svého prostředí přidat trvale, upravte `/etc/environment ` soubor.) 
+Metoda DefaultAzureCredential v naší aplikaci spoléhá na tři proměnné prostředí: `AZURE_CLIENT_ID` , `AZURE_CLIENT_SECRET` a `AZURE_TENANT_ID` . Nastavte tyto proměnné na hodnoty clientId, clientSecret a tenantId, které jste si poznamenali v kroku [Vytvoření instančního objektu](#create-a-service-principal) pomocí `export VARNAME=VALUE` formátu. (Tato metoda nastavuje jenom proměnné pro vaše aktuální prostředí a procesy vytvořené z prostředí. Pokud chcete tyto proměnné do svého prostředí přidat trvale, upravte `/etc/environment ` soubor.) 
 
-Název trezoru klíčů si taky budete muset uložit jako proměnnou prostředí s názvem `KEY_VAULT_NAME`.
+Název trezoru klíčů si taky budete muset uložit jako proměnnou prostředí s názvem `KEY_VAULT_NAME` .
 
 ```console
 export AZURE_CLIENT_ID=<your-clientID>
@@ -123,7 +124,7 @@ export KEY_VAULT_NAME=<your-key-vault-name>
 
 Klientská knihovna Azure Key Vault pro Python umožňuje správu klíčů a souvisejících prostředků, jako jsou certifikáty a tajné klíče. Následující ukázka kódu vám ukáže, jak vytvořit klienta, nastavit tajný klíč, načíst tajný klíč a odstranit tajný klíč.
 
-Celá Konzolová aplikace je k dispozici na adrese https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
+Celá Konzolová aplikace je k dispozici na adrese https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app .
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -169,7 +170,7 @@ Nyní můžete načíst dříve nastavenou hodnotu s [klientem. Getsecret – me
 retrieved_secret = client.get_secret(secretName)
  ```
 
-Váš tajný kód se teď uloží `retrieved_secret.value`jako.
+Váš tajný kód se teď uloží jako `retrieved_secret.value` .
 
 ### <a name="delete-a-secret"></a>Odstranění tajného klíče
 

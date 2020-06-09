@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 01c625bebbcd2e619a8125fdfb92673cd02966b2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: c1dcc91c6a7b823cd89b3ce4bf4d611b9923f87d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583207"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558733"
 ---
 # <a name="conditional-access-grant"></a>Podmíněný přístup: udělení
 
@@ -28,7 +28,7 @@ V rámci zásad podmíněného přístupu může správce využít řízení př
 
 Blok vezme v úvahu všechna přiřazení a zabraňuje přístupu na základě konfigurace zásad podmíněného přístupu.
 
-Blok je výkonný ovládací prvek, který by měl být wielded s odpovídajícím vědomím. Správce by měl použít [režim pouze pro sestavy](concept-conditional-access-report-only.md) k otestování před povolením.
+Blok je výkonný ovládací prvek, který by měl být wielded s odpovídajícím vědomím. Zásady s příkazy Block mohou mít nezamýšlené vedlejší účinky. Před tím, než povolíte škálování, jsou správné testování a ověřování důležité. Při provádění změn by správci měli používat nástroje, jako je [režim pouze pro vytváření sestav podmíněného přístupu](concept-conditional-access-report-only.md) a [Nástroj what if v podmíněném přístupu](what-if-tool.md) .
 
 ## <a name="grant-access"></a>Udělení přístupu
 
@@ -62,6 +62,8 @@ Zařízení musí být zaregistrovaná ve službě Azure AD, aby je bylo možné
 ### <a name="require-hybrid-azure-ad-joined-device"></a>Vyžadovat zařízení připojené k hybridní službě Azure AD
 
 Organizace se můžou rozhodnout používat identitu zařízení jako součást zásad podmíněného přístupu. Organizace můžou vyžadovat, aby se zařízení připojila k hybridní službě Azure AD pomocí tohoto zaškrtávacího políčka. Další informace o identitách zařízení najdete v článku [co je identita zařízení?](../devices/overview.md).
+
+Při použití [toku OAuth pro kód zařízení](../develop/v2-oauth2-device-code.md)se nepodporuje stav vyžadovat řízení udělení spravovaného zařízení nebo stav zařízení. Důvodem je to, že zařízení, které provádí ověřování, nemůže poskytnout stav zařízení zařízení, které poskytuje kód, a stav zařízení je v tokenu zamčený k zařízení, které provádí ověřování. Místo toho použijte ovládací prvek vyžadovat službu Multi-Factor Authentication.
 
 ### <a name="require-approved-client-app"></a>Vyžadovat klientskou aplikaci schválenou
 

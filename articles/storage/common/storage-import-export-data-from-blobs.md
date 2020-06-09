@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: fe58f59147db43b1c15298f83a2945b50766f8a8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 8605fb3c43e625d86fd4d4008ddc49b0e29c8d44
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84169198"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509470"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Službu Azure Import/Export můžete použít k exportu dat z úložiště objektů blob v Azure.
 
@@ -39,7 +39,7 @@ Musíte:
 
 Chcete-li vytvořit úlohu exportu v Azure Portal, proveďte následující kroky.
 
-1. Přihlaste se k https://portal.azure.com/ .
+1. Přihlaste se k <https://portal.azure.com/> .
 2. **> úlohy import/export přejít na všechny služby > úložiště**.
 
     ![Přejít na úlohy importu/exportu](./media/storage-import-export-data-from-blobs/export-from-blob1.png)
@@ -129,7 +129,11 @@ Export byl dokončen.
 
 Pokud používáte 1.4.0.300 verze nástroje WAImportExport, odemkněte jednotku pomocí následujícího příkazu:
 
-   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file>`  
+   `WAImportExport Unlock /bk:<BitLocker key (base 64 string) copied from journal (*.jrn*) file> /driveLetter:<Drive letter>`  
+
+Tady je příklad ukázkového vstupu.
+
+   `WAImportExport.exe Unlock /bk:CAAcwBoAG8AdQBsAGQAIABiAGUAIABoAGkAZABkAGUAbgA= /driveLetter:e`
 
 Pokud používáte starší verze nástroje, odemkněte jednotku pomocí dialogového okna BitLocker.
 
@@ -143,15 +147,15 @@ Tento *volitelný* krok vám pomůže určit počet jednotek vyžadovaných pro 
 2. Rozbalte do výchozí složky `waimportexportv1` . Například, `C:\WaImportExportV1`.
 3. Otevřete okno PowerShellu nebo příkazového řádku s oprávněními správce. Chcete-li změnit adresář na složku unzip, spusťte následující příkaz:
 
-    `cd C:\WaImportExportV1`
+   `cd C:\WaImportExportV1`
 
 4. Pokud chcete zjistit počet disků vyžadovaných pro vybrané objekty blob, spusťte následující příkaz:
 
-    `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
+   `WAImportExport.exe PreviewExport /sn:<Storage account name> /sk:<Storage account key> /ExportBlobListFile:<Path to XML blob list file> /DriveSize:<Size of drives used>`
 
     Parametry jsou popsány v následující tabulce:
 
-    |Parametr příkazového řádku|Popis|  
+    |Parametr příkazového řádku|Description|  
     |--------------------------|-----------------|  
     |**/logdir:**|Nepovinný parametr. Adresář protokolu. Podrobné soubory protokolu se zapisují do tohoto adresáře. Pokud tento parametr nezadáte, použije se jako adresář protokolu aktuální adresář.|  
     |**SN**|Povinná hodnota. Název účtu úložiště pro úlohu exportu|  
@@ -205,7 +209,7 @@ Number of drives needed:        3
 
 V následující tabulce jsou uvedeny příklady platných cest objektů BLOB:
 
-   | Volič | Cesta objektu BLOB | Popis |
+   | Volič | Cesta objektu BLOB | Description |
    | --- | --- | --- |
    | Začíná na |/ |Exportuje všechny objekty BLOB v účtu úložiště. |
    | Začíná na |/$root/ |Exportuje všechny objekty BLOB v kořenovém kontejneru. |

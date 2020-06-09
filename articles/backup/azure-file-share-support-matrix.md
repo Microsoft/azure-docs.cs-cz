@@ -4,12 +4,12 @@ description: Obsahuje souhrn nastavení podpory a omezení při zálohování sd
 ms.topic: conceptual
 ms.date: 5/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 8198c06c1151dd86d99bc64f825764d0a4988287
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 72492ea77534b636d90820c96e36163e6c6efebe
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193869"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488456"
 ---
 # <a name="support-matrix-for-azure-file-share-backup"></a>Matice podpory pro zálohování sdílených složek Azure
 
@@ -23,7 +23,7 @@ Zálohování sdílených složek Azure je k dispozici ve všech oblastech **s v
 
 ### <a name="supported-regions-for-accidental-delete-protection"></a>Podporované oblasti pro náhodné odstranění ochrany
 
-USA – středozápad
+Středozápadní USA, Austrálie – jihovýchod, Kanada – střed
 
 ## <a name="supported-storage-accounts"></a>Podporované účty úložiště
 
@@ -53,7 +53,7 @@ USA – středozápad
 
 | Nastavení                                      | Omezení |
 | -------------------------------------------- | ----- |
-| Maximální počet záloh na vyžádání za den | 4     |
+| Maximální počet záloh na vyžádání za den | 10   |
 | Maximální počet plánovaných záloh za den | 1     |
 
 ## <a name="restore-limits"></a>Omezení obnovení

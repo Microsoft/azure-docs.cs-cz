@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: 1610ba173f31ecee05b2816758eab2d7c6da98f9
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.custom: tracking-python
+ms.openlocfilehash: 3a274ca84be8e4803bae614dcb3eba5d8086bd2d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83798447"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559525"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: poznámky k verzi a prostředky
 
@@ -98,7 +99,7 @@ ms.locfileid: "83798447"
 
 * Připojení klienta bylo upraveno za účelem využívání kanálu HTTP definovaného v `azure.core.pipeline` .
 
-* Interaktivní objekty se teď přejmenovaly jako proxy. To zahrnuje:
+* Interaktivní objekty se teď přejmenovaly jako proxy. Sem patří:
 
   * `Database` -> `DatabaseProxy`
   * `User` -> `UserProxy`
@@ -304,7 +305,7 @@ Všechny žádosti o Azure Cosmos DB používání vyřazené sady SDK jsou slu�
 > [!WARNING]
 > Všechny verze sady Python SDK pro SQL API starší než verze **1.0.0** byly vyřazení od **29. února 2016**. A všechny verze 1. x a 2. x sady Python SDK pro SQL API budou vyřazení od 30. **srpna 2020**.
 
-| Verze | Datum vydání | Datum vyřazení |
+| Version | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
 | [4.0.0](#400) |20. května 2020 |--- |
 | [3.0.2](#302) |15. listopadu 2018 |--- |

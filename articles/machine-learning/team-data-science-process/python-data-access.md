@@ -10,13 +10,13 @@ ms.subservice: team-data-science-process
 ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
-ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 4c5269488b1c449580d56a0c1506c59b89c76ca6
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.custom: seodec18, tracking-python, previous-author=deguhath, previous-ms.author=deguhath
+ms.openlocfilehash: e26d2e98a791c4b4e212863700a4745185642de7
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267992"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558410"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Přístup k datovým sadám pomocí Pythonu a klientské knihovny služby Azure Machine Learning pro Python
 Náhled klientské knihovny Microsoft Azure Machine Learning Pythonu může povolit zabezpečený přístup k vašim datovým sadám Azure Machine Learning z místního prostředí Pythonu a umožňuje vytváření a správu datových sad v pracovním prostoru.

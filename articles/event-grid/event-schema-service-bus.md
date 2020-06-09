@@ -2,17 +2,17 @@
 title: Azure Service Bus jako zdroj Event Grid
 description: Popisuje vlastnosti, které jsou k dispozici pro Service Bus události s Azure Event Grid
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/09/2020
-ms.author: babanisa
-ms.openlocfilehash: 141a0e96071014dc3705d30f72b1a9257737298a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 5152c1579d46bfbff6c85b2cd19425aee0dd3290
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393242"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559483"
 ---
 # <a name="azure-service-bus-as-an-event-grid-source"></a>Azure Service Bus jako zdroj Event Grid
 
@@ -24,7 +24,7 @@ Tento článek poskytuje vlastnosti a schéma pro události Service Bus.Úvod do
 
 Service Bus emituje následující typy událostí:
 
-| Typ události | Popis |
+| Typ události | Description |
 | ---------- | ----------- |
 | Microsoft. ServiceBus. ActiveMessagesAvailableWithNoListeners | Je aktivována, když ve frontě nebo předplatném jsou aktivní zprávy a neposlouchá žádný přijímač. |
 | Microsoft. ServiceBus. DeadletterMessagesAvailableWithNoListener | Je aktivována, když jsou aktivní zprávy ve frontě nedoručených zpráv a žádné aktivní naslouchací procesy. |
@@ -79,20 +79,20 @@ Schéma pro událost fronty nedoručených zpráv je podobné:
 
 Událost má následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | téma | řetězec | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nelze zapisovat. Tuto hodnotu poskytuje Event Grid. |
 | závislosti | řetězec | Cesta k předmětu události, kterou definuje vydavatel. |
 | Typ | řetězec | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Jedinečný identifikátor události |
-| data | objekt | Data události služby Blob Storage. |
+| data | odkazy objektů | Data události služby Blob Storage. |
 | dataVersion | řetězec | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
 | metadataVersion | řetězec | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 Datový objekt má následující vlastnosti:
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | namespaceName | řetězec | Obor názvů Service Bus prostředek existuje v. |
 | requestUri | řetězec | Identifikátor URI pro konkrétní frontu nebo odběr, který vyvolal událost. |

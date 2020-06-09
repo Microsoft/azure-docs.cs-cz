@@ -3,14 +3,14 @@ title: Přehled Azure Automation Change Tracking a inventáře
 description: Tento článek popisuje funkci Change Tracking a inventáře, která vám pomůže identifikovat změny softwaru a služeb Microsoftu ve vašem prostředí.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 06/03/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
-ms.openlocfilehash: cef323fd5b73b1befec5261e56357751ac72adae
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 2aab90b12cd3844b94b0b7e6e94582d403db2efe
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342914"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555031"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Přehled Change Tracking a inventáře
 
@@ -33,22 +33,23 @@ Change Tracking a inventář získává data z Azure Monitor. Virtuální počí
 
 Change Tracking a inventář aktuálně nepodporují následující položky:
 
-* Rekurze pro sledování registru Windows
-* Síťové systémy souborů
-* Různé metody instalace
-* *soubory **. exe** pro Windows
+- Rekurze pro sledování registru Windows
+- Síťové systémy souborů
+- Různé metody instalace
+- *soubory **. exe** pro Windows
 
 Další omezení:
 
-* Sloupec **maximální velikost souboru** a hodnoty jsou v aktuální implementaci nepoužitelné.
-* Pokud shromáždíte více než 2500 souborů v cyklu shromažďování, Change Tracking a výkon inventáře může být snížený.
-* Pokud je síťový provoz vysoký, může zobrazení změn záznamů trvat až šest hodin.
-* Pokud upravíte konfiguraci v době, kdy je počítač vypnutý, může počítač publikovat změny patřící do předchozí konfigurace.
+- Sloupec **maximální velikost souboru** a hodnoty jsou v aktuální implementaci nepoužitelné.
+- Pokud shromáždíte více než 2500 souborů v cyklu shromažďování, Change Tracking a výkon inventáře může být snížený.
+- Pokud je síťový provoz vysoký, může zobrazení změn záznamů trvat až šest hodin.
+- Pokud upravíte konfiguraci v době, kdy je počítač vypnutý, může počítač publikovat změny patřící do předchozí konfigurace.
 
 Change Tracking a inventarizace v současné době dochází k následujícím problémům:
 
-* Aktualizace oprav hotfix nejsou shromažďovány na počítačích s Windows serverem 2016 Core RS3.
-* Procesy démon systému Linux mohou zobrazovat změněný stav, i když nedošlo k žádné změně. K tomuto problému dochází kvůli způsobu, jakým `SvcRunLevels` jsou zachycena data v protokolu Azure monitor [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) .
+- Aktualizace oprav hotfix nejsou shromažďovány na počítačích s Windows serverem 2016 Core RS3.
+
+- Procesy démon systému Linux mohou zobrazovat změněný stav, i když nedošlo k žádné změně. K tomuto problému dochází kvůli způsobu, jakým `SvcRunLevels` jsou zachycena data v protokolu Azure monitor [ConfigurationChange](https://docs.microsoft.com/azure/azure-monitor/reference/tables/configurationchange) .
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
 
@@ -77,12 +78,12 @@ Rozevírací seznamy jsou v horní části řídicího panelu k dispozici k omez
 
 Kliknutím na změnu nebo událost můžete zobrazit podrobnosti. Dostupné typy změn jsou:
 
-* Události
-* Procesy démon
-* Soubory
-* Registr
-* Software
-* Služby společnosti Microsoft
+- Události
+- Procesy démon
+- Soubory
+- Registr
+- Software
+- Služby společnosti Microsoft
 
 Jednotlivé změny můžete přidat, upravit nebo odebrat. Následující příklad ukazuje změnu typu spuštění služby z ruční na auto.
 
@@ -137,10 +138,13 @@ Change Tracking a inventář umožňuje sledovat změny klíčů registru Window
 
 Change Tracking a inventář podporuje rekurzi, která umožňuje určit zástupné znaky, aby bylo možné zjednodušit sledování v adresářích. Rekurze také poskytuje proměnné prostředí, které umožňují sledovat soubory v různých prostředích s více nebo dynamickými názvy jednotek. Následující seznam obsahuje běžné informace, které byste měli znát při konfiguraci rekurze:
 
-* Pro sledování více souborů jsou vyžadovány zástupné znaky.
-* Zástupné znaky můžete použít jenom v posledním segmentu cesty k souboru, například **c:\folder \\ File*** nebo **/etc/*. conf**.
-* Pokud proměnná prostředí má neplatnou cestu, ověřování je úspěšné, ale cesta během provádění selže.
-* Při nastavování cesty byste se měli vyhnout obecným názvům cest, protože tento typ nastavení může způsobit procházení příliš velkého počtu složek.
+- Pro sledování více souborů jsou vyžadovány zástupné znaky.
+
+- Zástupné znaky můžete použít jenom v posledním segmentu cesty k souboru, například **c:\folder \\ File*** nebo **/etc/*. conf**.
+
+- Pokud proměnná prostředí má neplatnou cestu, ověřování je úspěšné, ale cesta během provádění selže.
+
+- Při nastavování cesty byste se měli vyhnout obecným názvům cest, protože tento typ nastavení může způsobit procházení příliš velkého počtu složek.
 
 ## <a name="change-tracking-and-inventory-data-collection"></a>Change Tracking a shromažďování dat inventáře
 
@@ -167,7 +171,7 @@ V následující tabulce jsou uvedené limity sledovaných položek na počíta�
 |Služby|250|
 |Procesy démon|250|
 
-Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40 MB za měsíc v závislosti na vašem prostředí. Díky funkci využití a odhad nákladů v pracovním prostoru Log Analytics můžete zobrazit data ingestovaná pomocí Change Tracking a inventáře v grafu využití. Toto zobrazení dat slouží k vyhodnocení využití vašich dat a určení toho, jak má na faktuře vliv. Podívejte [se na informace o využití a odhadované náklady](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs). 
+Průměrné využití dat Log Analytics počítači pomocí Change Tracking a inventáře je přibližně 40 MB za měsíc v závislosti na vašem prostředí. Díky funkci využití a odhad nákladů v pracovním prostoru Log Analytics můžete zobrazit data ingestovaná pomocí Change Tracking a inventáře v grafu využití. Toto zobrazení dat slouží k vyhodnocení využití vašich dat a určení toho, jak má na faktuře vliv. Podívejte [se na informace o využití a odhadované náklady](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs).
 
 ### <a name="microsoft-service-data"></a>Data služby společnosti Microsoft
 
@@ -182,13 +186,13 @@ Pro optimalizaci výkonu Log Analytics agent sledovat pouze změny. Nastavením 
 
 ## <a name="support-for-alerts-on-configuration-state"></a>Podpora pro výstrahy týkající se stavu konfigurace
 
-Klíčovou funkcí Change Tracking a inventáře jsou výstrahy týkající se změn stavu konfigurace hybridního prostředí. K dispozici je mnoho užitečných akcí, které je možné aktivovat v reakci na výstrahy, například akce v Azure Functions, Runbooky Automation, webhookech a podobně. Upozornění na změny v souboru **c:\Windows\System32\drivers\etc\hosts** pro počítač je jedním z užitečných výstrah pro Change Tracking a data inventáře. K dispozici je mnoho dalších scénářů pro upozorňování, včetně scénářů dotazu definovaných v následující tabulce. 
+Klíčovou funkcí Change Tracking a inventáře jsou výstrahy týkající se změn stavu konfigurace hybridního prostředí. K dispozici je mnoho užitečných akcí, které je možné aktivovat v reakci na výstrahy, například akce v Azure Functions, Runbooky Automation, webhookech a podobně. Upozornění na změny v souboru **c:\Windows\System32\drivers\etc\hosts** pro počítač je jedním z užitečných výstrah pro Change Tracking a data inventáře. K dispozici je mnoho dalších scénářů pro upozorňování, včetně scénářů dotazu definovaných v následující tabulce.
 
 |Dotaz  |Description  |
 |---------|---------|
 |ConfigurationChange <br>&#124;, kde ConfigChangeType = = "Files" a FileSystemPath obsahuje "c \\ : \\ ovladače Windows system32 \\ \\ "|Hodí se ke sledování změn souborů důležitých pro systém.|
 |ConfigurationChange <br>&#124;, kde FieldsChanged obsahuje "FileContentChecksum" a FileSystemPath = = "c \\ : \\ ovladače systému Windows system32 atd. \\ \\ \\ "|Hodí se ke sledování úprav konfiguračních souborů klíčů.|
-|ConfigurationChange <br>&#124; WHERE ConfigChangeType = = "Microsoft Services" a SvcName obsahuje "W3SVC" and SvcState = = "Stopped"|Hodí se ke sledování změn pro důležité systémové služby.|
+|ConfigurationChange <br>&#124;, kde ConfigChangeType = = "WindowsServices" a SvcName obsahuje "W3SVC" a SvcState = = "zastaveno"|Hodí se ke sledování změn pro důležité systémové služby.|
 |ConfigurationChange <br>&#124;, kde ConfigChangeType = = "démoni" a SvcName obsahuje "SSH" a SvcState! = "Running"|Hodí se ke sledování změn pro důležité systémové služby.|
 |ConfigurationChange <br>&#124; WHERE ConfigChangeType = = "software" a ChangeCategory = = "přidáno"|Užitečné pro prostředí, která potřebují uzamčené softwarové konfigurace.|
 |ConfigurationData <br>&#124;, kde software obsahuje "agent monitorování" a CurrentVersion! = "8.0.11081.0"|Užitečné pro zobrazení, které počítače mají nainstalovanou zastaralou nebo nekompatibilní verzi softwaru. Tento dotaz oznamuje poslední nahlášený stav konfigurace, ale neoznamuje změny.|
@@ -197,7 +201,10 @@ Klíčovou funkcí Change Tracking a inventáře jsou výstrahy týkající se z
 
 ## <a name="next-steps"></a>Další kroky
 
-* Pokud chcete tuto funkci povolit z účtu Automation, přečtěte si téma [povolení Change Tracking a inventáře z účtu Automation](automation-enable-changes-from-auto-acct.md).
-* Pokud chcete funkci povolit procházením Azure Portal, přečtěte si téma [povolení Change Tracking a inventáře z Azure Portal](automation-onboard-solutions-from-browse.md).
-* Pokud chcete tuto funkci povolit ze sady Runbook, přečtěte si téma [povolení Change Tracking a inventáře ze sady Runbook](automation-enable-changes-from-runbook.md).
-* Pokud chcete tuto funkci povolit z virtuálního počítače Azure, přečtěte si téma [povolení Change Tracking a inventáře z virtuálního počítače Azure](automation-enable-changes-from-vm.md).
+- Pokud chcete tuto funkci povolit z účtu Automation, přečtěte si téma [povolení Change Tracking a inventáře z účtu Automation](automation-enable-changes-from-auto-acct.md).
+
+- Pokud chcete funkci povolit procházením Azure Portal, přečtěte si téma [povolení Change Tracking a inventáře z Azure Portal](automation-onboard-solutions-from-browse.md).
+
+- Pokud chcete tuto funkci povolit ze sady Runbook, přečtěte si téma [povolení Change Tracking a inventáře ze sady Runbook](automation-enable-changes-from-runbook.md).
+
+- Pokud chcete tuto funkci povolit z virtuálního počítače Azure, přečtěte si téma [povolení Change Tracking a inventáře z virtuálního počítače Azure](automation-enable-changes-from-vm.md).

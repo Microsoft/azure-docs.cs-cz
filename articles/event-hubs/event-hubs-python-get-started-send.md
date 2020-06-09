@@ -9,12 +9,13 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 01/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 22f6b2aba36e560e9bd335baa92925fe9846c670
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 96c95efdc8f2154e0586fec59d1af66496acb101
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77162595"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558966"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python-azure-eventhub-version-1"></a>Rychlý Start: odesílání a příjem událostí pomocí Event Hubs pomocí Pythonu (Azure – eventhub verze 1)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure-eventhub verze 1** Python. 
@@ -43,11 +44,11 @@ K dokončení tohoto rychlého startu potřebujete následující požadavky:
 Vytvoření aplikace v Pythonu, která odesílá události do centra událostí:
 
 > [!NOTE]
-> Místo práce v rychlém startu si můžete stáhnout a spustit [ukázkové aplikace](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) z GitHubu. Nahraďte `EventHubConnectionString` řetězce `EventHubName` a hodnotami vašeho centra událostí.
+> Místo práce v rychlém startu si můžete stáhnout a spustit [ukázkové aplikace](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) z GitHubu. Nahraďte `EventHubConnectionString` `EventHubName` řetězce a hodnotami vašeho centra událostí.
 
 1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code](https://code.visualstudio.com/)
 2. Vytvořte nový soubor s názvem *Send.py*. Tento skript pošle do centra událostí 100 událostí.
-3. Do *Send.py*vložte následující kód a nahraďte \<Event Hubs obor názvů>, \<eventhub>, \<AccessKeyName> a \<hodnotu primárního klíče> s vašimi hodnotami: 
+3. Do *Send.py*vložte následující kód a nahraďte Event Hubs \<namespace> , \<eventhub> , \<AccessKeyName> a \<primary key value> vlastními hodnotami: 
    
    ```python
    import sys
@@ -103,14 +104,14 @@ Pokud chcete skript spustit, z adresáře, kam jste uložili *Send.py*, spusťte
 start python send.py
 ```
 
-Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
+Gratulujeme! Nyní jste odeslali zprávy do centra událostí.
 
 ## <a name="receive-events"></a>Příjem událostí
 
 Vytvoření aplikace v Pythonu, která přijímá události z centra událostí:
 
 1. V editoru Pythonu vytvořte soubor s názvem *recv.py*.
-2. Do *recv.py*vložte následující kód a nahraďte \<Event Hubs obor názvů>, \<eventhub>, \<AccessKeyName> a \<hodnotu primárního klíče> s vašimi hodnotami: 
+2. Do *recv.py*vložte následující kód a nahraďte Event Hubs \<namespace> , \<eventhub> , \<AccessKeyName> a \<primary key value> vlastními hodnotami: 
    
    ```python
    import os

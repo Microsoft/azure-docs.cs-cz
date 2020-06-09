@@ -10,13 +10,13 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
-ms.custom: aaddev
-ms.openlocfilehash: ead39343cca9943ba55d66509bd9917402efb8cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 921015d6aa7acd840a4a231a899217daafe3525b
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81868971"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558550"
 ---
 # <a name="daemon-app-that-calls-web-apis---code-configuration"></a>Aplikace démona, která volá webovou rozhraní API – konfigurace kódu
 
@@ -26,7 +26,7 @@ Naučte se konfigurovat kód pro aplikaci démona, která volá webová rozhran�
 
 Tyto knihovny Microsoftu podporují aplikace démona:
 
-  Knihovna MSAL | Popis
+  Knihovna MSAL | Description
   ------------ | ----------
   ![MSAL.NET](media/sample-v2-code/logo_NET.png) <br/> MSAL.NET  | Platformy .NET Framework a .NET Core jsou podporovány pro vytváření aplikací démona. (UWP, Xamarin. iOS a Xamarin. Android se nepodporují, protože tyto platformy slouží k sestavování veřejných klientských aplikací.)
   ![Python](media/sample-v2-code/logo_python.png) <br/> MSAL Python | Podpora pro aplikace démona v Pythonu
@@ -38,7 +38,7 @@ Aplikace démona místo delegovaných oprávnění používají oprávnění apl
 
 Proto by měl být autorita zadaná v konfiguraci aplikace tenantů (zadáním ID tenanta nebo názvu domény přidruženého k vaší organizaci).
 
-Pokud jste nezávislý výrobce softwaru a chcete poskytnout víceklientské nástroje, můžete použít `organizations`. Mějte ale na paměti, že budete taky muset vysvětlit zákazníkům, jak udělit souhlas správce. Podrobnosti najdete v článku [o žádosti o souhlas pro celého tenanta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). V současné době je také omezení MSAL: `organizations` je povoleno pouze v případě, že jsou pověřením klienta tajný klíč aplikace (nikoli certifikát).
+Pokud jste nezávislý výrobce softwaru a chcete poskytnout víceklientské nástroje, můžete použít `organizations` . Mějte ale na paměti, že budete taky muset vysvětlit zákazníkům, jak udělit souhlas správce. Podrobnosti najdete v článku [o žádosti o souhlas pro celého tenanta](v2-permissions-and-consent.md#requesting-consent-for-an-entire-tenant). V současné době je také omezení MSAL: `organizations` je povoleno pouze v případě, že jsou pověřením klienta tajný klíč aplikace (nikoli certifikát).
 
 ## <a name="configure-and-instantiate-the-application"></a>Konfigurace a vytvoření instance aplikace
 
@@ -69,7 +69,7 @@ Konfigurační soubor definuje:
 }
 ```
 
-Zadáte buď `ClientSecret` nebo `CertificateName`. Tato nastavení jsou exkluzivní.
+Zadáte buď `ClientSecret` nebo `CertificateName` . Tato nastavení jsou exkluzivní.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -239,7 +239,7 @@ ConfidentialClientApplication cca =
                 .build();
 ```
 
-– nebo –
+nebo
 
 ```Java
 PrivateKey key = getPrivateKey(); /* RSA private key to sign the assertion */
@@ -267,7 +267,7 @@ MSAL.NET má dvě metody pro poskytování podepsaných kontrolních výrazů do
 - `.WithClientAssertion()`
 - `.WithClientClaims()`
 
-Když použijete `WithClientAssertion`, musíte poskytnout podepsaný token JWT. Tento rozšířený scénář je podrobně popsán v [kontrolním výrazu klienta](msal-net-client-assertions.md).
+Když použijete `WithClientAssertion` , musíte poskytnout podepsaný token JWT. Tento rozšířený scénář je podrobně popsán v [kontrolním výrazu klienta](msal-net-client-assertions.md).
 
 ```csharp
 string signedClientAssertion = ComputeAssertion();
@@ -276,7 +276,7 @@ app = ConfidentialClientApplicationBuilder.Create(config.ClientId)
                                           .Build();
 ```
 
-Když použijete `WithClientClaims`, MSAL.NET vytvoří podepsaný kontrolní výraz, který obsahuje deklarace očekávané službou Azure AD a další deklarace identity klienta, které chcete odeslat.
+Když použijete `WithClientClaims` , MSAL.NET vytvoří podepsaný kontrolní výraz, který obsahuje deklarace očekávané službou Azure AD a další deklarace identity klienta, které chcete odeslat.
 Tento kód ukazuje, jak to provést:
 
 ```csharp
@@ -293,7 +293,7 @@ Další podrobnosti najdete v tématu [kontrolní výrazy klienta](msal-net-clie
 
 # <a name="python"></a>[Python](#tab/python)
 
-V MSAL Pythonu můžete poskytovat deklarace identity klientů pomocí deklarací identity, které budou podepsány tímto `ConfidentialClientApplication`privátním klíčem.
+V MSAL Pythonu můžete poskytovat deklarace identity klientů pomocí deklarací identity, které budou podepsány tímto `ConfidentialClientApplication` privátním klíčem.
 
 ```Python
 config = json.load(open(sys.argv[1]))

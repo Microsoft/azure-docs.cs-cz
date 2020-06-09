@@ -1,15 +1,15 @@
 ---
 title: Šifrování v klidovém případě pomocí klíče spravovaného zákazníkem
-description: Přečtěte si o šifrování v klidovém prostředí služby Azure Container registry a o tom, jak svůj registr šifrovat pomocí klíče spravovaného zákazníkem, který je uložený v Azure Key Vault
+description: Přečtěte si o šifrování v klidovém prostředí služby Azure Container registry a o tom, jak zašifrovat registr Premium pomocí klíče spravovaného zákazníkem, který je uložený v Azure Key Vault
 ms.topic: article
 ms.date: 05/01/2020
 ms.custom: ''
-ms.openlocfilehash: a81305be13fd824e7674346aadcaddb83787322d
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 393e51e687e95c1ff4c6a50429dd342005aad296
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683487"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509538"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Šifrování registru pomocí klíče spravovaného zákazníkem
 

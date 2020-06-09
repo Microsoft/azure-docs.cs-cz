@@ -17,12 +17,12 @@ ms.date: 08/30/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4dc6993586063c9c99a287c51d799b44f921768d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7eaeece4b44c0804774a15194e19c34ce200bc80
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60245159"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558514"
 ---
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>Instalace nástroje Azure AD Connect s využitím existující databáze ADSync
 Azure AD Connect vyžaduje, aby databáze SQL Server ukládala data. Můžete buď použít výchozí SQL Server 2012 Express LocalDB nainstalované s Azure AD Connect nebo použít vlastní plnou verzi SQL. Dříve při instalaci Azure AD Connect byla vždy vytvořena nová databáze s názvem ADSync. U Azure AD Connect verze 1.1.613.0 (nebo po) máte možnost nainstalovat Azure AD Connect tak, že na ni přejdete na existující databázi ADSync.
@@ -76,19 +76,15 @@ Důležité poznámky, které byste si poznamenali, než budete pokračovat:
 1. Na obrazovce **Připojení adresářů** je uvedená stávající doménová struktura AD nakonfigurovaná pro synchronizaci adresářů, vedle níž je ikona červeného křížku. K synchronizaci změn z místní doménové struktury AD se vyžaduje účet služby AD DS. Průvodce Azure AD Connect nemůže načíst přihlašovací údaje účtu služby AD DS uložené v databázi ADSync, protože jsou šifrované a může je dešifrovat pouze předchozí server Azure AD Connect. Klikněte na **Změnit přihlašovací údaje** a zadejte účet služby AD DS pro doménovou strukturu AD.
    ![Adresáře](./media/how-to-connect-install-existing-database/db6.png)
  
- 
 1. V automaticky otevíraném dialogovém okně můžete buď (i) zadat přihlašovací údaje podnikového správce a nechat Azure AD Connect vytvořit účet služby AD DS za vás, nebo (ii) sami vytvořit účet služby AD DS a zadat jeho přihlašovací údaje do Azure AD Connect. Jakmile vyberete jednu z možností a zadáte potřebné přihlašovací údaje, kliknutím na **OK** zavřete automaticky otevírané dialogové okno.
    ![Uvítání](./media/how-to-connect-install-existing-database/db7.png)
  
- 
 1. Po zadání přihlašovacích údajů se ikona červeného křížku změní na ikonu zeleného zaškrtnutí. Klikněte na **Další**.
    ![Uvítání](./media/how-to-connect-install-existing-database/db8.png)
  
- 
 1. Na obrazovce **Připraveno ke konfiguraci** klikněte na **Nainstalovat**.
    ![Uvítání](./media/how-to-connect-install-existing-database/db9.png)
  
- 
 1. Po dokončení instalace se na serveru Azure AD Connect automaticky zapne pracovní režim. Před vypnutím pracovního režimu se doporučuje zkontrolovat neočekávané změny v konfiguraci serveru a čekajících sestavách. 
 
 ## <a name="post-installation-tasks"></a>Úlohy po skončení instalace

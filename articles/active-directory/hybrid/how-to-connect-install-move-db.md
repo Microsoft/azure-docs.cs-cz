@@ -11,12 +11,12 @@ ms.date: 04/29/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 742bc307c90ad58b83b7d4c92f9546b87c163c3b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e93ffd448113b58589611389b71f5bcbfec7a2e4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77019277"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558546"
 ---
 # <a name="move-azure-ad-connect-database-from-sql-server-express-to-sql-server"></a>Přesun databáze Azure AD Connect z SQL Serveru Express na SQL Server 
 
@@ -36,13 +36,13 @@ Pomocí následujících kroků přesuňte databázi Azure AD Connect na vzdále
 4. Odinstalujte Azure AD Connect tak, že přejdete do části Ovládací panely > Programy > Programy a funkce.  Vyberte Microsoft Azure AD Connect a v horní části klikněte na Odinstalovat.
 5. Na vzdáleném SQL Serveru otevřete SQL Server Management Studio.
 6. V části Databáze klikněte pravým tlačítkem a vyberte Připojit.
-7. Na obrazovce **Připojit databáze** klikněte na **Přidat** a přejděte k souboru ADSync.mdf.  Klikněte na tlačítko **OK**.
+7. Na obrazovce **Připojit databáze** klikněte na **Přidat** a přejděte k souboru ADSync.mdf.  Klikněte na **OK**.
    ![připojit databázi](media/how-to-connect-install-move-db/move2.png)
 
 8. Po připojení databáze se vraťte na server Azure AD Connect a nainstalujte Azure AD Connect.
 9. Po dokončení instalace MSI se spustí průvodce Azure AD Connect v režimu expresní instalace. Zavřete obrazovku kliknutím na ikonu Ukončit.
    ![Uvítání](./media/how-to-connect-install-move-db/db1.png)
-10. Spusťte nový příkazový řádek nebo novou relaci PowerShellu. Přejděte do složky \<jednotka> \program files\microsoft Azure AD Connect. Spuštěním příkazu .\AzureADConnect.exe /useexistingdatabase spusťte průvodce Azure AD Connect v režimu instalace Použít stávající databázi.
+10. Spusťte nový příkazový řádek nebo novou relaci PowerShellu. Přejděte do složky \<drive>\Program Files\Microsoft Azure AD Connect. Spuštěním příkazu .\AzureADConnect.exe /useexistingdatabase spusťte průvodce Azure AD Connect v režimu instalace Použít stávající databázi.
     ![PowerShell](./media/how-to-connect-install-move-db/db2.png)
 11. Zobrazí se obrazovka Vítá vás Azure AD Connect. Jakmile odsouhlasíte licenční podmínky a oznámení o ochraně osobních údajů, klikněte na **Pokračovat**.
     ![Uvítání](./media/how-to-connect-install-move-db/db3.png)
@@ -55,19 +55,19 @@ Pomocí následujících kroků přesuňte databázi Azure AD Connect na vzdále
 14. Na obrazovce **Připojení adresářů** je uvedená stávající doménová struktura AD nakonfigurovaná pro synchronizaci adresářů, vedle níž je ikona červeného křížku. K synchronizaci změn z místní doménové struktury AD se vyžaduje účet služby AD DS. Průvodce Azure AD Connect nemůže načíst přihlašovací údaje účtu služby AD DS uložené v databázi ADSync, protože jsou šifrované a může je dešifrovat pouze předchozí server Azure AD Connect. Klikněte na **Změnit přihlašovací údaje** a zadejte účet služby AD DS pro doménovou strukturu AD.
     ![Adresáře](./media/how-to-connect-install-move-db/db6.png)
  
- 
+
 15. V automaticky otevíraném dialogovém okně můžete buď (i) zadat přihlašovací údaje podnikového správce a nechat Azure AD Connect vytvořit účet služby AD DS za vás, nebo (ii) sami vytvořit účet služby AD DS a zadat jeho přihlašovací údaje do Azure AD Connect. Jakmile vyberete jednu z možností a zadáte potřebné přihlašovací údaje, kliknutím na **OK** zavřete automaticky otevírané dialogové okno.
     ![Uvítání](./media/how-to-connect-install-move-db/db7.png)
  
- 
+
 16. Po zadání přihlašovacích údajů se ikona červeného křížku změní na ikonu zeleného zaškrtnutí. Klikněte na **Další**.
     ![Uvítání](./media/how-to-connect-install-move-db/db8.png)
  
- 
+
 17. Na obrazovce **Připraveno ke konfiguraci** klikněte na **Nainstalovat**.
     ![Uvítání](./media/how-to-connect-install-move-db/db9.png)
  
- 
+
 18. Po dokončení instalace se na serveru Azure AD Connect automaticky zapne pracovní režim. Před vypnutím pracovního režimu se doporučuje zkontrolovat neočekávané změny v konfiguraci serveru a čekajících sestavách. 
 
 ## <a name="next-steps"></a>Další kroky

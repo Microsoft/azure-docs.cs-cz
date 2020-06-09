@@ -7,12 +7,13 @@ ms.topic: conceptual
 ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 139e3009722761172b7bbd57805a7f5b07e55fc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: b8d460f35f67d4e7f48611fdc2a770d4a0bed002
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68699384"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84552079"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Vývoj pro Soubory Azure pomocí Pythonu
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -42,7 +43,7 @@ pip install azure-storage-file
 ```
 
 > [!NOTE]
-> Pokud provádíte upgrade ze sady Azure Storage SDK pro Python verze 0,36 nebo starší, odinstalujte starší sadu SDK `pip uninstall azure-storage` pomocí nástroje před instalací nejnovějšího balíčku.
+> Pokud provádíte upgrade ze sady Azure Storage SDK pro Python verze 0,36 nebo starší, odinstalujte starší sadu SDK pomocí nástroje `pip uninstall azure-storage` před instalací nejnovějšího balíčku.
 
 Alternativní metody instalace najdete [v sadě Azure Storage SDK for Python na GitHubu](https://github.com/Azure/azure-storage-python/).
 
@@ -59,14 +60,14 @@ from azure.storage.file import FileService
 ```
 
 ## <a name="set-up-a-connection-to-azure-files"></a>Nastavení připojení k souborům Azure 
-`FileService` Objekt vám umožní pracovat se sdílenými složkami, adresáři a soubory. Následující kód vytvoří `FileService` objekt pomocí názvu účtu úložiště a klíče účtu. Nahraďte `<myaccount>` a `<mykey>` názvem a klíčem vašeho účtu.
+`FileService`Objekt vám umožní pracovat se sdílenými složkami, adresáři a soubory. Následující kód vytvoří `FileService` objekt pomocí názvu účtu úložiště a klíče účtu. Nahraďte `<myaccount>` a `<mykey>` názvem a klíčem vašeho účtu.
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
 ## <a name="create-an-azure-file-share"></a>Vytvoření sdílené složky Azure
-V následujícím příkladu kódu můžete vytvořit sdílenou složku pomocí `FileService` objektu, pokud neexistuje.
+V následujícím příkladu kódu můžete `FileService` vytvořit sdílenou složku pomocí objektu, pokud neexistuje.
 
 ```python
 file_service.create_share('myshare')
@@ -80,7 +81,7 @@ file_service.create_directory('myshare', 'sampledir')
 ```
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Zobrazení výčtu souborů a adresářů ve sdílené složce Azure
-Chcete-li zobrazit seznam souborů a adresářů ve sdílené složce, **použijte\_metodu\_výpis\_adresářů a souborů** . Tato metoda vrací generátor. Následující kód vypíše **název** každého souboru a adresáře ve sdílené složce do konzoly.
+Chcete-li zobrazit seznam souborů a adresářů ve sdílené složce, použijte metodu **Výpis \_ adresářů \_ a \_ souborů** . Tato metoda vrací generátor. Následující kód vypíše **název** každého souboru a adresáře ve sdílené složce do konzoly.
 
 ```python
 generator = file_service.list_directories_and_files('myshare')
@@ -91,7 +92,7 @@ for file_or_dir in generator:
 ## <a name="upload-a-file"></a>Nahrání souboru 
 Sdílená složka Azure obsahuje minimálně kořenový adresář, kde se můžou nacházet soubory. V této části se dozvíte, jak nahrát soubor z místního úložiště do kořenového adresáře sdílené složky.
 
-Chcete-li vytvořit soubor a odeslat data, použijte `create_file_from_path`metody `create_file_from_stream`, `create_file_from_bytes` nebo `create_file_from_text` . Jsou to metody vysoké úrovně, které provádějí nezbytné datové bloky, pokud velikost dat překročí 64 MB.
+Chcete-li vytvořit soubor a odeslat data, použijte `create_file_from_path` `create_file_from_stream` metody, `create_file_from_bytes` nebo `create_file_from_text` . Jsou to metody vysoké úrovně, které provádějí nezbytné datové bloky, pokud velikost dat překročí 64 MB.
 
 `create_file_from_path`nahraje obsah souboru ze zadané cesty a `create_file_from_stream` nahraje obsah z již otevřeného souboru nebo datového proudu. `create_file_from_bytes`nahraje pole bajtů a `create_file_from_text` nahraje zadanou textovou hodnotu pomocí zadaného kódování (standardně UTF-8).
 
@@ -108,7 +109,7 @@ file_service.create_file_from_path(
 ```
 
 ## <a name="download-a-file"></a>Stažení souboru
-Chcete-li stáhnout data ze souboru, `get_file_to_path`použijte `get_file_to_stream`, `get_file_to_bytes`, nebo `get_file_to_text`. Jsou to metody vysoké úrovně, které provádějí nezbytné datové bloky, pokud velikost dat překročí 64 MB.
+Chcete-li stáhnout data ze souboru, použijte `get_file_to_path` ,, `get_file_to_stream` `get_file_to_bytes` nebo `get_file_to_text` . Jsou to metody vysoké úrovně, které provádějí nezbytné datové bloky, pokud velikost dat překročí 64 MB.
 
 Následující příklad ukazuje použití `get_file_to_path` ke stažení obsahu souboru **MyFile** a jeho uložení do souboru **Out-Sunset. png** .
 
@@ -117,7 +118,7 @@ file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
 ```
 
 ## <a name="delete-a-file"></a>Odstranění souboru
-Nakonec pro odstranění souboru volejte `delete_file`.
+Nakonec pro odstranění souboru volejte `delete_file` .
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')

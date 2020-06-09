@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2019
 ms.author: lbosq
-ms.openlocfilehash: b1286daaa76c71f88d44ea387a92876a8676783c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: fd266dd4e75915c0710acce1a2a49f24049c4e9d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77062219"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559871"
 ---
 # <a name="quickstart-create-a-graph-database-in-azure-cosmos-db-using-python-and-the-azure-portal"></a>Rychlý Start: vytvoření databáze grafů v Azure Cosmos DB pomocí Pythonu a Azure Portal
 
@@ -71,7 +72,7 @@ Teď přejděme k práci s kódem. Pojďme naklonovat aplikaci rozhraní Gremlin
 
 ## <a name="review-the-code"></a>Kontrola kódu
 
-Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu jsou pořízeny ze souboru *Connect.py* ve *složce\\ C:\git-samples\azure-Cosmos-DB-Graph-Python-Getting-Started* . Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-information). 
+Tento krok je volitelný. Pokud chcete zjistit, jak se v kódu vytvářejí prostředky databáze, můžete si prohlédnout následující fragmenty kódu. Všechny fragmenty kódu jsou pořízeny ze souboru *Connect.py* ve *složce \\ C:\git-samples\azure-Cosmos-DB-Graph-Python-Getting-Started* . Jinak můžete přeskočit přímo k části [Aktualizace informací o připojení](#update-your-connection-information). 
 
 * Gremlin `client` je inicializován v řádku 104 v *Connect.py*:
 
@@ -185,7 +186,7 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 5. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností. Všimněte si, že pro každou osobu v grafu můžete vytvořit jedinečné vlastnosti. Vyžaduje se pouze klíč id.
 
-    key|value|Poznámky
+    Klíč|value|Poznámky
     ----|----|----
     PK|/pk| 
     id|ashley|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.
@@ -203,7 +204,7 @@ Po vložení vrcholů a hran se teď můžete vrátit na Průzkumník dat a zobr
 
 9. Vyberte **Přidat vlastnost** a přidejte každou z následujících vlastností:
 
-    key|value|Poznámky
+    Klíč|value|Poznámky
     ----|----|----
     PK|/pk| 
     id|rakesh|Jedinečný identifikátor pro vrchol. Pokud identifikátor nezadáte, vygeneruje se pro vás.

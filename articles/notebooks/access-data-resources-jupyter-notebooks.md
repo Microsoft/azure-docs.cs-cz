@@ -3,18 +3,19 @@ title: Přístup k datům v poznámkových blocích Jupyter – Preview Azure No
 description: Přečtěte si, jak získat přístup k souborům, rozhraním REST API, databázím a různým prostředkům Azure Storage z poznámkového bloku Jupyter.
 ms.topic: how-to
 ms.date: 12/04/2018
-ms.openlocfilehash: 47d2f869021851c1451a66a84b1a70ec4ff4998f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 2c7133e9c258c77aa9c242dd7276076625153703
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75646343"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554371"
 ---
 # <a name="access-cloud-data-in-a-notebook"></a>Přístup ke cloudovým datům v poznámkovém bloku
 
 Při provádění zajímavé práce v poznámkovém bloku Jupyter se vyžaduje data. Data jsou skutečně Lifeblood poznámkových blocích.
 
-V některých případech můžete [importovat datové soubory do projektu](work-with-project-data-files.md), a to i pomocí `curl` příkazů, jako je v rámci poznámkového bloku, ke stažení souboru přímo. Je ale nejspíš potřeba pracovat s mnohem pokročilejšími daty, která jsou dostupná ze zdrojů, které nepatří do souborů, jako jsou rozhraní REST API, relační databáze a cloudové úložiště, jako jsou tabulky Azure.
+V některých případech můžete [importovat datové soubory do projektu](work-with-project-data-files.md), a to i pomocí příkazů, jako `curl` je v rámci poznámkového bloku, ke stažení souboru přímo. Je ale nejspíš potřeba pracovat s mnohem pokročilejšími daty, která jsou dostupná ze zdrojů, které nepatří do souborů, jako jsou rozhraní REST API, relační databáze a cloudové úložiště, jako jsou tabulky Azure.
 
 Tento článek stručně popisuje tyto různé možnosti. Vzhledem k tomu, že se přístup k datům nejlépe zobrazuje v akci, najdete spustitelný kód v [ukázkách Azure Notebooks – přístup k datům](https://github.com/Microsoft/AzureNotebooks/blob/master/Samples/Access%20your%20data%20in%20Azure%20Notebooks.ipynb).
 

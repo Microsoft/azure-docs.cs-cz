@@ -3,19 +3,19 @@ title: 'Rychlý Start: Vytvoření vlastní příkazy Preview App-Speech Service
 titleSuffix: Azure Cognitive Services
 description: V tomto článku vytvoříte a otestujete hostované vlastní příkazy aplikace ve verzi Preview. Aplikace zpracuje projevy.
 services: cognitive-services
-author: don-d-kim
+author: nitinme
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/30/2020
-ms.author: donkim
-ms.openlocfilehash: 80111ff370f3a5412b45adc04c82c9dee103c01d
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.author: nitinme
+ms.openlocfilehash: 5b54923bb667053ffc886b335ab9d1b0cf4cb754
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142346"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509351"
 ---
 # <a name="quickstart-create-a-custom-commands-preview-app"></a>Rychlý Start: Vytvoření vlastní příkazy Preview aplikace
 
@@ -98,7 +98,7 @@ Pojďme vytvořit jednoduchý příkaz, který bude mít jednu utterance, `turn 
 Prostřední podokno obsahuje seznam vlastností příkazu:
 
 
-| Konfigurace            | Popis                                                                                                                 |
+| Konfigurace            | Description                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **Příklady vět** | Příklady projevy, jak může uživatel spustit příkaz.                                                                 |
 | **Parametry**       | Informace potřebné k dokončení příkazu                                                                                |

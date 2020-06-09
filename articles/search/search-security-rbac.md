@@ -50,7 +50,7 @@ V následující tabulce najdete souhrn operací povolených v Azure Kognitivní
 | Správa klíčů pro správu | Klíč správce, vlastník RBAC nebo přispěvatel v prostředku |
 | Správa klíčů dotazů |  Klíč správce, vlastník RBAC nebo přispěvatel v prostředku  |
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 + [Správa pomocí prostředí PowerShell](search-manage-powershell.md) 
 + [Výkon a optimalizace v Azure Kognitivní hledání](search-performance-optimization.md)

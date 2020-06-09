@@ -12,13 +12,13 @@ ms.workload: identity
 ms.date: 11/23/2019
 ms.author: abpati
 ms.reviewer: nacanuma
-ms.custom: aaddev
-ms.openlocfilehash: 01d4cb626aabc83117e864b75b49eec63a6c0af0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: aaddev, tracking-python
+ms.openlocfilehash: 2e5df49ea681eefeccaf621739de185767c0aa16
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76699542"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558635"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Podpora Active Directory Federation Services (AD FS) v MSAL pro Python
 
@@ -35,7 +35,7 @@ Existují dva způsoby ověřování proti AD FS:
 
 Následující postup platí, pokud se připojujete přímo k Active Directory Federation Services (AD FS) (AD FS) nebo prostřednictvím služby Active Directory.
 
-Když `acquire_token_by_authorization_code` zavoláte `acquire_token_by_device_flow`nebo, uživatelské prostředí je obvykle následující:
+Když zavoláte `acquire_token_by_authorization_code` nebo `acquire_token_by_device_flow` , uživatelské prostředí je obvykle následující:
 
 1. Uživatel zadá své ID účtu.
 2. Služba Azure AD stručně zobrazuje zprávu "převezme vás na stránku vaší organizace" a uživatel se přesměruje na přihlašovací stránku zprostředkovatele identity. Přihlašovací stránka se obvykle přizpůsobí s logem organizace.
@@ -49,7 +49,7 @@ Podporované verze AD FS v tomto federovaném scénáři jsou:
 
 Následující postup platí, pokud se připojujete přímo k Active Directory Federation Services (AD FS) (AD FS) nebo prostřednictvím služby Active Directory.
 
-Když získáte token pomocí `acquire_token_by_username_password`, MSAL Python získá poskytovatele identity, aby kontaktoval na základě uživatelského jména. MSAL Python získá [token SAML 1,1](reference-saml-tokens.md) od poskytovatele identity, který potom poskytne službě Azure AD, která vrací JSON web token (Jwt).
+Když získáte token pomocí `acquire_token_by_username_password` , MSAL Python získá poskytovatele identity, aby kontaktoval na základě uživatelského jména. MSAL Python získá [token SAML 1,1](reference-saml-tokens.md) od poskytovatele identity, který potom poskytne službě Azure AD, která vrací JSON web token (Jwt).
 
 ## <a name="connecting-directly-to-ad-fs"></a>Přímé připojení k AD FS
 

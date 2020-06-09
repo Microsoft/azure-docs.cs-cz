@@ -10,12 +10,13 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: c8f259d2d4df46470a042c3f65ac1b8e1f66b1dd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: ec0ff6c5e53d33cf5c07171c2b678fe6857836e0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80546018"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558371"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: analýza prvního modelu ML
 
@@ -55,7 +56,7 @@ V této části kurzu spustíte kód v ukázce poznámkového bloku Jupyter */Cr
 > Pokud chcete při spuštění kódu číst společně, přepněte do poznámkového bloku Jupyter. 
 > Pokud chcete na poznámkovém bloku spustit jednu buňku kódu, klikněte na buňku kódu a stiskněte **SHIFT + ENTER**. Případně spusťte celý Poznámkový blok výběrem možnosti **Spustit vše** na horním panelu nástrojů.
 
-Naimportujte `Workspace` třídu a načtěte informace o předplatném `config.json` ze souboru pomocí `from_config().` této funkce, která ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete taky zadat parametr cesty, který bude odkazovat na soubor `from_config(path="your/file/path")`pomocí. V případě serveru cloudového poznámkového bloku je soubor automaticky v kořenovém adresáři.
+Naimportujte `Workspace` třídu a načtěte informace o předplatném ze souboru `config.json` pomocí `from_config().` této funkce, která ve výchozím nastavení vyhledá soubor JSON v aktuálním adresáři, ale můžete taky zadat parametr cesty, který bude odkazovat na soubor pomocí `from_config(path="your/file/path")` . V případě serveru cloudového poznámkového bloku je soubor automaticky v kořenovém adresáři.
 
 Pokud následující kód požádá o další ověřování, jednoduše vložte odkaz do prohlížeče a zadejte ověřovací token.
 
@@ -74,7 +75,7 @@ experiment = Experiment(workspace=ws, name="diabetes-experiment")
 
 ## <a name="load-data-and-prepare-for-training"></a>Načtení dat a příprava na školení
 
-Pro účely tohoto kurzu použijete sadu dat diabetes, která používá funkce jako věk, pohlaví a BMI k předvídání pokroku diabetesch nemocí. Načtěte data z třídy [Azure Open DataSets](https://azure.microsoft.com/services/open-datasets/) a rozdělte je do školicích a testovacích sad `train_test_split()`pomocí. Tato funkce odděluje data, takže model obsahuje nepřesná data, která se mají použít pro testování po školení.
+Pro účely tohoto kurzu použijete sadu dat diabetes, která používá funkce jako věk, pohlaví a BMI k předvídání pokroku diabetesch nemocí. Načtěte data z třídy [Azure Open DataSets](https://azure.microsoft.com/services/open-datasets/) a rozdělte je do školicích a testovacích sad pomocí `train_test_split()` . Tato funkce odděluje data, takže model obsahuje nepřesná data, která se mají použít pro testování po školení.
 
 
 ```python
@@ -122,10 +123,10 @@ for alpha in alphas:
 
 Výše uvedený kód provede následující:
 
-1. Pro každou hodnotu parametru alfa parametr v `alphas` poli se vytvoří nový běh v rámci experimentu. Hodnota alfa je protokolována k odlišení jednotlivých spuštění.
+1. Pro každou hodnotu parametru alfa parametr v poli `alphas` se vytvoří nový běh v rámci experimentu. Hodnota alfa je protokolována k odlišení jednotlivých spuštění.
 1. V každém spuštění je vytvořen Ridge model, proškolený a používaný ke spuštění předpovědi. Hodnota root-střed_hodn-Square-Error se vypočítá pro skutečné versus předpovězené hodnoty a potom se do běhu přihlásí. V tomto okamžiku má spuštění metadata připojená jak pro hodnotu alfa, tak pro přesnost rmse.
 1. V dalším kroku je model každého spuštění serializován a nahrán do běhu. To vám umožní stáhnout soubor modelu z běhu v studiu.
-1. Na konci každé iterace je spuštění dokončeno voláním `run.complete()`.
+1. Na konci každé iterace je spuštění dokončeno voláním `run.complete()` .
 
 Po dokončení školení volejte `experiment` proměnnou, která načte odkaz na experiment v studiu.
 
@@ -133,11 +134,11 @@ Po dokončení školení volejte `experiment` proměnnou, která načte odkaz na
 experiment
 ```
 
-<table style="width:100%"><tr><th>Název</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Machine Learning Studio</td><td>Odkaz na dokumentaci</td></tr></table>
+<table style="width:100%"><tr><th>Name</th><th>Pracovní prostor</th><th>Stránka sestavy</th><th>Stránka docs</th></tr><tr><td>diabetes – experiment</td><td>vaše pracovní prostor – název</td><td>Odkaz na Azure Machine Learning Studio</td><td>Odkaz na dokumentaci</td></tr></table>
 
 ## <a name="view-training-results-in-studio"></a>Zobrazit výsledky školení v studiu
 
-Po **odkazu na Azure Machine Learning Studiu** přejdete na hlavní stránku experimentu. Tady vidíte všechna jednotlivá spuštění v experimentu. Všechny vlastní hodnoty protokolovaných hodnot`alpha_value` ( `rmse`a v tomto případě) se stanou poli pro každé spuštění a také jsou k dispozici pro grafy a dlaždice v horní části stránky experiment. Chcete-li přidat zaznamenanou metriku do grafu nebo dlaždice, najeďte myší na ni, klikněte na tlačítko Upravit a vyhledejte metriku s vlastním protokolem.
+Po **odkazu na Azure Machine Learning Studiu** přejdete na hlavní stránku experimentu. Tady vidíte všechna jednotlivá spuštění v experimentu. Všechny vlastní hodnoty protokolovaných hodnot ( `alpha_value` a `rmse` v tomto případě) se stanou poli pro každé spuštění a také jsou k dispozici pro grafy a dlaždice v horní části stránky experiment. Chcete-li přidat zaznamenanou metriku do grafu nebo dlaždice, najeďte myší na ni, klikněte na tlačítko Upravit a vyhledejte metriku s vlastním protokolem.
 
 Když procházíte modely ve velkém množství přes stovky a tisíce samostatných spuštění, Tato stránka usnadňuje zobrazení všech vámi vyškolených modelů, konkrétně jejich školení a způsobu, jakým se vaše jedinečné metriky v průběhu času změnily.
 

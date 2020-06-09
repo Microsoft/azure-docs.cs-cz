@@ -2,37 +2,43 @@
 title: Přidat analyzátory jazyka do polí řetězců
 titleSuffix: Azure Cognitive Search
 description: Vícejazyčná analýza textu pro jiné než anglické dotazy a indexy v Azure Kognitivní hledání.
+author: HeidiSteen
 manager: nitinme
-author: Yahnoosh
-ms.author: jlembicz
+ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/10/2019
-translation.priority.mt:
-- de-de
-- es-es
-- fr-fr
-- it-it
-- ja-jp
-- ko-kr
-- pt-br
-- ru-ru
-- zh-cn
-- zh-tw
-ms.openlocfilehash: a97bee27b74aa211b4d4d56547726555edefa87a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: 3bb8de76fbf425abc1643633393e5f296b50b386
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283144"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555195"
 ---
 # <a name="add-language-analyzers-to-string-fields-in-an-azure-cognitive-search-index"></a>Přidání analyzátorů jazyka do polí řetězců v indexu Azure Kognitivní hledání
 
-*Analyzátor jazyka* je konkrétní typ [analyzátoru textu](search-analyzers.md) , který provádí lexikální analýzu pomocí jazykových pravidel cílového jazyka. Každé prohledávatelné pole má vlastnost **Analyzer** . Pokud váš index obsahuje přeložené řetězce, jako jsou například samostatná pole pro angličtinu a čínský text, mohli byste zadat jazykové analyzátory pro každé pole, abyste měli přístup k bohatě lingvistických funkcím těchto analyzátorů.  
+*Analyzátor jazyka* je konkrétní typ [analyzátoru textu](search-analyzers.md) , který provádí lexikální analýzu pomocí jazykových pravidel cílového jazyka. Každé prohledávatelné pole má vlastnost **Analyzer** . Pokud se obsah skládá z přeložených řetězců, jako jsou například samostatná pole pro angličtinu a čínský text, můžete zadat jazykové analyzátory pro každé pole, abyste měli přístup k bohatě lingvistických funkcím těchto analyzátorů.
 
-Azure Kognitivní hledání podporuje analyzátory 35 na základě Lucene a 50 analyzátory zajištěné technologií Microsoft pro zpracování přirozeného jazyka, která se používá v Office a Bingu.
+## <a name="when-to-use-a-language-analyzer"></a>Kdy použít analyzátor jazyka
 
-## <a name="comparing-analyzers"></a>Porovnávání analyzátorů
+Analyzátor jazyka byste měli vzít v úvahu, pokud povědomí o struktuře slov nebo vět přidá hodnotu k analýze textu. Běžným příkladem je přidružení nepravidelných operací formulářů ("přenést" a "převedená") nebo podstatná jména v množném číslech ("myši" a "Mouse"). Bez jazykového povědomí se tyto řetězce analyzují jenom na fyzických vlastnostech, které neumožňují zachycení připojení. Vzhledem k tomu, že velké bloky textu mají větší pravděpodobně obsah, pole obsahující popisy, recenze nebo souhrny jsou vhodnými kandidáty pro analyzátor jazyka.
+
+Analyzátory jazyka byste měli zvážit také v případě, že obsah se skládá z jiných než západních řetězců jazyka. I když je [výchozím analyzátorem](search-analyzers.md#default-analyzer) jazyk – nezávislá, koncept použití mezer a speciálních znaků (spojovníky a lomítka) na oddělení řetězců je více použitelný pro západní jazyky, než je západní. 
+
+Například v čínštině, japonštině, korejštině (CJK) a dalších asijských jazycích není mezera nutně oddělovačem slov. Vezměte v úvahu následující japonský řetězec. Vzhledem k tomu, že nemá žádné mezery, by nástroj Language-nezávislá Analyzer pravděpodobně analyzoval celý řetězec jako jeden token, když ve skutečnosti je řetězec ve skutečnosti fráze.
+
+```
+これは私たちの銀河系の中ではもっとも重く明るいクラスの球状星団です。
+(This is the heaviest and brightest group of spherical stars in our galaxy.)
+```
+
+V příkladu výše by úspěšný dotaz musel obsahovat úplný token nebo částečný token pomocí zástupného znaku přípony, což vede k nepřirozenému a omezení možností vyhledávání.
+
+Lepším řešením je hledat jednotlivá slova: 明るい (světlé), 私たちの (náš), 銀河系 (Galaxy). Použití jednoho z japonských analyzátorů, které jsou k dispozici v Kognitivní hledání, má pravděpodobně odemčení tohoto chování, protože tyto analyzátory jsou lépe vybavené při rozdělování bloku textu na smysluplná slova v cílovém jazyce.
+
+## <a name="comparing-lucene-and-microsoft-analyzers"></a>Porovnání aplikací Lucene a Microsoft Analyzer
+
+Azure Kognitivní hledání podporuje analyzátory jazyka 35, které jsou zajištěné pomocí aplikace Lucene a analyzátory jazyka 50 pomocí technologie Microsoft pro zpracování přirozeného jazyka, používané v Office a Bingu.
 
 Někteří vývojáři můžou preferovat známé, jednoduché a open source řešení Lucene. Analyzátory jazyka Lucene jsou rychlejší, ale analyzátory Microsoftu mají pokročilé možnosti, jako je lemmatizátor nebo předzpracování, wordová odkódování (v jazycích, jako je němčina, dánština, holandština, švédština, norština, finština, práce, maďarština, slovenština) a rozpoznávání entit (adresy URL, e-maily, data, čísla). Pokud je to možné, měli byste při rozhodování o tom, který z nich nejlépe vyhovuje, spustit porovnání analyzátorů Microsoftu a Lucene. 
 
@@ -123,7 +129,7 @@ Další informace o vlastnostech indexu najdete v tématu [Create index &#40;Azu
 
  Všechny analyzátory s názvy popsanými pomocí **Lucene** jsou napájené z [analyzátorů jazyka Apache Lucene](https://lucene.apache.org/core/6_6_1/core/overview-summary.html ).
 
-## <a name="see-also"></a>Viz také  
+## <a name="see-also"></a>Viz také:  
 
 + [Vytvoření indexu &#40;Azure Kognitivní hledání REST API&#41;](https://docs.microsoft.com/rest/api/searchservice/create-index)  
 

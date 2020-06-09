@@ -3,17 +3,17 @@ title: 'Rychlý Start: odeslání vlastních událostí do funkce Azure Function
 description: 'Rychlý Start: pomocí Azure Event Grid a Azure CLI nebo portálu můžete publikovat téma a přihlásit se k odběru této události. Pro koncový bod se používá funkce Azure Functions.'
 services: event-grid
 keywords: ''
-author: banisadr
-ms.author: babanisa
+author: femila
+ms.author: femila
 ms.date: 11/15/2019
 ms.topic: quickstart
 ms.service: event-grid
-ms.openlocfilehash: 5e38571cf84537fd722093b96cd277743e8ce80c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: cc429fd38fc3322887affb72e71e0f583823c297
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80292149"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557865"
 ---
 # <a name="quickstart-route-custom-events-to-an-azure-function-with-event-grid"></a>Rychlý Start: směrování vlastních událostí do funkce Azure pomocí Event Grid
 
@@ -124,7 +124,7 @@ V prvním příkladu se používá Azure CLI. Načte adresu URL a klíč vlastn�
 ### <a name="azure-powershell"></a>Azure PowerShell
 V druhém příkladu se k provedení podobných kroků používá PowerShell.
 
-1. V Azure Portal vyberte možnost **Cloud Shell** (nebo přejít na `https://shell.azure.com/`). V levém horním rohu okna Cloud Shell vyberte **PowerShell** . Podívejte se na ukázku obrázku okna **Cloud Shell** v části Azure CLI.
+1. V Azure Portal vyberte možnost **Cloud Shell** (nebo přejít na `https://shell.azure.com/` ). V levém horním rohu okna Cloud Shell vyberte **PowerShell** . Podívejte se na ukázku obrázku okna **Cloud Shell** v části Azure CLI.
 2. Nastavte následující proměnné. Po zkopírování a vložení každého příkazu aktualizujte **název tématu** a **název skupiny prostředků** před spuštěním příkazu:
 
     ```powershell

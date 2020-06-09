@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 7ae8c21ef12a1233268fda772525e91be9d62bb6
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 6ef929a2934d8480ce6d1eca8bb7ba3b70580110
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84435476"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84551996"
 ---
 # <a name="quickstart-create-a-windows-virtual-machine-using-a-resource-manager-template"></a>Rychlý Start: Vytvoření virtuálního počítače s Windows pomocí šablony Správce prostředků
 
@@ -23,9 +23,13 @@ V tomto rychlém startu se dozvíte, jak použít šablonu Správce prostředků
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
+## <a name="prerequisites"></a>Požadavky
 
+Žádné
 
-## <a name="review-the-template"></a>Kontrola šablony
+## <a name="create-a-windows-virtual-machine"></a>Vytvoření virtuálního počítače s Windows
+
+### <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-vm-simple-windows/).
 
@@ -44,11 +48,11 @@ V šabloně je definováno několik prostředků:
 
 
 
-## <a name="deploy-the-template"></a>Nasazení šablony
+### <a name="deploy-the-template"></a>Nasazení šablony
 
 1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří Trezor klíčů a tajný klíč.
 
-    [![Nasazení do Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
+    [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-windows%2fazuredeploy.json)
 
 1. Vyberte nebo zadejte následující hodnoty. Použijte výchozí hodnoty, pokud je k dispozici.
 

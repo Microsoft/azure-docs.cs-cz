@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bdf904bb2c0d133ea07cd32274fad5b6601da5d9
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: a9e34b63017eae61a886bcff8faffa2910783f3e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148119"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559132"
 ---
 # <a name="continuous-access-evaluation"></a>Nepřetržité vyhodnocování přístupu
 
@@ -76,7 +76,7 @@ Platnost přístupového tokenu zvýšíme na 24 hodin v CAE relacích. Odvolán
 1. Poskytovateli prostředků se zobrazí přístupový token. Poskytovatel prostředků vyhodnocuje platnost tokenu a zkontroluje, jestli pro uživatele existuje nějaká událost odvolání. Poskytovatel prostředků používá tyto informace k rozhodnutí o udělení přístupu k prostředku nebo ne.
 1. V takovém případě poskytovatel prostředků odmítne přístup a pošle výzvu 401 + nárok zpátky klientovi.
 1. Klient podporující CAE rozumí výzvě 401 + Claim. Obchází mezipaměti a vrací se ke kroku 1, odesílá obnovovací token spolu s výzvou k deklaraci identity zpátky do služby Azure AD. Služba Azure AD potom znovu vyhodnotí všechny podmínky a vyzve uživatele k opětovnému ověření v tomto případě.
- 
+
 ## <a name="faqs"></a>Nejčastější dotazy
 
 ### <a name="what-is-the-lifetime-of-my-access-token"></a>Jaká je doba života přístupového tokenu?

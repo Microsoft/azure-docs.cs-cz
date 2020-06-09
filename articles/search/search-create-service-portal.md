@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: Vytvoření vyhledávací služby na portálu'
+title: Vytvoření vyhledávací služby na portálu
 titleSuffix: Azure Cognitive Search
 description: V tomto rychlém startu na portálu se dozvíte, jak nastavit prostředek služby Azure Kognitivní hledání v Azure Portal. Vyberte skupiny prostředků, oblasti a SKU nebo cenovou úroveň.
 manager: nitinme
@@ -7,17 +7,17 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 3bc3edcd0e75d8f6e3e4d6f9b200032909318040
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 83b723c815825a255727e9a48d415fedd405c942
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77209354"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488218"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání na portálu
 
-Azure Kognitivní hledání je samostatný prostředek, který slouží k připojení vyhledávacího prostředí do vlastních aplikací. Služba Azure Kognitivní hledání se snadno integruje s jinými službami Azure, aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
+Azure Kognitivní hledání je samostatný prostředek, který slouží k připojení vyhledávacího prostředí do vlastních aplikací. Kognitivní hledání se snadno integruje s jinými službami Azure, aplikacemi na síťových serverech nebo se softwarem běžícím na jiných cloudových platformách.
 
 V tomto článku se dozvíte, jak vytvořit prostředek v [Azure Portal](https://portal.azure.com/).
 
@@ -34,8 +34,10 @@ Případně si můžete [aktivovat výhody pro předplatitele MSDN](https://azur
 ## <a name="find-azure-cognitive-search"></a>Najít Kognitivní hledání Azure
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
-2. V levém horním rohu klikněte na symbol plus (+ vytvořit prostředek).
-3. Pomocí panelu hledání vyhledejte "Azure kognitivní hledání" nebo přejděte k prostředku prostřednictvím **webu** > **Azure kognitivní hledání**.
+
+1. V levém horním rohu klikněte na symbol plus (+ vytvořit prostředek).
+
+1. Pomocí panelu hledání vyhledejte "Azure kognitivní hledání" nebo přejděte k prostředku prostřednictvím **webu**  >  **Azure kognitivní hledání**.
 
 ![Vytvoření prostředku na portálu](./media/search-create-service-portal/find-search3.png "Vytvoření prostředku na portálu")
 
@@ -60,7 +62,7 @@ V průběhu času můžete sledovat aktuální a předpokládané náklady nebo 
 
 ## <a name="name-the-service"></a>Pojmenování služby
 
-V části Podrobnosti o instanci zadejte název služby do pole **Adresa URL** . Název je součástí koncového bodu adresy URL, proti kterému jsou vydávána `https://your-service-name.search.windows.net`volání rozhraní API:. Například pokud chcete `https://myservice.search.windows.net`, aby byl koncový bod, měli byste zadat `myservice`.
+V části Podrobnosti o instanci zadejte název služby do pole **Adresa URL** . Název je součástí koncového bodu adresy URL, proti kterému jsou vydávána volání rozhraní API: `https://your-service-name.search.windows.net` . Například pokud chcete, aby byl koncový bod `https://myservice.search.windows.net` , měli byste zadat `myservice` .
 
 Požadavky na název služby:
 
@@ -73,22 +75,28 @@ Požadavky na název služby:
 > [!TIP]
 > Pokud si myslíte, že budete používat víc služeb, doporučujeme, abyste do názvu služby jako zásadu vytváření názvů zavedli také oblast (nebo umístění). Služby v rámci stejné oblasti můžou bezplatně vyměňovat data, takže pokud je Azure Kognitivní hledání v Západní USA a máte i další služby v Západní USA, název, který vám `mysearchservice-westus` může při rozhodování o kombinování a připojování prostředků ušetřit cestu na stránku vlastností.
 
-## <a name="choose-a-location"></a>Zvolit umístění
+## <a name="choose-a-location"></a>Zvolte umístění.
 
-Jako služba Azure je možné Azure Kognitivní hledání hostovat v datových centrech po celém světě. Seznam podporovaných oblastí najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/). 
-
-Kliknutím na stejné umístění pro několik služeb můžete snížit nebo vyvarovat poplatky za šířku pásma. Pokud například indexuje data, která poskytuje jiná služba Azure (Azure Storage, Azure Cosmos DB, Azure SQL Database), vytvoření služby Azure kognitivní hledání ve stejné oblasti se vyhne poplatkům za šířku pásma (u odchozích dat se neúčtují žádné poplatky, pokud jsou služby ve stejné oblasti).
-
-Pokud používáte rozšíření AI, vytvořte vyhledávací službu ve stejné oblasti jako Cognitive Services. *Společné umístění Azure kognitivní hledání a Cognitive Services ve stejné oblasti je požadavek na obohacení AI*.
+Azure Kognitivní hledání je k dispozici ve většině oblastí. Seznam podporovaných oblastí najdete na [stránce s cenami](https://azure.microsoft.com/pricing/details/search/).
 
 > [!Note]
-> Střed Indie není v tuto chvíli pro nové služby k dispozici. Pro služby, které jsou už v Střed Indie, můžete škálovat bez omezení a služba je v této oblasti plně podporovaná. Omezení v této oblasti je dočasné a omezené jenom na nové služby. Tato poznámka se odstraní, když už neplatí omezení.
+> Střed Indie a Spojené arabské emiráty sever nejsou aktuálně k dispozici pro nové služby. Pro služby, které už jsou v těchto oblastech, můžete škálovat bez omezení a služba je v této oblasti plně podporovaná. Tato omezení jsou dočasná a omezená jenom na nové služby. Tato poznámka se odstraní, když už neplatí omezení.
+
+### <a name="requirements"></a>Požadavky
+
+ Pokud používáte rozšíření AI, vytvořte vyhledávací službu ve stejné oblasti jako Cognitive Services. *Společné umístění Azure kognitivní hledání a Cognitive Services ve stejné oblasti je požadavek na obohacení AI*.
+
+ Zákazníci, kteří mají požadavky na provozní kontinuitu a zotavení po havárii (BCDR), by měli vytvořit své služby v [regionálních párů](https://docs.microsoft.com/azure/best-practices-availability-paired-regions#azure-regional-pairs). Pokud například pracujete v Severní Amerika, můžete pro každou službu zvolit Východní USA a Západní USA, nebo Střed USA – sever a Jižní centra USA.
+
+### <a name="recommendations"></a>Doporučení
+
+Pokud používáte více služeb Azure, vyberte oblast, která je také hostitelem vašich dat nebo aplikační služby. Tím dojde k minimalizaci nebo zrušení poplatků za šířku pásma pro odchozí data (pro odchozí data se neúčtují žádné poplatky, pokud jsou služby ve stejné oblasti).
 
 ## <a name="choose-a-pricing-tier-sku"></a>Zvolit cenovou úroveň (SKU)
 
 Služba [Azure kognitivní hledání se teď nabízí v několika cenových úrovních](https://azure.microsoft.com/pricing/details/search/): Free, Basic nebo Standard. Každá úroveň má svou vlastní [kapacitu a limity](search-limits-quotas-capacity.md). Další pokyny získáte v tématu věnovaném [volbě cenové úrovně nebo SKU](search-sku-tier.md).
 
-Basic a Standard jsou nejběžnější možnosti pro produkční úlohy, ale většina zákazníků začíná bezplatnou službou. Hlavním rozdílem mezi úrovněmi je velikost oddílu a rychlost a omezení počtu objektů, které můžete vytvořit.
+Basic a Standard jsou nejběžnější možnosti pro produkční úlohy, ale většina zákazníků začíná bezplatnou službou. Mezi hlavní rozdíly mezi úrovněmi patří velikost oddílu a rychlost a omezení počtu objektů, které můžete vytvořit.
 
 Pamatujte na to, že po vytvoření služby se cenová úroveň nedá změnit. Pokud potřebujete vyšší nebo nižší úroveň, budete muset službu znovu vytvořit.
 
@@ -128,7 +136,7 @@ Přidáním prostředků se zvýší vaše měsíční náklady. [Cenová kalkul
 > Služba musí mít [2 repliky pro smlouvu SLA jen pro čtení a 3 repliky pro smlouvu SLA se čtením a zápisem](https://azure.microsoft.com/support/legal/sla/search/v1_0/).
 
 1. Přejděte na stránku vyhledávací služby na webu Azure Portal.
-2. V levém navigačním podokně vyberte **Nastavení** > **škálovat**.
+2. V levém navigačním podokně vyberte **Nastavení**  >  **škálovat**.
 3. Přetažením posuvníku můžete přidat prostředky obou typů.
 
 ![Přidat kapacitu](./media/search-create-service-portal/settings-scale.png "Přidání kapacity prostřednictvím replik a oddílů")
@@ -142,9 +150,11 @@ Většina zákazníků používá jenom jednu službu zřízenou v úrovni, kter
 
 I když většina zákazníků používá jenom jednu službu, redundance služby může být nutná v případě následujících provozních požadavků:
 
-* Zotavení po havárii (výpadek datového centra). Azure Kognitivní hledání v případě výpadku neposkytuje okamžité převzetí služeb při selhání. Doporučení a pokyny najdete v tématu [Správa služby](search-manage.md).
-* Z vašeho zkoumání modelování více tenantů vyplynulo, že využívání dalších služeb je optimální řešení. Další informace najdete v tématu [Návrh pro více tenantů](search-modeling-multitenant-saas-applications.md).
-* U globálně nasazených aplikací možná budete potřebovat instanci Azure Kognitivní hledání ve více oblastech, abyste minimalizovali latenci mezinárodního provozu vaší aplikace.
++ [Provozní kontinuita a zotavení po havárii (BCDR)](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). Azure Kognitivní hledání v případě výpadku neposkytuje okamžité převzetí služeb při selhání.
+
++ [Víceklientské architektury](search-modeling-multitenant-saas-applications.md) se někdy volají na dvě nebo více služeb.
+
++ Globálně nasazené aplikace můžou vyžadovat, aby se služby Search v každé geografické oblasti minimalizovaly při latenci.
 
 > [!NOTE]
 > V Azure Kognitivní hledání nemůžete oddělit operace indexování a dotazování; proto nikdy nevytvoříte více služeb pro oddělené úlohy. Index je vždy dotazován ve službě, ve které byl vytvořen (nemůžete vytvořit index v jedné službě a zkopírovat ho do jiné).

@@ -4,19 +4,19 @@ description: Přečtěte si, jak nakonfigurovat předem sestavený kontejner Pyt
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 8a9276f73c1d9bdf0289f41bb59340b29f5a2575
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: 96f7684176df35e9ac085dd2d7a0c576b7266883
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80046027"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553259"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurace aplikace pro Linux v Pythonu pro Azure App Service
 
 Tento článek popisuje, jak [Azure App Service](app-service-linux-intro.md) spouští aplikace v Pythonu a jak můžete v případě potřeby přizpůsobit chování App Service. Aplikace Python musí být nasazené se všemi požadovanými moduly [PIP](https://pypi.org/project/pip/) .
 
-Modul pro nasazení App Service automaticky aktivuje virtuální prostředí a spustí `pip install -r requirements.txt` se při nasazení [úložiště Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)nebo [balíčku zip](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) s procesy sestavení přepnutými na.
+Modul pro nasazení App Service automaticky aktivuje virtuální prostředí a spustí se při `pip install -r requirements.txt` nasazení [úložiště Git](../deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)nebo [balíčku zip](../deploy-zip.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json) s procesy sestavení přepnutými na.
 
 Tato příručka poskytuje klíčové koncepty a pokyny pro vývojáře v Pythonu, kteří používají integrovaný kontejner Linux v nástroji App Service. Pokud jste nikdy Azure App Service nepoužili, měli byste nejdřív postupovat podle kurzu [rychlý Start](quickstart-python.md) a [Pythonu v](tutorial-python-postgresql-app.md) Pythonu.
 
@@ -52,12 +52,12 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 Pokud nasadíte aplikaci s použitím balíčků Git nebo zip se zapnutou možností automatizace sestavení, App Service sestavování kroků automatizace pomocí následujícího postupu:
 
-1. Spusťte vlastní skript `PRE_BUILD_SCRIPT_PATH`, pokud je určen.
+1. Spusťte vlastní skript, pokud je určen `PRE_BUILD_SCRIPT_PATH` .
 1. Spusťte `pip install -r requirements.txt`.
-1. Pokud se *Manage.py* najde v kořenovém adresáři úložiště, spusťte *Manage.py collectstatic*. Pokud `DISABLE_COLLECTSTATIC` je však tento krok nastaven `true`na hodnotu, bude tento krok přeskočen.
-1. Spusťte vlastní skript `POST_BUILD_SCRIPT_PATH`, pokud je určen.
+1. Pokud se *Manage.py* najde v kořenovém adresáři úložiště, spusťte *Manage.py collectstatic*. Pokud je však `DISABLE_COLLECTSTATIC` Tento krok nastaven na hodnotu `true` , bude tento krok přeskočen.
+1. Spusťte vlastní skript, pokud je určen `POST_BUILD_SCRIPT_PATH` .
 
-`PRE_BUILD_COMMAND`, `POST_BUILD_COMMAND`a `DISABLE_COLLECTSTATIC` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením `PRE_BUILD_COMMAND`, definujte. Chcete-li spustit příkazy po sestavení, `POST_BUILD_COMMAND`definujte. Pokud chcete zakázat spouštění collectstatic při sestavování aplikací `DISABLE_COLLECTSTATIC=true`Django, nastavte.
+`PRE_BUILD_COMMAND`, `POST_BUILD_COMMAND` a `DISABLE_COLLECTSTATIC` jsou proměnné prostředí, které jsou ve výchozím nastavení prázdné. Chcete-li spustit příkazy před sestavením, definujte `PRE_BUILD_COMMAND` . Chcete-li spustit příkazy po sestavení, definujte `POST_BUILD_COMMAND` . Pokud chcete zakázat spouštění collectstatic při sestavování aplikací Django, nastavte `DISABLE_COLLECTSTATIC=true` .
 
 Následující příklad určuje dvě proměnné pro řadu příkazů, které jsou odděleny čárkami.
 
@@ -131,7 +131,7 @@ Zadáním vlastního spouštěcího příkazu serveru Gunicorn můžete řídit 
 az webapp config set --resource-group <resource-group-name> --name <app-name> --startup-file "<custom-command>"
 ```
 
-Například pokud máte aplikaci v baňce, jejíž hlavní modul je *Hello.py* , a objekt aplikace v baňce má název `myapp`, pak * \<vlastní příkaz>* je následující:
+Například pokud máte aplikaci v baňce, jejíž hlavní modul je *Hello.py* , a objekt aplikace v baňce je pojmenován `myapp` , pak *\<custom-command>* je následující:
 
 ```bash
 gunicorn --bind=0.0.0.0 --timeout 600 hello:myapp
@@ -143,9 +143,9 @@ Pokud je hlavní modul v podsložce, například `website`, zadejte tuto složku
 gunicorn --bind=0.0.0.0 --timeout 600 --chdir website hello:myapp
 ```
 
-Můžete také přidat další argumenty pro Gunicorn k * \<vlastním příkazům>*, jako je `--workers=4`například. Další informace najdete v [Running Gunicorn (Spuštění serveru Gunicorn)](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
+Můžete také přidat další argumenty pro Gunicorn do *\<custom-command>* , například `--workers=4` . Další informace najdete v [Running Gunicorn (Spuštění serveru Gunicorn)](https://docs.gunicorn.org/en/stable/run.html) (docs.gunicorn.org).
 
-Pokud chcete použít jiný než Gunicorn Server, jako je třeba [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), můžete nahradit * \<vlastní příkaz>* podobným způsobem:
+Pokud chcete použít jiný server než Gunicorn, jako je například [aiohttp](https://aiohttp.readthedocs.io/en/stable/web_quickstart.html), můžete nahradit *\<custom-command>* podobným způsobem:
 
 ```bash
 python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
@@ -156,7 +156,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>Přístup k proměnným prostředí
 
-V App Service můžete [nastavit nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [OS. Environ –](https://docs.python.org/3/library/os.html#os.environ) . Chcete-li například získat přístup k nastavení aplikace `WEBSITE_SITE_NAME`s názvem, použijte následující kód:
+V App Service můžete [nastavit nastavení aplikace](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) mimo kód vaší aplikace. Pak k nim můžete přistupovat pomocí standardního vzoru [OS. Environ –](https://docs.python.org/3/library/os.html#os.environ) . Chcete-li například získat přístup k nastavení aplikace s názvem `WEBSITE_SITE_NAME` , použijte následující kód:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -171,7 +171,7 @@ if 'X-Forwarded-Proto' in request.headers and request.headers['X-Forwarded-Proto
 # Do something when HTTPS is used
 ```
 
-Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím ve standardním vzoru aplikace. V [CodeIgniter](https://codeigniter.com/) [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) ve výchozím nastavení kontroluje hodnotu `X_FORWARDED_PROTO` .
+Oblíbená webová rozhraní umožňují přístup k `X-Forwarded-*` informacím ve standardním vzoru aplikace. V [CodeIgniter](https://codeigniter.com/) [is_https ()](https://github.com/bcit-ci/CodeIgniter/blob/master/system/core/Common.php#L338-L365) ve `X_FORWARDED_PROTO` výchozím nastavení kontroluje hodnotu.
 
 ## <a name="access-diagnostic-logs"></a>Přístup k diagnostickým protokolům
 

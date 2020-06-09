@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 03/10/2020
-ms.openlocfilehash: 9a42148bb9610b27f2c0874ffa74d9e517c2063a
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: f780bf946e81e9873a1828f9d697f69c81cef513
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84482598"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509317"
 ---
 # <a name="private-link-for-azure-database-for-mysql"></a>Privátní odkaz pro Azure Database for MySQL
 
@@ -57,7 +57,7 @@ Pomocí privátního odkazu můžete povolit přístup mezi různými místy k p
 
 Aby bylo možné povolit privátní propojení, jsou vyžadovány privátní koncové body. To lze provést pomocí následujících průvodců.
 
-* [portál Azure](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
+* [Azure Portal](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-portal)
 * [Rozhraní příkazového řádku](https://docs.microsoft.com/azure/mysql/howto-configure-privatelink-cli)
 
 ### <a name="approval-process"></a>Proces schválení
@@ -115,7 +115,7 @@ Při použití privátního odkazu v kombinaci s pravidly brány firewall jsou m
 
 Pokud se chcete spoléhat jenom na soukromé koncové body pro přístup ke svým Azure Database for MySQL, můžete zakázat nastavení všech veřejných koncových bodů (tj. [pravidla brány firewall](concepts-firewall-rules.md) a [koncové body služby virtuální](concepts-data-access-and-security-vnet.md)sítě) nastavením **Odepřít konfiguraci přístupu k veřejné síti** na databázovém serveru. 
 
-Pokud je toto nastavení nastaveno na *Ano*, budou mít Azure Database for MySQL pouze připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na *ne*, klienti se mohou připojit k vašemu Azure Database for MySQL v závislosti na nastaveních koncových bodů brány firewall nebo služby virtuální sítě. Pokud je navíc nastavená hodnota přístup k privátní síti, nebudete moct přidat ani aktualizovat existující pravidla brány firewall a koncových bodů služby virtuální sítě.
+Pokud je toto nastavení nastaveno na *Ano*, budou mít Azure Database for MySQL pouze připojení prostřednictvím privátních koncových bodů. Pokud je toto nastavení nastaveno na *ne*, klienti se mohou připojit k vašemu Azure Database for MySQL v závislosti na nastaveních koncových bodů brány firewall nebo služby virtuální sítě. Po nastavení hodnoty přístup k privátní síti můžou zákazníci taky přidávat a aktualizovat existující pravidla brány firewall a pravidla koncových bodů služby virtuální sítě.
 
 > [!Note]
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL – jeden server podporuje Pro obecné účely a cenová úroveň optimalizované pro paměť.

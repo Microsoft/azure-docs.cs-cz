@@ -5,12 +5,13 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 04/16/2020
 ms.author: cshoe
-ms.openlocfilehash: dedca6912fd9d9e7b6f5089d02de9e4020e4e0ef
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: tracking-python
+ms.openlocfilehash: 1a7cc37f297f902fb5de473303f1dc260cbea9ca
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83122323"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559096"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Průběžné doručování pomocí akce GitHubu
 
@@ -26,7 +27,7 @@ V případě pracovního postupu Azure Functions má soubor tři části:
 | ------- | ----- |
 | **Authentication** | <ol><li>Definujte instanční objekt.</li><li>Stáhnout profil publikování.</li><li>Vytvořte tajný klíč GitHubu.</li></ol>|
 | **Sestavení** | <ol><li>Nastavte prostředí.</li><li>Sestavte aplikaci Function App.</li></ol> |
-| **Nasadit** | <ol><li>Nasaďte aplikaci Function App.</li></ol>|
+| **Nasazení** | <ol><li>Nasaďte aplikaci Function App.</li></ol>|
 
 > [!NOTE]
 > Pokud se rozhodnete použít profil publikování pro ověřování, nemusíte vytvářet instanční objekt.
@@ -101,7 +102,7 @@ Následující příklad ukazuje část pracovního postupu, který používá `
         python-version: 3.6
 ```
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje část pracovního postupu, který používá `actions/setup-dotnet` akci pro nastavení prostředí:
 
@@ -169,7 +170,7 @@ Následující příklad ukazuje část pracovního postupu, který vytváří a
         popd
 ```
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 ```yaml
     - name: 'Run dotnet build'

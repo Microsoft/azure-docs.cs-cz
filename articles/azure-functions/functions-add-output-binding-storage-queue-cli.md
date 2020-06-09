@@ -3,13 +3,14 @@ title: Připojení Azure Functions k Azure Storage pomocí nástrojů příkazov
 description: Naučte se připojit Azure Functions k frontě Azure Storage přidáním výstupní vazby do projektu příkazového řádku.
 ms.date: 02/07/2020
 ms.topic: quickstart
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: f9d9573523083b6355f423b7b3db94b795d8657f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8a5f9cd42d13b7cfb4bc6e95809112a3b7045fe4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80673333"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560102"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Připojení Azure Functions k Azure Storage pomocí nástrojů příkazového řádku
 
@@ -79,7 +80,7 @@ Pozor *, abyste nemuseli* psát žádný kód pro ověřování, získání odka
 Teď, když jste místně ověřili, že funkce zapsala zprávu do fronty Azure Storage, můžete projekt znovu nasadit, aby se aktualizoval koncový bod běžící v Azure.
 
 ::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell,programming-language-csharp" 
-Ve složce *LocalFunctionsProj* použijte [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) příkaz pro opětovné nasazení projektu a nahraďte`<APP_NAME>` názvem vaší aplikace.
+Ve složce *LocalFunctionsProj* použijte [`func azure functionapp publish`](functions-run-local.md#project-file-deployment) příkaz pro opětovné nasazení projektu a nahraďte `<APP_NAME>` názvem vaší aplikace.
 
 ```
 func azure functionapp publish <APP_NAME>
@@ -100,13 +101,13 @@ mvn azure-functions:deploy
 
     # <a name="browser"></a>[Prohlížeč](#tab/browser)
     
-    Zkopírujte úplnou **adresu URL pro vyvolání** zobrazenou ve výstupu příkazu publikovat do adresního řádku prohlížeče a přidejte parametr `&name=Functions`dotazu. V prohlížeči by se měl zobrazit podobný výstup jako při spuštění funkce místně.
+    Zkopírujte úplnou **adresu URL pro vyvolání** zobrazenou ve výstupu příkazu publikovat do adresního řádku prohlížeče a přidejte parametr dotazu `&name=Functions` . V prohlížeči by se měl zobrazit podobný výstup jako při spuštění funkce místně.
 
     ![Výstup funkce se spouští v Azure v prohlížeči.](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
 
     # <a name="curl"></a>[Curl](#tab/curl)
     
-    Spusťte [`curl`](https://curl.haxx.se/) s **adresou URL vyvolání**a přidejte parametr `&name=Functions`. Výstupem příkazu by měl být text "Hello".
+    Spusťte [`curl`](https://curl.haxx.se/) s **adresou URL vyvolání**a přidejte parametr `&name=Functions` . Výstupem příkazu by měl být text "Hello".
     
     ![Výstup funkce se spouští v Azure pomocí KUDRLINKOU.](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-curl.png)
 

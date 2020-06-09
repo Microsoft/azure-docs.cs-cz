@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: af68d733dfb0e0d1c257c8db03656112eec7381b
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: tracking-python
+ms.openlocfilehash: bb1fc927b52f9b59c1a71cdc4369bdea428f4586
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82871003"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561142"
 ---
 # <a name="define-unique-keys-for-an-azure-cosmos-container"></a>Definování jedinečných klíčů pro kontejner Azure Cosmos
 
@@ -43,7 +44,7 @@ Vytvoření kontejneru s jedinečnými klíči najdete v tématu [vytvoření ko
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-Při vytváření nového kontejneru pomocí [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)se dá `UniqueKeyPolicy` objekt použít k definování jedinečných omezení klíčů.
+Při vytváření nového kontejneru pomocí [.NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/)se `UniqueKeyPolicy` dá objekt použít k definování jedinečných omezení klíčů.
 
 ```csharp
 client.CreateDocumentCollectionAsync(UriFactory.CreateDatabaseUri("database"), new DocumentCollection
@@ -81,7 +82,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>Použití sady Java SDK
 
-Při vytváření nového kontejneru pomocí [sady Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb), lze `UniqueKeyPolicy` objekt použít k definování jedinečných omezení klíčů.
+Při vytváření nového kontejneru pomocí [sady Java SDK](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb), `UniqueKeyPolicy` lze objekt použít k definování jedinečných omezení klíčů.
 
 ```java
 // create a new DocumentCollection object
@@ -118,7 +119,7 @@ client.createCollection(String.format("/dbs/%s", "database"), container, null);
 
 ## <a name="use-the-nodejs-sdk"></a>Použití sady Node. js SDK
 
-Při vytváření nového kontejneru pomocí [sady Node. js SDK](https://www.npmjs.com/package/@azure/cosmos)lze `UniqueKeyPolicy` objekt použít k definování jedinečných omezení klíčů.
+Při vytváření nového kontejneru pomocí [sady Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) `UniqueKeyPolicy` lze objekt použít k definování jedinečných omezení klíčů.
 
 ```javascript
 client.database('database').containers.create({

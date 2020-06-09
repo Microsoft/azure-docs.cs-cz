@@ -8,19 +8,20 @@ ms.subservice: cosmosdb-cassandra
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 05/18/2020
-ms.openlocfilehash: f2f09e67c16993696f4f352abf68991ca20f9369
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.custom: tracking-python
+ms.openlocfilehash: dc8f00e5764cea856e028acb7adb5aebc070c625
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310015"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559852"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-python-sdk-and-azure-cosmos-db"></a>Rychlý Start: Vytvoření aplikace Cassandra pomocí sady Python SDK a Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](create-cassandra-dotnet.md)
 > * [.NET Core](create-cassandra-dotnet-core.md)
-> * [Java V3](create-cassandra-java.md)
+> * [Java v3](create-cassandra-java.md)
 > * [Java v4](create-cassandra-java-v4.md)
 > * [Node.js](create-cassandra-nodejs.md)
 > * [Python](create-cassandra-python.md)

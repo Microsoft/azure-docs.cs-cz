@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 244fe0d7be92cc2d8ce4c892d8f90b6b58b32408
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 188b8949d6cda12617433783a9d81eec6d8fce97
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84484809"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488371"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-postgresql---single-server-using-portal"></a>Vytvoření a správa privátního odkazu pro Azure Database for PostgreSQL pro jeden server pomocí portálu
 
@@ -117,7 +117,7 @@ V této části vytvoříte Azure Database for PostgreSQL Server v Azure.
     | Uživatelské jméno správce| Zadejte jméno správce, které chcete zvolit. |
     | Heslo | Zadejte libovolné heslo. Heslo musí mít délku alespoň 8 znaků a musí splňovat definované požadavky. |
     | Umístění | Vyberte oblast Azure, ve které chcete, aby se server PostgreSQL nacházel. |
-    |Verze  | Vyberte verzi databáze serveru PostgreSQL, která je povinná.|
+    |Version  | Vyberte verzi databáze serveru PostgreSQL, která je povinná.|
     | Výpočty a úložiště| Vyberte cenovou úroveň, která je potřebná pro server na základě zatížení. |
     |||
  
@@ -171,7 +171,7 @@ V této části vytvoříte server PostgreSQL a přidáte do něj privátní kon
     |||
 
     > [!Note] 
-    > Přečtěte si téma [Konfigurace zóny DNS služeb Azure](../private-link/private-endpoint-dns.md).
+    > Pro vaši službu použijte předdefinovanou privátní zónu DNS nebo vytvořte novou. Podrobnosti najdete v tématu [Konfigurace zóny DNS služeb Azure](../private-link/private-endpoint-dns.md) .
 
 1. Vyberte **Zkontrolovat a vytvořit**. Přejdete na stránku **Revize + vytvořit** , kde Azure ověřuje vaši konfiguraci. 
 2. Když se zobrazí zpráva s **potvrzením ověření** , vyberte **vytvořit**. 

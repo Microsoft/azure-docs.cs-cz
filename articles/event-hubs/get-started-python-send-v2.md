@@ -8,12 +8,13 @@ ms.workload: core
 ms.topic: quickstart
 ms.date: 02/11/2020
 ms.author: spelluru
-ms.openlocfilehash: 6b16398c7c1fd53562df7e4ac8e801a8c97162f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 7550ba3883503c5991cd14e80354b187116a3b51
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82159433"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560293"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Posílání událostí a přijímání událostí z Center událostí pomocí Pythonu (Azure – eventhub verze 5)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí balíčku **Azure-eventhub verze 5** Python.

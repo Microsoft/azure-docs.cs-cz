@@ -8,13 +8,13 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: cbrooks
-ms.custom: seo-javascript-october2019
-ms.openlocfilehash: 6cbaf19c5c4d52a5de1ef1d63ad5465859555810
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.custom: seo-javascript-october2019, tracking-python
+ms.openlocfilehash: 5c45cb765fec9f34e5db0e9bd66ef020499eadf1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465299"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559169"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Jak používat Azure Queue Storage v 2.1 z Pythonu
 

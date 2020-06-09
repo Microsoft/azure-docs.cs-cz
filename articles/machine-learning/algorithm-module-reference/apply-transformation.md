@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 03/05/2020
-ms.openlocfilehash: ccf9d0c3eef50c7dfd838f1929e52506e8984879
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/05/2020
+ms.openlocfilehash: e2b4233f8f59a26e7da532fca48aecbb41857b66
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78395265"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488626"
 ---
 # <a name="apply-transformation-module"></a>Použít transformační modul
 
@@ -32,13 +32,13 @@ Návrhář umožňuje uložit transformace dat jako datové **sady** , abyste je
 
 1. Vyberte kartu **výstupy + protokoly** .
 
-1. Kliknutím na **ikonu Uložit** uložte **transformaci výsledků**.
+1. Najděte výstup transformace a vyberte **datovou sadu registru** , kterou chcete uložit jako modul v kategorii **datových sad** v paletě modulu.
 
 ## <a name="how-to-use-apply-transformation"></a>Použití funkce použít transformaci  
   
 1. Přidejte do svého kanálu modul **použít transformaci** . Tento modul najdete v části **model bodování & vyhodnocení** v paletě modulu. 
   
-1. V paletě modulu Najděte uloženou transformaci **Datasets** > , kterou chcete použít v datových**sadách** .
+1. V paletě modulu Najděte uloženou transformaci, kterou chcete použít v **datových sadách** .
 
 1. Připojte výstup uložené transformace k levému vstupnímu portu modulu **použít transformaci** .
 

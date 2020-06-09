@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3861b981a1083b44e9cc522a01c50cf24f281e91
-ms.sourcegitcommit: 595cde417684e3672e36f09fd4691fb6aa739733
+ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83702028"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560870"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Jak používat OPENROWSET s SQL na vyžádání (Preview)
 
@@ -96,7 +96,7 @@ WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })
 [ , PARSER_VERSION = 'parser_version' ]
 ```
 
-## <a name="arguments"></a>Arguments
+## <a name="arguments"></a>Argumenty
 
 Máte dvě možnosti pro vstupní soubory, které obsahují cílová data pro dotazování. Platné hodnoty jsou:
 
@@ -107,19 +107,19 @@ Máte dvě možnosti pro vstupní soubory, které obsahují cílová data pro do
 **unstructured_data_path**
 
 Unstructured_data_path, která vytváří cestu k datům, může být absolutní nebo relativní cesta:
-- Absolutní cesta ve formátu \< prefix>:// \< storage_account_path>/ \< storage_path> umožňuje uživateli přímo číst soubory.
+- Absolutní cesta ve formátu \<prefix> :// \<storage_account_path> / \<storage_path> umožňuje uživateli přímo číst soubory.
 - Relativní cesta ve formátu ' <storage_path> ', která musí být použita s `DATA_SOURCE` parametrem a popisuje vzor souboru v umístění <storage_account_path>, které je definováno v `EXTERNAL DATA SOURCE` . 
 
  Níže najdete relevantní <storage account path> hodnoty, které budou propojeny s konkrétním externím zdrojem dat. 
 
 | Externí zdroj dat       | Předpona | Cesta k účtu úložiště                                 |
 | -------------------------- | ------ | ---------------------------------------------------- |
-| Azure Blob Storage         | HTTPS  | \<storage_account>. blob.core.windows.net             |
+| Azure Blob Storage         | HTTPS  | \<storage_account>.blob.core.windows.net             |
 | Azure Data Lake Store Gen1 | HTTPS  | \<storage_account>. azuredatalakestore.net/webhdfs/v1 |
 | Azure Data Lake Store Gen2 | HTTPS  | \<storage_account>. dfs.core.windows.net              |
 ||||
 
-\<storage_path>
+'\<storage_path>'
 
  Určuje cestu v rámci úložiště, která odkazuje na složku nebo soubor, který chcete číst. Pokud cesta odkazuje na kontejner nebo složku, všechny soubory budou načteny z konkrétního kontejneru nebo složky. Soubory v podsložkách nebudou zahrnuty. 
 
@@ -130,7 +130,7 @@ Níže je příklad, který čte všechny soubory *CSV* počínaje *plněním* z
 Pokud zadáte unstructured_data_path jako složku, dotaz na vyžádání SQL načte soubory z této složky. 
 
 > [!NOTE]
-> Na rozdíl od Hadoop a báze SQL na vyžádání nevrací podsložky. Na rozdíl od Hadoop a PloyBase vrátí SQL na vyžádání soubory, pro které název souboru začíná podtržítkem (_) nebo tečkou (.).
+> Na rozdíl od Hadoop a báze SQL na vyžádání nevrací podsložky. Na rozdíl od Hadoop a báze SQL na vyžádání vrátí také soubory, pro které název souboru začíná podtržítkem (_) nebo tečkou (.).
 
 Pokud je v následujícím příkladu unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , dotaz SQL na vyžádání vrátí řádky z Mojedata. txt a _hidden. txt. Nevrátí mydata2. txt a mydata3. txt, protože jsou umístěné v podsložce.
 

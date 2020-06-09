@@ -2,18 +2,18 @@
 title: Azure Event Grid zabezpečení a ověřování
 description: Tento článek popisuje různé způsoby ověřování přístupu k prostředkům Event Grid (Webhook, odběry, vlastní témata).
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.author: babanisa
-ms.openlocfilehash: bca450022322db7a7569fa1dc7ce80ec75a9ce69
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.author: femila
+ms.openlocfilehash: 8335d5a41dc2f322623c163e08f8a4a2c1be8360
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83774311"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558996"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Ověřování přístupu k prostředkům Azure Event Grid
 Tento článek poskytuje informace o následujících scénářích:  

@@ -10,12 +10,13 @@ author: trevorbye
 ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
-ms.openlocfilehash: 3177de6816dd690514620098e79db844077fbaf6
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: tracking-python
+ms.openlocfilehash: 564358bf7d689abf93f6a9549fab0c2932e99f5b
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655443"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558379"
 ---
 # <a name="tutorial-get-started-creating-your-first-ml-experiment-with-the-python-sdk"></a>Kurz: Začínáme s vytvářením prvního experimentu ML pomocí sady Python SDK
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -99,7 +100,7 @@ Dokončili jste následující postup experimentování a spouštění v sadě A
 
     1.  Z dostupných možností vyberte velikost virtuálního počítače.
 
-    1. Pak vyberte **vytvořit**. Nastavení virtuálního počítače může trvat přibližně 5 minut.
+    1. Potom vyberte **Vytvořit**. Nastavení virtuálního počítače může trvat přibližně 5 minut.
 
 1. Jakmile je virtuální počítač k dispozici, zobrazí se na horním panelu nástrojů.  Tento Poznámkový blok teď můžete spustit buď pomocí rutiny **Spustit vše** na panelu nástrojů, nebo pomocí **SHIFT + ENTER** v buňkách kódu poznámkového bloku.
 

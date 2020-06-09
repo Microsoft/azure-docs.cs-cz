@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/16/2020
-ms.openlocfilehash: bd0a867cce9b2a9ad793b491b9042034ef5810f5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c6e4ff494ee79428f7d9e6a55d184b877c0d58e4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81605156"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554954"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Postup konfigurace parametrů serveru v Azure Database for MySQL pomocí Azure Portal
 
@@ -29,42 +29,6 @@ Azure Database for MySQL podporuje konfiguraci některých parametrů serveru. T
 5. Pokud jste uložili nové hodnoty pro parametry, můžete kdykoli vrátit zpět všechny výchozí hodnoty výběrem možnosti **Obnovit vše na výchozí**.
 ![Obnovit výchozí](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>Seznam konfigurovatelných parametrů serveru
-
-Seznam podporovaných parametrů serveru se neustále zvětšuje. Použijte kartu parametry serveru v Azure Portal k získání definice a konfiguraci parametrů serveru podle požadavků vaší aplikace.
-
-## <a name="non-configurable-server-parameters"></a>Nekonfigurovatelné parametry serveru
-
-Velikost fondu vyrovnávací paměti InnoDB není konfigurovatelná a je vázaná na vaši [cenovou úroveň](concepts-service-tiers.md).
-
-|**Cenová úroveň**|**vCore (celkem)**|**Velikost fondu vyrovnávací paměti InnoDB v <br>MB (servery podporující až 4 TB úložiště)**| **Velikost fondu vyrovnávací paměti InnoDB v <br>MB (servery podporující až 16 TB úložiště)**|
-|:---|---:|---:|---:|
-|Základní| 1| 832| |
-|Základní| 2| 2560| |
-|Pro obecné účely| 2| 3584| 7168|
-|Pro obecné účely| 4| 7680| 15360|
-|Pro obecné účely| 8| 15360| 30720|
-|Pro obecné účely| 16| 31232| 62464|
-|Pro obecné účely| 32| 62976| 125952|
-|Pro obecné účely| 64| 125952| 251904|
-|Optimalizováno pro paměť| 2| 7168| 14336|
-|Optimalizováno pro paměť| 4| 15360| 30720|
-|Optimalizováno pro paměť| 8| 30720| 61440|
-|Optimalizováno pro paměť| 16| 62464| 124928|
-|Optimalizováno pro paměť| 32| 125952| 251904|
-
-Tyto další parametry serveru není možné v systému konfigurovat:
-
-|**Ukazatele**|**Pevná hodnota**|
-| :------------------------ | :-------- |
-|innodb_file_per_table na úrovni Basic|OFF|
-|innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
-|innodb_log_file_size|MB|
-|innodb_log_files_in_group|2|
-
-Další parametry serveru, které zde nejsou uvedeny, jsou nastaveny na výchozí hodnoty, které jsou ve výchozím nastavení pro databáze MySQL pro verze [5,7](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html) a [5,6](https://dev.mysql.com/doc/refman/5.6/en/innodb-parameters.html).
-
 ## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma
 
 ### <a name="populating-the-time-zone-tables"></a>Naplnění tabulek časových pásem
@@ -72,7 +36,7 @@ Další parametry serveru, které zde nejsou uvedeny, jsou nastaveny na výchoz�
 Tabulky časových pásem na vašem serveru se dají naplnit voláním `mysql.az_load_timezone` uložené procedury z nástroje, jako je třeba příkazový řádek MySQL nebo MySQL Workbench.
 
 > [!NOTE]
-> Pokud spouštíte `mysql.az_load_timezone` příkaz z aplikace MySQL Workbench, možná bude nutné nejprve vypnout režim bezpečné aktualizace pomocí nástroje `SET SQL_SAFE_UPDATES=0;`.
+> Pokud spouštíte `mysql.az_load_timezone` příkaz z aplikace MySQL Workbench, možná bude nutné nejprve vypnout režim bezpečné aktualizace pomocí nástroje `SET SQL_SAFE_UPDATES=0;` .
 
 ```sql
 CALL mysql.az_load_timezone();

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/03/2020
 ms.topic: conceptual
-ms.openlocfilehash: 7981a28db23ab8c0aed05013dd260ffd97a11c07
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 5f6f7fc52a186117afcb92f6a2f80bf068e50ab9
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758720"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509198"
 ---
 # <a name="entities"></a>Entity
 
@@ -25,6 +25,33 @@ Nejdůležitější aspekt samotné entity je hierarchie a výsledná hierarchic
 Entita je jedinečně vlastněna její nadřazenou položkou, což znamená, že pokud je Nadřazená aktivita zničena s `Entity.Destroy()` , tak jsou její podřízené a všechny připojené [součásti](components.md). Proto je odebrání modelu z scény provedeno voláním `Destroy` na kořenový uzel modelu, vrácený `AzureSession.Actions.LoadModelAsync()` nebo jeho variantou SAS `AzureSession.Actions.LoadModelFromSASAsync()` .
 
 Entity se vytvoří, když server načte obsah nebo když chce uživatel přidat objekt do scény. Pokud chce například uživatel přidat vyjmutou plochu k vizualizaci vnitřku sítě, může uživatel vytvořit entitu, kde by měla existovat plocha, a pak do ní přidat komponentu vyjmuté plochy.
+
+## <a name="create-an-entity"></a>Vytvoření entity
+
+Chcete-li přidat novou entitu do scény, například předat jako kořenový objekt pro načítání modelů nebo připojit k ní komponenty, použijte následující kód:
+
+```cs
+Entity CreateNewEntity(AzureSession session)
+{
+    Entity entity = session.Actions.CreateEntity();
+    entity.Position = new LocalPosition(1, 2, 3);
+    return entity;
+}
+```
+
+```cpp
+ApiHandle<Entity> CreateNewEntity(ApiHandle<AzureSession> session)
+{
+    ApiHandle<Entity> entity(nullptr);
+    if (auto entityRes = session->Actions()->CreateEntity())
+    {
+        entity = entityRes.value();
+        entity->Position(Double3{ 1, 2, 3 });
+        return entity;
+    }
+    return entity;
+}
+```
 
 ## <a name="query-functions"></a>Funkce dotazů
 

@@ -5,14 +5,14 @@ author: roygara
 ms.service: storage
 ms.subservice: files
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/07/2020
 ms.author: rogarana
-ms.openlocfilehash: 6e49201b0574e0a1235cc9e2cb313b40b0563f93
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 436f0ae3e19b2a0591a2727bde48bae66b91a94e
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84268489"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509249"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Třetí část: Konfigurace oprávnění adresářů a souborů přes SMB 
 
@@ -31,12 +31,22 @@ Pokud chcete nakonfigurovat seznamy řízení přístupu (ACL) pomocí uživatel
 Do kořenového adresáře sdílené složky jsou zahrnutá tato oprávnění:
 
 - BUILTIN\Administrators: (OI) (CI) (F)
-- NT AUTHORITY\SYSTEM: (OI) (CI) (F)
 - BUILTIN\Users: (RX)
 - BUILTIN\Users: (OI) (CI) (v/v) (GR, GE)
 - Uživatelé NT Authority\authenticated Users: (OI) – CI (M)
+- NT AUTHORITY\SYSTEM: (OI) (CI) (F)
 - NT AUTHORITY\SYSTEM: (F)
 - CREATOR OWNER: (OI) (CI) (V/V) (F)
+
+|Uživatelé|Definice|
+|---|---|
+|BUILTIN\Administrators|Všichni uživatelé, kteří jsou správci domény Prem služba AD DSho prostředí.
+|BUILTIN\Users|Integrovaná skupina zabezpečení ve službě AD. Zahrnuje uživatele NT Authority\authenticated Users ve výchozím nastavení. Pro tradiční souborový server můžete nakonfigurovat definici členství na server. Pro soubory Azure není k dispozici hostitelský server, takže BUILTIN\Users zahrnuje stejnou skupinu uživatelů jako uživatelé NT Authority\authenticated Users.|
+|NT AUTHORITY\SYSTEM|Účet služby pro operační systém souborového serveru. Takový účet služby se v kontextu souborů Azure nepoužívá. Je zahrnutý do kořenového adresáře, aby byl konzistentní s prostředím Windows Files Server pro hybridní scénáře.|
+|Uživatelé NT Authority\authenticated Users|Všichni uživatelé ve službě AD, kteří můžou získat platný token protokolu Kerberos.|
+|VLASTNÍK AUTORA|Každý objekt má buď adresář, nebo soubor vlastník tohoto objektu. Pokud jsou pro daný objekt k tomuto objektu přiřazeny seznamy řízení přístupu (CREATOR OWNER), má uživatel, který je vlastníkem tohoto objektu, oprávnění k objektu definovanému seznamem ACL.|
+
+
 
 ## <a name="mount-a-file-share-from-the-command-prompt"></a>Připojení sdílení souborů z příkazového řádku
 
@@ -65,7 +75,7 @@ Pomocí Průzkumníka souborů Windows udělte úplným oprávněním všem adre
 1. V okně příkazového řádku pro přidání nových uživatelů zadejte cílové uživatelské jméno, kterému chcete udělit oprávnění, do pole **Zadejte názvy objektů k výběru** a vyberte možnost **kontrolovat názvy** a vyhledejte úplný název UPN cílového uživatele.
 1.    Vyberte **OK**.
 1.    Na kartě **zabezpečení** vyberte všechna oprávnění, která chcete novému uživateli udělit.
-1.    Vyberte **Použít**.
+1.    Vyberte **Apply** (Použít).
 
 ### <a name="configure-windows-acls-with-icacls"></a>Konfigurace seznamů ACL pro Windows pomocí icacls
 

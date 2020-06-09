@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: f07efc8fd77f1c34ef96d31f55089726942d05df
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: f5c93e35b2a9124ac6d480b3719608ee3b4484a5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871228"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554824"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrace vaší stávající infrastruktury NPS se službou Multi-Factor Authentication
 
@@ -65,6 +65,10 @@ Tyto knihovny jsou nainstalovány automaticky s příponou.
 
 Modul Microsoft Azure Active Directory pro Windows PowerShell je nainstalován, pokud ještě neexistuje, prostřednictvím konfiguračního skriptu, který spustíte jako součást procesu instalace. Tento modul není potřeba instalovat předem, pokud ještě není nainstalovaný.
 
+Je nutné ručně nainstalovat následující knihovnu:
+
+- [Visual C++ Redistributable pro Visual Studio 2015](https://www.microsoft.com/download/details.aspx?id=48145)
+
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
 Každý, kdo používá rozšíření serveru NPS, musí být synchronizovaný Azure Active Directory pomocí Azure AD Connect a musí být registrovaný pro MFA.
@@ -98,7 +102,7 @@ Server NPS se připojí k Azure Active Directory a ověří požadavky MFA. Vybe
 1. Na serveru otevřete **Průvodce přidáním rolí a funkcí** z nabídky pro rychlý Start správce serveru.
 2. Pro typ instalace vyberte instalace na základě **rolí nebo na základě funkcí** .
 3. Vyberte roli serveru **Služba Síťové zásady a přístup** . Okno se může zobrazit pro informování o požadovaných funkcích pro spuštění této role.
-4. Pokračujte v průvodci, dokud nebude stránka potvrzení. Vyberte **Install** (Nainstalovat).
+4. Pokračujte v průvodci, dokud nebude stránka potvrzení. Vyberte **Nainstalovat**.
 
 Když teď máte server určený pro server NPS, měli byste tento server taky nakonfigurovat tak, aby zpracovával příchozí žádosti RADIUS z řešení VPN.
 
@@ -201,7 +205,7 @@ Opakujte tyto kroky na všech dalších serverech NPS, které chcete nastavit pr
 Pokud uplynula platnost předchozího certifikátu počítače a vygeneroval se nový certifikát, měli byste odstranit všechny certifikáty s vypršenou platností. Máte-li certifikáty s vypršenou platností, můžete způsobit problémy s počátkem rozšíření serveru NPS
 
 > [!NOTE]
-> Pokud místo generování certifikátů pomocí skriptu PowerShell použijete vlastní certifikáty, ujistěte se, že jsou zarovnané na konvence vytváření názvů NPS. Název subjektu musí být **CN = \< TenantID \> , OU = rozšíření Microsoft NPS**. 
+> Pokud místo generování certifikátů pomocí skriptu PowerShell použijete vlastní certifikáty, ujistěte se, že jsou zarovnané na konvence vytváření názvů NPS. Název subjektu musí být **CN = \<TenantID\> , OU = rozšíření Microsoft NPS**. 
 
 ### <a name="microsoft-azure-government-additional-steps"></a>Microsoft Azure Government dalších kroků
 
@@ -271,7 +275,7 @@ Následující skript je k dispozici k provedení základních kroků kontroly s
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Návody ověřte, zda je certifikát klienta nainstalován podle očekávání?
 
-Vyhledejte certifikát podepsaný svým držitelem vytvořeného instalačním programem v úložišti certifikátů a zkontrolujte, zda má privátní klíč oprávnění udělená **síťové službě**uživatele. Certifikát má název subjektu **CN \< tenantid \> , OU = rozšíření Microsoft NPS** .
+Vyhledejte certifikát podepsaný svým držitelem vytvořeného instalačním programem v úložišti certifikátů a zkontrolujte, zda má privátní klíč oprávnění udělená **síťové službě**uživatele. Certifikát má název subjektu **CN \<tenantid\> , OU = rozšíření Microsoft NPS** .
 
 Certifikáty podepsané svým držitelem generované skriptem *AzureMfaNpsExtnConfigSetup. ps1* mají také životnost po dobu dvou let. Při ověřování, zda je certifikát nainstalován, byste měli také ověřit, zda nevypršela platnost certifikátu.
 

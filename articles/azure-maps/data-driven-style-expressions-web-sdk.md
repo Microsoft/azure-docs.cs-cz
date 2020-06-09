@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: d6009a655adcc26ebef31588eff2332a05f3a001
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 79f1188665208ec95e5d1d855d2247858e98653c
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804720"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561653"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Výrazy stylu řízené daty (webová sada SDK)
 
@@ -28,7 +28,7 @@ Toto video poskytuje přehled stylů řízených daty v sadě Azure Maps Web SDK
 
 <iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Data-Driven-Styling-with-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
 
-Výrazy jsou reprezentovány jako pole JSON. Prvním prvkem výrazu v poli je řetězec, který určuje název operátoru výrazu. Například "+" nebo "Case". Další prvky (pokud existují) jsou argumenty výrazu. Každý argument je buď hodnota literálu (řetězec, číslo, logická hodnota nebo `null`), nebo jiné pole výrazu. Následující pseudokódu definuje základní strukturu výrazu. 
+Výrazy jsou reprezentovány jako pole JSON. Prvním prvkem výrazu v poli je řetězec, který určuje název operátoru výrazu. Například "+" nebo "Case". Další prvky (pokud existují) jsou argumenty výrazu. Každý argument je buď hodnota literálu (řetězec, číslo, logická hodnota nebo `null` ), nebo jiné pole výrazu. Následující pseudokódu definuje základní strukturu výrazu. 
 
 ```javascript
 [ 
@@ -41,9 +41,9 @@ Výrazy jsou reprezentovány jako pole JSON. Prvním prvkem výrazu v poli je ř
 
 Sada Azure Maps Web SDK podporuje mnoho typů výrazů. Výrazy lze použít na vlastní nebo v kombinaci s jinými výrazy.
 
-| Typ výrazů | Popis |
+| Typ výrazů | Description |
 |---------------------|-------------|
-| [Agregační výraz](#aggregate-expression) | Výraz definující výpočet, který je zpracován prostřednictvím sady dat a lze jej použít s `clusterProperties` možností. `DataSource` |
+| [Agregační výraz](#aggregate-expression) | Výraz definující výpočet, který je zpracován prostřednictvím sady dat a lze jej použít s `clusterProperties` možností `DataSource` . |
 | [Logické výrazy](#boolean-expressions) | Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocení logických porovnání. |
 | [Výrazy barev](#color-expressions) | Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev. |
 | [Podmíněné výrazy](#conditional-expressions) | Podmíněné výrazy poskytují operace logiky, které jsou například if-statements. |
@@ -81,9 +81,9 @@ Všechny příklady v tomto dokumentu používají následující funkci k před
 
 Datové výrazy poskytují přístup k datům vlastností ve funkci. 
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
-| `['at', number, array]` | objekt | Načte položku z pole. |
+| `['at', number, array]` | odkazy objektů | Načte položku z pole. |
 | `['geometry-type']` | řetězec | Získá typ geometrie funkce: Point, MultiPoint, LineString, MultiLineString, mnohoúhelník, promnohoúhelník. |
 | `['get', string]` | value | Získá hodnotu vlastnosti z vlastností aktuální funkce. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
 | `['get', string, object]` | value | Získá hodnotu vlastnosti z vlastností poskytnutého objektu. Vrátí hodnotu null, pokud chybí požadovaná vlastnost. |
@@ -119,7 +119,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Vrstvy bublinových a symbolů budou ve výchozím nastavení vykreslovat souřadnice všech tvarů ve zdroji dat. Toto chování může zvýraznit vrcholy mnohoúhelníku nebo čáry. `filter` Možnost vrstvy lze použít k omezení typu geometrie funkcí, které vykresluje, pomocí `['geometry-type']` výrazu v rámci logického výrazu. Následující příklad omezuje bublinovou vrstvu tak, aby byly `Point` vykresleny pouze funkce.
+Vrstvy bublinových a symbolů budou ve výchozím nastavení vykreslovat souřadnice všech tvarů ve zdroji dat. Toto chování může zvýraznit vrcholy mnohoúhelníku nebo čáry. `filter`Možnost vrstvy lze použít k omezení typu geometrie funkcí, které vykresluje, pomocí `['geometry-type']` výrazu v rámci logického výrazu. Následující příklad omezuje bublinovou vrstvu tak, aby `Point` byly vykresleny pouze funkce.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -127,7 +127,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 });
 ```
 
-Následující příklad umožňuje vykreslení obou `Point` funkcí `MultiPoint` a. 
+Následující příklad umožňuje vykreslení obou `Point` `MultiPoint` funkcí a. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -141,7 +141,7 @@ Podobně, obrys mnohoúhelníků se vykreslí do vrstev čar. Chcete-li toto cho
 
 Matematické výrazy poskytují matematické operátory pro provádění výpočtů řízených daty v rámci rozhraní Expression Framework.
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
 | `['+', number, number, …]` | číslo | Vypočítá součet zadaných čísel. |
 | `['-', number]` | číslo | Odečte 0 zadaným číslem. |
@@ -156,15 +156,15 @@ Matematické výrazy poskytují matematické operátory pro provádění výpoč
 | `['atan', number]` | číslo | Vypočítá arkustangens zadaného čísla. |
 | `['ceil', number]` | číslo | Zaokrouhlí číslo nahoru na nejbližší celé číslo. |
 | `['cos', number]` | číslo | Vypočítá cos zadaného čísla. |
-| `['e']` | číslo | Vrátí matematickou konstantu `e`. |
+| `['e']` | číslo | Vrátí matematickou konstantu `e` . |
 | `['floor', number]` | číslo | Zaokrouhlí číslo dolů na předchozí celé číslo. |
 | `['ln', number]` | číslo | Vypočítá přirozený logaritmus určeného čísla. |
-| `['ln2']` | číslo | Vrátí matematickou konstantu `ln(2)`. |
+| `['ln2']` | číslo | Vrátí matematickou konstantu `ln(2)` . |
 | `['log10', number]` | číslo | Vypočítá dekadický logaritmus zadaného čísla. |
 | `['log2', number]` | číslo | Vypočítá dekadický logaritmus zadaného čísla. |
 | `['max', number, number, …]` | číslo | Vypočítá maximální počet v zadané sadě čísel. |
 | `['min', number, number, …]` | číslo | Vypočítá minimální číslo v zadané sadě čísel. |
-| `['pi']` | číslo | Vrátí matematickou konstantu `PI`. |
+| `['pi']` | číslo | Vrátí matematickou konstantu `PI` . |
 | `['round', number]` | číslo | Zaokrouhlí číslo na nejbližší celé číslo. Hodnoty v polovině se zaokrouhlují směrem od nuly. Například `['round', -1.5]` vyhodnotí na-2. |
 | `['sin', number]` | číslo | Vypočítá sinus zadaného čísla. |
 | `['sqrt', number]` | číslo | Vypočítá druhou odmocninu určeného čísla. |
@@ -172,7 +172,7 @@ Matematické výrazy poskytují matematické operátory pro provádění výpoč
 
 ## <a name="aggregate-expression"></a>Agregační výraz
 
-Agregační výraz definuje výpočet, který je zpracován přes sadu dat a lze jej použít s `clusterProperties` možností. `DataSource` Výstup těchto výrazů musí být číslo nebo logická hodnota. 
+Agregační výraz definuje výpočet, který je zpracován přes sadu dat a lze jej použít s `clusterProperties` možností `DataSource` . Výstup těchto výrazů musí být číslo nebo logická hodnota. 
 
 Agregační výraz přebírá tři hodnoty: hodnotu operátoru a počáteční hodnotu a výraz pro načtení vlastnosti z každé funkce v datech pro použití agregační operace na. Tento výraz má následující formát:
 
@@ -181,8 +181,8 @@ Agregační výraz přebírá tři hodnoty: hodnotu operátoru a počáteční h
 ```
 
 - operator: funkce výrazu, která se pak použije na proti všem hodnotám vypočítaným `mapExpression` pro každý bod v clusteru. Podporované operátory: 
-    - Pro čísla: `+`, `*`, `max`,`min`
-    - Pro logické hodnoty: `all`,`any`
+    - Pro čísla: `+` , `*` , `max` ,`min`
+    - Pro logické hodnoty: `all` ,`any`
 - initialValue: počáteční hodnota, ve které je agregována první Počítaná hodnota.
 - mapExpression: výraz, který se aplikuje na každý bod v datové sadě.
 
@@ -196,27 +196,27 @@ Logické výrazy poskytují sadu logických výrazů operátorů pro vyhodnocen�
 
 Při porovnávání hodnot je porovnání striktně typované. Hodnoty různých typů jsou vždy považovány za nerovné. Případy, kde se označují, že typy jsou odlišné v době analýzy, jsou považovány za neplatné a vytvoří chybu analýzy. 
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
-| `['! ', boolean]` | Boolean | Logická negace. Vrátí `true` , zda je `false`vstup, a `false` Pokud je `true`vstup. |
+| `['! ', boolean]` | Boolean | Logická negace. Vrátí `true` , zda je vstup `false` , a `false` Pokud je vstup `true` . |
 | `['!= ', value, value]` | Boolean | Vrátí `true` , zda vstupní hodnoty nejsou stejné, `false` jinak. |
 | `['<', value, value]` | Boolean | Vrátí `true` , zda je první vstup striktně menší než druhý, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
 | `['<=', value, value]` | Boolean | Vrátí `true` , zda je první vstup menší nebo roven druhému, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
 | `['==', value, value]` | Boolean | Vrátí `true` , zda jsou vstupní hodnoty stejné, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
 | `['>', value, value]` | Boolean | Vrátí `true` , zda je první vstup striktně větší než druhý, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
 | `['>=' value, value]` | Boolean | Vrátí `true` , zda je první zadání větší než nebo rovno druhému, `false` jinak. Argumenty musí být buď řetězce, nebo obě čísla. |
-| `['all', boolean, boolean, …]` | Boolean | Vrátí `true` , zda jsou `true`všechny vstupy, `false` jinak. |
-| `['any', boolean, boolean, …]` | Boolean | Vrátí `true` , zda je `true`některý ze vstupů `false` , jinak. |
+| `['all', boolean, boolean, …]` | Boolean | Vrátí `true` , zda jsou všechny vstupy `true` , `false` jinak. |
+| `['any', boolean, boolean, …]` | Boolean | Vrátí `true` , zda je některý ze vstupů `true` , `false` jinak. |
 
 ## <a name="conditional-expressions"></a>Podmíněné výrazy
 
 Podmíněné výrazy poskytují operace logiky, které jsou například if-statements.
 
-Následující výrazy provádějí Podmíněné logické operace na vstupních datech. Například `case` výraz poskytuje logiku "if/then/else", `match` zatímco výraz je jako "Switch-Statement". 
+Následující výrazy provádějí Podmíněné logické operace na vstupních datech. Například `case` výraz poskytuje logiku "if/then/else", zatímco `match` výraz je jako "Switch-Statement". 
 
 ### <a name="case-expression"></a>Výraz Case
 
-`case` Výraz je typ podmíněného výrazu, který poskytuje logiku "if/then/else". Tento typ kroků výrazu se seznamem logických podmínek. Vrátí výstupní hodnotu první logické podmínky pro vyhodnocení na hodnotu true.
+`case`Výraz je typ podmíněného výrazu, který poskytuje logiku "if/then/else". Tento typ kroků výrazu se seznamem logických podmínek. Vrátí výstupní hodnotu první logické podmínky pro vyhodnocení na hodnotu true.
 
 Následující pseudokódu definuje strukturu `case` výrazu. 
 
@@ -234,7 +234,7 @@ Následující pseudokódu definuje strukturu `case` výrazu.
 
 **Případě**
 
-Následující příklad provádí v rámci různých logických podmínek `true`, dokud nenajde ten, který je vyhodnocen jako a následně vrací přidruženou hodnotu. Pokud se `true`vyhodnotí žádná logická podmínka, vrátí se záložní hodnota. 
+Následující příklad provádí v rámci různých logických podmínek, dokud nenajde ten, který je vyhodnocen jako `true` a následně vrací přidruženou hodnotu. Pokud se vyhodnotí žádná logická podmínka `true` , vrátí se záložní hodnota. 
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -257,7 +257,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ### <a name="match-expression"></a>Výraz shody
 
-`match` Výraz je typ podmíněného výrazu, který poskytuje příkaz typu Switch-Logic. Vstup může být libovolný výraz `['get', 'entityType']` , například, který vrátí řetězec nebo číslo. Každý popisek musí být buď hodnota jednoho literálu, nebo pole hodnot literálu, jejichž hodnoty musí být všechny řetězce nebo všechna čísla. Vstup se shoduje, pokud kterákoli z hodnot v poli odpovídá. Každý popisek musí být jedinečný. Pokud typ vstupu neodpovídá typu popisků, bude výsledkem záložní hodnota.
+`match`Výraz je typ podmíněného výrazu, který poskytuje příkaz typu Switch-Logic. Vstup může být libovolný výraz `['get', 'entityType']` , například, který vrátí řetězec nebo číslo. Každý popisek musí být buď hodnota jednoho literálu, nebo pole hodnot literálu, jejichž hodnoty musí být všechny řetězce nebo všechna čísla. Vstup se shoduje, pokud kterákoli z hodnot v poli odpovídá. Každý popisek musí být jedinečný. Pokud typ vstupu neodpovídá typu popisků, bude výsledkem záložní hodnota.
 
 Následující pseudokódu definuje strukturu `match` výrazu. 
 
@@ -341,7 +341,7 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 ### <a name="coalesce-expression"></a>Výraz COALESCE
 
-Kroky `coalesce` výrazu pomocí sady výrazů, dokud není získána první hodnota, která není null, a vrátí tuto hodnotu. 
+`coalesce`Kroky výrazu pomocí sady výrazů, dokud není získána první hodnota, která není null, a vrátí tuto hodnotu. 
 
 Následující pseudokódu definuje strukturu `coalesce` výrazu. 
 
@@ -356,7 +356,7 @@ Následující pseudokódu definuje strukturu `coalesce` výrazu.
 
 **Případě**
 
-Následující příklad používá `coalesce` výraz pro nastavení `textField` možnosti pro vrstvu symbolů. Pokud `title` vlastnost ve funkci chybí nebo je nastavená na `null`, výraz se pak pokusí vyhledat `subtitle` vlastnost, pokud chybí, nebo `null`se vrátí do prázdného řetězce. 
+Následující příklad používá `coalesce` výraz pro nastavení `textField` Možnosti pro vrstvu symbolů. Pokud `title` vlastnost ve funkci chybí nebo je nastavená na `null` , výraz se pak pokusí vyhledat `subtitle` vlastnost, pokud chybí, nebo se `null` vrátí do prázdného řetězce. 
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -399,18 +399,18 @@ var layer = new atlas.layer.SymbolLayer(datasource, null, {
 
 Výrazy typu poskytují nástroje pro testování a převod různých typů dat, jako jsou řetězce, čísla a logické hodnoty.
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
-| `['literal', array]`<br/><br/>`['literal', object]` | array \| – objekt | Vrátí literálovou hodnotu pole nebo objektu. Tento výraz použijte k zabránění vyhodnocení pole nebo objektu jako výrazu. To je nezbytné, pokud musí být pole nebo objekt vráceny výrazem. |
+| `['literal', array]`<br/><br/>`['literal', object]` | array – \| objekt | Vrátí literálovou hodnotu pole nebo objektu. Tento výraz použijte k zabránění vyhodnocení pole nebo objektu jako výrazu. To je nezbytné, pokud musí být pole nebo objekt vráceny výrazem. |
 | `['image', string]` | řetězec | Kontroluje, zda je zadané ID obrázku načteno do Sprite obrázku mapy. Pokud je, vrátí se ID, jinak se vrátí hodnota null. |
-| `['to-boolean', value]` | Boolean | Převede vstupní hodnotu na logickou hodnotu. Výsledkem `false` je, že vstup je prázdný řetězec, `0` `false` `null`,, nebo; `NaN` v opačném případě `true`. |
+| `['to-boolean', value]` | Boolean | Převede vstupní hodnotu na logickou hodnotu. Výsledkem je, že `false` vstup je prázdný řetězec,,, `0` `false` nebo, `null` `NaN` v opačném případě `true` . |
 | `['to-color', value]`<br/><br/>`['to-color', value1, value2…]` | color | Převede vstupní hodnotu na barvu. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
-| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | číslo | Pokud je to možné, převede vstupní hodnotu na číslo. Pokud je `null` vstup nebo `false`, výsledkem je 0. Pokud je `true`vstup, výsledkem je 1. Pokud je vstup řetězcem, je převeden na číslo pomocí funkce řetězce [tonumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) ve specifikaci jazyka ECMAScript. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
-| `['to-string', value]` | řetězec | Převede vstupní hodnotu na řetězec. Pokud je `null`vstup, výsledkem je `""`. Pokud je vstup logická hodnota, výsledek je `"true"` nebo. `"false"` Pokud je vstup číslo, je převedeno na řetězec pomocí funkce [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specifikace jazyka ECMAScript. Pokud je vstup barva, je převedena na RGBA řetězec `"rgba(r,g,b,a)"`barvy CSS. V opačném případě je vstup převeden na řetězec pomocí funkce [JSON. Stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specifikace jazyka ECMAScript. |
+| `['to-number', value]`<br/><br/>`['to-number', value1, value2, …]` | číslo | Pokud je to možné, převede vstupní hodnotu na číslo. Pokud je vstup `null` nebo `false` , výsledkem je 0. Pokud je vstup `true` , výsledkem je 1. Pokud je vstup řetězcem, je převeden na číslo pomocí funkce řetězce [tonumber](https://tc39.github.io/ecma262/#sec-tonumber-applied-to-the-string-type) ve specifikaci jazyka ECMAScript. Pokud je zadáno více hodnot, je každá z nich vyhodnocována v pořadí, dokud nebude získán první úspěšný převod. Pokud žádný ze vstupů nelze převést, je výraz chybou. |
+| `['to-string', value]` | řetězec | Převede vstupní hodnotu na řetězec. Pokud je vstup `null` , výsledkem je `""` . Pokud je vstup logická hodnota, výsledek je `"true"` nebo `"false"` . Pokud je vstup číslo, je převedeno na řetězec pomocí funkce [ToString](https://tc39.github.io/ecma262/#sec-tostring-applied-to-the-number-type) Number specifikace jazyka ECMAScript. Pokud je vstup barva, je převedena na RGBA řetězec barvy CSS `"rgba(r,g,b,a)"` . V opačném případě je vstup převeden na řetězec pomocí funkce [JSON. Stringify](https://tc39.github.io/ecma262/#sec-json.stringify) specifikace jazyka ECMAScript. |
 | `['typeof', value]` | řetězec | Vrátí řetězec popisující typ dané hodnoty. |
 
 > [!TIP]
-> Pokud `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` se chybová zpráva podobná zobrazení v konzole prohlížeče, znamená to, že ve vašem kódu je výraz, který má pole, které nemá řetězec pro svou první hodnotu. Pokud chcete, aby výraz vrátil pole, zabalte pole pomocí `literal` výrazu. Následující příklad nastaví možnost ikony `offset` pro vrstvu symbolu, která musí být pole obsahující dvě čísla, a to pomocí `match` výrazu pro výběr mezi dvěma hodnotami posunu na základě hodnoty `entityType` vlastnosti funkce Point.
+> Pokud se chybová zpráva podobná `Expression name must be a string, but found number instead. If you wanted a literal array, use ["literal", [...]].` zobrazení v konzole prohlížeče, znamená to, že ve vašem kódu je výraz, který má pole, které nemá řetězec pro svou první hodnotu. Pokud chcete, aby výraz vrátil pole, zabalte pole pomocí `literal` výrazu. Následující příklad nastaví `offset` možnost ikony pro vrstvu symbolu, která musí být pole obsahující dvě čísla, a to pomocí `match` výrazu pro výběr mezi dvěma hodnotami posunu na základě hodnoty `entityType` vlastnosti funkce Point.
 >
 > ```javascript
 > var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -435,15 +435,15 @@ Výrazy typu poskytují nástroje pro testování a převod různých typů dat,
 
 Výrazy s barvami usnadňují vytváření a manipulaci s hodnotami barev.
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
-| `['rgb', number, number, number]` | color | Vytvoří hodnotu barvy z *červených*, *zelených*a *modrých* komponent, které musí `0` být `255`v rozsahu mezi a a komponentou alfa `1`. Pokud je některá součást mimo rozsah, je výraz chybou. |
-| `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *červené*, *zelené*a *modré* komponenty, která `0` musí `255`být v rozsahu od do `0` a. alfa komponenta v rámci rozsahu a `1`. Pokud je některá součást mimo rozsah, je výraz chybou. |
+| `['rgb', number, number, number]` | color | Vytvoří hodnotu barvy z *červených*, *zelených*a *modrých* komponent, které musí být v rozsahu mezi `0` a `255` a komponentou alfa `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
+| `['rgba', number, number, number, number]` | color | Vytvoří hodnotu barvy z *červené*, *zelené*a *modré* komponenty, která musí být v rozsahu od do `0` `255` a. alfa komponenta v rámci rozsahu `0` a `1` . Pokud je některá součást mimo rozsah, je výraz chybou. |
 | `['to-rgba']` | \[číslo, číslo, číslo, číslo\] | Vrátí pole se čtyřmi prvky obsahující *červenou*, *zelenou*, *modrou*a *alfa* komponentu vstupní barvy v tomto pořadí. |
 
 **Případě**
 
-Následující příklad vytvoří hodnotu barvy RGB s *červenou* hodnotou `255`a *zelenou* a *modrou* hodnotou, která je vypočítána vynásobením `2.5` hodnotou `temperature` vlastnosti. Při změně teploty se barva změní na různé odstíny *červené*.
+Následující příklad vytvoří hodnotu barvy RGB s *červenou* hodnotou `255` a *zelenou* a *modrou* hodnotou, která je vypočítána vynásobením `2.5` hodnotou `temperature` Vlastnosti. Při změně teploty se barva změní na různé odstíny *červené*.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -463,9 +463,9 @@ var layer = new atlas.layer.BubbleLayer(datasource, null, {
 
 Výrazy operátoru řetězce provádějí operace převodu na řetězcích, jako je zřetězení a převod případu. 
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |------------|-------------|-------------|
-| `['concat', string, string, …]` | řetězec | Zřetězí více řetězců dohromady. Každá hodnota musí být řetězec. Použijte výraz `to-string` Type pro převod ostatních typů hodnot na řetězec v případě potřeby. |
+| `['concat', string, string, …]` | řetězec | Zřetězí více řetězců dohromady. Každá hodnota musí být řetězec. Použijte `to-string` výraz Type pro převod ostatních typů hodnot na řetězec v případě potřeby. |
 | `['downcase', string]` | řetězec | Převede zadaný řetězec na malá písmena. |
 | `['upcase', string]` | řetězec | Převede zadaný řetězec na velká písmena. |
 
@@ -490,20 +490,20 @@ Výše uvedený výraz vykreslí kód PIN na mapě s textem "64 °F", jak je zn�
 
 <center>
 
-![Příklad](media/how-to-expressions/string-operator-expression.png) výrazu řetězce operátoru</center>
+![Příklad ](media/how-to-expressions/string-operator-expression.png) výrazu řetězce operátoru</center>
 
 ## <a name="interpolate-and-step-expressions"></a>Interpolovat a krokovat výrazy
 
-Výrazy interpolování a Step lze použít k výpočtu hodnot podél interpolované křivky nebo funkce kroku. Tyto výrazy přebírají výraz, který jako vstup vrátí číselnou hodnotu, například `['get',  'temperature']`. Vstupní hodnota je vyhodnocena proti dvojicím vstupních a výstupních hodnot, aby bylo možné určit hodnotu, která nejlépe odpovídá interpolované křivce nebo funkci kroku. Výstupní hodnoty se nazývají "zastaví". Vstupní hodnoty pro každou stopu musí být číslo ve vzestupném pořadí. Výstupní hodnoty musí být číslo, pole čísel nebo barva.
+Výrazy interpolování a Step lze použít k výpočtu hodnot podél interpolované křivky nebo funkce kroku. Tyto výrazy přebírají výraz, který jako vstup vrátí číselnou hodnotu, například `['get',  'temperature']` . Vstupní hodnota je vyhodnocena proti dvojicím vstupních a výstupních hodnot, aby bylo možné určit hodnotu, která nejlépe odpovídá interpolované křivce nebo funkci kroku. Výstupní hodnoty se nazývají "zastaví". Vstupní hodnoty pro každou stopu musí být číslo ve vzestupném pořadí. Výstupní hodnoty musí být číslo, pole čísel nebo barva.
 
 ### <a name="interpolate-expression"></a>Výraz interpolování
 
-`interpolate` Výraz lze použít k výpočtu souvislé a hladké sady hodnot interpolací mezi hodnotami zastavení. `interpolate` Výraz, který vrací hodnoty barvy, vytváří barevný přechod, ve kterém jsou hodnoty výsledků vybrány z.
+`interpolate`Výraz lze použít k výpočtu souvislé a hladké sady hodnot interpolací mezi hodnotami zastavení. `interpolate`Výraz, který vrací hodnoty barvy, vytváří barevný přechod, ve kterém jsou hodnoty výsledků vybrány z.
 
 Existují tři typy metod interpolace, které lze použít ve `interpolate` výrazu:
  
 * `['linear']`-Interpoluje lineární poměr mezi dvojicí zarážek.
-* `['exponential', base]`– Interpoluje exponenciálně mezi zastávkami. `base` Hodnota určuje rychlost, s jakou se výstup zvyšuje. Vyšší hodnoty zvyšují objem výstupu směrem k hornímu konci rozsahu. `base` Hodnota blížící se 1 vytvoří výstup, který se zvýší lineárně.
+* `['exponential', base]`– Interpoluje exponenciálně mezi zastávkami. `base`Hodnota určuje rychlost, s jakou se výstup zvyšuje. Vyšší hodnoty zvyšují objem výstupu směrem k hornímu konci rozsahu. `base`Hodnota blížící se 1 vytvoří výstup, který se zvýší lineárně.
 * `['cubic-bezier', x1, y1, x2, y2]`-Interpoluje použití [Bézierovy křivky krychle](https://developer.mozilla.org/docs/Web/CSS/timing-function) definované danými řídicími body.
 
 Tady je příklad toho, jak tyto různé typy interpolace vypadají. 
@@ -529,7 +529,7 @@ Následující pseudokódu definuje strukturu `interpolate` výrazu.
 
 **Případě**
 
-Následující příklad používá `linear interpolate` výraz pro nastavení `color` vlastnosti bublinové vrstvy na základě `temperature` vlastnosti funkce Point. Pokud je `temperature` hodnota menší než 60, bude vrácena "modrá". Pokud je mezi 60 a menší než 70, vrátí se žlutá. Pokud je mezi 70 a menší než 80, bude vrácena "oranžová". Pokud je 80 nebo větší, vrátí se "Red".
+Následující příklad používá `linear interpolate` výraz pro nastavení `color` vlastnosti bublinové vrstvy na základě `temperature` vlastnosti funkce Point. Pokud `temperature` je hodnota menší než 60, bude vrácena "modrá". Pokud je mezi 60 a menší než 70, vrátí se žlutá. Pokud je mezi 70 a menší než 80, bude vrácena "oranžová". Pokud je 80 nebo větší, vrátí se "Red".
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -553,11 +553,11 @@ Následující obrázek ukazuje, jak jsou vybrány barvy pro výše uvedený vý
  
 <center>
 
-![Příklad](media/how-to-expressions/interpolate-expression-example.png) interpolování výrazu</center>
+![Příklad ](media/how-to-expressions/interpolate-expression-example.png) interpolování výrazu</center>
 
 ### <a name="step-expression"></a>Výraz kroku
 
-`step` Výraz lze použít pro výpočet diskrétních a nejovlivněných výsledných hodnot vyhodnocením [funkce konstantní](http://mathworld.wolfram.com/PiecewiseConstantFunction.html) , která je definována funkcí zastavení. 
+`step`Výraz lze použít pro výpočet diskrétních a nejovlivněných výsledných hodnot vyhodnocením [funkce konstantní](http://mathworld.wolfram.com/PiecewiseConstantFunction.html) , která je definována funkcí zastavení. 
 
 Následující pseudokódu definuje strukturu `step` výrazu. 
 
@@ -578,7 +578,7 @@ Výrazy kroku vracejí výstupní hodnotu ukončení těsně před vstupní hodn
 
 **Případě**
 
-Následující příklad používá `step` výraz pro nastavení `color` vlastnosti bublinové vrstvy na základě `temperature` vlastnosti funkce Point. Pokud je `temperature` hodnota menší než 60, bude vrácena "modrá". Pokud je mezi 60 a menší než 70, vrátí se "žlutá". Pokud je mezi 70 a menší než 80, bude vrácena "oranžová". Pokud je 80 nebo větší, vrátí se "Red".
+Následující příklad používá `step` výraz pro nastavení `color` vlastnosti bublinové vrstvy na základě `temperature` vlastnosti funkce Point. Pokud `temperature` je hodnota menší než 60, bude vrácena "modrá". Pokud je mezi 60 a menší než 70, vrátí se "žlutá". Pokud je mezi 70 a menší než 80, bude vrácena "oranžová". Pokud je 80 nebo větší, vrátí se "Red".
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -609,7 +609,7 @@ Speciální výrazy, které se vztahují pouze na konkrétní vrstvy.
 
 ### <a name="heat-map-density-expression"></a>Výraz hustoty tepelné mapy
 
-Výraz hustoty tepelné mapy načte hodnotu hustoty tepelné mapy pro každý pixel v vrstvě Heat mapy a je definován jako `['heatmap-density']`. Tato hodnota je číslo mezi `0` a. `1` Používá se v kombinaci s výrazem `interpolation` or `step` k definování barevného přechodu, který slouží k zabarvovatí Heat mapy. Tento výraz lze použít pouze v [Možnosti barva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) vrstvy Heat mapy.
+Výraz hustoty tepelné mapy načte hodnotu hustoty tepelné mapy pro každý pixel v vrstvě Heat mapy a je definován jako `['heatmap-density']` . Tato hodnota je číslo mezi `0` a `1` . Používá se v kombinaci s `interpolation` `step` výrazem or k definování barevného přechodu, který slouží k zabarvovatí Heat mapy. Tento výraz lze použít pouze v [Možnosti barva](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.heatmaplayeroptions?view=azure-iot-typescript-latest#color) vrstvy Heat mapy.
 
 > [!TIP]
 > Barva v indexu 0, ve výrazu interpolace nebo ve výchozí barvě barvy kroku, definuje barvu oblasti, kde nejsou žádná data. Barva na indexu 0 se dá použít k definování barvy pozadí. Mnoho preferuje nastavení této hodnoty na transparentní nebo částečně průhlednou černou.
@@ -653,14 +653,14 @@ Další informace najdete v dokumentaci k [Přidání vrstvy Heat mapy](map-add-
 
 ### <a name="line-progress-expression"></a>Výraz průběhu řádku
 
-Výraz průběhu řádku načítá průběh čáry přechodu v čárové vrstvě a je definován jako `['line-progress']`. Tato hodnota je číslo mezi 0 a 1. Používá se v kombinaci s výrazem `interpolation` or `step` . Tento výraz se dá použít jenom s [možností strokeGradient]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) vrstvy čáry. 
+Výraz průběhu řádku načítá průběh čáry přechodu v čárové vrstvě a je definován jako `['line-progress']` . Tato hodnota je číslo mezi 0 a 1. Používá se v kombinaci s `interpolation` `step` výrazem or. Tento výraz se dá použít jenom s [možností strokeGradient]( https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.linelayeroptions?view=azure-iot-typescript-latest#strokegradient) vrstvy čáry. 
 
 > [!NOTE]
-> `strokeGradient` Možnost čáry spojnice vyžaduje `lineMetrics` možnost nastavení zdroje dat na hodnotu `true`.
+> `strokeGradient`Možnost čáry spojnice vyžaduje `lineMetrics` možnost nastavení zdroje dat na hodnotu `true` .
 
 **Případě**
 
-V `['line-progress']` tomto příkladu se používá výraz pro použití barevného přechodu na tah čáry.
+V tomto příkladu se používá `['line-progress']` výraz pro použití barevného přechodu na tah čáry.
 
 ```javascript
 var layer = new atlas.layer.LineLayer(datasource, null, {
@@ -682,10 +682,10 @@ var layer = new atlas.layer.LineLayer(datasource, null, {
 
 ### <a name="text-field-format-expression"></a>Výraz formátu textového pole
 
-Výraz formátu textového pole lze použít s `textField` možností vlastnosti vrstvy `textOptions` symbolů pro zajištění smíšeného formátování textu. Tento výraz umožňuje zadat sadu vstupních řetězců a možností formátování. Pro každý vstupní řetězec v tomto výrazu lze zadat následující možnosti.
+Výraz formátu textového pole lze použít s `textField` možností vlastnosti vrstvy symbolů `textOptions` pro zajištění smíšeného formátování textu. Tento výraz umožňuje zadat sadu vstupních řetězců a možností formátování. Pro každý vstupní řetězec v tomto výrazu lze zadat následující možnosti.
 
- * `'font-scale'`-Určuje faktor škálování pro velikost písma. Je-li tento parametr zadán, tato `size` hodnota přepíše vlastnost `textOptions` pro jednotlivé řetězce.
- * `'text-font'`-Určuje jednu nebo více rodin písem, které by měly být použity pro tento řetězec. Je-li tento parametr zadán, tato `font` hodnota přepíše vlastnost `textOptions` pro jednotlivé řetězce.
+ * `'font-scale'`-Určuje faktor škálování pro velikost písma. Je-li tento parametr zadán, tato hodnota přepíše `size` vlastnost `textOptions` pro jednotlivé řetězce.
+ * `'text-font'`-Určuje jednu nebo více rodin písem, které by měly být použity pro tento řetězec. Je-li tento parametr zadán, tato hodnota přepíše `font` vlastnost `textOptions` pro jednotlivé řetězce.
  * `'text-color'`-Určuje barvu, která má být použita pro text při vykreslování. 
 
 Následující pseudokódu definuje strukturu výrazu formátu textového pole. 
@@ -743,11 +743,11 @@ Tato vrstva bude vykreslovat funkci bodu, jak je znázorněno na následujícím
  
 <center>
 
-![Obrázek funkce Point s formátovaným textovým](media/how-to-expressions/text-field-format-expression.png) polem</center>
+![Obrázek funkce Point s formátovaným textovým polem ](media/how-to-expressions/text-field-format-expression.png)</center>
 
 ### <a name="number-format-expression"></a>Výraz číselného formátu
 
-`number-format` Výraz lze použít pouze s `textField` možností vrstvy symbolů. Tento výraz převede zadané číslo na formátovaný řetězec. Tento výraz zalomí funkci [Number. ToLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) jazyka JavaScript a podporuje následující sadu možností.
+`number-format`Výraz lze použít pouze s `textField` možností vrstvy symbolů. Tento výraz převede zadané číslo na formátovaný řetězec. Tento výraz zalomí funkci [Number. ToLocalString](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Number/toLocaleString) jazyka JavaScript a podporuje následující sadu možností.
 
  * `locale`-Tuto možnost zadejte pro převod čísel na řetězce způsobem, který se zarovnává se zadaným jazykem. Předat do této možnosti [značku jazyka BCP 47](https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Intl#Locale_identification_and_negotiation) .
  * `currency`– Pro převod čísla na řetězec představující měnu. Možné hodnoty jsou [kódy měny ISO 4217](https://en.wikipedia.org/wiki/ISO_4217), jako je například USD pro americký dolar, EUR pro euro nebo "CNY" pro čínské RMB.
@@ -771,7 +771,7 @@ Následující pseudokódu definuje strukturu výrazu formátu textového pole.
 
 **Případě**
 
-Následující příklad používá `number-format` výraz pro úpravu způsobu, jakým `revenue` je vlastnost bodu vykreslena v `textField` možnosti vrstvy symbolů tak, aby se zobrazila hodnota US dolar.
+Následující příklad používá `number-format` výraz pro úpravu způsobu, jakým `revenue` je vlastnost bodu vykreslena v `textField` Možnosti vrstvy symbolů tak, aby se zobrazila hodnota US dolar.
 
 ```javascript
 var layer = new atlas.layer.SymbolLayer(datasource, null, {
@@ -791,11 +791,11 @@ Tato vrstva bude vykreslovat funkci bodu, jak je znázorněno na následujícím
 
 <center>
 
-![Příklad](media/how-to-expressions/number-format-expression.png) výrazu formátu čísla</center>
+![Příklad ](media/how-to-expressions/number-format-expression.png) výrazu formátu čísla</center>
 
 ### <a name="image-expression"></a>Výraz obrázku
 
-Výraz obrázku lze použít s možnostmi `image` a `textField` v rámci vrstvy symbolů a `fillPattern` možností mnohoúhelníkové vrstvy. Tento výraz kontroluje, zda požadovaný obrázek existuje ve stylu a vrátí buď název přeložené bitové kopie, nebo `null`v závislosti na tom, zda je obrázek aktuálně ve stylu. Tento proces ověřování je synchronní a vyžaduje, aby byl obrázek přidán do stylu před vyžádáním v argumentu obrázku.
+Výraz obrázku lze použít s `image` možnostmi a v rámci `textField` vrstvy symbolů a `fillPattern` možností mnohoúhelníkové vrstvy. Tento výraz kontroluje, zda požadovaný obrázek existuje ve stylu a vrátí buď název přeložené bitové kopie, nebo v `null` závislosti na tom, zda je obrázek aktuálně ve stylu. Tento proces ověřování je synchronní a vyžaduje, aby byl obrázek přidán do stylu před vyžádáním v argumentu obrázku.
 
 **Případě**
 
@@ -829,15 +829,15 @@ Tato vrstva vykreslí textové pole v symbolové vrstvě, jak je znázorněno na
 
 <center>
 
-![Příklad](media/how-to-expressions/image-expression.png) výrazu obrázku</center>
+![Příklad ](media/how-to-expressions/image-expression.png) výrazu obrázku</center>
 
 ## <a name="zoom-expression"></a>Výraz lupy
 
-`zoom` Výraz se používá k načtení aktuální úrovně přiblížení mapy v době vykreslování a je definován jako `['zoom']`. Tento výraz vrací číslo mezi minimálním a maximálním rozsahem úrovně přiblížení mapy. Azure Maps interaktivní ovládací prvky mapování pro web a Android podporují 25 úrovní přiblížení s čísly 0 až 24. Použití `zoom` výrazu umožňuje dynamicky upravovat styly při změně úrovně přiblížení mapy. `zoom` Výraz lze použít pouze s `interpolate` výrazy a `step` .
+`zoom`Výraz se používá k načtení aktuální úrovně přiblížení mapy v době vykreslování a je definován jako `['zoom']` . Tento výraz vrací číslo mezi minimálním a maximálním rozsahem úrovně přiblížení mapy. Azure Maps interaktivní ovládací prvky mapování pro web a Android podporují 25 úrovní přiblížení s čísly 0 až 24. Použití `zoom` výrazu umožňuje dynamicky upravovat styly při změně úrovně přiblížení mapy. `zoom`Výraz lze použít pouze s `interpolate` `step` výrazy a.
 
 **Případě**
 
-Ve výchozím nastavení mají poloměry datových bodů vykreslených v vrstvě Heat mapy u všech úrovní přiblížení pevný obraz v pixelech. Jak je mapa zvětšena, agregace dat a vrstva Heat mapy vypadá jinak. `zoom` Výraz lze použít k horizontálnímu škálování poloměru pro každou úroveň přiblížení tak, že každý datový bod pokrývá stejnou fyzickou oblast mapy. Vrstva Heat mapy bude mít víc statických a konzistentních. Každá úroveň přiblížení mapy má dvakrát a vodorovně tolik pixelů jako předchozí úroveň přiblížení. Změna velikosti poloměru, například při zdvojnásobení s každou úrovní přiblížení, vytvoří Heat mapu, která bude vypadat konzistentně na všech úrovních přiblížení. Dá se to provést pomocí `zoom` výrazu s `base 2 exponential interpolation` výrazem, který má nastavené poloměru pixelů pro minimální úroveň přiblížení a poloměr škálování pro maximální úroveň přiblížení, jak `2 * Math.pow(2, minZoom - maxZoom)` je znázorněno níže.
+Ve výchozím nastavení mají poloměry datových bodů vykreslených v vrstvě Heat mapy u všech úrovní přiblížení pevný obraz v pixelech. Jak je mapa zvětšena, agregace dat a vrstva Heat mapy vypadá jinak. `zoom`Výraz lze použít k horizontálnímu škálování poloměru pro každou úroveň přiblížení tak, že každý datový bod pokrývá stejnou fyzickou oblast mapy. Vrstva Heat mapy bude mít víc statických a konzistentních. Každá úroveň přiblížení mapy má dvakrát a vodorovně tolik pixelů jako předchozí úroveň přiblížení. Změna velikosti poloměru, například při zdvojnásobení s každou úrovní přiblížení, vytvoří Heat mapu, která bude vypadat konzistentně na všech úrovních přiblížení. Dá se to provést pomocí `zoom` výrazu s `base 2 exponential interpolation` výrazem, který má nastavené poloměru pixelů pro minimální úroveň přiblížení a poloměr škálování pro maximální úroveň přiblížení, jak je `2 * Math.pow(2, minZoom - maxZoom)` znázorněno níže.
 
 ```javascript 
 var layer = new atlas.layer.HeatMapLayer(datasource, null, {
@@ -861,14 +861,14 @@ var layer = new atlas.layer.HeatMapLayer(datasource, null, {
 
 Výrazy vazeb proměnných ukládají výsledky výpočtu v proměnné. Takže je možné výsledky výpočtů odkazovat jinde ve výrazu vícekrát. Je užitečná optimalizace pro výrazy, které zahrnují mnoho výpočtů.
 
-| Expression | Návratový typ | Popis |
+| Výraz | Návratový typ | Description |
 |--------------|---------------|--------------|
 | \[<br/>&nbsp;&nbsp;&nbsp;&nbsp;let,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název1: řetězec,<br/>&nbsp;&nbsp;&nbsp;&nbsp;Hodnota1: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;název2: řetězec,<br/>&nbsp;&nbsp;&nbsp;&nbsp;hodnota2: Any,<br/>&nbsp;&nbsp;&nbsp;&nbsp;…<br/>&nbsp;&nbsp;&nbsp;&nbsp;childExpression<br/>\] | | Ukládá jednu nebo více hodnot jako proměnné pro použití `var` výrazem v podřízeném výrazu, který vrací výsledek. |
-| `['var', name: string]` | jakýmikoli | Odkazuje na proměnnou, která byla vytvořena pomocí `let` výrazu. |
+| `['var', name: string]` | Libovolný | Odkazuje na proměnnou, která byla vytvořena pomocí `let` výrazu. |
 
 **Případě**
 
-V tomto příkladu se používá výraz, který vypočítá tržby vzhledem k poměru teploty a `case` pak použije výraz k vyhodnocení různých logických operací s touto hodnotou. `let` Výraz se používá k uložení výnosů vzhledem k poměru teploty, aby jej bylo nutné vypočítat pouze jednou. `var` Výraz odkazuje na tuto proměnnou tak často, jak je potřeba, aniž by bylo nutné je přepočítat.
+V tomto příkladu se používá výraz, který vypočítá tržby vzhledem k poměru teploty a pak použije `case` výraz k vyhodnocení různých logických operací s touto hodnotou. `let`Výraz se používá k uložení výnosů vzhledem k poměru teploty, aby jej bylo nutné vypočítat pouze jednou. `var`Výraz odkazuje na tuto proměnnou tak často, jak je potřeba, aniž by bylo nutné je přepočítat.
 
 ```javascript
 var layer = new atlas.layer.BubbleLayer(datasource, null, {
@@ -928,4 +928,4 @@ Přečtěte si další informace o možnostech vrstvy, které podporují výrazy
 > [PolygonLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.polygonlayeroptions?view=azure-iot-typescript-latest)
 
 > [!div class="nextstepaction"] 
-> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest) 
+> [SymbolLayerOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.symbollayeroptions?view=azure-iot-typescript-latest)

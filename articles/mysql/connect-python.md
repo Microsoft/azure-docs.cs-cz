@@ -7,15 +7,16 @@ ms.service: mysql
 ms.custom:
 - mvc
 - seo-python-october2019
+- tracking-python
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
-ms.openlocfilehash: 827a34999cc3f4d90344915a9b57492a0f31bafe
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 5e9729ef2a95a840d0e994c44ecfcf0b61444234
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83870033"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561063"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-with-azure-database-for-mysql"></a>Rychlý Start: použití Pythonu k připojení a dotazování dat pomocí Azure Database for MySQL
 
@@ -58,7 +59,7 @@ Nainstalujte Python a konektor MySQL pro Python do počítače pomocí následuj
 
 Získejte informace o připojení, které potřebujete k připojení k Azure Database for MySQL z Azure Portal. Potřebujete název serveru, název databáze a přihlašovací údaje pro přihlášení.
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
    
 1. Na panelu hledání na portálu vyhledejte a vyberte server Azure Database for MySQL, který jste vytvořili, například **mydemoserver**.
    

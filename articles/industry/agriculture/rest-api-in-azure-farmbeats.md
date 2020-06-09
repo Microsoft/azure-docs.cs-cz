@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
-ms.openlocfilehash: 717a09d8377a7b95fe24300cc65222f307e7419f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c3a70ed905edfcf1dc60e0a12f50aca19060230f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437527"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488031"
 ---
 # <a name="references"></a>Odkazy
 
@@ -33,14 +33,14 @@ Rozhraní API FarmBeats obsahují technickou dokumentaci k Swagger. Informace o 
 
 V následující tabulce najdete souhrn všech objektů a prostředků v FarmBeats DataHub:
 
-| Objekty a prostředky | Popis
+| Objekty a prostředky | Description
 --- | ---|
 Sdílených | Farma odpovídá fyzickému umístění zájmu v rámci systému FarmBeats. Každá farma má název farmy a jedinečné ID farmy. |
 Zařízení  | Zařízení odpovídá fyzickému zařízení, které je ve farmě přítomné. Každé zařízení má jedinečné ID zařízení. Zařízení je obvykle zřízené pro farmu s ID farmy.
 DeviceModel  | DeviceModel odpovídá metadatům zařízení, jako je například výrobce a typ zařízení, který je buď bránou, nebo uzlem.
 Elektrické  | Senzor odpovídá fyzickému senzoru, který zaznamenává hodnoty. Senzor se obvykle připojuje k zařízení s ID zařízení.
 SensorModel  | SensorModel odpovídá metadatům snímače, jako je výrobce, typ snímače, který je buď analogový, nebo digitální, a měření snímače, například okolní teplota a tlak.
-Telemetrie  | Telemetrie nabízí možnost číst zprávy telemetrie pro určitý senzor a časový rozsah.
+Telemetrická data  | Telemetrie nabízí možnost číst zprávy telemetrie pro určitý senzor a časový rozsah.
 Úloha  | Úloha odpovídá jakémukoli pracovnímu postupu aktivit, které jsou spuštěny v systému FarmBeats, aby získala požadovaný výstup. Každá úloha je přidružená k ID úlohy a typu úlohy.
 JobType  | JobType odpovídá různým typům úloh, které systém podporuje. Jsou zahrnuty typy úloh definovaných systémem a uživatelem definovaných typů.
 ExtendedType  | ExtendedType odpovídá seznamu typů systémem a uživatelem definovaných v systému. ExtendedType pomáhá nastavit nový senzor, scén nebo typ souboru scény v systému FarmBeats.
@@ -74,15 +74,15 @@ Tady jsou nejběžnější hlavičky požadavků, které je potřeba zadat při 
 
 **Hlaviček** | **Popis a příklad**
 --- | ---
-Typ obsahu  | Formát požadavku (Content-Type: Application/<format>). Pro rozhraní API Azure FarmBeats DataHub je formát JSON. Content-Type: Application/JSON
+Typ obsahu  | Formát požadavku (Content-Type: Application/ <format> ). Pro rozhraní API Azure FarmBeats DataHub je formát JSON. Content-Type: Application/JSON
 Autorizace  | Určuje přístupový token potřebný k vytvoření volání rozhraní API. Autorizace: nosný <přístup-token>
-Accept | Formát odpovědi. Pro rozhraní API Azure FarmBeats DataHub je formát JSON. Přijmout: Application/JSON
+Přijmout | Formát odpovědi. Pro rozhraní API Azure FarmBeats DataHub je formát JSON. Přijmout: Application/JSON
 
 ### <a name="api-requests"></a>Požadavky rozhraní API
 
 Chcete-li vytvořit žádost o REST API, kombinujete metodu HTTP (GET, POST, PUT nebo DELETE), adresu URL služby API, identifikátor URI k prostředku, který se má dotazovat, odeslat data do, aktualizovat nebo odstranit a pak přidat jednu nebo více hlaviček požadavku HTTP.
 
-Adresa URL služby API je vaše adresa URL DataHub, například https://\<yourdatahub-web-Name>. azurewebsites.NET.
+Adresa URL služby API je vaše adresa URL DataHub, například https:// \<yourdatahub-website-name> . azurewebsites.NET.
 
 Volitelně můžete zahrnout parametry dotazu pro volání funkce GET k filtrování, omezení velikosti a řazení dat v odpovědích.
 
@@ -100,7 +100,7 @@ Následující vzorový požadavek vytvoří zařízení. Tato žádost obsahuje
 curl -X POST "https://microsoft-farmbeats.azurewebsites.net/Device" -H  "accept: application/json" -H  "Content-Type: application/json" -H "Authorization: Bearer <Access-Token>" -d "{  \"deviceModelId\": \"ID123\",  \"hardwareId\": \"MHDN123\",  \"reportingInterval\": 900,  \"name\": \"Device123\",  \"description\": \"Test Device 123\",}"
 ```
 
-### <a name="query-parameters"></a>Parametry dotazu
+### <a name="query-parameters"></a>Parametry dotazů
 
 V případě volání funkce REST můžete filtrovat, omezit velikost a seřadit data v odpovědi rozhraní API zahrnutím jednoho nebo více parametrů dotazu do identifikátoru URI požadavku. Parametry dotazu najdete v dokumentaci k rozhraní API a v jednotlivých voláních GET.
 Například při dotazování na seznam zařízení (získat hovor v/Device) lze zadat následující parametry dotazu:
@@ -111,7 +111,7 @@ Například při dotazování na seznam zařízení (získat hovor v/Device) lze
 
 Rozhraní API služby Azure FarmBeats DataHub vrací standardní chyby protokolu HTTP. Nejběžnější kódy chyb jsou následující:
 
- |Kód chyby             | Popis |
+ |Kód chyby             | Description |
  |---                    | --- |
  |200                    | Úspěch |
  |201                    | Vytvoření (post) úspěšné |
@@ -147,7 +147,7 @@ V tomto příkladu se při vytvoření farmy ve vstupní datové části nezadal
 
 K rozhraním API služby Azure FarmBeats se dá přistup uživatel nebo registrace aplikace v Azure Active Directory. Pokud chcete vytvořit registraci aplikace v Azure Active Directory, postupujte takto:
 
-1. Přejít na [Azure Portal](https://portal.azure.com)a vyberte **Azure Active Directory** > **Registrace aplikací** > **nové registrace**. Případně můžete použít existující účet.
+1. Přejít na [Azure Portal](https://portal.azure.com)a vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **nové registrace**. Případně můžete použít existující účet.
 2. Pro nový účet udělejte toto:
 
     - Zadejte název.
@@ -162,9 +162,18 @@ K rozhraním API služby Azure FarmBeats se dá přistup uživatel nebo registra
     - Vraťte se zpět na **Přehled**a vyberte odkaz vedle **možnosti spravovat aplikaci v místním adresáři**.
     - Přejít na **vlastnosti** a zachytit **ID objektu**.
 
-4. Přejít do DataHub Swagger (https://<yourdatahub>. azurewebsites.NET/Swagger/index.html) a udělejte toto:
+4. Přejít do DataHub Swagger (https:// <yourdatahub> . azurewebsites.NET/Swagger/index.html) a udělejte toto:
     - Přejít na **rozhraní RoleAssignment API**.
     - Proveďte příspěvek pro vytvoření objektu **RoleAssignment** pro **ID objektu** , který jste právě vytvořili.
+ 
+```json
+{
+  "roleDefinitionId": "a400a00b-f67c-42b7-ba9a-f73d8c67e433",
+  "objectId": "objectId from step 3 above",
+  "objectIdType": "ServicePrincipalId",
+  "tenantId": "tenant id of your Azure subscription"
+}
+```
 
   > [!NOTE]
   > Další informace o tom, jak přidat uživatele a registraci služby Active Directory, najdete v tématu [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).

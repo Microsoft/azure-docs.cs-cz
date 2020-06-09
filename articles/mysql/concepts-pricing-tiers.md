@@ -6,18 +6,18 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 02/25/2020
-ms.openlocfilehash: f633c33d0d90715a940129d62cee6472d33d2106
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3af5a716bc5e211a7fd3263f57f5b5e62af628ef
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82100953"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488354"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Azure Database for MySQL cenové úrovně
 
 Server Azure Database for MySQL můžete vytvořit v jedné ze tří různých cenových úrovní: optimalizováno Basic, Pro obecné účely a paměť. Cenové úrovně jsou rozlišené o množství výpočtů v virtuální jádra, které se dá zřídit, paměť na vCore a technologie úložiště, která se používá k ukládání dat. Všechny prostředky jsou zřízené na úrovni serveru MySQL. Server může mít jednu nebo více databází.
 
-|    | **Základní** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+|    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Generování výpočtů | Gen 4, fin. 5 | Gen 4, fin. 5 | Gen 5 |
 | Virtuální jádra | 1, 2 | 2, 4, 8, 16, 32, 64 |2, 4, 8, 16, 32 |
@@ -29,7 +29,7 @@ Pokud chcete zvolit cenovou úroveň, použijte jako výchozí bod následujíc�
 
 | Cenová úroveň | Cílová zátěž |
 |:-------------|:-----------------|
-| Základní | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
+| Basic | Úlohy, které vyžadují lehký výpočetní výkon a vstupně-výstupní výkon. Mezi příklady patří servery používané pro vývoj nebo testování nebo pro nečasto používané aplikace v malých měřítkech. |
 | Pro obecné účely | Většina obchodních úloh, které vyžadují vyvážené výpočetní prostředky a paměť s škálovatelnou vstupně-výstupní propustností. Mezi příklady patří servery pro hostování webových a mobilních aplikací a dalších podnikových aplikací.|
 | Optimalizováno pro paměť | Vysoce výkonné databázové úlohy, které vyžadují výkon v paměti pro rychlejší zpracování transakcí a vyšší souběžnost. Mezi příklady patří servery pro zpracování dat v reálném čase a vysoce výkonné transakční nebo analytické aplikace.|
 
@@ -43,7 +43,7 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 
 Úložiště, které zřizujete, je množství úložné kapacity dostupné pro váš server Azure Database for MySQL. Úložiště se používá pro soubory databáze, dočasné soubory, transakční protokoly a protokoly serveru MySQL. Celková velikost úložiště, kterou zřizujete, také definuje kapacitu v/v k dispozici pro váš server.
 
-|    | **Základní** | **Pro obecné účely** | **Paměťově optimalizovaná** |
+|    | **Basic** | **Pro obecné účely** | **Paměťově optimalizovaná** |
 |:---|:----------|:--------------------|:---------------------|
 | Typ úložiště | Základní úložiště | Pro obecné účely úložiště | Pro obecné účely úložiště |
 | Velikost úložiště | 5 GB až 1 TB | 5 GB až 16 TB | 5 GB až 16 TB |
@@ -51,7 +51,7 @@ Výpočetní prostředky se poskytují jako virtuální jádra, což představuj
 | IOPS | Proměnná |3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS | 3 IOPS/GB<br/>Minimální 100 IOPS<br/>Maximální 20 000 IOPS |
 
 > [!NOTE]
-> Úložiště až 16TB a 20 000 IOPS je podporované v následujících oblastech: Východní USA, Východní USA 2, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jih, Austrálie – jihovýchod.
+> Úložiště až do 16TB a 20 000 IOPS je podporované v následujících oblastech: Východní USA, Východní USA 2, Střed USA, Západní USA, Střed USA – sever, Střed USA – jih, Severní Evropa, Západní Evropa, Velká Británie – jih, Velká Británie – západ, jihovýchodní Asie, Východní Asie, Japonsko – východ, Japonsko – západ, Korea – jih, Austrálie – východ, Austrálie – jihovýchod, Západní USA 2 a Středozápadní USA.
 >
 > Všechny ostatní oblasti podporují až 4 TB úložiště a až 6000 vstupně-výstupních operací.
 >

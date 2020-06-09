@@ -1,5 +1,5 @@
 ---
-title: 'Rychlý Start: vytvoření dovednosti v Azure Portal'
+title: Vytvoření dovednosti v Azure Portal
 titleSuffix: Azure Cognitive Search
 description: V tomto rychlém startu na portálu se naučíte používat Průvodce importem dat k přidání dovedností rozpoznávání do kanálu indexování v Azure Kognitivní hledání. Mezi dovednosti patří optické rozpoznávání znaků (OCR) a zpracování přirozeného jazyka.
 manager: nitinme
@@ -7,35 +7,44 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 12/20/2019
-ms.openlocfilehash: e2e17ba6af60fa495a03e7d46a07cfe6b66f4e68
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: db9e8f71787026abea74fbbfeed51a227a295601
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77472413"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488949"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Rychlý Start: vytvoření služby Azure Kognitivní hledání rozpoznávání dovednosti v Azure Portal
 
-Dovednosti je funkce AI, která extrahuje informace a strukturu z velkých nerozlišených textových nebo obrázkových souborů a zpřístupňuje je pro fulltextové vyhledávací dotazy v Azure Kognitivní hledání. 
+Dovednosti je funkce založená na AI, která extrahuje informace a strukturu z velkých nerozlišených textových nebo obrázkových souborů a zpřístupňuje obsah v Azure Kognitivní hledání. 
 
-V tomto rychlém startu spojíte služby a data v cloudu Azure, abyste mohli vytvořit dovednosti. Jakmile bude vše na svém místě, spustíte průvodce **importem dat** na portálu, aby se všechno načetlo dohromady. Konečným výsledkem je index s možností vyhledávání naplněný daty vytvořeným zpracováním AI, na kterých se můžete dotazovat na portálu ([Průzkumník hledání](search-explorer.md)).
+V tomto rychlém startu spojíte služby a data v cloudu Azure, abyste mohli vytvořit dovednosti. Jakmile bude vše na svém místě, spustíte průvodce **importem dat** v Azure Portal, aby se všechno načetlo dohromady. Konečným výsledkem je index s možností vyhledávání naplněný daty vytvořeným zpracováním AI, na kterých se můžete dotazovat na portálu ([Průzkumník hledání](search-explorer.md)).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="create-services-and-load-data"></a>Vytváření služeb a načítání dat
+Než začnete, musíte mít následující:
 
-Tento rychlý Start používá pro AI Azure Kognitivní hledání, Azure [BLOB Storage](https://docs.microsoft.com/azure/storage/blobs/)a [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) . 
++ Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
 
-Vzhledem k tomu, že je zatížení tak malé, Cognitive Services po pozadí klepněte na pozadí, aby bylo možné zajistit bezplatné zpracování až pro 20 transakcí. Pro takovou malou datovou sadu můžete přeskočit vytvoření nebo připojení prostředku Cognitive Services.
++ Služba Azure Kognitivní hledání. [Vytvořte službu](search-create-service-portal.md) nebo [vyhledejte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
+
++ Účet Azure Storage s [úložištěm objektů BLOB](https://docs.microsoft.com/azure/storage/blobs/).
+
+> [!NOTE]
+> V tomto rychlém startu se také pro AI používá [Azure Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) . Vzhledem k tomu, že úloha je tak malá, Cognitive Services po dobu bezplatného zpracování po dobu až 20 transakcí klepnuli na pozadí. To znamená, že můžete dokončit toto cvičení, aniž byste museli vytvořit další prostředek Cognitive Services.
+
+## <a name="set-up-your-data"></a>Nastavení dat
+
+V následujících krocích nastavte kontejner objektů BLOB v Azure Storage, aby se ukládaly heterogenní soubory obsahu.
 
 1. [Stáhněte si ukázková data](https://1drv.ms/f/s!As7Oy81M_gVPa-LCb5lC_3hbS-4) sestávající z malé sady souborů různých typů. Soubory rozbalte.
 
 1. [Vytvořte si účet Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal) nebo [Najděte existující účet](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/). 
 
-   Vyberte stejnou oblast jako Azure Kognitivní hledání, abyste se vyhnuli poplatkům za šířku pásma. 
-   
-   Vyberte typ účtu StorageV2 (pro obecné účely v2), pokud chcete vyzkoušet funkci Knowledge Store později v jiném návodu. V opačném případě vyberte libovolný typ.
+   + Vyberte stejnou oblast jako Azure Kognitivní hledání, abyste se vyhnuli poplatkům za šířku pásma. 
+
+   + Vyberte typ účtu StorageV2 (pro obecné účely v2), pokud chcete vyzkoušet funkci Knowledge Store později v jiném návodu. V opačném případě vyberte libovolný typ.
 
 1. Otevřete stránky služby BLOB Services a vytvořte kontejner. Můžete použít výchozí úroveň veřejného přístupu. 
 
@@ -43,15 +52,15 @@ Vzhledem k tomu, že je zatížení tak malé, Cognitive Services po pozadí kle
 
    ![Zdrojové soubory ve službě Azure Blob Storage](./media/cognitive-search-quickstart-blob/sample-data.png)
 
-1. [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). Pro tento rychlý Start můžete použít bezplatnou službu.
-
 Nyní jste připraveni na přesun Průvodce importem dat.
 
 ## <a name="run-the-import-data-wizard"></a>Spuštění Průvodce importem dat
 
-Na stránce Přehled služby Search klikněte na panelu příkazů na **importovat data** a nastavte obohacení vnímání ve čtyřech krocích.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Azure.
 
-  ![Příkaz pro import dat](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
+1. [Vyhledejte vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a na stránce Přehled klikněte na tlačítko **importovat data** na panelu příkazů a nastavte obohacení vnímání ve čtyřech krocích.
+
+   ![Příkaz pro import dat](media/cognitive-search-quickstart-blob/import-data-cmd2.png)
 
 ### <a name="step-1---create-a-data-source"></a>Krok 1 – Vytvoření zdroje dat
 
@@ -87,7 +96,7 @@ Index obsahuje obsah, který se dá prohledávat, a průvodce **importem dat** v
 
 Pro tento rychlý start průvodce odvedl dobrou práci při nastavování rozumných výchozích hodnot:  
 
-+ Výchozí pole jsou založena na vlastnostech existujících objektů BLOB a nových polích, která obsahují výstup obohacení (například `people` `organizations`,, `locations`). Datové typy jsou odvozeny z metadat a vzorkování dat.
++ Výchozí pole jsou založena na vlastnostech existujících objektů BLOB a nových polích, která obsahují výstup obohacení (například, `people` , `organizations` `locations` ). Datové typy jsou odvozeny z metadat a vzorkování dat.
 
 + Výchozí klíč dokumentu je *metadata_storage_path* (vybráno, protože pole obsahuje jedinečné hodnoty).
 
@@ -95,11 +104,11 @@ Pro tento rychlý start průvodce odvedl dobrou práci při nastavování rozumn
 
   ![Pole indexu](media/cognitive-search-quickstart-blob/index-fields.png)
 
-Všimněte si přeškrtnutí a otazníku **u atributu získat** pomocí `content` pole. Pro dokumenty objektů BLOB s velkým textem obsahuje `content` pole hromadně soubor, který je potenciálně spuštěný v tisících řádků. Toto pole je nepraktický ve výsledcích hledání a mělo by se pro tuto ukázku vyloučit. 
+Všimněte si přeškrtnutí a otazníku **u atributu získat** pomocí `content` pole. Pro dokumenty objektů BLOB s velkým textem `content` obsahuje pole hromadně soubor, který je potenciálně spuštěný v tisících řádků. Toto pole je nepraktický ve výsledcích hledání a mělo by se pro tuto ukázku vyloučit. 
 
-Pokud však potřebujete předat obsah souboru do klientského kódu, **Ujistěte se,** že je vybrána možnost získatelné zůstává. V opačném případě zvažte zrušení zaškrtnutí `content` tohoto atributu, pokud jsou extrahované `people`elementy `organizations`( `locations`například,, a tak dále) dostatečné.
+Pokud však potřebujete předat obsah souboru do klientského kódu, **Ujistěte se,** že je vybrána možnost získatelné zůstává. V opačném případě zvažte zrušení zaškrtnutí tohoto atributu, `content` Pokud jsou extrahované elementy (například `people` ,, `organizations` `locations` a tak dále) dostatečné.
 
-Označení **pole jako k dispozici neznamená,** že pole *musí* být ve výsledcích hledání. Složení výsledků hledání můžete přesně řídit pomocí parametru **$Select** dotazu k určení, která pole se mají zahrnout. U textových polí, jako `content`je například parametr **$Select** vaše řešení pro zajištění spravovatelných výsledků hledání pro lidské uživatele vaší aplikace, zatímco kód klienta má přístup ke všem informacím, které potřebuje, prostřednictvím atributu získat. **Retrievable**
+Označení **pole jako k dispozici neznamená,** že pole *musí* být ve výsledcích hledání. Složení výsledků hledání můžete přesně řídit pomocí parametru **$Select** dotazu k určení, která pole se mají zahrnout. U textových polí, jako je `content` například parametr **$Select** vaše řešení pro zajištění spravovatelných výsledků hledání pro lidské uživatele vaší aplikace, zatímco kód klienta má přístup ke všem informacím, které potřebuje, prostřednictvím atributu získat. **Retrievable**
   
 Pokračujte na další stránku.
 
@@ -119,7 +128,7 @@ Pro rozpoznávání dovedností se indexování trvá déle než typické indexo
 
   ![Oznámení služby Azure Kognitivní hledání](./media/cognitive-search-quickstart-blob/indexer-notification.png)
 
-Upozornění jsou normální vzhledem k široké škále typů obsahu. Některé typy obsahu nejsou platné pro určité dovednosti a na nižších úrovních, na kterých se běžně setkáte s [omezeními pro indexer](search-limits-quotas-capacity.md#indexer-limits). Například oznámení o zkracování 32 000 znaků jsou omezením indexeru na úrovni Free. Pokud jste tuto ukázku spustili na vyšší úrovni, mnoho upozornění na zkracování by se nezobrazovalo.
+Upozornění jsou normální vzhledem k široké škále typů obsahu. Některé typy obsahu nejsou platné pro určité dovednosti a na nižších úrovních je běžné, že mají [omezení indexerů](search-limits-quotas-capacity.md#indexer-limits). Například oznámení o zkracování 32 000 znaků jsou omezením indexeru na úrovni Free. Pokud jste tuto ukázku spustili na vyšší úrovni, mnoho upozornění na zkracování by se nezobrazovalo.
 
 Chcete-li kontrolovat upozornění nebo chyby, otevřete stránku historie spouštění kliknutím na stav upozornění v seznamu indexery.
 
@@ -139,7 +148,7 @@ Po vytvoření indexu můžete spustit dotazy a vracet výsledky. Na portálu po
 
 1. V horní části vyberte **Změnit index**, abyste mohli vybrat index, který jste vytvořili.
 
-1. Zadejte hledaný řetězec pro dotazování indexu, například `search=Microsoft&$select=people,organizations,locations,imageTags`.
+1. Zadejte hledaný řetězec pro dotazování indexu, například `search=Microsoft&$select=people,organizations,locations,imageTags` .
 
 Výsledky jsou vraceny jako JSON, které mohou být podrobné a těžko čitelný, zejména ve velkých dokumentech pocházejících z objektů blob Azure. Několik tipů pro hledání v tomto nástroji zahrnuje následující postupy:
 

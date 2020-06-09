@@ -5,13 +5,13 @@ services: automation
 ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
-ms.custom: has-adal-ref
-ms.openlocfilehash: 4e3edc9819fc3a282cc707db636c8bb213b13776
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.custom: has-adal-ref, tracking-python
+ms.openlocfilehash: 1203feaf6b400e91e6ab5381df0af245db0a2973
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83714470"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559564"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Kurz: vytvoření Runbooku v Pythonu
 
@@ -244,9 +244,9 @@ except Exception as detail:
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vytvoření runbooku v PowerShellu](automation-tutorial-runbook-textual-powershell.md)
-- [Vytvoření grafického Runbooku](automation-tutorial-runbook-graphical.md)
-- [Vytvoření runbooku pracovního postupu v PowerShellu](automation-tutorial-runbook-textual.md)
-- [Azure Automation typy runbooků](../automation-runbook-types.md)
-- [Azure pro vývojáře v Pythonu](/azure/python/)
-- [Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python)
+- Pokud chcete začít pracovat s Runbooky PowerShellu, přečtěte si téma [Vytvoření Runbooku PowerShellu](automation-tutorial-runbook-textual-powershell.md).
+- Chcete-li začít s grafickými Runbooky, přečtěte si téma [Vytvoření grafického Runbooku](automation-tutorial-runbook-graphical.md).
+- Informace o tom, jak začít s Runbooky pracovních postupů PowerShellu, najdete v tématu [Vytvoření Runbooku pracovního postupu PowerShellu](automation-tutorial-runbook-textual.md).
+- Další informace o typech runbooků, jejich výhodách a omezeních najdete v tématu [Azure Automation typy runbooků](../automation-runbook-types.md).
+- Další informace o vývoji pro Azure pomocí Pythonu najdete v tématu [Azure pro vývojáře v Pythonu](/azure/python/).
+- Pokud chcete zobrazit ukázkové sady Runbook Python 2, přečtěte si téma [Azure Automation GitHub](https://github.com/azureautomation/runbooks/tree/master/Utility/Python).

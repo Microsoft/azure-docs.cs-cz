@@ -9,12 +9,13 @@ ms.reviewer: jasonwhowell
 ms.assetid: c1c74e5e-3e4a-41ab-9e3f-e9085da1d315
 ms.topic: conceptual
 ms.date: 06/20/2017
-ms.openlocfilehash: 0a49cbdb4caf474d0628fea3679ce712d37886e7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: d047fd62e897163bf4ab6bf7e085462b136bf8fe
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "60813400"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553328"
 ---
 # <a name="extend-u-sql-scripts-with-python-code-in-azure-data-lake-analytics"></a>Rozšiřování skriptů U-SQL pomocí kódu Pythonu v Azure Data Lake Analytics
 
@@ -32,7 +33,7 @@ Rozšíření Pythonu pro jazyk U-SQL umožňují vývojářům provádět výko
 
 * Použití `REFERENCE ASSEMBLY` příkazu pro povolení rozšíření Pythonu pro skript U-SQL
 * Použití `REDUCE` operace k rozdělení vstupních dat na klíč
-* Rozšíření Pythonu pro jazyk U-SQL zahrnují vestavěný snižovalo (`Extension.Python.Reducer`), který spouští kód Pythonu na každém vrcholu přiřazeném k tomuto nástroji.
+* Rozšíření Pythonu pro jazyk U-SQL zahrnují vestavěný snižovalo ( `Extension.Python.Reducer` ), který spouští kód Pythonu na každém vrcholu přiřazeném k tomuto nástroji.
 * Skript U-SQL obsahuje vložený kód Pythonu, který obsahuje funkci s názvem `usqlml_main` , která přijímá jako vstup PANDAS dataframe a jako výstup vrátí PANDAS dataframe.
 
 --
@@ -100,7 +101,7 @@ V současné době se v kódu Pythonu zobrazuje výjimka jako obecná chyba vrch
 ### <a name="input-and-output-size-limitations"></a>Omezení velikosti vstupu a výstupu
 Ke každému vrcholu je přiřazena omezená velikost paměti. V současné době je tento limit 6 GB pro AU. Vzhledem k tomu, že vstupní a výstupní datový rámec musí existovat v paměti v kódu Pythonu, celková velikost vstupu a výstupu nemůže být větší než 6 GB.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 * [Přehled služby Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
 * [Vývoj skriptů U-SQL pomocí nástrojů Data Lake pro Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 * [Použití funkcí okna U-SQL pro úlohy Azure Data Lake Analytics](data-lake-analytics-use-window-functions.md)

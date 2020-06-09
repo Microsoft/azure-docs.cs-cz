@@ -1,5 +1,5 @@
 ---
-title: Co je Azure static Web Apps?
+title: Co je služba Azure Static Web Apps?
 description: Klíčové funkce a funkce služby Azure static Web Apps.
 services: static-web-apps
 author: craigshoemaker
@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: overview
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: d416044599535e8acd363d09099e8667bba59a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 476b81fc9aceae3f05ed54e7b2b11be381121bd8
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83599965"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488915"
 ---
 # <a name="what-is-azure-static-web-apps-preview"></a>Co je Azure static Web Apps Preview?
 
@@ -30,7 +30,7 @@ Statické Web Apps jsou statické prostředky oddělené od tradičního webové
 
 ## <a name="key-features"></a>Klíčové funkce
 
-- **Bezplatné webové hostování** pro statický obsah, jako jsou HTML, CSS, JavaScript a obrázky.
+- **Webové hostování** pro statický obsah, jako jsou HTML, CSS, JavaScript a obrázky.
 - **Integrovaná podpora rozhraní API** poskytovaná Azure Functions.
 - **Integrace GitHubu první strany** , kde změny úložiště spustí sestavení a nasazení.
 - **Globálně distribuovaný** statický obsah, který zapisuje obsah blíž k uživatelům.

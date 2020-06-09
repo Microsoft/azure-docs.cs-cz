@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/11/2020
+ms.date: 06/08/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: c4d14c21174f9631a1ad72489d4c0bafe013572c
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 143820eb3c58d2aaac4d4176c4456fca676a0e45
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681350"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554102"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -81,7 +81,7 @@ Azure Storage nabízí dvě možnosti pro kopírování dat do sekundární obla
 - **Geograficky redundantní úložiště (GRS)** kopíruje data synchronně třikrát v jednom fyzickém umístění v primární oblasti pomocí LRS. Pak data kopíruje asynchronně do jednoho fyzického umístění v sekundární oblasti.
 - **Geograficky redundantní úložiště (GZRS)** kopíruje data synchronně v rámci tří zón dostupnosti Azure v primární oblasti pomocí ZRS. Pak data kopíruje asynchronně do jednoho fyzického umístění v sekundární oblasti.
 
-Hlavním rozdílem mezi GRS a GZRS je způsob, jakým se data replikují v primární oblasti. V rámci sekundárního umístění jsou data vždy replikována třikrát třikrát pomocí LRS.
+Hlavním rozdílem mezi GRS a GZRS je způsob, jakým se data replikují v primární oblasti. V rámci sekundárního umístění jsou data vždy replikována třikrát třikrát pomocí LRS. LRS v sekundární oblasti chrání vaše data proti selhání hardwaru.
 
 Pomocí GRS nebo GZRS nejsou data v sekundárním umístění k dispozici pro přístup pro čtení nebo zápis, pokud nedojde k převzetí služeb při selhání sekundární oblastí. Pro přístup pro čtení k sekundárnímu umístění nakonfigurujte účet úložiště tak, aby používal geograficky redundantní úložiště s přístupem pro čtení (RA-GRS) nebo geograficky redundantní úložiště s přístupem pro čtení (RA-GZRS). Další informace najdete v tématu [přístup pro čtení k datům v sekundární oblasti](#read-access-to-data-in-the-secondary-region).
 
@@ -184,7 +184,7 @@ Informace o cenách pro jednotlivé možnosti redundance najdete v tématu [Azur
 
 Azure Storage pravidelně ověřuje integritu dat uložených pomocí redundantních kontrol redundance (CRCs). Pokud je zjištěno poškození dat, je opraveno pomocí redundantních dat. Azure Storage taky vypočítává kontrolní součty pro veškerý síťový provoz, aby se zjistilo poškození datových paketů při ukládání nebo načítání dat.
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 - [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)
 - [Změna možnosti redundance pro účet úložiště](redundancy-migration.md)

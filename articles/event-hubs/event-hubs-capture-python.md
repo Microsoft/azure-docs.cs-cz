@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
-ms.custom: seodec18
+ms.custom: seodec18, tracking-python
 ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: 6c830cf871c2ae650bb61e8b3712a664e9e405d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c726b0d11759d30730046e635c701cf23d130dfc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77187292"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561572"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Rychlý Start: návod Event Hubsho zachycení: Python (Azure-eventhub verze 1)
 
@@ -80,7 +80,7 @@ Tento skript pošle do centra událostí 200 událostí. Události jsou jednoduc
 
 1. Otevřete oblíbený editor Pythonu, například [Visual Studio Code][Visual Studio Code].
 2. Vytvořte nový soubor s názvem *sender.py*. 
-3. Vložte následující kód do *sender.py*. Použijte vlastní hodnoty pro obor názvů Event Hubs \<>, \<AccessKeyName>, \<hodnotu primárního klíče> a \<> eventhub.
+3. Vložte následující kód do *sender.py*. Nahraďte vlastní hodnoty pro Event Hubs \<namespace> , \<AccessKeyName> , \<primary key value> a \<eventhub> .
    
    ```python
    import uuid
@@ -108,7 +108,7 @@ Tento skript pošle do centra událostí 200 událostí. Události jsou jednoduc
 Tento skript přečte zachycené soubory a vytvoří pro každé ze svých zařízení soubor pro zápis dat pouze pro toto zařízení.
 
 1. V editoru Pythonu vytvořte nový soubor s názvem *capturereader.py*. 
-2. Vložte následující kód do *capturereader.py*. Dosaďte uložené hodnoty pro \<storageaccount>, \<přístupový klíč účtu úložiště> a \<> storagecontainer.
+2. Vložte následující kód do *capturereader.py*. Své uložené hodnoty nahraďte \<storageaccount> , \<storage account access key> a \<storagecontainer> .
    
    ```python
    import os
@@ -164,7 +164,7 @@ Tento skript přečte zachycené soubory a vytvoří pro každé ze svých zař�
    pip install avro-python3
    ```
    
-   Pokud máte starší verzi `azure-storage` nebo `azure`, možná budete muset použít `--upgrade` možnost.
+   Pokud máte starší verzi `azure-storage` nebo `azure` , možná budete muset použít `--upgrade` možnost.
    
    Možná budete muset spustit i následující příkaz. Spuštění tohoto příkazu není pro většinu systémů nutné. 
    

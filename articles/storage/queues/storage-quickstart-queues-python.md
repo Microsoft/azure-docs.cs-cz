@@ -7,12 +7,13 @@ ms.date: 12/10/2019
 ms.service: storage
 ms.subservice: queues
 ms.topic: quickstart
-ms.openlocfilehash: d6ccd3cc61f9d8244874823be76496a4f4e1073c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 0ab8cb56b29460911f2cfe8b711a07329ee739d6
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78199763"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553183"
 ---
 # <a name="quickstart-azure-queue-storage-client-library-v12-for-python"></a>Rychlý Start: Klientská knihovna Azure Queue Storage V12 pro Python
 
@@ -28,7 +29,7 @@ Použijte klientskou knihovnu Azure Queue Storage V12 pro Python:
 * Odstranění zpráv z fronty
 * Odstranění fronty
 
-[API reference documentation](https://docs.microsoft.com/python/api/azure-storage-queue/index) | [Library source code](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)[Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples) knihovny | dokumentace k referenční dokumentaci rozhraní API[(index balíčku Python)](https://pypi.org/project/azure-storage-queue/) | 
+[Referenční dokumentace k](https://docs.microsoft.com/python/api/azure-storage-queue/index)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-queue)  |  [Balíček (index balíčku Pythonu)](https://pypi.org/project/azure-storage-queue/)  |  [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-python?toc=%2fazure%2fstorage%2fqueues%2ftoc.json#queue-samples)
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -58,7 +59,7 @@ Vytvoření aplikace v Pythonu s názvem *Queues-Start-V12*.
 
 ### <a name="install-the-package"></a>Instalace balíčku
 
-Pomocí `pip install` příkazu nainstalujte klientskou knihovnu pro Azure Blob Storage pro balíček python.
+Pomocí příkazu nainstalujte klientskou knihovnu pro Azure Blob Storage pro balíček python `pip install` .
 
 ```console
 pip install azure-storage-queue
@@ -106,8 +107,8 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 Pro interakci s těmito prostředky použijte následující třídy Pythonu:
 
 * [QueueServiceClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueserviceclient): `QueueServiceClient` umožňuje spravovat všechny fronty v účtu úložiště.
-* [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
-* [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` třída představuje jednotlivé objekty vracené při volání [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) ve frontě.
+* [QueueClient](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient): `QueueClient` Třída umožňuje spravovat a manipulovat s jednotlivou frontou a jejími zprávami.
+* [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage): `QueueMessage` Třída představuje jednotlivé objekty vracené při volání [receive_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#receive-messages---kwargs-) ve frontě.
 
 ## <a name="code-examples"></a>Příklady kódu
 
@@ -165,7 +166,7 @@ Přidejte tento kód na konec `try` bloku:
 
 ### <a name="add-messages-to-a-queue"></a>Přidání zpráv do fronty
 
-Následující fragment kódu přidá zprávy do fronty voláním metody [send_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) . Také uloží [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage) vrácenou z třetího `send_message` volání. `saved_message` Používá se k aktualizaci obsahu zprávy později v programu.
+Následující fragment kódu přidá zprávy do fronty voláním metody [send_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#send-message-content----kwargs-) . Také uloží [QueueMessage](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queuemessage) vrácenou z třetího `send_message` volání. `saved_message`Používá se k aktualizaci obsahu zprávy později v programu.
 
 Přidejte tento kód na konec `try` bloku:
 
@@ -180,7 +181,7 @@ Přidejte tento kód na konec `try` bloku:
 
 ### <a name="peek-at-messages-in-a-queue"></a>Prohlížet zprávy ve frontě
 
-Podívejte se na zprávy ve frontě tak, že zavoláte metodu [peek_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) . `peek_messages` Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
+Podívejte se na zprávy ve frontě tak, že zavoláte metodu [peek_messages](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#peek-messages-max-messages-none----kwargs-) . `peek_messages`Metoda načítá jednu nebo více zpráv před frontou, ale nemění viditelnost zprávy.
 
 Přidejte tento kód na konec `try` bloku:
 
@@ -197,7 +198,7 @@ Přidejte tento kód na konec `try` bloku:
 
 ### <a name="update-a-message-in-a-queue"></a>Aktualizace zprávy ve frontě
 
-Aktualizujte obsah zprávy voláním metody [update_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) . `update_message` Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Společně s novým obsahem předejte hodnoty z zprávy, která byla uložena dříve v kódu. `saved_message` Hodnoty identifikují, která zpráva se má aktualizovat.
+Aktualizujte obsah zprávy voláním metody [update_message](https://docs.microsoft.com/python/api/azure-storage-queue/azure.storage.queue.queueclient#update-message-message--pop-receipt-none--content-none----kwargs-) . `update_message`Metoda může změnit časový limit viditelnosti zprávy a její obsah. Obsah zprávy musí být řetězec kódovaný v kódování UTF-8, který má velikost až 64 KB. Společně s novým obsahem předejte hodnoty z zprávy, která byla uložena dříve v kódu. `saved_message`Hodnoty identifikují, která zpráva se má aktualizovat.
 
 ```python
     print("\nUpdating the third message in the queue...")
@@ -262,7 +263,7 @@ Přidejte tento kód na konec `try` bloku a uložte soubor:
 
 Tato aplikace vytvoří a přidá tři zprávy do fronty Azure. Kód vypíše zprávy ve frontě a pak je načte a odstraní před tím, než se nakonec odstraní fronta.
 
-V okně konzoly přejděte do adresáře obsahujícího soubor *Queues-Quickstart-V12.py* a spuštěním následujícího `python` příkazu spusťte aplikaci.
+V okně konzoly přejděte do adresáře obsahujícího soubor *Queues-Quickstart-V12.py* a `python` spuštěním následujícího příkazu spusťte aplikaci.
 
 ```console
 python queues-quickstart-v12.py

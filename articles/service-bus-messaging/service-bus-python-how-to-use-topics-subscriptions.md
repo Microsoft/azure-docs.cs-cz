@@ -13,12 +13,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 4745d675086f1b07bf7fccf17c14c76e4b18fba2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: ed2bf757762beafda3d4b2958438672c03d8d234
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80478069"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560046"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Rychlý Start: použití témat Service Bus a předplatných v Pythonu
 
@@ -45,7 +46,7 @@ Objekt **ServiceBusService** vám umožní pracovat s tématy a odběry v témat
 from azure.servicebus.control_client import ServiceBusService, Message, Topic, Rule, DEFAULT_RULE_NAME
 ```
 
-Přidejte následující kód pro vytvoření objektu **ServiceBusService** . `<namespace>`Nahraďte `<sharedaccesskeyname>`, a `<sharedaccesskeyvalue>` názvem oboru názvů Service Bus, názvem klíče sdíleného přístupového podpisu (SAS) a hodnotou primárního klíče. Tyto hodnoty najdete v části **zásady sdíleného přístupu** v oboru názvů Service Bus v [Azure Portal][Azure portal].
+Přidejte následující kód pro vytvoření objektu **ServiceBusService** . Nahraďte `<namespace>` , `<sharedaccesskeyname>` a `<sharedaccesskeyvalue>` názvem oboru názvů Service Bus, názvem klíče sdíleného přístupového podpisu (SAS) a hodnotou primárního klíče. Tyto hodnoty najdete v části **zásady sdíleného přístupu** v oboru názvů Service Bus v [Azure Portal][Azure portal].
 
 ```python
 bus_service = ServiceBusService(
@@ -56,7 +57,7 @@ bus_service = ServiceBusService(
 
 ## <a name="create-a-topic"></a>Vytvoření tématu
 
-Následující kód používá `create_topic` metodu k vytvoření Service Busho tématu s názvem `mytopic`s výchozími nastaveními:
+Následující kód používá `create_topic` metodu k vytvoření Service Busho tématu `mytopic` s názvem s výchozími nastaveními:
 
 ```python
 bus_service.create_topic('mytopic')
@@ -88,7 +89,7 @@ Nejpružnější typ filtru je **SqlFilter**, který používá podmnožinu SQL-
 
 Vzhledem k tomu, že výchozí filtr **MatchAll** se automaticky aplikuje na všechna nová předplatná, musíte ho odebrat z předplatných, která chcete filtrovat, nebo bude **MatchAll** přepsat všechny ostatní filtry, které zadáte. Výchozí pravidlo můžete odebrat pomocí `delete_rule` metody objektu **ServiceBusService** .
 
-Následující příklad vytvoří odběr `mytopic` s názvem `HighMessages`s pravidlem **SqlFilter** s názvem. `HighMessageFilter` `HighMessageFilter` Pravidlo vybere pouze zprávy s vlastní `messageposition` vlastností větší než 3:
+Následující příklad vytvoří odběr s `mytopic` názvem `HighMessages` s pravidlem **SqlFilter** s názvem `HighMessageFilter` . `HighMessageFilter`Pravidlo vybere pouze zprávy s vlastní `messageposition` vlastností větší než 3:
 
 ```python
 bus_service.create_subscription('mytopic', 'HighMessages')
@@ -101,7 +102,7 @@ bus_service.create_rule('mytopic', 'HighMessages', 'HighMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'HighMessages', DEFAULT_RULE_NAME)
 ```
 
-Následující příklad vytvoří odběr `mytopic` s názvem `LowMessages`s pravidlem **SqlFilter** s názvem. `LowMessageFilter` `LowMessageFilter` Pravidlo vybere pouze zprávy s `messageposition` vlastností menší nebo rovnou 3:
+Následující příklad vytvoří odběr s `mytopic` názvem `LowMessages` s pravidlem **SqlFilter** s názvem `LowMessageFilter` . `LowMessageFilter`Pravidlo vybere pouze zprávy s `messageposition` vlastností menší nebo rovnou 3:
 
 ```python
 bus_service.create_subscription('mytopic', 'LowMessages')
@@ -114,7 +115,7 @@ bus_service.create_rule('mytopic', 'LowMessages', 'LowMessageFilter', rule)
 bus_service.delete_rule('mytopic', 'LowMessages', DEFAULT_RULE_NAME)
 ```
 
-V `AllMessages`důsledku `HighMessages`platí, `LowMessages` že zprávy odesílané do `mytopic` jsou vždy doručovány příjemcům `AllMessages` předplatného. Zprávy jsou také selektivně doručovány do předplatného `HighMessages` nebo `LowMessages` v závislosti na hodnotě `messageposition` vlastnosti zprávy. 
+`AllMessages` `HighMessages` `LowMessages` V důsledku platí, že zprávy odesílané do `mytopic` jsou vždy doručovány příjemcům `AllMessages` předplatného. Zprávy jsou také selektivně doručovány do `HighMessages` `LowMessages` předplatného nebo v závislosti na `messageposition` hodnotě vlastnosti zprávy. 
 
 ## <a name="send-messages-to-a-topic"></a>Odeslání zprávy do tématu
 
@@ -144,11 +145,11 @@ msg = bus_service.receive_subscription_message('mytopic', 'LowMessages', peek_lo
 print(msg.body)
 ```
 
-Volitelný `peek_lock` parametr `receive_subscription_message` určuje, zda Service Bus odstraní zprávy z odběru při jejich čtení. Výchozí režim pro přijímání zpráv je *PeekLock*nebo `peek_lock` nastaven na **hodnotu true**, která čte (prohlédne) a uzamkne zprávy bez jejich odstranění z předplatného. Každá zpráva musí být pak explicitně dokončena, aby ji bylo možné odebrat z předplatného.
+Volitelný `peek_lock` parametr `receive_subscription_message` Určuje, zda Service Bus odstraní zprávy z odběru při jejich čtení. Výchozí režim pro přijímání zpráv je *PeekLock*nebo `peek_lock` nastaven na **hodnotu true**, která čte (prohlédne) a uzamkne zprávy bez jejich odstranění z předplatného. Každá zpráva musí být pak explicitně dokončena, aby ji bylo možné odebrat z předplatného.
 
 Pokud chcete odstranit zprávy z odběru při jejich čtení, můžete nastavit `peek_lock` parametr na **false**, jako v předchozím příkladu. Odstraňování zpráv v rámci operace Receive je nejjednodušší model a funguje správně, pokud aplikace může tolerovat chybějící zprávy, pokud dojde k selhání. Pro pochopení tohoto chování Vezměte v úvahu scénář, ve kterém aplikace vystavuje žádost o přijetí, a poté dojde k chybě před jejím zpracováním. Pokud se zpráva odstranila při obdržení, když se aplikace znovu spustí a začne znovu přijímat zprávy, vynechala zprávu přijatou před selháním.
 
-Pokud vaše aplikace nemůže tolerovat zmeškané zprávy, obdrží se příjem operace se dvěma fázemi. PeekLock najde další zprávu, která se má spotřebovat, zamkne ji, aby zabránila ostatním příjemcům v přijetí a vrátila ji do aplikace. Po zpracování nebo uložení zprávy aplikace dokončí druhou fázi procesu příjmu voláním `complete` metody objektu **Message** .  `complete` Metoda označí zprávu jako spotřebou a odebere ji z předplatného.
+Pokud vaše aplikace nemůže tolerovat zmeškané zprávy, obdrží se příjem operace se dvěma fázemi. PeekLock najde další zprávu, která se má spotřebovat, zamkne ji, aby zabránila ostatním příjemcům v přijetí a vrátila ji do aplikace. Po zpracování nebo uložení zprávy aplikace dokončí druhou fázi procesu příjmu voláním `complete` metody objektu **Message** .  `complete`Metoda označí zprávu jako spotřebou a odebere ji z předplatného.
 
 Následující příklad ukazuje scénář pro náhled zámku:
 
@@ -169,7 +170,7 @@ Pokud dojde k chybě aplikace po zpracování zprávy, ale před voláním `comp
 
 ## <a name="delete-topics-and-subscriptions"></a>Odstranění témat a odběrů
 
-Chcete-li odstranit témata a odběry [Azure portal][Azure portal] , použijte Azure Portal `delete_topic` nebo metodu. Následující kód odstraní téma s názvem `mytopic`:
+Chcete-li odstranit témata a odběry, použijte [Azure Portal][Azure portal] nebo `delete_topic` metodu. Následující kód odstraní téma s názvem `mytopic` :
 
 ```python
 bus_service.delete_topic('mytopic')

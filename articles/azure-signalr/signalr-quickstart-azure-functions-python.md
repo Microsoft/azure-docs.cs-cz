@@ -7,12 +7,13 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 12/14/2019
 ms.author: antchu
-ms.openlocfilehash: 0cf8705cf2567a60129681c2db41b0868f8fe182
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 4078edcadf3985e3b4dd392f726ca2e8d171b8b1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75392155"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559067"
 ---
 # <a name="quickstart-create-a-chat-room-with-azure-functions-and-signalr-service-using-python"></a>Rychlý Start: vytvoření chatovací místnosti pomocí Azure Functions a služby signalizace pomocí Pythonu
 
@@ -52,7 +53,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 1. V editoru kódu otevřete složku *Src/chat/Python* v klonovaném úložišti.
 
-1. Aby bylo možné místně vyvíjet a testovat funkce Pythonu, je nutné pracovat v prostředí Python 3,6 nebo 3,7. Spuštěním následujících příkazů vytvořte a aktivujte virtuální prostředí s názvem `.venv`.
+1. Aby bylo možné místně vyvíjet a testovat funkce Pythonu, je nutné pracovat v prostředí Python 3,6 nebo 3,7. Spuštěním následujících příkazů vytvořte a aktivujte virtuální prostředí s názvem `.venv` .
 
     **Linux nebo macOS:**
 
@@ -72,7 +73,7 @@ Přihlaste se k webu Azure Portal na adrese <https://portal.azure.com/> pomocí 
 
 1. V souboru **local.settings.json** vložte připojovací řetězec do hodnoty nastavení **AzureSignalRConnectionString**. Uložte soubor.
 
-1. Funkce Pythonu jsou uspořádány do složek. V každé složce jsou dva soubory: *Function. JSON* definuje vazby používané ve funkci a * \_ \_init\_\_. py* je tělo funkce. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
+1. Funkce Pythonu jsou uspořádány do složek. V každé složce jsou dva soubory: *Function. JSON* definuje vazby používané ve funkci a * \_ \_ init \_ \_ . py* je tělo funkce. Tato aplikace funkcí zahrnuje dvě funkce aktivované protokolem HTTP:
 
     - **negotiate** – používá vstupní vazbu *SignalRConnectionInfo* ke generování a vracení informací o platném připojení.
     - **messages** – přijímá zprávy chatu v textu požadavku a používá výstupní vazbu *SignalR* k vysílání zpráv všem připojeným klientským aplikacím.

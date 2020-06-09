@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: 94cb23b1795a93462a0356fb0af215601edb9d64
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.custom: tracking-python
+ms.openlocfilehash: 46420aeb635bd4cd7b84698b7eb5d522177b443a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83664106"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561764"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-c-notebooks-preview"></a>Používejte integrované příkazy a funkce poznámkového bloku v Azure Cosmos DB poznámkových blocích C# (Preview).
 
@@ -38,7 +39,7 @@ Verze 3 sady [Azure Cosmos DB .NET SDK pro SQL API](https://github.com/Azure/azu
 
 Vytvořte instanci ``CosmosClient`` pro spuštění jakékoli operace sady SDK. 
 
-Například:
+Příklad:
 
 ```csharp
 // Include usings
@@ -95,7 +96,7 @@ var endpoint = Cosmos.Endpoint;
 ## <a name="print-console-output-in-c-code"></a>Výstup tiskové konzoly v kódu jazyka C#
 V kódu jazyka C# můžete použít syntaxi Display. AsMarkdown () s [interpolací řetězce](/dotnet/csharp/language-reference/tokens/interpolated) k tisku výstupu konzoly, která se zobrazí při spuštění buňky. 
 
-Například: 
+Příklad: 
 
 ```csharp
 // Print text in the output
@@ -133,7 +134,7 @@ Pomocí ``%%upload`` příkazu Magic můžete nahrávat data ze souboru JSON do 
 - Nahraďte ``{database_id}`` a ``{container_id}`` názvem databáze a kontejneru v účtu Azure Cosmos. 
 - Nahraďte ``{url_location_of_file}`` umístěním souboru JSON. Tento soubor musí být pole platných objektů JSON a měl by být přístupný prostřednictvím veřejného Internetu.
 
-Například:
+Příklad:
 
 ```csharp
 %%upload --database databaseName --container containerName --url 

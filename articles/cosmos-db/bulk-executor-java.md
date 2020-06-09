@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: ramkris
 ms.reviewer: sngun
-ms.openlocfilehash: ad9c0f29ee10197c4dafe6ca24ee4df7b7afdb88
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: fec11b930be0487a7fbc0968c3c8a8003a2fb911
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485360"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559266"
 ---
 # <a name="use-bulk-executor-java-library-to-perform-bulk-operations-on-azure-cosmos-db-data"></a>Použití knihovny Bulk Executor Java k provádění hromadných operací s daty služby Azure Cosmos DB
 
 Tento kurz poskytuje pokyny k importu a aktualizaci dokumentů Azure Cosmos DB pomocí hromadného prováděcího modulu jazyka Java v Azure Cosmos DB. Další informace o hromadné prováděcí knihovně a o tom, jak vám pomůže využít obrovské propustnost a úložiště, najdete v článku [Přehled knihovny hromadného prováděcího modulu](bulk-executor-overview.md) . V tomto kurzu vytvoříte aplikaci Java, která generuje náhodné dokumenty a hromadně importuje do kontejneru Azure Cosmos. Po importu budete hromadně aktualizovat některé vlastnosti dokumentu. 
 
-V současné době je knihovna hromadných prováděcích modulů podporovaná jenom pomocí Azure Cosmos DB SQL API a účtů rozhraní API Gremlin. Tento článek popisuje, jak používat hromadnou prováděcí knihovnu Java s účty rozhraní SQL API. Další informace o použití knihovny hromadného prováděcího modulu .NET s rozhraním Gremlin API najdete v tématu [provádění hromadných operací v rozhraní Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md). Popsaná knihovna hromadného prováděcího modulu je k dispozici pro aplikace, které používají verzi Java SDK 2. x. V současné době není k dispozici pro 3. x, 4. x a novější verze sady SDK.
+V současné době je knihovna hromadných prováděcích modulů podporovaná jenom pomocí Azure Cosmos DB SQL API a účtů rozhraní API Gremlin. Tento článek popisuje, jak používat hromadnou prováděcí knihovnu Java s účty rozhraní SQL API. Další informace o použití knihovny hromadného prováděcího modulu .NET s rozhraním Gremlin API najdete v tématu [provádění hromadných operací v rozhraní Azure Cosmos DB Gremlin API](bulk-executor-graph-dotnet.md). Popsaná knihovna hromadného prováděcího modulu je k dispozici pouze pro [sadu Azure Cosmos DB Java Sync SDK v2](sql-api-sdk-java.md) a jedná se o aktuální doporučené řešení pro hromadnou podporu Java. V současné době není k dispozici pro 3. x, 4. x a novější verze sady SDK.
 
 ## <a name="prerequisites"></a>Požadavky
 

@@ -5,13 +5,13 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/14/2020
 ms.author: cshoe
-ms.custom: fasttrack-edit
-ms.openlocfilehash: 4df0faf3f74ef3423dcd42c2c76af8b39a889a92
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.custom: fasttrack-edit, tracking-python
+ms.openlocfilehash: 891eda49e11d9a9252cfcb5a0677eb47551135bc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773951"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561805"
 ---
 # <a name="azure-event-grid-output-binding-for-azure-functions"></a>Azure Event Grid výstupní vazba pro Azure Functions
 
@@ -27,7 +27,7 @@ Informace o nastavení a podrobnostech o konfiguraci najdete v tématu [Přehled
 
 ## <a name="example"></a>Příklad
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Následující příklad ukazuje [funkci jazyka C#](functions-dotnet-class-library.md) , která zapisuje zprávu do vlastního tématu Event Grid pomocí návratové hodnoty metody jako výstup:
 
@@ -218,7 +218,7 @@ Vazba Event Grid Output není pro jazyk Java k dispozici.
 
 ## <a name="attributes-and-annotations"></a>Atributy a poznámky
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Pro [knihovny tříd jazyka C#](functions-dotnet-class-library.md)použijte atribut [EventGridAttribute](https://github.com/Azure/azure-functions-eventgrid-extension/blob/dev/src/EventGridExtension/OutputBinding/EventGridAttribute.cs) .
 
@@ -257,9 +257,9 @@ Vazba Event Grid Output není pro jazyk Java k dispozici.
 
 Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* a `EventGrid` atributu.
 
-|Function. JSON – vlastnost | Vlastnost atributu |Popis|
+|Function. JSON – vlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** | Není k dispozici | Musí být nastavené na "eventGrid". |
+|**typ** | Není k dispozici | Musí být nastavené na "eventGrid". |
 |**direction** | Není k dispozici | Musí být nastavené na "out". Tento parametr je nastaven automaticky při vytváření vazby v Azure Portal. |
 |**Jméno** | Není k dispozici | Název proměnné použitý v kódu funkce, který představuje událost. |
 |**topicEndpointUri** |**TopicEndpointUri** | Název nastavení aplikace, které obsahuje identifikátor URI vlastního tématu, například `MyTopicEndpointUri` . |
@@ -272,7 +272,7 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 ## <a name="usage"></a>Využití
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
 Odesílat zprávy pomocí parametru metody, jako je například `out EventGridEvent paramName` . Chcete-li zapsat více zpráv, můžete použít `ICollector<EventGridEvent>` nebo `IAsyncCollector<EventGridEvent>` místo `out EventGridEvent` .
 

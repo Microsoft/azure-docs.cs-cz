@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 04/28/2020
 ms.author: sideeksh
-ms.openlocfilehash: 367ca77b0f3a142d8aa36143052993d1ed96f052
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 543be2b408d9442c61ae2c052776e63c33206188
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996495"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488932"
 ---
 # <a name="enable-zone-to-zone-disaster-recovery-for-azure-virtual-machines"></a>Povolení zotavení po havárii zóny pro virtuální počítače Azure
 
@@ -20,7 +20,7 @@ Tento článek popisuje, jak replikovat, převzetí služeb při selhání a nav
 
 >[!NOTE]
 >
->- Site Recovery v současné době nepodporuje plány obnovení pro zónu až po zotavení po havárii zóny. 
+>- Site Recovery v současné době nepodporuje pro zotavení po havárii zóny plány obnovení prostřednictvím portálu. Použijte prosím prostředí PowerShell nebo REST API k využití plánů obnovení pro zotavení po havárii zóny. 
 >- Podpora zóny až po zotavení po havárii zóny je aktuálně omezená na dvě oblasti: jihovýchodní Asie a Velká Británie – jih.  
 
 Služba Site Recovery přispívá k strategii pro provozní kontinuitu a zotavení po havárii tím, že během plánovaných a neplánovaných výpadků udržuje podnikové aplikace v provozu. Tato možnost zotavení po havárii se doporučuje, aby vaše aplikace zůstaly v provozu a v případě regionálních výpadků.
@@ -65,7 +65,7 @@ Jak je uvedeno výše, zóna pro zotavení po havárii zóny snižuje složitost
 
 Předtím, než nasadíte zónu do zóny zotavení po havárii pro vaše virtuální počítače, je důležité zajistit, aby byly na virtuálním počítači vzájemně ovladatelné další funkce s cílem zotavení po havárii zóny.
 
-|Příznak  | Příkaz support  |
+|Funkce  | Příkaz support  |
 |---------|---------|
 |Klasické virtuální počítače   |     Nepodporuje se    |
 |Virtuální počítače ARM    |    Podporuje se    |

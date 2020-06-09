@@ -2,18 +2,18 @@
 title: Azure Event Grid schéma událostí
 description: Popisuje vlastnosti a schéma, které jsou k dispozici pro všechny události.Události se skládají ze sady pěti požadovaných vlastností řetězce a požadovaného datového objektu.
 services: event-grid
-author: banisadr
+author: femila
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
 ms.date: 01/21/2020
-ms.author: babanisa
-ms.openlocfilehash: 7c45b8f634868024a84f9f3b75bb23031c09b40c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: femila
+ms.openlocfilehash: 3104d29b84b08add89e7c19772dffaaa782755a1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82113999"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559419"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid schéma událostí
 
@@ -80,16 +80,16 @@ Například schéma publikované pro událost úložiště objektů BLOB v Azure
 
 Všechny události mají stejné následující data nejvyšší úrovně:
 
-| Vlastnost | Typ | Požaduje se | Popis |
+| Vlastnost | Typ | Vyžadováno | Popis |
 | -------- | ---- | -------- | ----------- |
 | téma | řetězec | Ne, ale v případě zahrnutí, se musí přesně shodovat s Event Gridým tématem Azure Resource Manager ID. Pokud není zahrnutý, Event Grid na událost zařadí razítko. | Úplná cesta prostředku ke zdroji událostí. Do tohoto pole nejde zapisovat. Tuto hodnotu poskytuje Event Grid. |
 | závislosti | řetězec | Ano | Cesta k předmětu události, kterou definuje vydavatel. |
 | Typ | řetězec | Ano | Jeden z registrovaných typů události pro tento zdroj události. |
 | eventTime | řetězec | Ano | Čas, kdy se událost generuje na základě času UTC poskytovatele. |
 | id | řetězec | Ano | Jedinečný identifikátor události |
-| data | objekt | Ne | Data události specifická pro poskytovatele prostředků. |
+| data | odkazy objektů | Ne | Data události specifická pro poskytovatele prostředků. |
 | dataVersion | řetězec | Ne, ale bude označena prázdnou hodnotou. | Verze schématu datového objektu. Verzi schématu definuje vydavatel. |
-| metadataVersion | řetězec | Nepožadováno, ale pokud je součástí, musí přesně odpovídat schématu `metadataVersion` Event Grid (aktuálně jenom `1`). Pokud není zahrnutý, Event Grid na událost zařadí razítko. | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
+| metadataVersion | řetězec | Nepožadováno, ale pokud je součástí, musí přesně odpovídat schématu Event Grid `metadataVersion` (aktuálně jenom `1` ). Pokud není zahrnutý, Event Grid na událost zařadí razítko. | Verze schématu metadat události. Schéma vlastností nejvyšší úrovně definuje Event Grid. Tuto hodnotu poskytuje Event Grid. |
 
 Další informace o vlastnostech v datovém objektu najdete v tématu zdroj události:
 
@@ -106,7 +106,7 @@ Další informace o vlastnostech v datovém objektu najdete v tématu zdroj udá
 
 Pro vlastní témata Vydavatel události Určuje datový objekt. Data nejvyšší úrovně by měla mít stejná pole jako standardní události definované prostředky.
 
-Při publikování událostí pro vlastní témata vytvořte předměty pro události, které předplatitelům umožní snadno zjistit, jestli se o událost zajímá. Předplatitelé používají subjekt k filtrování a směrování událostí. Zvažte zadání cesty, kde došlo k události, takže předplatitelé mohou filtrovat segmenty této cesty. Cesta umožňuje předplatitelům zúžit nebo široce filtrovat události. Pokud například zadáte tři cesty segmentu jako `/A/B/C` v předmětu, můžou předplatitelé filtrovat podle prvního segmentu `/A` a získat tak širokou škálu událostí. Tyto předplatitelé získají události s předměty `/A/B/C` , `/A/D/E`jako je nebo. Jiní předplatitelé mohou filtrovat `/A/B` podle a získat tak užší sadu událostí.
+Při publikování událostí pro vlastní témata vytvořte předměty pro události, které předplatitelům umožní snadno zjistit, jestli se o událost zajímá. Předplatitelé používají subjekt k filtrování a směrování událostí. Zvažte zadání cesty, kde došlo k události, takže předplatitelé mohou filtrovat segmenty této cesty. Cesta umožňuje předplatitelům zúžit nebo široce filtrovat události. Pokud například zadáte tři cesty segmentu jako `/A/B/C` v předmětu, můžou předplatitelé filtrovat podle prvního segmentu `/A` a získat tak širokou škálu událostí. Tyto předplatitelé získají události s předměty, jako je `/A/B/C` nebo `/A/D/E` . Jiní předplatitelé mohou filtrovat podle `/A/B` a získat tak užší sadu událostí.
 
 Někdy váš předmět potřebuje více podrobností o tom, co se stalo. Například při přidání souboru do kontejneru poskytne vydavatel **účtů úložiště** předmět `/blobServices/default/containers/<container-name>/blobs/<file>` . Předplatitel může filtrovat podle cesty `/blobServices/default/containers/testcontainer` a získat tak všechny události tohoto kontejneru, ale ne jiné kontejnery v účtu úložiště. Předplatitel může také filtrovat nebo směrovat podle přípony `.txt` tak, aby pracovala pouze s textovými soubory.
 

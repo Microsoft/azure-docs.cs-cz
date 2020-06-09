@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
-ms.openlocfilehash: 450aa58d4ad9cbb721e621ec3db8b4ca7e914aa1
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 6fe25efe8f38772162c916c8d0b965267d457c0c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83121180"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488813"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Přesunutí Azure Key Vault do jiného předplatného
 
@@ -66,9 +66,8 @@ Ujistěte se, že přejdete na stránku Azure Policy na Azure Portal a Prohlédn
 4. Vyberte tlačítko přesunout.
 5. Z možností rozevíracího seznamu vyberte přesunout do jiného předplatného.
 6. Vyberte skupinu prostředků, do které chcete přesunout Trezor klíčů.
-7. Vyberte skupinu prostředků, do které chcete přesunout Trezor klíčů.
-8. Potvrzení upozornění týkající se přesunu prostředků
-9. Vyberte OK.
+7. Potvrzení upozornění týkající se přesunu prostředků
+8. Vyberte OK.
 
 ### <a name="additional-steps-post-move"></a>Další kroky (po přesunu)
 

@@ -6,12 +6,13 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: tisande
-ms.openlocfilehash: b913ba58252f4cb84d010aea39d371316582bd6d
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.custom: tracking-python
+ms.openlocfilehash: 341c315bfdcb99a2cacb32d8aed892c684c44601
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869923"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558893"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Správa zásad indexování ve službě Azure Cosmos DB
 
@@ -42,7 +43,7 @@ Tady je několik příkladů indexování zásad, které jsou uvedené ve [form�
     }
 ```
 
-Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ```kind```ručně, ```dataType```a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už není nutné explicitně nastavit a můžete je zcela vynechat ze zásad indexování (jak je znázorněno v předchozím příkladu).
+Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně ```kind``` , ```dataType``` a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už není nutné explicitně nastavit a můžete je zcela vynechat ze zásad indexování (jak je znázorněno v předchozím příkladu).
 
 ```json
     {
@@ -96,7 +97,7 @@ Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ```kind
     }
 ```
 
-Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ```kind```ručně, ```dataType```a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už není nutné explicitně nastavit a můžete je zcela vynechat ze zásad indexování (jak je znázorněno v předchozím příkladu).
+Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ručně ```kind``` , ```dataType``` a ```precision``` na jejich výchozí hodnoty. Tyto vlastnosti už není nutné explicitně nastavit a můžete je zcela vynechat ze zásad indexování (jak je znázorněno v předchozím příkladu).
 
 ```json
     {
@@ -175,7 +176,7 @@ Tato zásada indexování je ekvivalentní k těm, které jsou nastaveny ```kind
 Kromě zahrnutí nebo vyloučení cest pro jednotlivé vlastnosti můžete také zadat složený index. Chcete-li provést dotaz, který má `ORDER BY` klauzuli pro více vlastností, je nutné použít [složený index](index-policy.md#composite-indexes) těchto vlastností. Kromě toho budou mít složené indexy výkonové výhody pro dotazy, které mají filtr a mají klauzuli ORDER BY v různých vlastnostech.
 
 > [!NOTE]
-> Složené cesty mají implicitní `/?` , protože pouze skalární hodnota na této cestě je indexována. `/*` Zástupný znak není podporován ve složených cestách. Neměli byste zadat `/?` nebo `/*` v složené cestě.
+> Složené cesty mají implicitní `/?` , protože pouze skalární hodnota na této cestě je indexována. `/*`Zástupný znak není podporován ve složených cestách. Neměli byste zadat `/?` nebo `/*` v složené cestě.
 
 ### <a name="composite-index-defined-for-name-asc-age-desc"></a>Byl definován složený index pro (název ASC, věk DESC):
 
@@ -323,7 +324,7 @@ Tato zásada se dá použít v situacích, kdy je aktivní [funkce TTL (Time-to-
 
 ### <a name="no-indexing"></a>Bez indexování
 
-Tato zásada vypne indexování. Pokud `indexingMode` je nastaveno na `none`, nemůžete nastavit hodnotu TTL pro kontejner.
+Tato zásada vypne indexování. Pokud `indexingMode` je nastaveno na `none` , nemůžete nastavit hodnotu TTL pro kontejner.
 
 ```json
     {
@@ -375,7 +376,7 @@ Pokud chcete vytvořit kontejner s vlastními zásadami indexování, přečtět
 
 # <a name="net-sdk-v2"></a>[.NET SDK V2](#tab/dotnetv2)
 
-`DocumentCollection` Objekt ze [sady .NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) zpřístupňuje `IndexingPolicy` vlastnost, která umožňuje změnit `IndexingMode` a přidat nebo odebrat `IncludedPaths` a. `ExcludedPaths`
+`DocumentCollection`Objekt ze [sady .NET SDK v2](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) zpřístupňuje `IndexingPolicy` vlastnost, která umožňuje změnit `IndexingMode` a přidat nebo odebrat `IncludedPaths` a `ExcludedPaths` .
 
 ```csharp
 // Retrieve the container's details
@@ -394,7 +395,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.ReplaceDocumentCollectionAsync(containerResponse.Resource);
 ```
 
-Chcete-li sledovat průběh transformace indexu, předejte `RequestOptions` objekt, který `PopulateQuotaInfo` nastaví vlastnost `true`na hodnotu.
+Chcete-li sledovat průběh transformace indexu, předejte `RequestOptions` objekt, který nastaví `PopulateQuotaInfo` vlastnost na hodnotu `true` .
 
 ```csharp
 // retrieve the container's details
@@ -405,7 +406,7 @@ long indexTransformationProgress = container.IndexTransformationProgress;
 
 # <a name="net-sdk-v3"></a>[.NET SDK V3](#tab/dotnetv3)
 
-`ContainerProperties` Objekt ze [sady .NET SDK V3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) (Další informace najdete v [tomto rychlém](create-sql-api-dotnet.md) startu týkající se `IndexingPolicy` jeho použití) zpřístupňuje vlastnost `IndexingMode` , která umožňuje změnit `IncludedPaths` a `ExcludedPaths`přidat nebo odebrat a.
+`ContainerProperties`Objekt ze [sady .NET SDK V3](https://www.nuget.org/packages/Microsoft.Azure.Cosmos/) (Další informace najdete v [tomto rychlém](create-sql-api-dotnet.md) startu týkající se jeho použití) zpřístupňuje `IndexingPolicy` vlastnost, která umožňuje změnit `IndexingMode` a přidat nebo odebrat `IncludedPaths` a `ExcludedPaths` .
 
 ```csharp
 // Retrieve the container's details
@@ -429,7 +430,7 @@ containerResponse.Resource.IndexingPolicy.CompositeIndexes.Add(new Collection<Co
 await client.GetContainer("database", "container").ReplaceContainerAsync(containerResponse.Resource);
 ```
 
-Chcete- `RequestOptions` li sledovat průběh transformace indexu, předejte objekt, na `PopulateQuotaInfo` `true`který vlastnost nastavuje, a pak hodnotu načtěte `x-ms-documentdb-collection-index-transformation-progress` v hlavičce odpovědi.
+Chcete-li sledovat průběh transformace indexu, předejte `RequestOptions` objekt, `PopulateQuotaInfo` na který vlastnost nastavuje, a `true` pak hodnotu načtěte v `x-ms-documentdb-collection-index-transformation-progress` hlavičce odpovědi.
 
 ```csharp
 // retrieve the container's details
@@ -463,7 +464,7 @@ await client.GetDatabase("database").DefineContainer(name: "container", partitio
 
 ## <a name="use-the-java-sdk"></a>Použití sady Java SDK
 
-`DocumentCollection` Objekt z [SDK Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (viz [Tento rychlý Start](create-sql-api-java.md) týkající se jeho použití) `getIndexingPolicy()` zpřístupňuje `setIndexingPolicy()` a metody. Objekt `IndexingPolicy` , ke kterému se manipuluje, umožňuje změnit režim indexování a přidat nebo odebrat zahrnuté a vyloučené cesty.
+`DocumentCollection`Objekt z [SDK Java](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb) (viz [Tento rychlý Start](create-sql-api-java.md) týkající se jeho použití) zpřístupňuje `getIndexingPolicy()` a `setIndexingPolicy()` metody. `IndexingPolicy`Objekt, ke kterému se manipuluje, umožňuje změnit režim indexování a přidat nebo odebrat zahrnuté a vyloučené cesty.
 
 ```java
 // Retrieve the container's details
@@ -529,7 +530,7 @@ indexingPolicy.setCompositeIndexes(compositeIndexes);
 });
 ```
 
-Chcete-li sledovat průběh transformace indexu v kontejneru, předejte `RequestOptions` objekt, který požaduje informace o kvótě pro naplnění, a pak hodnotu `x-ms-documentdb-collection-index-transformation-progress` načtěte v hlavičce odpovědi.
+Chcete-li sledovat průběh transformace indexu v kontejneru, předejte `RequestOptions` objekt, který požaduje informace o kvótě pro naplnění, a pak hodnotu načtěte v `x-ms-documentdb-collection-index-transformation-progress` hlavičce odpovědi.
 
 ```java
 // set the RequestOptions object
@@ -545,7 +546,7 @@ containerResponse.subscribe(result -> {
 
 ## <a name="use-the-nodejs-sdk"></a>Použití sady Node. js SDK
 
-`ContainerDefinition` Rozhraní z [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) (v [tomto rychlém](create-sql-api-nodejs.md) startu najdete informace o jeho použití `indexingPolicy` ) zpřístupňuje vlastnost, která `indexingMode` umožňuje změnit a přidat `includedPaths` nebo `excludedPaths`odebrat a.
+`ContainerDefinition`Rozhraní z [Node. js SDK](https://www.npmjs.com/package/@azure/cosmos) (v [tomto rychlém](create-sql-api-nodejs.md) startu najdete informace o jeho použití) zpřístupňuje `indexingPolicy` vlastnost, která umožňuje změnit `indexingMode` a přidat nebo odebrat `includedPaths` a `excludedPaths` .
 
 Načtení podrobností kontejneru
 
@@ -602,7 +603,7 @@ Aktualizace kontejneru změnami
 const replaceResponse = await client.database('database').container('container').replace(containerResponse.body);
 ```
 
-Chcete-li sledovat průběh transformace indexu v kontejneru, předejte `RequestOptions` objekt, na `populateQuotaInfo` `true`který vlastnost nastavuje, a pak hodnotu načtěte v `x-ms-documentdb-collection-index-transformation-progress` hlavičce odpovědi.
+Chcete-li sledovat průběh transformace indexu v kontejneru, předejte `RequestOptions` objekt, na který `populateQuotaInfo` vlastnost nastavuje `true` , a pak hodnotu načtěte v `x-ms-documentdb-collection-index-transformation-progress` hlavičce odpovědi.
 
 ```javascript
 // retrieve the container's details

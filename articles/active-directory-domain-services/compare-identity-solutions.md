@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: overview
-ms.date: 03/30/2020
+ms.date: 06/08/2020
 ms.author: iainfou
-ms.openlocfilehash: 5925e3374634dd4db4bdc6855949dc3880d8de7c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 013b78e0e8ad47e98b1d192bfc48c5c4a4de0163
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655511"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555131"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Porovnání samoobslužně spravovaných Active Directory Domain Services, Azure Active Directory a spravovaných Azure Active Directory Domain Services
 
@@ -31,21 +31,25 @@ I když tři řešení pro identitu založená na službě Active Directory sdí
     * Další informace o Azure AD najdete v tématu [co je Azure Active Directory?][whatis-azuread]
 * **Azure Active Directory Domain Services (Azure služba AD DS)** – poskytuje spravované doménové služby s podmnožinou plně kompatibilních tradičních služba AD DS funkcí, jako je připojení k doméně, zásady skupiny, LDAP a ověřování Kerberos/NTLM.
     * Azure služba AD DS se integruje s Azure AD, které se může synchronizovat s místním prostředím služba AD DS. Tato možnost rozšiřuje případy použití centrální identity na tradiční webové aplikace, které běží v Azure, jako součást strategie navýšení a posunutí.
+    * Další informace o synchronizaci s Azure AD a místním prostředím najdete v článku [jak se objekty a přihlašovací údaje synchronizují ve spravované doméně][synchronization].
 
 Tento přehledový článek porovnává a narozdíluje, jak tato řešení identity můžou společně fungovat, nebo se používá nezávisle v závislosti na potřebách vaší organizace.
 
-Začněte tím, [že pomocí Azure Portal vytvoříte spravovanou doménu Azure služba AD DS][tutorial-create].
+> [!div class="nextstepaction"]
+> [Pokud chcete začít, vytvořte spravovanou doménu Azure služba AD DS pomocí Azure Portal][tutorial-create]
 
 ## <a name="azure-ad-ds-and-self-managed-ad-ds"></a>Azure služba AD DS a samoobslužně spravované služba AD DS
 
 Pokud máte aplikace a služby, které potřebují přístup k tradičnímu mechanismu ověřování, jako je Kerberos nebo NTLM, existují dva způsoby, jak poskytnout Active Directory Domain Services v cloudu:
 
-* *Spravovaná* doména, kterou vytvoříte pomocí Azure Active Directory Domain Services (Azure služba AD DS). Společnost Microsoft vytvoří a spravuje požadované prostředky.
+* *Spravovaná doména* , kterou vytvoříte pomocí Azure Active Directory Domain Services (Azure služba AD DS). Společnost Microsoft vytvoří a spravuje požadované prostředky.
 * *Samostatně spravovaná* doména, kterou vytvoříte a konfigurujete pomocí tradičních prostředků, jako jsou virtuální počítače, operační systém Windows Server host a Active Directory Domain Services (služba AD DS). Tyto prostředky pak budete dál spravovat.
 
 V případě Azure služba AD DS jsou základní součásti služby nasazeny a udržovány za vás Microsoft jako prostředí *spravované* domény. Nebudete nasazovat, spravovat, opravovat a zabezpečovat infrastrukturu služba AD DS pro součásti, jako jsou virtuální počítače, operační systém Windows Server nebo řadiče domény (DCs).
 
-Azure služba AD DS poskytuje menší podmnožinu funkcí tradičního prostředí služba AD DS spravovaného v rámci sebe, což snižuje část složitosti návrhu a správy. Například pro návrh a údržbu nejsou k dispozici žádné doménové struktury služby AD, domény, lokality a replikační odkazy. Pro aplikace a služby, které běží v cloudu a potřebují přístup k tradičním ověřovacím mechanismům, jako je Kerberos nebo NTLM, poskytuje Azure služba AD DS prostředí spravované v doméně s minimálními nároky na správu.
+Azure služba AD DS poskytuje menší podmnožinu funkcí tradičního prostředí služba AD DS spravovaného v rámci sebe, což snižuje část složitosti návrhu a správy. Například neexistují žádné doménové struktury služby AD, domény, lokality a replikační odkazy pro návrh a údržbu. Stále můžete [vytvářet vztahy důvěryhodnosti mezi Azure služba AD DS a místními prostředími (aktuálně ve verzi Preview)][create-forest-trust].
+
+Pro aplikace a služby, které běží v cloudu a potřebují přístup k tradičním ověřovacím mechanismům, jako je Kerberos nebo NTLM, poskytuje Azure služba AD DS prostředí spravované v doméně s minimálními nároky na správu. Další informace najdete v tématu [koncepty správy pro uživatelské účty, hesla a správu v Azure služba AD DS][administration-concepts].
 
 Když nasadíte a spustíte samoobslužně spravované prostředí služba AD DS, je nutné zachovat všechny přidružené infrastruktury a součásti adresáře. Existují další režijní náklady na údržbu pomocí samoobslužného služba AD DSho prostředí, ale můžete provádět další úkoly, jako je například rozšiřování schématu nebo vytvoření vztahů důvěryhodnosti doménové struktury.
 
@@ -94,7 +98,7 @@ Zařízení je možné připojit k Azure AD s hybridním nasazením nebo bez ně
 
 | **Typ zařízení**                                        | **Platformy zařízení**             | **Mechanismus**          |
 |:----------------------------------------------------------| -------------------------------- | ---------------------- |
-| Osobní zařízení                                          | Windows 10, iOS, Android, Mac OS | Registrováno v Azure AD    |
+| Osobní zařízení                                          | Windows 10, iOS, Android, macOS | Registrováno v Azure AD    |
 | Zařízení vlastněné organizací není připojené k místnímu služba AD DS | Windows 10                       | Připojené k Azure AD        |
 | Zařízení patřící organizaci připojené k místnímu služba AD DS  | Windows 10                       | k hybridní službě Azure AD. |
 
@@ -115,6 +119,8 @@ U zařízení připojených k Azure služba AD DS můžou aplikace používat pr
 
 Pokud chcete začít používat Azure služba AD DS, [vytvořte pomocí Azure Portal spravované domény azure služba AD DS][tutorial-create].
 
+Můžete si taky přečíst další informace o [konceptech správy uživatelských účtů, hesel a správy v Azure služba AD DS][administration-concepts] a [o tom, jak se objekty a přihlašovací údaje synchronizují ve spravované doméně][synchronization].
+
 <!-- INTERNAL LINKS -->
 [manage-dns]: manage-dns.md
 [deploy-kcd]: deploy-kcd.md
@@ -124,3 +130,6 @@ Pokud chcete začít používat Azure služba AD DS, [vytvořte pomocí Azure Po
 [tutorial-create]: tutorial-create-instance.md
 [whatis-azuread]: ../active-directory/fundamentals/active-directory-whatis.md
 [overview-adds]: /windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview
+[create-forest-trust]: tutorial-create-forest-trust.md
+[administration-concepts]: administration-concepts.md
+[synchronization]: synchronization.md

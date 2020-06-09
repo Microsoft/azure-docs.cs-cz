@@ -7,13 +7,13 @@ ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.custom: seo-python-october2019
-ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: seo-python-october2019, tracking-python
+ms.openlocfilehash: 513e3bc2e8625f8ce255f479301b2ed5115708bb
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76906440"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561344"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Rychlý Start: Správa objektů BLOB pomocí Pythonu v 2.1 SDK
 
@@ -48,7 +48,7 @@ V aplikaci zadejte název účtu úložiště a klíč účtu pro vytvoření ob
 
 1. V Průzkumníku řešení vašeho integrovaného vývojového prostředí (IDE) otevřete soubor *example.py*.
 
-1. Hodnoty `accountname` a `accountkey` nahraďte názvem svého účtu úložiště a klíčem:
+1. `accountname`Hodnoty a nahraďte `accountkey` názvem svého účtu úložiště a klíčem:
 
     ```python
     block_blob_service = BlockBlobService(
@@ -94,8 +94,8 @@ Vzorový program vytvoří testovací soubor ve složce *dokumenty* , nahraje so
 
 1. Než budete pokračovat, přejděte do složky *dokumenty* a vyhledejte dva soubory.
 
-    * *QuickStart_\<univerzálně jedinečného identifikátoru\>*
-    * *QuickStart_\<univerzálně jedinečné identifikátory\>_DOWNLOADED*
+    * *QuickStart_\<universally-unique-identifier\>*
+    * *QuickStart_ \<universally-unique-identifier\> _DOWNLOADED*
 
 1. Můžete je otevřít a podívat se, že jsou stejné.
 
@@ -109,7 +109,7 @@ Když teď víte, co ukázka dělá, otevřete soubor *example.py* a Prohlédně
 
 ### <a name="get-references-to-the-storage-objects"></a>Získání odkazů na objekty úložiště
 
-V této části vytvoříte instance objektů, vytvoříte nový kontejner a pak nastavíte oprávnění ke kontejneru tak, aby objekty blob byly veřejné. Zavoláte kontejner `quickstartblobs`. 
+V této části vytvoříte instance objektů, vytvoříte nový kontejner a pak nastavíte oprávnění ke kontejneru tak, aby objekty blob byly veřejné. Zavoláte kontejner `quickstartblobs` . 
 
 ```python
 # Create the BlockBlockService that the system uses to call the Blob service for the storage account.
@@ -142,7 +142,7 @@ Jakmile budete mít CloudBlobContainer, vytvořte instanci objektu **CloudBlockB
 
 Pokud chcete nahrát soubor do objektu blob, získejte úplnou cestu k souboru spojením názvu adresáře a názvu souboru na místním disku. Pak můžete soubor nahrát do zadané cesty pomocí metody `create_blob_from_path`. 
 
-Vzorový kód vytvoří místní soubor, který systém používá k nahrání a stažení, a uloží soubor, který systém nahraje jako *full_path_to_file* a název objektu blob jako *local_file_name*. Tento příklad nahraje soubor do vašeho kontejneru s názvem `quickstartblobs`:
+Vzorový kód vytvoří místní soubor, který systém používá k nahrání a stažení, a uloží soubor, který systém nahraje jako *full_path_to_file* a název objektu blob jako *local_file_name*. Tento příklad nahraje soubor do vašeho kontejneru s názvem `quickstartblobs` :
 
 ```python
 # Create a file in Documents to test the upload and download.

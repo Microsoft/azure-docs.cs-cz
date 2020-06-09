@@ -5,14 +5,14 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 06/08/2020
 ms.author: dsindona
-ms.openlocfilehash: da2588125b455deaf18110687d54adc04a7dd4c0
-ms.sourcegitcommit: cf7caaf1e42f1420e1491e3616cc989d504f0902
+ms.openlocfilehash: fb2031072ce93fcacdf52f8f0fad68f836049b22
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83799858"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560909"
 ---
 # <a name="consulting-service-offers"></a>Konzultační nabídky služeb
 
@@ -22,16 +22,7 @@ Konzultační nabídky služeb jsou zapojení specifické pro zákazníky. Vydav
 
 ## <a name="compare-consulting-services"></a>Porovnání konzultačních služeb
 
-Komerční tržiště prodejní místa, Microsoft AppSource a Azure Marketplace, jsou zarovnané na cílové skupiny a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý prezentace má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Následující tabulka shrnuje tyto možnosti:
-
-|         |Azure Marketplace  |Microsoft AppSource |
-|---------|---------|---------|
-|Cílová skupina      |IT specialisté a vývojáři cloudu|Firemní uživatelé a tvůrci podnikových rozhodnutí|
-|Závažnost řešení      |Technické aplikace sestavené pro nebo postavené na Azure|Obchodní aplikace, které využívají nebo rozšířily Dynamics 365, Power BI, Office 365, Azure (doplněk nebo doplňky dokončených aplikací)|
-|Možnosti publikování      |Kontaktujte mě, zkušební verzi, transakční službu nebo služby pro Azure|Kontaktujte mě, zkušební verzi nebo služby pro Dynamics 365 a Power BI|
-|Prostředí v produktu      |portál Azure|Dynamics 365, Office 365, klientské aplikace Office| 
-|Jiné      |Místní publikování prostřednictvím Azure Stack konzultační služby pro Azure, spravované služby pro Azure|Konzultační služby pro Dynamics 365 a Power BI|
-||
+Komerční tržiště prodejní místa, Microsoft AppSource a Azure Marketplace, jsou zarovnané na cílové skupiny a cloudové produkty, které zákazníkům pomůžou najít, co potřebují. Každý prezentace má specializované možnosti publikování, které vám pomůžou maximalizovat investice do publikování. Další informace o rozdílu mezi těmito dvěma prodejní místa naleznete v tématu [porovnání Microsoft AppSource a Azure Marketplace](https://docs.microsoft.com/azure/marketplace/comparing-appsource-azure-marketplace).
 
 Nabídky konzultačních služeb, které jsou založené na Dynamics 365, Power Apps a Power BI, mají nárok na uvedení v AppSource. Další informace najdete v souboru PDF s [pokyny pro Microsoft AppSource konzultační služby](https://go.microsoft.com/fwlink/?LinkId=828734&clcid=0x409) .
 
@@ -79,7 +70,7 @@ Další zdroje informací a podpora:
 
 Další informace o kompetencích najdete na stránce [Microsoft Partner Network kompetence](https://partner.microsoft.com/membership/competencies) .
 
-Partneři se systémovým integrátorem mohou odesílat konzultační nabídky pro následující 21 zemí nebo oblastí:
+Partneři se systémovým integrátorem mohou odesílat konzultační nabídky na následujících 20 zemí nebo oblastí:
 
 |   |   |   |   |
 |---------|----------|----------|----------|
@@ -87,8 +78,7 @@ Partneři se systémovým integrátorem mohou odesílat konzultační nabídky p
 | Finsko  | Francie | Německo  | Indie   |
 | Itálie    | Japonsko  |  Mexiko  |  Nizozemsko  |
 |  Nový Zéland  |  Norsko  |  Polsko  | Jižní Afrika |
-|  Španělsko  | Švédsko  | Švýcarsko  |  USA  |
-| Spojené království  |
+|  Švédsko  | Švýcarsko  |  USA  | Spojené království  |
 ||
 
 ## <a name="register-for-consulting-services-in-the-commercial-marketplace"></a>Zaregistrujte se na konzultační služby na komerčním webu Marketplace.

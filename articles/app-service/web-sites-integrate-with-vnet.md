@@ -4,29 +4,25 @@ description: Integrujte aplikaci v Azure App Service s virtuálními sítěmi Az
 author: ccompy
 ms.assetid: 90bc6ec6-133d-4d87-a867-fcf77da75f5a
 ms.topic: article
-ms.date: 04/16/2020
+ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 9b7df06ea7ff07907a292bdcc32e66aafa44ae68
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: ee2c279db7dde0e3e6acadb318c470813dccc7a3
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170779"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488783"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Integrace aplikace do služby Azure Virtual Network
 
-Tento článek popisuje funkci Integrace virtuální sítě Azure App Service a její nastavení s využitím aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Pomocí služby [azure Virtual Network][VNETOverview] (virtuální sítě) můžete mnoho vašich prostředků Azure umístit do sítě, která není směrovatelný z Internetu.
+Tento článek popisuje funkci Integrace virtuální sítě Azure App Service a její nastavení s využitím aplikací v [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714). Pomocí služby [azure Virtual Network][VNETOverview] (virtuální sítě) můžete mnoho vašich prostředků Azure umístit do sítě, která není směrovatelný z Internetu. Funkce integrace virtuální sítě umožňuje aplikacím přistupovat k prostředkům v síti nebo prostřednictvím virtuální sítě. Integrace virtuální sítě neumožňuje, aby vaše aplikace byly dostupné soukromě.
 
-Azure App Service má dvě varianty:
+Azure App Service má dvě varianty funkce integrace virtuální sítě:
 
 [!INCLUDE [app-service-web-vnet-types](../../includes/app-service-web-vnet-types.md)]
 
 ## <a name="enable-vnet-integration"></a>Povolit integraci virtuální sítě
-
-> [!NOTE]
-> Pokud je okno síť v nabídce pro aplikace pro Linux zakázané (zobrazené šedě), znamená to, že tato funkce není momentálně k dispozici.
->
 
 1. Přejít na uživatelské rozhraní **sítě** na portálu App Service. V části **Integrace virtuální**sítě vyberte **Konfigurovat kliknutím sem**.
 
@@ -75,8 +71,8 @@ Brána – požadovaná integrace virtuální sítě podporuje připojení k vir
 
 Nemůžete použít integraci virtuální sítě požadovaná bránou:
 
-* S aplikacemi pro Linux.
 * S virtuální sítí připojenou ke službě Azure ExpressRoute.
+* Z aplikace pro Linux
 * Pro přístup k prostředkům zabezpečeného koncového bodu služby.
 * S bránou koexistence, která podporuje ExpressRoute i sítě VPN typu Point-to-site nebo site-to-site.
 

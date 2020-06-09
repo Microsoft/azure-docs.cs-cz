@@ -3,12 +3,13 @@ title: Vytvoření aplikace Azure Service Fabric Container
 description: Vytvoříte svou první aplikaci typu kontejner pro Windows na platformě Azure Service Fabric. Sestavte image Docker pomocí aplikace Pythonu, nahrajte image do registru kontejneru a potom Sestavte a nasaďte kontejner do Azure Service Fabric.
 ms.topic: conceptual
 ms.date: 01/25/2019
-ms.openlocfilehash: 8e1de48874655721f708bfd1dfdda8d975f94c4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: d7076226b63fa3b45eaae82c2964997d3065ed88
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258470"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560671"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Vytvoření první aplikace Service Fabric typu kontejner v systému Windows
 
@@ -142,12 +143,12 @@ Po spuštění kontejneru vyhledejte jeho IP adresu, abyste se ke spuštěnému 
 docker inspect -f "{{ .NetworkSettings.Networks.nat.IPAddress }}" my-web-site
 ```
 
-Pokud tento příkaz nevrátí žádnou hodnotu, spusťte následující příkaz a zkontrolujte prvek **NetworkSettings**->**Networks** pro IP adresu:
+Pokud tento příkaz nevrátí žádnou hodnotu, spusťte následující příkaz a zkontrolujte prvek **NetworkSettings** -> **Networks** pro IP adresu:
 ```
 docker inspect my-web-site
 ```
 
-Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na vrácenou IP adresu, například http:\//172.31.194.61. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na vrácenou IP adresu, například http: \/ /172.31.194.61. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 Pokud chcete kontejner zastavit, spusťte:
 
@@ -189,7 +190,7 @@ docker push myregistry.azurecr.io/samples/helloworldapp
 ## <a name="create-the-containerized-service-in-visual-studio"></a>Vytvoření kontejnerizované služby v sadě Visual Studio
 Sada Service Fabric SDK a nástroje poskytují šablonu služby, která vám pomůže s vytvořením kontejnerizované aplikace.
 
-1. Spusťte Visual Studio. Vyberte **soubor** > **Nový** > **projekt**.
+1. Spusťte Visual Studio. Vyberte **soubor**  >  **Nový**  >  **projekt**.
 2. Vyberte **Aplikace Service Fabric**, pojmenujte ji MyFirstContainer a klikněte na **OK**.
 3. Ze seznamu **šablon služeb** vyberte **Kontejner**.
 4. Do pole **Název image** zadejte „myregistry.azurecr.io/samples/helloworldapp“, tedy image, kterou jste nahráli do úložiště kontejnerů.
@@ -496,7 +497,7 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
 
 ## <a name="configure-time-interval-before-container-is-force-terminated"></a>Konfigurace časového intervalu před vynuceným ukončením kontejneru
 
-Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.  Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. `Hosting` Oddíl lze přidat při vytváření clusteru nebo později v upgradu konfigurace. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
+Můžete nakonfigurovat časový interval, který určuje, jak dlouho modul runtime počká před odebráním kontejneru po zahájení odstraňování služby (nebo jejího přesunu do jiného uzlu). Konfigurací časového intervalu se do kontejneru odešle příkaz `docker stop <time in seconds>`.  Další podrobnosti najdete v dokumentaci k příkazu [docker stop](https://docs.docker.com/engine/reference/commandline/stop/). Časový interval pro čekání se zadává v části `Hosting`. `Hosting`Oddíl lze přidat při vytváření clusteru nebo později v upgradu konfigurace. Následující fragment manifestu clusteru ukazuje nastavení intervalu čekání:
 
 ```json
 "fabricSettings": [

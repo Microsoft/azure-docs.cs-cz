@@ -7,39 +7,41 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/25/2020
-ms.openlocfilehash: 248ef093601eda7a180a6465ccb97e6fc1c9fe41
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 6c956c937027b16d51141ded4de5ff9b019c37d4
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80369708"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488167"
 ---
 # <a name="quickstart-create-a-search-app-in-the-portal-azure-cognitive-search"></a>Rychlý Start: Vytvoření vyhledávací aplikace na portálu (Azure Kognitivní hledání)
 
-Pomocí průvodce **vytvořením vyhledávací aplikace** na portálu vygenerujte webovou aplikaci ve stylu "localhost", která běží v prohlížeči. V závislosti na konfiguraci je vygenerovaná aplikace při prvním použití funkční, s živým připojením ke vzdálenému indexu. Výchozí aplikace může obsahovat panel hledání, oblast výsledků, filtry bočního panelu a podporu typeahead.
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pomocí průvodce **vytvořením vyhledávací aplikace** Azure Portal můžete vygenerovat webovou aplikaci ve stylu "localhost", která běží v prohlížeči. V závislosti na konfiguraci je vygenerovaná aplikace při prvním použití funkční, s živým připojením ke vzdálenému indexu. Výchozí aplikace může obsahovat panel hledání, oblast výsledků, filtry bočního panelu a podporu typeahead.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Upgradujte na [nejnovější verzi Microsoft Edge](https://www.microsoft.com/edge) nebo pro tento rychlý Start použijte prohlížeč Chrome pro Google.
+Než začnete, musíte mít následující:
 
-[Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
++ Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
 
-[Vytvořte index](search-create-index-portal.md) , který se použije jako základ vaší aplikace. 
++ Služba Azure Kognitivní hledání. [Vytvořte službu](search-create-service-portal.md) nebo [vyhledejte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
-V tomto rychlém startu se používá integrovaná ukázková data a index reálného majetku, protože obsahuje miniatury (Průvodce podporuje přidávání imagí na stránku výsledků). Pokud chcete vytvořit index použitý v tomto cvičení, spusťte průvodce **importem dat** a vyberte zdroj dat *realestate-US-Sample* .
++ [Microsoft Edge (nejnovější verze)](https://www.microsoft.com/edge) nebo Google Chrome.
 
-![Stránka zdroje dat pro ukázková data](media/search-create-app-portal/import-data-realestate.png)
++ [Index hledání](search-create-index-portal.md) , který se má použít jako základ vaší vygenerované aplikace 
+
+  V tomto rychlém startu se používá integrovaná ukázková data a index reálného majetku, protože obsahuje miniatury (Průvodce podporuje přidávání imagí na stránku výsledků). Pokud chcete vytvořit index použitý v tomto cvičení, spusťte průvodce **importem dat** a vyberte zdroj dat *realestate-US-Sample* .
+
+  ![Stránka zdroje dat pro ukázková data](media/search-create-app-portal/import-data-realestate.png)
 
 Až bude index připravený k použití, přejděte k dalšímu kroku.
 
 ## <a name="start-the-wizard"></a>Spustit Průvodce
 
-1. Přihlaste se k [Azure Portal](https://portal.azure.com) a [vyhledejte vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Azure.
 
-1. Na stránce Přehled v odkazech uprostřed stránky vyberte **indexy**. 
+1. [Vyhledejte vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a na stránce Přehled v odkazech uprostřed stránky vyberte **indexy**. 
 
 1. V seznamu existujících indexů vyberte *realestate-US-Sample-index* .
 
@@ -57,7 +59,7 @@ Průvodce poskytuje základní rozložení pro vykreslené výsledky hledání, 
 
 1. V poli Popis zvolte pole, které poskytuje podrobné informace, které mohou někomu pomáhat při rozhodování, zda kliknout do konkrétního dokumentu.
 
-![Stránka zdroje dat pro ukázková data](media/search-create-app-portal/configure-results.png)
+   ![Stránka zdroje dat pro ukázková data](media/search-create-app-portal/configure-results.png)
 
 ## <a name="add-a-sidebar"></a>Přidat postranní panel
 

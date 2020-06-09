@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: 74574fb905ae4ebd2552ef97cd0b5430eea6363a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 18e3f2ab7c581a1ff93a65e410e83739564b5be5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79530219"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558305"
 ---
 # <a name="how-to-connect-applications-to-azure-database-for-mariadb"></a>Postup připojení aplikací k Azure Database for MariaDB
 Toto téma uvádí typy připojovacích řetězců, které jsou podporovány Azure Database for MariaDB, spolu se šablonami a příklady. V připojovacím řetězci můžete mít různé parametry a nastavení.
@@ -25,7 +26,7 @@ Toto téma uvádí typy připojovacích řetězců, které jsou podporovány Azu
 Server={your_host}; Port=3306; Database={your_database}; Uid={username@servername}; Pwd={your_password}; SslMode=Preferred;
 ```
 
-V `mydemoserver`tomto příkladu je název serveru, název databáze je `wpdb`, uživatelské jméno `WPAdmin`a heslo. `mypassword!2` V důsledku toho by měl být připojovací řetězec:
+V tomto příkladu je název serveru `mydemoserver` , název databáze je `wpdb` , uživatelské jméno `WPAdmin` a heslo `mypassword!2` . V důsledku toho by měl být připojovací řetězec:
 
 ```csharp
 Server= "mydemoserver.mariadb.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@mydemoserver"; Pwd="mypassword!2"; SslMode=Required;
@@ -62,7 +63,7 @@ client = Mysql2::Client.new(username: "{username@servername}", password: {your_p
 ```
 
 ## <a name="get-the-connection-string-details-from-the-azure-portal"></a>Získat podrobnosti o připojovacím řetězci z Azure Portal
-V [Azure Portal](https://portal.azure.com)přejděte na Azure Database for MariaDB Server a pak klikněte na **připojovací řetězce** . zobrazí se seznam řetězců pro vaši instanci: ![podokno připojovací řetězce v Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
+V [Azure Portal](https://portal.azure.com)přejděte na Azure Database for MariaDB Server a pak klikněte na **připojovací řetězce** . zobrazí se seznam řetězců pro vaši instanci: ![ podokno připojovací řetězce v Azure Portal](./media/howto-connection-strings/connection-strings-on-portal.png)
 
 Řetězec poskytuje podrobnosti, jako je například ovladač, server a další parametry připojení databáze. Upravte tyto příklady tak, aby používaly vlastní parametry, jako je třeba název databáze, heslo a tak dále. Pak můžete použít tento řetězec pro připojení k serveru z kódu a aplikací.
 

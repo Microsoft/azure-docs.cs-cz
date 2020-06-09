@@ -2,17 +2,17 @@
 title: Zabezpečené doručování webhooků pomocí Azure AD v Azure Event Grid
 description: Popisuje, jak doručovat události do koncových bodů HTTPS chráněných pomocí Azure Active Directory pomocí Azure Event Grid
 services: event-grid
-author: banisadr
+author: femila
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
-ms.author: babanisa
-ms.openlocfilehash: 86d647ebfcf6e4c1ea8d05f58dd1f559d6e30cfc
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.author: femila
+ms.openlocfilehash: a3d67f3b1217aa7ab4c8122ae958685490a2ad34
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900475"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559024"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Publikovat události do Azure Active Directory chráněných koncových bodů
 

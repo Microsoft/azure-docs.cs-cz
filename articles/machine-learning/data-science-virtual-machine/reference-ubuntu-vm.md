@@ -5,15 +5,16 @@ description: Podrobnosti o nástrojích, které jsou součástí Data Science Vi
 author: gvashishtha
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 ms.author: gopalv
 ms.date: 09/11/2019
 ms.topic: reference
-ms.openlocfilehash: 7cfb2001067b70c64274ee1dd3475c142b788c98
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 4c4ac1d332c4348941963b90d25aefb4fdf30ce4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82161277"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560226"
 ---
 # <a name="reference-ubuntu-linux-data-science-virtual-machine"></a>Referenční informace: Ubuntu (Linux) Data Science Virtual Machine
 
@@ -52,7 +53,7 @@ V JupyterHub jsou k dispozici několik ukázkových poznámkových bloků.
 
 Nejedná se o rychlou, distribuovanou a integrovanou platformu pro strojové učení a prediktivní analýzu. Balíček Pythonu se instaluje jak v kořenu, tak i v prostředí py35 Anaconda. Nainstaluje se taky balíček R. 
 
-Chcete-li otevřít z příkazového řádku, `java -jar /dsvm/tools/h2o/current/h2o.jar`spusťte příkaz. K dispozici jsou různé [Možnosti příkazového řádku](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , které byste mohli chtít nakonfigurovat. Chcete `http://localhost:54321` -li začít, můžete získat přístup k WEBOVÉmu uživatelskému rozhraní toku. Ukázkové poznámkové bloky jsou také k dispozici v JupyterHub.
+Chcete-li otevřít z příkazového řádku, spusťte příkaz `java -jar /dsvm/tools/h2o/current/h2o.jar` . K dispozici jsou různé [Možnosti příkazového řádku](http://docs.h2o.ai/h2o/latest-stable/h2o-docs/starting-h2o.html#from-the-command-line) , které byste mohli chtít nakonfigurovat. Chcete-li začít, můžete získat přístup k webovému uživatelskému rozhraní toku `http://localhost:54321` . Ukázkové poznámkové bloky jsou také k dispozici v JupyterHub.
 
 ### <a name="keras"></a>Keras
 
@@ -66,7 +67,7 @@ MXNet je rozhraní hloubkového učení navržené pro zajištění efektivity i
 
 Školicí systém NVIDIA hloubkového učení GPU, označovaný jako číslice, představuje systém, který zjednodušuje běžné úlohy s hloubkovým učením. Mezi tyto úlohy patří Správa dat, navrhování a školení neuronové sítí na systémech GPU a monitorování výkonu v reálném čase s pokročilou vizualizací.
 
-ČÍSLICE jsou k dispozici jako služba s názvem *číslice*. Spusťte službu a přejděte na `http://localhost:5000` adresu a začněte.
+ČÍSLICE jsou k dispozici jako služba s názvem *číslice*. Spusťte službu a přejděte na adresu a začněte `http://localhost:5000` .
 
 V kořenovém prostředí conda se také nainstalují číslice jako modul Pythonu.
 
@@ -137,12 +138,12 @@ Pokud používáte grafické rozhraní nebo máte nastavené předávání X11, 
 
 Anaconda distribuce také přichází s poznámkovým blokem Jupyter, prostředím pro sdílení kódu a analýzy. K poznámkovému bloku Jupyter se dostanete prostřednictvím JupyterHub. Přihlašujete se pomocí uživatelského jména a hesla místního systému Linux.
 
-Server Jupyter Poznámkový blok byl předem nakonfigurován s jádry Python 2, Python 3 a R. Pomocí ikony **Jupyter notebook** plocha otevřete prohlížeč a přejděte na server poznámkového bloku. Pokud se nacházíte na virtuálním počítači přes SSH nebo klienta X2Go, můžete k serveru Jupyter notebook získat přístup také `https://localhost:8000/`na adrese.
+Server Jupyter Poznámkový blok byl předem nakonfigurován s jádry Python 2, Python 3 a R. Pomocí ikony **Jupyter notebook** plocha otevřete prohlížeč a přejděte na server poznámkového bloku. Pokud se nacházíte na virtuálním počítači přes SSH nebo klienta X2Go, můžete k serveru Jupyter notebook získat přístup také na adrese `https://localhost:8000/` .
 
 > [!NOTE]
 > Pokračujte, pokud se zobrazí upozornění týkající se certifikátu.
 
-K serveru Jupyter Poznámkový blok můžete přistupovat z libovolného hostitele. Zadejte **název\<DNS nebo IP adresu\>https://virtuálního počítače: 8000/**.
+K serveru Jupyter Poznámkový blok můžete přistupovat z libovolného hostitele. Zadejte **https:// \<VM DNS name or IP address\> : 8000/**.
 
 > [!NOTE]
 > Po zřízení virtuálního počítače se ve výchozím nastavení v bráně firewall otevře port 8000. 
@@ -173,7 +174,7 @@ chown hadoop:hadoop ~hadoop/.ssh/authorized_keys
 systemctl start hadoop-namenode hadoop-datanode hadoop-yarn
 ```
 
-Služby související se systémem Hadoop můžete zastavit, pokud je nepotřebujete spuštěním ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn```.
+Služby související se systémem Hadoop můžete zastavit, pokud je nepotřebujete spuštěním ```systemctl stop hadoop-namenode hadoop-datanode hadoop-yarn``` .
 
 Adresář/dsvm/samples/MRS poskytuje ukázku, která ukazuje, jak vyvíjet a testovat Microsoft Machine Learning Server ve vzdáleném kontextu Spark (samostatná instance Sparku na DSVM).
 
@@ -254,7 +255,7 @@ Informace o tom, jak nasadit modely v R a Pythonu do Azure Machine Learning, naj
 
 ## <a name="machine-learning-tools"></a>Nástroje pro strojové učení
 
-Tento virtuální počítač přináší nástroje Machine Learning a algoritmy, které byly předem kompilovány a předinstalované místně. Mezi ně patří:
+Tento virtuální počítač přináší nástroje Machine Learning a algoritmy, které byly předem kompilovány a předinstalované místně. Zde jsou některé z nich:
 
 * **Pro dostupné**: rychlý online algoritmus pro učení.
 * **xgboost**: nástroj, který poskytuje optimalizované a zesílené stromové algoritmy.
@@ -338,7 +339,7 @@ Nyní se otevře grafické rozhraní se sadou karet. Pomocí následujících kr
 1. Vyberte kartu **vyhodnotit** .
 1. Vyberte možnost **rizika** a výběrem možnosti **Spustit** zobrazíte zobrazení se dvěma **riziky (kumulativní)** výkon.
 1. Vyberte kartu **protokol** , chcete-li zobrazit generovaný kód R pro předchozí operace.
-   (Kvůli chybě v aktuální verzi Rattle je nutné před **exportem tohoto protokolu** do textu protokolu **#** vložit znak.)
+   (Kvůli chybě v aktuální verzi Rattle je nutné **#** před **exportem tohoto protokolu** do textu protokolu vložit znak.)
 1. Vyberte tlačítko **exportovat** a uložte soubor skriptu R s názvem *weather_script. R* do domovské složky.
 
 Můžete ukončit Rattle a R. Nyní můžete upravit generovaný skript R. Nebo použijte skript jako takový a spusťte ho kdykoli, abyste mohli opakovat všechno, co bylo provedeno v uživatelském rozhraní Rattle. Hlavně pro začátečníky v R je to způsob, jak rychle analyzovat a strojové učení v jednoduchém grafickém rozhraní, a to při automatickém generování kódu v jazyce R, abyste mohli upravovat nebo učit.

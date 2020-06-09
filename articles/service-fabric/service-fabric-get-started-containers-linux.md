@@ -3,12 +3,13 @@ title: Vytvoření aplikace Azure Service Fabric Container v systému Linux
 description: Vytvoříte svou první aplikaci typu kontejner pro Linux na platformě Azure Service Fabric. Sestavíte image Dockeru s vaší aplikací, nahrajete image do registru kontejneru a sestavíte a nasadíte aplikaci Service Fabric typu kontejner.
 ms.topic: conceptual
 ms.date: 1/4/2019
-ms.openlocfilehash: f2f8c7884323667f843382b02c73a570e58617f1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 07e3682ec1787ceb350ac72c8b80d86eed80b339
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75457971"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560651"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Vytvoření první aplikace Service Fabric typu kontejner v Linuxu
 > [!div class="op_single_selector"]
@@ -113,7 +114,7 @@ docker run -d -p 4000:80 --name my-web-site helloworldapp
 
 Parametr *name* udává název spuštěného kontejneru (namísto ID kontejneru).
 
-Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na IP adresu vrácenou na portu 4000, například http:\//localhost: 4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na IP adresu vrácenou na portu 4000, například http: \/ /localhost: 4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ![Hello World!][hello-world]
 
@@ -249,16 +250,16 @@ Připojte se k místnímu clusteru služby Service Fabric.
 sfctl cluster select --endpoint http://localhost:19080
 ```
 
-Pomocí instalačního skriptu, který je součástí šablon https://github.com/Azure-Samples/service-fabric-containers/ v části, zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte instanci aplikace.
+Pomocí instalačního skriptu, který je součástí šablon v části https://github.com/Azure-Samples/service-fabric-containers/ , zkopírujte balíček aplikace do úložiště imagí clusteru, zaregistrujte typ aplikace a vytvořte instanci aplikace.
 
 
 ```bash
 ./install.sh
 ```
 
-Otevřete prohlížeč a přejděte na adresu Service Fabric Explorer na adrese http\/:/localhost: 19080/Explorer (Pokud používáte Vagrant v Mac OS X, nahraďte localhost privátní IP adresou virtuálního počítače. Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
+Otevřete prohlížeč a přejděte na adresu Service Fabric Explorer na adrese http: \/ /localhost: 19080/Explorer (Pokud používáte Vagrant v Mac OS X, nahraďte localhost privátní IP adresou virtuálního počítače. Rozbalte uzel Aplikace a všimněte si, že už obsahuje položku pro váš typ aplikace a další položku pro první instanci tohoto typu.
 
-Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na IP adresu vrácenou na portu 4000, například http:\//localhost: 4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
+Připojte se ke spuštěnému kontejneru. Otevřete webový prohlížeč, který odkazuje na IP adresu vrácenou na portu 4000, například http: \/ /localhost: 4000. V prohlížeči by se měl zobrazit nadpis „Hello World!“.
 
 ![Hello World!][hello-world]
 

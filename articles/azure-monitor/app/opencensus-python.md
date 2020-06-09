@@ -6,12 +6,13 @@ author: reyang
 ms.author: reyang
 ms.date: 10/11/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6b8343d08962d8ce749e1160b0226b68571571f8
-ms.sourcegitcommit: fc0431755effdc4da9a716f908298e34530b1238
+ms.custom: tracking-python
+ms.openlocfilehash: 3a47296d755c2a933e7e136a4b17ae87561213ad
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/24/2020
-ms.locfileid: "83815719"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84553858"
 ---
 # <a name="set-up-azure-monitor-for-your-python-application"></a>Nastavení Azure Monitor pro aplikaci Python
 
@@ -24,7 +25,7 @@ Azure Monitor podporuje distribuované trasování, shromažďování metrik a p
 
 ## <a name="sign-in-to-the-azure-portal"></a>Přihlášení k webu Azure Portal
 
-Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
+Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
 
 ## <a name="create-an-application-insights-resource-in-azure-monitor"></a>Vytvoření prostředku Application Insights v Azure Monitor
 
@@ -39,7 +40,7 @@ Nejdřív je potřeba vytvořit prostředek Application Insights v Azure Monitor
    | Nastavení        | Hodnota           | Popis  |
    | ------------- |:-------------|:-----|
    | **Název**      | Globálně jedinečná hodnota | Název, který identifikuje aplikaci, kterou sledujete |
-   | **Resource Group**     | myResourceGroup      | Název nové skupiny prostředků pro hostování Application Insightsch dat |
+   | **Skupina prostředků**     | myResourceGroup      | Název nové skupiny prostředků pro hostování Application Insightsch dat |
    | **Umístění** | USA – východ | Umístění poblíž vaší oblasti nebo poblíž místa, kde je vaše aplikace hostována |
 
 1. Vyberte **Vytvořit**.

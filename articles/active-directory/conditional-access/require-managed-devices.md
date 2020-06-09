@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: article
-ms.date: 11/22/2019
+ms.date: 06/08/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a3c71534febc3cdb6429d3092225ebc73f6cbe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ec6e0f7405d29cb89fd8ba701b52678ca939596
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481479"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558703"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování spravovaných zařízení pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -97,6 +97,8 @@ U zařízení, které je označeno jako vyhovující, můžete předpokládat, �
 - Zařízení a jeho aplikace vyhovují požadavkům na zabezpečení společnosti.
 
 ### <a name="known-behavior"></a>Známé chování
+
+Při použití [toku OAuth pro kód zařízení](../develop/v2-oauth2-device-code.md)se nepodporuje stav vyžadovat řízení udělení spravovaného zařízení nebo stav zařízení. Důvodem je to, že zařízení, které provádí ověřování, nemůže poskytnout stav zařízení zařízení, které poskytuje kód, a stav zařízení je v tokenu zamčený k zařízení, které provádí ověřování. Místo toho použijte ovládací prvek vyžadovat službu Multi-Factor Authentication.
 
 Ve Windows 7, iOS, Androidu, macOS a některých webových prohlížečích třetích stran služba Azure AD identifikuje zařízení pomocí klientského certifikátu, který se zřídí při registraci zařízení ve službě Azure AD. Když se uživatel poprvé přihlásí prostřednictvím prohlížeče, zobrazí se uživateli výzva k výběru certifikátu. Koncový uživatel musí tento certifikát vybrat předtím, než bude moci pokračovat v používání prohlížeče.
 

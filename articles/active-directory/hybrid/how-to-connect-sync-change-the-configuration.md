@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9fb43061b42a43755564f825fa01e65dacad3e5
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 634c10771751522dba4093fe1c830820926fd621
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827291"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558564"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect synchronizace: proveďte změnu ve výchozí konfiguraci.
 Tento článek vás seznámí s postupem, jak provést změny ve výchozí konfiguraci v Azure Active Directory (Azure AD) Connect Sync. Poskytuje kroky pro některé běžné scénáře. S tímto vědomím byste měli být schopni provádět jednoduché změny vlastní konfigurace na základě vašich vlastních obchodních pravidel.
@@ -243,7 +243,7 @@ Ne všechny atributy služby Azure AD se importují do místního prostoru služ
  5. Kliknutím na tlačítko **OK** uložte.
 ![Přidat zdrojový atribut do schématu místního AD Connectoru](./media/how-to-connect-sync-change-the-configuration/usertype1.png)
 
-### <a name="step-3-add-the-usertype-to-the-azure-ad-connector-schema"></a>Krok 3: Přidání UserType do schématu konektoru služby Azure AD
+### <a name="step-3-add-the-usertype-attribute-to-the-azure-ad-connector-schema"></a>Krok 3: Přidání atributu UserType do schématu konektoru služby Azure AD
 Ve výchozím nastavení atribut UserType není importován do Azure AD Connectho prostoru. Chcete-li přidat atribut UserType do seznamu importovaných atributů:
 
  1. V Synchronization Service Manager otevřete kartu **konektory** .
@@ -265,7 +265,7 @@ Pravidlo příchozí synchronizace povoluje, aby hodnota atributu mohla přechá
     | Atribut | Hodnota | Podrobnosti |
     | --- | --- | --- |
     | Name | *Zadat název* | Například *ve službě AD – uživatelskou usertype* |
-    | Popis | *Zadejte popis.* |  |
+    | Description | *Zadejte popis.* |  |
     | Připojený systém | *Výběr místního konektoru služby AD* |  |
     | Typ připojeného systémového objektu | **Uživatel** |  |
     | Typ objektu úložiště metaverse | **Person (Osoba)** |  |
@@ -307,7 +307,7 @@ Pravidlo odchozí synchronizace povoluje, aby hodnota atributu byla z úložišt
     | Atribut | Hodnota | Podrobnosti |
     | ----- | ------ | --- |
     | Name | *Zadat název* | Například pro *AAD – uživatel – usertype* |
-    | Popis | *Zadejte popis.* ||
+    | Description | *Zadejte popis.* ||
     | Připojený systém | *Vyberte konektor AAD.* ||
     | Typ připojeného systémového objektu | **Uživatel** ||
     | Typ objektu úložiště metaverse | **Person (Osoba)** ||
@@ -340,7 +340,7 @@ Pomocí následujících kroků můžete ověřit změny, a to ručním spuště
 
 1. Spusťte **úplný import** na **místní službě AD Connector**:
 
-   1. V Synchronization Service Manager otevřete kartu **operace** .
+   1. V Synchronization Service Manager otevřete kartu **konektory** .
    2. Klikněte pravým tlačítkem na **konektor on-premises AD** a vyberte **Spustit**.
    3. V místním dialogovém okně vyberte **úplný import** a pak klikněte na **OK**.
    4. Počkejte na dokončení operace.

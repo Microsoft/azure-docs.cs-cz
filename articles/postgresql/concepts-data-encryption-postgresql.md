@@ -6,23 +6,24 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 4ef5d89ea58c5c27f4344633afa2fe8048948719
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: e4811b1b892fb04400b5a96450db14a260532003
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849466"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488830"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-a-customer-managed-key"></a>Azure Database for PostgreSQL šifrování dat s jedním serverem pomocí klíče spravovaného zákazníkem
-
-> [!NOTE]
-> V tuto chvíli musíte požádat o přístup k používání této možnosti. Pokud to chcete udělat, kontaktujte AskAzureDBforPostgreSQL@service.microsoft.com .
 
 Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for PostgreSQL jediným serverem vám umožní přinést si vlastní klíč (BYOK) pro ochranu dat v klidovém prostředí. Umožňuje také organizacím implementovat oddělení povinností při správě klíčů a dat. V případě šifrování spravovaného zákazníkem máte úplnou kontrolu nad životním cyklem klíčů, oprávněními k používání klíčů a auditováním operací s klíči, za které také zodpovídáte.
 
 Šifrování dat pomocí klíčů spravovaných zákazníkem pro Azure Database for PostgreSQL jeden server je nastaveno na úrovni serveru. Pro daný server se k zašifrování datového šifrovacího klíče (klíč DEK) používaného službou používá klíč spravovaný zákazníkem (KEK), který se nazývá klíč šifrovací klíč (). KEK je asymetrický klíč uložený v instanci [Azure Key Vault](../key-vault/key-Vault-secure-your-key-Vault.md) spravované zákazníkem a zákazníkem. Klíč šifrování klíče (KEK) a šifrovací klíč (klíč DEK) jsou podrobněji popsány dále v tomto článku.
 
 Key Vault je cloudový externí systém pro správu klíčů. Je vysoce dostupná a poskytuje škálovatelné a zabezpečené úložiště pro kryptografické klíče RSA, volitelně zajištěné moduly zabezpečení FIPS 140-2 Level 2 (HSM). Neumožňuje přímý přístup k uloženému klíči, ale poskytuje služby šifrování a dešifrování autorizovaným entitám. Key Vault může klíč vygenerovat, naimportovat nebo [přenášet z místního zařízení HSM](../key-vault/key-Vault-hsm-protected-keys.md).
+
+
+> [!NOTE]
+> Tato funkce se v současné době zavádí globálně a bude brzy k dispozici ve všech oblastech. Pokud ji v oblasti nevidíte, kontaktujte AskAzureDBforPostgreSQL@service.microsoft.com .
 
 > [!NOTE]
 > Tato funkce je dostupná ve všech oblastech Azure, kde Azure Database for PostgreSQL jeden server podporuje cenové úrovně "Pro obecné účely" a "paměťově optimalizované".
@@ -129,6 +130,19 @@ Aby nedocházelo k problémům při nastavování šifrování dat spravovaného
 * Zahajte proces vytváření repliky obnovení nebo čtení z hlavního Azure Database for PostgreSQL jednoho serveru.
 * Nechejte nově vytvořený server (Obnovený nebo repliku) v nepřístupovém stavu, protože jeho jedinečná identita ještě nemá udělená oprávnění Key Vault.
 * Na serveru obnoveného nebo repliky znovu ověřte klíč spravovaný zákazníkem v nastavení šifrování dat. Tím se zajistí, že nově vytvořenému serveru budou udělena oprávnění k zalamování a odbalení klíče uloženého v Key Vault.
+
+## <a name="limitations"></a>Omezení
+
+U Azure Database for PostgreSQL podporuje šifrování neaktivních dat pomocí CMK (Customers Key) několik omezení –
+
+* Podpora této funkce je omezená na **pro obecné účely** a **paměťově optimalizované** cenové úrovně.
+* Tato funkce je podporována pouze v oblastech a serverech, které podporují úložiště až do 16TB. Seznam oblastí Azure, které podporují úložiště až do 16TB, najdete v části úložiště [v dokumentaci.](concepts-pricing-tiers.md#storage)
+
+    > [!NOTE]
+    > - Všechny nové servery PostgreSQL vytvořené v oblastech uvedených výše jsou **k dispozici**podpora šifrování pomocí klíčů manažera zákazníka. Obnovený bod v čase (PITR) nebo replika čtení se neprojeví, i když je teoreticky "New".
+    > - Pokud chcete ověřit, jestli zřízený Server podporuje až 16TB, můžete přejít na okno cenová úroveň na portálu a zobrazit maximální velikost úložiště podporovanou zřízeným serverem. Pokud můžete posuvník přesunout až na 4 TB, váš server možná nepodporuje šifrování se spravovanými klíči zákazníka. Data se ale šifrují pomocí klíčů spravovaných službou. AskAzureDBforPostgreSQL@service.microsoft.comPokud máte nějaké dotazy, obraťte se na něj.
+
+* Šifrování se podporuje jenom s kryptografickým klíčem RSA 2048.
 
 ## <a name="next-steps"></a>Další kroky
 

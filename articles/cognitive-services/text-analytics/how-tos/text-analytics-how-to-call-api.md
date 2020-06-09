@@ -10,18 +10,18 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: afb576c265ccdd4a014ed678331f030a0442a197
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c6fbec35920c8afd08ab60fc380c9f816ae599b0
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219299"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561026"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Způsob volání Analýza textu REST API
 
-Volání **rozhraní API pro analýzu textu** jsou volání http post/Get, která lze formulovat v libovolném jazyce. V tomto článku k předvedení klíčových konceptů používáme REST a [post](https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop) .
+Volání **rozhraní API pro analýzu textu** jsou volání http post/Get, která lze formulovat v libovolném jazyce. V tomto článku k předvedení klíčových konceptů používáme REST a [post](https://www.postman.com/downloads/) .
 
-Každý požadavek musí zahrnovat váš přístupový klíč a koncový bod HTTP. Koncový bod určuje oblast, kterou jste zvolili při registraci, adresu URL služby a prostředek, který se používá na žádosti `sentiment`: `keyphrases`, `languages`, a `entities`. 
+Každý požadavek musí zahrnovat váš přístupový klíč a koncový bod HTTP. Koncový bod určuje oblast, kterou jste zvolili při registraci, adresu URL služby a prostředek, který se používá na žádosti: `sentiment` , `keyphrases` , `languages` a `entities` . 
 
 Odvolání tohoto Analýza textu je bezstavové, takže neexistují žádné datové assety, které by bylo možné spravovat. Váš text se nahraje, analyzuje se po přijetí a výsledky se vrátí hned do volající aplikace.
 
@@ -41,9 +41,9 @@ V současné době můžete pro všechny operace Analýza textu odeslat stejné 
 
 | Prvek | Platné hodnoty | Povinné? | Využití |
 |---------|--------------|-----------|-------|
-|`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Požaduje se | Systém používá ID, která zadáte k strukturování výstupu. Pro každé ID v žádosti jsou vygenerovány kódy jazyka, klíčové fráze a výsledky mínění.|
-|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Požaduje se | V případě detekce jazyka lze text vyjádřit v jakémkoli jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikaci entit musí být text v [podporovaném jazyce](../text-analytics-supported-languages.md). |
-|`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../text-analytics-supported-languages.md) | Různé | Vyžaduje se pro analýzu míněníí, extrakci klíčových frází a propojení entit. volitelné pro detekci jazyka. Pokud vyloučíte, nedošlo k žádné chybě, ale analýza je bez něj oslabena. Kód jazyka by měl odpovídat `text` vašemu zadání. |
+|`id` |Datovým typem je řetězec, ale v praxi se ID dokumentů považují za celá čísla. | Vyžadováno | Systém používá ID, která zadáte k strukturování výstupu. Pro každé ID v žádosti jsou vygenerovány kódy jazyka, klíčové fráze a výsledky mínění.|
+|`text` | Nestrukturovaný nezpracovaný text, maximálně 5 120 znaků. | Vyžadováno | V případě detekce jazyka lze text vyjádřit v jakémkoli jazyce. Pro analýzu mínění, extrakci klíčových frází a identifikaci entit musí být text v [podporovaném jazyce](../text-analytics-supported-languages.md). |
+|`language` | 2 – znakový kód [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) pro [podporovaný jazyk](../text-analytics-supported-languages.md) | Různé | Vyžaduje se pro analýzu míněníí, extrakci klíčových frází a propojení entit. volitelné pro detekci jazyka. Pokud vyloučíte, nedošlo k žádné chybě, ale analýza je bez něj oslabena. Kód jazyka by měl odpovídat vašemu `text` zadání. |
 
 Další informace o omezeních najdete v tématu [Analýza textu přehled >ch omezení dat](../overview.md#data-limits). 
 
@@ -90,7 +90,7 @@ Služba přijme požadavek o velikosti až 1 MB. Pokud používáte metodu post 
 
    V poli post se odpověď zobrazuje v následujícím okně jako jeden dokument JSON s položkou pro každé ID dokumentu, které je v požadavku k dispozici.
 
-## <a name="see-also"></a>Viz také 
+## <a name="see-also"></a>Viz také: 
 
  [Přehled rozhraní API pro analýzu textu](../overview.md)  
  [Nejčastější dotazy](../text-analytics-resource-faq.md)

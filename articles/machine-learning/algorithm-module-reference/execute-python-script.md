@@ -6,15 +6,16 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: reference
+ms.custom: tracking-python
 author: likebupt
 ms.author: keli19
 ms.date: 04/27/2020
-ms.openlocfilehash: 9b2114672db755efba1818505c8f399ac01aea71
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: d25a738a76c955ee11f091bb0f8861bd21cc9f1d
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983597"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84555867"
 ---
 # <a name="execute-python-script-module"></a>Spustit modul Python Script
 
@@ -229,12 +230,12 @@ Modul **spuštění skriptu Pythonu** obsahuje ukázkový kód Pythonu, který m
     Textové pole **skriptu Pythonu** se předem vyplní některými pokyny v komentářích a vzorový kód pro přístup k datům a výstup. Tento kód musíte upravit nebo nahradit. Nezapomeňte dodržovat konvence Pythonu týkající se odsazení a používání velkých a malých písmen.
 
     + Skript musí obsahovat funkci s názvem `azureml_main` jako vstupní bod pro tento modul.
-    + Funkce vstupního bodu musí mít dva vstupní argumenty: `Param<dataframe1>` a, `Param<dataframe2>`a to i v případě, že se tyto argumenty ve skriptu nepoužívají.
-    + Soubory zip připojené k třetímu vstupnímu portu jsou komprimovány a uloženy v adresáři, `.\Script Bundle`který je také přidán do jazyka Python `sys.path`. 
+    + Funkce vstupního bodu musí mít dva vstupní argumenty: `Param<dataframe1>` a `Param<dataframe2>` , a to i v případě, že se tyto argumenty ve skriptu nepoužívají.
+    + Soubory zip připojené k třetímu vstupnímu portu jsou komprimovány a uloženy v adresáři, `.\Script Bundle` který je také přidán do jazyka Python `sys.path` . 
 
-    Proto pokud váš soubor zip obsahuje `mymodule.py`, importujte ho pomocí. `import mymodule`
+    Proto pokud váš soubor zip obsahuje `mymodule.py` , importujte ho pomocí `import mymodule` .
 
-    + Do návrháře lze vrátit dvě datové sady, které musí být sekvence typu `pandas.DataFrame`. V kódu Pythonu můžete vytvořit další výstupy a zapsat je přímo do služby Azure Storage.
+    + Do návrháře lze vrátit dvě datové sady, které musí být sekvence typu `pandas.DataFrame` . V kódu Pythonu můžete vytvořit další výstupy a zapsat je přímo do služby Azure Storage.
 
 6. Odešlete kanál, nebo vyberte modul a klikněte na **Spustit vybraný** , aby se spouštěl jenom skript Pythonu.
 

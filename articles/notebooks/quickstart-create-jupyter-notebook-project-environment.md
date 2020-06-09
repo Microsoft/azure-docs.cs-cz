@@ -3,12 +3,13 @@ title: Vytvoření projektu Azure Notebooks ve verzi Preview s vlastním prostř
 description: Vytvoří nový projekt v Azure Notebooks Preview, který je nakonfigurovaný pomocí konkrétní sady nainstalovaných balíčků a spouštěcích skriptů.
 ms.topic: quickstart
 ms.date: 12/04/2018
-ms.openlocfilehash: 6388cb7997cac5bef25975043a13c4e080f288d4
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 03935b9672c25db11b91733fac1c63f1f5978b87
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78196837"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559753"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Rychlý Start: vytvoření projektu s vlastním prostředím ve službě Azure Notebooks Preview
 
@@ -35,7 +36,7 @@ Projekt v Azure Notebooks je kolekce souborů, například poznámkových bloků
     - **Veřejný projekt**: (nezaškrtnuto)
     - **Vytvořit Readme.MD**: (nezaškrtnuto)
 
-1. Po chvíli Azure Notebooks přejít k novému projektu. Přidejte do projektu Poznámkový blok tak, že vyberete rozevírací seznam **+ Nový** (může se zobrazit jenom **+** jako) a pak vybrat **Poznámkový blok**.
+1. Po chvíli Azure Notebooks přejít k novému projektu. Přidejte do projektu Poznámkový blok tak, že vyberete rozevírací seznam **+ Nový** (může se zobrazit jenom jako **+** ) a pak vybrat **Poznámkový blok**.
 
 1. Poznámkový blok pojmenujte jako *vlastní prostředí. ipynb*, vyberte **Python 3,6** pro jazyk a vyberte **Nový**.
 
@@ -51,20 +52,20 @@ Projekt v Azure Notebooks je kolekce souborů, například poznámkových bloků
 
 1. Příkaz **+ Add** vytvoří krok, který je definován operací a cílovým souborem, který je vybrán ze souborů v projektu. Podporují se tyto operace:
 
-   | Operace | Popis |
+   | Operace | Description |
    | --- | --- |
-   | Požadavky. txt | Projekty Pythonu definují své závislosti v souboru. txt požadavků. Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu a také v rozevíracím seznamu, který se zobrazí, vyberte verzi Pythonu. V případě potřeby vyberte **Zrušit** a vraťte se do projektu, nahrajte nebo vytvořte soubor a pak se vraťte na kartu > **prostředí** **nastavení projektu**a vytvořte nový krok. V tomto kroku je spuštěný Poznámkový blok v projektu se automaticky spustí.`pip install -r <file>` |
+   | Požadavky. txt | Projekty Pythonu definují své závislosti v souboru. txt požadavků. Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu a také v rozevíracím seznamu, který se zobrazí, vyberte verzi Pythonu. V případě potřeby vyberte **Zrušit** a vraťte se do projektu, nahrajte nebo vytvořte soubor a pak se vraťte na kartu prostředí **nastavení projektu**  >  **Environment** a vytvořte nový krok. V tomto kroku je spuštěný Poznámkový blok v projektu se automaticky spustí.`pip install -r <file>` |
    | Skript prostředí | Použijte k označení skriptu prostředí bash (obvykle souboru s příponou *. sh* ), který obsahuje příkazy, které chcete spustit k inicializaci prostředí. |
    | Environment. yml | Projekt Pythonu, který používá conda ke správě prostředí, používá k popisu závislostí soubor *Environment. yml* . Pomocí této možnosti vyberte příslušný soubor ze seznamu souborů projektu. |
 
    > [!WARNING]
-   > Vzhledem k tomu, že se jedná o službu ve verzi Preview, se v současnosti jedná `Environment.yml` o známý problém, kdy se nastavení pro váš projekt nepoužije podle očekávání. Projekt a poznámkové bloky Jupyter v v současné době nenačte zadaný soubor prostředí.
+   > Vzhledem k tomu, že se jedná o službu ve verzi Preview, se v současnosti jedná o známý problém, kdy se `Environment.yml` nastavení pro váš projekt nepoužije podle očekávání. Projekt a poznámkové bloky Jupyter v v současné době nenačte zadaný soubor prostředí.
 
 1. Pokud chcete odebrat nějaký krok nastavení, vyberte **X** napravo od kroku.
 
 1. Až budou všechny kroky instalace na místě, vyberte **Uložit**. (Vyberte **Zrušit** pro zahození změn).
 
-1. Chcete-li otestovat prostředí, vytvořte a spusťte nový Poznámkový blok a pak vytvořte buňku kódu s příkazy, které jsou závislé na balíčku v prostředí, jako je například `import` použití příkazu Python. Pokud se příkaz úspěšně dokončí, potřebný balíček se úspěšně nainstaloval do prostředí.
+1. Chcete-li otestovat prostředí, vytvořte a spusťte nový Poznámkový blok a pak vytvořte buňku kódu s příkazy, které jsou závislé na balíčku v prostředí, jako je například použití `import` příkazu Python. Pokud se příkaz úspěšně dokončí, potřebný balíček se úspěšně nainstaloval do prostředí.
 
 ## <a name="next-steps"></a>Další kroky
 

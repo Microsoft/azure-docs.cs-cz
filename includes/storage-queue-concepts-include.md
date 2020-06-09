@@ -22,7 +22,7 @@ Služba front Azure obsahuje následující komponenty:
 
 ![Součásti Azure Služba front](./media/storage-queue-concepts-include/azure-queue-service-components.png)
 
-* **Formát adresy URL:** Fronty jsou adresovatelné v následujícím formátu adresy URL: http://`<storage account>`. Queue.Core.Windows.NET/`<queue>`
+* **Formát adresy URL:** Fronty jsou adresovatelné v následujícím formátu adresy URL: http:// `<storage account>` . Queue.Core.Windows.NET/`<queue>`
   
     Následující adresa URL odkazuje na frontu v diagramu:  
   

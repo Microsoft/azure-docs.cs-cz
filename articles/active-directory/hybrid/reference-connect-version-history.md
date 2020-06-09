@@ -12,12 +12,12 @@ ms.date: 05/20/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fe9c9f44c42ef1e8dd6ff3401ad7201b174aa952
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 53ac540950dc6f64107ee20448b2c24981837b05
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725291"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558506"
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: Historie vydaných verzí
 Tým Azure Active Directory (Azure AD) pravidelně aktualizuje Azure AD Connect s novými funkcemi a funkcemi. Ne všechny dodatky platí pro všechny cílové skupiny.
@@ -1055,7 +1055,7 @@ Synchronizace služby Azure AD Connect
 
 Jednotné přihlašování k ploše
 
-* Průvodce Azure AD Connect už nepotřebuje, aby se v síti otevřel port 9090 při konfiguraci předávacího ověřování a jednotného přihlašování k ploše. Je vyžadován pouze port 443. 
+* Průvodce Azure AD Connect už nepotřebuje, aby se v síti otevřel port 9090 při konfiguraci předávacího ověřování a jednotného přihlašování k ploše. Je vyžadován pouze port 443.
 
 ## <a name="114430"></a>verze 1.1.443.0
 Vydáno: březen 2017

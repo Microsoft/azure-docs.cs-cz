@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 06/08/2020
 ms.author: ccompy
-ms.openlocfilehash: f7208307df51ecefb76f9adaedea59b327cdc19e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ee81b391587b994bd79e9f0950d041de70153b5c
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81604882"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488782"
 ---
 Použití místní integrace virtuální sítě umožňuje aplikacím přístup k těmto akcím:
 
@@ -56,11 +56,7 @@ Pro každou instanci plánu se používá jedna adresa. Při škálování aplik
 
 Pokud chcete, aby vaše aplikace v jiném plánu dosáhly virtuální sítě, ke které už jsou připojené aplikace v jiném plánu, vyberte jinou podsíť, než kterou používá stávající integrace virtuální sítě.
 
-Tato funkce je ve verzi Preview pro Linux. Forma systému Linux funkce podporuje pouze volání adres RFC 1918 (10.0.0.0/8, 172.16.0.0/12, 192.168.0.0/16).
-
-### <a name="web-or-function-app-for-containers"></a>Web nebo Function App pro kontejnery
-
-Pokud vaše aplikace hostuje v systému Linux pomocí integrovaných imagí, místní integrace virtuální sítě funguje bez dalších změn. Pokud používáte web nebo Function App pro kontejnery, musíte upravit image Docker tak, aby používala integraci virtuální sítě. V imagi Docker použijte proměnnou prostředí portu jako port naslouchání hlavního webového serveru namísto použití pevně zakódované čísla portu. Proměnná prostředí portu je automaticky nastavená platformou v době spuštění kontejneru. Pokud používáte SSH, musí být démon procesu SSH nakonfigurovaný tak, aby naslouchal na čísle portu určeném proměnnou prostředí SSH_PORT při použití místní integrace virtuální sítě. V systému Linux není k dispozici žádná podpora pro integraci virtuální sítě požadovaná bránou.
+Tato funkce je plně podporovaná pro webové aplikace Windows i Linux. Všechna chování se chovají stejně jako aplikace pro Windows a aplikace pro Linux.
 
 ### <a name="service-endpoints"></a>Koncové body služby
 

@@ -8,13 +8,13 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.custom: seodec18
-ms.openlocfilehash: 3a7a00e59db677e156037c007537ab1b54c1cfaf
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 82bdf4cd25d486d48f4f2adda222197a600434d8
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "82159962"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559575"
 ---
 # <a name="open-source-technologies-faqs-for-web-apps-in-azure"></a>Nejčastější dotazy týkající se technologie Open source pro Web Apps v Azure
 
@@ -26,8 +26,8 @@ V tomto článku najdete odpovědi na nejčastější dotazy týkající se pot�
 
 Zapnutí protokolování PHP:
 
-1. Přihlaste se k **webu Kudu** (`https://*yourwebsitename*.scm.azurewebsites.net`).
-2. V horní nabídce vyberte **ladit konzolu** > **cmd**.
+1. Přihlaste se k **webu Kudu** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
+2. V horní nabídce vyberte **ladit konzolu**  >  **cmd**.
 3. Vyberte složku **webu** .
 4. Vyberte složku **wwwroot** .
 5. Vyberte **+** ikonu a pak vyberte **nový soubor**.
@@ -56,7 +56,7 @@ Chcete-li změnit verzi aplikace Node. js, můžete použít jednu z následují
   1. V Azure Portal přejdete do své webové aplikace.
   2. V okně **Nastavení** vyberte **nastavení aplikace**.
   3. V **nastavení aplikace**můžete zahrnout WEBSITE_NODE_DEFAULT_VERSION jako klíč a verzi Node. js, kterou chcete použít jako hodnotu.
-  4. Přejít na **konzolu Kudu** (`https://*yourwebsitename*.scm.azurewebsites.net`).
+  4. Přejít na **konzolu Kudu** ( `https://*yourwebsitename*.scm.azurewebsites.net` ).
   5. Chcete-li zjistit verzi Node. js, zadejte následující příkaz:  
      ```
      node -v
@@ -91,7 +91,7 @@ Pokud se tato chyba zobrazuje v souborech Debug. log nebo php_errors. log, vaše
 
 ## <a name="how-do-i-debug-a-nodejs-app-thats-hosted-in-app-service"></a>Návody ladit aplikaci Node. js, která je hostovaná v App Service?
 
-1.  Přejít na **konzolu Kudu** (`https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole`).
+1.  Přejít na **konzolu Kudu** ( `https://*yourwebsitename*.scm.azurewebsites.net/DebugConsole` ).
 2.  Přejít do složky protokoly aplikací (D:\home\LogFiles\Application).
 3.  V souboru logging_errors. txt vyhledejte obsah.
 
@@ -138,7 +138,7 @@ The web application[ROOT] registered the JDBC driver [com.mysql.jdbc.Driver] but
 
 1. Odstraňte soubor Sqljdbc*. jar ze složky App/lib.
 2. Pokud používáte vlastní webový server Tomcat nebo Azure Marketplace Tomcat, zkopírujte tento soubor. jar do složky Tomcat lib.
-3. Pokud povolíte Java z Azure Portal (vyberte**Tomcat Server** **Java 1,8** > ), zkopírujte soubor Sqljdbc. * jar do složky, která je pro vaši aplikaci rovnoběžná. Pak přidejte následující nastavení classpath do souboru Web. config:
+3. Pokud povolíte Java z Azure Portal (vyberte Tomcat server **Java 1,8**  >  **Tomcat server**), zkopírujte soubor Sqljdbc. * jar do složky, která je pro vaši aplikaci rovnoběžná. Pak přidejte následující nastavení classpath do souboru Web. config:
 
     ```xml
     <httpPlatform>

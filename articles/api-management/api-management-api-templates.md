@@ -13,12 +13,13 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
-ms.openlocfilehash: eee95a2b6acde3ad3b7d94cf5cdd0f74f9f09fd9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 467d8b89ef5c114d647a257053ed3367d6336bdc
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79265958"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559342"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Šablony rozhraní API v Azure API Management
 
@@ -81,7 +82,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `API list` Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
+ `API list`Šablona může používat následující [ovládací prvky stránky](api-management-page-controls.md).  
   
 -   [ovládací prvek stránkování](api-management-page-controls.md#paging-control)  
   
@@ -89,7 +90,7 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`apis`|Kolekce [souhrnných entit rozhraní API](api-management-template-data-model-reference.md#APISummary)|Rozhraní API viditelné pro aktuálního uživatele.|  
   
@@ -340,11 +341,11 @@ Azure API Management poskytuje možnost přizpůsobení obsahu stránek portálu
 ```  
   
 ### <a name="controls"></a>Ovládací prvky  
- `Operation` Šablona nepovoluje použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
+ `Operation`Šablona nepovoluje použití žádných [ovládacích prvků stránky](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Datový model  
   
-|Vlastnost|Typ|Popis|  
+|Vlastnost|Typ|Description|  
 |--------------|----------|-----------------|  
 |`apiId`|řetězec|ID aktuálního rozhraní API|  
 |`apiName`|řetězec|Název rozhraní API.|  
@@ -1283,7 +1284,7 @@ catch (HttpException $ex)
 }  
 ```  
   
-### <a name="python"></a><a name="Python"></a>Python  
+### <a name="python"></a><a name="Python"></a> Python  
  Šablona **DocumentationSamplesPython** vám umožňuje přizpůsobit ukázku kódu v části Ukázky kódu stránky operace.  
   
 #### <a name="default-template"></a>Výchozí šablona  

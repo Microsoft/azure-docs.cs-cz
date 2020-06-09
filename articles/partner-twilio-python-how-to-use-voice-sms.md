@@ -12,12 +12,13 @@ ms.devlang: python
 ms.topic: article
 ms.date: 02/19/2015
 ms.author: gwallace
-ms.openlocfilehash: edbc9eef6b5f0af2e70152b66228cdf09ef31110
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 4722e8adadf59f8a4ad7b36a73fad5a6cff3370f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72242185"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560882"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-python"></a>Použití Twilio pro hlasové funkce a možnosti SMS v Pythonu
 Tato příručka ukazuje, jak provádět běžné programovací úlohy pomocí služby Twilio API v Azure. Mezi zahrnuté scénáře patří telefonní hovor a odeslání zprávy o krátké službě zprávy (SMS). Další informace o Twilio a použití hlasu a SMS v aplikacích najdete v části [Další kroky](#NextSteps) .
@@ -40,21 +41,21 @@ Rozhraní Twilio API je rozhraní RESTful API, které poskytuje funkce hlasu a S
 Klíčovými aspekty rozhraní Twilio API jsou Twilio příkazy a Twilio Markup Language (TwiML).
 
 ### <a name="twilio-verbs"></a><a id="Verbs"></a>Operace Twilio
-Rozhraní API využívá operace Twilio; Například příkaz ** &lt;vyslovit&gt; ** instruuje Twilio, aby audibly doručení zprávy na volání.
+Rozhraní API využívá operace Twilio; Například příkaz ** &lt; vyslovit &gt; ** instruuje Twilio, aby audibly doručení zprávy na volání.
 
 Následuje seznam operací Twilio. Přečtěte si o dalších příkazech a funkcích prostřednictvím [dokumentace jazyka Twilio Markup Language][twiml].
 
-* Vytočit: připojí volajícího k jinému telefonu. ** &lt;&gt;**
-* Shromáždit: shromažďuje číselné číslice, které jsou zadány na klávesnici na telefonu. ** &lt;&gt;**
-* Hangup: ukončí volání. ** &lt;&gt;**
-* Pozastavit: netiché čekání po zadaný počet sekund. ** &lt;&gt;**
-* Přehrát: přehraje zvukový soubor. ** &lt;&gt;**
-* Queue: přidejte do fronty volajících. ** &lt;&gt;**
-* Záznam: zaznamenává hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam. ** &lt;&gt;**
-* Přesměrování: přenáší řízení volání nebo SMS na TwiML na jinou adresu URL. ** &lt;&gt;**
-* Odmítnout: odmítne příchozí volání na číslo Twilio bez fakturace. ** &lt;&gt;**
-* Řekněme: převede text na řeč, který se provádí na volání. ** &lt;&gt;**
-* SMS: pošle zprávu SMS. ** &lt;&gt;**
+* ** &lt; Vytočit &gt; **: připojí volajícího k jinému telefonu.
+* ** &lt; Shromáždit &gt; **: shromažďuje číselné číslice, které jsou zadány na klávesnici na telefonu.
+* ** &lt; Hangup &gt; **: ukončí volání.
+* ** &lt; Pozastavit &gt; **: netiché čekání po zadaný počet sekund.
+* ** &lt; Přehrát &gt; **: přehraje zvukový soubor.
+* ** &lt; Queue &gt; **: přidejte do fronty volajících.
+* ** &lt; Záznam &gt; **: zaznamenává hlas volajícího a vrátí adresu URL souboru, který obsahuje záznam.
+* ** &lt; Přesměrování &gt; **: přenáší řízení volání nebo SMS na TwiML na jinou adresu URL.
+* ** &lt; Odmítnout &gt; **: odmítne příchozí volání na číslo Twilio bez fakturace.
+* ** &lt; Řekněme &gt; **: převede text na řeč, který se provádí na volání.
+* ** &lt; SMS &gt; **: pošle zprávu SMS.
 
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 TwiML je sada instrukcí založených na XML, která je založená na příkazech Twilio, které informují Twilio o tom, jak zpracovat volání nebo SMS.
@@ -76,7 +77,7 @@ Až budete připraveni získat účet Twilio, zaregistrujte se do [Twilio try][t
 Když se přihlásíte k účtu Twilio, obdržíte identifikátor SID účtu a ověřovací token. Pro volání rozhraní API Twilio budou potřeba obojí. Abyste zabránili neoprávněnému přístupu k účtu, udržujte svůj ověřovací token zabezpečený. Identifikátor SID a ověřovací token vašeho účtu se v [konzole Twilio][twilio_console]zobrazit v polích s označením **SID účtu** a ověřovacího **tokenu**v uvedeném pořadí.
 
 ## <a name="create-a-python-application"></a><a id="create_app"></a>Vytvoření aplikace v Pythonu
-Aplikace v Pythonu, která používá službu Twilio a je spuštěná v Azure, se neliší od jakékoli jiné aplikace v Pythonu, která používá službu Twilio. I když jsou služby Twilio založené na REST a můžou se volat z Pythonu několika způsoby, Tento článek se zaměřuje na použití služeb Twilio s [Twilio knihovnou pro Python z GitHubu][twilio_python]. Další informace o použití knihovny Twilio pro Python najdete v tématu [https://www.twilio.com/docs/libraries/python][twilio_lib_docs].
+Aplikace v Pythonu, která používá službu Twilio a je spuštěná v Azure, se neliší od jakékoli jiné aplikace v Pythonu, která používá službu Twilio. I když jsou služby Twilio založené na REST a můžou se volat z Pythonu několika způsoby, Tento článek se zaměřuje na použití služeb Twilio s [Twilio knihovnou pro Python z GitHubu][twilio_python]. Další informace o použití knihovny Twilio pro Python najdete v tématu [https://www.twilio.com/docs/libraries/python][twilio_lib_docs] .
 
 Nejprve [nastavte nový virtuální počítač Azure Linux] [azure_vm_setup], který bude sloužit jako hostitel pro novou webovou aplikaci v Pythonu. Jakmile je virtuální počítač spuštěný, budete muset svou aplikaci zveřejnit na veřejném portu, jak je popsáno níže.
 
@@ -103,7 +104,7 @@ Aplikaci můžete nakonfigurovat tak, aby používala knihovnu Twilio pro Python
 
     - nebo -
 
-* Stáhněte si knihovnu Twilio pro Python z GitHubu[https://github.com/twilio/twilio-python][twilio_python]() a nainstalujte ji takto:
+* Stáhněte si knihovnu Twilio pro Python z GitHubu ( [https://github.com/twilio/twilio-python][twilio_python] ) a nainstalujte ji takto:
 
         $ python setup.py install
 
@@ -172,7 +173,7 @@ Následující příklad ukazuje, jak odeslat zprávu SMS pomocí `TwilioRestCli
                                      body=message)
 
 ## <a name="how-to-provide-twiml-responses-from-your-own-website"></a><a id="howto_provide_twiml_responses"></a>Postupy: poskytování odpovědí TwiML z vašeho vlastního webu
-Když vaše aplikace zahájí volání rozhraní Twilio API, Twilio odešle požadavek na adresu URL, která by měla vrátit odpověď TwiML. Výše uvedený příklad používá adresu URL [https://twimlets.com/message][twimlet_message_url]poskytnutou Twilio. (I když je TwiML navržený pro použití v Twilio, můžete ho zobrazit v prohlížeči. Například kliknutím [https://twimlets.com/message][twimlet_message_url] zobrazíte prázdný `<Response>` element. jako další příklad můžete kliknutím [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] zobrazit `<Response>` prvek, který obsahuje `<Say>` prvek.)
+Když vaše aplikace zahájí volání rozhraní Twilio API, Twilio odešle požadavek na adresu URL, která by měla vrátit odpověď TwiML. Výše uvedený příklad používá adresu URL poskytnutou Twilio [https://twimlets.com/message][twimlet_message_url] . (I když je TwiML navržený pro použití v Twilio, můžete ho zobrazit v prohlížeči. Například kliknutím [https://twimlets.com/message][twimlet_message_url] zobrazíte prázdný `<Response>` prvek. jako jiný příklad [https://twimlets.com/message?Message%5B0%5D=Hello%20World][twimlet_message_url_hello_world] můžete kliknutím zobrazit `<Response>` prvek, který obsahuje `<Say>` prvek.)
 
 Místo toho, abyste museli spoléhat na adresu URL zadanou v Twilio, můžete vytvořit vlastní web, který bude vracet odpovědi HTTP. Web můžete vytvořit v jakémkoli jazyce, který vrací odpovědi XML; v tomto tématu se předpokládá, že k vytvoření TwiML použijete Python.
 
@@ -201,7 +202,7 @@ Jak vidíte z výše uvedeného příkladu, odpověď TwiML je jednoduše dokume
     response.say("Hello world.")
     print(str(response))
 
-Další informace o TwiML najdete v tématu [https://www.twilio.com/docs/api/twiml][twiml_reference].
+Další informace o TwiML najdete v tématu [https://www.twilio.com/docs/api/twiml][twiml_reference] .
 
 Jakmile budete mít aplikaci Python nastavenou tak, aby poskytovala odpovědi TwiML, použijte adresu URL aplikace jako adresu URL předanou `client.calls.create` metodě. Například pokud máte webovou aplikaci s názvem **MyTwiML** nasazenou do hostované služby Azure, můžete použít její adresu URL jako Webhook, jak je znázorněno v následujícím příkladu:
 

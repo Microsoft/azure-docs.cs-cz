@@ -6,16 +6,17 @@ keywords: nástroje pro datové vědy, virtuální počítač pro datové vědy,
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: data-science-vm
+ms.custom: tracking-python
 author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 12/12/2019
-ms.openlocfilehash: e7b32579712e89c0d5595303ee7e03d8b2462607
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c81f2a23474ff98c202cdbe5b455dd3d15535c96
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283651"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84557472"
 ---
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>Jazyky podporované v Data Science Virtual Machine 
 
@@ -27,7 +28,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 | ------------- | ------------- |
 | Podporované jazykové verze | Python 2,7 a 3,7 |
 | Podporované edice DSVM      | Windows Server 2016     |
-| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Vytvoří se `conda` dvě globální prostředí: <br /> * `root` Prostředí v `/anaconda/` umístění je Python 3,7. <br/> * `python2` Prostředí v `/anaconda/envs/python2` umístění je Python 2,7.       |
+| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | `conda`Vytvoří se dvě globální prostředí: <br /> * `root` Prostředí v umístění `/anaconda/` je Python 3,7. <br/> * `python2` Prostředí v umístění `/anaconda/envs/python2` je Python 2,7.       |
 | Odkazy na ukázky      | Zahrnuje ukázky Jupyter poznámkových bloků pro Python.     |
 | Související nástroje na DSVM      | PySpark, R, Helena.      |
 
@@ -55,7 +56,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
   Použijte Python Tools for Visual Studio (PTVS), které jsou nainstalované v edici Visual Studio Community Edition. Ve výchozím nastavení je jediným prostředím nastaveným automaticky v PTVS Python 3,6. 
 
     > [!NOTE]
-    > Pokud chcete PTVS v Pythonu 2,7, musíte v PTVS vytvořit vlastní prostředí. Pokud chcete nastavit tuto cestu prostředí v edici Visual Studio Community Edition, navštivte **nástroje** -> **Python Tools** -> **Python prostředí** a vyberte **+ vlastní**. Pak nastavte umístění na **c:\anaconda\envs\python2** a vyberte **Automatické rozpoznávání**.
+    > Pokud chcete PTVS v Pythonu 2,7, musíte v PTVS vytvořit vlastní prostředí. Pokud chcete nastavit tuto cestu prostředí v edici Visual Studio Community Edition, navštivte **nástroje**  ->  **Python Tools**  ->  **Python prostředí** a vyberte **+ vlastní**. Pak nastavte umístění na **c:\anaconda\envs\python2** a vyberte **Automatické rozpoznávání**.
 
 * Použít v Jupyter:
 
@@ -63,7 +64,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 * Instalovat balíčky Pythonu:
 
-  Výchozí prostředí Pythonu v DSVM jsou globální prostředí, která jsou čitelná pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Pokud chcete balíčky nainstalovat do globálního prostředí, aktivujte ji pomocí `activate` příkazu jako správce v kořenovém nebo python2 prostředí. Pak můžete použít Správce balíčků jako `conda` nebo `pip` k instalaci nebo aktualizaci balíčků.
+  Výchozí prostředí Pythonu v DSVM jsou globální prostředí, která jsou čitelná pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Pokud chcete balíčky nainstalovat do globálního prostředí, aktivujte ji pomocí příkazu jako správce v kořenovém nebo python2 prostředí `activate` . Pak můžete použít Správce balíčků jako `conda` nebo `pip` k instalaci nebo aktualizaci balíčků.
 
 ## <a name="python-linux-edition"></a>Python (edice Linux)
 
@@ -71,7 +72,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 | ------------- | ------------- |
 | Podporované jazykové verze | Python 2,7 a 3,5 |
 | Podporované edice DSVM      | Linux   |
-| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | Vytvoří se `conda` dvě globální prostředí: <br /> * `root`prostředí umístěné na `/anaconda/` adrese je Python 2,7. <br/> * `py35`prostředí umístěné na `/anaconda/envs/py35`adrese je Python 3,5.       |
+| Jak je nakonfigurovaná nebo nainstalovaná na DSVM?  | `conda`Vytvoří se dvě globální prostředí: <br /> * `root`prostředí umístěné na adrese `/anaconda/` je Python 2,7. <br/> * `py35`prostředí umístěné na adrese `/anaconda/envs/py35` je Python 3,5.       |
 | Odkazy na ukázky      | Zahrnuje ukázky Jupyter poznámkových bloků pro Python.     |
 | Související nástroje na DSVM      | PySpark, R, Helena      |
 ### <a name="how-to-use-and-run-it"></a>Jak použít a spustit    
@@ -130,13 +131,13 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 * Nainstalovat balíčky R:
 
-  Jazyk R je nainstalovaný na DSVM v globálním prostředí, které je čitelné pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Chcete-li nainstalovat balíčky do globálního prostředí, spusťte R pomocí jedné z výše uvedených metod. Pak můžete spustit Správce `install.packages()` balíčků R a nainstalovat nebo aktualizovat balíčky.
+  Jazyk R je nainstalovaný na DSVM v globálním prostředí, které je čitelné pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Chcete-li nainstalovat balíčky do globálního prostředí, spusťte R pomocí jedné z výše uvedených metod. Pak můžete spustit Správce balíčků R `install.packages()` a nainstalovat nebo aktualizovat balíčky.
 
 **Linux**:
 
 * Spustit v terminálu:
 
-  Otevřete terminál a spusťte příkaz `R`.  
+  Otevřete terminál a spusťte příkaz `R` .  
 
 * Použití v rozhraní IDE:
 
@@ -148,7 +149,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 * Nainstalovat balíčky R:
 
-  Jazyk R je nainstalovaný na DSVM v globálním prostředí, které je čitelné pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Chcete-li nainstalovat balíčky do globálního prostředí, spusťte R pomocí jedné z výše uvedených metod. Pak můžete spustit Správce `install.packages()` balíčků R a nainstalovat nebo aktualizovat balíčky.
+  Jazyk R je nainstalovaný na DSVM v globálním prostředí, které je čitelné pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Chcete-li nainstalovat balíčky do globálního prostředí, spusťte R pomocí jedné z výše uvedených metod. Pak můžete spustit Správce balíčků R `install.packages()` a nainstalovat nebo aktualizovat balíčky.
 
 
 ## <a name="julia"></a>Julia
@@ -166,7 +167,7 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 * Spustit na příkazovém řádku
 
-  Otevřete příkazový řádek a spusťte `julia`příkaz.
+  Otevřete příkazový řádek a spusťte příkaz `julia` .
 * Použití v rozhraní IDE:
 
   Použijte `Juno` s prostředím Helena, které je nainstalované na DSVM a je dostupné jako zástupce na ploše.
@@ -177,16 +178,16 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 * Instalovat balíčky Helena:
 
-  Výchozí umístění Helena je globální prostředí, které je čitelné pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Pro instalaci balíčků do globálního prostředí spusťte Helena pomocí jedné z předchozích metod. Pak můžete spustit příkazy správce balíčků Helena, jako `Pkg.add()` je instalace nebo aktualizace balíčků.
+  Výchozí umístění Helena je globální prostředí, které je čitelné pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Pro instalaci balíčků do globálního prostředí spusťte Helena pomocí jedné z předchozích metod. Pak můžete spustit příkazy správce balíčků Helena, jako je `Pkg.add()` instalace nebo aktualizace balíčků.
 
 
 **Linux**:
 * Spusťte v terminálu:
 
-  Otevřete terminál a spusťte příkaz `julia`.
+  Otevřete terminál a spusťte příkaz `julia` .
 * Použití v rozhraní IDE:
 
-  Použijte `Juno`, s použitím rozhraní IDE pro Helena nainstalovaného na DSVM a dostupných jako zástupce nabídky **aplikace** .
+  Použijte `Juno` , s použitím rozhraní IDE pro Helena nainstalovaného na DSVM a dostupných jako zástupce nabídky **aplikace** .
 
 * Použít v Jupyter:
 
@@ -194,14 +195,14 @@ Data Science Virtual Machine (DSVM) obsahuje několik předem připravených jaz
 
 * Instalovat balíčky Helena:
 
-  Výchozí umístění Helena je globální prostředí, které je čitelné pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Pro instalaci balíčků do globálního prostředí spusťte Helena pomocí jedné z předchozích metod. Pak můžete spustit příkazy správce balíčků Helena, jako `Pkg.add()` je instalace nebo aktualizace balíčků.
+  Výchozí umístění Helena je globální prostředí, které je čitelné pro všechny uživatele. Ale jenom správci můžou zapisovat a instalovat globální balíčky. Pro instalaci balíčků do globálního prostředí spusťte Helena pomocí jedné z předchozích metod. Pak můžete spustit příkazy správce balíčků Helena, jako je `Pkg.add()` instalace nebo aktualizace balíčků.
 
 ## <a name="other-languages"></a>Jiné jazyky
 
-**C#**: je k dispozici ve Windows a přístupný prostřednictvím sady Visual Studio Community Edition `Developer Command Prompt for Visual Studio`nebo v, kde můžete spustit `csc` příkaz.
+**C#**: je k dispozici ve Windows a přístupný prostřednictvím sady Visual Studio Community Edition nebo v `Developer Command Prompt for Visual Studio` , kde můžete spustit `csc` příkaz.
 
-**Java**: OpenJDK je k dispozici v edicích systému Linux i Windows pro DSVM a je nastavena v cestě. Chcete-li použít jazyk Java `javac` , `java` zadejte příkaz nebo na příkazovém řádku ve Windows nebo v prostředí bash v systému Linux.
+**Java**: OpenJDK je k dispozici v edicích systému Linux i Windows pro DSVM a je nastavena v cestě. Chcete-li použít jazyk Java, zadejte `javac` příkaz nebo na příkazovém `java` řádku ve Windows nebo v prostředí bash v systému Linux.
 
-**Node. js**: Node. js je k dispozici v edicích systému Linux i Windows pro DSVM a je nastavená v cestě. Chcete-li získat přístup k Node. `node` js `npm` , zadejte příkaz nebo na příkazovém řádku ve Windows nebo v prostředí bash v systému Linux. V systému Windows je k dispozici rozšíření sady Visual Studio pro nástroje Node. js, které poskytuje grafické rozhraní IDE pro vývoj aplikace Node. js.
+**Node. js**: Node. js je k dispozici v edicích systému Linux i Windows pro DSVM a je nastavená v cestě. Chcete-li získat přístup k Node. js, zadejte `node` příkaz nebo na příkazovém `npm` řádku ve Windows nebo v prostředí bash v systému Linux. V systému Windows je k dispozici rozšíření sady Visual Studio pro nástroje Node. js, které poskytuje grafické rozhraní IDE pro vývoj aplikace Node. js.
 
-**F #**: je k dispozici ve Windows a přístupný prostřednictvím sady Visual Studio Community Edition `Developer Command Prompt for Visual Studio`nebo na, kde můžete spustit `fsc` příkaz.
+**F #**: je k dispozici ve Windows a přístupný prostřednictvím sady Visual Studio Community Edition nebo na `Developer Command Prompt for Visual Studio` , kde můžete spustit `fsc` příkaz.

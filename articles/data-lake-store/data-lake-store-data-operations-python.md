@@ -7,12 +7,13 @@ ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 17b53c508f0c4c5ba8fa257fcdc692cdaa45d470
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 564de3a38d4f3d2c50d49e570986f2d025a11457
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76294214"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560476"
 ---
 # <a name="filesystem-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operace systému souborů při Azure Data Lake Storage Gen1 pomocí Pythonu
 > [!div class="op_single_selector"]
@@ -38,8 +39,8 @@ V tomto článku se naučíte, jak pomocí sady Python SDK provádět operace sy
 Pokud chcete pracovat s Data Lake Storage Gen1 pomocí Pythonu, musíte nainstalovat tři moduly.
 
 * Modul `azure-mgmt-resource`, který zahrnuje moduly Azure pro Active Directory atd.
-* `azure-mgmt-datalake-store` Modul, který zahrnuje operace správy účtu Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v referenčních informacích k [modulu Azure-Správa-datalake-Store](/python/api/azure-mgmt-datalake-store/).
-* `azure-datalake-store` Modul, který zahrnuje operace Azure Data Lake Storage Gen1 systému souborů. Další informace o tomto modulu najdete v referenčních informacích o [systémových modulech v souboru Azure-datalake-Store](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
+* `azure-mgmt-datalake-store`Modul, který zahrnuje operace správy účtu Azure Data Lake Storage Gen1. Další informace o tomto modulu najdete v referenčních informacích k [modulu Azure-Správa-datalake-Store](/python/api/azure-mgmt-datalake-store/).
+* `azure-datalake-store`Modul, který zahrnuje operace Azure Data Lake Storage Gen1 systému souborů. Další informace o tomto modulu najdete v referenčních informacích o [systémových modulech v souboru Azure-datalake-Store](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 Pomocí následujících příkazů tyto moduly nainstalujte.
 
@@ -125,7 +126,7 @@ Následující fragment kódu nejprve vytvoří klienta Data Lake Storage Gen1 �
 ## <a name="next-steps"></a>Další kroky
 * [Operace správy účtů na data Lake Storage Gen1 s využitím Pythonu](data-lake-store-get-started-python.md)
 
-## <a name="see-also"></a>Viz také
+## <a name="see-also"></a>Viz také:
 
 * [Reference k Azure Data Lake Storage Gen1 Pythonu (systém souborů)](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Open Source aplikace pro velké objemy dat kompatibilní s Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

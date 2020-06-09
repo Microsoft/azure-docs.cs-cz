@@ -10,12 +10,13 @@ ms.date: 01/16/2018
 author: djpmsft
 ms.author: daperlov
 manager: anandsub
-ms.openlocfilehash: d416a4a2bace2aeced6961d4959b0478feb0e650
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 983beb70ef1919dc3230d5daa6d29fb7209f69aa
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81398781"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561219"
 ---
 # <a name="programmatically-monitor-an-azure-data-factory"></a>Programové sledování v Azure Data Factory
 
@@ -27,7 +28,7 @@ Tento článek popisuje, jak monitorovat kanál v datové továrně pomocí růz
 
 ## <a name="data-range"></a>Rozsah dat
 
-Data Factory ukládá pouze data spuštění kanálu po dobu 45 dnů. Při dotazování programově na data týkající se Data Factory běhu kanálu – například pomocí příkazu `Get-AzDataFactoryV2PipelineRun` PowerShellu nejsou k dispozici žádná maximální data pro volitelné `LastUpdatedAfter` a `LastUpdatedBefore` parametry. Pokud se ale dotaz na data za minulý rok nevrátí, například dotaz nevrátí chybu, ale vrátí jenom data spuštění kanálu za posledních 45 dní.
+Data Factory ukládá pouze data spuštění kanálu po dobu 45 dnů. Při dotazování programově na data týkající se Data Factory běhu kanálu – například pomocí příkazu PowerShellu `Get-AzDataFactoryV2PipelineRun` nejsou k dispozici žádná maximální data pro volitelné `LastUpdatedAfter` a `LastUpdatedBefore` parametry. Pokud se ale dotaz na data za minulý rok nevrátí, například dotaz nevrátí chybu, ale vrátí jenom data spuštění kanálu za posledních 45 dní.
 
 Pokud chcete zachovat data běhu kanálu po dobu více než 45 dnů, nastavte své vlastní diagnostické protokolování pomocí [Azure monitor](monitor-using-azure-monitor.md).
 

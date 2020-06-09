@@ -7,33 +7,35 @@ manager: nitinme
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 02/10/2020
-ms.openlocfilehash: 8324ca0184c508591fa4568175bad0f606f952a8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 061907783d21372f0e926e529730e9e82b7a4ddb
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80369455"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488762"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Rychlý Start: vytvoření indexu služby Azure Kognitivní hledání v Azure Portal
 > [!div class="op_single_selector"]
-> * [Portál](search-get-started-portal.md)
-> * [R #](search-get-started-dotnet.md)
+> * [Azure Portal](search-get-started-portal.md)
+> * [C#](search-get-started-dotnet.md)
 > * [Java](search-get-started-java.md)
 > * [Node.js](search-get-started-nodejs.md)
 > * [PowerShell](search-get-started-powershell.md)
 > * [Postman](search-get-started-postman.md)
 > * [Python](search-get-started-python.md)
 
-Pomocí průvodce **importem dat** z portálu a nástrojů **Průzkumník služby Search** můžete rychle rozpracovat s koncepty a psát zajímavé dotazy na index během několika minut.
+Průvodce **importem dat** je Azure Portal nástroj, který vás provede vytvořením indexu hledání, abyste mohli psát zajímavé dotazy během několika minut. 
 
-Pokud jsou nástroje příliš omezené, můžete zvážit [Úvod do programování Azure kognitivní hledání v rozhraní .NET](search-howto-dotnet-sdk.md) nebo použít [metodu post pro REST API volání](search-get-started-postman.md). 
-
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Průvodce má také stránky pro rozšíření AI, takže můžete extrahovat text a strukturu ze souborů obrázků a nestrukturovaného textu. Zpracování obsahu pomocí AI zahrnuje optické rozpoznávání znaků (OCR), klíčové fráze a extrakci entit a analýzu obrázků.
 
 ## <a name="prerequisites"></a>Požadavky
 
-[Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
+Než začnete, musíte mít následující:
+
++ Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
+
++ Služba Azure Kognitivní hledání. [Vytvořte službu](search-create-service-portal.md) nebo [vyhledejte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
 
 ### <a name="check-for-space"></a>Kontrola místa
 
@@ -51,15 +53,17 @@ Pro tento kurz používáme vestavěnou ukázkovou datovou sadu, kterou lze proc
 
 ### <a name="step-1---start-the-import-data-wizard-and-create-a-data-source"></a>Krok 1 – spuštění Průvodce importem dat a vytvoření zdroje dat
 
-1. Na řídicím panelu služby Azure Kognitivní hledání klikněte na panelu příkazů na **importovat data** a vytvořte a naplňte index vyhledávání.
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com/) pomocí svého účtu Azure.
+
+1. [Vyhledejte vyhledávací službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) a na stránce Přehled klikněte na tlačítko **importovat data** na panelu příkazů a vytvořte a naplňte index vyhledávání.
 
    ![Příkaz pro import dat](media/search-get-started-portal/import-data-cmd.png)
 
-2. V průvodci klikněte na **připojit k datům** > **Ukázka** > **hotelů – ukázka**. Tento zdroj dat je integrovaný. Pokud jste vytvořili vlastní zdroj dat, budete muset zadat název, typ a informace o připojení. Po vytvoření se z něj stane „existující zdroj dat“, který je možné využít v dalších operacích importu.
+1. V průvodci klikněte na **připojit k datům**  >  **Ukázka**  >  **hotelů – ukázka**. Tento zdroj dat je integrovaný. Pokud jste vytvořili vlastní zdroj dat, budete muset zadat název, typ a informace o připojení. Po vytvoření se z něj stane „existující zdroj dat“, který je možné využít v dalších operacích importu.
 
    ![Výběr ukázkové datové sady](media/search-get-started-portal/import-datasource-sample.png)
 
-3. Pokračujte na další stránku.
+1. Pokračujte na další stránku.
 
 ### <a name="step-2---skip-the-enrich-content-page"></a>Krok 2 – přeskočení stránky "obohacení obsahu"
 
@@ -193,7 +197,7 @@ Součástí požadavků hledání jsou filtry omezující vlastnost. Pomocí par
 #### <a name="example-faceted-with-scope-reduction-searchfacetcategorytop2"></a>Příklad (s omezujícími vlastnostmi a zmenšením rozsahu): `search=*&facet=Category&$top=2`
 
 * Parametr **search=*** znamená prázdné vyhledávání. Prázdné vyhledávání prohledává všechno. Jedním z důvodů odeslání prázdného dotazu je použití filtru nebo omezující vlastnosti na kompletní sadu dokumentů. Například chcete, aby se navigační struktura omezující vlastnosti sestávat ze všech hotelů v indexu.
-* Parametr **facet** vrací navigační strukturu, kterou můžete předat ovládacímu prvku uživatelského rozhraní. Vrací kategorie a počet. V takovém případě jsou kategorie založené na poli, které se pohodlně označuje jako *kategorie*. V Azure Kognitivní hledání neexistuje žádná agregace, ale je možné přibližnou agregaci `facet`prostřednictvím, která poskytuje počet dokumentů v každé kategorii.
+* Parametr **facet** vrací navigační strukturu, kterou můžete předat ovládacímu prvku uživatelského rozhraní. Vrací kategorie a počet. V takovém případě jsou kategorie založené na poli, které se pohodlně označuje jako *kategorie*. V Azure Kognitivní hledání neexistuje žádná agregace, ale je možné přibližnou agregaci prostřednictvím `facet` , která poskytuje počet dokumentů v každé kategorii.
 
 * Parametr **$top=2** vrací dva dokumenty a ilustruje, že parametr `top` můžete použít ke snížení i navýšení počtu výsledků.
 

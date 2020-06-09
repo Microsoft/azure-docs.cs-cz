@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/19/2019
-ms.openlocfilehash: 10f4a0012076deef0757743f206f937ab43dc8b8
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: c5208edc6038db0f9d45bb8fe10f3a96b5051b4c
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84345287"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560558"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-azure-sql-database-and-azure-sql-managed-instance"></a>Optimalizujte výkon pomocí technologií v paměti v Azure SQL Database a spravované instance Azure SQL.
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -50,7 +50,7 @@ Z důvodu efektivnějšího zpracování dotazů a transakcí vám také pomůž
 
 Tady jsou dva příklady, jak OLTP v paměti pomohl významně zlepšit výkon:
 
-- Při použití OLTP v paměti [bylo řešení kvora schopno dvojnásobit své zatížení a zároveň zlepšuje DTU o 70%](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database).
+- Při použití OLTP v paměti [bylo řešení kvora schopno dvojnásobit své zatížení a zároveň zlepšuje DTU o 70%](https://resources.quorumsoftware.com/case-studies/quorum-doubles-key-database-s-workload-while-lowering-dtu).
 - Následující video demonstruje významné vylepšení spotřeby prostředků pomocí ukázkového zatížení: [OLTP video v paměti](https://channel9.msdn.com/Shows/Data-Exposed/In-Memory-OTLP-in-Azure-SQL-DB). Další informace najdete v blogovém příspěvku: [OLTP v paměti](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/) .
 
 > [!NOTE]  
@@ -174,7 +174,7 @@ Při použití clusterovaných indexů columnstore se pro základní úložišt�
 
 Pokud máte například databázi s maximální velikostí 1 terabajt (TB) a dosáhnete 10 krát komprese pomocí indexů columnstore, můžete v databázi použít celkem 10 TB uživatelských dat.
 
-Při použití neclusterovaných indexů columnstore je základní tabulka stále uložena v tradičním formátu rowstore. Proto úspory úložiště nejsou tak velké jako u clusterovaných indexů columnstore. Pokud ale nahrazujete několik tradičních neclusterovaných indexů s jedním indexem columnstore, můžete si i nadále zobrazit celkové úspory v kapacitě úložiště pro danou tabulku.
+Při použití neclusterovaných indexů columnstore je základní tabulka stále uložena v tradičním formátu rowstore. Proto úspory úložiště nejsou stejně důležité jako u clusterovaných indexů columnstore. Pokud ale nahrazujete několik tradičních neclusterovaných indexů s jedním indexem columnstore, můžete si i nadále zobrazit celkové úspory v kapacitě úložiště pro danou tabulku.
 
 ### <a name="changing-service-tiers-of-databases-containing-columnstore-indexes"></a>Změna úrovní služeb databází obsahujících indexy columnstore
 
@@ -183,7 +183,7 @@ Pokud je cílová úroveň nižší než S3, nemusí být *databáze na úrovni 
 Pokud máte **clusterovaný** index columnstore, celá tabulka po downgradu nebude k dispozici. Proto doporučujeme, abyste před přechodem databáze na nepodporovanou úroveň nebo úroveň vyřadíte všechny *clusterované* indexy columnstore.
 
 > [!Note]
-> Spravovaná instance SQL podporuje indexy ColumnStore ve všech vrstvách.
+> Spravovaná instance SQL podporuje indexy columnstore ve všech vrstvách.
 
 <a id="install_oltp_manuallink" name="install_oltp_manuallink"></a>
 
@@ -210,8 +210,8 @@ Pokud máte **clusterovaný** index columnstore, celá tabulka po downgradu nebu
 - [OLTP v paměti (optimalizace v paměti)](https://msdn.microsoft.com/library/dn133186.aspx)
 - [Použití OLTP v paměti v existující aplikaci Azure SQL](in-memory-oltp-configure.md)
 
-### <a name="tools"></a>Nástroje
+### <a name="tools"></a>nástroje
 
-- [Portál Azure Portal](https://portal.azure.com/)
+- [Azure Portal](https://portal.azure.com/)
 - [SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/mt238290.aspx)
-- [SQL Server Data Tools (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)
+- [Nástroje pro SQL Server data (SSDT)](https://msdn.microsoft.com/library/mt204009.aspx)

@@ -6,12 +6,13 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/7/2020
-ms.openlocfilehash: 18004ba474eb354f6723538a29f9eb90b23fbff2
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.custom: tracking-python
+ms.openlocfilehash: 7286887b10661d291f6c6d2b6c067dd7e1bf43aa
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82925860"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559238"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Konfigurace připojení SSL v aplikaci pro zabezpečené připojení k Azure Database for MySQL
 Azure Database for MySQL podporuje připojení Azure Database for MySQLho serveru k klientským aplikacím pomocí SSL (Secure Sockets Layer) (SSL). Díky vynucování připojení SSL mezi databázovým serverem a klientskými aplikacemi se šifruje datový proud mezi serverem a vaší aplikací, což pomáhá chránit před napadením útočníky, kteří se vydávají za prostředníky.

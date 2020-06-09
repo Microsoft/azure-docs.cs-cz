@@ -7,13 +7,13 @@ ms.assetid: b97bd4e6-dff0-4976-ac20-d5c109a559a8
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: msangapu
-ms.custom: mvc, seodec18
-ms.openlocfilehash: 2609ff908b3c2f872cb63d3dcd7dcd481d316484
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, seodec18, tracking-python
+ms.openlocfilehash: d9c7b9b296aaf287d185cd3e7544e40d9cdef2f5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82085854"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561109"
 ---
 # <a name="tutorial-build-a-custom-image-and-run-in-app-service-from-a-private-registry"></a>Kurz: Vytvoření vlastní image a spuštění v App Service z privátního registru
 
@@ -49,7 +49,7 @@ cd docker-django-webapp-linux
 
 ## <a name="build-the-image-from-the-docker-file"></a>Sestavení image ze souboru Dockeru
 
-V úložišti Git si prohlédněte soubor _Dockerfile_. Tento soubor popisuje prostředí Pythonu potřebné pro spuštění vaší aplikace. Kromě toho image nastaví server [SSH](https://www.ssh.com/ssh/protocol/) pro zabezpečení komunikace mezi kontejnerem a hostitelem. Poslední řádek v _souboru Dockerfile_, `ENTRYPOINT ["init.sh"]`se vyvolá `init.sh` ke spuštění služby SSH a serveru Python.
+V úložišti Git si prohlédněte soubor _Dockerfile_. Tento soubor popisuje prostředí Pythonu potřebné pro spuštění vaší aplikace. Kromě toho image nastaví server [SSH](https://www.ssh.com/ssh/protocol/) pro zabezpečení komunikace mezi kontejnerem a hostitelem. Poslední řádek v _souboru Dockerfile_, `ENTRYPOINT ["init.sh"]` se vyvolá `init.sh` ke spuštění služby SSH a serveru Python.
 
 ```Dockerfile
 FROM python:3.4
@@ -107,7 +107,7 @@ Pokud chcete vytvořit aplikaci, která používá Image, kterou jste právě vy
 
 ### <a name="create-an-azure-container-registry"></a>Vytvoření služby Azure Container Registry
 
-V Cloud Shell Vytvořte Azure Container Registry pomocí [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az-acr-create) příkazu.
+V Cloud Shell [`az acr create`](/cli/azure/acr?view=azure-cli-latest#az-acr-create) vytvořte Azure Container Registry pomocí příkazu.
 
 ```azurecli-interactive
 az acr create --name <azure-container-registry-name> --resource-group myResourceGroup --sku Basic --admin-enabled true
@@ -139,7 +139,7 @@ Výstup odhalí dvě hesla spolu s uživatelským jménem.
 }
 </pre>
 
-V místním okně terminálu se přihlaste k Azure Container Registry pomocí `docker login` příkazu, jak je znázorněno v následujícím příkladu. Nahraďte * \<Azure-Container-Registry-Name>* a * \<Registry-username>* hodnotami pro váš registr. Po zobrazení výzvy zadejte jedno z hesel z předchozího kroku.
+V místním okně terminálu se přihlaste k Azure Container Registry pomocí `docker login` příkazu, jak je znázorněno v následujícím příkladu. *\<azure-container-registry-name>* Hodnoty a nahraďte *\<registry-username>* registrem. Po zobrazení výzvy zadejte jedno z hesel z předchozího kroku.
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <registry-username>
@@ -180,7 +180,7 @@ Měli byste získat následující výstup.
 
 ### <a name="create-web-app"></a>Vytvoření webové aplikace
 
-V Cloud Shell v plánu `myAppServicePlan` App Service pomocí [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) příkazu vytvořte [webovou aplikaci](app-service-linux-intro.md) . Název _ \<aplikace>_ nahraďte jedinečným názvem aplikace a _ \<názvem Azure-Container-Registry>_ názvem registru.
+V Cloud Shell v plánu App Service pomocí příkazu vytvořte [webovou aplikaci](app-service-linux-intro.md) `myAppServicePlan` [`az webapp create`](/cli/azure/webapp?view=azure-cli-latest#az-webapp-create) . Nahraďte _\<app-name>_ jedinečným názvem aplikace a _\<azure-container-registry-name>_ názvem registru.
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app-name> --deployment-container-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
@@ -205,7 +205,7 @@ Po vytvoření webové aplikace Azure CLI zobrazí výstup podobný následujíc
 
 ### <a name="configure-registry-credentials-in-web-app"></a>Konfigurace přihlašovacích údajů registru ve webové aplikaci
 
-Pokud App Service chcete načíst privátní image, potřebuje informace o vašem registru a imagi. V Cloud Shell je zadejte pomocí [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) příkazu. Nahraďte * \<>název aplikace *, * \<Azure-Container-Registry-Name>*, _ \<Registry-username>_ a _ \<>hesla _.
+Pokud App Service chcete načíst privátní image, potřebuje informace o vašem registru a imagi. V Cloud Shell je zadejte pomocí [`az webapp config container set`](/cli/azure/webapp/config/container?view=azure-cli-latest#az-webapp-config-container-set) příkazu. Nahraďte *\<app-name>* ,, *\<azure-container-registry-name>* _\<registry-username>_ a _\<password>_ .
 
 ```azurecli-interactive
 az webapp config container set --name <app-name> --resource-group myResourceGroup --docker-custom-image-name <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0 --docker-registry-server-url https://<azure-container-registry-name>.azurecr.io --docker-registry-server-user <registry-username> --docker-registry-server-password <password>
@@ -217,7 +217,7 @@ az webapp config container set --name <app-name> --resource-group myResourceGrou
 
 ### <a name="configure-environment-variables"></a>Konfigurace proměnných prostředí
 
-Většina imagí Docker používá vlastní proměnné prostředí, jako je například port jiný než 80. App Service o portu, který používá vaše image, můžete sdělit pomocí nastavení `WEBSITES_PORT` aplikace. Stránka GitHubu pro [ukázku Pythonu v tomto kurzu](https://github.com/Azure-Samples/docker-django-webapp-linux) ukazuje, že je potřeba nastavit `WEBSITES_PORT` na _8000_.
+Většina imagí Docker používá vlastní proměnné prostředí, jako je například port jiný než 80. App Service o portu, který používá vaše image, můžete sdělit pomocí `WEBSITES_PORT` nastavení aplikace. Stránka GitHubu pro [ukázku Pythonu v tomto kurzu](https://github.com/Azure-Samples/docker-django-webapp-linux) ukazuje, že je potřeba nastavit `WEBSITES_PORT` na _8000_.
 
 Nastavení aplikace nastavíte pomocí [`az webapp config appsettings set`](/cli/azure/webapp/config/appsettings?view=azure-cli-latest#az-webapp-config-appsettings-set) příkazu v Cloud Shell. Nastavení aplikace rozlišují velká a malá písmena a jsou oddělená mezerami.
 
@@ -293,7 +293,7 @@ SSH umožňuje zabezpečenou komunikaci mezi kontejnerem a klientem. Pokud chcet
 
 ### <a name="open-ssh-connection-to-container"></a>Otevření připojení SSH ke kontejneru
 
-Připojení SSH je k dispozici pouze prostřednictvím webu Kudu, který je dostupný `https://<app-name>.scm.azurewebsites.net`na adrese.
+Připojení SSH je k dispozici pouze prostřednictvím webu Kudu, který je dostupný na adrese `https://<app-name>.scm.azurewebsites.net` .
 
 Pokud se chcete připojit, přejděte na adresu `https://<app-name>.scm.azurewebsites.net/webssh/host` a přihlaste se pomocí svého účtu Azure.
 
@@ -322,7 +322,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 77 root      20   0   21920   2304   1972 R  0.0  0.1   0:00.00 top
 ```
 
-Blahopřejeme! Nakonfigurovali jste vlastní kontejner pro Linux v App Service.
+Gratulujeme! Nakonfigurovali jste vlastní kontejner pro Linux v App Service.
 
 [!INCLUDE [Clean-up section](../../../includes/cli-script-clean-up.md)]
 

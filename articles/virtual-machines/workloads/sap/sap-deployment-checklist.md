@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7b8c1b0bcc74d73f1f869972488ba7c5dfe610d8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ba229025608d183b886a17346a725bc64dc6b60e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80060069"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556666"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Úlohy SAP v Azure: kontrolní seznam pro plánování a nasazení
 
@@ -86,7 +86,7 @@ V průběhu této fáze naplánujete migraci úlohy SAP na platformu Azure. V pr
     - [Instalace SAP HANA](https://github.com/AzureCAT-GSI/SAP-HANA-ARM)
 9.  Definujte normální návrh a tempo kontrolu nasazení mezi vámi jako zákazníkem, integrátorem systému, společností Microsoft a dalšími zúčastněnými stranami.
 
- 
+
 ## <a name="pilot-phase-strongly-recommended"></a>Pilotní fáze (důrazně doporučeno)
  
 Pilotní projekt můžete spustit před nebo během plánování a přípravy projektu. Zkušební fázi můžete použít také k testování přístupů a návrhů provedených během fáze plánování a přípravy. A můžete rozbalit fázi pilotního nasazení, abyste si zajistili skutečnou zkoušku konceptu.
@@ -213,7 +213,7 @@ Během této fáze obvykle nasazujete vývojové systémy, systémy testování 
 14. Optimalizujte a doladit přístup, oprávnění a procesy založené na rolích týmu do Azure, abyste se ujistili, že máte oddělení povinností. Ve stejnou chvíli se ujistěte, že všechny týmy můžou provádět své úkoly v infrastruktuře Azure.
 15. Cvičení, testování a dokumentace postupů vysoké dostupnosti a zotavení po havárii, které zaměstnancům umožní provádět tyto úlohy. Identifikujte nedostatky a přizpůsobte nové funkce Azure, které Integrujte do svých nasazení.
 
- 
+
 ## <a name="production-preparation-phase"></a>Fáze přípravy výroby 
 V této fázi můžete shromažďovat, co jste se seznámili a zjistili během nasazení mimo produkční prostředí a použít ho pro budoucí produkční nasazení. Také je nutné připravit práci s přenosem dat mezi vaším aktuálním hostováním a Azure.
 

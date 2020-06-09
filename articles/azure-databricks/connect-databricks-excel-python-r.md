@@ -9,12 +9,13 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: mamccrea
-ms.openlocfilehash: f7494d36cf9b16ac6c7a1287a6ff96dd2285c6e2
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.custom: tracking-python
+ms.openlocfilehash: 77b9bcf0dad8fa11fad4828649cd75d7df7806d5
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73601951"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84561315"
 ---
 # <a name="connect-to-azure-databricks-from-excel-python-or-r"></a>Připojení k Azure Databricks z Excelu, Pythonu nebo R
 
@@ -59,14 +60,14 @@ Název zdroje dat (DSN) obsahuje informace o konkrétním zdroji dat. Ovladač O
     |**Název zdroje dat**     | Zadejte název zdroje dat.        |
     |**Hostitelé:**     | Zadejte hodnotu, kterou jste zkopírovali z pracovního prostoru datacihly pro *název hostitele serveru*.        |
     |**Přístavní**     | Zadejte *443*.        |
-    |**Authentication** > **Mechanismus** ověřování     | Vyberte *uživatelské jméno a heslo*.        |
+    |**Ověřování**  >  **Mechanismus**     | Vyberte *uživatelské jméno a heslo*.        |
     |**Uživatelské jméno**     | Zadejte *token*.        |
     |**Heslo**     | Zadejte hodnotu tokenu, kterou jste zkopírovali z pracovního prostoru datacihly. |
     
     V dialogovém okně nastavení DSN proveďte následující další kroky.
     
-    * Klikněte na možnost **http možnosti**. V dialogovém okně, které se otevře, vložte hodnotu pro *cestu http* , kterou jste zkopírovali z pracovního prostoru datacihly. Klikněte na tlačítko **OK**.
-    * Klikněte na **Možnosti SSL**. V dialogu, který se otevře, zaškrtněte políčko **Povolit protokol SSL** . Klikněte na tlačítko **OK**.
+    * Klikněte na možnost **http možnosti**. V dialogovém okně, které se otevře, vložte hodnotu pro *cestu http* , kterou jste zkopírovali z pracovního prostoru datacihly. Klikněte na **OK**.
+    * Klikněte na **Možnosti SSL**. V dialogu, který se otevře, zaškrtněte políčko **Povolit protokol SSL** . Klikněte na **OK**.
     * Kliknutím na **test** otestujte připojení k Azure Databricks. Konfiguraci uložíte kliknutím na **OK** .
     * V dialogovém okně **Správce zdrojů dat ODBC** klikněte na tlačítko **OK**.
 
@@ -102,11 +103,11 @@ Jakmile budete mít data v excelovém sešitu, můžete na něm provádět analy
 V této části použijete prostředí IDE jazyka R k odkazování na data, která jsou k dispozici v Azure Databricks. Než začnete, musíte mít na počítači nainstalovanou následující.
 
 * Rozhraní IDE pro jazyk R. Tento článek používá RStudio pro Desktop. Můžete ji nainstalovat z [webu R Studio Download](https://www.rstudio.com/products/rstudio/download/).
-* Pokud používáte RStudio pro desktop jako rozhraní IDE, nainstalujte také Microsoft R Client z [https://aka.ms/rclient/](https://aka.ms/rclient/). 
+* Pokud používáte RStudio pro desktop jako rozhraní IDE, nainstalujte také Microsoft R Client z [https://aka.ms/rclient/](https://aka.ms/rclient/) . 
 
 Otevřete RStudio a proveďte následující kroky:
 
-- Odkázat `RODBC` na balíček. To vám umožní připojit se k Azure Databricks pomocí DSN, který jste vytvořili dříve.
+- Odkázat na `RODBC` balíček. To vám umožní připojit se k Azure Databricks pomocí DSN, který jste vytvořili dříve.
 - Navažte připojení pomocí DSN.
 - Spusťte dotaz SQL na datech v Azure Databricks. V následujícím fragmentu kódu *radio_sample_data* je tabulka, která již existuje v Azure Databricks.
 - Provedením některých operací s dotazem ověřte výstup. 

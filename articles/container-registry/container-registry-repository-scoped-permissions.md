@@ -1,14 +1,14 @@
 ---
 title: Oprávnění k úložištím v Azure Container Registry
-description: Vytvoření tokenu s oprávněním vymezeným pro konkrétní úložiště v registru pro vyžádání nebo vložení obrázků nebo provádění dalších akcí
+description: Vytvoření tokenu s oprávněním vymezeným pro konkrétní úložiště v registru Premium pro vyžádání nebo vložení obrázků nebo provádění dalších akcí
 ms.topic: article
 ms.date: 05/27/2020
-ms.openlocfilehash: 8534c62db862f5c929d0145948fc4049c036d412
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142185"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509402"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Vytvoření tokenu s oprávněními vymezenými úložištěm
 
@@ -20,7 +20,7 @@ Mezi scénáře vytvoření tokenu patří:
 * Poskytněte externí organizaci oprávnění ke konkrétnímu úložišti. 
 * Omezte přístup k úložišti pro různé skupiny uživatelů ve vaší organizaci. Poskytněte třeba přístup pro zápis a čtení vývojářům, kteří vytvářejí image, které cílí na konkrétní úložiště, a přístup pro čtení týmů, které z těchto úložišť nasazují.
 
-Tato funkce je dostupná v registrech kontejnerů **Premium** . Informace o úrovních a omezeních služby registru najdete v tématu [Azure Container Registry úrovně služeb](container-registry-skus.md).
+Tato funkce je k dispozici na úrovni služby Registry kontejneru **Premium** . Informace o úrovních a omezeních služby registru najdete v tématu [Azure Container Registry úrovně služeb](container-registry-skus.md).
 
 > [!IMPORTANT]
 > Tato funkce je aktuálně ve verzi Preview a [platí některá omezení](#preview-limitations). Verze Preview vám zpřístupňujeme pod podmínkou, že budete souhlasit s [dodatečnými podmínkami použití][terms-of-use]. Některé aspekty této funkce se můžou před zveřejněním změnit.
@@ -261,7 +261,7 @@ Na webu Azure Portal:
 1. Přejděte do registru kontejneru.
 1. V části **oprávnění úložiště**vyberte **mapy oboru (Preview)** a vyberte mapu oboru, která se má aktualizovat.
 1. V části **úložiště**zadejte a `samples/alpine` v části **oprávnění**vyberte `content/read` a `content/write` . Pak vyberte **+ Přidat**.
-1. V části **úložiště**vyberte `samples/hello-world` a v části **oprávnění**zrušte výběr `content/write` . Potom vyberte **Uložit**.
+1. V části **úložiště**vyberte `samples/hello-world` a v části **oprávnění**zrušte výběr `content/write` . Pak vyberte **Uložit**.
 
 Po aktualizaci mapy oboru proběhne následující nabízení oznámení:
 

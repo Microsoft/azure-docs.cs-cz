@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 125d89301e9d2cc3fc863bffb9b9e6c41e0c129e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 504f8288ad6bf7565a0cae91c11a14ea65b6e160
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82229931"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84556471"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informace o technických profilech v Azure Active Directory B2C vlastních zásadách
 
@@ -49,7 +49,7 @@ Technický profil umožňuje tyto typy scénářů:
 Všechny typy technických profilů sdílejí stejný koncept. Můžete posílat vstupní deklarace identity, spouštět transformaci deklarací identity a komunikovat s nakonfigurovanou stranou, jako je zprostředkovatel identity, REST API nebo adresářové služby Azure AD. Po dokončení procesu bude technický profil vracet výstupní deklarace identity a může spustit transformaci deklarací identity. Následující diagram znázorňuje, jak se zpracovávají transformace a mapování, na které se odkazuje v technickém profilu. Bez ohledu na to, v jaké straně technický profil spolupracuje, se po provedení jakékoli transformace deklarací identity z technického profilu hned uloží i deklarace identity z technického profilu do kontejneru deklarací identity.
 
 ![Diagram znázorňující tok technického profilu](./media/technical-profiles-overview/technical-profile-idp-saml-flow.png)
- 
+
 1. **Správa relací jednotného přihlašování (SSO)** – obnoví stav relace technického profilu pomocí [správy relace jednotného](custom-policy-reference-sso.md)přihlašování.
 1. **Transformace vstupních deklarací** – vstupní deklarace identity pro každou vstupní [transformaci](claimstransformations.md) deklarací se vybírají z kontejneru deklarací identity.  Deklarace výstupů vstupní deklarace identity můžou být vstupními deklaracemi za následné transformace vstupních deklarací.
 1. **Vstupní deklarace identity** – deklarace se vybírají z kontejneru deklarací identity a používají se pro technický profil. Například [technický profil s vlastním uplatněním](self-asserted-technical-profile.md) používá vstupní deklarace identity, které vyplní výstupní deklarace identity, které uživatel poskytuje. REST API technický profil používá vstupní deklarace identity k posílání vstupních parametrů do koncového bodu REST API. Azure Active Directory používá pro čtení, aktualizaci nebo odstranění účtu vstupní deklaraci identity jako jedinečný identifikátor.
@@ -66,9 +66,9 @@ Všechny typy technických profilů sdílejí stejný koncept. Můžete posílat
 
 ## <a name="technical-profile-inclusion"></a>Zahrnutí technického profilu
 
-Technický profil může zahrnovat jiný technický profil pro změnu nastavení nebo přidání nových funkcí.  `IncludeTechnicalProfile` Element je odkazem na základní technický profil, ze kterého je odvozen technický profil. Počet úrovní není nijak omezený.
+Technický profil může zahrnovat jiný technický profil pro změnu nastavení nebo přidání nových funkcí.  `IncludeTechnicalProfile`Element je odkazem na základní technický profil, ze kterého je odvozen technický profil. Počet úrovní není nijak omezený.
 
-Například technický profil **AAD-UserReadUsingAlternativeSecurityId-inerror** zahrnuje **AAD-UserReadUsingAlternativeSecurityId**. Tento technický profil nastaví položku `RaiseErrorIfClaimsPrincipalDoesNotExist` metadat na `true`a vyvolá chybu, pokud účet sociální sítě v adresáři neexistuje. **AAD-UserReadUsingAlternativeSecurityId-** informování tohoto chování potlačí a zakáže tuto chybovou zprávu.
+Například technický profil **AAD-UserReadUsingAlternativeSecurityId-inerror** zahrnuje **AAD-UserReadUsingAlternativeSecurityId**. Tento technický profil nastaví `RaiseErrorIfClaimsPrincipalDoesNotExist` položku metadat na `true` a vyvolá chybu, pokud účet sociální sítě v adresáři neexistuje. **AAD-UserReadUsingAlternativeSecurityId-** informování tohoto chování potlačí a zakáže tuto chybovou zprávu.
 
 ```XML
 <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId-NoError">

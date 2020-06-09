@@ -3,17 +3,17 @@ title: Vytvoření vnitřních map pomocí autora
 description: K vytvoření vnitřních map použijte Tvůrce Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 05/28/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 4d150135e15fb167a9c2d56c74e7bc4fc91c0953
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: c27752d7a4b8e99dd70563cece02a4fd4e67bdc1
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745923"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560352"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Vytvoření vnitřních map pomocí autora
 
@@ -38,6 +38,9 @@ Vytvoření vnitřních map:
 4. Stáhněte si [vzorový balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
 V tomto kurzu se používá aplikace [po](https://www.postman.com/) aplikaci, ale můžete zvolit jiné vývojové prostředí API.
+
+>[!IMPORTANT]
+> Adresy URL rozhraní API v tomto dokumentu může být potřeba upravit podle umístění prostředku autora. Další podrobnosti najdete v tématu [přístup ke službě Creator Services](how-to-manage-creator.md#access-to-creator-services).
 
 ## <a name="upload-a-drawing-package"></a>Nahrání balíčku pro kreslení
 

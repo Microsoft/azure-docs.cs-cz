@@ -7,25 +7,29 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 03/27/2020
-ms.openlocfilehash: 9fb34141d19866a2f49ac164e0d89802cf7818c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/07/2020
+ms.openlocfilehash: 19d46c034d56c1c54f8a00f08a7e3e72e758984f
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80369670"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488201"
 ---
 # <a name="quickstart-use-search-explorer-to-run-queries-in-the-portal"></a>Rychlý Start: použití Průzkumníka pro hledání ke spouštění dotazů na portálu
 
-**Průzkumník služby Search** je vestavěný dotazovací nástroj, který se používá ke spouštění dotazů na vyhledávacím indexu v Azure kognitivní hledání. Tento nástroj usnadňuje seznámení s syntaxí dotazů, testování dotazu nebo filtrovacího výrazu nebo potvrzení výsledků aktualizace indexu pomocí ověření, že existuje novější obsah.
+**Průzkumník služby Search** je vestavěný dotazovací nástroj, který se používá ke spouštění dotazů na vyhledávacím indexu v Azure kognitivní hledání. Tento nástroj usnadňuje seznámení s syntaxí dotazů, testování dotazu nebo výrazu filtru nebo potvrzení aktualizace dat tím, že zkontroluje, jestli v indexu existuje nový obsah.
 
-V tomto rychlém startu se k předvedení Průzkumníka vyhledávání používá **realestate-US-Sample-index** . Žádosti se formulují pomocí [REST API vyhledávání](https://docs.microsoft.com/rest/api/searchservice/)s odpověďmi vrácenými jako dokumenty JSON.
+V tomto rychlém startu se k předvedení Průzkumníka služby Search použije existující index. Žádosti se formulují pomocí [REST API vyhledávání](https://docs.microsoft.com/rest/api/searchservice/)s odpověďmi vrácenými jako dokumenty JSON.
 
 ## <a name="prerequisites"></a>Požadavky
 
-+ [Vytvořte službu Azure kognitivní hledání](search-create-service-portal.md) nebo [Najděte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu.
+Než začnete, musíte mít následující:
 
-+ **realestate-US-Sample-index** se používá pro tento rychlý Start. Proveďte krok pomocí průvodce [**importem dat**](search-import-data-portal.md) a vygenerujte index z vestavěných zdrojů dat ukázek.
++ Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/).
+
++ Služba Azure Kognitivní hledání. [Vytvořte službu](search-create-service-portal.md) nebo [vyhledejte existující službu](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) v rámci aktuálního předplatného. Pro tento rychlý Start můžete použít bezplatnou službu. 
+
++ *Realestate-US-Sample-index* se používá pro tento rychlý Start. K vytvoření indexu použijte průvodce [**importem dat**](search-import-data-portal.md) . V prvním kroku, po zobrazení výzvy k zadání zdroje dat, zvolte **ukázky** a pak vyberte zdroj dat **realestate-US-Sample** . Přijměte všechny výchozí hodnoty průvodce pro vytvoření indexu.
 
 ## <a name="start-search-explorer"></a>Spustit Průzkumníka vyhledávání
 
@@ -41,9 +45,9 @@ V tomto rychlém startu se k předvedení Průzkumníka vyhledávání použív�
 
 ## <a name="unspecified-query"></a>Neurčený dotaz
 
-Pokud se chcete podívat na obsah, spusťte prázdné vyhledávání kliknutím na **Hledat** bez zadání podmínek. Prázdné hledání je užitečné jako první dotaz, protože vrací celé dokumenty, abyste mohli zkontrolovat složení dokumentu. Při prázdném hledání není k dispozici žádné pořadí hledání a dokumenty se vrátí v libovolném pořadí`"@search.score": 1` (pro všechny dokumenty). Ve výchozím nastavení jsou v žádosti o vyhledávání vráceny dokumenty 50.
+Pokud se chcete podívat na obsah, spusťte prázdné vyhledávání kliknutím na **Hledat** bez zadání podmínek. Prázdné hledání je užitečné jako první dotaz, protože vrací celé dokumenty, abyste mohli zkontrolovat složení dokumentu. Při prázdném hledání není k dispozici žádné pořadí hledání a dokumenty se vrátí v libovolném pořadí ( `"@search.score": 1` pro všechny dokumenty). Ve výchozím nastavení jsou v žádosti o vyhledávání vráceny dokumenty 50.
 
-Ekvivalentní syntaxe pro prázdné hledání je `*` nebo. `search=*`
+Ekvivalentní syntaxe pro prázdné hledání je `*` nebo `search=*` .
    
    ```http
    search=*
@@ -83,7 +87,7 @@ Přidejte **$Count = true** pro získání počtu shod nalezených v indexu. Př
 
 ## <a name="limit-fields-in-search-results"></a>Omezit pole ve výsledcích hledání
 
-Přidejte [**$Select**](search-query-odata-select.md) pro omezení výsledků do výslovně pojmenovaných polí pro čitelnější výstup v **Průzkumníku služby Search**. Chcete-li zachovat hledaný řetězec a **$Count = true**, nahraďte **&** argumenty předponou. 
+Přidejte [**$Select**](search-query-odata-select.md) pro omezení výsledků do výslovně pojmenovaných polí pro čitelnější výstup v **Průzkumníku služby Search**. Chcete-li zachovat hledaný řetězec a **$Count = true**, nahraďte argumenty předponou **&** . 
 
    ```http
    search=seattle condo&$select=listingId,beds,baths,description,street,city,price&$count=true

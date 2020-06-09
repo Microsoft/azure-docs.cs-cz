@@ -1,14 +1,14 @@
 ---
 title: Nastavit privátní odkaz
-description: Nastavení privátního koncového bodu v registru kontejnerů a povolení přístupu přes privátní odkaz v místní virtuální síti
+description: Nastavte privátní koncový bod v registru kontejneru a povolte přístup přes privátní odkaz v místní virtuální síti. Přístup k privátním linkám je funkce úrovně Premium Service.
 ms.topic: article
 ms.date: 05/19/2020
-ms.openlocfilehash: da51a35b66b793294f146c5a0a30b6a91d8aa01b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: f25f7b94a3008b829340cdaaed247d7ab1203c19
+ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83850041"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84509334"
 ---
 # <a name="configure-azure-private-link-for-an-azure-container-registry"></a>Konfigurace privátního odkazu Azure pro službu Azure Container Registry 
 
@@ -299,7 +299,7 @@ az acr update --name $REGISTRY_NAME --public-network-enabled false
 ### <a name="disable-public-access---portal"></a>Zakázat veřejný přístup – portál
 
 1. Na portálu přejděte do registru kontejneru a vyberte **nastavení > sítě**.
-1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Potom vyberte **Uložit**.
+1. Na kartě **veřejný přístup** vyberte v části **Povolení přístupu k veřejné síti**možnost **zakázáno**. Pak vyberte **Uložit**.
 
 ## <a name="validate-private-link-connection"></a>Ověřit připojení privátního propojení
 

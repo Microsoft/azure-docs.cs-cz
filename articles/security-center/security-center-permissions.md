@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: memildin
-ms.openlocfilehash: a4ecc7f0e11712fa3d664d1227eacb39409bd184
-ms.sourcegitcommit: 8e5b4e2207daee21a60e6581528401a96bfd3184
+ms.openlocfilehash: 2552012678300e944a513f9d7167fa582424bf8f
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84418207"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84558856"
 ---
 # <a name="permissions-in-azure-security-center"></a>Oprávnění ve službě Azure Security Center
 
@@ -40,15 +40,14 @@ Kromě těchto rolí existují ve službě Security Center dvě specifické role
 
 V následující tabulce jsou uvedeny role a povolené akce v Security Center.
 
-| Role | Upravit zásady zabezpečení | Použití doporučení zabezpečení pro prostředek</br> (včetně "rychlé opravy!") | Zavřít výstrahy | Zobrazit výstrahy a doporučení |
-|:--- |:---:|:---:|:---:|:---:|
-| Vlastník předplatného | ✔ | ✔ | ✔ | ✔ |
-| Přispěvatel předplatného | -- | ✔ | ✔ | ✔ |
-| Vlastník skupiny prostředků | -- | ✔ | -- | ✔ |
-| Přispěvatel skupiny prostředků | -- | ✔ | -- | ✔ |
-| Čtenář | -- | -- | -- | ✔ |
-| Správce zabezpečení | ✔ | -- | ✔ | ✔ |
-| Čtecí modul zabezpečení | -- | -- | -- | ✔ |
+|Akce|Čtecí modul zabezpečení/ <br> Čtenář |Správce zabezpečení  |Přispěvatel skupiny prostředků/ <br> Vlastník skupiny prostředků  |Přispěvatel předplatného  |Vlastník předplatného  |
+|:--- |:---:|:---:|:---:|:---:|:---:|
+|Upravit zásady zabezpečení|-|✔|-|-|✔|
+|Změnit cenovou úroveň předplatného|-|✔|-|-|-|
+|Povolit nebo zakázat Automatické zřizování|-|✔|-|-|-|
+|Použití doporučení zabezpečení pro prostředek</br> (a použijte [rychlou opravu!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
+|Zavřít výstrahy|-|✔|-|✔|✔|
+|Zobrazit výstrahy a doporučení|✔|✔|✔|✔|✔|
 
 > [!NOTE]
 > Doporučujeme přiřadit uživatelům tu nejvíc omezenou roli, kterou ke své práci potřebují. Přiřaďte například roli Čtenář uživatelům, kteří potřebují jenom zobrazit informace o stavu zabezpečení prostředku, ale neprovádějí akci, jako je třeba použití doporučení nebo úprav zásad.

@@ -10,13 +10,13 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 04/28/2020
-ms.custom: seoapril2019
-ms.openlocfilehash: 3b1dd474b3b5518029e7cf404cc88b97bfa23e36
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.custom: seoapril2019, tracking-python
+ms.openlocfilehash: c0cf361cc00466a8ddf098b52bfaacc2fa63dad4
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433496"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84559444"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Nasazování modelů pomocí služby Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

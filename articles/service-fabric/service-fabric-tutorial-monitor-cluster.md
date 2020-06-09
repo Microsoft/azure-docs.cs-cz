@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.author: srrengar
 ms.custom: mvc
-ms.openlocfilehash: ab58d622511e0d5793eb6df312bc3fd6dd15bfd6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 338ebc584cc718fd9d3b587d17ec0895483dfb0c
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75376626"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560438"
 ---
 # <a name="tutorial-monitor-a-service-fabric-cluster-in-azure"></a>Kurz: monitorování clusteru Service Fabric v Azure
 
@@ -124,7 +124,7 @@ ServiceFabricOperationalEvent
 | project EventId, EventName = 'NodeUpOperational', TaskName, Computer, EventMessage, TimeGenerated
 | sort by TimeGenerated 
 ``` 
- 
+
 Vrátí sestavy o stavu s podstavem \ = 3 (chyba) a extrahuje další vlastnosti z pole EventMessage:
 
 ```kusto
@@ -210,7 +210,7 @@ Spolehlivé události objektu actor lze zobrazit podobným způsobem:
 ServiceFabricReliableActorEvent
 | sort by TimeGenerated desc
 ```
-Chcete-li nakonfigurovat podrobnější události pro Reliable Actors, můžete `scheduledTransferKeywordFilter` změnit v konfiguraci pro diagnostické rozšíření v šabloně clusteru. Podrobnosti o hodnotách pro tyto položky jsou uvedeny v referenčních informacích o [událostech Reliable Actors](service-fabric-reliable-actors-diagnostics.md#keywords).
+Chcete-li nakonfigurovat podrobnější události pro Reliable Actors, můžete změnit `scheduledTransferKeywordFilter` v konfiguraci pro diagnostické rozšíření v šabloně clusteru. Podrobnosti o hodnotách pro tyto položky jsou uvedeny v referenčních informacích o [událostech Reliable Actors](service-fabric-reliable-actors-diagnostics.md#keywords).
 
 ```json
 "EtwEventSourceProviderConfiguration": [

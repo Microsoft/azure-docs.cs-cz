@@ -9,12 +9,12 @@ ms.service: azure-sentinel
 ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d4e7077c338586298c5e7f0805c3d47b08a7a108
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 149ac61e4737faa81e55fac3e07133c73bbc00d5
+ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82184329"
+ms.lasthandoff: 06/08/2020
+ms.locfileid: "84488116"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Rychlý Start: zprovoznění služby Azure Sentinel
 
@@ -57,6 +57,9 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
    > - Výchozí pracovní prostory vytvořené nástrojem Azure Security Center se v seznamu nezobrazí. na ně nemůžete nainstalovat službu Azure Sentinel.
    > - U všech [oblastí GA Log Analytics](https://azure.microsoft.com/global-infrastructure/services/?products=monitor) s výjimkou oblastí Čína a Německo (svrchovan) může Azure Sentinel běžet v pracovních prostorech. Data generovaná službou Azure Sentinel (jako jsou incidenty, záložky a pravidla výstrah, která mohou obsahovat data zákaznická z těchto pracovních prostorů) se ukládají v Evropě (pro pracovní prostory v Evropě), v Austrálii (pro pracovní prostory v Austrálii) nebo v Východní USA (pro pracovní prostory v jiné oblasti).
 
+   >[!IMPORTANT]
+   > - Po povolení Azure Sentinel v pracovním prostoru se přesun tohoto pracovního prostoru do jiných skupin prostředků nebo předplatných nepodporuje. Pokud potřebujete přesunout pracovní prostor, obraťte se na podporu s pokyny.
+
 1. Vyberte **Přidat Sentinel Azure**.
   
 
@@ -65,7 +68,7 @@ Po připojení zdrojů dat si můžete vybrat z Galerie odborných vytvořených
 Služba Azure Sentinel vytvoří připojení ke službám a aplikacím pomocí připojení ke službě a předávání událostí a protokolů do služby Azure Sentinel. U počítačů a virtuálních počítačů můžete nainstalovat agenta Azure Sentinel, který shromáždí protokoly a předává je do Azure Sentinel. Pro brány firewall a proxy servery využívá Azure Sentinel Server Linux syslog. Agent se nainstaluje na něj a odkud agent shromáždí soubory protokolu a předá je do Azure Sentinel. 
  
 1. Klikněte na **datové konektory**.
-2. K dispozici je dlaždice pro každý zdroj dat, ke kterému se můžete připojit.<br>
+1. K dispozici je dlaždice pro každý zdroj dat, ke kterému se můžete připojit.<br>
 Klikněte například na **Azure Active Directory**. Pokud tento zdroj dat připojíte, budete streamovat všechny protokoly z Azure AD do Azure Sentinel. Můžete vybrat typ protokolů, které jsou v síti WAN k dispozici, přihlášení a protokoly auditu. <br>
 V dolní části poskytuje Azure Sentinel doporučení pro to, které sešity byste měli nainstalovat pro každý konektor, abyste mohli okamžitě získat zajímavé přehledy napříč vašimi daty. <br> Postupujte podle pokynů k instalaci nebo se [podívejte na příslušné Průvodce připojením](connect-data-sources.md) , kde najdete další informace. Informace o datových konektorech najdete v tématu [připojení služeb společnosti Microsoft](connect-data-sources.md).
 
