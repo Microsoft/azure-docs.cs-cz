@@ -3,17 +3,17 @@ title: Začínáme se službou Azure Cost Management pro partnery
 description: V tomto článku je vysvětlené, jak partneři používají funkce služby Azure Cost Management a jak k ní umožní přístup svým zákazníkům.
 author: bandersmsft
 ms.author: banders
-ms.date: 03/02/2020
+ms.date: 06/08/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 8dea0da44ebfb35165daa7096296dada55e78e99
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 08037cbd3723604720a273722bd5dbee3fb79b8e
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83997124"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84554559"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Začínáme se službou Azure Cost Management pro partnery
 
@@ -152,7 +152,7 @@ V amortizačních zobrazeních a ve skutečných nákladech na rezervované inst
 
 ## <a name="analyze-costs-in-cost-analysis"></a>Analýza nákladů
 
-Partneři, kteří mají v partnerském tenantovi přístup k rozsahům fakturace, můžou v Analýze nákladů zkoumat a analyzovat fakturované náklady, a to buď pro všechny zákazníky, určitého zákazníka nebo fakturu. V zobrazení [Analýza nákladů](quick-acm-cost-analysis.md) také můžete [ukládat zobrazení](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) a exportovat data do [souborů CSV a PNG](quick-acm-cost-analysis.md#automation-and-offline-analysis).
+Partneři, kteří mají v partnerském tenantovi přístup k rozsahům fakturace, můžou v Analýze nákladů zkoumat a analyzovat fakturované náklady, a to buď pro všechny zákazníky, určitého zákazníka nebo fakturu. V zobrazení [Analýza nákladů](quick-acm-cost-analysis.md) také můžete [ukládat zobrazení](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) a exportovat data do [souborů CSV a PNG](quick-acm-cost-analysis.md#download-usage-data).
 
 Uživatelé RBAC s přístupem k předplatnému také můžou v zákaznickém tenantovi analyzovat maloobchodní náklady předplatných, ukládat zobrazení a exportovat data do souborů CSV a PNG.
 

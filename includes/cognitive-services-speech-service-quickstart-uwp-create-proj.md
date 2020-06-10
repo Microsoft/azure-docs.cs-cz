@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 23c4e18ae3e4111c179c1b98320af8c5659fa10c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 5ab0b9abd32ef2e5eb7ea02d6118e387ef753348
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673097"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609275"
 ---
 Chcete-li vytvořit projekt sady Visual Studio pro Univerzální platforma Windows (UWP), je nutné nastavit vývojové možnosti sady Visual Studio, vytvořit projekt, vybrat cílovou architekturu, nastavit záznam zvuku a nainstalovat sadu Speech SDK.
 
@@ -100,8 +100,8 @@ Nakonec nainstalujte [balíček NuGet sady Speech SDK](https://aka.ms/csspeech/n
 
 1. V podokně stav balíčku vedle výsledků hledání vyberte svůj projekt **HelloWorld** .
 
-1. Vyberte **Install** (Nainstalovat).
+1. Vyberte **Nainstalovat**.
 
 1. V dialogovém okně **Náhled změn** vyberte **OK**.
 
-1. V dialogovém okně **přijetí licence** si prohlédněte licenci a pak vyberte **Souhlasím**. Spustí se instalace balíčku. po dokončení instalace se v podokně **výstup** zobrazí zpráva podobná následujícímu textu: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.0' to helloworld` .
+1. V dialogovém okně **přijetí licence** si prohlédněte licenci a pak vyberte **Souhlasím**. Spustí se instalace balíčku. po dokončení instalace se v podokně **výstup** zobrazí zpráva podobná následujícímu textu: `Successfully installed 'Microsoft.CognitiveServices.Speech 1.12.1' to helloworld` .

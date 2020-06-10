@@ -15,8 +15,6 @@
       href: provision-vm.md
     - name: Vytvoření prostředí Data Science Virtual Machine s Ubuntu
       href: dsvm-ubuntu-intro.md
-- name: Kurzy
-  items:
     - name: Vytvoření DSVM s využitím šablony ARM
       displayName: Resource Manager
       href: dsvm-tutorial-resource-manager.md

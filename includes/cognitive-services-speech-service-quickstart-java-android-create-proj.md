@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
-ms.openlocfilehash: 29086acb1fe4dd3167434f795d09da05ee594722
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: d59381c220d7118724db7685740af76ba3776034
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673165"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609277"
 ---
 1. Spusťte Android Studio a v **uvítacím** okně vyberte **spustit nový projekt Android Studio** .
 
@@ -27,7 +27,7 @@ Android Studiu chvíli trvá, než nový projekt pro Android připraví. Dále n
 
 [!INCLUDE [License notice](cognitive-services-speech-service-license-notice.md)]
 
-Aktuální verze sady Cognitive Services Speech SDK je 1.12.0.
+Aktuální verze sady Cognitive Services Speech SDK je 1.12.1.
 
 Sada Speech SDK pro Android je zabalená jako [Knihovna AAR (Android Library)](https://developer.android.com/studio/projects/android-library), která zahrnuje nezbytné knihovny a požadovaná oprávnění pro Android.
 Hostuje se v úložišti Maven na adrese https: \/ /csspeechstorage.blob.Core.Windows.NET/Maven/.
@@ -42,7 +42,7 @@ Nastavte projekt tak, aby používal sadu Speech SDK. Otevřete okno **struktury
 
    ![Snímek obrazovky se závislostí knihovny](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. V zobrazeném okně zadejte název a verzi sady Speech SDK pro Android, *com. Microsoft. cognitiveservices Account. Speech: Client-SDK: 1.12.0*. Pak vyberte **OK**.
+1. V zobrazeném okně zadejte název a verzi sady Speech SDK pro Android, *com. Microsoft. cognitiveservices Account. Speech: Client-SDK: 1.12.1*. Pak vyberte **OK**.
    Sada Speech SDK by teď měla být přidána do seznamu závislostí, jak je znázorněno níže:
 
    ![Snímek obrazovky sady Speech SDK v seznamu závislostí](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)
