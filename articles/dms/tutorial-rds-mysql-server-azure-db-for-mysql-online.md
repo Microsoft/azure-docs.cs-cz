@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: c34de48d0184057f42d1b779abee56e1fa9ac169
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: 8cfe8d1a87b8b52c21927696101704bd01b7641a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78255168"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609246"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Kurz: migrace služby RDS MySQL do Azure Database for MySQL online pomocí DMS
 
@@ -67,6 +67,7 @@ Pro absolvování tohoto kurzu je potřeba provést následující:
 
 1. Pokud chcete vytvořit novou skupinu parametrů, postupujte podle pokynů AWS v článku [soubory protokolů databáze MySQL](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_LogAccess.Concepts.MySQL.html)v části **Formát binárního protokolování** .
 2. Vytvořte novou skupinu parametrů s následující konfigurací:
+    * log_bin = ZAPNUTo
     * binlog_format = row
     * binlog_checksum = žádné
 3. Uložte novou skupinu parametrů.

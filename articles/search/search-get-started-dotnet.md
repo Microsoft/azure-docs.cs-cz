@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 3af744c7ce73544fa35af79a7904701a74241aab
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 59ef47ac67955ef5b9b7cb51ae6f39a9e0d30c3b
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84555172"
+ms.locfileid: "84634929"
 ---
 # <a name="quickstart-create-a-search-index-in-net"></a>Rychlý Start: vytvoření indexu vyhledávání v .NET
 > [!div class="op_single_selector"]
@@ -72,7 +72,7 @@ Pro tento projekt použijte verzi 9 `Microsoft.Azure.Search` balíčku NuGet a n
 
 1. Klikněte na **Browse** (Procházet).
 
-1. Vyhledejte `Microsoft.Azure.Search` a vyberte verze 9.0.1 nebo novější.
+1. Vyhledejte `Microsoft.Azure.Search` a vyberte verzi 9.0.1 nebo novější (nejnovější stabilní verze je 10.1.0).
 
 1. Kliknutím na **instalovat** na pravé straně přidejte sestavení do projektu a řešení.
 
@@ -89,26 +89,27 @@ Pro tento projekt použijte verzi 9 `Microsoft.Azure.Search` balíčku NuGet a n
 
 1. Přidejte soubor do výstupního adresáře. Klikněte pravým tlačítkem na appSettings. JSON a vyberte **vlastnosti**. V **adresáři kopírovat do výstupního adresáře**vyberte možnost **Kopírovat, pokud je novější**.
 
-1. Zkopírujte následující kód JSON do nového souboru JSON. Nahraďte název vyhledávací služby (klíč-SEARCH-SERVICE-NAME) a klíč rozhraní API pro správu (kód-správce-rozhraní API-KEY) pomocí platných hodnot. Pokud je koncový bod služby `https://mydemo.search.windows.net` , název služby by byl "mydemo".
+1. Zkopírujte následující kód JSON do nového souboru JSON. 
 
-```json
-{
-  "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
-  "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
-  "SearchIndexName": "hotels-quickstart"
-}
-```
+    ```json
+    {
+      "SearchServiceName": "<YOUR-SEARCH-SERVICE-NAME>",
+      "SearchServiceAdminApiKey": "<YOUR-ADMIN-API-KEY>",
+      "SearchIndexName": "hotels-quickstart"
+    }
+    ```
+
+1. Nahraďte název vyhledávací služby (klíč-SEARCH-SERVICE-NAME) a klíč rozhraní API pro správu (kód-správce-rozhraní API-KEY) pomocí platných hodnot. Pokud je koncový bod služby `https://mydemo.search.windows.net` , název služby by byl "mydemo".
 
 ### <a name="add-class-method-files-to-your-project"></a>Přidat třídu ". Metoda "soubory do projektu
 
-Při tisku výsledků do okna konzoly musí být jednotlivá pole z objektu hotelu vrácena jako řetězce. Můžete implementovat [metodu ToString ()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) pro provedení této úlohy, zkopírování potřebného kódu do dvou nových souborů.
+Tento krok je nutný k vytváření smysluplného výstupu v konzole nástroje. Při tisku výsledků do okna konzoly musí být jednotlivá pole z objektu hotelu vrácena jako řetězce. Tento krok implementuje [metodu ToString ()](https://docs.microsoft.com/dotnet/api/system.object.tostring?view=netframework-4.8) pro provedení této úlohy, kterou provedete tak, že zkopírujete potřebný kód do dvou nových souborů.
 
 1. Přidejte do projektu dvě prázdné definice tříd: Address.Methods.cs, Hotel.Methods.cs
 
-1. V Address.Methods.cs přepište výchozí obsah následujícím kódem, [řádky 1-32](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L32).
+1. V Address.Methods.cs přepište výchozí obsah následujícím kódem, [řádky 1-25](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Address.Methods.cs/#L1-L25).
 
-1. Na Hotel.Methods.cs zkopírujte [řádky 1-66](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L66).
-
+1. Na Hotel.Methods.cs zkopírujte [řádky 1-68](https://github.com/Azure-Samples/azure-search-dotnet-samples/blob/master/Quickstart/AzureSearchQuickstart/Hotel.Methods.cs/#L1-L68).
 
 ## <a name="1---create-index"></a>1. vytvoření indexu
 
@@ -273,7 +274,7 @@ Index hotelů se skládá z jednoduchých a složitých polí, kde je jednoduch�
             // The fields of the index are defined by calling the FieldBuilder.BuildForType() method.
             private static void CreateIndex(string indexName, SearchServiceClient serviceClient)
             {
-                var definition = new Index()
+                var definition = new Microsoft.Azure.Search.Models.Index()
                 {
                     Name = indexName,
                     Fields = FieldBuilder.BuildForType<Hotel>()

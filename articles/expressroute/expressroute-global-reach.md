@@ -5,14 +5,14 @@ services: expressroute
 author: cherylmc
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 05/05/2020
+ms.date: 06/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 7e98f4a401a9fcab12bd7a276c47df67c7936b1d
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 5022efacf33a2c07f1388666b5de26ee86322739
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82853408"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636729"
 ---
 # <a name="expressroute-global-reach"></a>ExpressRoute Global Reach
 ExpressRoute je soukromý a odolný způsob, jak připojit vaše místní sítě k Microsoft Cloud. Přístup k mnoha cloudovým službám Microsoftu, jako je Azure a Office 365, můžete získat z privátního datového centra nebo vaší firemní sítě. Můžete mít například pobočku v síti San Francisco s okruhem ExpressRoute v silikonovém sedlu a další pobočkou v Londýně s okruhem ExpressRoute ve stejném městě. Obě pobočky můžou mít vysokou rychlost připojení k prostředkům Azure v USA – západ a Velká Británie – jih. Firemní pobočky ale nemůžou přímo navzájem měnit data. Jinými slovy, 10.0.1.0/24 může odesílat data do 10.0.3.0/24 a 10.0.4.0/24, ale ne do 10.0.2.0/24.
@@ -35,7 +35,7 @@ ExpressRoute Global Reach v současné době jsou podporovány na následující
 * Kanada
 * Francie
 * Německo
-* Hongkong – zvláštní správní oblast
+* Hongkong – zvláštní administrativní oblast
 * Irsko
 * Japonsko
 * Jižní Korea
@@ -43,9 +43,10 @@ ExpressRoute Global Reach v současné době jsou podporovány na následující
 * Nový Zéland
 * Norsko
 * Singapur
+* Švédsko
 * Švýcarsko
 * Spojené království
-* Spojené státy
+* USA
 
 Vaše okruhy ExpressRoute musí být vytvořené v [umístěních partnerských vztahů ExpressRoute](expressroute-locations.md) ve výše uvedených zemích nebo oblastech. Pokud chcete povolit ExpressRoute Global Reach mezi [různými geopolitickými oblastmi](expressroute-locations.md), vaše okruhy musí být SKU úrovně Premium.
 
