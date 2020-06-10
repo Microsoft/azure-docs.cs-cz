@@ -10,12 +10,13 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 01/14/2020
 ms.author: dylankil
-ms.openlocfilehash: a252afae0a007ee0b791b56d19ffb0685848d30a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: fb95e21f9df5cf5eded03ea51f56bab86bbbecb3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76844356"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609127"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Kurz: spuštění moderního čtečky pomocí ukázkového projektu Python
 
@@ -26,7 +27,7 @@ V tomto [přehledu](./overview.md)jste se dozvěděli o tom, co je moderní čte
 > * Získání přístupového tokenu
 > * Spuštění moderního čtecího zařízení s ukázkovým obsahem
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -57,7 +58,7 @@ Koncový bod rozhraní API **getimmersivereadertoken** by měl být zabezpečen�
 
 ## <a name="create-a-python-web-app-on-windows"></a>Vytvoření webové aplikace v Pythonu ve Windows
 
-Vytvoření webové aplikace v Pythonu `flask` pomocí systému Windows.
+Vytvoření webové aplikace v Pythonu pomocí `flask` systému Windows.
 
 Nainstalujte [Git](https://git-scm.com/).
 
@@ -147,7 +148,7 @@ Aktivujte virtuální prostředí.
 activate
 ```
 
-Projekt by teď měl být aktivní a na příkazovém řádku se zobrazí `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` něco podobného.
+Projekt by teď měl být aktivní a na příkazovém řádku se zobrazí něco podobného `(advanced-python) C:\immersive-reader-sdk\js\samples\advanced-python>` .
 
 Deaktivuje prostředí.
 
@@ -155,9 +156,9 @@ Deaktivuje prostředí.
 deactivate
 ```
 
-`(advanced-python)` Předpona by nyní měla být pryč, protože prostředí je nyní deaktivováno.
+`(advanced-python)`Předpona by nyní měla být pryč, protože prostředí je nyní deaktivováno.
 
-Chcete-li znovu aktivovat prostředí `workon advanced-python` , spusťte z kořenové složky ukázkového projektu.
+Chcete-li znovu aktivovat prostředí, spusťte `workon advanced-python` z kořenové složky ukázkového projektu.
 
 ```cmd
 workon advanced-python
@@ -171,11 +172,11 @@ Když je prostředí aktivní, spusťte vzorový projekt zadáním `flask run` z
 flask run
 ```
 
-Otevřete prohlížeč a přejděte na _http://localhost:5000_.
+Otevřete prohlížeč a přejděte na _http://localhost:5000_ .
 
 ## <a name="create-a-python-web-app-on-osx"></a>Vytvoření webové aplikace v Pythonu v OSX
 
-Vytvoření webové aplikace v Pythonu `flask` pomocí OSX.
+Vytvoření webové aplikace v Pythonu pomocí `flask` OSX.
 
 Nainstalujte [Git](https://git-scm.com/).
 
@@ -213,10 +214,10 @@ sudo nano /etc/paths
 
 - Po zobrazení výzvy zadejte heslo.
 - Přidejte cestu k instalaci PIP do proměnné PATH.
-- Přejděte do dolní části souboru a zadejte cestu, kterou chcete přidat jako poslední položku seznamu, např. `PATH=$PATH:/usr/local/bin`.
+- Přejděte do dolní části souboru a zadejte cestu, kterou chcete přidat jako poslední položku seznamu, např. `PATH=$PATH:/usr/local/bin` .
 - Stisknutím klávesy CTRL-x ukončíte.
 - Zadáním `Y` uložte upravenou vyrovnávací paměť.
-- A to je vše! Chcete-li ji otestovat, v okně nové okno terminálu `echo $PATH`zadejte:.
+- A je to! Chcete-li ji otestovat, v okně nové okno terminálu zadejte: `echo $PATH` .
 
 Nainstalovat baňce.
 
@@ -284,7 +285,7 @@ Aktivujte virtuální prostředí.
 activate
 ```
 
-Projekt by teď měl být aktivní a na příkazovém řádku se zobrazí `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` něco podobného.
+Projekt by teď měl být aktivní a na příkazovém řádku se zobrazí něco podobného `(advanced-python) /immersive-reader-sdk/js/samples/advanced-python>` .
 
 Deaktivuje prostředí.
 
@@ -292,9 +293,9 @@ Deaktivuje prostředí.
 deactivate
 ```
 
-`(advanced-python)` Předpona by nyní měla být pryč, protože prostředí je nyní deaktivováno.
+`(advanced-python)`Předpona by nyní měla být pryč, protože prostředí je nyní deaktivováno.
 
-Chcete-li znovu aktivovat prostředí `workon advanced-python` , spusťte z kořenové složky ukázkového projektu.
+Chcete-li znovu aktivovat prostředí, spusťte `workon advanced-python` z kořenové složky ukázkového projektu.
 
 ```bash
 workon advanced-python
@@ -308,7 +309,7 @@ Když je prostředí aktivní, spusťte vzorový projekt zadáním `flask run` z
 flask run
 ```
 
-Otevřete prohlížeč a přejděte na _http://localhost:5000_.
+Otevřete prohlížeč a přejděte na _http://localhost:5000_ .
 
 ## <a name="next-steps"></a>Další kroky
 

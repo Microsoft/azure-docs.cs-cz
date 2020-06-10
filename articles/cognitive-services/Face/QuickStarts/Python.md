@@ -10,12 +10,13 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: c88a60fdc6d064fba91f4b6d79e1637f45bf2716
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 90a404ca25d4b5512b508fe150ba4a2f6ec61139
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403221"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610939"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-python"></a>Rychlý Start: detekce plošek v obrázku pomocí REST API obličeje a Pythonu
 
@@ -23,7 +24,7 @@ V tomto rychlém startu použijete REST API Azure Face s Pythonem k detekci lids
 
 ![Člověk a žena, každý s obdélníkem nakresleným kolem plošek a stáří a pohlaví zobrazenými na obrázku](../images/labelled-faces-python.png)
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete. 
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete. 
 
 
 ## <a name="prerequisites"></a>Požadavky
@@ -43,7 +44,7 @@ Alternativně můžete spustit tento rychlý Start z příkazového řádku pomo
 1. Zkopírujte do textového editoru následující kód.
 1. Proveďte v kódu na příslušných místech následující změny:
     1. Hodnotu `subscription_key` nahraďte klíčem předplatného.
-    1. Upravte hodnotu `face_api_url` tak, aby ZAHRNOVALA adresu URL koncového bodu pro váš prostředek Face API.
+    1. Upravte hodnotu tak, `face_api_url` aby zahrnovala adresu URL koncového bodu pro váš prostředek Face API.
     1. Volitelně můžete hodnotu `image_url` nahradit adresou URL jiného obrázku, který chcete analyzovat.
 1. Uložte kód jako soubor s příponou `.py`. Například, `detect-face.py`.
 1. Otevřete okno příkazového řádku.
