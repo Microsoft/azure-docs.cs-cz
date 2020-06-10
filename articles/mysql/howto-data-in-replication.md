@@ -6,16 +6,22 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/27/2020
-ms.openlocfilehash: 18c1d8b42dc73951901ec4ae9b79715ddbd47617
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b4bc57bd896eb8d250975ec8e9300d0498d70835
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80474038"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604146"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Postup konfigurace Azure Database for MySQL Replikace vstupních dat
 
 Tento článek popisuje, jak nastavit Replikace vstupních dat v Azure Database for MySQL konfigurací serverů hlavní servery a repliky. V tomto článku se předpokládá, že máte několik předchozích zkušeností se servery a databázemi MySQL.
+
+> [!NOTE]
+> Komunikace bez posunu
+>
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+>
 
 Pokud chcete vytvořit repliku ve službě Azure Database for MySQL, Replikace vstupních dat synchronizuje data z hlavního serveru MySQL místně, na virtuálních počítačích (VM) nebo v cloudových databázových službách.
 
@@ -59,7 +65,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
    Pokud se proměnná [`log_bin`](https://dev.mysql.com/doc/refman/8.0/en/replication-options-binary-log.html#sysvar_log_bin) vrátí s hodnotou "on", binární protokolování je na vašem serveru povolené. 
 
-   Pokud `log_bin` se vrátí s hodnotou "off" (vypnuto), zapněte binární protokolování úpravou souboru my. CNF tak `log_bin=ON` , aby se změna projevila, a restartujte server.
+   Pokud `log_bin` se vrátí s hodnotou "off" (vypnuto), zapněte binární protokolování úpravou souboru my. CNF tak, aby se změna projevila, `log_bin=ON` a restartujte server.
 
 3. Nastavení hlavního serveru
 
@@ -199,7 +205,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
 
 1. Spustit replikaci
 
-   Pro zahájení `mysql.az_replication_start` replikace zavolejte uloženou proceduru.
+   `mysql.az_replication_start`Pro zahájení replikace zavolejte uloženou proceduru.
 
    ```sql
    CALL mysql.az_replication_start;
@@ -213,7 +219,7 @@ Následující kroky připravují a konfigurují hostovaný Server MySQL v míst
    show slave status;
    ```
 
-   Pokud je stav `Slave_IO_Running` a `Slave_SQL_Running` v hodnotě "Ano" a hodnota `Seconds_Behind_Master` je "0", replikace funguje dobře. `Seconds_Behind_Master`Určuje, jak pozdě je replika. Pokud hodnota není "0", znamená to, že replika zpracovává aktualizace. 
+   Pokud je stav `Slave_IO_Running` a v `Slave_SQL_Running` hodnotě "Ano" a hodnota `Seconds_Behind_Master` je "0", replikace funguje dobře. `Seconds_Behind_Master`Určuje, jak pozdě je replika. Pokud hodnota není "0", znamená to, že replika zpracovává aktualizace. 
 
 ## <a name="other-stored-procedures"></a>Jiné uložené procedury
 

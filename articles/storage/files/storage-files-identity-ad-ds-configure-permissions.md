@@ -7,18 +7,16 @@ ms.subservice: files
 ms.topic: conceptual
 ms.date: 06/07/2020
 ms.author: rogarana
-ms.openlocfilehash: 436f0ae3e19b2a0591a2727bde48bae66b91a94e
-ms.sourcegitcommit: 5504d5a88896c692303b9c676a7d2860f36394c1
+ms.openlocfilehash: b8ff58e830d9ca992db4461ee5c75659120c89c1
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84509249"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629586"
 ---
 # <a name="part-three-configure-directory-and-file-level-permissions-over-smb"></a>Třetí část: Konfigurace oprávnění adresářů a souborů přes SMB 
 
 Než začnete s tímto článkem, ujistěte se, že jste dokončili předchozí článek [přiřazení oprávnění na úrovni sdílení k identitě](storage-files-identity-ad-ds-assign-permissions.md). Aby bylo zajištěno, že jsou zavedena oprávnění na úrovni sdílené složky.
-
-Po přiřazení oprávnění na úrovni sdílení pomocí RBAC musíte přiřadit správné seznamy ACL pro systém Windows (známé také jako oprávnění systému souborů NTFS) na úrovni kořenového adresáře, adresáře nebo souboru, aby bylo možné využít podrobné řízení přístupu. Oprávnění na úrovni sdílené složky RBAC si můžete představit jako gatekeeper na vysoké úrovni, který určuje, jestli uživatel může ke sdílené složce přistupovat. I když seznamy ACL systému Windows fungují na podrobnější úrovni, aby bylo možné určit, které operace může uživatel provádět na úrovni adresáře nebo souboru.
 
 Po přiřazení oprávnění na úrovni sdílení s funkcí RBAC musíte nakonfigurovat správné seznamy ACL pro systém Windows na úrovni kořenového adresáře, adresáře nebo souboru, aby bylo možné využít podrobné řízení přístupu. Oprávnění na úrovni sdílené složky RBAC si můžete představit jako gatekeeper na vysoké úrovni, který určuje, jestli uživatel může ke sdílené složce přistupovat. I když seznamy ACL systému Windows fungují na podrobnější úrovni, aby bylo možné určit, které operace může uživatel provádět na úrovni adresáře nebo souboru. Oprávnění na úrovni sdílené složky a souboru nebo adresáře se vynutily, když se uživatel pokusí o přístup k souboru nebo adresáři, takže pokud mezi nimi existuje rozdíl, použije se jenom ta, která je jenom nejpřísnější. Například pokud má uživatel přístup pro čtení a zápis na úrovni souboru, ale přečte se jenom na úrovni sdílení, pak ho můžou číst jenom. Totéž by platilo, pokud bylo obrácené a uživatel měl přístup pro čtení a zápis na úrovni sdílené složky, ale jenom číst na úrovni souboru, ale může ho jenom číst.
 

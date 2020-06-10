@@ -15,7 +15,7 @@ ms.locfileid: "70128035"
 
 V tomto příkladu musíte zadat přihlašovací údaje pro účty služeb Batch a Storage. Na webu Azure Portal je snadný způsob, jak získat potřebné přihlašovací údaje. (Tyto přihlašovací údaje můžete také získat pomocí rozhraní API Azure nebo nástrojů příkazového řádku.)
 
-1. Vyberte **všechny služby** > **Batch účty**a potom vyberte název účtu Batch.
+1. Vyberte **všechny služby**  >  **Batch účty**a potom vyberte název účtu Batch.
 
 2. Pokud chcete zobrazit přihlašovací údaje dávky, vyberte **klíče**. Zkopíruje hodnoty **Účet Batch**, **URL** a **Primární přístupová klíč** do textového editoru.
 

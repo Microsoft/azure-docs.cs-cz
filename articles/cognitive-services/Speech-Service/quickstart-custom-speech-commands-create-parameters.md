@@ -81,7 +81,7 @@ V tomto článku tuto aplikaci rozšíříte pomocí parametrů, aby bylo možn�
 
 ## <a name="add-example-sentences"></a>Přidat ukázkové věty
 
-Pro příkazy, které mají parametry, je vhodné přidat ukázkové věty, které pokrývají všechny možné kombinace. Příklad:
+Pro příkazy, které mají parametry, je vhodné přidat ukázkové věty, které pokrývají všechny možné kombinace. Například:
 
 - Úplné informace o parametru:`turn {OnOff} the {SubjectDevice}`
 - Informace o částečném parametru:`turn it {OnOff}`

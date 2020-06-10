@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 04/09/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: f0760f6e61904295771ba349f8101e2d6dc6afe3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 12d25fd06ddfa8265dbf046093d3854f7fde4f33
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759742"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609552"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Posílání zpráv z cloudu na zařízení pomocí IoT Hub (Python)
 
@@ -58,7 +58,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu pro simulaci zařízen
 
 1. Pomocí textového editoru vytvořte soubor s názvem **SimulatedDevice.py**.
 
-1. Na začátek souboru `import` **SimulatedDevice.py** přidejte následující příkazy a proměnné:
+1. Na `import` začátek souboru **SimulatedDevice.py** přidejte následující příkazy a proměnné:
 
     ```python
     import threading
@@ -140,7 +140,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která posílá zprá
 
 1. Pomocí textového editoru vytvořte soubor s názvem **SendCloudToDeviceMessage.py**.
 
-1. Na začátek souboru `import` **SendCloudToDeviceMessage.py** přidejte následující příkazy a proměnné:
+1. Na `import` začátek souboru **SendCloudToDeviceMessage.py** přidejte následující příkazy a proměnné:
 
     ```python
     import random
@@ -152,7 +152,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která posílá zprá
     MSG_TXT = "{\"service client sent a message\": %.2f}"
     ```
 
-1. Do souboru **SendCloudToDeviceMessage.py** přidejte následující kód. Nahraďte `{iot hub connection string}` zástupné hodnoty a `{device id}` pomocí připojovacího řetězce centra IoT a ID zařízení, které jste si poznamenali dříve:
+1. Do souboru **SendCloudToDeviceMessage.py** přidejte následující kód. Nahraďte `{iot hub connection string}` `{device id}` zástupné hodnoty a pomocí připojovacího řetězce centra IoT a ID zařízení, které jste si poznamenali dříve:
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

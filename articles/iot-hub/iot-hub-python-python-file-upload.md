@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/31/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: 47fb7c615389e24322450ed1785aa7da9ec50db6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 9a3782c0d5791f20f14aabb53d486fc012518c1f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759687"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608498"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-python"></a>Nahrání souborů ze zařízení do cloudu pomocí IoT Hub (Python)
 
@@ -62,7 +62,7 @@ V této části vytvoříte aplikaci pro zařízení pro nahrání souboru do ce
 
 1. Pomocí textového editoru vytvořte v pracovní složce soubor **FileUpload.py** .
 
-1. Na začátek souboru `import` **FileUpload.py** přidejte následující příkazy a proměnné.
+1. Na `import` začátek souboru **FileUpload.py** přidejte následující příkazy a proměnné.
 
     ```python
     import os

@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/03/2020
+ms.date: 06/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 931287fa2a4104069b101236bec9f76bb7193e8d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 32af8c1b19d57fdba58ce27700e5d1e7a34f9c64
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416348"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604979"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Formát Avro v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -27,11 +27,11 @@ Formát Avro se podporuje pro následující konektory: [Amazon S3](connector-am
 
 Úplný seznam oddílů a vlastností, které jsou k dispozici pro definování datových sad, naleznete v článku [datové sady](concepts-datasets-linked-services.md) . V této části najdete seznam vlastností podporovaných datovou sadou Avro.
 
-| Vlastnost         | Popis                                                  | Požaduje se |
+| Vlastnost         | Popis                                                  | Vyžadováno |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| type             | Vlastnost Type datové sady musí být nastavená na **Avro**. | Ano      |
-| location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v `location`rámci. **Podrobnosti najdete v článku o konektoru – > vlastnosti datové sady**. | Ano      |
-| avroCompressionCodec | Kompresní kodek, který se má použít při zápisu do souborů Avro Při čtení ze souborů Avro Data Factory automaticky určit Kompresní kodek na základě metadat souboru.<br>Podporované typy jsou**none**(výchozí), "**uprostřed**", "**přichycení**". Poznámka: v současné době kopírování není při čtení a zápisu souborů Avro podporovat přichycení. | Ne       |
+| typ             | Vlastnost Type datové sady musí být nastavená na **Avro**. | Yes      |
+| location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location` . **Podrobnosti najdete v článku o konektoru – > vlastnosti datové sady**. | Yes      |
+| avroCompressionCodec | Kompresní kodek, který se má použít při zápisu do souborů Avro Při čtení ze souborů Avro Data Factory automaticky určit Kompresní kodek na základě metadat souboru.<br>Podporované typy jsou**none**(výchozí), "**uprostřed**", "**přichycení**". Poznámka: v současné době kopírování není při čtení a zápisu souborů Avro podporovat přichycení. | No       |
 
 > [!NOTE]
 > Prázdné znaky v názvu sloupce nejsou pro soubory Avro podporovány.
@@ -66,21 +66,49 @@ Níže je příklad datové sady Avro v Azure Blob Storage:
 
 ### <a name="avro-as-source"></a>Avro as source
 
-V části *** \*zdroj\* *** aktivity kopírování jsou podporovány následující vlastnosti.
+V části *** \* zdroj \* *** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost      | Popis                                                  | Požaduje se |
+| Vlastnost      | Popis                                                  | Vyžadováno |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AvroSource**. | Ano      |
-| storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají v rámci `storeSettings`své vlastní podporované nastavení pro čtení. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
+| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AvroSource**. | Yes      |
+| storeSettings | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají v rámci své vlastní podporované nastavení pro čtení `storeSettings` . **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | No       |
 
 ### <a name="avro-as-sink"></a>Avro jako jímka
 
-V části *** \*jímka\* *** aktivity kopírování jsou podporovány následující vlastnosti.
+V části *** \* jímka \* *** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost      | Popis                                                  | Požaduje se |
+| Vlastnost      | Popis                                                  | Vyžadováno |
 | ------------- | ------------------------------------------------------------ | -------- |
-| type          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AvroSink**. | Ano      |
-| storeSettings | Skupina vlastností, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má vlastní podporované nastavení zápisu v rámci `storeSettings`. **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | Ne       |
+| typ          | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **AvroSink**. | Yes      |
+| storeSettings | Skupina vlastností, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má vlastní podporované nastavení zápisu v rámci `storeSettings` . **Podrobnosti najdete v článku informace o konektoru – > část kopírování vlastností aktivity**. | No       |
+
+
+## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
+
+V části mapování toků dat můžete číst a zapisovat do formátu Avro v následujících úložištích dat: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+
+### <a name="source-properties"></a>Vlastnosti zdroje
+
+V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem Avro. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
+
+| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Cesty k zástupným kartám | Budou zpracovány všechny soubory, které odpovídají zástupné cestě. Přepíše složku a cestu k souboru nastavenou v datové sadě. | ne | Řetězec [] | wildcardPaths |
+| Kořenová cesta oddílu | Pro souborová data, která jsou rozdělená na oddíly, můžete zadat kořenovou cestu oddílu, aby bylo možné číst rozdělené složky jako sloupce. | ne | Řetězec | partitionRootPath |
+| Seznam souborů | Určuje, zda váš zdroj odkazuje na textový soubor se seznamem souborů, které se mají zpracovat. | ne | `true` nebo `false` | fileList |
+| Sloupec, ve kterém se má uložit název souboru | Vytvoří nový sloupec s názvem a cestou ke zdrojovému souboru. | ne | Řetězec | rowUrlColumn |
+| Po dokončení | Odstraní nebo přesune soubory po zpracování. Cesta k souboru začíná z kořene kontejneru | ne | Odstranit: `true` nebo`false` <br> Pøesunout`['<from>', '<to>']` | purgeFiles <br> moveFiles |
+| Filtrovat podle poslední změny | Zvolit filtrování souborů podle toho, kdy se naposledy změnily | ne | Časové razítko | modifiedAfter <br> modifiedBefore |
+
+### <a name="sink-properties"></a>Vlastnosti jímky
+
+V níže uvedené tabulce jsou uvedeny vlastnosti, které Avro jímka podporuje. Tyto vlastnosti můžete upravit na kartě **Nastavení** .
+
+| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Vymazat složku | Pokud před zápisem není cílová složka smazána | ne | `true` nebo `false` | zkrátit |
+| Možnost názvu souboru | Formát názvů zapsaných dat. Ve výchozím nastavení je jeden soubor na oddíl ve formátu`part-#####-tid-<guid>` | ne | Vzor: řetězec <br> Na oddíl: řetězec [] <br> Jako data ve sloupci: String <br> Výstup do jednoho souboru:`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+| Citace – vše | Uzavření všech hodnot do uvozovek | ne | `true` nebo `false` | quoteAll |
 
 ## <a name="data-type-support"></a>Podpora datových typů
 

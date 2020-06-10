@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 4/16/2020
-ms.openlocfilehash: f39e9450fb922e5b93d7b4b809df73cf5ab007c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/8/2020
+ms.openlocfilehash: 674ae5c60b7e897f43d28f5813641ddc833b3002
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81602396"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636066"
 ---
 # <a name="how-to-configure-server-parameters-in-azure-database-for-mariadb-by-using-the-azure-portal"></a>Postup konfigurace parametrů serveru v Azure Database for MariaDB pomocí Azure Portal
 
@@ -29,42 +29,6 @@ Azure Database for MariaDB podporuje konfiguraci některých parametrů serveru.
 5. Pokud jste uložili nové hodnoty pro parametry, můžete kdykoli vrátit zpět všechny výchozí hodnoty výběrem možnosti **Obnovit vše na výchozí**.
 ![Obnovit výchozí](./media/howto-server-parameters/5-reset_parameters.png)
 
-## <a name="list-of-configurable-server-parameters"></a>Seznam konfigurovatelných parametrů serveru
-
-Seznam podporovaných parametrů serveru se neustále zvětšuje. Použijte kartu parametry serveru v Azure Portal k získání definice a konfiguraci parametrů serveru podle požadavků vaší aplikace.
-
-## <a name="non-configurable-server-parameters"></a>Nekonfigurovatelné parametry serveru
-
-InnoDB fondu vyrovnávací paměti a maximální počet připojení se nedají konfigurovat a připojovat se k vaší [cenové úrovni](concepts-pricing-tiers.md).
-
-|**Cenová úroveň**| **vCore (celkem)**|**Fond vyrovnávacích pamětí InnoDB (MB)**|
-|---|---|---|
-|Základní| 1| 1024|
-|Základní| 2| 2560|
-|Pro obecné účely| 2| 3584|
-|Pro obecné účely| 4| 7680|
-|Pro obecné účely| 8| 15360|
-|Pro obecné účely| 16| 31232|
-|Pro obecné účely| 32| 62976|
-|Pro obecné účely| 64| 125952|
-|Optimalizováno pro paměť| 2| 7168|
-|Optimalizováno pro paměť| 4| 15360|
-|Optimalizováno pro paměť| 8| 30720|
-|Optimalizováno pro paměť| 16| 62464|
-|Optimalizováno pro paměť| 32| 125952|
-
-Tyto další parametry serveru není možné v systému konfigurovat:
-
-|**Ukazatele**|**Pevná hodnota**|
-| :------------------------ | :-------- |
-|innodb_file_per_table na úrovni Basic|OFF|
-|innodb_flush_log_at_trx_commit|1|
-|sync_binlog|1|
-|innodb_log_file_size|MB|
-|innodb_log_files_in_group|2|
-
-Další parametry serveru, které zde nejsou uvedeny, jsou nastaveny na jejich MariaDB výchozí výchozí hodnoty pro [MariaDB](https://mariadb.com/kb/en/library/xtradbinnodb-server-system-variables/).
-
 ## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma
 
 ### <a name="populating-the-time-zone-tables"></a>Naplnění tabulek časových pásem
@@ -72,7 +36,7 @@ Další parametry serveru, které zde nejsou uvedeny, jsou nastaveny na jejich M
 Tabulky časových pásem na vašem serveru se dají naplnit voláním `mysql.az_load_timezone` uložené procedury z nástroje, jako je třeba příkazový řádek MySQL nebo MySQL Workbench.
 
 > [!NOTE]
-> Pokud spouštíte `mysql.az_load_timezone` příkaz z aplikace MySQL Workbench, možná bude nutné nejprve vypnout režim bezpečné aktualizace pomocí nástroje `SET SQL_SAFE_UPDATES=0;`.
+> Pokud spouštíte `mysql.az_load_timezone` příkaz z aplikace MySQL Workbench, možná bude nutné nejprve vypnout režim bezpečné aktualizace pomocí nástroje `SET SQL_SAFE_UPDATES=0;` .
 
 ```sql
 CALL mysql.az_load_timezone();
@@ -102,8 +66,6 @@ SET time_zone = 'US/Pacific';
 
 Informace o [funkcích data a času](https://mariadb.com/kb/en/library/convert_tz/)najdete v dokumentaci k MariaDB.
 
-<!--
-## Next steps
+## <a name="next-steps"></a>Další kroky
 
-- [Connection libraries for Azure Database for MariaDB](concepts-connection-libraries.md).
--->
+- Další informace o [parametrech serveru](concepts-server-parameters.md)

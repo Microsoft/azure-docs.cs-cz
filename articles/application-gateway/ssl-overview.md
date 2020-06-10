@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 5/13/2020
 ms.author: victorh
-ms.openlocfilehash: adaf3dea5855a4af75977cb820ae12675c7f2ced
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3f8dcf4858d69f33ea50d473f6261cf45a6b7fa5
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648131"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629229"
 ---
 # <a name="overview-of-tls-termination-and-end-to-end-tls-with-application-gateway"></a>Přehled ukončení protokolu TLS a koncového a koncového protokolu TLS s Application Gateway
 
@@ -68,7 +68,7 @@ Pro SKU Application Gateway a WAF V1 se zásady TLS vztahují na provoz front-en
 
 V případě SKU Application Gateway a WAF v2 se zásady TLS vztahují jenom na provoz na front-endu a na back-end Server se nabízí všechny šifry, které v rámci metody handshake mají za výběr konkrétní šifry a verze protokolu TLS.
 
-Application Gateway komunikuje pouze se servery back-end, které mají buď povolený certifikát, s Application Gateway nebo jejichž certifikáty jsou podepsány známými CERTIFIKAČNÍmi autoritami a CN certifikátu se shoduje s názvem hostitele v nastavení back-endu HTTP. Mezi ně patří důvěryhodné služby Azure, například Azure App Service/Web Apps a Azure API Management.
+Application Gateway komunikuje pouze se servery back-end, které mají buď povolený seznam certifikátů, s Application Gateway nebo jejichž certifikáty jsou podepsány známými CERTIFIKAČNÍmi autoritami a CN certifikátu se shoduje s názvem hostitele v nastavení back-endu HTTP. Mezi ně patří důvěryhodné služby Azure, například Azure App Service/Web Apps a Azure API Management.
 
 Pokud certifikáty členů v back-endu nejsou podepsané známými autoritami certifikační autority, musí být každá instance fondu back-end s povoleným koncovým protokolem TLS nakonfigurovaná s certifikátem, který umožňuje zabezpečenou komunikaci. Přidáním certifikátu zajistíte, aby brána Application Gateway komunikovala pouze se známými back-end instancemi. Tím se dále zabezpečuje koncová komunikace.
 
@@ -80,9 +80,9 @@ Pokud certifikáty členů v back-endu nejsou podepsané známými autoritami ce
 
 V tomto příkladu se požadavky využívající TLS 1.2 směrují na servery back-end v Pool1 s využitím koncového šifrování TLS.
 
-## <a name="end-to-end-tls-and-whitelisting-of-certificates"></a>Konec na konec TLS a seznam povolených certifikátů
+## <a name="end-to-end-tls-and-allow-listing-of-certificates"></a>Koncová a koncová TLS a povolení výpisu certifikátů
 
-Application Gateway komunikuje pouze se známými back-end instancemi, které mají povolený certifikát s aplikační bránou. V rámci kompletního procesu nastavení TLS se vyskytly rozdíly v souvislosti s použitou verzí Application Gateway. V následující části jsou vysvětleny jednotlivě.
+Application Gateway komunikuje pouze se známými back-end instancemi, které mají povolený seznam certifikátů s aplikační bránou. V rámci kompletního procesu nastavení TLS se vyskytly rozdíly v souvislosti s použitou verzí Application Gateway. V následující části jsou vysvětleny jednotlivě.
 
 ## <a name="end-to-end-tls-with-the-v1-sku"></a>Komplexní protokol TLS s SKU v1
 
@@ -90,7 +90,7 @@ Pokud chcete povolit kompletní protokol TLS se servery back-end a Application G
 
 V případě sond stavu HTTPS používá Application Gateway v1 SKU přesnou shodu ověřovacího certifikátu (veřejného klíče certifikátu back-end serveru a nikoli kořenového certifikátu), který se má odeslat do nastavení protokolu HTTP.
 
-Potom budou povolena jenom připojení ke známým back-endům uvedeným v seznamu. Zbývající back-endy se v sondách stavu považují za chybné. Certifikáty podepsané svým držitelem slouží pouze k testování a nedoporučují se pro úlohy v produkčním prostředí. Tyto certifikáty musí být v seznamu povolených s aplikační bránou, jak je popsáno v předchozích krocích předtím, než je můžete použít.
+Pak jsou povolena pouze připojení ke známým a povoleným back-endy. Zbývající back-endy se v sondách stavu považují za chybné. Certifikáty podepsané svým držitelem slouží pouze k testování a nedoporučují se pro úlohy v produkčním prostředí. Tyto certifikáty musí být povoleny v seznamu s aplikační bránou, jak je popsáno v předchozích krocích předtím, než je lze použít.
 
 > [!NOTE]
 > Pro důvěryhodné služby Azure, jako je Azure App Service, se nevyžaduje nastavení ověřování a důvěryhodných kořenových certifikátů. Ve výchozím nastavení se považují za důvěryhodné.
@@ -141,7 +141,7 @@ Scénář | V1 | v2 |
 | Je-li adresa fondu back-endu IP adresa (V1) nebo pokud je vlastní název hostitele testu paměti nakonfigurován jako IP adresa (v2) | SNI (server_name) nebude nastavena. <br> **Poznámka:** V takovém případě by back-end server měl být schopný vrátit výchozí nebo záložní certifikát, který by měl být povolený v nastavení HTTP v části ověřovací certifikát. Pokud na back-end serveru není nakonfigurovaný žádný výchozí/záložní certifikát a očekává se SNI, server může připojení resetovat a bude mít za následek selhání sondy. | V pořadí výše zmíněné výše platí, že pokud mají IP adresu jako název hostitele, SNI nebude nastavené na základě [RFC 6066](https://tools.ietf.org/html/rfc6066). <br> **Poznámka:** Pokud není nakonfigurovaný žádný vlastní test paměti a v nastavení HTTP nebo ve fondu back-endu není nastavený žádný název hostitele, SNI se taky nenastaví v sondách v2. |
 
 > [!NOTE] 
-> Pokud není nakonfigurovaný vlastní test paměti, Application Gateway odešle výchozí sondu v tomto formátu – \< protokol \> ://127.0.0.1: \< port \> /. Například pro výchozí sondu HTTPS se pošle jako https://127.0.0.1:443/ . Upozorňujeme, že adresa 127.0.0.1 uvedená tady se používá jenom jako Hlavička hostitele HTTP a jako na základě RFC 6066 se nepoužije jako SNI hlavička. Další informace o chybách sondy stavu najdete v [Průvodci odstraňováním potíží se stavem back-endu](application-gateway-backend-health-troubleshooting.md).
+> Pokud není nakonfigurovaný vlastní test paměti, Application Gateway odešle výchozí test paměti v tomto formátu \<protocol\> :://127.0.0.1: \<port\> /. Například pro výchozí sondu HTTPS se pošle jako https://127.0.0.1:443/ . Upozorňujeme, že adresa 127.0.0.1 uvedená tady se používá jenom jako Hlavička hostitele HTTP a jako na základě RFC 6066 se nepoužije jako SNI hlavička. Další informace o chybách sondy stavu najdete v [Průvodci odstraňováním potíží se stavem back-endu](application-gateway-backend-health-troubleshooting.md).
 
 #### <a name="for-live-traffic"></a>Pro živý provoz
 

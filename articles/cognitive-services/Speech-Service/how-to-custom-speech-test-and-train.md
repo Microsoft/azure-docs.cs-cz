@@ -10,16 +10,35 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
-ms.openlocfilehash: bc79dabe82ab02166e3aa60a378ff394bca25028
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83725546"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628059"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Příprava dat pro službu Custom Speech
 
-Při testování přesnosti rozpoznávání řeči od Microsoftu nebo školení vašich vlastních modelů budete potřebovat zvuková a textová data. Na této stránce se zabýváme typy dat, jak je používat a spravujeme.
+Při testování přesnosti rozpoznávání řeči od Microsoftu nebo školení vašich vlastních modelů budete potřebovat zvuková a textová data. Na této stránce se zabýváme typy dat, které jsou potřeba pro vlastní modely řeči.
+
+## <a name="data-diversity"></a>Rozmanitost dat
+
+Text a zvuk, který se používá k otestování a výukě vlastního modelu, musí zahrnovat ukázky z nejrůznějších mluvčích a scénářů, které budete potřebovat pro rozpoznávání vašeho modelu.
+Vezměte v úvahu tyto faktory při shromažďování dat pro testování a školení vlastních modelů:
+
+* Data zvukového a hlasového zvuku musí pokrývat typy ústních příkazů, které budou vaši uživatelé dělat při interakci s modelem. Například model, který vyvolává a snižuje požadavky na teplotu v prohlášeních, které můžou lidé udělat, si tyto změny vyžádají.
+* Vaše data musí zahrnovat všechny odchylky řeči, které váš model bude potřebovat pro rozpoznávání. Mnohé faktory se můžou lišit v rozpoznávání řeči, včetně akcentů, dialektů, rozbalování jazyků, stáří, pohlaví, hlasové rozteči, úrovně zatížení a denního času.
+* Musíte zahrnout ukázky z různých prostředí (vnitřního, venkovního a silničního hluku), kde se bude model používat.
+* Zvuk se musí shromažďovat pomocí hardwarových zařízení, která bude produkční systém používat. Pokud váš model potřebuje identifikovat rozpoznávání řeči zaznamenané na záznamovém zařízení s proměnlivou kvalitou, musí také tyto různé scénáře představovat zvuková data, která zadáte pro vedení modelu.
+* Později můžete do modelu přidat další data, ale je třeba dbát na to, aby datová sada byla různorodá a reprezentativní pro potřeby vašich projektů.
+* Zahrnutí dat, která *nejsou* obsažena v rámci vašich požadavků na rozpoznávání vlastního modelu, může způsobit poškození kvality rozpoznávání, takže neobsahují data, která model nemusí přepisovat.
+
+Model vyškolený v podmnožině scénářů může v těchto scénářích provádět pouze dobře. Pečlivě si vyberte data, která představují kompletní rozsah scénářů, které budete potřebovat pro rozpoznávání vlastního modelu.
+
+> [!TIP]
+> Začněte s malými sadami ukázkových dat, která se shodují s jazykem, a akustickým využitím modelu.
+> Například zaznamenejte malý, ale reprezentativní vzorek zvuku na stejném hardwaru a ve stejném akustickém prostředí, ve kterém bude model Hledat v produkčních scénářích.
+> Malé datové sady reprezentativních dat můžou vystavovat problémy předtím, než budete investovat do shromažďování mnohem větších datových sad pro školení.
 
 ## <a name="data-types"></a>Typy dat
 
@@ -27,9 +46,9 @@ Tato tabulka obsahuje seznam povolených datových typů, kdy se má použít ka
 
 | Datový typ | Používá se pro testování. | Doporučené množství | Používá se pro školení. | Doporučené množství |
 |-----------|-----------------|----------|-------------------|----------|
-| [Zvuk](#audio-data-for-testing) | Ano<br>Použito pro vizuální kontrolu | 5 zvukových souborů | No | – |
-| [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Ano<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Ano | 1 – 1000 hodin zvukového přenosu |
-| [Související text](#related-text-data-for-training) | No | Není k dispozici | Ano | 1-200 MB souvisejícího textu |
+| [Zvuk](#audio-data-for-testing) | Yes<br>Použito pro vizuální kontrolu | 5 zvukových souborů | No | Není k dispozici |
+| [Audio + přepisy s popiskem](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>Používá se k vyhodnocení přesnosti. | 0,5 – 5 hodin zvukového přenosu | Yes | 1 – 1000 hodin zvukového přenosu |
+| [Související text](#related-text-data-for-training) | No | Není k dispozici | Yes | 1-200 MB souvisejícího textu |
 
 Soubory by měly být seskupené podle typu do datové sady a nahrané jako soubor. zip. Každá datová sada může obsahovat pouze jeden datový typ.
 

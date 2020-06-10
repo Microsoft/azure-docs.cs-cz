@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/30/2020
-ms.openlocfilehash: 332feffead74174ba0b9b278d8de1c5957d5b9e6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5549f9eaf2bc44dfa7e99df04fd7864dd4b655ce
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80422475"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610895"
 ---
 # <a name="configure-data-in-replication-in-azure-database-for-mariadb"></a>Konfigurace Replikace vstupních dat v Azure Database for MariaDB
 
@@ -42,6 +42,12 @@ Před provedením kroků v tomto článku zkontrolujte [omezení a požadavky](c
 
    Pomocí webu [Azure Portal](howto-manage-firewall-portal.md) nebo [Azure CLI](howto-manage-firewall-cli.md) aktualizujte pravidla brány firewall.
 
+> [!NOTE]
+> Komunikace bez posunu
+>
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+>
+
 ## <a name="configure-the-master-server"></a>Konfigurace hlavního serveru
 
 Následující kroky připravují a konfigurují místně hostovaný Server MariaDB, na virtuálním počítači nebo v cloudové databázové službě pro Replikace vstupních dat. Server MariaDB je hlavním serverem v Replikace vstupních dat.
@@ -60,13 +66,13 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
    SHOW VARIABLES LIKE 'log_bin';
    ```
 
-   Pokud proměnná [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) vrátí hodnotu `ON`, binární protokolování je na vašem serveru povolené.
+   Pokud proměnná [`log_bin`](https://mariadb.com/kb/en/library/replication-and-binary-log-server-system-variables/#log_bin) vrátí hodnotu `ON` , binární protokolování je na vašem serveru povolené.
 
-   Pokud `log_bin` vrátí hodnotu `OFF`, upravte soubor **My. CNF** tak, `log_bin=ON` aby se zapíná binární protokolování. Aby se změna projevila, restartujte server.
+   Pokud `log_bin` vrátí hodnotu `OFF` , upravte soubor **My. CNF** tak, aby se `log_bin=ON` zapíná binární protokolování. Aby se změna projevila, restartujte server.
 
 3. Nakonfigurujte nastavení hlavního serveru.
 
-    Replikace vstupních dat vyžaduje, aby `lower_case_table_names` byl parametr konzistentní mezi hlavním serverem a serverem repliky. `lower_case_table_names` Parametr je ve výchozím nastavení `1` nastaven na Azure Database for MariaDB.
+    Replikace vstupních dat vyžaduje, aby byl parametr `lower_case_table_names` konzistentní mezi hlavním serverem a serverem repliky. `lower_case_table_names`Parametr je ve výchozím nastavení nastaven na `1` Azure Database for MariaDB.
 
    ```sql
    SET GLOBAL lower_case_table_names = 1;
@@ -78,7 +84,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
    
    Informace o tom, jak přidat uživatelské účty na hlavní server, najdete v [dokumentaci k MariaDB](https://mariadb.com/kb/en/library/create-user/).
 
-   Pomocí následujících příkazů má nová role replikace přístup k hlavnímu serveru z libovolného počítače, nikoli jenom k počítači, který hostuje hlavní server. Pro tento přístup zadejte **syncuser\@'% '** v příkazu pro vytvoření uživatele.
+   Pomocí následujících příkazů má nová role replikace přístup k hlavnímu serveru z libovolného počítače, nikoli jenom k počítači, který hostuje hlavní server. Pro tento přístup zadejte **syncuser \@ '% '** v příkazu pro vytvoření uživatele.
    
    Další informace o dokumentaci k MariaDB najdete v tématu [Určení názvů účtů](https://mariadb.com/kb/en/library/create-user/#account-names).
 
@@ -128,7 +134,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
 
 6. Získá aktuální binární název a posun souboru protokolu.
 
-   Chcete-li určit aktuální binární název a posun souboru protokolu, spusťte příkaz [`show master status`](https://mariadb.com/kb/en/library/show-master-status/).
+   Chcete-li určit aktuální binární název a posun souboru protokolu, spusťte příkaz [`show master status`](https://mariadb.com/kb/en/library/show-master-status/) .
     
    ```sql
    show master status;
@@ -177,13 +183,13 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
 
    Všechny funkce Replikace vstupních dat jsou prováděny uloženými procedurami. Všechny postupy najdete v [replikace vstupních dat uložených procedurách](reference-data-in-stored-procedures.md). Uložené procedury lze spustit v prostředí MySQL nebo MySQL Workbench.
 
-   Pokud chcete propojit dva servery a spustit replikaci, přihlaste se k cílovému serveru repliky ve službě Azure DB pro MariaDB. Potom nastavte externí instanci jako hlavní server pomocí uložené procedury `mysql.az_replication_change_master` nebo `mysql.az_replication_change_master_with_gtid` na serveru Azure DB pro MariaDB.
+   Pokud chcete propojit dva servery a spustit replikaci, přihlaste se k cílovému serveru repliky ve službě Azure DB pro MariaDB. Potom nastavte externí instanci jako hlavní server pomocí `mysql.az_replication_change_master` `mysql.az_replication_change_master_with_gtid` uložené procedury nebo na serveru Azure DB pro MariaDB.
 
    ```sql
    CALL mysql.az_replication_change_master('<master_host>', '<master_user>', '<master_password>', 3306, '<master_log_file>', <master_log_pos>, '<master_ssl_ca>');
    ```
    
-   – nebo –
+   nebo
    
    ```sql
    CALL mysql.az_replication_change_master_with_gtid('<master_host>', '<master_user>', '<master_password>', 3306, '<master_gtid_pos>', '<master_ssl_ca>');
@@ -227,7 +233,7 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
 
 2. Spusťte replikaci.
 
-   Pro spuštění `mysql.az_replication_start` replikace zavolejte uloženou proceduru.
+   `mysql.az_replication_start`Pro spuštění replikace zavolejte uloženou proceduru.
 
    ```sql
    CALL mysql.az_replication_start;
@@ -241,13 +247,13 @@ Následující kroky připravují a konfigurují místně hostovaný Server Mari
    show slave status;
    ```
 
-   Pokud `Slave_IO_Running` a `Slave_SQL_Running` jsou ve stavu `yes`a hodnota `Seconds_Behind_Master` je `0`, replikace funguje. `Seconds_Behind_Master`Určuje, jak pozdě je replika. Pokud hodnota není `0`, replika zpracovává aktualizace.
+   Pokud `Slave_IO_Running` a `Slave_SQL_Running` jsou ve stavu `yes` a hodnota `Seconds_Behind_Master` je `0` , replikace funguje. `Seconds_Behind_Master`Určuje, jak pozdě je replika. Pokud hodnota není `0` , replika zpracovává aktualizace.
 
 4. Aktualizujte odpovídající proměnné serveru pro zajištění bezpečnější replikace dat (vyžaduje se jenom pro replikaci bez GTID).
     
     Z důvodu nativního omezení replikace v MariaDB je nutné nastavit [`sync_master_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_master_info) a [`sync_relay_log_info`](https://mariadb.com/kb/en/library/replication-and-binary-log-system-variables/#sync_relay_log_info) proměnné pro replikaci bez scénáře GTID.
 
-    Zkontrolujte, jestli jsou na `sync_master_info` podřízeném serveru a `sync_relay_log_info` proměnné, aby se zajistila stabilita replikace dat, a nastavte proměnné `1`na.
+    Zkontrolujte, jestli jsou na podřízeném serveru `sync_master_info` a `sync_relay_log_info` proměnné, aby se zajistila stabilita replikace dat, a nastavte proměnné na `1` .
     
 ## <a name="other-stored-procedures"></a>Jiné uložené procedury
 

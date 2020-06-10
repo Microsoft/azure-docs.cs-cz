@@ -10,12 +10,12 @@ ms.date: 06/08/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 143820eb3c58d2aaac4d4176c4456fca676a0e45
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5bc433615b19b36681796056ff4baf95d080d457
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554102"
+ms.locfileid: "84629406"
 ---
 # <a name="azure-storage-redundancy"></a>Azure Storage redundance
 
@@ -62,8 +62,8 @@ Následující tabulka uvádí, které typy účtů úložiště podporují ZRS,
 |    Typ účtu úložiště    |    Podporované oblasti    |    Podporované služby    |
 |----------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 |    Obecné účely v2<sup>1</sup>    | Jihovýchodní Asie<br /> Austrálie – východ<br /> Evropa – sever<br />  Evropa – západ<br /> Francie – střed<br /> Japonsko – východ<br /> Jižní Afrika – sever<br /> Spojené království – jih<br /> USA – střed<br /> USA – východ<br /> USA – východ 2<br /> USA – západ 2    |    Objekty blob bloku<br /> Objekty blob stránky<sup>2</sup><br /> Sdílené složky (Standard)<br /> Tabulky<br /> Fronty<br /> |
-|    BlockBlobStorage<sup>1</sup>    | Evropa – západ<br /> USA – východ    |    Pouze objekty blob bloku    |
-|    Úložiště    | Evropa – západ<br /> USA – východ    |    Jenom soubory Azure    |
+|    BlockBlobStorage<sup>1</sup>    | Jihovýchodní Asie<br /> Evropa – západ<br /> USA – východ    |    Pouze objekty blob bloku    |
+|    Úložiště    | Jihovýchodní Asie<br /> Evropa – západ<br /> USA – východ    |    Jenom soubory Azure    |
 
 <sup>1</sup> úroveň archivu se v současnosti nepodporuje u účtů ZRS.<br />
 <sup>2</sup> účty úložiště, které obsahují Azure Managed disks pro virtuální počítače, vždycky používají LRS. Nespravované disky Azure by měly také používat LRS. Je možné vytvořit účet úložiště pro nespravované disky Azure, které používají GRS, ale nedoporučuje se v důsledku potenciálních problémů s konzistencí přes asynchronní geografickou replikaci. Ani spravované ani nespravované disky nepodporují ZRS nebo GZRS. Další informace o službě Managed disks najdete v tématu [ceny za službu Azure Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/).
@@ -159,7 +159,7 @@ Následující tabulka uvádí, zda jsou vaše data v daném scénáři odolná 
 | Scénář výpadku                                                                                                 | LRS                             | ZRS                              | GRS/RA – GRS                                  | GZRS/RA – GZRS                              |
 | :------------------------------------------------------------------------------------------------------- | :------------------------------ | :------------------------------- | :----------------------------------- | :----------------------------------- |
 | Uzel v datovém centru nebude dostupný.                                                                 | Ano                             | Ano                              | Ano                                  | Ano                                 |
-| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | Ne                              | Ano                              | Ano<sup>1</sup>                                  | Ano                                  |
+| Nebudete mít k dispozici celé datové centrum (oblast nebo mimo oblast).                                           | No                              | Ano                              | Ano<sup>1</sup>                                  | Yes                                  |
 | V primární oblasti dojde k výpadku v rámci oblasti.                                                                                     | Ne                              | Ne                               | Ano<sup>1</sup>                                  | Ano<sup>1</sup>                                  |
 | Přístup pro čtení do sekundární oblasti je k dispozici, pokud primární oblast nebude k dispozici. | Ne                              | Ne                               | Ano (s RA-GRS)                                   | Ano (s RA-GZRS)                                 |
 
@@ -184,7 +184,7 @@ Informace o cenách pro jednotlivé možnosti redundance najdete v tématu [Azur
 
 Azure Storage pravidelně ověřuje integritu dat uložených pomocí redundantních kontrol redundance (CRCs). Pokud je zjištěno poškození dat, je opraveno pomocí redundantních dat. Azure Storage taky vypočítává kontrolní součty pro veškerý síťový provoz, aby se zjistilo poškození datových paketů při ukládání nebo načítání dat.
 
-## <a name="see-also"></a>Viz také:
+## <a name="see-also"></a>Viz také
 
 - [Podívejte se na vlastnost čas poslední synchronizace pro účet úložiště.](last-sync-time-get.md)
 - [Změna možnosti redundance pro účet úložiště](redundancy-migration.md)

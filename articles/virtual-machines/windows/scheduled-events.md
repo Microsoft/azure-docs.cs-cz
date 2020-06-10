@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 06/01/2020
 ms.author: mimckitt
-ms.openlocfilehash: 0d1aa15c572f8ddec38cef913b170ed795ba1505
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: dda71869411cbb37a24c2d39ef1d78563cfe6cab
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297917"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604095"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events pro virtuální počítače s Windows
 
@@ -142,10 +142,18 @@ Každé události je naplánováno minimální množství času v budoucnu na z�
 Naplánované události jsou doručovány do:
  - Samostatné Virtual Machines.
  - Všechny Virtual Machines v cloudové službě.     
- - Všechny Virtual Machines ve skupině dostupnosti.     
+ - Všechny Virtual Machines ve skupině dostupnosti. 
+ - Všechny Virtual Machines v zóně dostupnosti.
  - Všechny Virtual Machines ve skupině umístění sady škálování (včetně Batch).       
 
-V důsledku toho byste měli zaškrtnout `Resources` pole v události a určit, které virtuální počítače budou mít vliv na to. 
+> [!NOTE]
+> V zóně dostupnosti najdou naplánované události jenom na jeden, ovlivněné virtuální počítače v zóně dostupnosti.
+> 
+> Například pokud v sadě dostupnosti máte 100 virtuálních počítačů a pro jeden z nich existuje aktualizace, naplánovaná událost přejde na všechny 100 virtuálních počítačů ve skupině dostupnosti.
+>
+> Pokud máte v zóně dostupnosti 100 virtuálních počítačů, přejde událost pouze do ovlivněného virtuálního počítače.
+>
+> V důsledku toho byste měli zaškrtnout `Resources` pole v události, abyste identifikovali, které virtuální počítače budou ovlivněny. 
 
 ### <a name="starting-an-event"></a>Spuštění události 
 

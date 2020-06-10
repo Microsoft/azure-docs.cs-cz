@@ -13,12 +13,12 @@ ms.author: mathoma
 ms.reviewer: sashan, carlrab
 manager: jroth
 ms.date: 08/27/2019
-ms.openlocfilehash: 925e6788035952a4e7b54b8d50b910243a754a09
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 31dba12023643f96018d1192111a19c80d0ba3ef
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84041280"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636202"
 ---
 # <a name="tutorial-add-a-sql-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -432,7 +432,7 @@ Pokud chcete vytvořit virtuální síť, postupujte takto:
     | **Název** |  Název virtuální sítě, která se má použít u sekundární instance spravované SQL, například `vnet-sql-mi-secondary` . |
     | **Adresní prostor** | Adresní prostor pro virtuální síť, například `10.128.0.0/16` . | 
     | **Předplatné** | Předplatné, ve kterém se nachází vaše primární instance spravované SQL a skupina prostředků |
-    | **Věřitel** | Umístění, do kterého budete nasazovat sekundární spravovanou instanci SQL. |
+    | **Oblast** | Umístění, do kterého budete nasazovat sekundární spravovanou instanci SQL. |
     | **Podsíť** | Název vaší podsítě. `default`je ve výchozím nastavení k dispozici pro vás. |
     | **Rozsah adres**| Rozsah adres pro vaši podsíť. Musí se lišit od rozsahu adres podsítě, který používá virtuální síť vaší primární spravované instance SQL, například `10.128.0.0/24` .  |
     | &nbsp; | &nbsp; |
@@ -458,7 +458,7 @@ Pomocí Azure Portal Vytvořte sekundární spravovanou instanci SQL.
 
 1. V nabídce na levé straně Azure Portal vyberte **Azure SQL** . Pokud **Azure SQL** není v seznamu, vyberte **všechny služby**a do vyhledávacího pole zadejte Azure SQL. Volitelné Vyberte hvězdičku vedle **Azure SQL** , kterou chcete oblíbenou, a přidejte ji jako položku v levém navigačním panelu. 
 1. Výběrem **+ Přidat** otevřete stránku **vybrat možnost nasazení SQL** . Další informace o různých databázích můžete zobrazit tak, že na dlaždici databáze vyberete Zobrazit podrobnosti.
-1. Na dlaždici **spravované instance SQL** serveru vyberte **vytvořit** . 
+1. Na dlaždici **spravované instance SQL** vyberte **vytvořit** . 
 
     ![Vybrat spravovanou instanci SQL](./media/failover-group-add-instance-tutorial/select-managed-instance.png)
 
@@ -471,7 +471,7 @@ Pomocí Azure Portal Vytvořte sekundární spravovanou instanci SQL.
     | **Předplatné** |  Předplatné, ve kterém je vaše primární spravovaná instance SQL. |
     | **Skupina prostředků**| Skupina prostředků, ve které je vaše primární spravovaná instance SQL. |
     | **Název spravované instance SQL** | Název vaší nové sekundární spravované instance SQL, například`sql-mi-secondary`  | 
-    | **Věřitel**| Umístění sekundární spravované instance SQL  |
+    | **Oblast**| Umístění sekundární spravované instance SQL  |
     | **Přihlašovací jméno správce spravované instance SQL** | Přihlašovací jméno, které chcete použít pro novou sekundární spravovanou instanci SQL, například `azureuser` . |
     | **Heslo** | Složitá hesla, která budou používána přihlašovacími údaji správce pro novou sekundární instanci SQL Managed.  |
     | &nbsp; | &nbsp; |
@@ -763,10 +763,10 @@ Vytvořte bránu pro virtuální síť vaší primární spravované instance SQ
     | --- | --- |
     | **Předplatné** |  Předplatné, ve kterém je vaše primární spravovaná instance SQL. |
     | **Název** | Název brány virtuální sítě, například `primary-mi-gateway` . | 
-    | **Věřitel** | Oblast, ve které je vaše primární spravovaná instance SQL. |
+    | **Oblast** | Oblast, ve které je vaše primární spravovaná instance SQL. |
     | **Typ brány** | Vyberte **VPN**. |
     | **Typ sítě VPN** | Vybrat **na základě trasy** |
-    | **SKLADOVÉ**| Ponechte výchozí hodnotu `VpnGw1` . |
+    | **SKU**| Ponechte výchozí hodnotu `VpnGw1` . |
     | **Umístění**| Umístění, kde je vaše primární instance SQL spravované a primární virtuální síť.   |
     | **Virtuální síť**| Vyberte virtuální síť, která byla vytvořena v části 2, například `vnet-sql-mi-primary` . |
     | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |
@@ -845,10 +845,10 @@ Pomocí Azure Portal pro vytvoření podsítě virtuální sítě a brány pro s
    | --- | --- |
    | **Předplatné** |  Předplatné, ve kterém je vaše sekundární spravovaná instance SQL. |
    | **Název** | Název brány virtuální sítě, například `secondary-mi-gateway` . | 
-   | **Věřitel** | Oblast, ve které je vaše sekundární spravovaná instance SQL. |
+   | **Oblast** | Oblast, ve které je vaše sekundární spravovaná instance SQL. |
    | **Typ brány** | Vyberte **VPN**. |
    | **Typ sítě VPN** | Vybrat **na základě trasy** |
-   | **SKLADOVÉ**| Ponechte výchozí hodnotu `VpnGw1` . |
+   | **SKU**| Ponechte výchozí hodnotu `VpnGw1` . |
    | **Umístění**| Umístění, kde je sekundární instance spravované SQL a sekundární virtuální sítí.   |
    | **Virtuální síť**| Vyberte virtuální síť, která byla vytvořena v části 2, například `vnet-sql-mi-secondary` . |
    | **Veřejná IP adresa**| Vyberte, že chcete **vytvořit novou** IP adresu. |

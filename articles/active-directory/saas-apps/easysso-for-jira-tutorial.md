@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/15/2020
+ms.date: 05/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3226ef8d739df6902a96cff336762ce4425c5de
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 16d82c3b4b3abe475c1c1f87aafcf02a01d4cab9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740300"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605311"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-jira"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EasySSO pro JIRA
 
 V tomto kurzu se dozvíte, jak integrovat EasySSO pro JIRA s Azure Active Directory (Azure AD). Při integraci EasySSO pro JIRA se službou Azure AD můžete:
 
-* Řízení ve službě Azure AD, která má přístup k EasySSO pro JIRA.
-* Umožněte uživatelům, aby se automaticky přihlásili k EasySSO pro JIRA s účty Azure AD.
+* Řízení ve službě Azure AD, která má přístup k JIRA.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k JIRA svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
@@ -57,6 +57,7 @@ Pokud chcete nakonfigurovat integraci EasySSO pro JIRA do služby Azure AD, mus�
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **EasySSO for JIRA** .
 1. Z panelu výsledků vyberte **EasySSO for JIRA** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-jira"></a>Konfigurace a testování jednotného přihlašování Azure AD pro EasySSO pro JIRA
 
@@ -89,10 +90,10 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/jirasso/login.jsp`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/login.jsp`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, kontaktujte [EasySSO pro tým podpory klientů JIRA](mailto:support@techtime.co.nz) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Obraťte se na [tým podpory EasySSO](mailto:support@techtime.co.nz) a získejte tyto hodnoty, pokud jsou nejisté. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Aplikace EasySSO for JIRA očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
@@ -103,16 +104,21 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
     | Name |  |  Zdrojový atribut|
     | ---------------| --------------- | --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | | User. userPrincipalName |
-    | urn: OID: 0.9.2342.19200300.100.1.3 | | User. userPrincipalName |
+    | urn: OID: 0.9.2342.19200300.100.1.3 | | uživatel. pošta |
     | urn: OID: 2.16.840.1.113730.3.1.241 | | User. DisplayName |
     | urn: OID: 2.5.4.4 | | User. příjmení |
     | urn: OID: 2.5.4.42 | | User. křestní jméno |
+    
+    V případě, že mají uživatelé Azure AD nakonfigurovaný **sAMAccountName** , budete muset mapovat **název urn: OID: 0.9.2342.19200300.100.1.1** na atribut **sAMAccountName** .
+    
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na možnost **Stáhnout** odkazy na **certifikát (Base64)** nebo **metadata federačních metadat** a v počítači uložte buď nebo vše. Později budete potřebovat nakonfigurovat JIRA EasySSO.
 
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
+    ![Odkaz na stažení certifikátu](media/easysso-for-jira-tutorial/azure-ad-SAML-certificate.png)
+    
+    Pokud máte v úmyslu provést EasySSO pro konfiguraci JIRA ručně s certifikátem, musíte také zkopírovat **adresu URL pro přihlášení** a **identifikátor Azure AD** z níže uvedené části a uložit je do počítače.
 
-    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
-
+    
 V této části vytvoříte testovacího uživatele ve Azure Portal s názvem B. Simon.
 
 1. V levém podokně Azure Portal vyberte možnost **Azure Active Directory**, vyberte možnost **Uživatelé**a potom vyberte možnost **Všichni uživatelé**.
@@ -143,21 +149,23 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-easysso-for-jira-sso"></a>Konfigurace EasySSO pro jednotné přihlašování JIRA
 
-1. Přihlaste se k instanci Atlassian JIRA s oprávněními správce a přejděte do části **Správa aplikací** .
+1. Přihlaste se k instanci Atlassian JIRA s oprávněními správce a přejděte do části **Správa aplikací** . 
 
-    ![Správa aplikací](./media/easysso-for-jira-tutorial/jira-admin-1.png)
+    ![Správa aplikací](media/easysso-for-jira-tutorial/jira-admin-1.png)
 
-1. Klikněte na **EasySSO**.
+2. Na levé straně vyhledejte **EasySSO** a klikněte na něj.
 
-    ![Snadné jednotné přihlašování](./media/easysso-for-jira-tutorial/jira-admin-2.png)
+    ![Snadné jednotné přihlašování](media/easysso-for-jira-tutorial/jira-admin-2.png)
 
-1. Vyberte možnost **SAML** . Tím přejdete do konfiguračního oddílu SAML.
+3. Vyberte možnost **SAML** . Tím přejdete do konfiguračního oddílu SAML.
 
-    ![SAML](./media/easysso-for-jira-tutorial/jira-admin-3.png)
+    ![SAML](media/easysso-for-jira-tutorial/jira-admin-3.png)
 
-1. V horní části karty vybrat **certifikáty** a zobrazí se vám následující obrazovka, kde najdete **certifikát (Base64)** nebo **soubor metadat** , který jste uložili v předchozích krocích konfigurace **jednotného přihlašování služby Azure AD** . Máte následující možnosti, jak pokračovat:
+4. V horní části karty vybrat **certifikáty** a zobrazí se tato obrazovka:
 
-    ![Adresa URL metadat](./media/easysso-for-jira-tutorial/jira-admin-4.png)
+    ![Adresa URL metadat](media/easysso-for-jira-tutorial/jira-admin-4.png)
+
+5. Teď Najděte **certifikát (Base64)** nebo **soubor metadat** , který jste uložili v předchozích krocích konfigurace **jednotného přihlašování služby Azure AD** . Máte následující možnosti, jak pokračovat:
 
     a. Použijte soubor federačních **metadat** aplikace, který jste stáhli do místního souboru v počítači. Vyberte možnost **nahrát** přepínač a postupujte podle dialogového okna pro nahrání souboru, které je specifické pro váš operační systém.
 
@@ -165,32 +173,50 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
     b. Otevřete soubor federačních **metadat** aplikace a zobrazte obsah (v libovolném textovém editoru) souboru a zkopírujte ho do schránky. Vyberte možnost **vstup** a vložte obsah schránky do textového pole.
 
-    **ANI**
+     **ANI**
 
     c. Plně ruční konfigurace. Otevřete certifikát federační aplikace **(Base64)** , abyste zobrazili obsah (v libovolném textovém editoru) souboru a zkopírovali ho do schránky. Vložte ho do textového pole **IDP tokeny podepisování certifikátů** . Pak přejděte na kartu **Obecné** a vyplňte **pole Adresa URL příspěvku** a **ID entity** příslušnými hodnotami pro **přihlašovací adresu URL** a **identifikátor služby Azure AD** , který jste předtím uložili.
+ 
+6. V dolní části stránky klikněte na tlačítko **Uložit** . Zobrazí se obsah metadat nebo souborů certifikátů, které se analyzují do polí konfigurace. Konfigurace EasySSO pro JIRA se dokončila.
 
-1. V dolní části stránky klikněte na tlačítko **Uložit** . Zobrazí se obsah metadat nebo souborů certifikátů, které se analyzují do polí konfigurace. Konfigurace EasySSO pro JIRA se dokončila.
+7. Pro účely nejlepšího testování přejděte na kartu **vzhled &** a zkontrolujte možnost tlačítko pro **přihlášení SAML** na. Tím se povolí samostatné tlačítko na obrazovce pro přihlášení k JIRA, které vám konkrétně umožní otestovat Azure AD SAML Integration end na konec. Toto tlačítko můžete nechat zapnuté a nakonfigurovat jeho umístění, barvu a překlad pro režim výroby.
 
-1. Pro účely nejlepšího testování přejděte na kartu **vzhled &** a zkontrolujte možnost tlačítko pro **přihlášení SAML** na. Tím se povolí samostatné tlačítko na obrazovce pro přihlášení k JIRA, které vám konkrétně umožní otestovat Azure AD SAML Integration end na konec. Toto tlačítko můžete nechat zapnuté a nakonfigurovat jeho umístění, barvu a překlad pro režim výroby.
-
-    ![Vzhled &](./media/easysso-for-jira-tutorial/jira-admin-5.png)
+    ![Vzhled &](media/easysso-for-jira-tutorial/jira-admin-5.png)
 
     > [!NOTE]
     > Pokud máte nějaké problémy, obraťte se prosím na [tým podpory EasySSO](mailto:support@techtime.co.nz).
 
 ### <a name="create-easysso-for-jira-test-user"></a>Vytvořit EasySSO pro testovacího uživatele JIRA
 
-V této části se v JIRA vytvoří uživatel s názvem B. Simon. EasySSO for JIRA podporuje zřizování uživatelů za běhu, které je ve výchozím nastavení **zakázáno** . Pokud chcete povolit zřizování uživatelů, musíte explicitně zaškrtnout možnost **vytvořit uživatele při úspěšném přihlášení** v části Obecné v konfiguraci modulu plug-in EasySSO. Pokud uživatel ještě v JIRA neexistuje, vytvoří se po ověření nový.
+V této části se v JIRA vytvoří uživatel s názvem Britta Simon. EasySSO for JIRA podporuje zřizování uživatelů za běhu, které je ve výchozím nastavení **zakázáno** . Pokud chcete povolit zřizování uživatelů, musíte explicitně zaškrtnout možnost **vytvořit uživatele při úspěšném přihlášení** v části Obecné v konfiguraci modulu plug-in EasySSO. Pokud uživatel ještě v JIRA neexistuje, vytvoří se po ověření nový.
 
 Pokud však nechcete povolit Automatické zřizování uživatelů při prvním přihlášení uživatele, musí existovat uživatelé v adresářích uživatelů back-end, které instance JIRA využívají, jako je například LDAP nebo Atlassian.
 
-![Zřizování uživatelů](./media/easysso-for-jira-tutorial/jira-admin-6.png)
+![Zřizování uživatelů](media/easysso-for-jira-tutorial/jira-admin-6.png)
 
-## <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO 
+
+### <a name="idp-initiated-workflow"></a>Pracovní postup iniciované IdP
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici EasySSO for JIRA na přístupovém panelu, měli byste se automaticky přihlásit k EasySSO pro JIRA, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici EasySSO for JIRA na přístupovém panelu, měli byste se automaticky přihlásit k instanci JIRA, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+### <a name="sp-initiated-workflow"></a>Pracovní postup iniciované v SP
+
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí JIRA tlačítka pro **přihlášení SAML** .
+
+![Uživatelské přihlášení SAML](media/easysso-for-jira-tutorial/jira-admin-7.png)
+
+V tomto scénáři se předpokládá, že jste povolili **tlačítko pro přihlášení SAML** na kartě **Hledat & chování** na stránce konfigurace EasySSO pro JIRA (viz výše). Otevřete přihlašovací adresu URL JIRA v režimu prohlížeče anonymním, abyste se vyhnuli jakémukoli rušení s vašimi stávajícími relacemi. Klikněte na tlačítko pro **přihlášení SAML** a budete přesměrováni na tok ověřování uživatelů Azure AD. Po úspěšném dokončení budete přesměrováni zpátky do své JIRA instance jako ověřený uživatel prostřednictvím SAML.
+
+Po přesměrování zpátky z Azure AD se může zobrazit následující obrazovka.
+
+![Obrazovka chyby EasySSO](media/easysso-for-jira-tutorial/jira-admin-8.png)
+
+V takovém případě musíte podle [pokynů na této stránce]( https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS) získat přístup k souboru **Atlassian-JIRA. log** . Podrobnosti o chybě budou k dispozici na základě ID odkazu, které najdete na chybové stránce EasySSO.
+
+Pokud máte problémy s vyčtením zpráv protokolu, obraťte se prosím na [tým podpory EasySSO](mailto:support@techtime.co.nz).
 
 ## <a name="additional-resources"></a>Další zdroje
 

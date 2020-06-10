@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: quickstart
 ms.date: 05/19/2020
-ms.openlocfilehash: 24a34ae6f00eca7154021162184f5e71503da06b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 00f93086fec62c08c5241d868fc5104a1197cff3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248324"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605404"
 ---
 # <a name="getting-started-with-azure-synapse-analytics"></a>Začínáme s využitím Azure synapse Analytics
 
@@ -164,7 +164,7 @@ K dispozici jsou data v tabulce v `SQLDB1` . Nyní ji nahrajeme do databáze Spa
 
 1. Přejděte do centra **dat** , klikněte pravým tlačítkem na **databáze** a vyberte **aktualizovat**.
 1. Nyní byste měli vidět tyto databáze:
-    - SQLDB (fond SQL)
+    - SQLDB1 (fond SQL)
     - nyctaxi (Spark)
       
 ## <a name="analyze-the-nyc-taxi-data-using-spark-and-notebooks"></a>Analýza dat taxislužby NYC pomocí Sparku a poznámkových bloků
@@ -190,10 +190,10 @@ K dispozici jsou data v tabulce v `SQLDB1` . Nyní ji nahrajeme do databáze Spa
       WHERE TripDistanceMiles > 0 AND PassengerCount > 0
       GROUP BY PassengerCount
       ORDER BY PassengerCount
-    """) 
-    display(df)
-    df.write.saveAsTable("nyctaxi.passengercountstats")
-    ```
+   """) 
+   display(df)
+   df.write.saveAsTable("nyctaxi.passengercountstats")
+   ```
 
 1. Ve výsledcích buňky vyberte možnost **graf** , aby se zobrazila data vizuálů.
  
@@ -282,7 +282,7 @@ df.write.mode("overwrite").parquet("/NYCTaxi/PassengerCountStats.parquet")
 1. Vybrat **uživatele (primární) "**
 1. Měla by se zobrazit složka s názvem `NYCTaxi` . Uvnitř byste měli vidět dvě složky `PassengerCountStats.csv` a `PassengerCountStats.parquet` .
 1. Přejděte do `PassengerCountStats.parquet` složky.
-1. Klikněte pravým tlačítkem na soubor Parquet a vyberte **Nový Poznámkový blok**. vytvoří se Poznámkový blok s buňkou, jako je tato:
+1. Klikněte pravým tlačítkem na `.parquet` soubor uvnitř a vyberte **Nový Poznámkový blok**. vytvoří se Poznámkový blok s buňkou, jako je tato:
 
     ```py
     %%pyspark

@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 01/28/2020
-ms.openlocfilehash: 9f280aafabd59878ee24a9c3fe809dd027a97284
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: e8efb43ac0711bac1324ac2c9e3b59373ce59419
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187847"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635117"
 ---
 # <a name="what-are-mapping-data-flows"></a>Co jsou toky dat mapování?
 
@@ -22,6 +22,8 @@ ms.locfileid: "82187847"
 Mapování datových toků je vizuálně navržené transformace dat v Azure Data Factory. Datové toky umožňují technikům pro transformaci dat pracovat s grafickými logikami bez psaní kódu. Výsledné toky dat se spouštějí jako aktivity v rámci Azure Data Factory kanálů, které používají clustery Apache Spark s horizontálním navýšení kapacity. Aktivity toku dat se dají provádět pomocí stávajících Data Factory možností plánování, řízení, toku a monitorování.
 
 Mapování toků dat poskytuje zcela vizuální prostředí bez nutnosti kódování. Vaše toky dat běží na vašem prováděcím clusteru pro zpracování dat se škálováním na více instancí. Azure Data Factory zpracovává všechny překlady kódu, optimalizaci cest a provádění úloh toku dat.
+
+![Architektura](media/data-flow/adf-data-flows.png "Architektura")
 
 ## <a name="getting-started"></a>Začínáme
 
@@ -93,7 +95,7 @@ První karta v podokně Konfigurace každé transformace obsahuje nastavení spe
 
 Karta **optimalizace** obsahuje nastavení pro konfiguraci schémat dělení.
 
-![Zvýšit](media/data-flow/optimize1.png "Optimalizace")
+![Optimalizace](media/data-flow/optimize1.png "Optimalizace")
 
 Ve výchozím nastavení se **používá aktuální dělení**, které dává pokyn Azure Data Factory, aby používalo schéma dělení, které je nativní pro toky dat běžící na Sparku. Ve většině scénářů doporučujeme toto nastavení.
 
@@ -123,7 +125,7 @@ Dynamický rozsah používá dynamické rozsahy Spark na základě sloupců nebo
 
 Sestavte výraz, který poskytuje pevný rozsah pro hodnoty v rámci sloupců s dělenými daty. Abyste se vyhnuli zkosení oddílu, měli byste před použitím této možnosti dobře pochopit svá data. Hodnoty, které zadáte pro výraz, se používají jako součást funkce oddílu. Můžete nastavit počet fyzických oddílů.
 
-##### <a name="key"></a>Key
+##### <a name="key"></a>Klíč
 
 Pokud máte dobré znalosti o mohutnosti vašich dat, může být vytváření oddílů dobrým zvykem. Klíčové vytváření oddílů vytváří oddíly pro každou jedinečnou hodnotu ve sloupci. Počet oddílů nejde nastavit, protože číslo je založené na jedinečných hodnotách v datech.
 

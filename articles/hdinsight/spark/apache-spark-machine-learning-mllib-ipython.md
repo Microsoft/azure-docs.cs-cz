@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
+ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020, tracking-python
 ms.date: 04/27/2020
-ms.openlocfilehash: 48bd53160c3d2e76dccd1f22723c30c2c7e00d7a
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: c67e8a79e2339c4a329e276c52703bd749137037
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82559935"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608413"
 ---
 # <a name="use-apache-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Použití Apache Spark MLlib k vytvoření aplikace Machine Learning a analýze datové sady
 
@@ -174,7 +174,7 @@ Pojďme začít získat představu o tom, co datová sada obsahuje.
     SELECT COUNT(results) AS cnt, results FROM CountResults GROUP BY results
     ```
 
-    `%%sql` Magic následovaný tím `-o countResultsdf` zajistí, že výstup dotazu je trvale uložen na serveru Jupyter (obvykle hlavnímu uzlu clusteru). Výstup je trvalý jako [PANDAS](https://pandas.pydata.org/) datový rámec se zadaným názvem **countResultsdf**. Další informace o `%%sql` Magic a dalších přístupnosti, které jsou k dispozici v jádru PySpark, najdete v tématu [jádra dostupná na poznámkových blocích Jupyter s Apache Spark clustery HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
+    `%%sql`Magic následovaný tím `-o countResultsdf` zajistí, že výstup dotazu je trvale uložen na serveru Jupyter (obvykle hlavnímu uzlu clusteru). Výstup je trvalý jako [PANDAS](https://pandas.pydata.org/) datový rámec se zadaným názvem **countResultsdf**. Další informace o `%%sql` Magic a dalších přístupnosti, které jsou k dispozici v jádru PySpark, najdete v tématu [jádra dostupná na poznámkových blocích Jupyter s Apache Spark clustery HDInsight](apache-spark-jupyter-notebook-kernels.md#parameters-supported-with-the-sql-magic).
 
     Výstup bude následující:
 
@@ -207,7 +207,7 @@ Pojďme začít získat představu o tom, co datová sada obsahuje.
 
      Data s ostatními výsledky ("obchodní Neumístěná" nebo "mimo firmu") nejsou užitečná a vznikne i malé procento výsledků.
 
-4. Spusťte následující kód, který převede existující datový rámec (`df`) na nový datový rámec, kde je každá kontrola vyjádřena jako dvojice s porušením popisku. V tomto případě popisek `0.0` představuje selhání, popisek `1.0` představuje úspěch a popisek `-1.0` představuje některé výsledky Kromě těchto dvou výsledků.
+4. Spusťte následující kód, který převede existující datový rámec ( `df` ) na nový datový rámec, kde je každá kontrola vyjádřena jako dvojice s porušením popisku. V tomto případě popisek `0.0` představuje selhání, popisek `1.0` představuje úspěch a popisek `-1.0` představuje některé výsledky Kromě těchto dvou výsledků.
 
     ```PySpark
     def labelForResults(s):
@@ -288,7 +288,7 @@ Pomocí modelu, který jste vytvořili dříve, můžete *předpovědět* , co b
 
    Pro první záznam v sadě dat testu existuje předpověď.
 
-1. `model.transform()` Metoda aplikuje stejnou transformaci na všechna nová data se stejným schématem a dorazí na předpověď způsobu klasifikace dat. Můžete provést několik statistik, abyste získali představu o tom, jak předpovědi byly:
+1. `model.transform()`Metoda aplikuje stejnou transformaci na všechna nová data se stejným schématem a dorazí na předpověď způsobu klasifikace dat. Můžete provést několik statistik, abyste získali představu o tom, jak předpovědi byly:
 
     ```PySpark
     numSuccesses = predictionsDf.where("""(prediction = 0 AND results = 'Fail') OR
@@ -313,7 +313,7 @@ Pomocí modelu, který jste vytvořili dříve, můžete *předpovědět* , co b
 
 Nyní můžete vytvořit konečnou vizualizaci, která vám pomůžete v důsledku výsledků tohoto testu.
 
-1. Začnete extrahováním různých předpovědi a výsledků z dočasné tabulky **předpovědi** vytvořené dříve. Následující dotazy oddělují výstup jako *true_positive*, *false_positive*, *true_negative*a *false_negative*. V následujících dotazech vypnete vizualizaci pomocí `-q` a také uložíte výstup (pomocí `-o`) jako datový rámec, který lze použít s `%%local` Magic.
+1. Začnete extrahováním různých předpovědi a výsledků z dočasné tabulky **předpovědi** vytvořené dříve. Následující dotazy oddělují výstup jako *true_positive*, *false_positive*, *true_negative*a *false_negative*. V následujících dotazech vypnete vizualizaci pomocí `-q` a také uložíte výstup (pomocí `-o` ) jako datový rámec, který lze použít s `%%local` Magic.
 
     ```PySpark
     %%sql -q -o true_positive

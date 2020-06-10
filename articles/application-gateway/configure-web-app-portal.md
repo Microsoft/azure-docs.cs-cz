@@ -6,20 +6,20 @@ services: application-gateway
 author: abshamsft
 ms.service: application-gateway
 ms.topic: article
-ms.date: 11/14/2019
+ms.date: 06/09/2020
 ms.author: absha
-ms.openlocfilehash: 0ec417b3c7a025d2d05bdd74ec683a2891c3b0de
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8ad1e1ae2db5c4b2dfcac0bb08fc73b85054416b
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74075165"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628637"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>Konfigurace App Service s využitím Application Gateway
 
 Vzhledem k tomu, že App Service je víceklientské služby místo nasazení, používá se v příchozím požadavku Hlavička hostitele k vyřešení požadavku na správný koncový bod služby App Service. Název DNS aplikace, který je zase název DNS přidružený ke službě Application Gateway front-App Service, se obvykle liší od názvu domény služby back-end App Service. Proto Hlavička hostitele v původní žádosti přijatá aplikační bránou není stejná jako název hostitele back-end služby. Z tohoto důvodu se v případě, že Hlavička hostitele v požadavku od služby Application Gateway do back-endu změní na název hostitele back-end služby, nedokáže aplikace back-end s více klienty přeložit požadavek na správný koncový bod.
 
-Application Gateway poskytuje přepínač s názvem `Pick host name from backend address` , který Přepisuje hlavičku hostitele v žádosti názvem hostitele back-endu při směrování požadavku z Application Gateway do back-endu. Tato schopnost povoluje podporu pro back-endové back-endové služby, jako je Azure App Service a API Management. 
+Application Gateway poskytuje přepínač s názvem, `Pick host name from backend address` který Přepisuje hlavičku hostitele v žádosti názvem hostitele back-endu při směrování požadavku z Application Gateway do back-endu. Tato schopnost povoluje podporu pro back-endové back-endové služby, jako je Azure App Service a API Management. 
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -59,11 +59,11 @@ V tomto článku získáte informace o těchto tématech:
 3. Jako na základě vašeho případu použití vyberte protokol HTTP nebo HTTPS. 
 
    > [!NOTE]
-   > Pokud vyberete HTTPS, nemusíte nahrávat žádný certifikát pro ověřování ani důvěryhodný kořenový certifikát pro seznam povolených služeb App Service, protože App Service je důvěryhodná služba Azure.
+   > Pokud vyberete HTTPS, nemusíte nahrávat žádný ověřovací certifikát ani důvěryhodný kořenový certifikát, aby bylo možné službu App Service povolit, protože App Service je důvěryhodná služba Azure.
 
-4. Zaškrtněte políčko pro **použití pro App Service** . Všimněte si, že `Create a probe with pick host name from backend address` přepínače `Pick host name from backend address` a budou automaticky povoleny.`Pick host name from backend address` přepíše hlavičku hostitele v žádosti s názvem hostitele back-endu, pokud je požadavek směrován z Application Gateway do back-endu.  
+4. Zaškrtněte políčko pro **použití pro App Service** . Všimněte si, že přepínače `Create a probe with pick host name from backend address` a `Pick host name from backend address` budou automaticky povoleny.`Pick host name from backend address` přepíše hlavičku hostitele v žádosti s názvem hostitele back-endu, pokud je požadavek směrován z Application Gateway do back-endu.  
 
-   `Create a probe with pick host name from backend address`automaticky vytvoří sondu stavu a přidruží ho k tomuto nastavení HTTP. Pro toto nastavení HTTP nemusíte vytvářet žádné další testy stavu. Můžete ověřit, že se v seznamu sond stavu přidala <HTTP Setting name> <Unique GUID> nová sonda s názvem a že tento přepínač `Pick host name from backend http settings enabled`už má.
+   `Create a probe with pick host name from backend address`automaticky vytvoří sondu stavu a přidruží ho k tomuto nastavení HTTP. Pro toto nastavení HTTP nemusíte vytvářet žádné další testy stavu. Můžete ověřit, že se <HTTP Setting name> <Unique GUID> v seznamu sond stavu přidala nová sonda s názvem a že tento přepínač už má `Pick host name from backend http settings enabled` .
 
    Pokud už máte jedno nebo víc nastavení HTTP, které se používá pro App Service, a pokud tato nastavení HTTP používají stejný protokol jako ten, který používáte v jednom vytvořeném, pak místo `Create a probe with pick host name from backend address` přepínače získáte rozevírací seznam pro výběr jedné z vlastních sond. Důvodem je to, že už existuje nastavení HTTP ve službě App Service, proto by existovala také sonda stavu, která má přepínač `Pick host name from backend http settings enabled` . Z rozevíracího seznamu vyberte tento vlastní test paměti.
 

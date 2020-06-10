@@ -7,14 +7,14 @@ ms.reviewer: craigg
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 05/29/2020
+ms.date: 06/05/2020
 ms.author: jingwang
-ms.openlocfilehash: 1b32685aa060363d00f1566e009beee36bbf9680
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 21f074be2cefcf5df261b354f169e8c210c9256f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298546"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604834"
 ---
 # <a name="delimited-text-format-in-azure-data-factory"></a>Textový formát s oddělovači v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -29,8 +29,8 @@ Pro následující konektory se podporuje textový formát s oddělovači [: Ama
 
 | Vlastnost         | Popis                                                  | Vyžadováno |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| typ             | Vlastnost Type datové sady musí být nastavená na **DelimitedText**. | Ano      |
-| location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location` .  | Ano      |
+| typ             | Vlastnost Type datové sady musí být nastavená na **DelimitedText**. | Yes      |
+| location         | Nastavení umístění souborů. Každý konektor založený na souborech má svůj vlastní typ umístění a podporované vlastnosti v rámci `location` .  | Yes      |
 | columnDelimiter  | Znak (y) použitý k oddělení sloupců v souboru. <br>Výchozí hodnota je **čárka `,` **. Pokud je Oddělovač sloupců definován jako prázdný řetězec, což znamená, že se nejedná o oddělovač, je celý řádek považován za jeden sloupec.<br>V současné době je Oddělovač sloupců jako prázdný řetězec nebo vícenásobný znak podporován pouze pro tok dat mapování, ale nikoli pro aktivitu kopírování.  | No       |
 | rowDelimiter     | Jeden znak nebo "\r\n", který se používá k oddělení řádků v souboru. <br>Výchozí hodnota je libovolná z následujících hodnot pro **čtení: ["\r\n", "\r", "\n"]** a **"\n" nebo "\r\n" při zápisu** pomocí mapování toku dat a aktivity kopírování v uvedeném pořadí. <br>Je-li oddělovač řádků nastaven na hodnotu bez oddělovače (prázdný řetězec), musí být Oddělovač sloupců nastaven jako bez oddělovače (prázdný řetězec), což znamená, že bude celý obsah považován za jedinou hodnotu.<br>V současné době je oddělovač řádků jako prázdný řetězec podporován pouze pro tok dat mapování, ale nikoli pro aktivitu kopírování. | No       |
 | quoteChar        | Jediný znak pro hodnoty sloupce uvozovek, pokud obsahuje oddělovač sloupců. <br>Výchozí hodnota je **dvojité uvozovky** `"` . <br>Pro mapování toku dat `quoteChar` nemůže být prázdný řetězec. <br>U aktivity kopírování, pokud `quoteChar` je definována jako prázdný řetězec, znamená, že se nezobrazuje žádná znak citace ani hodnota sloupce není v uvozovkách a `escapeChar` používá se k úniku oddělovače sloupců a sebe sama. | No       |
@@ -79,7 +79,7 @@ V části *** \* zdroj \* *** aktivity kopírování jsou podporovány následuj
 
 | Vlastnost       | Popis                                                  | Vyžadováno |
 | -------------- | ------------------------------------------------------------ | -------- |
-| typ           | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **DelimitedTextSource**. | Ano      |
+| typ           | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **DelimitedTextSource**. | Yes      |
 | formatSettings | Skupina vlastností Viz tabulka **nastavení čtení s oddělovači textu** níže. | No       |
 | storeSettings  | Skupina vlastností, jak číst data z úložiště dat. Jednotlivé konektory založené na souborech mají v rámci své vlastní podporované nastavení pro čtení `storeSettings` . | No       |
 
@@ -87,7 +87,7 @@ Podporované **nastavení čtení textu s oddělovači** v rámci `formatSetting
 
 | Vlastnost      | Popis                                                  | Vyžadováno |
 | ------------- | ------------------------------------------------------------ | -------- |
-| typ          | Typ formatSettings musí být nastaven na hodnotu **DelimitedTextReadSettings**. | Ano      |
+| typ          | Typ formatSettings musí být nastaven na hodnotu **DelimitedTextReadSettings**. | Yes      |
 | skipLineCount | Označuje počet **neprázdných** řádků, které se mají přeskočit při čtení dat ze vstupních souborů. <br>Pokud je zadaný parametr skipLineCount i firstRowAsHeader, nejdřív se přeskočí příslušný počet řádků a potom se ze vstupního souboru načtou informace záhlaví. | No       |
 | compressionProperties | Skupina vlastností, jak dekomprimovat data pro daný Kompresní kodek. | No       |
 | preserveZipFileNameAsFolder<br>(*pod `compressionProperties` *) | Platí v případě, že je vstupní datová sada nakonfigurovaná s **ZipDeflate** kompresí. Určuje, jestli se má při kopírování zachovat název zdrojového souboru ZIP jako struktura složek. Pokud je nastavená hodnota true (výchozí), Data Factory zapisuje soubory unzip do `<path specified in dataset>/<folder named as source zip file>/` ; při nastavení na hodnotu false Data Factory zapisuje soubory unzip přímo do `<path specified in dataset>` .  | No |
@@ -126,7 +126,7 @@ V části *** \* jímka \* *** aktivity kopírování jsou podporovány následu
 
 | Vlastnost       | Popis                                                  | Vyžadováno |
 | -------------- | ------------------------------------------------------------ | -------- |
-| typ           | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **DelimitedTextSink**. | Ano      |
+| typ           | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **DelimitedTextSink**. | Yes      |
 | formatSettings | Skupina vlastností Viz tabulka **nastavení zápisu s oddělovači textu** níže. |          |
 | storeSettings  | Skupina vlastností, jak zapisovat data do úložiště dat. Každý konektor založený na souborech má vlastní podporované nastavení zápisu v rámci `storeSettings` .  | No       |
 
@@ -134,12 +134,68 @@ Podporované **nastavení zápisu s oddělovači textu** v rámci `formatSetting
 
 | Vlastnost      | Popis                                                  | Vyžadováno                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| typ          | Typ formatSettings musí být nastaven na hodnotu **DelimitedTextWriteSettings**. | Ano                                                   |
+| typ          | Typ formatSettings musí být nastaven na hodnotu **DelimitedTextWriteSettings**. | Yes                                                   |
 | fileExtension | Přípona souboru, která slouží k pojmenování výstupních souborů, např. `.csv` `.txt` . Je nutné ji zadat, pokud `fileName` není zadána ve výstupní datové sadě DelimitedText. Když je ve výstupní datové sadě nakonfigurovaný název souboru, použije se jako název souboru jímky a nastavení přípony souboru se bude ignorovat.  | Ano, pokud není zadaný název souboru v výstupní datové sadě |
 
 ## <a name="mapping-data-flow-properties"></a>Mapování vlastností toku dat
 
-Přečtěte si podrobnosti o [transformaci zdrojového kódu](data-flow-source.md) a [transformaci jímky](data-flow-sink.md) v mapování toku dat.
+V části mapování toků dat můžete číst a zapisovat textový formát s oddělovači v následujících úložištích dat: [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties)a [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties).
+
+### <a name="source-properties"></a>Vlastnosti zdroje
+
+V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem odděleného textu. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
+
+| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Cesty k zástupným kartám | Budou zpracovány všechny soubory, které odpovídají zástupné cestě. Přepíše složku a cestu k souboru nastavenou v datové sadě. | ne | Řetězec [] | wildcardPaths |
+| Kořenová cesta oddílu | Pro souborová data, která jsou rozdělená na oddíly, můžete zadat kořenovou cestu oddílu, aby bylo možné číst rozdělené složky jako sloupce. | ne | Řetězec | partitionRootPath |
+| Seznam souborů | Určuje, zda váš zdroj odkazuje na textový soubor se seznamem souborů, které se mají zpracovat. | ne | `true` nebo `false` | fileList |
+| Víceřádkové řádky | Obsahuje zdrojový soubor řádky, které jsou rozloženy na více řádků. Víceřádkové hodnoty musí být v uvozovkách. | Ne `true` nebo`false` | multiLineRow |
+| Sloupec, ve kterém se má uložit název souboru | Vytvoří nový sloupec s názvem a cestou ke zdrojovému souboru. | ne | Řetězec | rowUrlColumn |
+| Po dokončení | Odstraní nebo přesune soubory po zpracování. Cesta k souboru začíná z kořene kontejneru | ne | Odstranit: `true` nebo`false` <br> Pøesunout`['<from>', '<to>']` | purgeFiles <br> moveFiles |
+| Filtrovat podle poslední změny | Zvolit filtrování souborů podle toho, kdy se naposledy změnily | ne | Časové razítko | modifiedAfter <br> modifiedBefore |
+
+### <a name="source-example"></a>Zdrojový příklad
+
+Níže uvedený obrázek je příkladem konfigurace neomezeného textu v části mapování toků dat.
+
+![DelimitedText zdroj](media/data-flow/delimited-text-source.png)
+
+Přidružený skript toku dat je:
+
+```
+source(
+    allowSchemaDrift: true,
+    validateSchema: false,
+    multiLineRow: true,
+    wildcardPaths:['*.csv']) ~> CSVSource
+```
+
+### <a name="sink-properties"></a>Vlastnosti jímky
+
+V níže uvedené tabulce jsou uvedeny vlastnosti, které jsou podporovány jímkou s oddělovači textu. Tyto vlastnosti můžete upravit na kartě **Nastavení** .
+
+| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| ---- | ----------- | -------- | -------------- | ---------------- |
+| Vymazat složku | Pokud před zápisem není cílová složka smazána | ne | `true` nebo `false` | zkrátit |
+| Možnost názvu souboru | Formát názvů zapsaných dat. Ve výchozím nastavení je jeden soubor na oddíl ve formátu`part-#####-tid-<guid>` | ne | Vzor: řetězec <br> Na oddíl: řetězec [] <br> Jako data ve sloupci: String <br> Výstup do jednoho souboru:`['<fileName>']`  | filePattern <br> partitionFileNames <br> rowUrlColumn <br> partitionFileNames |
+| Citace – vše | Uzavření všech hodnot do uvozovek | ne | `true` nebo `false` | quoteAll |
+
+### <a name="sink-example"></a>Příklad jímky
+
+Níže uvedený obrázek je příkladem konfigurace jímky s odděleným textem v části mapování toků dat.
+
+![Jímka DelimitedText](media/data-flow/delimited-text-sink.png)
+
+Přidružený skript toku dat je:
+
+```
+CSVSource sink(allowSchemaDrift: true,
+    validateSchema: false,
+    truncate: true,
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> CSVSink
+```
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 3/13/2020
 ms.author: raynew
-ms.openlocfilehash: a9468f437a89a85f28b6ce869b948ca2a4aff7bf
-ms.sourcegitcommit: 999ccaf74347605e32505cbcfd6121163560a4ae
+ms.openlocfilehash: d941f3e13e99accadc59c5836d88a824182329b9
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82983325"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629709"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Architektura zotavení po havárii Azure do Azure
 
@@ -34,7 +34,7 @@ Komponenty zapojené do zotavení po havárii pro virtuální počítače Azure 
 **Účet úložiště mezipaměti** | V zdrojové síti potřebujete účet úložiště mezipaměti. Během replikace se změny virtuálních počítačů ukládají do mezipaměti, než se odešlou do cílového úložiště.  Účty úložiště mezipaměti musí být standardní.<br/><br/> Použití mezipaměti zajišťuje minimální dopad na provozní aplikace, které běží na virtuálním počítači.<br/><br/> [Další informace](azure-to-azure-support-matrix.md#cache-storage) o požadavcích na úložiště mezipaměti. 
 **Cílové prostředky** | Cílové prostředky se používají během replikace a když dojde k převzetí služeb při selhání. Site Recovery může nastavit cílový prostředek ve výchozím nastavení, nebo je můžete vytvořit nebo přizpůsobit.<br/><br/> V cílové oblasti ověřte, že můžete vytvářet virtuální počítače a že vaše předplatné má dostatek prostředků pro podporu velikostí virtuálních počítačů, které budou potřeba v cílové oblasti. 
 
-![Replikace zdroje a cíle](./media/concepts-azure-to-azure-architecture/enable-replication-step-1.png)
+![Replikace zdroje a cíle](./media/concepts-azure-to-azure-architecture/enable-replication-step-1-v2.png)
 
 ## <a name="target-resources"></a>Cílové prostředky
 
@@ -116,7 +116,7 @@ Pokud povolíte replikaci pro virtuální počítač Azure, dojde k následujíc
 4. Site Recovery zpracuje data v mezipaměti a pošle je do cílového účtu úložiště nebo na spravované disky repliky.
 5. Po zpracování dat se body obnovení konzistentní vzhledem k chybě generují každých pět minut. Body obnovení konzistentní vzhledem k aplikacím se generují podle nastavení určeného v zásadách replikace.
 
-![Povolit proces replikace, krok 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2.png)
+![Povolit proces replikace, krok 2](./media/concepts-azure-to-azure-architecture/enable-replication-step-2-v2.png)
 
 **Proces replikace**
 
@@ -128,7 +128,7 @@ Pokud povolíte replikaci pro virtuální počítač Azure, dojde k následujíc
 
 Pokud se odchozí přístup pro virtuální počítače ovládá pomocí adres URL, povolte tyto adresy URL.
 
-| **Adresa URL** | **Zobrazí** |
+| **URL** | **Zobrazí** |
 | ------- | ----------- |
 | *.blob.core.windows.net | Umožňuje zápis dat z virtuálního počítače do účtu úložiště mezipaměti ve zdrojové oblasti. |
 | login.microsoftonline.com | Zajišťuje autorizaci a ověřování pro adresy URL služby Site Recovery. |
@@ -146,9 +146,9 @@ Podrobnosti o požadavcích na připojení k síti najdete v [dokumentu White pa
 
 **Pravidlo** |  **Zobrazí** | **Značka služby**
 --- | --- | --- 
-Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště ve zdrojové oblasti. | Pamì. \<název oblasti>
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště ve zdrojové oblasti. | Pamì.\<region-name>
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Active Directory (Azure AD).  | Azureactivedirectory selhala
-Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají centru událostí v cílové oblasti. | EventsHub. \<název oblasti>
+Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají centru událostí v cílové oblasti. | EventsHub.\<region-name>
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Site Recovery  | AzureSiteRecovery
 Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azure Key Vault (to se vyžaduje jenom pro povolení replikace virtuálních počítačů s podporou ADE přes portál) | AzureKeyVault
 Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azure Automation kontroler (to se vyžaduje jenom pro povolení automatického upgradu agenta mobility pro replikovanou položku prostřednictvím portálu) | GuestAndHybridManagement
@@ -157,9 +157,9 @@ Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azur
 
 **Pravidlo** |  **Zobrazí** | **Značka služby**
 --- | --- | --- 
-Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště v cílové oblasti. | Pamì. \<název oblasti>
+Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají účtům úložiště v cílové oblasti. | Pamì.\<region-name>
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají službě Azure AD.  | Azureactivedirectory selhala
-Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají centru událostí ve zdrojové oblasti. | EventsHub. \<název oblasti>
+Povolení odchozího HTTPS: port 443 | Povolí rozsahy, které odpovídají centru událostí ve zdrojové oblasti. | EventsHub.\<region-name>
 Povolení odchozího HTTPS: port 443 | Umožňuje použít rozsahy, které odpovídají Azure Site Recovery  | AzureSiteRecovery
 Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azure Key Vault (to se vyžaduje jenom pro povolení replikace virtuálních počítačů s podporou ADE přes portál) | AzureKeyVault
 Povolení odchozího HTTPS: port 443 | Povolit rozsahy, které odpovídají Azure Automation kontroler (to se vyžaduje jenom pro povolení automatického upgradu agenta mobility pro replikovanou položku prostřednictvím portálu) | GuestAndHybridManagement
@@ -191,7 +191,7 @@ Pokud povolíte konzistenci napříč několika virtuálními počítači, budou
 
 Když zahájíte převzetí služeb při selhání, vytvoří se virtuální počítače v cílové skupině prostředků, cílové virtuální síti, cílové podsíti a v cílové sadě dostupnosti. Během převzetí služeb při selhání můžete použít libovolný bod obnovení.
 
-![Proces převzetí služeb při selhání](./media/concepts-azure-to-azure-architecture/failover.png)
+![Proces převzetí služeb při selhání](./media/concepts-azure-to-azure-architecture/failover-v2.png)
 
 ## <a name="next-steps"></a>Další kroky
 

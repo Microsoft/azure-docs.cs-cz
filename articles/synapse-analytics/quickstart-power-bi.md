@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/29/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: c5b86319752fc70e754e34b787bbdc12f18636f0
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 3317410408754519bcd8b52e78dee4a81b3ab070
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83655981"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609484"
 ---
-# <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-analytics-workspace-preview"></a>Rychlý Start: propojení pracovního prostoru Power BI k pracovnímu prostoru analýzy synapse (Preview)
+# <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Rychlý Start: propojení pracovního prostoru Power BI k pracovnímu prostoru synapse
 
 V tomto rychlém startu se dozvíte, jak připojit Power BI pracovní prostor k pracovnímu prostoru analýzy synapse a vytvořit nové sestavy Power BI a datové sady z synapse studia (Preview).
 

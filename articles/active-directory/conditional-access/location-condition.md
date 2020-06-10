@@ -13,12 +13,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 781d8b89dd1b7fa6b2ed9707f6d4c485b4abdf20
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: f9f80cf0c42bdc6e45d62cac930c0bce4b20ee60
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220606"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605455"
 ---
 # <a name="using-the-location-condition-in-a-conditional-access-policy"></a>Použití podmínky umístění v zásadách podmíněného přístupu 
 
@@ -34,7 +34,7 @@ Organizace můžou použít toto síťové umístění pro běžné úkoly, jako
 Umístění v síti je určené veřejnou IP adresou, kterou klient poskytuje Azure Active Directory. Zásady podmíněného přístupu se ve výchozím nastavení vztahují na všechny adresy IPv4 a IPv6. 
 
 > [!TIP]
-> Rozsahy IPV6 se podporují jenom v rozhraní **[pojmenované umístění (Preview)](#preview-features)** . 
+> Rozsahy IPv6 se podporují jenom v rozhraní **[pojmenované umístění (Preview)](#preview-features)** . 
 
 ## <a name="named-locations"></a>Pojmenovaná umístění
 
@@ -50,7 +50,7 @@ Počet pojmenovaných umístění, která můžete konfigurovat, se omezuje na v
 - Do každé z nich se přiřadí maximálně 90 pojmenovaných umístění s jedním rozsahem IP adres.
 
 > [!TIP]
-> Rozsahy IPV6 se podporují jenom v rozhraní **[pojmenované umístění (Preview)](#preview-features)** . 
+> Rozsahy IPv6 se podporují jenom v rozhraní **[pojmenované umístění (Preview)](#preview-features)** . 
 
 ### <a name="trusted-locations"></a>Důvěryhodná umístění
 
@@ -65,7 +65,7 @@ Tato možnost může být v rámci zásad podmíněného přístupu, kde můžet
 Některé organizace se můžou rozhodnout definovat celé země nebo regiony hranice IP adres jako pojmenovaná umístění pro zásady podmíněného přístupu. Můžou tato umístění používat při blokování zbytečných přenosů, když ví, že platní uživatelé nebudou nikdy přijít z místa, jako je Severní Korea. Tato mapování IP adres na zemi se pravidelně aktualizují. 
 
 > [!NOTE]
-> Země neobsahují rozsahy IPv6 adres, jenom známé rozsahy IPv4 adres.
+> Země neobsahují rozsahy IPv6 adres, jenom známé rozsahy IPv4 adres a nelze je označit jako důvěryhodné.
 
 ![Vytvořit nové umístění na základě země nebo oblasti v Azure Portal](./media/location-condition/new-named-location-country-region.png)
 
@@ -92,7 +92,7 @@ U mobilních a desktopových aplikací, které mají dlouhodobé životnosti rel
 
 Pokud dojde k selhání obou kroků, bude uživatel považován za již nepřipojený k důvěryhodné IP adrese.
 
-## <a name="preview-features"></a>Funkce ve verzi Preview
+## <a name="preview-features"></a>Funkce Preview
 
 Kromě všeobecně dostupné funkce pojmenovaného umístění existuje také pojmenované umístění (Preview). K tomuto ukázkovému umístění můžete přistupovat pomocí nápisu v horní části okna aktuálně pojmenovaného umístění.
 
@@ -102,7 +102,7 @@ S pojmenovaným umístěním ve verzi Preview je možné
 
 - Nakonfigurovat až 195 pojmenovaných umístění
 - Nakonfigurovat až 2000 rozsahů IP adres na pojmenované umístění
-- Konfigurace až IPv6 adres
+- Konfigurace adres IPv6 spolu s adresami IPv4
 
 Přidali jsme také několik dalších kontrol, které vám pomůžou snížit změnu chybných konfigurací.
 
@@ -115,7 +115,7 @@ Ve verzi Preview jsou teď dvě možnosti vytvoření:
 - **Umístění rozsahů IP adres**
 
 > [!NOTE]
-> Země neobsahují rozsahy IPv6 adres, jenom známé rozsahy IPv4 adres.
+> Země neobsahují rozsahy IPv6 adres, jenom známé rozsahy IPv4 adres a nelze je označit jako důvěryhodné.
 
 ![Rozhraní s pojmenovanými umístěními verze Preview](./media/location-condition/named-location-preview.png)
 

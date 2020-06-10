@@ -5,14 +5,14 @@ services: application-gateway
 author: vhorne
 ms.service: application-gateway
 ms.topic: article
-ms.date: 4/8/2019
+ms.date: 06/09/2020
 ms.author: victorh
-ms.openlocfilehash: 57f2ce1fb8bf6415387eac5c760dadeb04e65648
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 2b5d2687ce95ca7db139ae06ab83bc3ecee8cf8a
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648414"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628808"
 ---
 # <a name="configure-end-to-end-tls-by-using-application-gateway-with-powershell"></a>Konfigurace koncového protokolu TLS pomocí Application Gateway s využitím PowerShellu
 
@@ -38,7 +38,7 @@ Tento scénář bude:
 * Vytvořte dvě podsítě s názvem **appgwsubnet** a **appsubnet**.
 * Vytvořte malou Aplikační bránu, která bude podporovat komplexní šifrování TLS, které omezuje verze protokolu TLS a šifrovací sady.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -167,7 +167,7 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
    > [!NOTE]
    > Výchozí sonda získá veřejný klíč z *výchozí* vazby TLS na IP adrese back-endu a porovná hodnotu veřejného klíče, kterou přijme, k hodnotě veřejného klíče, kterou tady zadáte. 
    > 
-   > Pokud používáte hlavičky hostitele a Indikace názvu serveru (SNI) na back-endu, načtený veřejný klíč nemusí být zamýšlenou lokalitou, na kterou přenosové toky. Pokud nejste jistí, navštivte https://127.0.0.1/ back-endové servery a ověřte, který certifikát se používá pro *výchozí* vazbu TLS. Použijte veřejný klíč z tohoto požadavku v této části. Pokud používáte pro vazby HTTPS možnost hostitel-Headers a SNI a neobdržíte odpověď a certifikát od ručního požadavku prohlížeče na https://127.0.0.1/ back-endové servery, musíte pro ně nastavit výchozí vazbu TLS. Pokud to neuděláte, sondy selžou a back-end není povolený.
+   > Pokud používáte hlavičky hostitele a Indikace názvu serveru (SNI) na back-endu, načtený veřejný klíč nemusí být zamýšlenou lokalitou, na kterou přenosové toky. Pokud nejste jistí, navštivte https://127.0.0.1/ back-endové servery a ověřte, který certifikát se používá pro *výchozí* vazbu TLS. Použijte veřejný klíč z tohoto požadavku v této části. Pokud používáte pro vazby HTTPS možnost hostitel-Headers a SNI a neobdržíte odpověď a certifikát od ručního požadavku prohlížeče na https://127.0.0.1/ back-endové servery, musíte pro ně nastavit výchozí vazbu TLS. Pokud to neuděláte, sondy selžou a back-end není povolen.
    
    Další informace o SNI v Application Gateway najdete v tématu [Přehled ukončení protokolu TLS a koncového šifrování TLS s Application Gateway](ssl-overview.md).
 
@@ -176,7 +176,7 @@ Všechny položky konfigurace jsou nastaveny před vytvořením aplikační brá
    ```
 
    > [!NOTE]
-   > Certifikát, který jste zadali v předchozím kroku, by měl být veřejným klíčem certifikátu. pfx, který je přítomný v back-endu. Exportujte certifikát (nikoli kořenový certifikát) nainstalovaný na záložním serveru ve formátu deklarace identity, legitimace a důvod (CER) a použijte ho v tomto kroku. Tento krok připraví back-end k aplikační bráně.
+   > Certifikát, který jste zadali v předchozím kroku, by měl být veřejným klíčem certifikátu. pfx, který je přítomný v back-endu. Exportujte certifikát (nikoli kořenový certifikát) nainstalovaný na záložním serveru ve formátu deklarace identity, legitimace a důvod (CER) a použijte ho v tomto kroku. Tento krok povolí back-end s aplikační bránou.
 
    Pokud používáte SKU Application Gateway v2, pak místo ověřovacího certifikátu vytvořte důvěryhodný kořenový certifikát. Další informace najdete v tématu [Přehled koncového protokolu TLS s Application Gateway](ssl-overview.md#end-to-end-tls-with-the-v2-sku):
 

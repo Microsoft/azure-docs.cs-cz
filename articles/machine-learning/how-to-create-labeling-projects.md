@@ -7,12 +7,12 @@ ms.author: sgilley
 ms.service: machine-learning
 ms.topic: tutorial
 ms.date: 04/09/2020
-ms.openlocfilehash: 40c31d4dd4a6c675691f75d3717f7865d6b847f7
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 45097b948c76413785ca5ec48c31faa83b3883ee
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171547"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629639"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Vytvoření popisku dat pro projekt a Export popisků 
 
@@ -35,11 +35,10 @@ V tomto článku se dozvíte, jak:
 > * Vytvoření projektu
 > * Zadat data a strukturu projektu
 > * Spuštění a sledování projektu
-> * Exportovat popisky
+> * Export popisků
 
 
 ## <a name="prerequisites"></a>Požadavky
-
 
 * Data, která chcete označit, buď v místních souborech nebo v úložišti objektů BLOB v Azure.
 * Sada popisků, které chcete použít.
@@ -67,6 +66,8 @@ Až budete připraveni pokračovat, vyberte **Další** .
 
 Pokud jste už vytvořili datovou sadu, která obsahuje vaše data, vyberte ji v rozevíracím seznamu **Vyberte existující datovou sadu** . Nebo vyberte možnost **vytvořit datovou sadu** pro použití stávajícího úložiště Azure DataStore nebo k nahrání místních souborů.
 
+> [!NOTE]
+> Projekt nemůže obsahovat více než 500 000 imagí.  Pokud vaše datová sada obsahuje víc, načte se jenom prvních 500 000 imagí.  
 
 ### <a name="create-a-dataset-from-an-azure-datastore"></a>Vytvoření datové sady z úložiště Azure
 
@@ -85,8 +86,6 @@ Chcete-li vytvořit datovou sadu z dat, která již byla uložena v úložišti 
 1. Vyberte **Další**.
 1. Potvrďte podrobnosti. Výběrem **zpět** upravíte nastavení nebo **vytvořte** datovou sadu.
 
-> [!NOTE]
-> Data, která zvolíte, se načtou do vašeho projektu.  Přidání dalších dat do úložiště dat se v tomto projektu po vytvoření projektu nezobrazí.  
 
 ### <a name="create-a-dataset-from-uploaded-data"></a>Vytvoření datové sady z nahraných dat
 
@@ -102,6 +101,19 @@ Přímé nahrání dat:
 1. Potvrďte podrobnosti. Výběrem **zpět** upravíte nastavení nebo **vytvořte** datovou sadu.
 
 Data se nahrají do výchozího úložiště objektů BLOB (workspaceblobstore) pracovního prostoru Machine Learning.
+
+## <a name="configure-incremental-refresh"></a><a name="incremental-refresh"> </a> Konfigurovat přírůstkovou aktualizaci
+
+Pokud máte v úmyslu přidat nové image do datové sady, použijte přírůstkovou aktualizaci pro přidání těchto nových imagí do projektu.   Když je zapnutá **přírůstková aktualizace** , datová sada se pravidelně kontroluje, aby se do projektu přidaly nové image, a to na základě sazby dokončení označení.   Kontroly nových dat se zastaví, když projekt obsahuje maximálně 500 000 imagí.
+
+K přidání dalších imagí do projektu použijte [Průzkumník služby Azure Storage](https://azure.microsoft.com/features/storage-explorer/) k nahrání do příslušné složky v úložišti objektů BLOB. 
+
+Zaškrtněte políčko **Povolit přírůstkovou aktualizaci** , pokud chcete, aby projekt průběžně sledoval nová data v úložišti dat.
+
+Zrušte toto políčko, pokud nechcete, aby byly do projektu přidány nové obrázky, které se zobrazí v úložišti dat.
+
+Časové razítko pro nejnovější aktualizaci najdete v části **přírůstková aktualizace** na kartě **Podrobnosti** pro váš projekt.
+
 
 ## <a name="specify-label-classes"></a>Určení tříd popisků
 
@@ -194,7 +206,7 @@ Pomocí těchto kroků můžete přidat jeden nebo více štítků do projektu:
 1. Upravte stránku s pokyny podle potřeby pro nové popisky.
 1. Až přidáte všechny nové popisky, v horní části stránky vyberte **začít** a restartujte projekt.  
 
-## <a name="export-the-labels"></a>Exportovat popisky
+## <a name="export-the-labels"></a>Export popisků
 
 Data popisku můžete exportovat pro Machine Learning experimentování kdykoli. Popisky obrázků lze exportovat ve [formátu díky Coco](http://cocodataset.org/#format-data) nebo jako datovou sadu Azure Machine Learning. Použijte tlačítko **exportovat** na stránce Project **Details (podrobnosti projektu** ) vašeho projektu s popisem.
 

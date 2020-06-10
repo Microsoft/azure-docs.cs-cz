@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/04/2020
-ms.openlocfilehash: cbefe2e2b25db7ce16a7a1bde423f60fda412590
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: ce7edf4dd5ae52f3ea604fe4b8d88d1a29de5a69
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83773351"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608362"
 ---
 # <a name="log-analytics-agent-overview"></a>Přehled agenta Log Analytics
 Agent Azure Log Analytics byl vyvinut pro komplexní správu napříč virtuálními počítači v jakémkoli cloudu, v místních počítačích a monitorované pomocí [System Center Operations Manager](https://docs.microsoft.com/system-center/scom/). Agenti systému Windows a Linux odesílají shromážděná data z různých zdrojů do vašeho pracovního prostoru Log Analytics v Azure Monitor a také všechny jedinečné protokoly nebo metriky, jak jsou definovány v řešení monitorování. Agent Log Analytics také podporuje přehledy a další služby v Azure Monitor, jako jsou [Azure monitor pro virtuální počítače](../insights/vminsights-enable-overview.md), [Azure Security Center](/azure/security-center/)a [Azure Automation](../../automation/automation-intro.md).
@@ -114,6 +114,24 @@ Od verzí vydaných po srpna 2018 provedeme následující změny modelu podpory
 >[!NOTE]
 >Pokud používáte distribuce nebo verzi, která není v současné době podporovaná a nerovná se k našemu modelu podpory, doporučujeme, abyste toto úložiště rozpustili a potvrdili, že podpora Microsoftu nebude poskytovat pomoc s rozvětvené verze agenta.
 
+
+### <a name="python-2-requirement"></a>Požadavek Pythonu 2
+ Agent Log Analytics vyžaduje Python 2. Pokud váš virtuální počítač používá distribuce, který ve výchozím nastavení neobsahuje Python 2, musíte ho nainstalovat. Následující vzorové příkazy instalují Python 2 v různých distribuce.
+
+ - Red Hat, CentOS, Oracle:`yum install -y python2`
+ - Ubuntu, Debian:`apt-get install -y python2`
+ - SUSE`zypper install -y python2`
+
+Spustitelný soubor python2 musí mít alias na Python, a to pomocí následujícího příkazu:
+
+```
+alternatives --set python /usr/sbin/python2
+```
+
+### <a name="supported-distros"></a>Podporované distribuce
+
+Pro agenta pro Linux jsou oficiálně podporované následující verze operačního systému Linux:
+
 * Amazon Linux 2017,09 (x64)
 * CentOS Linux 6 (x64) a 7 (x64)  
 * Oracle Linux 6 a 7 (x64) 
@@ -170,10 +188,10 @@ Následující tabulka uvádí informace o konfiguraci proxy serveru a brány fi
 
 |Prostředek agenta|Porty |Směr |Obejít kontrolu protokolu HTTPS|
 |------|---------|--------|--------|   
-|*.ods.opinsights.azure.com |Port 443 |Odchozí|Ano |  
-|*.oms.opinsights.azure.com |Port 443 |Odchozí|Ano |  
-|*.blob.core.windows.net |Port 443 |Odchozí|Ano |
-|*.azure-automation.net |Port 443 |Odchozí|Ano |
+|*.ods.opinsights.azure.com |Port 443 |Odchozí|Yes |  
+|*.oms.opinsights.azure.com |Port 443 |Odchozí|Yes |  
+|*.blob.core.windows.net |Port 443 |Odchozí|Yes |
+|*.azure-automation.net |Port 443 |Odchozí|Yes |
 
 Informace o bráně firewall požadované pro Azure Government najdete v tématu [správa Azure Government](../../azure-government/documentation-government-services-monitoringandmanagement.md#azure-monitor-logs). 
 
@@ -210,4 +228,3 @@ Příklad: `https://user01:password@proxy01.contoso.com:30443`
 * Projděte si [zdroje dat](agent-data-sources.md) , abyste porozuměli zdrojům dat, které jsou k dispozici pro shromažďování dat ze systému Windows nebo Linux. 
 * Přečtěte si o [dotazech protokolů](../log-query/log-query-overview.md) , které analyzují data shromážděná ze zdrojů dat a řešení. 
 * Přečtěte si o [řešeních monitorování](../insights/solutions.md) , která přidávají funkce pro Azure monitor a také shromažďovat data do pracovního prostoru Log Analytics.
-

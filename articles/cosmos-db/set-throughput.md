@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
-ms.openlocfilehash: a345b5a8a4d6a99b1b3928d61b22dfba0ba2735b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 319e6a4bff4d4d5675a03359176ac765cae80116
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248834"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608074"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Úvod k zřízené propustnosti v Azure Cosmos DB
 
@@ -32,7 +32,9 @@ Nastavení zřízené propustnosti kontejneru je nejčastěji používaná možn
 
 Propustnost zřízená pro kontejner je rovnoměrně rozdělená mezi své fyzické oddíly a za předpokladu, že klíč oddílu, který distribuuje logické oddíly rovnoměrně mezi fyzické oddíly, je propustnost rovnoměrně rozložená napříč všemi logickými oddíly kontejneru. Nemůžete selektivně zadat propustnost pro logické oddíly. Vzhledem k tomu, že jeden nebo více logických oddílů kontejneru je hostován fyzickým oddílem, fyzické oddíly patří výhradně do kontejneru a podporují propustnost zajištěná v kontejneru. 
 
-Pokud zatížení, které běží na logickém oddílu, spotřebovává více než propustnost, která byla přidělena tomuto logickému oddílu, operace získají omezené sazby. Pokud dojde k omezení rychlosti, můžete buď zvýšit zřízenou propustnost celého kontejneru, nebo operaci zopakovat. Další informace o dělení najdete v tématu [logické oddíly](partition-data.md).
+Pokud zatížení běžící na logickém oddílu spotřebovává více než propustnost, která byla přidělena základnímu fyzickému oddílu, je možné, že vaše operace budou omezeny na míru. K tomu, co se říká _aktivní oddíl_ , dojde v případě, že jeden logický oddíl má neúměrnější více požadavků než jiné hodnoty klíče oddílu.
+
+Pokud dojde k omezení rychlosti, můžete buď zvýšit zřízenou propustnost celého kontejneru, nebo operaci zopakovat. Ujistěte se také, že jste vybrali klíč oddílu, který rovnoměrně distribuuje úložiště a vyžádá svazek. Další informace o dělení najdete [v tématu dělení a horizontální škálování v Azure Cosmos DB](partition-data.md).
 
 Doporučujeme, abyste nakonfigurovali propustnost na členitosti kontejneru, pokud chcete zaručit výkon kontejneru.
 

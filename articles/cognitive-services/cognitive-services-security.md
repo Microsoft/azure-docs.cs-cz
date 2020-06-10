@@ -9,12 +9,13 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: dapine
-ms.openlocfilehash: fa0ad8c7f75a977e1a39ff6ffd6fee08d977f57a
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.custom: tracking-python
+ms.openlocfilehash: be1f6bd05069024194cb9312b17941c609d544dd
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83202015"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608447"
 ---
 # <a name="azure-cognitive-services-security"></a>Zabezpečení Azure Cognitive Services
 
@@ -110,9 +111,9 @@ echo "${ENVIRONMENT_VARIABLE_KEY}"
 
 Chcete-li získat proměnnou prostředí, musí být načtena do paměti. V závislosti na jazyku, který používáte, zvažte následující fragmenty kódu. Tyto fragmenty kódu ukazují, jak získat proměnnou prostředí dané `ENVIRONMENT_VARIABLE_KEY` a přiřadit k proměnné s názvem `value` .
 
-# <a name="c"></a>[R #](#tab/csharp)
+# <a name="c"></a>[C#](#tab/csharp)
 
-Další informace najdete v tématu <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank"> `Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Další informace najdete na webu <a href="https://docs.microsoft.com/dotnet/api/system.environment.getenvironmentvariable" target="_blank">`Environment.GetEnvironmentVariable` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ```csharp
 using static System.Environment;
@@ -129,9 +130,9 @@ class Program
 }
 ```
 
-# <a name="c"></a>[Volat](#tab/cpp)
+# <a name="c"></a>[C++](#tab/cpp)
 
-Další informace najdete v tématu <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank"> `getenv` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Další informace najdete na webu <a href="https://docs.microsoft.com/cpp/c-runtime-library/reference/getenv-wgetenv" target="_blank">`getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ```cpp
 #include <stdlib.h>
@@ -146,7 +147,7 @@ int main()
 
 # <a name="java"></a>[Java](#tab/java)
 
-Další informace najdete v tématu <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank"> `System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Další informace najdete na webu <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/System.html#getenv(java.lang.String)" target="_blank">`System.getenv` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ```java
 import java.lang.*;
@@ -163,7 +164,7 @@ public class Program {
 
 # <a name="nodejs"></a>[Node.js](#tab/node-js)
 
-Další informace najdete v tématu <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank"> `process.env` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Další informace najdete na webu <a href="https://nodejs.org/api/process.html#process_process_env" target="_blank">`process.env` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ```javascript
 // Get the named env var, and assign it to the value variable
@@ -173,7 +174,7 @@ const value =
 
 # <a name="python"></a>[Python](#tab/python)
 
-Další informace najdete v tématu <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank"> `os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Další informace najdete na webu <a href="https://docs.python.org/2/library/os.html#os.environ" target="_blank">`os.environ` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ```python
 import os
@@ -184,7 +185,7 @@ value = os.environ['ENVIRONMENT_VARIABLE_KEY']
 
 # <a name="objective-c"></a>[Objective-C](#tab/objective-c)
 
-Další informace najdete v tématu <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank"> `environment` <span class="docon docon-navigate-external x-hidden-focus"></span> </a>.
+Další informace najdete na webu <a href="https://developer.apple.com/documentation/foundation/nsprocessinfo/1417911-environment?language=objc" target="_blank">`environment` <span class="docon docon-navigate-external x-hidden-focus"></span></a>.
 
 ```objectivec
 // Get the named env var, and assign it to the value variable
@@ -200,7 +201,7 @@ NSString* value =
 
 Customer Lockbox je k dispozici pro tuto službu pro rozpoznávání:
 
-* Překladač
+* Translator
 
 V případě Language Understanding nebudou mít technici Microsoftu přístup k žádným zákaznickým datům v SKU E0. Chcete-li požádat o možnost použití skladové položky E0, vyplňte a odešlete [formulář žádosti o služby Luis](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro použití skladové položky E0 s LUIS budete muset vytvořit nový prostředek Language Understanding z Azure Portal a vybrat E0 jako cenovou úroveň. Uživatelé nebudou moct upgradovat z F0 na novou SKLADOVOU položku E0.
 

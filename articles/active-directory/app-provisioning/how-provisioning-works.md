@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: mimart
 ms.reviewer: arvinh
-ms.openlocfilehash: 533e38206b9a85b449880d88c9ff969c051fac53
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: ca8285eb9553e0c69a024714c2f5a258bd9b0ba0
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712226"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628188"
 ---
 # <a name="how-provisioning-works"></a>Jak funguje zřizování
 
@@ -172,7 +172,7 @@ Všechny operace spouštěné službou zřizování uživatelů se zaznamenávaj
 
 Služba zřizování Azure AD udržuje zdrojový a cílový systém v synchronizaci s účty zrušení zřízení, pokud k nim uživatelé neměli mít přístup. 
 
-Služba zřizování Azure AD odstraní uživatele v aplikaci, když aplikace suupports Soft odstraní (žádost o aktualizaci s aktivní = false) a dojde k jakékoli z následujících událostí:
+Služba zřizování Azure AD odstraní uživatele v aplikaci, když aplikace podporuje obnovitelné odstranění (žádost o aktualizaci s aktivní = false) a nastane kterákoli z následujících událostí:
 
 * Uživatelský účet se odstranil ve službě Azure AD.
 *   Uživatel není přiřazený z aplikace.

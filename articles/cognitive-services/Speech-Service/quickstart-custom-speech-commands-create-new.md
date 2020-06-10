@@ -98,7 +98,7 @@ Pojďme vytvořit jednoduchý příkaz, který bude mít jednu utterance, `turn 
 Prostřední podokno obsahuje seznam vlastností příkazu:
 
 
-| Konfigurace            | Description                                                                                                                 |
+| Konfigurace            | Popis                                                                                                                 |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
 | **Příklady vět** | Příklady projevy, jak může uživatel spustit příkaz.                                                                 |
 | **Parametry**       | Informace potřebné k dokončení příkazu                                                                                |

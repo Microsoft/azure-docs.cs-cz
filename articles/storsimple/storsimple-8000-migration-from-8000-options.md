@@ -7,12 +7,12 @@ ms.service: storsimple
 ms.topic: article
 ms.date: 03/25/2020
 ms.author: v-grpr
-ms.openlocfilehash: 974bcc657b811a10e28b41150439e83d26a208d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5e4aa492567f3357867a3a3f385e8339ada093e9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81767049"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608926"
 ---
 # <a name="options-to-migrate-data-from-storsimple-8000-series"></a>Možnosti migrace dat z řady StorSimple 8000
 
@@ -40,6 +40,12 @@ Další informace o tom, jak migrovat data na Azure File Sync, najdete v článk
 Zákazníci řady StorSimple 5000-7000 a StorSimple 8000 Series se můžou rozhodnout migrovat na server Panzura svobody, aby si zachovali jejich data v Azure. Řešení Panzura svobodu poskytuje řešení pro NAS, které pokrývá datová centra, pobočky, veřejné a privátní cloudy. Řešení umožňuje místní, hybridní a cloudové pracovní postupy dat pro NFS, SMB a mobilní klienty.
 
 Tato migrace je podporovaná Panzura a zákazníci můžou začít tím, že požádají o podporu migrace z [webu Panzura](https://panzura.com/migrate-storsimple-panzura/).
+
+#### <a name="migrate-to-nasuni"></a>Migrace na Nasuni
+
+Přesun celého prostředí StorSimple na stabilní, bezpečnou a vysoce výkonnou platformu souborových služeb je snadno Nasuni. Nasuni nabízí zabezpečení a výkon místních úložišť souborů při kombinaci s škálovatelností a odolností Azure.  Nasuni má jako špičkového nezávislého výrobce softwaru (ISV) k dispozici všechny nástroje, které jsou nezbytné k přesunu dat StorSimple na moderní platformu, která umožňuje sdílet soubory a spolupracovat s nimi v různých umístěních.
+
+Začínáme dnes: [Web Nasuni](https://info.nasuni.com/storsimple8000-webinar).
 
 <!-- 04/09/2020 v-grpr (priestlg) - As per request, commenting out this section because the information that will go into this section is forthcoming
 #### Migrate to Cohesity

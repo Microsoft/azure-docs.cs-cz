@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 07/05/2019
 ms.author: erhopf
-ms.openlocfilehash: d959f4948d6b848f3b399c1310add06991d72012
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 77573ac4240eeded1f803d88f218aaf4d4c5a929
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806316"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636122"
 ---
 # <a name="speech-service-for-telephony-data"></a>Služba řeči pro data telefonního subsystému
 
@@ -40,7 +40,7 @@ Kromě funkčního aspektu funkcí služby Speech, jejich primární účel – 
 - Analýzy v reálném čase, což je zpracování zvukového signálu k extrakci různých přehledů, jak probíhá volání (s mínění se jedná o výrazný případ použití).
 - Hlasová asistenti (roboty), ať už si nastavili dialog mezi zákazníkem a robotem v pokusu o vyřešení problému zákazníka bez účasti na agentovi, nebo použití protokolů v programu umělal Intelligence (AI), aby se mohl pomáhat na agentovi.
 
-Typický diagram architektury implementace scénáře Batch je znázorněný na obrázku níže ![v architektuře pro přepisy služby Call Center.](media/scenarios/call-center-transcription-architecture.png)
+Typický diagram architektury implementace scénáře Batch je znázorněný na obrázku níže v ![ architektuře pro přepisy služby Call Center.](media/scenarios/call-center-transcription-architecture.png)
 
 ## <a name="speech-analytics-technology-components"></a>Komponenty technologie Speech Analytics
 
@@ -70,7 +70,7 @@ Naše kompletní latence je výrazně nízká pro různé technologie, jako je n
 
 Naše nové hlasy jsou také odlišitelné od lidského hlasy. Naše hlasy vám umožní dát své robot své jedinečné preference.
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledat
 
 Další sešívání analýz je identifikace interakcí, u kterých došlo k určité události nebo zkušenostem. To se obvykle provádí s jedním ze dvou přístupů; buď vyhledávání ad hoc, kde uživatel jednoduše zadá frázi a systém odpoví, nebo více strukturovaný dotaz, kde analytik může vytvořit sadu logických příkazů, které identifikují scénář ve volání, a potom každé volání může být indexováno proti této sadě dotazů. Dobrým příkladem hledání je příkaz všudypřítomný dodržování předpisů "Toto volání se bude zaznamenávat z hlediska kvality... ". Mnohé společnosti chtějí zajistit, aby jejich agenti poskytovali tomuto právnímu omezení zákazníkům před tím, než se volání skutečně zaznamená. Většina analytických systémů má schopnost trendu chování zjištěného pomocí algoritmů dotazu nebo vyhledávání a vytváření sestav trendů je nakonec jednou z nejdůležitějších funkcí analytického systému. V [adresáři služby pro rozpoznávání](https://azure.microsoft.com/services/cognitive-services/directory/search/) koncových služeb je možné výrazně zvýšit možnosti indexování a vyhledávání.
 
@@ -97,7 +97,7 @@ Typické řešení používá tyto služby:
 - [Azure Functions](https://docs.microsoft.com/azure/azure-functions/) slouží k vytvoření identifikátoru URI sdíleného přístupového podpisu (SAS) pro každý záznam a aktivaci požadavku HTTP POST pro spuštění přepisu. Kromě toho Azure Functions slouží k vytváření žádostí o načtení a odstranění přepisů pomocí rozhraní API dávkového přepisu.
 
 Interně používáme výše uvedené technologie k podpoře zákaznických hovorů Microsoftu v dávkovém režimu.
-![Architektura Batch](media/scenarios/call-center-batch-pipeline.png)
+:::image type="content" source="media/scenarios/call-center-batch-pipeline.png" alt-text="Technologie sloužící k podpoře zákaznických hovorů Microsoftu v režimu dávky.":::
 
 ## <a name="real-time-transcription-for-call-center-data"></a>Přepis v reálném čase pro data centra volání
 

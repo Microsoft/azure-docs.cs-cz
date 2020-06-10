@@ -1,6 +1,6 @@
 ---
 title: Virtuální počítač Azure při použití zásad nereaguje.
-description: Tento článek popisuje kroky pro řešení problémů, při kterých se při použití zásady během spouštění na virtuálním počítači Azure zablokuje obrazovka Load.
+description: Tento článek popisuje kroky pro řešení problémů, při kterých obrazovka Load nereaguje při použití zásady při spuštění ve virtuálním počítači Azure.
 services: virtual-machines-windows
 documentationcenter: ''
 author: TobyTu
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
-ms.openlocfilehash: 30f833bc49f92dcabfc75f0a1507c6f540bdea24
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 187098f557cb691e023abb282a265b11e975c544
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83749274"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629268"
 ---
-# <a name="vm-becomes-unresponsive-while-applying-group-policy-local-users--groups-policy"></a>Virtuální počítač přestane reagovat při použití zásad Zásady skupiny místní uživatelé & skupiny.
+# <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>Virtuální počítač nereaguje při použití Zásady skupiny zásady místních uživatelů a skupin.
 
-Tento článek popisuje kroky pro řešení problémů, při kterých se při použití zásady během spouštění na virtuálním počítači Azure zablokuje obrazovka Load.
+Tento článek popisuje kroky pro řešení problémů, při kterých obrazovka Load nereaguje, když virtuální počítač Azure používá zásadu při spuštění.
 
 ## <a name="symptoms"></a>Příznaky
 
-Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, obrazovka se zablokuje načítání s touto zprávou: '*použití zásady skupiny místních uživatelů a zásad skupiny*'.
+Když pomocí [diagnostiky spouštění](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/boot-diagnostics) zobrazíte snímek obrazovky virtuálního počítače, obrazovka se zablokuje načítání s touto zprávou: "použití zásady skupiny místních uživatelů a skupin."
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="Snímek obrazovky s použitím Zásady skupiny načítání zásad místních uživatelů a skupin (Windows Server 2012 R2)":::
 
@@ -49,42 +49,42 @@ Tady je problematické zásady:
 ### <a name="process-overview"></a>Přehled procesu
 
 1. [Vytvoření a přístup k opravnému virtuálnímu počítači](#step-1-create-and-access-a-repair-vm)
-2. [Zakázat zásadu](#step-2-disable-the-policy)
-3. [Povolit kolekci sériového stavu a výpisu paměti](#step-3-enable-serial-console-and-memory-dump-collection)
-4. [Opětovné sestavení virtuálního počítače](#step-4-rebuild-the-vm)
+1. [Zakázat zásadu](#step-2-disable-the-policy)
+1. [Povolit kolekci sériového stavu a výpisu paměti](#step-3-enable-serial-console-and-memory-dump-collection)
+1. [Opětovné sestavení virtuálního počítače](#step-4-rebuild-the-vm)
 
 > [!NOTE]
-> Pokud dojde k této chybě spuštění, hostovaný operační systém není funkční. Je nutné řešit potíže v offline režimu.
+> Pokud dojde k této chybě spuštění, hostovaný operační systém nebude funkční. Je nutné řešit potíže v offline režimu.
 
 ### <a name="step-1-create-and-access-a-repair-vm"></a>Krok 1: vytvoření a přístup k opravnému virtuálnímu počítači
 
 1. Pomocí [kroků 1-3 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) Připravte opravný virtuální počítač.
-2. Použijte Připojení ke vzdálené ploše Připojte se k opravnému virtuálnímu počítači.
+2. Pomocí Připojení ke vzdálené ploše se připojte k opravnému virtuálnímu počítači.
 
 ### <a name="step-2-disable-the-policy"></a>Krok 2: zakázání zásady
 
 1. V okně opravit virtuální počítač otevřete Editor registru.
-2. Vyhledejte klíč **HKEY_LOCAL_MACHINE** a v nabídce vyberte možnost načíst **soubor**  >  **...**
+1. Vyhledejte klíč **HKEY_LOCAL_MACHINE** a v nabídce **File**vyberte příkaz  >  **načíst** soubor.
 
     :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="Snímek obrazovky ukazuje zvýrazněný HKEY_LOCAL_MACHINE a nabídku obsahující podregistr Load.":::
 
-    - Možnost Načíst podregistr umožňuje načíst klíče registru z offline systému, v tomto případě poškozený disk připojený k opravnému virtuálnímu počítači.
-    - Nastavení pro systém je uloženo v systému `HKEY_LOCAL_MACHINE` a lze jej zkrátit jako "HKLM".
-3. Na připojeném disku přejdete do `\windows\system32\config\SOFTWARE` souboru a otevřete ho.
+    - Pomocí funkce Load podregistr můžete načíst klíče registru z offline systému. V tomto případě je systém poškozeným diskem připojeným k opravnému virtuálnímu počítači.
+    - Nastavení pro systém jsou ukládána na `HKEY_LOCAL_MACHINE` a lze je zkrátit jako HKLM.
+1. Na připojeném disku přejdete do `\windows\system32\config\SOFTWARE` souboru a otevřete ho.
 
-    1. Zobrazí se výzva k zadání názvu. Zadejte BROKENSOFTWARE.<br/>
-    2. Chcete-li ověřit, zda byl BROKENSOFTWARE načten, rozbalte **HKEY_LOCAL_MACHINE** a vyhledejte přidaný BROKENSOFTWARE klíč.
-4. Přejděte na BROKENSOFTWARE a ověřte, jestli v načteném podregistru existuje klíč CleanupProfile.
+    1. Po zobrazení výzvy k zadání názvu zadejte BROKENSOFTWARE.
+    1. Chcete-li ověřit, zda byl BROKENSOFTWARE načten, rozbalte **HKEY_LOCAL_MACHINE** a vyhledejte přidaný BROKENSOFTWARE klíč.
+1. Přejít na BROKENSOFTWARE a ověřte, jestli v načteném podregistru existuje klíč CleanupProfile.
 
-    1. Pokud klíč existuje, pak je nastavená zásada CleanupProfile, její hodnota představuje zásady uchovávání informací ve dnech. Pokračujte v odstraňování klíče.<br/>
-    2. Pokud klíč neexistuje, zásada CleanupProfile se nenastaví. [Odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), včetně souboru Memory. dmp umístěného v adresáři systému Windows připojeného disku s operačním systémem.
+    1. Pokud klíč existuje, zásada CleanupProfile se nastaví. Jeho hodnota představuje zásady uchovávání informací měřené ve dnech. Pokračujte v odstraňování klíče.
+    1. Pokud klíč neexistuje, zásada CleanupProfile se nenastaví. [Odešlete lístek podpory](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), včetně souboru Memory. dmp umístěného v adresáři systému Windows připojeného disku s operačním systémem.
 
-5. Odstraňte klíč CleanupProfiles pomocí tohoto příkazu:
+1. Odstraňte klíč CleanupProfiles pomocí tohoto příkazu:
 
     ```
     reg delete "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f
     ```
-6.  Uvolněte podregistr BROKENSOFTWARE pomocí tohoto příkazu:
+1.  Uvolněte podregistr BROKENSOFTWARE pomocí tohoto příkazu:
 
     ```
     reg unload HKLM\BROKENSOFTWARE
@@ -94,23 +94,21 @@ Tady je problematické zásady:
 
 Pokud chcete povolit shromažďování výpisů paměti a sériovou konzolu, spusťte tento skript:
 
-1. Otevřete relaci příkazového řádku se zvýšenými oprávněními (Spustit jako správce).
-2. Spusťte tyto příkazy:
-
-    **Povolit sériovou konzolu**: 
+1. Otevřete relaci příkazového řádku se zvýšenými oprávněními. (Spustit jako správce.)
+1. Spusťte tyto příkazy, aby se aktivovala konzola sériového portu:
     
     ```
     bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
     ```
 
     ```
-    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200 
+    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
     ```
-3. Ověřte, zda je volné místo na disku s operačním systémem přinejmenším rovno velikosti paměti virtuálního počítače (RAM).
+1. Ověřte, zda je volné místo na disku s operačním systémem přinejmenším rovno velikosti paměti virtuálního počítače (RAM).
 
-    Pokud není dostatek místa na disku s operačním systémem, změňte umístění výpisu paměti a Projděte ho na připojený datový disk s dostatkem volného místa. Chcete-li změnit umístění, nahraďte "% SystemRoot%" písmenem jednotky (např. "F:") datového disku v následujících příkazech.
+    Pokud není dostatek místa na disku s operačním systémem, změňte umístění výpisu paměti a Projděte ho na připojený datový disk s dostatkem volného místa. Chcete-li změnit umístění, nahraďte "% SystemRoot%" písmenem jednotky (například "F:") datového disku v následujících příkazech.
 
-    **Navrhovaná konfigurace pro povolení výpisu operačního systému**:
+    **Navrhovaná konfigurace pro povolení výpisu operačního systému**
 
     Načíst poškozený disk s operačním systémem:
 
@@ -135,7 +133,7 @@ Pokud chcete povolit shromažďování výpisů paměti a sériovou konzolu, spu
     ```
     
     Uvolnit poškozený disk s operačním systémem:
-    
+
     ```
     REG UNLOAD HKLM\BROKENSYSTEM
     ```
@@ -144,7 +142,7 @@ Pokud chcete povolit shromažďování výpisů paměti a sériovou konzolu, spu
 
 Pomocí [kroku 5 příkazů pro opravu virtuálního počítače](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/repair-windows-vm-using-azure-virtual-machine-repair-commands#repair-process-example) znovu sestavte virtuální počítač.
 
-Pokud je problém vyřešen, zásada byla zakázána místně. V případě trvalého řešení nepoužívejte zásady CleanupProfiles na virtuálních počítačích. K provedení vyčištění profilu použijte jinou metodu.
+Pokud je problém opravený, zásada je teď zakázaná místně. V případě trvalého řešení nepoužívejte zásady CleanupProfiles na virtuálních počítačích. K provedení vyčištění profilu použijte jinou metodu.
 
 Nepoužívat tyto zásady:
 
@@ -152,4 +150,4 @@ Nepoužívat tyto zásady:
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud narazíte na problémy při použití web Windows Update, přečtěte si článek o tom, že [virtuální počítač nereaguje s chybou "C01A001D" při použití web Windows Update](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/unresponsive-vm-apply-windows-update).
+Pokud máte při použití web Windows Update problémy, přečtěte si článek o tom, že [virtuální počítač nereaguje s chybou "C01A001D" při použití web Windows Update](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/unresponsive-vm-apply-windows-update).

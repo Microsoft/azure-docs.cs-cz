@@ -4,12 +4,12 @@ description: Naučte se, jak můžete pomocí Azure Backup posílat data mimo s�
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 05/17/2018
-ms.openlocfilehash: 642787e17f347bf8233e50c65d26a1661b08fcfb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6d448687836842835259fcf7bbad41af815dfb58
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82183887"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629288"
 ---
 # <a name="offline-backup-workflow-in-azure-backup"></a>Pracovní postup offline zálohování v Azure Backup
 
@@ -45,7 +45,7 @@ Následující Azure Backup funkce nebo úlohy podporují použití offline zál
 ## <a name="prerequisites"></a>Požadavky
 
   > [!NOTE]
-  > Následující předpoklady a pracovní postup platí jenom pro offline zálohování souborů a složek pomocí [nejnovějšího agenta Azure Recovery Services](https://aka.ms/azurebackup_agent). Pokud chcete provádět offline zálohování pro úlohy pomocí nástroje System Center DPM nebo Azure Backup Server, přečtěte si téma [pracovní postup offline zálohování pro DPM a Azure Backup Server](backup-azure-backup-server-import-export-.md).
+  > Následující předpoklady a pracovní postup platí jenom pro offline zálohování souborů a složek pomocí [nejnovějšího agenta Azure Recovery Services](https://aka.ms/azurebackup_agent). Pokud chcete provádět offline zálohování pro úlohy pomocí nástroje System Center DPM nebo Azure Backup Server, přečtěte si téma [pracovní postup offline zálohování pro DPM a Azure Backup Server](backup-azure-backup-server-import-export.md).
 
 Než spustíte pracovní postup offline zálohování, proveďte následující požadavky:
 
@@ -135,8 +135,8 @@ Nástroj *AzureOfflineBackupDiskPrep* připraví jednotky SATA, které se odesí
 
     | Parametr | Popis |
     | --- | --- |
-    | s:&lt;*cesta k pracovnímu umístění*&gt; |Tento povinný vstup slouží k zadání cesty k pracovnímu umístění, které jste zadali v pracovním postupu v části "zahájení offline zálohování". |
-    | p:&lt;*cesta k PublishSettingsFile*&gt; |Tento nepovinný vstup slouží k zadání cesty k souboru nastavení publikování v Azure, který jste zadali v pracovním postupu v části "zahájení offline zálohování". |
+    | s: &lt; *cesta k pracovnímu umístění*&gt; |Tento povinný vstup slouží k zadání cesty k pracovnímu umístění, které jste zadali v pracovním postupu v části "zahájení offline zálohování". |
+    | p: &lt; *cesta k PublishSettingsFile*&gt; |Tento nepovinný vstup slouží k zadání cesty k souboru nastavení publikování v Azure, který jste zadali v pracovním postupu v části "zahájení offline zálohování". |
 
     Když příkaz spustíte, nástroj vyžádá výběr úlohy importu Azure, která odpovídá diskům, které je potřeba připravit. Pokud je k dispozici pouze jedna úloha importu s dodaným pracovním umístěním, zobrazí se stránka podobná této.
 

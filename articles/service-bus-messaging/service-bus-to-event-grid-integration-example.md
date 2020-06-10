@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: tutorial
-ms.date: 11/05/2019
+ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: fef325b67c38eda09a05dac9d74bd5b97df164cc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 548a51fef693aae6e9b9068f9731b82aaa85dfe3
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80067770"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610367"
 ---
 # <a name="tutorial-respond-to-azure-service-bus-events-received-via-azure-event-grid-by-using-azure-functions-and-azure-logic-apps"></a>Kurz: reakce na události Azure Service Bus přijatých prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps
 V tomto kurzu se naučíte reagovat na události Azure Service Bus přijímané prostřednictvím Azure Event Grid pomocí Azure Functions a Azure Logic Apps. 
@@ -122,19 +122,25 @@ Pak proveďte následující kroky:
     }
     
     ```
-2. Vyberte **Uložit a spustit**.
+2. Na panelu nástrojů vyberte **Uložit** a uložte kód pro funkci.
 
-    ![Výstup aplikace Function App](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
+    ![Uložit kód funkce](./media/service-bus-to-event-grid-integration-example/save-function-code.png)
+3. Na panelu nástrojů vyberte **test/spustit** , do textového pole zadejte název a vyberte **Spustit**. 
+
+    ![Testovací běh](./media/service-bus-to-event-grid-integration-example/test-run-function.png)
+4. Potvrďte, že se zobrazuje výstup a protokoly, jak je znázorněno na následujícím obrázku. 
+
+    ![Testovací běh – výstup](./media/service-bus-to-event-grid-integration-example/test-run-output.png)
 3. Vyberte **získat adresu URL funkce** a poznamenejte si adresu URL. 
 
     ![Získat adresu URL funkce](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+5. Klikněte na tlačítko **Kopírovat** vedle textu adresy URL.    
+    ![Kopírovat adresu URL funkce](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
 # <a name="azure-functions-v1"></a>[Azure Functions v1](#tab/v1)
 
 1. Nakonfigurujte funkci pro použití verze **v1** : 
     1. Ve stromovém zobrazení vyberte aplikaci Function App a vyberte možnost **nastavení aplikace Function App**. 
-
-        ![Nastavení aplikace funkcí]()./media/service-bus-to-event-grid-integration-example/function-app-settings.png)
     2. Pro **verzi modulu runtime**vyberte **~ 1** . 
 2. Rozbalte **funkce** ve stromovém zobrazení a vyberte svou funkci. Nahraďte kód funkce následujícím kódem: 
 
@@ -184,9 +190,11 @@ Pak proveďte následující kroky:
 4. Vyberte **Uložit a spustit**.
 
     ![Výstup aplikace Function App](./media/service-bus-to-event-grid-integration-example/function-run-output.png)
-4. Vyberte **získat adresu URL funkce** a poznamenejte si adresu URL. 
+4. Na panelu nástrojů vyberte **získat adresu URL funkce** . 
 
     ![Získat adresu URL funkce](./media/service-bus-to-event-grid-integration-example/get-function-url.png)
+5. Klikněte na tlačítko **Kopírovat** vedle textu adresy URL.    
+    ![Kopírovat adresu URL funkce](./media/service-bus-to-event-grid-integration-example/get-function-url-copy.png)
 
 ---
 
@@ -201,16 +209,20 @@ K vytvoření předplatného Azure Event Grid použijte následující postup:
 2. Na panelu nástrojů vyberte **+ odběr události** . 
 3. Na stránce **vytvořit odběr události** proveďte následující kroky:
     1. Zadejte **název** předplatného. 
+    2. Zadejte **název** **systémového tématu**. Systémová témata jsou témata vytvořená pro prostředky Azure, jako je Azure Storage účet a Azure Service Bus. Další informace o systémových tématech najdete v tématu [Přehled systémových témat](../event-grid/system-topics.md).
     2. Vyberte **webový Hook** pro **Typ koncového bodu**. 
 
         ![Předplatné Service Bus-Event Grid](./media/service-bus-to-event-grid-integration-example/event-grid-subscription-page.png)
     3. Zvolte **Vybrat koncový bod**, vložte adresu URL funkce a pak vyberte **potvrdit výběr**. 
 
         ![Funkce – Výběr koncového bodu](./media/service-bus-to-event-grid-integration-example/function-select-endpoint.png)
-    4. Přepněte na kartu **filtry** , zadejte název **prvního odběru** do Service Busho tématu, které jste vytvořili dříve, a pak vyberte tlačítko **vytvořit** . 
+    4. Přepněte na kartu **filtry** a proveďte následující úlohy:
+        1. Vyberte **Povolit filtrování předmětu**
+        2. Do tématu Service Bus, které jste vytvořili dříve, zadejte název **prvního předplatného** .
+        3. Vyberte tlačítko **Vytvořit**. 
 
-        ![Filtr odběrů událostí](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
-4. Potvrďte, že se v seznamu zobrazí odběr událostí.
+            ![Filtr odběrů událostí](./media/service-bus-to-event-grid-integration-example/event-subscription-filter.png)
+4. Na stránce **události** přepněte na kartu **odběry událostí** a potvrďte, že se v seznamu zobrazí odběr událostí.
 
     ![Odběr událostí v seznamu](./media/service-bus-to-event-grid-integration-example/event-subscription-in-list.png)
 
@@ -242,11 +254,15 @@ V této části zjistíte, jak po přijetí události přijímat a zpracovávat 
         ![Získat profil publikování pro funkci](./media/service-bus-to-event-grid-integration-example/function-download-publish-profile.png)
     4. Uložte soubor do složky vašeho projektu. 
 4. V sadě Visual Studio klikněte pravým tlačítkem na **SBEventGridIntegration** a vyberte **Publikovat**. 
-5. Na stránce **publikovat** vyberte **Spustit** . 
-6. Na stránce **Vyberte cíl publikování** proveďte následující kroky a vyberte **Importovat profil**. 
+5. Na stránce **publikovat**proveďte následující kroky: 
+    1. Na stránce **publikovat** vyberte **Spustit** . 
+    2. Jako **cíl**vyberte **Importovat profil**. 
+    3. Vyberte **Další**. 
 
-    ![Visual Studio – tlačítko Importovat profil](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
-7. Vyberte **soubor publikačního profilu** , který jste předtím stáhli. 
+        ![Visual Studio – tlačítko Importovat profil](./media/service-bus-to-event-grid-integration-example/visual-studio-import-profile-button.png)
+7. Vyberte **soubor profilu publikování** , který jste stáhli dříve, a vyberte **Dokončit**.
+
+    ![Vyberte profil publikování.](./media/service-bus-to-event-grid-integration-example/select-publish-profile.png)
 8. Na stránce **publikovat** vyberte **publikovat** . 
 
     ![Visual Studio – publikování](./media/service-bus-to-event-grid-integration-example/select-publish.png)

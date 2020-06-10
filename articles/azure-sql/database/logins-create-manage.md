@@ -13,12 +13,12 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: carlrab
 ms.date: 03/23/2020
-ms.openlocfilehash: 296bf84c22313723c328e1775f697ee19dcb8f04
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: e56b526dff9e18f19275cb248fd6955dd680324f
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220554"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605094"
 ---
 # <a name="authorize-database-access-to-sql-database-sql-managed-instance-and-azure-synapse-analytics"></a>Autorizace přístupu k databázi SQL Database, spravované instanci SQL a Azure synapse Analytics
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -85,7 +85,7 @@ V tuto chvíli je váš server nebo spravovaná instance nakonfigurovaný jenom 
 
   - V hlavní databázi vytvořte další přihlášení SQL.
   - Pomocí příkazu [ALTER Server role](https://docs.microsoft.com/sql/t-sql/statements/alter-server-role-transact-sql) přidejte přihlašovací údaje k [pevné roli serveru sysadmin](https://docs.microsoft.com/sql/relational-databases/security/authentication-access/server-level-roles) . Toto přihlášení bude mít úplná oprávnění správce.
-  - Případně můžete pomocí syntaxe [Create Login](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) vytvořit [přihlašovací #provision služby Azure AD](authentication-aad-configure.md)– Azure-AD-admin-SQL-Managed-instance.
+  - Případně můžete vytvořit [přihlašovací údaje služby Azure AD](authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance) pomocí syntaxe [Vytvoření přihlašovacího jména](/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current) .
 
 - **V SQL Database Vytvořte přihlašovací údaje SQL s omezenými oprávněními pro správu.**
 

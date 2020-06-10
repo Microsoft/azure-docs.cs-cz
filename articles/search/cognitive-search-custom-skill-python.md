@@ -8,12 +8,13 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/15/2020
-ms.openlocfilehash: fc69761a05ea381d39d58d5ebf0046e0d9874961
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: 7945b3b0aeba7f5135665f4413d304eb225ac749
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77210461"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604690"
 ---
 # <a name="example-create-a-custom-skill-using-python"></a>Příklad: Vytvoření vlastní dovednosti pomocí Pythonu
 
@@ -41,7 +42,7 @@ Tento příklad používá funkci Azure k předvedení konceptu hostování webo
 
 Šablona projektu Azure Functions ve Visual Studio Code vytvoří projekt, který jde publikovat do aplikace funkcí v Azure. Aplikace funkcí umožňuje seskupit funkce jako logickou jednotku pro snadnější správu, nasazování a sdílení prostředků.
 
-1. V Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Create new project...`.
+1. V Visual Studio Code stisknutím klávesy F1 otevřete paletu příkazů. V paletě příkazů vyhledejte a vyberte `Azure Functions: Create new project...` .
 
 1. Zvolte umístění adresáře pro váš pracovní prostor projektu a zvolte **možnost vybrat**.
 
@@ -57,7 +58,7 @@ Tento příklad používá funkci Azure k předvedení konceptu hostování webo
 
 Visual Studio Code vytvoří projekt aplikace funkcí v novém pracovním prostoru. Tento projekt obsahuje konfigurační soubory [host.json](../azure-functions/functions-host-json.md) a [local.settings.json](../azure-functions/functions-run-local.md#local-settings-file) a navíc všechny soubory projektu pro konkrétní jazyk. 
 
-Ve složce **zřetězení** projektu Function App se vytvoří také nová funkce AKTIVovaná protokolem HTTP. V takovém případě bude k dispozici soubor\_\_s názvem "init__. py" s tímto obsahem:
+Ve složce **zřetězení** projektu Function App se vytvoří také nová funkce AKTIVovaná protokolem HTTP. V takovém případě bude k dispozici soubor s názvem " \_ \_ init__. py" s tímto obsahem:
 
 ```py
 import logging
@@ -207,7 +208,7 @@ Teď, když máte výchozí klíč hostitele, otestujte funkci následujícím z
 POST [Function URL you copied above]
 ```
 
-### <a name="request-body"></a>Text žádosti
+### <a name="request-body"></a>Text požadavku
 ```json
 {
     "values": [
@@ -264,7 +265,7 @@ Teď, když máte novou vlastní dovednost, ji můžete přidat do svého dovedn
 ```
 
 ## <a name="next-steps"></a>Další kroky
-Blahopřejeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
+Gratulujeme! Vytvořili jste svou první vlastní dovednost. Teď můžete postupovat podle stejného vzoru, abyste mohli přidat vlastní funkce. Další informace získáte kliknutím na následující odkazy.
 
 + [Dovednosti v Power: úložiště vlastních dovedností](https://github.com/Azure-Samples/azure-search-power-skills)
 + [Přidání vlastní dovednosti do kanálu pro obohacení AI](cognitive-search-custom-skill-interface.md)

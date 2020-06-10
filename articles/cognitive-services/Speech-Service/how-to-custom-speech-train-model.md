@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 09867d6739998902ea0fd11281d1b975866c1242
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: bf9209e0c256412ccb06ea62a197046a7b012e00
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83722622"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629027"
 ---
 # <a name="train-a-model-for-custom-speech"></a>Trénování modelu pro Custom Speech
 
-Školení pro model převodu řeči na text může zlepšit přesnost rozpoznávání pro základní model společnosti Microsoft. Model je vyškolený pomocí přepisů a souvisejících textů v popisku. Tyto datové sady spolu s dříve nahranými zvukovými daty se používají k upřesnění a výukovém modelu převodu řeči na text pro rozpoznávání slov, frází, zkratek, názvů a dalších podmínek pro konkrétní produkt. Čím více doménových datových sad zadáte (data související s tím, co uživatelé říkají a co očekáváte), tím přesnější bude váš model, což vede k lepšímu rozpoznávání. Mějte na paměti, že díky krmení nesouvisejících dat s vaším školením můžete snížit nebo snížit přesnost modelu.
+Školení pro model převodu řeči na text může zlepšit přesnost rozpoznávání pro základní model společnosti Microsoft. Model je vyškolený pomocí přepisů a souvisejících textů v popisku. Tyto datové sady spolu s dříve nahranými zvukovými daty se používají k vylepšení a výukového modelu řeči a textu.
 
 ## <a name="use-training-to-resolve-accuracy-issues"></a>Řešení problémů s přesností pomocí školení
 
@@ -39,7 +39,7 @@ Pokud narazíte na problémy s rozpoznáváním pro váš model, může vám pou
 Prvním krokem při výuce modelu je odeslání školicích dat. Použijte [přípravu a testování dat](how-to-custom-speech-test-data.md) pro podrobné pokyny k přípravě přepisů a souvisejících textu (projevy a výslovnosti) s lidským označením. Po nahrání školicích dat postupujte podle těchto pokynů a spusťte školení modelu:
 
 1. Přihlaste se k [portálu Custom Speech](https://speech.microsoft.com/customspeech).
-2. Přejít na **> převodu řeči na text Custom Speech > školení**.
+2. Přejít na **text > řeči Custom Speech > [název projektu] > školení**.
 3. Klikněte na **výuka model**.
 4. V dalším kroku poskytněte školení **název** a **Popis**.
 5. V rozevírací nabídce **scénář a model standardních hodnot** vyberte scénář, který nejlépe odpovídá vaší doméně. Pokud si nejste jisti, který scénář zvolíte, vyberte možnost **Obecné**. Základní model je výchozím bodem pro školení. Nejnovější model je obvykle nejlepší volbou.

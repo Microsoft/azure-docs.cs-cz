@@ -8,14 +8,14 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: 4d1fafa131a39ab72f6fc09663c7eb5b06107539
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b344ae50d921c33a5e8ddd344e08ec86179668e9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83644860"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608753"
 ---
-# <a name="tutorial-use-azure-toolkit-for-intellij-to-create-apache-spark-applications-for-spark-pools-preview"></a>Kurz: použití Azure Toolkit for IntelliJ k vytvoření Apache Sparkch aplikací pro fondy Spark (Preview)
+# <a name="tutorial-create-apache-spark-applications-with-intellij-using-synapse-synapse-analytics-workspaces-preview"></a>Kurz: vytváření Apache Spark aplikací pomocí IntelliJ pomocí synapse synapse Analytics (Preview z pracovních prostorů)
 
 V tomto kurzu se dozvíte, jak používat modul plug-in Azure Toolkit for IntelliJ k vývoji Apache Spark aplikací, které jsou napsané v [Scala](https://www.scala-lang.org/), a pak je odeslat do fondu Spark (Preview) přímo z integrovaného vývojového prostředí (IDE) IntelliJ. Modul plug-in můžete použít několika způsoby:
 
@@ -23,7 +23,7 @@ V tomto kurzu se dozvíte, jak používat modul plug-in Azure Toolkit for Intell
 - Přístup k prostředkům fondů Spark
 - Vývoj a spouštění aplikace Scala Spark lokálně
 
-V tomto kurzu:
+V tomto kurzu se naučíte:
 > [!div class="checklist"]
 >
 > - Použití modulu plug-in Azure Toolkit for IntelliJ
@@ -66,7 +66,7 @@ V tomto kurzu:
 
     ![Výběr sady Apache Spark SDK](./media/intellij-tool-synapse/create-synapse-application02.png)
 
-7. Vyberte **Finish** (Dokončit). Může to trvat několik minut, než bude projekt k dispozici.
+7. Vyberte **Dokončit**. Může to trvat několik minut, než bude projekt k dispozici.
 8. Projekt Spark automaticky vytvoří artefakt za vás. Chcete-li zobrazit artefakt, proveďte následující postup:
 
    a. Z řádku nabídek přejděte na **soubor**  >  **struktura projektu...**.

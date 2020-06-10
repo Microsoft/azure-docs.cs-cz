@@ -1,14 +1,14 @@
 ---
 title: Oprava prostředků, které nevyhovují předpisům
 description: Tato příručka vás provede opravou prostředků, které nedodržují zásady v Azure Policy.
-ms.date: 02/26/2020
+ms.date: 06/09/2020
 ms.topic: how-to
-ms.openlocfilehash: acdb067e888ecbe68e3221944568b202f2510c41
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: be55f16734a94acfcc89d632f4cb79f550fa74d5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849956"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636304"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Napravit nekompatibilní prostředky pomocí Azure Policy
 
@@ -17,7 +17,7 @@ Prostředky, které nejsou kompatibilní se zásadami **deployIfNotExists** nebo
 ## <a name="how-remediation-security-works"></a>Jak funguje Oprava zabezpečení
 
 Když Azure Policy spustí šablonu v definici zásady **deployIfNotExists** , použije [spravovanou identitu](../../../active-directory/managed-identities-azure-resources/overview.md).
-Azure Policy vytvoří spravovanou identitu pro každé přiřazení, ale musí obsahovat podrobnosti o rolích, které mají udělit spravovanou identitu. Pokud ve spravované identitě chybí role, zobrazí se tato chyba při přiřazování zásady nebo k iniciativě. Při použití portálu Azure Policy automaticky uděluje spravované identitě uvedené role po spuštění přiřazení. _Umístění_ spravované identity nemá vliv na operaci s Azure Policy.
+Azure Policy vytvoří spravovanou identitu pro každé přiřazení, ale musí obsahovat podrobnosti o rolích, které mají udělit spravovanou identitu. Pokud ve spravované identitě chybí role, zobrazí se tato chyba při přiřazování zásady nebo k iniciativě. Při použití portálu Azure Policy automaticky uděluje spravované identitě uvedené role po spuštění přiřazení. _Umístění_ spravované identity nemá vliv na jeho operaci s Azure Policy.
 
 :::image type="content" source="../media/remediate-resources/missing-role.png" alt-text="Spravovaná identita – chybějící role" border="false":::
 
@@ -51,9 +51,6 @@ Při vytváření přiřazení pomocí portálu Azure Policy generuje spravovano
 - Při použití sady SDK (například Azure PowerShell)
 - Když šablona upraví prostředek mimo obor přiřazení
 - Když šablona čte prostředek mimo obor přiřazení
-
-> [!NOTE]
-> Azure PowerShell a .NET jsou jediné sady SDK, které tuto funkci aktuálně podporují.
 
 ### <a name="create-managed-identity-with-powershell"></a>Vytvoření spravované identity pomocí PowerShellu
 
@@ -183,7 +180,7 @@ Další rutiny a příklady pro nápravu najdete v tématu [AZ. PolicyInsights](
 
 ### <a name="create-a-remediation-task-during-policy-assignment-in-the-azure-portal"></a>Vytvoření úlohy nápravy během přiřazování zásad v Azure Portal
 
-Jednodušší způsob, jak vytvořit úlohu nápravy, je provést z Azure Portal během přiřazování zásad. Pokud je definice zásady, která má být přiřazena, **deployIfNotExists** nebo **modifikací** , průvodce na kartě **náprava** nabízí možnost _vytvořit úlohu remedation_ . Pokud je vybrána tato možnost, je vytvořen úkol remedation ve stejnou dobu jako přiřazení zásady.
+Jednodušší způsob, jak vytvořit úlohu nápravy, je provést z Azure Portal během přiřazování zásad. Pokud je definice zásady, která má být přiřazena, **deployIfNotExists** nebo **modifikací** , průvodce na kartě **náprava** nabízí možnost _vytvořit úlohu nápravy_ . Pokud je vybraná tato možnost, vytvoří se úloha nápravy ve stejnou dobu jako přiřazení zásady.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -7,12 +7,12 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.author: normesta
 ms.date: 03/04/2020
-ms.openlocfilehash: a7dfc58258c8c7c6e8bbf7567d743abf90d3a7e5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 1fb4e7cf589d63e9e595a35c34a2728d564b309b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194902"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609926"
 ---
 # <a name="host-a-static-website-in-azure-storage"></a>Hostování statického webu v Azure Storage
 
@@ -153,13 +153,10 @@ V těchto pokynech se dozvíte, jak nahrávat soubory pomocí verze Průzkumník
 
 Nahrajte objekty do kontejneru *$Web* ze zdrojového adresáře.
 
-> [!NOTE]
-> Pokud používáte Azure Cloud Shell, nezapomeňte `\` při odkazování na kontejner přidat řídicí znak `$web` (například: `\$web` ). Pokud používáte místní instalaci rozhraní příkazového řádku Azure CLI, nebudete muset používat řídicí znak.
-
 V tomto příkladu se předpokládá, že spouštíte příkazy z Azure Cloud Shell relace.
 
 ```azurecli-interactive
-az storage blob upload-batch -s <source-path> -d \$web --account-name <storage-account-name>
+az storage blob upload-batch -s <source-path> -d '$web' --account-name <storage-account-name>
 ```
 
 > [!NOTE] 

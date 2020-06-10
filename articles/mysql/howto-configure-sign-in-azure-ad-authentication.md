@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/22/2019
-ms.openlocfilehash: 9d607f0ad1ab9d9924cd05ce1a66bee34e4ff18d
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: db7bfbef7435c47aa011c5f19e8c52d013c88dc3
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84229868"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636678"
 ---
 # <a name="use-azure-active-directory-for-authenticating-with-mysql"></a>Použití Azure Active Directory k ověřování pomocí MySQL
 
@@ -124,6 +124,15 @@ mysql -h mydb.mysql.database.azure.com \
   --password=`az account get-access-token --resource-type oss-rdbms --output tsv --query accessToken`
 ```
 
+Důležité informace při připojování:
+
+* `user@tenant.onmicrosoft.com`je název uživatele nebo skupiny Azure AD, se kterou se snažíte připojit.
+* Po názvu uživatele nebo skupiny Azure AD vždy připojovat název serveru (např. `@mydb` )
+* Nezapomeňte použít přesný způsob, jakým je zadán název uživatele nebo skupiny Azure AD.
+* V názvech uživatelů a skupin Azure AD se rozlišují velká a malá písmena.
+* Při připojování jako skupiny používejte jenom název skupiny (např. `GroupName@mydb` ).
+* Pokud název obsahuje mezery, použijte `\` před každým prostorem k jeho úniku.
+
 Poznamenejte si nastavení Povolit-nešifrovaný modul plug-in – je třeba použít podobnou konfiguraci s ostatními klienty, aby se zajistilo, že se token pošle na server bez hashování.
 
 Nyní jste ověřeni na server MySQL pomocí ověřování Azure AD.
@@ -136,7 +145,7 @@ Pokud chcete do databáze Azure Database for MySQL přidat uživatele Azure AD, 
 2. Přihlaste se ke své instanci Azure Database for MySQL jako uživatel s oprávněními správce Azure AD.
 3. Vytvoří uživatele `<user>@yourtenant.onmicrosoft.com` v Azure Database for MySQL.
 
-**Příklad:**
+**Případě**
 
 ```sql
 CREATE AADUSER 'user1@yourtenant.onmicrosoft.com';
@@ -157,7 +166,7 @@ CREATE AADUSER 'userWithLongName@yourtenant.onmicrosoft.com' as 'userDefinedShor
 
 Pokud chcete skupině Azure AD povolit přístup k vaší databázi, použijte stejný mechanismus jako u uživatelů, ale místo toho zadejte název skupiny:
 
-**Příklad:**
+**Případě**
 
 ```sql
 CREATE AADUSER 'Prod_DB_Readonly';

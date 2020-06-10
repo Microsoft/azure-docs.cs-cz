@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 5/4/2020
-ms.openlocfilehash: e3615286150723308f861456bfe2bbb0cff81707
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: 9e168387afce4fb623c89bffddb72eeda5a3d80b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84321661"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606169"
 ---
 # <a name="read-replicas-in-azure-database-for-mariadb"></a>Repliky pro čtení ve službě Azure Database for MariaDB
 
@@ -20,6 +20,12 @@ Funkce repliky pro čtení umožňuje replikovat data ze serveru Azure Database 
 Repliky jsou nové servery, které spravujete podobně jako běžné Azure Database for MariaDB servery. Pro každou repliku čtení se vám bude účtovat zajištěné výpočetní prostředky v virtuální jádra a úložišti v GB/měsíc.
 
 Další informace o replikaci GTID najdete v [dokumentaci k replikaci MariaDB](https://mariadb.com/kb/en/library/gtid/).
+
+> [!NOTE]
+> Komunikace bez posunu
+>
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+>
 
 ## <a name="when-to-use-a-read-replica"></a>Kdy použít repliku čtení
 
@@ -152,7 +158,7 @@ Následující parametry serveru jsou uzamčené na hlavním serveru i na server
 
 Pokud chcete aktualizovat jeden z výše uvedených parametrů na hlavním serveru, odstraňte prosím servery repliky, aktualizujte hodnotu parametru v hlavní větvi a znovu vytvořte repliky.
 
-### <a name="other"></a>Jiné
+### <a name="other"></a>Další
 
 - Vytvoření repliky repliky není podporováno.
 - Tabulky v paměti můžou způsobit, že se repliky nesynchronizují. Toto je omezení technologie MariaDB pro replikaci.

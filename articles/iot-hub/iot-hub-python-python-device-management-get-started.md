@@ -8,13 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/17/2020
 ms.author: robinsh
-ms.custom: mqtt
-ms.openlocfilehash: f376831175840284fdfd15f367542d33ad9f7177
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: mqtt, tracking-python
+ms.openlocfilehash: 3e48e52294884294a2e4649e8fc0e0b9c42e0c0a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81759768"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608532"
 ---
 # <a name="get-started-with-device-management-python"></a>Začínáme se správou zařízení (Python)
 
@@ -68,7 +68,7 @@ V této části:
 
 2. Pomocí textového editoru vytvořte v pracovním adresáři soubor s názvem **dmpatterns_getstarted_device. py** .
 
-3. Na začátek souboru `import` **dmpatterns_getstarted_device. py** přidejte následující příkazy.
+3. Na `import` začátek souboru **dmpatterns_getstarted_device. py** přidejte následující příkazy.
 
     ```python
     import threading
@@ -161,7 +161,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která iniciuje vzdá
 
 2. Pomocí textového editoru vytvořte v pracovním adresáři soubor s názvem **dmpatterns_getstarted_service. py** .
 
-3. Na začátek souboru `import` **dmpatterns_getstarted_service. py** přidejte následující příkazy.
+3. Na `import` začátek souboru **dmpatterns_getstarted_service. py** přidejte následující příkazy.
 
     ```python
     import sys, time
@@ -170,7 +170,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která iniciuje vzdá
     from azure.iot.hub.models import CloudToDeviceMethod, CloudToDeviceMethodResult, Twin
     ```
 
-4. Přidejte následující deklarace proměnných. Nahraďte `{IoTHubConnectionString}` hodnotu zástupného symbolu připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string). Nahraďte `{deviceId}` hodnotu ZÁSTUPNÉHO symbolu ID zařízení, které jste zaregistrovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).
+4. Přidejte následující deklarace proměnných. Nahraďte `{IoTHubConnectionString}` hodnotu zástupného symbolu připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string). Nahraďte `{deviceId}` hodnotu zástupného symbolu ID zařízení, které jste zaregistrovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub).
 
     ```python
     CONNECTION_STRING = "{IoTHubConnectionString}"

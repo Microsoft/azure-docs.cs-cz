@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/24/2020
-ms.openlocfilehash: dd79618b8d9f016c92166edb9ecdb0bfb113947e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: c7d55a7b10f0c874fd84f32db1dcf21fb60c231f
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76768949"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636619"
 ---
 # <a name="create-and-manage-read-replicas-in-azure-database-for-postgresql---single-server-from-the-azure-portal"></a>Vytváření a Správa replik pro čtení v serveru Azure Database for PostgreSQL-Single z Azure Portal
 
@@ -21,34 +21,38 @@ V tomto článku se dozvíte, jak vytvořit a spravovat repliky pro čtení v Az
 ## <a name="prerequisites"></a>Požadavky
 [Server Azure Database for PostgreSQL](quickstart-create-server-database-portal.md) , který bude hlavním serverem.
 
+## <a name="azure-replication-support"></a>Podpora replikace Azure
+
+[Repliky čtení](concepts-read-replicas.md) a [logické dekódování](concepts-logical.md) závisí na protokolu Postgres Write předem log (WAL). Tyto dvě funkce vyžadují různé úrovně protokolování z Postgres. Logické dekódování potřebuje vyšší úroveň protokolování než repliky čtení.
+
+Ke konfiguraci správné úrovně protokolování použijte parametr podpory replikace Azure. Podpora replikace Azure má tři možnosti nastavení:
+
+* **Off** – vloží do Wal minimální informace. Toto nastavení není k dispozici na většině Azure Database for PostgreSQL serverů.  
+* **Replika** – přesnější podrobnější informace než **vypnuto**. Toto je minimální úroveň protokolování potřebného pro fungování [replik pro čtení](concepts-read-replicas.md) . Toto nastavení je na většině serverů výchozí.
+* **Logický** – další podrobnější informace než **replika** Toto je minimální úroveň protokolování pro logické dekódování, které funguje. V tomto nastavení fungují i repliky pro čtení.
+
+Po změně tohoto parametru je nutné restartovat server. Interně tento parametr nastaví parametry Postgres `wal_level` , `max_replication_slots` a `max_wal_senders` .
+
 ## <a name="prepare-the-master-server"></a>Příprava hlavního serveru
-Tyto kroky je nutné použít k přípravě hlavního serveru v Pro obecné účely nebo paměťově optimalizovaných úrovních. Hlavní server je připravený k replikaci nastavením parametru Azure. replication_support. Když se změní parametr replikace, vyžaduje se restartování serveru, aby se změna projevila. V Azure Portal jsou tyto dva kroky zapouzdřené jediným tlačítkem, **Povolit podporu replikace**.
 
 1. V Azure Portal vyberte existující server Azure Database for PostgreSQL, který chcete použít jako hlavní server.
 
-2. Na bočním panelu serveru v části **Nastavení**vyberte **replikace**.
+2. V nabídce serveru vyberte **replikace**. Pokud je podpora replikace Azure nastavená na aspoň **repliku**, můžete vytvořit repliky pro čtení. 
 
-> [!NOTE] 
-> Pokud vidíte možnost **zakázat podporu replikace** šedě, nastavení replikace jsou již ve výchozím nastavení nastavena na vašem serveru. Můžete přeskočit následující kroky a přejít k části Vytvoření repliky pro čtení. 
+3. Pokud není podpora replikace Azure nastavená na aspoň **repliku**, nastavte ji. Vyberte **Uložit**.
 
-3. Vyberte **Povolit podporu replikace**. 
+   ![Azure Database for PostgreSQL – replikace – nastavit repliku a uložit](./media/howto-read-replicas-portal/set-replica-save.png)
 
-   ![Povolit podporu replikace](./media/howto-read-replicas-portal/enable-replication-support.png)
+4. Restartujte server, aby se změna projevila, a to tak, že vyberete **Ano**.
 
-4. Potvrďte, že chcete povolit podporu replikace. Tato operace restartuje hlavní server. 
+   ![Azure Database for PostgreSQL-replikace – potvrzení restartování](./media/howto-read-replicas-portal/confirm-restart.png)
 
-   ![Potvrďte možnost povolit podporu replikace](./media/howto-read-replicas-portal/confirm-enable-replication.png)
-   
 5. Až se operace dokončí, zobrazí se vám dvě oznámení Azure Portal. Pro aktualizaci parametru serveru je k dispozici jedno oznámení. Pro okamžité restartování serveru je k dispozici jiné oznámení.
 
-   ![Oznámení o úspěchu – povolit](./media/howto-read-replicas-portal/success-notifications-enable.png)
+   ![Oznámení o úspěšnosti](./media/howto-read-replicas-portal/success-notifications.png)
 
 6. Aktualizujte stránku Azure Portal a aktualizujte tak panel nástrojů pro replikaci. Nyní můžete vytvořit repliky čtení pro tento server.
-
-   ![Aktualizovaný panel nástrojů](./media/howto-read-replicas-portal/updated-toolbar.png)
    
-Povolení podpory replikace je jednorázová operace na hlavní server. Pro usnadnění je k dispozici tlačítko **zakázat podporu replikace** . Nedoporučujeme zakázat podporu replikace, pokud jste si jistí, že na tomto hlavním serveru nikdy nevytvoříte repliku. Podporu replikace nemůžete zakázat, pokud má hlavní server repliky existující.
-
 
 ## <a name="create-a-read-replica"></a>Vytvoření repliky pro čtení
 K vytvoření repliky pro čtení použijte následující postup:

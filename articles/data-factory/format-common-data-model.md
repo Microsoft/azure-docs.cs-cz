@@ -7,12 +7,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/05/2020
 ms.author: daperlov
-ms.openlocfilehash: 0dce717461754ac1259bc666adf4eb9f7ef9d6c2
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 1764036413d6e4f634ed156f7cfb441b4a2bb1e6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465265"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604932"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Formát modelu Common data model v Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -30,9 +30,9 @@ Model Common data model je k dispozici jako [vložená datová sada](data-flow-s
 
 ### <a name="source-properties"></a>Vlastnosti zdroje
 
-V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM.
+V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM. Tyto vlastnosti můžete upravit na kartě **Možnosti zdrojového kódu** .
 
-| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formát | Formát musí být`cdm` | ano | `cdm` | formát |
 | Formát metadat | Kde se nachází odkaz na entitu na data. Pokud používáte CDM verze 1,0, vyberte manifest. Pokud používáte verzi CDM před 1,0, vyberte model. JSON. | Yes | `'manifest'` nebo `'model'` | manifestType |
@@ -49,7 +49,13 @@ V níže uvedené tabulce jsou uvedeny vlastnosti podporované zdrojem CDM.
 | Corpus – entita | Cesta k odkazu na entitu | ano | Řetězec | entita |
 | Nenalezeny žádné soubory | Pokud je nastaveno na true, chyba není vyvolána, pokud nebyly nalezeny žádné soubory. | ne | `true` nebo `false` | ignoreNoFilesFound |
 
-#### <a name="cdm-source-example"></a>Příklad zdroje CDM
+#### <a name="import-schema"></a>Importovat schéma
+
+CDM je k dispozici pouze jako vložená datová sada a ve výchozím nastavení nemá přidružené schéma. Chcete-li získat metadata sloupce, klikněte na tlačítko **importovat schéma** na kartě **projekce** . To vám umožní odkazovat na názvy sloupců a datové typy určené parametrem corpus. K importu schématu musí být aktivní [relace ladění toku dat](concepts-data-flow-debug-mode.md) .
+
+![Importovat schéma](media/format-common-data-model/import-schema-source.png)
+
+### <a name="cdm-source-example"></a>Příklad zdroje CDM
 
 Níže uvedený obrázek je příkladem konfigurace zdroje CDM v části mapování toků dat.
 
@@ -79,12 +85,11 @@ source(output(
     fileSystem: 'data') ~> CDMSource
 ```
 
-
 ### <a name="sink-properties"></a>Vlastnosti jímky
 
-V níže uvedené tabulce jsou uvedeny vlastnosti, které CDM jímka podporuje.
+V níže uvedené tabulce jsou uvedeny vlastnosti, které CDM jímka podporuje. Tyto vlastnosti můžete upravit na kartě **Nastavení** .
 
-| Name | Description | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
+| Name | Popis | Vyžadováno | Povolené hodnoty | Vlastnost skriptu toku dat |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Formát | Formát musí být`cdm` | ano | `cdm` | formát |
 | Kořen umístění: kontejner | Název kontejneru složky CDM | ano | Řetězec | Systému souborů |
@@ -103,7 +108,7 @@ V níže uvedené tabulce jsou uvedeny vlastnosti, které CDM jímka podporuje.
 | Oddělovač sloupců | Postup při zápisu do DelimitedText, jak vymezují sloupce | Ano, pokud se zapisuje do DelimitedText | Řetězec | columnDelimiter |
 | První řádek jako záhlaví | Pokud používáte DelimitedText, určuje, jestli se názvy sloupců přidávají jako záhlaví. | ne | `true` nebo `false` | columnNamesAsHeader |
 
-#### <a name="cdm-sink-example"></a>Příklad jímky CDM
+### <a name="cdm-sink-example"></a>Příklad jímky CDM
 
 Níže uvedený obrázek je příkladem konfigurace jímky CDM v části mapování toků dat.
 

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/06/2019
+ms.date: 06/09/2020
 ms.author: b-juche
-ms.openlocfilehash: 6f5d84dea2e835fd12a062b628181354295ed9f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 64e47d9617e300ef114fb8d07517be46dbc859e3
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79274057"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636219"
 ---
 # <a name="register-for-azure-netapp-files"></a>Registrace pro Azure NetApp Files
 
@@ -30,7 +30,7 @@ V tomto článku se dozvíte, jak se zaregistrovat pro Azure NetApp Files, abyst
 
 ## <a name="submit-a-waitlist-request-for-accessing-the-service"></a><a name="waitlist"></a>Odeslat žádost o přístup ke službě pořadníku
 
-1. Odešlete žádost o pořadníku k přístupu ke službě Azure NetApp Files prostřednictvím [stránky pro odeslání Azure NetApp Files pořadníku](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR8cq17Xv9yVBtRCSlcD_gdVUNUpUWEpLNERIM1NOVzA5MzczQ0dQR1ZTSS4u). 
+1. Odešlete žádost o pořadníku k přístupu ke službě Azure NetApp Files prostřednictvím [stránky pro odeslání Azure NetApp Files pořadníku](https://aka.ms/azurenetappfiles). 
 
     Registrace pořadníku nezaručuje okamžitý přístup k službě. 
 
@@ -65,13 +65,13 @@ Pokud chcete službu používat, musíte zaregistrovat poskytovatele prostředk�
        
    `<SubID>`je vaše ID vašeho předplatného.
 
-    Pokud nevidíte název `Microsoft.NetApp/ANFGA`funkce, nemáte k této službě přístup. V tomto kroku zastavte. Než budete pokračovat, postupujte podle pokynů v tématu [odeslání žádosti pořadníku](#waitlist) o přístup ke službě, aby požádala o přístup k službě. 
+    Pokud nevidíte název funkce, nemáte `Microsoft.NetApp/ANFGA` k této službě přístup. V tomto kroku zastavte. Než budete pokračovat, postupujte podle pokynů v tématu [odeslání žádosti pořadníku](#waitlist) o přístup ke službě, aby požádala o přístup k službě. 
 
 4. V konzole Azure Cloud Shell zadejte následující příkaz pro registraci poskytovatele prostředků Azure: 
     
         az provider register --namespace Microsoft.NetApp --wait
 
-   `--wait` Parametr dá konzole pokyn, aby čekala na dokončení registrace. Dokončení procesu registrace může trvat delší dobu.
+   `--wait`Parametr dá konzole pokyn, aby čekala na dokončení registrace. Dokončení procesu registrace může trvat delší dobu.
 
 5. V konzole Azure Cloud Shell zadejte následující příkaz, který ověří, jestli je poskytovatel prostředků Azure zaregistrovaný: 
     
@@ -85,7 +85,7 @@ Pokud chcete službu používat, musíte zaregistrovat poskytovatele prostředk�
         "registrationState": "Registered", 
         "resourceTypes": […. 
 
-   `<SubID>`je vaše ID vašeho předplatného.  Hodnota `state` parametru označuje `Registered`.
+   `<SubID>`je vaše ID vašeho předplatného.  `state`Hodnota parametru označuje `Registered` .
 
 6. V Azure Portal klikněte na okno **předplatná** .
 7. V okně předplatná klikněte na své ID předplatného. 

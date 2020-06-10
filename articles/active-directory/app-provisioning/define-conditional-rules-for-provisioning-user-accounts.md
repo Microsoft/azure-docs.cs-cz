@@ -8,14 +8,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 06/08/2020
 ms.author: mimart
-ms.openlocfilehash: 71c2e3a83c3d63d375935294a25a369ca7e54d80
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 5ccec4174020d8b6586384a71ffe84fccd753640
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593740"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605438"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Zřizování aplikací na základě atributů s filtry oborů
 Cílem tohoto článku je vysvětlit, jak používat filtry oborů k definování pravidel založených na atributech, která určují, kteří uživatelé se zřídí do aplikace.
@@ -29,7 +29,7 @@ Filtry oborů se dají použít různě v závislosti na typu konektoru pro zři
 * **Odchozí zřizování z Azure AD do aplikací SaaS**. Když je služba Azure AD zdrojem zdrojového systému, jsou [přiřazení uživatelů a skupin](../manage-apps/assign-user-or-group-access-portal.md) Nejběžnější metodou určení toho, kteří uživatelé jsou v oboru pro zřizování. Tato přiřazení se taky používají k povolení jednotného přihlašování a k poskytnutí jediné metody správy přístupu a zřizování. Filtry oborů lze použít k filtrování uživatelů na základě hodnot atributů, a to i v případě, že jsou také přiřazení, nebo místo nich.
 
     >[!TIP]
-    > Zřizování můžete zakázat na základě přiřazení pro podnikovou aplikaci změnou nastavení v nabídce [obor](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) v části Nastavení zřizování na **synchronizovat všechny uživatele a skupiny**. Použití této možnosti plus filtry oboru založené na atributech nabízí rychlejší výkon než použití přiřazení na základě skupin.  
+    > Zřizování můžete zakázat na základě přiřazení pro podnikovou aplikaci změnou nastavení v nabídce [obor](../app-provisioning/user-provisioning.md#how-do-i-set-up-automatic-provisioning-to-an-application) v části Nastavení zřizování na **synchronizovat všechny uživatele a skupiny**. 
 
 * **Příchozí zřizování z aplikací HCM do služby Azure AD a služby Active Directory**. Když je [aplikace HCM, jako](../saas-apps/workday-tutorial.md) je například Workday, zdrojovým systémem, jsou filtry oborů primární metodou určení toho, kteří uživatelé by se měli zřídit z aplikace HCM do služby Active Directory nebo Azure AD.
 
@@ -60,7 +60,7 @@ Podle tohoto filtru oboru musí uživatelé splnit následující kritéria, kte
 Filtry oborů se konfigurují jako součást mapování atributů pro jednotlivé konektory zřizování uživatelů Azure AD. Následující postup předpokládá, že jste již nastavili Automatické zřizování pro [jednu z podporovaných aplikací](../saas-apps/tutorial-list.md) a přidáte do ní filtr oborů.
 
 ### <a name="create-a-scoping-filter"></a>Vytvoření filtru oboru
-1. V [Azure Portal](https://portal.azure.com)přejdete do části **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** .
+1. V [Azure Portal](https://portal.azure.com)přejdete do části **Azure Active Directory**  >  **podnikové aplikace**  >  **všechny aplikace** .
 
 2. Vyberte aplikaci, pro kterou jste nakonfigurovali Automatické zřizování: například "ServiceNow".
 
@@ -86,7 +86,7 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 
    f. není **null**. Klauzule vrátí hodnotu true, pokud vyhodnocený atribut není prázdný.
 
-   g. **porovnávání regulárních**znaků. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá vzoru regulárního výrazu. Například: ([1-9] [0-9]) odpovídá libovolnému číslu mezi 10 a 99.
+   například **porovnávání regulárních**znaků. Klauzule vrátí "true", pokud vyhodnocený atribut odpovídá vzoru regulárního výrazu. Například: ([1-9] [0-9]) odpovídá libovolnému číslu mezi 10 a 99.
 
    h. **NEshoda s regulárním výrazem** Klauzule vrátí "true", pokud se vyhodnocený atribut neshoduje se vzorem regulárního výrazu.
    
@@ -118,8 +118,8 @@ Filtry oborů se konfigurují jako součást mapování atributů pro jednotliv�
 ## <a name="common-scoping-filters"></a>Běžné filtry oboru
 | Cílový atribut| Operátor | Hodnota | Popis|
 |----|----|----|----|
-|userPrincipalName (Hlavní název uživatele)|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|.\*@domain.com |Všichni uživatelé s userPrincipal, kteří mají doménu @domain.com , budou v oboru pro zřizování.|
-|userPrincipalName (Hlavní název uživatele)|NESHODA S REGULÁRNÍM VÝRAZEM|.\*@domain.com|Všichni uživatelé s userPrincipal, kteří mají doménu @domain.com , budou mimo rozsah zřizování.|
+|userPrincipalName (Hlavní název uživatele)|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|.\*@domain.com |Všichni uživatelé s userPrincipal, kteří mají doménu, @domain.com budou v oboru pro zřizování.|
+|userPrincipalName (Hlavní název uživatele)|NESHODA S REGULÁRNÍM VÝRAZEM|.\*@domain.com|Všichni uživatelé s userPrincipal, kteří mají doménu, @domain.com budou mimo rozsah zřizování.|
 |Oddělení|ROVNÁ|SalesTable|Všichni uživatelé z prodejního oddělení jsou v oboru pro zřizování.|
 |workerID|POROVNÁVÁNÍ REGULÁRNÍCH HODNOT|(1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])| Všichni zaměstnanci s workerIDs mezi 1000000 a 2000000 jsou v oboru pro zřizování.|
 

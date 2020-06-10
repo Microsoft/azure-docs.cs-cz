@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: 2d4ce6f274efbd4d8afe2ac48856b0fc312f0a09
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: cc19844c6407a83233c70048e9eb258a742036fb
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84261783"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635165"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>Co je služba Azure rozpoznávání mluvčího?
 
@@ -27,7 +27,7 @@ Ověření mluvčího zjednodušuje proces ověření zapsané identity mluvčí
 
 ### <a name="how-does-speaker-verification-work"></a>Jak Ověření mluvčího funguje?
 
-![Jak funguje ověřování mluvčího](media/speaker-recognition/speaker-rec.png)
+:::image type="content" source="media/speaker-recognition/speaker-rec.png" alt-text="Vývojový diagram Ověření mluvčího.":::
 
 Ověřování mluvčího může být závislé na textu nebo nezávislé na textu. Ověřování **závislé na textu** znamená, že reproduktory musí zvolit stejné heslo, které se má použít při registraci i ověřovací fázi. Ověřování **nezávislé na textu** znamená, že reproduktory můžou hovořit v každodenním jazyce v rámci frází pro zápis a ověření.
 
@@ -59,4 +59,5 @@ Stejně jako u všech Cognitive Servicesch prostředků musí vývojáři, kteř
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
+> * Seznamte se s rozpoznávání mluvčího základy běžných vzorů návrhu, které můžete použít ve svých aplikacích, dokončete v tomto [článku](speaker-recognition-basics.md) .
 > * Prohlédněte si [kurz videa](https://azure.microsoft.com/resources/videos/speaker-recognition-text-independent-verification-developer-tutorial/) pro ověřování mluvčí nezávislé na textu.

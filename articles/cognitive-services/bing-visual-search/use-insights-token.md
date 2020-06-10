@@ -10,16 +10,17 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
-ms.openlocfilehash: 251197c456ece4fe2dbbe264219d52f3502b7492
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: ac704ff7213b08072debf9d56da10a74e8315c68
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "67341726"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607029"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Použití tokenu Insights k získání přehledů pro Image
 
-Rozhraní API pro Vizuální vyhledávání Bingu vrátí informace o obrázku, který zadáte. Obrázek můžete zadat pomocí adresy URL obrázku, tokenu insights nebo nahráním obrázku. Informace o těchto možnostech najdete v tématu [co je rozhraní API pro vizuální vyhledávání Bingu?](overview.md). Tento článek ukazuje použití tokenu Insights. Příklady, které ukazují, jak nahrát obrázek pro získání přehledů, najdete v tématu rychlé starty ([C#](quickstarts/csharp.md) | [Java](quickstarts/java.md) | [Node. js](quickstarts/nodejs.md) | [Python](quickstarts/python.md)).
+Rozhraní API pro Vizuální vyhledávání Bingu vrátí informace o obrázku, který zadáte. Obrázek můžete zadat pomocí adresy URL obrázku, tokenu insights nebo nahráním obrázku. Informace o těchto možnostech najdete v tématu [co je rozhraní API pro vizuální vyhledávání Bingu?](overview.md). Tento článek ukazuje použití tokenu Insights. Příklady, které ukazují, jak nahrát obrázek pro získání přehledů, najdete v tématu rychlé starty ([C#](quickstarts/csharp.md)  |  [Java](quickstarts/java.md)  |  [Node. js](quickstarts/nodejs.md)  |  [Python](quickstarts/python.md)).
 
 Pokud odešlete Vizuální vyhledávání Bingu token nebo adresu URL obrázku, zobrazí se následující data formuláře, která musíte zahrnout do těla příspěvku. Data formuláře musí obsahovat `Content-Disposition` hlavičku a je nutné nastavit její `name` parametr na hodnotu "knowledgeRequest". Podrobnosti o `imageInfo` objektu naleznete v žádosti:
 
@@ -58,7 +59,7 @@ Content-Disposition: form-data; name="knowledgeRequest"
 --boundary_1234-abcd--
 ```
 
-Příklady použití tokenu Insights najdete v tématu [C#](#use-with-c) | [Java](#use-with-java) | [Node. js](#use-with-nodejs) | [Python](#use-with-python).
+Příklady použití tokenu Insights najdete v tématu [C#](#use-with-c)  |  [Java](#use-with-java)  |  [Node. js](#use-with-nodejs)  |  [Python](#use-with-python).
 
 ## <a name="use-with-c"></a>Použití s C #
 

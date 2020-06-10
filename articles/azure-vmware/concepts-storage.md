@@ -3,12 +3,12 @@ title: Koncepty – úložiště
 description: Seznamte se s možnostmi úložiště klíčů ve službě Azure VMware Solution (AVS) ve verzi Preview privátních cloudů.
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: 7e58a829a40d590b7936a58ccdc866211a4f5cb4
-ms.sourcegitcommit: d9cd51c3a7ac46f256db575c1dfe1303b6460d04
+ms.openlocfilehash: 7f92e8f961422f8354e55192ebdddd077d61acd1
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82740353"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604112"
 ---
 # <a name="azure-vmware-solution-avs-preview-storage-concepts"></a>Koncepty úložiště Azure VMware Solution (AVS) Preview
 
@@ -32,7 +32,7 @@ Místní úložiště v hostitelích clusteru se používá v síti vSAN úloži
 
 ## <a name="scaling"></a>Škálování
 
-Kapacita úložiště nativního clusteru se škáluje přidáním hostitelů do clusteru. U clusterů, které používají hostitele, se nezpracovaná kapacita v rámci clusteru zvyšuje o 15,4 TB s každým dalším hostitelem. Clustery vytvořené s hostiteli GP mají svou nezpracovanou kapacitu zvýšenou o 7,7 TB s každým dalším hostitelem. V obou typech clusterů zabere hostitel do clusteru přibližně 10 minut. Pokyny k škálování clusterů najdete v tématu [kurz privátního cloudu pro škálování] [kurz – škálování-privátní cloud].
+Kapacita úložiště nativního clusteru se škáluje přidáním hostitelů do clusteru. U clusterů, které používají hostitele, se nezpracovaná kapacita v rámci clusteru zvyšuje o 15,4 TB s každým dalším hostitelem. Clustery vytvořené s hostiteli GP mají svou nezpracovanou kapacitu zvýšenou o 7,7 TB s každým dalším hostitelem. V obou typech clusterů zabere hostitel do clusteru přibližně 10 minut. Pokyny k škálování clusterů najdete v [kurzu škálování privátního cloudu][tutorial-scale-private-cloud] .
 
 ## <a name="azure-storage-integration"></a>Integrace úložiště Azure
 
@@ -45,5 +45,5 @@ V dalším kroku se dozvíte o [konceptech identit privátního cloudu][concepts
 <!-- LINKS - external-->
 
 <!-- LINKS - internal -->
-[tutorials-scale-private-cloud]: ./tutorials-scale-private-cloud.md
+[tutorial-scale-private-cloud]: ./tutorial-scale-private-cloud.md
 [concepts-identity]: ./concepts-identity.md

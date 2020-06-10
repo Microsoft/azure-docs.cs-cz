@@ -5,14 +5,14 @@ services: application-gateway
 author: surajmb
 ms.service: application-gateway
 ms.topic: article
-ms.date: 08/30/2019
+ms.date: 06/09/2020
 ms.author: surmb
-ms.openlocfilehash: c51d79d55f77468030100fa10973e2a31148ceae
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 626f52aa8a14cd16d36bef8930cfb75654ef3f32
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83648438"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628782"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>Řešení potíží se stavem back-endu v Application Gateway
 ==================================================
@@ -81,7 +81,7 @@ Až obdržíte stav back-end serveru pro všechny servery ve fondu back-end, po�
 Zpráva zobrazená ve sloupci **Podrobnosti** poskytuje podrobnější přehled o problému a na základě těchto informací můžete začít s řešením tohoto problému.
 
 > [!NOTE]
-> Výchozí požadavek testu se odešle ve formátu \< protokol \> ://127.0.0.1: \< port \> /. Například http://127.0.0.1:80 pro test paměti http na portu 80. Pouze stavové kódy HTTP 200 až 399 jsou považovány za v pořádku. Protokol a cílový port se dědí z nastavení protokolu HTTP. Pokud chcete, aby Application Gateway PROBE v jiném protokolu, názvu hostitele nebo cestě a rozpoznal jiný stavový kód jako v pořádku, nakonfigurujte vlastní test a přidružte ho k nastavení HTTP.
+> Výchozí žádost sondy se pošle ve formátu \<protocol\> ://127.0.0.1: \<port\> /. Například http://127.0.0.1:80 pro test paměti http na portu 80. Pouze stavové kódy HTTP 200 až 399 jsou považovány za v pořádku. Protokol a cílový port se dědí z nastavení protokolu HTTP. Pokud chcete, aby Application Gateway PROBE v jiném protokolu, názvu hostitele nebo cestě a rozpoznal jiný stavový kód jako v pořádku, nakonfigurujte vlastní test a přidružte ho k nastavení HTTP.
 
 <a name="error-messages"></a>Chybové zprávy
 ------------------------
@@ -109,7 +109,7 @@ K zvýšení hodnoty časového limitu použijte následující postup:
 
 **Příčina:** Pokud je back-end fond typu IP adresa nebo plně kvalifikovaný název domény nebo App Service, Application Gateway se přeloží na IP adresu plně kvalifikovaného názvu domény zadaného pomocí DNS (Domain Name System) (vlastní nebo výchozí Azure) a pokusí se připojit k serveru na portu TCP uvedeném v nastavení HTTP. Pokud se ale zobrazí tato zpráva, je navržena tak, že Application Gateway nedokázala úspěšně přeložit IP adresu zadaného plně kvalifikovaného názvu domény.
 
-**Rozhodnutí**
+**Řešení:**
 
 1.  Ověřte, že plně kvalifikovaný název domény zadaný ve fondu back-end je správný a že se jedná o veřejnou doménu, a zkuste ho vyřešit z místního počítače.
 
@@ -170,7 +170,7 @@ Také ověřte, zda jakákoli NSG/UDR/firewall blokuje přístup k IP adrese a p
 
 **Zpráva:** Stavový kód odpovědi HTTP back-end se \' neshoduje s nastavením testu paměti. Očekávalo se: {HTTPStatusCode0} přijatých: {HTTPStatusCode1}.
 
-**Příčina:** Po navázání připojení TCP a provedení TLS handshake (Pokud je povolený protokol TLS) Application Gateway odešle test jako požadavek HTTP GET na back-end Server. Jak je popsáno výše, výchozí sonda bude \< protokol \> ://127.0.0.1: \< port \> /a považuje se za stavové kódy odpovědí ve formátu Rage 200 až 399 jako v pořádku. Pokud server vrátí jakýkoliv jiný stavový kód, bude tato zpráva označena jako poškozená.
+**Příčina:** Po navázání připojení TCP a provedení TLS handshake (Pokud je povolený protokol TLS) Application Gateway odešle test jako požadavek HTTP GET na back-end Server. Jak je popsáno výše, výchozí sonda bude \<protocol\> ://127.0.0.1: \<port\> /a považuje se za stavové kódy odpovědí ve formátu Rage 200 až 399 jako v pořádku. Pokud server vrátí jakýkoliv jiný stavový kód, bude tato zpráva označena jako poškozená.
 
 **Řešení:** V závislosti na kódu odpovědi back-end serveru můžete provést následující kroky. Tady jsou uvedené některé běžné stavové kódy:
 
@@ -209,7 +209,7 @@ Přečtěte si další informace o [Application Gateway shodě](https://docs.mic
 
 #### <a name="backend-server-certificate-invalid-ca"></a>Neplatná CA certifikátu back-end serveru
 
-**Zpráva:** Certifikát serveru používaný back-end není podepsán známou certifikační autoritou (CA). Seznam povolených back-endu na Application Gateway nahrajte tak, že nahrajete kořenový certifikát certifikátu serveru používaného back-endu.
+**Zpráva:** Certifikát serveru používaný back-end není podepsán známou certifikační autoritou (CA). Povolí back-end na Application Gateway tím, že se nahraje kořenový certifikát certifikátu serveru používaného back-endu.
 
 **Příčina:** Komplexní protokol SSL s Application Gateway v2 vyžaduje ověření certifikátu back-end serveru, aby bylo možné považovat Server za v pořádku.
 Aby byl certifikát TLS/SSL důvěryhodný, musí být certifikát serveru back-end vydaný certifikační autoritou, která je součástí důvěryhodného úložiště Application Gateway. Pokud certifikát nebyl vydán důvěryhodnou certifikační autoritou (například při použití certifikátu podepsaného svým držitelem), musí uživatelé odeslat certifikát vystavitele do Application Gateway.

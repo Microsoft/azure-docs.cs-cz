@@ -8,12 +8,12 @@ ms.service: storage
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
-ms.openlocfilehash: 9afbade408d6f95fcd3a61aa1ba65bc09c7a875b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 725c319e4abb6cc65e1e6a900218393ace2d4d16
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80067218"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629568"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Upgrade na účet úložiště pro obecné účely verze 2
 
@@ -24,9 +24,9 @@ Upgrade na účet úložiště pro obecné účely v2 z účtů pro obecné úč
 > [!IMPORTANT]
 > Upgrade účtu úložiště pro obecné účely v1 nebo blob na obecné účely je trvalý a nedá se vrátit zpátky.
 
-# <a name="portal"></a>[Portál](#tab/azure-portal)
+# <a name="portal"></a>[Azure Portal](#tab/azure-portal)
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. Přejděte na svůj účet úložiště.
 3. V části **Nastavení** klikněte na **Konfigurace**.
 4. V části **Druh účtu** klikněte na **Upgradovat**.
@@ -73,7 +73,7 @@ V obou případech má první priorita odhadnout náklady na ukládání, přís
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 
-Upgrade účtu úložiště V1 na účet pro obecné účely v2 je zdarma. Během procesu upgradu můžete určit požadovanou úroveň účtu. Pokud při upgradu není zadána úroveň účtu, bude použita výchozí úroveň účtu upgradovaného účtu `Hot`. Změna úrovně přístupu úložiště ale může mít za následek změny ve vyúčtování, takže se při upgradu doporučuje zadat novou úroveň účtu.
+Upgrade účtu úložiště V1 na účet pro obecné účely v2 je zdarma. Během procesu upgradu můžete určit požadovanou úroveň účtu. Pokud při upgradu není zadána úroveň účtu, bude použita výchozí úroveň účtu upgradovaného účtu `Hot` . Změna úrovně přístupu úložiště ale může mít za následek změny ve vyúčtování, takže se při upgradu doporučuje zadat novou úroveň účtu.
 
 Všechny účty úložiště vycházejí z cenového modelu úložiště objektů blob založeného na úrovních jednotlivých objektů blob. Při použití účtu úložiště je potřeba vzít v úvahu tyto fakturační podmínky:
 
@@ -167,4 +167,4 @@ Také cena za přenos geograficky replikovaných dat účtů Blob Storage se v p
 
 ## <a name="next-steps"></a>Další kroky
 
-* [vytvořit účet úložiště](storage-account-create.md)
+* [Vytvoření účtu úložiště](storage-account-create.md)

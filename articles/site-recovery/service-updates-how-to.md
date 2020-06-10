@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
-ms.openlocfilehash: 3489f7f812798504d0c57a265a04e57344105419
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 483d2152f3af13c82830528ea73e837fe3788ca4
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257820"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629372"
 ---
 # <a name="service-updates-in-site-recovery"></a>Aktualizace služby v Site Recovery
 
@@ -48,7 +48,7 @@ Site Recovery upozorňuje na komponenty s vypršenou platností (nebo blížíc�
 
 E-mailová oznámení se odesílají takto.
 
-**Interval** | **Frekvence**
+**Čas** | **Frekvence**
 --- | ---
 60 dní před vypršením platnosti součásti | Jednou týdně
 Dalších 53 dní | Jednou týdně
@@ -90,14 +90,13 @@ V tomto scénáři důrazně doporučujeme [Povolit automatické aktualizace](az
 - Během procesu povolení replikace.
 - Nastavením nastavení aktualizace rozšíření v rámci trezoru.
 
-Pokud chcete ručně spravovat aktualizace, udělejte toto:
+Pokud chcete ručně spravovat aktualizace, můžete vybrat jednu z následujících možností:
 
-1. V trezoru > **replikované položky**klikněte v horní části obrazovky na toto oznámení: 
+1. Když je k dispozici nová aktualizace agenta, Site Recovery v trezoru k hornímu okraji stránky oznámení. V trezoru > **replikované položky**klikněte v horní části obrazovky na toto oznámení: 
     
-    **K dispozici je nová aktualizace agenta replikace Site Recovery. Kliknutím nainstalujete >**
+    **K dispozici je nová aktualizace agenta replikace Site Recovery. Kliknutím nainstalujete >** <br/><br/>Vyberte virtuální počítače, pro které chcete aktualizaci použít, a potom klikněte na **OK**.
 
-4. Vyberte virtuální počítače, pro které chcete aktualizaci použít, a potom klikněte na **OK**.
-
+2. Na stránce Přehled zotavení po havárii virtuálního počítače najdete pole "stav agenta", které říká "kritický upgrade", pokud má agent vypršení platnosti. Klikněte na něj a postupujte podle pokynů k ručnímu upgradu virtuálního počítače.
 
 ## <a name="vmware-vmphysical-server-disaster-recovery-to-azure"></a>Zotavení po havárii virtuálního počítače VMware nebo fyzického serveru do Azure
 

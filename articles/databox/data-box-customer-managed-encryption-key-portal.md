@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 6f543b3f5c2bb7d4949c431580771c4b0d965e4d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 4bcd8deef28f8e0123e6e2171b3ab24d6ac49292
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125312"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84634995"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Použití klíčů spravovaných zákazníkem v Azure Key Vault pro Azure Data Box
 
@@ -103,7 +103,7 @@ Konfigurace klíče spravovaného zákazníkem pro vaši Azure Data Box je volit
 
 Pokud obdržíte nějaké chyby týkající se vašeho klíče spravovaného zákazníkem, použijte následující tabulku k řešení potíží.
 
-| Kód chyby| Chybová zpráva| Podrobnosti|
+| Kód chyby| Podrobnosti o chybě| Obnovitelné?|
 |-------------|--------------|---------|
 | SsemUserErrorEncryptionKeyDisabled| Nepovedlo se načíst klíč, protože je zakázaný spravovaný klíč zákazníka.| Ano, povolením verze klíče.|
 | SsemUserErrorEncryptionKeyExpired| Nepovedlo se načíst klíč, protože vypršela platnost klíče spravovaného zákazníkem.| Ano, povolením verze klíče.|

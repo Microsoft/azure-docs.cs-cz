@@ -8,12 +8,13 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.author: robinsh
-ms.openlocfilehash: 1d721e89534c09a5572e5674796f28355f652165
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: tracking-python
+ms.openlocfilehash: ea63b4bd40a610227b4315f9e6e858c39ff9ff6a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79527397"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606458"
 ---
 # <a name="schedule-and-broadcast-jobs-python"></a>Úlohy plánování a vysílání (Python)
 
@@ -77,7 +78,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která reaguje na př
 
 2. Pomocí textového editoru vytvořte nový soubor **simDevice.py** v pracovním adresáři.
 
-3. Na začátek souboru `import` **simDevice.py** přidejte následující příkazy a proměnné. Nahraďte `deviceConnectionString` připojovacím řetězcem zařízení, které jste vytvořili výše:
+3. Na `import` začátek souboru **simDevice.py** přidejte následující příkazy a proměnné. Nahraďte `deviceConnectionString` připojovacím řetězcem zařízení, které jste vytvořili výše:
 
     ```python
     import threading
@@ -162,7 +163,7 @@ Chcete-li vytvořit zásadu sdíleného přístupu, která uděluje oprávnění
 
 3. V horní nabídce nad seznamem zásad vyberte **Přidat**.
 
-4. V podokně **Přidat zásady sdíleného přístupu** zadejte popisný název zásady. například: *serviceAndRegistryReadWrite*. V části **oprávnění**vyberte **Služba připojení** a **zápis do registru** (při výběru **zápisu do registru**se automaticky vybere možnost**čtení** z registru). Pak vyberte **vytvořit**.
+4. V podokně **Přidat zásady sdíleného přístupu** zadejte popisný název zásady. například: *serviceAndRegistryReadWrite*. V části **oprávnění**vyberte **Služba připojení** a **zápis do registru** (při výběru **zápisu do registru**se automaticky vybere možnost**čtení** z registru). Potom vyberte **Vytvořit**.
 
     ![Ukázat, jak přidat nové zásady sdíleného přístupu](./media/iot-hub-python-python-schedule-jobs/add-policy.png)
 
@@ -186,7 +187,7 @@ V této části vytvoříte konzolovou aplikaci v Pythonu, která iniciuje vzdá
 
 2. Pomocí textového editoru vytvořte nový soubor **scheduleJobService.py** v pracovním adresáři.
 
-3. Na začátek souboru `import` **scheduleJobService.py** přidejte následující příkazy a proměnné. `{IoTHubConnectionString}` Zástupný symbol nahraďte připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string). `{deviceId}` Zástupný symbol nahraďte ID zařízení, které jste zaregistrovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub):
+3. Na `import` začátek souboru **scheduleJobService.py** přidejte následující příkazy a proměnné. `{IoTHubConnectionString}`Zástupný symbol nahraďte připojovacím řetězcem IoT Hub, který jste zkopírovali dříve v [části získání připojovacího řetězce centra IoT Hub](#get-the-iot-hub-connection-string). `{deviceId}`Zástupný symbol nahraďte ID zařízení, které jste zaregistrovali v [části registrace nového zařízení ve službě IoT Hub](#register-a-new-device-in-the-iot-hub):
 
     ```python
     import sys

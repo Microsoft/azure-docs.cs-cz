@@ -10,12 +10,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: ranku
 ms.date: 04/09/2020
-ms.openlocfilehash: 54f09c4b35f31619c3dcaa027c70444595c4352e
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 5f3a73ed6c7843c13d35a91a75189fe9dd8d4dbd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196511"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628389"
 ---
 # <a name="tutorial-create-a-labeling-project-preview-for-multi-class-image-classification"></a>Kurz: vytvoření projektu s popisem (Preview) pro klasifikaci imagí ve více třídách 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -109,6 +109,12 @@ Teď, když máte přístup k datům, která mají být označená, vytvořte sv
     1. V seznamu vyberte kroužek vedle názvu datové sady, například **obrázky-for-tutorial**.
 
 1. Kliknutím na tlačítko **Další** pokračujte v vytváření projektu.
+
+### <a name="incremental-refresh"></a>Přírůstková aktualizace
+
+Pokud plánujete přidat nové image do datové sady, přírůstková aktualizace tyto nové image najde a přidá je do projektu.  Pokud tuto funkci povolíte, bude projekt pravidelně kontrolovat nové image.  Pro tento kurz nebudete přidávat nové image do úložiště dat, takže tuto funkci nechte nezaškrtnuté.
+
+Pokračujte výběrem tlačítka **Next** (Další).
 
 ### <a name="label-classes"></a>Třídy popisků
 

@@ -2,13 +2,13 @@
 title: Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 description: V tomto článku se dozvíte, jak pomocí Azure Backup Server zálohovat virtuální počítače VMware běžící na serveru VMware vCenter/ESXi.
 ms.topic: conceptual
-ms.date: 12/11/2018
-ms.openlocfilehash: c4bf61e2a02200b2e6af814ef4509081649e202d
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.date: 05/24/2020
+ms.openlocfilehash: deb72ad1f2b9b18368ef5134ecc23048b483f3f8
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204714"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628441"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>Zálohování virtuálních počítačů VMware pomocí Azure Backup Server
 
@@ -35,7 +35,7 @@ V tomto článku se dozvíte, jak:
 
 Ve výchozím nastavení Azure Backup Server komunikuje se servery VMware pomocí protokolu HTTPS. Pokud chcete nastavit připojení HTTPS, Stáhněte si certifikát certifikační autority (CA) VMware a naimportujte ho na Azure Backup Server.
 
-### <a name="before-you-begin"></a>Před zahájením
+### <a name="before-you-begin"></a>Než začnete
 
 - Pokud nechcete používat protokol HTTPS, můžete [zakázat ověřování certifikátu HTTPS pro všechny servery VMware](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
 - Obvykle se připojujete z prohlížeče na Azure Backup Server počítači k serveru vCenter/ESXi pomocí webového klienta vSphere. Když to uděláte poprvé, připojení není zabezpečené a zobrazí se následující.
@@ -371,6 +371,21 @@ Přidejte virtuální počítače VMware pro zálohování. Skupiny ochrany shro
 
     ![Souhrn a nastavení člena skupiny ochrany](./media/backup-azure-backup-server-vmware/protection-group-summary.png)
 
+## <a name="vmware-parallel-backups"></a>Paralelní zálohování VMware
+
+>[!NOTE]
+> Tato funkce se vztahuje na MABS V3 UR1.
+
+V dřívějších verzích MABS byly souběžné zálohy provedeny pouze v rámci skupin ochrany. Díky MABS V3 UR1 jsou všechny zálohy virtuálních počítačů VMWare v rámci jedné skupiny ochrany paralelní, což vede k rychlejšímu zálohování virtuálních počítačů. Všechny úlohy rozdílové replikace VMWare běží paralelně. Ve výchozím nastavení je počet spuštěných úloh paralelně nastaven na hodnotu 8.
+
+Počet úloh můžete upravit pomocí klíče registru, jak je znázorněno níže (ve výchozím nastavení není k dispozici), je třeba ji přidat:
+
+**Cesta ke klíči**:`Software\Microsoft\Microsoft Data Protection Manager\Configuration\ MaxParallelIncrementalJobs\VMWare`<BR>
+**Typ klíče**: hodnota DWORD (32-bit).
+
+> [!NOTE]
+> Počet úloh můžete změnit na vyšší hodnotu. Pokud nastavíte počet úloh na 1, úlohy replikace se spouštějí sériově. Chcete-li zvýšit číslo na vyšší hodnotu, je nutné vzít v úvahu výkon VMWare. Vezměte v úvahu počet používaných prostředků a další použití požadované na serveru VMWare vSphere a určete počet úloh rozdílové replikace, které mají být spuštěny paralelně. Tato změna také ovlivní jenom nově vytvořenou skupinu ochrany. Pro existující skupiny ochrany musíte dočasně přidat další virtuální počítač do skupiny ochrany. To by mělo aktualizovat konfiguraci skupiny ochrany odpovídajícím způsobem. Tento virtuální počítač můžete po dokončení postupu odebrat ze skupiny ochrany.
+
 ## <a name="vmware-vsphere-67"></a>VMWare vSphere 6,7
 
 Pokud chcete zálohovat vSphere 6,7, udělejte toto:
@@ -400,6 +415,126 @@ Windows Registry Editor Version 5.00
 [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
 "SystemDefaultTlsVersions"=dword:00000001
 "SchUseStrongCrypto"=dword:00000001
+```
+
+## <a name="exclude-disk-from-vmware-vm-backup"></a>Vyloučení disku ze zálohy virtuálního počítače VMware
+
+> [!NOTE]
+> Tato funkce se vztahuje na MABS V3 UR1.
+
+S MABS V3 UR1 můžete konkrétní disk vyloučit ze zálohy virtuálního počítače VMware. Konfigurační skript **ExcludeDisk. ps1** je umístěný v `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin folder` .
+
+Pokud chcete nakonfigurovat vyloučení disku, postupujte podle následujících kroků:
+
+### <a name="identify-the-vmware-vm-and-disk-details-to-be-excluded"></a>Identifikujte informace o virtuálním počítači VMWare a disku, které se mají vyloučit.
+
+  1. V konzole VMware klikněte na nastavení virtuálního počítače, pro který chcete disk vyloučit.
+  2. Vyberte disk, který chcete vyloučit, a poznamenejte si cestu k tomuto disku.
+
+        Pokud například chcete vyloučit pevný disk 2 z TestVM4, cesta k pevnému disku 2 je **[datastore1] TestVM4/TestVM4 \_ 1. vmdk**.
+
+        ![Pevný disk, který se má vyloučit](./media/backup-azure-backup-server-vmware/test-vm.png)
+
+### <a name="configure-mabs-server"></a>Konfigurace serveru MABS
+
+Přejděte na server MABS, kde je virtuální počítač VMware nakonfigurovaný pro ochranu a nakonfigurujte vyloučení disku.
+
+  1. Získejte podrobnosti o hostiteli VMware, který je chráněný na serveru MABS.
+
+        ```powershell
+        $psInfo = get-DPMProductionServer
+        $psInfo
+        ```
+
+        ```output
+        ServerName   ClusterName     Domain            ServerProtectionState
+        ----------   -----------     ------            ---------------------
+        Vcentervm1                   Contoso.COM       NoDatasourcesProtected
+        ```
+
+  2. Vyberte hostitele VMware a seznamte se s ochranou virtuálních počítačů pro hostitele VMware.
+
+        ```powershell
+        $vmDsInfo = get-DPMDatasource -ProductionServer $psInfo[0] -Inquire
+        $vmDsInfo
+        ```
+
+        ```output
+        Computer     Name     ObjectType
+        --------     ----     ----------
+        Vcentervm1  TestVM2      VMware
+        Vcentervm1  TestVM1      VMware
+        Vcentervm1  TestVM4      VMware
+        ```
+
+  3. Vyberte virtuální počítač, pro který chcete vyloučit disk.
+
+        ```powershell
+        $vmDsInfo[2]
+        ```
+
+        ```output
+        Computer     Name      ObjectType
+        --------     ----      ----------
+        Vcentervm1   TestVM4   VMware
+        ```
+
+  4. Pokud chcete disk vyloučit, přejděte do `Bin` složky a spusťte skript *ExcludeDisk. ps1* s následujícími parametry:
+
+        > [!NOTE]
+        > Před spuštěním tohoto příkazu zastavte službu DPMRA na serveru MABS. V opačném případě skript vrátí úspěch, ale neaktualizuje seznam vyloučení. Před zastavením služby zajistěte, aby neprobíhaly žádné úlohy.
+
+     **Pokud chcete přidat nebo odebrat disk z vyloučení, spusťte následující příkaz:**
+
+      ```powershell
+      ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-Add|Remove] "[Datastore] vmdk/vmdk.vmdk"
+      ```
+
+     **Příklad**:
+
+     Chcete-li přidat vyloučení disku pro TestVM4, spusťte následující příkaz:
+
+       ```powershell
+      C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Add "[datastore1] TestVM4/TestVM4\_1.vmdk"
+       ```
+
+      ```output
+       Creating C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\excludedisk.xml
+       Disk : [datastore1] TestVM4/TestVM4\_1.vmdk, has been added to disk exclusion list.
+      ```
+
+  5. Ověřte, že je disk přidaný k vyloučení.
+
+     **Pokud chcete zobrazit existující vyloučení pro konkrétní virtuální počítače, spusťte následující příkaz:**
+
+        ```powershell
+        ./ExcludeDisk.ps1 -Datasource $vmDsInfo[0] [-view]
+        ```
+
+     **Příklad**
+
+        ```powershell
+        C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -view
+        ```
+
+        ```output
+        <VirtualMachine>
+        <UUID>52b2b1b6-5a74-1359-a0a5-1c3627c7b96a</UUID>
+        <ExcludeDisk>[datastore1] TestVM4/TestVM4\_1.vmdk</ExcludeDisk>
+        </VirtualMachine>
+        ```
+
+     Po nakonfigurování ochrany tohoto virtuálního počítače nebude vyloučený disk uveden během ochrany.
+
+        > [!NOTE]
+        > Pokud tento postup provádíte pro již chráněný virtuální počítač, je nutné spustit kontrolu konzistence ručně po přidání disku k vyloučení.
+
+### <a name="remove-the-disk-from-exclusion"></a>Odebrat disk z vyloučení
+
+Pokud chcete odebrat disk z vyloučení, spusťte následující příkaz:
+
+```powershell
+C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin> ./ExcludeDisk.ps1 -Datasource $vmDsInfo[2] -Remove "[datastore1] TestVM4/TestVM4\_1.vmdk"
 ```
 
 ## <a name="next-steps"></a>Další kroky

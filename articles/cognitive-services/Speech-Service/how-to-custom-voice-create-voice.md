@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: erhopf
-ms.openlocfilehash: bbe1d651a7d2d2cac1b1aa78b815b2797ad185c5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f087a2880c16218905a4410a2f591511a155ffd
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76717330"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629000"
 ---
 # <a name="create-a-custom-voice"></a>Vytvoření vlastního hlasu
 
@@ -28,7 +28,7 @@ Podívejte se na jazyky podporované pro vlastní hlas: [jazyk pro přizpůsoben
 
 ## <a name="upload-your-datasets"></a>Nahrání datových sad
 
-Až budete připraveni na nahrání dat, přejdete na [vlastní hlasový portál](https://aka.ms/custom-voice-portal). Vytvořte nebo vyberte vlastní projekt hlasu. Projekt musí sdílet správný jazyk/národní prostředí a vlastnosti pohlaví jako data, která chcete použít pro hlasové školení. Například vyberte `en-GB` , jestli se zvukové nahrávky provedly v angličtině s zvýrazňující velkou Británie.
+Až budete připraveni na nahrání dat, přejdete na [vlastní hlasový portál](https://aka.ms/custom-voice-portal). Vytvořte nebo vyberte vlastní projekt hlasu. Projekt musí sdílet správný jazyk/národní prostředí a vlastnosti pohlaví jako data, která chcete použít pro hlasové školení. Například vyberte, `en-GB` jestli se zvukové nahrávky provedly v angličtině s zvýrazňující velkou Británie.
 
 Přejděte na kartu **data** a klikněte na **Odeslat data**. V průvodci vyberte správný datový typ, který odpovídá, co jste připravili.
 
@@ -44,7 +44,7 @@ Datové sady se po stisknutí tlačítka Odeslat automaticky ověřují. Ověřo
 
 V následující tabulce jsou uvedeny stavy zpracování pro importované datové sady:
 
-| Stav | Význam |
+| State | Význam |
 | ----- | ------- |
 | Zpracování | Vaše datová sada byla přijata a je zpracovávána. |
 | Úspěch | Vaše datová sada byla ověřena a lze ji nyní použít k sestavení hlasového modelu. |
@@ -62,13 +62,13 @@ Zvažte opětovné zaznamenávání všech projevy s nízkými výslovnostmi neb
 
 Po ověření datové sady ji můžete použít k sestavení vlastního hlasového modelu.
 
-1.  Přejděte na **text na řeč > Custom Voice > Training**.
+1.  Přejděte na **text na řeč > Custom Voice > [název projektu] > školení**.
 
 2.  Klikněte na **výuka model**.
 
 3.  Potom zadejte **název** a **Popis** , který vám usnadní identifikaci tohoto modelu.
 
-    Vyberte název pečlivě. Název, který zde zadáte, bude název, který použijete k zadání hlasu v žádosti o Shrnutí řeči v rámci vstupu SSMLu. Povolena jsou pouze písmena, číslice a znaky interpunkce, například-, \_a (', '). Pro různé modely hlasu použijte jiné názvy.
+    Vyberte název pečlivě. Název, který zde zadáte, bude název, který použijete k zadání hlasu v žádosti o Shrnutí řeči v rámci vstupu SSMLu. Povolena jsou pouze písmena, číslice a znaky interpunkce, například-, \_ a (', '). Pro různé modely hlasu použijte jiné názvy.
 
     Běžné použití pole **Description** je záznam názvů datových sad, které byly použity k vytvoření modelu.
 
@@ -86,7 +86,7 @@ V tabulce školení se zobrazí nová položka, která odpovídá nově vytvoře
 
 Zobrazený stav odráží proces převodu datové sady na hlasový model, jak je znázorněno zde.
 
-| Stav | Význam |
+| State | Význam |
 | ----- | ------- |
 | Zpracování | Probíhá vytváření hlasového modelu. |
 | Úspěch | Váš hlasový model byl vytvořen a lze jej nasadit. |
@@ -106,7 +106,7 @@ Pokud používáte funkci neuronové Voice Training, můžete si vybrat, abyste 
 
 Po úspěšném vytvoření hlasového písma ho můžete před nasazením pro použití otestovat.
 
-1.  Přejděte k převodu **textu na řeč > vlastního hlasového > testování**.
+1.  Přejděte na **text na řeč > Custom Voice > [název projektu] > testování**.
 
 2.  Klikněte na **Přidat test**.
 

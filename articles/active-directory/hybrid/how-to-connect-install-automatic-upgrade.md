@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/01/2020
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 232a1b714802ce9531a9932bc2af4c6b6f35dffd
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: db7c0595d109efddb092f5e96babda17038e5e9e
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324211"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635811"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: Automatický upgrade
 Tato funkce byla představena s [1.1.105.0EM buildu (vydáno 2016. února)](reference-connect-version-history.md#111050).  Tato funkce se aktualizovala v [Build 1.1.561](reference-connect-version-history.md#115610) a teď podporuje další scénáře, které se dřív nepodporovaly.
@@ -57,6 +57,10 @@ Za prvé byste neměli očekávat, že se automatický upgrade bude pokoušet o 
 
 Pokud si myslíte, že něco není napravo, spusťte nejprve, `Get-ADSyncAutoUpgrade` abyste zajistili, že je povolen automatický upgrade.
 
+Pokud je stav pozastaven, můžete `Get-ADSyncAutoUpgrade -Detail` k zobrazení příčiny použít.  Důvodem pozastavení může být libovolná hodnota řetězce, ale obvykle bude obsahovat řetězcovou hodnotu UpgradeResult, tj `UpgradeNotSupportedNonLocalDbInstall` `UpgradeAbortedAdSyncExeInUse` . nebo.  Může být vrácena také složená hodnota, například `UpgradeFailedRollbackSuccess-GetPasswordHashSyncStateFailed` .
+
+Je také možné získat výsledek, který není UpgradeResult, tj. "AADHealthEndpointNotDefined" nebo "DirSyncInPlaceUpgradeNonLocalDb".
+
 Pak se ujistěte, že jste na proxy serveru nebo v bráně firewall otevřeli požadované adresy URL. Automatická aktualizace používá Azure AD Connect Health, jak je popsáno v [přehledu](#overview). Pokud používáte proxy server, ujistěte se, že stav byl nakonfigurován tak, aby používal [proxy server](how-to-connect-health-agent-install.md#configure-azure-ad-connect-health-agents-to-use-http-proxy). Také otestujte [připojení ke stavu](how-to-connect-health-agent-install.md#test-connectivity-to-azure-ad-connect-health-service) Azure AD.
 
 Po ověření připojení k Azure AD je čas na to, abyste se mohli podívat na protokol událostí. Spusťte prohlížeč událostí a podívejte se do protokolu událostí **aplikace** . Přidejte filtr EventLog pro zdroj **Azure AD Connect upgradujte** a rozsah id události **300-399**.  
@@ -67,7 +71,7 @@ Teď můžete zobrazit události související se stavem pro automatický upgrad
 
 Kód výsledku obsahuje předponu s přehledem stavu.
 
-| Předpona kódu výsledku | Description |
+| Předpona kódu výsledku | Popis |
 | --- | --- |
 | Úspěch |Instalace byla úspěšně upgradována. |
 | UpgradeAborted |Upgrade zastavil dočasnou podmínku. Bude znovu opakován a očekává se, že bude později úspěšné. |
@@ -75,7 +79,7 @@ Kód výsledku obsahuje předponu s přehledem stavu.
 
 Tady je seznam nejběžnějších zpráv, které najdete. Neobsahuje žádné výpisy, ale zpráva výsledku by měla být nejasná s obsahem problému.
 
-| Zpráva výsledku | Description |
+| Zpráva výsledku | Popis |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Do registru nejde zapisovat. |

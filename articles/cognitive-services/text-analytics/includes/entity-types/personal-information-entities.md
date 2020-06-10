@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 81ed10f0b3b2a8042f0766f89bb99d7cad950fca
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140913"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637520"
 ---
 > [!NOTE]
 > Ke zjištění `PHI` použijte `domain=phi` parametr a verzi modelu `2020-04-01` nebo novější.
@@ -27,10 +27,10 @@ Při odesílání požadavků do koncového bodu se vrátí následující kateg
 | Person (Osoba)     | Není k dispozici         | Jména lidí.  | `2019-10-01`  | Také vrácen s `domain=phi` . |
 | PersonType | Není k dispozici         | Typy úloh nebo role držené osobou. | `2020-02-01` | |
 | PhoneNumber | Není k dispozici | Telefonní čísla (jenom USA a telefonní čísla EU). | `2019-10-01` | Také vrácen s`domain=phi` |
-|Má organizace  | Není k dispozici | Společnosti, politické skupiny, hudební pásma, sportovní klub, státní orgány a veřejné organizace.  | `2019-10-01` | Státní příslušníky a náboženství nejsou zahrnuté do tohoto typu entity.  |
-|Má organizace | Lékař | Lékařské společnosti a skupiny. | `2020-04-01` | Také vrácen s `domain=phi` . |
-|Má organizace | Burzovní Exchange | Burzovní skupiny Exchange. | `2020-04-01` | Také vrácen s `domain=phi` . |
-| Má organizace | Sport | Organizace související s sportem. | `2020-04-01` | Také vrácen s `domain=phi` . |
+|Organizace  | Není k dispozici | Společnosti, politické skupiny, hudební pásma, sportovní klub, státní orgány a veřejné organizace.  | `2019-10-01` | Státní příslušníky a náboženství nejsou zahrnuté do tohoto typu entity.  |
+|Organizace | Lékař | Lékařské společnosti a skupiny. | `2020-04-01` | Také vrácen s `domain=phi` . |
+|Organizace | Burzovní Exchange | Burzovní skupiny Exchange. | `2020-04-01` | Také vrácen s `domain=phi` . |
+| Organizace | Sport | Organizace související s sportem. | `2020-04-01` | Také vrácen s `domain=phi` . |
 | Adresa | Není k dispozici | Úplné poštovní adresy.  | `2020-04-01` | Také vrácen s `domain=phi` . |
 | Evropské unie GPS – souřadnice | Není k dispozici | Souřadnice GPS pro umístění v rámci Evropské unie.  | `2019-10-01` |  |
 | E-mail | Není k dispozici | E-mailové adresy. | `2019-10-01` | Také vrácen s `domain=phi` .   |
@@ -40,8 +40,8 @@ Při odesílání požadavků do koncového bodu se vrátí následující kateg
 | DateTime | Datum | Kalendářní data kalendáře | `2019-10-01` | Také vrácen s `domain=phi` . |
 | Množství | Není k dispozici | Čísla a číselná množství. | `2019-10-01` |  |
 | Množství | Věk | Ve věku. | `2019-10-01` | | |
-| Mezinárodní klasifikace nemocí (ICD – 10 – CM) | Není k dispozici | Entity týkající se mezinárodní klasifikace nemocí, deváté revize.   | `2020-04-01` | Také vrácen s `domain=phi` . |
-| Mezinárodní klasifikace nemocí (ICD – 10 – CM) | Není k dispozici | Entity týkající se mezinárodní klasifikace nemocí a desáté revize.    | `2020-04-01` | Také vrácen s `domain=phi` . |
+| Mezinárodní klasifikace nemocí (ICD – 10 – CM) | Není k dispozici | Entity týkající se mezinárodní klasifikace nemocí, deváté revize.   | `2020-04-01` | |
+| Mezinárodní klasifikace nemocí (ICD – 10 – CM) | Není k dispozici | Entity týkající se mezinárodní klasifikace nemocí a desáté revize.    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Informace o Azure
 

@@ -3,12 +3,12 @@ title: Přehled zálohování offline
 description: Přečtěte si informace o komponentách offline zálohování. Zahrnují zálohování offline na základě Azure Data Box a offline zálohování založeného na službě Azure import/export.
 ms.topic: conceptual
 ms.date: 1/28/2020
-ms.openlocfilehash: c3ef79136ca32c24ae6d16057d3195b57e8ced2d
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 84f79efe10f867b37d1e3bb21363be4b12156615
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83744645"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628337"
 ---
 # <a name="overview-of-offline-backup"></a>Přehled zálohování offline
 
@@ -60,7 +60,7 @@ Tady je souhrn architektury:
 
 Pokud chcete použít offline zálohování založené na službě Azure import/export s agentem MARS, přečtěte si téma [pracovní postup offline zálohování v Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-backup-import-export).
 
-Chcete-li použít stejné společně s MABS nebo DPM-A, přečtěte si [pracovní postup offline zálohování pro DPM a Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export-).
+Chcete-li použít stejné společně s MABS nebo DPM-A, přečtěte si [pracovní postup offline zálohování pro DPM a Azure Backup Server](https://docs.microsoft.com/azure/backup/backup-azure-backup-server-import-export).
 
 ## <a name="offline-backup-support-summary"></a>Souhrn podpory offline zálohování
 
@@ -83,4 +83,4 @@ Následující tabulka porovnává dvě dostupné možnosti, abyste mohli vhodn�
 
 - [Azure Backup offline zálohování pomocí Azure Data Box](offline-backup-azure-data-box.md#backup-data-size-and-supported-data-box-skus)
 - [Pracovní postup offline zálohování v Azure Backup](backup-azure-backup-import-export.md)
-- [Pracovní postup offline zálohování pro DPM a Azure Backup Server](backup-azure-backup-server-import-export-.md)
+- [Pracovní postup offline zálohování pro DPM a Azure Backup Server](backup-azure-backup-server-import-export.md)

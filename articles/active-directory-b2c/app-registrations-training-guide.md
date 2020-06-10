@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e60e8452b5cd3750a7b3478c860de95d8992528d
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 6b6294abe986115d86826fee8aad09f468b3d651
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300145"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84627996"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Nové prostředí Registrace aplikací pro Azure Active Directory B2C
 
-Nové prostředí **[Registrace aplikací](https://aka.ms/b2cappregistrations)** pro Azure Active Directory Azure AD B2C (Azure AD B2C) je teď všeobecně dostupné. Pokud máte zkušenosti s **aplikacemi** pro registraci aplikací pro Azure AD B2C, označované jako "starší prostředí", tato příručka vám pomůže začít používat nové prostředí.
+Nové prostředí **[Registrace aplikací](https://aka.ms/b2cappregistrations)** pro Azure Active Directory B2C (Azure AD B2C) je teď všeobecně dostupné. Pokud máte zkušenosti s **aplikacemi** pro registraci aplikací pro Azure AD B2C, označované jako "starší prostředí", tato příručka vám pomůže začít používat nové prostředí.
 
 ## <a name="overview"></a>Přehled
 Dřív jste museli spravovat aplikace Azure AD B2C spotřebiteli odděleně od ostatních aplikací, které používají starší verze prostředí. Který na různých místech v Azure znamenal jiné prostředí pro vytváření aplikací.

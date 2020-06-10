@@ -4,12 +4,12 @@ description: Povolte automatické škálování v cloudovém fondu, abyste mohli
 ms.topic: how-to
 ms.date: 10/24/2019
 ms.custom: H1Hack27Feb2017,fasttrack-edit
-ms.openlocfilehash: ad1bf47cd2b9d8db950154b5a36786c294549566
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 223ba348ce1f8b69791581a70cd21af621c28b24
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83780250"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609008"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Vytvoření automatického vzorce pro škálování výpočetních uzlů ve fondu služby Batch
 
@@ -127,6 +127,9 @@ Hodnotu těchto proměnných definovaných službou můžete získat tak, aby by
 | $CurrentLowPriorityNodes |Aktuální počet výpočetních uzlů s nízkou prioritou, včetně všech zrušených uzlů. |
 | $PreemptedNodeCount | Počet uzlů ve fondu, které jsou v zastaveném stavu. |
 
+> [!IMPORTANT]
+> Úkoly uvolnění úloh nejsou aktuálně zahrnuté do výše uvedených proměnných, které poskytují počty úloh, například $ActiveTasks a $PendingTasks. V závislosti na vzorci automatického škálování to může mít za následek odebrání uzlů a nejsou k dispozici žádné uzly pro spuštění úloh uvolnění úloh.
+
 > [!TIP]
 > Proměnné definované jen pro čtení, které jsou uvedeny v předchozí tabulce, jsou *objekty* , které poskytují různé metody pro přístup k datům, která jsou k nim přidružená. Další informace najdete v části [získání ukázkových dat](#getsampledata) dále v tomto článku.
 >
@@ -187,7 +190,7 @@ Tyto operace jsou povoleny u typů, které jsou uvedeny v předchozí části.
 
 Při testování typu Double pomocí ternárního operátoru ( `double ? statement1 : statement2` ), nenulová hodnota je **true**a nula je **false**.
 
-## <a name="functions"></a>Functions
+## <a name="functions"></a>Funkce
 Tyto předdefinované **funkce** jsou k dispozici pro použití při definování vzorce automatického škálování.
 
 | Funkce | Návratový typ | Popis |
@@ -237,7 +240,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 ### <a name="samples-sample-percentage-and-the-getsample-method"></a>Ukázky, procentuální vzorek a metoda *getsample ()*
 Základní operací vzorce automatického škálování je získat data metrik úlohy a prostředku a pak upravit velikost fondu na základě těchto dat. V takovém případě je důležité mít jasné informace o tom, jak vzorce automatického škálování pracují s daty metrik (ukázky).
 
-**Ukázky**
+**ukázky**
 
 Služba Batch pravidelně přebírá ukázky metrik úloh a prostředků a zpřístupňuje je pro vzorce automatického škálování. Tyto ukázky se zaznamenávají každých 30 sekund službou Batch. Je však obvykle prodleva mezi tím, kdy byly tyto ukázky zaznamenány, a když jsou zpřístupněny pro (a lze je číst) ve vzorcích automatického škálování. Vzhledem k různým faktorům, jako jsou například síťové nebo jiné problémy s infrastrukturou, nemusí být vzorky pro určitý interval zaznamenávány.
 

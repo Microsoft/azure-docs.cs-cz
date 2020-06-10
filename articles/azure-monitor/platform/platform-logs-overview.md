@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/19/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 89de6b3737c8a1e91832aba8f749078806b64e90
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c61a7b46a2f1cc6fa518e5001d5e1905946d5e8e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77659316"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610079"
 ---
 # <a name="overview-of-azure-platform-logs"></a>Přehled protokolů platformy Azure
 Protokoly platforem poskytují podrobné informace o diagnostice a auditování pro prostředky Azure a platformu Azure, na které jsou závislé. Generují se automaticky, přestože potřebujete nakonfigurovat některé protokoly platformy, které se mají přemístit do jednoho nebo více cílů, aby je bylo možné zachovat. Tento článek obsahuje přehled protokolů platforem, včetně informací, které poskytují, a o tom, jak je můžete nakonfigurovat pro shromažďování a analýzu.
@@ -44,11 +44,11 @@ K dispozici jsou různé možnosti pro zobrazení a analýzu různých protokol�
 ## <a name="destinations"></a>Cíle
 Protokoly platforem můžete odesílat do jednoho nebo více cílů v následující tabulce v závislosti na požadavcích na monitorování. Nakonfigurujte cíle pro protokoly platforem [vytvořením nastavení diagnostiky](diagnostic-settings.md).
 
-| Cíl | Scénář | Odkazy |
+| Cíl | Scénář | Reference |
 |:---|:---|:---|:---|
-| Pracovní prostor služby Log Analytics | Analyzujte protokoly s dalšími daty monitorování a využijte Azure Monitorch funkcí, jako jsou například dotazy a výstrahy protokolu. | [Protokol aktivit a protokoly prostředků](resource-logs-collect-workspace.md)<br>[Protokoly adresářů aktivit Azure](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
-| Úložiště Azure | Archivujte protokoly pro audit, statickou analýzu nebo zálohování. |[Protokol aktivit a protokoly prostředků](archive-diagnostic-logs.md)<br>[Protokoly adresářů aktivit Azure](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
-| Centrum událostí | Streamujte protokoly do systémů protokolování a telemetrie třetích stran.  |[Protokol aktivit a protokoly prostředků](resource-logs-stream-event-hubs.md)<br>[Protokoly adresářů aktivit Azure](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) |
+| Pracovní prostor služby Log Analytics | Analyzujte protokoly s dalšími daty monitorování a využijte Azure Monitorch funkcí, jako jsou například dotazy a výstrahy protokolu. | [Protokol aktivit a protokoly prostředků](resource-logs-collect-workspace.md)<br>[Protokoly Azure Active Directory](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md) |
+| Azure Storage | Archivujte protokoly pro audit, statickou analýzu nebo zálohování. |[Protokol aktivit a protokoly prostředků](archive-diagnostic-logs.md)<br>[Protokoly Azure Active Directory](../../active-directory/reports-monitoring/quickstart-azure-monitor-route-logs-to-storage-account.md) |
+| Centrum událostí | Streamujte protokoly do systémů protokolování a telemetrie třetích stran.  |[Protokol aktivit a protokoly prostředků](resource-logs-stream-event-hubs.md)<br>[Protokoly Azure Active Directory](../../active-directory/reports-monitoring/tutorial-azure-monitor-stream-logs-to-event-hub.md) |
 
 
 

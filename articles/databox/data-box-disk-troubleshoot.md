@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/14/2019
 ms.author: alkohli
-ms.openlocfilehash: f8116ec0836623adf803991017950ddc7f960923
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 48a23c483ab4338492a407b60f3a5dfc95c0e680
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67805711"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607325"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>Řešení potíží s ověřováním v Azure Data Box Disk pomocí protokolů
 
@@ -27,7 +27,7 @@ Když ověříte data na discích pomocí [Nástroje pro ověření](data-box-di
 
 Pokud spustíte více relací pro ověření, je pro každou relaci vygenerován jeden protokol chyb.
 
-- Zde je ukázka protokolu chyb, když data načtená do `PageBlob` složky nejsou 512 – zarovnaná bajty. Všechna data nahraná do PageBlob musí být 512 – zarovnaná bajty, například VHD nebo VHDX. Chyby v tomto souboru jsou v upozorněních `<Errors>` a `<Warnings>`.
+- Zde je ukázka protokolu chyb, když data načtená do `PageBlob` složky nejsou 512 – zarovnaná bajty. Všechna data nahraná do PageBlob musí být 512 – zarovnaná bajty, například VHD nebo VHDX. Chyby v tomto souboru jsou v `<Errors>` upozorněních a `<Warnings>` .
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -48,7 +48,7 @@ Pokud spustíte více relací pro ověření, je pro každou relaci vygenerován
         </ErrorLog>
     ```
 
-- Tady je ukázka protokolu chyb, pokud název kontejneru není platný. Složka, kterou vytvoříte v adresáři `BlockBlob`, `PageBlob`nebo `AzureFile` složky na disku, se v účtu Azure Storage stal kontejnerem. Název kontejneru musí splňovat [zásady vytváření názvů pro Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions).
+- Tady je ukázka protokolu chyb, pokud název kontejneru není platný. Složka, kterou vytvoříte v adresáři `BlockBlob` , `PageBlob` nebo `AzureFile` složky na disku, se v účtu Azure Storage stal kontejnerem. Název kontejneru musí splňovat [zásady vytváření názvů pro Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions).
 
     ```xml
         <?xml version="1.0" encoding="utf-8"?>
@@ -91,7 +91,7 @@ Chyby obsažené v *souboru Error. XML* s odpovídajícími doporučenými akcem
 | `InvalidFileNameFormat` | Cesta k souboru není namapována na platnou cestu k souboru v cloudu podle konvencí pro pojmenovávání souborů Azure. |Přejmenujte soubor tak, aby splňoval [konvence vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Opakujte ověření. |
 | `InvalidDiskNameFormat` | Cesta k souboru není v cloudu namapována na platný název disku podle konvencí pojmenování na spravovaném disku Azure. |Přejmenujte soubor tak, aby splňoval [konvence vytváření názvů Azure](data-box-disk-limits.md#azure-block-blob-page-blob-and-file-naming-conventions). Opakujte ověření.       |
 | `NotPartOfFileShare` | Cesta pro odeslání souborů není platná. Nahrajte soubory do složky ve službě soubory Azure.   | Odstraňte soubory z chyb a nahrajte tyto soubory do předvytvořené složky. Opakujte ověření. |
-| `NonVhdFileNotSupportedForManagedDisk` | Soubor, který není VHD, se nedá nahrát jako spravovaný disk. |Odeberte ze `ManagedDisk` složky soubory, které nejsou VHD, protože tyto soubory nejsou podporované, nebo je přesuňte do `PageBlob` složky. Opakujte ověření. |
+| `NonVhdFileNotSupportedForManagedDisk` | Soubor, který není VHD, se nedá nahrát jako spravovaný disk. |Odeberte ze složky soubory, které nejsou VHD `ManagedDisk` , protože tyto soubory nejsou podporované, nebo je přesuňte do `PageBlob` složky. Opakujte ověření. |
 
 
 ## <a name="next-steps"></a>Další kroky

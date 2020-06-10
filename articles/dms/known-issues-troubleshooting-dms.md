@@ -11,16 +11,22 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 0f108c8b9d86a527764d2c7b8dddc6fb239b00d2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 40c7b1b0ae2065ed00cf21f99ab2046e25970237
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196252"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609433"
 ---
 # <a name="troubleshoot-common-azure-database-migration-service-issues-and-errors"></a>Řešení běžných problémů s Azure Database Migration Service a chyb
 
 Tento článek popisuje některé běžné problémy a chyby, které Azure Database Migration Service uživatelé mohou nacházet v rámci. Článek obsahuje také informace o tom, jak tyto problémy a chyby vyřešit.
+
+> [!NOTE]
+> Komunikace bez posunu
+>
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+>
 
 ## <a name="migration-activity-in-queued-state"></a>Aktivita migrace ve stavu zařazeném do fronty
 

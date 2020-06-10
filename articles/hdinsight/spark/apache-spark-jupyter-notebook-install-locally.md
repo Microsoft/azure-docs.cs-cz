@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,seoapr2020
+ms.custom: hdinsightactive,seoapr2020, tracking-python
 ms.date: 04/23/2020
-ms.openlocfilehash: b2394c580b871105fee84d63c478c3c490b56a0b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2084bf136300126e56414599caa63d24c98f4542
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82191919"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604231"
 ---
 # <a name="install-jupyter-notebook-on-your-computer-and-connect-to-apache-spark-on-hdinsight"></a>Instalace poznámkového bloku Jupyter na vašem počítači a připojení k Apache Spark v HDInsight
 
@@ -57,7 +57,7 @@ Stáhněte si [instalační program Anaconda](https://www.anaconda.com/download/
 
 ## <a name="install-pyspark-and-spark-kernels"></a>Instalace jader PySpark a Sparku
 
-1. Určete, `sparkmagic` kam se má nainstalovat, zadáním následujícího příkazu:
+1. Určete, kam `sparkmagic` se má nainstalovat, zadáním následujícího příkazu:
 
     ```cmd
     pip show sparkmagic
@@ -67,7 +67,7 @@ Stáhněte si [instalační program Anaconda](https://www.anaconda.com/download/
 
 1. V novém pracovním adresáři zadejte jeden nebo více níže uvedených příkazů, aby bylo možné nainstalovat požadované jádro (y):
 
-    |Kernel | Příkaz |
+    |jádro | Příkaz |
     |---|---|
     |Spark|`jupyter-kernelspec install sparkmagic/kernels/sparkkernel`|
     |SparkR|`jupyter-kernelspec install sparkmagic/kernels/sparkrkernel`|
@@ -90,7 +90,7 @@ V této části nakonfigurujete Spark Magic, který jste nainstalovali dříve, 
     python
     ```
 
-2. Informace o konfiguraci Jupyter se většinou ukládají do domovského adresáře uživatelů. Zadejte následující příkaz pro identifikaci domovského adresáře a vytvořte složku s názvem ** \.sparkmagic**.  Úplná cesta bude vycházet z výstupu.
+2. Informace o konfiguraci Jupyter se většinou ukládají do domovského adresáře uživatelů. Zadejte následující příkaz pro identifikaci domovského adresáře a vytvořte složku s názvem ** \. sparkmagic**.  Úplná cesta bude vycházet z výstupu.
 
     ```python
     import os
@@ -100,7 +100,7 @@ V této části nakonfigurujete Spark Magic, který jste nainstalovali dříve, 
     exit()
     ```
 
-3. V rámci složky `.sparkmagic`vytvořte soubor s názvem **config. JSON** a přidejte do něj následující fragment kódu JSON.  
+3. V rámci složky `.sparkmagic` vytvořte soubor s názvem **config. JSON** a přidejte do něj následující fragment kódu JSON.  
 
     ```json
     {
@@ -130,15 +130,15 @@ V této části nakonfigurujete Spark Magic, který jste nainstalovali dříve, 
 
     |Hodnota šablony | Nová hodnota |
     |---|---|
-    |JMEN|Přihlášení clusteru, výchozí hodnota `admin`je.|
+    |JMEN|Přihlášení clusteru, výchozí hodnota je `admin` .|
     |{CLUSTERDNSNAME}|Název clusteru|
-    |{BASE64ENCODEDPASSWORD}|Heslo kódované v kódování Base64 pro vaše skutečné heslo.  Můžete vygenerovat heslo Base64 na adrese [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/).|
-    |`"livy_server_heartbeat_timeout_seconds": 60`|Používejte při použití `sparkmagic 0.12.7` (clustery v 3.5 a v 3.6).  Pokud používáte `sparkmagic 0.2.3` (clustery v 3.4), nahraďte parametr `"should_heartbeat": true`.|
+    |{BASE64ENCODEDPASSWORD}|Heslo kódované v kódování Base64 pro vaše skutečné heslo.  Můžete vygenerovat heslo Base64 na adrese [https://www.url-encode-decode.com/base64-encode-decode/](https://www.url-encode-decode.com/base64-encode-decode/) .|
+    |`"livy_server_heartbeat_timeout_seconds": 60`|Používejte při použití `sparkmagic 0.12.7` (clustery v 3.5 a v 3.6).  Pokud používáte `sparkmagic 0.2.3` (clustery v 3.4), nahraďte parametr `"should_heartbeat": true` .|
 
     Úplný ukázkový soubor můžete zobrazit v [ukázce config. JSON](https://github.com/jupyter-incubator/sparkmagic/blob/master/sparkmagic/example_config.json).
 
    > [!TIP]  
-   > Odesílají se prezenční signály, aby se zajistilo, že nedojde k úniku relací. Když počítač přejde do režimu spánku nebo se vypne, prezenční signál se nepošle, takže se vyčistí relace. U clusterů v 3.4, pokud chcete toto chování zakázat, můžete nastavit konfiguraci `livy.server.interactive.heartbeat.timeout` Livy na `0` z uživatelského rozhraní Ambari. Pokud v části clustery v 3.5 nenastavíte výše uvedenou konfiguraci 3,5, relace se neodstraní.
+   > Odesílají se prezenční signály, aby se zajistilo, že nedojde k úniku relací. Když počítač přejde do režimu spánku nebo se vypne, prezenční signál se nepošle, takže se vyčistí relace. U clusterů v 3.4, pokud chcete toto chování zakázat, můžete nastavit konfiguraci Livy `livy.server.interactive.heartbeat.timeout` na `0` z uživatelského rozhraní Ambari. Pokud v části clustery v 3.5 nenastavíte výše uvedenou konfiguraci 3,5, relace se neodstraní.
 
 5. Spusťte Jupyter. Z příkazového řádku použijte následující příkaz.
 
@@ -153,7 +153,7 @@ V této části nakonfigurujete Spark Magic, který jste nainstalovali dříve, 
     ![Dostupná jádra v poznámkovém bloku Jupyter](./media/apache-spark-jupyter-notebook-install-locally/jupyter-kernels-notebook.png "Jádra v Jupyter poznámkovém bloku")
 
     > [!IMPORTANT]  
-    > Po výběru **nové** kontroly prostředí zkontrolujte případné chyby.  Pokud se zobrazí chyba `TypeError: __init__() got an unexpected keyword argument 'io_loop'` , pravděpodobně došlo k známému problému s některými verzemi Tornado.  Pokud ano, zastavte jádro a pak downgrade instalace Tornado pomocí následujícího příkazu: `pip install tornado==4.5.3`.
+    > Po výběru **nové** kontroly prostředí zkontrolujte případné chyby.  Pokud se zobrazí chyba `TypeError: __init__() got an unexpected keyword argument 'io_loop'` , pravděpodobně došlo k známému problému s některými verzemi Tornado.  Pokud ano, zastavte jádro a pak downgrade instalace Tornado pomocí následujícího příkazu: `pip install tornado==4.5.3` .
 
     b. Spusťte následující fragment kódu.
 
@@ -170,7 +170,7 @@ V této části nakonfigurujete Spark Magic, který jste nainstalovali dříve, 
 
 Důvody instalace Jupyter do počítače a jeho připojení k Apache Sparkmu clusteru v HDInsight:
 
-* Poskytuje možnost vytvářet místně poznámkové bloky, testovat aplikace proti běžícímu clusteru a pak poznámkové bloky nahrát do clusteru. Pokud chcete nahrát poznámkové bloky do clusteru, můžete je buď nahrát pomocí poznámkového bloku Jupyter, který je spuštěný, nebo v clusteru, `/HdiNotebooks` nebo je Uložit do složky v účtu úložiště přidruženého ke clusteru. Další informace o tom, jak se poznámkové bloky ukládají do clusteru, najdete v tématu [kde jsou uložené poznámkové bloky Jupyter](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
+* Poskytuje možnost vytvářet místně poznámkové bloky, testovat aplikace proti běžícímu clusteru a pak poznámkové bloky nahrát do clusteru. Pokud chcete nahrát poznámkové bloky do clusteru, můžete je buď nahrát pomocí poznámkového bloku Jupyter, který je spuštěný, nebo v clusteru, nebo je Uložit do `/HdiNotebooks` složky v účtu úložiště přidruženého ke clusteru. Další informace o tom, jak se poznámkové bloky ukládají do clusteru, najdete v tématu [kde jsou uložené poznámkové bloky Jupyter](apache-spark-jupyter-notebook-kernels.md#where-are-the-notebooks-stored)?
 * Místně dostupné poznámkové bloky se můžete připojit k různým clusterům Spark na základě požadavku vaší aplikace.
 * Pomocí GitHubu můžete implementovat systém správy zdrojového kódu a mít pro poznámkové bloky správu verzí. Můžete mít také prostředí pro spolupráci, ve kterém může více uživatelů pracovat se stejným poznámkovým blokem.
 * S poznámkovým blokem můžete pracovat místně, aniž byste museli mít cluster. Cluster budete potřebovat jenom k testování vašich poznámkových bloků proti, ne k ruční správě vašich poznámkových bloků nebo vývojového prostředí.
