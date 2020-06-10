@@ -1,7 +1,7 @@
 ---
 title: Architektura připojení
 titleSuffix: Azure SQL Managed Instance
-description: Přečtěte si o komunikaci a architektuře připojení spravované instance Azure SQL a o tom, jak komponenty směrují provoz do spravované instance SQL.
+description: Přečtěte si o komunikaci a architektuře připojení spravované instance Azure SQL a o tom, jak komponenty směrují provoz do spravované instance.
 services: sql-database
 ms.service: sql-database
 ms.subservice: operations
@@ -12,19 +12,19 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: e0a16ac8b52907f5ce27d0d186172725e8536423
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d8c98f647736ac2a6cb6e72b754c7b308ad0c3b0
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045183"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655586"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Architektura připojení pro spravovanou instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Tento článek vysvětluje komunikaci ve spravované instanci Azure SQL. Také popisuje architekturu připojení a způsob, jakým součásti směrují provoz do spravované instance SQL.  
+Tento článek vysvětluje komunikaci ve spravované instanci Azure SQL. Také popisuje architekturu připojení a způsob, jakým součásti směrují provoz do spravované instance.  
 
-Spravovaná instance SQL je umístěná ve virtuální síti Azure a podsíť, která je vyhrazená pro spravované instance SQL. Toto nasazení poskytuje:
+Spravovaná instance SQL je umístěná ve virtuální síti Azure a v podsíti, která je vyhrazená pro spravované instance. Toto nasazení poskytuje:
 
 - Zabezpečená privátní IP adresa.
 - Možnost připojit místní síť k spravované instanci SQL.
@@ -33,44 +33,44 @@ Spravovaná instance SQL je umístěná ve virtuální síti Azure a podsíť, k
 
 ## <a name="communication-overview"></a>Přehled komunikace
 
-Následující diagram znázorňuje entity, které se připojují k spravované instanci SQL. Zobrazuje také prostředky, které potřebují komunikovat se spravovanými instancemi SQL. Proces komunikace v dolní části diagramu představuje aplikace a nástroje pro zákazníky, které se připojují k spravované instanci SQL jako zdroje dat.  
+Následující diagram znázorňuje entity, které se připojují ke spravované instanci SQL. Zobrazuje také prostředky, které potřebují komunikovat se spravovanými instancemi. Proces komunikace v dolní části diagramu představuje aplikace a nástroje pro zákazníky, které se připojují ke spravované instanci SQL jako zdroje dat.  
 
 ![Entity v architektuře připojení](./media/connectivity-architecture-overview/connectivityarch001.png)
 
 Spravovaná instance SQL je nabídka typu platforma jako služba (PaaS). Azure používá ke správě této služby automatizované agenty (správu, nasazení a údržbu) na základě datových proudů telemetrie. Vzhledem k tomu, že Azure zodpovídá za správu, zákazníci nemají přístup k počítačům s virtuálním clusterem spravované instance SQL prostřednictvím protokol RDP (Remote Desktop Protocol) (RDP).
 
-Některé operace spouštěné koncovými uživateli nebo aplikacemi můžou pro interakci s platformou vyžadovat spravované instance SQL. Jediným případem je vytvoření databáze spravované instance SQL. Tento prostředek se zveřejňuje prostřednictvím Azure Portal, PowerShellu, rozhraní příkazového řádku Azure a REST API.
+Některé operace spouštěné koncovými uživateli nebo aplikacemi můžou vyžadovat interakci spravované instance SQL s platformou. Jediným případem je vytvoření databáze spravované instance SQL. Tento prostředek se zveřejňuje prostřednictvím Azure Portal, PowerShellu, rozhraní příkazového řádku Azure a REST API.
 
-Spravované instance SQL závisí na službách Azure, jako jsou Azure Storage pro zálohování, Azure Event Hubs pro telemetrii, Azure Active Directory pro ověřování Azure Key Vault pro transparentní šifrování dat (TDE) a několik služeb platformy Azure, které poskytují funkce zabezpečení a podpory. Spravované instance SQL vytváří připojení k těmto službám.
+Spravovaná instance SQL závisí na službách Azure, jako jsou Azure Storage pro zálohování, Azure Event Hubs pro telemetrii, Azure Active Directory (Azure AD) pro ověřování, Azure Key Vault pro transparentní šifrování dat (TDE) a na několika službách platformy Azure, které poskytují funkce zabezpečení a podpory. Služba SQL Managed instance umožňuje připojení k těmto službám.
 
-Veškerá komunikace je šifrovaná a podepsaná pomocí certifikátů. Pro kontrolu věrohodnosti komunikujících stran budou spravované instance SQL průběžně ověřovat tyto certifikáty prostřednictvím seznamů odvolaných certifikátů. Pokud jsou certifikáty odvolány, bude spravovaná instance SQL ukončena připojením k ochraně dat.
+Veškerá komunikace je šifrovaná a podepsaná pomocí certifikátů. Aby bylo možné kontrolovat důvěryhodnost komunikujících stran, spravovaná instance SQL tyto certifikáty neustále ověřuje prostřednictvím seznamů odvolaných certifikátů. Pokud dojde k odvolání certifikátů, spravovaná instance SQL ukončí připojení k ochraně dat.
 
 ## <a name="high-level-connectivity-architecture"></a>Architektura připojení vysoké úrovně
 
 Na vysoké úrovni je spravovaná instance SQL sada součástí služby. Tyto komponenty se hostují na vyhrazené sadě izolovaných virtuálních počítačů, které běží v podsíti virtuální sítě zákazníka. Tyto počítače tvoří virtuální cluster.
 
-Virtuální cluster může hostovat víc instancí spravovaných SQL. V případě potřeby se cluster automaticky rozšíří nebo vymění smlouvy, když zákazník změní počet zřízených instancí v podsíti.
+Virtuální cluster může hostovat víc spravovaných instancí. V případě potřeby se cluster automaticky rozšíří nebo vymění smlouvy, když zákazník změní počet zřízených instancí v podsíti.
 
-Zákaznické aplikace se můžou připojit ke spravovaným instancím SQL a můžou zadávat dotazy a aktualizovat databáze v rámci virtuální sítě, partnerské virtuální sítě nebo sítě připojené přes VPN nebo Azure ExpressRoute. Tato síť musí používat koncový bod a privátní IP adresu.  
+Zákaznické aplikace se můžou připojit ke spravované instanci SQL a můžou zadávat dotazy a aktualizovat databáze uvnitř virtuální sítě, partnerské virtuální sítě nebo sítě připojené přes VPN nebo Azure ExpressRoute. Tato síť musí používat koncový bod a privátní IP adresu.  
 
 ![Diagram architektury připojení](./media/connectivity-architecture-overview/connectivityarch002.png)
 
-Služby správy a nasazení Azure se spouštějí mimo virtuální síť. Spravovaná instance SQL a služby Azure se připojují přes koncové body, které mají veřejné IP adresy. Když spravovaná instance SQL vytvoří odchozí připojení, při přijetí adresy koncového překladu adres (NAT) bude připojení vypadat jako z této veřejné IP adresy.
+Služby správy a nasazení Azure se spouštějí mimo virtuální síť. Spravovaná instance SQL a služby Azure se připojují přes koncové body, které mají veřejné IP adresy. Když spravovaná instance SQL vytvoří odchozí připojení, pak na přijímajícím konci překladu síťových adres (NAT) bude připojení vypadat jako z této veřejné IP adresy.
 
 Provoz správy prochází přes virtuální síť zákazníka. To znamená, že prvky infrastruktury virtuální sítě mohou poškodit provoz správy tím, že instance selže a nebude k dispozici.
 
 > [!IMPORTANT]
-> Pro zlepšení zkušeností zákazníků a dostupnosti služeb používá Azure zásady záměru sítě na prvcích infrastruktury virtuální sítě Azure. Tato zásada může ovlivnit způsob fungování spravované instance SQL. Tento mechanismus platforem transparentně komunikuje s požadavky na síť uživatelům. Hlavním cílem této zásady je zabránit nesprávnému nastavení sítě a zajistit normální operace SQL spravované instance. Při odstranění spravované instance SQL se odstraní také zásada záměru sítě.
+> Pro zlepšení zkušeností zákazníků a dostupnosti služeb používá Azure zásady záměru sítě na prvcích infrastruktury virtuální sítě Azure. Tato zásada může ovlivnit fungování spravované instance SQL. Tento mechanismus platforem transparentně komunikuje s požadavky na síť uživatelům. Hlavním cílem této zásady je zabránit nesprávnému nastavení sítě a zajistit normální operace SQL spravované instance. Při odstranění spravované instance se odstraní také zásada záměru sítě.
 
 ## <a name="virtual-cluster-connectivity-architecture"></a>Architektura připojení virtuálních clusterů
 
-Pojďme si pořizovat hlubší podrobně architektury připojení pro spravované instance SQL. Následující diagram znázorňuje koncepční rozložení virtuálního clusteru.
+Pojďme si pořizovat hlubší podrobně architektury připojení pro spravovanou instanci SQL. Následující diagram znázorňuje koncepční rozložení virtuálního clusteru.
 
 ![Architektura připojení virtuálního clusteru](./media/connectivity-architecture-overview/connectivityarch003.png)
 
-Klienti se připojují k spravované instanci SQL pomocí názvu hostitele, který má formu `<mi_name>.<dns_zone>.database.windows.net` . Tento název hostitele se překládá na privátní IP adresu, i když je zaregistrovaný ve veřejné zóně DNS (Domain Name System) a je veřejně přeložitelný. `zone-id`Při vytváření clusteru se automaticky vygeneruje. Pokud je nově vytvořený cluster hostitelem sekundární instance SQL spravované, sdílí jeho ID zóny s primárním clusterem. Další informace najdete v tématu [použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
+Klienti se připojují ke spravované instanci SQL pomocí názvu hostitele, který má formu `<mi_name>.<dns_zone>.database.windows.net` . Tento název hostitele se překládá na soukromou IP adresu, i když je zaregistrovaný ve veřejné zóně DNS (Domain Name System) a je veřejně přeložitelný. `zone-id`Při vytváření clusteru se automaticky vygeneruje. Pokud je nově vytvořený cluster hostitelem sekundární spravované instance, sdílí své ID zóny s primárním clusterem. Další informace najdete v tématu [použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází](../database/auto-failover-group-overview.md#enabling-geo-replication-between-managed-instances-and-their-vnets).
 
-Tato privátní IP adresa patří do interního nástroje pro vyrovnávání zatížení spravované instance SQL. Nástroj pro vyrovnávání zatížení směruje provoz do brány spravované instance SQL. Vzhledem k tomu, že ve stejném clusteru může běžet více spravovaných instancí SQL, brána používá název hostitele spravované instance SQL k přesměrování provozu do správné služby SQL Engine.
+Tato privátní IP adresa patří do interního nástroje pro vyrovnávání zatížení pro spravovanou instanci SQL. Nástroj pro vyrovnávání zatížení směruje provoz do brány spravované instance SQL. Vzhledem k tomu, že je možné spustit více spravovaných instancí v rámci stejného clusteru, brána používá název hostitele spravované instance SQL pro přesměrování provozu do správné služby SQL Engine.
 
 Služba správy a nasazení se připojí k spravované instanci SQL pomocí [koncového bodu správy](#management-endpoint) , který se mapuje na externí nástroj pro vyrovnávání zatížení. Provoz se směruje na uzly pouze v případě, že se obdrží na předdefinované sadě portů, které používají pouze součásti správy spravované instance SQL. Integrovaná brána firewall na uzlech je nastavená tak, aby povolovala přenosy jenom z rozsahů IP adres Microsoftu. Certifikáty vzájemně ověřují veškerou komunikaci mezi součástmi pro správu a rovinou správy.
 
@@ -78,31 +78,31 @@ Služba správy a nasazení se připojí k spravované instanci SQL pomocí [kon
 
 Azure spravuje spravované instance SQL pomocí koncového bodu správy. Tento koncový bod je uvnitř virtuálního clusteru instance. Koncový bod správy je chráněn integrovanou bránou firewall na úrovni sítě. Na úrovni aplikace je ochrana pomocí vzájemného ověření certifikátu. IP adresu koncového bodu najdete v tématu [určení IP adresy koncového bodu správy](management-endpoint-find-ip-address.md).
 
-Když se připojení spouštějí v rámci spravované instance SQL (stejně jako u protokolů zálohování a auditu), zobrazí se provoz z veřejné IP adresy koncového bodu správy. Přístup k veřejným službám z spravované instance SQL můžete omezit nastavením pravidel brány firewall tak, aby povolovala jenom IP adresu spravované instance SQL. Další informace najdete v tématu [ověření integrované brány firewall spravované instance SQL](management-endpoint-verify-built-in-firewall.md).
+Když se připojení spouštějí v rámci spravované instance SQL (stejně jako u protokolů zálohování a auditu), zobrazí se provoz z veřejné IP adresy koncového bodu správy. Přístup k veřejným službám z spravované instance SQL můžete omezit nastavením pravidel brány firewall tak, aby povolovala pouze IP adresu spravované instance SQL. Další informace najdete v tématu [ověření integrované brány firewall spravované instance SQL](management-endpoint-verify-built-in-firewall.md).
 
 > [!NOTE]
-> Provoz, který směřuje do služeb Azure, které jsou uvnitř oblasti spravované instance SQL, je optimalizován a z tohoto důvodu není NATed do veřejné IP adresy koncového bodu správy. Z tohoto důvodu Pokud potřebujete použít pravidla brány firewall založená na protokolu IP, služba je nejčastěji pro úložiště v jiné oblasti než spravovaná instance SQL.
+> Provoz, který směřuje do služeb Azure, které jsou uvnitř oblasti spravované instance SQL, je optimalizován a z tohoto důvodu se NATed na veřejnou IP adresu pro koncový bod správy. Z tohoto důvodu Pokud potřebujete použít pravidla brány firewall založená na protokolu IP, nejčastěji pro úložiště, musí být služba v jiné oblasti než spravovaná instance SQL.
 
 ## <a name="service-aided-subnet-configuration"></a>Konfigurace podsítě s podporou služeb
 
-Aby se vyřešily požadavky na zabezpečení a možnosti správy SQL spravované instance, přechází z ruční na konfiguraci podsítě s podporou služeb.
+Za účelem vyřešení požadavků na zabezpečení a možnosti správy je spravovaná instance SQL přechodná z ruční na konfiguraci podsítě s podporou služby.
 
-Uživatel s konfigurací podsítě s podporou služeb má úplnou kontrolu nad přenosy dat (TDS), zatímco spravovaná instance SQL vezme zodpovědnost za zajištění nepřerušovaného toku provozu správy za účelem splnění smlouvy SLA.
+Při konfiguraci podsítě s podporou služby je uživatel plně řízen provozem dat (TDS), zatímco spravované instance SQL vezme zodpovědnost za zajištění nepřerušovaného toku provozu správy za účelem splnění smlouvy SLA.
 
-Konfigurace podsítě s podporou služeb vychází z funkce [delegování podsítě](../../virtual-network/subnet-delegation-overview.md) virtuální sítě a díky tomu zajišťuje automatickou správu konfigurace sítě a umožňuje používání koncových bodů služeb. Koncové body služeb je možné použít ke konfiguraci pravidel firewallu virtuální sítě pro účty úložiště, které uchovávají zálohy nebo protokoly auditu.
+Konfigurace podsítě s podporou služby je založena na funkci [delegování podsítě](../../virtual-network/subnet-delegation-overview.md) virtuální sítě, která poskytuje automatickou správu konfigurace sítě a povoluje koncové body služby. Koncové body služby se daly použít ke konfiguraci pravidel brány firewall virtuální sítě pro účty úložiště, které udržují protokoly zálohování a auditu.
 
-### <a name="network-requirements"></a>Síťové požadavky
+### <a name="network-requirements"></a>Požadavky sítě
 
-Nasaďte spravovanou instanci SQL ve vyhrazené podsíti uvnitř virtuální sítě. Podsíť musí mít tyto charakteristiky:
+Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální sítě. Podsíť musí mít tyto charakteristiky:
 
 - **Vyhrazená podsíť:** Podsíť spravované instance SQL nemůže obsahovat žádnou jinou cloudovou službu, která je k ní přidružená, a nemůže to být podsíť brány. Podsíť nemůže obsahovat žádný prostředek, ale spravovanou instanci SQL a nemůžete později přidat další typy prostředků v podsíti.
 - **Delegování podsítě:** Podsíť spravované instance SQL musí být delegovaná na `Microsoft.Sql/managedInstances` poskytovatele prostředků.
-- **Skupina zabezpečení sítě (NSG):** NSG musí být přidružený k podsíti spravované instance SQL. Pomocí NSG můžete řídit přístup ke koncovému bodu dat spravované instance SQL pomocí filtrování provozu na portech 1433 a porty 11000-11999 při konfiguraci spravované instance SQL pro připojení přesměrování. Služba bude automaticky zřizovat a udržovat aktuální [pravidla](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) požadovaná k umožnění nepřerušovaného toku provozu správy.
+- **Skupina zabezpečení sítě (NSG):** NSG musí být přidružený k podsíti spravované instance SQL. Pomocí NSG můžete řídit přístup ke koncovému bodu dat spravované instance SQL pomocí filtrování provozu na portech 1433 a porty 11000-11999 při konfiguraci spravované instance SQL pro připojení přesměrování. Služba automaticky zřídí a zachová aktuální [pravidla](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) nutná k tomu, aby bylo možné nepřerušovaný tok provozu správy.
 - **Tabulka uživatelsky definované trasy (udr):** Tabulka UDR musí být přidružena k podsíti spravované instance SQL. Prostřednictvím brány virtuální sítě nebo síťového virtuálního zařízení můžete do směrovací tabulky přidat záznamy pro směrování provozu, který má jako cíl místní rozsahy privátních IP adres. Služba bude automaticky zřizovat a udržovat aktuální [záznamy](#user-defined-routes-with-service-aided-subnet-configuration) požadované k umožnění nepřerušovaného toku provozu správy.
-- **Dostatečná IP adresa:** Podsíť spravované instance SQL musí mít aspoň 16 IP adres. Doporučené minimum je 32 IP adres. Další informace najdete v tématu [Určení velikosti podsítě pro spravované instance SQL](vnet-subnet-determine-size.md). Spravované instance SQL můžete nasadit v [existující síti](vnet-existing-add-subnet.md) poté, co ji nakonfigurujete tak, aby splňovala [požadavky na síť pro spravované instance SQL](#network-requirements). Jinak vytvořte [novou síť a podsíť](virtual-network-subnet-create-arm-template.md).
+- **Dostatečná IP adresa:** Podsíť spravované instance SQL musí mít aspoň 16 IP adres. Doporučené minimum je 32 IP adres. Další informace najdete v tématu [Určení velikosti podsítě pro spravovanou instanci SQL](vnet-subnet-determine-size.md). Spravované instance můžete nasadit v [existující síti](vnet-existing-add-subnet.md) poté, co ji nakonfigurujete tak, aby splňovala [požadavky na síť pro spravovanou instanci SQL](#network-requirements). Jinak vytvořte [novou síť a podsíť](virtual-network-subnet-create-arm-template.md).
 
 > [!IMPORTANT]
-> Při vytváření spravované instance SQL se v podsíti použije zásada záměru sítě, aby se zabránilo nekompatibilním změnám nastavení sítě. Po odebrání poslední instance z podsítě se odstraní také zásada záměru sítě.
+> Při vytváření spravované instance se v podsíti použije zásada záměru sítě, aby se zabránilo nekompatibilním změnám nastavení sítě. Po odebrání poslední instance z podsítě se odstraní také zásada záměru sítě.
 
 ### <a name="mandatory-inbound-security-rules-with-service-aided-subnet-configuration"></a>Povinná příchozí pravidla zabezpečení s konfigurací podsítě s podporou služby
 
@@ -123,7 +123,7 @@ Nasaďte spravovanou instanci SQL ve vyhrazené podsíti uvnitř virtuální sí
 
 ### <a name="user-defined-routes-with-service-aided-subnet-configuration"></a>Uživatelem definované trasy s konfigurací podsítě s podporou služby
 
-|Name|Předpona adresy|Další segment směrování|
+|Name|Předpona adresy|Další směrování|
 |----|--------------|-------|
 |podsíť do vnetlocal|PODSÍŤ MI|Virtuální síť|
 |mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -302,27 +302,27 @@ Pokud virtuální síť obsahuje vlastní DNS, vlastní server DNS musí být sc
 
 ### <a name="networking-constraints"></a>Omezení sítě
 
-Pro **odchozí připojení se vynutilo tls 1,2**: v lednu 2020 Microsoft vynutila 1,2 TLS pro provoz uvnitř služby ve všech službách Azure. U spravované instance Azure SQL to vedlo k vymáhání TLS 1,2 u odchozích připojení používaných pro replikaci a připojení k serveru SQL Server. Pokud používáte verze SQL Server starších než 2016 se službou SQL Managed instance, zajistěte, aby byly použity [specifické aktualizace TLS 1,2](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) .
+Pro **odchozí připojení se vynutilo tls 1,2**: v lednu 2020 Microsoft vynutila 1,2 TLS pro provoz uvnitř služby ve všech službách Azure. U spravované instance Azure SQL to vedlo k vymáhání TLS 1,2 u odchozích připojení používaných pro replikaci a připojení k serveru SQL Server. Pokud používáte verze SQL Server starší než 2016 se službou SQL Managed instance, zajistěte, aby byly použity [specifické aktualizace TLS 1,2](https://support.microsoft.com/help/3135244/tls-1-2-support-for-microsoft-sql-server) .
 
-Pro spravovanou instanci SQL se aktuálně nepodporují tyto funkce virtuální sítě:
+U spravované instance SQL se aktuálně nepodporují následující funkce virtuální sítě:
 
-- **Partnerský vztah Microsoftu**: povolení [partnerského vztahu Microsoftu](../../expressroute/expressroute-faqs.md#microsoft-peering) na okruhech Express Route, na které se vztahuje přímý nebo průjezd s virtuální sítí, kde se nachází spravovaná instance SQL, ovlivňuje tok přenosů mezi komponentami spravované instance SQL ve virtuální síti a službami, které závisí na způsobu, jakým způsobují problémy s dostupností Nasazení spravovaných instancí do virtuální sítě s partnerským vztahem Microsoftu, které už je povolené, se očekává jako neúspěšné.
+- **Partnerský vztah Microsoftu**: povolení [partnerského vztahu Microsoftu](../../expressroute/expressroute-faqs.md#microsoft-peering) na okruhech ExpressRoute partnerských vztahů přímo nebo v transitu s virtuální sítí, kde se nachází spravovaná instance SQL, ovlivňuje tok přenosů mezi komponentami spravované instance SQL uvnitř virtuální sítě a služeb, na kterých závisí, a způsobující problémy s dostupností. Očekává se, že nasazení spravované instance SQL do virtuální sítě s partnerským vztahem Microsoftu je už povolené.
 - **Globální partnerské vztahy virtuálních sítí**: připojení [partnerských vztahů virtuálních sítí](../../virtual-network/virtual-network-peering-overview.md) napříč oblastmi Azure nefunguje pro SQL Managed instance z důvodu [dokumentovaných omezení nástroje pro vyrovnávání zatížení](../../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers).
-- **AzurePlatformDNS**: použití [značky služby](../../virtual-network/service-tags-overview.md) AZUREPLATFORMDNS k blokování překladu DNS platformy by vygenerovalo nedostupné spravované instance SQL. I když spravovaná instance SQL podporuje DNS definovaný zákazníkem pro překlad DNS v rámci motoru, existuje závislost na platformě DNS platformy pro operace platforem.
-- **Brána NAT**: použití [Virtual Network NAT](../../virtual-network/nat-overview.md) k řízení odchozího připojení s konkrétní veřejnou IP adresou by nedostupné pro vykreslování spravované instance SQL. Služba SQL Managed instance je momentálně omezená na použití základního nástroje pro vyrovnávání zatížení, který neposkytuje korelace příchozích a odchozích toků s Virtual Network překladem adres (NAT).
+- **AzurePlatformDNS**: použití [značky služby](../../virtual-network/service-tags-overview.md) AZUREPLATFORMDNS k blokování překladu DNS platformy by vygenerovalo nedostupné spravované instance SQL. I když spravovaná instance SQL podporuje DNS definované uživatelem pro překlad DNS v rámci motoru, je závislá na platformě DNS platformy pro operace platforem.
+- **Brána NAT**: použití služby [Azure Virtual Network NAT](../../virtual-network/nat-overview.md) k řízení odchozího připojení s konkrétní veřejnou IP adresou by nedostupné pro vykreslování spravované instance SQL. Služba SQL Managed instance je momentálně omezená na použití základního nástroje pro vyrovnávání zatížení, který neposkytuje koexistenci příchozích a odchozích toků s Virtual Network překladem adres (NAT).
 
 ### <a name="deprecated-network-requirements-without-service-aided-subnet-configuration"></a>Zastaralé Požadavky na síť bez konfigurace podsítě pro službu
 
-Nasaďte spravovanou instanci SQL ve vyhrazené podsíti uvnitř virtuální sítě. Podsíť musí mít tyto charakteristiky:
+Nasaďte spravovanou instanci SQL do vyhrazené podsítě uvnitř virtuální sítě. Podsíť musí mít tyto charakteristiky:
 
 - **Vyhrazená podsíť:** Podsíť spravované instance SQL nemůže obsahovat žádnou jinou cloudovou službu, která je k ní přidružená, a nemůže to být podsíť brány. Podsíť nemůže obsahovat žádný prostředek, ale spravovanou instanci SQL a nemůžete později přidat další typy prostředků v podsíti.
 - **Skupina zabezpečení sítě (NSG):** NSG, která je přidružená k virtuální síti, musí definovat [příchozí pravidla zabezpečení](#mandatory-inbound-security-rules) a [odchozí pravidla zabezpečení](#mandatory-outbound-security-rules) před všemi ostatními pravidly. Pomocí NSG můžete řídit přístup ke koncovému bodu dat spravované instance SQL pomocí filtrování provozu na portech 1433 a porty 11000-11999 při konfiguraci spravované instance SQL pro připojení přesměrování.
 - **Tabulka uživatelsky definované trasy (udr):** Tabulka UDR, která je přidružená k virtuální síti, musí zahrnovat konkrétní [položky](#user-defined-routes).
 - **Žádné koncové body služby:** K podsíti spravované instance SQL by neměl být přidružen žádný koncový bod služby. Ujistěte se, že je při vytváření virtuální sítě možnost koncové body služby zakázaná.
-- **Dostatečná IP adresa:** Podsíť spravované instance SQL musí mít aspoň 16 IP adres. Doporučené minimum je 32 IP adres. Další informace najdete v tématu [Určení velikosti podsítě pro spravované instance SQL](vnet-subnet-determine-size.md). Spravované instance SQL můžete nasadit v [existující síti](vnet-existing-add-subnet.md) poté, co ji nakonfigurujete tak, aby splňovala [požadavky na síť pro spravované instance SQL](#network-requirements). Jinak vytvořte [novou síť a podsíť](virtual-network-subnet-create-arm-template.md).
+- **Dostatečná IP adresa:** Podsíť spravované instance SQL musí mít aspoň 16 IP adres. Doporučené minimum je 32 IP adres. Další informace najdete v tématu [Určení velikosti podsítě pro spravovanou instanci SQL](vnet-subnet-determine-size.md). Spravované instance můžete nasadit v [existující síti](vnet-existing-add-subnet.md) poté, co ji nakonfigurujete tak, aby splňovala [požadavky na síť pro spravovanou instanci SQL](#network-requirements). Jinak vytvořte [novou síť a podsíť](virtual-network-subnet-create-arm-template.md).
 
 > [!IMPORTANT]
-> Nemůžete nasadit novou spravovanou instanci SQL, pokud cílová podsíť tyto charakteristiky postrádá. Při vytváření spravované instance SQL se v podsíti použije zásada záměru sítě, aby se zabránilo nekompatibilním změnám nastavení sítě. Po odebrání poslední instance z podsítě se odstraní také zásada záměru sítě.
+> Nemůžete nasadit novou spravovanou instanci, pokud v cílové podsíti chybí tyto vlastnosti. Při vytváření spravované instance se v podsíti použije zásada záměru sítě, aby se zabránilo nekompatibilním změnám nastavení sítě. Po odebrání poslední instance z podsítě se odstraní také zásada záměru sítě.
 
 ### <a name="mandatory-inbound-security-rules"></a>Povinná příchozí pravidla zabezpečení
 
@@ -340,7 +340,7 @@ Nasaďte spravovanou instanci SQL ve vyhrazené podsíti uvnitř virtuální sí
 |mi_subnet   |Všechny           |Všechny     |PODSÍŤ MI        |PODSÍŤ MI  |Povolit |
 
 > [!IMPORTANT]
-> Zajistěte, aby existovalo pouze jedno příchozí pravidlo pro porty 9000, 9003, 1438, 1440, 1452 a jedno odchozí pravidlo pro porty 443, 12000. Zřizování spravované instance SQL prostřednictvím Azure Resource Manager nasazení se nezdaří, pokud jsou příchozí a odchozí pravidla konfigurovaná samostatně pro každý port. Pokud jsou tyto porty v samostatných pravidlech, nasazení se nezdaří s kódem chyby.`VnetSubnetConflictWithIntendedPolicy`
+> Zajistěte, aby existovalo pouze jedno příchozí pravidlo pro porty 9000, 9003, 1438, 1440 a 1452 a jedno odchozí pravidlo pro porty 443 a 12000. Zřizování spravované instance SQL prostřednictvím Azure Resource Manager nasazení se nezdaří, pokud jsou příchozí a odchozí pravidla konfigurovaná samostatně pro každý port. Pokud jsou tyto porty v samostatných pravidlech, nasazení se nezdaří s kódem chyby `VnetSubnetConflictWithIntendedPolicy` .
 
 \*PODSÍŤ MI odkazuje na rozsah IP adres podsítě ve formátu x. x. x. x/y. Tyto informace můžete najít v Azure Portal ve vlastnostech podsítě.
 
@@ -352,7 +352,7 @@ Nasaďte spravovanou instanci SQL ve vyhrazené podsíti uvnitř virtuální sí
 
 ### <a name="user-defined-routes"></a>Trasy definované uživatelem
 
-|Name|Předpona adresy|Další segment směrování|
+|Name|Předpona adresy|Další směrování|
 |----|--------------|-------|
 |subnet_to_vnetlocal|PODSÍŤ MI|Virtuální síť|
 |mi-13-64-11-nexthop-Internet|13.64.0.0/11|Internet|
@@ -526,9 +526,9 @@ Nasaďte spravovanou instanci SQL ve vyhrazené podsíti uvnitř virtuální sí
 ## <a name="next-steps"></a>Další kroky
 
 - Přehled najdete v tématu [co je Azure SQL Managed instance?](sql-managed-instance-paas-overview.md).
-- Naučte se, jak [nastavit novou virtuální síť Azure](virtual-network-subnet-create-arm-template.md) nebo [existující virtuální síť Azure](vnet-existing-add-subnet.md) , kde můžete nasadit spravované instance SQL.
-- [Vypočítá velikost podsítě](vnet-subnet-determine-size.md) , do které chcete nasadit spravované instance SQL.
-- Naučte se vytvořit spravovanou instanci SQL:
+- Naučte se, jak [nastavit novou virtuální síť Azure](virtual-network-subnet-create-arm-template.md) nebo [existující virtuální síť Azure](vnet-existing-add-subnet.md) , kde můžete nasadit spravovanou instanci SQL.
+- [Vypočítá velikost podsítě](vnet-subnet-determine-size.md) , do které chcete nasadit SPRAVOVANOU instanci SQL.
+- Naučte se vytvořit spravovanou instanci:
   - Z [Azure Portal](instance-create-quickstart.md).
   - Pomocí [prostředí PowerShell](scripts/create-configure-managed-instance-powershell.md).
   - Pomocí [šablony Azure Resource Manager](https://azure.microsoft.com/resources/templates/101-sqlmi-new-vnet/).

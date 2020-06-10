@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/13/2019
-ms.openlocfilehash: 96674f059e9cbc21c5c8c64eff8c94c810c4aa32
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/08/2020
+ms.openlocfilehash: 8f8cfef5ed98682a1d03f7d36caa2008f4ff03b6
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417772"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660425"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Načtení dat do Azure Data Lake Storage Gen2 s využitím Azure Data Factory
 
@@ -42,95 +42,90 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V nabídce vlevo vyberte **vytvořit prostředek** > **data a analýzy** > **Data Factory**:
+1. V nabídce vlevo vyberte **vytvořit prostředek**  >  **data a analýzy**  >  **Data Factory**:
    
-   ![Výběr datové továrny v podokně Nový](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
+   ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
 
-2. Na stránce **Nová datová továrna** zadejte hodnoty pro pole, která jsou zobrazena na následujícím obrázku: 
-      
-   ![Stránka Nová datová továrna](./media/load-azure-data-lake-storage-gen2//new-azure-data-factory.png)
+2. Na stránce **Nová datová továrna** zadejte hodnoty pro následující pole:
  
-    * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název \"objektu pro vytváření dat\" LoadADLSDemo není k dispozici", zadejte jiný název pro datovou továrnu. Můžete například použít název _**Your**_**ADFTutorialDataFactory**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
+    * **Název**: zadejte globálně jedinečný název pro objekt pro vytváření dat Azure. Pokud se zobrazí chyba "název objektu pro vytváření dat *YourDataFactoryName* není k dispozici", zadejte jiný název pro datovou továrnu. Můžete například použít název _**Your**_**ADFTutorialDataFactory**. Zkuste vytvořit datovou továrnu znovu. Pravidla pojmenování artefaktů služby Data Factory najdete v tématu [Data Factory – pravidla pojmenování](naming-rules.md).
     * **Předplatné**: vyberte předplatné Azure, ve kterém chcete vytvořit datovou továrnu. 
     * **Skupina prostředků**: v rozevíracím seznamu vyberte existující skupinu prostředků nebo vyberte možnost **vytvořit novou** a zadejte název skupiny prostředků. Informace o skupinách prostředků najdete v článku [Použití skupin prostředků ke správě prostředků Azure](../azure-resource-manager/management/overview.md).  
     * **Verze**: vyberte **v2**.
     * **Umístění**: vyberte umístění pro datovou továrnu. V rozevíracím seznamu se zobrazí pouze podporovaná umístění. Úložiště dat, která služba Data Factory používá, můžou být v jiných umístěních a oblastech. 
 
 3. Vyberte **Vytvořit**.
+
 4. Až se vytváření dokončí, přejdete do vaší datové továrny. Zobrazí se Domovská stránka **Data Factory** , jak je znázorněno na následujícím obrázku: 
    
-   ![Domovská stránka objektu pro vytváření dat](./media/load-azure-data-lake-storage-gen2/data-factory-home-page.png)
+   ![Domovská stránka objektu pro vytváření dat](./media/doc-common-process/data-factory-home-page.png)
 
    Výběrem dlaždice **Author & Monitor** (Vytvořit a monitorovat) otevřete na samostatné kartě aplikaci pro integraci dat.
 
 ## <a name="load-data-into-azure-data-lake-storage-gen2"></a>Načtení dat do Azure Data Lake Storage Gen2
 
-1. Na stránce **Začínáme** vyberte dlaždici **kopírování dat** pro spuštění nástroje kopírování dat: 
+1. Na stránce **Začínáme** vyberte dlaždici **Kopírovat data**. Spustí se nástroj pro kopírování dat.
 
-   ![Dlaždice nástroje pro kopírování dat](./media/load-azure-data-lake-storage-gen2/copy-data-tool-tile.png)
-2. Na stránce **vlastnosti** zadejte **CopyFromAmazonS3ToADLS** pro pole **název úlohy** a vyberte **Další**:
+2. Na stránce **vlastnosti** zadejte **CopyFromAmazonS3ToADLS** pro pole **název úlohy** a vyberte **Další**.
 
     ![Stránka Vlastnosti](./media/load-azure-data-lake-storage-gen2/copy-data-tool-properties-page.png)
-3. Na stránce **zdrojové úložiště dat** klikněte na **+ vytvořit nové připojení**:
-
-    ![Stránka Zdrojové úložiště dat](./media/load-azure-data-lake-storage-gen2/source-data-store-page.png)
-    
-    Z Galerie konektorů vyberte **Amazon S3** a vyberte **pokračovat** .
+3. Na stránce pro **zdrojové úložiště dat** klikněte na **+ Vytvořit nové připojení**. Z Galerie konektorů vyberte **Amazon S3** a vyberte **pokračovat**.
     
     ![Stránka S3 zdrojového úložiště dat](./media/load-azure-data-lake-storage-gen2/source-data-store-page-s3.png)
     
-4. Na stránce **zadání připojení k Amazon S3** proveďte následující kroky:
+4. Na stránce **Nová propojená služba (Amazon S3)** proveďte následující kroky:
 
    1. Zadejte hodnotu **ID přístupového klíče** .
    2. Zadejte hodnotu **tajného přístupového klíče** .
-   3. Kliknutím na **Test připojení** ověřte nastavení a pak vyberte **Dokončit**.
-   4. Uvidíte, že se vytvoří nové připojení. Vyberte **Další**.
-   
+   3. Kliknutím na **Test připojení** ověřte nastavení a pak vyberte **vytvořit**.
+
       ![Zadat účet Amazon S3](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
-      
-5. Na stránce pro **volbu vstupního souboru nebo složky** přejděte ke složce a souboru, který chcete zkopírovat. Vyberte složku nebo soubor, vyberte **zvolit**:
+   4. Uvidíte, že se vytvořilo nové připojení AmazonS3. Vyberte **Další**. 
+
+5. Na stránce pro **volbu vstupního souboru nebo složky** přejděte ke složce a souboru, který chcete zkopírovat. Vyberte složku nebo soubor a pak vyberte **zvolit**.
 
     ![Zvolte vstupní soubor nebo složku](./media/load-azure-data-lake-storage-gen2/choose-input-folder.png)
 
-6. Zadejte chování při kopírování zaškrtnutím možností **Copy files recursively** (Kopírovat soubory rekurzivně) a **Binary copy** (Binární kopie). Vyberte **Další**:
+6. Určete chování kopírování kontrolou možností **rekurzivního** a **binárního kopírování** . Vyberte **Další**.
 
     ![Zadat výstupní složku](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
-7. Na stránce **cílové úložiště dat** klikněte na **+ vytvořit nové připojení**a pak vyberte **Azure Data Lake Storage Gen2**a **pokračovat**:
+7. Na stránce **cílové úložiště dat** klikněte na **+ vytvořit nové připojení**a vyberte **Azure Data Lake Storage Gen2**a pak **pokračovat**.
 
     ![Stránka Cílové úložiště dat](./media/load-azure-data-lake-storage-gen2/destination-data-storage-page.png)
 
-8. Na stránce **zadat Azure Data Lake Storage připojení** proveďte následující kroky:
+8. Na stránce **Nová propojená služba (Azure Data Lake Storage Gen2)** proveďte následující kroky:
 
-   1. V rozevíracím seznamu název účtu úložiště vyberte svůj účet s možností Data Lake Storage Gen2.
-   2. Vytvořte připojení výběrem možnosti **Dokončit**. Pak vyberte **Další**.
-   
-   ![Zadat Azure Data Lake Storage Gen2 účet](./media/load-azure-data-lake-storage-gen2/specify-adls.png)
+   1. V rozevíracím seznamu Název účtu úložiště vyberte účet, který podporuje Data Lake Storage Gen2.
+   2. Vyberte **vytvořit** a vytvořte připojení. Pak vyberte **Další**.   
 
-9. Na stránce **zvolte výstupní soubor nebo složku** zadejte **copyfroms3** jako název výstupní složky a vyberte **Další**. ADF vytvoří během kopírování odpovídající systém souborů ADLS Gen2 a podsložky, pokud neexistuje.
+        ![Zadat Azure Data Lake Storage Gen2 účet](./media/load-azure-data-lake-storage-gen2/specify-azure-data-lake-storage.png)
+
+9. Na stránce **zvolte výstupní soubor nebo složku** zadejte **copyfroms3** jako název výstupní složky a vyberte **Další**. ADF vytvoří během kopírování ADLS Gen2 odpovídající soubor systému souborů a podsložek, pokud neexistuje.
 
     ![Zadat výstupní složku](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 
-10. Na stránce **Nastavení** vyberte možnost **Další** a použijte výchozí nastavení:
+10. Na stránce **Nastavení** vyberte **Další**, aby se použilo výchozí nastavení.
 
     ![Stránka Nastavení](./media/load-azure-data-lake-storage-gen2/copy-settings.png)
-11. Na stránce **Souhrn** zkontrolujte nastavení a vyberte **Další**:
+
+11. Na stránce **Souhrn** zkontrolujte nastavení a klikněte na tlačítko **Další**.
 
     ![Stránka souhrnu](./media/load-azure-data-lake-storage-gen2/copy-summary.png)
-12. Na **stránce nasazení**vyberte **monitorovat** a Sledujte kanál:
 
-    ![Stránka Nasazení](./media/load-azure-data-lake-storage-gen2/deployment-page.png)
-13. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Sloupec **Actions (akce** ) obsahuje odkazy na zobrazení podrobností o spuštění aktivit a opětovné spuštění kanálu:
+12. Na stránce **Nasazení** vyberte **Monitorovat** a začněte monitorovat kanál (úlohu). 
+ 
+13. Po úspěšném dokončení kanálu se zobrazí spuštění kanálu, které se aktivuje ruční triggerem. Pomocí odkazů ve sloupci **název kanálu** můžete zobrazit podrobnosti o aktivitách a znovu spustit kanál.
 
     ![Monitorování spuštění kanálu](./media/load-azure-data-lake-storage-gen2/monitor-pipeline-runs.png)
 
-14. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce** . Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Pokud chcete přejít zpátky k zobrazení spuštění kanálu, vyberte odkaz **kanály** v horní části. Seznam můžete aktualizovat kliknutím na **Aktualizovat**. 
-
+14. Pokud chcete zobrazit spuštění aktivit související se spuštěním kanálu, vyberte odkaz **CopyFromAmazonS3ToADLS** pod SLOUPCEM název kanálu. Pokud chcete zobrazit podrobnosti o operaci kopírování, vyberte odkaz **Podrobnosti** (ikona brýlí) ve SLOUPCI název aktivity. Můžete monitorovat podrobnosti, jako je objem dat zkopírovaných ze zdroje, do jímky, propustnosti dat, postup provádění s odpovídající dobou trvání a použitou konfiguraci.
+ 
     ![Monitorování spuštění aktivit](./media/load-azure-data-lake-storage-gen2/monitor-activity-runs.png)
-
-15. Chcete-li monitorovat podrobnosti o spuštění každé aktivity kopírování, vyberte odkaz **Podrobnosti** (obrázek brýlí) v části **Akce** v zobrazení monitorování aktivit. Můžete monitorovat podrobnosti, jako je objem dat zkopírovaných ze zdroje, do jímky, propustnosti dat, kroky provádění s odpovídající dobou trvání a používané konfigurace:
-
+    
     ![Podrobnosti o spuštění aktivity monitorování](./media/load-azure-data-lake-storage-gen2/monitor-activity-run-details.png)
+
+15. Jestliže chcete zobrazení aktualizovat, vyberte Aktualizovat. Výběrem možnosti **všechny spuštěné kanály** v horní části přejdete zpátky k zobrazení spuštění kanálu.
 
 16. Ověřte, že se data zkopírují do účtu Data Lake Storage Gen2.
 

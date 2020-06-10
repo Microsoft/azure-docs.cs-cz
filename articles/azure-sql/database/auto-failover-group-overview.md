@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 2/10/2020
-ms.openlocfilehash: d32670ba79bd526c8f53438bf348323084f99928
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 7552cb3889b73604563758a97ae8a59960f6a906
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84258568"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658016"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Použití skupin automatického převzetí služeb při selhání k zajištění transparentního a koordinovaného převzetí služeb při selhání více databází
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -229,9 +229,9 @@ Pokud vaše aplikace jako datovou vrstvu používá spravovanou instanci SQL, po
 Pro zajištění nepřerušeného připojení k primární spravované instanci SQL po převzetí služeb při selhání musí být primární i sekundární instance ve stejné zóně DNS. Zaručujeme, že stejný certifikát s více doménami (SAN) se dá použít k ověření připojení klientů ke kterékoli z těchto dvou instancí ve skupině převzetí služeb při selhání. Když je vaše aplikace připravená na produkční nasazení, vytvořte sekundární SQL spravovanou instanci v jiné oblasti a ujistěte se, že se zóna DNS sdílí s primární SQL spravovanou instancí. Můžete to provést zadáním volitelného `DNS Zone Partner` parametru pomocí Azure Portal, PowerShellu nebo REST API.
 
 > [!IMPORTANT]
-> První spravovaná instance SQL vytvořená v podsíti Určuje zónu DNS pro všechny následné instance ve stejné podsíti. To znamená, že dvě instance ze stejné podsítě nemohou patřit do různých zón DNS.
+> První spravovaná instance vytvořená v podsíti Určuje zónu DNS pro všechny následné instance ve stejné podsíti. To znamená, že dvě instance ze stejné podsítě nemohou patřit do různých zón DNS.
 
-Další informace o vytváření sekundární instance SQL spravované v rámci stejné zóny DNS jako primární instance najdete v tématu [vytvoření sekundární spravované instance](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-sql-managed-instance).
+Další informace o vytváření sekundární instance SQL spravované v rámci stejné zóny DNS jako primární instance najdete v tématu [vytvoření sekundární spravované instance](../managed-instance/failover-group-add-instance-tutorial.md#3---create-a-secondary-managed-instance).
 
 ### <a name="enabling-replication-traffic-between-two-instances"></a>Povolení provozu replikace mezi dvěma instancemi
 

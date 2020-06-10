@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/18/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 82f1958c4fb37fcc7dfbb0e5dd41e814e8e44ada
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 50f9ef0f088fd48b9319f183494389d92278e0dd
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84042782"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659945"
 ---
 # <a name="migrate-a-sql-server-database-to-sql-server-on-an-azure-virtual-machine"></a>Migrace databáze SQL Server pro SQL Server na virtuálním počítači Azure
 
@@ -51,11 +51,11 @@ Primární metody migrace jsou:
 
 ## <a name="choose-a-migration-method"></a>Zvolit způsob migrace
 
-Pro optimální výkon přenosu dat migrujte soubory databáze do virtuálního počítače Azure pomocí komprimovaného záložního souboru.
+Pro dosažení optimálního výkonu přenosu dat migrujte soubory databáze do virtuálního počítače Azure pomocí komprimovaného záložního souboru.
 
 Pokud chcete během procesu migrace databáze minimalizovat prostoje, použijte možnost AlwaysOn nebo transakční replikaci.
 
-Pokud není možné použít výše uvedené metody, migrujte databázi ručně. Pomocí této metody se obvykle začnete zálohováním databáze, postupujete s kopií zálohy databáze do Azure a pak provedete obnovení databáze. Soubory databáze můžete také zkopírovat do Azure a pak je připojit. Existuje několik metod, pomocí kterých můžete tento ruční proces migrace databáze do virtuálního počítače Azure provést.
+Pokud není možné použít výše uvedené metody, migrujte databázi ručně. Obecně platí, že začnete se zálohováním databáze, postupujete s kopií zálohy databáze do Azure a pak obnovíte databázi. Soubory databáze můžete také zkopírovat do Azure a pak je připojit. Existuje několik metod, pomocí kterých můžete tento ruční proces migrace databáze do virtuálního počítače Azure provést.
 
 > [!NOTE]
 > Při upgradu na SQL Server 2014 nebo SQL Server 2016 ze starších verzí SQL Server byste měli zvážit, zda jsou potřeba změny. Doporučujeme, abyste všechny závislosti na funkcích, které nejsou podporovány v nové verzi SQL Server, vyřešíte jako součást projektu migrace. Další informace o podporovaných edicích a scénářích najdete v tématu [upgrade na SQL Server](https://msdn.microsoft.com/library/bb677622.aspx).
@@ -64,15 +64,15 @@ Následující tabulka uvádí jednotlivé metody primární migrace a popisuje,
 
 | Metoda | Verze zdrojové databáze | Verze cílové databáze | Omezení velikosti zálohy zdrojové databáze | Poznámky |
 | --- | --- | --- | --- | --- |
-| [Provedení místní zálohy pomocí komprese a ruční zkopírování záložního souboru do virtuálního počítače Azure](#backup-and-restore) |SQL Server 2005 nebo vyšší |SQL Server 2005 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | Toto je velmi jednoduchá a vhodná metoda pro přesun databází napříč počítači. |
-| [Proveďte zálohu na adresu URL a obnovte ji do virtuálního počítače Azure z adresy URL.](#backup-to-a-url-and-restore) |SQL Server 2012 SP1 CU2 nebo novější | SQL Server 2012 SP1 CU2 nebo novější | < 12,8 TB pro SQL Server 2016, jinak < 1 TB | Tato metoda je jenom dalším způsobem, jak přesunout záložní soubor do virtuálního počítače pomocí služby Azure Storage. |
+| [Provedení místní zálohy pomocí komprese a ručnímu zkopírování záložního souboru do virtuálního počítače Azure](#back-up-and-restore) |SQL Server 2005 nebo vyšší |SQL Server 2005 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | Tato technika je pro přesun databází v různých počítačích jednoduchá a dobře testována. |
+| [Proveďte zálohu na adresu URL a obnovte ji do virtuálního počítače Azure z adresy URL.](#backup-to-url-and-restore-from-url) |SQL Server 2012 SP1 CU2 nebo novější | SQL Server 2012 SP1 CU2 nebo novější | < 12,8 TB pro SQL Server 2016, jinak < 1 TB | Tato metoda je jenom dalším způsobem, jak přesunout záložní soubor do virtuálního počítače pomocí služby Azure Storage. |
 | [Odpojení a následné zkopírování souborů dat a protokolů do úložiště objektů BLOB v Azure a připojení k SQL Server na virtuálním počítači Azure z adresy URL](#detach-and-attach-from-a-url) | SQL Server 2005 nebo vyšší |SQL Server 2014 nebo vyšší | [Limit úložiště virtuálních počítačů Azure](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | Tuto metodu použijte, když plánujete [ukládat tyto soubory pomocí služby Azure Blob Storage](https://msdn.microsoft.com/library/dn385720.aspx) a připojit je k SQL Server běžícímu na virtuálním počítači Azure, zejména u velmi rozsáhlých databází. |
-| [Převod místního počítače na virtuální pevné disky Hyper-V, nahrání do úložiště objektů BLOB v Azure a následné nasazení nového virtuálního počítače pomocí nahraného virtuálního pevného disku](#convert-to-a-vm-upload-to-a-url-and-deploy-as-a-new-vm) |SQL Server 2005 nebo vyšší |SQL Server 2005 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Při migraci databáze, kterou spustíte ve starší verzi SQL Server nebo při migraci systémových a uživatelských databází v rámci migrace databáze závislé na jiných uživatelových databázích nebo systémových databázích, použijte při migraci [vlastní licence SQL Server](../../../azure-sql/azure-sql-iaas-vs-paas-what-is-overview.md). |
+| [Převod místního počítače na virtuální pevné disky Hyper-V, nahrání do úložiště objektů BLOB v Azure a následné nasazení nového virtuálního počítače pomocí nahraného virtuálního pevného disku](#convert-to-a-vm-upload-to-a-url-and-deploy-as-a-new-vm) |SQL Server 2005 nebo vyšší |SQL Server 2005 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Při migraci databáze, kterou spustíte ve starší verzi SQL Server nebo při migraci systémových a uživatelských databází v rámci migrace databáze závislé na jiných uživatelových databázích nebo systémových databázích, použijte [k uvedení vlastní licence SQL Server](../../../azure-sql/azure-sql-iaas-vs-paas-what-is-overview.md). |
 | [Dodání pevného disku pomocí služby Windows import/export](#ship-a-hard-drive) |SQL Server 2005 nebo vyšší |SQL Server 2005 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Použijte [službu import/export systému Windows](../../../storage/common/storage-import-export-service.md) , pokud je metoda ručního kopírování příliš pomalá, například u velmi velkých databází. |
 | [Použití Průvodce přidáním repliky Azure](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-onprem-availability.md) |SQL Server 2012 nebo vyšší |SQL Server 2012 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Minimalizuje výpadek, používá se, když máte trvalé nasazení na pracovišti. |
 | [Použití SQL Server transakční replikace](https://msdn.microsoft.com/library/ms151176.aspx) |SQL Server 2005 nebo vyšší |SQL Server 2005 nebo vyšší |[Limit úložiště virtuálních počítačů Azure](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |Použijte v případě, že potřebujete minimalizovat prostoje a nemáte trvalé nasazení v místním prostředí. |
 
-## <a name="backup-and-restore"></a>Zálohování a obnovení
+## <a name="back-up-and-restore"></a>Zálohování a obnovení
 
 Zálohujte databázi pomocí komprese, zkopírujte zálohu do virtuálního počítače a pak databázi obnovte. Je-li záložní soubor větší než 1 TB, je nutné vytvořit prokládanou sadu, protože maximální velikost disku virtuálního počítače je 1 TB. Pomocí následujících obecných kroků migrujte uživatelskou databázi pomocí této ruční metody:
 
@@ -81,13 +81,13 @@ Zálohujte databázi pomocí komprese, zkopírujte zálohu do virtuálního poč
 3. Nastavte připojení podle vašich požadavků. Viz [připojení k virtuálnímu počítači s SQL Server v Azure (Správce prostředků)](ways-to-connect-to-sql.md).
 4. Zkopírujte záložní soubory do virtuálního počítače pomocí vzdálené plochy, Průzkumníka Windows nebo příkazu Kopírovat z příkazového řádku.
 
-## <a name="backup-to-a-url-and-restore"></a>Zálohování na adresu URL a obnovení
+## <a name="backup-to-url-and-restore-from-url"></a>Zálohování na adresu URL a obnovení z adresy URL
 
 Místo zálohování do místního souboru můžete použít [zálohování na adresu URL](https://msdn.microsoft.com/library/dn435916.aspx) a pak obnovit z adresy URL virtuálního počítače. SQL Server 2016 podporuje prokládané zálohovací sklady. Doporučuje se pro výkon a musí překročit omezení velikosti na jeden objekt BLOB. U velmi rozsáhlých databází se doporučuje použít [službu import/export systému Windows](../../../storage/common/storage-import-export-service.md) .
 
 ## <a name="detach-and-attach-from-a-url"></a>Odpojení a připojení od adresy URL
 
-Odpojte databáze a soubory protokolů a přeneste je do [úložiště objektů BLOB v Azure](https://msdn.microsoft.com/library/dn385720.aspx). Pak databázi připojte z adresy URL na VIRTUÁLNÍm počítači Azure. Tuto část použijte, pokud chcete, aby se fyzické soubory databáze nacházely v úložišti objektů BLOB. To může být užitečné pro velmi velké databáze. Pomocí následujících obecných kroků migrujte uživatelskou databázi pomocí této ruční metody:
+Odpojte databáze a soubory protokolů a přeneste je do [úložiště objektů BLOB v Azure](https://msdn.microsoft.com/library/dn385720.aspx). Pak databázi připojte z adresy URL na VIRTUÁLNÍm počítači Azure. Tuto metodu použijte, pokud chcete, aby se fyzické soubory databáze nacházely ve službě BLOB Storage, což může být užitečné pro velmi velké databáze. Pomocí následujících obecných kroků migrujte uživatelskou databázi pomocí této ruční metody:
 
 1. Odpojí soubory databáze od místní instance databáze.
 2. Zkopírujte odpojené databázové soubory do úložiště objektů BLOB v Azure pomocí [nástroje příkazového řádku AzCopy](../../../storage/common/storage-use-azcopy.md).

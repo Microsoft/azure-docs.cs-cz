@@ -4,16 +4,16 @@ description: Zabezpečený přesun souborů do a z virtuálního počítače se 
 author: cynthn
 ms.service: virtual-machines-linux
 ms.workload: infrastructure
-ms.topic: article
+ms.topic: how-to
 ms.date: 07/12/2017
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a0837790b70de42073338bf085ee0f3976b866f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 531edf5bb857b570e595fc1a179a887013e094f3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78969605"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659764"
 ---
 # <a name="move-files-to-and-from-a-linux-vm-using-scp"></a>Přesunutí souborů do a z virtuálního počítače se systémem Linux pomocí spojovacího bodu služby
 
@@ -41,9 +41,9 @@ Příkladem je přesunutí konfiguračního souboru Azure do virtuálního poč�
 
 ## <a name="ssh-key-pair-authentication"></a>Ověřování páru klíčů SSH
 
-BOD připojení služby používá SSH pro přenosovou vrstvu. SSH zpracovává ověřování na cílovém hostiteli a přesune soubor do šifrovaného tunelu, který je ve výchozím nastavení poskytnutý pomocí SSH. Pro ověřování SSH se dají použít uživatelská jména a hesla. Jako osvědčený postup zabezpečení se ale doporučuje ověřování pomocí veřejného a privátního klíče SSH. Po ověření připojení přes SSH pak zahájí kopírování souboru. Pomocí správně nakonfigurovaných `~/.ssh/config` veřejných a privátních klíčů ssh můžete připojení spojovacího bodu služby vytvořit jenom pomocí názvu serveru (nebo IP adresy). Pokud máte jenom jeden klíč SSH, spojovací bod služby ho v `~/.ssh/` adresáři vyhledá a použije se ve výchozím nastavení pro přihlášení k virtuálnímu počítači.
+BOD připojení služby používá SSH pro přenosovou vrstvu. SSH zpracovává ověřování na cílovém hostiteli a přesune soubor do šifrovaného tunelu, který je ve výchozím nastavení poskytnutý pomocí SSH. Pro ověřování SSH se dají použít uživatelská jména a hesla. Jako osvědčený postup zabezpečení se ale doporučuje ověřování pomocí veřejného a privátního klíče SSH. Po ověření připojení přes SSH pak zahájí kopírování souboru. Pomocí správně nakonfigurovaných `~/.ssh/config` veřejných a privátních klíčů ssh můžete připojení spojovacího bodu služby vytvořit jenom pomocí názvu serveru (nebo IP adresy). Pokud máte jenom jeden klíč SSH, spojovací bod služby ho v adresáři vyhledá `~/.ssh/` a použije se ve výchozím nastavení pro přihlášení k virtuálnímu počítači.
 
-Další informace o konfiguraci veřejného a `~/.ssh/config` privátního klíče SSH a najdete v tématu [vytvoření klíčů ssh](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Další informace o konfiguraci `~/.ssh/config` veřejného a privátního klíče SSH a najdete v tématu [vytvoření klíčů ssh](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="scp-a-file-to-a-linux-vm"></a>Spojovací bod služby soubor k virtuálnímu počítači se systémem Linux
 
@@ -65,7 +65,7 @@ Následující příkaz zkopíruje soubory z adresáře */Home/azureuser/logs/* 
 scp -r azureuser@myserver.eastus.cloudapp.com:/home/azureuser/logs/. /tmp/
 ```
 
-`-r` Příznak INSTRUUJE spojovací bod služby k rekurzivnímu kopírování souborů a adresářů z místa v adresáři uvedeném v příkazu.  Všimněte si také, že syntaxe příkazového řádku je podobná `cp` příkazu kopírování.
+`-r`Příznak instruuje spojovací bod služby k rekurzivnímu kopírování souborů a adresářů z místa v adresáři uvedeném v příkazu.  Všimněte si také, že syntaxe příkazového řádku je podobná `cp` příkazu kopírování.
 
 ## <a name="next-steps"></a>Další kroky
 

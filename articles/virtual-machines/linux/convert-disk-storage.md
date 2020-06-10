@@ -3,16 +3,16 @@ title: Převod úložiště spravovaných disků mezi Standard a SSD
 description: Jak převést úložiště Azure Managed disks z úrovně Standard na Premium nebo Premium na standard pomocí Azure CLI.
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/12/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: cd9bb92b3ed86c3a57b5fc70411a4593335acedb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 51ebecf784b7a3ec38f84703a74e96d277afa70c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75431491"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658208"
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-or-premium-to-standard"></a>Převod úložiště Azure Managed disks z úrovně Standard na Premium nebo Premium na standard
 
@@ -22,7 +22,7 @@ Tato funkce není podporovaná pro nespravované disky. Nespravovaný disk ale m
 
 V tomto článku se dozvíte, jak převést spravované disky z úrovně Standard na Premium nebo Premium na standard pomocí Azure CLI. Informace o instalaci nebo upgradu tohoto nástroje najdete v tématu Instalace rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 * Převod disku vyžaduje restartování virtuálního počítače, proto naplánujte migraci diskového úložiště během již existujícího časového období údržby.
 * U nespravovaných disků nejprve [převeďte na spravované disky](convert-unmanaged-to-managed-disks.md) , abyste mohli přepínat mezi možnostmi úložiště.
@@ -131,7 +131,7 @@ az vm start --ids $vmId
 
 Postupujte následovně:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 2. V seznamu **virtuálních počítačů**vyberte virtuální počítač.
 3. Pokud se virtuální počítač nezastavil, v horní části podokna **přehledu** virtuálních počítačů vyberte **zastavit** a počkejte, než se virtuální počítač zastaví.
 4. V podokně pro virtuální počítač vyberte z nabídky **disky** .

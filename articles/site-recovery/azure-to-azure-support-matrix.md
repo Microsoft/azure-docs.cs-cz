@@ -4,12 +4,12 @@ description: Shrnuje podporu zotavení po havárii virtuálních počítačů Az
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: raynew
-ms.openlocfilehash: 13bff6006d38489d576a0cbefbf3e7bab8afab37
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 65bcedd534bffca3f69d8162a6d2a429d8d73863
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488898"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660858"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Matice podpory pro zotavení po havárii virtuálních počítačů Azure mezi oblastmi Azure
 
@@ -20,7 +20,7 @@ Tento článek shrnuje podporu a předpoklady pro zotavení po havárii virtuál
 
 **Nasazení** |  **Podpora**
 --- | ---
-**Azure Portal** | Podporuje se.
+**portál Azure** | Podporuje se.
 **PowerShell** | Podporuje se. [Další informace](azure-to-azure-powershell.md)
 **REST API** | Podporuje se.
 **Rozhraní příkazového řádku** | Aktuálně se nepodporuje.
@@ -150,7 +150,7 @@ Debian 8 | 9,28 | 3.16.0-4-amd64 pro 3.16.0-10-AMD64, 4.9.0 -0. BPO. 4-amd64 na 
 **Vydaná verze** | **Verze služby mobility** | **Verze jádra** |
 --- | --- | --- |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,32, [9,33](https://support.microsoft.com/help/4564347/) | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.34 – Azure  |
-SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,33 oprava hotfix Hot Fix | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.34 – Azure </br> 4.12.14-16.10-Azure to 4.12.14-16,7-Azure: 5  |
+SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4, SP5) | 9,33 oprava hotfix Hot Fix | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.34 – Azure </br> 4.12.14-16.10 – Azure do 4.12.14 – 16,7 – Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,31 | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.29 – Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,30 | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.29 – Azure  |
 SUSE Linux Enterprise Server 12 (SP1, SP2, SP3, SP4) | 9,29 | Podporují se všechny zásoby SUSE 12 SP1, SP2, SP3 a SP4.</br></br> 4.4.138-4.7 – Azure na 4.4.180 – 4.31 – Azure,</br>4.12.14-6.3 – Azure na 4.12.14 – 6.23 – Azure  |
@@ -206,7 +206,7 @@ Tato tabulka shrnuje podporu pro disk s operačním systémem Azure VM, datový 
 **Komponenta** | **Podpora** | **Zobrazí**
 --- | --- | ---
 Maximální velikost disku s operačním systémem | 2048 GB | [Přečtěte si další informace](../virtual-machines/windows/managed-disks-overview.md) o discích virtuálních počítačů.
-Dočasný disk | Nepodporuje se | Dočasný disk je vždy vyloučen z replikace.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Další informace](../virtual-machines/windows/managed-disks-overview.md).
+Dočasný disk | Nepodporuje se | Dočasný disk je vždy vyloučen z replikace.<br/><br/> Na dočasném disku neukládejte žádná trvalá data. [Přečtěte si další informace](../virtual-machines/windows/managed-disks-overview.md).
 Maximální velikost datového disku | 8192 GB pro Managed disks<br></br>4095 GB pro nespravované disky|
 Minimální velikost datového disku | Neexistují žádná omezení pro nespravované disky. 2 GB pro spravované disky |
 Maximální počet datových disků | Až 64, v souladu s podporou konkrétní velikosti virtuálního počítače Azure | [Přečtěte si další informace](../virtual-machines/windows/sizes.md) o velikostech virtuálních počítačů.
@@ -279,7 +279,7 @@ Ověřený proxy server | Nepodporuje se | Pokud virtuální počítač použív
 Připojení VPN typu Site-to-site k místnímu prostředí<br/><br/>(s ExpressRoute nebo bez něj)| Podporuje se | Ujistěte se, že jsou udr a skupin zabezpečení sítě nakonfigurované tak, aby se provoz Site Recovery nesměroval do místního prostředí. [Další informace](site-recovery-azure-to-azure-networking-guidance.md)
 Připojení virtuální sítě k virtuální síti    | Podporuje se | [Další informace](site-recovery-azure-to-azure-networking-guidance.md)
 Koncové body služby pro virtuální síť | Podporuje se | Pokud omezíte přístup k virtuální síti k účtům úložiště, ujistěte se, že důvěryhodné služby Microsoftu mají povolený přístup k účtu úložiště.
-Urychlení sítě | Podporuje se | Na zdrojovém virtuálním počítači musí být povolené urychlené síťové služby. [Další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
+Urychlení sítě | Podporuje se | Na zdrojovém virtuálním počítači musí být povolené urychlené síťové služby. [Přečtěte si další informace](azure-vm-disaster-recovery-with-accelerated-networking.md).
 Síťové zařízení Palo Alto | Nepodporuje se | U zařízení třetích stran se v rámci virtuálního počítače často ukládají omezení poskytovatele. Azure Site Recovery potřebuje k dispozici agenta, rozšíření a odchozí připojení. Zařízení ale neumožňuje konfigurovat žádné odchozí aktivity uvnitř virtuálního počítače.
 IPv6  | Nepodporuje se | Současně se nepodporují i smíšené konfigurace, které zahrnují IPv4 i IPv6. Před jakoukoli operací Site Recovery Prosím uvolněte podsíť rozsahu IPv6.
 

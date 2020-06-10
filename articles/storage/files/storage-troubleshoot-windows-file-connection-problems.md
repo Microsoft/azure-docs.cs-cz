@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 40b8616f40f2ce33332fc42ec68532e4ae0ecdb0
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 2b49598d51fb785872fccec966ac11a95ef3cede
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267813"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657734"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se službou Azure Files ve Windows
 
@@ -330,7 +330,7 @@ V současné době můžete zvážit opětovné nasazení služby AAD DS pomocí
 ### <a name="self-diagnostics-steps"></a>Kroky pro samočinnou diagnostiku
 Nejdřív se ujistěte, že jste provedli všechny čtyři kroky, abyste [mohli povolit ověřování Azure Files AD](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable).
 
-Za druhé zkuste připojit [sdílenou složku Azure s klíčem účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Pokud se nepovedlo připojit, Stáhněte si [AzFileDiagnostics. ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , abyste mohli ověřit spuštěné prostředí klienta, zjistit nekompatibilní konfiguraci klienta, která by způsobila selhání přístupu pro soubory Azure, nabízí doporučené pokyny k automatickým opravám a shromažďování diagnostických trasování.
+Za druhé zkuste připojit [sdílenou složku Azure s klíčem účtu úložiště](https://docs.microsoft.com/azure/storage/files/storage-how-to-use-files-windows). Pokud se nepovedlo připojit, Stáhněte si [AzFileDiagnostics.ps1](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) , abyste vám pomohli ověřit spuštěné prostředí klienta, zjistit nekompatibilní konfiguraci klienta, která by způsobila selhání přístupu pro soubory Azure, nabízí doporučené pokyny k automatickým opravám a shromažďování diagnostických trasování.
 
 Třetí, můžete spustit rutinu Debug-AzStorageAccountAuth, která provede sadu základních kontrol konfigurace služby AD s přihlášeným uživatelem služby AD. Tuto rutinu podporuje [AzFilesHybrid verze 0.1.2 nebo novější](https://github.com/Azure-Samples/azure-files-samples/releases). Tuto rutinu je potřeba spustit pod uživatelem AD, který má oprávnění vlastníka k cílovému účtu úložiště.  
 ```PowerShell
@@ -345,9 +345,9 @@ Tato rutina provádí následující kontroly v posloupnosti a poskytuje pokyny 
 3. CheckADObject: potvrďte, že přihlášený uživatel má platnou reprezentaci v doméně služby Active Directory, ke které je přidružen účet úložiště.
 4. CheckGetKerberosTicket: Pokuste se získat lístek protokolu Kerberos pro připojení k účtu úložiště. 
 5. CheckADObjectPasswordIsCorrect: Ujistěte se, že heslo nakonfigurované na identitě AD, které představuje účet úložiště, odpovídá účtu úložiště Kerb Key.
-6. CheckSidHasAadUser: Ověřte, že se přihlášený uživatel služby AD synchronizuje do Azure AD.
-
-Aktivně pracujeme na rozšíření této diagnostické rutiny, abychom vám poskytli lepší pokyny k odstraňování potíží.
+6. CheckSidHasAadUser: Ověřte, že se přihlášený uživatel služby AD synchronizuje do Azure AD. Pokud chcete vyhledat konkrétního uživatele služby AD, který je synchronizovaný s Azure AD, můžete ve vstupních parametrech zadat-UserName a-Domain.
+7. CheckAadUserHasSid: Ověřte, jestli má uživatel modul AD ve službě AD identifikátor SID, vyžadovat od uživatele zadání ID objektu uživatele Azure AD s identifikátorem (ObjectId). 
+8. CheckStorageAccountDomainJoined: Ověřte, jestli jste zaregistrovali identitu ve službě AD, která bude představovat účet úložiště. 
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Nejde nakonfigurovat oprávnění na úrovni adresáře nebo souboru (seznamy řízení přístupu systému Windows) pomocí Průzkumníka souborů Windows.
 

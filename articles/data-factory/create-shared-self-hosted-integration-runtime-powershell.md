@@ -10,13 +10,13 @@ ms.author: abnarain
 author: nabhishek
 manager: anansub
 ms.custom: seo-lt-2019
-ms.date: 10/31/2018
-ms.openlocfilehash: 0f018d6b94d1c5b9d9002a767b3ebceb6c9c746c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 8422d6978c21744696e3d37c34fdd867b014a19e
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106606"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655745"
 ---
 # <a name="create-a-shared-self-hosted-integration-runtime-in-azure-data-factory"></a>Vytvoření sdíleného prostředí Integration runtime v místním prostředí v Azure Data Factory
 
@@ -28,21 +28,19 @@ V této příručce se dozvíte, jak vytvořit sdílený modul runtime integrace
 
 Pokud chcete vytvořit sdílený prostředí IR v místním prostředí pomocí Azure Data Factory uživatelského rozhraní, můžete provést následující kroky:
 
-1. V místním prostředí IR, které se má sdílet, udělte oprávnění objektu pro vytváření dat, ve kterém chcete vytvořit propojený IR.
+1. V místním prostředí IR, které se má sdílet, vyberte **udělit oprávnění jinému objektu pro vytváření dat** a na stránce "nastavení modulu runtime integrace" vyberte datovou továrnu, ve které chcete vytvořit propojený IR.
       
-    ![Tlačítko pro udělení oprávnění na kartě sdílení](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)
-      
-    ![Výběry pro přiřazení oprávnění](media/create-self-hosted-integration-runtime/3_rbac_permissions.png)     
+    ![Tlačítko pro udělení oprávnění na kartě sdílení](media/create-self-hosted-integration-runtime/grant-permissions-IR-sharing.png)  
     
-2. Poznamenejte si ID prostředku pro prostředí IR v místním prostředí, které se má sdílet.
-      
-   ![Umístění ID prostředku](media/create-self-hosted-integration-runtime/4_ResourceID_self-hostedIR.png)
-    
+2. Všimněte si a zkopírujte výše uvedené ID prostředku prostředí IR v místním prostředí, které se má sdílet.
+         
 3. V objektu pro vytváření dat, do kterého byla udělena oprávnění, vytvořte nové prostředí IR v místním prostředí (propojeno) a zadejte ID prostředku.
       
-   ![Tlačítko pro vytvoření propojeného prostředí Integration runtime v místním prostředí](media/create-self-hosted-integration-runtime/6_create-linkedIR_2.png)
-      
-    ![Pole pro název a ID prostředku](media/create-self-hosted-integration-runtime/6_create-linkedIR_3.png)
+    ![Tlačítko pro vytvoření prostředí Integration runtime v místním prostředí](media/create-self-hosted-integration-runtime/create-linkedir-1.png)
+   
+    ![Tlačítko pro vytvoření propojeného prostředí Integration runtime v místním prostředí](media/create-self-hosted-integration-runtime/create-linkedir-2.png) 
+
+    ![Pole pro název a ID prostředku](media/create-self-hosted-integration-runtime/create-linkedir-3.png)
 
 ## <a name="create-a-shared-self-hosted-ir-using-azure-powershell"></a>Vytvoření sdíleného prostředí IR s místním hostováním pomocí Azure PowerShell
 

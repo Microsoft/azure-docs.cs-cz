@@ -1,6 +1,6 @@
 ---
 title: Migrace instance spravovaného certifikátem TDE
-description: Migruje certifikát chránící šifrovací klíč databáze pro databázi s transparentním šifrováním dat do spravované instance Azure SQL.
+description: Migrace certifikátu ochrany šifrovacího klíče databáze databáze s transparentní šifrování dat do spravované instance Azure SQL
 services: sql-database
 ms.service: sql-database
 ms.subservice: security
@@ -11,34 +11,34 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: eb8c794f4817c11d30112fbdf7d754081cc29859
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: d2f5439874590db0f2775667d91586c51d6c43b3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045785"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660319"
 ---
-# <a name="migrate-certificate-of-tde-protected-database-to-azure-sql-managed-instance"></a>Migrace certifikátu databáze s ochranou TDE do spravované instance Azure SQL
+# <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>Migrace certifikátu chráněné databáze TDE do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
-Při migraci databáze chráněné [transparentní šifrování dat](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) do spravované instance Azure SQL pomocí nativního obnovení musí být před obnovením databáze migrován odpovídající certifikát z instance SQL Server. Tento článek vás provede procesem ruční migrace certifikátu do spravované instance Azure SQL:
+Pokud migrujete databázi chráněnou [transparentní šifrování dat (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption) do spravované instance Azure SQL pomocí možnosti nativní obnovení, musí být před obnovením databáze migrován odpovídající certifikát z SQL Server instance. Tento článek vás provede procesem ruční migrace certifikátu do spravované instance Azure SQL:
 
 > [!div class="checklist"]
 >
-> * Export certifikátu do souboru Personal Information Exchange (.pfx)
-> * Extrakce certifikátu ze souboru do řetězce base-64
-> * Nahrání certifikátu pomocí rutiny PowerShell
+> * Exportujte certifikát do souboru Personal Information Exchange (. pfx).
+> * Extrahovat certifikát ze souboru do řetězce Base-64
+> * Nahrajte ho pomocí rutiny PowerShellu.
 
-Alternativní možnost použití plně spravované služby pro bezproblémové migrace TDE chráněné databáze a odpovídajícího certifikátu najdete v tématu [Postup migrace místní databáze do spravované instance Azure SQL pomocí Azure Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md).
+Alternativní možnost použití plně spravované služby pro bezproblémové migrace databáze chráněné TDE a odpovídajícího certifikátu najdete v tématu [jak migrovat místní databázi do spravované instance Azure SQL pomocí Azure Database Migration Service](../../dms/tutorial-sql-server-to-managed-instance.md).
 
 > [!IMPORTANT]
-> Migrovaný certifikát se použije pouze k obnovení databáze chráněné transparentním šifrováním dat. Po dokončení obnovení se migrované certifikát nahradí jiným modulem ochrany, buď certifikátem spravovaným službou, nebo asymetrický klíč z trezoru klíčů, v závislosti na typu transparentního šifrování dat, které jste nastavili u instance.
+> Migrovaný certifikát se používá pouze pro obnovení databáze chráněné TDE. Po dokončení obnovení se migrované certifikát nahradí jiným modulem ochrany, buď certifikátem spravovaným službou, nebo asymetrický klíč z trezoru klíčů, a to v závislosti na typu TDE, který jste pro instanci nastavili.
 
 ## <a name="prerequisites"></a>Požadavky
 
 K dokončení kroků v tomto článku budete potřebovat následující:
 
-* Nástroj příkazového řádku [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) nainstalovaný na místním serveru nebo jiném počítači s přístupem k certifikátu, který se exportuje do souboru. Nástroj Pvk2pfx je součástí [Enterprise Windows Driver Kit](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk), samostatného a nezávislého prostředí příkazového řádku.
+* Nástroj příkazového řádku [Pvk2pfx](https://docs.microsoft.com/windows-hardware/drivers/devtest/pvk2pfx) nainstalovaný na místním serveru nebo jiném počítači s přístupem k certifikátu, který se exportuje do souboru. Nástroj Pvk2Pfx je součástí sady [Enterprise Driver Kit pro Windows](https://docs.microsoft.com/windows-hardware/drivers/download-the-wdk), která obsahuje samostatné prostředí příkazového řádku.
 * [Prostředí Windows PowerShell](/powershell/scripting/install/installing-windows-powershell) nainstalované ve verzi 5.0 nebo vyšší.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
@@ -51,7 +51,7 @@ Ujistěte se, že máte následující:
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 > [!IMPORTANT]
-> Modul PowerShell Azure Resource Manager je stále podporován službou Azure SQL Managed instance, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRm jsou v podstatě identické.
+> Modul PowerShell Azure Resource Manager je stále podporován službou Azure SQL Managed instance, ale všechny budoucí vývojové prostředí jsou pro modul AZ. SQL. Tyto rutiny naleznete v tématu [AzureRM. SQL](https://docs.microsoft.com/powershell/module/AzureRM.Sql/). Argumenty pro příkazy v modulech AZ a v modulech AzureRM jsou v podstatě identické.
 
 Spuštěním následujících příkazů v PowerShellu nainstalujte/aktualizujte modul:
 
@@ -66,17 +66,17 @@ Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace rozhr
 
 * * *
 
-## <a name="export-tde-certificate-to-a-personal-information-exchange-pfx-file"></a>Export certifikátu TDE do souboru Personal Information Exchange (.pfx)
+## <a name="export-the-tde-certificate-to-a-pfx-file"></a>Exportujte certifikát TDE do souboru. pfx.
 
-Certifikát můžete exportovat přímo ze zdrojového systému SQL Server, nebo z úložiště certifikátů, pokud je v něm uložený.
+Certifikát se dá exportovat přímo ze zdrojové SQL Server instance, nebo z úložiště certifikátů, pokud se tam udržuje.
 
-### <a name="export-certificate-from-the-source-sql-server"></a>Export certifikátu ze zdrojového systému SQL Server
+### <a name="export-the-certificate-from-the-source-sql-server-instance"></a>Exportujte certifikát ze zdrojové SQL Server instance.
 
-Následujícím postupem vyexportujete certifikát pomocí SQL Server Management Studia a převedete ho do formátu pfx. V postupu se používají zástupná jména *TDE_Cert* a *full_path* pro název soubor a certifikátu a pro cestu. Nahraďte je skutečnými názvy.
+Pomocí následujících kroků exportujte certifikát s SQL Server Management Studio a převeďte ho do formátu. pfx. Obecné názvy *TDE_Cert* a *full_path* jsou používány pro certifikáty a názvy souborů a cesty prostřednictvím kroků. Nahraďte je skutečnými názvy.
 
-1. V SQL Server Management Studiu otevřete nové okno dotazu a připojte se ke zdrojovému systému SQL Server.
+1. V SSMS otevřete nové okno dotazu a připojte se ke zdrojové instanci SQL Server.
 
-1. Pomocí následujícího skriptu vypište seznam databází chráněných pomocí TDE a zjistěte název certifikátu, kterým je zašifrovaná migrovaná databáze:
+1. Pomocí následujícího skriptu můžete vypsat databáze chráněné TDE a získat název certifikátu, který chrání šifrování databáze, která se má migrovat:
 
    ```sql
    USE master
@@ -90,7 +90,7 @@ Následujícím postupem vyexportujete certifikát pomocí SQL Server Management
    WHERE dek.encryption_state = 3
    ```
 
-   ![seznam certifikátů TDE](./media/tde-certificate-migrate/onprem-certificate-list.png)
+   ![Seznam certifikátů TDE](./media/tde-certificate-migrate/onprem-certificate-list.png)
 
 1. Následujícím skriptem exportujte certifikát do dvojice souborů (.cer a .pvk), které obsahují veřejný a privátní klíč:
 
@@ -105,31 +105,31 @@ Následujícím postupem vyexportujete certifikát pomocí SQL Server Management
    )
    ```
 
-   ![certifikát TDE zálohy](./media/tde-certificate-migrate/backup-onprem-certificate.png)
+   ![Záložní certifikát TDE](./media/tde-certificate-migrate/backup-onprem-certificate.png)
 
-1. V konzole PowerShell zkopírujte data certifikátu z dvojice nově vytvořených souborů do souboru Personal Information Exchange (.pfx) pomocí nástroje Pvk2Pfx:
+1. Pomocí konzoly PowerShellu zkopírujte informace o certifikátu z páru nově vytvořených souborů do souboru. pfx pomocí nástroje Pvk2Pfx:
 
    ```cmd
    .\pvk2pfx -pvk c:/full_path/TDE_Cert.pvk  -pi "<SomeStrongPassword>" -spc c:/full_path/TDE_Cert.cer -pfx c:/full_path/TDE_Cert.pfx
    ```
 
-### <a name="export-certificate-from-certificate-store"></a>Export certifikátu z úložiště certifikátů
+### <a name="export-the-certificate-from-a-certificate-store"></a>Exportujte certifikát z úložiště certifikátů.
 
-Pokud je certifikát v úložišti certifikátů místního počítače systému SQL Server, můžete ho exportovat následujícím postupem:
+Pokud je certifikát uložený v úložišti certifikátů místního počítače SQL Server, můžete ho exportovat pomocí následujících kroků:
 
-1. Otevřete konzolu PowerShell a následujícím příkazem otevřete modul snap-in konzoly pro správu Certifikáty:
+1. Otevřete konzolu prostředí PowerShell a spuštěním následujícího příkazu otevřete modul snap-in Certifikáty konzoly Microsoft Management Console:
 
    ```cmd
    certlm
    ```
 
-2. V modulu snap-in Certifikáty konzoly MMC rozbalte podstrom Osobní -> Certifikáty a zobrazte seznam certifikátů
+2. V modulu snap-in Certifikáty konzoly MMC rozbalte položku cesta osobní > certifikáty, abyste viděli seznam certifikátů.
 
-3. Klikněte pravým tlačítkem na certifikát a pak vyberte Exportovat…
+3. Klikněte na certifikát pravým tlačítkem a klikněte na **exportovat**.
 
-4. Postupujte podle pokynů průvodce exportem certifikátu a privátní klíč exportujte do formátu Personal Information Exchange
+4. Postupujte podle pokynů průvodce a exportujte certifikát a soukromý klíč do formátu. pfx.
 
-## <a name="upload-certificate-to-azure-sql-managed-instance-using-azure-powershell-cmdlet"></a>Nahrání certifikátu do spravované instance Azure SQL pomocí rutiny Azure PowerShellu
+## <a name="upload-the-certificate-to-azure-sql-managed-instance-using-an-azure-powershell-cmdlet"></a>Nahrajte certifikát do spravované instance Azure SQL pomocí rutiny Azure PowerShell.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -160,7 +160,7 @@ Pokud je certifikát v úložišti certifikátů místního počítače systému
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
-Musíte nejdřív [nastavit Azure Key Vault](/azure/key-vault/key-vault-manage-with-cli2) se souborem *. pfx* .
+Nejdřív musíte [nastavit Trezor klíčů Azure](/azure/key-vault/key-vault-manage-with-cli2) pomocí souboru *. pfx* .
 
 1. Začněte s přípravnými kroky v prostředí PowerShell:
 
@@ -184,10 +184,10 @@ Musíte nejdřív [nastavit Azure Key Vault](/azure/key-vault/key-vault-manage-w
 
 * * *
 
-Certifikát je teď k dispozici zadané spravované instanci a záloha odpovídající chráněné databáze TDE se dá úspěšně obnovit.
+Certifikát je teď k dispozici zadané spravované instanci a zálohování odpovídající databáze chráněné TDE se dá úspěšně obnovit.
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto článku jste zjistili, jak migrovat certifikát s šifrovacím klíčem databáze chráněné transparentním šifrováním dat z místních nebo IaaS systémů SQL Server do spravované instance Azure SQL.
+V tomto článku jste zjistili, jak migrovat certifikát chránící šifrovací klíč databáze pomocí transparentní šifrování dat, z místní nebo IaaS SQL Server instance do spravované instance Azure SQL.
 
 Informace o tom, jak obnovit zálohu databáze do spravované instance Azure SQL, najdete v tématu [obnovení zálohy databáze do spravované instance Azure SQL](restore-sample-database-quickstart.md) .

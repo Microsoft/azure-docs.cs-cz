@@ -4,15 +4,15 @@ description: Přečtěte si o procesu srovnávacích testů vaší aplikace v Az
 author: roygara
 ms.author: rogarana
 ms.date: 01/11/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 640ec54e9634751d05c2cea90d7c03d02e7a3387
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a658bfc0815a03d0f6944d1c42eacdd04397458d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75720051"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660892"
 ---
 # <a name="benchmarking-a-disk"></a>Srovnávací testování disku
 

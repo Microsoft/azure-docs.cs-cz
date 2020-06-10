@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/11/2020
+ms.date: 06/08/2020
 ms.author: jingwang
-ms.openlocfilehash: 47824095e892ca3c919d2d871feb612758ab2308
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3ed1a952cb640fcd64808ba49e1a0937d71d769f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417840"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655635"
 ---
 # <a name="monitor-copy-activity"></a>Monitorování aktivity kopírování
 
@@ -48,7 +48,7 @@ Dolní **Podrobnosti a trvání spuštění** popisují klíčové kroky, který
 
 ## <a name="monitor-programmatically"></a>Monitorování prostřednictvím kódu programu
 
-V části > **výstup** **výsledků spuštění aktivity kopírování**, která se používá k vykreslování zobrazení monitorování uživatelského rozhraní, se také vrátí podrobnosti o spuštění aktivity kopírování a výkonnostní charakteristiky. Následuje úplný seznam vlastností, které mohou být vráceny. Uvidíte jenom vlastnosti, které se vztahují k vašemu scénáři kopírování. Informace o tom, jak programově monitorovat spuštění aktivit prostřednictvím kódu programu, najdete v tématu [programové sledování služby Azure Data Factory](monitor-programmatically.md).
+V části výstup **výsledků spuštění aktivity kopírování**  >  **Output** , která se používá k vykreslování zobrazení monitorování uživatelského rozhraní, se také vrátí podrobnosti o spuštění aktivity kopírování a výkonnostní charakteristiky. Následuje úplný seznam vlastností, které mohou být vráceny. Uvidíte jenom vlastnosti, které se vztahují k vašemu scénáři kopírování. Informace o tom, jak programově monitorovat spuštění aktivit prostřednictvím kódu programu, najdete v tématu [programové sledování služby Azure Data Factory](monitor-programmatically.md).
 
 | Název vlastnosti  | Popis | Jednotka ve výstupu |
 |:--- |:--- |:--- |
@@ -68,10 +68,10 @@ V části > **výstup** **výsledků spuštění aktivity kopírování**, kter�
 | sqlDwPolyBase | Určuje, zda se používá základna při kopírování dat do SQL Data Warehouse. | Logická hodnota |
 | redshiftUnload | Určuje, zda je při kopírování dat z RedShift použito uvolnění. | Logická hodnota |
 | hdfsDistcp | Určuje, zda se při kopírování dat ze HDFS používá DistCp. | Logická hodnota |
-| effectiveIntegrationRuntime | Prostředí Integration runtime (IR) nebo modulu runtime, které slouží k napájení spuštění aktivity, ve `<IR name> (<region if it's Azure IR>)`formátu. | Text (String) |
+| effectiveIntegrationRuntime | Prostředí Integration runtime (IR) nebo modulu runtime, které slouží k napájení spuštění aktivity, ve formátu `<IR name> (<region if it's Azure IR>)` . | Text (String) |
 | usedDataIntegrationUnits | Efektivní jednotky integrace dat během kopírování. | Hodnota Int32 |
 | usedParallelCopies | Efektivní parallelCopies během kopírování. | Hodnota Int32 |
-| redirectRowPath | Cesta k protokolu vynechaných nekompatibilních řádků v úložišti objektů blob, které konfigurujete `redirectIncompatibleRowSettings` ve vlastnosti. Podívejte se na odolnost [proti chybám](copy-activity-overview.md#fault-tolerance). | Text (String) |
+| redirectRowPath | Cesta k protokolu vynechaných nekompatibilních řádků v úložišti objektů blob, které konfigurujete ve `redirectIncompatibleRowSettings` Vlastnosti. Podívejte se na odolnost [proti chybám](copy-activity-overview.md#fault-tolerance). | Text (String) |
 | executionDetails | Další podrobnosti o fázích, které aktivita kopírování prochází, a o příslušných krocích, trváních, konfiguracích a tak dále. Nedoporučujeme tuto část analyzovat, protože by se mohla změnit. Abyste lépe pochopili, jak vám pomůže pochopit a řešit potíže s kopírováním, přečtěte si téma [monitorování vizuálně](#monitor-visually) . | Pole |
 | perfRecommendation | Kopírování tipů pro ladění výkonu. Podrobnosti najdete v tématu [tipy pro ladění výkonu](copy-activity-performance-troubleshooting.md#performance-tuning-tips) . | Pole |
 
