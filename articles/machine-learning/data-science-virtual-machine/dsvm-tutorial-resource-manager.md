@@ -1,7 +1,7 @@
 ---
-title: Kurz – vytvoření šablony Data Science VM-Správce prostředků
+title: 'Rychlý Start: Vytvoření šablony Data Science VM-Správce prostředků'
 titleSuffix: Azure Data Science Virtual Machine
-description: V tomto kurzu použijete šablonu Azure Resource Manager k rychlému nasazení Data Science Virtual Machine
+description: V tomto rychlém startu použijete šablonu Azure Resource Manager k rychlému nasazení Data Science Virtual Machine
 services: machine-learning
 author: lobrien
 ms.author: laobri
@@ -9,18 +9,18 @@ ms.custom: subject-armqs
 ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
-ms.topic: tutorial
-ms.openlocfilehash: a0bce8a3de7832b589646668b877ce8396d16bc8
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.topic: quickstart
+ms.openlocfilehash: e89f3d85156081106f4e1dbb55ee6c895e7e7a2d
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84562048"
+ms.locfileid: "84636746"
 ---
 # <a name="tutorial-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Kurz: vytvoření Data Science Virtual Machine Ubuntu pomocí šablony Správce prostředků
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto kurzu se dozvíte, jak vytvořit Ubuntu 18,04 Data Science Virtual Machine pomocí šablony Azure Resource Manager. Data Virtual Machines pro datové vědy jsou cloudové virtuální počítače, které jsou předem nahrané pomocí sady datových vědy a architektur a nástrojů strojového učení. Při nasazení na výpočetní prostředky využívající GPU jsou všechny nástroje a knihovny nakonfigurované tak, aby používaly GPU. 
+V tomto rychlém startu se dozvíte, jak vytvořit Ubuntu 18,04 Data Science Virtual Machine pomocí šablony Azure Resource Manager. Data Virtual Machines pro datové vědy jsou cloudové virtuální počítače, které jsou předem nahrané pomocí sady datových vědy a architektur a nástrojů strojového učení. Při nasazení na výpočetní prostředky využívající GPU jsou všechny nástroje a knihovny nakonfigurované tak, aby používaly GPU. 
 
 [!INCLUDE [About Azure Resource Manager](../../../includes/resource-manager-quickstart-introduction.md)]
 
@@ -72,7 +72,7 @@ Když spustíte výše uvedený příkaz, zadejte:
 Postup zobrazení Data Science Virtual Machine:
 
 1. Přejděte na https://portal.azure.com. 
-1. Přihlášení 
+1. Přihlásit se 
 1. Vyberte skupinu prostředků, kterou jste právě vytvořili.
 
 Zobrazí se informace o skupině prostředků: 
@@ -94,7 +94,7 @@ echo "Press [ENTER] to continue ..."
 
 ## <a name="next-steps"></a>Další kroky
 
-V tomto kurzu jste vytvořili Data Science Virtual Machine ze šablony Azure Resource Manager. 
+V tomto rychlém startu jste vytvořili Data Science Virtual Machine ze šablony Azure Resource Manager. 
 
 > [!div class="nextstepaction"]
 > [Ukázkové programy & návody ML](dsvm-samples-and-walkthroughs.md)

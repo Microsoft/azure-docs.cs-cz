@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c23528fbb60b471a7613f372fe5316a4883ae733
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: c6544a0536a99261d1ebc13748a5365b9893e789
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310610"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605190"
 ---
 # <a name="set-up-msix-app-attach"></a>Nastavení připojení aplikace MSIX
 
@@ -90,7 +90,7 @@ rem Disable Windows Update:
 sc config wuauserv start=disabled
 ```
 
-Po zakázání automatických aktualizací musíte povolit technologii Hyper-V, protože pro přípravu a odpojení VHD k odinstalaci použijete příkaz mety-VHD. 
+Po zakázání automatických aktualizací je nutné povolit technologii Hyper-V, protože pro přípravu a odpojení VHD k odinstalaci použijete příkaz Mount-VHD. 
 
 ```powershell
 Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All

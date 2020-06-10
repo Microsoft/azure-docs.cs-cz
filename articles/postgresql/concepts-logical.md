@@ -5,41 +5,57 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 03/31/2020
-ms.openlocfilehash: 1213b38f2b67e8fed179cfda4308943808893e1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/09/2020
+ms.openlocfilehash: ef7c5644ad8ec1e3816f20d4e5db9ad7d39a4609
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80522144"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84634559"
 ---
 # <a name="logical-decoding"></a>Logické dekódování
  
 [Logické dekódování v PostgreSQL](https://www.postgresql.org/docs/current/logicaldecoding.html) umožňuje streamovat změny dat na externí příjemce. Logické dekódování se používá v oblíbených případech pro streamování událostí a Change Data Capture.
 
 Logické dekódování používá výstupní modul plug-in pro převod protokolu Postgres (WAL) na zápis do čitelného formátu. Azure Database for PostgreSQL poskytuje dva výstupní moduly plug-in: [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) a [wal2json](https://github.com/eulerto/wal2json).
- 
 
 > [!NOTE]
 > Logické dekódování je ve verzi Public Preview na serveru Azure Database for PostgreSQL-Single.
 
 
-## <a name="set-up-your-server"></a>Nastavení serveru
-Pokud chcete začít používat logické dekódování, umožněte serveru ukládat a streamovat WAL. 
+## <a name="set-up-your-server"></a>Nastavení serveru 
+Logické dekódování a [repliky čtení](concepts-read-replicas.md) jsou závislé na Postgres zápisu předem (WAL) pro informace. Tyto dvě funkce vyžadují různé úrovně protokolování z Postgres. Logické dekódování potřebuje vyšší úroveň protokolování než repliky čtení.
 
-1. Nastavte Azure. replication_support na `logical` používání rozhraní příkazového řádku Azure CLI. 
+Ke konfiguraci správné úrovně protokolování použijte parametr podpory replikace Azure. Podpora replikace Azure má tři možnosti nastavení:
+
+* **Off** – vloží do Wal minimální informace. Toto nastavení není k dispozici na většině Azure Database for PostgreSQL serverů.  
+* **Replika** – přesnější podrobnější informace než **vypnuto**. Toto je minimální úroveň protokolování potřebného pro fungování [replik pro čtení](concepts-read-replicas.md) . Toto nastavení je na většině serverů výchozí.
+* **Logický** – další podrobnější informace než **replika** Toto je minimální úroveň protokolování pro logické dekódování, které funguje. V tomto nastavení fungují i repliky pro čtení.
+
+Po změně tohoto parametru je nutné restartovat server. Interně tento parametr nastaví parametry Postgres `wal_level` , `max_replication_slots` a `max_wal_senders` .
+
+### <a name="using-azure-cli"></a>Použití Azure CLI
+
+1. Nastavte Azure. replication_support na `logical` .
    ```
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
-   ```
+   ``` 
 
-   > [!NOTE]
-   > Pokud používáte repliky pro čtení, Azure. replication_support nastavíte `logical` k povolení spouštění replik. Pokud přerušíte použití logického dekódování, změňte nastavení zpět `replica`na. 
-
-
-2. Restartujte server, aby se změny projevily.
+2. Restartujte server, aby se změna projevila.
    ```
    az postgres server restart --resource-group mygroup --name myserver
    ```
+
+### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
+
+1. Nastavte podporu replikace Azure na **logickou**. Vyberte **Uložit**.
+
+   ![Azure Database for PostgreSQL – replikace – podpora replikace Azure](./media/concepts-logical/replication-support.png)
+
+2. Restartujte server, aby se změna projevila, a to tak, že vyberete **Ano**.
+
+   ![Azure Database for PostgreSQL-replikace – potvrzení restartování](./media/concepts-logical/confirm-restart.png)
+
 
 ## <a name="start-logical-decoding"></a>Spustit logické dekódování
 
@@ -61,7 +77,7 @@ V následujícím příkladu používáme rozhraní SQL s modulem plug-in wal2js
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. Vydejte příkazy SQL. Příklad:
+2. Vydejte příkazy SQL. Například:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,
@@ -135,13 +151,13 @@ SELECT * FROM pg_replication_slots;
 ## <a name="how-to-drop-a-slot"></a>Postup vyřazení slotu
 Pokud slot pro replikaci aktivně nespotřebováváte, měli byste ho vyřadit.
 
-Postup vyřazení slotu replikace `test_slot` s názvem pomocí SQL:
+Postup vyřazení slotu replikace s názvem `test_slot` pomocí SQL:
 ```SQL
 SELECT pg_drop_replication_slot('test_slot');
 ```
 
 > [!IMPORTANT]
-> Pokud přestanete používat logické dekódování, změňte Azure. replication_support zpět `replica` na `off`nebo. Podrobnosti WAL uchované `logical` jsou podrobněji podrobnější a měly by být zakázány, pokud se logické dekódování nepoužívá. 
+> Pokud přestanete používat logické dekódování, změňte Azure. replication_support zpět na `replica` nebo `off` . Podrobnosti WAL uchované `logical` jsou podrobněji podrobnější a měly by být zakázány, pokud se logické dekódování nepoužívá. 
 
  
 ## <a name="next-steps"></a>Další kroky

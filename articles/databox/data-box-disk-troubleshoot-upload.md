@@ -6,15 +6,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/17/2019
 ms.author: alkohli
-ms.openlocfilehash: 7c14988706ef193ef5da868c55f6c4f55e7d98f9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3633a648f551d33fb9cb12021c2c07bbf1a235dc
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79260134"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610572"
 ---
 # <a name="understand-logs-to-troubleshoot-data-upload-issues-in-azure-data-box-disk"></a>Principy protokolů pro řešení potíží s nahráváním dat v Azure Data Box Disk
 
@@ -22,7 +22,7 @@ Tento článek se týká Microsoft Azure Data Box Disk a popisuje problémy, kte
 
 ## <a name="about-upload-logs"></a>O nahrání protokolů
 
-Když se data nahrají do Azure v datacentru, `_error.xml` vygenerují se `_verbose.xml` soubory pro každý účet úložiště. Tyto protokoly se nahrají do stejného účtu úložiště, který jste použili k nahrání dat. 
+Když se data nahrají do Azure v datacentru, `_error.xml` `_verbose.xml` vygenerují se soubory pro každý účet úložiště. Tyto protokoly se nahrají do stejného účtu úložiště, který jste použili k nahrání dat. 
 
 Oba protokoly jsou ve stejném formátu a obsahují popisy XML událostí, ke kterým došlo při kopírování dat z disku do účtu Azure Storage.
 
@@ -91,7 +91,7 @@ Ukázka `_verbose.xml` je uvedena níže. V tomto případě se objednávka úsp
 </DriveLog>
 ```
 
-Pro stejné pořadí `_error.xml` je ukázka uvedená níže.
+Pro stejné pořadí je ukázka uvedená `_error.xml` níže.
 
 ```xml
 
@@ -114,7 +114,7 @@ Ukázka `_error.xml` je zobrazena níže, kde se objednávka dokončila s chybam
 
 Soubor s chybou v tomto případě obsahuje `Summary` oddíl a další oddíl, který obsahuje všechny chyby na úrovni souborů. 
 
-`Summary` Obsahuje `ValidationErrors` a `CopyErrors`. V tomto případě se 8 souborů nebo složek nahrály do Azure a nedošlo k chybám ověření. Po zkopírování dat do Azure Storage účtu se úspěšně nahrály 5 souborů nebo složek. Zbývající 3 soubory nebo složky se přejmenovaly podle konvencí vytváření názvů kontejnerů Azure a pak se úspěšně nahrály do Azure.
+`Summary`Obsahuje `ValidationErrors` a `CopyErrors` . V tomto případě se 8 souborů nebo složek nahrály do Azure a nedošlo k chybám ověření. Po zkopírování dat do Azure Storage účtu se úspěšně nahrály 5 souborů nebo složek. Zbývající 3 soubory nebo složky se přejmenovaly podle konvencí vytváření názvů kontejnerů Azure a pak se úspěšně nahrály do Azure.
 
 Stav na úrovni souboru je v `BlobStatus` této části popisuje všechny akce prováděné při nahrávání objektů BLOB. V takovém případě se tři kontejnery přejmenují, protože složky, do kterých se data zkopírovala, nesplňovaly zásady vytváření názvů Azure pro kontejnery. Pro objekty blob nahrané v těchto kontejnerech se jedná o nový název kontejneru, cestu k objektu BLOB v Azure, původní neplatnou cestu k souboru a velikost objektu BLOB je obsažená.
     
@@ -168,14 +168,14 @@ Chyby generované při nahrávání dat do Azure jsou shrnuté v následující 
 |`ManagedDiskCreationTerminalFailure` | Nebylo možné nahrávat jako spravované disky. Soubory jsou k dispozici v pracovním účtu úložiště jako objekty blob stránky. Objekty blob stránky můžete převést ručně na spravované disky.  |
 |`DiskConversionNotStartedTierInfoMissing` | Vzhledem k tomu, že se soubor VHD zkopíroval mimo složky předvytvořené vrstvy, nevytvořil se spravovaný disk. Soubor se nahraje jako objekt blob stránky do přípravného účtu úložiště, jak je zadaný během vytváření objednávky. Můžete ho převést ručně na spravovaný disk.|
 |`InvalidWorkitem` | Data nešlo nahrát, protože neodpovídají konvencím názvů a omezení pro Azure.|
-|`InvalidPageBlobUploadAsBlockBlob` | Nahráno jako objekty blob bloku v kontejneru s `databoxdisk-invalid-pb-`předponou.|
-|`InvalidAzureFileUploadAsBlockBlob` | Nahráno jako objekty blob bloku v kontejneru s `databoxdisk-invalid-af`předponou-.|
-|`InvalidManagedDiskUploadAsBlockBlob` | Nahráno jako objekty blob bloku v kontejneru s `databoxdisk-invalid-md`předponou-.|
-|`InvalidManagedDiskUploadAsPageBlob` |Nahráno jako objekty blob stránky v kontejneru s `databoxdisk-invalid-md-`předponou. |
-|`MovedToOverflowShare` |Nahrálo se soubory do nové sdílené složky, protože původní velikost sdílené složky překročila maximální limit velikosti Azure. Název nového sdílení souborů má příponu s `-2`názvem.   |
-|`MovedToDefaultAzureShare` |Nahrálo se soubory, které nebyly součástí žádné složky, do výchozí sdílené složky. Název sdílené složky začíná na `databox-`. |
-|`ContainerRenamed` |Kontejner pro tyto soubory neodpovídal zásadám vytváření názvů Azure a je přejmenován. Nový název začíná příponou `databox-` a má příponu s hodnotou hash SHA1 původního názvu. |
-|`ShareRenamed` |Sdílená složka pro tyto soubory nesplňovala zásady vytváření názvů Azure a je přejmenovaná. Nový název začíná příponou `databox-` a má příponu s hodnotou hash SHA1 původního názvu. |
+|`InvalidPageBlobUploadAsBlockBlob` | Nahráno jako objekty blob bloku v kontejneru s předponou `databoxdisk-invalid-pb-` .|
+|`InvalidAzureFileUploadAsBlockBlob` | Nahráno jako objekty blob bloku v kontejneru s předponou `databoxdisk-invalid-af` -.|
+|`InvalidManagedDiskUploadAsBlockBlob` | Nahráno jako objekty blob bloku v kontejneru s předponou `databoxdisk-invalid-md` -.|
+|`InvalidManagedDiskUploadAsPageBlob` |Nahráno jako objekty blob stránky v kontejneru s předponou `databoxdisk-invalid-md-` . |
+|`MovedToOverflowShare` |Nahrálo se soubory do nové sdílené složky, protože původní velikost sdílené složky překročila maximální limit velikosti Azure. Název nového sdílení souborů má příponu s názvem `-2` .   |
+|`MovedToDefaultAzureShare` |Nahrálo se soubory, které nebyly součástí žádné složky, do výchozí sdílené složky. Název sdílené složky začíná na `databox-` . |
+|`ContainerRenamed` |Kontejner pro tyto soubory neodpovídal zásadám vytváření názvů Azure a je přejmenován. Nový název začíná `databox-` příponou a má příponu s hodnotou hash SHA1 původního názvu. |
+|`ShareRenamed` |Sdílená složka pro tyto soubory nesplňovala zásady vytváření názvů Azure a je přejmenovaná. Nový název začíná `databox-` příponou a má příponu s hodnotou hash SHA1 původního názvu. |
 |`BlobRenamed` |Tyto soubory nesplňovaly zásady vytváření názvů Azure a přejmenovaly se. V `BlobPath` poli pro nový název ověřte. |
 |`FileRenamed` |Tyto soubory nesplňovaly zásady vytváření názvů Azure a přejmenovaly se. V `FileStoragePath` poli pro nový název ověřte. |
 |`DiskRenamed` |Tyto soubory nesplňovaly zásady vytváření názvů Azure a přejmenovaly se. V `BlobPath` poli pro nový název ověřte. |

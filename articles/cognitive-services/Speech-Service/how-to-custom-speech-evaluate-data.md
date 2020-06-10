@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: f710b8bfdd4dcfd3b7a63aa0b457036ab7037016
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27229d36dbe9592b6ad6fc2740f7714f99fd6857
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "74806092"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629062"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>Vyhodnocení přesnosti služby Custom Speech
 
@@ -52,7 +52,7 @@ Pokud chcete testovat kvalitu modelu standardních hodnot řeči od Microsoftu n
 Chcete-li vyhodnotit modely vedle sebe:
 
 1. Přihlaste se k [portálu Custom Speech](https://speech.microsoft.com/customspeech).
-2. **> Custom Speech > testování**, přejděte na text na řeč.
+2. Přejít na **text > řeči Custom Speech > [název projektu] > testování**.
 3. Klikněte na **Přidat test**.
 4. Vyberte možnost **vyhodnotit přesnost**. Dejte testu název, popis a vyberte si zvukovou datovou sadu přepisu a s popiskem.
 5. Vyberte až dva modely, které chcete testovat.
@@ -69,7 +69,7 @@ Po dokončení testu, který je označen změnou stavu na *úspěch*, najdete č
 * [Trénování vašeho modelu](how-to-custom-speech-train-model.md)
 * [Nasazení modelu](how-to-custom-speech-deploy-model.md)
 
-## <a name="additional-resources"></a>Další materiály a zdroje informací
+## <a name="additional-resources"></a>Další zdroje
 
 * [Příprava a testování dat](how-to-custom-speech-test-data.md)
 * [Kontrola dat](how-to-custom-speech-inspect-data.md)

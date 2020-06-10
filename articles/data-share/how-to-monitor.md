@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 15089dd99de0471c244a6c0d93931438442599a7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3d13919a54e170d410abba5da66172c2029d9b5
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73490514"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636270"
 ---
 # <a name="monitor-azure-data-share"></a>Monitorování služby Azure Data Share  
 
@@ -40,13 +40,17 @@ Projděte si stav vašich předplatných sdílení tak, že přejdete na odeslan
 
 ## <a name="snapshot-history"></a>Historie snímků 
 
-Na kartě Historie můžete zobrazit snímky, které byly zkopírovány do tenanta data Consumer. Můžete monitorovat četnost a dobu trvání každého intervalu snímků. 
+Na kartě **Historie** sdílené složky můžete zobrazit, kdy se data zkopírují z poskytovatele dat do úložiště dat příjemce dat. Můžete monitorovat četnost, dobu trvání a stav každého snímku. 
 
 ![Historie snímků](./media/sent-shares.png "Historie snímků") 
 
-Další podrobnosti o každém spuštění snímku můžete zobrazit kliknutím na datum zahájení spuštění. 
+Další podrobnosti o každém spuštění snímku můžete zobrazit kliknutím na datum zahájení spuštění. Pak kliknutím na stav pro každou datovou sadu zobrazíte množství přenesených dat, počet kopírovaných souborů nebo záznamů, dobu trvání snímku, počet použitých virtuální jádra a chybové zprávy, pokud existuje. 
 
-Ve výchozím nastavení se zobrazí historie snímků po dobu až 30 dnů. Pokud potřebujete zobrazit historii více než 30 dnů, přejděte do části monitorování-> diagnostické nastavení a vyberte **Přidat nastavení diagnostiky**. Budete muset vybrat účet úložiště, do kterého se mají ukládat tyto protokoly. 
+Zobrazí se až 30 dní historie snímků. Pokud potřebujete uložit a Zobrazit více než 30 dní pro historii, můžete využít nastavení diagnostiky.
+
+## <a name="diagnostic-setting"></a>Nastavení diagnostiky
+
+Nastavení diagnostiky můžete nakonfigurovat tak, aby ušetřilo data protokolu nebo události. Přejděte na monitorování – nastavení diagnostiky > a vyberte **Přidat nastavení diagnostiky**. Vyberte data protokolu nebo události, které vás zajímají, a kam je chcete uložit nebo odeslat. 
 
 ![Historie snímků](./media/diagnostic-settings.png "Nastavení diagnostiky") 
 

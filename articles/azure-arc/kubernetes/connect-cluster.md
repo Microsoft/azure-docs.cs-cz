@@ -9,25 +9,48 @@ ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions
-ms.openlocfilehash: 868964361e6089eb3417b0f2e2681d82d4aa0b75
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 85ef8bb9868784df66199a4aea261e6b752ae7f8
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299639"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636253"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
 Připojte cluster Kubernetes ke službě Azure ARC.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Ověřte, že máte připravené tyto požadavky:
 
-* Cluster Kubernetes, který je v provozu
-* Budete potřebovat přístup s kubeconfig a přístupem správce clusteru.
+* Cluster Kubernetes, který je v provozu. Pokud nemáte existující cluster Kubernetes, můžete k vytvoření testovacího clusteru použít jedno z následujících pokynů:
+  * Vytvoření clusteru Kubernetes pomocí [Kubernetes v Docker (druh)](https://kind.sigs.k8s.io/)
+  * Vytvoření clusteru Kubernetes pomocí Docker pro [Mac](https://docs.docker.com/docker-for-mac/#kubernetes) nebo [Windows](https://docs.docker.com/docker-for-windows/#kubernetes)
+* Pro nasazení agentů Kubernetes s podporou ARC budete potřebovat soubor kubeconfig pro přístup ke clusteru a roli Správce clusteru v clusteru.
 * Uživatel nebo instanční objekt použitý s `az login` příkazy a `az connectedk8s connect` musí mít oprávnění číst a zapsat pro typ prostředku Microsoft. Kubernetes/connectedclusters. Roli "připojení Azure ARC pro Kubernetes s těmito oprávněními" lze použít pro přiřazení rolí pro uživatele nebo instanční objekt používaný s Azure CLI pro registraci.
-* Nejnovější verze rozšíření *connectedk8s* a *k8sconfiguration*
+* K registraci clusteru pomocí rozšíření connectedk8s se vyžaduje Helm 3. Pro splnění tohoto požadavku [nainstalujte nejnovější verzi Helm 3](https://helm.sh/docs/intro/install) .
+* Pro instalaci rozšíření CLI s povoleným Kubernetes rozhraním Azure se vyžaduje Azure CLI verze 2.3 + +. Nainstalujte rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nebo aktualizujte na nejnovější verzi, abyste měli jistotu, že máte Azure CLI verze 2.3 +.
+* Instalace rozšíření Kubernetes CLI s povoleným ARC:
+  
+  Nainstalujte `connectedk8s` rozšíření, které vám pomůže připojit clustery Kubernetes do Azure:
+  
+  ```console
+  az extension add --name connectedk8s
+  ```
+  
+  Nainstalovat `k8sconfiguration` rozšíření:
+  
+  ```console
+  az extension add --name k8sconfiguration
+  ```
+  
+  Pokud chcete tato rozšíření později aktualizovat, spusťte následující příkazy:
+  
+  ```console
+  az extension update --name connectedk8s
+  az extension update --name k8sconfiguration
+  ```
 
 ## <a name="supported-regions"></a>Podporované oblasti
 
@@ -69,31 +92,6 @@ az provider show -n Microsoft.Kubernetes -o table
 ```console
 az provider show -n Microsoft.KubernetesConfiguration -o table
 ```
-
-## <a name="install-azure-cli-and-arc-enabled-kubernetes-extensions"></a>Instalace rozšíření Kubernetes pro rozhraní příkazového řádku Azure a ARC
-Pro instalaci rozšíření CLI s povoleným Kubernetes rozhraním Azure se vyžaduje Azure CLI verze 2.3 + +. Nainstalujte rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) nebo aktualizujte na nejnovější verzi, abyste měli jistotu, že máte Azure CLI verze 2.3 +.
-
-Nainstalujte `connectedk8s` rozšíření, které vám pomůže připojit clustery Kubernetes do Azure:
-
-```console
-az extension add --name connectedk8s
-```
-
-Nainstalovat `k8sconfiguration` rozšíření:
-
-```console
-az extension add --name k8sconfiguration
-```
-
-Spuštěním následujících příkazů aktualizujte rozšíření na nejnovější verze.
-
-```console
-az extension update --name connectedk8s
-az extension update --name k8sconfiguration
-```
-
-## <a name="install-helm"></a>Nainstalovat Helm
-K registraci clusteru pomocí rozšíření connectedk8s se vyžaduje Helm 3. Pro splnění tohoto požadavku [nainstalujte nejnovější verzi Helm 3](https://helm.sh/docs/intro/install) .
 
 ## <a name="create-a-resource-group"></a>Vytvoření skupiny prostředků
 
@@ -171,7 +169,7 @@ Name           Location    ResourceGroup
 AzureArcTest1  eastus      AzureArcTest
 ```
 
-Tento prostředek můžete zobrazit také na [portálu Azure Preview](https://preview.portal.azure.com/). Jakmile máte portál otevřený v prohlížeči, přejděte do skupiny prostředků a prostředku Kubernetes s povoleným ARC Azure na základě názvů prostředků a názvů skupin prostředků, které se použily dříve v `az connectedk8s connect` příkazu.
+Tento prostředek můžete zobrazit také na [Azure Portal](https://portal.azure.com/). Jakmile máte portál otevřený v prohlížeči, přejděte do skupiny prostředků a prostředku Kubernetes s povoleným ARC Azure na základě názvů prostředků a názvů skupin prostředků, které se použily dříve v `az connectedk8s connect` příkazu.
 
 Kubernetes s povoleným obloukem Azure nasadí několik operátorů do `azure-arc` oboru názvů. Tato nasazení a lusky můžete zobrazit tady:
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/15/2019
-ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 201bb40e5024442587f5508886da7e844f35be40
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.custom: H1Hack27Feb2017,hdinsightactive, tracking-python
+ms.openlocfilehash: 684da980bce96cdf5ec06a41c3026ea59b2756b2
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74148403"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610226"
 ---
 # <a name="use-python-user-defined-functions-udf-with-apache-hive-and-apache-pig-in-hdinsight"></a>Použití uživatelem definovaných funkcí Pythonu (UDF) s Apache Hive a Apache prasetem v HDInsight
 
@@ -29,8 +29,8 @@ HDInsight také zahrnuje Jython, což je implementace Pythonu napsaná v jazyce 
 
 * **Cluster Hadoop ve službě HDInsight**. Viz Začínáme [se službou HDInsight v systému Linux](apache-hadoop-linux-tutorial-get-started.md).
 * **Klient SSH**. Další informace najdete v tématu [připojení ke službě HDInsight (Apache Hadoop) pomocí SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
-* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. `wasb://` To Azure Storage `abfs://` pro Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 nebo ADL://. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl wasbs://.  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
-* **Možná změna konfigurace úložiště.**  Pokud používáte druh `BlobStorage`účtu úložiště, podívejte se na téma [Konfigurace úložiště](#storage-configuration) .
+* [Schéma identifikátoru URI](../hdinsight-hadoop-linux-information.md#URI-and-scheme) pro primární úložiště clusterů. To Azure Storage pro `wasb://` `abfs://` Azure Data Lake Storage Gen1 Azure Data Lake Storage Gen2 nebo ADL://. Pokud je pro Azure Storage povolený zabezpečený přenos, identifikátor URI by byl wasbs://.  Viz také [zabezpečený přenos](../../storage/common/storage-require-secure-transfer.md).
+* **Možná změna konfigurace úložiště.**  Pokud používáte druh účtu úložiště, podívejte se na téma [Konfigurace úložiště](#storage-configuration) `BlobStorage` .
 * Nepovinný parametr.  Pokud plánujete používat PowerShell, budete potřebovat nainstalovaný [modul AZ Module](https://docs.microsoft.com/powershell/azure/new-azureps-module-az) .
 
 > [!NOTE]  
@@ -38,7 +38,7 @@ HDInsight také zahrnuje Jython, což je implementace Pythonu napsaná v jazyce 
 
 ## <a name="storage-configuration"></a>Konfigurace úložiště
 
-Pokud je účet úložiště použitý jako typ `Storage (general purpose v1)` nebo `StorageV2 (general purpose v2)`, není nutná žádná akce.  Proces v tomto článku bude mít výstup alespoň `/tezstaging`do.  Výchozí konfigurace Hadoop bude obsažena `/tezstaging` v `fs.azure.page.blob.dir` konfigurační proměnné v `core-site.xml` nástroji for Service `HDFS`.  Tato konfigurace způsobí, že se výstup do adresáře načte do objektů blob stránky, které se nepodporují pro `BlobStorage`druh účtu úložiště.  Chcete- `BlobStorage` li použít tento článek, `/tezstaging` odeberte z `fs.azure.page.blob.dir` konfigurační proměnné.  Ke konfiguraci je možné přistupovat z [uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).  V opačném případě se zobrazí chybová zpráva:`Page blob is not supported for this account type.`
+Pokud je účet úložiště použitý jako typ nebo, není nutná žádná `Storage (general purpose v1)` Akce `StorageV2 (general purpose v2)` .  Proces v tomto článku bude mít výstup alespoň do `/tezstaging` .  Výchozí konfigurace Hadoop bude obsažena `/tezstaging` v `fs.azure.page.blob.dir` konfigurační proměnné v nástroji `core-site.xml` for Service `HDFS` .  Tato konfigurace způsobí, že se výstup do adresáře načte do objektů blob stránky, které se nepodporují pro druh účtu úložiště `BlobStorage` .  Chcete-li použít `BlobStorage` Tento článek, odeberte `/tezstaging` z `fs.azure.page.blob.dir` konfigurační proměnné.  Ke konfiguraci je možné přistupovat z [uživatelského rozhraní Ambari](../hdinsight-hadoop-manage-ambari.md).  V opačném případě se zobrazí chybová zpráva:`Page blob is not supported for this account type.`
 
 > [!WARNING]  
 > Kroky v tomto dokumentu provedou následující předpoklady:  
@@ -68,15 +68,15 @@ ORDER BY clientid LIMIT 50;
 
 Tady je příklad:
 
-1. `add file` Příkaz na začátku souboru přidá `hiveudf.py` soubor do distribuované mezipaměti, takže bude přístupný pro všechny uzly v clusteru.
-2. `SELECT TRANSFORM ... USING` Příkaz vybere data z `hivesampletable`. Také předá do `hiveudf.py` skriptu hodnoty ClientID, devicemake a devicemodel.
-3. `AS` Klauzule popisuje pole vrácená z `hiveudf.py`.
+1. `add file`Příkaz na začátku souboru přidá `hiveudf.py` soubor do distribuované mezipaměti, takže bude přístupný pro všechny uzly v clusteru.
+2. `SELECT TRANSFORM ... USING`Příkaz vybere data z `hivesampletable` . Také předá do skriptu hodnoty ClientID, devicemake a devicemodel `hiveudf.py` .
+3. `AS`Klauzule popisuje pole vrácená z `hiveudf.py` .
 
 <a name="streamingpy"></a>
 
 ### <a name="create-file"></a>Vytvořit soubor
 
-Ve vývojovém prostředí vytvořte textový soubor s názvem `hiveudf.py`. Jako obsah souboru použijte následující kód:
+Ve vývojovém prostředí vytvořte textový soubor s názvem `hiveudf.py` . Jako obsah souboru použijte následující kód:
 
 ```python
 #!/usr/bin/env python
@@ -98,12 +98,12 @@ while True:
 Tento skript provede následující akce:
 
 1. Přečte řádek dat ze standardního vstupu.
-2. Koncový znak nového řádku se odebere pomocí `string.strip(line, "\n ")`.
+2. Koncový znak nového řádku se odebere pomocí `string.strip(line, "\n ")` .
 3. Při zpracování datového proudu obsahuje jeden řádek všechny hodnoty se znakem tabulátoru mezi každou hodnotou. Takže `string.split(line, "\t")` se dá použít k rozdělení vstupu na jednotlivých kartách a vrácení pouze polí.
 4. Po dokončení zpracování musí být výstup zapsán do STDOUT jako jeden řádek, přičemž karta mezi jednotlivými poli. Například, `print "\t".join([clientid, phone_label, hashlib.md5(phone_label).hexdigest()])`.
-5. Smyčka se `while` opakuje, `line` dokud není přečtena žádná.
+5. `while`Smyčka se opakuje `line` , dokud není přečtena žádná.
 
-Výstup skriptu je zřetězení vstupních hodnot pro `devicemake` a `devicemodel`a hodnotu hash zřetězené hodnoty.
+Výstup skriptu je zřetězení vstupních hodnot pro a a hodnotu `devicemake` `devicemodel` hash zřetězené hodnoty.
 
 ### <a name="upload-file-shell"></a>Nahrát soubor (prostředí)
 
@@ -164,7 +164,7 @@ V následujících příkazech nahraďte `sshuser` skutečným uživatelským jm
 
 ### <a name="upload-file-powershell"></a>Nahrát soubor (PowerShell)
 
-PowerShell se dá použít taky ke vzdálenému spuštění dotazů na podregistr. Ujistěte se, kde `hiveudf.py` je umístěn pracovní adresář.  Pomocí následujícího skriptu prostředí PowerShell spusťte dotaz na podregistr, který používá `hiveudf.py` skript:
+PowerShell se dá použít taky ke vzdálenému spuštění dotazů na podregistr. Ujistěte se, kde je umístěn pracovní adresář `hiveudf.py` .  Pomocí následujícího skriptu prostředí PowerShell spusťte dotaz na podregistr, který používá `hiveudf.py` skript:
 
 ```PowerShell
 # Login to your Azure subscription
@@ -294,7 +294,7 @@ Skript Pythonu se dá použít jako UDF z prasete prostřednictvím `GENERATE` p
 * Jython běží na JVM a dá se nativně volat z prasete.
 * C Python je externí proces, takže data z prasete v JVM se odesílají do skriptu spuštěného v rámci procesu Pythonu. Výstup skriptu Pythonu se pošle zpátky do prasete.
 
-K určení interpretu Pythonu použijte `register` při odkazování na skript Pythonu. V následujících příkladech jsou registrovány skripty `myfuncs`pomocí prasete jako:
+K určení interpretu Pythonu použijte `register` při odkazování na skript Pythonu. V následujících příkladech jsou registrovány skripty pomocí prasete jako `myfuncs` :
 
 * **Použití Jython**:`register '/path/to/pigudf.py' using jython as myfuncs;`
 * **Použití jazyka C Python**:`register '/path/to/pigudf.py' using streaming_python as myfuncs;`
@@ -313,14 +313,14 @@ DUMP DETAILS;
 
 Tady je příklad:
 
-1. První řádek načte Ukázkový datový soubor `sample.log` do. `LOGS` Také definuje každý záznam jako `chararray`.
-2. Další řádek filtruje všechny hodnoty null a ukládá výsledek operace do `LOG`.
-3. `LOG` Dále provede iteraci záznamů v a používá `GENERATE` k vyvolání `create_structure` metody obsažené v skriptu Python/Jython, který byl načten jako. `myfuncs` `LINE`slouží k předání aktuálního záznamu do funkce.
+1. První řádek načte Ukázkový datový soubor `sample.log` do `LOGS` . Také definuje každý záznam jako `chararray` .
+2. Další řádek filtruje všechny hodnoty null a ukládá výsledek operace do `LOG` .
+3. Dále provede iteraci záznamů v `LOG` a používá `GENERATE` k vyvolání `create_structure` metody obsažené v skriptu Python/Jython, který byl načten jako `myfuncs` . `LINE`slouží k předání aktuálního záznamu do funkce.
 4. Nakonec jsou výstupy do STDOUT pomocí `DUMP` příkazu. Tento příkaz zobrazí výsledky po dokončení operace.
 
 ### <a name="create-file"></a>Vytvořit soubor
 
-Ve vývojovém prostředí vytvořte textový soubor s názvem `pigudf.py`. Jako obsah souboru použijte následující kód:
+Ve vývojovém prostředí vytvořte textový soubor s názvem `pigudf.py` . Jako obsah souboru použijte následující kód:
 
 <a name="streamingpy"></a>
 
@@ -337,9 +337,9 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-V latinském příkladu pro vepřové `LINE` písmo je vstup definovaný jako CharArray, protože pro vstup neexistuje žádné konzistentní schéma. Skript Pythonu transformuje data do konzistentního schématu pro výstup.
+V latinském příkladu pro vepřové písmo `LINE` je vstup definovaný jako CharArray, protože pro vstup neexistuje žádné konzistentní schéma. Skript Pythonu transformuje data do konzistentního schématu pro výstup.
 
-1. `@outputSchema` Příkaz definuje formát dat vrácených do prasete. V tomto případě je to **datový kontejner**, což je datový typ prasete. Penalta obsahuje následující pole, z nichž všechny jsou CharArray (řetězce):
+1. `@outputSchema`Příkaz definuje formát dat vrácených do prasete. V tomto případě je to **datový kontejner**, což je datový typ prasete. Penalta obsahuje následující pole, z nichž všechny jsou CharArray (řetězce):
 
    * Datum – datum vytvoření položky protokolu
    * čas – čas vytvoření položky protokolu
@@ -349,9 +349,9 @@ V latinském příkladu pro vepřové `LINE` písmo je vstup definovaný jako Ch
 
 2. Dále `def create_structure(input)` definuje funkci, do které prase předá položky řádku.
 
-3. Tato ukázková data `sample.log`většinou odpovídají schématu data, čas, ClassName, Level a detail. Obsahuje však několik řádků, které začínají na `*java.lang.Exception*`. Tyto řádky musí být upraveny tak, aby odpovídaly schématu. `if` Příkaz tyto prvky vyhledá a pak zprávy vstupní data, aby se `*java.lang.Exception*` řetězec přesunul na konec, a tak přinese data do očekávaného výstupního schématu.
+3. Tato ukázková data `sample.log` většinou odpovídají schématu data, čas, ClassName, Level a detail. Obsahuje však několik řádků, které začínají na `*java.lang.Exception*` . Tyto řádky musí být upraveny tak, aby odpovídaly schématu. `if`Příkaz tyto prvky vyhledá a pak zprávy vstupní data, aby se řetězec přesunul na `*java.lang.Exception*` konec, a tak přinese data do očekávaného výstupního schématu.
 
-4. V dalším kroku `split` se pomocí příkazu rozdělí data na první čtyři znaky mezery. Výstup je `date`přiřazen do, `time`, `classname` `level`, a. `detail`
+4. V dalším kroku se `split` pomocí příkazu rozdělí data na první čtyři znaky mezery. Výstup je přiřazen do `date` , `time` ,, `classname` `level` a `detail` .
 
 5. Nakonec se hodnoty vrátí do prasete.
 
@@ -387,7 +387,7 @@ V následujících příkazech nahraďte `sshuser` skutečným uživatelským jm
     pig
     ```
 
-2. Na `grunt>` příkazovém řádku zadejte následující příkazy:
+2. Na příkazovém řádku zadejte následující příkazy `grunt>` :
 
    ```pig
    Register wasbs:///pigudf.py using jython as myfuncs;
@@ -433,7 +433,7 @@ V následujících příkazech nahraďte `sshuser` skutečným uživatelským jm
 
 ### <a name="upload-file-powershell"></a>Nahrát soubor (PowerShell)
 
-PowerShell se dá použít taky ke vzdálenému spuštění dotazů na podregistr. Ujistěte se, kde `pigudf.py` je umístěn pracovní adresář.  Pomocí následujícího skriptu prostředí PowerShell spusťte dotaz na podregistr, který používá `pigudf.py` skript:
+PowerShell se dá použít taky ke vzdálenému spuštění dotazů na podregistr. Ujistěte se, kde je umístěn pracovní adresář `pigudf.py` .  Pomocí následujícího skriptu prostředí PowerShell spusťte dotaz na podregistr, který používá `pigudf.py` skript:
 
 ```PowerShell
 # Login to your Azure subscription
@@ -479,7 +479,7 @@ Set-AzStorageBlobContent `
 > [!NOTE]  
 > Při vzdáleném odesílání úlohy pomocí PowerShellu není možné jako interpret použít jazyk C Python.
 
-PowerShell můžete také použít ke spouštění úloh v latince pro vepřové prostředí. Chcete-li spustit úlohu s latinkou prasete `pigudf.py` , která používá skript, použijte následující skript prostředí PowerShell:
+PowerShell můžete také použít ke spouštění úloh v latince pro vepřové prostředí. Chcete-li spustit úlohu s latinkou prasete, která používá `pigudf.py` skript, použijte následující skript prostředí PowerShell:
 
 ```PowerShell
 # Script should stop on failures

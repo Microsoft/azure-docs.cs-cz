@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive,hdiseo17may2017
+ms.custom: hdinsightactive,hdiseo17may2017, tracking-python
 ms.date: 12/16/2019
-ms.openlocfilehash: 20e4827b1a86bff338646ef71f0dd732255c09c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71709e2f1dcbab188646241eaeb4809e168d5697
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77460020"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608770"
 ---
 # <a name="develop-apache-storm-topologies-using-python-on-hdinsight"></a>Vývoj Apache Storm topologií pomocí Pythonu ve službě HDInsight
 
@@ -36,7 +36,7 @@ Naučte se vytvářet [Apache Storm](https://storm.apache.org/) topologii, kter�
 
 ## <a name="storm-multi-language-support"></a>Podpora více jazyků
 
-Apache Storm byla navržena pro práci s komponentami napsanými pomocí libovolného programovacího jazyka. Komponenty musí pochopit, jak pracovat s definicí Thrift pro zaplavení. V jazyce Python je modul poskytován jako součást projektu Apache Storm, který umožňuje jednoduché rozhraní se zaplavou. Tento modul můžete najít na adrese [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py).
+Apache Storm byla navržena pro práci s komponentami napsanými pomocí libovolného programovacího jazyka. Komponenty musí pochopit, jak pracovat s definicí Thrift pro zaplavení. V jazyce Python je modul poskytován jako součást projektu Apache Storm, který umožňuje jednoduché rozhraní se zaplavou. Tento modul můžete najít na adrese [https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py](https://github.com/apache/storm/blob/master/storm-multilang/python/src/main/resources/resources/storm.py) .
 
 Přetečení je proces Java, který běží na prostředí Java Virtual Machine (JVM). Komponenty napsané v jiných jazycích jsou spouštěny jako podprocesy. Zaplave komunikuje s těmito podprocesy pomocí zpráv JSON odesílaných přes STDIN/STDOUT. Další podrobnosti o komunikaci mezi komponentami najdete v dokumentaci k [protokolu multi-lang](https://storm.apache.org/releases/current/Multilang-protocol.html) .
 
@@ -60,7 +60,7 @@ spouts:
 
 Třída `FluxShellSpout` se používá ke spuštění `sentencespout.py` skriptu, který implementuje rozhraní Spout.
 
-Tok očekává, že se skripty v jazyce Python `/resources` nacházejí v adresáři uvnitř souboru jar, který obsahuje topologii. Proto tento příklad ukládá skripty Pythonu do `/multilang/resources` adresáře. `pom.xml` Zahrnuje tento soubor pomocí následujícího kódu XML:
+Tok očekává, že se skripty v jazyce Python `/resources` nacházejí v adresáři uvnitř souboru jar, který obsahuje topologii. Proto tento příklad ukládá skripty Pythonu do `/multilang/resources` adresáře. `pom.xml`Zahrnuje tento soubor pomocí následujícího kódu XML:
 
 ```xml
 <!-- include the Python components -->
@@ -74,9 +74,9 @@ Jak bylo zmíněno dříve, existuje `storm.py` soubor, který implementuje defi
 
 ## <a name="build-the-project"></a>Sestavení projektu
 
-1. Stáhněte si projekt z [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount).
+1. Stáhněte si projekt z [https://github.com/Azure-Samples/hdinsight-python-storm-wordcount](https://github.com/Azure-Samples/hdinsight-python-storm-wordcount) .
 
-1. Otevřete příkazový řádek a přejděte do kořenového adresáře projektu: `hdinsight-python-storm-wordcount-master`. Zadejte následující příkaz:
+1. Otevřete příkazový řádek a přejděte do kořenového adresáře projektu: `hdinsight-python-storm-wordcount-master` . Zadejte následující příkaz:
 
     ```cmd
     mvn clean compile package
@@ -106,7 +106,7 @@ Jak bylo zmíněno dříve, existuje `storm.py` soubor, který implementuje defi
 
     Po spuštění se topologie přetečení spustí až do zastavení.
 
-1. K zobrazení topologie v clusteru použijte uživatelské rozhraní systému. Uživatelské rozhraní pro vyplavení `https://CLUSTERNAME.azurehdinsight.net/stormui`se nachází na adrese. Nahraďte `CLUSTERNAME` názvem vašeho clusteru.
+1. K zobrazení topologie v clusteru použijte uživatelské rozhraní systému. Uživatelské rozhraní pro vyplavení se nachází na adrese `https://CLUSTERNAME.azurehdinsight.net/stormui` . Nahraďte `CLUSTERNAME` názvem vašeho clusteru.
 
 1. Zastavte topologii. Pomocí následujícího příkazu zastavte topologii v clusteru:
 

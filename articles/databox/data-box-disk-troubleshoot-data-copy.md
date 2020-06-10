@@ -5,15 +5,15 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.subservice: disk
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2019
 ms.author: alkohli
-ms.openlocfilehash: 760f5c6c929aa082993683d7a466a71c6484289a
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: 14c5413939deeedfd7c4e894b1919031062bf13a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "67148345"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610606"
 ---
 # <a name="troubleshoot-data-copy-issues-in-azure-data-box-disk"></a>Řešení potíží s kopírováním dat v Azure Data Box Disk
 
@@ -36,7 +36,7 @@ Pokud se jednotka znovu připojí jako čtení i zápis, nefunguje s Data Box di
 
 I když opětovné připojení proběhlo úspěšně, data se nezachovají.
 
-**Rozlišení**
+**Rozhodnutí**
 
 V systému Linux proveďte následující kroky:
 
@@ -76,7 +76,7 @@ V systému Linux proveďte následující kroky:
 
 Pokud zjistíte, že vaše jednotka nemá data po odpojení (i když do ní byla zkopírována data), je možné, že jste po připojení jednotky jako jen pro čtení znovu připojili jednotku jako pro čtení i zápis.
 
-**Rozlišení**
+**Rozhodnutí**
  
 Pokud se jedná o tento případ, přečtěte si téma řešení pro jednotky, které se [připravují jako jen pro čtení](#issue-drive-getting-mounted-as-read-only).
 

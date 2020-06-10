@@ -4,14 +4,14 @@ description: Přečtěte si, jak nakonfigurovat a změnit výchozí zásady inde
 author: timsander1
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 04/28/2020
+ms.date: 06/09/2020
 ms.author: tisande
-ms.openlocfilehash: 68adfb8b4cfb7c665a8e8b162b4698a095bb671e
-ms.sourcegitcommit: f57297af0ea729ab76081c98da2243d6b1f6fa63
+ms.openlocfilehash: a335da61fac914368b4044a97582ef0060f5de4a
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82869935"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636321"
 ---
 # <a name="indexing-policies-in-azure-cosmos-db"></a>Zásady indexování ve službě Azure Cosmos DB
 
@@ -30,9 +30,9 @@ Azure Cosmos DB podporuje dva režimy indexování:
 - **Žádné**: indexování je v kontejneru zakázané. To se běžně používá, když se kontejner používá jako úložiště čistě klíč-hodnota bez nutnosti sekundárních indexů. Dá se použít také ke zlepšení výkonu hromadných operací. Po dokončení hromadných operací může být režim indexu nastaven na konzistentní a následně sledován pomocí [IndexTransformationProgress](how-to-manage-indexing-policy.md#dotnet-sdk) , dokud nebude dokončen.
 
 > [!NOTE]
-> Azure Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority, pokud modul neprovede žádnou jinou práci. Výsledkem může být **nekonzistentní nebo neúplné** výsledky dotazu. Pokud plánujete dotaz na kontejner Cosmos, neměli byste vybírat opožděné indexování.
+> Azure Cosmos DB také podporuje režim opožděného indexování. Opožděné indexování provádí aktualizace indexu na mnohem nižší úrovni priority, pokud modul neprovede žádnou jinou práci. Výsledkem může být **nekonzistentní nebo neúplné** výsledky dotazu. Pokud plánujete dotaz na kontejner Cosmos, neměli byste vybírat opožděné indexování. V červnu 2020 jsme zavedli změnu, která již neumožňuje nastavit nové kontejnery na režim opožděného indexování. Pokud váš Azure Cosmos DB účet už obsahuje aspoň jeden kontejner s opožděným indexováním, tento účet se od změny automaticky nezbavuje. Můžete také požádat o výjimku tím, že se obrátíte na [podporu Azure](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-Ve výchozím nastavení je zásada indexování nastavena na `automatic`. Dosáhnete tím, že nastavíte `automatic` vlastnost v zásadě indexování na `true`. Nastavením této vlastnosti umožníte, aby `true` Azure CosmosDB automaticky indexoval dokumenty při jejich zápisu.
+Ve výchozím nastavení je zásada indexování nastavena na `automatic` . Dosáhnete tím, že nastavíte `automatic` vlastnost v zásadě indexování na `true` . Nastavením této vlastnosti `true` umožníte, aby Azure CosmosDB automaticky indexoval dokumenty při jejich zápisu.
 
 ## <a name="including-and-excluding-property-paths"></a><a id="include-exclude-paths"></a>Zahrnutí a vyloučení cest k vlastnostem
 
@@ -40,7 +40,7 @@ Vlastní zásada indexování může určovat cesty vlastností, které jsou exp
 
 - Cesta vedoucí k skalární hodnotě (řetězec nebo číslo) končí na`/?`
 - prvky z pole jsou řešeny společně pomocí `/[]` zápisu (místo `/0` `/1` atd.)
-- `/*` zástupný znak se dá použít k vyhledání všech prvků pod uzlem.
+- `/*`zástupný znak se dá použít k vyhledání všech prvků pod uzlem.
 
 Opětovné provedení stejného příkladu:
 
@@ -58,9 +58,9 @@ Opětovné provedení stejného příkladu:
     }
 ```
 
-- `headquarters`cesta `employees` je`/headquarters/employees/?`
+- `headquarters` `employees` cesta je`/headquarters/employees/?`
 
-- `locations`cesta `country` je`/locations/[]/country/?`
+- `locations` `country` cesta je`/locations/[]/country/?`
 
 - Cesta k libovolnému prvku `headquarters` je`/headquarters/*`
 
@@ -73,19 +73,19 @@ Všechny zásady indexování musí zahrnovat kořenovou cestu `/*` buď jako za
 - Zahrňte kořenovou cestu pro selektivní vyloučení cest, které nemusejí být indexovány. To je doporučený postup, protože umožňuje Azure Cosmos DB proaktivní indexování všech nových vlastností, které mohou být přidány do modelu.
 - Vylučte kořenovou cestu pro selektivní zahrnutí cest, které je třeba indexovat.
 
-- Pro cesty s běžnými znaky, které zahrnují: alfanumerické znaky a _ (podtržítko), nemusíte řídicí řetězec cesty kolem dvojitých uvozovek (například "/path/?"). V případě cest s dalšími speciálními znaky je nutné před dvojitými uvozovkami vyčínat řetězec cesty (například "\"/Path-\"ABC/?"). Pokud očekáváte, že v cestě jsou speciální znaky, můžete každý z nich vymezit řídicím znakem. Funkce bez jakýchkoli rozdílů neprovádí žádnou odchylku, pokud zadáte všechny cesty a pouze ty, které mají speciální znaky.
+- Pro cesty s běžnými znaky, které zahrnují: alfanumerické znaky a _ (podtržítko), nemusíte řídicí řetězec cesty kolem dvojitých uvozovek (například "/path/?"). V případě cest s dalšími speciálními znaky je nutné před dvojitými uvozovkami vyčínat řetězec cesty (například "/ \" path-ABC \" /?"). Pokud očekáváte, že v cestě jsou speciální znaky, můžete každý z nich vymezit řídicím znakem. Funkce bez jakýchkoli rozdílů neprovádí žádnou odchylku, pokud zadáte všechny cesty a pouze ty, které mají speciální znaky.
 
-- Vlastnost `_etag` System je vyloučena z indexování ve výchozím nastavení, pokud není značka ETag přidána do zahrnuté cesty pro indexování.
+- Vlastnost System `_etag` je vyloučena z indexování ve výchozím nastavení, pokud není značka ETag přidána do zahrnuté cesty pro indexování.
 
-- Pokud je režim indexování nastavený na **konzistentní**, vlastnosti `id` systému a `_ts` jsou automaticky indexovány.
+- Pokud je režim indexování nastavený na **konzistentní**, vlastnosti systému `id` a `_ts` jsou automaticky indexovány.
 
 Při zahrnutí a vyloučení cest se můžete setkat s následujícími atributy:
 
-- `kind`může být buď `range` nebo `hash`. Funkce indexu rozsahu poskytuje všechny funkce indexu hash, proto doporučujeme použít index rozsahu.
+- `kind`může být buď `range` nebo `hash` . Funkce indexu rozsahu poskytuje všechny funkce indexu hash, proto doporučujeme použít index rozsahu.
 
-- `precision`je číslo definované na úrovni indexu pro zahrnuté cesty. Hodnota `-1` označuje maximální přesnost. Doporučujeme vždycky nastavit tuto hodnotu na `-1`.
+- `precision`je číslo definované na úrovni indexu pro zahrnuté cesty. Hodnota `-1` označuje maximální přesnost. Doporučujeme vždycky nastavit tuto hodnotu na `-1` .
 
-- `dataType`může být buď `String` nebo `Number`. Určuje typy vlastností JSON, které budou indexovány.
+- `dataType`může být buď `String` nebo `Number` . Určuje typy vlastností JSON, které budou indexovány.
 
 Pokud tento parametr nezadáte, budou mít tyto vlastnosti následující výchozí hodnoty:
 
@@ -107,19 +107,19 @@ Tady je příklad:
 
 **Vyloučená cesta**:`/food/ingredients/*`
 
-V takovém případě má zahrnutá cesta přednost před vyloučenou cestou, protože je přesnější. Na základě těchto cest by se z indexu vyloučila jakákoli data v `food/ingredients` cestě nebo vnořená v rámci. Výjimkou jsou data v rámci zahrnuté cesty: `/food/ingredients/nutrition/*`, která by byla indexována.
+V takovém případě má zahrnutá cesta přednost před vyloučenou cestou, protože je přesnější. Na základě těchto cest `food/ingredients` by se z indexu vyloučila jakákoli data v cestě nebo vnořená v rámci. Výjimkou jsou data v rámci zahrnuté cesty: `/food/ingredients/nutrition/*` , která by byla indexována.
 
 Tady jsou některá pravidla pro zahrnuté a vyloučené priority cest v Azure Cosmos DB:
 
-- Hlubší cesty jsou přesnější než zúžení cest. Příklad: `/a/b/?` je přesnější než `/a/?`.
+- Hlubší cesty jsou přesnější než zúžení cest. Příklad: je přesnější `/a/b/?` než `/a/?` .
 
-- `/?` Je přesnější než `/*`. Například `/a/?` je přesnější, než `/a/*` `/a/?` má přednost.
+- Je přesnější `/?` než `/*` . Například `/a/?` je přesnější, než `/a/*` `/a/?` má přednost.
 
 - Cesta `/*` musí být buď zahrnutá cesta, nebo Vyloučená cesta.
 
 ## <a name="spatial-indexes"></a>Prostorové indexy
 
-Když v zásadách indexování definujete prostorovou cestu, měli byste definovat, který index ```type``` se má pro tuto cestu použít. Mezi možné typy prostorových indexů patří:
+Když v zásadách indexování definujete prostorovou cestu, měli byste definovat, který index se má ```type``` pro tuto cestu použít. Mezi možné typy prostorových indexů patří:
 
 * Vyberte
 
@@ -135,7 +135,7 @@ Azure Cosmos DB ve výchozím nastavení nebudou vytvořeny žádné prostorové
 
 Dotazy, které mají `ORDER BY` klauzuli se dvěma nebo více vlastnostmi, vyžadují složený index. Můžete také definovat složený index pro zlepšení výkonu mnoha dotazů na rovnost a rozsah. Ve výchozím nastavení nejsou definovány žádné složené indexy, takže v případě potřeby byste měli [Přidat složené indexy](how-to-manage-indexing-policy.md#composite-indexing-policy-examples) .
 
-Na `/*` rozdíl od zahrnutých nebo vyloučených cest nemůžete vytvořit cestu se zástupným znakem. Každá složená cesta má implicitní `/?` na konci cesty, kterou nemusíte zadávat. Složené cesty vedou k skalární hodnotě a toto je jediná hodnota, která je obsažena ve složeném indexu.
+Na rozdíl od zahrnutých nebo vyloučených cest nemůžete vytvořit cestu se `/*` zástupným znakem. Každá složená cesta má implicitní `/?` na konci cesty, kterou nemusíte zadávat. Složené cesty vedou k skalární hodnotě a toto je jediná hodnota, která je obsažena ve složeném indexu.
 
 Při definování složeného indexu zadáte:
 
@@ -152,7 +152,7 @@ Při použití složených indexů pro dotazy s `ORDER BY` klauzulí se dvěma n
 
 - Pokud se složené cesty indexu neshodují s pořadím vlastností v `ORDER BY` klauzuli, nemůže složený index podporovat dotaz.
 
-- Pořadí složených indexových cest (vzestupně nebo sestupně) by mělo být také `order` shodné `ORDER BY` s klauzulí v klauzuli.
+- Pořadí složených indexových cest (vzestupně nebo sestupně) by mělo být také shodné s `order` `ORDER BY` klauzulí v klauzuli.
 
 - Složený index také podporuje `ORDER BY` klauzuli s opačným pořadím na všech cestách.
 
@@ -181,7 +181,7 @@ SELECT * FROM c WHERE c.name = "John" AND c.age = 18
 
 Tento dotaz bude efektivnější a bude trvat méně času a bude využívat méně RU, pokud dokáže využít složený index (název ASC, věk ASC).
 
-Dotazy s filtry rozsahu lze také optimalizovat pomocí složeného indexu. Dotaz však může mít pouze jeden filtr rozsahu. Mezi filtry rozsahu `>`patří `<`, `<=`, `>=`, a `!=`. Filtr rozsahu by měl být definován jako poslední ve složeném indexu.
+Dotazy s filtry rozsahu lze také optimalizovat pomocí složeného indexu. Dotaz však může mít pouze jeden filtr rozsahu. Mezi filtry rozsahu patří `>` ,,, a `<` `<=` `>=` `!=` . Filtr rozsahu by měl být definován jako poslední ve složeném indexu.
 
 Vezměte v úvahu následující dotaz s filtry rovnosti a rozsahu:
 
@@ -195,7 +195,7 @@ Při vytváření složených indexů pro dotazy s filtry na více vlastností s
 
 - Vlastnosti ve filtru dotazu by měly odpovídat hodnotám ve složeném indexu. Pokud je vlastnost ve složeném indexu, ale není obsažena v dotazu jako filtr, dotaz nebude používat složený index.
 - Pokud má dotaz další vlastnosti, které nebyly definovány ve složeném indexu, pak se pro vyhodnocení dotazu použije kombinace složených a rozsahových indexů. To bude vyžadovat méně RU než výhradně pomocí indexů rozsahu.
-- Pokud má vlastnost filtr`>`rozsahu (, `<`, `<=` `>=`, nebo `!=`), měla by být tato vlastnost definována jako poslední ve složeném indexu. Pokud má dotaz více než jeden filtr rozsahu, nebude složený index využívat.
+- Pokud má vlastnost filtr rozsahu ( `>` ,,, `<` `<=` `>=` nebo `!=` ), měla by být tato vlastnost definována jako poslední ve složeném indexu. Pokud má dotaz více než jeden filtr rozsahu, nebude složený index využívat.
 - Při vytváření složeného indexu pro optimalizaci dotazů s více filtry `ORDER` nebude mít složený index žádný vliv na výsledky. Tato vlastnost je nepovinná.
 - Pokud nedefinujete složený index pro dotaz s filtry na více vlastností, dotaz bude stále úspěšný. Náklady na dotaz na RU se ale můžou snížit pomocí složeného indexu.
 
@@ -242,11 +242,11 @@ Dotaz používající složený index:
 SELECT * FROM c WHERE c.name = "John", c.age = 18 ORDER BY c.name, c.age, c.timestamp
 ```
 
-Při vytváření složených indexů k optimalizaci dotazu pomocí filtru a `ORDER BY` klauzule se používají následující požadavky:
+Při vytváření složených indexů k optimalizaci dotazu pomocí filtru a klauzule se používají následující požadavky `ORDER BY` :
 
 * Pokud dotaz filtruje vlastnosti, měly by být zahrnuty do `ORDER BY` klauzule First.
 * Pokud nedefinujete složený index pro dotaz s filtrem na jednu vlastnost a samostatnou `ORDER BY` klauzulí s použitím jiné vlastnosti, dotaz bude stále úspěšný. Náklady na dotaz na dotaz se ale dají snížit pomocí složeného indexu, zejména pokud vlastnost v `ORDER BY` klauzuli má vysokou mohutnost.
-* Všechny požadavky na vytváření složených indexů `ORDER BY` pro dotazy s více vlastnostmi a dotazy s filtry na více vlastností jsou stále používány.
+* Všechny požadavky na vytváření složených indexů pro `ORDER BY` dotazy s více vlastnostmi a dotazy s filtry na více vlastností jsou stále používány.
 
 
 | **Složený index**                      | **Vzorový `ORDER BY` dotaz**                                  | **Podporuje složený index?** |

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2020
 ms.author: memildin
-ms.openlocfilehash: 0d0e3220d38f9824b9504a0077d6742a62aeb9e8
-ms.sourcegitcommit: 0fa52a34a6274dc872832560cd690be58ae3d0ca
+ms.openlocfilehash: 81c14da762e0ff92305456aa89f06949c7039868
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84204986"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629276"
 ---
 # <a name="enhanced-secure-score-preview-in-azure-security-center"></a>Rozšířené zabezpečené skóre (Preview) v Azure Security Center
 
@@ -71,7 +71,7 @@ Maximální skóre tohoto ovládacího prvku, použít aktualizace systému, je 
 
 ### <a name="calculations---understanding-your-score"></a>Výpočty – princip skóre
 
-|Metrika|Vzorec a příklad|
+|Metric|Vzorec a příklad|
 |-|-|
 |**Aktuální skóre ovládacího prvku zabezpečení**|<br>![Rovnice pro výpočet aktuálního skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Každé individuální řízení zabezpečení přispívá ke skóre zabezpečení. Každý prostředek, na který má vliv doporučení v rámci ovládacího prvku, přispívá k aktuálnímu skóre ovládacího prvku. Aktuální skóre pro každý ovládací prvek je míra stavu prostředků *v rámci* ovládacího prvku.<br>![Popisy tlačítek znázorňující hodnoty použité při výpočtu aktuálního skóre ovládacího prvku zabezpečení](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>V tomto příkladu je maximální skóre 6 děleno 78, protože to je součet zdravých a špatných prostředků.<br>6/78 = 0,0769<br>Vynásobení tohoto počtu zdravých prostředků (4) má za následek aktuální skóre:<br>0,0769 * 4 = **0,31**<br><br>|
 |**Bezpečnostní skóre**<br>Jedno předplatné|<br>![Rovnice pro výpočet aktuálního zabezpečeného skóre](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Zabezpečené skóre jednotného předplatného se všemi povolenými ovládacími prvky](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>V tomto příkladu je k dispozici jedno předplatné se všemi dostupnými ovládacími prvky zabezpečení (potenciální maximální skóre 60 bodů). Skóre zobrazuje 28 bodů z možného 60 a zbývající 32 body se projeví v hodnotách "potenciálního nárůstu" v rámci ovládacích prvků zabezpečení.<br>![Seznam ovládacích prvků a možné zvýšení skóre](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
@@ -106,7 +106,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Porty pro zabezpečenou správu (maximální skóre 8)</p></strong>Útoky hrubou silou cílí na porty správy, aby získaly přístup k virtuálnímu počítači. Vzhledem k tomu, že porty není vždy nutné otevírat, je jedinou strategií pro zmírnění rizik omezit vystavení na porty pomocí řízení přístupu k síti, skupin zabezpečení sítě a správy portů virtuálních počítačů.<br>Vzhledem k tomu, že mnoho organizací IT neblokuje komunikaci přes protokol SSH ze své sítě, můžou útočníci vytvořit šifrované tunely, které umožňují, aby porty protokolu RDP v napadených systémech komunikovaly s příkazem útočníka k řízení serverů. Útočníci můžou použít podsystém Vzdálená správa systému Windows k pozdějšímu přesunu napříč vaším prostředím a používat odcizené přihlašovací údaje pro přístup k dalším prostředkům v síti.</td>
-    <td class="tg-lboi"; width=55%>-Na virtuálních počítačích by se mělo použít řízení přístupu k síti za běhu<br>-Virtuální počítače by měly být přidružené ke skupině zabezpečení sítě.<br>-Porty pro správu by měly být uzavřeny na virtuálních počítačích</td>
+    <td class="tg-lboi"; width=55%>-Porty pro správu virtuálních počítačů by měly být chráněné pomocí řízení přístupu k síti za běhu<br>-Virtuální počítače by měly být přidružené ke skupině zabezpečení sítě.<br>-Porty pro správu by měly být uzavřeny na virtuálních počítačích</td>
   </tr>
   <tr>
     <td class="tg-lboi"><strong><p style="font-size: 16px">Použít aktualizace systému (maximální skóre 6)</p></strong>Aktualizace systému poskytují organizacím možnost udržet provozní efektivitu, snižovat zranitelnosti zabezpečení a poskytovat stabilnější prostředí pro koncové uživatele. Pokud aktualizace nepoužijete, zůstanou neopravená ohrožení zabezpečení a výsledky v prostředích, která jsou náchylná k útokům. Tyto chyby zabezpečení je možné zneužít a vést k úniku dat, exfiltrace dat, ransomwarem a zneužití prostředků. Pokud chcete nasadit aktualizace systému, můžete pomocí <a href="https://docs.microsoft.com/azure/automation/automation-update-management">Update Management řešení spravovat opravy a aktualizace</a> virtuálních počítačů. Správa aktualizací je proces řízení nasazení a údržby vydaných verzí softwaru.</td>
@@ -175,7 +175,7 @@ Následující tabulka uvádí ovládací prvky zabezpečení v Azure Security C
 Security Center se přepnulo na zvýšené zabezpečené skóre (aktuálně ve verzi Preview), které zahrnuje změny ve způsobu výpočtu skóre. Nyní je třeba vyřešit všechna doporučení pro určitý prostředek, aby bylo možné body přijímat. Skóre se také změní na škálu 0-10.
 
 ### <a name="if-i-address-only-three-out-of-four-recommendations-in-a-security-control-will-my-secure-score-change"></a>Pokud v ovládacím prvku zabezpečení řeším jenom tři doporučení ze čtyř, bude se můj bezpečnostní skóre měnit?
-No. Nemění se, dokud neopravíte všechna doporučení pro jeden prostředek. Chcete-li získat maximální skóre pro ovládací prvek, je nutné opravit všechna doporučení pro všechny prostředky.
+Ne. Nemění se, dokud neopravíte všechna doporučení pro jeden prostředek. Chcete-li získat maximální skóre pro ovládací prvek, je nutné opravit všechna doporučení pro všechny prostředky.
 
 ### <a name="is-the-previous-experience-of-the-secure-score-still-available"></a>Je stále k dispozici předchozí prostředí zabezpečeného skóre? 
 Ano. V době, kdy se budou spouštět vedle sebe, aby se přechod usnadnil. Očekává se, že předchozí model bude v čase rozložený. 

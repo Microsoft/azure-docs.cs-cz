@@ -7,13 +7,13 @@ manager: anandsub
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/03/2020
-ms.openlocfilehash: 6da0c56e11b8531192ba77d8f0c27fa16eea5de2
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.date: 06/05/2020
+ms.openlocfilehash: e106f5b615cd667551ef3d597a45b522320eed6e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433305"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610173"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Transformace zdroje v toku dat mapování 
 
@@ -23,7 +23,7 @@ Zdrojová transformace konfiguruje zdroj dat pro tok dat. Při navrhování tok�
 
 Každý tok dat vyžaduje aspoň jednu zdrojovou transformaci, ale můžete přidat tolik zdrojů, kolik jich je potřeba k dokončení transformace dat. Tyto zdroje můžete spojit spolu s transformací, vyhledáváním nebo sjednocením.
 
-Každá transformace zdroje je přidružená k právě jedné datové sadě Data Factory. Datová sada definuje tvar a umístění dat, ke kterým chcete zapisovat, nebo z nich číst. Pokud používáte datovou sadu založenou na souborech, můžete ve zdroji použít zástupné znaky a seznamy souborů pro práci s více než jedním souborem v jednom okamžiku.
+Každá transformace zdroje je přidružená k přesně jedné datové sadě nebo propojené službě. Datová sada definuje tvar a umístění dat, ke kterým chcete zapisovat, nebo z nich číst. Pokud používáte datovou sadu založenou na souborech, můžete ve zdroji použít zástupné znaky a seznamy souborů pro práci s více než jedním souborem v jednom okamžiku.
 
 ## <a name="inline-datasets"></a>Vložené datové sady
 
@@ -37,22 +37,20 @@ Chcete-li použít vloženou datovou sadu, vyberte požadovaný formát v selekt
 
 ![Vložená datová sada](media/data-flow/inline-selector.png "Vložená datová sada")
 
-### <a name="supported-inline-dataset-formats"></a>Podporované formáty vložených datových sad
-
-V současné době je jediným dostupným formátem vložené datové sady [společný datový model](format-common-data-model.md#source-properties) načtený z [Azure Data Lake Store Gen2](connector-azure-data-lake-storage.md).
-
-## <a name="supported-source-datasets-in-mapping-data-flow"></a>Podporované zdrojové datové sady v toku mapování dat
+##  <a name="supported-source-types"></a><a name="supported-sources"></a>Podporované typy zdrojů
 
 Mapování toku dat sleduje přístup k extrakci, načítání, transformaci (ELT) a pracuje s *přípravnými* datovými sadami, které jsou všechny v Azure. V současné době je možné v transformaci zdroje použít následující datové sady:
-    
-* [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) (JSON, Avro, text, Parquet)
-* [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) (JSON, Avro, text, Parquet)
-* [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) (JSON, Avro, text, Parquet)
-* [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties)
-* [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties)
-* [CosmosDB Azure](connector-azure-cosmos-db.md#mapping-data-flow-properties)
 
-Nastavení specifická pro tyto konektory jsou umístěna na kartě **Možnosti zdrojového kódu** . informace o těchto nastaveních najdete v dokumentaci k konektoru. 
+| Konektor | Formát | Sada dat/vložené |
+| --------- | ------ | -------------- |
+| [Azure Blob Storage](connector-azure-blob-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Text oddělený textem](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Text oddělený textem](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- |
+| [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#mapping-data-flow-properties) | [JSON](format-json.md#mapping-data-flow-properties) <br> [Avro](format-avro.md#mapping-data-flow-properties) <br> [Text oddělený textem](format-delimited-text.md#mapping-data-flow-properties) <br> [Parquet](format-parquet.md#mapping-data-flow-properties)  <br> [Common data model (Preview)](format-common-data-model.md#source-properties) | ✓/- <br> ✓/- <br> ✓/- <br> ✓/- <br> -/✓ |
+| [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure SQL Database](connector-azure-sql-database.md#mapping-data-flow-properties) | | ✓/- |
+| [Azure CosmosDB (SQL API)](connector-azure-cosmos-db.md#mapping-data-flow-properties) | | ✓/- |
+
+Nastavení specifická pro tyto konektory se nachází na kartě **Možnosti zdrojového kódu** . Příklady skriptu informace a toku dat v těchto nastaveních najdete v dokumentaci k konektoru. 
 
 Azure Data Factory má přístup k více než [90 nativním konektorům](connector-overview.md). Pokud chcete do toku dat zahrnout data z jiných zdrojů, použijte aktivitu kopírování a načtěte tato data do jedné z podporovaných pracovních oblastí.
 
@@ -62,6 +60,10 @@ Jakmile přidáte zdroj, nakonfigurujte ho přes kartu **Nastavení zdroje** . T
 
 ![Karta nastavení zdroje](media/data-flow/source1.png "Karta nastavení zdroje")
 
+**Název výstupního datového proudu:** Název zdrojové transformace.
+
+**Typ zdroje:** Vyberte, zda chcete použít vloženou datovou sadu nebo existující objekt DataSet.
+ 
 **Test připojení:** Otestuje, jestli se služba Spark datového toku může úspěšně připojit k propojené službě použité ve zdrojové datové sadě. Aby bylo možné tuto funkci povolit, musí být zapnutý režim ladění.
 
 **Posun schématu:** [posun schématu](concepts-data-flow-schema-drift.md) je schopnost objektu pro vytváření dat nativně zpracovávat flexibilní schémata v datových tocích, aniž by bylo nutné explicitně definovat změny sloupců.
@@ -76,12 +78,14 @@ Jakmile přidáte zdroj, nakonfigurujte ho přes kartu **Nastavení zdroje** . T
 
 **Vzorkování:** Povolte vzorkování, abyste omezili počet řádků ze zdroje. Toto nastavení použijte při testování nebo vzorkování dat ze zdroje pro účely ladění.
 
-**Víceřádkové řádky:** Vyberte víceřádkové řádky, pokud zdrojový textový soubor obsahuje řetězcové hodnoty, které jsou rozloženy do více řádků, tj. newlines uvnitř hodnoty. Toto nastavení je k dispozici pouze v DelimitedText datových sadách.
-
 Pokud chcete ověřit, že je váš zdroj správně nakonfigurovaný, zapněte režim ladění a načtěte data ve verzi Preview. Další informace naleznete v tématu [režim ladění](concepts-data-flow-debug-mode.md).
 
 > [!NOTE]
 > Když je režim ladění zapnutý, při konfiguraci limitu řádků v nastavení ladění dojde k přepsání nastavení vzorkování ve zdroji během náhledu dat.
+
+## <a name="source-options"></a>Možnosti zdroje
+
+Karta Možnosti zdroje obsahuje nastavení specifická pro vybraný konektor a formát. Další informace a příklady najdete v dokumentaci k příslušnému [konektoru](#supported-sources).
 
 ## <a name="projection"></a>Projekce
 
@@ -99,26 +103,18 @@ Můžete upravit typy dat sloupce v transformaci odvozeného sloupce z vedlejš�
 
 Tlačítko **importovat schéma** na kartě **projekce** umožňuje použít aktivní cluster ladění k vytvoření projekce schématu. Import schématu, který je k dispozici v každém typu zdroje, přepíše projekci definovanou v datové sadě. Objekt DataSet nebude změněn.
 
-To je užitečné v datových sadách, jako je Avro a CosmosDB, které podporují složité datové struktury, nevyžadují, aby definice schématu existovaly v datové sadě.
+To je užitečné v datových sadách, jako je Avro a CosmosDB, které podporují složité datové struktury, nevyžadují, aby definice schématu existovaly v datové sadě. Pro vložené datové sady je to jediný způsob, jak odkazovat na metadata sloupce bez posunu schématu.
 
 ## <a name="optimize-the-source-transformation"></a>Optimalizace zdrojové transformace
 
-Na kartě **optimalizace** pro transformaci zdroje se může zobrazit typ **zdrojového** oddílu. Tato možnost je dostupná jenom v případě, že je váš zdroj Azure SQL Database. Důvodem je to, že Data Factory se snaží vytvořit propojení paralelně, aby se spouštěly velké dotazy proti vašemu zdroji SQL Database.
+Karta **optimalizace** umožňuje upravovat informace o oddílech v jednotlivých krocích transformace. Ve většině případů se **použití aktuálního dělení** optimalizuje pro ideální strukturu vytváření oddílů pro zdroj.
+
+Pokud čtete ze zdroje Azure SQL Database, bude se **při vlastním vytváření** oddílů pravděpodobně číst data nejrychlejší. ADF bude číst velké dotazy tím, že zajistí paralelní připojení k vaší databázi. Tento zdrojový oddíl lze provést u sloupce nebo pomocí dotazu.
 
 ![Nastavení zdrojového oddílu](media/data-flow/sourcepart3.png "dělení")
-
-Nemusíte rozdělit data na zdroj SQL Database, ale oddíly jsou užitečné pro velké dotazy. Oddíl můžete založit na sloupci nebo dotazu.
-
-### <a name="use-a-column-to-partition-data"></a>Použití sloupce k dělení dat
-
-Ve zdrojové tabulce vyberte sloupec, na kterém chcete vytvořit oddíly. Nastavte také počet oddílů.
-
-### <a name="use-a-query-to-partition-data"></a>Použití dotazu k dělení dat
-
-Můžete se rozhodnout rozdělit připojení na základě dotazu. Zadejte obsah predikátu WHERE. Zadejte například rok > 1980.
 
 Další informace o optimalizaci v rámci mapování toku dat najdete na [kartě optimalizace](concepts-data-flow-overview.md#optimize).
 
 ## <a name="next-steps"></a>Další kroky
 
-Začněte sestavovat [transformaci odvozeného sloupce](data-flow-derived-column.md) a [transformaci Select](data-flow-select.md).
+Začněte sestavovat tok dat pomocí [transformace odvozeného sloupce](data-flow-derived-column.md) a [transformace Select](data-flow-select.md).

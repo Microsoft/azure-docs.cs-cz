@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: b93f26a6799a50868feb1f3350a3dc4a73a0b2e4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d53c21af77204a5e83687d3ce893f3f6f45101f2
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79127854"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628993"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Instalace sady Office do hlavní image virtuálního pevného disku
 
@@ -38,7 +38,7 @@ Nástroj pro nasazení Office vyžaduje konfigurační soubor XML. Postup přizp
 
 Tato ukázka konfiguračního souboru XML provede následující akce:
 
-- Nainstalujte si Office z měsíčního kanálu a při jejich spuštění dodávejte aktualizace z měsíčního kanálu.
+- • Nainstalujte Office z měsíčního podnikového kanálu a při spuštění dodávejte aktualizace z měsíčního podnikového kanálu.
 - Použijte architekturu x64.
 - Zakáže automatické aktualizace.
 - Odeberte všechny existující instalace Office a migrujte jeho nastavení.
@@ -53,7 +53,7 @@ Tady je postup, jak tento ukázkový konfigurační soubor XML neprovede:
 - Nainstalujte OneDrive v režimu pro jednotlivé uživatele. Další informace najdete v tématu [instalace OneDrivu v režimu podle počítače](#install-onedrive-in-per-machine-mode).
 
 >[!NOTE]
->Aktivace sdíleného počítače se dá nastavit prostřednictvím objektů Zásady skupiny (GPO) nebo nastavení registru. Objekt zásad skupiny se nachází v **zásadách\\\\konfigurace počítačů\\šablony pro správu nastavení licencování systém Microsoft Office\\2016 (počítač)** .
+>Aktivace sdíleného počítače se dá nastavit prostřednictvím objektů Zásady skupiny (GPO) nebo nastavení registru. Objekt zásad skupiny se nachází v **zásadách konfigurace počítačů \\ \\ šablony pro správu \\ \\ Nastavení licencování systém Microsoft Office 2016 (počítač)** .
 
 Nástroj pro nasazení Office obsahuje Setup. exe. Pokud chcete nainstalovat Office, spusťte na příkazovém řádku následující příkaz:
 
@@ -63,11 +63,11 @@ Setup.exe /configure configuration.xml
 
 #### <a name="sample-configurationxml"></a>Ukázka Configuration. XML
 
-V následující ukázce XML se nainstaluje měsíční verze.
+V následující ukázce XML se nainstaluje měsíční verze podnikového kanálu.
 
 ```xml
 <Configuration>
-  <Add OfficeClientEdition="64" Channel="Monthly">
+  <Add OfficeClientEdition="64" Channel="MonthlyEnterprise">
     <Product ID="O365ProPlusRetail">
       <Language ID="en-US" />
       <Language ID="MatchOS" />
@@ -116,11 +116,11 @@ OneDrive je obvykle nainstalovaný pro jednotlivé uživatele. V tomto prostřed
 
 Tady je postup, jak nainstalovat OneDrive v režimu podle počítače:
 
-1. Nejdřív vytvořte umístění pro přípravu instalačního programu OneDrivu. Umístění složky místního disku nebo umístění\\\\[UNC] (File://UNC) je v pořádku.
+1. Nejdřív vytvořte umístění pro přípravu instalačního programu OneDrivu. Umístění složky místního disku nebo \\ \\ umístění [UNC] (File://UNC) je v pořádku.
 
 2. Stáhněte si OneDriveSetup. exe do připraveného umístění pomocí tohoto odkazu:<https://aka.ms/OneDriveWVD-Installer>
 
-3. Pokud jste nainstalovali Office s OneDrivem tím, že vynecháte ** \<ExcludeApp ID = "\>OneDrive"/**, odinstalujte všechny existující instalace OneDrivu na příkazovém řádku se zvýšenými oprávněními spuštěním tohoto příkazu:
+3. Pokud jste nainstalovali Office s OneDrivem vynecháte **\<ExcludeApp ID="OneDrive" /\>** , odinstalujte všechny stávající instalace OneDrivu na příkazovém řádku se zvýšenými oprávněními spuštěním tohoto příkazu:
     
     ```batch
     "[staged location]\OneDriveSetup.exe" /uninstall

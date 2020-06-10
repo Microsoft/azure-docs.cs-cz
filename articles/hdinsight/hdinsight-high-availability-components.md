@@ -7,16 +7,23 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 38fb45fd339b5e2c7cab6f66a1ed6c0df73fb29e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1da26d9067427734d407451bdb53e51ba1e6243
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74069633"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609161"
 ---
 # <a name="high-availability-services-supported-by-azure-hdinsight"></a>Služby vysoké dostupnosti podporované službou Azure HDInsight
 
  Pro zajištění optimální úrovně dostupnosti pro komponenty analýzy se služba HDInsight vyvinula s jedinečnou architekturou pro zajištění vysoké dostupnosti důležitých služeb (HA). Některé součásti této architektury byly vyvinuty společností Microsoft za účelem poskytování automatického převzetí služeb při selhání. Další komponenty jsou standardní komponenty Apache, které jsou nasazené pro podporu konkrétních služeb. Tento článek popisuje architekturu modelu služby HA v HDInsight, jak HDInsight podporuje převzetí služeb při selhání pro služby HA a osvědčené postupy pro obnovení z dalších přerušení služby.
+ 
+> [!NOTE]
+> Komunikace bez posunu
+>
+> Microsoft podporuje různé a zahrnuté prostředí. Tento článek obsahuje odkazy na _podřízený_text. [Průvodce stylem Microsoft pro komunikaci bez předplatných](https://github.com/MicrosoftDocs/microsoft-style-guide/blob/master/styleguide/bias-free-communication.md) se tímto způsobem rozpoznává jako vyloučené slovo. Toto slovo se v tomto článku používá kvůli konzistenci, protože je aktuálně slovo, které se zobrazuje v softwaru. Když se software aktualizuje, aby se odebralo slovo, aktualizuje se tento článek na zarovnání.
+>
+
 
 ## <a name="high-availability-infrastructure"></a>Infrastruktura vysoké dostupnosti
 
@@ -50,7 +57,7 @@ Společnost Microsoft poskytuje podporu pro čtyři služby Apache v následují
 
 | Služba | Uzly clusteru | Typy clusterů | Účel |
 |---|---|---|---|
-| Server Apache Ambari| Aktivní hlavnímu uzlu | Všechny | Monitoruje a spravuje cluster.|
+| Server Apache Ambari| Aktivní hlavnímu uzlu | Vše | Monitoruje a spravuje cluster.|
 | Časová osa aplikace Server pro Apache nitě | Aktivní hlavnímu uzlu | Vše kromě Kafka | Udržuje ladicí informace o úlohách PŘÍZe spuštěných v clusteru.|
 | Server historie úlohy pro Hadoop MapReduce | Aktivní hlavnímu uzlu | Vše kromě Kafka | Udržuje data ladění pro úlohy MapReduce.|
 | Apache Livy | Aktivní hlavnímu uzlu | Spark | Umožňuje snadnou interakci s clusterem Spark přes rozhraní REST. |

@@ -2,24 +2,24 @@
 title: Aplikace s jednotným přihlašováním SAML – Microsoft Identity Platform | Microsoft Docs
 description: Konfigurace jednotného přihlašování (SSO) k aplikacím mimo galerii v platformě Microsoft Identity Platform (Azure AD)
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: article
 ms.workload: identity
-ms.date: 07/19/2019
-ms.author: celested
+ms.date: 06/08/2020
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d97cef332b24700920693bab55dcbd396015dc7
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 8c828ab0a3d4f2aff6724967e1467b87df09d09b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758363"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606067"
 ---
-# <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Konfigurace jednotného přihlašování založeného na SAML pro aplikace mimo galerii
+# <a name="configure-saml-based-single-sign-on-to-non-gallery-applications"></a>Konfigurace jednotného přihlašování k aplikacím mimo galerii založeného na SAML
 
 Když do podnikových aplikací Azure AD [přidáte aplikaci Galerie](add-gallery-app.md) nebo [webovou aplikaci mimo galerii](add-non-gallery-app.md) , jedna z možností jednotného přihlašování, kterou máte k dispozici, je [jednotné přihlašování založené na SAML](what-is-single-sign-on.md#saml-sso). Pokud je to možné, vyberte SAML vždy u aplikací, které se ověřují pomocí některého z protokolů SAML. Pomocí jednotného přihlašování SAML Azure AD ověřuje aplikace pomocí účtu Azure AD uživatele. Azure AD komunikuje s přihlašovacími informacemi k aplikaci prostřednictvím protokolu připojení. Můžete mapovat uživatele na konkrétní aplikační role na základě pravidel, která definujete v deklaracích SAML. Tento článek popisuje, jak nakonfigurovat jednotné přihlašování založené na SAML pro aplikaci mimo galerii. 
 
@@ -28,7 +28,7 @@ Když do podnikových aplikací Azure AD [přidáte aplikaci Galerie](add-galler
 
 Pokud chcete pro aplikaci mimo galerii nakonfigurovat jednotné přihlašování SAML bez psaní kódu, musíte mít předplatné Azure AD a aplikace musí podporovat SAML 2,0. Další informace o verzích Azure AD najdete na stránce [ceny Azure AD](https://azure.microsoft.com/pricing/details/active-directory/).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidání aplikace mimo galerii](add-non-gallery-app.md).
 
@@ -122,9 +122,9 @@ Z Azure AD si můžete stáhnout aktivní certifikát ve formátu Base64 nebo RA
 
 ## <a name="step-4-set-up-the-application-to-use-azure-ad"></a>Krok 4. Nastavení aplikace pro použití Azure AD
 
-V části **nastavit \<>ApplicationName** jsou uvedeny hodnoty, které je třeba v aplikaci nakonfigurovat, aby se služba Azure AD používala jako poskytovatel identity SAML. Požadované hodnoty se liší v závislosti na aplikaci. Podrobnosti najdete v dokumentaci SAML aplikace. Pokud chcete najít dokumentaci, vyhledejte v nadpisu **nastavit \< název aplikace>** a vyberte **Zobrazit podrobné pokyny**. Dokumentace se zobrazí na stránce **Konfigurace přihlášení** . Tato stránka vás provede vyplněním **adresy URL pro přihlášení**, **identifikátoru služby Azure AD**a **adres URL pro odhlášení** v nadpisu **nastavit \< název aplikace>** .
+V části **nastavení \<applicationName> ** jsou uvedené hodnoty, které je třeba v aplikaci nakonfigurovat tak, aby používaly Azure AD jako zprostředkovatele identity SAML. Požadované hodnoty se liší v závislosti na aplikaci. Podrobnosti najdete v dokumentaci SAML aplikace. Pokud chcete najít dokumentaci, klikněte na záhlaví **nastavení \<application name> ** a vyberte **Zobrazit podrobné pokyny**. Dokumentace se zobrazí na stránce **Konfigurace přihlášení** . Tato stránka vás provede vyplněním **přihlašovací adresy URL**, **identifikátoru Azure AD**a **adres URL pro odhlášení** v záhlaví pro **nastavení \<application name> ** .
 
-1. Přejděte dolů do části **nastavení \<>ApplicationName** . 
+1. Přejděte dolů do části **nastavení \<applicationName> ** . 
    
    ![Krok 4 nastavení aplikace](media/configure-single-sign-on-non-gallery-applications/step-four-app-config.png)
 

@@ -2,14 +2,14 @@
 title: Poznámky k verzi pro Microsoft Azure Backup Server V3
 description: Tento článek poskytuje informace o známých problémech a alternativním řešení pro Microsoft Azure Backup Server (MABS) v3.
 ms.topic: conceptual
-ms.date: 11/22/2018
+ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
-ms.openlocfilehash: a5c99bcb95fde39bddc9e9db9ab000881c89081a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2f67b73612bd970c903b179a4a02c787ee0320b0
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82185621"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629186"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Poznámky k verzi pro Microsoft Azure Backup Server
 
@@ -71,6 +71,40 @@ V tomto článku jsou uvedené známé problémy a řešení pro Microsoft Azure
 
 9. Spusťte službu MSDPM.
 
+## <a name="after-installing-ur1-the-mabs-reports-arent-updated-with-new-rdl-files"></a>Po instalaci UR1 se sestavy MABS neaktualizují s novými soubory RDL.
+
+**Popis**: v UR1 je problém formátování sestavy MABS vyřešen aktualizovanými soubory RDL. Nové soubory RDL nejsou automaticky nahrazeny existujícími soubory.
+
+**Alternativní řešení**: Pokud chcete nahradit soubory RDL, postupujte podle následujících kroků:
+
+1. Na počítači s MABS otevřete adresu URL webového portálu SQL Reporting Services.
+1. V adrese URL webového portálu se složka DPMReports nachází ve formátu**`DPMReports_<GUID>`**
+
+    >[!NOTE]
+    >Tato konvence vytváření názvů vždy obsahuje jenom jednu složku. Pokud se MABS upgraduje z předchozí verze, může to být také jiná starší složka, ale nebudete ji moct otevřít.
+
+    ![DPMReports složka](./media/backup-mabs-release-notes-v3/dpm-reports-folder.png)
+
+1. Vyberte a otevřete **`DPMReports_<GUID>`** složku. Jednotlivé soubory sestav budou uvedeny, jak je uvedeno níže.
+
+    ![Seznam jednotlivých souborů sestav](./media/backup-mabs-release-notes-v3/individual-report-files.png)
+
+1. Vyberte soubory sestav, které nekončí **sestavou**, klikněte pravým tlačítkem na **možnost** a vyberte **Spravovat**.
+
+    ![Výběr možnosti spravovat pro soubory sestav](./media/backup-mabs-release-notes-v3/manage-files.png)
+
+1. Na stránce Nový vyberte možnost **nahradit** k nahrazení souborů nejnovějšími soubory sestav.
+
+    Nejnovější soubory sestav najdete v cestě.`<MABS Installation Directory>\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    Příklad: `C:\Program Files\Microsoft Azure Backup Server\DPM\DPM\bin\DpmReports`
+
+    ![Nahradit soubory nejnovějšími soubory sestav](./media/backup-mabs-release-notes-v3/replace-files.png)
+
+    Po nahrazení souborů se ujistěte, že **název** a **Popis** jsou nedotčeny a nejsou prázdné.
+
+1. Po nahrazení souborů restartujte služby MABS a použijte soubory sestav.
+
 ## <a name="next-steps"></a>Další kroky
 
-[Co je nového v MABS V3](backup-mabs-whats-new-mabs.md)
+[Co je nového v MABS](backup-mabs-whats-new-mabs.md)

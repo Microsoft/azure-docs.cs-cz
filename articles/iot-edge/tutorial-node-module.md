@@ -8,13 +8,13 @@ ms.author: xshi
 ms.date: 01/04/2019
 ms.topic: tutorial
 ms.service: iot-edge
-ms.custom: mvc
-ms.openlocfilehash: 71b22bf9bf040abcdf513a4f8baa916930c8972e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: mvc, tracking-python
+ms.openlocfilehash: 7e17da94ba124c3b20fdede93ad6b4716247c6ba
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76772223"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610113"
 ---
 # <a name="tutorial-develop-and-deploy-a-nodejs-iot-edge-module-for-linux-devices"></a>Kurz: vývoj a nasazení IoT Edge modul Node. js pro zařízení se systémem Linux
 
@@ -66,7 +66,7 @@ Následující kroky ukazují, jak vytvořit IoT Edge modul Node. js pomocí Vis
 
 Pomocí **npm** vytvořte šablonu řešení Node.js, na jejímž základě budete moct vytvářet dál.
 
-1. V Visual Studio Code vyberte **Zobrazit** > **integrovaný terminál** a otevřete vs Code integrovaného terminálu.
+1. V Visual Studio Code vyberte **Zobrazit**  >  **integrovaný terminál** a otevřete vs Code integrovaného terminálu.
 
 2. V integrovaném terminálu zadejte následující příkaz, kterým nainstalujete **yeoman** a generátor pro modul Node.js Azure IoT Edge:
 
@@ -74,7 +74,7 @@ Pomocí **npm** vytvořte šablonu řešení Node.js, na jejímž základě bude
     npm install -g yo generator-azure-iot-edge-module
     ```
 
-3. Výběrem **Zobrazit** > **paleta příkazů** otevřete paletu příkazů vs Code.
+3. Výběrem **Zobrazit**  >  **paleta příkazů** otevřete paletu příkazů vs Code.
 
 4. Na paletě příkazů zadejte a spusťte příkaz **Azure: Sign in** (Azure: Přihlásit se) a postupujte podle pokynů pro přihlášení k účtu Azure. Pokud jste už přihlášení, můžete tento krok přeskočit.
 
@@ -86,7 +86,7 @@ Pomocí **npm** vytvořte šablonu řešení Node.js, na jejímž základě bude
    | Zadejte název řešení | Zadejte popisný název vašeho řešení nebo přijměte výchozí **EdgeSolution**. |
    | Vyberte šablonu modulu | Vyberte **modul Node. js**. |
    | Zadejte název modulu | Dejte modulu název **NodeModule**. |
-   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br>Finální úložiště imagí vypadá jako \<název\>registru. azurecr.IO/nodemodule. |
+   | Zadejte pro modul úložiště imagí Dockeru | Úložiště imagí zahrnuje název registru kontejneru a název image kontejneru. Vaše image kontejneru se předem vyplní názvem, který jste zadali v posledním kroku. Nahraďte **localhost:5000** hodnotou přihlašovacího serveru z vašeho registru kontejneru Azure. Přihlašovací server můžete získat na stránce Přehled vašeho registru kontejneru na webu Azure Portal. <br><br>Konečné úložiště imagí vypadá jako \<registry name\> . azurecr.IO/nodemodule. |
 
    ![Zadání úložiště imagí Dockeru](./media/tutorial-node-module/repository.png)
 
@@ -110,7 +110,7 @@ V současné době Visual Studio Code může vyvíjet moduly node. js pro zaří
 
 Každá šablona obsahuje vzorový kód, který obsahuje Simulovaná data senzorů z modulu **SimulatedTemperatureSensor** a směruje je IoT Hub. V této části přidáte kód, který připraví NodeModule k analýze zpráv před jejich odesláním.
 
-1. V Průzkumníku vs Code otevřete **modules** > **NodeModule** > **App. js**.
+1. V Průzkumníku vs Code otevřete **modules**  >  **NodeModule**  >  **App. js**.
 
 2. Pod požadované moduly uzlu přidejte proměnnou prahové teploty. Prahová teplota definuje hodnotu, kterou musí naměřená teplota překročit, aby se data odeslala do IoT Hubu.
 
@@ -185,7 +185,7 @@ Každá šablona obsahuje vzorový kód, který obsahuje Simulovaná data senzor
 
 V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do NodeModule, který odfiltruje zprávy, kde je hlášená teplota počítače v přípustných mezích. Teď je potřeba vytvořit toto řešení jako image kontejneru a odeslat ho do registru kontejneru.
 
-1. Otevřete vs Code Integrated Terminal výběrem možnosti **Zobrazit** > **terminál**.
+1. Otevřete vs Code Integrated Terminal výběrem možnosti **Zobrazit**  >  **terminál**.
 
 1. Přihlaste se k Docker zadáním následujícího příkazu v terminálu. Přihlaste se pomocí uživatelského jména, hesla a přihlašovacího serveru ze služby Azure Container Registry. Tyto hodnoty můžete načíst z oddílu **přístupové klíče** v registru v Azure Portal.
 
@@ -193,11 +193,11 @@ V předchozí části jste vytvořili řešení IoT Edge a Přidali jste kód do
    docker login -u <ACR username> -p <ACR password> <ACR login server>
    ```
 
-   Může se zobrazit upozornění zabezpečení, které doporučuje použití nástroje `--password-stdin`. I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu přihlašovací Reference k [Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
+   Může se zobrazit upozornění zabezpečení, které doporučuje použití nástroje `--password-stdin` . I když se tento osvědčený postup doporučuje u produkčních scénářů, je mimo rozsah tohoto kurzu. Další informace najdete v tématu přihlašovací Reference k [Docker](https://docs.docker.com/engine/reference/commandline/login/#provide-a-password-using-stdin) .
 
 1. V Průzkumníku VS Code klikněte pravým tlačítkem myši na soubor **Deployment. template. JSON** a vyberte **sestavení a nabízené IoT Edge řešení**.
 
-   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, a vyplní informace v šabloně nasazení a dalších souborech řešení. Za druhé se spustí `docker build` sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí a `docker push` nahraje úložiště imagí do registru kontejneru.
+   Příkaz Build a push spustí tři operace. Nejprve vytvoří novou složku v řešení s názvem **config** , která obsahuje úplný manifest nasazení, a vyplní informace v šabloně nasazení a dalších souborech řešení. Za druhé se spustí `docker build` sestavení image kontejneru na základě vhodné souboru Dockerfile pro vaši cílovou architekturu. Pak se spustí a nahraje `docker push` úložiště imagí do registru kontejneru.
 
 ## <a name="deploy-modules-to-device"></a>Nasadit moduly do zařízení
 
@@ -254,7 +254,7 @@ V tomto kurzu jste vytvořili modul IoT Edge obsahující kód pro filtrování 
 V dalších kurzech můžete pokračovat a zjistit, jak vám Azure IoT Edge může pomáhat s nasazením cloudových služeb Azure pro zpracování a analýzu dat na hraničních zařízeních.
 
 > [!div class="nextstepaction"]
-> [Funkce](tutorial-deploy-function.md)
-> [Stream Analytics](tutorial-deploy-stream-analytics.md)Stream Analytics
-> [Machine Learning](tutorial-deploy-machine-learning.md)Machine Learning
-> [Custom Vision Service](tutorial-deploy-custom-vision.md)
+> [Funkce](tutorial-deploy-function.md) 
+>  [Stream Analytics](tutorial-deploy-stream-analytics.md) 
+>  [Machine Learning](tutorial-deploy-machine-learning.md) 
+>  [Custom Vision Service](tutorial-deploy-custom-vision.md)

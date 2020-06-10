@@ -1,6 +1,6 @@
 ---
 title: Konfigurace Edge Azure SQL (Preview)
-description: Další informace o konfiguraci Azure SQL Edge (Preview)
+description: Přečtěte si o konfiguraci Azure SQL Edge (Preview).
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,54 +9,54 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: a28724e00f59fe049d1d9d6dfbcbc5a3f9556124
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: c38bb6100665cc9456b66608660bdca520b934c6
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235148"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636236"
 ---
 # <a name="configure-azure-sql-edge-preview"></a>Konfigurace Edge Azure SQL (Preview)
 
 Azure SQL Edge podporuje konfiguraci prostřednictvím jedné z následujících dvou možností:
 
-- Použití proměnných prostředí.
-- Používá se soubor MSSQL. conf umístěný ve složce/var/opt/MSSQL.
+- Proměnné prostředí
+- Soubor MSSQL. conf umístěný ve složce/var/opt/MSSQL
 
 > [!NOTE]
 > Nastavení proměnných prostředí přepíše nastavení zadané v souboru MSSQL. conf.
 
-## <a name="configure-using-environment-variables"></a>Konfigurace pomocí proměnných prostředí
+## <a name="configure-by-using-environment-variables"></a>Konfigurace pomocí proměnných prostředí
 
-Azure SQL Edge zpřístupňuje několik různých proměnných prostředí, které se dají použít ke konfiguraci kontejneru SQL Edge. Tyto proměnné prostředí jsou podmnožinou proměnných prostředí, které jsou k dispozici pro SQL Server on Linux. Další informace o SQL Server on Linux proměnných prostředí naleznete v tématu [proměnné prostředí](/sql/linux/sql-server-linux-configure-environment-variables/).
+Azure SQL Edge zpřístupňuje několik různých proměnných prostředí, které se dají použít ke konfiguraci kontejneru SQL Edge. Tyto proměnné prostředí jsou podmnožinou těch, které jsou k dispozici pro SQL Server on Linux. Další informace o SQL Server on Linux proměnných prostředí naleznete v tématu [proměnné prostředí](/sql/linux/sql-server-linux-configure-environment-variables/).
 
-Následující proměnné prostředí SQL Server on Linux pro Azure SQL Edge podporované nejsou. Při definování budou tyto proměnné prostředí při inicializaci kontejneru ignorovány.
+Následující proměnná prostředí SQL Server on Linux pro Azure SQL Edge podporována. Pokud je tato proměnná prostředí definována, bude při inicializaci kontejneru ignorována.
 
 | Proměnná prostředí | Popis |
 |-----|-----|
-| **MSSQL_ENABLE_HADR** | Povolte skupinu dostupnosti. Například ' 1 ' je povolen a ' 0 ' je zakázán |
+| **MSSQL_ENABLE_HADR** | Povolte skupinu dostupnosti. Například hodnota **1** je povolena a **hodnota 0** je zakázána. |
 
 > [!IMPORTANT]
-> Proměnná prostředí *MSSQL_PID* SQL Edge jako platné hodnoty přijímá jenom úrovně **Premium** a **Developer** . Azure SQL Edge nepodporuje inicializaci pomocí kódu Product Key.
+> Proměnná prostředí **MSSQL_PID** SQL Edge jako platné hodnoty přijímá jenom úrovně **Premium** a **Developer** . Azure SQL Edge nepodporuje inicializaci pomocí kódu Product Key.
 
 > [!NOTE]
-> Pokud si chcete stáhnout licenční smlouvu s koncovým uživatelem pro Azure SQL Edge, přečtěte si licenční [smlouvu s koncovým uživatelem](https://go.microsoft.com/fwlink/?linkid=2128283).
+> Stažení [licenčních podmínek pro software společnosti Microsoft](https://go.microsoft.com/fwlink/?linkid=2128283) pro Azure SQL Edge.
 
-### <a name="specifying-the-environment-variables"></a>Určení proměnných prostředí
+### <a name="specify-the-environment-variables"></a>Zadat proměnné prostředí
 
-Proměnné prostředí pro SQL Edge můžete zadat při nasazování Azure SQL Edge přes [Azure Portal](deploy-portal.md). To lze přidat buď do oddílu "proměnné prostředí" v nasazení modulu, nebo jako součást možnosti vytvořit kontejner, jak je popsáno níže.
+Určete proměnné prostředí pro SQL Edge při nasazení služby prostřednictvím [Azure Portal](deploy-portal.md). Můžete je přidat buď do oddílu **proměnné prostředí** v nasazení modulu, nebo jako součást **možností vytváření kontejnerů**.
 
-*Nastavení možností použití proměnných prostředí*
+Přidejte hodnoty do **proměnných prostředí**.
 
-![nastavit pomocí seznamu proměnných prostředí](media/configure/set-environment-variables.png)
+![Nastavení pomocí seznamu proměnných prostředí](media/configure/set-environment-variables.png)
 
-*Nastavení pomocí možností vytvoření kontejneru*
+Přidejte hodnoty do **kontejneru možnosti vytvoření**.
 
-![nastavení pomocí možností vytvoření kontejneru](media/configure/set-environment-variables-using-create-options.png)
+![Nastavení pomocí možností vytvoření kontejneru](media/configure/set-environment-variables-using-create-options.png)
 
-## <a name="configure-using-mssqlconf-file"></a>Konfigurace pomocí souboru MSSQL. conf
+## <a name="configure-by-using-an-mssqlconf-file"></a>Konfigurace pomocí souboru MSSQL. conf
 
-Azure SQL Edge neobsahuje [konfigurační nástroj MSSQL-conf](/sql/linux/sql-server-linux-configure-mssql-conf/) , jako je SQL Server on Linux, protože je potřeba ručně nakonfigurovat soubor MSSQL. conf a umístit ho do trvalé jednotky úložiště, která je namapovaná na složku/var/opt/MSSQL/v modulu SQL Edge. Při nasazování okraje SQL Edge z Azure Marketplace je toto mapování zadáno jako možnost * * připojení v možnosti vytvořit kontejner.
+Azure SQL Edge neobsahuje [konfigurační nástroj MSSQL-conf](/sql/linux/sql-server-linux-configure-mssql-conf/) , jako je SQL Server on Linux. Musíte ručně nakonfigurovat soubor MSSQL. conf a umístit ho do trvalé úložné jednotky, která je namapovaná do složky/var/opt/MSSQL/v modulu SQL Edge. Pokud nasazujete SQL Edge z Azure Marketplace, toto mapování je zadáno jako možnost **připojení** v **kontejneru možnosti vytvoření**.
 
 ```json
     {
@@ -75,14 +75,14 @@ Následující možnosti MSSQL. conf se nevztahují na SQL Edge:
 
 |Možnost|Popis|
 |:---|:---|
-|**Názory zákazníků** | Určete, zda SQL Server odesílá zpětnou vazbu společnosti Microsoft. |
-|**Profil Databázová pošta** | Nastavte výchozí profil databázového e-mailu pro SQL Server on Linux. |
+|**Názory zákazníků** | Vyberte, zda SQL Server odesílá zpětnou vazbu společnosti Microsoft. |
+|**Profil databázového e-mailu** | Nastavte výchozí profil databázového e-mailu pro SQL Server on Linux. |
 |**Vysoká dostupnost** | Povolte skupiny dostupnosti. |
-|**DTC (Distributed Transaction Coordinator) Microsoftu** | Konfigurace a řešení potíží s koordinátorem MSDTC v systému Linux. Další možnosti konfigurace související s distribuovanými transakcemi se také pro SQL Edge nepodporují. Další informace o těchto dalších možnostech konfigurace najdete v tématu [Konfigurace MSDTC](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc) . |
-|**MLServices smlouvy EULA** | Přijměte smlouvy EULA jazyka R a Python pro balíčky Machine Learning Services. Platí jenom pro SQL Server 2019.|
+|**DTC (Distributed Transaction Coordinator) Microsoftu** | Konfigurace a řešení potíží s koordinátorem MSDTC v systému Linux. Další možnosti konfigurace související s distribuovanými transakcemi nejsou podporované pro SQL Edge. Další informace o těchto dalších možnostech konfigurace najdete v tématu [Konfigurace MSDTC](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#msdtc). |
+|**MLServices smlouvy EULA** | Přijměte smlouvy EULA jazyka R a Python pro balíčky Azure Machine Learning. Platí jenom pro SQL Server 2019.|
 |**outboundnetworkaccess** |Povolí odchozí síťový přístup pro rozšíření [Machine Learning Services](/sql/linux/sql-server-linux-setup-machine-learning/) R, Python a Java.|
 
-Ukázkový soubor MSSQL. conf, který funguje pro SQL Edge, je uvedený níže. Další informace o formátu souboru MSSQL. conf najdete v tématu [Formát MSSQL. conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
+Následující ukázkový soubor MSSQL. conf funguje pro SQL Edge. Další informace o formátu souboru MSSQL. conf najdete v tématu [Formát MSSQL. conf](https://docs.microsoft.com/sql/linux/sql-server-linux-configure-mssql-conf#mssql-conf-format).
 
 ```ini
 [EULA]
@@ -114,7 +114,7 @@ traceflag1 = 3605
 traceflag2 = 1204
 ```
 
-## <a name="next-step"></a>Další krok
+## <a name="next-steps"></a>Další kroky
 
 - [Připojení k Edge SQL Azure](connect.md)
-- [Sestavení komplexního řešení IoT pomocí SQL Edge](tutorial-deploy-azure-resources.md)
+- [Sestavení komplexního řešení IoT s využitím SQL Edge](tutorial-deploy-azure-resources.md)

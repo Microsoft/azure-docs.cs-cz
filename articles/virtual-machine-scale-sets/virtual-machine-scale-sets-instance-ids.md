@@ -9,12 +9,12 @@ ms.subservice: management
 ms.date: 02/22/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
-ms.openlocfilehash: 6ffc92fe8d17970e1408262387140331189d6e51
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 430c08fc318a89c4d11575eab90ee524b88a979a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83200128"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607342"
 ---
 # <a name="understand-instance-ids-for-azure-vm-scale-set-vms"></a>Pochopení ID instancí pro virtuální počítače Azure VM Scale set
 Tento článek popisuje ID instancí pro sady škálování a různé způsoby jejich povrchu.
@@ -23,7 +23,7 @@ Tento článek popisuje ID instancí pro sady škálování a různé způsoby j
 
 Každý virtuální počítač v sadě škálování získá ID instance, která ho jednoznačně identifikuje. Toto ID instance se používá v rozhraních API sady škálování pro provádění operací na konkrétním virtuálním počítači v sadě škálování. Můžete například zadat konkrétní ID instance pro obnovení bitové kopie při použití rozhraní API pro přeimagí:
 
-REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/reimage?api-version={apiVersion}` (Další informace najdete v dokumentaci k [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesets/reimage)).
+REST API: `POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualmachines/{instanceId}/reimage?api-version={apiVersion}` (Další informace najdete v dokumentaci k [REST API](https://docs.microsoft.com/rest/api/compute/virtualmachinescalesetvms/reimage)).
 
 PowerShell: `Set-AzVmssVM -ResourceGroupName {resourceGroupName} -VMScaleSetName {vmScaleSetName} -InstanceId {instanceId} -Reimage` (Další informace najdete v [dokumentaci k PowerShellu](https://docs.microsoft.com/powershell/module/az.compute/set-azvmssvm))
 

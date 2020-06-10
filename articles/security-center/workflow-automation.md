@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 9e905e78a835c833abe415d8b76c09ce672f849c
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c97dafa80adedd64d45666eb98ef6b1e69850719
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300110"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629397"
 ---
 # <a name="workflow-automation"></a>Automatizace pracovních postupů
 
@@ -43,7 +43,7 @@ Tento článek popisuje funkci automatizace pracovního postupu Azure Security C
 - Cloud 
     - ✔ Komerční cloudy
     - ✔ US Gov
-    - ✘ Čínština gov, ostatní gov
+    - ✘ Čína gov, ostatní gov
 
 
 ## <a name="create-a-logic-app-and-define-when-it-should-automatically-run"></a>Vytvoření aplikace logiky a definování jejího automatického spuštění 

@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: 323ec00667350917e6b16827f908ac1abeee77d6
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 4b09df3110907d58badda2c389b9ee39a9b02532
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233308"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636185"
 ---
 # <a name="create-stream-analytics-job-in-azure-sql-edge-preview"></a>Vytvoření úlohy Stream Analytics v Azure SQL Edge (Preview) 
 
@@ -24,7 +24,7 @@ Tento článek vysvětluje, jak vytvořit úlohu streamování T-SQL ve službě
 2. V rámci vytváření úlohy streamování definujte dotaz na úlohu streamování.
 
 > [!NOTE]
-> Pokud chcete povolit funkci streamování T-SQL ve službě Azure SQL Edge, povolte jako možnost spuštění TF 11515 nebo použijte příkaz [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) . Další informace o tom, jak povolit příznaky trasování pomocí souboru MSSQL. conf, najdete v tématu [Konfigurace použití souboru MSSQL. conf](configure.md#configure-using-mssqlconf-file). Tento požadavek se odebere v budoucích aktualizacích Azure SQL Edge (Preview).
+> Pokud chcete povolit funkci streamování T-SQL ve službě Azure SQL Edge, povolte jako možnost spuštění TF 11515 nebo použijte příkaz [DBCC TRACEON]( https://docs.microsoft.com/sql/t-sql/database-console-commands/dbcc-traceon-transact-sql) . Další informace o tom, jak povolit příznaky trasování pomocí souboru MSSQL. conf, najdete v tématu [Konfigurace použití souboru MSSQL. conf](configure.md#configure-by-using-an-mssqlconf-file). Tento požadavek se odebere v budoucích aktualizacích Azure SQL Edge (Preview).
 
 ## <a name="configure-an-external-stream-input-and-output-object"></a>Konfigurace vstupního a výstupního objektu externího datového proudu
 
@@ -44,10 +44,10 @@ Azure SQL Edge aktuálně podporuje jenom následující zdroje dat jako vstupy 
 
 | Typ zdroje dat | Vstup | Výstup | Popis |
 |------------------|-------|--------|------------------|
-| Centrum Azure IoT Edge | Y | Y | Zdroj dat pro čtení a zápis streamování dat do centra Azure IoT Edge. Další informace o centru Azure IoT Edge najdete v [centru IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)|
-| Databáze SQL | N | Y | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. SQL Database může být místní databáze SQL Edge nebo vzdálený SQL Server nebo Azure SQL Database|
-| Azure Blob Storage | N | Y | Zdroj dat pro zápis dat do objektu BLOB v účtu úložiště Azure. |
-| Kafka | Y | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Tento adaptér je teď dostupný jenom pro Azure SQL Edge verze Intel/AMD a není k dispozici pro ARM64 verzi SQL Edge.|
+| Centrum Azure IoT Edge | Ano | Ano | Zdroj dat pro čtení a zápis streamování dat do centra Azure IoT Edge. Další informace o centru Azure IoT Edge najdete v [centru IoT Edge](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub)|
+| Databáze SQL | N | Ano | Připojení zdroje dat, které zapisuje streamovaná data do SQL Database. SQL Database může být místní databáze SQL Edge nebo vzdálený SQL Server nebo Azure SQL Database|
+| Azure Blob Storage | N | Ano | Zdroj dat pro zápis dat do objektu BLOB v účtu úložiště Azure. |
+| Kafka | Ano | N | Zdroj dat pro čtení dat streamování z tématu Kafka. Tento adaptér je teď dostupný jenom pro Azure SQL Edge verze Intel/AMD a není k dispozici pro ARM64 verzi SQL Edge.|
 
 ### <a name="example-create-an-external-stream-inputoutput-object-for-azure-iot-edge-hub"></a>Příklad: vytvoření objektu vstupu/výstupu externího datového proudu pro Azure IoT Edge hub
 

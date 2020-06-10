@@ -5,13 +5,13 @@ author: dsindona
 ms.author: dsindona
 ms.service: marketplace
 ms.topic: conceptual
-ms.date: 12/10/2019
-ms.openlocfilehash: d34687703506db89b524ad7510d4946df8ac5360
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 06/09/2020
+ms.openlocfilehash: 57a5f3046ce7a1f968bb823a0e13008d076b78c4
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849021"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636559"
 ---
 # <a name="getting-paid-in-the-commercial-marketplace"></a>Platba na komerčním webu Marketplace
 
@@ -27,21 +27,6 @@ Když se [přihlásíte k vývojářskému účtu](https://go.microsoft.com/fwli
 Poplatky jsou v rámci [smlouvy Microsoft Azure Marketplace vydavatele](https://go.microsoft.com/fwlink/p/?LinkID=699560)oficiálně definovány. Pokud máte nějaké dotazy, vždy si ho Projděte.
 
 Poplatek za Store se použije na všechny prodejní nabídky shromážděné komerčním Marketplace, včetně doplňků.
-
-## <a name="price-tiers"></a>Cenové úrovně
-
-Cenové úrovně, které vyberete, nastaví prodejní cenu ve všech zemích nebo oblastech, kde se rozhodnete distribuovat svou nabídku. Můžete také využít další cenové funkce, jako je například výběr různých cen pro různé trhy.
-
-Svou aplikaci můžete nabízet zdarma nebo si můžete vybrat cenu, kterou si zákazníci musí zaplatit za získání vaší nabídky. Cenové úrovně začínají na. 99 USD, s dalšími přírůstky (1,09 USD, 1,19 USD atd.). Zvýšení ceny mezi cenové úrovně se zvyšuje, protože cena je vyšší.
-
-> [!NOTE] 
-> Tyto cenové úrovně se vztahují také na všechny doplňky, které nabízíte v rámci vaší nabídky.
-
-Každá cenová úroveň má odpovídající hodnotu v každé z měn nabízených úložištěm. Tyto hodnoty používáme k tomu, abychom vám pomohli prodávat nabídku za srovnatelný cenový bod po celém světě. V důsledku změn v devizových kurzech se ale přesná částka prodeje může mírně lišit od jedné měny k druhé.
-
-Máte také možnost zadat cenu z volné formy, kterou zvolíte v místní měně konkrétního trhu. Když to uděláte, cena se neupraví (i když se změní míra převodu), Pokud neodešlete aktualizaci s novou cenou. 
-
-Mějte na paměti, že vybraná cena může zahrnovat daň z prodeje nebo přidané hodnoty, kterou musí vaši zákazníci platit. Podrobnosti najdete v tématu [daňové detaily pro placené nabídky](tax-details-paid-transactions.md).
 
 ## <a name="payout-reporting"></a>Generování sestav plateb
 

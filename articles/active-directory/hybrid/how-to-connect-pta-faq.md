@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/09/2020
+ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 661d4f622dce45aeca1d41ead60f05ccdcfbc9c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0178d95072bec7af60fa500e662abdd9698c72d0
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81406883"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84635743"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory předávací ověřování: nejčastější dotazy
 
@@ -44,7 +44,7 @@ Ne. Předávací ověřování je dostupné jenom v celosvětové instanci Azure
 Ano. Všechny funkce podmíněného přístupu, včetně Azure Multi-Factor Authentication, fungují s předávacím ověřováním.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Podporuje předávací ověřování "alternativní ID" jako uživatelské jméno místo "userPrincipalName"?
-Přihlaste se pomocí jiné hodnoty než UPN, například alternativního e-mailu, se v privátní verzi Preview testuje při předávacím ověřování (PTA) a synchronizaci hodnot hash hesel (KOSMETICE).
+Ano, přihlaste se pomocí nestandardní hodnoty (UPN), jako je například alternativní e-mail, se podporuje jak předávací ověřování (PTA), tak i synchronizace hodnot hash hesel (KOSMETICE). Další informace o [alternativním přihlašovacím ID](../authentication/howto-authentication-use-email-signin.md)
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>Funguje synchronizace hodnot hash hesel jako záložní pro předávací ověřování?
 
@@ -87,7 +87,7 @@ Ano. Pokud je v místním prostředí povoleno automatické zjišťování webov
 Pokud ve svém prostředí nemáte WPAD, můžete přidat informace o proxy serveru (jak je vidět níže) a povolit agentovi předávacího ověřování komunikovat s Azure AD:
 - Před instalací agenta předávacího ověřování na server nakonfigurujte v aplikaci Internet Explorer informace o proxy serveru. To vám umožní dokončit instalaci ověřovacího agenta, ale na portálu pro správu se pořád zobrazí jako **neaktivní** .
 - Na serveru přejděte do složky C:\Program Files\Microsoft Azure AD Connect Authentication agent.
-- Upravte konfigurační soubor "AzureADConnectAuthenticationAgentService" a přidejte následující řádky (nahraďte http\://contosoproxy.com:8080 "skutečnou adresou proxy serveru):
+- Upravte konfigurační soubor "AzureADConnectAuthenticationAgentService" a přidejte následující řádky (nahraďte http \: //contosoproxy.com:8080 "skutečnou adresou proxy serveru):
 
 ```
    <system.net>

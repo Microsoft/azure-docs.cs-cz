@@ -5,13 +5,13 @@ author: kummanish
 ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/18/2020
-ms.openlocfilehash: b4333513d2ba210f6a472638732cc2781b8d5c0b
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 6/8/2020
+ms.openlocfilehash: 3f0df02b58835ce4b43d6ba172e79f872a9fae1e
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300831"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608379"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Architektura připojení v Azure Database for MariaDB
 Tento článek popisuje architekturu připojení Azure Database for MariaDB a způsob, jakým jsou přenosy směrovány na vaši instanci Azure Database for MariaDB od klientů v rámci i mimo Azure.
@@ -71,6 +71,17 @@ V následující tabulce je uveden seznam primárních a sekundárních IP adres
 | USA – západ | 104.42.238.205, 23.99.34.75  |
 | USA – západ 2 | 13.66.226.202  |
 ||||
+
+## <a name="connection-redirection"></a>Přesměrování připojení
+
+Azure Database for MariaDB podporuje další zásady připojení, **přesměrování**, která pomáhá snižovat latenci sítě mezi klientskými aplikacemi a MariaDB servery. Po navázání počáteční relace protokolu TCP na server Azure Database for MariaDB server vrátí back-end adresu uzlu, který hostuje server MariaDB, do klienta. Následně se všechny následné pakety nasměrují přímo na server a vynechá bránu. Jako tok paketů přímo na server, latence a propustnost vylepší výkon.
+
+Tato funkce je podporovaná v Azure Database for MariaDB serverech s verzemi modulu 10,2 a 10,3.
+
+Podpora pro přesměrování je dostupná v rozšíření PHP [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) , vyvinuté společností Microsoft a je dostupná na [PECL](https://pecl.php.net/package/mysqlnd_azure). Další informace o tom, jak používat přesměrování ve svých aplikacích, najdete v článku [konfigurace přesměrování](./howto-redirection.md) .
+
+> [!IMPORTANT]
+> Podpora přesměrování [mysqlnd_azure](https://github.com/microsoft/mysqlnd_azure) rozšíření PHP je v současnosti ve verzi Preview.
 
 ## <a name="next-steps"></a>Další kroky
 

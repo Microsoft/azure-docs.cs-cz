@@ -10,12 +10,13 @@ ms.subservice: speech-service
 ms.topic: how-to
 ms.date: 04/13/2020
 ms.author: trbye
-ms.openlocfilehash: 171fdb033cba422d8ba580da3ab54db88ca20872
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: tracking-python
+ms.openlocfilehash: 525417bd83a1d30479fd3effbce690ed04d9af73
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81400822"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607988"
 ---
 # <a name="convert-text-to-speech-using-python"></a>Převod textu na řeč pomocí Pythonu
 
@@ -26,7 +27,7 @@ Tento článek vyžaduje [účet Azure Cognitive Services](https://docs.microsof
 ## <a name="prerequisites"></a>Požadavky
 
 * Python 2.7.x nebo 3.x
-* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>nebo váš oblíbený textový editor
+* <a href="https://visualstudio.microsoft.com/downloads/" target="_blank">Visual Studio <span class="docon docon-navigate-external x-hidden-focus"></span> </a>, <a href="https://code.visualstudio.com/download" target="_blank">Visual Studio Code <span class="docon docon-navigate-external x-hidden-focus"></span> </a>nebo váš oblíbený textový editor
 * Klíč předplatného Azure pro službu pro rozpoznávání řeči
 
 ## <a name="create-a-project-and-import-required-modules"></a>Vytvoření projektu a import požadovaných modulů
@@ -67,13 +68,13 @@ class TextToSpeech(object):
         self.access_token = None
 ```
 
-`subscription_key` Je jedinečný klíč z Azure Portal. `tts`vyzve uživatele k zadání textu, který se bude převádět na řeč. Tento vstup je řetězcový literál, takže znaky nemusejí být uvozeny řídicími znaky. Nakonec `timestr` získá aktuální čas, který použijeme k pojmenování souboru.
+`subscription_key`Je jedinečný klíč z Azure Portal. `tts`vyzve uživatele k zadání textu, který se bude převádět na řeč. Tento vstup je řetězcový literál, takže znaky nemusejí být uvozeny řídicími znaky. Nakonec `timestr` získá aktuální čas, který použijeme k pojmenování souboru.
 
 ## <a name="get-an-access-token"></a>Získání přístupového tokenu
 
 REST API převodu textu na řeč vyžaduje přístupový token pro ověřování. Pro získání přístupového tokenu se vyžaduje Exchange. Tato ukázka vyměňuje klíč předplatného služby Speech pro přístupový token pomocí `issueToken` koncového bodu.
 
-V této ukázce se předpokládá, že vaše předplatné služby Speech je v oblasti Západní USA. Pokud používáte jinou oblast, aktualizujte hodnotu pro `fetch_token_url`. Úplný seznam najdete v tématu [oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
+V této ukázce se předpokládá, že vaše předplatné služby Speech je v oblasti Západní USA. Pokud používáte jinou oblast, aktualizujte hodnotu pro `fetch_token_url` . Úplný seznam najdete v tématu [oblasti](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#rest-apis).
 
 Zkopírujte tento kód do `TextToSpeech` třídy:
 
@@ -92,14 +93,14 @@ def get_token(self):
 
 ## <a name="make-a-request-and-save-the-response"></a>Vytvoření žádosti a uložení odpovědi
 
-Tady se chystáte vytvořit žádost a Uložit odpověď na řeč. Nejdřív je potřeba nastavit `base_url` a. `path` Tato ukázka předpokládá, že používáte koncový bod Západní USA. Pokud je prostředek zaregistrován v jiné oblasti, nezapomeňte aktualizovat `base_url`. Další informace najdete v tématu [oblasti služby Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
+Tady se chystáte vytvořit žádost a Uložit odpověď na řeč. Nejdřív je potřeba nastavit `base_url` a `path` . Tato ukázka předpokládá, že používáte koncový bod Západní USA. Pokud je prostředek zaregistrován v jiné oblasti, nezapomeňte aktualizovat `base_url` . Další informace najdete v tématu [oblasti služby Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#text-to-speech).
 
 Dále je nutné přidat požadovaná záhlaví pro požadavek. Ujistěte se, že provedete aktualizaci `User-Agent` s názvem vašeho prostředku (umístěný v Azure Portal) a nastavíte `X-Microsoft-OutputFormat` na preferovaný zvukový výstup. Úplný seznam výstupních formátů najdete v tématu [zvukové výstupy](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis).
 
 Pak sestavte text žádosti pomocí jazyka Speech syntéz Markup Language (SSML). Tato ukázka definuje strukturu a používá `tts` vstup, který jste vytvořili dříve.
 
 >[!NOTE]
-> Tato ukázka používá písmo `Guy24kRUS` hlasu. Úplný seznam hlasů/jazyků poskytovaných společností Microsoft najdete v tématu [Podpora jazyků](language-support.md).
+> Tato ukázka používá `Guy24kRUS` písmo hlasu. Úplný seznam hlasů/jazyků poskytovaných společností Microsoft najdete v tématu [Podpora jazyků](language-support.md).
 > Pokud vás zajímá vytváření jedinečného a rozpoznatelného hlasu pro vaši značku, přečtěte si téma [vytváření vlastních hlasových písem](how-to-customize-voice-font.md).
 
 Nakonec vytvoříte požadavek na službu. Pokud je požadavek úspěšný a vrátí se stavový kód 200, odpověď na řeč se zapíše do souboru s časovým razítkem.

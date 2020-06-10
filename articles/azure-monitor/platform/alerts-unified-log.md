@@ -6,16 +6,16 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 5/31/2019
 ms.subservice: alerts
-ms.openlocfilehash: a6abf4665c27771497037da35f85bb540e6e904e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0e81d48f4e709a9a0bb8ebb33c7029d3841167b6
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77665217"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609042"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Protokolování výstrah v Azure Monitor
 
-Tento článek poskytuje podrobné informace o upozorněních protokolu jsou jedním z typů výstrah podporovaných v rámci [výstrah Azure](../../azure-monitor/platform/alerts-overview.md) a umožňuje uživatelům používat analytickou platformu Azure jako základ pro upozorňování.
+Výstrahy protokolu jsou jedním z typů výstrah, které jsou podporovány v [upozorněních Azure](../../azure-monitor/platform/alerts-overview.md). Výstrahy protokolu umožňují uživatelům používat platformu Azure Analytics jako základ pro upozorňování.
 
 Výstraha protokolu se skládá z pravidel prohledávání protokolu vytvořených pro [Azure monitor protokolů](../../azure-monitor/learn/tutorial-viewdata.md) nebo [Application Insights](../../azure-monitor/app/cloudservices.md#view-azure-diagnostics-events). Další informace o jeho použití najdete v tématu [vytváření výstrah protokolu v Azure](../../azure-monitor/platform/alerts-log.md) .
 
@@ -132,7 +132,7 @@ Pojďme se tomuto chování podívat v praxi s praktickým příkladem. Předpok
 V každém intervalu níže systém výstrah Azure vyhodnotí podmínku pro *protokol contoso-log-Alert*.
 
 
-| Time    | Počet záznamů vrácených dotazem na hledání protokolu | Protokolovací podmínka Evalution | Výsledek 
+| Čas    | Počet záznamů vrácených dotazem na hledání protokolu | Protokolovací podmínka Evalution | Výsledek 
 | ------- | ----------| ----------| ------- 
 | 1:05 ODP. | 0 záznamů | 0 není > 0, takže FALSE |  Výstraha se neaktivuje. Nevolaly se žádné akce.
 | 1:10 ODP. | 2 záznamy | 2 > 0, takže TRUE  | Aktivují se výstrahy a volané skupiny akcí. Stav výstrahy aktivní.
@@ -147,22 +147,22 @@ V 1:20. odp. když se v 500 kódu výsledku zobrazí nula záznamů, upozorněn�
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Ceny a fakturace výstrah protokolu
 
-Ceny týkající se výstrah protokolů jsou uvedené na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) . Ve službě Azure Bills se výstrahy protokolu zobrazují jako `microsoft.insights/scheduledqueryrules` typ s:
+Ceny týkající se výstrah protokolů jsou uvedené na stránce s [cenami Azure monitor](https://azure.microsoft.com/pricing/details/monitor/) . Ve službě Azure Bills se výstrahy protokolu zobrazují jako typ `microsoft.insights/scheduledqueryrules` s:
 
 - Výstrahy protokolu na Application Insights zobrazené s přesným názvem výstrahy spolu se skupinami prostředků a vlastnostmi výstrahy
 - Výstrahy protokolu v Log Analytics zobrazeny s přesným názvem výstrahy spolu se skupinami prostředků a vlastnostmi výstrahy; Při vytvoření pomocí [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules)
 
-[Starší verze rozhraní Log Analytics API](../../azure-monitor/platform/api-alerts.md) mají v rámci Log Analytics uložených hledání a nesprávné [prostředky Azure](../../azure-resource-manager/management/overview.md)nějaké akce a plány výstrah. Pokud tedy chcete povolit účtování pro tyto starší verze protokolů, které jsou vytvořeny pro Log Analytics pomocí Azure Portal **bez** [přepínání do nového rozhraní API](../../azure-monitor/platform/alerts-log-api-switch.md) nebo prostřednictvím [starší verze Log Analytics API](../../azure-monitor/platform/api-alerts.md) – `microsoft.insights/scheduledqueryrules` pro účely fakturace v Azure jsou vytvořeny skrytá pravidla pro upozornění na rozhraní. Skrytá pravidla pro upozornění, `microsoft.insights/scheduledqueryrules` která byla vytvořena pro fakturaci, `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` jak je znázorněno společně se skupinou prostředků a vlastnostmi výstrahy.
+[Starší verze rozhraní Log Analytics API](../../azure-monitor/platform/api-alerts.md) mají v rámci Log Analytics uložených hledání a nesprávné [prostředky Azure](../../azure-resource-manager/management/overview.md)nějaké akce a plány výstrah. Pokud tedy chcete povolit účtování pro tyto starší verze protokolů, které jsou vytvořeny pro Log Analytics pomocí Azure Portal **bez** [přepínání do nového rozhraní API](../../azure-monitor/platform/alerts-log-api-switch.md) nebo prostřednictvím [starší verze Log Analytics API](../../azure-monitor/platform/api-alerts.md) – `microsoft.insights/scheduledqueryrules` pro účely fakturace v Azure jsou vytvořeny skrytá pravidla pro upozornění na rozhraní. Skrytá pravidla pro upozornění, která byla vytvořena pro fakturaci `microsoft.insights/scheduledqueryrules` , jak je znázorněno `<WorkspaceName>|<savedSearchId>|<scheduleId>|<ActionId>` společně se skupinou prostředků a vlastnostmi výstrahy.
 
 > [!NOTE]
-> Pokud `<, >, %, &, \, ?, /` jsou k dispozici neplatné znaky, jako jsou například, budou `_` nahrazeny názvem pravidla upozornění skryté pseudo, a to i ve službě Azure Bill.
+> Pokud `<, >, %, &, \, ?, /` jsou k dispozici neplatné znaky, jako jsou například, budou nahrazeny `_` názvem pravidla upozornění skryté pseudo, a to i ve službě Azure Bill.
 
 Pokud chcete odebrat skryté prostředky scheduleQueryRules vytvořené pro fakturaci pravidel upozornění pomocí [starších Log Analytics rozhraní API](api-alerts.md), může uživatel provést některou z následujících akcí:
 
 - Uživatel může [přepínat předvolby rozhraní API pro pravidla upozornění v pracovním prostoru Log Analytics](../../azure-monitor/platform/alerts-log-api-switch.md) , aniž by došlo ke ztrátě svých pravidel nebo monitorování, aby se přesunuly do Azure Resource Manager kompatibilního [rozhraní scheduledQueryRules API](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules). Proto Eliminujte nutnost vytvářet pravidla pro vyúčtování pseudo skrytých výstrah.
 - Nebo pokud uživatel nechce přepnout na Předvolby rozhraní API, bude muset uživatel **Odstranit** původní plán a akci upozornění pomocí [starší verze Log Analytics API](api-alerts.md) nebo odstranit v [Azure Portal původní pravidlo upozornění protokolu](../../azure-monitor/platform/alerts-log.md#view--manage-log-alerts-in-azure-portal) .
 
-Kromě toho, že se skryté prostředky scheduleQueryRules vytvořené pro fakturaci pravidel upozornění používají [starší verze rozhraní API Log Analytics](api-alerts.md), všechny operace změny, jako je třeba PUT, selžou. Jako pravidla `microsoft.insights/scheduledqueryrules` typu pseudo jsou pro účely fakturace pravidla upozornění vytvořená pomocí [starší verze rozhraní Log Analytics API](api-alerts.md). Jakákoli změna pravidla výstrahy by se měla provádět pomocí [starší verze rozhraní Log Analytics API](api-alerts.md) (nebo). uživatel může místo toho [Přepnout předvolby rozhraní API pro pravidla upozornění](../../azure-monitor/platform/alerts-log-api-switch.md) na použití [rozhraní API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) .
+Kromě toho, že se skryté prostředky scheduleQueryRules vytvořené pro fakturaci pravidel upozornění používají [starší verze rozhraní API Log Analytics](api-alerts.md), všechny operace změny, jako je třeba PUT, selžou. Jako `microsoft.insights/scheduledqueryrules` pravidla typu pseudo jsou pro účely fakturace pravidla upozornění vytvořená pomocí [starší verze rozhraní Log Analytics API](api-alerts.md). Jakákoli změna pravidla výstrahy by se měla provádět pomocí [starší verze rozhraní Log Analytics API](api-alerts.md) (nebo). uživatel může místo toho [Přepnout předvolby rozhraní API pro pravidla upozornění](../../azure-monitor/platform/alerts-log-api-switch.md) na použití [rozhraní API scheduledQueryRules](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules) .
 
 ## <a name="next-steps"></a>Další kroky
 

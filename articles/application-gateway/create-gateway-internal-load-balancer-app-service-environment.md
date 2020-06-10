@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2018
+ms.date: 06/09/2020
 ms.author: genli
-ms.openlocfilehash: 4edeea749ba22bef173c15f3a0855679b784ce33
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8861e850e168169762d95c44a54b6a88a036f396
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80668559"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84628532"
 ---
-# <a name="back-end-server-certificate-is-not-whitelisted-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Certifikát back-end serveru není povolený pro aplikační bránu pomocí interního Load Balancer s App Service Environment
+# <a name="back-end-server-certificate-is-not-allow-listed-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>Certifikát back-end serveru není povolený v seznamu pro aplikační bránu pomocí interní Load Balancer s App Service Environment
 
-Tento článek řeší následující problém: certifikát není povolený při vytváření aplikační brány pomocí interního Load Balancer (interního nástroje) spolu s App Service Environment (pomocného programu) na back-endu při použití kompletního protokolu TLS v Azure.
+Tento článek řeší následující problém: certifikát není povolený, když vytváříte Aplikační bránu pomocí interního Load Balancer (interního nástroje) společně s App Service Environmentem (pomocným mechanismem) na back-endu při použití kompletního TLS v Azure.
 
 ## <a name="symptoms"></a>Příznaky
 
@@ -41,7 +41,7 @@ Když vytvoříte Aplikační bránu pomocí interního nástroje s pomocným me
 - **Port:**: 443
 - **Vlastní test paměti:** Název hostitele – test.appgwtestase.com
 - **Ověřovací certifikát:** cer z test.appgwtestase.com
-- **Stav back-endu:** Stav není v pořádku – certifikát back-end serveru není na seznamu povolených Application Gateway.
+- **Stav back-endu:** Stav není v pořádku – certifikát back-end serveru není povolený v seznamu s Application Gateway.
 
 **Konfigurace pomocného mechanismu:**
 
@@ -68,7 +68,7 @@ Pokud pro přístup k interního nástroje použijete plně kvalifikovaný náze
 
 - Pokud používáte IP adresu interního nástroje, zrušte zaškrtnutí možnosti **použít pro službu App Service pro službu** Application Gateway.
 
-Chcete-li snížit režii, můžete nahrát certifikát interního nástroje v nastavení protokolu HTTP, aby bylo možné cestu k testu použít. (Tento krok je jenom pro přidávání do seznamu povolených. Nebude se používat pro komunikaci TLS.) Certifikát interního nástroje můžete načíst tak, že přistupujete k interního nástroje s IP adresou z prohlížeče v protokolu HTTPS a potom exportujete certifikát TLS/SSL ve formátu CER se základními 64 a nahrajete certifikát na příslušné nastavení HTTP.
+Chcete-li snížit režii, můžete nahrát certifikát interního nástroje v nastavení protokolu HTTP, aby bylo možné cestu k testu použít. (Tento krok je jenom pro seznam povolených. Nebude se používat pro komunikaci TLS.) Certifikát interního nástroje můžete načíst tak, že přistupujete k interního nástroje s IP adresou z prohlížeče v protokolu HTTPS a potom exportujete certifikát TLS/SSL ve formátu CER se základními 64 a nahrajete certifikát na příslušné nastavení HTTP.
 
 ## <a name="need-help-contact-support"></a>Potřebujete pomoc? Kontaktování podpory
 

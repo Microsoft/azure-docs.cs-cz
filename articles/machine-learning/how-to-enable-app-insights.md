@@ -9,14 +9,14 @@ ms.topic: how-to
 ms.reviewer: jmartens
 ms.author: larryfr
 author: blackmist
-ms.date: 03/12/2020
+ms.date: 06/09/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 2473d864e0ad0fca4a886a6135a9caac0742e3d7
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 021d548c56810021af7257b25c40d7d4cc68ec12
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/09/2020
-ms.locfileid: "84557073"
+ms.locfileid: "84629453"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>Monitorování a shromažďování dat z koncových bodů webové služby ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -47,7 +47,9 @@ Kromě shromažďování výstupních dat a odpovědí koncového bodu můžete 
 >[!Important]
 > Azure Application Insights jenom zapisuje jenom datové části až 64 KB. Pokud je dosaženo tohoto limitu, budou protokolovány pouze nejaktuálnější výstupy modelu. 
 
-Metadata a odpověď na službu, která odpovídá metadatům webové služby a předpovědi modelu, se zaznamenávají do trasování Azure Application Insights v rámci zprávy `"model_data_collection"` . Můžete se dotázat na Azure Application Insights přímo pro přístup k těmto datům nebo nastavit [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) do účtu úložiště pro delší dobu uchovávání nebo dalšího zpracování. Data modelu se pak dají použít v Azure Machine Learning k nastavení označování, rekurze, vyjasnění, analýze dat nebo jiné použití. 
+Chcete-li protokolovat informace o požadavku na webovou službu, přidejte `print` do souboru Score.py příkazy. Každý `print` příkaz má za následek jednu položku v tabulce trasování v Application Insights v rámci zprávy `STDOUT` . Obsah `print` příkazu bude obsažen v části `customDimensions` a potom `Contents` v tabulce trasování. Pokud vytisknete řetězec JSON, vytvoří hierarchickou strukturu dat ve výstupu trasování v části `Contents` .
+
+Můžete se dotázat na Azure Application Insights přímo pro přístup k těmto datům nebo nastavit [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) do účtu úložiště pro delší dobu uchovávání nebo dalšího zpracování. Data modelu se pak dají použít v Azure Machine Learning k nastavení označování, rekurze, vyjasnění, analýze dat nebo jiné použití. 
 
 <a name="python"></a>
 
@@ -71,10 +73,48 @@ Metadata a odpověď na službu, která odpovídá metadatům webové služby a 
 
 Pokud chcete protokolovat vlastní trasování, postupujte podle standardního procesu nasazení pro AKS nebo ACI v tématu [postup nasazení a umístění](how-to-deploy-and-where.md) dokumentu. Pak použijte následující postup:
 
-1. Aktualizace souboru bodování přidáním příkazů Print
+1. Chcete-li odesílat data do Application Insights při odvozování, aktualizujte soubor bodování přidáním příkazů Print. Chcete-li protokolovat složitější informace, jako jsou například data žádosti a odpověď, strukturu JSON. Následující příklad souboru score.py protokoluje čas inicializace modelu, vstup a výstup během odvození a čas výskytu chyby:
     
     ```python
-    print ("model initialized" + time.strftime("%H:%M:%S"))
+    import pickle
+    import json
+    import numpy 
+    from sklearn.externals import joblib
+    from sklearn.linear_model import Ridge
+    from azureml.core.model import Model
+    import time
+
+    def init():
+        global model
+        #Print statement for appinsights custom traces:
+        print ("model initialized" + time.strftime("%H:%M:%S"))
+        
+        # note here "sklearn_regression_model.pkl" is the name of the model registered under the workspace
+        # this call should return the path to the model.pkl file on the local disk.
+        model_path = Model.get_model_path(model_name = 'sklearn_regression_model.pkl')
+        
+        # deserialize the model file back into a sklearn model
+        model = joblib.load(model_path)
+    
+
+    # note you can pass in multiple rows for scoring
+    def run(raw_data):
+        try:
+            data = json.loads(raw_data)['data']
+            data = numpy.array(data)
+            result = model.predict(data)
+            # Log the input and output data to appinsights:
+            info = {
+                "input": raw_data,
+                "output": result.tolist()
+                }
+            print(json.dumps(info))
+            # you can return any datatype as long as it is JSON-serializable
+            return result.tolist()
+        except Exception as e:
+            error = str(e)
+            print (error + time.strftime("%H:%M:%S"))
+            return error
     ```
 
 2. Aktualizace konfigurace služby
@@ -118,19 +158,19 @@ Zobrazení:
 
     [![AppInsightsLoc](./media/how-to-enable-app-insights/AppInsightsLoc.png)](././media/how-to-enable-app-insights/AppInsightsLoc.png#lightbox)
 
-1. Výběrem karty **Přehled** zobrazíte základní sadu metrik pro vaši službu.
+1. Na kartě **Přehled** nebo v části __monitorování__ v seznamu na levé straně vyberte __protokoly__.
 
-   [![Přehled](./media/how-to-enable-app-insights/overview.png)](././media/how-to-enable-app-insights/overview.png#lightbox)
+    [![Karta Přehled monitorování](./media/how-to-enable-app-insights/overview.png)](./media/how-to-enable-app-insights/overview.png#lightbox)
 
-1. Pokud chcete vyhledat požadavky na metadata a odpověď vaší webové služby, vyberte tabulku **požadavků** v části **protokoly (analýza)** a vyberte **Spustit** pro zobrazení požadavků.
+1. Chcete-li zobrazit informace zaznamenané ze souboru score.py, podívejte se na tabulku __trasování__ . Následující dotaz vyhledá protokoly, ve kterých byla __vstupní__ hodnota zaznamenána:
 
-   [![Data modelu](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
+    ```kusto
+    traces
+    | where customDimensions contains "input"
+    | limit 10
+    ```
 
-
-3. Pokud chcete hledat vlastní trasování, vyberte **Analytics** .
-4. V části schématu vyberte **trasování**. Pak vyberte **Spustit** a spusťte dotaz. Data by se měla zobrazit ve formátu tabulky a měla by se namapovat na vaše vlastní volání v souboru bodování.
-
-   [![Vlastní trasování](./media/how-to-enable-app-insights/logs.png)](././media/how-to-enable-app-insights/logs.png#lightbox)
+   [![trasovat data](./media/how-to-enable-app-insights/model-data-trace.png)](././media/how-to-enable-app-insights/model-data-trace.png#lightbox)
 
 Další informace o tom, jak používat Azure Application Insights, najdete v tématu [co je Application Insights?](../azure-monitor/app/app-insights-overview.md).
 
@@ -139,7 +179,7 @@ Další informace o tom, jak používat Azure Application Insights, najdete v t�
 >[!Important]
 > Azure Application Insights podporuje jenom exporty do úložiště objektů BLOB. Další omezení této možnosti exportu jsou uvedená v části [Export telemetrie z App Insights](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry#continuous-export-advanced-storage-configuration).
 
-Můžete použít [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) v Azure Application Insights k posílání zpráv do podporovaného účtu úložiště, kde je možné nastavit delší dobu uchování. `"model_data_collection"`Zprávy jsou uloženy ve formátu JSON a lze je snadno analyzovat pro extrakci dat modelu. 
+Můžete použít [průběžný export](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) v Azure Application Insights k posílání zpráv do podporovaného účtu úložiště, kde je možné nastavit delší dobu uchování. Data jsou uložena ve formátu JSON a lze je snadno analyzovat pro extrakci dat modelu. 
 
 Azure Data Factory, kanály Azure ML nebo jiné nástroje pro zpracování dat se dají použít k transformaci dat podle potřeby. Po transformaci dat je můžete zaregistrovat v pracovním prostoru Azure Machine Learning jako datovou sadu. Postup najdete v tématu [jak vytvořit a zaregistrovat datové sady](how-to-create-register-datasets.md).
 

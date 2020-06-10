@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive, tracking-python
 ms.date: 03/04/2020
-ms.openlocfilehash: 36ff0d5f1fc96b2013555d37a869ebf629a22be7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d8bf80cad86f45c24a475799a840b861c23fc28a
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272120"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610912"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Připojení k Apache Kafka ve službě HDInsight přes virtuální síť Azure
 
@@ -268,9 +268,9 @@ Ve výchozím nastavení funkce Apache Zookeeper vrátí název domény pro zpro
     echo "advertised.listeners=PLAINTEXT://$IP_ADDRESS:9092" >> /usr/hdp/current/kafka-broker/conf/server.properties
     ```
 
-6. Chcete-li nakonfigurovat rozhraní, na kterém naslouchá Kafka, `listeners` zadejte do pole __filtru__ v pravém horním rohu.
+6. Chcete-li nakonfigurovat rozhraní, na kterém naslouchá Kafka, zadejte `listeners` do pole __filtru__ v pravém horním rohu.
 
-7. Chcete-li nakonfigurovat Kafka pro naslouchání na všech síťových rozhraních, změňte hodnotu v poli `PLAINTEXT://0.0.0.0:9092` __naslouchací procesy__ na.
+7. Chcete-li nakonfigurovat Kafka pro naslouchání na všech síťových rozhraních, změňte hodnotu v poli __naslouchací procesy__ na `PLAINTEXT://0.0.0.0:9092` .
 
 8. Chcete-li uložit změny konfigurace, použijte tlačítko __Uložit__ . Zadejte textovou zprávu popisující změny. Po uložení změn klikněte na __OK__ .
 
@@ -316,7 +316,7 @@ Pokud chcete ověřit připojení k Kafka, pomocí následujícího postupu vytv
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    Tento skript předpokládá, `$resourceGroupName` že je název skupiny prostředků Azure, která obsahuje virtuální síť.
+    Tento skript předpokládá, že `$resourceGroupName` je název skupiny prostředků Azure, která obsahuje virtuální síť.
 
     V dalších krocích uložte vrácené informace pro použití.
 
@@ -344,7 +344,7 @@ Pokud chcete ověřit připojení k Kafka, pomocí následujícího postupu vytv
    * Pokud jste __povolili překlad IP adres pomocí vlastního serveru DNS__, nahraďte `kafka_broker` položky názvem FQDN pracovních uzlů.
 
      > [!NOTE]
-     > Tento kód odešle řetězec `test message` do tématu. `testtopic` Výchozí konfigurací Kafka ve službě HDInsight je vytvoření tématu, pokud neexistuje.
+     > Tento kód odešle řetězec `test message` do tématu `testtopic` . Výchozí konfigurací Kafka ve službě HDInsight je vytvoření tématu, pokud neexistuje.
 
 4. Chcete-li načíst zprávy ze Kafka, použijte následující kód Pythonu:
 

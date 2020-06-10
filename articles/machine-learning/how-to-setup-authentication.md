@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: how-to
 ms.date: 12/17/2019
 ms.custom: has-adal-ref
-ms.openlocfilehash: 57160088c283b1f2c686429168cc858fee58324a
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: e6fd2ba9210aa8f133ed08e850e4ded978682988
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433122"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629240"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Nastavení ověřování pro Azure Machine Learning prostředky a pracovní postupy
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -71,9 +71,14 @@ I když je to užitečné pro testování a učení, interaktivní ověřování
 
 Tento postup je nezbytný pro povolení ověřování, které je odděleno od přihlášení konkrétního uživatele, což vám umožní ověřit Azure Machine Learning Python SDK v automatizovaných pracovních postupech. Ověřování instančního objektu vám taky umožní [ověřit REST API](#azure-machine-learning-rest-api-auth).
 
-Pokud chcete nastavit ověřování instančního objektu, nejdřív vytvořte registraci aplikace v Azure Active Directory a potom udělte vašemu pracovnímu prostoru ML přístup na základě role vaší aplikace. Nejjednodušší způsob, jak toto nastavení dokončit, je [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) v Azure Portal. Po přihlášení na portál klikněte na `>_` ikonu v pravém horním rohu stránky poblíž jména a otevřete prostředí.
+> [!TIP]
+> Instanční objekty musí mít přístup k vašemu pracovnímu prostoru prostřednictvím [řízení přístupu na základě role (RBAC) v Azure](../role-based-access-control/overview.md).
+>
+> Použití předdefinovaných rolí **vlastníka** nebo **přispěvatele** do vašeho pracovního prostoru umožňuje instančnímu objektu provádět všechny aktivity, jako je například školení modelu, nasazení modelu atd. Další informace o použití rolí najdete v tématu [Správa přístupu k pracovnímu prostoru Azure Machine Learning](how-to-assign-roles.md).
 
-Pokud jste Cloud Shell nepoužívali před účtem Azure, budete muset vytvořit prostředek účtu úložiště pro ukládání souborů, které jsou zapsány. Obecně platí, že tento účet úložiště bude mít zanedbatelné měsíční náklady. Kromě toho nainstalujte rozšíření Machine Learning, pokud jste ho předtím nepoužili pomocí následujícího příkazu.
+Pokud chcete nastavit ověřování instančního objektu, nejdřív vytvořte registraci aplikace v Azure Active Directory a potom přiřaďte aplikaci roli. Nejjednodušší způsob, jak toto nastavení dokončit, je [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) v Azure Portal. Po přihlášení na portál klikněte na `>_` ikonu v pravém horním rohu stránky poblíž jména a otevřete prostředí.
+
+Pokud jste nepoužívali Cloud Shell před účtem Azure, budete muset vytvořit prostředek účtu úložiště pro ukládání souborů, které jsou zapsány. Obecně platí, že tento účet úložiště bude mít zanedbatelné měsíční náklady. Kromě toho nainstalujte rozšíření Machine Learning, pokud jste ho předtím nepoužili pomocí následujícího příkazu.
 
 ```azurecli-interactive
 az extension add -n azure-cli-ml
@@ -307,6 +312,9 @@ K řízení ověřování tokenu použijte `token_auth_enabled` parametr při vy
 
 Pokud je povoleno ověřování tokenu, můžete použít `get_token` metodu k načtení JSON web token (Jwt) a času vypršení platnosti tokenu:
 
+> [!TIP]
+> Pokud k získání tokenu použijete instanční objekt a chcete, aby měl minimální požadovaný přístup k načtení tokenu, přiřaďte ho k roli **čtenáře** pro daný pracovní prostor.
+
 ```python
 token, refresh_by = service.get_token()
 print(token)
@@ -323,5 +331,6 @@ print(token)
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Způsob používání tajných kódů při školení](how-to-use-secrets-in-runs.md).
 * Proveďte [výuku a nasaďte model klasifikace imagí](tutorial-train-models-with-aml.md).
 * [Využití modelu Azure Machine Learning nasazeného jako webové služby](how-to-consume-web-service.md).

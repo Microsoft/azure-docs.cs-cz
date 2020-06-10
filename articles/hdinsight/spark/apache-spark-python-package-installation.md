@@ -6,14 +6,14 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.custom: seoapr2020
+ms.custom: seoapr2020, tracking-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 317b3cd508ee1ab821838cae56cc5b5c9943ace0
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: f1ed0ae33d1f83fd77adb337aded95605c17f38b
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309879"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84607308"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Zabezpečená správa prostředí Pythonu v Azure HDInsightu s využitím akce skriptu
 
@@ -50,8 +50,8 @@ Cluster HDInsight Spark se vytvoří s instalací Anaconda. V clusteru jsou dvě
 | |Python 2,7|Python 3,5|
 |----|----|----|
 |Cesta|/usr/bin/anaconda/bin|/usr/bin/anaconda/envs/py35/bin|
-|Spark|Výchozí nastavení je 2,7|–|
-|Livy|Výchozí nastavení je 2,7|–|
+|Spark|Výchozí nastavení je 2,7|Není k dispozici|
+|Livy|Výchozí nastavení je 2,7|Není k dispozici|
 |Jupyter|Jádro PySpark|Jádro PySpark3|
 
 ## <a name="safely-install-external-python-packages"></a>Bezpečně instalovat externí balíčky Pythonu

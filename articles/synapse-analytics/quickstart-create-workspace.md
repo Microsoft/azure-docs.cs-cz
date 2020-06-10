@@ -1,6 +1,6 @@
 ---
-title: Rychlý Start – vytvoření pracovního prostoru
-description: Pomocí kroků v této příručce vytvořte pracovní prostor Azure synapse Analytics.
+title: Rychlý Start – vytvoření pracovního prostoru synapse
+description: Pomocí kroků v této příručce vytvořte pracovní prostor synapse.
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: jrasnick, carlrab
-ms.openlocfilehash: 4d3044ec04a3306efdc3b57c1e5a3149b70fab05
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 6f72e2ee3b83b693d889e9c43fe42a4677f1666d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84112867"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609467"
 ---
 # <a name="quickstart-create-an-azure-synapse-analytics-workspace-preview"></a>Rychlý Start: vytvoření pracovního prostoru Azure synapse Analytics (Preview)
 
@@ -38,12 +38,12 @@ Přihlaste se k [Azure Portal](https://portal.azure.com/)
 ![Příkaz pro vytvoření nového pracovního prostoru Azure synapse je zvýrazněný.](media/quickstart-create-synapse-workspace/create-workspace-02.png)
 3. Do formuláře **pracovního prostoru Azure synapse** zadejte následující informace:
 
-    | Nastavení | Navrhovaná hodnota | Description |
+    | Nastavení | Navrhovaná hodnota | Popis |
     | :------ | :-------------- | :---------- |
     | **Předplatné** | *Vaše předplatné* | Podrobnosti o vašich předplatných najdete v tématu [Předplatná](https://account.windowsazure.com/Subscriptions). |
     | **Skupina prostředků** | *Libovolná skupina prostředků* | Platné názvy skupin prostředků najdete v tématu [Pravidla a omezení pojmenování](/azure/architecture/best-practices/resource-naming?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest). |
     | **Název pracovního prostoru** | mysampleworkspace | Určuje název pracovního prostoru, který se bude používat taky pro koncové body připojení.|
-    | **Věřitel** | USA – východ 2 | Určuje umístění pracovního prostoru.|
+    | **Oblast** | USA – východ 2 | Určuje umístění pracovního prostoru.|
     | **Data Lake Storage Gen2** | Zohledňují`storage account name` </br> Systém souborů:`root file system to use` | Určuje název ADLS Gen2 účtu úložiště, který se má použít jako primární úložiště, a systém souborů, který se má použít.|
     ||||
 

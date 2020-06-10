@@ -6,12 +6,12 @@ ms.author: joanpo
 ms.service: data-share
 ms.topic: overview
 ms.date: 07/10/2019
-ms.openlocfilehash: 363feda1409d2bb54e60d1b2168cba38f2a8a41c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: fa90f272a05b7449981ca5d4ccab161fb1e39e9e
+ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "77621860"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84636766"
 ---
 # <a name="what-is-azure-data-share"></a>Co je Azure Data Share?
 
@@ -78,15 +78,6 @@ Azure Data Share umožňuje příjemcům dat:
 * Přihlaste se k odběru sdílení dat, abyste získali nejnovější kopii dat prostřednictvím přírůstkového snímku.
 
 Všechny výše uvedené klíčové funkce jsou podporované prostřednictvím Azure Portal nebo přes rozhraní REST API. Další informace o používání sdílené složky Azure prostřednictvím rozhraní REST API najdete v naší referenční dokumentaci. 
-
-## <a name="security"></a>Zabezpečení
-
-Azure Data Share využívá základní zabezpečení, které Azure nabízí k ochraně dat v klidovém provozu a při přenosu. Data jsou zašifrovaná v klidovém stavu, kde jsou podporovaná podkladovým úložištěm dat. Data se šifrují i při přenosu. Metadata o sdílené složce jsou také šifrována v klidovém stavu a při přenosu. 
-
-Řízení přístupu lze nastavit na úrovni prostředků sdílené složky Azure, aby bylo zajištěno, že k nim mají přístup autorizované aplikace. 
-
-Azure Data Share využívá spravované identity pro prostředky Azure (dříve označované jako MSIs) pro automatickou správu identit v Azure Active Directory. Spravované identity pro prostředky Azure se využívají pro přístup k úložištím dat, která se používají ke sdílení dat. Neexistuje žádná výměna přihlašovacích údajů mezi poskytovatelem dat a příjemcem dat. Další informace najdete na [stránce spravované identity pro prostředky Azure](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities). 
-
 
 ## <a name="supported-regions"></a>Podporované oblasti
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/05/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 7680a28b165dc252159cf95311439508d3c867e1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 271acdb968bf5bbec3632bbc1f6def854196cd8e
+ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79529103"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84629348"
 ---
 # <a name="how-to-create-an-premium-azure-file-share"></a>Vytvoření sdílené složky Azure Premium
 Soubory úrovně Premium jsou nabízeny na úložném médiu SSD (Solid-State disk) a jsou užitečné pro úlohy náročné na v/v, včetně hostitelských databází a prostředí HPC (High Performance Computing). Soubory úrovně Premium se hostují v typu účtu úložiště zvláštního účelu, který se nazývá účet úložiště. Prémiové sdílené složky jsou navržené pro vysoce výkonné a podnikové aplikace, které poskytují konzistentní nízkou latenci, vysoké IOPS a vysoce propustnost sdílených složek.
@@ -27,7 +27,7 @@ Pokud chcete získat přístup k prostředkům Azure, včetně sdílených slož
 
 ### <a name="sign-in-to-azure"></a>Přihlášení k Azure
 
-Přihlaste se k webu [Azure Portal](https://portal.azure.com/).
+Přihlaste se k [portálu Azure Portal](https://portal.azure.com/).
 
 ### <a name="create-a-filestorage-storage-account"></a>Vytvoření účtu úložiště úložiště
 
@@ -46,6 +46,9 @@ Každý účet úložiště musí patřit do nějaké skupiny prostředků Azure
 1. Dále zadejte název účtu úložiště. Zvolený název musí být jedinečný v rámci Azure. Název také musí mít délku 3 až 24 znaků a může obsahovat jenom číslice a malá písmena.
 1. Vyberte pro svůj účet úložiště nějaké umístění nebo použijte výchozí umístění.
 1. Pro **výkon** vyberte **Premium**.
+
+    V rozevíracím seznamu **druh účtu** musíte vybrat možnost **Premium** for **Storage** jako dostupnou.
+
 1. Vyberte **druh účtu** a zvolte **úložiště**.
 1. Ponechte **replikační** sadu nastavenou na výchozí hodnotu **místně redundantního úložiště (LRS)**.
 
@@ -93,7 +96,7 @@ Install-Module Az.Storage -Repository PSGallery -AllowClobber -Force
 
 ### <a name="sign-in-to-your-azure-subscription"></a>Přihlaste se ke svému předplatnému Azure
 
-K ověření `Connect-AzAccount` použijte příkaz a postupujte podle pokynů na obrazovce.
+`Connect-AzAccount`K ověření použijte příkaz a postupujte podle pokynů na obrazovce.
 
 ```powershell
 Connect-AzAccount
