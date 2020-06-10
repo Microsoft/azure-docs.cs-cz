@@ -10,12 +10,13 @@ ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 04/27/2020
 ms.author: diberry
-ms.openlocfilehash: 1f004fe1dae58faaded0b872dcdebdb4e9af66aa
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 30897e1bdd5d139d3a11980430cbcc6b10052ecc
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192999"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84608481"
 ---
 # <a name="tutorial-use-personalizer-in-azure-notebook"></a>Kurz: použití přizpůsobeného úložiště v Azure poznámkovém bloku
 
@@ -91,12 +92,12 @@ Tyto hodnoty mají velmi krátkou dobu trvání, aby bylo možné zobrazit změn
 
 ## <a name="set-up-the-azure-notebook"></a>Nastavení poznámkového bloku Azure
 
-1. Změňte jádro na `Python 3.6`.
+1. Změňte jádro na `Python 3.6` .
 1. Otevřete soubor `Personalizer.ipynb`.
 
 ## <a name="run-notebook-cells"></a>Spustit buňky poznámkového bloku
 
-Spusťte každou spustitelnou buňku a počkejte, než se vrátí. Víte, že je to hotové, když se závorky vedle buňky zobrazují jako číslo místo `*`. Následující části vysvětlují, co jednotlivé buňky programově a co mají očekávat pro výstup.
+Spusťte každou spustitelnou buňku a počkejte, než se vrátí. Víte, že je to hotové, když se závorky vedle buňky zobrazují jako číslo místo `*` . Následující části vysvětlují, co jednotlivé buňky programově a co mají očekávat pro výstup.
 
 ### <a name="include-the-python-modules"></a>Zahrnutí modulů Pythonu
 
@@ -135,7 +136,7 @@ def currentDateTime():
 
 ### <a name="get-the-last-model-update-time"></a>Získat čas poslední aktualizace modelu
 
-Když je zavolána `get_last_updated`funkce, funkce vypíše datum poslední změny a čas, kdy byl model aktualizován.
+Když `get_last_updated` je zavolána funkce, funkce vypíše datum poslední změny a čas, kdy byl model aktualizován.
 
 Tyto buňky nemají žádný výstup. Funkce provede výstup posledního data školení modelu při volání.
 
@@ -198,9 +199,9 @@ Tato buňka
 * nastaví náhodné osazení pro ID události klasifikace.
 * čtení v datových souborech JSON
 * volání `get_last_updated` metody – zásady učení se odebraly v příkladu výstupu.
-* Call `get_service_settings` – metoda
+* Call – `get_service_settings` Metoda
 
-Buňka obsahuje výstup z volání funkce `get_last_updated` and. `get_service_settings`
+Buňka obsahuje výstup z volání `get_last_updated` `get_service_settings` funkce and.
 
 ```python
 # build URLs
@@ -262,7 +263,7 @@ Coffee count 4
 
 ### <a name="troubleshooting-the-first-rest-call"></a>Řešení potíží s prvním voláním REST
 
-Tato předchozí buňka je první buňkou, která volá do přizpůsobeného. Ujistěte se, že stavový kód REST ve výstupu `<Response [200]>`je. Pokud se zobrazí chyba, třeba 404, ale jste si jisti, že je klíč prostředku a název správný, znovu načtěte Poznámkový blok.
+Tato předchozí buňka je první buňkou, která volá do přizpůsobeného. Ujistěte se, že stavový kód REST ve výstupu je `<Response [200]>` . Pokud se zobrazí chyba, třeba 404, ale jste si jisti, že je klíč prostředku a název správný, znovu načtěte Poznámkový blok.
 
 Ujistěte se, že počet kávy a uživatelé jsou obě 4. Pokud se zobrazí chyba, ověřte, že jste nahráli všechny 3 soubory JSON.
 
@@ -391,7 +392,7 @@ Další buňkou je _Hlavní_ práce poznámkového bloku, která získá náhodn
 
 Cyklus se spustí za `num_requests` krátkou dobu. Přizpůsobování vyžaduje několik tisíc volání, která umožňují seřadit a odměnu vytvořit model.
 
-Následuje příklad formátu JSON odeslaného rozhraním API pro řazení. Seznam kávy není úplný pro zkrácení. Celý formát JSON pro káva můžete zobrazit v `coffee.json`.
+Následuje příklad formátu JSON odeslaného rozhraním API pro řazení. Seznam kávy není úplný pro zkrácení. Celý formát JSON pro káva můžete zobrazit v `coffee.json` .
 
 Do rozhraní API řazení se poslal kód JSON:
 
@@ -548,7 +549,7 @@ jsonTemplate = rankactionsjsonobj
 
 ## <a name="chart-results-to-see-improvement"></a>Výsledky grafu pro zobrazení zlepšení
 
-Vytvořte graf z `count` a `rewards`.
+Vytvořte graf z `count` a `rewards` .
 
 ```python
 def createChart(x, y):

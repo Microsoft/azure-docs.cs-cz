@@ -3,13 +3,14 @@ title: 'Rychlý Start: Language Understanding (LUIS) vytváření klientské kni
 description: Začněte s tímto rychlým startem pomocí klientské knihovny LUIS. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 ms.topic: quickstart
 ms.date: 05/28/2020
+ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-diberry-3core
-ms.openlocfilehash: 4a3ffb9ce6907658767af9e39569e7d9016e3145
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c4f974935b5385b9df017af2f25b9f536ec5cddb
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171331"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84605744"
 ---
 # <a name="quickstart-language-understanding-luis-authoring-client-library"></a>Rychlý Start: Language Understanding (LUIS) vytváření klientské knihovny
 
@@ -33,6 +34,6 @@ Začněte s klientskou knihovnou Language Understanding (LUIS). Pomocí těchto 
 >[Použití sady SDK k dotazování koncového bodu předpovědi](sdk-query-prediction-endpoint.md)
 
 * [Co je rozhraní API pro Language Understanding (LUIS)?](what-is-luis.md)
-* [Co je nového](whats-new.md)
+* [Co je nového?](whats-new.md)
 * [Záměry](luis-concept-intent.md), [entity](luis-concept-entity-types.md)a [Příklady projevy](luis-concept-utterance.md)a [předem připravených entit](luis-reference-prebuilt-entities.md)
 * Zdrojový kód pro tuto ukázku najdete na [GitHubu](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/documentation-samples/quickstarts/LUIS/LUIS.cs).

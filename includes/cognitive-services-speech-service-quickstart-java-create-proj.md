@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 02/10/2020
 ms.author: erhopf
-ms.openlocfilehash: 49aaf9c748d75df8ffbb2adcd80aa6b966f88680
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 4fa32668faa72973f765a75d4edc3e4598b43652
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673182"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84609276"
 ---
 1. Spusťte Eclipse.
 
@@ -25,7 +25,7 @@ ms.locfileid: "83673182"
 
    ![Snímek obrazovky dialogového okna New Project (Nový projekt) se zvýrazněnou možností Java Project (Projekt Javy)](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-02-select-wizard.png)
 
-1. Spustí se Průvodce vytvořením **nového projektu Java** . Do pole **Project name** (Název projektu) zadejte **quickstart** a jako spouštěcí prostředí zvolte **JavaSE-1.8**. Vyberte **Finish** (Dokončit).
+1. Spustí se Průvodce vytvořením **nového projektu Java** . Do pole **Project name** (Název projektu) zadejte **quickstart** a jako spouštěcí prostředí zvolte **JavaSE-1.8**. Vyberte **Dokončit**.
 
    ![Snímek obrazovky s průvodcem novým projektem Javy](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-jre-03-create-java-project.png)
 
@@ -45,7 +45,7 @@ ms.locfileid: "83673182"
 
      [!code-xml[POM Repositories](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#repositories)]
 
-   * Přidejte také `dependencies` element s sadou Speech SDK verze 1.12.0 jako závislost:
+   * Přidejte také `dependencies` element s sadou Speech SDK verze 1.12.1 jako závislost:
 
      [!code-xml[POM Dependencies](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-microphone/pom.xml#dependencies)]
 

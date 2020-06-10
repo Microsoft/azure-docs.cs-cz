@@ -10,12 +10,13 @@ ms.subservice: anomaly-detector
 ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: aahi
-ms.openlocfilehash: 684aba561dc50b64dd7cc564cff8e55229ce1429
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: fd632e267e087c6489567c51e731d81cf9511ccb
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80239031"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84606696"
 ---
 # <a name="quickstart-detect-anomalies-in-your-time-series-data-using-the-anomaly-detector-rest-api-and-python"></a>Rychlý Start: zjištění anomálií v datech časových řad pomocí REST API detektoru anomálií a Pythonu
 
@@ -56,7 +57,7 @@ Tento rychlý Start vám umožní začít používat dva režimy zjišťování 
 
     [!code-python[initial endpoint and key variables](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=vars)]
 
-3. V datovém souboru JSON si přečtěte jeho otevřením a `json.load()`použitím.
+3. V datovém souboru JSON si přečtěte jeho otevřením a použitím `json.load()` .
 
     [!code-python[Open JSON file and read in the data](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=fileLoad)]
 
@@ -64,9 +65,9 @@ Tento rychlý Start vám umožní začít používat dva režimy zjišťování 
 
 1. Vytvořte novou funkci s názvem `send_request()` , která přijímá proměnné vytvořené výše. Pak proveďte následující kroky.
 
-2. Vytvořte slovník pro hlavičky požadavku. Nastavte na a přidejte svůj klíč předplatného do `Ocp-Apim-Subscription-Key` záhlaví. `Content-Type` `application/json`
+2. Vytvořte slovník pro hlavičky požadavku. Nastavte na `Content-Type` a `application/json` přidejte svůj klíč předplatného do `Ocp-Apim-Subscription-Key` záhlaví.
 
-3. Odešlete požadavek pomocí `requests.post()`. Zkombinujte adresu URL koncového bodu a detekce anomálií pro úplnou adresu URL požadavku a zahrňte do nich vaše hlavičky a data požadavku JSON. A potom odpověď vraťte.
+3. Odešlete požadavek pomocí `requests.post()` . Zkombinujte adresu URL koncového bodu a detekce anomálií pro úplnou adresu URL požadavku a zahrňte do nich vaše hlavičky a data požadavku JSON. A potom odpověď vraťte.
 
     [!code-python[request method](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=request)]
 
@@ -78,13 +79,13 @@ Tento rychlý Start vám umožní začít používat dva režimy zjišťování 
 
 3. Pokud odpověď obsahuje `code` pole, vytiskněte kód chyby a chybovou zprávu.
 
-4. V opačném případě najděte pozice anomálií v datové sadě. `isAnomaly` Pole odpovědi obsahuje logickou hodnotu, která se vztahuje na to, zda je daný datový bod anomálií. Iterujte v seznamu a vytiskněte index všech `True` hodnot. Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
+4. V opačném případě najděte pozice anomálií v datové sadě. `isAnomaly`Pole odpovědi obsahuje logickou hodnotu, která se vztahuje na to, zda je daný datový bod anomálií. Iterujte v seznamu a vytiskněte index všech `True` hodnot. Tyto hodnoty odpovídají indexu datových bodů neobvyklé, pokud byly nalezeny.
 
     [!code-python[detection as a batch](~/samples-anomaly-detector/quickstarts/python-detect-anomalies.py?name=detectBatch)]
 
 ## <a name="detect-the-anomaly-status-of-the-latest-data-point"></a>Zjistit stav anomálií nejnovějšího datového bodu
 
-1. Vytvořte metodu s názvem `detect_latest()` k určení, zda je poslední datový bod v časové řadě anomálií. Zavolejte výše `send_request()` uvedenou metodu s vaším koncovým bodem, adresou URL, klíčem předplatného a data JSON. 
+1. Vytvořte metodu s názvem `detect_latest()` k určení, zda je poslední datový bod v časové řadě anomálií. Zavolejte `send_request()` výše uvedenou metodu s vaším koncovým bodem, adresou URL, klíčem předplatného a data JSON. 
 
 2. Zavolejte `json.dumps()` na výsledek a naformátujte ho a vytiskněte ho do konzoly.
 

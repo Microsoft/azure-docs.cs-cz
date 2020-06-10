@@ -10,13 +10,13 @@ ms.subservice: computer-vision
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.custom: seodec18
-ms.openlocfilehash: a8ec2dbe430bff2f47e6560dde3ce34f47156a9f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.custom: seodec18, tracking-python
+ms.openlocfilehash: 4ccdf5d2e68d249232600b7c9ff9b1bd29402cc5
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684182"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84604588"
 ---
 # <a name="quickstart-analyze-a-remote-image-using-the-computer-vision-rest-api-and-python"></a>Rychlý Start: analýza vzdálené Image pomocí Počítačové zpracování obrazu REST API a Pythonu
 

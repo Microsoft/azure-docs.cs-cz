@@ -5,12 +5,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 02/20/2020
 ms.author: trbye
-ms.openlocfilehash: b22ba1df6eeddfaf04d11e542acb4f2b8ab00d76
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 428542010e592dcc1e50308b7a133eda051670c9
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83673114"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84637567"
 ---
 V tomto rychlém startu se dozvíte, jak pomocí sady Speech Devices SDK pro Windows vytvořit produkt s podporou řeči nebo ho použít jako zařízení [přepisující konverzaci](../conversation-transcription-service.md) . Pro konverzaci s přepisem se podporuje jenom [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/) . Pro jiný hlas použijte lineární pole Mic, která poskytují geometrii pole mikrofonu.
 
@@ -28,7 +28,7 @@ K tomuto rychlému startu potřebujete:
 * Pole pro mikrofon, jako je [Azure Kinect DK](https://azure.microsoft.com/services/kinect-dk/)
 * [Java IDE zatmění](https://www.eclipse.org/downloads/)
 * Jenom [Java 8](https://www.oracle.com/technetwork/java/javase/downloads/jre8-downloads-2133155.html) nebo [JDK 8](https://www.oracle.com/technetwork/java/javase/downloads/index.html) .
-* [Microsoft Visual C++ Redistributable](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
+* [Distribuovatelné součásti Microsoft Visual C++](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads)
 * Klíč předplatného Azure pro službu Speech Service. [Získejte je zdarma](../get-started.md).
 * Stáhněte si nejnovější verzi [sady Speech Devices SDK](https://aka.ms/sdsdk-download-JRE) pro jazyk Java a extrahujte soubor. zip do pracovního adresáře.
    > [!NOTE]
@@ -50,11 +50,11 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
 
 1. V panelu nabídek zatmění vytvořte nový projekt kliknutím na **soubor**  >  **Nový**  >  **projekt Java**. Pokud není k dispozici, zvolte **projekt** a pak **projekt Java**.
 
-1. Spustí se Průvodce vytvořením **nového projektu Java** . **Vyhledejte** umístění ukázkového projektu. Vyberte **Finish** (Dokončit).
+1. Spustí se Průvodce vytvořením **nového projektu Java** . **Vyhledejte** umístění ukázkového projektu. Vyberte **Dokončit**.
 
    ![Snímek obrazovky s průvodcem novým projektem Javy](../media/speech-devices-sdk/eclipse-new-java-project.png)
 
-1. V **Průzkumníku balíčků**klikněte pravým tlačítkem myši na projekt. V místní nabídce vyberte **Konfigurace**  >  **převést na projekt Maven** . Vyberte **Finish** (Dokončit).
+1. V **Průzkumníku balíčků**klikněte pravým tlačítkem myši na projekt. V místní nabídce vyberte **Konfigurace**  >  **převést na projekt Maven** . Vyberte **Dokončit**.
 
    ![Snímek obrazovky s průzkumníkem balíčků](../media/speech-devices-sdk/eclipse-convert-to-maven.png)
 
@@ -74,7 +74,7 @@ Pokud plánujete použít záměry, budete potřebovat předplatné [služby Lan
         <dependency>
              <groupId>com.microsoft.cognitiveservices.speech</groupId>
              <artifactId>client-sdk</artifactId>
-             <version>1.12.0</version>
+             <version>1.12.1</version>
         </dependency>
     </dependencies>
    ```

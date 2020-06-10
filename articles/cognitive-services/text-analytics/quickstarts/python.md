@@ -10,12 +10,13 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: aahi
-ms.openlocfilehash: 7f2a4ff98345aa43dd6a99eafd60ff2d05ee1bee
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.custom: tracking-python
+ms.openlocfilehash: 1071f3dabf7148381edecedce495f645c52e748d
+ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75378547"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84610249"
 ---
 # <a name="quickstart-using-the-python-rest-api-to-call-the-text-analytics-cognitive-service"></a>Rychlý Start: použití REST API Pythonu k volání služby Analýza textu rozpoznávání 
 <a name="HOLTop"></a>
@@ -64,13 +65,13 @@ Následující části popisují, jak volat jednotlivé funkce rozhraní API.
 
 ## <a name="detect-languages"></a>Rozpoznávání jazyků
 
-Připojíte `/text/analytics/v2.1/languages` se k základnímu koncovému bodu analýza textu, abyste mohli vytvořit adresu URL pro rozpoznávání jazyka. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
+Připojíte se `/text/analytics/v2.1/languages` k základnímu koncovému bodu analýza textu, abyste mohli vytvořit adresu URL pro rozpoznávání jazyka. Příklad: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v2.1/languages`
     
 ```python
 language_api_url = endpoint + "/text/analytics/v2.1/languages"
 ```
 
-Datová část pro rozhraní API se skládá ze seznamu `documents`, který je řazenými kolekcemi členů `id` obsahující a `text` atributem. `text` Atribut ukládá text, který má být analyzován, a `id` může být libovolná hodnota. 
+Datová část pro rozhraní API se skládá ze seznamu `documents` , který je řazenými kolekcemi členů obsahující `id` a `text` atributem. `text`Atribut ukládá text, který má být analyzován, a `id` může být libovolná hodnota. 
 
 ```python
 documents = {"documents": [
@@ -80,7 +81,7 @@ documents = {"documents": [
 ]}
 ```
 
-K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`. 
+K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` a odešlete žádost pomocí `requests.post()` . 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -154,7 +155,7 @@ documents = {"documents": [
 ]}
 ```
 
-K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`. 
+K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` a odešlete žádost pomocí `requests.post()` . 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -216,7 +217,7 @@ documents = {"documents": [
 ]}
 ```
 
-K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`. 
+K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` a odešlete žádost pomocí `requests.post()` . 
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
@@ -285,7 +286,7 @@ documents = {"documents": [
 ]}
 ```
 
-K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do `Ocp-Apim-Subscription-Key` záhlaví klíč předplatného a odešlete žádost pomocí `requests.post()`.
+K posílání dokumentů do rozhraní API použijte knihovnu požadavků. Přidejte do záhlaví klíč předplatného `Ocp-Apim-Subscription-Key` a odešlete žádost pomocí `requests.post()` .
 
 ```python
 headers = {"Ocp-Apim-Subscription-Key": subscription_key}
