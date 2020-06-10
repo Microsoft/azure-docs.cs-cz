@@ -155,6 +155,8 @@
           displayname: VM
     - name: Správa a konfigurace
       items:
+        - name: Nasazení ve velkém
+          href: platform/deploy-scale.md
         - name: Zabezpečení a oprávnění rolí
           href: platform/roles-permissions-security.md
         - name: IP adresy

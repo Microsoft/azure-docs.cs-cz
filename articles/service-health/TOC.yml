@@ -4,7 +4,7 @@
   items:
     - name: Služba Azure Service Health
       href: overview.md
-- name: Šablony Rychlý start
+- name: Rychlé starty
   items:
     - name: Konfigurace výstrah pro události Service Health
       href: ../azure-monitor/platform/alerts-activity-log-service-notifications.md
@@ -30,8 +30,6 @@
       href: service-health-alert-webhook-pagerduty.md
     - name: Odesílání upozornění do OpsGenie
       href: service-health-alert-webhook-opsgenie.md
-    - name: Načtení událostí stavu s využitím REST
-      href: service-health-rest.md
     - name: Konfigurace výstrah pro události Resource Health
       href: resource-health-alert-arm-template-guide.md
 - name: Referenční informace

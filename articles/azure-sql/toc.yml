@@ -967,8 +967,6 @@
                   items:
                     - name: Rozhraní Azure SQL VM CLI
                       href: virtual-machines/windows/availability-group-az-cli-configure.md
-                    - name: Šablona webu Azure Portal
-                      href: virtual-machines/windows/availability-group-azure-marketplace-template-configure.md
                     - name: Šablony Azure pro rychlé zprovoznění
                       href: virtual-machines/windows/availability-group-quickstart-template-configure.md
                     - name: Několik oblastí

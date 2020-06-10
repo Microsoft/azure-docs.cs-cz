@@ -19,8 +19,6 @@
       href: terminology.md
     - name: Role a požadavky
       href: concepts-roles-permissions.md
-    - name: Zotavení po havárii
-      href: disaster-recovery.md
 - name: ukázky
   items:
     - name: Ukázky kódů
@@ -43,6 +41,10 @@
       href: how-to-delete-invitation.md
     - name: Odvolání předplatného sdílené složky
       href: how-to-revoke-share-subscription.md
+    - name: Zabezpečení
+      href: security.md
+    - name: Zotavení po havárii
+      href: disaster-recovery.md
 - name: Referenční informace
   items:
     - name: .NET

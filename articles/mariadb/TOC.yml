@@ -98,6 +98,8 @@
           href: concepts-query-performance-insight.md
         - name: Doporučení k výkonu
           href: concepts-performance-recommendations.md
+        - name: Parametry serveru
+          href: concepts-server-parameters.md
     - name: Vývoj
       items:
         - name: Kompatibilita ovladačů a nástrojů
@@ -144,6 +146,8 @@
           href: howto-configure-ssl.md
         - name: Konfigurace TLS
           href: howto-tls-configurations.md
+        - name: Připojení s přesměrováním
+          href: howto-redirection.md
     - name: Konfigurace parametrů serveru
       items:
         - name: portál Azure
