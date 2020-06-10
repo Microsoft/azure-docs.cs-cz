@@ -3,12 +3,12 @@ title: Zvyšte provozní excellency pro vaše předplatná Azure pomocí Azure A
 description: Využijte poradce k optimalizaci a vyspělosti provozní kvality vašich předplatných Azure.
 ms.topic: article
 ms.date: 10/24/2019
-ms.openlocfilehash: 4133fbe40c0fc1bdaf9c3f734bc19f94437c9acb
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 861b12c2267ffa89985ff11357de92da5a4ac870
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82187412"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658454"
 ---
 # <a name="achieve-operational-excellence-with-azure-advisor"></a>Zajištění provozní kvality pomocí Azure Advisor
 
@@ -18,6 +18,7 @@ Azure Advisor doporučení provozní kvality, která zákazníkům pomůžou s e
 
 Doporučujeme, abyste nastavili výstrahy Azure Service Health, aby byly oznamovány, když se vás týkají problémy se službou Azure. [Azure Service Health](https://azure.microsoft.com/features/service-health/) je bezplatná služba, která poskytuje individuální pokyny a podporu v případě, že máte vliv na problém se službou Azure. Advisor identifikuje odběry, u kterých nejsou nakonfigurované výstrahy, a doporučuje je vytvořit.
 
+
 ## <a name="design-your-storage-accounts-to-prevent-hitting-the-maximum-subscription-limit"></a>Návrh účtů úložiště, aby nedošlo k překročení maximálního limitu předplatného
 
 Oblast Azure může podporovat maximálně 250 účtů úložiště na jedno předplatné. Po dosažení tohoto limitu nebudete moct vytvořit žádné další účty úložiště v této kombinaci oblasti nebo předplatného. Advisor zkontroluje vaše předplatná a doporučení pro plochu, abyste mohli navrhovat méně účtů úložiště pro všechny, které jsou blízko dosažení maximálního limitu.
@@ -25,6 +26,10 @@ Oblast Azure může podporovat maximálně 250 účtů úložiště na jedno př
 ## <a name="ensure-you-have-access-to-azure-cloud-experts-when-you-need-it"></a>Ujistěte se, že máte přístup k odborníkům na cloud Azure, když ho potřebujete.
 
 Při používání důležitých podnikových úloh je důležité mít v případě potřeby přístup k technické podpoře. Advisor identifikuje potenciální podniková předplatná, která neobsahují technickou podporu zahrnutou do plánu podpory a doporučuje upgradovat na možnost, která zahrnuje technickou podporu.
+
+## <a name="delete-and-recreate-your-pool-to-remove-a-deprecated-internal-component"></a>Odebrání zastaralé interní komponenty odstraněním a opětovným vytvořením fondu
+
+Váš fond využívá zastaralou interní komponentu. Pokud chcete zvýšit stabilitu a výkon, odeberte a znovu vytvořte fond.
 
 ## <a name="repair-invalid-log-alert-rules"></a>Opravit neplatná pravidla upozornění protokolu
 

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: thweiss
-ms.openlocfilehash: d551f05dd0700a93a94c6b836b896a99d7f5d96c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 31681397961045da02add7ccb37f29f6c835c08d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267082"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659889"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurace klíčů spravovaných zákazníkem pro váš účet služby Azure Cosmos DB s využitím služby Azure Key Vault
 
@@ -30,9 +30,9 @@ Klíče spravované zákazníkem musíte uložit v [Azure Key Vault](../key-vaul
 
    ![Položka poskytovatelé prostředků z levé nabídky](./media/how-to-setup-cmk/portal-rp.png)
 
-1. Vyhledejte poskytovatele prostředků **Microsoft. DocumentDB** . Ověřte, jestli je poskytovatel prostředků už označený jako registrovaný. Pokud ne, zvolte poskytovatele prostředků a vyberte **Registrovat**:
+1. Vyhledejte poskytovatele prostředků **Microsoft.DocumentDB** . Ověřte, jestli je poskytovatel prostředků už označený jako registrovaný. Pokud ne, zvolte poskytovatele prostředků a vyberte **Registrovat**:
 
-   ![Registrace poskytovatele prostředků Microsoft. DocumentDB](./media/how-to-setup-cmk/portal-rp-register.png)
+   ![Registrace poskytovatele prostředků Microsoft.DocumentDB](./media/how-to-setup-cmk/portal-rp-register.png)
 
 ## <a name="configure-your-azure-key-vault-instance"></a>Konfigurace instance Azure Key Vault
 
@@ -59,7 +59,7 @@ Pokud používáte existující instanci Azure Key Vault, můžete ověřit, že
 
    ![Výběr správných oprávnění](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-1. V části **Vybrat objekt zabezpečení**vyberte možnost **není vybráno**. Pak vyhledejte **Azure Cosmos DB** objekt zabezpečení a vyberte ho (aby bylo snazší najít, můžete také vyhledat ID objektu zabezpečení: `a232010e-820c-4083-83bb-3ace5fc29d0b` pro libovolnou oblast Azure Azure Government kromě oblastí, kde je hlavní ID `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Nakonec zvolte **Vybrat** v dolní části. Pokud objekt zabezpečení **Azure Cosmos DB** v seznamu není, bude pravděpodobně nutné znovu zaregistrovat poskytovatele prostředků **Microsoft. DocumentDB** , jak je popsáno v části [registrace poskytovatele prostředků](#register-resource-provider) v tomto článku.
+1. V části **Vybrat objekt zabezpečení**vyberte možnost **není vybráno**. Pak vyhledejte **Azure Cosmos DB** objekt zabezpečení a vyberte ho (aby bylo snazší najít, můžete také vyhledat ID objektu zabezpečení: `a232010e-820c-4083-83bb-3ace5fc29d0b` pro libovolnou oblast Azure Azure Government kromě oblastí, kde je hlavní ID `57506a73-e302-42a9-b869-6f12d9ec29e9` ). Nakonec zvolte **Vybrat** v dolní části. Pokud objekt zabezpečení **Azure Cosmos DB** v seznamu není, bude pravděpodobně nutné znovu zaregistrovat poskytovatele prostředků **Microsoft.DocumentDB** , jak je popsáno v části [registrace poskytovatele prostředků](#register-resource-provider) v tomto článku.
 
    ![Vyberte objekt zabezpečení Azure Cosmos DB.](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
@@ -220,6 +220,31 @@ az cosmosdb show \
     --query keyVaultKeyUri
 ```
 
+## <a name="key-rotation"></a>Obměna klíčů
+
+Rotace klíče spravovaného zákazníkem používaného vaším účtem Azure Cosmos se dá provádět dvěma způsoby.
+
+- Vytvoří novou verzi klíče, která se v tuto chvíli používá Azure Key Vault:
+
+  ![Vytvořit novou verzi klíče](./media/how-to-setup-cmk/portal-akv-rot.png)
+
+- Zaměňte klíč, který se právě používá, úplně jiný, a to tak, že aktualizujete `keyVaultKeyUri` vlastnost svého účtu. Tady je postup, jak to udělat v PowerShellu:
+
+    ```powershell
+    $resourceGroupName = "myResourceGroup"
+    $accountName = "mycosmosaccount"
+    $newKeyUri = "https://<my-vault>.vault.azure.net/keys/<my-new-key>"
+    
+    $account = Get-AzResource -ResourceGroupName $resourceGroupName -Name $accountName `
+        -ResourceType "Microsoft.DocumentDb/databaseAccounts"
+    
+    $account.Properties.keyVaultKeyUri = $newKeyUri
+    
+    $account | Set-AzResource -Force
+    ```
+
+Předchozí klíč nebo verzi klíče je možné zakázat za 24 hodin, nebo po [Azure Key Vault protokoly auditu](../key-vault/general/logging.md) nezobrazuje aktivitu z Azure Cosmos DB v tomto klíči nebo verzi klíče.
+    
 ## <a name="error-handling"></a>Zpracování chyb
 
 Při použití klíčů spravovaných zákazníkem (CMK) v Azure Cosmos DB, pokud dojde k chybám, Azure Cosmos DB vrátí podrobnosti chyby spolu s podstavovým kódem HTTP v odpovědi. Tento druhotný stavový kód můžete použít k ladění hlavní příčiny problému. Seznam podporovaných kódů dílčího stavu HTTP najdete v článku [kódy stavu HTTP pro Azure Cosmos DB](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) .
@@ -267,14 +292,6 @@ Můžete programově načíst podrobnosti účtu Azure Cosmos a vyhledat příto
 ### <a name="how-do-customer-managed-keys-affect-a-backup"></a>Jaký vliv mají klíče spravované zákazníkem na zálohu?
 
 Azure Cosmos DB provádí [pravidelné a automatické zálohování](./online-backup-and-restore.md) dat uložených ve vašem účtu. Tato operace zálohuje šifrovaná data. Chcete-li použít obnovenou zálohu, je vyžadován šifrovací klíč, který jste použili v době zálohování. To znamená, že se neudělalo žádné odvolání a verze klíče, která se použila v době zálohování, bude pořád povolená.
-
-### <a name="how-do-i-rotate-an-encryption-key"></a>Návody otočit šifrovací klíč?
-
-Rotace klíčů se provádí vytvořením nové verze klíče v Azure Key Vault:
-
-![Vytvořit novou verzi klíče](./media/how-to-setup-cmk/portal-akv-rot.png)
-
-Předchozí verzi je možné zakázat za 24 hodin nebo po [Azure Key Vault protokoly auditu](../key-vault/general/logging.md) nezobrazuje aktivitu z Azure Cosmos DB již v této verzi.
 
 ### <a name="how-do-i-revoke-an-encryption-key"></a>Návody odvolat šifrovací klíč?
 

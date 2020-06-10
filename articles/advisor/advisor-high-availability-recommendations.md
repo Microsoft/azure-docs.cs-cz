@@ -3,12 +3,12 @@ title: Zlepšení dostupnosti aplikace pomocí Azure Advisor
 description: Pomocí Azure Advisor můžete zlepšit vysokou dostupnost nasazení Azure.
 ms.topic: article
 ms.date: 01/29/2019
-ms.openlocfilehash: 5e38a1fb5e07e3811c53e24a5e324575d6774a75
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: bed092a51b5a4aba1dfa64c17f5ed3d6f72212da
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82788021"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658478"
 ---
 # <a name="improve-availability-of-your-application-with-azure-advisor"></a>Zlepšení dostupnosti aplikace pomocí Azure Advisor
 
@@ -29,7 +29,7 @@ Pokud chcete zajistit redundanci pro vaši aplikaci, doporučujeme seskupit dva 
 
 Virtuální počítače, které jsou ve skupině dostupnosti s disky, které sdílejí buď účty úložiště nebo jednotky škálování úložiště, nejsou odolné vůči selhání jednotek škálování s jedním úložištěm během výpadků. Poradce tyto skupiny dostupnosti rozpozná a doporučí migraci do Azure Managed Disks. Tím se zajistí, že disky různých virtuálních počítačů ve skupině dostupnosti jsou dostatečně izolované, aby se předešlo jednomu bodu selhání. 
 
-## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Známý problém s verzí image síťového virtuálního zařízení kontrolního bodu
+## <a name="known-issue-with-check-point-network-virtual-appliance-image-version"></a>Známý problém s verzí image síťového virtuálního zařízení Check Point
 
 Advisor může zjistit, jestli virtuální počítač může používat verzi image kontrolního bodu, u které se v případě operace údržby platformy ztratilo síťové připojení. Doporučení Advisor vám pomůže upgradovat na novější verzi image, která tento problém řeší. Tím zajistíte kontinuitu podnikových aplikací prostřednictvím lepšího síťového připojení.
 
@@ -93,6 +93,14 @@ Azure Advisor určí Azure Cosmos DB účty, které používají starší verze 
 
 Azure Advisor určí Azure Cosmos DB účty, které používají starší verze konektoru pro Cosmos DB Spark, a doporučí upgrade na nejnovější verzi z Maven na nejnovější opravy, vylepšení výkonu a nové funkce funkcí. [Další informace o konektoru Cosmos DB Spark](https://aka.ms/cosmosdb/spark-connector)
 
+## <a name="upgrade-recommendation-for-deprecation-of-kafka-11-in-hdinsight-40-kafka-cluster"></a>Doporučení upgradu pro vyřazení Kafka 1,1 v clusteru HDInsight 4,0 Kafka
+
+Od 1. července 2020 zákazníci nebudou moct vytvářet nové clustery Kafka s použitím Kafka 1.1 v HDInsight 4.0. Stávající clustery budou fungovat beze změny, jen bez podpory Microsoftu. Zvažte přechod na Kafka 2.1 v HDInsight 4.0 nejpozději do 30. června 2020, abyste se vyhnuli možnému přerušení služeb nebo podpory.
+
+## <a name="upgrade-recommendation-for-deprecation-of-older-spark-versions-in-hdinsight-spark-cluster"></a>Doporučení upgradu pro vyřazení starších verzí Sparku v clusteru HDInsight Spark
+
+Od 1. července 2020 zákazníci nebudou moct vytvářet nové clustery Spark s použitím Sparku 2.1 a 2.2 v HDInsight 3.6 a Sparku 2.3 v HDInsight 4.0. Stávající clustery budou fungovat beze změny, jen bez podpory Microsoftu. ",
+
 ## <a name="enable-virtual-machine-replication"></a>Povolení replikace virtuálních počítačů
 Virtuální počítače, které nemají povolenou replikaci do jiné oblasti, nejsou odolné vůči nemožnostem regionálních výpadků. Replikace virtuálních počítačů zkracuje dopad na nepříznivý dopad na firmu v době výpadku oblasti Azure. Poradce zjistí virtuální počítače, u kterých není povolená replikace, a doporučí povolení replikace, aby v případě výpadku mohli své virtuální počítače rychle zprovoznit ve vzdálené oblasti Azure. [Další informace o replikaci virtuálních počítačů](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-quickstart)
 
@@ -105,7 +113,7 @@ Virtuální počítače, které nemají povolenou replikaci do jiné oblasti, ne
 ## <a name="next-steps"></a>Další kroky
 
 Další informace o doporučeních služby Advisor najdete v těchto tématech:
-* [Úvod do Azure Advisor](advisor-overview.md)
+* [Úvod do Advisoru](advisor-overview.md)
 * [Začínáme se službou Advisor](advisor-get-started.md)
 * [Doporučení pro náklady na poradce](advisor-cost-recommendations.md)
 * [Doporučení pro výkon Advisoru](advisor-performance-recommendations.md)

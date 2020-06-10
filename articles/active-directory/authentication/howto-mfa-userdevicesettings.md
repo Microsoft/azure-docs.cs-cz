@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 048224a55c2bbcbc99281d070d88d34e2dc77168
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 295738ee5943a6cf54bc7e1e3ce4bba621dbe29f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81309757"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658680"
 ---
 # <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Správa uživatelských nastavení pro Azure Multi-Factor Authentication
 
@@ -26,11 +26,15 @@ Pro usnadnění správy uživatelů Azure Multi-Factor Authentication můžete v
 
 Pokud jste přiřadili roli *Správce ověřování* , můžete vyžadovat, aby uživatelé resetoval heslo, znovu zaregistrovali MFA nebo odvolali stávající relace MFA z jejich uživatelského objektu. Pokud chcete spravovat uživatelská nastavení, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Na levé straně vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 1. Zvolte uživatele, u kterého chcete provést akci, a vyberte **metody ověřování**. V horní části okna vyberte jednu z následujících možností pro uživatele:
    - **Resetovat heslo** obnoví heslo uživatele a přiřadí dočasné heslo, které se musí při příštím přihlášení změnit.
    - **Vyžadovat opětovnou registraci MFA** znamená, že když se uživatel poprvé přihlásí, vyžádá si, aby nastavil novou metodu ověřování MFA.
+   
+      > [!NOTE]
+      > Metody ověřování uživatele, které jsou aktuálně registrovány, se neodstraní, pokud správce vyžaduje znovu registraci pro MFA. Po opětovné registraci uživatele pro MFA doporučujeme, abyste provedli kontrolu svých bezpečnostních údajů a odstranili všechny dříve registrované metody ověřování, které již nejsou použitelné.
+   
    - **Odvolání relací MFA** vymaže relace uživatele, které se pamatuje, a vyžaduje, aby při dalším požadavku na zařízení prováděli MFA.
 
    ![Správa metod ověřování z Azure Portal](./media/howto-mfa-userdevicesettings/manage-authentication-methods-in-azure.png)
@@ -41,11 +45,11 @@ V případě potřeby můžete odstranit všechna hesla aplikací, která uživa
 
 Pokud chcete odstranit hesla aplikací uživatele, proveďte následující kroky:
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Na levé straně vyberte **Azure Active Directory** > **Uživatelé** > **Všichni uživatelé**.
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Na levé straně vyberte **Azure Active Directory**  >  **Uživatelé**  >  **Všichni uživatelé**.
 1. Vyberte **Multi-Factor Authentication**. Pokud chcete zobrazit tuto možnost nabídky, možná se budete muset posunout doprava. Kliknutím na ukázkový snímek obrazovky zobrazíte celé Azure Portal okno a umístění nabídky:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Výběr Multi-Factor Authentication v okně uživatelé ve službě Azure AD")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 1. Zaškrtněte políčko u uživatelů, které chcete spravovat. Zobrazí se seznam možností rychlého kroku na pravé straně.
-1. Vyberte **Spravovat uživatelská nastavení**a potom zaškrtněte políčko **Odstranit všechna existující hesla aplikací vytvořená vybranými uživateli**, jak je znázorněno v následujícím příkladu: odstranit ![všechna existující hesla aplikací.](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
+1. Vyberte **Spravovat uživatelská nastavení**a potom zaškrtněte políčko **Odstranit všechna existující hesla aplikací vytvořená vybranými uživateli**, jak je znázorněno v následujícím příkladu: ![ Odstranit všechna existující hesla aplikací.](./media/howto-mfa-userdevicesettings/deleteapppasswords.png)
 1. Vyberte **Uložit**a pak **Zavřít**.
 
 ## <a name="next-steps"></a>Další kroky

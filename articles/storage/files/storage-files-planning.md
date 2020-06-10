@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/3/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 5356ff0ac165deefc5053cf4faa40c1159e98678
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: d1d36c6f6413a9438063c6fe30403af095ed9a6b
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82856894"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659633"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Plánování nasazení služby Soubory Azure
 [Soubory Azure](storage-files-introduction.md) se dají nasadit dvěma hlavními způsoby: přímým připojením sdílených složek Azure bez serveru nebo ukládáním do mezipaměti sdílených složek Azure v místním prostředí pomocí Azure File Sync. Kterou možnost nasazení zvolíte, změní se to, co je potřeba vzít v úvahu při plánování nasazení. 
@@ -94,7 +94,7 @@ Obecně platí, že funkce služby soubory Azure a interoperabilita s ostatními
     - Standardní sdílené složky jsou dostupné v každé oblasti Azure.
 - Služba Azure Kubernetes Service (AKS) podporuje prémiové sdílené složky ve verzi 1,13 a novější.
 
-Jakmile je sdílená složka vytvořená jako verze Premium nebo standardní, nemůžete ji automaticky převést na jinou úroveň. Pokud byste chtěli přepnout na jinou úroveň, musíte v této vrstvě vytvořit novou sdílenou složku a ručně zkopírovat data z původní sdílené složky do nové sdílené složky, kterou jste vytvořili. K provedení této `robocopy` kopie doporučujeme použít `rsync` pro Windows nebo pro MacOS a Linux.
+Jakmile je sdílená složka vytvořená jako verze Premium nebo standardní, nemůžete ji automaticky převést na jinou úroveň. Pokud byste chtěli přepnout na jinou úroveň, musíte v této vrstvě vytvořit novou sdílenou složku a ručně zkopírovat data z původní sdílené složky do nové sdílené složky, kterou jste vytvořili. `robocopy`K provedení této kopie doporučujeme použít pro Windows nebo `rsync` pro MacOS a Linux.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>Principy zřizování pro sdílení souborů úrovně Premium
 Soubory úrovně Premium se zřídí na základě pevného poměru propustnosti GiB/IOPS/. Pro každé zřízené GiB se pro sdílenou složku vystaví jedna propustnost a 0,1 MiB/s až do maximálního počtu na jednu sdílenou složku. Minimální povolené zřizování je 100 GiB s minimálním IOPS/propustností.
@@ -160,17 +160,12 @@ Nové sdílené složky začínají úplným počtem kreditů v rámci svého sh
 [!INCLUDE [storage-files-redundancy-overview](../../../includes/storage-files-redundancy-overview.md)]
 
 ## <a name="migration"></a>Migrace
-V mnoha případech nebudete pro vaši organizaci vytvářet novou sdílenou složku a místo toho migrujete existující sdílenou složku z místního souborového serveru nebo ze zařízení NAS do služby soubory Azure. Existuje mnoho nástrojů, které poskytuje společnost Microsoft i třetí strany, k provedení migrace do sdílené složky, ale dají se zhruba rozdělit do dvou kategorií:
+V mnoha případech nebudete pro vaši organizaci vytvářet novou sdílenou složku a místo toho migrujete existující sdílenou složku z místního souborového serveru nebo ze zařízení NAS do služby soubory Azure. Vybírání správné strategie a nástroje migrace pro váš scénář je důležité pro úspěch migrace. 
 
-- **Nástroje, které udržují atributy systému souborů, jako jsou seznamy ACL a časová razítka**:
-    - **[Azure File Sync](storage-sync-files-planning.md)**: Azure File Sync lze použít jako metodu pro ingestování dat do sdílené složky Azure, a to i v případě, že požadované koncové nasazení neudržuje místní přítomnost. Azure File Sync můžete nainstalovat na místo na stávajících nasazeních Windows Serveru 2012 R2, Windows Server 2016 a Windows Server 2019. Výhodou použití Azure File Sync jako mechanismu ingestování je, že koncoví uživatelé můžou dál používat existující sdílenou složku. vyjmutí do sdílené složky Azure se může objevit po dokončení nahrávání všech dat na pozadí.
-    - **[Robocopy](https://technet.microsoft.com/library/cc733145.aspx)**: Robocopy je dobře známý nástroj pro kopírování, který je dodáván s Windows a Windows serverem. Pomocí nástroje Robocopy můžete přenášet data do souborů Azure, a to tak, že sdílenou složku připojíte místně a potom v příkazu Robocopy použijete připojené umístění jako cíl.
-
-- **Nástroje, které neudržují atributy systému souborů**:
-    - **Data box**: data box poskytuje mechanismus přenosu dat v režimu offline k fyzickému odeslání dat do Azure. Tato metoda je navržená tak, aby zvýšila propustnost a ušetřila šířku pásma, ale v současné době nepodporuje atributy systému souborů jako časová razítka a seznamy ACL.
-    - **[AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)**: AzCopy je nástroj příkazového řádku určený ke kopírování dat do a ze souborů Azure a také pro úložiště objektů BLOB v Azure pomocí jednoduchých příkazů s optimálním výkonem.
+[Článek Přehled migrace](storage-files-migration-overview.md) stručně popisuje základy a obsahuje tabulku, která vás zavede k migračním průvodcům, které se pravděpodobně týkají vašeho scénáře.
 
 ## <a name="next-steps"></a>Další kroky
 * [Plánování nasazení Azure File Sync](storage-sync-files-planning.md)
 * [Nasazení souborů Azure](storage-files-deployment-guide.md)
 * [Nasazení Azure File Sync](storage-sync-files-deployment-guide.md)
+* [Podívejte se na článek Přehled migrace, kde najdete Průvodce migrací pro váš scénář.](storage-files-migration-overview.md)

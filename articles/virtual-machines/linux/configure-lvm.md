@@ -3,16 +3,16 @@ title: Konfigurace LVM na virtuálním počítači se systémem Linux
 description: Přečtěte si, jak nakonfigurovat LVM pro Linux v Azure.
 author: gbowerman
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/27/2018
 ms.author: guybo
 ms.subservice: disks
-ms.openlocfilehash: 7f560a1e6266b5f2452bf9442d2d4c983de1236e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9a3498939ddf57e2520a140ff693a30de913fae0
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80066798"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658295"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Konfigurace LVM na virtuálním počítači se systémem Linux v Azure
 Tento dokument popisuje, jak na virtuálním počítači Azure nakonfigurovat Správce logických svazků (LVM). LVM se dá použít na disku s operačním systémem nebo na datových discích ve virtuálních počítačích Azure, ale ve výchozím nastavení většina cloudových imagí nebude mít LVM nakonfigurovanou na disku s operačním systémem. Následující postup se zaměřuje na konfiguraci LVM pro datové disky.
@@ -58,7 +58,7 @@ Jeden bude obvykle chtít začít se dvěma nebo více prázdnými datovými dis
     ```
 
 ## <a name="configure-lvm"></a>Konfigurace LVM
-V tomto průvodci předpokládáme, že máte připojené tři datové disky, které budeme označovat jako `/dev/sdc` `/dev/sdd` a. `/dev/sde` Tyto cesty nemusí odpovídat názvům cest k disku ve vašem VIRTUÁLNÍm počítači. Můžete spustit`sudo fdisk -l`nebo podobný příkaz pro výpis dostupných disků.
+V tomto průvodci předpokládáme, že máte připojené tři datové disky, které budeme označovat jako `/dev/sdc` `/dev/sdd` a `/dev/sde` . Tyto cesty nemusí odpovídat názvům cest k disku ve vašem VIRTUÁLNÍm počítači. Můžete spustit `sudo fdisk -l` nebo podobný příkaz pro výpis dostupných disků.
 
 1. Příprava fyzických svazků:
 
@@ -69,14 +69,14 @@ V tomto průvodci předpokládáme, že máte připojené tři datové disky, kt
     Physical volume "/dev/sde" successfully created
     ```
 
-2. Vytvořte skupinu svazků. V tomto příkladu voláme skupinu `data-vg01`svazků:
+2. Vytvořte skupinu svazků. V tomto příkladu voláme skupinu svazků `data-vg01` :
 
     ```bash    
     sudo vgcreate data-vg01 /dev/sd[cde]
     Volume group "data-vg01" successfully created
     ```
 
-3. Vytvořte logické svazky. Následující příkaz vytvoří jeden logický svazek s názvem `data-lv01` pro celou skupinu svazků, ale Všimněte si, že je také možné vytvořit více logických svazků ve skupině svazků.
+3. Vytvořte logické svazky. Následující příkaz vytvoří jeden logický svazek `data-lv01` s názvem pro celou skupinu svazků, ale Všimněte si, že je také možné vytvořit více logických svazků ve skupině svazků.
 
     ```bash   
     sudo lvcreate --extents 100%FREE --stripes 3 --name data-lv01 data-vg01
@@ -94,7 +94,7 @@ V tomto průvodci předpokládáme, že máte připojené tři datové disky, kt
 
 ## <a name="add-the-new-file-system-to-etcfstab"></a>Přidat nový systém souborů do/etc/fstab
 > [!IMPORTANT]
-> Pokud byste soubor `/etc/fstab` upravili nesprávně, může se stát, že systém nepůjde spustit. Pokud si nejste jistí, podívejte se do dokumentace k distribuci, kde najdete informace o tom, jak soubor správně upravit. Doporučuje se také vytvořit zálohu `/etc/fstab` souboru před úpravou.
+> Pokud byste soubor `/etc/fstab` upravili nesprávně, může se stát, že systém nepůjde spustit. Pokud si nejste jistí, podívejte se do dokumentace k distribuci, kde najdete informace o tom, jak soubor správně upravit. Doporučuje se také `/etc/fstab` vytvořit zálohu souboru před úpravou.
 
 1. Vytvořte požadovaný přípojný bod pro nový systém souborů, například:
 
@@ -116,9 +116,9 @@ V tomto průvodci předpokládáme, že máte připojené tři datové disky, kt
     ```bash    
     /dev/data-vg01/data-lv01  /data  ext4  defaults  0  2
     ```   
-    Pak ho uložte a zavřete `/etc/fstab`.
+    Pak ho uložte a zavřete `/etc/fstab` .
 
-4. Otestujte správnost `/etc/fstab` položky:
+4. Otestujte `/etc/fstab` správnost položky:
 
     ```bash    
     sudo mount -a
@@ -126,7 +126,7 @@ V tomto průvodci předpokládáme, že máte připojené tři datové disky, kt
 
     Pokud tento příkaz způsobí chybovou zprávu, Projděte si syntaxi v `/etc/fstab` souboru.
    
-    V dalším kroku `mount` spusťte příkaz, abyste zajistili, že je systém souborů připojený:
+    V dalším kroku spusťte `mount` příkaz, abyste zajistili, že je systém souborů připojený:
 
     ```bash    
     mount
@@ -136,7 +136,7 @@ V tomto průvodci předpokládáme, že máte připojené tři datové disky, kt
 
 5. Volitelné Failsafe parametry spuštění v`/etc/fstab`
    
-    Mnoho distribucí zahrnuje buď parametry připojení `nobootwait` nebo `nofail` parametry, které mohou být přidány do `/etc/fstab` souboru. Tyto parametry umožňují selhání při připojování konkrétního systému souborů a umožňuje, aby se systém Linux spouštěl i v případě, že není schopen správně připojit systém souborů RAID. Další informace o těchto parametrech najdete v dokumentaci k distribuci.
+    Mnoho distribucí zahrnuje buď `nobootwait` `nofail` parametry připojení nebo parametry, které mohou být přidány do `/etc/fstab` souboru. Tyto parametry umožňují selhání při připojování konkrétního systému souborů a umožňuje, aby se systém Linux spouštěl i v případě, že není schopen správně připojit systém souborů RAID. Další informace o těchto parametrech najdete v dokumentaci k distribuci.
    
     Příklad (Ubuntu):
 
@@ -149,13 +149,13 @@ Některé jádro systému Linux podporují operace OŘEZÁVÁNÍ a odmapování,
 
 Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux povolit podporu OŘEZÁVÁNÍ. V obvyklých případech si prostudujte doporučený postup:
 
-- Použijte možnost `discard` připojení v `/etc/fstab`, například:
+- Použijte `discard` možnost připojení v `/etc/fstab` , například:
 
     ```bash 
     /dev/data-vg01/data-lv01  /data  ext4  defaults,discard  0  2
     ```
 
-- V některých případech může `discard` mít možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
+- V některých případech `discard` může mít možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
 
     **Ubuntu**
 

@@ -7,12 +7,12 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: ac9d9fddc45abbcbe4890d1060dcc2c931c72182
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3724392cc50e910c5caf4a3f6cba85070a6d107f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84265161"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661096"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Nejčastější dotazy ke službě Azure Files
 [Soubory Azure](storage-files-introduction.md) nabízí plně spravované sdílené složky v cloudu, které jsou přístupné přes standardní [protokol SMB (Server Message Block)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Sdílené složky Azure můžete připojit souběžně na cloudové nebo místní nasazení systémů Windows, Linux a macOS. Sdílené složky Azure můžete také ukládat do mezipaměti na počítačích s Windows serverem pomocí Azure File Sync pro rychlý přístup blízko místa, kde se data používají.
@@ -109,7 +109,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
    
     \<FileNameWithoutExtension\>-\<MachineName\>\[-#\].\<ext\>  
 
-    Například první konflikt CompanyReport. docx by se stal CompanyReport-CentralServer. docx, pokud CentralServer v místě, kde došlo k dřívějšímu zápisu. Druhý konflikt by byl pojmenovaný CompanyReport-CentralServer-1. docx. Azure File Sync podporuje soubory konfliktů 100 na jeden soubor. Po dosažení maximálního počtu souborů konfliktů se soubor nesynchronizuje, dokud nebude počet konfliktních souborů menší než 100.
+    Například první konflikt CompanyReport.docx by se CompanyReport-CentralServer.docx, pokud je CentralServer, kde došlo k dřívějšímu zápisu. Druhý konflikt by byl pojmenovaný CompanyReport-CentralServer-1.docx. Azure File Sync podporuje soubory konfliktů 100 na jeden soubor. Po dosažení maximálního počtu souborů konfliktů se soubor nesynchronizuje, dokud nebude počet konfliktních souborů menší než 100.
 
 * <a id="afs-storage-redundancy"></a>
   **Podporuje se geograficky redundantní úložiště pro Azure File Sync?**  
@@ -160,7 +160,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="afs-ntfs-acls"></a>
   **Zachovávají Azure File Sync seznamy ACL na úrovni adresářů nebo souborů společně s daty uloženými ve službě soubory Azure?**
 
-    Od 24 července. února 2020 budou nové a existující seznamy ACL vrstvené službou Azure File Sync trvale uložené ve formátu NTFS a změny seznamů ACL provedené přímo ve sdílené složce Azure se budou synchronizovat se všemi servery ve skupině synchronizace. Jakékoli změny seznamů řízení přístupu provedených v souborech Azure se synchronizují prostřednictvím služby Azure File Sync. Při kopírování dat do souborů Azure se ujistěte, že používáte protokol SMB pro přístup ke sdílené složce a zachování seznamů ACL. Existující nástroje založené na REST, jako je AzCopy nebo Průzkumník služby Storage, neuchovávají seznamy ACL.
+    Od 24 července. února 2020 budou nové a existující seznamy ACL vrstvené službou Azure File Sync trvale uložené ve formátu NTFS a změny seznamů ACL provedené přímo ve sdílené složce Azure se budou synchronizovat se všemi servery ve skupině synchronizace. Jakékoli změny seznamů řízení přístupu provedených v souborech Azure se synchronizují prostřednictvím služby Azure File Sync. Při kopírování dat do souborů Azure se ujistěte, že používáte kopírovací nástroj, který podporuje potřebnou věrnost ke kopírování atributů, časových razítek a seznamů ACL do sdílené složky Azure – buď přes SMB, nebo REST. Při používání nástrojů pro kopírování Azure, jako je AzCopy, je důležité použít nejnovější verzi. V [tabulce nástroje pro kopírování souborů](storage-files-migration-overview.md#file-copy-tools) najdete přehled nástrojů pro kopírování v Azure, abyste měli jistotu, že budete moct zkopírovat všechna důležitá metadata souboru.
 
     Pokud jste ve sdílených složkách se správou souborů povolili Azure Backup, můžou se seznamy ACL souborů i nadále obnovovat v rámci pracovního postupu obnovení zálohování. To funguje buď pro celou sdílenou složku, nebo pro jednotlivé soubory nebo adresáře.
 
@@ -282,7 +282,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="expressroute-not-required"></a>
 **Musím použít Azure ExpressRoute k připojení k souborům Azure nebo k používání Azure File Sync v místním prostředí?**  
 
-    No. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Azure File Sync, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
+    Ne. ExpressRoute se nevyžaduje pro přístup ke sdílené složce Azure. Pokud připojujete sdílenou složku Azure přímo v místním prostředí, je nutné, aby byl pro přístup k Internetu otevřený port 445 (odchozí TCP) (Jedná se o port, který protokol SMB používá ke komunikaci). Pokud používáte Azure File Sync, vyžaduje se pro přístup HTTPS port 443 (odchozí TCP) (bez požadavku SMB). ExpressRoute ale *můžete* použít pro jednu z těchto možností přístupu.
 
 * <a id="mount-locally"></a>
 **Jak můžu připojit sdílenou složku Azure na svém místním počítači?**  
@@ -386,7 +386,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 * <a id="lfs-performance-impact"></a>
 **Má rozšíření kvóty sdílené složky vliv na moje úlohy nebo Azure File Sync?**
     
-    No. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Azure File Sync.
+    Ne. Rozšiřování kvóty nebude mít vliv na vaše úlohy ani Azure File Sync.
 
 * <a id="open-handles-quota"></a>
 **Kolik klientů má přístup ke stejnému souboru současně?**   
@@ -415,7 +415,7 @@ Tento článek obsahuje odpovědi na běžné dotazy týkající se funkcí a fu
 
 * <a id="nested-shares"></a>
 **Můžu nastavit vnořené sdílené složky? Jinými slovy, sdílená složka ve sdílené složce?**  
-    No. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
+    Ne. Sdílená složka *je* virtuální ovladač, který se dá připojit, takže vnořené sdílené složky se nepodporují.
 
 * <a id="ibm-mq"></a>
 **Návody používat soubory Azure s IBM MQ?**  

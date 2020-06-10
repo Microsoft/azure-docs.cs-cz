@@ -4,12 +4,12 @@ description: Vysvětlení, jak vyvíjet funkce pomocí Pythonu
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: tracking-python
-ms.openlocfilehash: a8201b1c8443bd99ec9045fdc4b074a4f3eec4f2
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 1d9289b6304a9c9e93afeddd98b3a229dae91797
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84553078"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660596"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Příručka pro vývojáře Azure Functions Pythonu
 
@@ -21,7 +21,7 @@ Ukázkové projekty samostatné funkce v Pythonu najdete v [ukázkách funkcí P
 
 Azure Functions očekává ve skriptu Pythonu funkci, která bude mít nestavovou metodu, která zpracuje vstup a vytvoří výstup. Ve výchozím nastavení očekává modul runtime metodu, která má být implementována jako globální metoda volána `main()` v `__init__.py` souboru. Můžete také [zadat alternativní vstupní bod](#alternate-entry-point).
 
-Data z aktivačních událostí a vazeb jsou svázána s funkcí prostřednictvím atributů metody pomocí `name` vlastnosti definované v souboru *Function. JSON* . Například _funkce. JSON_ níže popisuje jednoduchou funkci aktivovanou požadavkem http s názvem `req` :
+Data z aktivačních událostí a vazeb jsou svázána s funkcí prostřednictvím atributů metody pomocí `name` vlastnosti definované v *function.jsv* souboru. Například _function.js_ níže popisuje jednoduchou funkci aktivovanou požadavkem http s názvem `req` :
 
 :::code language="json" source="~/functions-quickstart-templates/Functions.Templates/Templates/HttpTrigger-Python/function.json":::
 
@@ -48,7 +48,7 @@ Použijte poznámky Pythonu, které jsou součástí balíčku [Azure. Functions
 
 ## <a name="alternate-entry-point"></a>Alternativní vstupní bod
 
-Výchozí chování funkce můžete změnit volitelně určením `scriptFile` `entryPoint` vlastností a v souboru *Function. JSON* . Například _funkce Function. JSON_ níže oznamuje modulu runtime použití `customentry()` metody v souboru _Main.py_ jako vstupní bod pro funkci Azure Functions.
+Výchozí chování funkce můžete změnit volitelně určením `scriptFile` `entryPoint` vlastností a v *function.jsv* souboru. Například _function.jsv_ níže říká modulu runtime, aby používal `customentry()` metodu v souboru _Main.py_ jako vstupní bod pro funkci Azure Functions.
 
 ```json
 {
@@ -83,14 +83,14 @@ Doporučená struktura složek pro projekt funkcí Pythonu vypadá jako v násle
 ```
 Hlavní složka projektu ( \_ \_ aplikace \_ \_ ) může obsahovat následující soubory:
 
-* *Local. Settings. JSON*: používá se k ukládání nastavení aplikace a připojovacích řetězců při místním spuštění. Tento soubor se nepublikuje do Azure. Další informace najdete v tématu [Local. Settings. File](functions-run-local.md#local-settings-file).
-* *požadavky. txt*: obsahuje seznam balíčků, které systém nainstaluje při publikování do Azure.
-* *Host. JSON*: obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace Function App. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při místním spuštění. Další informace najdete v tématu [Host. JSON](functions-host-json.md).
+* *local.settings.jsv*: používá se k ukládání nastavení aplikace a připojovacích řetězců při místním spuštění. Tento soubor se nepublikuje do Azure. Další informace najdete v tématu [Local. Settings. File](functions-run-local.md#local-settings-file).
+* *requirements.txt*: obsahuje seznam balíčků, které systém nainstaluje při publikování do Azure.
+* *host.js*: obsahuje možnosti globální konfigurace, které ovlivňují všechny funkce aplikace Function App. Tento soubor se publikuje do Azure. Ne všechny možnosti jsou podporovány při místním spuštění. Další informace najdete v tématu [host.jsv](functions-host-json.md).
 * *. funcignore*: (volitelné) deklaruje soubory, které by neměly být publikovány do Azure.
-* *. gitignore*: (nepovinný) deklaruje soubory, které jsou vyloučené z úložiště Git, jako je Local. Settings. JSON.
+* *. gitignore*: (volitelné) deklaruje soubory, které jsou vyloučeny z úložiště Git, například local.settings.js.
 * *Souboru Dockerfile*: (volitelné) používá se při publikování projektu ve [vlastním kontejneru](functions-create-function-linux-custom-image.md).
 
-Každá funkce má svůj vlastní soubor kódu a konfigurační soubor vazby (Function. JSON).
+Každá funkce má svůj vlastní soubor kódu a konfigurační soubor vazby (function.json).
 
 Když nasadíte projekt do aplikace Function App v Azure, celý obsah hlavní složky projektu (* \_ \_ App \_ \_ *) by měl být součástí balíčku, ale ne samotné složky. V tomto příkladu doporučujeme udržovat testy ve složce oddělené od složky projektu `tests` . Tím zajistíte, že budete nasazovat testovací kód s vaší aplikací. Další informace najdete v tématu [testování částí](#unit-testing).
 
@@ -251,7 +251,7 @@ def main(req):
 
 K dispozici jsou další metody protokolování, které umožňují zapisovat do konzoly na různých úrovních trasování:
 
-| Metoda                 | Description                                |
+| Metoda                 | Popis                                |
 | ---------------------- | ------------------------------------------ |
 | **`critical(_message_)`**   | Zapíše zprávu s KRITICKou úrovní na kořenovém protokolovacím nástroji.  |
 | **`error(_message_)`**   | Zapíše zprávu s CHYBou úrovně v kořenovém protokolovacím nástroji.    |
@@ -338,7 +338,7 @@ FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce
 
 Chcete-li získat kontext vyvolání funkce během provádění, zahrňte [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) do jejího podpisu argument.
 
-Příklad:
+Například:
 
 ```python
 import azure.functions
@@ -391,7 +391,7 @@ def main(req: func.HttpRequest) -> func.HttpResponse:
     logging.info(f'My app setting value:{my_app_setting_value}')
 ```
 
-Pro místní vývoj se nastavení aplikace [uchovávají v souboru Local. Settings. JSON](functions-run-local.md#local-settings-file).
+Pro místní vývoj se nastavení aplikace [uchovávají v local.settings.jssouboru](functions-run-local.md#local-settings-file).
 
 ## <a name="python-version"></a>Verze Pythonu
 
@@ -424,14 +424,14 @@ pip install -r requirements.txt
 
 ## <a name="publishing-to-azure"></a>Publikování do Azure
 
-Až budete připraveni k publikování, ujistěte se, že všechny veřejně dostupné závislosti jsou uvedeny v souboru. txt požadavků, který je umístěn v kořenovém adresáři adresáře projektu.
+Až budete připraveni k publikování, ujistěte se, že všechny veřejně dostupné závislosti jsou uvedeny v souboru requirements.txt, který je umístěn v kořenovém adresáři adresáře projektu.
 
 Soubory projektu a složky, které jsou vyloučeny z publikování, včetně složky virtuálního prostředí, jsou uvedeny v souboru. funcignore.
 
 K publikování projektu Pythonu do Azure jsou podporované tři akce sestavení:
 
-+ Vzdálené sestavení: závislosti se získávají vzdáleně na základě obsahu souboru. txt požadavků. Doporučenou metodou sestavení je [vzdálené sestavení](functions-deployment-technologies.md#remote-build) . Vzdálená aplikace je také výchozí možností sestavení nástrojů Azure.
-+ Místní sestavení: závislosti se získávají místně na základě obsahu souboru. txt požadavků.
++ Vzdálené sestavení: závislosti se získávají vzdáleně na základě obsahu souboru requirements.txt. Doporučenou metodou sestavení je [vzdálené sestavení](functions-deployment-technologies.md#remote-build) . Vzdálená aplikace je také výchozí možností sestavení nástrojů Azure.
++ Místní sestavení: závislosti se získávají místně na základě obsahu souboru requirements.txt.
 + Vlastní závislosti: váš projekt používá pro naše nástroje balíčky, které nejsou veřejně dostupné. (Vyžaduje Docker.)
 
 K sestavování závislostí a publikování pomocí systému pro průběžné doručování (CD) [použijte Azure Pipelines](functions-how-to-azure-devops.md).
@@ -458,7 +458,7 @@ func azure functionapp publish <APP_NAME> --build local
 
 Nezapomeňte nahradit `<APP_NAME>` názvem vaší aplikace Function App v Azure.
 
-Pomocí `--build local` Možnosti jsou závislosti projektu čteny ze souboru požadavků. txt a tyto závislé balíčky se stahují a instalují místně. Soubory projektu a závislosti se nasazují z místního počítače do Azure. Výsledkem je větší balíček pro nasazení, který se nahrává do Azure. Pokud z nějakého důvodu závislosti v souboru. txt nemůžete získat ze základních nástrojů, musíte použít možnost vlastní závislosti pro publikování.
+Pomocí `--build local` Možnosti se závislosti projektu čtou ze souboru requirements.txt a tyto závislé balíčky se stahují a instalují místně. Soubory projektu a závislosti se nasazují z místního počítače do Azure. Výsledkem je větší balíček pro nasazení, který se nahrává do Azure. Pokud z nějakého důvodu nepůjde závislosti v souboru requirements.txt získat základními nástroji, musíte pro publikování použít možnost vlastní závislosti.
 
 ### <a name="custom-dependencies"></a>Vlastní závislosti
 
@@ -630,6 +630,44 @@ from os import listdir
 
 Doporučujeme udržovat testy ve složce oddělené od složky projektu. Tím zajistíte, že budete nasazovat testovací kód s vaší aplikací.
 
+## <a name="preinstalled-libraries"></a>Předinstalované knihovny
+
+Modul runtime funkcí Pythonu přináší několik knihoven.
+
+### <a name="python-standard-library"></a>Standardní knihovna Pythonu
+
+Standardní knihovna Python obsahuje seznam integrovaných modulů Pythonu, které jsou dodávány s každou distribucí v Pythonu. Většina těchto knihoven vám pomůže při přístupu k systémovým funkcím, jako jsou například vstupně-výstupní operace se soubory. V systémech Windows se tyto knihovny instalují pomocí Pythonu. V systémech UNIX jsou k dispozici kolekce balíčků.
+
+Chcete-li zobrazit úplné podrobnosti o seznamu těchto knihoven, navštivte odkazy níže:
+
+* [Standardní knihovna Python 3,6](https://docs.python.org/3.6/library/)
+* [Standardní knihovna Python 3,7](https://docs.python.org/3.7/library/)
+* [Standardní knihovna Python 3,8](https://docs.python.org/3.8/library/)
+
+### <a name="azure-functions-python-worker-dependencies"></a>Azure Functions závislosti pracovního procesu Pythonu
+
+Funkce Python Worker vyžaduje konkrétní sadu knihoven. Tyto knihovny můžete použít také ve svých funkcích, ale nejsou součástí standardu Pythonu. Pokud vaše funkce spoléhají na některé z těchto knihoven, nemusí být k dispozici pro váš kód při spuštění mimo Azure Functions. Podrobný seznam závislostí najdete v souboru [Setup.py](https://github.com/Azure/azure-functions-python-worker/blob/dev/setup.py#L282) v části **instalace \_ vyžaduje** .
+
+### <a name="azure-functions-python-library"></a>Azure Functions knihovna Pythonu
+
+Každá aktualizace pro Python Worker zahrnuje novou verzi [Azure Functions knihovny Python (Azure. Functions)](https://github.com/Azure/azure-functions-python-library). Verze běhové knihovny je opravena v Azure a nemůže být přepsána requirements.txt. `azure-functions`Položka v requirements.txt je určena pouze pro linting a povědomí o zákaznících.
+
+Důvodem takového rozhodnutí je snadné průběžné aktualizace v aplikacích Azure Functions Python. Aktualizace knihovny Pythonu by neměla mít žádné informace o zákaznících, protože každá aktualizace je zpětně kompatibilní. Seznam verzí knihovny najdete v části [Azure-Functions PyPI](https://pypi.org/project/azure-functions/#history).
+
+Vlastní verzi knihovny funkcí Pythonu v modulu runtime můžete sledovat pomocí následujícího řádku:
+
+```python
+getattr(azure.functions, '__version__', '< 1.2.1')
+```
+
+### <a name="runtime-system-libraries"></a>Běhové systémové knihovny
+
+Pokud chcete zobrazit seznam předinstalovaných systémových knihoven v Python Worker image Docker, postupujte prosím podle následujících odkazů:
+|  Modul runtime Functions  | Verze Debian | Verze Pythonu |
+|------------|------------|------------|
+| Verze 2. x | Roztažení  | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/2.0/stretch/amd64/python/python37/python37.Dockerfile) |
+| Verze 3. x | Buster | [Python 3,6](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python36/python36.Dockerfile)<br/>[Python 3.7](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python37/python37.Dockerfile)<br />[Python 3,8](https://github.com/Azure/azure-functions-docker/blob/master/host/3.0/buster/amd64/python/python38/python38.Dockerfile) |
+
 ## <a name="cross-origin-resource-sharing"></a>Sdílení prostředků různého původu
 
 [!INCLUDE [functions-cors](../../includes/functions-cors.md)]
@@ -638,7 +676,7 @@ CORS je plně podporovaná pro aplikace funkcí Pythonu.
 
 ## <a name="known-issues-and-faq"></a>Známé problémy a nejčastější dotazy
 
-Díky vašemu cennému názoru je možné udržovat seznam průvodců odstraňováním potíží pro běžné problémy:
+Následuje seznam průvodců odstraňováním potíží pro běžné problémy:
 
 * [ModuleNotFoundError a chyba při importu](recover-module-not-found.md)
 

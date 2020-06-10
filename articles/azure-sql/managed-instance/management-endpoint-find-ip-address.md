@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, carlrab
 ms.date: 12/04/2018
-ms.openlocfilehash: 88965c25702917f17a226cfa51de662703136aae
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: f63167824a06a877456db4a18622710922e026ff
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045078"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659257"
 ---
 # <a name="determine-the-management-endpoint-ip-address---azure-sql-managed-instance"></a>Určení IP adresy koncového bodu správy – spravovaná instance Azure SQL 
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -26,11 +26,11 @@ Virtuální cluster spravované instance SQL Azure obsahuje koncový bod správy
 
 IP adresu pro správu určíte tak, že provedete [vyhledávání DNS](/windows-server/administration/windows-commands/nslookup) v plně kvalifikovaném názvu domény spravované instance SQL: `mi-name.zone_id.database.windows.net` . Tato akce vrátí položku DNS, jako je `trx.region-a.worker.vnet.database.windows.net` . Potom můžete provést vyhledání DNS v tomto plně kvalifikovaném názvu domény s odebraným ". VNet". Tím se vrátí IP adresa pro správu. 
 
-V tomto prostředí PowerShell bude vše pro vás, když nahradíte \<MI FQDN\> položkou DNS spravované instance SQL: `mi-name.zone_id.database.windows.net` :
+Tento kód PowerShellu to vše provede za vás, pokud se nahradíte \<MI FQDN\> položkou DNS spravované instance SQL: `mi-name.zone_id.database.windows.net`
   
 ``` powershell
   $MIFQDN = "<MI FQDN>"
   resolve-dnsname $MIFQDN | select -first 1  | %{ resolve-dnsname $_.NameHost.Replace(".vnet","")}
 ```
 
-Další informace o spravovaných instancích SQL a připojení najdete v tématu [Architektura připojení spravované instance SQL Azure](connectivity-architecture-overview.md).
+Další informace o službě SQL Managed instance a připojení najdete v tématu [Architektura připojení spravované instance Azure SQL](connectivity-architecture-overview.md).

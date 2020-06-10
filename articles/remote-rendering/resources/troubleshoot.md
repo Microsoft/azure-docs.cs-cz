@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 4fccf7b786de91c8bcce0b2073e0519ef6c1f2ab
-ms.sourcegitcommit: c052c99fd0ddd1171a08077388d221482026cd58
+ms.openlocfilehash: 0aa09ffe5b5dd9dd0f49204495ecdd7179a0f36f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84424382"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660023"
 ---
 # <a name="troubleshoot"></a>Řešení potíží
 
@@ -145,6 +145,12 @@ Existují dva problémy s tímto ohraničujícím polem, které vedou k nevidite
 Vzdálené vykreslování Azure se zapojte do kanálu vykreslování Unity a provede kompozici snímků s videem a provede reprojekci. Chcete-li ověřit, zda tyto zavěšení existují, otevřete nabídku *:::no-loc text="Window > Analysis > Frame debugger":::* . Povolte ji a ujistěte se, že v kanálu existují dvě položky `HolographicRemotingCallbackPass` :
 
 ![Ladicí program rámce Unity](./media/troubleshoot-unity-pipeline.png)
+
+## <a name="the-rendered-image-in-unity-is-upside-down"></a>Vykreslený obraz v Unity je souběžný
+
+Nezapomeňte postupovat přesně podle [Průvodce nastavením projektu](../tutorials/unity/project-setup.md) . Obrázek na více stranách indikuje, že Unity je nutný k vytvoření cíle vykreslování mimo obrazovku. Toto chování se v současné době nepodporuje a na HoloLens 2 vytváří velký dopad na výkon.
+
+Důvodem pro tento problém může být MSAA, HDR nebo povolení následného zpracování. Ujistěte se, že je vybraný profil nízké kvality a v Unity nastavte jako výchozí. Provedete to tak, že přejdete na *upravit > nastavení projektu... > kvalitu*.
 
 ## <a name="unity-code-using-the-remote-rendering-api-doesnt-compile"></a>Kód Unity používající rozhraní API pro vzdálené vykreslování není zkompilován
 

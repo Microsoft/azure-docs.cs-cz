@@ -1,7 +1,7 @@
 ---
-title: Nejčastější dotazy (FAQ)
+title: Nejčastější dotazy
 titleSuffix: Azure SQL Managed Instance
-description: Nejčastější dotazy týkající se spravované instance Azure SQL SQL
+description: Nejčastější dotazy k Azure SQL Managed instance (FAQ)
 services: sql-database
 ms.service: sql-database
 ms.subservice: managed-instance
@@ -12,12 +12,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab
 ms.date: 03/17/2020
-ms.openlocfilehash: b72952618b2d024bd2c4b445c3ea673ed523866b
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 194342d1e5db1cda2dc960ff7221361bd8da81c2
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84247933"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659719"
 ---
 # <a name="azure-sql-managed-instance-frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure SQL Managed instance (FAQ)
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -56,33 +56,33 @@ Nové funkce a verze Preview najdete v [poznámkách k verzi](../database/doc-ch
 
 **Jak dlouho trvá vytvoření nebo aktualizace instance nebo obnovení databáze?**
 
-Očekávaná doba vytvoření spravované instance SQL nebo změna úrovně služby (virtuální jádra, Storage) závisí na několika faktorech. Prohlédněte si [operace správy](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations) 
+Očekávaný čas vytvoření spravované instance nebo změna úrovně služby (virtuální jádra, Storage) závisí na několika faktorech. Prohlédněte si [operace správy](/azure/sql-database/sql-database-managed-instance#managed-instance-management-operations). 
 
-## <a name="naming-convention"></a>Konvence pojmenování
+## <a name="naming-conventions"></a>Zásady vytváření názvů
 
-**Může mít spravovaná instance SQL stejný název jako místní instance SQL Server?**
+**Může mít spravovaná instance stejný název jako SQL Server místní instance?**
 
-Změna názvu spravované instance SQL se nepodporuje.
+Změna názvu spravované instance není podporována.
 
-Výchozí zóna DNS spravované instance SQL *. Database.Windows.NET* může být změněna. 
+Výchozí zónu DNS *. Database.Windows.NET* pro spravovanou instanci lze změnit. 
 
 Chcete-li použít jinou zónu DNS namísto výchozího, například *. contoso.com*: 
 - Použijte CliConfig k definování aliasu. Tento nástroj je jenom obálkou nastavení registru, takže ho můžete udělat taky pomocí zásad skupiny nebo skriptu.
 - Použijte *CNAME* s možností *TrustServerCertificate = true* .
 
-## <a name="move-db-from-mi"></a>Přesunout databázi ze MI 
+## <a name="move-a-database-from-sql-managed-instance"></a>Přesunutí databáze ze spravované instance SQL 
 
 **Jak můžu přesunout databázi ze spravované instance SQL zpátky do SQL Server nebo Azure SQL Database?**
 
-Můžete [exportovat databázi do BacPac](../database/database-export.md) a pak [importovat soubor BacPac]( ../database/database-import.md). Toto je doporučený postup, pokud je databáze menší než 100 GB.
+Můžete [exportovat databázi do BacPac](../database/database-export.md) a pak [importovat soubor BacPac](../database/database-import.md). Toto je doporučený postup, pokud je databáze menší než 100 GB.
 
 Transakční replikaci je možné použít, pokud všechny tabulky v databázi mají primární klíče.
 
 Nativní `COPY_ONLY` zálohy pořízené ze spravované instance SQL nelze obnovit do SQL Server, protože spravovaná instance SQL má vyšší verzi databáze v porovnání s SQL Server.
 
-## <a name="migrate-instance-db"></a>Migrace instance DB
+## <a name="migrate-an-instance-database"></a>Migrace instance databáze
 
-**Jak můžu migrovat databázi instance do jediného Azure SQL Database?**
+**Jak můžu migrovat databázi instance do Azure SQL Database?**
 
 Jednou z možností je [exportovat databázi do BacPac](../database/database-export.md) a pak [importovat soubor BacPac](../database/database-import.md). 
 
@@ -92,24 +92,24 @@ Toto je doporučený postup, pokud je databáze menší než 100 GB. Transakčn�
 
 **Můžu přepnout generování hardwaru spravované instance SQL mezi Gen 4 a gen 5 online?**
 
-Automatizované online přepínání mezi generacemi hardwaru je možné, pokud jsou hardwarové generace dostupné v oblasti, ve které je vaše spravovaná instance SQL zřízená. V takovém případě si můžete prohlédnout [stránku Přehled modelu Vcore](../database/service-tiers-vcore.md) vysvětlující, jak přepínat mezi generováním hardwaru.
+Automatizované online přepínání mezi generacemi hardwaru je možné, pokud jsou hardwarové generace dostupné v oblasti, kde je zřízené spravovaná instance SQL. V takovém případě si můžete prohlédnout [stránku Přehled modelu Vcore](../database/service-tiers-vcore.md), která vysvětluje, jak přepínat mezi generováním hardwaru.
 
-Jedná se o dlouhotrvající operaci, protože nová spravovaná instance SQL se zřídí na pozadí a databáze automaticky přenesené mezi starou a novou instancí na konci procesu. 
+Tato operace je dlouhodobá, protože nová spravovaná instance se zřídí na pozadí a databáze automaticky přenesené mezi starými a novými instancemi a rychlé převzetí služeb při selhání na konci procesu. 
 
 **Co když ve stejné oblasti nejsou podporovaná hardwarová generování?**
 
-Pokud se ve stejné oblasti nepodporují hardwarové generace, změna hardwarového generování je možná, ale je nutné ji provést ručně. To vyžaduje zřízení nové instance v oblasti, kde je k dispozici potřebná generace hardwaru, a ruční zálohování a obnovení dat mezi starou a novou instancí.
+Pokud se ve stejné oblasti nepodporují hardwarové generace, změna hardwarového generování je možná, ale je nutné ji provést ručně. To vyžaduje zřízení nové instance v oblasti, kde je k dispozici potřebná generace hardwaru, a ruční zálohování a obnovení dat mezi starými a novými instancemi.
 
-**Co dělat v případě, že pro provádění operace aktualizace nejsou k dispozici dostatek IP adres?**
+**Co dělat, pokud pro provádění operace aktualizace není k dispozici dostatek IP adres?**
 
-V případě, že v podsíti, ve které je zřízena vaše spravovaná instance, není k dispozici dostatek IP adres, budete muset vytvořit novou podsíť a novou spravovanou instanci v ní. Také doporučujeme, aby se nová podsíť vytvořila s více přidělenými IP adresami, aby budoucí operace aktualizace nedocházelo k podobným situacím (pro správnou velikost podsítě, podívejte [se, jak určit velikost podsítě virtuální](vnet-subnet-determine-size.md)sítě. Po zřízení nové instance můžete ručně zálohovat a obnovovat data mezi starou a novou instancí nebo provést obnovení mezi instancemi [v rámci časového okamžiku](point-in-time-restore.md?tabs=azure-powershell). 
+V případě, že v podsíti, ve které je zřízena vaše spravovaná instance, není dostatek IP adres, budete muset v rámci ní vytvořit novou podsíť a novou spravovanou instanci. Také doporučujeme, aby se nová podsíť vytvořila s více přidělenými IP adresami, takže budoucí operace aktualizace se vyhnete podobným situacím. (Správnou velikost podsítě najdete v tématu [Určení velikosti podsítě virtuální](vnet-subnet-determine-size.md)sítě.) Po zřízení nové instance můžete ručně zálohovat a obnovovat data mezi starými a novými instancemi nebo provést obnovení mezi instancemi [v rámci časového okamžiku](point-in-time-restore.md?tabs=azure-powershell). 
 
 
 ## <a name="tune-performance"></a>Ladění výkonu
 
-**Návody vyladit výkon mé spravované instance SQL?**
+**Návody vyladit výkon spravované instance SQL?**
 
-Pro obecné účely spravovaná instance SQL používá vzdálené úložiště, protože se jedná o velikost dat a souborů protokolu, které jsou důležité pro výkon. Další informace najdete v tématu [vliv velikosti souboru protokolu na pro obecné účely výkonu spravované instance SQL](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
+Spravovaná instance SQL na Pro obecné účely vrstvě používá vzdálené úložiště, takže velikost dat a souborů protokolu jsou důležité pro výkon. Další informace najdete v tématu [vliv velikosti souboru protokolu na pro obecné účely výkonu spravované instance SQL](https://medium.com/azure-sqldb-managed-instance/impact-of-log-file-size-on-general-purpose-managed-instance-performance-21ad170c823e).
 
 Pokud se vaše zatížení skládá z velkého množství malých transakcí, zvažte možnost přepnout typ připojení ze proxy serveru do režimu přesměrování.
 
@@ -117,9 +117,9 @@ Pokud se vaše zatížení skládá z velkého množství malých transakcí, zv
 
 **Jaká je maximální velikost úložiště pro spravovanou instanci SQL?**
 
-Velikost úložiště pro spravovanou instanci SQL závisí na vybrané úrovni služby (Pro obecné účely nebo Pro důležité obchodní informace). Omezení úložiště těchto úrovní služeb najdete v tématu věnovaném [vlastnostem úrovně služby](../database/service-tiers-general-purpose-business-critical.md).
+Velikost úložiště pro spravovanou instanci SQL závisí na vybrané úrovni služby (Pro obecné účely nebo Pro důležité obchodní informace). Omezení úložiště těchto úrovní služeb najdete v tématu věnovaném [charakteristikám vrstvy služeb](../database/service-tiers-general-purpose-business-critical.md).
 
-## <a name="back-up-storage-cost"></a>Náklady na úložiště záloh 
+## <a name="backup-storage-cost"></a>Náklady na úložiště zálohování 
 
 **Je úložiště zálohování odečteno od úložiště spravované instance SQL?**
 
@@ -137,17 +137,17 @@ Použijte možnost **akumulované náklady** a pak filtrujte podle **typu prost�
 
 **Jak můžu nastavit příchozí NSG pravidla pro porty pro správu?**
 
-Rovina ovládacího prvku spravované instance SQL SQL udržuje pravidla NSG, která chrání porty pro správu.
+Rovina řízení spravované instance SQL udržuje pravidla NSG, která chrání porty pro správu.
 
 Zde najdete porty pro správu, které se používají pro:
 
-Porty 9000 a 9003 používá Service Fabric infrastruktura. Service Fabric primární role je zachovat dobrý stav virtuálního clusteru a zachovat stav cíle z hlediska počtu replik komponent.
+Porty 9000 a 9003 používá infrastruktura Azure Service Fabric. Primární rolí Service Fabric je zachovat v pořádku virtuální cluster a zachovat stav cíle z hlediska počtu replik komponent.
 
 Agent Node používá porty 1438, 1440 a 1452. Agent uzlu je aplikace, která běží v clusteru a je používána rovinou ovládacího prvku k provádění příkazů pro správu.
 
-Kromě pravidel NSG integrovaná brána firewall chrání instanci v síťové vrstvě. Komunikace s aplikační vrstvou je chráněná pomocí certifikátů.
-  
-Další informace a jak ověřit vestavěnou bránu firewall najdete v tématu [integrovaná brána firewall Azure SQL Managed instance](management-endpoint-verify-built-in-firewall.md).
+Kromě pravidel NSG integrovaná brána firewall chrání instanci v síťové vrstvě. V aplikační vrstvě je komunikace chráněná pomocí certifikátů.
+
+Další informace a informace o tom, jak ověřit vestavěnou bránu firewall, najdete v tématu [integrovaná brána firewall Azure SQL Managed instance](management-endpoint-verify-built-in-firewall.md).
 
 
 ## <a name="mitigate-data-exfiltration-risks"></a>Zmírnění rizik exfiltrace dat  
@@ -158,14 +158,14 @@ Zákazníkům se doporučuje použít sadu nastavení zabezpečení a ovládací
 
 - Zapněte [transparentní šifrování dat (TDE)](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql) na všech databázích.
 - Vypnout modul CLR (Common Language Runtime). To se doporučuje i v místním prostředí.
-- Použijte pouze ověřování Azure Active Directory (AAD).
-- Instance přístupu s nízkým privilegovaným účtem DBA
-- Nakonfigurujte přístup JiT JumpBox pro účet sysadmin.
+- Použijte pouze ověřování Azure Active Directory (Azure AD).
+- Přístup k instanci s nízkým oprávněním pomocí účtu DBA.
+- Nakonfigurujte přístup JIT JumpBox pro účet sysadmin.
 - Zapněte [auditování SQL](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine)a integrujte je pomocí mechanismů upozorňování.
 - Zapněte [detekci hrozeb](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection) ze sady [Advanced Data Security (ADS)](https://docs.microsoft.com/azure/sql-database/sql-database-advanced-data-security) .
 
 
-## <a name="cost-saving-use-cases"></a>Případy použití úspory nákladů
+## <a name="cost-saving-use-cases"></a>Úspory nákladů – úspora případů použití
 
 **Kde najdu případy použití a výsledkem jsou úspory nákladů pomocí spravované instance SQL?**
 
@@ -174,8 +174,9 @@ Případové studie spravované instance SQL:
 - [Komatsu](https://customers.microsoft.com/story/komatsu-australia-manufacturing-azure)
 - [KMD](https://customers.microsoft.com/en-ca/story/kmd-professional-services-azure-sql-database)
 - [PowerDETAILS](https://customers.microsoft.com/story/powerdetails-partner-professional-services-azure-sql-database-managed-instance)
-- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)  
-Pro lepší porozumění výhodám, nákladům a rizikům spojeným s nasazením spravované instance SQL je také studie Forrester: [celkový ekonomický dopad na mi](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
+- [Allscripts](https://customers.microsoft.com/story/allscripts-partner-professional-services-azure)
+
+Abychom lépe porozuměli výhodám, nákladům a rizikům spojeným s nasazením spravované instance Azure SQL, měli jsme také studii Forrester: [celkový ekonomický dopad Microsoft Azure SQL Database spravované instance](https://azure.microsoft.com/resources/forrester-tei-sql-database-managed-instance).
 
 
 ## <a name="dns-refresh"></a>Aktualizace DNS 
@@ -189,18 +190,18 @@ Konfigurace DNS se nakonec aktualizuje:
 - Když vyprší platnost zapůjčení DHCP.
 - Při upgradu platformy.
 
-Jako alternativní řešení můžete snížit vCore spravované instance SQL na 4 a později je upgradovat. To má vedlejší účinky aktualizace konfigurace DNS.
+Jako alternativní řešení můžete downgradovat SQL Managed instance na 4 virtuální jádra a později je upgradovat. To má vedlejší účinky aktualizace konfigurace DNS.
 
 
 ## <a name="ip-address"></a>IP adresa
 
 **Můžu se k spravované instanci SQL připojit pomocí IP adresy?**
 
-Připojení k spravované instanci SQL pomocí IP adresy není podporováno. Název hostitele spravované instance SQL mapuje na nástroj pro vyrovnávání zatížení před virtuálním clusterem spravované instance SQL. Protože jeden virtuální cluster může hostovat více instancí spravovaného systémem SQL, nelze připojení směrovat do správné spravované instance SQL bez explicitního zadání názvu.
+Připojení k spravované instanci SQL s použitím IP adresy není podporováno. Název hostitele spravované instance SQL se mapuje na nástroj pro vyrovnávání zatížení před virtuálním clusterem spravované instance SQL. Protože jeden virtuální cluster může hostovat víc spravovaných instancí, připojení se nedají směrovat do správné spravované instance bez explicitního zadání názvu.
 
 Další informace o architektuře virtuálních clusterů spravované instance SQL najdete v tématu [Architektura připojení virtuálních clusterů](connectivity-architecture-overview.md#virtual-cluster-connectivity-architecture).
 
-**Může spravovaná instance SQL obsahovat statickou IP adresu?**
+**Má spravovaná instance SQL statickou IP adresu?**
 
 Ve výjimečných, ale nezbytných situacích může být nutné provést online migraci spravované instance SQL do nového virtuálního clusteru. V případě potřeby se tato migrace provádí kvůli změnám v naší technologické sadě zaměřené na zvýšení zabezpečení a spolehlivosti služby. Výsledkem migrace na nový virtuální cluster je změna IP adresy, která je namapovaná na název hostitele spravované instance SQL. Služba SQL Managed instance nedeklaruje podporu statických IP adres a vyhrazuje právo ji změnit bez upozornění jako součást běžných cyklů údržby.
 
@@ -208,30 +209,30 @@ Z tohoto důvodu se důrazně nedoporučuje spoléhat na neměnnosti IP adresy, 
 
 ## <a name="change-time-zone"></a>Změnit časové pásmo
 
-**Můžu změnit časové pásmo existující spravované instance SQL?**
+**Můžu změnit časové pásmo existující spravované instance?**
 
-Konfiguraci časového pásma lze nastavit při prvním zřízení spravované instance SQL. Změna časového pásma existující spravované instance SQL se nepodporuje. Podrobnosti najdete v tématu [omezení časového pásma](timezones-overview.md#limitations).
+Konfiguraci časového pásma lze nastavit při prvním zřízení spravované instance. Změna časového pásma existující spravované instance se nepodporuje. Podrobnosti najdete v tématu [omezení časového pásma](timezones-overview.md#limitations).
 
-Alternativní řešení zahrnují vytvoření nové spravované instance SQL se správným časovým pásmem a následné provedení ručního zálohování a obnovení, nebo to, co doporučujeme, provedení [obnovení mezi instancemi v čase](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/).
+Alternativní řešení zahrnují vytvoření nové spravované instance se správným časovým pásmem a následné ruční zálohování a obnovení, nebo to, co doporučujeme, aby bylo možné provést [obnovení mezi instancemi v čase](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/06/07/cross-instance-point-in-time-restore-in-azure-sql-database-managed-instance/).
 
 
 ## <a name="resolve-performance-issues"></a>Řešení problémů s výkonem
 
 **Návody vyřešit problémy s výkonem pomocí spravované instance SQL?**
 
-Pro porovnání výkonu mezi spravovanými instancemi SQL a SQL Server je vhodným výchozím bodem [osvědčené postupy pro porovnání výkonu mezi službou Azure SQL Managed instance a SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210) článkem.
+Pro porovnání výkonu mezi spravovanými instancemi SQL a SQL Server je vhodným výchozím bodem [osvědčené postupy pro porovnání výkonu mezi službou Azure SQL Managed instance a SQL Server](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/The-best-practices-for-performance-comparison-between-Azure-SQL/ba-p/683210).
 
-Načítání dat je často pomalejší na spravované instanci SQL než v SQL Server z důvodu povinného plného modelu obnovení a [omezení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) propustnosti zápisu protokolu transakcí. V některých případech to může být způsobeno tím, že se v databázi tempdb načítají přechodná data namísto uživatelské databáze nebo použije clusterované tabulky columnstore nebo paměťově optimalizované tabulky.
+Načítání dat je často pomalejší na spravované instanci SQL než v SQL Server vzhledem k povinnému modelu úplného obnovení a [omezení](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-resource-limits#service-tier-characteristics) propustnosti zápisu protokolu transakcí. V některých případech se může tento problém vyřešit tak, že se místo uživatelské databáze načtou přechodná data do databáze tempdb, nebo pomocí clusterovaných tabulek columnstore nebo paměťově optimalizovaných tabulek.
 
 
 ## <a name="restore-encrypted-backup"></a>Obnovit šifrované zálohování
 
 **Je možné obnovit zašifrovanou databázi do spravované instance SQL?**
 
-Ano, databázi nemusíte dešifrovat, aby ji bylo možné obnovit ve spravované instanci SQL. Aby bylo možné číst data z šifrovaného záložního souboru, je třeba zadat certifikát nebo klíč, který se používá jako ochrana šifrovacího klíče ve zdrojovém systému na spravovaném serveru SQL. Existují dva možné způsoby, jak to provést:
+Ano, databázi nemusíte dešifrovat, aby ji bylo možné obnovit ve spravované instanci SQL. Aby bylo možné číst data z šifrovaného záložního souboru, je třeba zadat certifikát nebo klíč, který se používá jako ochrana šifrovacího klíče ve zdrojovém systému do spravované instance SQL. Existují dva možné způsoby, jak to provést:
 
 - *Nahrání certifikátu – ochrana spravované instance SQL* Můžete to udělat jenom pomocí PowerShellu. [Vzorový skript](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-migrate-tde-certificate) popisuje celý proces.
-- *Nahrajte asymetrický klíč-Protector do Azure Key Vault (integrace) a najeďte na něj spravovanou instanci SQL*. Tento přístup se podobá BYOKm případu použití TDE, který taky používá integraci integrace k uložení šifrovacího klíče. Pokud nechcete používat klíč jako ochranu šifrovacího klíče a chcete ho jenom zpřístupnit pro spravovanou instanci SQL pro obnovení šifrovaných databází, postupujte podle pokynů pro [Nastavení BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)a zrušte zaškrtnutí políčka *nastavit vybraný klíč jako výchozí ochranu TDE*.
+- *Nahrání asymetrického klíče-ochrany pro Azure Key Vault a nasměrování spravované instance SQL na ni*. Tento přístup připomíná BYOK případ použití TDE, který také používá integraci Key Vault k uložení šifrovacího klíče. Pokud nechcete používat klíč jako ochranu šifrovacího klíče a chcete ho jenom zpřístupnit pro spravovanou instanci SQL pro obnovení šifrovaných databází, postupujte podle pokynů pro [Nastavení BYOK TDE](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql#manage-transparent-data-encryption)a zrušte zaškrtnutí políčka **nastavit vybraný klíč jako výchozí ochranu TDE**.
 
 Po zpřístupnění ochrany šifrování pro spravovanou instanci SQL můžete postupovat podle standardního postupu obnovení databáze.
 

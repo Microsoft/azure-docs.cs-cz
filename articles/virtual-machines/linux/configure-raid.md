@@ -3,16 +3,16 @@ title: Konfigurace softwarového pole RAID na virtuálním počítači se systé
 description: Naučte se používat mdadm ke konfiguraci RAID v systému Linux v Azure.
 author: rickstercdn
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.subservice: disks
-ms.openlocfilehash: 122abda51b907491b322908c3c2c689bc1723e87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3471ccfa0899f73969c511dea283c2d0d7051af8
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250254"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659785"
 ---
 # <a name="configure-software-raid-on-linux"></a>Konfigurace softwarového pole RAID v systému Linux
 Běžným scénářem je použití softwarového pole RAID u virtuálních počítačů se systémem Linux v Azure, které slouží k zobrazení několika připojených datových disků jako jednoho zařízení RAID. To se obvykle dá využít ke zlepšení výkonu a k zajištění vyšší propustnosti v porovnání s použitím pouze jednoho disku.
@@ -107,7 +107,7 @@ V tomto příkladu vytvoříme oddíl s jedním diskem na/dev/sdc. Nový diskov�
     ```
 
 ## <a name="create-the-raid-array"></a>Vytvoření pole RAID
-1. Následující příklad bude "prokládaný" (RAID Level 0) tři oddíly umístěné na třech samostatných datových discích (sdc1, sdd1, SDE1).  Po spuštění tohoto příkazu se vytvoří nové zařízení RAID s názvem **/dev/md127** . Všimněte si také, že pokud tyto datové disky dřív částečně doplňují jiné nepoužívané pole RAID, může být nutné `--force` přidat parametr do `mdadm` příkazu:
+1. Následující příklad bude "prokládaný" (RAID Level 0) tři oddíly umístěné na třech samostatných datových discích (sdc1, sdd1, SDE1).  Po spuštění tohoto příkazu se vytvoří nové zařízení RAID s názvem **/dev/md127** . Všimněte si také, že pokud tyto datové disky dřív částečně doplňují jiné nepoužívané pole RAID, může být nutné přidat `--force` parametr do `mdadm` příkazu:
 
     ```bash  
     sudo mdadm --create /dev/md127 --level 0 --raid-devices 3 \
@@ -179,7 +179,7 @@ V tomto příkladu vytvoříme oddíl s jedním diskem na/dev/sdc. Nový diskov�
 
     Pokud tento příkaz má za následek chybovou zprávu, zkontrolujte prosím syntaxi v souboru/etc/fstab.
    
-    V dalším kroku `mount` spusťte příkaz, abyste zajistili, že je systém souborů připojený:
+    V dalším kroku spusťte `mount` příkaz, abyste zajistili, že je systém souborů připojený:
 
     ```bash   
     mount
@@ -191,7 +191,7 @@ V tomto příkladu vytvoříme oddíl s jedním diskem na/dev/sdc. Nový diskov�
    
     **Konfigurace fstab**
    
-    Mnoho distribucí zahrnuje buď parametry připojení `nobootwait` , `nofail` nebo, které mohou být přidány do souboru/etc/fstab. Tyto parametry umožňují selhání při připojování konkrétního systému souborů a umožňuje, aby se systém Linux spouštěl i v případě, že není schopen správně připojit systém souborů RAID. Další informace o těchto parametrech najdete v dokumentaci k distribuci.
+    Mnoho distribucí zahrnuje buď `nobootwait` `nofail` parametry připojení, nebo, které mohou být přidány do souboru/etc/fstab. Tyto parametry umožňují selhání při připojování konkrétního systému souborů a umožňuje, aby se systém Linux spouštěl i v případě, že není schopen správně připojit systém souborů RAID. Další informace o těchto parametrech najdete v dokumentaci k distribuci.
    
     Příklad (Ubuntu):
 
@@ -201,26 +201,26 @@ V tomto příkladu vytvoříme oddíl s jedním diskem na/dev/sdc. Nový diskov�
 
     **Spouštěcí parametry pro Linux**
    
-    Kromě výše uvedených parametrů může parametr jádra "`bootdegraded=true`" umožňovat spuštění systému i v případě, že je RAID zjištěn jako poškozený nebo snížený, například pokud je datová jednotka z virtuálního počítače neúmyslně odebrána. Ve výchozím nastavení to může být způsobeno i nespouštěcím systémem.
+    Kromě výše uvedených parametrů může parametr jádra " `bootdegraded=true` " umožňovat spuštění systému i v případě, že je RAID zjištěn jako poškozený nebo snížený, například pokud je datová jednotka z virtuálního počítače neúmyslně odebrána. Ve výchozím nastavení to může být způsobeno i nespouštěcím systémem.
    
-    Postup správného úprav parametrů jádra najdete v dokumentaci k distribuci. Například v mnoha distribucích (CentOS, Oracle Linux, SLES 11) se tyto parametry dají do souboru přidat ručně`/boot/grub/menu.lst`.  V Ubuntu tento parametr lze přidat do `GRUB_CMDLINE_LINUX_DEFAULT` proměnné v "/etc/default/GRUB".
+    Postup správného úprav parametrů jádra najdete v dokumentaci k distribuci. Například v mnoha distribucích (CentOS, Oracle Linux, SLES 11) se tyto parametry dají do souboru přidat ručně `/boot/grub/menu.lst` .  V Ubuntu tento parametr lze přidat do `GRUB_CMDLINE_LINUX_DEFAULT` proměnné v "/etc/default/GRUB".
 
 
 ## <a name="trimunmap-support"></a>Podpora OŘEZÁVÁNÍ a odmapování
 Některé jádro systému Linux podporují operace OŘEZÁVÁNÍ a odmapování, aby bylo možné zahodit nepoužívané bloky na disku. Tyto operace jsou primárně užitečné ve službě Storage úrovně Standard pro informování Azure o tom, že odstraněné stránky už nejsou platné a můžou být zahozeny. Vypuštění stránek může ušetřit náklady, pokud vytvoříte velké soubory a pak je odstraníte.
 
 > [!NOTE]
-> Pokud je velikost bloku dat pole nastavená na hodnotu menší než výchozí (512 KB), nemusí pole RAID vystavovat příkazy k zahození. Důvodem je to, že členitost mapování na hostiteli je také 512 KB. Pokud jste změnili velikost bloku dat pole prostřednictvím `--chunk=` parametru mdadm, může jádro ignorovat požadavky na ořezávání a oddálení.
+> Pokud je velikost bloku dat pole nastavená na hodnotu menší než výchozí (512 KB), nemusí pole RAID vystavovat příkazy k zahození. Důvodem je to, že členitost mapování na hostiteli je také 512 KB. Pokud jste změnili velikost bloku dat pole prostřednictvím parametru mdadm `--chunk=` , může jádro ignorovat požadavky na ořezávání a oddálení.
 
 Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux povolit podporu OŘEZÁVÁNÍ. V obvyklých případech si prostudujte doporučený postup:
 
-- Použijte možnost `discard` připojení v `/etc/fstab`, například:
+- Použijte `discard` možnost připojení v `/etc/fstab` , například:
 
     ```bash
     UUID=aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee  /data  ext4  defaults,discard  0  2
     ```
 
-- V některých případech může `discard` mít možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
+- V některých případech `discard` může mít možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
 
     **Ubuntu**
 

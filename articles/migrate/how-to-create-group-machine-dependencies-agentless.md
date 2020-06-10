@@ -3,12 +3,12 @@ title: Nastavení analýzy závislostí bez agentů v serveru Azure Migrate Asse
 description: Nastavte analýzu závislostí bez agentů v Azure Migrate Server Assessment.
 ms.topic: how-to
 ms.date: 2/24/2020
-ms.openlocfilehash: 3259c861b0e64b560eb2a17a832a02b87855bebf
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: 68c95c74768f9d9628f92b061754c942b080565c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449188"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659975"
 ---
 # <a name="set-up-agentless-dependency-visualization"></a>Nastavení vizualizace závislosti bez agentů 
 
@@ -103,8 +103,7 @@ Po spuštění zjišťování závislostí můžete vizualizovat závislosti př
 
 Data závislosti se exportují a stahují ve formátu CSV. Stažený soubor obsahuje data závislostí napříč všemi počítači, které jsou povoleny pro analýzu závislostí. 
 
-    ![Export dependencies](./media/how-to-create-group-machine-dependencies-agentless/export.png)
-
+![Exportovat závislosti](./media/how-to-create-group-machine-dependencies-agentless/export.png)
 
 ## <a name="stop-dependency-discovery"></a>Zastavit zjišťování závislosti
 

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: e432f599196a6948633d7150e1a747fbe626e1f4
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: f22b7eca6db55f886dbd4fea563d993bbee11ecb
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84464653"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661111"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Plánování nasazení Synchronizace souborů Azure
 
@@ -163,7 +163,7 @@ V následující tabulce je uveden stav spolupráce funkcí systému souborů NT
 | Soubor nebo složka | Poznámka |
 |-|-|
 | pagefile.sys | Soubor specifický pro systém |
-| Desktop. ini | Soubor specifický pro systém |
+| Desktop.ini | Soubor specifický pro systém |
 | miniatury. DB | Dočasný soubor pro miniatury |
 | ehThumbs. DB | Dočasný soubor pro miniatury multimédií |
 | ~$\*.\* | Dočasný soubor Office |
@@ -356,7 +356,7 @@ Máte-li existující souborový server systému Windows, Azure File Sync lze p�
 
 K migraci dat do nasazení Azure File Sync je taky možné použít Data Box. Ve většině případů zákazníci chtějí použít Data Box k ingestování dat, protože mají za to, že budou zvyšovat rychlost nasazení, nebo protože bude pomáhat s omezeními s omezenou šířkou pásma. I když použití Data Box k ingestování dat do nasazení Azure File Sync sníží využití šířky pásma, bude pravděpodobně rychlejší pro většinu scénářů, abyste mohli provádět online nahrávání dat prostřednictvím jedné z výše popsaných metod. Další informace o tom, jak pomocí Data Box ingestovat data do nasazení Azure File Sync, najdete v tématu [migrace dat do Azure File Sync s Azure Data box](storage-sync-offline-data-transfer.md).
 
-Při migraci dat do nového nasazení Azure File Sync vzdálení zákazníci se systémem Windows kopírují data přímo do sdílené složky Azure místo na jejich souborové servery. I když Azure File Sync identifikuje všechny nové soubory ve sdílené složce Azure a synchronizuje je zpátky do sdílených složek Windows, je to všeobecně mnohem pomalejší než načítání dat prostřednictvím souborového serveru Windows. Mnoho nástrojů pro kopírování Azure, jako je například AzCopy, má Další nevýhodou, které nekopíruje všechna důležitá metadata souboru, jako například časová razítka a seznamy ACL.
+Při migraci dat do nového nasazení Azure File Sync vzdálení zákazníci se systémem Windows kopírují data přímo do sdílené složky Azure místo na jejich souborové servery. I když Azure File Sync identifikuje všechny nové soubory ve sdílené složce Azure a synchronizuje je zpátky do sdílených složek Windows, je to všeobecně mnohem pomalejší než načítání dat prostřednictvím souborového serveru Windows. Při používání nástrojů pro kopírování Azure, jako je AzCopy, je důležité použít nejnovější verzi. V [tabulce nástroje pro kopírování souborů](storage-files-migration-overview.md#file-copy-tools) najdete přehled nástrojů pro kopírování v Azure, abyste měli jistotu, že můžete kopírovat všechna důležitá metadata souboru, jako jsou například časová razítka a seznamy ACL.
 
 ## <a name="antivirus"></a>Antivirus
 Vzhledem k tomu, že antivirová práce funguje, prohledává soubory pro známý škodlivý kód, antivirový produkt může způsobit odvolání vrstvených souborů. Ve verzích 4,0 a vyšších Azure File Sync agenta mají vrstvený soubor FILE_ATTRIBUTE_RECALL_ON_DATA_ACCESS nastaven atribut zabezpečení systému Windows. Doporučujeme, abyste se od dodavatele softwaru dozvěděli, jak nakonfigurovat jejich řešení tak, aby přeskočilo čtení souborů s touto sadou atributů (mnoho z nich provede automaticky). 

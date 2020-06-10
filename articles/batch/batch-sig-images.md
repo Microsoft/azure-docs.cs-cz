@@ -4,12 +4,12 @@ description: Vlastní image představují účinný způsob konfigurace výpoče
 ms.topic: conceptual
 ms.date: 05/22/2020
 ms.custom: tracking-python
-ms.openlocfilehash: bd71983a5c932b515a7d41a680a55772567694ca
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 8e81d0954d391210563641531b4c572325ae946f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561259"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656611"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Vytvoření vlastního fondu pomocí Galerie sdílených imagí
 
@@ -44,6 +44,8 @@ Použití sdílené bitové kopie nakonfigurované pro váš scénář může m�
 
 > [!NOTE]
 > Vaše sdílená bitová kopie musí být ve stejném předplatném jako účet Batch. Obrázek může být v různých oblastech, pokud má repliky ve stejné oblasti jako váš účet Batch.
+
+Pokud k vytvoření vlastního fondu imagí s imagí Galerie sdílených imagí použijete aplikaci Azure AD, musí být této aplikaci udělená [předdefinovaná role Azure](../role-based-access-control/rbac-and-directory-admin-roles.md#azure-roles) , která mu umožní přístup ke sdílené imagi. Tento přístup můžete udělit v Azure Portal tak, že přejdete ke sdílené imagi, vyberete **řízení přístupu (IAM)** a přidáte přiřazení role pro aplikaci.
 
 ## <a name="prepare-a-custom-image"></a>Příprava vlastní image
 

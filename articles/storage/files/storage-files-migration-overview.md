@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: d6141d48d67dd44c348961c6e09acf4e2531a61e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 512688345c03ea9d5da0e4933cd6a794eaaf597b
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81685993"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660756"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrace do sdílených složek Azure
 
@@ -120,9 +120,9 @@ Následující tabulka klasifikuje nástroje Microsoftu a jejich aktuální vhod
 |![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| RoboCopy | Podporuje se. Sdílené složky Azure je možné připojit jako síťové jednotky. | Plná přesnost. * |
 |![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| Synchronizace souborů Azure | Nativně integrovaná do sdílených složek Azure. | Plná přesnost. * |
 |![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| Služba migrace úložiště | Nepřímo podporováno. Sdílené složky Azure je možné na cílových serverech SMS připojit jako síťové jednotky. | Plná přesnost. * |
+|![Ano, doporučeno](media/storage-files-migration-overview/circle-green-checkmark.png)| AzCopy, verze 10,4 nebo novější| Podporuje se. | Plná přesnost. * |
 |![Nedoporučuje se úplně](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Data Box | Podporuje se. | Nekopíruje metadata. [Data box lze použít s Azure File Sync](storage-sync-offline-data-transfer.md). |
-|![Nedoporučuje se](media/storage-files-migration-overview/circle-red-x.png)| AzCopy | Podporuje se. | Nekopíruje metadata. |
-|![Nedoporučuje se](media/storage-files-migration-overview/circle-red-x.png)| Azure Storage Explorer | Podporuje se. | Nekopíruje metadata. |
+|![Nedoporučuje se úplně](media/storage-files-migration-overview/triangle-yellow-exclamation.png)| Průzkumník služby Azure Storage verze 1,14 | Podporuje se. | Nekopíruje seznamy ACL. Podporuje časová razítka.  |
 |![Nedoporučuje se](media/storage-files-migration-overview/circle-red-x.png)| Azure Data Factory | Podporuje se. | Nekopíruje metadata. |
 |||||
 

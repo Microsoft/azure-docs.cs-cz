@@ -10,12 +10,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: vanto
 ms.date: 10/07/2019
-ms.openlocfilehash: cee913e846ebfef174a3cd6383401eace89187f0
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 347f9522bacc768265027f1a2070ac4605ade158
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84044336"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655682"
 ---
 # <a name="azure-sql-managed-instance-connection-types"></a>Typy připojení spravované instance SQL Azure
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -31,24 +31,24 @@ Spravovaná instance Azure SQL podporuje tyto dva typy připojení:
 
 ## <a name="redirect-connection-type"></a>Přesměrování – typ připojení
 
-Typ připojení přesměrování znamená, že po navázání relace TCP na modul SQL klientská relace získá cílovou virtuální IP adresu uzlu virtuálního clusteru z nástroje pro vyrovnávání zatížení. Následné pakety se přecházejí přímo na uzel virtuálního clusteru a brána se vynechá. Tento tok přenosů znázorňuje následující diagram.
+Když se v typu připojení přesměrování naváže relace TCP na modul SQL, klientská relace získá cílovou virtuální IP adresu uzlu virtuálního clusteru z nástroje pro vyrovnávání zatížení. Následné pakety se přecházejí přímo na uzel virtuálního clusteru a brána se vynechá. Tento tok přenosů znázorňuje následující diagram.
 
-![přesměrovat. png](./media/connection-types-overview/redirect.png)
+![redirect.png](./media/connection-types-overview/redirect.png)
 
 > [!IMPORTANT]
-> Typ připojení přesměrování aktuálně funguje pouze pro soukromý koncový bod. Bez ohledu na nastavení typu připojení by připojení přicházející prostřednictvím veřejného koncového bodu byla prostřednictvím proxy serveru.
+> Typ připojení přesměrování aktuálně funguje jenom pro soukromý koncový bod. Bez ohledu na nastavení typu připojení by připojení přicházející prostřednictvím veřejného koncového bodu byla prostřednictvím proxy serveru.
 
 ## <a name="proxy-connection-type"></a>Typ připojení proxy
 
-Typ připojení proxy znamená, že relace TCP se naváže pomocí brány a všech dalších paketů toku. Tento tok přenosů znázorňuje následující diagram.
+V typu připojení proxy je relace TCP vytvořena pomocí brány a všech následných paketů toku. Tento tok přenosů znázorňuje následující diagram.
 
-![proxy. png](./media/connection-types-overview/proxy.png)
+![proxy.png](./media/connection-types-overview/proxy.png)
 
 ## <a name="script-to-change-connection-type-settings-using-powershell"></a>Skript pro změnu nastavení typu připojení pomocí PowerShellu
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Následující skript prostředí PowerShell ukazuje, jak změnit typ připojení pro spravovanou instanci SQL na `Redirect` .
+Následující skript prostředí PowerShell ukazuje, jak změnit typ připojení pro spravovanou instanci na `Redirect` .
 
 ```powershell
 Install-Module -Name Az
@@ -60,7 +60,7 @@ Connect-AzAccount
 Get-AzSubscription
 # Use your SubscriptionId in place of {subscription-id} below
 Select-AzSubscription -SubscriptionId {subscription-id}
-# Replace {rg-name} with the resource group for your SQL Managed Instance, and replace {mi-name} with the name of your SQL Managed Instance
+# Replace {rg-name} with the resource group for your managed instance, and replace {mi-name} with the name of your managed instance
 $mi = Get-AzSqlInstance -ResourceGroupName {rg-name} -Name {mi-name}
 $mi = $mi | Set-AzSqlInstance -ProxyOverride "Redirect" -force
 ```

@@ -10,12 +10,12 @@ ms.topic: conceptual
 author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.date: 03/12/2020
-ms.openlocfilehash: c8531af9e8d43dfe1279306cea57a93cf89ded90
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 88fffc083b918157857c5c170cddda2016944c89
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84045792"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660326"
 ---
 # <a name="enabling-service-aided-subnet-configuration-for-azure-sql-managed-instance"></a>Povolení konfigurace podsítě pro službu Azure SQL Managed instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -27,7 +27,7 @@ Automaticky konfigurované skupiny zabezpečení sítě a pravidla směrovací t
 Konfigurace podporující službu je povolená automaticky, když zapnete [delegování podsítě](../../virtual-network/subnet-delegation-overview.md) pro `Microsoft.Sql/managedInstances` poskytovatele prostředků.
 
 > [!IMPORTANT] 
-> Pokud je delegování podsítě zapnuté, nemůžete ho vypnout, dokud neodeberete poslední virtuální cluster z podsítě. Další podrobnosti o tom, jak odstranit virtuální cluster, najdete v následujícím [článku](virtual-cluster-delete.md#delete-virtual-cluster-from-the-azure-portal).
+> Pokud je delegování podsítě zapnuté, nemůžete ho vypnout, dokud neodeberete poslední virtuální cluster z podsítě. Další podrobnosti o tom, jak odstranit virtuální cluster, najdete v následujícím [článku](virtual-cluster-delete.md#delete-a-virtual-cluster-from-the-azure-portal).
 
 > [!NOTE] 
 > Vzhledem k tomu, že konfigurace podsítě podporující službu je základní funkcí pro údržbu smlouvy SLA od 1. května 2020, nebude možné nasadit spravované instance v podsítích, které nejsou delegované pro poskytovatele prostředků spravované instance. 1. července 2020 všechny podsítě obsahující spravované instance budou automaticky delegovány na poskytovatele prostředků spravované instance. 

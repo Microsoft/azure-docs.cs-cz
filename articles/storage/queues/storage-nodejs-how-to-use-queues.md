@@ -1,6 +1,6 @@
 ---
-title: Použití úložiště Azure Queue z Node. js – Azure Storage
-description: Naučte se používat Služba front Azure k vytváření a odstraňování front a vkládání, získávání a odstraňování zpráv. Ukázky napsané v Node. js
+title: Použití Azure Queue Storage z Node.js-Azure Storage
+description: Naučte se používat Služba front Azure k vytváření a odstraňování front a vkládání, získávání a odstraňování zpráv. Ukázky napsané v Node.js.
 author: mhopkins-msft
 ms.author: mhopkins
 ms.date: 12/08/2016
@@ -9,30 +9,33 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-september2019
-ms.openlocfilehash: c7b5e679fa47437e7019884317d0ab14792055f3
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 878c4a5028b114ad10d19c03c0239c9d7a8bc6ce
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465418"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659575"
 ---
-# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Použití služby Azure Queue k vytváření a odstraňování front z Node. js
+# <a name="use-azure-queue-service-to-create-and-delete-queues-from-nodejs"></a>Použití služby Azure Queue Service k vytváření a odstraňování front z Node.js
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 [!INCLUDE [storage-check-out-samples-all](../../../includes/storage-check-out-samples-all.md)]
 
 ## <a name="overview"></a>Přehled
-V této příručce se dozvíte, jak provádět běžné scénáře pomocí Služba front Microsoft Azure. Ukázky jsou zapisovány pomocí rozhraní Node. js API. Mezi zahrnuté scénáře patří **vkládání**, **prohlížení**, **získávání**a **odstraňování** zpráv fronty a **vytváření a odstraňování front**.
+V této příručce se dozvíte, jak provádět běžné scénáře pomocí Služba front Microsoft Azure. Ukázky se napíší pomocí rozhraní Node.js API. Mezi zahrnuté scénáře patří **vkládání**, **prohlížení**, **získávání**a **odstraňování** zpráv fronty a **vytváření a odstraňování front**.
+
+> [!IMPORTANT]
+> Tento článek odkazuje na starší verzi Azure Storage klientské knihovny pro JavaScript. Pokud chcete začít používat nejnovější verzi, přečtěte si [rychlý Start: Klientská knihovna Azure Queue Storage pro JavaScript.](storage-quickstart-queues-nodejs.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
-## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node. js
-Vytvořte prázdnou aplikaci Node. js. Pokyny k vytvoření aplikace Node. js najdete v tématu [Vytvoření webové aplikace Node. js v Azure App Service](../../app-service/app-service-web-get-started-nodejs.md), [sestavení a nasazení aplikace Node. js do cloudové služby Azure](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) pomocí Windows PowerShellu nebo [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
+## <a name="create-a-nodejs-application"></a>Vytvoření aplikace Node.js
+Vytvořte prázdnou Node.jsovou aplikaci. Pokyny k vytvoření Node.js aplikace najdete v tématu [Vytvoření webové aplikace v Node.js v Azure App Service](../../app-service/app-service-web-get-started-nodejs.md), [sestavení a nasazení Node.js aplikace do cloudové služby Azure](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) pomocí Windows PowerShellu nebo [Visual Studio Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
 
 ## <a name="configure-your-application-to-access-storage"></a>Konfigurace aplikace pro přístup k úložišti
-Pokud chcete používat službu Azure Storage, potřebujete sadu Azure Storage SDK pro Node. js, která zahrnuje sadu praktických knihoven, které komunikují se službou REST (Storage).
+Pokud chcete používat službu Azure Storage, potřebujete sadu Azure Storage SDK pro Node.js, která zahrnuje sadu praktických knihoven, které komunikují se službou REST (Storage).
 
 ### <a name="use-node-package-manager-npm-to-obtain-the-package"></a>K získání balíčku použijte Správce balíčků Node (NPM).
 1. Použijte rozhraní příkazového řádku, například **PowerShell** (Windows,) **Terminal** (Mac,) nebo **bash** (UNIX), přejděte do složky, ve které jste vytvořili ukázkovou aplikaci.
@@ -54,7 +57,7 @@ Pokud chcete používat službu Azure Storage, potřebujete sadu Azure Storage S
 3. Můžete ručně spustit příkaz **ls** a ověřit tak, že se vytvořila složka ** \_ modulů uzlů** . Uvnitř této složky najdete balíček **azure-storage** obsahující knihovny, které potřebujete pro přístup k úložišti.
 
 ### <a name="import-the-package"></a>Import balíčku
-Pomocí poznámkového bloku nebo jiného textového editoru přidejte do horní části souboru **Server. js** aplikace, ve které chcete úložiště použít, následující:
+Pomocí poznámkového bloku nebo jiného textového editoru přidejte do horní části **server.js** souboru aplikace, ve které chcete úložiště použít, následující:
 
 ```javascript
 var azure = require('azure-storage');

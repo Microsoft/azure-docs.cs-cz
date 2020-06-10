@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: spelluru
-ms.openlocfilehash: 348d82f704b89b97e11a09b8f88e92831901b3bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a1464acf2b4a620bf0e2dc91f362cc1739737176
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81393467"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659172"
 ---
 # <a name="concepts-in-azure-event-grid"></a>Koncepty v Azure Event Grid
 
@@ -41,9 +41,9 @@ Informace o implementaci některého z podporovaných zdrojů Event Grid najdete
 
 Téma Event Grid poskytuje koncový bod, ve kterém zdroj odesílá události. Vydavatel vytvoří téma Event Grid a rozhodne, zda zdroj události potřebuje jedno téma nebo více než jedno téma. Téma se používá pro kolekci souvisejících událostí. Pro reakci na určité typy událostí předplatitelé rozhodují, která témata se přihlásí k odběru.
 
-Systémová témata jsou předdefinovaná témata, která poskytují služby Azure. Ve vašem předplatném Azure nevidíte systémová témata, protože tato témata vlastní vydavatel, ale můžete se přihlásit k jejich odběru. Při přihlášení k odběru zadáte informace o prostředku, ze kterého chcete přijímat události. Pokud máte k danému prostředku přístup, můžete se přihlásit k odběru jeho událostí.
+Systémová témata jsou integrovaná témata poskytované službami Azure, jako jsou Azure Storage, Azure Event Hubs a Azure Service Bus. V předplatném Azure můžete vytvořit systémová témata a přihlásit se k jejich odběru. Další informace najdete v tématu [Přehled systémových témat](system-topics.md). 
 
-Vlastní témata jsou témata aplikací a témata třetích stran. Po vytvoření vlastního tématu nebo po přiřazení vašeho přístupu k vlastnímu tématu se dané vlastní téma zobrazí ve vašem předplatném.
+Vlastní témata jsou témata aplikací a témata třetích stran. Po vytvoření vlastního tématu nebo po přiřazení vašeho přístupu k vlastnímu tématu se dané vlastní téma zobrazí ve vašem předplatném. Další informace najdete v tématu [vlastní témata](custom-topics.md).
 
 Při navrhování aplikace máte flexibilitu při rozhodování, kolik témat se má vytvořit. Pro velká řešení vytvořte vlastní téma pro každou kategorii souvisejících událostí. Představme si například aplikaci, která odesílá události související s úpravami uživatelských účtů a zpracováním objednávek. Není pravděpodobné, že nějaká obslužná rutina události chce přijímat obě kategorie událostí. Vytvořte dvě vlastní témata a nechte obslužné rutiny událostí odebírat to téma, které je zajímá. Pro malá řešení můžete chtít odeslat všechny události do jednoho tématu. Předplatitelé události mohou filtrovat typy událostí, které chtějí.
 
@@ -66,7 +66,7 @@ Příklad nastavení vypršení platnosti najdete v tématu [přihlášení k od
 
 ## <a name="event-handlers"></a>Obslužné rutiny událostí
 
-Z Event Grid perspektivy je obslužná rutina události místem, kde je událost odeslána. Obslužná rutina provede několik dalších akcí zpracování události. Event Grid podporuje několik typů obslužných rutin. Jako obslužnou rutinu můžete použít podporovanou službu Azure nebo vlastní Webhook. V závislosti na typu obslužné rutiny Event Grid podle různých mechanismů Zabezpečte doručení události. Pro obslužné rutiny událostí Webhooku protokolu HTTP se událost opakuje, dokud obslužná rutina nevrátí stavový kód `200 – OK`. V případě Azure Storage fronty se události zopakují, dokud Služba front úspěšně nezpracuje nabízenou zprávu do fronty.
+Z Event Grid perspektivy je obslužná rutina události místem, kde je událost odeslána. Obslužná rutina provede několik dalších akcí zpracování události. Event Grid podporuje několik typů obslužných rutin. Jako obslužnou rutinu můžete použít podporovanou službu Azure nebo vlastní Webhook. V závislosti na typu obslužné rutiny Event Grid podle různých mechanismů Zabezpečte doručení události. Pro obslužné rutiny událostí Webhooku protokolu HTTP se událost opakuje, dokud obslužná rutina nevrátí stavový kód `200 – OK` . V případě Azure Storage fronty se události zopakují, dokud Služba front úspěšně nezpracuje nabízenou zprávu do fronty.
 
 Informace o implementaci kterékoli z podporovaných obslužných rutin Event Grid naleznete [v tématu obslužné rutiny událostí v Azure Event Grid](event-handlers.md).
 

@@ -2,25 +2,18 @@
 title: Předdefinované role Azure – Azure RBAC
 description: Tento článek popisuje předdefinované role Azure pro řízení přístupu na základě role (Azure RBAC). Zobrazuje seznam akcí, NotActions, dataactions a NotDataActions.
 services: active-directory
-documentationcenter: ''
-author: rolyon
-manager: mtillman
-editor: ''
 ms.service: role-based-access-control
-ms.devlang: ''
 ms.topic: reference
-ms.tgt_pltfrm: ''
 ms.workload: identity
-ms.date: 05/04/2020
+author: rolyon
 ms.author: rolyon
-ms.reviewer: bagovind
-ms.custom: it-pro
-ms.openlocfilehash: 0a574ba281a037a06ddda1981ae6fa35b905bca1
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 05/04/2020
+ms.openlocfilehash: 909485ea3c4e143ce93579d1bfea5e13cf94c575
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683660"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660044"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -28,10 +21,9 @@ ms.locfileid: "83683660"
 
 V tomto článku jsou uvedené předdefinované role Azure, které se vždy vyvíjející. K získání nejnovějších rolí použijte příkaz [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition) nebo [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). Pokud hledáte role správce pro Azure Active Directory (Azure AD), přečtěte si téma [oprávnění role správce v Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).
 
+Následující tabulka uvádí stručný popis a jedinečné ID každé předdefinované role. Kliknutím na název role zobrazíte seznam `Actions` ,, a `NotActions` `DataActions` `NotDataActions` pro každou roli. Informace o tom, co tyto akce znamenají a jak se vztahují na datové roviny pro správu a data, najdete v tématu [vysvětlení definic rolí Azure](role-definitions.md).
+
 ## <a name="all"></a>Vše
-
-Následující tabulka uvádí stručný popis a jedinečné ID každé předdefinované role. Pokud chcete zobrazit seznam `Actions` ,, `NotActions` `DataActions` a `NotDataActions` pro každou roli, vyberte název role. Informace o tom, co tyto akce znamenají a jak se vztahují na datové roviny pro správu a data, najdete v tématu [vysvětlení definic rolí Azure](role-definitions.md).
-
 
 > [!div class="mx-tableFixed"]
 > | Předdefinovaná role | Popis | ID |
@@ -54,6 +46,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Přispěvatel klasických sítí](#classic-network-contributor) | Umožňuje správu klasických sítí, ale ne přístup k nim. | b34d265f-36f7-4a0d-a4d4-e158ca92e90f |
 > | [Přispěvatel zóny DNS](#dns-zone-contributor) | Umožňuje spravovat zóny a sady záznamů DNS v Azure DNS, ale neumožňuje řídit, kdo k nim má přístup. | befefa01-2a29-4197-83a8-272ff33ce314 |
 > | [Přispěvatel sítě](#network-contributor) | Umožňuje spravovat sítě, ale ne přístup k nim. | 4d97b98b-1d4f-4787-a291-c67834d212e7 |
+> | [Přispěvatel Privátní DNS zóny](#private-dns-zone-contributor) | Umožňuje spravovat soukromé prostředky zóny DNS, ale ne virtuální sítě, ke kterým jsou připojené. | b12aa53e-6015-4669-85d0-8515ebb3ae7f |
 > | [Přispěvatel Traffic Manager](#traffic-manager-contributor) | Umožňuje správu profilů Traffic Manager, ale neumožňuje řídit, kdo k nim má přístup. | a4b10055-b0c7-44c2-b00f-c7b5b3550cf7 |
 > | **Storage** |  |  |
 > | [Přispěvatel avere](#avere-contributor) | Může vytvořit a spravovat cluster avere vFXT. | 4f8fab4f-1852-4a58-a46a-8eaf358af14a |
@@ -120,7 +113,9 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Přispěvatel Cognitive Services](#cognitive-services-contributor) | Umožňuje vytvářet, číst, aktualizovat, odstraňovat a spravovat klíče Cognitive Services. | 25fbc0a9-bd7c-42a3-aa1a-3b75d497ee68 |
 > | [Čtečka dat Cognitive Services (Preview)](#cognitive-services-data-reader-preview) | Umožňuje číst Cognitive Services data. | b59867f0-fa02-499b-be73-45a86b5b3e1c |
 > | [Cognitive Services uživatel](#cognitive-services-user) | Umožňuje číst a zobrazit seznam klíčů Cognitive Services. | a97b65f3-24c7-4388-baec-2e87135dc908 |
-> | **Smíšená realita** |  |  |
+> | **Mixed realita** |  |  |
+> | [Správce vzdáleného vykreslování](#remote-rendering-administrator) | Poskytuje uživatele s možností převodu, správy relace, vykreslování a diagnostiky pro vzdálené vykreslování Azure. | 3df8b902-2a6f-47c7-8cc5-360e9b272a7e |
+> | [Klient vzdáleného vykreslování](#remote-rendering-client) | Poskytuje uživatele s možností spravovat relaci, vykreslování a diagnostiku pro vzdálené vykreslování Azure. | d39065c4-c120-43c9-ab0a-63eed9795f0a |
 > | [Přispěvatel účtu prostorových kotev](#spatial-anchors-account-contributor) | Umožňuje spravovat prostorové kotvy ve vašem účtu, ale neodstraňovat je. | 8bbe83f1-e2a6-4df7-8cb4-4e04d4e5c827 |
 > | [Vlastník účtu prostorových ukotvení](#spatial-anchors-account-owner) | Umožňuje spravovat prostorové kotvy v účtu, včetně jejich odstranění. | 70bbe301-9835-447d-afdd-19eb3167307c |
 > | [Čtečka účtu prostorových kotev](#spatial-anchors-account-reader) | Umožňuje vyhledat a číst vlastnosti prostorových ukotvení ve vašem účtu. | 5d51204f-eb77-4b1c-b86a-2ec626c49413 |
@@ -136,6 +131,12 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Vlastník registrace Azure Stack](#azure-stack-registration-owner) | Umožňuje spravovat Azure Stack registrace. | 6f12a6df-dd06-4f3e-bcb1-ce8be600526a |
 > | [EventGrid EventSubscription Přispěvatel](#eventgrid-eventsubscription-contributor) | Umožňuje spravovat operace odběru událostí EventGrid. | 428e0ff0-5e57-4d9c-a221-2c70d0e0a443 |
 > | [Čtecí modul EventSubscription EventGrid](#eventgrid-eventsubscription-reader) | Umožňuje číst odběry událostí EventGrid. | 2414bbcf-6497-4faf-8c65-045460748405 |
+> | [Přispěvatel dat FHIR](#fhir-data-contributor) | Role umožňuje, aby měl uživatel nebo hlavní přístup k datům FHIR oprávnění. | 5a1fc7df-4bf1-4951-a576-89034ee01acd |
+> | [FHIR data Exportér](#fhir-data-exporter) | Role umožňuje uživateli nebo objektu zabezpečení číst a exportovat FHIR data. | 3db33094-8700-4567-8da5-1501d4e7e843 |
+> | [Čtecí modul dat FHIR](#fhir-data-reader) | Role umožňuje uživateli nebo objektu zabezpečení číst data FHIR. | 4c8d0bbc-75d3-4935-991f-5f3c56d81508 |
+> | [Zapisovač dat FHIR](#fhir-data-writer) | Role umožňuje uživateli nebo objektu zabezpečení číst data FHIR a zapisovat je. | 3f88fce4-5892-4214-ae73-ba5294559913 |
+> | [Přispěvatel prostředí integrační služby](#integration-service-environment-contributor) | Umožňuje spravovat prostředí integračních služeb, ale ne přístup k nim. | a41e2c5b-bd99-4a07-88f4-9bf657a760b8 |
+> | [Vývojář prostředí integrační služby](#integration-service-environment-developer) | Umožňuje vývojářům vytvářet a aktualizovat pracovní postupy, účty pro integraci a připojení rozhraní API v prostředích integračních služeb. | c7aa55d3-1abb-444a-a5ca-5e51e485d6ec |
 > | [Přispěvatel účtů inteligentních systémů](#intelligent-systems-account-contributor) | Umožňuje správu účtů inteligentních systémů, ale ne přístup k nim. | 03a6d094-3444-4b3d-88af-7477090a9e5e |
 > | [Přispěvatel aplikace logiky](#logic-app-contributor) | Umožňuje spravovat Logic Apps, ale ne měnit přístup k nim. | 87a39d53-fc1b-424a-814c-f7e04687dc9e |
 > | [Operátor aplikace logiky](#logic-app-operator) | Umožňuje číst, povolit a zakázat Logic Apps, ale nemůže je upravovat ani aktualizovat. | 515c2055-d9d4-4321-b1b9-bd0c9a0f79fe |
@@ -190,6 +191,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 > | [Přispěvatel značek](#tag-contributor) | Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entitám. | 4a9ae827-6dc8-4573-8ac7-8239d42aa03f |
 > | **Jiné** |  |  |
 > | [Přispěvatel BizTalk](#biztalk-contributor) | Umožňuje spravovat BizTalk Services, ale ne přístup k nim. | 5e3c6656-6cfa-4708-81fe-0de47ac73342 |
+> | [Uživatel virtualizace plochy](#desktop-virtualization-user) | Umožňuje uživateli používat aplikace ve skupině aplikací. | 1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63 |
 > | [Přispěvatel kolekcí úloh Scheduleru](#scheduler-job-collections-contributor) | Umožňuje spravovat kolekce úloh Scheduleru, ale ne přístup k nim. | 188a0f2f-5c9e-469b-ae67-2aa5ce574b94 |
 
 
@@ -198,7 +200,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 
 ### <a name="contributor"></a>Přispěvatel
 
-Umožňuje spravovat vše kromě udělení přístupu k prostředkům.
+Umožňuje spravovat vše kromě udělení přístupu k prostředkům. [Další informace](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -206,11 +208,11 @@ Umožňuje spravovat vše kromě udělení přístupu k prostředkům.
 > | **Akce** |  |
 > | * | Vytváření a Správa prostředků všech typů |
 > | **NotActions** |  |
-> | Microsoft. Authorization/*/DELETE | Odstranění rolí, přiřazení zásad, definic zásad a sad zásad |
-> | Microsoft. Authorization/*/Write | Vytváření rolí, přiřazení rolí, přiřazování zásad, definic zásad a definic sad zásad |
-> | Microsoft. Authorization/elevateAccess/Action | Udělit volajícímu přístup Správce uživatelských přístupů v oboru tenanta |
-> | Microsoft. detail/blueprintAssignments/Write | Vytvořit nebo aktualizovat jakékoli přiřazení podrobného plánu |
-> | Microsoft. detail/blueprintAssignments/DELETE | Odstranit všechna přiřazení podrobného plánu |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/DELETE | Odstranění rolí, přiřazení zásad, definic zásad a sad zásad |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Write | Vytváření rolí, přiřazení rolí, přiřazování zásad, definic zásad a definic sad zásad |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/elevateAccess/Action | Udělit volajícímu přístup Správce uživatelských přístupů v oboru tenanta |
+> | [Microsoft. detail](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/Write | Vytvořit nebo aktualizovat jakékoli přiřazení podrobného plánu |
+> | [Microsoft. detail](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/DELETE | Odstranit všechna přiřazení podrobného plánu |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -248,7 +250,7 @@ Umožňuje spravovat vše kromě udělení přístupu k prostředkům.
 
 ### <a name="owner"></a>Vlastník
 
-Umožňuje správu všeho, včetně přístupu k prostředkům.
+Umožňuje správu všeho, včetně přístupu k prostředkům. [Další informace](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -288,7 +290,7 @@ Umožňuje správu všeho, včetně přístupu k prostředkům.
 
 ### <a name="reader"></a>Čtenář
 
-Umožňuje zobrazit vše, ale ne provádět žádné změny.
+Umožňuje zobrazit vše, ale ne provádět žádné změny. [Další informace](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -328,15 +330,15 @@ Umožňuje zobrazit vše, ale ne provádět žádné změny.
 
 ### <a name="user-access-administrator"></a>Správce přístupu uživatelů
 
-Umožňuje spravovat přístup uživatelů k prostředkům Azure.
+Umožňuje spravovat přístup uživatelů k prostředkům Azure. [Další informace](rbac-and-directory-admin-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
 > | */read | Přečte prostředky všech typů s výjimkou tajných klíčů. |
-> | Microsoft. Authorization/* | Spravovat autorizaci |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/* | Spravovat autorizaci |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -381,23 +383,23 @@ Umožňuje správu klasických virtuálních počítačů, ale ne přístup k ni
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. ClassicCompute/domainNames/* | Vytváření a správa názvů klasických výpočetních domén |
-> | Microsoft. ClassicCompute/virtualMachines/* | Vytváření a správu virtuálních počítačů |
-> | Microsoft. ClassicNetwork/networkSecurityGroups/JOIN/Action |  |
-> | Microsoft. ClassicNetwork/reservedIps/Link/Action | Propojení rezervované IP adresy |
-> | Microsoft. ClassicNetwork/reservedIps/Read | Načte rezervované IP adresy. |
-> | Microsoft. ClassicNetwork/virtualNetworks/JOIN/Action | Připojí se k virtuální síti. |
-> | Microsoft. ClassicNetwork/virtualNetworks/Read | Získat virtuální síť. |
-> | Microsoft. ClassicStorage/storageAccounts/disks/Read | Vrátí disk účtu úložiště. |
-> | Microsoft. ClassicStorage/storageAccounts/images/Read | Vrátí image účtu úložiště. Zastaralé. Použijte Microsoft. ClassicStorage/storageAccounts/vmImages) |
-> | Microsoft. ClassicStorage/storageAccounts/klíče listkey/Action | Vypíše přístupové klíče pro účty úložiště. |
-> | Microsoft. ClassicStorage/storageAccounts/Read | Vrátí účet úložiště s daným účtem. |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/domainNames/* | Vytváření a správa názvů klasických výpočetních domén |
+> | [Microsoft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/* | Vytváření a správu virtuálních počítačů |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/networkSecurityGroups/JOIN/Action |  |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/reservedIps/Link/Action | Propojení rezervované IP adresy |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/reservedIps/Read | Načte rezervované IP adresy. |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/virtualNetworks/JOIN/Action | Připojí se k virtuální síti. |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/virtualNetworks/Read | Získat virtuální síť. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/disks/Read | Vrátí disk účtu úložiště. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/images/Read | Vrátí image účtu úložiště. Zastaralé. Použijte Microsoft. ClassicStorage/storageAccounts/vmImages) |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/Action | Vypíše přístupové klíče pro účty úložiště. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/Read | Vrátí účet úložiště s daným účtem. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -447,22 +449,22 @@ Umožňuje správu klasických virtuálních počítačů, ale ne přístup k ni
 
 ### <a name="virtual-machine-administrator-login"></a>Přihlášení správce virtuálního počítače
 
-Zobrazit Virtual Machines na portálu a přihlásit se jako správce
+Zobrazit Virtual Machines na portálu a přihlásit se jako správce [Další informace](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Network/publicIPAddresses/Read | Získá definici veřejné IP adresy. |
-> | Microsoft. Network/virtualNetworks/Read | Získat definici virtuální sítě |
-> | Microsoft. Network/loadBalancers/Read | Získá definici nástroje pro vyrovnávání zatížení. |
-> | Microsoft. Network/networkInterfaces/Read | Načte definici síťového rozhraní.  |
-> | Microsoft. COMPUTE/virtualMachines/*/Read |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/Read | Získá definici veřejné IP adresy. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | Získat definici virtuální sítě |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/Read | Získá definici nástroje pro vyrovnávání zatížení. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/Read | Načte definici síťového rozhraní.  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/Read |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. COMPUTE/virtualMachines/Login/Action | Přihlaste se k virtuálnímu počítači jako běžný uživatel. |
-> | Microsoft. COMPUTE/virtualMachines/loginAsAdmin/Action | Přihlášení k virtuálnímu počítači pomocí oprávnění správce Windows nebo kořenového uživatele platformy Linux |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/Login/Action | Přihlaste se k virtuálnímu počítači jako běžný uživatel. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/loginAsAdmin/Action | Přihlášení k virtuálnímu počítači pomocí oprávnění správce Windows nebo kořenového uživatele platformy Linux |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -499,53 +501,53 @@ Zobrazit Virtual Machines na portálu a přihlásit se jako správce
 
 ### <a name="virtual-machine-contributor"></a>Přispěvatel virtuálních počítačů
 
-Umožňuje správu virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým se připojuje.
+Umožňuje správu virtuálních počítačů, ale ne přístup k nim ani k virtuální síti nebo účtu úložiště, ke kterým se připojuje. [Další informace](../virtual-machines/linux/tutorial-govern-resources.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. COMPUTE/availabilitySets/* | Vytváření a Správa skupin dostupnosti výpočtů |
-> | Microsoft. COMPUTE/umístění/* | Vytváření a Správa výpočetních míst |
-> | Microsoft. COMPUTE/virtualMachines/* | Vytváření a správu virtuálních počítačů |
-> | Microsoft. COMPUTE/virtualMachineScaleSets/* | Vytváření a správu škálovacích sad virtuálních počítačů |
-> | Microsoft. COMPUTE/disks/Write | Vytvoří nový disk nebo aktualizuje stávající. |
-> | Microsoft. COMPUTE/disky/číst | Získá vlastnosti disku. |
-> | Microsoft. COMPUTE/disks/DELETE | Odstraní disk. |
-> | Microsoft. DevTestLab/plánuje/* |  |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Network/applicationGateways/backendAddressPools/JOIN/Action | Připojí se ke fondu back-end adres služby Application Gateway. Nelze upozorňovat. |
-> | Microsoft. Network/loadBalancers/backendAddressPools/JOIN/Action | Připojí fond adres back-endu nástroje pro vyrovnávání zatížení. Nelze upozorňovat. |
-> | Microsoft. Network/loadBalancers/inboundNatPools/JOIN/Action | Připojí příchozí fond NAT pro vyrovnávání zatížení. Nelze upozorňovat. |
-> | Microsoft. Network/loadBalancers/inboundNatRules/JOIN/Action | Připojí příchozí pravidlo NAT pro vyrovnávání zatížení. Nelze upozorňovat. |
-> | Microsoft. Network/loadBalancers/probs/JOIN/Action | Umožňuje používat sondy nástroje pro vyrovnávání zatížení. Například s touto vlastností oprávnění healthProbe sady VM scaleing můžete odkazovat na test. Nelze upozorňovat. |
-> | Microsoft. Network/loadBalancers/Read | Získá definici nástroje pro vyrovnávání zatížení. |
-> | Microsoft. Network/umístění/* | Vytváření a Správa síťových umístění |
-> | Microsoft. Network/networkInterfaces/* | Vytváření a Správa síťových rozhraní |
-> | Microsoft. Network/networkSecurityGroups/JOIN/Action | Připojí se ke skupině zabezpečení sítě. Nelze upozorňovat. |
-> | Microsoft. Network/networkSecurityGroups/Read | Získá definici skupiny zabezpečení sítě. |
-> | Microsoft. Network/publicIPAddresses/JOIN/Action | Připojí se k veřejné IP adrese. Nelze upozorňovat. |
-> | Microsoft. Network/publicIPAddresses/Read | Získá definici veřejné IP adresy. |
-> | Microsoft. Network/virtualNetworks/Read | Získat definici virtuální sítě |
-> | Microsoft. Network/virtualNetworks/subnets/JOIN/Action | Připojí se k virtuální síti. Nelze upozorňovat. |
-> | Microsoft. RecoveryServices/umístění/* |  |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Write | Vytvořit záložní záměr ochrany |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/*/Read |  |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Write | Vytvořit položku chráněnou zálohováním |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/Write | Vytvoří zásady ochrany. |
-> | Microsoft. RecoveryServices/trezory/číst | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
-> | Microsoft. RecoveryServices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/Write | Operace vytvořit trezor vytvoří prostředek Azure typu trezor. |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. SqlVirtualMachine/* |  |
-> | Microsoft. Storage/storageAccounts/klíče listkey/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
-> | Microsoft. Storage/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/availabilitySets/* | Vytváření a Správa skupin dostupnosti výpočtů |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/Locations/* | Vytváření a Správa výpočetních míst |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/* | Vytváření a správu virtuálních počítačů |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachineScaleSets/* | Vytváření a správu škálovacích sad virtuálních počítačů |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/disks/Write | Vytvoří nový disk nebo aktualizuje stávající. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/disks/Read | Získá vlastnosti disku. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/disks/DELETE | Odstraní disk. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Schedules/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/applicationGateways/backendAddressPools/JOIN/Action | Připojí se ke fondu back-end adres služby Application Gateway. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/backendAddressPools/JOIN/Action | Připojí fond adres back-endu nástroje pro vyrovnávání zatížení. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/inboundNatPools/JOIN/Action | Připojí příchozí fond NAT pro vyrovnávání zatížení. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/inboundNatRules/JOIN/Action | Připojí příchozí pravidlo NAT pro vyrovnávání zatížení. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/probes/JOIN/Action | Umožňuje používat sondy nástroje pro vyrovnávání zatížení. Například s touto vlastností oprávnění healthProbe sady VM scaleing můžete odkazovat na test. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/Read | Získá definici nástroje pro vyrovnávání zatížení. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/Locations/* | Vytváření a Správa síťových umístění |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/* | Vytváření a Správa síťových rozhraní |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/JOIN/Action | Připojí se ke skupině zabezpečení sítě. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/Read | Získá definici skupiny zabezpečení sítě. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/JOIN/Action | Připojí se k veřejné IP adrese. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/Read | Získá definici veřejné IP adresy. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | Získat definici virtuální sítě |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/JOIN/Action | Připojí se k virtuální síti. Nelze upozorňovat. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/Write | Vytvořit záložní záměr ochrany |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/*/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/Write | Vytvořit položku chráněnou zálohováním |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/Read | Vrátí všechny zásady ochrany. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/Write | Vytvoří zásady ochrany. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Vrátí podrobnosti využití trezoru Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Write | Operace vytvořit trezor vytvoří prostředek Azure typu trezor. |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. SqlVirtualMachine](resource-provider-operations.md#microsoftsqlvirtualmachine)/* |  |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -619,21 +621,21 @@ Umožňuje správu virtuálních počítačů, ale ne přístup k nim ani k virt
 
 ### <a name="virtual-machine-user-login"></a>Přihlášení uživatele virtuálního počítače
 
-Zobrazte Virtual Machines na portálu a přihlaste se jako běžný uživatel.
+Zobrazte Virtual Machines na portálu a přihlaste se jako běžný uživatel. [Další informace](../active-directory/devices/howto-vm-sign-in-azure-ad-windows.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Network/publicIPAddresses/Read | Získá definici veřejné IP adresy. |
-> | Microsoft. Network/virtualNetworks/Read | Získat definici virtuální sítě |
-> | Microsoft. Network/loadBalancers/Read | Získá definici nástroje pro vyrovnávání zatížení. |
-> | Microsoft. Network/networkInterfaces/Read | Načte definici síťového rozhraní.  |
-> | Microsoft. COMPUTE/virtualMachines/*/Read |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/Read | Získá definici veřejné IP adresy. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | Získat definici virtuální sítě |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/Read | Získá definici nástroje pro vyrovnávání zatížení. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/Read | Načte definici síťového rozhraní.  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/Read |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. COMPUTE/virtualMachines/Login/Action | Přihlaste se k virtuálnímu počítači jako běžný uživatel. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/Login/Action | Přihlaste se k virtuálnímu počítači jako běžný uživatel. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -678,14 +680,14 @@ Může spravovat koncové body CDN, ale nemůže udělit přístup jiným uživa
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. CDN/edgenodes/Read |  |
-> | Microsoft. CDN/operationresults/* |  |
-> | Microsoft. CDN/Profiles/Endpoints/* |  |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/Profiles/Endpoints/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -732,14 +734,14 @@ Může zobrazovat koncové body CDN, ale nemůže provádět změny.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. CDN/edgenodes/Read |  |
-> | Microsoft. CDN/operationresults/* |  |
-> | Microsoft. CDN/Profiles/Endpoints/*/Read |  |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/Profiles/Endpoints/*/Read |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -780,20 +782,20 @@ Může zobrazovat koncové body CDN, ale nemůže provádět změny.
 
 ### <a name="cdn-profile-contributor"></a>Přispěvatel profilu CDN
 
-Může spravovat profily CDN a jejich koncové body, ale nemůže udělit přístup jiným uživatelům.
+Může spravovat profily CDN a jejich koncové body, ale nemůže udělit přístup jiným uživatelům. [Další informace](../cdn/cdn-app-dev-net.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. CDN/edgenodes/Read |  |
-> | Microsoft. CDN/operationresults/* |  |
-> | Microsoft. CDN/Profiles/* |  |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/Profiles/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -840,14 +842,14 @@ Může zobrazit profily CDN a jejich koncové body, ale nemůže provádět změ
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. CDN/edgenodes/Read |  |
-> | Microsoft. CDN/operationresults/* |  |
-> | Microsoft. CDN/Profiles/*/Read |  |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/edgenodes/Read |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/operationresults/* |  |
+> | [Microsoft. CDN](resource-provider-operations.md#microsoftcdn)/Profiles/*/Read |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -888,19 +890,19 @@ Může zobrazit profily CDN a jejich koncové body, ale nemůže provádět změ
 
 ### <a name="classic-network-contributor"></a>Přispěvatel klasických sítí
 
-Umožňuje správu klasických sítí, ale ne přístup k nim.
+Umožňuje správu klasických sítí, ale ne přístup k nim. [Další informace](../virtual-network/virtual-network-manage-peering.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. ClassicNetwork/* | Vytváření a Správa klasických sítí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/* | Vytváření a Správa klasických sítí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -940,19 +942,19 @@ Umožňuje správu klasických sítí, ale ne přístup k nim.
 
 ### <a name="dns-zone-contributor"></a>Přispěvatel zóny DNS
 
-Umožňuje spravovat zóny a sady záznamů DNS v Azure DNS, ale neumožňuje řídit, kdo k nim má přístup.
+Umožňuje spravovat zóny a sady záznamů DNS v Azure DNS, ale neumožňuje řídit, kdo k nim má přístup. [Další informace](../dns/dns-protect-zones-recordsets.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Network/dnsZones/* | Vytváření a Správa záznamů a zón DNS |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/dnsZones/* | Vytváření a Správa záznamů a zón DNS |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -998,13 +1000,13 @@ Umožňuje spravovat sítě, ale ne přístup k nim.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Network/* | Vytváření a správa sítí |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/* | Vytváření a správa sítí |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -1042,6 +1044,64 @@ Umožňuje spravovat sítě, ale ne přístup k nim.
 }
 ```
 
+### <a name="private-dns-zone-contributor"></a>Přispěvatel Privátní DNS zóny
+
+Umožňuje spravovat soukromé prostředky zóny DNS, ale ne virtuální sítě, ke kterým jsou připojené. [Další informace](../dns/dns-protect-private-zones-recordsets.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Akce** |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/privateDnsZones/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/privateDnsOperationResults/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/privateDnsOperationStatuses/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | Získat definici virtuální sítě |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/JOIN/Action | Připojí se k virtuální síti. Nelze upozorňovat. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | *žádný* |  |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage private DNS zone resources, but not the virtual networks they are linked to.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/b12aa53e-6015-4669-85d0-8515ebb3ae7f",
+  "name": "b12aa53e-6015-4669-85d0-8515ebb3ae7f",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Insights/alertRules/*",
+        "Microsoft.Resources/deployments/*",
+        "Microsoft.Resources/subscriptions/resourceGroups/read",
+        "Microsoft.Support/*",
+        "Microsoft.Network/privateDnsZones/*",
+        "Microsoft.Network/privateDnsOperationResults/*",
+        "Microsoft.Network/privateDnsOperationStatuses/*",
+        "Microsoft.Network/virtualNetworks/read",
+        "Microsoft.Network/virtualNetworks/join/action",
+        "Microsoft.Authorization/*/read"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Private DNS Zone Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="traffic-manager-contributor"></a>Přispěvatel Traffic Manager
 
 Umožňuje správu profilů Traffic Manager, ale neumožňuje řídit, kdo k nim má přístup.
@@ -1050,13 +1110,13 @@ Umožňuje správu profilů Traffic Manager, ale neumožňuje řídit, kdo k nim
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Network/trafficManagerProfiles/* |  |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/trafficManagerProfiles/* |  |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -1099,37 +1159,37 @@ Umožňuje správu profilů Traffic Manager, ale neumožňuje řídit, kdo k nim
 
 ### <a name="avere-contributor"></a>Přispěvatel avere
 
-Může vytvořit a spravovat cluster avere vFXT.
+Může vytvořit a spravovat cluster avere vFXT. [Další informace](../avere-vfxt/avere-vfxt-deploy-plan.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. COMPUTE/*/Read |  |
-> | Microsoft. COMPUTE/availabilitySets/* |  |
-> | Microsoft. COMPUTE/virtualMachines/* |  |
-> | Microsoft. COMPUTE/disky/* |  |
-> | Microsoft. Network/*/Read |  |
-> | Microsoft. Network/networkInterfaces/* |  |
-> | Microsoft. Network/virtualNetworks/Read | Získat definici virtuální sítě |
-> | Microsoft. Network/virtualNetworks/podsítí/čtení | Získá definici podsítě virtuální sítě. |
-> | Microsoft. Network/virtualNetworks/subnets/JOIN/Action | Připojí se k virtuální síti. Nelze upozorňovat. |
-> | Microsoft. Network/virtualNetworks/podsítí/joinViaServiceEndpoint/Action | Propojuje prostředek, jako je například účet úložiště nebo databáze SQL, do podsítě. Nelze upozorňovat. |
-> | Microsoft. Network/networkSecurityGroups/JOIN/Action | Připojí se ke skupině zabezpečení sítě. Nelze upozorňovat. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Storage/*/Read |  |
-> | Microsoft. Storage/storageAccounts/* | Vytvoření a správa účtů úložiště |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Resources/Read | Získá prostředky pro skupinu prostředků. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/*/Read |  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/availabilitySets/* |  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/* |  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/disks/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/*/Read |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | Získat definici virtuální sítě |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/Read | Získá definici podsítě virtuální sítě. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/JOIN/Action | Připojí se k virtuální síti. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/Action | Propojuje prostředek, jako je například účet úložiště nebo databáze SQL, do podsítě. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/JOIN/Action | Připojí se ke skupině zabezpečení sítě. Nelze upozorňovat. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/*/Read |  |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/* | Vytvoření a správa účtů úložiště |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Resources/Read | Získá prostředky pro skupinu prostředků. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE | Vrátí výsledek odstranění objektu BLOB. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Write | Vrátí výsledek zápisu objektu BLOB. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/DELETE | Vrátí výsledek odstranění objektu BLOB. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Write | Vrátí výsledek zápisu objektu BLOB. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -1181,29 +1241,29 @@ Může vytvořit a spravovat cluster avere vFXT.
 
 ### <a name="avere-operator"></a>Avere – operátor
 
-Používá cluster avere vFXT ke správě clusteru.
+, Které cluster avere vFXT používá ke správě clusteru, další [informace](../avere-vfxt/avere-vfxt-manage-cluster.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. COMPUTE/virtualMachines/Read | Získá vlastnosti virtuálního počítače. |
-> | Microsoft. Network/networkInterfaces/Read | Načte definici síťového rozhraní.  |
-> | Microsoft. Network/networkInterfaces/Write | Vytvoří síťové rozhraní nebo aktualizuje stávající síťové rozhraní.  |
-> | Microsoft. Network/virtualNetworks/Read | Získat definici virtuální sítě |
-> | Microsoft. Network/virtualNetworks/podsítí/čtení | Získá definici podsítě virtuální sítě. |
-> | Microsoft. Network/virtualNetworks/subnets/JOIN/Action | Připojí se k virtuální síti. Nelze upozorňovat. |
-> | Microsoft. Network/networkSecurityGroups/JOIN/Action | Připojí se ke skupině zabezpečení sítě. Nelze upozorňovat. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/DELETE | Vrátí výsledek odstranění kontejneru. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/Read | Vrátí seznam kontejnerů. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/Write | Vrátí výsledek Put kontejneru objektů BLOB. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/Read | Získá vlastnosti virtuálního počítače. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/Read | Načte definici síťového rozhraní.  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/Write | Vytvoří síťové rozhraní nebo aktualizuje stávající síťové rozhraní.  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | Získat definici virtuální sítě |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/Read | Získá definici podsítě virtuální sítě. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/JOIN/Action | Připojí se k virtuální síti. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/JOIN/Action | Připojí se ke skupině zabezpečení sítě. Nelze upozorňovat. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/DELETE | Vrátí výsledek odstranění kontejneru. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/Read | Vrátí seznam kontejnerů. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/Write | Vrátí výsledek Put kontejneru objektů BLOB. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE | Vrátí výsledek odstranění objektu BLOB. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Write | Vrátí výsledek zápisu objektu BLOB. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/DELETE | Vrátí výsledek odstranění objektu BLOB. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Write | Vrátí výsledek zápisu objektu BLOB. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -1247,53 +1307,53 @@ Používá cluster avere vFXT ke správě clusteru.
 
 ### <a name="backup-contributor"></a>Přispěvatel zálohování
 
-Umožňuje správu služby zálohování, ale nemůže vytvářet trezory a udělovat přístup jiným uživatelům.
+Umožňuje spravovat službu zálohování, ale nemůže vytvářet trezory a [udělovat ostatním uživatelům](../backup/backup-rbac-rs-vault.md) přístup.
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Network/virtualNetworks/Read | Získat definici virtuální sítě |
-> | Microsoft. RecoveryServices/umístění/* |  |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/operationResults/* | Správa výsledků operace při správě zálohování |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/* | Vytváření a Správa zálohovacích kontejnerů v rámci záložních prostředků infrastruktury Recovery Services trezoru |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
-> | Microsoft. RecoveryServices/trezory/backupJobs/* | Vytváření a správa úloh zálohování |
-> | Microsoft. RecoveryServices/trezory/backupJobsExport/Action | Exportovat úlohy |
-> | Microsoft. RecoveryServices/trezory/backupOperationResults/* | Vytváření a správa výsledků operací správy zálohování |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/* | Vytváření a Správa zásad zálohování |
-> | Microsoft. RecoveryServices/trezory/backupProtectableItems/* | Vytváření a Správa položek, které se dají zálohovat |
-> | Microsoft. RecoveryServices/trezory/backupProtectedItems/* | Vytváření a Správa zálohovaných položek |
-> | Microsoft. RecoveryServices/trezory/backupProtectionContainers/* | Vytváření a Správa kontejnerů držících zálohované položky |
-> | Microsoft. RecoveryServices/trezory/backupSecurityPIN/* |  |
-> | Microsoft. RecoveryServices/trezory/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/certifikáty/* | Vytváření a Správa certifikátů souvisejících se zálohováním v Recovery Services trezoru |
-> | Microsoft. RecoveryServices/trezory/extendedInformation/* | Vytváření a Správa rozšířených informací souvisejících s trezorem |
-> | Microsoft. RecoveryServices/trezory/monitoringAlerts/Read | Získá výstrahy pro trezor služby Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/monitoringConfigurations/* |  |
-> | Microsoft. RecoveryServices/trezory/číst | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
-> | Microsoft. RecoveryServices/trezory/registeredIdentities/* | Vytváření a Správa registrovaných identit |
-> | Microsoft. RecoveryServices/trezory/použití/* | Vytvoření a správa využití trezoru Recovery Services |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Storage/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
-> | Microsoft. RecoveryServices/trezory/backupstorageconfig/* |  |
-> | Microsoft. RecoveryServices/trezory/backupconfig/* |  |
-> | Microsoft. RecoveryServices/trezory/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
-> | Microsoft. RecoveryServices/trezory/Write | Operace vytvořit trezor vytvoří prostředek Azure typu trezor. |
-> | Microsoft. RecoveryServices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/* |  |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
-> | Microsoft. RecoveryServices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
-> | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Ověřit funkce |
-> | Microsoft. RecoveryServices/trezory/monitoringAlerts/Write | Vyřeší upozornění. |
-> | Microsoft. RecoveryServices/Operations/Read | Operace vrátí seznam operací pro poskytovatele prostředků. |
-> | Microsoft. RecoveryServices/Locations/stav operationstatus/Read | Získá stav operace pro danou operaci. |
-> | Microsoft. RecoveryServices/trezory/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | Získat definici virtuální sítě |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/* | Správa výsledků operace při správě zálohování |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/* | Vytváření a Správa zálohovacích kontejnerů v rámci záložních prostředků infrastruktury Recovery Services trezoru |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/* | Vytváření a správa úloh zálohování |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/Action | Exportovat úlohy |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperationResults/* | Vytváření a správa výsledků operací správy zálohování |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/* | Vytváření a Správa zásad zálohování |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectableItems/* | Vytváření a Správa položek, které se dají zálohovat |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectedItems/* | Vytváření a Správa zálohovaných položek |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionContainers/* | Vytváření a Správa kontejnerů držících zálohované položky |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupSecurityPIN/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Certificates/* | Vytváření a Správa certifikátů souvisejících se zálohováním v Recovery Services trezoru |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/* | Vytváření a Správa rozšířených informací souvisejících s trezorem |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/Read | Získá výstrahy pro trezor služby Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/* | Vytváření a Správa registrovaných identit |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/* | Vytvoření a správa využití trezoru Recovery Services |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupconfig/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Write | Operace vytvořit trezor vytvoří prostředek Azure typu trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupPreValidateProtection/Action |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupValidateFeatures/Action | Ověřit funkce |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/Write | Vyřeší upozornění. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Operations/Read | Operace vrátí seznam operací pro poskytovatele prostředků. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/operationStatus/Read | Získá stav operace pro danou operaci. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -1367,68 +1427,68 @@ Umožňuje správu služby zálohování, ale nemůže vytvářet trezory a udě
 
 ### <a name="backup-operator"></a>Operátor zálohování
 
-Umožňuje správu zálohovacích služeb s výjimkou odebrání zálohování, vytváření trezoru a poskytování přístupu jiným uživatelům.
+Umožňuje správu zálohovacích služeb s výjimkou odebrání zálohování, vytváření trezoru a poskytování [přístupu jiným uživatelům](../backup/backup-rbac-rs-vault.md) .
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Network/virtualNetworks/Read | Získat definici virtuální sítě |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/operationResults/Read | Vrátí stav operace. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/operationResults/Read | Načte výsledek operace provedené na kontejneru ochrany. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Backup/Action | Provede zálohování chráněné položky. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/operationResults/číst | Načte výsledek operace provedené na chráněných položkách. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/operationsStatus/číst | Vrátí stav operace provedené na chráněných položkách. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/Action | Zřídit rychlé obnovení položky pro chráněnou položku |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/číst | Získat body obnovení pro chráněné položky. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | Obnoví body obnovení pro chráněné položky. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Odvolání okamžitého obnovení položky pro chráněnou položku |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Write | Vytvořit položku chráněnou zálohováním |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
-> | Microsoft. RecoveryServices/trezory/backupJobs/* | Vytváření a správa úloh zálohování |
-> | Microsoft. RecoveryServices/trezory/backupJobsExport/Action | Exportovat úlohy |
-> | Microsoft. RecoveryServices/trezory/backupOperationResults/* | Vytváření a správa výsledků operací správy zálohování |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |
-> | Microsoft. RecoveryServices/trezory/backupProtectableItems/* | Vytváření a Správa položek, které se dají zálohovat |
-> | Microsoft. RecoveryServices/trezory/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
-> | Microsoft. RecoveryServices/trezory/backupProtectionContainers/Read | Vrátí všechny kontejnery patřící k předplatnému. |
-> | Microsoft. RecoveryServices/trezory/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/certifikáty/zapisovat | Operace aktualizovat certifikát prostředku aktualizuje certifikát přihlašovacích údajů k prostředku nebo úložišti. |
-> | Microsoft. RecoveryServices/trezory/extendedInformation/Read | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
-> | Microsoft. RecoveryServices/trezory/extendedInformation/Write | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
-> | Microsoft. RecoveryServices/trezory/monitoringAlerts/Read | Získá výstrahy pro trezor služby Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/monitoringConfigurations/* |  |
-> | Microsoft. RecoveryServices/trezory/číst | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
-> | Microsoft. RecoveryServices/trezory/registeredIdentities/operationResults/Read | Operaci získat výsledky operace Get lze použít k získání stavu operace a výsledku asynchronně odeslané operace. |
-> | Microsoft. RecoveryServices/trezory/registeredIdentities/Read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
-> | Microsoft. RecoveryServices/trezory/registeredIdentities/Write | Operaci kontejneru registrovat službu lze použít k registraci kontejneru pomocí služby Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Storage/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
-> | Microsoft. RecoveryServices/trezory/backupstorageconfig/* |  |
-> | Microsoft. RecoveryServices/trezory/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
-> | Microsoft. RecoveryServices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/operace/číst | Získá stav operace zásad. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Write | Vytvoří registrovaný kontejner. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Dotázat se/Action | Dotazování na úlohy v rámci kontejneru |
-> | Microsoft. RecoveryServices/trezory/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Write | Vytvořit záložní záměr ochrany |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Read | Získat záložní záměr ochrany |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
-> | Microsoft. RecoveryServices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
-> | Microsoft. RecoveryServices/Locations/backupPreValidateProtection/Action |  |
-> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Ověřit funkce |
-> | Microsoft. RecoveryServices/trezory/monitoringAlerts/Write | Vyřeší upozornění. |
-> | Microsoft. RecoveryServices/Operations/Read | Operace vrátí seznam operací pro poskytovatele prostředků. |
-> | Microsoft. RecoveryServices/Locations/stav operationstatus/Read | Získá stav operace pro danou operaci. |
-> | Microsoft. RecoveryServices/trezory/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | Získat definici virtuální sítě |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/Read | Vrátí stav operace. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/operationResults/Read | Načte výsledek operace provedené na kontejneru ochrany. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/Backup/Action | Provede zálohování chráněné položky. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/Read | Načte výsledek operace provedené na chráněných položkách. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/Read | Vrátí stav operace provedené na chráněných položkách. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/provisionInstantItemRecovery/Action | Zřídit rychlé obnovení položky pro chráněnou položku |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Read | Získat body obnovení pro chráněné položky. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Restore/Action | Obnoví body obnovení pro chráněné položky. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/revokeInstantItemRecovery/Action | Odvolání okamžitého obnovení položky pro chráněnou položku |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/Write | Vytvořit položku chráněnou zálohováním |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/refreshContainers/Action | Aktualizuje seznam kontejnerů. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/* | Vytváření a správa úloh zálohování |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/Action | Exportovat úlohy |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperationResults/* | Vytváření a správa výsledků operací správy zálohování |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/Read | Vrátí všechny zásady ochrany. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectableItems/* | Vytváření a Správa položek, které se dají zálohovat |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionContainers/Read | Vrátí všechny kontejnery patřící k předplatnému. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Certificates/Write | Operace aktualizovat certifikát prostředku aktualizuje certifikát přihlašovacích údajů k prostředku nebo úložišti. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/Read | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/Write | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/Read | Získá výstrahy pro trezor služby Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/Read | Operaci získat výsledky operace Get lze použít k získání stavu operace a výsledku asynchronně odeslané operace. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/Read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/Write | Operaci kontejneru registrovat službu lze použít k registraci kontejneru pomocí služby Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Vrátí podrobnosti využití trezoru Recovery Services. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupValidateOperation/Action | Ověřit operaci pro chráněnou položku |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/Operations/Read | Získá stav operace zásad. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/Write | Vytvoří registrovaný kontejner. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/Inquire/Action | Dotazování na úlohy v rámci kontejneru |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/Write | Vytvořit záložní záměr ochrany |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/Read | Získat záložní záměr ochrany |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectableContainers/Read | Získat všechny chráněné kontejnery |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupPreValidateProtection/Action |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupValidateFeatures/Action | Ověřit funkce |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/Write | Vyřeší upozornění. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Operations/Read | Operace vrátí seznam operací pro poskytovatele prostředků. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/operationStatus/Read | Získá stav operace pro danou operaci. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -1517,50 +1577,50 @@ Umožňuje správu zálohovacích služeb s výjimkou odebrání zálohování, 
 
 ### <a name="backup-reader"></a>Čtečka zálohování
 
-Může zobrazovat služby zálohování, ale nemůže provádět změny.
+Může zobrazovat služby zálohování, ale nemůže provádět změny. [Další informace](../backup/backup-rbac-rs-vault.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. RecoveryServices/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/operationResults/Read | Vrátí stav operace. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/operationResults/Read | Načte výsledek operace provedené na kontejneru ochrany. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/operationResults/číst | Načte výsledek operace provedené na chráněných položkách. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/operationsStatus/číst | Vrátí stav operace provedené na chráněných položkách. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/protectedItems/recoveryPoints/číst | Získat body obnovení pro chráněné položky. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
-> | Microsoft. RecoveryServices/trezory/backupJobs/operationResults/Read | Vrátí výsledek operace úlohy. |
-> | Microsoft. RecoveryServices/trezory/backupJobs/Read | Vrátí všechny objekty úlohy. |
-> | Microsoft. RecoveryServices/trezory/backupJobsExport/Action | Exportovat úlohy |
-> | Microsoft. RecoveryServices/trezory/backupOperationResults/Read | Vrátí výsledek operace zálohování pro Recovery Services trezor. |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/Read | Vrátí všechny zásady ochrany. |
-> | Microsoft. RecoveryServices/trezory/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
-> | Microsoft. RecoveryServices/trezory/backupProtectionContainers/Read | Vrátí všechny kontejnery patřící k předplatnému. |
-> | Microsoft. RecoveryServices/trezory/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/extendedInformation/Read | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
-> | Microsoft. RecoveryServices/trezory/monitoringAlerts/Read | Získá výstrahy pro trezor služby Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/číst | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
-> | Microsoft. RecoveryServices/trezory/registeredIdentities/operationResults/Read | Operaci získat výsledky operace Get lze použít k získání stavu operace a výsledku asynchronně odeslané operace. |
-> | Microsoft. RecoveryServices/trezory/registeredIdentities/Read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
-> | Microsoft. RecoveryServices/trezory/backupstorageconfig/Read | Vrátí konfiguraci úložiště pro Recovery Services trezor. |
-> | Microsoft. RecoveryServices/trezory/backupconfig/Read | Vrátí konfiguraci pro trezor Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/backupPolicies/operace/číst | Získá stav operace zásad. |
-> | Microsoft. RecoveryServices/trezory/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/backupProtectionIntent/Read | Získat záložní záměr ochrany |
-> | Microsoft. RecoveryServices/trezory/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
-> | Microsoft. RecoveryServices/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/monitoringConfigurations/* |  |
-> | Microsoft. RecoveryServices/trezory/monitoringAlerts/Write | Vyřeší upozornění. |
-> | Microsoft. RecoveryServices/Operations/Read | Operace vrátí seznam operací pro poskytovatele prostředků. |
-> | Microsoft. RecoveryServices/Locations/stav operationstatus/Read | Získá stav operace pro danou operaci. |
-> | Microsoft. RecoveryServices/trezory/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
-> | Microsoft. RecoveryServices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
-> | Microsoft. RecoveryServices/Locations/backupValidateFeatures/Action | Ověřit funkce |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/operationResults/Read | Vrátí stav operace. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/operationResults/Read | Načte výsledek operace provedené na kontejneru ochrany. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationResults/Read | Načte výsledek operace provedené na chráněných položkách. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/operationsStatus/Read | Vrátí stav operace provedené na chráněných položkách. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/Read | Vrátí podrobnosti objektu chráněné položky. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/Read | Získat body obnovení pro chráněné položky. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/Read | Vrátí všechny registrované kontejnery. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/operationResults/Read | Vrátí výsledek operace úlohy. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobs/Read | Vrátí všechny objekty úlohy. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupJobsExport/Action | Exportovat úlohy |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperationResults/Read | Vrátí výsledek operace zálohování pro Recovery Services trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/operationResults/Read | Načte výsledky operace zásad. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/Read | Vrátí všechny zásady ochrany. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectedItems/Read | Vrátí seznam všech chráněných položek. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionContainers/Read | Vrátí všechny kontejnery patřící k předplatnému. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupUsageSummaries/Read | Vrátí souhrny pro chráněné položky a chráněné servery pro Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/Read | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/Read | Získá výstrahy pro trezor služby Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/Read | Operaci získat výsledky operace Get lze použít k získání stavu operace a výsledku asynchronně odeslané operace. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/Read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupstorageconfig/Read | Vrátí konfiguraci úložiště pro Recovery Services trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupconfig/Read | Vrátí konfiguraci pro trezor Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupOperations/Read | Vrátí stav operace zálohování pro trezor Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupPolicies/Operations/Read | Získá stav operace zásad. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupEngines/Read | Vrátí všechny servery pro správu zálohování zaregistrované s trezorem. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/backupProtectionIntent/Read | Získat záložní záměr ochrany |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupFabrics/protectionContainers/Items/Read | Získat všechny položky v kontejneru |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupStatus/Action | Zkontroluje stav zálohování pro trezory Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/* |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/Write | Vyřeší upozornění. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Operations/Read | Operace vrátí seznam operací pro poskytovatele prostředků. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/operationStatus/Read | Získá stav operace pro danou operaci. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/backupProtectionIntents/Read | Vypsat všechny záložní záměry ochrany |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Vrátí podrobnosti využití trezoru Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/backupValidateFeatures/Action | Ověřit funkce |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -1637,13 +1697,13 @@ Umožňuje správu klasických účtů úložiště, ale ne přístup k nim.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. ClassicStorage/storageAccounts/* | Vytvoření a správa účtů úložiště |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/* | Vytvoření a správa účtů úložiště |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -1683,14 +1743,14 @@ Umožňuje správu klasických účtů úložiště, ale ne přístup k nim.
 
 ### <a name="classic-storage-account-key-operator-service-role"></a>Role služby operátora klíče klasického účtu úložiště
 
-Operátoři klíčů pro klasický účet úložiště můžou vypisovat a znovu generovat klíče na klasických účtech úložiště.
+Operátoři klíčů pro klasický účet úložiště můžou zobrazit a znovu vygenerovat klíče v klasických účtech úložiště. další [informace](../key-vault/secrets/overview-storage-keys.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ClassicStorage/storageAccounts/klíče listkey/Action | Vypíše přístupové klíče pro účty úložiště. |
-> | Microsoft. ClassicStorage/storageAccounts/RegenerateKey/Action | Obnoví existující přístupové klíče pro účet úložiště. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listkeys/Action | Vypíše přístupové klíče pro účty úložiště. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/RegenerateKey/Action | Obnoví existující přístupové klíče pro účet úložiště. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -1725,18 +1785,18 @@ Operátoři klíčů pro klasický účet úložiště můžou vypisovat a znovu
 
 ### <a name="data-box-contributor"></a>Přispěvatel Data Box
 
-Umožňuje spravovat všechno, co služba Data Box, s výjimkou poskytnutí přístupu jiným uživatelům.
+Umožňuje spravovat všechno, co služba Data Box, s výjimkou poskytnutí přístupu jiným uživatelům. [Další informace](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Databox/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Databox](resource-provider-operations.md#microsoftdatabox)/* |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -1775,22 +1835,22 @@ Umožňuje spravovat všechno, co služba Data Box, s výjimkou poskytnutí př�
 
 ### <a name="data-box-reader"></a>Čtecí modul Data Box
 
-Umožňuje správu Data Box služby s výjimkou vytváření pořadí nebo úprav podrobností objednávky a udělení přístupu jiným uživatelům.
+Umožňuje správu Data Box služby s výjimkou vytváření pořadí nebo úprav podrobností objednávky a udělení přístupu jiným uživatelům. [Další informace](../databox/data-box-logs.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Databox/*/Read |  |
-> | Microsoft. Databox/Jobs/listsecrets/Action |  |
-> | Microsoft. Databox/Jobs/listcredentials/Action | Zobrazí nešifrované přihlašovací údaje související s objednávkou. |
-> | Microsoft. Databox/Locations/availableSkus/Action | Tato metoda vrátí seznam dostupných skladových položek. |
-> | Microsoft. Databox/Locations/validateInputs/Action | Tato metoda provádí všechny typy ověření. |
-> | Microsoft. Databox/Locations/regionConfiguration/Action | Tato metoda vrátí konfigurace pro oblast. |
-> | Microsoft. Databox/Locations/validateAddress/Action | Ověří dodací adresu a v případě potřeby poskytne alternativní adresy. |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Databox](resource-provider-operations.md#microsoftdatabox)/*/Read |  |
+> | [Microsoft. Databox](resource-provider-operations.md#microsoftdatabox)/Jobs/listsecrets/Action |  |
+> | [Microsoft. Databox](resource-provider-operations.md#microsoftdatabox)/Jobs/listcredentials/Action | Zobrazí nešifrované přihlašovací údaje související s objednávkou. |
+> | [Microsoft. Databox](resource-provider-operations.md#microsoftdatabox)/Locations/availableSkus/Action | Tato metoda vrátí seznam dostupných skladových položek. |
+> | [Microsoft. Databox](resource-provider-operations.md#microsoftdatabox)/Locations/validateInputs/Action | Tato metoda provádí všechny typy ověření. |
+> | [Microsoft. Databox](resource-provider-operations.md#microsoftdatabox)/Locations/regionConfiguration/Action | Tato metoda vrátí konfigurace pro oblast. |
+> | [Microsoft. Databox](resource-provider-operations.md#microsoftdatabox)/Locations/validateAddress/Action | Ověří dodací adresu a v případě potřeby poskytne alternativní adresy. |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -1833,35 +1893,35 @@ Umožňuje správu Data Box služby s výjimkou vytváření pořadí nebo úpra
 
 ### <a name="data-lake-analytics-developer"></a>Vývojář Data Lake Analytics
 
-Umožňuje odesílat, monitorovat a spravovat vlastní úlohy, ale neumožňuje vytvářet ani odstraňovat Data Lake Analytics účty.
+Umožňuje odesílat, monitorovat a spravovat vlastní úlohy, ale neumožňuje vytvářet ani odstraňovat Data Lake Analytics účty. [Další informace](../data-lake-analytics/data-lake-analytics-manage-use-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
 > | Microsoft. BigAnalytics/účty/* |  |
-> | Microsoft. DataLakeAnalytics/účty/* |  |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | Microsoft. BigAnalytics/Accounts/DELETE |  |
 > | Microsoft. BigAnalytics/Accounts/TakeOwnership/Action |  |
 > | Microsoft. BigAnalytics/Accounts/Write |  |
-> | Microsoft. DataLakeAnalytics/Accounts/DELETE | Odstraňte účet DataLakeAnalytics. |
-> | Microsoft. DataLakeAnalytics/Accounts/TakeOwnership/Action | Udělte oprávnění ke zrušení úloh odeslaných jinými uživateli. |
-> | Microsoft. DataLakeAnalytics/Accounts/Write | Vytvořte nebo aktualizujte účet DataLakeAnalytics. |
-> | Microsoft. DataLakeAnalytics/Accounts/dataLakeStoreAccounts/Write | Vytvoří nebo aktualizuje propojený účet DataLakeStore účtu DataLakeAnalytics. |
-> | Microsoft. DataLakeAnalytics/Accounts/dataLakeStoreAccounts/DELETE | Odpojte účet DataLakeStore z účtu DataLakeAnalytics. |
-> | Microsoft. DataLakeAnalytics/Accounts/storageAccounts/Write | Vytvoří nebo aktualizuje propojený účet úložiště účtu DataLakeAnalytics. |
-> | Microsoft. DataLakeAnalytics/Accounts/storageAccounts/DELETE | Odpojte účet úložiště od účtu DataLakeAnalytics. |
-> | Microsoft. DataLakeAnalytics/Accounts/firewallRules/Write | Vytvořte nebo aktualizujte pravidlo brány firewall. |
-> | Microsoft. DataLakeAnalytics/Accounts/firewallRules/DELETE | Odstraní pravidlo brány firewall. |
-> | Microsoft. DataLakeAnalytics/Accounts/computePolicies/Write | Vytvořte nebo aktualizujte výpočetní zásadu. |
-> | Microsoft. DataLakeAnalytics/Accounts/computePolicies/DELETE | Odstraňte výpočetní zásadu. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/DELETE | Odstraňte účet DataLakeAnalytics. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/TakeOwnership/Action | Udělte oprávnění ke zrušení úloh odeslaných jinými uživateli. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/Write | Vytvořte nebo aktualizujte účet DataLakeAnalytics. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/dataLakeStoreAccounts/Write | Vytvoří nebo aktualizuje propojený účet DataLakeStore účtu DataLakeAnalytics. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/dataLakeStoreAccounts/DELETE | Odpojte účet DataLakeStore z účtu DataLakeAnalytics. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/storageAccounts/Write | Vytvoří nebo aktualizuje propojený účet úložiště účtu DataLakeAnalytics. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/storageAccounts/DELETE | Odpojte účet úložiště od účtu DataLakeAnalytics. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/firewallRules/Write | Vytvořte nebo aktualizujte pravidlo brány firewall. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/firewallRules/DELETE | Odstraní pravidlo brány firewall. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/computePolicies/Write | Vytvořte nebo aktualizujte výpočetní zásadu. |
+> | [Microsoft. DataLakeAnalytics](resource-provider-operations.md#microsoftdatalakeanalytics)/Accounts/computePolicies/DELETE | Odstraňte výpočetní zásadu. |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -1921,9 +1981,9 @@ Umožňuje zobrazit vše, ale neumožní vám odstranit ani vytvořit účet úl
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Storage/storageAccounts/klíče listkey/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
-> | Microsoft. Storage/storageAccounts/ListAccountSas/Action | Vrátí token SAS účtu pro zadaný účet úložiště. |
-> | Microsoft. Storage/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/ListAccountSas/Action | Vrátí token SAS účtu pro zadaný účet úložiště. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -1959,21 +2019,21 @@ Umožňuje zobrazit vše, ale neumožní vám odstranit ani vytvořit účet úl
 
 ### <a name="storage-account-contributor"></a>Přispěvatel účtů úložiště
 
-Umožňuje správu účtů úložiště. Poskytuje přístup k klíči účtu, který se dá použít pro přístup k datům přes autorizaci pomocí sdíleného klíče.
+Umožňuje správu účtů úložiště. Poskytuje přístup k klíči účtu, který se dá použít pro přístup k datům přes autorizaci pomocí sdíleného klíče. [Další informace](../storage/common/storage-auth-aad.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Insights/diagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
-> | Microsoft. Network/virtualNetworks/podsítí/joinViaServiceEndpoint/Action | Propojuje prostředek, jako je například účet úložiště nebo databáze SQL, do podsítě. Nelze upozorňovat. |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Storage/storageAccounts/* | Vytvoření a správa účtů úložiště |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/Action | Propojuje prostředek, jako je například účet úložiště nebo databáze SQL, do podsítě. Nelze upozorňovat. |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/* | Vytvoření a správa účtů úložiště |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -2015,14 +2075,14 @@ Umožňuje správu účtů úložiště. Poskytuje přístup k klíči účtu, k
 
 ### <a name="storage-account-key-operator-service-role"></a>Role služby operátora klíče účtu úložiště
 
-Povoluje výpis a opětovné generování přístupových klíčů účtu úložiště.
+Povoluje výpis a opětovné generování přístupových klíčů účtu úložiště. [Další informace](../storage/common/storage-account-keys-manage.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Storage/storageAccounts/klíče listkey/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
-> | Microsoft. Storage/storageAccounts/RegenerateKey/Action | Znovu vygeneruje přístupové klíče pro zadaný účet úložiště. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/RegenerateKey/Action | Znovu vygeneruje přístupové klíče pro zadaný účet úložiště. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -2057,23 +2117,23 @@ Povoluje výpis a opětovné generování přístupových klíčů účtu úlož
 
 ### <a name="storage-blob-data-contributor"></a>Přispěvatel dat objektu BLOB služby Storage
 
-Čtení, zápis a odstraňování kontejnerů Azure Storage a objektů BLOB. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Čtení, zápis a odstraňování kontejnerů Azure Storage a objektů BLOB. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Další informace](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/DELETE | Odstraní kontejner. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/Read | Vrátí kontejner nebo seznam kontejnerů. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/Write | Úprava metadat nebo vlastností kontejneru. |
-> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Vrátí klíč delegování uživatele pro Blob service. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/DELETE | Odstraní kontejner. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/Read | Vrátí kontejner nebo seznam kontejnerů. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/Write | Úprava metadat nebo vlastností kontejneru. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/Action | Vrátí klíč delegování uživatele pro Blob service. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/DELETE | Odstraní objekt BLOB. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Move/Action | Přesune objekt BLOB z jedné cesty na jiný. |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Write | Zápis do objektu BLOB. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/DELETE | Odstraní objekt BLOB. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Move/Action | Přesune objekt BLOB z jedné cesty na jiný. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Write | Zápis do objektu BLOB. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2111,18 +2171,18 @@ Povoluje výpis a opětovné generování přístupových klíčů účtu úlož
 
 ### <a name="storage-blob-data-owner"></a>Vlastník dat objektu BLOB služby Storage
 
-Poskytuje úplný přístup k Azure Storage kontejnerů a dat objektů blob, včetně přiřazování řízení přístupu k POSIX. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Poskytuje úplný přístup k Azure Storage kontejnerů a dat objektů blob, včetně přiřazování řízení přístupu k POSIX. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Další informace](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/* | Úplná oprávnění pro kontejnery |
-> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Vrátí klíč delegování uživatele pro Blob service. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/* | Úplná oprávnění pro kontejnery |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/Action | Vrátí klíč delegování uživatele pro Blob service. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/* | Úplná oprávnění pro objekty blob |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/* | Úplná oprávnění pro objekty blob |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2155,18 +2215,18 @@ Poskytuje úplný přístup k Azure Storage kontejnerů a dat objektů blob, vč
 
 ### <a name="storage-blob-data-reader"></a>Čtečka dat objektů BLOB úložiště
 
-Čtení a výpis Azure Storage kontejnerů a objektů BLOB. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Čtení a výpis Azure Storage kontejnerů a objektů BLOB. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Další informace](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/Read | Vrátí kontejner nebo seznam kontejnerů. |
-> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Vrátí klíč delegování uživatele pro Blob service. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/Read | Vrátí kontejner nebo seznam kontejnerů. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/Action | Vrátí klíč delegování uživatele pro Blob service. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/Containers/BLOBs/Read | Vrátí objekt BLOB nebo seznam objektů BLOB. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2199,13 +2259,13 @@ Poskytuje úplný přístup k Azure Storage kontejnerů a dat objektů blob, vč
 
 ### <a name="storage-blob-delegator"></a>Delegování objektu BLOB úložiště
 
-Získejte klíč pro delegování uživatelů, který se pak dá použít k vytvoření sdíleného přístupového podpisu pro kontejner nebo objekt blob, který je podepsaný pomocí přihlašovacích údajů Azure AD. Další informace najdete v tématu [Vytvoření SAS pro delegování uživatelů](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas).
+Získejte klíč pro delegování uživatelů, který se pak dá použít k vytvoření sdíleného přístupového podpisu pro kontejner nebo objekt blob, který je podepsaný pomocí přihlašovacích údajů Azure AD. Další informace najdete v tématu [Vytvoření SAS pro delegování uživatelů](https://docs.microsoft.com/rest/api/storageservices/create-user-delegation-sas). [Další informace](https://docs.microsoft.com/rest/api/storageservices/get-user-delegation-key)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Storage/storageAccounts/blobServices/generateUserDelegationKey/Action | Vrátí klíč delegování uživatele pro Blob service. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/blobServices/generateUserDelegationKey/Action | Vrátí klíč delegování uživatele pro Blob service. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -2239,7 +2299,7 @@ Získejte klíč pro delegování uživatelů, který se pak dá použít k vytv
 
 ### <a name="storage-file-data-smb-share-contributor"></a>Přispěvatel sdílené složky SMB pro data souborů úložiště
 
-Umožňuje čtení, zápis a odstraňování přístupu k souborům nebo adresářům ve sdílených složkách Azure. Tato role nemá na souborových serverech se systémem Windows žádný předdefinovaný ekvivalent.
+Umožňuje čtení, zápis a odstraňování přístupu k souborům nebo adresářům ve sdílených složkách Azure. Tato role nemá na souborových serverech se systémem Windows žádný předdefinovaný ekvivalent. [Další informace](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2249,9 +2309,9 @@ Umožňuje čtení, zápis a odstraňování přístupu k souborům nebo adresá
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/služby souborů/sdílené složky/soubory/čtení | Vrátí soubor nebo složku nebo seznam souborů nebo složek. |
-> | Microsoft. Storage/storageAccounts/Souborová služba/sdílené složky/soubory/zápis | Vrátí výsledek zápisu souboru nebo vytvoření složky. |
-> | Microsoft. Storage/storageAccounts/služby souborů/sdílené složky/soubory/odstranění | Vrátí výsledek odstranění souboru nebo složky. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/Files/Read | Vrátí soubor nebo složku nebo seznam souborů nebo složek. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/Files/Write | Vrátí výsledek zápisu souboru nebo vytvoření složky. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/Files/DELETE | Vrátí výsledek odstranění souboru nebo složky. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2283,7 +2343,7 @@ Umožňuje čtení, zápis a odstraňování přístupu k souborům nebo adresá
 
 ### <a name="storage-file-data-smb-share-elevated-contributor"></a>Data souboru úložiště – Přispěvatel sdílené složky SMB se zvýšenými oprávněními
 
-Umožňuje číst, zapisovat, odstraňovat a upravovat seznamy ACL pro soubory nebo adresáře ve sdílených složkách Azure. Tato role je ekvivalentem seznamu ACL sdílené složky pro změnu na souborových serverech systému Windows.
+Umožňuje číst, zapisovat, odstraňovat a upravovat seznamy ACL pro soubory nebo adresáře ve sdílených složkách Azure. Tato role je ekvivalentem seznamu ACL sdílené složky pro změnu na souborových serverech systému Windows. [Další informace](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2293,10 +2353,10 @@ Umožňuje číst, zapisovat, odstraňovat a upravovat seznamy ACL pro soubory n
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/služby souborů/sdílené složky/soubory/čtení | Vrátí soubor nebo složku nebo seznam souborů nebo složek. |
-> | Microsoft. Storage/storageAccounts/Souborová služba/sdílené složky/soubory/zápis | Vrátí výsledek zápisu souboru nebo vytvoření složky. |
-> | Microsoft. Storage/storageAccounts/služby souborů/sdílené složky/soubory/odstranění | Vrátí výsledek odstranění souboru nebo složky. |
-> | Microsoft. Storage/storageAccounts/služby souborů/sdílené složky/soubory/modifypermissions/Action | Vrátí výsledek úpravy oprávnění pro soubor nebo složku. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/Files/Read | Vrátí soubor nebo složku nebo seznam souborů nebo složek. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/Files/Write | Vrátí výsledek zápisu souboru nebo vytvoření složky. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/Files/DELETE | Vrátí výsledek odstranění souboru nebo složky. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/Files/modifypermissions/Action | Vrátí výsledek úpravy oprávnění pro soubor nebo složku. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2329,7 +2389,7 @@ Umožňuje číst, zapisovat, odstraňovat a upravovat seznamy ACL pro soubory n
 
 ### <a name="storage-file-data-smb-share-reader"></a>Čtečka sdílené složky SMB pro data souborů úložiště
 
-Umožňuje přístup pro čtení souborů nebo adresářů ve sdílených složkách Azure. Tato role je ekvivalentem seznamu ACL pro sdílení souborů na souborových serverech systému Windows.
+Umožňuje přístup pro čtení souborů nebo adresářů ve sdílených složkách Azure. Tato role je ekvivalentem seznamu ACL pro sdílení souborů na souborových serverech systému Windows. [Další informace](../storage/files/storage-files-identity-auth-active-directory-enable.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2339,7 +2399,7 @@ Umožňuje přístup pro čtení souborů nebo adresářů ve sdílených složk
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/služby souborů/sdílené složky/soubory/čtení | Vrátí soubor nebo složku nebo seznam souborů nebo složek. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/fileServices/fileshares/Files/Read | Vrátí soubor nebo složku nebo seznam souborů nebo složek. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2369,21 +2429,21 @@ Umožňuje přístup pro čtení souborů nebo adresářů ve sdílených složk
 
 ### <a name="storage-queue-data-contributor"></a>Přispěvatel dat fronty úložiště
 
-Čtení, zápis a odstraňování front Azure Storage a zpráv fronty. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Čtení, zápis a odstraňování front Azure Storage a zpráv fronty. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Další informace](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/Queues/DELETE | Odstraní frontu. |
-> | Microsoft. Storage/storageAccounts/queueServices/Queues/Read | Vrátí frontu nebo seznam front. |
-> | Microsoft. Storage/storageAccounts/queueServices/Queues/Write | Úprava metadat nebo vlastností fronty |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/DELETE | Odstraní frontu. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Read | Vrátí frontu nebo seznam front. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Write | Úprava metadat nebo vlastností fronty |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/Queues/Messages/DELETE | Odstraní jednu nebo více zpráv z fronty. |
-> | Microsoft. Storage/storageAccounts/queueServices/Queues/Messages/Read | Prohlížet nebo načíst jednu nebo více zpráv z fronty. |
-> | Microsoft. Storage/storageAccounts/queueServices/Queues/Messages/Write | Přidá zprávu do fronty. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Messages/DELETE | Odstraní jednu nebo více zpráv z fronty. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Messages/Read | Prohlížet nebo načíst jednu nebo více zpráv z fronty. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Messages/Write | Přidá zprávu do fronty. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2419,7 +2479,7 @@ Umožňuje přístup pro čtení souborů nebo adresářů ve sdílených složk
 
 ### <a name="storage-queue-data-message-processor"></a>Procesor zpráv s daty ve frontě úložiště
 
-Prohlížet, načítat a odstraňovat zprávy z Azure Storage fronty. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Prohlížet, načítat a odstraňovat zprávy z Azure Storage fronty. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Další informace](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2429,8 +2489,8 @@ Prohlížet, načítat a odstraňovat zprávy z Azure Storage fronty. Chcete-li 
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/Queues/Messages/Read | Prohlížet zprávu |
-> | Microsoft. Storage/storageAccounts/queueServices/Queues/Messages/Process/Action | Načte a odstraní zprávu. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Messages/Read | Prohlížet zprávu |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Messages/Process/Action | Načte a odstraní zprávu. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2461,7 +2521,7 @@ Prohlížet, načítat a odstraňovat zprávy z Azure Storage fronty. Chcete-li 
 
 ### <a name="storage-queue-data-message-sender"></a>Odesílatel zprávy s daty ve frontě úložiště
 
-Přidejte zprávy do fronty Azure Storage. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Přidejte zprávy do fronty Azure Storage. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Další informace](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -2471,7 +2531,7 @@ Přidejte zprávy do fronty Azure Storage. Chcete-li zjistit, které akce jsou p
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/Queues/Messages/Add/Action | Přidá zprávu do fronty. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Messages/Add/Action | Přidá zprávu do fronty. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2501,17 +2561,17 @@ Přidejte zprávy do fronty Azure Storage. Chcete-li zjistit, které akce jsou p
 
 ### <a name="storage-queue-data-reader"></a>Čtečka dat fronty úložiště
 
-Čtení a výpis Azure Storage front a zpráv fronty. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations).
+Čtení a výpis Azure Storage front a zpráv fronty. Chcete-li zjistit, které akce jsou pro danou datovou operaci požadovány, přečtěte si téma [oprávnění pro volání operací s daty objektů BLOB a front](https://docs.microsoft.com/rest/api/storageservices/authenticate-with-azure-active-directory#permissions-for-calling-blob-and-queue-data-operations). [Další informace](../storage/common/storage-auth-aad-rbac-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/Queues/Read | Vrátí frontu nebo seznam front. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Read | Vrátí frontu nebo seznam front. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Storage/storageAccounts/queueServices/Queues/Messages/Read | Prohlížet nebo načíst jednu nebo více zpráv z fronty. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/queueServices/Queues/Messages/Read | Prohlížet nebo načíst jednu nebo více zpráv z fronty. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2556,7 +2616,7 @@ Udělí přístup ke čtení dat souvisejících s mapou z účtu Azure Maps.
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Maps/Accounts/*/Read |  |
+> | [Microsoft. Maps](resource-provider-operations.md#microsoftmaps)/Accounts/*/Read |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -2586,19 +2646,19 @@ Udělí přístup ke čtení dat souvisejících s mapou z účtu Azure Maps.
 
 ### <a name="search-service-contributor"></a>Přispěvatel Search Service
 
-Umožňuje spravovat služby vyhledávání, ale ne přístup k nim.
+Umožňuje spravovat služby vyhledávání, ale ne přístup k nim. [Další informace](../search/search-security-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Search/searchServices/* | Vytváření a správa vyhledávacích služeb |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Search](resource-provider-operations.md#microsoftsearch)/searchServices/* | Vytváření a správa vyhledávacích služeb |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -2644,14 +2704,14 @@ Umožňuje spravovat webové plány pro weby, ale ne přístup k nim.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Web/serverových farem/* | Vytváření a Správa serverových farem |
-> | Microsoft. Web/hostingEnvironments/JOIN/Action | Připojí se k App Service Environment. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/* | Vytváření a Správa serverových farem |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/hostingEnvironments/JOIN/Action | Připojí se k App Service Environment. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -2698,18 +2758,18 @@ Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Insights/Components/* | Vytváření a Správa komponent Insights |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Web/certifikáty/* | Vytváření a Správa certifikátů webu |
-> | Microsoft. Web/listSitesAssignedToHostName/Read | Získá názvy webů přiřazených k názvu hostitele. |
-> | Microsoft. Web/serverových farem/JOIN/Action |  |
-> | Microsoft. Web/serverových farem/Read | Získat vlastnosti v plánu App Service |
-> | Microsoft. Web/weby/* | Vytváření a Správa webů (vytváření webů vyžaduje taky oprávnění k zápisu do přidruženého plánu App Service) |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Vytváření a Správa komponent Insights |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Certificates/* | Vytváření a Správa certifikátů webu |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/listSitesAssignedToHostName/Read | Získá názvy webů přiřazených k názvu hostitele. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/JOIN/Action |  |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/Read | Získat vlastnosti v plánu App Service |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Sites/* | Vytváření a Správa webů (vytváření webů vyžaduje taky oprávnění k zápisu do přidruženého plánu App Service) |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -2757,13 +2817,13 @@ Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.
 
 ### <a name="acrdelete"></a>AcrDelete
 
-Odstranit ACR
+ACR odstranit další [informace](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ContainerRegistry/Registry/artefakty/odstranit | Odstraňte artefakt v registru kontejnerů. |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/artifacts/DELETE | Odstraňte artefakt v registru kontejnerů. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -2797,13 +2857,13 @@ Odstranit ACR
 
 ### <a name="acrimagesigner"></a>AcrImageSigner
 
-podpis ACR image
+ACR image Signer [Další informace](../container-registry/container-registry-roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ContainerRegistry/Registry/Sign/Write | Metadata vztahu důvěryhodnosti nabízených nebo vyžádaného obsahu pro registr kontejneru. |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/Sign/Write | Metadata vztahu důvěryhodnosti nabízených nebo vyžádaného obsahu pro registr kontejneru. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -2837,13 +2897,13 @@ podpis ACR image
 
 ### <a name="acrpull"></a>AcrPull
 
-ACR pull
+[Další informace o](../container-registry/container-registry-roles.md) ACR pull
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ContainerRegistry/registrys/Pull/Read | Vyžádání nebo získání imagí z registru kontejneru. |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/Pull/Read | Vyžádání nebo získání imagí z registru kontejneru. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -2877,14 +2937,14 @@ ACR pull
 
 ### <a name="acrpush"></a>AcrPush
 
-nabízení ACR
+[Další informace o](../container-registry/container-registry-roles.md) ACR
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ContainerRegistry/registrys/Pull/Read | Vyžádání nebo získání imagí z registru kontejneru. |
-> | Microsoft. ContainerRegistry/Registry/push/Write | Vložení nebo zápis imagí do registru kontejneru. |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/Pull/Read | Vyžádání nebo získání imagí z registru kontejneru. |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/push/Write | Vložení nebo zápis imagí do registru kontejneru. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -2925,7 +2985,7 @@ nabízení ACR
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ContainerRegistry/registrys/karanténa/čtení | Vyžádání nebo získání imagí v karanténě z registru kontejnerů |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/Quarantine/Read | Vyžádání nebo získání imagí v karanténě z registru kontejnerů |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -2965,8 +3025,8 @@ zapisovač dat karantény ACR
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ContainerRegistry/registrys/karanténa/čtení | Vyžádání nebo získání imagí v karanténě z registru kontejnerů |
-> | Microsoft. ContainerRegistry/registrys/Quarantine/Write | Zápis/Změna stavu karantény imagí v karanténě |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/Quarantine/Read | Vyžádání nebo získání imagí v karanténě z registru kontejnerů |
+> | [Microsoft. ContainerRegistry](resource-provider-operations.md#microsoftcontainerregistry)/registries/Quarantine/Write | Zápis/Změna stavu karantény imagí v karanténě |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3001,14 +3061,14 @@ zapisovač dat karantény ACR
 
 ### <a name="azure-kubernetes-service-cluster-admin-role"></a>Role Správce clusteru služby Azure Kubernetes
 
-Vypíše akci přihlašovacích údajů správce clusteru.
+Vypíše akci přihlašovacích údajů správce clusteru. [Další informace](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ContainerService/managedClusters/listClusterAdminCredential/Action | Výpis přihlašovacích údajů clusterAdmin spravovaného clusteru |
-> | Microsoft. ContainerService/managedClusters/accessProfiles/listCredential/Action | Získání profilu přístupu spravovaného clusteru podle názvu role pomocí přihlašovacích údajů pro seznam |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterAdminCredential/Action | Výpis přihlašovacích údajů clusterAdmin spravovaného clusteru |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/accessProfiles/listCredential/Action | Získání profilu přístupu spravovaného clusteru podle názvu role pomocí přihlašovacích údajů pro seznam |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3043,13 +3103,13 @@ Vypíše akci přihlašovacích údajů správce clusteru.
 
 ### <a name="azure-kubernetes-service-cluster-user-role"></a>Role uživatele clusteru služby Azure Kubernetes
 
-Vypíše akci přihlašovacích údajů uživatele clusteru.
+Vypíše akci přihlašovacích údajů uživatele clusteru. [Další informace](../aks/control-kubeconfig-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ContainerService/managedClusters/listClusterUserCredential/Action | Výpis přihlašovacích údajů clusterUser spravovaného clusteru |
+> | [Microsoft. ContainerService](resource-provider-operations.md#microsoftcontainerservice)/managedClusters/listClusterUserCredential/Action | Výpis přihlašovacích údajů clusterUser spravovaného clusteru |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3086,19 +3146,19 @@ Vypíše akci přihlašovacích údajů uživatele clusteru.
 
 ### <a name="cosmos-db-account-reader-role"></a>Role čtečky účtu Cosmos DB
 
-Může číst data Azure Cosmos DB účtu. Správa účtů Azure Cosmos DB najdete v tématu [Přispěvatel účtu DocumentDB](#documentdb-account-contributor) .
+Může číst data Azure Cosmos DB účtu. Správa účtů Azure Cosmos DB najdete v tématu [Přispěvatel účtu DocumentDB](#documentdb-account-contributor) . [Další informace](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. DocumentDB/*/Read | Čtení libovolné kolekce |
-> | Microsoft. DocumentDB/databaseAccounts/readonlykeys/Action | Přečte klíče databázového účtu jen pro čtení. |
-> | Microsoft. Insights/MetricDefinitions/Read | Čtení definic metriky |
-> | Microsoft. Insights/metriky/číst | Čtení metrik |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/*/Read | Čtení libovolné kolekce |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/readonlykeys/Action | Přečte klíče databázového účtu jen pro čtení. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/Read | Čtení definic metriky |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Čtení metrik |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3138,25 +3198,25 @@ Může číst data Azure Cosmos DB účtu. Správa účtů Azure Cosmos DB najde
 
 ### <a name="cosmos-db-operator"></a>Operátor Cosmos DB
 
-Umožňuje správu účtů Azure Cosmos DB, ale ne přístup k datům v nich. Zabraňuje přístup k klíčům účtu a připojovacím řetězcům.
+Umožňuje správu účtů Azure Cosmos DB, ale ne přístup k datům v nich. Zabraňuje přístup k klíčům účtu a připojovacím řetězcům. [Další informace](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. DocumentDb/databaseAccounts/* |  |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Network/virtualNetworks/podsítí/joinViaServiceEndpoint/Action | Propojuje prostředek, jako je například účet úložiště nebo databáze SQL, do podsítě. Nelze upozorňovat. |
+> | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/Action | Propojuje prostředek, jako je například účet úložiště nebo databáze SQL, do podsítě. Nelze upozorňovat. |
 > | **NotActions** |  |
-> | Microsoft. DocumentDB/databaseAccounts/readonlyKeys/* |  |
-> | Microsoft. DocumentDB/databaseAccounts/regenerateKey/* |  |
-> | Microsoft. DocumentDB/databaseAccounts/klíče listkey/* |  |
-> | Microsoft. DocumentDB/databaseAccounts/listConnectionStrings/* |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/readonlyKeys/* |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/regenerateKey/* |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/listKeys/* |  |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/listConnectionStrings/* |  |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -3200,14 +3260,14 @@ Umožňuje správu účtů Azure Cosmos DB, ale ne přístup k datům v nich. Za
 
 ### <a name="cosmosbackupoperator"></a>CosmosBackupOperator
 
-Může odeslat žádost o obnovení pro Cosmos DB databázi nebo kontejner pro účet.
+Může odeslat žádost o obnovení pro databázi Cosmos DB nebo kontejner pro účet. další [informace](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. DocumentDB/databaseAccounts/Backup/Action | Odeslat žádost o konfiguraci zálohování |
-> | Microsoft. DocumentDB/databaseAccounts/Restore/Action | Odeslat žádost o obnovení |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/Backup/Action | Odeslat žádost o konfiguraci zálohování |
+> | [Microsoft.DocumentDB](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/Restore/Action | Odeslat žádost o obnovení |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3242,20 +3302,20 @@ Může odeslat žádost o obnovení pro Cosmos DB databázi nebo kontejner pro �
 
 ### <a name="documentdb-account-contributor"></a>Přispěvatel účtu DocumentDB
 
-Může spravovat účty Azure Cosmos DB. Azure Cosmos DB se dřív jmenovala jako DocumentDB.
+Může spravovat účty Azure Cosmos DB. Azure Cosmos DB se dřív jmenovala jako DocumentDB. [Další informace](../cosmos-db/role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. DocumentDb/databaseAccounts/* | Vytváření a Správa účtů Azure Cosmos DB |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Network/virtualNetworks/podsítí/joinViaServiceEndpoint/Action | Propojuje prostředek, jako je například účet úložiště nebo databáze SQL, do podsítě. Nelze upozorňovat. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft.DocumentDb](resource-provider-operations.md#microsoftdocumentdb)/databaseAccounts/* | Vytváření a Správa účtů Azure Cosmos DB |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/Action | Propojuje prostředek, jako je například účet úložiště nebo databáze SQL, do podsítě. Nelze upozorňovat. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3302,13 +3362,13 @@ Umožňuje správu mezipamětí Redis, ale ne přístup k nim.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. cache/Redis/* | Vytváření a Správa mezipamětí Redis |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. cache](resource-provider-operations.md#microsoftcache)/Redis/* | Vytváření a Správa mezipamětí Redis |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3348,48 +3408,48 @@ Umožňuje správu mezipamětí Redis, ale ne přístup k nim.
 
 ### <a name="sql-db-contributor"></a>Přispěvatel databáze SQL
 
-Umožňuje spravovat databáze SQL, ale ne přístup k nim. Nemůžete také spravovat zásady související se zabezpečením nebo jejich nadřazené servery SQL.
+Umožňuje spravovat databáze SQL, ale ne přístup k nim. Nemůžete také spravovat zásady související se zabezpečením nebo jejich nadřazené servery SQL. [Další informace](../data-share/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. SQL/Locations/*/Read |  |
-> | Microsoft. SQL/servery/databáze/* | Vytvoření a správa databází SQL |
-> | Microsoft. SQL/servery/číst | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Insights/metriky/číst | Čtení metrik |
-> | Microsoft. Insights/metricDefinitions/Read | Čtení definic metriky |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Locations/*/Read |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/* | Vytvoření a správa databází SQL |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Read | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Čtení metrik |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/Read | Čtení definic metriky |
 > | **NotActions** |  |
-> | Microsoft. SQL/managedInstances/databáze/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/schémata/tabulky/sloupce/sensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/securityAlertPolicies/* |  |
-> | Microsoft. SQL/managedInstances/databáze/sensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/vulnerabilityAssessments/* |  |
-> | Microsoft. SQL/managedInstances/securityAlertPolicies/* |  |
-> | Microsoft. SQL/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft. SQL/servery/databáze/auditingPolicies/* | Upravit zásady auditu |
-> | Microsoft. SQL/servery/databáze/auditingSettings/* | Upravit nastavení auditu |
-> | Microsoft. SQL/servery/databáze/auditRecords/Read | Načtení záznamů auditu objektu BLOB databáze |
-> | Microsoft. SQL/servery/databáze/connectionPolicies/* | Upravit zásady připojení |
-> | Microsoft. SQL/servery/databáze/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/dataMaskingPolicies/* | Upravit zásady maskování dat |
-> | Microsoft. SQL/servery/databáze/extendedAuditingSettings/* |  |
-> | Microsoft. SQL/servery/databáze/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/schémata/tabulky/sloupce/sensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/securityAlertPolicies/* | Upravit zásady výstrah zabezpečení |
-> | Microsoft. SQL/servery/databáze/securityMetrics/* | Upravit metriky zabezpečení |
-> | Microsoft. SQL/servery/databáze/sensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/vulnerabilityAssessments/* |  |
-> | Microsoft. SQL/servery/databáze/vulnerabilityAssessmentScans/* |  |
-> | Microsoft. SQL/servery/databáze/vulnerabilityAssessmentSettings/* |  |
-> | Microsoft. SQL/servery/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/securityAlertPolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/securityAlertPolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingPolicies/* | Upravit zásady auditu |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingSettings/* | Upravit nastavení auditu |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditRecords/Read | Načtení záznamů auditu objektu BLOB databáze |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/connectionPolicies/* | Upravit zásady připojení |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/dataMaskingPolicies/* | Upravit zásady maskování dat |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/extendedAuditingSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/securityAlertPolicies/* | Upravit zásady výstrah zabezpečení |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/securityMetrics/* | Upravit metriky zabezpečení |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessmentScans/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/vulnerabilityAssessments/* |  |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -3462,20 +3522,20 @@ Umožňuje spravovat spravované instance SQL a požadovanou konfiguraci sítě,
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Network/networkSecurityGroups/* |  |
-> | Microsoft. Network/routeTables/* |  |
-> | Microsoft. SQL/Locations/*/Read |  |
-> | Microsoft. SQL/managedInstances/* |  |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Network/virtualNetworks/podsítí/* |  |
-> | Microsoft. Network/virtualNetworks/* |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Insights/metriky/číst | Čtení metrik |
-> | Microsoft. Insights/metricDefinitions/Read | Čtení definic metriky |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkSecurityGroups/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/routeTables/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Locations/*/Read |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/* |  |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/* |  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Čtení metrik |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/Read | Čtení definic metriky |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3522,55 +3582,55 @@ Umožňuje spravovat spravované instance SQL a požadovanou konfiguraci sítě,
 
 ### <a name="sql-security-manager"></a>Správce zabezpečení SQL
 
-Umožňuje spravovat zásady týkající se zabezpečení serverů a databází SQL, ale ne přístup k nim.
+Umožňuje spravovat zásady týkající se zabezpečení serverů a databází SQL, ale ne přístup k nim. [Další informace](../sql-database/sql-database-advanced-data-security.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Network/virtualNetworks/podsítí/joinViaServiceEndpoint/Action | Propojuje prostředek, jako je například účet úložiště nebo databáze SQL, do podsítě. Nelze upozorňovat. |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. SQL/managedInstances/databáze/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/schémata/tabulky/sloupce/sensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/securityAlertPolicies/* |  |
-> | Microsoft. SQL/managedInstances/databáze/sensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/vulnerabilityAssessments/* |  |
-> | Microsoft. SQL/managedInstances/securityAlertPolicies/* |  |
-> | Microsoft. SQL/managedInstances/databáze/transparentDataEncryption/* |  |
-> | Microsoft. SQL/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft. SQL/servery/auditingPolicies/* | Vytváření a Správa zásad auditování SQL serveru |
-> | Microsoft. SQL/servery/auditingSettings/* | Vytvoření a Správa nastavení auditování SQL serveru |
-> | Microsoft. SQL/servery/extendedAuditingSettings/Read | Načíst podrobnosti o zásadách auditování rozšířených objektů BLOB serveru nakonfigurovaných na daném serveru |
-> | Microsoft. SQL/servery/databáze/auditingPolicies/* | Vytvoření a Správa zásad auditování databáze systému SQL Server |
-> | Microsoft. SQL/servery/databáze/auditingSettings/* | Vytvoření a Správa nastavení auditování databáze systému SQL Server |
-> | Microsoft. SQL/servery/databáze/auditRecords/Read | Načtení záznamů auditu objektu BLOB databáze |
-> | Microsoft. SQL/servery/databáze/connectionPolicies/* | Vytváření a Správa zásad připojení k databázi SQL serveru |
-> | Microsoft. SQL/servery/databáze/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/dataMaskingPolicies/* | Vytváření a Správa zásad pro maskování dat databáze SQL serveru |
-> | Microsoft. SQL/servery/databáze/extendedAuditingSettings/Read | Načte podrobnosti o rozšířených zásadách auditování objektů BLOB konfigurovaných pro danou databázi. |
-> | Microsoft. SQL/servery/databáze/číst | Vrátí seznam databází nebo získá vlastnosti zadané databáze. |
-> | Microsoft. SQL/servery/databáze/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/schémata/čtení | Získá schéma databáze. |
-> | Microsoft. SQL/servery/databáze/schémata/tabulky/sloupce/čtení | Získá sloupec databáze. |
-> | Microsoft. SQL/servery/databáze/schémata/tabulky/sloupce/sensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/schémata/tabulky/čtení | Získat databázovou tabulku. |
-> | Microsoft. SQL/servery/databáze/securityAlertPolicies/* | Vytváření a Správa zásad výstrah zabezpečení databáze serveru SQL Server |
-> | Microsoft. SQL/servery/databáze/securityMetrics/* | Vytváření a Správa metrik zabezpečení databáze systému SQL Server |
-> | Microsoft. SQL/servery/databáze/sensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/transparentDataEncryption/* |  |
-> | Microsoft. SQL/servery/databáze/vulnerabilityAssessments/* |  |
-> | Microsoft. SQL/servery/databáze/vulnerabilityAssessmentScans/* |  |
-> | Microsoft. SQL/servery/databáze/vulnerabilityAssessmentSettings/* |  |
-> | Microsoft. SQL/servery/firewallRules/* |  |
-> | Microsoft. SQL/servery/číst | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
-> | Microsoft. SQL/servery/securityAlertPolicies/* | Vytváření a Správa zásad výstrah zabezpečení systému SQL Server |
-> | Microsoft. SQL/servery/vulnerabilityAssessments/* |  |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/joinViaServiceEndpoint/Action | Propojuje prostředek, jako je například účet úložiště nebo databáze SQL, do podsítě. Nelze upozorňovat. |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/securityAlertPolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/securityAlertPolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/transparentDataEncryption/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingPolicies/* | Vytváření a Správa zásad auditování SQL serveru |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingSettings/* | Vytvoření a Správa nastavení auditování SQL serveru |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/extendedAuditingSettings/Read | Načíst podrobnosti o zásadách auditování rozšířených objektů BLOB serveru nakonfigurovaných na daném serveru |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingPolicies/* | Vytvoření a Správa zásad auditování databáze systému SQL Server |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingSettings/* | Vytvoření a Správa nastavení auditování databáze systému SQL Server |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditRecords/Read | Načtení záznamů auditu objektu BLOB databáze |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/connectionPolicies/* | Vytváření a Správa zásad připojení k databázi SQL serveru |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/dataMaskingPolicies/* | Vytváření a Správa zásad pro maskování dat databáze SQL serveru |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/extendedAuditingSettings/Read | Načte podrobnosti o rozšířených zásadách auditování objektů BLOB konfigurovaných pro danou databázi. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/Read | Vrátí seznam databází nebo získá vlastnosti zadané databáze. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/schemas/Read | Získá schéma databáze. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/schemas/Tables/Columns/Read | Získá sloupec databáze. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/schemas/Tables/Read | Získat databázovou tabulku. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/securityAlertPolicies/* | Vytváření a Správa zásad výstrah zabezpečení databáze serveru SQL Server |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/securityMetrics/* | Vytváření a Správa metrik zabezpečení databáze systému SQL Server |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/transparentDataEncryption/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessmentScans/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/firewallRules/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/Read | Vrátí seznam serverů nebo získá vlastnosti pro zadaný server. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/securityAlertPolicies/* | Vytváření a Správa zásad výstrah zabezpečení systému SQL Server |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/vulnerabilityAssessments/* |  |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3646,51 +3706,51 @@ Umožňuje spravovat zásady týkající se zabezpečení serverů a databází 
 
 ### <a name="sql-server-contributor"></a>Přispěvatel SQL Server
 
-Umožňuje spravovat servery a databáze SQL, ale ne přístup k nim, a ne jejich zásady související se zabezpečením.
+Umožňuje spravovat servery a databáze SQL, ale ne přístup k nim, a ne jejich zásady související se zabezpečením. [Další informace](../sql-database/sql-database-aad-authentication-configure.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. SQL/Locations/*/Read |  |
-> | Microsoft. SQL/servery/* | Vytváření a Správa serverů SQL |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Insights/metriky/číst | Čtení metrik |
-> | Microsoft. Insights/metricDefinitions/Read | Čtení definic metriky |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Locations/*/Read |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/* | Vytváření a Správa serverů SQL |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Čtení metrik |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/Read | Čtení definic metriky |
 > | **NotActions** |  |
-> | Microsoft. SQL/managedInstances/databáze/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/schémata/tabulky/sloupce/sensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/securityAlertPolicies/* |  |
-> | Microsoft. SQL/managedInstances/databáze/sensitivityLabels/* |  |
-> | Microsoft. SQL/managedInstances/databáze/vulnerabilityAssessments/* |  |
-> | Microsoft. SQL/managedInstances/securityAlertPolicies/* |  |
-> | Microsoft. SQL/managedInstances/vulnerabilityAssessments/* |  |
-> | Microsoft. SQL/servery/auditingPolicies/* | Upravit zásady auditování SQL serveru |
-> | Microsoft. SQL/servery/auditingSettings/* | Upravit nastavení auditování SQL serveru |
-> | Microsoft. SQL/servery/databáze/auditingPolicies/* | Upravit zásady auditování databáze systému SQL Server |
-> | Microsoft. SQL/servery/databáze/auditingSettings/* | Upravit nastavení auditování databáze systému SQL Server |
-> | Microsoft. SQL/servery/databáze/auditRecords/Read | Načtení záznamů auditu objektu BLOB databáze |
-> | Microsoft. SQL/servery/databáze/connectionPolicies/* | Upravit zásady připojení databáze SQL serveru |
-> | Microsoft. SQL/servery/databáze/currentSensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/dataMaskingPolicies/* | Upravit zásady maskování dat databáze systému SQL Server |
-> | Microsoft. SQL/servery/databáze/extendedAuditingSettings/* |  |
-> | Microsoft. SQL/servery/databáze/recommendedSensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/schémata/tabulky/sloupce/sensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/securityAlertPolicies/* | Upravit zásady výstrah zabezpečení databáze systému SQL Server |
-> | Microsoft. SQL/servery/databáze/securityMetrics/* | Upravit metriky zabezpečení databáze systému SQL Server |
-> | Microsoft. SQL/servery/databáze/sensitivityLabels/* |  |
-> | Microsoft. SQL/servery/databáze/vulnerabilityAssessments/* |  |
-> | Microsoft. SQL/servery/databáze/vulnerabilityAssessmentScans/* |  |
-> | Microsoft. SQL/servery/databáze/vulnerabilityAssessmentSettings/* |  |
-> | Microsoft. SQL/servery/extendedAuditingSettings/* |  |
-> | Microsoft. SQL/servery/securityAlertPolicies/* | Upravit zásady výstrah zabezpečení systému SQL Server |
-> | Microsoft. SQL/servery/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/securityAlertPolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/securityAlertPolicies/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/managedInstances/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingPolicies/* | Upravit zásady auditování SQL serveru |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/auditingSettings/* | Upravit nastavení auditování SQL serveru |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingPolicies/* | Upravit zásady auditování databáze systému SQL Server |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditingSettings/* | Upravit nastavení auditování databáze systému SQL Server |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/auditRecords/Read | Načtení záznamů auditu objektu BLOB databáze |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/connectionPolicies/* | Upravit zásady připojení databáze SQL serveru |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/currentSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/dataMaskingPolicies/* | Upravit zásady maskování dat databáze systému SQL Server |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/extendedAuditingSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/recommendedSensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/schemas/Tables/Columns/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/securityAlertPolicies/* | Upravit zásady výstrah zabezpečení databáze systému SQL Server |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/securityMetrics/* | Upravit metriky zabezpečení databáze systému SQL Server |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/sensitivityLabels/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessments/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessmentScans/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/databases/vulnerabilityAssessmentSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/extendedAuditingSettings/* |  |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/securityAlertPolicies/* | Upravit zásady výstrah zabezpečení systému SQL Server |
+> | [Microsoft. SQL](resource-provider-operations.md#microsoftsql)/Servers/vulnerabilityAssessments/* |  |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -3763,17 +3823,17 @@ Umožňuje spravovat servery a databáze SQL, ale ne přístup k nim, a ne jejic
 
 ### <a name="azure-event-hubs-data-owner"></a>Vlastník dat Event Hubs Azure
 
-Umožňuje úplný přístup k prostředkům Azure Event Hubs.
+Umožňuje úplný přístup k prostředkům Azure Event Hubs. [Další informace](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. EventHub/* |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/* |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. EventHub/* |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/* |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -3805,17 +3865,17 @@ Umožňuje úplný přístup k prostředkům Azure Event Hubs.
 
 ### <a name="azure-event-hubs-data-receiver"></a>Přijímač dat Event Hubs Azure
 
-Umožňuje získat přístup k prostředkům Azure Event Hubs.
+Umožňuje získat přístup k prostředkům Azure Event Hubs. [Další informace](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. EventHub/*/eventhubs/consumergroups/Read |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/consumergroups/Read |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. EventHub/*/Receive/Action |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/*/Receive/Action |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -3847,17 +3907,17 @@ Umožňuje získat přístup k prostředkům Azure Event Hubs.
 
 ### <a name="azure-event-hubs-data-sender"></a>Odesilatel dat Event Hubs Azure
 
-Povoluje odesílání přístup k prostředkům Azure Event Hubs.
+Povoluje odesílání přístup k prostředkům Azure Event Hubs. [Další informace](../event-hubs/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. EventHub/*/eventhubs/Read |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/*/eventhubs/Read |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. EventHub/*/Send/Action |  |
+> | [Microsoft. EventHub](resource-provider-operations.md#microsofteventhub)/*/Send/Action |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -3889,21 +3949,21 @@ Povoluje odesílání přístup k prostředkům Azure Event Hubs.
 
 ### <a name="data-factory-contributor"></a>Přispěvatel Data Factory
 
-Vytváření a Správa datových továren a také podřízených prostředků v nich.
+Vytváření a Správa datových továren a také podřízených prostředků v nich. [Další informace](../data-factory/concepts-roles-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. DataFactory/DataFactory/* | Vytváření a Správa datových továrn a podřízených prostředků v nich. |
-> | Microsoft. DataFactory/továrny/* | Vytváření a Správa datových továrn a podřízených prostředků v nich. |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. EventGrid/eventSubscriptions/Write | Vytvořit nebo aktualizovat eventSubscription |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. DataFactory](resource-provider-operations.md#microsoftdatafactory)/dataFactories/* | Vytváření a Správa datových továrn a podřízených prostředků v nich. |
+> | [Microsoft. DataFactory](resource-provider-operations.md#microsoftdatafactory)/Factories/* | Vytváření a Správa datových továrn a podřízených prostředků v nich. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/Write | Vytvořit nebo aktualizovat eventSubscription |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3945,16 +4005,16 @@ Vytváření a Správa datových továren a také podřízených prostředků v 
 
 ### <a name="data-purger"></a>Nástroj pro vyprázdnění dat
 
-Může vyprázdnit analytické údaje
+Může vyprázdnit analytické údaje. [Další informace](../azure-monitor/platform/personal-data-mgmt.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Insights/Components/*/Read |  |
-> | Microsoft. Insights/komponenty/vyprázdnění/akce | Vymazání dat z Application Insights |
-> | Microsoft. OperationalInsights/pracovní prostory/*/Read | Zobrazení dat Log Analytics |
-> | Microsoft. OperationalInsights/pracovní prostory/vyprázdnit/akce | Odstranit zadaná data z pracovního prostoru |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/*/Read |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/Purge/Action | Vymazání dat z Application Insights |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Zobrazení dat Log Analytics |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Purge/Action | Odstranit zadaná data z pracovního prostoru |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -3991,21 +4051,21 @@ Může vyprázdnit analytické údaje
 
 ### <a name="hdinsight-cluster-operator"></a>Operátor clusteru HDInsight
 
-Umožňuje číst a upravovat konfigurace clusteru HDInsight.
+Umožňuje číst a upravovat konfigurace clusteru HDInsight. [Další informace](../hdinsight/hdinsight-migrate-granular-access-cluster-configurations.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. HDInsight/*/Read |  |
-> | Microsoft. HDInsight/Clusters/getGatewaySettings/Action | Získat nastavení brány pro cluster HDInsight |
-> | Microsoft. HDInsight/Clusters/updateGatewaySettings/Action | Aktualizace nastavení brány pro cluster HDInsight |
-> | Microsoft. HDInsight/clustery/konfigurace/* |  |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Resources/nasazení/operace/čtení | Načte nebo vypíše operace nasazení. |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. HDInsight](resource-provider-operations.md#microsofthdinsight)/*/Read |  |
+> | [Microsoft. HDInsight](resource-provider-operations.md#microsofthdinsight)/Clusters/getGatewaySettings/Action | Získat nastavení brány pro cluster HDInsight |
+> | [Microsoft. HDInsight](resource-provider-operations.md#microsofthdinsight)/Clusters/updateGatewaySettings/Action | Aktualizace nastavení brány pro cluster HDInsight |
+> | [Microsoft. HDInsight](resource-provider-operations.md#microsofthdinsight)/Clusters/Configurations/* |  |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/Operations/Read | Načte nebo vypíše operace nasazení. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -4047,15 +4107,15 @@ Umožňuje číst a upravovat konfigurace clusteru HDInsight.
 
 ### <a name="hdinsight-domain-services-contributor"></a>Přispěvatel doménových služeb HDInsight
 
-Může číst, vytvářet, upravovat a odstraňovat služby související s doménami, které jsou potřeba pro HDInsight Balíček zabezpečení podniku
+Může číst, vytvářet, upravovat a odstraňovat související operace služby Domain Services, které jsou potřeba pro HDInsight Balíček zabezpečení podniku další [informace](../hdinsight/domain-joined/apache-domain-joined-configure-using-azure-adds.md) .
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. AAD/*/Read |  |
-> | Microsoft. AAD/domainServices/*/Read |  |
-> | Microsoft. AAD/domainServices/oucontainer/* |  |
+> | [Microsoft. aad](resource-provider-operations.md#microsoftaad)/*/Read |  |
+> | [Microsoft. aad](resource-provider-operations.md#microsoftaad)/domainServices/*/Read |  |
+> | [Microsoft. aad](resource-provider-operations.md#microsoftaad)/domainServices/oucontainer/* |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -4091,26 +4151,26 @@ Může číst, vytvářet, upravovat a odstraňovat služby související s dom�
 
 ### <a name="log-analytics-contributor"></a>Přispěvatel Log Analytics
 
-Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání řešení; a konfigurují se diagnostiky Azure na všech prostředcích Azure.
+Přispěvatel Log Analytics může číst všechna data monitorování a upravovat nastavení monitorování. Úprava nastavení monitorování zahrnuje přidání rozšíření virtuálního počítače do virtuálních počítačů. čtení klíčů účtu úložiště, aby bylo možné konfigurovat shromažďování protokolů z Azure Storage; vytváření a konfigurace účtů služby Automation; přidávání řešení; a konfigurují se diagnostiky Azure na všech prostředcích Azure. [Další informace](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
 > | */read | Přečte prostředky všech typů s výjimkou tajných klíčů. |
-> | Microsoft. Automation/automationAccounts/* |  |
-> | Microsoft. ClassicCompute/virtualMachines/Extensions/* |  |
-> | Microsoft. ClassicStorage/storageAccounts/klíče listkey/Action | Vypíše přístupové klíče pro účty úložiště. |
-> | Microsoft. COMPUTE/virtualMachines/Extensions/* |  |
-> | Microsoft. HybridCompute/počítače/rozšíření/Write | Nainstaluje nebo aktualizuje rozšíření ARC Azure. |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Insights/diagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
-> | Microsoft. OperationalInsights/* |  |
-> | Microsoft. OperationsManagement/* |  |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/ResourceGroups/Deployments/* |  |
-> | Microsoft. Storage/storageAccounts/klíče listkey/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/* |  |
+> | [Microsoft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/Extensions/* |  |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/Action | Vypíše přístupové klíče pro účty úložiště. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/Extensions/* |  |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/Extensions/Write | Nainstaluje nebo aktualizuje rozšíření ARC Azure. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/* |  |
+> | [Microsoft. OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/* |  |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Deployments/* |  |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -4157,18 +4217,18 @@ Přispěvatel Log Analytics může číst všechna data monitorování a upravov
 
 ### <a name="log-analytics-reader"></a>Čtenář Log Analytics
 
-Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure.
+Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování a také zobrazit nastavení monitorování, včetně zobrazení konfigurace diagnostiky Azure na všech prostředcích Azure. [Další informace](../azure-monitor/platform/manage-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
 > | */read | Přečte prostředky všech typů s výjimkou tajných klíčů. |
-> | Microsoft. OperationalInsights/pracovní prostory/analýzy/dotaz/akce | Hledání pomocí nového stroje |
-> | Microsoft. OperationalInsights/pracovní prostory/hledání/akce | Spustí vyhledávací dotaz. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/Query/Action | Hledání pomocí nového stroje |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Search/Action | Spustí vyhledávací dotaz. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
-> | Microsoft. OperationalInsights/pracovní prostory/sharedKeys/číst | Načte sdílené klíče pracovního prostoru. Tyto klíče se používají k připojení agentů Microsoft Operational Insights k pracovnímu prostoru. |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/sharedKeys/Read | Načte sdílené klíče pracovního prostoru. Tyto klíče se používají k připojení agentů Microsoft Operational Insights k pracovnímu prostoru. |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -4208,17 +4268,17 @@ Log Analytics čtenář může zobrazit a vyhledat všechna data monitorování 
 
 ### <a name="blockchain-member-node-access-preview"></a>Přístup ke členskému uzlu blockchain (Preview)
 
-Umožňuje přístup k blockchain členským uzlům.
+Umožňuje přístup k uzlům členů blockchain. [Další informace](../blockchain/service/configure-aad.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. blockchain/blockchainMembers/transactionNodes/Read | Získá nebo zobrazí seznam existujících uzlů transakcí členů blockchain. |
+> | [Microsoft. blockchain](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/Read | Získá nebo zobrazí seznam existujících uzlů transakcí členů blockchain. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. blockchain/blockchainMembers/transactionNodes/Connect/Action | Připojí se k uzlu transakce člena blockchain. |
+> | [Microsoft. blockchain](resource-provider-operations.md#microsoftblockchain)/blockchainMembers/transactionNodes/Connect/Action | Připojí se k uzlu transakce člena blockchain. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -4253,29 +4313,29 @@ Umožňuje přístup k blockchain členským uzlům.
 
 ### <a name="cognitive-services-contributor"></a>Přispěvatel Cognitive Services
 
-Umožňuje vytvářet, číst, aktualizovat, odstraňovat a spravovat klíče Cognitive Services.
+Umožňuje vytvářet, číst, aktualizovat, odstraňovat a spravovat klíče Cognitive Services. [Další informace](../cognitive-services/cognitive-services-virtual-networks.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Cognitiveservices Account/* |  |
-> | Microsoft. Features/Features/Read | Získá funkce předplatného. |
-> | Microsoft. Features/Providers/Features/Read | Získá funkci předplatného v daném poskytovateli prostředků. |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Insights/diagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
-> | Microsoft. Insights/logDefinitions/Read | Čtení definic protokolů |
-> | Microsoft. Insights/metricdefinitions/Read | Čtení definic metriky |
-> | Microsoft. Insights/metriky/číst | Čtení metrik |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/nasazení/operace/čtení | Načte nebo vypíše operace nasazení. |
-> | Microsoft. Resources/Subscriptions/operationresults/Read | Získejte výsledky operace předplatného. |
-> | Microsoft. Resources/Subscriptions/Read | Získá seznam předplatných. |
-> | Microsoft. Resources/Subscriptions/ResourceGroups/Deployments/* |  |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
+> | [Microsoft. Features](resource-provider-operations.md#microsoftfeatures)/Features/Read | Získá funkce předplatného. |
+> | [Microsoft. Features](resource-provider-operations.md#microsoftfeatures)/Providers/Features/Read | Získá funkci předplatného v daném poskytovateli prostředků. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/logDefinitions/Read | Čtení definic protokolů |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricdefinitions/Read | Čtení definic metriky |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Čtení metrik |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/Operations/Read | Načte nebo vypíše operace nasazení. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Získejte výsledky operace předplatného. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Získá seznam předplatných. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/ResourceGroups/Deployments/* |  |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -4335,7 +4395,7 @@ Umožňuje číst Cognitive Services data.
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Cognitiveservices Account/*/Read |  |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -4365,29 +4425,29 @@ Umožňuje číst Cognitive Services data.
 
 ### <a name="cognitive-services-user"></a>Cognitive Services uživatel
 
-Umožňuje číst a zobrazit seznam klíčů Cognitive Services.
+Umožňuje číst a zobrazit seznam klíčů Cognitive Services. [Další informace](../cognitive-services/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Cognitiveservices Account/*/Read |  |
-> | Microsoft. Cognitiveservices Account/Accounts/klíče listkey/Action | Zobrazit seznam klíčů |
-> | Microsoft. Insights/alertRules/Read | Čtení klasické výstrahy metriky |
-> | Microsoft. Insights/diagnosticSettings/Read | Přečíst nastavení diagnostiky prostředků |
-> | Microsoft. Insights/logDefinitions/Read | Čtení definic protokolů |
-> | Microsoft. Insights/metricdefinitions/Read | Čtení definic metriky |
-> | Microsoft. Insights/metriky/číst | Čtení metrik |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/operace/čtení | Načte nebo vypíše operace nasazení. |
-> | Microsoft. Resources/Subscriptions/operationresults/Read | Získejte výsledky operace předplatného. |
-> | Microsoft. Resources/Subscriptions/Read | Získá seznam předplatných. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/*/Read |  |
+> | [Microsoft. cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/Accounts/listkeys/Action | Zobrazit seznam klíčů |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/Read | Čtení klasické výstrahy metriky |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/Read | Přečíst nastavení diagnostiky prostředků |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/logDefinitions/Read | Čtení definic protokolů |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricdefinitions/Read | Čtení definic metriky |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Read | Čtení metrik |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/Operations/Read | Načte nebo vypíše operace nasazení. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Získejte výsledky operace předplatného. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Získá seznam předplatných. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Cognitiveservices Account/* |  |
+> | [Microsoft. Cognitiveservices Account](resource-provider-operations.md#microsoftcognitiveservices)/* |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -4432,9 +4492,9 @@ Umožňuje číst a zobrazit seznam klíčů Cognitive Services.
 ## <a name="mixed-reality"></a>Smíšená realita
 
 
-### <a name="spatial-anchors-account-contributor"></a>Přispěvatel účtu prostorových kotev
+### <a name="remote-rendering-administrator"></a>Správce vzdáleného vykreslování
 
-Umožňuje spravovat prostorové kotvy ve vašem účtu, ale neodstraňovat je.
+Poskytuje uživatele s možností převodu, správy relace, vykreslování a diagnostiky pro vzdálené vykreslování Azure. další [informace](../remote-rendering/how-tos/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4444,12 +4504,114 @@ Umožňuje spravovat prostorové kotvy ve vašem účtu, ale neodstraňovat je.
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Create/Action | Vytvořit prostorové kotvy |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Discovery/Read | Vyhledat nejbližší prostorové kotvy |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/– vlastnosti/číst | Získat vlastnosti prostorových ukotvení |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/dotaz/číst | Vyhledat prostorové kotvy |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/submitdiag/Read | Odeslat diagnostická data, která vám pomůžou zlepšit kvalitu služby prostorových kotev Azure |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Write | Aktualizovat vlastnosti prostorových ukotvení |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/Convert/Action | Spustit převod assetu |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/Convert/Read | Získat vlastnosti převodu assetu |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/Convert/DELETE | Zastavit převod assetu |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/Read | Získat vlastnosti relace |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/Action | Spustit relace |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/DELETE | Zastavit relace |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/Render/Read | Připojení k relaci |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/Diagnostic/Read | Připojit k inspektoru vzdáleného vykreslování |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Provides user with conversion, manage session, rendering and diagnostics capabilities for Azure Remote Rendering",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3df8b902-2a6f-47c7-8cc5-360e9b272a7e",
+  "name": "3df8b902-2a6f-47c7-8cc5-360e9b272a7e",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.MixedReality/RemoteRenderingAccounts/convert/action",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/convert/read",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/convert/delete",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/read",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/action",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/delete",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/render/read",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/diagnostic/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Remote Rendering Administrator",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="remote-rendering-client"></a>Klient vzdáleného vykreslování
+
+Poskytuje uživatele s možností spravovat relaci, vykreslování a diagnostiku pro vzdálené vykreslování Azure. [Další informace](../remote-rendering/how-tos/authentication.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Akce** |  |
+> | *žádný* |  |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/Read | Získat vlastnosti relace |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/Action | Spustit relace |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/managesessions/DELETE | Zastavit relace |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/Render/Read | Připojení k relaci |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/RemoteRenderingAccounts/Diagnostic/Read | Připojit k inspektoru vzdáleného vykreslování |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Provides user with manage session, rendering and diagnostics capabilities for Azure Remote Rendering.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/d39065c4-c120-43c9-ab0a-63eed9795f0a",
+  "name": "d39065c4-c120-43c9-ab0a-63eed9795f0a",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/read",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/action",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/managesessions/delete",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/render/read",
+        "Microsoft.MixedReality/RemoteRenderingAccounts/diagnostic/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Remote Rendering Client",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="spatial-anchors-account-contributor"></a>Přispěvatel účtu prostorových kotev
+
+Umožňuje spravovat prostorové kotvy ve vašem účtu, ale neodstraňují je. další [informace](../spatial-anchors/concepts/authentication.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Akce** |  |
+> | *žádný* |  |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Create/Action | Vytvořit prostorové kotvy |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Discovery/Read | Vyhledat nejbližší prostorové kotvy |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Properties/Read | Získat vlastnosti prostorových ukotvení |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Query/Read | Vyhledat prostorové kotvy |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/Read | Odeslat diagnostická data, která vám pomůžou zlepšit kvalitu služby prostorových kotev Azure |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Write | Aktualizovat vlastnosti prostorových ukotvení |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -4484,7 +4646,7 @@ Umožňuje spravovat prostorové kotvy ve vašem účtu, ale neodstraňovat je.
 
 ### <a name="spatial-anchors-account-owner"></a>Vlastník účtu prostorových ukotvení
 
-Umožňuje spravovat prostorové kotvy v účtu, včetně jejich odstranění.
+Umožňuje spravovat prostorové kotvy v účtu, včetně jejich odstranění. další [informace](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4494,13 +4656,13 @@ Umožňuje spravovat prostorové kotvy v účtu, včetně jejich odstranění.
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Create/Action | Vytvořit prostorové kotvy |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/DELETE | Odstranit prostorové kotvy |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Discovery/Read | Vyhledat nejbližší prostorové kotvy |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/– vlastnosti/číst | Získat vlastnosti prostorových ukotvení |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/dotaz/číst | Vyhledat prostorové kotvy |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/submitdiag/Read | Odeslat diagnostická data, která vám pomůžou zlepšit kvalitu služby prostorových kotev Azure |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Write | Aktualizovat vlastnosti prostorových ukotvení |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Create/Action | Vytvořit prostorové kotvy |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/DELETE | Odstranit prostorové kotvy |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Discovery/Read | Vyhledat nejbližší prostorové kotvy |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Properties/Read | Získat vlastnosti prostorových ukotvení |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Query/Read | Vyhledat prostorové kotvy |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/Read | Odeslat diagnostická data, která vám pomůžou zlepšit kvalitu služby prostorových kotev Azure |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Write | Aktualizovat vlastnosti prostorových ukotvení |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -4536,7 +4698,7 @@ Umožňuje spravovat prostorové kotvy v účtu, včetně jejich odstranění.
 
 ### <a name="spatial-anchors-account-reader"></a>Čtečka účtu prostorových kotev
 
-Umožňuje vyhledat a číst vlastnosti prostorových ukotvení ve vašem účtu.
+Umožňuje vyhledat a číst vlastnosti prostorových ukotvení ve vašem účtu. další [informace](../spatial-anchors/concepts/authentication.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4546,10 +4708,10 @@ Umožňuje vyhledat a číst vlastnosti prostorových ukotvení ve vašem účtu
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/Discovery/Read | Vyhledat nejbližší prostorové kotvy |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/– vlastnosti/číst | Získat vlastnosti prostorových ukotvení |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/dotaz/číst | Vyhledat prostorové kotvy |
-> | Microsoft. MixedReality/SpatialAnchorsAccounts/submitdiag/Read | Odeslat diagnostická data, která vám pomůžou zlepšit kvalitu služby prostorových kotev Azure |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Discovery/Read | Vyhledat nejbližší prostorové kotvy |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Properties/Read | Získat vlastnosti prostorových ukotvení |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/Query/Read | Vyhledat prostorové kotvy |
+> | [Microsoft. MixedReality](resource-provider-operations.md#microsoftmixedreality)/SpatialAnchorsAccounts/submitdiag/Read | Odeslat diagnostická data, která vám pomůžou zlepšit kvalitu služby prostorových kotev Azure |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -4585,19 +4747,19 @@ Umožňuje vyhledat a číst vlastnosti prostorových ukotvení ve vašem účtu
 
 ### <a name="api-management-service-contributor"></a>Přispěvatel API Management služby
 
-Může spravovat službu a rozhraní API.
+Může spravovat službu a rozhraní API. [Další informace](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ApiManagement/Service/* | Vytvoření a Správa služby API Management |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/* | Vytvoření a Správa služby API Management |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -4637,29 +4799,29 @@ Může spravovat službu a rozhraní API.
 
 ### <a name="api-management-service-operator-role"></a>Role operátora služby API Management
 
-Může spravovat službu, ale ne rozhraní API.
+Může spravovat službu, ale ne rozhraní API, další [informace](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ApiManagement/Service/*/Read | Číst API Management instance služby |
-> | Microsoft. ApiManagement/Service/Backup/Action | Služba Backup API Management do zadaného kontejneru v účtu úložiště zadaného uživatelem |
-> | Microsoft. ApiManagement/Service/DELETE | Odstranit instanci služby API Management |
-> | Microsoft. ApiManagement/Service/managedeployments/Action | Změna SKU/jednotek, přidání nebo odebrání regionálních nasazení API Management služby |
-> | Microsoft. ApiManagement/Service/Read | Čtení metadat pro instanci služby API Management Service |
-> | Microsoft. ApiManagement/Service/Restore/Action | Obnovení služby API Management ze zadaného kontejneru v účtu úložiště zadaného uživatelem |
-> | Microsoft. ApiManagement/Service/updatecertificate/Action | Nahrání certifikátu TLS/SSL pro službu API Management |
-> | Microsoft. ApiManagement/Service/updatehostname/Action | Instalace, aktualizace nebo odebrání názvů vlastních domén pro službu API Management |
-> | Microsoft. ApiManagement/Service/Write | Vytvořit nebo aktualizovat instanci služby API Management |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/*/Read | Číst API Management instance služby |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/Backup/Action | Služba Backup API Management do zadaného kontejneru v účtu úložiště zadaného uživatelem |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/DELETE | Odstranit instanci služby API Management |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/managedeployments/Action | Změna SKU/jednotek, přidání nebo odebrání regionálních nasazení API Management služby |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/Read | Čtení metadat pro instanci služby API Management Service |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/Restore/Action | Obnovení služby API Management ze zadaného kontejneru v účtu úložiště zadaného uživatelem |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/updatecertificate/Action | Nahrání certifikátu TLS/SSL pro službu API Management |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/updatehostname/Action | Instalace, aktualizace nebo odebrání názvů vlastních domén pro službu API Management |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/Write | Vytvořit nebo aktualizovat instanci služby API Management |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
-> | Microsoft. ApiManagement/Service/Users/Keys/číst | Získání klíčů přidružených k uživateli |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/Users/Keys/Read | Získání klíčů přidružených k uživateli |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -4707,22 +4869,22 @@ Může spravovat službu, ale ne rozhraní API.
 
 ### <a name="api-management-service-reader-role"></a>Role čtecího modulu služby API Management
 
-Přístup ke službě a rozhraním API jen pro čtení
+Přístup ke službě a rozhraním API jen pro čtení [Další informace](../api-management/api-management-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ApiManagement/Service/*/Read | Číst API Management instance služby |
-> | Microsoft. ApiManagement/Service/Read | Čtení metadat pro instanci služby API Management Service |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/*/Read | Číst API Management instance služby |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/Read | Čtení metadat pro instanci služby API Management Service |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
-> | Microsoft. ApiManagement/Service/Users/Keys/číst | Získání klíčů přidružených k uživateli |
+> | [Microsoft. ApiManagement](resource-provider-operations.md#microsoftapimanagement)/Service/Users/Keys/Read | Získání klíčů přidružených k uživateli |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -4763,7 +4925,7 @@ Přístup ke službě a rozhraním API jen pro čtení
 
 ### <a name="app-configuration-data-owner"></a>Vlastník dat konfigurace aplikace
 
-Umožňuje úplný přístup k datům konfigurace aplikace.
+Umožňuje úplný přístup k datům konfigurace aplikace. [Další informace](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4773,9 +4935,9 @@ Umožňuje úplný přístup k datům konfigurace aplikace.
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. AppConfiguration/configurationStores/*/Read |  |
-> | Microsoft. AppConfiguration/configurationStores/*/Write |  |
-> | Microsoft. AppConfiguration/configurationStores/*/DELETE |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/Read |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/Write |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/DELETE |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -4807,7 +4969,7 @@ Umožňuje úplný přístup k datům konfigurace aplikace.
 
 ### <a name="app-configuration-data-reader"></a>Čtečka dat konfigurace aplikace
 
-Povoluje přístup pro čtení k datům konfigurace aplikace.
+Povoluje přístup pro čtení k datům konfigurace aplikace. [Další informace](../azure-app-configuration/concept-enable-rbac.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -4817,7 +4979,7 @@ Povoluje přístup pro čtení k datům konfigurace aplikace.
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. AppConfiguration/configurationStores/*/Read |  |
+> | [Microsoft. AppConfiguration](resource-provider-operations.md#microsoftappconfiguration)/configurationStores/*/Read |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -4847,17 +5009,17 @@ Povoluje přístup pro čtení k datům konfigurace aplikace.
 
 ### <a name="azure-service-bus-data-owner"></a>Azure Service Bus vlastník dat
 
-Umožňuje úplný přístup k Azure Service Bus prostředkům.
+Umožňuje úplný přístup k Azure Service Bus prostředkům. [Další informace](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ServiceBus/* |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/* |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. ServiceBus/* |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/* |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -4889,19 +5051,19 @@ Umožňuje úplný přístup k Azure Service Bus prostředkům.
 
 ### <a name="azure-service-bus-data-receiver"></a>Azure Service Bus přijímač dat
 
-Umožňuje získat přístup k prostředkům Azure Service Bus.
+Umožňuje získat přístup k prostředkům Azure Service Bus. [Další informace](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ServiceBus/*/Queues/Read |  |
-> | Microsoft. ServiceBus/*/topics/Read |  |
-> | Microsoft. ServiceBus/*/topics/Subscriptions/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/Queues/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Subscriptions/Read |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. ServiceBus/*/Receive/Action |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/Receive/Action |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -4935,19 +5097,19 @@ Umožňuje získat přístup k prostředkům Azure Service Bus.
 
 ### <a name="azure-service-bus-data-sender"></a>Azure Service Bus odesílatel dat
 
-Umožňuje odeslat přístup k prostředkům Azure Service Bus.
+Umožňuje odeslat přístup k prostředkům Azure Service Bus. [Další informace](../service-bus-messaging/authenticate-application.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ServiceBus/*/Queues/Read |  |
-> | Microsoft. ServiceBus/*/topics/Read |  |
-> | Microsoft. ServiceBus/*/topics/Subscriptions/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/Queues/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Read |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/topics/Subscriptions/Read |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. ServiceBus/*/Send/Action |  |
+> | [Microsoft. ServiceBus](resource-provider-operations.md#microsoftservicebus)/*/Send/Action |  |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -4987,9 +5149,9 @@ Umožňuje spravovat Azure Stack registrace.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. AzureStack/registrs/Products/* za akci |  |
-> | Microsoft. AzureStack/registrs/Products/Read | Získá vlastnosti produktu Azure Stack Marketplace. |
-> | Microsoft. AzureStack/registrs/Read | Získá vlastnosti registrace Azure Stack. |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/Products/* za akci |  |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/Products/Read | Získá vlastnosti produktu Azure Stack Marketplace. |
+> | [Microsoft. AzureStack](resource-provider-operations.md#microsoftazurestack)/registrations/Read | Získá vlastnosti registrace Azure Stack. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5025,21 +5187,21 @@ Umožňuje spravovat Azure Stack registrace.
 
 ### <a name="eventgrid-eventsubscription-contributor"></a>EventGrid EventSubscription Přispěvatel
 
-Umožňuje spravovat operace odběru událostí EventGrid.
+Umožňuje spravovat operace odběru událostí EventGrid. [Další informace](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. EventGrid/eventSubscriptions/* |  |
-> | Microsoft. EventGrid/topicTypes/eventSubscriptions/Read | Vypsat globální odběry událostí podle typu tématu |
-> | Microsoft. EventGrid/Locations/eventSubscriptions/Read | Výpis odběrů místních událostí |
-> | Microsoft. EventGrid/Locations/topicTypes/eventSubscriptions/Read | Výpis odběrů místních událostí podle TopicType |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/* |  |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/Read | Vypsat globální odběry událostí podle typu tématu |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/eventSubscriptions/Read | Výpis odběrů místních událostí |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/topicTypes/eventSubscriptions/Read | Výpis odběrů místních událostí podle TopicType |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5081,18 +5243,18 @@ Umožňuje spravovat operace odběru událostí EventGrid.
 
 ### <a name="eventgrid-eventsubscription-reader"></a>Čtecí modul EventSubscription EventGrid
 
-Umožňuje číst odběry událostí EventGrid.
+Umožňuje číst odběry událostí EventGrid. [Další informace](../event-grid/security-authorization.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. EventGrid/eventSubscriptions/Read | Přečíst eventSubscription |
-> | Microsoft. EventGrid/topicTypes/eventSubscriptions/Read | Vypsat globální odběry událostí podle typu tématu |
-> | Microsoft. EventGrid/Locations/eventSubscriptions/Read | Výpis odběrů místních událostí |
-> | Microsoft. EventGrid/Locations/topicTypes/eventSubscriptions/Read | Výpis odběrů místních událostí podle TopicType |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/eventSubscriptions/Read | Přečíst eventSubscription |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/topicTypes/eventSubscriptions/Read | Vypsat globální odběry událostí podle typu tématu |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/eventSubscriptions/Read | Výpis odběrů místních událostí |
+> | [Microsoft. EventGrid](resource-provider-operations.md#microsofteventgrid)/Locations/topicTypes/eventSubscriptions/Read | Výpis odběrů místních událostí podle TopicType |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5129,6 +5291,260 @@ Umožňuje číst odběry událostí EventGrid.
 }
 ```
 
+### <a name="fhir-data-contributor"></a>Přispěvatel dat FHIR
+
+Role umožňuje uživateli nebo hlavnímu základnímu přístupu k datům FHIR [získat další informace](../healthcare-apis/configure-azure-rbac.md) .
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Akce** |  |
+> | *žádný* |  |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | Microsoft. HealthcareApis/Services/fhir/Resources/* |  |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role allows user or principal full access to FHIR Data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/5a1fc7df-4bf1-4951-a576-89034ee01acd",
+  "name": "5a1fc7df-4bf1-4951-a576-89034ee01acd",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.HealthcareApis/services/fhir/resources/*"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "FHIR Data Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="fhir-data-exporter"></a>FHIR data Exportér
+
+Role umožňuje uživateli nebo objektu zabezpečení číst a exportovat FHIR data. další [informace](../healthcare-apis/configure-azure-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Akce** |  |
+> | *žádný* |  |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | Microsoft. HealthcareApis/Services/fhir/Resources/Read | Čtení prostředků FHIR (zahrnuje hledání a historii verzí).  |
+> | Microsoft. HealthcareApis/Services/fhir/Resources/export/Action | Operace exportu ($export). |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role allows user or principal to read and export FHIR Data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3db33094-8700-4567-8da5-1501d4e7e843",
+  "name": "3db33094-8700-4567-8da5-1501d4e7e843",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.HealthcareApis/services/fhir/resources/read",
+        "Microsoft.HealthcareApis/services/fhir/resources/export/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "FHIR Data Exporter",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="fhir-data-reader"></a>Čtecí modul dat FHIR
+
+Role umožňuje uživateli nebo objektu zabezpečení číst data FHIR. další [informace](../healthcare-apis/configure-azure-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Akce** |  |
+> | *žádný* |  |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | Microsoft. HealthcareApis/Services/fhir/Resources/Read | Čtení prostředků FHIR (zahrnuje hledání a historii verzí).  |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role allows user or principal to read FHIR Data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/4c8d0bbc-75d3-4935-991f-5f3c56d81508",
+  "name": "4c8d0bbc-75d3-4935-991f-5f3c56d81508",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.HealthcareApis/services/fhir/resources/read"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "FHIR Data Reader",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="fhir-data-writer"></a>Zapisovač dat FHIR
+
+Role umožňuje uživateli nebo objektu zabezpečení číst a zapisovat FHIR data. další [informace](../healthcare-apis/configure-azure-rbac.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Akce** |  |
+> | *žádný* |  |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | Microsoft. HealthcareApis/Services/fhir/Resources/* |  |
+> | **NotDataActions** |  |
+> | Microsoft. HealthcareApis/Services/fhir/Resources/hardDelete/Action | Pevné odstranění (včetně historie verzí). |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Role allows user or principal to read and write FHIR Data",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/3f88fce4-5892-4214-ae73-ba5294559913",
+  "name": "3f88fce4-5892-4214-ae73-ba5294559913",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.HealthcareApis/services/fhir/resources/*"
+      ],
+      "notDataActions": [
+        "Microsoft.HealthcareApis/services/fhir/resources/hardDelete/action"
+      ]
+    }
+  ],
+  "roleName": "FHIR Data Writer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="integration-service-environment-contributor"></a>Přispěvatel prostředí integrační služby
+
+Umožňuje spravovat prostředí integračních služeb, ale ne přístup k nim. [Další informace](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Akce** |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/* |  |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | *žádný* |  |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Lets you manage integration service environments, but not access to them.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/a41e2c5b-bd99-4a07-88f4-9bf657a760b8",
+  "name": "a41e2c5b-bd99-4a07-88f4-9bf657a760b8",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Support/*",
+        "Microsoft.Logic/integrationServiceEnvironments/*"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Integration Service Environment Contributor",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
+### <a name="integration-service-environment-developer"></a>Vývojář prostředí integrační služby
+
+Umožňuje vývojářům vytvářet a aktualizovat pracovní postupy, účty pro integraci a připojení rozhraní API v prostředích integračních služeb. [Další informace](../logic-apps/add-artifacts-integration-service-environment-ise.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Akce** |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/Read | Přečte prostředí integrační služby. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/integrationServiceEnvironments/JOIN/Action | Spojí prostředí integrační služby. |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | *žádný* |  |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows developers to create and update workflows, integration accounts and API connections in integration service environments.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/c7aa55d3-1abb-444a-a5ca-5e51e485d6ec",
+  "name": "c7aa55d3-1abb-444a-a5ca-5e51e485d6ec",
+  "permissions": [
+    {
+      "actions": [
+        "Microsoft.Authorization/*/read",
+        "Microsoft.Support/*",
+        "Microsoft.Logic/integrationServiceEnvironments/read",
+        "Microsoft.Logic/integrationServiceEnvironments/join/action"
+      ],
+      "notActions": [],
+      "dataActions": [],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Integration Service Environment Developer",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="intelligent-systems-account-contributor"></a>Přispěvatel účtů inteligentních systémů
 
 Umožňuje správu účtů inteligentních systémů, ale ne přístup k nim.
@@ -5137,13 +5553,13 @@ Umožňuje správu účtů inteligentních systémů, ale ne přístup k nim.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
 > | Microsoft. IntelligentSystems/účty/* | Vytváření a Správa účtů inteligentních systémů |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5183,33 +5599,33 @@ Umožňuje správu účtů inteligentních systémů, ale ne přístup k nim.
 
 ### <a name="logic-app-contributor"></a>Přispěvatel aplikace logiky
 
-Umožňuje spravovat Logic Apps, ale ne měnit přístup k nim.
+Umožňuje spravovat Logic Apps, ale ne měnit přístup k nim. [Další informace](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. ClassicStorage/storageAccounts/klíče listkey/Action | Vypíše přístupové klíče pro účty úložiště. |
-> | Microsoft. ClassicStorage/storageAccounts/Read | Vrátí účet úložiště s daným účtem. |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Insights/metricAlerts/* |  |
-> | Microsoft. Insights/diagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
-> | Microsoft. Insights/logdefinitions/* | Toto oprávnění je nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivit prostřednictvím portálu. Vypíše kategorie protokolů v protokolu aktivit. |
-> | Microsoft. Insights/metricDefinitions/* | Čtení definic metriky (seznam dostupných typů metrik pro prostředek). |
-> | Microsoft. Logic/* | Spravuje prostředky Logic Apps. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/operationresults/Read | Získejte výsledky operace předplatného. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Storage/storageAccounts/klíče listkey/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
-> | Microsoft. Storage/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Web/connectionGateways/* | Vytvoření a správa brány připojení. |
-> | Microsoft. Web/připojení/* | Vytvoření a Správa připojení. |
-> | Microsoft. Web/customApis/* | Vytvoří a spravuje vlastní rozhraní API. |
-> | Microsoft. Web/serverových farem/JOIN/Action |  |
-> | Microsoft. Web/serverových farem/Read | Získat vlastnosti v plánu App Service |
-> | Microsoft. Web/Sites/Functions/listSecrets/Action | Výpis tajných kódů funkcí |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/listKeys/Action | Vypíše přístupové klíče pro účty úložiště. |
+> | [Microsoft. ClassicStorage](resource-provider-operations.md#microsoftclassicstorage)/storageAccounts/Read | Vrátí účet úložiště s daným účtem. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/logdefinitions/* | Toto oprávnění je nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivit prostřednictvím portálu. Vypíše kategorie protokolů v protokolu aktivit. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/* | Čtení definic metriky (seznam dostupných typů metrik pro prostředek). |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/* | Spravuje prostředky Logic Apps. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Získejte výsledky operace předplatného. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listkeys/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/connectionGateways/* | Vytvoření a správa brány připojení. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Connections/* | Vytvoření a Správa připojení. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/customApis/* | Vytvoří a spravuje vlastní rozhraní API. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/JOIN/Action |  |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/Read | Získat vlastnosti v plánu App Service |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/sites/Functions/listSecrets/Action | Výpis tajných kódů funkcí |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5263,29 +5679,29 @@ Umožňuje spravovat Logic Apps, ale ne měnit přístup k nim.
 
 ### <a name="logic-app-operator"></a>Operátor aplikace logiky
 
-Umožňuje číst, povolit a zakázat Logic Apps, ale nemůže je upravovat ani aktualizovat.
+Umožňuje číst, povolit a zakázat Logic Apps, ale nemůže je upravovat ani aktualizovat. [Další informace](../logic-apps/logic-apps-securing-a-logic-app.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/*/Read | Pravidla výstrah pro čtení přehledů |
-> | Microsoft. Insights/metricAlerts/*/Read |  |
-> | Microsoft. Insights/diagnosticSettings/*/Read | Získá nastavení diagnostiky pro Logic Apps |
-> | Microsoft. Insights/metricDefinitions/*/Read | Získá dostupné metriky pro Logic Apps. |
-> | Microsoft. Logic/*/Read | Přečte Logic Apps prostředky. |
-> | Microsoft. Logic/Workflows/Disable/Action | Zakáže pracovní postup. |
-> | Microsoft. Logic/Workflows/Enable/Action | Povolí pracovní postup. |
-> | Microsoft. Logic/Workflows/Validate/Action | Ověří pracovní postup. |
-> | Microsoft. Resources/nasazení/operace/čtení | Načte nebo vypíše operace nasazení. |
-> | Microsoft. Resources/Subscriptions/operationresults/Read | Získejte výsledky operace předplatného. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Web/connectionGateways/*/Read | Čtení bran připojení. |
-> | Microsoft. Web/Connections/*/Read | Čtení připojení. |
-> | Microsoft. Web/customApis/*/Read | Číst vlastní rozhraní API. |
-> | Microsoft. Web/serverových farem/Read | Získat vlastnosti v plánu App Service |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/*/Read | Pravidla výstrah pro čtení přehledů |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/*/Read |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/diagnosticSettings/*/Read | Získá nastavení diagnostiky pro Logic Apps |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricDefinitions/*/Read | Získá dostupné metriky pro Logic Apps. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/*/Read | Přečte Logic Apps prostředky. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/Workflows/Disable/Action | Zakáže pracovní postup. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/Workflows/Enable/Action | Povolí pracovní postup. |
+> | [Microsoft. Logic](resource-provider-operations.md#microsoftlogic)/Workflows/Validate/Action | Ověří pracovní postup. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/Operations/Read | Načte nebo vypíše operace nasazení. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/operationresults/Read | Získejte výsledky operace předplatného. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/connectionGateways/*/Read | Čtení bran připojení. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Connections/*/Read | Čtení připojení. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/customApis/*/Read | Číst vlastní rozhraní API. |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/Read | Získat vlastnosti v plánu App Service |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5338,20 +5754,20 @@ Umožňuje číst, povolit a zakázat Logic Apps, ale nemůže je upravovat ani 
 
 ### <a name="managed-identity-contributor"></a>Přispěvatel spravovaných identit
 
-Vytvoření, čtení, aktualizace a odstranění identity přiřazené uživatelem
+Vytvoření, čtení, aktualizace a odstranění identity přiřazené uživatelem další [informace](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ManagedIdentity/userAssignedIdentities/Read | Získá existující identitu přiřazenou uživatelem. |
-> | Microsoft. ManagedIdentity/userAssignedIdentities/Write | Vytvoří novou identitu přiřazenou uživatelem nebo aktualizuje značky přidružené k existující identitě přiřazené uživatelem. |
-> | Microsoft. ManagedIdentity/userAssignedIdentities/DELETE | Odstraní existující identitu přiřazenou uživatelem. |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/Read | Získá existující identitu přiřazenou uživatelem. |
+> | [Microsoft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/Write | Vytvoří novou identitu přiřazenou uživatelem nebo aktualizuje značky přidružené k existující identitě přiřazené uživatelem. |
+> | [Microsoft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/DELETE | Odstraní existující identitu přiřazenou uživatelem. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5392,19 +5808,19 @@ Vytvoření, čtení, aktualizace a odstranění identity přiřazené uživatel
 
 ### <a name="managed-identity-operator"></a>Spravovaný operátor identity
 
-Čtení a přiřazení identity přiřazené uživateli
+Čtení a přiřazení identity přiřazené uživateli další [informace](../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ManagedIdentity/userAssignedIdentities/*/Read |  |
-> | Microsoft. ManagedIdentity/userAssignedIdentities/*/Assign/Action |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/Read |  |
+> | [Microsoft. ManagedIdentity](resource-provider-operations.md#microsoftmanagedidentity)/userAssignedIdentities/*/Assign/Action |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5447,26 +5863,26 @@ Vytvoření, čtení, aktualizace a odstranění identity přiřazené uživatel
 
 ### <a name="azure-sentinel-contributor"></a>Přispěvatel Sentinel Azure
 
-Přispěvatel Sentinel Azure
+Azure Sentinel Přispěvatel – další [informace](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. SecurityInsights/* |  |
-> | Microsoft. OperationalInsights/pracovní prostory/analýzy/dotaz/akce | Hledání pomocí nového stroje |
-> | Microsoft. OperationalInsights/pracovní prostory/*/Read | Zobrazení dat Log Analytics |
-> | Microsoft. OperationalInsights/pracovní prostory/savedSearches/* |  |
-> | Microsoft. OperationsManagement/Solutions/Read | Získat ukončení řešení OMS |
-> | Microsoft. OperationalInsights/pracovní prostory/dotaz/čtení | Spouštění dotazů nad daty v pracovním prostoru |
-> | Microsoft. OperationalInsights/pracovní prostory/dotazy/*/Read |  |
-> | Microsoft. OperationalInsights/pracovní prostory/zdroje dat/číst | Získat zdroje dat v pracovním prostoru. |
-> | Microsoft. Insights/sešity/* |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/* |  |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/Query/Action | Hledání pomocí nového stroje |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Zobrazení dat Log Analytics |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/savedSearches/* |  |
+> | [Microsoft. OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/Solutions/Read | Získat ukončení řešení OMS |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/Read | Spouštění dotazů nad daty v pracovním prostoru |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/*/Read |  |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Získat zdroje dat v pracovním prostoru. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5513,28 +5929,28 @@ Přispěvatel Sentinel Azure
 
 ### <a name="azure-sentinel-reader"></a>Čtečka Sentinel Azure
 
-Čtečka Sentinel Azure
+[Další informace o](../sentinel/roles.md) čtečce Azure Sentinel
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. SecurityInsights/*/Read |  |
-> | Microsoft. SecurityInsights/dataConnectorsCheckRequirements/Action | Ověřit autorizaci a licenci uživatele |
-> | Microsoft. OperationalInsights/pracovní prostory/analýzy/dotaz/akce | Hledání pomocí nového stroje |
-> | Microsoft. OperationalInsights/pracovní prostory/*/Read | Zobrazení dat Log Analytics |
-> | Microsoft. OperationalInsights/pracovní prostory/LinkedServices/číst | Získejte propojené služby v daném pracovním prostoru. |
-> | Microsoft. OperationalInsights/pracovní prostory/savedSearches/číst | Načte uložený vyhledávací dotaz. |
-> | Microsoft. OperationsManagement/Solutions/Read | Získat ukončení řešení OMS |
-> | Microsoft. OperationalInsights/pracovní prostory/dotaz/čtení | Spouštění dotazů nad daty v pracovním prostoru |
-> | Microsoft. OperationalInsights/pracovní prostory/dotazy/*/Read |  |
-> | Microsoft. OperationalInsights/pracovní prostory/zdroje dat/číst | Získat zdroje dat v pracovním prostoru. |
-> | Microsoft. Insights/sešity/číst | Přečíst sešit |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/Read |  |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/Action | Ověřit autorizaci a licenci uživatele |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/Query/Action | Hledání pomocí nového stroje |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Zobrazení dat Log Analytics |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/LinkedServices/Read | Získejte propojené služby v daném pracovním prostoru. |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/savedSearches/Read | Načte uložený vyhledávací dotaz. |
+> | [Microsoft. OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/Solutions/Read | Získat ukončení řešení OMS |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/Read | Spouštění dotazů nad daty v pracovním prostoru |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/*/Read |  |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Získat zdroje dat v pracovním prostoru. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Přečíst sešit |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5583,30 +5999,30 @@ Přispěvatel Sentinel Azure
 
 ### <a name="azure-sentinel-responder"></a>Respondér služby Azure Sentinel
 
-Respondér služby Azure Sentinel
+Azure Sentinel Responder – další [informace](../sentinel/roles.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. SecurityInsights/*/Read |  |
-> | Microsoft. SecurityInsights/dataConnectorsCheckRequirements/Action | Ověřit autorizaci a licenci uživatele |
-> | Microsoft. SecurityInsights/případy/* |  |
-> | Microsoft. SecurityInsights/incidenty/* |  |
-> | Microsoft. OperationalInsights/pracovní prostory/analýzy/dotaz/akce | Hledání pomocí nového stroje |
-> | Microsoft. OperationalInsights/pracovní prostory/*/Read | Zobrazení dat Log Analytics |
-> | Microsoft. OperationalInsights/pracovní prostory/zdroje dat/číst | Získat zdroje dat v pracovním prostoru. |
-> | Microsoft. OperationalInsights/pracovní prostory/savedSearches/číst | Načte uložený vyhledávací dotaz. |
-> | Microsoft. OperationsManagement/Solutions/Read | Získat ukončení řešení OMS |
-> | Microsoft. OperationalInsights/pracovní prostory/dotaz/čtení | Spouštění dotazů nad daty v pracovním prostoru |
-> | Microsoft. OperationalInsights/pracovní prostory/dotazy/*/Read |  |
-> | Microsoft. OperationalInsights/pracovní prostory/zdroje dat/číst | Získat zdroje dat v pracovním prostoru. |
-> | Microsoft. Insights/sešity/číst | Přečíst sešit |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/*/Read |  |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/dataConnectorsCheckRequirements/Action | Ověřit autorizaci a licenci uživatele |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/Cases/* |  |
+> | [Microsoft. SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/Incidents/* |  |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Analytics/Query/Action | Hledání pomocí nového stroje |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Zobrazení dat Log Analytics |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Získat zdroje dat v pracovním prostoru. |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/savedSearches/Read | Načte uložený vyhledávací dotaz. |
+> | [Microsoft. OperationsManagement](resource-provider-operations.md#microsoftoperationsmanagement)/Solutions/Read | Získat ukončení řešení OMS |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/Read | Spouštění dotazů nad daty v pracovním prostoru |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Query/*/Read |  |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/DataSources/Read | Získat zdroje dat v pracovním prostoru. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Přečíst sešit |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5657,21 +6073,21 @@ Respondér služby Azure Sentinel
 
 ### <a name="key-vault-contributor"></a>Přispěvatel Key Vault
 
-Umožňuje spravovat trezory klíčů, ale ne přístup k nim.
+Umožňuje spravovat trezory klíčů, ale ne přístup k nim. [Další informace](../key-vault/general/secure-your-key-vault.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Trezor Microsoft. |  |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Trezor Microsoft.](resource-provider-operations.md#microsoftkeyvault)/* |  |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
-> | Microsoft. webdeletedVaults trezor/Locations//vyprázdnění/Action | Vymazání tichého odstraněného trezoru klíčů |
-> | Microsoft. hsmPools – trezor//* |  |
+> | /Locations/deletedVaults/Purge/Action [trezoru Microsoft.](resource-provider-operations.md#microsoftkeyvault) | Vymazání tichého odstraněného trezoru klíčů |
+> | [Trezor Microsoft.](resource-provider-operations.md#microsoftkeyvault)/hsmPools/* |  |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -5711,23 +6127,23 @@ Umožňuje spravovat trezory klíčů, ale ne přístup k nim.
 
 ### <a name="security-admin"></a>Správce zabezpečení
 
-Zobrazit a aktualizovat oprávnění pro Security Center. Stejná oprávnění jako role čtecího modulu zabezpečení a mohou také aktualizovat zásady zabezpečení a zapustit výstrahy a doporučení.
+Zobrazit a aktualizovat oprávnění pro Security Center. Stejná oprávnění jako role čtecího modulu zabezpečení a mohou také aktualizovat zásady zabezpečení a zapustit výstrahy a doporučení. [Další informace](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Authorization/policyAssignments/* | Vytvoření a správa přiřazení zásad |
-> | Microsoft. Authorization/policyDefinitions/* | Vytváření a Správa definic zásad |
-> | Microsoft. Authorization/policySetDefinitions/* | Vytváření a Správa sad zásad |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Management/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
-> | Microsoft. operationalInsights/pracovní prostory/*/Read | Zobrazení dat Log Analytics |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Security/* | Vytváření a Správa bezpečnostních komponent a zásad |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyAssignments/* | Vytvoření a správa přiřazení zásad |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyDefinitions/* | Vytváření a Správa definic zásad |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policySetDefinitions/* | Vytváření a Správa sad zásad |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
+> | [Microsoft. operationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Zobrazení dat Log Analytics |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/* | Vytváření a Správa bezpečnostních komponent a zásad |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5777,7 +6193,7 @@ Umožňuje doručovat hodnocení do Security Center
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Security/Assessments/Write | Vytvořit nebo aktualizovat posouzení zabezpečení u předplatného |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/Assessments/Write | Vytvořit nebo aktualizovat posouzení zabezpečení u předplatného |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5817,16 +6233,16 @@ Toto je starší role. Místo toho prosím použijte Správce zabezpečení.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. ClassicCompute/*/Read | Čtení informací o konfiguraci klasických virtuálních počítačů |
-> | Microsoft. ClassicCompute/virtualMachines/*/Write | Zápis konfigurace pro klasické virtuální počítače |
-> | Microsoft. ClassicNetwork/*/Read | Přečíst informace o konfiguraci klasické sítě |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Security/* | Vytváření a Správa bezpečnostních komponent a zásad |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/*/Read | Čtení informací o konfiguraci klasických virtuálních počítačů |
+> | [Microsoft. ClassicCompute](resource-provider-operations.md#microsoftclassiccompute)/virtualMachines/*/Write | Zápis konfigurace pro klasické virtuální počítače |
+> | [Microsoft. ClassicNetwork](resource-provider-operations.md#microsoftclassicnetwork)/*/Read | Přečíst informace o konfiguraci klasické sítě |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/* | Vytváření a Správa bezpečnostních komponent a zásad |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5869,20 +6285,20 @@ Toto je starší role. Místo toho prosím použijte Správce zabezpečení.
 
 ### <a name="security-reader"></a>Čtecí modul zabezpečení
 
-Oprávnění k zobrazení Security Center. Může zobrazit doporučení, výstrahy, zásady zabezpečení a stavy zabezpečení, ale nemůže provádět změny.
+Oprávnění k zobrazení Security Center. Může zobrazit doporučení, výstrahy, zásady zabezpečení a stavy zabezpečení, ale nemůže provádět změny. [Další informace](../security-center/security-center-permissions.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. operationalInsights/pracovní prostory/*/Read | Zobrazení dat Log Analytics |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Security/*/Read | Číst součásti a zásady zabezpečení |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Management/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. operationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/*/Read | Zobrazení dat Log Analytics |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Security](resource-provider-operations.md#microsoftsecurity)/*/Read | Číst součásti a zásady zabezpečení |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -5926,46 +6342,46 @@ Oprávnění k zobrazení Security Center. Může zobrazit doporučení, výstra
 
 ### <a name="devtest-labs-user"></a>Uživatel DevTest Labs
 
-Umožňuje připojit, spustit, restartovat a vypnout virtuální počítače ve vašem Azure DevTest Labs.
+Umožňuje připojit, spustit, restartovat a vypnout virtuální počítače ve vašem Azure DevTest Labs. [Další informace](../lab-services/devtest-lab-add-devtest-user.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. COMPUTE/availabilitySets/Read | Získá vlastnosti skupiny dostupnosti. |
-> | Microsoft. COMPUTE/virtualMachines/*/Read | Přečtěte si vlastnosti virtuálního počítače (velikosti virtuálních počítačů, běhový stav, rozšíření virtuálních počítačů atd.). |
-> | Microsoft. COMPUTE/virtualMachines/unallocate/Action | Vyžádá virtuální počítač a uvolní výpočetní prostředky. |
-> | Microsoft. COMPUTE/virtualMachines/Read | Získá vlastnosti virtuálního počítače. |
-> | Microsoft. COMPUTE/virtualMachines/restart/Action | Restartuje virtuální počítač. |
-> | Microsoft. COMPUTE/virtualMachines/Start/Action | Spustí virtuální počítač. |
-> | Microsoft. DevTestLab/*/Read | Čtení vlastností testovacího prostředí |
-> | Microsoft. DevTestLab/Labs/claimAnyVm/Action | Vydeklarujte náhodný virtuální počítač v testovacím prostředí. |
-> | Microsoft. DevTestLab/Labs/createEnvironment/Action | Vytvářejte virtuální počítače v testovacím prostředí. |
-> | Microsoft. DevTestLab/Labs/ensureCurrentUserProfile/Action | Ujistěte se, že aktuální uživatel má v testovacím prostředí platný profil. |
-> | Microsoft. DevTestLab/Labs/vzorce/odstranit | Odstraňte vzorce. |
-> | Microsoft. DevTestLab/Labs/vzorců/čtení | Čtení vzorců. |
-> | Microsoft. DevTestLab/Labs/vzorce/zápis | Přidat nebo upravit vzorce. |
-> | Microsoft. DevTestLab/Labs/policySets/evaluatePolicies/Action | Vyhodnotí zásady testovacího prostředí. |
-> | Microsoft. DevTestLab/Labs/virtualMachines/nárok/Action | Převezme vlastnictví existujícího virtuálního počítače. |
-> | Microsoft. DevTestLab/Labs/VirtualMachines/listApplicableSchedules/Action | Zobrazí seznam použitelných plánů spuštění/zastavení, pokud existují. |
-> | Microsoft. DevTestLab/Labs/virtualMachines/getRdpFileContents/Action | Načte řetězec, který představuje obsah souboru RDP pro virtuální počítač. |
-> | Microsoft. Network/loadBalancers/backendAddressPools/JOIN/Action | Připojí fond adres back-endu nástroje pro vyrovnávání zatížení. Nelze upozorňovat. |
-> | Microsoft. Network/loadBalancers/inboundNatRules/JOIN/Action | Připojí příchozí pravidlo NAT pro vyrovnávání zatížení. Nelze upozorňovat. |
-> | Microsoft. Network/networkInterfaces/*/Read | Čtení vlastností síťového rozhraní (například všech nástrojů pro vyrovnávání zatížení, které jsou součástí síťového rozhraní) |
-> | Microsoft. Network/networkInterfaces/JOIN/Action | Připojí virtuální počítač k síťovému rozhraní. Nelze upozorňovat. |
-> | Microsoft. Network/networkInterfaces/Read | Načte definici síťového rozhraní.  |
-> | Microsoft. Network/networkInterfaces/Write | Vytvoří síťové rozhraní nebo aktualizuje stávající síťové rozhraní.  |
-> | Microsoft. Network/publicIPAddresses/*/Read | Čtení vlastností veřejné IP adresy |
-> | Microsoft. Network/publicIPAddresses/JOIN/Action | Připojí se k veřejné IP adrese. Nelze upozorňovat. |
-> | Microsoft. Network/publicIPAddresses/Read | Získá definici veřejné IP adresy. |
-> | Microsoft. Network/virtualNetworks/subnets/JOIN/Action | Připojí se k virtuální síti. Nelze upozorňovat. |
-> | Microsoft. Resources/nasazení/operace/čtení | Načte nebo vypíše operace nasazení. |
-> | Microsoft. Resources/nasazení/čtení | Načte nebo vypíše nasazení. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Storage/storageAccounts/klíče listkey/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/availabilitySets/Read | Získá vlastnosti skupiny dostupnosti. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/*/Read | Přečtěte si vlastnosti virtuálního počítače (velikosti virtuálních počítačů, běhový stav, rozšíření virtuálních počítačů atd.). |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/deallocate/Action | Vyžádá virtuální počítač a uvolní výpočetní prostředky. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/Read | Získá vlastnosti virtuálního počítače. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/restart/Action | Restartuje virtuální počítač. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/Start/Action | Spustí virtuální počítač. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/*/Read | Čtení vlastností testovacího prostředí |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/claimAnyVm/Action | Vydeklarujte náhodný virtuální počítač v testovacím prostředí. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/createEnvironment/Action | Vytvářejte virtuální počítače v testovacím prostředí. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/ensureCurrentUserProfile/Action | Ujistěte se, že aktuální uživatel má v testovacím prostředí platný profil. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/formulas/DELETE | Odstraňte vzorce. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/formulas/Read | Čtení vzorců. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/formulas/Write | Přidat nebo upravit vzorce. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/policySets/evaluatePolicies/Action | Vyhodnotí zásady testovacího prostředí. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/virtualMachines/Claim/Action | Převezme vlastnictví existujícího virtuálního počítače. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/VirtualMachines/listApplicableSchedules/Action | Zobrazí seznam použitelných plánů spuštění/zastavení, pokud existují. |
+> | [Microsoft. DevTestLab](resource-provider-operations.md#microsoftdevtestlab)/Labs/virtualMachines/getRdpFileContents/Action | Načte řetězec, který představuje obsah souboru RDP pro virtuální počítač. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/backendAddressPools/JOIN/Action | Připojí fond adres back-endu nástroje pro vyrovnávání zatížení. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/loadBalancers/inboundNatRules/JOIN/Action | Připojí příchozí pravidlo NAT pro vyrovnávání zatížení. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/*/Read | Čtení vlastností síťového rozhraní (například všech nástrojů pro vyrovnávání zatížení, které jsou součástí síťového rozhraní) |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/JOIN/Action | Připojí virtuální počítač k síťovému rozhraní. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/Read | Načte definici síťového rozhraní.  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/networkInterfaces/Write | Vytvoří síťové rozhraní nebo aktualizuje stávající síťové rozhraní.  |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/*/Read | Čtení vlastností veřejné IP adresy |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/JOIN/Action | Připojí se k veřejné IP adrese. Nelze upozorňovat. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/publicIPAddresses/Read | Získá definici veřejné IP adresy. |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/subnets/JOIN/Action | Připojí se k virtuální síti. Nelze upozorňovat. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/Operations/Read | Načte nebo vypíše operace nasazení. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/Read | Načte nebo vypíše nasazení. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/listKeys/Action | Vrátí přístupové klíče pro zadaný účet úložiště. |
 > | **NotActions** |  |
-> | Microsoft. COMPUTE/virtualMachines/povolených velikostí/Read | Zobrazí seznam dostupných velikostí, na které se dá virtuální počítač aktualizovat. |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/vmSizes/Read | Zobrazí seznam dostupných velikostí, na které se dá virtuální počítač aktualizovat. |
 > | **Akce dataactions** |  |
 > | *žádný* |  |
 > | **NotDataActions** |  |
@@ -6030,21 +6446,21 @@ Umožňuje připojit, spustit, restartovat a vypnout virtuální počítače ve 
 
 ### <a name="lab-creator"></a>Autor testovacího prostředí
 
-Umožňuje vytvářet, spravovat a odstraňovat spravované laboratoře v rámci účtů Azure Lab.
+Umožňuje vytvářet, spravovat a odstraňovat spravované laboratoře v rámci účtů Azure Lab. [Další informace](../lab-services/classroom-labs/add-lab-creator.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. LabServices/labAccounts/*/Read |  |
-> | Microsoft. LabServices/labAccounts/createLab/Action | Vytvořte testovací prostředí v účtu testovacího prostředí. |
-> | Microsoft. LabServices/labAccounts/sizes/getRegionalAvailability/Action |  |
-> | Microsoft. LabServices/labAccounts/getRegionalAvailability/Action | Získat informace o regionální dostupnosti pro každou kategorii velikostí nakonfigurovanou v rámci účtu testovacího prostředí |
-> | Microsoft. LabServices/labAccounts/getPricingAndAvailability/Action | Získejte ceny a dostupnost kombinací velikostí, geografických oblastí a operačních systémů pro účet testovacího prostředí. |
-> | Microsoft. LabServices/labAccounts/getRestrictionsAndUsage/Action | Získat základní omezení a využití pro toto předplatné |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/*/Read |  |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/createLab/Action | Vytvořte testovací prostředí v účtu testovacího prostředí. |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/sizes/getRegionalAvailability/Action |  |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRegionalAvailability/Action | Získat informace o regionální dostupnosti pro každou kategorii velikostí nakonfigurovanou v rámci účtu testovacího prostředí |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getPricingAndAvailability/Action | Získejte ceny a dostupnost kombinací velikostí, geografických oblastí a operačních systémů pro účet testovacího prostředí. |
+> | [Microsoft. LabServices](resource-provider-operations.md#microsoftlabservices)/labAccounts/getRestrictionsAndUsage/Action | Získat základní omezení a využití pro toto předplatné |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6089,21 +6505,21 @@ Umožňuje vytvářet, spravovat a odstraňovat spravované laboratoře v rámci
 
 ### <a name="application-insights-component-contributor"></a>Přispěvatel Application Insights komponent
 
-Může spravovat součásti Application Insights.
+Může spravovat součásti Application Insights [Další informace](../azure-monitor/app/resources-roles-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytváření a Správa pravidel pro klasických výstrah |
-> | Microsoft. Insights/metricAlerts/* | Vytváření a Správa nových pravidel upozornění |
-> | Microsoft. Insights/Components/* | Vytváření a Správa komponent Insights |
-> | Microsoft. Insights/webtests/* | Vytváření a správa webových testů Insights |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytváření a Správa pravidel pro klasických výstrah |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricAlerts/* | Vytváření a Správa nových pravidel upozornění |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Vytváření a Správa komponent Insights |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/webtests/* | Vytváření a správa webových testů Insights |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6145,18 +6561,18 @@ Může spravovat součásti Application Insights.
 
 ### <a name="application-insights-snapshot-debugger"></a>Application Insights Snapshot Debugger
 
-Poskytuje uživateli oprávnění k zobrazení a stažení snímků ladění shromážděných pomocí Snapshot Debugger Application Insights. Všimněte si, že tato oprávnění nejsou zahrnutá v rolích [vlastník](#owner) nebo [Přispěvatel](#contributor) . Když uživatelům udělíte roli Application Insights Snapshot Debugger, musíte roli udělit přímo uživateli. Role se při přidání do vlastní role nerozpoznala. 
+Poskytuje uživateli oprávnění k zobrazení a stažení snímků ladění shromážděných pomocí Snapshot Debugger Application Insights. Všimněte si, že tato oprávnění nejsou zahrnutá v rolích [vlastník](#owner) nebo [Přispěvatel](#contributor) . Když uživatelům udělíte roli Application Insights Snapshot Debugger, musíte roli udělit přímo uživateli. Role se při přidání do vlastní role nerozpoznala. [Další informace](../azure-monitor/app/snapshot-debugger.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Insights/Components/*/Read |  |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/*/Read |  |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6195,43 +6611,43 @@ Poskytuje uživateli oprávnění k zobrazení a stažení snímků ladění shr
 
 ### <a name="monitoring-contributor"></a>Přispěvatel monitorování
 
-Může číst všechna data monitorování a upravovat nastavení monitorování. Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles).
+Může číst všechna data monitorování a upravovat nastavení monitorování. Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). [Další informace](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
 > | */read | Přečte prostředky všech typů s výjimkou tajných klíčů. |
-> | Microsoft. AlertsManagement/výstrahy/* |  |
-> | Microsoft. AlertsManagement/alertsSummary/* |  |
-> | Microsoft. Insights/actiongroups/* |  |
-> | Microsoft. Insights/Upozorněníprotokoluaktivit/* |  |
-> | Microsoft. Insights/AlertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Insights/Components/* | Vytváření a Správa komponent Insights |
-> | Microsoft. Insights/DiagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
-> | Microsoft. Insights/EventTypes/* | Vypíše události protokolu aktivit (události správy) v předplatném. Toto oprávnění platí pro programový i portálový přístup k protokolu aktivit. |
-> | Microsoft. Insights/LogDefinitions/* | Toto oprávnění je nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivit prostřednictvím portálu. Vypíše kategorie protokolů v protokolu aktivit. |
-> | Microsoft. Insights/metricalerts/* |  |
-> | Microsoft. Insights/MetricDefinitions/* | Čtení definic metriky (seznam dostupných typů metrik pro prostředek). |
-> | Microsoft. Insights/metriky/* | Načte metriky pro prostředek. |
-> | Microsoft. Insights/registr/Action | Registrace poskytovatele Microsoft Insights |
-> | Microsoft. Insights/scheduledqueryrules/* |  |
-> | Microsoft. Insights/webtests/* | Vytváření a správa webových testů Insights |
-> | Microsoft. Insights/sešity/* |  |
-> | Microsoft. Insights/privateLinkScopes/* |  |
-> | Microsoft. Insights/privateLinkScopeOperationStatuses/* |  |
-> | Microsoft. OperationalInsights/pracovní prostory/zápis | Vytvoří nový pracovní prostor nebo vytvoří odkaz na existující pracovní prostor tím, že mu poskytne ID zákazníka z existujícího pracovního prostoru. |
-> | Microsoft. OperationalInsights/pracovní prostory/intelligencepacks/* | Balíčky řešení Log Analytics pro čtení, zápis a odstranění. |
-> | Microsoft. OperationalInsights/pracovní prostory/savedSearches/* | Čtení, zápis a odstraňování uložených hledání Log Analytics. |
-> | Microsoft. OperationalInsights/pracovní prostory/hledání/akce | Spustí vyhledávací dotaz. |
-> | Microsoft. OperationalInsights/pracovní prostory/sharedKeys/Action | Načte sdílené klíče pracovního prostoru. Tyto klíče se používají k připojení agentů Microsoft Operational Insights k pracovnímu prostoru. |
-> | Microsoft. OperationalInsights/pracovní prostory/storageinsightconfigs/* | Čtení, zápis a odstraňování konfigurací Log Analytics úložiště |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. monitor zátěže byl/monitores/* |  |
-> | Microsoft. monitor zátěže byl/notificationSettings/* |  |
-> | Microsoft. AlertsManagement/smartDetectorAlertRules/* |  |
-> | Microsoft. AlertsManagement/actionRules/* |  |
-> | Microsoft. AlertsManagement/smartGroups/* |  |
+> | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/Alerts/* |  |
+> | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/alertsSummary/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/actiongroups/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/activityLogAlerts/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/AlertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Components/* | Vytváření a Správa komponent Insights |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/DiagnosticSettings/* | Vytvoří, aktualizuje nebo přečte nastavení diagnostiky pro Analysis Server |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/EventTypes/* | Vypíše události protokolu aktivit (události správy) v předplatném. Toto oprávnění platí pro programový i portálový přístup k protokolu aktivit. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/LogDefinitions/* | Toto oprávnění je nezbytné pro uživatele, kteří potřebují přístup k protokolům aktivit prostřednictvím portálu. Vypíše kategorie protokolů v protokolu aktivit. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/metricalerts/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/MetricDefinitions/* | Čtení definic metriky (seznam dostupných typů metrik pro prostředek). |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/* | Načte metriky pro prostředek. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Register/Action | Registrace poskytovatele Microsoft Insights |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/scheduledqueryrules/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/webtests/* | Vytváření a správa webových testů Insights |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/privateLinkScopes/* |  |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/privateLinkScopeOperationStatuses/* |  |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Write | Vytvoří nový pracovní prostor nebo vytvoří odkaz na existující pracovní prostor tím, že mu poskytne ID zákazníka z existujícího pracovního prostoru. |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/intelligencepacks/* | Balíčky řešení Log Analytics pro čtení, zápis a odstranění. |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/savedSearches/* | Čtení, zápis a odstraňování uložených hledání Log Analytics. |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Search/Action | Spustí vyhledávací dotaz. |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/sharedKeys/Action | Načte sdílené klíče pracovního prostoru. Tyto klíče se používají k připojení agentů Microsoft Operational Insights k pracovnímu prostoru. |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/storageinsightconfigs/* | Čtení, zápis a odstraňování konfigurací Log Analytics úložiště |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. monitor zátěže byl](resource-provider-operations.md#microsoftworkloadmonitor)/Monitors/* |  |
+> | [Microsoft. monitor zátěže byl](resource-provider-operations.md#microsoftworkloadmonitor)/notificationSettings/* |  |
+> | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
+> | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/actionRules/* |  |
+> | [Microsoft. AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartGroups/* |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6295,19 +6711,19 @@ Může číst všechna data monitorování a upravovat nastavení monitorování
 
 ### <a name="monitoring-metrics-publisher"></a>Monitorování vydavatele metrik
 
-Povoluje publikování metrik pro prostředky Azure.
+Umožňuje publikovat metriky pro prostředky Azure. další [informace](../azure-monitor/insights/container-insights-update-metrics.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Insights/registr/Action | Registrace poskytovatele Microsoft Insights |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Register/Action | Registrace poskytovatele Microsoft Insights |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. Insights/metriky/Write | Zapsat metriky |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Metrics/Write | Zapsat metriky |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -6341,15 +6757,15 @@ Povoluje publikování metrik pro prostředky Azure.
 
 ### <a name="monitoring-reader"></a>Čtečka monitorování
 
-Může číst všechna data monitorování (metriky, protokoly atd.). Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles).
+Může číst všechna data monitorování (metriky, protokoly atd.). Přečtěte si také téma [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](https://docs.microsoft.com/azure/azure-monitor/platform/roles-permissions-security#built-in-monitoring-roles). [Další informace](../azure-monitor/platform/roles-permissions-security.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
 > | */read | Přečte prostředky všech typů s výjimkou tajných klíčů. |
-> | Microsoft. OperationalInsights/pracovní prostory/hledání/akce | Spustí vyhledávací dotaz. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/Workspaces/Search/Action | Spustí vyhledávací dotaz. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6385,15 +6801,15 @@ Může číst všechna data monitorování (metriky, protokoly atd.). Přečtět
 
 ### <a name="workbook-contributor"></a>Přispěvatel sešitu
 
-Může ukládat Sdílené sešity.
+Může ukládat Sdílené sešity. [Další informace](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Insights/sešity/zápis | Vytvoří nebo aktualizuje sešit. |
-> | Microsoft. Insights/sešity/odstranit | Odstranění sešitu |
-> | Microsoft. Insights/sešity/číst | Přečíst sešit |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Write | Vytvoří nebo aktualizuje sešit. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/DELETE | Odstranění sešitu |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Přečíst sešit |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6429,13 +6845,13 @@ Může ukládat Sdílené sešity.
 
 ### <a name="workbook-reader"></a>Čtenář sešitu
 
-Může číst sešity.
+Může číst sešity. [Další informace](../sentinel/tutorial-monitor-your-data.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Insights/sešity/číst | Přečíst sešit |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/Workbooks/Read | Přečíst sešit |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6472,25 +6888,25 @@ Může číst sešity.
 
 ### <a name="automation-job-operator"></a>Operátor úlohy služby Automation
 
-Vytvářejte a spravujte úlohy pomocí runbooků Automation.
+Vytvářejte a spravujte úlohy pomocí runbooků Automation. [Další informace](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Automation/automationAccounts/hybridRunbookWorkerGroups/Read | Přečte Hybrid Runbook Worker prostředky. |
-> | Microsoft. Automation/automationAccounts/Jobs/Read | Načte Azure Automation úlohu. |
-> | Microsoft. Automation/automationAccounts/Jobs/Resume/Action | Obnoví Azure Automation úlohu. |
-> | Microsoft. Automation/automationAccounts/Jobs/stop/Action | Zastaví úlohu Azure Automation. |
-> | Microsoft. Automation/automationAccounts/Jobs/Streams/Read | Získá datový proud úlohy Azure Automation. |
-> | Microsoft. Automation/automationAccounts/Jobs/Suspend/Action | Pozastaví úlohu Azure Automation. |
-> | Microsoft. Automation/automationAccounts/Jobs/Write | Vytvoří úlohu Azure Automation. |
-> | Microsoft. Automation/automationAccounts/Jobs/Output/Read | Načte výstup úlohy. |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/hybridRunbookWorkerGroups/Read | Přečte Hybrid Runbook Worker prostředky. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Read | Načte Azure Automation úlohu. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Resume/Action | Obnoví Azure Automation úlohu. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/stop/Action | Zastaví úlohu Azure Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Streams/Read | Získá datový proud úlohy Azure Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Suspend/Action | Pozastaví úlohu Azure Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Write | Vytvoří úlohu Azure Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Output/Read | Načte výstup úlohy. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6536,33 +6952,33 @@ Vytvářejte a spravujte úlohy pomocí runbooků Automation.
 
 ### <a name="automation-operator"></a>Operátor služby Automation
 
-Operátory automatizace můžou spouštět, zastavovat, pozastavovat a obnovovat úlohy.
+Operátory automatizace můžou spouštět, zastavovat, pozastavovat a obnovovat úlohy. další [informace](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Automation/automationAccounts/hybridRunbookWorkerGroups/Read | Přečte Hybrid Runbook Worker prostředky. |
-> | Microsoft. Automation/automationAccounts/Jobs/Read | Načte Azure Automation úlohu. |
-> | Microsoft. Automation/automationAccounts/Jobs/Resume/Action | Obnoví Azure Automation úlohu. |
-> | Microsoft. Automation/automationAccounts/Jobs/stop/Action | Zastaví úlohu Azure Automation. |
-> | Microsoft. Automation/automationAccounts/Jobs/Streams/Read | Získá datový proud úlohy Azure Automation. |
-> | Microsoft. Automation/automationAccounts/Jobs/Suspend/Action | Pozastaví úlohu Azure Automation. |
-> | Microsoft. Automation/automationAccounts/Jobs/Write | Vytvoří úlohu Azure Automation. |
-> | Microsoft. Automation/automationAccounts/jobSchedules/Read | Získá Azure Automation plán úlohy. |
-> | Microsoft. Automation/automationAccounts/jobSchedules/Write | Vytvoří plán úlohy Azure Automation. |
-> | Microsoft. Automation/automationAccounts/linkedWorkspace/Read | Získá pracovní prostor propojený s účtem Automation. |
-> | Microsoft. Automation/automationAccounts/Read | Získá účet Azure Automation. |
-> | Microsoft. Automation/automationAccounts/Runbooky/číst | Získá Azure Automation Runbook. |
-> | Microsoft. Automation/automationAccounts/Schedules/Read | Získá prostředek plánování Azure Automation. |
-> | Microsoft. Automation/automationAccounts/Schedules/Write | Vytvoří nebo aktualizuje prostředek plánování Azure Automation. |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Automation/automationAccounts/Jobs/Output/Read | Načte výstup úlohy. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/hybridRunbookWorkerGroups/Read | Přečte Hybrid Runbook Worker prostředky. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Read | Načte Azure Automation úlohu. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Resume/Action | Obnoví Azure Automation úlohu. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/stop/Action | Zastaví úlohu Azure Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Streams/Read | Získá datový proud úlohy Azure Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Suspend/Action | Pozastaví úlohu Azure Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Write | Vytvoří úlohu Azure Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/jobSchedules/Read | Získá Azure Automation plán úlohy. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/jobSchedules/Write | Vytvoří plán úlohy Azure Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/linkedWorkspace/Read | Získá pracovní prostor propojený s účtem Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Read | Získá účet Azure Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/runbooks/Read | Získá Azure Automation Runbook. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Schedules/Read | Získá prostředek plánování Azure Automation. |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Schedules/Write | Vytvoří nebo aktualizuje prostředek plánování Azure Automation. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/Jobs/Output/Read | Načte výstup úlohy. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6616,18 +7032,18 @@ Operátory automatizace můžou spouštět, zastavovat, pozastavovat a obnovovat
 
 ### <a name="automation-runbook-operator"></a>Operátor Runbooku služby Automation
 
-Číst vlastnosti Runbooku – abyste mohli vytvářet úlohy Runbooku.
+Číst vlastnosti Runbooku – abyste mohli vytvářet úlohy Runbooku. [Další informace](../automation/automation-role-based-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Automation/automationAccounts/Runbooky/číst | Získá Azure Automation Runbook. |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Automation](resource-provider-operations.md#microsoftautomation)/automationAccounts/runbooks/Read | Získá Azure Automation Runbook. |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6666,15 +7082,15 @@ Operátory automatizace můžou spouštět, zastavovat, pozastavovat a obnovovat
 
 ### <a name="azure-connected-machine-onboarding"></a>Připojování počítačů k Azure
 
-Může připojit počítače připojené k Azure.
+Může připojit počítače připojené k Azure. [Další informace](../azure-arc/servers/onboard-service-principal.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. HybridCompute/počítače/číst | Čtení jakýchkoli počítačů s obloukem Azure ARC |
-> | Microsoft. HybridCompute/počítače/Write | Zapisuje počítače s obloukem Azure ARC. |
-> | Microsoft. GuestConfiguration/guestConfigurationAssignments/Read | Získat přiřazení konfigurace hostů. |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/Read | Čtení jakýchkoli počítačů s obloukem Azure ARC |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/Write | Zapisuje počítače s obloukem Azure ARC. |
+> | [Microsoft. GuestConfiguration](resource-provider-operations.md#microsoftguestconfiguration)/guestConfigurationAssignments/Read | Získat přiřazení konfigurace hostů. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6716,12 +7132,12 @@ Může číst, zapisovat, odstraňovat a znovu připojit počítače připojené
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. HybridCompute/počítače/číst | Čtení jakýchkoli počítačů s obloukem Azure ARC |
-> | Microsoft. HybridCompute/počítače/Write | Zapisuje počítače s obloukem Azure ARC. |
-> | Microsoft. HybridCompute/počítače/odstranit | Odstraní počítače s obloukem Azure ARC. |
-> | Microsoft. HybridCompute/počítače/znovu připojit/akce | Znovu připojí počítače ARC Azure. |
-> | Microsoft. HybridCompute/počítače/rozšíření/Write | Nainstaluje nebo aktualizuje rozšíření ARC Azure. |
-> | Microsoft. HybridCompute/*/Read |  |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/Read | Čtení jakýchkoli počítačů s obloukem Azure ARC |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/Write | Zapisuje počítače s obloukem Azure ARC. |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/DELETE | Odstraní počítače s obloukem Azure ARC. |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/reconnect/Action | Znovu připojí počítače ARC Azure. |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/Machines/Extensions/Write | Nainstaluje nebo aktualizuje rozšíření ARC Azure. |
+> | [Microsoft. HybridCompute](resource-provider-operations.md#microsofthybridcompute)/*/Read |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6760,19 +7176,19 @@ Může číst, zapisovat, odstraňovat a znovu připojit počítače připojené
 
 ### <a name="billing-reader"></a>Čtenář fakturace
 
-Povolí přístup pro čtení k fakturačním údajům.
+Povolit přístup pro čtení k údajům o fakturaci [Další informace](../cost-management-billing/manage/manage-billing-access.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. fakturace/*/Read | Přečíst fakturační informace |
-> | Microsoft. Commerce/*/Read |  |
-> | Microsoft. spotřeb/*/Read |  |
-> | Microsoft. Management/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
-> | Microsoft. CostManagement/*/Read |  |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. fakturace](resource-provider-operations.md#microsoftbilling)/*/Read | Přečíst fakturační informace |
+> | [Microsoft. Commerce](resource-provider-operations.md#microsoftcommerce)/*/Read |  |
+> | [Microsoft. spotřeb](resource-provider-operations.md#microsoftconsumption)/*/Read |  |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
+> | [Microsoft. CostManagement](resource-provider-operations.md#microsoftcostmanagement)/*/Read |  |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6812,17 +7228,17 @@ Povolí přístup pro čtení k fakturačním údajům.
 
 ### <a name="blueprint-contributor"></a>Přispěvatel podrobného plánu
 
-Může spravovat definice podrobného plánu, ale nepřiřazovat je.
+Může spravovat definice podrobného plánu, ale nepřiřazovat je. [Další informace](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Details/modrotisky/* | Vytvářejte a spravujte definice podrobného plánu nebo artefakty podrobného plánu. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. detail](resource-provider-operations.md#microsoftblueprint)/Blueprints/* | Vytvářejte a spravujte definice podrobného plánu nebo artefakty podrobného plánu. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6860,17 +7276,17 @@ Může spravovat definice podrobného plánu, ale nepřiřazovat je.
 
 ### <a name="blueprint-operator"></a>Operátor podrobného plánu
 
-Může přiřadit existující publikované modrotisky, ale nemůže vytvářet nové plány. Všimněte si, že to funguje jenom v případě, že se přiřazení provádí pomocí uživatelem přiřazené spravované identity.
+Může přiřadit existující publikované modrotisky, ale nemůže vytvářet nové plány. Všimněte si, že to funguje jenom v případě, že se přiřazení provádí pomocí uživatelem přiřazené spravované identity. [Další informace](../governance/blueprints/overview.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. detail/blueprintAssignments/* | Vytvořte a spravujte přiřazení podrobného plánu. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. detail](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/* | Vytvořte a spravujte přiřazení podrobného plánu. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6908,21 +7324,21 @@ Může přiřadit existující publikované modrotisky, ale nemůže vytvářet 
 
 ### <a name="cost-management-contributor"></a>Přispěvatel Cost Management
 
-Umožňuje zobrazit náklady a spravovat konfiguraci nákladů (např. rozpočty, exporty).
+Umožňuje zobrazit náklady a spravovat konfiguraci nákladů (např. rozpočty, exporty) [Další informace](../cost-management-billing/costs/understand-work-scopes.md) .
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. spotřeb/* |  |
-> | Microsoft. CostManagement/* |  |
-> | Microsoft. fakturace/billingPeriods/Read |  |
-> | Microsoft. Resources/Subscriptions/Read | Získá seznam předplatných. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Advisor/Configurations/Ready | Získat konfigurace |
-> | Microsoft. Advisor/doporučení/číst | Čte doporučení |
-> | Microsoft. Management/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
+> | [Microsoft. spotřeba](resource-provider-operations.md#microsoftconsumption)/* |  |
+> | [Microsoft. CostManagement](resource-provider-operations.md#microsoftcostmanagement)/* |  |
+> | [Microsoft./BillingPeriods/Read fakturace](resource-provider-operations.md#microsoftbilling) |  |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Získá seznam předplatných. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Configurations/Read | Získat konfigurace |
+> | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Recommendations/Read | Čte doporučení |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -6964,21 +7380,21 @@ Umožňuje zobrazit náklady a spravovat konfiguraci nákladů (např. rozpočty
 
 ### <a name="cost-management-reader"></a>Čtecí modul Cost Management
 
-Může zobrazit data a konfiguraci nákladů (např. rozpočty, exporty).
+Může zobrazit data a konfiguraci nákladů (např. rozpočty, exporty) [Další informace](../cost-management-billing/costs/understand-work-scopes.md) .
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. spotřeb/*/Read |  |
-> | Microsoft. CostManagement/*/Read |  |
-> | Microsoft. fakturace/billingPeriods/Read |  |
-> | Microsoft. Resources/Subscriptions/Read | Získá seznam předplatných. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Advisor/Configurations/Ready | Získat konfigurace |
-> | Microsoft. Advisor/doporučení/číst | Čte doporučení |
-> | Microsoft. Management/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
+> | [Microsoft. spotřeb](resource-provider-operations.md#microsoftconsumption)/*/Read |  |
+> | [Microsoft. CostManagement](resource-provider-operations.md#microsoftcostmanagement)/*/Read |  |
+> | [Microsoft./BillingPeriods/Read fakturace](resource-provider-operations.md#microsoftbilling) |  |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Read | Získá seznam předplatných. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Configurations/Read | Získat konfigurace |
+> | [Microsoft. Advisor](resource-provider-operations.md#microsoftadvisor)/Recommendations/Read | Čte doporučení |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7026,8 +7442,8 @@ Umožňuje uživatelům upravovat a odstraňovat nastavení hierarchie.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Management/managementGroups/nastavení/Write | Vytvoří nebo aktualizuje nastavení hierarchie skupiny pro správu. |
-> | Microsoft. Management/managementGroups/Settings/DELETE | Odstraní nastavení hierarchie skupiny pro správu. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Settings/Write | Vytvoří nebo aktualizuje nastavení hierarchie skupiny pro správu. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Settings/DELETE | Odstraní nastavení hierarchie skupiny pro správu. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7069,10 +7485,10 @@ Umožňuje vytváření prostředků spravovaných aplikací.
 > | --- | --- |
 > | **Akce** |  |
 > | */read | Přečte prostředky všech typů s výjimkou tajných klíčů. |
-> | Microsoft. Solutions/aplikace/* |  |
-> | Microsoft. Solutions/Register/Action | Zaregistrujte se do řešení. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/* |  |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Solutions](resource-provider-operations.md#microsoftsolutions)/Applications/* |  |
+> | [Microsoft. Solutions](resource-provider-operations.md#microsoftsolutions)/Register/Action | Zaregistrujte se do řešení. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/* |  |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7117,8 +7533,8 @@ Umožňuje číst a provádět akce s prostředky spravovaných aplikací.
 > | --- | --- |
 > | **Akce** |  |
 > | */read | Přečte prostředky všech typů s výjimkou tajných klíčů. |
-> | Microsoft. Solutions/aplikace/číst | Načte seznam aplikací. |
-> | Microsoft. Solutions/* za akci |  |
+> | [Microsoft. Solutions](resource-provider-operations.md#microsoftsolutions)/Applications/Read | Načte seznam aplikací. |
+> | [Microsoft. Solutions](resource-provider-operations.md#microsoftsolutions)/* za akci |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7161,8 +7577,8 @@ Umožňuje číst prostředky ve spravované aplikaci a vyžadovat přístup JIT
 > | --- | --- |
 > | **Akce** |  |
 > | */read | Přečte prostředky všech typů s výjimkou tajných klíčů. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Solutions/jitRequests/* |  |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Solutions](resource-provider-operations.md#microsoftsolutions)/jitRequests/* |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7198,15 +7614,15 @@ Umožňuje číst prostředky ve spravované aplikaci a vyžadovat přístup JIT
 
 ### <a name="managed-services-registration-assignment-delete-role"></a>Přiřazení registrace spravovaných služeb – odstranit roli
 
-Přiřazení registrace spravovaných služeb – odstranění role umožňuje správcům klienta odstranit přiřazení registrace přiřazené ke svému tenantovi.
+Přiřazení registrace spravovaných služeb – odstranění role umožňuje správcům klienta odstranit přiřazení registrace přiřazené ke svému tenantovi. [Další informace](../lighthouse/how-to/remove-delegation.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. ManagedServices/registrationAssignments/Read | Načte seznam přiřazení registrace spravovaných služeb. |
-> | Microsoft. ManagedServices/registrationAssignments/DELETE | Odebere přiřazení registrace spravovaných služeb. |
-> | Microsoft. ManagedServices/operationStatuses/Read | Přečte stav operace pro daný prostředek. |
+> | [Microsoft. ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/Read | Načte seznam přiřazení registrace spravovaných služeb. |
+> | [Microsoft. ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/registrationAssignments/DELETE | Odebere přiřazení registrace spravovaných služeb. |
+> | [Microsoft. ManagedServices](resource-provider-operations.md#microsoftmanagedservices)/operationStatuses/Read | Přečte stav operace pro daný prostředek. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7242,17 +7658,17 @@ Přiřazení registrace spravovaných služeb – odstranění role umožňuje s
 
 ### <a name="management-group-contributor"></a>Přispěvatel skupiny pro správu
 
-Role Přispěvatel skupiny pro správu
+Role Přispěvatel skupiny pro správu – další [informace](../governance/management-groups/overview.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Management/managementGroups/DELETE | Odstraní skupinu pro správu. |
-> | Microsoft. Management/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
-> | Microsoft. Management/managementGroups/Subscriptions/DELETE | Odpojí předplatné ze skupiny pro správu. |
-> | Microsoft. Management/managementGroups/Subscriptions/Write | Přidruží stávající předplatné ke skupině pro správu. |
-> | Microsoft. Management/managementGroups/Write | Vytvoří nebo aktualizuje skupinu pro správu. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/DELETE | Odstraní skupinu pro správu. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Subscriptions/DELETE | Odpojí předplatné ze skupiny pro správu. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Subscriptions/Write | Přidruží stávající předplatné ke skupině pro správu. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Write | Vytvoří nebo aktualizuje skupinu pro správu. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7296,7 +7712,7 @@ Role čtenář skupiny pro správu
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Management/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
+> | [Microsoft. Management](resource-provider-operations.md#microsoftmanagement)/managementGroups/Read | Vypíše skupiny pro správu ověřeného uživatele. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7336,12 +7752,12 @@ Umožňuje správu účtů a aplikací New Relic Application Performance Managem
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | NewRelic. APM/účty/* |  |
 > | **NotActions** |  |
 > | *žádný* |  |
@@ -7382,20 +7798,20 @@ Umožňuje správu účtů a aplikací New Relic Application Performance Managem
 
 ### <a name="policy-insights-data-writer-preview"></a>Zapisovač dat zásad pro zásady (Preview)
 
-Povolí přístup pro čtení k zásadám prostředků a k zápisu do událostí zásad součástí prostředků.
+Povolí přístup pro čtení k zásadám prostředků a k zápisu do událostí zásad součástí prostředků. [Další informace](../governance/policy/concepts/policy-for-kubernetes.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/policyassignments/Read | Získejte informace o přiřazení zásady. |
-> | Microsoft. Authorization/PolicyDefinitions/Read | Získat informace o definici zásady. |
-> | Microsoft. Authorization/policysetdefinitions/Read | Získejte informace o definici sady zásad. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/Read | Získejte informace o přiřazení zásady. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/PolicyDefinitions/Read | Získat informace o definici zásady. |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/Read | Získejte informace o definici sady zásad. |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
-> | Microsoft. PolicyInsights/checkDataPolicyCompliance/Action | Zkontroluje stav dodržování předpisů dané součásti proti zásadám dat. |
-> | Microsoft. PolicyInsights/policyEvents/logDataEvents/Action | Zaprotokoluje události zásad součásti prostředků. |
+> | [Microsoft. PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/checkDataPolicyCompliance/Action | Zkontroluje stav dodržování předpisů dané součásti proti zásadám dat. |
+> | [Microsoft. PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/policyEvents/logDataEvents/Action | Zaprotokoluje události zásad součásti prostředků. |
 > | **NotDataActions** |  |
 > | *žádný* |  |
 
@@ -7430,18 +7846,18 @@ Povolí přístup pro čtení k zásadám prostředků a k zápisu do událostí
 
 ### <a name="resource-policy-contributor"></a>Přispěvatel zásad prostředků
 
-Uživatelé s právy k vytváření a úpravám zásad prostředků, vytváření lístků podpory a čtení prostředků/hierarchie.
+Uživatelé s právy k vytváření a úpravám zásad prostředků, vytváření lístků podpory a čtení prostředků/hierarchie. [Další informace](../governance/policy/overview.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
 > | */read | Přečte prostředky všech typů s výjimkou tajných klíčů. |
-> | Microsoft. Authorization/policyassignments/* | Vytvoření a správa přiřazení zásad |
-> | Microsoft. Authorization/PolicyDefinitions/* | Vytváření a Správa definic zásad |
-> | Microsoft. Authorization/policysetdefinitions/* | Vytváření a Správa sad zásad |
-> | Microsoft. PolicyInsights/* |  |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policyassignments/* | Vytvoření a správa přiřazení zásad |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/PolicyDefinitions/* | Vytváření a Správa definic zásad |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/policysetdefinitions/* | Vytváření a Správa sad zásad |
+> | [Microsoft. PolicyInsights](resource-provider-operations.md#microsoftpolicyinsights)/* |  |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7480,40 +7896,40 @@ Uživatelé s právy k vytváření a úpravám zásad prostředků, vytvářen�
 
 ### <a name="site-recovery-contributor"></a>Přispěvatel Site Recovery
 
-Umožňuje správu Site Recovery služby s výjimkou vytvoření trezoru a přiřazení role.
+Umožňuje správu Site Recovery služby s výjimkou vytvoření trezoru a přiřazení role. [Další informace](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Network/virtualNetworks/Read | Získat definici virtuální sítě |
-> | Microsoft. RecoveryServices/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba. |
-> | Microsoft. RecoveryServices/Locations/allocateStamp/Action | AllocateStamp je interní operace, kterou používá služba. |
-> | Microsoft. RecoveryServices/trezory/certifikáty/zapisovat | Operace aktualizovat certifikát prostředku aktualizuje certifikát přihlašovacích údajů k prostředku nebo úložišti. |
-> | Microsoft. RecoveryServices/trezory/extendedInformation/* | Vytváření a Správa rozšířených informací souvisejících s trezorem |
-> | Microsoft. RecoveryServices/trezory/číst | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
-> | Microsoft. RecoveryServices/trezory/refreshContainers/Read |  |
-> | Microsoft. RecoveryServices/trezory/registeredIdentities/* | Vytváření a Správa registrovaných identit |
-> | Microsoft. RecoveryServices/trezory/replicationAlertSettings/* | Vytvořit nebo aktualizovat nastavení výstrah replikace |
-> | Microsoft. RecoveryServices/trezory/replicationEvents/Read | Čtení jakýchkoli událostí |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/* | Vytváření a Správa prostředků infrastruktury replikace |
-> | Microsoft. RecoveryServices/trezory/replicationJobs/* | Vytváření a správa úloh replikace |
-> | Microsoft. RecoveryServices/trezory/replicationPolicies/* | Vytváření a Správa zásad replikace |
-> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/* | Vytváření a Správa plánů obnovení |
-> | Microsoft. RecoveryServices/trezory/storageConfig/* | Vytvoření a Správa konfigurace úložiště Recovery Servicesho trezoru |
-> | Microsoft. RecoveryServices/trezory/tokenInfo/Read |  |
-> | Microsoft. RecoveryServices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/vaultTokens/Read | Operaci tokenu trezoru jde použít k získání tokenu trezoru pro operace back-endu na úrovni trezoru. |
-> | Microsoft. RecoveryServices/trezory/monitoringAlerts/* | Čtení výstrah pro trezor služby Recovery Services |
-> | Microsoft. RecoveryServices/trezory/monitoringConfigurations/notificationConfiguration/Read |  |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Storage/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
-> | Microsoft. RecoveryServices/trezory/replicationOperationStatus/Read | Přečtěte si stav operace replikace trezoru |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | Získat definici virtuální sítě |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocateStamp/Action | AllocateStamp je interní operace, kterou používá služba. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Certificates/Write | Operace aktualizovat certifikát prostředku aktualizuje certifikát přihlašovacích údajů k prostředku nebo úložišti. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/* | Vytváření a Správa rozšířených informací souvisejících s trezorem |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshContainers/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/* | Vytváření a Správa registrovaných identit |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationAlertSettings/* | Vytvořit nebo aktualizovat nastavení výstrah replikace |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationEvents/Read | Čtení jakýchkoli událostí |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/* | Vytváření a Správa prostředků infrastruktury replikace |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationJobs/* | Vytváření a správa úloh replikace |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationPolicies/* | Vytváření a Správa zásad replikace |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationRecoveryPlans/* | Vytváření a Správa plánů obnovení |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/* | Vytvoření a Správa konfigurace úložiště Recovery Servicesho trezoru |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Vrátí podrobnosti využití trezoru Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaultTokens/Read | Operaci tokenu trezoru jde použít k získání tokenu trezoru pro operace back-endu na úrovni trezoru. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/* | Čtení výstrah pro trezor služby Recovery Services |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/Read |  |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationOperationStatus/Read | Přečtěte si stav operace replikace trezoru |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7574,70 +7990,70 @@ Umožňuje správu Site Recovery služby s výjimkou vytvoření trezoru a při�
 
 ### <a name="site-recovery-operator"></a>Operátor Site Recovery
 
-Umožňuje převzetí služeb při selhání a navrácení služeb po obnovení, ale jiné operace správy Site Recovery.
+Umožňuje převzetí služeb při selhání a navrácení služeb po obnovení, ale neprovádí jiné operace správy Site Recovery další [informace](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. Network/virtualNetworks/Read | Získat definici virtuální sítě |
-> | Microsoft. RecoveryServices/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba. |
-> | Microsoft. RecoveryServices/Locations/allocateStamp/Action | AllocateStamp je interní operace, kterou používá služba. |
-> | Microsoft. RecoveryServices/trezory/extendedInformation/Read | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
-> | Microsoft. RecoveryServices/trezory/číst | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
-> | Microsoft. RecoveryServices/trezory/refreshContainers/Read |  |
-> | Microsoft. RecoveryServices/trezory/registeredIdentities/operationResults/Read | Operaci získat výsledky operace Get lze použít k získání stavu operace a výsledku asynchronně odeslané operace. |
-> | Microsoft. RecoveryServices/trezory/registeredIdentities/Read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
-> | Microsoft. RecoveryServices/trezory/replicationAlertSettings/Read | Přečtěte si všechna nastavení výstrah. |
-> | Microsoft. RecoveryServices/trezory/replicationEvents/Read | Čtení jakýchkoli událostí |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/checkConsistency/Action | Kontroluje konzistenci prostředků infrastruktury. |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/Read | Čtení jakýchkoli prostředků infrastruktury |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/reassociateGateway/Action | Znovu přidružit bránu |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/renewcertificate/Action | Prodloužit platnost certifikátu pro Fabric |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationNetworks/Read | Čtení všech sítí |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationNetworks/replicationNetworkMappings/Read | Číst všechna mapování sítě |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/Read | Čtení všech kontejnerů ochrany |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/Read | Čtení všech chráněných položek |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/Action | Použít bod obnovení |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/Action | Potvrzení převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/Action | Plánované převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/Read | Čtení jakýchkoli chráněných položek |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/číst | Čtení všech bodů obnovení replikace |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/Action | Opravit replikaci |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reprotect/Action | Znovu chránit chráněnou položku |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/switchprotection/Action | Přepnout kontejner ochrany |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/Action | Testovací převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/Action | Vyčištění testovacího převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/Action | Aktualizovat službu mobility |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Přečíst všechna mapování kontejnerů ochrany |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/Read | Číst všechny poskytovatele Recovery Services |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/Action | Aktualizovat zprostředkovatele |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationStorageClassifications/Read | Čtení všech klasifikací úložiště |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/Read | Čtení jakýchkoli mapování klasifikací úložiště |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationvCenters/Read | Číst libovolný servery vCenter |
-> | Microsoft. RecoveryServices/trezory/replicationJobs/* | Vytváření a správa úloh replikace |
-> | Microsoft. RecoveryServices/trezory/replicationPolicies/Read | Čtení všech zásad |
-> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/failoverCommit/Action | Plán obnovení potvrzení převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/plannedFailover/Action | Plán obnovení plánovaného převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/Read | Čtení všech plánů obnovení |
-> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/reprotect/Action | Znovu zapnout ochranu plánu obnovení |
-> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/testFailover/Action | Plán obnovení testovacího převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/testFailoverCleanup/Action | Plán obnovení pro vyčištění testovacího převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/unplannedFailover/Action | Plán obnovení převzetí služeb při selhání |
-> | Microsoft. RecoveryServices/trezory/monitoringAlerts/* | Čtení výstrah pro trezor služby Recovery Services |
-> | Microsoft. RecoveryServices/trezory/monitoringConfigurations/notificationConfiguration/Read |  |
-> | Microsoft. RecoveryServices/trezory/storageConfig/Read |  |
-> | Microsoft. RecoveryServices/trezory/tokenInfo/Read |  |
-> | Microsoft. RecoveryServices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/vaultTokens/Read | Operaci tokenu trezoru jde použít k získání tokenu trezoru pro operace back-endu na úrovni trezoru. |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Storage/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/virtualNetworks/Read | Získat definici virtuální sítě |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocateStamp/Action | AllocateStamp je interní operace, kterou používá služba. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/Read | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshContainers/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/Read | Operaci získat výsledky operace Get lze použít k získání stavu operace a výsledku asynchronně odeslané operace. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/Read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationAlertSettings/Read | Přečtěte si všechna nastavení výstrah. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationEvents/Read | Čtení jakýchkoli událostí |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/checkConsistency/Action | Kontroluje konzistenci prostředků infrastruktury. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/Read | Čtení jakýchkoli prostředků infrastruktury |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/reassociateGateway/Action | Znovu přidružit bránu |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/renewcertificate/Action | Prodloužit platnost certifikátu pro Fabric |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationNetworks/Read | Čtení všech sítí |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/Read | Číst všechna mapování sítě |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/Read | Čtení všech kontejnerů ochrany |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/Read | Čtení všech chráněných položek |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/applyRecoveryPoint/Action | Použít bod obnovení |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/failoverCommit/Action | Potvrzení převzetí služeb při selhání |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/plannedFailover/Action | Plánované převzetí služeb při selhání |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/Read | Čtení jakýchkoli chráněných položek |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/Read | Čtení všech bodů obnovení replikace |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/repairReplication/Action | Opravit replikaci |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/reProtect/Action | Znovu chránit chráněnou položku |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/switchprotection/Action | Přepnout kontejner ochrany |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailover/Action | Testovací převzetí služeb při selhání |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/testFailoverCleanup/Action | Vyčištění testovacího převzetí služeb při selhání |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/unplannedFailover/Action | Převzetí služeb při selhání |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/updateMobilityService/Action | Aktualizovat službu mobility |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Přečíst všechna mapování kontejnerů ochrany |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationRecoveryServicesProviders/Read | Číst všechny poskytovatele Recovery Services |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationRecoveryServicesProviders/refreshProvider/Action | Aktualizovat zprostředkovatele |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationStorageClassifications/Read | Čtení všech klasifikací úložiště |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/Read | Čtení jakýchkoli mapování klasifikací úložiště |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationvCenters/Read | Číst libovolný servery vCenter |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationJobs/* | Vytváření a správa úloh replikace |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationPolicies/Read | Čtení všech zásad |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationRecoveryPlans/failoverCommit/Action | Plán obnovení potvrzení převzetí služeb při selhání |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationRecoveryPlans/plannedFailover/Action | Plán obnovení plánovaného převzetí služeb při selhání |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationRecoveryPlans/Read | Čtení všech plánů obnovení |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationRecoveryPlans/reProtect/Action | Znovu zapnout ochranu plánu obnovení |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationRecoveryPlans/testFailover/Action | Plán obnovení testovacího převzetí služeb při selhání |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationRecoveryPlans/testFailoverCleanup/Action | Plán obnovení pro vyčištění testovacího převzetí služeb při selhání |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationRecoveryPlans/unplannedFailover/Action | Plán obnovení převzetí služeb při selhání |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/* | Čtení výstrah pro trezor služby Recovery Services |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Vrátí podrobnosti využití trezoru Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaultTokens/Read | Operaci tokenu trezoru jde použít k získání tokenu trezoru pro operace back-endu na úrovni trezoru. |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Storage](resource-provider-operations.md#microsoftstorage)/storageAccounts/Read | Vrátí seznam účtů úložiště nebo získá vlastnosti pro zadaný účet úložiště. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7728,43 +8144,43 @@ Umožňuje převzetí služeb při selhání a navrácení služeb po obnovení,
 
 ### <a name="site-recovery-reader"></a>Čtecí modul Site Recovery
 
-Umožňuje zobrazit Site Recovery stav, ale nemůže provádět jiné operace správy.
+Umožňuje zobrazit Site Recovery stav, ale nemůže provádět jiné operace správy. další [informace](../site-recovery/site-recovery-role-based-linked-access-control.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. RecoveryServices/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba. |
-> | Microsoft. RecoveryServices/trezory/extendedInformation/Read | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
-> | Microsoft. RecoveryServices/trezory/monitoringAlerts/Read | Získá výstrahy pro trezor služby Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/monitoringConfigurations/notificationConfiguration/Read |  |
-> | Microsoft. RecoveryServices/trezory/číst | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
-> | Microsoft. RecoveryServices/trezory/refreshContainers/Read |  |
-> | Microsoft. RecoveryServices/trezory/registeredIdentities/operationResults/Read | Operaci získat výsledky operace Get lze použít k získání stavu operace a výsledku asynchronně odeslané operace. |
-> | Microsoft. RecoveryServices/trezory/registeredIdentities/Read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
-> | Microsoft. RecoveryServices/trezory/replicationAlertSettings/Read | Přečtěte si všechna nastavení výstrah. |
-> | Microsoft. RecoveryServices/trezory/replicationEvents/Read | Čtení jakýchkoli událostí |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/Read | Čtení jakýchkoli prostředků infrastruktury |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationNetworks/Read | Čtení všech sítí |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationNetworks/replicationNetworkMappings/Read | Číst všechna mapování sítě |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/Read | Čtení všech kontejnerů ochrany |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/Read | Čtení všech chráněných položek |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/Read | Čtení jakýchkoli chráněných položek |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/číst | Čtení všech bodů obnovení replikace |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Přečíst všechna mapování kontejnerů ochrany |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationRecoveryServicesProviders/Read | Číst všechny poskytovatele Recovery Services |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationStorageClassifications/Read | Čtení všech klasifikací úložiště |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/Read | Čtení jakýchkoli mapování klasifikací úložiště |
-> | Microsoft. RecoveryServices/trezory/replicationFabrics/replicationvCenters/Read | Číst libovolný servery vCenter |
-> | Microsoft. RecoveryServices/trezory/replicationJobs/Read | Čtení všech úloh |
-> | Microsoft. RecoveryServices/trezory/replicationPolicies/Read | Čtení všech zásad |
-> | Microsoft. RecoveryServices/trezory/replicationRecoveryPlans/Read | Čtení všech plánů obnovení |
-> | Microsoft. RecoveryServices/trezory/storageConfig/Read |  |
-> | Microsoft. RecoveryServices/trezory/tokenInfo/Read |  |
-> | Microsoft. RecoveryServices/trezory/používání/čtení | Vrátí podrobnosti využití trezoru Recovery Services. |
-> | Microsoft. RecoveryServices/trezory/vaultTokens/Read | Operaci tokenu trezoru jde použít k získání tokenu trezoru pro operace back-endu na úrovni trezoru. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Locations/allocatedStamp/Read | GetAllocatedStamp je interní operace, kterou používá služba. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/extendedInformation/Read | Operace získat rozšířené informace získá rozšířené informace o objektu, které představují prostředek Azure typu? trezor? |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringAlerts/Read | Získá výstrahy pro trezor služby Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/monitoringConfigurations/notificationConfiguration/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/Read | Operace získat úložiště Získá objekt, který představuje prostředek Azure typu trezor. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/refreshContainers/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/operationResults/Read | Operaci získat výsledky operace Get lze použít k získání stavu operace a výsledku asynchronně odeslané operace. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/registeredIdentities/Read | Operaci získat kontejnery lze použít k získání kontejnerů zaregistrovaných pro určitý prostředek. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationAlertSettings/Read | Přečtěte si všechna nastavení výstrah. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationEvents/Read | Čtení jakýchkoli událostí |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/Read | Čtení jakýchkoli prostředků infrastruktury |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationNetworks/Read | Čtení všech sítí |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationNetworks/replicationNetworkMappings/Read | Číst všechna mapování sítě |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/Read | Čtení všech kontejnerů ochrany |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectableItems/Read | Čtení všech chráněných položek |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/Read | Čtení jakýchkoli chráněných položek |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/recoveryPoints/Read | Čtení všech bodů obnovení replikace |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationProtectionContainers/replicationProtectionContainerMappings/Read | Přečíst všechna mapování kontejnerů ochrany |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationRecoveryServicesProviders/Read | Číst všechny poskytovatele Recovery Services |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationStorageClassifications/Read | Čtení všech klasifikací úložiště |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationStorageClassifications/replicationStorageClassificationMappings/Read | Čtení jakýchkoli mapování klasifikací úložiště |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationFabrics/replicationvCenters/Read | Číst libovolný servery vCenter |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationJobs/Read | Čtení všech úloh |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationPolicies/Read | Čtení všech zásad |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/replicationRecoveryPlans/Read | Čtení všech plánů obnovení |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/storageConfig/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/tokenInfo/Read |  |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/usages/Read | Vrátí podrobnosti využití trezoru Recovery Services. |
+> | [Microsoft. RecoveryServices](resource-provider-operations.md#microsoftrecoveryservices)/Vaults/vaultTokens/Read | Operaci tokenu trezoru jde použít k získání tokenu trezoru pro operace back-endu na úrovni trezoru. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7828,15 +8244,15 @@ Umožňuje zobrazit Site Recovery stav, ale nemůže provádět jiné operace sp
 
 ### <a name="support-request-contributor"></a>Přispěvatel žádostí o podporu
 
-Umožňuje vytvářet a spravovat žádosti o podporu.
+Umožňuje vytvářet a spravovat žádosti o podporu. další [informace](../azure-portal/supportability/how-to-create-azure-support-request.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7872,20 +8288,20 @@ Umožňuje vytvářet a spravovat žádosti o podporu.
 
 ### <a name="tag-contributor"></a>Přispěvatel značek
 
-Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entitám.
+Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entitám. [Další informace](../azure-resource-manager/management/tag-resources.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Resources/Read | Získá prostředky pro skupinu prostředků. |
-> | Microsoft. Resources/Subscriptions/Resources/Read | Získá prostředky předplatného. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
-> | Microsoft. Resources/Tags/* |  |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Resources/Read | Získá prostředky pro skupinu prostředků. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/Resources/Read | Získá prostředky předplatného. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Tags/* |  |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7924,7 +8340,7 @@ Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entit�
 }
 ```
 
-## <a name="other"></a>Jiné
+## <a name="other"></a>Další
 
 
 ### <a name="biztalk-contributor"></a>Přispěvatel BizTalk
@@ -7935,13 +8351,13 @@ Umožňuje spravovat BizTalk Services, ale ne přístup k nim.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
 > | Microsoft. BizTalkServices/BizTalk/* | Vytváření a Správa BizTalk Services |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |
@@ -7979,6 +8395,46 @@ Umožňuje spravovat BizTalk Services, ale ne přístup k nim.
 }
 ```
 
+### <a name="desktop-virtualization-user"></a>Uživatel virtualizace plochy
+
+Umožňuje uživateli používat aplikace ve skupině aplikací. [Další informace](../virtual-desktop/delegated-access-virtual-desktop.md)
+
+> [!div class="mx-tableFixed"]
+> |  |  |
+> | --- | --- |
+> | **Akce** |  |
+> | *žádný* |  |
+> | **NotActions** |  |
+> | *žádný* |  |
+> | **Akce dataactions** |  |
+> | Microsoft. DesktopVirtualization/applicationGroups/useApplications/Action | Použití aplikace |
+> | **NotDataActions** |  |
+> | *žádný* |  |
+
+```json
+{
+  "assignableScopes": [
+    "/"
+  ],
+  "description": "Allows user to use the applications in an application group.",
+  "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63",
+  "name": "1d18fff3-a72a-46b5-b4a9-0b38a3cd7e63",
+  "permissions": [
+    {
+      "actions": [],
+      "notActions": [],
+      "dataActions": [
+        "Microsoft.DesktopVirtualization/applicationGroups/useApplications/action"
+      ],
+      "notDataActions": []
+    }
+  ],
+  "roleName": "Desktop Virtualization User",
+  "roleType": "BuiltInRole",
+  "type": "Microsoft.Authorization/roleDefinitions"
+}
+```
+
 ### <a name="scheduler-job-collections-contributor"></a>Přispěvatel kolekcí úloh Scheduleru
 
 Umožňuje spravovat kolekce úloh Scheduleru, ale ne přístup k nim.
@@ -7987,13 +8443,13 @@ Umožňuje spravovat kolekce úloh Scheduleru, ale ne přístup k nim.
 > |  |  |
 > | --- | --- |
 > | **Akce** |  |
-> | Microsoft. Authorization/*/Read | Čtení rolí a přiřazení rolí |
-> | Microsoft. Insights/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
-> | Microsoft. ResourceHealth/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
-> | Microsoft. Resources/nasazení/* | Vytvoření a Správa nasazení |
-> | Microsoft. Resources/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
-> | Microsoft. Scheduler/jobcollections/* | Vytváření a Správa kolekcí úloh |
-> | Microsoft. support/* | Vytvoření a aktualizace lístku podpory |
+> | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
+> | [Microsoft. Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Vytvoření a Správa klasického upozornění na metriku |
+> | [Microsoft. ResourceHealth](resource-provider-operations.md#microsoftresourcehealth)/availabilityStatuses/Read | Získá stavy dostupnosti pro všechny prostředky v zadaném oboru. |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Deployments/* | Vytvoření a Správa nasazení |
+> | [Microsoft. Resources](resource-provider-operations.md#microsoftresources)/Subscriptions/resourceGroups/Read | Načte nebo vypíše skupiny prostředků. |
+> | [Microsoft. Scheduler](resource-provider-operations.md#microsoftscheduler)/jobcollections/* | Vytváření a Správa kolekcí úloh |
+> | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | **NotActions** |  |
 > | *žádný* |  |
 > | **Akce dataactions** |  |

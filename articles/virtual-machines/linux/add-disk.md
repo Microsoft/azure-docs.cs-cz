@@ -4,16 +4,16 @@ description: Naučte se přidat trvalý datový disk k VIRTUÁLNÍmu počítači
 author: roygara
 manager: twooley
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/13/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: a80a1fe21ba0b40aebf9e426e3d49f499c2d2a21
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb18207c15007820bf93254886ab38a43bc5b48f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250410"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658333"
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Přidání disku do virtuálního počítače s Linuxem
 V tomto článku se dozvíte, jak ke svému VIRTUÁLNÍmu počítači připojit trvalý disk, abyste mohli zachovat vaše data – i když se váš virtuální počítač znovu zřídí z důvodu údržby nebo změny velikosti.
@@ -69,7 +69,7 @@ Výstup se podobá následujícímu příkladu:
 > [!NOTE]
 > Doporučuje se používat nejnovější verze nástroje Fdisk nebo částečně, které jsou k dispozici pro vaši distribuce.
 
-Tady je *SDC* disk, který chceme. Na disku vytvořte oddíly `parted`, pokud je velikost disku 2 Tebibytes (TIB) nebo větší, musíte použít dělení GPT, pokud je v oblasti 2TiB, pak můžete použít dělení na oddíly MBR nebo GPT. Pokud používáte vytváření oddílů MBR, můžete použít `fdisk`. Nastavte primární disk na oddíl 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `fdisk` proces na */dev/sdc*:
+Tady je *SDC* disk, který chceme. Na disku vytvořte oddíly `parted` , pokud je velikost disku 2 tebibytes (TIB) nebo větší, musíte použít dělení GPT, pokud je v oblasti 2TiB, pak můžete použít dělení na oddíly MBR nebo GPT. Pokud používáte vytváření oddílů MBR, můžete použít `fdisk` . Nastavte primární disk na oddíl 1 a přijměte ostatní výchozí hodnoty. Následující příklad spustí `fdisk` proces na */dev/sdc*:
 
 ```bash
 sudo fdisk /dev/sdc
@@ -154,13 +154,13 @@ Creating journal (32768 blocks): done
 Writing superblocks and filesystem accounting information: done
 ```
 
-Nyní vytvořte adresář pro připojení systému souborů pomocí `mkdir`. Následující příklad vytvoří adresář na adrese */datadrive*:
+Nyní vytvořte adresář pro připojení systému souborů pomocí `mkdir` . Následující příklad vytvoří adresář na adrese */datadrive*:
 
 ```bash
 sudo mkdir /datadrive
 ```
 
-K `mount` následnému připojení systému souborů použijte. Následující příklad připojí oddíl */dev/sdc1* k přípojnému bodu */datadrive* :
+`mount`K následnému připojení systému souborů použijte. Následující příklad připojí oddíl */dev/sdc1* k přípojnému bodu */datadrive* :
 
 ```bash
 sudo mount /dev/sdc1 /datadrive
@@ -207,12 +207,12 @@ Některé jádro systému Linux podporují operace OŘEZÁVÁNÍ a odmapování,
 
 Existují dva způsoby, jak na svém VIRTUÁLNÍm počítači se systémem Linux povolit podporu OŘEZÁVÁNÍ. V obvyklých případech si prostudujte doporučený postup:
 
-* Použijte možnost `discard` Mount v */etc/fstab*, například:
+* Použijte `discard` možnost Mount v */etc/fstab*, například:
 
     ```bash
     UUID=33333333-3b3b-3c3c-3d3d-3e3e3e3e3e3e   /datadrive   ext4   defaults,discard   1   2
     ```
-* V některých případech může mít `discard` možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
+* V některých případech `discard` může mít možnost vliv na výkon. Alternativně můžete `fstrim` příkaz spustit ručně z příkazového řádku nebo ho přidat do crontab, aby se pravidelně spouštěl:
 
     **Ubuntu**
 

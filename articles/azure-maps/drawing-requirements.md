@@ -3,19 +3,19 @@ title: Požadavky na balíček pro vykreslování v Azure Maps Creator
 description: Přečtěte si o požadavcích na balíček pro vykreslování k převedení souborů návrhu zařízení na mapování dat pomocí služby konverze Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 5/18/2020
+ms.date: 6/09/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: c0c81f529dfc959916ff7c102b2b903a808b9672
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cb34cb386939fc1160ee5a7db0007cfbf500ccb8
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681904"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660619"
 ---
-# <a name="drawing-package-requirements"></a>Požadavky na balíček pro vykreslování
+# <a name="drawing-package-requirements"></a>Požadavky balíčku pro kreslení
 
 [Služba Azure Maps Conversion](https://docs.microsoft.com/rest/api/maps/conversion) umožňuje převést nahrané balíčky výkresu na data mapy. Tento článek popisuje požadavky balíčku pro vykreslování pro rozhraní API pro převod. Pokud chcete zobrazit ukázkový balíček, můžete si stáhnout vzorový [balíček pro kreslení](https://github.com/Azure-Samples/am-creator-indoor-data-examples).
 
@@ -42,7 +42,7 @@ Glosář termínů používaných v tomto dokumentu.
 Balíček pro kreslení je archiv zip, který obsahuje následující soubory:
 
 * Soubory DWG ve formátu souborů DWG AutoCADu
-* Soubor _manifest. JSON_ pro jedno zařízení.
+* _manifest.jsv_ souboru pro jedno zařízení.
 
 Soubory DWG mohou být v rámci složky uspořádány jakýmkoli způsobem, ale soubor manifestu musí být v kořenovém adresáři složky. Složka musí být zip v jednom souboru archivu s příponou. zip. Následující části podrobně popisují požadavky na soubory DWG, soubor manifestu a obsah těchto souborů.  
 
@@ -167,7 +167,7 @@ Příkladem vrstvy Zonelabel lze zobrazit jako vrstvu ZONELABELS v [ukázkovém 
 
 ## <a name="manifest-file-requirements"></a>Požadavky souboru manifestu
 
-Složka zip musí obsahovat soubor manifestu na kořenové úrovni adresáře a soubor musí mít název **manifest. JSON**. Popisuje soubory DWG, aby [Služba konverze Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) mohla analyzovat svůj obsah. Budou ingestovat pouze soubory identifikované manifestem. Soubory, které jsou ve složce zip, ale nejsou správně uvedeny v manifestu, budou ignorovány.
+Složka zip musí obsahovat soubor manifestu na kořenové úrovni adresáře a soubor musí mít název **manifest.js**. Popisuje soubory DWG, aby [Služba konverze Azure Maps](https://docs.microsoft.com/rest/api/maps/conversion) mohla analyzovat svůj obsah. Budou ingestovat pouze soubory identifikované manifestem. Soubory, které jsou ve složce zip, ale nejsou správně uvedeny v manifestu, budou ignorovány.
 
 Cesty k souborům v objektu **buildingLevels** souboru manifestu musí být relativní ke kořenu složky zip. Název souboru DWG se musí přesně shodovat s názvem úrovně zařízení. Například soubor DWG pro úroveň "Basement" by byl "Basement. DWG". Soubor DWG pro úroveň 2 bude pojmenován jako "level_2. DWG". Použijte podtržítko, pokud má název úrovně mezeru. 
 
@@ -188,14 +188,14 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 | Vlastnost  | typ | Povinné | Popis |
 |-----------|------|----------|-------------|
-| name      | řetězec/int | true   |  Název budovy |
-| streetAddress|    řetězec/int |    false (nepravda)    | Adresa sestavení. |
-|unit     | řetězec/int    |  false (nepravda)    |  Jednotka v budově. |
-| polohu |    řetězec/int |    false (nepravda) |    Název oblasti, okolí nebo oblasti. Například "přejezera" nebo "střední oblast". Nejedná se o část poštovní adresy. |
+| name      | řetězec | true   |  Název budovy |
+| streetAddress|    řetězec |    false (nepravda)    | Adresa sestavení. |
+|unit     | řetězec    |  false (nepravda)    |  Jednotka v budově. |
+| polohu |    řetězec |    false (nepravda) |    Název oblasti, okolí nebo oblasti. Například "přejezera" nebo "střední oblast". Nejedná se o část poštovní adresy. |
 | adminDivisions |    Pole JSON řetězců |    false (nepravda)     | Pole, které obsahuje označení adresy (země, stát, město) nebo (země, Prefektura, City, město). Použijte kódy zemí ISO 3166 a kódy států ISO 3166-2/oblasti. |
-| Ovládacím |    řetězec/int    | false (nepravda)    | Kód pro řazení pošty |
+| Ovládacím |    řetězec    | false (nepravda)    | Kód pro řazení pošty |
 | hoursOfOperation |    řetězec |     false (nepravda) | Dodržuje formát [osm otevírací doba](https://wiki.openstreetmap.org/wiki/Key:opening_hours/specification) . |
-| Android    | řetězec/int |    false (nepravda) |    Telefonní číslo přidružené k budově Musí zahrnovat kód země. |
+| Android    | řetězec |    false (nepravda) |    Telefonní číslo přidružené k budově Musí zahrnovat kód země. |
 | webu    | řetězec |    false (nepravda)    | Web přidružený k budově M zahajte protokolem HTTP nebo HTTPS. |
 | nonPublic |    bool    | false (nepravda) | Příznak určující, zda je sestavení otevřeno veřejnému. |
 | anchorLatitude | numerické |    false (nepravda) | Zeměpisná šířka kotvy zařízení (připínáček). |
@@ -209,11 +209,11 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 | Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
-|levelName    |řetězec/int    |true |    Název popisné úrovně Například: patra 1, předsálí, modré zaparkování, Basement a tak dále.|
+|levelName    |řetězec    |true |    Název popisné úrovně Například: patra 1, předsálí, modré zaparkování, Basement a tak dále.|
 |řadový | celé číslo |    true | Pořadové číslo se používá k určení svislého pořadí úrovní. Každé zařízení musí mít úroveň s pořadovým číslem 0. |
 |heightAboveFacilityAnchor | numerické |    false (nepravda) |    Výška úrovně nad podlahovou podlahou v metrech |
 | verticalExtent | numerické | false (nepravda) | Patra na výšku (tloušťka) úrovně v měřičích. |
-|filename |    řetězec/int |    true |    Cesta systému souborů výkresu CAD pro úroveň budovy Musí být relativní ke kořeni souboru ZIP stavebního souboru. |
+|filename |    řetězec |    true |    Cesta systému souborů výkresu CAD pro úroveň budovy Musí být relativní ke kořeni souboru ZIP stavebního souboru. |
 
 ### <a name="georeference"></a>informace o mikroodkazech
 
@@ -227,13 +227,13 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 | Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
-|zpětný    |Pole řetězců/čísla|    true|    Názvy vrstev, které definují vnější profil budovy.|
-|unit|    Pole řetězců/čísla|    true|    Názvy vrstev, které definují jednotky.|
-|zásuvky|    Pole řetězců/čísla    |false (nepravda)|    Názvy vrstev, které definují zdi.|
-|dveře    |Pole řetězců/čísla|    false (nepravda)   | Názvy vrstev, které definují dvířka|
-|unitLabel    |Pole řetězců/čísla|    false (nepravda)    |Názvy vrstev, které definují názvy jednotek.|
-|zóna | Pole řetězců/čísla    | false (nepravda)    | Názvy vrstev, které definují zóny.|
-|zoneLabel | Pole řetězců/čísla |     false (nepravda) |    Názvy vrstev, které definují názvy zón.|
+|zpětný    |Pole řetězců|    true|    Názvy vrstev, které definují vnější profil budovy.|
+|unit|    Pole řetězců|    true|    Názvy vrstev, které definují jednotky.|
+|zásuvky|    Pole řetězců    |false (nepravda)|    Názvy vrstev, které definují zdi.|
+|dveře    |Pole řetězců|    false (nepravda)   | Názvy vrstev, které definují dvířka|
+|unitLabel    |Pole řetězců|    false (nepravda)    |Názvy vrstev, které definují názvy jednotek.|
+|zóna | Pole řetězců    | false (nepravda)    | Názvy vrstev, které definují zóny.|
+|zoneLabel | Pole řetězců |     false (nepravda) |    Názvy vrstev, které definují názvy zón.|
 
 ### <a name="unitproperties"></a>unitProperties
 
@@ -241,15 +241,15 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 | Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
-|jednotka    |řetězec/int    |true    |Název jednotky, která se má přidružit k tomuto `unitProperty` záznamu. Tento záznam je platný pouze v případě, že `unitName` se v vrstvách nachází shodný popisek `unitLabel` . |
-|categoryName|    řetězec/int|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
+|jednotka    |řetězec    |true    |Název jednotky, která se má přidružit k tomuto `unitProperty` záznamu. Tento záznam je platný pouze v případě, že `unitName` se v vrstvách nachází shodný popisek `unitLabel` . |
+|categoryName|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
 |navigableBy| Pole řetězců |    false (nepravda)    |Určuje typy navigace v agentech, které mohou procházet jednotky. Například "chod". Tato vlastnost bude informovat o schopnostech Wayfinding.  Povolené hodnoty jsou `pedestrian` , `wheelchair` ,, `machine` `bicycle` , `automobile` , `hiredAuto` , `bus` , `railcar` , `emergency` ,, a `ferry` `boat` `disallowed` .|
 |routeThroughBehavior|    řetězec|    false (nepravda)    |Chování trasy v rámci jednotky. Povolené hodnoty jsou `disallowed` , `allowed` a `preferred` . Výchozí hodnota je `allowed` .|
 |cestující    |Pole objektů directoryInfo |false (nepravda)    |Seznam osob pro jednotku. |
-|nameAlt|    řetězec/int|    false (nepravda)|    Alternativní název jednotky |
-|nameSubtitle|    řetězec/int    |false (nepravda)|    Podnadpis jednotky |
-|addressRoomNumber|    řetězec/int|    false (nepravda)|    Číslo místnosti/jednotky/bytu/sady jednotky.|
-|verticalPenetrationCategory|    řetězec/int|    false (nepravda)| Když je tato vlastnost definovaná, výsledná funkce bude vertikální průnik (VRT) místo jednotky. VRTs se dá použít k přechodu na jiné funkce VRT na úrovních výše nebo pod ní. Svislé průniky je název [kategorie](https://aka.ms/pa-indoor-spacecategories) . Je-li tato vlastnost definována, je vlastnost categoryName přepsána pomocí verticalPenetrationCategory. |
+|nameAlt|    řetězec|    false (nepravda)|    Alternativní název jednotky |
+|nameSubtitle|    řetězec    |false (nepravda)|    Podnadpis jednotky |
+|addressRoomNumber|    řetězec|    false (nepravda)|    Číslo místnosti/jednotky/bytu/sady jednotky.|
+|verticalPenetrationCategory|    řetězec|    false (nepravda)| Když je tato vlastnost definovaná, výsledná funkce bude vertikální průnik (VRT) místo jednotky. VRTs se dá použít k přechodu na jiné funkce VRT na úrovních výše nebo pod ní. Svislé průniky je název [kategorie](https://aka.ms/pa-indoor-spacecategories) . Je-li tato vlastnost definována, je vlastnost categoryName přepsána pomocí verticalPenetrationCategory. |
 |verticalPenetrationDirection|    řetězec|    false (nepravda)    |Pokud `verticalPenetrationCategory` je definován, Volitelně definujte platný směr cesty. Povolené hodnoty jsou `lowToHigh` , `highToLow` , `both` a `closed` . Výchozí hodnota je `both` .|
 | nonPublic | bool | false (nepravda) | Určuje, zda je jednotka otevřena veřejnému. |
 | isRoutable | bool | false (nepravda) | Když je nastavena na `false` , jednotka nemůže přejít na nebo prostřednictvím. Výchozí hodnota je `true` . |
@@ -261,10 +261,10 @@ Další části obsahují podrobnosti o požadavcích na jednotlivé objekty.
 
 | Vlastnost  | Typ | Vyžadováno | Popis |
 |-----------|------|----------|-------------|
-|Název_zóny        |řetězec/int    |true    |Název zóny, která se má přidružit k `zoneProperty` záznamu Tento záznam je platný pouze v případě, že `zoneName` se v vrstvě zóny nachází shodný popisek `zoneLabel` .  |
-|categoryName|    řetězec/int|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
-|zoneNameAlt|    řetězec/int|    false (nepravda)    |Alternativní název zóny  |
-|zoneNameSubtitle|    řetězec/int |    false (nepravda)    |Podnadpis zóny |
+|Název_zóny        |řetězec    |true    |Název zóny, která se má přidružit k `zoneProperty` záznamu Tento záznam je platný pouze v případě, že `zoneName` se v vrstvě zóny nachází shodný popisek `zoneLabel` .  |
+|categoryName|    řetězec|    false (nepravda)    |Název kategorie Úplný seznam kategorií najdete v tématu [kategorie](https://aka.ms/pa-indoor-spacecategories). |
+|zoneNameAlt|    řetězec|    false (nepravda)    |Alternativní název zóny  |
+|zoneNameSubtitle|    řetězec |    false (nepravda)    |Podnadpis zóny |
 
 ### <a name="sample-drawing-package-manifest"></a>Ukázkový manifest balíčku vykreslování
 

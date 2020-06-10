@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab
 ms.date: 09/05/2019
-ms.openlocfilehash: 9b59f6e091143e5c10be393620e4cc042faac36a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 569b1fd964665e3efec87adebd5f9a76de01f381
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84216378"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659648"
 ---
 # <a name="deploy-azure-sql-managed-instance-to-an-instance-pool"></a>Nasazení spravované instance Azure SQL do fondu instancí
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -30,11 +30,11 @@ V následující tabulce jsou uvedeny dostupné operace týkající se fondů in
 
 |Příkaz|portál Azure|PowerShell|
 |:---|:---|:---|
-|Vytvoření fondu instancí|No|Ano|
-|Aktualizace fondu instancí (omezený počet vlastností)|No |Ano |
-|Ověření využití fondu instancí a vlastností|No|Ano |
-|Odstranění fondu instancí|No|Ano|
-|Vytvoření spravované instance v rámci fondu instancí|No|Ano|
+|Vytvoření fondu instancí|No|Yes|
+|Aktualizace fondu instancí (omezený počet vlastností)|No |Yes |
+|Ověření využití fondu instancí a vlastností|No|Yes |
+|Odstranění fondu instancí|No|Yes|
+|Vytvoření spravované instance v rámci fondu instancí|No|Yes|
 |Aktualizace využití prostředků pro spravovanou instanci|Ano |Ano|
 |Zkontroluje využití a vlastnosti spravované instance.|Ano|Ano|
 |Odstranění spravované instance z fondu|Ano|Ano|
@@ -54,7 +54,7 @@ Dostupné [Příkazy prostředí PowerShell](https://docs.microsoft.com/powershe
 
 Pokud chcete použít PowerShell, [nainstalujte nejnovější verzi prostředí PowerShell Core](https://docs.microsoft.com/powershell/scripting/install/installing-powershell#powershell)a postupujte podle pokynů pro [instalaci modulu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-V případě operací souvisejících s instancemi v rámci fondů i s jednou instancí použijte [příkazy standardní spravované instance](api-references-create-manage-instance.md#powershell-create-and-manage-managed-instances), ale při použití těchto příkazů pro instanci ve fondu musí být naplněna vlastnost *název fondu instancí* .
+V případě operací souvisejících s instancemi v rámci fondů i s jednou instancí použijte [příkazy standardní spravované instance](api-references-create-manage-instance.md#powershell-create-and-configure-managed-instances), ale při použití těchto příkazů pro instanci ve fondu musí být naplněna vlastnost *název fondu instancí* .
 
 ## <a name="deployment-process"></a>Proces nasazení
 

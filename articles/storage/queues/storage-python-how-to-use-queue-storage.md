@@ -9,18 +9,21 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: cbrooks
 ms.custom: seo-javascript-october2019, tracking-python
-ms.openlocfilehash: 5c45cb765fec9f34e5db0e9bd66ef020499eadf1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 00eb7c1488c90add48e3b6755ca1835d2ce1ff2d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559169"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657691"
 ---
 # <a name="how-to-use-azure-queue-storage-v21-from-python"></a>Jak používat Azure Queue Storage v 2.1 z Pythonu
 
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
 
 Tento článek popisuje běžné scénáře použití služby Azure Queue Storage. Mezi zahrnuté scénáře patří vkládání, prohlížení, získávání a odstraňování zpráv fronty a vytváření a odstraňování front.
+
+> [!IMPORTANT]
+> Tento článek odkazuje na starší verzi Azure Storage klientské knihovny pro Python. Pokud chcete začít používat nejnovější verzi, přečtěte si [rychlý Start: Klientská knihovna Azure Queue Storage pro Python.](storage-quickstart-queues-python.md)
 
 [!INCLUDE [storage-try-azure-tools-queues](../../../includes/storage-try-azure-tools-queues.md)]
 

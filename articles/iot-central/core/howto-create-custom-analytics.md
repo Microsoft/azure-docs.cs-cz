@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: philmea
-ms.openlocfilehash: 7c2c14a937b4ef55d0e5f71e7b20214428ecd68c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80158193"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660123"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Rozšiřování Azure IoT Central s využitím vlastních analýz pomocí Azure Databricks
 
@@ -31,7 +31,7 @@ V této příručce se dozvíte, jak:
 
 K dokončení kroků v tomto průvodci, potřebujete aktivní předplatné Azure.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ### <a name="iot-central-application"></a>IoT Central aplikace
 
@@ -42,7 +42,7 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) vytvo�
 | Cenový tarif | Standard |
 | Šablona aplikace | Analýzy v obchodě – monitorování podmínek |
 | Název aplikace | Přijměte výchozí nebo vyberte svůj vlastní název. |
-| zprostředkovatele identity | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
+| URL | Přijměte výchozí nebo vyberte vlastní jedinečnou předponu adresy URL. |
 | Adresář | Váš tenant Azure Active Directory |
 | Předplatné Azure | Vaše předplatné Azure |
 | Oblast | Vaše nejbližší oblast |
@@ -62,7 +62,7 @@ Pomocí [Azure Portal vytvořte obor názvů Event Hubs](https://portal.azure.co
 | Nastavení | Hodnota |
 | ------- | ----- |
 | Název    | Zvolit název oboru názvů |
-| Cenová úroveň | Základní |
+| Cenová úroveň | Basic |
 | Předplatné | Vaše předplatné |
 | Skupina prostředků | IoTCentralAnalysis |
 | Umístění | USA – východ |
@@ -109,12 +109,12 @@ Na webu [Azure IoT Central Správce aplikací](https://aka.ms/iotcentral) přejd
     | Nastavení | Hodnota |
     | ------- | ----- |
     | Zobrazovaný název | Exportovat do Event Hubs |
-    | Povoleno | Zapnuto |
+    | Povoleno | Zapnout |
     | Obor názvů služby Event Hubs | Název oboru názvů Event Hubs |
     | Centrum událostí | centralexport |
-    | Měření | Zapnuto |
-    | Zařízení | Vypnuto |
-    | Šablony zařízení | Vypnuto |
+    | Měření | Zapnout |
+    | Zařízení | Vypnout |
+    | Šablony zařízení | Vypnout |
 
 ![Konfigurace exportu dat](media/howto-create-custom-analytics/cde-configuration.png)
 
@@ -136,7 +136,7 @@ K vytvoření clusteru použijte informace v následující tabulce:
 | Režim clusteru | Standard |
 | Verze Databricks Runtime | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
 | Verze Pythonu | 3 |
-| Povolit automatické škálování | Ne |
+| Povolit automatické škálování | No |
 | Ukončit po minutách nečinnosti | 30 |
 | Typ pracovního procesu | Standard_DS3_v2 |
 | Pracovníků | 1 |
@@ -231,4 +231,4 @@ V této příručce se naučíte:
 * Pomocí *průběžného exportu dat*Streamujte telemetrii z IoT Central aplikace.
 * Vytvořte prostředí Azure Databricks pro analýzu a vykreslení dat telemetrie.
 
-Teď, když víte, jak vytvářet vlastní analýzy, je navržený další krok, kde se dozvíte, jak [spravovat vaši aplikaci](howto-administer.md).
+Teď, když víte, jak vytvářet vlastní analýzy, je navržený další krok, kde se dozvíte, jak [vizualizovat a analyzovat data Azure IoT Central v řídicím panelu Power BI](howto-connect-powerbi.md).

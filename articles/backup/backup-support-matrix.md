@@ -3,12 +3,12 @@ title: Matice podpory pro Azure Backup
 description: Poskytuje souhrn nastavení podpory a omezení pro službu Azure Backup.
 ms.topic: conceptual
 ms.date: 02/17/2019
-ms.openlocfilehash: faf7abf23d196b389531803c519368b5d474aeb3
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 4946a4627d037053e441152182278c26b4f693fe
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83659379"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655619"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Matice podpory pro Azure Backup
 
@@ -28,7 +28,7 @@ Azure Backup používá k orchestraci a správě záloh Recovery Services trezor
 
 Následující tabulka popisuje funkce trezorů Recovery Services:
 
-**Příznak** | **Podrobnosti**
+**Funkce** | **Zobrazí**
 --- | ---
 **Trezory v předplatném** | V jednom předplatném je až 500 Recovery Services trezory.
 **Počítače v trezoru** | Až 1 000 virtuálních počítačů Azure v jednom trezoru.<br/><br/> V jednom trezoru se dají zaregistrovat až 50 serverů MABS.
@@ -54,7 +54,7 @@ Co je se podporuje, pokud chcete zálohovat místní počítače:
 
 ### <a name="azure-vm-limits"></a>Omezení virtuálních počítačů Azure
 
-**Počtu** | **Podrobnosti**
+**Počtu** | **Zobrazí**
 --- | ---
 **Datové disky virtuálních počítačů Azure** | Podívejte se na [podporu pro zálohování virtuálních počítačů Azure](https://docs.microsoft.com/azure/backup/backup-support-matrix-iaas#vm-storage-support).
 **Velikost datového disku virtuálního počítače Azure** | Velikost jednotlivých disků může být až 32 TB a pro všechny disky ve virtuálním počítači je v kombinaci maximálně 256 TB.
@@ -101,14 +101,14 @@ Azure Backup podporuje šifrování pro data v přenosu a na REST.
 
 - Provoz zálohování ze serverů do trezoru Recovery Services je zašifrovaný pomocí standard AES (Advanced Encryption Standard) 256.
 - Zálohovaná data se odesílají přes zabezpečené připojení HTTPS.
+
+### <a name="data-security"></a>Zabezpečení dat
+
 - Zálohovaná data jsou uložená v trezoru Recovery Services v šifrované podobě.
 - K odemknutí těchto dat máte jenom přístupové heslo. Společnost Microsoft nemůže data záloh kdykoli dešifrovat.
 
     > [!WARNING]
     > Po nastavení trezoru máte k šifrovacímu klíči přístup jenom vy. Společnost Microsoft nikdy neudržuje kopii a nemá přístup k tomuto klíči. Pokud je klíč nesprávně umístěn, Microsoft nemůže obnovit zálohovaná data.
-
-### <a name="data-security"></a>Zabezpečení dat
-
 - Při zálohování virtuálních počítačů Azure je potřeba nastavit šifrování *v rámci* virtuálního počítače.
 - Azure Backup podporuje službu Azure Disk Encryption, která používá BitLocker na virtuálních počítačích s Windows a **dm-crypt** na virtuálních počítačích s Linuxem.
 - Na back-endu Azure Backup používá [šifrování Azure Storage služby](../storage/common/storage-service-encryption.md), které chrání neaktivní neaktivní data.
@@ -129,7 +129,7 @@ Zálohování podporuje komprimaci provozu zálohování, jak je shrnuto v násl
 
 **Počítač** | **Komprimovat do MABS/DPM (TCP)** | **Komprimovat do trezoru (HTTPS)**
 --- | --- | ---
-**Přímá záloha místních počítačů s Windows** | NA | ![Ano][green]
+**Přímá záloha místních počítačů s Windows** | NA | ![Yes][green]
 **Zálohování virtuálních počítačů Azure pomocí rozšíření virtuálního počítače** | NA | NA
 **Zálohování místních nebo Azure počítačů pomocí MABS/DPM** | ![Ano][green] | ![Ano][green]
 
@@ -152,9 +152,9 @@ Azure Backup přidal funkci obnovení mezi oblastmi, aby se posílila dostupnost
 | Typ správy zálohování | Podporuje se                                                    | Podporované oblasti |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
 | Virtuální počítač Azure               | Ano.   Podporováno pro šifrované virtuální počítače a virtuální počítače s méně než 4 TB disků | Všechny veřejné oblasti Azure.  |
-| Agent MARS/místní | Ne                                                           | –               |
-| SQL/SAP HANA          | Ne                                                           | –               |
-| BUŇK                    | Ne                                                           | –               |
+| Agent MARS/místní | No                                                           | Není k dispozici               |
+| SQL/SAP HANA          | No                                                           | Není k dispozici               |
+| BUŇK                    | No                                                           | Není k dispozici               |
 
 ## <a name="next-steps"></a>Další kroky
 

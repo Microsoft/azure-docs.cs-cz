@@ -6,13 +6,13 @@ ms.subservice: update-management
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 05/22/2020
-ms.openlocfilehash: 1418b26a2a498c43ff61f42b2761c59cbca5d0f4
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.date: 06/09/2020
+ms.openlocfilehash: 6b26db522db246add48941da9af4784ed2942a0a
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83837140"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661032"
 ---
 # <a name="create-an-automation-account-using-an-azure-resource-manager-template"></a>Vytvoření účtu Automation pomocí šablony Azure Resource Manager
 
@@ -35,8 +35,8 @@ Následující tabulka uvádí verzi rozhraní API pro prostředky použité v t
 
 | Prostředek | Typ prostředku | Verze rozhraní API |
 |:---|:---|:---|
-| Pracovní prostor | pracovní prostory | 2017-03-15 – Preview |
-| Účet Automation | automation | 2015-10-31 | 
+| Pracovní prostor | pracovní prostory | 2020-03-01 – Preview |
+| Účet Automation | automation | 2018-06-30 | 
 
 ## <a name="before-you-use-the-template"></a>Před použitím šablony
 
@@ -48,14 +48,14 @@ Pokud se rozhodnete nainstalovat a používat rozhraní příkazového řádku A
 
 * Název pracovního prostoru
 * Oblast, ve které se má pracovní prostor vytvořit.
+* Povolení oprávnění prostředků nebo pracovních prostorů.
 * Název účtu Automation.
-* Oblast, ve které se má účet vytvořit.
+* Oblast, ve které se má účet služby Automation vytvořit.
 
 Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro Log Analytics pracovní prostor:
 
 * Výchozí hodnota *SKU* je cenová úroveň na GB vydaná v cenovém modelu z dubna 2018.
 * *Doba uchovávání dat* je nastavena na 30 dní.
-* *capacityReservationLevel* má výchozí hodnotu 100 GB.
 
 >[!WARNING]
 >Pokud chcete vytvořit nebo nakonfigurovat pracovní prostor Log Analytics v předplatném, které se zavedlo do cenového modelu z dubna 2018, bude jediná platná Log Analytics cenová úroveň *PerGB2018*.
@@ -63,7 +63,7 @@ Následující parametry v šabloně jsou nastaveny s výchozí hodnotou pro Log
 
 Šablona JSON určuje výchozí hodnotu pro ostatní parametry, které by pravděpodobně byly použity jako standardní konfigurace ve vašem prostředí. Šablonu můžete uložit v účtu služby Azure Storage pro sdílený přístup ve vaší organizaci. Další informace o práci se šablonami najdete v tématu [nasazení prostředků pomocí šablon Správce prostředků a Azure CLI](../azure-resource-manager/templates/deploy-cli.md).
 
-Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste porozuměli následujícím podrobnostem o konfiguraci. Můžou vám zabránit chybám při pokusu o vytvoření, konfiguraci a používání pracovního prostoru Log Analytics propojeného s vaším novým účtem Automation. 
+Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste porozuměli následujícím podrobnostem o konfiguraci. Můžou vám zabránit chybám při pokusu o vytvoření, konfiguraci a používání pracovního prostoru Log Analytics propojeného s vaším novým účtem Automation.
 
 * Přečtěte si [Další podrobnosti](../azure-monitor/platform/template-workspace-configuration.md#create-a-log-analytics-workspace) , abyste plně pochopili možnosti konfigurace pracovního prostoru, jako je režim řízení přístupu, cenová úroveň, uchování a úroveň rezervace kapacity.
 
@@ -107,14 +107,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
             "minValue": 7,
             "maxValue": 730,
             "metadata": {
-                "description": "Number of days of retention. Workspaces in the legacy Free pricing tier can have only 7 days."
-            }
-        },
-        "immediatePurgeDataOn30Days": {
-            "type": "bool",
-            "defaultValue": "[bool('false')]",
-            "metadata": {
-                "description": "If set to true when changing retention to 30 days, older data will be immediately deleted. Use this with extreme caution. This applies only when retention is being set to 30 days."
+                "description": "Number of days to retain data."
             }
         },
         "location": {
@@ -122,6 +115,12 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
             "metadata": {
                 "description": "Specifies the location in which to create the workspace."
             }
+        },
+        "resourcePermissions": {
+              "type": "bool",
+              "metadata": {
+                "description": "true to use resource or workspace permissions. false to require workspace permissions."
+              }
         },
         "automationAccountName": {
             "type": "string",
@@ -176,13 +175,11 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
         {
         "type": "Microsoft.OperationalInsights/workspaces",
             "name": "[parameters('workspaceName')]",
-            "apiVersion": "2017-03-15-preview",
+            "apiVersion": "2020-03-01-preview",
             "location": "[parameters('location')]",
             "properties": {
                 "sku": {
-                    "Name": "[parameters('sku')]",
-                    "name": "CapacityReservation",
-                    "capacityReservationLevel": 100
+                    "name": "[parameters('sku')]",
                 },
                 "retentionInDays": "[parameters('dataRetention')]",
                 "features": {
@@ -194,7 +191,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
         "resources": [
         {
             "type": "Microsoft.Automation/automationAccounts",
-            "apiVersion": "2015-01-01-preview",
+            "apiVersion": "2018-06-30",
             "name": "[parameters('automationAccountName')]",
             "location": "[parameters('automationAccountLocation')]",
             "dependsOn": [
@@ -209,7 +206,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
             "resources": [
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('sampleGraphicalRunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -229,7 +226,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
                     },
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('samplePowerShellRunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -249,7 +246,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
                     },
                     {
                         "type": "runbooks",
-                        "apiVersion": "2015-01-01-preview",
+                        "apiVersion": "2018-06-30",
                         "name": "[parameters('samplePython2RunbookName')]",
                         "location": "[parameters('automationAccountLocation')]",
                         "dependsOn": [
@@ -270,10 +267,10 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
                 ]
         },
         {
-            "apiVersion": "2015-11-01-preview",
+            "apiVersion": "2020-03-01-preview",
             "type": "Microsoft.OperationalInsights/workspaces/linkedServices",
             "name": "[concat(parameters('workspaceName'), '/' , 'Automation')]",
-            "location": "[resourceGroup().location]",
+            "location": "[parameters('location')]",
             "dependsOn": [
                 "[concat('Microsoft.OperationalInsights/workspaces/', parameters('workspaceName'))]",
                 "[concat('Microsoft.Automation/automationAccounts/', parameters('automationAccountName'))]"
@@ -290,7 +287,7 @@ Pokud Azure Automation a Azure Monitor začínáte, je důležité, abyste poroz
 
 2. Upravte šablonu tak, aby splňovala vaše požadavky. Místo předání parametrů jako vložené hodnoty zvažte vytvoření [souboru parametrů správce prostředků](../azure-resource-manager/templates/parameter-files.md) .
 
-3. Uložte tento soubor jako deployAzAutomationAccttemplate. JSON do místní složky.
+3. Uložte tento soubor jako deployAzAutomationAccttemplate.jsdo místní složky.
 
 4. Jste připraveni k nasazení této šablony. Můžete použít buď PowerShell, nebo rozhraní příkazového řádku Azure CLI. Po zobrazení výzvy k zadání pracovního prostoru a názvu účtu Automation zadejte globálně jedinečný název ve všech vašich předplatných Azure.
 

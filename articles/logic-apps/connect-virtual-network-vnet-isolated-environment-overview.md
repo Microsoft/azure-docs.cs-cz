@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/01/2020
-ms.openlocfilehash: d74303df74a1e877645b333fa0726a68055c819b
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: b149757ccfc41587aa3ea6c5d18717fdecaba656
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734908"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84656641"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Přístup k prostředkům Azure Virtual Network z Azure Logic Apps pomocí prostředí integračních služeb (ISEs)
 
-V některých případech vaše aplikace logiky potřebuje přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a další systémy nebo služby, které se nacházejí ve [službě Azure Virtual Network](../virtual-network/virtual-networks-overview.md). K nastavení tohoto přístupu můžete [vytvořit *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). ISE je izolovaná instance Logic Apps služby, která využívá vyhrazené prostředky a spouští se odděleně od "globální" víceklientské služby Logic Apps.
+V některých případech vaše aplikace logiky potřebuje přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a další systémy nebo služby, které se nacházejí ve [službě Azure Virtual Network](../virtual-network/virtual-networks-overview.md). K nastavení tohoto přístupu můžete [vytvořit *prostředí integrační služby* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment.md). ISE je vyhrazená instance služby Logic Apps, která využívá vyhrazené prostředky a spouští se odděleně od "globální" víceklientské služby Logic Apps.
 
-Spouštění Logic Apps ve vaší vlastní samostatné izolované instanci pomáhá snižovat dopad, který můžou mít ostatní klienti Azure na výkon vašich aplikací, označované taky jako ["vzdálení" sousedních směrovačů](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). ISE také poskytuje tyto výhody:
+Spouštění Logic Apps ve vaší vlastní samostatné vyhrazené instanci pomáhá snižovat dopad, který mohou mít ostatní klienti Azure na výkon vašich aplikací, označované také jako ["nepříznivých sousedních směrovačů"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). ISE také poskytuje tyto výhody:
 
 * Vaše vlastní statické IP adresy, které jsou oddělené od statických IP adres, které jsou sdíleny pomocí aplikace logiky ve službě pro více tenantů. Pro komunikaci s cílovými systémy můžete také nastavit jednu veřejnou, statickou a předvídatelná odchozí IP adresu. Tímto způsobem není nutné nastavovat další otevřená brána firewall v těchto cílových systémech pro každý ISE.
 
@@ -38,7 +38,7 @@ Aplikace logiky mají přístup k prostředkům, které jsou uvnitř nebo připo
 
 I nadále můžete použít konektory, které nemají štítek **Core** nebo **ISE** , s Logic Apps v ISE. Tyto konektory se spouštějí ve službě víceklientské Logic Apps služby. Další informace najdete v těchto částech:
 
-* [Izolované oproti více tenantů](#difference)
+* [Vyhrazeno versus více tenantů](#difference)
 * [Připojení z prostředí integrační služby](../connectors/apis-list.md#integration-service-environment)
 * [Konektory ISE](../connectors/apis-list.md#ise-connectors)
 
@@ -49,7 +49,7 @@ Tento přehled popisuje další informace o tom, jak ISE poskytuje Logic Apps p�
 
 <a name="difference"></a>
 
-## <a name="isolated-versus-multi-tenant"></a>Izolované oproti více tenantů
+## <a name="dedicated-versus-multi-tenant"></a>Vyhrazeno versus více tenantů
 
 Když vytváříte a spouštíte Logic Apps v ISE, získáte stejné uživatelské prostředí a podobné možnosti jako služba pro více tenantů Logic Apps. Můžete použít všechny stejné integrované triggery, akce a spravované konektory, které jsou k dispozici ve víceklientské Logic Apps službě. Některé spravované konektory nabízejí další verze ISE. Rozdíl mezi konektory ISE a neISEými konektory existují v místě, kde se spouštějí, a popisky, které mají v návrháři aplikace logiky při práci v rámci ISE.
 

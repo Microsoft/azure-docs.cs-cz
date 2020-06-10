@@ -3,16 +3,16 @@ title: Rozbalení virtuálních pevných disků na virtuálním počítači se s
 description: Naučte se rozbalovat virtuální pevné disky na virtuálním počítači se systémem Linux pomocí Azure CLI.
 author: roygara
 ms.service: virtual-machines-linux
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/15/2018
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 1295c5276f0f342323acf8d86eaaf9f785af3e9f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 27c9a7c2e526a33875402827e2eee2c63943e058
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78945188"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659736"
 ---
 # <a name="expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Rozbalení virtuálních pevných disků na virtuálním počítači se systémem Linux pomocí Azure CLI
 
@@ -35,7 +35,7 @@ V následujících ukázkách nahraďte příklady názvů parametrů jako *myRe
     ```
 
     > [!NOTE]
-    > Aby se virtuální pevný disk mohl rozšířit, musí se virtuální počítač uvolnit. Při zastavení virtuálního počítače `az vm stop` se neuvolní výpočetní prostředky. K uvolnění výpočetních prostředků použijte `az vm deallocate`.
+    > Aby se virtuální pevný disk mohl rozšířit, musí se virtuální počítač uvolnit. Při zastavení virtuálního počítače se `az vm stop` neuvolní výpočetní prostředky. K uvolnění výpočetních prostředků použijte `az vm deallocate` .
 
 1. Zobrazte seznam spravovaných disků ve skupině prostředků pomocí [seznamu AZ disk list](/cli/azure/disk#az-disk-list). Následující příklad zobrazí seznam spravovaných disků ve skupině prostředků s názvem *myResourceGroup*:
 
@@ -88,7 +88,7 @@ Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém s
     sudo parted /dev/sdc
     ```
 
-    Zobrazit informace o existujícím rozložení oddílu pomocí `print`. Výstup je podobný následujícímu příkladu, který ukazuje, že základní disk je 215 GB:
+    Zobrazit informace o existujícím rozložení oddílu pomocí `print` . Výstup je podobný následujícímu příkladu, který ukazuje, že základní disk je 215 GB:
 
     ```bash
     GNU Parted 3.2
@@ -105,7 +105,7 @@ Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém s
         1      0.00B  107GB  107GB  ext4
     ```
 
-    c. Rozbalte oddíl s `resizepart`. Zadejte číslo oddílu, *1*a velikost nového oddílu:
+    c. Rozbalte oddíl s `resizepart` . Zadejte číslo oddílu, *1*a velikost nového oddílu:
 
     ```bash
     (parted) resizepart
@@ -113,27 +113,27 @@ Chcete-li použít rozšířený disk, rozbalte příslušný oddíl a systém s
     End?  [107GB]? 215GB
     ```
 
-    d. Chcete-li skončit `quit`, zadejte.
+    d. Chcete-li skončit, zadejte `quit` .
 
-1. Při změně velikosti oddílu Ověřte konzistenci oddílu pomocí `e2fsck`:
+1. Při změně velikosti oddílu Ověřte konzistenci oddílu pomocí `e2fsck` :
 
     ```bash
     sudo e2fsck -f /dev/sdc1
     ```
 
-1. Změnit velikost systému souborů na `resize2fs`:
+1. Změnit velikost systému souborů na `resize2fs` :
 
     ```bash
     sudo resize2fs /dev/sdc1
     ```
 
-1. Připojte oddíl k požadovanému umístění, například `/datadrive`:
+1. Připojte oddíl k požadovanému umístění, například `/datadrive` :
 
     ```bash
     sudo mount /dev/sdc1 /datadrive
     ```
 
-1. Chcete-li ověřit, zda došlo ke změně velikosti datového disku `df -h`, použijte. Následující příklad výstupu ukazuje, že datová jednotka */dev/sdc1* je teď 200 GB:
+1. Chcete-li ověřit, zda došlo ke změně velikosti datového disku, použijte `df -h` . Následující příklad výstupu ukazuje, že datová jednotka */dev/sdc1* je teď 200 GB:
 
     ```bash
     Filesystem      Size   Used  Avail Use% Mounted on

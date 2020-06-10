@@ -6,16 +6,16 @@ documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2020
+ms.date: 06/09/2020
 author: nabhishek
 ms.author: abnarain
 manager: anandsub
-ms.openlocfilehash: 901761c8a5dc17cd7f00c3f04153c8e9aa99b648
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: c7880fd7fb687483409ce591059e0f5b2d2e2991
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82858000"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659711"
 ---
 # <a name="how-to-create-and-configure-azure-integration-runtime"></a>Jak vytvořit a nakonfigurovat Azure Integration Runtime
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -48,13 +48,13 @@ Existující Azure IR můžete nakonfigurovat tak, aby změnila umístění pomo
 ### <a name="create-an-azure-ir-via-azure-data-factory-ui"></a>Vytvoření Azure IR prostřednictvím uživatelského rozhraní Azure Data Factory
 Pomocí následujících kroků můžete vytvořit Azure IR pomocí uživatelského rozhraní Azure Data Factory.
 
-1. Na stránce **Začínáme** v uživatelském rozhraní Azure Data Factory vyberte kartu **Autor** v levém podokně.
+1. Na stránce **Začínáme** v uživatelském rozhraní Azure Data Factory vyberte [kartu spravovat](https://docs.microsoft.com/azure/data-factory/author-management-hub) z levého podokna.
 
-   ![Tlačítko autor domovské stránky](media/doc-common-process/get-started-page-author-button.png)
+   ![Tlačítko Správa domovské stránky](media/doc-common-process/get-started-page-manage-button.png)
 
-1. V dolní části levého podokna vyberte **připojení** a v okně **připojení** vyberte **modul runtime integrace** . Vyberte **+ Nový**.
+1. V levém podokně vyberte **modul runtime integrace** a pak vyberte **+ Nový**.
 
-   ![Vytvoření prostředí Integration Runtime](media/create-azure-integration-runtime/new-integration-runtime.png)
+   ![Vytvoření prostředí Integration Runtime](media/doc-common-process/manage-new-integration-runtime.png)
 
 1. Na stránce **instalace prostředí Integration runtime** vyberte **Azure,** v místním prostředí a pak vyberte **pokračovat**. 
 

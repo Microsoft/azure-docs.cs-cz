@@ -5,15 +5,15 @@ services: virtual-machines,storage
 author: roygara
 ms.author: rogarana
 ms.date: 03/27/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
-ms.openlocfilehash: c32915617d3149eee42bfdfd03d22f9ce5799ef2
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2802907d9e3ddb1c09c2f94074a977d00d191a84
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82580230"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658810"
 ---
 # <a name="upload-a-vhd-to-azure-or-copy-a-managed-disk-to-another-region---azure-cli"></a>Nahrání virtuálního pevného disku do Azure nebo zkopírování spravovaného disku do jiné oblasti – Azure CLI
 
@@ -38,15 +38,15 @@ Tento druh spravovaného disku má dva jedinečné stavy:
 - ActiveUpload, což znamená, že disk je připravený k přijetí nahrávání a vygeneroval se SAS.
 
 > [!NOTE]
-> V některém z těchto stavů se spravovaný disk bude účtovat podle [standardních cen HDD](https://azure.microsoft.com/pricing/details/managed-disks/), bez ohledu na skutečný typ disku. Například P10 bude účtován jako S10. To bude platit až do `revoke-access` chvíle, kdy se zavolá na spravovaný disk, který je potřeba k připojení disku k virtuálnímu počítači.
+> V některém z těchto stavů se spravovaný disk bude účtovat podle [standardních cen HDD](https://azure.microsoft.com/pricing/details/managed-disks/), bez ohledu na skutečný typ disku. Například P10 bude účtován jako S10. To bude platit až do chvíle `revoke-access` , kdy se zavolá na spravovaný disk, který je potřeba k připojení disku k virtuálnímu počítači.
 
 ## <a name="create-an-empty-managed-disk"></a>Vytvoření prázdného spravovaného disku
 
-Než budete moct vytvořit prázdný standardní pevný disk pro nahrávání, budete potřebovat velikost souboru virtuálního pevného disku, který chcete nahrát (v bajtech). K získání toho můžete použít buď `wc -c <yourFileName>.vhd` nebo. `ls -al <yourFileName>.vhd` Tato hodnota se používá při zadání parametru **--Upload-Size-bytes** .
+Než budete moct vytvořit prázdný standardní pevný disk pro nahrávání, budete potřebovat velikost souboru virtuálního pevného disku, který chcete nahrát (v bajtech). K získání toho můžete použít buď `wc -c <yourFileName>.vhd` nebo `ls -al <yourFileName>.vhd` . Tato hodnota se používá při zadání parametru **--Upload-Size-bytes** .
 
 Vytvořte prázdný standardní pevný disk pro nahrávání zadáním parametru **--for-upload** a parametru **--Upload-Size-bytes** v rutině [Create disku](/cli/azure/disk#az-disk-create) :
 
-`<yourresourcegroupname>`Nahraďte `<yourdiskname>`hodnotu hodnotou `<yourregion>` dle vašeho výběru. `--upload-size-bytes` Parametr obsahuje ukázkovou hodnotu `34359738880`, nahraďte ji hodnotou, která je pro vás vhodná.
+Nahraďte `<yourdiskname>` `<yourresourcegroupname>` `<yourregion>` hodnotu hodnotou dle vašeho výběru. `--upload-size-bytes`Parametr obsahuje ukázkovou hodnotu `34359738880` , nahraďte ji hodnotou, která je pro vás vhodná.
 
 ```azurecli
 az disk create -n <yourdiskname> -g <yourresourcegroupname> -l <yourregion> --for-upload --upload-size-bytes 34359738880 --sku standard_lrs
@@ -56,7 +56,7 @@ Pokud chcete nahrát disk SSD úrovně Premium nebo standardní SSD, nahraďte *
 
 Teď, když jste vytvořili prázdný spravovaný disk, který je nakonfigurovaný pro proces nahrávání, můžete do něj nahrát VHD. K nahrání virtuálního pevného disku na disk budete potřebovat SAS s možností zápisu, abyste na něj mohli odkazovat jako na cíl pro nahrání.
 
-Pokud chcete vygenerovat zapisovatelný SAS pro váš prázdný spravovaný disk `<yourdiskname>`, `<yourresourcegroupname>`nahraďte a a pak použijte následující příkaz:
+Pokud chcete vygenerovat zapisovatelný SAS pro váš prázdný spravovaný disk, nahraďte `<yourdiskname>` a a `<yourresourcegroupname>` pak použijte následující příkaz:
 
 ```azurecli
 az disk grant-access -n <yourdiskname> -g <yourresourcegroupname> --access-level Write --duration-in-seconds 86400
@@ -84,7 +84,7 @@ AzCopy.exe copy "c:\somewhere\mydisk.vhd" "sas-URI" --blob-type PageBlob
 
 Po dokončení nahrávání a už nebudete muset na disk zapisovat další data, Odvolejte SAS. Odvoláním SAS dojde ke změně stavu spravovaného disku a budete moci připojit disk k virtuálnímu počítači.
 
-`<yourdiskname>`Nahraďte `<yourresourcegroupname>`a pak pomocí následujícího příkazu nastavte disk jako použitelný:
+Nahraďte `<yourdiskname>` a `<yourresourcegroupname>` pak pomocí následujícího příkazu nastavte disk jako použitelný:
 
 ```azurecli
 az disk revoke-access -n <yourdiskname> -g <yourresourcegroupname>
@@ -99,7 +99,7 @@ Následující skript to provede za vás, což je postup podobný dříve popsan
 > [!IMPORTANT]
 > Pokud zadáváte velikost disku v bajtech spravovaného disku z Azure, musíte přidat posun 512. Je to proto, že Azure při vracení velikosti disku vynechá zápatí. Pokud to neuděláte, kopie se nezdaří. Následující skript to pro vás už dělá.
 
-Nahraďte `<sourceResourceGroupHere>`hodnotu `<sourceDiskNameHere>`, `<targetDiskNameHere>`, `<targetResourceGroupHere>`, a `<yourTargetLocationHere>` (příkladem hodnoty Location by se uswest2) hodnotami a spuštěním následujícího skriptu zkopírujte spravovaný disk.
+Nahraďte `<sourceResourceGroupHere>` `<sourceDiskNameHere>` hodnotu,, `<targetDiskNameHere>` , `<targetResourceGroupHere>` a `<yourTargetLocationHere>` (příkladem hodnoty Location by se uswest2) hodnotami a spuštěním následujícího skriptu zkopírujte spravovaný disk.
 
 ```azurecli
 sourceDiskName = <sourceDiskNameHere>

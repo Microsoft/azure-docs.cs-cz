@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 2f3932f3374367e260685ae5145da8858384c3a2
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/08/2020
+ms.openlocfilehash: a023599cb026a62aee034846dd390cda730d5df4
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194766"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660283"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Načtení dat do služby Azure synapse Analytics pomocí Azure Data Factory
 
@@ -136,11 +136,13 @@ V tomto článku se dozvíte, jak pomocí nástroje Data Factory Kopírování d
 1. Na stránce **Souhrn** zkontrolujte nastavení a klikněte na tlačítko **Další**.
 
     ![Stránka souhrnu](./media/load-azure-sql-data-warehouse/summary-page.png)
-1. Na **stránce nasazení**vyberte **monitorovat** a monitorujte kanál (úlohu).
 
-1. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Po úspěšném dokončení kanálu vyberte odkaz **CopyFromSQLToSQLDW** pod sloupcem **název kanálu** , abyste zobrazili podrobnosti o spuštění aktivit a znovu spustíte kanál.
+1. Na stránce **Nasazení** vyberte **Monitorovat** a začněte monitorovat kanál (úlohu). 
+ 
+1. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Po úspěšném dokončení kanálu vyberte odkaz **CopyFromSQLToSQLDW** pod sloupcem **název kanálu** , abyste zobrazili podrobnosti o spuštění aktivit nebo znovu spustíte kanál.
 
     [![Monitorování spuštění kanálu](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png#lightbox)
+
 1. Pokud chcete přejít zpátky k zobrazení spuštění kanálu, vyberte odkaz **všechny spuštění kanálu** v horní části. Seznam můžete aktualizovat kliknutím na **Aktualizovat**.
 
     ![Monitorování spuštění aktivit](./media/load-azure-sql-data-warehouse/activity-monitoring.png)

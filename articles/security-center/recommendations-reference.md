@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/05/2020
 ms.author: memildin
-ms.openlocfilehash: 90a058b7702dd51d3f93a83ae3e3d85f534808f3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 6bf218f14b0fc783bead5183b22e4abcefe87b5a
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552206"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660008"
 ---
 # <a name="security-recommendations---a-reference-guide"></a>Doporučení zabezpečení – referenční příručka
 
@@ -92,6 +92,9 @@ Vaše zabezpečené skóre vychází z počtu Security Center doporučení, kter
 |**Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů Service Bus**|Klienti Service Bus by neměli používat zásady přístupu na úrovni oboru názvů, které poskytují přístup ke všem frontám a tématům v oboru názvů. K zajištění souladu s modelem zabezpečení s minimálními oprávněními byste měli vytvořit zásady přístupu na úrovni entity pro fronty a témata, abyste měli přístup jenom ke konkrétní entitě.<br>(Související zásady: všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů Service Bus)|Nízká|N|Výpočetní prostředky (Service Bus)|
 |**Všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů centra událostí.**|Klienti centra událostí by neměli používat zásady přístupu na úrovni oboru názvů, které poskytují přístup ke všem frontám a tématům v oboru názvů. K zajištění souladu s modelem zabezpečení s minimálními oprávněními byste měli vytvořit zásady přístupu na úrovni entity pro fronty a témata, abyste měli přístup jenom ke konkrétní entitě.<br>(Související zásady: všechna autorizační pravidla s výjimkou RootManageSharedAccessKey by měla být odebrána z oboru názvů centra událostí)|Nízká|N|Výpočetní prostředky (centrum událostí)|
 |**Měla by být definovaná autorizační pravidla pro entitu centra událostí.**|Auditujte autorizační pravidla v entitě centra událostí, abyste udělili přístup s minimálním oprávněním.<br>(Související zásady: měla by být definovaná autorizační pravidla na entitě centra událostí.)|Nízká|N|Výpočetní prostředky (centrum událostí)|
+|**Instalace agenta monitorování na virtuální počítače**|Nainstalujte agenta monitorování, aby bylo možné na každém počítači povolit shromažďování dat, kontrolu aktualizací, kontrolu základních hodnot a službu Endpoint Protection.<br>(Žádné související zásady)|Vysoká|**Ano**|Počítač|
+|**Rozšíření konfigurace hosta by se mělo nainstalovat na virtuální počítače s Windows (Preview).**|Nainstalujte agenta konfigurace hosta, abyste povolili nastavení auditování v počítači, jako je například konfigurace operačního systému, konfigurace aplikace nebo přítomnost, nastavení prostředí. Po nainstalování budou k dispozici zásady na hostovi, jako je třeba ochrana před zneužitím systému Windows.<br>(Související zásady: požadavky na audit pro povolení zásad konfigurace hostů na virtuálních počítačích s Windows)|Vysoká|**Ano**|Počítač|
+|**Na vašich počítačích by mělo být povolené ochrany před zneužitím v programu Windows Defender (Preview)**|Ochrana před zneužitím v programu Windows Defender využívá agenta konfigurace hosta Azure Policy. Ochrana před zneužitím má čtyři komponenty, které jsou navržené tak, aby se zařízení zamkly na širokou škálu útoků, a to v případě, že se v případě malwaru povoluje vyrovnávat rizika zabezpečení a požadavky na produktivitu (jenom Windows).<br>(Související zásady: Auditovat virtuální počítače s Windows, na kterých není zapnutá ochrana proti zneužití v programu Windows Defender.)|Střední|N|Počítač|
 |**Instalace agenta monitorování na virtuální počítače**|Nainstalujte agenta monitorování, aby bylo možné na každém počítači povolit shromažďování dat, kontrolu aktualizací, kontrolu základních hodnot a službu Endpoint Protection.<br>(Žádné související zásady)|Vysoká|**Ano**|Počítač|
 |**Problémy se stavem agenta monitorování by se měly vyřešit na vašich počítačích.**|Pokud chcete úplnou Security Center ochranu, vyřešte problémy s agentem monitorování na vašich počítačích podle pokynů v Průvodci odstraňováním potíží.<br>(Žádné související zásady nezávisí na "instalaci agenta monitorování na vašich virtuálních počítačích")|Střední|N|Počítač|
 |**Na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.**|Povolením řízení aplikací můžete řídit, které aplikace se můžou spouštět na virtuálních počítačích umístěných v Azure. To vám pomůže posílit vaše virtuální počítače proti malwaru. Security Center využívá Machine Learning k analýze aplikací spuštěných na každém virtuálním počítači a pomůže vám použít pravidla pro povolení pomocí těchto inteligentních funkcí. Tato možnost zjednodušuje proces konfigurace a správy pravidel povolených aplikací.<br>(Související zásady: na virtuálních počítačích by měly být povolené Adaptivní řízení aplikací.)|Vysoká|N|Počítač|
