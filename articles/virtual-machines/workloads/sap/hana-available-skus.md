@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/01/2020
+ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 560636e000c498fdcd8583dc26cccc357d25ae22
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: d7a487b105c8edc34d9427de3b8ca6738da1855a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331929"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672098"
 ---
 # <a name="available-skus-for-hli"></a>Dostupné skladové položky pro HLI
 
@@ -56,6 +56,7 @@ SAP HANA v Azure (velké instance) založené na razítkech revize 4 jsou k disp
 | [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1985) | SAP HANA v Azure S768m<br /> – 16 x Intel® Xeon® procesor E7-8890 v4<br /> 384 procesorových jader a 768 PROCESORových vláken |  16,0 TB |  36 TB | K dispozici (jenom Rev 4) |
 | TDIv5 | SAP HANA v Azure S768xm<br /> – 16 x Intel® Xeon® procesor E7-8890 v4<br /> 384 procesorových jader a 768 PROCESORových vláken |  24,0 TB |  56 TB | K dispozici |
 | [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=1986) | SAP HANA v Azure S960m<br /> – 20 x Intel® Xeon® procesor E7-8890 v4<br /> 480 procesorových jader a 960 PROCESORových vláken |  20,0 TB |  46 TB | K dispozici (jenom Rev 4) |
+| [OLTP](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure&recordid=2328) | SAP HANA v Azure S896m<br /> – 16 x procesor Intel® Xeon® Platinum 8276 <br /> 448 procesorových jader a 896 PROCESORových vláken | 24,0 TB | 35,8 TB | K dispozici (jenom Rev 4) |
 
 - PROCESORová jádra = součet procesorů nevyužívajících technologii Hyper-v součtu procesorů serverové jednotky.
 - Vlákna procesoru = součet výpočetních vláken poskytovaných jádry procesoru s technologií Hyper-v součtu procesorů serverové jednotky. Většina jednotek je ve výchozím nastavení nakonfigurovaná tak, aby používala technologii Hyper-Threading.
@@ -90,7 +91,6 @@ Kromě toho jsou k dispozici následující standardní skladové jednotky (SKU)
 | SAP HANA v Azure S672ooo<br /> – 12 x Intel® Xeon® Platinum 8276 procesor <br /> 336 procesorových jader a 672 PROCESORových vláken | 22,5 TB |  4,5 TB |  18,0 TB | 33,7 TB  | K dispozici (jenom Rev 4) |
 | SAP HANA v Azure S672oom<br /> – 12 x Intel® Xeon® Platinum 8276 procesor <br /> 336 procesorových jader a 672 PROCESORových vláken | 27,0 TB |  9,0 TB |  18,0 TB | 40,0 TB  | K dispozici (jenom Rev 4) |
 | SAP HANA v Azure S896<br /> – 16 x procesor Intel® Xeon® Platinum 8276 <br /> 448 procesorových jader a 896 PROCESORových vláken | 12,0 TB |  12,0 TB |  --- | 18,9 TB | K dispozici (jenom Rev 4) |
-| SAP HANA v Azure S896m<br /> – 16 x procesor Intel® Xeon® Platinum 8276 <br /> 448 procesorových jader a 896 PROCESORových vláken | 24,0 TB |  24,0 TB |  --- | 35.8.4 TB | K dispozici (jenom Rev 4) |
 | SAP HANA v Azure S896oo<br /> – 16 x procesor Intel® Xeon® Platinum 8276 <br /> 448 procesorových jader a 896 PROCESORových vláken | 18,0 TB |  6,0 TB |  12,0 TB | 27,4 TB  | K dispozici (jenom Rev 4) |
 | SAP HANA v Azure S896om<br /> – 16 x procesor Intel® Xeon® Platinum 8276 <br /> 448 procesorových jader a 896 PROCESORových vláken | 24,0 TB |  12,0 TB |  12,0 TB | 35,8 TB  | K dispozici (jenom Rev 4) |
 | SAP HANA v Azure S896ooo<br /> – 16 x procesor Intel® Xeon® Platinum 8276 <br /> 448 procesorových jader a 896 PROCESORových vláken | 30,0 TB |  6,0 TB |  24,0 TB | 44,3 TB  | K dispozici (jenom Rev 4) |

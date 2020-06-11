@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol, rosssmi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4476502896705c2133b09b203bea0d6f5d74f121
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: ccb5543fbeae4d4fe9c0104d873cd9776ea45a5a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83681409"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672948"
 ---
 # <a name="how-to-require-app-protection-policy-and-an-approved-client-app-for-cloud-app-access-with-conditional-access"></a>Postupy: vyžadování zásad ochrany aplikací a schválené klientské aplikace pro přístup k cloudovým aplikacím pomocí podmíněného přístupu
 
@@ -37,7 +37,7 @@ Seznam oprávněných klientských aplikací najdete v tématu [požadavky na z�
 
 ## <a name="scenario-1-office-365-apps-require-approved-apps-with-app-protection-policies"></a>Scénář 1: aplikace Office 365 vyžadují schválené aplikace se zásadami ochrany aplikací.
 
-V tomto scénáři společnost Contoso rozhodla, že veškerý mobilní přístup k prostředkům sady Office 365 musí před přijetím přístupu používat schválené klientské aplikace, jako je Outlook Mobile, OneDrive a Microsoft Teams chráněné zásadami ochrany aplikací. Všichni uživatelé už přihlásili pomocí přihlašovacích údajů Azure AD a mají přiřazené licence, které zahrnují Azure AD Premium P1 nebo P2 a Microsoft Intune.
+V tomto scénáři společnost Contoso rozhodla, že veškerý mobilní přístup k prostředkům sady Office 365 musí před přijetím přístupu používat schválené klientské aplikace, jako je Outlook Mobile a OneDrive, chráněné zásadami ochrany aplikací. Všichni uživatelé už přihlásili pomocí přihlašovacích údajů Azure AD a mají přiřazené licence, které zahrnují Azure AD Premium P1 nebo P2 a Microsoft Intune.
 
 Aby bylo možné vyžadovat použití schválené klientské aplikace na mobilních zařízeních, musí organizace provést následující kroky.
 
@@ -176,5 +176,5 @@ Přečtěte si článek [jak vytvořit a přiřadit zásady ochrany aplikací](/
 
 [Komponenty podmíněného přístupu](concept-conditional-access-policies.md)
 
-[Společné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
+[Běžné zásady podmíněného přístupu](concept-conditional-access-policy-common.md)
 

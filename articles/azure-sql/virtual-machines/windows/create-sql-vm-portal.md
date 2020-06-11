@@ -4,7 +4,6 @@ description: Tato příručka obsahuje možnosti, které jsou k dispozici pro po
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.assetid: 1aff691f-a40a-4de2-b6a0-def1384e086e
 ms.service: virtual-machines-sql
@@ -15,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 52ac4d34a54e8bceb22f46f9de42dc461648970f
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 8b16551abf5b52a9b848988a50fe556d364907b2
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657133"
+ms.locfileid: "84669286"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Jak pomocí Azure Portal zřídit virtuální počítač s Windows pomocí SQL Server
 

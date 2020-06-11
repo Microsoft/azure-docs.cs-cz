@@ -8,12 +8,12 @@ ms.date: 02/25/2020
 ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 2f920e29fafdc55478e0e2c16d683bd1c3bc81d8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ee9f2f0366cc680c874c6748d27e02dcadb82e35
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "78942921"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673305"
 ---
 # <a name="introduction-to-azure-data-lake-storage-gen2"></a>Úvod do Azure Data Lake Storage Gen2
 
@@ -37,13 +37,13 @@ Data Lake Storage Gen2 je taky velmi nákladově efektivní, protože je postave
 
 ## <a name="key-features-of-data-lake-storage-gen2"></a>Klíčové funkce Data Lake Storage Gen2
 
--   **Přístup**s platformou hadoop: Data Lake Storage Gen2 umožňuje správu a přístup k datům stejně, jako byste použili [systém souborů DFS (DISTRIBUTED File System) Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nový [ovladač ABFS](data-lake-storage-abfs-driver.md) je k dispozici ve všech Apache Hadoop prostředích, včetně [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)a [SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/) pro přístup k datům uloženým v Data Lake Storage Gen2.
+-   **Přístup**s platformou hadoop: Data Lake Storage Gen2 umožňuje správu a přístup k datům stejně, jako byste použili [systém souborů DFS (DISTRIBUTED File System) Hadoop (HDFS)](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html). Nový [ovladač ABFS](data-lake-storage-abfs-driver.md) je k dispozici ve všech Apache Hadoop prostředích, včetně [Azure HDInsight](https://docs.microsoft.com/azure/hdinsight/index)*,* [Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/index)a [Azure synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics) pro přístup k datům uloženým v Data Lake Storage Gen2.
 
 -   **Nadmnožina oprávnění POSIX**: model zabezpečení pro data Lake Gen2 podporuje oprávnění ACL a POSIX spolu s některými dalšími podrobnostmi, které jsou specifické pro data Lake Storage Gen2. Nastavení lze nakonfigurovat prostřednictvím Průzkumník služby Storage nebo prostřednictvím architektury jako podregistr a Spark.
 
 -   **Cenově výhodné**: Data Lake Storage Gen2 nabízí cenovou kapacitu úložiště a transakce. Vzhledem k tomu, že se v průběhu svého kompletního životního cyklu data mění, účtují se náklady na minimum prostřednictvím integrovaných funkcí, jako je [životní cyklus služby Azure Blob Storage](storage-lifecycle-management-concepts.md).
 
--   **Optimalizovaný ovladač**: ovladač ABFS je [optimalizován speciálně](data-lake-storage-abfs-driver.md) pro analýzu velkých objemů dat. Odpovídající rozhraní REST API se procházejí prostřednictvím koncového `dfs.core.windows.net`bodu.
+-   **Optimalizovaný ovladač**: ovladač ABFS je [optimalizován speciálně](data-lake-storage-abfs-driver.md) pro analýzu velkých objemů dat. Odpovídající rozhraní REST API se procházejí prostřednictvím koncového bodu `dfs.core.windows.net` .
 
 ### <a name="scalability"></a>Škálovatelnost
 
@@ -61,10 +61,10 @@ Data Lake Storage Gen2 je další možností pro analýzy velkých objemů dat, 
 
 Níže jsou uvedené ekvivalentní entity, jak je popsáno v různých konceptech. Pokud není uvedeno jinak, jsou tyto entity přímo synonymné:
 
-| Koncept                                | Organizace nejvyšší úrovně | Organizace nižší úrovně                                            | Datový kontejner |
+| Koncepce                                | Organizace nejvyšší úrovně | Organizace nižší úrovně                                            | Datový kontejner |
 |----------------------------------------|------------------------|---------------------------------------------------------------------|----------------|
 | Objekty blob – úložiště objektů pro obecné účely | Kontejner              | Virtuální adresář (pouze sada SDK) – neposkytuje atomickou manipulaci | Objekt blob           |
-| Azure Data Lake Storage Gen2 – analytické úložiště          | Kontejner            | Adresář                                                           | File           |
+| Azure Data Lake Storage Gen2 – analytické úložiště          | Kontejner            | Adresář                                                           | Soubor           |
 
 ## <a name="supported-blob-storage-features"></a>Podporované funkce Blob Storage
 

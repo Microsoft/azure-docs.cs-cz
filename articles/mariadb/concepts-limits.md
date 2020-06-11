@@ -5,16 +5,23 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 6/8/2020
-ms.openlocfilehash: 11b28acfbda8b2760f19aa130373ba0f24f94db2
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.date: 6/10/2020
+ms.openlocfilehash: d217c579c5f2cb5c3b6b984c0f2e0c57f17df2c9
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636593"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669762"
 ---
 # <a name="limitations-in-azure-database-for-mariadb"></a>Omezení Azure Database for MariaDB
 Následující části popisují kapacitu, podporu modulu úložiště, podporu oprávnění, podporu příkazů pro manipulaci s daty a funkční omezení v databázové službě.
+
+## <a name="server-parameters"></a>Parametry serveru
+
+> [!NOTE]
+> Pokud hledáte minimální/maximální hodnoty parametrů serveru `max_connections` , například a `innodb_buffer_pool_size` , tyto informace se přesunuly na článek **[parametry serveru](./concepts-server-parameters.md)** .
+
+Azure Database for MySQL podporuje optimalizaci hodnot parametrů serveru. Minimální a maximální hodnota některých parametrů (např. `max_connections`, `join_buffer_size` , `query_cache_size` ) závisí na cenové úrovni a virtuální jádra serveru. Další informace o těchto omezeních najdete v [parametrech serveru](./concepts-server-parameters.md) . 
 
 ## <a name="storage-engine-support"></a>Podpora modulu úložiště
 
@@ -33,9 +40,6 @@ Následující části popisují kapacitu, podporu modulu úložiště, podporu 
 - Role DBA: mnoho parametrů serveru a nastavení může nechtěně snížit výkon serveru nebo vlastnosti s nezápornou KYSELINou systému DBMS. Za účelem zachování integrity služby a smlouvy SLA na úrovni produktu Tato služba nevystavuje roli DBA. Výchozí uživatelský účet, který je vytvořen při vytvoření nové instance databáze, umožňuje tomuto uživateli provádět většinu příkazů DDL a DML v instanci spravované databáze.
 - Superuživatele (SUPER Privileged Privilege) je taky omezené [oprávnění Super](https://mariadb.com/kb/en/library/grant/#global-privileges) .
 - DEFINe: vyžaduje pro vytvoření a omezení superuživatele oprávnění. Pokud importujete data pomocí zálohy, odeberte `CREATE DEFINER` příkazy ručně nebo pomocí `--skip-definer` příkazu při provádění mysqldump.
-
-## <a name="server-parameters"></a>Parametry serveru
-Azure Database for MariaDB podporuje optimalizaci hodnot parametrů serveru. Minimální a maximální hodnota některých parametrů závisí na cenové úrovni a na virtuální jádra serveru. Další informace o těchto omezeních najdete v [parametrech serveru](./concepts-server-parameters.md) . 
 
 ## <a name="data-manipulation-statement-support"></a>Podpora příkazů manipulace s daty
 

@@ -3,12 +3,12 @@ title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
 ms.date: 05/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0fa6c5e1d7e770468a14c66af9b99b32a7827eb1
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.openlocfilehash: 1d482eeb8b3da94e8af0a597ade1a1d834ccf6a0
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83871360"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677777"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -171,13 +171,17 @@ Pro trasy definované uživatelem (udr) se ujistěte, že máte zavedený proces
 
 ### <a name="honoring-dns"></a>Respektování DNS
 
-Zajistěte, aby vaše systémy dodržovaly hodnotu TTL (Time to Live) DNS pro adresu URL služby Batch. Navíc se ujistěte, že klienti služby Batch a další mechanismy připojení ke službě Batch nespoléhají na IP adresy.
+Zajistěte, aby vaše systémy dodržovaly hodnotu TTL (Time to Live) DNS pro adresu URL služby Batch. Navíc se ujistěte, že klienti služby Batch a další mechanismy připojení ke službě Batch nespoléhají na IP adresy (nebo [vytvořit fond se statickými veřejnými IP adresami](create-pool-public-ip.md) , jak je popsáno níže).
 
 Pokud vaše žádosti dostanou odezvy HTTP na úrovni 5xx a v odpovědi se nachází hlavička "připojení: zavřít", klient služby Batch by měl toto doporučení obdržet tím, že uzavře stávající připojení, znovu překládá DNS pro adresu URL služby Batch a pokusí se o nové připojení zkusit následující požadavky.
 
-### <a name="retrying-requests-automatically"></a>Opakování požadavků automaticky
+### <a name="retry-requests-automatically"></a>Opakovat požadavky automaticky
 
 Ujistěte se, že klienti služby Batch mají k dispozici vhodné zásady opakování, aby automaticky opakovaly vaše požadavky, a to i během normálního provozu, a ne výhradně během časových období údržby služby. Tyto zásady opakování by měly zahrnovat interval minimálně 5 minut. Automatické možnosti opakování jsou k dispozici s různými sadami SDK pro Batch, jako je například [Třída .NET RetryPolicyProvider](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.retrypolicyprovider?view=azure-dotnet).
+
+### <a name="static-public-ip-addresses"></a>Statické veřejné IP adresy
+
+Virtuální počítače ve fondu Batch jsou obvykle přístupné prostřednictvím veřejných IP adres, které se můžou měnit po dobu života fondu. Díky tomu může být obtížné pracovat s databází nebo jinou externí službou, která omezuje přístup k určitým IP adresám. Aby se zajistilo, že se veřejné IP adresy ve vašem fondu neočekávaně nezmění, můžete vytvořit fond pomocí sady statických veřejných IP adres, které ovládáte. Další informace najdete v tématu [Vytvoření fondu Azure Batch se zadanými veřejnými IP adresami](create-pool-public-ip.md).
 
 ## <a name="batch-node-underlying-dependencies"></a>Základní závislosti uzlu Batch
 

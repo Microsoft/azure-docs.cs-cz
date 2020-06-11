@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein, carlrab
-ms.date: 5/13/2020
-ms.openlocfilehash: 3d3eee7dc57a2438ccf726851025c700824a5e3a
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.date: 6/10/2020
+ms.openlocfilehash: 00c60a0ff20c67b63b2ca93f9e5997e78a283f26
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84322056"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667586"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL Database bez serveru
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -66,7 +66,7 @@ Následující tabulka shrnuje rozdíly mezi výpočetní a zřízenou výpočet
 
 | | **Bezserverové výpočetní prostředí** | **Zřízené výpočetní prostředky** |
 |:---|:---|:---|
-|**Vzor využití databáze**| Občasné, nepředvídatelné využití s nižším průměrem využití výpočetních prostředků v průběhu času. |  Efektivnější vzorce použití s vyšším průměrem využití výpočetních prostředků v průběhu času nebo více databází pomocí elastických fondů.|
+|**Vzor využití databáze**| Občasné, nepředvídatelné využití s nižším průměrem využití výpočetních prostředků v průběhu času. | Efektivnější vzorce použití s vyšším průměrem využití výpočetních prostředků v průběhu času nebo více databází pomocí elastických fondů.|
 | **Úsilí řízení výkonu** |Lower|Vyšší|
 |**Škálování na výpočetní výkon**|Automaticky|Ruční|
 |**Výpočetní rychlost odezvy**|Nižší po neaktivních obdobích|Projev|
@@ -161,19 +161,8 @@ Pokud používáte [transparentní šifrování dat (BYOK) spravované zákazní
 
 Vytvoření nové databáze nebo přesunutí existující databáze do výpočetní úrovně bez serveru se řídí stejným vzorem jako vytvoření nové databáze v zřízené výpočetní úrovni a zahrnuje následující dva kroky.
 
-1. Zadejte cíl služby. Cíl služby stanoví úroveň služby, generování hardwaru a maximální virtuální jádra. V následující tabulce jsou uvedeny možnosti cíle služby:
+1. Zadejte cíl služby. Cíl služby stanoví úroveň služby, generování hardwaru a maximální virtuální jádra. Možnosti cíle služby najdete v tématu [omezení prostředků bez serveru](resource-limits-vcore-single-databases.md#general-purpose---serverless-compute---gen5) .
 
-   |Název cíle služby|Úroveň služeb|Generování hardwaru|Maximální počet virtuální jádra|
-   |---|---|---|---|
-   |GP_S_Gen5_1|Pro obecné účely|Gen5|1|
-   |GP_S_Gen5_2|Pro obecné účely|Gen5|2|
-   |GP_S_Gen5_4|Pro obecné účely|Gen5|4|
-   |GP_S_Gen5_6|Pro obecné účely|Gen5|6|
-   |GP_S_Gen5_8|Pro obecné účely|Gen5|8|
-   |GP_S_Gen5_10|Pro obecné účely|Gen5|10|
-   |GP_S_Gen5_12|Pro obecné účely|Gen5|12|
-   |GP_S_Gen5_14|Pro obecné účely|Gen5|14|
-   |GP_S_Gen5_16|Pro obecné účely|Gen5|16|
 
 2. Volitelně můžete zadat minimální virtuální jádra a prodlevu při pauze pro změnu jejich výchozích hodnot. V následující tabulce jsou uvedeny dostupné hodnoty pro tyto parametry.
 
@@ -265,7 +254,7 @@ Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlev
 Změna maximálního nebo minimálního zpoždění virtuální jádra a prodlevy při automatickém pozastavení se provádí pomocí příkazu [AZ SQL DB Update](/cli/azure/sql/db#az-sql-db-update) v Azure CLI pomocí `capacity` `min-capacity` argumentů, a `auto-pause-delay` .
 
 
-## <a name="monitoring"></a>Sledování
+## <a name="monitoring"></a>Monitorování
 
 ### <a name="resources-used-and-billed"></a>Využité a fakturované prostředky
 

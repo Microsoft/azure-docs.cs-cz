@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.openlocfilehash: 7c462f25703b581c0882582d57fa8e5d2902dc4f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 91a70395bc359f0c5e199f91a739a7cef9205605
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83737499"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673271"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Postupy: přizpůsobení deklarací, které byly vygenerovány v tokenech pro konkrétní aplikaci v tenantovi (Preview)
 
@@ -325,6 +325,7 @@ Element ID určuje, která vlastnost ve zdroji poskytuje hodnotu pro deklaraci i
 | Uživatel | jobtitle | Název pozice |
 | Uživatel | zaměstnance | Identifikační číslo zaměstnance |
 | Uživatel | facsimiletelephonenumber | Telefonní číslo faxu |
+| Uživatel | assignedroles | seznam rolí aplikace přiřazených uživateli|
 | aplikace, prostředek, cílová skupina | DisplayName | Zobrazovaný název |
 | aplikace, prostředek, cílová skupina | s objekty | ObjectId |
 | aplikace, prostředek, cílová skupina | tags | Značka objektu služby |

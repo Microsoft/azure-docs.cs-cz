@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 08/01/2019
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: efb450f4da58c73c134d9f6b6aad6193f786912d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 08f117e2fc4939eee1458c0807cac5a292785608
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415007"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669864"
 ---
 # <a name="copy-data-from-marketo-using-azure-data-factory-preview"></a>Kopírování dat z Marketo pomocí Azure Data Factory (Preview)
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -35,7 +35,7 @@ Tento konektor Marketo se podporuje pro následující činnosti:
 
 Data ze služby Marketo můžete kopírovat do libovolného podporovaného úložiště dat jímky. Seznam úložišť dat, která jsou v rámci aktivity kopírování podporovaná jako zdroje a jímky, najdete v tabulce [podporovaná úložiště dat](copy-activity-overview.md#supported-data-stores-and-formats) .
 
-Azure Data Factory poskytuje integrovaný ovladač pro povolení připojení, takže nemusíte ručně instalovat žádné ovladače pomocí tohoto konektoru.
+Instance Marketo, která je integrovaná s externím CRM, není v současné době podporovaná.
 
 >[!NOTE]
 >Tento konektor Marketo je postaven na REST API Marketo. Mějte na paměti, že Marketo na straně služby má [limit souběžných požadavků](https://developers.marketo.com/rest-api/) . Pokud při pokusu o použití REST API dojde k chybám, došlo k chybě při pokusu o použití: limit maximální frekvence 100 se překročil v 20 – (606) nebo Chyba při pokusu o použití REST API: dosáhlo se limitu souběžného přístupu ' 10 ' (615). zvažte omezení spuštění souběžné aktivity kopírování, aby se snížil počet požadavků na službu.
@@ -50,15 +50,15 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu Marketo se podporují následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Marketo** . | Ano |
-| endpoint | Koncový bod serveru Marketo. (tj. 123-ABC-321.mktorest.com)  | Ano |
-| clientId | ID klienta služby Marketo.  | Ano |
-| clientSecret | Tajný kód klienta služby Marketo. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano |
-| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | Ne |
-| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | Ne |
-| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | Ne |
+| typ | Vlastnost Type musí být nastavená na: **Marketo** . | Yes |
+| endpoint | Koncový bod serveru Marketo. (tj. 123-ABC-321.mktorest.com)  | Yes |
+| clientId | ID klienta služby Marketo.  | Yes |
+| clientSecret | Tajný kód klienta služby Marketo. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Yes |
+| useEncryptedEndpoints | Určuje, zda jsou koncové body zdroje dat šifrovány pomocí protokolu HTTPS. Výchozí hodnotou je hodnota true.  | No |
+| useHostVerification | Určuje, jestli se má při připojování přes protokol TLS vyžadovat název hostitele v certifikátu serveru tak, aby odpovídal názvu hostitele serveru. Výchozí hodnotou je hodnota true.  | No |
+| usePeerVerification | Určuje, jestli se má při připojování přes protokol TLS ověřit identita serveru. Výchozí hodnotou je hodnota true.  | No |
 
 **Případě**
 
@@ -85,12 +85,12 @@ Pro propojenou službu Marketo se podporují následující vlastnosti:
 
 Pokud chcete kopírovat data ze služby Marketo, nastavte vlastnost Type datové sady na **MarketoObject**. Podporovány jsou následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **MarketoObject** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **MarketoObject** . | Yes |
 | tableName | Název tabulky | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -115,10 +115,10 @@ Pokud chcete kopírovat data ze služby Marketo, nastavte vlastnost Type datové
 
 Pokud chcete kopírovat data ze služby Marketo, nastavte typ zdroje v aktivitě kopírování na **MarketoSource**. V části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MarketoSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM Activitiy_Types"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **MarketoSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM Activitiy_Types"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Případě**
 

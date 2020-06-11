@@ -8,12 +8,12 @@ ms.date: 12/14/2018
 ms.author: rogarana
 ms.subservice: files
 ms.custom: tracking-python
-ms.openlocfilehash: b8d460f35f67d4e7f48611fdc2a770d4a0bed002
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d04b158761d501d4a79d91fe551670b57f9847f3
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552079"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678711"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Vývoj pro Soubory Azure pomocí Pythonu
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
@@ -48,7 +48,7 @@ pip install azure-storage-file
 Alternativní metody instalace najdete [v sadě Azure Storage SDK for Python na GitHubu](https://github.com/Azure/azure-storage-python/).
 
 ## <a name="view-the-sample-application"></a>Zobrazit ukázkovou aplikaci
-f pokud chcete zobrazit a spustit ukázkovou aplikaci, která ukazuje, jak používat Python se soubory Azure, přečtěte si téma [Azure Storage: Začínáme se soubory Azure v Pythonu](https://github.com/Azure-Samples/storage-file-python-getting-started). 
+Pokud chcete zobrazit a spustit ukázkovou aplikaci, která ukazuje, jak používat Python se soubory Azure, přečtěte si téma [Azure Storage: Začínáme se soubory Azure v Pythonu](https://github.com/Azure-Samples/storage-file-python-getting-started). 
 
 Chcete-li spustit ukázkovou aplikaci, ujistěte se, že jste `azure-storage-file` nainstalovali `azure-storage-common` balíčky a.
 
@@ -96,7 +96,7 @@ Chcete-li vytvořit soubor a odeslat data, použijte `create_file_from_path` `cr
 
 `create_file_from_path`nahraje obsah souboru ze zadané cesty a `create_file_from_stream` nahraje obsah z již otevřeného souboru nebo datového proudu. `create_file_from_bytes`nahraje pole bajtů a `create_file_from_text` nahraje zadanou textovou hodnotu pomocí zadaného kódování (standardně UTF-8).
 
-Následující příklad nahraje obsah souboru **slunce. png** do souboru **MyFile** .
+Následující příklad nahraje obsah **sunset.png** souboru do souboru **MyFile** .
 
 ```python
 from azure.storage.file import ContentSettings
@@ -111,7 +111,7 @@ file_service.create_file_from_path(
 ## <a name="download-a-file"></a>Stažení souboru
 Chcete-li stáhnout data ze souboru, použijte `get_file_to_path` ,, `get_file_to_stream` `get_file_to_bytes` nebo `get_file_to_text` . Jsou to metody vysoké úrovně, které provádějí nezbytné datové bloky, pokud velikost dat překročí 64 MB.
 
-Následující příklad ukazuje použití `get_file_to_path` ke stažení obsahu souboru **MyFile** a jeho uložení do souboru **Out-Sunset. png** .
+Následující příklad ukazuje použití `get_file_to_path` ke stažení obsahu souboru **MyFile** a jeho uložení do souboru **out-sunset.png** .
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')

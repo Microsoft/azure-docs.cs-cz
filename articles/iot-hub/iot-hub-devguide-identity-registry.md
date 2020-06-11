@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 2ef259bf76815fdf8672b696d2260fe6a143b798
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e9d5eae4ef926a5c05265b91526d03a17ca57781
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81730175"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674950"
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>Vysvětlení registru identit ve službě IoT Hub
 
@@ -110,7 +110,7 @@ Vlastnosti: vlastnosti systému zprávy jsou předpony s `$` symbolem.
 
 Zpráva oznámení pro zařízení:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 |$content – typ | application/json |
 |$iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -122,7 +122,7 @@ Zpráva oznámení pro zařízení:
 |operationTimestamp | ISO8601 časové razítko operace |
 |iothub-Message-Schema | deviceLifecycleNotification |
 
-Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity zařízení. Například:
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity zařízení. Třeba
 
 ```json
 {
@@ -146,7 +146,7 @@ Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identi
 ```
 Zpráva oznámení pro modul:
 
-| Název | Hodnota |
+| Name | Hodnota |
 | --- | --- |
 $content – typ | application/json |
 $iothub – enqueuedtime |  Čas odeslání oznámení |
@@ -158,7 +158,7 @@ moduleId | ID modulu |
 operationTimestamp | ISO8601 časové razítko operace |
 iothub-Message-Schema | moduleLifecycleNotification |
 
-Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity modulu. Například:
+Tělo: Tato část je ve formátu JSON a představuje vlákna vytvořené identity modulu. Třeba
 
 ```json
 {
@@ -188,12 +188,12 @@ Identity zařízení se reprezentují jako dokumenty JSON s následujícími vla
 
 | Vlastnost | Možnosti | Popis |
 | --- | --- | --- |
-| deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
+| deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |požadováno, jen pro čtení |Řetězec s rozlišováním velikosti písmen, který je v IoT Hub generovaný, je dlouhý až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejným **deviceId**, kdy byly odstraněny a znovu vytvořeny. |
 | značk |požadováno, jen pro čtení |Řetězec představující slabou značku ETag pro identitu zařízení, jak je na [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | auth |optional |Složený objekt obsahující ověřovací informace a materiály pro zabezpečení. |
 | auth. symkey |optional |Složený objekt obsahující primární a sekundární klíč uložený ve formátu base64. |
-| status |Požadovaný |Indikátor přístupu. Lze **Povolit** nebo **Zakázat**. Pokud je tato možnost **povolená**, může se zařízení připojit. Pokud je toto zařízení **zakázané**, nemůže získat přístup ke koncovému bodu, který se týká zařízení. |
+| status |vyžadováno |Indikátor přístupu. Lze **Povolit** nebo **Zakázat**. Pokud je tato možnost **povolená**, může se zařízení připojit. Pokud je toto zařízení **zakázané**, nemůže získat přístup ke koncovému bodu, který se týká zařízení. |
 | statusReason |optional |Řetězec dlouhého znaku 128, který ukládá důvod pro stav identity zařízení. Všechny znaky UTF-8 jsou povoleny. |
 | statusUpdateTime |jen pro čtení |Dočasný indikátor zobrazující datum a čas poslední aktualizace stavu. |
 | Vlastnost ConnectionState |jen pro čtení |Pole indikující stav připojení: **připojeno** nebo **Odpojeno**. Toto pole představuje IoT Hub zobrazení stavu připojení zařízení. **Důležité**: Toto pole by mělo být používáno pouze pro účely vývoje a ladění. Stav připojení se aktualizuje jenom pro zařízení, která používají MQTT nebo AMQP. Také je založena na protokolech příkazového testu na úrovni protokolu (MQTT příkazového testu) a může mít maximální zpoždění pouze 5 minut. Z těchto důvodů můžou existovat falešně pozitivní, například zařízení nahlášená jako připojená, ale odpojená. |
@@ -212,13 +212,13 @@ Identity modulů jsou reprezentovány jako dokumenty JSON s následujícími vla
 
 | Vlastnost | Možnosti | Popis |
 | --- | --- | --- |
-| deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
-| moduleId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , = @ $ '`. |
+| deviceId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
+| moduleId |požadováno, jen pro čtení v aktualizacích |Řetězec s rozlišováním velkých a malých písmen (maximálně 128 znaků dlouhý) alfanumerických znaků ASCII a některé speciální znaky: `- . + % _ # * ? ! ( ) , : = @ $ '` . |
 | generationId |požadováno, jen pro čtení |Řetězec s rozlišováním velikosti písmen, který je v IoT Hub generovaný, je dlouhý až 128 znaků. Tato hodnota se používá k rozlišení zařízení se stejným **deviceId**, kdy byly odstraněny a znovu vytvořeny. |
 | značk |požadováno, jen pro čtení |Řetězec představující slabou značku ETag pro identitu zařízení, jak je na [RFC7232](https://tools.ietf.org/html/rfc7232). |
 | auth |optional |Složený objekt obsahující ověřovací informace a materiály pro zabezpečení. |
 | auth. symkey |optional |Složený objekt obsahující primární a sekundární klíč uložený ve formátu base64. |
-| status |Požadovaný |Indikátor přístupu. Lze **Povolit** nebo **Zakázat**. Pokud je tato možnost **povolená**, může se zařízení připojit. Pokud je toto zařízení **zakázané**, nemůže získat přístup ke koncovému bodu, který se týká zařízení. |
+| status |vyžadováno |Indikátor přístupu. Lze **Povolit** nebo **Zakázat**. Pokud je tato možnost **povolená**, může se zařízení připojit. Pokud je toto zařízení **zakázané**, nemůže získat přístup ke koncovému bodu, který se týká zařízení. |
 | statusReason |optional |Řetězec dlouhého znaku 128, který ukládá důvod pro stav identity zařízení. Všechny znaky UTF-8 jsou povoleny. |
 | statusUpdateTime |jen pro čtení |Dočasný indikátor zobrazující datum a čas poslední aktualizace stavu. |
 | Vlastnost ConnectionState |jen pro čtení |Pole indikující stav připojení: **připojeno** nebo **Odpojeno**. Toto pole představuje IoT Hub zobrazení stavu připojení zařízení. **Důležité**: Toto pole by mělo být používáno pouze pro účely vývoje a ladění. Stav připojení se aktualizuje jenom pro zařízení, která používají MQTT nebo AMQP. Také je založena na protokolech příkazového testu na úrovni protokolu (MQTT příkazového testu) a může mít maximální zpoždění pouze 5 minut. Z těchto důvodů můžou existovat falešně pozitivní, například zařízení nahlášená jako připojená, ale odpojená. |

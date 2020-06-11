@@ -3,12 +3,12 @@ title: Key Vault tajný klíč se šablonou
 description: Ukazuje, jak předat tajný klíč z trezoru klíčů jako parametr během nasazování.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: d21a7d727091b427fee59e22db6a77a495a4eab7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: eb57e680090a38a5be725daa7b3a118039aa35f6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81458262"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677861"
 ---
 # <a name="use-azure-key-vault-to-pass-secure-parameter-value-during-deployment"></a>Použití Azure Key Vault k předání hodnoty zabezpečeného parametru během nasazení
 
@@ -18,7 +18,7 @@ Tento článek se zaměřuje na scénář předávání citlivé hodnoty v jako 
 
 ## <a name="deploy-key-vaults-and-secrets"></a>Nasazení trezorů klíčů a tajných kódů
 
-Pro přístup k trezoru klíčů během nasazování šablony `enabledForTemplateDeployment` nastavte v trezoru klíčů `true`na.
+Pro přístup k trezoru klíčů během nasazování šablony nastavte `enabledForTemplateDeployment` v trezoru klíčů na `true` .
 
 Pokud již máte Key Vault, ujistěte se, že umožňuje nasazení šablon.
 
@@ -95,7 +95,7 @@ Další informace o vytváření trezorů klíčů a přidávání tajných klí
 - [Nastavení a načtení tajného klíče pomocí PowerShellu](../../key-vault/secrets/quick-create-powershell.md)
 - [Nastavení a načtení tajného klíče pomocí portálu](../../key-vault/secrets/quick-create-portal.md)
 - [Nastavení a načtení tajného klíče pomocí .NET](../../key-vault/secrets/quick-create-net.md)
-- [Nastavení a načtení tajného klíče pomocí Node. js](../../key-vault/secrets/quick-create-node.md)
+- [Nastavení a načtení tajného klíče pomocí Node.js](../../key-vault/secrets/quick-create-node.md)
 
 ## <a name="grant-access-to-the-secrets"></a>Udělení přístupu k tajným klíčům
 
@@ -163,7 +163,7 @@ Následující šablona nasadí SQL Server, který obsahuje heslo správce. Para
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminLogin": {
@@ -201,7 +201,7 @@ V následujícím souboru parametrů již musí existovat tajný klíč trezoru 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "adminLogin": {
@@ -267,7 +267,7 @@ Následující šablona dynamicky vytvoří ID trezoru klíčů a předá ho jak
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "location": {
@@ -314,7 +314,7 @@ Následující šablona dynamicky vytvoří ID trezoru klíčů a předá ho jak
           "scope": "inner"
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {

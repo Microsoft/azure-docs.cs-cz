@@ -7,12 +7,12 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 05/20/2020
-ms.openlocfilehash: dc93121d7565b95b9bd604160028659f3a741b0c
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860490"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673356"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper Server nemůže vytvořit kvorum ve službě Azure HDInsight.
 
@@ -27,7 +27,7 @@ Tento článek popisuje postup řešení potíží a možná řešení problém�
 
 ## <a name="sample-log"></a>Ukázkový protokol
 
-Může se zobrazit chybová zpráva podobná této:
+V protokolech příze se může zobrazit chybová zpráva podobná následující v protokolu nitě (/var/log/Hadoop-YARN/YARN/YARN-YARN *. log on hlavních):
 
 ```output
 2020-05-05 03:17:18.3916720|Lost contact with Zookeeper. Transitioning to standby in 10000 ms if connection is not reestablished.
@@ -116,6 +116,7 @@ Node count: 133212
 
 ## <a name="cancelledkeyexception-in-the-zookeeper-server-log-doesnt-require-snapshot-cleanup"></a>CancelledKeyException v protokolu serveru Zookeeper nevyžaduje vyčištění snímků.
 
+* Tato výjimka bude vidět na serverech Zookeeper (/var/log/Zookeeper/Zookeeper-Zookeeper-* nebo/var/log/HDInsight-Zookeeper/Zookeeper * soubory).
 * Tato výjimka obvykle znamená, že klient již není aktivní a Server nemůže odeslat zprávu.
 * Tato výjimka také indikuje, že klient Zookeeper ukončí relace předčasně.
 * Vyhledejte další příznaky popsané v tomto dokumentu.

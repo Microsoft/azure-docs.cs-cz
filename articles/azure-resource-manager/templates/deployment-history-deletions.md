@@ -2,13 +2,13 @@
 title: Odstranění historie nasazení
 description: Popisuje, jak Azure Resource Manager automaticky odstranit nasazení z historie nasazení. Nasazení se odstraní, když se historie blíží k překročení limitu 800.
 ms.topic: conceptual
-ms.date: 06/05/2020
-ms.openlocfilehash: 2d87cc1dcc0d3a41cb32bf7750ccdd832019f8bf
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.date: 06/10/2020
+ms.openlocfilehash: c16b71646e20b71c0d0ca8c9f8e028773983022f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462732"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673985"
 ---
 # <a name="automatic-deletions-from-deployment-history"></a>Automatické odstraňování z historie nasazení
 
@@ -18,10 +18,12 @@ Od června 2020 Azure Resource Manager automaticky odstraní nasazení z histori
 
 > [!NOTE]
 > Odstranění nasazení z historie neovlivní žádné z nasazených prostředků.
+>
+> Pokud máte [CanNotDelete zámek](../management/lock-resources.md) skupiny prostředků, nasazení pro tuto skupinu prostředků nejde odstranit. Abyste mohli využít automatické odstraňování v historii nasazení, musíte odebrat zámek.
 
 ## <a name="when-deployments-are-deleted"></a>Po odstranění nasazení
 
-Nasazení se z historie nasazení odstraní jenom v případě, že se blíží limitu 800. Azure Resource Manager odstraní malou sadu nejstarší nasazení, aby se místo pro budoucí nasazení vymazalo místo. Většina vaší historie zůstane beze změny. Nejstarší nasazení se vždy odstraní jako první.
+Nasazení se při dosažení 790 nasazení odstraní z historie nasazení. Azure Resource Manager odstraní malou sadu nejstarší nasazení, aby se místo pro budoucí nasazení vymazalo místo. Většina vaší historie zůstane beze změny. Nejstarší nasazení se vždy odstraní jako první.
 
 :::image type="content" border="false" source="./media/deployment-history-deletions/deployment-history.svg" alt-text="Odstranění z historie nasazení":::
 

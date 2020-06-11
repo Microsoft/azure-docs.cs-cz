@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: b62f30f428a0aaf5a564e2f2d2ad8d753dff7767
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: fd4ed98383d38be8528bafd6ec7d149381386fac
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298911"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672514"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Správa Azure AD B2C s využitím Microsoft Graph
 
@@ -46,7 +46,15 @@ I když služba Azure AD B2C Authentication Service aktuálně nepodporuje tok u
 
 Předtím, než můžou skripty a aplikace pracovat s [rozhraním Microsoft Graph API][ms-graph-api] ke správě prostředků Azure AD B2C, je potřeba vytvořit registraci aplikace ve vašem tenantovi Azure AD B2C, která udělí požadovaná oprávnění rozhraní API.
 
-[!INCLUDE [active-directory-b2c-appreg-mgmt](../../includes/active-directory-b2c-appreg-mgmt.md)]
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Na panelu nástrojů na portálu vyberte ikonu **adresář + předplatné** a pak vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
+1. V Azure Portal vyhledejte a vyberte **Azure AD B2C**.
+1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
+1. Zadejte **název** aplikace. Například *managementapp1*.
+1. Vyberte **účty jenom v tomto organizačním adresáři**.
+1. V části **oprávnění**zrušte zaškrtnutí políčka *udělit souhlas správce udělit oprávnění OpenID a offline_access* .
+1. Vyberte **Zaregistrovat**.
+1. Poznamenejte si **ID aplikace (klienta)** , které se zobrazí na stránce s přehledem aplikace. Tuto hodnotu použijete v pozdějším kroku.
 
 ### <a name="grant-api-access"></a>Udělení přístupu k rozhraní API
 

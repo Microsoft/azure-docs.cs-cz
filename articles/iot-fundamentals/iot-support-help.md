@@ -7,12 +7,12 @@ ms.service: iot-fundamentals
 services: iot-fundamentals
 ms.topic: overview
 ms.date: 1/23/2020
-ms.openlocfilehash: e5dfdd41d3770cc49ed7a1e40ad6fbb12e5b10ea
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 74d8d05ba3c7a061bc78dc4c24a24d6a6275525d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827231"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659618"
 ---
 # <a name="azure-iot-support-and-help-options"></a>Možnosti pomoci a podpory Azure IoT
 
@@ -29,35 +29,43 @@ Prozkoumejte celou řadu [možností podpory Azure a vyberte plán](https://azur
 * [portál Azure](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [Azure Portal pro vládu USA](https://portal.azure.us)
 
+## <a name="post-a-question-on-microsoft-qa"></a>Odeslat otázku do Microsoft Q&A
+
+Pro zajištění rychlých a spolehlivých odpovědí na dotazy k technickým produktům od techniků Microsoftu, z Azure MVP (MVP) nebo z naší odborné komunity se můžete zapojit do [Microsoft Q&a](https://aka.ms/azureqa), preferovaný cíl Azure pro podporu komunity. 
+
+Pokud nemůžete najít odpověď na váš problém pomocí hledání, odešlete novou otázku do složky Microsoft Q&A. Když požádáte o svoji otázku, použijte jednu z následujících značek:
+
+- [Azure IoT](https://docs.microsoft.com/answers/topics/azure-iot.html)
+- [Azure IoT Central](https://docs.microsoft.com/answers/topics/azure-iot-central.html)
+- [Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
+- [Azure IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
+- [Azure IoT Hub Device Provisioning Service (DPS)](https://docs.microsoft.com/answers/topics/azure-iot-dps.html)
+- [Sady Azure IoT SDK](https://docs.microsoft.com/answers/topics/azure-iot-sdk.html)
+- [Azure Digital Twins](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
+- [Azure RTOS](https://docs.microsoft.com/answers/topics/azure-rtos.html)
+- [Azure Sphere](https://docs.microsoft.com/answers/topics/azure-sphere.html)
+- [Azure Time Series Insights](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
+- [Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html)
+
 ## <a name="post-a-question-on-stack-overflow"></a>Odeslat dotaz na Stack Overflow
 
 <div class='icon is-large'>
     <img alt='Stack Overflow' src='https://docs.microsoft.com/media/logos/logo_stackoverflow.svg'>
 </div>
 
-Pro okamžité odpovědi z komunity si prohlédněte Stack Overflow. Stack Overflow je preferovaným kanálem pro **otázky související s vývojem**. Je tam, kde jsou členové komunity a členové týmu Microsoftu přímo zapojeni na pomoc při řešení vašich problémů.
+Odpovědi na otázky pro vývojáře od největšího ekosystému vývojářů komunity vám požádají o Stack Overflow.
 
-Pokud nemůžete najít odpověď na váš problém pomocí hledání, odešlete novou otázku pro Stack Overflow. Při formulování otázky použijte jednu z následujících značek:
+Pokud odešlete novou otázku pro Stack Overflow, při vytváření otázky prosím použijte jednu nebo více následujících značek:
 
- - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
  - [Azure IoT Central](https://stackoverflow.com/questions/tagged/azure-iot-central)
  - [Azure IoT Edge](https://stackoverflow.com/questions/tagged/azure-iot-edge)
  - [Azure IoT Hub](https://stackoverflow.com/questions/tagged/azure-iot-hub)
- - [Azure Maps](https://stackoverflow.com/questions/tagged/azure-maps)
  - [Sady Azure IoT SDK](https://stackoverflow.com/questions/tagged/azure-iot-sdk)
+ - [Azure Digital Twins](https://stackoverflow.com/questions/tagged/azure-digital-twins)
+ - [Azure RTOS](https://stackoverflow.com/questions/tagged/azure-rtos)
+ - [Azure Sphere](https://stackoverflow.com/questions/tagged/azuresphere)
  - [Azure Time Series Insights](https://stackoverflow.com/questions/tagged/azure-timeseries-insights)
-
-## <a name="start-a-conversation-on-the-msdn-forums"></a>Spuštění konverzace na fórech MSDN
-
-Diskuze o technologiích a službách Azure pro vytváření řešení IoT MSDN je preferovaným kanálem pro **otázky týkající se řešení**. Je tam, kde jsou členové komunity a členové týmu Microsoftu přímo zapojeni v tom, že vám pomůžou zvolit správné řešení pro váš projekt.
-
-Pokud nemůžete najít odpověď na váš problém pomocí hledání, odešlete novou otázku do MSDN ve fóru týkajícím se služby:
-
-- [Microsoft Q&Stránka s otázkou pro digitální vlákna Azure](https://docs.microsoft.com/answers/topics/azure-digital-twins.html)
-- [Stránka s otázkou pro Azure&Microsoft Q IoT Hub](https://docs.microsoft.com/answers/topics/azure-iot-hub.html)
-- [Microsoft Q&Stránka s otázkou pro Azure IoT Edge](https://docs.microsoft.com/answers/topics/azure-iot-edge.html)
-- [Microsoft Q&Stránka s otázkou pro Azure Maps](https://docs.microsoft.com/answers/topics/azure-maps.html)
-- [Microsoft Q&Stránka s otázkou pro Azure Time Series Insights](https://docs.microsoft.com/answers/topics/azure-time-series-insights.html)
+ - [Azure Maps](https://stackoverflow.com/questions/tagged/azure-maps)
 
 ## <a name="submit-feedback-on-azure-feedback"></a>Odeslání názoru na zpětnou vazbu k Azure
 
@@ -77,6 +85,7 @@ Pokud chcete požádat o nové funkce, publikujte je na základě zpětné vazby
 | Azure Maps                 | https://feedback.azure.com/forums/909172-azure-maps |
 | Azure Time Series Insights | https://feedback.azure.com/forums/906859-azure-time-series-insights |
 | Azure Digital Twins | https://feedback.azure.com/forums/916621-azure-digital-twins |
+| Azure Sphere | https://feedback.azure.com/forums/915433-azure-sphere |
 
 ## <a name="stay-informed-of-updates-and-new-releases"></a>Udržujte si přehled o aktualizacích a nových verzích
 

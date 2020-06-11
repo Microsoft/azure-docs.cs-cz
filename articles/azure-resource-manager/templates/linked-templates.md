@@ -3,12 +3,12 @@ title: Propojení šablon pro nasazení
 description: Popisuje způsob použití propojených šablon v šabloně Azure Resource Manager k vytvoření modulárního řešení šablon. Ukazuje, jak předat hodnoty parametrů, určit soubor parametrů a dynamicky vytvořené adresy URL.
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: f71d8cc62daf68b158bed444da1446e016194b56
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 6594386fd2d8c8ab9d9c1414d7e04f4352a3f086
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82609302"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678269"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Použití propojené a vnořené šablony při nasazování prostředků Azure
 
@@ -69,7 +69,7 @@ Následující příklad nasadí účet úložiště prostřednictvím vnořené
       "properties": {
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "resources": [
             {
@@ -96,7 +96,7 @@ Následující příklad nasadí účet úložiště prostřednictvím vnořené
 
 Při použití vnořené šablony můžete určit, zda jsou výrazy šablony vyhodnocovány v rámci rozsahu nadřazené šablony nebo vnořené šablony. Rozsah určuje, jak jsou řešeny parametry, proměnné a funkce jako [zdrojová](template-functions-resource.md#resourcegroup) a [odběrová](template-functions-resource.md#subscription) pole.
 
-Rozsah můžete nastavit pomocí `expressionEvaluationOptions` vlastnosti. Ve výchozím nastavení je `expressionEvaluationOptions` vlastnost nastavena na `outer`hodnotu, což znamená, že používá nadřazený obor šablony. Nastavte hodnotu `inner` na, aby byly výrazy vyhodnoceny v rámci rozsahu vnořené šablony.
+Rozsah můžete nastavit pomocí `expressionEvaluationOptions` Vlastnosti. Ve výchozím nastavení `expressionEvaluationOptions` je vlastnost nastavena na hodnotu `outer` , což znamená, že používá nadřazený obor šablony. Nastavte hodnotu na, aby `inner` byly výrazy vyhodnoceny v rámci rozsahu vnořené šablony.
 
 ```json
 {
@@ -132,7 +132,7 @@ Následující šablona ukazuje, jak jsou řešeny výrazy šablony podle oboru.
         },
         "mode": "Incremental",
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "variables": {
             "exampleVar": "from nested template"
@@ -158,18 +158,18 @@ Následující šablona ukazuje, jak jsou řešeny výrazy šablony podle oboru.
 }
 ```
 
-Hodnota `exampleVar` změny závisí na hodnotě `scope` vlastnosti v. `expressionEvaluationOptions` V následující tabulce jsou uvedeny výsledky pro oba obory.
+Hodnota `exampleVar` změny závisí na hodnotě `scope` vlastnosti v `expressionEvaluationOptions` . V následující tabulce jsou uvedeny výsledky pro oba obory.
 
 | `expressionEvaluationOptions` `scope` | Výstup |
 | ----- | ------ |
 | vnořen | z vnořené šablony |
 | vnější (nebo výchozí) | z nadřazené šablony |
 
-Následující příklad nasadí SQL Server a načte tajný klíč trezoru klíčů, který se použije pro heslo. Rozsah je nastaven na `inner` , protože dynamicky vytváří ID trezoru klíčů (viz `adminPassword.reference.keyVault` v vnějších šablonách `parameters`) a předává je do vnořené šablony jako parametr.
+Následující příklad nasadí SQL Server a načte tajný klíč trezoru klíčů, který se použije pro heslo. Rozsah je nastaven na, `inner` protože dynamicky vytváří ID trezoru klíčů (viz `adminPassword.reference.keyVault` v vnějších šablonách `parameters` ) a předává je do vnořené šablony jako parametr.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -232,7 +232,7 @@ Následující příklad nasadí SQL Server a načte tajný klíč trezoru klí�
           }
         },
         "template": {
-          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "contentVersion": "1.0.0.0",
           "parameters": {
             "adminLogin": {
@@ -277,7 +277,7 @@ Následující příklad nasadí SQL Server a načte tajný klíč trezoru klí�
 
 > [!NOTE]
 >
-> Pokud je obor nastaven na `outer`hodnotu, nemůžete `reference` použít funkci v části výstupy vnořené šablony pro prostředek, který jste nasadili ve vnořené šabloně. Chcete-li vrátit hodnoty nasazeného prostředku ve vnořené šabloně, buď použijte `inner` rozsah, nebo převeďte vnořenou šablonu na propojenou šablonu.
+> Pokud je obor nastaven na hodnotu `outer` , nemůžete použít `reference` funkci v části výstupy vnořené šablony pro prostředek, který jste nasadili ve vnořené šabloně. Chcete-li vrátit hodnoty nasazeného prostředku ve vnořené šabloně, buď použijte `inner` rozsah, nebo převeďte vnořenou šablonu na propojenou šablonu.
 
 ## <a name="linked-template"></a>Odkazovaná šablona
 
@@ -308,11 +308,11 @@ Pokud chcete propojit šablonu, přidejte do hlavní šablony [prostředek nasaz
 }
 ```
 
-Při odkazování na propojenou šablonu nemůže být hodnota `uri` nesmí být místním souborem nebo souborem, který je k dispozici pouze v místní síti. Je nutné zadat hodnotu identifikátoru URI, která se bude stahovat jako **http** nebo **https**. 
+Při odkazování na propojenou šablonu `uri` nemůže být hodnota nesmí být místním souborem nebo souborem, který je k dispozici pouze v místní síti. Je nutné zadat hodnotu identifikátoru URI, která se bude stahovat jako **http** nebo **https**.
 
 > [!NOTE]
 >
-> Můžete odkazovat na šablony pomocí parametrů, které jsou nakonec vyřešeny na něco, co používá **protokol HTTP** nebo **https**, `_artifactsLocation` například pomocí parametru, například:`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+> Můžete odkazovat na šablony pomocí parametrů, které jsou nakonec vyřešeny na něco, co používá **protokol HTTP** nebo **https**, například pomocí parametru, například `_artifactsLocation` :`"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
 
 
 
@@ -369,7 +369,7 @@ Nemůžete použít vložené parametry ani odkaz na soubor parametrů. Nasazen�
 
 ## <a name="contentversion"></a>Contentversion –
 
-Nemusíte zadávat `contentVersion` vlastnost pro vlastnost `templateLink` nebo. `parametersLink` Pokud neposkytnete `contentVersion`, je nasazena aktuální verze šablony. Pokud zadáte hodnotu verze obsahu, musí odpovídat verzi v propojené šabloně. v opačném případě se nasazení nepovede a dojde k chybě.
+Nemusíte zadávat `contentVersion` vlastnost pro `templateLink` `parametersLink` vlastnost nebo. Pokud neposkytnete `contentVersion` , je nasazena aktuální verze šablony. Pokud zadáte hodnotu verze obsahu, musí odpovídat verzi v propojené šabloně. v opačném případě se nasazení nepovede a dojde k chybě.
 
 ## <a name="using-variables-to-link-templates"></a>Použití proměnných k propojení šablon
 
@@ -393,7 +393,7 @@ Můžete také použít [Deployment ()](template-functions-deployment.md#deploym
 }
 ```
 
-Nakonec byste použili proměnnou ve `uri` vlastnosti `templateLink` vlastnosti.
+Nakonec byste použili proměnnou ve `uri` vlastnosti `templateLink` Vlastnosti.
 
 ```json
 "templateLink": {
@@ -425,7 +425,7 @@ Následující příklad šablony ukazuje, jak použít kopírování s vnořeno
     "scope": "inner"
     },
     "template": {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
       {
@@ -453,7 +453,7 @@ Následující příklad šablony ukazuje, jak použít kopírování s vnořeno
 
 ## <a name="get-values-from-linked-template"></a>Získání hodnot z propojené šablony
 
-Chcete-li získat výstupní hodnotu z propojené šablony, načtěte hodnotu vlastnosti s syntaxí, `"[reference('deploymentName').outputs.propertyName.value]"`jako je:.
+Chcete-li získat výstupní hodnotu z propojené šablony, načtěte hodnotu vlastnosti s syntaxí, jako je: `"[reference('deploymentName').outputs.propertyName.value]"` .
 
 Při získávání výstupní vlastnosti z propojené šablony nesmí název vlastnosti obsahovat pomlčku.
 
@@ -461,7 +461,7 @@ Následující příklady ukazují, jak odkazovat na propojenou šablonu a nač�
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -479,7 +479,7 @@ Hlavní šablona nasadí propojenou šablonu a získá vrácenou hodnotu. Všimn
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {},
@@ -512,7 +512,7 @@ Následující příklad ukazuje šablonu, která nasadí veřejnou IP adresu a 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -543,11 +543,11 @@ Následující příklad ukazuje šablonu, která nasadí veřejnou IP adresu a 
 }
 ```
 
-Chcete-li při nasazování nástroje pro vyrovnávání zatížení použít veřejnou IP adresu z předchozí šablony, připojte se k šabloně a deklarujte `Microsoft.Resources/deployments` závislost na prostředku. Veřejná IP adresa v nástroji pro vyrovnávání zatížení je nastavená na výstupní hodnotu z propojené šablony.
+Chcete-li při nasazování nástroje pro vyrovnávání zatížení použít veřejnou IP adresu z předchozí šablony, připojte se k šabloně a deklarujte závislost na `Microsoft.Resources/deployments` prostředku. Veřejná IP adresa v nástroji pro vyrovnávání zatížení je nastavená na výstupní hodnotu z propojené šablony.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "loadBalancers_name": {
@@ -620,7 +620,7 @@ Tyto samostatné položky v historii můžete použít k načtení výstupních 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "publicIPAddresses_name": {
@@ -658,7 +658,7 @@ Následující šablona odkazuje na předchozí šablonu. Vytvoří tři veřejn
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   },
@@ -725,7 +725,7 @@ Následující příklad ukazuje, jak předat token SAS při odkazování na ša
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
   "containerSasToken": { "type": "securestring" }

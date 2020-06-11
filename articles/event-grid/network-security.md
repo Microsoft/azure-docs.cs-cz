@@ -7,29 +7,29 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: vkukke
-ms.openlocfilehash: d6d6d8df8f3c5da762ac672b304ec072a723e7d7
-ms.sourcegitcommit: c535228f0b77eb7592697556b23c4e436ec29f96
+ms.openlocfilehash: 073878d6dfb0637b8d0fb7fdf5c7f6d77d2b2c8d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/06/2020
-ms.locfileid: "82857050"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672642"
 ---
 # <a name="network-security-for-azure-event-grid-resources"></a>Zabezpečení sítě pro prostředky Azure Event Grid
 Tento článek popisuje, jak používat následující funkce zabezpečení pro Azure Event Grid: 
 
-- Značky služby pro výstup (Preview)
+- Značky služeb pro odchozí přenosy
 - Pravidla brány firewall protokolu IP pro příchozí přenosy (Preview)
-- Privátní koncové body pro příchozí přenos dat (Preview)
+- Soukromé koncové body pro příchozí přenosy dat
 
 
 ## <a name="service-tags"></a>Značky služeb
 Značka služby představuje skupinu předpon IP adres z dané služby Azure. Společnost Microsoft spravuje předpony adres, které jsou zahrnuté ve značce služby, a automaticky aktualizuje značku služby, protože se mění adresy. tím se minimalizuje složitost častých aktualizací pravidel zabezpečení sítě. Další informace o značkách služby najdete v tématu [Přehled značek služeb](../virtual-network/service-tags-overview.md).
 
-Pomocí značek služeb můžete definovat řízení přístupu k síti pro  [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules)nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **AzureEventGrid**) v příslušném *zdrojovém* nebo *cílovém* poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
+Pomocí značek služeb můžete definovat řízení přístupu k síti pro [skupiny zabezpečení sítě](../virtual-network/security-overview.md#security-rules)   nebo [Azure firewall](../firewall/service-tags.md). Při vytváření pravidel zabezpečení používejte značky služby místo konkrétních IP adres. Zadáním názvu značky služby (například **AzureEventGrid**) v příslušném *zdrojovém*   nebo *cílovém*   poli pravidla můžete povolit nebo odepřít provoz pro příslušnou službu.
 
 | Značka služby | Účel | Dá se použít příchozí nebo odchozí? | Je možné je rozregionovat? | Lze použít s Azure Firewall? |
-| --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| AzureEventGrid | Azure Event Grid. <br/><br/>*Poznámka:* Tato značka se zabývá Azure Event Gridmi koncovými body v USA (střed) – jih, USA – východ, USA – východ 2, USA – západ 2 a USA – střed. | Obojí | Ne | Ne |
+| --- | -------- |:---:|:---:|:---:|
+| AzureEventGrid | Azure Event Grid. | Obojí | Ne | Ne |
 
 
 ## <a name="ip-firewall"></a>Brána firewall protokolu IP 
@@ -54,14 +54,14 @@ Když vytvoříte privátní koncový bod pro téma nebo doménu ve vaší virtu
 Vydavatelé ve virtuální síti, které používají privátní koncový bod, by měli použít stejný připojovací řetězec pro téma nebo doménu jako klienti připojující se ke veřejnému koncovému bodu. Překlad názvů DNS automaticky směruje připojení z virtuální sítě k tématu nebo doméně prostřednictvím privátního propojení. Ve výchozím nastavení vytvoří služba Event Grid [privátní ZÓNU DNS](../dns/private-dns-overview.md) připojenou k virtuální síti s potřebnou aktualizací privátních koncových bodů. Pokud ale používáte vlastní server DNS, možná budete muset provést další změny v konfiguraci DNS.
 
 ### <a name="dns-changes-for-private-endpoints"></a>Změny DNS u privátních koncových bodů
-Při vytváření privátního koncového bodu se záznam CNAME DNS pro prostředek aktualizuje na alias v subdoméně s předponou `privatelink`. Ve výchozím nastavení se vytvoří privátní zóna DNS, která odpovídá subdoméně privátního odkazu. 
+Při vytváření privátního koncového bodu se záznam CNAME DNS pro prostředek aktualizuje na alias v subdoméně s předponou `privatelink` . Ve výchozím nastavení se vytvoří privátní zóna DNS, která odpovídá subdoméně privátního odkazu. 
 
 Když vyřešíte adresu URL tématu nebo adresy URL koncového bodu domény mimo virtuální síť s privátním koncovým bodem, přeloží se na veřejný koncový bod služby. Záznamy o prostředcích DNS pro "téma", pokud jsou vyřešeny **mimo virtuální síť** hostující soukromý koncový bod, bude:
 
 | Name                                          | Typ      | Hodnota                                         |
 | --------------------------------------------- | ----------| --------------------------------------------- |  
 | `topicA.westus.eventgrid.azure.net`             | CNAME     | `topicA.westus.privatelink.eventgrid.azure.net` |
-| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Profil Azure Traffic Manageru\>
+| `topicA.westus.privatelink.eventgrid.azure.net` | CNAME     | \<Azure traffic manager profile\>
 
 Pomocí [brány firewall protokolu IP](#ip-firewall)můžete odepřít nebo řídit přístup pro klienta mimo virtuální síť prostřednictvím veřejného koncového bodu. 
 
@@ -76,7 +76,7 @@ Tento přístup umožňuje přístup k tématu nebo doméně pomocí stejného p
 
 Pokud ve vaší síti používáte vlastní server DNS, klienti můžou přeložit plně kvalifikovaný název domény pro téma nebo koncový bod domény na IP adresu privátního koncového bodu. Nakonfigurujte server DNS tak, aby delegoval subdoménu privátního propojení s privátní zónou DNS pro virtuální síť, nebo nakonfigurujte záznamy A pro `topicOrDomainName.regionName.privatelink.eventgrid.azure.net` IP adresu privátního koncového bodu.
 
-Doporučený název zóny DNS je `privatelink.eventgrid.azure.net`.
+Doporučený název zóny DNS je `privatelink.eventgrid.azure.net` .
 
 ### <a name="private-endpoints-and-publishing"></a>Soukromé koncové body a publikování
 
@@ -84,8 +84,8 @@ Následující tabulka popisuje různé stavy připojení privátního koncovéh
 
 | Stav připojení   |  Úspěšné publikování (ano/ne) |
 | ------------------ | -------------------------------|
-| Schválené           | Ano                            |
-| Rejected           | No                             |
+| Schválené           | Yes                            |
+| Zamítnuto           | No                             |
 | Čekající na vyřízení            | No                             |
 | Propojení       | No                             |
 

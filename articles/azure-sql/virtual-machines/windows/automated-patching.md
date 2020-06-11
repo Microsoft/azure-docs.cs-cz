@@ -4,7 +4,6 @@ description: Tento článek vysvětluje funkci automatizované opravy pro SQL Se
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 editor: ''
 tags: azure-resource-manager
 ms.assetid: 58232e92-318f-456b-8f0a-2201a541e08d
@@ -15,19 +14,19 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3a255b87724bb0c2f86743a5efc3613aba765c78
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: a63b7af1cf29f120f41bd03ed51b5114fa85fa02
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219632"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669422"
 ---
 # <a name="automated-patching-for-sql-server-on-azure-virtual-machines-resource-manager"></a>Automatizované opravy pro SQL Server na virtuálních počítačích Azure (Správce prostředků)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
 > [!div class="op_single_selector"]
 > * [Resource Manager](automated-patching.md)
-> * [Classic](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
+> * [Klasický](../../../virtual-machines/windows/sqlclassic/virtual-machines-windows-classic-sql-automated-patching.md)
 
 Automatizované opravy vytváří okno údržby pro virtuální počítač Azure s SQL Server. Automatizované aktualizace je možné nainstalovat pouze během tohoto časového období údržby. V případě SQL Serveru toto omezení zajišťuje, že aktualizace systému a případná restartování proběhnou v době, která je pro databázi nejvhodnější. 
 
@@ -116,7 +115,7 @@ s set-AzVMSqlServerExtension-AutoPatchingSettings $aps-VMName $vmname-ResourceGr
 
 Na základě tohoto příkladu popisuje následující tabulka praktický efekt na cílovém virtuálním počítači Azure:
 
-| Parametr | Účinek |
+| Parametr | Efekt |
 | --- | --- |
 | **DayOfWeek** |Opravy se nainstalují každý čtvrtek. |
 | **MaintenanceWindowStartingHour** |Začněte s aktualizacemi na 11:10:00. |

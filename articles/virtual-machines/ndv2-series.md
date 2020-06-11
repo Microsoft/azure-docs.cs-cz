@@ -1,18 +1,18 @@
 ---
-title: NDv2-Series – Azure Virtual Machines
+title: Řada NDv2
 description: Specifikace pro virtuální počítače řady NDv2-Series.
-services: virtual-machines
 author: vikancha
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 8a2d275501816dd504130b255b73a752c5615f0d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 739e8763cf0c42fac68cce6603d087aaa4e0d9f9
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80247278"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672183"
 ---
 # <a name="updated-ndv2-series"></a>Aktualizace řady NDv2-Series
 

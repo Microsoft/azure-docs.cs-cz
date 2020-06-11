@@ -2,18 +2,17 @@
 title: Příkazy rozhraní příkazového řádku Azure Classic
 description: Příkazy rozhraní příkazového řádku (CLI) Azure pro správu prostředků.
 author: cynthn
-manager: gwallace
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: cynthn
-ms.openlocfilehash: ad213cc02f707609a837ea66b79e51c6f2a617f8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a3e5fd1a6934d246463e3fd5ad24db7079ca088d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250878"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678422"
 ---
 # <a name="azure-classic-cli-commands"></a>Příkazy rozhraní příkazového řádku Azure Classic 
 
@@ -25,11 +24,11 @@ Tento článek poskytuje syntaxi a možnosti pro příkazy rozhraní příkazov�
 
 Začněte tím, že nejdřív [nainstalujete Azure Classic CLI](../cli-install-nodejs.md) a [připojíte se k předplatnému Azure](/cli/azure/authenticate-azure-cli).
 
-Pro aktuální syntaxi příkazů a možnosti na příkazovém řádku v režimu Správce prostředků zadejte `azure help` nebo, chcete-li zobrazit nápovědu pro konkrétní příkaz. `azure help [command]` V dokumentaci k vytváření a správě konkrétních služeb Azure najdete taky příklady rozhraní příkazového řádku.
+Pro aktuální syntaxi příkazů a možnosti na příkazovém řádku v režimu Správce prostředků zadejte `azure help` nebo, chcete-li zobrazit nápovědu pro konkrétní příkaz `azure help [command]` . V dokumentaci k vytváření a správě konkrétních služeb Azure najdete taky příklady rozhraní příkazového řádku.
 
-Volitelné parametry jsou uvedeny v hranatých závorkách (například `[parameter]`). Všechny ostatní parametry jsou povinné.
+Volitelné parametry jsou uvedeny v hranatých závorkách (například `[parameter]` ). Všechny ostatní parametry jsou povinné.
 
-Kromě specifických volitelných parametrů, které jsou zde popsané, jsou k dispozici tři volitelné parametry, které lze použít k zobrazení podrobného výstupu, jako jsou možnosti žádosti a stavové kódy. `-v` Parametr poskytuje podrobný výstup a `-vv` parametr poskytuje ještě podrobnější podrobný výstup. `--json` Možnost vypíše výsledek ve formátu RAW JSON.
+Kromě specifických volitelných parametrů, které jsou zde popsané, jsou k dispozici tři volitelné parametry, které lze použít k zobrazení podrobného výstupu, jako jsou možnosti žádosti a stavové kódy. `-v`Parametr poskytuje podrobný výstup a `-vv` parametr poskytuje ještě podrobnější podrobný výstup. `--json`Možnost vypíše výsledek ve formátu RAW JSON.
 
 ## <a name="setting-the-resource-manager-mode"></a>Nastavení režimu Správce prostředků
 Pomocí následujícího příkazu povolte příkazy Azure CLI Správce prostředků režimu.
@@ -1696,7 +1695,7 @@ Možnosti parametru:
 
     tag show [options] [name]
 
-## <a name="virtual-machines"></a>Virtuální počítače
+## <a name="virtual-machines"></a>Virtual Machines
 **Vytvoření virtuálního počítače**
 
     vm create [options] <resource-group> <name> <location> <os-type>
@@ -1706,7 +1705,7 @@ Možnosti parametru:
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> Počínaje rozhraním CLI verze 0,10 můžete zadat krátký alias, jako je `image-urn` například "UbuntuLTS" nebo "Win2012R2Datacenter", jako u některých oblíbených imagí na webu Marketplace. Spustit `azure help vm quick-create` pro možnosti. Kromě toho, počínaje verzí 0,10, `azure vm quick-create` používá standardně Storage úrovně Premium, pokud je k dispozici ve vybrané oblasti.
+> Počínaje rozhraním CLI verze 0,10 můžete zadat krátký alias, jako je například "UbuntuLTS" nebo "Win2012R2Datacenter", jako `image-urn` u některých oblíbených imagí na webu Marketplace. Spustit `azure help vm quick-create` pro možnosti. Kromě toho, počínaje verzí 0,10, `azure vm quick-create` používá standardně Storage úrovně Premium, pokud je k dispozici ve vybrané oblasti.
 > 
 > 
 

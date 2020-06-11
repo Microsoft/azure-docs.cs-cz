@@ -4,7 +4,6 @@ description: Tento článek obsahuje odpovědi na nejčastější dotazy týkaj�
 services: virtual-machines-linux
 documentationcenter: ''
 author: MashaMSFT
-manager: craigg
 tags: azure-service-management
 ms.service: virtual-machines-sql
 ms.topic: troubleshooting
@@ -12,12 +11,12 @@ ms.workload: iaas-sql-server
 ms.date: 12/13/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 3a9660de8cba2522bf66cabb91ee8b27ba810fdf
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: afd36eb079b6e5f29fa664050cded3c5ddd17d8e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84343780"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669456"
 ---
 # <a name="frequently-asked-questions-for-sql-server-on-linux-virtual-machines"></a>Nejčastější dotazy k SQL Server on Linux virtuálním počítačům
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +45,7 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **SQL Server můžou se z Galerie odebrat image virtuálních počítačů?**
 
-   Yes. Azure udržuje jenom jednu Image na hlavní verzi a edici. Například když je vydána nová aktualizace Service Pack SQL Server, Azure přidá novou bitovou kopii do galerie pro danou aktualizaci Service Pack. Obrázek SQL Server pro předchozí aktualizaci Service Pack je okamžitě odebrán z Azure Portal. Je ale stále k dispozici pro zřizování z PowerShellu po dobu příštích tří měsíců. Po třech měsících již není k dispozici předchozí obrázek aktualizace Service Pack. Tato zásada odebrání by se taky použila v případě, že se SQL Serverá verze Nepodporovaná, když dosáhne konce svého životního cyklu.
+   Ano. Azure udržuje jenom jednu Image na hlavní verzi a edici. Například když je vydána nová aktualizace Service Pack SQL Server, Azure přidá novou bitovou kopii do galerie pro danou aktualizaci Service Pack. Obrázek SQL Server pro předchozí aktualizaci Service Pack je okamžitě odebrán z Azure Portal. Je ale stále k dispozici pro zřizování z PowerShellu po dobu příštích tří měsíců. Po třech měsících již není k dispozici předchozí obrázek aktualizace Service Pack. Tato zásada odebrání by se taky použila v případě, že se SQL Serverá verze Nepodporovaná, když dosáhne konce svého životního cyklu.
 
 ## <a name="creation"></a>Vytvoření
 
@@ -70,9 +69,9 @@ Tento článek obsahuje odpovědi na některé nejčastější dotazy týkajíc�
 
 1. **Můžu změnit virtuální počítač tak, aby používal vlastní licenci SQL Serveru, pokud byl vytvořený z některé z imagí z galerie s průběžnými platbami?**
 
-   No. Nemůžete přepnout z licencování platby za sekundu na používání vlastní licence. Musíte vytvořit nový virtuální počítač Linux, nainstalovat SQL Server a migrovat data. Další podrobnosti o tom, jak vlastnit vlastní licenci, najdete na předchozí otázce.
+   Ne. Nemůžete přepnout z licencování platby za sekundu na používání vlastní licence. Musíte vytvořit nový virtuální počítač Linux, nainstalovat SQL Server a migrovat data. Další podrobnosti o tom, jak vlastnit vlastní licenci, najdete na předchozí otázce.
 
-## <a name="administration"></a>Administration
+## <a name="administration"></a>Správa
 
 1. **Můžu spravovat virtuální počítač se systémem Linux běžící SQL Server s využitím SQL Server Management Studio (SSMS)?**
 

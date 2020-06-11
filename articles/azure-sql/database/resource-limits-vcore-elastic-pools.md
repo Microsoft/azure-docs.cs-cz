@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: carlrab, sstein
-ms.date: 05/29/2020
-ms.openlocfilehash: 03884a7d1b834ef8c176434ad4127e1638aabcb1
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.date: 06/10/2020
+ms.openlocfilehash: 4ffd92c0641b74682a74ffd2898e226999ac2dd4
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235750"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668453"
 ---
 # <a name="resource-limits-for-elastic-pools-using-the-vcore-purchasing-model"></a>Omezení prostředků pro elastické fondy pomocí modelu nákupu vCore
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 > [!IMPORTANT]
 > Za určitých okolností může být nutné zmenšit databázi a uvolnit nevyužité místo. Další informace najdete v tématu [Správa prostoru souborů v Azure SQL Database](file-space-manage.md).
 
-Úroveň služby, výpočetní velikost a množství úložiště můžete nastavit pomocí [Azure Portal](elastic-pool-manage.md#azure-portal), [PowerShellu](elastic-pool-manage.md#powershell), rozhraní příkazového [řádku Azure](elastic-pool-manage.md#azure-cli)nebo [REST API](elastic-pool-manage.md#rest-api).
+Můžete nastavit úroveň služby, výpočetní velikost (cíl služby) a množství úložiště pomocí [Azure Portal](elastic-pool-manage.md#azure-portal), [PowerShellu](elastic-pool-manage.md#powershell), rozhraní příkazového [řádku Azure](elastic-pool-manage.md#azure-cli)nebo [REST API](elastic-pool-manage.md#rest-api).
 
 > [!IMPORTANT]
 > Pokyny a požadavky pro škálování najdete v tématu [škálování elastického fondu](elastic-pool-scale.md).
@@ -40,14 +40,14 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-1"></a>Úroveň služby pro obecné účely: výpočetní platforma generace 4 (část 1)
 
-|Velikost výpočetního prostředí|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
+|Velikost výpočetních prostředků (cíl služby)|GP_Gen4_1|GP_Gen4_2|GP_Gen4_3|GP_Gen4_4|GP_Gen4_5|GP_Gen4_6
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
 |Virtuální jádra|1|2|3|4|5|6|
 |Paměť (GB)|7|14|21|28|35|42|
 |Maximální počet databáze na fond <sup>1</sup>|100|200|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|–|–|–|–|–|–|
+|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
 |Maximální velikost dat (GB)|512|756|1536|1536|1536|2 048|
 |Maximální velikost protokolu|154|227|461|461|461|614|
 |Maximální velikost dat databáze TempDB (GB)|32|64|96|128|160|192|
@@ -60,8 +60,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 3|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 5|0, 0,25, 0,5, 1... 6|
 |Počet replik|1|1|1|1|1|1|
-|Více AZ|–|–|–|–|–|–|
-|Škálování čtení|–|–|–|–|–|–|
+|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Škálování čtení|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
@@ -72,14 +72,14 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="general-purpose-service-tier-generation-4-compute-platform-part-2"></a>Úroveň služby pro obecné účely: výpočetní platforma generace 4 (část 2)
 
-|Velikost výpočetního prostředí|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
+|Velikost výpočetních prostředků (cíl služby)|GP_Gen4_7|GP_Gen4_8|GP_Gen4_9|GP_Gen4_10|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|159,5|
 |Maximální počet databáze na fond <sup>1</sup>|500|500|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|–|–|–|–|–|–|
+|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
 |Maximální velikost dat (GB)|2 048|2 048|2 048|2 048|3584|4 096|
 |Maximální velikost protokolu (GB)|614|614|614|614|1075|1229|
 |Maximální velikost dat databáze TempDB (GB)|224|256|288|320|512|768|
@@ -92,8 +92,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1... 7|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 9|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 10, 16|0, 0,25, 0,5, 1... 10, 16, 24|
 |Počet replik|1|1|1|1|1|1|
-|Více AZ|–|–|–|–|–|–|
-|Škálování čtení|–|–|–|–|–|–|
+|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Škálování čtení|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
@@ -106,14 +106,14 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-1"></a>Úroveň služby pro obecné účely: generace 5 COMPUTE Platform (část 1)
 
-|Velikost výpočetního prostředí|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
+|Velikost výpočetních prostředků (cíl služby)|GP_Gen5_2|GP_Gen5_4|GP_Gen5_6|GP_Gen5_8|GP_Gen5_10|GP_Gen5_12|GP_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuální jádra|2|4|6|8|10|12|14|
 |Paměť (GB)|10,4|20,8|31,1|41,5|51,9|62,3|72,7|
 |Maximální počet databáze na fond <sup>1</sup>|100|200|500|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|–|–|–|–|–|–|–|
+|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
 |Maximální velikost dat (GB)|512|756|1536|1536|1536|2 048|2 048|
 |Maximální velikost protokolu (GB)|154|227|461|461|461|614|614|
 |Maximální velikost dat databáze TempDB (GB)|64|128|192|256|320|384|448|
@@ -126,8 +126,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1, 2|0, 0,25, 0,5, 1... 4|0, 0,25, 0,5, 1... 6|0, 0,25, 0,5, 1... 8|0, 0,25, 0,5, 1... 10|0, 0,25, 0,5, 1... 12|0, 0,25, 0,5, 1... 14|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|–|–|–|–|–|–|–|
-|Škálování čtení|–|–|–|–|–|–|–|
+|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Škálování čtení|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
@@ -138,14 +138,14 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="general-purpose-service-tier-generation-5-compute-platform-part-2"></a>Úroveň služby pro obecné účely: generace 5 COMPUTE Platform (část 2)
 
-|Velikost výpočetního prostředí|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|Velikost výpočetních prostředků (cíl služby)|GP_Gen5_16|GP_Gen5_18|GP_Gen5_20|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuální jádra|16|18|20|24|32|40|80|
 |Paměť (GB)|83|93,4|103,8|124,6|166,1|207,6|415,2|
 |Maximální počet databáze na fond <sup>1</sup>|500|500|500|500|500|500|500|
 |Podpora columnstore|Ano|Ano|Ano|Ano|Ano|Ano|Ano|
-|Úložiště OLTP v paměti (GB)|–|–|–|–|–|–|–|
+|Úložiště OLTP v paměti (GB)|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
 |Maximální velikost dat (GB)|2 048|3072|3072|3072|4 096|4 096|4 096|
 |Maximální velikost protokolu (GB)|614|922|922|922|1229|1229|1229|
 |Maximální velikost dat databáze TempDB (GB)|512|576|640|768|1024|1280|2560|
@@ -158,8 +158,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální počet souběžných relací|30 000|30 000|30 000|30 000|30 000|30 000|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0, 0,25, 0,5, 1... 16|0, 0,25, 0,5, 1... 18|0, 0,25, 0,5, 1... 20|0, 0,25, 0,5, 1... 20, 24|0, 0,25, 0,5, 1... 20, 24, 32|0, 0,25, 0,5, 1... 16, 24, 32, 40|0, 0,25, 0,5, 1... 16, 24, 32, 40, 80|
 |Počet replik|1|1|1|1|1|1|1|
-|Více AZ|–|–|–|–|–|–|–|
-|Škálování čtení|–|–|–|–|–|–|–|
+|Více AZ|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
+|Škálování čtení|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
@@ -172,14 +172,14 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="fsv2-series-compute-generation-preview"></a>Generování výpočetních prostředků Fsv2-Series (Preview)
 
-|Velikost výpočetního prostředí|GP_Fsv2_72|
+|Velikost výpočetních prostředků (cíl služby)|GP_Fsv2_72|
 |:--- | --: |
 |Generování výpočtů|Řada Fsv2|
 |Virtuální jádra|72|
 |Paměť (GB)|136,2|
 |Maximální počet databáze na fond <sup>1</sup>|500|
-|Podpora columnstore|Ano|
-|Úložiště OLTP v paměti (GB)|–|
+|Podpora columnstore|Yes|
+|Úložiště OLTP v paměti (GB)|Není k dispozici|
 |Maximální velikost dat (GB)|4 096|
 |Maximální velikost protokolu (GB)|1024|
 |Maximální velikost dat databáze TempDB (GB)|333|
@@ -192,8 +192,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální počet souběžných relací|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0-72|
 |Počet replik|1|
-|Více AZ|–|
-|Škálování čtení|–|
+|Více AZ|Není k dispozici|
+|Škálování čtení|Není k dispozici|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
@@ -209,7 +209,7 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-1"></a>Podniková úroveň služeb: výpočetní platforma generace 4 (část 1)
 
-|Velikost výpočetního prostředí|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
+|Velikost výpočetních prostředků (cíl služby)|BC_Gen4_2|BC_Gen4_3|BC_Gen4_4|BC_Gen4_5|BC_Gen4_6|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
 |Virtuální jádra|2|3|4|5|6|
@@ -241,13 +241,13 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="business-critical-service-tier-generation-4-compute-platform-part-2"></a>Podniková úroveň služeb: výpočetní platforma generace 4 (část 2)
 
-|Velikost výpočetního prostředí|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
+|Velikost výpočetních prostředků (cíl služby)|BC_Gen4_7|BC_Gen4_8|BC_Gen4_9|BC_Gen4_10|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generování výpočtů|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|COMPUTE GEN4 –|
 |Virtuální jádra|7|8|9|10|16|24|
 |Paměť (GB)|49|56|63|70|112|159,5|
 |Maximální počet databáze na fond <sup>1</sup>|100|100|100|100|100|100|
-|Podpora columnstore|–|–|–|–|–|–|
+|Podpora columnstore|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|Není k dispozici|
 |Úložiště OLTP v paměti (GB)|7|8|9,5|11|20|36|
 |Typ úložiště|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|Místní jednotka SSD|
 |Maximální velikost dat (GB)|1024|1024|1024|1024|1024|1024|
@@ -275,7 +275,7 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-1"></a>Podniková úroveň služeb: výpočetní platforma generace 5 (část 1)
 
-|Velikost výpočetního prostředí|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
+|Velikost výpočetních prostředků (cíl služby)|BC_Gen5_4|BC_Gen5_6|BC_Gen5_8|BC_Gen5_10|BC_Gen5_12|BC_Gen5_14|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuální jádra|4|6|8|10|12|14|
@@ -307,7 +307,7 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="business-critical-service-tier-generation-5-compute-platform-part-2"></a>Podniková úroveň služeb: výpočetní platforma generace 5 (část 2)
 
-|Velikost výpočetního prostředí|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Velikost výpočetních prostředků (cíl služby)|BC_Gen5_16|BC_Gen5_18|BC_Gen5_20|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |
 |Generování výpočtů|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|Gen5|
 |Virtuální jádra|16|18|20|24|32|40|80|
@@ -341,13 +341,13 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 
 ### <a name="m-series-compute-generation-preview"></a>Generování výpočetních prostředků řady M-Series (Preview)
 
-|Velikost výpočetního prostředí|BC_M_128|
+|Velikost výpočetních prostředků (cíl služby)|BC_M_128|
 |:--- | --: |
 |Generování výpočtů|Řada M|
 |Virtuální jádra|128|
 |Paměť (GB)|3767,1|
 |Maximální počet databáze na fond <sup>1</sup>|100|
-|Podpora columnstore|Ano|
+|Podpora columnstore|Yes|
 |Úložiště OLTP v paměti (GB)|1768|
 |Maximální velikost dat (GB)|4 096|
 |Maximální velikost protokolu (GB)|2 048|
@@ -361,8 +361,8 @@ Limity nákupních modelů pro DTU najdete v tématu [SQL Database omezení pros
 |Maximální počet souběžných relací|30 000|
 |Minimální/maximální vCore elastického fondu – volby pro každou databázi|0-128|
 |Počet replik|4|
-|Více AZ|Ano|
-|Škálování čtení|Ano|
+|Více AZ|Yes|
+|Škálování čtení|Yes|
 |Zahrnuté úložiště zálohování|velikost databáze 1X|
 
 <sup>1</sup> Další informace najdete [v tématu Správa prostředků v hustých elastických fondech](elastic-pool-resource-management.md) .
@@ -378,7 +378,7 @@ Pokud jsou všechny virtuální jádra elastického fondu zaneprázdněné, pak 
 Následující tabulka popisuje vlastnosti pro databáze ve fondu.
 
 > [!NOTE]
-> Omezení prostředků jednotlivých databází v elastických fondech jsou obecně stejná jako u samostatných databází mimo fondy, které mají stejnou výpočetní velikost. Například maximální počet souběžných pracovních procesů pro databázi GP_Gen4_1 je 200 pracovních procesů. Maximální počet souběžných pracovních procesů pro databázi ve fondu GP_Gen4_1 je také 200 pracovních procesů. Všimněte si, že celkový počet souběžných pracovních procesů ve fondu GP_Gen4_1 je 210.
+> Omezení prostředků jednotlivých databází v elastických fondech jsou obecně stejná jako u samostatných databází mimo fondy, které mají stejnou výpočetní velikost (cíl služby). Například maximální počet souběžných pracovních procesů pro databázi GP_Gen4_1 je 200 pracovních procesů. Maximální počet souběžných pracovních procesů pro databázi ve fondu GP_Gen4_1 je také 200 pracovních procesů. Všimněte si, že celkový počet souběžných pracovních procesů ve fondu GP_Gen4_1 je 210.
 
 | Vlastnost | Popis |
 |:--- |:--- |

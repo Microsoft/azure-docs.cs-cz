@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/11/2020
-ms.openlocfilehash: 694f10b53d02d44d189cbe7cbe492f48ac3b5669
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.date: 06/10/2020
+ms.openlocfilehash: 6a7c04bec8a794a234f2f0c6fad75dc94c12d291
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84299770"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668334"
 ---
 # <a name="troubleshoot-copy-activity-performance"></a>Řešení potíží s výkonem aktivity kopírování
 
@@ -57,7 +57,7 @@ Podrobnosti o spuštění a doby trvání v dolní části zobrazení monitorov�
 | --------------- | ------------------------------------------------------------ |
 | Fronta           | Uplynulý čas do chvíle, kdy se aktivita kopírování ve skutečnosti spustí v prostředí Integration runtime. |
 | Skript před kopírováním | Uplynulý čas mezi aktivitou kopírování začínající v rámci aktivity IR a kopírování dokončuje provádění skriptu před kopírováním v úložišti dat jímky. Použijte, když nakonfigurujete skript před kopírováním pro jímky databáze, například při zápisu dat do Azure SQL Database proveďte vyčištění před kopírováním nových dat. |
-| Přenos        | Uplynulý čas mezi koncem předchozího kroku a IR, který přenáší všechna data ze zdroje do jímky. Podkroky v části "přenos" běží paralelně.<br><br>- **Čas do prvního bajtu:** Čas uplynulý mezi koncem předchozího kroku a čas, kdy IR obdrží první bajt ze zdrojového úložiště dat. Platí pro zdroje nezaložené na souborech.<br>- **Zdroj výpisu:** Množství času stráveného při vytváření výčtu zdrojových souborů nebo datových oddílů. Druhá platí při konfiguraci možností oddílu pro zdroje databáze, například při kopírování dat z databází, jako je Oracle/SAP HANA/Teradata/Netezza/atd.<br/>-**Čtení ze zdroje:** Množství času stráveného načítáním dat ze zdrojového úložiště dat.<br/>- **Zápis do jímky:** Množství času stráveného při zápisu dat do úložiště dat jímky. |
+| Přenos        | Uplynulý čas mezi koncem předchozího kroku a IR, který přenáší všechna data ze zdroje do jímky. <br/>Všimněte si, že dílčí kroky v části přenos běží paralelně a některé operace teď nejsou zobrazené, například analýza/generování formátu souboru.<br><br/>- **Čas do prvního bajtu:** Čas uplynulý mezi koncem předchozího kroku a čas, kdy IR obdrží první bajt ze zdrojového úložiště dat. Platí pro zdroje nezaložené na souborech.<br>- **Zdroj výpisu:** Množství času stráveného při vytváření výčtu zdrojových souborů nebo datových oddílů. Druhá platí při konfiguraci možností oddílu pro zdroje databáze, například při kopírování dat z databází, jako je Oracle/SAP HANA/Teradata/Netezza/atd.<br/>-**Čtení ze zdroje:** Množství času stráveného načítáním dat ze zdrojového úložiště dat.<br/>- **Zápis do jímky:** Množství času stráveného při zápisu dat do úložiště dat jímky. |
 
 ## <a name="troubleshoot-copy-activity-on-azure-ir"></a>Řešení potíží s aktivitou kopírování v Azure IR
 
@@ -70,7 +70,6 @@ Pokud výkon aktivity kopírování nevyhovuje vaší očekávání, při řeše
 - **"Přenos-doba do prvního bajtu" zjistil dlouhou pracovní dobu**. znamená to, že váš zdrojový dotaz trvá vrácení jakýchkoli dat dlouho. Zkontroluje a optimalizuje dotaz nebo server. Pokud potřebujete další pomoc, obraťte se na tým úložiště dat.
 
 - **"Zdroj výpisu přenosu" má nefunkční dobu trvání**: znamená to, že výčet zdrojových souborů nebo oddílů dat zdrojové databáze je pomalý.
-
   - Pokud kopírujete data ze zdrojového souboru, pokud použijete **Filtr zástupných znaků** pro cestu ke složce nebo název souboru ( `wildcardFolderPath` nebo) `wildcardFileName` , nebo použijete **Filtr pro čas poslední změny** souboru ( `modifiedDatetimeStart` nebo), `modifiedDatetimeEnd` Poznamenejte si, že by tento filtr způsobil, že aktivita kopírování obsahuje všechny soubory v zadané složce na straně klienta a potom použije filtr. Tento výčet souborů by se mohl stát kritickým bodem, zejména když pravidlo filtru splní jenom malá sada souborů.
 
     - Ověřte, zda můžete [Kopírovat soubory založené na cestě k oddílu DateTime a názvu souboru](tutorial-incremental-copy-partitioned-file-name-copy-data-tool.md). Takovým způsobem nepřinese zatížení při výpisu zdrojové strany.

@@ -1,25 +1,19 @@
 ---
-title: Velikosti virtuálních počítačů Azure Linux – předchozí generace | Microsoft Docs
-description: Uvádí předchozí generace velikostí dostupné pro virtuální počítače Linux v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
-services: virtual-machines-linux
-documentationcenter: ''
+title: Velikosti virtuálních počítačů Azure – předchozí generace | Microsoft Docs
+description: Uvádí předchozí generace velikostí dostupné pro virtuální počítače v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
+services: virtual-machines
+ms.subservice: sizes
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
-ms.service: virtual-machines-linux
 ms.topic: article
-ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/20/2020
-ms.author: jonbeck
-ms.openlocfilehash: ac49d2da9d05c9677dbb6f5328874ab3a45ff661
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 3284db031214dfaa631efa6f9f40e6a069998843
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82081536"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677062"
 ---
 # <a name="previous-generations-of-virtual-machine-sizes"></a>Předchozí generace velikostí virtuálních počítačů
 
@@ -134,7 +128,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (HDD): GiB | Max. datových disků | Maximální propustnost datového disku: IOPS | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 | --- | --- | --- | --- | --- | --- | --- |
-| Standard_A0&nbsp;<sup>1</sup> | 1 | 0,768 | 20 | 1 | 1×500 | 2/100 |
+| Standard_A0 &nbsp; <sup>1</sup> | 1 | 0,768 | 20 | 1 | 1×500 | 2/100 |
 | Standard_A1 | 1 | 1,75 | 70  | 2  | 2×500  | 2/500  |
 | Standard_A2 | 2 | 3,5  | 135 | 4  | 4×500  | 2/500  |
 | Standard_A3 | 4 | 7    | 285 | 8  | 8×500  | 2/1000 |
@@ -161,8 +155,8 @@ Velikosti A8-A11 a H-series se také označují jako *náročné na výpočetní
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (HDD): GiB | Max. datových disků | Maximální propustnost datového disku: IOPS | Maximální počet síťových karet|
 |---|---|---|---|---|---|---|
-| Standard_A8&nbsp;<sup>1</sup> | 8  | 56  | 382 | 32 | 32×500 | 2 |
-| Standard_A9&nbsp;<sup>1</sup> | 16 | 112 | 382 | 64 | 64x500 | 4 |
+| Standard_A8 &nbsp; <sup>1</sup> | 8  | 56  | 382 | 32 | 32×500 | 2 |
+| Standard_A9 &nbsp; <sup>1</sup> | 16 | 112 | 382 | 64 | 64x500 | 4 |
 | Standard_A10 | 8  | 56  | 382 | 32 | 32×500 | 2 |
 | Standard_A11 | 16 | 112 | 382 | 64 | 64x500 | 4 |
 
@@ -232,7 +226,7 @@ DC-Series využívá nejnovější generaci procesorů Intel XEON s 2176G s vyu�
 
 > [!IMPORTANT]
 >
-> Virtuální počítače DC-Series jsou [virtuální počítače generace 2](./linux/generation-2.md#creating-a-generation-2-vm) a `Gen2` podporují jenom image.
+> Virtuální počítače DC-Series jsou [virtuální počítače generace 2](./linux/generation-2.md#creating-a-generation-2-vm) a podporují jenom `Gen2` image.
 
 
 ### <a name="ds-series"></a>DS-series  
@@ -295,7 +289,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 | Standard_L4s   | 4  | 32  | 678  | 16 | 20000/200 | 5000/125  | 2/4000  |
 | Standard_L8s   | 8  | 64  | 1388 | 32 | 40000/400 | 10000/250 | 4/8000  |
 | Standard_L16s  | 16 | 128 | 2807 | 64 | 80000/800 | 20000/500 | 8/16000 |
-| Standard_L32s&nbsp;<sup>1</sup> | 32 | 256 | 5630 | 64 | 160000/1600 | 40000/1000 | 8/20000 |
+| Standard_L32s &nbsp; <sup>1</sup> | 32 | 256 | 5630 | 64 | 160000/1600 | 40000/1000 | 8/20000 |
 
 Maximální propustnost disku dostupná pro virtuální počítače ls-series může být omezená počtem, velikostí a prokládáním připojených disků. Podrobnosti najdete v tématu Navrhování pro vysoký výkon pro [Windows](windows/premium-storage-performance.md) nebo [Linux](linux/premium-storage-performance.md).
 
@@ -314,8 +308,8 @@ Ukládání Premium Storage do mezipaměti: podporováno
 | Standard_GS1 | 2 | 28  | 56  | 8  | 10000/100 (264)  | 5000/ 125  | 2/2000 |
 | Standard_GS2 | 4 | 56  | 112 | 16 | 20000/200 (528)  | 10000/ 250 | 2/4000 |
 | Standard_GS3 | 8 | 112 | 224 | 32 | 40000/400 (1056) | 20000/ 500 | 4/8000 |
-| Standard_GS4&nbsp;<sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 (2112) | 40000/1000 | 8/16000 |
-| Standard_GS5&nbsp;<sup>2,&nbsp;3</sup> | 32 | 448 |896 | 64 |160000/1600 (4224) | 80000/2000 | 8/20000 |
+| Standard_GS4 &nbsp; <sup>3</sup> | 16 | 224 | 448 | 64 | 80000/800 (2112) | 40000/1000 | 8/16000 |
+| Standard_GS5 &nbsp; <sup>2, &nbsp; 3</sup> | 32 | 448 |896 | 64 |160000/1600 (4224) | 80000/2000 | 8/20000 |
 
 <sup>1</sup> maximální propustnost disku (IOPS nebo MB/s), kterou je možné použít pro virtuální počítač GS Series, může být omezená počtem, velikostí a prokládáním připojených disků. Podrobnosti najdete v tématu Navrhování pro vysoký výkon pro [Windows](windows/premium-storage-performance.md) nebo [Linux](linux/premium-storage-performance.md).
 
@@ -339,7 +333,7 @@ Ukládání Premium Storage do mezipaměti: nepodporováno
 | Standard_G2  | 4  | 56  | 768  | 12 000 / 187 / 93  | 16/16x500 | 2/4000  |
 | Standard_G3  | 8  | 112 | 1536 | 24 000 / 375 / 187 | 32/32x500 | 4/8000  |
 | Standard_G4  | 16 | 224 | 3072 | 48 000 / 750 / 375 | 64/64x500 | 8/16000 |
-| Standard_G5&nbsp;<sup>1</sup> | 32 | 448 | 6144 | 96000/1500/750| 64/64x500 | 8/20000 |
+| Standard_G5 &nbsp; <sup>1</sup> | 32 | 448 | 6144 | 96000/1500/750| 64/64x500 | 8/20000 |
 
 <sup>1</sup> instance je izolovaná na hardwaru vyhrazeném pro jediného zákazníka.
 <br>

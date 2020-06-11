@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 09/04/2019
+ms.date: 06/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 495d16efcc26fc336a87c0f2d88f5202ab0b4a3e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ac9dff4b16d8ba1b346a2827f3b5487dbf97392e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81416617"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669830"
 ---
 # <a name="copy-data-from-sybase-using-azure-data-factory"></a>Kopírování dat z Sybase pomocí Azure Data Factory
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -37,8 +37,10 @@ Data z databáze Sybase můžete kopírovat do libovolného podporovaného úlo�
 
 Konkrétně tento konektor Sybase podporuje:
 
-- SAP Sybase SQL Anywhere (ASA) **verze 16 a vyšší**; SWEETIQ a pomocného mechanismu se nepodporují.
+- SAP Sybase SQL Anywhere (ASA) **verze 16 a vyšší**.
 - Kopírování dat pomocí **základního** ověřování nebo ověřování **systému Windows** .
+
+SWEETIQ Sybase a pomocného mechanismu řízení se nepodporují. Místo toho můžete použít obecný konektor ODBC s ovladačem Sybase.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -57,15 +59,15 @@ Následující části obsahují podrobné informace o vlastnostech, které se p
 
 Pro propojenou službu Sybase jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **Sybase** . | Ano |
-| server | Název serveru Sybase. |Ano |
-| database | Název databáze Sybase |Ano |
-| authenticationType | Typ ověřování, který se používá pro připojení k databázi Sybase.<br/>Povolené hodnoty jsou: **Basic**a **Windows**. |Ano |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k databázi Sybase. |Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Ano |
-| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Ano |
+| typ | Vlastnost Type musí být nastavená na: **Sybase** . | Yes |
+| server | Název serveru Sybase. |Yes |
+| database | Název databáze Sybase |Yes |
+| authenticationType | Typ ověřování, který se používá pro připojení k databázi Sybase.<br/>Povolené hodnoty jsou: **Basic**a **Windows**. |Yes |
+| uživatelské jméno | Zadejte uživatelské jméno pro připojení k databázi Sybase. |Yes |
+| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). |Yes |
+| connectVia | [Integration runtime](concepts-integration-runtime.md) , která se má použít pro připojení k úložišti dat Integration Runtime v místním prostředí se vyžaduje, jak je uvedeno v [požadavcích](#prerequisites). |Yes |
 
 **Případě**
 
@@ -98,12 +100,12 @@ Pro propojenou službu Sybase jsou podporovány následující vlastnosti:
 
 Chcete-li kopírovat data z Sybase, jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na: **Sybase** . | Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na: **Sybase** . | Yes |
 | tableName | Název tabulky v databázi Sybase | Ne (Pokud je zadáno "dotaz" ve zdroji aktivity) |
 
-**Případě**
+**Příklad**
 
 ```json
 {
@@ -130,10 +132,10 @@ Pokud jste používali `RelationalTable` typovou datovou sadu, je stále podporo
 
 Chcete-li kopírovat data z Sybase, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SybaseSource** . | Ano |
-| query | Pro čtení dat použijte vlastní dotaz SQL. Například: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na: **SybaseSource** . | Yes |
+| query | Pro čtení dat použijte vlastní dotaz SQL. Příklad: `"SELECT * FROM MyTable"`. | Ne (Pokud je zadáno "tableName" v datové sadě |
 
 **Případě**
 

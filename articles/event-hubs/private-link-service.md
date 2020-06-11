@@ -7,12 +7,12 @@ ms.author: spelluru
 ms.date: 03/12/2020
 ms.service: event-hubs
 ms.topic: article
-ms.openlocfilehash: bb4c46ecd64958b1daf6c3f7fb5fe613dc9ba729
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 1f07e6eb1a219db4f8eb94c54acaa3181e186da6
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83649897"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84670017"
 ---
 # <a name="integrate-azure-event-hubs-with-azure-private-link"></a>Integrace Azure Event Hubs s privátním propojením Azure
 Služba privátního propojení Azure umožňuje přístup ke službám Azure (například k Azure Event Hubs, Azure Storage a Azure Cosmos DB) a hostovaným zákaznickým a partnerským službám Azure prostřednictvím **privátního koncového bodu** ve vaší virtuální síti.
@@ -22,7 +22,7 @@ Privátní koncový bod je síťové rozhraní, které se připojuje soukromě a
 Další informace najdete v tématu [co je privátní propojení Azure?](../private-link/private-link-overview.md)
 
 > [!IMPORTANT]
-> Tato funkce je podporována pouze u **vyhrazené** úrovně. Další informace o vyhrazené úrovni najdete v tématu [přehled Event Hubs úrovně Dedicated](event-hubs-dedicated-overview.md). 
+> Tato funkce je podporovaná pro **standardní** i **vyhrazené** úrovně. 
 
 >[!WARNING]
 > Povolení privátních koncových bodů může ostatním službám Azure zabránit v interakci s Event Hubs.
@@ -62,7 +62,7 @@ Pokud již máte obor názvů Event Hubs, můžete vytvořit připojení k priv�
 2. Na panelu hledání zadejte do pole **centra událostí**.
 3. V seznamu vyberte **obor názvů** , do kterého chcete přidat privátní koncový bod.
 4. V části **Nastavení**vyberte kartu **síť** .
-5. V horní části stránky vyberte kartu **připojení privátního koncového bodu** . Pokud nepoužíváte vyhrazenou vrstvu Event Hubs, zobrazí se zpráva: **připojení privátního koncového bodu v Event Hubs jsou podporována pouze obory názvů vytvořenými v rámci vyhrazeného clusteru**.
+5. V horní části stránky vyberte kartu **připojení privátního koncového bodu** . 
 6. V horní části stránky vyberte tlačítko **+ soukromý koncový bod** .
 
     ![Image](./media/private-link-service/private-link-service-3.png)
@@ -202,7 +202,7 @@ Existují čtyři stavy zřizování:
 |--|--|--|
 | Žádné | Čekající na vyřízení | Připojení je vytvořeno ručně a čeká na schválení vlastníkem prostředku privátního odkazu. |
 | Schválení | Schválené | Připojení bylo automaticky nebo ručně schváleno a je připraveno k použití. |
-| Odmítnout | Rejected | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
+| Odmítnout | Zamítnuto | Připojení bylo odmítnuto vlastníkem prostředku privátního odkazu. |
 | Odebrat | Propojení | Připojení bylo odebráno vlastníkem prostředku privátního propojení, soukromý koncový bod bude informativní a měl by být odstraněn pro vyčištění. |
  
 ###  <a name="approve-reject-or-remove-a-private-endpoint-connection"></a>Schválení, zamítnutí nebo odebrání připojení privátního koncového bodu

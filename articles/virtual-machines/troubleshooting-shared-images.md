@@ -2,20 +2,19 @@
 title: Řešení potíží se sdílenými bitovými kopiemi v Azure
 description: Naučte se řešit problémy s galeriemi sdílených imagí.
 author: axayjo
-manager: gwallace
 ms.service: virtual-machines
 ms.subservice: imaging
-ms.topic: article
+ms.topic: troubleshooting
 ms.workload: infrastructure
 ms.date: 04/17/2020
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: ac0a691c19e0a99471e8bfafedaa6d0332b293ce
-ms.sourcegitcommit: e0330ef620103256d39ca1426f09dd5bb39cd075
+ms.openlocfilehash: 8285bc216b5b06a33d481dbca011e44e77df25de
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82796873"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678779"
 ---
 # <a name="troubleshooting-shared-image-galleries"></a>Řešení potíží se sdílenými galeriemi imagí
 

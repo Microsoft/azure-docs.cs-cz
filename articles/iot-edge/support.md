@@ -4,16 +4,16 @@ description: Zjistěte, které operační systémy mohou spustit démona Azure I
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 05/12/2020
+ms.date: 06/10/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ec143fbca94c5423ca67e09fa2932e55c06f418e
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: bafc0424d4d8e4e518bfc999dcb72f96ee9d6289
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652769"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678643"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge podporované systémy
 
@@ -97,19 +97,19 @@ Systémy uvedené v následující tabulce jsou považovány za kompatibilní s 
 sudo apt-get install libssl1.0.2
 ```
 
-## <a name="releases"></a>Vydané verze
+## <a name="releases"></a>Vydání
 
 Iotedge vydání a poznámky k verzi jsou k dispozici na stránce [verze Azure-](https://github.com/Azure/azure-iotedge/releases) . IoT Edge V této části jsou uvedeny informace o těchto poznámkách k verzi, které vám pomůžou vizualizovat součásti každé verze snadněji.
 
 Součásti IoT Edge lze instalovat nebo aktualizovat jednotlivě a jsou zpětně kompatibilní s komponentami ze starších verzí. Následující tabulka uvádí komponenty zahrnuté v jednotlivých verzích:
 
-| Vydat   | Démon zabezpečení  | Hraniční centrum<br>Agent Edge | Libiothsm | Moby  |
-| --------- | ---------------- | ---------------------- | --------- | ----- |
-| **1.0.9** | 1.0.9.1<br>1.0.9            | 1.0.9.1<br>1.0.9                  | 1.0.9.1<br>1.0.9     |       |
-| **1.0.8** | 1.0.8            | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
-| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7       | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
-| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6       | 1.0.6.1<br>1.0.6 |  |
-| **1.0.5** | 1.0.5            | 1.0.5                  | 1.0.5     | 3.0.2 |
+| Vydaná verze | Démon zabezpečení | Hraniční centrum<br>Agent Edge | Libiothsm | Moby |
+|--|--|--|--|--|
+| **1.0.9** | 1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.2<br>1.0.9.1<br>1.0.9 | 1.0.9.2<br>1.0.9.1<br>1.0.9 |  |
+| **1.0.8** | 1.0.8 | 1.0.8.5<br>1.0.8.4<br>1.0.8.3<br>1.0.8.2<br>1.0.8.1<br>1.0.8 | 1.0.8 | 3.0.6 |
+| **1.0.7** | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 1.0.7.1<br>1.0.7 | 3.0.5<br>3.0.4 (ARMv7hl, CentOS) |
+| **1.0.6** | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 | 1.0.6.1<br>1.0.6 |  |
+| **1.0.5** | 1.0.5 | 1.0.5 | 1.0.5 | 3.0.2 |
 
 IoT Edge používá sadu Microsoft. Azure. Device. Client SDK. Další informace najdete v tématu [úložiště GitHub pro Azure IoT C# SDK](https://github.com/Azure/azure-iot-sdk-csharp) nebo [Azure SDK pro .NET – referenční obsah](https://docs.microsoft.com/dotnet/api/overview/azure/iot/client?view=azure-dotnet). Následující seznam obsahuje verzi klientské sady SDK, pro kterou je každá verze testována na:
 

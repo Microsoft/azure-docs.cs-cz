@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f187cc47d9c64c8257cc097734fa41e10629f1c
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: 0b0acd84112e9fd997cb0d60a914da9528cffd9a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83597447"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673033"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>Definování vlastních atributů toků uživatelů (Preview)
 |     |
@@ -25,13 +25,13 @@ ms.locfileid: "83597447"
 
 Pro každou aplikaci můžete mít různé požadavky na informace, které chcete shromažďovat během registrace. Azure AD obsahuje integrovanou sadu informací uložených v atributech, jako je křestní jméno, příjmení, město a poštovní směrovací číslo. Pomocí Azure AD můžete roztáhnout sadu atributů uložených v účtu Guest, když se externí uživatel přihlásí pomocí toku uživatele.
 
-V Azure Portal můžete vytvořit vlastní atributy a použít je v uživatelských tocích samoobslužné registrace. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api). Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_<Application-client-id>_attributename` . Například:
+V Azure Portal můžete vytvořit vlastní atributy a použít je v uživatelských tocích samoobslužné registrace. Tyto atributy můžete také číst a zapisovat pomocí [rozhraní Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api). Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_<aad-extensions-app-id>_attributename` . Například:
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
-Najdete ho na `<Application-client-id>` stránce **Registrace aplikací** vedle **ID aplikace (klienta)**. Toto ID je specifické pro vašeho tenanta.
+`<aad-extensions-app-id>`Je specifický pro vašeho tenanta. Chcete-li zjistit tento identifikátor, přejděte na Azure Active Directory > Registrace aplikací > všechny aplikace. Vyhledejte aplikaci, která začíná na "AAD-Extensions-App" a vyberte ji. Na stránce Přehled aplikace si poznamenejte ID aplikace (klienta).
 
 ## <a name="create-a-custom-attribute"></a>Vytvoření vlastního atributu
 
@@ -55,7 +55,7 @@ Najdete ho na `<Application-client-id>` stránce **Registrace aplikací** vedle 
 
 Vlastní atribut je teď k dispozici v seznamu atributů uživatele a pro použití ve vašich uživatelských tocích. Vlastní atribut je vytvořen pouze při prvním použití v uživatelském toku, a ne při jeho přidání do seznamu atributů uživatele.
 
-Jakmile vytvoříte nového uživatele pomocí toku uživatele, který používá nově vytvořený vlastní atribut, může se objekt dotazovat v [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer). Teď byste měli vidět **ShoeSize** v seznamu atributů shromážděných během cesty pro registraci a zobrazit je v tokenu, který se pošle zpátky do vaší aplikace. Informace o tom, jak zahrnout tyto deklarace do tokenu odeslaného zpátky do vaší aplikace, najdete v tématu [konfigurace volitelných deklarací rozšíření adresáře](https://docs.microsoft.com/azure/active-directory/develop/active-directory-optional-claims#configuring-directory-extension-optional-claims) .
+Jakmile vytvoříte nového uživatele pomocí toku uživatele, který používá nově vytvořený vlastní atribut, může se objekt dotazovat v [Microsoft Graph Exploreru](https://developer.microsoft.com/graph/graph-explorer). Nyní byste měli vidět **ShoeSize** v seznamu atributů shromážděných během cesty pro registraci objektu uživatele. Můžete volat Graph API z aplikace a získat data z tohoto atributu po jeho přidání do objektu uživatele.
 
 ## <a name="next-steps"></a>Další kroky
 

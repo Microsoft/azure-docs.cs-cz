@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: asrastog
-ms.openlocfilehash: 0fe167490cd466ca30857c2ed324846e80ab581d
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 3b32468c9795f603ac38854415bca9d653d7c101
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635590"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674973"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>Vytvoření a čtení zpráv IoT Hubu
 
@@ -75,7 +75,6 @@ Další informace o tom, jak zakódovat a dekódovat zprávy odeslané pomocí r
 
 Názvy systémových vlastností se liší v závislosti na koncovém bodu, na který jsou směrovány zprávy. Podrobnosti o těchto názvech naleznete v následující tabulce.
 
-
 |Název systémové vlastnosti|Event Hubs|Azure Storage|Service Bus|Event Grid|
 |--------------------|----------|-------------|-----------|----------|
 |ID zprávy|ID zprávy|Parametr|Parametr|ID zprávy|
@@ -86,7 +85,7 @@ Názvy systémových vlastností se liší v závislosti na koncovém bodu, na k
 |Metoda auth připojení|iothub připojení-auth-Method|connectionAuthMethod|iothub připojení-auth-Method|iothub připojení-auth-Method|
 |Třída|typ obsahu|Třída|Třída|iothub-Content-Type|
 |contentEncoding|kódování obsahu|contentEncoding|ContentEncoding|iothub – kódování obsahu|
-|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime|     |iothub – enqueuedtime|
+|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime| Není k dispozici |iothub – enqueuedtime|
 |iothub – název rozhraní|iothub – název rozhraní|interfaceName|Iothub – název rozhraní|iothub – název rozhraní|
 |CorrelationId|correlation-id|correlationId|CorrelationId|correlation-id|
 

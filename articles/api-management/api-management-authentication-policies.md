@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2017
 ms.author: apimpm
-ms.openlocfilehash: 70f124a498ff4aa45b5d90f6221fe3d0121e804a
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: c9cf77971038a3d7d160180b93594736d3ca6200
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221045"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674223"
 ---
 # <a name="api-management-authentication-policies"></a>Zásady ověřování ve službě API Management
 V tomto tématu najdete referenční informace pro následující zásady API Management. Informace o přidávání a konfiguraci zásad najdete v tématu [zásady v API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
@@ -48,16 +48,16 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 ### <a name="elements"></a>Elementy
 
-|Název|Popis|Vyžadováno|
+|Name|Popis|Vyžadováno|
 |----------|-----------------|--------------|
-|ověřování – základní|Kořenový element.|Ano|
+|ověřování – základní|Kořenový element.|Yes|
 
 ### <a name="attributes"></a>Atributy
 
-|Název|Popis|Vyžadováno|Výchozí|
+|Name|Popis|Vyžadováno|Výchozí|
 |----------|-----------------|--------------|-------------|
-|uživatelské jméno|Určuje uživatelské jméno základního přihlašovacího údaje.|Ano|–|
-|heslo|Určuje heslo základního přihlašovacího údaje.|Ano|–|
+|uživatelské jméno|Určuje uživatelské jméno základního přihlašovacího údaje.|Yes|Není k dispozici|
+|heslo|Určuje heslo základního přihlašovacího údaje.|Yes|Není k dispozici|
 
 ### <a name="usage"></a>Využití
  Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.
@@ -77,27 +77,38 @@ V tomto tématu najdete referenční informace pro následující zásady API Ma
 
 ### <a name="examples"></a>Příklady
 
-V tomto příkladu je klientský certifikát identifikovaný jeho kryptografickým otiskem.
+V tomto příkladu je klientský certifikát identifikovaný pomocí jeho kryptografického otisku:
+
 ```xml
 <authentication-certificate thumbprint="CA06F56B258B7A0D4F2B05470939478651151984" />
 ```
-V tomto ukázkovém klientském certifikátu je identifikován název prostředku.
+
+V tomto příkladu je klientský certifikát identifikovaný názvem prostředku:
+
 ```xml  
 <authentication-certificate certificate-id="544fe9ddf3b8f30fb490d90f" />  
-```  
+``` 
+
+V tomto příkladu se klientský certifikát nastaví v zásadách, ale nenačtený z integrovaného úložiště certifikátů:
+
+```xml
+<authentication-certificate body="@(context.Variables.GetValueOrDefault<byte[]>("byteCertificate"))" password="optional-certificate-password" />
+```
 
 ### <a name="elements"></a>Elementy  
   
-|Název|Popis|Vyžadováno|  
+|Name|Popis|Vyžadováno|  
 |----------|-----------------|--------------|  
-|ověřování – certifikát|Kořenový element.|Ano|  
+|ověřování – certifikát|Kořenový element.|Yes|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Název|Popis|Vyžadováno|Výchozí|  
+|Name|Popis|Vyžadováno|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|kryptografický|Kryptografický otisk pro klientský certifikát|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|–|  
-|ID certifikátu|Název prostředku certifikátu.|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|–|  
+|kryptografický|Kryptografický otisk pro klientský certifikát|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Není k dispozici|
+|ID certifikátu|Název prostředku certifikátu.|`thumbprint` `certificate-id` Musí být přítomen buď nebo.|Není k dispozici|
+|text|Certifikát klienta jako bajtové pole.|No|Není k dispozici|
+|heslo|Heslo pro klientský certifikát.|Používá se, pokud je certifikát určený v nástroji `body` chráněný heslem.|Není k dispozici|
   
 ### <a name="usage"></a>Využití  
  Tyto zásady se dají použít v následujících [oddílech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections) a [oborech](https://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)zásad.  
@@ -161,16 +172,16 @@ V tomto ukázkovém klientském certifikátu je identifikován název prostředk
 
 ### <a name="elements"></a>Elementy  
   
-|Název|Popis|Vyžadováno|  
+|Name|Popis|Vyžadováno|  
 |----------|-----------------|--------------|  
-|ověřování – spravovaná identita |Kořenový element.|Ano|  
+|ověřování – spravovaná identita |Kořenový element.|Yes|  
   
 ### <a name="attributes"></a>Atributy  
   
-|Název|Popis|Vyžadováno|Výchozí|  
+|Name|Popis|Vyžadováno|Výchozí|  
 |----------|-----------------|--------------|-------------|  
-|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Ano|–|  
-|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string` . |No|–|  
+|prostředek|Řetězec. ID aplikace cílového webového rozhraní API (zabezpečeného prostředku) v Azure Active Directory.|Yes|Není k dispozici|  
+|výstup-token-proměnná-Name|Řetězec. Název kontextové proměnné, která obdrží hodnotu tokenu jako typ objektu `string` . |No|Není k dispozici|  
 |ignorovat – chyba|Datového. Pokud se nastaví na `true` , kanál zásad se bude dál spouštět i v případě, že se přístupový token nezíská.|No|false (nepravda)|  
   
 ### <a name="usage"></a>Využití  

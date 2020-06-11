@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cd94fffded8c0e5d7b120993f069b042c2b19b6c
-ms.sourcegitcommit: 958f086136f10903c44c92463845b9f3a6a5275f
+ms.openlocfilehash: aadbe07c5bb22c23ac32e46fdf7f102cdd33989a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83712345"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673099"
 ---
 # <a name="add-a-self-service-sign-up-user-flow-to-an-app-preview"></a>Přidání uživatelského toku samoobslužné registrace do aplikace (Preview)
 |     |
@@ -30,7 +30,7 @@ Můžete vytvářet toky uživatelů pro aplikace, které jsou sestavené vaší
 > [!NOTE]
 > Můžete přidružit toky uživatelů k aplikacím vytvořeným vaší organizací. Toky uživatelů se nedají použít pro aplikace Microsoftu, jako je SharePoint nebo Teams.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 ### <a name="add-social-identity-providers-optional"></a>Přidat zprostředkovatele sociálních identit (volitelné)
 
@@ -81,7 +81,7 @@ V dalším kroku vytvoříte uživatelský tok pro samoobslužnou registraci a p
 
 Můžete zvolit pořadí, ve kterém se atributy zobrazí na stránce pro registraci. 
 
-1. V [Azure Portal](https://portal.azure.com)vyberte **Azure Active Directory**.
+1. Na portálu [Azure Portal](https://portal.azure.com) vyberte **Azure Active Directory**.
 2. Vyberte **externí identity**, vyberte **toky uživatelů (Preview)**.
 3. V seznamu vyberte tok uživatele samoobslužné registrace.
 4. V části **přizpůsobit**vyberte **rozložení stránky**.
@@ -109,3 +109,5 @@ Nyní můžete přidružit aplikace k toku uživatele.
 
 - [Přidat Google do seznamu poskytovatelů sociálních identit](google-federation.md)
 - [Přidat Facebook do seznamu poskytovatelů sociálních identit](facebook-federation.md)
+<!-- - [Use API connectors to customize and extend your user flows via web APIs](api-connectors-overview.md) -->
+<!-- - [Add custom approval to your user flow](self-service-sign-up-add-approvals.md) -->

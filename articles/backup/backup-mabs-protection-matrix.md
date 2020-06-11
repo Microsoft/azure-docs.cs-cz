@@ -3,12 +3,12 @@ title: MABS (Azure Backup Server) v3 UR1 Protection Matrix
 description: Tento článek obsahuje matrici podpory obsahující všechny úlohy, datové typy a instalace, které Azure Backup Server chrání.
 ms.date: 03/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: b3489b88730b17090c207124d41132263a1c14ff
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: f950c7be28a4ff0dd0caa12d1327c2a0e2ac4fc5
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629105"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677317"
 ---
 # <a name="mabs-azure-backup-server-v3-ur1-protection-matrix"></a>MABS (Azure Backup Server) v3 UR1 Protection Matrix
 
@@ -39,7 +39,7 @@ Následující části obsahují podrobnosti o matici podpory ochrany pro MABS:
 | Klientské počítače (64 bitů) | Windows 10                                                  | Fyzický server  <br><br>    Virtuální počítač s technologií Hyper-V   <br><br>   Virtuální počítač VMware | V3 UR1                            | Svazek, sdílená složka, složka, soubory, svazky s odstraněnými duplicitami   <br><br>   Chráněné svazky musí obsahovat systém souborů NTFS. Systémy souborů FAT a FAT32 nejsou podporovány.  <br><br>    Svazky musí mít velikost alespoň 1 GB. Azure Backup Server používá k pořízení snímku dat služba Stínová kopie svazku (VSS) a snímek funguje jenom v případě, že je svazek aspoň 1 GB. |
 | Servery (64 bitů)          | Windows Server 2019, 2016, 2012 R2, 2012                    | Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)  <br><br>    Fyzický server  <br><br>    Virtuální počítač s technologií Hyper-V <br><br>     Virtuální počítač VMware  <br><br>    Azure Stack | V3 UR1                            | Svazek, sdílená složka, složka, soubor, svazky s odstraněnými duplicitami (NTFS a ReFS)  <br><br>   Stav systému a holý počítač (Nepodporováno, pokud je úloha spuštěná jako virtuální počítač Azure) |
 | Servery (64 bitů)          | Windows Server 2008 R2 SP1, Windows Server 2008 SP2 (je třeba nainstalovat [Windows Management Frame 4,0](https://www.microsoft.com/download/details.aspx?id=40855)) | Fyzický server  <br><br>    Virtuální počítač s technologií Hyper-V  <br><br>      Virtuální počítač VMware  <br><br>   Azure Stack | V3 UR1                            | Svazek, sdílená složka, složka, soubor, stav/úplné obnovení systému        |
-| SQL Server                | SQL Server 2019, 2017, 2016 a [podporované SPS](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202016), 2014 [a podporované aktualizace](hhttps://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202014) Service Pack | Fyzický server  <br><br>     Virtuální počítač s technologií Hyper-V   <br><br>     Virtuální počítač VMware  <br><br>   Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)  <br><br>     Azure Stack | V3 UR1                            | Všechny scénáře nasazení: databáze       <br><br>  MABS V3 UR1 podporuje zálohování databází SQL přes svazky ReFS.                  |
+| SQL Server                | SQL Server 2019, 2017, 2016 a [podporované SPS](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202016), 2014 [a podporované aktualizace](https://support.microsoft.com/lifecycle/search?alpha=SQL%20Server%202014) Service Pack | Fyzický server  <br><br>     Virtuální počítač s technologií Hyper-V   <br><br>     Virtuální počítač VMware  <br><br>   Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)  <br><br>     Azure Stack | V3 UR1                            | Všechny scénáře nasazení: databáze       <br><br>  MABS V3 UR1 podporuje zálohování databází SQL přes svazky ReFS.                  |
 | Výměna                   | Exchange 2019, 2016                                         | Fyzický server   <br><br>   Virtuální počítač s technologií Hyper-V  <br><br>      Virtuální počítač VMware  <br><br>   Azure Stack  <br><br>    Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure) | V3 UR1                            | Ochrana (všechny scénáře nasazení): samostatný server Exchange, databáze ve skupině dostupnosti databáze (DAG)  <br><br>    Obnovení (všechny scénáře nasazení): Poštovní schránka, databáze poštovní schránky ve skupině DAG    <br><br>  Záloha Exchange přes ReFS je podporovaná s MABS V3 UR1 |
 | SharePoint                 | SharePoint 2019, 2016 s nejnovější službou SPs                       | Fyzický server  <br><br>    Virtuální počítač s technologií Hyper-V <br><br>    Virtuální počítač VMware  <br><br>   Virtuální počítač Azure (když úloha běží jako virtuální počítač Azure)   <br><br>   Azure Stack | V3 UR1                            | Ochrana (všechny scénáře nasazení): farma, obsah webového serveru front-endu  <br><br>    Obnovení (všechny scénáře nasazení): farma, databáze, Webová aplikace, soubor nebo položka seznamu, vyhledávání služby SharePoint, webový server front-end  <br><br>    Ochrana farmy služby SharePoint používající funkci SQL Server 2012 AlwaysOn pro databáze obsahu není podporována. |
 

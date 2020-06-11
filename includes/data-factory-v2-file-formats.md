@@ -2,14 +2,14 @@
 author: linda33wj
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/24/2019
+ms.date: 06/10/2020
 ms.author: jingwang
-ms.openlocfilehash: 53b5c2eb02d16378f520e950661c4bdb4ef48bad
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: fd5d13c6b4e071a2c5f9702aab5de6cadee0cef5
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629508"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84666909"
 ---
 <!--
     Common for all ADF file-based connectors
@@ -20,6 +20,7 @@ Azure Data Factory podporuje následující formáty souborů. Nastavení založ
 - [Formát Avro](../articles/data-factory/format-avro.md)
 - [Binární formát](../articles/data-factory/format-binary.md)
 - [Formát textu s oddělovači](../articles/data-factory/format-delimited-text.md)
+- [Excelový formát](../articles/data-factory/format-excel.md)
 - [Formát JSON](../articles/data-factory/format-json.md)
 - [Formát ORC](../articles/data-factory/format-orc.md)
 - [Formát Parquet](../articles/data-factory/format-parquet.md)

@@ -3,12 +3,12 @@ title: Funkce šablon – nasazení
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení informací o nasazení.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: a52b4eae9df4ad3fdf9e481ee0a40aac48f6665b
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203790"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677810"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Funkce nasazení pro šablony ARM
 
@@ -27,7 +27,7 @@ Pokud chcete získat hodnoty z prostředků, skupin prostředků nebo předplatn
 
 Vrátí informace o aktuální operaci nasazení.
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Tato funkce vrací objekt, který je předán během nasazování. Vlastnosti vráceného objektu se liší v závislosti na tom, zda jste:
 
@@ -108,12 +108,12 @@ Když nasadíte do předplatného Azure, skupiny pro správu nebo tenanta, návr
 Nasazení () můžete použít k propojení na jinou šablonu na základě identifikátoru URI nadřazené šablony.
 
 ```json
-"variables": {  
-    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"  
+"variables": {
+    "sharedTemplateUrl": "[uri(deployment().properties.templateLink.uri, 'shared-resources.json')]"
 }
-```  
+```
 
-Pokud šablonu znovu nasadíte z historie nasazení na portálu, šablona bude nasazena jako místní soubor. `templateLink` Vlastnost není ve funkci nasazení vrácena. Pokud vaše šablona spoléhá `templateLink` na vytvoření odkazu na jinou šablonu, nepoužívejte portál k opětovnému nasazení. Místo toho použijte příkazy, které jste použili k původnímu nasazení šablony.
+Pokud šablonu znovu nasadíte z historie nasazení na portálu, šablona bude nasazena jako místní soubor. `templateLink`Vlastnost není ve funkci nasazení vrácena. Pokud vaše šablona spoléhá na `templateLink` Vytvoření odkazu na jinou šablonu, nepoužívejte portál k opětovnému nasazení. Místo toho použijte příkazy, které jste použili k původnímu nasazení šablony.
 
 ### <a name="example"></a>Příklad
 
@@ -121,7 +121,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -140,7 +140,7 @@ Předchozí příklad vrátí následující objekt:
   "name": "deployment",
   "properties": {
     "template": {
-      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+      "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
       "contentVersion": "1.0.0.0",
       "resources": [],
       "outputs": {
@@ -164,7 +164,7 @@ Předchozí příklad vrátí následující objekt:
 
 Vrátí informace o prostředí Azure používaném pro nasazení.
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Tato funkce vrátí vlastnosti aktuálního prostředí Azure. Následující příklad ukazuje vlastnosti pro globální Azure. Cloudy svrchovaného května můžou vracet mírně odlišné vlastnosti.
 
@@ -266,9 +266,9 @@ Vrátí hodnotu parametru. Zadaný název parametru musí být definován v odd�
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| parameterName |Ano |řetězec |Název parametru, který se má vrátit. |
+| parameterName |Yes |řetězec |Název parametru, který se má vrátit. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Hodnota zadaného parametru.
 
@@ -277,7 +277,7 @@ Hodnota zadaného parametru.
 Obvykle použijete parametry pro nastavení hodnot prostředků. Následující příklad nastaví název webu na hodnotu parametru předaného během nasazení.
 
 ```json
-"parameters": { 
+"parameters": {
   "siteName": {
       "type": "string"
   }
@@ -298,7 +298,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "stringParameter": {
@@ -351,7 +351,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringOutput | Řetězec | možnost 1 |
 | intOutput | Int | 1 |
@@ -371,9 +371,9 @@ Vrátí hodnotu proměnné. Zadaný název proměnné musí být definován v od
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| variableName |Ano |Řetězec |Název proměnné, která se má vrátit. |
+| variableName |Yes |Řetězec |Název proměnné, která se má vrátit. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Hodnota zadané proměnné.
 
@@ -407,7 +407,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {},
     "variables": {
@@ -443,7 +443,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | exampleOutput1 | Řetězec | MojePromenna |
 | exampleOutput2 | Pole | [1, 2, 3, 4] |

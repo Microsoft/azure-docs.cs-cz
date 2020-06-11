@@ -4,7 +4,6 @@ description: V tomto kurzu se dozvíte, jak ve službě Azure Virtual Machines v
 services: virtual-machines
 documentationCenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: monicar
 tags: azure-service-management
 ms.assetid: 08a00342-fee2-4afe-8824-0db1ed4b8fca
@@ -15,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f42d5e823dc8884044c04eed55c1b27bb961ce4b
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 9845780eaeaa42dc38f97344f86b7e9af3d37180
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
 ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657418"
+ms.locfileid: "84669375"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Kurz: Konfigurace skupiny dostupnosti SQL Server v Azure Virtual Machines ručně
 

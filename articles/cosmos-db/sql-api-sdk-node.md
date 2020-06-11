@@ -1,6 +1,6 @@
 ---
-title: 'Azure Cosmos DB: SQL Node. js API, SDK & prostředky'
-description: Seznamte se se všemi informacemi o rozhraních API Node. js a SDK, včetně dat vydání, dat o vyřazení a změn provedených mezi jednotlivými verzemi Azure Cosmos DB Node. js SDK.
+title: 'Azure Cosmos DB: rozhraní API pro SQL Node.js, & prostředky SDK'
+description: Seznamte se se všemi informacemi o rozhraních API pro SQL Node.js a sadě SDK, včetně dat vydání, data odchodu a změn provedených mezi jednotlivými verzemi sady Azure Cosmos DB Node.js SDK.
 author: anfeldma-ms
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
@@ -8,18 +8,19 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 66597f0807e27e421d5f7001550533090d5936c0
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: b0d9b0bd520b3bfca57f2bf7f306ebddd15cc3e5
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171595"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677657"
 ---
-# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node. js SDK pro SQL API: poznámky k verzi a prostředky
+# <a name="azure-cosmos-db-nodejs-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK pro SQL API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK V3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
@@ -28,7 +29,7 @@ ms.locfileid: "84171595"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Hromadný prováděcí modul – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
 
 |Prostředek  |Odkaz  |
@@ -37,20 +38,20 @@ ms.locfileid: "84171595"
 |Dokumentace k rozhraní API  |  [Referenční dokumentace sady JavaScript SDK](https://docs.microsoft.com/javascript/api/%40azure/cosmos/?view=azure-node-latest)
 |Pokyny k instalaci sady SDK  |  [Pokyny k instalaci](https://github.com/Azure/azure-cosmos-js#installation)
 |Přispívání do sady SDK | [GitHubu](https://github.com/Azure/azure-cosmos-js/tree/master)
-| ukázky | [Ukázky kódu Node. js](sql-api-nodejs-samples.md)
+| ukázky | [Ukázky kóduNode.js](sql-api-nodejs-samples.md)
 | Úvodní kurz | [Začínáme se sadou JavaScript SDK](sql-api-nodejs-get-started.md)
-| Kurz webové aplikace | [Sestavení webové aplikace Node. js pomocí Azure Cosmos DB](sql-api-nodejs-application.md)
-| Aktuální podporovaná platforma | [Node. js V12. x](https://nodejs.org/en/blog/release/v12.7.0/) – sada SDK verze 3. x. x<br/>[Node. js v10 za účelem. x](https://nodejs.org/en/blog/release/v10.6.0/) – sada SDK verze 3. x. x<br/>[Node. js V8. x](https://nodejs.org/en/blog/release/v8.16.0/) – sada SDK verze 3. x. x<br/>[Node. js v6. x](https://nodejs.org/en/blog/release/v6.10.3/) – sada SDK verze 2. x. x<br/>[Node. js v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)– sada SDK verze 1. x. x<br/> [Node. js v 0.12](https://nodejs.org/en/blog/release/v0.12.0/)– sada SDK verze 1. x. x<br/> [Node. js v 0.10](https://nodejs.org/en/blog/release/v0.10.0/)– sada SDK verze 1. x. x
+| Kurz webové aplikace | [Vytvoření Node.js webové aplikace pomocí Azure Cosmos DB](sql-api-nodejs-application.md)
+| Aktuální podporovaná platforma | [Node.js V12. x](https://nodejs.org/en/blog/release/v12.7.0/) -SDK verze 3. x. x<br/>[Node.js v10 za účelem. x](https://nodejs.org/en/blog/release/v10.6.0/) -SDK verze 3. x. x<br/>[Node.js V8. x](https://nodejs.org/en/blog/release/v8.16.0/) -SDK verze 3. x. x<br/>[Node.js v6. x](https://nodejs.org/en/blog/release/v6.10.3/) -SDK verze 2. x. x<br/>[Node.js v 4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)– sada SDK verze 1. x. x<br/> [Node.js v 0.12](https://nodejs.org/en/blog/release/v0.12.0/)– sada SDK verze 1. x. x<br/> [Node.js v 0.10](https://nodejs.org/en/blog/release/v0.10.0/)– sada SDK verze 1. x. x
 
 ## <a name="release-notes"></a>Poznámky k verzi
 
 ### <a name="310"></a><a name="3.1.0"></a>3.1.0
-* Nastavte výchozí ResponseContinuationTokenLimitInKB na 1 KB. Ve výchozím nastavení jsme to capping na 1 KB, aby nedocházelo k dlouhým hlavičkám (Node. js má omezení velikosti globálního záhlaví). Uživatel může nastavit toto pole tak, aby povoloval delší hlavičky, což může přispět k provádění dotazů optimalizace back-endu.
+* Nastavte výchozí ResponseContinuationTokenLimitInKB na 1 KB. Ve výchozím nastavení jsme cappingi na 1 KB, aby nedocházelo k dlouhým hlavičkám (Node.js má omezení velikosti globálního záhlaví). Uživatel může nastavit toto pole tak, aby povoloval delší hlavičky, což může přispět k provádění dotazů optimalizace back-endu.
 * Odeberte disableSSLVerification. Tato možnost obsahuje nové alternativy popsané v tématu [#388](https://github.com/Azure/azure-cosmos-js/pull/388)
 
 ### <a name="304"></a><a name="3.0.4"></a>3.0.4
 * Povoluje, aby initialHeaders explicitně nastavil hlavičku klíče oddílu.
-* Pokud chcete zabránit publikování cizích souborů, použijte soubory Package. JSON #.
+* Pokud chcete zabránit publikování cizích souborů, použijte package.jsna # Files.
 * Oprava chyby řazení mapy směrování ve starší verzi Node + V8
 * Opravuje chybu, když uživatel zadá částečné možnosti opakování.
 
@@ -101,7 +102,7 @@ V v2 existovalo mnoho různých způsobů iterace nebo načítání výsledků d
 
 * Odeberte iterátory. Next () a iterátor. Current (). Stránky výsledků získáte pomocí fetchNext ().
 * Odeberte iterátor. forEach (). Místo toho použijte asynchronní iterátory.
-* iterátor. executeNext () přejmenován na iterátor. fetchNext ()
+* iterator.executeNext () přejmenováno na iterátor. fetchNext ()
 * iterátor. ToArray – () přejmenován na iterátor. fetchAll ()
 * Stránky jsou nyní vhodné objekty odpovědi namísto prostých objektů JS.
 * const Container = Client. Database (dbId). Container (containerId)
@@ -150,7 +151,7 @@ Neúspěšné požadavky teď vyvolávají správnou chybu nebo podtřídy chyby
 
 #### <a name="new-features"></a>Nové funkce
 ##### <a name="user-cancelable-requests"></a>Požadavky na zrušení uživatelem
-Když se přesunete do interního načtení, můžeme použít rozhraní API prohlížeče AbortController k podpoře operací, které lze zrušit uživatelem. V případě operací, které mohou být v průběhu více požadavků (například dotazů mezi jednotlivými oddíly), budou všechny požadavky na operaci zrušeny. Uživatelé moderních prohlížečů již budou mít AbortController. Uživatelé Node. js budou muset použít knihovnu obslužného výplně.
+Když se přesunete do interního načtení, můžeme použít rozhraní API prohlížeče AbortController k podpoře operací, které lze zrušit uživatelem. V případě operací, které mohou být v průběhu více požadavků (například dotazů mezi jednotlivými oddíly), budou všechny požadavky na operaci zrušeny. Uživatelé moderních prohlížečů již budou mít AbortController. Node.js uživatelé budou muset použít knihovnu Refill.
 
 ``` js
  const controller = new AbortController()
@@ -181,7 +182,7 @@ Add DISTINCT and LIMIT/OFFSET queries (#306)
 ```
 
 #### <a name="improved-browser-experience"></a>Vylepšené prostředí prohlížeče
-I když bylo možné v prohlížeči použít sadu v2 SDK, nejednalo se o ideální prostředí. Museli jste vyplnit několik vestavěných knihoven Node. js a použít sadu prostředků, jako je například Webpack nebo parcela. Sada V3 SDK usnadňuje vykonávání prostředí pro uživatele v prohlížeči, a to mnohem lépe.
+I když bylo možné v prohlížeči použít sadu v2 SDK, nejednalo se o ideální prostředí. Museli jste vyplnit několik node.js integrovaných knihoven a používat například sadu prostředků, jako je například Webpack nebo parcela. Sada V3 SDK usnadňuje vykonávání prostředí pro uživatele v prohlížeči, a to mnohem lépe.
 
 * Nahradit interní požadavky pomocí načtení (#245)
 * Odebrat využití vyrovnávací paměti (#330)
@@ -218,7 +219,7 @@ Ne vždy nejčastěji viditelné změny, ale pomůžou náš tým dodat lepší 
 * Oprava místního převzetí služeb při selhání v rámci zásad opakování
 * Oprava vlastnosti ChangeFeed hasMoreResults
 * Aktualizace závislostí pro vývoj
-* Přidat PolicheckExclusions. txt
+* Přidat PolicheckExclusions.txt
 
 ### <a name="213"></a><a name="2.1.3"></a>2.1.3
 * Přepnout _ts typ z řetězce na číslo
@@ -425,7 +426,7 @@ Všechny žádosti o Cosmos DB používání vyřazené sady SDK budou službou 
 | [3.1.0](#3.1.0) |26. července 2019 |--- |
 | [3.0.4](#3.0.4) |22. července 2019 |--- |
 | [3.0.3](#3.0.3) |17. července 2019 |--- |
-| [3.0.2](#3.0.2) |9. července 2019 |--- |
+| [3.0.2](#3.0.2) |9\. července 2019 |--- |
 | [3.0.0](#3.0.0) |28. června 2019 |--- |
 | [2.1.5](#2.1.5) |20. března 2019 |--- |
 | [2.1.4](#2.1.4) |15. března 2019 |--- |

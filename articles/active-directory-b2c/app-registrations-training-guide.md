@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 05/25/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 6b6294abe986115d86826fee8aad09f468b3d651
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 2344b339575c7338049bfa74c2fc72911e39a362
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84627996"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672166"
 ---
 # <a name="the-new-app-registrations-experience-for-azure-active-directory-b2c"></a>Nové prostředí Registrace aplikací pro Azure Active Directory B2C
 
@@ -58,7 +58,7 @@ V novém prostředí vyberete typ účtu podpory z následujících možností:
 
 Chcete-li porozumět různým typům účtů, vyberte možnost **Potřebuji mi** vybrat v možnosti vytváření. 
 
-Ve starší verzi prostředí se aplikace vždycky vytvořily jako aplikace s přístupem zákazníků. U těchto aplikací je typ účtu nastavený na **účty v libovolném organizačním adresáři nebo jakémkoli poskytovateli identity. Pro ověřování uživatelů pomocí Azure AD B2C.**. 
+Ve starší verzi prostředí se aplikace vždycky vytvořily jako aplikace s přístupem zákazníků. U těchto aplikací je typ účtu nastavený na **účty v libovolném organizačním adresáři nebo jakémkoli poskytovateli identity. Pro ověřování uživatelů pomocí Azure AD B2C**.
 > [!NOTE]
 > Tato možnost vyžaduje, aby bylo možné spouštět Azure AD B2C toků uživatelů pro ověřování uživatelů pro tuto aplikaci. Naučte se [, jak zaregistrovat aplikaci pro použití s toky uživatelů.](tutorial-register-applications.md)
 
@@ -72,29 +72,29 @@ Možná se nezobrazí všechna Microsoft Graph oprávnění, protože mnohé z t
 ## <a name="admin-consent-and-offline_accessopenid-scopes"></a>Souhlas správce a obory offline_access + OpenID  
 <!-- Azure AD B2C doesn't support user consent. That is, when a user signs into an application, the user doesn't see a screen requesting consent for the application permissions. All permissions have to be granted through admin consent.  -->
 
-Obor **OpenID** je nezbytný, aby Azure AD B2C mohl podepisovat uživatele do aplikace. Pro vydávání tokenů aktualizace pro uživatele je potřeba **offline_access** rozsah. Tyto obory se ve výchozím nastavení dostaly do výše uvedeného souhlasu správce. Nyní můžete snadno přidávat oprávnění pro tyto obory t během procesu vytváření tím, že vyberete možnost **udělit souhlas správcům oprávnění OpenID a offline_access** . Jinak se oprávnění Microsoft Graph dá přidat k souhlasu správce v nastavení **oprávnění API** pro existující aplikaci.
+Obor **OpenID** je nezbytný, aby Azure AD B2C mohl podepisovat uživatele do aplikace. Pro vydávání tokenů aktualizace pro uživatele je potřeba **offline_access** rozsah. Tyto obory se ve výchozím nastavení dostaly do výše uvedeného souhlasu správce. Nyní můžete snadno přidat oprávnění pro tyto obory během procesu vytváření tím, že vyberete možnost **udělit souhlas správce oprávnění OpenID a offline_access** . Jinak se oprávnění Microsoft Graph dá přidat k souhlasu správce v nastavení **oprávnění API** pro existující aplikaci.
 
 Přečtěte si další informace o [oprávněních a souhlasu](../active-directory/develop/v2-permissions-and-consent.md).
 
 ## <a name="platformsauthentication-reply-urlsredirect-uris"></a>Platformy/ověřování: adresy URL odpovědí/identifikátory URI pro přesměrování
 Ve starší verzi prostředí byly různé typy platforem spravované v rámci **vlastností** jako adresy URL odpovědí pro webové aplikace/rozhraní API a identifikátor URI pro přesměrování pro nativní klienty. "Nativní klienti" se označují také jako "veřejné klienty" a zahrnují aplikace pro iOS, macOS, Android a další typy mobilních a desktopových aplikací. 
 
-V novém prostředí se adresy URL odpovědí a identifikátory URI pro přesměrování označují jako identifikátory URI přesměrování a dají se najít v části **ověřování** aplikace. Registrace aplikací nejsou omezeny buď na webovou aplikaci, nebo na rozhraní API, nebo na nativní aplikaci. Stejnou registraci aplikace můžete použít pro všechny tyto typy platforem tak, že zaregistrujete příslušné identifikátory URI pro přesměrování. 
+V novém prostředí se adresy URL odpovědí a identifikátory URI pro přesměrování označují jako identifikátory URI přesměrování a dají se najít v části **ověřování** aplikace. Registrace aplikací nejsou omezeny buď na webovou aplikaci, nebo na nativní aplikaci. Stejnou registraci aplikace můžete použít pro všechny tyto typy platforem tak, že zaregistrujete příslušné identifikátory URI pro přesměrování. 
 
 Identifikátory URI pro přesměrování musí být přidružené k typu aplikace, a to buď web, nebo Public (mobilní zařízení a Desktop). [Další informace o identifikátorech URI pro přesměrování](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-redirect-uris-to-your-application)
 
-Jestli má být aplikace považována za veřejného klienta za běhu z typu platformy identifikátoru URI přesměrování, pokud je to možné. Nastavení **považovat aplikaci jako veřejné klienta** by mělo být nastavené na *Ano* pro toky, které nemůžou používat identifikátor URI přesměrování, například ROPC toky.
+<!-- Whether an application should be treated as a public client is inferred at run-time from the Redirect URI platform type, if possible. The **Treat application as a public client** setting should be set to **Yes** for flows that might not use a redirect URI, such as ROPC flows. -->
 
 Platformy **iOS/MacOS** a **Android** jsou typem veřejného klienta. Poskytují snadný způsob konfigurace aplikací pro iOS/macOS nebo Android s odpovídajícími identifikátory URI pro přesměrování pro použití s MSAL. Přečtěte si další informace o [možnostech konfigurace aplikace](../active-directory/develop/msal-client-applications.md).
 
 
 ## <a name="application-certificates--secrets"></a>Certifikáty aplikací & tajných kódů
 
-V novém prostředí místo klíčů použijete okno **certifikáty & tajných** **kódů**ke správě certifikátů a tajných klíčů. Přihlašovací údaje umožňují aplikacím identifikovat samy sebe k ověřovací službě při přijímání tokenů na webovém umístění s adresou (pomocí schématu protokolu HTTPS). Při ověřování vůči službě Azure AD doporučujeme použít certifikát místo tajného klíče klienta pro scénáře přihlašovacích údajů klienta. Certifikáty se nedají použít k ověřování proti Azure AD B2C.
+V novém prostředí místo klíčů použijete okno **certifikáty & tajných** **kódů**ke správě certifikátů a tajných klíčů. Certifikáty & tajných klíčích umožňují aplikacím identifikovat službu ověřování při přijímání tokenů na webovém umístění s adresou (pomocí schématu HTTPS). Při ověřování vůči službě Azure AD doporučujeme použít certifikát místo tajného klíče klienta pro scénáře přihlašovacích údajů klienta. Certifikáty se nedají použít k ověřování proti Azure AD B2C.
 
 
-## <a name="features-not-available-in-azure-ad-b2c-tenants"></a>Funkce, které nejsou dostupné v Azure AD B2Cch klientech
-Pro Azure AD B2C klienty neplatí následující možnosti registrace aplikace Azure AD:
+## <a name="features-not-applicable-in-azure-ad-b2c-tenants"></a>Funkce, které se nevztahují na Azure AD B2C klienty
+Následující možnosti registrace aplikací Azure AD se nevztahují na Azure AD B2C klienty a nejsou k dispozici:
 - **Role a správci** – vyžaduje Azure AD Premium licenci P1 nebo P2, která není aktuálně k dispozici pro Azure AD B2C.
 - **Branding** – uživatelské rozhraní a přizpůsobení uživatelského rozhraní je nakonfigurované v prostředí **brandingu společnosti** nebo v rámci toku uživatele. Naučte se [přizpůsobit uživatelské rozhraní v Azure Active Directory B2C](customize-ui-overview.md).
 - **Ověřování domény vydavatele** – vaše aplikace je zaregistrovaná v *. onmicrosoft.com*, což není ověřená doména. Doména vydavatele se navíc primárně používá pro udělení souhlasu uživatele, která se nevztahují na Azure AD B2C aplikace pro ověřování uživatelů. [Přečtěte si další informace o doméně vydavatele](https://docs.microsoft.com/azure/active-directory/develop/howto-configure-publisher-domain).
@@ -112,9 +112,9 @@ Nové prostředí má následující omezení:
 ## <a name="next-steps"></a>Další kroky
 
 Začněte s novým prostředím pro registraci aplikací:
-* Zjistěte [, jak zaregistrovat webovou aplikaci](tutorial-register-applications.md) .
-* Zjistěte [, jak zaregistrovat webové rozhraní API](add-web-api-application.md) .
-* Naučte [se registrovat nativní klientskou aplikaci](add-native-application.md) .
+* Přečtěte si, [jak zaregistrovat webovou aplikaci](tutorial-register-applications.md).
+* Naučte [se registrovat webové rozhraní API](add-web-api-application.md).
+* Naučte [se registrovat nativní klientskou aplikaci](add-native-application.md).
 * Naučte [se, jak registrovat aplikaci Microsoft Graph pro správu prostředků Azure AD B2C](microsoft-graph-get-started.md).
 * Naučte [se používat Azure AD B2C jako poskytovatele služby SAML.](identity-provider-adfs2016-custom.md)
-* Další informace o [typech aplikací](application-types.md)
+* Seznamte se s [typy aplikací](application-types.md).

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: victorh
 ms.custom: references_regions
-ms.openlocfilehash: e61ce629e723f56524ee22d8b127243f9568a835
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: 7b90748ae29a98038d96e5e3a827413637a98d47
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84196491"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668232"
 ---
 # <a name="frequently-asked-questions-about-application-gateway"></a>Nejčastější dotazy týkající se Application Gateway
 
@@ -113,7 +113,7 @@ Zřizování většiny nasazení, která používají SKU v2, trvá přibližně
 
 ### <a name="can-i-use-exchange-server-as-a-backend-with-application-gateway"></a>Můžu použít Exchange Server jako back-end s Application Gateway?
 
-No. Application Gateway nepodporuje e-mailové protokoly, jako jsou SMTP, IMAP a POP3.
+Ne. Application Gateway nepodporuje e-mailové protokoly, jako jsou SMTP, IMAP a POP3.
 
 ### <a name="is-there-guidance-available-to-migrate-from-the-v1-sku-to-the-v2-sku"></a>Je k dispozici návod k migraci z SKU V1 na SKU 2?
 
@@ -125,7 +125,7 @@ Ano. SKU Application Gateway v1 bude nadále podporována. Důrazně však dopor
 
 ### <a name="does-application-gateway-v2-support-proxying-requests-with-ntlm-authentication"></a>Podporuje Application Gateway v2 požadavky na proxy s ověřováním NTLM?
 
-No. Application Gateway v2 nepodporuje proxy požadavky s ověřováním NTLM ještě nepodporují.
+Ne. Application Gateway v2 nepodporuje proxy požadavky s ověřováním NTLM ještě nepodporují.
 
 ### <a name="does-application-gateway-affinity-cookie-support-samesite-attribute"></a>Podporuje soubor cookie spřažení Application Gateway atribut SameSite?
 Ano, [v80](https://chromiumdash.appspot.com/schedule) v [prohlížeči chrom](https://www.chromium.org/Home) představila v souborech cookie protokolu HTTP pověření bez SameSite atributu, aby bylo považováno za SameSite = Lax. To znamená, že prohlížeč nebude odesílat soubory cookie spřažení Application Gateway v kontextu třetí strany. 
@@ -150,7 +150,7 @@ Ano, skladová položka Application Gateway v2 podporuje automatické škálová
 
 ### <a name="does-manual-or-automatic-scale-up-or-scale-down-cause-downtime"></a>Způsobuje ruční nebo automatické horizontální navýšení nebo snížení kapacity při výpadku?
 
-No. Instance se distribuují napříč doménami upgradu a doménami selhání.
+Ne. Instance se distribuují napříč doménami upgradu a doménami selhání.
 
 ### <a name="does-application-gateway-support-connection-draining"></a>Podporuje Application Gateway vyprazdňování připojení?
 
@@ -172,7 +172,7 @@ Pokud máte připojení IP, Application Gateway můžou komunikovat s instancemi
 
 ### <a name="can-i-deploy-anything-else-in-the-application-gateway-subnet"></a>Můžu v podsíti aplikační brány nasazovat cokoli jiného?
 
-No. V podsíti ale můžete nasadit i jiné aplikační brány.
+Ne. V podsíti ale můžete nasadit i jiné aplikační brány.
 
 ### <a name="are-network-security-groups-supported-on-the-application-gateway-subnet"></a>Jsou skupiny zabezpečení sítě podporované v podsíti služby Application Gateway?
 
@@ -204,7 +204,7 @@ Architektura mikroslužeb je podporovaná. Chcete-li provést test na různých 
 
 ### <a name="do-custom-probes-support-wildcards-or-regex-on-response-data"></a>Podporují vlastní testy zástupné znaky nebo regulární výrazy v datech odpovědí?
 
-No. 
+Ne. 
 
 ### <a name="how-are-routing-rules-processed-in-application-gateway"></a>Jak se zpracovávají pravidla směrování v Application Gateway?
 
@@ -220,7 +220,7 @@ Ano. Viz [omezení přístupu na konkrétní zdrojové IP adresy](https://docs.m
 
 ### <a name="can-i-use-the-same-port-for-both-public-facing-and-private-facing-listeners"></a>Můžu použít stejný port pro veřejné i privátní naslouchací procesy?
 
-No.
+Ne.
 
 ### <a name="does-application-gateway-support-ipv6"></a>Podporuje Application Gateway IPv6?
 
@@ -338,11 +338,31 @@ Ne, v heslech souboru. pfx použijte pouze alfanumerické znaky.
 Kubernetes umožňuje vytvoření `deployment` a `service` prostředek k internímu vystavení skupiny lusků v clusteru. Pokud chcete stejnou službu vystavit externě, [`Ingress`](https://kubernetes.io/docs/concepts/services-networking/ingress/) je definován prostředek, který poskytuje vyrovnávání zatížení, ukončení protokolu TLS a virtuální hostování na základě názvu.
 Aby byl tento `Ingress` prostředek splněn, vyžaduje se kontroler příchozího přenosu dat, který naslouchá jakýmkoli změnám v `Ingress` prostředcích a konfiguruje zásady nástroje pro vyrovnávání zatížení.
 
-Kontroler Application Gateway příchozího přenosu dat umožňuje použití [azure Application Gateway](https://azure.microsoft.com/services/application-gateway/) jako příchozí pro [službu Azure Kubernetes](https://azure.microsoft.com/services/kubernetes-service/) , která se označuje také jako cluster AKS.
+Řadič Application Gateway příchozího přenosu dat (AGIC) umožňuje použití [Application Gateway Azure](https://azure.microsoft.com/services/application-gateway/) jako příchozí pro [službu Azure Kubernetes](https://azure.microsoft.com/services/kubernetes-service/) , která se také označuje jako cluster AKS.
 
 ### <a name="can-a-single-ingress-controller-instance-manage-multiple-application-gateways"></a>Může jediná instance kontroleru příchozího přenosu dat spravovat víc aplikačních bran?
 
 V současné době může být jedna instance řadiče pro příchozí spojení přidružená jenom k jednomu Application Gateway.
+
+### <a name="why-is-my-aks-cluster-with-kubenet-not-working-with-agic"></a>Proč můj cluster AKS s kubenet nepracuje s AGIC?
+
+AGIC se pokusí automaticky přidružit prostředek směrovací tabulky k podsíti Application Gateway, ale může to udělat, protože z AGIC chybí oprávnění. Pokud AGIC není schopen přidružit směrovací tabulku k podsíti Application Gateway, dojde k chybě v protokolech AGIC. v takovém případě budete muset ručně přidružit směrovací tabulku vytvořenou clusterem AKS k podsíti Application Gateway. Další informace najdete v [tématu pokyny.](configuration-overview.md#user-defined-routes-supported-on-the-application-gateway-subnet)
+
+### <a name="can-i-connect-my-aks-cluster-and-application-gateway-in-separate-virtual-networks"></a>Můžu svůj cluster AKS a Application Gateway připojit k samostatným virtuálním sítím? 
+
+Ano, pokud jsou virtuální sítě v partnerském vztahu a nemají překrývající se adresní prostory. Pokud používáte AKS s kubenet, nezapomeňte přidružit směrovací tabulku vygenerovanou AKS do podsítě Application Gateway. 
+
+### <a name="what-features-are-not-supported-on-the-agic-add-on"></a>Jaké funkce nejsou podporovány na doplňku AGIC? 
+
+Podívejte se prosím na rozdíly mezi AGIC nasazenými prostřednictvím Helm a nasazenými jako doplněk pro [here](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on) AKS.
+
+### <a name="when-should-i-use-the-add-on-versus-the-helm-deployment"></a>Kdy mám použít doplněk oproti Helm nasazení? 
+
+Podívejte se na rozdíly mezi AGIC nasazenými prostřednictvím Helm a nasazenými jako doplněk pro AKS [, zejména](ingress-controller-overview.md#difference-between-helm-deployment-and-aks-add-on)v tabulkách dokumentace, které scénáře jsou podporovány AGIC nasazenými prostřednictvím Helm, a to na rozdíl od doplňku AKS. Obecně platí, že nasazení prostřednictvím Helm vám umožní otestovat verze beta verzí a kandidáty na vydání před oficiální verzí. 
+
+### <a name="can-i-control-which-version-of-agic-will-be-deployed-with-the-add-on"></a>Můžu určit, která verze AGIC se bude s doplňkem nasazovat?
+
+Ne, doplněk AGIC je spravovaná služba, která znamená, že Microsoft bude automaticky aktualizovat doplněk na nejnovější stabilní verzi. 
 
 ## <a name="diagnostics-and-logging"></a>Diagnostika a protokolování
 

@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: quickstart
-ms.date: 05/28/2020
+ms.date: 06/04/2020
 ms.author: jingwang
-ms.openlocfilehash: d6191a5f4dcfc3d25072e0cfa00418fb64311773
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 39f2dad088f3f3eb4a99aa17c1bdde5fe2a2f79c
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248528"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84655811"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Rychlý Start: vytvoření datové továrny pomocí Azure Data Factoryho uživatelského rozhraní
 
@@ -42,8 +42,6 @@ Toto video vám pomůže seznámit se s uživatelským rozhraním služby Data F
 1. Spusťte webový prohlížeč **Microsoft Edge** nebo **Google Chrome**. Uživatelské rozhraní služby Data Factory podporují v současnosti jenom webové prohlížeče Microsoft Edge a Google Chrome.
 1. Přejít na [Azure Portal](https://portal.azure.com). 
 1. V nabídce webu Azure Portal vyberte **Vytvořit prostředek**.
-   
-   ![V nabídce Azure Portal vyberte vytvořit prostředek.](./media/doc-common-process/create-a-resource.png)
 1. Vyberte **Analytics**a pak vyberte **Data Factory**. 
    
    ![Výběr datové továrny v podokně Nový](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -80,8 +78,12 @@ Toto video vám pomůže seznámit se s uživatelským rozhraním služby Data F
 ## <a name="create-a-linked-service"></a>Vytvoření propojené služby
 V tomto postupu vytvoříte propojenou službu, která propojí váš Azure Storage účet s datovou továrnou. Tato propojená služba má informace o připojení, které služba Data Factory používá pro připojení za běhu.
 
-1. Vyberte **připojení**a pak vyberte tlačítko **Nový** na panelu nástrojů (tlačítko**připojení** se nachází v dolní části levého sloupce v části **prostředky továrny**). 
+1. V levém podokně otevřete [kartu spravovat](https://docs.microsoft.com/azure/data-factory/author-management-hub) .
 
+1. Na stránce propojené služby vyberte **+ Nová** a vytvořte novou propojenou službu.
+
+   ![Nová propojená služba](./media/doc-common-process/new-linked-service.png)
+   
 1. Na stránce **Nová propojená služba** vyberte **Azure Blob Storage** a pak vyberte **Pokračovat**. 
 
 1. Na stránce Nová propojená služba (Azure Blob Storage) proveďte následující kroky: 
@@ -123,7 +125,7 @@ V nastavení propojené služby jste zadali Azure Storage účet, který obsahuj
 
     c. V části **Cesta k souboru** vyberte tlačítko **Procházet**.
 
-    d. V okně **Zvolte soubor nebo složku** přejděte do složky **input** v kontejneru **adftutorial** , vyberte soubor **EMP. txt** a pak vyberte **OK**.
+    d. V okně **Zvolte soubor nebo složku** přejděte do složky **input** v kontejneru **adftutorial** , vyberte soubor **emp.txt** a pak vyberte **OK**.
     
     e. Vyberte **OK**.   
 

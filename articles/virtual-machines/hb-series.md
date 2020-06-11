@@ -1,18 +1,18 @@
 ---
-title: V-řadách – Azure Virtual Machines
+title: Řada HB
 description: Specifikace pro virtuální počítače s velmi řadou.
-services: virtual-machines
-author: jonbeck7
+author: ju-shim
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 600f10e81742e9bb66c800b747fd7b2dc062754d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: b0ffd9af8df830c1bdacbfe3809d4086346679b6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164827"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678558"
 ---
 # <a name="hb-series"></a>Řada HB
 

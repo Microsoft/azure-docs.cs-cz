@@ -6,12 +6,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: danis
-ms.openlocfilehash: 316f5dcb3a5fe0cbf8fb6a2f65c0ab11fc45c146
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: abd357808cd0213e92eaba478fb861110bcf9f39
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84607274"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84666719"
 ---
 # <a name="prepare-an-ubuntu-virtual-machine-for-azure"></a>Příprava virtuálního počítače s Ubuntu pro Azure
 
@@ -50,8 +50,8 @@ V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém
 
     Ubuntu 16,04 a Ubuntu 18,04:
    
-        # sudo sed -i 's/archive\.ubuntu.com/azure\.archive\.ubuntu\.com/g' /etc/apt/sources.list
-        # sed -i 's/[a-z][a-z]\.archive\.ubuntu.com/azure\.archive\.ubuntu\.com/g' /etc/apt/sources.list
+        # sudo sed -i 's/http:\/\/archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
+        # sudo sed -i 's/http:\/\/[a-z][a-z]\.archive\.ubuntu\.com\/ubuntu\//http:\/\/azure\.archive\.ubuntu\.com\/ubuntu\//g' /etc/apt/sources.list
         # sudo apt-get update
 
 
@@ -67,7 +67,9 @@ V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém
 
 5. Upravte spouštěcí řádek jádra pro GRUB tak, aby zahrnoval další parametry jádra pro Azure. Pokud to chcete otevřít `/etc/default/grub` v textovém editoru, najděte proměnnou s názvem `GRUB_CMDLINE_LINUX_DEFAULT` (nebo ji přidejte v případě potřeby) a upravte ji tak, aby zahrnovala následující parametry:
    
-        GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300"
+    ```
+    GRUB_CMDLINE_LINUX_DEFAULT="console=tty1 console=ttyS0,115200n8 earlyprintk=ttyS0,115200 rootdelay=300 quiet splash"
+    ```
 
     Uložte a zavřete tento soubor a potom spusťte příkaz `sudo update-grub` . Tím se zajistí, že se všechny zprávy konzoly odešlou na první sériový port, což může pomoct technickou podporu Azure s problémy ladění.
 
@@ -76,46 +78,49 @@ V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém
 7. Nainstalujte Cloud-init (zřizovací Agent) a agenta Azure Linux (obslužná rutina rozšíření hosta). Cloud-init používá netplan ke konfiguraci systémové konfigurace sítě během zřizování a při každém následném spuštění.
 
         # sudo apt update
-        # sudo apt install -y cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
+        # sudo apt install cloud-init netplan.io walinuxagent && systemctl stop walinuxagent
 
    > [!Note]
    >  `walinuxagent`Balíček může odebrat `NetworkManager` `NetworkManager-gnome` balíčky a, pokud jsou nainstalované.
 
-8. Odeberte výchozí konfigurace Cloud-init a zbylé artefakty, které můžou být v konfliktu s zřizováním Cloud-init v Azure:
+8. Odeberte výchozí konfigurace Cloud-init a zbylé netplan artefakty, které můžou být v konfliktu s zřizováním Cloud-init v Azure:
 
         # rm -f /etc/cloud/cloud.cfg.d/50-curtin-networking.cfg /etc/cloud/cloud.cfg.d/curtin-preserve-sources.cfg
         # rm -f /etc/cloud/ds-identify.cfg
+        # rm -f /etc/netplan/*.yaml
 
 9. Konfigurace Cloud-init pro zřízení systému pomocí zdroje dat Azure:
 
-        # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
-        datasource_list: [ Azure ]
-        EOF
+    ```
+    # cat > /etc/cloud/cloud.cfg.d/90_dpkg.cfg << EOF
+    datasource_list: [ Azure ]
+    EOF
 
-        # cat > /etc/cloud/cloud.cfg.d/90-azure.cfg << EOF
-        system_info:
-        package_mirrors:
-            - arches: [i386, amd64]
-            failsafe:
-                primary: http://archive.ubuntu.com/ubuntu
-                security: http://security.ubuntu.com/ubuntu
-            search:
-                primary:
-                - http://azure.archive.ubuntu.com/ubuntu/
-                security: []
-            - arches: [armhf, armel, default]
-            failsafe:
-                primary: http://ports.ubuntu.com/ubuntu-ports
-                security: http://ports.ubuntu.com/ubuntu-ports
-        EOF
+    # cat > /etc/cloud/cloud.cfg.d/90-azure.cfg << EOF
+    system_info:
+       package_mirrors:
+         - arches: [i386, amd64]
+           failsafe:
+             primary: http://archive.ubuntu.com/ubuntu
+             security: http://security.ubuntu.com/ubuntu
+           search:
+             primary:
+               - http://azure.archive.ubuntu.com/ubuntu/
+             security: []
+         - arches: [armhf, armel, default]
+           failsafe:
+             primary: http://ports.ubuntu.com/ubuntu-ports
+             security: http://ports.ubuntu.com/ubuntu-ports
+    EOF
 
-        # cat > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
-        reporting:
-        logging:
-            type: log
-        telemetry:
-            type: hyperv
-        EOF
+    # cat > /etc/cloud/cloud.cfg.d/10-azure-kvp.cfg << EOF
+    reporting:
+      logging:
+        type: log
+      telemetry:
+        type: hyperv
+    EOF
+    ```
 
 10. Nakonfigurujte agenta Azure Linux tak, aby se při zřizování spoléhal na Cloud-init. Další informace o těchto možnostech najdete v [projektu WALinuxAgent](https://github.com/Azure/WALinuxAgent) .
 
@@ -142,6 +147,12 @@ V tomto článku se předpokládá, že jste už Ubuntu Linux operační systém
         # sudo rm -f /var/log/waagent.log
 
 12. Spuštěním následujících příkazů můžete virtuální počítač zrušit a připravit ho pro zřizování v Azure:
+
+    > [!NOTE]
+    > `sudo waagent -force -deprovision+user`Příkaz se pokusí vyčistit systém a nastavit jej jako vhodný pro opětovné zřízení. `+user`Možnost odstraní naposledy zřízený uživatelský účet a přidružená data.
+
+    > [!WARNING]
+    > Zrušení zřízení pomocí příkazu výše nezaručuje, že se image vymaže ze všech citlivých informací a je vhodná pro redistribuci.
 
         # sudo waagent -force -deprovision+user
         # rm -f ~/.bash_history

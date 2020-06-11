@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: allensu
 ms.custom: ''
-ms.openlocfilehash: a58fd7c6f50cd46ac3c34cd7e5bd329c0007e5f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7b98bb446fc400007e4061d09db8084960702943
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81260186"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668283"
 ---
 # <a name="retrieve-the-current-pop-ip-list-for-azure-cdn"></a>Načte aktuální seznam IP adres POP pro Azure CDN.
 
@@ -39,7 +39,7 @@ Nakonfigurujte IP funkce acling pro vaše back-endy pro příjem provozu z Azure
 * Azure CDN z IP adresy back-endu IPv4 Microsoftu: 147.243.0.0/16
 * Azure CDN z IP adresy back-endu IPv6 Microsoftu: 2a01:111:2050::/44
 
-Rozsahy IP adres a značky služeb pro služby Microsoftu najdete [tady](https://www.microsoft.com/download/details.aspx?id=56519) .
+Pokud chcete používat značky služeb s Azure CDN od Microsoftu, použijte prosím značku front-dveří Azure. Rozsahy IP adres a značky služeb pro služby Microsoftu najdete [tady](https://www.microsoft.com/download/details.aspx?id=56519) .
 
 
 ## <a name="typical-use-case"></a>Typický případ použití

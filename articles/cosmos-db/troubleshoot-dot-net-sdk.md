@@ -8,12 +8,12 @@ ms.author: anfeldma
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 55c462795b29cd678a5fd7816211bce720d554e1
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c0f40b3c79c16046ef61e89cad72c714346d2674
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170354"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672625"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Diagnostika a řešení potíží při používání sady .NET SDK služby Azure Cosmos DB
 
@@ -32,10 +32,10 @@ Před přesunutím aplikace do produkčního prostředí Vezměte v úvahu násl
 *    Použijte nejnovější [sadu SDK](sql-api-sdk-dotnet-standard.md). Sady SDK verze Preview by se neměly používat pro produkční prostředí. Zabráníte tak známým problémům, které již byly opraveny.
 *    Projděte si [tipy ke zvýšení výkonu](performance-tips.md)a řiďte se doporučenými postupy. To vám pomůže zabránit škálování, latenci a dalším problémům s výkonem.
 *    Povolení protokolování sady SDK, které vám může pomoct vyřešit problém. Povolení protokolování může mít vliv na výkon, takže je nejvhodnější ho povolit jenom při řešení problémů. Můžete povolit následující protokoly:
-    *    [Metriky protokolu](monitor-accounts.md) pomocí Azure Portal. Metriky portálu ukazují Azure Cosmos DB telemetrii, což je užitečné, pokud chcete zjistit, jestli tento problém odpovídá Azure Cosmos DB nebo pokud je ze strany klienta.
-    *    Protokoluje [řetězec diagnostiky](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) v sadě v2 SDK nebo v [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) v sadě V3 SDK z odpovědí na operace bodu.
-    *    Protokoluje [metriky dotazů SQL](sql-api-query-metrics.md) ze všech odpovědí na dotazy. 
-    *    Postupujte podle pokynů pro nastavení [protokolování sady SDK]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) .
+*    [Metriky protokolu](monitor-accounts.md) pomocí Azure Portal. Metriky portálu ukazují Azure Cosmos DB telemetrii, což je užitečné, pokud chcete zjistit, jestli tento problém odpovídá Azure Cosmos DB nebo pokud je ze strany klienta.
+*    Protokoluje [řetězec diagnostiky](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring) v sadě v2 SDK nebo v [Diagnostics](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics) v sadě V3 SDK z odpovědí na operace bodu.
+*    Protokoluje [metriky dotazů SQL](sql-api-query-metrics.md) ze všech odpovědí na dotazy. 
+*    Postupujte podle pokynů pro nastavení [protokolování sady SDK]( https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/docs/documentdb-sdk_capture_etl.md) .
 
 Prohlédněte si část [běžné problémy a alternativní řešení](#common-issues-workarounds) v tomto článku.
 

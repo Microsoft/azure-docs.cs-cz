@@ -3,16 +3,16 @@ title: Řízení údržby pro virtuální počítače Azure pomocí rozhraní p�
 description: Naučte se řídit, kdy se na virtuální počítače Azure použije údržba pomocí řízení údržby a CLI.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/20/2020
 ms.author: cynthn
-ms.openlocfilehash: 4843b4769e31748fd5f624005792c604db18f11e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 56f9873828e2f93008498beed986827a01872bf1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82137497"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675855"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-cli"></a>Řízení aktualizací pomocí řízení údržby a Azure CLI
 
@@ -35,11 +35,11 @@ az maintenance configuration create \
 
 Zkopírujte ID konfigurace z výstupu pro pozdější použití.
 
-Pomocí `--maintenanceScope host` nástroje je zajištěno, že se konfigurace údržby používá pro řízení aktualizací hostitele.
+Pomocí nástroje `--maintenanceScope host` je zajištěno, že se konfigurace údržby používá pro řízení aktualizací hostitele.
 
 Pokud se pokusíte vytvořit konfiguraci se stejným názvem, ale v jiném umístění, zobrazí se chyba. Názvy konfigurace musí být pro vaše předplatné jedinečné.
 
-K dostupným konfiguracím údržby se můžete `az maintenance configuration list`dotázat pomocí.
+K dostupným konfiguracím údržby se můžete dotázat pomocí `az maintenance configuration list` .
 
 ```azurecli-interactive
 az maintenance configuration list --query "[].{Name:name, ID:id}" -o table 
@@ -47,11 +47,11 @@ az maintenance configuration list --query "[].{Name:name, ID:id}" -o table
 
 ## <a name="assign-the-configuration"></a>Přiřazení konfigurace
 
-Použijte `az maintenance assignment create` k přiřazení konfigurace vašemu IZOLOVANÉmu virtuálnímu počítači nebo vyhrazenému hostiteli Azure.
+Použijte `az maintenance assignment create` k přiřazení konfigurace vašemu izolovanému virtuálnímu počítači nebo vyhrazenému hostiteli Azure.
 
 ### <a name="isolated-vm"></a>Izolovaný virtuální počítač
 
-Použijte konfiguraci na virtuální počítač s použitím ID konfigurace. Zadejte `--resource-type virtualMachines` a zadejte název virtuálního počítače pro `--resource-name`a skupinu prostředků pro virtuální počítač v `--resource-group`nástroji a umístění virtuálního počítače pro. `--location` 
+Použijte konfiguraci na virtuální počítač s použitím ID konfigurace. Zadejte `--resource-type virtualMachines` a zadejte název virtuálního počítače pro `--resource-name` a skupinu prostředků pro virtuální počítač v nástroji `--resource-group` a umístění virtuálního počítače pro `--location` . 
 
 ```azurecli-interactive
 az maintenance assignment create \
@@ -66,7 +66,7 @@ az maintenance assignment create \
 
 ### <a name="dedicated-host"></a>Vyhrazený hostitel
 
-Chcete-li použít konfiguraci pro vyhrazeného hostitele, je třeba zahrnout `--resource-type hosts` `--resource-parent-name` s názvem skupiny hostitelů a `--resource-parent-type hostGroups`. 
+Chcete-li použít konfiguraci pro vyhrazeného hostitele, je třeba zahrnout `--resource-type hosts` `--resource-parent-name` s názvem skupiny hostitelů a `--resource-parent-type hostGroups` . 
 
 Parametr `--resource-id` je ID hostitele. K získání ID vyhrazeného hostitele můžete použít [příkaz AZ VM Host Get-instance-View](/cli/azure/vm/host#az-vm-host-get-instance-view) .
 
@@ -85,7 +85,7 @@ az maintenance assignment create \
 
 ## <a name="check-configuration"></a>Ověřit konfiguraci
 
-Můžete ověřit, jestli se konfigurace použila správně, nebo zkontrolovat, která konfigurace se v tuto chvíli používá `az maintenance assignment list`.
+Můžete ověřit, jestli se konfigurace použila správně, nebo zkontrolovat, která konfigurace se v tuto chvíli používá `az maintenance assignment list` .
 
 ### <a name="isolated-vm"></a>Izolovaný virtuální počítač
 
@@ -118,7 +118,7 @@ az maintenance assignment list \
 
 Použijte `az maintenance update list` k zobrazení, zda čekají na aktualizace. Aktualizace--předplatné jako ID pro předplatné, které obsahuje virtuální počítač.
 
-Pokud nejsou k dispozici žádné aktualizace, příkaz vrátí chybovou zprávu, která bude obsahovat text: `Resource not found...StatusCode: 404`.
+Pokud nejsou k dispozici žádné aktualizace, příkaz vrátí chybovou zprávu, která bude obsahovat text: `Resource not found...StatusCode: 404` .
 
 Pokud jsou k dispozici aktualizace, bude vrácena pouze jedna, i když je dokončeno více aktualizací. Data pro tuto aktualizaci budou vrácena v objektu:
 
@@ -199,9 +199,9 @@ az maintenance applyupdate create \
 
 ## <a name="check-the-status-of-applying-updates"></a>Ověřte stav použití aktualizací. 
 
-Průběh aktualizací můžete zjistit pomocí `az maintenance applyupdate get`. 
+Průběh aktualizací můžete zjistit pomocí `az maintenance applyupdate get` . 
 
-Můžete použít `default` jako název aktualizace k zobrazení výsledků Poslední aktualizace nebo nahradit `myUpdateName` názvem aktualizace, která byla vrácena při spuštění. `az maintenance applyupdate create`
+Můžete použít `default` jako název aktualizace k zobrazení výsledků Poslední aktualizace nebo nahradit `myUpdateName` názvem aktualizace, která byla vrácena při spuštění `az maintenance applyupdate create` .
 
 ```text
 Status         : Completed

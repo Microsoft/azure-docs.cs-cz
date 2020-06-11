@@ -10,15 +10,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 06/01/2020
+ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4d790bf20da8cc0d10c8fa47d750014de4f3d285
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: aff1c8f68e3950b49a0a1bd8e99020b77e0f2019
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331725"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677300"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>Architektura úložiště SAP HANA (velké instance)
 
@@ -45,6 +45,7 @@ V následující tabulce najdete informace o přidělení úložiště. Tabulka 
 | S768m | 28 000 GB | 3 100 GB | 2 050 GB | 3 100 GB |
 | S768xm | 40 960 GB | 6 144 GB | 4 096 GB | 6 144 GB |
 | S960m | 36 000 GB | 4 100 GB | 2 050 GB | 4 100 GB |
+| S896m | 33 792 GB | 512 GB | 1 024 GB | 512 GB |
 
 Novější SKU velkých instancí HANA se dodávají s konfiguracemi úložiště, které vypadají takto:
 
@@ -70,7 +71,6 @@ Novější SKU velkých instancí HANA se dodávají s konfiguracemi úložišt�
 | S672oom | 38 016 GB | 512 GB | 1 024 GB | 512 GB |
 | S896 | 16 896 GB | 512 GB | 1 024 GB | 512 GB |
 | S896oo | 25 344 GB | 512 GB | 1 024 GB | 512 GB |
-| S896m | 33 792 GB | 512 GB | 1 024 GB | 512 GB |
 | S896om | 33 792 GB | 512 GB | 1 024 GB | 512 GB |
 | S896ooo | 42 240 GB | 512 GB | 1 024 GB | 512 GB |
 | S896oom | 50 688 GB | 512 GB | 1 024 GB | 512 GB |
@@ -126,7 +126,7 @@ U třídy typu SKU je svazek, na kterém je spouštěcí logická jednotka ulož
 Úložiště používané ve velkých instancích HANA má omezení velikosti souboru. [Omezení velikosti je 16 TB](https://docs.netapp.com/ontap-9/index.jsp?topic=%2Fcom.netapp.doc.dot-cm-vsmg%2FGUID-AA1419CF-50AB-41FF-A73C-C401741C847C.html) na jeden soubor. Na rozdíl od omezení velikosti souborů v systémech souborů EXT3 úložiště HANA neví implicitně omezení úložiště vynutilé úložištěm velkých instancí HANA. V důsledku toho HANA nevytvoří automaticky nový datový soubor, když je dosaženo limitu velikosti souboru 16 TB. Vzhledem k tomu, že HANA se pokusí zvětšit soubor nad rámec 16 TB, HANA odešle zprávy o chybách a indexový server selže na konci.
 
 > [!IMPORTANT]
-> Aby se zabránilo tomu, že se HANA snaží rozšířit datové soubory nad rámec velikosti souborů o velikosti 16 TB úložiště velkých instancí HANA, musíte nastavit následující parametry v konfiguračním souboru Global. ini HANA.
+> Aby se zabránilo tomu, že se HANA snaží rozšiřovat datové soubory nad rámec velikosti souborů o velikosti 16 TB úložiště velkých instancí HANA, musíte nastavit následující parametry v konfiguračním souboru global.ini pro HANA.
 > 
 > - datavolume_striping = true
 > - datavolume_striping_size_gb = 15000

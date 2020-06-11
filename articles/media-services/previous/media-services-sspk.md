@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: xpouyat
-ms.openlocfilehash: 423597da44a74afb60e69c4e32cbd6353f81e726
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 7fce1fc529f3af71cac17d8011fe065c6381a419
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344029"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677148"
 ---
 # <a name="licensing-microsoftreg-smooth-streaming-client-porting-kit"></a>Licencování &reg; sady pro portování klienta Microsoft Smooth Streaming 
 ## <a name="overview"></a>Přehled
@@ -29,7 +29,7 @@ Níže je uveden seznam architektury vysoké úrovně a služba IIS Smooth Strea
 
 ![SSPK](./media/media-services-sspk/sspk-arch.png)
 
-## <a name="description"></a>Description
+## <a name="description"></a>Popis
 SSPK je licencovaná pro výrazy, které nabízejí skvělou obchodní hodnotu. SSPK License poskytuje odvětví s:
 
 * Zdroj Smooth Streaminging Kit pro portování v C++ 
@@ -113,52 +113,41 @@ Dočasné a konečné licence SSPK mohou odesílat technické dotazy [smoothpk@m
 ## <a name="microsoft-smooth-streaming-client-final-product-agreement-licensees"></a>Konečné licence k produktu Microsoft Smooth Streaming Client
 * Rozšířené digitální vysílání SA
 * Kablosuz Iletism Sanayive dis Ticaret neúčinné látky
-* Albis Technologies Ltd.
-* Služba Amazon Digital Services, Inc.
-* AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
-* Arion Technology, Inc.
-* ATMACA ELEKTRONIK SAN. VE TIC. A. Ş
-* Britské přenosové nebe – omezené
-* CastPal Technology Inc., Shenzhen
+* Arcelik A. S
 * Kompatibilní s elektronikou, Inc.
-* Dongguan Digital AV Technology Corp., Ltd.
-* EchoStar koupit společnost
-* Enseo, Inc.
-* FilmFlex filmy omezené
+* OMEZENÁ TECHNOLOGIE EXPRESS
 * Fluendo S.A.
 * FUNAI ELEKTROINSTALACE CO., LTD
-* Gibson inovace s omezením
-* Haier informace žadatele S. R. L
-* HANDAN BroadInfoCom co., Ltd.
 * Hisense International co., Ltd. 
-* Homecast co., Ltd
-* Hon Hai Precision Industry Co., Ltd.
-* Infomir GMBH
+* HKC Corporation – omezená
+* Hongkong Konka Ltd
+* InnoLux Corporation
+* Innopia Technologies, Inc
 * Kaonmedia co., Ltd.
 * KDDI Corporation
+* Megabajtů Fame elektronika co. omezeno
+* MIRC elektronika omezená
 * Nintendo Co., Ltd.
-* Oranžová SA
-* Saffron s digitálním omezením
-* Sagemcom Broadband SAS
+* ONEPLUS ELECTRONICS (SHENZHEN) CO., LTD.
+* Panasonic Corporation
+* Qingdao Haier Optronics co., Ltd.
+* Shenzhen ATEKO PHOTO elektřiny co., Ltd.
 * Shenzhen Chuangwei – RGB Electronics Co., Ltd.
-* Shenzhenická elektronika CO., LTD
 * Shenzhen Jiuzhou elektrických co., Ltd
 * Shenzhen KTC Technology Co., Ltd. 
+* Shenzhen Maxmade Technology Co., Ltd
+* Shenzhen MTC co., Ltd
 * Digitální technologie Shenzhen Skyworth co., Ltd
 * Iština Changhong elektrických co., Ltd.
 * Skardin průmyslová Corp.
 * Nebeská Deutschlanda Fernsehen GmbH & co. KG
-* SmarDTV S.A.
+* GLOBÁLNÍ SAS SMARDTV
 * SoftAtHome
 * Sony Corporation
 * Technologie Technicolor Delivery, SAS
-* Tongfang Global Ltd.
 * Hlavní investice do Victory, Ltd.
-* Toshiba životní výrobky produkty & Services Corporation
-* Universal Media Corporation/Slovakia/s.r.o.
-* VIZIO, Inc.
-* Wistron Corporation
+* Aktualizace UMC v/v z. o.o.
 * ZTE Corporation
 
 ## <a name="media-services-learning-paths"></a>Mapy kurzů k Media Services

@@ -4,12 +4,12 @@ description: Popisuje, jak nasadit službu ve více oblastech pomocí Azure Depl
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 424cd79a6c63200e1f101cf178b1fd2c9083161e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a91623d22a921b6285723af2b4ca1411b9cf0bab
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76152523"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677878"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Povolení postupů bezpečného nasazení pomocí Azure Deployment Manager (Public Preview)
 
@@ -193,7 +193,7 @@ V šabloně zavedení vytvoříte zdroj artefaktů pro binární soubory, které
 
 ### <a name="steps"></a>Kroky
 
-Můžete definovat krok, který se provede buď před, nebo po operaci nasazení. V současné době je `wait` k dispozici pouze krok a krok "healthCheck".
+Můžete definovat krok, který se provede buď před, nebo po operaci nasazení. V současné době `wait` je k dispozici pouze krok a krok "healthCheck".
 
 Krok čekání před pokračováním pozastaví nasazení. Umožňuje ověřit, jestli je služba spuštěná podle očekávání, ještě než začnete nasazovat další jednotku služby. Následující příklad ukazuje obecný formát kroku čekání.
 
@@ -268,7 +268,7 @@ Vytvoříte dva soubory parametrů. Jeden soubor parametrů se používá při n
 
 ## <a name="containerroot-variable"></a>containerRoot – proměnná
 
-U nasazení s použitím verzí se cesta k artefaktům mění s každou novou verzí. Při prvním spuštění nasazení může být `https://<base-uri-blob-container>/binaries/1.0.0.0`cesta. Druhý čas může být `https://<base-uri-blob-container>/binaries/1.0.0.1`. Deployment Manager zjednodušuje získávání správné kořenové cesty pro aktuální nasazení pomocí `$containerRoot` proměnné. Tato hodnota se změní v každé verzi a před nasazením není známa.
+U nasazení s použitím verzí se cesta k artefaktům mění s každou novou verzí. Při prvním spuštění nasazení může být cesta `https://<base-uri-blob-container>/binaries/1.0.0.0` . Druhý čas může být `https://<base-uri-blob-container>/binaries/1.0.0.1` . Deployment Manager zjednodušuje získávání správné kořenové cesty pro aktuální nasazení pomocí `$containerRoot` proměnné. Tato hodnota se změní v každé verzi a před nasazením není známa.
 
 Použijte `$containerRoot` proměnnou v souboru parametrů pro šablonu k nasazení prostředků Azure. V době nasazení je tato proměnná nahrazena skutečnými hodnotami z zavedení.
 
@@ -294,13 +294,13 @@ Například při zavádění vytvoříte zdroj artefaktů pro binární artefakt
 },
 ```
 
-Všimněte si `artifactRoot` vlastností `sasUri` a. Kořen artefaktu může být nastaven na hodnotu, například `binaries/1.0.0.0`. Identifikátor URI SAS je identifikátor URI kontejneru úložiště s tokenem SAS pro přístup. Deployment Manager automaticky vytvoří hodnotu `$containerRoot` proměnné. Kombinuje tyto hodnoty ve formátu `<container>/<artifactRoot>`.
+Všimněte si `artifactRoot` `sasUri` vlastností a. Kořen artefaktu může být nastaven na hodnotu, například `binaries/1.0.0.0` . Identifikátor URI SAS je identifikátor URI kontejneru úložiště s tokenem SAS pro přístup. Deployment Manager automaticky vytvoří hodnotu `$containerRoot` proměnné. Kombinuje tyto hodnoty ve formátu `<container>/<artifactRoot>` .
 
-Šablona a soubor parametrů potřebují znát správnou cestu pro získání binárních souborů s verzí. Pokud například chcete nasadit soubory pro webovou aplikaci, vytvořte následující soubor parametrů s proměnnou $containerRoot. Pro cestu je nutné použít dvě zpětná`\\`lomítka (), protože první je řídicí znak.
+Šablona a soubor parametrů potřebují znát správnou cestu pro získání binárních souborů s verzí. Pokud například chcete nasadit soubory pro webovou aplikaci, vytvořte následující soubor parametrů s proměnnou $containerRoot. Pro cestu je nutné použít dvě zpětná lomítka ( `\\` ), protože první je řídicí znak.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "deployPackageUri": {

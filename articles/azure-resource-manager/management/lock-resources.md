@@ -2,13 +2,13 @@
 title: Uzamknout prostředky, aby nedocházelo ke změnám
 description: Zabrání uživatelům aktualizovat nebo odstraňovat důležité prostředky Azure tím, že použije zámek pro všechny uživatele a role.
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: 6d6617b7e13ebf7a58cdbbf9356eac1d035a1f73
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.date: 06/10/2020
+ms.openlocfilehash: cf5e2c7d19b9b90be3e9ca9e64e832794cd70c92
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84483487"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678031"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Zamknutí prostředků, aby se zabránilo neočekávaným změnám
 
@@ -35,9 +35,11 @@ Použití zámků může vést k neočekávaným výsledkům, protože některé
 
 * Zámek jen pro čtení ve **skupině prostředků** , která obsahuje **virtuální počítač** , zabrání všem uživatelům v spuštění nebo restartování virtuálního počítače. Tyto operace vyžadují požadavek POST.
 
-* Zámek jen pro čtení u **předplatného** , který brání **Azure Advisor** správné fungování. Poradce nemůže uložit výsledky svých dotazů.
+* Zámek nejde odstranit u **skupiny prostředků** , což zabrání Azure Resource Manager [automatickému odstranění nasazení](../templates/deployment-history-deletions.md) v historii. Pokud v historii dosáhnete nasazení 800, vaše nasazení se nezdaří.
 
 * Zámek nejde odstranit, protože **Skupina prostředků** vytvořená **službou Azure Backup** způsobuje selhání zálohování. Služba podporuje maximálně 18 bodů obnovení. Při uzamčení nemůže služba zálohování vyčistit body obnovení. Další informace najdete v článku [Nejčastější dotazy – zálohování virtuálních počítačů Azure](../../backup/backup-azure-vm-backup-faq.md).
+
+* Zámek jen pro čtení u **předplatného** , který brání **Azure Advisor** správné fungování. Poradce nemůže uložit výsledky svých dotazů.
 
 ## <a name="who-can-create-or-delete-locks"></a>Kdo může vytvářet nebo odstraňovat zámky
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 04/16/2020
 ms.author: iainfou
-ms.openlocfilehash: f4bd3f75c3246cb11e88dbaae817eba8ac76b394
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0c0ae6a96a303c1c9d2887e6ed4dfb0d1fed4453
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81603484"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672574"
 ---
 # <a name="administer-dns-and-create-conditional-forwarders-in-an-azure-ad-domain-services-managed-domain"></a>Správa DNS a vytvoření podmíněného předávaného serveru ve Azure AD Domain Services spravované doméně
 
@@ -27,7 +27,7 @@ V hybridním prostředí se v Azure služba AD DS nesynchronizují zóny DNS a z
 
 V tomto článku se dozvíte, jak nainstalovat nástroje serveru DNS a pak pomocí konzoly DNS spravovat záznamy a vytvářet v Azure služba AD DS podmíněné servery pro směrování.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 K dokončení tohoto článku potřebujete následující prostředky a oprávnění:
 
@@ -58,7 +58,7 @@ Pokud chcete vytvářet a upravovat záznamy DNS v Azure služba AD DS, musíte 
 
     ![Vyberte instalaci nástrojů serveru DNS ze seznamu dostupných nástrojů pro správu rolí.](./media/manage-dns/install-dns-tools.png)
 
-1. Na stránce **potvrzení** vyberte **nainstalovat**. Instalace nástrojů pro správu Zásady skupiny může trvat minutu nebo dvě.
+1. Na stránce **potvrzení** vyberte **nainstalovat**. Instalace nástrojů pro správu zásad dnsGroup může trvat minutu nebo dvě.
 1. Po dokončení instalace funkce vyberte **Zavřít** a ukončete průvodce **přidáním rolí a funkcí** .
 
 ## <a name="open-the-dns-management-console-to-administer-dns"></a>Otevřete konzolu pro správu DNS pro správu DNS.
@@ -96,7 +96,7 @@ Pokud chcete vytvořit podmíněný Server pro směrování ve spravované domé
 
 1. Zaškrtněte políčko pro **uložení tohoto podmíněného dopředné služby ve službě Active Directory a replikaci následujícím způsobem, a**pak vyberte možnost pro *všechny servery DNS v této doméně*, jak je znázorněno v následujícím příkladu:
 
-    ![Konzola DNS – Správa domény](./media/manage-dns/store-in-domain.png)
+    ![Konzola DNS – vybere všechny servery DNS v této doméně.](./media/manage-dns/store-in-domain.png)
 
     > [!IMPORTANT]
     > Pokud je podmíněné přeposílání Uloženo v *doménové struktuře* namísto *domény*, podmíněný předávací modul se nezdařil.

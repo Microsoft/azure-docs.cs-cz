@@ -5,14 +5,14 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 02/12/2020
 ms.author: mimart
-ms.openlocfilehash: 587a4bfed00415499bcca6d6054d4ab25cddf0b8
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: dfe35eecfec5a12395ac3d9973a651e033aeea73
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84298909"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672513"
 ---
-#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/) 
 
 1. V části **Spravovat**vyberte **oprávnění rozhraní API**.
 1. V části **konfigurovaná oprávnění**vyberte **Přidat oprávnění**.
@@ -28,7 +28,7 @@ ms.locfileid: "84298909"
 1. Vyberte **Přijmout**.
 1. Vyberte **aktualizovat**a pak ověřte, že "uděleno pro..." zobrazí se pod položkou **stav**. Rozšíření oprávnění může trvat několik minut.
 
-#### <a name="applications"></a>[Aplikace](#tab/applications/)
+#### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
 1. Na stránce Přehled **zaregistrovaných aplikací** vyberte **Nastavení**.
 1. V části **přístup přes rozhraní API**vyberte **požadovaná oprávnění**.

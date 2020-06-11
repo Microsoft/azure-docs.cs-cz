@@ -4,17 +4,18 @@ description: Šablona ARM služby privátního propojení
 services: private-link
 author: mblanco77
 ms.service: private-link
-ms.topic: article
+ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 05/29/2020
 ms.author: allensu
-ms.openlocfilehash: 93a66057ddb0034f7ac9ac62578292ca38f2d2fe
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 304ee8c1180c318dd6e99b6e81eb964e264951d1
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84237126"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667025"
 ---
-# <a name="create-a-private-link-service---resource-manager-template"></a>Vytvoření služby privátního propojení – Správce prostředků šablonu
+# <a name="quickstart-create-a-private-link-service---resource-manager-template"></a>Rychlý Start: vytvoření služby privátního propojení – Správce prostředků šablonu
 
 V tomto rychlém startu použijete šablonu Správce prostředků k vytvoření služby privátního propojení.
 
@@ -32,20 +33,20 @@ Tato šablona vytvoří službu privátního propojení.
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/blob/master/101-privatelink-service/azuredeploy.json) .
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-privatelink-service/).
 
 :::code language="json" source="~/quickstart-templates/101-privatelink-service/azuredeploy.json" range="001-432" highlight="263-289":::
 
 V šabloně je definováno víc prostředků Azure:
 
-- [**Microsoft. Network/privateLinkServices**](/azure/templates/microsoft.network/privateLinkServices) : služba privátního propojení k zveřejnění soukromé služby
-- [**Microsoft. Network/privateendpoints**](/azure/templates/microsoft.network/privateendpoints) : privátní koncový bod pro přístup k soukromé službě
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : jedna pro každý virtuální počítač
 - [**Microsoft. Network/loadBalancers**](/azure/templates/microsoft.network/loadBalancers) : Nástroj pro vyrovnávání zatížení, který zveřejňuje virtuální počítače, které hostují službu.
+- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : 2 síťová rozhraní, jedna pro každý virtuální počítač
 - [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : 2 virtuální počítače, jeden, který je hostitelem služby a druhý pro otestování připojení k privátnímu koncovému bodu
 - [**Microsoft. COMPUTE/virtualMachines/rozšíření**](/azure/templates/Microsoft.Compute/virtualMachines/extensions) : rozšíření, které instaluje webový server
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : jedna pro každý virtuální počítač
+- [**Microsoft. Network/privateLinkServices**](/azure/templates/microsoft.network/privateLinkServices) : služba privátního propojení k zveřejnění soukromé služby
 - [**Microsoft. Network/publicIpAddresses**](/azure/templates/microsoft.network/publicIpAddresses) : 2 Veřejná IP adresa, jedna pro každý virtuální počítač
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : 2 síťová rozhraní, jedna pro každý virtuální počítač
+- [**Microsoft. Network/privateendpoints**](/azure/templates/microsoft.network/privateendpoints) : privátní koncový bod pro přístup k soukromé službě
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 

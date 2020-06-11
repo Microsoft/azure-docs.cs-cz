@@ -1,26 +1,20 @@
 ---
 title: Velikosti virtuálních počítačů Azure – paměť | Microsoft Docs
 description: Obsahuje seznam různých velikostí optimalizovaných pro paměť, které jsou dostupné pro virtuální počítače v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
-services: virtual-machines
-documentationcenter: ''
 author: mimckitt
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
 keywords: Izolace virtuálních počítačů, izolovaný virtuální počítač, izolace, izolovaný režim
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: ab4c95e3525caa42b979b15fa8118e9dd21bb74a
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 6e2486dfeae221e7e3ddadcdcac0d9779d49542c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248290"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678660"
 ---
 # <a name="memory-optimized-virtual-machine-sizes"></a>Paměťově optimalizované velikosti virtuálních počítačů
 

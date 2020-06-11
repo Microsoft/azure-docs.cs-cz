@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: 9853a3decc8d145fee58d1da526926e224ee2030
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/10/2020
+ms.openlocfilehash: 6683dd445b4d209a6420c7490216b8e325b34c91
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064245"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669966"
 ---
 # <a name="edit-metadata-module"></a>Upravit modul metadat
 
@@ -34,7 +34,7 @@ Typické změny metadat mohou zahrnovat:
   
 + Přejmenování sloupců.
   
- Použijte úpravu metadat kdykoli potřebujete upravit definici sloupce, obvykle pro splnění požadavků na modul pro příjem dat. Například některé moduly fungují pouze s konkrétními datovými typy nebo vyžadují příznaky na sloupcích, například `IsFeature` nebo. `IsCategorical`  
+ Použijte úpravu metadat kdykoli potřebujete upravit definici sloupce, obvykle pro splnění požadavků na modul pro příjem dat. Například některé moduly fungují pouze s konkrétními datovými typy nebo vyžadují příznaky na sloupcích, například `IsFeature` nebo `IsCategorical` .  
   
  Po provedení požadované operace můžete metadata obnovit do původního stavu.
   
@@ -55,7 +55,8 @@ Typické změny metadat mohou zahrnovat:
     + Typ sloupce a hodnoty se po provedení operace Upravit metadata změní. Původní datový typ můžete kdykoli obnovit pomocí Upravit metadata a obnovit datový typ sloupce.  
 
     > [!NOTE]
-    > Pokud změníte libovolný typ čísla na typ **DateTime** , ponechte pole **formát data a času** prázdné. V současné době není možné zadat cílový formát dat.  
+        > **Formát data a času** odpovídá [vestavěnému formátu data a času Pythonu](https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior).  
+        > Pokud změníte libovolný typ čísla na typ **DateTime** , ponechte pole **formát data a času** prázdné. V současné době není možné zadat cílový formát dat.
 
 1. Vyberte možnost **kategorií** a určete tak, že hodnoty ve vybraných sloupcích by měly být považovány za kategorie.
 

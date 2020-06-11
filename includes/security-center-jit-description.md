@@ -4,20 +4,18 @@ ms.author: memildin
 manager: rkarlin
 ms.date: 02/24/2020
 ms.topic: include
-ms.openlocfilehash: 78bf29a170152666d82ec26504ee8f61ed90636a
-ms.sourcegitcommit: acc558d79d665c8d6a5f9e1689211da623ded90a
+ms.openlocfilehash: 5efa8b845952c8ab5b66b781fb534c3754239b4e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82616082"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677422"
 ---
 ## <a name="attack-scenario"></a>Scénář útoku
 
 Útoky hrubou silou běžně cílí na porty správy jako prostředky pro získání přístupu k virtuálnímu počítači. V případě úspěchu může útočník převzít kontrolu nad VIRTUÁLNÍm počítačem a vytvořit dostane do vašeho prostředí.
 
 Jedním ze způsobů, jak omezit vystavení útokem hrubou silou, je omezit dobu, po kterou je port otevřený. Porty pro správu není nutné otevírat po všech časech. Stačí je otevřít, jenom když jste připojeni k virtuálnímu počítači, například provádět úlohy správy nebo údržby. Pokud je povolený program just-in-time, Security Center používá pravidla [skupiny zabezpečení sítě](../articles/virtual-network/security-overview.md#security-rules) (NSG) a Azure firewall, která omezují přístup k portům pro správu, aby na ně nedokázali zacílit útočníci.
-
-![Scénář za běhu](../articles/security-center/media/security-center-just-in-time/just-in-time-scenario.png)
 
 ## <a name="how-does-jit-access-work"></a>Jak funguje přístup JIT?
 

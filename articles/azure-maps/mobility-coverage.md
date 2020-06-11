@@ -1,28 +1,27 @@
 ---
-title: Mobilita (tranzitní) pokrytí | Mapy Microsoft Azure
-description: V tomto článku se dozvíte o pokrytí mobility v Microsoft Azure Maps.
-author: philmea
-ms.author: philmea
-ms.date: 06/05/2019
+title: Mobilita (tranzitní) pokrytí
+description: V tomto článku se dozvíte o pokrytí veřejného přenosu ve službě mobility Microsoft Azure Maps.
+author: anastasia-ms
+ms.author: v-stharr
+ms.date: 06/10/2019
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: db53e09957b5907e9b742c264b6a41f51041df1c
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 2959a930ef2b3683cbd822eaee61a037fa0e9e29
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310236"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673638"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Pokrytí Azure Maps mobility
 
-Azure Maps nabízí [službu mobility](https://aka.ms/AzureMapsMobilityService). Služba mobility vylepšuje dobu vývoje pro aplikace s veřejným průjezdem, sdílením kol a Scooter funkcemi sdílení. Mezi funkce pro veřejné přenosy patří hledání blízkých stanic, hledání zarážek, hledání řádků přenosu, načítání informací o plánu, získávání příchodů veřejných přenosů v reálném čase, pozastavených seznamů a seznamů Průvodce směrováním. Služba vrací informace o dostupnosti v reálném čase a statické dostupnosti sdíleným vozidlům, jako jsou automobily, kolace a Scooters. Služba mobility navíc poskytuje možnosti směrování s možnostmi plánování služby Multimodal Trip. Plánování cest Multimodal zahrnuje možnosti cyklistice, jízdní – Hailing a Transit, a to vše na jednu cestu. Uživatelé mají přístup k podrobným a Multimodal podrobným cesty a výstrahám služby.
+Služba Azure Maps [mobility](https://aka.ms/AzureMapsMobilityService) vylepšuje dobu vývoje pro aplikace s funkcemi veřejného přenosu, jako je například směrování přenosu a hledání v blízkosti veřejného přenosu. Uživatelé můžou získat podrobné informace o zastavení, řádcích a plánech přenosu. Služba mobility taky umožňuje uživatelům načítat geometrií a line, výstrahy na zastávky, řádky a oblasti služeb a oznámení o doručení veřejných dat v reálném čase a upozornění služby. Služba mobility navíc poskytuje možnosti směrování s možnostmi plánování služby Multimodal Trip. Plánování cest Multimodal zahrnuje možnosti procházení, cyklistice a veřejného přenosu, a to vše na jednu cestu. Uživatelé také mohou získat přístup k podrobným Multimodal krok za krokem cesty. 
 
-Azure Maps nemá stejnou úroveň informací a přesnost pro všechna města a země nebo oblasti. Možnost volání přenosových dat závisí na městě. Data navíc nemusí zahrnovat všechny možnosti veřejného přenosu a organizace, které slouží jako město.
+Azure Maps neposkytuje stejnou úroveň informací a přesnost pro všechna města a země nebo oblasti. Možnost volat veřejné tranzitní údaje závisí na oblasti metro. Kromě toho data mapy nemusí zahrnovat všechny možnosti veřejných přenosů a organizace, které obsluhují oblast Metro.
 
 Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobility.
-
 
 | Symbol | Význam |
 |--------|---------|
@@ -35,7 +34,7 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 | Argentina       | <p>Bahía Blanca, Buenos Aires, Caleta Olivia, Chivilcoy, Comodoro Rivadavia, Córdoba, Corrientes, obecné Pico, La Rioja, březen del Plata, Mendoza, Miramar, Neuquén, Oberá, Olavarría, Paraná, Posadas, Rio tercero, Rosario, Salta, San Carlos de Bariloche, San Luis, San Pedro, Santa Fe, Tandil, Ushuaia, Victoria, Villa, María</p>|
 | Barbados       |  Barbados |
 | Brazílie         | <p>Angra dos Reis, Anápolis, Apucarana, Aracaju, Araraquara, Araxa, Araçatuba, Bage, Barretos, Bauru, Belem, Belo Horizonte, Blumenau, Boa Vista, Brazílie, Caldas Novas, Campina Grande, Campinas, Campo Belo, Campo Grande, Caraguatatuba, Cascavel, Cataguases, Caxias, Leopoldina e Região, Catalão, Caxias Sul, Chapecó, Cianorte, Conselheiro Lafaiete, Corumbá, Criciúma, Cruzeiro, Sul, Cuiabá, Curitiba, Curitibanos, Curvelo, Diamantina, Divinópolis, Dourados, Estrela, Feira, Santana, Fernando, Noronha, de Florianópolis, Fortaleza, Foz do Iguaçu, Franca, Garanhuns, Goiania, Governador Valadares, Guarapuava, Imperatriz, Ipatinga, Irati, Itabira, Itabuna, Itajaí, Ituiutaba, Jaraguá do Sul, Joao Pessoa, Joinville, Juazeiro do Norte, Juiz de Fora, Jundiaí, Lages, Londrina, Macapa, Macaé, Maceió, Mafra e Rio Negro, Manaus, Manhuacu, Maringá, Marília, Monte Carmelo, Montes Claros, Mossoró, Natal, Osorio, Ourinhos, Ouro Preto, Palmas, Paracatu, Paranaguá, Parnaíba, Passo Fundo , Passos, Patos de Minas Patrocínio, Pelotas, Piracicaba, pocos de Caldas, Ponta Grossa, Porto Alegre, Porto Ferreira, Porto Seguro, Porto Velho, Praia Grande, Recife, Ribeirão Preto, Rio, Branco, Rondonópolis, Salinas, Salvador, Santa Cruz do Sul, Santa Marie, Rita, Sapucaí e Santarem, Svatý Jose do Rio Preto, Svatý Mateus, Svatý Paulo, Sorocaba, Svatý Carlos, Svatý Francisco do Sul, Svatý v systému DOS Campos, svatého Lourenço, svatého Luís, Taubaté, Telemaco Borba, Teofilo Otoni, Teresina, Toledo, Três Lagoas, Tucurui, Ubatuba, Uberaba, Uberlândia, Ubá, Uruguaiana, Varginha, Vicosa, Videira & Fraiburgo, Vitória, Vitória, Conquista, Volta Redonda, Votuporanga </p>|
-| Canada | Banff (AB), Brandon (MB), Calgary (AB), Comox sedl (BC), Cowichan sedl (BC), Edmonton (AB), Fort St. Jan, Fredericton (NB), větší Sudbury (ON), větší Vancouver (BC), Halifax (NS), Kamloops (BC), Kelowna (BC), Kingston (ON), Londýn (ON), Moncton (NB), Montrealský (QC), Nanaimo (BC), Ottawa (ON), Prince Jiří (BC), Québec City (QC), Deer (QC), Regina (SK), Rimouski (QC), Saskatoon (SK), Sherbrooke (QC), Squamish (QC) , Svatý Jan (NL), slunečno pobřeží, Thunder pozice (ZAPNUTo), Toronto (ON), Victoria (BC), Whistler (BC), Windsor (ON), Winnipeg (MB), Woodstock</p>|
+| Kanada | Banff (AB), Brandon (MB), Calgary (AB), Comox sedl (BC), Cowichan sedl (BC), Edmonton (AB), Fort St. Jan, Fredericton (NB), větší Sudbury (ON), větší Vancouver (BC), Halifax (NS), Kamloops (BC), Kelowna (BC), Kingston (ON), Londýn (ON), Moncton (NB), Montrealský (QC), Nanaimo (BC), Ottawa (ON), Prince Jiří (BC), Québec City (QC), Deer (QC), Regina (SK), Rimouski (QC), Saskatoon (SK), Sherbrooke (QC), Squamish (QC) , Svatý Jan (NL), slunečno pobřeží, Thunder pozice (ZAPNUTo), Toronto (ON), Victoria (BC), Whistler (BC), Windsor (ON), Winnipeg (MB), Woodstock</p>|
 | Chile  | <p>Antofagasta, Arica, Aysén, Chillán, Concepción, Constitución, Copiapó, Curicó, Iquique, La Serena y Coquimbo, Linares, Los Angeles (Chile), Los Lagos, Punta Arenas, Rancagua, Santiago de Chile, Talca, Temuco, Valdivia, Valparaíso, Viña del březen</p>|
 | Kolumbie | <p>Barranquilla, Bogotá, Bucaramanga, Cali, Kartagenské, Ibagué, Medellín, Pasto, Popayán, Santa Marta, Sincelejo, Valledupar</p>|  
 | Kostarika | Síť San|
@@ -54,13 +53,13 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 
 | Země |  Město (pole metro) |
 |--------|---------|
-| Australia      | <p>Adelaide, Alice pružiny, Bowen, Brisbane, Bundaberg QLD, hořák, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, mackayovou, magnetické ostrovy, Maryborough-Hervey pozice, Melbourne, New Jižní Wales, Perth, RockHampton, jižní východ Queenslandu, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
+| Austrálie      | <p>Adelaide, Alice pružiny, Bowen, Brisbane, Bundaberg QLD, hořák, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, mackayovou, magnetické ostrovy, Maryborough-Hervey pozice, Melbourne, New Jižní Wales, Perth, RockHampton, jižní východ Queenslandu, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | Čína | <p> Changchun, Changsha, Chengdu, Čchung-čching, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanking, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, yixing, Zhuhai, Shanghai, Peking, Guangzhou, Shenzhen, Zhengzhou</P>| 
 | Hongkong – zvláštní administrativní oblast | Hongkong – zvláštní správní oblast *|
 | Macao – zvláštní administrativní oblast | Macao – zvláštní administrativní oblast *|
-| India | Ahmedabad, Bengaluru, Dillí, Bombaj, Mysuru, Pune|
+| Indie | Ahmedabad, Bengaluru, Dillí, Bombaj, Mysuru, Pune|
 | Indonésie | Bandung, Banyuwangi, Batam, Denpasar, Jakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
-| Japan | Shizuoka Prefektura, Tokio, Wakkanai, Yamanashi Prefektura |
+| Japonsko | Shizuoka Prefektura, Tokio, Wakkanai, Yamanashi Prefektura |
 | Malajsie | Ipoh, Johar Bahru, Kuala Lumpur, Penang |
 | Nový Zéland | Auckland, Christchurch, Dunedin, Queenstown, Timaru, Wellington|
 | Filipíny | Manila |
@@ -71,7 +70,7 @@ Následující tabulka poskytuje informace o pokrytí služby Azure Maps mobilit
 | Vietnam | Hanoj, do chí Minovo City | 
 
 
-## <a name="europe"></a>Europe
+## <a name="europe"></a>Evropa
 
 | Země |  Město (pole metro) |
 |----------------|---------|

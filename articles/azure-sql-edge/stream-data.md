@@ -1,6 +1,6 @@
 ---
 title: Streamování dat ve službě Azure SQL Edge (Preview)
-description: Další informace o streamování dat ve službě Azure SQL Edge (Preview)
+description: Přečtěte si o streamování dat ve službě Azure SQL Edge (Preview).
 keywords: ''
 services: sql-edge
 ms.service: sql-edge
@@ -9,62 +9,62 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
-ms.openlocfilehash: ea1bb05e111432a45fffa3b770e01c6da9a076b6
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 866c74fbdfcfcef7cbb7d6cddb360c4265a2f776
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84233130"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669609"
 ---
 # <a name="data-streaming-in-azure-sql-edge-preview"></a>Streamování dat ve službě Azure SQL Edge (Preview)
 
-Azure SQL Edge (Preview) poskytuje dvě různé možnosti implementace streamování dat. 
+Azure SQL Edge (Preview) poskytuje následující možnosti pro implementaci streamování dat: 
 
-1. Nasazuje se úlohy Edge Azure Stream Analytics vytvořené v Azure. Další informace o tom, jak nasadit úlohy Edge Azure Stream Analytics v Azure SQL Edge, najdete v tématu [nasazení Azure Stream Analytics úloh](deploy-dacpac.md).
-2. Pomocí nové funkce pro **streamování T-SQL** můžete vytvářet úlohy streamování v SQL Edge, aniž byste museli konfigurovat úlohy streamování v Azure. 
+- Nasazují se úlohy Azure Stream Analytics Edge vytvořené v Azure. Další informace najdete v tématu [nasazení úloh Azure Stream Analytics](deploy-dacpac.md).
+- Používání služby T-SQL streaming k vytváření úloh streamování v Azure SQL Edge bez nutnosti konfigurovat úlohy streamování v Azure. 
 
-I když je možné použít obě možnosti k implementaci streamování dat v SQL Edge, důrazně doporučujeme použít jenom jeden. Při použití obou možností může dojít ke konfliktům časování, které mají vliv na fungování operací streamování dat.
+I když je možné použít obě možnosti k implementaci streamování dat ve službě Azure SQL Edge, měli byste použít jenom jeden z nich. Pokud používáte obojí, může dojít ke konfliktům časování, které mají vliv na fungování operací streamování dat.
 
-Zbytek tohoto dokumentu odkazuje na novou funkci **streamování T-SQL**, která poskytuje streamování dat, analýzu a zpracování událostí v reálném čase pro analýzu a zpracování vysokého objemu rychlých streamování dat z více zdrojů současně. Služba *T-SQL streaming* je sestavená pomocí stejného stroje streamování s vysokým výkonem, který je [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction) v Microsoft Azure a podporuje podobnou sadu funkcí nabízených Azure Stream Analytics běžícími na hraničních zařízeních.
+Tento článek se zaměřuje na streamování T-SQL. Poskytuje streamování dat, analýzu a zpracování událostí v reálném čase k analýze a zpracování vysokého objemu rychlých streamování dat z více zdrojů současně. Streamování T-SQL se sestavuje pomocí stejného vysoce výkonného streamu, který způsobil [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction) v Microsoft Azure. Tato funkce podporuje podobnou sadu funkcí, které nabízí Azure Stream Analytics běžící na hraničních zařízeních.
 
-Stejně jako u Azure Stream Analytics umožňuje streamování T-SQL rozpoznávání vzorů a vztahů v informacích extrahovaných z řady vstupních zdrojů IoT včetně zařízení, senzorů a aplikací. Pomocí těchto vzorů můžete aktivovat akce a iniciovat pracovní postupy, jako je vytváření výstrah, zakládání informací do řešení pro generování sestav nebo vizualizace nebo ukládání dat pro pozdější použití. 
+Stejně jako u Stream Analytics se streamování T-SQL rozpoznává vzory a vztahy v informacích extrahovaných z řady vstupních zdrojů IoT, včetně zařízení, senzorů a aplikací. Pomocí těchto vzorů můžete aktivovat akce a iniciovat pracovní postupy. Můžete například vytvořit upozornění, informace o informačním kanálu do řešení pro vytváření sestav nebo vizualizace nebo ukládat data pro pozdější použití. 
 
-Následující scénáře jsou příklady, kdy můžete použít streamování T-SQL:
+Streamování T-SQL vám může pomáhat:
 
 * Analyzujte streamy telemetrie v reálném čase ze zařízení IoT.
-* Analýza dat v reálném čase generovaných z autonomních a neřidičních vozidel.
-* Vzdálené monitorování a prediktivní údržba prostředků v průmyslu a výrobě s vysokými hodnotami.
-* Detekce anomálií nebo rozpoznávání vzorků pro čtení snímačů IoT v rámci zemědělské nebo energetické farmy.
+* Využijte analýzy dat vytvářených z autonomního a neřidičních vozidel v reálném čase.
+* Využijte vzdálené monitorování a prediktivní údržbu prostředků průmyslových nebo výrobních prostředků s vysokými hodnotami.
+* Využijte detekci anomálií a rozpoznávání vzorků pro čtení ze senzorů IoT v zemědělské nebo energetické farmě.
 
 ## <a name="how-does-t-sql-streaming-work"></a>Jak funguje streamování T-SQL?
 
-Streamování T-SQL funguje stejným způsobem jako [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction#how-does-stream-analytics-work), například používá koncept úloh streamování pro zpracování streamování dat v reálném čase. 
+Streamování T-SQL funguje stejným způsobem jako [Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-introduction#how-does-stream-analytics-work). Například používá koncept *úloh* streamování pro zpracování streamování dat v reálném čase. 
 
 Úloha Stream Analytics se skládá z těchto:
 
-- Vstup z datového proudu – vstupní datový proud definuje připojení ke zdroji dat, ze kterého se čte datový proud. Azure SQL Edge aktuálně podporuje následující typy vstupů datového proudu:
+- **Vstup z datového proudu**: Tato definice definuje připojení ke zdroji dat, ze kterého se má datový proud číst. Azure SQL Edge aktuálně podporuje následující typy vstupů datového proudu:
     - Hraniční centrum
-    - Kafka – podpora pro vstupy Kafka je v tuto chvíli dostupná jenom pro verze Intel/AMD64 Azure SQL Edge.
+    - Kafka (podpora pro vstupy Kafka je v tuto chvíli dostupná jenom pro verze Intel/AMD64 Azure SQL Edge.)
 
-- Výstup streamu – výstup datového proudu definuje připojení ke zdroji dat, do kterého se má datový proud zapsat. Azure SQL Edge aktuálně podporuje následující typy výstupu streamu.
+- **Výstup datového proudu**: definuje připojení ke zdroji dat, do kterého se má datový proud zapsat. Azure SQL Edge aktuálně podporuje následující typy výstupu streamu.
     - Hraniční centrum
-    - SQL – výstup SQL může být místní databáze v rámci instance SQL Edge nebo vzdálené SQL Server nebo Azure SQL Database. 
+    - SQL (výstup SQL může být místní databáze v rámci instance Azure SQL Edge nebo vzdálené SQL Server nebo Azure SQL Database.) 
     - Azure Blob Storage
 
-- Dotaz na datový proud – dotaz datového proudu definuje transformaci, agregace, filtr, řazení a spojení, které musí být aplikovány na vstupní datový proud před zapsáním do výstupu datového proudu. Dotaz na datový proud je založen na stejném dotazovacím jazyku, který používá Azure Stream Analytics. Další informace o Azure Stream Analytics dotazovacího jazyka najdete v tématu [Stream Analytics dotazovací jazyk](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
+- **Dotaz na datový proud**: definuje transformaci, agregace, filtrování, řazení a spojení, které mají být aplikovány na vstupní datový proud, před zápisem do výstupu datového proudu. Dotaz na datový proud vychází ze stejného dotazovacího jazyka, který používá Stream Analytics. Další informace najdete v tématu [Stream Analytics dotazovacího jazyka](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
 
 > [!IMPORTANT]
-> Streamování T-SQL, na rozdíl od Azure Stream Analytics, v současné době nepodporuje [použití referenčních dat pro vyhledávání](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data) a [používání úlohy služby Uda v systému souborů UDF a v datovém proudu](https://docs.microsoft.com/azure/stream-analytics/streaming-technologies#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c).
+> Streamování T-SQL, na rozdíl od Stream Analytics, v současné době nepodporuje [použití referenčních dat pro vyhledávání](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-use-reference-data) nebo [použití systému souborů UDF a Uda v úloze streamu](https://docs.microsoft.com/azure/stream-analytics/streaming-technologies#you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c).
 
 > [!NOTE]
-> Služba T-SQL streaming podporuje pouze podmnožinu oblasti jazykového povrchu, kterou podporuje Azure Stream Analytics. Další informace o Azure Stream Analytics dotazovacího jazyka najdete v tématu [Stream Analytics dotazovacího jazyka](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
+> Služba T-SQL streaming podporuje pouze podmnožinu oblasti jazykového povrchu, kterou podporuje Stream Analytics. Další informace najdete v tématu [Stream Analytics dotazovacího jazyka](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference?).
 
 ## <a name="limitations-and-restrictions"></a>Omezení a omezení
 
 Následující omezení a omezení platí pro streamování T-SQL. 
 
-- V jednom okamžiku může být aktivní jenom jedna úloha streamování. Úlohy, které jsou již spuštěny, je nutné před spuštěním další úlohy zastavit.
-- Každé spuštění úlohy streamování je jedno vlákno. Pokud úloha streamování obsahuje více dotazů, bude každý dotaz vyhodnocen v sériovém pořadí.
+- V určitém čase může být aktivní pouze jedna úloha streamování. Úlohy, které jsou již spuštěny, je nutné před spuštěním další úlohy zastavit.
+- Každé spuštění úlohy streamování je jediné vlákno. Pokud úloha streamování obsahuje víc dotazů, vyhodnotí se každý dotaz v sériovém pořadí.
 
 ## <a name="next-steps"></a>Další kroky
 

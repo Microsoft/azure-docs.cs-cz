@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/29/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3a14ffc9f103e58681418eacbb35b72b704f2d61
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 8b065a79abe4a4f5c23e28be111b09e51e5e6484
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267133"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667042"
 ---
 # <a name="use-microsoft-teams-on-windows-virtual-desktop"></a>Použití Microsoft Teams na virtuálním počítači s Windows
 
@@ -32,7 +32,7 @@ Díky optimalizaci médií pro Microsoft Teams klient pro stolní počítače s 
 Než budete moct používat Microsoft Teams na virtuálním počítači s Windows, musíte provést tyto akce:
 
 - [Připravte síť](/microsoftteams/prepare-network/) pro Microsoft Teams.
-- Nainstalujte [desktopový klient Windows](connect-windows-7-and-10.md) na zařízení s Windows 10, které splňuje hardwarové požadavky Microsoft Teams [pro týmy na počítači s Windows](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
+- Nainstalujte [klienta pro stolní počítače Windows](connect-windows-7-and-10.md) na zařízení s Windows 10 nebo Windows 10 IoT Enterprise, které splňuje hardwarové požadavky Microsoft Teams [pro týmy na počítači s Windows](/microsoftteams/hardware-requirements-for-the-teams-app#hardware-requirements-for-teams-on-a-windows-pc/).
 - Připojte se k virtuálnímu počítači s Windows 10 nebo Windows 10 Enterprise (VM).
 - Nainstalujte desktopovou aplikaci Teams Desktop na hostitele pomocí instalace vázaná na počítač. Optimalizace médií pro Microsoft Teams vyžaduje týmy aplikace pro stolní počítače verze 1.3.00.4461 nebo novější.
 
@@ -53,7 +53,7 @@ Pokud chcete povolit týmy pro instalaci na počítač, nastavte na hostiteli n�
 
 ### <a name="install-the-teams-websocket-service"></a>Instalace služby WebSocket pro týmy
 
-Nainstalujte do image virtuálního počítače [službu WebSocket](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4vkL6) . Pokud dojde k chybě instalace, nainstalujte [nejnovější Microsoft Visual C++ Distribuovatelný](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) a zkuste to znovu.
+Nainstalujte do image virtuálního počítače [službu WebSocket](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4yj0i) . Pokud dojde k chybě instalace, nainstalujte [nejnovější Microsoft Visual C++ Distribuovatelný](https://support.microsoft.com/help/2977003/the-latest-supported-visual-c-downloads) a zkuste to znovu.
 
 ### <a name="install-microsoft-teams"></a>Instalace Microsoft Teams
 
@@ -131,9 +131,9 @@ Poskytněte zpětnou vazbu pro Microsoft Teams na virtuální ploše Windows na 
 
 ## <a name="collect-teams-logs"></a>Shromažďovat protokoly týmů
 
-Pokud narazíte na problémy s desktopovou aplikací Teams v prostředí virtuálních počítačů s Windows, shromážděte na virtuálním počítači hostitele protokoly klienta v části **%AppData%\Microsoft\Teams\logs.txt** .
+Pokud narazíte na problémy s desktopovou aplikací Teams v prostředí virtuálních počítačů s Windows, shromážděte na virtuálním počítači hostitele protokoly klienta ve službě **% data% \Microsoft\Teams\logs.txt** .
 
-Pokud narazíte na problémy s voláními a schůzkami, Shromážděte protokoly webového klienta v týmu pomocí kombinace kláves **CTRL**  +  **+**  +  **SHIFT**  +  **1**. Protokoly se zapisují do **protokolu%USERPROFILE%\Downloads\MSTeams diagnostics DATE_TIME. txt** na HOSTITELSKÉm virtuálním počítači.
+Pokud narazíte na problémy s voláními a schůzkami, Shromážděte protokoly webového klienta v týmu pomocí kombinace kláves **CTRL**  +  **+**  +  **SHIFT**  +  **1**. Protokoly se zapisují do **protokolu%USERPROFILE%\Downloads\MSTeams diagnostics DATE_TIME.txt** na HOSTITELSKÉm virtuálním počítači.
 
 ## <a name="contact-microsoft-teams-support"></a>Kontaktujte podporu Microsoft Teams
 

@@ -1,19 +1,20 @@
 ---
-title: Ddv4 a Ddsv4-Series – Azure Virtual Machines
+title: Řada Ddv4 a Ddsv4
 description: Specifikace pro virtuální počítače s dv4, Ddv4, Dsv4 a Ddsv4-Series.
 author: brbell
 ms.author: brbell
-ms.reviewer: cynthn
+ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 7a5951d15806cd2969d61c52ef929472da023386
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 5f241847ee25d3e964d101bd43a8384f764b4f36
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488715"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672778"
 ---
 # <a name="ddv4-and-ddsv4-series"></a>Řada Ddv4 a Ddsv4
 
@@ -37,7 +38,7 @@ Migrace za provozu: podporováno
 
 Aktualizace pro zachování paměti: podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|
 | Standard_D2d_v4 | 2 | 8 | 75 | 4 | 19000/120 | 2/1000 |
 | Standard_D4d_v4 | 4 | 16 | 150 | 8 | 38500/242 | 2/2000 |

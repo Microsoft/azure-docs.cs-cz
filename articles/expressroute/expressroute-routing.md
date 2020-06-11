@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: cherylmc
-ms.openlocfilehash: 3eafb8aff5525f668e6fe0bddb261b1117b5e38b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8c86e88f481c6ad27f551a87afae7547c32a331
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273043"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676247"
 ---
 # <a name="expressroute-routing-requirements"></a>Požadavky na směrování služby ExpressRoute
 Pokud se chcete připojit ke cloudovým službám Microsoftu pomocí služby ExpressRoute, budete muset nastavit a spravovat směrování. Někteří poskytovatelé připojení nabízejí nastavení a správu směrování jako spravovanou službu. Zeptejte se svého poskytovatele připojení, jestli tuto službu nabízí. Pokud ne, je nutné splnit následující požadavky:
@@ -220,17 +220,18 @@ Kromě výše uvedeného bude Microsoft také označovat předpony podle služby
 
 | **Služba** | **Hodnota komunity protokolu BGP** |
 | --- | --- |
-| Exchange Online * * | 12076:5010 |
-| SharePoint Online * * | 12076:5020 |
-| Online Skype pro firmy * * | 12076:5030 |
-| CRM Online * * * |12076:5040 |
-| Globální služby Azure * | 12076:5050 |
+| Exchange Online\*\* | 12076:5010 |
+| SharePoint Online\*\* | 12076:5020 |
+| Online Skype pro firmy\*\*/\*\*\* | 12076:5030 |
+| CRM Online\*\*\*\* |12076:5040 |
+| Globální služby Azure\* | 12076:5050 |
 | Azure Active Directory |12076:5060 |
 | Další online služby Office 365 * * | 12076:5100 |
 
-* Globální služby Azure v tuto chvíli obsahují jenom Azure DevOps. \
-* * Autorizace od Microsoftu je povinná, přečtěte si téma [Konfigurace filtrů tras pro partnerský vztah Microsoftu](how-to-routefilter-portal.md) .\
-CRM Online podporuje Dynamics v 8.2 a nižší. V případě vyšších verzí vyberte oblastní komunitu pro nasazení Dynamics.
+\*Služba Azure Global Services v tuto chvíli obsahuje jenom Azure DevOps. \
+\*\*Autorizace požadovaná od Microsoftu, viz [Konfigurace filtrů tras pro partnerský vztah Microsoftu](how-to-routefilter-portal.md)\
+\*\*\*Tato komunita také zveřejňuje potřebné trasy pro Microsoft Team Services. \
+\*\*\*\*CRM Online podporuje Dynamics v 8.2 a nižší. V případě vyšších verzí vyberte oblastní komunitu pro nasazení Dynamics.
 
 > [!NOTE]
 > Microsoft nectí žádné hodnoty komunity protokolu BGP, které jste přiřadili trasám inzerovaným Microsoftu.
@@ -241,7 +242,7 @@ CRM Online podporuje Dynamics v 8.2 a nižší. V případě vyšších verzí v
 
 | **Oblast Azure národních cloudů**| **Hodnota komunity protokolu BGP** |
 | --- | --- |
-| **US Government** |  |
+| **Státní správa USA** |  |
 | USA (Gov) – Arizona | 12076:51106 |
 | US Gov – Iowa | 12076:51109 |
 | USA (Gov) – Virginia | 12076:51105 |
@@ -252,7 +253,7 @@ CRM Online podporuje Dynamics v 8.2 a nižší. V případě vyšších verzí v
 
 | **Služba v národních cloudech** | **Hodnota komunity protokolu BGP** |
 | --- | --- |
-| **US Government** |  |
+| **Státní správa USA** |  |
 | Exchange Online |12076:5110 |
 | SharePoint Online |12076:5120 |
 | Online Skype pro firmy |12076:5130 |

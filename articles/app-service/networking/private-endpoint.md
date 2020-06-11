@@ -9,12 +9,12 @@ ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 15b3f2e48b78036c02ef86446f2ab920f22f7c76
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 92fdb48f11d4d8753706d61fab9fd32e2b06f488
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295435"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668181"
 ---
 # <a name="using-private-endpoints-for-azure-web-app-preview"></a>Používání privátních koncových bodů pro webovou aplikaci Azure (Preview)
 
@@ -45,7 +45,7 @@ Podsíť, ve které zapojujete soukromý koncový bod, může mít v sobě jiné
 Privátní koncový bod můžete nasadit i v jiné oblasti, než je webová aplikace. 
 
 > [!Note]
->Funkce integrace virtuální sítě nemůže používat stejnou podsíť než soukromý koncový bod. Jedná se o omezení funkce integrace virtuální sítě.
+>Funkce integrace virtuální sítě nemůže používat stejnou podsíť jako privátní koncový bod. Jedná se o omezení funkce integrace virtuální sítě.
 
 Z hlediska zabezpečení:
 

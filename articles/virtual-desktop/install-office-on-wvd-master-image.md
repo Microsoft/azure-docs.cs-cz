@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/02/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: d53c21af77204a5e83687d3ce893f3f6f45101f2
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 2c62fdb41cdd19e34062124564ace9645df1dde6
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84628993"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672693"
 ---
 # <a name="install-office-on-a-master-vhd-image"></a>Instalace sady Office do hlavní image virtuálního pevného disku
 
@@ -55,13 +55,13 @@ Tady je postup, jak tento ukázkový konfigurační soubor XML neprovede:
 >[!NOTE]
 >Aktivace sdíleného počítače se dá nastavit prostřednictvím objektů Zásady skupiny (GPO) nebo nastavení registru. Objekt zásad skupiny se nachází v **zásadách konfigurace počítačů \\ \\ šablony pro správu \\ \\ Nastavení licencování systém Microsoft Office 2016 (počítač)** .
 
-Nástroj pro nasazení Office obsahuje Setup. exe. Pokud chcete nainstalovat Office, spusťte na příkazovém řádku následující příkaz:
+Nástroj pro nasazení Office obsahuje setup.exe. Pokud chcete nainstalovat Office, spusťte na příkazovém řádku následující příkaz:
 
 ```batch
 Setup.exe /configure configuration.xml
 ```
 
-#### <a name="sample-configurationxml"></a>Ukázka Configuration. XML
+#### <a name="sample-configurationxml"></a>Ukázka configuration.xml
 
 V následující ukázce XML se nainstaluje měsíční verze podnikového kanálu.
 
@@ -118,7 +118,7 @@ Tady je postup, jak nainstalovat OneDrive v režimu podle počítače:
 
 1. Nejdřív vytvořte umístění pro přípravu instalačního programu OneDrivu. Umístění složky místního disku nebo \\ \\ umístění [UNC] (File://UNC) je v pořádku.
 
-2. Stáhněte si OneDriveSetup. exe do připraveného umístění pomocí tohoto odkazu:<https://aka.ms/OneDriveWVD-Installer>
+2. Pomocí tohoto odkazu Stáhněte OneDriveSetup.exe do připraveného umístění:<https://aka.ms/OneDriveWVD-Installer>
 
 3. Pokud jste nainstalovali Office s OneDrivem vynecháte **\<ExcludeApp ID="OneDrive" /\>** , odinstalujte všechny stávající instalace OneDrivu na příkazovém řádku se zvýšenými oprávněními spuštěním tohoto příkazu:
     
@@ -156,9 +156,11 @@ Tady je postup, jak nainstalovat OneDrive v režimu podle počítače:
     REG ADD "HKLM\SOFTWARE\Policies\Microsoft\OneDrive" /v "KFMSilentOptIn" /t REG_SZ /d "<your-AzureAdTenantId>" /f
     ```
 
-## <a name="teams-and-skype"></a>Týmy a Skype
+## <a name="microsoft-teams-and-skype-for-business"></a>Microsoft teams a Skype pro firmy
 
-Virtuální počítač s Windows nepodporuje Skype pro firmy a týmy.
+Virtuální počítač s Windows nepodporuje Skype pro firmy.
+
+Nápovědu k instalaci Microsoft Teams najdete v tématu [použití Microsoft Teams na virtuálním počítači s Windows](teams-on-wvd.md).
 
 ## <a name="next-steps"></a>Další kroky
 

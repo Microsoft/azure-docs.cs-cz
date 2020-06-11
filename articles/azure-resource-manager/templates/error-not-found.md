@@ -1,29 +1,29 @@
 ---
 title: Chyby nenalezených prostředků
-description: Popisuje, jak vyřešit chyby, pokud se prostředek nenajde při nasazení pomocí šablony Azure Resource Manager.
+description: Popisuje, jak vyřešit chyby při nalezení prostředku. K této chybě může dojít při nasazování šablony Azure Resource Manager nebo při přijetí akcí správy.
 ms.topic: troubleshooting
-ms.date: 06/01/2020
-ms.openlocfilehash: 5d827f68ec97cfa77fb69a34284bd572286641a4
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.date: 06/10/2020
+ms.openlocfilehash: 224af4ce0fe5053201f25d8207f4ca8cdc73e638
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259350"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667943"
 ---
-# <a name="resolve-not-found-errors-for-azure-resources"></a>Vyřešit chyby nenalezení pro prostředky Azure
+# <a name="resolve-resource-not-found-errors"></a>Chyby při řešení nenalezených prostředků
 
-Tento článek popisuje chyby, se kterými se můžete setkat, když se prostředek během nasazení nenajde.
+Tento článek popisuje chybu, která se zobrazí, když se prostředek během operace nenajde. Tato chyba se obvykle zobrazí při nasazování prostředků. Tato chyba se zobrazí také při provádění úloh správy a Azure Resource Manager nemůže najít požadovaný prostředek. Pokud se například pokusíte přidat značky k prostředku, který neexistuje, zobrazí se tato chyba.
 
 ## <a name="symptom"></a>Příznak
 
-Pokud šablona obsahuje název prostředku, který nelze vyřešit, zobrazí se chybová zpráva podobná této:
+Existují dva chybové kódy, které naznačují, že prostředek nebyl nalezen. Chyba **NotFound** vrátí výsledek podobný tomuto:
 
 ```
 Code=NotFound;
 Message=Cannot find ServerFarm with name exampleplan.
 ```
 
-Použijete-li funkci [reference](template-functions-resource.md#reference) nebo [klíče listkey](template-functions-resource.md#listkeys) s prostředkem, který nelze vyřešit, dojde k následující chybě:
+Chyba **ResourceNotFound** vrátí výsledek podobný tomuto:
 
 ```
 Code=ResourceNotFound;
@@ -33,11 +33,23 @@ group {resource group name} was not found.
 
 ## <a name="cause"></a>Příčina
 
-Správce prostředků potřebuje načíst vlastnosti pro prostředek, ale nedokáže identifikovat prostředek v předplatném.
+Správce prostředků potřebuje načíst vlastnosti pro prostředek, ale nenašel prostředek ve vašich předplatných.
 
-## <a name="solution-1---set-dependencies"></a>Řešení 1 – Nastavení závislostí
+## <a name="solution-1---check-resource-properties"></a>Řešení 1 – Projděte si vlastnosti prostředku
 
-Pokud se pokoušíte nasadit chybějící prostředek v šabloně, ověřte, zda potřebujete přidat závislost. Správce prostředků optimalizuje nasazení díky paralelnímu vytváření prostředků, pokud je to možné. Pokud musí být jeden prostředek nasazen po jiném prostředku, je nutné ve vaší šabloně použít element **dependsOn** . Například při nasazení webové aplikace musí existovat plán App Service. Pokud jste neurčili, že webová aplikace závisí na plánu App Service, Správce prostředků vytvoří oba prostředky současně. Zobrazí se chyba oznamující, že se prostředek App Serviceho plánu nepovedlo najít, protože ještě neexistuje při pokusu o nastavení vlastnosti ve webové aplikaci. Této chybě zabráníte nastavením závislosti ve webové aplikaci.
+Pokud se zobrazí tato chyba při provádění úlohy správy, ověřte hodnoty, které zadáte pro daný prostředek. Tyto tři hodnoty mají být zkontrolovány:
+
+* Název prostředku
+* Název skupiny prostředků
+* Předplatné
+
+Pokud používáte prostředí PowerShell nebo rozhraní příkazového řádku Azure CLI, ověřte, zda je spuštěn příkaz v předplatném, které prostředek obsahuje. Předplatné můžete změnit pomocí [set-AzContext](/powershell/module/Az.Accounts/Set-AzContext) nebo [AZ Account set](/cli/azure/account#az-account-set). Mnoho příkazů také poskytuje parametr předplatného, který umožňuje zadat jiné předplatné, než je aktuální kontext.
+
+Pokud máte potíže s ověřováním vlastností, přihlaste se k [portálu](https://portal.azure.com). Vyhledejte prostředek, který se pokoušíte použít, a Projděte si název prostředku, skupinu prostředků a předplatné.
+
+## <a name="solution-2---set-dependencies"></a>Řešení 2 – Nastavení závislostí
+
+Pokud se tato chyba zobrazí při nasazování šablony, možná budete muset přidat závislost. Správce prostředků optimalizuje nasazení díky paralelnímu vytváření prostředků, pokud je to možné. Pokud musí být jeden prostředek nasazen po jiném prostředku, je nutné ve vaší šabloně použít element **dependsOn** . Například při nasazení webové aplikace musí existovat plán App Service. Pokud jste neurčili, že webová aplikace závisí na plánu App Service, Správce prostředků vytvoří oba prostředky současně. Zobrazí se chyba oznamující, že se prostředek App Serviceho plánu nepovedlo najít, protože ještě neexistuje při pokusu o nastavení vlastnosti ve webové aplikaci. Této chybě zabráníte nastavením závislosti ve webové aplikaci.
 
 ```json
 {
@@ -70,23 +82,19 @@ Když vidíte problémy se závislostmi, potřebujete získat přehled o pořad�
 
    ![sekvenční nasazení](./media/error-not-found/deployment-events-sequence.png)
 
-## <a name="solution-2---get-resource-from-different-resource-group"></a>Řešení 2 – získání prostředku z jiné skupiny prostředků
+## <a name="solution-3---get-external-resource"></a>Řešení 3 – získání externího prostředku
 
-Pokud prostředek existuje v jiné skupině prostředků než ta, která je nasazena do, použijte [funkci ResourceID](template-functions-resource.md#resourceid) k získání plně kvalifikovaného názvu prostředku.
+Když nasazujete šablonu a potřebujete získat prostředek, který existuje v jiném předplatném nebo skupině prostředků, použijte [funkci ResourceID](template-functions-resource.md#resourceid). Tato funkce vrátí pro získání plně kvalifikovaného názvu prostředku.
+
+Parametry předplatného a skupiny prostředků ve funkci resourceId jsou volitelné. Pokud je nezadáte, budou ve výchozím nastavení pro aktuální předplatné a skupinu prostředků. Když pracujete s prostředkem v jiné skupině prostředků nebo předplatným, ujistěte se, že jste tyto hodnoty zadali.
+
+Následující příklad získá ID prostředku pro prostředek, který existuje v jiné skupině prostředků.
 
 ```json
 "properties": {
   "name": "[parameters('siteName')]",
   "serverFarmId": "[resourceId('plangroup', 'Microsoft.Web/serverfarms', parameters('hostingPlanName'))]"
 }
-```
-
-## <a name="solution-3---check-reference-function"></a>Řešení 3 – Podívejte se na odkazovou funkci
-
-Vyhledejte výraz, který obsahuje [odkazovou](template-functions-resource.md#reference) funkci. Hodnoty, které zadáte, se liší v závislosti na tom, jestli je prostředek ve stejné šabloně, skupině prostředků a předplatném. Dvakrát ověřte, že ve svém scénáři máte požadované hodnoty parametrů. Pokud se prostředek nachází v jiné skupině prostředků, zadejte úplné ID prostředku. Pokud například chcete odkazovat na účet úložiště v jiné skupině prostředků, použijte:
-
-```json
-"[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```
 
 ## <a name="solution-4---get-managed-identity-from-resource"></a>Řešení 4 – získání spravované identity z prostředku
@@ -116,4 +124,12 @@ Nebo pokud chcete získat ID tenanta pro spravovanou identitu, která se aplikuj
 
 ```json
 "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), 2019-12-01, 'Full').Identity.tenantId]"
+```
+
+## <a name="solution-5---check-functions"></a>Řešení 5 – kontroly funkcí
+
+Při nasazování šablony hledejte výrazy, které používají funkce [reference](template-functions-resource.md#reference) nebo [klíče listkey](template-functions-resource.md#listkeys) . Hodnoty, které zadáte, se liší v závislosti na tom, jestli je prostředek ve stejné šabloně, skupině prostředků a předplatném. Ověřte, že jste pro svůj scénář poskytovali požadované hodnoty parametrů. Pokud se prostředek nachází v jiné skupině prostředků, zadejte úplné ID prostředku. Pokud například chcete odkazovat na účet úložiště v jiné skupině prostředků, použijte:
+
+```json
+"[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
 ```

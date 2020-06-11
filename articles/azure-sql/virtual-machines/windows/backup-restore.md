@@ -4,7 +4,6 @@ description: Popisuje požadavky na zálohování a obnovení pro SQL Server dat
 services: virtual-machines-windows
 documentationcenter: na
 author: MikeRayMSFT
-manager: craigg
 editor: ''
 tags: azure-resource-management
 ms.assetid: 95a89072-0edf-49b5-88ed-584891c0e066
@@ -14,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/04/2018
 ms.author: mikeray
-ms.openlocfilehash: 390154e50f705e07370f5ad3ad32fe73068e2cd4
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 1a19bf26418d6a61d3aa2421957614abe6dd04e8
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84220832"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669189"
 ---
 # <a name="backup-and-restore-for-sql-server-on-azure-vms"></a>Zálohování a obnovení pro SQL Server na virtuálních počítačích Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -130,23 +129,23 @@ Následující tabulka shrnuje možnosti jednotlivých možností zálohování 
 
 || **Automatizované zálohování** | **Azure Backup pro SQL** | **Ruční zálohování** |
 |---|---|---|---|
-| Vyžaduje další službu Azure. |   | ![Ano](./media/backup-restore/yes.png) |   |
-| Konfigurace zásad zálohování v Azure Portal | ![Ano](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) |   |
-| Obnovení databází v Azure Portal |   | ![Ano](./media/backup-restore/yes.png) |   |
-| Správa více serverů v jednom řídicím panelu |   | ![Ano](./media/backup-restore/yes.png) |   |
-| Obnovení k určitému bodu v čase | ![Ano](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) |
-| 15 minut cíl bodu obnovení (RPO) | ![Ano](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) |
-| Zásady uchovávání krátkodobých záloh (dny) | ![Ano](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) |   |
-| Zásady uchovávání dlouhodobých záloh (měsíce, roky) |   | ![Ano](./media/backup-restore/yes.png) |   |
-| Integrovaná podpora pro SQL Server Always On |   | ![Ano](./media/backup-restore/yes.png) |   |
-| Zálohování do Azure Storage účtů | ![Ano](./media/backup-restore/yes.png)Automatické | ![Ano](./media/backup-restore/yes.png)Automatické | ![Ano](./media/backup-restore/yes.png)(spravované zákazníkem) |
-| Správa úložiště a záložních souborů | | ![Ano](./media/backup-restore/yes.png) |  |
-| Zálohování na připojené disky ve virtuálním počítači |   |   | ![Ano](./media/backup-restore/yes.png) |
-| Sestavy centrálního zálohování s možností přizpůsobení |   | ![Ano](./media/backup-restore/yes.png) |   |
-| Konsolidovaná e-mailová upozornění pro chyby |   | ![Ano](./media/backup-restore/yes.png) |   |
-| Přizpůsobení monitorování na základě protokolů Azure Monitor |   | ![Ano](./media/backup-restore/yes.png) |   |
-| Monitorování úloh zálohování pomocí skriptů SSMS nebo Transact-SQL | ![Ano](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) |
-| Obnovení databází pomocí skriptů SSMS nebo Transact-SQL | ![Ano](./media/backup-restore/yes.png) |   | ![Ano](./media/backup-restore/yes.png) |
+| Vyžaduje další službu Azure. |   | ![Yes](./media/backup-restore/yes.png) |   |
+| Konfigurace zásad zálohování v Azure Portal | ![Yes](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) |   |
+| Obnovení databází v Azure Portal |   | ![Yes](./media/backup-restore/yes.png) |   |
+| Správa více serverů v jednom řídicím panelu |   | ![Yes](./media/backup-restore/yes.png) |   |
+| Obnovení k určitému bodu v čase | ![Yes](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) |
+| 15 minut cíl bodu obnovení (RPO) | ![Yes](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) |
+| Zásady uchovávání krátkodobých záloh (dny) | ![Yes](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) |   |
+| Zásady uchovávání dlouhodobých záloh (měsíce, roky) |   | ![Yes](./media/backup-restore/yes.png) |   |
+| Integrovaná podpora pro SQL Server Always On |   | ![Yes](./media/backup-restore/yes.png) |   |
+| Zálohování do Azure Storage účtů | ![Yes](./media/backup-restore/yes.png)Automatické | ![Yes](./media/backup-restore/yes.png)Automatické | ![Yes](./media/backup-restore/yes.png)(spravované zákazníkem) |
+| Správa úložiště a záložních souborů | | ![Yes](./media/backup-restore/yes.png) |  |
+| Zálohování na připojené disky ve virtuálním počítači |   |   | ![Yes](./media/backup-restore/yes.png) |
+| Sestavy centrálního zálohování s možností přizpůsobení |   | ![Yes](./media/backup-restore/yes.png) |   |
+| Konsolidovaná e-mailová upozornění pro chyby |   | ![Yes](./media/backup-restore/yes.png) |   |
+| Přizpůsobení monitorování na základě protokolů Azure Monitor |   | ![Yes](./media/backup-restore/yes.png) |   |
+| Monitorování úloh zálohování pomocí skriptů SSMS nebo Transact-SQL | ![Yes](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) | ![Ano](./media/backup-restore/yes.png) |
+| Obnovení databází pomocí skriptů SSMS nebo Transact-SQL | ![Yes](./media/backup-restore/yes.png) |   | ![Ano](./media/backup-restore/yes.png) |
 
 ## <a name="next-steps"></a>Další kroky
 

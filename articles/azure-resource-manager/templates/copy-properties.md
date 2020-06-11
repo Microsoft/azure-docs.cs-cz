@@ -3,12 +3,12 @@ title: Definování více instancí vlastnosti
 description: Použijte operaci kopírování v šabloně Azure Resource Manager k iterování několikrát při vytváření vlastnosti prostředku.
 ms.topic: conceptual
 ms.date: 04/14/2020
-ms.openlocfilehash: 9fde2ecf14bc5b29bb31ffa78e067b780438578a
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 61122b01889da832a73f729833ab0af676904d54
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583410"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678456"
 ---
 # <a name="property-iteration-in-arm-templates"></a>Iterace vlastnosti v šablonách ARM
 
@@ -51,11 +51,11 @@ Starší verze prostředí PowerShell, rozhraní příkazového řádku a REST A
 
 ## <a name="property-iteration"></a>Iterace vlastnosti
 
-Následující příklad ukazuje, jak použít `copy` vlastnost datadisks na virtuálním počítači:
+Následující příklad ukazuje, jak použít `copy` vlastnost Datadisks na virtuálním počítači:
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "numberOfDataDisks": {
@@ -95,7 +95,7 @@ Následující příklad ukazuje, jak použít `copy` vlastnost datadisks na vir
 }
 ```
 
-Všimněte si, že `copyIndex` při použití v rámci iterace vlastnosti je nutné zadat název iterace. Iterace vlastnosti také podporuje argument posunu. Posun musí být zadán za názvem iterace, například copyIndex (' datadisks ', 1).
+Všimněte si, že při použití `copyIndex` v rámci iterace vlastnosti je nutné zadat název iterace. Iterace vlastnosti také podporuje argument posunu. Posun musí být zadán za názvem iterace, například copyIndex (' datadisks ', 1).
 
 Správce prostředků rozbalí `copy` pole během nasazování. Název pole se zobrazí jako název vlastnosti. Vstupní hodnoty se stanou vlastnostmi objektu. Nasazená šablona bude:
 

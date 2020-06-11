@@ -7,14 +7,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/24/2020
+ms.date: 06/10/2020
 ms.author: aschhab
-ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 38187bef1d9c73b20c3b1930f97e7dae2468c889
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76760245"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673441"
 ---
 # <a name="azure-service-bus---frequently-asked-questions-faq"></a>Nejčastější dotazy k Azure Service Bus (FAQ)
 
@@ -65,7 +65,7 @@ Chcete-li najít správné IP adresy pro připojení k seznamu, postupujte podle
     ```
     nslookup <YourNamespaceName>.servicebus.windows.net
     ```
-2. Poznamenejte si IP adresu vrácenou `Non-authoritative answer`v. Tato IP adresa je statická. Jediným bodem v čase, který by měl být změněn, je, že obor názvů obnovíte na jiný cluster.
+2. Poznamenejte si IP adresu vrácenou v `Non-authoritative answer` . Tato IP adresa je statická. Jediným bodem v čase, který by měl být změněn, je, že obor názvů obnovíte na jiný cluster.
 
 Pokud používáte redundanci zóny pro svůj obor názvů, musíte provést několik dalších kroků: 
 
@@ -123,25 +123,18 @@ Je důležité si uvědomit, že se nejedná o nové poplatky, tj. existovaly i 
 
 Seznam limitů a kvót Service Bus najdete v tématu [Přehled kvót Service Bus][Quotas overview].
 
-### <a name="does-service-bus-have-any-usage-quotas"></a>Má Service Bus nějaké kvóty využití?
-Ve výchozím nastavení pro každou cloudovou službu Microsoft nastavuje agregovanou kvótu měsíčního využití, která se počítá napříč předplatnými zákazníka. Pokud potřebujete víc než tato omezení, můžete se kdykoli obrátit na službu zákazníkům, abychom porozuměli vašim potřebám a patřičně upravili tato omezení. Pro Service Bus je agregovaná kvóta využití 5 000 000 000 zpráv měsíčně.
-
-Společnost Microsoft si vyhrazuje právo zakázat účet zákazníka, který překročil kvóty využití v daném měsíci, ale e-mailová oznámení se odešlou a před provedením jakékoli akce provedou několik pokusů o kontaktování zákazníka. Zákazníci překračující tyto kvóty stále zodpovídají za poplatky, které překračují tyto kvóty.
-
-Stejně jako u ostatních služeb v Azure Service Bus vynutila sadu konkrétních kvót, aby bylo zajištěno, že bude k dispozici korektní využití prostředků. Další podrobnosti o těchto kvótách najdete v článku [Přehled kvót Service Bus][Quotas overview].
-
 ### <a name="how-to-handle-messages-of-size--1-mb"></a>Jak zpracovávat zprávy o velikosti > 1 MB?
 Služba Service Bus Messaging Services (fronty a témata/odběry) umožňuje aplikaci posílat zprávy o velikosti až 256 KB (úroveň Standard) nebo 1 MB (úroveň Premium). Pokud pracujete se zprávami o velikosti větší než 1 MB, použijte vzor kontroly deklarací identity popsaný v [tomto blogovém příspěvku](https://www.serverless360.com/blog/deal-with-large-service-bus-messages-using-claim-check-pattern).
 
 ## <a name="troubleshooting"></a>Řešení potíží
 ### <a name="why-am-i-not-able-to-create-a-namespace-after-deleting-it-from-another-subscription"></a>Proč nemůžu vytvořit obor názvů po jeho odstranění z jiného předplatného? 
-Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva `Namespace already exists`:. 
+Když odstraníte obor názvů z předplatného, počkejte 4 hodiny, než ho znovu vytvoříte se stejným názvem v jiném předplatném. V opačném případě se může zobrazit následující chybová zpráva: `Namespace already exists` . 
 
 ### <a name="what-are-some-of-the-exceptions-generated-by-azure-service-bus-apis-and-their-suggested-actions"></a>Jaké jsou některé výjimky generované rozhraními API Azure Service Bus a jejich navrhovanými akcemi?
 Seznam možných výjimek Service Bus naleznete v tématu [Exception Overview][Exceptions overview].
 
 ### <a name="what-is-a-shared-access-signature-and-which-languages-support-generating-a-signature"></a>Co je sdílený přístupový podpis a které jazyky podporují generování podpisu?
-Signatury sdíleného přístupu jsou mechanismy ověřování založené na zabezpečených hodnotách hash nebo identifikátorech URI SHA-256. Informace o tom, jak generovat vlastní signatury v Node. js, PHP, Java, Pythonu a v jazyce C#, najdete v článku věnovaném [sdíleným přístupovým podpisům][Shared Access Signatures] .
+Signatury sdíleného přístupu jsou mechanismy ověřování založené na zabezpečených hodnotách hash nebo identifikátorech URI SHA-256. Informace o tom, jak generovat vlastní signatury v Node.js, PHP, Java, Pythonu a C#, najdete v článku věnovaném [sdíleným přístupovým podpisům][Shared Access Signatures] .
 
 ## <a name="subscription-and-namespace-management"></a>Správa předplatného a oboru názvů
 ### <a name="how-do-i-migrate-a-namespace-to-another-azure-subscription"></a>Návody migrovat obor názvů do jiného předplatného Azure?
@@ -173,7 +166,7 @@ Další informace o Service Bus najdete v následujících článcích:
 * [Představujeme Azure Service Bus Premium (příspěvek na blogu)](https://azure.microsoft.com/blog/introducing-azure-service-bus-premium-messaging/)
 * [Představujeme Azure Service Bus Premium (channel9)](https://channel9.msdn.com/Blogs/Subscribe/Introducing-Azure-Service-Bus-Premium-Messaging)
 * [Přehled Service Bus](service-bus-messaging-overview.md)
-* [Začínáme s frontami Service Bus](service-bus-dotnet-get-started-with-queues.md)
+* [Začínáme s frontami služby Service Bus](service-bus-dotnet-get-started-with-queues.md)
 
 [Best practices for performance improvements using Service Bus]: service-bus-performance-improvements.md
 [Best practices for insulating applications against Service Bus outages and disasters]: service-bus-outages-disasters.md

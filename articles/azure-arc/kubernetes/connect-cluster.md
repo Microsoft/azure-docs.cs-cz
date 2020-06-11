@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Připojení clusteru Kubernetes s povoleným ARC Azure pomocí ARC Azure
 keywords: Kubernetes, oblouk, Azure, K8s, Containers
 ms.custom: references_regions
-ms.openlocfilehash: 85ef8bb9868784df66199a4aea261e6b752ae7f8
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 232d5e5a5f6efd6ddbd6124f78de4f4b8c1cd639
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636253"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676416"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Připojení clusteru Kubernetes s povoleným ARC Azure (Preview)
 
@@ -208,7 +208,7 @@ Kubernetes s povoleným ARC Azure se skládá z několika agentů (operátorů),
 * `deployment.apps/metrics-agent`: shromažďuje metriky jiných agentů ARC, aby se zajistilo, že tito agenti vykazují optimální výkon.
 * `deployment.apps/cluster-metadata-operator`: shromažďuje metadata clusteru – verze clusteru, počet uzlů a verzi agenta ARC.
 * `deployment.apps/resource-sync-agent`: synchronizuje výše uvedená metadata clusteru do Azure.
-* `deployment.apps/clusteridentityoperator`: udržuje certifikát MSI (Managed Service identity), který používají jiní agenti pro komunikaci s Azure.
+* `deployment.apps/clusteridentityoperator`: Kubernetes s podporou Azure ARC aktuálně podporuje identitu přiřazenou systémem. clusteridentityoperator udržuje certifikát MSI (Managed Service identity), který používají jiní agenti pro komunikaci s Azure.
 * `deployment.apps/flux-logs-agent`: shromažďuje protokoly z operátorů toku nasazených jako součást konfigurace správy zdrojového kódu.
 
 ## <a name="delete-a-connected-cluster"></a>Odstranění připojeného clusteru

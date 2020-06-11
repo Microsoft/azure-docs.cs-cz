@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 02/17/2020
-ms.openlocfilehash: e49ed542af140b28e8ebe58e5c8920d0959c9387
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 7815b8180c29b66b12eddbff88e4728b6784be66
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83848895"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672761"
 ---
 # <a name="create-a-dynamics-365-for-customer-engagement--powerapps-offer"></a>Vytvoření nabídky Dynamics 365 for Customer Engagement a PowerApps
 
@@ -315,7 +315,7 @@ Společnost Microsoft může odebrat složitost nastavení testovacích jednotek
 
 - **Adresa URL instance** (požadováno) – adresa URL, na které zákazník zahájí svoji zkušební verzi. Obvykle adresa URL vaší instance Dynamics 365 spouští vaši aplikaci s nainstalovanou ukázkovou daty (například `https://testdrive.crm.dynamics.com` ).
 
-- **Instance URL webového rozhraní API** (požadováno) – NAČTE adresu URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení** \& gt;. **Vlastní nastavení** \& gt **Materiály** \& pro vývojáře gt **Instance webového rozhraní API (adresa URL kořenového adresáře služby)** zkopírujte zde NALEZENOU adresu URL (například `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
+- **Instance URL webového rozhraní API** (požadováno) – načtení adresy URL webového rozhraní API pro instanci Dynamics 365 přihlášením k účtu Microsoft 365 a přechodem na **Nastavení**  >  **přizpůsobení**  >  **Developer Resources**  >  **instance prostředků Web API (kořenová adresa URL služby)**, zkopírujte adresu URL, kterou tady najdete (například `https://testdrive.crm.dynamics.com/api/data/v9.0` ).
 
 - **Název role** (povinné) – zadejte název role zabezpečení, kterou jste definovali ve vlastní testovací jednotce Dynamics 365. Tento název role zabezpečení se uživateli přiřadí během zkušební jednotky (například Test-Drive-role).
 

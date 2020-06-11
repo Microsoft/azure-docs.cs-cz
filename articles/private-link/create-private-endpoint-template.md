@@ -4,17 +4,18 @@ description: Informace o privátním propojení Azure
 services: private-link
 author: mblanco77
 ms.service: private-link
-ms.topic: article
+ms.topic: quickstart
+ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: a91415e7e3d91c2950cc4df2235c3d58df284cc0
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: af00119f1da3368b8592e020eee1ebb2a39a8501
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235986"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669949"
 ---
-# <a name="create-a-private-endpoint---resource-manager-template"></a>Vytvoření privátního koncového bodu – šablona Správce prostředků
+# <a name="quickstart-create-a-private-endpoint---resource-manager-template"></a>Rychlý Start: Vytvoření šablony privátního koncového bodu – Správce prostředků
 
 V tomto rychlém startu použijete šablonu Správce prostředků k vytvoření privátního koncového bodu.
 
@@ -32,22 +33,22 @@ Tato šablona vytvoří privátní koncový bod pro Azure SQL Server.
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://github.com/Azure/azure-quickstart-templates/blob/master/101-private-endpoint-sql/azuredeploy.json) .
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/).
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
 V šabloně je definováno víc prostředků Azure:
 
+- [**Microsoft. SQL/servery**](/azure/templates/microsoft.sql/servers) : Azure SQL Server s ukázkovou databází
+- [**Microsoft. SQL/servery/databáze**](/azure/templates/microsoft.sql/servers/databases) : Ukázková databáze
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : Virtual Network při nasazení privátního koncového bodu
 - [**Microsoft. Network/privateEndpoints**](/azure/templates/microsoft.network/privateendpoints) : privátní koncový bod pro přístup k privátnímu serveru Azure SQL Server
 - [**Microsoft. Network/privateDnsZones**](/azure/templates/microsoft.network/privatednszones) : používá se k překladu IP adresy privátního koncového bodu.
 - [**Microsoft. Network/privateDnsZones/virtualNetworkLinks**](/azure/templates/microsoft.network/privatednszones/virtualnetworklinks)
 - [**Microsoft. Network/privateEndpoints/privateDnsZoneGroups**](/azure/templates/microsoft.network/privateendpoints/privateDnsZoneGroups) : pro přidružení privátního koncového bodu k privátní zóně DNS
-- [**Microsoft. SQL/servery**](/azure/templates/microsoft.sql/servers) : Azure SQL Server s ukázkovou databází
-- [**Microsoft. SQL/servery/databáze**](/azure/templates/microsoft.sql/servers/databases) : Ukázková databáze
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : Virtual Network při nasazení privátního koncového bodu
 - [**Microsoft. Network/publicIpAddresses**](/azure/templates/microsoft.network/publicIpAddresses) : veřejná IP adresa pro přístup k virtuálnímu počítači
-- [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : virtuální počítač pro otestování privátního připojení s privátním koncovým bodem na Azure SQL Server
 - [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : síťové rozhraní pro virtuální počítač
+- [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : virtuální počítač pro otestování privátního připojení s privátním koncovým bodem na Azure SQL Server
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
