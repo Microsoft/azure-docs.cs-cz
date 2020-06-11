@@ -7,16 +7,16 @@ author: tamram
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 03/06/2020
+ms.date: 06/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.custom: mvc
-ms.openlocfilehash: 13a2a0bcc362a13b0c42650509d356f613527cfc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f77aacbddc5b3dcb5da62e5e87405477d47e7001
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80061328"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672319"
 ---
 # <a name="secure-access-to-application-data"></a>Zabezpečený přístup k datům aplikací
 
@@ -43,7 +43,7 @@ V této části série kurzů se pro přístup k miniaturám používají tokeny
 blobStorageAccount="<blob_storage_account>"
 
 blobStorageAccountKey=$(az storage account keys list -g myResourceGroup \
-    --name $blobStorageAccount --query [0].value --output tsv) 
+    --account-name $blobStorageAccount --query [0].value --output tsv) 
 
 az storage container set-permission \
     --account-name $blobStorageAccount \
@@ -133,7 +133,7 @@ Předchozí úloha využívá následující třídy, vlastnosti a metody:
 |[BlobSasBuilder](/dotnet/api/azure.storage.sas.blobsasbuilder) |  | [SetPermissions](/dotnet/api/azure.storage.sas.blobsasbuilder.setpermissions) <br> [ToSasQueryParameters](/dotnet/api/azure.storage.sas.blobsasbuilder.tosasqueryparameters) |
 |[BlobItem](/dotnet/api/azure.storage.blobs.models.blobitem) | [Název](/dotnet/api/azure.storage.blobs.models.blobitem.name) |  |
 |[Objekt UriBuilder protokolu](/dotnet/api/system.uribuilder) | [Dotaz](/dotnet/api/system.uribuilder.query) |  |
-|[Seznamu](/dotnet/api/system.collections.generic.list-1) | | [Přidat](/dotnet/api/system.collections.generic.list-1.add) |
+|[Seznam](/dotnet/api/system.collections.generic.list-1) | | [Přidat](/dotnet/api/system.collections.generic.list-1.add) |
 
 ## <a name="server-side-encryption"></a>Šifrování na straně serveru
 

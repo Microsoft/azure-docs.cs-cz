@@ -11,12 +11,12 @@ ms.author: trbye
 ms.reviewer: trbye
 ms.date: 02/10/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ec0ff6c5e53d33cf5c07171c2b678fe6857836e0
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: e82ed66240144f94e18c3343dc0559f47722a2c4
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558371"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667082"
 ---
 # <a name="tutorial-train-your-first-ml-model"></a>Kurz: analýza prvního modelu ML
 
@@ -138,7 +138,7 @@ experiment
 
 ## <a name="view-training-results-in-studio"></a>Zobrazit výsledky školení v studiu
 
-Po **odkazu na Azure Machine Learning Studiu** přejdete na hlavní stránku experimentu. Tady vidíte všechna jednotlivá spuštění v experimentu. Všechny vlastní hodnoty protokolovaných hodnot ( `alpha_value` a `rmse` v tomto případě) se stanou poli pro každé spuštění a také jsou k dispozici pro grafy a dlaždice v horní části stránky experiment. Chcete-li přidat zaznamenanou metriku do grafu nebo dlaždice, najeďte myší na ni, klikněte na tlačítko Upravit a vyhledejte metriku s vlastním protokolem.
+Po **odkazu na Azure Machine Learning Studiu** přejdete na hlavní stránku experimentu. Tady vidíte všechna jednotlivá spuštění v experimentu. Všechny vlastní hodnoty protokolovaných hodnot ( `alpha_value` a `rmse` v tomto případě) se stanou poli pro každé spuštění a také jsou k dispozici pro grafy. Chcete-li vytvořit nový graf s protokolovanými metrikami, klikněte na tlačítko přidat graf a vyberte metriku, kterou chcete vykreslit.
 
 Když procházíte modely ve velkém množství přes stovky a tisíce samostatných spuštění, Tato stránka usnadňuje zobrazení všech vámi vyškolených modelů, konkrétně jejich školení a způsobu, jakým se vaše jedinečné metriky v průběhu času změnily.
 

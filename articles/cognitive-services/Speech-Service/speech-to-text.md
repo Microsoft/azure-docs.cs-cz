@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/12/2020
 ms.author: trbye
-ms.openlocfilehash: 4181491053dd1f8d66afcd5f1df7cb96313011da
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: b1e84f9acb439324317ed2f0d11ed06eb3e43ad8
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83650611"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678058"
 ---
 # <a name="what-is-speech-to-text"></a>Co je převod řeči na text?
 
@@ -25,7 +25,7 @@ Převod řeči na text ze služby Speech, označovaný také jako rozpoznáván�
 
 Služba převod řeči na text standardně používá univerzální jazykový model. Tento model byl vyškolený pomocí dat vlastněných společností Microsoft a nasazený v cloudu. Je ideální pro scénáře konverzace a diktování. Při použití převodu řeči na text pro rozpoznávání a přepis v jedinečném prostředí můžete vytvořit a naučit vlastní modely akustického, jazyka a výslovnosti. Přizpůsobení je užitečné pro řešení hlučného hluku nebo slovníku specifického pro konkrétní odvětví.
 
-Pomocí dalšího referenčního textu jako vstupu služba Speech-to-text Service také umožňuje [posouzení výslovnosti](rest-speech-to-text.md#pronunciation-assessment-parameters) , aby vyhodnotila výslovnost řeči a dává mluvčí názory na přesnost a Fluency mluveného zvuku. S hodnocením výslovnosti mohou jazyky naučit postupovat, získávat okamžitou zpětnou vazbu a zlepšovat jejich výslovnost, aby mohli mluvit a prezentovat s jistotou. Pedagogé můžou využít schopnost vyhodnotit výslovnost více mluvčích v reálném čase. Tato funkce aktuálně podporuje americkou angličtinu a koreluje s posouzením řeči, které provádějí odborníci.
+Pomocí dalšího referenčního textu jako vstupu služba Speech-to-text Service také umožňuje [posouzení výslovnosti](rest-speech-to-text.md#pronunciation-assessment-parameters) , aby vyhodnotila výslovnost řeči a dává mluvčí názory na přesnost a Fluency mluveného zvuku. S hodnocením výslovnosti mohou jazyky naučit postupovat, získávat okamžitou zpětnou vazbu a zlepšovat jejich výslovnost, aby mohli mluvit a prezentovat s jistotou. Pedagogé můžou využít schopnost vyhodnotit výslovnost více mluvčích v reálném čase. Tato funkce aktuálně podporuje AMERICKou angličtinu a koreluje s hodnocením řeči, která provádějí odborníci.
 
 > [!NOTE]
 > Zpracování řeči Bingu byl vyvyřazen z 15. října 2019. Pokud vaše aplikace, nástroje nebo produkty používají rozhraní API Zpracování řeči Bingu, vytvořili jsme příručky, které vám pomůžou s migrací na službu Speech.

@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: tracking-python
-ms.openlocfilehash: 1b4c9aff6889d7c95d82470a2db57ddc14103edc
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: d50217bed3850f0e9021dda4bf1b577d006839d1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561587"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674478"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Kurz: nastavení globální distribuce Azure Cosmos DB pomocí rozhraní SQL API
 
@@ -79,14 +79,14 @@ DocumentClient docClient = new DocumentClient(
 await docClient.OpenAsync().ConfigureAwait(false);
 ```
 
-## <a name="nodejsjavascript"></a>Node. js/JavaScript
+## <a name="nodejsjavascript"></a>Node.js/JavaScript
 
 > [!NOTE]
 > Adresy URL koncových bodů by se neměly považovat za dlouhodobé konstanty. Služba je může kdykoli aktualizovat. Sada SDK tuto změnu zpracuje automaticky.
 >
 >
 
-Níže je příklad kódu pro Node. js/JavaScript.
+Níže je příklad kódu pro Node.js/JavaScript.
 
 ```JavaScript
 // Setting read region selection preference, in the following order -
@@ -111,18 +111,17 @@ client = cosmos_client.CosmosClient(ENDPOINT, {'masterKey': MASTER_KEY}, connect
 
 ```
 
-## <a name="java-v4-sdk"></a>Sada Java v4 SDK
+## <a name="java-v4-sdk"></a><a id="java4-preferred-locations"></a>Sada Java v4 SDK
 
 Následující kód ukazuje, jak nastavit Upřednostňovaná umístění pomocí sady Java SDK:
 
-### <a id="java4-preferred-locations"></a>
-#### <a name="async"></a>[Async](#tab/api-async)
+# <a name="async"></a>[Async](#tab/api-async)
 
    [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Async API
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=TutorialGlobalDistributionPreferredLocationAsync)]
 
-#### <a name="sync"></a>[Synchronizovat](#tab/api-sync)
+# <a name="sync"></a>[Synchronizovat](#tab/api-sync)
 
    [Sada Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Sync API
 

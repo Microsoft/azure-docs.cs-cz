@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/28/2020
-ms.openlocfilehash: a59fafccecaf2fc266a6c7864174c477e1831186
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/08/2020
+ms.openlocfilehash: 4e39d4e106a399f0105ee4ec3f3606354f113165
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84561158"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661064"
 ---
 # <a name="copy-multiple-tables-in-bulk-by-using-azure-data-factory-in-the-azure-portal"></a>Hromadné kopírování více tabulek pomocí Azure Data Factory v Azure Portal
 
@@ -108,13 +108,16 @@ V tomto kurzu propojíte Azure SQL Database, Azure synapse Analytics (dříve SQ
 ### <a name="create-the-source-azure-sql-database-linked-service"></a>Vytvoření propojené služby Azure SQL Database pro zdroj
 V tomto kroku vytvoříte propojenou službu, která propojí vaši databázi Azure SQL s datovou továrnou. 
 
-1. Klikněte na **připojení** v dolní části okna a klikněte na tlačítko **+ Nový** na panelu nástrojů (tlačítko**připojení** se nachází v dolní části levého sloupce v části **prostředky továrny**). 
+1. V levém podokně otevřete [kartu spravovat](https://docs.microsoft.com/azure/data-factory/author-management-hub) .
 
+1. Na stránce propojené služby vyberte **+ Nová** a vytvořte novou propojenou službu.
+
+   ![Nová propojená služba](./media/doc-common-process/new-linked-service.png)
 1. V okně **Nová propojená služba** vyberte **Azure SQL Database** a klikněte na **Pokračovat**. 
 1. V okně **Nová propojená služba (Azure SQL Database)** proveďte následující kroky: 
 
     a. Jako **Název** zadejte **AzureSqlDatabaseLinkedService**.
-    
+
     b. Vyberte server pro **název serveru**
     
     c. Jako **Název databáze** vyberte vaši databázi Azure SQL. 
@@ -159,7 +162,6 @@ V tomto kurzu použijete Azure Blob Storage jako dočasné pracovní oblast, aby
     b. Jako **Název účtu úložiště** vyberte svůj **účet služby Azure Storage**.
     
     c. Klikněte na **Vytvořit**.
-
 
 ## <a name="create-datasets"></a>Vytvoření datových sad
 V tomto kurzu vytvoříte zdrojovou datovou sadu a datovou sadu jímky, které určují umístění pro uložení dat. 

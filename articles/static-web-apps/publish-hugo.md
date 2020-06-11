@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: b65213bd87f6b82391733a135e096077127765d7
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 44472981e48a7018fcdf55f28d33d0dda9479d44
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344012"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669898"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Hugo ve službě Azure static Web Apps Preview
 
@@ -133,9 +133,9 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 
 1. Kliknutím na tlačítko **Další: >sestavení** upravíte konfiguraci sestavení
 
-1. Nastavte _umístění aplikace_ na **veřejné**.
+1. Nastavte _umístění aplikace_ na **/** .
 
-1. _Umístění artefaktu aplikace_ nechte prázdné.
+1. Nastavte _umístění artefaktu aplikace_ na **veřejné**.
 
    Hodnota pro _umístění rozhraní API_ není nutná, protože v tuto chvíli nebudete NASAZOVAT rozhraní API.
 

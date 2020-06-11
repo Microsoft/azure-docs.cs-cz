@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 04/09/2018
-ms.openlocfilehash: badf6ed4e4a330aae288cd6a2b102941901a0461
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/09/2020
+ms.openlocfilehash: 0e3c2d4fe4d9377b6f9a563825a14e10eb724637
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194593"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660949"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage-by-using-the-copy-data-tool"></a>Kopírování dat z databáze SQL Server do úložiště objektů BLOB v Azure pomocí nástroje Kopírování dat
 > [!div class="op_single_selector" title1="Vyberte verzi Data Factory služby, kterou používáte:"]
@@ -146,18 +146,15 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 1. Na stránce **Source data store** (Zdrojové úložiště dat) klikněte na **Create new connection** (Vytvořit nové připojení).
 
-
 1. V části **Nová propojená služba**vyhledejte **SQL Server**a pak vyberte **pokračovat**.
 
 1. V dialogovém okně **Nová propojená služba (SQL Server)** do pole **název**zadejte **SqlServerLinkedService**. V části **připojení prostřednictvím prostředí Integration runtime**vyberte **+ Nový** . Musíte vytvořit místní prostředí Integration Runtime, stáhnout ho na svůj počítač a zaregistrovat ho ve službě Data Factory. Místní prostředí Integration Runtime kopíruje data mezi vaším místním prostředím a cloudem.
 
+1. V dialogovém okně **nastavení Integration runtime** vyberte možnost místní **hostování**. Potom vyberte **Pokračovat**.
 
-1. V dialogovém okně **nastavení Integration runtime** vyberte možnost místní **hostování**. Pak vyberte **Další**.
+   ![Vytvoření prostředí Integration Runtime](./media/tutorial-hybrid-copy-data-tool/create-self-hosted-integration-runtime.png)
 
-   ![Vytvoření prostředí Integration Runtime](./media/tutorial-hybrid-copy-data-tool/create-integration-runtime-dialog0.png)
-
-1. V dialogovém okně **nastavení Integration runtime** do pole **název**zadejte **TutorialIntegrationRuntime**. Pak vyberte **Další**.
-
+1. V dialogovém okně **nastavení Integration runtime** do pole **název**zadejte **TutorialIntegrationRuntime**. Potom vyberte **Vytvořit**.
 
 1. V dialogovém okně **nastavení Integration runtime** vyberte **kliknutím sem spustíte expresní instalaci pro tento počítač**. Tato akce nainstaluje prostředí Integration Runtime na vašem počítači a zaregistruje ho ve službě Data Factory. Případně můžete využít možnost ruční instalace a stáhnout instalační soubor, spustit ho a použít klíč k registraci prostředí Integration Runtime.
 
@@ -179,7 +176,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
     f. Zadejte **heslo** pro uživatele.
 
-    g. Otestujte připojení a vyberte **Dokončit**.
+    například Otestujte připojení a vyberte **Dokončit**.
 
       ![Vybrané prostředí Integration Runtime](./media/tutorial-hybrid-copy-data-tool/integration-runtime-selected.png)
 
@@ -216,20 +213,17 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 1. V dialogovém okně **Summary** (Souhrn) zkontrolujte hodnoty všech nastavení a vyberte **Next** (Další).
 
-1. Na stránce **Nasazení** vyberte **Monitorovat** a začněte monitorovat vytvořený kanál nebo úlohu.
+1. Na stránce **Nasazení** vyberte **Monitorovat** a začněte monitorovat kanál (úlohu). 
 
-   ![Stránka Nasazení](./media/tutorial-hybrid-copy-data-tool/deployment-page.png)
+1. Po dokončení spuštění kanálu můžete zobrazit stav kanálu, který jste vytvořili. 
 
-1. Na kartě **Monitorování** můžete zobrazit stav kanálu, který jste vytvořili. Pomocí odkazů ve sloupci **Akce** můžete zobrazit spuštění aktivit související se spuštěním kanálu nebo spustit kanál znovu.
+1. Na stránce spuštění kanálu vyberte **aktualizovat** , aby se seznam aktualizoval. Kliknutím na odkaz **název kanálu** zobrazíte podrobnosti o spuštění aktivit nebo znovu spustíte kanál. 
 
-1. Vyberte odkaz **Zobrazit spuštění aktivit** ve sloupci **Akce** a zobrazte spuštění aktivit související se spuštěním kanálu. Pokud chcete zobrazit podrobnosti o operaci kopírování, vyberte odkaz **Podrobnosti** (ikona brýlí) ve sloupci **Akce**. Pokud chcete přejít zpátky k zobrazení **spuštění kanálu** , vyberte v horní části **spuštění kanálu** .
+1. Na stránce spuštění aktivit vyberte odkaz **Podrobnosti** (ikona brýlí) ve sloupci **název aktivity** , kde najdete další podrobnosti o operaci kopírování. Pokud se chcete vrátit do zobrazení spuštění kanálu, vyberte odkaz **všechny spuštění kanálu** v nabídce s popisem cesty. Jestliže chcete zobrazení aktualizovat, vyberte **Aktualizovat**.
 
 1. Ověřte, že složka **fromonprem** kontejneru **adftutorial** obsahuje výstupní soubor.
 
-
 1. Výběrem karty **Upravit** na levé straně přepněte do režimu úprav. Pomocí editoru můžete aktualizovat propojené služby, datové sady a kanály vytvořené nástrojem. Vyberte **Kód** a zobrazte kód JSON přidružený k entitě otevřené v editoru. Podrobnosti o úpravách těchto entit v uživatelském rozhraní služby Data Factory najdete ve [verzi tohoto kurzu pro Azure Portal](tutorial-copy-data-portal.md).
-
-   ![Karta Upravit](./media/tutorial-hybrid-copy-data-tool/edit-tab.png)
 
 
 ## <a name="next-steps"></a>Další kroky

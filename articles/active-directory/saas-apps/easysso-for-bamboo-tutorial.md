@@ -12,22 +12,22 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 05/18/2020
+ms.date: 05/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c37850d2188f560b8eb8d0b16f5a1b2880a8b32e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 35c41d1605b96ad0a9d9765f8c405c1cabf9f0b7
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83740559"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84658991"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bamboo"></a>Kurz: Azure Active Directory integraci jednotného přihlašování (SSO) s EasySSO pro Bamboo
 
 V tomto kurzu se dozvíte, jak integrovat EasySSO pro Bamboo s Azure Active Directory (Azure AD). Při integraci EasySSO pro Bamboo se službou Azure AD můžete:
 
-* Řízení ve službě Azure AD, která má přístup k EasySSO pro Bamboo.
-* Umožněte uživatelům, aby se automaticky přihlásili k EasySSO pro Bamboo s účty Azure AD.
+* Řízení ve službě Azure AD, která má přístup k Bamboo.
+* Umožněte, aby se vaši uživatelé automaticky přihlásili k Bamboo svým účtům Azure AD.
 * Spravujte svoje účty v jednom centrálním umístění – Azure Portal.
 
 Další informace o integraci aplikací SaaS s Azure AD najdete v tématu [co je přístup k aplikacím a jednotné přihlašování pomocí Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on).
@@ -57,6 +57,7 @@ Pokud chcete nakonfigurovat integraci EasySSO pro Bamboo do služby Azure AD, mu
 1. Chcete-li přidat novou aplikaci, vyberte možnost **Nová aplikace**.
 1. V části **Přidat z Galerie** zadejte do vyhledávacího pole **EasySSO for Bamboo** .
 1. Z panelu výsledků vyberte **EasySSO for Bamboo** a pak přidejte aplikaci. Počkejte několik sekund, než se aplikace přidá do vašeho tenanta.
+
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-easysso-for-bamboo"></a>Konfigurace a testování jednotného přihlašování Azure AD pro EasySSO pro Bamboo
 
@@ -89,28 +90,32 @@ Pomocí těchto kroků povolíte jednotné přihlašování služby Azure AD v A
 
 1. Klikněte na **nastavit další adresy URL** a proveďte následující krok, pokud chcete nakonfigurovat aplikaci v režimu iniciované **SP** :
 
-    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/`
+    Do textového pole **přihlašovací adresa URL** zadejte adresu URL pomocí následujícího vzoru:`https://<server-base-url>/login.jsp`
 
     > [!NOTE]
-    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Pokud chcete získat tyto hodnoty, kontaktujte [EasySSO pro tým podpory klientů Bamboo](mailto:support@techtime.co.nz) . Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
+    > Tyto hodnoty nejsou reálné. Aktualizujte tyto hodnoty skutečným identifikátorem, adresou URL odpovědi a přihlašovací adresou URL. Obraťte se na [tým podpory EasySSO](mailto:support@techtime.co.nz) a získejte tyto hodnoty, pokud jsou nejisté. Můžete se také podívat na vzory uvedené v části **základní konfigurace SAML** v Azure Portal.
 
 1. Aplikace EasySSO for Bamboo očekává kontrolní výrazy SAML v určitém formátu, což vyžaduje přidání mapování vlastních atributů do konfigurace atributů tokenu SAML. Následující snímek obrazovky ukazuje seznam výchozích atributů.
 
     ![image](common/default-attributes.png)
 
 1. Kromě toho očekává aplikace EasySSO for Bamboo u odpovědi SAML méně dalších atributů, které jsou uvedené dál. Tyto atributy jsou také předem vyplněné, ale můžete je zkontrolovat podle vašich požadavků.
+    
+    | Name |  |  Zdrojový atribut|
+    | ---------------| --------------- | --------- |
+    | urn: OID: 0.9.2342.19200300.100.1.1 | | User. userPrincipalName |
+    | urn: OID: 0.9.2342.19200300.100.1.3 | | uživatel. pošta |
+    | urn: OID: 2.16.840.1.113730.3.1.241 | | User. DisplayName |
+    | urn: OID: 2.5.4.4 | | User. příjmení |
+    | urn: OID: 2.5.4.42 | | User. křestní jméno |
+    
+    V případě, že mají uživatelé Azure AD nakonfigurovaný **sAMAccountName** , budete muset mapovat **název urn: OID: 0.9.2342.19200300.100.1.1** na atribut **sAMAccountName** .
+    
+1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** klikněte na možnost **Stáhnout** odkazy na **certifikát (Base64)** nebo **metadata federačních metadat** a v počítači uložte buď nebo vše. Později budete potřebovat nakonfigurovat Bamboo EasySSO.
 
-    | Name | Zdrojový atribut |
-    | ---------------|  --------- |
-    | urn: OID: 2.16.840.1.113730.3.1.241 | User. DisplayName |
-    | urn: OID: 2.5.4.42 | User. křestní jméno |
-    | urn: OID: 2.5.4.4 | User. příjmení |
-    | urn: OID: 0.9.2342.19200300.100.1.1 | User. userPrincipalName |
-    | urn: OID: 0.9.2342.19200300.100.1.3 | User. userPrincipalName |
-
-1. Na stránce **nastavit jednotné přihlašování pomocí SAML** v části **podpisový certifikát SAML** kliknutím na tlačítko Kopírovat zkopírujte **adresu URL federačních metadat aplikace** a uložte ji do svého počítače.
-
-    ![Odkaz na stažení certifikátu](common/copy-metadataurl.png)
+    ![Odkaz na stažení certifikátu](./media/easysso-for-bamboo-tutorial/certificate.png)
+    
+    Pokud máte v úmyslu provést EasySSO pro konfiguraci Bamboo ručně s certifikátem, musíte také zkopírovat **adresu URL pro přihlášení** a **identifikátor Azure AD** z níže uvedené části a uložit je do počítače.
 
 ### <a name="create-an-azure-ad-test-user"></a>Vytvoření testovacího uživatele Azure AD
 
@@ -144,54 +149,74 @@ V této části povolíte B. Simon používat jednotné přihlašování pomocí
 
 ## <a name="configure-easysso-for-bamboo-sso"></a>Konfigurace EasySSO pro jednotné přihlašování Bamboo
 
-1. Přihlaste se k EasySSO pro instanci Bamboo s oprávněními správce a přejděte do části **Správa aplikací** .
+1. Přihlaste se k instanci Atlassian Bamboo s oprávněními správce a přejděte do části **Správa aplikací** . 
 
-    ![Konfigurace EasySSO pro Bamboo](./media/easysso-for-bamboo-tutorial/jira-admin-1.png)
+    ![Správa aplikací](./media/easysso-for-bamboo-tutorial/bamboo-admin-1.png)
 
-1. Klikněte na **EasySSO**.
+2. Na levé straně vyhledejte **EasySSO** a klikněte na něj.
 
-    ![Konfigurace EasySSO pro Bamboo](./media/easysso-for-bamboo-tutorial/jira-admin-2.png)
+    ![Snadné jednotné přihlašování](./media/easysso-for-bamboo-tutorial/bamboo-admin-2.png)
 
-1. Vyberte možnost **SAML** . Tím přejdete do konfiguračního oddílu SAML.
+3. Vyberte možnost **SAML** . Tím přejdete do konfiguračního oddílu SAML.
 
-    ![Konfigurace EasySSO pro Bamboo](./media/easysso-for-bamboo-tutorial/jira-admin-3.png)
+    ![SAML](./media/easysso-for-bamboo-tutorial/bamboo-admin-3.png)
 
-1. V horní části karty vybrat **certifikáty** a zobrazí se vám následující obrazovka, kde najdete **certifikát (Base64)** nebo **soubor metadat** , který jste uložili v předchozích krocích konfigurace **jednotného přihlašování služby Azure AD** . Máte následující možnosti, jak pokračovat:
+4. V horní části karty vybrat **certifikáty** a zobrazí se tato obrazovka:
 
-    ![Konfigurace EasySSO pro Bamboo](./media/easysso-for-bamboo-tutorial/jira-admin-4.png)
+    ![Adresa URL metadat](./media/easysso-for-bamboo-tutorial/bamboo-admin-4.png)
+
+5. Teď Najděte **certifikát (Base64)** nebo **soubor metadat** , který jste uložili v předchozích krocích konfigurace **jednotného přihlašování služby Azure AD** . Máte následující možnosti, jak pokračovat:
 
     a. Použijte soubor federačních **metadat** aplikace, který jste stáhli do místního souboru v počítači. Vyberte možnost **nahrát** přepínač a postupujte podle dialogového okna pro nahrání souboru, které je specifické pro váš operační systém.
 
     **ANI**
 
     b. Otevřete soubor federačních **metadat** aplikace a zobrazte obsah (v libovolném textovém editoru) souboru a zkopírujte ho do schránky. Vyberte možnost **vstup** a vložte obsah schránky do textového pole.
-
+ 
     **ANI**
 
-    c. Plně ruční konfigurace. Otevřete certifikát federační aplikace **(Base64)** , abyste zobrazili obsah (v libovolném textovém editoru) souboru a zkopírovali ho do schránky. Vložte ho do textového pole **IDP tokeny podepisování certifikátů** . Pak přejděte na kartu **Obecné** a vyplňte **pole Adresa URL příspěvku** a **ID entity** příslušnými hodnotami pro **přihlašovací adresu URL** a **identifikátor služby Azure AD** , který jste předtím uložili.
+    c.  Plně ruční konfigurace. Otevřete certifikát federační aplikace **(Base64)** , abyste zobrazili obsah (v libovolném textovém editoru) souboru a zkopírovali ho do schránky. Vložte ho do textového pole **IDP tokeny podepisování certifikátů** . Pak přejděte na kartu **Obecné** a vyplňte **pole Adresa URL příspěvku** a **ID entity** příslušnými hodnotami pro **přihlašovací adresu URL** a **identifikátor služby Azure AD** , který jste předtím uložili.
+ 
+6. V dolní části stránky klikněte na tlačítko **Uložit** . Zobrazí se obsah metadat nebo souborů certifikátů, které se analyzují do polí konfigurace. Konfigurace EasySSO pro Bamboo se dokončila.
 
-1. V dolní části stránky klikněte na tlačítko **Uložit** . Zobrazí se obsah metadat nebo souborů certifikátů, které se analyzují do polí konfigurace. Konfigurace EasySSO pro Bamboo se dokončila.
+7. Pro účely nejlepšího testování přejděte na kartu **vzhled &** a zkontrolujte možnost tlačítko pro **přihlášení SAML** na. Tím se povolí samostatné tlačítko na obrazovce pro přihlášení k Bamboo, které vám konkrétně umožní otestovat Azure AD SAML Integration end na konec. Toto tlačítko můžete nechat zapnuté a nakonfigurovat jeho umístění, barvu a překlad pro režim výroby.
 
-1. Pro účely nejlepšího testování přejděte na kartu **vzhled &** a zkontrolujte možnost tlačítko pro **přihlášení SAML** na. Tím se povolí samostatné tlačítko na obrazovce pro přihlášení k EasySSO pro Bamboo přihlašovací obrazovky, které vám konkrétně umožní otestovat Azure AD SAML Integration end. Toto tlačítko můžete ponechat zapnuté a nakonfigurovat jeho umístění, barvu a překlad pro režim výroby.
-
-    ![Konfigurace EasySSO pro Bamboo](./media/easysso-for-bamboo-tutorial/jira-admin-5.png)
+    ![Vzhled &](./media/easysso-for-bamboo-tutorial/bamboo-admin-5.png)
 
     > [!NOTE]
     > Pokud máte nějaké problémy, obraťte se prosím na [tým podpory EasySSO](mailto:support@techtime.co.nz).
 
 ### <a name="create-easysso-for-bamboo-test-user"></a>Vytvořit EasySSO pro testovacího uživatele Bamboo
 
-V této části se v EasySSO pro Bamboo vytvoří uživatel s názvem B. Simon. EasySSO for Bamboo podporuje zřizování uživatelů za běhu, které je ve výchozím nastavení **zakázáno** . Pokud chcete povolit zřizování uživatelů, musíte explicitně zaškrtnout možnost **vytvořit uživatele při úspěšném přihlášení** v části Obecné v konfiguraci modulu plug-in EasySSO. Pokud uživatel ještě v EasySSO pro Bamboo neexistuje, vytvoří se po ověření nový.
+V této části se v Bamboo vytvoří uživatel s názvem Britta Simon. EasySSO for Bamboo podporuje zřizování uživatelů za běhu, které je ve výchozím nastavení **zakázáno** . Pokud chcete povolit zřizování uživatelů, musíte explicitně zaškrtnout možnost **vytvořit uživatele při úspěšném přihlášení** v části Obecné v konfiguraci modulu plug-in EasySSO. Pokud uživatel ještě v Bamboo neexistuje, vytvoří se po ověření nový.
 
-Pokud však nechcete povolit Automatické zřizování uživatelů při prvním přihlášení uživatele, musí existovat uživatelé v adresářích uživatelů back-endu, který používá instance EasySSO for Bamboo, jako je například LDAP nebo Atlassian.
+Pokud však nechcete povolit Automatické zřizování uživatelů při prvním přihlášení uživatele, musí existovat uživatelé v adresářích uživatelů back-end, které instance Bamboo využívají, jako je například LDAP nebo Atlassian.
 
-![Zřizování uživatelů](./media/easysso-for-bamboo-tutorial/jira-admin-6.png)
+![Zřizování uživatelů](./media/easysso-for-bamboo-tutorial/bamboo-admin-6.png)
 
-## <a name="test-sso"></a>Test SSO
+## <a name="test-sso"></a>Test SSO 
+
+### <a name="idp-initiated-workflow"></a>Pracovní postup iniciované IdP
 
 V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí přístupového panelu.
 
-Když kliknete na dlaždici EasySSO for Bamboo na přístupovém panelu, měli byste se automaticky přihlásit k EasySSO pro Bamboo, pro které jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Když kliknete na dlaždici EasySSO for Bamboo na přístupovém panelu, měli byste se automaticky přihlásit k instanci Bamboo, pro kterou jste nastavili jednotné přihlašování. Další informace o přístupovém panelu najdete v tématu [Úvod do přístupového panelu](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
+### <a name="sp-initiated-workflow"></a>Pracovní postup iniciované v SP
+
+V této části otestujete konfiguraci jednotného přihlašování Azure AD pomocí Bamboo tlačítka pro **přihlášení SAML** .
+
+![Uživatelské přihlášení SAML](./media/easysso-for-bamboo-tutorial/bamboo-admin-7.png)
+
+V tomto scénáři se předpokládá, že jste povolili **tlačítko pro přihlášení SAML** na kartě **Hledat & chování** na stránce konfigurace EasySSO pro Bamboo (viz výše). Otevřete přihlašovací adresu URL Bamboo v režimu prohlížeče anonymním, abyste se vyhnuli jakémukoli rušení s vašimi stávajícími relacemi. Klikněte na tlačítko pro **přihlášení SAML** a budete přesměrováni na tok ověřování uživatelů Azure AD. Po úspěšném dokončení budete přesměrováni zpátky do své Bamboo instance jako ověřený uživatel prostřednictvím SAML.
+
+Po přesměrování zpátky z Azure AD se může zobrazit následující obrazovka.
+
+![Obrazovka chyby EasySSO](./media/easysso-for-bamboo-tutorial/bamboo-admin-8.png)
+
+V takovém případě musíte podle [pokynů na této stránce]( https://techtime.co.nz/display/TECHTIME/EasySSO+How+to+get+the+logs#EasySSOHowtogetthelogs-RETRIEVINGTHELOGS) získat přístup k souboru **Atlassian-Bamboo. log** . Podrobnosti o chybě budou k dispozici na základě ID odkazu, které najdete na chybové stránce EasySSO.
+
+Pokud máte problémy s vyčtením zpráv protokolu, obraťte se prosím na [tým podpory EasySSO](mailto:support@techtime.co.nz).
 
 ## <a name="additional-resources"></a>Další zdroje
 

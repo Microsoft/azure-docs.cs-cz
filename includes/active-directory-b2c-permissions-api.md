@@ -5,16 +5,16 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: mimart
-ms.openlocfilehash: e37419b5d568b0f60e4c6a0c8fed26eb418f501e
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c1628894205754c1b8f1fc954796009afbdc8ed4
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297478"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84680277"
 ---
-#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/) 
 
-1. Vyberte **Registrace aplikací (Preview)** a pak vyberte webovou aplikaci, která má mít přístup k rozhraní API. Například *WebApp1*.
+1. Vyberte **Registrace aplikací**a pak vyberte webovou aplikaci, která by měla mít přístup k rozhraní API. Například *WebApp1*.
 1. V části **Spravovat**vyberte **oprávnění rozhraní API**.
 1. V části **konfigurovaná oprávnění**vyberte **Přidat oprávnění**.
 1. Vyberte kartu **Moje rozhraní API** .
@@ -26,9 +26,9 @@ ms.locfileid: "84297478"
 1. Vyberte **Ano**.
 1. Vyberte **aktualizovat**a pak ověřte, že "uděleno pro..." zobrazí se pod položkou **stav** pro oba obory.
 
-#### <a name="applications"></a>[Aplikace](#tab/applications/)
+#### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Vyberte **aplikace**a pak vyberte webovou aplikaci, která by měla mít přístup k rozhraní API. Například *WebApp1*.
+1. Vyberte **aplikace (starší verze)** a pak vyberte webovou aplikaci, která má mít přístup k rozhraní API. Například *WebApp1*.
 1. Vyberte **přístup přes rozhraní API**a pak vyberte **Přidat**.
 1. V rozevíracím seznamu **Vybrat rozhraní API** vyberte rozhraní API, ke kterému se má webová aplikace udělit přístup. Například *webapi1*.
 1. V rozevíracím seznamu **Vybrat obory** vyberte obory, které jste definovali dříve. Například *demo. Read* a *demo. Write*.

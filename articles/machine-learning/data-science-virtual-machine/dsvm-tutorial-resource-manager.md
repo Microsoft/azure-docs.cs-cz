@@ -10,14 +10,14 @@ ms.date: 06/10/2020
 ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
-ms.openlocfilehash: e89f3d85156081106f4e1dbb55ee6c895e7e7a2d
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 7e3e45d96839be06deec238deccdc9873492d68f
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84636746"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84660245"
 ---
-# <a name="tutorial-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Kurz: vytvoření Data Science Virtual Machine Ubuntu pomocí šablony Správce prostředků
+# <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-a-resource-manager-template"></a>Rychlý Start: vytvoření Data Science Virtual Machine Ubuntu pomocí šablony Správce prostředků
 [!INCLUDE [applies-to-skus](../../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto rychlém startu se dozvíte, jak vytvořit Ubuntu 18,04 Data Science Virtual Machine pomocí šablony Azure Resource Manager. Data Virtual Machines pro datové vědy jsou cloudové virtuální počítače, které jsou předem nahrané pomocí sady datových vědy a architektur a nástrojů strojového učení. Při nasazení na výpočetní prostředky využívající GPU jsou všechny nástroje a knihovny nakonfigurované tak, aby používaly GPU. 
@@ -34,7 +34,7 @@ V tomto rychlém startu se dozvíte, jak vytvořit Ubuntu 18,04 Data Science Vir
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/). Úplná šablona pro tento článek je moc dlouhá, takže se tady nedá zobrazit. Kompletní šablonu zobrazíte v tématu [azuredeploy. JSON](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). Část definující konkrétní DSVM se zobrazí zde:
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-vm-ubuntu-DSVM-GPU-or-CPU/). Úplná šablona pro tento článek je moc dlouhá, takže se tady nedá zobrazit. Chcete-li zobrazit úplnou šablonu, přečtěte si téma [azuredeploy.json](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json). Část definující konkrétní DSVM se zobrazí zde:
 
 :::code language="json" source="~/quickstart-templates/101-vm-ubuntu-DSVM-GPU-or-CPU/azuredeploy.json" range="235-276":::
 

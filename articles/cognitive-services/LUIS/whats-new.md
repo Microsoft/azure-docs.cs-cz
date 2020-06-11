@@ -3,18 +3,24 @@ title: Co je nového – Language Understanding (LUIS)
 description: Tento článek se pravidelně aktualizuje o novinky o Language Understanding API Azure Cognitive Services.
 ms.topic: overview
 ms.date: 05/19/2020
-ms.openlocfilehash: b4d287c8d1ddbeeee63390fb397718de1234c93e
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 45bfe4e703942a7fa38329bd0905833e904e0ab1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83675955"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678745"
 ---
 # <a name="whats-new-in-language-understanding"></a>Co je nového v Language Understanding
 
 Zjistěte, co je nového ve službě. Mezi tyto položky patří poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
 ## <a name="release-notes"></a>Poznámky k verzi
+
+### <a name="june-2020"></a>Červeně 2020
+
+* [Preview 3,0 vytváření](luis-migration-authoring-entities.md) Sadě
+    * Verze 3.2.0-Preview. 3 – [.NET – NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)
+    * Verze 4.0.0-Preview. 3- [js-npm](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)
 
 ### <a name="may-2020---build"></a>Květen 2020 – Build
 

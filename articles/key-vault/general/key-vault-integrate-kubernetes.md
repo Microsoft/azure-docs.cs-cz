@@ -6,12 +6,12 @@ ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: e945a30ca1fcd62fdfccd16d4e853540dbf73d8a
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 27d602f22aa3915f39f21ac924afa42b98e70720
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637166"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667134"
 ---
 # <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-secret-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro úložiště tajného úložiště v Kubernetes
 
@@ -20,11 +20,12 @@ V tomto kurzu budete mít přístup k tajným klíčům z Azure Key Vault a bude
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření instančního objektu
-> * Nasazení clusteru služby Azure Kubernetes
+> * Vytvoření instančního objektu nebo použití spravovaných identit
+> * Nasazení clusteru služby Azure Kubernetes pomocí Azure CLI
 > * Nainstalovat ovladač Helm pro ukládání tajných klíčů
 > * Vytvoření Azure Key Vault a nastavení tajných kódů
 > * Vytvoření vlastního objektu SecretProviderClass
+> * Přiřazení instančního objektu nebo použití spravovaných identit
 > * Nasaďte svůj pod s připojenými tajnými kódy z Key Vault
 
 ## <a name="prerequisites"></a>Požadavky
@@ -62,8 +63,8 @@ Postupujte podle tohoto [Průvodce](https://docs.microsoft.com/azure/aks/kuberne
 az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
 ```
 
-1. [Nastavte proměnnou prostředí PATH](https://www.java.com/en/download/help/path.xml) na soubor "kubectl. exe", který se stáhl.
-1. Pomocí níže uvedeného příkazu ověřte verzi Kubernetes. Tento příkaz zobrazí výstup verze klienta a serveru. Verze klienta je "kubectl. exe", který jste nainstalovali, když je serverovou verzí služby Azure Kubernetes, na kterých je cluster spuštěný.
+1. [Nastavte proměnnou prostředí PATH](https://www.java.com/en/download/help/path.xml) na soubor kubectl.exe, který se stáhl.
+1. Pomocí níže uvedeného příkazu ověřte verzi Kubernetes. Tento příkaz zobrazí výstup verze klienta a serveru. Verze klienta je kubectl.exe, kterou jste nainstalovali, zatímco verze serveru je služba Azure Kubernetes Services, na které je cluster spuštěný.
     ```azurecli
     kubectl version
     ```
@@ -78,7 +79,7 @@ az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 
 
     Toto je výstup s oběma parametry zvýrazněnými.
     
-    ![](../media/kubernetes-key-vault-5.png) ![ Obrázek obrázku](../media/kubernetes-key-vault-6.png)
+    ![](../media/kubernetes-key-vault-2.png) ![ Obrázek obrázku](../media/kubernetes-key-vault-3.png)
     
 ## <a name="install-helm-and-secrets-store-csi-driver"></a>Nainstalovat ovladač Helm pro ukládání tajných klíčů
 
@@ -157,7 +158,7 @@ spec:
 ```
 Níže je uveden výstup konzoly pro "AZ klíčů trezor show--Name contosoKeyVault5" s relevantními zvýrazněnými metadaty:
 
-![Image](../media/kubernetes-key-vault-2.png)
+![Image](../media/kubernetes-key-vault-4.png)
 
 ## <a name="assign-your-service-principal-or-use-managed-identities"></a>Přiřazení instančního objektu nebo použití spravovaných identit
 
@@ -172,7 +173,7 @@ Pokud používáte instanční objekt. Abyste mohli získat přístup k vašemu 
 
     Níže je uveden výstup příkazu: 
 
-    ![Image](../media/kubernetes-key-vault-3.png)
+    ![Image](../media/kubernetes-key-vault-5.png)
 
 1. Udělte instančnímu objektu oprávnění k získání tajných kódů:
     ```azurecli
@@ -206,19 +207,19 @@ Pokud používáte spravované identity, přiřaďte ke clusteru AKS, který jst
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```
 
-1. Nainstalujte do AKS identitu služby Azure Active Directory (Azure AD).
+1. Nainstalujte do AKS identitu pro Azure Active Directory (AAD).
     ```azurecli
     helm repo add aad-pod-identity https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts
 
     helm install pod-identity aad-pod-identity/aad-pod-identity
     ```
 
-1. Vytvořte identitu Azure AD. Zkopírujte pole **ClientID** a **principalId**.
+1. Vytvořte identitu AAD. Zkopírujte pole **ClientID** a **principalId**.
     ```azurecli
     az identity create -g $resourceGroupName -n $identityName
     ```
 
-1. Přiřaďte roli Čtenář k identitě Azure AD, kterou jste právě vytvořili pro svůj Key Vault. Pak Udělte identitě oprávnění k získání tajných kódů z vašeho Key Vault. Chystáte se použít **ClientID** a **PrincipalId** z identity Azure, kterou jste právě vytvořili.
+1. Přiřaďte roli Čtenář k identitě AAD, kterou jste právě vytvořili pro svůj Key Vault. Pak Udělte identitě oprávnění k získání tajných kódů z vašeho Key Vault. Chystáte se použít **ClientID** a **PrincipalId** z identity Azure, kterou jste právě vytvořili.
     ```azurecli
     az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
@@ -309,7 +310,7 @@ Chcete-li zjistit stav pod, použijte následující příkaz:
 kubectl describe pod/nginx-secrets-store-inline
 ```
 
-![Image](../media/kubernetes-key-vault-4.png)
+![Image](../media/kubernetes-key-vault-6.png)
 
 Nasazený pod by měl být ve stavu spuštěno. V části "události" v dolní části jsou všechny typy událostí vlevo klasifikovány jako "normální".
 Jakmile ověříte, že je spuštěný, můžete ověřit, že vaše zařízení má tajná klíč z Key Vault.

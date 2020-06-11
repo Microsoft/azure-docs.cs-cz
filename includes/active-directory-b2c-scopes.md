@@ -5,16 +5,16 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 10/16/2019
 ms.author: mimart
-ms.openlocfilehash: bbbc606497b53a0790d667a63b45101a3c18bbc4
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: 3ebe1ec4c0292a530e5ef2c754e9b002e931300e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84297479"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84680291"
 ---
-#### <a name="app-registrations-preview"></a>[Registrace aplikací (Preview)](#tab/app-reg-preview/)
+#### <a name="app-registrations"></a>[Registrace aplikací](#tab/app-reg-ga/) 
 
-1. Vyberte **Registrace aplikací (Preview)**.
+1. Vyberte **Registrace aplikací**.
 1. Výběrem aplikace *webapi1* otevřete její stránku **Přehled** .
 1. V části **Spravovat**vyberte **zveřejnit rozhraní API**.
 1. Vedle pole **identifikátor URI ID aplikace**vyberte odkaz **nastavit** .
@@ -29,9 +29,9 @@ ms.locfileid: "84297479"
     1. **Zobrazovaný název souhlasu správce**:`Write access to demo API`
     1. **Popis souhlasu správce**:`Allows write access to the demo API`
 
-#### <a name="applications"></a>[Aplikace](#tab/applications/)
+#### <a name="applications-legacy"></a>[Aplikace (starší verze)](#tab/applications-legacy/)
 
-1. Vyberte **aplikace**.
+1. Vyberte **aplikace (starší verze)**.
 1. Výběrem aplikace *webapi1* otevřete její stránku **vlastností** .
 1. Vyberte **publikované obory**. Publikované obory lze použít pro udělení určitých oprávnění k webovému rozhraní API klientské aplikaci.
 1. Pro **Rozsah**zadejte, `demo.read` a pro **Popis**zadejte `Read access to the web API` .

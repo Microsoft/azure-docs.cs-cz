@@ -2,29 +2,70 @@
 title: Funkce – LUIS
 description: Přidáním funkcí do jazykového modelu poskytněte nápovědu týkající se rozpoznávání vstupu, který chcete označit nebo klasifikovat.
 ms.topic: conceptual
-ms.date: 05/14/2020
-ms.openlocfilehash: c4f19ceed2e48f3f6ec2ed0958bccb7a85cff44f
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.date: 06/10/2020
+ms.openlocfilehash: 823c51f0b58481e30ff54814dde03285ad094b9e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83742716"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677587"
 ---
 # <a name="machine-learning-ml-features"></a>Funkce strojového učení (ML)
 
-Ve službě Machine Learning je **funkce**   odlišující se vlastností a atributů dat, která systém sleduje.
+Ve službě Machine Learning je **funkce**   odlišující se vlastností a atributů dat, která systém sleduje a se učí.
 
 Funkce strojového učení poskytují LUIS důležité pomůcky pro hledání věcí, které budou rozlišovat koncept. Jsou to doporučení, která LUIS můžou používat, ale ne pevná pravidla.  Tyto pomocné parametry se používají ve spojení s popisky pro hledání dat.
 
- LUIS podporuje seznamy frází a jako funkce používají jiné entity:
+## <a name="what-is-a-feature"></a>Co je funkce
+
+Funkce je rozlišující vlastnosti, které lze popsat jako funkci: f (x) = y. Funkce se používá k zjištění, kde hledat, v příkladu utterance, pro odlišení vlastnosti. Co se při vytváření vašeho schématu dozvíte o příkladu utterance, který označuje vlastnost? Vaše odpověď je nejlepším osvědčeným průvodcem vytvářením funkcí.
+
+## <a name="types-of-features"></a>Typy funkcí
+
+ LUIS podporuje seznamy frází i modely jako funkce:
 * Funkce seznamu frází
 * Model (záměr nebo entita) jako funkce
 
 Funkce by měly být považovány za nezbytnou součást návrhu schématu.
 
+## <a name="how-you-find-features-in-your-example-utterances"></a>Jak najít funkce v příkladu projevy
+
+Vzhledem k tomu, že LUIS je jazykově založená aplikace, budou mít funkce založené na textu. Vyberte text, který určuje vlastnost, kterou chcete odlišit. V případě LUIS je textovým nejmenším procesorem token. V anglickém jazyce je token souvislým rozsahem bez mezer nebo interpunkčních znamének, písmen a číslic. Prostor není token.
+
+Vzhledem k tomu, že mezery a interpunkční znaménka nejsou tokeny, zaměřte se na text, který můžete použít jako funkce. Nezapomeňte zahrnout variace těchto slov:
+* množné formuláře
+* vhodné příkazů
+* zkratka
+* pravopis a pravopis
+
+Má text jako rozlišující vlastnost tyto vlastnosti:
+* Porovnat přesné slovo nebo frázi – zvažte přidání entity regulárního výrazu nebo seznamu entit jako funkce pro entitu nebo záměr.
+* Porovnává známý pojem, jako jsou data, časy nebo jména uživatelů – jako funkci pro entitu nebo záměr použijte předem vytvořenou entitu.
+* Naučte se nové příklady v čase – použijte seznam frází některých příkladů konceptu jako funkci pro entitu nebo záměr.
+
+## <a name="combine-features"></a>Kombinování funkcí
+
+Vzhledem k tomu, že existuje několik možností, jak je popsána vlastnost, můžete použít více než jednu funkci, která pomáhá popsat daný znak nebo koncept. Společné párování je použití funkce seznamu frází a jednoho z typů entit, které se běžně používají jako funkce: předem sestavená entita, entita regulárního výrazu nebo entita seznamu.
+
+### <a name="ticket-booking-entity-example"></a>Příklad entity rezervace lístku
+
+Jako první příklad si představte aplikaci pro rezervaci letu s záměrem rezervace letu a entitou rezervace lístku.
+
+Entita rezervace lístku je entita získaná počítačem pro cílové umístění letu. Chcete-li získat informace o umístění, použijte dvě funkce, které vám pomůžou:
+* Seznam frází relevantních slov, jako například, `plane` `flight` , `reservation` ,`ticket`
+* Předem vytvořená `geographyV2` entita jako funkce pro entitu
+
+### <a name="pizza-entity-example"></a>Příklad entity Pizza
+
+Jako jiný příklad si představte aplikaci pro seřazení Pizza s cílem vytvořit objednávku Pizza a entitu Pizza.
+
+Entita Pizza je entita získaná počítačem pro podrobnosti o Pizza. Chcete-li získat podrobné informace, použijte dvě funkce, které vám pomůžou:
+* Seznam frází relevantních slov, jako například, `cheese` `crust` , `pepperoni` ,`pineapple`
+* Předem vytvořená `number` entita jako funkce pro entitu
+
 ## <a name="a-phrase-list-for-a-particular-concept"></a>Seznam frází pro konkrétní koncept
 
-Seznam frází je seznam slov nebo frází, které zapouzdřují konkrétní koncept.
+Seznam frází je seznam slov nebo frází, které zapouzdřují konkrétní koncept a jsou aplikovány jako porovnávání bez rozlišení velkých a malých písmen na úrovni tokenu.
 
 Když přidáváte seznam frází, můžete tuto funkci nastavit jako:
 * **[Globální](#global-features)**. Globální funkce se vztahuje na celou aplikaci.
@@ -55,6 +96,18 @@ Pokud chcete extrahovat lékařské výrazy:
 * Nejprve v rámci těchto projevy vytvořte příklad lékařského lékařství projevy a návěští.
 * Pak vytvořte seznam frází s příklady podmínek v doméně předmětu. Seznam frází by měl zahrnovat skutečný termín, který jste popsali, a další podmínky, které popisují stejný pojem.
 * Přidejte seznam frází k entitě nebo podentitě, která extrahuje koncept použitý v seznamu frází. Nejběžnějším scénářem je součást (podřízená) entita strojového učení. Pokud má být seznam frází použit ve všech záměrech nebo entitách, označte seznam frází jako globální seznam frází. `enabledForAllModels`Příznak řídí tento rozsah modelu v rozhraní API.
+
+### <a name="token-matches-for-a-phrase-list"></a>Shody tokenu pro seznam frází
+
+Seznam frází se vztahuje na úroveň tokenu bez ohledu na velikost písmen. Následující graf znázorňuje, jak se seznam frází obsahující slovo `Ann` aplikuje na variace stejných znaků v tomto pořadí.
+
+
+| Variace tokenu`Ann` | Shoda v seznamu frází, když se najde token |
+|--------------------------|---------------------------------------|
+| ANN<br>aNN<br>           | Ano – token je`Ann`                  |
+| Ann                    | Ano – token je`Ann`                  |
+| Anne                     | No – token je`Anne`                  |
+
 
 <a name="how-to-use-phrase-lists"></a>
 <a name="how-to-use-a-phrase-lists"></a>

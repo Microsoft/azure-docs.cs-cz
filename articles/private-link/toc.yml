@@ -13,6 +13,7 @@
     - name: Vytvoření privátního koncového bodu – Azure CLI
       href: create-private-endpoint-cli.md
     - name: Vytvoření privátního koncového bodu – šablona Resource Manageru
+      displayName: Resource Manager
       href: create-private-endpoint-template.md
     - name: Vytvoření služby Private Link – portál
       href: create-private-link-service-portal.md
@@ -21,6 +22,7 @@
     - name: Vytvoření služby Private Link – Azure CLI
       href: create-private-link-service-cli.md
     - name: Vytvoření služby Private Link – šablona Resource Manageru
+      displayName: Resource Manager
       href: create-private-link-service-template.md
 - name: Koncepty
   items:

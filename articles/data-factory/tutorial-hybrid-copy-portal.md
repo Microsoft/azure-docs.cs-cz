@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 05/29/2020
-ms.openlocfilehash: 708236cbbd9bf10c6e9edf6b59a3d8e814a40e9f
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.date: 06/08/2020
+ms.openlocfilehash: f11498812c3923f75ca84e66cab9098e86cc192e
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84194618"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84661014"
 ---
 # <a name="copy-data-from-a-sql-server-database-to-azure-blob-storage"></a>Kopírování dat z databáze SQL Server do úložiště objektů BLOB v Azure
 
@@ -100,7 +100,7 @@ V této části vytvoříte ve svém úložišti objektů blob kontejner objekt�
 
 1. V okně **kontejnery** vyberte **+ kontejner** a vytvořte nový.
 
-1. V okně **Nový kontejner** v části **Název** zadejte **adftutorial**. Pak vyberte **vytvořit**.
+1. V okně **Nový kontejner** v části **Název** zadejte **adftutorial**. Potom vyberte **Vytvořit**.
 
 1. V seznamu kontejnerů vyberte **adftutorial** , který jste právě vytvořili.
 
@@ -159,7 +159,7 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní s
 
 1. V dialogovém okně **nastavení Integration runtime** **Vyberte možnost v místním**prostředí a pak vyberte **pokračovat**.
 
-1. Do pole název zadejte **TutorialIntegrationRuntime**. Pak vyberte **vytvořit**.
+1. Do pole název zadejte **TutorialIntegrationRuntime**. Potom vyberte **Vytvořit**.
 
 1. Pro nastavení vyberte **kliknutím sem spustíte expresní instalaci pro tento počítač**. Tato akce nainstaluje prostředí Integration Runtime na vašem počítači a zaregistruje ho ve službě Data Factory. Případně můžete využít možnost ruční instalace a stáhnout instalační soubor, spustit ho a použít klíč k registraci prostředí Integration Runtime.
     ![Instalace prostředí Integration Runtime](./media/tutorial-hybrid-copy-portal/intergration-runtime-setup.png)
@@ -182,7 +182,7 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní s
 
     f. Vyberte **Test připojení**. Tento krok potvrzuje, že Data Factory se může připojit k vaší databázi SQL Server pomocí místního prostředí Integration runtime, které jste vytvořili.
 
-    g. Pokud chcete propojenou službu uložit, vyberte **vytvořit**.
+    například Pokud chcete propojenou službu uložit, vyberte **vytvořit**.
  
     ![Nová propojená služba (SQL Server)](./media/tutorial-hybrid-copy-portal/new-sqlserver-linked-service.png)
 
@@ -219,7 +219,7 @@ V tomto kroku vytvoříte datovou továrnu a spustíte uživatelské rozhraní s
     c. V části **soubor** vyberte **Přidat dynamický obsah**.
     ![dynamické výraz pro překlad názvu souboru](./media/tutorial-hybrid-copy-portal/file-name.png)
 
-    d. Přidejte `@CONCAT(pipeline().RunId, '.txt')` a pak vyberte **Dokončit**. Tato akce přejmenuje soubor pomocí souboru PipelineRunID. txt.
+    d. Přidejte `@CONCAT(pipeline().RunId, '.txt')` a pak vyberte **Dokončit**. Tato akce přejmenuje soubor pomocí PipelineRunID.txt.
 
 1. Přejděte na kartu s otevřeným kanálem nebo vyberte kanál ve stromovém zobrazení. Ověřte, že je v části **Datová sada jímky** vybraná datová sada **AzureBlobDataset**.
 

@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 01/30/2020
 ms.topic: tutorial
-ms.openlocfilehash: 7901f12763cb97fa76c0908e76755247ae934a20
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: c05daa998829c4ac0687f75ae5678695127a50b0
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84300585"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659915"
 ---
 # <a name="tutorial-setting-up-a-unity-project-from-scratch"></a>Kurz: vytvoření projektu Unity od začátku
 
@@ -105,6 +105,7 @@ Vyberte **hlavní uzel kamery** .
 
 1. Otevřít *úpravy > nastavení projektu...*
 1. V seznamu na levé straně vyberte kvalitu.
+1. **Úroveň aktivní kvality** změňte na *Nízká* , a to tak, že ji vyberete.
 1. Změnit **výchozí úroveň kvality** na *Nízká*
 
     ![změnit nastavení kvality projektu](media/settings-quality.png)

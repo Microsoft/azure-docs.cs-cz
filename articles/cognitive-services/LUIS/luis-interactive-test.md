@@ -1,14 +1,14 @@
 ---
 title: Testovací aplikace na portálu LUIS
 description: Pomocí Language Understanding (LUIS) můžete průběžně pracovat na vaší aplikaci a zdokonalit tak její porozumění jazyku.
-ms.topic: how-to
-ms.date: 05/20/2020
-ms.openlocfilehash: 86ee90e2d3bb322a4f55439d105941cf43462d3e
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.topic: conceptual
+ms.date: 06/02/2020
+ms.openlocfilehash: 574bacdb5e1f167c9c9174d4a119552391059004
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84344148"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677728"
 ---
 # <a name="test-your-luis-app-in-the-luis-portal"></a>Testování aplikace LUIS na portálu LUIS
 
@@ -65,9 +65,25 @@ Z panelu Kontrola můžete přidat utterance testu do záměru tak, že vyberete
 
 ## <a name="disable-required-features"></a>Zakázat požadované funkce
 
-Výběrem tohoto přepínače zobrazíte, co by předpověď znamenalo, pokud nebyla funkce entity nutná.
+Tento přepínač vám pomůže určit, jestli má školená aplikace správně předpovídat vaše entity na základě požadovaných funkcí. Výchozím nastavením je použití funkce, jak je požadováno během předpovědi. Výběrem tohoto přepínače zobrazíte, co by předpověď znamenalo v případě, že se funkce subentity nevyžadovala.
 
-Tento přepínač vám pomůže určit, jestli má školená aplikace správně předpovídat vaše entity na základě požadovaných funkcí. Vyškolená aplikace může vyhodnotit neplatnou entitu strojového učení na základě nesprávného označení příkladu projevy nebo požadovaná funkce se neshoduje s textem.
+### <a name="when-to-disable-required-features"></a>Kdy zakázat požadované funkce
+
+Vyškolená aplikace může vypovídat nepředvídatelné entitu zjištěné počítačem na základě jedné z následujících možností:
+* Nesprávné označení příkladu projevy.
+* Požadovaná funkce se neshoduje s textem.
+
+Příkladem je entita získaná počítačem s podentitou názvu osoby.
+
+:::image type="content" source="media/luis-how-to-interactive-test/disable-required-feature.png" alt-text="Snímek obrazovky počítačového portálu LUIS se naučilo schéma entit s požadovanou funkcí":::
+
+Příklad utterance pro tuto entitu, která se naučila pro tento počítač, je: `Assign Bob Jones to work on the new security feature` .
+
+Extrakce by měla být `security feature` jako popis lístku a `Bob Jones` jako inženýr, dvě subentity `Assign ticket` entity.
+
+Aby bylo možné podentitě úspěšně odhadnout, přidejte do subentity předem vytvořenou entitu [Person](luis-reference-prebuilt-person.md) AA a `engineer` . Pokud funkci požadujete, znamená to, že podentita bude extrahována pouze v případě, že je pro text předpovězena předdefinovaná entita Person. To znamená, že libovolný název v textu, který není předpovídat s názvem Person subentity, nebude vrácen jako subentita s popiskem, `engineer` .
+
+Když použijete interaktivní podokno test a v případě, že se zobrazí podentita s požadovanou funkcí, není předpověď, přepněte toto nastavení, abyste viděli, jestli by se subentita mohla předpovědět bez požadované funkce. Podentita může být schopná správně předpovězena bez požadované funkce z důvodu správného označení příkladu projevy.
 
 ## <a name="view-sentiment-results"></a>Zobrazit výsledky mínění
 

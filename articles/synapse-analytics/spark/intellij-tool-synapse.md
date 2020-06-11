@@ -8,14 +8,14 @@ ms.reviewer: jrasnick, carlrab
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 04/15/2020
-ms.openlocfilehash: b344ae50d921c33a5e8ddd344e08ec86179668e9
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 3971d49befd228c111b1a8da5fce44e25abfaa65
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608753"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657832"
 ---
-# <a name="tutorial-create-apache-spark-applications-with-intellij-using-synapse-synapse-analytics-workspaces-preview"></a>Kurz: vytváření Apache Spark aplikací pomocí IntelliJ pomocí synapse synapse Analytics (Preview z pracovních prostorů)
+# <a name="tutorial-create-an-apache-spark-applications-with-intellij-using-a-synapse-workspace"></a>Kurz: vytvoření Apache Sparkch aplikací pomocí IntelliJ pomocí pracovního prostoru synapse
 
 V tomto kurzu se dozvíte, jak používat modul plug-in Azure Toolkit for IntelliJ k vývoji Apache Spark aplikací, které jsou napsané v [Scala](https://www.scala-lang.org/), a pak je odeslat do fondu Spark (Preview) přímo z integrovaného vývojového prostředí (IDE) IntelliJ. Modul plug-in můžete použít několika způsoby:
 
@@ -38,7 +38,7 @@ V tomto kurzu se naučíte:
 - Modul plug-in Scala – nainstalujte z [úložiště modulu plug-in IntelliJ](/azure/hdinsight/spark/apache-spark-intellij-tool-plugin#install-scala-plugin-for-intellij-idea).
 - Tato součást je určena pouze pro uživatele systému Windows.
 
-  Když spouštíte místní aplikaci Spark Scala na počítači se systémem Windows, může se zobrazit výjimka, jak je vysvětleno v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). K výjimce dochází, protože ve Windows chybí WinUtils. exe.
+  Když spouštíte místní aplikaci Spark Scala na počítači se systémem Windows, může se zobrazit výjimka, jak je vysvětleno v [Spark-2356](https://issues.apache.org/jira/browse/SPARK-2356). K výjimce dochází, protože ve Windows chybí WinUtils.exe.
   Chcete-li tuto chybu vyřešit, stáhněte [spustitelný soubor WinUtils](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe) do umístění, jako je například **C:\WinUtils\bin**. Pak přidejte proměnnou prostředí **HADOOP_HOME**a nastavte hodnotu proměnné na **C:\WinUtils**.
 
 ## <a name="create-a-spark-scala-application-for-a-spark-pool"></a>Vytvoření aplikace Spark Scala pro fond Spark
@@ -169,9 +169,9 @@ Můžete postupovat podle pokynů níže pro nastavení místního běhu a míst
 
     ![IntelliJ spustit místní běh konfigurací ladění](./media/intellij-tool-synapse/local-run-synapse.png)
 
-    - Proměnné prostředí a umístění WinUtils. exe jsou pouze pro uživatele systému Windows.
+    - Proměnné prostředí a WinUtils.exe umístění jsou pouze pro uživatele systému Windows.
     - Proměnné prostředí: proměnná prostředí systému může být automaticky rozpoznána, pokud jste ji nastavili před a není nutné ji přidat ručně.
-    - [Umístění WinUtils. exe](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): umístění WinUtils můžete zadat kliknutím na ikonu složky na pravé straně.
+    - [UmístěníWinUtils.exe](http://public-repo-1.hortonworks.com/hdp-win-alpha/winutils.exe): umístění WinUtils můžete zadat kliknutím na ikonu složky na pravé straně.
 
 2. Pak klikněte na tlačítko místní přehrávání.
 
@@ -210,7 +210,7 @@ Můžete spustit místní konzolu Spark (Scala) nebo spustit konzolu Spark Livy 
 
 ### <a name="spark-local-console-scala"></a>Místní konzola Spark (Scala)
 
-Ujistěte se, že jste spokojeni s WINUTILS. Požadovaná součást EXE.
+Ujistěte se, že jste splnili požadavky na WINUTILS.EXE.
 
 1. Z řádku nabídek přejděte na **Spustit**  >  **úpravy konfigurace...**.
 2. V okně **Konfigurace spuštění/ladění** v levém podokně přejděte na **Apache Spark v synapse**  >  **[Spark on synapse] MyApp**.
@@ -220,7 +220,7 @@ Ujistěte se, že jste spokojeni s WINUTILS. Požadovaná součást EXE.
     |Vlastnost |Hodnota |
     |----|----|
     |Proměnné prostředí|Zajistěte, aby byla hodnota HADOOP_HOME správná.|
-    |Umístění WINUTILS. exe|Zkontrolujte, zda je cesta správná.|
+    |Umístění WINUTILS.exe|Zkontrolujte, zda je cesta správná.|
 
     ![Konfigurace sady místních konzol](./media/intellij-tool-synapse/local-console-synapse01.png)
 

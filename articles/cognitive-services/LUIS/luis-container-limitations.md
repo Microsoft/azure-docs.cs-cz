@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: 2061d69fdfd13683ee722951cc7aaedcb1e1750a
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 5c76e45f09a0f432d2775eb19d3dcaa668294e6f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745375"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84672659"
 ---
 # <a name="language-understanding-luis-container-limitations"></a>Omezení kontejneru Language Understanding (LUIS)
 
@@ -49,6 +49,7 @@ Kontejnery LUIS podporují podmnožinu jazyků, které [podporuje](luis-language
 | Jazyk | Národní prostředí | Předem sestavená doména | Předem vytvořená entita | Doporučení pro seznam frází | **[Analýza textu](../text-analytics/language-support.md)<br>(Mínění a<br>Klíčov|
 |--|--|:--:|:--:|:--:|:--:|
 | Angličtina (Spojené státy) | `en-US` | ✔️ | ✔️ | ✔️ | ✔️ |
+| Arabština (Preview – moderní standardní arabština) |`ar-AR`|❌|❌|❌|❌|
 | *[Čínština](#chinese-support-notes) |`zh-CN` | ✔️ | ✔️ | ✔️ | ❌ |
 | francouzština (Francie) |`fr-FR` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Francouzština (Kanada) |`fr-CA` | ❌ | ❌ | ❌ | ✔️ |
@@ -56,9 +57,12 @@ Kontejnery LUIS podporují podmnožinu jazyků, které [podporuje](luis-language
 | Hindština | `hi-IN`| ❌ | ❌ | ❌ | ❌ |
 | Italština |`it-IT` | ✔️ | ✔️ | ✔️ | ✔️ |
 | Korejština |`ko-KR` | ✔️ | ❌ | ❌ | Jenom *klíčová fráze* |
+| Maráthština | `mr-IN`|❌|❌|❌|❌|
 | Portugalština (Brazílie) |`pt-BR` | ✔️ | ✔️ | ✔️ | Ne všechny dílčí kultury |
 | Španělština (Španělsko) |`es-ES` | ✔️ | ✔️ |✔️|✔️|
 | Španělština (Mexiko)|`es-MX` | ❌ | ❌ |✔️|✔️|
+| Tamilština | `ta-IN`|❌|❌|❌|❌|
+| Telugština | `te-IN`|❌|❌|❌|❌|
 | Turečtina | `tr-TR` |✔️| ❌ | ❌ | Jenom *mínění* |
 
 [!INCLUDE [Chinese language support notes](includes/chinese-language-support-notes.md)]

@@ -2,15 +2,15 @@
 title: Kurz – vytvoření šablony & nasazení
 description: Vytvořte svou první šablonu Azure Resource Manager. V tomto kurzu se dozvíte o syntaxi souboru šablony a o tom, jak nasadit účet úložiště.
 author: mumian
-ms.date: 05/29/2020
+ms.date: 06/10/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: dff1dd15f7f161f25ef7de54e36fa83e3e0036d2
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: e2419e8ee9f8648ae8f929638ac2c85ea8b67a0f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235213"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676144"
 ---
 # <a name="tutorial-create-and-deploy-your-first-arm-template"></a>Kurz: vytvoření a nasazení první šablony ARM
 
@@ -34,9 +34,10 @@ Pojďme začít tím, že budete mít k dispozici nástroje, které potřebujete
 
 K nasazení šablony budete taky potřebovat buď Azure PowerShell, nebo rozhraní příkazového řádku Azure. Pokud používáte Azure CLI, musíte mít nejnovější verzi. Pokyny k instalaci najdete v těchto tématech:
 
-- [Nainstalovat Azure PowerShell](/powershell/azure/install-az-ps)
+- [Instalace prostředí Azure PowerShell](/powershell/azure/install-az-ps)
 - [Instalace Azure CLI ve Windows](/cli/azure/install-azure-cli-windows)
 - [Instalace rozhraní příkazového řádku Azure CLI v systému Linux](/cli/azure/install-azure-cli-linux)
+- [Instalace Azure CLI v macOS](/cli/azure/install-azure-cli-macos)
 
 Po instalaci Azure PowerShell nebo rozhraní příkazového řádku Azure se ujistěte, že poprvé se přihlašujete. Nápovědu najdete v tématu věnovaném [přihlášení k prostředí PowerShell](/powershell/azure/install-az-ps#sign-in) nebo [přihlášení – Azure CLI](/cli/azure/get-started-with-azure-cli#sign-in).
 
@@ -50,7 +51,7 @@ V pořádku budete připraveni začít se získáváním informací o šablonác
 1. Otevřete Visual Studio Code s nainstalovaným rozšířením nástroje Správce prostředků Tools.
 1. V nabídce **soubor** vyberte **nový soubor** a vytvořte nový soubor.
 1. V nabídce **soubor** vyberte **Uložit jako**.
-1. Pojmenujte soubor **azuredeploy** a vyberte příponu souboru **JSON** . Úplný název souboru **azuredeploy. JSON**.
+1. Pojmenujte soubor **azuredeploy** a vyberte příponu souboru **JSON** . Úplný název souboru **azuredeploy.jsv**.
 1. Uložte soubor do pracovní stanice. Vyberte cestu, která se snadno pamatuje, protože tuto cestu zadáte později při nasazování šablony.
 1. Zkopírujte následující kód JSON a vložte ho do souboru:
 
@@ -182,7 +183,7 @@ Příkaz pro nasazení vrátí výsledky. Vyhledejte, pokud `ProvisioningState` 
 
 Nasazení můžete ověřit prozkoumáním skupiny prostředků z Azure Portal.
 
-1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
+1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
 
 1. V nabídce vlevo vyberte **skupiny prostředků**.
 

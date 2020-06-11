@@ -2,13 +2,13 @@
 title: Typy entit – LUIS
 description: Entita extrahuje data z utterance uživatele v předpokládaném modulu runtime. _Volitelným_a sekundárním účelem je zvýšit předpověď záměru nebo jiných entit pomocí entity jako funkce.
 ms.topic: conceptual
-ms.date: 05/17/2020
-ms.openlocfilehash: a5e4812eab84650401dd19b0f8d7b361a5135dd3
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: 61dc0688cd304a672321f846a3ae5798c271345d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682167"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676484"
 ---
 # <a name="extract-data-with-entities"></a>Extrakce dat s entitami
 
@@ -41,7 +41,9 @@ I když jsou požadované [záměry](luis-concept-intent.md) , jsou entity volit
 
 Jak se vyvíjí vaše aplikace a identifikují se nové potřeby dat, můžete do modelu LUIS přidat vhodné entity později.
 
-## <a name="entity-compared-to-intent"></a>Entita v porovnání s záměrem
+<a name="entity-compared-to-intent"></a>
+
+## <a name="entity-represents-data-extraction"></a>Entita představuje extrakci dat
 
 Entita představuje koncept dat _uvnitř utterance_. Záměr klasifikuje _celou utterance_.
 
@@ -53,6 +55,10 @@ Vezměte v úvahu následující čtyři projevy:
 |Poslat něco|sendSomething|-|Nic k extrakci. Model nemá požadovanou funkci pro extrakci `something` v tomto kontextu a není uveden žádný příjemce.|
 |Poslat Bobovi a|sendSomething|`Bob`, `present`|Model se extrahuje `Bob` tak, že se přidá požadovaná funkce předem sestavené entity `personName` . Entita strojového učení se použila k extrakci `present` .|
 |Poslat Bobovi pole čokolády|sendSomething|`Bob`, `box of chocolates`|Tyto dvě důležité části dat a byly `Bob` `box of chocolates` extrahovány entitami strojového učení.|
+
+## <a name="label-entities-in-all-intents"></a>Označení entit ve všech záměrech
+
+Entity extrahují data bez ohledu na předpokládaný záměr. Ujistěte se, že jste ve všech záměrech projevy popisky _All_ . `None`Záměru chybějícího označení entity způsobuje nejasnost, i když pro ostatní záměry existovalo ještě mnohem více školení projevy.
 
 ## <a name="design-entities-for-decomposition"></a>Entity návrhu pro rozložení
 
