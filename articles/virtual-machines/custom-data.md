@@ -7,18 +7,16 @@ ms.service: virtual-machines
 ms.topic: article
 ms.date: 03/06/2020
 ms.author: mimckitt
-ms.openlocfilehash: c0dd5c8cd61d1c7abf11d97e858fdc30d774e456
-ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+ms.openlocfilehash: 444c3afefcf4cfdafc817af3b7bc6ce4463853c1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84259112"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678354"
 ---
 # <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Vlastní data a Cloud-init v Azure Virtual Machines
 
-## <a name="what-is-custom-data"></a>Co jsou vlastní data?
-
-Zákazníci často žádají o vložení skriptu nebo dalších metadat do virtuálního počítače s Microsoft Azure v době zřízení.  V jiných cloudech se tento koncept často označuje jako data uživatelů.  V Microsoft Azure máme podobnou funkci nazvanou vlastní data. 
+Do virtuálního počítače s Microsoft Azure může být potřeba vložit skript nebo jiná metadata v době zřizování.  V jiných cloudech se tento koncept často označuje jako data uživatelů.  V Microsoft Azure máme podobnou funkci nazvanou vlastní data. 
 
 Vlastní data jsou k dispozici pouze pro virtuální počítač při prvním spuštění/počáteční instalaci, zavoláme toto "zřizování". Zřizování je proces, při kterém se k virtuálnímu počítači zpřístupní parametry pro vytvoření virtuálního počítače (například název hostitele, uživatelské jméno, heslo, certifikáty, vlastní data, klíče atd.) a Agent zřizování je zpracuje, jako je například [Agent pro Linux](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) a [Cloud-init](https://docs.microsoft.com/azure/virtual-machines/linux/using-cloud-init#troubleshooting-cloud-init). 
 
@@ -65,12 +63,12 @@ Zřizovací agenti nainstalovanou na virtuálním počítači prochází s platf
 Vlastní data jsou umístěna do *%systemdrive%\AzureData\CustomData.bin* jako binární soubor, ale není zpracována. Pokud chcete tento soubor zpracovat, budete si muset vytvořit vlastní image a napsat kód pro zpracování CustomData. bin.
 
 ### <a name="linux"></a>Linux  
-V operačním systému Linux se vlastní data předávají do virtuálního počítače prostřednictvím souboru OVF-env. XML, který se během zřizování zkopíruje do adresáře */var/lib/waagent* .  Novější verze agenta Microsoft Azure Linux také zkopírují data zakódovaná ve formátu base64 do */var/lib/waagent/CustomData* i pro pohodlí.
+V operačním systému Linux jsou vlastní data do virtuálního počítače předána prostřednictvím souboru ovf-env.xml, který se během zřizování zkopíruje do adresáře */var/lib/waagent* .  Novější verze agenta Microsoft Azure Linux také zkopírují data zakódovaná ve formátu base64 do */var/lib/waagent/CustomData* i pro pohodlí.
 
 Azure v současné době podporuje dva agenty zřizování:
 * Agent pro Linux – ve výchozím nastavení agent nezpracovává vlastní data, budete muset vytvořit vlastní image s povoleným povolením. Relevantní nastavení podle [dokumentace](https://github.com/Azure/WALinuxAgent#configuration) :
     * Zřizování. DecodeCustomData
-    * Zřizování. ExecuteCustomData
+    * Provisioning.ExecuteCustomData
 
 Když povolíte vlastní data a spustíte skript, dojde k zpoždění vytváření sestav virtuálních počítačů, které je připravené, nebo úspěšného zřizování, dokud se skript nedokončí. Pokud skript překročí celkovou dobu zřizování virtuálního počítače 40 minut, vytvoření virtuálního počítače se nezdaří. Poznámka: Pokud se skript nepodaří spustit nebo dojde k chybám během provádění, nepovažuje se za závažné selhání zřizování, budete muset vytvořit cestu oznámení, která vás upozorní na stav dokončení daného skriptu.
 

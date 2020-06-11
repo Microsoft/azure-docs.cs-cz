@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: c5095efef5d4bef44993bdd9cd52dbdef17378a8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 459a34d104e01dca2cdf997c6aedd6f54f3adbaa
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80156102"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677674"
 ---
 # <a name="develop-arm-templates-for-cloud-consistency"></a>Vývoj šablon ARM pro cloudovou konzistenci
 
@@ -51,7 +51,7 @@ Nové funkce šablon, které se zavádějí do Azure Resource Manager nejsou hne
 
 Funkce Azure Resource Manager se vždycky do globálního Azure nasadí dřív. Pomocí následujícího skriptu prostředí PowerShell můžete ověřit, zda nově zavedené funkce šablony jsou také k dispozici v Azure Stack:
 
-1. Vytvořte klon úložiště GitHub: [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions).
+1. Vytvořte klon úložiště GitHub: [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions) .
 
 1. Jakmile budete mít místní klon úložiště, připojte se k Azure Resource Manager cíle pomocí PowerShellu.
 
@@ -106,7 +106,7 @@ Lepším postupem při nasazení mezi několika cloudy je uložení vašich prop
 
 Vzhledem k tomu, že úložiště objektů BLOB v jednotlivých cloudech používá jiný koncový bod plně kvalifikovaný název domény (FQDN), nakonfigurujte šablonu s umístěním propojených šablon se dvěma parametry. Parametry můžou přijímat vstupy uživatele v době nasazení. Šablony jsou obvykle vytvořené a sdílené více lidmi, proto doporučujeme pro tyto parametry použít standardní název. Zásady pojmenování usnadňují použití šablon v různých oblastech, cloudech a tvůrcích.
 
-V následujícím kódu `_artifactsLocation` se používá k odkazování na jedno umístění, které obsahuje všechny artefakty související s nasazením. Všimněte si, že je zadána výchozí hodnota. Pokud v době nasazení není zadána žádná vstupní hodnota pro `_artifactsLocation`, je použita výchozí hodnota. `_artifactsLocationSasToken` Slouží jako vstup pro `sasToken`. Výchozí hodnota by měla být prázdný řetězec pro scénáře, ve kterých `_artifactsLocation` není zabezpečený – například veřejné úložiště GitHub.
+V následujícím kódu `_artifactsLocation` se používá k odkazování na jedno umístění, které obsahuje všechny artefakty související s nasazením. Všimněte si, že je zadána výchozí hodnota. Pokud v době nasazení není zadána žádná vstupní hodnota pro `_artifactsLocation` , je použita výchozí hodnota. `_artifactsLocationSasToken`Slouží jako vstup pro `sasToken` . Výchozí hodnota by měla být prázdný řetězec pro scénáře, ve kterých `_artifactsLocation` není zabezpečený – například veřejné úložiště GitHub.
 
 ```json
 "parameters": {
@@ -127,13 +127,13 @@ V následujícím kódu `_artifactsLocation` se používá k odkazování na jed
 }
 ```
 
-V rámci šablony jsou odkazy generovány kombinací základního identifikátoru URI (z `_artifactsLocation` parametru) s cestou relativního artefaktu a. `_artifactsLocationSasToken` Následující kód ukazuje, jak zadat odkaz na vnořenou šablonu pomocí funkce šablony identifikátoru URI:
+V rámci šablony jsou odkazy generovány kombinací základního identifikátoru URI (z `_artifactsLocation` parametru) s cestou relativního artefaktu a `_artifactsLocationSasToken` . Následující kód ukazuje, jak zadat odkaz na vnořenou šablonu pomocí funkce šablony identifikátoru URI:
 
 ```json
 "resources": [
   {
     "type": "Microsoft.Resources/deployments",
-    "apiVersion": "2015-01-01",
+    "apiVersion": "2019-10-01",
     "name": "shared",
     "properties": {
       "mode": "Incremental",
@@ -146,7 +146,7 @@ V rámci šablony jsou odkazy generovány kombinací základního identifikátor
 ]
 ```
 
-Při použití tohoto přístupu je použita výchozí hodnota `_artifactsLocation` parametru. Pokud je potřeba načíst propojené šablony z jiného umístění, můžete zadat vstup parametru v době nasazení, aby se potlačila výchozí hodnota – nemusíte dělat žádné změny samotné šablony.
+Při použití tohoto přístupu `_artifactsLocation` je použita výchozí hodnota parametru. Pokud je potřeba načíst propojené šablony z jiného umístění, můžete zadat vstup parametru v době nasazení, aby se potlačila výchozí hodnota – nemusíte dělat žádné změny samotné šablony.
 
 ### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>Místo zakódujeme odkazů použít _artifactsLocation
 
@@ -231,7 +231,7 @@ Get-AzureRmResourceProvider -ListAvailable | Select-Object ProviderNamespace, Re
 
 ### <a name="verify-the-version-of-all-resource-types"></a>Ověřit verzi všech typů prostředků
 
-Sada vlastností je společná pro všechny typy prostředků, ale každý prostředek má také vlastní specifické vlastnosti. Nové funkce a související vlastnosti se přidávají do stávajících typů prostředků v době pomocí nové verze rozhraní API. Prostředek v šabloně má svou vlastní vlastnost verze API- `apiVersion`. Tato verze zajišťuje, že existující konfigurace prostředků v šabloně není ovlivněná změnami na platformě.
+Sada vlastností je společná pro všechny typy prostředků, ale každý prostředek má také vlastní specifické vlastnosti. Nové funkce a související vlastnosti se přidávají do stávajících typů prostředků v době pomocí nové verze rozhraní API. Prostředek v šabloně má svou vlastní vlastnost verze API- `apiVersion` . Tato verze zajišťuje, že existující konfigurace prostředků v šabloně není ovlivněná změnami na platformě.
 
 Nové verze rozhraní API, které se zavedly do stávajících typů prostředků v globálním Azure, nemusí být hned dostupné ve všech oblastech, cloudech svrchovaných nebo Azure Stack. Pokud chcete zobrazit seznam dostupných zprostředkovatelů prostředků, typů prostředků a verzí rozhraní API pro Cloud, můžete použít Průzkumník prostředků v Azure Portal. V nabídce všechny služby vyhledejte Průzkumník prostředků. Rozbalte uzel poskytovatelé v Průzkumník prostředků a vraťte všechny dostupné poskytovatele prostředků, jejich typy prostředků a verze rozhraní API v tomto cloudu.
 
@@ -255,7 +255,7 @@ I když byste při zadávání vlastností prostředků v šabloně mohli nekód
 
 Pro přizpůsobení různých oblastí přidejte do šablony umístění vstupního parametru s výchozí hodnotou. Pokud během nasazování není zadaná žádná hodnota, použije se výchozí hodnota.
 
-Funkce `[resourceGroup()]` šablony vrátí objekt, který obsahuje následující páry klíč/hodnota:
+Funkce šablony `[resourceGroup()]` vrátí objekt, který obsahuje následující páry klíč/hodnota:
 
 ```json
 {
@@ -270,7 +270,7 @@ Funkce `[resourceGroup()]` šablony vrátí objekt, který obsahuje následujíc
 }
 ```
 
-Odkazem na klíč umístění objektu v poli se vstupním parametrem se Azure Resource Manager za běhu nahraďte funkci `[resourceGroup().location]` šablony názvem umístění skupiny prostředků, do které šablona nasadí šablonu.
+Odkazem na klíč umístění objektu v poli se vstupním parametrem se Azure Resource Manager za běhu nahraďte `[resourceGroup().location]` funkci šablony názvem umístění skupiny prostředků, do které šablona nasadí šablonu.
 
 ```json
 "parameters": {
@@ -295,13 +295,13 @@ Pomocí této funkce šablony můžete nasadit šablonu do libovolného cloudu, 
 
 ### <a name="track-versions-using-api-profiles"></a>Sledování verzí pomocí profilů rozhraní API
 
-Může být velmi náročné sledovat všechny dostupné poskytovatele prostředků a související verze API, které jsou k dispozici v Azure Stack. V době psaní můžete například nejnovější verzi rozhraní API pro **Microsoft. COMPUTE/availabilitySets** v Azure `2018-04-01`, zatímco dostupná verze API je `2016-03-30`společná pro Azure a Azure Stack. Společná verze rozhraní API pro **Microsoft. Storage/storageAccounts** sdílená mezi všemi lokalitami Azure a `2016-01-01`Azure Stack je, zatímco nejnovější verze rozhraní API v `2018-02-01`Azure je.
+Může být velmi náročné sledovat všechny dostupné poskytovatele prostředků a související verze API, které jsou k dispozici v Azure Stack. V době psaní můžete například nejnovější verzi rozhraní API pro **Microsoft. COMPUTE/availabilitySets** v Azure `2018-04-01` , zatímco dostupná verze API je společná pro Azure a Azure Stack `2016-03-30` . Společná verze rozhraní API pro **Microsoft. Storage/storageAccounts** sdílená mezi všemi lokalitami Azure a Azure Stack je `2016-01-01` , zatímco nejnovější verze rozhraní API v Azure je `2018-02-01` .
 
 Z tohoto důvodu Správce prostředků představil koncept profilů rozhraní API do šablon. Bez profilů rozhraní API jsou jednotlivé prostředky v šabloně nakonfigurované s `apiVersion` prvkem, který popisuje verzi rozhraní API pro daný konkrétní prostředek.
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
     "location": {
@@ -342,7 +342,7 @@ Verze profilu rozhraní API funguje jako alias pro jednu verzi rozhraní API pro
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -380,11 +380,11 @@ Verze profilu rozhraní API funguje jako alias pro jednu verzi rozhraní API pro
 
 Profil rozhraní API zajišťuje, aby verze rozhraní API byly dostupné napříč umístěními, takže nemusíte ručně ověřovat apiVersions, které jsou k dispozici v určitém umístění. Aby se zajistilo, že verze rozhraní API, na které se odkazuje váš profil rozhraní API, se nachází v Azure Stack prostředí, musí Azure Stack operátoři uchovávat řešení v aktuálním stavu na základě zásad pro podporu. Pokud je systém starší než šest měsíců, je považován za nedodržení předpisů a prostředí musí být aktualizováno.
 
-Profil rozhraní API není požadovaným prvkem v šabloně. I v případě, že prvek přidáte, bude použit pouze pro prostředky, pro které není `apiVersion` zadána žádná. Tento prvek umožňuje postupné změny, ale nevyžaduje žádné změny stávajících šablon.
+Profil rozhraní API není požadovaným prvkem v šabloně. I v případě, že prvek přidáte, bude použit pouze pro prostředky, pro které `apiVersion` není zadána žádná. Tento prvek umožňuje postupné změny, ale nevyžaduje žádné změny stávajících šablon.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "apiProfile": "2018–03-01-hybrid",
     "parameters": {
@@ -452,11 +452,11 @@ Následující referenční funkce šablony načte obor názvů koncového bodu 
 "diskUri":"[concat(reference(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))).primaryEndpoints.blob, 'container/myosdisk.vhd')]"
 ```
 
-Nahrazením hodnoty pevně zakódované koncového bodu účtu úložiště pomocí funkce `reference` šablony můžete použít stejnou šablonu pro nasazení do různých prostředí úspěšně, aniž byste museli provádět změny v referenci koncového bodu.
+Nahrazením hodnoty pevně zakódované koncového bodu účtu úložiště pomocí `reference` funkce šablony můžete použít stejnou šablonu pro nasazení do různých prostředí úspěšně, aniž byste museli provádět změny v referenci koncového bodu.
 
 ### <a name="refer-to-existing-resources-by-unique-id"></a>Podívejte se na stávající prostředky podle jedinečného ID.
 
-Můžete také odkazovat na existující prostředek ze stejné nebo jiné skupiny prostředků a v rámci stejného předplatného nebo jiného předplatného v rámci stejného tenanta ve stejném cloudu. Chcete-li načíst vlastnosti prostředku, je nutné použít jedinečný identifikátor samotného prostředku. Funkce `resourceId` šablony NAČTE jedinečné ID prostředku, například SQL Server, jak ukazuje následující kód:
+Můžete také odkazovat na existující prostředek ze stejné nebo jiné skupiny prostředků a v rámci stejného předplatného nebo jiného předplatného v rámci stejného tenanta ve stejném cloudu. Chcete-li načíst vlastnosti prostředku, je nutné použít jedinečný identifikátor samotného prostředku. `resourceId`Funkce šablony načte jedinečné ID prostředku, například SQL Server, jak ukazuje následující kód:
 
 ```json
 "outputs": {
@@ -487,7 +487,7 @@ Pokud chcete načíst seznam dostupných imagí virtuálních počítačů v ně
 az vm image list -all
 ```
 
-Stejný seznam můžete načíst pomocí rutiny Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadat požadované umístění s `-Location` parametrem. Příklad:
+Stejný seznam můžete načíst pomocí rutiny Azure PowerShell [Get-AzureRmVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a zadat požadované umístění s `-Location` parametrem. Například:
 
 ```azurepowershell-interactive
 Get-AzureRmVMImagePublisher -Location "West Europe" | Get-AzureRmVMImageOffer | Get-AzureRmVMImageSku | Get-AzureRmVMImage
@@ -532,7 +532,7 @@ Get-AzureRmVMSize -Location "West Europe"
 
 Služba Managed disks zpracovává úložiště pro tenanta Azure. Místo explicitního vytvoření účtu úložiště a zadání identifikátoru URI virtuálního pevného disku (VHD) můžete použít spravované disky k implicitnímu provedení těchto akcí při nasazení virtuálního počítače. Spravované disky zlepšují dostupnost tím, že se do různých jednotek úložiště umísťují všechny disky z virtuálních počítačů ve stejné skupině dostupnosti. Existující virtuální pevné disky se navíc dají převést z úrovně Standard na Premium Storage s výrazně kratším prostojem.
 
-I když jsou spravované disky v plánu pro Azure Stack, nejsou aktuálně podporované. Dokud neproběhne, můžete vyvíjet šablony konzistentní vzhledem k cloudu pro Azure Stack explicitním zadáním virtuálních `vhd` pevných disků pomocí elementu v šabloně pro prostředek virtuálního počítače, jak je znázorněno níže:
+I když jsou spravované disky v plánu pro Azure Stack, nejsou aktuálně podporované. Dokud neproběhne, můžete vyvíjet šablony konzistentní vzhledem k cloudu pro Azure Stack explicitním zadáním virtuálních pevných disků pomocí `vhd` elementu v šabloně pro prostředek virtuálního počítače, jak je znázorněno níže:
 
 ```json
 "storageProfile": {
@@ -584,13 +584,13 @@ Deklarativní přístup k šabloně umožňuje definovat koncový stav prostřed
 
 Existuje mnoho typů rozšíření virtuálních počítačů. Při vývoji šablony pro konzistenci cloudu se ujistěte, že používáte pouze rozšíření, která jsou k dispozici ve všech oblastech, které šablona cílí.
 
-Pokud chcete načíst seznam rozšíření virtuálních počítačů, které jsou k dispozici pro konkrétní oblast (v tomto příkladu `myLocation`), spusťte následující příkaz rozhraní příkazového řádku Azure:
+Pokud chcete načíst seznam rozšíření virtuálních počítačů, které jsou k dispozici pro konkrétní oblast (v tomto příkladu `myLocation` ), spusťte následující příkaz rozhraní příkazového řádku Azure:
 
 ```azurecli-interactive
 az vm extension image list --location myLocation
 ```
 
-Můžete také spustit rutinu Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a použít `-Location` ji k určení umístění bitové kopie virtuálního počítače. Příklad:
+Můžete také spustit rutinu Azure PowerShell [Get-AzureRmVmImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) a použít `-Location` ji k určení umístění bitové kopie virtuálního počítače. Například:
 
 ```azurepowershell-interactive
 Get-AzureRmVmImagePublisher -Location myLocation | Get-AzureRmVMExtensionImageType | Get-AzureRmVMExtensionImage | Select Type, Version
@@ -623,7 +623,7 @@ Rozšíření virtuálních počítačů můžete použít taky v sadě Virtual 
 Get-AzureRmResourceProvider -ProviderNamespace "Microsoft.Compute" | Select-Object -ExpandProperty ResourceTypes | Select ResourceTypeName, Locations, ApiVersions | where {$_.ResourceTypeName -eq "virtualMachineScaleSets/extensions"}
 ```
 
-Každé konkrétní rozšíření je také ve verzi. Tato verze je zobrazená ve `typeHandlerVersion` vlastnosti rozšíření virtuálního počítače. Zajistěte, aby byla verze zadaná `typeHandlerVersion` v elementu rozšíření virtuálních počítačů vaší šablony dostupná v umístěních, kde plánujete šablonu nasadit. Například následující kód určuje verzi 1,7:
+Každé konkrétní rozšíření je také ve verzi. Tato verze je zobrazená ve `typeHandlerVersion` vlastnosti rozšíření virtuálního počítače. Zajistěte, aby byla verze zadaná v `typeHandlerVersion` elementu rozšíření virtuálních počítačů vaší šablony dostupná v umístěních, kde plánujete šablonu nasadit. Například následující kód určuje verzi 1,7:
 
 ```json
 {

@@ -1,18 +1,18 @@
 ---
-title: Dv3 a Dsv3-Series – Azure Virtual Machines
+title: Řada Dv3 a DSv3
 description: Specifikace pro virtuální počítače s Dv3 a Dsv3-Series.
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: 9ea5811fa20ea4866655de74d79ff3905ba03f16
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 02dc0b83dcf33dbe0ae9f5bb8eb913342a00bd74
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164402"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677232"
 ---
 # <a name="dv3-and-dsv3-series"></a>Řada Dv3 a DSv3
 

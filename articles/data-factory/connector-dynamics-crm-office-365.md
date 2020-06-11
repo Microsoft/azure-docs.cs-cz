@@ -11,13 +11,13 @@ author: linda33wj
 manager: shwang
 ms.reviewer: douglasl
 ms.custom: seo-lt-2019
-ms.date: 05/06/2020
-ms.openlocfilehash: 255c39eac2285a23403da2db893d9de8835f7d2c
-ms.sourcegitcommit: b396c674aa8f66597fa2dd6d6ed200dd7f409915
+ms.date: 06/10/2020
+ms.openlocfilehash: 6aef73381b9294f6bbd83ff99c3fa99eafb4fb1f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82891528"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678293"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopírování dat z a do Dynamics 365 (Common Data Service) nebo Dynamics CRM pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -77,15 +77,15 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 
 ### <a name="dynamics-365-and-dynamics-crm-online"></a>Dynamics 365 a Dynamics CRM Online
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavena na hodnotu **Dynamics**, **DynamicsCrm**nebo **CommonDataServiceForApps**. | Ano |
-| Typ nasazení | Typ nasazení instance Dynamics Musí být **online** pro Dynamics Online. | Ano |
-| serviceUri | Adresa URL služby vaší instance Dynamics, např `https://adfdynamics.crm.dynamics.com`. | Ano |
-| authenticationType | Typ ověřování pro připojení k Dynamics serveru. Povolené hodnoty jsou: **AADServicePrincipal** nebo **"Office 365"**. | Ano |
+| typ | Vlastnost Type musí být nastavena na hodnotu **Dynamics**, **DynamicsCrm**nebo **CommonDataServiceForApps**. | Yes |
+| Typ nasazení | Typ nasazení instance Dynamics Musí být **online** pro Dynamics Online. | Yes |
+| serviceUri | Adresa URL služby vaší instance Dynamics, `https://adfdynamics.crm.dynamics.com` např. | Yes |
+| authenticationType | Typ ověřování pro připojení k Dynamics serveru. Povolené hodnoty jsou: **AADServicePrincipal** nebo **"Office 365"**. | Yes |
 | servicePrincipalId | Zadejte ID klienta Azure Active Directory aplikace. | Ano Při použití `AADServicePrincipal` ověřování |
 | servicePrincipalCredentialType | Zadejte typ přihlašovacích údajů, který se použije pro ověřování instančního objektu. Povolené hodnoty jsou: **ServicePrincipalKey** nebo **ServicePrincipalCert**. | Ano Při použití `AADServicePrincipal` ověřování |
-| servicePrincipalCredential | Zadejte přihlašovací údaje instančního objektu. <br>Když použijete `ServicePrincipalKey` jako typ přihlašovacích údajů, `servicePrincipalCredential` může to být řetězec (ADF ho bude šifrovat při nasazení propojené služby) nebo odkaz na tajný kód v integrace. <br>Pokud používáte `ServicePrincipalCert` jako přihlašovací údaje `servicePrincipalCredential` , měl by se jednat o odkaz na certifikát v integrace. | Ano Při použití `AADServicePrincipal` ověřování | 
+| servicePrincipalCredential | Zadejte přihlašovací údaje instančního objektu. <br>Když použijete `ServicePrincipalKey` jako typ přihlašovacích údajů, `servicePrincipalCredential` může to být řetězec (ADF ho bude šifrovat při nasazení propojené služby) nebo odkaz na tajný kód v integrace. <br>Pokud používáte `ServicePrincipalCert` jako přihlašovací údaje, `servicePrincipalCredential` měl by se jednat o odkaz na certifikát v integrace. | Ano Při použití `AADServicePrincipal` ověřování |
 | uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano Při použití `Office365` ověřování |
 | heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Označte toto pole jako SecureString, abyste ho bezpečně ukládali do Data Factory nebo [odkazovali na tajný kód uložený v Azure Key Vault](store-credentials-in-key-vault.md). | Ano Při použití `Office365` ověřování |
 | connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku, pokud zdrojová propojená služba nemá modul runtime integrace |
@@ -174,16 +174,16 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 
 *Další vlastnosti, které jsou porovnány s Dynamics Online, jsou "hostName" a "port".*
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavena na hodnotu **Dynamics**, **DynamicsCrm**nebo **CommonDataServiceForApps**. | Ano |
-| Typ nasazení | Typ nasazení instance Dynamics Musí se jednat o **"OnPremisesWithIfd"** pro místní prostředí Dynamics pomocí internetového nasazení.| Ano |
-| Název hostitele | Název hostitele místního Dynamics serveru. | Ano |
+| typ | Vlastnost Type musí být nastavena na hodnotu **Dynamics**, **DynamicsCrm**nebo **CommonDataServiceForApps**. | Yes |
+| Typ nasazení | Typ nasazení instance Dynamics Musí se jednat o **"OnPremisesWithIfd"** pro místní prostředí Dynamics pomocí internetového nasazení.| Yes |
+| Název hostitele | Název hostitele místního Dynamics serveru. | Yes |
 | port | Port místního Dynamics serveru. | Ne, výchozí hodnota je 443 |
-| Organizace | Název organizace instance Dynamics | Ano |
-| authenticationType | Typ ověřování pro připojení k Dynamics serveru. Zadejte **"IFD"** pro místní prostředí Dynamics pomocí internetového nasazení. | Ano |
-| uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Ano |
-| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat aktivitu kopírování, která se při provádění kopírování dat vyžádá – další informace najdete v části [přihlašovací údaje úložiště v Key Vault](store-credentials-in-key-vault.md). | Ano |
+| Organizace | Název organizace instance Dynamics | Yes |
+| authenticationType | Typ ověřování pro připojení k Dynamics serveru. Zadejte **"IFD"** pro místní prostředí Dynamics pomocí internetového nasazení. | Yes |
+| uživatelské jméno | Zadejte uživatelské jméno pro připojení k Dynamics. | Yes |
+| heslo | Zadejte heslo pro uživatelský účet, který jste zadali pro uživatelské jméno. Toto pole můžete označit jako SecureString, abyste ho bezpečně ukládali do podavače ADF, nebo Uložit heslo v Azure Key Vault a nechat aktivitu kopírování, která se při provádění kopírování dat vyžádá – další informace najdete v části [přihlašovací údaje úložiště v Key Vault](store-credentials-in-key-vault.md). | Yes |
 | connectVia | [Prostředí Integration runtime](concepts-integration-runtime.md) , které se má použít pro připojení k úložišti dat. Pokud není zadaný, použije se výchozí Azure Integration Runtime. | Ne pro zdroj, Ano pro jímku |
 
 **Příklad: místní prostředí Dynamics s IFD pomocí ověřování IFD**
@@ -220,9 +220,9 @@ Následující vlastnosti jsou podporovány pro propojenou službu Dynamics.
 
 Chcete-li kopírovat data z a do Dynamics, jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type datové sady musí být nastavená na **DynamicsEntity**, **DynamicsCrmEntity**nebo **CommonDataServiceForAppsEntity**. |Ano |
+| typ | Vlastnost Type datové sady musí být nastavená na **DynamicsEntity**, **DynamicsCrmEntity**nebo **CommonDataServiceForAppsEntity**. |Yes |
 | entityName | Logický název entity, která se má načíst | Ne pro zdroj (Pokud je zadána možnost dotaz ve zdroji aktivity), Ano pro jímku |
 
 **Případě**
@@ -252,9 +252,9 @@ Chcete-li kopírovat data z a do Dynamics, jsou podporovány následující vlas
 
 Chcete-li kopírovat data z Dynamics, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **DynamicsSource**, **DynamicsCrmSource**nebo **CommonDataServiceForAppsSource**. | Ano |
+| typ | Vlastnost Type zdroje aktivity kopírování musí být nastavená na **DynamicsSource**, **DynamicsCrmSource**nebo **CommonDataServiceForAppsSource**. | Yes |
 | query | FetchXML je proprietární dotazovací jazyk, který se používá v Dynamics (online a v místním prostředí). Prohlédněte si následující příklad. Další informace najdete v tématu [sestavování dotazů pomocí FetchXML](https://msdn.microsoft.com/library/gg328332.aspx). | Ne (Pokud je zadána "EntityName" v sadě dat.) |
 
 >[!NOTE]
@@ -320,10 +320,10 @@ Chcete-li kopírovat data z Dynamics, v části **zdroj** aktivity kopírování
 
 Chcete-li kopírovat data do Dynamics, v části **jímka** aktivity kopírování jsou podporovány následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type jímky aktivity kopírování musí být nastavená na **DynamicsSink**, **DynamicsCrmSink**nebo **CommonDataServiceForAppsSink**. | Ano |
-| writeBehavior | Chování operace zápisu.<br/>Povolená hodnota je **"Upsert"**. | Ano |
+| typ | Vlastnost Type jímky aktivity kopírování musí být nastavená na **DynamicsSink**, **DynamicsCrmSink**nebo **CommonDataServiceForAppsSink**. | Yes |
+| writeBehavior | Chování operace zápisu.<br/>Povolená hodnota je **"Upsert"**. | Yes |
 | alternateKeyName | Zadejte název alternativního klíče definovaný pro vaši entitu a proveďte "Upsert". | No |
 | writeBatchSize | Počet řádků dat zapsaných do Dynamics v každé dávce. | Ne (výchozí hodnota je 10) |
 | ignoreNullValues | Určuje, zda se při operaci zápisu mají ignorovat hodnoty null ze vstupních dat (s výjimkou polí klíčů).<br/>Povolené hodnoty jsou **true** a **false**.<br>- **True**: když provedete operaci Upsert/Update, ponechte data v cílovém objektu beze změny. Při operaci INSERT vložte definovanou výchozí hodnotu.<br/>- **False**: při operaci Upsert/Update aktualizujte data v cílovém objektu na hodnotu null. Při operaci vložení vložte hodnotu NULL. | Ne (výchozí hodnota je false) |
@@ -379,17 +379,17 @@ Nakonfigurujte odpovídající Data Factory datový typ ve struktuře datové sa
 |:--- |:--- |:--- |:--- |
 | AttributeTypeCode. BigInt | Dlouhou | ✓ | ✓ |
 | AttributeTypeCode. Boolean | Logická hodnota | ✓ | ✓ |
-| Zaatributu. Customer | Identifikátor GUID | ✓ | |
+| Zaatributu. Customer | Identifikátor GUID | ✓ | ✓ (viz [doprovodné](#writing-data-to-lookup-field)materiály) |
 | Typ atributu. DateTime | Datum a čas | ✓ | ✓ |
 | Typ atributu. Decimal | Desetinné číslo | ✓ | ✓ |
 | Typ atributu. Double | Double | ✓ | ✓ |
 | Atribut atributu. EntityName | Řetězec | ✓ | ✓ |
 | Typ atributu. Integer | Int32 | ✓ | ✓ |
-| Vymezit. Lookup | Identifikátor GUID | ✓ | ✓ (s přidruženým jedním cílem) |
+| Vymezit. Lookup | Identifikátor GUID | ✓ | ✓ (viz [doprovodné](#writing-data-to-lookup-field)materiály) |
 | NeManagedProperty. | Logická hodnota | ✓ | |
 | Vydaný zápis | Řetězec | ✓ | ✓ |
 | . Peníze | Desetinné číslo | ✓ | ✓ |
-| Atribut atributu. Owner | Identifikátor GUID | ✓ | |
+| Atribut atributu. Owner | Identifikátor GUID | ✓ | ✓ (viz [doprovodné](#writing-data-to-lookup-field)materiály) |
 | Atribut atributu. picklist | Int32 | ✓ | ✓ |
 | Typ atributu. uniqueidentifier | Identifikátor GUID | ✓ | ✓ |
 | Řetězec atributu. String | Řetězec | ✓ | ✓ |
@@ -398,6 +398,34 @@ Nakonfigurujte odpovídající Data Factory datový typ ve struktuře datové sa
 
 > [!NOTE]
 > Datové typy Dynamics mají typ atributu. CalendarRules, atributu atributu. MultiSelectPicklist a typ atributu. PartyList nejsou podporovány.
+
+## <a name="writing-data-to-lookup-field"></a>Zápis dat do vyhledávacího pole
+
+Chcete-li zapisovat data do vyhledávacího pole s více cíli, např. *Zákazník* a *vlastník*, postupujte podle těchto pokynů a příklad:
+
+1. Nastavte zdroj obsahující hodnotu pole i odpovídající název cílové entity.
+   - Pokud se všechny záznamy mapují ke stejné cílové entitě, ujistěte se, že zdrojová data obsahují sloupec, ve kterém je uložený název entity, nebo přidejte další sloupec do zdroje aktivity kopírování a definujte cílovou entitu.
+   - Pokud jsou jiné záznamy mapovány na jinou cílovou entitu, ujistěte se, že zdrojová data obsahují sloupec, který ukládá odpovídající název cílové entity.
+
+2. Namapujte sloupce referenčních hodnot a entit ze zdroje na jímku. Sloupec odkaz na entitu musí být namapován na virtuální sloupec se speciálním vzorem pojmenování `{lookup_field_name}@EntityReference` . Ve skutečnosti v aplikaci Dynamics neexistují, ale používá se k označení toho, že se jedná o sloupec metadat daného vyhledávacího pole s více cíli.
+
+ Zdroj má například dva sloupce:
+
+- `CustomerField`sloupec typu *GUID*, který je hodnotou primárního klíče cílové entity v aplikaci Dynamics.
+- `Target`sloupec typu *String*, což je logický název entity cíle. 
+
+A vy chcete zkopírovat taková data do jímky pole entity Dynamics `CustomerField` typu *Zákazník*. 
+
+V mapování sloupců aktivity kopírování namapujte tyto dva sloupce následujícím způsobem:
+
+- `CustomerField` -> `CustomerField`: Toto je normální mapování polí.
+- `Target` -> `CustomerField@EntityReference`: sloupec jímky je virtuální sloupec reprezentující odkaz na entitu. Zadejte takový název pole v mapování, protože se nebude zobrazovat importem schémat.
+
+![Mapování sloupce vyhledávacího pole Dynamics](./media/connector-dynamics-crm-office-365/connector-dynamics-lookup-field-column-mapping.png)
+
+Pokud jsou všechny zdrojové záznamy namapovány na stejnou cílovou entitu a zdrojová data neobsahují název entity, je zde uveden zástupce: ve zdroji aktivity kopírování přidejte další sloupec. Můžete zadat název, který následuje za vzorem `{lookup_field_name}@EntityReference` a hodnotou jako název cílové entity. v takovém případě se explicitní mapování sloupců změní na volitelné, protože aktivita kopírování ve výchozím nastavení mapuje sloupce podle názvu.
+
+![Přidat odkaz na entitu pro vyhledávací pole Dynamics](./media/connector-dynamics-crm-office-365/connector-dynamics-add-entity-reference-column.png)
 
 ## <a name="lookup-activity-properties"></a>Vlastnosti aktivity vyhledávání
 

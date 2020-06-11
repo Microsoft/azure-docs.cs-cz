@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: overview
 ms.custom: mvc
 ms.date: 03/11/2020
-ms.openlocfilehash: 0ba41d63195c906b57046dc6c9fd57c9f08399ab
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 789ddf39e4493d11d63a07f2341ab36ac161f32d
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241665"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659599"
 ---
 # <a name="overview---what-is-azure-logic-apps"></a>Přehled – co je Azure Logic Apps?
 
@@ -102,9 +102,9 @@ Vytvářejte aplikace logiky jako šablony Azure Resource Manager, abyste mohli 
 
 ### <a name="access-resources-inside-azure-virtual-networks"></a>Přístup k prostředkům v rámci virtuálních sítí Azure
 
-Logic Apps mají přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a další systémy nebo služby, které jsou uvnitř [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) při vytváření [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE je izolovaná instance Logic Apps služby, která využívá vyhrazené prostředky a spouští se odděleně od "globální" víceklientské služby Logic Apps.
+Logic Apps mají přístup k zabezpečeným prostředkům, jako jsou virtuální počítače (VM) a další systémy nebo služby, které jsou uvnitř [virtuální sítě Azure](../virtual-network/virtual-networks-overview.md) při vytváření [ *prostředí ISE (Integration Service Environment* )](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). ISE je vyhrazená instance služby Logic Apps, která využívá vyhrazené prostředky a spouští se odděleně od "globální" víceklientské služby Logic Apps.
 
-Spouštění Logic Apps ve vaší vlastní samostatné izolované instanci pomáhá snižovat dopad, který můžou mít ostatní klienti Azure na výkon vašich aplikací, označované taky jako ["vzdálení" sousedních směrovačů](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). ISE také poskytuje tyto výhody:
+Spouštění Logic Apps ve vaší vlastní samostatné vyhrazené instanci pomáhá snižovat dopad, který mohou mít ostatní klienti Azure na výkon vašich aplikací, označované také jako ["nepříznivých sousedních směrovačů"](https://en.wikipedia.org/wiki/Cloud_computing_issues#Performance_interference_and_noisy_neighbors). ISE také poskytuje tyto výhody:
 
 * Vaše vlastní statické IP adresy, které jsou oddělené od statických IP adres, které jsou sdíleny pomocí aplikace logiky ve službě pro více tenantů. Pro komunikaci s cílovými systémy můžete také nastavit jednu veřejnou, statickou a předvídatelná odchozí IP adresu. Tímto způsobem není nutné nastavovat další otevřená brána firewall v těchto cílových systémech pro každý ISE.
 

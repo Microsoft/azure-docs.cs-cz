@@ -5,12 +5,12 @@ author: christophermanthei
 ms.author: chmant
 ms.date: 03/20/2020
 ms.topic: quickstart
-ms.openlocfilehash: 59b235a32ae9363cc5fc804385867e140be502e2
-ms.sourcegitcommit: 0690ef3bee0b97d4e2d6f237833e6373127707a7
+ms.openlocfilehash: 4e9ddeddf616c581b116d48738e110dd8cdac2d3
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83758992"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84659927"
 ---
 # <a name="quickstart-deploy-unity-sample-to-desktop"></a>Rychlý Start: nasazení ukázky Unity do desktopu
 
@@ -46,7 +46,7 @@ Na ploše se aktuálně podporují jenom ploché aplikace klasické pracovní pl
 ## <a name="build-the-sample-project"></a>Sestavení ukázkového projektu
 
 1. Otevřete *soubor > nastavení sestavení*.
-1. Změnit *platformu* na **Univerzální platforma Windows** (v tomto případě se podporuje i**počítač Standalone** ).
+1. Změna *platformy* na **Univerzální platforma Windows** (**samostatná verze počítače** se podporuje taky, ale tady se nepoužívá, viz [omezení platformy](../reference/limits.md#platform-limitations)).
 1. Nastavte *cílové zařízení* na **počítač**.
 1. Nastavte *architekturu* na **x86**.
 1. Nastavte *typ sestavení* na **projekt D3D**.
@@ -60,7 +60,7 @@ Na ploše se aktuálně podporují jenom ploché aplikace klasické pracovní pl
 1. Sestavte řešení (F7).
 
 > [!WARNING]
-> Ujistěte se, že jste vybrali možnost **x86**. **platforma x64** není momentálně podporovaná, viz [omezení platformy](../reference/limits.md#platform-limitations).
+> Ujistěte se, že jste vybrali možnost **x86**. **UWP/x64** se momentálně nepodporuje, přečtěte si o [omezeních platforem](../reference/limits.md#platform-limitations).
 
 ## <a name="launch-the-sample-project"></a>Spustit vzorový projekt
 

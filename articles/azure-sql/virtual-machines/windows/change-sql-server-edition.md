@@ -4,7 +4,6 @@ description: Přečtěte si, jak změnit edici virtuálního počítače s SQL S
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: jroth
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.topic: article
@@ -14,12 +13,12 @@ ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 598060c028708ed4ac138914a561f7edb62487ca
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 228f76c9ecb262ffca7851f4339b73c5574f09dc
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84046184"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669160"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Místní změna edice SQL Server na virtuálním počítači Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -46,7 +45,7 @@ Chcete-li provést místní změnu edice SQL Server, budete potřebovat následu
 
 Chcete-li upgradovat edici SQL Server, Získejte instalační médium SQL Server pro požadovanou edici SQL Server a proveďte následující kroky:
 
-1. Otevřete soubor Setup. exe z instalačního média SQL Server. 
+1. Z instalačního média SQL Server otevřete Setup.exe. 
 1. Pokračujte na **Údržba** a vyberte možnost **upgradu edice** . 
 
    ![Výběr pro upgrade edice SQL Server](./media/change-sql-server-edition/edition-upgrade.png)

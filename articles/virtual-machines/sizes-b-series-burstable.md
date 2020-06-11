@@ -2,18 +2,18 @@
 title: Shluky B-Series – Azure Virtual Machines
 description: Popisuje B-série velikostí virtuálních počítačů Azure
 services: virtual-machines
+ms.subservice: sizes
 author: ayshakeen
-manager: gwallace
 ms.service: virtual-machines
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: ayshak
-ms.openlocfilehash: 5121ef8eb3123d830233e91968c69b331d255bd0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6e7411f30ac0ef03ecd621f4cf6db5cd9350201b
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78161076"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678541"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Velikosti virtuálních počítačů řady B-Series
 
@@ -58,7 +58,7 @@ Směrný plán: 270%
 
 ![Graf dat hodinových přenosů](./media/b-series-burstable/office-workload.png)
 
-| Scénář | Time | Využití CPU (%) | Shromážděné kredity<sup>1</sup> | Dostupné kredity |
+| Scénář | Čas | Využití CPU (%) | Shromážděné kredity<sup>1</sup> | Dostupné kredity |
 | --- | --- | --- | --- | --- |
 | Nasazení B16ms | Nasazení | Nasazení  | 480 (počáteční kredity) | 480 |
 | Žádný provoz | 0:00 | 0 | 162 | 642 |
@@ -86,7 +86,7 @@ Směrný plán: 270%
 | Žádný provoz | 22:00 | 0 | 162 | 642 |
 | Žádný provoz | 23:00 | 0 | 162 | 804 |
 
-<sup>1</sup> kumulovaná kredity/kredity využité za hodinu jsou ekvivalentem `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes`:.  
+<sup>1</sup> kumulovaná kredity/kredity využité za hodinu jsou ekvivalentem: `((Base CPU perf of VM - CPU Usage) / 100) * 60 minutes` .  
 
 V případě D16s_v3, který má 16 vCPU a 64 GiB paměti, je hodinová sazba $0,936 za hodinu (měsíční $673,92) a pro B16ms s 16 vCPU a 64 GiB paměti je sazba $0,794 za hodinu (měsíční $547,86). <b>Výsledkem je 15% úspora!</b>
 

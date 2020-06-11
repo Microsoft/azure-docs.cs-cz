@@ -1,19 +1,20 @@
 ---
-title: Edv4 a Edsv4-Series – Azure Virtual Machines
+title: Řada Edv4 a Edsv4
 description: Specifikace pro virtuální počítače s Ev4, Edv4, Esv4 a Edsv4-Series.
 author: brbell
 ms.author: brbell
-ms.reviewer: cynthn
+ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 02/04/2020
-ms.openlocfilehash: 4f484b92514a374b20eb0c3fa0a2e4e638fd7587
-ms.sourcegitcommit: 20e246e86e25d63bcd521a4b4d5864fbc7bad1b0
+ms.openlocfilehash: 79623f48e8aaf89636910d47ec4daa1e3ce83bb3
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/08/2020
-ms.locfileid: "84488714"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676620"
 ---
 # <a name="edv4-and-edsv4-series"></a>Řada Edv4 a Edsv4
 
@@ -33,7 +34,7 @@ Migrace za provozu: podporováno
 
 Aktualizace pro zachování paměti: podporováno
 
-| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
+| Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost úložiště v mezipaměti a dočasné úložiště: IOPS/MB/s (velikost mezipaměti v GiB) | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 |---|---|---|---|---|---|---|
 | Standard_E2d_v4  | 2 | 16 | 75 | 4 | 19000/120 | 2/1000 |
 | Standard_E4d_v4  | 4 | 32 | 150 | 8 | 38500/242 | 2/2000 |

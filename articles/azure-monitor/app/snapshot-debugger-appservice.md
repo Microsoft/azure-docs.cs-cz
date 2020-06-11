@@ -6,12 +6,12 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 8af688e38003e0613a06d7d8622ce279a3838589
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6928da704236c4bb5492f99a4a5327bf297a323d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298276"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676834"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Povolit Snapshot Debugger pro aplikace .NET v Azure App Service
 
@@ -28,12 +28,12 @@ Pokud používáte verzi Preview rozhraní .NET Core, postupujte podle pokynů p
 
 Application Insights Snapshot Debugger je předem nainstalován jako součást modulu runtime App Services, ale je nutné ji zapnout, abyste získali snímky pro aplikaci App Service. Po nasazení aplikace, a to i v případě, že jste zahrnuli sadu Application Insights SDK ve zdrojovém kódu, použijte následující postup, chcete-li povolit nástroj snapshot Debugger.
 
-1. V Azure Portal otevřete podokno **App Services** .
-2. Přejděte do **nastavení > Application Insights** podokně.
+1. Pro App Service přejděte na ovládací panel Azure.
+2. Přejít na stránku **nastavení > Application Insights** .
 
    ![Povolení App Insights na portálu App Services](./media/snapshot-debugger/applicationinsights-appservices.png)
 
-3. Podle pokynů v podokně vytvořte nový prostředek nebo vyberte existující prostředek App Insights, abyste mohli svoji aplikaci monitorovat. Také se ujistěte, že jsou **zapnuté**oba přepínače pro Snapshot Debugger.
+3. Podle pokynů na stránce vytvořte nový prostředek nebo vyberte existující prostředek App Insights, abyste mohli svoji aplikaci monitorovat. Také se ujistěte, že jsou **zapnuté**oba přepínače pro Snapshot Debugger.
 
    ![Přidat rozšíření webu App Insights][Enablement UI]
 

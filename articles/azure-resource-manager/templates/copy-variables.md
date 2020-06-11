@@ -3,12 +3,12 @@ title: Definování více instancí proměnné
 description: Použijte operaci kopírování v šabloně Azure Resource Manager k iterování několikrát při vytváření proměnné.
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: 4fbe392e8a0fb477b6986fc9c7584291590eb4e7
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: aca69dd858c7a940592e74123b97b8d364d9e11c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82583370"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678439"
 ---
 # <a name="variable-iteration-in-arm-templates"></a>Iterace proměnných v šablonách ARM
 
@@ -240,7 +240,7 @@ Následující příklad ukazuje různé způsoby, jak můžete použít kopíro
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {},
   "variables": {

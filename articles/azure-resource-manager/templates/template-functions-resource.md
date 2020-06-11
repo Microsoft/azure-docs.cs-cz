@@ -3,12 +3,12 @@ title: Funkce šablon – prostředky
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k načtení hodnot o prostředcích.
 ms.topic: conceptual
 ms.date: 06/01/2020
-ms.openlocfilehash: 15b1610dfcacb37bce2e265b4e16f675e944b9db
-ms.sourcegitcommit: 79508e58c1f5c58554378497150ffd757d183f30
+ms.openlocfilehash: b04861e0d3c1b96b77e3865652a4300213b49a09
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84331504"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676722"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Funkce prostředků pro šablony ARM
 
@@ -34,12 +34,12 @@ Vrátí ID prostředku pro [prostředek rozšíření](../management/extension-r
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceId |Ano |řetězec |ID prostředku prostředku, na který se prostředek rozšíření používá |
-| resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
-| resourceName1 |Ano |řetězec |Název prostředku |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| resourceId |Yes |řetězec |ID prostředku prostředku, na který se prostředek rozšíření používá |
+| resourceType |Yes |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
+| resourceName1 |Yes |řetězec |Název prostředku |
+| resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -83,7 +83,7 @@ Následující příklad vrátí ID prostředku pro zámek skupiny prostředků.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "lockName":{
@@ -112,11 +112,11 @@ Syntaxe této funkce se liší podle názvu operací seznamu. Každá implementa
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceName nebo resourceIdentifier |Ano |řetězec |Jedinečný identifikátor prostředku |
-| apiVersion |Ano |řetězec |Verze rozhraní API stavu modulu runtime prostředku Obvykle ve formátu **yyyy-MM-DD**. |
-| functionValues |Ne |odkazy objektů | Objekt, který má hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
+| resourceName nebo resourceIdentifier |Yes |řetězec |Jedinečný identifikátor prostředku |
+| apiVersion |Yes |řetězec |Verze rozhraní API stavu modulu runtime prostředku Obvykle ve formátu **yyyy-MM-DD**. |
+| functionValues |No |odkazy objektů | Objekt, který má hodnoty pro funkci. Tento objekt Poskytněte jenom pro funkce, které podporují příjem objektu s hodnotami parametrů, jako je například **listAccountSas** v účtu úložiště. Příklad předávání hodnot funkcí je uveden v tomto článku. |
 
 ### <a name="valid-uses"></a>Platná použití
 
@@ -132,8 +132,8 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. AppConfiguration | [ListKeyValue](/rest/api/appconfiguration/configurationstores/listkeyvalue) |
 | Microsoft. AppConfiguration/configurationStores | Klíče listkey |
 | Microsoft. Automation/automationAccounts | [Klíče listkey](/rest/api/automation/keys/listbyautomationaccount) |
-| Microsoft. Batch/batchAccounts | [klíče listkey](/rest/api/batchmanagement/batchaccount/getkeys) |
-| Microsoft. BatchAI/pracovní prostory/experimenty/úlohy | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
+| Microsoft.Batch/batchAccounts | [klíče listkey](/rest/api/batchmanagement/batchaccount/getkeys) |
+| Microsoft.BatchAI/pracovní prostory/experimenty/úlohy | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
 | Microsoft. blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft. blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
 | Microsoft. cache/Redis | [Klíče listkey](/rest/api/redis/redis/listkeys) |
@@ -163,12 +163,12 @@ Možná použití seznamu * jsou uvedena v následující tabulce.
 | Microsoft. DevTestLab/Labs/plány | [ListApplicable](/rest/api/dtl/schedules/listapplicable) |
 | Microsoft. DevTestLab/Labs/Users/serviceFabrics | [ListApplicableSchedules](/rest/api/dtl/servicefabrics/listapplicableschedules) |
 | Microsoft. DevTestLab/Labs/virtualMachines | [ListApplicableSchedules](/rest/api/dtl/virtualmachines/listapplicableschedules) |
-| Microsoft. DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
-| Microsoft. DocumentDB/databaseAccounts | [Klíče listkey](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
+| Microsoft.DocumentDB/databaseAccounts | [listConnectionStrings](/rest/api/cosmos-db-resource-provider/databaseaccounts/listconnectionstrings) |
+| Microsoft.DocumentDB/databaseAccounts | [Klíče listkey](/rest/api/cosmos-db-resource-provider/databaseaccounts/listkeys) |
 | Microsoft. DomainRegistration | [listDomainRecommendations](/rest/api/appservice/domains/listrecommendations) |
 | Microsoft. DomainRegistration/topLevelDomains | [listAgreements](/rest/api/appservice/topleveldomains/listagreements) |
-| Microsoft. EventGrid/domény | [Klíče listkey](/rest/api/eventgrid/version2019-06-01/domains/listsharedaccesskeys) |
-| Microsoft. EventGrid/témata | [Klíče listkey](/rest/api/eventgrid/version2019-06-01/topics/listsharedaccesskeys) |
+| Microsoft. EventGrid/domény | [Klíče listkey](/rest/api/eventgrid/version2020-06-01/domains/listsharedaccesskeys) |
+| Microsoft. EventGrid/témata | [Klíče listkey](/rest/api/eventgrid/version2020-06-01/topics/listsharedaccesskeys) |
 | Microsoft. EventHub/obory názvů/autorizačních pravidel | [klíče listkey](/rest/api/eventhub) |
 | Microsoft. EventHub/obory názvů/disasterRecoveryConfigs/autorizačních pravidel | [klíče listkey](/rest/api/eventhub) |
 | Microsoft. EventHub/obory názvů/eventhubs/autorizačních pravidel | [klíče listkey](/rest/api/eventhub) |
@@ -290,7 +290,7 @@ Chcete-li získat token SAS, předejte objekt pro čas vypršení platnosti. Ča
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storagename": {
@@ -361,10 +361,10 @@ Vrátí informace o poskytovateli prostředků a jeho podporovaných typech pros
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| providerNamespace |Ano |řetězec |Obor názvů poskytovatele |
-| resourceType |Ne |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
+| providerNamespace |Yes |řetězec |Obor názvů poskytovatele |
+| resourceType |No |řetězec |Typ prostředku v rámci zadaného oboru názvů. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -386,7 +386,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "providerNamespace": {
@@ -436,11 +436,11 @@ Vrátí objekt představující běhový stav prostředku.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceName nebo resourceIdentifier |Ano |řetězec |Název nebo jedinečný identifikátor prostředku Při odkazování na prostředek v aktuální šabloně zadejte jako parametr jenom název prostředku. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
-| apiVersion |Ne |řetězec |Verze rozhraní API zadaného prostředku **Tento parametr je vyžadován, pokud prostředek není zřízen v rámci stejné šablony.** Obvykle ve formátu **yyyy-MM-DD**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
-| Kompletní |Ne |řetězec |Hodnota, která určuje, zda má být vrácen úplný objekt prostředku. Pokud nezadáte `'Full'` , vrátí se pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID a umístění prostředku. |
+| resourceName nebo resourceIdentifier |Yes |řetězec |Název nebo jedinečný identifikátor prostředku Při odkazování na prostředek v aktuální šabloně zadejte jako parametr jenom název prostředku. Když odkazujete na dříve nasazený prostředek nebo pokud je název prostředku dvojznačný, zadejte ID prostředku. |
+| apiVersion |No |řetězec |Verze rozhraní API zadaného prostředku **Tento parametr je vyžadován, pokud prostředek není zřízen v rámci stejné šablony.** Obvykle ve formátu **yyyy-MM-DD**. Platné verze rozhraní API pro váš prostředek naleznete v tématu [Reference k šabloně](/azure/templates/). |
+| Kompletní |No |řetězec |Hodnota, která určuje, zda má být vrácen úplný objekt prostředku. Pokud nezadáte `'Full'` , vrátí se pouze objekt vlastnosti prostředku. Úplný objekt obsahuje hodnoty, jako je ID a umístění prostředku. |
 
 ### <a name="return-value"></a>Vrácená hodnota
 
@@ -527,7 +527,7 @@ Při sestavování plně kvalifikovaného odkazu na prostředek, pořadí pro ko
 
 **{Resource-Provider-Namespace}/{Parent-Resource-Type}/{Parent-Resource-Name} [/{Child-Resource-Type}/{Child-Resource-Name}]**
 
-Příklad:
+Například:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt`je správné, není `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` správné.
 
@@ -559,7 +559,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "storageAccountName": {
@@ -653,7 +653,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "storageResourceGroup": {
@@ -725,7 +725,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -759,13 +759,13 @@ Vrátí jedinečný identifikátor prostředku. Tuto funkci použijete, pokud je
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Ne |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků nebo předplatného. |
-| resourceGroupName |Ne |řetězec |Výchozí hodnota je aktuální skupina prostředků. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiné skupině prostředků. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků. |
-| resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
-| resourceName1 |Ano |řetězec |Název prostředku |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| subscriptionId |No |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků nebo předplatného. |
+| resourceGroupName |No |řetězec |Výchozí hodnota je aktuální skupina prostředků. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiné skupině prostředků. Tuto hodnotu Poskytněte jenom při nasazení v oboru skupiny prostředků. |
+| resourceType |Yes |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
+| resourceName1 |Yes |řetězec |Název prostředku |
+| resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -827,7 +827,7 @@ Tuto funkci je často potřeba použít při použití účtu úložiště nebo 
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "virtualNetworkName": {
@@ -873,7 +873,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -935,7 +935,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -955,12 +955,12 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni předplatn
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| subscriptionId |Ne |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. |
-| resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
-| resourceName1 |Ano |řetězec |Název prostředku |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| subscriptionId |No |řetězec (ve formátu GUID) |Výchozí hodnota je aktuální předplatné. Tuto hodnotu zadejte, když potřebujete načíst prostředek v jiném předplatném. |
+| resourceType |Yes |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
+| resourceName1 |Yes |řetězec |Název prostředku |
+| resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 
@@ -982,7 +982,7 @@ Následující šablona přiřadí vestavěnou roli. Můžete ho nasadit buď do
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "principalId": {
@@ -1037,11 +1037,11 @@ Vrátí jedinečný identifikátor prostředku nasazeného na úrovni tenanta.
 
 ### <a name="parameters"></a>Parametry
 
-| Parametr | Požaduje se | Typ | Description |
+| Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| resourceType |Ano |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
-| resourceName1 |Ano |řetězec |Název prostředku |
-| resourceName2 |Ne |řetězec |Další segment názvu prostředku (v případě potřeby). |
+| resourceType |Yes |řetězec |Typ prostředku včetně oboru názvů poskytovatele prostředků |
+| resourceName1 |Yes |řetězec |Název prostředku |
+| resourceName2 |No |řetězec |Další segment názvu prostředku (v případě potřeby). |
 
 Pokračujte v přidávání názvů prostředků jako parametrů, pokud typ prostředku obsahuje více segmentů.
 

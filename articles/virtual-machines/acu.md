@@ -1,24 +1,20 @@
 ---
-title: Přehled výpočetní jednotky Azure | Microsoft Docs
+title: Přehled výpočetní jednotky Azure
 description: Přehled konceptu výpočetních jednotek Azure. ACU poskytuje způsob, jak porovnat výkon procesoru napříč SKU Azure.
-services: virtual-machines
-documentationcenter: ''
 author: mimckitt
-manager: vashan
-editor: ''
-tags: azure-resource-manager,azure-service-management
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: mimckitt
-ms.openlocfilehash: 738ce8dad7237f9703d3ccb998c221ffec29dc17
-ms.sourcegitcommit: 1895459d1c8a592f03326fcb037007b86e2fd22f
+ms.reviewer: davberg
+ms.openlocfilehash: 3fda339b234b83bae9cbf0b6614cb75c66031f71
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82629095"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678524"
 ---
 # <a name="azure-compute-unit-acu"></a>Výpočetní jednotka Azure (ACU)
 
@@ -60,7 +56,7 @@ Vlákny s technologií Hyper a schopné spustit vnořenou virtualizaci
 | [HC](hc-series.md) |297 – 315 * | 1:1 |
 | [L4S úrovně – L32s úrovně](sizes-previous-gen.md) |180 - 240* | 1:1 |
 | [L8s_v2 – L80s_v2](lsv2-series.md) |150 – 175 * * | 2:1 |
-| [M](m-series.md) | 160 – 180 | 2:1\*\*\* |
+| [4m](m-series.md) | 160 – 180 | 2:1\*\*\* |
 
 Tady jsou odkazy na Další informace o různých velikostech:
 

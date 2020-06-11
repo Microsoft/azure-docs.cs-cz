@@ -3,12 +3,12 @@ title: Funkce šablon – porovnání
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager k porovnání hodnot.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 15afc4d721c6577de9fe3e78483fdbfae5b493c6
-ms.sourcegitcommit: 67bddb15f90fb7e845ca739d16ad568cbc368c06
+ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82203773"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677827"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>Funkce porovnání pro šablony ARM
 
@@ -18,7 +18,7 @@ Správce prostředků poskytuje několik funkcí pro porovnávání šablon Azur
 * [equals](#equals)
 * [greater](#greater)
 * [greaterOrEquals](#greaterorequals)
-* [less](#less)
+* [tolik](#less)
 * [lessOrEquals](#lessorequals)
 
 ## <a name="coalesce"></a>COALESCE
@@ -31,10 +31,10 @@ Vrátí první hodnotu, která není null, z parametrů. Prázdné řetězce, pr
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int, String, Array nebo Object |První hodnota, která má být testována na hodnotu null. |
-| Další argumenty |Ne |int, String, Array nebo Object |Další hodnoty, které mají být testovány na hodnotu null. |
+| arg1 |Yes |int, String, Array nebo Object |První hodnota, která má být testována na hodnotu null. |
+| Další argumenty |No |int, String, Array nebo Object |Další hodnoty, které mají být testovány na hodnotu null. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Hodnota prvních parametrů, které nejsou null, což může být řetězec, int, Array nebo Object. Hodnota null, pokud jsou všechny parametry null.
 
@@ -44,7 +44,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "objectToTest": {
@@ -88,7 +88,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | stringOutput | Řetězec | default |
 | intOutput | Int | 1 |
@@ -106,10 +106,10 @@ Kontroluje, zda jsou dvě hodnoty vzájemně stejné.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int, String, Array nebo Object |První hodnota pro kontrolu rovnosti. |
-| arg2 |Ano |int, String, Array nebo Object |Druhá hodnota pro kontrolu rovnosti. |
+| arg1 |Yes |int, String, Array nebo Object |První hodnota pro kontrolu rovnosti. |
+| arg2 |Yes |int, String, Array nebo Object |Druhá hodnota pro kontrolu rovnosti. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrátí **hodnotu true** , pokud jsou hodnoty stejné; v opačném případě **false**.
 
@@ -138,7 +138,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -199,7 +199,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Logická hodnota | True |
 | checkStrings | Logická hodnota | True |
@@ -210,7 +210,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -225,7 +225,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkNotEquals | Logická hodnota | True |
 
@@ -239,10 +239,10 @@ Kontroluje, zda je první hodnota větší než druhá hodnota.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo String |První hodnota pro lepší porovnání. |
-| arg2 |Ano |int nebo String |Druhá hodnota pro lepší porovnání. |
+| arg1 |Yes |int nebo String |První hodnota pro lepší porovnání. |
+| arg2 |Yes |int nebo String |Druhá hodnota pro lepší porovnání. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrátí **hodnotu true** , pokud je první hodnota větší než druhá hodnota. v opačném případě **false**.
 
@@ -252,7 +252,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -289,7 +289,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Logická hodnota | False |
 | checkStrings | Logická hodnota | True |
@@ -304,10 +304,10 @@ Kontroluje, zda je první hodnota větší než nebo rovna druhé hodnotě.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo String |První hodnota pro porovnání větší nebo rovno. |
-| arg2 |Ano |int nebo String |Druhá hodnota pro vyšší nebo stejné porovnání. |
+| arg1 |Yes |int nebo String |První hodnota pro porovnání větší nebo rovno. |
+| arg2 |Yes |int nebo String |Druhá hodnota pro vyšší nebo stejné porovnání. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrátí **hodnotu true** , pokud je první hodnota větší než nebo rovna druhé hodnotě; v opačném případě **false**.
 
@@ -317,7 +317,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -354,7 +354,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Logická hodnota | False |
 | checkStrings | Logická hodnota | True |
@@ -369,10 +369,10 @@ Kontroluje, zda je první hodnota menší než druhá hodnota.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo String |První hodnota pro méně porovnání. |
-| arg2 |Ano |int nebo String |Druhá hodnota pro méně porovnání. |
+| arg1 |Yes |int nebo String |První hodnota pro méně porovnání. |
+| arg2 |Yes |int nebo String |Druhá hodnota pro méně porovnání. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrátí **hodnotu true** , pokud je první hodnota menší než druhá hodnota. v opačném případě **false**.
 
@@ -382,7 +382,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -419,7 +419,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Logická hodnota | True |
 | checkStrings | Logická hodnota | False |
@@ -434,10 +434,10 @@ Kontroluje, zda je první hodnota menší nebo rovna druhé hodnotě.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |int nebo String |První hodnota pro porovnání menší nebo rovno. |
-| arg2 |Ano |int nebo String |Druhá hodnota pro porovnání menší nebo rovno. |
+| arg1 |Yes |int nebo String |První hodnota pro porovnání menší nebo rovno. |
+| arg2 |Yes |int nebo String |Druhá hodnota pro porovnání menší nebo rovno. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrátí **hodnotu true** , pokud je první hodnota menší nebo rovna druhé hodnotě; v opačném případě **false**.
 
@@ -447,7 +447,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "firstInt": {
@@ -484,7 +484,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkInts | Logická hodnota | True |
 | checkStrings | Logická hodnota | False |

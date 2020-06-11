@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: how-to
 ms.date: 03/12/2020
 ms.custom: seodec18
-ms.openlocfilehash: bbe4cfe2cce70735e765601e46cb62cd3939c693
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 426c79c19b599127e2235f61e8c917062ede3b79
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84433095"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675198"
 ---
 # <a name="monitor-azure-ml-experiment-runs-and-metrics"></a>Monitorování běhů a metriky Azure ML
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -127,6 +127,8 @@ K přidání logiky protokolování do experimentů návrháře použijte modul 
         run.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
 
         # Log the mean absolute error to the parent run to see the metric in the run details page.
+        # Note: 'run.parent.log()' should not be called multiple times because of performance issues.
+        # If repeated calls are necessary, cache 'run.parent' as a local variable and call 'log()' on that variable.
         run.parent.log(name='Mean_Absolute_Error', value=dataframe1['Mean_Absolute_Error'])
     
         return dataframe1,
@@ -207,9 +209,11 @@ Metriky proučeného modelu můžete zobrazit pomocí ```run.get_metrics()``` . 
 
 Po dokončení experimentu můžete přejít na zaznamenaný záznam spuštění experimentu. K historii můžete přistupovat z [Azure Machine Learning studia](https://ml.azure.com).
 
-Přejděte na kartu experimenty a vyberte svůj experiment. Přejdete do řídicího panelu experiment spustit, kde vidíte sledované metriky a grafy, které jsou protokolovány pro každé spuštění. V tomto případě jsme nahlásili hodnoty MSE a alfa.
+Přejděte na kartu experimenty a vyberte svůj experiment. Přejdete do řídicího panelu experiment spustit, kde vidíte sledované metriky a grafy, které jsou protokolovány pro každé spuštění. 
 
-  ![Podrobnosti o spuštění v Azure Machine Learning Studiu](./media/how-to-track-experiments/experiment-dashboard.png)
+Tabulku spustit seznam můžete upravit tak, aby zobrazovala buď poslední, minimální nebo maximální hodnotu v protokolu pro vaše běhy. Můžete vybrat nebo zrušit výběr více spuštění v seznamu spuštění a vybrané běhy budou grafy plnit daty. Můžete také přidat nové grafy nebo upravit grafy pro porovnání protokolovaných metrik (minimální, maximální, poslední nebo všechny hodnoty) ve více spuštěních. Chcete-li data prozkoumat efektivněji, můžete také maximalizovat své grafy.
+
+:::image type="content" source="media/how-to-track-experiments/experimentation-tab.gif" alt-text="Podrobnosti o spuštění v Azure Machine Learning Studiu":::
 
 Můžete přejít k podrobnostem konkrétního spuštění a zobrazit jeho výstupy nebo protokoly nebo stáhnout snímek experimentu, který jste odeslali, abyste mohli sdílet složku experimentů s ostatními.
 

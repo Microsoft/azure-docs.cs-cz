@@ -6,12 +6,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: f0702c09d2803507f07f74d97767c781825bf34f
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.openlocfilehash: 9dffa4d32980a16377f33a4ddb23987b3c2f3dd5
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83778566"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678578"
 ---
 # <a name="profile-live-azure-app-service-apps-with-application-insights"></a>Profilování aplikací v reálném čase Azure App Service s využitím Application Insights
 
@@ -21,13 +21,13 @@ Profiler můžete spustit v ASP.NET a aplikacích ASP.NET Core, které běží n
 Pokud chcete povolit profiler pro aplikaci, postupujte podle následujících pokynů. Pokud používáte jiný typ služby Azure, najdete tady pokyny k povolení profileru na jiných podporovaných platformách:
 * [Cloudové služby](../../azure-monitor/app/profiler-cloudservice.md?toc=/azure/azure-monitor/toc.json)
 * [Service Fabric aplikací](../../azure-monitor/app/profiler-servicefabric.md?toc=/azure/azure-monitor/toc.json)
-* [Virtuální počítače](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
+* [Virtual Machines](../../azure-monitor/app/profiler-vm.md?toc=/azure/azure-monitor/toc.json)
 
 Application Insights Profiler je předem nainstalován jako součást modulu runtime App Services. Následující postup vám ukáže, jak ho pro App Service povolit. Postupujte podle těchto kroků i v případě, že jste do aplikace zahrnuli sadu App Insights SDK v době sestavení.
 
-1. U služby App Service povolte nastavení "Always On". Nastavení můžete aktualizovat na stránce konfigurace App Service v části Obecné nastavení.
-1. V Azure Portal otevřete podokno **App Services** .
-1. Přejděte do **nastavení > Application Insights** podokně.
+1. Pro App Service přejděte na ovládací panel Azure.
+1. U služby App Service povolte nastavení "Always On". Toto nastavení najdete v části **Nastavení**, **konfigurační** stránka (viz snímek obrazovky v dalším kroku) a klikněte na kartu **Obecné nastavení** .
+1. Přejděte na **nastavení > Application Insights** stránce.
 
    ![Povolení App Insights na portálu App Services](./media/profiler/AppInsights-AppServices.png)
 
@@ -50,7 +50,7 @@ Tady jsou nastavení potřebná k povolení profileru:
 |DiagnosticServices_EXTENSION_VERSION | ~ 3 |
 
 
-Tyto hodnoty můžete nastavit pomocí [šablon Azure Resource Manager](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure PowerShellu](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp)a rozhraní příkazového [řádku Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
+Tyto hodnoty můžete nastavit pomocí [šablon Azure Resource Manager](../../azure-monitor/app/azure-web-apps.md#app-service-application-settings-with-azure-resource-manager), [Azure POWERSHELL](https://docs.microsoft.com/powershell/module/az.websites/set-azwebapp)a [Azure CLI](https://docs.microsoft.com/cli/azure/webapp/config/appsettings?view=azure-cli-latest).
 
 ### <a name="enabling-profiler-for-other-clouds-manually"></a>Ruční povolení profileru pro ostatní cloudy
 

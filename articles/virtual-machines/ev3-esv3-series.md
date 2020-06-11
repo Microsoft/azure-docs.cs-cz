@@ -1,18 +1,18 @@
 ---
-title: Ev3-Series a Esv3-Series – Azure Virtual Machines
+title: Řady Ev3-Series a Esv3-Series
 description: Specifikace pro virtuální počítače s Ev3 a Esv3-Series.
-services: virtual-machines
 author: joelpelley
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
 ms.author: lahugh
-ms.openlocfilehash: aad4610a44c59ed95cf1ad9777329097886c5bed
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0121f73da911a9346fd1f142d98246709631a742
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78164368"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678099"
 ---
 # <a name="ev3-and-esv3-series"></a>Řada Ev3 a Esv3
 

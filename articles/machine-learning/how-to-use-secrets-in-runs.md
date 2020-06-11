@@ -1,5 +1,5 @@
 ---
-title: Používání tajných kódů v školicích běhůch
+title: Ověřování tajných kódů v školení
 titleSuffix: Azure Machine Learning
 description: Bezpečné předávání tajných klíčů do školicích běhů pomocí Key Vault pracovního prostoru
 services: machine-learning
@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.date: 03/09/2020
-ms.openlocfilehash: dd3ebeb0f9c55fcc4dee090097459326cbe08eed
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 8fefeb162dd6f036c21485715dd680972823fbaa
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434435"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677471"
 ---
-# <a name="use-secrets-in-training-runs"></a>Používání tajných kódů v školicích běhůch
+# <a name="use-authentication-credential-secrets-in-azure-machine-learning-training-runs"></a>Použití tajných kódů přihlašovacích údajů v Azure Machine Learningch školicích běhů
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 V tomto článku se dozvíte, jak bezpečně používat tajné klíče v školicím běhu. Ověřovací údaje, jako je vaše uživatelské jméno a heslo, jsou tajné. Například pokud se připojíte k externí databázi, abyste mohli zadávat dotazy na školicí data, museli byste předat své uživatelské jméno a heslo do kontextu vzdáleného spuštění. Kódování takových hodnot do školicích skriptů v nešifrovaném textu je nezabezpečené, protože by to vystavilo tajný klíč. 

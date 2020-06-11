@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 12/19/2019
 ms.author: tibasham
-ms.openlocfilehash: 5d6396efc9ab25baa0d32e7c33c7715863516249
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f7e2b70b111cd195f688e236bf8f05b077acb000
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77371356"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678762"
 ---
 # <a name="azure-windows-vm-shutdown-is-stuck-on-restarting-shutting-down-or-stopping-services"></a>Vypnutí virtuálního počítače Azure s Windows se zablokuje při restartování, vypínání nebo zastavování služeb.
 
@@ -43,7 +43,7 @@ Systém Windows pomocí procesu vypnutí provádí operace údržby systému a z
 
 Pomocí [konzoly sériového portu](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/serial-console-windows) proveďte následující kroky:
 
-1. Otevřete modul PowerShell pro správu a ověřte, jestli služba při zastavování neodpovídá.
+1. Otevřete modul PowerShell pro správu a podívejte se na službu, která při zastavování přestane reagovat.
 
    ``
    Get-Service | Where-Object {$_.Status -eq "STOP_PENDING"}
@@ -55,13 +55,13 @@ Pomocí [konzoly sériového portu](https://docs.microsoft.com/azure/virtual-mac
    tasklist /svc | findstr /i <STOPING SERVICE>
    ``
 
-3. Získejte ukázku výpisu paměti z procesu s nezpracovanými <STOPPING SERVICE>.
+3. Získat ukázku výpisu paměti z nereagující procesu <STOPPING SERVICE> .
 
    ``
    procdump.exe -s 5 -n 3 -ma <PID>
    ``
 
-4. Nyní ukončete proces nastavování, aby se proces vypnutí odemkl.
+4. Nyní ukončí nereagující proces, aby se proces vypnutí odemkl.
 
    ``
    taskkill /PID <PID> /t /f

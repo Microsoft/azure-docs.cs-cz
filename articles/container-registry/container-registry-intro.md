@@ -6,12 +6,12 @@ ms.topic: overview
 ms.date: 02/10/2020
 ms.author: stevelas
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 40a1d75ff90efafff14cd27ab439df8ab3729c50
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: fbb5117d0650c5a3768cab4057303f8b73a0685b
+ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83674301"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84657664"
 ---
 # <a name="introduction-to-private-docker-container-registries-in-azure"></a>Seznámení se soukromými registry kontejnerů Dockeru v Azure
 
@@ -25,7 +25,7 @@ Další informace o konceptech Docker a registru najdete v tématu [Přehled Doc
 
 Stažení imagí z registru kontejnerů Azure na různé cíle nasazení:
 
-* **Škálovatelné systémy orchestrace**, které spravují kontejnerizované aplikace napříč clustery hostitelů, včetně [Kubernetes](https://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) a [Dockeru Swarm](https://docs.docker.com/swarm/).
+* **Škálovatelné systémy orchestrace**, které spravují kontejnerizované aplikace napříč clustery hostitelů, včetně [Kubernetes](https://kubernetes.io/docs/), [DC/OS](https://docs.mesosphere.com/) a [Dockeru Swarm](https://docs.docker.com/get-started/swarm-deploy/).
 * **Služby Azure**, které podporují vytváření a spouštění škálovaných aplikací, včetně [Azure Kubernetes Service (AKS)](../aks/index.yml), [App Service](../app-service/index.yml), [Batch](../batch/index.yml), [Service Fabric](/azure/service-fabric/) a dalších.
 
 Vývojáři mohou nahrávat do registru kontejnerů také jako součást pracovního postupu vývoje kontejneru. Můžete například cílit do registru kontejneru z nástroje pro průběžnou integraci a doručování, jako je například [Azure Pipelines](/azure/devops/pipelines/ecosystems/containers/acr-template) nebo [Jenkinse](https://jenkins.io/).

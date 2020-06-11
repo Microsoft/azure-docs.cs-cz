@@ -1,24 +1,24 @@
 ---
 title: M-Series – Azure Virtual Machines
 description: Specifikace pro virtuální počítače řady M-Series.
-services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: jushiman
-ms.openlocfilehash: 7b84537693b3ffc3f7398c6eb84615a96bf8e7df
-ms.sourcegitcommit: 3beb067d5dc3d8895971b1bc18304e004b8a19b3
+ms.openlocfilehash: 4050a74dfef1fb31939ba716cfbaf78577f1aaef
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82744687"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675940"
 ---
 # <a name="m-series"></a>Řada M
 
-Řada M-Series nabízí vysoký počet vCPU (až 128 vCPU) a velké množství paměti (až 3,8 TiB). Je to také ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti. Velikosti řady M-Series se podporují na procesorech&reg; Intel&reg; Xeon E7-8890 V3 @ 2.50 GHz a Intel&reg; Xeon&reg; Platinum 8280M (Cascade Lake).
+Řada M-Series nabízí vysoký počet vCPU (až 128 vCPU) a velké množství paměti (až 3,8 TiB). Je to také ideální pro extrémně velké databáze nebo jiné aplikace, které využívají vysoké počty vCPU a velké množství paměti. Velikosti řady M-Series se podporují na &reg; &reg; procesorech Intel Xeon E7-8890 V3 @ 2.50 GHz a Intel &reg; Xeon &reg; Platinum 8280M (Cascade Lake).
 
-Funkce virtuálního počítače řady M-Series&reg; s technologií Intel Hyper-Threading.
+Funkce virtuálního počítače řady M-Series s &reg; technologií Intel Hyper-Threading.
 
 ACU: 160–180
 

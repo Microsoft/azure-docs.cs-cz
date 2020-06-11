@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2019
 ms.author: allensu
-ms.openlocfilehash: d3bd1156de4aed7d1ea5c530605697f2dc80d63c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e60d44278bb568b1aaaf416fddf35d02596a5ee2
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80476977"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84674648"
 ---
 # <a name="high-availability-ports-overview"></a>Přehled portů vysoké dostupnosti
 
@@ -87,15 +87,12 @@ Pokud váš scénář vyžaduje, abyste pro stejný záložní fond nakonfigurov
 
 ### <a name="an-internal-load-balancer-with-ha-ports-and-a-public-load-balancer-on-the-same-back-end-instance"></a>Interní nástroj pro vyrovnávání zatížení s porty HA a veřejným nástrojem pro vyrovnávání zatížení ve stejné back-endové instanci
 
-Můžete nakonfigurovat *jeden* veřejný prostředek Standard Load Balancer pro prostředky back-endu spolu s jednou interní standard Load Balancer s porty ha.
-
->[!NOTE]
->Tato funkce je aktuálně k dispozici prostřednictvím šablon Azure Resource Manager, ale není k dispozici prostřednictvím Azure Portal.
+Můžete nakonfigurovat *jeden* prostředek veřejného Standard Load Balancer pro back-end prostředky spolu s jednou interní standard Load Balancer s porty ha.
 
 ## <a name="limitations"></a>Omezení
 
 - Pravidla vyrovnávání zatížení portů HA jsou k dispozici pouze pro interní Standard Load Balancer.
-- Kombinace pravidla vyrovnávání zatížení s porty HA a pravidlo vyrovnávání zatížení s porty bez vysoké dostupnosti, které odkazuje na stejný back-end IPConfiguration, nejsou podporovány.
+- Kombinace pravidla vyrovnávání zatížení s porty HA a pravidlo vyrovnávání zatížení s porty bez vysoké dostupnosti, které odkazují na stejné IPConfiguration back-endu, nejsou podporované, pokud nemají povolený plovoucí IP adresu.
 - Existující fragmenty IP adresy předají pravidla pro vyrovnávání zatížení s porty HA do stejného cíle jako první paket.  Fragmentace IP adres protokolu UDP nebo TCP není podporována.
 - Symetrie flow (primárně pro scénáře síťové virtuální zařízení) je podporována u back-endu instance a jediného síťového rozhraní (a jedné konfigurace protokolu IP) pouze v případě, že se používá, jak je znázorněno v diagramu výše a používá pravidla pro vyrovnávání zatížení portů Není k dispozici v žádném jiném scénáři. To znamená, že dva nebo více Load Balancerch prostředků a jejich příslušných pravidel nezávisle na rozhodnutích a nejsou nikdy koordinovány. Podívejte se na popis a diagram [síťových virtuálních zařízení](#nva). Pokud používáte více síťových adaptérů nebo chcete-li síťové virtuální zařízení mezi veřejným a interním Load Balancer, není k dispozici symetrie Flow.  Můžete to obejít tak, že zdroj NAT'ing příchozí přenos dat zařízení na IP adresu a umožníte doručení odpovědí na stejný síťové virtuální zařízení.  Důrazně však doporučujeme použít jeden síťový adaptér a použít referenční architekturu uvedenou v diagramu výše.
 

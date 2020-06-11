@@ -3,16 +3,16 @@ title: Řízení údržby pro virtuální počítače Azure pomocí Azure Portal
 description: Naučte se řídit, kdy se na virtuální počítače Azure používá údržba pomocí řízení údržby a Azure Portal.
 author: cynthn
 ms.service: virtual-machines
-ms.topic: article
+ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 04/22/2020
 ms.author: cynthn
-ms.openlocfilehash: c0cb4800bdabe5eb500422fca55b3060b6422e8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4232f4cd39c3f6dd6efa0bf78959798ea842e2dc
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82139235"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676042"
 ---
 # <a name="control-updates-with-maintenance-control-and-the-azure-portal"></a>Řízení aktualizací s využitím řízení údržby a Azure Portal
 

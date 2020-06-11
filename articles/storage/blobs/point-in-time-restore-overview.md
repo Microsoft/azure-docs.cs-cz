@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 05/28/2020
+ms.date: 06/10/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
-ms.openlocfilehash: 513f0240296debb5e878461ed1ca7cffecad760a
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 60f83fae6e7e685a1065d1c01327a004d9bb2864
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84462987"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675648"
 ---
 # <a name="point-in-time-restore-for-block-blobs-preview"></a>Obnovení bodu v čase pro objekty blob bloku (Preview)
 
@@ -85,7 +85,7 @@ Následující oblasti podporují obnovení k bodu v čase ve verzi Preview:
 Verze Preview zahrnuje tato omezení:
 
 - Obnovení objektů blob bloku Premium se nepodporuje.
-- Obnovování objektů BLOB v archivní úrovni se nepodporuje. Pokud se například objekt BLOB v horké vrstvě přesunul do archivní úrovně před dvěma dny a operace obnovení se obnoví do před 3 dny, objekt BLOB se neobnoví do vrstvy Hot.
+- Obnovení objektů blob na archivní úrovni se nepodporuje. Pokud se například objekt blob na horké úrovni před dvěma dny přesunul na archivní úroveň a operace obnovení provádí obnovení k bodu před třemi dny, objekt blob se neobnoví na horké úrovni.
 - Obnovení Azure Data Lake Storage Gen2 plochých a hierarchických oborů názvů není podporováno.
 - Obnovení účtů úložiště pomocí klíčů poskytnutých zákazníkem se nepodporuje.
 
@@ -97,6 +97,7 @@ Verze Preview zahrnuje tato omezení:
 Pokud se chcete zaregistrovat ve verzi Preview, spusťte následující příkazy:
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 # Register for the point-in-time restore preview
 Register-AzProviderFeature -FeatureName RestoreBlobRanges -ProviderNamespace Microsoft.Storage
@@ -110,7 +111,9 @@ Register-AzProviderFeature -FeatureName Versioning -ProviderNamespace Microsoft.
 # Refresh the Azure Storage provider namespace
 Register-AzResourceProvider -ProviderNamespace Microsoft.Storage
 ```
+
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+
 ```azurecli
 az feature register --namespace Microsoft.Storage --name RestoreBlobRanges
 az feature register --namespace Microsoft.Storage --name Changefeed
@@ -125,13 +128,14 @@ az provider register --namespace 'Microsoft.Storage'
 Registrace pro obnovení bodu v čase je automatická a měla by trvat méně než 10 minut. Chcete-li zjistit stav registrace, spusťte následující příkazy:
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName RestoreBlobRanges
 
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Changefeed
-    
+
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage `
     -FeatureName Versioning
 ```
@@ -145,7 +149,6 @@ az feature list -o table --query "[?contains(name, 'Microsoft.Storage/Versioning
 ```
 
 ---
-
 
 ## <a name="pricing-and-billing"></a>Ceny a fakturace
 

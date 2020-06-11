@@ -1,18 +1,18 @@
 ---
-title: Av2-Series – Azure Virtual Machines
+title: Av2-series
 description: Specifikace pro virtuální počítače řady Av2-Series.
-services: virtual-machines
 author: migerdes
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: fe27a1cc78d1f37d535f364c03803a5196090a3a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 7d2064ec89e107aa219f34520f71ed8704bb7aeb
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78163943"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676926"
 ---
 # <a name="av2-series"></a>Av2-series
 

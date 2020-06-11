@@ -6,19 +6,17 @@ services: sql-database
 ms.service: sql-database
 ms.subservice: backup-restore
 ms.custom: sqldbrb=2
-ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab, danil
-manager: craigg
 ms.date: 06/04/2020
-ms.openlocfilehash: fc2c8ea232004488664bc7f15b1d1bb3b83f2e7b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 41df5190f2a7435ad91de94cb6f407037e1783a2
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609603"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84667824"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatizované zálohování – Azure SQL Database & spravované instance SQL
 
@@ -76,18 +74,6 @@ Jinými slovy, pro libovolný bod v čase během doby uchování, musí existova
 > [!NOTE]
 > Pokud chcete povolit PITR, ukládají se další zálohy až do týden delšího, než je nastavená doba uchování. Úložiště zálohování se účtuje stejnou sazbou za všechny zálohy. 
 
-V případě izolovaných databází se k výpočtu celkového využití úložiště záloh používá tato rovnice:
-
-`Total backup storage size = (size of full backups + size of differential backups + size of log backups) – maximum data storage`
-
-Pro databáze ve fondu je celková velikost úložiště zálohování agregovaná na úrovni fondu a počítá se takto:
-
-`Total backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - maximum pool data storage`
-
-U spravovaných instancí je celková velikost úložiště zálohování agregovaná na úrovni instance a počítá se takto:
-
-`Total backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
-
 Zálohy, které už nejsou potřeba k poskytování funkcí PITR, se automaticky odstraní. Vzhledem k tomu, že rozdílové zálohy a zálohy protokolů vyžadují, aby se obnovitelné dřívější úplné zálohování, všechny tři typy zálohování se v týdenních sadách vyprázdní.
 
 Pro všechny databáze, včetně [TDE šifrovaných](transparent-data-encryption-tde-overview.md) databází, jsou zálohy komprimovány, aby se snížila komprese a náklady úložiště zálohování. Průměrná kompresní kompresní poměr je 3-4 časů, ale může být výrazně nižší nebo vyšší v závislosti na povaze dat a na tom, jestli se v databázi používá komprese dat.
@@ -144,9 +130,21 @@ V modelu DTU se za úložiště zálohování pro databáze a elastické fondy n
 
 U izolovaných databází v SQL Database se hodnota úložiště zálohy rovnající 100% maximální velikosti úložiště dat pro databázi poskytuje bez dalších poplatků. V případě elastických fondů a spravovaných instancí se hodnota úložiště zálohy rovná 100% maximálního úložiště dat pro fond nebo maximální velikost úložiště instance se poskytuje bez dalších poplatků. 
 
-Další spotřeba úložiště zálohování, pokud je nějaká, se bude účtovat v GB za měsíc. Tato další spotřeba bude záviset na zatížení a velikosti jednotlivých databází, elastických fondů a spravovaných instancí. Vysoce upravované databáze mají větší rozdílové a zaprotokolované zálohy, protože velikost těchto záloh je úměrná množství změn dat. Proto budou mít tyto databáze vyšší poplatky za zálohování.
+V případě izolovaných databází se tato rovnice používá k výpočtu celkového využití fakturovatelných úložiště záloh:
 
-Služba SQL Database a SQL Managed instance počítá vaše celkové úložiště zálohování jako kumulativní hodnotu ve všech zálohovaných souborech. Každou hodinu se tato hodnota oznamuje fakturačnímu kanálu Azure, který agreguje Toto hodinové použití, aby se na konci každého měsíce využívala spotřeba úložiště záloh. Pokud dojde k odstranění databáze, spotřeba úložiště zálohování se postupně sníží, protože staré stáří záloh vyprší a odstraní se. Vzhledem k tomu, že rozdílové zálohy a zálohy protokolů vyžadují, aby se obnovitelné dřívější úplné zálohování, všechny tři typy zálohování se v týdenních sadách vyprázdní. Po odstranění všech záloh se ukončí fakturace. 
+`Total billable backup storage size = (size of full backups + size of differential backups + size of log backups) – maximum data storage`
+
+V případě databází ve fondu je celková fakturovatelná velikost úložiště záloh agregovaná na úrovni fondu a vypočte se takto:
+
+`Total billable backup storage size = (total size of all full backups + total size of all differential backups + total size of all log backups) - maximum pool data storage`
+
+V případě spravovaných instancí je celková fakturovatelná velikost úložiště záloh agregovaná na úrovni instance a vypočte se takto:
+
+`Total billable backup storage size = (total size of full backups + total size of differential backups + total size of log backups) – maximum instance data storage`
+
+Celkové Fakturovatelné úložiště záloh se bude účtovat za GB za měsíc. Tato spotřeba úložiště záloh bude záviset na zatížení a velikosti jednotlivých databází, elastických fondů a spravovaných instancí. Vysoce upravované databáze mají větší rozdílové a zaprotokolované zálohy, protože velikost těchto záloh je úměrná množství změn dat. Proto budou mít tyto databáze vyšší poplatky za zálohování.
+
+Služba SQL Database a SQL Managed instance počítá vaše celkové Fakturovatelné úložiště záloh jako kumulativní hodnotu ve všech zálohovaných souborech. Každou hodinu se tato hodnota oznamuje fakturačnímu kanálu Azure, který agreguje Toto hodinové použití, aby se na konci každého měsíce využívala spotřeba úložiště záloh. Pokud dojde k odstranění databáze, spotřeba úložiště zálohování se postupně sníží, protože staré stáří záloh vyprší a odstraní se. Vzhledem k tomu, že rozdílové zálohy a zálohy protokolů vyžadují, aby se obnovitelné dřívější úplné zálohování, všechny tři typy zálohování se v týdenních sadách vyprázdní. Po odstranění všech záloh se ukončí fakturace. 
 
 Jako zjednodušený příklad předpokládáme, že databáze nashromáždila 744 GB úložiště zálohování a tato částka zůstane v celém měsíci konstantní, protože databáze je zcela nečinná. Pokud chcete tuto kumulativní spotřebu úložiště převést na hodinové použití, rozdělte ji o 744,0 (31 dnů za měsíc × 24 hodin denně). SQL Database bude hlásit fakturačnímu kanálu Azure, který databáze využila 1 GB PITR zálohování každou hodinu, a to za ustálenou sazbou. Fakturace Azure agreguje tuto spotřebu a za celý měsíc ukáže využití 744 GB. Náklady budou založené na sazbách za GB za GB a měsíc ve vaší oblasti.
 

@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 06/02/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 4752fe65cf06b894413df2fda0decdfbb427afd5
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: ec64facd554ca32ddc1357d9b92b08f1d844e377
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449375"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84673407"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -63,7 +63,7 @@ Privátní propojení Azure přináší následující výhody:
 |Azure Event Grid| Všechny veřejné oblasti       |   GA   <br/> [Další informace](https://docs.microsoft.com/azure/event-grid/network-security) |
 |Azure Web Apps | Všechny veřejné oblasti      |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/app-service/networking/private-endpoint)   |
 |Azure Machine Learning | VÝCHODNÍ USA, ZÁPADNÍ USA 2, STŘED USA – JIH      |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link)   |
-| IoT Hub | Všechny veřejné oblasti    |   Preview   <br/> [Další informace](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
+| Azure IoT Hub | Všechny veřejné oblasti    |   GA   <br/> [Další informace](https://docs.microsoft.com/azure/iot-hub/virtual-network-support ) |
 | Azure SignalR | VÝCHODNÍ USA, ZÁPADNÍ USA 2, STŘED USA – JIH      |   Preview   <br/> [Další informace](https://aka.ms/asrs/privatelink)   |
 | Azure Monitor <br/>(Log Analytics & Application Insights) | Všechny veřejné oblasti      |   GA   <br/> [Další informace](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security)   |
 

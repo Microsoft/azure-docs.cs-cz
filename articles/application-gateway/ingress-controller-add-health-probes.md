@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 5d0543a3a43d53e462a6406312faddf37d2653c6
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 3ef0f89d7011da1f86032202f408aaae83dcf160
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "73795597"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84675250"
 ---
 # <a name="add-health-probes-to-your-service"></a>Přidání sond stavu do služby
 Adaptér příchozího přenosu dat ve výchozím nastavení zřídí test HTTP GET pro exponované lusky.
@@ -47,12 +47,12 @@ spec:
 
 Reference k rozhraní Kubernetes API:
 * [Sondy kontejneru](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes)
-* [Akce HttpGet](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.14/#httpgetaction-v1-core)
+* [Akce HttpGet](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#httpgetaction-v1-core)
 
 > [!NOTE]
-> * `readinessProbe`a `livenessProbe` jsou podporovány, pokud jsou `httpGet`nakonfigurovány pomocí.
+> * `readinessProbe`a `livenessProbe` jsou podporovány, pokud jsou nakonfigurovány pomocí `httpGet` .
 > * Zjišťování na jiném portu, než který je vystavený na straně, se v tuto chvíli nepodporuje.
-> * `HttpHeaders`, `InitialDelaySeconds`, `SuccessThreshold` nejsou podporovány.
+> * `HttpHeaders`, `InitialDelaySeconds` , `SuccessThreshold` nejsou podporovány.
 
 ##  <a name="without-readinessprobe-or-livenessprobe"></a>Bez `readinessProbe` nebo`livenessProbe`
 Pokud výše uvedené sondy nejsou k dispozici, pak kontroler příchozího přenosu dat předpokládá, že je služba dostupná `Path` pro zadání `backend-path-prefix` poznámky nebo pro `path` zadání v `ingress` definici služby.

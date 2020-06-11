@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: memildin
-ms.openlocfilehash: cc4e267c6912b8938db1ba5497a27f9c0026bd79
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b24e0487aef73ed7852cb4a64766a1f8d92aff94
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80887329"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677423"
 ---
 # <a name="secure-your-management-ports-with-just-in-time-access"></a>Zabezpečení portů pro správu pomocí přístupu za běhu
 
@@ -72,7 +72,7 @@ Z Security Center můžete nakonfigurovat zásady JIT a požádat o přístup k 
             - **Povolené zdrojové IP adresy**– ROZSAHy IP adres, které jsou na tomto portu povolené, když je žádost schválená.
             - **Maximální doba požadavku**– maximální časový interval, během kterého lze otevřít konkrétní port.
 
-     1. Klikněte na tlačítko **OK**.
+     1. Klikněte na **OK**.
 
 1. Klikněte na **Uložit**.
 
@@ -198,7 +198,7 @@ Funkce přístupu k VIRTUÁLNÍm počítačům za běhu se dá použít přes ro
 
 ### <a name="jit-vm-access-via-powershell"></a>Přístup k virtuálnímu počítači JIT prostřednictvím PowerShellu
 
-Pokud chcete použít řešení přístupu k virtuálnímu počítači podle potřeby přes PowerShell, použijte oficiální rutiny Azure Security Center PowerShellu a konkrétně `Set-AzJitNetworkAccessPolicy`.
+Pokud chcete použít řešení přístupu k virtuálnímu počítači podle potřeby přes PowerShell, použijte oficiální rutiny Azure Security Center PowerShellu a konkrétně `Set-AzJitNetworkAccessPolicy` .
 
 Následující příklad nastaví zásady přístupu k VIRTUÁLNÍm počítačům za běhu na konkrétní virtuální počítač a nastaví následující:
 
@@ -211,7 +211,7 @@ K tomu použijte následující příkaz v PowerShellu:
 
 1.    Přiřaďte proměnnou, která obsahuje zásady přístupu k VIRTUÁLNÍm počítačům za běhu pro virtuální počítač:
 
-        $JitPolicy = (@ {ID = "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" porty = (@ {number = 22;        protokol = "\*";        allowedSourceAddressPrefix = @ ("\*");        maxRequestAccessDuration = "PT3H"}, @ {Number = 3389;        protokol = "\*";        allowedSourceAddressPrefix = @ ("\*");        maxRequestAccessDuration = "PT3H"})
+        $JitPolicy = (@ {ID = "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";   porty = (@ {number = 22;        protokol = " \* ";        allowedSourceAddressPrefix = @ (" \* ");        maxRequestAccessDuration = "PT3H"}, @ {Number = 3389;        protokol = " \* ";        allowedSourceAddressPrefix = @ (" \* ");        maxRequestAccessDuration = "PT3H"})
 
 2.    Do pole vložte zásady přístupu k virtuálnímu počítači za běhu podle potřeby:
     
@@ -228,7 +228,7 @@ V následujícím příkladu uvidíte požadavek na přístup k virtuálnímu po
 Spusťte následující příkaz v PowerShellu:
 1.    Konfigurovat vlastnosti přístupu k žádosti virtuálních počítačů
 
-        $JitPolicyVm 1 = (@ {ID = "/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME" porty = (@ {číslo = 22;      endTimeUtc = "2018-09-17T17:00:00.3658798 Z";      allowedSourceAddressPrefix = @ ("IPV4ADDRESS")})
+        $JitPolicyVm 1 = (@ {ID = "/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME";   porty = (@ {number = 22;      endTimeUtc = "2018-09-17T17:00:00.3658798 Z";      allowedSourceAddressPrefix = @ ("IPV4ADDRESS")})
 2.    Vložte parametry žádosti o přístup k virtuálnímu počítači do pole:
 
         $JitPolicyArr = @ ($JitPolicyVm 1)

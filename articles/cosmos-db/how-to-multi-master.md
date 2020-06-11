@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mjbrown
 ms.custom: tracking-python
-ms.openlocfilehash: 70b9f1aaeaedd7968aeaf09aebe4e53682a60019
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 792b0ef3f31bfb9dd26c153d5bb0eeab6ba8baf9
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84629362"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677980"
 ---
 # <a name="configure-multi-master-in-your-applications-that-use-azure-cosmos-db"></a>Nakonfigurujte ve svých aplikacích více hlavních serverů, které používají Azure Cosmos DB
 
@@ -56,18 +56,17 @@ CosmosClientBuilder cosmosClientBuilder = new CosmosClientBuilder("<connection-s
 CosmosClient client = cosmosClientBuilder.Build();
 ```
 
-## <a name="java-v4-sdk"></a>Sada Java v4 SDK
+## <a name="java-v4-sdk"></a><a id="java4-multi-master"></a>Sada Java v4 SDK
 
 Chcete-li ve své aplikaci povolit více hlavních serverů, zavolejte `.multipleWriteRegionsEnabled(true)` a `.preferredRegions(preferredRegions)` v Tvůrci klienta, kde `preferredRegions` je `List` obsahující jeden element – to je oblast, ve které se aplikace nasazuje a kde se Cosmos DB replikuje:
 
-### <a id="java4-multi-master"></a>
-#### <a name="async"></a>[Async](#tab/api-async)
+# <a name="async"></a>[Async](#tab/api-async)
 
    [Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Async API
 
    [!code-java[](~/azure-cosmos-java-sql-api-samples/src/main/java/com/azure/cosmos/examples/documentationsnippets/async/SampleDocumentationSnippetsAsync.java?name=ConfigureMultimasterAsync)]
 
-#### <a name="sync"></a>[Synchronizovat](#tab/api-sync)
+# <a name="sync"></a>[Synchronizovat](#tab/api-sync)
 
    [Sada Java SDK v4](sql-api-sdk-java-v4.md) (Maven [com. Azure:: Azure-Cosmos](https://mvnrepository.com/artifact/com.azure/azure-cosmos)) Sync API
 
@@ -75,9 +74,9 @@ Chcete-li ve své aplikaci povolit více hlavních serverů, zavolejte `.multipl
 
 --- 
 
-## <a name="async-java-v2-sdk-maven-commicrosoftazureazure-cosmosdb"></a><a id="java"></a>[Async Java v2 SDK](sql-api-sdk-async-java.md) (Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb))
+## <a name="async-java-v2-sdk"></a><a id="java2-milti-master"></a>Async Java v2 SDK
 
-Pokud chcete ve své aplikaci povolit více hlavních serverů, nastavte `policy.setUsingMultipleWriteLocations(true)` a nastavte `policy.setPreferredLocations` na oblast, ve které se aplikace nasazuje a kam se Cosmos DB replikují:
+Sada Java v2 SDK používala Maven [com. Microsoft. Azure:: Azure-cosmosdb](https://mvnrepository.com/artifact/com.microsoft.azure/azure-cosmosdb). Pokud chcete ve své aplikaci povolit více hlavních serverů, nastavte `policy.setUsingMultipleWriteLocations(true)` a nastavte `policy.setPreferredLocations` na oblast, ve které se aplikace nasazuje a kam se Cosmos DB replikují:
 
 ```java
 ConnectionPolicy policy = new ConnectionPolicy();
@@ -92,7 +91,7 @@ AsyncDocumentClient client =
         .withConnectionPolicy(policy).build();
 ```
 
-## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Sady SDK pro Node. js, JavaScript a TypeScript
+## <a name="nodejs-javascript-and-typescript-sdks"></a><a id="javascript"></a>Sady SDK proNode.js, JavaScript a TypeScript
 
 Pokud chcete v aplikaci povolit více hlavních serverů, nastavte `connectionPolicy.UseMultipleWriteLocations` na `true` . Nastavte také `connectionPolicy.PreferredLocations` na oblast, ve které se aplikace nasazuje a kam se Cosmos DB replikují:
 

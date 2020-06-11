@@ -4,12 +4,12 @@ description: Nasaďte Azure Monitor funkce ve velkém měřítku pomocí Azure P
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 5da174b374265126df2113f5ccf41397745d39d6
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.openlocfilehash: 4be403f8efc8e328548b6ef38b36be78a8fb96d7
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84632245"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678694"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Nasazení Azure Monitor ve velkém měřítku pomocí Azure Policy
 I když jsou některé funkce Azure Monitor nakonfigurované jednou nebo omezeným počtem časů, musí se pro každý prostředek, který chcete monitorovat, opakovat jiné. Tento článek popisuje metody použití Azure Policy k implementaci Azure Monitor škálování, aby se zajistilo, že monitorování je konzistentně a správně nakonfigurované pro všechny prostředky Azure.
@@ -79,7 +79,7 @@ Skript [Create-AzDiagPolicy](https://www.powershellgallery.com/packages/Create-A
    Create-AzDiagPolicy.ps1 -SubscriptionID xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx -ResourceType Microsoft.Sql/servers/databases  -ExportLA -ExportEH -ExportDir ".\PolicyFiles"  
    ```
 
-5. Skript vytvoří samostatné složky pro každou definici zásady, která obsahuje tři soubory s názvem azurepolicy, JSON, azurepolicy. Rules. JSON, azurepolicy. Parameters. JSON. Pokud chcete zásadu vytvořit ručně v Azure Portal, můžete zkopírovat a vložit obsah azurepolicy. JSON, protože obsahuje celou definici zásady. K vytvoření definice zásady z příkazového řádku použijte další dva soubory s PowerShellem nebo CLI.
+5. Skript vytvoří samostatné složky pro každou definici zásady, která obsahuje tři soubory s názvem azurepolicy, JSON azurepolicy.rules.jsv azurepolicy.parameters.jsna. Pokud chcete zásadu vytvořit ručně v Azure Portal, můžete zkopírovat a vložit obsah azurepolicy.jsna, protože obsahuje celou definici zásady. K vytvoření definice zásady z příkazového řádku použijte další dva soubory s PowerShellem nebo CLI.
 
     Následující příklady ukazují, jak nainstalovat definici zásady z PowerShellu i rozhraní příkazového řádku. Každá z nich zahrnuje metadata k určení kategorie **monitorování** , podle které se mají seskupit nové definice zásad, s integrovanými definicemi zásad.
 
@@ -135,4 +135,3 @@ Podrobnosti o tomto procesu najdete v tématu [povolení Azure monitor pro virtu
 
 - Přečtěte si další informace o [Azure Policy](../../governance/policy/overview.md).
 - Přečtěte si další informace o [nastavení diagnostiky](diagnostic-settings.md).
-- Podívejte se na [úložiště Northstar PlayBook](https://github.com/Azure/CET-NorthStar) , které poskytuje pokyny pro architekturu a implementaci pro rozsáhlé přijetí podnikového Azure.

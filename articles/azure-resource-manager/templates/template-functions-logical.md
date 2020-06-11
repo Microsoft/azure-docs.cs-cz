@@ -3,22 +3,22 @@ title: Funkce šablon – logická
 description: Popisuje funkce, které lze použít v šabloně Azure Resource Manager k určení logických hodnot.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0072593e7d7830e75e2386bcfdd2907a873c7a87
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192310"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677385"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Logické funkce pro šablony ARM
 
 Správce prostředků poskytuje několik funkcí pro porovnávání šablon Azure Resource Manager (ARM).
 
-* [ani](#and)
+* [a](#and)
 * [bool](#bool)
-* [if](#if)
+* [Přestože](#if)
 * [mění](#not)
-* [ani](#or)
+* [nebo](#or)
 
 ## <a name="and"></a>a
 
@@ -30,11 +30,11 @@ Kontroluje, zda jsou všechny hodnoty parametrů pravdivé.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Ano |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |Ne |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Yes |Boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Yes |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |No |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrátí **hodnotu true** , pokud jsou všechny hodnoty true; v opačném případě **false**.
 
@@ -44,7 +44,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -66,7 +66,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | andExampleOutput | Logická hodnota | False |
 | orExampleOutput | Logická hodnota | True |
@@ -82,9 +82,9 @@ Převede parametr na logickou hodnotu.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
+| arg1 |Yes |řetězec nebo int |Hodnota, která má být převedena na logickou hodnotu. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 Logická hodnota převedené hodnoty.
 
 ### <a name="examples"></a>Příklady
@@ -93,7 +93,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [],
     "outputs": {
@@ -119,7 +119,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu s výchozími hodnotami je:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | trueString | Logická hodnota | True |
 | falseString | Logická hodnota | False |
@@ -136,11 +136,11 @@ Vrátí hodnotu na základě toho, zda je podmínka pravdivá, nebo false.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| pomocné |Ano |Boolean |Hodnota, která ověří, zda je true nebo false. |
-| trueValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
-| falseValue |Ano | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
+| pomocné |Yes |Boolean |Hodnota, která ověří, zda je true nebo false. |
+| trueValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka pravdivá. |
+| falseValue |Yes | řetězec, int, objekt nebo pole |Hodnota, která se má vrátit, pokud je podmínka nepravdivá |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrací druhý parametr, pokud je první parametr **true**; v opačném případě vrátí třetí parametr.
 
@@ -154,7 +154,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -177,7 +177,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | yesOutput | Řetězec | ano |
 | Výstup | Řetězec | ne |
@@ -187,7 +187,7 @@ Následující [příklad šablony](https://github.com/krnese/AzureDeploy/blob/m
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "vmName": {
@@ -241,9 +241,9 @@ Převede logickou hodnotu na její opačnou hodnotu.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Boolean |Hodnota, kterou chcete převést. |
+| arg1 |Yes |Boolean |Hodnota, kterou chcete převést. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrátí **hodnotu pravda** , pokud má parametr **hodnotu false**. Vrátí **hodnotu false** , pokud má parametr **hodnotu true**.
 
@@ -253,7 +253,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -275,7 +275,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | andExampleOutput | Logická hodnota | False |
 | orExampleOutput | Logická hodnota | True |
@@ -285,7 +285,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [
     ],
@@ -300,11 +300,11 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | checkNotEquals | Logická hodnota | True |
 
-## <a name="or"></a>– nebo –
+## <a name="or"></a>nebo
 
 `or(arg1, arg2, ...)`
 
@@ -314,11 +314,11 @@ Kontroluje, zda je hodnota parametru pravdivá.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| arg1 |Ano |Boolean |První hodnota, která ověří, zda je hodnota true. |
-| arg2 |Ano |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
-| Další argumenty |Ne |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
+| arg1 |Yes |Boolean |První hodnota, která ověří, zda je hodnota true. |
+| arg2 |Yes |Boolean |Druhá hodnota, která ověří, zda je hodnota true. |
+| Další argumenty |No |Boolean |Další argumenty pro kontrolu, zda jsou pravdivé. |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Vrátí **hodnotu true** , pokud je libovolná hodnota true; v opačném případě **false**.
 
@@ -328,7 +328,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "resources": [ ],
     "outputs": {
@@ -350,7 +350,7 @@ Následující [příklad šablony](https://github.com/Azure/azure-docs-json-sam
 
 Výstup z předchozího příkladu:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | andExampleOutput | Logická hodnota | False |
 | orExampleOutput | Logická hodnota | True |

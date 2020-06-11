@@ -4,7 +4,6 @@ description: Pomocí Azure CLI můžete vytvořit cluster s podporou převzetí 
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
-manager: craigg
 tags: azure-resource-manager
 ms.service: virtual-machines-sql
 ms.topic: article
@@ -14,12 +13,12 @@ ms.date: 02/12/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 23667e8a50d2ef3a7a31aeb165c0b5d43bcf3eca
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 3366438012ecc3395e7f4ae3774316ef1ddcd3b9
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84219625"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669337"
 ---
 # <a name="use-the-azure-cli-to-configure-an-always-on-availability-group-for-sql-server-on-azure-vm"></a>Použití rozhraní příkazového řádku Azure ke konfiguraci skupiny dostupnosti Always On pro SQL Server na virtuálním počítači Azure
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -129,7 +128,7 @@ Po ručním vytvoření skupiny dostupnosti můžete naslouchací proces vytvoř
    1. V [Azure Portal](https://portal.azure.com)přejít do skupiny prostředků. 
    1. Vyberte prostředek virtuální sítě. 
    1. V podokně **Nastavení** vyberte **vlastnosti** . 
-   1. Identifikujte ID prostředku pro virtuální síť a přidejte `/subnets/<subnetname>` na konec IT a vytvořte ID prostředku podsítě. Příklad:
+   1. Identifikujte ID prostředku pro virtuální síť a přidejte `/subnets/<subnetname>` na konec IT a vytvořte ID prostředku podsítě. Například:
       - Vaše ID prostředku virtuální sítě je:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet`
       - Název vaší podsítě:`default`
       - Proto je ID prostředku podsítě:`/subscriptions/a1a1-1a11a/resourceGroups/SQLVM-RG/providers/Microsoft.Network/virtualNetworks/SQLVMvNet/subnets/default`

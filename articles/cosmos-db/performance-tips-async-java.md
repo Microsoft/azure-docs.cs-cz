@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 461602aee6d88f8d8f829fcf89e3433a8185e34d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 92b7b1f72cde355f87761807708348b988bcc0a4
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83658940"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676869"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Tipy ke zvýšení výkonu pro Azure Cosmos DB Async Java SDK v2
 
@@ -20,7 +20,8 @@ ms.locfileid: "83658940"
 > * [Java SDK v4](performance-tips-java-sdk-v4-sql.md)
 > * [Sada Async Java SDK v2](performance-tips-async-java.md)
 > * [Sada Sync Java SDK v2](performance-tips-java.md)
-> * [.NET](performance-tips.md)
+> * [.NET SDK V3](performance-tips-dotnet-sdk-v3-sql.md)
+> * [.NET SDK v2](performance-tips.md)
 > 
 
 > [!IMPORTANT]  
@@ -296,7 +297,7 @@ Pro jiné platformy (Red Hat, Windows, Mac atd.) odkazují na tyto pokyny.https:
 
     Složitost dotazu ovlivňuje počet spotřebovaných jednotek požadavků pro určitou operaci. Počet predikátů, povaha predikátů, počet UDF a velikost zdrojové sady dat ovlivňují náklady na operace dotazů.
 
-    Pokud chcete změřit režii jakékoli operace (vytvořit, aktualizovat nebo odstranit), zkontrolujte, že se v hlavičce [x-MS-Request-poplatek](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) měří počet jednotek žádostí spotřebovaných těmito operacemi. Můžete se také podívat na ekvivalentní vlastnost RequestCharge v ResourceResponse \< t> nebo FeedResponse \< t>.
+    Pokud chcete změřit režii jakékoli operace (vytvořit, aktualizovat nebo odstranit), zkontrolujte, že se v hlavičce [x-MS-Request-poplatek](/rest/api/cosmos-db/common-cosmosdb-rest-request-headers) měří počet jednotek žádostí spotřebovaných těmito operacemi. Můžete se také podívat na ekvivalentní vlastnost RequestCharge v ResourceResponse \<T> nebo FeedResponse \<T> .
 
     ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-requestcharge"></a>Async Java SDK v2 (Maven com. Microsoft. Azure:: Azure-cosmosdb)
 

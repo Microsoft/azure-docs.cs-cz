@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 09/12/2019
 ms.author: cshoe
-ms.openlocfilehash: e4f35495d8a01146068cffb9159c29c46c3c0d29
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe5efd2bf4c235688aad90ae37b54268d290540c
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75561863"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676127"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Azure Functions spolehlivé zpracování událostí
 
@@ -55,7 +55,7 @@ Toto chování odhalí několik důležitých bodů:
 
 ## <a name="handling-exceptions"></a>Zpracování výjimek
 
-Obecně platí, že každá funkce by měla obsahovat [blok try/catch](./functions-bindings-error-pages.md) na nejvyšší úrovni kódu. Konkrétně všechny funkce, které spotřebovávají Event Hubs události, by měly `catch` mít blok. Tímto způsobem, když je vyvolána výjimka, blok catch zpracovává chybu před průběhem ukazatele.
+Obecně platí, že každá funkce by měla obsahovat [blok try/catch](./functions-bindings-error-pages.md) na nejvyšší úrovni kódu. Konkrétně všechny funkce, které spotřebovávají Event Hubs události, by měly mít `catch` blok. Tímto způsobem, když je vyvolána výjimka, blok catch zpracovává chybu před průběhem ukazatele.
 
 ### <a name="retry-mechanisms-and-policies"></a>Mechanismy a zásady opakování
 
@@ -91,7 +91,7 @@ K implementaci přerušení okruhu v procesu události se vyžadují dvě část
 
 Podrobnosti implementace se můžou lišit, ale sdílet stav mezi instancemi, které potřebujete úložného mechanismu. Můžete se rozhodnout uložit stav do Azure Storage, mezipaměť Redis nebo jakýkoli jiný účet, který je přístupný pro kolekci funkcí.
 
-[Azure Logic Apps](../logic-apps/logic-apps-overview.md) nebo [trvalé entity](./durable/durable-functions-overview.md) jsou přirozenou možností správy pracovního postupu a stavu okruhu. Další služby můžou fungovat stejně, ale v tomto příkladu se používají Logic Apps. Pomocí Logic Apps můžete pozastavit a restartovat provádění funkce a poskytnout tak ovládací prvek potřebný k implementaci vzorku pro přestávku okruhu.
+[Azure Logic Apps](../logic-apps/logic-apps-overview.md) nebo [trvalé funkce](./durable/durable-functions-overview.md) jsou přirozenou možností správy pracovního postupu a stavu okruhu. Další služby můžou fungovat stejně, ale v tomto příkladu se používají Logic Apps. Pomocí Logic Apps můžete pozastavit a restartovat provádění funkce a poskytnout tak ovládací prvek potřebný k implementaci vzorku pro přestávku okruhu.
 
 ### <a name="define-a-failure-threshold-across-instances"></a>Definice prahové hodnoty selhání napříč instancemi
 
@@ -123,7 +123,7 @@ Při použití tohoto přístupu se neztratí žádné zprávy, všechny zprávy
 ## <a name="resources"></a>Zdroje a prostředky
 
 - [Ukázky spolehlivých zpracování událostí](https://github.com/jeffhollan/functions-csharp-eventhub-ordered-processing)
-- [Přepínací modul okruhů Azure Durable Functions](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
+- [Přerušení okruhu trvalých entit Azure](https://github.com/jeffhollan/functions-durable-actor-circuitbreaker)
 
 ## <a name="next-steps"></a>Další kroky
 

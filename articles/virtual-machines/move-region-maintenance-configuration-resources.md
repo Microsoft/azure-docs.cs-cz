@@ -1,19 +1,17 @@
 ---
 title: Přesunutí prostředků spojených s konfigurací údržby do jiné oblasti
 description: Přečtěte si, jak přesunout prostředky přidružené k konfiguraci údržby virtuálních počítačů do jiné oblasti Azure.
-services: virtual-machines
 author: shants123
 ms.service: virtual-machines
-ms.topic: article
-ms.tgt_pltfrm: vm
+ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
-ms.openlocfilehash: 3e271e2467b495e79a93ce5eab5edee36e65e619
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: baf7201176fc3d6c70881817ff21b44c2615241a
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78304443"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676887"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Přesunutí prostředků v konfiguraci řízení údržby do jiné oblasti
 
@@ -42,7 +40,7 @@ Než začnete přesouvat prostředky spojené s konfigurací řízení údržby:
 
 1. Než začnete, definujte tyto proměnné. Poskytujeme příklad pro každý.
 
-    **Proměnná** | **Zobrazí** | **Případě**
+    **Proměnná** | **Zobrazí** | **Příklad**
     --- | ---
     $subId | ID pro předplatné obsahující konfigurace údržby | Naše-Subscription-ID
     $rsrcGroupName | Název skupiny prostředků (virtuální počítač Azure) | "VMResourceGroup"

@@ -1,26 +1,20 @@
 ---
 title: Velikosti virtuálních počítačů Azure – HPC | Microsoft Docs
 description: Zobrazuje seznam různých velikostí dostupných pro vysoce výkonné výpočetní virtuální počítače v Azure. Uvádí informace o počtu vCPU, datových discích a síťových rozhraních a propustnosti úložiště a šířce pásma sítě pro velikosti v této sérii.
-services: virtual-machines
-documentationcenter: ''
 author: vermagit
-manager: gwallace
-editor: ''
-tags: azure-resource-manager,azure-service-management
-ms.assetid: ''
 ms.service: virtual-machines
-ms.devlang: na
+ms.subservice: sizes
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 02/03/2020
 ms.author: amverma
-ms.reviewer: jonbeck
-ms.openlocfilehash: 409fe69d111e2c5aebe0ad0bd38ced10604b5f1b
-ms.sourcegitcommit: 11572a869ef8dbec8e7c721bc7744e2859b79962
+ms.reviewer: jushiman
+ms.openlocfilehash: 961e5a0febc0212b8a747b052b3fd6f696689351
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/05/2020
-ms.locfileid: "82839058"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678626"
 ---
 # <a name="high-performance-computing-vm-sizes"></a>Vysoce výkonné výpočetní velikosti virtuálních počítačů
 
@@ -92,7 +86,7 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 
 - **Virtuální počítače** – nasazení virtuálních počítačů HPC podporujících RDMA ve stejné sadě škálování nebo skupině dostupnosti (při použití modelu nasazení Azure Resource Manager). Pokud používáte model nasazení Classic, nasaďte virtuální počítače do stejné cloudové služby.
 
-- **Virtual Machine Scale Sets** – ve virtuálním počítači škálované sadě (VMSS) nezapomeňte omezit nasazení na jednu skupinu umístění pro komunikaci InfiniBand v rámci VMSS. Například v šabloně Správce prostředků nastavte `singlePlacementGroup` vlastnost na. `true` Všimněte si, že maximální velikost VMSS, kterou `singlePlacementGroup` `true` je možné pomocí vlastnosti vymezit, je omezené na 100 virtuálních počítačů ve výchozím nastavení. Pokud vaše požadavky na škálování úlohy HPC jsou vyšší než 100 virtuálních počítačů v rámci jednoho tenanta VMSS, můžete požádat o zvýšení, [otevřít Online žádost o zákaznickou podporu](../azure-supportability/how-to-create-azure-support-request.md) bez poplatků. Omezení počtu virtuálních počítačů v jednom VMSS se dá zvýšit na 300. Všimněte si, že při nasazování virtuálních počítačů pomocí skupin dostupnosti je maximální limit na 200 virtuálních počítačů na skupinu dostupnosti.
+- **Virtual Machine Scale Sets** – ve virtuálním počítači škálované sadě (VMSS) nezapomeňte omezit nasazení na jednu skupinu umístění pro komunikaci InfiniBand v rámci VMSS. Například v šabloně Správce prostředků nastavte `singlePlacementGroup` vlastnost na `true` . Všimněte si, že maximální velikost VMSS, kterou je možné pomocí vlastnosti vymezit, `singlePlacementGroup` `true` je omezené na 100 virtuálních počítačů ve výchozím nastavení. Pokud vaše požadavky na škálování úlohy HPC jsou vyšší než 100 virtuálních počítačů v rámci jednoho tenanta VMSS, můžete požádat o zvýšení, [otevřít Online žádost o zákaznickou podporu](../azure-supportability/how-to-create-azure-support-request.md) bez poplatků. Omezení počtu virtuálních počítačů v jednom VMSS se dá zvýšit na 300. Všimněte si, že při nasazování virtuálních počítačů pomocí skupin dostupnosti je maximální limit na 200 virtuálních počítačů na skupinu dostupnosti.
 
 - **MPI mezi virtuálními počítači** – Pokud se pro virtuální počítače (VM) vyžaduje RDMA (např. použití komunikace MPI), ujistěte se, že jsou virtuální počítače ve stejné sadě nebo skupině dostupnosti virtuálních počítačů.
 
@@ -100,7 +94,7 @@ Azure poskytuje několik možností pro vytváření clusterů virtuálních po�
 
 - **Azure Batch** – vytvořte fond [Azure Batch](/azure/batch/) pro spouštění úloh MPI. Pokud chcete používat instance náročné na výpočetní výkon při spouštění aplikací MPI s Azure Batch, přečtěte si téma [použití úloh s více instancemi ke spouštění aplikací MPI (Message Passing Interface) v Azure Batch](../batch/batch-mpi.md).
 
-- **Sada Microsoft HPC Pack** - [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) obsahuje běhové prostředí pro MS-MPI, které používá síť Azure RDMA při nasazení na virtuální počítače Linux s podporou RDMA. Například nasazení najdete v tématu [Nastavení clusteru Linux RDMA se sadou HPC Pack pro spouštění aplikací MPI](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
+- **Sada Microsoft HPC Pack**  -  [HPC Pack](https://docs.microsoft.com/powershell/high-performance-computing/overview) zahrnuje běhové prostředí pro MS-MPI, které používá síť Azure RDMA při nasazení na virtuální počítače Linux s podporou RDMA. Například nasazení najdete v tématu [Nastavení clusteru Linux RDMA se sadou HPC Pack pro spouštění aplikací MPI](https://docs.microsoft.com/powershell/high-performance-computing/hpcpack-linux-openfoam).
 
 ## <a name="deployment-considerations"></a>Aspekty nasazování
 

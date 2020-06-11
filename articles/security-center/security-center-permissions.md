@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/04/2020
 ms.author: memildin
-ms.openlocfilehash: 2552012678300e944a513f9d7167fa582424bf8f
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 16c2669dbb0a483a00d093871dfeeed65c5f9f20
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558856"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84669779"
 ---
 # <a name="permissions-in-azure-security-center"></a>Oprávnění ve službě Azure Security Center
 
@@ -43,8 +43,8 @@ V následující tabulce jsou uvedeny role a povolené akce v Security Center.
 |Akce|Čtecí modul zabezpečení/ <br> Čtenář |Správce zabezpečení  |Přispěvatel skupiny prostředků/ <br> Vlastník skupiny prostředků  |Přispěvatel předplatného  |Vlastník předplatného  |
 |:--- |:---:|:---:|:---:|:---:|:---:|
 |Upravit zásady zabezpečení|-|✔|-|-|✔|
-|Změnit cenovou úroveň předplatného|-|✔|-|-|-|
-|Povolit nebo zakázat Automatické zřizování|-|✔|-|-|-|
+|Změnit cenovou úroveň předplatného|-|✔|-|-|✔|
+|Povolit nebo zakázat Automatické zřizování|-|✔|-|-|✔|
 |Použití doporučení zabezpečení pro prostředek</br> (a použijte [rychlou opravu!](security-center-remediate-recommendations.md#quick-fix-remediation))|-|-|✔|✔|✔|
 |Zavřít výstrahy|-|✔|-|✔|✔|
 |Zobrazit výstrahy a doporučení|✔|✔|✔|✔|✔|

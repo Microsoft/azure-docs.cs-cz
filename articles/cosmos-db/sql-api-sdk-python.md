@@ -9,19 +9,20 @@ ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
 ms.custom: tracking-python
-ms.openlocfilehash: 3a274ca84be8e4803bae614dcb3eba5d8086bd2d
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 07ccfaf842af0959388e4a3c49e7ae30c029e3c1
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559525"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677612"
 ---
 # <a name="azure-cosmos-db-python-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Python SDK pro SQL API: poznámky k verzi a prostředky
 
 > [!div class="op_single_selector"]
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK V3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
@@ -30,7 +31,7 @@ ms.locfileid: "84559525"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Hromadný prováděcí modul – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
 
 | |  |
@@ -99,7 +100,7 @@ ms.locfileid: "84559525"
 
 * Připojení klienta bylo upraveno za účelem využívání kanálu HTTP definovaného v `azure.core.pipeline` .
 
-* Interaktivní objekty se teď přejmenovaly jako proxy. Sem patří:
+* Interaktivní objekty se teď přejmenovaly jako proxy. To zahrnuje:
 
   * `Database` -> `DatabaseProxy`
   * `User` -> `UserProxy`
@@ -305,7 +306,7 @@ Všechny žádosti o Azure Cosmos DB používání vyřazené sady SDK jsou slu�
 > [!WARNING]
 > Všechny verze sady Python SDK pro SQL API starší než verze **1.0.0** byly vyřazení od **29. února 2016**. A všechny verze 1. x a 2. x sady Python SDK pro SQL API budou vyřazení od 30. **srpna 2020**.
 
-| Version | Datum vydání | Datum vyřazení |
+| Verze | Datum vydání | Datum vyřazení |
 | --- | --- | --- |
 | [4.0.0](#400) |20. května 2020 |--- |
 | [3.0.2](#302) |15. listopadu 2018 |--- |

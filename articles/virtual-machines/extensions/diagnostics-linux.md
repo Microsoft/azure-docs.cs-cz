@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 4c34996cb47b1f09f47454f162674248820ce975
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 4033437db5c14abcd0376fbfeca22cca915908d2
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118558"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677181"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu k monitorování metrik a protokolů
 
@@ -451,7 +451,7 @@ Je třeba zadat buď Table, nebo "jímky", nebo obojí.
 
 Prvek | Hodnota
 ------- | -----
- – soubor | Úplná cesta k souboru protokolu, který má být sledován a zachycen. Cesta musí pojmenovat jeden soubor. nemůže obsahovat název adresáře ani zástupné znaky.
+ – soubor | Úplná cesta k souboru protokolu, který má být sledován a zachycen. Cesta musí pojmenovat jeden soubor. nemůže obsahovat název adresáře ani zástupné znaky. Uživatelský účet omsagent musí mít k této cestě k souboru přístup pro čtení.
 tabulka | volitelné Tabulka úložiště Azure v určeném účtu úložiště (jak je uvedeno v chráněných konfiguracích), do kterého se zapisují nové řádky z "koncového" souboru.
 jímky | volitelné Čárkami oddělený seznam názvů dalších umyvadel, na které se odesílají řádky protokolu.
 
@@ -566,7 +566,7 @@ Agregované hodnoty ve všech discích lze získat nastavením `"condition": "Is
 
 ## <a name="installing-and-configuring-lad-30-via-cli"></a>Instalace a konfigurace LAD 3.0 pomocí rozhraní příkazového řádku
 
-Za předpokladu, že vaše chráněná nastavení jsou v souboru PrivateConfig. JSON a informace o veřejné konfiguraci jsou v souboru PublicConfig. JSON, spusťte tento příkaz:
+Za předpokladu, že vaše chráněná nastavení jsou v souboru PrivateConfig.jsna a informace o vaší veřejné konfiguraci jsou PublicConfig.jsna, spusťte tento příkaz:
 
 ```azurecli
 az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
@@ -578,7 +578,7 @@ V příkazu se předpokládá, že používáte Azure CLI v režimu správy pros
 
 V závislosti na předchozích definicích najdete ukázkovou konfiguraci rozšíření LAD 3,0 s některými vysvětleními. Pokud chcete tuto ukázku použít pro váš případ, měli byste použít vlastní název účtu úložiště, token SAS účtu a EventHubs tokeny SAS.
 
-### <a name="privateconfigjson"></a>PrivateConfig. JSON
+### <a name="privateconfigjson"></a>PrivateConfig.jsna
 
 Konfigurace těchto privátních nastavení:
 
@@ -628,7 +628,7 @@ Konfigurace těchto privátních nastavení:
 }
 ```
 
-### <a name="publicconfigjson"></a>PublicConfig. JSON
+### <a name="publicconfigjson"></a>PublicConfig.jsna
 
 Tato veřejná nastavení způsobí, že LAD:
 

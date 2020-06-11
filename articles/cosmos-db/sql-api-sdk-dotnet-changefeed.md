@@ -8,20 +8,21 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 05/11/2020
 ms.author: anfeldma
-ms.openlocfilehash: 43096e61fee740c6d1f1093cd441b8d2ee5901f8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d7b2e5b811e6e9972c94862a92b8f5808dcbe592
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84171629"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678116"
 ---
 # <a name="net-change-feed-processor-sdk-download-and-release-notes"></a>Sada SDK pro rozhraní Change feed pro .NET: stažení a poznámky k verzi
 
 > [!div class="op_single_selector"]
 >
-> * [.NET](sql-api-sdk-dotnet.md)
-> * [Kanál změn .NET](sql-api-sdk-dotnet-changefeed.md)
-> * [.NET Core](sql-api-sdk-dotnet-core.md)
+> * [.NET SDK V3](sql-api-sdk-dotnet-standard.md)
+> * [.NET SDK v2](sql-api-sdk-dotnet.md)
+> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
 > * [Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
@@ -30,7 +31,7 @@ ms.locfileid: "84171629"
 > * [REST](https://docs.microsoft.com/rest/api/cosmos-db/)
 > * [Poskytovatel prostředků REST](https://docs.microsoft.com/rest/api/cosmos-db-resource-provider/)
 > * [SQL](sql-api-query-reference.md)
-> * [Hromadný prováděcí modul – .NET](sql-api-sdk-bulk-executor-dot-net.md)
+> * [Hromadný prováděcí modul – .NET v2](sql-api-sdk-bulk-executor-dot-net.md)
 > * [Hromadný prováděcí modul – Java](sql-api-sdk-bulk-executor-java.md)
 
 |   |   |
@@ -98,7 +99,7 @@ ms.locfileid: "84171629"
 
 ### <a name="210"></a><a name="2.1.0"></a>2.1.0
 * Bylo přidáno nové rozhraní API, Task &lt; IReadOnlyList &lt; RemainingPartitionWork &gt; &gt; IRemainingWorkEstimator. GetEstimatedRemainingWorkPerPartitionAsync (). To se dá použít k získání odhadované práce pro každý oddíl.
-* Podporuje Microsoft. Azure. DocumentDB SDK 2,0. Vyžaduje Microsoft. Azure. DocumentDB 2,0 nebo novější.
+* Podporuje sadu Microsoft.Azure.DocumentDB SDK 2,0. Vyžaduje Microsoft.Azure.DocumentDB 2,0 nebo novější.
 
 ### <a name="206"></a><a name="2.0.6"></a>2.0.6
 * Byla přidána veřejná vlastnost ChangeFeedEventHost. HostName pro kompatibilitu s v1.
@@ -115,10 +116,10 @@ ms.locfileid: "84171629"
   * Rozhraní GetEstimatedRemainingWork API vrátilo hodnotu 0, pokud v kolekci zapůjčení nebylo přítomno žádné zapůjčení.
 
 * Následující výjimky jsou zveřejněny. Rozšíření implementující IPartitionProcessor můžou tyto výjimky vyvolat.
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. LeaseLostException. 
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. PartitionException. 
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. PartitionNotFoundException.
-  * Microsoft. Azure. Documents. ChangeFeedProcessor. Exceptions. PartitionSplitException. 
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. Exceptions. LeaseLostException. 
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. Exceptions. PartitionException. 
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. Exceptions. PartitionNotFoundException.
+  * Microsoft.Azure.Documents. ChangeFeedProcessor. Exceptions. PartitionSplitException. 
 
 ### <a name="202-prerelease"></a><a name="2.0.2-prerelease"></a>2.0.2 – Předběžná verze
 * Dílčí změny rozhraní API:

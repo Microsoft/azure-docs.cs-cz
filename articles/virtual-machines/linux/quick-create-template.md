@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
-ms.openlocfilehash: 0e9ce74d62bb45c84f8bca2d71579b05c0ba656a
-ms.sourcegitcommit: f57fa5f3ce40647eda93f8be4b0ab0726d479bca
+ms.openlocfilehash: 7fc7e4d5d402bfb21a30798f64e31cbbef8ccdd0
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/07/2020
-ms.locfileid: "84485740"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677946"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-a-resource-manager-template"></a>Rychlý Start: Vytvoření virtuálního počítače s Ubuntu Linux pomocí šablony Správce prostředků
 
@@ -23,8 +23,13 @@ V tomto rychlém startu se dozvíte, jak pomocí šablony Správce prostředků 
 
 Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
+## <a name="prerequisites"></a>Požadavky
 
-## <a name="review-the-template"></a>Kontrola šablony
+Žádné
+
+## <a name="create-an-ubuntu-linux-virtual-machine"></a>Vytvoření virtuálního počítače s Ubuntu Linux
+
+### <a name="review-the-template"></a>Kontrola šablony
 
 Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-vm-simple-linux/).
 
@@ -35,19 +40,17 @@ V šabloně je definováno několik prostředků:
 
 - [**Microsoft. Network/virtualNetworks/subnets**](/azure/templates/Microsoft.Network/virtualNetworks/subnets): vytvořit podsíť.
 - [**Microsoft. Storage/storageAccounts**](/azure/templates/Microsoft.Storage/storageAccounts): vytvořte účet úložiště.
-- [**Microsoft. Network/publicIPAddresses**](/azure/templates/Microsoft.Network/publicIPAddresses): Vytvoří veřejnou IP adresu.
+- [**Microsoft. Network/networkInterfaces**](/azure/templates/Microsoft.Network/networkInterfaces): vytvořte síťovou kartu.
 - [**Microsoft. Network/networkSecurityGroups**](/azure/templates/Microsoft.Network/networkSecurityGroups): Vytvořte skupinu zabezpečení sítě.
 - [**Microsoft. Network/virtualNetworks**](/azure/templates/Microsoft.Network/virtualNetworks): vytvořte virtuální síť.
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/Microsoft.Network/networkInterfaces): vytvořte síťovou kartu.
+- [**Microsoft. Network/publicIPAddresses**](/azure/templates/Microsoft.Network/publicIPAddresses): Vytvoří veřejnou IP adresu.
 - [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/Microsoft.Compute/virtualMachines): vytvořte virtuální počítač.
 
-
-
-## <a name="deploy-the-template"></a>Nasazení šablony
+### <a name="deploy-the-template"></a>Nasazení šablony
 
 1. Vyberte následující obrázek a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří Trezor klíčů a tajný klíč.
 
-    [![Nasazení do Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
+    [![Nasazení do Azure](../../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-vm-simple-linux%2fazuredeploy.json)
 
 1. Vyberte nebo zadejte následující hodnoty. Použijte výchozí hodnoty, pokud je k dispozici.
 

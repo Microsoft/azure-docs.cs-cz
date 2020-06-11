@@ -1,18 +1,18 @@
 ---
-title: Eav4-Series a Easv4-Series – Azure Virtual Machines
+title: Řady Eav4-Series a Easv4-Series
 description: Specifikace pro virtuální počítače s Eav4 a Easv4-Series.
-services: virtual-machines
 author: migerdes
 ms.service: virtual-machines
+ms.subservice: sizes
 ms.topic: article
 ms.date: 02/03/2020
-ms.author: lahugh
-ms.openlocfilehash: ab45298dbcb8988da7d0211fcbde3087d0099038
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.author: jushiman
+ms.openlocfilehash: 230809f4fe42ce0fc8b8c85024b42926a27e699f
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437082"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84678235"
 ---
 # <a name="eav4-and-easv4-series"></a>Řada Eav4 a Easv4
 
@@ -34,15 +34,15 @@ Velikosti řady Eav4-Series jsou založené na procesoru AMD EPYC<sup>TM</sup> 7
 
 | Velikost | Virtuální procesory | Paměť: GiB | Dočasné úložiště (SSD): GiB | Max. datových disků | Maximální propustnost dočasného úložiště: IOPS / čtení v MB/s / zápis v MB/s | Maximální počet síťových karet/očekávaná šířka pásma sítě (MB/s) |
 | -----|-----|-----|-----|-----|-----|-----|
-| E2A\_\_v4 úrovně Standard|2|16|50|4|3000 / 46 / 23|2 / 1 000 |
-| E4a\_\_v4 úrovně Standard|4|32|100|8|6000 / 93 / 46|2 / 2 000 |
-| E8a\_\_v4 úrovně Standard|8|64|200|16|12000 / 187 / 93|4 / 4000 |
-| E16a\_\_v4 úrovně Standard|16|128|400|32|24000 / 375 / 187|8 / 8000 |
-| E20a\_\_v4 úrovně Standard|20|160|500|32|30000/468/234|8 / 10000 |
-| E32a\_\_v4 úrovně Standard|32|256|800|32|48000 / 750 / 375|8 / 16 000 |
-| E48a\_\_v4 úrovně Standard|48|384|1200|32|96000/1000 (500)|8 / 24000 |
-| E64a\_\_v4 úrovně Standard|64|512|1600|32|96000/1000 (500)|8 / 30000 |
-| E96a\_\_v4 úrovně Standard|96|672|2400|32|96000/1000 (500)|8 / 30000 |
+| \_E2A \_ v4 úrovně Standard|2|16|50|4|3000 / 46 / 23|2 / 1 000 |
+| \_E4a \_ v4 úrovně Standard|4|32|100|8|6000 / 93 / 46|2 / 2 000 |
+| \_E8a \_ v4 úrovně Standard|8|64|200|16|12000 / 187 / 93|4 / 4000 |
+| \_E16a \_ v4 úrovně Standard|16|128|400|32|24000 / 375 / 187|8 / 8000 |
+| \_E20a \_ v4 úrovně Standard|20|160|500|32|30000/468/234|8 / 10000 |
+| \_E32a \_ v4 úrovně Standard|32|256|800|32|48000 / 750 / 375|8 / 16 000 |
+| \_E48a \_ v4 úrovně Standard|48|384|1200|32|96000/1000 (500)|8 / 24000 |
+| \_E64a \_ v4 úrovně Standard|64|512|1600|32|96000/1000 (500)|8 / 30000 |
+| \_E96a \_ v4 úrovně Standard|96|672|2400|32|96000/1000 (500)|8 / 30000 |
 
 ## <a name="easv4-series"></a>Easv4-Series
 

@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: e653adfd7a148cea7bfb1ecfdbbf386eff0c3e86
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.openlocfilehash: 9b651776ccd8c93271b57eab0efa24c6a79f50a3
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83723319"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84676229"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault rozšíření virtuálního počítače pro Linux
 
@@ -53,9 +53,9 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
       "settings": {
         "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "certificateStoreName": <It is ignored on Linux>,
           "linkOnRenewal": <Not available on Linux e.g.: false>,
-          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
         }      
@@ -79,9 +79,9 @@ Následující JSON zobrazuje schéma pro rozšíření Key Vault virtuálního 
 | typ | KeyVaultForLinux | řetězec |
 | typeHandlerVersion | 1.0 | int |
 | pollingIntervalInS | 3600 | řetězec |
-| certificateStoreName | MY | řetězec |
+| certificateStoreName | Ignoruje se na Linux. | řetězec |
 | linkOnRenewal | false (nepravda) | Boolean |
-| certificateStoreLocation  | LocalMachine | řetězec |
+| certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | řetězec |
 | requiredInitialSync | true | Boolean |
 | observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | pole řetězců
 
@@ -109,8 +109,8 @@ Konfigurace JSON pro rozšíření virtuálního počítače musí být vnořen�
       "settings": {
           "secretsManagementSettings": {
           "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
-          "certificateStoreName": <certificate store name, e.g.: "MY">,
-          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "certificateStoreName": <ingnored on linux>,
+          "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
         }      
       }
@@ -211,6 +211,13 @@ Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ## <a name="azure-cli"></a>Azure CLI
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
+```
+### <a name="logs-and-configuration"></a>Protokoly a konfigurace
+
+```
+/var/log/waagent.log
+/var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
+/var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
 ```
 
 ### <a name="support"></a>Podpora

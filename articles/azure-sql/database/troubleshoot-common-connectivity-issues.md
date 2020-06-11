@@ -9,16 +9,15 @@ ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
 author: dalechen
-manager: dcscontentpm
 ms.author: ninarn
 ms.reviewer: carlrab, vanto
 ms.date: 01/14/2020
-ms.openlocfilehash: 4aa8d35e48c28cadecb6acc1f56ca6c44a145719
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: b7cf4ab817f222f3a36a047e1e4d379f5bd6b73e
+ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266963"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84668402"
 ---
 # <a name="troubleshoot-transient-connection-errors-in-sql-database-and-sql-managed-instance"></a>Řešení chyb přechodného připojení v SQL Database a spravované instanci SQL
 
@@ -150,7 +149,7 @@ Pokud se například počet rovná 3 a interval se rovná 10 sekund, časový li
 Parametry **atributu ConnectRetryCount** a **atributu ConnectRetryInterval** umožňují, aby se váš objekt **SqlConnection** znovu opakoval, aniž by bylo nutné sdělit nebo přestane svůj program, jako je například vrácení řízení vašemu programu. Opakování se může vyskytnout v následujících situacích:
 
 - mySqlConnection. Open – volání metody
-- mySqlConnection. Execute – volání metody
+- mySqlConnection.Exevolání metody roztomilá
 
 Existuje Subtlety. Pokud při provádění *dotazu* dojde k přechodné chybě, váš objekt **SqlConnection** neopakuje operaci připojení. V takovém případě to neopakuje dotaz. Nicméně **SqlConnection** velmi rychle zkontroluje připojení před odesláním dotazu ke spuštění. Pokud rychlá kontroly zjistí problém s připojením, **SqlConnection** opakuje operaci připojení. Pokud je opakování úspěšné, odešle se dotaz k provedení.
 
@@ -227,7 +226,7 @@ Pokud se programu nemůžete připojit k vaší databázi v SQL Database, jednou
 
 Na jakémkoli počítači s Windows můžete vyzkoušet tyto nástroje:
 
-- SQL Server Management Studio (SSMS. exe), který se připojuje pomocí ADO.NET
+- SQL Server Management Studio (ssms.exe), který se připojuje pomocí ADO.NET
 - `sqlcmd.exe`, který se připojuje pomocí [rozhraní ODBC](https://msdn.microsoft.com/library/jj730308.aspx)
 
 Po připojení programu otestujte, jestli funguje krátký dotaz SQL SELECT.
@@ -243,7 +242,7 @@ V systému Linux mohou být užitečné následující nástroje:
 - `netstat -nap`
 - `nmap -sS -O 127.0.0.1`: Změňte ukázkovou hodnotu na vaši IP adresu.
 
-V systému Windows může být užitečný nástroj [PortQry. exe](https://www.microsoft.com/download/details.aspx?id=17148) . Tady je příklad spuštění s dotazem na situaci, kdy se port nachází v databázi v SQL Database a který byl spuštěný na přenosném počítači:
+V systému Windows může být užitečný nástroj [PortQry.exe](https://www.microsoft.com/download/details.aspx?id=17148) . Tady je příklad spuštění s dotazem na situaci, kdy se port nachází v databázi v SQL Database a který byl spuštěný na přenosném počítači:
 
 ```cmd
 [C:\Users\johndoe\]

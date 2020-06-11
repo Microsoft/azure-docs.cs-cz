@@ -3,12 +3,12 @@ title: Šablony – funkce – datum
 description: Popisuje funkce, které se použijí v šabloně Azure Resource Manager pro práci s daty.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 0c31b26361a262a502b2a9e0fb068391846cab4b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 22bb3c80acb504649e4f5485c4d78dcd04277ec0
+ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82192293"
+ms.lasthandoff: 06/10/2020
+ms.locfileid: "84677997"
 ---
 # <a name="date-functions-for-arm-templates"></a>Funkce data pro šablony ARM
 
@@ -27,11 +27,11 @@ Přidá do základní hodnoty časový interval. Očekává se formát ISO 8601.
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| base | Ano | řetězec | Počáteční hodnota DateTime pro sčítání. Použijte [Formát časového razítka ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
-| doba trvání | Ano | řetězec | Hodnota času, která se má přidat do základu Může se jednat o zápornou hodnotu. Použijte [Formát doby trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
-| formát | Ne | řetězec | Formát výstupu pro výsledek data a času. Pokud není zadaný, použije se formát základní hodnoty. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| base | Yes | řetězec | Počáteční hodnota DateTime pro sčítání. Použijte [Formát časového razítka ISO 8601](https://en.wikipedia.org/wiki/ISO_8601). |
+| doba trvání | Yes | řetězec | Hodnota času, která se má přidat do základu Může se jednat o zápornou hodnotu. Použijte [Formát doby trvání ISO 8601](https://en.wikipedia.org/wiki/ISO_8601#Durations). |
+| formát | No | řetězec | Formát výstupu pro výsledek data a času. Pokud není zadaný, použije se formát základní hodnoty. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Hodnota DateTime, která je výsledkem přidání hodnoty Duration k základní hodnotě.
 
@@ -72,9 +72,9 @@ Následující příklad šablony ukazuje různé způsoby přidávání časov�
 }
 ```
 
-Je-li předchozí šablona nasazena se základním časem `2020-04-07 14:53:14Z`, je výstup:
+Je-li předchozí šablona nasazena se základním časem `2020-04-07 14:53:14Z` , je výstup:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | add3Years | Řetězec | 4/7/2023 2:53:14 ODP. |
 | subtract9Days | Řetězec | 3/29/2020 2:53:14 ODP. |
@@ -144,7 +144,7 @@ Vrátí aktuální hodnotu DateTime (UTC) v zadaném formátu. Pokud není zadá
 
 | Parametr | Požaduje se | Typ | Popis |
 |:--- |:--- |:--- |:--- |
-| formát |Ne |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
+| formát |No |řetězec |Hodnota zakódovaná identifikátorem URI, která má být převedena na řetězec. Použijte buď [standardní formátovací řetězce](https://docs.microsoft.com/dotnet/standard/base-types/standard-date-and-time-format-strings) , nebo [Vlastní řetězce formátu](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings). |
 
 ### <a name="remarks"></a>Poznámky
 
@@ -154,7 +154,7 @@ Použijete-li [možnost pro opětovné nasazení dřívějšího úspěšného n
 
 Buďte opatrní při opětovném nasazení šablony, která spoléhá na funkci utcNow, na výchozí hodnotu. Když znovu nasadíte a nezadáte hodnotu parametru, funkce se znovu vyhodnotí. Pokud chcete aktualizovat existující prostředek místo vytvoření nového prostředku, předejte hodnotu parametru z dřívějšího nasazení.
 
-### <a name="return-value"></a>Návratová hodnota
+### <a name="return-value"></a>Vrácená hodnota
 
 Aktuální hodnota DateTime UTC.
 
@@ -164,7 +164,7 @@ Následující příklad šablony ukazuje různé formáty hodnoty data a času.
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "utcValue": {
@@ -201,7 +201,7 @@ Následující příklad šablony ukazuje různé formáty hodnoty data a času.
 
 Výstup z výše uvedeného příkladu se u každého nasazení liší, ale bude vypadat přibližně takto:
 
-| Název | Typ | Hodnota |
+| Name | Typ | Hodnota |
 | ---- | ---- | ----- |
 | utcOutput | řetězec | 20190305T175318Z |
 | utcShortOutput | řetězec | 03/05/2019 |
