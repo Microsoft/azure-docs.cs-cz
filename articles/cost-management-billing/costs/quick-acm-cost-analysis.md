@@ -3,17 +3,17 @@ title: 'Rychlý start: Prozkoumání nákladů na Azure s využitím analýzy n�
 description: Tento rychlý start vám pomůže prozkoumat a analyzovat náklady organizace na Azure pomocí analýzy nákladů.
 author: bandersmsft
 ms.author: banders
-ms.date: 04/07/2020
+ms.date: 06/08/2020
 ms.topic: quickstart
 ms.service: cost-management-billing
 ms.reviewer: micflan
 ms.custom: seodec18
-ms.openlocfilehash: e63e3ef999db7053609fb098cd2b7583143a2937
-ms.sourcegitcommit: 2d7910337e66bbf4bd8ad47390c625f13551510b
+ms.openlocfilehash: 72c0b55e1ffc300b42181075247ed3efafe2793a
+ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/08/2020
-ms.locfileid: "80874496"
+ms.lasthandoff: 06/09/2020
+ms.locfileid: "84560584"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Rychlý start: Prozkoumání a analýza nákladů pomocí analýzy nákladů
 
@@ -107,8 +107,7 @@ Pokud je prognóza útrat vypnutá, neuvidíte předpokládané útraty na budou
 
 Obecně můžete očekávat, že se data nebo oznámení o využitých prostředcích budou zobrazovat během 8 až 12 hodin.
 
-
-Možnost **Seskupit podle** nabízí běžné vlastnosti, pomocí kterých můžete rozdělit náklady a identifikovat hlavní přispěvatele. Pokud třeba chcete zobrazit seskupení podle značek prostředků, vyberte klíč značky, podle kterého chcete seskupovat. Náklady se rozdělí podle jednotlivých hodnot značky a bude u nich další segment pro prostředky, které danou značku nemají.
+Možnost **Seskupit podle** nabízí běžné vlastnosti, pomocí kterých můžete rozdělit náklady a identifikovat hlavní přispěvatele. Pokud třeba chcete zobrazit seskupení podle značek prostředků, vyberte klíč značky, podle kterého chcete seskupovat. Náklady se rozdělí podle jednotlivých hodnot značky a bude u nich další segment pro prostředky, které danou značku nemají.  Další informace o možnostech seskupování a filtrování najdete v tématu [Možnosti filtrování a seskupení](https://docs.microsoft.com/azure/cost-management-billing/costs/group-filter).
 
 [Označování podporuje většina prostředků Azure.](../../azure-resource-manager/management/tag-support.md) Některé značky ale nejsou k dispozici ve službě Cost Management a při fakturaci. Navíc se nepodporují značky skupin prostředků. Údaje vázané na značky zahrnují data o využití nahlášená až *po* nastavení značky u prostředku. Značky se nedají použít pro retroaktivní shrnutí.
 
@@ -142,42 +141,6 @@ Pro jakékoli zobrazení si můžete zobrazit celou datovou sadu. Data se zobraz
 
 ![Data pro aktuální zobrazení v tabulkovém zobrazení](./media/quick-acm-cost-analysis/chart-type-table-view.png)
 
-
-## <a name="understanding-grouping-and-filtering-options"></a>Vysvětlení možností seskupování a filtrování
-
-Analýza nákladů nabízí řadu možností seskupení a filtrování. Pokud se chcete podívat na video o možnostech seskupení a filtrování, najdete ho tady: [Generování sestav služby Cost Management podle dimenzí a značek](https://www.youtube.com/watch?v=2Vx7V17zbmk). Další videa najdete v [kanálu služby Cost Management na YouTube](https://www.youtube.com/c/AzureCostManagement).
-
->[!VIDEO https://www.youtube.com/embed/2Vx7V17zbmk]
-
-V následující tabulce jsou uvedené některé nejběžnější možnosti seskupování a filtrování a situace vhodné k jejich použití.
-
-| Vlastnost | Kdy je použít | Poznámky |
-| --- | --- | --- |
-| **Zóny dostupnosti** | Chcete rozdělit náklady na služby AWS podle zóny dostupnosti. | Dá se použít jenom pro obory služby AWS a skupiny pro správu. Údaje o Azure nezahrnují zónu dostupnosti a budou se zobrazovat jako **Nepoužitelné**. |
-| **Fakturační období** | Chcete rozdělit náklady na průběžně placené služby podle měsíce, ve kterém byly (nebo budou) fakturované. | Pomocí možnosti **Fakturační období** můžete získat přesný rozpis fakturovaných poplatků za průběžně placené služby. Pokud filtrujte podle vlastního rozsahu dat, zahrňte 2 dny před fakturačním obdobím a po něm. Při omezení na přesná data fakturačního období by se částky nemusely shodovat s fakturou. Takto si můžete zobrazit náklady ze všech faktur ve fakturačním období. K vyfiltrování konkrétní faktury použijte **ID faktury**. Platí jenom pro předplatná s průběžnými platbami, protože účty EA a MCA se fakturují podle kalendářních měsíců. Účty EA nebo MCA můžou stejného cíle dosáhnout tak, že jako datum vyberou kalendářní měsíc nebo zvolí měsíční úroveň podrobností. |
-| **Typ poplatku** | Chcete rozdělit náklady na využití, nákupy, refundace a nevyužité rezervace. | Nákupy rezervací a refundace jsou k dispozici jenom při použití skutečných nákladů (ne při použití amortizačních nákladů). Náklady na nevyužité rezervace jsou dostupné jenom v zobrazení amortizačních nákladů. |
-| **Oddělení** | Chcete rozdělit náklady podle oddělení ve smlouvě EA. | Je k dispozici jenom pro účty EA a skupiny pro správu. Předplatná s průběžnými platbami nemají oddělení a budou se zobrazovat jako **Nepoužitelné** nebo **Nepřiřazeno**. |
-| **Registrační účet** | Chcete rozdělit náklady podle vlastníka účtu EA. | Je k dispozici jenom pro fakturační účty EA, oddělení a skupiny pro správu. Předplatná s průběžnými platbami nemají registrační účty EA a budou se zobrazovat jako **Nepoužitelné** nebo **Nepřiřazeno**. |
-| **Frekvence** | Chcete rozdělit náklady založené na využití, jednorázové náklady a opakované náklady. | |
-| **ID faktury** | Chcete rozdělit náklady podle faktury, ve které byly fakturované. | Nefakturované poplatky ještě nemají ID faktury a náklady u účtů EA neobsahují podrobnosti o faktuře. Tyto náklady se tedy budou zobrazovat jako **Nepoužitelné**.  |
-| **Měřič** | Chcete rozdělit náklady podle měřiče využití. | Nákupy a využití Marketplace se zobrazí jako **Nepoužitelné**. Nákupy můžete identifikovat pomocí možnosti **Typ poplatku** a poplatky za Marketplace pomocí možnosti **Typ vydavatele**. |
-| **Operace** | Chcete rozdělit náklady na služby AWS podle operace. | Dá se použít jenom pro obory služby AWS a skupiny pro správu. Údaje o Azure nezahrnují operaci a budou se zobrazovat jako **Nepoužitelné**. U nich použijte možnost **Měřič**. |
-| **Cenový model** | Chcete rozdělit náklady na vyžádání, rezervace nebo spotové využití. | Nákupy se zobrazují jako **Na vyžádání**. Pokud se vám zobrazí údaj **Nepoužitelné**, můžete rezervace nebo využití na vyžádání určit seskupením podle **Rezervace**. K identifikaci nákupů můžete využít **Typ poplatku**.
-| **Poskytovatel** | Chcete rozdělit náklady za služby AWS a Azure. | Je k dispozici jenom pro skupiny pro správu. |
-| **Typ vydavatele** | Chcete rozdělit náklady za služby AWS, Azure a Marketplace. |  |
-| **Rezervace** | Chcete rozdělit náklady podle rezervace. | Veškeré nákupy nebo využití, které nejsou přidružené k rezervaci, se zobrazí jako **Nepoužitelné**. Nákupy přes Azure, AWS nebo Marketplace můžete identifikovat seskupením podle **typu vydavatele**. |
-| **Prostředek** | Chcete rozdělit náklady podle prostředku. | Nákupy se zobrazují jako **Nepoužitelné**, protože se aplikují na úrovni fakturačního účtu EA/PAYG nebo na úrovni fakturačního profilu MCA a nejsou přidružené ke konkrétnímu prostředku. Nákupy přes Azure, AWS nebo Marketplace můžete identifikovat seskupením podle **typu vydavatele**. |
-| **Skupina prostředků** | Chcete rozdělit náklady podle skupiny prostředků. | Nákupy, prostředky tenanta nepřidružené k předplatným, prostředky předplatných nenasazené do skupiny prostředků a klasické prostředky nemají skupinu prostředků a budou se zobrazovat jako **ostatní**, **klasické služby**, **$system** nebo **Nepoužitelné**. |
-| **Typ prostředku** | Chcete rozdělit náklady podle typu prostředku. | Nákupy a klasické služby nemají typ prostředku Azure Resource Manageru a budou se zobrazovat jako **ostatní**, **klasické služby** nebo **Nepoužitelné**. |
-| **Umístění prostředku** | Chcete rozdělit náklady podle umístění nebo oblasti. | Nákupy a využití Marketplace se můžou zobrazovat jako **nepřiřazeno**, **neznámé**, **nenamapované** nebo **Nepoužitelné**. |
-| **Název služby** nebo **Kategorie měřiče** | Chcete rozdělit náklady podle služby Azure. | Nákupy a využití Marketplace se zobrazí jako **Nepoužitelné** nebo **nepřiřazeno**. |
-| **Úroveň služby** nebo **Podkategorie měřiče** | Chcete rozdělit náklady podle dílčí klasifikace měřičů využití Azure. | Nákupy a využití Marketplace se zobrazí jako **Nepoužitelné** nebo **nepřiřazeno**. |
-| **Předplatné** | Chcete rozdělit náklady podle předplatného Azure a propojeného účtu AWS. | Nákupy a prostředky tenanta se můžou zobrazit jako **Nepoužitelné**. |
-| **Tag** | Chcete rozdělit náklady podle hodnot značky pro určitý klíč značky. | Značky nejsou k dispozici pro nákupy, prostředky tenanta nepřidružené k předplatným, prostředky předplatných nenasazené do skupiny prostředků nebo klasické prostředky. Upozorňujeme, že některé služby nezahrnují značky do údajů o využití. Přečtěte si také další informace o [podpoře značek pro jednotlivé typy prostředků](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
-
-Další informace o použitých termínech najdete v článku s [vysvětlením termínů používaných v souboru o využití Azure a poplatcích](../understand/understand-usage.md).
-
-
 ## <a name="saving-and-sharing-customized-views"></a>Ukládání a sdílení přizpůsobených zobrazení
 
 Přizpůsobená zobrazení si můžete uložit a nasdílet je ostatním tak, že připnete analýzu nákladů na řídicí panel na webu Azure Portal nebo zkopírujete odkaz na analýzu nákladů.
@@ -192,54 +155,12 @@ Pokud chcete nasdílet odkaz na analýzu nákladů, vyberte **Sdílet** v horní
 
 Další informace o tom, jak udělit přístup k nákladům na jednotlivé podporované obory, najdete v článku o [principech oborů a práci s nimi](understand-work-scopes.md).
 
-
-
-## <a name="automation-and-offline-analysis"></a>Automatizace a offline analýza
+## <a name="download-usage-data"></a>Stažení dat o využití
 
 Nastávají situace, kdy si potřebujete stáhnout data pro další analýzy, sloučit je se svými vlastními daty nebo je integrovat do svých vlastních systémů. Služba Cost Management nabízí několik různých možností. Pokud potřebujete ad hoc souhrn vysoké úrovně (podobný tomu, co získáte v analýze nákladů), můžete si jako výchozí bod vytvořit zobrazení, jaké potřebujete. Pak si ho stáhněte výběrem možnosti **Exportovat** a pak **Stáhnout data do souboru CSV** nebo **Stáhnout data do Excelu**. Soubor stažený do Excelu poskytuje další kontext o zobrazení, které jste použili k vygenerování staženého souboru, například obor, konfiguraci dotazů, celkovou částku a datum generování.
 
 Pokud potřebujete úplnou, neagregovanou datovou sadu, stáhněte si ji z fakturačního účtu. Pak v seznamu služeb v levém navigačním podokně portálu přejděte na **Správa nákladů a fakturace**. V případě potřeby vyberte svůj fakturační účet. Přejděte na **Využití a poplatky** a vyberte ikonu **Stáhnout** pro požadované fakturační období.
 
-Podobný přístup můžete využít k automatizaci přijímání dat o nákladech. Můžete využít [rozhraní API Query](/rest/api/cost-management/query) pro podrobnější analýzu s dynamickým filtrováním, seskupováním a agregací nebo [rozhraní API UsageDetails](/rest/api/consumption/usageDetails) pro celou neagregovanou datovou sadu. Všeobecně dostupná verze (GA) těchto rozhraní API je 2019-01-01. S verzí **2019-04-01-preview** získáte v těchto rozhraních API přístup k rezervacím a nákupům na Marketplace.
-
-Níže je příklad agregovaného zobrazení amortizačních nákladů rozdělených podle typu poplatku (využití, nákup nebo refundace), typu vydavatele (Azure nebo Marketplace), skupiny prostředků (prázdná pro nákupy) a rezervace (prázdná, pokud není k dispozici).
-
-```
-POST https://management.azure.com/{scope}/providers/Microsoft.CostManagement/query?api-version=2019-04-01-preview
-Content-Type: application/json
-
-{
-  "type": "AmortizedCost",
-  "timeframe": "Custom",
-  "timePeriod": { "from": "2019-04-01", "to": "2019-04-30" },
-  "dataset": {
-    "granularity": "None",
-    "aggregation": {
-      "totalCost": { "name": "PreTaxCost", "function": "Sum" }
-    },
-    "grouping": [
-      { "type": "dimension", "name": "ChargeType" },
-      { "type": "dimension", "name": "PublisherType" },
-      { "type": "dimension", "name": "Frequency" },
-      { "type": "dimension", "name": "ResourceGroup" },
-      { "type": "dimension", "name": "SubscriptionName" },
-      { "type": "dimension", "name": "SubscriptionId" },
-      { "type": "dimension", "name": "ReservationName" },
-      { "type": "dimension", "name": "ReservationId" },
-    ]
-  },
-}
-```
-
-A pokud nepotřebujete agregaci a dáváte přednost celé nezpracované datové sadě:
-
-```
-GET https://management.azure.com/{scope}/providers/Microsoft.Consumption/usageDetails?metric=AmortizedCost&$filter=properties/usageStart+ge+'2019-04-01'+AND+properties/usageEnd+le+'2019-04-30'&api-version=2019-04-01-preview
-```
-
-Pokud potřebujete skutečné náklady se zobrazením nákupů tak, jak postupně nabíhají, změňte **type**/**metric** na **ActualCost**. Další informace o těchto rozhraních API najdete v jejich dokumentaci: [Query](/rest/api/cost-management/query) a [UsageDetails](/rest/api/consumption/usageDetails). Upozorňujeme, že publikované dokumenty jsou pro verzi GA. Obě rozhraní API ale fungují stejně i ve verzi *2019-04-01-preview*, až na nový atribut type/metric a změněné názvy vlastností. (Další informace o názvech vlastností najdete níže.)
-
-Rozhraní API služby Cost Management fungují napříč všemi obory pro tyto prostředky: skupiny prostředků, předplatná a skupiny pro správu prostřednictvím přístupu přes Azure RBAC, fakturační účty EA (registrace), oddělení a registrační účty prostřednictvím přístupu na portál EA. Další informace o oborech, včetně toho, jak určit ID oboru nebo spravovat přístup, najdete v článku o [principech oborů a práci s nimi](understand-work-scopes.md).
 
 ## <a name="next-steps"></a>Další kroky
 

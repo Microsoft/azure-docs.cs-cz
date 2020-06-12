@@ -5,14 +5,14 @@ ms.service: cost-management-billing
 author: bandersmsft
 ms.reviewer: yashesvi
 ms.topic: conceptual
-ms.date: 02/18/2020
+ms.date: 06/04/2020
 ms.author: banders
-ms.openlocfilehash: 1084e8687cc709b5e31a9ef2c903638dd3d8f62c
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 187bfeb7f9e4be47fb44a1ad0cf97be757865ab9
+ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84019992"
+ms.lasthandoff: 06/04/2020
+ms.locfileid: "84434181"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Správa rezervací prostředků Azure
 
@@ -20,6 +20,7 @@ Po nákupu rezervace Azure můžete tuto rezervaci potřebovat použít pro jin�
 
 Když si koupíte rezervované instance virtuálních počítačů Azure, můžete změnit nastavení optimalizace u této rezervace. Slevu na rezervaci lze uplatnit na virtuální počítače ve stejné řadě, nebo si můžete rezervovat kapacitu datového centra pro konkrétní velikost virtuálního počítače. Měli byste se také pokusit rezervace optimalizovat, aby byly plně využívány.
 
+*Oprávnění nutná ke správě rezervace je oddělené od oprávnění k předplatnému.*
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
@@ -55,10 +56,9 @@ Rozsah se vztahuje jen na individuální předplatná s průběžnými platbami 
 
 Správu rezervace můžete delegovat přidáním lidí do rolí rezervace nebo objednávky rezervace. Ve výchozím nastavení má roli vlastníka rezervace nebo objednávky rezervace osoba, která vytvořila objednávku rezervace, a správce účtu.
 
-Přístup k objednávkám rezervací a rezervacím můžete spravovat nezávisle na předplatných, která obdrží slevu za rezervaci. Když někomu udělíte oprávnění ke správě objednávky rezervace nebo rezervace, neudělíte tím oprávnění ke správě předplatného. Podobně platí, že pokud někomu udělíte oprávnění ke správě předplatného v rozsahu rezervace, neudělíte tím práva ke správě objednávky rezervace nebo rezervace.
+Přístup k objednávkám rezervací a rezervacím můžete spravovat *nezávisle na předplatných*, která obdrží slevu za rezervaci. Když někomu udělíte oprávnění ke správě objednávky rezervace nebo rezervace, neudělíte tím oprávnění ke správě předplatného. Podobně platí, že pokud někomu udělíte oprávnění ke správě předplatného v rozsahu rezervace, neudělíte tím práva ke správě objednávky rezervace nebo rezervace.
 
 Aby bylo možné provést výměnu nebo refundaci, musí mít uživatel přístup k objednávce rezervace. Když někomu udělujete oprávnění, je nejlepší udělit oprávnění k objednávce rezervace, nikoli k rezervaci.
-
 
 Přístup ke správě rezervace delegujete takto:
 
