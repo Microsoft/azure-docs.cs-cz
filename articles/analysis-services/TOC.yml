@@ -71,6 +71,8 @@
           href: ../active-directory/develop/howto-authenticate-service-principal-powershell.md
         - name: Přidání instančního objektu k roli správce serveru
           href: analysis-services-addservprinc-admins.md
+        - name: Přesun mezi oblastmi
+          href: move-between-regions.md
     - name: Model
       items:
         - name: Tabulkové modelování

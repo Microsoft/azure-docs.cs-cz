@@ -52,6 +52,8 @@
           href: identity-providers.md
         - name: Toky uživatelů se samoobslužnou registrací (Preview)
           href: self-service-sign-up-overview.md
+        - name: Samoobslužné přihlašovací konektory rozhraní API (Preview)
+          href: api-connectors-overview.md
         - name: Správa nároků Azure AD
           href: self-service-portal.md
         - name: Aktuální omezení
@@ -95,6 +97,10 @@
               href: user-flow-add-custom-attributes.md
             - name: Přizpůsobení jazyka toků uživatelů
               href: user-flow-customize-language.md
+            - name: Přidání konektoru rozhraní API
+              href: self-service-sign-up-add-api-connector.md
+            - name: Přidání vlastního systému schvalování
+              href: self-service-sign-up-add-approvals.md
         - name: Správa účtů hostů
           items:
             - name: Přidání uživatele B2B do role

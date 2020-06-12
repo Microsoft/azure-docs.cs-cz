@@ -219,8 +219,12 @@
           href: sap-hana-db-manage.md
     - name: Server Azure Backup (MABS)
       items:
-        - name: Systém ochrany Azure Backup Serveru
-          href: backup-mabs-protection-matrix.md
+        - name: Matice ochrany
+          items:
+            - name: Matice ochrany MABS V3 UR1
+              href: backup-mabs-protection-matrix.md
+            - name: Matice ochrany MABS V3 RTM
+              href: microsoft-azure-backup-server-protection-v3.md
         - name: Instalace nebo upgrade
           items:
             - name: Instalace Azure Backup Serveru
@@ -229,7 +233,7 @@
               href: backup-mabs-add-storage.md
             - name: Novinky v MABS
               href: backup-mabs-whats-new-mabs.md
-            - name: Poznámky k verzi MABS V3
+            - name: Poznámky k verzi MABS
               href: backup-mabs-release-notes-v3.md
             - name: Bezobslužná instalace
               href: backup-mabs-unattended-install.md
@@ -284,7 +288,9 @@
         - name: Offline zálohování s využitím služby Import/export (MARS)
           href: backup-azure-backup-import-export.md
         - name: Offline zálohování s využitím služby Import/export (DPM/MABS)
-          href: backup-azure-backup-server-import-export-.md
+          href: backup-azure-backup-server-import-export.md
+        - name: Offline zálohování pro DPM a MABS (předchozí verze)
+          href: offline-backup-server-previous-versions.md
     - name: Monitorování a výstrahy
       items:
         - name: Použití průzkumníka záloh

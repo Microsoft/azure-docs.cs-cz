@@ -138,6 +138,8 @@
 - name: Zdroje a prostředky
   expanded: true
   items:
+    - name: Možnosti pomoci a podpory
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Požadavky na zákaznická data
       href: time-series-insights-customer-data-requests.md
     - name: Materiály pro vývojáře
@@ -158,22 +160,6 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: Dostupnost v oblastech
           href: 'https://azure.microsoft.com/regions/services/'
-    - name: Možnosti pomoci a podpory
-      items:
-        - name: Možnosti podpory Azure
-          href: 'https://azure.microsoft.com/support/options/'
-        - name: Možnosti pomoci a podpory Azure IoT
-          href: 'https://docs.microsoft.com/azure/iot-fundamentals/iot-support-help'
-        - name: Stack Overflow
-          href: 'https://stackoverflow.com/questions/tagged/azure-timeseries-insights'
-        - name: Stránka s dotazy na Microsoft Q&A
-          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
-    - name: Zpětná vazba a fóra
-      items:
-        - name: Stránka s dotazy na Microsoft Q&A
-          href: 'https://docs.microsoft.com/answers/topics/azure-time-series-insights.html'
-        - name: Návrhy a požadavky k produktům
-          href: 'https://feedback.azure.com/forums/906859-azure-time-series-insights'
     - name: Videa Azure
       href: 'https://azure.microsoft.com/resources/videos/index/?services=time-series-insights'
     - name: Videa na webu Channel 9

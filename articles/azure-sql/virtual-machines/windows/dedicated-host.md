@@ -65,7 +65,7 @@ Jednou z výhod vyhrazeného hostitele je neomezená virtualizace. Například m
 
 Vzhledem k tomu, že je to váš hostitel, máte nárok na nastavení virtualizace s poměrem 1:2. 
 
-## <a name="faq"></a>Nejčastější dotazy
+## <a name="faq"></a>Časté otázky
 
 **Otázka: jak Zvýhodněné hybridní využití Azure fungují pro licence Windows Server/SQL Server na vyhrazeném hostiteli Azure?**
 
