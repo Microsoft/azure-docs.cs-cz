@@ -54,6 +54,9 @@
         - name: Zásady správného řízení identit
           tocHref: /azure/active-directory/governance/
           topicHref: /azure/active-directory/governance/
+        - name: Zřizování aplikací
+          tocHref: /azure/active-directory/app-provisioning/
+          topicHref: /azure/active-directory/app-provisioning/
         - name: Správa aplikací
           tocHref: /azure/active-directory/manage-apps/
           topicHref: /azure/active-directory/manage-apps/

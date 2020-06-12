@@ -213,8 +213,12 @@
           href: configure-customer-managed-key.md
     - name: Řešení potíží
       items:
-        - name: Průvodce odstraňováním potíží
+        - name: Řešení potíží s připojením
           href: troubleshooting-guide.md
+        - name: Řešení potíží s ověřováním a autorizací
+          href: troubleshoot-authentication-authorization.md
+        - name: Průvodce odstraňováním potíží pro Kafka s využitím Event Hubs
+          href: apache-kafka-troubleshooting-guide.md
         - name: Výjimky .NET
           href: event-hubs-messaging-exceptions.md
         - name: Výjimky Resource Manageru
