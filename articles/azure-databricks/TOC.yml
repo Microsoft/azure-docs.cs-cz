@@ -1072,6 +1072,8 @@
               maintainContext: true
         - name: Osvědčené postupy GDPR
           href: /azure/databricks/security/privacy/gdpr-delta
+        - name: Přístupový seznam IP adres
+          href: /azure/databricks/security/network/ip-access-list
         - name: Šifrování provozu mezi pracovními uzly clusteru
           href: /azure/databricks/security/encryption/encrypt-otw
         - name: Povolení klíčů spravovaných zákazníkem pro poznámkové bloky
@@ -1160,10 +1162,13 @@
             - name: Správa přístupu k funkcím poznámkového bloku
               href: /azure/databricks/administration-guide/workspace/notebooks
               maintainContext: true
-        - name: Povolení konfigurace clusteru
+        - name: Správa clusterů
           items:
-            - name: Přehled konfigurace clusteru
+            - name: Správa možností konfigurace clusteru
               href: /azure/databricks/administration-guide/clusters/index
+              maintainContext: true
+            - name: Správa zásad clusteru
+              href: /azure/databricks/administration-guide/clusters/policies
               maintainContext: true
             - name: Povolení služeb kontejneru
               href: /azure/databricks/administration-guide/clusters/container-services
@@ -1191,8 +1196,6 @@
             - name: Uživatelsky definovaná nastavení tras
               href: /azure/databricks/administration-guide/cloud-configurations/azure/udr
               maintainContext: true
-            - name: IP adresy MySQL
-              href: mysql-ip-address.md
     - name: Řešení potíží
       items:
         - name: Časté dotazy
@@ -1256,6 +1259,18 @@
               maintainContext: true
             - name: Uživatelské rozhraní Apache Sparku ukazuje méně než celkovou paměť uzlů
               href: /azure/databricks/kb/clusters/spark-shows-less-memory
+              maintainContext: true
+            - name: Limit procesorových jader zabraňuje vytvoření clusteru
+              href: /azure/databricks/kb/clusters/azure-core-limit
+              maintainContext: true
+            - name: Limit IP adres zabraňuje vytvoření clusteru
+              href: /azure/databricks/kb/clusters/azure-ip-limit
+              maintainContext: true
+            - name: Pomalé spuštění clusteru a chybějící uzly
+              href: /azure/databricks/kb/clusters/azure-nodes-not-acquired
+              maintainContext: true
+            - name: Konfigurace clusteru pro použití vlastního serveru NTP
+              href: /azure/databricks/kb/clusters/use-internal-ntp
               maintainContext: true
         - name: Správa dat
           items:
@@ -1332,6 +1347,9 @@
               maintainContext: true
             - name: Optimalizace výkonu při čtení ze zdrojů dat JDBC
               href: /azure/databricks/kb/data-sources/jdbc-optimize-read
+              maintainContext: true
+            - name: Omezené zápisy ADLS a WASB
+              href: /azure/databricks/kb/data-sources/azure-storage-throttling
               maintainContext: true
         - name: DBFS
           items:
@@ -1500,6 +1518,9 @@
             - name: Řešení potíží s příkazem pro zrušení
               href: /azure/databricks/kb/notebooks/troubleshoot-cancel-command
               maintainContext: true
+            - name: Načtení aktuálního uživatelského jména pro poznámkový blok
+              href: /azure/databricks/kb/notebooks/get-notebook-username
+              maintainContext: true
         - name: Zabezpečení a oprávnění
           items:
             - name: Selhání vytvoření tabulky s výjimkou zabezpečení
@@ -1642,28 +1663,31 @@
                     - name: Řešení potíží s přístupovými tokeny Azure AD
                       href: /azure/databricks/dev-tools/api/latest/aad/troubleshoot-aad-token
                       maintainContext: true
-            - name: Clustery
+            - name: Rozhraní API pro clustery
               href: /azure/databricks/dev-tools/api/latest/clusters
               maintainContext: true
-            - name: DBFS
+            - name: Rozhraní API pro zásady clusteru
+              href: /azure/databricks/dev-tools/api/latest/policies
+              maintainContext: true
+            - name: Rozhraní API DBFS
               href: /azure/databricks/dev-tools/api/latest/dbfs
               maintainContext: true
-            - name: Skupiny
+            - name: Rozhraní API pro skupiny
               href: /azure/databricks/dev-tools/api/latest/groups
               maintainContext: true
             - name: Rozhraní API fondů instancí
               href: /azure/databricks/dev-tools/api/latest/instance-pools
               maintainContext: true
-            - name: Úlohy
+            - name: Rozhraní API pro úlohy
               href: /azure/databricks/dev-tools/api/latest/jobs
               maintainContext: true
-            - name: Knihovny
+            - name: Rozhraní API pro knihovny
               href: /azure/databricks/dev-tools/api/latest/libraries
               maintainContext: true
-            - name: MLflow
+            - name: Rozhraní API MLflow
               href: /azure/databricks/dev-tools/api/latest/mlflow
               maintainContext: true
-            - name: SCIM
+            - name: Rozhraní API SCIM
               items:
                 - name: Přehled rozhraní API SCIM
                   href: /azure/databricks/dev-tools/api/latest/scim/index
@@ -1674,17 +1698,14 @@
                 - name: Rozhraní API SCIM (skupiny)
                   href: /azure/databricks/dev-tools/api/latest/scim/scim-group
               maintainContext: true
-            - name: Tajné kódy
+            - name: Rozhraní API pro tajné kódy
               href: /azure/databricks/dev-tools/api/latest/secrets
               maintainContext: true
-            - name: Tokeny
+            - name: Rozhraní API pro tokeny
               href: /azure/databricks/dev-tools/api/latest/tokens
               maintainContext: true
-            - name: Pracovní prostor
+            - name: Rozhraní API pro pracovní prostor
               href: /azure/databricks/dev-tools/api/latest/workspace
-              maintainContext: true
-            - name: Řetězec verze runtime pro volání rozhraní REST API
-              href: /azure/databricks/dev-tools/api/latest/runtime-version-string
               maintainContext: true
         - name: REST API 1.2
           href: /azure/databricks/dev-tools/api/1.2/index
@@ -1767,6 +1788,9 @@
           items:
             - name: Poznámky k verzi platformy
               href: /azure/databricks/release-notes/product/index
+              maintainContext: true
+            - name: Červen 2020
+              href: /azure/databricks/release-notes/product/2020/june
               maintainContext: true
             - name: Květen 2020
               href: /azure/databricks/release-notes/product/2020/may

@@ -624,7 +624,7 @@
           href: ../extensions/agent-windows.md
         - name: Omezení spekulativního spouštění
           href: mitigate-se.md
-        - name: Monitorování metadat
+        - name: Azure Instance Metadata Service
           href: instance-metadata-service.md
         - name: Povolení vnořené virtualizace
           href: nested-virtualization.md

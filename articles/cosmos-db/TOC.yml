@@ -977,41 +977,40 @@
           href: how-to-manage-indexing-policy.md
         - name: Definování jedinečných klíčů
           href: how-to-define-unique-keys.md
-    - name: Osvědčené postupy
+    - name: Řešení potíží s výkonem
       items:
-        - name: Tipy pro zvýšení výkonu
+        - name: Dotaz
           items:
             - name: Získání metriky spouštění dotazů
-              displayName: 'query profile, profile'
               href: profile-sql-api-query.md
             - name: Ladění výkonu dotazů
               href: sql-api-query-metrics.md
-            - name: Tipy ke zvýšení výkonu pro .NET SDK
+            - name: Řešení potíží s výkonem dotazů
+              href: troubleshoot-query-performance.md
+        - name: .NET
+          items:
+            - name: Tipy ke zvýšení výkonu pro .NET SDK v3
+              href: performance-tips-dotnet-sdk-v3-sql.md
+            - name: Tipy ke zvýšení výkonu sadu .NET SDK v2
               href: performance-tips.md
+            - name: Řešení potíží se sadou .NET SDK
+              href: troubleshoot-dot-net-sdk.md
+        - name: Java
+          items:
             - name: Tipy ke zvýšení výkonu pro Java SDK v4
               href: performance-tips-java-sdk-v4-sql.md
-            - name: Tipy ke zvýšení výkonu pro starší verze Java SDK
-              items:
-                - name: Sada Async Java SDK v2
-                  href: performance-tips-async-java.md
-                - name: Sada Sync Java SDK v2
-                  href: performance-tips-java.md
-            - name: Test výkonu – ukázková aplikace
-              href: performance-testing.md
-        - name: Nákladově efektivní čtení a zápisy
-          href: key-value-store-cost.md
-    - name: Řešení potíží
-      items:
-        - name: Řešení potíží s výkonem dotazů
-          href: troubleshoot-query-performance.md
-        - name: Řešení potíží se sadou Java SDK v4
-          href: troubleshoot-java-sdk-v4-sql.md
-        - name: Řešení potíží se staršími verzemi sad Java SDK
-          items:
+            - name: Řešení potíží se sadou Java SDK v4
+              href: troubleshoot-java-sdk-v4-sql.md
+            - name: Sada Async Java SDK v2
+              href: performance-tips-async-java.md
+            - name: Sada Sync Java SDK v2
+              href: performance-tips-java.md
             - name: Sada Async Java SDK v2
               href: troubleshoot-java-async-sdk.md
-        - name: Řešení potíží se sadou .NET SDK
-          href: troubleshoot-dot-net-sdk.md
+        - name: Test výkonu – ukázková aplikace
+          href: performance-testing.md
+        - name: Nákladově efektivní čtení a zápisy
+          href: key-value-store-cost.md
     - name: Migrace na nové sady SDK
       items:
         - name: Migrace na Java V4 SDK
@@ -1194,28 +1193,30 @@
           href: how-to-migrate-from-bulk-executor-library.md
         - name: Bulk Executor – knihovna Java
           href: bulk-executor-java.md
-- name: Referenční informace
+- name: Reference pro sady SQL API SDK
   items:
-    - name: .NET
-      href: sql-api-sdk-dotnet.md
-    - name: .NET Core
-      href: sql-api-sdk-dotnet-core.md
-    - name: .NET Standard
-      href: sql-api-sdk-dotnet-standard.md
-    - name: Knihovna kanálů změn .NET
-      href: sql-api-sdk-dotnet-changefeed.md
-    - name: Knihovna Bulk Executoru .v NET
-      href: sql-api-sdk-bulk-executor-dot-net.md
-    - name: Knihovna Bulk Executoru v Javě
-      href: sql-api-sdk-bulk-executor-java.md
-    - name: Java SDK v4 pro Core
-      href: sql-api-sdk-java-v4.md
-    - name: Starší verze sad Java SDK pro Core
+    - name: Sady .NET SDK
       items:
+        - name: Sada .NET SDK v3
+          href: sql-api-sdk-dotnet-standard.md
+        - name: Sada .NET SDK v2
+          href: sql-api-sdk-dotnet.md
+        - name: Sada .NET Core SDK v2
+          href: sql-api-sdk-dotnet-core.md
+        - name: Knihovna kanálů změn v .NET v2
+          href: sql-api-sdk-dotnet-changefeed.md
+        - name: Knihovna Bulk Executoru .v NET v2
+          href: sql-api-sdk-bulk-executor-dot-net.md
+    - name: Sady Java SDK
+      items:
+        - name: Sada Java SDK v4
+          href: sql-api-sdk-java-v4.md
         - name: Sada Async Java SDK v2
           href: sql-api-sdk-async-java.md
         - name: Sada Sync Java SDK v2
           href: sql-api-sdk-java.md
+        - name: Knihovna Bulk Executoru v Javě v2
+          href: sql-api-sdk-bulk-executor-java.md
     - name: Node.js
       href: sql-api-sdk-node.md
     - name: Python

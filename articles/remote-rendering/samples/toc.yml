@@ -1,5 +1,7 @@
 - name: Ukázkové modely
   href: sample-model.md
+- name: Nástroj Azure Remote Rendering
+  href: azure-remote-rendering-asset-tool.md
 - name: Ukázková aplikace Unity
   href: showcase-app.md
 - name: Ukázkové skripty PowerShellu

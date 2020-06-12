@@ -4,16 +4,19 @@
   items:
     - name: Co je Azure Blueprints?
       displayName: 'templates, policy, definition, assignment, rbac'
-      href: overview.md
+      href: ./overview.md
 - name: Rychlé starty
   expanded: true
   items:
     - name: Vytvoření podrobného plánu – portál
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-portal.md
-    - name: Vytvoření podrobného plánu – PowerShell
+      href: ./create-blueprint-portal.md
+    - name: Vytvoření podrobného plánu – Azure PowerShell
       displayName: 'publish, assign, track, unassign, delete'
-      href: create-blueprint-powershell.md
+      href: ./create-blueprint-powershell.md
+    - name: Vytvoření podrobného plánu – Azure CLI
+      displayName: 'publish, assign, track, unassign, delete'
+      href: ./create-blueprint-azurecli.md
     - name: Vytvoření podrobného plánu – REST API
       displayName: 'publish, assign, track, unassign, delete'
       href: create-blueprint-rest-api.md
@@ -268,6 +271,8 @@
   href: ./troubleshoot/general.md
 - name: Referenční informace
   items:
+    - name: Azure CLI
+      href: /cli/azure/ext/blueprint/blueprint
     - name: Azure PowerShell
       href: '/powershell/module/az.blueprint/#blueprint'
     - name: Sada Azure SDK pro .NET
@@ -285,7 +290,7 @@
     - name: GitHub – ukázky Azure Blueprints
       href: 'https://github.com/Azure/azure-blueprints'
     - name: Microsoft Q&A pro Azure Blueprints
-      href: /answers/topics/azure-blueprints.html.html
+      href: /answers/topics/azure-blueprints.html
     - name: Kanál YouTube pro zásady správného řízení
       href: 'https://www.youtube.com/channel/UCZZ3-oMrVI5ssheMzaWC4uQ'
     - name: 'Azure Friday: Přehled služby Azure Blueprints'

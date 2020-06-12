@@ -1,75 +1,81 @@
 ### YamlMime:Landing
 title: Dokumentace ke službě Azure Digital Twins Preview
-summary: Naučte se využívat Azure Digital Twins k propojování osob, míst a věcí a sestavování řešení IoT s využitím prostorové inteligence. Projděte si rychlé zprovoznění a kurzy, ve kterých můžete monitorovat imaginární inteligentní budovu, seznámit se podrobně s koncepcí a vytvořit řešení IoT další generace, které modeluje vaše fyzické prostředí.
+summary: Naučte se využívat službu Azure Digital Twins k vytvoření digitální reprezentace vašich prostředků, prostředí a obchodních systémů, abyste mohli vytvářet řešení IoT nové generace, která modelují reálný svět.
 metadata:
   title: Dokumentace ke službě Azure Digital Twins Preview – kurzy, reference k rozhraní API | Microsoft Docs
   description: Naučte se využívat Azure Digital Twins k propojování osob, míst a věcí a sestavování řešení IoT s využitím inteligentních prostorových analýz.
-  services: digital-twins
   ms.service: digital-twins
-  ms.subservice: digital-twins
   ms.topic: landing-page
   ms.collection: collection
-  author: KingdomOfEnds
-  ms.author: v-adgera
-  ms.date: 02/07/2020
-  ms.openlocfilehash: e5d66ffb35cb0ce50aa7898cad30bf9fd0bf57ac
-  ms.sourcegitcommit: 253d4c7ab41e4eb11cd9995190cd5536fcec5a3c
+  author: philmea
+  ms.author: philmea
+  ms.date: 02/12/2020
+  ms.openlocfilehash: 93bfe0db668e3aaa78e7f58b715490dfe26fbe7a
+  ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/25/2020
-  ms.locfileid: "77110585"
+  ms.lasthandoff: 06/09/2020
+  ms.locfileid: "84610028"
 landingContent:
 - title: Informace o službě Azure Digital Twins
   linkLists:
   - linkListType: overview
     links:
     - text: Co je služba Azure Digital Twins?
-      url: about-digital-twins.md
-  - linkListType: concept
-    links:
-    - text: Vysvětlení grafu prostorové inteligence a objektového modelu služby Digital Twins
-      url: concepts-objectmodel-spatialgraph.md
-  - linkListType: video
-    links:
-    - text: Úvod ke službě Azure Digital Twins
-      url: https://channel9.msdn.com/Shows/Internet-of-Things-Show/Azure-Digital-Twins-Introduction
-- title: Začínáme
+      url: overview.md
+- title: Začínáme s kurzy
   linkLists:
-  - linkListType: quickstart
-    links:
-    - text: Zjištění dostupných místností
-      url: quickstart-view-occupancy-dotnet.md
   - linkListType: tutorial
     links:
-    - text: Nasazení a konfigurace
-      url: tutorial-facilities-setup.md
-    - text: Zřízení a monitorování podmínek
-      url: tutorial-facilities-udf.md
-    - text: Upozornění s využitím služby Logic Apps
-      url: tutorial-facilities-events.md
-    - text: Vizualizace událostí s využitím Time Series Insights
-      url: tutorial-facilities-analyze.md
-- title: Vývoj se službou Azure Digital Twins
+    - text: Kódování klientské aplikace
+      url: tutorial-code.md
+  - linkListType: tutorial
+    links:
+    - text: Seznámení se základy prostřednictvím ukázkové klientské aplikace
+      url: tutorial-command-line-app.md
+  - linkListType: tutorial
+    links:
+    - text: Připojení kompletního řešení
+      url: tutorial-end-to-end.md
+- title: Informace
   linkLists:
   - linkListType: concept
     links:
-    - text: Možnosti připojení zařízení a příchozí přenos telemetrických dat
-      url: concepts-device-ingress.md
-    - text: Zpracování dat a uživatelsky definované funkce
-      url: concepts-user-defined-functions.md
+    - text: Vlastní modely
+      url: concepts-models.md
+  - linkListType: concept
+    links:
+    - text: Digitální dvojčata a graf dvojčat
+      url: concepts-twins-graph.md
+  - linkListType: concept
+    links:
+    - text: Dotazovací jazyk
+      url: concepts-query-language.md
+- title: Vývoj
+  linkLists:
   - linkListType: how-to-guide
     links:
-    - text: Nastavení nástroje Postman
-      url: how-to-configure-postman.md
-    - text: Vytváření uživatelsky definovaných funkcí
-      url: how-to-user-defined-functions.md
+    - text: Použití rozhraní příkazového řádku Azure Digital Twins
+      url: how-to-use-cli.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytvoření instance služby Azure Digital Twins
+      url: how-to-set-up-instance.md
+  - linkListType: how-to-guide
+    links:
+    - text: Ověření klientské aplikace
+      url: how-to-authenticate-client.md
 - title: API – referenční informace
   linkLists:
-  - linkListType: reference
-    links:
-    - text: Klientská knihovna uživatelem definovaných funkcí
-      url: reference-user-defined-functions-client-library.md
   - linkListType: how-to-guide
     links:
-    - text: Použití Swaggeru služby Digital Twins
-      url: how-to-use-swagger.md
+    - text: Použití rozhraní API a sad SDK služby Azure Digital Twins
+      url: how-to-use-apis-sdks.md
+  - linkListType: how-to-guide
+    links:
+    - text: Vytváření vlastních sad SDK s využitím AutoRestu
+      url: how-to-create-custom-sdks.md
+  - linkListType: reference
+    links:
+    - text: Rozhraní REST API
+      url: https://docs.microsoft.com/rest/api/azure-digitaltwins/

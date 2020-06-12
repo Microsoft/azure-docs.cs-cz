@@ -51,9 +51,9 @@ Odpověď bude podobná následujícímu formuláři, kde X je zóna, která se 
 
 Zachovat hodnotu **zón** , představuje vaši zónu dostupnosti a Vy ji budete potřebovat k nasazení Ultra disku.
 
-|ResourceType  |Název  |Umístění  |Zóny  |Omezení  |Schopnost  |Hodnota  |
+|ResourceType  |Name  |Umístění  |Zóny  |Omezení  |Schopnost  |Hodnota  |
 |---------|---------|---------|---------|---------|---------|---------|
-|disků     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
+|disků     |UltraSSD_LRS         |eastus2         |×         |         |         |         |
 
 > [!NOTE]
 > Pokud se z příkazu nepoužila žádná odpověď, vybraná velikost virtuálního počítače se pro disky s Ultra ve vybrané oblasti nepodporuje.
@@ -132,12 +132,12 @@ Tato část popisuje nasazení virtuálního počítače vybaveného diskem Ultr
 - Vyplňte zbývající položky vybranými možnostmi.
 - Vyberte **Disky**.
 
-![Create-Ultra-disk-Enabled-VM. png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
+![create-ultra-disk-enabled-vm.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
 
 - V okně disky vyberte **Ano** , aby se **povolila kompatibilita s Ultra diskem**.
 - Vyberte **vytvořit a připojit nový disk** a připojte Ultra disk nyní.
 
-![Enable-and-Attach-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
+![enable-and-attach-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/enable-and-attach-ultra-disk.png)
 
 - V okně **vytvořit nový disk** zadejte název a pak zvolte **změnit velikost**.
 - Změňte **typ účtu** na **Ultra disk**.
@@ -145,7 +145,7 @@ Tato část popisuje nasazení virtuálního počítače vybaveného diskem Ultr
 - V obou oknech vyberte **OK** .
 - Pokračujte s nasazením virtuálního počítače, stejně jako při nasazení jakýchkoli jiných virtuálních počítačů.
 
-![Create-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
+![create-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk.png)
 
 ## <a name="attach-an-ultra-disk-using-the-azure-portal"></a>Připojení disku Ultra pomocí Azure Portal
 
@@ -154,27 +154,27 @@ Případně, pokud je váš stávající virtuální počítač v oblasti oblast
 - Přejděte na virtuální počítač a vyberte **disky**.
 - Vyberte **Upravit**.
 
-![Options-Selector-Ultra-disks. png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
+![options-selector-ultra-disks.png](media/virtual-machines-disks-getting-started-ultra-ssd/options-selector-ultra-disks.png)
 
 - Vyberte **Ano** , pokud chcete **Povolit kompatibilitu s Ultra diskem**.
 
-![Ultra-Options-Yes-Enable. png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
+![ultra-options-yes-enable.png](media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png)
 
 - Vyberte **Uložit**.
 - Vyberte **přidat datový disk** a potom v rozevíracím seznamu pro **název** vyberte **vytvořit disk**.
 
-![Create-and-Attach-New-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
+![create-and-attach-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/create-and-attach-new-ultra-disk.png)
 
 - Zadejte název nového disku a pak vyberte **změnit velikost**.
 - Změňte **typ účtu** na **Ultra disk**.
 - Změňte hodnoty položky **velikost vlastního disku (GIB)**, **IOPS disku**a **propustnosti disku** na ty podle vašeho výběru.
 - Vyberte **OK** a pak vyberte **vytvořit**.
 
-![Making-a-New-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
+![making-a-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/making-a-new-ultra-disk.png)
 
 - Až se vrátíte do okna disku, vyberte **Uložit**.
 
-![Saving-and-Attaching-New-Ultra-disk. png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
+![saving-and-attaching-new-ultra-disk.png](media/virtual-machines-disks-getting-started-ultra-ssd/saving-and-attaching-new-ultra-disk.png)
 
 ### <a name="adjust-the-performance-of-an-ultra-disk-using-the-azure-portal"></a>Upravte výkon disku Ultra pomocí Azure Portal
 
@@ -183,12 +183,12 @@ Disky Ultra nabízejí jedinečnou možnost, která umožňuje upravit jejich v�
 - Přejděte na virtuální počítač a vyberte **disky**.
 - Vyberte Ultra disk, pro který chcete změnit výkon.
 
-![Selecting-Ultra-disk-to-Modify. png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
+![selecting-ultra-disk-to-modify.png](media/virtual-machines-disks-getting-started-ultra-ssd/selecting-ultra-disk-to-modify.png)
 
 - Vyberte **Konfigurace** a potom proveďte úpravy.
 - Vyberte **Uložit**.
 
-![Configuring-Ultra-disk-Performance-and-Size. png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
+![configuring-ultra-disk-performance-and-size.png](media/virtual-machines-disks-getting-started-ultra-ssd/configuring-ultra-disk-performance-and-size.png)
 
 ## <a name="deploy-an-ultra-disk-using-cli"></a>Nasazení Ultra disk s použitím rozhraní příkazového řádku
 

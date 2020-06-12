@@ -8,20 +8,24 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 04/23/2020
+ms.date: 06/10/2020
 ms.author: diberry
-ms.openlocfilehash: 55153cc7fc125c97a5b73084f83dd320240ca256
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 973a8b7eb8dad66568a5beb45adea9740dd0402a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84342102"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84700630"
 ---
 # <a name="whats-new-in-personalizer"></a>Co je nového v přizpůsobování
 
 Zjistěte, co je nového ve službě. Tyto položky můžou zahrnovat poznámky k verzi, videa, příspěvky na blogu a další typy informací. Pomocí záložky můžete tuto stránku udržovat v aktualizovaném stavu.
 
-## <a name="release-notes"></a>Poznámky k verzi
+## <a name="release-notes"></a>Zpráva k vydání verze
+
+### <a name="june-2020"></a>Červen 2020
+
+* Nový kurz – [použití přizpůsobení ve webové aplikaci](tutorial-use-personalizer-web-app.md)
 
 ### <a name="may-2020---build-conference"></a>Květen 2020 – konference Build
 

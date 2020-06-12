@@ -462,6 +462,8 @@
       items:
         - name: Co je rozpoznávání mluvčího?
           href: speaker-recognition-overview.md
+        - name: Základy rozpoznávání mluvčího
+          href: speaker-recognition-basics.md
     - name: Referenční informace
       items:
         - name: Rozhraní REST API

@@ -111,6 +111,8 @@
           href: howto-create-custom-rules.md
         - name: Vytváření vlastních analýz s využitím Databricks
           href: howto-create-custom-analytics.md
+        - name: Vizualizace dat v Power BI
+          href: howto-connect-powerbi.md
     - name: Správa
       items:
         - name: Správa vaší aplikace
