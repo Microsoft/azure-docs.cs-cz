@@ -256,12 +256,10 @@
           href: limit-egress-traffic.md
         - name: Povolení integrace Azure Active Directory
           items:
-            - name: Integrace Azure AD (Preview)
+            - name: AAD se správou AKS (Preview)
               href: managed-aad.md
             - name: Použití Azure CLI
               href: azure-ad-integration-cli.md
-            - name: Použití webu Azure Portal
-              href: azure-ad-integration.md
         - name: Použití Kubernetes RBAC s integrací Azure AD
           href: azure-ad-rbac.md
           maintainContext: true

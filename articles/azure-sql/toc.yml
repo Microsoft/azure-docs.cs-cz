@@ -35,6 +35,8 @@
           href: temporal-tables.md
         - name: Vertikální navýšení/snížení kapacity
           href: database/scale-resources.md
+        - name: Škálování čtení na více instancí
+          href: database/read-scale-out.md
         - name: Zabezpečení
           items:
             - name: Přehled
@@ -282,8 +284,6 @@
           href: database/connectivity-architecture.md
         - name: Nastavení možností připojení
           href: database/connectivity-settings.md
-        - name: Škálování čtení na více instancí
-          href: database/read-scale-out.md
         - name: Rozdíly v jazyce T-SQL
           href: database/transact-sql-tsql-differences-sql-server.md
         - name: Azure Automation

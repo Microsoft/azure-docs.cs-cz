@@ -222,12 +222,12 @@
               href: cognitive-search-create-custom-skill-example.md
             - name: Příklad – Rozpoznávání formulářů Azure
               href: cognitive-search-custom-skill-form.md
+            - name: Příklad – Azure Machine Learning
+              href: cognitive-search-tutorial-aml-custom-skill.md
             - name: Příklad – kontejnery
               href: 'https://go.microsoft.com/fwlink/?linkid=2089500'
         - name: Tipy k návrhům
           href: cognitive-search-concept-troubleshooting.md
-        - name: Odkazy na dokumentaci
-          href: cognitive-search-resources-documentation.md
         - name: Knowledge Store
           items:
             - name: Vytvoření s využitím architektury REST a Postman
@@ -464,6 +464,8 @@
               href: cognitive-search-skill-text-translation.md
         - name: Vlastní dovednosti
           items:
+            - name: Azure Machine Learning (AML)
+              href: cognitive-search-aml-skill.md
             - name: Vlastní webové rozhraní API
               href: cognitive-search-custom-skill-web-api.md
         - name: Zastaralé dovednosti
@@ -481,6 +483,8 @@
       href: 'https://feedback.azure.com/forums/263029-azure-search'
     - name: Certifikace a dodržování předpisů
       href: 'https://aka.ms/azurecompliance'
+    - name: Odkazy na dokumentaci (dolování znalostí)
+      href: cognitive-search-resources-documentation.md
     - name: Ukázkové weby
       items:
         - name: Ukázka finančních souborů

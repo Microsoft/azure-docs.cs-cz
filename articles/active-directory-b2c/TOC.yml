@@ -36,6 +36,9 @@
           href: tutorial-desktop-app.md
         - name: Samostatná stránka
           href: tutorial-single-page-app.md
+        - name: Python
+          href: tutorial-web-app-python.md
+          displayName: flask
     - name: Udělení přístupu k rozhraní API
       items:
         - name: ASP.NET

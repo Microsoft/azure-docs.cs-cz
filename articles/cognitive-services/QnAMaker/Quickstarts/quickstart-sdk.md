@@ -2,19 +2,19 @@
 title: 'Rychlý Start: použití sady SDK k vytvoření a správě znalostní báze Knowledge Base – QnA Maker'
 description: V tomto rychlém startu se dozvíte, jak vytvořit a spravovat znalostní bázi pomocí klientské sady SDK.
 ms.topic: quickstart
-ms.date: 04/27/2020
+ms.date: 06/11/2020
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 97d0ddd571f089cea2c656f6277e45d0d5eddb3d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: f80e791435d4bf9093b07842430e678b93843311
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84608617"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765130"
 ---
-# <a name="quickstart-create-and-manage-knowledge-base"></a>Rychlý Start: vytvoření a Správa znalostní báze
+# <a name="quickstart-qna-maker-client-library-for-net"></a>Rychlý Start: Klientská knihovna QnA Maker pro .NET
 
-Začněte s klientskou knihovnou QnA Maker. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.  QnA Maker umožňuje provozovat službu otázek a odpovědí na základě částečně strukturovaného obsahu, jako jsou dokumenty s nejčastějšími dotazy, adresy URL a příručky k produktům.
+Začněte s klientskou knihovnou QnA Maker pro .NET. Pomocí těchto kroků nainstalujete balíček a vyzkoušíte ukázkový kód pro základní úlohy.
 
 ::: zone pivot="programming-language-csharp"
 [!INCLUDE [Get intent with C# and REST](../includes/quickstart-sdk-csharp.md)]
@@ -28,6 +28,13 @@ Začněte s klientskou knihovnou QnA Maker. Pomocí těchto kroků nainstalujete
 [!INCLUDE [Get intent with Python and REST](../includes/quickstart-sdk-python.md)]
 ::: zone-end
 
+## <a name="clean-up-resources"></a>Vyčištění prostředků
+
+Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
+
+* [Azure Portal](../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure CLI](../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
+
 ## <a name="next-steps"></a>Další kroky
 
 > [!div class="nextstepaction"]
@@ -36,3 +43,4 @@ Začněte s klientskou knihovnou QnA Maker. Pomocí těchto kroků nainstalujete
 * [Co je rozhraní API služby QnA Maker?](../Overview/overview.md)
 * [Úprava znalostní báze](../how-to/edit-knowledge-base.md)
 * [Získat analýzu využití](../how-to/get-analytics-knowledge-base.md)
+

@@ -1,6 +1,6 @@
 - name: Dokumentace ke Cloud Foundry
   href: index.yml
-- name: Šablony Rychlý start
+- name: Rychlé starty
   expanded: true
   items:
     - name: Šablona Marketplace
@@ -10,9 +10,9 @@
     - name: Vytvoření CF v Azure
       href: /azure/cloudfoundry/create-cloud-foundry-on-azure
     - name: Nasazení aplikace CF do Azure
-      href: /azure/virtual-machines/linux/cloudfoundry-deploy-your-first-app
+      href: /azure/cloudfoundry/cloudfoundry-deploy-your-first-app
     - name: CloudFoundry v Azure
-      href: /azure/virtual-machines/linux/cloudfoundry-get-started
+      href: /azure/cloudfoundry/cloudfoundry-get-started
     - name: Nasazení CF OMS Nozzle
       href: /azure/cloudfoundry/cloudfoundry-oms-nozzle
     - name: Integrace Cloud Foundry s Azure

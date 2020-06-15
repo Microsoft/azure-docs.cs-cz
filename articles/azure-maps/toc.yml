@@ -59,6 +59,8 @@
           href: drawing-conversion-error-codes.md
     - name: Pokrytí
       items:
+        - name: Pokrytí
+          href: geographic-coverage.md
         - name: Zajištění geokódování
           href: geocoding-coverage.md
         - name: Zajištění provozu

@@ -36,8 +36,12 @@
           href: virtual-wan-locations-partners.md
         - name: Automatizační pokyny pro partnery
           href: virtual-wan-configure-automation-providers.md
-    - name: Zásady protokolu IPsec
-      href: virtual-wan-ipsec.md
+    - name: Site-to-Site
+      items:
+        - name: Informace o zásadách protokolu IPsec
+          href: virtual-wan-ipsec.md
+        - name: Několik odkazů poskytovatele internetových služeb – výběr cesty Azure
+          href: path-selection-multiple-links.md
 - name: Návody
   items:
     - name: Připojení brány virtuální sítě k Virtual WAN
@@ -58,8 +62,6 @@
       items:
         - name: Vytvoření připojení typu Site-to-Site
           href: virtual-wan-site-to-site-portal.md
-        - name: Několik odkazů poskytovatele internetových služeb – výběr cesty Azure
-          href: path-selection-multiple-links.md
     - name: Uživatelská síť VPN (point-to-site)
       items:
         - name: Vytvoření připojení uživatelské sítě VPN

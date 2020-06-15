@@ -12,6 +12,8 @@
       href: language-support.md
     - name: Podpora oblastí
       href: regions.md
+    - name: Novinky v dokumentaci
+      href: whats-new.md
 - name: Převod řeči na text
   items:
     - name: Dokumentace k převodu řeči na text

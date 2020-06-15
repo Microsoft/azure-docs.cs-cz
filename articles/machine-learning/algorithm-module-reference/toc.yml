@@ -166,8 +166,12 @@
       href: evaluate-recommender.md
     - name: Určení skóre doporučovacího systému SVD
       href: score-svd-recommender.md
+    - name: Určení skóre doporučovacího systému Wide and Deep
+      href: score-wide-and-deep-recommender.md
     - name: Trénování doporučovacího systému SVD
       href: train-svd-recommender.md
+    - name: Trénování doporučovacího systému Wide and Deep
+      href: train-wide-and-deep-recommender.md
 - name: Detekce anomálií
   items:
     - name: Detekce anomálií na základě PCA
