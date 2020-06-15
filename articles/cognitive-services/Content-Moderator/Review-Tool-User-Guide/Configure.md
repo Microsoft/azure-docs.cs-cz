@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
 ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220124"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689839"
 ---
 # <a name="configure-the-review-tool"></a>Konfigurace nástroje pro recenze
 
@@ -25,7 +25,7 @@ ms.locfileid: "79220124"
 
 ## <a name="manage-team-and-subteams"></a>Spravovat tým a subtýmy
 
-Karta **tým** umožňuje spravovat&mdash;skupiny uživatelů a subtýmů, kteří mohou být upozorněni při zahájení určitých [lidských](../review-api.md#reviews) kontrol. Můžete mít pouze jeden tým (který vytvoříte při registraci pomocí nástroje pro revizi), ale můžete vytvořit více subtýmů. Správce týmu může pozvat členy, nastavit jejich oprávnění a přiřadit je různým subtýmům.
+Karta **tým** umožňuje spravovat skupiny uživatelů a subtýmů &mdash; , kteří mohou být upozorněni při zahájení určitých [lidských](../review-api.md#reviews) kontrol. Můžete mít pouze jeden tým (který vytvoříte při registraci pomocí nástroje pro revizi), ale můžete vytvořit více subtýmů. Správce týmu může pozvat členy, nastavit jejich oprávnění a přiřadit je různým subtýmům.
 
 ![Kontrola nastavení týmu nástroje](images/settings-2-team.png)
 
@@ -66,7 +66,7 @@ Pokud jste členem více než jednoho subtýmu, můžete mezi těmito seskupení
 
 ## <a name="tags"></a>Značky
 
-Karta **značky** vám umožňuje definovat&mdash;**vlastní značky** moderování kromě dvou výchozích značek moderování (**a**) a **isracy** (**r**). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
+Karta **značky** vám umožňuje definovat vlastní značky moderování kromě dvou výchozích značek moderování &mdash; **isadult** (**a**) a **isracy** (**r**). Když vytvoříte vlastní značku, bude k dispozici v recenzích vedle výchozích značek. To, které značky se zobrazí v recenzích, můžete změnit přepnutím jejich nastavení viditelnosti.
 
 ![Zobrazení značek, včetně zaškrtávacích políček "je viditelné"](images/tags-4-disable.png)
 
@@ -95,7 +95,7 @@ Výchozí konektor při vytváření pracovního postupu je konektor Content Mod
 [Nástroj pro kontrolu](./human-in-the-loop.md) zahrnuje následující konektory:
 
 - Emoce
-- Tvář
+- Rozpoznávání tváře
 - Cloudová služba PhotoDNA
 - Analýza textu
 

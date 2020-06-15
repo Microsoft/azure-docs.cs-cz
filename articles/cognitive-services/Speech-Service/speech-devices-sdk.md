@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: erhopf
-ms.openlocfilehash: 3fb5f1df0eb4473483c9298cdbf36909b75065e7
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: 4ec153a9c770b0001888c972dc44414470e3ddbf
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82927203"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730301"
 ---
 # <a name="what-is-the-speech-devices-sdk"></a>Co je sada Speech Devices SDK?
 
@@ -37,7 +37,11 @@ Sada Speech Devices SDK umožňuje celou řadu scénářů s podporou hlasu, jak
 
 ### <a name="android"></a>Android
 
-V případě Androidu si zařízení stáhnou nejnovější verzi [sady SDK pro zařízení s Androidem pro rozpoznávání řeči](https://aka.ms/sdsdk-download-android).
+Sada Speech Devices SDK pro Android podporuje [Roobo v1](speech-devices-sdk-roobo-v1.md) a ekvivalentní zařízení. pro tyto účely si stáhněte nejnovější verzi [sady SDK pro zařízení se systémem Android Speech](https://aka.ms/sdsdk-download-android).
+
+
+Pokud máte jiné zařízení s Androidem, jako je telefon nebo mobilní zařízení, začněte sadou [Speech SDK pro Android](speech-sdk.md)
+
 
 ### <a name="windows"></a>Windows
 

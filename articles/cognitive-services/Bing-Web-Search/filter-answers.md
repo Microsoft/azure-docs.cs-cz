@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa022f181e2061c6a7f3e08d1f2f501ddd9cac3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220267"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696707"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtrování odpovědí, které odpověď na hledání zahrnuje  
 
@@ -45,7 +45,7 @@ Při dotazování na web Bing vrátí veškerý relevantní obsah, který najde 
 }    
 ```
 
-## <a name="query-parameters"></a>Parametry dotazu
+## <a name="query-parameters"></a>Parametry dotazů
 
 Pokud chcete filtrovat odpovědi vrácené bingem, použijte při volání rozhraní API níže uvedené parametry dotazu.  
 
@@ -53,7 +53,7 @@ Pokud chcete filtrovat odpovědi vrácené bingem, použijte při volání rozhr
 
 Můžete filtrovat typy odpovědí, které Bing obsahuje v odpovědi (například obrázky, videa a novinky) pomocí parametru dotazu [responseFilter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#responsefilter) , který je seznam odpovědí oddělených čárkami. Odpověď bude obsahovat odpověď v případě, že Bing najde relevantní obsah. 
 
-Pokud chcete vyloučit konkrétní odpovědi z odpovědi, jako jsou obrázky, přiřaďte k typu odpovědi `-` znak. Příklad:
+Pokud chcete vyloučit konkrétní odpovědi z odpovědi, jako jsou obrázky, přiřaďte `-` k typu odpovědi znak. Například:
 
 ```
 &responseFilter=-images,-videos
@@ -102,14 +102,14 @@ Nedoporučujeme používat `responseFilter` k získání výsledků z jediného 
 
 ### <a name="site"></a>Web
 
-Chcete-li získat výsledky hledání z konkrétní domény, zahrňte parametr `site:` dotazu do řetězce dotazu.  
+Chcete-li získat výsledky hledání z konkrétní domény, zahrňte `site:` parametr dotazu do řetězce dotazu.  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
 ```
 
 > [!NOTE]
-> V závislosti na dotazu, pokud použijete operátor `site:` dotazu, existuje možnost, že odpověď může obsahovat obsah pro dospělé bez ohledu na nastavení [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) . Operátor `site:` byste měli používat, pouze pokud znáte obsah příslušného webu a váš scénář podporuje možnost zobrazení obsahu pro dospělé.
+> V závislosti na dotazu, pokud použijete `site:` operátor dotazu, existuje možnost, že odpověď může obsahovat obsah pro dospělé bez ohledu na nastavení [bezpečné hledání](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#safesearch) . Operátor `site:` byste měli používat, pouze pokud znáte obsah příslušného webu a váš scénář podporuje možnost zobrazení obsahu pro dospělé.
 
 ### <a name="freshness"></a>Freshness
 
@@ -119,7 +119,7 @@ Chcete-li omezit výsledky webové odpovědi na webové stránky, které Bing zj
 * `Week`– Vrátí webové stránky, které Bing zjistil během posledních 7 dnů.
 * `Month`– Vrátí webové stránky, které se zjistily během posledních 30 dnů.
 
-Můžete také nastavit tento parametr na vlastní rozsah kalendářních dat ve formuláři `YYYY-MM-DD..YYYY-MM-DD`. 
+Můžete také nastavit tento parametr na vlastní rozsah kalendářních dat ve formuláři `YYYY-MM-DD..YYYY-MM-DD` . 
 
 `https://<host>/bing/v7.0/search?q=ipad+updates&freshness=2019-02-01..2019-05-30`
 
@@ -131,7 +131,7 @@ Výsledky můžou zahrnovat webové stránky, které spadají mimo zadané obdob
 
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>Omezení počtu odpovědí v odpovědi
 
-Bing může v odpovědi JSON vracet několik typů odpovědí. Například pokud se dotazuje na *dinghies +* aplikace, Bing může vracet `webpages`, `images`, `videos`a `relatedSearches`.
+Bing může v odpovědi JSON vracet několik typů odpovědí. Například pokud se dotazuje na *dinghies +* aplikace, Bing může vracet `webpages` , `images` , `videos` a `relatedSearches` .
 
 ```json
 {
@@ -159,7 +159,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```  
 
-Odpověď obsahuje pouze `webPages` a `images`.
+Odpověď obsahuje pouze `webPages` a `images` .
 
 ```json
 {
@@ -173,7 +173,7 @@ Odpověď obsahuje pouze `webPages` a `images`.
 }
 ```
 
-Pokud přidáte parametr `responseFilter` dotazu k předchozímu dotazu a nastavíte ho na webové stránky a novinky, odpověď obsahuje jenom webové stránky, protože novinky nejsou seřazené.
+Pokud přidáte `responseFilter` parametr dotazu k předchozímu dotazu a nastavíte ho na webové stránky a novinky, odpověď obsahuje jenom webové stránky, protože novinky nejsou seřazené.
 
 ```json
 {
@@ -215,8 +215,8 @@ Následuje odpověď na výše uvedený požadavek. Bing vrátí horní dvě odp
 }
 ```
 
-Pokud jste nastavili `promote` novinky, odpověď neobsahuje odpověď na zprávy, protože se nejedná o pokladnou&mdash;odpověď, můžete povýšit pouze seřazené odpovědi.
+Pokud jste nastavili `promote` novinky, odpověď neobsahuje odpověď na zprávy, protože se nejedná o pokladnou odpověď, &mdash; můžete povýšit pouze seřazené odpovědi.
 
-Odpovědi, které chcete zvýšit, se nepočítají na `answerCount` základě limitu. Například pokud jsou seřazené odpovědi zprávy, obrázky a videa a nastavíte hodnotu `answerCount` 1 a `promote` na zprávy, odpověď obsahuje zprávy a obrázky. Nebo, pokud jsou seřazené odpovědi videa, obrázky a novinky, odpověď obsahuje videa a novinky.
+Odpovědi, které chcete zvýšit, se nepočítají na základě `answerCount` limitu. Například pokud jsou seřazené odpovědi zprávy, obrázky a videa a nastavíte hodnotu `answerCount` 1 a `promote` na zprávy, odpověď obsahuje zprávy a obrázky. Nebo, pokud jsou seřazené odpovědi videa, obrázky a novinky, odpověď obsahuje videa a novinky.
 
-Můžete použít `promote` pouze v `answerCount` případě, že zadáte parametr dotazu.
+Můžete použít `promote` pouze v případě, že zadáte `answerCount` parametr dotazu.

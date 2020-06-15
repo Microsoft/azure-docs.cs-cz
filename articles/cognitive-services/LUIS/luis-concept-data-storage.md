@@ -12,11 +12,11 @@ ms.topic: conceptual
 ms.date: 07/29/2019
 ms.author: diberry
 ms.openlocfilehash: e3028a9f046edb4013d8a2d6ec88d8c3cb2ca489
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220014"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84691709"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Ukládání a odebírání dat v Language Understanding (LUIS) Cognitive Services
 LUIS ukládá data zašifrovaná v úložišti dat Azure, která odpovídají oblasti určené klíčem. Tato data jsou uložena po dobu 30 dnů. 
@@ -28,7 +28,7 @@ Uživatelé mají plnou kontrolu nad [exportem](luis-how-to-start-new-app.md#exp
 
 Projevy může být uložená na dvou různých místech. 
 
-* Během **procesu vytváření obsahu**jsou projevy vytvořeny a uloženy v záměru. Projevy v záměrech se vyžadují pro úspěšnou aplikaci LUIS. Po publikování aplikace a přijetí dotazů na koncovém bodu určuje dotaz QueryString `log=false`požadavku koncového bodu, zda je uložen koncový bod utterance. Pokud je koncový bod uložený, bude se jednat o součást aktivního výukového projevyu, která se nachází v části **Build** na portálu, v části **Kontrola koncového bodu projevy** . 
+* Během **procesu vytváření obsahu**jsou projevy vytvořeny a uloženy v záměru. Projevy v záměrech se vyžadují pro úspěšnou aplikaci LUIS. Po publikování aplikace a přijetí dotazů na koncovém bodu určuje dotaz QueryString požadavku koncového bodu, `log=false` zda je uložen koncový bod utterance. Pokud je koncový bod uložený, bude se jednat o součást aktivního výukového projevyu, která se nachází v části **Build** na portálu, v části **Kontrola koncového bodu projevy** . 
 * Když provedete **kontrolu koncového bodu projevy**a do záměru přidáte utterance, utterance se už neukládá jako součást koncového bodu projevy, který se má zkontrolovat. Přidá se do záměrů aplikace. 
 
 <a name="utterances-in-an-intent"></a>

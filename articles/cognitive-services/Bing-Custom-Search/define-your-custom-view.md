@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.openlocfilehash: c14376cc80373371ec5fcb8f22a00584a6b2f714
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220212"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710163"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurace prostředí Vlastní vyhledávání Bingu
 
@@ -27,7 +27,7 @@ Při definování řezů webu použijte následující:
 
 | Název řezu | Popis                                                                                                                                                                                                                                                                                                |
 |------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| Domain (Doména)     | Řez domény zahrnuje veškerý obsah nacházející se v doméně Internet. Například, `www.microsoft.com`. Vynechání `www.` způsobí, že Bing bude prohledávat i subdomény domény. Pokud například zadáte `microsoft.com`, Bing také vrátí výsledky z `support.microsoft.com` nebo. `technet.microsoft.com` |
+| Domain (Doména)     | Řez domény zahrnuje veškerý obsah nacházející se v doméně Internet. Například, `www.microsoft.com`. Vynechání `www.` způsobí, že Bing bude prohledávat i subdomény domény. Pokud například zadáte `microsoft.com` , Bing také vrátí výsledky z `support.microsoft.com` nebo `technet.microsoft.com` . |
 | Podstránku    | Řez podstránky obsahuje veškerý obsah nacházející se na podstránce a v cestách pod ním. V cestě můžete zadat maximálně dvě podstránky. Například `www.microsoft.com/en-us/windows/`.                                                                                                                       |
 | Stránku    | Řez webové stránky může obsahovat jenom tuto webovou stránku ve vlastním hledání. Volitelně můžete určit, zda chcete zahrnout podstránky.                                                                                                                                                                                  |
 
@@ -76,7 +76,7 @@ Po přidání webových řezů do **aktivního** seznamu vlastní vyhledávání
 
 Obrázky a videa můžete hledat Podobně jako webový obsah pomocí [rozhraní API pro vlastní vyhledávání obrázků Bingu](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) nebo [vlastního rozhraní API bingu pro vyhledávání videí](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference). Tyto výsledky můžete zobrazit pomocí [hostovaného uživatelského rozhraní](hosted-ui.md)nebo rozhraní API. 
 
-Tato rozhraní API jsou podobná rozhraním API, která nejsou vlastní [vyhledávání obrázků Bingu](../Bing-Image-Search/overview.md) a [Vvyhledávání videí Bingu](../Bing-Video-Search/search-the-web.md) , ale hledají celý web a nevyžadují parametr `customConfig` dotazu. Další informace o práci s obrázky a videem najdete v následujících sadách dokumentace. 
+Tato rozhraní API jsou podobná rozhraním API, která nejsou vlastní [vyhledávání obrázků Bingu](../Bing-Image-Search/overview.md) a [Vvyhledávání videí Bingu](../Bing-Video-Search/search-the-web.md) , ale hledají celý web a nevyžadují `customConfig` parametr dotazu. Další informace o práci s obrázky a videem najdete v následujících sadách dokumentace. 
 
 ## <a name="test-your-search-instance-with-the-preview-pane"></a>Otestování instance hledání pomocí podokna náhledu
 

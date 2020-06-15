@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 09/24/2019
 ms.author: diberry
 ms.openlocfilehash: 38701e8bbef1c5d78eca2242105e81fe7261c0f6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220630"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693086"
 ---
 # <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Jazyková podpora obsahu znalostní báze pro QnA Maker
 
@@ -25,7 +25,7 @@ Jazyk určuje relevanci výsledků QnA Maker poskytuje odpověď na dotazy uživ
 
 ## <a name="one-language-for-all-knowledge-bases-in-resource"></a>Jeden jazyk pro všechny databáze znalostí v prostředku
 
-QnA Maker umožňuje vybrat jazyk pro službu QnA při vytváření první znalostní báze. Všechna znalostní báze v prostředku QnA Maker musí být ve stejném jazyce. Tento jazyk se nedá změnit.
+Služba QnA Maker umožňuje vybrat jazyk služby otázek a odpovědí při vytváření první znalostní báze. Všechny znalostní báze v jednom prostředku služby QnA Maker musí být ve stejném jazyce. Tento jazyk není možné změnit.
 
 Vytváření znalostní báze v různých jazycích v jednom zdroji negativně ovlivňuje relevanci výsledků QnA Maker poskytuje odpověď na dotazy uživatelů.
 
@@ -44,7 +44,7 @@ I když jsou možnosti Azure Kognitivní hledání pro podporované jazyky v nom
 
 |Jazyky s dalšími přiřazením|
 |--|
-|Chinese|
+|Čínština|
 |Čeština|
 |Nizozemština|
 |Angličtina|

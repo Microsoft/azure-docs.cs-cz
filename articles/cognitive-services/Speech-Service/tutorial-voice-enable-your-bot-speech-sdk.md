@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 02/25/2020
 ms.author: trbye
-ms.openlocfilehash: 69046772b81f0b5b597cce8e86aca9cbf27c49f8
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: a96ddfe2023fbddd6a4a25c97001875e0dddc7f3
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457095"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753189"
 ---
 # <a name="tutorial-voice-enable-your-bot-using-the-speech-sdk"></a>Kurz: hlas – povolení robota pomocí sady Speech SDK
 
@@ -164,7 +164,7 @@ Teď, když jste vytvořili nějaké prostředky, pojďme vytvořit robota. Bude
 1. Nainstalujte [emulátor systému bot Framework](https://github.com/Microsoft/BotFramework-Emulator/releases/latest) verze 4.3.0 nebo novější.
 2. Spusťte emulátor rozhraní bot Framework a otevřete robota:
    * **Soubor**  ->  **Otevřete robot**.
-3. Zadejte adresu URL pro robota. Příklad:
+3. Zadejte adresu URL pro robota. Například:
 
    ```
    http://localhost:3978/api/messages
@@ -265,7 +265,7 @@ Registrační stránka kanálů robota Azure bot má v rámci **správy robotů*
 
 1. Vyhledejte a otevřete svůj prostředek **EchoBotTutorial-BotRegistration-# #** # # v [Azure Portal](https://portal.azure.com)
 1. V navigaci **pro správu bot** vyberte **Nastavení**. Zkopírujte hodnotu v části **ID aplikace Microsoftu** .
-1. Otevřete řešení Visual Studio EchoBot. V Průzkumníku řešení Najděte a dvakrát klikněte na **appSettings. JSON.**
+1. Otevřete řešení Visual Studio EchoBot. V Průzkumníku řešení Najděte **appsettings.js** a dvakrát klikněte na
 1. Nahraďte prázdný řetězec vedle **MicrosoftAppId** v souboru JSON hodnotou ZKOPÍROVANÉho ID.
 1. Vraťte se do Azure Portal, v navigaci **pro správu robota** vyberte **Nastavení**a klikněte na **(spravovat)** vedle **ID aplikace Microsoft** .
 1. Klikněte na **nový tajný klíč klienta**. Přidejte popis (např. "webový chat") a klikněte na **Přidat**. Kopírování nového tajného klíče
@@ -323,13 +323,16 @@ Pokud se zobrazí chybová zpráva v hlavním okně aplikace, použijte tuto tab
 
 | Chyba | Co byste měli udělat? |
 |-------|----------------------|
-|Chyba AuthenticationFailure: upgrade protokolu WebSocket se nezdařil s chybou ověřování (401). Vyhledat správný klíč předplatného (nebo autorizační token) a název oblasti| Na stránce nastavení aplikace se ujistěte, že jste zadali správný klíč předplatného pro rozpoznávání řeči a jeho oblast.<br>Ujistěte se, že klíč řeči a klíčová oblast byly zadány správně. |
-|Chyba ConnectionFailure: připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1011. Podrobnosti o chybě: před odesláním zprávy se nepovedlo připojit k robotovi. | Ujistěte se, že jste [zaškrtli políčko Povolit koncový bod streamování](#register-the-direct-line-speech-channel) nebo na zapnuté [ **webové zásuvky** ](#enable-web-sockets) .<br>Ujistěte se, že je spuštěný Azure App Service. Pokud je to, zkuste restartovat App Service.|
-|Chyba ConnectionFailure: připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1011. Podrobnosti o chybě: kód stavu odpovědi neindikuje úspěch: 500 (Nenalezeno)| Vaše robot zadal neuronové hlas do výstupního pole [speaking](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) Activity, ale oblast Azure přidružená k vašemu klíči předplatného pro rozpoznávání řeči nepodporuje hlasy neuronové. Viz [hlasy Standard a neuronové](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
-|Chyba ConnectionFailure: připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1000. Podrobnosti o chybě: překročení maximální doby nečinnosti připojení webového soketu (> 300000 MS)| Jedná se o očekávanou chybu, pokud je připojení k kanálu otevřené a neaktivní po dobu delší než 5 minut. |
+|Chyba (AuthenticationFailure): upgrade protokolu WebSocket se nezdařil s chybou ověřování (401). Vyhledat správný klíč předplatného (nebo autorizační token) a název oblasti| Na stránce nastavení aplikace se ujistěte, že jste zadali správný klíč předplatného pro rozpoznávání řeči a jeho oblast.<br>Ujistěte se, že klíč řeči a klíčová oblast byly zadány správně. |
+|Chyba (ConnectionFailure): připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1011. Podrobnosti o chybě: před odesláním zprávy se nepovedlo připojit k robotovi. | Ujistěte se, že jste [zaškrtli políčko Povolit koncový bod streamování](#register-the-direct-line-speech-channel) nebo na zapnuté [ **webové zásuvky** ](#enable-web-sockets) .<br>Ujistěte se, že je spuštěný Azure App Service. Pokud je to, zkuste restartovat App Service.|
+|Chyba (ConnectionFailure): připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1002. Podrobnosti o chybě: Server vrátil stavový kód "503", pokud byl očekáván stavový kód "101" | Ujistěte se, že jste [zaškrtli políčko Povolit koncový bod streamování](#register-the-direct-line-speech-channel) nebo na zapnuté [ **webové zásuvky** ](#enable-web-sockets) .<br>Ujistěte se, že je spuštěný Azure App Service. Pokud je to, zkuste restartovat App Service.|
+|Chyba (ConnectionFailure): připojení bylo ukončeno vzdáleným hostitelem. Kód chyby: 1011. Podrobnosti o chybě: kód stavu odpovědi neindikuje úspěch: 500 (Nenalezeno)| Vaše robot zadal neuronové hlas do výstupního pole [speaking](https://github.com/microsoft/botframework-sdk/blob/master/specs/botframework-activity/botframework-activity.md#speak) Activity, ale oblast Azure přidružená k vašemu klíči předplatného pro rozpoznávání řeči nepodporuje hlasy neuronové. Viz [hlasy Standard a neuronové](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).|
 
-Pokud se problém nevyřeší v tabulce, přečtěte si téma [asistenti hlasu: nejčastější dotazy](faq-voice-assistants.md).
+Pokud se problém nevyřeší v tabulce, přečtěte si téma [asistenti hlasu: nejčastější dotazy](faq-voice-assistants.md). Pokud vaše potíže ještě nepůjde vyřešit po splnění všech kroků v tomto kurzu, zadejte prosím nový problém na [stránce GitHubu hlasového pomocníka](https://github.com/Azure-Samples/Cognitive-Services-Voice-Assistant/issues).
 
+#### <a name="a-note-on-connection-time-out"></a>Poznámka k vypršení časového limitu připojení
+
+Pokud jste připojení ke robotovi a za posledních 5 minut nedošlo k žádné aktivitě, služba automaticky ukončí připojení protokolu WebSocket k klientovi a s robotem. Toto chování je úmyslné. Na dolním panelu se zobrazí zpráva: *vypršel časový limit aktivního připojení, ale jeho Příprava na vyžádání znovu připojit*. Nemusíte stisknout tlačítko "znovu připojit" – Stačí stisknout tlačítko mikrofonu a začít mluvit, zadat textovou zprávu nebo vyslovit klíčové slovo (Pokud je povolené). Připojení se automaticky znovu vytvoří.  
 ### <a name="view-bot-activities"></a>Zobrazit aktivity robota
 
 Každý robot odesílá a přijímá zprávy o **aktivitách** . V okně **Protokol aktivit** klienta Windows Voice Assistant uvidíte protokoly s časovým razítkem s každou aktivitou, kterou klient přijal od robota. Můžete také zobrazit aktivity, které klient poslal do robota pomocí [`DialogServiceConnector.SendActivityAsync`](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.dialog.dialogserviceconnector.sendactivityasync) metody. Když vyberete položku protokolu, zobrazí se podrobnosti související aktivity jako JSON.

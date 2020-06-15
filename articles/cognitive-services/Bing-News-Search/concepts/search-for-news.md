@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: scottwhi
 ms.openlocfilehash: 6fa12febe99e77efde45bcd2d538de78f618e641
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220322"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710588"
 ---
 # <a name="search-for-news-with-the-bing-news-search-api"></a>Hledání zpráv pomocí rozhraní API Bingu pro vyhledávání zpráv
 

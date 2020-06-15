@@ -11,25 +11,25 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220190"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710554"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Podpora jazyků a oblastí pro rozhraní API Bingu pro vyhledávání zpráv
 
 Rozhraní API Bingu pro vyhledávání zpráv podporuje řadu zemí nebo oblastí, mnoho s více než jedním jazykem. Zadání země nebo oblasti s dotazem slouží hlavně k upřesnění výsledků hledání na základě zájmů v dané zemi nebo oblasti. Kromě toho můžou výsledky obsahovat odkazy na Bing a tyto odkazy můžou lokalizovat uživatelské prostředí Bingu podle konkrétní země nebo oblasti nebo jazyka.
 
-Můžete zadat zemi nebo oblast pomocí parametru `cc` dotazu. Pokud zadáte zemi nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí hlavičky `Accept-Language` http. Podporované jazyky se liší podle počtu nebo oblasti; jsou uvedené pro každou zemi nebo oblast v tabulce trhy.
+Můžete zadat zemi nebo oblast pomocí `cc` parametru dotazu. Pokud zadáte zemi nebo oblast, musíte zadat také jeden nebo více kódů jazyka pomocí `Accept-Language` hlavičky HTTP. Podporované jazyky se liší podle počtu nebo oblasti; jsou uvedené pro každou zemi nebo oblast v tabulce trhy.
 
-Alternativně můžete zadat trh pomocí parametru `mkt` dotazu a kódu z tabulky **trhy** . Určování trhu současně určuje zemi nebo oblast a preferovaný jazyk. V `setLang` tomto případě může být parametr dotazu nastaven na kód jazyka. obvykle se jedná o stejný jazyk, který `mkt` určíte, pokud uživatel neupřednostňuje zobrazení Bingu v jiném jazyce.
+Alternativně můžete zadat trh pomocí `mkt` parametru dotazu a kódu z tabulky **trhy** . Určování trhu současně určuje zemi nebo oblast a preferovaný jazyk. `setLang`Parametr dotazu lze v tomto případě nastavit na kód jazyka; obvykle se jedná o stejný jazyk, který určíte, `mkt` Pokud uživatel neupřednostňuje zobrazení Bingu v jiném jazyce.
 
 ## <a name="supported-markets-for-news-search-endpoint"></a>Podporované trhy pro koncový bod hledání zpráv
 
-`/news/search` V následující tabulce jsou uvedeny hodnoty kódu na trhu, které můžete použít k zadání parametru `mkt` dotazu. Bing vrátí obsah jenom pro tyto trhy. V seznamu se může změnit.  
+V `/news/search` následující tabulce jsou uvedeny hodnoty kódu na trhu, které můžete použít k zadání `mkt` parametru dotazu. Bing vrátí obsah jenom pro tyto trhy. V seznamu se může změnit.  
 
-Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, najdete v tématu [kódy zemí](#countrycodes).  
+Seznam kódů zemí a oblastí, které můžete zadat v `cc` parametru dotazu, najdete v tématu [kódy zemí](#countrycodes).  
 
 |Země|Jazyk|Kód trhu|  
 |---------------------|--------------|-----------------|
@@ -47,7 +47,7 @@ Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, n
 |Nový Zéland|Angličtina|EN-NZ|
 |Filipínská republika|Angličtina|EN-PH|
 |Singapur|Angličtina|EN-SG|
-|Spojené státy|Angličtina|cs-CZ|
+|USA|Angličtina|cs-CZ|
 |Angličtina|obecné|EN-WW|
 |Angličtina|obecné|EN-XA|
 |Jižní Afrika|Angličtina|EN-ZA|
@@ -55,7 +55,7 @@ Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, n
 |Chile|Španělština|ES-CL|
 |Španělsko|Španělština|es-ES|
 |Mexiko|Španělština|ES – MX|
-|Spojené státy|Španělština|ES – US|
+|USA|Španělština|ES – US|
 |Španělština|obecné|ES-XL|
 |Finsko|Finština|fi-FI|  
 |Francie|Francouzština|fr – bude|
@@ -64,21 +64,21 @@ Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, n
 |Švýcarsko|Francouzština|fr – CH|
 |Francie|Francouzština|fr-FR|  
 |Itálie|Italština|it-IT|
-|Hongkong – zvláštní správní oblast|Tradiční čínština|zh – HK|  
+|Hongkong – zvláštní administrativní oblast|Tradiční čínština|zh – HK|  
 |Tchaj-wan|Tradiční čínština|zh-TW|
 |Japonsko|Japonština|ja-JP|  
 |Jižní Korea|Korejština|ko-KR|  
 |Nizozemsko|Nizozemština|nl-NL|  
-|Čínská lidová republika|Chinese|zh-CN|  
+|Čínská lidová republika|Čínština|zh-CN|  
 |Brazílie|Portugalština|pt-BR|
 |Rusko|Ruština|ru-RU|  
 |Švédsko|Švédština|sv-SE|  
 |Turecko|Turečtina|tr-TR|  
 
 ## <a name="supported-markets-for-news-endpoint"></a>Podporované trhy pro koncový bod zprávy
-`/news` V následující tabulce jsou uvedeny hodnoty kódu na trhu, které můžete použít k zadání parametru `mkt` dotazu. Bing vrátí obsah jenom pro tyto trhy. V seznamu se může změnit.  
+V `/news` následující tabulce jsou uvedeny hodnoty kódu na trhu, které můžete použít k zadání `mkt` parametru dotazu. Bing vrátí obsah jenom pro tyto trhy. V seznamu se může změnit.  
 
-Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, najdete v tématu [kódy zemí](#countrycodes).  
+Seznam kódů zemí a oblastí, které můžete zadat v `cc` parametru dotazu, najdete v tématu [kódy zemí](#countrycodes).  
 
 |Země|Jazyk|Kód trhu|  
 |---------------------|--------------|-----------------|
@@ -86,41 +86,41 @@ Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, n
 |Německo|Němčina|de-DE|
 |Austrálie|Angličtina|EN-AU|
 |Spojené království|Angličtina|en-GB|
-|Spojené státy|Angličtina|cs-CZ|
+|USA|Angličtina|cs-CZ|
 |Angličtina|obecné|EN-WW|
 |Chile|Španělština|ES-CL|
 |Mexiko|Španělština|ES – MX|
-|Spojené státy|Španělština|ES – US|
+|USA|Španělština|ES – US|
 |Finsko|Finština|fi-FI|  
 |Kanada|Francouzština|fr – CA|
 |Francie|Francouzština|fr-FR|  
 |Itálie|Italština|it-IT|
 |Brazílie|Portugalština|pt-BR|
-|Čínská lidová republika|Chinese|zh-CN|
+|Čínská lidová republika|Čínština|zh-CN|
 
 ## <a name="supported-markets-for-news-trending-endpoint"></a>Podporované trhy pro koncový bod vývoje novinek
-`/news/trendingtopics` V následující tabulce jsou uvedeny hodnoty kódu na trhu, které můžete použít k zadání parametru `mkt` dotazu. Bing vrátí obsah jenom pro tyto trhy. V seznamu se může změnit.  
+V `/news/trendingtopics` následující tabulce jsou uvedeny hodnoty kódu na trhu, které můžete použít k zadání `mkt` parametru dotazu. Bing vrátí obsah jenom pro tyto trhy. V seznamu se může změnit.  
 
-Seznam kódů zemí a oblastí, které můžete zadat v parametru `cc` dotazu, najdete v tématu [kódy zemí](#countrycodes).  
+Seznam kódů zemí a oblastí, které můžete zadat v `cc` parametru dotazu, najdete v tématu [kódy zemí](#countrycodes).  
 
 |Země|Jazyk|Kód trhu|  
 |---------------------|--------------|-----------------|
 |Německo|Němčina|de-DE|
 |Austrálie|Angličtina|EN-AU|
 |Spojené království|Angličtina|en-GB|
-|Spojené státy|Angličtina|cs-CZ|
+|USA|Angličtina|cs-CZ|
 |Kanada|Angličtina|en-CA|
 |Indie|Angličtina|en-IN|
 |Francie|Francouzština|fr-FR|
 |Kanada|Francouzština|fr – CA|
 |Brazílie|Portugalština|pt-BR|
-|Čínská lidová republika|Chinese|zh-CN|
+|Čínská lidová republika|Čínština|zh-CN|
 
 
 <a name="countrycodes"></a>   
 ### <a name="country-codes"></a>Kódy zemí  
 
-Níže jsou uvedené kódy země/oblasti, které můžete zadat v parametru `cc` dotazu. V seznamu se může změnit.  
+Níže jsou uvedené kódy země/oblasti, které můžete zadat v `cc` parametru dotazu. V seznamu se může změnit.  
 
 |Země|Kód země|  
 |---------------------|------------------|  
@@ -135,7 +135,7 @@ Níže jsou uvedené kódy země/oblasti, které můžete zadat v parametru `cc`
 |Finsko|FI|  
 |Francie|FR|  
 |Německo|DE|  
-|Hongkong – zvláštní správní oblast|HK|  
+|Hongkong – zvláštní administrativní oblast|HK|  
 |Indie|IN|  
 |Indonésie|ID|  
 |Itálie|IT|  
@@ -159,7 +159,7 @@ Níže jsou uvedené kódy země/oblasti, které můžete zadat v parametru `cc`
 |Tchaj-wan|TW|  
 |Turecko|TR|  
 |Spojené království|GB|  
-|Spojené státy|USA|
+|USA|USA|
 
 ## <a name="next-steps"></a>Další kroky
 Další informace o Vyhledávání zpráv Binguch koncových bodech najdete v referenčních informacích k [rozhraní vyhledávání zpráv API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

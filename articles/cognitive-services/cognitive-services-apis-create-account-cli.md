@@ -10,11 +10,11 @@ ms.topic: conceptual
 ms.date: 10/04/2019
 ms.author: aahi
 ms.openlocfilehash: 72b00d78d19ed0e963b4dad01b82033c659e1efd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79219607"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84704705"
 ---
 # <a name="create-a-cognitive-services-resource-using-the-azure-command-line-interfacecli"></a>Vytvoření prostředku Cognitive Services pomocí rozhraní příkazového řádku Azure (CLI)
 
@@ -60,7 +60,7 @@ az account list-locations \
 
 Po umístění Azure vytvořte novou skupinu prostředků v rozhraní příkazového řádku Azure pomocí příkazu [AZ Group Create](/cli/azure/group#az-group-create) .
 
-V následujícím příkladu nahraďte umístění `westus2` Azure jedním z umístění Azure dostupných pro vaše předplatné.
+V následujícím příkladu nahraďte umístění Azure `westus2` jedním z umístění Azure dostupných pro vaše předplatné.
 
 ```azurecli-interactive
 az group create \
@@ -88,14 +88,14 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 
 | Služba                    | Druh                      |
 |----------------------------|---------------------------|
-| Computer Vision            | `ComputerVision`          |
+| Počítačové zpracování obrazu            | `ComputerVision`          |
 | Custom Vision – předpověď | `CustomVision.Prediction` |
 | Custom Vision – školení   | `CustomVision.Training`   |
-| Tvář                       | `Face`                    |
+| Rozpoznávání tváře                       | `Face`                    |
 | Rozpoznávání formulářů            | `FormRecognizer`          |
 | Rozpoznávání rukopisu             | `InkRecognizer`           |
 
-### <a name="search"></a>Search
+### <a name="search"></a>Hledat
 
 | Služba            | Druh                  |
 |--------------------|-----------------------|
@@ -109,7 +109,7 @@ Při vytváření nového prostředku budete muset znát "druh" služby, kterou 
 
 | Služba            | Druh                 |
 |--------------------|----------------------|
-| Hlasové služby    | `SpeechServices`     |
+| Služby Speech    | `SpeechServices`     |
 | Rozpoznávání řeči | `SpeakerRecognition` |
 
 ### <a name="language"></a>Jazyk
