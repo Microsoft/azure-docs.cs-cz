@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/04/2020
 ms.author: travisw
-ms.openlocfilehash: 62c317843c275531286eeb2ae616d79ad76c6f99
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 548d324a67b1bbee4741724faf2cf27ec6c3c3c1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80671196"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84754651"
 ---
 ## <a name="prerequisites"></a>Požadavky
 
@@ -32,7 +32,7 @@ Prvním krokem je ujistit se, že máte projekt otevřený v aplikaci Visual Stu
 
 Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
-1. V **Průzkumník řešení**otevřete `MainPage.xaml`.
+1. V **Průzkumník řešení**otevřete `MainPage.xaml` .
 
 1. V zobrazení jazyka XAML návrháře nahraďte celý obsah následujícím fragmentem kódu, který definuje uživatelské rozhraní základní:
 
@@ -83,9 +83,9 @@ Pojďme přidat kód, který funguje jako kostra pro náš projekt.
 
 Zobrazení Návrh se aktualizuje a zobrazí se uživatelské rozhraní aplikace.
 
-1. V **Průzkumník řešení**otevřete zdrojový soubor `MainPage.xaml.cs`kódu na pozadí. (Je seskupena pod `MainPage.xaml`.) Obsah tohoto souboru nahraďte níže, která zahrnuje:
+1. V **Průzkumník řešení**otevřete zdrojový soubor kódu na pozadí `MainPage.xaml.cs` . (Je seskupena pod `MainPage.xaml` .) Obsah tohoto souboru nahraďte níže, která zahrnuje:
 
-- `using`příkazy pro `Speech` obory `Speech.Dialog` názvů a
+- `using`příkazy pro `Speech` `Speech.Dialog` obory názvů a
 - Jednoduchá implementace pro zajištění přístupu přes mikrofon, který je kabelem k obslužné rutině tlačítka
 - Základní pomocníky uživatelského rozhraní pro prezentování zpráv a chyb v aplikaci
 - Místo pro cestu inicializačního kódu, který se naplní později
@@ -259,16 +259,16 @@ Zobrazení Návrh se aktualizuje a zobrazí se uživatelské rozhraní aplikace.
         }
     }
     ```
-1. Do těla metody přidejte následující fragment kódu `InitializeDialogServiceConnector`. Tento kód vytvoří `DialogServiceConnector` informace o vašem předplatném.
+1. Do těla metody přidejte následující fragment kódu `InitializeDialogServiceConnector` . Tento kód vytvoří `DialogServiceConnector` informace o vašem předplatném.
 
     ```csharp
     // Create a BotFrameworkConfig by providing a Speech service subscription key
-    // the RecoLanguage property is optional (default en-US)
+    // the botConfig.Language property is optional (default en-US)
     const string speechSubscriptionKey = "YourSpeechSubscriptionKey"; // Your subscription key
     const string region = "YourServiceRegion"; // Your subscription service region.
 
     var botConfig = BotFrameworkConfig.FromSubscription(speechSubscriptionKey, region);
-    botConfig.SetProperty(PropertyId.SpeechServiceConnection_RecoLanguage, "en-US");
+    botConfig.Language = "en-US";
     connector = new DialogServiceConnector(botConfig);
     ```
 
@@ -280,7 +280,7 @@ Zobrazení Návrh se aktualizuje a zobrazí se uživatelské rozhraní aplikace.
 
 1. Nahraďte řetězce `YourSpeechSubscriptionKey` a `YourServiceRegion` vlastními hodnotami pro vaše předplatné a [oblast](~/articles/cognitive-services/speech-service/regions.md)řeči.
 
-1. Přidejte následující fragment kódu na konec těla metody `InitializeDialogServiceConnector`. Tento kód nastaví obslužné rutiny pro události, které `DialogServiceConnector` se spoléhaly na, aby komunikovaly své aktivity robota, výsledky rozpoznávání řeči a další informace.
+1. Přidejte následující fragment kódu na konec těla metody `InitializeDialogServiceConnector` . Tento kód nastaví obslužné rutiny pro události, které se spoléhaly na `DialogServiceConnector` , aby komunikovaly své aktivity robota, výsledky rozpoznávání řeči a další informace.
 
     ```csharp
     // ActivityReceived is the main way your bot will communicate with the client 
@@ -335,7 +335,7 @@ Zobrazení Návrh se aktualizuje a zobrazí se uživatelské rozhraní aplikace.
     };
     ```
 
-1. Do těla `ListenButton_ButtonClicked` metody ve `MainPage` třídě přidejte následující fragment kódu. Tento kód nastaví, `DialogServiceConnector` aby naslouchal, protože už jste navázali konfiguraci a zaregistrovali obslužné rutiny událostí.
+1. Do těla metody ve třídě přidejte následující fragment kódu `ListenButton_ButtonClicked` `MainPage` . Tento kód nastaví `DialogServiceConnector` , aby naslouchal, protože už jste navázali konfiguraci a zaregistrovali obslužné rutiny událostí.
 
     ```csharp
     if (connector == null)
@@ -368,9 +368,9 @@ Zobrazení Návrh se aktualizuje a zobrazí se uživatelské rozhraní aplikace.
 
 Teď jste připraveni vytvořit aplikaci a otestovat vlastní hlasový asistent pomocí služby Speech.
 
-1. V řádku nabídek vyberte **sestavení** > sestavit**řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
+1. V řádku nabídek vyberte sestavení sestavit **Build**  >  **řešení** a sestavte aplikaci. Kód by se teď měl zkompilovat bez chyb.
 
-1. Zvolte **ladění** > **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci. Zobrazí se okno **HelloWorld** .
+1. Zvolte **ladění**  >  **Spustit ladění** (nebo stiskněte klávesu **F5**) a spusťte aplikaci. Zobrazí se okno **HelloWorld** .
 
    ![Ukázka aplikace hlasového asistenta UWP v C# – rychlý Start](~/articles/cognitive-services/Speech-Service/media/sdk/qs-voice-assistant-uwp-helloworld-window.png)
 

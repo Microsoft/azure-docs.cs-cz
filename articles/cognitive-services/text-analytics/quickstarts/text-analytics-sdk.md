@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 05/25/2020
+ms.date: 06/11/2020
 ms.author: aahi
 ms.custom: tracking-python
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: be9b82b411d8ba76f0b592cb25e7ff70917b934f
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: c475c17e5d196c0eedf38df83f782309143ad979
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84605472"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735534"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Rychlý Start: použití klientské knihovny Analýza textu
 
@@ -33,7 +33,7 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 ::: zone pivot="programming-language-csharp"
 
 > [!IMPORTANT]
-> * Nejnovější stabilní verze Analýza textu Klientská knihovna `3.0` .
+> * Nejnovější stabilní verze rozhraní API pro analýzu textu je `3.0` .
 >    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
 
@@ -44,7 +44,7 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 ::: zone pivot="programming-language-java"
 
 > [!IMPORTANT]
-> * Nejnovější stabilní verze Analýza textu Klientská knihovna `3.0` .
+> * Nejnovější stabilní verze rozhraní API pro analýzu textu je `3.0` .
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
@@ -54,7 +54,7 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 ::: zone pivot="programming-language-javascript"
 
 > [!IMPORTANT]
-> * Nejnovější stabilní verze Analýza textu Klientská knihovna `3.0` .
+> * Nejnovější stabilní verze rozhraní API pro analýzu textu je `3.0` .
 >    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže.
 > * Tuto verzi klientské knihovny Analýza textu můžete také spustit [v prohlížeči](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md).
@@ -66,7 +66,7 @@ Použijte klientskou knihovnu Analýza textu k provedení těchto akcí:
 ::: zone pivot="programming-language-python"
 
 > [!IMPORTANT]
-> * Nejnovější stabilní verze Analýza textu Klientská knihovna `3.0` .
+> * Nejnovější stabilní verze rozhraní API pro analýzu textu je `3.0` .
 >    * Nezapomeňte pouze postupovat podle pokynů pro verzi, kterou používáte.
 > * Kód v tomto článku používá synchronní metody a nezabezpečené úložiště přihlašovacích údajů z důvodů jednoduchosti. Pro produkční scénáře doporučujeme použití dávkových asynchronních metod pro výkon a škálovatelnost. Další informace najdete v referenční dokumentaci níže. 
 
@@ -83,7 +83,7 @@ Pokud jste na tuto kartu klikli, pravděpodobně jste v oblíbeném programovac�
 | Jazyk | Dostupná verze | 
 |----------|------------------------|
 | Ruby     | [Verze 2,1](ruby-sdk.md) | 
-| Přejít       | [Verze 2,1](go-sdk.md) | 
+| Go       | [Verze 2,1](go-sdk.md) | 
 
 ::: zone-end
 

@@ -1,20 +1,20 @@
 ---
-title: 'Rychlý Start: Klientská knihovna Analýza textu v3 pro Node. js | Microsoft Docs'
-description: Začínáme s klientskou knihovnou V3 Analýza textu pro Node. js
+title: 'Rychlý Start: Klientská knihovna Analýza textu v3 pro Node.js | Microsoft Docs'
+description: Začínáme s klientskou knihovnou V3 Analýza textu pro Node.js
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: include
-ms.date: 03/12/2020
+ms.date: 06/11/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 0d2a4a8338880dc8063d6a3f088c0cd44e314e43
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 7f25c9c500615f376ffe2fee2483fbfbdc03f3b8
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84140696"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735535"
 ---
 <a name="HOLTop"></a>
 
@@ -32,7 +32,7 @@ ms.locfileid: "84140696"
 ## <a name="prerequisites"></a>Požadavky
 
 * Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
-* Aktuální verze [Node. js](https://nodejs.org/).
+* Aktuální verze [Node.js](https://nodejs.org/).
 * Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title=" vytvořte prostředek analýza textu vytvoření prostředku "  target="_blank"> Analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
     * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
     * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
@@ -61,7 +61,7 @@ npm init
 Instalace `@azure/ai-text-analytics` balíčků npm:
 
 ```console
-npm install --save @azure/ai-text-analytics@1.0.0-preview.5
+npm install --save @azure/ai-text-analytics@1.0.0
 ```
 
 > [!TIP]
