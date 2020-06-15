@@ -97,6 +97,8 @@
           href: budget.md
         - name: Použití privátních koncových bodů s účty Batch
           href: private-connectivity.md
+        - name: Konfigurace klíčů spravovaných zákazníkem
+          href: batch-customer-managed-key.md
     - name: Ověřování pomocí Azure AD
       items:
         - name: Azure AD se službou Batch

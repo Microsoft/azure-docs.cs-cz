@@ -122,11 +122,9 @@
     - name: ukázky
       href: analysis-services-samples.md
     - name: Blog týmu Analysis Services
-      href: 'https://blogs.msdn.microsoft.com/analysisservices/'
-    - name: Stránka s dotazy ohledně Azure Analysis Services na Microsoft Q&A
-      href: 'https://docs.microsoft.com/answers/topics/azure-analysis-services.html'
-    - name: Plány Azure do budoucna
-      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+      href: 'https://powerbi.microsoft.com/blog/category/analysis-services/'
+    - name: Aktualizace Azure
+      href: 'https://azure.microsoft.com/updates/?query=Analysis%20Services'
     - name: Stav Azure
       href: 'https://azure.microsoft.com/status/'
     - name: Váš názor
