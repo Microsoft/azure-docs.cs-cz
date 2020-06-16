@@ -198,8 +198,6 @@
       href: security-center-features-retirement-july2019.md
     - name: Vyhodnocení ochrany koncových bodů a doporučení
       href: security-center-endpoint-protection.md
-    - name: Bezpečnostní skóre (starší verze)
-      href: security-center-secure-score.md
 - name: Zdroje a prostředky
   items:
     - name: Získávání dovedností pomocí Microsoft Learn

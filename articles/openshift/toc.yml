@@ -70,14 +70,14 @@
 - name: Referenční informace
   items:
     - name: Rozhraní příkazového řádku platformy Azure Red Hat OpenShift
-      href: /cli/azure/openshift
+      href: /cli/azure/aro
     - name: Rozhraní REST API platformy Azure Red Hat OpenShift
       href: /rest/api/openshift
 - name: Zdroje a prostředky
   items:
     - name: Nejčastější dotazy
       href: openshift-faq.md
-    - name: Odstraňování potíží
+    - name: Řešení potíží
       href: troubleshoot.md
     - name: Podporované prostředky pro Azure Red Hat OpenShift 3.11
       href: supported-resources.md
