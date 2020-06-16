@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.author: trbye
-ms.openlocfilehash: cc19844c6407a83233c70048e9eb258a742036fb
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: a333a61a28fabddc2e8101fdf3290c52f3db59ae
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84635165"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84780881"
 ---
 # <a name="what-is-the-azure-speaker-recognition-service"></a>Co je služba Azure rozpoznávání mluvčího?
 
@@ -55,6 +55,20 @@ Data zápisu mluvčího se ukládají do zabezpečeného systému, včetně zvuk
 Určujete, jak dlouho se mají uchovávat data. Můžete vytvářet, aktualizovat a odstraňovat registrační data pro jednotlivé reproduktory prostřednictvím volání rozhraní API. Po odstranění odběru se odstraní také všechna data registrace mluvčího, která jsou přidružená k tomuto předplatnému. 
 
 Stejně jako u všech Cognitive Servicesch prostředků musí vývojáři, kteří používají službu rozpoznávání mluvčího, znát zásady společnosti Microsoft týkající se zákaznických dat. Měli byste se ujistit, že jste obdrželi příslušná oprávnění od uživatelů pro rozpoznávání mluvčího. Další informace najdete na [stránce Cognitive Services](https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/)   na webu Microsoft Trust Center. 
+
+## <a name="common-questions-and-solutions"></a>Běžné dotazy a řešení
+
+| Otázka | Řešení |
+|---------|----------|
+| K jakým scénářům se dá rozpoznávání mluvčího použít? | Ověření zákazníka centra volání, ohlášení hlasu pacientům, přepis schůzky, přizpůsobení zařízení pro více uživatelů|
+| Jaký je rozdíl mezi identifikací a ověřováním? | Identifikace je proces zjišťování, který člen ze skupiny mluvčích mluví. Ověření je potvrzení, že mluvčí odpovídá známému nebo **zaregistrovanému** hlasu.|
+| Jaký je rozdíl mezi ověřováním závislým na textu a nezávislým na textu? | Ověřování závislé na textu vyžaduje konkrétní předávací frázi pro zápis i rozpoznávání. Ověřování nezávislé na textu vyžaduje pro registraci delší ukázku hlasu, ale může se jednat o cokoli, co je třeba při rozpoznávání.|
+| Jaké jazyky se podporují? | Angličtina, francouzština, španělština, italština, němčina, italština, japonština a portugalština |
+| Jaké oblasti Azure jsou podporované? | Rozpoznávání mluvčího je služba ve verzi Preview, která je aktuálně dostupná jenom v Západní USA oblasti.|
+| Jaké formáty zvuku jsou podporovány? | Mono 16 bitů, 16kHz WAV s kódováním PCM |
+| Odpovědi **přijmout** a **odmítnout** nejsou přesné, jak tuto prahovou hodnotu vyladit? | Vzhledem k tomu, že se optimální prahová hodnota značně liší u scénářů, rozhraní API rozhoduje, jestli se má "přijmout" nebo "zamítnout" jednoduše na základě výchozí prahové hodnoty 0,5. Pokročilým uživatelům se doporučuje přepsat výchozí rozhodnutí a vyladit výsledek na základě vašeho vlastního scénáře. |
+| Můžete jeden mluvčí zaregistrovat několikrát? | Ano, u ověřování závislého na textu můžete zaregistrovat mluvčí až 50 časů. V případě ověření nezávislého na textu nebo identifikace mluvčího se můžete zaregistrovat až po 300 sekund zvuk. |
+| Jaká data jsou uložená v Azure? | Zvuk registrace je uložený ve službě, dokud se hlasový profil [neodstraní](speaker-recognition-basics.md#deleting-voice-profile-enrollments). Zvukové vzorky rozpoznávání nejsou uchovávány nebo uloženy. |
 
 ## <a name="next-steps"></a>Další kroky
 

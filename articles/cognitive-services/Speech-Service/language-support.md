@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: 36b653fb3c3a24f3d19408aa2c87b3b764d04ec1
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.openlocfilehash: 3e32c7d7da918eb58de47d8fc9b7688a189cb022
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/12/2020
-ms.locfileid: "84730318"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84783091"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Podpora jazyka a hlasu pro službu rozpoznávání řeči
 
@@ -312,6 +312,27 @@ Rozhraní API pro **Překlad** řeči podporuje různé jazyky pro překlad hlas
 | Vietnamština              | `vi`          |
 | Velština                   | `cy`          |
 | Yucatec Maya            | `yua`         |
+
+## <a name="speaker-recognition"></a>Rozpoznávání mluvčího
+
+V následující tabulce najdete podporované jazyky pro různá rozhraní API rozpoznávání mluvčího. Další informace o rozpoznávání mluvčího najdete v tématu [Přehled](speaker-recognition-overview.md) .
+
+| Národní prostředí | Jazyk | Ověřování závislé na textu | Ověřování nezávislé na textu | Identifikace nezávislá na textu |
+|----|----|----|----|----|
+| cs-CZ | Angličtina (USA) | ano | ano | ano |
+|zh-CN  |Čínština (Mandarin, zjednodušená)|    Není k dispozici|    ano|    ano|
+|de-DE  |němčina (Německo)   |Není k dispozici    |ano    |ano|
+|en-GB  |Angličtina (Spojené království)   |Není k dispozici    |ano    |ano|
+|fr-FR  |francouzština (Francie)    |Není k dispozici    |ano    |ano|
+|EN-AU  |Angličtina (Austrálie)    |Není k dispozici    |ano    |ano|
+|en-CA  |Angličtina (Kanada)   |Není k dispozici|   ano|    ano|
+|fr – CA  |Francouzština (Kanada)    |Není k dispozici    |ano|   ano|
+|it-IT  |Italština|   Není k dispozici |ano|   ano|
+|es-ES| Španělština (Španělsko) |Není k dispozici    |ano|   ano|
+|ES – MX  |Španělština (Mexiko)   |Není k dispozici|   ano|    ano|
+|ja-JP| Japonština    |Není k dispozici    |ano    |ano|
+|pt-BR| Portugalština (Brazílie)|    Není k dispozici|    ano|    ano|
+|ko-KR| Korejština  |Není k dispozici    |ano|   ano|
 
 ## <a name="next-steps"></a>Další kroky
 

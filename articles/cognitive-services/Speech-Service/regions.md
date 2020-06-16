@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: panosper
 ms.custom: seodec18
-ms.openlocfilehash: 560575ca7f51218e472abecb4319f4a3db69b1ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 27e26bb37b444b49797d46dd4e12b61f8fe11b16
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220465"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782530"
 ---
 # <a name="speech-service-supported-regions"></a>Oblasti podporované službou Speech
 
@@ -38,7 +38,7 @@ Služba Speech je v těchto oblastech dostupná pro **rozpoznávání řeči**, 
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
-Použijete-li [sadu Speech SDK](speech-sdk.md), oblasti jsou určeny **identifikátorem oblasti** (například jako parametr `SpeechConfig.FromSubscription`). Ujistěte se, že je oblast shodná s oblastí vašeho předplatného.
+Použijete-li [sadu Speech SDK](speech-sdk.md), oblasti jsou určeny **identifikátorem oblasti** (například jako parametr `SpeechConfig.FromSubscription` ). Ujistěte se, že je oblast shodná s oblastí vašeho předplatného.
 
 ### <a name="intent-recognition"></a>Rozpoznávání záměru
 
@@ -75,6 +75,10 @@ Toto je podmnožina oblastí publikování, které podporuje [služba Language U
 | Severní Evropa   | `northeurope`        |
 | Jihovýchodní Asie | `southeastasia`      |
 
+### <a name="speaker-recognition"></a>Rozpoznávání mluvčího
+
+Rozpoznávání mluvčího je aktuálně k dispozici pouze v `westus` oblasti.
+
 ## <a name="rest-apis"></a>Rozhraní REST API
 
 Služba Speech také zpřístupňuje koncové body REST pro požadavky řeči na text a převod textu na řeč.
@@ -94,7 +98,7 @@ Nahraďte `<REGION_IDENTIFIER>` identifikátorem, který odpovídá oblasti vaš
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-region-identifier.md)]
 
 > [!NOTE]
-> Parametr Language se musí připojit k adrese URL, aby nedošlo k 4xx chybě HTTP. Například jazyk nastavený na AMERICKou angličtinu pomocí Západní USAho koncového bodu je: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US`.
+> Parametr Language se musí připojit k adrese URL, aby nedošlo k 4xx chybě HTTP. Například jazyk nastavený na AMERICKou angličtinu pomocí Západní USAho koncového bodu je: `https://westus.stt.speech.microsoft.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US` .
 
 ### <a name="text-to-speech"></a>Převod textu na řeč
 
