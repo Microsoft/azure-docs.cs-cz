@@ -107,3 +107,13 @@
               href: pim-resource-roles-perform-access-review.md
             - name: Dokončení kontroly přístupu
               href: pim-resource-roles-complete-access-review.md
+- name: Referenční informace
+  items:
+    - name: Graph API
+      href: 'https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview'
+    - name: Azure AD CLI
+      href: 'https://docs.microsoft.com/cli/azure/ad'
+    - name: Azure AD PowerShell pro Graph
+      href: 'https://docs.microsoft.com/powershell/azure/active-directory/install-adv2?view=azureadps-2.0'
+    - name: Omezení služby Azure AD
+      href: ../users-groups-roles/directory-service-limits-restrictions.md
