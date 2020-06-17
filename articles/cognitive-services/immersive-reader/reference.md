@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 879834567b6905a070aada3dae2a41a672635c6c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 5b1471cc43fc506ca798e81ac8e35a5051278ee0
+ms.sourcegitcommit: 34eb5e4d303800d3b31b00b361523ccd9eeff0ab
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267235"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84907376"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>Referenční příručka k sadě pro moderní čtečku SDK
 
@@ -111,7 +111,7 @@ Jeden blok dat, který se předává do obsahu moderního čtecího zařízení.
 
 ### <a name="launchresponse"></a>LaunchResponse
 
-Obsahuje odpověď od volání `ImmersiveReader.launchAsync` .
+Obsahuje odpověď od volání `ImmersiveReader.launchAsync` . Všimněte si, že odkaz na `iframe` , který obsahuje moderní čtečku, je k dispozici prostřednictvím `container.firstChild` .
 
 ```typescript
 {
@@ -134,8 +134,8 @@ enum CookiePolicy { Disable, Enable }
 | --------- | ----------- |
 | Text/prostý | Prostý text. |
 | text/html | Obsah HTML. [Další informace](#html-support)|
-| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Další informace](./how-to/display-math.md).
-| application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Dokument formátu Microsoft Word. docx.
+| Application/MathML + XML | Jazyk MathML (Matematická Markup Language). [Přečtěte si další informace](./how-to/display-math.md).
+| aplikace/vnd.openxmlformats-officedocument.wordprocessingml.document | Dokument formátu Microsoft Word. docx.
 
 ### <a name="html-support"></a>Podpora HTML
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 06/10/2020
 ms.author: swmachan
-ms.openlocfilehash: 7ddf556be584603ce3e7cb4a97eb4cc9ff63ec68
-ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
+ms.openlocfilehash: 4e4200e291db81ff759e21eac5b1a9b785b5657f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/11/2020
-ms.locfileid: "84718440"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888306"
 ---
 # <a name="language-and-region-support-for-text-and-speech-translation"></a>Podpora jazyků a oblastí pro převod textu a řeči
 
@@ -186,7 +186,7 @@ Metoda přepisu podporuje následující jazyky. V "do/z", "<-->" označuje, že
 | Jazyk    | Kód jazyka | Skript | Směr | Skript|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabština | `ar` | Arabština`Arab` | <--> | Znak`Latn` |
-|Bengálština  | `bn` | Bengálština`Beng` | <--> | Znak`Latn` |
+| Bengálština  | `bn` | Bengálština`Beng` | <--> | Znak`Latn` |
 | Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština`Hans`| <--> | Znak`Latn` |
 | Čínština (zjednodušená) | `zh-Hans` | Zjednodušená čínština`Hans`| <--> | Tradiční čínština`Hant`|
 | Čínština (tradiční) | `zh-Hant` | Tradiční čínština`Hant`| <--> | Znak`Latn` |
@@ -198,7 +198,7 @@ Metoda přepisu podporuje následující jazyky. V "do/z", "<-->" označuje, že
 | Kannadština | `kn` | Kannadština`Knda` | --> | Znak`Latn` |
 | Malajalámština | `ml` | Malajalámština`Mlym` | --> | Znak`Latn` |
 | Maráthština | `mr` | Koncový`Deva` | --> | Znak`Latn` |
-| Krí | `or` | Krí`Orya` | <--> | Znak`Latn` |
+| Udijština | `or` | Krí`Orya` | <--> | Znak`Latn` |
 | Paňdžábština | `pa` | Západní`Guru`  | <--> | Znak`Latn`  |
 | Srbština (cyrilice) | `sr-Cyrl` | B`Cyrl`  | --> | Znak`Latn` |
 | Srbština (latinka) | `sr-Latn` | Znak`Latn` | --> | B`Cyrl`|

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 04/30/2020
 ms.author: aahi
-ms.openlocfilehash: 04fb080d09b1945add7340db081ab49dd017731d
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 637c2bb1bc37d26dcdf1a169b2f5d20766d0a27f
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84637520"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84902650"
 ---
 > [!NOTE]
 > Ke zjištění `PHI` použijte `domain=phi` parametr a verzi modelu `2020-04-01` nebo novější.
@@ -40,7 +40,7 @@ Při odesílání požadavků do koncového bodu se vrátí následující kateg
 | DateTime | Datum | Kalendářní data kalendáře | `2019-10-01` | Také vrácen s `domain=phi` . |
 | Množství | Není k dispozici | Čísla a číselná množství. | `2019-10-01` |  |
 | Množství | Věk | Ve věku. | `2019-10-01` | | |
-| Mezinárodní klasifikace nemocí (ICD – 10 – CM) | Není k dispozici | Entity týkající se mezinárodní klasifikace nemocí, deváté revize.   | `2020-04-01` | |
+| Mezinárodní klasifikace nemocí (ICD – 9-CM) | Není k dispozici | Entity týkající se mezinárodní klasifikace nemocí, deváté revize.   | `2020-04-01` | |
 | Mezinárodní klasifikace nemocí (ICD – 10 – CM) | Není k dispozici | Entity týkající se mezinárodní klasifikace nemocí a desáté revize.    | `2020-04-01` | |
 
 ## <a name="azure-information"></a>Informace o Azure
