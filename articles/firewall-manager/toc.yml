@@ -24,7 +24,7 @@
       href: secured-virtual-hub.md
     - name: Obecný proces nasazení
       href: deployment-overview.md
-    - name: Důvěryhodní partneři pro zabezpečení
+    - name: Poskytovatelé partnerů pro zabezpečení
       href: trusted-security-partners.md
     - name: Logika zpracování pravidel
       href: rule-processing.md
@@ -32,7 +32,7 @@
       href: vhubs-and-vnets.md
 - name: Návody
   items:
-    - name: Nasazení důvěryhodných partnerů pro zabezpečení
+    - name: Nasazení poskytovatelů partnerů pro zabezpečení
       href: deploy-trusted-security-partner.md
     - name: Migrace na zásady firewallu – PowerShell
       href: migrate-to-policy.md

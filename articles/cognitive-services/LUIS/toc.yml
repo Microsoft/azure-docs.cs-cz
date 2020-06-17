@@ -52,7 +52,7 @@
           href: luis-tutorial-pattern.md
     - name: Použití s robotem
       items:
-        - name: 'Pomocí jazyka C#'
+        - name: Pomocí jazyka C#
           href: luis-csharp-tutorial-bf-v4.md
           displayName: 'bot framework, framework, sdk, abs'
         - name: Pomocí Node.js
@@ -125,6 +125,14 @@
         - name: Strategie návrhu
           href: luis-concept-enterprise.md
           displayName: import
+    - name: Použití postupů DevOps s LUIS
+      items:
+        - name: Správa zdrojového kódu a strategie větvení pro LUIS
+          href: luis-concept-devops-sourcecontrol.md
+        - name: Testování pro DevOps
+          href: luis-concept-devops-testing.md
+        - name: Pracovní postupy CI/CD
+          href: luis-concept-devops-automation.md
 - name: Návody
   items:
     - name: Vytvoření nové aplikace
@@ -238,11 +246,13 @@
         - name: Omezení kontejnerů
           href: luis-container-limitations.md
           displayName: 'phrase list recommendations, multi-language, translator, locale, language, English, Chinese, French, German, Italian, Korean, Portuguese, Spanish, Turkish, Keigo, subculture, dictation, speech, Bing Spell Check, foreign words, Hybrid languages, Tokenization, space, special character, compound words, tokens'
+    - name: Použití DevOps
+      href: luis-how-to-devops-with-github.md
     - name: Související služby
       items:
         - name: Azure Bot Service
           href: 'https://dev.botframework.com/'
-        - name: 'Bot Builder 4.x SDK C#'
+        - name: Bot Builder 4.x SDK C#
           href: 'https://github.com/Microsoft/botbuilder-dotnet'
         - name: QnA Maker
           href: 'https://qnamaker.ai/'
@@ -284,7 +294,7 @@
               href: luis-reference-response-codes.md
         - name: Sady SDK
           items:
-            - name: 'C#'
+            - name: C#
               items:
                 - name: NuGet – vytváření obsahu
                   href: 'https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/'

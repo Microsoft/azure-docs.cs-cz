@@ -66,6 +66,8 @@
   items:
     - name: Ověření
       items:
+        - name: Ověřování pro Key Vault
+          href: authentication.md
         - name: Použití spravované identity služby App Service
           href: managed-identity.md
         - name: Použití zásad řízení přístupu
@@ -123,7 +125,7 @@
     - name: Běžné parametry a záhlaví
       href: common-parameters-and-headers.md
     - name: Azure PowerShell
-      href: '/powershell/module/az.keyvault/?view=azps-1.2.0#key_vault'
+      href: /powershell/module/az.keyvault/?view=azps-1.2.0#key_vault
     - name: Azure CLI
       href: /cli/azure/keyvault
     - name: .NET
