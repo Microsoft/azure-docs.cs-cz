@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-news-search
 ms.topic: quickstart
-ms.date: 05/22/2020
+ms.date: 06/16/2020
 ms.author: aahi
 ms.custom: seodec2018, tracking-python
-ms.openlocfilehash: 37571113be715c7eb6b120aa592b5a2422a08ad8
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 534310609b1d2f375feef81fe45147485216d5ec
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84609994"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84883727"
 ---
 # <a name="quickstart-perform-a-news-search-using-python-and-the-bing-news-search-rest-api"></a>Rychlý Start: provedení hledání zpráv pomocí Pythonu a Vyhledávání zpráv Bingu REST API
 
@@ -60,7 +60,7 @@ params  = {"q": search_term, "textDecorations": True, "textFormat": "HTML"}
     ```python
     response = requests.get(search_url, headers=headers, params=params)
     response.raise_for_status()
-    search_results = response.json()
+    search_results = json.dumps(response.json())
     ```
 
 2. Přístup k popisům článků obsažených v odpovědi z rozhraní API, které je uloženo v `search_results` podobě objektu JSON. 

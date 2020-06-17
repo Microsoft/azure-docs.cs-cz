@@ -1,3 +1,5 @@
+- name: Velikost virtuálních počítačů
+  href: vm-sizes.md
 - name: Mapování materiálu pro formáty modelů
   href: material-mapping.md
 - name: Oblasti

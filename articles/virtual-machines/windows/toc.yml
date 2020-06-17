@@ -493,6 +493,8 @@
               href: ../linux/image-builder-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: Použití Azure CLI
               href: image-builder.md
+            - name: Použití Azure Powershell
+              href: image-builder-powershell.md
             - name: Sestavení pro galerie imagí
               href: image-builder-gallery.md
             - name: Aktualizace existující image
