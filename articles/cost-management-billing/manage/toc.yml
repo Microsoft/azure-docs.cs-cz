@@ -41,10 +41,10 @@
           href: mca-section-invoice.md
         - name: Nastavení fakturačního účtu pro Smlouvu se zákazníkem Microsoftu
           href: mca-setup-account.md
-        - name: Registrace s použitím účtu Office 365
-          href: office-365-account-for-azure-subscription.md
-        - name: Registrace Office 365 pomocí účtu Azure
-          href: azure-account-for-office-365-subscription.md
+        - name: Registrace pomocí účtu Microsoft 365
+          href: microsoft-365-account-for-azure-subscription.md
+        - name: Registrace pro Microsoft 365 pomocí účtu Azure
+          href: azure-account-for-microsoft-365-subscription.md
         - name: Platba s využitím silného ověřování zákazníků
           href: open-banking-strong-customer-authentication.md
     - name: Správa předplatných

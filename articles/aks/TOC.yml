@@ -24,27 +24,6 @@
       items:
         - name: Vývoj s využitím Helmu
           href: quickstart-helm.md
-        - name: Azure Dev Spaces
-          expanded: true
-          items:
-            - name: Použití Azure Dev Spaces pro týmový vývoj
-              href: ../dev-spaces/quickstart-team-development.md
-              maintainContext: true
-            - name: Použití editoru Visual Studio Code
-              href: ../dev-spaces/quickstart-netcore.md
-              maintainContext: true
-            - name: Použití sady Visual Studio
-              href: ../dev-spaces/quickstart-netcore-visualstudio.md
-              maintainContext: true
-            - name: Použití rozhraní příkazového řádku
-              href: ../dev-spaces/quickstart-cli.md
-              maintainContext: true
-            - name: Použití Azure Dev Spaces s Javou
-              href: ../dev-spaces/quickstart-java.md
-              maintainContext: true
-            - name: Použití Azure Dev Spaces Node.js
-              href: ../dev-spaces/quickstart-nodejs.md
-              maintainContext: true
 - name: Kurzy
   items:
     - name: 1. Příprava aplikace pro AKS
@@ -302,54 +281,10 @@
           href: 'https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/optimize-windows-dockerfile?context=/azure/aks/context/aks-context'
     - name: Vývoj a spouštění aplikací
       items:
-        - name: Vývoj s využitím Dev Spaces
-          href: ../dev-spaces/azure-dev-spaces.md
-          maintainContext: true
-          items:
-            - name: Java (VS Code a CLI)
-              items:
-                - name: 1. Začínáme
-                  href: ../dev-spaces/get-started-java.md
-                  maintainContext: true
-                - name: 2. Vývoj více služeb
-                  href: ../dev-spaces/multi-service-java.md
-                  maintainContext: true
-                - name: 3. Týmový vývoj
-                  href: ../dev-spaces/team-development-java.md
-                  maintainContext: true
-            - name: .NET Core (VS Code a CLI)
-              items:
-                - name: 1. Začínáme
-                  href: ../dev-spaces/get-started-netcore.md
-                  maintainContext: true
-                - name: 2. Vývoj více služeb
-                  href: ../dev-spaces/multi-service-netcore.md
-                  maintainContext: true
-                - name: 3. Týmový vývoj
-                  href: ../dev-spaces/team-development-netcore.md
-                  maintainContext: true
-            - name: .NET Core (Visual Studio 2017)
-              items:
-                - name: 1. Začínáme
-                  href: ../dev-spaces/get-started-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 2. Vývoj více služeb
-                  href: ../dev-spaces/multi-service-netcore-visualstudio.md
-                  maintainContext: true
-                - name: 3. Týmový vývoj
-                  href: ../dev-spaces/team-development-netcore-visualstudio.md
-                  maintainContext: true
-            - name: Node.js (VS Code a CLI)
-              items:
-                - name: 1. Začínáme
-                  href: ../dev-spaces/get-started-nodejs.md
-                  maintainContext: true
-                - name: 2. Vývoj více služeb
-                  href: ../dev-spaces/multi-service-nodejs.md
-                  maintainContext: true
-                - name: 3. Týmový vývoj
-                  href: ../dev-spaces/team-development-nodejs.md
-                  maintainContext: true
+        - name: Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code (Preview)
+          href: ../dev-spaces/how-to/local-process-kubernetes-vs-code.md
+        - name: Použití místního procesu s Kubernetes s využitím sady Visual Studio (Preview)
+          href: ../dev-spaces/how-to/local-process-kubernetes-visual-studio.md
         - name: Instalace existujících aplikací s využitím Helmu
           href: kubernetes-helm.md
         - name: Použití OpenFaaS

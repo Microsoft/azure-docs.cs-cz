@@ -23,6 +23,8 @@
           href: b2b-tutorial-require-mfa.md
     - name: ukázky
       items:
+        - name: Ukázky pro samoobslužnou registraci
+          href: code-samples-self-service-sign-up.md
         - name: Ukázky kódu a Azure PowerShellu
           href: code-samples.md
     - name: Koncepty

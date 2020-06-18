@@ -4,6 +4,10 @@
   items:
     - name: Informace o protokolu Kubernetes s podporou Azure Arc
       href: overview.md
+- name: ukázky
+  items:
+    - name: Integrované služby Azure Policy
+      href: ./policy-samples.md
 - name: Návody
   items:
     - name: Operace clusteru

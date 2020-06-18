@@ -41,9 +41,9 @@
           items:
             - name: Ověřování a autorizace
               href: time-series-insights-authentication-and-authorization.md
-            - name: 'Dotazování dat pomocí jazyka C#'
+            - name: Dotazování dat pomocí jazyka C#
               href: time-series-insights-query-data-csharp.md
-            - name: 'Správa referenčních dat v jazyce C#'
+            - name: Správa referenčních dat v jazyce C#
               href: time-series-insights-manage-reference-data-csharp.md
             - name: Sdílení vlastního zobrazení
               href: time-series-insights-parameterized-urls.md
@@ -65,7 +65,7 @@
           items:
             - name: Ověřování a autorizace
               href: time-series-insights-authentication-and-authorization.md
-            - name: 'Dotazování dat pomocí jazyka C#'
+            - name: Dotazování dat pomocí jazyka C#
               href: time-series-insights-update-query-data-csharp.md
             - name: Integrace Power BI
               href: concepts-power-bi.md
@@ -111,6 +111,12 @@
           href: time-series-insights-update-how-to-shape-events.md
         - name: Připojení k Power BI
           href: how-to-connect-power-bi.md
+- name: Zásadní změny
+  items:
+    - name: Azure Time Series Insights verze Preview
+      items:
+        - name: Přidání podpory pro datový typ Long
+          href: time-series-insights-long-data-type.md
 - name: Referenční informace
   items:
     - name: Time Series Insights

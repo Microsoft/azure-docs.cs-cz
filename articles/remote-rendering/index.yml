@@ -9,12 +9,12 @@ metadata:
   author: florianborn71
   ms.author: flborn
   ms.date: 03/26/2020
-  ms.openlocfilehash: 9f27118bfe3e01ce8d1cfc8c60c46c416b39c846
-  ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+  ms.openlocfilehash: 265c4087dbb93bc429cf61ebbeab13dc18c83353
+  ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 05/28/2020
-  ms.locfileid: "84142125"
+  ms.lasthandoff: 06/16/2020
+  ms.locfileid: "84808935"
 landingContent:
 - title: Informace o službě Azure Remote Rendering
   linkLists:
@@ -52,6 +52,8 @@ landingContent:
       url: quickstarts/deploy-to-hololens.md
     - text: Nasazení ukázky Unity do Desktopu
       url: quickstarts/deploy-to-desktop.md
+    - text: Nasazení nativní ukázky C++ do HoloLens
+      url: quickstarts/native-cpp/hololens/deploy-native-cpp-tutorial.md
     - text: Převod modelu pro vykreslování
       url: quickstarts/convert-model.md
 - title: Další informace o vytvoření vlastní aplikace

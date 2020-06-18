@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: anomaly-detector
 ms.topic: tutorial
-ms.date: 03/05/2020
+ms.date: 06/17/2020
 ms.author: aahi
-ms.openlocfilehash: 1b486aaf0ce33e31433c2c3d0f7a1ff2c7089132
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 67a17373bb161e54493974ebf01e785bb1329087
+ms.sourcegitcommit: 51977b63624dfd3b4f22fb9fe68761d26eed6824
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78402663"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84944810"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Kurz: vizualizace anomálií pomocí zjišťování dávek a Power BI
 
@@ -32,8 +32,8 @@ V tomto kurzu se naučíte:
 * [Předplatné Azure](https://azure.microsoft.com/free/)
 * [Microsoft Power BI Desktop](https://powerbi.microsoft.com/get-started/), k dispozici zdarma.
 * Excelový soubor (. xlsx), který obsahuje datové body časové řady. Ukázková data pro tento rychlý Start najdete na [GitHubu](https://go.microsoft.com/fwlink/?linkid=2090962) .
-* Jakmile budete <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="mít předplatné Azure, vytvořte prostředek analýza textu vytvoření prostředku"  target="_blank">analýza textu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. 
-    * K připojení aplikace k rozhraní API pro analýzu textu budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
+* Jakmile budete mít předplatné Azure, <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAnomalyDetector"  title=" vytvořte prostředek pro detekci anomálií "  target="_blank"> vytvořením prostředku detektoru anomálií <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. 
+    * K připojení aplikace k rozhraní API detektoru anomálií budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Provedete to později v rychlém startu.
 
 [!INCLUDE [cognitive-services-anomaly-detector-data-requirements](../../../../includes/cognitive-services-anomaly-detector-data-requirements.md)]
 
@@ -68,7 +68,7 @@ Ujistěte se, že je vybraný nový dotaz, a pak klikněte na **Rozšířený ed
 
 ![Obrázek tlačítka Rozšířený editor v Power BI](../media/tutorials/advanced-editor-screen.png)
 
-V Rozšířený editor použijte následující fragment kódu Power Query M k extrakci sloupců z tabulky a jejich odeslání do rozhraní API. Následně dotaz vytvoří tabulku z odpovědi JSON a vrátí ji. Nahraďte `apiKey` proměnnou platným klíčem rozhraní API detektoru anomálií `endpoint` a vaším koncovým bodem. Po zadání dotazu do Rozšířený editor klikněte na **Hotovo**.
+V Rozšířený editor použijte následující fragment kódu Power Query M k extrakci sloupců z tabulky a jejich odeslání do rozhraní API. Následně dotaz vytvoří tabulku z odpovědi JSON a vrátí ji. Nahraďte `apiKey` proměnnou platným klíčem rozhraní API detektoru anomálií a `endpoint` vaším koncovým bodem. Po zadání dotazu do Rozšířený editor klikněte na **Hotovo**.
 
 ```M
 (table as table) => let
@@ -160,11 +160,11 @@ Na pravé straně okna Power BI pod podoknem **pole** klikněte pravým tlačít
 
 ![Obrázek nové obrazovky rychlé míry](../media/tutorials/new-quick-measure.png)
 
-Na obrazovce, která se zobrazí, vyberte **filtrovaná hodnota** jako výpočet. Nastavte **základní hodnotu** na `Sum of Value`. Potom přetáhněte `IsAnomaly` z **vyvolaných polí funkce** na **Filtr**. V `True` rozevírací nabídce **Filtr** vyberte.
+Na obrazovce, která se zobrazí, vyberte **filtrovaná hodnota** jako výpočet. Nastavte **základní hodnotu** na `Sum of Value` . Potom přetáhněte `IsAnomaly` z **vyvolaných polí funkce** na **Filtr**. `True`V rozevírací nabídce **Filtr** vyberte.
 
 ![Obrázek nové obrazovky rychlé míry](../media/tutorials/new-quick-measure-2.png)
 
-Po kliknutí na **OK**budete mít `Value for True` pole na konci seznamu polí. Klikněte na něj pravým tlačítkem a přejmenujte ho na **anomálii**. Přidejte ho do **hodnot**grafu. Pak vyberte nástroj pro **formátování** a nastavte typ osy X na **kategorií**.
+Po kliknutí na **OK**budete mít pole na konci `Value for True` seznamu polí. Klikněte na něj pravým tlačítkem a přejmenujte ho na **anomálii**. Přidejte ho do **hodnot**grafu. Pak vyberte nástroj pro **formátování** a nastavte typ osy X na **kategorií**.
 
 ![Obrázek nové obrazovky rychlé míry](../media/tutorials/format-x-axis.png)
 

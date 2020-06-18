@@ -1,8 +1,14 @@
-- name: Vykreslení modelu s využitím Unity
-  href: render-model.md
-- name: Nasazení ukázky Unity do HoloLens
-  href: deploy-to-hololens.md
-- name: Nasazení ukázky Unity do Desktopu
-  href: deploy-to-desktop.md
+- name: Unity
+  items:
+    - name: Vykreslení modelu s využitím Unity
+      href: render-model.md
+    - name: Nasazení ukázky Unity do HoloLens
+      href: deploy-to-hololens.md
+    - name: Nasazení ukázky Unity do Desktopu
+      href: deploy-to-desktop.md
+- name: Nativní C++
+  items:
+    - name: Nasazení nativní ukázky C++ do HoloLens
+      href: native-cpp/hololens/deploy-native-cpp-tutorial.md
 - name: Převod modelu pro vykreslování
   href: convert-model.md

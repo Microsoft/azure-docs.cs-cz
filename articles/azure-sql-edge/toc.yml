@@ -6,6 +6,8 @@
       href: overview.md
     - name: Podporované edice a funkce
       href: features.md
+    - name: "Poznámky k\_verzi"
+      href: release-notes.md
 - name: Rychlé starty
   expanded: true
   items:

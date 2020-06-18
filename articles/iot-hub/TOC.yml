@@ -379,6 +379,8 @@
       items:
         - name: Zařízení se odpojí
           href: iot-hub-troubleshoot-connectivity.md
+        - name: Řešení potíží se směrováním zpráv
+          href: troubleshoot-message-routing.md
         - name: Řešení problémů
           items:
             - name: 400027 ConnectionForcefullyClosedOnNewConnection
@@ -416,7 +418,7 @@
     - name: Azure CLI
       href: /cli/azure/iot
     - name: Azure PowerShell
-      href: '/powershell/module/az.iothub#iot'
+      href: /powershell/module/az.iothub#iot
     - name: .NET (zařízení)
       href: /dotnet/api/microsoft.azure.devices.client
     - name: .NET (služba)
@@ -474,12 +476,12 @@
     - name: Sady Azure IoT SDK
       items:
         - name: Sady SDK pro služby IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: Sady SDK pro zařízení IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Ukázky Azure IoT
       items:
-        - name: 'C# (.NET)'
+        - name: C# (.NET)
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
         - name: Node.js
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'

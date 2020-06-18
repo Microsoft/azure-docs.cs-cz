@@ -33,6 +33,8 @@
           href: create-data-warehouse-portal.md
         - name: PowerShell
           href: create-data-warehouse-powershell.md
+        - name: Šablona ARM
+          href: quickstart-arm-template.md
     - name: Načtení dat
       items:
         - name: Příkaz COPY
