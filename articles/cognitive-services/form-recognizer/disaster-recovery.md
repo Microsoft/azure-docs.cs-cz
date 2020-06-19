@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 2e5b32421a04e09bd32d2bba21ff4faf920d84dd
-ms.sourcegitcommit: 12f23307f8fedc02cd6f736121a2a9cea72e9454
+ms.openlocfilehash: 9fb2f3374d635d8086bac5fe02ecf3b7f819ea65
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/30/2020
-ms.locfileid: "84221842"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100868"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Zálohování a obnovení modelů pro rozpoznávání formulářů
 
@@ -45,7 +45,7 @@ Proces kopírování vlastního modelu se skládá z následujících kroků:
 Následující požadavek HTTP získá autorizaci kopírování z cílového prostředku. Je nutné zadat koncový bod a klíč cílového prostředku jako záhlaví.
 
 ```
-POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization HTTP/1.1
+POST https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization HTTP/1.1
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -53,7 +53,7 @@ Dostanete `201\Created` odpověď s `modelId` hodnotou v těle. Tento řetězec 
 
 ```
 HTTP/1.1 201 Created
-Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
+Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d
 {"modelId":"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d","accessToken":"1855fe23-5ffc-427b-aab2-e5196641502f","expirationDateTimeTicks":637233481531659440}
 ```
 
@@ -62,7 +62,7 @@ Location: https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0
 Následující požadavek HTTP spustí operaci kopírování na zdrojovém prostředku. Jako hlavičku budete muset zadat koncový bod a klíč zdrojového prostředku. Všimněte si, že adresa URL požadavku obsahuje ID modelu zdrojového modelu, který chcete zkopírovat.
 
 ```
-POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
+POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copy HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -76,19 +76,29 @@ Tělo vaší žádosti musí mít následující formát. Budete muset zadat ID 
 }
 ```
 
+> [!NOTE]
+> Rozhraní API pro kopírování transparentně podporuje funkci [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) . To nevyžaduje žádné zvláštní zacházení, ale Všimněte si, že pokud kopírujete mezi nešifrovaným prostředkem do šifrovaného prostředku, je nutné zahrnout hlavičku požadavku `x-ms-forms-copy-degrade: true` . Pokud tato hlavička není zahrnutá, operace kopírování selže a vrátí `DataProtectionTransformServiceError` .
+
 Dostanete `202\Accepted` odpověď s hlavičkou umístění operace. Tato hodnota je adresa URL, kterou použijete ke sledování průběhu operace. Zkopírujte ho do dočasného umístění pro další krok.
 
 ```
 HTTP/1.1 202 Accepted
-Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1
+Operation-Location: https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1
 ```
+
+### <a name="common-errors"></a>Běžné chyby
+
+|Chyba|Řešení|
+|:--|:--|
+| 400/Chybný požadavek s`"code:" "1002"` | Indikuje chybu ověřování nebo chybně vytvořený požadavek na kopírování. Mezi běžné problémy patří: a) neplatná nebo upravená `copyAuthorization` datová část. b) hodnota pro token vypršela `expirationDateTimeTicks` ( `copyAuhtorization` datová část je platná po dobu 24 hodin). c) je neplatná nebo nepodporovaná `targetResourceRegion` . d) neplatný nebo nesprávný `targetResourceId` řetězec.
+|
 
 ## <a name="track-copy-progress"></a>Sledovat průběh kopírování
 
 Sledujte svůj průběh dotazování rozhraní API pro **výsledek získání modelu kopírování** na koncový bod zdrojového prostředku.
 
 ```
-GET https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1 HTTP/1.1
+GET https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/eccc3f13-8289-4020-ba16-9f1d1374e96f/copyresults/02989ba8-1296-499f-aaf4-55cfff41b8f1 HTTP/1.1
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -100,12 +110,22 @@ Content-Type: application/json; charset=utf-8
 {"status":"succeeded","createdDateTime":"2020-04-23T18:18:01.0275043Z","lastUpdatedDateTime":"2020-04-23T18:18:01.0275048Z","copyResult":{}}
 ```
 
+### <a name="common-errors"></a>Běžné chyby
+
+|Chyba|Řešení|
+|:--|:--|
+|"chyby": [{"Code": "AuthorizationError";<br>zpráva: "Chyba autorizace z důvodu <br>chybějící nebo neplatné deklarace identity autorizace. "}]   | Nastane, pokud se `copyAuthorization` datová část nebo obsah upraví z toho, co vrátilo `copyAuthorization` rozhraní API. Ujistěte se, že datová část je stejný přesný obsah, který byl vrácen z předchozího `copyAuthorization` volání.|
+|"chyby": [{"Code": "AuthorizationError";<br>zpráva: nepovedlo se načíst autorizaci. <br>mezipaměť. Pokud s tím budou dál problémy používat jiné <br>cílový model, do kterého se mají kopírovat. "}] | Indikuje, že se `copyAuthorization` datová část znovu používá s požadavkem Copy. Požadavek Copy, který je úspěšný, neumožní žádné další požadavky, které používají stejnou `copyAuthorization` datovou část. Pokud vyvoláte samostatnou chybu (například ty, které jsou uvedené níže), a pak znovu spustíte kopii se stejnou datovou částí autorizace, vyvolá se tato chyba. Řešením je vygenerovat novou `copyAuthorization` datovou část a pak znovu vystavit požadavek na kopírování.|
+|"chyby": [{"Code": "DataProtectionTransformServiceError";<br>zpráva: požadavek na přenos dat není povolený. <br>při přechodu na méně zabezpečené schéma ochrany dat. Podívejte se na dokumentaci nebo se obraťte na správce služby. <br>Podrobnosti. "}]    | Nastane, pokud se kopíruje mezi `AEK` povoleným prostředkem do prostředku, který není `AEK` povolený. Pokud chcete v cíli zkopírovat zašifrovaný model jako nešifrované, zadejte `x-ms-forms-copy-degrade: true` hlavičku s požadavkem Copy.|
+|"chyby": [{"Code": "ResourceResolverError";<br>"zpráva": "nelze načíst informace pro prostředek rozpoznávání s ID"... ". Zajistěte, aby byl prostředek platný a existuje v zadané oblasti ' westus2 '.. "}] | Indikuje, že prostředek Azure, který ukazuje, není `targetResourceId` platným prostředkem rozpoznávání nebo neexistuje. Pokud chcete tento problém vyřešit, ověřte a znovu vydejte požadavek Copy.|
+
+
 ### <a name="optional-track-the-target-model-id"></a>Volitelné Sledovat ID cílového modelu 
 
 Můžete také použít rozhraní API pro **získání vlastního modelu** ke sledování stavu operace dotazem cílového modelu. Zavolejte toto rozhraní API pomocí ID cílového modelu, které jste zkopírovali v prvním kroku.
 
 ```
-GET https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d HTTP/1.1
+GET https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/33f4d42c-cd2f-4e74-b990-a1aeafab5a5d HTTP/1.1
 Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
@@ -124,19 +144,19 @@ Následující fragmenty kódu pomocí oblé nastaví volání rozhraní API, kt
 ### <a name="generate-copy-authorization-request"></a>Vytvořit kopii žádosti o autorizaci
 
 ```bash
-curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" 
+curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" 
 ```
 
 ### <a name="start-copy-operation"></a>Operace zahájení kopírování
 
 ```bash
-curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0-preview/custom/models/copyAuthorization" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" --data-ascii "{ \"targetResourceId\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}\",   \"targetResourceRegion\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}\", \"copyAuthorization\": "{\"modelId\":\"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d\",\"accessToken\":\"1855fe23-5ffc-427b-aab2-e5196641502f\",\"expirationDateTimeTicks\":637233481531659440}"}"
+curl -i -X POST "https://{TARGET_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/custom/models/copyAuthorization" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {TARGET_FORM_RECOGNIZER_RESOURCE_API_KEY}" --data-ascii "{ \"targetResourceId\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_ID}\",   \"targetResourceRegion\": \"{TARGET_AZURE_FORM_RECOGNIZER_RESOURCE_REGION_NAME}\", \"copyAuthorization\": "{\"modelId\":\"33f4d42c-cd2f-4e74-b990-a1aeafab5a5d\",\"accessToken\":\"1855fe23-5ffc-427b-aab2-e5196641502f\",\"expirationDateTimeTicks\":637233481531659440}"}"
 ```
 
 ### <a name="track-copy-progress"></a>Sledovat průběh kopírování
 
 ```bash
-curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0-preview/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
+curl -i GET "https://<SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT>/formrecognizer/v2.0/custom/models/{SOURCE_MODELID}/copyResults/{RESULT_ID}" -H "Content-Type: application/json" -H "Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}"
 ```
 
 ## <a name="next-steps"></a>Další kroky

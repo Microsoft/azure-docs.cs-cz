@@ -188,6 +188,8 @@
       items:
         - name: Povolení zpětného zápisu zařízení
           href: how-to-connect-device-writeback.md
+        - name: Povolení zpětného zápisu skupin
+          href: how-to-connect-group-writeback.md
         - name: Možnosti zařízení
           href: how-to-connect-device-options.md
         - name: Další funkce ve službě Azure AD Connect

@@ -17,7 +17,7 @@
           href: prepare-buy-reservation.md
         - name: App Service
           href: prepay-app-service-isolated-stamp.md
-        - name: Rezervace Azure Cache for Redis
+        - name: Azure Cache for Redis
           href: ../../azure-cache-for-redis/cache-reserved-pricing.md?toc=/azure/cost-management-billing/reservations/toc.json
         - name: Databáze Cosmos
           href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/cost-management-billing/reservations/toc.json
@@ -52,7 +52,7 @@
         - name: Správa rezervací
           href: manage-reserved-vm-instance.md
         - name: Změna nastavení optimalizace
-          href: 'manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances'
+          href: manage-reserved-vm-instance.md#change-optimize-setting-for-reserved-vm-instances
         - name: Výměna a refundace rezervací
           href: exchange-and-refund-azure-reservations.md
     - name: Vytvoření sestavy nákladů

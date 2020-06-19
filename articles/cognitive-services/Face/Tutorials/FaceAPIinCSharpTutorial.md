@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: b4458920ec8b3e0c302f6e0654891b83ed07264f
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 633404b59581a86dc3c115f132b06d8c8165d13a
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81402894"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986505"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Kurz: Vytvoření aplikace WPF (Windows Presentation Framework) pro zobrazení obličejových dat v obrázku
 
@@ -34,13 +34,17 @@ V tomto kurzu získáte informace o následujících postupech:
 
 Kompletní vzorový kód je k dispozici v [ukázkovém úložišti pro rozpoznávání tváře CSharp](https://github.com/Azure-Samples/Cognitive-Face-CSharp-sample) na GitHubu.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/) před tím, než začnete. 
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/cognitive-services/), ještě než začnete. 
 
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Klíč předplatného pro vytvoření obličeje. K získání bezplatné zkušební verze předplatného můžete [použít Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru služby obličeje a Získejte svůj klíč. Pak [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s `FACE_SUBSCRIPTION_KEY` názvem `FACE_ENDPOINT`a v uvedeném pořadí.
-- Libovolná edice sady [Visual Studio 2015 nebo 2017](https://www.visualstudio.com/downloads/).
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+    * K připojení aplikace k Face API budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
+* [Vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro řetězec klíčového a koncového bodu služby s názvem `FACE_SUBSCRIPTION_KEY` a v `FACE_ENDPOINT` uvedeném pořadí.
+- Libovolná edice sady [Visual Studio](https://www.visualstudio.com/downloads/).
 
 ## <a name="create-the-visual-studio-project"></a>Vytvoření projektu sady Visual Studio
 
@@ -57,7 +61,7 @@ V této části přidáte základní architekturu aplikace bez jeho funkcí spec
 
 ### <a name="create-the-ui"></a>Vytvoření uživatelského rozhraní
 
-Otevřete *MainWindow. XAML* a nahraďte obsah následujícím kódem&mdash;. Tento kód vytvoří okno uživatelského rozhraní. Metody `FacePhoto_MouseMove` a `BrowseButton_Click` jsou obslužné rutiny událostí, které budete později definovat.
+Otevřete *MainWindow. XAML* a nahraďte obsah následujícím kódem &mdash; . Tento kód vytvoří okno uživatelského rozhraní. `FacePhoto_MouseMove`Metody a `BrowseButton_Click` jsou obslužné rutiny událostí, které budete později definovat.
 
 [!code-xaml[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml?name=snippet_xaml)]
 
@@ -75,7 +79,7 @@ Dále přidejte konstruktor **MainWindow** . Zkontroluje řetězec adresy URL ko
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mainwindow_constructor)]
 
-Nakonec přidejte do třídy metody **BrowseButton_Click** a **FacePhoto_MouseMove** . Tyto metody odpovídají obslužným rutinám událostí deklarovaným v souboru *MainWindow. XAML*. Metoda **BrowseButton_Click** vytvoří **OpenFileDialog**, který umožňuje uživateli vybrat obrázek. jpg. Pak zobrazí obrázek v hlavním okně. V pozdějších krocích budete vkládat zbývající kód pro **BrowseButton_Click** a **FacePhoto_MouseMove** . Všimněte si také `faceList` odkaz&mdash;na seznam objektů **DetectedFace** . Tento odkaz na místo, kde bude vaše aplikace ukládat a volat skutečná data obličeje.
+Nakonec přidejte do třídy metody **BrowseButton_Click** a **FacePhoto_MouseMove** . Tyto metody odpovídají obslužným rutinám událostí deklarovaným v souboru *MainWindow. XAML*. Metoda **BrowseButton_Click** vytvoří **OpenFileDialog**, který umožňuje uživateli vybrat obrázek. jpg. Pak zobrazí obrázek v hlavním okně. V pozdějších krocích budete vkládat zbývající kód pro **BrowseButton_Click** a **FacePhoto_MouseMove** . Všimněte si také `faceList` odkaz &mdash; na seznam objektů **DetectedFace** . Tento odkaz na místo, kde bude vaše aplikace ukládat a volat skutečná data obličeje.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_browsebuttonclick_start)]
 
@@ -113,7 +117,7 @@ Přidejte následující metodu do třídy **MainWindow** pod metodou **UploadAn
 
 ## <a name="display-the-face-description"></a>Zobrazení popisu tváře
 
-Do metody **FacePhoto_MouseMove** přidejte následující kód. Tato obslužná rutina události zobrazuje řetězec popisu obličeje `faceDescriptionStatusBar` v okamžiku, kdy se ukazatel myši nachází nad zjištěným obdélníkem obličeje.
+Do metody **FacePhoto_MouseMove** přidejte následující kód. Tato obslužná rutina události zobrazuje řetězec popisu obličeje v `faceDescriptionStatusBar` okamžiku, kdy se ukazatel myši nachází nad zjištěným obdélníkem obličeje.
 
 [!code-csharp[](~/Cognitive-Face-CSharp-sample/FaceTutorialCS/FaceTutorialCS/MainWindow.xaml.cs?name=snippet_mousemove_mid)]
 

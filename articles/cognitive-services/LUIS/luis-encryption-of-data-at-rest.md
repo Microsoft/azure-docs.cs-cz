@@ -9,12 +9,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 03/13/2020
 ms.author: egeaney
-ms.openlocfilehash: 59e066974f690bda2384504cc27af5aa94b7b75b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 4fc816c3894120a5d1b356d91ebebbc56f21b530
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79372334"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85052689"
 ---
 # <a name="language-understanding-service-encryption-of-data-at-rest"></a>Šifrování neaktivních dat Language Understanding služby
 
@@ -38,13 +38,11 @@ K ukládání klíčů spravovaných zákazníkem je nutné použít Azure Key V
 
 Chcete-li požádat o možnost použití klíčů spravovaných zákazníkem, vyplňte a odešlete [formulář žádosti o klíč spravovaný zákazníkem služby Luis](https://aka.ms/cogsvc-cmk). Bude to trvat přibližně 3-5 pracovních dnů, než se vrátí na stav vaší žádosti. V závislosti na poptávce můžete být do fronty zařazené a schválené, protože místo bude k dispozici. Po schválení pro použití CMK s LUIS budete muset vytvořit nový prostředek Language Understanding z Azure Portal a vybrat E0 jako cenovou úroveň. Nová SKU bude fungovat stejně jako SKU F0, která je již k dispozici, s výjimkou CMK. Uživatelé nebudou moct upgradovat z F0 na novou SKLADOVOU položku E0.
 
-Prostředky E0 jsou dostupné jenom pro vytváření služeb a tato úroveň E0 se zpočátku podporuje jenom v Západní USA oblasti.
-
 ![Obrázek předplatného LUIS](../media/cognitive-services-encryption/luis-subscription.png)
 
 ### <a name="regional-availability"></a>Regionální dostupnost
 
-Klíče spravované zákazníkem jsou aktuálně k dispozici v **západní USA** oblasti.
+Klíče spravované zákazníkem jsou k dispozici ve všech [oblastech vytváření obsahu](luis-reference-regions.md). 
 
 ### <a name="limitations"></a>Omezení
 

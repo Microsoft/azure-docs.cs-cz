@@ -11,23 +11,24 @@ ms.topic: quickstart
 ms.date: 05/20/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: d6b55a7f3df7657e2b6b0b23b797d36788658f32
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 77850de4f2582c86281c58c32e1689fd8741126e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83745169"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987413"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-curl"></a>Rychlý Start: vygenerování miniatury pomocí Počítačové zpracování obrazu REST API a kudrlinkou
 
 V tomto rychlém startu vygenerujete miniaturu z obrázku pomocí REST API Počítačové zpracování obrazu. Určete požadovanou výšku a šířku, která se může v poměrné dávce od vstupní image lišit. Počítačové zpracování obrazu používá inteligentní ořezávání k inteligentnímu identifikaci oblasti zájmu a k vygenerování souřadnic oříznutí kolem této oblasti.
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/ai/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=cognitive-services), ještě než začnete.
-
 ## <a name="prerequisites"></a>Požadavky
 
-- Musíte mít [cURL](https://curl.haxx.se/windows).
-- Musíte mít klíč předplatného pro počítačové zpracování obrazu. Bezplatný zkušební klíč si můžete [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru počítačové zpracování obrazu a získání klíče.
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) . 
+* [cURL](https://curl.haxx.se/)
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+  * K připojení aplikace k Počítačové zpracování obrazu službě budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+  * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
 
 ## <a name="create-and-run-the-sample-command"></a>Vytvoření a spuštění ukázkového příkazu
 
