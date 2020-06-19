@@ -10,36 +10,31 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: d8f40ab57ee2569b2cb5bf62f391919476b8ab17
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 40796951fe356fcf950b83c6ac771a0ca98ffd5a
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80136011"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073208"
 ---
 <a name="HOLTop"></a>
 
-[Referenční dokumentace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision) |  | [balíčku](https://github.com/Azure/azure-sdk-for-go) [zdrojového kódu knihovny](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision)dokumentace
+[Referenční dokumentace](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)  |  [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.1/computervision)  |  [Balíček](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/) .
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
 * Nejnovější verze nástroje [Přejít](https://golang.org/dl/)
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+    * K připojení aplikace k Počítačové zpracování obrazu službě budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
+* [Vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč a adresu URL koncového bodu s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a v `COMPUTER_VISION_ENDPOINT` uvedeném pořadí.
 
 ## <a name="setting-up"></a>Nastavení
 
-### <a name="create-a-computer-vision-azure-resource"></a>Vytvoření prostředku Azure Počítačové zpracování obrazu
-
-Azure Cognitive Services jsou představovány prostředky Azure, ke kterým jste se přihlásili. Vytvořte prostředek pro Počítačové zpracování obrazu pomocí [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) nebo rozhraní příkazového [řádku Azure](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) na vašem místním počítači. Můžete také:
-
-* Získejte [zkušební klíč](https://azure.microsoft.com/try/cognitive-services/#decision) platný po dobu sedmi dnů zdarma. Po registraci bude k dispozici na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
-* Prohlédněte si prostředek na [Azure Portal](https://portal.azure.com/).
-
-Až dostanete klíč ze zkušebního předplatného nebo prostředku, [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč a adresu URL koncového bodu `COMPUTER_VISION_SUBSCRIPTION_KEY` s `COMPUTER_VISION_ENDPOINT`názvem a v uvedeném pořadí.
-
 ### <a name="create-a-go-project-directory"></a>Vytvořit adresář projektu přejít
 
-V okně konzoly (cmd, PowerShell, terminál, bash) vytvořte nový pracovní prostor pro projekt na cestách s názvem `my-app`a přejděte na něj.
+V okně konzoly (cmd, PowerShell, terminál, bash) vytvořte nový pracovní prostor pro projekt na cestách s názvem `my-app` a přejděte na něj.
 
 ```
 mkdir -p my-app/{src, bin, pkg}  
@@ -50,10 +45,10 @@ Váš pracovní prostor bude obsahovat tři složky:
 
 * **Src** – tento adresář bude obsahovat zdrojový kód a balíčky. Všechny balíčky nainstalované pomocí `go get` příkazu se budou nacházet v tomto adresáři.
 * **pkg** – tento adresář bude obsahovat kompilované objekty balíčku pro přechod. Všechny tyto soubory mají `.a` rozšíření.
-* **bin** – tento adresář bude obsahovat binární spustitelné soubory, které se vytvoří při spuštění `go install`.
+* **bin** – tento adresář bude obsahovat binární spustitelné soubory, které se vytvoří při spuštění `go install` .
 
 > [!TIP]
-> Další informace o struktuře pracovního prostoru přejděte v [dokumentaci jazyka přejděte](https://golang.org/doc/code.html#Workspaces). Tato příručka obsahuje informace o nastavení `$GOPATH` a `$GOROOT`.
+> Další informace o struktuře pracovního prostoru přejděte v [dokumentaci jazyka přejděte](https://golang.org/doc/code.html#Workspaces). Tato příručka obsahuje informace o nastavení `$GOPATH` a `$GOROOT` .
 
 ### <a name="install-the-client-library-for-go"></a>Instalace klientské knihovny pro přejít
 
@@ -71,7 +66,7 @@ dep ensure -add https://github.com/Azure/azure-sdk-for-go/tree/master/services/c
 
 ### <a name="create-a-go-application"></a>Vytvoření aplikace v cestách
 
-Dále vytvořte soubor v adresáři **Src** s názvem `sample-app.go`:
+Dále vytvořte soubor v adresáři **Src** s názvem `sample-app.go` :
 
 ```bash
 cd src
@@ -92,7 +87,7 @@ Dále začnete přidávat kód pro provádění různých Počítačové zpracov
 
 Následující třídy a rozhraní zpracovávají některé hlavní funkce sady Počítačové zpracování obrazu jít SDK.
 
-|Název|Popis|
+|Name|Popis|
 |---|---|
 | [BaseClient](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#BaseClient) | Tato třída je potřebná pro všechny funkce Počítačové zpracování obrazu, jako je například analýza obrázku a čtení textu. Vytvoříte jeho instanci s informacemi o předplatném a použijete ho k provádění většiny operací s imagí.|
 |[ImageAnalysis](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ImageAnalysis)| Tento typ obsahuje výsledky volání funkce **AnalyzeImage** . Pro každou funkci konkrétní kategorie existují podobné typy.|
@@ -110,7 +105,7 @@ Tyto fragmenty kódu ukazují, jak provádět následující úlohy pomocí Poč
 ## <a name="authenticate-the-client"></a>Ověření klienta
 
 > [!NOTE]
-> Tento krok předpokládá, že jste [vytvořili proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro svůj počítačové zpracování obrazu klíč a koncový bod `COMPUTER_VISION_SUBSCRIPTION_KEY` s `COMPUTER_VISION_ENDPOINT` názvem a v uvedeném pořadí.
+> Tento krok předpokládá, že jste [vytvořili proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro svůj počítačové zpracování obrazu klíč a koncový bod s názvem `COMPUTER_VISION_SUBSCRIPTION_KEY` a `COMPUTER_VISION_ENDPOINT` v uvedeném pořadí.
 
 Vytvořte `main` funkci a přidejte do ní následující kód, který vytvoří instanci klienta s vaším koncovým bodem a klíčem.
 
@@ -122,7 +117,7 @@ Následující kód používá objekt klienta k analýze vzdálené image a k vy
 
 ### <a name="set-up-test-image"></a>Nastavit testovací image
 
-Nejdřív uložte odkaz na adresu URL obrázku, který chcete analyzovat. Umístěte ho `main` do funkce.
+Nejdřív uložte odkaz na adresu URL obrázku, který chcete analyzovat. Umístěte ho do `main` funkce.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_analyze_url)]
 
@@ -203,13 +198,13 @@ Následující kód analyzuje data o zjištěných orientačních seznamech v ob
 
 ### <a name="get-the-image-type"></a>Získat typ obrázku
 
-Následující funkce vytiskne informace o typu obrázku&mdash;, ať už se jedná o Klipart nebo kreslení čáry.
+Následující funkce vytiskne informace o typu obrázku &mdash; , ať už se jedná o Klipart nebo kreslení čáry.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_type)]
 
 ## <a name="read-printed-and-handwritten-text"></a>Číst vytištěné a ručně psaný text
 
-Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Kód v této části definuje funkci, `RecognizeTextReadAPIRemoteImage`která používá objekt klienta k detekci a extrakci vytištěného nebo rukopisného textu v obrázku.
+Počítačové zpracování obrazu může číst zobrazený text v obrázku a převést jej na datový proud znaků. Kód v této části definuje funkci, `RecognizeTextReadAPIRemoteImage` která používá objekt klienta k detekci a extrakci vytištěného nebo rukopisného textu v obrázku.
 
 Přidejte odkaz na vzorový obrázek a volání funkce ve `main` funkci.
 
@@ -220,7 +215,7 @@ Přidejte odkaz na vzorový obrázek a volání funkce ve `main` funkci.
 
 ### <a name="call-the-read-api"></a>Volání rozhraní API pro čtení
 
-Definujte novou funkci pro čtení textu, `RecognizeTextReadAPIRemoteImage`. Přidejte následující kód, který volá metodu **BatchReadFile** pro daný obrázek. Tato metoda vrátí ID operace a spustí asynchronní proces pro čtení obsahu obrázku.
+Definujte novou funkci pro čtení textu, `RecognizeTextReadAPIRemoteImage` . Přidejte následující kód, který volá metodu **BatchReadFile** pro daný obrázek. Tato metoda vrátí ID operace a spustí asynchronní proces pro čtení obsahu obrázku.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_call)]
 
@@ -248,7 +243,7 @@ go run sample-app.go
 
 Pokud chcete vyčistit a odebrat předplatné Cognitive Services, můžete prostředek nebo skupinu prostředků odstranit. Odstraněním skupiny prostředků se odstraní také všechny další prostředky, které jsou k ní přidružené.
 
-* [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
+* [Azure Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
 ## <a name="next-steps"></a>Další kroky

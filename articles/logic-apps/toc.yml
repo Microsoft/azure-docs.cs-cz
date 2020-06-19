@@ -94,12 +94,6 @@
           href: logic-apps-handle-large-messages.md
         - name: Zpracování problémů s omezováním nebo chyb 429
           href: handle-throttling-problems-429-errors.md
-        - name: Zabezpečení
-          items:
-            - name: Vylepšení zabezpečení pro aplikace logiky
-              href: logic-apps-securing-a-logic-app.md
-            - name: Ověřování pomocí spravovaných identit
-              href: create-managed-service-identity.md
         - name: Vývoj vlastních konektorů
           href: custom-connector-overview.md
         - name: Vývoj vlastních rozhraní API
@@ -316,6 +310,14 @@
           href: logic-apps-enterprise-integration-xml-validation.md
         - name: Yammer
           href: ../connectors/connectors-create-api-yammer.md
+    - name: Zabezpečení
+      items:
+        - name: Vylepšení zabezpečení pro aplikace logiky
+          href: logic-apps-securing-a-logic-app.md
+        - name: Ověřování pomocí spravovaných identit
+          href: create-managed-service-identity.md
+        - name: Blokování připojení v aplikacích logiky
+          href: block-connections-connectors.md
     - name: Spravovat
       items:
         - name: Správa aplikací logiky – Azure Portal
