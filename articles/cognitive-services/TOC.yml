@@ -9,8 +9,6 @@
       href: cognitive-services-and-machine-learning.md
     - name: Vlastní podřízené domény pro Cognitive Services
       href: cognitive-services-custom-subdomains.md
-    - name: Proces omezování Cognitive Services
-      href: cognitive-services-gating-process.md
     - name: Podpora jazyků
       href: language-support.md
 - name: Rychlé starty
@@ -21,6 +19,13 @@
       href: cognitive-services-apis-create-account-cli.md
     - name: Protokolování diagnostiky
       href: diagnostic-logging.md
+    - name: Šablona ARM
+      displayName: Resource Manager
+      href: resource-manager-template.md
+- name: ukázky
+  items:
+    - name: Integrované služby Azure Policy
+      href: ./policy-samples.md
 - name: Zabezpečení
   items:
     - name: Zabezpečení Cognitive Services

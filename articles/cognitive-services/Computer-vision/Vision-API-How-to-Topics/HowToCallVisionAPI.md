@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 298228eedb73298f00654f4f72c201d9ed671090
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 44e5823ed3989dc092104d75d415524dac2c9622
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72177052"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983459"
 ---
 # <a name="call-the-computer-vision-api"></a>Volání rozhraní API pro počítačové zpracování obrazu
 
@@ -25,14 +25,6 @@ Tento článek ukazuje, jak volat rozhraní API pro počítačové zpracování 
 - Získání značek, popisu a kategorií
 - Získání informací specifických pro doménu nebo "celebrit"
 
-## <a name="prerequisites"></a>Požadavky
-
-- Adresa URL obrázku nebo cesta k místně uložené imagi
-- Podporované metody zadávání: nezpracovaný binární obrázek ve formě aplikace, oktetového datového proudu nebo adresy URL obrázku
-- Podporované formáty souborů obrázků: JPEG, PNG, GIF a BMP
-- Velikost souboru obrázku: 4 MB nebo méně
-- Rozměry obrázku: 50 &times; 50 pixelů nebo větší
-  
 Příklady v tomto článku ukazují následující funkce:
 
 * Analýza obrázku pro vrácení pole značek a popisu
@@ -42,14 +34,22 @@ Tyto funkce nabízí následující možnosti:
 
 - **Možnost 1**: analýza vymezená v oboru – analýza pouze zadaného modelu
 - **Možnost 2**: Vylepšená analýza – proveďte analýzu a poskytněte další podrobnosti pomocí [taxonomie 86-Categories](../Category-Taxonomy.md) .
+
+## <a name="prerequisites"></a>Požadavky
+
+* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title=" vytvořte prostředek počítačové zpracování obrazu vytvoření prostředku "  target="_blank"> Počítačové zpracování obrazu <span class="docon docon-navigate-external x-hidden-focus"></span> </a> v Azure Portal, abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+    * K připojení aplikace k Počítačové zpracování obrazu službě budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
+* Adresa URL obrázku nebo cesta k místně uložené imagi
+* Podporované metody zadávání: nezpracovaný binární obrázek ve formě aplikace, oktetového datového proudu nebo adresy URL obrázku
+* Podporované formáty souborů obrázků: JPEG, PNG, GIF a BMP
+* Velikost souboru obrázku: 4 MB nebo méně
+* Rozměry obrázku: 50 &times; 50 pixelů nebo větší
   
 ## <a name="authorize-the-api-call"></a>Autorizace volání rozhraní API
 
 Ke každému volání rozhraní API pro počítačové zpracování obrazu potřebujete klíč předplatného. Tento klíč musí být buď předán parametrem řetězce dotazu, nebo zadán v hlavičce požadavku.
-
-Chcete-li získat bezplatný zkušební klíč, proveďte jednu z následujících akcí:
-* Přejít na stránku [vyzkoušet Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=computer-vision) . 
-* Chcete-li se přihlásit k odběru Počítačové zpracování obrazu, otevřete stránku [vytvořit účet Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) .
 
 Klíč předplatného můžete předat některým z následujících způsobů:
 
@@ -180,12 +180,12 @@ Tady je příklad:
 Pole | Typ | Obsah
 ------|------|------|
 Značky  | `object` | Objekt nejvyšší úrovně pro pole značek.
-tags[].Name | `string`  | Klíčové slovo z třídění značek.
-tags[].Score    | `number`  | Hodnocení spolehlivosti mezi 0 a 1.
-description  | `object` | Objekt nejvyšší úrovně pro popis.
+tags[].Name | `string`    | Klíčové slovo z třídění značek.
+tags[].Score    | `number`    | Hodnocení spolehlivosti mezi 0 a 1.
+description     | `object`    | Objekt nejvyšší úrovně pro popis.
 description.tags[] |    `string`    | Seznam značek.  Pokud není dostatečná důvěra v možnosti vytvoření titulku, mohou být značky jedinou informací, které jsou k dispozici volajícímu.
-description.captions[].text | `string`  | Výraz, který popisuje obrázek.
-description.captions[].confidence   | `number`  | Skóre spolehlivosti fráze.
+description.captions[].text    | `string`    | Výraz, který popisuje obrázek.
+description.captions[].confidence    | `number`    | Skóre spolehlivosti fráze.
 
 ## <a name="retrieve-and-understand-the-json-output-of-domain-specific-models"></a>Načtení a pochopení výstupu JSON pro modely specifické pro doménu
 
@@ -239,12 +239,12 @@ U modelů specifických pro doménu pomocí možnosti 2 (vylepšená analýza) j
 
 Pole kategorie je seznam jednoho nebo více [kategorií 86](../Category-Taxonomy.md) v původní taxonomii. Kategorie, které končí podtržítkem, odpovídají této kategorii a jejím dětem (například "people_" nebo "people_group" pro model celebrit).
 
-Pole   | Typ  | Obsah
+Pole    | Typ    | Obsah
 ------|------|------|
-categories | `object`   | Objekt nejvyšší úrovně.
-categories[].name    | `string` | Název ze seznamu taxonomie 86-Category.
-categories[].score  | `number`  | Hodnocení spolehlivosti mezi 0 a 1.
-categories[].detail  | `object?`      | Volitelné Objekt podrobností.
+categories | `object`    | Objekt nejvyšší úrovně.
+categories[].name     | `string`    | Název ze seznamu taxonomie 86-Category.
+categories[].score    | `number`    | Hodnocení spolehlivosti mezi 0 a 1.
+categories[].detail     | `object?`      | Volitelné Objekt podrobností.
 
 Pokud se shoduje více kategorií (například klasifikátor 86 kategorie vrací skóre pro jak "people_", tak "people_young", "při modelu = celebrit) jsou podrobnosti v tomto příkladu připojeny k nejobecnější shodě úrovně (" people_, ").
 

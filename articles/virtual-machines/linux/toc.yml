@@ -56,12 +56,8 @@
       href: tutorial-azure-devops-blue-green-strategy.md
     - name: 15d. Průběžná integrace a doručování s využitím Azure Pipelines (YAML)
       href: tutorial-build-deploy-azure-pipelines.md
-    - name: 16a. Vytvoření zásobníku LAMP
+    - name: 16. Vytvoření zásobníku LAMP
       href: tutorial-lamp-stack.md
-    - name: 16b. Vytvoření zásobníku LEMP
-      href: tutorial-lemp-stack.md
-    - name: 16c. Vytvoření zásobníku MEAN
-      href: tutorial-mean-stack.md
     - name: 17. Zabezpečení webového serveru pomocí SSL
       href: tutorial-secure-web-server.md
 - name: ukázky
