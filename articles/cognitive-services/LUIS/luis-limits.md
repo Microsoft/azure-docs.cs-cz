@@ -3,12 +3,12 @@ title: Omezení – LUIS
 description: Tento článek obsahuje známé limity Azure Cognitive Services Language Understanding (LUIS). LUIS má několik omezených oblastí. Model omezuje ovládací prvky pro záměry, entity a funkce v LUIS. Omezení kvóty na základě typu klíče. Kombinace kláves řídí web LUIS.
 ms.topic: reference
 ms.date: 06/04/2020
-ms.openlocfilehash: aa4362fba09834758d47f3ef063068c1854b9280
-ms.sourcegitcommit: 0a5bb9622ee6a20d96db07cc6dd45d8e23d5554a
+ms.openlocfilehash: fce4aab0221cf050ce175c582f21de58b6e27eac
+ms.sourcegitcommit: 9bfd94307c21d5a0c08fe675b566b1f67d0c642d
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84449494"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84976978"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>Omezení pro LUIS model a klíče
 LUIS má několik omezených oblastí. První je [limit modelu](#model-limits), který řídí záměry, entity a funkce v Luis. Druhá oblast má [omezení kvóty](#key-limits) na základě typu klíče. Třetí oblastí omezení je [kombinace kláves](#keyboard-controls) pro řízení webu Luis. Čtvrtá oblast je [mapování světové oblasti](luis-reference-regions.md) mezi vytvářením webu Luis a rozhraními API [koncového bodu](luis-glossary.md#endpoint) Luis.
@@ -27,7 +27,7 @@ Pokud vaše aplikace překračuje omezení modelu LUIS, zvažte použití aplika
 | Explicitní seznam | 50 na aplikaci|
 | Externí entity | žádná omezení |
 | [Záměry][intents]|500 na aplikaci: 499 vlastní záměry a požadovaný záměr _none_ .<br>Aplikace [založená na odesílání](https://aka.ms/dispatch-tool) má odpovídající 500 zdrojů odesílání.|
-| [Entity seznamu](./luis-concept-entity-types.md) | Nadřazený objekt: 50, podřízené položky: 20 000. Kanonický název je * výchozí hodnota Maximum znaků. Hodnoty synonym nemají omezení délky. |
+| [Vytvoření seznamu entit](./luis-concept-entity-types.md) | Nadřazený objekt: 50, podřízené položky: 20 000. Kanonický název je * výchozí hodnota Maximum znaků. Hodnoty synonym nemají omezení délky. |
 | [entity strojového učení + role](./luis-concept-entity-types.md):<br> Náhled<br>pouh<br>role entity|Limit buď pro 100 nadřazených entit, nebo na 330 entit, podle toho, které uživatele omezují napřed. Role se počítá jako entita pro účely tohoto limitu. Příklad je složený s jednoduchou entitou, která má 2 role: 1 složený + 1 jednoduché + 2 role = 4 entit 330.<br>Subentity můžou být vnořené až o 5 úrovní.|
 |Model jako funkce| Maximální počet modelů, které se dají použít jako funkce pro konkrétní model, je 10 modelů. Maximální počet seznamů frází použitých jako funkce pro určitý model má být 10 frázových seznamů.|
 | [Náhled – entity dynamického seznamu](https://aka.ms/luis-api-v3-doc#dynamic-lists-passed-in-at-prediction-time)|2 seznamy ~ 1 tisíc na požadavek koncového bodu předpovědi dotazu|
@@ -37,7 +37,7 @@ Pokud vaše aplikace překračuje omezení modelu LUIS, zvažte použití aplika
 | [Předem připravené entity](./luis-prebuilt-entities.md) | bez omezení|
 | [Entity regulárního výrazu](./luis-concept-entity-types.md)|20 entit<br>maximální počet znaků: 500 pro vzor entity regulárního výrazu|
 | [Role](luis-concept-roles.md)|role 300 na aplikaci 10 rolí na entitu|
-| [Promluva][utterances] | 500 znaků<br><br>Pokud máte text delší, než je tento limit znaků, je nutné nejprve segmentovat utterance před vstupem do LUIS a odpovídajícím způsobem sloučit odpovědi. Existují zřejmé přestávky, se kterými můžete pracovat, jako jsou například interpunkční znaménka a dlouhá pauza v řeči.|
+| [Promluva][utterances] | 500 znaků<br><br>Pokud máte text delší, než je tento limit znaků, je nutné nejprve segmentovat utterance před vstupem do LUIS a obdržíte jednotlivé reakce na segment. Existují zřejmé přestávky, se kterými můžete pracovat, jako jsou například interpunkční znaménka a dlouhá pauza v řeči.|
 | [Příklady utterance][utterances] | 15 000 na aplikaci – počet projevy na záměr není nijak omezený.<br><br>Pokud potřebujete vytvořit výuku aplikace s dalšími příklady, použijte přístup k modelu [odeslání](https://github.com/Microsoft/botbuilder-tools/tree/master/packages/Dispatch) . Jednotlivé aplikace LUIS (označované jako podřízené aplikace pro nadřazenou aplikaci pro expedici) provedete pomocí jednoho nebo více záměrů a potom zajistěte odeslání aplikace, která se vzorkuje z každého podřízeného projevy aplikace LUIS, aby směrovala požadavek předpovědi na správnou podřízenou aplikaci. |
 | [Zachovávaných](luis-concept-version.md)| verze 100 na aplikaci |
 | [Název verze][luis-how-to-manage-versions] | 128 znaků |

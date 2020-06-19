@@ -44,14 +44,10 @@
           href: path-selection-multiple-links.md
 - name: Návody
   items:
-    - name: Připojení brány virtuální sítě k Virtual WAN
-      href: connect-virtual-network-gateway-vwan.md
     - name: Konfigurace globálních partnerských vztahů virtuálních sítí
       href: global-peering-vnet.md
     - name: Upgrade SKU virtuální sítě WAN
       href: upgrade-virtual-wan.md
-    - name: Konfigurace vlastních zásad IPsec
-      href: virtual-wan-custom-ipsec-portal.md
     - name: ExpressRoute
       items:
         - name: Vytvoření připojení ExpressRoute
@@ -62,6 +58,10 @@
       items:
         - name: Vytvoření připojení typu Site-to-Site
           href: virtual-wan-site-to-site-portal.md
+        - name: Připojení brány virtuální sítě k Virtual WAN
+          href: connect-virtual-network-gateway-vwan.md
+        - name: Konfigurace vlastních zásad IPsec
+          href: virtual-wan-custom-ipsec-portal.md
     - name: Uživatelská síť VPN (point-to-site)
       items:
         - name: Vytvoření připojení uživatelské sítě VPN
@@ -109,7 +109,7 @@
 - name: Referenční informace
   items:
     - name: Azure PowerShell
-      href: '/powershell/module/az.network#networking'
+      href: /powershell/module/az.network#networking
     - name: REST
       href: /rest/api/azure
     - name: Azure CLI

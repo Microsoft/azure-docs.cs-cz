@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.author: wolfma
-ms.openlocfilehash: 46bfabfb2ccf091fd5dc0fcf0e9b447bad7c34d1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 9804992aee318fdc34815bdbe4187144704cd667
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82208614"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099762"
 ---
 # <a name="what-is-batch-transcription"></a>Co je Batch přepis?
 
-Batch přepis je sada operací REST API, která umožňuje přepisovat velké množství zvuků v úložišti. Můžete odkazovat na zvukové soubory pomocí identifikátoru URI sdíleného přístupového podpisu (SAS) a asynchronní příjem výsledků přepisu.
+Batch přepis je sada operací REST API, která umožňuje přepisovat velké množství zvuků v úložišti. Můžete odkazovat na zvukové soubory pomocí identifikátoru URI sdíleného přístupového podpisu (SAS) a asynchronní příjem výsledků přepisu. S novým rozhraním API v 3.0 můžete zvolit zdlouhavého přepisování jeden nebo více zvukových souborů nebo zpracovat celý kontejner úložiště.
 
 Přepis asynchronního převodu řeči na text je jenom jedna z funkcí. Pomocí rozhraní REST API pro dávkové přepisy můžete zavolat následující metody:
 
@@ -27,17 +27,18 @@ Přepis asynchronního převodu řeči na text je jenom jedna z funkcí. Pomocí
 
 |    Operace dávkového přepisu                                             |    Metoda    |    REST API volání                                   |
 |------------------------------------------------------------------------------|--------------|----------------------------------------------------|
-|    Vytvoří nový přepis.                                              |    POST      |    API/speechtotext/v – 2.0/Přepisy            |
-|    Načte seznam přepisů pro ověřený odběr.    |    GET       |    API/speechtotext/v – 2.0/Přepisy            |
-|    Načte seznam podporovaných národních prostředí pro přepisy offline.              |    GET       |    API/speechtotext/v 2.0/přepisy/národní prostředí    |
-|    Aktualizuje proměnlivé podrobnosti přepisu identifikovaného jeho ID.    |    POUŽITA     |    API/speechtotext/v 2.0/přepisy/{ID}       |
-|    Odstraní zadanou úlohu přepisu.                                 |    DELETE    |    API/speechtotext/v 2.0/přepisy/{ID}       |
-|    Získá přepis identifikovaný daným ID.                        |    GET       |    API/speechtotext/v 2.0/přepisy/{ID}       |
+|    Vytvoří nový přepis.                                              |    POST      |    speechtotext/v 3.0/Přepisy            |
+|    Načte seznam přepisů pro ověřený odběr.    |    GET       |    speechtotext/v 3.0/Přepisy            |
+|    Načte seznam podporovaných národních prostředí pro přepisy offline.              |    GET       |    speechtotext/v 3.0/přepisy/národní prostředí    |
+|    Aktualizuje proměnlivé podrobnosti přepisu identifikovaného jeho ID.    |    POUŽITA     |    speechtotext/v 3.0/přepisy/{ID}       |
+|    Odstraní zadanou úlohu přepisu.                                 |    DELETE    |    speechtotext/v 3.0/přepisy/{ID}       |
+|    Získá přepis identifikovaný daným ID.                        |    GET       |    speechtotext/v 3.0/přepisy/{ID}       |
+|    Načte soubory výsledků přepisu identifikované daným ID.    |    GET       |    speechtotext/v 3.0/přepisy/{ID}/soubory |
 
 
 
 
-Můžete zkontrolovat a otestovat podrobné rozhraní API, které je k dispozici jako [dokument Swagger](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A)pod hlavičkou `Custom Speech transcriptions`.
+Můžete zkontrolovat a otestovat podrobné rozhraní API, které je k dispozici jako [dokument Swagger](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0).
 
 Úlohy dávkového přepisu jsou plánovány na základě optimálního úsilí. V současné době není k dispozici žádný odhad při změně úlohy do stavu spuštěno. Při normálním zatížení systému by se mělo provést během několika minut. Ve stavu spuštěno je skutečný přepis zpracován rychleji než v reálném čase.
 
@@ -54,7 +55,7 @@ Stejně jako u všech funkcí služby pro rozpoznávání řeči vytvoříte pom
 
 ### <a name="custom-models"></a>Vlastní modely
 
-Pokud máte v úmyslu přizpůsobit akustické nebo jazykové modely, postupujte podle kroků v tématu [přizpůsobení akustických modelů](how-to-customize-acoustic-models.md) a [Návrh jazykových modelů přizpůsobení](how-to-customize-language-model.md). Pokud chcete použít vytvořené modely v dávkovém přepisu, budete potřebovat jejich ID modelu. ID modelu můžete načíst při kontrole podrobností modelu. Pro službu Batch přepisu není potřebný nasazený vlastní koncový bod.
+Pokud plánujete přizpůsobovat modely, postupujte podle kroků v tématu [akustické přizpůsobení](how-to-customize-acoustic-models.md) a [přizpůsobení jazyka](how-to-customize-language-model.md). Pokud chcete v dávkovém přepisu použít vytvořené modely, budete potřebovat jejich umístění modelu. Umístění modelu lze načíst při kontrole podrobností modelu ( `self` vlastnost). Pro službu Batch přepisu není *potřebný* nasazený vlastní koncový bod.
 
 ## <a name="the-batch-transcription-api"></a>Rozhraní API pro dávkové Přepisy
 
@@ -72,25 +73,52 @@ Pro datové proudy stereofonních zvuků se při přepisu budou dělit kanály v
 
 ### <a name="configuration"></a>Konfigurace
 
-Parametry konfigurace jsou zadány jako JSON:
+Parametry konfigurace jsou zadány jako JSON (jeden nebo více jednotlivých souborů):
 
 ```json
 {
-  "recordingsUrl": "<URL to the Azure blob to transcribe>",
-  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<locale to use, for example en-US>",
-  "name": "<user defined name of the transcription batch>",
-  "description": "<optional description of the transcription>",
+  "contentUrls": [
+    "<URL to an audio file to transcribe>",
+  ],
   "properties": {
-    "ProfanityFilterMode": "None | Removed | Tags | Masked",
-    "PunctuationMode": "None | Dictated | Automatic | DictatedAndAutomatic",
-    "AddWordLevelTimestamps" : "True | False",
-    "AddSentiment" : "True | False",
-    "AddDiarization" : "True | False",
-    "TranscriptionResultsContainerUrl" : "<service SAS URI to Azure container to store results into (write permission required)>"
-  }
+    "wordLevelTimestampsEnabled": true
+  },
+  "locale": "en-US",
+  "displayName": "Transcription of file using default model for en-US"
 }
 ```
+
+Parametry konfigurace jsou zadány jako JSON (zpracování celého kontejneru úložiště):
+
+```json
+{
+  "contentContainerUrl": "<SAS URL to the Azure blob container to transcribe>",
+  "properties": {
+    "wordLevelTimestampsEnabled": true
+  },
+  "locale": "en-US",
+  "displayName": "Transcription of container using default model for en-US"
+}
+```
+
+Pokud chcete používat vlastní školené modely v dávkových přepisech, můžete na ně odkazovat podobně jako na následujícím obrázku:
+
+```json
+{
+  "contentUrls": [
+    "<URL to an audio file to transcribe>",
+  ],
+  "properties": {
+    "wordLevelTimestampsEnabled": true
+  },
+  "locale": "en-US",
+  "model": {
+    "self": "https://westus.api.cognitive.microsoft.com/speechtotext/v3.0/models/{id}"
+  },
+  "displayName": "Transcription of file using default model for en-US"
+}
+```
+
 
 ### <a name="configuration-properties"></a>Vlastnosti konfigurace
 
@@ -98,52 +126,59 @@ K nakonfigurování přepisu použijte tyto volitelné vlastnosti:
 
 :::row:::
    :::column span="1":::
-      **Ukazatele**
+      **Parametr**
    :::column-end:::
    :::column span="2":::
       **Popis**
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `ProfanityFilterMode`
+      `profanityFilterMode`
    :::column-end:::
    :::column span="2":::
-      Určuje způsob zpracování vulgárních výrazů ve výsledcích rozpoznávání. Přijatelné hodnoty jsou `None` zakázání filtrování vulgárních výrazů, `Masked` nahrazení vulgárních výrazů hvězdičkami, `Removed` odebrání všech vulgárních výrazů z výsledku nebo `Tags` Přidání značek "vulgárních výrazů". Výchozí hodnota je `Masked`.
+      Určuje způsob zpracování vulgárních výrazů ve výsledcích rozpoznávání. Přijatelné hodnoty jsou `None` Zakázání filtrování vulgárních výrazů, `Masked` nahrazení vulgárních výrazů hvězdičkami, `Removed` Odebrání všech vulgárních výrazů z výsledku nebo `Tags` Přidání značek "vulgárních výrazů". Výchozí hodnota je `Masked`.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `PunctuationMode`
+      `punctuationMode`
    :::column-end:::
    :::column span="2":::
-      Určuje způsob zpracování interpunkce ve výsledcích rozpoznávání. Přijatelné hodnoty jsou `None` zakázat interpunkci, `Dictated` která implikuje explicitní (hlasovou) `Automatic` interpunkci, aby dekodér mohl pracovat s interpunkčním `DictatedAndAutomatic` znaménkem nebo používat diktovánou a automatickou interpunkci. Výchozí hodnota je `DictatedAndAutomatic`.
+      Určuje způsob zpracování interpunkce ve výsledcích rozpoznávání. Přijatelné hodnoty jsou `None` Zakázat interpunkci, `Dictated` která implikuje explicitní (hlasovou) interpunkci, `Automatic` aby dekodér mohl pracovat s interpunkčním znaménkem nebo `DictatedAndAutomatic` používat diktovánou a automatickou interpunkci. Výchozí hodnota je `DictatedAndAutomatic`.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `AddWordLevelTimestamps`
+      `wordLevelTimestampsEnabled`
    :::column-end:::
    :::column span="2":::
-      Určuje, zda mají být do výstupu přidány časová razítka na úrovni aplikace Word. Přijatelné hodnoty jsou `true` povolit časová razítka na úrovni `false` aplikace Word a (výchozí hodnotu), která ji zakáže.
+      Určuje, zda mají být do výstupu přidány časová razítka na úrovni aplikace Word. Přijatelné hodnoty jsou `true` Povolit časová razítka na úrovni aplikace Word a `false` (výchozí hodnotu), která ji zakáže.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `AddSentiment`
+      `diarizationEnabled`
    :::column-end:::
    :::column span="2":::
-      Určuje, zda má být pro utterance použita analýza mínění. Přijaté hodnoty jsou `true` povoleny a `false` (výchozí hodnota), která ji zakáže. Další podrobnosti najdete v tématu [Analýza mínění](#sentiment-analysis) .
+      Určuje, že by měla být provedena analýza diarization na vstupu, což se očekává, že kanál mono obsahuje dvě hlasy. Přijaté hodnoty `true` povolují diarization a `false` (výchozí hodnota) ji zakáže. Také je nutné `wordLevelTimestampsEnabled` nastavit na hodnotu true.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `AddDiarization`
+      `channels`
    :::column-end:::
    :::column span="2":::
-      Určuje, že by měla být provedena analýza diarization na vstupu, což se očekává, že kanál mono obsahuje dvě hlasy. Přijaté hodnoty `true` povolují diarization a `false` (výchozí hodnota) ji zakáže. Také je nutné `AddWordLevelTimestamps` nastavit na hodnotu true.
+      Volitelné pole čísel kanálů ke zpracování. Tady můžete určit podmnožinu dostupných kanálů ve zvukovém souboru (například `0` jenom). Pokud není zadaný, kanály `0` a `1` jsou přepisu jako výchozí.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `TranscriptionResultsContainerUrl`
+      `timeToLive`
    :::column-end:::
    :::column span="2":::
-      Volitelná adresa URL s [SAS služby](../../storage/common/storage-sas-overview.md) pro zapisovatelný kontejner v Azure. Výsledek je uložen v tomto kontejneru.
+      Volitelná doba trvání pro automatické odstranění přepisů po dokončení přepisu. `timeToLive`Je užitečné v rámci hromadného zpracování, které zajišťuje, aby se nakonec odstranily (např. `PT12H` ). Pokud není zadaný nebo nastavený na `PT0H` , přepis se neodstraní automaticky.
+:::row-end:::
+:::row:::
+   :::column span="1":::
+      `destinationContainerUrl`
+   :::column-end:::
+   :::column span="2":::
+      Volitelná adresa URL s [SAS služby](../../storage/common/storage-sas-overview.md) pro zapisovatelný kontejner v Azure. Výsledek je uložen v tomto kontejneru. Pokud tento parametr nezadáte, uloží Microsoft výsledky do kontejneru úložiště spravovaného Microsoftem. Když se přepis odstraní voláním [Odstranit přepisu](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription), budou odstraněna také výsledná data.
 :::row-end:::
 
 ### <a name="storage"></a>Storage
@@ -152,65 +187,65 @@ Služba Batch přepisu podporuje [úložiště objektů BLOB v Azure](https://do
 
 ## <a name="the-batch-transcription-result"></a>Výsledek přepisu dávky
 
-U zvukového vstupu mono se vytváří jeden soubor výsledků přepisu. V případě zvukového vstupu stereo se vytváří dva soubory výsledků přepisu. Každá z nich má tuto strukturu:
+Pro každý vstupní zvuk se vytváří jeden soubor výsledků přepisu. Seznam výsledných souborů můžete získat voláním metody [Get přepiss](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptionFiles). Tato metoda vrátí seznam souborů výsledků pro tento přepis. Chcete-li najít soubor přepisu pro konkrétní vstupní soubor, vyfiltrujte všechny vrácené soubory pomocí `kind`  ==  `Transcription` a `name`  ==  `{originalInputName.suffix}.json` .
+
+Každý soubor výsledků přepisu má tento formát:
 
 ```json
 {
-  "AudioFileResults":[
+  "source": "...",                                                 // the sas url of a given contentUrl or the path relative to the root of a given container
+  "timestamp": "2020-06-16T09:30:21Z",                             // creation time of the transcription, ISO 8601 encoded timestamp, combined date and time
+  "durationInTicks": 41200000,                                     // total audio duration in ticks (1 tick is 100 nanoseconds)
+  "duration": "PT4.12S",                                           // total audio duration, ISO 8601 encoded duration
+  "combinedRecognizedPhrases": [                                   // concatenated results for simple access in single string for each channel
     {
-      "AudioFileName": "Channel.0.wav | Channel.1.wav"      'maximum of 2 channels supported'
-      "AudioFileUrl": null                                  'always null'
-      "AudioLengthInSeconds": number                        'Real number. Two decimal places'
-      "CombinedResults": [
+      "channel": 0,                                                // channel number of the concatenated results
+      "lexical": "hello world",
+      "itn": "hello world",
+      "maskedITN": "hello world",
+      "display": "Hello world."
+    }
+  ],
+  "recognizedPhrases": [                                           // results for each phrase and each channel individually
+    {
+      "recognitionStatus": "Success",                              // recognition state, e.g. "Success", "Failure"
+      "channel": 0,                                                // channel number of the result
+      "offset": "PT0.07S",                                         // offset in audio of this phrase, ISO 8601 encoded duration 
+      "duration": "PT1.59S",                                       // audio duration of this phrase, ISO 8601 encoded duration
+      "offsetInTicks": 700000.0,                                   // offset in audio of this phrase in ticks (1 tick is 100 nanoseconds)
+      "durationInTicks": 15900000.0,                               // audio duration of this phrase in ticks (1 tick is 100 nanoseconds)
+      
+      // possible transcriptions of the current phrase with confidences
+      "nBest": [
         {
-          "ChannelNumber": null                             'always null'
-          "Lexical": string
-          "ITN": string
-          "MaskedITN": string
-          "Display": string
-        }
-      ]
-      SegmentResults:[                                      'for each individual segment'
-        {
-          "RecognitionStatus": "Success | Failure"
-          "ChannelNumber": null
-          "SpeakerId": null | "1 | 2"                       'null if no diarization
-                                                             or stereo input file, the
-                                                             speakerId as a string if
-                                                             diarization requested for
-                                                             mono audio file'
-          "Offset": number                                  'time in ticks (1 tick is 100 nanosec)'
-          "Duration": number                                'time in ticks (1 tick is 100 nanosec)'
-          "OffsetInSeconds" : number                        'Real number. Two decimal places'
-          "DurationInSeconds" : number                      'Real number. Two decimal places'
-          "NBest": [
+          "confidence": 0.898652852,                               // confidence value for the recognition of the whole phrase
+          "speaker": 1,                                            // if `diarizationEnabled` is `true`, this is the identified speaker (1 or 2), otherwise this property is not present
+          "lexical": "hello world",
+          "itn": "hello world",
+          "maskedITN": "hello world",
+          "display": "Hello world.",
+          
+          // if wordLevelTimestampsEnabled is `true`, there will be a result for each word of the phrase, otherwise this property is not present
+          "words": [
             {
-              "Confidence": number                          'between 0 and 1'
-              "Lexical": string
-              "ITN": string
-              "MaskedITN": string
-              "Display": string
-              "Sentiment":
-                {                                           'this is omitted if sentiment is
-                                                             not requested'
-                  "Negative": number                        'between 0 and 1'
-                  "Neutral": number                         'between 0 and 1'
-                  "Positive": number                        'between 0 and 1'
-                }
-              "Words": [
-                {
-                  "Word": string
-                  "Offset": number                          'time in ticks (1 tick is 100 nanosec)'
-                  "Duration": number                        'time in ticks (1 tick is 100 nanosec)'
-                  "OffsetInSeconds": number                 'Real number. Two decimal places'
-                  "DurationInSeconds": number               'Real number. Two decimal places'
-                  "Confidence": number                      'between 0 and 1'
-                }
-              ]
+              "word": "hello",
+              "offset": "PT0.09S",
+              "duration": "PT0.48S",
+              "offsetInTicks": 900000.0,
+              "durationInTicks": 4800000.0,
+              "confidence": 0.987572
+            },
+            {
+              "word": "world",
+              "offset": "PT0.59S",
+              "duration": "PT0.16S",
+              "offsetInTicks": 5900000.0,
+              "durationInTicks": 1600000.0,
+              "confidence": 0.906032
             }
           ]
         }
-      ]
+      ]    
     }
   ]
 }
@@ -227,28 +262,28 @@ Výsledek obsahuje tyto formuláře:
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `Lexical`
+      `lexical`
    :::column-end:::
    :::column span="2":::
       Skutečná slova byla rozpoznána.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `ITN`
+      `itn`
    :::column-end:::
    :::column span="2":::
       Inverzní text – normalizovaná forma rozpoznaného textu. Zkratky ("lékař Novák" na "Dr Smith"), telefonní čísla a další transformace jsou aplikovány.
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `MaskedITN`
+      `maskedITN`
    :::column-end:::
    :::column span="2":::
       Formulář vytvořené s aplikovaným maskou vulgárních výrazů
 :::row-end:::
 :::row:::
    :::column span="1":::
-      `Display`
+      `display`
    :::column-end:::
    :::column span="2":::
       Formulář pro zobrazení rozpoznaného textu Jsou zahrnutá interpunkční znaménka a malá písmena.
@@ -258,102 +293,52 @@ Výsledek obsahuje tyto formuláře:
 
 Diarization je proces oddělení mluvčích v rámci zvukového zařízení. Náš dávkový kanál podporuje diarization a dokáže rozpoznat dva reproduktory na záznamech kanálů mono. Tato funkce není k dispozici pro stereofonní nahrávky.
 
-Všechen výstup přepisu obsahuje `SpeakerId`. Pokud se diarization nepoužívá, zobrazí `"SpeakerId": null` se ve výstupu JSON. Pro diarization podporujeme dva hlasy, takže reproduktory se identifikují jako `"1"` nebo `"2"`.
+Výstup přepisu s povoleným diarization obsahuje `Speaker` záznam pro každou frázi přepisu. Pokud se diarization nepoužívá, vlastnost není `Speaker` přítomna ve výstupu JSON. Pro diarization podporujeme dva hlasy, takže reproduktory se identifikují jako `1` nebo `2` .
 
 Pro vyžádání diarization stačí přidat relevantní parametr v požadavku HTTP, jak je znázorněno níže.
 
  ```json
 {
-  "recordingsUrl": "<URL to the Azure blob to transcribe>",
-  "models": [{"Id":"<optional acoustic model ID>"},{"Id":"<optional language model ID>"}],
-  "locale": "<locale to us, for example en-US>",
-  "name": "<user defined name of the transcription batch>",
-  "description": "<optional description of the transcription>",
+  "contentUrls": [
+    "<URL to an audio file to transcribe>",
+  ],
   "properties": {
-    "AddWordLevelTimestamps" : "True",
-    "AddDiarization" : "True"
-  }
+    "diarizationEnabled": true,
+    "wordLevelTimestampsEnabled": true,
+    "punctuationMode": "DictatedAndAutomatic",
+    "profanityFilterMode": "Masked"
+  },
+  "locale": "en-US",
+  "displayName": "Transcription of file using default model for en-US"
 }
 ```
 
-Časová razítka na úrovni aplikace by také musel být zapnutá, protože parametry výše uvedené žádosti ukazují.
-
-## <a name="sentiment-analysis"></a>Analýza mínění
-
-Funkce mínění odhadne mínění vyjádřenou ve zvukovém zařízení. Mínění se vyjadřuje hodnotou mezi 0 a 1 pro `Negative`, `Neutral`a `Positive` mínění. Například analýza mínění lze použít ve scénářích volání centra:
-
-- Získejte přehled o spokojenosti zákazníků
-- Získejte přehled o výkonu agentů (při volání tohoto týmu).
-- Najde přesný bod v čase, kdy volání trvalo v nezáporném směru.
-- Co je dobré při zapnutí negativního volání do kladného směru
-- Určení toho, co se zákazníkům líbí a co se na produkt nebo službu nelíbí
-
-Mínění je vyhodnoceno na segment zvuku na základě lexikálního formuláře. Celý text v tomto segmentu zvuku se používá k výpočtu mínění. Pro celý přepis se nepočítá žádné agregované mínění. Analýza mínění je aktuálně dostupná jenom v anglickém jazyce.
-
-> [!NOTE]
-> Doporučujeme místo toho použít Microsoft rozhraní API pro analýzu textu. Nabízí pokročilejší funkce nad rámec analýzy mínění, jako je například extrakce klíčových frází, automatické zjišování jazyka a další. Informace a ukázky najdete v [dokumentaci k analýza textu](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
->
-
-Ukázka výstupu JSON vypadá následovně:
-
-```json
-{
-  "AudioFileResults": [
-    {
-      "AudioFileName": "Channel.0.wav",
-      "AudioFileUrl": null,
-      "SegmentResults": [
-        {
-          "RecognitionStatus": "Success",
-          "ChannelNumber": null,
-          "Offset": 400000,
-          "Duration": 13300000,
-          "NBest": [
-            {
-              "Confidence": 0.976174,
-              "Lexical": "what's the weather like",
-              "ITN": "what's the weather like",
-              "MaskedITN": "what's the weather like",
-              "Display": "What's the weather like?",
-              "Words": null,
-              "Sentiment": {
-                "Negative": 0.206194,
-                "Neutral": 0.793785,
-                "Positive": 0.0
-              }
-            }
-          ]
-        }
-      ]
-    }
-  ]
-}
-```
+Časová razítka na úrovni aplikace musí být povolena, protože parametry výše uvedené žádosti ukazují.
 
 ## <a name="best-practices"></a>Osvědčené postupy
 
-Služba přepisu dokáže zvládnout velký počet odeslaných přepisů. Pomocí `GET` [metody přepisů](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/GetTranscriptions)můžete zadat dotaz na stav přepisů. Zachovejte informace vracené do rozumné velikosti zadáním `take` parametru (několik set). Po načtení výsledků [odstraňte přepisy](https://westus.cris.ai/swagger/ui/index#/Custom%20Speech%20transcriptions%3A/DeleteTranscription) ze služby pravidelně. Tím se garantuje rychlé odpovědi z volání správy přepisu.
+Služba přepisu dokáže zvládnout velký počet odeslaných přepisů. Můžete zadat dotaz na stav vašich přepisů `GET` v části [získání přepisů](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/GetTranscriptions). Po načtení výsledků volání odstraňte ze služby pravidelné [přepisy](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/DeleteTranscription) . Případně nastavte `timeToLive` vlastnost na rozumnou hodnotu, abyste zajistili případné odstranění výsledků.
 
 ## <a name="sample-code"></a>Ukázka kódu
 
-Kompletní ukázky jsou k dispozici v `samples/batch` [úložišti ukázek GitHub](https://aka.ms/csspeech/samples) v podadresáři.
+Kompletní ukázky jsou k dispozici v [úložišti ukázek GitHub](https://aka.ms/csspeech/samples) v `samples/batch` podadresáři.
 
-Je nutné upravit ukázkový kód s informacemi o předplatném, s oblastí služby, identifikátorem URI SAS odkazujícím na zvukový soubor na přepisovat a ID modelu pro případ, že chcete použít vlastní akustický nebo jazykový model.
+Aktualizujte prosím vzorový kód s informacemi o předplatném, s oblastí služby, identifikátorem URI SAS odkazujícím na zvukový soubor na přepisovat a umístěním modelu pro případ, že chcete použít vlastní model.
 
-[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchdefinition)]
+[!code-csharp[Configuration variables for batch transcription](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptiondefinition)]
 
 Vzorový kód nastaví klienta a odešle požadavek přepisu. Pak se dotazuje na informace o stavu a vytiskne podrobnosti o průběhu přepisu.
 
-[!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#batchstatus)]
+[!code-csharp[Code to check batch transcription status](~/samples-cognitive-services-speech-sdk/samples/batch/csharp/program.cs#transcriptionstatus)]
 
-Úplné podrobnosti o předchozích voláních najdete v našem [dokumentu Swagger](https://westus.cris.ai/swagger/ui/index). Úplný vzorek, který vidíte tady, najdete v `samples/batch` podadresáři na [GitHubu](https://aka.ms/csspeech/samples) .
+Úplné podrobnosti o předchozích voláních najdete v našem [dokumentu Swagger](https://westus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0). Úplný vzorek, který vidíte tady, najdete v podadresáři na [GitHubu](https://aka.ms/csspeech/samples) `samples/batch` .
 
-Poznamenejte si asynchronní nastavení pro publikování zvuku a přijetí přepisu stavu. Vytvořeným klientem je klient .NET HTTP. Existuje `PostTranscriptions` metoda pro odeslání podrobností o zvukovém souboru a `GetTranscriptions` metodě pro příjem výsledků. `PostTranscriptions`Vrátí popisovač a `GetTranscriptions` použije ho k vytvoření popisovače pro získání stavu přepisu.
+Poznamenejte si asynchronní nastavení pro publikování zvuku a přijetí přepisu stavu. Vytvořeným klientem je klient .NET HTTP. Existuje `PostTranscriptions` metoda pro odeslání podrobností o zvukovém souboru a `GetTranscriptions` metodě pro přijetí stavů. `PostTranscriptions`Vrátí popisovač a `GetTranscriptions` použije ho k vytvoření popisovače pro získání stavu přepisu.
 
-Aktuální ukázkový kód neurčuje vlastní model. Služba používá základní modely pro zdlouhavého přepisování souborů nebo souborů. Chcete-li určit modely, můžete předat stejnou metodu jako ID modelu pro akustický a jazykový model.
+Aktuální ukázkový kód neurčuje vlastní model. Služba používá základní model pro zdlouhavého přepisování souborů nebo souborů. Chcete-li určit model, můžete předat stejné metodě odkaz na model pro vlastní model.
 
 > [!NOTE]
-> Pro přepisy směrného plánu není nutné deklarovat ID pro základní modely. Pokud zadáte pouze ID jazykového modelu (bez ID akustického modelu), je automaticky vybrán shodný akustický model. Pokud zadáte pouze ID akustického modelu, je automaticky vybrán shodný jazykový model.
+> Pro přepisy směrného plánu není nutné deklarovat ID pro základní model.
 
 ## <a name="download-the-sample"></a>Stažení ukázky
 

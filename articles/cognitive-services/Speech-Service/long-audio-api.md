@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.author: trbye
-ms.openlocfilehash: 550579b40470d7a1ad02031b8140e7d0a7164f46
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: ca6bff4c1e99bb8e63db212ca57693870afc30e7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310593"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080643"
 ---
 # <a name="long-audio-api-preview"></a>Dlouhé zvukové rozhraní API (Preview)
 
@@ -66,7 +66,7 @@ Po přípravě vstupního obsahu postupujte podle pokynů k [rychlému startu pr
 |        | 400 | Funkce Voice syntézy podporuje pouze textový soubor v kódování UTF-8 se značkou pořadí bajtů. | Ujistěte se, že vstupní soubory jsou v kódování UTF-8 se značkou pořadí bajtů. |
 |        | 400 | V požadavku na Shrnutí hlasu jsou povolené jenom platné vstupy SSML. | Ujistěte se, že vstupní výrazy SSML jsou správné. |
 |        | 400 | Hlasový název {Voice} nebyl ve vstupním souboru nalezen. | Vstupní název vstupu SSML není zarovnán s identifikátorem ID modelu. |
-|        | 400 | Velikost odstavce ve vstupním souboru by měla být menší než 10 000. | Ujistěte se, že je odstavec v souboru menší než 10 000. |
+|        | 400 | Počet odstavců ve vstupním souboru by měl být menší než 10 000. | Ujistěte se, že počet odstavců v souboru je menší než 10 000. |
 |        | 400 | Vstupní soubor by měl být delší než 400 znaků. | Ujistěte se, že vstupní soubor překračuje 400 znaků. |
 |        | 404 | Model deklarovaný v definici hlasové syntézy nejde najít: {modelID}. | Ujistěte se, že je {modelID} správné. |
 |        | 429 | Překročil aktivní limit pro syntézu hlasu. Počkejte prosím, než se dokončí některé požadavky. | Server může spouštět a zařadit do fronty až 120 požadavků pro každý účet Azure. Počkejte prosím a vyhněte se odesílání nových požadavků do doby, než se dokončí některé žádosti. |

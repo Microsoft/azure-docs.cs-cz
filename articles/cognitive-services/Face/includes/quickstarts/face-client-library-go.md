@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 4a96f0e887bb04aea6d451e08bd5d26d1cc6edca
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: 887b9fa62b89c500ef3b2b0164ba0281f911621e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82587890"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85073402"
 ---
 Začínáme s klientskou knihovnou pro práci na cestách. Pomocí těchto kroků nainstalujte knihovnu a vyzkoušejte si naše příklady pro základní úlohy. Služba Faceer poskytuje přístup k pokročilým algoritmům pro zjišťování a rozpoznávání lidských plošek na obrázcích.
 
@@ -30,66 +30,14 @@ Použijte klientskou knihovnu služby FACET k přechodu na:
 
 ## <a name="prerequisites"></a>Požadavky
 
-* Předplatné Azure – [můžete ho vytvořit zdarma](https://azure.microsoft.com/free/) .
 * Nejnovější verze nástroje [Přejít](https://golang.org/dl/)
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+    * K připojení aplikace k Face API budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
+* Po získání klíče a koncového bodu [vytvořte proměnné prostředí](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) pro klíč a koncový bod s názvem `FACE_SUBSCRIPTION_KEY` a v `FACE_ENDPOINT` uvedeném pořadí.
 
-## <a name="set-up"></a>Nastavení
-
-### <a name="create-a-face-azure-resource"></a>Vytvoření prostředku Azure FACET 
-
-Začněte používat službu obličeje vytvořením prostředku Azure. Vyberte typ prostředku, který je pro vás nejvhodnější:
-
-* [Prostředek zkušební verze](https://azure.microsoft.com/try/cognitive-services/#decision) (není potřeba předplatné Azure): 
-    * Platí po dobu sedmi dnů zdarma. Po registraci bude na [webu Azure](https://azure.microsoft.com/try/cognitive-services/my-apis/)dostupný zkušební klíč a koncový bod. 
-    * To je skvělý způsob, pokud chcete vyzkoušet službu obličeje, ale nemáte předplatné Azure.
-* [Prostředek služby obličeje](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFace):
-    * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.
-    * Pomocí cenové úrovně Free můžete službu vyzkoušet a upgradovat ji později na placenou úroveň pro produkční prostředí.
-* [Prostředek s více službami](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne):
-    * K dispozici prostřednictvím Azure Portal, dokud prostředek neodstraníte.  
-    * Používejte stejný klíč a koncový bod pro vaše aplikace, a to napříč více Cognitive Services.
-
-### <a name="create-an-environment-variable"></a>Vytvoření proměnné prostředí
-
->[!NOTE]
-> Koncové body pro prostředky nevyužívající zkušební verzi vytvořené po 1. červenci 2019 používají vlastní formát subdomény, který vidíte níže. Další informace a úplný seznam regionálních koncových bodů najdete v tématu [názvy vlastních subdomén pro Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-custom-subdomains). 
-
-Pomocí klíče a koncového bodu z prostředku, který jste vytvořili, vytvořte dvě proměnné prostředí pro ověřování:
-* `FACE_SUBSCRIPTION_KEY`– Klíč prostředku pro ověření vašich požadavků.
-* `FACE_ENDPOINT`– Koncový bod prostředku pro odesílání požadavků rozhraní API. Bude vypadat takto: 
-  * `https://<your-custom-subdomain>.api.cognitive.microsoft.com` 
-
-Použijte pokyny pro váš operační systém.
-<!-- replace the below endpoint and key examples -->
-#### <a name="windows"></a>[Windows](#tab/windows)
-
-```console
-setx FACE_SUBSCRIPTION_KEY <replace-with-your-product-name-key>
-setx FACE_ENDPOINT <replace-with-your-product-name-endpoint>
-```
-
-Po přidání proměnné prostředí restartujte okno konzoly.
-
-#### <a name="linux"></a>[Linux](#tab/linux)
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source ~/.bashrc`, aby se změny projevily.
-
-#### <a name="macos"></a>[macOS](#tab/unix)
-
-Upravte `.bash_profile` a přidejte proměnnou prostředí:
-
-```bash
-export FACE_SUBSCRIPTION_KEY=<replace-with-your-product-name-key>
-export FACE_ENDPOINT=<replace-with-your-product-name-endpoint>
-```
-
-Po přidání proměnné prostředí spusťte v okně konzoly příkaz `source .bash_profile`, aby se změny projevily.
-***
+## <a name="setting-up"></a>Nastavení
 
 ### <a name="create-a-go-project-directory"></a>Vytvořit adresář projektu přejít
 
@@ -251,7 +199,7 @@ Následující kód přebírá obrázek s více ploškami a hledá identitu kaž
 
 ### <a name="get-a-test-image"></a>Získat image testu
 
-Následující kód vypadá v kořenu projektu image _test-image-person-Group. jpg_ a načítá ho do paměti programu. Tento obrázek najdete ve stejném úložišti jako obrázky používané v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group): https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
+Následující kód vypadá v kořenu projektu _test-image-person-group.jpg_ obrázku a načítá ho do paměti programu. Tento obrázek najdete ve stejném úložišti jako obrázky používané v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group): https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images .
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_id_source_get)]
 
@@ -301,13 +249,13 @@ Následující kód porovnává každý zdrojový obraz s cílovou imagí a vyti
 
 ## <a name="take-a-snapshot-for-data-migration"></a>Pořídit snímek migrace dat
 
-Funkce snímků umožňuje přesunout uložená data o obličejích, jako je například školená **osoba**, do jiného předplatného služby Azure Cognitive Services Face. Tuto funkci můžete použít, pokud jste například vytvořili objekt **Person** pomocí bezplatné zkušební verze předplatného a teď ho chcete migrovat na placené předplatné. Přehled funkce snímků najdete v tématu [migrace dat](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) o ploše.
+Funkce snímků umožňuje přesunout uložená data o obličejích, jako je například školená **osoba**, do jiného předplatného služby Azure Cognitive Services Face. Tuto funkci můžete použít například v případě, že jste vytvořili objekt **Person** pomocí bezplatného předplatného a teď ho chcete migrovat na placené předplatné. Přehled funkce snímků najdete v tématu [migrace dat](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) o ploše.
 
 V tomto příkladu migrujete skupinu **Person** , kterou jste vytvořili v části [Vytvoření a výuka skupiny osob](#create-and-train-a-person-group). Tuto část můžete buď dokončit jako první, nebo použít vlastní tváře datové konstrukce.
 
 ### <a name="set-up-target-subscription"></a>Nastavit cílové předplatné
 
-Nejdřív musíte mít k dispozici druhé předplatné Azure s předním prostředkem; to můžete provést opakováním kroků v části [Nastavení](#set-up) . 
+Nejdřív musíte mít k dispozici druhé předplatné Azure s předním prostředkem; to můžete provést opakováním kroků v části [Nastavení](#setting-up) . 
 
 Pak vytvořte následující proměnné v horní části metody **Main** . Budete také muset vytvořit nové proměnné prostředí pro ID předplatného vašeho účtu Azure a také klíč, koncový bod a ID předplatného vašeho nového (cílového) účtu.
 

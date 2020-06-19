@@ -330,6 +330,8 @@
               href: ./partner-center-portal/azure-vm-create-offer.md
             - name: Vytvoření technického prostředku virtuálního počítače Azure
               items:
+                - name: Certifikace virtuálních počítačů – problémy a řešení
+                  href: ./partner-center-portal/vm-certification-issues-solutions.md
                 - name: Vytvoření technického prostředku virtuálního počítače Azure
                   href: ./partner-center-portal/create-azure-vm-technical-asset.md
                 - name: Nejčastější dotazy k technickým prostředkům virtuálního počítače Azure

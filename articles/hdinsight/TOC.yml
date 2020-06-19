@@ -219,10 +219,6 @@
               href: ./hadoop/apache-hadoop-visual-studio-tools-get-started.md
             - name: Nástroje Sparku a Hivu pro VSCode
               href: ./hdinsight-for-vscode.md
-            - name: Nástroje HDInsight pro IntelliJ s Hortonworks Sandbox
-              href: ./hadoop/hdinsight-tools-for-intellij-with-hortonworks-sandbox.md
-            - name: Nástroje služby Data Lake s Hortonworks Sandbox
-              href: ./hdinsight-hadoop-emulator-visual-studio.md
         - name: Monitorování
           items:
             - name: Použití protokolů Azure Monitoru
@@ -501,7 +497,7 @@
                   href: ./hadoop/apache-hadoop-run-samples-linux.md
                 - name: Spuštění vlastních programů MapReduce Apache Hadoopu
                   href: ./hadoop/apache-hadoop-run-custom-programs.md
-                - name: 'Vývoj programů MapReduce se streamováním v C#'
+                - name: Vývoj programů MapReduce se streamováním v C#
                   href: ./hadoop/apache-hadoop-dotnet-csharp-mapreduce-streaming.md
                 - name: Vývoj programů MapReduce v Javě
                   href: ./hadoop/apache-hadoop-develop-deploy-java-mapreduce-linux.md
@@ -758,7 +754,7 @@
           items:
             - name: Zpracování a analýza dokumentů JSON
               href: ./hadoop/using-json-in-hive.md
-            - name: 'Použití uživatelem definovaných funkcí jazyka C#'
+            - name: Použití uživatelem definovaných funkcí jazyka C#
               href: ./hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md
             - name: Použití Pythonu s Apache Hivem a Apache Pig
               href: ./hadoop/python-udf-hdinsight.md
@@ -893,7 +889,7 @@
                   href: ./storm/apache-storm-develop-java-topology.md
                 - name: Vývoj topologií pomocí Pythonu
                   href: ./storm/apache-storm-develop-python-topology.md
-                - name: 'Vývoj topologií pomocí C#'
+                - name: Vývoj topologií pomocí C#
                   href: ./storm/apache-storm-develop-csharp-visual-studio-topology.md
                 - name: Průvodce programováním pro SCP.NET
                   href: ./storm/apache-storm-scp-programming-guide.md
@@ -901,7 +897,7 @@
                   href: ./storm/apache-storm-example-topology.md
             - name: Streamovací kanály
               items:
-                - name: 'Event Hub a Apache Storm (C# a Java)'
+                - name: Event Hub a Apache Storm (C# a Java)
                   href: ./storm/apache-storm-develop-csharp-event-hub-topology.md
         - name: Spravovat
           items:
