@@ -18,6 +18,8 @@
           href: ./servers/onboard-dsc.md
     - name: Spravovat
       items:
+        - name: Správa a použití rozšíření virtuálních počítačů Azure
+          href: ./servers/manage-vm-extensions.md
         - name: Správa agenta
           href: ./servers/manage-agent.md
 - name: ukázky

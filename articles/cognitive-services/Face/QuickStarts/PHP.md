@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: f2584892bb349d126b73c3f8df211f745a362bd8
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: f4d848eae23023d55ad41b7893610f246eddefd9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81403351"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84987814"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-php"></a>Rychlý start: Rozpoznávání tváří na obrázku pomocí rozhraní REST API a PHP
 
@@ -23,14 +23,17 @@ V tomto rychlém startu použijete REST API Azure Face s PHP k detekci lidských
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Klíč předplatného pro vytvoření obličeje. K získání bezplatné zkušební verze předplatného můžete [použít Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api). Případně postupujte podle pokynů v části [Vytvoření účtu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) pro přihlášení k odběru služby obličeje a Získejte svůj klíč.
-- Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download).
-- Balíček PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) .
-- Webový prohlížeč s podporou PHP. Pokud jste toto nastavení nestavili, můžete to udělat tak, že na svém počítači nainstalujete a nanastavíte [XAMPP](https://www.apachefriends.org/) .
+* Předplatné Azure – [Vytvořte si ho zdarma](https://azure.microsoft.com/free/cognitive-services/) .
+* Jakmile budete mít předplatné Azure, <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesFace"  title=" vytvořte prostředek "  target="_blank"> pro vytváření obličeje a vytvořte na Azure Portal prostředek, <span class="docon docon-navigate-external x-hidden-focus"></span> </a> abyste získali svůj klíč a koncový bod. Po nasazení klikněte na **Přejít k prostředku**.
+    * K připojení aplikace k Face API budete potřebovat klíč a koncový bod z prostředku, který vytvoříte. Svůj klíč a koncový bod vložíte do níže uvedeného kódu později v rychlém startu.
+    * K vyzkoušení služby můžete použít bezplatnou cenovou úroveň ( `F0` ) a upgradovat ji později na placenou úroveň pro produkční prostředí.
+* Editor kódu, jako je například [Visual Studio Code](https://code.visualstudio.com/download).
+* Balíček PHP [HTTP_Request2](https://pear.php.net/package/HTTP_Request2) .
+* Webový prohlížeč s podporou PHP. Pokud jste toto nastavení nestavili, můžete to udělat tak, že na svém počítači nainstalujete a nanastavíte [XAMPP](https://www.apachefriends.org/) .
 
 ## <a name="initialize-the-html-file"></a>Inicializovat soubor HTML
 
-Vytvořte nový soubor HTML *detectFaces. html*a přidejte následující kód.
+Vytvořte nový soubor HTML *detectFaces.html*a přidejte následující kód.
 
 ```html
 <html>
@@ -43,7 +46,7 @@ Vytvořte nový soubor HTML *detectFaces. html*a přidejte následující kód.
 
 ## <a name="write-the-php-script"></a>Zápis skriptu PHP
 
-Do `body` prvku dokumentu přidejte následující kód. Tento kód nastaví základní uživatelské rozhraní s polem Adresa URL, tlačítko **analyzovat plochu** , podokno odpovědi a podokno zobrazení obrázku.
+Do prvku dokumentu přidejte následující kód `body` . Tento kód nastaví základní uživatelské rozhraní s polem Adresa URL, tlačítko **analyzovat plochu** , podokno odpovědi a podokno zobrazení obrázku.
 
 ```php
 <?php
@@ -99,7 +102,7 @@ catch (HttpException $ex)
 ?>
 ```
 
-Budete muset aktualizovat `subscriptionKey` pole hodnotou klíče předplatného a musíte změnit `uriBase` řetězec tak, aby obsahoval správný řetězec koncového bodu. `returnFaceAttributes` Pole určuje, které atributy tváře mají být načteny. Tento řetězec možná budete chtít změnit v závislosti na zamýšleném použití.
+Budete muset aktualizovat `subscriptionKey` pole hodnotou klíče předplatného a musíte změnit `uriBase` řetězec tak, aby obsahoval správný řetězec koncového bodu. `returnFaceAttributes`Pole určuje, které atributy tváře mají být načteny. Tento řetězec můžete změnit v závislosti na zamýšleném použití.
 
 [!INCLUDE [subdomains-note](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 

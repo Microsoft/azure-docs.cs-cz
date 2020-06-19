@@ -114,6 +114,8 @@
         - name: Protokolování času pro příjem dat
           displayname: latency
           href: platform/data-ingestion-time.md
+        - name: Streamování dat do Event Hubs
+          href: platform/stream-monitoring-data-event-hubs.md
     - name: Insights
       href: insights/insights-overview.md
     - name: Zabezpečení dat
@@ -299,36 +301,12 @@
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/platform-logs-overview.md
         - name: Protokol aktivit
-          items:
-            - name: Zobrazení na webu Azure Portal
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-view.md
-            - name: Shromažďování a analýza
-              displayName: 'Platform logs, Activity log'
-              href: platform/activity-log-collect.md
-            - name: Export (starší verze)
-              displayname: Activity log
-              href: platform/activity-log-export.md
-        - name: Odeslání do pracovního prostoru služby Log Analytics
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-workspace.md
-        - name: Odeslání do Azure Storage
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-collect-storage.md
-        - name: Odeslání do Event Hubs
-          displayname: 'Resource logs, Activity log, Platform logs'
-          href: platform/resource-logs-stream-event-hubs.md
-        - name: Vytvoření nastavení diagnostiky
+          href: platform/activity-log.md
+        - name: Protokoly prostředků
+          href: platform/resource-logs.md
+        - name: Nastavení diagnostiky
           displayName: 'Platform logs, Resource logs, Activity log'
           href: platform/diagnostic-settings.md
-        - name: Vytvoření nastavení diagnostiky s využitím šablon Resource Manageru
-          displayName: 'diagnostic setting, Platform logs, Resource logs, Activity log'
-          href: platform/diagnostic-settings-template.md
-        - name: Změna formátu úložiště objektů blob
-          displayname: Diagnostic settings
-          href: platform/resource-logs-blob-format.md
-        - name: Streamování dat do Event Hubs
-          href: platform/stream-monitoring-data-event-hubs.md
     - name: Log Analytics
       items:
         - name: Přehled dotazů na protokoly
@@ -1015,6 +993,8 @@
           href: insights/storage-insights-overview.md
         - name: Skupiny prostředků
           href: insights/resource-group-insights.md
+        - name: Řešení potíží s přehledy
+          href: insights/troubleshoot-workbooks.md
     - name: Řešení
       items:
         - name: Přehled
@@ -1185,12 +1165,12 @@
           href: platform/alerts-metric-near-real-time.md
     - name: Protokoly platformy
       items:
-        - name: Podporované kategorie a typy protokolů prostředků
-          href: platform/resource-logs-categories.md
-        - name: Schémata protokolu prostředků
-          href: platform/resource-logs-schema.md
         - name: Schéma protokolu aktivit
           href: platform/activity-log-schema.md
+        - name: Schémata protokolu prostředků
+          href: platform/resource-logs-schema.md
+        - name: Podporované kategorie protokolů prostředků
+          href: platform/resource-logs-categories.md
     - name: Schémata rozšíření diagnostiky
       items:
         - name: Rozšíření diagnostiky Windows
@@ -1277,6 +1257,9 @@
           href: platform/oms-portal-transition.md
         - name: Vyřazení diskových metrik
           href: platform/portal-disk-metrics-deprecation.md
+        - name: Změna formátu úložiště objektů blob
+          displayname: Diagnostic settings
+          href: platform/resource-logs-blob-format.md
 - name: Zdroje a prostředky
   items:
     - name: Plány Azure do budoucna

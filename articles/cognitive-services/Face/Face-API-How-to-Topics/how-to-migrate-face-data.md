@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: nitinme
-ms.openlocfilehash: fd0e7079b3b70a6a6b8166cc7fc7518070e7153d
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: ab03e68acf96928922959ed939c0accc1f8290a5
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83120806"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84986673"
 ---
 # <a name="migrate-your-face-data-to-a-different-face-subscription"></a>Migrace vašich obličejových dat na jiný obličejový odběr
 
-V této příručce se dozvíte, jak přesunout data obličeje, jako je uložený objekt Person s obličejemi, do jiného předplatného Azure Cognitive Services Face. Chcete-li přesunout data, použijte funkci Snapshot. Tímto způsobem se vyhnete opakovanému sestavování a učení objektu person nebo FaceList při přesouvání nebo rozšiřování vašich operací. Můžete třeba vytvořit objekt person pomocí bezplatné zkušební verze předplatného a teď ho chtít migrovat do placeného předplatného. Nebo může být nutné synchronizovat data z oblasti v rámci předplatných v různých oblastech pro velkou podnikovou operaci.
+V této příručce se dozvíte, jak přesunout data obličeje, jako je uložený objekt Person s obličejemi, do jiného předplatného Azure Cognitive Services Face. Chcete-li přesunout data, použijte funkci Snapshot. Tímto způsobem se vyhnete opakovanému sestavování a učení objektu person nebo FaceList při přesouvání nebo rozšiřování vašich operací. Můžete třeba vytvořit objekt Person s bezplatným předplatným a teď ho chtít migrovat do placeného předplatného. Nebo může být nutné synchronizovat data z oblasti v rámci předplatných v různých oblastech pro velkou podnikovou operaci.
 
 Tato strategie migrace se vztahuje také na objekty LargePersonGroup a LargeFaceList. Pokud nejste obeznámeni s koncepty v této příručce, přečtěte si téma jejich definice v příručce věnovaném [koncepcím rozpoznávání obličeje](../concepts/face-recognition.md) . Tato příručka používá klientskou knihovnu rozhraní .NET s jazykem C#.
 
