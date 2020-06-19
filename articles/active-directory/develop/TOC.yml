@@ -305,7 +305,7 @@
         - name: iOS a macOS
           items:
             - name: Integrace s Azure AD B2C
-              href: 'config-authority.md#b2c'
+              href: config-authority.md#b2c
             - name: Migrace na MSAL.iOS/macOS
               href: migrate-objc-adal-msal.md
             - name: Režim sdíleného zařízení pro zařízení s iOS
@@ -376,6 +376,11 @@
               displayName: 'shared device mode, firstline worker, frontline worker, flw'
             - name: Zpracování změn souborů cookie SameSite v prohlížeči Chrome
               href: howto-handle-samesite-cookie-changes-chrome-browser.md
+            - name: Rozsahy pro webové rozhraní API přijímající tokeny v1.0
+              href: msal-v1-app-scopes.md
+            - name: Migrace aplikací z ADAL na MSAL
+              href: msal-migration.md
+              displayName: migration
     - name: Protokoly pro ověřování
       displayName: Auth protocol
       items:
@@ -471,6 +476,34 @@
           href: /azure/active-directory/app-provisioning/scim-graph-scenarios
         - name: Automatizace konfigurace s využitím MS Graphu
           href: /azure/active-directory/app-provisioning/application-provisioning-configure-api
+    - name: Články nápovědy pro Azure Portal
+      items:
+        - name: Výchozí nastavení životnosti tokenů pro aplikaci vyvinutou na míru
+          href: registration-config-change-token-lifetime-how-to.md
+        - name: Zjišťování koncových bodů
+          href: registration-config-how-to.md
+        - name: Výběr oprávnění pro konkrétní rozhraní API
+          href: perms-for-given-api.md
+        - name: Protokoly pro ověřování
+          href: active-directory-authentication-protocols.md
+        - name: Rozdíly mezi delegovanými oprávněními a oprávněními aplikace
+          href: delegated-and-app-perms.md
+        - name: Jak funguje souhlas pro aplikace
+          href: consent-framework-links.md
+        - name: Vyhledání konkrétního rozhraní API potřebného pro aplikaci vyvinutou na míru
+          href: api-find-an-api-how-to.md
+        - name: Reference k registraci aplikací
+          href: active-directory-v2-registration-portal.md
+        - name: Registrační pole na webu Azure Portal pro aplikace vyvinuté na míru
+          href: registration-config-specific-application-property-how-to.md
+        - name: Konfigurace nové aplikace s více tenanty
+          href: setup-multi-tenant-app.md
+        - name: Přidání aplikace s více tenanty do galerie aplikací Azure AD
+          href: registration-config-multi-tenant-application-add-to-gallery-how-to.md
+        - name: Integrace se službou Azure Active Directory
+          href: active-directory-how-to-integrate.md
+        - name: Konfigurace jednotného přihlašování pro aplikaci
+          href: registration-config-sso-how-to.md
 - name: Návody
   items:
     - name: Authentication

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: travisw
-ms.openlocfilehash: 436367ede4f4be323b5334a201b1c9fb8f7f28e8
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.openlocfilehash: b9cbb873066131264732d6f46320461bae8c3188
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82997510"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84981757"
 ---
 # <a name="privacy-guidelines-for-voice-assistants-on-windows"></a>Pokyny pro ochranu osobních údajů pro hlasové asistenty ve Windows
 
@@ -24,37 +24,37 @@ Je důležité, aby uživatelé měli jasné informace o tom, jak se jejich hlas
 Vývojáři, kteří vytvářejí hlasové asistenty ve Windows, musí do svých aplikací zahrnout jasné prvky uživatelského rozhraní, které odrážejí možnosti poslechu pomocníka.
 
 > [!NOTE]
-> V případě, že se vám nepovedlo poskytnout vhodné zveřejnění a souhlas s pomocníkem, včetně po aktualizacích aplikací, může dojít k tomu, že se pomocník stane nedostupným pro aktivaci hlasu, dokud se problémy 
+> V případě, že se vám nepovedlo poskytnout vhodné zveřejnění a souhlas s pomocníkem, včetně po aktualizacích aplikací, může dojít k tomu, že se pomocník stane nedostupným pro aktivaci hlasu, dokud se problémy
 
 ## <a name="minimum-requirements-for-feature-inclusion"></a>Minimální požadavky na zahrnutí funkcí
 
-Uživatelé systému Windows mohou zobrazit a řídit dostupnost svých asistentních aplikací v **`Settings > Privacy > Voice activation`** nástroji.
+Uživatelé systému Windows mohou zobrazit a řídit dostupnost svých asistentních aplikací v nástroji **`Settings > Privacy > Voice activation`** .
 
  > [!div class="mx-imgBorder"]
  > [![soukromí – seznam aplikací](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png "Položka nastavení ochrany osobních údajů aktivace Windows Voice pro aplikaci pomocníka")](media/voice-assistants/windows_voice_assistant/privacy-app-listing.png#lightbox)
 
-Aby bylo možné zahrnout do tohoto seznamu nárok na zařazení, musí aplikace splňovat tyto podmínky:
+Pokud se má v tomto seznamu zobrazit nárok na zařazení, kontaktujte Microsoft winvoiceassistants@microsoft.com a začněte. Ve výchozím nastavení budou uživatelé muset explicitně povolit aktivaci hlasu pro nového pomocníka v **`Settings > Privacy > Voice Activation`** nástroji, který umožňuje propojení s protokolem `ms-settings:privacy-voiceactivation` . Po spuštění a použití rozhraní API se v seznamu zobrazí povolená aplikace `Windows.ApplicationModel.ConversationalAgent` . Nastavení aktivace hlasu bude možné upravovat, jakmile aplikace získá souhlas s mikrofonem od uživatele.
 
-1. Výrazně sdělí svým uživatelům, že bude naslouchat klíčové slovo, i když aplikace není spuštěná a co toto klíčové slovo je
-1. Zahrňte popis způsobu použití hlasových dat uživatele, včetně odkazu nebo odkazu na relevantní zásady ochrany osobních údajů.
-1. Informování uživatelů, že kromě jakýchkoli nastavení v aplikaci mohou uživatelé zobrazit a upravit své volby ochrany osobních údajů v **`Settings > Privacy > Voice activation`**, volitelně zahrnout odkaz na `ms-settings:privacy-voiceactivation` protokol pro přímý přístup
+Vzhledem k tomu, že nastavení ochrany osobních údajů systému Windows zahrnuje informace o tom, jak funguje aktivace hlasu a má standardní uživatelské rozhraní pro řízení oprávnění, jejich zveřejnění a souhlas. Pomocník zůstane v tomto seznamu povolených hodnot, pokud ne:
 
-Po splnění těchto požadavků a získání schválení od Microsoftu se v seznamu aplikací pro aktivaci hlasu zobrazí aplikace pomocníka po registraci s `Windows.ApplicationModel.ConversationalAgent` rozhraními API a uživatelé budou moct udělit souhlas k aplikaci pro aktivaci klíčového slova. Ve výchozím nastavení jsou `Off` obě tato nastavení a vyžadují, aby uživatel ručně navštívil stránku nastavení, aby povolil.
+* V omylu Informujte uživatele o aktivaci hlasu nebo hlasovém zpracování dat pomocníka.
+* Nepatřičná rušivá vliv na jiného pomocníka
+* Rozdělení jakýchkoli dalších relevantních zásad Microsoftu
+
+Pokud je zjištěna kterákoli z výše uvedených skutečností, může společnost Microsoft odebrat pomocníka ze seznamu povolených aplikací, dokud nebudou vyřešeny problémy.
 
 > [!NOTE]
 > Ve všech případech oprávnění k aktivaci hlasu vyžaduje oprávnění mikrofonu. Pokud aplikace pomocníka nemá přístup přes mikrofon, nebude mít nárok na aktivaci hlasu a zobrazí se v nastavení soukromí aktivace hlasu v zakázaném stavu.
 
 ## <a name="additional-requirements-for-inclusion-in-microphone-consent"></a>Další požadavky na zařazení do souhlasu mikrofonu
 
-Pomocným autorům, kteří chtějí svým uživatelům snazší a plynulejší přihlédnout k aktivaci hlasu, může to udělat tak, že splní několik dalších požadavků na výše uvedené. Po splnění těchto kroků se standardně nastaví výchozí nastavení pro aktivaci hlasu zařízení, které `On` je odemčené zařízením (a pouze jednou), bude aplikaci udělen přístup k mikrofonu. Tím se v nastavení před aktivací pomocníka neodstraní potřeba další cesta k nastavení.
+Pomocným autorům, kteří chtějí usnadnit a hladce se přihlášeni k aktivaci hlasu, můžou to udělat tak, že splní další požadavky, aby dostatečně splnily informace a souhlasili s tím, že se na stránku nastavení nepřipojí další cesta. Po schválení bude aktivace hlasu okamžitě k dispozici, jakmile uživatel udělí aplikaci pomocníka oprávnění k mikrofonu. Aby to bylo možné, musí pomocníkská aplikace **před** zobrazením souhlasu s mikrofonem (například pomocí `AppCapability.RequestAccessAsync` rozhraní API) provést následující akce:
 
-Další požadavky jsou, že aplikace pomocníka musí:
+1. Poskytněte jasnému a výraznému oznámení uživateli, že by aplikace chtěla naslouchat hlasu uživatele pro klíčové slovo, a *to i v případě, že aplikace není spuštěná*a přeje by se jednat o souhlas uživatele.
+1. Uveďte relevantní informace o využití dat a zásadách ochrany osobních údajů, jako je odkaz na oficiální prohlášení o zásadách ochrany osobních údajů.
+1. Vyhněte se jakékoli direktivě nebo úvodnímu slovu (například "při použití možnosti" klikněte na tlačítko Ano ") v toku zkušeností, který vychází z chování při zachytávání zvuku
 
-1. **Před** zobrazením výzvy k zadání souhlasu s mikrofonem (například `AppCapability.RequestAccessAsync` pomocí rozhraní API) poskytněte uživateli výrazný náznak, že aplikace pomocníka chce naslouchat hlasu uživatele pro klíčové slovo, a to i v případě, že aplikace není spuštěná a přeje by se jednat o souhlas uživatele.
-2. Zahrnout všechny relevantní informace o využití dat a zásadách ochrany osobních údajů **před** vyžádáním přístupu k mikrofonu nebo pomocí `Windows.ApplicationModel.ConversationalAgent` rozhraní API
-3. Vyhněte se jakékoli direktivě nebo úvodnímu slovu (například "klikněte na tlačítko Ano na následující výzvě") v toku zkušeností při zachytávání chování zachycení zvuku a vyžádání oprávnění
-
-Po splnění těchto požadavků se v seznamu aplikací, které mají nárok na aktivaci hlasu v případě udělení přístupu k mikrofonu `enabled` , zobrazí v seznamu aplikací, které mají nárok na aktivaci hlasu ve stavu.
+Pokud aplikace dosáhne všech výše uvedených možností, je vhodné povolit možnost aktivace hlasu spolu s použitím souhlasu s mikrofonem. Požádejte o winvoiceassistants@microsoft.com Další informace a podívejte se na první prostředí pro použití.
 
 > [!NOTE]
 > Aktivace hlasu výše není vhodná pro automatické povolení s přístupem k mikrofonu a bude dál vyžadovat, aby uživatel navštívil stránku soukromí pro aktivaci hlasu, aby mohl pomocníka získat výše.

@@ -62,7 +62,7 @@ Vytvoření aplikace v pomocném mechanismu řízení:
 
     f. Vyberte zásobník modulu runtime.
 
-    g. Vyberte **Linux** nebo **Windows**. 
+    například Vyberte **Linux** nebo **Windows**. 
 
     h. V rozevíracím seznamu **oblast** vyberte svůj pomocný seznam. 
 
@@ -165,7 +165,7 @@ Koncové body pro publikování pro aplikace ve službě ASE s interním nástro
 
 Pomocného programu má 1 TB úložiště pro všechny aplikace v pomocném formuláři. Plán App Service v izolované cenové SKU má limit 250 GB. V rámci pomocného mechanismu se 250 GB úložiště přidají za App Service plánu až do velikosti 1 TB. Můžete mít více App Service plánů než jenom čtyři, ale za omezení 1 TB se nepřidalo žádné další úložiště.
 
-## <a name="logging"></a>protokolování
+## <a name="logging"></a>Protokolování
 
 Pomocí Azure Monitor můžete integrovat své pomocného mechanismu pro odesílání protokolů o pomocném programu do Azure Storage, Azure Event Hubs nebo Log Analytics. Tyto položky jsou protokolovány Dnes:
 
