@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 18b158b7a4881619b93ab404de67f7bb25f92b6a
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 700c53c8fee61ce6e3c9a65bc3815fabfc5b2baa
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76166833"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983503"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Analýza videí téměř v reálném čase
 
@@ -230,12 +230,12 @@ Pomocí tohoto přístupu můžete vizualizovat zjištěnou plošku okamžitě. 
 
 Chcete-li začít s touto ukázkou, postupujte následovně:
 
-1. Získejte klíče rozhraní API pro zpracování obrazu v oblasti [Předplatná](https://azure.microsoft.com/try/cognitive-services/). Pro analýzu snímků videa platí tyto služby:
-    - [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Tvář](https://docs.microsoft.com/azure/cognitive-services/face/overview)
-2. Naklonujte úložiště GitHub [-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub.
-
-3. Otevřete ukázku v aplikaci Visual Studio 2015 nebo novější a poté Sestavte a spusťte ukázkové aplikace:
+1. Vytvořte [účet Azure](https://azure.microsoft.com/free/cognitive-services/). Pokud ho už máte, můžete přejít k dalšímu kroku.
+2. Vytvořte prostředky pro Počítačové zpracování obrazu a tvář v Azure Portal, abyste získali svůj klíč a koncový bod. Při instalaci nezapomeňte vybrat bezplatnou úroveň (F0).
+   - [Computer Vision](https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision)
+   - [Tvář](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Po nasazení prostředků klikněte na **Přejít k prostředku** a Shromážděte svůj klíč a koncový bod pro každý prostředek. 
+3. Naklonujte úložiště GitHub [-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub.
+4. Otevřete ukázku v aplikaci Visual Studio 2015 nebo novější a poté Sestavte a spusťte ukázkové aplikace:
     - V případě BasicConsoleSample je klíč obličeje pevně zakódovaný přímo v [BasicConsoleSample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs).
     - V případě LiveCameraSample zadejte klíče v podokně **Nastavení** aplikace. Klíče se chovají napříč relacemi jako uživatelská data.
 
@@ -245,7 +245,7 @@ Funkce VideoFrameAnalyzer s využitím obrázků, hlasu, videa a porozumění te
 
 ## <a name="summary"></a>Souhrn
 
-V tomto článku jste zjistili, jak spustit analýzu téměř v reálném čase u streamů videa s využitím obličeje a Počítačové zpracování obrazu služeb. Zjistili jste také, jak můžete začít používat náš vzorový kód. Pokud chcete začít sestavovat aplikaci pomocí bezplatných klíčů rozhraní API, navštivte [stránku registrace Azure Cognitive Services](https://azure.microsoft.com/try/cognitive-services/).
+V tomto článku jste zjistili, jak spustit analýzu téměř v reálném čase u streamů videa s využitím obličeje a Počítačové zpracování obrazu služeb. Zjistili jste také, jak můžete začít používat náš vzorový kód.
 
 V [úložišti GitHubu](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/)můžete poskytnout zpětnou vazbu a návrhy. Pokud chcete poskytnout širší názor na rozhraní API, přečtěte si náš [Web UserVoice](https://cognitive.uservoice.com/).
 

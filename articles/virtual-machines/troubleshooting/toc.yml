@@ -99,6 +99,8 @@
           href: unresponsive-vm-apply-windows-update.md
         - name: Virtuální počítač nereaguje při použití zásad skupiny
           href: unresponsive-vm-apply-group-policy.md
+        - name: Virtuální počítač nereaguje při použití zásad zabezpečení
+          href: unresponsive-vm-apply-security-policy.md
 - name: Nejde se připojit k virtuálnímu počítači
   items:
     - name: Protokol RDP

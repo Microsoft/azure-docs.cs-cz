@@ -7,12 +7,12 @@ ms.date: 03/02/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.reviewer: micflan
-ms.openlocfilehash: 10bd2e4722751b290263fc0599890ca92cd743c9
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: a25a34db99a4c1550ed78b5f084501fb8badfacf
+ms.sourcegitcommit: 6571e34e609785e82751f0b34f6237686470c1f3
 ms.translationtype: HT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83995645"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84791278"
 ---
 # <a name="understand-cost-management-data"></a>Vysvětlení dat služby Cost Management
 
@@ -122,6 +122,7 @@ Pokud ve službě Cost Management určitou značku nevidíte, zvažte následuj�
 - Použila se značka před více než 24 hodinami? Viz [Aktualizace a uchovávání údajů o využití a nákladech](#cost-and-usage-data-updates-and-retention).
 - Podporuje typ prostředku značky? Následující typy prostředků nepodporují značky v datech o využití od 1. prosince 2019. Úplný seznam toho, co se podporuje, najdete v tématu [Podpora značek pro prostředky Azure](../../azure-resource-manager/tag-support.md).
     - Adresáře Azure Active Directory B2C
+    - Azure Bastion
     - Brány Azure Firewall
     - Azure NetApp Files
     - Data Factory
