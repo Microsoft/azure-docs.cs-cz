@@ -30,9 +30,9 @@
     - name: Použití rozhraní REST API
       items:
         - name: Získání záměru
-          href: luis-get-started-get-intent-from-rest.md
+          href: luis-get-started-rest-get-intent.md
         - name: Změna modelu
-          href: get-started-get-model-rest-apis.md
+          href: luis-get-started-rest-get-model.md
 - name: Kurzy
   items:
     - name: Sestavení rozložitelné aplikace
@@ -226,6 +226,12 @@
           href: luis-migration-api-v3.md
         - name: Migrace na API V2
           href: luis-migration-api-v1-to-v2.md
+    - name: Použití rozhraní REST API
+      items:
+        - name: Získání záměru
+          href: luis-get-started-get-intent-from-rest.md
+        - name: Změna modelu
+          href: get-started-get-model-rest-apis.md
     - name: Použití kontejnerů
       items:
         - name: Instalace a spuštění kontejnerů

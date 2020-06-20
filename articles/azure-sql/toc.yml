@@ -953,6 +953,9 @@
                 - name: Edice
                   displayName: 'change, modify, update'
                   href: virtual-machines/windows/change-sql-server-edition.md
+                - name: Verze
+                  displayName: 'change, modify, update'
+                  href: virtual-machines/windows/change-sql-server-version.md
                 - name: Azure Storage pro zálohování a obnovení
                   href: virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md
             - name: Migrace
