@@ -10,12 +10,12 @@ metadata:
   author: georgewallace
   ms.author: gwallace
   ms.date: 03/08/2020
-  ms.openlocfilehash: 2ed84dfdfcabafe7222b8cb64a853ed04e2335a2
-  ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+  ms.openlocfilehash: e0a6ed07aa8805b8506533fa455aab178bba799d
+  ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 03/24/2020
-  ms.locfileid: "78944170"
+  ms.lasthandoff: 06/21/2020
+  ms.locfileid: "85125196"
 landingContent:
 - title: Informace o službě API Management
   linkLists:
@@ -29,9 +29,9 @@ landingContent:
   linkLists:
   - linkListType: quickstart
     links:
-    - text: Azure Portal
+    - text: portál Azure
       url: get-started-create-service-instance.md
-    - text: Azure Powershell
+    - text: Azure PowerShell
       url: powershell-create-service-instance.md
 - title: Správa API Managementu
   linkLists:
@@ -55,14 +55,16 @@ landingContent:
       url: api-management-get-started-publish-versions.md
     - text: 9. Přizpůsobení stylu stránek portálu pro vývojáře
       url: api-management-customize-styles.md
-- title: Ukázky
+- title: ukázky
   linkLists:
   - linkListType: sample
     links:
-    - text: Zásada
-      url: policy-samples.md
-    - text: Azure Powershell
+    - text: Zásady
+      url: ./policies/index.md
+    - text: Azure PowerShell
       url: powershell-samples.md
+    - text: Integrované služby Azure Policy
+      url: ./policy-samples.md
 - title: Architektura
   linkLists:
   - linkListType: architecture
