@@ -18,6 +18,11 @@
     - name: Živá událost s portálem a OBS
       displayName: 'live, event, portal, obs'
       href: live-events-obs-quickstart.md
+    - name: 'Použití portálu k nahrávání, kódování a streamování obsahu'
+      href: manage-assets-quickstart.md
+    - name: Použití portálu k šifrování obsahu
+      displayName: 'protect, drm, aes'
+      href: encrypt-content-quickstart.md
 - name: Kurzy
   items:
     - name: Kódování vzdáleného souboru a streamování videa
@@ -378,6 +383,8 @@
       href: /azure/templates/microsoft.media/allversions
     - name: Schémata kodéru úrovně Standard
       items:
+        - name: Vstupní metadata
+          href: input-metadata-schema.md
         - name: Výstupní metadata
           href: output-metadata-schema.md
 - name: Zdroje a prostředky

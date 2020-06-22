@@ -60,7 +60,7 @@
           displayName: 'docker, container, run, billing, apikey, logging'
         - name: Použití instancí kontejneru
           href: deploy-form-recognizer-on-container-instances.md
-    - name: Kopírování modelů pro zotavení po havárii
+    - name: Modely zálohování a obnovení
       href: disaster-recovery.md
 - name: Referenční informace
   items:

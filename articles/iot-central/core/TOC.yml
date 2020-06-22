@@ -10,8 +10,8 @@
       href: overview-iot-central-developer.md
     - name: Nejnovější aktualizace
       items:
-        - name: Aktualizace z května 2020
-          href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-updates/'
+        - name: Aktualizace metrik a úloh z května 2020
+          href: 'https://azure.microsoft.com/updates/azure-iot-central-jobs-and-metrics-feature-updates-may-2020/'
         - name: Aktualizace řídicích panelů z května 2020
           href: 'https://azure.microsoft.com/updates/azure-iot-central-may-2020-dashboard-updates/'
         - name: Nové funkce z dubna 2020

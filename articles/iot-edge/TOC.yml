@@ -27,11 +27,11 @@
               href: tutorial-c-module.md
             - name: Moduly jazyka C pro zařízení s Windows
               href: tutorial-c-module-windows.md
-        - name: 'C#'
+        - name: C#
           items:
-            - name: 'Moduly jazyka C# pro zařízení s Linuxem'
+            - name: Moduly jazyka C# pro zařízení s Linuxem
               href: tutorial-csharp-module.md
-            - name: 'Moduly jazyka C# pro zařízení s Windows'
+            - name: Moduly jazyka C# pro zařízení s Windows
               href: tutorial-csharp-module-windows.md
         - name: Java
           href: tutorial-java-module.md
@@ -199,6 +199,12 @@
           href: how-to-store-data-blob.md
         - name: Nasazení modulů úložiště objektů blob
           href: how-to-deploy-blob.md
+    - name: Azure SQL Edge ve službě IoT Edge
+      items:
+        - name: Principy Azure SQL na hraničních zařízeních
+          href: ../azure-sql-edge/overview.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
+        - name: Nasazení modulů Azure SQL Edge
+          href: ../azure-sql-edge/deploy-portal.md?toc=/azure/iot-edge/toc.json&bc=/azure/iot-edge/breadcrumb/toc.json
     - name: Správa pomocí nástrojů DevOps
       items:
         - name: Azure DevOps Projects
@@ -238,12 +244,12 @@
     - name: Sady Azure IoT SDK
       items:
         - name: Sady SDK pro služby IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: Sady SDK pro zařízení IoT
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Ukázky Azure IoT
       items:
-        - name: 'C# (.NET)'
+        - name: C# (.NET)
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
         - name: Node.js
           href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-node/'

@@ -6,12 +6,12 @@ metadata:
   title: Dokumentace ke službám Microsoft Azure Container Service | Microsoft Docs
   description: Naučte se používat služby Azure Container Service ke správě a vývoji cloudových kontejnerových aplikací.
   ms.topic: hub-page
-  ms.openlocfilehash: f4d76c0f2ddbecd386a3e3b9d3de370f19b86fee
-  ms.sourcegitcommit: 8dc84e8b04390f39a3c11e9b0eaf3264861fcafc
+  ms.openlocfilehash: 8cfbe066a0e52615b6312ff49d0af268d1acf610
+  ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 04/13/2020
-  ms.locfileid: "81259013"
+  ms.lasthandoff: 06/18/2020
+  ms.locfileid: "84981587"
 highlightedContent:
   items:
   - itemType: whats-new
@@ -41,18 +41,15 @@ conceptualContent:
       text: Další informace
   - title: Testování a vývoj aplikací AKS
     links:
-    - url: /azure/dev-spaces/about
-      itemType: overview
-      text: Co je služba Azure Dev Spaces?
-    - url: /azure/dev-spaces/quickstart-netcore
-      itemType: quickstart
-      text: Spuštění a ladění mikroslužby
-    - url: /azure/dev-spaces/quickstart-team-development
-      itemType: quickstart
-      text: Spolupráce s týmem na sadě mikroslužeb
-    footerLink:
-      url: /azure/dev-spaces/
-      text: Další informace
+    - url: /azure/dev-spaces/how-dev-spaces-works-local-process-kubernetes
+      itemType: concept
+      text: Jak funguje místní proces s Kubernetes
+    - url: /azure/dev-spaces/how-to/local-process-kubernetes-vs-code
+      itemType: how-to-guide
+      text: Použití místního procesu s Kubernetes s využitím editoru Visual Studio Code
+    - url: /azure/dev-spaces/how-to/local-process-kubernetes-visual-studio
+      itemType: how-to-guide
+      text: Použití místního procesu s Kubernetes s využitím sady Visual Studio
   - title: Vytváření cloudových aplikací pro web a mobilní zařízení
     links:
     - url: /azure/app-service/overview

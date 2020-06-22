@@ -51,6 +51,8 @@
           href: signalr-concept-serverless-development-config.md
         - name: Referenční informace k vazbám služby SignalR pro Azure Functions
           href: ../azure-functions/functions-bindings-signalr-service.md
+        - name: Nastavení pro upstream
+          href: concept-upstream.md
     - name: Vysoká dostupnost
       items:
         - name: Odolnost a zotavení po havárii
@@ -81,6 +83,8 @@
           href: howto-private-endpoints.md
         - name: Správa řízení přístupu k síti
           href: howto-network-access-control.md
+        - name: Použití spravované identity
+          href: howto-use-managed-identity.md
     - name: Integrace
       items:
         - name: Vazby služby Azure Functions

@@ -34,6 +34,8 @@
       href: log-analytics-samples.md
 - name: Koncepty
   items:
+    - name: Funkce Azure Firewallu
+      href: features.md
     - name: Značky plně kvalifikovaných názvů domén
       href: fqdn-tags.md
     - name: Plně kvalifikované názvy domén infrastruktury

@@ -26,8 +26,10 @@
       href: capacity-limits.md
     - name: Scénáře
       items:
-        - name: Využití testovacích prostředí při výuce
+        - name: Využití Lab Services pro výuku
           href: classroom-labs-scenarios.md
+        - name: Využití Lab Services pro hackathon
+          href: hackathon-labs.md
         - name: Testovací prostředí v učebnách – typy tříd
           items:
             - name: Přehled typů tříd
