@@ -25,10 +25,6 @@
   items:
     - name: Vytvoření bezserverové aplikace v reálném čase s ověřováním
       href: signalr-tutorial-authenticate-azure-functions.md
-    - name: Monitorování
-      items:
-        - name: Použití diagnostických protokolů k monitorování služby SignalR
-          href: signalr-tutorial-diagnostic-logs.md
 - name: ukázky
   items:
     - name: Ukázky kódů
@@ -91,6 +87,12 @@
           href: signalr-concept-azure-functions.md
         - name: Integrace Event Gridu
           href: signalr-howto-event-grid-integration.md
+    - name: Monitorování
+      items:
+        - name: Použití diagnostických protokolů k monitorování služby SignalR
+          href: signalr-howto-diagnostic-logs.md
+        - name: Audit dodržování předpisů s využitím Azure Policy
+          href: signalr-howto-azure-policy.md
 - name: Odkazy
   items:
     - name: Azure CLI

@@ -240,6 +240,8 @@
       items:
         - name: Požadavky balíčku pro kreslení
           href: drawing-requirements.md
+        - name: StylesObject pro dynamické mapy
+          href: schema-stateset-stylesobject.md
         - name: Model spotřeby vozidel
           href: consumption-model.md
         - name: Rozšířený formát geoJSON

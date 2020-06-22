@@ -46,19 +46,23 @@
       items:
         - name: Aktualizace Notification Hubs pro iOS 13
           href: push-notification-updates-ios-13.md
-        - name: Nabízená oznámení odesílaná aplikacím pro iOS
+        - name: Odesílání nabízených oznámení aplikacím pro iOS
           items:
-            - name: Objective-C
-              href: notification-hubs-ios-apple-push-notification-apns-get-started.md
+            - name: Předpoklady pro kurzy k iOS
+              href: ios-sdk-get-started.md
+            - name: Objective-C (verze 3.0.0-preview1)
+              href: ios-sdk-300.md
+            - name: Objective-C (verze 2.0.4)
+              href: ios-sdk-204.md
             - name: Swift
-              href: notification-hubs-ios-push-notifications-swift-apps-get-started.md
-        - name: Nabízená oznámení odesílaná konkrétním zařízením
+              href: ios-sdk-swift-rest.md
+        - name: Odesílání nabízených oznámení konkrétním zařízením
           href: notification-hubs-ios-xplat-segmented-apns-push-notification.md
-        - name: Nabízená oznámení odesílaná konkrétním uživatelům
+        - name: Odesílání nabízených oznámení konkrétním uživatelům
           href: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-        - name: Nabízená oznámení odesílaná aplikacím pro Xamarin iOS
+        - name: Odesílání nabízených oznámení aplikacím pro Xamarin iOS
           href: xamarin-notification-hubs-ios-push-notification-apns-get-started.md
-        - name: Nabízená oznámení odesílaná zařízením s iOS
+        - name: Odesílání nabízených oznámení zařízením s iOS
           href: notification-hubs-ios-xplat-localized-apns-push-notification.md
     - name: Pro různé platformy
       items:
@@ -68,21 +72,21 @@
               href: notification-hubs-backend-service-xamarin-forms.md
     - name: telefon se systémem Windows
       items:
-        - name: Nabízená oznámení odesílaná aplikacím
+        - name: Odesílání nabízených oznámení aplikacím
           href: notification-hubs-windows-mobile-push-notifications-mpns.md
-        - name: Nabízená oznámení odesílaná konkrétním zařízením
+        - name: Odesílání nabízených oznámení konkrétním zařízením
           href: notification-hubs-windows-phone-push-xplat-segmented-mpns-notification.md
     - name: Windows
       items:
-        - name: Nabízená oznámení odesílaná aplikacím pro Univerzální platformu Windows (UPW)
+        - name: Odesílání nabízených oznámení aplikacím pro Univerzální platformu Windows (UPW)
           href: notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md
-        - name: Nabízená oznámení odesílaná konkrétním zařízením
+        - name: Odesílání nabízených oznámení konkrétním zařízením
           href: notification-hubs-windows-notification-dotnet-push-xplat-segmented-wns.md
-        - name: Nabízená lokalizovaná oznámení odesílaná aplikacím
+        - name: Odesílání lokalizovaných nabízených oznámení aplikacím
           href: notification-hubs-windows-store-dotnet-xplat-localized-wns-push-notification.md
-        - name: Nabízená oznámení odesílaná konkrétním uživatelům
+        - name: Odesílání nabízených oznámení konkrétním uživatelům
           href: notification-hubs-aspnet-backend-windows-dotnet-wns-notification.md
-        - name: Odesílání oznámení na základě polohy
+        - name: Odesílání nabízených oznámení na základě polohy
           href: notification-hubs-push-bing-spatial-data-geofencing-notification.md
 - name: ukázky
   items:
