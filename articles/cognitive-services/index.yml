@@ -11,12 +11,12 @@ metadata:
   ms.author: nitinme
   manager: nitinme
   ms.date: 03/24/2020
-  ms.openlocfilehash: 398ba97ed8cc221710c301017cae3624dde758f0
-  ms.sourcegitcommit: 223cea58a527270fe60f5e2235f4146aea27af32
+  ms.openlocfilehash: dae82c058d5d4e3b2f4c9003c2642456fa71b215
+  ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
   ms.translationtype: HT
   ms.contentlocale: cs-CZ
-  ms.lasthandoff: 06/01/2020
-  ms.locfileid: "84259452"
+  ms.lasthandoff: 06/23/2020
+  ms.locfileid: "85211198"
 highlightedContent:
   items:
   - title: Co jsou služby Cognitive Services?
@@ -59,7 +59,7 @@ conceptualContent:
       text: Tvář
     - url: ./form-recognizer/index.yml
       itemType: overview
-      text: Rozpoznávání formulářů (Preview)
+      text: Rozpoznávání formulářů
     - url: ./ink-recognizer/index.yml
       itemType: overview
       text: Rozpoznávání rukopisu (Preview)

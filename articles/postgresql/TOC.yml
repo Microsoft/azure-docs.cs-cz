@@ -193,6 +193,8 @@
           items:
             - name: Možnosti konfigurace
               href: concepts-hyperscale-configuration-options.md
+            - name: Předplacení záložní kapacity
+              href: concepts-hyperscale-reserved-pricing.md
 - name: Návody
   items:
     - name: Jeden server

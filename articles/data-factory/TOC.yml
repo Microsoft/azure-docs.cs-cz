@@ -194,30 +194,6 @@
               href: wrangling-data-flow-overview.md
             - name: Podporované funkce
               href: wrangling-data-flow-functions.md
-    - name: Migrace dat pro datové jezero a EDW
-      items:
-        - name: Proč Azure Data Factory
-          href: data-migration-guidance-overview.md
-        - name: Migrace dat z AWS S3 do Azure
-          href: data-migration-guidance-s3-azure-storage.md
-        - name: Migrace dat z místního clusteru Hadoop do Azure
-          href: data-migration-guidance-hdfs-azure-storage.md
-        - name: Migrace dat z místního serveru Netezza do Azure
-          href: data-migration-guidance-netezza-azure-sqldw.md
-    - name: Transformace s využitím toků dat mapování
-      items:
-        - name: Zpracování textových souborů s pevnou šířkou
-          href: how-to-fixed-width.md
-        - name: Zpracování chybového řádku
-          href: how-to-data-flow-error-rows.md
-        - name: Azure SQL DB na CosmosDB
-          href: how-to-sqldb-to-cosmosdb.md
-    - name: Migrace SSIS z místního prostředí
-      items:
-        - name: Přehled migrace SSIS
-          href: scenario-ssis-migration-overview.md
-        - name: Migrace SSISDB do spravované instance Azure SQL
-          href: scenario-ssis-migration-ssisdb-mi.md
     - name: Role a oprávnění
       href: concepts-roles-permissions.md
     - name: Pravidla pojmenování
@@ -612,7 +588,7 @@
         - name: Monitorování prostředí Integration Runtime
           href: monitor-integration-runtime.md
         - name: Monitorování prostředí Azure-SSIS Integration Runtime
-          href: 'monitor-integration-runtime.md#azure-ssis-integration-runtime'
+          href: monitor-integration-runtime.md#azure-ssis-integration-runtime
         - name: Změna konfigurace prostředí Azure-SSIS Integration Runtime
           href: manage-azure-ssis-integration-runtime.md
         - name: Kopírování nebo klonování datové továrny
@@ -683,6 +659,32 @@
           href: how-to-create-tumbling-window-trigger.md
         - name: Vytvoření závislosti aktivační události pro přeskakující okno
           href: tumbling-window-trigger-dependency.md
+    - name: Scénáře
+      items:
+        - name: Migrace dat pro datové jezero a EDW
+          items:
+            - name: Proč Azure Data Factory
+              href: data-migration-guidance-overview.md
+            - name: Migrace dat z AWS S3 do Azure
+              href: data-migration-guidance-s3-azure-storage.md
+            - name: Migrace dat z místního clusteru Hadoop do Azure
+              href: data-migration-guidance-hdfs-azure-storage.md
+            - name: Migrace dat z místního serveru Netezza do Azure
+              href: data-migration-guidance-netezza-azure-sqldw.md
+        - name: Transformace s využitím toků dat mapování
+          items:
+            - name: Zpracování textových souborů s pevnou šířkou
+              href: how-to-fixed-width.md
+            - name: Zpracování chybového řádku
+              href: how-to-data-flow-error-rows.md
+            - name: Azure SQL DB na CosmosDB
+              href: how-to-sqldb-to-cosmosdb.md
+        - name: Migrace SSIS z místního prostředí
+          items:
+            - name: Přehled migrace SSIS
+              href: scenario-ssis-migration-overview.md
+            - name: Migrace SSISDB do spravované instance Azure SQL
+              href: scenario-ssis-migration-ssisdb-mi.md
     - name: Šablony
       items:
         - name: Přehled šablon
