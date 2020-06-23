@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: 9d48f09fe5d5c736f65b6a76211dd3fec85479ea
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: c7f03027abf7f3c5e330e5cd95075cce1152a7d9
+ms.sourcegitcommit: 666303748238dfdf9da30d49d89b915af73b0468
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81402184"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85130411"
 ---
 # <a name="deploy-a-custom-model"></a>Nasazení vlastního modelu
 
@@ -39,6 +39,8 @@ Po nasazení koncového bodu se název koncového bodu zobrazí jako odkaz. Klik
 ## <a name="view-logging-data"></a>Zobrazit data protokolování
 
 Data protokolování jsou k dispozici ke stažení v části **koncový bod > podrobnosti**.
+> [!NOTE]
+>Data protokolování jsou k dispozici po dobu 30 dnů v úložišti vlastněných společností Microsoft a budou odebrána později. V případě, že účet úložiště vlastněné zákazníkem je propojený s předplatným služby rozpoznávání služeb, data protokolování se automaticky neodstraní.
 
 ## <a name="next-steps"></a>Další kroky
 
