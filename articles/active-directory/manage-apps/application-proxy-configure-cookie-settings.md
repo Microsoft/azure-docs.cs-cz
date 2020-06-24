@@ -2,22 +2,22 @@
 title: Nastavení souborů cookie proxy aplikace – Azure Active Directory | Microsoft Docs
 description: Azure Active Directory (Azure AD) mají přístup a soubory cookie relace pro přístup k místním aplikacím prostřednictvím proxy aplikací. V tomto článku zjistíte, jak používat a konfigurovat nastavení souborů cookie.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/16/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bcedb24a0efdbabaaef150fc3d5aff07d210ce23
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79481360"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764889"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Nastavení souborů cookie pro přístup k místním aplikacím v Azure Active Directory
 
@@ -27,7 +27,7 @@ Azure Active Directory (Azure AD) mají přístup a soubory cookie relace pro p�
 
 [Proxy aplikace](application-proxy.md) používá následující nastavení přístupu a souborů cookie relace.
 
-| Nastavení souborů cookie | Výchozí | Popis | Doporučení |
+| Nastavení souborů cookie | Výchozí | Description | Doporučení |
 | -------------- | ------- | ----------- | --------------- |
 | Použít soubor cookie pouze s protokolem HTTP | **Ne** | Hodnota **Ano** povolí proxy aplikace, aby do hlaviček http Response zahrnovala příznak HttpOnly. Tento příznak poskytuje další výhody zabezpečení, například brání skriptování na straně klienta (CSS) z kopírování a úprav souborů cookie.<br></br><br></br>Před tím, než jsme podporovali nastavení HTTP, proxy aplikací zašifrované a přenesené soubory cookie přes zabezpečený kanál TLS, aby se chránily proti úpravám. | Použijte **Ano** z důvodu dalších výhod zabezpečení.<br></br><br></br>Pro klienty nebo uživatelské agenty, kteří potřebují přístup k souboru cookie relace, nepoužívejte **žádné** . Například pro klienta RDP nebo MTSC použijte **No** , který se připojuje k serveru Brána vzdálené plochy prostřednictvím proxy aplikací.|
 | Použít zabezpečený soubor cookie | **Ne** | Hodnota **Ano** povolí proxy aplikace zahrnout zabezpečený příznak v hlavičkách http Response. Soubory cookie zabezpečení zvyšují zabezpečení tím, že přenáší soubory cookie přes zabezpečený kanál TLS, jako je například HTTPS. To brání tomu, aby soubory cookie byly pozorovány neoprávněnými stranami z důvodu přenosu souboru cookie ve formě prostého textu. | Použijte **Ano** z důvodu dalších výhod zabezpečení.|
@@ -49,7 +49,7 @@ Navíc platí, že pokud vaše back-end aplikace obsahuje soubory cookie, které
 Nastavení souborů cookie pomocí Azure Portal:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
-2. Přejděte na **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace**.
+2. Přejděte na **Azure Active Directory**   >  **podnikové aplikace**   >  **všechny aplikace**.
 3. Vyberte aplikaci, pro kterou chcete povolit nastavení souborů cookie.
 4. Klikněte na **proxy aplikace**.
 5. V části **Další nastavení**nastavte nastavení souborů cookie na **Ano** nebo **ne**.

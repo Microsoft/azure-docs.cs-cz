@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 52758eab645fa0bb89cb499a5c617df62c21279e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 244cdf5329e26fc7d928998b734a539f086051ad
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81429197"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193375"
 ---
 # <a name="what-is-delta-lake"></a>Co je rozdílový Lake?
 
@@ -22,7 +22,7 @@ Azure synapse Analytics je kompatibilní s nástrojem Linux Foundation Delta Lak
 
 ## <a name="key-features"></a>Klíčové funkce
 
-| Funkce | Popis |
+| Funkce | Description |
 | --- | --- |
 | **KYSELé transakce** | Data laků jsou obvykle naplněna prostřednictvím více procesů a kanálů, přičemž některé z nich zapisují data souběžně pomocí čtení. Před rozdílovým Lakeem a přidáním transakcí museli technici dat projít procesem ruční náchylnosti k chybě, aby se zajistila integrita dat. Rozdílový Lake přináší do datových laků známé transakce s KYSELou. Poskytuje serializovatelný a nejsilnější úroveň izolace. Další informace najdete na adrese [začnete do rozdílových Lake: rozbalení transakčního protokolu](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html).|
 | **Škálovatelné zpracování metadat** | U velkých objemů dat i samotná metadata můžou být "Velká data". Rozdílový Lake zachází s metadaty, jako jsou data, a využívá k obsluze všech svých metadat napájení distribuovaného zpracování Sparku. V důsledku toho může rozdílový Lake zpracovávat řádu petabajtů tabulky s miliardami oddílů a souborů. |

@@ -3,25 +3,25 @@ title: Při instalaci konektoru agenta aplikačního proxy serveru došlo k prob
 description: Jak řešit problémy, které se můžou při instalaci konektoru agenta proxy aplikací nainstalovat
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/21/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f73d46b612c1dcf94554e10b4820c3f2442248f
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "82172402"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764685"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Potíže při instalaci konektoru agenta proxy aplikací
 
@@ -48,7 +48,7 @@ V případě selhání instalace konektoru je hlavní příčinou obvykle jedna 
 
 2.  Pokud některý z těchto portů neproběhne úspěšně, ověřte, zda má server firewall nebo back-end proxy přístup k požadovaným doménám a portům v tématu [Příprava místního prostředí](application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment).
 
-3.  Otevřete prohlížeč (oddělený tabulátorem) a přejít na následující webovou stránku: `https://login.microsoftonline.com`Ujistěte se, že se k této stránce můžete přihlásit.
+3.  Otevřete prohlížeč (oddělený tabulátorem) a přejít na následující webovou stránku: Ujistěte se, `https://login.microsoftonline.com` že se k této stránce můžete přihlásit.
 
 ## <a name="verify-machine-and-backend-components-support-for-application-proxy-trust-certificate"></a>Ověření podpory součástí počítačů a back-endu pro certifikát důvěryhodnosti proxy aplikací
 
@@ -67,7 +67,7 @@ V případě selhání instalace konektoru je hlavní příčinou obvykle jedna 
 
 **Ověření klientského certifikátu:**
 
-Ověřte kryptografický otisk aktuálního certifikátu klienta. Úložiště certifikátů najdete v proxy aplikace%ProgramData%\microsoft\Microsoft AAD Connector\Config\TrustSettings.xml
+Ověřte kryptografický otisk aktuálního certifikátu klienta. Úložiště certifikátů najdete v proxy aplikace AAD%ProgramData%\microsoft\Microsoft Connector\Config\TrustSettings.xml
 
 ```
 <?xml version="1.0" encoding="utf-8"?>
@@ -93,8 +93,8 @@ Certifikát ověříte podle pokynů:
 
 Certifikát ověříte podle pokynů:
 
-1. Stáhnout [Nástroj PsTools. zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
-2. Z balíčku rozbalte [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) a na příkazovém řádku se zvýšenými oprávněními spusťte **PsExec-i-u "NT Authority\Network Service" cmd. exe** .
+1. Stáhnout [PsTools.zip](https://docs.microsoft.com/sysinternals/downloads/pstools)
+2. Z příkazového řádku se zvýšenými oprávněními rozbalte [PsExec](https://docs.microsoft.com/sysinternals/downloads/psexec) z balíčku a spusťte **PsExec-i-u "NT authority\network Service" cmd.exe** .
 3. Spusťte **certmgr. msc** na nově zobrazeném příkazovém řádku.
 2. V konzole pro správu rozbalte osobní kontejner a klikněte na certifikáty.
 3. Vyhledejte certifikát vydaný pomocí **connectorregistrationca.msappproxy.NET**

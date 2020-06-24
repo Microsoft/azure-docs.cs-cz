@@ -5,12 +5,12 @@ description: Seznamte se s osvědčenými postupy pro postup správy zabezpečen
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: 305d4c15aaf72a47549497902e3027064fbfd608
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 72808f315f28a996a88e6cc56ae232a136726451
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208087"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298017"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Osvědčené postupy pro zabezpečení a upgrady clusterů ve službě Azure Kubernetes Service (AKS)
 
@@ -82,7 +82,7 @@ sudo apparmor_parser deny-write.profile
 
 Pokud se profil správně analyzuje a použije na AppArmor, nevrátí se žádný výstup. Budete vráceni do příkazového řádku.
 
-Z místního počítače teď vytvořte manifest pod názvem *AKS-AppArmor. yaml* a vložte následující obsah. Tento manifest definuje anotaci pro `container.apparmor.security.beta.kubernetes` přidání odkazů na profil pro *odepření a zápis* vytvořený v předchozích krocích:
+Z místního počítače teď vytvořte manifest pod názvem *AKS-AppArmor. yaml* a vložte následující obsah. Tento manifest definuje anotaci pro `container.apparmor.security.beta.kubernetes` Přidání odkazů na profil pro *odepření a zápis* vytvořený v předchozích krocích:
 
 ```yaml
 apiVersion: v1
@@ -160,7 +160,7 @@ Nasaďte ukázku pomocí příkazu [kubectl Apply][kubectl-apply] :
 kubectl apply -f ./aks-seccomp.yaml
 ```
 
-Stav lusků zobrazíte pomocí příkazu [kubectl získat lusky][kubectl-get] . Pod ní nahlásí chybu. `chmod` Příkazu je znemožněno spouštěním filtru seccomp, jak je znázorněno v následujícím příkladu výstupu:
+Stav lusků zobrazíte pomocí příkazu [kubectl získat lusky][kubectl-get] . Pod ní nahlásí chybu. `chmod`Příkazu je znemožněno spouštěním filtru seccomp, jak je znázorněno v následujícím příkladu výstupu:
 
 ```
 $ kubectl get pods
@@ -173,7 +173,7 @@ Další informace o dostupných filtrech najdete v tématu [Seccomp Security pro
 
 ## <a name="regularly-update-to-the-latest-version-of-kubernetes"></a>Pravidelná aktualizace na nejnovější verzi Kubernetes
 
-**Doprovodné materiály k osvědčeným postupům** – aktuální informace o nových funkcích a opravách chyb pravidelně inovujte na verzi Kubernetes v clusteru AKS.
+**Doprovodné materiály k osvědčeným postupům** – aktuální informace o nových funkcích a opravách chyb pravidelně aktualizují verzi Kubernetes v clusteru AKS.
 
 Kubernetes uvolňuje nové funkce rychlejšího tempa než tradičních platforem infrastruktury. Aktualizace Kubernetes zahrnují nové funkce a opravy chyb nebo zabezpečení. Nové funkce obvykle přecházejí přes *alfa* a pak na stav *beta verze* , než se stanou *stabilní* a jsou všeobecně dostupné a doporučené pro použití v produkčním prostředí. Tento cyklus vydaných verzí by vám měl umožňovat aktualizovat Kubernetes bez pravidelného zaznamenání nejnovějších změn nebo přizpůsobení nasazení a šablon.
 
@@ -199,7 +199,7 @@ Další informace o upgradech v AKS najdete v tématu [podporované verze Kubern
 
 Každý večer, uzly Linux v AKS získá opravy zabezpečení dostupné prostřednictvím kanálu aktualizace distribuce. Toto chování se konfiguruje automaticky při nasazení uzlů v clusteru AKS. Aby se minimalizovalo přerušení a potenciální dopad na spuštěné úlohy, uzly se automaticky restartují, pokud je vyžaduje Oprava zabezpečení nebo aktualizace jádra.
 
-Projekt Open source [kured (KUbernetes restart Daemon)][kured] tím, že Weaveworks sleduje čekání na restartování uzlu. Pokud uzel Linux používá aktualizace, které vyžadují restartování, uzel se bezpečně uzavřené a vyprázdní, aby se přesunuly a naplánovaly lusky na jiných uzlech v clusteru. Jakmile se uzel restartuje, přidá se zpátky do clusteru a Kubernetes obnoví v něm v části plánování lusky. Aby se minimalizovalo přerušení, může restartovat pouze jeden uzel v čase `kured`.
+Projekt Open source [kured (KUbernetes restart Daemon)][kured] tím, že Weaveworks sleduje čekání na restartování uzlu. Pokud uzel Linux používá aktualizace, které vyžadují restartování, uzel se bezpečně uzavřené a vyprázdní, aby se přesunuly a naplánovaly lusky na jiných uzlech v clusteru. Jakmile se uzel restartuje, přidá se zpátky do clusteru a Kubernetes obnoví v něm v části plánování lusky. Aby se minimalizovalo přerušení, může restartovat pouze jeden uzel v čase `kured` .
 
 ![Proces restartování uzlu AKS pomocí kured](media/operator-best-practices-cluster-security/node-reboot-process.png)
 

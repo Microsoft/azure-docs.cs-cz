@@ -4,20 +4,20 @@ description: Získejte odpovědi na nejčastější dotazy týkající se podmí
 services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
-ms.topic: article
-ms.date: 05/28/2020
+ms.topic: troubleshooting
+ms.date: 06/22/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 1704fb50586168be6f960e62b918019cb67ce4c8
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 5e75f7214e3a9aa5b44a763cc3448583b47185f9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167804"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253235"
 ---
 # <a name="azure-active-directory-conditional-access-faqs"></a>Azure Active Directory Nejčastější dotazy týkající se podmíněného přístupu
 
@@ -54,6 +54,12 @@ Microsoft Teams se podporuje taky samostatně jako cloudová aplikace v rámci z
 Klienti Microsoft Teams Desktop pro Windows a Mac podporují moderní ověřování. Moderní ověřování přináší přihlášení na základě knihovny Azure Active Directory Authentication Library (ADAL), která systém Microsoft Office klientské aplikace napříč platformami.
 
 Další informace najdete v článku [závislosti služby podmíněného přístupu](service-dependencies.md) a místo toho zvažte cílení zásad na [aplikaci Office 365](concept-conditional-access-cloud-apps.md#office-365-preview) .
+
+## <a name="why-are-some-tabs-not-working-in-microsoft-teams-after-enabling-conditional-access-policies"></a>Proč některé karty nefungují v Microsoft Teams po povolení zásad podmíněného přístupu?
+
+Po povolení některých zásad podmíněného přístupu v tenantovi v Microsoft Teams už některé karty nebudou fungovat na desktopovém klientovi podle očekávání. Ovlivněné karty ale při použití webového klienta Microsoft Teams. Ovlivněné karty mohou zahrnovat Power BI, formuláře, VSTS, PowerApps a SharePoint.
+
+Chcete-li zobrazit zasažené karty, je nutné použít webového klienta týmů v aplikaci Edge, Internet Explorer nebo Chrome s nainstalovaným rozšířením účtů Windows 10. Některé karty závisí na webovém ověřování, které nefunguje v klientském počítači Microsoft teams, pokud je povolený podmíněný přístup. Microsoft spolupracuje s partnery, aby tyto scénáře povolil. K datu jsme povolili scenrarios zahrnující Planner, OneNote a Stream.
 
 ## <a name="next-steps"></a>Další kroky
 

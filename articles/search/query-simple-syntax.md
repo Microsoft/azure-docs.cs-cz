@@ -8,12 +8,12 @@ ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: dfd75ad2c6ae246bfe6ee8b983744b3db07a841f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b585a903267386358552154228705c1921df619
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82194937"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255326"
 ---
 # <a name="simple-query-syntax-in-azure-cognitive-search"></a>Jednoduchá syntaxe dotazů v Azure Kognitivní hledání
 
@@ -21,13 +21,13 @@ Azure Kognitivní hledání implementuje dva jazyky dotazů založené na Lucene
 
 Jednoduchý analyzátor je flexibilnější a pokusí se o interpretaci požadavku i v případě, že není dokonale složen. Z důvodu této flexibility je výchozí hodnotou pro dotazy v Azure Kognitivní hledání. 
 
-Jednoduchá syntaxe se používá pro výrazy dotazu předané `search` v parametru [žádosti hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents), takže se nemusíte zaměňovat se [syntaxí OData](query-odata-filter-orderby-syntax.md) použitou pro parametr [$Filter Expressions](search-filters.md) stejného rozhraní API pro hledání dokumentů. Parametry `search` a `$filter` mají odlišnou syntaxi, se svými vlastními pravidly pro vytváření dotazů, uvozovacích řetězců a tak dále.
+Jednoduchá syntaxe se používá pro výrazy dotazu předané v `search` parametru [žádosti hledání dokumentů](https://docs.microsoft.com/rest/api/searchservice/search-documents), takže se nemusíte zaměňovat se [syntaxí OData](query-odata-filter-orderby-syntax.md) použitou pro parametr [$Filter Expressions](search-filters.md) stejného rozhraní API pro hledání dokumentů. `search`Parametry a `$filter` mají odlišnou syntaxi, se svými vlastními pravidly pro vytváření dotazů, uvozovacích řetězců a tak dále.
 
 I když je jednoduchý analyzátor založený na třídě pro [zjednodušené analyzátory dotazů Apache Lucene](https://lucene.apache.org/core/6_6_1/queryparser/org/apache/lucene/queryparser/simple/SimpleQueryParser.html) , implementace v Azure kognitivní hledání vyloučí přibližné hledání. Pokud potřebujete [hledání přibližné](search-query-fuzzy.md) nebo jiné rozšířené formuláře dotazů, zvažte místo toho alternativní [úplnou syntaxi dotazů Lucene](query-lucene-syntax.md) .
 
 ## <a name="invoke-simple-parsing"></a>Vyvolat jednoduchou analýzu
 
-Výchozí hodnota je jednoduchá syntaxe. Volání je nezbytné pouze v případě, že obnovuje syntaxi z úplného na jednoduchou. K explicitnímu nastavení syntaxe použijte parametr `queryType` Search. Platné hodnoty zahrnují `queryType=simple` nebo `queryType=full`, kde `simple` je výchozí hodnota a `full` vyvolá [úplný analyzátor dotazů Lucene](query-lucene-syntax.md) pro pokročilejší dotazy. 
+Výchozí hodnota je jednoduchá syntaxe. Volání je nezbytné pouze v případě, že obnovuje syntaxi z úplného na jednoduchou. K explicitnímu nastavení syntaxe použijte `queryType` parametr Search. Platné hodnoty zahrnují `queryType=simple` nebo `queryType=full` , kde `simple` je výchozí hodnota a `full` vyvolá [úplný analyzátor dotazů Lucene](query-lucene-syntax.md) pro pokročilejší dotazy. 
 
 ## <a name="syntax-fundamentals"></a>Základy syntaxe
 
@@ -45,13 +45,13 @@ Seskupení polí je podobné, ale obor seskupení do jednoho pole. Například `
 
 V jednoduché syntaxi operátory hledání obsahují tyto znaky:`+ | " ( ) ' \`  
 
-Pokud je některý z těchto znaků součástí tokenu v indexu, vydejte ho pomocí prefixu s jedním zpětným lomítkem (`\`) v dotazu. Předpokládejme například, že jste použili vlastní analyzátor pro celou funkci tokenizace a váš index obsahuje řetězec "luxus + hotelu". Chcete-li získat přesnou shodu s tímto tokenem, vložte `search=luxury\+hotel`řídicí znak:. 
+Pokud je některý z těchto znaků součástí tokenu v indexu, vydejte ho pomocí prefixu s jedním zpětným lomítkem ( `\` ) v dotazu. Předpokládejme například, že jste použili vlastní analyzátor pro celou funkci tokenizace a váš index obsahuje řetězec "luxus + hotelu". Chcete-li získat přesnou shodu s tímto tokenem, vložte řídicí znak:  `search=luxury\+hotel` . 
 
 Chcete-li zjednodušit věci z více typických případů, existují dvě výjimky z tohoto pravidla, kde není nutné uvozovací znaky:  
 
-+ Pokud se jedná `-` o první znak za prázdným znakem, musí být znak operátoru bez řídicí sekvence. Pokud `-` se zobrazí uprostřed (například v `3352CDD0-EF30-4A2E-A512-3B30AF40F3FD`), můžete přeskočit uvozovací znaky.
++ `-`Pokud se jedná o první znak za prázdným znakem, musí být znak operátoru bez řídicí sekvence. Pokud `-` se zobrazí uprostřed (například v `3352CDD0-EF30-4A2E-A512-3B30AF40F3FD` ), můžete přeskočit uvozovací znaky.
 
-+ Operátor `*` přípona musí být uvozena řídicím znakem pouze v případě, že se jedná o poslední znak před prázdným znakem. Pokud se `*` zobrazí uprostřed (například v `4*4=16`), nevyžaduje se žádné uvozovací znaky.
++ Operátor přípona `*` musí být uvozena řídicím znakem pouze v případě, že se jedná o poslední znak před prázdným znakem. Pokud se `*` zobrazí uprostřed (například v `4*4=16` ), nevyžaduje se žádné uvozovací znaky.
 
 > [!NOTE]  
 > Ve výchozím nastavení Standard analyzátor odstraní a rozdělí slova na spojovníkech, prázdných znaků, ampersandech a dalších znacích během [lexikální analýzy](search-lucene-query-architecture.md#stage-2-lexical-analysis). Pokud vyžadujete, aby v řetězci dotazu zůstaly speciální znaky, budete možná potřebovat analyzátor, který je zachovává v indexu. Mezi možnosti patří [analyzátory](index-add-language-analyzers.md)přirozeného jazyka od Microsoftu, které zachovává rozdělená slova nebo vlastní analyzátor pro složitější vzory. Další informace najdete v tématu [částečné výrazy, vzory a speciální znaky](search-query-partial-matching.md).
@@ -60,7 +60,15 @@ Chcete-li zjednodušit věci z více typických případů, existují dvě výji
 
 Ujistěte se prosím, že všechny nebezpečné a rezervované znaky jsou v adrese URL zakódované. Například # je nebezpečný znak, protože se jedná o identifikátor fragmentu nebo kotvy v adrese URL. Znak musí být kódovaný na, `%23` Pokud je použit v adrese URL. ' & ' a ' = ' jsou příklady rezervovaných znaků, které jsou vymezují parametry a určují hodnoty v Azure Kognitivní hledání. Další podrobnosti najdete v tématu [RFC1738: Uniform Resource Locator (URL)](https://www.ietf.org/rfc/rfc1738.txt) .
 
-Nezabezpečené znaky ``" ` < > # % { } | \ ^ ~ [ ]``jsou. Vyhrazené znaky jsou `; / ? : @ = + &`.
+Nezabezpečené znaky jsou ``" ` < > # % { } | \ ^ ~ [ ]`` . Vyhrazené znaky jsou `; / ? : @ = + &` .
+
+### <a name="querying-for-special-characters"></a>Dotazování na speciální znaky
+
+V některých případech můžete chtít vyhledat speciální znak, například ❤ emoji nebo symbol €. V takovém případě se ujistěte, že analyzátor, který používáte, nefiltruje tyto znaky.  Standardní analyzátor ignoruje mnoho speciálních znaků, takže by se v indexu nestaly tokeny.
+
+Proto je prvním krokem, abyste měli jistotu, že použijete analyzátor, který bude tyto tokeny považovat za tyto prvky. Analyzátor "Whitespace" například vezme v úvahu jakékoliv sekvence znaků oddělené mezerami jako tokeny, takže řetězec "❤" by byl považován za token. Také analyzátor, jako je Microsoft English Analyzer ("en. Microsoft"), by měl brát v úvahu řetězec "€" jako token. Můžete [otestovat analyzátor](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) a zjistit, jaké tokeny generuje pro daný dotaz.
+
+Při použití znaků Unicode zajistěte, aby byly symboly v adrese URL dotazu správně uvozeny řídicími znaky (například ❤ by používaly řídicí sekvenci `%E2%9D%A4+` ). Post provede tento převod automaticky.
 
 ###  <a name="query-size-limits"></a><a name="bkmk_querysizelimits"></a>Omezení velikosti dotazů
 
@@ -72,7 +80,7 @@ Můžete vložit logické operátory (a, nebo, ne) do řetězce dotazu pro sesta
 
 ### <a name="and-operator-"></a>AND – operátor`+`
 
-Operátor AND je znaménko plus. Vyhledá například `wifi + luxury` dokumenty obsahující obojí `wifi` a `luxury`.
+Operátor AND je znaménko plus. Vyhledá například `wifi + luxury` dokumenty obsahující obojí `wifi` a `luxury` .
 
 ### <a name="or-operator-"></a>OR – operátor`|`
 
@@ -82,29 +90,29 @@ Operátor OR je znak svislého pruhu nebo svislé čáry. Vyhledá například `
 
 ### <a name="not-operator--"></a>NOT – operátor`-`
 
-Operátor NOT je symbol mínus. Vyhledá například `wifi –luxury` dokumenty, které mají `wifi` podmínky a/nebo nemají. `luxury`
+Operátor NOT je symbol mínus. Vyhledá například `wifi –luxury` dokumenty, které mají `wifi` podmínky a/nebo nemají `luxury` .
 
-Parametr **searchMode** v požadavku na dotaz řídí, zda je výraz s operátorem NOT ANDed nebo ORed s jinými podmínkami v dotazu (za předpokladu, že se `+` nejedná o `|` operátor jiné podmínky). Platné hodnoty jsou `any` nebo `all`.
+Parametr **searchMode** v požadavku na dotaz řídí, zda je výraz s operátorem NOT ANDed nebo ORed s jinými podmínkami v dotazu (za předpokladu, že se nejedná `+` `|` o operátor jiné podmínky). Platné hodnoty jsou `any` nebo `all` .
 
-`searchMode=any`zvyšuje počet odvolání dotazů zahrnutím více výsledků a ve výchozím nastavení `-` bude interpretován jako "nebo ne". Například `wifi -luxury` se bude shodovat s dokumenty, které buď obsahují termín `wifi` , nebo ty, které neobsahují `luxury`termín.
+`searchMode=any`zvyšuje počet odvolání dotazů zahrnutím více výsledků a ve výchozím nastavení `-` bude interpretován jako "nebo ne". Například `wifi -luxury` se bude shodovat s dokumenty, které buď obsahují termín `wifi` , nebo ty, které neobsahují termín `luxury` .
 
-`searchMode=all`zvyšuje přesnost dotazů zahrnutím menšího počtu výsledků a ve výchozím nastavení je interpretována jako "a nikoli". Například `wifi -luxury` bude odpovídat dokumentům, které obsahují termín `wifi` a nesmí obsahovat pojem "luxus". To je pravděpodobně intuitivní chování `-` operátoru. Proto byste `searchMode=all` měli zvážit použití místo toho, `searchMode=any` Pokud chcete optimalizovat hledání přesnosti místo odvolání *a* vaši uživatelé často používají `-` operátor v hledání.
+`searchMode=all`zvyšuje přesnost dotazů zahrnutím menšího počtu výsledků a ve výchozím nastavení je interpretována jako "a nikoli". Například `wifi -luxury` bude odpovídat dokumentům, které obsahují termín `wifi` a nesmí obsahovat pojem "luxus". To je pravděpodobně intuitivní chování `-` operátoru. Proto byste měli zvážit použití `searchMode=all` místo toho, `searchMode=any` Pokud chcete optimalizovat hledání přesnosti místo odvolání *a* vaši uživatelé často používají `-` operátor v hledání.
 
 Při rozhodování o nastavení **searchMode** zvažte vzory interakce uživatele pro dotazy v různých aplikacích. Uživatelům, kteří hledají informace, je pravděpodobnější, že v dotazu zařadí operátor, a to na rozdíl od webů elektronického obchodování, které mají více integrovaných navigačních struktur.
 
 <a name="prefix-search"></a>
 
-## <a name="prefix-search"></a>Hledání předpon
+## <a name="wildcard-prefix-matching--"></a>Porovnání prefixu zástupného znaku (*,?)
 
-Operátor přípona je hvězdička `*`. Například `lingui*` najde "lingvistické" nebo "linguini" a ignoruje velká a malá písmena. 
+U příkazu "začíná s" dotazy přidejte operátor přípony jako zástupný symbol pro zbytek období. Použijte hvězdičku `*` pro více znaků nebo `?` pro jednotlivé znaky. Například `lingui*` bude odpovídat "jazyku" nebo "linguini", ignorování velkých a malých písmen. 
 
-Podobně jako filtry, dotaz předpony hledá přesnou shodu. V takovém případě neexistuje žádné bodové hodnocení (všechny výsledky obdrží skóre hledání 1,0). Dotazy na předpony můžou být pomalé, zejména v případě, že je index velký a že předpona obsahuje malý počet znaků. 
+Podobně jako filtry, dotaz předpony hledá přesnou shodu. V takovém případě neexistuje žádné bodové hodnocení (všechny výsledky obdrží skóre hledání 1,0). Upozorňujeme, že dotazy s předponou můžou být pomalé, zejména pokud je index velký a předpona obsahuje malý počet znaků. Alternativní metodologie, jako je Edge n-gram, může provádět rychleji.
 
-Pokud chcete spustit dotaz na příponu, který odpovídá poslední části řetězce, použijte [hledání pomocí zástupných znaků](query-lucene-syntax.md#bkmk_wildcard) a úplnou syntaxi Lucene.
+Pro jiné varianty dotazů se zástupnými znaky, jako je třeba přípona nebo vpony, odpovídají konci nebo polovině podmínky, použijte [pro hledání pomocí zástupných znaků úplnou syntaxi Lucene](query-lucene-syntax.md#bkmk_wildcard).
 
 ## <a name="phrase-search-"></a>Hledání frází`"`
 
-Termínem hledání je dotaz na jednu nebo více podmínek, přičemž některý z podmínek je považován za shodu. Hledání frází je přesná fráze uzavřená v uvozovkách `" "`. Například když `Roach Motel` (bez uvozovek) bude hledat dokumenty obsahující `Roach` a/nebo `Motel` kdekoli v libovolném pořadí, (s uvozovkami), `"Roach Motel"` budou odpovídat pouze dokumentům, které obsahují tuto celou frázi společně a v tomto pořadí (analýza textu se stále používá).
+Termínem hledání je dotaz na jednu nebo více podmínek, přičemž některý z podmínek je považován za shodu. Hledání frází je přesná fráze uzavřená v uvozovkách `" "` . Například při `Roach Motel` (bez uvozovek) by hledání dokumentů obsahujících `Roach` a/nebo `Motel` kdekoli v libovolném pořadí, `"Roach Motel"` (s uvozovkami), bude odpovídat pouze dokumentům, které obsahují tuto celou frázi společně a v tomto pořadí (lexikální analýza je stále použita).
 
 ## <a name="see-also"></a>Viz také  
 

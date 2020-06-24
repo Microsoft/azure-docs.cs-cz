@@ -4,19 +4,19 @@ description: Začněte používat Azure Active Directory podmínek použití pro
 services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/29/2019
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a2f06a7c88a7c17f5f93201192664c2d4a97564e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 39e76468238a911c7a9e5543bf5063d1c7b6a8b8
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79480959"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253320"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Azure Active Directory podmínek použití
 
@@ -92,10 +92,10 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
 1. Pokud chcete zadat plán pro **vyprší** platnosti podmínek použití, použijte nastavení **frekvence** od do. Následující tabulka ukazuje výsledek pro několik příkladů nastavení:
 
-   | Platnost začíná dnem | Frequency | Výsledek |
+   | Platnost začíná dnem | Frekvence | Výsledek |
    | --- | --- | --- |
-   | Dnešní datum  | měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití a pak každý měsíc znovu přijmout. |
-   | Datum v budoucnosti  | měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití. Když dojde k budoucímu datu, vyprší platnost souhlasu a pak se uživatelé musí každý měsíc znovu akceptovat.  |
+   | Dnešní datum  | Měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití a pak každý měsíc znovu přijmout. |
+   | Datum v budoucnosti  | Měsíčně | Od dnešního dne musí uživatelé přijmout podmínky použití. Když dojde k budoucímu datu, vyprší platnost souhlasu a pak se uživatelé musí každý měsíc znovu akceptovat.  |
 
    Pokud například nastavíte vypršení platnosti začínající na **1** a četnost na **měsíčně**, v této části se může vyskytnout vypršení platnosti pro dva uživatele:
 
@@ -117,7 +117,7 @@ Po dokončení použití dokumentu s podmínkami používání použijte násled
 
    ![Rozevírací seznam pro podmíněný přístup pro výběr šablony zásad](./media/terms-of-use/conditional-access-templates.png)
 
-   | Šablona | Popis |
+   | Šablona | Description |
    | --- | --- |
    | **Přístup ke cloudovým aplikacím pro všechny hosty** | Vytvoří se zásada podmíněného přístupu pro všechny hosty a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete možná muset odhlásit a přihlásit se. |
    | **Přístup ke cloudovým aplikacím pro všechny uživatele** | Vytvoří se zásada podmíněného přístupu pro všechny uživatele a všechny cloudové aplikace. Tato zásada má vliv na Azure Portal. Po vytvoření budete muset odhlásit a přihlásit se. |
@@ -253,7 +253,7 @@ Možnost **vyžadovat, aby uživatelé souhlasí s každým nastavením zaříze
 Tady je seznam podporovaných platforem a softwaru.
 
 > [!div class="mx-tableFixed"]
-> |  | iOS | Android | Windows 10 | Ostatní |
+> |  | iOS | Android | Windows 10 | Jiné |
 > | --- | --- | --- | --- | --- |
 > | **Native app** | Ano | Ano | Ano |  |
 > | **Microsoft Edge** | Ano | Ano | Ano |  |
@@ -387,7 +387,7 @@ Odpověď: můžete [zkontrolovat dřív přijaté podmínky použití](#how-use
 O: Pokud jste nakonfigurovali podmínky použití Azure AD a podmínky [a ujednání služby Intune](/intune/terms-and-conditions-create), bude uživatel muset přijmout obojí. Další informace najdete v příspěvku na [blogu pro vaši organizaci](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409)v článku věnovaném nejvhodnějšímu řešení.
 
 **Otázka: Jaké koncové body používá používání služby k ověřování?**<br />
-Odpověď: Podmínky použití využívá následující koncové body pro ověřování: https://tokenprovider.termsofuse.identitygovernance.azure.com a. https://account.activedirectory.windowsazure.com Pokud má vaše organizace seznam povolených adres URL pro registraci, budete je muset přidat do seznamu povolených bodů spolu s koncovými body služby Azure AD pro přihlášení.
+Odpověď: Podmínky použití využívá následující koncové body pro ověřování: https://tokenprovider.termsofuse.identitygovernance.azure.com a https://account.activedirectory.windowsazure.com . Pokud má vaše organizace seznam povolených adres URL pro registraci, budete je muset přidat do seznamu povolených bodů spolu s koncovými body služby Azure AD pro přihlášení.
 
 ## <a name="next-steps"></a>Další kroky
 

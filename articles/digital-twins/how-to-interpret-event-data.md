@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 4c95e686de23654688d0d7c3182c6565a907b750
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: e194c046cde623e0fcdd4c73ac24f2bf0755945c
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612960"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299428"
 ---
 # <a name="understand-event-data"></a>Pochopení dat událostí
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Různé události v digitálních událostech Azure vytváří **oznámení**, což umožňuje, aby back-end řešení v průběhu různých akcí probíhají. Ty se pak směrují do různých umístění uvnitř i mimo digitální vlákna Azure, která můžou tyto informace [použít k provedení](concepts-route-events.md) akce.
 
@@ -232,46 +235,6 @@ Tady je příklad upozornění na vytvoření nebo odstranění vztahu:
     "ownershipDepartment": "Operations"
 }
 ```
-
-### <a name="digital-twin-model-change-notifications"></a>Upozornění na změnu digitálního typu s dvojitým modelem
-
-**Oznámení o změně modelu** se aktivují, když se nahraje, znovu načte, opraví, vyřadí nebo odstraní [model](concepts-models.md) DTDL (Digital Definition Language).
-
-#### <a name="properties"></a>Vlastnosti
-
-Tady jsou pole v těle oznámení o změně modelu.
-
-| Name    | Hodnota |
-| --- | --- |
-| `id` | Identifikátor oznámení, jako je například identifikátor UUID nebo čítač, který služba spravuje. `source` + `id`je jedinečný pro každou událost DISTINCT |
-| `source` | Název instance služby IoT Hub nebo instance digitálního vlákna Azure, jako je například *myhub.Azure-Devices.NET* nebo *mydigitaltwins.westus2.azuredigitaltwins.NET* |
-| `specversion` | 1.0 |
-| `type` | `Microsoft.DigitalTwins.Model.Upload`<br>`Microsoft.DigitalTwins.Model.Reload`(Specifické pro centra)<br>`Microsoft.DigitalTwins.Model.Patch`(Specifické pro centra)<br>`Microsoft.DigitalTwins.Model.Decom`<br>`Microsoft.DigitalTwins.Model.Delete` |
-| `datacontenttype` | application/json |
-| `subject` | ID modelu ve formuláři`dtmi:<domain>:<unique model identifier>;<model version number>` |
-| `time` | Časové razítko při výskytu operace v modelu |
-| `sequence` | Hodnota vyjadřující pozici události ve větší seřazené posloupnosti událostí. Služby musí přidat pořadové číslo pro všechna oznámení, aby označovaly jejich pořadí, nebo aby si zachovali vlastní řazení jiným způsobem. Pořadové číslo se zvýší s každou zprávou. Nastaví se na 1, pokud se objekt odstraní a znovu vytvoří se stejným ID. |
-| `sequencetype` | Další podrobnosti o použití pole Sequence. Tato vlastnost například může určovat, že hodnota musí být podepsané 32 celé číslo, které začíná na 1 a v každém okamžiku se zvýší o 1. |
-| `modelstatus` | Stav řešení pro řešení modelu. Možné hodnoty: úspěch/NotFound/neúspěch (jenom IoT Hub) | 
-| `updatereason` | Aktualizuje důvod modelu ve schématu. Možné hodnoty: vytvořit/obnovit/přepsat (pouze IoT Hub) | 
-
-#### <a name="body-details"></a>Podrobnosti těla
-
-Pro akce nahrávání, opětovného načtení a opravy modelů není k dispozici žádný text zprávy. Uživatel musí provést `GET` volání pro získání obsahu modelu. 
-
-V případě a bude `Model.Decom` tělo opravy ve formátu JSON patch, stejně jako všechna ostatní rozhraní patch API na povrchu rozhraní API digitálních vláken Azure. Pokud tedy chcete vyřadit z provozu model z provozu, použijte:
-
-```json
-[
-  {
-    "op": "replace",
-    "path": "/decommissionedState",
-    "value": true
-  }
-]
-```
-
-V případě je `Model.Delete` Text žádosti stejný jako `GET` požadavek a získá nejnovější stav před odstraněním.
 
 ### <a name="digital-twin-change-notifications"></a>Oznámení o změně digitálního vlákna
 

@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 45a313318bc8005b433536d1b109f6153bc79e01
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: d611be27d8d576748019dee46022ca4cb70e966a
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84170609"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253439"
 ---
 # <a name="back-up-your-app-in-azure"></a>Zálohování aplikace v Azure
 Funkce zálohování a obnovení v [Azure App Service](overview.md) umožňuje snadno vytvářet zálohy aplikací ručně nebo podle plánu. Zálohy můžete nakonfigurovat tak, aby se zachovaly až do neurčitého množství času. Aplikaci můžete obnovit do snímku předchozího stavu přepsáním existující aplikace nebo obnovením do jiné aplikace.
@@ -74,7 +74,7 @@ Funkce zálohování podporuje následující databázová řešení:
 
 4. Zvolte cíl zálohování a vyberte **účet úložiště** a **kontejner**. Účet úložiště musí patřit do stejného předplatného jako aplikace, kterou chcete zálohovat. Pokud chcete, můžete na příslušných stránkách vytvořit nový účet úložiště nebo nový kontejner. Až skončíte, klikněte na **Vybrat**.
 
-5. Na stránce **Konfigurace zálohování** , která je pořád otevřená, můžete nakonfigurovat **záložní databázi**a pak vybrat databáze, které chcete zahrnout do záloh (SQL Database nebo MySQL), a pak kliknout na **OK**.
+5. Na stránce **Konfigurace zálohování** , která je stále otevřená, můžete nakonfigurovat **záložní databázi**, pak vybrat databáze, které chcete zahrnout do záloh (SQL Database nebo MySQL), a pak kliknout na **OK**.
 
     ![Zvolit účet úložiště](./media/manage-backup/configure-database.png)
 
@@ -150,7 +150,7 @@ Zálohování spouštějte stejným způsobem jako obvykle [ručně](#create-a-m
 ## <a name="how-backups-are-stored"></a>Způsob ukládání záloh
 Po provedení jedné nebo více záloh aplikace se zálohy zobrazí na stránce **kontejnery** vašeho účtu úložiště a v aplikaci. V účtu úložiště se každá záloha skládá ze `.zip` souboru, který obsahuje data zálohy, a `.xml` souboru, který obsahuje manifest `.zip` obsahu souboru. Pokud chcete mít přístup k vašim zálohám, aniž byste museli provádět obnovení aplikace, můžete tyto soubory rozbalit a procházet.
 
-Záloha databáze pro aplikaci je uložena v kořenové složce souboru ZIP. V případě databáze SQL se jedná o soubor BACPAC (bez přípony souboru) a je možné ho importovat. Pokud chcete vytvořit databázi SQL založenou na exportu BACPAC, přečtěte si téma [Import souboru BacPac pro vytvoření nové uživatelské databáze](https://technet.microsoft.com/library/hh710052.aspx).
+Záloha databáze pro aplikaci je uložena v kořenové složce souboru ZIP. V případě SQL Database se jedná o soubor BACPAC (bez přípony souboru) a je možné ho importovat. Pokud chcete vytvořit databázi v Azure SQL Database na základě exportu BACPAC, přečtěte si téma [Import souboru BacPac pro vytvoření databáze v Azure SQL Database](../azure-sql/database/database-import.md).
 
 > [!WARNING]
 > Změna všech souborů v kontejneru **websitebackups** může způsobit, že se zálohování stane neplatným, a proto není obnovitelné.
@@ -164,7 +164,7 @@ Správu zálohování můžete automatizovat pomocí skriptů pomocí rozhraní 
 Ukázky najdete v těchto tématech:
 
 - [Ukázky Azure CLI](samples-cli.md)
-- [Ukázky Azure PowerShell](samples-powershell.md)
+- [Ukázky Azure PowerShellu](samples-powershell.md)
 
 <a name="nextsteps"></a>
 

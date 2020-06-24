@@ -10,20 +10,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/01/2020
+ms.date: 06/23/2020
 ms.author: shvija
-ms.openlocfilehash: 12ddc5fa74b7a1b42bbd64fde9ec3410b1c1e425
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 588f01e84405cfa82afd84971dbcf06a958bf89d
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606727"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299360"
 ---
 # <a name="apache-kafka-troubleshooting-guide-for-event-hubs"></a>Průvodce odstraňováním potíží s Apache Kafka pro Event Hubs
 Tento článek popisuje tipy k odstraňování problémů, ke kterým může dojít při použití Event Hubs pro Apache Kafka. 
 
 ## <a name="server-busy-exception"></a>Zaneprázdněná výjimka serveru
-Můžete obdržet výjimku zaneprázdnění serveru z důvodu omezení Kafka. U klientů AMQP Event Hubs hned po omezení služby okamžitě vrací výjimku **zaneprázdnění serveru** . Je ekvivalentní se zprávou "zkusit znovu později". V Kafka jsou zprávy před dokončením zpožděny. Délka zpoždění se vrátí v milisekundách jako `throttle_time_ms` v odpovědi na zpracování nebo načtení. Ve většině případů tyto opožděné požadavky nejsou protokolovány jako ServerBusy výjimky na Event Hubs řídicích panelech. Místo toho by měla být `throttle_time_ms` použita hodnota odpovědi jako ukazatel, který propustnost překročila zřízenou kvótu.
+Můžete obdržet výjimku zaneprázdnění serveru z důvodu omezení Kafka. U klientů AMQP Event Hubs hned po omezení služby okamžitě vrací výjimku **zaneprázdnění serveru** . Je ekvivalentní se zprávou "zkusit znovu později". V Kafka jsou zprávy před dokončením zpožděny. Délka zpoždění se vrátí v milisekundách jako `throttle_time_ms` v odpovědi na zpracování nebo načtení. Ve většině případů tyto opožděné požadavky nejsou protokolovány jako ServerBusy výjimky na Event Hubs řídicích panelech. Místo toho `throttle_time_ms` by měla být použita hodnota odpovědi jako ukazatel, který propustnost překročila zřízenou kvótu.
 
 Pokud je přenos nadměrný, služba má následující chování:
 
@@ -39,7 +39,7 @@ Můžete se setkat s tím, že spotřebitelé nezískávají žádné záznamy a
 - Pokud vaše konfigurace odpovídá těmto doporučeným hodnotám a stále se zobrazuje stálé nové vyrovnání, můžete otevřít problém (Nezapomeňte, že byste měli mít k dispozici celou konfiguraci, abyste mohli přispět k ladění)!
 
 ## <a name="compressionmessage-format-version-issue"></a>Problém verze formátu komprese/zprávy
-Kafka podporuje kompresi a Event Hubs pro Kafka aktuálně ne. Chyby, které zmiňují verzi formátu zprávy (například), `The message format version on the broker does not support the request.`jsou způsobeny tím, že se klient pokusí do našich zprostředkovatelů odeslat komprimované zprávy Kafka.
+Kafka podporuje kompresi a Event Hubs pro Kafka aktuálně ne. Chyby, které zmiňují verzi formátu zprávy (například), `The message format version on the broker does not support the request.` jsou způsobeny tím, že se klient pokusí do našich zprostředkovatelů odeslat komprimované zprávy Kafka.
 
 Pokud jsou komprimovaná data nezbytná, komprimace dat před odesláním do zprostředkovatelů a dekomprimace po přijetí představuje platné alternativní řešení. Tělo zprávy je pouze pole bajtů pro službu, takže komprese nebo dekomprese na straně klienta nezpůsobí žádné problémy.
 

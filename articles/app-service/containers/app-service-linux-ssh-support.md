@@ -9,11 +9,11 @@ ms.date: 02/25/2019
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: dab13f222b441c7415a8d09d0d91ab3af5aaf836
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280180"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695823"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Podpora SSH pro službu Azure App Service v Linuxu
 
@@ -41,7 +41,7 @@ Pomocí tunelového propojení TCP můžete vytvořit síťové připojení mezi
 
 Chcete-li začít, je nutné nainstalovat rozhraní příkazového [řádku Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest). Pokud chcete zjistit, jak funguje bez instalace rozhraní příkazového řádku Azure, otevřete [Azure Cloud Shell](../../cloud-shell/overview.md). 
 
-Pomocí příkazu [AZ WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) spusťte vzdálené připojení k aplikaci. Zadejte _ \<ID předplatného->_, _ \<Group-Name>_ a \_ \<>_ App-Name pro vaši aplikaci.
+Pomocí příkazu [AZ WebApp Remote-Connection Create](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) spusťte vzdálené připojení k aplikaci. Zadejte _\<subscription-id>_ , _\<group-name>_ a \_ \<app-name> _ pro vaši aplikaci.
 
 ```azurecli-interactive
 az webapp create-remote-connection --subscription <subscription-id> --resource-group <resource-group-name> -n <app-name> &
@@ -64,7 +64,7 @@ Pomocí místního portu otevřete v kontejneru relaci SSH s vámi zvoleným kli
 ssh root@127.0.0.1 -p <port>
 ```
 
-Po zobrazení výzvy zadejte `yes` , že chcete pokračovat v připojování. Pak se zobrazí výzva k zadání hesla. Použijte `Docker!`, které jste si zobrazili dříve.
+Po zobrazení výzvy zadejte, že `yes` Chcete pokračovat v připojování. Pak se zobrazí výzva k zadání hesla. Použijte `Docker!` , které jste si zobrazili dříve.
 
 ```output
 Warning: Permanently added '[127.0.0.1]:21382' (ECDSA) to the list of known hosts.
@@ -87,7 +87,7 @@ A P P   S E R V I C E   O N   L I N U X
 
 Nyní jste připojeni k vašemu konektoru.  
 
-Zkuste spustit [horní](https://ss64.com/bash/top.html) příkaz. Měli byste být schopni zobrazit proces vaší aplikace v seznamu procesů. V níže uvedeném příkladu je to s `PID 263`.
+Zkuste spustit [horní](https://ss64.com/bash/top.html) příkaz. Měli byste být schopni zobrazit proces vaší aplikace v seznamu procesů. V níže uvedeném příkladu je to s `PID 263` .
 
 ```output
 Mem: 1578756K used, 127032K free, 8744K shrd, 201592K buff, 341348K cached
@@ -117,7 +117,7 @@ Otázky a připomínky můžete publikovat na [fóru Azure](https://docs.microso
 
 Další informace o Web App for Containers najdete v tématech:
 
-* [Představujeme vzdálené ladění aplikací Node. js v Azure App Service z VS Code](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
+* [Představujeme vzdálené ladění aplikací Node.js v Azure App Service z VS Code](https://medium.com/@auchenberg/introducing-remote-debugging-of-node-js-apps-on-azure-app-service-from-vs-code-in-public-preview-9b8d83a6e1f0)
 * [Jak používat vlastní image Dockeru pro službu Web App for Containers](quickstart-docker-go.md)
 * [Použití .NET Core ve službě Azure App Service v Linuxu](quickstart-dotnetcore.md)
 * [Použití Ruby ve službě Azure App Service v Linuxu](quickstart-ruby.md)

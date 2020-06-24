@@ -1,17 +1,17 @@
 ---
-title: Povolit spravovanou identitu přiřazenou systémem pro aplikaci Azure jaře Cloud
+title: Povolení spravované identity přiřazené systémem pro aplikaci Azure Spring Cloud
 description: Jak povolit spravovanou identitu přiřazenou systémem pro aplikaci.
 author: MikeDodaro
 ms.author: brendm
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 05/13/2020
-ms.openlocfilehash: 81df4364324b03bb624e051fd71b25f0d6cdb049
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: c9b9eaf7447d30dfbec6b04ff00010e0e2992c8e
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84172295"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254527"
 ---
 # <a name="how-to-enable-system-assigned-managed-identity-for-azure-spring-cloud-application"></a>Postup povolení spravované identity přiřazené systémem pro aplikaci Azure jaře Cloud
 Spravované identity pro prostředky Azure poskytují automaticky spravovanou identitu v Azure Active Directory k prostředkům Azure, jako je například vaše aplikace pro jarní Cloud v Azure. Tuto identitu můžete použít k ověření pro libovolnou službu, která podporuje ověřování Azure AD, a to bez nutnosti přihlašovacích údajů ve vašem kódu.
@@ -53,11 +53,11 @@ az spring-cloud app identity assign -n app_name -s service_name -g resource_grou
 ```
 
 ## <a name="obtain-tokens-for-azure-resources"></a>Získání tokenů pro prostředky Azure
-Aplikace může pomocí spravované identity získat tokeny pro přístup k jiným prostředkům chráněným službou Azure AD, jako je například Azure Key Vault. Tyto tokeny reprezentují aplikaci, která přistupuje k prostředkům, ne každému konkrétnímu uživateli aplikace.
+Aplikace může pomocí spravované identity získat tokeny pro přístup k jiným prostředkům chráněným Azure Active Directory, jako je například Azure Key Vault. Tyto tokeny reprezentují aplikaci, která přistupuje k prostředkům, ne každému konkrétnímu uživateli aplikace.
 
 Možná budete muset [nakonfigurovat cílový prostředek, aby povoloval přístup z vaší aplikace](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/howto-assign-access-portal). Pokud například požadujete token pro přístup k Key Vault, ujistěte se, že jste přidali zásadu přístupu, která zahrnuje identitu vaší aplikace. V opačném případě budou volání Key Vault odmítnuta, a to i v případě, že obsahují token. Další informace o tom, které prostředky podporují Azure Active Directory tokeny, najdete v tématu [služby Azure, které podporují ověřování Azure AD](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/services-support-managed-identities#azure-services-that-support-azure-ad-authentication).
 
-Azure jaře Cloud sdílí stejný koncový bod pro získání tokenu s virtuálním počítačem Azure. Podívejte [se, jak používat token virtuálních počítačů](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) pro různé příklady kódu a skriptu a pokyny k důležitým tématům, jako je zpracování vypršení platnosti tokenu a chyby protokolu HTTP.
+Azure jaře Cloud sdílí stejný koncový bod pro získání tokenu s virtuálním počítačem Azure. K získání tokenu doporučujeme použít sadu Java SDK nebo starty pružinového spouštění.  Podívejte [se, jak používat token virtuálních počítačů](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token) pro různé příklady kódu a skriptu a pokyny k důležitým tématům, jako je zpracování vypršení platnosti tokenu a chyby protokolu HTTP.
 
 Doporučené: k získání tokenů použijte sadu Java SDK nebo starty pružinového spuštění.  Podívejte se na ukázky v [následujících krocích](#next-steps).
 
@@ -82,3 +82,4 @@ az spring-cloud app identity remove -n app_name -s service_name -g resource_grou
 ## <a name="next-steps"></a>Další kroky
 * [Použití spravovaných identit pomocí sady Java SDK](https://github.com/Azure-Samples/Azure-Spring-Cloud-Samples)
 * [Přístup k Azure Key Vault se spravovanými identitami ve jarním startu Starter](https://github.com/microsoft/azure-spring-boot/blob/master/azure-spring-boot-starters/azure-keyvault-secrets-spring-boot-starter/README.md#use-msi--managed-identities)
+* [Použití Key Vault z App Service s Identita spravované služby](https://docs.microsoft.com/samples/azure-samples/app-service-msi-keyvault-dotnet/keyvault-msi-appservice-sample/)

@@ -12,12 +12,12 @@ manager: rkarlin
 author: memildin
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: 7efcc4a9ec7da2bdd4005c124d5d0e8dd03c4363
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: 5a732683b52885173a60563f436b6ab01ea00710
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669694"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254102"
 ---
 # <a name="advanced-data-security"></a>Pokročilé zabezpečení dat
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -62,7 +62,7 @@ Pokud chcete zobrazit a spravovat nastavení reklam, přejděte k **rozšířen�
 
 ![Nastavení serveru](./media/advanced-data-security/server_settings.png)
 
-## <a name="4-manage-ads-settings-for-a-sql-database"></a>4. Správa nastavení reklam pro databázi SQL
+## <a name="4-manage-ads-settings-for-a-database"></a>4. Správa nastavení reklam pro databázi
 
 Pokud chcete přepsat nastavení reklam pro určitou databázi, zaškrtněte políčko **Povolit rozšířená zabezpečení dat v úrovni databáze** . Tuto možnost použijte jenom v případě, že máte konkrétní požadavek na získání samostatných výstrah rozšířené ochrany před hrozbami nebo výsledků posouzení ohrožení zabezpečení pro jednotlivé databáze, a to v místě nebo kromě výstrah a výsledků přijatých pro všechny databáze na serveru nebo ve spravované instanci.
 

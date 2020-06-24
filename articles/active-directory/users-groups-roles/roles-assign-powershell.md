@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bfcb00f56a3cc6f71729fbeaf317ce9447e120ed
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 2180451a1d0c377af1e6c3e7377e64d9cb62ef8c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582607"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84732051"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Přiřazení vlastních rolí k oboru prostředků pomocí PowerShellu v Azure Active Directory
 
@@ -52,7 +52,7 @@ Teď můžete začít používat rutiny v modulu. Úplný popis rutin v modulu A
 ## <a name="assign-a-role-to-a-user-or-service-principal-with-resource-scope"></a>Přiřazení role uživateli nebo instančnímu objektu s rozsahem prostředků
 
 1. Otevřete modul Azure AD Preview PowerShellu.
-1. Přihlaste se spuštěním příkazu `Connect-AzureAD`.
+1. Přihlaste se spuštěním příkazu `Connect-AzureAD` .
 1. Pomocí následujícího skriptu PowerShellu vytvořte novou roli.
 
 ``` PowerShell

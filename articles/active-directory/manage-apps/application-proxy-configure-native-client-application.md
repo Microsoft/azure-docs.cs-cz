@@ -3,25 +3,25 @@ title: Publikování nativních klientských aplikací – Azure AD | Microsoft 
 description: Obsahuje informace o tom, jak povolit nativním klientským aplikacím komunikovat se službou Azure Proxy aplikací služby AD Connector, aby bylo možné zajistit zabezpečený vzdálený přístup k místním aplikacím.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/12/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 442e1515159afc1df79bb6f5f1f747ce0800fef7
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ca5cdb592de29f8c5396a68a7c36e6994df906cc
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83647232"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764804"
 ---
 # <a name="how-to-enable-native-client-applications-to-interact-with-proxy-applications"></a>Jak povolit nativní klientské aplikace pro interakci s proxy aplikacemi
 
@@ -113,10 +113,10 @@ Požadované informace najdete v ukázkovém kódu na portálu Azure AD, a to n�
 
 | Požadovány informace | Jak ji najít na portálu Azure AD |
 | --- | --- |
-| \<ID tenanta> | **Azure Active Directory**  >  **Vlastnosti**  >  **ID adresáře** |
-| \<ID aplikace> nativní aplikace | **Registrace aplikace**  >  *vaše nativní aplikace*  >  **Přehled**  >  **ID aplikace** |
-| \<> rozsahu | **Registrace aplikace**  >  *vaše nativní aplikace*  >  **Oprávnění k rozhraní api** > klikněte na rozhraní API pro oprávnění (user_impersonation) > panel s titulkem **user_impersonation** se objeví na pravé straně. > oboru je adresa URL v poli pro úpravy.
-| \<Adresa URL proxy aplikace> | Externí adresa URL a cesta k rozhraní API
+| \<Tenant ID> | **Azure Active Directory**  >  **Vlastnosti**  >  **ID adresáře** |
+| \<App ID of the Native app> | **Registrace aplikace**  >  *vaše nativní aplikace*  >  **Přehled**  >  **ID aplikace** |
+| \<Scope> | **Registrace aplikace**  >  *vaše nativní aplikace*  >  **Oprávnění k rozhraní api** > klikněte na rozhraní API pro oprávnění (user_impersonation) > panel s titulkem **user_impersonation** se objeví na pravé straně. > oboru je adresa URL v poli pro úpravy.
+| \<Proxy App Url> | Externí adresa URL a cesta k rozhraní API
 
 Po úpravě kódu MSAL pomocí těchto parametrů se uživatelé můžou ověřit pro nativní klientské aplikace i v případě, že jsou mimo podnikovou síť.
 

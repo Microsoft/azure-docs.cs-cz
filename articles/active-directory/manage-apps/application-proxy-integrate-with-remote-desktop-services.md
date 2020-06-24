@@ -3,25 +3,25 @@ title: Publikování vzdálené plochy pomocí proxy serveru Aplikace Azure AD |
 description: Zahrnuje základní informace o konektorech Azure Proxy aplikací služby AD.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: it-pro
 ms.reviewer: harshja
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6ca64e2de5734c567173fc735776074f4c87fbc
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 34f3dcd607a7417932912528167a1120dbfd9b4f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67108470"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764515"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Publikování vzdálené plochy pomocí Azure Proxy aplikací služby AD
 
@@ -67,7 +67,7 @@ Po nastavení služby RDS a Azure Proxy aplikací služby AD pro vaše prostřed
 ### <a name="publish-the-rd-host-endpoint"></a>Publikování koncového bodu hostitele vzdálené plochy
 
 1. [Publikujte novou aplikaci proxy aplikací](application-proxy-add-on-premises-application.md) s následujícími hodnotami:
-   - Interní adresa URL `https://\<rdhost\>.com/`:, `\<rdhost\>` kde je společná kořenová složka RD Web a Brána VP.
+   - Interní adresa URL: `https://\<rdhost\>.com/` , kde `\<rdhost\>` je společná kořenová složka RD Web a Brána VP.
    - Externí adresa URL: Toto pole se vyplní automaticky na základě názvu aplikace, ale můžete ho upravit. Uživatelé budou při přístupu k VP přejít na tuto adresu URL.
    - Metoda předběžného ověření: Azure Active Directory
    - Přeložit hlavičky adresy URL: ne
@@ -75,7 +75,7 @@ Po nastavení služby RDS a Azure Proxy aplikací služby AD pro vaše prostřed
 3. Ponechte pro aplikaci metodu jednotného přihlašování, jako je **zakázané jednotné přihlašování Azure AD**. Uživatelům se zobrazí výzva k ověření jednou pro Azure AD a jednorázově na webu RD Web, ale mají k Brána VP jednotné přihlašování.
 4. Vyberte **Azure Active Directory**a pak **Registrace aplikací**. Vyberte aplikaci ze seznamu.
 5. V části **Spravovat**vyberte **branding**.
-6. Aktualizujte pole **Adresa URL domovské stránky** tak, aby odkazovalo na webový koncový `https://\<rdhost\>.com/RDWeb`bod služby Vzdálená plocha (například).
+6. Aktualizujte pole **Adresa URL domovské stránky** tak, aby odkazovalo na webový koncový bod služby Vzdálená plocha (například `https://\<rdhost\>.com/RDWeb` ).
 
 ### <a name="direct-rds-traffic-to-application-proxy"></a>Přímý provoz RDS do proxy aplikace
 
@@ -91,7 +91,7 @@ Připojte se k nasazení služby Vzdálená plocha jako správce a změňte náz
 
    ![Obrazovka vlastností nasazení v VP](./media/application-proxy-integrate-with-remote-desktop-services/rds-deployment-properties.png)
 
-8. Spusťte tento příkaz pro každou kolekci. Nahraďte * \<yourcollectionname\> * a * \<proxyfrontendurl\> * vlastními informacemi. Tento příkaz umožňuje jednotné přihlašování mezi webovými a Brána VP VP a optimalizuje výkon:
+8. Spusťte tento příkaz pro každou kolekci. Nahraďte *\<yourcollectionname\>* a *\<proxyfrontendurl\>* vlastními informacemi. Tento příkaz umožňuje jednotné přihlašování mezi webovými a Brána VP VP a optimalizuje výkon:
 
    ```
    Set-RDSessionCollectionConfiguration -CollectionName "<yourcollectionname>" -CustomRdpProperty "pre-authentication server address:s:<proxyfrontendurl>`nrequire pre-authentication:i:1"

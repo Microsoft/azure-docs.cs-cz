@@ -3,17 +3,17 @@ title: Vytvoření vnitřních map pomocí autora
 description: K vytvoření vnitřních map použijte Tvůrce Azure Maps.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/28/2020
+ms.date: 06/17/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c27752d7a4b8e99dd70563cece02a4fd4e67bdc1
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 93827e4d5f6bcf66191ae78c18adac71b5dd0a22
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560352"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255173"
 ---
 # <a name="use-creator-to-create-indoor-maps"></a>Vytvoření vnitřních map pomocí autora
 
@@ -64,25 +64,30 @@ Rozhraní API pro nahrání dat je dlouhodobá transakce, která implementuje vz
 
 5. Klikněte na modré tlačítko **Odeslat** a počkejte na zpracování žádosti. Až se žádost dokončí, přejdete na kartu **hlavičky** odpovědi. Zkopírujte hodnotu klíče **umístění** , což je `status URL` .
 
-6. Chcete-li zjistit stav volání rozhraní API, vytvořte požadavek GET HTTP na `status URL` . K adrese URL pro ověření budete muset připojit primární klíč předplatného.
+6. Chcete-li zjistit stav volání rozhraní API, vytvořte požadavek **Get** http na `status URL` . K adrese URL pro ověření budete muset připojit primární klíč předplatného. Požadavek **Get** by měl vypadat jako následující adresa URL:
 
     ```http
-    https://atlas.microsoft.com/mapData/operations/{operationsId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    https://atlas.microsoft.com/mapData/operations/{operationId}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-7. Po úspěšném dokončení požadavku **Get** http můžete pomocí `resourceLocation` adresy URL načíst metadata z tohoto prostředku v dalším kroku.
+7. Po úspěšném dokončení požadavku **Get** http se vrátí `resourceLocation` . `resourceLocation`Obsahuje jedinečný `udid` pro nahraný obsah. Volitelně můžete pomocí `resourceLocation` adresy URL načíst metadata z tohoto prostředku v dalším kroku.
 
     ```json
     {
-        "operationId": "{operationId}",
         "status": "Succeeded",
-        "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{upload-udid}?api-version=1.0"
+        "resourceLocation": "https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0"
     }
     ```
 
-8. Pokud chcete načíst metadata obsahu, vytvořte **GET** na `resourceLocation` adrese URL, kterou jste zkopírovali v kroku 7, požadavek GET http. Tělo odpovědi obsahuje jedinečný `udid` pro nahraný obsah, umístění pro přístup k obsahu nebo jeho stažení v budoucnu a další metadata o obsahu, jako je datum vytvoření/aktualizace, velikost a tak dále. Příkladem celkové odpovědi je:
+8. Chcete-li načíst metadata obsahu, vytvořte požadavek **Get** http na `resourceLocation` adrese URL, která byla načtena v kroku 7. Ujistěte se, že jste k adrese URL přidávali primární klíč předplatného pro ověřování. Požadavek **Get** by měl vypadat jako následující adresa URL:
 
-     ```json
+    ```http
+   https://atlas.microsoft.com/mapData/metadata/{udid}?api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}
+    ```
+
+9. Až se požadavek **Get** http úspěšně dokončí, tělo odpovědi bude obsahovat `udid` zadané v `resourceLocation` kroku 7, umístění pro přístup k obsahu nebo jeho stažení v budoucnu a některá další metadata o obsahu, jako je datum vytvoření/aktualizace, velikost a tak dále. Příkladem celkové odpovědi je:
+
+    ```json
     {
         "udid": "{udid}",
         "location": "https://atlas.microsoft.com/mapData/{udid}?api-version=1.0",
@@ -102,7 +107,7 @@ Rozhraní API pro nahrání dat je dlouhodobá transakce, která implementuje vz
 2. Vyberte metodu **post** http na kartě tvůrce a zadejte následující adresu URL pro převedení nahraného balíčku pro vykreslování na data mapy. Použijte `udid` pro nahraný balíček.
 
     ```http
-    https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={upload-udid}&inputType=DWG
+    https://atlas.microsoft.com/conversion/convert?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0&udid={udid}&inputType=DWG
     ```
 
 3. Klikněte na tlačítko **Odeslat** a počkejte na zpracování žádosti. Po dokončení žádosti přejít na kartu **hlavičky** odpovědi a vyhledejte klíč **umístění** . Zkopírujte hodnotu klíče **umístění** , který je `status URL` pro požadavek na převod.
@@ -163,7 +168,7 @@ Datová sada je kolekce funkcí mapy, jako jsou budovy, úrovně a místnosti. C
 4. Vytvořte si požadavek **Get** na adresu, kde `statusURL` získáte `datasetId` . K ověřování přidejte svůj primární klíč předplatného Azure Maps. Požadavek by měl vypadat jako na následující adrese URL:
 
     ```http
-    https://atlas.microsoft.com/dataset/operations/{operationsId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/dataset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 5. Po úspěšném dokončení požadavku **Get** http bude hlavička odpovědi obsahovat `datasetId` pro vytvořenou datovou sadu. Zkopírujte `datasetId` . K vytvoření TILESET budete muset použít `datasetId` .
@@ -192,7 +197,7 @@ TILESET je sada vektorových dlaždic, které se vykreslují na mapě. Tilesets 
 3. Vytvořte si požadavek **Get** na `statusURL` TILESET. K ověřování přidejte svůj primární klíč předplatného Azure Maps. Požadavek by měl vypadat jako na následující adrese URL:
 
    ```http
-    https://atlas.microsoft.com/tileset/operations/{operationsId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
+    https://atlas.microsoft.com/tileset/operations/{operationId}?api-version=1.0&subscription-key=<Azure-Maps-Primary-Subscription-key>
     ```
 
 4. Po úspěšném dokončení požadavku **Get** http bude hlavička odpovědi obsahovat `tilesetId` pro vytvořenou TILESET. Zkopírujte `tilesetId` .

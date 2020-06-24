@@ -2,8 +2,8 @@
 title: Publikování aplikací v samostatných sítích prostřednictvím skupin konektorů – Azure AD
 description: Popisuje, jak vytvářet a spravovat skupiny konektorů v Azure Proxy aplikací služby AD.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -11,15 +11,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/08/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 22fa1de0a0e3bb91480212381e07b17875bf0bf4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: be3e99ca57957e1975313fed8609533f4a65b102
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275567"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764719"
 ---
 # <a name="publish-applications-on-separate-networks-and-locations-using-connector-groups"></a>Publikování aplikací v samostatných sítích a umístěních pomocí skupin konektorů
 
@@ -41,7 +41,7 @@ Chcete-li seskupit konektory, musíte se ujistit, že jste [nainstalovali více 
 Pomocí těchto kroků můžete vytvořit tolik skupin konektorů, kolik chcete.
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-1. Vyberte **Azure Active Directory** > **aplikační proxy aplikace**pro**podnikové aplikace** > .
+1. Vyberte **Azure Active Directory**  >  **Enterprise applications**  >  **aplikační proxy aplikace**pro podnikové aplikace.
 1. Vyberte možnost **Nová skupina konektorů**. Zobrazí se okno Nová skupina konektoru.
 
    ![Zobrazuje obrazovku pro výběr nové skupiny konektorů.](./media/application-proxy-connector-groups/new-group.png)
@@ -53,7 +53,7 @@ Pomocí těchto kroků můžete vytvořit tolik skupin konektorů, kolik chcete.
 
 Tyto kroky použijte pro každou aplikaci, kterou jste publikovali pomocí proxy aplikace. Aplikaci můžete přiřadit do skupiny konektorů při jejím prvním publikování, nebo můžete pomocí těchto kroků změnit přiřazení kdykoli, když chcete.
 
-1. Z řídicího panelu pro správu vašeho adresáře vyberte **podnikové aplikace** > **všechny aplikace** > aplikaci, kterou chcete přiřadit ke skupině konektorů > **proxy aplikací**.
+1. Z řídicího panelu pro správu vašeho adresáře vyberte **podnikové aplikace**  >  **všechny aplikace** > aplikaci, kterou chcete přiřadit ke skupině konektorů > **proxy aplikací**.
 1. Pomocí rozevírací nabídky **Skupina konektoru** vyberte skupinu, kterou chcete použít v aplikaci.
 1. Vyberte **Uložit** a použijte změnu.
 

@@ -8,11 +8,11 @@ ms.topic: overview
 ms.date: 07/26/2019
 ms.author: sngun
 ms.openlocfilehash: 5b2e2c51eaa878ba0ce8bc31c001575acebe6919
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240153"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695245"
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Úvod do Azure Cosmos DB: API tabulka
 
@@ -61,5 +61,5 @@ Tady jsou odkazy na informace, které vám pomůžou začít:
 * [Sada SDK pro .NET Standard Azure Cosmos DB Table](table-sdk-dotnet-standard.md)
 * [Azure Cosmos DB tabulka .NET SDK](table-sdk-dotnet.md)
 * [Azure Cosmos DB tabulka Java SDK](table-sdk-java.md)
-* [Sada SDK pro Node. js Azure Cosmos DB tabulce](table-sdk-nodejs.md)
+* [Sada SDK pro Node.js Azure Cosmos DB Table](table-sdk-nodejs.md)
 * [Sada SDK pro Azure Cosmos DB tabulky pro Python](table-sdk-python.md)

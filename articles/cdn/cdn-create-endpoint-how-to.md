@@ -10,16 +10,16 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0a130a433c68d0d5cc8c26eae4b81ff264eb0ca2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81254011"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887731"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Vytvoření koncového bodu Azure CDN
 Tento článek popisuje všechna nastavení pro vytvoření koncového bodu služby [Azure Content Delivery Network (CDN)](cdn-overview.md) v existujícím profilu CDN. Po vytvoření profilu a koncového bodu můžete začít doručování obsahu vašim zákazníkům. Rychlý Start při vytváření profilu a koncového bodu najdete v tématu [rychlý Start: vytvoření profilu Azure CDN a koncového bodu](cdn-create-new-endpoint.md).
@@ -44,7 +44,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
    
     ![Přidat stránku koncového bodu](./media/cdn-create-endpoint-how-to/cdn-add-endpoint-page.png)
 
-3. Do pole **Název** zadejte jedinečný název pro nový koncový bod CDN. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _ \<koncového bodu>_. azureedge.NET.
+3. Do pole **Název** zadejte jedinečný název pro nový koncový bod CDN. Tento název se používá pro přístup k prostředkům v mezipaměti v doméně _\<endpointname>_ . azureedge.NET.
 
 4. Jako **Typ původu**vyberte jeden z následujících typů původu: 
    - **Úložiště** pro Azure Storage
@@ -62,7 +62,7 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
    > Některé typy původu (například Azure Storage a Web Apps) vyžadují, aby se hlavička hostitele shodovala s doménou původu. Pokud nemáte původ, který vyžaduje hlavičku hostitele odlišnou od své domény, je vhodné ponechat výchozí hodnotu.
    > 
     
-8. V poli **protokol** a **zdrojový port**zadejte protokoly a porty, které se mají použít pro přístup k prostředkům na zdrojovém serveru. Je nutné vybrat alespoň jeden protokol (HTTP nebo HTTPS). Pro přístup k obsahu HTTPS použijte doménu poskytovanou CDN (_\<koncový bod>_. azureedge.NET). 
+8. V poli **protokol** a **zdrojový port**zadejte protokoly a porty, které se mají použít pro přístup k prostředkům na zdrojovém serveru. Je nutné vybrat alespoň jeden protokol (HTTP nebo HTTPS). Pro přístup k obsahu HTTPS použijte doménu poskytovanou CDN ( _\<endpointname>_ . azureedge.NET). 
    
    > [!NOTE]
    > Hodnota **počáteční port** určuje pouze port, který koncový bod používá k načtení informací ze zdrojového serveru. Koncový bod jako takový je dostupný jenom koncovým klientům na výchozích portech HTTP a HTTPS (80 a 443), a to bez ohledu na nastavení **Počáteční port**.  
@@ -79,14 +79,14 @@ Přihlaste se k webu [Azure Portal](https://portal.azure.com) pomocí svého ú�
 
     - **Azure CDN Standard od Verizon** a **Azure CDN Premium od profilů Verizon** :
        - [**Obecné doručování webu**](cdn-optimization-overview.md#general-web-delivery)
-       - [**Akcelerace dynamického webu**](cdn-optimization-overview.md#dynamic-site-acceleration)
+       - [**Akcelerace dynamických webů**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
     - **Azure CDN Standard z profilů Akamai** :
        - [**Obecné doručování webu**](cdn-optimization-overview.md#general-web-delivery)
        - [**Obecné streamování médií**](cdn-optimization-overview.md#general-media-streaming)
        - [**Streamování médií videa na vyžádání**](cdn-optimization-overview.md#video-on-demand-media-streaming)
        - [**Stažení velkých souborů**](cdn-optimization-overview.md#large-file-download)
-       - [**Akcelerace dynamického webu**](cdn-optimization-overview.md#dynamic-site-acceleration)
+       - [**Akcelerace dynamických webů**](cdn-optimization-overview.md#dynamic-site-acceleration)
 
 10. Pokud chcete vytvořit nový koncový bod, vyberte **Přidat**.
    

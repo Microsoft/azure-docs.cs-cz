@@ -2,45 +2,44 @@
 title: Nastavení analýzy závislostí bez agentů v serveru Azure Migrate Assessment
 description: Nastavte analýzu závislostí bez agentů v Azure Migrate Server Assessment.
 ms.topic: how-to
-ms.date: 2/24/2020
-ms.openlocfilehash: 68c95c74768f9d9628f92b061754c942b080565c
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 6/08/2020
+ms.openlocfilehash: dc2ea0656198927cc8ae58533d296a2bedc37c13
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84659975"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771372"
 ---
-# <a name="set-up-agentless-dependency-visualization"></a>Nastavení vizualizace závislosti bez agentů 
+# <a name="analyze-machine-dependencies-agentless"></a>Analýza závislostí počítačů (bez agentů)
 
-Tento článek popisuje, jak nastavit analýzu závislostí bez agentů v Azure Migrate: posouzení serveru. [Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat a pochopit závislosti mezi počítači, které chcete vyhodnotit a migrovat do Azure.
+Tento článek popisuje, jak nastavit analýzu závislostí bez agentů v Azure Migrate: posouzení serveru. [Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat a pochopit závislosti mezi počítači pro účely posouzení a migrace do Azure.
 
 
 > [!IMPORTANT]
-> Vizualizace závislostí bez agentů je aktuálně ve verzi Preview pro virtuální počítače VMware, zjištěná pomocí nástroje Azure Migrate: Nástroj pro vyhodnocení serveru.
+> Vizualizace závislostí bez agentů je aktuálně ve verzi Preview pro virtuální počítače VMware zjištěné pomocí nástroje Azure Migrate: Server Assessment Tool.
 > Funkce můžou být omezené nebo neúplné.
 > Tuto verzi Preview pokrývá zákaznická podpora a je možné ji použít pro produkční úlohy.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
+## <a name="current-limitations"></a>Aktuální omezení
 
+- V zobrazení analýzy závislostí nemůžete aktuálně přidat nebo odebrat server ze skupiny.
+- Mapování závislostí pro skupinu serverů není aktuálně k dispozici.
+- Data závislosti nelze stáhnout v tabulkovém formátu.
 
 ## <a name="before-you-start"></a>Než začnete
 
-- [Přečtěte si o](concepts-dependency-visualization.md#agentless-analysis) analýze závislostí bez agentů.
-- [Přečtěte](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) si požadavky a požadavky na podporu pro nastavení vizualizace závislosti bez agentů pro virtuální počítače VMware.
-- Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
-- Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
-- Ujistěte se, že jste nastavili [zařízení Azure Migrate](migrate-appliance.md) pro zjišťování vašich místních počítačů. Přečtěte si, jak nastavit zařízení pro virtuální počítače [VMware](how-to-set-up-appliance-vmware.md) . Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru.
+- [Zkontrolujte](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) podporované operační systémy a požadovaná oprávnění.
+- Ujistěte se, že:
+    - Mít Azure Migrate projekt. Pokud to neuděláte, [vytvořte](how-to-add-tool-first-time.md) ho hned teď.
+    - Ověřte, že jste [přidali](how-to-assess.md) Azure Migrate: Nástroj pro vyhodnocení serveru do projektu.
+    - Nastavte [zařízení Azure Migrate](migrate-appliance.md) pro zjišťování místních počítačů. [Nastavte zařízení](how-to-set-up-appliance-vmware.md) pro virtuální počítače VMware. Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru.
+- Ověřte, že na každém virtuálním počítači, který chcete analyzovat, je nainstalovaný nástroj VMware (novější než 10,2).
 
-
-## <a name="current-limitations"></a>Aktuální omezení
-
-- Teď nemůžete přidat nebo odebrat server ze skupiny v zobrazení analýzy závislostí.
-- Mapování závislostí pro skupinu serverů není aktuálně k dispozici.
-- V současné době nelze data závislostí stáhnout v tabulkovém formátu.
 
 ## <a name="create-a-user-account-for-discovery"></a>Vytvoření uživatelského účtu pro zjišťování
 
-Nastavte uživatelský účet, aby vyhodnocování serveru mělo přístup k virtuálnímu počítači pro zjišťování. [Přečtěte si informace](migrate-support-matrix-vmware.md#agentless-dependency-analysis-requirements) o požadavcích na účet.
+Nastavte uživatelský účet, aby vyhodnocování serveru mělo přístup k virtuálnímu počítači, aby bylo možné zjistit závislosti. [Přečtěte si informace](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agentless) o požadavcích na účet pro virtuální počítače s Windows a Linux.
 
 
 ## <a name="add-the-user-account-to-the-appliance"></a>Přidat uživatelský účet do zařízení
@@ -105,6 +104,25 @@ Data závislosti se exportují a stahují ve formátu CSV. Stažený soubor obsa
 
 ![Exportovat závislosti](./media/how-to-create-group-machine-dependencies-agentless/export.png)
 
+### <a name="dependency-information"></a>Informace o závislostech
+
+Každý řádek exportovaného sdíleného svazku clusteru odpovídá závislosti zjištěné v určeném časovém intervalu. 
+
+Následující tabulka shrnuje pole v exportovaném souboru CSV. Všimněte si, že pole název serveru, aplikace a proces jsou vyplněna pouze pro servery, které mají povolenou analýzu závislostí bez agenta.
+
+**Název pole** | **Podrobnosti**
+--- | --- 
+Timeslot | Timeslot, během kterého byla závislost zjištěna. <br/> Data závislostí jsou v současnosti zachycena za 6 hodinových slotů.
+Název zdrojového serveru | Název zdrojového počítače 
+Zdrojová aplikace | Název aplikace na zdrojovém počítači 
+Zdrojový proces | Název procesu na zdrojovém počítači 
+Název cílového serveru | Název cílového počítače
+Cílová IP adresa | IP adresa cílového počítače
+Cílová aplikace | Název aplikace v cílovém počítači
+Cílový proces | Název procesu na cílovém počítači 
+Cílový port | Číslo portu na cílovém počítači
+
+
 ## <a name="stop-dependency-discovery"></a>Zastavit zjišťování závislosti
 
 Vyberte počítače, u kterých chcete zastavit zjišťování závislostí.
@@ -119,4 +137,4 @@ Vyberte počítače, u kterých chcete zastavit zjišťování závislostí.
 
 ## <a name="next-steps"></a>Další kroky
 
-[Seskupte počítače](how-to-create-a-group.md) pro posouzení.
+[Seskupit počítače](how-to-create-a-group.md) pro posouzení.

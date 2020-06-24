@@ -5,8 +5,6 @@ services: notification-hubs
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
-ms.assetid: 4e3772cf-20db-4b9f-bb74-886adfaaa65d
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 3fec04a1a45f8b154e27a1e5303e44111f4cb421
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: a36fdbb985711887baa04320bb75e1a85cab84fe
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "71211868"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253864"
 ---
 # <a name="register-the-current-user-for-push-notifications-by-using-aspnet"></a>Registrace aktuálního uživatele pro nabízená oznámení pomocí ASP.NET
 
@@ -61,7 +59,7 @@ V tomto tématu se dozvíte, jak vyžádat registraci nabízených oznámení v 
 
     - (IBAction)login:(id)sender;
     ```
-3. Vytvořte třídu s názvem `DeviceInfo`a zkopírujte následující kód do části rozhraní souboru DeviceInfo. h:
+3. Vytvořte třídu s názvem `DeviceInfo` a zkopírujte následující kód do části rozhraní souboru DeviceInfo. h:
 
     ```objc
     @property (readonly, nonatomic) NSString* installationId;
@@ -124,7 +122,7 @@ V tomto tématu se dozvíte, jak vyžádat registraci nabízených oznámení v 
     Tím se nastaví token zařízení pro požadavek.
 
    > [!NOTE]
-   > V tomto okamžiku by neměl být v této metodě žádný jiný kód. Pokud již máte volání `registerNativeWithDeviceToken` metody, která byla přidána po dokončení kurzu [Začínáme s Notification Hubs](notification-hubs-ios-apple-push-notification-apns-get-started.md) , je nutné přidat nebo odebrat toto volání.
+   > V tomto okamžiku by neměl být v této metodě žádný jiný kód. Pokud už máte volání `registerNativeWithDeviceToken` metody, která se přidala po dokončení [Odesílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs](ios-sdk-get-started.md) kurzu, musíte toto volání odkomentovat nebo odebrat.
 
 8. Do `PushToUserAppDelegate.m` souboru přidejte následující metodu obslužné rutiny:
 
@@ -158,7 +156,7 @@ V tomto tématu se dozvíte, jak vyžádat registraci nabízených oznámení v 
     Self.installationId.text = deviceInfo.installationId;
     ```
 
-11. V rozhraní přidejte následující vlastnosti `PushToUserViewController.m`:
+11. V rozhraní přidejte následující vlastnosti `PushToUserViewController.m` :
 
     ```objc
     @property (readonly) NSOperationQueue* downloadQueue;
@@ -211,7 +209,7 @@ V tomto tématu se dozvíte, jak vyžádat registraci nabízených oznámení v 
     }
     ```
 
-13. Zkopírujte následující kód do metody `login` obslužné rutiny vytvořené pomocí Xcode:
+13. Zkopírujte následující kód do `login` metody obslužné rutiny vytvořené pomocí Xcode:
 
     ```objc
     DeviceInfo* deviceInfo = [(PushToUserAppDelegate*)[[UIApplication sharedApplication]delegate] deviceInfo];
@@ -258,4 +256,4 @@ Teď, když se klientská aplikace aktualizovala, se vraťte k [informování u�
 
 <!-- URLs. -->
 [Informování uživatelů pomocí Notification Hubs]: notification-hubs-aspnet-backend-ios-apple-apns-notification.md
-[Začínáme s Notification Hubs]: notification-hubs-ios-apple-push-notification-apns-get-started.md
+[Začínáme s Notification Hubs]: ios-sdk-get-started.md

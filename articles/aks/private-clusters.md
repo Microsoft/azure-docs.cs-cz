@@ -3,13 +3,13 @@ title: Vytvoření privátního clusteru služby Azure Kubernetes
 description: Zjistěte, jak vytvořit privátní cluster služby Azure Kubernetes Service (AKS).
 services: container-service
 ms.topic: article
-ms.date: 2/21/2020
-ms.openlocfilehash: 49776fb50eabeef8238e54c7a2f3128c99c2514b
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.date: 6/18/2020
+ms.openlocfilehash: d2705570f6993ecda0c88241d2dc517fac60695c
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83849684"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194038"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster"></a>Vytvoření privátního clusteru služby Azure Kubernetes
 
@@ -71,11 +71,11 @@ Nejjednodušší možností je vytvoření virtuálního počítače ve stejné 
 
 Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze způsobů, jak získat přístup k privátnímu clusteru. Pokud chcete použít partnerský vztah virtuálních sítí, musíte nastavit propojení mezi virtuální sítí a privátní zónou DNS.
     
-1. V Azure Portal otevřete skupinu prostředků MC_ *.  
+1. V Azure Portal přejít do skupiny prostředků uzlu.  
 2. Vyberte privátní zónu DNS.   
 3. V levém podokně vyberte odkaz **virtuální síť** .  
 4. Vytvořte nový odkaz pro přidání virtuální sítě virtuálního počítače do privátní zóny DNS. Může to trvat několik minut, než se odkaz na zónu DNS stane dostupným.  
-5. Vraťte se do skupiny prostředků MC_ * v Azure Portal.  
+5. V Azure Portal přejděte do skupiny prostředků, která obsahuje virtuální síť vašeho clusteru.  
 6. V pravém podokně vyberte virtuální síť. Název virtuální sítě je ve tvaru *AKS-VNet- \* *.  
 7. V levém podokně vyberte **partnerské vztahy**.  
 8. Vyberte **Přidat**, přidejte virtuální síť virtuálního počítače a vytvořte partnerský vztah.  
@@ -91,7 +91,7 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 
 2. Privátní zóna DNS je propojená jenom s virtuální sítí, ke které jsou připojené uzly clusteru (3). To znamená, že privátní koncový bod může být vyřešen pouze hostiteli v propojené virtuální síti. V případech, kdy ve virtuální síti není nakonfigurované žádné vlastní DNS (výchozí nastavení), to funguje bez problémů jako hostitelé – bod na 168.63.129.16 pro DNS, který může z důvodu odkazu vyřešit záznamy v privátní zóně DNS.
 
-3. Ve scénářích, kdy virtuální síť, která obsahuje váš cluster, má vlastní nastavení DNS (4), nasazení clusteru se nepovede, pokud privátní zóna DNS není propojená s virtuální sítí, která obsahuje vlastní překladače DNS (5). Tento odkaz se dá vytvořit ručně, až se privátní zóna vytvoří během zřizování clusteru nebo prostřednictvím automatizace při detekci vytváření zóny pomocí Azure Policy nebo jiných mechanismů nasazení založeného na událostech (například Azure Event Grid a Azure Functions).
+3. Ve scénářích, kdy virtuální síť, která obsahuje váš cluster, má vlastní nastavení DNS (4), nasazení clusteru se nepovede, pokud privátní zóna DNS není propojená s virtuální sítí, která obsahuje vlastní překladače DNS (5). Tento odkaz se dá vytvořit ručně, až se privátní zóna vytvoří během zřizování clusteru nebo přes automatizaci při detekci vytváření zóny pomocí mechanismů nasazení založeného na událostech (například Azure Event Grid a Azure Functions).
 
 ## <a name="dependencies"></a>Závislosti  
 
@@ -102,7 +102,6 @@ Jak už bylo zmíněno, partnerský vztah virtuálních sítí je jedním ze zp�
 * Pro koncový bod privátního serveru API se nedají použít rozsahy povolených IP adres, které se vztahují jenom na veřejný server API.
 * Zóny dostupnosti jsou v současné době podporovány v některých oblastech, další informace najdete na začátku tohoto dokumentu. 
 * [Omezení služby privátního propojení Azure][private-link-service] se vztahují na soukromé clustery.
-* Není podporovaná podpora virtuálních uzlů v privátním clusteru pro dálku privátního Azure Container Instances (ACI) v privátní virtuální síti Azure.
 * Pro Azure DevOps agenty hostované Microsoftem s privátními clustery není podporována podpora. Zvažte použití [agentů pro samoobslužné hostování][devops-agents]. 
 * Pro zákazníky, kteří potřebují povolit Azure Container Registry pro práci s privátními AKS, musí mít Container Registry virtuální síť partnerský vztah s virtuální sítí clusteru agenta.
 * Žádná aktuální podpora pro Azure Dev Spaces

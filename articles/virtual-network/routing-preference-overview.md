@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: 0ae06a1c3d486b5d5998b4c6d050d86f50910a0a
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.openlocfilehash: ba01b89b54dc7209449490059555f531f7616720
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83598035"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193358"
 ---
 # <a name="what-is-routing-preference-preview"></a>Co je předvolby směrování (Preview)?
 
@@ -60,7 +60,7 @@ Veřejná IP adresa s volbou předvolby směrování "globální síť Microsoft
 * Azure Kubernetes Service (AKS)
 * Internetový nástroj pro vyrovnávání zatížení
 * Application Gateway
-* Azure Firewall
+* Brána Azure Firewall
 
 Pro úložiště primární koncové body vždy používají **globální síť Microsoft**. Můžete povolit sekundární koncové body s **internetem** podle vašeho výběru pro směrování provozu. Podporované služby úložiště:
 
@@ -88,7 +88,7 @@ Cenový rozdíl mezi oběma možnostmi se odráží v ceně za přenos dat z Int
 
 Podpora předvoleb směrování je dostupná v následujících oblastech pro služby, jako je virtuální počítač a internetový nástroj pro vyrovnávání zatížení, který používá veřejnou IP adresu pro internetovou odchozí Severní Evropa, Západní Evropa, Francii jih, Velká Británie – jih, Východní USA, Střed USA – sever, Střed USA – jih, Západní USA, Středozápadní USA, jihovýchodní Asie, Německo – středozápad, Švýcarsko – západ, Japonsko – východ a Japonsko – západ.
 
-Podpora předvoleb směrování pro účet úložiště je k dispozici v následujících oblastech Azure – Francie – jih, Střed USA – sever a Středozápadní USA.
+Podpora předvoleb směrování pro účet úložiště je k dispozici v následujících oblastech Azure – Francie – jih, Střed USA – sever, Středozápadní USA, Japonsko – východ, Japonsko – západ, Německo – středozápad a Švýcarsko – západ.
 ## <a name="limitations"></a>Omezení
 
 * Preference směrování je kompatibilní jenom se standardní SKU veřejné IP adresy. Základní SKU veřejné IP adresy se nepodporuje.

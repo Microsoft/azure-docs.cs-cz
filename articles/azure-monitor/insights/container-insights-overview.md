@@ -2,13 +2,13 @@
 title: Přehled Azure Monitor pro kontejnery | Microsoft Docs
 description: Tento článek popisuje Azure Monitor pro kontejnery, které monitorují řešení AKS Container Insights a hodnotu, kterou zajišťuje, pomocí monitorování stavu clusterů AKS a Container Instances v Azure.
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 5bd951f7dcb2def62893df48709f1e57bd340bb2
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.date: 05/21/2020
+ms.openlocfilehash: 709759d1a2b2eb5d8f919ed90e6525c664129f16
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118076"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770811"
 ---
 # <a name="azure-monitor-for-containers-overview"></a>Přehled služby Azure Monitor pro kontejnery
 
@@ -19,6 +19,7 @@ Azure Monitor for Containers je funkce navržená tak, aby sledovala výkon úlo
 - [Azure Container Instances](../../container-instances/container-instances-overview.md)
 - Samostatné spravované clustery Kubernetes hostované na [Azure Stack](https://docs.microsoft.com/azure-stack/user/azure-stack-kubernetes-aks-engine-overview?view=azs-1910) nebo místně
 - [Azure Red Hat OpenShift](../../openshift/intro-openshift.md)
+- [Kubernetes s povoleným ARC Azure](../../azure-arc/kubernetes/overview.md) (Preview) 
 
 Azure Monitor for Containers podporuje clustery s operačním systémem Linux a Windows Server 2019. 
 
@@ -46,9 +47,11 @@ Azure Monitor for Containers poskytuje komplexní monitorování s využitím r�
     >Podpora pro Azure Red Hat OpenShift je v současnosti funkcí ve verzi Public Preview.
     >
 
+* Monitorujte úlohy kontejneru [nasazené do Azure ARC s povoleným Kubernetes (Preview)](../../azure-arc/kubernetes/overview.md).
+
 Mezi hlavní rozdíly v monitorování clusteru Windows serveru v porovnání s clusterem Linux patří následující:
 
-- Windows nemá metriku paměti RSS, takže není k dispozici pro uzly a kontejnery Windows. Pracovní sada je k dispozici. Přečtěte si další informace o [správě paměti ve Windows](https://docs.microsoft.com/windows/win32/memory/working-set).
+- Windows nemá metriku RSS paměti a v důsledku toho není k dispozici pro uzly a kontejnery Windows. Metrika [pracovní sady](https://docs.microsoft.com/windows/win32/memory/working-set) je k dispozici.
 - Informace o kapacitě diskového úložiště nejsou k dispozici pro uzly Windows.
 - Protokoly kontejneru nejsou k dispozici pro kontejnery běžící v uzlech systému Windows.
 - Podpora funkcí živého data (Preview) je dostupná s výjimkou protokolů kontejnerů Windows.

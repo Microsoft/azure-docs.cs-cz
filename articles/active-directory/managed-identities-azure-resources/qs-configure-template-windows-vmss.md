@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 02/20/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2d5e324ea20b2ea82fac5b5132893d3558bd3b41
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 574e374898a3aa43f695889166426752d572e207
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77425557"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84693477"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-virtual-machine-scale-using-a-template"></a>Konfigurace spravovaných identit pro prostředky Azure na škálování virtuálního počítače Azure pomocí šablony
 
@@ -34,9 +34,9 @@ V tomto článku se dozvíte, jak provádět následující spravované identity
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
-- K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení řízení přístupu na základě rolí Azure:
+- K provedení operací správy v tomto článku potřebuje váš účet následující přiřazení řízení přístupu na základě role Azure:
 
     > [!NOTE]
     > Nevyžadují se žádné další přiřazení role adresáře Azure AD.
@@ -121,7 +121,7 @@ Pokud máte sadu škálování virtuálního počítače, která už nepotřebuj
 
 1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače.
 
-2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a vyhledejte `Microsoft.Compute/virtualMachineScaleSets` prostředek zájmu v rámci `resources` oddílu. Pokud máte virtuální počítač, který má pouze spravovanou identitu přiřazenou systémem, můžete ho zakázat změnou typu identity na `None`.
+2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a vyhledejte `Microsoft.Compute/virtualMachineScaleSets` prostředek zájmu v rámci `resources` oddílu. Pokud máte virtuální počítač, který má pouze spravovanou identitu přiřazenou systémem, můžete ho zakázat změnou typu identity na `None` .
 
    **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2018-06-01**
 
@@ -160,7 +160,7 @@ V této části přiřadíte uživatelem přiřazenou identitu pro sadu škálov
 
    **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2018-06-01**
 
-   Pokud je `2018-06-01`vaše apiVersion, vaše uživatelem přiřazené spravované identity jsou uložené ve formátu `userAssignedIdentities` slovníku a `<USERASSIGNEDIDENTITYNAME>` hodnota musí být uložená v proměnné definované v `variables` části šablony.
+   Pokud je vaše apiVersion `2018-06-01` , vaše uživatelem přiřazené spravované identity jsou uložené ve `userAssignedIdentities` formátu slovníku a `<USERASSIGNEDIDENTITYNAME>` hodnota musí být uložená v proměnné definované v `variables` části šablony.
 
    ```json
    {
@@ -179,7 +179,7 @@ V této části přiřadíte uživatelem přiřazenou identitu pro sadu škálov
 
    **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2017-12-01**
 
-   `apiVersion` Pokud `2017-12-01` jste nebo dříve, vaše uživatelem přiřazené spravované identity jsou uloženy v `identityIds` poli a `<USERASSIGNEDIDENTITYNAME>` hodnota musí být uložena v proměnné definované v části proměnné v šabloně.
+   Pokud jste `apiVersion` `2017-12-01` nebo dříve, vaše uživatelem přiřazené spravované identity jsou uloženy v `identityIds` poli a `<USERASSIGNEDIDENTITYNAME>` hodnota musí být uložena v proměnné definované v části proměnné v šabloně.
 
    ```json
    {
@@ -291,7 +291,7 @@ Pokud máte sadu škálování virtuálního počítače, která už nepotřebuj
 
 1. Bez ohledu na to, jestli se k Azure přihlašujete místně nebo prostřednictvím Azure Portal, použijte účet, který je přidružený k předplatnému Azure, které obsahuje sadu škálování virtuálního počítače.
 
-2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a vyhledejte `Microsoft.Compute/virtualMachineScaleSets` prostředek zájmu v rámci `resources` oddílu. Pokud máte sadu škálování virtuálního počítače, která má pouze spravovanou identitu přiřazenou uživatelem, můžete ji zakázat změnou typu identity na `None`.
+2. Načtěte šablonu do [editoru](#azure-resource-manager-templates) a vyhledejte `Microsoft.Compute/virtualMachineScaleSets` prostředek zájmu v rámci `resources` oddílu. Pokud máte sadu škálování virtuálního počítače, která má pouze spravovanou identitu přiřazenou uživatelem, můžete ji zakázat změnou typu identity na `None` .
 
    Následující příklad ukazuje, jak odebrat všechny spravované identity přiřazené uživatelem z virtuálního počítače bez spravovaných identit přiřazených systémem:
 
@@ -310,13 +310,13 @@ Pokud máte sadu škálování virtuálního počítače, která už nepotřebuj
 
    Pokud chcete ze sady škálování virtuálního počítače odebrat jednu spravovanou identitu přiřazenou uživatelem, odeberte ji ze `userAssignedIdentities` slovníku.
 
-   Pokud máte identitu přiřazenou systémem, ponechte ji v `type` hodnotě pod `identity` hodnotou.
+   Pokud máte identitu přiřazenou systémem, zachovejte ji v `type` hodnotě pod `identity` hodnotou.
 
    **Microsoft. COMPUTE/virtualMachineScaleSets API verze 2017-12-01**
 
    Pokud chcete ze sady škálování virtuálního počítače odebrat jednu spravovanou identitu přiřazenou uživatelem, odeberte ji z tohoto `identityIds` pole.
 
-   Pokud máte spravovanou identitu přiřazenou systémem, ponechte ji v `type` hodnotě pod `identity` hodnotou.
+   Pokud máte spravovanou identitu přiřazenou systémem, ponechte ji v hodnotě `type` pod `identity` hodnotou.
 
 ## <a name="next-steps"></a>Další kroky
 

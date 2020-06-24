@@ -2,17 +2,17 @@
 title: Pracovní postupy akcí GitHubu pro statické Web Apps Azure
 description: Naučte se používat úložiště GitHub k nastavení průběžného nasazování na statické Web Apps Azure.
 services: static-web-apps
-author: christiannwamba
+author: craigshoemaker
 ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.author: chnwamba
-ms.openlocfilehash: e2cc1e20c20c17742f2bea56f4e87e8678e4cc03
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.author: cshoe
+ms.openlocfilehash: 4d69bb69081643e0223c23a9029aabb35c8d22ef
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434008"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254714"
 ---
 # <a name="github-actions-workflows-for-azure-static-web-apps-preview"></a>Pracovní postupy akcí GitHubu pro Azure static Web Apps Preview
 
@@ -155,13 +155,13 @@ Nasazení vždy volá `npm install` před libovolným vlastním příkazem.
 
 ## <a name="route-file-location"></a>Umístění souboru směrování
 
-Pracovní postup můžete přizpůsobit tak, aby hledal [cesty. JSON](routes.md) v libovolné složce v úložišti. Následující vlastnost může být definována v `with` oddílu úlohy.
+Pracovní postup můžete přizpůsobit tak, aby vyhledal [routes.js](routes.md) v libovolné složce v úložišti. Následující vlastnost může být definována v `with` oddílu úlohy.
 
 | Vlastnost            | Popis |
 |---------------------|-------------|
-| `routes_location` | Definuje umístění adresáře, kde se našel soubor _Routes. JSON_ . Toto umístění je relativní vzhledem ke kořenu úložiště. |
+| `routes_location` | Definuje umístění adresáře, kde se nachází _routes.jsv_ souboru. Toto umístění je relativní vzhledem ke kořenu úložiště. |
 
- Explicitní informace o umístění souboru _Routes. JSON_ je obzvláště důležité, pokud váš krok sestavení front-end rozhraní nepřesouvá tento soubor do `app_artifact_location` výchozího nastavení.
+ Explicitní informace o umístění vašeho _routes.jsv_ souboru je zvláště důležité, pokud se ve výchozím kroku sestavení rozhraní front-end nepřesouvá tento soubor do `app_artifact_location` výchozího nastavení.
 
 ## <a name="next-steps"></a>Další kroky
 

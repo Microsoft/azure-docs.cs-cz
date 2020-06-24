@@ -12,12 +12,12 @@ ms.date: 05/18/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 68143c4ac3851604996e1f7ba2adce48934e59c5
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.openlocfilehash: b40d9c95cec3e83ff02aa04ca39eb942635ee90d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/02/2020
-ms.locfileid: "84295384"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202931"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrace aplikace SAML v Azure AD B2C
 
@@ -119,7 +119,7 @@ Vyhledejte `<ClaimsProviders>` část a přidejte následující fragment kódu 
 
 Můžete změnit hodnotu `IssuerUri` metadat. Toto je identifikátor URI vystavitele vrácený v odpovědi SAML z Azure AD B2C. Aplikace předávající strany by měla být nakonfigurovaná tak, aby přijímala identifikátor URI vystavitele během ověřování kontrolního výrazu SAML.
 
-```XML
+```xml
 <ClaimsProvider>
   <DisplayName>Token Issuer</DisplayName>
   <TechnicalProfiles>
@@ -159,13 +159,13 @@ Teď, když váš tenant může vystavovat kontrolní výrazy SAML, je nutné vy
 
 ### <a name="31-create-sign-up-or-sign-in-policy"></a>3,1 Vytvoření zásady registrace nebo přihlašování
 
-1. V pracovním adresáři úvodní sady vytvořte kopii souboru *SignUpOrSignin. XML* a uložte ho s novým názvem. Například *SignUpOrSigninSAML. XML*. Toto je soubor zásad předávající strany.
+1. Vytvořte kopii souboru *SignUpOrSignin.xml* v pracovním adresáři úvodní Pack a uložte ho s novým názvem. Například *SignUpOrSigninSAML.xml*. Toto je soubor zásad předávající strany.
 
-1. V upřednostňovaném editoru otevřete soubor *SignUpOrSigninSAML. XML* .
+1. Otevřete soubor *SignUpOrSigninSAML.xml* v upřednostňovaném editoru.
 
 1. Změňte `PolicyId` zásadu a na `PublicPolicyUri` _B2C_1A_signup_signin_saml_ , `http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml` Jak vidíte níže.
 
-    ```XML
+    ```xml
     <TrustFrameworkPolicy
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -178,7 +178,7 @@ Teď, když váš tenant může vystavovat kontrolní výrazy SAML, je nutné vy
 
 1. Přidejte následující fragment kódu XML těsně před `<RelyingParty>` element. Tento kód XML přepíše krok orchestrace číslo 7 cesty uživatele _SignUpOrSignIn_ . Pokud jste spustili z jiné složky v počátečním balíčku nebo jste přizpůsobili cestu uživatele přidáním nebo odebráním kroků orchestrace, ujistěte se, že je číslo (v `order` elementu) zarovnáno s parametrem zadaným v cestě uživatele pro krok vystavitele tokenu (například ve složkách dalších počátečních sad je číslo kroku 4 pro `LocalAccounts` , 6 pro `SocialAccounts` a 9 pro `SocialAndLocalAccountsWithMfa` ).
 
-    ```XML
+    ```xml
     <UserJourneys>
       <UserJourney Id="SignUpOrSignIn">
         <OrchestrationSteps>
@@ -190,7 +190,7 @@ Teď, když váš tenant může vystavovat kontrolní výrazy SAML, je nutné vy
 
 1. Nahraďte celý `<TechnicalProfile>` element v `<RelyingParty>` elementu následujícím technickým profilem XML.
 
-    ```XML
+    ```xml
     <TechnicalProfile Id="PolicyProfile">
       <DisplayName>PolicyProfile</DisplayName>
       <Protocol Name="SAML2"/>
@@ -210,7 +210,7 @@ Teď, když váš tenant může vystavovat kontrolní výrazy SAML, je nutné vy
 
 Konečný soubor zásad předávající strany by měl vypadat takto:
 
-```XML
+```xml
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <TrustFrameworkPolicy
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -267,7 +267,7 @@ Vaše vlastní zásady a Azure AD B2C tenant jsou teď připravené. V dalším 
 
 ### <a name="41-register-your-application-in-azure-ad-b2c"></a>4,1 zaregistrovat aplikaci v Azure AD B2C
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com).
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 1. V horní nabídce vyberte filtr **adresář + odběr** a potom vyberte adresář, který obsahuje vašeho tenanta Azure AD B2C.
 1. V nabídce vlevo vyberte **Azure AD B2C**. Případně vyberte **všechny služby** a vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
@@ -297,7 +297,7 @@ Pokud jsou v adrese URL metadat *SAML i v* manifestu registrace aplikace zadány
 
 Pro účely tohoto kurzu, který používá testovací aplikaci SAML, použijte následující hodnotu pro `samlMetadataUrl` :
 
-```JSON
+```json
 "samlMetadataUrl":"https://samltestapp2.azurewebsites.net/Metadata",
 ```
 
@@ -309,7 +309,7 @@ Pokud se rozhodnete nakonfigurovat adresu URL odpovědi a adresu URL pro odhlá�
 
 Pro účely tohoto kurzu, ve kterém používáte aplikaci testu SAML, nastavte `url` vlastnost `replyUrlsWithType` na hodnotu zobrazenou v následujícím fragmentu kódu JSON.
 
-```JSON
+```json
 "replyUrlsWithType":[
   {
     "url":"https://samltestapp2.azurewebsites.net/SP/AssertionConsumer",
@@ -324,7 +324,7 @@ Tato volitelná vlastnost představuje `Logout` adresu URL ( `SingleLogoutServic
 
 Pro účely tohoto kurzu, který používá testovací aplikaci SAML, nechejte `logoutUrl` nastaveno na `https://samltestapp2.azurewebsites.net/logout` :
 
-```JSON
+```json
 "logoutUrl": "https://samltestapp2.azurewebsites.net/logout",
 ```
 

@@ -5,17 +5,17 @@ description: Naučte se vytvářet a nasazovat vlastní moduly R v ML Studio (Cl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 11/29/2017
-ms.openlocfilehash: 5fb628b1730f0811debf0ff8a6cd517b96f8ef53
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.openlocfilehash: 90e654255691686225ddab3c294dcd62877d4622
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82208427"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696401"
 ---
 # <a name="define-custom-r-modules-for-azure-machine-learning-studio-classic"></a>Definování vlastních modulů R pro Azure Machine Learning Studio (Classic)
 
@@ -34,10 +34,10 @@ Vlastní modul R je definován souborem. zip, který obsahuje minimálně dva so
 Do souboru. zip, který poskytuje funkce, které jsou dostupné z vlastního modulu, můžete také zahrnout další pomocné soubory. Tato možnost je popsána **v části** elementy oddílu reference **v souboru definice XML** , který následuje příklad pro rychlý Start.
 
 ## <a name="quickstart-example-define-package-and-register-a-custom-r-module"></a>Příklad rychlého startu: definování, balení a registrace vlastního modulu R
-Tento příklad ukazuje, jak vytvořit soubory požadované vlastním modulem R, zabalit je do souboru zip a pak zaregistrovat modul v pracovním prostoru Machine Learning. Ukázkový balíček zip a ukázkové soubory si můžete stáhnout z části [Stažení souboru CustomAddRows. zip](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
+Tento příklad ukazuje, jak vytvořit soubory požadované vlastním modulem R, zabalit je do souboru zip a pak zaregistrovat modul v pracovním prostoru Machine Learning. Ukázkový balíček zip a ukázkové soubory je možné stáhnout ze [souboru ke stažení CustomAddRows.zip](https://go.microsoft.com/fwlink/?LinkID=524916&clcid=0x409).
 
 ## <a name="the-source-file"></a>Zdrojový soubor
-Vezměte v úvahu příklad **vlastního modulu přidat řádky** , který upravuje standardní implementaci modulu **Přidat řádky** používané pro zřetězení řádků (pozorování) ze dvou datových sad (datové rámce). Modul standardní **Přidat řádky** připojí řádky druhé vstupní datové sady ke konci první vstupní datové sady pomocí `rbind` algoritmu. Přizpůsobená `CustomAddRows` funkce podobně přijímá dvě datové sady, ale také přijímá parametr Boolean swap jako další vstup. Pokud je parametr swapu nastaven na **hodnotu false**, vrátí stejnou sadu dat jako standardní implementace. Ale pokud má parametr swapu **hodnotu true**, funkce připojí řádky první vstupní datové sady k konci druhé datové sady místo toho. Soubor CustomAddRows. R obsahující implementaci funkce R `CustomAddRows` zveřejněné modulem **Custom Add Rows** má následující kód R.
+Vezměte v úvahu příklad **vlastního modulu přidat řádky** , který upravuje standardní implementaci modulu **Přidat řádky** používané pro zřetězení řádků (pozorování) ze dvou datových sad (datové rámce). Modul standardní **Přidat řádky** připojí řádky druhé vstupní datové sady ke konci první vstupní datové sady pomocí `rbind` algoritmu. Přizpůsobená `CustomAddRows` funkce podobně přijímá dvě datové sady, ale také přijímá parametr Boolean swap jako další vstup. Pokud je parametr swapu nastaven na **hodnotu false**, vrátí stejnou sadu dat jako standardní implementace. Ale pokud má parametr swapu **hodnotu true**, funkce připojí řádky první vstupní datové sady k konci druhé datové sady místo toho. Soubor CustomAddRows. R obsahující implementaci `CustomAddRows` funkce R zveřejněné modulem **Custom Add Rows** má následující kód R.
 
     CustomAddRows <- function(dataset1, dataset2, swap=FALSE) 
     {
@@ -52,7 +52,7 @@ Vezměte v úvahu příklad **vlastního modulu přidat řádky** , který uprav
     } 
 
 ### <a name="the-xml-definition-file"></a>Soubor definice XML
-Chcete-li `CustomAddRows` tuto funkci zpřístupnit jako modul Azure Machine Learning Studio (Classic), je nutné vytvořit DEFINIČNÍ soubor XML, který určuje, jak by měl modul **vlastní přidat řádky** vypadat a jak se chová. 
+Chcete-li tuto `CustomAddRows` funkci zpřístupnit jako modul Azure Machine Learning Studio (Classic), je nutné vytvořit definiční soubor XML, který určuje, jak by měl modul **vlastní přidat řádky** vypadat a jak se chová. 
 
     <!-- Defined a module using an R Script -->
     <Module name="Custom Add Rows">
@@ -92,7 +92,7 @@ Je důležité si uvědomit, že hodnota atributů **ID** elementů **input** a 
 Naproti tomu atribut **ID** pro element **Output** neodpovídá žádným proměnným ve skriptu jazyka R. Pokud je vyžadován více než jeden výstup, jednoduše vraťte seznam z funkce R s výsledky umístěnými *ve stejném pořadí* jako prvky **výstupů** v souboru XML.
 
 ### <a name="package-and-register-the-module"></a>Zabalit a zaregistrovat modul
-Tyto dva soubory uložte jako *CustomAddRows. R* a *CustomAddRows. XML* a potom tyto dva soubory vytvořte společně do souboru *CustomAddRows. zip* .
+Tyto dva soubory uložte jako *CustomAddRows. R* a *CustomAddRows.xml* a potom oba soubory nahlaste do *CustomAddRows.zip* souboru.
 
 Pokud je chcete zaregistrovat v pracovním prostoru Machine Learning, přejděte do pracovního prostoru v Azure Machine Learning Studio (Classic), klikněte na tlačítko **+ Nový** v dolní části a vyberte **modul-> z balíčku zip** a nahrajte tak nový modul **vlastní přidané řádky** .
 
@@ -176,7 +176,7 @@ Pro vlastní moduly R nemusí ID pro port zip odpovídat žádným parametrům f
 
 Pro výstupy ve vlastních modulech R nemusí hodnota atributu **ID** odpovídat cokoli ve skriptu R, ale musí být jedinečná. Pro výstup jednoho modulu musí být návratová hodnota z funkce R typu *data. Frame*. Aby bylo možné vypsat více než jeden objekt podporovaného datového typu, musí být v definičním souboru XML zadány příslušné výstupní porty a objekty musí být vráceny jako seznam. Výstupní objekty jsou přiřazeny výstupním portům zleva doprava a odráží pořadí, ve kterém jsou objekty umístěny do vráceného seznamu.
 
-Pokud například chcete upravit modul **vlastní přidané řádky** na výstup původních dvou datových sad, *DataSet1.* a *Dataset2*, kromě nové připojené datové sady, *datové sady*(v pořadí zleva doprava, jako: *DataSet*, *DataSet1.*, *Dataset2*), pak definujte výstupní porty v souboru CustomAddRows. xml takto:
+Pokud například chcete upravit modul **vlastní přidané řádky** na výstup původních dvou datových sad, *DataSet1.* a *Dataset2*, kromě nové připojené datové sady, *datové sady*(v pořadí zleva doprava, jako je například *datová sada*, *DataSet1.*, *Dataset2*), a pak v souboru CustomAddRows.xml definujte výstupní porty následujícím způsobem:
 
     <Ports> 
         <Output id="dataset" name="Dataset Out" type="DataTable"> 
@@ -219,7 +219,7 @@ A vrátí seznam objektů v seznamu ve správném pořadí v ' CustomAddRows. R 
 * Hodnota atributu **Name** elementu **Output** nesmí být delší než 64 znaků.
 * Hodnota atributu **Type** elementu **Output** musí být *vizualizace*.
 
-### <a name="arguments"></a>Argumenty
+### <a name="arguments"></a>Arguments
 Do funkce jazyka R lze předat další data prostřednictvím parametrů modulu, které jsou definovány v elementu **arguments** . Tyto parametry se zobrazí v podokně vlastností vpravo v uživatelském rozhraní Machine Learning, když je modul vybrán. Argumenty mohou být libovolné podporované typy nebo můžete podle potřeby vytvořit vlastní výčet. Podobně jako prvky **portů** mohou prvky **argumentů** mít volitelný element **Description** , který určuje text, který se zobrazí, když najedete myší na název parametru.
 Volitelné vlastnosti pro modul, jako je například defaultValue, minValue a maxValue, lze přidat do libovolného argumentu jako atributy prvku **vlastnosti** . Platné vlastnosti pro element **Properties** závisí na typu argumentu a jsou popsány s podporovanými typy argumentů v následující části. Argumenty s vlastností **Option** nastavenou na **hodnotu true** nevyžadují, aby uživatel zadal hodnotu. Není-li argumentem zadána hodnota, pak není argument předán funkci vstupního bodu. Argumenty funkce vstupního bodu, které jsou volitelné, musí být explicitně zpracovány funkcí, například přiřazenou výchozí hodnotu NULL v definici funkce vstupního bodu. Nepovinný argument bude vynutit jenom další omezení argumentů, tj. min nebo Max, pokud je hodnota poskytnutá uživatelem.
 Stejně jako u vstupů a výstupů je velmi důležité, aby k jednotlivým parametrům byly přidruženy jedinečné hodnoty ID. V našem příkladu pro rychlý Start došlo k *záměně*přidruženého ID/parametru.
@@ -287,10 +287,10 @@ Parametr modulu je definován pomocí podřízeného prvku **arg** oddílu **arg
     * Popisek
     * Funkce
     * Skóre
-    * Všechny
+    * Vše
   * **výchozí** – platné výchozí možnosti pro výběr sloupce zahrnují: 
     
-    * Žádná
+    * Žádné
     * NumericFeature
     * NumericLabel
     * NumericScore
@@ -310,7 +310,7 @@ Parametr modulu je definován pomocí podřízeného prvku **arg** oddílu **arg
     * AllLabel
     * AllFeature
     * AllScore
-    * Všechny
+    * Vše
 
 **DropDown**: seznam výčtového (rozevíracího seznamu) zadaného uživatelem. Rozevírací položky jsou určeny v rámci elementu **Properties** pomocí elementu **Item** . **ID** každé **položky** musí být jedinečné a platnou proměnnou R. Hodnota **názvu** **položky** slouží jako text, který vidíte, a hodnotu, která je předána funkci jazyka R.
 
@@ -356,7 +356,7 @@ Pomocný soubor RemoveDupNARows. R můžete ve funkci CustomAddRows nasource:
         return (dataset)
     }
 
-Potom nahrajte soubor ZIP obsahující ' CustomAddRows. R ', ' CustomAddRows. XML ' a ' RemoveDupNARows. R ' jako vlastní modul R.
+Potom nahrajte soubor ZIP obsahující ' CustomAddRows. R ', ' CustomAddRows.xml ' a ' RemoveDupNARows. R ' jako vlastní modul R.
 
 ## <a name="execution-environment"></a>Spouštěcí prostředí
 Spouštěcí prostředí pro skript R používá stejnou verzi R jako modul **spuštění skriptu jazyka r** a může používat stejné výchozí balíčky. Do vlastního modulu můžete také přidat další balíčky R, a to tak, že je zahrnete do balíčku zip vlastního modulu. Stačí je načíst do skriptu jazyka R stejně jako ve vašem vlastním prostředí jazyka R. 

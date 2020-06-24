@@ -4,12 +4,12 @@ description: Přehled způsobů integrace inteligentních kontraktů ve službě
 ms.date: 11/20/2019
 ms.topic: conceptual
 ms.reviewer: mmercuri
-ms.openlocfilehash: f9626edd5bd655e3de5d0f9648041faf832e3b84
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 716255f5e71ec19b5b9c5a0a32740abc39f1a40b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74325967"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254629"
 ---
 # <a name="smart-contract-integration-patterns"></a>Vzory integrace inteligentních kontraktů
 
@@ -31,7 +31,7 @@ Možnosti v rámci webové aplikace vygenerované službou Azure blockchain Work
 
 REST API se primárně používá pro interaktivní klienty, jako jsou webové, mobilní a robotské aplikace.
 
-V této části se dozvíte, jaké jsou vzory zaměřené na aspekty REST API, které odesílají transakce do distribuované účetní knihy a vzory, které dotazují data o transakcích z Azure blockchain Workbench z netransakčního *řetězu* SQL Database.
+V této části se dozvíte, jaké jsou vzory zaměřené na aspekty REST API, které odesílají transakce do distribuované účetní knihy a vzory, které dotazují data o transakcích z databáze Azure blockchain Workbench z neaktivního *řetězu* .
 
 ### <a name="sending-transactions-to-a-distributed-ledger-from-an-external-system"></a>Posílání transakcí do distribuované hlavní knihy z externího systému
 
@@ -204,7 +204,7 @@ Integrace dat je dobře známá:
 
 -   Azure blockchain Workbench ukládá v rámci normálního provozního chování metadata o aplikacích, pracovních postupech, kontraktech a transakcích.
 -   Externí systémy nebo nástroje poskytují jednu nebo více dialogových oken, které usnadňují shromažďování informací o databázi, jako je název databázového serveru, název databáze, typ ověřování, přihlašovací údaje a informace o tom, která zobrazení databáze se mají využít.
--   Dotazy se zapisují do zobrazení SQL Database a usnadňují tak příjem dat z externích systémů, služeb, sestav, vývojářských nástrojů a podnikových kancelářských nástrojů.
+-   Dotazy se zapisují mezi zobrazeními databáze a usnadňují tak příjem dat z externích systémů, služeb, sestav, vývojářských nástrojů a podnikových nástrojů pro produktivitu.
 
 ## <a name="storage-integration"></a>Integrace úložiště
 

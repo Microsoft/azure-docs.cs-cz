@@ -3,25 +3,25 @@ title: Přeložit odkazy a adresy URL Aplikace Azure AD proxy | Microsoft Docs
 description: Zahrnuje základní informace o konektorech Azure Proxy aplikací služby AD.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/15/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aa0dc2081aff5a24fb830b756131cccd5c6ce810
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 8e8d6f97870699cea7f55abe42290acdc82c385e
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "69533694"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764838"
 ---
 # <a name="redirect-hardcoded-links-for-apps-published-with-azure-ad-application-proxy"></a>Přesměrování pevně zakódované odkazů pro aplikace publikované pomocí Azure Proxy aplikací služby AD
 
@@ -75,7 +75,7 @@ Pokud je povolen překlad propojení, služba proxy aplikací prohledává publi
 
 Po ověření, když proxy server předá data aplikace uživateli, proxy aplikace prohledá aplikaci pro odkazy pevně zakódované a nahradí je jejich příslušnými, publikovanými externími adresami URL.
 
-Proxy aplikací předpokládá, že jsou aplikace kódované v kódování UTF-8. V takovém případě zadejte typ kódování v hlavičce odpovědi HTTP, například `Content-Type:text/html;charset=utf-8`.
+Proxy aplikací předpokládá, že jsou aplikace kódované v kódování UTF-8. V takovém případě zadejte typ kódování v hlavičce odpovědi HTTP, například `Content-Type:text/html;charset=utf-8` .
 
 ### <a name="which-links-are-affected"></a>Které odkazy jsou ovlivněny?
 
@@ -83,8 +83,8 @@ Funkce překladu odkazů hledá pouze odkazy, které jsou v těle aplikace. Prox
 
 Existují dva běžné typy interních propojení v místních aplikacích:
 
-- **Relativní interní odkazy** , které odkazují na sdílený prostředek v místní struktuře souborů, jako `/claims/claims.html`je. Tyto odkazy automaticky fungují v aplikacích, které jsou publikovány prostřednictvím proxy aplikace, a fungují i bez překladu propojení. 
-- **Pevně zakódované interní odkazy** na jiné místní aplikace, jako jsou `http://expenses` nebo publikované soubory `http://expenses/logo.jpg`. Funkce překladu propojení funguje na interních odkazech pevně zakódované a mění je tak, aby odkazovaly na externí adresy URL, ke kterým musí přejít vzdálení uživatelé.
+- **Relativní interní odkazy** , které odkazují na sdílený prostředek v místní struktuře souborů, jako je `/claims/claims.html` . Tyto odkazy automaticky fungují v aplikacích, které jsou publikovány prostřednictvím proxy aplikace, a fungují i bez překladu propojení. 
+- **Pevně zakódované interní odkazy** na jiné místní aplikace, jako jsou `http://expenses` nebo publikované soubory `http://expenses/logo.jpg` . Funkce překladu propojení funguje na interních odkazech pevně zakódované a mění je tak, aby odkazovaly na externí adresy URL, ke kterým musí přejít vzdálení uživatelé.
 
 Úplný seznam značek kódu HTML, na kterých proxy aplikací podporuje překlad odkazů pro zahrnutí:
 * a
@@ -103,11 +103,11 @@ Existují dva běžné typy interních propojení v místních aplikacích:
 * propojit
 * MenuItem
 * meta
-* objekt
+* odkazy objektů
 * .
 * source
 * track
-* video
+* Video
 
 Kromě toho je v rámci šablony stylů CSS také přeložen atribut URL.
 
@@ -137,7 +137,7 @@ Pokud potřebujete podporovat jeden z těchto dvou scénářů, použijte místo
 Začínáme s překladem odkazů je stejně snadné jako kliknutí na tlačítko:
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-2. Přejít na **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** > vyberte aplikaci, kterou chcete spravovat > **aplikační proxy**.
+2. Přejít na **Azure Active Directory**  >  **podnikové aplikace**  >  **všechny aplikace** > vyberte aplikaci, kterou chcete spravovat > **aplikační proxy**.
 3. **V části text aplikace převeďte adresy URL pro převod** na **Ano**.
 
    ![Vyberte Ano, pokud chcete překládat adresy URL v těle aplikace.](./media/application-proxy-configure-hard-coded-link-translation/select_yes.png)
@@ -145,7 +145,7 @@ Začínáme s překladem odkazů je stejně snadné jako kliknutí na tlačítko
 
 Když teď uživatel přistupuje k této aplikaci, proxy automaticky vyhledá interní adresy URL, které se publikovaly prostřednictvím proxy aplikací ve vašem tenantovi.
 
-## <a name="send-feedback"></a>Odeslat názor
+## <a name="send-feedback"></a>Váš názor
 
 Chceme, aby tato funkce fungovala pro všechny vaše aplikace. Hledáme více než 30 značek v HTML a CSS. Pokud máte příklad vygenerovaných odkazů, které nejsou přeloženy, odešlete fragment kódu na [zpětnou vazbu k proxy aplikace](mailto:aadapfeedback@microsoft.com). 
 

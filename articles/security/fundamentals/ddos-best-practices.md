@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2018
 ms.author: terrylan
-ms.openlocfilehash: 8be1f1161ac1c4611ddb2a5ec61592394014c488
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 87f1fcfa08ef2b7d2e4f72588eff8576c5ace146
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80548679"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254289"
 ---
 # <a name="azure-ddos-protection---designing-resilient-solutions"></a>Azure DDoS Protection – navrhování odolných řešení
 
@@ -30,6 +30,7 @@ Kromě základní ochrany DDoS na platformě nabízí [Azure DDoS Protection Sta
 
 ![Role Azure DDoS Protection v ochraně zákazníků a virtuální sítě od útočníka](./media/ddos-best-practices/image1.png)
 
+Doporučení k zabezpečení týkající se této technologie najdete v tématu [základní hodnoty zabezpečení Azure pro DDoS Protection](ddos-protection-security-baseline.md).
 
 ## <a name="fundamental-best-practices"></a>Základní osvědčené postupy
 
@@ -97,7 +98,7 @@ DDoS Protection Standard zpřístupňuje bohatou telemetrii prostřednictvím [A
 
 ##### <a name="ddos-mitigation-policies"></a>Zásady zmírnění DDoS
 
-V Azure Portal vyberte **monitorovat** > **metriky**. V podokně **metriky** vyberte skupinu prostředků, vyberte typ prostředku **Veřejná IP adresa**a vyberte veřejnou IP adresu Azure. Metriky DDoS jsou viditelné v podokně **dostupné metriky** .
+V Azure Portal vyberte **monitorovat**  >  **metriky**. V podokně **metriky** vyberte skupinu prostředků, vyberte typ prostředku **Veřejná IP adresa**a vyberte veřejnou IP adresu Azure. Metriky DDoS jsou viditelné v podokně **dostupné metriky** .
 
 DDoS Protection Standard aplikuje tři zásady zmírnění rizik (TCP SYN, TCP a UDP) pro každou veřejnou IP adresu chráněného prostředku ve virtuální síti, ve které je povolený DDoS. Prahové hodnoty zásad můžete zobrazit tak, že vyberete **příchozí pakety metriky, které budou aktivovat zmírnění DDoS**.
 
@@ -235,7 +236,7 @@ V této architektuře je ve virtuální síti povolená DDoS Protection Standard
 
 #### <a name="paas-web-application"></a>Webová aplikace PaaS
 
-Tato referenční architektura ukazuje spuštění aplikace Azure App Service v jedné oblasti. Tato architektura ukazuje sadu osvědčených postupů pro webovou aplikaci, která používá [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/) a [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
+Tato referenční architektura ukazuje spuštění aplikace Azure App Service v jedné oblasti. Tato architektura ukazuje sadu osvědčených postupů pro webovou aplikaci, která používá [Azure App Service](https://azure.microsoft.com/documentation/services/app-service/)   a [Azure SQL Database](https://azure.microsoft.com/documentation/services/sql-database/).
 Pohotovostní oblast je nastavená pro scénáře převzetí služeb při selhání.
 
 ![Diagram referenční architektury pro webovou aplikaci v PaaS](./media/ddos-best-practices/image11.png)
@@ -268,8 +269,7 @@ Další informace o této referenční architektuře najdete v tématu věnovan�
 
 ## <a name="next-steps"></a>Další kroky
 
+* [Základní hodnoty zabezpečení Azure pro DDoS Protection](ddos-protection-security-baseline.md)
 * [Sdílená odpovědnost v cloudu](shared-responsibility.md)
-
 * [Stránka Azure DDoS Protection produktu](https://azure.microsoft.com/services/ddos-protection/)
-
 * [Dokumentace k Azure DDoS Protection](/azure/virtual-network/ddos-protection-overview)

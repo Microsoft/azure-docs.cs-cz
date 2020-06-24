@@ -5,17 +5,17 @@ description: Naučte se používat modul spouštěného skriptu Pythonu pro pou�
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: tracking-python, previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/12/2019
-ms.openlocfilehash: 1d164a5ab3d1ea9c1b07f11ee074670d3e5124c5
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 4afb6dca94642ab9b908a4f07ff5de56677626f2
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558914"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84696299"
 ---
 # <a name="execute-python-machine-learning-scripts-in-azure-machine-learning-studio-classic"></a>Spouštění skriptů strojového učení v jazyce Python v Azure Machine Learning Studio (Classic)
 
@@ -75,13 +75,13 @@ Například zvažte, že soubor Hello.py obsahující jednoduchou funkci "Hello,
 
 ![Uživatelsky definovaná funkce v souboru Hello.py](./media/execute-python-scripts/figure4.png)
 
-V dalším kroku vytvoříme soubor Hello. zip, který obsahuje Hello.py:
+V dalším kroku vytvoříme soubor Hello.zip, který obsahuje Hello.py:
 
 ![Soubor ZIP obsahující kód Pythonu definovaný uživatelem](./media/execute-python-scripts/figure5.png)
 
-Nahrajte soubor ZIP jako datovou sadu do studia (Classic). Pak vytvořte a spusťte experiment, který pomocí kódu Pythonu v souboru Hello. zip připojíte k třetímu vstupnímu portu modulu pro **spuštění skriptu Pythonu** , jak je znázorněno na následujícím obrázku.
+Nahrajte soubor ZIP jako datovou sadu do studia (Classic). Pak vytvořte a spusťte experiment, který používá kód Pythonu v souboru Hello.zip tím, že ho připojíte k třetímu vstupnímu portu **spouštěného modulu skriptu Pythonu** , jak je znázorněno na následujícím obrázku.
 
-![Ukázkový experiment s Hello. zip jako vstup pro modul spuštění skriptu Pythonu](./media/execute-python-scripts/figure6a.png)
+![Ukázka experimentu s Hello.zip jako vstup pro spuštění modulu skriptu Pythonu](./media/execute-python-scripts/figure6a.png)
 
 ![Uživatelsky definovaný kód Pythonu nahraný jako soubor zip](./media/execute-python-scripts/figure6b.png)
 

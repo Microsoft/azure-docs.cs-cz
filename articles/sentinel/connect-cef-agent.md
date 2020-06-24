@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 5a8b97e5bef57b29f388c86628f0af5d05e1724a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 502fbe3bc7b1de2038bc444ae5daf180cfc80203
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81731646"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298986"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Krok 1: nasazení serveru pro překládání protokolů
 
@@ -69,13 +69,13 @@ Zvolením démona syslog zobrazíte příslušný popis.
 
 1. **Konfiguruje se démon procesu Syslog:**
 
-    1. Otevře port 514 pro komunikaci TCP pomocí konfiguračního souboru `/etc/rsyslog.conf`syslog.
+    1. Otevře port 514 pro komunikaci TCP pomocí konfiguračního souboru syslog `/etc/rsyslog.conf` .
 
-    1. Nakonfiguruje démona k přeposílání zpráv CEF na agenta Log Analytics na portu TCP 25226 vložením speciálního konfiguračního `security-config-omsagent.conf` souboru do adresáře `/etc/rsyslog.d/`démona syslog.
+    1. Nakonfiguruje démona k přeposílání zpráv CEF na agenta Log Analytics na portu TCP 25226 vložením speciálního konfiguračního souboru `security-config-omsagent.conf` do adresáře démona syslog `/etc/rsyslog.d/` .
 
         Obsah `security-config-omsagent.conf` souboru:
 
-            :rawmsg, regex, "CEF\|ASA" ~
+            :rawmsg, regex, "CEF"|"ASA"
             *.* @@127.0.0.1:25226
 
 1. **Restartování procesu démona syslogu**
@@ -101,9 +101,9 @@ Zvolením démona syslog zobrazíte příslušný popis.
 
 1. **Konfiguruje se démon procesu Syslog:**
 
-    1. Otevře port 514 pro komunikaci TCP pomocí konfiguračního souboru `/etc/syslog-ng/syslog-ng.conf`syslog.
+    1. Otevře port 514 pro komunikaci TCP pomocí konfiguračního souboru syslog `/etc/syslog-ng/syslog-ng.conf` .
 
-    1. Nakonfiguruje démona k přeposílání zpráv CEF na agenta Log Analytics na portu TCP 25226 vložením speciálního konfiguračního `security-config-omsagent.conf` souboru do adresáře `/etc/syslog-ng/conf.d/`démona syslog.
+    1. Nakonfiguruje démona k přeposílání zpráv CEF na agenta Log Analytics na portu TCP 25226 vložením speciálního konfiguračního souboru `security-config-omsagent.conf` do adresáře démona syslog `/etc/syslog-ng/conf.d/` .
 
         Obsah `security-config-omsagent.conf` souboru:
 

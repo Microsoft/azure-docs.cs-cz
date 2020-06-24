@@ -3,8 +3,7 @@ title: 'Rychlý Start: odeslání událostí pomocí jazyka C-Azure Event Hubs'
 description: 'Rychlý Start: Tento článek popisuje postup vytvoření aplikace v jazyce C, která odesílá události do služby Azure Event Hubs.'
 services: event-hubs
 documentationcenter: ''
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -13,14 +12,15 @@ ms.tgt_pltfrm: c
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
-ms.author: shvija
-ms.openlocfilehash: 5bd4bb66b7e3c3ec37724f8684105befbc9132ff
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 6bb4e6d754c091b57399a6154d491e93becad57e
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "73720676"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299309"
 ---
 # <a name="quickstart-send-events-to-azure-event-hubs-using-c"></a>Rychlý Start: odeslání událostí do Azure Event Hubs pomocí jazyka C
 
@@ -152,7 +152,7 @@ V této části se dozvíte, jak napsat aplikaci v jazyce C pro odesílání ud�
 
 Spusťte aplikaci, aby odesílala zprávy do centra událostí. 
 
-Blahopřejeme! Nyní jste odeslali zprávy do centra událostí.
+Gratulujeme! Nyní jste odeslali zprávy do centra událostí.
 
 ## <a name="next-steps"></a>Další kroky
 Přečtěte si následující články:

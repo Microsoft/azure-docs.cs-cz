@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 4033437db5c14abcd0376fbfeca22cca915908d2
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 824ba9e1f9b4325c1e0974ed1c22b465ec4b85a8
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677181"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85298952"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Použití diagnostického rozšíření Linuxu k monitorování metrik a protokolů
 
@@ -74,7 +74,12 @@ Podporované distribuce a verze:
 
 ### <a name="sample-installation"></a>Ukázková instalace
 
-Před spuštěním Vyplňte správné hodnoty proměnných v první části:
+> [!NOTE]
+> U některé z ukázek Vyplňte správné hodnoty proměnných v první části před spuštěním. 
+
+Ukázková konfigurace stažená v těchto příkladech shromažďuje sadu standardních dat a odesílá je do úložiště tabulek. Adresa URL pro ukázkovou konfiguraci a její obsah se může změnit. Ve většině případů byste si měli stáhnout kopii souboru JSON s nastavením portálu a přizpůsobit ho vašim potřebám, potom budete mít všechny šablony nebo automatizace, které vytvoříte, místo stažení této adresy URL použili vlastní verzi konfiguračního souboru.
+
+#### <a name="azure-cli-sample"></a>Ukázka Azure CLI
 
 ```azurecli
 # Set your Azure VM diagnostic variables correctly below
@@ -103,8 +108,6 @@ my_lad_protected_settings="{'storageAccountName': '$my_diagnostic_storage_accoun
 # Finallly tell Azure to install and enable the extension
 az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group $my_resource_group --vm-name $my_linux_vm --protected-settings "${my_lad_protected_settings}" --settings portal_public_settings.json
 ```
-
-Ukázková konfigurace stažená v těchto příkladech shromažďuje sadu standardních dat a odesílá je do úložiště tabulek. Adresa URL pro ukázkovou konfiguraci a její obsah se může změnit. Ve většině případů byste si měli stáhnout kopii souboru JSON s nastavením portálu a přizpůsobit ho vašim potřebám, potom budete mít všechny šablony nebo automatizace, které vytvoříte, místo stažení této adresy URL použili vlastní verzi konfiguračního souboru.
 
 #### <a name="powershell-sample"></a>Ukázka PowerShellu
 
@@ -439,6 +442,9 @@ Je třeba zadat buď Table, nebo "jímky", nebo obojí.
 
 Řídí zachycení souborů protokolu. LAD zachycuje nové textové řádky při zápisu do souboru a zapisuje je do řádků tabulky nebo do všech zadaných umyvadel (JsonBlob nebo EventHub).
 
+> [!NOTE]
+> Protokoly LAD jsou zachyceny podkomponentou s názvem `omsagent` . Aby bylo možné shromažďovat protokoly souborů, musíte zajistit, aby `omsagent` měl uživatel oprávnění ke čtení pro zadané soubory, a také oprávnění ke spouštění na všech adresářích v cestě k tomuto souboru. Tuto kontrolu můžete spustit `sudo su omsagent -c 'cat /path/to/file'` po instalaci lad.
+
 ```json
 "fileLogs": [
     {
@@ -564,23 +570,36 @@ BytesPerSecond | Počet přečtených nebo zapsaných bajtů za sekundu
 
 Agregované hodnoty ve všech discích lze získat nastavením `"condition": "IsAggregate=True"` . Chcete-li získat informace pro konkrétní zařízení (například/dev/sdf1), nastavte `"condition": "Name=\\"/dev/sdf1\\""` .
 
-## <a name="installing-and-configuring-lad-30-via-cli"></a>Instalace a konfigurace LAD 3.0 pomocí rozhraní příkazového řádku
+## <a name="installing-and-configuring-lad-30"></a>Instalace a konfigurace LAD 3,0
 
-Za předpokladu, že vaše chráněná nastavení jsou v souboru PrivateConfig.jsna a informace o vaší veřejné konfiguraci jsou PublicConfig.jsna, spusťte tento příkaz:
+### <a name="azure-cli"></a>Azure CLI
+
+Za předpokladu, že vaše chráněná nastavení jsou v souboru ProtectedSettings.jsna a informace o vaší veřejné konfiguraci jsou PublicSettings.jsna, spusťte tento příkaz:
 
 ```azurecli
-az vm extension set *resource_group_name* *vm_name* LinuxDiagnostic Microsoft.Azure.Diagnostics '3.*' --private-config-path PrivateConfig.json --public-config-path PublicConfig.json
+az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnostic --version 3.0 --resource-group <resource_group_name> --vm-name <vm_name> --protected-settings ProtectedSettings.json --settings PublicSettings.json
 ```
 
-V příkazu se předpokládá, že používáte Azure CLI v režimu správy prostředků Azure (ARM). Pokud chcete nakonfigurovat LAD pro virtuální počítače s modelem nasazení Classic, přepněte do režimu ASM ( `azure config mode asm` ) a vynechejte název skupiny prostředků v příkazu. Další informace najdete v dokumentaci k rozhraní příkazového [řádku pro více platforem](https://docs.microsoft.com/azure/xplat-cli-connect).
+Příkaz předpokládá, že používáte režim správy prostředků Azure v rozhraní příkazového řádku Azure CLI. Pokud chcete nakonfigurovat LAD pro virtuální počítače s modelem nasazení Classic, přepněte do režimu ASM ( `azure config mode asm` ) a vynechejte název skupiny prostředků v příkazu. Další informace najdete v dokumentaci k rozhraní příkazového [řádku pro více platforem](https://docs.microsoft.com/azure/xplat-cli-connect).
+
+### <a name="powershell"></a>PowerShell
+
+Za předpokladu, že vaše chráněná nastavení jsou v `$protectedSettings` proměnné a informace o vaší veřejné konfiguraci jsou v `$publicSettings` proměnné, spusťte tento příkaz:
+
+```powershell
+Set-AzVMExtension -ResourceGroupName <resource_group_name> -VMName <vm_name> -Location <vm_location> -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -Name LinuxDiagnostic -SettingString $publicSettings -ProtectedSettingString $protectedSettings -TypeHandlerVersion 3.0
+```
 
 ## <a name="an-example-lad-30-configuration"></a>Příklad konfigurace LAD 3,0
 
 V závislosti na předchozích definicích najdete ukázkovou konfiguraci rozšíření LAD 3,0 s některými vysvětleními. Pokud chcete tuto ukázku použít pro váš případ, měli byste použít vlastní název účtu úložiště, token SAS účtu a EventHubs tokeny SAS.
 
-### <a name="privateconfigjson"></a>PrivateConfig.jsna
+> [!NOTE]
+> V závislosti na tom, jestli k instalaci LAD použijete rozhraní příkazového řádku Azure CLI nebo PowerShell, se metoda pro zajištění veřejného a chráněného nastavení bude lišit. Pokud používáte rozhraní příkazového řádku Azure CLI, uložte následující nastavení, abyste ProtectedSettings.jsv a PublicSettings.jsna použití s výše uvedeným vzorovým příkazem. Pokud používáte PowerShell, uložte nastavení do `$protectedSettings` a `$publicSettings` spuštěním `$protectedSettings = '{ ... }'` .
 
-Konfigurace těchto privátních nastavení:
+### <a name="protected-settings"></a>Chráněná nastavení
+
+Tato chráněná nastavení se konfigurují:
 
 * účet úložiště
 * token SAS odpovídajícího účtu
@@ -628,7 +647,7 @@ Konfigurace těchto privátních nastavení:
 }
 ```
 
-### <a name="publicconfigjson"></a>PublicConfig.jsna
+### <a name="public-settings"></a>Veřejné nastavení
 
 Tato veřejná nastavení způsobí, že LAD:
 

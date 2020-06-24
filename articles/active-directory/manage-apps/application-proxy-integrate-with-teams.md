@@ -3,25 +3,25 @@ title: Přístup k aplikacím Aplikace Azure AD proxy v týmech | Microsoft Docs
 description: Využijte Azure Proxy aplikací služby AD k přístupu k místní aplikaci prostřednictvím Microsoft Teams.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/05/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 037e005993a54e525560571a6d893197af99b6a0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7afcd3bfe16775d5c99100278eda81da739b8d22
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67807764"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764481"
 ---
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Přístup k vašim místním aplikacím prostřednictvím Microsoft Teams
 
@@ -33,13 +33,13 @@ Vaši uživatelé můžou do kanálů týmů přidávat cloudové aplikace [pomo
 
 Pokud jste to ještě neudělali, [nakonfigurujte pro svého tenanta proxy aplikací a nainstalujte konektor](application-proxy-add-on-premises-application.md). Pak [publikujte místní aplikaci](application-proxy-add-on-premises-application.md) pro vzdálený přístup. Když publikujete aplikaci, poznamenejte si externí adresu URL, protože se používá k přidání aplikace do týmů.
 
-Pokud už máte své aplikace publikované, ale nepamatujete si své externí adresy URL, vyhledejte je v [Azure Portal](https://portal.azure.com). Přihlaste se a pak přejděte na **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace** > vyberte vaši aplikaci > **proxy aplikace**.
+Pokud už máte své aplikace publikované, ale nepamatujete si své externí adresy URL, vyhledejte je v [Azure Portal](https://portal.azure.com). Přihlaste se a pak přejděte na **Azure Active Directory**  >  **podnikové aplikace**  >  **všechny aplikace** > vyberte vaši aplikaci > **proxy aplikace**.
 
 ## <a name="add-your-app-to-teams"></a>Přidání aplikace do týmů
 
 Po publikování aplikace prostřednictvím proxy aplikací Dejte uživatelům informace o tom, že je můžou přidat jako kartu přímo v kanálech týmů, a pak je aplikace dostupná pro všechny členy týmu, aby je používali. Postupujte podle těchto tří kroků:
 
-1. Přejděte na kanál týmy, kam chcete přidat tuto aplikaci, a vyberte **+** možnost Přidat kartu.
+1. Přejděte na kanál týmy, kam chcete přidat tuto aplikaci, a vyberte možnost **+** Přidat kartu.
 
    ![Vyberte + a přidejte do týmů kartu.](./media/application-proxy-integrate-with-teams/add-tab.png)
 

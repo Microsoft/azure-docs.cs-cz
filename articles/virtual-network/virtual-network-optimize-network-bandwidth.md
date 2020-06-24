@@ -9,17 +9,17 @@ editor: ''
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2017
 ms.author: steveesp
-ms.openlocfilehash: be5f38bdeaf51dbe23006ecf30b4deb66aa7402a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 86785ada1d5b55a1eaa7c81243dd0b6c39087e1c
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75690884"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695959"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Optimalizace propustnosti sítě pro virtuální počítače Azure
 
@@ -29,7 +29,7 @@ Virtuální počítače Azure mají výchozí nastavení sítě, které je možn
 
 Pokud váš virtuální počítač s Windows podporuje [akcelerované síťové služby](create-vm-accelerated-networking-powershell.md), bude mít tato funkce optimální konfiguraci pro propustnost. U všech ostatních virtuálních počítačů s Windows může použití škálování na straně příjmu (RSS) dosáhnout vyšší maximální propustnosti než u virtuálního počítače bez RSS. Na virtuálním počítači s Windows může být standard RSS zakázaný. Pokud chcete zjistit, jestli je povolený RSS, a povolte ho, pokud je v tuto chvíli zakázaný, proveďte následující kroky:
 
-1. Podívejte se, jestli je povolený RSS pro síťový adaptér `Get-NetAdapterRss` pomocí příkazu PowerShellu. V následujícím příkladu výstupu vráceného z rozhraní `Get-NetAdapterRss`není RSS povoleno.
+1. Podívejte se, jestli je povolený RSS pro síťový adaptér pomocí `Get-NetAdapterRss` příkazu PowerShellu. V následujícím příkladu výstupu vráceného z rozhraní není `Get-NetAdapterRss` RSS povoleno.
 
     ```powershell
     Name                    : Ethernet
@@ -42,7 +42,7 @@ Pokud váš virtuální počítač s Windows podporuje [akcelerované síťové 
     Get-NetAdapter | % {Enable-NetAdapterRss -Name $_.Name}
     ```
     Předchozí příkaz neobsahuje výstup. Příkaz změnil nastavení síťové karty, což způsobí ztrátu dočasného připojení asi o jednu minutu. Během ztráty připojení se zobrazí dialogové okno pro opětovné připojení. Připojení se obvykle obnoví po třetím pokusu.
-3. Zadáním `Get-NetAdapterRss` příkazu potvrďte, že je na virtuálním počítači povolený RSS. V případě úspěchu se vrátí následující příklad výstupu:
+3. Zadáním příkazu potvrďte, že je na virtuálním počítači povolený RSS `Get-NetAdapterRss` . V případě úspěchu se vrátí následující příklad výstupu:
 
     ```powershell
     Name                    : Ethernet

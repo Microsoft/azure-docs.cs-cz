@@ -4,15 +4,15 @@ description: Tento článek poskytuje informace o různých součástech v aplik
 services: application-gateway
 author: abshamsft
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: absha
-ms.openlocfilehash: 90b3c3fd18bc9211c731ccf16dd646a64a4a1116
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 46ef67e5ede1ea41469a8dcc78244e74c0bffc45
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80133091"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254323"
 ---
 # <a name="application-gateway-components"></a>Komponenty aplikační brány
 

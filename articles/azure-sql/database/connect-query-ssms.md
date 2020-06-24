@@ -13,12 +13,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/29/2020
-ms.openlocfilehash: 5ecf180b71c43d5df25d7c3c948a59482dd06a1c
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3b601fbbc448ef909b0700ac887375147c42ecdd
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84267303"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253609"
 ---
 # <a name="quickstart-use-ssms-to-connect-to-and-query-azure-sql-database-or-azure-sql-managed-instance"></a>Rychlý Start: použití SSMS pro připojení k a dotazování Azure SQL Database nebo spravované instance Azure SQL
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -47,7 +47,7 @@ Dokončení tohoto rychlého startu vyžaduje následující položky:
   > [!IMPORTANT]
   > Skripty v tomto článku jsou určeny k používání databáze Adventure Works. Se spravovanou instancí musíte buď importovat databázi Adventure Works do databáze instance, nebo upravit skripty v tomto článku, aby používaly databázi World Importers.
 
-Pokud chcete jenom spustit některé dotazy ad-hoc bez instalace SSMS, přečtěte si [rychlý Start: použití Editoru dotazů Azure Portal k dotazování databáze SQL](connect-query-portal.md).
+Pokud jednoduše chcete spustit některé dotazy ad-hoc bez instalace SSMS, přečtěte si [rychlý Start: použití Editoru dotazů Azure Portal k dotazování databáze v Azure SQL Database](connect-query-portal.md).
 
 ## <a name="get-server-connection-information"></a>Získat informace o připojení k serveru
 
@@ -77,7 +77,7 @@ V SSMS se připojte k vašemu serveru.
    | ------------ | ------------------ | ----------- |
    | **Typ serveru** | Databázový stroj | Požadovaná hodnota. |
    | **Název serveru** | Plně kvalifikovaný název serveru | Něco jako: **servername.Database.Windows.NET**. |
-   | **Authentication** | Ověřování SQL Serveru | V tomto kurzu se používá ověřování SQL. |
+   | **Ověřování** | Ověřování SQL Serveru | V tomto kurzu se používá ověřování SQL. |
    | **Přihlásit** | ID uživatele účtu správce serveru | ID uživatele z účtu správce serveru, který se použil k vytvoření serveru. |
    | **Heslo** | Heslo účtu správce serveru | Heslo z účtu správce serveru, který se použil k vytvoření serveru. |
    ||||

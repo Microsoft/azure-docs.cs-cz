@@ -10,12 +10,12 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
-ms.openlocfilehash: dcaa87b8bf37cc0410c052b82014209327d5fe99
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 71020453f51e5baa9172ad8902eeb537dd55763b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84310644"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255224"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Začínáme s cloudovými službami Azure Cloud Services a technologií ASP.NET
 
@@ -104,9 +104,9 @@ V následující části budete konfigurovat řešení tak, aby při spuštění
 Pokud chcete aplikaci spustit v cloudu, proveďte následující kroky:
 
 * Vytvoření cloudové služby Azure
-* Vytvoření databáze Azure SQL
+* Vytvoří databázi v Azure SQL Database.
 * Vytvoření účtu úložiště Azure
-* Nakonfigurujte řešení, aby při spuštění v Azure používalo databázi Azure SQL.
+* Nakonfigurujte řešení, aby při spuštění v Azure používalo vaši databázi.
 * Nakonfigurujte řešení, aby při spuštění v Azure používalo účet úložiště Azure.
 * Nasaďte projekt do cloudové služby Azure.
 
@@ -130,7 +130,7 @@ Cloudová služba Azure je prostředí, ve kterém bude aplikace spuštěna.
 
     ![Nová cloudová služba](./media/cloud-services-dotnet-get-started/newcs.png)
 
-### <a name="create-an-azure-sql-database"></a>Vytvoření databáze Azure SQL
+### <a name="create-a-database-in-azure-sql-database"></a>Vytvoření databáze v Azure SQL Database
 Když aplikace běží v cloudu, používá cloudovou databázi.
 
 1. Na webu [Azure Portal](https://portal.azure.com) klikněte na **Vytvořit prostředek > Databáze > Databáze SQL**.
@@ -182,8 +182,9 @@ V reálné aplikaci byste obvykle vytvořili samostatné účty pro data aplikac
 
     Na obrázku vidíte vytvoření účtu úložiště s adresou URL `csvccontosoads.core.windows.net`.
 
-### <a name="configure-the-solution-to-use-your-azure-sql-database-when-it-runs-in-azure"></a>Konfigurace řešení, aby při spuštění v Azure používalo databázi Azure SQL
-Webový projekt a projekt role pracovního procesu mají každý svůj vlastní připojovací řetězec k databázi a každý musí při spuštění aplikace v Azure odkazovat na databázi Azure SQL.
+### <a name="configure-the-solution-to-use-your-database-in-azure-sql-database-when-it-runs-in-azure"></a>Konfigurace řešení, aby při spuštění v Azure používalo vaši databázi v Azure SQL Database
+
+Webový projekt a projekt role pracovního procesu mají každý z nich svůj vlastní připojovací řetězec databáze a každý musí odkazovat na databázi v Azure SQL Database, když aplikace běží v Azure.
 
 Pro webovou roli a nastavení prostředí cloudové služby pro roli pracovního procesu budete používat [transformaci Web.config](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations).
 
@@ -738,7 +739,7 @@ Tento kód čte databázi, aby získal adresu URL obrázku, převede obrázek na
 >
 >
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 Pokud by vám při procházení kurzem něco nefungovalo, následuje přehled běžných chyb a jejich řešení.
 
 ### <a name="serviceruntimeroleenvironmentexception"></a>ServiceRuntime.RoleEnvironmentException

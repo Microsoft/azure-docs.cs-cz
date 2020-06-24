@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18409f93ab50f7d031ec78a55b9eaf8ad1b85a49
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 601af3a5e642b4bbda54f461b3139e72b01b21d6
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "70101416"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193494"
 ---
 # <a name="sap-business-one-on-azure-virtual-machines"></a>SAP Business One ve službě Azure Virtual Machines
 Tento dokument poskytuje pokyny k nasazení SAP Business One na Azure Virtual Machines. Dokumentace není náhradou pro instalaci aplikace Business One for SAP. Dokumentace by se měla týkat základních pokynů pro plánování a nasazení infrastruktury Azure pro provozování obchodních aplikací v jednom.
@@ -67,17 +67,17 @@ Obchodní jedna je aplikace, která má dvě úrovně:
 - Vrstva klienta s klientem systému souborů FAT
 - Databázová vrstva, která obsahuje schéma databáze pro tenanta
 
-Lepší přehled o tom, které součásti jsou spuštěny v části klienta a které části jsou spuštěny v části serveru, jsou popsány v článku [SAP Business One – Příručka správce](https://help.sap.com/http.svc/rc/879bd9289df34a47af838e67d74ea302/9.3/en-US/AdministratorGuide_SQL.pdf) . 
+Lepší přehled o tom, které součásti jsou spuštěny v části klienta a které části jsou spuštěny v části serveru, jsou popsány v článku [SAP Business One – Příručka správce](https://help.sap.com/doc/601fbd9113be4240b81d74626439cfa9/10.0/en-US/AdministratorGuide_SQL.pdf) . 
 
 Vzhledem k tomu, že mezi vrstvou klienta a vrstvou systému DBMS dochází k vysoké latenci, je potřeba, aby při nasazení v Azure byly obě úrovně v Azure umístěné v Azure. obvykle je to, že uživatelé pak mají k jednomu nebo několika virtuálním počítačům, na kterých je spuštěná služba RDS, jednu z komponent klienta.
 
 ### <a name="sizing-vms-for-sap-business-one"></a>Změna velikosti virtuálních počítačů pro SAP Business One
 
-V souvislosti s určením velikosti virtuálních počítačů klientů jsou požadavky na prostředky zdokumentovány v tématu SAP v dokumentu [SAP Business One hardware – Průvodce požadavky](https://help.sap.com/http.svc/rc/011000358700000244612011e/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). V případě Azure se musíte zaměřit a počítat s požadavky uvedenými v kapitole 2,4 dokumentu.
+V souvislosti s určením velikosti virtuálních počítačů klientů jsou požadavky na prostředky zdokumentovány v tématu SAP v dokumentu [SAP Business One hardware – Průvodce požadavky](https://help.sap.com/doc/bfa9770d12284cce8509956dcd4c5fcb/9.3/en-US/B1_Hardware_Requirements_Guide.pdf). V případě Azure se musíte zaměřit a počítat s požadavky uvedenými v kapitole 2,4 dokumentu.
 
 Jako virtuální počítače Azure pro hostování firemních komponent a hostitele DBMS jsou povolené jenom virtuální počítače, které jsou podporované SAP NetWeaver. Pokud chcete najít seznam podporovaných virtuálních počítačů Azure NetWeaver, přečtěte [si poznámku SAP #1928533](https://launchpad.support.sap.com/#/notes/1928533).
 
-Provozování SAP HANA jako systému DBMS back-endu pro firmy – pro HANA se podporují jenom virtuální počítače, které jsou uvedené pro firmy na HANA v [seznamu platforem Hana Certifeid IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) . Toto silnější omezení pro SAP HANA jako systém DBMS nemá vliv na obchodní komponenty na jeden klient.
+Provozování SAP HANA jako systému DBMS back-endu pro firmy – pro HANA se podporují jenom virtuální počítače, které jsou uvedené pro firmy v HANA v [seznamu platforem certifikovaných IaaS Hana](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) . Toto silnější omezení pro SAP HANA jako systém DBMS nemá vliv na obchodní komponenty na jeden klient.
 
 ### <a name="operating-system-releases-to-use-for-sap-business-one"></a>Verze operačních systémů, které se mají použít pro SAP Business One
 

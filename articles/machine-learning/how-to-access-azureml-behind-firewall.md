@@ -11,18 +11,18 @@ author: aashishb
 ms.reviewer: larryfr
 ms.date: 04/27/2020
 ms.custom: tracking-python
-ms.openlocfilehash: ab2bb3d94a740ca25be15b64895c52d5c038add3
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 31daec93352c0e142075a55c61f2b8d3a6d56fab
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84552444"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080228"
 ---
 # <a name="use-workspace-behind-azure-firewall-for-azure-machine-learning"></a>Použít pracovní prostor za Azure Firewall Azure Machine Learning
 
 V tomto článku se dozvíte, jak nakonfigurovat Azure Firewall pro použití s pracovním prostorem Azure Machine Learning.
 
-Azure Firewall lze použít k řízení přístupu k pracovnímu prostoru Azure Machine Learning a k veřejnému Internetu. Pokud není správně nakonfigurovaný, může Brána firewall způsobovat problémy s vaším pracovním prostorem.
+Azure Firewall lze použít k řízení přístupu k pracovnímu prostoru Azure Machine Learning a k veřejnému Internetu. Pokud není správně nakonfigurovaný, může Brána firewall způsobovat problémy s vaším pracovním prostorem. K dispozici je celá řada názvů hostitelů, které jsou používány Azure Machine Learning pracovním prostorem, které jsou popsány v tomto článku.
 
 ## <a name="network-rules"></a>Pravidla sítě
 
@@ -41,16 +41,18 @@ Hostitelé v této části vlastní Microsoft a poskytují služby vyžadované 
 | ---- | ---- |
 | **\*. batchai.core.windows.net** | Školicí clustery |
 | **ml.azure.com** | Azure Machine Learning Studio |
+| **default.exp-tas.com** | Používá se v Azure Machine Learning Studiu |
 | **\*. azureml.ms** | Používá se Azure Machine Learning rozhraní API. |
-| **\*. experiments.azureml.net** | Používá experimenty spuštěné v Azure Machine Learning|
+| **\*. experiments.azureml.net** | Používá experimenty spuštěné v Azure Machine Learning |
 | **\*. modelmanagement.azureml.net** | Používá se k registraci a nasazení modelů.|
 | **mlworkspace.azure.ai** | Používá se Azure Portal při zobrazení pracovního prostoru. |
 | **\*. aether.ms** | Používá se při spouštění Azure Machine Learningch kanálů. |
 | **\*. instances.azureml.net** | Azure Machine Learning výpočetní instance |
+| **\*. instances.azureml.ms** | Pokud je v pracovním prostoru povolený privátní odkaz, Azure Machine Learning výpočetní instance. |
 | **windows.net** | Azure Blob Storage |
 | **vault.azure.net** | Azure Key Vault |
-| **microsoft.com** | Základní image Docker |
 | **azurecr.io** | Azure Container Registry |
+| **mcr.microsoft.com** | Microsoft Container Registry pro základní image Docker |
 
 ## <a name="python-hosts"></a>Hostitelé Pythonu
 

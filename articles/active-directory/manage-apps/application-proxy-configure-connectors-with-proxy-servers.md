@@ -2,22 +2,22 @@
 title: Práce se stávajícími místními proxy servery a Azure AD | Microsoft Docs
 description: Obsahuje informace o tom, jak pracovat se stávajícími místními proxy servery.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/07/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 088a87f4c4eb200cfeecff1d2513fefdb0088a38
-ms.sourcegitcommit: 0b80a5802343ea769a91f91a8cdbdf1b67a932d3
+ms.openlocfilehash: 48727e377c2b6707e570cad103e4b08bcb44a1cb
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/25/2020
-ms.locfileid: "83827043"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764923"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Práce se stávajícími místními proxy servery
 
@@ -39,7 +39,7 @@ Součásti operačního systému se pokusí najít proxy server provedením vyhl
 
 Konektor můžete nakonfigurovat tak, aby vynechal místní proxy server, aby se zajistilo, že používá přímé připojení ke službám Azure. Doporučujeme tento přístup, pokud to vaše zásada sítě umožňuje, protože to znamená, že máte jednu méně konfigurací, kterou je třeba udržovat.
 
-Pokud chcete pro konektor zakázat použití odchozího proxy serveru, upravte soubor C:\Program Files\Microsoft AAD App proxy Connector\ApplicationProxyConnectorService.exe.config a přidejte část *System.NET* zobrazenou v této ukázce kódu:
+Pokud chcete pro konektor zakázat použití odchozího proxy serveru, upravte soubor C:\Program Files\Microsoft AAD App proxy Connector\ApplicationProxyConnectorService.exe.config a přidejte část *System.NET* , která se zobrazuje v této ukázce kódu:
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -56,7 +56,7 @@ Pokud chcete pro konektor zakázat použití odchozího proxy serveru, upravte s
 </configuration>
 ```
 
-Chcete-li zajistit, že služba Aktualizátor konektorů také obchází proxy server, udělejte podobné změny v souboru ApplicationProxyConnectorUpdaterService. exe. config. Tento soubor se nachází ve složce C:\Program Files\Microsoft AAD App proxy Aktualizátor konektorů.
+Chcete-li zajistit, že služba Aktualizátor konektorů také obchází proxy server, udělejte v souboru ApplicationProxyConnectorUpdaterService.exe.config podobné změny. Tento soubor se nachází ve složce C:\Program Files\Microsoft AAD App proxy Aktualizátor konektorů.
 
 Nezapomeňte vytvořit kopie původních souborů pro případ, že budete potřebovat vrátit se k souboru Default. config.
 
@@ -77,7 +77,7 @@ V důsledku existence pouze odchozího provozu není potřeba konfigurovat pří
 
 Pokud je v prostředí povolená možnost WPAD a správně nakonfigurovaná, konektor automaticky zjistí odchozí proxy server a pokusí se ho použít. Konektor ale můžete explicitně nakonfigurovat tak, aby procházel prostřednictvím odchozího proxy serveru.
 
-Provedete to tak, že upravíte soubor Connector\ApplicationProxyConnectorService.exe.config App proxy serveru C:\Program Files\Microsoft AAD a přidáte oddíl *System.NET* zobrazený v této ukázce kódu. Změňte *ProxyServer: 8080* tak, aby odrážela místní název proxy server nebo IP adresu a port, na kterém naslouchá. Hodnota musí mít http://předponu, i když používáte IP adresu.
+Provedete to tak, že upravíte soubor proxy aplikace C:\Program Files\Microsoft AAD Connector\ApplicationProxyConnectorService.exe.config a přidáte část *System.NET* , která se zobrazuje v této ukázce kódu. Změňte *ProxyServer: 8080* tak, aby odrážela místní název proxy server nebo IP adresu a port, na kterém naslouchá. Hodnota musí mít http://předponu, i když používáte IP adresu.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
@@ -96,7 +96,7 @@ Provedete to tak, že upravíte soubor Connector\ApplicationProxyConnectorServic
 </configuration>
 ```
 
-Dále nakonfigurujte službu Aktualizátor konektorů tak, aby používala proxy, a to tak, že se v souboru Updater\ApplicationProxyConnectorUpdaterService.exe.config C:\Program Files\Microsoft AAD App proxy Connector vytvoří podobná změna.
+Dále nakonfigurujte službu Aktualizátor konektorů tak, aby používala proxy, a to tak, že se v souboru Updater\ApplicationProxyConnectorUpdaterService.exe.config konektoru C:\Program Files\Microsoft AAD App proxy vytvoří podobná změna.
 
 ### <a name="step-2-configure-the-proxy-to-allow-traffic-from-the-connector-and-related-services-to-flow-through"></a>Krok 2: konfigurace proxy serveru tak, aby povoloval přenosy z konektoru a souvisejících služeb, které se mají proflow
 
@@ -152,9 +152,9 @@ Pokud to chcete povolit, postupujte prosím podle následujících kroků:
 3.  Spusťte příkazový řádek se zvýšenými oprávněními s právy správce a zadejte `control inetcpl.cpl` .
 4.  Nakonfigurujte požadovaná nastavení proxy serveru. 
 
-Tato nastavení nastaví konektor pro komunikaci do Azure a back-endu stejný proxy server pro předávání. Pokud konektor ke komunikaci Azure nevyžaduje žádný dopředný proxy server nebo jiný dopředný proxy server, můžete ho nastavit úpravou souboru ApplicationProxyConnectorService. exe. config, jak je popsáno v částech obejití odchozích proxy serverů nebo použití odchozího proxy server.
+Tato nastavení nastaví konektor pro komunikaci do Azure a back-endu stejný proxy server pro předávání. Pokud konektor ke komunikaci Azure nevyžaduje žádný dopředný proxy server nebo jiný dopředný proxy server, můžete ho nastavit změnou ApplicationProxyConnectorService.exe.config, jak je popsáno v částech obejití odchozích proxy serverů nebo použití odchozího proxy server.
 
-Služba aktualizačního konektoru bude používat i proxy počítače. Toto chování lze změnit úpravou souboru ApplicationProxyConnectorUpdaterService. exe. config.
+Služba aktualizačního konektoru bude používat i proxy počítače. Toto chování lze změnit úpravou ApplicationProxyConnectorUpdaterService.exe.config souboru.
 
 ## <a name="troubleshoot-connector-proxy-problems-and-service-connectivity-issues"></a>Řešení problémů s proxy konektorem a problémy s připojením služby
 

@@ -3,25 +3,25 @@ title: Přiřazená aplikace se nezobrazuje na přístupovém panelu | Microsoft
 description: Řešení potíží s tím, proč se aplikace nezobrazuje na přístupovém panelu
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/09/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviwer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 10dfcf337dc75a202e781e931f38783291a72fe7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 69f5196484b841e8f0de72ce52ae48e00963f6f5
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67272742"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760991"
 ---
 # <a name="an-assigned-application-is-not-appearing-on-the-access-panel"></a>Přiřazená aplikace se na přístupovém panelu nezobrazuje.
 
@@ -135,7 +135,7 @@ Chcete-li nakonfigurovat jednotné přihlašování pro aplikaci, postupujte pod
 
     2. klikněte na **Uložit.** V tabulce se zobrazí nový atribut.
 
-13. Kliknutím **na &lt;konfigurovat název&gt; aplikace** získáte přístup k dokumentaci týkající se konfigurace jednotného přihlašování v aplikaci. K nastavení jednotného přihlašování v aplikaci máte také k dispozici adresy URL a certifikát metadat.
+13. Kliknutím na **Konfigurovat &lt; název &gt; aplikace** získáte přístup k dokumentaci týkající se konfigurace jednotného přihlašování v aplikaci. K nastavení jednotného přihlašování v aplikaci máte také k dispozici adresy URL a certifikát metadat.
 
 14. Kliknutím na **Uložit** uložte konfiguraci.
 
@@ -252,7 +252,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pro aplikaci, která nen�
 
     2. Klikněte na **Uložit.** V tabulce se zobrazí nový atribut.
 
-14. Kliknutím **na &lt;konfigurovat název&gt; aplikace** získáte přístup k dokumentaci týkající se konfigurace jednotného přihlašování v aplikaci. K dispozici jsou také adresy URL a certifikáty Azure AD, které aplikace vyžaduje.
+14. Kliknutím na **Konfigurovat &lt; název &gt; aplikace** získáte přístup k dokumentaci týkající se konfigurace jednotného přihlašování v aplikaci. K dispozici jsou také adresy URL a certifikáty Azure AD, které aplikace vyžaduje.
 
 #### <a name="select-user-identifier-and-add-user-attributes-to-be-sent-to-the-application"></a>Vyberte identifikátor uživatele a přidejte atributy uživatele, které se mají odeslat do aplikace.
 

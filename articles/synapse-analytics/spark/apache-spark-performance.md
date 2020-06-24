@@ -5,16 +5,16 @@ services: synapse-analytics
 author: euangMS
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: 6ffe7f3d9faf82c892975e9ffa03b383d3610c36
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: a4d95e57e3b72f8338da5c88f4ddfd57f66014cb
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81424619"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194854"
 ---
 # <a name="optimize-apache-spark-jobs-preview-in-azure-synapse-analytics"></a>Optimalizace úloh Apache Spark (Preview) ve službě Azure synapse Analytics
 
@@ -56,7 +56,7 @@ Nejlepší formát pro výkon je Parquet s *kompresí s přichycením*, což je 
 
 ## <a name="use-the-cache"></a>Použití mezipaměti
 
-Spark poskytuje vlastní nativní mechanismy ukládání do mezipaměti, které je možné použít prostřednictvím různých metod `.persist()`, jako `.cache()`jsou, `CACHE TABLE`a. Tato nativní mezipaměť je platná u malých datových sad i v kanálech ETL, kde potřebujete ukládat do mezipaměti mezilehlé výsledky. Nicméně nativní ukládání do mezipaměti v současnosti nefunguje dobře s vytvářením oddílů, protože tabulka v mezipaměti neuchovává data dělení.
+Spark poskytuje vlastní nativní mechanismy ukládání do mezipaměti, které je možné použít prostřednictvím různých metod, jako jsou `.persist()` , `.cache()` a `CACHE TABLE` . Tato nativní mezipaměť je platná u malých datových sad i v kanálech ETL, kde potřebujete ukládat do mezipaměti mezilehlé výsledky. Nicméně nativní ukládání do mezipaměti v současnosti nefunguje dobře s vytvářením oddílů, protože tabulka v mezipaměti neuchovává data dělení.
 
 ## <a name="use-memory-efficiently"></a>Efektivní využití paměti
 
@@ -77,8 +77,8 @@ Apache Spark ve službě Azure synapse používá PŘÍZe [Apache HADOOP příze
 Pokud chcete adresovat zprávy o nedostatku paměti, zkuste:
 
 * Projděte si přehledy DAG Management. Zmenšete ze zdrojových dat zmenšeného na straně mapy, před rozdělením na oddíly (nebo nastavit interval), maximalizujte jednotlivá místa a snižte množství odesílaných dat.
-* Preferovat `ReduceByKey` s pevným omezením paměti `GroupByKey`, které poskytuje agregace, okna a další funkce, ale má Ann nevázaný limit paměti.
-* Raději `TreeReduce`, což více funguje na vykonavatelích nebo oddílech, na `Reduce`, který vše funguje na ovladači.
+* Preferovat `ReduceByKey` s pevným omezením paměti `GroupByKey` , které poskytuje agregace, okna a další funkce, ale má Ann nevázaný limit paměti.
+* Raději `TreeReduce` , což více funguje na vykonavatelích nebo oddílech, na `Reduce` , který vše funguje na ovladači.
 * Využijte místo objektů RDD na nižší úrovni datový rámec.
 * Vytvořte ComplexTypes, které zapouzdřují akce, například "horních N", různé agregace nebo operace s okny.
 
@@ -105,11 +105,11 @@ Můžete použít dělení a zablokování současně.
 
 Pokud máte pomalé úlohy při spojení nebo náhodně, příčinou je pravděpodobně *zkosení dat*, což je asymetrie v datech úlohy. Například úloha mapy může trvat 20 sekund, ale při spuštění úlohy, kde se data připojí nebo rozchází, trvá hodiny. Chcete-li opravit zešikmení dat, měli byste nasoleit celý klíč nebo použít *izolovanou hodnotu Salt* pouze pro některé podmnožiny klíčů. Pokud používáte izolovanou sůl, měli byste další filtr k izolaci vaší podmnožiny nasolených klíčů v rámci spojení map. Další možností je zavést sloupec intervalu a předem agregovat do kontejnerů.
 
-Dalším faktorem způsobující pomalé spojení může být typ spojení. Ve výchozím nastavení používá Spark typ `SortMerge` spojení. Tento typ spojení je nejvhodnější pro velké datové sady, ale je jinak výpočetně nákladný, protože před jejich sloučením musí nejprve seřadit levou a pravou stranu dat.
+Dalším faktorem způsobující pomalé spojení může být typ spojení. Ve výchozím nastavení používá Spark `SortMerge` typ spojení. Tento typ spojení je nejvhodnější pro velké datové sady, ale je jinak výpočetně nákladný, protože před jejich sloučením musí nejprve seřadit levou a pravou stranu dat.
 
-`Broadcast` Spojení je nejvhodnější pro menší datové sady nebo v případě, že je jedna strana spojení mnohem menší než druhá strana. Tento typ spojení vysílá jednu stranu na všechny prováděcí moduly, a proto vyžaduje více paměti pro vysílání obecně.
+`Broadcast`Spojení je nejvhodnější pro menší datové sady nebo v případě, že je jedna strana spojení mnohem menší než druhá strana. Tento typ spojení vysílá jednu stranu na všechny prováděcí moduly, a proto vyžaduje více paměti pro vysílání obecně.
 
-Typ spojení můžete v konfiguraci `spark.sql.autoBroadcastJoinThreshold`změnit nastavením nebo můžete nastavit pomocný parametr Join pomocí rozhraní API dataframe (`dataframe.join(broadcast(df2))`).
+Typ spojení můžete v konfiguraci změnit nastavením `spark.sql.autoBroadcastJoinThreshold` nebo můžete nastavit pomocný parametr Join pomocí rozhraní API dataframe ( `dataframe.join(broadcast(df2))` ).
 
 ```scala
 // Option 1
@@ -124,7 +124,7 @@ df1.join(broadcast(df2), Seq("PK")).
 sql("SELECT col1, col2 FROM V_JOIN")
 ```
 
-Pokud používáte rozdělené tabulky, pak máte `Merge` k dispozici třetí typ spojení. Správně předělená a předem vytříděná datová sada přeskočí nákladovou fázi řazení z `SortMerge` JOIN.
+Pokud používáte rozdělené tabulky, pak máte k dispozici třetí typ spojení `Merge` . Správně předělená a předem vytříděná datová sada přeskočí nákladovou fázi řazení z `SortMerge` JOIN.
 
 Pořadí spojení, zejména v složitějších dotazech. Začněte s nejvyšším selektivním spojením. Pokud je to možné, přesuňte také spojení, která zvyšují počet řádků po agregacích.
 
@@ -160,7 +160,7 @@ Při spouštění souběžných dotazů Vezměte v úvahu následující skuteč
 
 Monitorujte výkon dotazů pro odlehlé nebo jiné problémy s výkonem. Prohlédněte si zobrazení Časová osa, SQL Graph, Statistika úloh a tak dále. Někdy je jeden nebo několik prováděcích modulů pomalejší než u ostatních a provádění úloh trvá mnohem déle. K tomu často dochází na větších clusterech (> 30 uzlů). V takovém případě rozdělte práci do většího počtu úkolů, aby mohl Scheduler kompenzovat pomalé úlohy. 
 
-Například musí mít alespoň dvakrát tolik úloh jako počet jader prováděcích modulů v aplikaci. Můžete také povolit spekulativní provádění úkolů pomocí `conf: spark.speculation = true`.
+Například musí mít alespoň dvakrát tolik úloh jako počet jader prováděcích modulů v aplikaci. Můžete také povolit spekulativní provádění úkolů pomocí `conf: spark.speculation = true` .
 
 ## <a name="optimize-job-execution"></a>Optimalizace provádění úloh
 
@@ -170,7 +170,7 @@ Například musí mít alespoň dvakrát tolik úloh jako počet jader provádě
 
 Klíčem k výkonu dotazů Spark 2. x je modul Tungsten, který závisí na generování celého fáze vytváření kódu. V některých případech může být generování celého fáze kódu zakázáno. 
 
-Například pokud použijete neproměnlivý typ (`string`) v agregačním výrazu, `SortAggregate` zobrazí se místo. `HashAggregate` Pro lepší výkon například vyzkoušejte následující a pak znovu povolte generování kódu:
+Například pokud použijete neproměnlivý typ ( `string` ) v agregačním výrazu, `SortAggregate` zobrazí se místo `HashAggregate` . Pro lepší výkon například vyzkoušejte následující a pak znovu povolte generování kódu:
 
 ```sql
 MAX(AMOUNT) -> MAX(cast(AMOUNT as DOUBLE))

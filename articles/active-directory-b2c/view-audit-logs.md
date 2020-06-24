@@ -12,12 +12,12 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 83086fa2cb96eba423b9111134a0406d7256821f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 33fa1b063a2c45af41c0da6450bac3f86683653b
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79264216"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202972"
 ---
 # <a name="accessing-azure-ad-b2c-audit-logs"></a>Přístup k protokolům auditu Azure AD B2C
 
@@ -32,14 +32,14 @@ Události protokolu auditu se uchovávají jenom po dobu **sedmi dnů**. Naplán
 
 Kategorie **B2C** v protokolech auditu obsahuje následující typy aktivit:
 
-|Typ aktivity |Popis  |
+|Typ aktivity |Description  |
 |---------|---------|
 |Autorizace |Aktivity týkající se autorizace uživatele pro přístup k prostředkům B2C (například správce, který přistupuje k seznamu zásad B2C).         |
 |Adresář |Aktivity týkající se atributů adresáře načtené, když se správce přihlásí pomocí Azure Portal. |
 |Aplikace | Operace vytvoření, čtení, aktualizace a odstranění (CRUD) v aplikacích B2C. |
-|Key |Operace CRUD na klíčích uložených v kontejneru klíčů B2C |
+|Klíč |Operace CRUD na klíčích uložených v kontejneru klíčů B2C |
 |Prostředek |Operace CRUD u prostředků B2C Například zásady a zprostředkovatelé identity.
-|Authentication |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
+|Ověřování |Ověření přihlašovacích údajů uživatele a vystavení tokenu|
 
 Pro aktivity objektů CRUD uživatele se podívejte do kategorie **základní adresář** .
 
@@ -51,9 +51,9 @@ Tento příklad obrázku z Azure Portal zobrazuje data zachycená, když se uži
 
 Panel Podrobnosti o aktivitě obsahuje následující relevantní informace:
 
-|Sekce|Pole|Popis|
+|Sekce|Pole|Description|
 |-------|-----|-----------|
-| Aktivita | Název | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
+| Aktivita | Name | Která aktivita trvala. Například *vydejte id_token aplikaci*, která uzavře skutečné přihlášení uživatele. |
 | Iniciované uživatelem (actor) | ObjectId | **ID objektu** aplikace B2C, ke které se uživatel přihlašuje Tento identifikátor není viditelný v Azure Portal, ale je přístupný prostřednictvím rozhraní Microsoft Graph API. |
 | Iniciované uživatelem (actor) | SPN | **ID aplikace** B2C, ke které se uživatel přihlašuje |
 | Cíle | ObjectId | **ID objektu** uživatele, který se přihlašuje. |
@@ -100,13 +100,13 @@ Po registraci aplikace s příslušnými oprávněními si přečtěte část Po
 
 ### <a name="access-the-api"></a>Přístup k rozhraní API
 
-Pokud chcete stáhnout Azure AD B2C události protokolu auditu přes rozhraní API, vyfiltrujte protokoly `B2C` v kategorii. Pokud chcete filtrovat podle kategorie, použijte `filter` parametr řetězce dotazu při volání koncového bodu rozhraní API pro vytváření sestav Azure AD.
+Pokud chcete stáhnout Azure AD B2C události protokolu auditu přes rozhraní API, vyfiltrujte protokoly v `B2C` kategorii. Pokud chcete filtrovat podle kategorie, použijte `filter` parametr řetězce dotazu při volání koncového bodu rozhraní API pro vytváření sestav Azure AD.
 
-```HTTP
+```http
 https://graph.microsoft.com/v1.0/auditLogs/directoryAudits?$filter=loggedByService eq 'B2C' and activityDateTime gt 2019-09-10T02:28:17Z
 ```
 
-### <a name="powershell-script"></a>Skript PowerShellu
+### <a name="powershell-script"></a>Skript prostředí PowerShell
 
 Následující skript prostředí PowerShell ukazuje příklad postupu dotazování rozhraní API pro vytváření sestav Azure AD. Po dotazování rozhraní API se události zaznamenávají do standardního výstupu a pak se zapíší výstup JSON do souboru.
 
@@ -158,7 +158,7 @@ if ($oauth.access_token -ne $null) {
 
 Tady je reprezentace JSON ukázkové události aktivity uvedené dříve v článku:
 
-```JSON
+```json
 {
     "id": "B2C_DQO3J_4984536",
     "category": "Authentication",

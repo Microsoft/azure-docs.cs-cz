@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: cf9c333af48e1c148dcd20ccf5ce91b284bd728b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0170877995573bdfcb13ebc1c0387bed0893deac
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78189867"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201221"
 ---
 # <a name="buildingblocks"></a>BuildingBlocks
 
@@ -24,7 +24,7 @@ ms.locfileid: "78189867"
 
 Element **BuildingBlocks** je přidán uvnitř elementu [TrustFrameworkPolicy](trustframeworkpolicy.md) .
 
-```XML
+```xml
 <TrustFrameworkPolicy
   xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
   xmlns:xsd="https://www.w3.org/2001/XMLSchema"
@@ -70,7 +70,7 @@ Element **BuildingBlocks** obsahuje následující prvky, které musí být zad�
   - Porovnání dvou deklarací identity a vrácení deklarace identity s hodnotou true značí, že deklarace identity se shodují, jinak false.
   - Vytváří se deklarace řetězce ze zadaného parametru v zásadách.
   - Vytvoření náhodného řetězce pomocí generátoru náhodných čísel.
-  - Formátování deklarace identity podle poskytnutého formátovacího řetězce. Tato transformace používá metodu jazyka `String.Format` C#.
+  - Formátování deklarace identity podle poskytnutého formátovacího řetězce. Tato transformace používá metodu jazyka C# `String.Format` .
 
 - InputValidation – tento prvek umožňuje provádění logických agregací, které jsou podobné *a* a *nebo*.
 

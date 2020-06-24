@@ -2,25 +2,31 @@
 title: Nastavení analýzy závislostí na základě agenta v serveru Azure Migrate Assessment
 description: Tento článek popisuje, jak nastavit analýzu závislostí založenou na agentech v serveru Azure Migrate Assessment.
 ms.topic: how-to
-ms.date: 2/24/2020
-ms.openlocfilehash: 47fd7e7c864e82400288bb67da952a18b648849e
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.date: 6/09/2020
+ms.openlocfilehash: 1271a45843a3775d4e1444321faad194edad2f23
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/09/2020
-ms.locfileid: "82996881"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770573"
 ---
 # <a name="set-up-dependency-visualization"></a>Nastavení Vizualizace závislostí
 
-Tento článek popisuje, jak nastavit analýzu závislostí založenou na agentech v Azure Migrate: posouzení serveru. [Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat a pochopit závislosti mezi počítači, které chcete vyhodnotit a migrovat do Azure.
+Tento článek popisuje, jak nastavit analýzu závislostí bez agentů v Azure Migrate: posouzení serveru. [Analýza závislostí](concepts-dependency-visualization.md) vám pomůže identifikovat a pochopit závislosti mezi počítači, které chcete vyhodnotit a migrovat do Azure.
 
 ## <a name="before-you-start"></a>Než začnete
 
-- [Seznamte](concepts-dependency-visualization.md#agent-based-analysis) se s analýzou závislostí založenou na agentech.
-- Projděte si požadavky a požadavky na podporu pro nastavení Vizualizace závislostí na základě agenta pro [virtuální počítače VMware](migrate-support-matrix-vmware.md#agent-based-dependency-analysis-requirements), [fyzické servery](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)a [virtuální počítače Hyper-V](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
-- Ujistěte se, že jste [vytvořili](how-to-add-tool-first-time.md) projekt Azure Migrate.
-- Pokud jste již vytvořili projekt, ujistěte se, že jste [přidali](how-to-assess.md) Azure Migrate: nástroj Server Assessment Tool.
-- Ujistěte se, že jste nastavili [zařízení Azure Migrate](migrate-appliance.md) pro zjišťování vašich místních počítačů. Naučte se, jak nastavit zařízení pro [VMware](how-to-set-up-appliance-vmware.md), [Hyper-V](how-to-set-up-appliance-hyper-v.md)nebo [fyzické servery](how-to-set-up-appliance-physical.md). Zařízení zjišťuje místní počítače a odesílá metadata, data o výkonu do Azure Migrate: posouzení serveru.
+- Projděte si požadavky na podporu a nasazení pro analýzu závislostí na základě agenta pro:
+    - [Virtuální počítače VMware](migrate-support-matrix-vmware.md#dependency-analysis-requirements-agent-based)
+    - [Fyzické servery](migrate-support-matrix-physical.md#agent-based-dependency-analysis-requirements)
+    - [Virtuální počítače Hyper-V](migrate-support-matrix-hyper-v.md#agent-based-dependency-analysis-requirements).
+- Ujistěte se, že:
+    - Mít Azure Migrate projekt. Pokud to neuděláte, [vytvořte](how-to-add-tool-first-time.md) ho hned teď.
+    - Ověřte, že jste [přidali](how-to-assess.md) Azure Migrate: Nástroj pro vyhodnocení serveru do projektu.
+    - Nastavte [zařízení Azure Migrate](migrate-appliance.md) pro zjišťování místních počítačů. Zařízení zjišťuje místní počítače a odesílá data o metadatech a výkonu Azure Migrate: posouzení serveru. Nastavení zařízení pro:
+        - [VMware](how-to-set-up-appliance-vmware.md) Vztahuje.
+        - [Technologie Hyper-V](how-to-set-up-appliance-hyper-v.md) Vztahuje.
+        - [Fyzické servery](how-to-set-up-appliance-physical.md).
 - Pokud chcete použít vizualizaci závislostí, přidružte [Log Analytics pracovní prostor](../azure-monitor/platform/manage-access.md) k projektu Azure Migrate:
     - Pracovní prostor můžete připojit až po nastavení zařízení Azure Migrate a zjišťování počítačů v projektu Azure Migrate.
     - Ujistěte se, že máte pracovní prostor v předplatném, které obsahuje Azure Migrate projektu.
@@ -32,7 +38,7 @@ Tento článek popisuje, jak nastavit analýzu závislostí založenou na agente
 
 ## <a name="associate-a-workspace"></a>Přidružení pracovního prostoru
 
-1. Po zjištění počítačů pro posouzení na **serverech** > **Azure Migrate: posouzení serveru**klikněte na **Přehled**.  
+1. Po zjištění počítačů pro posouzení na **serverech**  >  **Azure Migrate: posouzení serveru**klikněte na **Přehled**.  
 2. V **Azure Migrate: posouzení serveru**klikněte na **základy**.
 3. V **pracovním prostoru OMS**klikněte na **vyžaduje konfiguraci**.
 
@@ -72,7 +78,7 @@ Instalace agenta na počítač s Windows:
 1. Dvakrát klikněte na staženého agenta.
 2. Na **úvodní** stránce klikněte na **Další**. Na stránce **licenční podmínky** **kliknutím na Souhlasím** přijměte licenci.
 3. V části **cílová složka**ponechejte nebo upravte výchozí instalační složku > **Další**.
-4. V **Možnosti nastavení agenta**vyberte **Azure Log Analytics** > **Další**.
+4. V **Možnosti nastavení agenta**vyberte **Azure Log Analytics**  >  **Další**.
 5. Kliknutím na **Přidat** přidejte nový pracovní prostor Log Analytics. Vložte do ID a klíče pracovního prostoru, který jste zkopírovali z portálu. Klikněte na **Další**.
 
 Agenta můžete nainstalovat z příkazového řádku nebo pomocí automatizované metody, jako je Configuration Manager nebo [Intigua](https://www.intigua.com/intigua-for-azure-migration).

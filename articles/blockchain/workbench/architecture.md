@@ -4,12 +4,12 @@ description: Přehled architektury Azure blockchain Workbench Preview a jejích 
 ms.date: 09/05/2019
 ms.topic: conceptual
 ms.reviewer: brendal
-ms.openlocfilehash: aa972e8ae486d181f0c48df72ec89c925c940451
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ef56d0fdac74bf447fce01e772abed8a2b07c27b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74324900"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253422"
 ---
 # <a name="azure-blockchain-workbench-architecture"></a>Architektura Azure Blockchain Workbench
 
@@ -43,12 +43,12 @@ Další informace najdete v tématu [ukázkové klientské aplikace Azure blockc
 
 ## <a name="gateway-service-api"></a>Rozhraní API služby brány
 
-Blockchain Workbench obsahuje rozhraní API služby brány založené na REST. Při zápisu do blockchain rozhraní API generuje a doručuje zprávy zprostředkovateli událostí. Když rozhraní API požaduje data, odesílají se dotazy do offline databáze SQL mimo řetěz. SQL Database obsahuje repliku dat a metadat v řetězcích, které poskytují informace o kontextu a konfiguraci pro podporované inteligentní kontrakty. Dotazy vrátí požadovaná data z repliky z nepoužívaného řetězce ve formátu informující o metadatech pro kontrakt.
+Blockchain Workbench obsahuje rozhraní API služby brány založené na REST. Při zápisu do blockchain rozhraní API generuje a doručuje zprávy zprostředkovateli událostí. Když rozhraní API požaduje data, odesílají se dotazy do databáze z nepřipojeného řetězce. Databáze obsahuje repliku dat a metadat v řetězcích, které poskytují informace o kontextu a konfiguraci pro podporované inteligentní kontrakty. Dotazy vrátí požadovaná data z repliky z nepoužívaného řetězce ve formátu informující o metadatech pro kontrakt.
 
 Vývojáři mají přístup k rozhraní API služby brány, aby mohli vytvářet nebo integrovat řešení blockchain, aniž by se museli spoléhat na klientské aplikace blockchain Workbench.
 
 > [!NOTE]
-> K povolení ověřeného přístupu k rozhraní API se v Azure Active Directory zaregistrují dvě klientské aplikace. Azure Active Directory vyžaduje odlišnou registraci aplikací pro každý typ aplikace (nativní a webový). 
+> K povolení ověřeného přístupu k rozhraní API se v Azure Active Directory zaregistrují dvě klientské aplikace. Azure Active Directory vyžaduje odlišnou registraci aplikací pro každý typ aplikace (nativní a webový).
 
 ## <a name="message-broker-for-incoming-messages"></a>Zprostředkovatel zpráv pro příchozí zprávy
 
@@ -70,7 +70,7 @@ Zprávy o službě distribuované hlavní knihy (DLT) obsahují metadata pro tra
 
 ### <a name="database-consumer"></a>Příjemce databáze
 
-Příjemce databáze přebírá zprávy od Service Bus a vkládá data do připojené databáze, jako je například SQL Database.
+Příjemce databáze přebírá zprávy od Service Bus a vkládá data do připojené databáze, jako je například databáze v Azure SQL Database.
 
 ### <a name="storage-consumer"></a>Příjemce úložiště
 
@@ -91,11 +91,11 @@ Směrovače a účetní deníky transakcí berou podepsané transakce a směruj�
 Sledovací proces distribuované hlavní knihy (DLT) monitoruje události, ke kterým dochází v řetězcích bloků připojených k blockchain Workbench.
 Události odrážejí informace, které jsou relevantní pro jednotlivce a systémy. Například vytváření nových instancí kontraktů, provádění transakcí a změny stavu. Události jsou zachyceny a odesílány do zprostředkovatele odchozích zpráv, aby je mohli využívat i příjemci s dalšími uživateli.
 
-Například příjemce SQL monitoruje události, spotřebovává je a naplní databázi SQL pomocí zahrnutých hodnot. Kopírování umožňuje rekreaci v úložišti s neplatnými daty v neznámém řetězci.
+Například příjemce SQL monitoruje události, spotřebovává je a naplní databázi pomocí zahrnutých hodnot. Kopírování umožňuje rekreaci v úložišti s neplatnými daty v neznámém řetězci.
 
-## <a name="azure-sql-database"></a>Databáze Azure SQL
+## <a name="azure-sql-database"></a>Azure SQL Database
 
-Azure SQL Database připojená k blockchain Workbench ukládá definice kontraktů, metadata konfigurace a repliky přístupné pro SQL data uložená v blockchain. Tato data lze snadno dotazovat, vizuálně nebo analyzovat přímým přístupem k databázi. Vývojáři a jiní uživatelé mohou používat databázi pro vytváření sestav, analýzy nebo jiné integrace zaměřené na data. Například uživatelé mohou vizualizovat data transakcí pomocí Power BI.
+Databáze připojená k blockchain Workbench ukládá definice kontraktů, metadata konfigurace a repliky přístupné pro SQL data uložená v blockchain. Tato data lze snadno dotazovat, vizuálně nebo analyzovat přímým přístupem k databázi. Vývojáři a jiní uživatelé mohou používat databázi pro vytváření sestav, analýzy nebo jiné integrace zaměřené na data. Například uživatelé mohou vizualizovat data transakcí pomocí Power BI.
 
 Toto úložiště s neplatnými prostředky umožňuje podnikovým organizacím dotazovat se na data v SQL, a ne na blockchain hlavní knihy. Kromě toho, díky standardizaci na standardním schématu, které je nezávislá z blockchainch technologických zásobníků, umožňuje úložiště s neplatnými možnostmi opětovného použití sestav a dalších artefaktů v projektech, scénářích a organizacích.
 

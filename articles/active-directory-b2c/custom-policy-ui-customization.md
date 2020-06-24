@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e50d6d0623e87dfa68a7cc9744c3f595ff0179c6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 901fb73c58a074a37b410785ed3bb92a4d250c1c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80396386"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202504"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Přizpůsobení uživatelského rozhraní aplikace pomocí vlastní zásady v Azure Active Directory B2C
 
@@ -34,9 +34,9 @@ Proveďte kroky v části Začínáme [s vlastními zásadami](custom-policy-get
 
 Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte **ContentDefinition** a jeho podřízené prvky ze základního souboru do souboru rozšíření.
 
-1. Otevřete základní soubor zásad. Například <em> `SocialAndLocalAccounts/` </em>. Tento základní soubor je jedním ze souborů zásad, které jsou součástí počáteční sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Otevřete základní soubor zásad. Například <em>`SocialAndLocalAccounts/`**`TrustFrameworkBase.xml`**</em> . Tento základní soubor je jedním ze souborů zásad, které jsou součástí počáteční sady Custom Policy Pack, které byste měli mít k dispozici v rámci svých požadavků. Začněte [s vlastními zásadami](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Vyhledejte a zkopírujte celý obsah elementu **ContentDefinitions** .
-1. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions. XML*. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
+1. Otevřete soubor rozšíření. Například *TrustFrameworkExtensions.xml*. Vyhledejte element **BuildingBlocks** . Pokud element neexistuje, přidejte jej.
 1. Vložte celý obsah elementu **ContentDefinitions** , který jste zkopírovali jako podřízený prvek **BuildingBlocks** elementu.
 1. Vyhledejte element **ContentDefinition** , který obsahuje `Id="api.signuporsignin"` soubor ve formátu XML, který jste zkopírovali.
 1. Změňte hodnotu **LoadUri** na adresu URL souboru HTML, který jste nahráli do úložiště. Například, `https://your-storage-account.blob.core.windows.net/your-container/customize-ui.html`.
@@ -79,13 +79,13 @@ Chcete-li nakonfigurovat přizpůsobení uživatelského rozhraní, zkopírujte 
 
 ## <a name="configure-dynamic-custom-page-content-uri"></a>Konfigurovat dynamický identifikátor URI obsahu vlastní stránky
 
-Pomocí Azure AD B2C vlastních zásad můžete odeslat parametr v cestě URL nebo v řetězci dotazu. Předáním parametru do vašeho koncového bodu HTML můžete dynamicky měnit obsah stránky. Můžete například změnit obrázek pozadí na registrační nebo přihlašovací stránce Azure AD B2C na základě parametru, který předáte z vašeho webu nebo mobilní aplikace. Parametr může být jakýkoli [překladač deklarací identity](claim-resolver-overview.md), jako je ID aplikace, ID jazyka nebo vlastní parametr řetězce dotazu, jako je například `campaignId`.
+Pomocí Azure AD B2C vlastních zásad můžete odeslat parametr v cestě URL nebo v řetězci dotazu. Předáním parametru do vašeho koncového bodu HTML můžete dynamicky měnit obsah stránky. Můžete například změnit obrázek pozadí na registrační nebo přihlašovací stránce Azure AD B2C na základě parametru, který předáte z vašeho webu nebo mobilní aplikace. Parametr může být jakýkoli [překladač deklarací identity](claim-resolver-overview.md), jako je ID aplikace, ID jazyka nebo vlastní parametr řetězce dotazu, jako je například `campaignId` .
 
 ### <a name="sending-query-string-parameters"></a>Odesílají se parametry řetězce dotazu.
 
 K odeslání parametrů řetězce dotazu v [zásadách předávající strany](relyingparty.md)přidejte `ContentDefinitionParameters` element, jak je znázorněno níže.
 
-```XML
+```xml
 <RelyingParty>
     <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
     <UserJourneyBehaviors>
@@ -99,9 +99,9 @@ K odeslání parametrů řetězce dotazu v [zásadách předávající strany](r
 </RelyingParty>
 ```
 
-V definici obsahu změňte hodnotu `LoadUri` na. `https://<app_name>.azurewebsites.net/home/unified` Vaše vlastní zásada `ContentDefinition` by měla vypadat jako následující fragment kódu:
+V definici obsahu změňte hodnotu `LoadUri` na `https://<app_name>.azurewebsites.net/home/unified` . Vaše vlastní zásada `ContentDefinition` by měla vypadat jako následující fragment kódu:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://<app_name>.azurewebsites.net/home/unified</LoadUri>
   ...
@@ -118,7 +118,7 @@ https://<app_name>.azurewebsites.net/home/unified?campaignId=123&lang=fr&appId=f
 
 Obsah lze z různých míst načíst na základě použitých parametrů. V rámci koncového bodu s povoleným CORS nastavte strukturu složek pro hostování obsahu. Můžete například uspořádat obsah v následující struktuře. Kořenová *Složka/složka pro jednotlivé jazyky/soubory HTML* Identifikátor URI vlastní stránky může vypadat například takto:
 
-```XML
+```xml
 <ContentDefinition Id="api.signuporsignin">
   <LoadUri>https://contoso.blob.core.windows.net/{Culture:LanguageName}/myHTML/unified.html</LoadUri>
   ...

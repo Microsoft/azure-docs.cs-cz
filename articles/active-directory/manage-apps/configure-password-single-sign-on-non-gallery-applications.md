@@ -2,21 +2,21 @@
 title: Jak nakonfigurovat jednotné přihlašování k heslům pro aplikace Azure AD | Microsoft Docs
 description: Jak nakonfigurovat jednotné přihlašování (SSO) k podnikovým aplikacím Azure AD v platformě Microsoft Identity Platform (Azure AD)
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 07/10/2019
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 563bda275b73f76b042b5e57a9909ca78c504bb3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 043adc309c3480865eb9aa7a7bff8d35e85bc78a
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063522"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763495"
 ---
 # <a name="configure-password-single-sign-on"></a>Konfigurace jednotného přihlašování k heslům
 
@@ -36,7 +36,7 @@ Jednotné přihlašování založené na heslech je skvělým způsobem, jak ryc
 
 -   Umožňuje **Správci** zadat uživatelské jméno a heslo, které mají jednotlivci nebo skupiny používat při přihlašování k aplikaci pomocí funkce aktualizovat přihlašovací údaje. 
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidání aplikace Galerie](add-gallery-app.md) nebo [Přidání aplikace mimo galerii](add-non-gallery-app.md).
 
@@ -44,7 +44,7 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce cloudové aplikace nebo správce aplikace pro vašeho TENANTA Azure AD.
 
-2. Přejděte na **Azure Active Directory** > **podnikové aplikace**. Zobrazí se náhodná ukázka aplikací v tenantovi Azure AD. 
+2. Přejděte na **Azure Active Directory**  >  **podnikové aplikace**. Zobrazí se náhodná ukázka aplikací v tenantovi Azure AD. 
 
 3. V nabídce **Typ aplikace** vyberte **všechny aplikace**a pak vyberte **použít**.
 
@@ -68,7 +68,7 @@ Pokud se aplikace nepřidala do tenanta Azure AD, přečtěte si téma [Přidán
 
 Pokud se pokus o analýzu služby Azure AD nezdaří, můžete nakonfigurovat ruční přihlášení.
 
-1. V části ** \<název aplikace> konfigurace**vyberte **Konfigurovat \<název aplikace> nastavení jednotné přihlašování** . zobrazí se stránka **Konfigurace přihlášení** . 
+1. V části ** \<application name> Konfigurace**vyberte **Konfigurovat \<application name> nastavení jednotného přihlašování pro heslo** . zobrazí se stránka **Konfigurace přihlášení** . 
 
 2. Vyberte možnost **ručně zjišťovat přihlašovací pole**. Zobrazí se další pokyny, které popisují ruční zjišťování polí přihlašování.
 

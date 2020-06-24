@@ -8,17 +8,17 @@ manager: mtillman
 ms.assetid: ff422f36-47d2-409b-8a19-02e24b03ffe7
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: e6eda3b522a5b46cd82ef29ae493891a624d3272
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 06cf0a5692b3d80a07c305f53c9e3801cbdb5110
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81459283"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764005"
 ---
 # <a name="create-and-share-dashboards-in-the-azure-portal"></a>Vytváření a sdílení řídicích panelů na webu Azure Portal
 
@@ -58,7 +58,7 @@ Teď tento řídicí panel upravíte tak, aby bylo možné přidat, změnit jeho
 
 Chcete-li přidat dlaždice na řídicí panel, použijte následující postup:
 
-1. V ![záhlaví stránky](./media/azure-portal-dashboards/dashboard-edit-icon.png) vyberte Upravit úpravu ikony **Upravit** .
+1. ![V záhlaví stránky vyberte Upravit úpravu ikony ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Upravit** .
 
     ![Snímek obrazovky s úpravou zvýraznění řídicího panelu](./media/azure-portal-dashboards/dashboard-edit.png)
 
@@ -79,7 +79,7 @@ Existuje alternativní způsob, jak přidat dlaždice na řídicí panel. Mnohé
 
 Chcete-li změnit velikost dlaždice nebo změnit uspořádání dlaždic na řídicím panelu, postupujte podle následujících kroků:
 
-1. V ![záhlaví stránky](./media/azure-portal-dashboards/dashboard-edit-icon.png) vyberte Upravit úpravu ikony **Upravit** .
+1. ![V záhlaví stránky vyberte Upravit úpravu ikony ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Upravit** .
 
 1. Vyberte kontextovou nabídku v pravém horním rohu dlaždice. Pak zvolte velikost dlaždice. Dlaždice, které podporují jakoukoli velikost, zahrnují také "popisovač" v pravém dolním rohu, který umožňuje přetáhnout dlaždici na požadovanou velikost.
 
@@ -106,7 +106,7 @@ Všechny dlaždice, které je třeba nastavit, zobrazí banner s **ikonou pro ko
 
 Data na řídicím panelu automaticky zobrazují aktivitu za posledních 24 hodin. Chcete-li zobrazit pro tuto dlaždici jiný časový rozsah, postupujte podle následujících kroků:
 
-1. V místní nabídce nebo v levém horním rohu dlaždice vyberte **přizpůsobit data dlaždice** nebo filtr ikony ![](./media/azure-portal-dashboards/dashboard-filter.png) filtru.
+1. V místní nabídce nebo v levém horním rohu dlaždice vyberte **přizpůsobit data dlaždice** nebo ![ Filtr ikony filtru ](./media/azure-portal-dashboards/dashboard-filter.png) .
 
     ![Obrazovka kontextové nabídky dlaždice](./media/azure-portal-dashboards/dashboard-customize-tile-data.png)
 
@@ -126,7 +126,7 @@ Pokud chcete z řídicího panelu odebrat dlaždici, postupujte následovně:
 
 * Vyberte kontextovou nabídku v pravém horním rohu dlaždice a pak vyberte **Odebrat z řídicího panelu**. Nebo:
 
-* Vyberte ![](./media/azure-portal-dashboards/dashboard-edit-icon.png) **upravit ikonu Upravit** a zadejte režim přizpůsobení. Najeďte myší v pravém horním rohu dlaždice a pak vyberte ![ikonu Odstranit ikona](./media/azure-portal-dashboards/dashboard-delete-icon.png) odstranit pro odebrání dlaždice z řídicího panelu.
+* Vyberte ![ upravit ikonu ](./media/azure-portal-dashboards/dashboard-edit-icon.png) **Upravit** a zadejte režim přizpůsobení. Najeďte myší v pravém horním rohu dlaždice a pak vyberte ![ ikonu Odstranit ikona odstranit ](./media/azure-portal-dashboards/dashboard-delete-icon.png) pro odebrání dlaždice z řídicího panelu.
 
    ![Snímek obrazovky ukazující, jak odebrat dlaždici z řídicího panelu](./media/azure-portal-dashboards/dashboard-delete-tile.png)
 
@@ -136,7 +136,7 @@ Pokud chcete použít existující řídicí panel jako šablonu pro nový říd
 
 1. Ujistěte se, že se v zobrazení řídicího panelu zobrazuje řídicí panel, který chcete zkopírovat.
 
-1. V záhlaví stránky vyberte ![](./media/azure-portal-dashboards/dashboard-clone.png) **klonovat ikonu**klonu.
+1. V záhlaví stránky vyberte klonovat ![ ikonu klonu ](./media/azure-portal-dashboards/dashboard-clone.png) **Clone**.
 
 1. Kopie řídicího panelu, pojmenovaný **klon** *názvu řídicího panelu* , se otevře v režimu úprav. Pomocí předchozích kroků v tomto článku přejmenujete a přizpůsobíte řídicí panel.
 
@@ -170,7 +170,7 @@ K trvalému odstranění privátního nebo sdíleného řídicího panelu použi
 
 1. V seznamu vedle názvu řídicího panelu vyberte řídicí panel, který chcete odstranit.
 
-1. V ![záhlaví stránky](./media/azure-portal-dashboards/dashboard-delete-icon.png) vyberte odstranit ikonu **Odstranit** .
+1. ![V záhlaví stránky vyberte odstranit ikonu ](./media/azure-portal-dashboards/dashboard-delete-icon.png) **Odstranit** .
 
 1. V případě privátního řídicího panelu v potvrzovacím dialogovém okně vyberte **OK** , aby se řídicí panel odebral. U sdíleného řídicího panelu kliknutím na zaškrtávací políčko v potvrzovacím dialogovém okně potvrďte, že publikovaný řídicí panel již nebude možné zobrazit jiní uživatelé. Pak vyberte **OK**.
 

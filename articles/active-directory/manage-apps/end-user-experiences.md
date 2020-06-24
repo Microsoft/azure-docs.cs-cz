@@ -2,22 +2,22 @@
 title: Prostředí koncových uživatelů pro aplikace – Azure Active Directory
 description: Azure Active Directory (Azure AD) poskytuje několik přizpůsobitelných způsobů, jak nasadit aplikace pro koncové uživatele ve vaší organizaci.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 72b3e37a423442194b81e3d10ecc7157201ff8be
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5c2ec85af2c954c2189f0df1b407a2c40967f096
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79266621"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763393"
 ---
 # <a name="end-user-experiences-for-applications-in-azure-active-directory"></a>Prostředí koncových uživatelů pro aplikace v Azure Active Directory
 
@@ -44,7 +44,7 @@ Další informace o přístupovém panelu Azure AD najdete v tématu [Úvod do p
 
 ## <a name="office-365-application-launcher"></a>Spouštěč aplikace Office 365
 
-Pro organizace, které mají nasazenou sadu Office 365, se aplikace přiřazené uživatelům prostřednictvím služby Azure AD zobrazí také na portálu Office [https://portal.office.com/myapps](https://portal.office.com/myapps)365 na adrese. To usnadňuje uživatelům v organizaci, aby mohli spouštět své aplikace, aniž by museli používat druhý portál a je doporučené řešení pro spouštění aplikací pro organizace, které používají Office 365.
+Pro organizace, které mají nasazenou sadu Office 365, se aplikace přiřazené uživatelům prostřednictvím služby Azure AD zobrazí také na portálu Office 365 na adrese [https://portal.office.com/myapps](https://portal.office.com/myapps) . To usnadňuje uživatelům v organizaci, aby mohli spouštět své aplikace, aniž by museli používat druhý portál a je doporučené řešení pro spouštění aplikací pro organizace, které používají Office 365.
 
 ![Snímek obrazovky zobrazující portál Office 365](./media/end-user-experiences/microsoft-365-portal-office-com.png)
 
@@ -60,7 +60,7 @@ Většina federovaných aplikací, které podporují SAML 2,0, WS-Federation neb
 
 Azure AD také podporuje přímé jednotné přihlašování k jednotlivým aplikacím, které podporují jednotné přihlašování založené na heslech, propojené jednotné přihlašování a jakoukoli formu federovaného jednotného přihlašování.
 
-Tyto odkazy jsou speciálně vytvořené adresy URL, které odesílají uživatele prostřednictvím procesu přihlášení služby Azure AD pro konkrétní aplikaci, aniž by museli uživatele spustit z přístupového panelu Azure AD nebo ze sady Office 365. Tyto **adresy URL pro přístup uživatelů** najdete ve vlastnostech dostupných podnikových aplikací. V Azure Portal vyberte **Azure Active Directory** > **podnikových aplikací**. Vyberte aplikaci a pak vyberte **vlastnosti**.
+Tyto odkazy jsou speciálně vytvořené adresy URL, které odesílají uživatele prostřednictvím procesu přihlášení služby Azure AD pro konkrétní aplikaci, aniž by museli uživatele spustit z přístupového panelu Azure AD nebo ze sady Office 365. Tyto **adresy URL pro přístup uživatelů** najdete ve vlastnostech dostupných podnikových aplikací. V Azure Portal vyberte **Azure Active Directory**  >  **podnikových aplikací**. Vyberte aplikaci a pak vyberte **vlastnosti**.
 
 ![Příklad adresy URL přístupu uživatele ve vlastnostech Twitteru](media/end-user-experiences/direct-sign-on-link.png)
 

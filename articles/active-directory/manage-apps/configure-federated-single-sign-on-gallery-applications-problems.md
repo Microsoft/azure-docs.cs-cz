@@ -3,24 +3,24 @@ title: Problémy s konfigurací federovaného jednotného přihlašování pro a
 description: Vyřešte některé běžné problémy, se kterými se můžete setkat při konfiguraci federovaného jednotného přihlašování pomocí SAML pro aplikace, které jsou uvedené v galerii aplikací Azure AD.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87c2497a781b0d46b3b2f1e281a3d7b327b60952
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 858e61c6371aac28d709a9016e4b9cbed6befe3f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274642"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763597"
 ---
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Problém s konfigurací federovaného jednotného přihlašování pro aplikaci Galerie Azure AD
 
@@ -64,13 +64,13 @@ Chcete-li zjistit, jaké jsou vzory předem nakonfigurované pro aplikaci:
 
 10. Existují tři způsoby, jak znát podporované vzory pro aplikaci:
 
-    * V textovém poli se zobrazí podporované vzory jako zástupný *Příklad:* <https://contoso.com>.
+    * V textovém poli se zobrazí podporované vzory jako zástupný *Příklad:* <https://contoso.com> .
 
     * Pokud není tento vzor podporován, zobrazí se při pokusu o zadání hodnoty do textového pole červený vykřičník. Pokud najedete myší na červený vykřičník, uvidíte podporované vzory.
 
     * V tomto kurzu pro aplikaci můžete získat také informace o podporovaných vzorcích. V části **Konfigurace jednotného přihlašování Azure AD** . Pro konfiguraci hodnot v části **doména a adresy URL** použijte krok.
 
-Pokud se hodnoty neshodují se vzorci předem konfigurovanými v Azure AD. Můžete:
+Pokud se hodnoty neshodují se vzorci předem konfigurovanými v Azure AD. Další možnosti:
 
 -   Spolupracovat s dodavatelem aplikace a získat hodnoty, které odpovídají vzoru předkonfigurovanému ve službě Azure AD
 

@@ -3,24 +3,24 @@ title: Konfigurace automatické akcelerace přihlášení pomocí zjišťování
 description: Naučte se konfigurovat zásady zjišťování domovské sféry pro Azure Active Directory ověřování pro federované uživatele, včetně automatické akcelerace a pomocných parametrů domény.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/08/2019
-ms.author: mimart
+ms.author: kenwith
 ms.custom: seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 340cf77ae6b4c5677ed91f6a0626b73d259e5fd2
-ms.sourcegitcommit: 366e95d58d5311ca4b62e6d0b2b47549e06a0d6d
+ms.openlocfilehash: 16af484e77787ee1d729ce97eec8c666bf925837
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/01/2020
-ms.locfileid: "82690511"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763580"
 ---
 # <a name="configure-azure-active-directory-sign-in-behavior-for-an-application-by-using-a-home-realm-discovery-policy"></a>Konfigurace chování přihlášení Azure Active Directory pro aplikace pomocí zásad zjišťování domovské sféry
 
@@ -81,8 +81,8 @@ Další informace o automatické akceleraci pomocí pomocných parametrů domén
 ### <a name="home-realm-discovery-policy-for-auto-acceleration"></a>Zásady zjišťování domovské sféry pro automatické akcelerace
 Některé aplikace neposkytují způsob konfigurace vysílané žádosti o ověření. V těchto případech není možné pomocí pomocných parametrů domény řídit automatickou akceleraci. Automatická akcelerace se dá nakonfigurovat pomocí zásad, aby se dosáhlo stejného chování.  
 
-## <a name="enable-direct-authentication-for-legacy-applications"></a>Povolit přímé ověřování pro starší verze aplikací
-Osvědčeným postupem je použití knihoven AAD a interaktivního přihlašování pro aplikace k ověřování uživatelů. Knihovny se budou starat o toky federovaného uživatele.  Starší verze aplikací se někdy nepíší pro pochopení federace. Neprovádí zjišťování domovské sféry a nekomunikuje se správným federovaným koncovým bodem pro ověření uživatele. Pokud se rozhodnete, můžete pomocí zásad HRD povolit konkrétní starší verze aplikací, které odesílají přihlašovací údaje uživatelského jména a hesla k ověřování přímo pomocí Azure Active Directory. Je nutné povolit synchronizaci hodnot hash hesel. 
+## <a name="enable-direct-ropc-authentication-of-federated-users-for-legacy-applications"></a>Povolit přímé ROPC ověřování federovaných uživatelů pro starší verze aplikací
+Osvědčeným postupem je použití knihoven AAD a interaktivního přihlašování pro aplikace k ověřování uživatelů. Knihovny se budou starat o toky federovaného uživatele.  Někdy starší aplikace, zejména ty, které používají ROPC, odesílají uživatelské jméno a heslo přímo do služby Azure AD a nejsou zapsány pro pochopení federace. Neprovádí zjišťování domovské sféry a nekomunikuje se správným federovaným koncovým bodem pro ověření uživatele. Pokud se rozhodnete, můžete pomocí zásad HRD povolit konkrétní starší verze aplikací, které odesílají přihlašovací údaje uživatelského jména a hesla pomocí příkazu ROPC, aby se ověřily přímo pomocí Azure Active Directory. Je nutné povolit synchronizaci hodnot hash hesel. 
 
 > [!IMPORTANT]
 > Přímé ověřování Povolte jenom v případě, že je zapnutá synchronizace hodnot hash hesel a víte, že je v pořádku ověřování této aplikace bez jakýchkoli zásad implementovaných v místních IdP. Pokud vypnete synchronizaci hodnot hash hesel nebo zrušíte synchronizaci adresářů s AD Connect z jakéhokoli důvodu, měli byste tyto zásady odebrat, abyste zabránili možnosti přímého ověřování pomocí zastaralé hodnoty hash hesla.
@@ -110,7 +110,7 @@ Následuje příklad definice zásady HRD:
     {  
     "AccelerateToFederatedDomain":true,
     "PreferredDomain":"federated.example.edu",
-    "AllowCloudPasswordValidation":true
+    "AllowCloudPasswordValidation":false
     }
    }
 ```

@@ -8,11 +8,11 @@ ms.author: bwren
 ms.date: 08/19/2019
 ms.custom: mvc, sec-javascript-october2019
 ms.openlocfilehash: 2e63b2ca0ee7246009068e6a2875795a14aeddb3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240335"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84695364"
 ---
 # <a name="collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>Shromažďování dat z virtuálního počítače Azure pomocí Azure Monitor
 
@@ -77,7 +77,7 @@ Azure Monitor může shromažďovat události z protokolů událostí systému W
 
 2. Vyberte **Data** a pak vyberte **Protokoly událostí systému Windows**.
 
-3. Protokol událostí přidáte zadáním názvu protokolu.  Zadejte **systém** a potom vyberte znaménko **+** Plus.
+3. Protokol událostí přidáte zadáním názvu protokolu.  Zadejte **systém** a potom vyberte znaménko plus **+** .
 
 4. V tabulce zaškrtněte závažnosti **Chyby** a **Upozornění**.
 
@@ -97,7 +97,7 @@ Azure Monitor může shromažďovat události z protokolů událostí systému W
 
 1. Vyberte **Syslog**.  
 
-2. Protokol událostí přidáte zadáním názvu protokolu.  Zadejte **SYSLOG** a potom vyberte znaménko plus **+**.  
+2. Protokol událostí přidáte zadáním názvu protokolu.  Zadejte **SYSLOG** a potom vyberte znaménko plus **+** .  
 
 3. V tabulce zrušte výběr **informací o**závažnosti, **Upozornění** a **ladění**. 
 

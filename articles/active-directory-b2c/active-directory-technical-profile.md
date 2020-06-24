@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 7db47eda47850c1c080b6a49256c8a0b37bb0d3c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80330389"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201510"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování Azure Active Directory technického profilu ve vlastních zásadách Azure Active Directory B2C
 
@@ -26,7 +26,7 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro Azure Active Dir
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`hodnotu. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`obslužné rutiny protokolu.
+Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu `Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` .
 
 Následující technické profily služby Azure AD s [úvodním balíčkem pro vlastní zásady](custom-policy-get-started.md#custom-policy-starter-pack) zahrnují technický profil **AAD-Common** . Technické profily Azure AD nezaurčují protokol, protože protokol je nakonfigurovaný v technickém profilu **AAD-Common** :
  
@@ -41,7 +41,7 @@ Následující technické profily služby Azure AD s [úvodním balíčkem pro v
 
 Následující příklad ukazuje technický profil pro **AAD-Common** :
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-Common">
   <DisplayName>Azure Active Directory</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -96,7 +96,7 @@ Element **PersistedClaims** obsahuje všechny hodnoty, které by se měly zachov
 
 Technický profil **AAD-UserWriteUsingLogonEmail** , který vytváří nový místní účet, uchovává následující deklarace identity:
 
-```XML
+```xml
   <PersistedClaims>
     <!-- Required claims -->
     <PersistedClaim ClaimTypeReferenceId="email" PartnerClaimType="signInNames.emailAddress" />
@@ -116,8 +116,8 @@ Název deklarace identity je název atributu Azure AD, pokud není zadaný atrib
 
 - V kontejneru deklarací se musí nacházet přesně jeden element **InputClaim** pro všechny technické profily služby Azure AD.
 - [Článek s atributy profilu uživatele](user-profile-attributes.md) popisuje podporované Azure AD B2C atributy profilu uživatele, které můžete použít ve vstupních deklaracích, výstupech deklarací identity a trvalých deklaracích identity. 
-- Pokud je `Write` operace nebo `DeleteClaims`, musí se také objevit v elementu **PersistedClaims** .
-- Hodnota deklarace **userPrincipalName** musí být ve formátu `user@tenant.onmicrosoft.com`.
+- Pokud je operace `Write` nebo `DeleteClaims` , musí se také objevit v elementu **PersistedClaims** .
+- Hodnota deklarace **userPrincipalName** musí být ve formátu `user@tenant.onmicrosoft.com` .
 - Deklarace **DisplayName** je povinná a nemůže být prázdným řetězcem.
 
 ## <a name="azure-ad-technical-provider-operations"></a>Operace technického poskytovatele služby Azure AD
@@ -126,7 +126,7 @@ Název deklarace identity je název atributu Azure AD, pokud není zadaný atrib
 
 Operace **čtení** čte data o jednom uživatelském účtu. Následující technický profil čte data o uživatelském účtu pomocí identifikátoru objectId uživatele:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserReadUsingObjectId">
   <Metadata>
     <Item Key="Operation">Read</Item>
@@ -156,7 +156,7 @@ Operace **čtení** čte data o jednom uživatelském účtu. Následující tec
 
 Operace **zápisu** vytvoří nebo aktualizuje jeden uživatelský účet. Následující technický profil vytvoří nový účet sociální sítě:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">Write</Item>
@@ -196,7 +196,7 @@ Operace **zápisu** vytvoří nebo aktualizuje jeden uživatelský účet. Násl
 
 Operace **DeleteClaims** vymaže informace ze zadaného seznamu deklarací identity. Následující technický profil odstraní deklarace identity:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteClaimsUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaims</Item>
@@ -217,7 +217,7 @@ Operace **DeleteClaims** vymaže informace ze zadaného seznamu deklarací ident
 
 Operace **DeleteClaimsPrincipal** odstraní jeden uživatelský účet z adresáře. Následující technický profil odstraní uživatelský účet z adresáře pomocí hlavního názvu uživatele:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingObjectId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -232,7 +232,7 @@ Operace **DeleteClaimsPrincipal** odstraní jeden uživatelský účet z adresá
 
 Následující technický profil odstraní účet uživatele sociální sítě pomocí **alternativeSecurityId**:
 
-```XML
+```xml
 <TechnicalProfile Id="AAD-DeleteUserUsingAlternativeSecurityId">
   <Metadata>
     <Item Key="Operation">DeleteClaimsPrincipal</Item>
@@ -246,20 +246,20 @@ Následující technický profil odstraní účet uživatele sociální sítě p
 ```
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Operace | Ano | Operace, která má být provedena. Možné hodnoty: `Read`, `Write`, `DeleteClaims`, nebo `DeleteClaimsPrincipal`. |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | Ne | Vyvolá chybu, pokud objekt uživatele v adresáři neexistuje. Možné hodnoty: `true` nebo `false`. |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | Ne | Vyvolá chybu, pokud objekt uživatele již existuje. Možné hodnoty: `true` nebo `false`.|
+| Operace | Ano | Operace, která má být provedena. Možné hodnoty: `Read` , `Write` , `DeleteClaims` , nebo `DeleteClaimsPrincipal` . |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | Ne | Vyvolá chybu, pokud objekt uživatele v adresáři neexistuje. Možné hodnoty: `true` nebo `false` . |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | Ne | Vyvolá chybu, pokud objekt uživatele již existuje. Možné hodnoty: `true` nebo `false` .|
 | ApplicationObjectId | Ne | Identifikátor objektu aplikace pro atributy rozšíření. Hodnota: ObjectId objektu aplikace. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md). |
 | ClientId | Ne | Identifikátor klienta pro přístup k tenantovi jako třetí strana. Další informace najdete v tématu [použití vlastních atributů v zásadách úprav vlastního profilu](custom-policy-custom-attributes.md) . |
-| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true`, nebo `false`  (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true`. |
+| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
 
 ### <a name="ui-elements"></a>Prvky uživatelského rozhraní
  
 Následující nastavení lze použít ke konfiguraci chybové zprávy, která se zobrazí po selhání. Metadata by měla být nakonfigurovaná v technickém profilu s [vlastním kontrolním](self-asserted-technical-profile.md) výrazem. Chybové zprávy lze [lokalizovat](localization.md).
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalAlreadyExists | Ne | Pokud má být vyvolána chyba (viz popis atributu RaiseErrorIfClaimsPrincipalAlreadyExists), zadejte zprávu, která se zobrazí uživateli, pokud již objekt uživatele existuje. |
 | UserMessageIfClaimsPrincipalDoesNotExist | Ne | Pokud se má vykazovat chyba (viz popis atributu RaiseErrorIfClaimsPrincipalDoesNotExist), zadejte zprávu, která se zobrazí uživateli, pokud objekt uživatele neexistuje. |

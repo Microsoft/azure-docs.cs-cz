@@ -5,9 +5,7 @@ services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
 manager: femila
-editor: jwargo
 keywords: nabízené oznámení, nabízená oznámení, nabízená oznámení iOS, nabízená oznámení Androidu, nabízená oznámení Androidu
-ms.assetid: 7b385713-ef3b-4f01-8b1f-ffe3690bbd40
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: mobile-multiple
@@ -17,12 +15,12 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: 29ef1ec551169bb84680f343e38949f73724f5ae
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 0fe4ae76645ec2a0ae8aae93b9db987ece9a45b9
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84307380"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85255122"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Nabízená oznámení s Azure Notification Hubs: nejčastější dotazy
 
@@ -65,11 +63,11 @@ Přejít na **[Azure Portal]**  >  **obory názvů Notification Hubs** nebo **No
 
 ### <a name="which-server-side-platforms-do-you-support"></a>Které platformy na straně serveru podporujete?
 
-Sady SDK serveru jsou k dispozici pro .NET, Java, Node. js, PHP a Python. Rozhraní API pro Notification Hubs jsou založená na rozhraních REST, takže můžete pracovat přímo s rozhraními REST API, pokud používáte různé platformy nebo nechcete mít zvláštní závislost. Další informace najdete na stránce [Notification Hubs rozhraní REST API] .
+Sady SDK serveru jsou k dispozici pro .NET, Java, Node.js, PHP a Python. Rozhraní API pro Notification Hubs jsou založená na rozhraních REST, takže můžete pracovat přímo s rozhraními REST API, pokud používáte různé platformy nebo nechcete mít zvláštní závislost. Další informace najdete na stránce [Notification Hubs rozhraní REST API] .
 
 ### <a name="which-client-platforms-do-you-support"></a>Které klientské platformy podporujete?
 
-Nabízená oznámení jsou podporovaná pro [iOS](notification-hubs-ios-apple-push-notification-apns-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Android China (přes Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin ([iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) a Android a [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari)). Další informace najdete na stránce [Notification Hubs Začínáme kurzy] .
+Nabízená oznámení jsou podporovaná pro [iOS](ios-sdk-get-started.md), [Android](notification-hubs-android-push-notification-google-fcm-get-started.md), [Windows Universal](notification-hubs-windows-store-dotnet-get-started-wns-push-notification.md), [Windows Phone](notification-hubs-windows-mobile-push-notifications-mpns.md), [Android China (prostřednictvím Baidu)](notification-hubs-baidu-china-android-notifications-get-started.md), Xamarin [iOS](xamarin-notification-hubs-ios-push-notification-apns-get-started.md) a [Android](xamarin-notification-hubs-push-notifications-android-gcm.md)a [Safari](https://github.com/Azure/azure-notificationhubs-samples/tree/master/PushToSafari). Další informace najdete na stránce [Notification Hubsch kurzů Začínáme](ios-sdk-get-started.md) .
 
 ### <a name="do-you-support-text-message-email-or-web-notifications"></a>Podporujete textovou zprávu, e-mail nebo webová oznámení?
 
@@ -181,7 +179,7 @@ Azure Notification Hubs šifruje všechna neaktivní zákaznická data s výjimk
 
 ### <a name="is-there-audit-log-capability"></a>Je k dispozici možnost protokolu auditu?
 
-Yes. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
+Ano. Všechny operace správy Notification Hubs aktualizují protokol aktivit Azure, ke kterému se v [Azure Portal]zveřejňuje. Protokol aktivit Azure nabízí přehledy o operacích provedených u prostředků ve vašich předplatných. Pomocí protokolu aktivit můžete určit, kdo a kdy se mají u prostředků ve vašem předplatném provádět operace zápisu (PUT, POST, DELETE). Můžete také pochopit stav operací a dalších relevantních vlastností. Naopak. Protokol aktivit nezahrnuje operaci čtení (GET).
 
 ## <a name="monitoring-and-troubleshooting"></a>Monitorování a řešení potíží
 
@@ -206,7 +204,6 @@ Můžete také programově přistupovat k metrikám. Další informace najdete v
 [Ceny Notification Hubs]: https://azure.microsoft.com/pricing/details/notification-hubs/
 [Notification Hubs SLA]: https://azure.microsoft.com/support/legal/sla/
 [Rozhraní REST API pro Notification Hubs]: https://msdn.microsoft.com/library/azure/dn530746.aspx
-[Kurzy Notification Hubs Začínáme]: https://azure.microsoft.com/documentation/articles/notification-hubs-ios-get-started/
 [Mobile Services Pricing]: https://azure.microsoft.com/pricing/details/mobile-services/
 [Pokyny k registraci back-endu]: https://msdn.microsoft.com/library/azure/dn743807.aspx
 [Pokyny k registraci back-endu 2]: https://msdn.microsoft.com/library/azure/dn530747.aspx

@@ -5,16 +5,16 @@ services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9c2a2d7059e24b37b0f47d0b568a3929f296d8c6
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 2c5f65993909e142de6017b07591529cd7cb7b86
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560870"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200575"
 ---
 # <a name="how-to-use-openrowset-with-sql-on-demand-preview"></a>Jak používat OPENROWSET s SQL na vyžádání (Preview)
 
@@ -49,7 +49,7 @@ Toto je rychlý a snadný způsob, jak číst obsah souborů bez předchozí kon
     Tato možnost umožňuje nakonfigurovat umístění účtu úložiště ve zdroji dat a zadat metodu ověřování, která se má použít pro přístup k úložišti. 
     
     > [!IMPORTANT]
-    > `OPENROWSET`bez `DATA_SOURCE` poskytuje rychlý a snadný způsob, jak získat přístup k souborům úložiště, ale nabízí omezené možnosti ověřování. Například objekt zabezpečení Azure AD může přistupovat k souborům jenom pomocí své [identity Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity#force-azure-ad-pass-through) a nemůže získat přístup k veřejně dostupným souborům. Pokud potřebujete výkonnější možnosti ověřování, použijte `DATA_SOURCE` možnost a definujte přihlašovací údaje, které chcete použít pro přístup k úložišti.
+    > `OPENROWSET`bez `DATA_SOURCE` poskytuje rychlý a snadný způsob, jak získat přístup k souborům úložiště, ale nabízí omezené možnosti ověřování. Například objekty zabezpečení Azure AD mají přístup k souborům jenom pomocí své [identity Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity) nebo veřejně dostupných souborů. Pokud potřebujete výkonnější možnosti ověřování, použijte `DATA_SOURCE` možnost a definujte přihlašovací údaje, které chcete použít pro přístup k úložišti.
 
 
 ## <a name="security"></a>Zabezpečení
@@ -60,7 +60,8 @@ Správce úložiště musí taky povolit uživateli přístup k souborům poskyt
 
 `OPENROWSET`k určení, jak ověřit úložiště, použijte následující pravidla:
 - V nástroji `OPENROWSET` bez `DATA_SOURCE` mechanismu ověřování závisí na typu volajícího.
-  - Přihlášení Azure AD mají přístup k souborům jenom pomocí vlastní [identity Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) , pokud Azure Storage umožňuje uživatelům Azure AD přístup k základním souborům (například pokud má volající oprávnění čtenář úložiště) a pokud [povolíte ověřování Azure AD](develop-storage-files-storage-access-control.md#force-azure-ad-pass-through) pro službu synapse SQL.
+  - Všichni uživatelé můžou použít `OPENROWSET` bez `DATA_SOURCE` čtení veřejně dostupných souborů v Azure Storage.
+  - Přihlášení Azure AD mají přístup k chráněným souborům pomocí vlastní [identity Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) , pokud Azure Storage umožňuje uživatelům Azure AD přístup k základním souborům (například pokud má volající `Storage Reader` oprávnění k úložišti Azure).
   - Přihlášení SQL můžete také použít `OPENROWSET` bez `DATA_SOURCE` přístupu k veřejně dostupným souborům, souborům chráněným pomocí tokenu SAS nebo spravované identitě synapse pracovního prostoru. Pro povolení přístupu k souborům úložiště by bylo potřeba [vytvořit přihlašovací údaje v oboru serveru](develop-storage-files-storage-access-control.md#examples) . 
 - V `OPENROWSET` rámci `DATA_SOURCE` mechanismu ověřování je definována v přihlašovacích údajích, které jsou přiřazené k odkazovanému zdroji dat v rámci databáze. Tato možnost umožňuje přístup k veřejně dostupnému úložišti nebo přístup k úložišti pomocí tokenu SAS, spravované identity pracovního prostoru nebo [identity volajícího služby Azure AD](develop-storage-files-storage-access-control.md?tabs=user-identity#supported-storage-authorization-types) (Pokud je volající objekt zabezpečení Azure AD). Pokud `DATA_SOURCE` odkazujete na úložiště Azure, které není veřejné, budete muset [vytvořit přihlašovací údaje v oboru databáze](develop-storage-files-storage-access-control.md#examples) a odkazovat na ni v `DATA SOURCE` , aby se povolil přístup k souborům úložiště.
 
@@ -132,7 +133,7 @@ Pokud zadáte unstructured_data_path jako složku, dotaz na vyžádání SQL na�
 > [!NOTE]
 > Na rozdíl od Hadoop a báze SQL na vyžádání nevrací podsložky. Na rozdíl od Hadoop a báze SQL na vyžádání vrátí také soubory, pro které název souboru začíná podtržítkem (_) nebo tečkou (.).
 
-Pokud je v následujícím příkladu unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , dotaz SQL na vyžádání vrátí řádky z Mojedata. txt a _hidden. txt. Nevrátí mydata2. txt a mydata3. txt, protože jsou umístěné v podsložce.
+Pokud se v následujícím příkladu unstructured_data_path = `https://mystorageaccount.dfs.core.windows.net/webdata/` , dotaz SQL na vyžádání vrátí řádky z mydata.txt a _hidden.txt. Nevrátí mydata2.txt a mydata3.txt, protože jsou umístěné v podsložce.
 
 ![Rekurzivní data pro externí tabulky](./media/develop-openrowset/folder-traversal.png)
 
@@ -177,7 +178,7 @@ ESCAPE_CHAR = char
 
 Určuje znak v souboru, který se používá k zaznamenání samotného řídicího panelu a všech hodnot oddělovače v souboru. Je-li řídicí znak následován jinou hodnotou než samotnou nebo kteroukoli z hodnot oddělovače, je řídicí znak při čtení hodnoty vynechán. 
 
-Parametr ESCAPE_CHAR bude použit bez ohledu na to, zda je FIELDQUOTE nebo není povolen. Nepoužije se k řídicímu znaku pro uvozovky. Znak quotování je řídicím znakem s dvojitými uvozovkami v zarovnání s chováním CSV v Excelu.
+Parametr ESCAPE_CHAR bude použit bez ohledu na to, zda je FIELDQUOTE nebo není povolen. Nepoužije se k řídicímu znaku pro uvozovky. Znak Quota musí být uvozen jiným znakem pro quotování. Znak quotace se může objevit v rámci hodnoty sloupce jenom v případě, že je hodnota zapouzdřená pomocí znaků quote.
 
 FIRSTROW = ' first_row ' 
 
@@ -238,10 +239,6 @@ FROM
     ) AS [r]
 ```
 
-Pokud se zobrazí chyba s informací, že soubory nelze uvést do seznamu, je nutné povolit přístup k veřejnému úložišti v synapse SQL na vyžádání:
-- Pokud používáte přihlášení SQL, musíte [vytvořit přihlašovací údaje v oboru serveru, které umožní přístup k veřejnému úložišti](develop-storage-files-storage-access-control.md#examples).
-- Pokud k přístupu k veřejnému úložišti používáte objekt zabezpečení Azure AD, musíte [vytvořit přihlašovací údaje v oboru serveru, které umožní přístup k veřejnému úložišti](develop-storage-files-storage-access-control.md#examples) a zakázat [předávací ověřování Azure AD](develop-storage-files-storage-access-control.md#disable-forcing-azure-ad-pass-through).
-
 ## <a name="next-steps"></a>Další kroky
 
-Další ukázky najdete v [rychlém startu pro dotaz na úložiště dat](query-data-storage.md) , kde se dozvíte, jak používat funkci OPENROWSET ke čtení formátů souborů [CSV](query-single-csv-file.md), [PARQUET](query-parquet-files.md)a [JSON](query-json-files.md) . Můžete se také dozvědět, jak uložit výsledky dotazu do Azure Storage pomocí [CETAS](develop-tables-cetas.md).
+Další ukázky najdete v [rychlém startu pro dotaz na úložiště dat](query-data-storage.md) a Naučte se, jak používat `OPENROWSET` ke čtení formátů souborů [CSV](query-single-csv-file.md), [PARQUET](query-parquet-files.md)a [JSON](query-json-files.md) . Můžete se také dozvědět, jak uložit výsledky dotazu do Azure Storage pomocí [CETAS](develop-tables-cetas.md).

@@ -7,15 +7,15 @@ manager: danielgi
 ms.service: azure-cdn
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/23/2020
 ms.author: sohamnc
-ms.openlocfilehash: f4693cdac2d5d3a57987cc692797756314ded11e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: a2522eba17574246ab99a0d47a42f128d5f61ace
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83747303"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888636"
 ---
 # <a name="azure-cdn-http-raw-logs"></a>Azure CDN nezpracovaných protokolů HTTP
 Nezpracované protokoly poskytují obsáhlé informace o operacích a chybách, které jsou důležité pro auditování a řešení potíží. Nezpracované protokoly se liší od protokolů aktivit. Protokoly aktivit poskytují přehled o operacích provedených v prostředcích Azure. Nezpracované protokoly poskytují záznam o operacích s vaším prostředkem.
@@ -33,7 +33,7 @@ Přihlaste se k webu Azure Portal na adrese [https://portal.azure.com](https://p
 
 Konfigurace nezpracovaných protokolů pro Azure CDN z profilu Microsoftu: 
 
-1. V nabídce Azure Portal vyberte **všechny prostředky**  >>  ** \< profil-CDN-Profile>**.
+1. V nabídce Azure Portal vyberte **všechny prostředky**  >>  **\<your-CDN-profile>** .
 
 2. V části **monitorování**vyberte **nastavení diagnostiky**.
 

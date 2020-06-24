@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/15/2020
 ms.author: memildin
-ms.openlocfilehash: 8e44ce594375deeac47f037515d96c57d15c8359
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f8b09c71e9ad55528788f97fb986606f21e8b0ec
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398409"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84769763"
 ---
 # <a name="manage-and-respond-to-security-alerts-in-azure-security-center"></a>Správa a reakce na upozornění zabezpečení ve službě Azure Security Center
 
@@ -58,21 +58,26 @@ Security Center automaticky shromažďuje, analyzuje a integruje data protokolu 
 
 1. Po kontrole informací klikněte na prostředek, který byl napadený.
 
+    V levém podokně stránky výstraha zabezpečení jsou uvedeny informace vysoké úrovně týkající se výstrahy zabezpečení: název, závažnost, stav, čas aktivity, popis podezřelé aktivity a ovlivněný prostředek. Společně s ovlivněným prostředkem jsou značky Azure relevantní pro daný prostředek. Použijte k odvození organizačního kontextu prostředku při zkoumání výstrahy.
+
+    Pravé podokno obsahuje kartu **Podrobnosti výstrahy** s dalšími podrobnostmi výstrahy, které vám pomůžou problém prozkoumat: IP adresy, soubory, procesy a další.
+     
     ![Návrhy, co dělat s výstrahami zabezpečení](./media/security-center-managing-and-responding-alerts/security-center-alert-remediate.png)
 
-    Oddíl **Obecné informace** může nabídnout přehled o tom, co aktivovalo výstrahu zabezpečení. Zobrazuje informace, jako je cílový prostředek, zdrojová IP adresa (Pokud je k dispozici), pokud je výstraha stále aktivní, a doporučení k nápravě.  
+    Také v pravém podokně se nachází karta **provést akci** . pomocí této karty můžete provést další akce týkající se výstrahy zabezpečení. Akce, jako například:
+    - *Zmírnění hrozby* – poskytuje postup ruční nápravy pro tuto výstrahu zabezpečení.
+    - *Prevence budoucích útoků* – poskytuje doporučení zabezpečení, která vám pomůžou snížit plochu pro útoky, zvýšit stav zabezpečení a zabránit budoucím útokům.
+    - *Aktivovat automatizovanou odezvu* – poskytuje možnost aktivovat aplikaci logiky jako reakci na toto upozornění zabezpečení.
+    - *Potlačit podobné výstrahy* – poskytuje možnost potlačit budoucí výstrahy s podobnými charakteristikami, pokud výstraha není relevantní pro vaši organizaci.
 
-    > [!NOTE]
-    >V některých případech není zdrojová IP adresa k dispozici, některé protokoly událostí zabezpečení systému Windows neobsahují IP adresu.
+    ![Provést kartu akce](./media/security-center-managing-and-responding-alerts/alert-take-action.png)
 
-1. Postup nápravy navrhovaný službou Security Center se liší podle výstrahy zabezpečení. Sledujte je u každé výstrahy. 
 
-    V některých případech může být nutné použít jiné ovládací prvky nebo služby Azure k implementaci Doporučené nápravy. 
+
 
 ## <a name="see-also"></a>Viz také
 
-V tomto dokumentu jste zjistili, jak ve službě Security Center konfigurovat zásady zabezpečení. Pokud se o službě Security Center chcete dozvědět víc, pročtěte si tato témata:
+V tomto dokumentu jste zjistili, jak zobrazit výstrahy zabezpečení. Související materiály najdete na následujících stránkách:
 
-- [Microsoft Learn modul použití možností výstrah Azure Security Center ke sledování hrozeb a reakci na ně](https://docs.microsoft.com/learn/modules/resolve-threats-with-azure-security-center/)
-* [Výstrahy zabezpečení v Azure Security Center](security-center-alerts-overview.md).
-* [Zpracování incidentů zabezpečení](security-center-incident.md)
+- [Konfigurace pravidel potlačení výstrah](alerts-suppression-rules.md)
+- [Automatizace odpovědí na výstrahy a doporučení pomocí automatizace pracovních postupů](workflow-automation.md)

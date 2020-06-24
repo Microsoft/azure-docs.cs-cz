@@ -9,36 +9,23 @@ ms.topic: how-to
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 05/11/2020
+ms.date: 06/22/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: be78681ba01cf98f087331a5a9a6c7974f3b1122
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.openlocfilehash: 5415237a502116b597c1514f75f35203108237ec
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84560253"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299071"
 ---
-# <a name="secure-your-machine-learning-lifecycles-with-private-virtual-networks"></a>Zabezpečení životního cyklu služby Machine Learning pomocí privátních virtuálních sítí
+# <a name="network-isolation-during-training--inference-with-private-virtual-networks"></a>Izolace sítě během školení & odvození s privátními virtuálními sítěmi
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-V tomto článku se dozvíte, jak izolovat úlohy experimentování/školení a úlohy odvození a bodování v Azure Machine Learning v rámci Azure Virtual Network (VNET). Naučíte se také několik *pokročilých nastavení zabezpečení*, informace, které nejsou nutné pro základní nebo experimentální případy použití.
-
-> [!WARNING]
-> Pokud je vaše základní úložiště ve virtuální síti, uživatelé nebudou moci používat webové prostředí sady Azure Machine Learning Studio, včetně těchto:
-> - přetažení – Návrhář
-> - Uživatelské rozhraní pro automatizované strojové učení
-> - Uživatelské rozhraní pro popisky dat
-> - Uživatelské rozhraní pro datové sady
-> - Notebooks
-> 
-> Pokud se pokusíte, zobrazí se zpráva podobná následující chybě:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
-
-## <a name="what-is-a-vnet"></a>Co je virtuální síť?
+V tomto článku se dozvíte, jak zabezpečit životní cyklus strojového učení tím, že izolujete Azure Machine Learning školení a odvozování úloh v rámci Azure Virtual Network (VNET). Azure Machine Learning spoléhá na další služby Azure pro výpočetní prostředky, označované taky jako [cíle pro výpočty](concept-compute-target.md), a to pro výuku a nasazení modelů. Cíle lze vytvořit v rámci virtuální sítě. Můžete například využít Azure Machine Learning COMPUTE pro výuku modelu a pak model nasadit do služby Azure Kubernetes Service (AKS). 
 
 **Virtuální síť** funguje jako hranice zabezpečení a izoluje prostředky Azure od veřejného Internetu. Virtuální síť Azure se taky můžete připojit k místní síti. Připojením sítí můžete bezpečně prosazovat modely a přistupovat k nasazeným modelům pro odvození.
 
-Azure Machine Learning spoléhá na další služby Azure pro výpočetní prostředky, označované taky jako [cíle pro výpočty](concept-compute-target.md), a to pro výuku a nasazení modelů. Cíle lze vytvořit v rámci virtuální sítě. Můžete například využít Azure Machine Learning COMPUTE pro výuku modelu a pak model nasadit do služby Azure Kubernetes Service (AKS). 
-
+Pokud **je vaše základní úložiště ve virtuální síti, uživatelé nebudou moci používat webové prostředí sady Azure Machine Learning Studio**, včetně návrháře přetažení nebo uživatelského rozhraní pro automatizované strojové učení, popisků dat a datových sad a integrovaných poznámkových bloků.  Pokud se pokusíte, zobrazí se zpráva podobná následující chybě:`__Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.__`
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -77,7 +64,7 @@ Můžete také [Povolit privátní propojení Azure](how-to-configure-private-li
 
 <a id="amlcompute"></a>
 
-## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>Výpočetní clustery & instance
+## <a name="compute-clusters--instances"></a><a name="compute-instance"></a>Výpočetní clustery & instance 
 
 Pokud chcete ve virtuální síti použít [spravovaný Azure Machine Learning **výpočetní cíl** ](concept-compute-target.md#azure-machine-learning-compute-managed) nebo [Azure Machine Learning výpočetní **instanci** ](concept-compute-instance.md) , musí být splněné následující požadavky na síť:
 
@@ -102,7 +89,9 @@ Pokud chcete ve virtuální síti použít [spravovaný Azure Machine Learning *
 
 ### <a name="required-ports"></a><a id="mlcports"></a>Požadované porty
 
-Výpočetní prostředky služby Machine Learning aktuálně používá službu Azure Batch k zřizování virtuálních počítačů v zadané virtuální síti. Podsíť musí umožňovat příchozí komunikaci ze služby Batch. Tato komunikace se používá k naplánování spuštění na Výpočetní prostředky služby Machine Learningch uzlech a ke komunikaci s Azure Storage a dalšími prostředky. Služba Batch přidá skupiny zabezpečení sítě (skupin zabezpečení sítě) na úrovni síťových rozhraní (nic) připojených k virtuálním počítačům. Tyto skupiny zabezpečení sítě automaticky konfigurují pravidla příchozích a odchozích přenosů, která povolují následující provoz:
+Pokud plánujete zabezpečit virtuální síť tím, že omezíte síťový provoz na veřejný Internet, musíte povolit příchozí komunikaci ze služby Azure Batch.
+
+Služba Batch přidá skupiny zabezpečení sítě (skupin zabezpečení sítě) na úrovni síťových rozhraní (nic) připojených k virtuálním počítačům. Tyto skupiny zabezpečení sítě automaticky konfigurují pravidla příchozích a odchozích přenosů, která povolují následující provoz:
 
 - Příchozí provoz TCP na portech 29876 a 29877 ze __značky služby__ __BatchNodeManagement__.
 
@@ -116,9 +105,10 @@ Výpočetní prostředky služby Machine Learning aktuálně používá službu 
 
 - Pro příchozí provoz TCP pro výpočetní instance na portu 44224 ze __značky služby__ __AzureMachineLearning__.
 
-Pokud potřebujete upravit nebo přidat pravidla příchozích nebo odchozích přenosů ve skupinách zabezpečení sítě nakonfigurovaných službou Batch, postupujte obezřetně. Pokud NSG blokuje komunikaci s výpočetními uzly, služba COMPUTE nastaví stav výpočetních uzlů na nepoužitelné.
-
-Nemusíte zadávat skupin zabezpečení sítě na úrovni podsítě, protože služba Azure Batch konfiguruje vlastní skupin zabezpečení sítě. Pokud však Zadaná podsíť má přidruženou skupin zabezpečení sítě nebo bránu firewall, nakonfigurujte příchozí a odchozí pravidla zabezpečení, jak je uvedeno výše.
+> [!IMPORTANT]
+> Pokud potřebujete upravit nebo přidat pravidla příchozích nebo odchozích přenosů ve skupinách zabezpečení sítě nakonfigurovaných službou Batch, postupujte obezřetně. Pokud NSG blokuje komunikaci s výpočetními uzly, služba COMPUTE nastaví stav výpočetních uzlů na nepoužitelné.
+>
+> Nemusíte zadávat skupin zabezpečení sítě na úrovni podsítě, protože služba Azure Batch konfiguruje vlastní skupin zabezpečení sítě. Pokud však podsíť, která obsahuje Azure Machine Learning COMPUTE, má přidruženou skupin zabezpečení sítě nebo bránu firewall, musíte také povolený provoz.
 
 Konfigurace pravidla NSG se v Azure Portal zobrazuje na následujících obrázcích:
 
@@ -436,6 +426,9 @@ Další informace o používání interního nástroje pro vyrovnávání zatí�
 
 Azure Container Instances se dynamicky vytvářejí při nasazování modelu. Pokud chcete povolit Azure Machine Learning vytváření ACI uvnitř virtuální sítě, musíte povolit __delegování podsítě__ pro podsíť, kterou používá nasazení.
 
+> [!WARNING]
+> Pokud chcete použít Azure Container Instances v rámci virtuální sítě, Azure Container Registry (ACR) pro váš pracovní prostor se taky ve virtuální síti nedá.
+
 Pokud chcete použít ACI ve virtuální síti k vašemu pracovnímu prostoru, použijte následující postup:
 
 1. K povolení delegování podsítě ve virtuální síti použijte informace v článku [Přidání nebo odebrání delegování podsítě](../virtual-network/manage-subnet-delegation.md) . Delegování můžete povolit při vytváření virtuální sítě nebo jejich přidání do existující sítě.
@@ -463,7 +456,7 @@ Informace o použití Azure Machine Learning s Azure Firewall najdete v tématu 
 
 1. Chcete-li najít název Azure Container Registry pro váš pracovní prostor, použijte jednu z následujících metod:
 
-    __Azure Portal__
+    __portál Azure__
 
     V části Přehled pracovního prostoru se hodnota __registru__ odkazuje na Azure Container Registry.
 

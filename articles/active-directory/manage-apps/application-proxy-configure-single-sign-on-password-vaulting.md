@@ -3,23 +3,23 @@ title: Jednotné přihlašování k aplikacím pomocí Azure Proxy aplikací slu
 description: Zapněte jednotné přihlašování pro vaše publikované místní aplikace s využitím Azure Proxy aplikací služby AD v Azure Portal.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 11/12/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0259a8d9fcb4c9c513ab2c31103c9a8488e90ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c5e3d08f887cc1c816dda54863c412660494418b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77025737"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764770"
 ---
 # <a name="password-vaulting-for-single-sign-on-with-application-proxy"></a>Trezor hesel pro jednotné přihlašování s proxy aplikací
 
@@ -32,7 +32,7 @@ Svou aplikaci byste už měli publikovat a testovat pomocí proxy aplikace. Poku
 ## <a name="set-up-password-vaulting-for-your-application"></a>Nastavení trezoru hesel pro vaši aplikaci
 
 1. Přihlaste se k [Azure Portal](https://portal.azure.com) jako správce.
-1. Vyberte **Azure Active Directory** > **podnikové aplikace** > **všechny aplikace**.
+1. Vyberte **Azure Active Directory**  >  **podnikové aplikace**  >  **všechny aplikace**.
 1. V seznamu vyberte aplikaci, kterou chcete nastavit s jednotným přihlašováním.  
 1. Vyberte **proxy aplikace**. 
 1. Změňte typ předběžného **ověřování** pro **průchozí** a vyberte **Uložit**. Později můžete znovu přejít zpět na **Azure Active Directory** typ. 
@@ -51,7 +51,7 @@ Svou aplikaci byste už měli publikovat a testovat pomocí proxy aplikace. Poku
 1. Vyberte **Uživatelé a skupiny**.
 1. Přiřaďte uživatele k aplikaci výběrem možnosti **Přidat uživatele**. 
 1. Pokud chcete předem definovat přihlašovací údaje pro uživatele, zaškrtněte políčko před uživatelským jménem a vyberte **Aktualizovat přihlašovací údaje**.
-1. Vyberte **Azure Active Directory** > **Registrace aplikací** > **všechny aplikace**.
+1. Vyberte **Azure Active Directory**  >  **Registrace aplikací**  >  **všechny aplikace**.
 1. V seznamu vyberte aplikaci, kterou jste nakonfigurovali pomocí jednotného přihlašování k heslům.
 1. Vyberte **branding**. 
 1. Aktualizujte **adresu URL domovské stránky** zadáním **adresy URL pro přihlášení** na stránce heslo SSO a vyberte **Uložit**.  
