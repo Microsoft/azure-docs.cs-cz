@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/18/2020
+ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: cac0116cf7a068e63cb54698f7273b8c063ff854
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 8fa77f13b99564246c048e7b7a8129f9fc141c47
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82734837"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984185"
 ---
 # <a name="create-or-update-azure-custom-roles-using-azure-cli"></a>Vytvoření nebo aktualizace vlastních rolí Azure pomocí Azure CLI
 
@@ -41,31 +41,27 @@ K vytvoření vlastních rolí budete potřebovat:
 
 ## <a name="list-custom-roles"></a>Výpis vlastních rolí
 
-K vypsání vlastních rolí, které jsou k dispozici pro přiřazení, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). V následujících příkladech jsou uvedeny všechny vlastní role v aktuálním předplatném.
+K vypsání vlastních rolí, které jsou k dispozici pro přiřazení, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). Následující příklad vypíše všechny vlastní role v aktuálním předplatném.
 
 ```azurecli
-az role definition list --custom-role-only true --output json | jq '.[] | {"roleName":.roleName, "roleType":.roleType}'
+az role definition list --custom-role-only true --output json --query '[].{roleName:roleName, roleType:roleType}'
 ```
 
-```azurecli
-az role definition list --output json | jq '.[] | if .roleType == "CustomRole" then {"roleName":.roleName, "roleType":.roleType} else empty end'
-```
-
-```Output
-{
-  "roleName": "My Management Contributor",
-  "type": "CustomRole"
-}
-{
-  "roleName": "My Service Reader Role",
-  "type": "CustomRole"
-}
-{
-  "roleName": "Virtual Machine Operator",
-  "type": "CustomRole"
-}
-
-...
+```json
+[
+  {
+    "roleName": "My Management Contributor",
+    "type": "CustomRole"
+  },
+  {
+    "roleName": "My Service Reader Role",
+    "type": "CustomRole"
+  },
+  {
+    "roleName": "Virtual Machine Operator",
+    "type": "CustomRole"
+  }
+]
 ```
 
 ## <a name="list-a-custom-role-definition"></a>Seznam definice vlastní role
@@ -73,7 +69,7 @@ az role definition list --output json | jq '.[] | if .roleType == "CustomRole" t
 Pokud chcete zobrazit seznam definice vlastní role, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list). Jedná se o stejný příkaz, který byste použili pro předdefinovanou roli.
 
 ```azurecli
-az role definition list --name <role_name>
+az role definition list --name {roleName}
 ```
 
 V následujícím příkladu je uveden seznam definice role *operátora virtuálního počítače* :
@@ -82,14 +78,14 @@ V následujícím příkladu je uveden seznam definice role *operátora virtuál
 az role definition list --name "Virtual Machine Operator"
 ```
 
-```Output
+```json
 [
   {
     "assignableScopes": [
-      "/subscriptions/11111111-1111-1111-1111-111111111111"
+      "/subscriptions/{subscriptionId}"
     ],
     "description": "Can monitor and restart virtual machines.",
-    "id": "/subscriptions/11111111-1111-1111-1111-111111111111/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000",
+    "id": "/subscriptions/{subscriptionId}/providers/Microsoft.Authorization/roleDefinitions/00000000-0000-0000-0000-000000000000",
     "name": "00000000-0000-0000-0000-000000000000",
     "permissions": [
       {
@@ -121,22 +117,24 @@ az role definition list --name "Virtual Machine Operator"
 Následující příklad vypíše pouze akce role *operátora virtuálního počítače* :
 
 ```azurecli
-az role definition list --name "Virtual Machine Operator" --output json | jq '.[] | .permissions[0].actions'
+az role definition list --name "Virtual Machine Operator" --output json --query '[].permissions[0].actions'
 ```
 
-```Output
+```json
 [
-  "Microsoft.Storage/*/read",
-  "Microsoft.Network/*/read",
-  "Microsoft.Compute/*/read",
-  "Microsoft.Compute/virtualMachines/start/action",
-  "Microsoft.Compute/virtualMachines/restart/action",
-  "Microsoft.Authorization/*/read",
-  "Microsoft.ResourceHealth/availabilityStatuses/read",
-  "Microsoft.Resources/subscriptions/resourceGroups/read",
-  "Microsoft.Insights/alertRules/*",
-  "Microsoft.Insights/diagnosticSettings/*",
-  "Microsoft.Support/*"
+  [
+    "Microsoft.Storage/*/read",
+    "Microsoft.Network/*/read",
+    "Microsoft.Compute/*/read",
+    "Microsoft.Compute/virtualMachines/start/action",
+    "Microsoft.Compute/virtualMachines/restart/action",
+    "Microsoft.Authorization/*/read",
+    "Microsoft.ResourceHealth/availabilityStatuses/read",
+    "Microsoft.Resources/subscriptions/resourceGroups/read",
+    "Microsoft.Insights/alertRules/*",
+    "Microsoft.Insights/diagnosticSettings/*",
+    "Microsoft.Support/*"
+  ]
 ]
 ```
 
@@ -145,12 +143,12 @@ az role definition list --name "Virtual Machine Operator" --output json | jq '.[
 Pokud chcete vytvořit vlastní roli, použijte příkaz [AZ role definice Create](/cli/azure/role/definition#az-role-definition-create). Definice role může být popis JSON nebo cesta k souboru obsahujícímu popis JSON.
 
 ```azurecli
-az role definition create --role-definition <role_definition>
+az role definition create --role-definition {roleDefinition}
 ```
 
 Následující příklad vytvoří vlastní roli s názvem *operátor virtuálního počítače*. Tato vlastní role přiřadí přístup ke všem operacím čtení pro poskytovatele prostředků *Microsoft. COMPUTE*, *Microsoft. Storage*a *Microsoft. Network* a přiřadí přístup ke spouštění, restartování a monitorování virtuálních počítačů. Tato vlastní role se dá použít ve dvou předplatných. V tomto příkladu se jako vstup používá soubor JSON.
 
-vmoperator. JSON
+vmoperator.jsna
 
 ```json
 {
@@ -173,8 +171,8 @@ vmoperator. JSON
 
   ],
   "AssignableScopes": [
-    "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333"
+    "/subscriptions/{subscriptionId1}",
+    "/subscriptions/{subscriptionId2}"
   ]
 }
 ```
@@ -188,12 +186,12 @@ az role definition create --role-definition ~/roles/vmoperator.json
 Pokud chcete aktualizovat vlastní roli, napřed načtěte definici role pomocí [seznamu AZ role definition list](/cli/azure/role/definition#az-role-definition-list) . Za druhé proveďte požadované změny definice role. Nakonec pomocí příkazu [AZ role definition Update](/cli/azure/role/definition#az-role-definition-update) uložte aktualizovanou definici role.
 
 ```azurecli
-az role definition update --role-definition <role_definition>
+az role definition update --role-definition {roleDefinition}
 ```
 
 Následující příklad přidá operaci *Microsoft. Insights/diagnosticSettings/* Operation do `Actions` a přidá skupinu pro správu do `AssignableScopes` vlastní role *operátoru virtuálního počítače* . Přidání skupiny pro správu do `AssignableScopes` je aktuálně ve verzi Preview.
 
-vmoperator. JSON
+vmoperator.jsna
 
 ```json
 {
@@ -217,8 +215,8 @@ vmoperator. JSON
 
   ],
   "AssignableScopes": [
-    "/subscriptions/11111111-1111-1111-1111-111111111111",
-    "/subscriptions/33333333-3333-3333-3333-333333333333",
+    "/subscriptions/{subscriptionId1}",
+    "/subscriptions/{subscriptionId2}",
     "/providers/Microsoft.Management/managementGroups/marketing-group"
   ]
 }
@@ -233,7 +231,7 @@ az role definition update --role-definition ~/roles/vmoperator.json
 Pokud chcete odstranit vlastní roli, použijte příkaz [AZ role definition Delete](/cli/azure/role/definition#az-role-definition-delete). Chcete-li určit roli, kterou chcete odstranit, použijte název role nebo ID role. Chcete-li zjistit ID role, použijte příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list).
 
 ```azurecli
-az role definition delete --name <role_name or role_id>
+az role definition delete --name {roleNameOrId}
 ```
 
 Následující příklad odstraní vlastní roli *operátoru virtuálního počítače* .

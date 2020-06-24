@@ -5,15 +5,15 @@ description: Nakonfigurujte zásady IPsec/IKE pro připojení S2S nebo VNet-to-V
 services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: eaca48fc354f1cf37635e9729b04eaaaa882ba1c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 504f4f2b2a0aa1fa8cd654c422e7ce8a00593b21
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77161898"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985273"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>Konfigurace zásad IPsec/IKE pro připojení S2S VPN nebo připojení typu VNet-to-VNet
 
@@ -115,7 +115,7 @@ V této části se seznámíte s postupem vytvoření připojení S2S VPN se zá
 
 Podrobnější pokyny k vytvoření připojení S2S VPN najdete v tématu [vytvoření připojení S2S VPN](vpn-gateway-create-site-to-site-rm-powershell.md) .
 
-### <a name="before-you-begin"></a><a name="before"></a>Před zahájením
+### <a name="before-you-begin"></a><a name="before"></a>Než začnete
 
 * Ověřte, že máte předplatné Azure. Pokud ještě nemáte předplatné Azure, můžete si aktivovat [výhody pro předplatitele MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) nebo si zaregistrovat [bezplatný účet](https://azure.microsoft.com/pricing/free-trial/).
 * Nainstalujte rutiny Azure Resource Manager PowerShellu. Další informace o instalaci rutin PowerShellu najdete v tématu [přehled Azure PowerShell](/powershell/azure/overview) .

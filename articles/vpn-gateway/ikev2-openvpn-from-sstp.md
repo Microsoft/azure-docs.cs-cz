@@ -4,15 +4,15 @@ description: Tento článek vám pomůže porozumět způsobům, jak překonat 1
 services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: alzam
-ms.openlocfilehash: 5500d993a4bf3c664f14182d983f9abed8ebb08a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e98fd0d57219599fb1c3934638a928542e4311a7
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80398364"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983339"
 ---
 # <a name="transition-to-openvpn-protocol-or-ikev2-from-sstp"></a>Přechod na Protokol OpenVPN nebo IKEv2 z SSTP
 
@@ -22,7 +22,7 @@ Připojení brány VPN typu Point-to-Site (P2S) umožňuje vytvořit zabezpečen
 
 SÍŤ VPN typu Point-to-site může používat jeden z následujících protokolů:
 
-* **Protokol&reg; OPENVPN**, protokol VPN založený na protokolu SSL/TLS. Řešení SSL VPN může proniknout do brány firewall, protože většina bran firewall otevírá odchozí TCP port 443, který používá protokol SSL. OpenVPN se dá použít k připojení z Androidu, iOS (verze 11,0 a vyšší), Windows, Linux a Mac (OSX verze 10,13 a vyšší).
+* **OpenVPN &reg; Protokol**, protokol VPN založený na protokolu SSL/TLS. Řešení SSL VPN může proniknout do brány firewall, protože většina bran firewall otevírá odchozí TCP port 443, který používá protokol SSL. OpenVPN se dá použít k připojení z Androidu, iOS (verze 11,0 a vyšší), Windows, Linux a Mac (OSX verze 10,13 a vyšší).
 
 * **Protokol SSTP (Secure Socket Tunneling Protocol)**, což je proprietární protokol VPN založený na protokolu SSL. Řešení SSL VPN může proniknout do brány firewall, protože většina bran firewall otevírá odchozí TCP port 443, který používá protokol SSL. SSTP se podporuje jenom na zařízeních s Windows. Azure podporuje všechny verze Windows, které mají protokol SSTP (Windows 7 a novější). **SSTP podporuje až 128 souběžných připojení jenom bez ohledu na SKU brány**.
 

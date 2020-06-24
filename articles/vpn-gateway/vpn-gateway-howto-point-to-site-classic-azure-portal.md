@@ -4,15 +4,15 @@ description: Vytvoříte připojení classic k bráně VPN typu Point-to-Site po
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 5d80cb2f2ed844126d1e9311151e6c53fcb11840
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79244573"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984789"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Konfigurace připojení typu Point-to-site pomocí ověřování certifikátů (Classic)
 
@@ -202,7 +202,7 @@ Pokud chcete vytvořit připojení P2S z jiného klientského počítače, než 
 >
 >
 
-1. Pokud se chcete připojit k virtuální síti, v klientském počítači přejděte na **připojení VPN** v Azure Portal a vyhledejte připojení VPN, které jste vytvořili. Připojení VPN má stejný název jako vaše virtuální síť. Vyberte **Connect** (Připojit). Pokud se zobrazí automaticky otevíraná zpráva o certifikátu, vyberte **pokračovat** a používejte zvýšená oprávnění.
+1. Pokud se chcete připojit k virtuální síti, v klientském počítači přejděte na **připojení VPN** v Azure Portal a vyhledejte připojení VPN, které jste vytvořili. Připojení VPN má stejný název jako vaše virtuální síť. Vyberte **Připojit**. Pokud se zobrazí automaticky otevíraná zpráva o certifikátu, vyberte **pokračovat** a používejte zvýšená oprávnění.
 
 2. Na stránce Stav **připojení** vyberte **připojit** a spusťte připojení. Pokud se zobrazí obrazovka **Vybrat certifikát** , ověřte, zda je zobrazený klientský certifikát správný. Pokud ne, vyberte v rozevíracím seznamu správný certifikát a pak vyberte **OK**.
 

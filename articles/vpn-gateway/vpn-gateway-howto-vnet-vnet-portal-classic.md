@@ -5,15 +5,15 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/12/2020
 ms.author: cherylmc
-ms.openlocfilehash: 63c6329ad62289cd127902c1438073b28fc8683e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdd27645045195016b7a563787470bf6f2187115
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77201845"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985471"
 ---
 # <a name="configure-a-vnet-to-vnet-connection-classic"></a>Konfigurace připojení typu VNet-to-VNet (Classic)
 
@@ -23,7 +23,7 @@ Tento článek vám pomůže vytvořit připojení brány VPN mezi virtuálními
 
 > [!div class="op_single_selector"]
 > * [portál Azure](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
-> * [Prostředí](vpn-gateway-vnet-vnet-rm-ps.md)
+> * [PowerShell](vpn-gateway-vnet-vnet-rm-ps.md)
 > * [Azure CLI](vpn-gateway-howto-vnet-vnet-cli.md)
 > * [Azure Portal (Classic)](vpn-gateway-howto-vnet-vnet-portal-classic.md)
 > * [Propojení různých modelů nasazení – Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
@@ -71,7 +71,7 @@ Je důležité určit rozsahy, které budete používat ke konfiguraci virtuáln
 
 Následující tabulka ukazuje příklad definování virtuální sítě. Rozsahy používejte jenom jako základní pravidla. Zapište rozsahy pro virtuální sítě. Tyto informace budete potřebovat pro pozdější kroky.
 
-**Případě**
+**Příklad**
 
 | Virtual Network | Adresní prostor | Oblast | Připojí se k místní síťové lokalitě. |
 |:--- |:--- |:--- |:--- |
@@ -160,7 +160,7 @@ Každá virtuální síť musí mít bránu virtuální sítě. Brána virtuáln
 3. Název podsítě brány se vyplní automaticky s požadovaným názvem ' GatewaySubnet '. **Rozsah adres** obsahuje IP adresy, které jsou přiděleny službám brány VPN. Některé konfigurace umožňují podsíť brány/29, ale je vhodné použít a/28 nebo/27, aby vyhovovaly budoucím konfiguracím, které mohou vyžadovat více IP adres pro služby brány. V našem příkladu nastavení používáme 10.11.1.0/27. Upravte adresní prostor a pak klikněte na **OK**.
 4. Nakonfigurujte **Velikost brány**. Toto nastavení odkazuje na [SKU brány](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 5. Nakonfigurujte **typ směrování**. Typ směrování pro tuto konfiguraci musí být **dynamický**. Typ směrování nemůžete později změnit, pokud nechcete bránu odtrhnout a vytvořit novou.
-6. Klikněte na tlačítko **OK**.
+6. Klikněte na **OK**.
 7. Na stránce **nové připojení VPN** klikněte na **OK** a začněte vytvářet bránu virtuální sítě. Vytvoření brány může obvykle trvat 45 minut nebo déle, a to v závislosti na vybrané skladové jednotce (SKU) brány.
 
 ## <a name="step-5---configure-testvnet4-settings"></a><a name="vnet4settings"></a>Krok 5 – Konfigurace nastavení virtuální sítě testvnet4

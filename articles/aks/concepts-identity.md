@@ -5,11 +5,11 @@ services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.openlocfilehash: e4945535417f7d8d33308121267ba97e1f835e13
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259601"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84690417"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Možnosti identit a přístupu pro Azure Kubernetes Service (AKS)
 
@@ -37,7 +37,7 @@ Zabezpečení clusterů AKS se dá zvýšit integrací Azure Active Directory (A
 
 ![Azure Active Directory integrace s clustery AKS](media/concepts-identity/aad-integration.png)
 
-S integrovanými clustery AKS Azure AD můžete uživatelům nebo skupinám udělit přístup k prostředkům Kubernetes v rámci oboru názvů nebo napříč clusterem. Aby mohl uživatel `kubectl` získat kontext konfigurace, může spustit příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] . Když uživatel potom komunikuje s clusterem AKS s `kubectl`, zobrazí se výzva k přihlášení pomocí přihlašovacích údajů Azure AD. Tento přístup poskytuje jeden zdroj pro správu uživatelských účtů a přihlašovací údaje k heslům. Uživatel má přístup pouze k prostředkům definovaným správcem clusteru.
+S integrovanými clustery AKS Azure AD můžete uživatelům nebo skupinám udělit přístup k prostředkům Kubernetes v rámci oboru názvů nebo napříč clusterem. Aby mohl `kubectl` uživatel získat kontext konfigurace, může spustit příkaz [AZ AKS Get-Credentials][az-aks-get-credentials] . Když uživatel potom komunikuje s clusterem AKS s `kubectl` , zobrazí se výzva k přihlášení pomocí přihlašovacích údajů Azure AD. Tento přístup poskytuje jeden zdroj pro správu uživatelských účtů a přihlašovací údaje k heslům. Uživatel má přístup pouze k prostředkům definovaným správcem clusteru.
 
 Ověřování Azure AD v clusterech AKS používá OpenID Connect, což je vrstva identity postavená na protokolu OAuth 2,0. OAuth 2,0 definuje mechanismy pro získání a použití přístupových tokenů pro přístup k chráněným prostředkům a OpenID Connect implementuje ověřování jako rozšíření procesu autorizace OAuth 2,0. Další informace o OpenID připojení najdete v dokumentaci k [otevřenému ID Connect][openid-connect]. Pokud chcete ověřit ověřovací tokeny získané z Azure AD prostřednictvím OpenID Connect, clustery AKS používají ověřování pomocí tokenu Webhooku Kubernetes. Další informace najdete v dokumentaci pro [ověřování tokenů Webhooku][webhook-token-docs].
 

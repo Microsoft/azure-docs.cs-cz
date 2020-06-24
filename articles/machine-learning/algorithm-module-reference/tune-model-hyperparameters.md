@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 02/11/2020
-ms.openlocfilehash: ff0ccbf201f2b83dd446859d8054d115a70f402e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: 01e33f7b0133eb5d081e6e8f3c3c9497c11bae95
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80064164"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983408"
 ---
 # <a name="tune-model-hyperparameters"></a>Ladění hyperparametrů modelů
 
@@ -43,33 +43,35 @@ Tato část popisuje, jak provést základní úklid parametrů, který navlakuj
 
 2.  Připojit nevlakový model ke vstupu vlevo. 
 
+    > [!NOTE] 
+    > **Laditelné parametry modelu** se můžou připojovat jenom k vestavěným modulům algoritmu strojového učení a nemůžou podporovat vlastní model sestavený v **Vytvoření modelu Pythonu**.
 
 
-4.  Přidejte datovou sadu, kterou chcete použít pro školení, a připojte ji ke střednímu vstupu parametrů modelu ladění.  
+3.  Přidejte datovou sadu, kterou chcete použít pro školení, a připojte ji ke střednímu vstupu parametrů modelu ladění.  
 
     Pokud máte označenou datovou sadu, můžete ji připojit ke vstupnímu portu vpravo od sebe (**volitelná datová sada ověření**). To vám umožní měřit přesnost při výuce a ladění.
 
-5.  V pravém panelu modelových parametrů ladění vyberte hodnotu pro **režim mazání parametrů**. Tato možnost určuje, jak jsou vybrány parametry.
+4.  V pravém panelu modelových parametrů ladění vyberte hodnotu pro **režim mazání parametrů**. Tato možnost určuje, jak jsou vybrány parametry.
 
     - **Celá mřížka**: Když vyberete tuto možnost, modul se cyklicky přeskočí do mřížky předdefinovaných systémem, aby vyzkoušel různé kombinace a identifikovala nejlepší informace. Tato možnost je užitečná v případě, že nevíte, co nejlepší nastavení parametrů může být a chcete vyzkoušet všechny možné kombinace hodnot.
 
     - **Náhodné čištění**: Když vyberete tuto možnost, modul náhodně vybere hodnoty parametrů v rozsahu definovaném systémem. Je nutné zadat maximální počet spuštění, které má modul spustit. Tato možnost je užitečná, když chcete zvýšit výkon modelu pomocí metrik dle vašeho výběru, ale přesto šetřit výpočetní prostředky.    
 
-6.  V případě **sloupce popisek**Otevřete selektor sloupců a vyberte sloupec s jedním popiskem.
+5.  V případě **sloupce popisek**Otevřete selektor sloupců a vyberte sloupec s jedním popiskem.
 
-7.  Vyberte počet spuštění:
+6.  Vyberte počet spuštění:
 
-    1. **Maximální počet spuštění na náhodném čištění**: Pokud zvolíte náhodné rozčištění, můžete určit, kolikrát by měl být model vyškolený, pomocí náhodné kombinace hodnot parametrů.
+    - **Maximální počet spuštění na náhodném čištění**: Pokud zvolíte náhodné rozčištění, můžete určit, kolikrát by měl být model vyškolený, pomocí náhodné kombinace hodnot parametrů.
 
-8.  Pro **hodnocení**vyberte jednu metriku, která se má použít pro řazení modelů.
+7.  Pro **hodnocení**vyberte jednu metriku, která se má použít pro řazení modelů.
 
     Když spustíte parametr Sweep, modul vypočítá všechny použitelné metriky pro typ modelu a vrátí je do sestavy **výsledků pro Shrnutí** . Modul používá pro regresní a klasifikační modely samostatné metriky.
 
     Metrika, kterou zvolíte, však Určuje, jak jsou modely seřazeny. Pouze model nejvyšší úrovně, jak je zvolená metrika, je výstupem jako trained model, který se má použít pro bodování.
 
-9.  V případě **náhodného osazení**zadejte číslo, které se má použít ke spuštění čištění parametru. 
+8.  V případě **náhodného osazení**zadejte číslo, které se má použít ke spuštění čištění parametru. 
 
-10. Odešlete kanál.
+9. Odešlete kanál.
 
 ## <a name="results-of-hyperparameter-tuning"></a>Výsledky ladění parametrů
 

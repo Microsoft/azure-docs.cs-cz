@@ -4,15 +4,15 @@ description: Tento článek poskytuje přehled o přepisu hlaviček HTTP v Azure
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/27/2020
 ms.author: absha
-ms.openlocfilehash: 421c1f4d1abe9be5f5081235e78ebe77b1813e6e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: fb5196f9612cb4ce1f0a49be8b5a76f6703fdab6
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82562232"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248669"
 ---
 # <a name="rewrite-http-headers-with-application-gateway"></a>Přepsat hlavičky HTTP pomocí Application Gateway
 
@@ -60,7 +60,7 @@ Application Gateway používá serverové proměnné k ukládání užitečných
 
 Application Gateway podporuje tyto proměnné serveru:
 
-| Název proměnné | Popis                                                  |
+| Název proměnné | Description                                                  |
 | -------------------------- | :----------------------------------------------------------- |
 | add_x_forwarded_for_proxy  | Pole hlavičky žádosti klienta s přesměrováním do `client_ip` proměnné (viz vysvětlení později v této tabulce), ke kterému se připojuje ve formátu IP1, IP2, IP3 a tak dále. Pokud pole s přesměrováním X není v hlavičce žádosti klienta, `add_x_forwarded_for_proxy` proměnná je rovna `$client_ip` proměnné. Tato proměnná je užitečná hlavně v případě, že chcete přepsat hlavičku, kterou předáváte X-pro nastavenou Application Gateway tak, aby hlavička obsahovala jenom IP adresu bez informací o portu. |
 | ciphers_supported          | Seznam šifr podporovaných klientem.          |
@@ -69,21 +69,21 @@ Application Gateway podporuje tyto proměnné serveru:
 | client_port                | Port klienta.                                                  |
 | client_tcp_rtt             | Informace o připojení TCP klienta. K dispozici v systémech, které podporují možnost soketu TCP_INFO. |
 | client_user                | Když se použije ověřování protokolem HTTP, uživatelské jméno zadané pro ověřování. |
-| host                       | V tomto pořadí priorit: název hostitele z řádku žádosti, název hostitele z pole Hlavička požadavku hostitele nebo název serveru, který odpovídá požadavku. Příklad: hodnota host bude *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*v požadavku *contoso.com* |
+| host                       | V tomto pořadí priorit: název hostitele z řádku žádosti, název hostitele z pole Hlavička požadavku hostitele nebo název serveru, který odpovídá požadavku. Příklad: *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* hodnota host bude v požadavku *contoso.com* |
 | *název* cookie_              | *Název* souboru cookie.                                            |
 | http_method                | Metoda použitá pro vytvoření žádosti adresy URL Například GET nebo POST. |
 | http_status                | Stav relace. Například 200, 400 nebo 403.                       |
 | http_version               | Protokol žádosti. Obvykle HTTP/1.0, HTTP/1.1 nebo HTTP/2.0. |
-| query_string               | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL. Příklad: v požadavku *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*se QUERY_STRING hodnota *id = 123&title = Fabrikam* |
+| query_string               | Seznam párů proměnných/hodnot, které následují po "?" v požadované adrese URL. Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* QUERY_STRING hodnota *ID = 123&title = Fabrikam* |
 | received_bytes             | Délka požadavku (včetně řádku žádosti, hlavičky a textu žádosti) |
 | request_query              | Argumenty na řádku požadavku.                                |
 | request_scheme             | Schéma žádosti: http nebo HTTPS.                            |
-| request_uri                | Úplný identifikátor URI původní žádosti (s argumenty). Příklad: v požadavku *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*se REQUEST_URI hodnota */article.aspx? id = 123&title = Fabrikam*   |
+| request_uri                | Úplný identifikátor URI původní žádosti (s argumenty). Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* REQUEST_URI hodnota */article.aspx? ID = 123&title = Fabrikam*   |
 | sent_bytes                 | Počet bajtů odeslaných klientovi.                             |
 | server_port                | Port serveru, který přijal požadavek.                 |
 | ssl_connection_protocol    | Protokol vytvořeného připojení TLS.        |
 | ssl_enabled                | "On", pokud připojení funguje v režimu TLS. V opačném případě prázdný řetězec. |
-| uri_path                   | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku *http://contoso.com:8080/article.aspx?id=123&title=fabrikam*se hodnota uri_path */article.aspx*  |
+| uri_path                   | Identifikuje konkrétní prostředek v hostiteli, ke kterému chce webový klient získat přístup. Toto je část identifikátoru URI požadavku bez argumentů. Příklad: v požadavku se *http://contoso.com:8080/article.aspx?id=123&title=fabrikam* hodnota uri_path */article.aspx*  |
 
 ## <a name="rewrite-configuration"></a>Přepsat konfiguraci
 
@@ -131,8 +131,8 @@ Tento problém můžete vyřešit tak, že nastavíte název hostitele v hlavič
 
 Tady je postup nahrazení názvu hostitele:
 
-1. Vytvoří pravidlo přepsání s podmínkou, která vyhodnotí, jestli hlavička umístění v odpovědi obsahuje azurewebsites.net. Zadejte vzor `(https?):\/\/.*azurewebsites\.net(.*)$`.
-1. Provedením akce přepište hlavičku umístění tak, aby měla název hostitele služby Application Gateway. To uděláte tak, `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` že zadáte hodnotu hlavičky.
+1. Vytvoří pravidlo přepsání s podmínkou, která vyhodnotí, jestli hlavička umístění v odpovědi obsahuje azurewebsites.net. Zadejte vzor `(https?):\/\/.*azurewebsites\.net(.*)$` .
+1. Provedením akce přepište hlavičku umístění tak, aby měla název hostitele služby Application Gateway. To uděláte tak, že zadáte `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` hodnotu hlavičky.
 
 ![Změnit hlavičku umístění](media/rewrite-http-headers/app-service-redirection.png)
 
@@ -156,13 +156,13 @@ Pro přítomnost záhlaví nebo serverové proměnné můžete vyhodnotit hlavi�
 
 ## <a name="limitations"></a>Omezení
 
-- Pokud má odpověď více než jednu hlavičku se stejným názvem, pak přepsání hodnoty jednoho z těchto hlaviček způsobí vyřazení ostatních hlaviček v odpovědi. Tato situace může obvykle nastat s hlavičkou Set-cookie, protože v odpovědi můžete mít více než jednu hlavičku Set-cookie souborů cookie. Takový scénář se používá v případě, že používáte službu App Service s aplikační bránou a máte nakonfigurovanou spřažení relací na základě souborů cookie na aplikační bránu. V takovém případě bude odpověď obsahovat dvě hlavičky sady souborů cookie: jednu, kterou používá služba App Service, například: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` a druhý pro spřažení Application Gateway, například `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/`. Přepsání jedné z hlaviček Set-cookie v tomto scénáři může mít za následek odebrání druhého záhlaví souboru cookie s nastavením z odpovědi.
+- Pokud má odpověď více než jednu hlavičku se stejným názvem, pak přepsání hodnoty jednoho z těchto hlaviček způsobí vyřazení ostatních hlaviček v odpovědi. Tato situace může obvykle nastat s hlavičkou Set-cookie, protože v odpovědi můžete mít více než jednu hlavičku Set-cookie souborů cookie. Takový scénář se používá v případě, že používáte službu App Service s aplikační bránou a máte nakonfigurovanou spřažení relací na základě souborů cookie na aplikační bránu. V takovém případě bude odpověď obsahovat dvě hlavičky sady souborů cookie: jednu, kterou používá služba App Service, například: `Set-Cookie: ARRAffinity=ba127f1caf6ac822b2347cc18bba0364d699ca1ad44d20e0ec01ea80cda2a735;Path=/;HttpOnly;Domain=sitename.azurewebsites.net` a druhý pro spřažení Application Gateway, například `Set-Cookie: ApplicationGatewayAffinity=c1a2bd51lfd396387f96bl9cc3d2c516; Path=/` . Přepsání jedné z hlaviček Set-cookie v tomto scénáři může mít za následek odebrání druhého záhlaví souboru cookie s nastavením z odpovědi.
 
 - Přepsání nejsou podporována, pokud je brána Application Gateway nakonfigurována pro přesměrování požadavků nebo zobrazení vlastní chybové stránky.
 
 - Přepsání připojení, upgradu a hlaviček hostitele není v současné době podporováno.
 
-- Názvy hlaviček můžou obsahovat libovolné alfanumerické znaky a specifické symboly, jak jsou definované v [dokumentu RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). V názvech hlaviček Momentálně nepodporujeme\_speciální znak podtržítka ().
+- Názvy hlaviček můžou obsahovat libovolné alfanumerické znaky a specifické symboly, jak jsou definované v [dokumentu RFC 7230](https://tools.ietf.org/html/rfc7230#page-27). V názvech hlaviček Momentálně nepodporujeme \_ speciální znak podtržítka ().
 
 ## <a name="next-steps"></a>Další kroky
 

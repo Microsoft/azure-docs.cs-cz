@@ -5,22 +5,22 @@ services: vpn-gateway
 titleSuffix: Azure VPN Gateway
 author: cherylmc
 ms.service: vpn-gateway
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 10/17/2018
 ms.author: cherylmc
-ms.openlocfilehash: 1dc0eec6178420976181b05a059e9f8b4859ec2a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d7c00a2cd8363ae67a7a82d54e1b779bec9e94b9
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152002"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984687"
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-powershell"></a>Připojení virtuálních sítí z různých modelů nasazení pomocí PowerShellu
 
 Tento článek vám pomůže připojit klasický virtuální sítě k Správce prostředků virtuální sítě, aby bylo možné zajistit vzájemnou komunikaci prostředků umístěných v různých modelech nasazení. Kroky v tomto článku používají PowerShell, ale tuto konfiguraci můžete také vytvořit pomocí Azure Portal tak, že vyberete článek z tohoto seznamu.
 
 > [!div class="op_single_selector"]
-> * [Portál](vpn-gateway-connect-different-deployment-models-portal.md)
+> * [Azure Portal](vpn-gateway-connect-different-deployment-models-portal.md)
 > * [PowerShell](vpn-gateway-connect-different-deployment-models-powershell.md)
 > 
 > 
@@ -29,7 +29,7 @@ Připojení klasické virtuální sítě k virtuální síti Správce prostředk
 
 Pokud ještě nemáte bránu virtuální sítě a nechcete ji vytvořit, možná budete chtít místo toho připojit virtuální sítě pomocí partnerského vztahu VNet. Partnerské vztahy virtuálních sítí nepoužívají bránu VPN. Další informace najdete v tématu [Partnerské vztahy virtuálních sítí](../virtual-network/virtual-network-peering-overview.md).
 
-## <a name="before-you-begin"></a><a name="before"></a>Před zahájením
+## <a name="before-you-begin"></a><a name="before"></a>Než začnete
 
 Následující kroky vás provedou nastavením potřebným ke konfiguraci dynamické brány nebo brány založené na trasách pro každou virtuální síť a vytvoření připojení VPN mezi bránami. Tato konfigurace nepodporuje statické brány ani brány založené na zásadách.
 
@@ -229,7 +229,7 @@ Předpoklady předpokládají, že již máte vytvořenou virtuální síť slu�
    -Name gwipconfig -SubnetId $subnet.id `
    -PublicIpAddressId $ipaddress.id
    ```
-7. Vytvořte bránu virtuální sítě Správce prostředků spuštěním následujícího příkazu. `-VpnType` Musí být *RouteBased*. Vytvoření brány může trvat 45 minut nebo déle.
+7. Vytvořte bránu virtuální sítě Správce prostředků spuštěním následujícího příkazu. `-VpnType`Musí být *RouteBased*. Vytvoření brány může trvat 45 minut nebo déle.
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name RMGateway -ResourceGroupName RG1 `

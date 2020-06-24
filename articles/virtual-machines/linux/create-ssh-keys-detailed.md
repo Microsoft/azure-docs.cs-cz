@@ -6,19 +6,19 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: 5add789809f274ef5634f3c33dfedd3cd96b36d0
-ms.sourcegitcommit: f0b206a6c6d51af096a4dc6887553d3de908abf3
+ms.openlocfilehash: 44923a124b864083b1badfc617ce0303be66a10e
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84142465"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84985356"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Podrobný postup: vytváření a Správa klíčů SSH pro ověřování na virtuálním počítači Linux v Azure 
 Pomocí páru klíčů SSH (Secure Shell) můžete vytvořit virtuální počítač se systémem Linux v Azure, který bude standardně používat klíče SSH pro ověřování. tím se eliminuje nutnost přihlášení hesel. Virtuální počítače vytvořené pomocí Azure Portal, Azure CLI, šablony Správce prostředků nebo jiné nástroje můžou jako součást nasazení zahrnovat veřejný klíč SSH, který nastavuje ověřování pomocí klíče SSH pro připojení SSH. 
 
 Tento článek poskytuje podrobné informace a kroky k vytvoření a správě dvojice souborů veřejného privátního klíče SSH RSA pro připojení klientů SSH. Pokud chcete rychlé příkazy, přečtěte si téma [jak vytvořit pár veřejného a privátního klíče SSH pro virtuální počítače se systémem Linux v Azure](mac-create-ssh-keys.md).
 
-Další způsoby, jak vygenerovat a používat klíče SSH na počítači s Windows, najdete v tématu [použití klíčů ssh s Windows v Azure](ssh-from-windows.md).
+Pokud chcete vygenerovat klíče SSH a použít je k připojení k počítači s **Windows** , přečtěte si téma [použití klíčů ssh s Windows v Azure](ssh-from-windows.md).
 
 [!INCLUDE [virtual-machines-common-ssh-overview](../../../includes/virtual-machines-common-ssh-overview.md)]
 

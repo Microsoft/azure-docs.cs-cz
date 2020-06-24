@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: rohogue
 ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252542"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689891"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Příprava k vytvoření Avere vFXT
 
@@ -68,7 +68,7 @@ Tento krok je potřeba provést jenom jednou pro každé předplatné.
 
 Chcete-li přijmout podmínky pro software předem:
 
-1. Otevřete Cloud Shell v Azure Portal nebo přejděte na <https://shell.azure.com>. Přihlaste se pomocí ID předplatného.
+1. Otevřete Cloud Shell v Azure Portal nebo přejděte na <https://shell.azure.com> . Přihlaste se pomocí ID předplatného.
 
    ```azurecli
     az login
@@ -98,7 +98,7 @@ Vytvořte koncový bod služby úložiště z Azure Portal.
 1. Vyberte virtuální síť pro svůj cluster.
 1. V nabídce vlevo klikněte na **koncové body služby** .
 1. V horní části klikněte na **Přidat** .
-1. Vyberte službu ``Microsoft.Storage``.
+1. Vyberte službu ``Microsoft.Storage`` .
 1. Vyberte podsíť clusteru.
 1. V dolní části klikněte na **Přidat**.
 

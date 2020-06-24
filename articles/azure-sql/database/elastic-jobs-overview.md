@@ -11,12 +11,12 @@ author: srinia
 ms.author: srinia
 ms.reviewer: sstein
 ms.date: 12/18/2018
-ms.openlocfilehash: 995d70419edb374c3761fe2f989ce3a757cc7a47
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 62202946193c111921c97dc95a7ec7955a63804f
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84050062"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251158"
 ---
 # <a name="create-configure-and-manage-elastic-jobs"></a>Vytváření, konfigurace a Správa elastických úloh
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -27,7 +27,7 @@ Pokud jste elastické úlohy nepoužívali, [Přečtěte si další informace o 
 
 ## <a name="create-and-configure-the-agent"></a>Vytvoření a konfigurace agenta
 
-1. Vytvořte nebo určete prázdnou databázi SQL S0 nebo vyšší. Tato databáze bude použita jako *databáze úlohy* během vytváření agenta elastické úlohy.
+1. Vytvořte nebo Identifikujte prázdnou databázi S0 nebo vyšší. Tato databáze bude použita jako *databáze úlohy* během vytváření agenta elastické úlohy.
 2. Vytvořte agenta elastické úlohy na [portálu](https://portal.azure.com/#create/Microsoft.SQLElasticJobAgent) nebo pomocí [PowerShellu](elastic-jobs-powershell-create.md#create-the-elastic-job-agent).
 
    ![Vytváří se agent elastické úlohy.](./media/elastic-jobs-overview/create-elastic-job-agent.png)

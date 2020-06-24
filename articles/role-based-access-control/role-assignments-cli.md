@@ -8,18 +8,18 @@ manager: mtillman
 ms.assetid: 3483ee01-8177-49e7-b337-4d5cb14f5e32
 ms.service: role-based-access-control
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 3a66482aeee7832baa91fe98357b870e2a280912
-ms.sourcegitcommit: 4499035f03e7a8fb40f5cff616eb01753b986278
+ms.openlocfilehash: 95ec9a25f97154d8e2d0e2e5b5f9cd29cf7a9c31
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/03/2020
-ms.locfileid: "82735772"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84983321"
 ---
 # <a name="add-or-remove-azure-role-assignments-using-azure-cli"></a>Přidání nebo odebrání přiřazení rolí Azure pomocí Azure CLI
 
@@ -34,7 +34,7 @@ Chcete-li přidat nebo odebrat přiřazení rolí, je nutné mít následující
 
 ## <a name="get-object-ids"></a>Získat ID objektů
 
-Pokud chcete přidat nebo odebrat přiřazení rolí, možná budete muset zadat jedinečné ID objektu. ID má formát: `11111111-1111-1111-1111-111111111111`. ID můžete získat pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI.
+Pokud chcete přidat nebo odebrat přiřazení rolí, možná budete muset zadat jedinečné ID objektu. ID má formát: `11111111-1111-1111-1111-111111111111` . ID můžete získat pomocí Azure Portal nebo rozhraní příkazového řádku Azure CLI.
 
 ### <a name="user"></a>Uživatel
 
@@ -69,10 +69,10 @@ Když v Azure RBAC udělíte přístup, přidáte přiřazení role.
 Chcete-li přidat přiřazení role pro uživatele v oboru skupiny prostředků, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create).
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --resource-group <resource_group>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --resource-group {resourceGroup}
 ```
 
-Následující příklad přiřadí roli *Přispěvatel virtuálních počítačů* k *patlong\@uživatele contoso.com* v oboru skupiny prostředků *Pharma-Sales* :
+Následující příklad přiřadí roli *Přispěvatel virtuálních počítačů* k *patlong uživatele \@ contoso.com* v oboru skupiny prostředků *Pharma-Sales* :
 
 ```azurecli
 az role assignment create --role "Virtual Machine Contributor" --assignee patlong@contoso.com --resource-group pharma-sales
@@ -94,10 +94,10 @@ I když je role přejmenována, ID role se nezmění. Pokud k vytváření při�
 Pokud chcete přidat přiřazení role pomocí jedinečného ID role místo názvu role, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create).
 
 ```azurecli
-az role assignment create --role <role_id> --assignee <assignee> --resource-group <resource_group>
+az role assignment create --role {roleId} --assignee {assignee} --resource-group {resourceGroup}
 ```
 
-Následující příklad přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k uživateli *patlong\@contoso.com* v oboru skupiny prostředků *Pharma-Sales* . Pokud chcete získat jedinečné ID role, můžete použít příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list) nebo zobrazit [předdefinované role Azure](built-in-roles.md).
+Následující příklad přiřadí roli [Přispěvatel virtuálních počítačů](built-in-roles.md#virtual-machine-contributor) k uživateli *patlong \@ contoso.com* v oboru skupiny prostředků *Pharma-Sales* . Pokud chcete získat jedinečné ID role, můžete použít příkaz [AZ role definition list](/cli/azure/role/definition#az-role-definition-list) nebo zobrazit [předdefinované role Azure](built-in-roles.md).
 
 ```azurecli
 az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee patlong@contoso.com --resource-group pharma-sales
@@ -108,7 +108,7 @@ az role assignment create --role 9980e02c-c2be-4d73-94e8-173b1dc7cf3c --assignee
 Chcete-li přidat přiřazení role pro skupinu, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Informace o tom, jak získat ID objektu skupiny, najdete v tématu [získání ID objektů](#get-object-ids).
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --resource-group {resourceGroup} --scope /subscriptions/{subscriptionId}
 ```
 
 Následující příklad přiřadí roli *Čtenář* ke skupině *týmu Ann Mack* s ID 22222222-2222-2222-2222-222222222222 v oboru předplatného.
@@ -132,7 +132,7 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 Chcete-li přidat přiřazení role pro aplikaci, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Informace o tom, jak získat ID objektu aplikace, najdete v tématu [získání ID objektů](#get-object-ids).
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --resource-group <resource_group>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --resource-group {resourceGroup}
 ```
 
 Následující příklad přiřadí roli *Přispěvatel virtuálních počítačů* k aplikaci s ID objektu 44444444-4444-4444-4444-444444444444 v oboru skupiny prostředků *Pharma-Sales* .
@@ -146,10 +146,10 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 Pokud chcete přidat přiřazení role pro uživatele v oboru předplatného, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Pokud chcete získat ID předplatného, najdete ho v okně **předplatná** v Azure Portal nebo můžete použít příkaz [AZ Account list](/cli/azure/account#az-account-list).
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --subscription <subscription_name_or_id>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --subscription {subscriptionNameOrId}
 ```
 
-Následující příklad přiřadí roli *Čtenář* k uživateli *annm\@example.com* v oboru předplatného.
+Následující příklad přiřadí roli *Čtenář* k uživateli *annm \@ example.com* v oboru předplatného.
 
 ```azurecli
 az role assignment create --role "Reader" --assignee annm@example.com --subscription 00000000-0000-0000-0000-000000000000
@@ -160,10 +160,10 @@ az role assignment create --role "Reader" --assignee annm@example.com --subscrip
 Chcete-li přidat přiřazení role pro uživatele v oboru skupiny pro správu, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create). Chcete-li získat ID skupiny pro správu, můžete ji najít v okně **skupiny pro správu** v Azure Portal nebo můžete použít [příkaz AZ Account Management-Group list](/cli/azure/account/management-group#az-account-management-group-list).
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee <assignee> --scope /providers/Microsoft.Management/managementGroups/<group_id>
+az role assignment create --role {roleNameOrId} --assignee {assignee} --scope /providers/Microsoft.Management/managementGroups/{groupId}
 ```
 
-Následující příklad přiřadí roli *Čtenář fakturace* uživateli *Alain\@example.com* v oboru skupiny pro správu.
+Následující příklad přiřadí roli *Čtenář fakturace* uživateli *Alain \@ example.com* v oboru skupiny pro správu.
 
 ```azurecli
 az role assignment create --role "Billing Reader" --assignee alain@example.com --scope /providers/Microsoft.Management/managementGroups/marketing-group
@@ -173,10 +173,10 @@ az role assignment create --role "Billing Reader" --assignee alain@example.com -
 
 Pokud vytvoříte nový instanční objekt a hned se pokusíte přiřadit roli k tomuto instančnímu objektu, toto přiřazení role může v některých případech selhat. Pokud například použijete skript k vytvoření nové spravované identity a potom se pokusíte přiřadit roli k tomuto instančnímu objektu, přiřazení role se nemusí zdařit. Důvodem této chyby je nejspíš zpoždění replikace. Instanční objekt se vytvoří v jedné oblasti. přiřazení role se ale může vyskytnout v jiné oblasti, která ještě nereplikoval instanční objekt. Chcete-li tento scénář vyřešit, je nutné při vytváření přiřazení role zadat typ objektu zabezpečení.
 
-Chcete-li přidat přiřazení role, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create), zadejte hodnotu `--assignee-object-id`pro a pak nastavte `--assignee-principal-type` na `ServicePrincipal`.
+Chcete-li přidat přiřazení role, použijte příkaz [AZ role Assignment Create](/cli/azure/role/assignment#az-role-assignment-create), zadejte hodnotu pro `--assignee-object-id` a pak nastavte `--assignee-principal-type` na `ServicePrincipal` .
 
 ```azurecli
-az role assignment create --role <role_name_or_id> --assignee-object-id <assignee_object_id> --assignee-principal-type <assignee_principal_type> --resource-group <resource_group> --scope </subscriptions/subscription_id>
+az role assignment create --role {roleNameOrId} --assignee-object-id {assigneeObjectId} --assignee-principal-type {assigneePrincipalType} --resource-group {resourceGroup} --scope /subscriptions/{subscriptionId}
 ```
 
 Následující příklad přiřadí roli *Přispěvatel virtuálních počítačů* k spravované identitě *MSI-test* v oboru skupiny prostředků *Pharma-Sales* :
@@ -190,10 +190,10 @@ az role assignment create --role "Virtual Machine Contributor" --assignee-object
 Chcete-li v Azure RBAC odebrat přístup, odeberte přiřazení role pomocí funkce [AZ role Assignment Delete](/cli/azure/role/assignment#az-role-assignment-delete):
 
 ```azurecli
-az role assignment delete --assignee <assignee> --role <role_name_or_id> --resource-group <resource_group>
+az role assignment delete --assignee {assignee} --role {roleNameOrId} --resource-group {resourceGroup}
 ```
 
-Následující příklad odebere přiřazení role *Přispěvatel virtuálních počítačů* z uživatele *patlong\@contoso.com* ve skupině prostředků *Pharma-Sales* :
+Následující příklad odebere přiřazení role *Přispěvatel virtuálních počítačů* z uživatele *patlong \@ contoso.com* ve skupině prostředků *Pharma-Sales* :
 
 ```azurecli
 az role assignment delete --assignee patlong@contoso.com --role "Virtual Machine Contributor" --resource-group pharma-sales
@@ -205,7 +205,7 @@ Následující příklad odebere roli *Čtenář* z *týmové skupiny Ann Mack* 
 az role assignment delete --assignee 22222222-2222-2222-2222-222222222222 --role "Reader" --subscription 00000000-0000-0000-0000-000000000000
 ```
 
-Následující příklad odebere roli *Čtenář fakturace* z uživatele *Alain\@example.com* v oboru skupiny pro správu. ID skupiny pro správu můžete získat pomocí ovládacího panelu [AZ Account Management-Group list](/cli/azure/account/management-group#az-account-management-group-list).
+Následující příklad odebere roli *Čtenář fakturace* z uživatele *Alain \@ example.com* v oboru skupiny pro správu. ID skupiny pro správu můžete získat pomocí ovládacího panelu [AZ Account Management-Group list](/cli/azure/account/management-group#az-account-management-group-list).
 
 ```azurecli
 az role assignment delete --assignee alain@example.com --role "Billing Reader" --scope /providers/Microsoft.Management/managementGroups/marketing-group

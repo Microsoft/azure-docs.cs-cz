@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 11/19/2019
-ms.openlocfilehash: 0285520c2733cd6e190f9055824cdfed0ce4b842
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 59a335e41116818e41579488cc6931ed1534c9ab
+ms.sourcegitcommit: 55b2bbbd47809b98c50709256885998af8b7d0c5
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82189850"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "84984893"
 ---
 # <a name="create-python-model-module"></a>Vytvořit modul Python model
 
@@ -25,7 +25,7 @@ Naučte se používat modul vytvořit model Python k vytvoření nevýukového m
 Po vytvoření modelu můžete použít [model výuky](train-model.md) pro výuku modelu pro datovou sadu, jako je jakékoli jiné informace v Azure Machine Learning. Školený model lze předat [modelu skóre](score-model.md) , aby bylo možné provést předpovědi. Potom můžete uložit trained model a publikovat pracovní postup bodování jako webovou službu.
 
 > [!WARNING]
-> V současné době není možné předat výsledky skóre modelu Pythonu k [vyhodnocení modelu](evaluate-model.md). Pokud potřebujete vyhodnotit model, můžete napsat vlastní skript Pythonu a spustit ho pomocí modulu [spuštění skriptu Pythonu](execute-python-script.md) .  
+> V současné době není možné tento modul připojit k **ladění modelu modulu parametrů** nebo předávat výsledky skóre modelu Pythonu k [vyhodnocení modelu](evaluate-model.md). Pokud potřebujete ladit moje parametry nebo vyhodnotit model, můžete napsat vlastní skript Pythonu pomocí modulu [Spustit skript Pythonu](execute-python-script.md) .
 
 
 ## <a name="configure-the-module"></a>Konfigurace modulu

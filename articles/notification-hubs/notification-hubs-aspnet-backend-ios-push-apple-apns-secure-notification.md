@@ -4,9 +4,7 @@ description: Naučte se odesílat zabezpečená nabízená oznámení do aplikac
 documentationcenter: ios
 author: sethmanheim
 manager: femila
-editor: jwargo
 services: notification-hubs
-ms.assetid: 17d42b0a-2c80-4e35-a1ed-ed510d19f4b4
 ms.service: notification-hubs
 ms.workload: mobile
 ms.tgt_pltfrm: ios
@@ -16,12 +14,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 96d1dd514f6fb9c11d7194714337583d6b4387cf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aa84ad9f48f79a77bad1445dadc8c5c965b13655
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75530744"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248696"
 ---
 # <a name="azure-notification-hubs-secure-push"></a>Azure Notification Hubs Secure push
 
@@ -50,7 +48,7 @@ Je důležité si uvědomit, že v předchozím toku (a v tomto kurzu) předpokl
 Tento kurz zabezpečeného nabízeného oznámení ukazuje, jak bezpečně odeslat nabízené oznámení. Kurz se sestaví v kurzu [informování uživatelů](notification-hubs-aspnet-backend-ios-apple-apns-notification.md) , takže byste nejdřív měli provést kroky v tomto kurzu.
 
 > [!NOTE]
-> V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali centrum oznámení, jak je popsáno v tématu [Začínáme with Notification Hubs (iOS)](notification-hubs-ios-apple-push-notification-apns-get-started.md).
+> V tomto kurzu se předpokládá, že jste vytvořili a nakonfigurovali centrum oznámení, jak je popsáno v tématu [Posílání nabízených oznámení do aplikací pro iOS pomocí Azure Notification Hubs](ios-sdk-get-started.md).
 
 [!INCLUDE [notification-hubs-aspnet-backend-securepush](../../includes/notification-hubs-aspnet-backend-securepush.md)]
 
@@ -60,12 +58,12 @@ Teď, když jste změnili back-end aplikace, abyste poslali jenom *ID* oznámen�
 
 Abychom dosáhli tohoto cíle, musíme napsat logiku, která načte zabezpečený obsah z back-endu aplikace.
 
-1. V `AppDelegate.m`nástroji se ujistěte, že aplikace registruje pro tichá oznámení, aby zpracovala ID oznámení odeslané z back-endu. Přidejte `UIRemoteNotificationTypeNewsstandContentAvailability` možnost do didFinishLaunchingWithOptions:
+1. V nástroji se ujistěte, `AppDelegate.m` že aplikace registruje pro tichá oznámení, aby zpracovala ID oznámení odeslané z back-endu. Přidejte `UIRemoteNotificationTypeNewsstandContentAvailability` možnost do didFinishLaunchingWithOptions:
 
     ```objc
     [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeSound | UIRemoteNotificationTypeNewsstandContentAvailability];
     ```
-2. V horní `AppDelegate.m` části Přidat implementaci s následující deklarací:
+2. V `AppDelegate.m` horní části Přidat implementaci s následující deklarací:
 
     ```objc
     @interface AppDelegate ()

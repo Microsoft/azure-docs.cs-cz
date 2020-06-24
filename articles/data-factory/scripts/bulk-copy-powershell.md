@@ -10,16 +10,16 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: seo-lt-2019
 ms.date: 10/31/2017
-ms.openlocfilehash: efc79f82a2181099f832da0d4a17fc370bf4f7f6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e0fedd2a304c73347b7ec72818b5289c1df2e561
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74929872"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85248595"
 ---
 # <a name="powershell-script---copy-multiple-tables-in-bulk-by-using-azure-data-factory"></a>Skript PowerShellu – hromadné kopírování více tabulek pomocí Azure Data Factory
 
-Tento ukázkový skript PowerShellu kopíruje data z několika tabulek ve službě Azure SQL Database do služby Azure SQL Data Warehouse.
+Tento ukázkový skript PowerShellu kopíruje data z několika tabulek v Azure SQL Database do služby Azure SQL Data Warehouse.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
