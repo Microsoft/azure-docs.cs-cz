@@ -3,14 +3,14 @@ title: Template deployment co-if (Preview)
 description: Než nasadíte šablonu Azure Resource Manager, určete, jaké změny se budou probíhat u vašich prostředků.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 06/05/2020
+ms.date: 06/16/2020
 ms.author: tomfitz
-ms.openlocfilehash: abe834670c5df461b523bd48717f20093bdef0a3
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 1e2c83167e7ccc1e3e98b23711fba567ef11ac23
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84457282"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888739"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>Operace nasazení šablony ARM – if (Preview)
 
@@ -100,6 +100,9 @@ Scope: /subscriptions/./resourceGroups/ExampleGroup
 
 Resource changes: 1 to modify.
 ```
+
+> [!NOTE]
+> Operace citlivosti nemůže vyřešit [odkazovou funkci](template-functions-resource.md#reference). Pokaždé, když nastavíte vlastnost na výraz šablony, který obsahuje referenční funkci, co-if hlásí vlastnost se změní. K tomuto chování dochází, protože co porovná aktuální hodnotu vlastnosti (například `true` nebo `false` pro logickou hodnotu) s nerozpoznaným výrazem šablony. Tyto hodnoty se tak zjevně neshodují. Když nasadíte šablonu, vlastnost se změní pouze v případě, že je výraz šablony přeložen na jinou hodnotu.
 
 ## <a name="what-if-commands"></a>Příkazy citlivostní informace
 

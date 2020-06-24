@@ -2,28 +2,28 @@
 title: Prostředky pro migraci aplikací na Azure Active Directory | Microsoft Docs
 description: Materiály, které vám pomůžou migrovat přístup k aplikacím a ověřování pro Azure Active Directory (Azure AD).
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 02/29/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b30469858a5dd83f7f5f707f74466302b3000510
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3fe21b6509080e88c63d9c02c8116f3882fb64dd
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78968725"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763104"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Prostředky pro migraci aplikací na Azure Active Directory
 
-Materiály, které vám pomůžou migrovat přístup k aplikacím a ověřování pro Azure Active Directory (Azure AD). Proveďte tento krátký průzkum (https://aka.ms/AppsMigrationFeedback) a poskytněte nám zpětnou vazbu k vašemu prostředí, které migruje aplikace do služby Azure AD (včetně blokovaných uživatelů pro migraci, potřebu nástrojů/pokynů nebo důvodů uchování místních IDP). 
+Materiály, které vám pomůžou migrovat přístup k aplikacím a ověřování pro Azure Active Directory (Azure AD). Proveďte tento krátký průzkum ( https://aka.ms/AppsMigrationFeedback) a poskytněte nám zpětnou vazbu k vašemu prostředí, které migruje aplikace do služby Azure AD (včetně blokovaných uživatelů pro migraci, potřebu nástrojů/pokynů nebo důvodů uchování místních IDP). 
 
-| Prostředek  | Popis  |
+| Prostředek  | Description  |
 |:-----------|:-------------|
 |[Migrace aplikací do Azure AD](https://aka.ms/migrateapps/whitepaper) | Tento dokument White Paper přináší výhody migrace a popisuje, jak naplánovat migraci ve čtyřech jasně uvedených fázích: zjišťování, klasifikace, migrace a průběžná správa. Provedete vás postupem, jak se zamyslet na proces a rozdělte projekt na snadno ovladatelné části. V celém dokumentu jsou odkazy na důležité prostředky, které vám pomůžou na cestě. |
 |[Průvodce řešením: migrace aplikací z Active Directory Federation Services (AD FS) (AD FS) do služby Azure AD](https://aka.ms/migrateapps/adfssolutionguide) | Tento průvodce řešením vás provede stejnými čtyřmi fázemi plánování a provádění projektu migrace aplikace popsaného na vyšší úrovni v dokumentu White paper pro migraci. V této příručce se dozvíte, jak tyto fáze použít na konkrétní cíl přesunutí aplikace ze služby Azure Directory federovaným Services (AD FS) do Azure AD.|

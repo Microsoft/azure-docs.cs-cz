@@ -12,15 +12,15 @@ ms.service: azure-cdn
 ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: multiple
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/1/2018
 ms.author: mazha
-ms.openlocfilehash: f28282a802e4b38fadc05c7090fa2a2af154de54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: c41e14490842068895aea383d384007f308e9e1c
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74083158"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887675"
 ---
 # <a name="manage-expiration-of-azure-blob-storage-in-azure-cdn"></a>Správa vypršení platnosti služby Azure Blob Storage v Azure CDN
 > [!div class="op_single_selector"]
@@ -29,7 +29,7 @@ ms.locfileid: "74083158"
 > 
 > 
 
-[Služba BLOB Storage](../storage/common/storage-introduction.md#blob-storage) v Azure Storage je jedním z několika zdrojů založených na platformě Azure integrovaných se službou Azure Content DELIVERY Network (CDN). Veškerý veřejně přístupný obsah objektu BLOB se dá v Azure CDN Uložit do mezipaměti, dokud neuplyne jeho hodnota TTL (Time to Live). Hodnota TTL je určena `Cache-Control` hlavičkou v odpovědi HTTP ze zdrojového serveru. Tento článek popisuje několik způsobů, jak můžete nastavit `Cache-Control` hlavičku objektu blob v Azure Storage.
+[Služba BLOB Storage](../storage/common/storage-introduction.md#blob-storage) v Azure Storage je jedním z několika zdrojů založených na platformě Azure integrovaných se službou Azure Content DELIVERY Network (CDN). Veškerý veřejně přístupný obsah objektu BLOB se dá v Azure CDN Uložit do mezipaměti, dokud neuplyne jeho hodnota TTL (Time to Live). Hodnota TTL je určena `Cache-Control` hlavičkou v odpovědi HTTP ze zdrojového serveru. Tento článek popisuje několik způsobů, jak můžete nastavit `Cache-Control` hlavičku objektu BLOB v Azure Storage.
 
 Nastavení mezipaměti můžete také ovládat z Azure Portal nastavením pravidel ukládání do mezipaměti CDN. Pokud vytvoříte pravidlo ukládání do mezipaměti a nastavíte jeho chování ukládání do mezipaměti pro **přepsání** nebo **obejít mezipaměť**, budou nastavení ukládání do mezipaměti uvedená v tomto článku ignorována. Informace o obecných konceptech mezipaměti najdete v tématu [Jak funguje ukládání do mezipaměti](cdn-how-caching-works.md).
 
@@ -42,7 +42,7 @@ Nastavení mezipaměti můžete také ovládat z Azure Portal nastavením pravid
  
 
 ## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Nastavení hlaviček Cache-Control pomocí pravidel ukládání do mezipaměti CDN
-Upřednostňovanou metodou pro nastavení `Cache-Control` záhlaví objektu BLOB je použití pravidel ukládání do mezipaměti v Azure Portal. Další informace o pravidlech ukládání do mezipaměti CDN najdete v tématu [Azure CDN řízení chování při ukládání do mezipaměti pomocí pravidel pro ukládání do](cdn-caching-rules.md)mezipaměti.
+Upřednostňovanou metodou pro nastavení záhlaví objektu BLOB `Cache-Control` je použití pravidel ukládání do mezipaměti v Azure Portal. Další informace o pravidlech ukládání do mezipaměti CDN najdete v tématu [Azure CDN řízení chování při ukládání do mezipaměti pomocí pravidel pro ukládání do](cdn-caching-rules.md)mezipaměti.
 
 > [!NOTE] 
 > Pravidla ukládání do mezipaměti jsou k dispozici pouze pro **Azure CDN Standard od Verizon** a **Azure CDN Standard od profilů Akamai** . Pro **Azure CDN Premium ze profilů Verizon** je nutné použít [modul Azure CDN Rules](cdn-rules-engine.md) na portálu pro **správu** pro podobné funkce.
@@ -68,7 +68,7 @@ Upřednostňovanou metodou pro nastavení `Cache-Control` záhlaví objektu BLOB
 
    ![Příklad globálních pravidel ukládání do mezipaměti CDN](./media/cdn-manage-expiration-of-blob-content/cdn-global-caching-rules-example.png)
 
-   Toto globální pravidlo ukládání do mezipaměti nastavuje dobu trvání mezipaměti jednu hodinu a ovlivňuje všechny požadavky na koncový bod. Přepíše všechny `Cache-Control` hlavičky `Expires` protokolu HTTP, které jsou odesílány ze zdrojového serveru zadaného koncovým bodem.   
+   Toto globální pravidlo ukládání do mezipaměti nastavuje dobu trvání mezipaměti jednu hodinu a ovlivňuje všechny požadavky na koncový bod. Přepíše všechny `Cache-Control` `Expires` hlavičky protokolu HTTP, které jsou odesílány ze zdrojového serveru zadaného koncovým bodem.   
 
 3. Vyberte **Uložit**.
  
@@ -82,7 +82,7 @@ Upřednostňovanou metodou pro nastavení `Cache-Control` záhlaví objektu BLOB
 
     ![Příklad vlastních pravidel ukládání do mezipaměti CDN](./media/cdn-manage-expiration-of-blob-content/cdn-custom-caching-rules-example.png)
 
-    První vlastní pravidlo ukládání do mezipaměti nastaví dobu trvání mezipaměti pro všechny soubory objektů BLOB ve `/blobcontainer1` složce na zdrojovém serveru určeném vaším koncovým bodem na čtyři hodiny. Druhé pravidlo přepíše první pravidlo pouze pro soubor `blob1.txt` objektu BLOB a nastaví pro něj dobu trvání mezipaměti dvě hodiny.
+    První vlastní pravidlo ukládání do mezipaměti nastaví dobu trvání mezipaměti pro všechny soubory objektů BLOB ve `/blobcontainer1` složce na zdrojovém serveru určeném vaším koncovým bodem na čtyři hodiny. Druhé pravidlo přepíše první pravidlo `blob1.txt` pouze pro soubor objektu BLOB a nastaví pro něj dobu trvání mezipaměti dvě hodiny.
 
 2. Vyberte **Uložit**.
 
@@ -115,7 +115,7 @@ $blob.ICloudBlob.SetProperties()
 >
 
 ## <a name="setting-cache-control-headers-by-using-net"></a>Nastavení hlaviček Cache-Control pomocí .NET
-Chcete-li zadat `Cache-Control` hlavičku objektu BLOB pomocí kódu .NET, nastavte vlastnost [CloudBlob. Properties. CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) pomocí [Azure Storage klientské knihovny pro rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) .
+Chcete-li zadat hlavičku objektu BLOB `Cache-Control` pomocí kódu .NET, nastavte vlastnost [CloudBlob. Properties. CacheControl](/dotnet/api/microsoft.azure.storage.blob.blobproperties.cachecontrol) pomocí [Azure Storage klientské knihovny pro rozhraní .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md) .
 
 Příklad:
 

@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: christoc
 ms.reviewer: xpouyat; juliako
 ms.openlocfilehash: 1ab70d56bd3def58d0e814035070cf027a88cd3d
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251008"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712424"
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>Pokročilé kurzy k Media Encoderu Premium Workflow
 ## <a name="overview"></a>Přehled
@@ -601,7 +601,7 @@ Nyní spusťte místní testovací běh. Po tomto spuštění zkontrolujte (pros
 
 Objekt uzlu, na kterém zavoláte metodu protokolu, odkazuje na náš aktuální "uzel" nebo komponentu, v rámci které provádíte skriptování. Všechny komponenty, které mají možnost výstupovat data protokolování, jsou k dispozici prostřednictvím karty systém. V tomto případě výstup řetězcového literálu "Hello World". Důležité je vědět, že se tady můžete ukázat jako nehodnotný ladicí nástroj, který vám poskytne přehled o tom, co skript skutečně dělá.
 
-V rámci našeho skriptovacího prostředí máme také přístup k vlastnostem jiných komponent. Vyzkoušejte tohle:
+V rámci našeho skriptovacího prostředí máme také přístup k vlastnostem jiných komponent. Vyzkoušejte následující:
 
 ```java
     //inspect current node:
@@ -761,7 +761,7 @@ To bylo provedeno prostřednictvím normální operace manipulace s řetězci. V
 
 *Protokolování výsledného seznamu klipů*
 
-Proveďte testovací spuštění, abyste viděli, jak byly oříznuté streamování videa a zvuku. Jak provedete více než jeden testovací běh s různými hodnotami pro oříznutí bodů, všimnete si, že se ale neberou v úvahu. Důvodem je, že návrhář, na rozdíl od modulu Azure runtime, nepřepisuje cliplist XML při každém spuštění. To znamená, že pouze poprvé jste nastavili body in a out, což způsobí transformaci kódu XML (pokud (`clipListXML.indexOf("<trim>") == -1`)) zabrání v přidání dalšího elementu Trim, pokud již existuje.
+Proveďte testovací spuštění, abyste viděli, jak byly oříznuté streamování videa a zvuku. Jak provedete více než jeden testovací běh s různými hodnotami pro oříznutí bodů, všimnete si, že se ale neberou v úvahu. Důvodem je, že návrhář, na rozdíl od modulu Azure runtime, nepřepisuje cliplist XML při každém spuštění. To znamená, že pouze poprvé jste nastavili body in a out, což způsobí transformaci kódu XML (pokud ( `clipListXML.indexOf("<trim>") == -1` )) zabrání v přidání dalšího elementu Trim, pokud již existuje.
 
 Abychom mohli náš pracovní postup dobře testovat v místním prostředí, je vhodné přidat nějaký kód pro vedení práce, který kontroluje, zda již existuje element Trim. Pokud ano, můžeme ho odebrat, než budete pokračovat úpravou XML novými hodnotami. Místo toho, aby se nepoužívaly manipulace s prostými řetězci, je pravděpodobně bezpečnější provést pomocí reálné analýzy modelu objektu XML.
 

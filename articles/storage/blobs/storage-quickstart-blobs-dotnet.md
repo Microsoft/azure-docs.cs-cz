@@ -8,11 +8,11 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: 5cfb0430bc94d347afd75bc01170a71a7ad53565
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240503"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711863"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rychlý Start: Klientská knihovna pro úložiště objektů BLOB v Azure V12 pro .NET
 
@@ -29,7 +29,7 @@ Použijte klientskou knihovnu služby Azure Blob Storage V12 pro .NET pro:
 * Stažení objektu blob do místního počítače
 * Odstranění kontejneru
 
-[Dokumentace k referenční dokumentaci k](/dotnet/api/azure.storage.blobs) | rozhraní API[Ukázka](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples) balíčku[zdrojového kódu](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs) | knihovny[(NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs) | 
+[Referenční dokumentace k](/dotnet/api/azure.storage.blobs)  |  rozhraní API [Zdrojový kód knihovny](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)  |  [Balíček (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)  |  [Ukázky](https://docs.microsoft.com/azure/storage/common/storage-samples-dotnet?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -118,10 +118,10 @@ Na následujícím diagramu jsou vztahy těchto prostředků.
 
 Pro interakci s těmito prostředky použijte následující třídy .NET:
 
-* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): `BlobServiceClient` třída umožňuje manipulovat s Azure Storage prostředky a kontejnery objektů BLOB.
-* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): `BlobContainerClient` třída umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
-* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): `BlobClient` třída umožňuje manipulovat s objekty blob Azure Storage.
-* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo): `BlobDownloadInfo` třída představuje vlastnosti a obsah vrácený stažením objektu BLOB.
+* [BlobServiceClient](/dotnet/api/azure.storage.blobs.blobserviceclient): `BlobServiceClient` Třída umožňuje manipulovat s Azure Storage prostředky a kontejnery objektů BLOB.
+* [BlobContainerClient](/dotnet/api/azure.storage.blobs.blobcontainerclient): `BlobContainerClient` Třída umožňuje manipulovat s kontejnery Azure Storage a jejich objekty blob.
+* [BlobClient](/dotnet/api/azure.storage.blobs.blobclient): `BlobClient` Třída umožňuje manipulovat s objekty blob Azure Storage.
+* [BlobDownloadInfo](/dotnet/api/azure.storage.blobs.models.blobdownloadinfo): `BlobDownloadInfo` Třída představuje vlastnosti a obsah vrácený stažením objektu BLOB.
 
 ## <a name="code-examples"></a>Příklady kódu
 

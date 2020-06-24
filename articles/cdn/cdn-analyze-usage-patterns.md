@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: d48ddafdc1ec30ae1533b3a3101582f33e7f4b5c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3dc7547dbcf2bde7dd7db0d3f0db3f163a5910ef
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594163"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888440"
 ---
 # <a name="core-reports-from-verizon"></a>Základní sestavy z Verizon
 
@@ -81,7 +81,7 @@ Pokud chcete snížit počet neúspěšných přístupů do mezipaměti, nakonfi
  * Dotaz – ukládání řetězců do mezipaměti, pokud není potřeba striktně  
  * Kódy odpovědí, které nejsou v mezipaměti
 
-Pokud chcete snížit počet přístupů do mezipaměti s vypršenou `max-age` platností, nastavte prostředek na dlouhou dobu, aby se minimalizoval počet požadavků na zdrojový server.
+Pokud chcete snížit počet přístupů do mezipaměti s vypršenou platností, nastavte prostředek `max-age` na dlouhou dobu, aby se minimalizoval počet požadavků na zdrojový server.
 
 ![Sestava stavů mezipaměti](./media/cdn-reports/cdn-cache-statuses.png)
 
@@ -106,7 +106,7 @@ Pokud chcete snížit počet přístupů do mezipaměti s vypršenou `max-age` p
 * ŽÁDNÉ – tento stav označuje, že nebyla provedena kontrolu aktuálnosti obsahu mezipaměti.
 * TCP_CLIENT_REFRESH_MISS: Tento stav se oznamuje, když klient HTTP, jako je například prohlížeč, vynutí, aby bod POP načetl novou verzi zastaralého prostředku ze zdrojového serveru. Ve výchozím nastavení servery brání klientovi protokolu HTTP v vynucování hraničních serverů, aby načetla novou verzi assetu ze zdrojového serveru.
 * TCP_PARTIAL_HIT: Tento stav se oznamuje, když požadavek na rozsah bajtů vychází z důvodu dosažení částečně uloženého prostředku v mezipaměti. Požadovaný rozsah bajtů je okamžitě obsluhován z bodu POP klientovi.
-* Nedá se Uložit do mezipaměti: Tento stav se oznamuje, když `Cache-Control` se `Expires` v záhlaví a hlavičkách assetu označuje, že by neměl být uložený v mezipaměti na POP nebo klientovi HTTP. Tyto typy požadavků jsou obsluhovány ze zdrojového serveru.
+* Nedá se Uložit do mezipaměti: Tento stav se oznamuje, když se v `Cache-Control` `Expires` záhlaví a hlavičkách assetu označuje, že by neměl být uložený v mezipaměti na POP nebo klientovi HTTP. Tyto typy požadavků jsou obsluhovány ze zdrojového serveru.
 
 ## <a name="cache-hit-ratio"></a>Poměr přístupů do mezipaměti
 Tato sestava indikuje procento požadavků uložených v mezipaměti, které byly obsluhovány přímo z mezipaměti.
@@ -120,7 +120,7 @@ Tato sestava poskytuje následující podrobnosti:
 Sestava neobsahuje:
 
 * Žádosti, které jsou zamítnuté z důvodu možností filtrování země/oblasti
-* Žádosti o prostředky, jejichž záhlaví označují, že by neměly být ukládány do mezipaměti Například `Cache-Control: private` `Cache-Control: no-cache`záhlaví zabraňují ukládání prostředku do mezipaměti. `Pragma: no-cache`
+* Žádosti o prostředky, jejichž záhlaví označují, že by neměly být ukládány do mezipaměti Například `Cache-Control: private` `Cache-Control: no-cache` `Pragma: no-cache` záhlaví zabraňují ukládání prostředku do mezipaměti.
 * Počet požadavků na rozsah bajtů pro částečně uložený obsah v mezipaměti.
 
 Vzorec je: (TCP_ úspěšný/(TCP_ PŘÍSTUPŮ + TCP_MISS)) * 100

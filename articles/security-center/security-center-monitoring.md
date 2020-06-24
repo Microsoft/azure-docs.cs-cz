@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2018
 ms.author: memildin
-ms.openlocfilehash: 40352b7ae1f3fb6b1178f2dfe70cdca9871c76b7
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d18258d62267c931a39947611dda038ff6e65205
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77603768"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718695"
 ---
 # <a name="strengthen-your-security-posture-with-azure-security-center"></a>Posílení stavu zabezpečení s využitím služby Azure Security Center
 Tento článek vám pomůže posílit stav zabezpečení. Využijte možnosti monitorování v Azure Security Center, abyste se ujistili, že zabezpečení prostředků je co nejtěsnější a jak monitorovat dodržování zásad.
@@ -34,7 +34,7 @@ Můžete zobrazit stav zabezpečení svých prostředků a jakékoli problémy n
 - Pokud chcete monitorovat vaše síťové prostředky, jako jsou virtuální počítače, skupiny zabezpečení sítě a koncové body a dostávat doporučení pro zlepšení zabezpečení, přečtěte si téma [Ochrana sítě v Azure Security Center](security-center-network-recommendations.md) , kde najdete další informace. 
 - Další informace najdete [Azure Security Center v tématu Ochrana](security-center-sql-service-recommendations.md) dat a prostředků úložiště, například serverů SQL a účtů úložiště, a přijetí doporučení pro zlepšení zabezpečení. 
 - Pokud chcete monitorovat identitu a získat přístup k prostředkům, včetně vícefaktorového ověřování a oprávnění účtu, a získáte doporučení pro zlepšení jejich zabezpečení, přečtěte si téma [monitorování identity a přístupu v Azure Security Center](security-center-identity-access.md) , kde najdete další informace. 
-- Pokud chcete monitorovat přístup k prostředkům za běhu, přečtěte si další informace v tématu [Správa přístupu k virtuálnímu počítači pomocí nástroje](security-center-just-in-time.md) za běhu. 
+- Pokud chcete monitorovat přístup k prostředkům za běhu, přečtěte si další informace v tématu [Správa přístupu k virtuálnímu počítači pomocí nástroje](security-center-just-in-time.md) za běhu.
 
 
 Další informace o tom, jak používat doporučení, najdete v článku [Implementace doporučení zabezpečení v Azure Security Center](security-center-recommendations.md).

@@ -3,12 +3,12 @@ title: Kontrolní seznam připravenosti na produkci pro Azure Service Fabric
 description: Připravte svou Service Fabricovou aplikaci a produkční clustery podle osvědčených postupů.
 ms.topic: conceptual
 ms.date: 6/05/2019
-ms.openlocfilehash: 90d600b01aa870f7b3a58e70ef32e774e7107524
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e12e07a4446af46bc1979bd8bd4ab3987a3fd8ad
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75376796"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081064"
 ---
 # <a name="production-readiness-checklist"></a>Kontrolní seznam připravenosti k produkci
 
@@ -17,7 +17,7 @@ Je vaše aplikace a cluster připravený přijmout provozní provoz? Spuštění
 
 ## <a name="prerequisites-for-production"></a>Předpoklady pro produkční prostředí
 1. Osvědčené postupy pro Azure Service Fabric: [Návrh aplikace](./service-fabric-best-practices-applications.md), [zabezpečení](./service-fabric-best-practices-security.md), [sítě](./service-fabric-best-practices-networking.md), [plánování a škálování kapacity](./service-fabric-best-practices-capacity-scaling.md), [Infrastruktura jako kód](./service-fabric-best-practices-infrastructure-as-code.md)a [monitorování a diagnostika](./service-fabric-best-practices-monitoring.md). 
-1. Implementace konfigurace Reliable Actors zabezpečení při použití programovacího modelu Actors
+1. [Nakonfigurujte nastavení FabricTransport](./service-fabric-reliable-actors-fabrictransportsettings.md) , pokud používáte model programování Reliable Actors a potřebujete zabezpečenou komunikaci mezi službami.
 1. Pro clustery s více než 20 jádry nebo 10 uzly Vytvořte vyhrazený typ primárního uzlu pro systémové služby. Přidejte [omezení umístění](service-fabric-cluster-resource-manager-advanced-placement-rules-placement-policies.md) pro rezervaci typu primárního uzlu pro systémové služby.
 1. Pro typ primárního uzlu použijte SKU D2v2 nebo vyšší. Doporučuje se vybrat SKU, která má minimálně 50 GB kapacity pevného disku.
 1. Provozní clustery musí být [zabezpečené](service-fabric-cluster-security.md). Příklad nastavení zabezpečeného clusteru najdete v této [šabloně clusteru](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/7-VM-Windows-3-NodeTypes-Secure-NSG). Používejte běžné názvy certifikátů a nepoužívejte certifikáty podepsané svým vlastníkem.

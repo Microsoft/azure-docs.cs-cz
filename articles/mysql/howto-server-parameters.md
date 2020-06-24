@@ -5,19 +5,19 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/16/2020
-ms.openlocfilehash: c6e4ff494ee79428f7d9e6a55d184b877c0d58e4
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 6/11/2020
+ms.openlocfilehash: ba473942eea35ebcd5991b9b0dee4138d4963e16
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84554954"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099138"
 ---
-# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-by-using-the-azure-portal"></a>Postup konfigurace parametrů serveru v Azure Database for MySQL pomocí Azure Portal
+# <a name="configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Konfigurace parametrů serveru v Azure Database for MySQL pomocí Azure Portal
 
 Azure Database for MySQL podporuje konfiguraci některých parametrů serveru. Tento článek popisuje, jak nakonfigurovat tyto parametry pomocí Azure Portal. Ne všechny parametry serveru lze upravit.
 
-## <a name="navigate-to-server-parameters-on-azure-portal"></a>Přejít na parametry serveru na Azure Portal
+## <a name="configure-server-parameters"></a>Konfigurace parametrů serveru
 
 1. Přihlaste se k Azure Portal a potom vyhledejte server Azure Database for MySQL.
 2. V části **Nastavení** klikněte na **parametry serveru** a otevřete stránku parametry serveru pro Azure Database for MySQL server.
@@ -28,6 +28,17 @@ Azure Database for MySQL podporuje konfiguraci některých parametrů serveru. T
 ![Uložit nebo zahodit změny](./media/howto-server-parameters/4-save_parameters.png)
 5. Pokud jste uložili nové hodnoty pro parametry, můžete kdykoli vrátit zpět všechny výchozí hodnoty výběrem možnosti **Obnovit vše na výchozí**.
 ![Obnovit výchozí](./media/howto-server-parameters/5-reset_parameters.png)
+
+## <a name="setting-parameters-not-listed"></a>Nastavení neuvedených parametrů
+
+Pokud parametr serveru, který chcete aktualizovat, není uveden v Azure Portal, můžete volitelně nastavit parametr na úrovni připojení pomocí `init_connect` . Tím se nastaví parametry serveru pro každého klienta, který se připojuje k serveru. 
+
+1. V části **Nastavení** klikněte na **parametry serveru** a otevřete stránku parametry serveru pro Azure Database for MariaDB Server.
+2. Hledat`init_connect`
+3. Přidejte parametry serveru ve formátu: `SET parameter_name=YOUR_DESIRED_VALUE` hodnota ve sloupci hodnota.
+
+    Například můžete změnit znakovou sadu serveru nastavením `init_connect` na`SET character_set_client=utf8;SET character_set_database=utf8mb4;SET character_set_connection=latin1;SET character_set_results=latin1;`
+4. Kliknutím na **Uložit** uložte změny.
 
 ## <a name="working-with-the-time-zone-parameter"></a>Práce s parametrem časového pásma
 

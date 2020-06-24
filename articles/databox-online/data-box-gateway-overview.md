@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: overview
 ms.date: 08/21/2019
 ms.author: alkohli
-ms.openlocfilehash: 8911c1099db36b7e4e6d568ea64ae4afa3cc826e
-ms.sourcegitcommit: 856db17a4209927812bcbf30a66b14ee7c1ac777
+ms.openlocfilehash: aa68b746ef5c22c97fcfdcca889bf71577c19479
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82561060"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100760"
 ---
 # <a name="what-is-azure-data-box-gateway"></a>Co je Azure Data Box Gateway?
 
@@ -49,11 +49,11 @@ Data Box Gateway má následující výhody:
 
 Data Box Gateway nabízí následující funkce:
 
-|Schopnost |Popis  |
+|Schopnost |Description  |
 |---------|---------|
 |Rychlost     | Plně automatizovaný a vysoce optimalizovaný přenos dat a šířka pásma.|
 |Podporované protokoly     | Podpora standardních protokolů SMB a NFS pro příjem dat. <br> Další informace o podporovaných verzích najdete v [systémových požadavcích pro Data Box Gateway](data-box-gateway-system-requirements.md).|
-|Přístup k datům     | Jakmile se data odesílaná zařízením nacházejí v cloudu, můžete je dál upravovat přímým přístupem k rozhraním API cloudu.|
+|Přístup k datům     | Jakmile se data odesílaná zařízením nacházejí v cloudu, můžete je dál upravovat přímým přístupem k rozhraním API cloudu.|
 |Rychlý přístup     | Místní mezipaměť na zařízení pro rychlý přístup k naposledy použitým souborům.|
 |Nahrání offline     | Odpojený režim podporuje scénáře nahrání v režimu offline.|
 |Aktualizace dat     | Možnost aktualizovat místní soubory pomocí nejnovějších souborů z cloudu.|
@@ -64,7 +64,7 @@ Data Box Gateway nabízí následující funkce:
 
 Virtuální zařízení Data Box Gateway má následující specifikace:
 
-| Specifikace                                          | Popis              |
+| Specifikace                                          | Description              |
 |---------------------------------------------------------|--------------------------|
 | Virtuální procesory (jádra)   | Minimálně 4 |
 | Memory (Paměť)  |Minimálně 8 GB|
@@ -89,7 +89,7 @@ Virtuální zařízení Data Box Gateway má následující specifikace:
 
 Data Box Gateway fyzické zařízení, prostředek Azure a cílový účet úložiště, do kterého přenášíte data, nemusí být ve stejné oblasti.
 
-- **Dostupnost prostředků** – seznam všech oblastí, ve kterých je prostředek Azure Stack Edge dostupný, najdete v části [produkty Azure dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox). Data Box Gateway taky můžete nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
+- **Dostupnost prostředků** – seznam všech oblastí, ve kterých je prostředek Azure Data box Gateway k dispozici, najdete v části [produkty Azure dostupné v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/?regions=all&products=databox). Data Box Gateway taky můžete nasadit v cloudu Azure Government. Další informace najdete v tématu [co je Azure Government?](https://docs.microsoft.com/azure/azure-government/documentation-government-welcome).
 
 - **Cílové účty úložiště** – účty úložiště, do kterých se ukládají data, jsou dostupné ve všech oblastech Azure.
 

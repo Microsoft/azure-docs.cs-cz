@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: asrastog
 ms.openlocfilehash: b76ef431e4c0ad63929378c1f48c6ab06776cb25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79271106"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688955"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>Syntaxe dotazu směrování zpráv IoT Hubu
 
@@ -50,13 +50,13 @@ IoT Hub definuje [společný formát](iot-hub-devguide-messages-construct.md) pr
 
 Vlastnosti systému vám pomůžou identifikovat obsah a zdroj zpráv. 
 
-| Vlastnost | Typ | Popis |
+| Vlastnost | Typ | Description |
 | -------- | ---- | ----------- |
 | Třída | řetězec | Uživatel Určuje typ obsahu zprávy. Pokud chcete pro tělo zprávy zapnout dotaz, měla by být tato hodnota nastavená na Application/JSON. |
 | contentEncoding | řetězec | Uživatel Určuje typ kódování zprávy. Povolené hodnoty jsou UTF-8, UTF-16, UTF-32, pokud je contentType nastavený na Application/JSON. |
-| iothub-ID zařízení-připojení | řetězec | Tato hodnota je nastavena IoT Hub a identifikuje ID zařízení. K dotazování použijte `$connectionDeviceId`. |
-| iothub – enqueuedtime | řetězec | Tato hodnota je nastavena IoT Hub a představuje skutečný čas enqueuing zprávy ve standardu UTC. K dotazování použijte `enqueuedTime`. |
-| iothub – název rozhraní | řetězec | Tato hodnota je nastavena uživatelem a představuje název digitálního vlákna, které implementuje zprávu telemetrie. K dotazování použijte `$interfaceName`. Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). |
+| iothub-ID zařízení-připojení | řetězec | Tato hodnota je nastavena IoT Hub a identifikuje ID zařízení. K dotazování použijte `$connectionDeviceId` . |
+| iothub – enqueuedtime | řetězec | Tato hodnota je nastavena IoT Hub a představuje skutečný čas enqueuing zprávy ve standardu UTC. K dotazování použijte `enqueuedTime` . |
+| iothub – název rozhraní | řetězec | Tato hodnota je nastavena uživatelem a představuje název digitálního vlákna, které implementuje zprávu telemetrie. K dotazování použijte `$interfaceName` . Tato funkce je k dispozici jako součást [IoT technologie Plug and Play Public Preview](../iot-pnp/overview-iot-plug-and-play.md). |
 
 Jak je popsáno v [IoT Hub zprávy](iot-hub-devguide-messages-construct.md), ve zprávě jsou další vlastnosti systému. Kromě **ContentType**, **contentEncoding**a **EnqueuedTime**lze také zadat dotaz **connectionDeviceId** a **connectionModuleId** .
 
@@ -66,7 +66,7 @@ Vlastnosti aplikace jsou uživatelsky definované řetězce, které lze přidat 
 
 ### <a name="query-expressions"></a>Výrazy dotazů
 
-Dotaz na vlastnosti systému zpráv musí být s `$` symbolem předpony. Dotazy na vlastnosti aplikace jsou k dispozici s jejich názvem a neměly by obsahovat předponu `$`. Pokud název vlastnosti aplikace začíná `$`na, IoT Hub ho vyhledat ve vlastnostech systému a nebude nalezen, bude vypadat ve vlastnostech aplikace. Příklad: 
+Dotaz na vlastnosti systému zpráv musí být s `$` symbolem předpony. Dotazy na vlastnosti aplikace jsou k dispozici s jejich názvem a neměly by obsahovat předponu `$` . Pokud název vlastnosti aplikace začíná `$` na, IoT Hub ho vyhledat ve vlastnostech systému a nebude nalezen, bude vypadat ve vlastnostech aplikace. Příklad: 
 
 Dotaz na systémovou vlastnost contentEncoding 
 
@@ -90,7 +90,7 @@ V části [výraz a podmínky](iot-hub-devguide-query-language.md#expressions-an
 
 ## <a name="message-routing-query-based-on-message-body"></a>Dotaz na směrování zpráv na základě textu zprávy
 
-Pokud chcete povolit dotazování na tělo zprávy, měla by být zpráva ve formátu JSON, který je kódovaný v kódování UTF-8, UTF-16 nebo UTF-32. `contentType` Musí být nastavené na `application/JSON` a `contentEncoding` na jedno z podporovaných kódování UTF ve vlastnosti System. Nejsou-li tyto vlastnosti zadány, IoT Hub nevyhodnotí výraz dotazu v textu zprávy. 
+Pokud chcete povolit dotazování na tělo zprávy, měla by být zpráva ve formátu JSON, který je kódovaný v kódování UTF-8, UTF-16 nebo UTF-32. `contentType`Musí být nastavené na `application/JSON` a `contentEncoding` na jedno z podporovaných kódování UTF ve vlastnosti System. Nejsou-li tyto vlastnosti zadány, IoT Hub nevyhodnotí výraz dotazu v textu zprávy. 
 
 Následující příklad ukazuje, jak vytvořit zprávu s správně vytvořeným a kódovaným textem JSON: 
 
@@ -142,12 +142,12 @@ deviceClient.sendEvent(message, (err, res) => {
 ```
 
 > [!NOTE] 
-> Ukazuje, jak zpracovat kódování těla v JavaScriptu. Pokud chcete vidět ukázku v jazyce C#, Stáhněte si ukázky pro [Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rozbalte hlavní soubor. zip. Soubor Program.cs řešení sady Visual Studio *SimulatedDevice*ukazuje, jak zakódovat a odeslat zprávy do IoT Hub. Tato ukázka se používá pro testování směrování zpráv, jak je vysvětleno v [kurzu směrování zpráv](tutorial-routing.md). V dolní části Program.cs má také metodu, jak číst v jednom ze zakódovaných souborů, dekódovat ho a zapsat ho zpět jako ASCII, abyste ho mohli přečíst. 
+> Ukazuje, jak zpracovat kódování těla v JavaScriptu. Pokud chcete vidět ukázku v jazyce C#, Stáhněte si ukázky pro [Azure IoT C#](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip). Rozbalte soubor master.zip. Soubor Program.cs řešení sady Visual Studio *SimulatedDevice*ukazuje, jak zakódovat a odeslat zprávy do IoT Hub. Tato ukázka se používá pro testování směrování zpráv, jak je vysvětleno v [kurzu směrování zpráv](tutorial-routing.md). V dolní části Program.cs má také metodu, jak číst v jednom ze zakódovaných souborů, dekódovat ho a zapsat ho zpět jako ASCII, abyste ho mohli přečíst. 
 
 
 ### <a name="query-expressions"></a>Výrazy dotazů
 
-Dotaz na text zprávy musí být s předponou `$body`. Ve výrazu dotazu můžete použít odkaz na tělo, odkaz na pole textu nebo několik odkazů na text. Výraz dotazu může také kombinovat odkaz na tělo s vlastnostmi systému zpráv a odkazem na vlastnosti aplikace zprávy. Například následující jsou všechny platné výrazy dotazu: 
+Dotaz na text zprávy musí být s předponou `$body` . Ve výrazu dotazu můžete použít odkaz na tělo, odkaz na pole textu nebo několik odkazů na text. Výraz dotazu může také kombinovat odkaz na tělo s vlastnostmi systému zpráv a odkazem na vlastnosti aplikace zprávy. Například následující jsou všechny platné výrazy dotazu: 
 
 ```sql
 $body.Weather.HistoricalData[0].Month = 'Feb' 
@@ -200,7 +200,7 @@ Směrování zpráv vám umožní dotazovat se na značky a vlastnosti v [zaří
 
 ### <a name="query-expressions"></a>Výrazy dotazů
 
-Dotaz na vlákna zprávy musí být s předponou `$twin`. Výraz dotazu může také kombinovat odkaz na dvojitou značku nebo vlastnost s odkazem na tělo, vlastnostmi systému zprávy a odkazem na vlastnosti aplikace zprávy. Doporučujeme použít v tagu a vlastnostech jedinečné názvy, protože dotaz nerozlišuje velká a malá písmena. To platí pro vlákna zařízení i pro vlákna modulu. Také upustí od použití `twin`, `$twin` `body`, nebo `$body`jako názvů vlastností. Například následující jsou všechny platné výrazy dotazu: 
+Dotaz na vlákna zprávy musí být s předponou `$twin` . Výraz dotazu může také kombinovat odkaz na dvojitou značku nebo vlastnost s odkazem na tělo, vlastnostmi systému zprávy a odkazem na vlastnosti aplikace zprávy. Doporučujeme použít v tagu a vlastnostech jedinečné názvy, protože dotaz nerozlišuje velká a malá písmena. To platí pro vlákna zařízení i pro vlákna modulu. Také upustí od použití `twin` , `$twin` , `body` nebo `$body` jako názvů vlastností. Například následující jsou všechny platné výrazy dotazu: 
 
 ```sql
 $twin.properties.desired.telemetryConfig.sendFrequency = '5m'

@@ -15,34 +15,16 @@ ms.topic: article
 ms.date: 04/28/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99103c9994b240e2f45b66acf269b320c90e5135
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 799206ee08dc3b1cdac46a0e4e79d2c929138c31
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82231726"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718593"
 ---
 # <a name="tutorial-configure-workplace-by-facebook-for-automatic-user-provisioning"></a>Kurz: Konfigurace pracoviště na Facebooku pro Automatické zřizování uživatelů
 
 Tento kurz popisuje kroky, které je třeba provést na pracovišti na Facebooku a Azure Active Directory (Azure AD) ke konfiguraci automatického zřizování uživatelů. Po nakonfigurování Azure AD automaticky zřídí a odzřídí uživatele a skupiny na [pracovišti pomocí Facebooku](https://work.workplace.com/) pomocí služby zřizování Azure AD. Důležité informace o tom, co tato služba dělá, jak funguje a nejčastější dotazy, najdete v tématu [Automatizace zřizování a rušení zřizování uživatelů pro SaaS aplikací pomocí Azure Active Directory](../manage-apps/user-provisioning.md).
-
-## <a name="migrating-to-the-new-workplace-by-facebook-application"></a>Migrace na nové pracoviště pomocí facebookové aplikace
-Pokud máte existující integraci s pracovištěm na Facebooku, přečtěte si následující část o změnách přicházejících. Pokud nastavujete pracovní plochu na Facebooku poprvé, můžete tuto část přeskočit a přejít na podporované funkce. 
-
-#### <a name="whats-changing"></a>Co se mění?
-* Změny na straně Azure AD: autorizační metoda pro zřízení uživatelů na pracovišti má historicky dlouhodobý tajný token. Brzy uvidíte způsob, jakým se autorizace změnila na udělení autorizace OAuth. 
-* Změny na straně pracoviště: dříve byla aplikace Azure AD vlastní integrací na pracovišti pomocí Facebooku. Teď se zobrazí Azure AD v adresáři integrace na pracovišti jako aplikace třetí strany. 
-
-#### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Co potřebuji k migraci stávající vlastní integrace do nové aplikace?
-Pokud máte existující integraci na pracovišti s platným tokenem, není nutná žádná akce. **Od 04/28/2020 jsme automaticky migrovali všechny aplikace, které nejsou v karanténě z důvodu neplatných přihlašovacích údajů.**
- 
-#### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Jak zjistím, jestli je moje aplikace migrována? 
-* Na portálu Azure Portal: když se vaše aplikace migruje, zobrazí se banner v části autorizace o nadcházejících změnách a pole tajného tokenu se nahradí modrým tlačítkem autorizace. 
-* Na pracovišti na webu Facebook Portal: Projděte si aplikaci Azure AD a ujistěte se, že je schválená.  
-
-#### <a name="the-admin-credentials-section-is-greyed-out-on-my-application-and-i-cant-save-why"></a>Oddíl přihlašovací údaje správce je v aplikaci šedý a nemůžu uložit. Proč?
-V části přihlašovací údaje správce jsme uzamkl pro zákazníky na pracovišti, kteří se nemigrovali. Pokud je oddíl přihlašovací údaje správce šedý a potřebujete znovu povolit přístup, použijte následující adresu URL. **? Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride = true** (https://portal.azure.com/?Microsoft_AAD_IAM_userProvisioningEnableCredentialsOverride=true)
-
 
 ## <a name="capabilities-supported"></a>Podporované funkce
 > [!div class="checklist"]

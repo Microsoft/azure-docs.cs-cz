@@ -2,13 +2,13 @@
 title: Konfigurace Azure Red Hat OpenShift v4. x s Azure Monitor for Containers | Microsoft Docs
 description: Tento článek popisuje, jak nakonfigurovat monitorování clusteru Kubernetes s Azure Monitor hostovaným na Azure Red Hat OpenShift verze 4 a vyšší.
 ms.topic: conceptual
-ms.date: 04/22/2020
-ms.openlocfilehash: 4b827524845874dabaabe535163d99c408f77a60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/15/2020
+ms.openlocfilehash: 872d842f02e19313940dfeba5258feb7d3799547
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196293"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888449"
 ---
 # <a name="configure-azure-red-hat-openshift-v4x-with-azure-monitor-for-containers"></a>Konfigurace Azure Red Hat OpenShift v4. x s Azure Monitor for Containers
 
@@ -61,7 +61,7 @@ Proveďte následující kroky, abyste mohli sledovat cluster Azure Red Hat Open
 
 ### <a name="integrate-with-an-existing-workspace"></a>Integrace s existujícím pracovním prostorem
 
-Následující krok umožňuje monitorovat cluster pomocí skriptu bash, který jste stáhli dříve. Chcete-li provést integraci s existujícím pracovním prostorem Log Analytics, proveďte následující kroky, abyste nejprve identifikovali úplné ID prostředku pracovního prostoru `workspaceResourceId` Log Analytics požadovaného pro daný parametr, a pak spustíte příkaz pro povolení doplňku monitorování v zadaném pracovním prostoru. Pokud nemáte pracovní prostor k zadání, můžete přeskočit na krok 5 a nechat skript vytvořit nový pracovní prostor.
+Následující krok umožňuje monitorovat cluster pomocí skriptu bash, který jste stáhli dříve. Chcete-li provést integraci s existujícím pracovním prostorem Log Analytics, proveďte následující kroky, abyste nejprve identifikovali úplné ID prostředku pracovního prostoru Log Analytics požadovaného pro daný `workspaceResourceId` parametr, a pak spustíte příkaz pro povolení doplňku monitorování v zadaném pracovním prostoru. Pokud nemáte pracovní prostor k zadání, můžete přeskočit na oddíl [integrace s výchozím pracovním prostorem](#integrate-with-default-workspace) a nechat skript vytvořit nový pracovní prostor.
 
 1. Vypíše seznam všech předplatných, ke kterým máte přístup, pomocí následujícího příkazu:
 
@@ -74,7 +74,7 @@ Následující krok umožňuje monitorovat cluster pomocí skriptu bash, který 
     ```azurecli
     Name                                  CloudName    SubscriptionId                        State    IsDefault
     ------------------------------------  -----------  ------------------------------------  -------  -----------
-    Microsoft Azure                       AzureCloud   68627f8c-91fO-4905-z48q-b032a81f8vy0  Enabled  True
+    Microsoft Azure                       AzureCloud   0fb60ef2-03cc-4290-b595-e71108e8f4ce  Enabled  True
     ```
 
     Zkopírujte hodnotu pro **SubscriptionId**.
@@ -93,25 +93,25 @@ Následující krok umožňuje monitorovat cluster pomocí skriptu bash, který 
 
     Ve výstupu vyhledejte název pracovního prostoru a zkopírujte úplné ID prostředku, které Log Analytics pracovní prostor pod **ID**pole.
 
-4. Spusťte následující příkaz, který povolí monitorování, a nahradí hodnotu `workspaceResourceId` parametru: 
+4. Spusťte následující příkaz pro povolení monitorování a nahraďte hodnotu `workspaceResourceId` `azureAroV4ResourceIdparameter` parametrů a: 
 
-    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId> <LogAnayticsWorkspaceResourceId>`
+    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId> <workspaceResourceId>`
 
     Příklad:
 
-    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4  /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourcegroups/test-la-workspace-rg/providers/microsoft.operationalinsights/workspaces/test-la-workspace`
+    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4 /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourcegroups/test-la-workspace-rg/providers/microsoft.operationalinsights/workspaces/test-la-workspace`
 
 Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit metriky stavu clusteru.
 
 ### <a name="integrate-with-default-workspace"></a>Integrace s výchozím pracovním prostorem
 
-Následující krok umožňuje sledovat cluster Azure Red Hat OpenShift v4. x pomocí skriptu bash, který jste stáhli. V tomto příkladu nemusíte pro každý vytvořit nebo zadat existující pracovní prostor. Tento příkaz zjednodušuje proces vytvořením výchozího pracovního prostoru ve výchozí skupině prostředků v rámci předplatného clusteru, pokud ještě neexistuje v této oblasti. Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace-\<GUID\<>> oblasti *.  
+Následující krok umožňuje sledovat cluster Azure Red Hat OpenShift v4. x pomocí skriptu bash, který jste stáhli. V tomto příkladu nemusíte pro každý vytvořit nebo zadat existující pracovní prostor. Tento příkaz zjednodušuje proces vytvořením výchozího pracovního prostoru ve výchozí skupině prostředků v rámci předplatného clusteru, pokud ještě neexistuje v této oblasti. Výchozí vytvořený pracovní prostor se podobá formátu *DefaultWorkspace- \<GUID> - \<Region> *.  
 
-    `bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId>`
+`bash onboarding_azuremonitor_for_containers.sh <kube-context> <azureAroV4ResourceId>`
 
-    For example:
+Příklad:
 
-    `bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/57ac26cf-a9f0-4908-b300-9a4e9a0fb205/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4`
+`bash onboarding_azuremonitor_for_containers.sh MyK8sTestCluster /subscriptions/0fb60ef2-03cc-4290-b595-e71108e8f4ce/resourceGroups/test-aro-v4-rg/providers/Microsoft.RedHatOpenShift/OpenShiftClusters/test-aro-v4`
 
 Po povolení monitorování může trvat přibližně 15 minut, než budete moct zobrazit metriky stavu clusteru.
 

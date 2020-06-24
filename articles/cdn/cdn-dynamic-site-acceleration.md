@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: allensu
-ms.openlocfilehash: 26559adf183a5e008d77b87654a1bd4dabebbca0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bae131c086e8fbf062015ee27c563bb988731cad
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253828"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888543"
 ---
 # <a name="dynamic-site-acceleration-via-azure-cdn"></a>Akcelerace dynamického webu prostřednictvím Azure CDN
 
@@ -149,7 +149,7 @@ Komprese JPEG | . jpg,. jpeg,. jpe,. Jig,. jgig,. JGI
 
 ## <a name="caching"></a>Ukládání do mezipaměti
 
-V případě DSA je ukládání do mezipaměti ve výchozím nastavení v CDN vypnuté, a to i `Cache-Control` v `Expires` případě, že v odpovědi na původce obsahuje nebo hlavičky. DSA se obvykle používá pro dynamické prostředky, které by neměly být ukládány do mezipaměti, protože jsou pro každého klienta jedinečné. Ukládání do mezipaměti může způsobit přerušení tohoto chování.
+V případě DSA je ukládání do mezipaměti ve výchozím nastavení v CDN vypnuté, a to i v případě, že v odpovědi na původce obsahuje `Cache-Control` nebo `Expires` hlavičky. DSA se obvykle používá pro dynamické prostředky, které by neměly být ukládány do mezipaměti, protože jsou pro každého klienta jedinečné. Ukládání do mezipaměti může způsobit přerušení tohoto chování.
 
 Pokud máte web se směsí statických a dynamických prostředků, je nejlepší využít hybridní přístup k dosažení nejlepšího výkonu. 
 
@@ -183,7 +183,7 @@ Přístup ke stroji pravidel:
 
 Alternativně můžete použít dva koncové body CDN: jeden koncový bod optimalizovaný s agentem DSA k dodávání dynamických prostředků a dalšího koncového bodu optimalizovaného pomocí statického typu optimalizace, jako je například obecné doručování webu, pro doručování prostředků do mezipaměti. Upravte adresy URL webových stránek tak, aby se přímo na prostředek naplánovaly na koncovém bodu CDN, který chcete použít. 
 
-Například: `mydynamic.azureedge.net/index.html` je dynamická stránka a je načtena z koncového bodu DSA.Stránka HTML odkazuje na několik statických prostředků, jako jsou knihovny JavaScriptu nebo obrázky načtené z statického koncového bodu CDN `mystatic.azureedge.net/banner.jpg` , `mystatic.azureedge.net/scripts.js`například a. 
+Například: `mydynamic.azureedge.net/index.html` je dynamická stránka a je načtena z koncového bodu DSA.Stránka HTML odkazuje na několik statických prostředků, jako jsou knihovny JavaScriptu nebo obrázky načtené z statického koncového bodu CDN, například `mystatic.azureedge.net/banner.jpg` a `mystatic.azureedge.net/scripts.js` . 
 
 
 

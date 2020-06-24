@@ -4,11 +4,11 @@ description: Tento článek popisuje běžné úlohy správy a monitorování sd
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.openlocfilehash: cb764fa441c063328dc350cf26f42c5bc7a0ca99
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247654"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712084"
 ---
 # <a name="manage-azure-file-share-backups"></a>Správa záloh sdílených složek Azure
 

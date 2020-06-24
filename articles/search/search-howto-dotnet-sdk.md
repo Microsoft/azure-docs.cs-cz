@@ -9,36 +9,36 @@ ms.devlang: dotnet
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: b31a4e40c1e9095499faf265673ab4213ad6bde0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd89e3366fbaa60109be9ef3552970936f0a6715
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283066"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080568"
 ---
 # <a name="how-to-use-azure-cognitive-search-from-a-net-application"></a>Jak používat Azure Kognitivní hledání z aplikace .NET
 
-Tento článek je návod, který vám umožní začít pracovat se sadou [Azure kognitivní hledání .NET SDK](https://aka.ms/search-sdk). Sadu .NET SDK můžete použít k implementaci prostředí s bohatým vyhledáváním v aplikaci pomocí Azure Kognitivní hledání.
+Tento článek je návod, který vám umožní začít pracovat se sadou [Azure kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). Sadu .NET SDK můžete použít k implementaci prostředí s bohatým vyhledáváním v aplikaci pomocí Azure Kognitivní hledání.
 
 ## <a name="whats-in-the-azure-cognitive-search-sdk"></a>Co je v sadě Azure Kognitivní hledání SDK
 Sada SDK se skládá z několika klientských knihoven, které vám umožní spravovat vaše indexy, zdroje dat, indexery a mapy synonym a také nahrávat a spravovat dokumenty a provádět dotazy, a to vše bez nutnosti zabývat se podrobnostmi o HTTP a JSON. Tyto klientské knihovny jsou distribuovány jako balíčky NuGet.
 
-Hlavní balíček NuGet je `Microsoft.Azure.Search`, což je meta balíček, který obsahuje všechny ostatní balíčky jako závislosti. Tento balíček použijte, pokud jste právě začali, nebo pokud víte, že vaše aplikace bude potřebovat všechny funkce služby Azure Kognitivní hledání.
+Hlavní balíček NuGet je `Microsoft.Azure.Search` , což je meta balíček, který obsahuje všechny ostatní balíčky jako závislosti. Tento balíček použijte, pokud jste právě začali, nebo pokud víte, že vaše aplikace bude potřebovat všechny funkce služby Azure Kognitivní hledání.
 
 Ostatní balíčky NuGet v sadě SDK jsou:
  
-  - `Microsoft.Azure.Search.Data`: Tento balíček použijte v případě, že vyvíjíte aplikaci .NET pomocí Azure Kognitivní hledání a potřebujete dotazovat nebo aktualizovat dokumenty ve svých indexech. Pokud potřebujete také vytvořit nebo aktualizovat indexy, mapy synonym nebo jiné prostředky na úrovni služby, použijte místo toho `Microsoft.Azure.Search` balíček.
-  - `Microsoft.Azure.Search.Service`: Tento balíček použijte v případě, že vyvíjíte automatizaci v .NET za účelem správy indexů Kognitivní hledání Azure, map synonym, indexerů, zdrojů dat nebo jiných prostředků na úrovni služby. Pokud potřebujete dotazovat nebo aktualizovat pouze dokumenty v indexech, použijte místo toho `Microsoft.Azure.Search.Data` balíček. Pokud potřebujete všechny funkce služby Azure Kognitivní hledání, použijte místo toho `Microsoft.Azure.Search` balíček.
+  - `Microsoft.Azure.Search.Data`: Tento balíček použijte v případě, že vyvíjíte aplikaci .NET pomocí Azure Kognitivní hledání a potřebujete dotazovat nebo aktualizovat dokumenty ve svých indexech. Pokud potřebujete také vytvořit nebo aktualizovat indexy, mapy synonym nebo jiné prostředky na úrovni služby, použijte `Microsoft.Azure.Search` místo toho balíček.
+  - `Microsoft.Azure.Search.Service`: Tento balíček použijte v případě, že vyvíjíte automatizaci v .NET za účelem správy indexů Kognitivní hledání Azure, map synonym, indexerů, zdrojů dat nebo jiných prostředků na úrovni služby. Pokud potřebujete dotazovat nebo aktualizovat pouze dokumenty v indexech, použijte `Microsoft.Azure.Search.Data` místo toho balíček. Pokud potřebujete všechny funkce služby Azure Kognitivní hledání, použijte `Microsoft.Azure.Search` místo toho balíček.
   - `Microsoft.Azure.Search.Common`: Běžné typy vyžadované knihovnami Azure Kognitivní hledání .NET. Tento balíček nemusíte používat přímo v aplikaci. Má sloužit pouze jako závislost.
 
-`Index`Různé klientské knihovny definují třídy jako, `Field`, a `Document`i operace jako `Indexes.Create` a `Documents.Search` v třídách `SearchServiceClient` a. `SearchIndexClient` Tyto třídy jsou uspořádány do následujících oborů názvů:
+Různé klientské knihovny definují třídy jako `Index` , `Field` , a `Document` i operace jako `Indexes.Create` a `Documents.Search` v `SearchServiceClient` `SearchIndexClient` třídách a. Tyto třídy jsou uspořádány do následujících oborů názvů:
 
 * [Microsoft. Azure. Search](https://docs.microsoft.com/dotnet/api/microsoft.azure.search)
 * [Microsoft. Azure. Search. Models](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models)
 
 Pokud chcete poskytnout zpětnou vazbu k budoucí aktualizaci sady SDK, přečtěte si naši [zpětnou vazbu](https://feedback.azure.com/forums/263029-azure-search/) nebo vytvořte problém na [GitHubu](https://github.com/azure/azure-sdk-for-net/issues) a uveďte "Azure kognitivní hledání" v názvu problému.
 
-Sada .NET SDK podporuje verzi `2019-05-06` služby [Azure kognitivní hledání REST API](https://docs.microsoft.com/rest/api/searchservice/). Tato verze zahrnuje podporu [komplexních typů](search-howto-complex-data-types.md), funkce [rozšíření AI](cognitive-search-concept-intro.md), [automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete)a [režimu analýzy JsonLines](search-howto-index-json-blobs.md) při indexování objektů blob Azure. 
+Sada .NET SDK podporuje verzi služby `2019-05-06` [Azure kognitivní hledání REST API](https://docs.microsoft.com/rest/api/searchservice/). Tato verze zahrnuje podporu [komplexních typů](search-howto-complex-data-types.md), funkce [rozšíření AI](cognitive-search-concept-intro.md), [automatického dokončování](https://docs.microsoft.com/rest/api/searchservice/autocomplete)a [režimu analýzy JsonLines](search-howto-index-json-blobs.md) při indexování objektů blob Azure. 
 
 Tato sada SDK nepodporuje [operace správy](https://docs.microsoft.com/rest/api/searchmanagement/) , jako je vytváření a škálování vyhledávacích služeb a Správa klíčů rozhraní API. Pokud potřebujete spravovat svoje prostředky hledání z aplikace .NET, můžete použít [sadu SDK pro správu Azure kognitivní hledání .NET](https://aka.ms/search-mgmt-sdk).
 
@@ -48,7 +48,7 @@ Pokud už používáte starší verzi sady Azure Kognitivní hledání .NET SDK 
 ## <a name="requirements-for-the-sdk"></a>Požadavky na sadu SDK
 1. Visual Studio 2017 nebo novější.
 2. Vaše vlastní služba Azure Kognitivní hledání. Aby bylo možné používat sadu SDK, budete potřebovat název služby a jeden nebo více klíčů rozhraní API. Pomocí těchto kroků vám pomůže [vytvořit službu na portálu](search-create-service-portal.md) .
-3. Stáhněte si [balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.Search) sady Azure kognitivní hledání .NET SDK pomocí tématu Správa balíčků NuGet v sadě Visual Studio. Pokud potřebujete jenom podmnožinu `Microsoft.Azure.Search` funkcí, hledejte jenom název balíčku na NuGet.org (nebo jeden z dalších názvů balíčků výše).
+3. Stáhněte si [balíček NuGet](https://www.nuget.org/packages/Microsoft.Azure.Search) sady Azure kognitivní hledání .NET SDK pomocí tématu Správa balíčků NuGet v sadě Visual Studio. `Microsoft.Azure.Search`Pokud potřebujete jenom podmnožinu funkcí, hledejte jenom název balíčku na NuGet.org (nebo jeden z dalších názvů balíčků výše).
 
 Sada Azure Kognitivní hledání .NET SDK podporuje aplikace zaměřené na .NET Framework 4.5.2 a vyšší, jakož i .NET Core 2,0 a vyšší.
 
@@ -100,7 +100,7 @@ static void Main(string[] args)
 > 
 >
 
-Provede vás tento krok za krokem. Nejdřív musíme vytvořit nový `SearchServiceClient`. Tento objekt umožňuje správu indexů. Aby bylo možné jednu instanci sestavit, musíte zadat název služby Azure Kognitivní hledání a klíč rozhraní API pro správu. Tyto informace můžete zadat v `appsettings.json` souboru [ukázkové aplikace](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo).
+Provede vás tento krok za krokem. Nejdřív musíme vytvořit nový `SearchServiceClient` . Tento objekt umožňuje správu indexů. Aby bylo možné jednu instanci sestavit, musíte zadat název služby Azure Kognitivní hledání a klíč rozhraní API pro správu. Tyto informace můžete zadat v `appsettings.json` souboru [ukázkové aplikace](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowTo).
 
 ```csharp
 private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot configuration)
@@ -114,7 +114,7 @@ private static SearchServiceClient CreateSearchServiceClient(IConfigurationRoot 
 ```
 
 > [!NOTE]
-> Pokud zadáte nesprávný klíč (například klíč dotazu, kde byl vyžadován klíč správce), `SearchServiceClient` vyvolá při prvním volání metody operace `CloudException` s chybovou zprávou "zakázáno", například. `Indexes.Create` Pokud k tomu dojde, dvakrát si Projděte náš klíč rozhraní API.
+> Pokud zadáte nesprávný klíč (například klíč dotazu, kde byl vyžadován klíč správce), `SearchServiceClient` vyvolá `CloudException` při prvním volání metody operace s chybovou zprávou "zakázáno", například `Indexes.Create` . Pokud k tomu dojde, dvakrát si Projděte náš klíč rozhraní API.
 > 
 > 
 
@@ -128,25 +128,25 @@ Console.WriteLine("{0}", "Creating index...\n");
 CreateIndex(indexName, serviceClient);
 ```
 
-V dalším kroku je potřeba naplnit index. K naplnění indexu budete potřebovat `SearchIndexClient`. Existují dva způsoby, jak jednu získat: sestavením, nebo voláním `Indexes.GetClient` na. `SearchServiceClient` Pro usnadnění práce používáme druhé.
+V dalším kroku je potřeba naplnit index. K naplnění indexu budete potřebovat `SearchIndexClient` . Existují dva způsoby, jak jednu získat: sestavením, nebo voláním `Indexes.GetClient` na `SearchServiceClient` . Pro usnadnění práce používáme druhé.
 
 ```csharp
 ISearchIndexClient indexClient = serviceClient.Indexes.GetClient(indexName);
 ```
 
 > [!NOTE]
-> V typické aplikaci vyhledávání může být Správa a naplnění indexu zpracována samostatnou komponentou z vyhledávacích dotazů. `Indexes.GetClient`je vhodný pro naplnění indexu, protože vám ušetří problémy s dalším `SearchCredentials`. Dělá to pomocí předání klíče správce, který jste použili pro vytvoření `SearchServiceClient`, službě `SearchIndexClient`. V části aplikace, která spouští dotazy, je ale lepší vytvořit `SearchIndexClient` přímo, abyste mohli předat klíč dotazu, který umožňuje číst jenom data namísto klíče správce. To je konzistentní s principem minimálního oprávnění a pomůže vám to lépe zabezpečit vaši aplikaci. Další informace o klíčích pro správu a klíčích dotazů najdete [tady](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization).
+> V typické aplikaci vyhledávání může být Správa a naplnění indexu zpracována samostatnou komponentou z vyhledávacích dotazů. `Indexes.GetClient`je vhodný pro naplnění indexu, protože vám ušetří problémy s dalším `SearchCredentials` . Dělá to pomocí předání klíče správce, který jste použili pro vytvoření `SearchServiceClient`, službě `SearchIndexClient`. V části aplikace, která spouští dotazy, je ale lepší vytvořit `SearchIndexClient` přímo, abyste mohli předat klíč dotazu, který umožňuje číst jenom data namísto klíče správce. To je konzistentní s principem minimálního oprávnění a pomůže vám to lépe zabezpečit vaši aplikaci. Další informace o klíčích pro správu a klíčích dotazů najdete [tady](https://docs.microsoft.com/rest/api/searchservice/#authentication-and-authorization).
 > 
 > 
 
-Teď, když máme `SearchIndexClient`, můžeme index naplnit. Naplnění indexu je prováděno jinou metodou, kterou vás provede později.
+Teď, když máme `SearchIndexClient` , můžeme index naplnit. Naplnění indexu je prováděno jinou metodou, kterou vás provede později.
 
 ```csharp
 Console.WriteLine("{0}", "Uploading documents...\n");
 UploadDocuments(indexClient);
 ```
 
-Nakonec spustíme několik vyhledávacích dotazů a zobrazíme výsledky. Tentokrát používáme jiný `SearchIndexClient`:
+Nakonec spustíme několik vyhledávacích dotazů a zobrazíme výsledky. Tentokrát používáme jiný `SearchIndexClient` :
 
 ```csharp
 ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(indexName, configuration);
@@ -154,7 +154,7 @@ ISearchIndexClient indexClientForQueries = CreateSearchIndexClient(indexName, co
 RunQueries(indexClientForQueries);
 ```
 
-Podíváme se na `RunQueries` metodu později. Zde je kód pro vytvoření nového `SearchIndexClient`:
+Podíváme se na `RunQueries` metodu později. Zde je kód pro vytvoření nového `SearchIndexClient` :
 
 ```csharp
 private static SearchIndexClient CreateSearchIndexClient(string indexName, IConfigurationRoot configuration)
@@ -214,10 +214,10 @@ Pokud spouštíte tuto aplikaci s platným názvem služby a klíči rozhraní A
 
 Úplný zdrojový kód aplikace je k dispozici na konci tohoto článku.
 
-V dalším kroku se podíváme na každou metodu, kterou `Main`volá.
+V dalším kroku se podíváme na každou metodu, kterou volá `Main` .
 
 ### <a name="creating-an-index"></a>Vytvoření indexu
-Po vytvoření odstraní `SearchServiceClient`index `Main` "hotely", pokud již existuje. Odstranění se provádí pomocí následující metody:
+Po vytvoření `SearchServiceClient` `Main` odstraní index "hotely", pokud již existuje. Odstranění se provádí pomocí následující metody:
 
 ```csharp
 private static void DeleteIndexIfExists(string indexName, SearchServiceClient serviceClient)
@@ -232,7 +232,7 @@ private static void DeleteIndexIfExists(string indexName, SearchServiceClient se
 Tato metoda používá daný `SearchServiceClient` pro kontrolu, zda index existuje, a pokud ano, odstraňte jej.
 
 > [!NOTE]
-> Vzorový kód v tomto článku používá pro jednoduchost synchronní metody sady Azure Kognitivní hledání .NET SDK. Doporučujeme ve vlastních aplikacích použít asynchronní metody, aby aplikace byly škálovatelné a dobře reagovaly. Například v metodě výše byste mohli `ExistsAsync` použít a `DeleteAsync` místo `Exists` a. `Delete`
+> Vzorový kód v tomto článku používá pro jednoduchost synchronní metody sady Azure Kognitivní hledání .NET SDK. Doporučujeme ve vlastních aplikacích použít asynchronní metody, aby aplikace byly škálovatelné a dobře reagovaly. Například v metodě výše byste mohli použít `ExistsAsync` a `DeleteAsync` místo `Exists` a `Delete` .
 > 
 > 
 
@@ -251,17 +251,17 @@ private static void CreateIndex(string indexName, SearchServiceClient serviceCli
 }
 ```
 
-Tato metoda vytvoří nový `Index` objekt se seznamem `Field` objektů, které definují schéma nového indexu. Každé pole má název, datový typ a několik atributů, které definují jeho chování hledání. `FieldBuilder` Třída používá reflexi k vytvoření seznamu `Field` objektů pro index prozkoumáním veřejných vlastností a atributů dané `Hotel` třídy modelu. Později se `Hotel` podrobněji podíváme na třídu.
+Tato metoda vytvoří nový `Index` objekt se seznamem `Field` objektů, které definují schéma nového indexu. Každé pole má název, datový typ a několik atributů, které definují jeho chování hledání. `FieldBuilder`Třída používá reflexi k vytvoření seznamu `Field` objektů pro index prozkoumáním veřejných vlastností a atributů dané `Hotel` třídy modelu. Později se podrobněji podíváme na `Hotel` třídu.
 
 > [!NOTE]
-> Seznam `Field` objektů můžete kdykoli vytvořit přímo místo použití v `FieldBuilder` případě potřeby. Například nebudete chtít použít třídu modelu nebo může být nutné použít existující třídu modelu, kterou nechcete upravovat, přidáním atributů.
+> Seznam objektů můžete kdykoli vytvořit `Field` přímo místo použití v `FieldBuilder` případě potřeby. Například nebudete chtít použít třídu modelu nebo může být nutné použít existující třídu modelu, kterou nechcete upravovat, přidáním atributů.
 >
 > 
 
 Kromě polí můžete také do indexu přidat profily vyhodnocování, moduly pro návrhy a možnosti CORS (tyto parametry jsou vynechány v ukázce pro zkrácení). Další informace o objektu index a jeho částech najdete v [Referenční příručce k sadě SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.index)a také v referenčních informacích k [Azure kognitivní hledání REST API](https://docs.microsoft.com/rest/api/searchservice/).
 
 ### <a name="populating-the-index"></a>Naplnění indexu
-V `Main` dalším kroku naplníte nově vytvořený index. Tento index naplnění se provádí v následující metodě: (kód se nahradil znakem "...". pro ilustrační účely.  Kompletní kód pro naplnění dat najdete v úplném ukázkovém řešení.)
+V dalším kroku `Main` naplníte nově vytvořený index. Tento index naplnění se provádí v následující metodě: (kód se nahradil znakem "...". pro ilustrační účely.  Kompletní kód pro naplnění dat najdete v úplném ukázkovém řešení.)
 
 ```csharp
 private static void UploadDocuments(ISearchIndexClient indexClient)
@@ -379,26 +379,26 @@ private static void UploadDocuments(ISearchIndexClient indexClient)
 
 Tato metoda má čtyři části. První vytvoří pole 3 `Hotel` objekty každý se 3 `Room` objekty, které budou sloužit jako naše vstupní data pro nahrání do indexu. Tato data jsou pevně kódovaná pro zjednodušení. Vaše data jsou ve vaší vlastní aplikaci pravděpodobná z externího zdroje dat, jako je třeba databáze SQL.
 
-Druhá část vytvoří dokumenty `IndexBatch` obsahující. Určete operaci, kterou chcete použít pro dávku v okamžiku jejího vytvoření, v tomto případě voláním `IndexBatch.Upload`. Dávka se pak nahraje do indexu Azure Kognitivní hledání pomocí `Documents.Index` metody.
+Druhá část vytvoří `IndexBatch` dokumenty obsahující. Určete operaci, kterou chcete použít pro dávku v okamžiku jejího vytvoření, v tomto případě voláním `IndexBatch.Upload` . Dávka se pak nahraje do indexu Azure Kognitivní hledání pomocí `Documents.Index` metody.
 
 > [!NOTE]
-> V tomto příkladu budeme nahrávat jenom dokumenty. Pokud jste chtěli sloučit změny do existujících dokumentů nebo odstraňovat dokumenty, mohli byste vytvořit dávky voláním `IndexBatch.Merge`, `IndexBatch.MergeOrUpload`nebo `IndexBatch.Delete` místo toho. Různé operace můžete v jedné dávce kombinovat také voláním metody `IndexBatch.New`, která přebírá kolekci `IndexAction` objektů, z nichž každý z nich oznamuje, že Azure kognitivní hledání provádět konkrétní operace s dokumentem. Můžete vytvořit každý `IndexAction` s vlastní operací voláním odpovídající metody `IndexAction.Merge`, jako například, `IndexAction.Upload`, a tak dále.
+> V tomto příkladu budeme nahrávat jenom dokumenty. Pokud jste chtěli sloučit změny do existujících dokumentů nebo odstraňovat dokumenty, mohli byste vytvořit dávky voláním `IndexBatch.Merge` , `IndexBatch.MergeOrUpload` nebo `IndexBatch.Delete` místo toho. Různé operace můžete v jedné dávce kombinovat také voláním metody `IndexBatch.New` , která přebírá kolekci `IndexAction` objektů, z nichž každý z nich oznamuje, že Azure kognitivní hledání provádět konkrétní operace s dokumentem. Můžete vytvořit každý `IndexAction` s vlastní operací voláním odpovídající metody, jako například `IndexAction.Merge` , `IndexAction.Upload` , a tak dále.
 > 
 > 
 
-Třetí část této metody je blok catch, který zpracovává důležitý chybový případ pro indexování. Pokud se službě Azure Kognitivní hledání nepovede indexování některých dokumentů v dávce, vyvolá `IndexBatchException` se. `Documents.Index` Tato výjimka se může vyskytnout, pokud indexování dokumentů probíhá v případě velkého zatížení služby. **Důrazně doporučujeme v kódu explicitně zpracovávat tento případ.** Indexování dokumentů, které selhaly, můžete odložit a poté zkusit znovu, nebo v závislosti na požadavcích vaší aplikace na konzistenci dat provést něco jiného.
+Třetí část této metody je blok catch, který zpracovává důležitý chybový případ pro indexování. Pokud se službě Azure Kognitivní hledání nepovede indexování některých dokumentů v dávce, `IndexBatchException` vyvolá se `Documents.Index` . Tato výjimka se může vyskytnout, pokud indexování dokumentů probíhá v případě velkého zatížení služby. **Důrazně doporučujeme v kódu explicitně zpracovávat tento případ.** Indexování dokumentů, které selhaly, můžete odložit a poté zkusit znovu, nebo v závislosti na požadavcích vaší aplikace na konzistenci dat provést něco jiného.
 
 > [!NOTE]
-> [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) Metodu lze použít k vytvoření nové dávky obsahující pouze akce, které selhaly v předchozím volání `Index`. Existuje diskuzi o tom, jak ho správně používat [na StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
+> Metodu lze použít [`FindFailedActionsToRetry`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.indexbatchexception.findfailedactionstoretry) k vytvoření nové dávky obsahující pouze akce, které selhaly v předchozím volání `Index` . Existuje diskuzi o tom, jak ho správně používat [na StackOverflow](https://stackoverflow.com/questions/40012885/azure-search-net-sdk-how-to-use-findfailedactionstoretry).
 >
 >
 
-Nakonec je `UploadDocuments` metoda zpožděna po dobu dvou sekund. Indexování probíhá asynchronně ve službě Azure Kognitivní hledání, takže ukázková aplikace potřebuje počkat krátkou dobu, aby se zajistila dostupnost dokumentů pro hledání. Tato odložení se obvykle používají pouze v ukázkových aplikacích a při testech.
+Nakonec je `UploadDocuments` Metoda zpožděna po dobu dvou sekund. Indexování probíhá asynchronně ve službě Azure Kognitivní hledání, takže ukázková aplikace potřebuje počkat krátkou dobu, aby se zajistila dostupnost dokumentů pro hledání. Tato odložení se obvykle používají pouze v ukázkových aplikacích a při testech.
 
 <a name="how-dotnet-handles-documents"></a>
 
 #### <a name="how-the-net-sdk-handles-documents"></a>Jak .NET SDK zpracovává dokumenty
-Možná vás zajímá, jak bude sada Azure Kognitivní hledání .NET SDK schopna nahrávat instance uživatelsky definované třídy, jako `Hotel` je index. Abychom vám pomohli zodpovědět tuto otázku, podívejme `Hotel` se na třídu:
+Možná vás zajímá, jak bude sada Azure Kognitivní hledání .NET SDK schopna nahrávat instance uživatelsky definované třídy, jako je `Hotel` index. Abychom vám pomohli zodpovědět tuto otázku, Podívejme se na `Hotel` třídu:
 
 ```csharp
 using System;
@@ -455,29 +455,29 @@ public partial class Hotel
 }
 ```
 
-První věc, kterou je třeba si všimnout, je, že název každé veřejné `Hotel` vlastnosti ve třídě se namapuje na pole se stejným názvem v definici indexu. Pokud chcete, aby každé pole začínalo malým písmenem ("ve stylu CamelCase případ"), můžete sadě SDK sdělit, aby názvy vlastností namapovaly na ve stylu CamelCase-Case automaticky s `[SerializePropertyNamesAsCamelCase]` atributem třídy. Tento scénář je běžný v aplikacích .NET, které provádějí datovou vazbu, kde cílové schéma je mimo ovládací prvek vývojářů aplikací, aniž by bylo nutné porušovat zásady vytváření názvů "Pascal" v rozhraní .NET.
+První věc, kterou je třeba si všimnout, je, že název každé veřejné vlastnosti ve `Hotel` třídě se namapuje na pole se stejným názvem v definici indexu. Pokud chcete, aby každé pole začínalo malým písmenem ("ve stylu CamelCase případ"), můžete sadě SDK sdělit, aby názvy vlastností namapovaly na ve stylu CamelCase-Case automaticky s `[SerializePropertyNamesAsCamelCase]` atributem třídy. Tento scénář je běžný v aplikacích .NET, které provádějí datovou vazbu, kde cílové schéma je mimo ovládací prvek vývojářů aplikací, aniž by bylo nutné porušovat zásady vytváření názvů "Pascal" v rozhraní .NET.
 
 > [!NOTE]
 > Sada Azure Kognitivní hledání .NET SDK používá knihovnu [JSON.NET Newtonsoft](https://www.newtonsoft.com/json/help/html/Introduction.htm) k serializaci a deserializaci vašich vlastních objektů modelu do a z formátu JSON. V případě potřeby lze serializaci přizpůsobit. Další informace najdete v tématu [vlastní serializace pomocí JSON.NET](#JsonDotNet).
 > 
 > 
 
-Druhá věc k `IsFilterable`oznámení je, že každá vlastnost je upravena s atributy, `IsSearchable`jako `Key`například, `Analyzer`, a. Tyto atributy jsou mapovány přímo k [odpovídajícím atributům polí v indexu služby Azure kognitivní hledání](/rest/api/searchservice/create-index). `FieldBuilder` Třída pomocí těchto vlastností vytvoří definice polí pro index.
+Druhá věc k oznámení je, že každá vlastnost je upravena s atributy `IsFilterable` , jako například, `IsSearchable` , `Key` a `Analyzer` . Tyto atributy jsou mapovány přímo k [odpovídajícím atributům polí v indexu služby Azure kognitivní hledání](/rest/api/searchservice/create-index). `FieldBuilder`Třída pomocí těchto vlastností vytvoří definice polí pro index.
 
-Třetí důležitou věcí o této `Hotel` třídě jsou datové typy veřejných vlastností. .NET typy těchto vlastností se mapují na odpovídající typy polí v definici indexu. Například řetězcová vlastnost `Category` se mapuje na pole `category`, které je typu `Edm.String`. Existují podobné mapování typů `bool?`mezi, `Edm.Boolean`, `DateTimeOffset?`a `Edm.DateTimeOffset` a tak dále. Konkrétní pravidla pro mapování typů jsou zdokumentována pomocí `Documents.Get` metody v [referenčních informacích k sadě Azure kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). Tato `FieldBuilder` třída se pro vás postará o toto mapování, ale přesto může být užitečné pochopit, jak potřebujete řešit problémy s serializací.
+Třetí důležitou věcí o této `Hotel` třídě jsou datové typy veřejných vlastností. .NET typy těchto vlastností se mapují na odpovídající typy polí v definici indexu. Například řetězcová vlastnost `Category` se mapuje na pole `category`, které je typu `Edm.String`. Existují podobné mapování typů mezi `bool?` , `Edm.Boolean` , a a `DateTimeOffset?` `Edm.DateTimeOffset` tak dále. Konkrétní pravidla pro mapování typů jsou zdokumentována pomocí `Documents.Get` metody v [referenčních informacích k sadě Azure kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions.get). `FieldBuilder`Tato třída se pro vás postará o toto mapování, ale přesto může být užitečné pochopit, jak potřebujete řešit problémy s serializací.
 
-Nedošlo k tomu, abyste `SmokingAllowed` si poznamenali vlastnost?
+Nedošlo k tomu, abyste si poznamenali `SmokingAllowed` vlastnost?
 
 ```csharp
 [JsonIgnore]
 public bool? SmokingAllowed => (Rooms != null) ? Array.Exists(Rooms, element => element.SmokingAllowed == true) : (bool?)null;
 ```
 
-`JsonIgnore` Atribut v této vlastnosti říká, že `FieldBuilder` ho neserializovat do indexu jako pole.  Toto je skvělý způsob, jak vytvořit počítané vlastnosti na straně klienta, které můžete použít jako pomocníky ve vaší aplikaci.  V tomto případě `SmokingAllowed` vlastnost odráží, zda některý `Room` z `Rooms` kolekcí umožňuje kouření.  Pokud jsou všechny hodnoty false, znamená to, že celý Hotel nedovoluje kouření.
+`JsonIgnore`Atribut v této vlastnosti říká, že `FieldBuilder` ho neserializovat do indexu jako pole.  Toto je skvělý způsob, jak vytvořit počítané vlastnosti na straně klienta, které můžete použít jako pomocníky ve vaší aplikaci.  V tomto případě `SmokingAllowed` vlastnost odráží, zda některý `Room` z `Rooms` kolekcí umožňuje kouření.  Pokud jsou všechny hodnoty false, znamená to, že celý Hotel nedovoluje kouření.
 
-Některé vlastnosti, jako `Address` jsou `Rooms` a jsou instancemi tříd .NET.  Tyto vlastnosti reprezentují složitější datové struktury a v důsledku toho vyžadují pole se [složitým datovým typem](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) v indexu.
+Některé vlastnosti, jako `Address` `Rooms` jsou a jsou instancemi tříd .NET.  Tyto vlastnosti reprezentují složitější datové struktury a v důsledku toho vyžadují pole se [složitým datovým typem](https://docs.microsoft.com/azure/search/search-howto-complex-data-types) v indexu.
 
-`Address` Vlastnost představuje sadu více hodnot ve třídě, která `Address` je definována níže:
+`Address`Vlastnost představuje sadu více hodnot ve `Address` třídě, která je definována níže:
 
 ```csharp
 using System;
@@ -509,7 +509,7 @@ namespace AzureSearch.SDKHowTo
 
 Tato třída obsahuje standardní hodnoty používané k popisu adres v USA nebo Kanadě. Můžete použít typy, jako je to, k seskupení logických polí v indexu.
 
-`Rooms` Vlastnost představuje pole `Room` objektů:
+`Rooms`Vlastnost představuje pole `Room` objektů:
 
 ```csharp
 using System;
@@ -556,13 +556,13 @@ Váš datový model v .NET a odpovídající schéma indexu by měly být navrž
 Tato možnost použití vlastních tříd k interakci s dokumenty v indexu funguje v obou směrech. Můžete také načíst výsledky hledání a nechat sadu SDK automaticky deserializovat podle vámi zvoleného typu, jak je uvedeno v následující části.
 
 > [!NOTE]
-> Sada Azure Kognitivní hledání .NET SDK také podporuje dynamicky typové dokumenty pomocí `Document` třídy, což je mapování klíč/hodnota názvů polí na hodnoty polí. To je užitečné v situacích, kdy v době navrhování neznáte schéma indexu nebo kde by vázání na konkrétní třídy modelu bylo nepraktické. Všechny metody v sadě SDK, které pracují s dokumenty, mají přetížení, které pracují se třídou `Document`, ale i přetížení silně závislá na typu, která přebírají parametr obecného typu. V ukázkovém kódu v tomto kurzu se používá jenom ta druhá. Třída dědí z. [ `Document` ](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document) `Dictionary<string, object>`
+> Sada Azure Kognitivní hledání .NET SDK také podporuje dynamicky typové dokumenty pomocí `Document` třídy, což je mapování klíč/hodnota názvů polí na hodnoty polí. To je užitečné v situacích, kdy v době navrhování neznáte schéma indexu nebo kde by vázání na konkrétní třídy modelu bylo nepraktické. Všechny metody v sadě SDK, které pracují s dokumenty, mají přetížení, které pracují se třídou `Document`, ale i přetížení silně závislá na typu, která přebírají parametr obecného typu. V ukázkovém kódu v tomto kurzu se používá jenom ta druhá. [ `Document` Třída](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.document) dědí z `Dictionary<string, object>` .
 > 
 >
 
 **Proč byste měli používat datové typy s možnou hodnotou null**
 
-Při navrhování vlastních tříd modelů pro mapování k indexu služby Azure Kognitivní hledání doporučujeme deklarovat vlastnosti typů hodnot, `bool` například a `int` , `bool?` aby byly možnou hodnotou null (například místo `bool`). Pokud použijete vlastnost se zakázanou hodnotou null, musíte **zajistit**, aby žádné dokumenty v indexu neobsahovaly pro odpovídající pole hodnotu null. Sada SDK ani služba Azure Kognitivní hledání vám ji nepomůže vyhovět.
+Při navrhování vlastních tříd modelů pro mapování k indexu služby Azure Kognitivní hledání doporučujeme deklarovat vlastnosti typů hodnot, například `bool` a `int` , aby byly možnou hodnotou null (například `bool?` místo `bool` ). Pokud použijete vlastnost se zakázanou hodnotou null, musíte **zajistit**, aby žádné dokumenty v indexu neobsahovaly pro odpovídající pole hodnotu null. Sada SDK ani služba Azure Kognitivní hledání vám ji nepomůže vyhovět.
 
 Nejedná se pouze o hypotetický problém: představte si situaci, kdy přidáte nové pole do stávajícího indexu typu `Edm.Int32`. Po aktualizaci definice indexu budou mít všechny dokumenty pro toto nové pole hodnotu null (vzhledem k tomu, že všechny typy jsou v Azure Kognitivní hledání s možnou hodnotou null). Pokud pak použijete třídu modelu s vlastností `int` se zakázanou hodnotou null, při pokusu o načtení dokumentů dojde k vyvolání podobné výjimky `JsonSerializationException`:
 
@@ -573,7 +573,7 @@ Z tohoto důvodu doporučujeme jako osvědčený postup používat ve třídách
 <a name="JsonDotNet"></a>
 
 #### <a name="custom-serialization-with-jsonnet"></a>Vlastní serializace pomocí JSON.NET
-Sada SDK používá JSON.NET k serializaci a deserializaci dokumentů. Můžete přizpůsobit serializaci a deserializaci v případě potřeby definováním vlastních `JsonConverter` nebo `IContractResolver`. Další informace najdete v [dokumentaci k JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm). To může být užitečné, pokud chcete přizpůsobit existující třídu modelu z aplikace pro použití s Azure Kognitivní hledání a dalších pokročilejších scénářů. Například s vlastní serializací můžete:
+Sada SDK používá JSON.NET k serializaci a deserializaci dokumentů. Můžete přizpůsobit serializaci a deserializaci v případě potřeby definováním vlastních `JsonConverter` nebo `IContractResolver` . Další informace najdete v [dokumentaci k JSON.NET](https://www.newtonsoft.com/json/help/html/Introduction.htm). To může být užitečné, pokud chcete přizpůsobit existující třídu modelu z aplikace pro použití s Azure Kognitivní hledání a dalších pokročilejších scénářů. Například s vlastní serializací můžete:
 
 * Zahrnutí nebo vyloučení některých vlastností vaší třídy modelu z ukládání jako polí dokumentů.
 * Mapování mezi názvy vlastností ve vašem kódu a názvech polí v indexu.
@@ -641,9 +641,9 @@ private static void RunQueries(ISearchIndexClient indexClient)
 }
 ```
 
-Pokaždé, když spustí dotaz, tato metoda nejprve vytvoří nový `SearchParameters` objekt. Tento objekt se používá k určení dalších možností pro dotaz, jako je řazení, filtrování, stránkování a omezující vlastnosti. V této metodě nastavujeme `Filter`vlastnost, `Select`, `OrderBy`a `Top` pro různé dotazy. Všechny `SearchParameters` vlastnosti jsou popsány [zde](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters).
+Pokaždé, když spustí dotaz, tato metoda nejprve vytvoří nový `SearchParameters` objekt. Tento objekt se používá k určení dalších možností pro dotaz, jako je řazení, filtrování, stránkování a omezující vlastnosti. V této metodě nastavujeme `Filter` `Select` vlastnost,, `OrderBy` a `Top` pro různé dotazy. Všechny `SearchParameters` vlastnosti jsou popsány [zde](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.searchparameters).
 
-Dalším krokem je ve skutečnosti spustit vyhledávací dotaz. Spuštění vyhledávání je provedeno pomocí `Documents.Search` metody. Pro každý dotaz předáte hledaný text, který se má použít jako řetězec (nebo `"*"` Pokud není k dispozici žádný hledaný text) a také parametry hledání, které jste vytvořili dříve. Také určujeme `Hotel` jako parametr typu pro `Documents.Search`, který dává sadě SDK pokyn k deserializaci dokumentů ve výsledcích hledání do objektů typu. `Hotel`
+Dalším krokem je ve skutečnosti spustit vyhledávací dotaz. Spuštění vyhledávání je provedeno pomocí `Documents.Search` metody. Pro každý dotaz předáte hledaný text, který se má použít jako řetězec (nebo `"*"` Pokud není k dispozici žádný hledaný text) a také parametry hledání, které jste vytvořili dříve. Také určujeme `Hotel` jako parametr typu pro `Documents.Search` , který dává sadě SDK pokyn k deserializaci dokumentů ve výsledcích hledání do objektů typu `Hotel` .
 
 > [!NOTE]
 > Další informace o syntaxi výrazu vyhledávacího dotazu najdete [tady](https://docs.microsoft.com/rest/api/searchservice/Simple-query-syntax-in-Azure-Search).
@@ -699,7 +699,7 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-Tento dotaz používá výraz `$filter` `Rooms/any(r: r/BaseRate lt 100)`OData pro filtrování dokumentů v indexu. Pomocí [operátoru any](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators) se v kolekci místností aplikuje ' BaseRate lt 100 ' na všechny položky. Další informace o syntaxi OData, kterou Azure Kognitivní hledání podporuje, najdete [tady](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax).
+Tento dotaz používá výraz OData `$filter` `Rooms/any(r: r/BaseRate lt 100)` pro filtrování dokumentů v indexu. Pomocí [operátoru any](https://docs.microsoft.com/azure/search/search-query-odata-collection-operators) se v kolekci místností aplikuje ' BaseRate lt 100 ' na všechny položky. Další informace o syntaxi OData, kterou Azure Kognitivní hledání podporuje, najdete [tady](https://docs.microsoft.com/azure/search/query-odata-filter-orderby-syntax).
 
 Tady jsou výsledky dotazu:
 
@@ -725,7 +725,7 @@ results = indexClient.Documents.Search<Hotel>("*", parameters);
 WriteDocuments(results);
 ```
 
-V tomto případě znovu použijeme syntaxi OData k zadání `OrderBy` parametru jako. `lastRenovationDate desc` Také jsme nastavili `Top` na 2, aby bylo zajištěno, že pouze získáme horní dva dokumenty. Stejně jako dřív jsme nastavili `Select` , která pole se mají vrátit.
+V tomto případě znovu použijeme syntaxi OData k zadání `OrderBy` parametru jako `lastRenovationDate desc` . Také jsme nastavili `Top` na 2, aby bylo zajištěno, že pouze získáme horní dva dokumenty. Stejně jako dřív jsme nastavili, `Select` která pole se mají vrátit.
 
 Tady jsou výsledky:
 

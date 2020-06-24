@@ -8,21 +8,21 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 05/20/2020
 ms.author: anfeldma
-ms.openlocfilehash: 35d83d11d631d94cad4781c69d985a73c70dde99
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 30d1ee46854a6bbe695bf2a70c266f71a2f906ec
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677963"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080992"
 ---
 # <a name="azure-cosmos-db-java-sdk-v4-for-core-sql-api-release-notes-and-resources"></a>Azure Cosmos DB rozhraní Java SDK v4 pro Core (SQL) API: poznámky k verzi a prostředky
 > [!div class="op_single_selector"]
 > * [.NET SDK V3](sql-api-sdk-dotnet-standard.md)
-> * [.NET SDK v2](sql-api-sdk-dotnet.md)
-> * [.NET Core SDK v2](sql-api-sdk-dotnet-core.md)
+> * [Sada .NET SDK v2](sql-api-sdk-dotnet.md)
+> * [Sada .NET Core SDK v2](sql-api-sdk-dotnet-core.md)
 > * [Rozhraní .NET Change feed SDK v2](sql-api-sdk-dotnet-changefeed.md)
 > * [Node.js](sql-api-sdk-node.md)
-> * [Java SDK v4](sql-api-sdk-java-v4.md)
+> * [Sada Java SDK v4](sql-api-sdk-java-v4.md)
 > * [Sada Async Java SDK v2](sql-api-sdk-async-java.md)
 > * [Sada Sync Java SDK v2](sql-api-sdk-java.md)
 > * [Python](sql-api-sdk-python.md)
@@ -48,7 +48,7 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 | |  |
 |---|---|
 | **Stažení sady SDK** | [Maven](https://mvnrepository.com/artifact/com.azure/azure-cosmos) |
-|**Dokumentace k rozhraní API** | [Referenční dokumentace k rozhraní Java API](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-cosmos/4.0.1/index.html) |
+|**Dokumentace k rozhraní API** | [Referenční dokumentace k rozhraní Java API](https://docs.microsoft.com/java/api/overview/azure/cosmosdb/client?view=azure-java-stable) |
 |**Přispívání do sady SDK** | [Azure SDK pro centrální úložiště Java na GitHubu](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cosmos) | 
 |**Začínáme** | [Rychlý Start: Vytvoření aplikace Java pro správu Azure Cosmos DB dat rozhraní SQL API](https://docs.microsoft.com/azure/cosmos-db/create-sql-api-java) · [Úložiště GitHub s kódem pro rychlý Start](https://github.com/Azure-Samples/azure-cosmos-java-getting-started) | 
 |**Ukázky základních kódů** | [Azure Cosmos DB: Příklady jazyka Java pro rozhraní SQL API](sql-api-java-sdk-samples.md) · [Úložiště GitHub s ukázkovým kódem](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples)|
@@ -62,8 +62,11 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 
 ## <a name="release-history"></a>Historie verzí
 
-### <a name="401-beta4-unreleased"></a>4.0.1-beta. 4 (neuvolní se)
+### <a name="401-2020-06-10"></a>4.0.1 (2020-06-10)
 #### <a name="new-features"></a>Nové funkce
+* Přejmenování `QueryRequestOptions` na `CosmosQueryRequestOptions` .
+* Aktualizováno `ChangeFeedProcessorBuilder` na vzor tvůrce.
+* Aktualizováno `CosmosPermissionProperties` pomocí nového názvu kontejneru a rozhraní API podřízených prostředků.
 * Do se přidaly další ukázky & obohacených dokumentů `CosmosClientBuilder` . 
 * Aktualizovala `CosmosDatabase`  &  `CosmosContainer` se rozhraní API s throughputProperties pro podporu automatického škálování/autopilotu. 
 * Přejmenování `CosmosClientException` na `CosmosException` . 
@@ -80,9 +83,8 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 * `getETag()`  &  `getTimestamp()` Do typů se přidala rozhraní API `Cosmos*Properties` . 
 * Přidané `userAgent` informace v `CosmosException`  &  `CosmosDiagnostics` . 
 * Byl aktualizován znak nového řádku v `Diagnostics` systému na znak nového řádku systému. 
-
-### <a name="401-beta3-2020-05-15"></a>4.0.1-beta. 3 (2020-05-15)
-#### <a name="new-features"></a>Nové funkce
+* Odebraná `readAll*` rozhraní API, použijte místo toho možnost dotaz vybrat všechna rozhraní API.
+* Bylo přidáno `ChangeFeedProcessor` rozhraní API pro prodlevu odhadu.   
 * Přidání podpory automatického škálování/pilotního zřizování propustnosti do sady SDK.  
 * Nahrazené `ConnectionPolicy` novými konfiguracemi připojení. Vystavená `DirectConnectionConfig`  &  `GatewayConnectionConfig` rozhraní API `CosmosClientBuilder` pro přímé konfigurace připojení režimu & brány
 * Přesunuté `JsonSerializable`  &  `Resource` do implementačního balíčku 
@@ -92,12 +94,6 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 * Přejmenováno `preferredLocations`  &  `multipleWriteLocations` rozhraní API na `preferredRegions`  &  `multipleWriteRegions` . 
 * Aktualizováno `reactor-core` na 3.3.5. Release, `reactor-netty` na 0.9.7. Release & `netty` do 4.1.49. finální verze. 
 * Přidání podpory pro `analyticalStoreTimeToLive` sadu SDK.     
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* Pevné problémy s nevracením paměti s přímým klientem TCP.
-* Opraveno `orderByQuery` s chybou tokenu pokračování.
-
-### <a name="401-beta2-2020-04-21"></a>4.0.1-beta. 2 (2020-04-21)
-#### <a name="new-features"></a>Nové funkce
 * `CosmosClientException`rozšiřuje `AzureException` . 
 * Rozhraní API ze systému se odebrala `maxItemCount`  &  `requestContinuationToken` `FeedOptions` místo toho `byPage()` `CosmosPagedFlux`  &  `CosmosPagedIterable` .
 * Zavedená `CosmosPermissionProperties` na veřejné ploše pro `Permission` rozhraní API.
@@ -107,13 +103,8 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 * Odstraněné externí závislosti `fasterxml.uuid, guava, commons-io, commons-collection4, commons-text` .  
 * Přesunuto `CosmosPagedFlux`  &  `CosmosPagedIterable` do `utils` balíčku. 
 * V 4.1.45 se aktualizovala síťovina. konečné & reaktoru projektu na verzi 3.3.3.
-* Veřejné smlouvy Rest se aktualizovaly na `Final` třídy. 
-#### <a name="key-bug-fixes"></a>Opravy chyb klíčů
-* `ChangeFeedProcessor`Oprava chyby pro zpracování děleného oddílu &, když se oddíl nenašel
-* `ChangeFeedProcessor`Oprava chyby při synchronizaci aktualizací zapůjčení napříč různými vlákny.
-
-### <a name="401-beta1-2020-03-10"></a>4.0.1-beta. 1 (2020-03-10)
-#### <a name="new-features"></a>Nové funkce 
+* Veřejné smlouvy Rest se aktualizovaly na `Final` třídy.
+* Přidání podpory pro pokročilou diagnostiku pro operace Point.
 * Aktualizovaný balíček na`com.azure.cosmos`
 * Přidal se `models` balíček pro kontrakty modelu/REST.
 * Byl přidán `utils` balíček pro `CosmosPagedFlux`  &  `CosmosPagedIterable` typy. 
@@ -122,10 +113,19 @@ Azure Cosmos DB Java SDK v4 for Core (SQL) kombinuje asynchronní rozhraní API 
 * `RetryOptions`přejmenování na `ThrottlingRetryOptions` .
 * Přidání `CosmosPagedFlux`  &  `CosmosPagedIterable` typů stránkování pro rozhraní API pro dotazy. 
 * Přidání podpory pro sdílení TransportClient napříč několika instancemi CosmosClients pomocí nového rozhraní API v`CosmosClientBuilder#connectionSharingAcrossClientsEnabled(true)`
+* Optimalizace dotazu odebráním dvojité serializace/deserializace. 
+* Optimalizace hlaviček odpovědí odebráním zbytečného kopírování znovu a zpátky. 
+* Optimalizované `ByteBuffer` serializace/deserializace odebráním zprostředkujících instancí řetězců.
 #### <a name="key-bug-fixes"></a>Opravy chyb klíčů
+* Pevná `toString()` výjimka ConnectionPolicy ukazatele na hodnotu null
+* Opravili jsme problém s analýzou výsledků dotazu v případě dotazů na hodnotu ORDER by. 
+* Pevné problémy s nevracením paměti s přímým klientem TCP.
+* Opraveno `orderByQuery` s chybou tokenu pokračování.
+* `ChangeFeedProcessor`Oprava chyby pro zpracování děleného oddílu &, když se oddíl nenašel
+* `ChangeFeedProcessor`Oprava chyby při synchronizaci aktualizací zapůjčení napříč různými vlákny.
 * Pevná podmínka časování způsobila `ArrayIndexOutOfBound` výjimku v StoreReader
 
-## <a name="faq"></a>Časté otázky
+## <a name="faq"></a>Nejčastější dotazy
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
 ## <a name="see-also"></a>Viz také

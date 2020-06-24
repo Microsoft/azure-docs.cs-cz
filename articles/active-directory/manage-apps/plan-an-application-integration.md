@@ -3,8 +3,8 @@ title: Začínáme s integrací Azure AD s aplikacemi | Microsoft Docs
 description: Tento článek je úvodní příručka pro integraci Azure Active Directory (AD) s místními aplikacemi a cloudových aplikací.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
@@ -12,15 +12,15 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/16/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89b16a8479f8975d101b8a4e26dcb1885d9730bd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0d49c23e5968b0fe1b2d4838978fe1b23931e5e9
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063376"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763087"
 ---
 # <a name="integrating-azure-active-directory-with-applications-getting-started-guide"></a>Průvodce integrací Azure Active Directory s aplikacemi Začínáme
 
@@ -96,6 +96,6 @@ Podrobné informace můžete stáhnout Azure Active Directory plány nasazení z
 Stažení plánu nasazení z Azure Portal:
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
-2. Vyberte **možnost podnikové aplikace** | vybrat**plán nasazení****aplikace** | .
+2. Vyberte možnost **podnikové aplikace**vybrat  |  **Pick an App**  |  **plán nasazení**aplikace.
 
 Poskytněte prosím svůj názor na plány nasazení prostřednictvím [průzkumu plánu nasazení](https://aka.ms/DeploymentPlanFeedback).

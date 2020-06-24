@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2018
 ms.author: allensu
-ms.openlocfilehash: 7124dd40d4510674014afe012a8f40dcb5bb6153
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bd32bbb5957832629fa19eb756b95356c0292ef1
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81253760"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887692"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Vylepšení výkonu prostřednictvím komprimace souborů v Azure CDN
 Komprese souborů představuje jednoduchou a efektivní metodu pro zlepšení rychlosti přenosu souborů a zvýšení výkonu načítání stránek tím, že se velikost souboru před odesláním ze serveru zmenší. Komprese souborů může snížit náklady na šířku pásma a zajistit pro uživatele lépe reagující prostředí.
@@ -127,7 +127,7 @@ Tyto profily podporují následující kódování komprese:
 
 Pokud požadavek podporuje více než jeden typ komprese, mají tyto typy komprese přednost před brotli kompresí.
 
-Když požadavek na určitý prostředek určuje kompresi brotli (hlavička protokolu HTTP je `Accept-Encoding: br`) a výsledkem požadavku není Neúspěšné přístupy do mezipaměti, Azure CDN provádí brotli kompresi assetu přímo na serveru POP. Následně bude komprimovaný soubor obsluhován z mezipaměti.
+Když požadavek na určitý prostředek určuje kompresi brotli (hlavička protokolu HTTP je `Accept-Encoding: br` ) a výsledkem požadavku není Neúspěšné přístupy do mezipaměti, Azure CDN provádí brotli kompresi assetu přímo na serveru POP. Následně bude komprimovaný soubor obsluhován z mezipaměti.
 
 ### <a name="azure-cdn-standard-from-akamai-profiles"></a>Azure CDN Standard z profilů Akamai
 
@@ -139,7 +139,7 @@ Tyto profily podporují pouze kompresní kódování gzip. Když koncový bod pr
 Následující tabulky popisují Azure CDN chování komprese pro každý scénář:
 
 ### <a name="compression-is-disabled-or-file-is-ineligible-for-compression"></a>Komprese je zakázaná nebo soubor nemá nárok na kompresi.
-| Formát požadovaný klientem (přes hlavičku Accept-Encoding) | Formát souboru v mezipaměti | Odpověď CDN klientovi | &nbsp; &nbsp; Poznámky&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+| Formát požadovaný klientem (přes hlavičku Accept-Encoding) | Formát souboru v mezipaměti | Odpověď CDN klientovi | &nbsp; &nbsp; &nbsp; &nbsp; Poznámky &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
 | --- | --- | --- | --- |
 | Komprimované |Komprimované |Komprimované | |
 | Komprimované |Nekomprimovaných |Nekomprimovaných | |
@@ -162,7 +162,7 @@ Následující tabulky popisují Azure CDN chování komprese pro každý scén�
 U koncových bodů povolených pro Media Services CDN streaming je komprese ve výchozím nastavení povolená pro následující typy MIME: 
 - application/vnd. MS-sstr + XML 
 - Application/pomlčka + XML
-- application/vnd. Apple. mpegurl
+- Adresa URL aplikace/vnd.apple.mpeg
 - Application/f4m + XML 
 
 ## <a name="see-also"></a>Viz také

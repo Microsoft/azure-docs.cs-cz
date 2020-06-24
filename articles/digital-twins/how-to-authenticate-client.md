@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 8390ed8777c2c15940bef5838890e49396404052
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 89de2e86e425e2c585f9a1243f6666a0ae077c10
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613268"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726051"
 ---
 # <a name="authenticate-a-client-application-with-azure-digital-twins"></a>Ověřování klientské aplikace pomocí digitálních vláken Azure
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Po [vytvoření instance digitálního vlákna Azure](how-to-set-up-instance.md)můžete vytvořit klientskou aplikaci, kterou použijete k interakci s instancí. Po nastavení klientského projektu Starter se v tomto článku dozvíte, jak správně ověřit tuto klientskou aplikaci s instancí digitálních vláken Azure.
 
@@ -44,7 +47,7 @@ Pokud chcete vytvořit registraci aplikace, musíte zadat ID prostředku pro roz
 }]
 ``` 
 
-Uložte tento soubor jako *manifest. JSON*.
+Uložte tento soubor jako *manifest.jsna*.
 
 > [!NOTE] 
 > K dispozici jsou některá místa, kde je možné použít "popisný" čitelný řetězec `https://digitaltwins.azure.net` pro místo identifikátoru GUID pro ID aplikace prostředků Azure Digital Replaced `0b07f429-9f4b-4714-9392-cc5e8e80c8b0` . Mnoho příkladů v celé této dokumentaci například používá ověřování pomocí knihovny MSAL a popisný řetězec lze použít pro tuto sadu. Během tohoto kroku vytváření registrace aplikace je ale ve formátu identifikátoru GUID IDENTIFIKÁTORu vyžadováno, jak je uvedeno výše. 
@@ -52,7 +55,7 @@ Uložte tento soubor jako *manifest. JSON*.
 V okně Cloud Shell klikněte na ikonu nahrát/stáhnout soubory a vyberte Odeslat.
 
 :::image type="content" source="media/how-to-authenticate-client/upload-extension.png" alt-text="Cloud Shell okno zobrazující výběr možnosti nahrání":::
-Přejděte na *manifest. JSON* , který jste právě vytvořili, a stiskněte otevřít.
+Přejděte na *manifest.js* právě vytvořeného a stiskněte tlačítko "otevřít".
 
 Potom spuštěním následujícího příkazu vytvořte registraci aplikace (podle potřeby nahraďte zástupné symboly):
 

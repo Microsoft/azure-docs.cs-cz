@@ -10,11 +10,11 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/02/2020
 ms.openlocfilehash: d1723b6c5d56554fbff576f6a07e37455845bda4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283001"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688870"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indexování dat Cosmos DB pomocí indexeru ve službě Azure Cognitive Search 
 
@@ -71,7 +71,7 @@ Na stránce **zdroj dat** musí být zdroj **Cosmos DB**, a to s následujícím
 
 + **Name** je název objektu zdroje dat. Po vytvoření si ho můžete vybrat pro jiné úlohy.
 
-+ **Cosmos DB účet** by měl být primárním nebo sekundárním připojovacím řetězcem z `AccountEndpoint` Cosmos DB s `AccountKey`a. Pro kolekce MongoDB přidejte **ApiKind = MongoDB** do konce připojovacího řetězce a oddělte ho od připojovacího řetězce středníkem. Pro rozhraní Gremlin API a rozhraní API Cassandra použijte pokyny pro [REST API](#cosmosdb-indexer-rest).
++ **Cosmos DB účet** by měl být primárním nebo sekundárním připojovacím řetězcem z Cosmos DB s `AccountEndpoint` a `AccountKey` . Pro kolekce MongoDB přidejte **ApiKind = MongoDB** do konce připojovacího řetězce a oddělte ho od připojovacího řetězce středníkem. Pro rozhraní Gremlin API a rozhraní API Cassandra použijte pokyny pro [REST API](#cosmosdb-indexer-rest).
 
 + **Databáze** je existující databáze z účtu. 
 
@@ -128,7 +128,7 @@ Pomocí REST API můžete indexovat Azure Cosmos DB data, a to za pracovní post
 Dříve v tomto článku se zmiňujeme, že indexování [Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/index-overview) a [Azure kognitivní hledání](search-what-is-an-index.md) indexování je jedinečných operací. Pro Cosmos DB indexování se ve výchozím nastavení automaticky indexují všechny dokumenty s výjimkou rozhraní API Cassandra. Pokud automatické indexování vypnete, můžete k dokumentům přicházet pouze prostřednictvím vlastních odkazů nebo dotazů pomocí ID dokumentu. Indexování služby Azure Kognitivní hledání vyžaduje, aby v kolekci, která bude indexována službou Azure Kognitivní hledání, byla zapnuta Cosmos DB automatické indexování. Při registraci ve verzi Preview služby Cosmos DB rozhraní API Cassandra indexeru budete mít k dispozici pokyny, jak nastavit Cosmos DB indexování.
 
 > [!WARNING]
-> Azure Cosmos DB je další generace DocumentDB. Dřív s rozhraním API verze **2017-11-11** můžete použít `documentdb` syntaxi. To znamená, že můžete zadat typ zdroje dat jako `cosmosdb` nebo. `documentdb` Počínaje rozhraním API verze **2019-05-06** rozhraní API a portál Azure kognitivní hledání podporují jenom `cosmosdb` syntaxi podle pokynů v tomto článku. To znamená, že typ zdroje dat musí `cosmosdb` být v případě, že se chcete připojit k Cosmos DB koncovému bodu.
+> Azure Cosmos DB je další generace DocumentDB. Dřív s rozhraním API verze **2017-11-11** můžete použít `documentdb` syntaxi. To znamená, že můžete zadat typ zdroje dat jako `cosmosdb` nebo `documentdb` . Počínaje rozhraním API verze **2019-05-06** rozhraní API a portál Azure kognitivní hledání podporují jenom `cosmosdb` syntaxi podle pokynů v tomto článku. To znamená, že typ zdroje dat musí být v případě, že se chcete `cosmosdb` připojit k Cosmos DB koncovému bodu.
 
 ### <a name="1---assemble-inputs-for-the-request"></a>1. sestavování vstupů pro požadavek
 
@@ -173,10 +173,10 @@ Chcete-li vytvořit zdroj dat, formulujte požadavek POST:
 
 Tělo požadavku obsahuje definici zdroje dat, která by měla obsahovat následující pole:
 
-| Pole   | Popis |
+| Pole   | Description |
 |---------|-------------|
 | **Jméno** | Povinná hodnota. Vyberte libovolný název, který bude představovat váš objekt zdroje dat. |
-|**textový**| Povinná hodnota. Musí být `cosmosdb`. |
+|**textový**| Povinná hodnota. Musí být `cosmosdb` . |
 |**přihlašovací údaje** | Povinná hodnota. Musí se jednat o Cosmos DB připojovací řetězec.<br/>V případě kolekcí SQL jsou připojovací řetězce v tomto formátu:`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>`<br/><br/>Pro kolekce MongoDB přidejte **ApiKind = MongoDB** do připojovacího řetězce:<br/>`AccountEndpoint=<Cosmos DB endpoint url>;AccountKey=<Cosmos DB auth key>;Database=<Cosmos DB database id>;ApiKind=MongoDb`<br/><br/>V případě grafů Gremlin a tabulek Cassandra si zaregistrujte si ve [verzi Preview služby gated indexer](https://aka.ms/azure-cognitive-search/indexer-preview) , abyste získali přístup k verzi Preview a informace o tom, jak tato pověření naformátovat.<br/><br/>Vyhněte se číslům portů v adrese URL koncového bodu. Pokud zadáte číslo portu, Azure Kognitivní hledání nebude moct indexovat databázi Azure Cosmos DB.|
 | **vnitřního** | Obsahuje následující prvky: <br/>**název**: povinné. Zadejte ID kolekce databází, která se má indexovat.<br/>**dotaz**: volitelné. Můžete zadat dotaz pro sloučení libovolného dokumentu JSON do plochého schématu, které může Azure Kognitivní hledání indexovat.<br/>Pro rozhraní MongoDB API, rozhraní Gremlin API a rozhraní API Cassandra se dotazy nepodporují. |
 | **dataChangeDetectionPolicy** | Doporučil. Viz část [indexování změněných dokumentů](#DataChangeDetectionPolicy) .|
@@ -247,9 +247,9 @@ Pokud ho ještě nemáte, [vytvořte cílový index Azure kognitivní hledání]
 Ujistěte se, že schéma cílového indexu je kompatibilní se schématem zdrojových dokumentů JSON nebo výstupem vlastního projekce dotazu.
 
 > [!NOTE]
-> U dělených kolekcí je výchozí klíč dokumentu Azure Cosmos DB `_rid` vlastnost, kterou Azure kognitivní hledání automaticky přejmenuje, `rid` protože názvy polí nemohou začínat znakem podtržítka. Azure Cosmos DB `_rid` hodnoty také obsahují znaky, které jsou v klíčích Azure kognitivní hledání neplatné. Z `_rid` tohoto důvodu jsou hodnoty kódovány pomocí kódování Base64.
+> U dělených kolekcí je výchozí klíč dokumentu Azure Cosmos DB `_rid` vlastnost, kterou Azure kognitivní hledání automaticky přejmenuje, `rid` protože názvy polí nemohou začínat znakem podtržítka. Azure Cosmos DB hodnoty také `_rid` obsahují znaky, které jsou v klíčích Azure kognitivní hledání neplatné. Z tohoto důvodu `_rid` jsou hodnoty kódovány pomocí kódování Base64.
 > 
-> Pro kolekce MongoDB Azure Kognitivní hledání automaticky přejmenuje `_id` vlastnost na. `id`  
+> Pro kolekce MongoDB Azure Kognitivní hledání automaticky přejmenuje `_id` vlastnost na `id` .  
 
 ### <a name="mapping-between-json-data-types-and-azure-cognitive-search-data-types"></a>Mapování mezi datovými typy JSON a datovými typy Azure Kognitivní hledání
 | Datový typ JSON | Kompatibilní typy polí cílového indexu |
@@ -306,7 +306,7 @@ Obecně dostupná sada .NET SDK má úplnou paritu s všeobecně dostupnou REST 
 
 Použití této zásady se důrazně doporučuje, aby se zajistil dobrý výkon indexeru. 
 
-Pokud používáte vlastní dotaz, ujistěte se, že je `_ts` vlastnost projekt provedená dotazem.
+Pokud používáte vlastní dotaz, ujistěte se, že `_ts` je vlastnost projekt provedená dotazem.
 
 <a name="IncrementalProgress"></a>
 
@@ -314,9 +314,9 @@ Pokud používáte vlastní dotaz, ujistěte se, že je `_ts` vlastnost projekt 
 
 Přírůstkový průběh indexování zajišťuje, že pokud je provádění indexeru přerušeno přechodnými chybami nebo časovým limitem spuštění, může indexer vyzvednutí místa, kde se při příštím spuštění ponechá, místo aby bylo nutné znovu indexovat celou kolekci od začátku. To je obzvláště důležité při indexování velkých kolekcí. 
 
-Pokud chcete povolit přírůstkový průběh při použití vlastního dotazu, ujistěte se, že dotaz seřadí výsledky `_ts` podle sloupce. To umožňuje pravidelné vracení se změnami, které Kognitivní hledání Azure používá k poskytování přírůstkového postupu v případě výskytu selhání.   
+Pokud chcete povolit přírůstkový průběh při použití vlastního dotazu, ujistěte se, že dotaz seřadí výsledky podle `_ts` sloupce. To umožňuje pravidelné vracení se změnami, které Kognitivní hledání Azure používá k poskytování přírůstkového postupu v případě výskytu selhání.   
 
-V některých případech i v případě, že dotaz obsahuje `ORDER BY [collection alias]._ts` klauzuli, nemusí Azure kognitivní hledání odvodit, že dotaz je seřazen podle `_ts`. Azure Kognitivní hledání, že výsledky jsou seřazené pomocí vlastnosti `assumeOrderByHighWaterMarkColumn` konfigurace, můžete sdělit. Chcete-li zadat tuto nápovědu, vytvořte nebo aktualizujte indexer následujícím způsobem: 
+V některých případech i v případě, že dotaz obsahuje `ORDER BY [collection alias]._ts` klauzuli, nemusí Azure kognitivní hledání odvodit, že dotaz je seřazen podle `_ts` . Azure Kognitivní hledání, že výsledky jsou seřazené pomocí vlastnosti konfigurace, můžete sdělit `assumeOrderByHighWaterMarkColumn` . Chcete-li zadat tuto nápovědu, vytvořte nebo aktualizujte indexer následujícím způsobem: 
 
     {
      ... other indexer definition properties
@@ -364,7 +364,7 @@ Následující příklad vytvoří zdroj dat se zásadami podmíněného odstran
 
 ## <a name="next-steps"></a><a name="NextSteps"></a>Další kroky
 
-Blahopřejeme! Zjistili jste, jak integrovat Azure Cosmos DB s Azure Kognitivní hledání pomocí indexeru.
+Gratulujeme! Zjistili jste, jak integrovat Azure Cosmos DB s Azure Kognitivní hledání pomocí indexeru.
 
 * Další informace o Azure Cosmos DB najdete na [stránce služby Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/).
 * Další informace o službě Azure Kognitivní hledání najdete na [stránce vyhledávací služby](https://azure.microsoft.com/services/search/).

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/31/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 2b49598d51fb785872fccec966ac11a95ef3cede
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 62b3a5ca772e21515fadf0397b294e93d77f96a6
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657734"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711829"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>Řešení potíží se službou Azure Files ve Windows
 
@@ -342,12 +342,12 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 Tato rutina provádí následující kontroly v posloupnosti a poskytuje pokyny k selhání:
 1. CheckPort445Connectivity: Ověřte, že je pro připojení SMB otevřený port 445.
 2. CheckDomainJoined: Ověřte, že je klientský počítač připojený k doméně služby Active Directory.
-3. CheckADObject: potvrďte, že přihlášený uživatel má platnou reprezentaci v doméně služby Active Directory, ke které je přidružen účet úložiště.
+3. CheckADObject: potvrďte, že ve službě Active Directory existuje objekt, který představuje účet úložiště, a má správný název SPN (hlavní název služby).
 4. CheckGetKerberosTicket: Pokuste se získat lístek protokolu Kerberos pro připojení k účtu úložiště. 
-5. CheckADObjectPasswordIsCorrect: Ujistěte se, že heslo nakonfigurované na identitě AD, které představuje účet úložiště, odpovídá účtu úložiště Kerb Key.
+5. CheckADObjectPasswordIsCorrect: Ujistěte se, že heslo nakonfigurované na identitě AD, které představuje účet úložiště, odpovídá účtu úložiště kerb1 nebo kerb2 Key
 6. CheckSidHasAadUser: Ověřte, že se přihlášený uživatel služby AD synchronizuje do Azure AD. Pokud chcete vyhledat konkrétního uživatele služby AD, který je synchronizovaný s Azure AD, můžete ve vstupních parametrech zadat-UserName a-Domain.
-7. CheckAadUserHasSid: Ověřte, jestli má uživatel modul AD ve službě AD identifikátor SID, vyžadovat od uživatele zadání ID objektu uživatele Azure AD s identifikátorem (ObjectId). 
-8. CheckStorageAccountDomainJoined: Ověřte, jestli jste zaregistrovali identitu ve službě AD, která bude představovat účet úložiště. 
+7. CheckAadUserHasSid: Ověřte, jestli má uživatel Azure AD ve službě AD identifikátor SID, tato akce vyžaduje, aby uživatel měl vstupní ID objektu uživatele Azure AD s parametrem-ObjectId. 
+8. CheckStorageAccountDomainJoined: Zkontrolujte vlastnosti účtu úložiště, aby bylo možné zjistit, zda bylo povoleno ověřování AD a naplněny vlastnosti služby Active Directory účtu.
 
 ## <a name="unable-to-configure-directoryfile-level-permissions-windows-acls-with-windows-file-explorer"></a>Nejde nakonfigurovat oprávnění na úrovni adresáře nebo souboru (seznamy řízení přístupu systému Windows) pomocí Průzkumníka souborů Windows.
 

@@ -10,24 +10,24 @@ tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 54c4a673e654a0244183a84ffa841d553ae6db51
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1dc35b596d73f713aea99ea14ddb0ff8cbc8d203
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82106249"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688616"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Vytvoření virtuálního počítače se systémem Linux s využitím akcelerované sítě pomocí Azure CLI
 
 V tomto kurzu se dozvíte, jak vytvořit virtuální počítač se systémem Linux s akcelerovanými síťovými službami. Informace o vytvoření virtuálního počítače s Windows a akcelerované sítě najdete v tématu [Vytvoření virtuálního počítače s Windows s akcelerovanými síťovými](create-vm-accelerated-networking-powershell.md)službami. Akcelerované síťové služby umožňují virtuálnímu počítači pomocí rozhraní SR-IOV (single-root I/O Virtualization), což výrazně zlepšuje výkon sítě. Tato cesta s vysokým výkonem obchází hostitele z DataPath, snižuje latenci, kolísání a využití CPU a používá se u nejnáročnějších síťových úloh na podporovaných typech virtuálních počítačů. Následující obrázek znázorňuje komunikaci mezi dvěma virtuálními počítači s a bez urychlení sítě:
 
-![Srovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
+![Porovnání](./media/create-vm-accelerated-networking/accelerated-networking.png)
 
 Bez urychlení sítě musí všechny síťové přenosy na virtuálním počítači a z něj projít hostitelem a virtuálním přepínačem. Virtuální přepínač poskytuje všechna vynucení zásad, například skupiny zabezpečení sítě, seznamy řízení přístupu, izolaci a další síťové virtualizované služby pro síťový provoz. Další informace o virtuálních přepínačích najdete v článku [virtualizace sítě Hyper-V a virtuální přepínač](https://technet.microsoft.com/library/jj945275.aspx) .
 
@@ -158,7 +158,7 @@ az network nic create \
 ```
 
 ### <a name="create-a-vm-and-attach-the-nic"></a>Vytvoření virtuálního počítače a připojení síťového rozhraní
-Při vytváření virtuálního počítače zadejte síťovou kartu, pomocí `--nics`které jste vytvořili. Vyberte velikost a distribuci uvedenou v článku [urychlení sítě Linux](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
+Při vytváření virtuálního počítače zadejte síťovou kartu, pomocí které jste vytvořili `--nics` . Vyberte velikost a distribuci uvedenou v článku [urychlení sítě Linux](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview). 
 
 Vytvořte virtuální počítač pomocí příkazu [az vm create](/cli/azure/vm). Následující příklad vytvoří virtuální počítač s názvem *myVM* s imagí UbuntuLTS a velikostí, která podporuje akcelerované síťové služby (*Standard_DS4_v2*):
 
@@ -206,7 +206,7 @@ V prostředí bash zadejte `uname -r` a potvrďte, že verze jádra je jedna z n
 * **CentOS**: 7.4.20171206
 
 
-Pomocí `lspci` příkazu potvrďte, že se zařízení Mellanox VF zveřejňuje u virtuálního počítače. Vrácený výstup je podobný následujícímu výstupu:
+Pomocí příkazu potvrďte, že se zařízení Mellanox VF zveřejňuje u virtuálního počítače `lspci` . Vrácený výstup je podobný následujícímu výstupu:
 
 ```output
 0000:00:00.0 Host bridge: Intel Corporation 440BX/ZX/DX - 82443BX/ZX/DX Host bridge (AGP disabled) (rev 03)

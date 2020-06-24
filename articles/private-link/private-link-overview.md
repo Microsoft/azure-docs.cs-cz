@@ -5,15 +5,15 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: overview
-ms.date: 06/02/2020
+ms.date: 06/18/2020
 ms.author: allensu
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ec64facd554ca32ddc1357d9b92b08f1d844e377
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 5e46f9dabe2b6f38a08b8e14bae845e0fee22457
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84673407"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081018"
 ---
 # <a name="what-is-azure-private-link"></a>Co je privátní propojení Azure? 
 Privátní odkaz Azure vám umožňuje přístup ke službám Azure PaaS (například Azure Storage a SQL Database) a službám, které hostuje zákaznická/Partnerská služba Azure, prostřednictvím [privátního koncového bodu](private-endpoint-overview.md) ve vaší virtuální síti.
@@ -43,6 +43,7 @@ Privátní propojení Azure přináší následující výhody:
 |Podporované služby  |Dostupné oblasti | Status  |
 |:-------------------|:-----------------|:--------|
 |Služby privátního propojení za standardním Azure Load Balancer | Všechny veřejné oblasti  | GA <br/> [Další informace](https://docs.microsoft.com/azure/private-link/private-link-service-overview) |
+| Azure Automation  | Všechny veřejné oblasti | Preview | |
 | Azure Storage        |  Všechny veřejné oblasti       | GA <br/> [Další informace](/azure/storage/common/storage-private-endpoints)  |
 | Azure Data Lake Storage Gen2        |  Všechny veřejné oblasti      | GA <br/> [Další informace](/azure/storage/common/storage-private-endpoints)  |
 |  Azure SQL Database         | Všechny veřejné oblasti      |   GA <br/> [Další informace](https://docs.microsoft.com/azure/sql-database/sql-database-private-endpoint-overview)      |

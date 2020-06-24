@@ -8,12 +8,12 @@ ms.topic: troubleshooting
 ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 1e4428fecdbb5d664111adc591812a5122bf2eda
-ms.sourcegitcommit: a8ee9717531050115916dfe427f84bd531a92341
+ms.openlocfilehash: 81a3d8e08486f76fc23a489acd3138d7b9fe8134
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/12/2020
-ms.locfileid: "83125110"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711625"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Konfigurace virtuálního počítače hostitele relace
 
@@ -136,7 +136,7 @@ Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na v
 
 ## <a name="error-windows-virtual-desktop-agent-registry-entry-isregistered-shows-a-value-of-0"></a>Chyba: položka registru agenta virtuálního počítače s Windows je v registru zaregistrovaná. zobrazuje se hodnota 0.
 
-**Příčina:** Registrační token vypršel nebo byl vygenerován s hodnotou vypršení platnosti 999999.
+**Příčina:** Platnost registračního tokenu vypršela.
 
 **Oprava:** Pomocí těchto pokynů opravíte chybu registru agenta.
 
@@ -182,7 +182,7 @@ Když je agent virtuálního počítače s Windows nejdřív nainstalovaný na v
 
 ## <a name="troubleshooting-issues-with-the-windows-virtual-desktop-side-by-side-stack"></a>Řešení potíží se souběžným zásobníkem virtuálních počítačů s Windows
 
-Souběžná sada virtuálních počítačů s Windows je automaticky nainstalována se systémem Windows Server 2019. K instalaci souběžného zásobníku na Microsoft Windows Server 2016 nebo Windows Server 2012 R2 použijte instalační program Microsoft (MSI). V systému Microsoft Windows 10 je souběžná sada virtuálních počítačů s Windows zapnutá pomocí **enablesxstackrs. ps1**.
+Souběžná sada virtuálních počítačů s Windows je automaticky nainstalována se systémem Windows Server 2019. K instalaci souběžného zásobníku na Microsoft Windows Server 2016 nebo Windows Server 2012 R2 použijte instalační program Microsoft (MSI). V systému Microsoft Windows 10 je souběžná sada virtuálních počítačů s Windows povolena s **enablesxstackrs.ps1**.
 
 Existují tři hlavní způsoby, jak je souběžný zásobník nainstalovaný nebo povolený na virtuálních počítačích fondu hostitelů relace:
 
@@ -224,8 +224,8 @@ Existují známé okolnosti, které můžou způsobit selhání souběžného z�
 - Není podle správného pořadí kroků pro povolení zásobníku souběžného sdílení.
 - Automaticky aktualizovat na rozšířený univerzální disk s Windows 10 (EVD)
 - Chybí role Hostitel relace vzdálené plochy (vzdálené relace).
-- Spuštění enablesxsstackrc. ps1 několikrát
-- Spuštění enablesxsstackrc. ps1 v účtu, který nemá oprávnění místního správce
+- Spuštění enablesxsstackrc.ps1 několikrát
+- Spuštění enablesxsstackrc.ps1 v účtu, který nemá oprávnění místního správce
 
 Pokyny v této části vám pomůžou odinstalovat souběžnou sadu virtuálních počítačů s Windows. Po odinstalování souběžného zásobníku v části [Vytvoření fondu hostitelů s PowerShellem](create-host-pools-powershell.md) pro přeinstalaci souběžného zásobníku použijte možnost zaregistrovat virtuální počítač s fondem hostitelů virtuálních klientů Windows.
 
@@ -278,7 +278,7 @@ Pokud chcete spustit nápravu ze stejné podsítě a domény, postupujte podle t
 
 Pokud používáte operační systém Microsoft Windows 10, pokračujte podle následujících pokynů:
 
-14. Z virtuálního počítače se systémem PsExec otevřete Průzkumníka souborů a zkopírujte disablesxsstackrc. ps1 na systémovou jednotku virtuálního počítače s nefunkčním zásobníkem souběžných souběžných sestavení.
+14. Z virtuálního počítače se systémem PsExec otevřete Průzkumníka souborů a zkopírujte disablesxsstackrc.ps1 do systémové jednotky virtuálního počítače se selháním souběžného zásobníku.
 
     ```cmd
         \\<VMname>\c$\
@@ -287,7 +287,7 @@ Pokud používáte operační systém Microsoft Windows 10, pokračujte podle n�
     >[!NOTE]
     >VMname je název počítače virtuálního počítače se selháním souběžného zásobníku.
 
-15. Doporučený postup: z nástroje PsExec spusťte PowerShell a přejděte do složky z předchozího kroku a spusťte disablesxsstackrc. ps1. Případně můžete spustit následující rutiny:
+15. Doporučený postup: z nástroje PsExec spusťte PowerShell a přejděte do složky z předchozího kroku a spusťte disablesxsstackrc.ps1. Případně můžete spustit následující rutiny:
 
     ```PowerShell
     Remove-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Terminal Server\ClusterSettings" -Name "SessionDirectoryListener" -Force

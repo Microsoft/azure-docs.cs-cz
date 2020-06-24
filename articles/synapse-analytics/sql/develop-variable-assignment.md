@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: b2a596b71ee7e5f58e01d5bc10b330f6f54a69d2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 91e251c8274ad85fcb0b3a65a3bdbcc660ceba00
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81428664"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85101006"
 ---
 # <a name="assigning-variables-with-synapse-sql"></a>Přiřazení proměnných k synapse SQL
 
@@ -37,7 +37,7 @@ DECLARE @v  INT = (SELECT TOP 1 c_customer_sk FROM Customer where c_last_name = 
 ;
 ```
 
-Nelze inicializovat a používat proměnnou v rámci stejného příkazu DECLARE. Pro ilustraci následující příklad není povolen, protože *@p1* je inicializován a použit ve stejném příkazu Declare. Následující příklad obsahuje chybu.
+Nelze inicializovat a používat proměnnou v rámci stejného příkazu DECLARE. Pro ilustraci není následující příklad povolen, protože * \@ P1* je inicializováno a použito ve stejném příkazu Declare. Následující příklad obsahuje chybu.
 
 ```sql
 DECLARE @p1 int = 0

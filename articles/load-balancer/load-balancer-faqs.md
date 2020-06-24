@@ -7,12 +7,12 @@ ms.service: load-balancer
 ms.topic: article
 ms.date: 04/22/2020
 ms.author: errobin
-ms.openlocfilehash: 94a2398879007e7ecd6d2f1920157eb4627f33cb
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 4ae15d0898cedb0ed17dc308584769395aa819c2
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014923"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079468"
 ---
 # <a name="frequently-asked-questions"></a>Nejčastější dotazy
 
@@ -35,6 +35,9 @@ Pravidla překladu adres (NAT) slouží k určení prostředku back-end pro smě
 
 ## <a name="what-is-ip-1686312916"></a>Co je IP 168.63.129.16?
 Virtuální IP adresa hostitele označeného jako infrastruktura Azure Load Balancer, kde se nacházely sondy stavu Azure. Při konfiguraci back-end instancí musí umožňovat provoz z této IP adresy úspěšné reakce na sondy stavu. Toto pravidlo nekomunikuje s přístupem k front-endu Load Balancer. Pokud Azure Load Balancer nepoužíváte, můžete toto pravidlo přepsat. Další informace o značkách služby najdete [tady](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags).
+
+## <a name="can-i-use-global-vnet-peering-with-basic-load-blancer"></a>Můžu použít globální VNET peering se základními Blancer zatížení?
+Ne. Základní Load Balancer nepodporuje globální partnerský vztah virtuální sítě. Místo toho můžete použít Standard Load Balancer. Projděte si článek [upgrade ze základního na standardní](upgrade-basic-standard.md) článek pro bezproblémové upgradu.
 
 ## <a name="next-steps"></a>Další kroky
 Pokud Váš dotaz není uvedený výše, pošlete nám prosím svůj názor na tuto stránku s vaším dotazem. Tím se vytvoří problém GitHubu pro produktový tým, aby se zajistila odpověď na všechny naše oceněné dotazy zákazníků.

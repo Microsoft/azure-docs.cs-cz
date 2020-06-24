@@ -8,18 +8,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9018228ec685d69fb03dfbc23de530e1bb8abb4f
-ms.sourcegitcommit: b9d4b8ace55818fcb8e3aa58d193c03c7f6aa4f1
+ms.openlocfilehash: 46fdd72842db790a8f4ecadfc875069962dcf449
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "82582866"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728142"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Vynutili zásady pojmenování skupin Office 365 v Azure Active Directory
 
@@ -36,23 +36,23 @@ Když se nakonfigurují zásady pojmenování skupin, použijí se zásady pro n
 
 Zásady pro pojmenování skupin můžete vynutili dvěma různými způsoby:
 
-- **Zásady pojmenování přípon předpon** Můžete definovat předpony nebo přípony, které se pak automaticky přidají, aby se vynutila konvence pojmenování pro vaše skupiny (například v názvu\_skupiny\_"GRP\_Japonsko The Group Engineering\_"\_ , GRP Japonsko je předpona a \_inženýr je přípona). 
+- **Zásady pojmenování přípon předpon** Můžete definovat předpony nebo přípony, které se pak automaticky přidají, aby se vynutila konvence pojmenování pro vaše skupiny (například v názvu skupiny "GRP \_ Japonsko The \_ Group \_ Engineering", GRP \_ Japonsko \_ je předpona a \_ inženýr je přípona). 
 
 - **Vlastní blokovaná slova** Můžete nahrát sadu blokovaných slov, která jsou specifická pro vaši organizaci, aby byla blokovaná ve skupinách vytvořených uživateli (například generální ředitel, mzdy, HR).
 
 ### <a name="prefix-suffix-naming-policy"></a>Zásady pojmenování přípon předpon
 
-Obecnou strukturou konvence pojmenování je prefix [název_skupiny] přípona. I když můžete definovat více předpon a přípon, v nastavení může být pouze jedna instance [název_skupiny]. Předpony nebo přípony mohou být buď pevné řetězce, nebo atributy uživatele, například \[oddělení\] , které je nahrazeno v závislosti na uživateli, který vytváří skupinu. Celkový povolený počet znaků pro předponu a řetězce přípony, včetně názvu skupiny, je 53 znaků. 
+Obecnou strukturou konvence pojmenování je prefix [název_skupiny] přípona. I když můžete definovat více předpon a přípon, v nastavení může být pouze jedna instance [název_skupiny]. Předpony nebo přípony mohou být buď pevné řetězce, nebo atributy uživatele \[ , například oddělení \] , které je nahrazeno v závislosti na uživateli, který vytváří skupinu. Celkový povolený počet znaků pro předponu a řetězce přípony, včetně názvu skupiny, je 53 znaků. 
 
 Předpony a přípony mohou obsahovat speciální znaky, které jsou podporovány v názvu skupiny a aliasu skupiny. Všechny znaky v předponě nebo příponě, které nejsou podporované v aliasu skupiny, se pořád aplikují v názvu skupiny, ale odeberou se z aliasu skupiny. Z důvodu tohoto omezení se můžou předpony a přípony použité na název skupiny lišit od těch, které se použijí pro alias skupiny. 
 
 #### <a name="fixed-strings"></a>Pevné řetězce
 
-Pomocí řetězců můžete snáze kontrolovat a rozlišovat skupiny v globálním seznamu adres a v levém navigačním propojení úloh skupin. Některými běžnými předponami jsou klíčová slova, jako\_je název GRP,\#název a\_název.
+Pomocí řetězců můžete snáze kontrolovat a rozlišovat skupiny v globálním seznamu adres a v levém navigačním propojení úloh skupin. Některými běžnými předponami jsou klíčová slova, jako je \_ název GRP, \# název a \_ název.
 
 #### <a name="user-attributes"></a>Atributy uživatele
 
-Můžete použít atributy, které vám a vašim uživatelům pomůžou zjistit, které oddělení, kancelář nebo geografické oblasti, pro které se skupina vytvořila. Pokud například definujete zásady pojmenování jako `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"`a `User’s department = Engineering`, pak název vynutilé skupiny může být "GRP my Group Engineering". Podporovány \[jsou atributy služby Azure AD\]: \[oddělení\], \[společnost\], \[kancelář\], \[StateOrProvince\], \[CountryorRegion\], název. Nepodporované atributy uživatele jsou považovány za pevné řetězce; například "\[PSČ\]". Atributy rozšíření a vlastní atributy nejsou podporovány.
+Můžete použít atributy, které vám a vašim uživatelům pomůžou zjistit, které oddělení, kancelář nebo geografické oblasti, pro které se skupina vytvořila. Pokud například definujete zásady pojmenování jako `PrefixSuffixNamingRequirement = "GRP [GroupName] [Department]"` a `User’s department = Engineering` , pak název vynutilé skupiny může být "GRP my Group Engineering". Podporovány jsou atributy služby Azure \[ AD \] : oddělení, \[ Společnost \] , \[ kancelář \] , \[ StateOrProvince \] , \[ CountryorRegion \] , \[ název \] . Nepodporované atributy uživatele jsou považovány za pevné řetězce; například " \[ PSČ \] ". Atributy rozšíření a vlastní atributy nejsou podporovány.
 
 Doporučujeme použít atributy, které mají hodnoty vyplněné pro všechny uživatele ve vaší organizaci, a nepoužívejte atributy, které mají dlouhé hodnoty.
 
@@ -72,14 +72,14 @@ Blokovaná pravidla pro seznam slov:
 Pokud chcete nakonfigurovat zásady pojmenování, je potřeba jedna z následujících rolí:
 - Globální správce
 - Správce skupiny
-- Správce uživatele
+- Správce uživatelů
 
 Vybraní Správci mohou být z těchto zásad vyloučeni napříč všemi úlohami skupin a koncovými body, aby mohli vytvářet skupiny pomocí blokovaných slov a jejich vlastních zásad vytváření názvů. Níže jsou uvedeny role správců, které jsou vyňaté ze zásady pojmenování skupin.
 
 - Globální správce
 - Podpora partnerské vrstvy 1
 - Podpora partnerské úrovně 2
-- Správce uživatele
+- Správce uživatelů
 - Zapisovače adresářů
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Konfigurace zásady pojmenování v Azure Portal
@@ -174,7 +174,7 @@ Před spouštěním příkazů PowerShellu nezapomeňte odinstalovat všechny st
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
    ```
   
-A to je vše. Nastavili jste zásady pro pojmenování a Přidali jste blokovaná slova.
+A je to! Nastavili jste zásady pro pojmenování a Přidali jste blokovaná slova.
 
 ## <a name="export-or-import-custom-blocked-words"></a>Export nebo import vlastních blokovaných slov
 

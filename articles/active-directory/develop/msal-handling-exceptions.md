@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: marsma
 ms.reviewer: saeeda, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d65d85d21521a6277a3ea823a8c9e83a34e3f42c
-ms.sourcegitcommit: 318d1bafa70510ea6cdcfa1c3d698b843385c0f6
+ms.openlocfilehash: c27938227a13934de11dd6e88d58138c46c3f58e
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83772093"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204622"
 ---
 # <a name="handle-msal-exceptions-and-errors"></a>Zpracování výjimek a chyb MSAL
 
@@ -138,7 +138,7 @@ catch (MsalUiRequiredException ex) when (ex.ErrorCode == MsalError.InvalidGrantE
 
 ## <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-MSAL. js poskytuje objekty chyb, které abstraktní a klasifikují různé typy běžných chyb. Poskytuje také rozhraní pro přístup k určitým podrobnostem o chybách, jako jsou například chybové zprávy, aby je správně zpracovávala.
+MSAL.js poskytuje objekty chyb, které abstraktní a klasifikují různé typy běžných chyb. Poskytuje také rozhraní pro přístup k určitým podrobnostem o chybách, jako jsou například chybové zprávy, aby je správně zpracovávala.
 
 ### <a name="error-object"></a>Error – objekt
 
@@ -162,7 +162,7 @@ Rozšířením třídy Error máte přístup k následujícím vlastnostem:
 
 K dispozici jsou následující typy chyb:
 
-- `AuthError`: Základní třída Error pro knihovnu MSAL. js, která se používá také pro neočekávané chyby.
+- `AuthError`: Základní třída Error pro knihovnu MSAL.js, která se používá také pro neočekávané chyby.
 
 - `ClientAuthError`: Error – třída, která označuje problém s ověřením klienta. Většina chyb, které pocházejí z knihovny, bude ClientAuthErrors. Tyto chyby jsou výsledkem akcí, jako je volání metody Login v případě, že přihlášení již probíhá, uživatel zruší přihlášení atd.
 
@@ -518,21 +518,25 @@ Pro zpracování výzvy deklarací identity budete muset použít `.WithClaim()`
 
 ### <a name="javascript"></a>JavaScript
 
-Při tichém získávání tokenů (pomocí `acquireTokenSilent` ) pomocí MSAL. js může vaše aplikace obdržet chyby, [Conditional Access claims challenge](../azuread-dev/conditional-access-dev-guide.md) když rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásady MFA, jako je například zásada MFA.
+Při tichém získávání tokenů (pomocí `acquireTokenSilent` ) pomocí MSAL.js může vaše aplikace obdržet chyby, [Conditional Access claims challenge](../azuread-dev/conditional-access-dev-guide.md) když rozhraní API, ke kterému se snažíte získat přístup, vyžaduje zásadu MFA, jako je například zásada MFA.
 
-Vzor pro zpracování této chyby je provést interaktivní volání metody získání tokenu v MSAL. js, jako je například `acquireTokenPopup` nebo `acquireTokenRedirect` jako v následujícím příkladu:
+Vzor pro zpracování této chyby je provést interaktivní volání metody získat token v MSAL.js, jako je například `acquireTokenPopup` nebo `acquireTokenRedirect` jako v následujícím příkladu:
 
 ```javascript
-myMSALObj.acquireTokenSilent(accessTokenRequest).then(function (accessTokenResponse) {
+myMSALObj.acquireTokenSilent(accessTokenRequest).then(function(accessTokenResponse) {
     // call API
-}).catch( function (error) {
+}).catch(function(error) {
     if (error instanceof InteractionRequiredAuthError) {
-        // Extract claims from error message
-        accessTokenRequest.claimsRequest = extractClaims(error.errorMessage);
+    
+        // extract, if exists, claims from error message
+        if (error.ErrorMessage.claims) {
+            accessTokenRequest.claimsRequest = JSON.stringify(error.ErrorMessage.claims);
+        }
+        
         // call acquireTokenPopup in case of InteractionRequiredAuthError failure
-        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function (accessTokenResponse) {
+        myMSALObj.acquireTokenPopup(accessTokenRequest).then(function(accessTokenResponse) {
             // call API
-        }).catch(function (error) {
+        }).catch(function(error) {
             console.log(error);
         });
     }

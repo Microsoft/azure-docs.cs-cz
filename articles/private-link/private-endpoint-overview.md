@@ -5,14 +5,14 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 06/18/2020
 ms.author: allensu
-ms.openlocfilehash: f75b080ce31a5c954471d277aad354879c16c6b3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 40b3ebf9193ad2d167cb36792900746201605298
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84022193"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85106462"
 ---
 # <a name="what-is-azure-private-endpoint"></a>Co je to privátní koncový bod Azure?
 
@@ -22,7 +22,7 @@ Privátní koncový bod Azure je síťové rozhraní, které vás privátně a z
  Soukromý koncový bod určuje následující vlastnosti: 
 
 
-|Vlastnost  |Description |
+|Vlastnost  |Popis |
 |---------|---------|
 |Name    |    Jedinečný název v rámci skupiny prostředků.      |
 |Podsíť    |  Podsíť pro nasazení a přidělování privátních IP adres z virtuální sítě. Požadavky na podsíť najdete v části omezení v tomto článku.         |
@@ -37,7 +37,7 @@ Tady jsou některé klíčové podrobnosti o privátních koncových bodech:
  
 - Připojení k síti můžou inicializovat jenom klienti připojující se k privátnímu koncovému bodu, poskytovatelé služeb nemají žádnou konfiguraci směrování, aby mohli iniciovat připojení k příjemcům služeb. Připojení se dají vytvořit jenom v jednom směru.
 
-- Při vytváření privátního koncového bodu se pro životní cyklus prostředku vytvoří také síťové rozhraní jen pro čtení. Rozhraní jsou přiřazovány dynamicky privátních IP adres z podsítě, která je mapována na prostředek privátního propojení. hodnota privátní IP adresy zůstane beze změny pro celý životní cyklus privátního koncového bodu.
+- Při vytváření privátního koncového bodu se pro životní cyklus prostředku vytvoří také síťové rozhraní jen pro čtení. Rozhraní jsou přiřazovány dynamicky privátních IP adres z podsítě, která je mapována na prostředek privátního propojení. Hodnota privátní IP adresy zůstane beze změny pro celý životní cyklus privátního koncového bodu.
  
 - Privátní koncový bod musí být nasazený ve stejné oblasti jako virtuální síť. 
  
@@ -55,6 +55,7 @@ Prostředek privátního propojení je cílovým cílem daného privátního kon
 |Název prostředku privátního propojení  |Typ prostředku   |Dílčí prostředky  |
 |---------|---------|---------|
 |**Služba privátního propojení** (vaše vlastní služba)   |  Microsoft. Network/privateLinkServices       | empty |
+|**Azure Automation** |  Microsoft. Automation/automationAccounts | Webhook, DSCAndHybridWorker |
 |**Azure SQL Database** | Microsoft. SQL/servery    |  SQL Server (sqlServer)        |
 |**Azure Synapse Analytics** | Microsoft. SQL/servery    |  SQL Server (sqlServer)        | 
 |**Azure Storage**  | Microsoft. Storage/storageAccounts    |  BLOB (objekt blob, blob_secondary)<BR> Tabulka (tabulka, table_secondary)<BR> Queue (Queue, queue_secondary)<BR> Soubor (soubor, file_secondary)<BR> Web (web, web_secondary)        |
@@ -118,7 +119,7 @@ Podrobné informace o osvědčených postupech a doporučeních pro konfiguraci 
 Následující tabulka obsahuje seznam známých omezení při použití privátních koncových bodů: 
 
 
-|Omezení |Description |Omezení rizik  |
+|Omezení |Popis |Omezení rizik  |
 |---------|---------|---------|
 |Pravidla skupiny zabezpečení sítě (NSG) a uživatelsky definované trasy se nevztahují na soukromý koncový bod.    |NSG se nepodporuje u privátních koncových bodů. V případě, že k podsítím obsahujícím soukromý koncový bod může být přidruženo NSG, pravidla nebudou platná pro přenosy zpracovávané privátním koncovým bodem. K nasazení privátních koncových bodů v podsíti je nutné, aby bylo [vynucování zásad sítě zakázané](disable-private-endpoint-network-policy.md) . NSG se pořád vynutil na jiných úlohách hostovaných ve stejné podsíti. Při směrování v každé podsíti klienta bude použita předpona/32, změna výchozího chování směrování vyžaduje podobný UDR  | Řízení provozu pomocí pravidel NSG pro odchozí přenosy na zdrojových klientech. Nasaďte jednotlivé trasy s předponou/32, abyste mohli přepsat trasy privátních koncových bodů. Protokoly toku NSG a informace o monitorování pro odchozí připojení se pořád podporují a dají se použít.        |
 

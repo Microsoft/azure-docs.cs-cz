@@ -7,22 +7,22 @@ documentationcenter: na
 author: damendo
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 73f1efc512bf031021791da8cc55bc4e7d98a812
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: aae9b282c22b405eeebc2719e377a3091fc9d12e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76840771"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724946"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-azure-cli"></a>Analýza zabezpečení virtuálního počítače pomocí zobrazení skupiny zabezpečení pomocí Azure CLI
 
 > [!div class="op_single_selector"]
-> - [Prostředí](network-watcher-security-group-view-powershell.md)
+> - [PowerShell](network-watcher-security-group-view-powershell.md)
 > - [Azure CLI](network-watcher-security-group-view-cli.md)
 > - [REST API](network-watcher-security-group-view-rest.md)
 
@@ -30,7 +30,7 @@ Zobrazení skupiny zabezpečení vrací nakonfigurovaná a efektivní pravidla z
 
 K provedení kroků v tomto článku potřebujete [nainstalovat rozhraní příkazového řádku Azure pro Mac, Linux a Windows (CLI)](/cli/azure/install-azure-cli).
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto scénáři se předpokládá, že už jste postupovali podle kroků v části [vytvoření Network Watcher](network-watcher-create.md) k vytvoření Network Watcher.
 
@@ -40,13 +40,13 @@ Scénář popsaný v tomto článku načte nakonfigurovaná a platná pravidla z
 
 ## <a name="get-a-vm"></a>Získání virtuálního počítače
 
-Ke spuštění `vm list` rutiny je nutný virtuální počítač. Následující příkaz vypíše virtuální počítače ve skupině prostředků:
+Ke spuštění rutiny je nutný virtuální počítač `vm list` . Následující příkaz vypíše virtuální počítače ve skupině prostředků:
 
 ```azurecli
 az vm list -resource-group resourceGroupName
 ```
 
-Jakmile znáte virtuální počítač, můžete k získání ID prostředku použít `vm show` rutinu:
+Jakmile znáte virtuální počítač, můžete `vm show` k získání ID prostředku použít rutinu:
 
 ```azurecli
 az vm show -resource-group resourceGroupName -name virtualMachineName

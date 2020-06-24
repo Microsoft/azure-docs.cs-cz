@@ -3,8 +3,8 @@ title: Jak nakonfigurovat federované jednotné přihlašování pro aplikaci mi
 description: Jak nakonfigurovat federované jednotné přihlašování pro vlastní aplikaci mimo galerii, kterou chcete integrovat se službou Azure AD
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c1d49ec5ef80b284aa6b1a305b037d19dae34870
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 28af2a51119cd8328f9fa29000ead1622ae5f5e4
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74274597"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763546"
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>Jak nakonfigurovat federované jednotné přihlašování pro aplikaci mimo galerii
 
@@ -79,7 +79,7 @@ Pokud chcete nakonfigurovat jednotné přihlašování pro aplikaci, která nen�
 
     2. Klikněte na **Uložit.** V tabulce se zobrazí nový atribut.
 
-14. Kliknutím **na &lt;konfigurovat název&gt; aplikace** získáte přístup k dokumentaci týkající se konfigurace jednotného přihlašování v aplikaci. K disadrese jsou také adresy URL a certifikáty Azure AD, které aplikace vyžaduje.
+14. Kliknutím na **Konfigurovat &lt; název &gt; aplikace** získáte přístup k dokumentaci týkající se konfigurace jednotného přihlašování v aplikaci. K disadrese jsou také adresy URL a certifikáty Azure AD, které aplikace vyžaduje.
 
 15. [Přiřaďte uživatele k aplikaci.](#assign-users-to-the-application)
 
@@ -140,7 +140,7 @@ Pokud chcete stáhnout metadata aplikace nebo certifikát z Azure AD, postupujte
 
 8. Přejděte do části **podpisový certifikát SAML** a pak klikněte na **Stáhnout** sloupec hodnota. V závislosti na tom, co aplikace vyžaduje konfiguraci jednotného přihlašování, se zobrazí buď možnost stáhnout metadata XML nebo certifikát.
 
-Azure AD také poskytuje adresu URL pro získání metadat. Podle tohoto vzoru Získejte adresu URL metadat specifickou pro danou aplikaci: `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>`.
+Azure AD také poskytuje adresu URL pro získání metadat. Podle tohoto vzoru Získejte adresu URL metadat specifickou pro danou aplikaci: `https://login.microsoftonline.com/<Directory ID>/federationmetadata/2007-06/federationmetadata.xml?appid=<Application ID>` .
 
 ## <a name="assign-users-to-the-application"></a>Přiřazení uživatelů k aplikaci
 

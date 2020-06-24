@@ -2,13 +2,13 @@
 title: Uzly a fondy v Azure Batch
 description: Přečtěte si o výpočetních uzlech a fondech a o tom, jak se používají v Azure Batch pracovním postupu z hlediska vývoje.
 ms.topic: conceptual
-ms.date: 05/12/2020
-ms.openlocfilehash: eadc5236926fed12ebee087f7354c492ae5fc745
-ms.sourcegitcommit: a9784a3fd208f19c8814fe22da9e70fcf1da9c93
+ms.date: 06/16/2020
+ms.openlocfilehash: 46c78fe1c45d2effe03008667dd424d943d75ec4
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/22/2020
-ms.locfileid: "83791152"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888379"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Uzly a fondy v Azure Batch
 
@@ -27,6 +27,8 @@ Součástí všech výpočetních uzlů ve službě Batch také jsou:
 - Standardní [struktura složek](files-and-directories.md) a přidružené [proměnné prostředí](jobs-and-tasks.md), které jsou úkolu k dispozici.
 - Nastavení **brány firewall**, která jsou nakonfigurována pro řízení přístupu.
 - [Vzdálený přístup](error-handling.md#connect-to-compute-nodes) k uzlům Windows (Remote Desktop Protocol (RDP)) i Linux (Secure Shell (SSH)).
+
+Ve výchozím nastavení můžou uzly vzájemně komunikovat, ale nemůžou komunikovat s virtuálními počítači, které nejsou součástí stejného fondu. Pokud chcete, aby uzly komunikovaly bezpečně s ostatními virtuálními počítači nebo v místní síti, můžete fond zřídit [v podsíti virtuální sítě Azure (VNET)](batch-virtual-network.md). Když to uděláte, k vašim uzlům můžete přistup prostřednictvím veřejných IP adres. Tyto veřejné IP adresy vytvoří služba Batch a můžou se měnit po dobu života fondu. Můžete také [vytvořit fond se statickými veřejnými IP adresami](create-pool-public-ip.md) , které řídíte, což zajistí, že se neočekávaně nezmění.
 
 ## <a name="pools"></a>Fondy
 
@@ -162,13 +164,16 @@ Další informace o používání balíčků aplikací k nasazení aplikací do 
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>Konfigurace virtuální sítě a brány firewall
 
-Při zřizování fondu výpočetních uzlů ve službě Batch můžete k fondu přidružit podsíť [virtuální sítě](../virtual-network/virtual-networks-overview.md) Azure. Pokud chcete použít virtuální síť Azure klientské rozhraní API služby Batch musí používat ověřování pomocí Azure Active Directory (AD). Podpora služby Azure AD ve službě Azure Batch je zdokumentovaná v tématu [Ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md).  
+Při zřizování fondu výpočetních uzlů ve službě Batch můžete k fondu přidružit podsíť [virtuální sítě](../virtual-network/virtual-networks-overview.md) Azure. Pokud chcete použít virtuální síť Azure klientské rozhraní API služby Batch musí používat ověřování pomocí Azure Active Directory (AD). Podpora služby Azure AD ve službě Azure Batch je zdokumentovaná v tématu [Ověřování řešení služby Batch pomocí Active Directory](batch-aad-auth.md).
 
 ### <a name="vnet-requirements"></a>Požadavky na virtuální síť
 
 [!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
 Další informace o nastavení fondu Batch ve virtuální síti najdete v tématu [Vytvoření fondu virtuálních počítačů s vlastní virtuální sítí](batch-virtual-network.md).
+
+> [!TIP]
+> Aby se zajistilo, že se veřejné IP adresy používané pro přístup k uzlům nemění, můžete [vytvořit fond s určenými veřejnými IP adresami, které ovládáte](create-pool-public-ip.md).
 
 ## <a name="pool-and-compute-node-lifetime"></a>Životnost fondu a výpočetního uzlu
 

@@ -7,18 +7,18 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/08/2019
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b2815b496545ca5f920c00df7b2b5b7efe15c12a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d9bfc7f194730545469e7d17d46c47f7293f016e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74900910"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728890"
 ---
 # <a name="view-and-assign-administrator-roles-in-azure-active-directory"></a>Zobrazení a přiřazení rolí správce v Azure Active Directory
 
@@ -49,7 +49,6 @@ Pokud jste globální správce nebo správce privilegovaných rolí, můžete sn
 Při prohlížení členů role vyberte možnost **Popis** a zobrazí se úplný seznam oprávnění udělených přiřazením role. Stránka obsahuje odkazy na příslušnou dokumentaci, která vám pomůže s tím, jak spravovat role adresáře.
 
 ![seznam oprávnění pro roli správce](./media/directory-manage-roles-portal/role-description.png)
-
 
 ## <a name="next-steps"></a>Další kroky
 

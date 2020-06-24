@@ -7,13 +7,13 @@ author: luiscabrer
 ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 4ff6972e2f7ea219a1c8c8dbabbf9fe12a8fa59e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: d535866881fa6ed73b51eb6039baa9d515b770b2
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80369478"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080843"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Vnímání znalostí analýzy obrázků
 
@@ -22,7 +22,7 @@ Dovednost **analýzy obrázků** extrahuje bohatou sadu vizuálních funkcí zal
 > [!NOTE]
 > Malé objemy (pod 20 transakcí) se dají v Azure Kognitivní hledání zdarma spustit, ale větší úlohy vyžadují [připojení fakturovatelné Cognitive Services prostředků](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://azure.microsoft.com/pricing/details/search/).
 
 
 ## <a name="odatatype"></a>@odata.type  
@@ -32,17 +32,17 @@ Microsoft. dovednosti. Vision. ImageAnalysisSkill
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Název parametru     | Popis |
+| Název parametru     | Description |
 |--------------------|-------------|
-| defaultLanguageCode   |  Řetězec označující jazyk, který se má vrátit. Služba vrátí výsledky rozpoznávání v zadaném jazyce. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/><br/>Podporované jazyky: <br/>*EN* -angličtina (výchozí) <br/> *ES* – španělština <br/> *ja* Japonsko – japonština <br/> *PT* – portugalština <br/> *zh* – zjednodušená čínština|
-| visualFeatures |  Pole řetězců udávající typy vizuálních funkcí, které mají být vráceny. Mezi platné typy vizuálních funkcí patří:  <ul><li>*dospělý* – zjistí, jestli je obrázek pornografickýý (znázorňuje nahotu nebo sex), nebo je gorie (znázorňuje extrémní násilí nebo krev). Zjistil se také zřejmý sugestivní obsah (neboli obsah pikantní).</li><li>*značky* – detekuje různé značky v rámci obrázku, včetně přibližného umístění. Funkce vizuálních *značek* je k dispozici pouze v angličtině.</li><li> *Categories* – roztřídí obsah obrázků podle taxonomie definované v [dokumentaci Cognitive Services počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li>*Popis* – popisuje obsah obrázku s úplnou větou v podporovaných jazycích.</li><li>*obličeje* – zjišťuje, zda jsou k dispozici plošky. Pokud je k dispozici, vygeneruje souřadnice, pohlaví a stáří.</li><li> *objekty* – detekuje různé objekty v rámci obrázku, včetně přibližného umístění. Funkce vizuálů *objektů* je k dispozici pouze v angličtině.</li><li> *Tags* – Taguje obrázek pomocí podrobného seznamu slov souvisejících s obsahem obrázku.</li></ul> Názvy vizuálních funkcí rozlišují velká a malá písmena. Všimněte si, že vizuální funkce *Color* a *ImageType* se už nepoužívají, ale k této funkci můžete přistupovat prostřednictvím [vlastní dovednosti](https://go.microsoft.com/fwlink/?linkid=2121117).|
-| zobrazí   | Pole řetězců udávající, které podrobnosti specifické pro doménu se mají vrátit. Mezi platné typy vizuálních funkcí patří: <ul><li>*celebrit* – identifikuje celebrit, pokud se v imagi zjistí.</li><li>*orientačních bodů* – identifikuje orientační části, pokud jsou v imagi zjištěné. </li></ul> |
+| `defaultLanguageCode` |  Řetězec označující jazyk, který se má vrátit. Služba vrátí výsledky rozpoznávání v zadaném jazyce. Není-li tento parametr zadán, je použita výchozí hodnota "en". <br/><br/>Podporované jazyky: <br/>*EN* -angličtina (výchozí) <br/> *ES* – španělština <br/> *ja* Japonsko – japonština <br/> *PT* – portugalština <br/> *zh* – zjednodušená čínština|
+| `visualFeatures` |    Pole řetězců udávající typy vizuálních funkcí, které mají být vráceny. Mezi platné typy vizuálních funkcí patří:  <ul><li>*dospělý* – zjistí, jestli je obrázek pornografickýý (znázorňuje nahotu nebo sex), nebo je gorie (znázorňuje extrémní násilí nebo krev). Zjistila se také sexuální sugestivní obsah (označovaný také jako obsah pikantní).</li><li>*značky* – detekuje různé značky v rámci obrázku, včetně přibližného umístění. Funkce vizuálních *značek* je k dispozici pouze v angličtině.</li><li> *Categories* – roztřídí obsah obrázků podle taxonomie definované v [dokumentaci Cognitive Services počítačové zpracování obrazu](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy). </li><li>*Popis* – popisuje obsah obrázku s úplnou větou v podporovaných jazycích.</li><li>*obličeje* – zjišťuje, zda jsou k dispozici plošky. Pokud je k dispozici, vygeneruje souřadnice, pohlaví a stáří.</li><li>   *objekty* – detekuje různé objekty v rámci obrázku, včetně přibližného umístění. Funkce vizuálů *objektů* je k dispozici pouze v angličtině.</li><li> *Tags* – Taguje obrázek pomocí podrobného seznamu slov souvisejících s obsahem obrázku.</li></ul> Názvy vizuálních funkcí rozlišují velká a malá písmena. Všimněte si, že vizuální funkce *Color* a *ImageType* se už nepoužívají, ale k této funkci můžete přistupovat prostřednictvím [vlastní dovednosti](https://docs.microsoft.com/azure/search/cognitive-search-custom-skill-interface).|
+| `details` | Pole řetězců udávající, které podrobnosti specifické pro doménu se mají vrátit. Mezi platné typy vizuálních funkcí patří: <ul><li>*celebrit* – identifikuje celebrit, pokud se v imagi zjistí.</li><li>*orientačních bodů* – identifikuje orientační části, pokud jsou v imagi zjištěné. </li></ul> |
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Popis                                          |
+| Název vstupu      | Description                                          |
 |---------------|------------------------------------------------------|
-| image         | Komplexní typ. V současné době funguje pouze s polem "/Document/normalized_images" vytvořeným indexerem Azure Blob, ```imageAction``` Pokud je nastavena na jinou hodnotu než ```none```. Další informace najdete v [ukázce](#sample-output) .|
+| `image`         | Komplexní typ. V současné době funguje pouze s polem "/Document/normalized_images" vytvořeným indexerem Azure Blob, pokud ```imageAction``` je nastavena na jinou hodnotu než ```none``` . Další informace najdete v [ukázce](#sample-output) .|
 
 
 
@@ -512,17 +512,17 @@ Můžete definovat mapování polí pro výstup na vlastnosti nižší úrovně,
 ## <a name="error-cases"></a>Chybové případy
 V následujících chybových případech nejsou extrahovány žádné prvky.
 
-| Kód chyby | Popis |
+| Kód chyby | Description |
 |------------|-------------|
-| NotSupportedLanguage | Zadaný jazyk není podporován. |
-| InvalidImageUrl | Adresa URL obrázku je chybně naformátovaná nebo není přístupná.|
-| InvalidImageFormat | Vstupní data nejsou platným obrázkem. |
-| InvalidImageSize | Vstupní obrázek je příliš velký. |
-| NotSupportedVisualFeature  | Zadaný typ funkce není platný. |
-| NotSupportedImage | Nepodporovaná image, například podřízená pornografie. |
-| InvalidDetails | Nepodporovaný model specifický pro doménu. |
+| `NotSupportedLanguage` | Zadaný jazyk není podporován. |
+| `InvalidImageUrl` | Adresa URL obrázku je chybně naformátovaná nebo není přístupná.|
+| `InvalidImageFormat` | Vstupní data nejsou platným obrázkem. |
+| `InvalidImageSize` | Vstupní obrázek je příliš velký. |
+| `NotSupportedVisualFeature`  | Zadaný typ funkce není platný. |
+| `NotSupportedImage` | Nepodporovaná image, například podřízená pornografie. |
+| `InvalidDetails` | Nepodporovaný model specifický pro doménu. |
 
-Pokud se zobrazí chyba, která `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"`je podobná, ověřte cestu. Celebrit i orientačních bodů jsou vlastnosti v `detail`rámci.
+Pokud se zobrazí chyba, která je podobná `"One or more skills are invalid. Details: Error in skill #<num>: Outputs are not supported by skill: Landmarks"` , ověřte cestu. Celebrit i orientačních bodů jsou vlastnosti v rámci `detail` .
 
 ```json
 "categories":[  

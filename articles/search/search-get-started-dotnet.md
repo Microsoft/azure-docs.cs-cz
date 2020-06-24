@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/07/2020
-ms.openlocfilehash: 59ef47ac67955ef5b9b7cb51ae6f39a9e0d30c3b
-ms.sourcegitcommit: ce44069e729fce0cf67c8f3c0c932342c350d890
+ms.openlocfilehash: 5862a446b1522926f8241959d5e1cff66e4da06b
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84634929"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85079382"
 ---
 # <a name="quickstart-create-a-search-index-in-net"></a>Rychlý Start: vytvoření indexu vyhledávání v .NET
 > [!div class="op_single_selector"]
@@ -25,7 +25,7 @@ ms.locfileid: "84634929"
 > * [Postman](search-get-started-postman.md)
 >*
 
-Vytvořte konzolovou aplikaci .NET Core v jazyce C#, která vytvoří, načte a dotazuje index služby Azure Kognitivní hledání pomocí sady Visual Studio a [sady Azure kognitivní hledání .NET SDK](https://aka.ms/search-sdk). 
+Vytvořte konzolovou aplikaci .NET Core v jazyce C#, která vytvoří, načte a dotazuje index služby Azure Kognitivní hledání pomocí sady Visual Studio a [sady Azure kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search). 
 
 Tento článek vysvětluje, jak vytvořit aplikaci krok za krokem. Můžete také [Stáhnout a spustit úplnou aplikaci](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/Quickstart) , pokud chcete přejít na kód.
 
@@ -64,7 +64,7 @@ Začněte otevřením sady Visual Studio a vytvořením nového projektu konzolo
 
 ### <a name="install-nuget-packages"></a>Instalace balíčků NuGet
 
-[Sada Azure kognitivní hledání .NET SDK](https://aka.ms/search-sdk) se skládá z několika klientských knihoven, které jsou distribuovány jako balíčky NuGet.
+[Sada Azure kognitivní hledání .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search) se skládá z několika klientských knihoven, které jsou distribuovány jako balíčky NuGet.
 
 Pro tento projekt použijte verzi 9 `Microsoft.Azure.Search` balíčku NuGet a nejnovější `Microsoft.Extensions.Configuration.Json` balíček NuGet.
 
@@ -85,9 +85,9 @@ Pro tento projekt použijte verzi 9 `Microsoft.Azure.Search` balíčku NuGet a n
 
 1. V části Přidat novou položku vyhledejte "JSON" a vraťte seznam typů položek souvisejících s JSON.
 
-1. Vyberte **soubor JSON**, pojmenujte soubor appSettings. JSON a klikněte na **Přidat**. 
+1. Vyberte **soubor JSON**, pojmenujte soubor appsettings.json a klikněte na **Přidat**. 
 
-1. Přidejte soubor do výstupního adresáře. Klikněte pravým tlačítkem na appSettings. JSON a vyberte **vlastnosti**. V **adresáři kopírovat do výstupního adresáře**vyberte možnost **Kopírovat, pokud je novější**.
+1. Přidejte soubor do výstupního adresáře. Klikněte pravým tlačítkem na appsettings.jsa vyberte **vlastnosti**. V **adresáři kopírovat do výstupního adresáře**vyberte možnost **Kopírovat, pokud je novější**.
 
 1. Zkopírujte následující kód JSON do nového souboru JSON. 
 
@@ -204,7 +204,7 @@ Index hotelů se skládá z jednoduchých a složitých polí, kde je jednoduch�
 
     V tomto indexu pole Popis používají volitelnou [`analyzer`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.field.analyzer?view=azure-dotnet) vlastnost zadanou v případě, že chcete přepsat výchozí standardní analyzátor Lucene. `description_fr`Pole používá nástroj pro francouzštinu Lucene ([FrLucene](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.frlucene?view=azure-dotnet)), protože ukládá francouzský text. Používá `description` nepovinný nástroj Microsoft Language Analyzer ([EnMicrosoft](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.models.analyzername.enmicrosoft?view=azure-dotnet)).
 
-1. V Program.cs vytvořte instanci [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) třídy pro připojení ke službě pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appSettings. JSON). 
+1. V Program.cs vytvořte instanci [`SearchServiceClient`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient?view=azure-dotnet) třídy pro připojení ke službě pomocí hodnot, které jsou uložené v konfiguračním souboru aplikace (appsettings.json). 
 
    `SearchServiceClient`má [`Indexes`](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.searchserviceclient.indexes?view=azure-dotnet) vlastnost, která poskytuje všechny metody, které potřebujete k vytvoření, výpisu, aktualizaci nebo odstranění indexů služby Azure kognitivní hledání. 
 

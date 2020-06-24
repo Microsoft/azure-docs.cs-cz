@@ -8,18 +8,18 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.subservice: users-groups-roles
-ms.topic: article
+ms.topic: how-to
 ms.date: 02/28/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a815446b79b3e5ec0a75e5d179953956643b16c9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 92674ed9d39ea9e84d477d19aadbaeda6da6f32c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78206108"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84728261"
 ---
 # <a name="search-groups-and-members-preview-in-azure-active-directory"></a>Hledat skupiny a členy (Preview) v Azure Active Directory
 
@@ -45,7 +45,7 @@ Pokud máte nějaké problémy, můžete předchozí možnosti přepnout zpátky
 
 ## <a name="group-search-and-sorting"></a>Hledání a řazení skupin
 
-Hledání v seznamu skupin bylo vylepšeno, takže když můžete zadat hledaný řetězec, hledání provede v seznamu názvů skupin automatické `startswith` vyhledávání a dílčí řetězce. Hledání podřetězců je provedeno pouze na celá slova a neobsahuje speciální znaky. Při hledání podřetězců se rozlišují velká a malá písmena.
+Hledání v seznamu skupin bylo vylepšeno, takže když můžete zadat hledaný řetězec, hledání provede v `startswith` seznamu názvů skupin automatické vyhledávání a dílčí řetězce. Hledání podřetězců je provedeno pouze na celá slova a neobsahuje speciální znaky. Při hledání podřetězců se rozlišují velká a malá písmena.
 
 ![Nová dílčí řetězcová vyhledává na stránce všechny skupiny.](./media/groups-members-owners-search/groups-search-preview.png)
 

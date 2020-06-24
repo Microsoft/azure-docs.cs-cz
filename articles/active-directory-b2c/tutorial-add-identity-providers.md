@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1f49061210ca8e3c106b0569f77a67d1f10757a1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3578f95bee3e3fdcd774675627ec212c07fb85ef
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "78183512"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099355"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Kurz: Přidání zprostředkovatelů identit do aplikací v Azure Active Directory B2C
 
@@ -26,12 +26,12 @@ V tomto článku získáte informace o těchto tématech:
 
 > [!div class="checklist"]
 > * Vytvoření aplikací zprostředkovatele identity
-> * Přidejte zprostředkovatele identity do svého tenanta.
+> * Přidejte do svého tenanta poskytovatele identity – jak v Facebooku, tak v Azure Active Directory
 > * Přidání zprostředkovatelů identit do toku uživatele
 
 Ve svých aplikacích obvykle používáte pouze jednoho poskytovatele identity, ale máte možnost přidat další. V tomto kurzu se dozvíte, jak do vaší aplikace přidat poskytovatele identity Azure AD a poskytovatele identity Facebooku. Přidání obou těchto poskytovatelů identity do aplikace je volitelné. Můžete také přidat další zprostředkovatele identity, jako je [Amazon](identity-provider-amazon.md), [GitHub](identity-provider-github.md), [Google](identity-provider-google.md), [LinkedIn](identity-provider-linkedin.md), [Microsoft](identity-provider-microsoft-account.md)nebo [Twitter](identity-provider-twitter.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -69,24 +69,24 @@ Pokud chcete povolit přihlášení pro uživatele ze služby Azure AD, musíte 
 
 ### <a name="create-a-facebook-application"></a>Vytvoření aplikace na Facebooku
 
-Chcete-li použít účet Facebook jako poskytovatele identity v Azure AD B2C, je nutné vytvořit aplikaci na Facebooku. Pokud ještě nemáte účet Facebook, můžete ho získat na adrese [https://www.facebook.com/](https://www.facebook.com/).
+Chcete-li použít účet Facebook jako poskytovatele identity v Azure AD B2C, je nutné vytvořit aplikaci na Facebooku. Pokud ještě nemáte účet Facebook, můžete ho získat na adrese [https://www.facebook.com/](https://www.facebook.com/) .
 
 1. Přihlaste se ke [službě Facebook pro vývojáře](https://developers.facebook.com/) s přihlašovacími údaji k účtu Facebook.
 1. Pokud jste to ještě neudělali, musíte se zaregistrovat jako vývojář Facebooku. Provedete to tak, **že vyberete Začínáme** v pravém horním rohu stránky, přijmete zásady Facebooku a dokončíte registrační kroky.
 1. Vyberte **Moje aplikace** a pak **vytvořit aplikaci**.
 1. Zadejte **Zobrazovaný název** a platný **kontaktní e-mail**.
 1. Klikněte na **vytvořit ID aplikace**. To může vyžadovat, abyste přijali zásady platformy Facebook a dokončili online kontrolu zabezpečení.
-1. Vyberte **Nastavení** > **základní**.
-1. Vyberte **kategorii**, například `Business and Pages`. Tuto hodnotu vyžaduje Facebook, ale nepoužívá ji Azure AD B2C.
+1. Vyberte **Nastavení**  >  **základní**.
+1. Vyberte **kategorii**, například `Business and Pages` . Tuto hodnotu vyžaduje Facebook, ale nepoužívá ji Azure AD B2C.
 1. V dolní části stránky vyberte **Přidat platformu**a pak vyberte **Web**.
-1. Do pole **Adresa URL webu** `https://your-tenant-name.b2clogin.com/` zadejte `your-tenant-name` nahraďte názvem vašeho tenanta.
-1. Zadejte adresu URL pro **zásadu ochrany osobních údajů**, například `http://www.contoso.com/`. Adresa URL zásad ochrany osobních údajů je stránka, kterou udržujete, aby poskytovala informace o ochraně osobních údajů pro vaši aplikaci.
+1. Do pole **Adresa URL webu**zadejte `https://your-tenant-name.b2clogin.com/` nahraďte `your-tenant-name` názvem vašeho tenanta.
+1. Zadejte adresu URL pro **zásadu ochrany osobních údajů**, například `http://www.contoso.com/` . Adresa URL zásad ochrany osobních údajů je stránka, kterou udržujete, aby poskytovala informace o ochraně osobních údajů pro vaši aplikaci.
 1. Vyberte **Uložit změny**.
 1. V horní části stránky si poznamenejte hodnotu **ID aplikace**.
 1. Vedle **klíčového klíče aplikace**vyberte **Zobrazit** a zaznamenejte jeho hodnotu. K nakonfigurování Facebooku jako poskytovatele identity ve vašem tenantovi použijte ID aplikace i tajný klíč aplikace. **Tajný klíč aplikace** je důležité bezpečnostní pověření, které byste měli bezpečně ukládat.
 1. Vyberte znaménko plus vedle položky **produkty**a potom v části **přihlášení na Facebooku**vyberte **nastavit**.
 1. V části **přihlášení do Facebooku** v nabídce vlevo vyberte **Nastavení**.
-1. Do **platného identifikátorů URI pro přesměrování OAuth**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`. Nahraďte `your-tenant-name` názvem vašeho tenanta. V dolní části stránky vyberte **Uložit změny** .
+1. Do **platného identifikátorů URI pro přesměrování OAuth**zadejte `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` . Nahraďte `your-tenant-name` názvem vašeho tenanta. V dolní části stránky vyberte **Uložit změny** .
 1. Chcete-li zpřístupnit aplikaci Facebook Azure AD B2C, klikněte na selektor **stavu** v pravém horním rohu stránky a zapněte **ji tak** , aby byla aplikace veřejná, a pak klikněte na **Potvrdit**. V tomto okamžiku se stav změní z **vývoje** na **Live**.
 
 ## <a name="add-the-identity-providers"></a>Přidat zprostředkovatele identity
@@ -99,7 +99,7 @@ Po vytvoření aplikace pro zprostředkovatele identity, který chcete přidat, 
 1. V levém horním rohu Azure Portal vyberte **všechny služby** a pak vyhledejte a vyberte **Azure AD B2C**.
 1. Vyberte **Zprostředkovatelé identity**a potom vyberte **Nový poskytovatel OpenID Connect**.
 1. Zadejte **název**. Zadejte například *Contoso Azure AD*.
-1. V poli **Adresa URL metadat**zadejte následující adresu URL `your-AD-tenant-domain` , která nahrazuje název domény vašeho tenanta Azure AD:
+1. V poli **Adresa URL metadat**zadejte následující adresu URL, která nahrazuje `your-AD-tenant-domain` název domény vašeho tenanta Azure AD:
 
     ```
     https://login.microsoftonline.com/your-AD-tenant-domain/.well-known/openid-configuration
@@ -140,11 +140,11 @@ V kurzu, který jste dokončili v rámci požadavků, jste vytvořili uživatels
 ## <a name="test-the-user-flow"></a>Testování toku uživatele
 
 1. Na stránce Přehled toku uživatele, který jste vytvořili, vyberte **Spustit tok uživatele**.
-1. V poli **aplikace**vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit `https://jwt.ms` **Adresa URL odpovědi** .
+1. V poli **aplikace**vyberte webovou aplikaci s názvem *WebApp1* , kterou jste předtím zaregistrovali. Měla by se zobrazit **Adresa URL odpovědi** `https://jwt.ms` .
 1. Vyberte **Spustit tok uživatele**a pak se přihlaste pomocí poskytovatele identity, kterého jste předtím přidali.
 1. Opakujte kroky 1 až 3 pro ostatní zprostředkovatele identity, které jste přidali.
 
-Pokud je operace přihlášení úspěšná, budete přesměrováni na `https://jwt.ms` to, které zobrazí Dekódovatelné tokeny, podobně jako:
+Pokud je operace přihlášení úspěšná, budete přesměrováni na to, `https://jwt.ms` které zobrazí Dekódovatelné tokeny, podobně jako:
 
 ```json
 {

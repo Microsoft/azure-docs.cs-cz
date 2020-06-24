@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: 6aa40d0914237a28c7bbd32b15bf0d8d02140192
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.openlocfilehash: cb939d223d0aa91b6da62d3045ccad919f1bd277
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/04/2020
-ms.locfileid: "82783549"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887929"
 ---
 # <a name="payout-policy-details"></a>Podrobnosti zásad plateb
 
@@ -25,7 +25,7 @@ V partnerském **centru vyberte výběr** v pravém horním rohu portálu:
 ![Ukazuje ikonu Výběr v pravém horním rohu portálu partnerského centra.](./media/payout-overview.png)
 
 > [!TIP]
-> Ne všechny role účtu mají přístup k informacím o výběr. Podrobnosti najdete v tématu [role a oprávnění pro přístup k sestavě výběr](./payout-summary.md).
+> Ne všechny role účtu mají přístup k informacím o výběr. Podrobnosti najdete v tématu [role a oprávnění pro přístup k sestavě výběr](./payout-summary-overview.md#roles-and-permissions).
 
 ## <a name="payment-schedules"></a>Platební plány
 
@@ -102,12 +102,12 @@ Následuje příklad plánu:
 | Příklad data pro výběr | 10/15/2020 | Označeno jako **odeslané** v části Historie transakcí a platby na řídicím panelu Výběr |
 | <font color="red">Pokud zákazník neplatí od Microsoftu</font> | 12/2/2020 – 12/5/2020 | Beze změny, stejné jako u výše |
 | Zákazník obdrží první pozdní e-mail s platbami. | 12/6/2020 | Žádné |
-| Zákazník obdrží běžné e-maily s rostoucí naléhavostí. | 12/7/2020 – 1/31/2020 | Žádné |
-| Vydavatel je upozorněn na zápis, je nejspíš | 1/7/2020 | E-mailové oznámení odeslané vydavateli, že si zákazník ještě neposlal platby. Zahrnuje ID transakce a částku dolaru. |
-| Zákazník obdrží oznámení o ukončení. | 2/1/2020 | Žádné |
-| Ukončení procesu shromažďování/fondů jsou odepsány | 2/15/2020 | E-mailové oznámení odeslané vydavateli, že prostředky byly odepsány. Zahrnuje ID transakce a částku dolaru. |
-| Výběr je odečtený. | 3/1/2020 | Vydavatel uvidí v příkazu výběr v partnerském centru negativní transakci. |
-| Výběr se zamítne. | 3/15/2020 | Budoucí výběry se zobrazí v příkazu pro výběr partnerského centra. Vydavatel neobdrží platbu, dokud zůstatek nebude záporný.  |
+| Zákazník obdrží běžné e-maily s rostoucí naléhavostí. | 12/7/2020 – 1/31/2021 | Žádné |
+| Vydavatel je upozorněn na zápis, je nejspíš | 1/7/2021 | E-mailové oznámení odeslané vydavateli, že si zákazník ještě neposlal platby. Zahrnuje ID transakce a částku dolaru. |
+| Zákazník obdrží oznámení o ukončení. | 2/1/2021 | Žádné |
+| Ukončení procesu shromažďování/fondů jsou odepsány | 2/15/2021 | E-mailové oznámení odeslané vydavateli, že prostředky byly odepsány. Zahrnuje ID transakce a částku dolaru. |
+| Výběr je odečtený. | 3/1/2021 | Vydavatel uvidí v příkazu výběr v partnerském centru negativní transakci. |
+| Výběr se zamítne. | 3/15/2021 | Budoucí výběry se zobrazí v příkazu pro výběr partnerského centra. Vydavatel neobdrží platbu, dokud zůstatek nebude záporný.  |
 |||
 
 ## <a name="next-step"></a>Další krok

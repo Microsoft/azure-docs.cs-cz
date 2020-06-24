@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c238600d412e53ad665214492e292aa395655b78
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7637a4280d725aa8cd3482641645dbe19cb56210
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79497518"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84689040"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Nejčastější dotazy ke správě zařízení Azure Active Directory
 
-## <a name="general-faq"></a>Obecné Nejčastější dotazy
+## <a name="general-faq"></a>Obecné nejčastější dotazy
 
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>Otázka: Nedávno jsem zaregistroval zařízení. Proč se v Azure Portal v části informace o uživateli nezobrazují zařízení? Nebo proč je pro zařízení připojená k hybridnímu Azure Active Directory (Azure AD) vlastník zařízení označený jako neurčený jako N/A.
 
@@ -39,8 +39,8 @@ V části **uživatelská zařízení**jsou uvedena pouze následující zaříz
 
 **A:** V Azure Portal přejdete na **všechna zařízení**. Vyhledejte zařízení pomocí ID zařízení. Ověřte hodnotu ve sloupci Typ spojení. V některých případech je možné zařízení resetovat nebo obnovit z image. Je proto nutné také na zařízení ověřit stav registrace zařízení:
 
-- U zařízení s Windows 10 a Windows Server 2016 nebo novějším `dsregcmd.exe /status`spusťte příkaz.
-- Pro verze operačního systému nižší úrovně spusťte `%programFiles%\Microsoft Workplace Join\autoworkplace.exe`.
+- U zařízení s Windows 10 a Windows Server 2016 nebo novějším spusťte příkaz `dsregcmd.exe /status` .
+- Pro verze operačního systému nižší úrovně spusťte `%programFiles%\Microsoft Workplace Join\autoworkplace.exe` .
 
 **A:** Informace o řešení potíží najdete v těchto článcích:
 - [Řešení potíží se zařízeními pomocí příkazu dsregcmd](troubleshoot-device-dsregcmd.md)
@@ -100,7 +100,7 @@ Níže najdete informace o tom, jak mohou být tyto akce odstraněny.
 
       U registrovaných zařízení s Windows 10 v Azure AD proveďte následující kroky:
 
-      1. Přejděte na **Nastavení** > **účty** > **přístup do práce nebo do školy**. 
+      1. Přejděte na **Nastavení**  >  **účty**  >  **přístup do práce nebo do školy**. 
       1. Vyberte účet a vyberte **Odpojit**.
       1. Klikněte na + připojit a zaregistrujte zařízení znovu prostřednictvím procesu přihlášení.
 
@@ -148,7 +148,7 @@ Odpověď **: čeká na**zaznamenání, že zařízení není registrováno. Ten
 
 ### <a name="q-how-do-i-unjoin-an-azure-ad-joined-device-locally-on-the-device"></a>Otázka: Návody odpojte zařízení připojená k Azure AD místně na zařízení?
 
-**A:** U zařízení připojených k čisté službě Azure AD se ujistěte, že máte offline účet místního správce nebo si ho vytvořte. Nemůžete se přihlásit pomocí přihlašovacích údajů uživatele Azure AD. Potom přejděte na **Nastavení** > **účty** > **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **Odpojit**. Postupujte podle pokynů a po zobrazení výzvy zadejte přihlašovací údaje místního správce. Dokončete proces odpojování restartováním zařízení.
+**A:** U zařízení připojených k čisté službě Azure AD se ujistěte, že máte offline účet místního správce nebo si ho vytvořte. Nemůžete se přihlásit pomocí přihlašovacích údajů uživatele Azure AD. Potom přejděte na **Nastavení**  >  **účty**  >  **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **Odpojit**. Postupujte podle pokynů a po zobrazení výzvy zadejte přihlašovací údaje místního správce. Dokončete proces odpojování restartováním zařízení.
 
 ---
 
@@ -175,6 +175,8 @@ Odstraněné nebo zakázané uživatele, kteří se předtím nemohli přihlási
 ### <a name="q-why-do-my-users-have-issues-on-azure-ad-joined-devices-after-changing-their-upn"></a>Otázka: Proč mají moji uživatelé problémy na zařízeních připojených k Azure AD po změně svého hlavního názvu uživatele?
 
 **A:** V současné době nejsou na zařízeních připojených k Azure AD plně podporované změny hlavního názvu uživatele (UPN). Ověřování pomocí služby Azure AD tak nebude po změně hlavního názvu uživatele (UPN) úspěšné. Výsledkem je, že uživatelé mají na svých zařízeních problémy jednotného přihlašování a podmíněného přístupu. V tuto chvíli se uživatelé potřebují přihlašovat k Windows prostřednictvím dlaždice "jiný uživatel" pomocí nového hlavního názvu uživatele (UPN) a tento problém vyřešit. V současnosti pracujeme na řešení tohoto problému. Uživatelé, kteří se přihlásí pomocí Windows Hello pro firmy, ale tento problém nečelí. 
+
+Změny UPN se podporují s aktualizací Windows 10 2004 Update. Uživatelé na zařízeních s touto aktualizací nebudou mít po změně svých názvů UPN žádné problémy.
 
 ---
 
@@ -232,7 +234,7 @@ Toto chování:
 
 ### <a name="qwhat-are-the-ms-organization-p2p-access-certificates-present-on-our-windows-10-devices"></a>Q:What jsou certifikáty MS-Organization-P2P-Access, které jsou k dispozici na našich zařízeních s Windows 10?
 
-**A:** Certifikáty MS-Organization-P2P-Access jsou vydávány službou Azure AD pro zařízení připojená k Azure AD a k hybridním zařízením připojeným k Azure AD. Tyto certifikáty se používají k umožnění vztahu důvěryhodnosti mezi zařízeními ve stejném tenantovi pro scénáře vzdálené plochy. K zařízení se vydá jeden certifikát a druhý uživatel ho vydá. Certifikát zařízení je přítomen v `Local Computer\Personal\Certificates` nástroji a je platný po dobu jednoho dne. Tento certifikát se obnoví (vydáním nového certifikátu), pokud je zařízení stále aktivní ve službě Azure AD. Uživatelský certifikát je přítomen v `Current User\Personal\Certificates` nástroji a tento certifikát je platný i po jednom dni, ale je vydaný na vyžádání, když se uživatel pokusí relaci vzdálené plochy k jinému zařízení připojenému k Azure AD. Po vypršení platnosti se neobnovuje. Oba tyto certifikáty jsou vydávány pomocí certifikátu MS-Organization-P2P-Access, který `Local Computer\AAD Token Issuer\Certificates`je k dispozici v části. Tento certifikát je vydaný službou Azure AD během registrace zařízení. 
+**A:** Certifikáty MS-Organization-P2P-Access jsou vydávány službou Azure AD pro zařízení připojená k Azure AD a k hybridním zařízením připojeným k Azure AD. Tyto certifikáty se používají k umožnění vztahu důvěryhodnosti mezi zařízeními ve stejném tenantovi pro scénáře vzdálené plochy. K zařízení se vydá jeden certifikát a druhý uživatel ho vydá. Certifikát zařízení je přítomen v nástroji `Local Computer\Personal\Certificates` a je platný po dobu jednoho dne. Tento certifikát se obnoví (vydáním nového certifikátu), pokud je zařízení stále aktivní ve službě Azure AD. Uživatelský certifikát je přítomen v nástroji `Current User\Personal\Certificates` a tento certifikát je platný i po jednom dni, ale je vydaný na vyžádání, když se uživatel pokusí relaci vzdálené plochy k jinému zařízení připojenému k Azure AD. Po vypršení platnosti se neobnovuje. Oba tyto certifikáty jsou vydávány pomocí certifikátu MS-Organization-P2P-Access, který je k dispozici v části `Local Computer\AAD Token Issuer\Certificates` . Tento certifikát je vydaný službou Azure AD během registrace zařízení. 
 
 ---
 
@@ -246,7 +248,7 @@ Toto chování:
 
 ### <a name="q-how-do-i-unjoin-a-hybrid-azure-ad-joined-device-locally-on-the-device"></a>Otázka: Návody odpojte zařízení připojená k hybridní službě Azure AD místně na zařízení?
 
-**A:** Pro zařízení připojená k hybridní službě Azure AD se ujistěte, že jste automatickou registraci vypnuli. Naplánovaná úloha pak zařízení znovu neregistruje. Pak otevřete příkazový řádek jako správce a zadejte `dsregcmd.exe /debug /leave`. Nebo spusťte tento příkaz jako skript u několika zařízení, aby se hromadně odpojování nepřipojilo.
+**A:** Pro zařízení připojená k hybridní službě Azure AD se ujistěte, že jste automatickou registraci vypnuli. Naplánovaná úloha pak zařízení znovu neregistruje. Pak otevřete příkazový řádek jako správce a zadejte `dsregcmd.exe /debug /leave` . Nebo spusťte tento příkaz jako skript u několika zařízení, aby se hromadně odpojování nepřipojilo.
 
 ### <a name="q-where-can-i-find-troubleshooting-information-to-diagnose-hybrid-azure-ad-join-failures"></a>Otázka: kde najdu informace o řešení potíží pro diagnostiku selhání připojení k hybridní službě Azure AD?
 
@@ -267,6 +269,8 @@ Připojení k hybridní službě Azure AD má přednost před stavem zaregistrov
 
 **A:** Aktuálně se změny hlavního názvu uživatele (UPN) nejsou u hybridních zařízení připojených k Azure AD plně podporovány. I když se uživatelé můžou přihlásit k zařízení a přistupovat k místním aplikacím, ověřování pomocí služby Azure AD se po změně názvu UPN nezdařilo. Výsledkem je, že uživatelé mají na svých zařízeních problémy jednotného přihlašování a podmíněného přístupu. V tuto chvíli je potřeba odpojte zařízení ze služby Azure AD (spusťte dsregcmd/Leave se zvýšenými oprávněními) a znovu se připojte (automaticky se stane) a problém vyřešit. V současnosti pracujeme na řešení tohoto problému. Uživatelé, kteří se přihlásí pomocí Windows Hello pro firmy, ale tento problém nečelí. 
 
+Změny UPN se podporují s aktualizací Windows 10 2004 Update. Uživatelé na zařízeních s touto aktualizací nebudou mít po změně svých názvů UPN žádné problémy.
+
 ---
 
 ### <a name="q-do-windows-10-hybrid-azure-ad-joined-devices-require-line-of-sight-to-the-domain-controller-to-get-access-to-cloud-resources"></a>Otázka: zařízení připojená k hybridní službě Azure AD ve Windows 10 vyžadují pro přístup k prostředkům cloudu dohled nad řadičem domény?
@@ -286,8 +290,8 @@ Připojení k hybridní službě Azure AD má přednost před stavem zaregistrov
 ### <a name="q-how-do-i-remove-an-azure-ad-registered-state-for-a-device-locally"></a>Otázka: Návody odebrat registrovaný stav služby Azure AD pro zařízení místně?
 
 **Určitého** 
-- U registrovaných zařízení s Windows 10 Azure AD přejděte na **Nastavení** > **účty** > **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **Odpojit**. Registrace zařízení je vázaná na uživatelský profil ve Windows 10.
-- V případě iOS a Androidu můžete použít Microsoft Authenticator **Nastavení** > aplikace**registrace zařízení** a vybrat zrušit **registraci zařízení**.
+- U registrovaných zařízení s Windows 10 Azure AD přejděte na **Nastavení**  >  **účty**  >  **přístup do práce nebo do školy**. Vyberte svůj účet a vyberte **Odpojit**. Registrace zařízení je vázaná na uživatelský profil ve Windows 10.
+- V případě iOS a Androidu můžete použít Microsoft Authenticator nastavení aplikace **Settings**  >  **registrace zařízení** a vybrat zrušit **registraci zařízení**.
 - V případě macOS můžete pomocí aplikace Portál společnosti Microsoft Intune zrušit registraci zařízení ze správy a odebrat jakoukoli registraci. 
 
 ---

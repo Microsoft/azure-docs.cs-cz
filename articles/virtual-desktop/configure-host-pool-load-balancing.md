@@ -4,16 +4,16 @@ description: Jak nakonfigurovat metodu vyrovnávání zatížení pro prostřed�
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 447de339d3ceef7aeb1c232605b0e30bbbb1e7d8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 5d5c39ff867add80833ee522ef173506fa1c642c
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82612431"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204337"
 ---
 # <a name="configure-the-windows-virtual-desktop-load-balancing-method"></a>Konfigurace metody vyrovnávání zatížení Windows Virtual Desktop
 
@@ -33,15 +33,15 @@ V tomto článku se předpokládá, že jste postupovali podle pokynů v tématu
 Pokud chcete nakonfigurovat fond hostitelů tak, aby prováděl vyrovnávání zatížení po prvním použití bez úprav maximálního limitu relací, spusťte následující rutinu PowerShellu:
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst' 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'BreadthFirst'
 ```
 
-Až to uděláte, ujistěte se, že jste nastavili metodu vyrovnávání zatížení první, spusťte následující rutinu: 
+Až to uděláte, ujistěte se, že jste nastavili metodu vyrovnávání zatížení první, spusťte následující rutinu:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType
 
-Name             : hostpoolname 
+Name             : hostpoolname
 LoadBalancerType : BreadthFirst
 ```
 
@@ -58,13 +58,13 @@ Hloubka při prvním vyrovnávání zatížení distribuuje nové uživatelské 
 Pokud chcete nakonfigurovat fond hostitelů tak, aby prováděl vyrovnávání zatížení první hloubky, spusťte následující rutinu PowerShellu:
 
 ```powershell
-Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ### 
+Update-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> -LoadBalancerType 'DepthFirst' -MaxSessionLimit ###
 ```
 
 Pokud se chcete ujistit, že se nastavení aktualizovalo, spusťte tuto rutinu:
 
 ```powershell
-Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit 
+Get-AzWvdHostPool -ResourceGroupName <resourcegroupname> -Name <hostpoolname> | format-list Name, LoadBalancerType, MaxSessionLimit
 
 Name             : hostpoolname
 LoadBalancerType : DepthFirst
@@ -77,8 +77,8 @@ Vyrovnávání zatížení můžete také nakonfigurovat pomocí Azure Portal.
 
 Konfigurace vyrovnávání zatížení:
 
-1. Přihlaste se k https://portal.azure.comAzure Portal na. 
-2. Vyhledejte a v části služby vyberte **virtuální plochu Windows** . 
+1. Přihlaste se k Azure Portal na https://portal.azure.com .
+2. Vyhledejte a v části služby vyberte **virtuální plochu Windows** .
 3. Na stránce virtuální počítač s Windows vyberte **fondy hostitelů**.
 4. Vyberte název fondu hostitelů, který chcete upravit.
 5. Vyberte **Vlastnosti**.

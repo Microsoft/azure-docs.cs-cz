@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c09727e8d92a449b41124eae6ad8381d66cb2619
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9279622ee54a9fdaa6617cfe2758cfb563fdbffa
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74113300"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080603"
 ---
 # <a name="connect-to-and-index-azure-sql-database-content-using-an-azure-cognitive-search-indexer"></a>Připojení a indexování Azure SQL Database obsahu pomocí indexeru Azure Kognitivní hledání
 
@@ -140,7 +140,7 @@ Odpověď by měla vypadat nějak takto:
     }
 
 Historie spouštění obsahuje až 50 posledních dokončených provedení, která jsou seřazena v obráceném chronologickém pořadí (takže se poslední spuštění v odpovědi zařadí jako první).
-Další informace o odpovědi najdete v části [získání stavu indexeru](https://go.microsoft.com/fwlink/p/?LinkId=528198) .
+Další informace o odpovědi najdete v části [získání stavu indexeru](https://docs.microsoft.com/rest/api/searchservice/get-indexer-status) .
 
 ## <a name="run-indexers-on-a-schedule"></a>Spustit indexery podle plánu
 Indexer je také možné uspořádat tak, aby běžel pravidelně podle plánu. Chcete-li to provést, přidejte při vytváření nebo aktualizaci indexeru vlastnost **Schedule** . Následující příklad ukazuje požadavek PUT na aktualizaci indexeru:
@@ -155,7 +155,7 @@ Indexer je také možné uspořádat tak, aby běžel pravidelně podle plánu. 
         "schedule" : { "interval" : "PT10M", "startTime" : "2015-01-01T00:00:00Z" }
     }
 
-Parametr **interval** je povinný. Tento interval odkazuje na čas mezi začátkem dvou po sobě jdoucích spuštění indexeru. Nejmenší povolený interval je 5 minut. nejdelší je jeden den. Musí být formátován jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Vzor pro tuto hodnotu je: `P(nD)(T(nH)(nM))`. Příklady: `PT15M` každých 15 minut `PT2H` každé 2 hodiny.
+Parametr **interval** je povinný. Tento interval odkazuje na čas mezi začátkem dvou po sobě jdoucích spuštění indexeru. Nejmenší povolený interval je 5 minut. nejdelší je jeden den. Musí být formátován jako hodnota XSD "dayTimeDuration" (omezená podmnožina hodnoty [Duration ISO 8601](https://www.w3.org/TR/xmlschema11-2/#dayTimeDuration) ). Vzor pro tuto hodnotu je: `P(nD)(T(nH)(nM))` . Příklady: `PT15M` každých 15 minut každé `PT2H` 2 hodiny.
 
 Další informace o definování plánů indexerů najdete v tématu [postup plánování indexerů pro Azure kognitivní hledání](search-howto-schedule-indexers.md).
 
@@ -232,13 +232,38 @@ Chcete-li použít zásady vysoké značky, vytvořte nebo aktualizujte zdroj da
 >
 >
 
-Pokud dojde k chybám časového limitu, můžete `queryTimeout` použít nastavení konfigurace indexeru k nastavení časového limitu dotazu na hodnotu vyšší, než je výchozí časový limit 5 minut. Chcete-li například nastavit časový limit na 10 minut, vytvořte nebo aktualizujte indexer s následující konfigurací:
+<a name="convertHighWaterMarkToRowVersion"></a>
+
+##### <a name="converthighwatermarktorowversion"></a>convertHighWaterMarkToRowVersion
+
+Pokud používáte datový typ [rowversion](https://docs.microsoft.com/sql/t-sql/data-types/rowversion-transact-sql) pro sloupec horních značek, zvažte použití `convertHighWaterMarkToRowVersion` nastavení konfigurace indexeru. `convertHighWaterMarkToRowVersion`provede dvě věci:
+
+* V dotazu SQL indexeru použijte datový typ rowversion pro sloupec horních značek. Použití správného datového typu vylepšuje výkon dotazů indexeru.
+* Odečíst 1 z hodnoty rowversion před spuštěním dotazu indexeru. Zobrazení s 1 a mnoha spojeními mohou mít řádky s duplicitními rowversion hodnotami. Odečtení 1 zajistí, že dotaz indexeru nenalezne tyto řádky.
+
+Pokud chcete tuto funkci povolit, vytvořte nebo aktualizujte indexer s následující konfigurací:
+
+    {
+      ... other indexer definition properties
+     "parameters" : {
+            "configuration" : { "convertHighWaterMarkToRowVersion" : true } }
+    }
+
+<a name="queryTimeout"></a>
+
+##### <a name="querytimeout"></a>queryTimeout
+
+Pokud dojde k chybám časového limitu, můžete použít `queryTimeout` nastavení konfigurace indexeru k nastavení časového limitu dotazu na hodnotu vyšší, než je výchozí časový limit 5 minut. Chcete-li například nastavit časový limit na 10 minut, vytvořte nebo aktualizujte indexer s následující konfigurací:
 
     {
       ... other indexer definition properties
      "parameters" : {
             "configuration" : { "queryTimeout" : "00:10:00" } }
     }
+
+<a name="disableOrderByHighWaterMarkColumn"></a>
+
+##### <a name="disableorderbyhighwatermarkcolumn"></a>disableOrderByHighWaterMarkColumn
 
 Můžete také zakázat `ORDER BY [High Water Mark Column]` klauzuli. Nicméně to nedoporučujeme, protože pokud je provádění indexeru přerušeno chybou, indexer musí znovu zpracovat všechny řádky, pokud se spustí později – a to i v případě, že indexer již zpracoval téměř všechny řádky v době přerušení. K zakázání této `ORDER BY` klauzule použijte `disableOrderByHighWaterMarkColumn` nastavení v definici indexeru:  
 
@@ -264,14 +289,14 @@ Při použití techniky obnovitelného odstranění můžete při vytváření n
         }
     }
 
-**SoftDeleteMarkerValue** musí být řetězec – použijte řetězcovou reprezentaci vaší skutečné hodnoty. Například pokud máte sloupec s celými čísly, kde jsou odstraněné řádky označeny hodnotou 1, `"1"`použijte. Pokud máte BITOVÝ sloupec, ve kterém jsou odstraněné řádky označeny logickou hodnotou true, použijte řetězcový literál `True` nebo `true`nezáleží na velikosti písmen.
+**SoftDeleteMarkerValue** musí být řetězec – použijte řetězcovou reprezentaci vaší skutečné hodnoty. Například pokud máte sloupec s celými čísly, kde jsou odstraněné řádky označeny hodnotou 1, použijte `"1"` . Pokud máte BITOVÝ sloupec, ve kterém jsou odstraněné řádky označeny logickou hodnotou true, použijte řetězcový literál `True` nebo `true` nezáleží na velikosti písmen.
 
 <a name="TypeMapping"></a>
 
 ## <a name="mapping-between-sql-and-azure-cognitive-search-data-types"></a>Mapování mezi datovými typy SQL a Azure Kognitivní hledání
 | Datový typ SQL | Povolené typy polí indexu cíle | Poznámky |
 | --- | --- | --- |
-| bitové |EDM. Boolean, Edm. String | |
+| bit |EDM. Boolean, Edm. String | |
 | int, smallint, tinyint |EDM. Int32, Edm. Int64, Edm. String | |
 | bigint |EDM. Int64, Edm. String | |
 | Real, float |EDM. Double, Edm. String | |

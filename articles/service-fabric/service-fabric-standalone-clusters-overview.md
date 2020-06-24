@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: dekapur
-ms.openlocfilehash: e8912ef5bc0fd6009443b736031fc9af57ab6c5b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6abe6fca77251a16bcb7663a5192f46fef3476b0
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75465638"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080665"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Přehled samostatných clusterů Service Fabric
 
@@ -21,9 +21,16 @@ Typ uzlu definuje velikost, číslo a vlastnosti pro sadu uzlů v clusteru. Pro 
 Proces vytvoření místního clusteru Service Fabric se podobá procesu vytvoření clusteru v jakémkoli cloudu podle vašeho výběru se sadou virtuálních počítačů. Úvodní kroky pro zřízení virtuálních počítačů se řídí poskytovatelem cloudu nebo místním prostředím, které používáte. Jakmile budete mít k dispozici sadu virtuálních počítačů s povoleným připojením k síti, pak kroky pro nastavení balíčku Service Fabric, úpravě nastavení clusteru a spuštění skriptů pro vytváření a správu clusteru jsou identické. Tím zajistíte, že vaše znalosti a zkušenosti s provozem a správou Service Fabric clusterů jsou převoditelné, pokud se rozhodnete cílit na nová hostující prostředí.
 
 ## <a name="cluster-security"></a>Zabezpečení clusteru
+
 Cluster Service Fabric je prostředek, který vlastníte.  Je vaše zodpovědnost za zabezpečení clusterů, aby se zabránilo neoprávněným uživatelům v jejich připojení. Zabezpečený cluster je obzvláště důležitý při spuštění produkčních úloh v clusteru.
 
+> [!NOTE]
+> Ověřování systému Windows je založené na protokolu Kerberos. Protokol NTLM není podporován jako typ ověřování.
+>
+> Kdykoli je to možné, použijte pro Service Fabric clusterů ověřování pomocí certifikátu X. 509.
+
 ### <a name="node-to-node-security"></a>Zabezpečení mezi uzly
+
 Zabezpečení mezi uzly zabezpečuje komunikaci mezi virtuálními počítači nebo počítači v clusteru. Tento scénář zabezpečení zajišťuje, že se můžou účastnit hostování aplikací a služeb v clusteru jenom počítače, které jsou autorizované pro připojení ke clusteru. Service Fabric k zabezpečení clusteru a poskytování funkcí zabezpečení aplikací používá certifikáty X. 509.  Certifikát clusteru je nutný k zabezpečení provozu clusteru a k zajištění ověřování clusteru a serveru.  Certifikáty podepsané svým držitelem se dají použít pro testovací clustery, ale k zabezpečení produkčních clusterů by se měly použít certifikát od důvěryhodné certifikační autority.
 
 Zabezpečení systému Windows lze také povolit pro samostatný cluster systému Windows. Pokud máte Windows Server 2012 R2 a Windows Active Directory, doporučujeme použít zabezpečení systému Windows se skupinovými účty spravované služby. V opačném případě použijte zabezpečení systému Windows s účty systému Windows.
@@ -31,6 +38,7 @@ Zabezpečení systému Windows lze také povolit pro samostatný cluster systém
 Další informace najdete v článku [zabezpečení mezi](service-fabric-cluster-security.md#node-to-node-security) uzly.
 
 ### <a name="client-to-node-security"></a>Zabezpečení klient-uzel
+
 Zabezpečení typu klient-uzel ověřuje klienty a pomáhá zabezpečit komunikaci mezi klientem a jednotlivými uzly v clusteru. Tento typ zabezpečení pomáhá zajistit, že ke clusteru a aplikacím nasazeným v clusteru mají přístup jenom autorizovaní uživatelé. Klienti se jednoznačně identifikují pomocí přihlašovacích údajů zabezpečení certifikátů X. 509. K ověřování klientů správce nebo uživatelů s clusterem lze použít libovolný počet volitelných klientských certifikátů.
 
 Kromě klientských certifikátů je možné Azure Active Directory taky nakonfigurovat na ověřování klientů pomocí clusteru.
@@ -55,6 +63,7 @@ Samostatný cluster je prostředek, který zcela vlastníte. Zodpovídáte za op
 Další informace najdete v článku [upgrade samostatných clusterů](service-fabric-cluster-upgrade-standalone.md).
 
 ## <a name="supported-operating-systems"></a>Podporované operační systémy
+
 Můžete vytvářet clustery na virtuálních počítačích nebo počítačích, na kterých běží tyto operační systémy (Linux zatím není podporovaný):
 
 * Windows Server 2012 R2
@@ -62,6 +71,7 @@ Můžete vytvářet clustery na virtuálních počítačích nebo počítačích
 * Windows Server 2019
 
 ## <a name="next-steps"></a>Další kroky
+
 Přečtěte si další informace o [zabezpečení](service-fabric-cluster-security.md), [škálování](service-fabric-cluster-scaling-standalone.md)a [upgradu](service-fabric-cluster-upgrade-standalone.md) samostatných clusterů.
 
 Přečtěte si o [možnostech podpory Service Fabric](service-fabric-support.md).

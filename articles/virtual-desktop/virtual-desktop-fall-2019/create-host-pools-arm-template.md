@@ -4,16 +4,16 @@ description: Postup vytvoření fondu hostitelů na virtuálním počítači s W
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c24e212f901f0af38a24ab203070f637de860fc7
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 925d3ab7c01ef8dc4a2c5d590a56b4d558170472
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82615185"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204757"
 ---
 # <a name="create-a-host-pool-with-an-azure-resource-manager-template"></a>Vytvoření fondu hostitelů pomocí šablony Azure Resource Manageru
 
@@ -46,7 +46,7 @@ Pokud nasazujete v rámci předplatného poskytovatele Cloud Solution Provider, 
 
 1. Posuňte se dolů a klikněte pravým tlačítkem myši na **nasadit do Azure**a pak vyberte **Kopírovat umístění odkazu**.
 2. Otevřete textový editor, jako je Poznámkový blok, a vložte odkaz sem.
-3. Hned za znakem "https://portal.azure.com/" a před hashtagem (#) zadejte znak po znaku (@) následovaný názvem domény klienta. Tady je příklad formátu, který byste měli použít: `https://portal.azure.com/@Contoso.onmicrosoft.com#create/`.
+3. Hned za znakem " https://portal.azure.com/ " a před hashtagem (#) zadejte znak po znaku (@) následovaný názvem domény klienta. Tady je příklad formátu, který byste měli použít: `https://portal.azure.com/@Contoso.onmicrosoft.com#create/` .
 4. Přihlaste se k Azure Portal jako uživatel s oprávněním správce/Přispěvatel k předplatnému poskytovatele Cloud Solution Provider.
 5. Vložte odkaz, který jste zkopírovali do textového editoru, do adresního řádku.
 
@@ -70,7 +70,7 @@ Pak přidejte uživatele do skupiny desktopových aplikací pomocí této rutiny
 Add-RdsAppGroupUser <tenantname> <hostpoolname> "Desktop Application Group" -UserPrincipalName <userupn>
 ```
 
-Hlavní název uživatele (UPN user1@contoso.com) by měl odpovídat identitě uživatele v Azure Active Directory (například). Pokud chcete přidat více uživatelů, musíte tuto rutinu spustit pro každého uživatele.
+Hlavní název uživatele (UPN) by měl odpovídat identitě uživatele v Azure Active Directory (například user1@contoso.com ). Pokud chcete přidat více uživatelů, musíte tuto rutinu spustit pro každého uživatele.
 
 Po dokončení těchto kroků se uživatelé přidaní do skupiny desktopových aplikací můžou přihlásit k virtuální ploše Windows pomocí podporovaných klientů vzdálené plochy a zobrazit prostředek pro plochu relace.
 

@@ -11,16 +11,16 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.custom: has-adal-ref
-ms.openlocfilehash: e03616bf0d02f7ce063c027912cba4ab4e8f8d3f
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.openlocfilehash: 20db31b63a82431b7dd59c6c5c92a1fb756c5c06
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82611462"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84888423"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ Pojďme získat základní strukturu našeho programu napsaného.
     using Microsoft.IdentityModel.Clients.ActiveDirectory;
     using Microsoft.Rest;
     ```
-2. Musíme definovat některé konstanty, které budou používat naše metody.  Ve `Program` třídě, ale před `Main` metodou, přidejte následující.  Zástupné symboly, včetně ** &lt;lomených závorek&gt;**, nahraďte požadovanými hodnotami.
+2. Musíme definovat některé konstanty, které budou používat naše metody.  Ve `Program` třídě, ale před `Main` metodou, přidejte následující.  Zástupné symboly, včetně ** &lt; lomených závorek &gt; **, nahraďte požadovanými hodnotami.
 
     ```csharp
     //Tenant app constants
@@ -95,7 +95,7 @@ Pojďme získat základní strukturu našeho programu napsaného.
     static bool profileAlreadyExists = false;
     static bool endpointAlreadyExists = false;
     ```
-4. `Main` Metodu nahraďte následujícím způsobem:
+4. Metodu nahraďte následujícím `Main` způsobem:
 
    ```csharp
    static void Main(string[] args)
@@ -154,9 +154,9 @@ Pojďme získat základní strukturu našeho programu napsaného.
     }
     ```
 
-Teď, když je napsaná základní struktura našeho programu, bychom měli vytvořit metody, které `Main` metoda volá.
+Teď, když je napsaná základní struktura našeho programu, bychom měli vytvořit metody, které metoda volá `Main` .
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 Než budeme moct použít knihovnu pro správu Azure CDN, musíme ověřit náš instanční objekt a získat ověřovací token.  Tato metoda načte token pomocí ADAL.
 
 ```csharp
@@ -171,7 +171,7 @@ private static AuthenticationResult GetAccessToken()
 }
 ```
 
-Pokud používáte ověření individuálního uživatele, bude `GetAccessToken` metoda vypadat mírně odlišně.
+Pokud používáte ověření individuálního uživatele, bude `GetAccessToken` Metoda vypadat mírně odlišně.
 
 > [!IMPORTANT]
 > Tuto ukázku kódu použijte pouze v případě, že se rozhodnete použít individuální ověřování uživatele namísto instančního objektu.
@@ -271,7 +271,7 @@ private static void CreateCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> Výše uvedený příklad přiřadí koncovému bodu zdroj s názvem *Contoso* s `www.contoso.com`názvem hostitele.  Tuto změnu byste měli změnit tak, aby odkazovala na název hostitele vlastního zdroje.
+> Výše uvedený příklad přiřadí koncovému bodu zdroj s názvem *Contoso* s názvem hostitele `www.contoso.com` .  Tuto změnu byste měli změnit tak, aby odkazovala na název hostitele vlastního zdroje.
 >
 >
 
@@ -292,7 +292,7 @@ private static void PromptPurgeCdnEndpoint(CdnManagementClient cdn)
 ```
 
 > [!NOTE]
-> V předchozím příkladu řetězec `/*` označuje, že chci vymazat vše v kořenu cesty koncového bodu.  To je ekvivalentní k kontrole **Vyprázdnění všech** v dialogovém okně "vyčištění" Azure Portal. V `CreateCdnProfile` metodě jsem vytvořili náš profil jako **Azure CDN z profilu Verizon** pomocí kódu `Sku = new Sku(SkuName.StandardVerizon)`, takže to bude úspěšné.  **Azure CDN z profilů Akamai** ale nepodporují **Vyprázdnit vše**, takže pokud jsem pro tento kurz používal profil Akamai, je nutné zahrnout konkrétní cesty, které se mají vyprázdnit.
+> V předchozím příkladu řetězec `/*` označuje, že chci vymazat vše v kořenu cesty koncového bodu.  To je ekvivalentní k kontrole **Vyprázdnění všech** v dialogovém okně "vyčištění" Azure Portal. V `CreateCdnProfile` metodě jsem vytvořili náš profil jako **Azure CDN z profilu Verizon** pomocí kódu `Sku = new Sku(SkuName.StandardVerizon)` , takže to bude úspěšné.  **Azure CDN z profilů Akamai** ale nepodporují **Vyprázdnit vše**, takže pokud jsem pro tento kurz používal profil Akamai, je nutné zahrnout konkrétní cesty, které se mají vyprázdnit.
 >
 >
 

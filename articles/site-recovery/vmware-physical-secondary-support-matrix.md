@@ -9,11 +9,11 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: cabd3f7693c6b6b86bf0324bdafdfe1377d1ece8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79256793"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711880"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>Matice podpory pro zotavení po havárii virtuálních počítačů VMware a fyzických serverů do sekundární lokality
 
@@ -39,7 +39,7 @@ Stávající partneři mohou připojit nové zákazníky do scénáře až do do
 
 ## <a name="host-servers"></a>Hostitelské servery
 
-**Operační systém** | **Zobrazí**
+**Operační systém** | **Podrobnosti**
 --- | ---
 Server vCenter | vCenter 5,5, 6,0 a 6,5<br/><br/> Pokud spouštíte 6,0 nebo 6,5, počítejte s tím, že jsou podporovány pouze funkce 5,5.
 
@@ -48,7 +48,7 @@ Server vCenter | vCenter 5,5, 6,0 a 6,5<br/><br/> Pokud spouštíte 6,0 nebo 6,5
 
 Následující tabulka shrnuje podporu operačních systémů pro počítače replikované pomocí Site Recovery. V podporovaném operačním systému může běžet libovolný pracovní postup.
 
-**Operační systém** | **Zobrazí**
+**Operační systém** | **Podrobnosti**
 --- | ---
 Windows Server | 64-bit Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 s minimálně SP1.
 Linux | Red Hat Enterprise Linux 6,7, 6,8, 6,9, 7,1, 7,2 <br/><br/> CentOS 6,5, 6,6, 6,7, 6,8, 6,9, 7,0, 7,1, 7,2 <br/><br/> Oracle Enterprise Linux 6,4, 6,5, 6,8, na kterých běží jádro kompatibilní s Red Hat, nebo nepřerušené podnikové jádro verze 3 (UEK3) <br/><br/> SUSE Linux Enterprise Server 11 SP3, 11 SP4 
@@ -121,10 +121,10 @@ Přesunutí úložiště, sítě, virtuálních počítačů Azure napříč sku
 
 Služba mobility koordinuje replikaci mezi místními servery VMware nebo fyzickými servery a sekundární lokalitou. Při nastavování replikace byste měli mít jistotu, že máte nejnovější verzi služby mobility, a dalších součástí.
 
-| **Aktualizace** | **Zobrazí** |
+| **Aktualizace** | **Podrobnosti** |
 | --- | --- |
 |Aktualizace Scout | Aktualizace Scout jsou kumulativní. <br/><br/> [Seznamte se s](vmware-physical-secondary-disaster-recovery.md#updates) nejnovějšími aktualizacemi Scout a Stáhněte si je |
-|Aktualizace součástí | Aktualizace Scout obsahují aktualizace pro všechny součásti, včetně serveru pro příjem dat, konfiguračního serveru, procesu a hlavních cílových serverů, serverů vContinuum a zdrojových serverů, které chcete chránit.<br/><br/> [Další informace](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
+|Aktualizace součástí | Aktualizace Scout obsahují aktualizace pro všechny součásti, včetně serveru pro příjem dat, konfiguračního serveru, procesu a hlavních cílových serverů, serverů vContinuum a zdrojových serverů, které chcete chránit.<br/><br/> [Přečtěte si další informace](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
 ## <a name="next-steps"></a>Další kroky

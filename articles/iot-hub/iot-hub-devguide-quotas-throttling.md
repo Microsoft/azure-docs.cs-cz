@@ -8,11 +8,11 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.openlocfilehash: 71a5737434e78bc39bccdfeb950e0dbc32ed0052
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79284691"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688972"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenční kvóty a omezení IoT Hub
 
@@ -39,8 +39,8 @@ V následující tabulce jsou uvedena vynutila omezení. Hodnoty odkazují na je
 | Omezení | Free, B1 a S1 | B2 a S2 | B3 a S3 | 
 | -------- | ------- | ------- | ------- |
 | [Operace registru identit](#identity-registry-operations-throttle) (vytvoření, načtení, výpis, aktualizace, odstranění) | 1.67/s/jednotku (100/min/Unit) | 1.67/s/jednotku (100/min/Unit) | 83.33/s/jednotku (5 000/min/jednotku) |
-| [Nová připojení zařízení](#device-connections-throttle) (Tato omezení se vztahují na rychlost _nových připojení_, ne na celkový počet připojení) | Vyšší z 100/s nebo 12/s/jednotka <br/> Například dvě jednotky S1 jsou 2\*12 = 24 nových připojení/s, ale v rámci jednotek máte minimálně 100 nových připojení za sekundu. S devíti jednotkami S1 máte v rámci svých jednotek 108 nových připojení za\*sekundu (9 12). | 120 nových připojení/s/jednotku | 6 000 nových připojení/s/jednotku |
-| Odesílání typu zařízení-cloud | Vyšší z 100 operací odeslání/s nebo 12 operací odeslání za sekundu/jednotku <br/> Například dvě jednotky S1 jsou 2\*12 = 24/s, ale v rámci jednotek máte minimálně 100 operací odeslání za sekundu. S devíti jednotkami S1 máte 108 operací odeslání za sekundu (9\*12) napříč vašimi jednotkami. | 120 operace odeslání za sekundu/jednotku | 6 000 operace odeslání za sekundu/jednotku |
+| [Nová připojení zařízení](#device-connections-throttle) (Tato omezení se vztahují na rychlost _nových připojení_, ne na celkový počet připojení) | Vyšší z 100/s nebo 12/s/jednotka <br/> Například dvě jednotky S1 jsou 2 \* 12 = 24 nových připojení/s, ale v rámci jednotek máte minimálně 100 nových připojení za sekundu. S devíti jednotkami S1 máte v rámci svých jednotek 108 nových připojení za sekundu (9 \* 12). | 120 nových připojení/s/jednotku | 6 000 nových připojení/s/jednotku |
+| Odesílání typu zařízení-cloud | Vyšší z 100 operací odeslání/s nebo 12 operací odeslání za sekundu/jednotku <br/> Například dvě jednotky S1 jsou 2 \* 12 = 24/s, ale v rámci jednotek máte minimálně 100 operací odeslání za sekundu. S devíti jednotkami S1 máte 108 operací odeslání za sekundu (9 \* 12) napříč vašimi jednotkami. | 120 operace odeslání za sekundu/jednotku | 6 000 operace odeslání za sekundu/jednotku |
 | Z cloudu do zařízení odesílá<sup>1</sup> . | 1,67 operace odeslání za sekundu/jednotku (100 zpráv/min/jednotku) | 1,67 operace odeslání za sekundu/jednotku (100 operací odeslání/min/jednotku) | 83,33 operace odeslání za sekundu/jednotku (5 000 operací odeslání/min/jednotku) |
 | Cloud-zařízení obdrží<sup>1</sup> <br/> (jenom když zařízení používá protokol HTTPS)| 16,67 přijatých operací za sekundu (celkem 1 000 operací přijetí za minutu/min/jednotku) | 16,67 přijatých operací za sekundu (celkem 1 000 operací přijetí za minutu/min/jednotku) | 833,33 přijatých operací za sekundu (celkem 50 000 operací přijetí za minutu/min/jednotku) |
 | Nahrání souboru | 1,67 inicializace nahrávání souborů/s/jednotka (100/min/Unit) | 1,67 inicializace nahrávání souborů/s/jednotka (100/min/Unit) | 83,33 inicializace nahrávání souborů/s/jednotka (5 000/min/jednotku) |
@@ -75,9 +75,9 @@ V následující tabulce jsou uvedena vynutila omezení. Hodnoty odkazují na je
 
 ### <a name="traffic-shaping"></a>Tvarování provozu
 
-Aby bylo možné přizpůsobit shlukový přenos, IoT Hub přijmout požadavky nad omezením po dobu omezeného času. Prvních pár těchto požadavků se zpracovává okamžitě. Pokud však počet požadavků pokračuje v rozporu s omezením, IoT Hub začne umísťovat požadavky do fronty a zpracovány při dosažení limitu. Tento efekt se nazývá *Změna provozu*. Kromě toho je velikost této fronty omezená. Pokud dojde k porušení omezení, nakonec se fronta vyplní a IoT Hub spustí zamítnutí požadavků `429 ThrottlingException`.
+Aby bylo možné přizpůsobit shlukový přenos, IoT Hub přijmout požadavky nad omezením po dobu omezeného času. Prvních pár těchto požadavků se zpracovává okamžitě. Pokud však počet požadavků pokračuje v rozporu s omezením, IoT Hub začne umísťovat požadavky do fronty a zpracovány při dosažení limitu. Tento efekt se nazývá *Změna provozu*. Kromě toho je velikost této fronty omezená. Pokud dojde k porušení omezení, nakonec se fronta vyplní a IoT Hub spustí zamítnutí požadavků `429 ThrottlingException` .
 
-Například můžete použít simulované zařízení k 200 posílání zpráv typu zařízení-Cloud za sekundu do IoT Hub S1 (která má limit 100/s D2C posílá). Pro první minutu nebo dvě se zprávy zpracovávají okamžitě. Vzhledem k tomu, že zařízení pokračuje v posílání více zpráv, než je limit omezení, IoT Hub začne pouze zpracovávat zprávy 100 za sekundu a zbývající ve frontě vloží. Začnete všímáte zvýšené latence. Nakonec začnete s tím `429 ThrottlingException` , jak se bude fronta vyplňovat, a v [metrikách IoT Hub](iot-hub-metrics.md) se začne zvyšovat počet chyb omezení.
+Například můžete použít simulované zařízení k 200 posílání zpráv typu zařízení-Cloud za sekundu do IoT Hub S1 (která má limit 100/s D2C posílá). Pro první minutu nebo dvě se zprávy zpracovávají okamžitě. Vzhledem k tomu, že zařízení pokračuje v posílání více zpráv, než je limit omezení, IoT Hub začne pouze zpracovávat zprávy 100 za sekundu a zbývající ve frontě vloží. Začnete všímáte zvýšené latence. Nakonec začnete s tím, `429 ThrottlingException` jak se bude fronta vyplňovat, a v [metrikách IoT Hub](iot-hub-metrics.md) se začne zvyšovat počet chyb omezení.
 
 ### <a name="identity-registry-operations-throttle"></a>Omezení operací v registru identit
 

@@ -11,18 +11,18 @@ Customer intent: I want to filter network traffic to virtual machines that perfo
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: ''
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
 ms.date: 03/30/2018
 ms.author: kumud
 ms.custom: mvc
-ms.openlocfilehash: 08031bc2ac29ea77374e21c4ce6f7bcf6151bcad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 3b941b81feb54ae6eed0333a9dcb4863cc885686
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "66730036"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84688112"
 ---
 # <a name="filter-network-traffic-with-a-network-security-group-using-powershell"></a>Filtrování síťového provozu pomocí skupiny zabezpečení sítě pomocí PowerShellu
 
@@ -35,7 +35,7 @@ Příchozí a odchozí provoz podsítě virtuální sítě můžete filtrovat po
 * Nasazení virtuálních počítačů do podsítě
 * Testování filtrů provozu
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -277,7 +277,7 @@ Pomocí následujícího příkazu v PowerShellu nainstalujte na virtuální po�
 Install-WindowsFeature -name Web-Server -IncludeManagementTools
 ```
 
-Po dokončení instalace služby IIS se odpojte od virtuálního počítače *myVmWeb*. Stále zůstanete připojeni ke vzdálené ploše virtuálního počítače *myVmMgmt*. Chcete-li zobrazit uvítací obrazovku služby IIS, otevřete internetový prohlížeč a přejděte na adresu\/http:/myVmWeb.
+Po dokončení instalace služby IIS se odpojte od virtuálního počítače *myVmWeb*. Stále zůstanete připojeni ke vzdálené ploše virtuálního počítače *myVmMgmt*. Chcete-li zobrazit uvítací obrazovku služby IIS, otevřete internetový prohlížeč a přejděte na adresu http: \/ /myVmWeb.
 
 Odpojte se od virtuálního počítače *myVmMgmt*.
 

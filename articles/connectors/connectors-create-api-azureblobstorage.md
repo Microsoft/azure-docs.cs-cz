@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 02/21/2020
 tags: connectors
 ms.openlocfilehash: eb943bfe36be10d1e95d569a5c1bf48563e909c1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247355"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711285"
 ---
 # <a name="create-and-manage-blobs-in-azure-blob-storage-by-using-azure-logic-apps"></a>Vytváření a správa objektů BLOB v Azure Blob Storage pomocí Azure Logic Apps
 
@@ -89,7 +89,7 @@ V Azure Logic Apps [Akce](../logic-apps/logic-apps-overview.md#logic-app-concept
 
    ![Přidat nový krok do pracovního postupu aplikace logiky](./media/connectors-create-api-azureblobstorage/add-new-step-logic-app-workflow.png) 
 
-   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Zvolte symbol plus (**+**), který se zobrazí, a vyberte **přidat akci**.
+   Pokud chcete přidat akci mezi stávajícími kroky, přesuňte ukazatel myši na šipku připojení. Zvolte symbol plus ( **+** ), který se zobrazí, a vyberte **přidat akci**.
 
 3. Do vyhledávacího pole zadejte jako filtr "Azure Blob". V seznamu akce vyberte akci, kterou chcete.
 
@@ -121,7 +121,7 @@ V tomto příkladu se načte jenom obsah objektu BLOB. Chcete-li zobrazit obsah,
 
 1. Po zobrazení výzvy k vytvoření připojení zadejte tyto informace:
 
-   | Vlastnost | Požaduje se | Hodnota | Popis |
+   | Vlastnost | Požaduje se | Hodnota | Description |
    |----------|----------|-------|-------------|
    | **Název připojení** | Ano | <*název připojení*> | Název, který se má pro připojení vytvořit |
    | **Účet úložiště** | Ano | <*účet úložiště*> | V seznamu vyberte svůj účet úložiště. |

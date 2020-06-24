@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 3/18/2020
-ms.openlocfilehash: 3098ca0d3d5e41c298d3058ffa84fcf129648281
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/10/2020
+ms.openlocfilehash: 402214da75bffd278e12db94f089d64acd62221e
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81399485"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730135"
 ---
 # <a name="incrementally-copy-new-and-changed-files-based-on-lastmodifieddate-by-using-the-copy-data-tool"></a>Přírůstkové kopírování nových a změněných souborů na základě LastModifiedDate pomocí nástroje Kopírování dat
 
@@ -25,7 +25,7 @@ ms.locfileid: "81399485"
 
 V tomto kurzu použijete Azure Portal k vytvoření datové továrny. Pak použijete nástroj Kopírování dat k vytvoření kanálu, který přírůstkově kopíruje jenom nové a změněné soubory z Azure Blob Storage do úložiště objektů BLOB v Azure. Používá `LastModifiedDate` k určení, které soubory se mají zkopírovat.
 
-Po dokončení tohoto postupu Azure Data Factory vyhledá všechny soubory ve zdrojovém úložišti, použije filtr souborů podle `LastModifiedDate`a zkopíruje do cílového úložiště pouze soubory, které jsou nové nebo byly od posledního okamžiku aktualizované. Všimněte si, že pokud Data Factory prohledává velký počet souborů, měli byste očekávat i dlouhou dobu trvání. Kontrola souborů je časově náročná, i když se zmenší objem kopírovaných dat.
+Po dokončení tohoto postupu Azure Data Factory vyhledá všechny soubory ve zdrojovém úložišti, použije filtr souborů podle `LastModifiedDate` a zkopíruje do cílového úložiště pouze soubory, které jsou nové nebo byly od posledního okamžiku aktualizované. Všimněte si, že pokud Data Factory prohledává velký počet souborů, měli byste očekávat i dlouhou dobu trvání. Kontrola souborů je časově náročná, i když se zmenší objem kopírovaných dat.
 
 > [!NOTE]
 > Pokud se službou Data Factory teprve začínáte, přečtěte si téma [Úvod do Azure Data Factory](introduction.md).
@@ -52,7 +52,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
 ## <a name="create-a-data-factory"></a>Vytvoření datové továrny
 
-1. V levém podokně vyberte **Vytvořit prostředek**. Vyberte **Analytics** > **Data Factory**analýzy:
+1. V levém podokně vyberte **Vytvořit prostředek**. Vyberte **Analytics**  >  **Data Factory**analýzy:
 
    ![Vyberte Data Factory](./media/doc-common-process/new-azure-data-factory-menu.png)
 
@@ -150,7 +150,7 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
 10. Všimněte si, že je vlevo automaticky vybraná karta **Monitorování**. Aplikace se přepne na kartu **monitorování** . Zobrazí se stav kanálu. Seznam můžete aktualizovat kliknutím na **Aktualizovat**. Pokud chcete zobrazit podrobnosti o spuštění aktivit nebo znovu spustit kanál, vyberte odkaz v části **název kanálu** .
 
-    ![Aktualizuje seznam a zobrazí podrobnosti o spuštění aktivit.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs1.png)
+    ![Aktualizuje seznam a zobrazí podrobnosti o spuštění aktivit.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs-1.png)
 
 11. Kanál obsahuje pouze jednu aktivitu (aktivita kopírování), takže se zobrazí pouze jedna položka. Pokud chcete zobrazit podrobnosti o operaci kopírování, vyberte odkaz **Podrobnosti** (ikona brýlí) ve sloupci **název aktivity** . Podrobnosti o vlastnostech najdete v tématu [Přehled aktivit kopírování](copy-activity-overview.md).
 
@@ -160,23 +160,21 @@ Připravte úložiště objektů BLOB pro kurz provedením těchto kroků:
 
     ![Ve zdrojovém kontejneru nebo cílovém kontejneru nejsou žádné soubory.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3.png)
 
-12. Vytvořte prázdný textový soubor a pojmenujte ho **Soubor1. txt**. Nahrajte tento textový soubor do zdrojového kontejneru v účtu úložiště. K provedení těchto úloh, například [Průzkumník služby Azure Storage](https://storageexplorer.com/), můžete použít různé nástroje.
+12. Vytvořte prázdný textový soubor a pojmenujte ho **file1.txt**. Nahrajte tento textový soubor do zdrojového kontejneru v účtu úložiště. K provedení těchto úloh, například [Průzkumník služby Azure Storage](https://storageexplorer.com/), můžete použít různé nástroje.
 
-    ![Vytvoření souborů Soubor1. txt a jejich nahrání do zdrojového kontejneru](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
+    ![Vytvoření file1.txt a nahrání do zdrojového kontejneru](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs3-1.png)
 
 13. Pokud se chcete vrátit do zobrazení **spuštění kanálu** , vyberte **všechna spuštění kanálu**a počkejte, až se znovu automaticky aktivuje stejný kanál.  
 
-    ![Vybrat všechna spuštění kanálu](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs4.png)
-
 14. Po dokončení druhého kanálu postupujte podle výše uvedených kroků a podívejte se na podrobnosti o spuštění aktivit.  
 
-    Uvidíte, že jeden soubor (Soubor1. txt) se zkopíroval ze zdrojového kontejneru do cílového kontejneru vašeho účtu služby Blob Storage:
+    Uvidíte, že jeden soubor (file1.txt) se zkopíroval ze zdrojového kontejneru do cílového kontejneru vašeho účtu úložiště objektů BLOB:
 
-    ![Soubor1. txt se zkopíroval ze zdrojového kontejneru do cílového kontejneru.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
+    ![file1.txt se zkopíroval ze zdrojového kontejneru do cílového kontejneru.](./media/tutorial-incremental-copy-lastmodified-copy-data-tool/monitor-pipeline-runs6.png)
 
-15. Vytvořte další prázdný textový soubor a pojmenujte ho **Soubor2. txt**. Nahrajte tento textový soubor do zdrojového kontejneru v účtu služby Blob Storage.
+15. Vytvořte další prázdný textový soubor a pojmenujte ho **file2.txt**. Nahrajte tento textový soubor do zdrojového kontejneru v účtu služby Blob Storage.
 
-16. Opakujte kroky 13 a 14 pro druhý textový soubor. Uvidíte, že během tohoto spuštění kanálu se ze zdrojového kontejneru zkopíroval jenom nový soubor (Soubor2. txt) do cílového kontejneru vašeho účtu úložiště.  
+16. Opakujte kroky 13 a 14 pro druhý textový soubor. Uvidíte, že během tohoto spuštění kanálu se do cílového kontejneru účtu úložiště zkopíroval jenom nový soubor (file2.txt).  
 
     Můžete také ověřit, zda byl zkopírován pouze jeden soubor pomocí [Průzkumník služby Azure Storage](https://storageexplorer.com/) k prohledání souborů:
 

@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e2b30e8f6bcbe7c0e739455f4942712f68ff8404
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 10d5fda526c41704381bb544bdfd0589063c1d15
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80437452"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203856"
 ---
 # <a name="define-a-phone-factor-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu pro telefonní faktor v Azure Active Directory B2C vlastní zásady
 
@@ -32,11 +32,11 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro registraci a ov�
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`hodnotu. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které Azure AD B2C používá pro telefonní faktor:`Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které Azure AD B2C používá pro telefonní faktor:`Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 Následující příklad ukazuje technický profil telefonního faktoru pro zápis a ověření:
 
-```XML
+```xml
 <TechnicalProfile Id="PhoneFactor-InputOrVerify">
   <DisplayName>PhoneFactor</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.PhoneFactorProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -57,14 +57,14 @@ Element InputClaimsTransformations může obsahovat kolekci vstupních transform
 
 Element InputClaims musí obsahovat následující deklarace identity. Název vaší deklarace identity můžete také namapovat na název definovaný v technickém profilu pro telefonní faktor. 
 
-|  Datový typ| Požaduje se | Popis |
+|  Datový typ| Povinné | Description |
 | --------- | -------- | ----------- | 
-| řetězec| Ano | Jedinečný identifikátor pro uživatele. Název deklarace identity nebo PartnerClaimType musí být nastaven na `UserId`hodnotu. Tato deklarace identity by neměla obsahovat osobní údaje, které by se mohly identifikovat.|
+| řetězec| Ano | Jedinečný identifikátor pro uživatele. Název deklarace identity nebo PartnerClaimType musí být nastaven na hodnotu `UserId` . Tato deklarace identity by neměla obsahovat osobní údaje, které by se mohly identifikovat.|
 | řetězec| Ano | Seznam typů deklarací. Každá deklarace identity obsahuje jedno telefonní číslo. Pokud jakákoli vstupní deklarace identity neobsahuje telefonní číslo, bude uživatel vyzván k registraci a ověření nového telefonního čísla. Ověřené telefonní číslo se vrátí jako výstupní deklarace. Pokud jedna ze vstupních deklarací identity obsahuje telefonní číslo, zobrazí se uživateli výzva k jeho ověření. Pokud více vstupních deklarací obsahuje telefonní číslo, zobrazí se uživateli výzva k výběru a ověření jednoho z telefonních čísel. |
 
 Následující příklad ukazuje použití více telefonních čísel. Další informace najdete v tématu [Vzorová zásada](https://github.com/azure-ad-b2c/samples/tree/master/policies/mfa-add-secondarymfa).
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="userIdForMFA" PartnerClaimType="UserId" />
   <InputClaim ClaimTypeReferenceId="strongAuthenticationPhoneNumber" />
@@ -76,10 +76,10 @@ Následující příklad ukazuje použití více telefonních čísel. Další i
 
 Element OutputClaims obsahuje seznam deklarací vrácených technickým profilem telefonního faktoru.
 
-|  Datový typ| Požaduje se | Popis |
+|  Datový typ| Povinné | Popis |
 |  -------- | ----------- |----------- |
 | Boolean | Ano | Určuje, zda uživatel zadal nové telefonní číslo. Název deklarace identity nebo PartnerClaimType musí být nastaven na.`newPhoneNumberEntered`|
-| řetězec| Ano | Ověřené telefonní číslo. Název deklarace identity nebo PartnerClaimType musí být nastaven na `Verified.OfficePhone`hodnotu.|
+| řetězec| Ano | Ověřené telefonní číslo. Název deklarace identity nebo PartnerClaimType musí být nastaven na hodnotu `Verified.OfficePhone` .|
 
 Element OutputClaimsTransformations může obsahovat kolekci prvků OutputClaimsTransformation, které se používají k úpravě výstupních deklarací, nebo k vygenerování nových.
 
@@ -90,12 +90,12 @@ Element **CryptographicKeys** se nepoužívá.
 
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ContentDefinitionReferenceId | Ano | Identifikátor [definice obsahu](contentdefinitions.md) přidruženého k tomuto technickému profilu. |
-| ManualPhoneNumberEntryAllowed| Ne | Určuje, jestli uživatel smí ručně zadat telefonní číslo. Možné hodnoty: `true`, nebo `false` (výchozí).|
-| nastavení. authenticationMode | Ne | Metoda pro ověření telefonního čísla. Možné hodnoty: `sms`, `phone`, nebo `mixed` (výchozí).|
-| nastavení. Autodial| Ne| Určete, zda má technický profil automaticky vytočit nebo automaticky odeslat zprávu SMS. Možné hodnoty: `true`, nebo `false` (výchozí). Automatické vytáčení vyžaduje, `setting.authenticationMode` aby byla metadata nastavena `sms`na, `phone`nebo. Vstupní kolekce deklarací musí obsahovat jedno telefonní číslo. |
+| ManualPhoneNumberEntryAllowed| Ne | Určuje, jestli uživatel smí ručně zadat telefonní číslo. Možné hodnoty: `true` , nebo `false` (výchozí).|
+| nastavení. authenticationMode | Ne | Metoda pro ověření telefonního čísla. Možné hodnoty: `sms` , `phone` , nebo `mixed` (výchozí).|
+| nastavení. Autodial| Ne| Určete, zda má technický profil automaticky vytočit nebo automaticky odeslat zprávu SMS. Možné hodnoty: `true` , nebo `false` (výchozí). Automatické vytáčení vyžaduje `setting.authenticationMode` , aby byla metadata nastavena na `sms` , nebo `phone` . Vstupní kolekce deklarací musí obsahovat jedno telefonní číslo. |
 
 ### <a name="ui-elements"></a>Prvky uživatelského rozhraní
 

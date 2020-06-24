@@ -3,8 +3,8 @@ title: Použití omezení tenanta ke správě přístupu k SaaS aplikacím – A
 description: Jak používat omezení tenanta ke správě uživatelů, kteří budou mít přístup k aplikacím na základě jejich tenanta Azure AD.
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,15 +12,15 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/28/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: richagi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7c43a1250f4d2be956b028689ee10eb4b968701f
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: cd302791aa783f1a95d48f666366aa845fcaadbb
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680137"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763019"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Použití omezení tenanta ke správě přístupu k SaaS cloudovým aplikacím
 
@@ -74,7 +74,7 @@ Pro každý příchozí požadavek do login.microsoftonline.com, login.microsoft
 
 Hlavičky by měly obsahovat následující prvky:
 
-- Pro *omezení přístupu k tenantovi*použijte hodnotu \< povoleného seznamu klientů \> , což je seznam klientů oddělených čárkami, kterým chcete povolit přístup uživatelům. K identifikaci tenanta v tomto seznamu se dá použít každá doména, která je zaregistrovaná v tenantovi. Chcete-li například povolit přístup k klientům společnosti Contoso i Fabrikam, bude dvojice název/hodnota vypadat takto: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
+- V případě *omezení přístupu k tenantovi*použijte hodnotu \<permitted tenant list\> , která je čárkami oddělený seznam klientů, kterým chcete povolit přístup uživatelům. K identifikaci tenanta v tomto seznamu se dá použít každá doména, která je zaregistrovaná v tenantovi. Chcete-li například povolit přístup k klientům společnosti Contoso i Fabrikam, bude dvojice název/hodnota vypadat takto: `Restrict-Access-To-Tenants: contoso.onmicrosoft.com,fabrikam.onmicrosoft.com`
 
 - Pro *kontext omezení přístupu*použijte hodnotu jednoho ID adresáře, která deklaruje, který tenant nastavuje omezení tenanta. Chcete-li například deklarovat contoso jako tenanta, který nastaví zásady omezení tenanta, bude dvojice název/hodnota vypadat takto: `Restrict-Access-Context: 456ff232-35l2-5h23-b3b3-3236w0826f3d`  
 
@@ -113,7 +113,7 @@ Podobně jako u jiných sestav v Azure Portal můžete použít filtry k určen�
 - **Uživatel**
 - **Aplikace**
 - **Stav**
-- **Datum**
+- **Date**
 - **Datum (UTC)** (kde UTC je koordinovaný světový čas)
 - **Metoda ověřování MFA** (metoda vícefaktorového ověřování)
 - **Podrobnosti** o ověřování MFA (podrobnosti o vícefaktorového ověřování)
@@ -155,7 +155,7 @@ Fiddler je bezplatný proxy server pro ladění, který se dá použít k zachyc
 
    1. V nástroji Fiddler webového ladicího programu vyberte nabídku **pravidla** a vyberte **přizpůsobit pravidla...** pro otevření souboru CustomRules.
 
-   2. Na začátek funkce přidejte následující řádky `OnBeforeRequest` . Nahraďte \< doménu tenanta \> doménou registrovanou pro vašeho tenanta (například `contoso.onmicrosoft.com` ). Nahraďte \< ID adresáře \> identifikátorem GUID Azure AD vašeho tenanta.
+   2. Na začátek funkce přidejte následující řádky `OnBeforeRequest` . Nahraďte \<tenant domain\> doménou registrovanou pro vašeho tenanta (například `contoso.onmicrosoft.com` ). Nahraďte \<directory ID\> identifikátorem GUID Azure AD vašeho tenanta.
 
       ```JScript.NET
       if (
@@ -169,7 +169,7 @@ Fiddler je bezplatný proxy server pro ladění, který se dá použít k zachyc
       }
       ```
 
-      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Například:
+      Pokud potřebujete povolení více tenantů, oddělte názvy klientů čárkou. Příklad:
 
       `oSession.oRequest["Restrict-Access-To-Tenants"] = "contoso.onmicrosoft.com,fabrikam.onmicrosoft.com";`
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b38ac6400a882d98c68ea39ae359e20ed237cd5f
-ms.sourcegitcommit: 61d850bc7f01c6fafee85bda726d89ab2ee733ce
+ms.openlocfilehash: 25c477d0d293e896bc92cd3bd6047135a56cb4ad
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84340262"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105979"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Oprávnění role správce v Azure Active Directory
 
@@ -173,7 +173,7 @@ Spravuje [žádosti Customer Lockbox](https://docs.microsoft.com/office365/admin
 
 Uživatelé v této roli můžou spravovat služby zásad & pro stolní počítače a přizpůsobení Office. Pro Desktop Analytics to zahrnuje možnost Zobrazit inventář assetů, vytvářet plány nasazení, zobrazovat stav nasazení a stavu. V případě služby Office Customization & Policy tato role umožňuje uživatelům spravovat zásady Office.
 
-### <a name="device-administrator"></a>[Správce zařízení](#device-administrators-permissions)
+### <a name="device-administrators"></a>[Správci služeb](#device-administrators-permissions)
 
 Tato role je k dispozici pro přiřazení pouze jako další místní správce v [nastavení zařízení](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/DevicesMenuBlade/DeviceSettings/menuId/). Uživatelé s touto rolí se stanou Správci místních počítačů na všech zařízeních s Windows 10, která jsou připojená k Azure Active Directory. Neposkytují možnost spravovat objekty zařízení v Azure Active Directory.
 
@@ -209,7 +209,7 @@ Uživatelé s touto rolí mají globální oprávnění v rámci Microsoft Excha
 
 ### <a name="external-id-user-flow-administrator"></a>[Správce toku externího ID uživatele](#external-id-user-flow-administrator-permissions)
 
-Uživatelé s touto rolí můžou v Azure Portal vytvářet a spravovat Toky uživatelů B2C (označované taky jako předdefinované zásady).Vytvořením nebo úpravou toků uživatelů mohou tito uživatelé měnit obsah HTML/CSS/JavaScript uživatelského prostředí, měnit požadavky MFA na tok uživatelů, měnit deklarace identity v tokenu a upravovat nastavení relace pro všechny zásady v organizaci Azure AD. Na druhé straně tato role nezahrnuje možnost kontrolovat data uživatelů ani měnit atributy, které jsou součástí schématu organizace.Změny architektury rozhraní identity Experience Framework (označované také jako vlastní) jsou také mimo rámec této role.
+Uživatelé s touto rolí můžou vytvářet a spravovat toky uživatelů (označované taky jako předdefinované zásady) v Azure Portal. Tito uživatelé mohou přizpůsobit obsah HTML/CSS/JavaScript, měnit požadavky MFA, vybírat deklarace identity v tokenu, spravovat konektory rozhraní API a konfigurovat nastavení relace pro všechny toky uživatelů v organizaci Azure AD. Na druhé straně tato role nezahrnuje možnost kontrolovat uživatelská data ani provádět změny atributů, které jsou součástí schématu organizace. Změny zásad architektury identity Framework (označované také jako vlastní zásady) jsou také mimo rozsah této role.
 
 ### <a name="external-id-user-flow-attribute-administrator"></a>[Správce atributů toku uživatele externího ID](#external-id-user-flow-attribute-administrator-permissions)
 
@@ -316,7 +316,7 @@ Role moderního správce obchodu poskytuje určitým uživatelům oprávnění k
 Uživatelé s rolí moderního správce obchodu mají obvykle oprávnění správce v dalších nákupních systémech Microsoftu, ale nemají role globálního správce nebo správce fakturace používané pro přístup do centra pro správu. 
 
 **Kdy je přiřazena role moderního správce obchodu?**
-* **Nákup samoobslužných služeb v centru pro správu Microsoft 365** – nákup samoobslužných služeb dává uživatelům možnost vyzkoušet si nové produkty, a to tak, že si je zakoupí nebo zaregistrují sami. Tyto produkty se spravují v centru pro správu. Uživatelům, kteří si přidávají samoobslužné nákupy, se přiřadí role v systému pro obchodování a moderní role správce obchodování, aby mohli spravovat své nákupy v centru pro správu. Správci můžou blokovat nákupy samoobslužných služeb (pro Power BI, Power Apps, Power Automate) prostřednictvím [PowerShellu](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide). Další informace najdete v tématu [Nejčastější dotazy k nákupu samoobslužných služeb](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
+* **Nákup samoobslužných služeb v centru pro správu Microsoft 365** – nákup samoobslužných služeb dává uživatelům možnost vyzkoušet si nové produkty, a to tak, že si je zakoupí nebo zaregistrují sami. Tyto produkty se spravují v centru pro správu. Uživatelům, kteří si přidávají samoobslužné nákupy, se přiřadí role v systému pro obchodování a moderní role správce obchodování, aby mohli spravovat své nákupy v centru pro správu. Správci můžou blokovat nákupy samoobslužných služeb (pro Power BI, Power Apps, Power Automate) prostřednictvím [PowerShellu](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/allowselfservicepurchase-powershell?view=o365-worldwide). Další informace najdete v [nejčastějších dotazech k samoobslužnému nákupu](https://docs.microsoft.com/microsoft-365/commerce/subscriptions/self-service-purchase-faq?view=o365-worldwide).  
 * **Nákupy od komerčního tržiště Microsoftu** – podobně jako při nákupu samoobslužných služeb, když uživatel koupí produkt nebo službu z Microsoft AppSource nebo Azure Marketplace, bude role moderního správce obchodu přiřazená, pokud nemá roli globálního správce nebo správce fakturace. V některých případech je možné, že uživatelé můžou tyto nákupy zablokovat. Další informace najdete v tématu [komerční tržiště Microsoftu](https://docs.microsoft.com/azure/marketplace/marketplace-faq-publisher-guide#what-could-block-a-customer-from-completing-a-purchase).   
 * **Návrhy od Microsoftu** – návrh je formální nabídka Microsoftu, která vaší organizaci koupí produkty a služby Microsoftu. Když osoba, která přijímá návrh, nemá roli globálního správce nebo správce fakturace ve službě Azure AD, přiřadí se mu role specifická pro obchod pro dokončení návrhu a role moderního správce obchodu pro přístup k centru pro správu. Když přistupují k centru pro správu, můžou používat jenom funkce, které jsou autorizované v rámci své obchodní role. 
 * **Role specifické pro obchod** – někteří uživatelé mají přiřazeny role specifické pro obchod. Pokud uživatel není globálním správcem nebo správcem fakturace, získá moderní roli správce obchodu, aby mohli získat přístup k centru pro správu.  

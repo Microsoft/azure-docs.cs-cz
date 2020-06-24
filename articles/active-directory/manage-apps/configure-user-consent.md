@@ -2,23 +2,23 @@
 title: Konfigurace způsobu souhlasu koncových uživatelů s aplikacemi pomocí Azure AD
 description: Naučte se, jak spravovat, jak a kdy si uživatelé můžou udělit souhlas s aplikacemi, které budou mít přístup k datům vaší organizace.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/19/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 2bdb305e0342dc9b7807ad64de9b5d872237afcc
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 0c9844d5e3f65dba5e51170367cfd16715a08883
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84014328"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763461"
 ---
-# <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu souhlasu koncových uživatelů s aplikacemi
+# <a name="configure-how-end-users-consent-to-applications"></a>Konfigurace způsobu vyjadřování souhlasu koncových uživatelů s aplikacemi
 
 Své aplikace můžete integrovat s platformou Microsoft identity, aby se uživatelé mohli přihlašovat pomocí svého pracovního nebo školního účtu a přistupovat k datům vaší organizace, aby mohli poskytovat rozsáhlá prostředí založená na datech.
 

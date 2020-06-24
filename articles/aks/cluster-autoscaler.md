@@ -4,12 +4,12 @@ description: Naučte se, jak pomocí automatického škálování clusteru autom
 services: container-service
 ms.topic: article
 ms.date: 07/18/2019
-ms.openlocfilehash: f40d13b6b9a37f4c5efcc73e52b631bd2eec659a
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e87470e577f4d2613b43cc02755ccc2d500c0ef8
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683553"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84730012"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Automatické škálování clusteru pro splnění požadavků aplikace ve službě Azure Kubernetes (AKS)
 
@@ -17,7 +17,7 @@ Aby se zajistilo splnění požadavků aplikace ve službě Azure Kubernetes Ser
 
 V tomto článku se dozvíte, jak povolit a spravovat automatické škálování clusteru v clusteru AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.76 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
@@ -99,7 +99,7 @@ az aks update \
 Výše uvedený příklad aktualizuje automatické škálování clusteru ve fondu s jedním uzlem v *myAKSCluster* na minimálně *1* a maximálně *5* uzlů.
 
 > [!NOTE]
-Automatické škálování clusteru provede rozhodnutí o škálování na základě minimálního a maximálního počtu nastaveného v jednotlivých fondech uzlů, ale neuplatňuje je. Například nastavení minimálního počtu na hodnotu 5, pokud je počet aktuálních uzlů nastavený na hodnotu 3, nebude fond okamžitě škálovat na 5. Pokud změníte minimální počet ve fondu uzlů na hodnotu vyšší, než je aktuální počet uzlů, bude tento nový limit dodržen, pokud jsou přítomna dostatečná unschedulable lusky, která by vyžadovala 2 nové další uzly a aktivovala událost automatického škálování. Po této situaci bude pro automatické škálování clusteru respektován nový limit minimálního počtu.
+> Automatické škálování clusteru provádí rozhodnutí o škálování na základě minimálního a maximálního počtu nastaveného v každém fondu uzlů, ale neuplatňuje je po aktualizaci počtu min nebo max. Například nastavení minimálního počtu na hodnotu 5, pokud je počet aktuálních uzlů na hodnotu 3, nebude fond okamžitě škálovat na 5. Pokud má minimální počet u fondu uzlů hodnotu vyšší, než je aktuální počet uzlů, bude dodrženo nové nastavení min nebo Max, pokud jsou přítomna dostatečná unschedulable lusky, která by vyžadovala 2 nové další uzly a aktivovala událost automatického škálování. Po události škálování jsou dodrženy nové limity počtu.
 
 Monitorujte výkon svých aplikací a služeb a upravte počty uzlů automatického škálování clusteru tak, aby odpovídaly požadovanému výkonu.
 
@@ -107,7 +107,7 @@ Monitorujte výkon svých aplikací a služeb a upravte počty uzlů automatick�
 
 Můžete taky nakonfigurovat podrobnější informace o automatickém škálování clusteru změnou výchozích hodnot v profilu automatického škálování na úrovni clusteru. Například událost horizontálního navýšení kapacity proběhne po využívaném uzlu po 10 minutách. Pokud máte úlohy, které byly spuštěny každých 15 minut, můžete změnit profil automatického škálování tak, aby se v části využívané uzly po 15 nebo 20 minutách změnila velikost. Pokud povolíte automatické škálování clusteru, použije se výchozí profil, pokud neurčíte jiné nastavení. Profil automatického škálování clusteru má následující nastavení, která můžete aktualizovat:
 
-| Nastavení                          | Popis                                                                              | Výchozí hodnota |
+| Nastavení                          | Description                                                                              | Výchozí hodnota |
 |----------------------------------|------------------------------------------------------------------------------------------|---------------|
 | Kontrola – interval                    | Jak často se cluster znovu vyhodnocuje pro horizontální navýšení nebo snížení kapacity                                    | 10 sekund    |
 | horizontální navýšení kapacity – zpoždění po přidání       | Jak dlouho po horizontálním navýšení kapacity dotrvají zkušební obnovení                               | 10 minut    |
@@ -145,7 +145,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Pokud povolíte automatické škálování clusteru u fondů uzlů v clusteru, budou tyto clustery také používat profil automatického škálování clusteru. Například:
+Pokud povolíte automatické škálování clusteru u fondů uzlů v clusteru, budou tyto clustery také používat profil automatického škálování clusteru. Příklad:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -162,7 +162,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>Nastavení profilu automatického škálování clusteru při vytváření clusteru AKS
 
-Můžete také použít parametr *cluster-autoscaleer-Profile* při vytváření clusteru. Například:
+Můžete také použít parametr *cluster-autoscaleer-Profile* při vytváření clusteru. Příklad:
 
 ```azurecli-interactive
 az aks create \

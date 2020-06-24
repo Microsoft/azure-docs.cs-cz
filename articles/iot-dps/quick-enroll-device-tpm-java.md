@@ -10,11 +10,11 @@ services: iot-dps
 ms.devlang: java
 ms.custom: mvc
 ms.openlocfilehash: c199d5be4c103c80a6fcc126af70f48367909f64
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241693"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711217"
 ---
 # <a name="quickstart-enroll-tpm-device-to-iot-hub-device-provisioning-service-using-java-service-sdk"></a>Rychlý Start: registrace zařízení TPM pro IoT Hub Device Provisioning Service pomocí sady SDK služby Java
 
@@ -130,7 +130,7 @@ Tato část ukazuje, jak do vzorového kódu přidat podrobnosti o zřizování 
     mvn install -DskipTests
     ```
 
-   Tento příkaz stáhne balíček [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) Maven do počítače. Tento balíček obsahuje binární soubory pro [sadu SDK služby Java](https://azure.github.io/azure-iot-sdk-java/service/), které musí sestavit ukázkový kód. 
+   Tento příkaz stáhne balíček Maven [`com.microsoft.azure.sdk.iot.provisioning.service`](https://www.mvnrepository.com/artifact/com.microsoft.azure.sdk.iot.provisioning/provisioning-service-client) do počítače. Tento balíček obsahuje binární soubory pro [sadu SDK služby Java](https://azure.github.io/azure-iot-sdk-java/service/), které musí sestavit ukázkový kód. 
 
 3. Spusťte ukázku pomocí těchto příkazů v příkazovém okně:
 

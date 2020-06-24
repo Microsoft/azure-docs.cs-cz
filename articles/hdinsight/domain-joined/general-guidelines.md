@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
-ms.openlocfilehash: be6c1fdc5deb6d541656c198469822dae0a5f7c5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 142fdf27fde100385140baacdeba9249b2e7989b
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77463203"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84887901"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>Obecné informace o podnikovém zabezpečení a pokyny v Azure HDInsight
 
@@ -43,9 +43,9 @@ Při nasazení zabezpečeného clusteru HDInsight existují osvědčené postupy
 
 * Když je přístup k datům proveden prostřednictvím služby, kde je povolená autorizace:
   * Vyvolal se modul plug-in Ranger Authorization a daný kontext žádosti.
-  * Ranger používá zásady nakonfigurované pro službu. Pokud zásady Ranger selžou, je tato kontrolu odložena do systému souborů. Některé služby, jako je MapReduce, kontrolují pouze to, jestli soubor nebo složka patří stejnému uživateli, který odesílá požadavek. Služby, jako je například podregistr, kontrolují buď oprávnění k vlastnictví, nebo`rwx`příslušná oprávnění systému souborů ().
+  * Ranger používá zásady nakonfigurované pro službu. Pokud zásady Ranger selžou, je tato kontrolu odložena do systému souborů. Některé služby, jako je MapReduce, kontrolují pouze to, jestli soubor nebo složka patří stejnému uživateli, který odesílá požadavek. Služby, jako je například podregistr, kontrolují buď oprávnění k vlastnictví, nebo příslušná oprávnění systému souborů ( `rwx` ).
 
-* U podregistru, kromě oprávnění k vytváření, aktualizaci a odstraňování oprávnění, by měl mít `rwx`uživatel oprávnění k adresáři v úložišti a všech podadresářích.
+* U podregistru, kromě oprávnění k vytváření, aktualizaci a odstraňování oprávnění, by měl mít uživatel `rwx` oprávnění k adresáři v úložišti a všech podadresářích.
 
 * Zásady je možné použít pro skupiny (vhodnější) místo jednotlivců.
 
@@ -67,13 +67,13 @@ Pokud není povolen hierarchický obor názvů:
 ### <a name="default-hdfs-permissions"></a>Výchozí oprávnění HDFS
 
 * Ve výchozím nastavení uživatelé nemají přístup ke **/** složce v HDFS (k úspěšnému přístupu musí být v roli vlastníka objektu BLOB úložiště).
-* Pro pracovní adresář pro MapReduce a další se vytvoří adresář specifický pro uživatele a poskytnou `sticky _wx` se oprávnění. Uživatelé můžou vytvořit soubory a složky pod, ale nemůžou se podívat na jiné položky.
+* Pro pracovní adresář pro MapReduce a další se vytvoří adresář specifický pro uživatele a poskytnou se `sticky _wx` oprávnění. Uživatelé můžou vytvořit soubory a složky pod, ale nemůžou se podívat na jiné položky.
 
 ### <a name="url-auth"></a>Ověřování URL
 
 Pokud je povoleno ověřování URL:
 
-* Tato konfigurace bude obsahovat předpony, které jsou zahrnuty v ověřování URL (například `adl://`).
+* Tato konfigurace bude obsahovat předpony, které jsou zahrnuty v ověřování URL (například `adl://` ).
 * Pokud je přístup pro tuto adresu URL, pak Ranger zkontroluje, jestli je uživatel v seznamu povolených.
 * Ranger nebude kontrolovat žádné z jemně odstupňovaných zásad.
 
@@ -119,7 +119,7 @@ HDInsight nemůže záviset na místních řadičích domény ani na vlastních 
 
 ### <a name="azure-ad-ds-instance"></a>Instance Azure služba AD DS
 
-* Vytvořte instanci pomocí `.onmicrosoft.com domain`. Tímto způsobem nebude doména obsluhovat víc serverů DNS.
+* Vytvořte instanci pomocí `.onmicrosoft.com domain` . Tímto způsobem nebude doména obsluhovat víc serverů DNS.
 * Vytvořte certifikát podepsaný svým držitelem pro LDAPs a nahrajte ho do Azure služba AD DS.
 * Pro nasazení clusterů použijte partnerský virtuální síť (Pokud máte několik týmů, které nasazují clustery HDInsight ESP, bude to užitečné). Tím zajistíte, že nebudete muset otevírat porty (skupin zabezpečení sítě) ve virtuální síti s řadičem domény.
 * Správně nakonfigurujte DNS pro virtuální síť (název domény Azure služba AD DS by se měl vyřešit bez jakýchkoli položek souborů hosta).
@@ -149,7 +149,7 @@ Každý cluster je přidružen k jedné organizační jednotce. Interní uživat
 
 Postup instalace nástrojů pro správu služby Active Directory na virtuální počítač s Windows serverem najdete v tématu [Instalace nástrojů pro správu](../../active-directory-domain-services/tutorial-create-management-vm.md).
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 ### <a name="cluster-creation-fails-repeatedly"></a>Opakované vytvoření clusteru se nezdařilo.
 
@@ -159,6 +159,17 @@ Nejčastější důvody:
 * Skupin zabezpečení sítě jsou příliš omezující a znemožňují připojení k doméně.
 * Spravovaná identita nemá dostatečná oprávnění.
 * Název clusteru není jedinečný pro prvních šest znaků (buď s jiným živým clusterem, nebo s odstraněným clusterem).
+
+## <a name="authentication-setup-and-configuration"></a>Nastavení a konfigurace ověřování
+
+### <a name="user-principal-name-upn"></a>Hlavní název uživatele (UPN)
+
+* Použijte prosím malé písmeno pro všechny služby – hlavní názvy uživatelů (UPN) nerozlišuje velká a malá písmena v clusterech ESP.
+* Předpona hlavního názvu uživatele (UPN) by měla odpovídat hodnotě SAMAccountName ve službě Azure AD-DS. Porovnání s polem pošta není vyžadováno.
+
+### <a name="ldap-properties-in-ambari-configuration"></a>Vlastnosti protokolu LDAP v konfiguraci Ambari
+
+Úplný seznam vlastností Ambari, které mají vliv na konfiguraci clusteru HDInsight, najdete v tématu [nastavení ověřování protokolu LDAP v Ambari](https://ambari.apache.org/1.2.1/installing-hadoop-using-ambari/content/ambari-chap2-4.html).
 
 ## <a name="next-steps"></a>Další kroky
 

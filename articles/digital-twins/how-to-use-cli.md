@@ -1,5 +1,5 @@
 ---
-title: Použití rozhraní příkazového řádku Azure Digital zdvojené
+title: Použití rozhraní příkazového řádku Azure Digital Twins
 titleSuffix: Azure Digital Twins
 description: Podívejte se, jak začít s a používat rozhraní příkazového řádku Azure Digital zdvojené.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 05/25/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 53b20ded8e4b4a003beff1ef8489ecd9ff3451ac
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 595ab06e618fd977b75a15d3acb9a9a339b6edce
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84612800"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725289"
 ---
-# <a name="use-the-azure-digital-twins-cli"></a>Použití rozhraní příkazového řádku Azure Digital zdvojené
+# <a name="use-the-azure-digital-twins-cli"></a>Použití rozhraní příkazového řádku Azure Digital Twins
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 Kromě správy instance digitálních vláken Azure v Azure Portal má služba Azure Digital disvlákna **rozhraní příkazového řádku (CLI)** , které můžete použít k provádění většiny hlavních akcí se službou, včetně těchto:
 * Správa instance digitálních vláken Azure

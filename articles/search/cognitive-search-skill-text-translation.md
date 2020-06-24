@@ -8,12 +8,12 @@ ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 5089174fcfd5a97128c1f789b818243243a5282f
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b35af58141dc46e0cc36efe009023c1bf52850e7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75460772"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080050"
 ---
 #   <a name="text-translation-cognitive-skill"></a>Vnímání znalostí překladu textu
 
@@ -26,19 +26,19 @@ Tato možnost je užitečná, pokud očekáváte, že vaše dokumenty nebudou v 
 > [!NOTE]
 > Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://azure.microsoft.com/pricing/details/search/).
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. dovednosti. text. TranslationSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do dovednosti překladu textu rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do dovednosti překladu textu rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
 U parametrů se rozlišují malá a velká písmena.
 
-| Vstupy                | Popis |
+| Vstupy                | Description |
 |---------------------|-------------|
 | defaultToLanguageCode | Požadovanou Kód jazyka, ve kterém se mají dokumenty překládat do pro dokumenty, které nespecifikují jazyk pro explicitně. <br/> [Úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)najdete v části. |
 | defaultFromLanguageCode | Volitelné Kód jazyka, ze kterého se mají dokumenty překládat pro dokumenty, které nespecifikují jazyk z jazyka explicitně.  Pokud není zadán parametr defaultFromLanguageCode, použije se k určení jazyka z tohoto Translator Text API automatické zjišování jazyka, které poskytuje. <br/> [Úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)najdete v části. |
@@ -46,7 +46,7 @@ U parametrů se rozlišují malá a velká písmena.
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu     | Popis |
+| Název vstupu     | Description |
 |--------------------|-------------|
 | text | Text, který se má přeložit|
 | toLanguageCode    | Řetězec označující jazyk, na který má být text přeložen. Pokud tento vstup není zadán, použije se k převodu textu defaultToLanguageCode. <br/>Zobrazit [úplný seznam podporovaných jazyků](https://docs.microsoft.com/azure/cognitive-services/translator/language-support)|
@@ -54,7 +54,7 @@ U parametrů se rozlišují malá a velká písmena.
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu    | Popis |
+| Název výstupu    | Description |
 |--------------------|-------------|
 | translatedText | Výsledek řetězce převodu textu z translatedFromLanguageCode do translatedToLanguageCode.|
 | translatedToLanguageCode  | Řetězec označující kód jazyka, na který byl text přeložen. Užitečné v případě, že překládáte do více jazyků a chcete mít přehled o tom, jaký text má jazyk.|

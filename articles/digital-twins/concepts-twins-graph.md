@@ -1,5 +1,5 @@
 ---
-title: Digitální vlákna a Dvojitá graf
+title: Digitální dvojčata a graf dvojčat
 titleSuffix: Azure Digital Twins
 description: Pochopení konceptu digitálního vlákna a způsobu, jakým jejich vztahy vytvářejí graf.
 author: baanders
@@ -7,14 +7,17 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 05c0c66e7b6d301a749b301178c1f666a48d434b
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ROBOTS: NOINDEX, NOFOLLOW
+ms.openlocfilehash: 4e2b223337bbe5d46f314a8d2126ab562b937445
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84613002"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84726077"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>Pochopení digitálních vláken a jejich dvojitých grafů
+
+[!INCLUDE [Azure Digital Twins current preview status](../../includes/digital-twins-preview-status.md)]
 
 V řešení digitálních vláken Azure jsou entity ve vašem prostředí reprezentovány pomocí **digitálních vláken**Azure. Digitální vlákna je instance jednoho z vašich vlastních definovaných [modelů](concepts-models.md). Dá se připojit k ostatním digitálním **závislostem prostřednictvím vztahů** , které tvoří **dvojitou graf**: Tento neřízený graf je reprezentace celého prostředí.
 
@@ -95,7 +98,7 @@ Data z digitálního vlákna a data relace jsou ukládána ve formátu JSON. To 
 
 Při reprezentaci jako objektu JSON zobrazí digitální vlákna následující pole:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$dtId` | Uživatelem zadaný řetězec představující ID digitálního vlákna |
 | `$conformance` | Výčet, který obsahuje stav shody tohoto digitálního*vlákna (v* *souladu*s nevyhovujícími, *Neznámý*) |
@@ -161,7 +164,7 @@ Tady je příklad digitálního vlákna formátovaného jako objekt JSON:
 
 Při reprezentaci jako objektu JSON se v relaci z digitálního vlákna zobrazí následující pole:
 
-| Název pole | Popis |
+| Název pole | Description |
 | --- | --- |
 | `$edgeId` | Uživatelem zadaný řetězec představující ID této hraniční relace. Tento řetězec je jedinečný v kontextu zdrojového digitálního vlákna, což také znamená, že `sourceId`  +  `edgeId` je jedinečný v kontextu instance digitálního vlákna Azure. |
 | `$sourceId` | ID zdrojového digitálního vlákna |

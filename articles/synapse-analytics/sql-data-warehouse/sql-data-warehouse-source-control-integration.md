@@ -6,22 +6,22 @@ author: kevinvngo
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: overview
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ec52c5274891619cf7976e99b5241bfc67a4076
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: afb1108bacadd16007e1f53186107ea8458d96e9
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81415088"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85205114"
 ---
 # <a name="source-control-integration-for-sql-pool"></a>Integrace správy zdrojového kódu pro fond SQL
 
 V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Data Tools) se správou zdrojových kódů.  Integrace správy zdrojového kódu je prvním krokem při sestavování kanálu průběžné integrace a nasazování pomocí prostředku fondu SQL ve službě Azure synapse Analytics.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 - Registrace k [organizaci Azure DevOps](https://azure.microsoft.com/services/devops/)
 - Projděte si kurz [Vytvoření a připojení](create-data-warehouse-portal.md) .
@@ -55,7 +55,7 @@ V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Da
 
 3. V Průzkumníku týmových souborů v aplikaci Visual Studio potvrďte všechny změny v místním úložišti Git.
 
-   ![Potvrzení](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Potvrzení")  
+   ![Potvrzuj](./media/sql-data-warehouse-source-control-integration/6.5-commit-push-changes.png "Potvrzení")  
 
 4. Teď, když jste provedli změny místně v naklonovaném úložišti, synchronizujte a nahrajte změny do úložiště Azure úložiště v projektu Azure DevOps.
 
@@ -81,4 +81,4 @@ V tomto kurzu se naučíte, jak integrovat projekt databáze SSDT (SQL Server Da
 
 ## <a name="next-steps"></a>Další kroky
 
-- [Vývoj pro vývoj pro fond SQL](sql-data-warehouse-overview-develop.md)
+- [Vývoj pro fond SQL](sql-data-warehouse-overview-develop.md)

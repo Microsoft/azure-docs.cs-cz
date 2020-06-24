@@ -2,22 +2,22 @@
 title: Správa aplikací pomocí služby Azure Active Directory | Microsoft Docs
 description: Tento článek popisuje výhody Integrace Azure Active Directory s vašimi místními, cloudem a SaaS aplikacemi.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: overview
 ms.workload: identity
 ms.date: 06/05/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee9a9d404e9a08d8b795a3d73907e84d25b73107
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 3f826f5cc3e56dcf88ee110265724779a9d1f624
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739749"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84762917"
 ---
 # <a name="application-management-with-azure-active-directory"></a>Správa aplikací pomocí Azure Active Directory
 
