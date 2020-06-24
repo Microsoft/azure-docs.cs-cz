@@ -6,16 +6,16 @@ keywords: Oblíbené, portál
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/20/2019
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
-ms.openlocfilehash: d6b580accb02efb6a44c0c245af583d2e3850409
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 359a544df906a277a89333e3aee2f6203a707f8c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310811"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764124"
 ---
 # <a name="add-remove-and-rearrange-favorites"></a>Přidání, odebrání a změna uspořádání oblíbených položek
 
@@ -23,7 +23,7 @@ Přidejte nebo odeberte položky ze seznamu **oblíbených položek** , abyste m
 
 ## <a name="add-a-favorite"></a>Přidat oblíbenou položku
 
-Položky, které jsou uvedené v části **Oblíbené** , se vyberou ze **všech služeb**. Když najedete myší na název služby, zobrazí se informace a prostředky týkající se služby. Plná ikona ![hvězdičky](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) vedle názvu služby indikuje, že se položka zobrazí v seznamu **oblíbených položek** . Výběrem ikony hvězdičky přidáte službu do seznamu **oblíbených položek** .
+Položky, které jsou uvedené v části **Oblíbené** , se vyberou ze **všech služeb**. Když najedete myší na název služby, zobrazí se informace a prostředky týkající se služby. Plná ikona hvězdičky ![ ](./media/azure-portal-add-remove-sort-favorites/azure-portal-favorites-graystar.png) vedle názvu služby indikuje, že se položka zobrazí v seznamu **oblíbených položek** . Výběrem ikony hvězdičky přidáte službu do seznamu **oblíbených položek** .
 
 ### <a name="add-cost-management--billing-to-favorites"></a>Přidat Cost Management + fakturace k oblíbeným položkám
 

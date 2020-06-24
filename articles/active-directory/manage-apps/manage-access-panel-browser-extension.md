@@ -3,25 +3,24 @@ title: Řešení potíží s rozšířením přístupového panelu Azure pro IE 
 description: Použití zásad skupiny k nasazení doplňku Internet Exploreru pro portál moje aplikace
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/11/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
-ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0269c87572e2a9242a54491103ae0fcc3637518
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 16abfbeacd972ee8b0ab55f09945e687c95f0093
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "67723917"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763257"
 ---
 # <a name="troubleshoot-the-access-panel-extension-for-internet-explorer"></a>Řešení potíží s rozšířením přístupového panelu pro Internet Explorer
 
@@ -40,7 +39,7 @@ Stažení a instalace diagnostického nástroje:
 
 1. [Pro stažení diagnostického nástroje vyberte tento odkaz.](https://account.activedirectory.windowsazure.com/applications/AccessPanelExtensionDiagnosticTool/AccessPanelExtensionDiagnosticTool.zip)
 1. Otevřete soubor a extrahujte obsah do počítače.
-1. Chcete-li spustit nástroj, klikněte pravým tlačítkem myši na soubor s názvem *AccessPanelExtensionDiagnosticTool. js* a vyberte možnost **otevřít v rámci** > programu**Script Host založený na systému Microsoft Windows**.
+1. Chcete-li spustit nástroj, klikněte pravým tlačítkem myši na soubor s názvem *AccessPanelExtensionDiagnosticTool.js* a vyberte možnost **otevřít v rámci**programu  >  **Script Host založený na systému Microsoft Windows**.
 
     ![Otevřít pomocí > hostitele skriptu založeného na systému Microsoft Windows](./media/manage-access-panel-browser-extension/open-access-panel-extension-diagnostic-tool.png)
 

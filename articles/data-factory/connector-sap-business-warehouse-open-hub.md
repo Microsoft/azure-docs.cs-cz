@@ -11,13 +11,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 03/24/2020
-ms.openlocfilehash: ff3b4799f42e85ad3df62ef18469a26120ae3021
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/12/2020
+ms.openlocfilehash: 1413676eb5f3ab6f472648335996c1e607bc8b27
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81418078"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771015"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Kopírování dat z SAP Business Warehouse přes Open hub pomocí Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -55,7 +55,7 @@ Cíl OHD (otevřít rozbočovač) definuje cíl, do kterého se přepřenosují 
 
 Konektor ADF SAP BW Open hub nabízí dvě volitelné vlastnosti: `excludeLastRequest` a `baseRequestId` můžete ho použít ke zpracování rozdílového zatížení z otevřeného centra. 
 
-- **excludeLastRequestId**: Určuje, zda mají být vyloučeny záznamy poslední žádosti. Výchozí hodnota je true. 
+- **excludeLastRequestId**: Určuje, zda mají být vyloučeny záznamy poslední žádosti. Výchozí hodnota je true (pravda). 
 - **baseRequestId**: ID žádosti o rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId větším, než je hodnota této vlastnosti. 
 
 Extrakce z SAP InfoProviders to Azure Data Factory (ADF) se skládá ze dvou kroků: 
@@ -105,11 +105,15 @@ V následujících částech najdete podrobné informace o vlastnostech, které 
 
 Pro propojenou službu SAP Business Warehouse se podporují následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na: **SapOpenHub** . | Ano |
+| typ | Vlastnost Type musí být nastavená na: **SapOpenHub** . | Ano |
 | server | Název serveru, na kterém se nachází instance SAP BW. | Ano |
 | systemNumber | Číslo systému SAP BW systému<br/>Povolená hodnota: dvoumístné desetinné číslo reprezentované jako řetězec. | Ano |
+| messageServer | Název hostitele serveru zpráv SAP.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
+| messageServerService | Název služby nebo číslo portu serveru zpráv.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
+| systemId | ID systému SAP, ve kterém je tabulka umístěna.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
+| přihlášená | Přihlašovací skupina pro systém SAP.<br/>Slouží k připojení k serveru zpráv SAP. | Ne |
 | clientId | ID klienta klienta v systému SAP W.<br/>Povolená hodnota: desítkové číslo se třemi číslicemi reprezentované jako řetězec. | Ano |
 | language | Jazyk používaný systémem SAP. | Ne (výchozí hodnota je **EN**)|
 | userName | Jméno uživatele, který má přístup k serveru SAP. | Ano |
@@ -147,12 +151,12 @@ Pro propojenou službu SAP Business Warehouse se podporují následující vlast
 
 Chcete-li kopírovat data z a do SAP BW otevřít centrum, nastavte vlastnost Type objektu DataSet na **SapOpenHubTable**. Podporovány jsou následující vlastnosti.
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost Type musí být nastavená na **SapOpenHubTable**.  | Ano |
+| typ | Vlastnost Type musí být nastavená na **SapOpenHubTable**.  | Ano |
 | openHubDestinationName | Název otevřeného cíle centra, ze kterého se mají kopírovat data | Ano |
 
-Pokud jste `excludeLastRequest` nacházeli `baseRequestId` a v datové sadě, je stále podporováno tak, jak jsou, a Vy jste navrženi použít nový model ve zdroji aktivity.
+Pokud jste nacházeli `excludeLastRequest` a `baseRequestId` v datové sadě, je stále podporováno tak, jak jsou, a Vy jste navrženi použít nový model ve zdroji aktivity.
 
 **Případě**
 
@@ -181,16 +185,16 @@ Pokud jste `excludeLastRequest` nacházeli `baseRequestId` a v datové sadě, je
 
 Pokud chcete kopírovat data z SAP BW otevřete centrum, v části **zdroj** aktivity kopírování jsou podporovány následující vlastnosti:
 
-| Vlastnost | Popis | Požaduje se |
+| Vlastnost | Popis | Vyžadováno |
 |:--- |:--- |:--- |
-| type | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SapOpenHubSource**. | Ano |
+| typ | Vlastnost **Type** zdroje aktivity kopírování musí být nastavená na **SapOpenHubSource**. | Ano |
 | excludeLastRequest | Určuje, zda mají být vyloučeny záznamy poslední žádosti. | Ne (výchozí hodnota je **true**) |
 | baseRequestId | ID požadavku pro rozdílové načtení. Po nastavení budou načtena pouze data s identifikátorem requestId **větším, než** je hodnota této vlastnosti.  | Ne |
 
 >[!TIP]
 >Pokud otevřená tabulka centra obsahuje jenom data generovaná IDENTIFIKÁTORem jediného požadavku, například vždy stačí úplné načtení a přepsat stávající data v tabulce, nebo když pro test spustíte jenom DTP, nezapomeňte zrušit kontrolu možnosti excludeLastRequest, aby se data zkopírovala.
 
-Pro urychlení načítání dat můžete u aktivity kopírování nastavit [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) , aby se data načetla z SAP BW otevřeného centra paralelně. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně spouští čtyři volání RFC a každé volání RFC načte část dat z SAP BW otevřené tabulky hub rozdělené podle ID žádosti DTP a ID balíčku. To platí v případě, že počet jedinečných ID žádosti DTP + ID balíčku je větší než hodnota `parallelCopies`. Při kopírování dat do úložiště dat založeného na souborech je také znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
+Pro urychlení načítání dat můžete [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) u aktivity kopírování nastavit, aby se data načetla z SAP BW otevřeného centra paralelně. Pokud jste například nastavili `parallelCopies` na čtyři, Data Factory souběžně spouští čtyři volání RFC a každé volání RFC načte část dat z SAP BW otevřené tabulky hub rozdělené podle ID žádosti DTP a ID balíčku. To platí v případě, že počet jedinečných ID žádosti DTP + ID balíčku je větší než hodnota `parallelCopies` . Při kopírování dat do úložiště dat založeného na souborech je také znovu zaškrtnuto, aby bylo možné zapisovat do složky jako více souborů (pouze název složky). v takovém případě je výkon lepší než zápis do jednoho souboru.
 
 **Případě**
 

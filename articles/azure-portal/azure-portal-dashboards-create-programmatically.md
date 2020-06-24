@@ -7,17 +7,17 @@ author: adamabmsft
 manager: mtillman
 ms.service: azure-portal
 ms.devlang: NA
-ms.topic: conceptual
+ms.topic: how-to
 ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 03/23/2020
 ms.author: mblythe
-ms.openlocfilehash: 9ec9a4daad139a4930174ba9e3445e1cda1f8c54
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bdaf1261e9945aa862157f7e43a44387e14d3657
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81461306"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764039"
 ---
 # <a name="programmatically-create-azure-dashboards"></a>Vytváření řídicích panelů Azure prostřednictvím kódu programu
 
@@ -125,7 +125,7 @@ Deklaruje požadovaná metadata šablony a parametry v horní části šablony J
 Jakmile nakonfigurujete šablonu, nasaďte ji pomocí kterékoli z následujících metod:
 
 * [Rozhraní REST API](/rest/api/resources/deployments)
-* [Prostředí](../azure-resource-manager/resource-group-template-deploy.md)
+* [PowerShell](../azure-resource-manager/resource-group-template-deploy.md)
 * [Azure CLI](/cli/azure/group/deployment#az-group-deployment-create)
 * [Stránka Azure Portalho nasazení šablony](https://portal.azure.com/#create/Microsoft.Template)
 
@@ -387,7 +387,7 @@ V tomto příkladu se dozvíte, co můžete očekávat, pokud jste spolu s tímt
 
 ### <a name="template-representation-of-our-example-dashboard"></a>Reprezentace šablony našeho ukázkového řídicího panelu
 
-Verze šablony řídicího panelu definovala tři parametry s názvem `virtualMachineName`, `virtualMachineResourceGroup`a `dashboardName`.  Parametry umožňují Ukázat tento řídicí panel na jiném virtuálním počítači Azure při každém nasazení. Tento řídicí panel se dá programově nakonfigurovat a nasadit tak, aby odkazoval na libovolný virtuální počítač Azure. Chcete-li otestovat tuto funkci, zkopírujte následující šablonu a vložte ji do [stránky Azure Portalho nasazení šablony](https://portal.azure.com/#create/Microsoft.Template).
+Verze šablony řídicího panelu definovala tři parametry s názvem `virtualMachineName` , `virtualMachineResourceGroup` a `dashboardName` .  Parametry umožňují Ukázat tento řídicí panel na jiném virtuálním počítači Azure při každém nasazení. Tento řídicí panel se dá programově nakonfigurovat a nasadit tak, aby odkazoval na libovolný virtuální počítač Azure. Chcete-li otestovat tuto funkci, zkopírujte následující šablonu a vložte ji do [stránky Azure Portalho nasazení šablony](https://portal.azure.com/#create/Microsoft.Template).
 
 Tento příklad nasadí řídicí panel sám o sobě, ale jazyk šablony vám umožní nasadit více prostředků a seskupit jeden nebo více řídicích panelů, které jsou na nich umístěné.
 

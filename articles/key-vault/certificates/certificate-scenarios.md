@@ -3,19 +3,18 @@ title: Začínáme s certifikáty služby Key Vault
 description: Následující scénáře popisují několik primárních použití služby správy certifikátů Key Vault, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: certificates
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 06/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 5881314f0d3c62e7d6181ebd7bb27a5e0e87729a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 316a6c13b55664bdabf7c0cb3e37d7bb18b8649f
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81431940"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765093"
 ---
 # <a name="get-started-with-key-vault-certificates"></a>Začínáme s certifikáty služby Key Vault
 Následující scénáře popisují několik primárních použití služby správy certifikátů Key Vault, včetně dalších kroků potřebných k vytvoření prvního certifikátu v trezoru klíčů.
@@ -97,13 +96,19 @@ Poznámka: Tento proces, prostřednictvím kroku 3,1, je operace jednorázová.
 -   Uživatel může také upravit zásadu, která je funkční v době importu, ale obsahuje výchozí hodnoty, při kterých nebyly při importu zadány žádné informace. Například žádné informace o vydavateli  
 
 ### <a name="formats-of-import-we-support"></a>Formáty importu, které podporujeme
+Azure Key Vault podporuje soubory certifikátů. pem a. pfx pro import certifikátů do trezoru klíčů.
 Podporujeme následující typ importu pro formát souboru PEM. Jeden PEM kódovaný certifikát spolu s nezašifrovaným klíčem PKCS # 8, který má následující
 
 -----ZAČÍT CERTIFIKÁT UKONČIT---------------
 
 -----SPUSTIT PRIVÁTNÍ KLÍČ----------KONCOVÝ PRIVÁTNÍ KLÍČ-----
 
-Při sloučení certifikátů podporujeme 2 formáty založené na PEM. Můžete buď sloučit jeden certifikát s kódováním PKCS # 8 nebo soubor P7B s kódováním base64. -----ZAČÍT CERTIFIKÁT UKONČIT---------------
+Při importu certifikátu je nutné zajistit, aby byl klíč zahrnut do samotného souboru. Pokud máte privátní klíč samostatně v jiném formátu, budete muset klíč kombinovat s certifikátem. Některé certifikační autority poskytují certifikáty v různých formátech, takže před importem certifikátu se ujistěte, že jsou ve formátu. pem nebo. pfx. 
+
+### <a name="formats-of-merge-csr-we-support"></a>Formáty sloučení CSR podporujeme
+INTEGRACE podporuje 2 formáty založené na PEM. Můžete buď sloučit jeden certifikát s kódováním PKCS # 8 nebo formát P7B (řetěz certifikátů podepsaný certifikační autoritou) s kódováním base64. 
+
+-----ZAČÍT CERTIFIKÁT UKONČIT---------------
 
 V současné době nepodporujeme klíče ES ve formátu PEM.
 
@@ -123,4 +128,3 @@ V současné době nepodporujeme klíče ES ve formátu PEM.
   (4) – zvolená certifikační autorita odpoví certifikátem x509.  
 
   (5) – vaše aplikace dokončí vytváření nového certifikátu s fúzí certifikátu x509 z vaší certifikační autority.
-

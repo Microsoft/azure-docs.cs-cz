@@ -5,17 +5,17 @@ services: azure-portal
 keywords: ''
 author: santhoshsomayajula
 ms.date: 01/29/2020
-ms.topic: conceptual
+ms.topic: how-to
 ms.service: azure-portal
 ms.custom: ''
 manager: mtillman
 ms.author: mblythe
-ms.openlocfilehash: accdfbd939fad73ca7d008450c358d366e7f8b70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 248c643c5f1865451abbe201e7033efedb8a7e39
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76900740"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763937"
 ---
 # <a name="export-or-delete-user-settings"></a>Export nebo odstranění uživatelských nastavení
 
@@ -33,7 +33,7 @@ Před odstraněním je vhodné nastavení exportovat a zkontrolovat. Opětovné 
 
 1. Přihlaste se k webu [Azure Portal](https://portal.azure.com).
 
-1. V hlavičce portálu vyberte ![](media/azure-portal-export-delete-settings/settings-icon.png) **Nastavení ikona nastavení**.
+1. V hlavičce portálu vyberte ![ Nastavení ikona nastavení ](media/azure-portal-export-delete-settings/settings-icon.png) **Settings**.
 
 1. Vyberte **exportovat všechna nastavení** nebo **Odstranit všechna nastavení a privátní řídicí panely**.
 
@@ -41,7 +41,7 @@ Před odstraněním je vhodné nastavení exportovat a zkontrolovat. Opětovné 
 
       Následující tabulka popisuje tyto akce.
 
-      | Akce | Popis |
+      | Akce | Description |
       | --- | --- |
       | **Exportovat všechna nastavení** | Vytvoří soubor *. JSON* , který obsahuje vaše uživatelská nastavení, jako je váš barevný motiv, oblíbené a soukromé řídicí panely.|
       | **Odstranit všechna nastavení a privátní řídicí panely** | Odstraní všechny odkazy na soukromé řídicí panely a další vlastní nastavení, která jste na portálu udělali. |

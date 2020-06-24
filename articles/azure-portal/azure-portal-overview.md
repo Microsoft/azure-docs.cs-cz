@@ -6,15 +6,15 @@ keywords: portál
 author: mgblythe
 ms.author: mblythe
 ms.date: 12/20/2019
-ms.topic: conceptual
+ms.topic: overview
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: c5e02e791185db3713c67b8ff97b8f7eebe9da77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4aa1ccbd9b605850052e190949542eb014fe90a8
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76310726"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84763920"
 ---
 # <a name="azure-portal-overview"></a>Přehled webu Azure Portal
 
@@ -64,7 +64,7 @@ Obrázek níže popisuje základní prvky Azure Portal, z nichž každá je pops
 
 ![Snímek obrazovky znázorňující nabídku rozbaleného portálu](./media/azure-portal-overview/azure-portal-overview-portal-menu-callouts.png)
 
-|Key|Popis
+|Klíč|Description
 |:---:|---|
 |1|Záhlaví stránky Zobrazuje se v horní části každé stránky portálu a obsahuje globální prvky.|
 |2| Globální vyhledávání. Panel hledání slouží k rychlému vyhledání konkrétního prostředku, služby nebo dokumentace.|

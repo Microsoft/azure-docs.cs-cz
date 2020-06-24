@@ -7,14 +7,16 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: daperlov
-ms.openlocfilehash: 3ad666a477595b8367b388c4343df8aaed561a87
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 0e17580524d6a67934aed83c6f745583b92e2422
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84435440"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771032"
 ---
 # <a name="use-github-to-read-common-data-model-entity-references"></a>Použití GitHubu ke čtení odkazů na entity modelu Common data model
+
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 Konektor GitHub v Azure Data Factory slouží pouze k přijetí schématu odkazu na entitu pro formát [modelu Common data model](format-common-data-model.md) v části mapování toku dat.
 

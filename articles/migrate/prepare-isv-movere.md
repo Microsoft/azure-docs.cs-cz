@@ -2,13 +2,13 @@
 title: Příprava Azure Migrate pro práci s nástrojem/stěhovací společnosti ISV
 description: Tento článek popisuje, jak připravit Azure Migrate pro práci s nástrojem ISV nebo stěhovací společnosti a jak začít používat nástroj.
 ms.topic: how-to
-ms.date: 05/07/2020
-ms.openlocfilehash: 9513e783d4f9d7be83f1434d4dd9011844af8993
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.date: 06/10/2020
+ms.openlocfilehash: d414c3db92315f7ca1b60bf43fa35b7880c34ccf
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83682644"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84770369"
 ---
 # <a name="prepare-to-work-with-an-isv-tool-or-movere"></a>Příprava na práci s nástrojem ISV nebo jeho stěhovací pracovníky
 
@@ -33,11 +33,23 @@ Váš uživatelský účet Azure potřebuje tato oprávnění:
  
 Ve vašem předplatném Azure vyžaduje váš účet **Microsoft. Authorization/*/Write** Access pro přiřazení role k aplikaci Azure AD. 
 
-1. Na webu Azure Portal otevřete okno **Předplatná**.
+1. Na webu Azure Portal otevřete **Předplatná**.
 2. Vyberte příslušné předplatné. Pokud ho nevidíte, vyberte **Filtr globálních předplatných**. 
 3. Vyberte **Moje oprávnění**. Pak vyberte **kliknutím sem zobrazíte informace o úplných přístupech k tomuto předplatnému**.
 4. V **zobrazení přiřazení rolí**  >  **View**Zkontrolujte oprávnění. Pokud váš účet nemá oprávnění, požádejte správce předplatného, aby vás přidal do role [Správce přístupu uživatele](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) nebo role [vlastníka](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) .
- 
+
+## <a name="allow-access-to-urls"></a>Povolení přístupu k adresám URL
+
+V případě nástrojů ISV a Azure Database Pomocník s migrací povolte přístup k adresám URL veřejného cloudu, které jsou shrnuté v tabulce. Pokud pro připojení k Internetu používáte proxy server založený na adrese URL, ujistěte se, že proxy překládá všechny záznamy CNAME přijaté při vyhledávání adres URL. 
+
+**URL** | **Podrobnosti**
+--- | ---
+*.portal.azure.com  | Přejděte na Azure Portal. 
+*.windows.net<br/> *.msftauth.net<br/> *.msauth.net <br/> *.microsoft.com<br/> *.live.com   | Přihlaste se ke svému předplatnému Azure. 
+*.microsoftonline.com<br/> *.microsoftonline-p.com | Vytvořte Azure Active Directory (AD) aplikace pro zařízení, které budou komunikovat s Azure Migrate. 
+management.azure.com | Proveďte Azure Resource Manager volání do projektu Azure Migrate.
+*.servicebus.windows.net | Komunikace mezi zařízením a EventHub pro posílání zpráv.
+
 
 ## <a name="start-using-the-tool"></a>Začněte používat nástroj.
 

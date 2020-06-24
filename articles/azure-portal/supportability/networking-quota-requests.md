@@ -4,15 +4,15 @@ description: Zvýšení limitu sítě
 author: anavinahar
 ms.author: anavin
 ms.date: 01/23/2020
-ms.topic: article
+ms.topic: how-to
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 9b5c7043b06172c2d4931ca1c3fd3ac5d0e80883
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: acb05da0255445de31e08f2724dcb484a3e05b17
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76547727"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764261"
 ---
 # <a name="networking-limit-increase"></a>Zvýšení limitu sítě
 
@@ -37,7 +37,7 @@ Podle následujících pokynů vytvořte žádost o podporu pomocí **pomoci a p
 
     ![Nápověda a podpora](./media/networking-quota-request/help-plus-support.png)
 
-1. Vyberte **novou žádost o podporu**.
+1. Vyberte **Nová žádost o podporu**.
 
     ![Nová žádost o podporu](./media/networking-quota-request/new-support-request.png)
 
@@ -69,7 +69,7 @@ Podle následujících pokynů vytvořte žádost o podporu pomocí **pomoci a p
 
 Podle těchto pokynů vytvořte žádost o podporu pomocí Azure Portal a **kvóty** v.
 
-1. V https://portal.azure.comnástroji vyhledejte a vyberte **odběry**.
+1. V nástroji https://portal.azure.com vyhledejte a vyberte **odběry**.
 
     ![Předplatná](./media/networking-quota-request/search-for-suscriptions.png)
 

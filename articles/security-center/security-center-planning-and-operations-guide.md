@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: f31c084be2fb017c0db521328e4ccdff9dd2aa25
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e33cd64da32dcb918d30cd44f413748f719023b8
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80810471"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771287"
 ---
 # <a name="planning-and-operations-guide"></a>Průvodce plánováním a provozem
 Tato příručka je určena odborníkům v oblasti informačních technologií (IT), architektům v oblasti IT, analytikům zabezpečení informací a správcům cloudu plánuje používat Azure Security Center.
@@ -175,33 +175,17 @@ Přehled služby Security Center poskytuje jednotný přehled o zabezpečení v�
 > [!NOTE]
 > Security Center nebude ovlivňovat vaše běžné provozní postupy, bude jenom pasivně sledovat vaše nasazení a poskytovat doporučení na základě zásad zabezpečení, které povolíte.
 
-Když se poprvé rozhodnete pro používání služby Security Center pro stávající prostředí Azure, nezapomeňte si projít všechna doporučení. To můžete udělat na dlaždici **Doporučení** nebo u jednotlivých prostředků (**Compute**, **Sítě**, **Úložiště a data**, **Aplikace**).
-
-Až vyřešíte všechna doporučení, v části **Prevention** (Prevence) by měly být všechny vyřešené prostředky označené zeleně. Průběžné sledování je od této chvíle jednodušší, protože budete provádět kroky jenom na základě změn stavu zabezpečení prostředků a dlaždic doporučení.
-
-Část **Detection** (Detekce) vyžaduje víc reakcí, obsahuje totiž výstrahy týkající se problémů, které jsou aktuální nebo nastaly v minulosti, kdy je zjistily ovládací prvky služby Security Center a systémy jiných výrobců. Dlaždice výstrahy zabezpečení zobrazí pruhové grafy, které představují počet výstrah, které byly nalezeny v každém dni, a jejich distribuci mezi různými kategoriemi závažnosti (nízká, střední, vysoká). Další informace o výstrahách zabezpečení najdete v tématu [Správa a zpracování výstrah zabezpečení v Azure Security Center](security-center-managing-and-responding-alerts.md).
+Když se poprvé přihlásíte k použití Security Center pro aktuální prostředí Azure, ujistěte se, že jste si přesvědčili všechna doporučení, která se dají dělat na stránce **doporučení** .
 
 Jako součást každodenních operací zabezpečení si naplánujte navštívení možnosti Analýza hrozeb. Tam můžete identifikovat bezpečnostní hrozby pro prostředí, například můžete určit, zda je konkrétní počítač součástí botnetu.
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>Sledování nových nebo změněných prostředků
+
 Většina prostředí Azure je dynamická, přičemž se prostředky pravidelně vytváří, prodlužuje nebo vymění, překonfigurují a mění. Security Center pomáhá zajistit přehled o stavu zabezpečení těchto nových prostředků.
 
 Když do prostředí Azure přidáte nové prostředky (virtuální počítače, databáze SQL), Security Center tyto prostředky automaticky zjistí a začne sledovat jejich zabezpečení. To zahrnuje také webové role a role pracovního procesu PaaS. Pokud je v [zásadě zabezpečení](tutorial-security-policy.md)povolené shromažďování dat, pro vaše virtuální počítače se automaticky povolí další možnosti monitorování.
 
-![Klíčové oblasti](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig3-newUI.png)
-
-1. Pro virtuální počítače klikněte v části **hygiena zabezpečení prostředků** na **COMPUTE & aplikace**. Případné problémy s povolováním shromažďování dat nebo související doporučení se zobrazí na kartě **Přehled** a v části **Doporučení pro monitorování**.
-2. V části **Recommendations** (Doporučení) zjistíte, jestli se u nového prostředku zjistila nějaká rizika zabezpečení.
-3. Je velmi běžné, že když se do vašeho prostředí přidají nové virtuální počítače, nejdřív mají nainstalovaný jen operační systém. Vlastníkovi prostředku může nějakou dobu trvat, než nasadí další aplikace, které budou tyto virtuální počítače používat.  V ideálním případě byste měli znát konečný záměr této úlohy. Bude se jednat o aplikační server? Podle toho, co k čemu bude tato nová úloha sloužit, můžete povolit vhodnou **zásadu zabezpečení**, což je třetí krok v tomto pracovním postupu.
-4. Při přidání nových prostředků do prostředí Azure se můžou nové výstrahy zobrazit na dlaždici **výstrahy zabezpečení** . Vyhledejte v této dlaždici nové výstrahy a postupujte podle doporučení.
-
-Měli byste také pravidelně monitorovat stávající prostředky pro změny konfigurace, které by mohly vytvářet bezpečnostní rizika, odkládat je od doporučených směrných plánů a výstrah zabezpečení. Začněte na řídicím panelu Security Center. Odtud máte tři hlavní oblasti, které byste měli kontrolovat konzistentně.
-
-![Operace](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig4-newUI.png)
-
-1. Část **Prevence** nabízí rychlý přístup ke klíčovým prostředkům. Pomocí této možnosti můžete monitorovat službu Compute, Sítě, Úložiště a data a Aplikace.
-2. Panel **Recommendations** (Doporučení) umožňuje kontrolovat doporučení služby Security Center. Během průběžného monitorování můžete zjistit, že nebudete mít doporučení denně, což je normální, protože jste všechna doporučení při prvotním Security Center nastavení nevyřešili. Z toho důvodu se vám v této části nemusí každý den zobrazovat nové informace, takže ji musíte otevírat, jenom když je to nutné.
-3. Část **Detekce** se může měnit velmi často i velmi zřídka. Vždy zkontrolujte výstrahy zabezpečení a proveďte akce na základě doporučení služby Security Center.
+Měli byste také pravidelně monitorovat stávající prostředky pro změny konfigurace, které by mohly vytvářet bezpečnostní rizika, odkládat je od doporučených směrných plánů a výstrah zabezpečení. 
 
 ### <a name="hardening-access-and-applications"></a>Posílení přístupu a aplikací
 

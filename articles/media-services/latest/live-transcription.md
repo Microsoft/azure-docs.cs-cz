@@ -12,33 +12,69 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: ne
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 06/12/2019
 ms.author: inhenkel
-ms.openlocfilehash: 9481b4ee2f225c7f76337d73b27630e4c67cc780
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: da80dacadbef560bb597a235fee59924d3887e19
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193608"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84765008"
 ---
 # <a name="live-transcription-preview"></a>Živý přepis (Preview)
 
 Služba Azure Media Service nabízí video, zvuk a text v různých protokolech. Když publikujete živý datový proud pomocí MPEG-POMLČKy nebo HLS/CMAF, pak společně s videem a zvukem doručí naše služba přepisu text v IMSC 1.1 kompatibilní TTML. Doručení se zabalí do fragmentů MPEG-4 Part 30 (ISO/IEC 14496-30). Pokud používáte doručování přes HLS/TS, text se doručí jako VTTý v bloku.
 
-Tento článek popisuje, jak povolit živý přepis při streamování živé události s Azure Media Services V3. Než budete pokračovat, ujistěte se, že jste obeznámeni s používáním rozhraní REST API pro Media Services V3 (podrobnosti najdete v [tomto kurzu](stream-files-tutorial-with-rest.md) ). Měli byste se také seznámit s konceptem [živého streamování](live-streaming-overview.md) . Při Media Services kurzu se doporučuje dokončit [Stream živě](stream-live-tutorial-with-api.md) .
+Pokud je živý přepis zapnutý, platí další poplatky. Podívejte se prosím na informace o cenách v části Live video [stránky s cenami Media Services](https://azure.microsoft.com/pricing/details/media-services/).
 
-> [!NOTE]
-> V současné době je živý přepis dostupný jenom jako funkce Preview v oblasti Západní USA 2. Podporuje přepis mluvených slov v angličtině a textu. Referenční informace k rozhraní API pro tuto funkci najdete tady: protože je ve verzi Preview. podrobnosti nejsou k dispozici u našich dokumentů REST.
+Tento článek popisuje, jak povolit živý přepis při streamování živé události pomocí Azure Media Services. Než budete pokračovat, ujistěte se, že jste obeznámeni s používáním rozhraní REST API pro Media Services V3 (podrobnosti najdete v [tomto kurzu](stream-files-tutorial-with-rest.md) ). Měli byste se také seznámit s konceptem [živého streamování](live-streaming-overview.md) . Při Media Services kurzu se doporučuje dokončit [Stream živě](stream-live-tutorial-with-api.md) .
 
-## <a name="creating-the-live-event"></a>Vytváří se živá událost.
+## <a name="live-transcription-preview-regions-and-languages"></a>Live Preview – oblasti a jazyky
 
-Chcete-li vytvořit živou událost, odešlete operaci PUT do verze 2019-05-01-Preview, například:
+Živý přepis je k dispozici v následujících oblastech:
+
+- Jihovýchodní Asie
+- Západní Evropa
+- Severní Evropa
+- USA – východ
+- USA – střed
+- USA – středojih
+- USA – západ 2
+- Brazílie – jih
+
+Toto je seznam dostupných jazyků, které je možné přepisu, pomocí kódu jazyka v rozhraní API.
+
+| Jazyk | Kód jazyka |
+| -------- | ------------- |
+| Katalánština  | ca-ES |
+| dánština (Dánsko) | da-DK |
+| němčina (Německo) | de-DE |
+| Angličtina (Austrálie) | EN-AU |
+| Angličtina (Kanada) | en-CA |
+| Angličtina (Spojené království) | en-GB |
+| Angličtina (Indie) | en-IN |
+| Angličtina (Nový Zéland) | EN-NZ |
+| Angličtina (Spojené státy) | cs-CZ |
+| Španělština (Španělsko) | es-ES |
+| Španělština (Mexiko) | ES – MX |
+| finština (Finsko) | fi-FI |
+| Francouzština (Kanada) | fr – CA |
+| francouzština (Francie) | fr-FR |
+| italština (Itálie) | it-IT |
+| nizozemština (Nizozemsko) | nl-NL |
+| Portugalština (Brazílie) | pt-BR |
+| portugalština (Portugalsko) | pt-PT |
+| švédština (Švédsko) | sv-SE |
+
+## <a name="create-the-live-event-with-live-transcription"></a>Vytvoření živé události pomocí živého přepisu
+
+Chcete-li vytvořit živou událost se zapnutým přepisem, odešlete operaci PUT pomocí rozhraní API verze 2019-05-01-Preview, například:
 
 ```
 PUT https://management.azure.com/subscriptions/:subscriptionId/resourceGroups/:resourceGroupName/providers/Microsoft.Media/mediaServices/:accountName/liveEvents/:liveEventName?api-version=2019-05-01-preview&autoStart=true 
 ```
 
-Operace má následující text (kde se vytvoří předávací živá událost s RTMP jako protokol ingestování). Všimněte si přidání vlastnosti přepisy. Jediná povolená hodnota pro jazyk je en-US.
+Operace má následující text (kde se vytvoří předávací živá událost s RTMP jako protokol ingestování). Všimněte si přidání vlastnosti přepisy.
 
 ```
 {
@@ -88,14 +124,14 @@ Operace má následující text (kde se vytvoří předávací živá událost s
 }
 ```
 
-Cyklické dotazování na stav živé události, dokud nepřejde do stavu spuštěno, což znamená, že teď můžete poslat příspěvek RTMP. Nyní můžete postupovat stejným způsobem jako v tomto kurzu, jako je například kontrola kanálu Preview a vytváření živých výstupů.
+## <a name="start-or-stop-transcription-after-the-live-event-has-started"></a>Spustit nebo zastavit přepis po zahájení aktivní události
 
-## <a name="start-transcription-after-live-event-has-started"></a>Spustit přepis po spuštění živé události
+Můžete spustit a zastavit živý přepis, zatímco živá událost je ve spuštěném stavu. Další informace o spouštění a zastavování živých událostí najdete v části dlouhotrvající operace v tématu [vývoj s rozhraními api Media Services V3](media-services-apis-overview.md#long-running-operations).
 
-Živý přepis lze spustit po zahájení živé události. Pokud chcete zapnout funkci Live přepisu, opravte živou událost tak, aby zahrnovala vlastnost "přepisy". Chcete-li vypnout živý přepis, vlastnost "přepisy" bude odebrána z objektu živé události.
+Pokud chcete zapnout funkci Live přepisu nebo aktualizovat jazyk přepisu, opravte živou událost tak, aby zahrnovala vlastnost "přepisy". Chcete-li vypnout živé přepisy, odeberte vlastnost "přepisy" z objektu živé události.  
 
 > [!NOTE]
-> Zapnutí nebo vypnutí přepisu více než jednou během živé události není podporovaným scénářem.
+> Zapnutí nebo vypnutí přepisu **více než jednou** během živé události není podporovaným scénářem.
 
 Toto je ukázkové volání pro zapnutí živých přepisů.
 
@@ -160,10 +196,8 @@ Přečtěte si článek [Přehled dynamického balení](dynamic-packaging-overvi
 
 Pro verzi Preview jsou zde známé problémy s živým přepisem:
 
-* Tato funkce je k dispozici pouze v Západní USA 2.
-* Aplikace musí používat rozhraní API verze Preview, které jsou popsané ve [specifikaci Media Services V3 openapi Specification](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json).
-* Jediným podporovaným jazykem je angličtina (EN-US).
-* S ochranou obsahu je podporována pouze šifrování obálek AES.
+- Aplikace musí používat rozhraní API verze Preview, které jsou popsané ve [specifikaci Media Services V3 openapi Specification](https://github.com/Azure/azure-rest-api-specs/blob/master/specification/mediaservices/resource-manager/Microsoft.Media/preview/2019-05-01-preview/streamingservice.json).
+- Ochrana DRM (Správa digitálních práv) se nevztahuje na textovou stopu, je možné pouze šifrování obálek AES.
 
 ## <a name="next-steps"></a>Další kroky
 
