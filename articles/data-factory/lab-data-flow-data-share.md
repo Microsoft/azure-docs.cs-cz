@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: 7d453b2724c308e48366d653a51d9e6aa8e82c96
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: dac018db1737b0395f78955d16dd753c6ac2f359
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81415929"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85252657"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Integrace dat pomocí Azure Data Factory a sdílení dat Azure
 
@@ -22,9 +22,9 @@ V případě, že se zákazníci nastoupili na jejich moderní projekty datovéh
 
 Aby bylo možné vytvořit komplexní pohled na vaše data, díky vylepšením, která jsou v Azure Data Factory, umožníte vašim inženýrům dat spolehlivě přinášet do podniku více dat a tím i větší hodnotu. Sdílená složka Azure vám umožní provádět sdílení firmy způsobem, který se řídí.
 
-V této dílně použijete Azure Data Factory (ADF) k ingestování dat ze služby Azure SQL Database (SQL DB) do Azure Data Lake Storage Gen2 (ADLS Gen2). Jakmile budete data nakládat do jezera, budete je transformovat prostřednictvím mapování toků dat, nativní transformace služby Data Factory a zajímka do Azure synapse Analytics (dřív SQL DW). Pak nasdílíte tabulku s transformovanými daty spolu s dalšími daty pomocí Azure Data Share. 
+V této dílně použijete Azure Data Factory (ADF) k ingestování dat z Azure SQL Database do Azure Data Lake Storage Gen2 (ADLS Gen2). Jakmile budete data nakládat do jezera, budete je transformovat prostřednictvím mapování toků dat, nativní transformace služby Data Factory a zajímka do Azure synapse Analytics (dřív SQL DW). Pak nasdílíte tabulku s transformovanými daty spolu s dalšími daty pomocí Azure Data Share. 
 
-Data použitá v tomto testovacím prostředí jsou v New Yorku City taxislužby data. Pokud ho chcete importovat do Azure SQL Database, Stáhněte si [soubor taxislužby-data BacPac](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
+Data použitá v tomto testovacím prostředí jsou v New Yorku City taxislužby data. Pokud ho chcete importovat do databáze v SQL Database, Stáhněte si [soubor taxislužby-data BacPac](https://github.com/djpmsft/ADF_Labs/blob/master/sample-data/taxi-data.bacpac).
 
 ## <a name="prerequisites"></a>Požadavky
 
@@ -146,7 +146,7 @@ V Azure Data Factory kanál je logické seskupení aktivit, které dohromady pro
 1. V podokně vybrat formát vyberte **DelimitedText** při zápisu do souboru CSV. Klikněte na pokračovat.
 
     ![Portál](media/lab-data-flow-data-share/copy9.png)
-1. Pojmenujte datovou sadu jímky ' TripDataCSV '. Jako propojená služba vyberte ADLSGen2. Zadejte, kam chcete zapisovat do souboru CSV. Můžete například zapsat data do souboru `trip-data.csv` v kontejneru. `staging-container` Nastavte **první řádek jako záhlaví** na true, protože chcete, aby výstupní data měla záhlaví. Vzhledem k tomu, že v cíli ještě neexistuje žádný soubor, nastavte **schéma pro import** na **none**. Po dokončení klikněte na OK.
+1. Pojmenujte datovou sadu jímky ' TripDataCSV '. Jako propojená služba vyberte ADLSGen2. Zadejte, kam chcete zapisovat do souboru CSV. Můžete například zapsat data do souboru `trip-data.csv` v kontejneru `staging-container` . Nastavte **první řádek jako záhlaví** na true, protože chcete, aby výstupní data měla záhlaví. Vzhledem k tomu, že v cíli ještě neexistuje žádný soubor, nastavte **schéma pro import** na **none**. Po dokončení klikněte na OK.
 
     ![Portál](media/lab-data-flow-data-share/copy10.png)
 
@@ -176,7 +176,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
 1. V podokně aktivity plátna kanálu otevřete možnost **přesunutí a transformace** a přetáhněte aktivitu **toku dat** na plátno.
 
     ![Portál](media/lab-data-flow-data-share/dataflow1.png)
-1. V bočním podokně, které se otevře, vyberte **vytvořit nový tok dat** a zvolte **mapování toku dat**. Klikněte na tlačítko **OK**.
+1. V bočním podokně, které se otevře, vyberte **vytvořit nový tok dat** a zvolte **mapování toku dat**. Klikněte na **OK**.
 
     ![Portál](media/lab-data-flow-data-share/dataflow2.png)
 1. Budete přesměrováni na plátno toku dat, kde budete vytvářet logiku transformace. Na kartě Obecné pojmenujte datový tok ' JoinAndAggregateData '.
@@ -226,7 +226,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
     ![Portál](media/lab-data-flow-data-share/join1.png)
 1. Pojmenujte transformaci JOIN ' InnerJoinWithTripFares '. V rozevíracím seznamu pravý datový proud vyberte ' TripFaresSQL '. Jako typ spojení vyberte **vnitřní** . Další informace o různých typech spojení v mapování toku dat najdete v tématu [typy spojení](https://docs.microsoft.com/azure/data-factory/data-flow-join#join-types).
 
-    V rozevíracím seznamu **podmínky připojení** vyberte, na kterých sloupcích si chcete u každého streamu souhlasit. Chcete-li přidat další podmínku spojení, klikněte na ikonu plus vedle existující podmínky. Ve výchozím nastavení jsou všechny podmínky spojení kombinovány s operátorem AND, což znamená, že všechny podmínky musí být splněny pro shodu. V tomto testovacím prostředí chceme odpovídat na sloupce `medallion`, `hack_license` `vendor_id`, a.`pickup_datetime`
+    V rozevíracím seznamu **podmínky připojení** vyberte, na kterých sloupcích si chcete u každého streamu souhlasit. Chcete-li přidat další podmínku spojení, klikněte na ikonu plus vedle existující podmínky. Ve výchozím nastavení jsou všechny podmínky spojení kombinovány s operátorem AND, což znamená, že všechny podmínky musí být splněny pro shodu. V tomto testovacím prostředí chceme odpovídat na sloupce `medallion` ,, `hack_license` `vendor_id` a.`pickup_datetime`
 
     ![Portál](media/lab-data-flow-data-share/join2.png)
 1. Ověřte, že jste úspěšně připojili 25 sloupců spolu s náhledem dat.
@@ -238,7 +238,7 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
 1. Po dokončení transformace spojení přidejte agregovanou transformaci kliknutím na ikonu plus vedle položky ' InnerJoinWithTripFares. V části **Modifikátor schématu**vyberte **agregovat** .
 
     ![Portál](media/lab-data-flow-data-share/agg1.png)
-1. Pojmenujte svou agregovanou transformaci ' AggregateByPaymentType '. Jako `payment_type` sloupec Group by vyberte.
+1. Pojmenujte svou agregovanou transformaci ' AggregateByPaymentType '. `payment_type`Jako sloupec Group by vyberte.
 
     ![Portál](media/lab-data-flow-data-share/agg2.png)
 1. Přejít na kartu **agregace** . Tady zadáte dvě agregace:
@@ -250,15 +250,15 @@ Tok dat, který byl vytvořen v tomto kroku, se doplní do datové sady ' TripDa
     ![Portál](media/lab-data-flow-data-share/agg3.png)
 1. Chcete-li zadat agregační výraz, klikněte na modrý rámeček označený **výrazem ENTER**. Tím se otevře Tvůrce výrazů toku dat, který slouží k vizuálnímu vytváření výrazů toku dat pomocí vstupního schématu, integrovaných funkcí a operací a uživatelsky definovaných parametrů. Další informace o možnostech Tvůrce výrazů naleznete v [dokumentaci k tvůrci výrazů](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder).
 
-    K získání průměrného tarifu použijte `avg()` agregační funkci pro agregaci přetypování `total_amount` sloupce na celé číslo pomocí `toInteger()`. V jazyce výrazu toku dat je tato definice definována jako `avg(toInteger(total_amount))`. Až budete hotovi, klikněte na **Uložit a dokončit** .
+    K získání průměrného tarifu použijte agregační `avg()` funkci pro agregaci `total_amount` přetypování sloupce na celé číslo pomocí `toInteger()` . V jazyce výrazu toku dat je tato definice definována jako `avg(toInteger(total_amount))` . Až budete hotovi, klikněte na **Uložit a dokončit** .
 
     ![Portál](media/lab-data-flow-data-share/agg4.png)
-1. Chcete-li přidat další agregační výraz, klikněte na ikonu plus vedle pole `average_fare`. Vyberte **Přidat sloupec**.
+1. Chcete-li přidat další agregační výraz, klikněte na ikonu plus vedle pole `average_fare` . Vyberte **Přidat sloupec**.
 
     ![Portál](media/lab-data-flow-data-share/agg5.png)
 1. Do textového pole s názvem **Přidat nebo vybrat sloupec**zadejte ' total_trip_distance '. Jako v posledním kroku otevřete Tvůrce výrazů, který zadáte do výrazu.
 
-    K získání celkové vzdálenosti cest použijte `sum()` agregační funkci pro agregaci přetypování `trip_distance` sloupce na celé číslo pomocí. `toInteger()` V jazyce výrazu toku dat je tato definice definována jako `sum(toInteger(trip_distance))`. Až budete hotovi, klikněte na **Uložit a dokončit** .
+    K získání celkové vzdálenosti cest použijte `sum()` agregační funkci pro agregaci `trip_distance` přetypování sloupce na celé číslo pomocí `toInteger()` . V jazyce výrazu toku dat je tato definice definována jako `sum(toInteger(trip_distance))` . Až budete hotovi, klikněte na **Uložit a dokončit** .
 
     ![Portál](media/lab-data-flow-data-share/agg6.png)
 1. Otestujte logiku transformace na kartě **Náhled dat** . Jak vidíte, existuje mnohem méně řádků a sloupců než dříve. Pouze tři sloupce Group by a agregace definované v této transformaci budou pokračovat v podřízeném. Jak je v ukázce jenom pět skupin typů plateb, vycházejí jenom pět řádků.
@@ -390,7 +390,7 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
         ![Přidání příjemců](media/lab-data-flow-data-share/add-recipients.png)
 
-    1. Přidejte do fiktivního příjemce dat s názvem *janedoe@fabrikam.com*.
+    1. Přidejte do fiktivního příjemce dat s názvem *janedoe@fabrikam.com* .
 
 1. Na této obrazovce můžete nakonfigurovat nastavení snímku pro vašeho příjemce dat. To jim umožní získávat pravidelné aktualizace vašich dat v intervalu, který jste definovali. 
 
@@ -412,7 +412,7 @@ Jakmile vytvoříte sdílenou složku dat, přepnete Hats a stane se *příjemce
 
     ![Nevyřízené pozvánky](media/lab-data-flow-data-share/pending-invites.png)
 
-1. Vyberte pozvánku na *janedoe@fabrikam.com*. Vyberte Odstranit. Pokud váš příjemce tuto pozvánku ještě nepřijal, už je nebude moct dělat. 
+1. Vyberte pozvánku na *janedoe@fabrikam.com* . Vyberte Odstranit. Pokud váš příjemce tuto pozvánku ještě nepřijal, už je nebude moct dělat. 
 
 1. Vyberte kartu **Historie** . Nic se nezobrazuje, protože váš příjemce dat ještě nepřijal vaši pozvánku a aktivoval snímek. 
 

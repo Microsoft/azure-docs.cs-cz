@@ -5,20 +5,20 @@ description: Přečtěte si, jak vytvořit v Azure CLI aplikační bránu, kter�
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 0a92d0f7d17f6bb83efbe94434c25072975dbe57
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 0a559ec7f9138810611841eed4a035f30662bc39
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74047362"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806265"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Vytvoření aplikační brány, která hostuje několik webů pomocí Azure CLI
 
-Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure CLI použít ke [konfiguraci hostování více webů](overview.md). V tomto článku definujete fondy back-end adres pomocí sad škálování virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto článku se předpokládá, že vlastníte více domén a používáte příklady *webových\.contoso.com* a *www\.Fabrikam.com*.
+Při vytvoření [aplikační brány](multiple-site-overview.md) můžete Azure CLI použít ke [konfiguraci hostování více webů](overview.md). V tomto článku definujete fondy back-end adres pomocí sad škálování virtuálních počítačů. Pak na základě domén, které vám patří, nakonfigurujete naslouchací procesy a pravidla, aby se webový provoz přesměroval na příslušné servery ve fondech. V tomto článku se předpokládá, že vlastníte více domén a používáte příklady *webových \. contoso.com* a *www \. fabrikam.com*.
 
 V tomto článku získáte informace o těchto tématech:
 
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-multiple-sites-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -236,7 +236,7 @@ Použití záznamů A se nedoporučuje, protože virtuální IP adresa se může
 
 ## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
-Do adresního řádku prohlížeče zadejte název domény. Například http:\//www.contoso.com.
+Do adresního řádku prohlížeče zadejte název domény. Například http: \/ /www.contoso.com.
 
 ![Testování webu Contoso v aplikační bráně](./media/tutorial-multiple-sites-cli/application-gateway-nginxtest1.png)
 

@@ -1,46 +1,31 @@
 ---
-title: Ukázky zásad Azure API Managementu | Microsoft Docs
-description: Přečtěte si o zásadách, které jsou k dispozici pro použití v Azure API Managementu.
-services: api-management
-documentationcenter: ''
-author: vladvino
-manager: cflower
-editor: ''
+title: Předdefinované definice zásad pro Azure API Management
+description: Seznam Azure Policy integrovaných definic zásad pro Azure API Management. Tyto integrované definice zásad poskytují běžné přístupy ke správě prostředků Azure.
+ms.date: 06/11/2020
+author: georgewallace
+ms.author: gwallace
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: sample
-ms.date: 10/31/2017
-ms.author: apimpm
-ms.custom: mvc
-ms.openlocfilehash: 9bdcf9ea247adb8d5941c75f90f7db3915af20bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.custom: subject-policy-samples
+ms.openlocfilehash: b7e273b4ae7d213eb45775540d1e83b5a4d8b971
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "75940946"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85124000"
 ---
-# <a name="api-management-policy-samples"></a>Ukázky zásad API Managementu
+# <a name="azure-policy-built-in-policy-definitions-for-azure-api-management"></a>Azure Policy předdefinované definice zásad pro Azure API Management
 
-[Zásady](api-management-howto-policies.md) jsou vynikající funkcí systému, která vydavatelům umožňuje měnit chování rozhraní API prostřednictvím konfigurace. Zásady představují kolekci příkazů, které se postupně provádí na základě požadavku nebo odezvy z rozhraní API. Následující tabulka obsahuje odkazy na ukázky se stručným popisem každé ukázky.
+Tato stránka je indexem [Azure Policy](../governance/policy/overview.md) integrovaných definic zásad pro Azure API Management. Další Azure Policy integrovaných pro jiné služby najdete v tématu [Azure Policy předdefinované definice](../governance/policy/samples/built-in-policies.md). Ukázky zásad API Management najdete v tématu [API Management – index zásad](./policies/index.md).
 
-|                                                                                                                                                                      |                                                                                                                                                                                                                             |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Příchozí zásady**                                                                                                                                                 |                                                                                                                                                                                                                             |
-| [Přidání hlavičky Forwarded umožňující back-endovému rozhraní API vytvářet správné adresy URL](./policies/set-header-to-enable-backend-to-construct-urls.md?toc=api-management/toc.json) | Ukazuje, jak do příchozí žádosti přidat hlavičku Forwarded, která back-endovému rozhraní API umožní vytvářet správné adresy URL.                                                                                                        |
-| [Přidání hlavičky obsahující ID korelace](./policies/add-correlation-id.md?toc=api-management/toc.json)                                                             | Ukazuje, jak do příchozího požadavku přidat hlavičku obsahující ID korelace.                                                                                                                                        |
-| [Přidávání funkcí do back-endové služby a uložení odpovědi do mezipaměti](./policies/cache-response.md?toc=api-management/toc.json)                                             | Ukazuje, jak do back-endové služby přidat funkce. Příkladem je přijmutí názvu místa namísto zeměpisné šířky a délky v rozhraní API předpovědi počasí.                                                                    |
-| [Autorizace přístupu na základě deklarací JWT](./policies/authorize-request-based-on-jwt-claims.md?toc=api-management/toc.json)                                              | Ukazuje, jak autorizovat přístup ke konkrétním metodám HTTP v rozhraní API na základě deklarací JWT.                                                                                                                                       |
-| [Autorizace požadavků na používání externího objektu Authorizer](./policies/authorize-request-using-external-authorizer.md)                                                   | Ukazuje, jak používat externí objekt Authorizer pro zabezpečení přístupu API.                                                                                                                                                               |
-| [Autorizace přístupu pomocí tokenu Google OAuth](./policies/use-google-as-oauth-token-provider.md?toc=api-management/toc.json)                                            | Ukazuje, jak autorizovat přístup k vašim koncovým bodům s využitím Googlu jako poskytovatele tokenu OAuth.                                                                                                                                    |
-| [Filtrování IP adres při použití Application Gateway](./policies/filter-ip-addresses-when-using-appgw.md) | Ukazuje, jak filtrovat protokol IP v zásadách při použití API Management instance prostřednictvím Application Gateway
-| [Vygenerování sdíleného přístupového podpisu a předání požadavku do úložiště Azure](./policies/generate-shared-access-signature.md?toc=api-management/toc.json)                  | Ukazuje, jak vygenerovat [sdílený přístupový podpis](https://docs.microsoft.com/azure/storage/storage-dotnet-shared-access-signature-part-1) pomocí výrazů a předat požadavek do úložiště Azure se zásadami rewrite-uri. |
-| [Získání tokenu přístupu OAuth2 z AAD a jeho předání do back-endu](./policies/use-oauth2-for-authorization.md?toc=api-management/toc.json)                             | Poskytuje příklad použití OAuth2 k autorizaci mezi bránou a back-endem. Ukazuje, jak získat token přístupu z AAD a předat ho do back-endu.                                                    |
-| [Získání tokenu X-CSRF z brány SAP pomocí zásad odeslání žádosti](./policies/get-x-csrf-token-from-sap-gateway.md?toc=api-management/toc.json)                           | Ukazuje, jak implementovat vzor X-CSRF používaný mnoho rozhraními API. Tento příklad je konkrétně pro bránu SAP.                                                                                                                           |
-| [Směrování požadavku na základě velikosti jeho obsahu](./policies/route-requests-based-on-size.md?toc=api-management/toc.json)                                            | Ukazuje, jak směrovat požadavky na základě velikosti jejich obsahu.                                                                                                                                                       |
-| [Odeslání informací o kontextu požadavku back-endové službě](./policies/send-request-context-info-to-backend-service.md?toc=api-management/toc.json)                    | Ukazuje, jak odeslat určité kontextové informace back-endové službě kvůli protokolování nebo zpracování.                                                                                                                                |
-| [Nastavení doby uložení odpovědi v mezipaměti](./policies/set-cache-duration.md?toc=api-management/toc.json)                                                                          | Ukazuje, jak nastavit dobu uložení odpovědi v mezipaměti pomocí hodnoty maxAge v hlavičce Cache-Control zaslané back-endem.                                                                                                             |
-| **Odchozí zásady**                                                                                                                                                |                                                                                                                                                                                                                             |
-| [Filtrování obsahu odpovědi](./policies/filter-response-content.md?toc=api-management/toc.json)                                                                         | Ukazuje, jak filtrovat datové prvky z datové části odpovědi na základě produktu přidruženého k požadavku.                                                                                                        |
-| **Zásady při chybě**                                                                                                                                                |                                                                                                                                                                                                                             |
-| [Protokolování chyb do Stackify](./policies/log-errors-to-stackify.md?toc=api-management/toc.json)                                                                           | Ukazuje, jak přidat zásadu protokolování chyb k zasílání chyb do Stackify za účelem protokolování.                                                                                                                                            |
+Název každé předdefinované definice zásad odkazuje na definici zásady v Azure Portal. Pomocí odkazu ve sloupci **verze** Zobrazte zdroj v [úložišti Azure Policy GitHubu](https://github.com/Azure/azure-policy).
+
+## <a name="azure-api-management"></a>Azure API Management
+
+[!INCLUDE [azure-policy-samples-rp-apimanagement](../../includes/policy/samples/byrp/microsoft.apimanagement.md)]
+
+## <a name="next-steps"></a>Další kroky
+
+- Projděte si předdefinované možnosti v [úložišti služby Azure Policy na GitHubu](https://github.com/Azure/azure-policy).
+- Projděte si [strukturu definic Azure Policy](../governance/policy/concepts/definition-structure.md).
+- Projděte si [Vysvětlení efektů zásad](../governance/policy/concepts/effects.md).

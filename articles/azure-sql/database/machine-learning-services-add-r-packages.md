@@ -14,12 +14,12 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 764d0131b0b8074a210bd9eb7f806f5d1a32fa1f
-ms.sourcegitcommit: 58ff2addf1ffa32d529ee9661bbef8fbae3cddec
+ms.openlocfilehash: b42dba59e061eee0472d39f324b7474d7d829310
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84324228"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250708"
 ---
 # <a name="add-an-r-package-to-azure-sql-database-machine-learning-services-preview"></a>Přidání balíčku R do Azure SQL Database Machine Learning Services (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -39,7 +39,7 @@ Tento článek vysvětluje, jak přidat balíček R do Azure SQL Database Machin
 
 ## <a name="list-r-packages"></a>Výpis balíčků R
 
-Microsoft poskytuje několik balíčků R, které jsou předinstalované Machine Learning Services ve službě Azure SQL Database.
+Společnost Microsoft poskytuje několik balíčků R předinstalovaných pomocí Machine Learning Services v Azure SQL Database.
 Seznam nainstalovaných balíčků R můžete zobrazit spuštěním následujícího příkazu v Azure Data Studio nebo SSMS.
 
 1. Otevřete Azure Data Studio nebo SSMS a připojte se k Azure SQL Database.
@@ -60,7 +60,7 @@ Seznam nainstalovaných balíčků R můžete zobrazit spuštěním následujíc
 
 Výstup by měl vypadat podobně jako následující.
 
-**Důsledk**
+**Výsledky**
 
 ![Nainstalované balíčky v jazyce R](./media/machine-learning-services-add-r-packages/r-installed-packages.png)
 
@@ -90,7 +90,7 @@ V následujícím příkladu nainstalujete balíček **[Glue](https://cran.r-pro
     ```
 
     > [!TIP]
-    > Pokud se zobrazí chybová zpráva "R" není rozpoznána jako interní nebo externí příkaz, spustitelný program nebo dávkový soubor ", pravděpodobně to znamená, že cesta k souboru R. exe není obsažena ve vaší proměnné prostředí **path** ve Windows. Můžete buď přidat cestu k proměnné prostředí, nebo přejít do složky na příkazovém řádku (například `cd C:\Program Files\R\R-3.5.3\bin` ) a pak příkaz zopakovat.
+    > Pokud se zobrazí chyba, "R" není rozpoznán jako interní nebo externí příkaz, spustitelný program nebo dávkový soubor ", pravděpodobně to znamená, že cesta k R.exe není obsažena ve vaší proměnné prostředí **path** ve Windows. Můžete buď přidat cestu k proměnné prostředí, nebo přejít do složky na příkazovém řádku (například `cd C:\Program Files\R\R-3.5.3\bin` ) a pak příkaz zopakovat.
 
 ### <a name="add-the-package"></a>Přidat balíček
 
@@ -121,7 +121,7 @@ r<-sql_installed.packages(connectionString = connection, fields=c("Package", "Ve
 View(r)
 ```
 
-**Důsledk**
+**Výsledky**
 
 ![Obsah tabulky RTestData](./media/machine-learning-services-add-r-packages/r-verify-package-install.png)
 
@@ -151,7 +151,7 @@ Po instalaci balíčku ho můžete použít ve skriptu R prostřednictvím **sp_
 
     Na kartě **zprávy** se zobrazí následující výsledek.
 
-    **Důsledk**
+    **Výsledky**
 
     ```text
     My name is Fred, my age next year is 51, my anniversary is Sunday, June 14, 2020.
@@ -166,7 +166,7 @@ sql_remove.packages(connectionString = connection, pkgs = "glue", scope = "PUBLI
 ```
 
 > [!TIP]
-> Dalším způsobem instalace balíčku R do vaší databáze SQL Azure je nahrání balíčku R z bajtového datového proudu pomocí příkazu **Create External Library** jazyka T-SQL. Další informace najdete v tématu [Vytvoření knihovny z datového proudu bajtů](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) v referenční dokumentaci k [vytvoření externí knihovny](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) .
+> Dalším způsobem instalace balíčku R do Azure SQL Database je nahrání balíčku R z bajtového datového proudu pomocí příkazu **Create External Library** jazyka T-SQL. Další informace najdete v tématu [Vytvoření knihovny z datového proudu bajtů](/sql/t-sql/statements/create-external-library-transact-sql#create-a-library-from-a-byte-stream) v referenční dokumentaci k [vytvoření externí knihovny](https://docs.microsoft.com/sql/t-sql/statements/create-external-library-transact-sql) .
 
 ## <a name="next-steps"></a>Další kroky
 

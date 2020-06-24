@@ -4,16 +4,16 @@ description: Naučte se vytvořit Aplikační bránu a přidat certifikát pro u
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 6cd8cca65762de3da6a0e69e93c8d79bbe498dde
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 16ad8d7fd0f46381f2e2e7076015af65bd4bddcd
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81311982"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806153"
 ---
 # <a name="create-an-application-gateway-with-tls-termination-using-the-azure-cli"></a>Vytvoření aplikační brány s ukončením TLS pomocí Azure CLI
 
@@ -29,7 +29,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-ssl-powershell.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -165,7 +165,7 @@ az network public-ip show \
   --output tsv
 ```
 
-Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. V tomto příkladu je adresa URL: **https://52.170.203.149**.
+Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. V tomto příkladu je adresa URL: **https://52.170.203.149** .
 
 ![Zabezpečené upozornění](./media/tutorial-ssl-cli/application-gateway-secure.png)
 

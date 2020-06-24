@@ -14,17 +14,17 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/29/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: a7d0bc787f1ae4444849a1483d6323f8a098ae1e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 115688eeccab3a48bf4234f00124bcd6bc950853
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053409"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251433"
 ---
 # <a name="tutorial-build-a-clustering-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: sestavení modelu clusteringu v R s Azure SQL Database Machine Learning Services (Preview)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Ve třetí části této série výukových kurzů sestavíte model K, v jazyce R, který provádí clusteringu. V další části této série tento model nasadíte do databáze SQL pomocí Azure SQL Database Machine Learning Services (Preview).
+Ve třetí části této série výukových kurzů sestavíte model K, v jazyce R, který provádí clusteringu. V další části této série nasadíte tento model do databáze v Azure SQL Database pomocí Azure SQL Database Machine Learning Services (Preview).
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
@@ -36,9 +36,9 @@ V tomto článku se dozvíte, jak:
 > * Provedení clusteringu
 > * Analýza výsledků
 
-V [první části](clustering-model-prepare-data-tutorial.md)jste zjistili, jak připravit data z databáze SQL Azure pro provádění clusteringu.
+V [první části](clustering-model-prepare-data-tutorial.md)jste zjistili, jak připravit data z databáze pro provádění clusteringu.
 
-V [třetí části](clustering-model-deploy-tutorial.md)se dozvíte, jak vytvořit uloženou proceduru ve službě Azure SQL Database, která může provádět clusteringu v R na základě nových dat.
+V [třetí části](clustering-model-deploy-tutorial.md)se dozvíte, jak vytvořit uloženou proceduru, která může provádět clusteringu v R na základě nových dat.
 
 ## <a name="prerequisites"></a>Požadavky
 

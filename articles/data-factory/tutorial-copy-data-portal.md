@@ -1,6 +1,6 @@
 ---
 title: Vytvoření kanálu datové továrny pomocí Azure Portal
-description: Tento kurz obsahuje podrobné pokyny k vytvoření datové továrny s kanálem pomocí portálu Azure Portal. Kanál používá aktivitu kopírování ke kopírování dat z úložiště objektů BLOB v Azure do databáze SQL Azure.
+description: Tento kurz obsahuje podrobné pokyny k vytvoření datové továrny s kanálem pomocí portálu Azure Portal. Kanál používá aktivitu kopírování ke kopírování dat z úložiště objektů BLOB v Azure do Azure SQL Database.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -12,18 +12,18 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
-ms.openlocfilehash: 8372683c1463fe3443730bd004c013666deb4100
-ms.sourcegitcommit: 8017209cc9d8a825cc404df852c8dc02f74d584b
+ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84248613"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253958"
 ---
-# <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště Azure Blob Storage do databáze SQL Database pomocí služby Azure Data Factory
+# <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Kopírování dat z úložiště objektů BLOB v Azure do databáze v Azure SQL Database pomocí Azure Data Factory
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-V tomto kurzu vytvoříte datovou továrnu pomocí uživatelského rozhraní služby Azure Data Factory. Kanál v této datové továrně kopíruje data z úložiště objektů BLOB v Azure do databáze SQL Azure. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
+V tomto kurzu vytvoříte datovou továrnu pomocí uživatelského rozhraní služby Azure Data Factory. Kanál v této datové továrně kopíruje data z úložiště objektů BLOB v Azure do databáze v Azure SQL Database. Schéma konfigurace v tomto kurzu se vztahuje na kopírování z úložiště dat založeného na souborech do relačního úložiště dat. Seznam úložišť dat, která jsou podporovaná jako zdroje a jímky, najdete v tabulce [podporovaných úložišť dat](copy-activity-overview.md#supported-data-stores-and-formats).
 
 > [!NOTE]
 > - Pokud se službou Data Factory teprve začínáte, přečtěte si téma [Úvod do Azure Data Factory](introduction.md).
@@ -41,7 +41,7 @@ V tomto kurzu budete provádět následující kroky:
 ## <a name="prerequisites"></a>Požadavky
 * **Předplatné Azure**. Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet Azure](https://azure.microsoft.com/free/) před tím, než začnete.
 * **Účet služby Azure Storage**. Blob Storage použijete jako *zdrojové* úložiště dat. Pokud účet úložiště nemáte, přečtěte si téma [Vytvoření účtu služby Azure Storage](../storage/common/storage-account-create.md), kde najdete postup jeho vytvoření.
-* **Azure SQL Database**. Tuto databázi použijete jako úložiště dat *jímky*. Pokud službu Azure SQL Database nemáte, přečtěte si téma [Vytvoření databáze SQL](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
+* **Azure SQL Database**. Tuto databázi použijete jako úložiště dat *jímky*. Pokud nemáte databázi v Azure SQL Database, přečtěte si téma [Vytvoření databáze v Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Vytvoření objektu blob a tabulky SQL
 
@@ -61,7 +61,7 @@ Teď si připravte úložiště Blob Storage a databázi SQL Database pro tento
 
 #### <a name="create-a-sink-sql-table"></a>Vytvoření tabulky SQL jímky
 
-1. Použitím následujícího skriptu SQL si v databázi SQL Database vytvořte tabulku **emp**:
+1. Pomocí následujícího skriptu SQL vytvořte tabulku **dbo. EMP** v databázi:
 
     ```sql
     CREATE TABLE dbo.emp
@@ -139,7 +139,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 
 1. Po vytvoření propojené služby přejdete zpátky na stránku **Vlastnosti sady** . Vedle pole **Cesta k souboru** vyberte **Procházet**.
 
-1. Přejděte do složky **adftutorial/Input** , vyberte soubor **EMP. txt** a pak vyberte **OK**.
+1. Přejděte do složky **adftutorial/Input** , vyberte soubor **emp.txt** a pak vyberte **OK**.
 
 1. Vyberte **OK**. Automaticky přejde na stránku kanálu. Na kartě **zdroj** potvrďte, že je vybraná možnost **SourceBlobDataset** . Pokud se na této stránce chcete podívat na náhled dat, vyberte **Náhled dat**.
 
@@ -154,7 +154,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 
 1. V dialogovém okně **Nová datová sada** zadejte "SQL" do vyhledávacího pole, chcete-li filtrovat konektory, vyberte **Azure SQL Database**a pak vyberte **pokračovat**. V tomto kurzu zkopírujte data do databáze SQL Database.
 
-1. V dialogovém okně **nastavit vlastnosti** zadejte **OutputSqlDataset** do pole název. V rozevíracím seznamu **propojená služba** vyberte **+ Nová**. Datová sada musí být přidružená k propojené službě. Propojená služba obsahuje připojovací řetězec, který služba Data Factory používá pro připojení k databázi SQL Database za běhu. Datová sada určuje kontejner, složku a soubor (volitelné), do kterého se data kopírují.
+1. V dialogovém okně **nastavit vlastnosti** zadejte **OutputSqlDataset** do pole název. V rozevíracím seznamu **propojená služba** vyberte **+ Nová**. Datová sada musí být přidružená k propojené službě. Propojená služba obsahuje připojovací řetězec, který Data Factory používá pro připojení k SQL Database za běhu. Datová sada určuje kontejner, složku a soubor (volitelné), do kterého se data kopírují.
 
 1. V dialogovém okně **Nová propojená služba (Azure SQL Database)** proveďte následující kroky:
 
@@ -162,7 +162,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 
     b. V rozevíracím seznamu **Název serveru** vyberte příslušný název instance SQL Serveru.
 
-    c. V rozevíracím seznamu **Název databáze** vyberte svoji databázi SQL Database.
+    c. V části **název databáze**vyberte svou databázi.
 
     d. Do pole **Uživatelské jméno** zadejte jméno uživatele.
 
@@ -170,7 +170,7 @@ V tomto kurzu začnete vytvořením kanálu. Potom vytvoříte propojené služ
 
     f. Vyberte **Otestovat připojení** a připojení otestujte.
 
-    g. Vyberte **vytvořit** a nasaďte propojenou službu.
+    například Vyberte **vytvořit** a nasaďte propojenou službu.
 
     ![Uložení nové propojené služby](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
@@ -209,7 +209,7 @@ V tomto kroku ručně aktivujete kanál, který jste publikovali v minulém krok
 
     [![Monitorování spuštění aktivit](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png)](./media/tutorial-copy-data-portal/view-activity-runs-inline-and-expended.png#lightbox)
 
-1. Ověřte, že se do tabulky **emp** v databázi SQL Database přidaly další dva řádky.
+1. Ověřte, že se do tabulky **EMP** v databázi přidaly další dva řádky.
 
 ## <a name="trigger-the-pipeline-on-a-schedule"></a>Aktivace kanálu podle plánu
 V tomto kroku vytvoříte pro kanál aktivační událost plánovače. Tato aktivační událost spouští kanál podle zadaného plánu (například každou hodinu nebo každý den). Tady nastavíte, aby se aktivační událost spouštěla každou minutu až do zadané koncové hodnoty DateTime.
@@ -234,7 +234,7 @@ V tomto kroku vytvoříte pro kanál aktivační událost plánovače. Tato akt
 
     f. Vyberte **OK**.
 
-    g. Pro možnost **aktivováno** vyberte **Ano**.
+    například Pro možnost **aktivováno** vyberte **Ano**.
 
     h. Vyberte **OK**.
 

@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 02/03/2019
-ms.openlocfilehash: ecd78cdc534b68d913b6b5114a04ad2720796665
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 1f63b8adfabb9de427fd19a992f913d032aa9d8b
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84658178"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85251504"
 ---
 # <a name="azure-cli-samples-for-azure-sql-database-and-sql-managed-instance"></a>Ukázky v Azure CLI pro Azure SQL Database a SQL Managed instance 
  
@@ -39,15 +39,15 @@ Následující tabulka obsahuje odkazy na ukázkové skripty Azure CLI pro sprá
 |---|---|
 |**Vytváření databází v Azure SQL Database**||
 | [Vytvoření izolované databáze a konfigurace pravidla brány firewall](scripts/create-and-configure-database-cli.md) | Vytvoří SQL Database a nakonfiguruje pravidlo brány firewall na úrovni serveru. |
-| [Vytváření elastických fondů a přesun databází ve fondu](scripts/move-database-between-elastic-pools-cli.md) | Vytvoří elastické fondy, přesune databáze SQL ve fondu a změní výpočetní velikosti. |
+| [Vytváření elastických fondů a přesun databází ve fondu](scripts/move-database-between-elastic-pools-cli.md) | Vytvoří elastické fondy, přesune databáze ve fondu a změní výpočetní velikosti. |
 |**Škálování databází v Azure SQL Database**||
 | [Škálování izolované databáze](scripts/monitor-and-scale-database-cli.md) | Po dotazování na informace o velikosti databáze škáluje databázi v SQL Database na jinou výpočetní velikost. |
 | [Škálování elastického fondu](scripts/scale-pool-cli.md) | Škáluje elastický fond SQL na jinou výpočetní velikost. |
 |**Konfigurace geografické replikace a převzetí služeb při selhání**||
 | [Přidání jedné databáze do skupiny převzetí služeb při selhání](scripts/add-database-to-failover-group-cli.md)| Vytvoří databázi a skupinu převzetí služeb při selhání, přidá databázi do skupiny převzetí služeb při selhání a pak otestuje převzetí služeb při selhání sekundárním serverem. |
 | [Konfigurace skupiny převzetí služeb při selhání pro elastický fond](../../sql-database/scripts/sql-database-add-elastic-pool-to-failover-group-cli.md) | Vytvoří databázi, přidá ji do elastického fondu, přidá elastický fond do skupiny převzetí služeb při selhání a pak otestuje převzetí služeb při selhání sekundárním serverem. |
-| [Konfigurace a převzetí služeb při selhání pro izolovanou databázi pomocí aktivní geografické replikace](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Nakonfiguruje aktivní geografickou replikaci pro databázi SQL Azure a převezme její služby při selhání do sekundární repliky. |
-| [Konfigurace a převzetí služeb při selhání databáze ve fondu pomocí aktivní geografické replikace](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| Nakonfiguruje aktivní geografickou replikaci pro databázi SQL Azure v elastickém fondu SQL a pak ji převezme do sekundární repliky. |
+| [Konfigurace a převzetí služeb při selhání pro izolovanou databázi pomocí aktivní geografické replikace](../../sql-database/scripts/sql-database-setup-geodr-and-failover-database-cli.md)| Nakonfiguruje aktivní geografickou replikaci pro databázi v Azure SQL Database a převezme její služby při selhání do sekundární repliky. |
+| [Konfigurace a převzetí služeb při selhání databáze ve fondu pomocí aktivní geografické replikace](../../sql-database/scripts/sql-database-setup-geodr-and-failover-pool-cli.md)| Nakonfiguruje aktivní geografickou replikaci pro databázi v elastickém fondu a pak ji převezme do sekundární repliky. |
 | **Auditování a detekce hrozeb** |
 | [Konfigurace auditování a detekce hrozeb](../../sql-database/scripts/sql-database-auditing-and-threat-detection-cli.md)| Konfiguruje zásady auditování a detekce hrozeb pro databázi v Azure SQL Database. |
 | **Zálohování, obnovení, kopírování a import databáze**||

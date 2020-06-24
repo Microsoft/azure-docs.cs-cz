@@ -4,16 +4,16 @@ description: V tomto článku se dozvíte, jak směrovat webový provoz na zákl
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/01/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: b6bc0b00579bdef0a358f756b8cf2b6034aca017
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: fc32dd5c477a76a20bc3a641ec8761e95c129554
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "68688181"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84805892"
 ---
 # <a name="route-web-traffic-based-on-the-url-using-the-azure-cli"></a>Směrování webového provozu na základě adresy URL pomocí Azure CLI
 
@@ -33,7 +33,7 @@ V tomto článku získáte informace o těchto tématech:
 
 Pokud budete chtít, můžete tento postup dokončit pomocí [Azure PowerShell](tutorial-url-route-powershell.md) nebo [Azure Portal](create-url-route-portal.md).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -98,7 +98,7 @@ az network application-gateway create \
  Vytvoření aplikační brány může trvat několik minut. Po vytvoření aplikační brány se zobrazí tyto nové funkce:
 
 
-|Funkce  |Popis  |
+|Funkce  |Description  |
 |---------|---------|
 |appGatewayBackendPool     |Aplikační brána musí mít alespoň jeden back-endový fond adres.|
 |appGatewayBackendHttpSettings     |Určuje, že se ke komunikaci používá port 80 a protokol HTTP.|
@@ -236,7 +236,7 @@ done
 
 ## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
-K získání veřejné IP adresy aplikační brány použijte příkaz az network public-ip show. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například, `http://40.121.222.19`, `http://40.121.222.19:8080/images/test.htm`nebo. `http://40.121.222.19:8080/video/test.htm`
+K získání veřejné IP adresy aplikační brány použijte příkaz az network public-ip show. Zkopírujte veřejnou IP adresu a pak ji vložte do adresního řádku svého prohlížeče. Například, `http://40.121.222.19` , `http://40.121.222.19:8080/images/test.htm` nebo `http://40.121.222.19:8080/video/test.htm` .
 
 ```azurecli-interactive
 az network public-ip show \
@@ -248,11 +248,11 @@ az network public-ip show \
 
 ![Testování základní adresy URL v aplikační bráně](./media/tutorial-url-route-cli/application-gateway-nginx.png)
 
-Změňte adresu URL na http://&lt;IP-address&gt;: 8080/images/test.html, nahraďte svou IP &lt;adresu IP-address&gt;a měli byste vidět něco jako v následujícím příkladu:
+Změňte adresu URL na http:// &lt; IP-address &gt; : 8080/images/test.html, nahraďte vaši IP adresu &lt; IP-address &gt; a mělo by se zobrazit něco jako v následujícím příkladu:
 
 ![Testování adresy URL obrázků v aplikační bráně](./media/tutorial-url-route-cli/application-gateway-nginx-images.png)
 
-Změňte adresu URL na http://&lt;IP-address&gt;: 8080/video/test.html, nahraďte svou IP &lt;adresu IP-address&gt;a měli byste vidět podobné jako v následujícím příkladu.
+Změňte adresu URL na http:// &lt; IP-address &gt; : 8080/video/test.html, nahraďte svou IP adresu IP &lt; adresou &gt; a měli byste vidět podobné jako v následujícím příkladu.
 
 ![Testování adresy URL videa v aplikační bráně](./media/tutorial-url-route-cli/application-gateway-nginx-video.png)
 

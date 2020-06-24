@@ -1,6 +1,6 @@
 ---
 title: 'Kurz: vytvoření kanálu pomocí šablony Správce prostředků '
-description: V tomto kurzu vytvoříte kanál služby Azure Data Factory pomocí šablony Azure Resource Manageru. Tento kanál kopíruje data ze služby Azure Blob Storage do databáze Azure SQL.
+description: V tomto kurzu vytvoříte kanál služby Azure Data Factory pomocí šablony Azure Resource Manageru. Tento kanál kopíruje data z úložiště objektů BLOB v Azure do Azure SQL Database.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3800460c7b17adf1a10c1efc3adc12d65bbeb670
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 549c85f92434504b931f0325959beb17ae92afba
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84021975"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85254884"
 ---
 # <a name="tutorial-use-azure-resource-manager-template-to-create-a-data-factory-pipeline-to-copy-data"></a>Kurz: Použití šablony Azure Resource Manageru k vytvoření kanálu Data Factory pro kopírování dat 
 > [!div class="op_single_selector"]
@@ -56,11 +56,11 @@ V tomto kurzu vytvoříte datovou továrnu s následujícími entitami služby D
 
 | Entita | Description |
 | --- | --- |
-| Propojená služba Azure Storage |Propojí účet služby Azure Storage s datovou továrnou. V tomto kurzu je služba Azure Storage zdrojové úložiště dat a databáze Azure SQL je úložiště dat jímky pro aktivitu kopírování. Určuje účet úložiště, který obsahuje vstupní data pro aktivitu kopírování. |
-| Propojená služba Azure SQL Database |Propojí databázi Azure SQL s datovou továrnou. Určuje databázi Azure SQL, která uchovává výstupní data pro aktivitu kopírování. |
+| Propojená služba Azure Storage |Propojí účet služby Azure Storage s datovou továrnou. Azure Storage je zdrojové úložiště dat a Azure SQL Database je úložiště dat jímky pro aktivitu kopírování v tomto kurzu. Určuje účet úložiště, který obsahuje vstupní data pro aktivitu kopírování. |
+| Propojená služba Azure SQL Database |Propojí naši databázi v Azure SQL Database s datovou továrnou. Určuje databázi, která obsahuje výstupní data pro aktivitu kopírování. |
 | Vstupní datová sada Azure Blob |Odkazuje na propojenou službu Azure Storage. Propojená služba odkazuje na účet služby Azure Storage a datová sada Azure Blob určuje kontejner, složku a název souboru v úložišti, který obsahuje vstupní data. |
 | Výstupní datová sada Azure SQL |Odkazuje na propojenou službu Azure SQL. Propojená služba Azure SQL odkazuje na logický SQL Server a datová sada Azure SQL určuje název tabulky, která obsahuje výstupní data. |
-| Data Pipeline |Kanál má jednu aktivitu typu Kopírování, která přijímá datovou sadu Azure Blob jako vstup a datovou sadu Azure SQL jako výstup. Aktivita kopírování kopíruje data z Azure Blob do tabulky v databázi Azure SQL. |
+| Data Pipeline |Kanál má jednu aktivitu typu Kopírování, která přijímá datovou sadu Azure Blob jako vstup a datovou sadu Azure SQL jako výstup. Aktivita kopírování kopíruje data z objektu blob Azure do tabulky v Azure SQL Database. |
 
 Objekt pro vytváření dat může mít jeden nebo víc kanálů. Kanál může obsahovat jednu nebo víc aktivit. Existují dva typy aktivit: [aktivity přesunu dat](data-factory-data-movement-activities.md) a [transformace dat](data-factory-data-transformation-activities.md). V tomto kurzu vytvoříte kanál s jednou aktivitou (aktivita kopírování).
 
@@ -302,8 +302,8 @@ Vytvořte soubor JSON s názvem **ADFCopyTutorialARM-Parameters.json**, který o
         "sourceBlobContainer": { "value": "adftutorial" },
         "sourceBlobName": { "value": "emp.txt" },
         "sqlServerName": { "value": "<Name of the logical SQL server>" },
-        "databaseName": { "value": "<Name of the Azure SQL database>" },
-        "sqlServerUserName": { "value": "<Name of the user who has access to the Azure SQL database>" },
+        "databaseName": { "value": "<Name of the database>" },
+        "sqlServerUserName": { "value": "<Name of the user who has access to the database>" },
         "sqlServerPassword": { "value": "<password for the user>" },
         "targetSQLTable": { "value": "emp" }
     }
@@ -351,7 +351,7 @@ Vytvořte soubor JSON s názvem **ADFCopyTutorialARM-Parameters.json**, který o
    
     ![Domovská stránka datové továrny](media/data-factory-copy-activity-tutorial-using-azure-resource-manager-template/data-factory-home-page.png)  
 6. Postupujte podle pokynů v tématu [Monitorování datových sad a kanálu](data-factory-monitor-manage-pipelines.md) k monitorování kanálu a datových sad, které jste vytvořili v tomto kurzu. V současné době Visual Studio monitorování kanálů Data Factory nepodporuje.
-7. Když je řez ve stavu **Připraveno**, ověřte zkopírování dat do tabulky **emp** v databázi Azure SQL.
+7. Když je řez ve stavu **připraveno** , ověřte, že se data zkopírují do tabulky **EMP** v Azure SQL Database.
 
 
 Další informace o používání oken portálu Azure Portal k monitorování kanálu a datových sad, které jste vytvořili v tomto kurzu, najdete v článku [Monitorování datových sad a kanálu](data-factory-monitor-manage-pipelines.md).
@@ -413,7 +413,7 @@ Služba AzureStorageLinkedService propojí váš účet služby Azure Storage s�
 Vlastnost connectionString používá parametry storageAccountName a storageAccountKey. Hodnoty těchto parametrů se předávají pomocí konfiguračního souboru. Definice také používá proměnné: azureStorageLinkedService a DataFactory definované v šabloně. 
 
 #### <a name="azure-sql-database-linked-service"></a>Propojená služba Azure SQL Database
-Služba AzureSqlLinkedService propojí databázi Azure SQL s datovou továrnou. Data kopírovaná z úložiště objektů blob se ukládají do této databáze. V této databázi jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili tabulku emp. V této části zadáte název logického serveru SQL, název databáze, uživatelské jméno a heslo uživatele. Podrobnosti o vlastnostech JSON sloužících k definování propojené služby Azure SQL najdete v oddílu [Propojená služba Azure SQL](data-factory-azure-sql-connector.md#linked-service-properties).  
+AzureSqlLinkedService propojuje vaši databázi v Azure SQL Database s datovou továrnou. Data kopírovaná z úložiště objektů blob se ukládají do této databáze. V této databázi jste v rámci [požadavků](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) vytvořili tabulku emp. V této části zadáte název logického serveru SQL, název databáze, uživatelské jméno a heslo uživatele. Podrobnosti o vlastnostech JSON sloužících k definování propojené služby Azure SQL najdete v oddílu [Propojená služba Azure SQL](data-factory-azure-sql-connector.md#linked-service-properties).  
 
 ```json
 {
@@ -478,7 +478,7 @@ Propojená služba úložiště Azure určuje připojovací řetězec, který sl
 ```
 
 #### <a name="azure-sql-dataset"></a>Datová sada Azure SQL
-Zadáte název tabulky v databázi Azure SQL, která uchovává zkopírovaná data ze služby Azure Blob Storage. Podrobnosti o vlastnostech JSON sloužících k definování datové sady Azure SQL najdete v oddílu [Vlastnosti datové sady Azure SQL](data-factory-azure-sql-connector.md#dataset-properties). 
+V Azure SQL Database zadáte název tabulky, která obsahuje zkopírovaná data z úložiště objektů BLOB v Azure. Podrobnosti o vlastnostech JSON sloužících k definování datové sady Azure SQL najdete v oddílu [Vlastnosti datové sady Azure SQL](data-factory-azure-sql-connector.md#dataset-properties). 
 
 ```json
 {
@@ -572,7 +572,7 @@ Nadefinujete kanál, který kopíruje data z datové sady Azure Blob do datové 
 ```
 
 ## <a name="reuse-the-template"></a>Znovupoužití šablony
-V tomto kurzu jste vytvořili šablonu pro definování entit služby Data Factory a šablonu pro předávání hodnot parametrů. Kanál kopíruje data z účtu služby Azure Storage do databáze Azure SQL a tyto služby jsou určeny prostřednictvím parametrů. Chcete-li použít stejnou šablonu k nasazení entit služby Data Factory do různých prostředí, vytvořte pro každé prostředí soubor parametrů a použijte jej při nasazování příslušného prostředí.     
+V tomto kurzu jste vytvořili šablonu pro definování entit služby Data Factory a šablonu pro předávání hodnot parametrů. Kanál kopíruje data z účtu Azure Storage, aby se Azure SQL Database zadal prostřednictvím parametrů. Chcete-li použít stejnou šablonu k nasazení entit služby Data Factory do různých prostředí, vytvořte pro každé prostředí soubor parametrů a použijte jej při nasazování příslušného prostředí.     
 
 Příklad:  
 
@@ -591,7 +591,7 @@ Všimněte si, že první příkaz používá soubor parametrů pro vývojové p
 Šablonu můžete také znovu použít k provádění opakujících se úloh. Například: Potřebujete vytvořit mnoho datových továren s jedním nebo více kanály, které implementují stejnou logiku, ale každá datová továrna používá jiný účet služby Storage a SQL Database. V tomto scénáři použijete k vytvoření datových továren stejnou šablonu ve stejném prostředí (vývojové, testovací nebo produkční) s různými soubory parametrů.   
 
 ## <a name="next-steps"></a>Další kroky
-V tomto kurzu jste v operaci kopírování použili úložiště objektů blob jako zdrojové úložiště dat a databázi Azure SQL jako cílové úložiště dat. Následující tabulka obsahuje seznam úložišť dat podporovaných jako zdroje a cíle aktivitou kopírování: 
+V tomto kurzu jste jako zdrojové úložiště dat použili službu Azure Blob Storage a v rámci operace kopírování Azure SQL Database jako cílové úložiště dat. Následující tabulka obsahuje seznam úložišť dat podporovaných jako zdroje a cíle aktivitou kopírování: 
 
 [!INCLUDE [data-factory-supported-data-stores](../../../includes/data-factory-supported-data-stores.md)]
 

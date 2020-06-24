@@ -5,16 +5,16 @@ description: Přečtěte si, jak vytvořit v Azure PowerShellu aplikační brán
 services: application-gateway
 author: vhorne
 ms.service: application-gateway
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/14/2019
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: e05d84e8e06dbe63a1bc8e8ae1d401f186baac77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: b351a828c47058025247a3edd95f31dc6cc84295
+ms.sourcegitcommit: ad66392df535c370ba22d36a71e1bbc8b0eedbe3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80133067"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84806178"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-azure-powershell"></a>Vytvoření aplikační brány v Azure PowerShellu, která hostuje více webů
 
@@ -32,7 +32,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ![Příklad směrování na více webů](./media/tutorial-multiple-sites-powershell/scenario.png)
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -284,7 +284,7 @@ Get-AzPublicIPAddress -ResourceGroupName myResourceGroupAG -Name myAGPublicIPAdd
 
 ## <a name="test-the-application-gateway"></a>Testování brány Application Gateway
 
-Do adresního řádku prohlížeče zadejte název domény. Například http:\//www.contoso.com.
+Do adresního řádku prohlížeče zadejte název domény. Například http: \/ /www.contoso.com.
 
 ![Testování webu Contoso v aplikační bráně](./media/tutorial-multiple-sites-powershell/application-gateway-iistest.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Přírůstkové kopírování více tabulek pomocí PowerShellu
-description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z několika tabulek v databázi SQL Server do Azure SQL Database.
+description: V tomto kurzu vytvoříte kanál Azure Data Factory, který postupně kopíruje rozdílová data z několika tabulek v databázi SQL Server do databáze v Azure SQL Database.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -10,15 +10,15 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
-ms.date: 01/30/2020
-ms.openlocfilehash: ef756f1b9b96f0e8fe9b77e6ae8f00f077fd1b88
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.date: 06/10/2020
+ms.openlocfilehash: e7846ae0f52dfee4260838302d55213d2791eb07
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84559608"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85250957"
 ---
-# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-an-azure-sql-database-using-powershell"></a>Přírůstkové načtení dat z více tabulek v SQL Server do Azure SQL Database pomocí prostředí PowerShell
+# <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Přírůstkové načtení dat z více tabulek v SQL Server do Azure SQL Database pomocí prostředí PowerShell
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
@@ -70,7 +70,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 ## <a name="prerequisites"></a>Požadavky
 
 * **SQL Server**. V tomto kurzu použijete databázi SQL Server jako zdrojové úložiště dat. 
-* **Azure SQL Database**. Použijete databázi SQL jako úložiště dat jímky. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze Azure SQL](../azure-sql/database/single-database-create-quickstart.md), kde najdete kroky pro její vytvoření. 
+* **Azure SQL Database**. Jako úložiště dat jímky použijete databázi v Azure SQL Database. Pokud databázi SQL nemáte, přečtěte si téma [Vytvoření databáze v tématu Azure SQL Database](../azure-sql/database/single-database-create-quickstart.md) , kde najdete kroky pro její vytvoření. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Vytvoření zdrojových tabulek v databázi SQL Serveru
 
@@ -117,7 +117,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 2. V **Průzkumník serveru (SSMS)** nebo v **podokně připojení (Azure Data Studio)** klikněte pravým tlačítkem myši na databázi a vyberte možnost **Nový dotaz**.
 
-3. Spusťte na databázi SQL následující příkaz SQL, aby se vytvořily tabulky s názvem `customer_table` a `project_table`:  
+3. Spusťte na databázi následující příkaz SQL, aby se vytvořily tabulky s názvem `customer_table` a `project_table`:  
 
     ```sql
     create table customer_table
@@ -134,9 +134,9 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
     );
     ```
 
-### <a name="create-another-table-in-the-azure-sql-database-to-store-the-high-watermark-value"></a>Vytvoření další tabulky v Azure SQL Database k uložení hodnoty horní meze
+### <a name="create-another-table-in-azure-sql-database-to-store-the-high-watermark-value"></a>Vytvoření další tabulky v Azure SQL Database k uložení hodnoty horní meze
 
-1. Spuštěním následujícího příkazu SQL na databázi SQL vytvořte tabulku s názvem `watermarktable` pro uložení hodnoty meze: 
+1. Spusťte následující příkaz SQL pro vaši databázi a vytvořte tabulku s názvem `watermarktable` pro uložení hodnoty meze: 
     
     ```sql
     create table watermarktable
@@ -159,7 +159,7 @@ Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný](https://azur
 
 ### <a name="create-a-stored-procedure-in-the-azure-sql-database"></a>Vytvořit uloženou proceduru v Azure SQL Database 
 
-Spuštěním následujícího příkazu vytvořte v databázi SQL uloženou proceduru. Tato uložená procedura aktualizuje hodnotu meze po každém spuštění kanálu. 
+Spuštěním následujícího příkazu vytvořte v databázi uloženou proceduru. Tato uložená procedura aktualizuje hodnotu meze po každém spuštění kanálu. 
 
 ```sql
 CREATE PROCEDURE usp_write_watermark @LastModifiedtime datetime, @TableName varchar(50)
@@ -175,9 +175,9 @@ END
 
 ```
 
-### <a name="create-data-types-and-additional-stored-procedures-in-the-azure-sql-database"></a>Vytvoření datových typů a dalších uložených procedur v Azure SQL Database
+### <a name="create-data-types-and-additional-stored-procedures-in-azure-sql-database"></a>Vytvoření datových typů a dalších uložených procedur v Azure SQL Database
 
-Spuštěním následujícího dotazu vytvořte v databázi SQL dvě uložené procedury a dva datové typy. Slouží ke slučování dat ze zdrojových tabulek do cílových tabulek. 
+Spusťte následující dotaz pro vytvoření dvou uložených procedur a dvou datových typů ve vaší databázi. Slouží ke slučování dat ze zdrojových tabulek do cílových tabulek. 
 
 Aby bylo možné cestu snadno začít používat, přímo tyto uložené procedury předají rozdílová data v rámci přes proměnnou tabulky a pak je sloučí do cílového úložiště. Buďte opatrní, neočekává se, že "velký" počet rozdílových řádků (více než 100) se uloží do proměnné tabulky.  
 
@@ -283,19 +283,19 @@ Je třeba počítat s následujícím:
 
 * Pro vytvoření instancí služby Data Factory musí být uživatelský účet, který použijete pro přihlášení k Azure, členem rolí přispěvatel nebo vlastník nebo správcem předplatného Azure.
 
-* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, databáze SQL atd.) a výpočetní prostředí (Azure HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
+* Pokud chcete zobrazit seznam oblastí Azure, ve kterých je služba Data Factory aktuálně dostupná, na následující stránce vyberte oblasti, které vás zajímají, pak rozbalte **Analýza** a vyhledejte **Data Factory:**[Dostupné produkty v jednotlivých oblastech](https://azure.microsoft.com/global-infrastructure/services/). Úložiště dat (Azure Storage, SQL Database, spravovaná instance SQL atd.) a výpočetní prostředí (Azure HDInsight atd.) používané datovou továrnou mohou být v jiných oblastech.
 
 [!INCLUDE [data-factory-create-install-integration-runtime](../../includes/data-factory-create-install-integration-runtime.md)]
 
 ## <a name="create-linked-services"></a>Vytvoření propojených služeb
 
-V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro SQL Server databázi a Azure SQL Database. 
+V datové továrně vytvoříte propojené služby, abyste svá úložiště dat a výpočetní služby spojili s datovou továrnou. V této části vytvoříte propojené služby pro SQL Server databázi a databázi v Azure SQL Database. 
 
 ### <a name="create-the-sql-server-linked-service"></a>Vytvoření propojené služby SQL Serveru
 
 V tomto kroku propojíte databázi SQL Server s datovou továrnou.
 
-1. Vytvořte soubor JSON s názvem **SqlServerLinkedService. JSON** ve složce ve c:\adftutorials\inccopymultitabletutorial (vytvořte místní složky, pokud ještě neexistují) s následujícím obsahem. Vyberte správnou část na základě ověřování, které požíváte pro připojení k SQL Serveru.  
+1. Ve složce ve c:\adftutorials\inccopymultitabletutorial vytvořte soubor JSON s názvem **SqlServerLinkedService.js** (vytvořte místní složky, pokud ještě neexistují) s následujícím obsahem. Vyberte správnou část na základě ověřování, které požíváte pro připojení k SQL Serveru.  
 
     > [!IMPORTANT]
     > Vyberte správnou část na základě ověřování, které požíváte pro připojení k SQL Serveru.
@@ -372,9 +372,9 @@ V tomto kroku propojíte databázi SQL Server s datovou továrnou.
     Properties        : Microsoft.Azure.Management.DataFactory.Models.SqlServerLinkedService
     ```
 
-### <a name="create-the-sql-database-linked-service"></a>Vytvoření propojené služby databáze SQL
+### <a name="create-the-sql-database-linked-service"></a>Vytvoření propojené služby SQL Database
 
-1. Ve složce ve c:\adftutorials\inccopymultitabletutorial vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService. JSON** s následujícím obsahem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Než soubor uložíte, nahraďte název &lt; serveru &gt; , název &lt; databáze &gt; , &lt; uživatelské jméno &gt; a &lt; heslo &gt; názvem vaší databáze SQL Server, názvem databáze, uživatelským jménem a heslem. 
+1. Ve složce ve c:\adftutorials\inccopymultitabletutorial vytvořte soubor JSON s názvem **AzureSQLDatabaseLinkedService.js** s následujícím obsahem. (Pokud ještě neexistuje, vytvořte si ADF složky.) Než soubor uložíte, nahraďte název &lt; serveru &gt; , název &lt; databáze &gt; , &lt; uživatelské jméno &gt; a &lt; heslo &gt; názvem vaší databáze SQL Server, názvem databáze, uživatelským jménem a heslem. 
 
     ```json
     {  
@@ -411,7 +411,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
 
 ### <a name="create-a-source-dataset"></a>Vytvoření zdrojové datové sady
 
-1. Ve stejné složce vytvořte soubor JSON s názvem **SourceDataset. JSON** s následujícím obsahem: 
+1. Ve stejné složce vytvořte soubor JSON s názvem **SourceDataset.js** s následujícím obsahem: 
 
     ```json
     {  
@@ -453,7 +453,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
 
 ### <a name="create-a-sink-dataset"></a>Vytvoření datové sady jímky
 
-1. Ve stejné složce vytvořte soubor JSON s názvem **SinkDataset. JSON** s následujícím obsahem. Element tableName je nastaven kanálem dynamicky za běhu. Aktivita ForEach v kanálu prochází seznam názvů tabulek a při každé iteraci předává název tabulky této datové sadě. 
+1. Vytvořte soubor JSON s názvem **SinkDataset.js** ve stejné složce s následujícím obsahem. Element tableName je nastaven kanálem dynamicky za běhu. Aktivita ForEach v kanálu prochází seznam názvů tabulek a při každé iteraci předává název tabulky této datové sadě. 
 
     ```json
     {  
@@ -502,7 +502,7 @@ V tomto kroku vytvoříte datové sady, které představují zdroj dat, cíl dat
 
 V tomto kroku vytvoříte datovou sadu pro uložení hodnoty horní meze. 
 
-1. Ve stejné složce vytvořte soubor JSON s názvem **WatermarkDataset. JSON** s následujícím obsahem: 
+1. Ve stejné složce vytvořte soubor JSON s názvem **WatermarkDataset.js** s následujícím obsahem: 
 
     ```json
     {
@@ -549,7 +549,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
 
 ### <a name="create-the-pipeline"></a>Vytvoření kanálu
 
-1. Ve stejné složce vytvořte soubor JSON s názvem **IncrementalCopyPipeline. JSON** s následujícím obsahem: 
+1. Ve stejné složce vytvořte soubor JSON s názvem **IncrementalCopyPipeline.js** s následujícím obsahem: 
 
     ```json
     {  
@@ -783,7 +783,7 @@ Tento kanál dostává jako parametr seznam tabulek. **Aktivita foreach** proch�
  
 ## <a name="run-the-pipeline"></a>Spuštění kanálu
 
-1. Ve stejné složce vytvořte soubor parametrů s názvem **Parameters. JSON** s následujícím obsahem:
+1. Ve stejné složce vytvořte soubor parametrů s názvem **Parameters.js** s následujícím obsahem:
 
     ```json
     {

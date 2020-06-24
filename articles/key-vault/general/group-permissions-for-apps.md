@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/27/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 0d2666e2b56e73b809a0480d45fa3a4a63f06490
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 28765d3a4a0812f6f3631427432105fdc4650808
+ms.sourcegitcommit: 398fecceba133d90aa8f6f1f2af58899f613d1e3
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652217"
+ms.lasthandoff: 06/21/2020
+ms.locfileid: "85126225"
 ---
 # <a name="provide-key-vault-authentication-with-an-access-control-policy"></a>Zajištění Key Vault ověřování pomocí zásad řízení přístupu
 
@@ -60,10 +60,10 @@ Identifikátor objectId pro aplikace odpovídá přidruženému objektu služby.
 
 Existují dva způsoby, jak získat identifikátor objectId pro aplikaci.  Prvním je registrace aplikace pomocí Azure Active Directory. Pokud to chcete provést, postupujte podle kroků v rychlém startu [Registrace aplikace s platformou Microsoft Identity](../../active-directory/develop/quickstart-register-app.md). Po dokončení registrace bude identifikátor objectID uveden jako "aplikace (klienta)".
 
-Druhým je Vytvoření instančního objektu v okně terminálu. Pomocí Azure CLI pomocí příkazu [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) zadejte jedinečný název služby pro příznak-n ve formátu http:// &lt; My-Unique-Service-State-name &gt; .
+Druhým je Vytvoření instančního objektu v okně terminálu. Pomocí Azure CLI, použijte příkaz [AZ AD SP Create-for-RBAC](/cli/azure/ad/sp?view=azure-cli-latest#az-ad-sp-create-for-rbac) a zadejte jedinečný hlavní název služby pro příznak-n ve formátu http:// &lt; My-Unique-Service-Principal-Name &gt; .
 
 ```azurecli-interactive
-az ad sp create-for-rbac -n "http://<my-unique-service-principle-name"
+az ad sp create-for-rbac -n "http://<my-unique-service-principal-name"
 ```
 
 Identifikátor objectId bude uveden ve výstupu jako `clientID` .
@@ -72,7 +72,7 @@ Pomocí Azure PowerShell použijte rutinu [New-AzADServicePrincipal](/powershell
 
 
 ```azurepowershell-interactive
-New-AzADServicePrincipal -DisplayName <my-unique-service-principle-name>
+New-AzADServicePrincipal -DisplayName <my-unique-service-principal-name>
 ```
 
 Identifikátor objectId bude uveden ve výstupu jako `Id` (ne `ApplicationId` ).

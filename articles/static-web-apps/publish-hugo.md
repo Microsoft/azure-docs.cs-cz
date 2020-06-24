@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: aapowell
-ms.openlocfilehash: 697fe423d6f112dcd3a03ec739f7e11db3043c53
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.openlocfilehash: 250be11f498e825c3e487abfac1c0acc585e5317
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/23/2020
-ms.locfileid: "85207817"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297937"
 ---
 # <a name="tutorial-publish-a-hugo-site-to-azure-static-web-apps-preview"></a>Kurz: publikování webu Hugo ve službě Azure static Web Apps Preview
 
@@ -144,42 +144,6 @@ Dále přidáte nastavení konfigurace, které proces sestavení používá k se
 1. Kliknutím na tlačítko **Revize + vytvořit** ověřte správnost podrobností.
 
 1. Kliknutím na **vytvořit** zahájíte vytváření statických Web Apps Azure a zřídíte akci GitHubu pro nasazení.
-
-1. Až se nasazení dokončí, přejděte do terminálu a odešlete potvrzení do svého počítače pomocí akce GitHub.
-
-   ```bash
-   git pull
-   ```
-
-1. Otevřete aplikaci Hugo v textovém editoru a otevřete soubor _. GitHub/Workflows/Azure-Pages-<WORKFLOW_NAME>. yml_ .
-
-1. Pokud `- uses: actions/checkout@v2` chcete sestavit aplikaci Hugo, nahraďte řádek (řádek 18) následujícím:. Pokud vyžadujete Hugo rozšířený, zrušte komentář `extended: true` .
-
-   ```yml
-   - uses: actions/checkout@v2
-     with:
-       submodules: true  # Fetch Hugo themes (true OR recursive)
-       fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
-
-   - name: Setup Hugo
-     uses: peaceiris/actions-hugo@v2.4.11
-     with:
-       hugo-version: "latest"  # Hugo version: latest OR x.y.z
-       # extended: true
-
-   - name: Build
-     run: hugo
-   ```
-   
-   Další podrobnosti o instalaci Hugo do nástroje GitHub Action Runner najdete v tématu [peaceiris/Actions-Hugo](https://github.com/peaceiris/actions-hugo).
-
-1. Potvrďte aktualizovaný pracovní postup a předejte ho do GitHubu.
-
-   ```bash
-   git add -A
-   git commit -m "Updating GitHub Actions workflow"
-   git push
-   ```
 
 1. Počkejte na dokončení akce GitHubu.
 

@@ -1,93 +1,93 @@
 ---
-title: Integrace Azure Key Vault s Kubernetes
-description: V tomto kurzu budete mít přístup k tajným klíčům z Azure Key Vault a budete je moct načíst pomocí ovladače pro úložiště v angličtině (rozhraní kontejneru úložiště) a pak se připojit k Kubernetes luskům.
+title: Integrace služby Azure Key Vault s protokolem Kubernetes
+description: V tomto kurzu získáte přístup k tajným klíčům z trezoru klíčů Azure a načítáte z něj tajné klíče pro připojení do Kubernetes lusků pomocí ovladače rozhraní úložiště kontejnerů (CSI).
 author: taytran0
 ms.author: t-trtr
 ms.service: key-vault
 ms.topic: tutorial
 ms.date: 06/04/2020
-ms.openlocfilehash: 27d602f22aa3915f39f21ac924afa42b98e70720
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: f13872352e8b4da89d2dcf955440bc54be0fe000
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667134"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817332"
 ---
-# <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-secret-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro úložiště tajného úložiště v Kubernetes
+# <a name="tutorial-configure-and-run-the-azure-key-vault-provider-for-the-secrets-store-csi-driver-on-kubernetes"></a>Kurz: konfigurace a spuštění poskytovatele Azure Key Vault pro ovladač tajných klíčů úložiště pro Kubernetes
 
-V tomto kurzu budete mít přístup k tajným klíčům z Azure Key Vault a budete je moct načíst pomocí ovladače pro úložiště v angličtině (rozhraní kontejneru úložiště) a pak se připojit k Kubernetes luskům.
+V tomto kurzu získáte přístup k tajným klíčům a jejich načítání z trezoru klíčů Azure pomocí ovladače rozhraní kontejnerů úložiště klíčů (CSI) pro připojení tajných kódů do Kubernetes lusků.
 
 V tomto kurzu se naučíte:
 
 > [!div class="checklist"]
-> * Vytvoření instančního objektu nebo použití spravovaných identit
-> * Nasazení clusteru služby Azure Kubernetes pomocí Azure CLI
-> * Nainstalovat ovladač Helm pro ukládání tajných klíčů
-> * Vytvoření Azure Key Vault a nastavení tajných kódů
-> * Vytvoření vlastního objektu SecretProviderClass
-> * Přiřazení instančního objektu nebo použití spravovaných identit
-> * Nasaďte svůj pod s připojenými tajnými kódy z Key Vault
+> * Vytvořte instanční objekt nebo použijte spravované identity.
+> * Nasazení clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
+> * Nainstalujte Helm a ovladač CSI pro úložiště tajných kódů.
+> * Vytvořte Trezor klíčů Azure a nastavte své tajné kódy.
+> * Vytvořte vlastní objekt SecretProviderClass.
+> * Přiřaďte objekt služby nebo použijte spravované identity.
+> * Nasaďte svůj pod s připojenými tajnými kódy z trezoru klíčů.
 
 ## <a name="prerequisites"></a>Požadavky
 
-Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
+* Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
-Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
+* Než začnete s tímto kurzem, nainstalujte rozhraní příkazového [řádku Azure](https://docs.microsoft.com/cli/azure/install-azure-cli-windows?view=azure-cli-latest).
 
 ## <a name="create-a-service-principal-or-use-managed-identities"></a>Vytvoření instančního objektu nebo použití spravovaných identit
 
 Pokud máte v úmyslu používat spravované identity, můžete přejít k další části.
 
-Vytvořte instanční objekt, který bude řídit, k jakým prostředkům bude možné přicházet z Azure Key Vault. Přístup k tomuto instančnímu objektu je omezen rolemi, které jsou jim přiřazeny. Tato funkce poskytuje kontrolu nad tím, jak může instanční objekt spravovat vaše tajné kódy. V následujícím příkladu se název instančního objektu **contosoServicePrincipal**.
+Vytvořte instanční objekt pro řízení prostředků, ke kterým se dá dostat z vašeho trezoru klíčů Azure. Přístup k tomuto instančnímu objektu je omezen rolemi, které jsou jim přiřazeny. Tato funkce poskytuje kontrolu nad tím, jak může instanční objekt spravovat vaše tajné kódy. V následujícím příkladu má název instančního objektu hodnotu *contosoServicePrincipal*.
 
 ```azurecli
 az ad sp create-for-rbac --name contosoServicePrincipal --skip-assignment
 ```
 Tato operace vrátí řadu párů klíč/hodnota:
 
-![Image](../media/kubernetes-key-vault-1.png)
+![Snímek obrazovky zobrazující appId a heslo pro contosoServicePrincipal](../media/kubernetes-key-vault-1.png)
 
-Zkopírujte **AppID** a **heslo**. Tyto přihlašovací údaje budete potřebovat později.
+Zkopírujte přihlašovací údaje **appId** a **Password** pro pozdější použití.
 
+## <a name="deploy-an-azure-kubernetes-service-aks-cluster-by-using-the-azure-cli"></a>Nasazení clusteru služby Azure Kubernetes (AKS) pomocí rozhraní příkazového řádku Azure
 
+Nemusíte používat Azure Cloud Shell. Na příkazovém řádku (terminálu) s nainstalovaným rozhraním Azure CLI stačí. 
 
-## <a name="deploy-an-azure-kubernetes-service-cluster-using-azure-cli"></a>Nasazení clusteru služby Azure Kubernetes pomocí Azure CLI
+Dokončete části Vytvoření skupiny prostředků, vytvoření clusteru AKS a připojení ke clusteru v tématu [nasazení clusteru služby Azure Kubernetes pomocí rozhraní příkazového řádku Azure](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough). 
 
-Nemusíte používat Azure Cloud Shell, na příkazovém řádku (terminálu) s nainstalovaným rozhraním Azure CLI dojde. 
+> [!NOTE] 
+> Pokud plánujete místo instančního objektu použít identitu pod, nezapomeňte ji povolit při vytváření clusteru Kubernetes, jak je znázorněno v následujícím příkazu:
+>
+> ```azurecli
+> az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
+> ```
 
-Postupujte podle tohoto [Průvodce](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough) a dokončete následující části: **vytvořte skupinu prostředků**, **vytvořte cluster AKS**a **Připojte se ke clusteru**.
-
-**Poznámka:** Pokud plánujete použít identitu pod, místo instančního objektu. Nezapomeňte ho povolit při vytváření clusteru Kubernetes, jak je znázorněno níže:
-
-```azurecli
-az aks create -n contosoAKSCluster -g contosoResourceGroup --kubernetes-version 1.16.9 --node-count 1 --enable-managed-identity
-```
-
-1. [Nastavte proměnnou prostředí PATH](https://www.java.com/en/download/help/path.xml) na soubor kubectl.exe, který se stáhl.
-1. Pomocí níže uvedeného příkazu ověřte verzi Kubernetes. Tento příkaz zobrazí výstup verze klienta a serveru. Verze klienta je kubectl.exe, kterou jste nainstalovali, zatímco verze serveru je služba Azure Kubernetes Services, na které je cluster spuštěný.
+1. [Nastavte proměnnou prostředí PATH](https://www.java.com/en/download/help/path.xml) na soubor *kubectl.exe* , který jste stáhli.
+1. Pomocí následujícího příkazu, který vypíše verzi klienta a serveru, se podívejte na verzi Kubernetes. Verze klienta je *kubectl.exe* soubor, který jste nainstalovali, a verze serveru je služba Azure Kubernetes Services (AKS), na které je váš cluster spuštěný.
     ```azurecli
     kubectl version
     ```
-1. Zajistěte, aby byla verze Kubernetes buď **v 1.16.0** , nebo vyšší. Tento příkaz provede upgrade clusteru Kubernetes i fondu uzlů. Spuštění může trvat několik minut. V tomto příkladu je skupina prostředků **contosoResourceGroup** a cluster Kubernetes je **contosoAKSCluster**.
+1. Ujistěte se, že verze Kubernetes je 1.16.0 nebo novější. Následující příkaz upgraduje cluster Kubernetes i fond uzlů. Spuštění příkazu může trvat několik minut. V tomto příkladu je skupina prostředků *contosoResourceGroup*a cluster Kubernetes je *contosoAKSCluster*.
     ```azurecli
     az aks upgrade --kubernetes-version 1.16.9 --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
-1. Zobrazte metadata clusteru AKS, který jste vytvořili, pomocí příkazu níže. Zkopírujte **principalId**, **ClientID**, **SubscriptionId**a **nodeResourceGroup**.
+1. Pokud chcete zobrazit metadata clusteru AKS, který jste vytvořili, použijte následující příkaz. Zkopírujte **principalId**, **ClientID**, **SubscriptionId**a **nodeResourceGroup** pro pozdější použití.
+
     ```azurecli
     az aks show --name contosoAKSCluster --resource-group contosoResourceGroup
     ```
 
-    Toto je výstup s oběma parametry zvýrazněnými.
+    Výstup zobrazuje jak zvýrazněné parametry:
     
-    ![](../media/kubernetes-key-vault-2.png) ![ Obrázek obrázku](../media/kubernetes-key-vault-3.png)
+    ![Snímek obrazovky s hodnotami principalId a clientId v rozhraní příkazového řádku Azure se zvýrazněným snímkem pro rozhraní příkazového ](../media/kubernetes-key-vault-2.png) ![ řádku Azure CLI s zvýrazněnými hodnotami SubscriptionId a nodeResourceGroup](../media/kubernetes-key-vault-3.png)
     
-## <a name="install-helm-and-secrets-store-csi-driver"></a>Nainstalovat ovladač Helm pro ukládání tajných klíčů
+## <a name="install-helm-and-the-secrets-store-csi-driver"></a>Instalace Helm a ovladače pro uložení tajných kódů
 
-Pokud chcete nainstalovat ovladač [Helm](https://helm.sh/docs/intro/install/) pro úložiště tajných klíčů, budete muset nainstalovat.
+K instalaci ovladače pro ukládání tajných klíčů si musíte nejdřív nainstalovat [Helm](https://helm.sh/docs/intro/install/).
 
-Rozhraní ovladače pro [úložiště tajných klíčů](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/charts/csi-secrets-store-provider-azure/README.md) umožňuje získat obsah, který je uložený v instanci Azure Key Vault, a použít ho k připojení těchto tajných obsahů do Kubernetes lusků.
+Pomocí rozhraní ovladače pro [úložiště tajných klíčů](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/charts/csi-secrets-store-provider-azure/README.md) můžete získat tajné kódy, které jsou uložené v instanci trezoru klíčů Azure, a pak pomocí rozhraní ovladače připojit tajný obsah do Kubernetes lusků.
 
-1. Zkontrolujte verzi Helm a ujistěte se, že je V3 nebo vyšší:
+1. Ověřte, že verze Helm je V3 nebo novější:
     ```azurecli
     helm version
     ```
@@ -98,30 +98,32 @@ Rozhraní ovladače pro [úložiště tajných klíčů](https://github.com/Azur
     helm install csi-secrets-store-provider-azure/csi-secrets-store-provider-azure --generate-name
     ```
 
-## <a name="create-an-azure-key-vault-and-set-secrets"></a>Vytvoření Azure Key Vault a nastavení tajných kódů
+## <a name="create-an-azure-key-vault-and-set-your-secrets"></a>Vytvoření trezoru klíčů Azure a nastavení tajných kódů
 
-Podle tohoto [Průvodce](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli) vytvořte vlastní Key Vault a nastavte své tajné kódy.
+Pokud chcete vytvořit vlastní Trezor klíčů a nastavit tajné kódy, postupujte podle pokynů v části [nastavení a načtení tajného klíče z Azure Key Vault pomocí Azure CLI](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-cli).
 
-**Poznámka:** Nemusíte používat Azure Cloud Shell ani vytvořit novou skupinu prostředků. Použití skupiny prostředků vytvořené dříve pro cluster Kubernetes je přesné.
+> [!NOTE] 
+> Nemusíte používat Azure Cloud Shell ani vytvářet novou skupinu prostředků. Můžete použít skupinu prostředků, kterou jste vytvořili dříve pro cluster Kubernetes.
 
 ## <a name="create-your-own-secretproviderclass-object"></a>Vytvoření vlastního objektu SecretProviderClass
 
-Pomocí této [šablony](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass.yaml) můžete vytvořit vlastní objekt SecretProviderClass a zadat parametry specifické pro konkrétního poskytovatele pro daný ovladač pro úložiště tajných klíčů. Tento objekt vám poskytne přístup k identitě pro váš Key Vault.
+Chcete-li vytvořit vlastní objekt SecretProviderClass s parametry specifickými pro konkrétního zprostředkovatele pro ovladač pro úložiště tajných klíčů, [použijte tuto šablonu](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/v1alpha1_secretproviderclass.yaml). Tento objekt zajistí přístup k identitě vašeho trezoru klíčů.
 
-Pomocí zadaného souboru Sample SecretProviderClass YAML. Chystáte se vyplnit chybějící parametry. Jsou vyžadovány následující parametry:
+V ukázkovém souboru SecretProviderClass YAML vyplňte chybějící parametry. Jsou vyžadovány následující parametry:
 
-1.  **userAssignedIdentityID:** ID klienta instančního objektu
-1.  **Trezor klíčů:** Název Key Vault
-1.  **objekty:** Tento objekt bude obsahovat veškerý tajný obsah, který chcete připojit.
-    1.  **ObjectName:** Název tajného obsahu
-    1.  **ObjectType:** Typ objektu (tajný kód, klíč, certifikát)
-1.  **zdroj dat:** Název skupiny prostředků
-1.  **SubscriptionId:** ID předplatného Key Vault
-1.  **tenantID:** ID tenanta (tj. ID adresáře) Key Vault
+* **userAssignedIdentityID**: ID klienta instančního objektu
+* název **trezoru klíčů: název**vašeho trezoru klíčů
+* **objekty**: kontejner pro všechen tajný obsah, který chcete připojit.
+    * **ObjectName**: název tajného obsahu
+    * **ObjectType**: typ objektu (tajný kód, klíč, certifikát)
+* Skupina prostředků **Resources**: název skupiny prostředků
+* **SubscriptionId**: ID předplatného vašeho trezoru klíčů
+* **tenantID**: ID klienta nebo ID adresáře vašeho trezoru klíčů
 
-Níže je aktualizovaná šablona, stáhněte ji jako soubor. yaml a vyplňte odpovídající požadovaná pole. V tomto příkladu je Key Vault **contosoKeyVault5** a má dva tajné klíče, **secret1** a **secret2**.
+Aktualizovaná šablona je uvedena v následujícím kódu. Stáhněte si ho jako soubor YAML a vyplňte požadovaná pole. V tomto příkladu je Trezor klíčů **contosoKeyVault5**. Má dva tajné klíče, **secret1** a **secret2**.
 
-**Poznámka:** Pokud používáte spravované identity, pole **usePodIdentity** musí mít **hodnotu true** a pole **userAssignedIdentityID** nechte pouze v uvozovkách **""**. 
+> [!NOTE] 
+> Pokud používáte spravované identity, nastavte hodnotu **usePodIdentity** na *true*a jako dvojici uvozovek (**""**) nastavte hodnotu **userAssignedIdentityID** . 
 
 ```yaml
 apiVersion: secrets-store.csi.x-k8s.io/v1alpha1
@@ -133,62 +135,64 @@ spec:
   parameters:
     usePodIdentity: "false"                   # [REQUIRED] Set to "true" if using managed identities
     useVMManagedIdentity: "false"             # [OPTIONAL] if not provided, will default to "false"
-    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED] If using a Service Principal, use the client id to specify which user assigned managed identity to use. If using a user assigned identity as the VM's managed identity, then specify the identity's client id. If empty, then defaults to use the system assigned identity on the VM
+    userAssignedIdentityID: "servicePrincipalClientID"       # [REQUIRED] If you're using a service principal, use the client id to specify which user-assigned managed identity to use. If you're using a user-assigned identity as the VM's managed identity, specify the identity's client id. If the value is empty, it defaults to use the system-assigned identity on the VM
                                                              #     az ad sp show --id http://contosoServicePrincipal --query appId -o tsv
-                                                             #     the above command will return the Client ID of your service principal
-    keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the Key Vault
+                                                             #     the preceding command will return the client ID of your service principal
+    keyvaultName: "contosoKeyVault5"          # [REQUIRED] the name of the key vault
                                               #     az keyvault show --name contosoKeyVault5
-                                              #     the above command will displays the Key Vault metadata, which includes the subscription ID, resource group name, Key Vault 
-    cloudName: ""                             # [OPTIONAL for Azure] if not provided, azure environment will default to AzurePublicCloud
+                                              #     the preceding command will display the key vault metadata, which includes the subscription ID, resource group name, key vault 
+    cloudName: ""                             # [OPTIONAL for Azure] if not provided, Azure environment will default to AzurePublicCloud
     objects:  |
       array:
         - |
           objectName: secret1                 # [REQUIRED] object name
                                               #     az keyvault secret list --vault-name “contosoKeyVault5”
-                                              #     the above command will display a list of secret names from your Key Vault
-          objectType: secret                  # [REQUIRED] object types: secret, key or cert
+                                              #     the above command will display a list of secret names from your key vault
+          objectType: secret                  # [REQUIRED] object types: secret, key, or cert
           objectVersion: ""                   # [OPTIONAL] object versions, default to latest if empty
         - |
           objectName: secret2
           objectType: secret
           objectVersion: ""
-    resourceGroup: "contosoResourceGroup"     # [REQUIRED] the resource group name of the Key Vault
-    subscriptionId: "subscriptionID"          # [REQUIRED] the subscription ID of the Key Vault
-    tenantId: "tenantID"                      # [REQUIRED] the tenant ID of the Key Vault
+    resourceGroup: "contosoResourceGroup"     # [REQUIRED] the resource group name of the key vault
+    subscriptionId: "subscriptionID"          # [REQUIRED] the subscription ID of the key vault
+    tenantId: "tenantID"                      # [REQUIRED] the tenant ID of the key vault
 ```
-Níže je uveden výstup konzoly pro "AZ klíčů trezor show--Name contosoKeyVault5" s relevantními zvýrazněnými metadaty:
+Následující obrázek ukazuje výstup konzoly pro příkaz **AZ datatrezor show--Name contosoKeyVault5** s relevantními zvýrazněnými metadaty:
 
-![Image](../media/kubernetes-key-vault-4.png)
+![Snímek obrazovky s výstupem konzoly pro příkaz AZ webtrezor show--Name contosoKeyVault5](../media/kubernetes-key-vault-4.png)
 
 ## <a name="assign-your-service-principal-or-use-managed-identities"></a>Přiřazení instančního objektu nebo použití spravovaných identit
 
-### <a name="using-service-principal"></a>Použití instančního objektu
+### <a name="assign-a-service-principal"></a>Přiřazení instančního objektu
 
-Pokud používáte instanční objekt. Abyste mohli získat přístup k vašemu Key Vault a načíst tajné kódy, musíte mu udělit oprávnění k vašemu objektu služby. Přiřaďte roli **Čtenář** a udělte instančnímu objektu oprávnění k **získání** tajných kódů z vaší Key Vault, a to provedením následujících kroků:
+Pokud používáte instanční objekt, udělte mu oprávnění pro přístup k trezoru klíčů a načtení tajných kódů. Přiřaďte roli *Čtenář* a udělte instančnímu objektu oprávnění k *získání* tajných kódů z trezoru klíčů následujícím způsobem:
 
-1. Přiřaďte instanční objekt existujícímu Key Vault. Parametr **$AZURE _CLIENT_ID** je identifikátor **appId** , který jste zkopírovali po vytvoření instančního objektu.
+1. Přiřaďte instanční objekt k existujícímu trezoru klíčů. Parametr **$AZURE _CLIENT_ID** je identifikátor **appId** , který jste zkopírovali po vytvoření instančního objektu.
     ```azurecli
     az role assignment create --role Reader --assignee $AZURE_CLIENT_ID --scope /subscriptions/$SUBID/resourcegroups/$KEYVAULT_RESOURCE_GROUP/providers/Microsoft.KeyVault/vaults/$KEYVAULT_NAME
     ```
 
-    Níže je uveden výstup příkazu: 
+    Výstup příkazu je zobrazen na následujícím obrázku: 
 
-    ![Image](../media/kubernetes-key-vault-5.png)
+    ![Snímek obrazovky zobrazující hodnotu principalId](../media/kubernetes-key-vault-5.png)
 
 1. Udělte instančnímu objektu oprávnění k získání tajných kódů:
     ```azurecli
     az keyvault set-policy -n $KEYVAULT_NAME --secret-permissions get --spn $AZURE_CLIENT_ID
     ```
 
-1. Teď, když jste nakonfigurovali instanční objekt tak, aby měl oprávnění ke čtení tajných kódů z vašeho Key Vault. **_CLIENT_SECRET $Azure** je **heslo** k instančnímu objektu. Přidejte přihlašovací údaje instančního objektu jako tajný kód Kubernetes, který je přístupný ovladači pro úložiště tajných kódů.
+1. Nyní jste nakonfigurovali instanční objekt s oprávněním ke čtení tajných kódů z trezoru klíčů. **_CLIENT_SECRET $Azure** je heslo k instančnímu objektu. Přidejte přihlašovací údaje instančního objektu jako tajný kód Kubernetes, který je přístupný ovladači pro ukládání tajných klíčů.
     ```azurecli
     kubectl create secret generic secrets-store-creds --from-literal clientid=$AZURE_CLIENT_ID --from-literal clientsecret=$AZURE_CLIENT_SECRET
     ```
 
-**Poznámka:** Pokud se vám zobrazí chyba později při nasazování rozhraní Kubernetes pod o neplatné ID tajného klíče klienta. Můžete mít starší ID tajného klíče klienta, jehož platnost vypršela, nebo resetovat. Pokud chcete tento problém vyřešit, odstraňte tajné kódy tajných klíčů-Store-přihlašovací údaje a vytvořte nový s aktuálním ID tajného klíče klienta. Spuštěním následujícího příkazu odstraňte tajné klíče-Store-přihlašovací údaje:
-```azurecli
-kubectl delete secrets secrets-store-creds
-```
+> [!NOTE] 
+> Pokud nasazujete Kubernetes pod a obdržíte chybu týkající se neplatného ID tajného klíče klienta, můžete mít starší ID tajného klíče klienta, jehož platnost vypršela nebo resetovat. Pokud chcete tento problém vyřešit, odstraňte tajné klíče *-Store-přihlašovací* údaje a vytvořte nový s aktuálním ID tajného kódu klienta. Pokud chcete odstranit *tajná klíčová úložiště – přihlašovací*údaje, spusťte následující příkaz:
+>
+> ```azurecli
+> kubectl delete secrets secrets-store-creds
+> ```
 
 Pokud jste zapomněli ID tajného kódu klienta objektu služby, můžete ho resetovat pomocí následujícího příkazu:
 
@@ -196,10 +200,11 @@ Pokud jste zapomněli ID tajného kódu klienta objektu služby, můžete ho res
 az ad sp credential reset --name contosoServicePrincipal --credential-description "APClientSecret" --query password -o tsv
 ```
 
-### <a name="using-managed-identities"></a>Použití spravovaných identit
+### <a name="use-managed-identities"></a>Použití spravovaných identit
 
 Pokud používáte spravované identity, přiřaďte ke clusteru AKS, který jste vytvořili, konkrétní role. 
-1. Pokud chcete vytvořit nebo vypsat/načíst spravovanou identitu přiřazenou uživatelem, musí být k vašemu clusteru AKS přiřazená role [Přispěvatel spravované identity](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor) . Ujistěte se, že **$ClientID** je v clusteru Kubernetes.
+
+1. Pokud chcete vytvořit, vypsat nebo načíst spravovanou identitu přiřazenou uživatelem, musí mít váš cluster AKS přiřazenou roli [Přispěvatel spravovaných identit](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#managed-identity-contributor) . Ujistěte se, že **$ClientID** je ClientID clusteru Kubernetes.
 
     ```azurecli
     az role assignment create --role "Managed Identity Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
@@ -207,58 +212,62 @@ Pokud používáte spravované identity, přiřaďte ke clusteru AKS, který jst
     az role assignment create --role "Virtual Machine Contributor" --assignee $clientId --scope /subscriptions/$SUBID/resourcegroups/$NODE_RESOURCE_GROUP
     ```
 
-1. Nainstalujte do AKS identitu pro Azure Active Directory (AAD).
+1. Nainstalujte do AKS identitu služby Azure Active Directory (Azure AD).
     ```azurecli
     helm repo add aad-pod-identity https://raw.githubusercontent.com/Azure/aad-pod-identity/master/charts
 
     helm install pod-identity aad-pod-identity/aad-pod-identity
     ```
 
-1. Vytvořte identitu AAD. Zkopírujte pole **ClientID** a **principalId**.
+1. Vytvořte identitu Azure AD. Ve výstupu zkopírujte **ClientID** a **principalId** pro pozdější použití.
     ```azurecli
     az identity create -g $resourceGroupName -n $identityName
     ```
 
-1. Přiřaďte roli Čtenář k identitě AAD, kterou jste právě vytvořili pro svůj Key Vault. Pak Udělte identitě oprávnění k získání tajných kódů z vašeho Key Vault. Chystáte se použít **ClientID** a **PrincipalId** z identity Azure, kterou jste právě vytvořili.
+1. Přiřaďte roli *Čtenář* k identitě Azure AD, kterou jste vytvořili v předchozím kroku vašeho trezoru klíčů, a pak udělte oprávnění identit k získání tajných kódů z trezoru klíčů. Použijte **ClientID** a **PrincipalId** z identity Azure AD.
     ```azurecli
     az role assignment create --role "Reader" --assignee $principalId --scope /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/contosoResourceGroup/providers/Microsoft.KeyVault/vaults/contosoKeyVault5
 
     az keyvault set-policy -n contosoKeyVault5 --secret-permissions get --spn $clientId
     ```
 
-## <a name="deploy-your-pod-with-mounted-secrets-from-key-vault"></a>Nasaďte svůj pod s připojenými tajnými kódy z Key Vault
+## <a name="deploy-your-pod-with-mounted-secrets-from-your-key-vault"></a>Nasazení zařízení s připojenými tajnými kódy z trezoru klíčů
 
-Následující příkaz provede konfiguraci objektu SecretProviderClass:
+Pokud chcete nakonfigurovat objekt SecretProviderClass, spusťte následující příkaz:
 ```azurecli
 kubectl apply -f secretProviderClass.yaml
 ```
 
-### <a name="using-service-principal"></a>Použití instančního objektu
+### <a name="use-a-service-principal"></a>Použití instančního objektu
 
-Pokud používáte instanční objekt. Níže uvedený příkaz nasadí své Kubernetes lusky s SecretProviderClass a tajnými klíči-Store-přihlašovací údaje, které jste nakonfigurovali. Tady je šablona pro nasazení pro [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-secrets-store-inline-volume-secretproviderclass.yaml) a [Windows](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/windows-pod-secrets-store-inline-volume-secret-providerclass.yaml) .
+Pokud používáte instanční objekt, pomocí následujícího příkazu nasaďte Kubernetes lusky s SecretProviderClass a tajnými klíči-Store-přihlašovací údaje, které jste nakonfigurovali dříve. Tady jsou šablony nasazení:
+* Pro [Linux](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/nginx-pod-secrets-store-inline-volume-secretproviderclass.yaml)
+* Pro [Windows](https://github.com/Azure/secrets-store-csi-driver-provider-azure/blob/master/examples/windows-pod-secrets-store-inline-volume-secret-providerclass.yaml)
+
 ```azurecli
 kubectl apply -f updateDeployment.yaml
 ```
 
-### <a name="using-managed-identities"></a>Použití spravovaných identit
+### <a name="use-managed-identities"></a>Použití spravovaných identit
 
-Pokud používáte spravované identity. V clusteru vytvoříte **AzureIdentity** , který bude odkazovat na identitu, kterou jste vytvořili dříve. Pak vytvořte **AzureIdentityBinding** , který bude odkazovat na **AzureIdentity** , který jste vytvořili. Použijte níže uvedenou šablonu, vyplňte odpovídající parametry a uložte je jako **podIdentityAndBinding. yaml**.  
+Pokud používáte spravované identity, vytvořte v clusteru *AzureIdentity* , který odkazuje na identitu, kterou jste vytvořili dříve. Pak vytvořte *AzureIdentityBinding* , který odkazuje na AzureIdentity, který jste vytvořili. Vyplňte parametry v následující šabloně a pak ji uložte jako *podIdentityAndBinding. yaml*.  
+
 ```yml
 apiVersion: aadpodidentity.k8s.io/v1
 kind: AzureIdentity
 metadata:
-    name: "azureIdentityName"               # The name of your Azure Idenity
+    name: "azureIdentityName"               # The name of your Azure identity
 spec:
-    type: 0                                 # Set type: 0 for Managed Service Identity
+    type: 0                                 # Set type: 0 for managed service identity
     resourceID: /subscriptions/<SUBID>/resourcegroups/<RESOURCEGROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<AZUREIDENTITYNAME>
-    clientID: "managedIdentityClientId"     # The clientId of your Azure Identity that you created earlier
+    clientID: "managedIdentityClientId"     # The clientId of the Azure AD identity that you created earlier
 ---
 apiVersion: aadpodidentity.k8s.io/v1
 kind: AzureIdentityBinding
 metadata:
     name: azure-pod-identity-binding
 spec:
-    azureIdentity: "azureIdentityName"      # The name of your Azure Idenity
+    azureIdentity: "azureIdentityName"      # The name of your Azure identity
     selector: azure-pod-identity-binding-selector
 ```
     
@@ -268,7 +277,7 @@ Spusťte následující příkaz pro provedení vazby:
 kubectl apply -f podIdentityAndBinding.yaml
 ```
 
-Další je skutečné nasazení pod. Níže je uvedený soubor YAML nasazení, který použije vazbu identity pod v posledním kroku. Uložte tento soubor jako **podBindingDeployment. yaml**.
+Dále nasadíte pod. Následující kód je soubor YAML nasazení, který používá vazbu identity pod předchozím krokem. Uložte tento soubor jako *podBindingDeployment. yaml*.
 
 ```yml
 kind: Pod
@@ -299,36 +308,39 @@ Spusťte následující příkaz, který nasadí svůj pod:
 ```azurecli
 kubectl apply -f podBindingDeployment.yaml
 ```
-### <a name="check-status-and-secret-content"></a>Kontrolovat stav a tajný obsah 
-Chcete-li zobrazit lusky, které jste nasadili:
+
+### <a name="check-the-pod-status-and-secret-content"></a>Podívejte se na stav pod a tajný obsah. 
+
+Chcete-li zobrazit lusky, které jste nasadili, spusťte následující příkaz:
 ```azurecli
 kubectl get pods
 ```
 
-Chcete-li zjistit stav pod, použijte následující příkaz:
+Chcete-li zjistit stav pod, spusťte následující příkaz:
 ```azurecli
 kubectl describe pod/nginx-secrets-store-inline
 ```
 
-![Image](../media/kubernetes-key-vault-6.png)
+![Snímek obrazovky výstupu rozhraní příkazového řádku Azure, který zobrazuje stav spuštěno a zobrazuje všechny události jako "normální" ](../media/kubernetes-key-vault-6.png)
 
-Nasazený pod by měl být ve stavu spuštěno. V části "události" v dolní části jsou všechny typy událostí vlevo klasifikovány jako "normální".
-Jakmile ověříte, že je spuštěný, můžete ověřit, že vaše zařízení má tajná klíč z Key Vault.
+V okně výstup by měl být nasazený pod v *běžícím* stavu. V části **events (události** ) v dolní části jsou všechny typy událostí zobrazeny jako *normální*.
 
-Zobrazení všech tajných kódů, které má pod:
+Po ověření, že je pod tím spuštěná možnost pod, můžete ověřit, že v poli obsahuje tajné kódy z trezoru klíčů.
+
+Chcete-li zobrazit všechny tajné kódy, které jsou obsaženy v části pod, spusťte následující příkaz:
 ```azurecli
 kubectl exec -it nginx-secrets-store-inline -- ls /mnt/secrets-store/
 ```
 
-Postup získání obsahu z konkrétního tajného klíče:
+Chcete-li zobrazit obsah konkrétního tajného klíče, spusťte následující příkaz:
 ```azurecli
 kubectl exec -it nginx-secrets-store-inline -- cat /mnt/secrets-store/secret1
 ```
 
-Ověřte obsah zobrazeného tajného kódu.
+Ověřte, zda se zobrazuje obsah tajného klíče.
 
 ## <a name="next-steps"></a>Další kroky
 
-Ujistěte se, že je vaše Key Vault obnovitelné:
+Informace o tom, jak zajistit, aby se váš Trezor klíčů mohl obnovit, najdete v těchto tématech:
 > [!div class="nextstepaction"]
 > [Zapnout obnovitelné odstranění](https://docs.microsoft.com/azure/key-vault/general/soft-delete-clid)

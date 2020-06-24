@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: tutorial
 ms.date: 06/08/2020
 ms.author: spelluru
-ms.openlocfilehash: e6733bdc91ba26d52366de09ed6bc255dcd4ff98
-ms.sourcegitcommit: 1de57529ab349341447d77a0717f6ced5335074e
+ms.openlocfilehash: 76d63b508705bf426b8fc86b3d27d75241d6f246
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84610681"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85212169"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Kurz: streamování velkých objemů dat do datového skladu
 Azure [Event Grid](overview.md) je inteligentní služba Směrování událostí, která umožňuje reagovat na oznámení (události) z aplikací a služeb. Například může aktivovat funkci Azure Functions pro zpracování Event Hubs dat zachycených do úložiště objektů BLOB v Azure nebo v Azure Data Lake Storage a migrovat data do jiných úložišť dat. V tomto [Event Hubs a v ukázce Event Grid Integration](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) se dozvíte, jak používat Event Hubs se Event Grid k bezproblémové migraci zachycených Event Hubs dat z úložiště objektů blob na SQL Data Warehouse.
@@ -45,7 +45,7 @@ V tomto článku proveďte následující kroky:
 K dokončení tohoto kurzu potřebujete:
 
 * Předplatné Azure. Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/), ještě než začnete.
-* [Visual studio 2019](https://www.visualstudio.com/vs/) s pracovními postupy pro: vývoj desktopových aplikací pro .NET, vývoj pro Azure, vývoj pro ASP.NET a web, vývoj v Node. js a vývoj v jazyce Python.
+* [Visual studio 2019](https://www.visualstudio.com/vs/) s pracovními postupy pro: vývoj desktopových aplikací pro .NET, vývoj pro Azure, vývoj pro ASP.NET a vývoj webů Node.js, vývoj a vývoj v Pythonu
 * Stáhněte si [vzorový projekt EventHubsCaptureEventGridDemo](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) do svého počítače.
 
 ## <a name="deploy-the-infrastructure"></a>Nasazení infrastruktury
@@ -60,10 +60,10 @@ V tomto kroku nasadíte požadovanou infrastrukturu pomocí [šablony Správce p
 
 ### <a name="launch-azure-cloud-shell-in-azure-portal"></a>Spustit Azure Cloud Shell v Azure Portal
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. V horní části vyberte tlačítko **Cloud Shell** .
 
-    ![Portál Azure Portal](media/event-grid-event-hubs-integration/azure-portal.png)
+    ![portál Azure](media/event-grid-event-hubs-integration/azure-portal.png)
 3. V dolní části prohlížeče se zobrazí Cloud Shell otevřít.
 
     ![Cloud Shell](media/event-grid-event-hubs-integration/launch-cloud-shell.png) 
@@ -173,7 +173,7 @@ Vytvořte tabulku v datovém skladu spuštěním skriptu [CreateDataWarehouseTab
 2. Na stránce SQL Data Warehouse v nabídce vlevo vyberte **Editor dotazů (Preview)** . 
 
     ![Stránka SQL Data Warehouse](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
-2. Zadejte jméno **uživatele** a **heslo** pro systém SQL Server a vyberte **OK**. K úspěšnému přihlášení k systému SQL Server je potřeba, abyste si na bránu firewall přihlásili celou vaši IP adresu klienta. 
+2. Zadejte jméno **uživatele** a **heslo** pro systém SQL Server a vyberte **OK**. Možná budete muset přidat IP adresu klienta do brány firewall pro úspěšné přihlášení k systému SQL Server. 
 
     ![Ověřování přes server SQL](media/event-grid-event-hubs-integration/sql-server-authentication.png)
 4. V okně dotazu zkopírujte a spusťte následující skript SQL: 
@@ -280,7 +280,7 @@ Nastavili jste centrum událostí, datový sklad SQL, aplikaci Azure Function Ap
    private const string EventHubName = "hubdatamigration";
    ```
 
-6. Sestavte řešení. Spusťte aplikaci **WindTurbineGenerator. exe** . 
+6. Sestavte řešení. Spusťte aplikaci **WindTurbineGenerator.exe** . 
 7. Po pár minutách zadejte dotaz do tabulky v datovém skladu a zkontrolujte, že obsahuje migrovaná data.
 
     ![Výsledky dotazu](media/event-grid-event-hubs-integration/query-results.png)

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 06/26/2018
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 39e108451e4c19e77e01b5bcc5d8dd21e86ad73a
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 6a2a5df011cd074bbccc0c13570b2f49d902a0c3
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547414"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694302"
 ---
 # <a name="create-list-or-delete-a-user-assigned-managed-identity-using-rest-api-calls"></a>Vytvoření, vypsání nebo odstranění spravované identity přiřazené uživatelem pomocí REST API volání
 
@@ -32,11 +32,11 @@ V tomto článku se dozvíte, jak vytvořit, vypsat a odstranit spravovanou iden
 
 ## <a name="prerequisites"></a>Požadavky
 
-- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#how-does-the-managed-identities-for-azure-resources-work)**.
+- Pokud neznáte spravované identity prostředků Azure, přečtěte si [část přehled](overview.md). **Nezapomeňte si projít [rozdíl mezi spravovanou identitou přiřazenou systémem a uživatelem](overview.md#managed-identity-types)**.
 - Pokud ještě nemáte účet Azure, [zaregistrujte si bezplatný účet](https://azure.microsoft.com/free/) před tím, než budete pokračovat.
 - Pokud používáte systém Windows, nainstalujte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo použijte [Azure Cloud Shell](../../cloud-shell/overview.md) v Azure Portal.
 - Pokud používáte [subsystém Windows pro Linux](https://msdn.microsoft.com/commandline/wsl/about) nebo [distribuci systému Linux](/cli/azure/install-azure-cli-apt?view=azure-cli-latest), [nainstalujte místní konzolu Azure CLI](/cli/azure/install-azure-cli).
-- Pokud používáte místní konzolu Azure CLI, přihlaste se k Azure `az login` pomocí účtu, který je přidružený k předplatnému Azure. chcete nasadit nebo načíst informace o spravované identitě přiřazené uživatelem.
+- Pokud používáte místní konzolu Azure CLI, přihlaste se k Azure pomocí `az login` účtu, který je přidružený k předplatnému Azure. chcete nasadit nebo načíst informace o spravované identitě přiřazené uživatelem.
 - Načte přístupový token nosiče pomocí `az account get-access-token` k provedení následujících operací spravované identity přiřazené uživatelem.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -65,9 +65,9 @@ s/<RESOURCE GROUP>/providers/Microsoft.ManagedIdentity/userAssignedIdentities/<U
 |*Typ obsahu*     | Povinná hodnota. Nastavte na `application/json`.        |
 |*Udělován*     | Povinná hodnota. Nastavte na platný `Bearer` přístupový token.        |
 
-**Text požadavku**
+**Text žádosti**
 
-|Název  |Popis  |
+|Name  |Description  |
 |---------|---------|
 |location     | Povinná hodnota. Umístění prostředku.        |
 

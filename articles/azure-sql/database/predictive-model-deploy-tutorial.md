@@ -14,21 +14,22 @@ ms.reviewer: davidph
 manager: cgronlun
 ms.date: 07/26/2019
 ROBOTS: NOINDEX
-ms.openlocfilehash: 86c73944753126aa3fb5c14c8d6626a449365c64
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 84c0f6564fc9ab8abc43205b58d9445cda82a2da
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84053325"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253813"
 ---
 # <a name="tutorial-deploy-a-predictive-model-in-r-with-azure-sql-database-machine-learning-services-preview"></a>Kurz: Nasazení prediktivního modelu v R s Azure SQL Database Machine Learning Services (Preview)
+
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-V třetí části tohoto kurzu se seznámíte s prediktivním modelem, který je vyvíjený v jazyce R, do databáze SQL pomocí Azure SQL Database Machine Learning Services (Preview).
+V třetí části tohoto výukového kurzu nasadíte prediktivní model vyvinutý v jazyce R do databáze v Azure SQL Database pomocí Azure SQL Database Machine Learning Services (Preview).
 
 [!INCLUDE[ml-preview-note](../../../includes/sql-database-ml-preview-note.md)]
 
-Uloženou proceduru vytvoříte pomocí vloženého skriptu jazyka R, který vytváří předpovědi pomocí modelu. Vzhledem k tomu, že se váš model spouští ve službě Azure SQL Database, můžete ho snadno vyškolet s daty uloženými v databázi.
+Uloženou proceduru vytvoříte pomocí vloženého skriptu jazyka R, který vytváří předpovědi pomocí modelu. Vzhledem k tomu, že se váš model spouští v databázi, můžete ho snadno vyškolet pro data uložená v databázi.
 
 V tomto článku se naučíte, jak pomocí skriptů R, které jste vytvořili v částech One a 2, jak:
 
@@ -200,7 +201,7 @@ RentalCount_Predicted
 332.571428571429
 ```
 
-Úspěšně jste vytvořili, proučeni a nasadili model ve službě Azure SQL Database. Pak jste tento model použili v uložené proceduře k předpovědi hodnot na základě nových dat.
+Úspěšně jste vytvořili, proučeni a nasadili model v databázi v Azure SQL Database. Pak jste tento model použili v uložené proceduře k předpovědi hodnot na základě nových dat.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
 

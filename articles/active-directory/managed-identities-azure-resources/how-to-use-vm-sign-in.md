@@ -1,6 +1,6 @@
 ---
-title: Použití spravovaných identit na virtuálním počítači Azure pro přihlášení – Azure AD
-description: Podrobný postup a příklady použití identit spravované virtuálními počítači Azure pro instanční objekt služby Azure pro přihlášení a přístup k prostředkům pro klienta
+title: Použití spravovaných identit na virtuálním počítači Azure pro přihlášení – Azure ADV
+description: Podrobné pokyny a příklady použití identit spravovaných virtuálním počítačem Azure pro instanční objekt služby Azure pro přihlašování a přístup k prostředkům klienta.
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/01/2017
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 34f4dc749c0254b5aa4e9ff018d2a869832de3f0
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 1f626b9e6626f5fe74796baf2b591214bfd98c85
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "74547391"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84694174"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-for-sign-in"></a>Použití spravovaných identit pro prostředky Azure na virtuálním počítači Azure pro přihlášení 
 
@@ -41,7 +41,7 @@ Pokud máte v úmyslu použít Azure PowerShell nebo příklady Azure CLI v tomt
 
 ## <a name="overview"></a>Přehled
 
-Spravované identity pro prostředky Azure poskytují [objekt instančního objektu](../develop/developer-glossary.md#service-principal-object) , který se [vytvoří po povolení spravovaných identit pro prostředky Azure](overview.md#how-does-the-managed-identities-for-azure-resources-work) na virtuálním počítači. Instančnímu objektu se může udělit přístup k prostředkům Azure a používá se jako identita klienty skriptu a příkazového řádku pro přihlášení a přístup k prostředkům. Aby bylo možné přistupovat k zabezpečeným prostředkům v rámci vlastní identity, je třeba, aby klient skriptu:  
+Spravované identity pro prostředky Azure poskytují [instanční objekt služby](../develop/developer-glossary.md#service-principal-object) , který se [vytvoří po povolení spravovaných identit pro prostředky Azure](overview.md) na virtuálním počítači. Instančnímu objektu se může udělit přístup k prostředkům Azure a používá se jako identita klienty skriptu a příkazového řádku pro přihlášení a přístup k prostředkům. Aby bylo možné přistupovat k zabezpečeným prostředkům v rámci vlastní identity, je třeba, aby klient skriptu:  
 
    - musí být zaregistrované a odsouhlasené s Azure AD jako důvěrná/Webová klientská aplikace.
    - Přihlaste se pod svým instančním objektem a použijte přihlašovací údaje aplikace (které jsou ve skriptu nejspíš vložené).
@@ -53,7 +53,7 @@ Se spravovanými identitami pro prostředky Azure již není nutné, aby klient 
 Následující skript ukazuje, jak:
 
 1. Přihlaste se ke službě Azure AD v části spravovaná identita virtuálního počítače pro objekt služby Azure sources.  
-2. Zavolejte Azure Resource Manager a Získejte ID objektu služby virtuálního počítače. CLI se postará o správu získání a používání tokenu automaticky. Nezapomeňte nahradit název virtuálního počítače pro `<VM-NAME>`.  
+2. Zavolejte Azure Resource Manager a Získejte ID objektu služby virtuálního počítače. CLI se postará o správu získání a používání tokenu automaticky. Nezapomeňte nahradit název virtuálního počítače pro `<VM-NAME>` .  
 
    ```azurecli
    az login --identity

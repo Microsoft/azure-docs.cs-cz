@@ -5,14 +5,14 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 06/02/2020
+ms.date: 06/15/2020
 ms.author: spelluru
-ms.openlocfilehash: 19a22a0a3b528a9a72fdd51c589e42bf2fba5ce7
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: d9ba83d12e73b3ebceaee3167cdcf7f27922b686
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669932"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84885247"
 ---
 # <a name="create-view-and-manage-event-grid-system-topics-using-azure-cli"></a>Vytváření, zobrazování a Správa systémových témat Event Grid pomocí Azure CLI
 V tomto článku se dozvíte, jak vytvořit a spravovat systémová témata pomocí Azure CLI. Přehled systémových témat najdete v tématu [Systémová témata](system-topics.md).
@@ -20,14 +20,14 @@ V tomto článku se dozvíte, jak vytvořit a spravovat systémová témata pomo
 ## <a name="install-extension-for-azure-cli"></a>Nainstalovat rozšíření pro Azure CLI
 V případě Azure CLI potřebujete [rozšíření Event Grid](/cli/azure/azure-cli-extensions-list).
 
-V Cloudshellu:
+V Cloud Shell:
 
 - Pokud jste dříve nainstalovali rozšíření, aktualizujte ho:`az extension update -n eventgrid`
 - Pokud jste rozšíření dříve neinstalovali, nainstalujte ho:`az extension add -n eventgrid`
 
 Pro místní instalaci:
 
-1. [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Ujistěte se, že máte nejnovější verzi, pomocí kontroly pomocí AZ--Version.
+1. [Nainstalujte rozhraní příkazového řádku Azure CLI](/cli/azure/install-azure-cli). Ujistěte se, že máte nejnovější verzi, pomocí kontroly `az --version` .
 2. Odinstalujte předchozí verze rozšíření:`az extension remove -n eventgrid`
 3. Nainstalujte rozšíření eventgrid s`az extension add -n eventgrid`
 
@@ -36,30 +36,43 @@ Pro místní instalaci:
 - Chcete-li nejprve vytvořit systémové téma na zdroji Azure a pak vytvořit odběr události pro toto téma, přečtěte si následující referenční témata:
     - [AZ eventgrid System-téma Create](/cli/azure/ext/eventgrid/eventgrid/system-topic?view=azure-cli-latest#ext-eventgrid-az-eventgrid-system-topic-create)
 
-        ```azurecli
+        ```azurecli-interactive
+        # Get the ID of the Azure source (for example: Azure Storage account)
+        storageid=$(az storage account show \
+                --name <AZURE STORAGE ACCOUNT NAME> \
+                --resource-group <AZURE RESOURCE GROUP NAME> \
+                    --query id --output tsv)
+    
+        # Create the system topic on the Azure source (example: Azure Storage account)
         az eventgrid system-topic create \
-            -g myResourceGroup \
-            --name systemtopic1 \
-            --location westus2 \
+            -g <AZURE RESOURCE GROUP NAME> \
+            --name <SPECIFY SYSTEM TOPIC NAME> \
+            --location <LOCATION> \
             --topic-type microsoft.storage.storageaccounts \
-            --source /subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.Storage/storageAccounts/storagegaccountname
+            --source $storageid
+        ```           
+
+        Seznam `topic-type` hodnot, které můžete použít k vytvoření systémového tématu, získáte spuštěním následujícího příkazu. Tyto hodnoty typů tématu reprezentují zdroje událostí, které podporují vytváření systémových témat. Seznam prosím ignorujte `Microsoft.EventGrid.Topics` a `Microsoft.EventGrid.Domains` ze seznamu. 
+
+        ```azurecli-interactive
+        az eventgrid topic-type  list --output json | grep -w id
         ```
     - [AZ eventgrid System-téma Event-Subscription Create](/cli/azure/ext/eventgrid/eventgrid/system-topic/event-subscription?view=azure-cli-latest#ext-eventgrid-az-eventgrid-system-topic-event-subscription-create)
 
-        ```azurecli
-        az eventgrid system-topic event-subscription create --name es1 \
-            -g rg1 --system-topic-name systemtopic1 \
-            --endpoint https://contoso.azurewebsites.net/api/f1?code=code         
-          ```
-- To create a system topic (implicitly) when creating an event subscription for an Azure source, use the [az eventgrid event-subscription create](/cli/azure/ext/eventgrid/eventgrid/event-subscription?view=azure-cli-latest#ext-eventgrid-az-eventgrid-event-subscription-create) method. Here's an example:
+        ```azurecli-interactive
+        az eventgrid system-topic event-subscription create --name <SPECIFY EVENT SUBSCRIPTION NAME> \
+            -g rg1 --system-topic-name <SYSTEM TOPIC NAME> \
+            --endpoint <ENDPOINT URL>         
+        ```
+- Pokud chcete vytvořit systémové téma (implicitně) při vytváření odběru událostí pro zdroj Azure, použijte metodu [AZ eventgrid Event-Subscription Create](/cli/azure/ext/eventgrid/eventgrid/event-subscription?view=azure-cli-latest#ext-eventgrid-az-eventgrid-event-subscription-create) . Tady je příklad:
     
-    ```azurecli
-    storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
-    endpoint=https://$sitename.azurewebsites.net/api/updates
+    ```azurecli-interactive
+    storageid=$(az storage account show --name <AZURE STORAGE ACCOUNT NAME> --resource-group <AZURE RESOURCE GROUP NAME> --query id --output tsv)
+    endpoint=<ENDPOINT URL>
 
     az eventgrid event-subscription create \
       --source-resource-id $storageid \
-      --name <event_subscription_name> \
+      --name <EVENT SUBSCRIPTION NAME> \
       --endpoint $endpoint
     ```
     Kurz s podrobnými pokyny najdete v tématu [přihlášení k odběru účtu úložiště](../storage/blobs/storage-blob-event-quickstart.md?toc=%2Fazure%2Fevent-grid%2Ftoc.json#subscribe-to-your-storage-account).
@@ -69,13 +82,13 @@ Chcete-li zobrazit všechna systémová témata a podrobnosti o vybraném systé
 
 - [AZ eventgrid System – seznam témat](/cli/azure/ext/eventgrid/eventgrid/system-topic?view=azure-cli-latest#ext-eventgrid-az-eventgrid-system-topic-list)
 
-    ```azurecli
+    ```azurecli-interactive
     az eventgrid system-topic list   
      ```
 - [AZ eventgrid System-téma show](/cli/azure/ext/eventgrid/eventgrid/system-topic?view=azure-cli-latest#ext-eventgrid-az-eventgrid-system-topic-show)
 
-    ```azurecli
-    az eventgrid system-topic show -g rg1 -n systemtopic1    
+    ```azurecli-interactive
+    az eventgrid system-topic show -g <AZURE RESOURCE GROUP NAME> -n <SYSTEM TOPIC NAME>     
      ```
 
 ## <a name="delete-a-system-topic"></a>Odstranit systémové téma
@@ -83,8 +96,8 @@ Chcete-li odstranit systémové téma, použijte následující příkaz:
 
 - [AZ eventgrid System-téma Delete](/cli/azure/ext/eventgrid/eventgrid/system-topic?view=azure-cli-latest#ext-eventgrid-az-eventgrid-system-topic-delete)
 
-    ```azurecli
-    az eventgrid system-topic delete -g myResourceGroup --name systemtopic1  
+    ```azurecli-interactive
+    az eventgrid system-topic delete -g <AZURE RESOURCE GROUP NAME> --name <SYSTEM TOPIC NAME>   
      ```
 
 ## <a name="next-steps"></a>Další kroky
