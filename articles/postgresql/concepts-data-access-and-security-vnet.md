@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 512ad8f93da53afb618491cd1769645d8edb0b14
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: bee705e33267a765c1fb5300c0bfe2d04ff2015d
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "75965841"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099642"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-postgresql---single-server"></a>Použití koncových bodů a pravidel služby Virtual Network pro Azure Database for PostgreSQL-Single server
 
@@ -45,7 +45,7 @@ Pravidlo virtuální sítě přikáže serveru Azure Database for PostgreSQL, ab
 
 
 
-<a name="anch-benefits-of-a-vnet-rule-68b" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="benefits-of-a-virtual-network-rule"></a>Výhody pravidla virtuální sítě
 
@@ -69,7 +69,7 @@ Pokud byl váš **Microsoft. SQL** Server uzlem v podsíti ve vaší virtuální
 
 Od srpna 2018 však služba Azure Database for PostgreSQL ještě nepatří mezi služby, které je možné přiřadit přímo do podsítě.
 
-<a name="anch-details-about-vnet-rules-38q" />
+<a name="anch-details-about-vnet-rules-38q"></a>
 
 ## <a name="details-about-virtual-network-rules"></a>Podrobnosti o pravidlech virtuální sítě
 
@@ -89,8 +89,8 @@ Každé pravidlo virtuální sítě se vztahuje na celý Azure Database for Post
 
 V rámci správy koncových bodů služby Virtual Network je oddělení rolí zabezpečení. Pro každou z následujících rolí se vyžaduje akce:
 
-- **Správce sítě:** &nbsp; zapněte koncový bod.
-- **Správce databáze:** &nbsp; aktualizujte seznam řízení přístupu (ACL) pro přidání dané podsítě do serveru Azure Database for PostgreSQL.
+- **Správce sítě:** &nbsp; Zapněte koncový bod.
+- **Správce databáze:** &nbsp; Aktualizujte seznam řízení přístupu (ACL), chcete-li přidat danou podsíť do serveru Azure Database for PostgreSQL.
 
 *Alternativa RBAC:*
 
@@ -102,7 +102,7 @@ V Azure máte možnost použít [řízení přístupu na základě role (RBAC)][
 > V některých případech jsou Azure Database for PostgreSQL a VNet-Subnet v různých předplatných. V těchto případech je nutné zajistit následující konfigurace:
 > - Oba odběry musí být ve stejném Azure Active Directory tenantovi.
 > - Uživatel má požadovaná oprávnění k zahájení operací, jako je například povolení koncových bodů služby a přidání podsítě virtuální sítě do daného serveru.
-> - Ujistěte se, že oba odběry mají registrovaného poskytovatele prostředků **Microsoft. SQL** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
+> - Ujistěte se, že oba odběry mají zaregistrovaný poskytovatel prostředků **Microsoft. SQL** i **Microsoft. DBforPostgreSQL** . Další informace najdete v tématu [Resource-Manager – registrace][resource-manager-portal] .
 
 ## <a name="limitations"></a>Omezení
 

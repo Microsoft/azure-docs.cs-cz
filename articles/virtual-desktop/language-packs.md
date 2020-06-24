@@ -4,16 +4,16 @@ description: Jak nainstalovat jazykové sady pro virtuální počítače s Windo
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 04/03/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c40df9d821e069e2cd5ff0c42d5841f6b9041c96
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7d05c1222ff43537ab8dad34588b80fe537fd0a1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80634032"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85200405"
 ---
 # <a name="install-language-packs"></a>Instalace jazykových sad
 
@@ -32,7 +32,7 @@ Instalace jazykových sad:
 
 1. Přihlaste se jako správce.
 2. Ujistěte se, že máte nainstalované všechny nejnovější aktualizace pro Windows a Windows Store.
-3. Přejít na **Nastavení** > **čas &** > **oblasti**jazyka.
+3. Přejít na **Nastavení**  >  **čas &**  >  **oblasti**jazyka.
 4. V části **země nebo oblast**vyberte upřednostňovanou zemi nebo oblast z rozevírací nabídky.
     V tomto příkladu vybereme **Francii**, jak je znázorněno na následujícím snímku obrazovky:
 
@@ -40,7 +40,7 @@ Instalace jazykových sad:
 
 5. Potom vyberte **jazyk**a pak vyberte **Přidat jazyk**. V seznamu vyberte jazyk, který chcete nainstalovat, a pak vyberte **Další**.
 6. Když se otevře okno **instalovat jazykové funkce** , zaškrtněte políčko **nainstalovat jazykovou sadu a nastavte možnost jazyk zobrazení systému Windows**.
-7. Vyberte **Install** (Nainstalovat).
+7. Vyberte **Nainstalovat**.
 8. Chcete-li přidat více jazyků najednou, vyberte možnost **Přidat jazyk**a poté opakujte postup, chcete-li přidat jazyk v krocích 5 a 6. Tento postup opakujte pro každý jazyk, který chcete nainstalovat. V jednom okamžiku však můžete nastavit pouze jeden jazyk jako jazyk zobrazení.
 
     Pojďme si projít rychlou vizuální ukázkou. Následující obrázky ukazují, jak nainstalovat francouzské a holandské jazykové sady a pak jako jazyk zobrazení nastavit francouzštinu.
@@ -57,7 +57,7 @@ Instalace jazykových sad:
 
 9. Pokud se zobrazí okno s výzvou k odhlášení od vaší relace. Odhlaste se a znovu se přihlaste. Váš jazyk zobrazení by teď měl být vybraný jako jazyk.
 
-10.  Přejdete na **ovládací panel** > **hodiny a oblast oblasti** > **.**
+10.  Přejdete na **ovládací panel**  >  **hodiny a oblast oblasti**  >  **Region**.
 
 11.  Po otevření okna **region (oblast** ) vyberte kartu **Správa** a pak vyberte **Kopírovat nastavení**.
 
@@ -67,7 +67,7 @@ Instalace jazykových sad:
 
 14.  Otevře se okno s oznámením o restartování vaší relace. Vyberte **restartovat nyní**.
 
-15.  Až se znovu přihlásíte, vraťte se do **ovládacích panelů** > **hodiny a oblast oblasti** > **.**
+15.  Až se znovu přihlásíte, vraťte se do **ovládacích panelů**  >  **hodiny a oblast oblasti**  >  **Region**.
 
 16.  Vyberte kartu **Správa** .
 
@@ -89,13 +89,13 @@ Pro Sysprep počítač:
 
 1. Otevřete Powershell jako správce.
 2. Spuštěním následující rutiny přejdete do správného adresáře:
-   
+
     ```powershell
     cd Windows\System32\Sysprep
     ```
 
 3. Dále spusťte následující rutinu:
-    
+
     ```powershell
     .\sysprep.exe
     ```
@@ -109,7 +109,7 @@ Pro Sysprep počítač:
 
 Pokud se během procesu Sysprep zobrazí chybová zpráva, měli byste postupovat takto:
 
-1. Otevřete **jednotku C** a klikněte na **Windows** > **system32 Sysprep** > **Panther**a pak otevřete soubor **Setuperr** .
+1. Otevřete **jednotku C** a klikněte na **Windows**  >  **system32 Sysprep**  >  **Panther**a pak otevřete soubor **Setuperr** .
 
    Text v souboru chyby vám sdělí, že musíte odinstalovat konkrétní jazykový balíček, jak je znázorněno na následujícím obrázku. Zkopírujte název jazykových balíčků pro další krok.
 
@@ -121,7 +121,7 @@ Pokud se během procesu Sysprep zobrazí chybová zpráva, měli byste postupova
    Remove-AppxPackage <package name>
    ```
 
-3. Ujistěte se, že jste balíček odebrali opětovným spuštěním `Remove-AppxPackage` rutiny. Pokud jste balíček úspěšně odebrali, měla by se zobrazit zpráva s informacemi o tom, že balíček, který se pokoušíte odebrat, není zde.
+3. Ujistěte se, že jste balíček odebrali `Remove-AppxPackage` opětovným spuštěním rutiny. Pokud jste balíček úspěšně odebrali, měla by se zobrazit zpráva s informacemi o tom, že balíček, který se pokoušíte odebrat, není zde.
 
 4. Spusťte `sysprep.exe` rutinu znovu.
 

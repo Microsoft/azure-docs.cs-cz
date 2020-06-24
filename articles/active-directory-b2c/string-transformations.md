@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c2291d4d2eca2abd11ef9c0f18f3fda52424ab93
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: d22d0da692516c89f6dd5ca7377ec83d7c430280
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739069"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203431"
 ---
 # <a name="string-claims-transformations"></a>Transformace deklarací řetězců
 
@@ -41,7 +41,7 @@ Transformace deklarací **AssertStringClaimsAreEqual** je vždy prováděna z [t
 
 Pomocí této transformace deklarací identity se můžete ujistit, že dvě ClaimTypes mají stejnou hodnotu. V takovém případě je vyvolána chybová zpráva. Následující příklad zkontroluje, zda je **strongAuthenticationEmailAddress** ClaimType rovno hodnotě deklarace identity typu **e-mail** . V opačném případě je vyvolána chybová zpráva.
 
-```XML
+```xml
 <ClaimsTransformation Id="AssertEmailAndStrongAuthenticationEmailAddressAreEqual" TransformationMethod="AssertStringClaimsAreEqual">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="strongAuthenticationEmailAddress" TransformationClaimType="inputClaim1" />
@@ -55,7 +55,7 @@ Pomocí této transformace deklarací identity se můžete ujistit, že dvě Cla
 
 
 Technický profil **neinteraktivního ověření přihlášení** volá transformaci deklarací **AssertEmailAndStrongAuthenticationEmailAddressAreEqual** .
-```XML
+```xml
 <TechnicalProfile Id="login-NonInteractive">
   ...
   <OutputClaimsTransformations>
@@ -66,7 +66,7 @@ Technický profil **neinteraktivního ověření přihlášení** volá transfor
 
 Technický profil s vlastním uplatněním volá ověřovací **přihlášení – neinteraktivní** technický profil.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationStringsAreNotEqual">Custom error message the email addresses you provided are not the same.</Item>
@@ -98,7 +98,7 @@ Změní velikost případu poskytnuté deklarace na nižší nebo velká písmen
 
 Pomocí této transformace deklarace identity změňte libovolný řetězec ClaimType na nižší nebo velká písmena.
 
-```XML
+```xml
 <ClaimsTransformation Id="ChangeToLower" TransformationMethod="ChangeCase">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="inputClaim1" />
@@ -127,12 +127,12 @@ Vytvoří deklaraci řetězce ze zadaného vstupního parametru v transformaci.
 
 | Položka | TransformationClaimType | Typ dat | Poznámky |
 |----- | ----------------------- | --------- | ----- |
-| InputParameter | value | řetězec | Řetězec, který má být nastaven. Tento vstupní parametr podporuje [výrazy transformace deklarací řetězců](string-transformations.md#string-claim-transformations-expressions). |
+| InputParameter | hodnota | řetězec | Řetězec, který má být nastaven. Tento vstupní parametr podporuje [výrazy transformace deklarací řetězců](string-transformations.md#string-claim-transformations-expressions). |
 | OutputClaim | createdClaim | řetězec | Deklarace ClaimType, která je vytvořena po vyvolání této transformace deklarací, s hodnotou zadanou ve vstupním parametru. |
 
 Tuto transformaci deklarací identity použijte k nastavení hodnoty ClaimType typu String.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateTermsOfService" TransformationMethod="CreateStringClaim">
   <InputParameters>
     <InputParameter Id="value" DataType="string" Value="Contoso terms of service..." />
@@ -164,7 +164,7 @@ Určete, zda jedna deklarace identity řetězce je shodná s jinou. Výsledkem j
 
 Pomocí této transformace deklarací identity zjistíte, jestli je deklarace identity rovna jiné deklaraci identity. Například následující transformace deklarací identity kontroluje, jestli je hodnota deklarace **e-mailu** stejná jako **ověřená deklarace identity e-mailu** .
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckEmail" TransformationMethod="CompareClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="Email" TransformationClaimType="inputClaim1" />
@@ -205,7 +205,7 @@ Určuje, zda je hodnota deklarace identity shodná se vstupní hodnotou parametr
 
 Tuto transformaci deklarací identity můžete použít ke kontrole, jestli se deklarace identity rovná hodnotě, kterou jste zadali. Například následující transformace deklarací identity kontroluje, jestli je hodnota deklarace identity **termsOfUseConsentVersion** rovna `v1` .
 
-```XML
+```xml
 <ClaimsTransformation Id="IsTermsOfUseConsentRequiredForVersion" TransformationMethod="CompareClaimToValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="termsOfUseConsentVersion" TransformationClaimType="inputClaim1" />
@@ -246,7 +246,7 @@ Vytvoří náhodný řetězec pomocí generátoru náhodných čísel. Je-li gen
 
 Následující příklad generuje globální jedinečné ID. Tato transformace deklarací identity se používá k vytvoření náhodného názvu uživatele (UPN).
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateRandomUPNUserName" TransformationMethod="CreateRandomString">
   <InputParameters>
     <InputParameter Id="randomGeneratorType" DataType="string" Value="GUID" />
@@ -265,7 +265,7 @@ Následující příklad generuje globální jedinečné ID. Tato transformace d
 
 Následující příklad generuje celočíselnou náhodnou hodnotu mezi 0 a 1000. Hodnota je formátována na OTP_ {Random Value}.
 
-```XML
+```xml
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
   <InputParameters>
     <InputParameter Id="randomGeneratorType" DataType="string" Value="INTEGER" />
@@ -302,7 +302,7 @@ Naformátuje deklaraci identity podle poskytnutého formátovacího řetězce. T
 
 Tuto transformaci deklarací použijte k formátování libovolného řetězce s jedním parametrem {0} . V následujícím příkladu je vytvořena hodnota **userPrincipalName**. Všechny technické profily zprostředkovatele sociální identity, jako je například `Facebook-OAUTH` volání **CreateUserPrincipalName** pro generování třídy **userPrincipalName**.
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateUserPrincipalName" TransformationMethod="FormatStringClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="upnUserName" TransformationClaimType="inputClaim" />
@@ -338,7 +338,7 @@ Formátujte dvě deklarace podle poskytnutého formátovacího řetězce. Tato t
 
 Tuto transformaci deklarací použijte k formátování řetězce se dvěma parametry, {0} a {1} . Následující příklad vytvoří **DisplayName** se zadaným formátem:
 
-```XML
+```xml
 <ClaimsTransformation Id="CreateDisplayNameFromFirstNameAndLastName" TransformationMethod="FormatStringMultipleClaims">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="givenName" TransformationClaimType="inputClaim1" />
@@ -385,7 +385,7 @@ Následující příklad vyhledá předmět e-mailu, tělo, zprávu kódu a podp
 
 Definujte lokalizované řetězce pro angličtinu (výchozí) a španělštinu.
 
-```XML
+```xml
 <Localization Enabled="true">
   <SupportedLanguages DefaultLanguage="en" MergeBehavior="Append">
     <SupportedLanguage>en</SupportedLanguage>
@@ -413,7 +413,7 @@ Definujte lokalizované řetězce pro angličtinu (výchozí) a španělštinu.
 
 Transformace deklarací nastaví hodnotu *předmětu* typu deklarace identity s hodnotou `StringId` *email_subject*.
 
-```XML
+```xml
 <ClaimsTransformation Id="GetLocalizedStringsForEmail" TransformationMethod="GetLocalizedStringsTransformation">
   <OutputClaims>
     <OutputClaim ClaimTypeReferenceId="subject" TransformationClaimType="email_subject" />
@@ -444,7 +444,7 @@ Vyhledává se položka z kolekce **omezení** deklarace identity.
 
 Následující příklad vyhledá popis chybové zprávy na základě chybového klíče. Deklarace identity **responseMsg** obsahuje kolekci chybových zpráv, které mají být k dispozici koncovému uživateli, nebo k odeslání do předávající strany.
 
-```XML
+```xml
 <ClaimType Id="responseMsg">
   <DisplayName>Error message: </DisplayName>
   <DataType>string</DataType>
@@ -458,7 +458,7 @@ Následující příklad vyhledá popis chybové zprávy na základě chybového
 ```
 Transformace deklarací vyhledá text položky a vrátí její hodnotu. Pokud je omezení lokalizováno pomocí `<LocalizedCollection>` , transformace deklarací identity vrátí lokalizovanou hodnotu.
 
-```XML
+```xml
 <ClaimsTransformation Id="GetResponseMsgMappedToResponseCode" TransformationMethod="GetMappedValueFromLocalizedCollection">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="responseCode" TransformationClaimType="mapFromClaim" />
@@ -489,7 +489,7 @@ Vyhledá hodnotu deklarace ze seznamu hodnot na základě hodnoty jiné deklarac
 
 Následující příklad vyhledá název domény v jedné z kolekcí vstupní parametry. Transformace deklarací vyhledá název domény v identifikátoru a vrátí jeho hodnotu (ID aplikace).
 
-```XML
+```xml
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
@@ -524,7 +524,7 @@ Je-li `errorOnFailedLookup` vstupní parametr nastaven na hodnotu `true` , trans
 
 Následující příklad vyhledá název domény v jedné z kolekcí vstupní parametry. Transformace deklarací vyhledá název domény v identifikátoru a vrátí jeho hodnotu (ID aplikace) nebo vyvolá chybovou zprávu.
 
-```XML
+```xml
  <ClaimsTransformation Id="DomainToClientId" TransformationMethod="LookupValue">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="domainName" TransformationClaimType="inputParameterId" />
@@ -564,7 +564,7 @@ Vyčistěte hodnotu dané deklarace identity.
 
 Tato transformace deklarace identity slouží k odebrání nepotřebných dat z kontejneru vlastností deklarací identity, takže soubor cookie relace bude menší. Následující příklad odebere hodnotu `TermsOfService` typu deklarace identity.
 
-```XML
+```xml
 <ClaimsTransformation Id="SetTOSToNull" TransformationMethod="NullClaim">
   <OutputClaims>
   <OutputClaim ClaimTypeReferenceId="TermsOfService" TransformationClaimType="claim_to_null" />
@@ -588,7 +588,7 @@ Načte doménovou část e-mailové adresy.
 
 Pomocí této transformace deklarací identity můžete analyzovat název domény za symbolem @ uživatele. Následující transformace deklarací identity ukazuje, jak analyzovat název domény z deklarace **e-mailu** .
 
-```XML
+```xml
 <ClaimsTransformation Id="SetDomainName" TransformationMethod="ParseDomain">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="emailAddress" />
@@ -624,7 +624,7 @@ Kontroluje, zda deklarace identity `claimToMatch` a `matchTo` vstupní parametr 
 
 Ověří, zda je zadané telefonní číslo platné, na základě vzoru regulárního výrazu telefonního čísla.
 
-```XML
+```xml
 <ClaimsTransformation Id="SetIsPhoneRegex" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phone" TransformationClaimType="claimToMatch" />
@@ -653,7 +653,7 @@ Ověří, zda je zadané telefonní číslo platné, na základě vzoru regulár
 
 Zkontroluje, jestli je poskytnutá e-mailová adresa platná, a vrátí e-mailový alias.
 
-```XML
+```xml
 <ClaimsTransformation Id="GetAliasFromEmail" TransformationMethod="SetClaimsIfRegexMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="email" TransformationClaimType="claimToMatch" />
@@ -699,7 +699,7 @@ Kontroluje, zda deklarace identity a `matchTo` vstupní parametr jsou stejné, a
 
 Tuto transformaci deklarací identity můžete použít ke kontrole, jestli se deklarace identity rovná hodnotě, kterou jste zadali. Například následující transformace deklarací identity kontroluje, jestli je hodnota deklarace identity **termsOfUseConsentVersion** rovna `v1` . Pokud ano, změňte hodnotu na `v2` .
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckTheTOS" TransformationMethod="SetClaimsIfStringsAreEqual">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="termsOfUseConsentVersion" TransformationClaimType="inputClaim" />
@@ -746,7 +746,7 @@ Kontroluje, zda deklarace identity a `matchTo` vstupní parametr jsou stejné, a
 
 Například následující transformace deklarací identity kontroluje, zda je hodnota deklarace identity **ageGroup** rovna `Minor` . Pokud ano, vraťte hodnotu na `B2C_V1_90001` .
 
-```XML
+```xml
 <ClaimsTransformation Id="SetIsMinor" TransformationMethod="SetClaimsIfStringsMatch">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="ageGroup" TransformationClaimType="claimToMatch" />
@@ -789,7 +789,7 @@ Určí, zda zadaný podřetězec spadá do vstupní deklarace. Výsledkem je nov
 
 Pomocí této transformace deklarací identity zkontrolujete, zda typ deklarace identity obsahuje dílčí řetězec. Následující příklad zkontroluje, zda `roles` typ deklarace řetězce obsahuje hodnotu **admin**.
 
-```XML
+```xml
 <ClaimsTransformation Id="CheckIsAdmin" TransformationMethod="StringContains">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim"/>
@@ -828,7 +828,7 @@ Extrahuje části typu deklarace řetězce, počínaje znakem na zadané pozici 
 Můžete například získat předponu země/oblasti telefonního čísla.
 
 
-```XML
+```xml
 <ClaimsTransformation Id="GetPhonePrefix" TransformationMethod="StringSubstring">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
@@ -866,7 +866,7 @@ Vyhledá v řetězci typu deklarace zadanou hodnotu a vrátí nový řetězec ty
 Například Normalizujte telefonní číslo odebráním `-` znaků.
 
 
-```XML
+```xml
 <ClaimsTransformation Id="NormalizePhoneNumber" TransformationMethod="StringReplace">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="inputClaim" />
@@ -902,7 +902,7 @@ Zřetězí prvky zadaného typu deklarace kolekce řetězců pomocí zadaného o
 
 Následující příklad přebírá řetězcovou kolekci rolí uživatele a převede ho na řetězec oddělovače čárky. Tuto metodu můžete použít k uložení kolekce řetězců v uživatelském účtu Azure AD. Později, když přečtete účet z adresáře, použijte `StringSplit` k převedení řetězce oddělovače čárky zpátky na kolekci řetězců.
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertRolesStringCollectionToCommaDelimiterString" TransformationMethod="StringJoin">
   <InputClaims>
    <InputClaim ClaimTypeReferenceId="roles" TransformationClaimType="inputClaim" />
@@ -938,7 +938,7 @@ Vrátí pole řetězce, které obsahuje podřetězce v této instanci, které js
 
 Následující příklad přijímá řetězec s oddělovači rolí uživatele čárkami a převede ho na kolekci řetězců.
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertRolesToStringCollection" TransformationMethod="StringSplit">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="rolesCommaDelimiter" TransformationClaimType="inputClaim" />

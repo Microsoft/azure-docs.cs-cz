@@ -3,19 +3,20 @@ title: Co je služba Azure Event Hubs? – Služba pro příjem velkých objemů
 description: Přečtěte si o Azure Event Hubs, což je streamovací služba pro velké objemy dat, která může ingestovat miliony událostí za sekundu.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
+author: spelluru
 manager: timlt
 ms.service: event-hubs
 ms.topic: overview
 ms.custom: seodec18
-ms.date: 12/06/2018
-ms.author: shvija
-ms.openlocfilehash: 45276ab59f1a3dabea42b904ff54bd37326fdeca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: 9f23bef37f6c858670de076b7a6a9ce5d8e2d046
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80398114"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85297303"
 ---
 # <a name="azure-event-hubs--a-big-data-streaming-platform-and-event-ingestion-service"></a>Azure Event Hubs – platforma pro zpracování velkých objemů dat a služba pro příjem událostí
 Azure Event Hubs je platforma pro streamování velkých objemů dat a služba pro příjem událostí. Dokáže přijímat a zpracovávat miliony událostí za sekundu. Data odeslaná do centra událostí je možné transformovat a uložit pomocí libovolného poskytovatele analýz v reálném čase nebo adaptérů pro dávkové zpracování a ukládání.
@@ -49,7 +50,7 @@ Event Hubs je plně spravovaná platforma jako služba (PaaS) s nízkou režií 
 
 Ingestování, ukládání do vyrovnávací paměti, dlouhodobé ukládání a zpracování streamu je možné v reálném čase, takže můžete využívat užitečné přehledy hned. Event Hubs používá model koncového [uživatele](event-hubs-scalability.md#partitions), který umožňuje více aplikacím souběžně zpracovávat proud a umožnit vám řídit rychlost zpracování.
 
-Data můžete [zachytit](event-hubs-capture-overview.md) prakticky v reálném čase v [úložišti objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/) pro dlouhodobé uchovávání nebo zpracování mikrodávkování. Toto chování můžete dosáhnout na stejném datovém proudu, který používáte pro odvození analýz v reálném čase. Nastavení zachycení dat událostí je rychlé. Neexistují žádné náklady na správu, které by bylo možné spustit, a automaticky se škálují Event Hubs [jednotky propustnosti](event-hubs-scalability.md#throughput-units). Event Hubs vám umožní soustředit se na zpracování dat, nikoli na shromažďování dat.
+Data můžete [zachytit](event-hubs-capture-overview.md) prakticky v reálném čase v [úložišti objektů BLOB v Azure](https://azure.microsoft.com/services/storage/blobs/) nebo [Azure Data Lake Storage](https://azure.microsoft.com/services/data-lake-store/)   pro dlouhodobé uchovávání nebo zpracování mikrodávkování. Toto chování můžete dosáhnout na stejném datovém proudu, který používáte pro odvození analýz v reálném čase. Nastavení zachycení dat událostí je rychlé. Neexistují žádné náklady na správu, které by bylo možné spustit, a automaticky se škálují Event Hubs [jednotky propustnosti](event-hubs-scalability.md#throughput-units). Event Hubs vám umožní soustředit se na zpracování dat, nikoli na shromažďování dat.
 
 Azure Event Hubs se také dá integrovat s [Azure Functions](/azure/azure-functions/) jako architektura bez serveru.
 
@@ -76,7 +77,7 @@ Následující obrázek znázorňuje architekturu zpracování datového proudu 
 
 ![Event Hubs](./media/event-hubs-about/event_hubs_architecture.png)
 
-## <a name="event-hubs-on-azure-stack-hub"></a>Event Hubs v centru Azure Stack
+## <a name="event-hubs-on-azure-stack-hub"></a>Event Hubs v Azure Stack Hubu
 Event Hubs v centru Azure Stack vám umožní realizovat hybridní cloudové scénáře. Podpora streamování a řešení založeného na událostech je podporovaná pro místní i cloudové zpracování Azure. Bez ohledu na to, jestli je váš scénář hybridní (připojený) nebo odpojený, může vaše řešení podporovat zpracování událostí nebo datových proudů ve velkém měřítku. Váš scénář je vázaný jenom na velikost clusteru Event Hubs, kterou můžete zřídit podle svých potřeb. 
 
 Edice Event Hubs (v centru Azure Stack a v Azure) nabízejí vysoký stupeň parity funkcí. Tato parita znamená, že sady SDK, ukázky, PowerShellu, rozhraní příkazového řádku a portálů nabízejí podobné prostředí s několika rozdíly. 

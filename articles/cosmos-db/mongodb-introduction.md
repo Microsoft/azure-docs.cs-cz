@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 10/1/2019
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: 670020d276b9d4a868f24eb4a3f522581060adca
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 5f4a90859831e6134530b94dfa80c11eb740301a
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "72754980"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113309"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb"></a>Rozhraní API služby Azure Cosmos DB pro MongoDB
 
@@ -24,7 +24,7 @@ Azure Cosmos DB implementuje přenosové protokoly běžných databází NoSQL, 
 
 Ve výchozím nastavení jsou nové účty vytvořené pomocí rozhraní API Azure Cosmos DB pro MongoDB kompatibilní s verzí 3,6 protokolu MongoDB. Jakýkoli ovladač klienta MongoDB, který rozumí této verzi protokolu, by měl být schopný nativně se připojit k Cosmos DB.
 
-![Rozhraní API služby Azure Cosmos DB pro MongoDB](./media/mongodb-introduction/cosmosdb-mongodb.png)
+:::image type="content" source="./media/mongodb-introduction/cosmosdb-mongodb.png" alt-text="Rozhraní API služby Azure Cosmos DB pro MongoDB" border="false":::
 
 ## <a name="key-benefits"></a>Klíčové výhody
 
@@ -40,7 +40,7 @@ Ve výchozím nastavení jsou nové účty vytvořené pomocí rozhraní API Azu
 
 Pomocí rychlých startů vytvořte účet Azure Cosmos a migrujte existující aplikaci MongoDB pro použití Azure Cosmos DB nebo vytvořte novou:
 
-* [Migruje stávající webovou aplikaci Node. js v MongoDB](create-mongodb-nodejs.md).
+* [Migrujte existující Node.js webovou aplikaci v MongoDB](create-mongodb-nodejs.md).
 * [Sestavení webové aplikace pomocí rozhraní API Azure Cosmos DB pro MongoDB a .NET SDK](create-mongodb-dotnet.md)
 * [Vytvoření konzolové aplikace pomocí rozhraní API Azure Cosmos DB pro MongoDB a Java SDK](create-mongodb-java.md)
 

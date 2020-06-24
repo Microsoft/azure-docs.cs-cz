@@ -3,23 +3,19 @@ title: Příjem událostí pomocí procesoru událostí hostitel – Azure Event
 description: Tento článek popisuje hostitele procesoru událostí v Azure Event Hubs, který zjednodušuje správu kontrolních bodů, zapůjčení a čtení událostí s paralelním hostováním.
 services: event-hubs
 documentationcenter: .net
-author: ShubhaVijayasarathy
-manager: timlt
-editor: ''
+author: spelluru
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
-ms.workload: na
-ms.custom: seodec18
-ms.date: 01/10/2020
-ms.author: shvija
-ms.openlocfilehash: 485f51e45e342ca28d54d609fd975bef5b204f7e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/23/2020
+ms.author: spelluru
+ms.reviewer: shvija
+ms.openlocfilehash: f3d6a5e77c3c1c5e8b8dceb44e5bcbe9cb5f93ec
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80372226"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85299292"
 ---
 # <a name="event-processor-host"></a>EventProcessorHost
 > [!NOTE]
@@ -109,10 +105,10 @@ V tomto ukázkovém scénáři řekněme, že pro 5 instancí **EventProcessorHo
 Následující seznam shrnuje tento příklad:
 
 - 16 Event Hubs oddílů.
-- 5 virtuálních počítačů, 1 aplikace příjemce (například Consumer. exe) v každém virtuálním počítači.
-- 5 registrovaných instancí EPH, 1 v každém virtuálním počítači pomocí Consumer. exe.
+- 5 virtuálních počítačů, 1 aplikace příjemce (například Consumer.exe) v každém virtuálním počítači.
+- 5 EPH instancí zaregistrovaných, 1 v každém virtuálním počítači podle Consumer.exe.
 - 16 `SimpleEventProcessor` objektů vytvořených pomocí 5 instancí EPH.
-- 1 aplikace příjemce. exe může obsahovat 4 `SimpleEventProcessor` objekty, protože 1 instance EPH může vlastnit 4 oddíly.
+- 1 Consumer.exe aplikace může obsahovat 4 `SimpleEventProcessor` objekty, protože 1 instance EPH může vlastnit 4 oddíly.
 
 ## <a name="partition-ownership-tracking"></a>Sledování vlastnictví oddílu
 
@@ -120,12 +116,12 @@ Vlastnictví oddílu na instanci EPH (nebo příjemce) se sleduje prostřednictv
 
 | **Název skupiny uživatelů** | **ID oddílu** | **Název hostitele (Vlastník)** | **Zapůjčení (nebo vlastnictví) – čas získání** | **Posun v oddílu (kontrolní bod)** |
 | --- | --- | --- | --- | --- |
-| $Default | 0 | VM3\_příjemce | 2018-04-15T01:23:45 | 156 |
-| $Default | 1 | VM4\_příjemce | 2018-04-15T01:22:13 | 734 |
-| $Default | 2 | VM0\_příjemce | 2018-04-15T01:22:56 | 122 |
+| $Default | 0 | \_VM3 příjemce | 2018-04-15T01:23:45 | 156 |
+| $Default | 1 | \_VM4 příjemce | 2018-04-15T01:22:13 | 734 |
+| $Default | 2 | \_VM0 příjemce | 2018-04-15T01:22:56 | 122 |
 | : |   |   |   |   |
 | : |   |   |   |   |
-| $Default | 15 | VM3\_příjemce | 2018-04-15T01:22:56 | 976 |
+| $Default | 15 | \_VM3 příjemce | 2018-04-15T01:22:56 | 976 |
 
 V tomto případě získá každý hostitel vlastnictví oddílu po určitou dobu (trvání zapůjčení). Pokud dojde k chybě hostitele (virtuální počítač se vypne), zapůjčení vyprší. Jiní hostitelé se pokoušejí získat vlastnictví oddílu a jeden z hostitelů je úspěšný. Tento proces obnoví zapůjčení pro oddíl novým vlastníkem. Tímto způsobem může v jednom okamžiku číst jenom jedno čtecí zařízení v rámci skupiny uživatelů.
 
@@ -206,7 +202,7 @@ Teď, když jste obeznámeni s hostitelem procesoru událostí, přečtěte si n
     - [.NET Core](get-started-dotnet-standard-send-v2.md)
     - [Java](get-started-java-send-v2.md)
     - [Python](get-started-python-send-v2.md)
-    - [JavaScript](get-started-java-send-v2.md)
+    - [JavaScript](get-started-node-send-v2.md)
 * [Průvodce programováním pro službu Event Hubs](event-hubs-programming-guide.md)
 * [Dostupnost a konzistence ve službě Event Hubs](event-hubs-availability-and-consistency.md)
 * [Nejčastější dotazy k Event Hubs](event-hubs-faq.md)

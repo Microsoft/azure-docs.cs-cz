@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 42596ba5470c6062efba4fd1050c1c9745b76e80
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 249acaad66bdfd8b5d6b8420d22a9090e44beb41
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80637331"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204094"
 ---
 # <a name="manage-azure-ad-b2c-user-accounts-with-microsoft-graph"></a>Správa Azure AD B2C uživatelských účtů pomocí Microsoft Graph
 
@@ -40,13 +40,13 @@ V [rozhraní Microsoft Graph API](https://docs.microsoft.com/graph/api/resources
 - [Vytvoření uživatele](https://docs.microsoft.com/graph/api/user-post-users)
 - [Získat uživatele](https://docs.microsoft.com/graph/api/user-get)
 - [Aktualizace uživatele](https://docs.microsoft.com/graph/api/user-update)
-- [Odstranit uživatele](https://docs.microsoft.com/graph/api/user-delete)
+- [Odstranění uživatele](https://docs.microsoft.com/graph/api/user-delete)
 
 ## <a name="user-properties"></a>Uživatelské vlastnosti
 
 ### <a name="display-name-property"></a>Vlastnost zobrazovaného názvu
 
-`displayName` Je název, který se má zobrazit v Azure Portal Správa uživatelů pro uživatele, a v přístupovém tokenu Azure AD B2C se vrátí do aplikace. Tato vlastnost je povinná.
+`displayName`Je název, který se má zobrazit v Azure Portal Správa uživatelů pro uživatele, a v přístupovém tokenu Azure AD B2C se vrátí do aplikace. Tato vlastnost je povinná.
 
 ### <a name="identities-property"></a>Vlastnost identity
 
@@ -57,17 +57,17 @@ K těmto typům identit se dá přidružit účet zákazníka, který může bý
 
 Uživatel s účtem zákazníka se může přihlásit s více identitami. Například uživatelské jméno, e-mail, ID zaměstnance, ID státní správy a další. Jeden účet může mít více identit, místní i sociální, se stejným heslem.
 
-V rozhraní Microsoft Graph API jsou místní i federované identity uloženy v atributu uživatele `identities` , který je typu [objectIdentity][graph-objectIdentity]. `identities` Kolekce představuje sadu identit, které se používají pro přihlášení k uživatelskému účtu. Tato kolekce umožňuje uživateli přihlásit se k uživatelskému účtu pomocí kterékoli z jeho přidružených identit.
+V rozhraní Microsoft Graph API jsou místní i federované identity uloženy v `identities` atributu uživatele, který je typu [objectIdentity][graph-objectIdentity]. `identities`Kolekce představuje sadu identit, které se používají pro přihlášení k uživatelskému účtu. Tato kolekce umožňuje uživateli přihlásit se k uživatelskému účtu pomocí kterékoli z jeho přidružených identit.
 
-| Vlastnost   | Typ |Popis|
+| Vlastnost   | Typ |Description|
 |:---------------|:--------|:----------|
-|signInType|řetězec| Určuje typy přihlašování uživatelů v adresáři. Pro místní účet: `emailAddress`, `emailAddress1`, `emailAddress2`, `emailAddress3` `userName`, nebo jakýkoli jiný typ, který chcete. Účet sociálních sítí musí být nastavený `federated`na.|
-|issuer|řetězec|Určuje vystavitele identity. U místních účtů (kde **signInType** není `federated`) Tato vlastnost je výchozí název domény místního B2C tenanta, například `contoso.onmicrosoft.com`. Pro sociální identity (kde **signInType** je `federated`) hodnota je název vystavitele, například`facebook.com`|
-|issuerAssignedId|řetězec|Určuje jedinečný identifikátor přiřazený uživateli vystavitelem. Kombinace **vystavitele** a **issuerAssignedId** musí být ve vašem tenantovi jedinečná. Pro místní účet, pokud je **signInType** nastaveno na `emailAddress` nebo `userName`, představuje přihlašovací jméno uživatele.<br>Když je **signInType** nastaveno na: <ul><li>`emailAddress`(nebo začíná `emailAddress` jako `emailAddress1`) **issuerAssignedId** musí být platná e-mailová adresa.</li><li>`userName`(nebo jakákoli jiná hodnota) musí být **issuerAssignedId** platná [místní část e-mailové adresy](https://tools.ietf.org/html/rfc3696#section-3) .</li><li>`federated`, **issuerAssignedId** představuje jedinečný identifikátor federovaného účtu.</li></ul>|
+|signInType|řetězec| Určuje typy přihlašování uživatelů v adresáři. Pro místní účet: `emailAddress` , `emailAddress1` , `emailAddress2` , `emailAddress3` , `userName` nebo jakýkoli jiný typ, který chcete. Účet sociálních sítí musí být nastavený na `federated` .|
+|issuer|řetězec|Určuje vystavitele identity. U místních účtů (kde **signInType** není `federated` ) Tato vlastnost je výchozí název domény místního B2C tenanta, například `contoso.onmicrosoft.com` . Pro sociální identity (kde **signInType** je `federated` ) hodnota je název vystavitele, například`facebook.com`|
+|issuerAssignedId|řetězec|Určuje jedinečný identifikátor přiřazený uživateli vystavitelem. Kombinace **vystavitele** a **issuerAssignedId** musí být ve vašem tenantovi jedinečná. Pro místní účet, pokud je **signInType** nastaveno na `emailAddress` nebo `userName` , představuje přihlašovací jméno uživatele.<br>Když je **signInType** nastaveno na: <ul><li>`emailAddress`(nebo začíná `emailAddress` jako `emailAddress1` ) **issuerAssignedId** musí být platná e-mailová adresa.</li><li>`userName`(nebo jakákoli jiná hodnota) musí být **issuerAssignedId** platná [místní část e-mailové adresy](https://tools.ietf.org/html/rfc3696#section-3) .</li><li>`federated`, **issuerAssignedId** představuje jedinečný identifikátor federovaného účtu.</li></ul>|
 
 Následující vlastnost **identity** s identitou místního účtu s přihlašovacím jménem, e-mailovou adresou jako přihlašování a sociální identitou. 
 
- ```JSON
+ ```json
  "identities": [
      {
        "signInType": "userName",
@@ -91,11 +91,11 @@ Pro federované identity v závislosti na zprostředkovateli identity je **issue
 
 ### <a name="password-profile-property"></a>Vlastnost profilu hesla
 
-Pro místní identitu je vyžadována vlastnost **passwordProfile** a obsahuje heslo uživatele. `forceChangePasswordNextSignIn` Vlastnost musí být nastavena na `false`hodnotu.
+Pro místní identitu je vyžadována vlastnost **passwordProfile** a obsahuje heslo uživatele. `forceChangePasswordNextSignIn`Vlastnost musí být nastavena na hodnotu `false` .
 
 Pro federované (sociální) identitu se nepožaduje vlastnost **passwordProfile** .
 
-```JSON
+```json
 "passwordProfile" : {
     "password": "password-value",
     "forceChangePasswordNextSignIn": false
@@ -106,9 +106,9 @@ Pro federované (sociální) identitu se nepožaduje vlastnost **passwordProfile
 
 Zásady hesla Azure AD B2C (pro místní účty) jsou založené na zásadách Azure Active Directory [silného hesla](../active-directory/authentication/concept-sspr-policy.md) . Zásady Azure AD B2C pro registraci nebo přihlášení a resetování hesla vyžadují tuto silnou sílu hesla a nevypršení platnosti hesla.
 
-Pokud účty, které chcete migrovat, mají slabší sílu hesla, než je [silná síla hesla](../active-directory/authentication/concept-sspr-policy.md) vynutila Azure AD B2C, můžete v scénářích migrace uživatelů zakázat požadavek na silný heslo. Chcete-li změnit výchozí zásady hesla, nastavte `passwordPolicies` vlastnost na `DisableStrongPassword`hodnotu. Požadavek na vytvoření uživatele můžete například upravit následujícím způsobem:
+Pokud účty, které chcete migrovat, mají slabší sílu hesla, než je [silná síla hesla](../active-directory/authentication/concept-sspr-policy.md) vynutila Azure AD B2C, můžete v scénářích migrace uživatelů zakázat požadavek na silný heslo. Chcete-li změnit výchozí zásady hesla, nastavte `passwordPolicies` vlastnost na hodnotu `DisableStrongPassword` . Požadavek na vytvoření uživatele můžete například upravit následujícím způsobem:
 
-```JSON
+```json
 "passwordPolicies": "DisablePasswordExpiration, DisableStrongPassword"
 ```
 
@@ -116,9 +116,9 @@ Pokud účty, které chcete migrovat, mají slabší sílu hesla, než je [siln�
 
 Každá aplikace pro zákazníky má jedinečné požadavky na shromažďování informací. Váš tenant Azure AD B2C obsahuje integrovanou sadu informací uložených ve vlastnostech, jako je křestní jméno, příjmení, město a poštovní směrovací číslo. Pomocí Azure AD B2C můžete roztáhnout sadu vlastností uložených v každém účtu zákazníka. Další informace o definování vlastních atributů najdete v tématech [vlastní atributy (toky uživatelů)](user-flow-custom-attributes.md) a [vlastní atributy (vlastní zásady)](custom-policy-custom-attributes.md).
 
-Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_ApplicationObjectID_attributename`. Příklad:
+Rozhraní Microsoft Graph API podporuje vytváření a aktualizaci uživatele s atributy rozšíření. Atributy rozšíření v Graph API jsou pojmenovány pomocí konvence `extension_ApplicationObjectID_attributename` . Příklad:
 
-```JSON
+```json
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
 ```
 
@@ -155,9 +155,9 @@ Vzorový kód používá [sadu Microsoft Graph SDK](https://docs.microsoft.com/g
 
 Jakýkoli požadavek na rozhraní Microsoft Graph API vyžaduje přístupový token pro ověřování. Řešení využívá balíček NuGet [Microsoft. Graph. auth](https://www.nuget.org/packages/Microsoft.Graph.Auth/) , který poskytuje obálku Microsoft Authentication Library (MSAL) založenou na scénáři ověřování pro použití s Microsoft Graph SDK.
 
-`RunAsync` Metoda v souboru _program.cs_ :
+`RunAsync`Metoda v souboru _program.cs_ :
 
-1. Přečte nastavení aplikace ze souboru _appSettings. JSON._
+1. Přečte nastavení aplikace z _appsettings.jsv_ souboru.
 1. Inicializuje poskytovatele ověřování pomocí procesu [udělení přihlašovacích údajů klienta OAuth 2,0](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md) . Pomocí toku udělení přihlašovacích údajů klienta může aplikace získat přístupový token pro volání rozhraní Microsoft Graph API.
 1. Nastaví klienta služby Microsoft Graph u poskytovatele ověřování:
 
@@ -202,7 +202,7 @@ public static async Task ListUsers(GraphServiceClient graphClient)
 }
 ```
 
-[Volání rozhraní API pomocí Microsoft Graph sady SDK](https://docs.microsoft.com/graph/sdks/create-requests) obsahují informace o tom, jak číst a zapisovat informace z Microsoft Graph, `$select` použít k řízení vrácených vlastností, zadání vlastních parametrů dotazu a použití parametrů `$filter` dotazu `$orderBy` a.
+[Volání rozhraní API pomocí Microsoft Graph sady SDK](https://docs.microsoft.com/graph/sdks/create-requests) obsahují informace o tom, jak číst a zapisovat informace z Microsoft Graph, použít `$select` k řízení vrácených vlastností, zadání vlastních parametrů dotazu a použití `$filter` `$orderBy` parametrů dotazu a.
 
 ## <a name="next-steps"></a>Další kroky
 

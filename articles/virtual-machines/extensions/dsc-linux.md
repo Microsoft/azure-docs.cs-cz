@@ -14,11 +14,11 @@ ms.workload: infrastructure-services
 ms.date: 06/12/2018
 ms.author: robreed
 ms.openlocfilehash: 2f04b5ecb2019a77bbb38e97c3869cc0a9447955
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250618"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698508"
 ---
 # <a name="dsc-extension-for-linux-microsoftostcextensionsdscforlinux"></a>Rozšíření DSC pro Linux (Microsoft. OSTCExtensions. DSCForLinux)
 
@@ -44,7 +44,7 @@ Rozšíření DSCForLinux je publikované a podporované Microsoftem. Rozšíře
 
 Rozšíření DSC pro Linux podporuje všechny [distribuce systému Linux schválené v Azure](/azure/virtual-machines/linux/endorsed-distros) s výjimkou těchto:
 
-| Distribuce | Version |
+| Distribuce | Verze |
 |---|---|
 | Debian | Všechny verze |
 | Ubuntu| 18,04 |
@@ -85,14 +85,14 @@ Tady jsou všechny podporované parametry chráněné konfigurace:
 ## <a name="scenarios"></a>Scénáře
 
 ### <a name="register-an-azure-automation-account"></a>Registrace účtu Azure Automation
-Protected. JSON
+protected.jsna
 ```json
 {
   "RegistrationUrl": "<azure-automation-account-url>",
   "RegistrationKey": "<azure-automation-account-key>"
 }
 ```
-Public. JSON
+public.jsna
 ```json
 {
   "ExtensionAction" : "Register",
@@ -121,7 +121,7 @@ $publicConfig = '{
 
 ### <a name="apply-an-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Použití konfiguračního souboru MOF (v účtu Azure Storage) na virtuální počítač
 
-Protected. JSON
+protected.jsna
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -129,7 +129,7 @@ Protected. JSON
 }
 ```
 
-Public. JSON
+public.jsna
 ```json
 {
   "FileUri": "<mof-file-uri>",
@@ -153,7 +153,7 @@ $publicConfig = '{
 
 ### <a name="apply-an-mof-configuration-file-in-public-storage-to-the-vm"></a>Použití konfiguračního souboru MOF (ve veřejném úložišti) na virtuální počítač
 
-Public. JSON
+public.jsna
 ```json
 {
   "FileUri": "<mof-file-uri>"
@@ -169,7 +169,7 @@ $publicConfig = '{
 
 ### <a name="apply-a-meta-mof-configuration-file-in-an-azure-storage-account-to-the-vm"></a>Použití konfiguračního souboru meta MOF (v účtu Azure Storage) na virtuální počítač
 
-Protected. JSON
+protected.jsna
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
@@ -177,7 +177,7 @@ Protected. JSON
 }
 ```
 
-Public. JSON
+public.jsna
 ```json
 {
   "ExtensionAction": "Pull",
@@ -199,7 +199,7 @@ $publicConfig = '{
 ```
 
 ### <a name="apply-a-meta-mof-configuration-file-in-public-storage-to-the-vm"></a>Použití konfiguračního souboru meta MOF (ve veřejném úložišti) na virtuální počítač
-Public. JSON
+public.jsna
 ```json
 {
   "FileUri": "<meta-mof-file-uri>",
@@ -215,14 +215,14 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-an-azure-storage-account-to-the-vm"></a>Instalace vlastního modulu prostředků (soubor zip v účtu Azure Storage) do virtuálního počítače
-Protected. JSON
+protected.jsna
 ```json
 {
   "StorageAccountName": "<storage-account-name>",
   "StorageAccountKey": "<storage-account-key>"
 }
 ```
-Public. JSON
+public.jsna
 ```json
 {
   "ExtensionAction": "Install",
@@ -244,7 +244,7 @@ $publicConfig = '{
 ```
 
 ### <a name="install-a-custom-resource-module-a-zip-file-in-public-storage-to-the-vm"></a>Instalace vlastního modulu prostředků (soubor zip ve veřejném úložišti) do virtuálního počítače
-Public. JSON
+public.jsna
 ```json
 {
   "ExtensionAction": "Install",
@@ -260,7 +260,7 @@ $publicConfig = '{
 ```
 
 ### <a name="remove-a-custom-resource-module-from-the-vm"></a>Odebrání vlastního modulu prostředků z virtuálního počítače
-Public. JSON
+public.jsna
 ```json
 {
   "ResourceName": "<resource-name>",
@@ -289,7 +289,7 @@ Další informace o šabloně Azure Resource Manager naleznete v tématu [author
 ### <a name="use-azure-cliazure-cli"></a>Použití [Azure CLI] [Azure-CLI]
 Před nasazením rozšíření DSCForLinux nakonfigurujte `public.json` a `protected.json` podle různých scénářů v oddílu 3.
 
-#### <a name="classic"></a>Classic
+#### <a name="classic"></a>Klasický
 
 [!INCLUDE [classic-vm-deprecation](../../../includes/classic-vm-deprecation.md)]
 
@@ -327,7 +327,7 @@ DSCForLinux Microsoft.OSTCExtensions <version> \
 
 ### <a name="use-azure-powershellazure-powershell"></a>Použití [Azure PowerShell] [Azure-PowerShell]
 
-#### <a name="classic"></a>Classic
+#### <a name="classic"></a>Klasický
 
 Můžete se přihlásit ke svému účtu Azure v režimu správy služeb Azure spuštěním:
 

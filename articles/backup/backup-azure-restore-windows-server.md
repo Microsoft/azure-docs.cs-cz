@@ -4,16 +4,16 @@ description: V tomto článku se dozvíte, jak obnovit data uložená v Azure do
 ms.reviewer: saurse
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 446ebf563a09131b715b2e08033a7a0278a1fd95
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: 040ac3069500d0e52441df6f07d92645a7ae69df
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652090"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764430"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Obnovení souborů na Windows serveru pomocí agenta MARS
 
-Tento článek vysvětluje, jak obnovit data z trezoru služby Backup. Chcete-li obnovit data, použijte Průvodce obnovením dat v agentovi Microsoft Azure Recovery Services (MARS). Můžete:
+Tento článek vysvětluje, jak obnovit data z trezoru služby Backup. Chcete-li obnovit data, použijte Průvodce obnovením dat v agentovi Microsoft Azure Recovery Services (MARS). Další možnosti:
 
 * Obnovte data na stejném počítači, ze kterého byly zálohy pořízeny.
 * Obnovení dat na jiný počítač
@@ -51,7 +51,7 @@ Pokud jste omylem odstranili soubor a chcete ho obnovit do stejného počítače
    > Možnost obnovení jednotlivých souborů a složek vyžaduje .NET Framework 4.5.2 nebo novější. Pokud nevidíte možnost **jednotlivé soubory a složky** , musíte upgradovat .NET Framework na verzi 4.5.2 nebo novější. potom to zkuste znovu.
 
    > [!TIP]
-   > Možnost **jednotlivé soubory a složky** umožňuje rychlý přístup k datům bodů obnovení. Je vhodný pro obnovení jednotlivých souborů, jejichž velikost celkově nepřekračuje 80 GB, a během obnovování nabízí rychlost přenosu nebo kopírování až 6 MB/s. Možnost **svazek** obnoví všechna zálohovaná data v zadaném svazku. Tato možnost nabízí rychlejší přenosovou rychlost (až 60 MB/s), která je ideální pro obnovování velkých objemů dat nebo celých svazků.
+   > Možnost **jednotlivé soubory a složky** umožňuje rychlý přístup k datům bodů obnovení. Je vhodný pro obnovení jednotlivých souborů, jejichž velikost se celkově nepřekračuje 80 GB, a během obnovování nabízí rychlost přenosu nebo kopírování až 6 MB/s. Možnost **svazek** obnoví všechna zálohovaná data v zadaném svazku. Tato možnost nabízí rychlejší přenosovou rychlost (až 40 MB/s), která je ideální pro obnovování velkých objemů dat nebo celých svazků.
 
 5. Na stránce **Vybrat svazek a datum** vyberte svazek, který obsahuje soubory a složky, které chcete obnovit.
 

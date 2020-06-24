@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 05/17/2019
 ms.topic: conceptual
-ms.openlocfilehash: 7fa2dd335e457307dd6d7e4ecdc787015b742b32
-ms.sourcegitcommit: 2721b8d1ffe203226829958bee5c52699e1d2116
+ms.openlocfilehash: f05e705f351d75fdf772d3197b94fcece40d43fb
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/28/2020
-ms.locfileid: "84148272"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100387"
 ---
 # <a name="manage-pre-scripts-and-post-scripts"></a>Správa předzálohovacích a pozálohovacích skriptů
 
@@ -90,6 +90,9 @@ V následujícím příkladu je řetězec formátu JSON předaný parametru **So
 
 > [!NOTE]
 > `SoftwareUpdateConfigurationRunContext`Objekt může obsahovat duplicitní položky pro počítače. To může způsobit, že se ve stejném počítači několikrát spouští předběžné skripty a pozálohovací skripty. Pokud chcete toto chování obejít, použijte `Sort-Object -Unique` k výběru jenom jedinečných názvů virtuálních počítačů.
+
+> [!NOTE]
+> V současné době jsou podporovány pouze Runbooky PowerShellu jako předzálohovací skripty. Jiné typy runbooků, jako je Python, grafický, PowerShellový pracovní postup, se v tuto chvíli nepodporují jako předzálohovací skripty.
 
 ## <a name="use-a-pre-script-or-post-script-in-a-deployment"></a>Použití předzálohovacího skriptu nebo pozálohovacího skriptu v nasazení
 

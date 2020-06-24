@@ -2,18 +2,17 @@
 title: Azure Event Grid zabezpečení a ověřování
 description: Tento článek popisuje různé způsoby ověřování přístupu k prostředkům Event Grid (Webhook, odběry, vlastní témata).
 services: event-grid
-author: femila
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
 ms.date: 03/06/2020
-ms.author: femila
-ms.openlocfilehash: 8335d5a41dc2f322623c163e08f8a4a2c1be8360
-ms.sourcegitcommit: 964af22b530263bb17fff94fd859321d37745d13
+ms.author: spelluru
+ms.openlocfilehash: d028367b82e8529d5260c086f2e4afa609582b00
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/09/2020
-ms.locfileid: "84558996"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100235"
 ---
 # <a name="authenticating-access-to-azure-event-grid-resources"></a>Ověřování přístupu k prostředkům Azure Event Grid
 Tento článek poskytuje informace o následujících scénářích:  
@@ -85,8 +84,21 @@ static string BuildSharedAccessSignature(string resource, DateTime expirationUtc
 
 Všechny události nebo data zapsaná na disk službou Event Grid službou jsou šifrovány klíčem spravovaným společností Microsoft, který zajišťuje, aby byl zašifrovaný v klidovém stavu. Kromě toho maximální doba, po kterou jsou události nebo data uchovávány, je 24 hodin v dodržování [zásad Event Grid opakování](delivery-and-retry.md). Event Grid budou automaticky odstraňovat všechny události nebo data po 24 hodinách nebo na hodnotu TTL (Time to Live), podle toho, co je méně.
 
+## <a name="use-system-assigned-identities-for-event-delivery"></a>Použití identit přiřazených systémem pro doručování událostí
+Pro téma nebo doménu můžete povolit spravovanou identitu přiřazenou systémem a tuto identitu použít k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
+
+Postupujte takto: 
+
+1. Vytvořte téma nebo doménu s identitou přiřazenou systémem, nebo aktualizujte existující téma nebo doménu, aby bylo možné identitu povolit. 
+1. Přidejte identitu do příslušné role (například Service Bus odesílatel dat) v cíli (například Service Bus Queue).
+1. Při vytváření odběrů událostí povolte použití identity k doručování událostí do cíle. 
+
+Podrobné pokyny najdete v tématu [doručování událostí se spravovanou identitou](managed-service-identity.md).
+
+
 ## <a name="authenticate-event-delivery-to-webhook-endpoints"></a>Ověřování doručování událostí do koncových bodů Webhooku
 Následující části popisují, jak ověřit doručování událostí do koncových bodů Webhooku. Je nutné použít ověřovací mechanismus handshake bez ohledu na použitou metodu. Podrobnosti najdete v tématu věnovaném [doručování událostí Webhooku](webhook-event-delivery.md) . 
+
 
 ### <a name="using-azure-active-directory-azure-ad"></a>Použití Azure Active Directory (Azure AD)
 Koncový bod Webhooku, který se používá k přijímání událostí z Event Grid, můžete zabezpečit pomocí Azure AD. Budete muset vytvořit aplikaci Azure AD, vytvořit roli a instanční objekt v aplikaci s autorizací Event Grid a nakonfigurovat odběr událostí tak, aby používal aplikaci Azure AD. Naučte se, jak [nakonfigurovat Azure Active Directory s](secure-webhook-delivery.md)využitím Event Grid.

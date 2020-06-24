@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/26/2020
-ms.openlocfilehash: 3784eda2db5f375f04cdde84108a78ae277baf60
-ms.sourcegitcommit: 95269d1eae0f95d42d9de410f86e8e7b4fbbb049
+ms.openlocfilehash: 0fad77f4704b9cbd8c2a37e39c09a334b08766ef
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83860660"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85193540"
 ---
 # <a name="delete-and-recover-azure-log-analytics-workspace"></a>Odstranění a obnovení pracovního prostoru Azure Log Analytics
 
@@ -45,7 +45,7 @@ Pracovní prostor můžete odstranit pomocí [PowerShellu](https://docs.microsof
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**.
 3. V seznamu pracovních prostorů Log Analytics vyberte pracovní prostor a pak v horní části prostředního podokna klikněte na **Odstranit** .
 4. Zobrazí se stránka s potvrzením, která zobrazuje příjem dat do pracovního prostoru za minulý týden. Zadejte název pracovního prostoru, který chcete potvrdit, a pak klikněte na **Odstranit**.
@@ -64,21 +64,11 @@ Metoda obnovitelného odstranění se nemusí vejít do některých scénářů,
 > [!IMPORTANT]
 > Používejte trvalou operaci odstranění pracovního prostoru s opatrností, protože ji nejde vrátit zpět a nebudete moct obnovit pracovní prostor a jeho data.
 
-Pokud chcete trvale odstranit pracovní prostor, použijte [pracovní prostory – odstranit](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) žádost REST s příznakem vynucení:
+Přidáním značky-Force můžete trvale odstranit svůj pracovní prostor:
 
-```rst
-DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
-Authorization: Bearer <token>
+```powershell
+PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name" -Force
 ```
-
-Alternativně můžete provést operaci z webu dokumentace k Azure REST:
-1.  Přejděte k [pracovním prostorům – odstraňte](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) REST API a klikněte na **vyzkoušet**. 
-2.  Zadejte podrobnosti pracovního prostoru, který chcete trvale odstranit.
-3.  Ender nové *vynucení* parametru s hodnotou *true*
-4.  Klikněte na ikonu ' + ' vpravo k hodnotě. V žádosti se přidá *hodnota Force = true* k identifikátoru URI.
-5.  Klikněte na tlačítko *Spustit* .
-
-Odpověď by měla být 200 OK.
 
 ## <a name="recover-workspace"></a>Obnovit pracovní prostor
 Když pracovní prostor odstraníte Log Analytics omylem nebo záměrně, služba ho umístí do stavu obnovitelného odstranění, takže nebude mít přístup k žádné operaci. Název odstraněného pracovního prostoru se zachová během období obnovitelného odstranění a nedá se použít k vytvoření nového pracovního prostoru. Po období obnovitelného odstranění je pracovní prostor neobnovitelný, je naplánován na trvalé odstranění a jeho název, který lze použít k vytvoření nového pracovního prostoru.
@@ -92,7 +82,7 @@ Během období obnovitelného odstranění si můžete pracovní prostor obnovit
 
 ### <a name="azure-portal"></a>portál Azure
 
-1. Přihlaste se k [portálu Azure Portal](https://portal.azure.com). 
+1. Přihlaste se k webu [Azure Portal](https://portal.azure.com). 
 2. V Azure Portal vyberte **všechny služby**. V seznamu prostředků zadejte **Log Analytics**. Seznam se průběžně filtruje podle zadávaného textu. Vyberte **Log Analytics pracovní prostory**. Zobrazí se seznam pracovních prostorů, které máte ve vybraném oboru.
 3. Kliknutím na tlačítko **obnovit** v levém horním rohu otevřete stránku s pracovními prostory ve stavu obnovitelného odstranění, který je možné obnovit.
 
@@ -114,7 +104,7 @@ Pracovní prostor a všechna jeho data se po operaci obnovení vrátí zpět. Ř
 > [!NOTE]
 > * Po opětovném vytvoření pracovního prostoru během období obnovitelného odstranění se zobrazí informace o tom, že tento název pracovního prostoru se už používá. 
  
-### <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 K odstranění pracovního prostoru musíte mít aspoň *Log Analytics oprávnění přispěvatele* .<br>
 Pokud se zobrazí chybová zpráva *Tento název pracovního prostoru se už používá nebo je v* *konfliktu* při vytváření pracovního prostoru, může to být od:
 * Název pracovního prostoru není dostupný a používá ho někdo ve vaší organizaci, nebo jiný zákazník.

@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 3/19/2020
-ms.openlocfilehash: b42f0d7a8146f7f2b313959273abd22303c89a60
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: 00e4ef2452d2048f386d48e994ba1051ca81ec75
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80062550"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100961"
 ---
 # <a name="audit-logs-in-azure-database-for-mysql"></a>Protokoly auditu v Azure Database for MySQL
 
@@ -22,20 +22,21 @@ V Azure Database for MySQL je k dispozici pro uživatele protokol auditu. Protok
 
 ## <a name="configure-audit-logging"></a>Konfigurace protokolování auditu
 
-Ve výchozím nastavení je protokol auditu zakázán. Pokud ho chcete povolit, `audit_log_enabled` nastavte na zapnuto.
+>[!NOTE]
+> Doporučujeme pouze protokolovat typy událostí a uživatele požadované pro vaše účely auditování, aby se zajistilo, že výkon serveru nebude velmi ovlivněn.
+
+Ve výchozím nastavení je protokol auditu zakázán. Pokud ho chcete povolit, nastavte na `audit_log_enabled` zapnuto.
 
 Mezi další parametry, které můžete upravit, patří:
 
 - `audit_log_events`: řídí události, které mají být protokolovány. Konkrétní události auditu najdete v níže uvedené tabulce.
-- `audit_log_include_users`: Uživatelé MySQL budou zahrnuti do protokolování. Výchozí hodnota pro tento parametr je prázdná, což bude zahrnovat všechny uživatele pro protokolování. Má vyšší prioritu `audit_log_exclude_users`. Maximální délka parametru je 512 znaků.
-> [!Note]
-> `audit_log_include_users`má vyšší prioritu `audit_log_exclude_users`. `audit_log_include_users`  =  `demouser` Například pokud `audit_log_exclude_users`a  = , bude uživatel zahrnut v protokolech auditu, protože `audit_log_include_users` má vyšší prioritu. `demouser`
+- `audit_log_include_users`: Uživatelé MySQL budou zahrnuti do protokolování. Výchozí hodnota pro tento parametr je prázdná, což bude zahrnovat všechny uživatele pro protokolování. Má vyšší prioritu `audit_log_exclude_users` . Maximální délka parametru je 512 znaků.
 - `audit_log_exclude_users`: Uživatelé MySQL budou vyloučeni z protokolování. Maximální délka parametru je 512 znaků.
 
-> [!Note]
-> V `sql_text`případě se protokol zkrátí, pokud překračuje 2048 znaků.
+> [!NOTE]
+> `audit_log_include_users`má vyšší prioritu `audit_log_exclude_users` . Například pokud `audit_log_include_users`  =  `demouser` a `audit_log_exclude_users`  =  `demouser` , bude uživatel zahrnut v protokolech auditu, protože `audit_log_include_users` má vyšší prioritu.
 
-| **Událostí** | **Popis** |
+| **Událost** | **Popis** |
 |---|---|
 | `CONNECTION` | – Iniciování připojení (úspěšné nebo neúspěšné) <br> – Opakované ověření uživatele s jiným uživatelem nebo heslem během relace <br> – Ukončení připojení |
 | `DML_SELECT`| VYBRAT dotazy |
@@ -73,7 +74,7 @@ V následujících částech najdete popis toho, co je výstupem protokolů audi
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Název serveru |
 | `event_class_s` | `connection_log` |
-| `event_subclass_s` | `CONNECT`, `DISCONNECT`, `CHANGE USER` (k dispozici pouze pro MySQL 5,7) |
+| `event_subclass_s` | `CONNECT`, `DISCONNECT` , `CHANGE USER` (k dispozici pouze pro MySQL 5,7) |
 | `connection_id_d` | Jedinečné ID připojení generované MySQL |
 | `host_s` | Funkce Blank |
 | `ip_s` | IP adresa klienta připojujícího se k MySQL |
@@ -84,6 +85,9 @@ V následujících částech najdete popis toho, co je výstupem protokolů audi
 ### <a name="general"></a>Obecné
 
 Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, DDL, DCL a typy událostí správce.
+
+> [!NOTE]
+> V případě `sql_text` se protokol zkrátí, pokud překračuje 2048 znaků.
 
 | **Vlastnost** | **Popis** |
 |---|---|
@@ -101,7 +105,7 @@ Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, 
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Název serveru |
 | `event_class_s` | `general_log` |
-| `event_subclass_s` | `LOG`, `ERROR`, `RESULT` (k dispozici pouze pro MySQL 5,6) |
+| `event_subclass_s` | `LOG`, `ERROR` , `RESULT` (k dispozici pouze pro MySQL 5,6) |
 | `event_time` | Čas spuštění dotazu v časovém razítku UTC |
 | `error_code_d` | Kód chyby, pokud se dotaz nezdařil. `0`Nejedná se o žádnou chybu |
 | `thread_id_d` | ID vlákna, které provedlo dotaz |
@@ -114,7 +118,7 @@ Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, 
 ### <a name="table-access"></a>Přístup k tabulce
 
 > [!NOTE]
-> Protokoly přístupu k tabulce jsou pouze výstupem pro MySQL 5,7.
+> Protokoly přístupu k tabulce jsou pouze výstupem pro MySQL 5,7.<br>V případě `sql_text` se protokol zkrátí, pokud překračuje 2048 znaků.
 
 | **Vlastnost** | **Popis** |
 |---|---|
@@ -132,7 +136,7 @@ Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, 
 | `OperationName` | `LogEvent` |
 | `LogicalServerName_s` | Název serveru |
 | `event_class_s` | `table_access_log` |
-| `event_subclass_s` | `READ`, `INSERT`, `UPDATE`nebo`DELETE` |
+| `event_subclass_s` | `READ`, `INSERT` , `UPDATE` nebo`DELETE` |
 | `connection_id_d` | Jedinečné ID připojení generované MySQL |
 | `db_s` | Název databázového přistupu |
 | `table_s` | Název přistupované tabulky |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.author: iainfou
-ms.openlocfilehash: ce910b553e14d09eefa35efc5f2973337dfa1309
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 7e79156e6e9f1283dfc7b8801820e3335f31afa9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80654664"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734295"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Povolit audity zabezpečení pro Azure Active Directory Domain Services
 
@@ -25,7 +25,7 @@ Audity zabezpečení služby Azure Active Directory Domain Services (Azure služ
 Události můžete archivovat do služby Azure Storage a streamovat události do softwaru SIEM (Security Information and Event Management) (nebo ekvivalentní) pomocí Azure Event Hubs nebo vlastní analýzy a používat pracovní prostory Azure Log Analytics z Azure Portal.
 
 > [!IMPORTANT]
-> Audity zabezpečení Azure služba AD DS jsou dostupné jenom pro instance založené na Azure Resource Manager. Informace o migraci najdete v tématu [migrace Azure služba AD DS z modelu klasických virtuálních sítí na správce prostředků][migrate-azure-adds].
+> Audity zabezpečení Azure služba AD DS jsou dostupné jenom pro spravované domény založené na Azure Resource Manager. Informace o migraci najdete v tématu [migrace Azure služba AD DS z modelu klasických virtuálních sítí na správce prostředků][migrate-azure-adds].
 
 ## <a name="security-audit-destinations"></a>Cíle auditu zabezpečení
 
@@ -94,13 +94,13 @@ Pokud chcete povolit události auditu zabezpečení Azure služba AD DS pomocí 
 
 1. Vytvořte cílový prostředek pro události auditu zabezpečení.
 
-    * **Azure Storage** - –[Vytvoření účtu úložiště pomocí Azure PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)
-    * **Centra událostí** - Azure[vytvoří centrum událostí pomocí Azure PowerShell](../event-hubs/event-hubs-quickstart-powershell.md). K vytvoření autorizačního pravidla, které uděluje službě Azure služba AD DS oprávnění k *oboru názvů*centra událostí, možná budete muset použít rutinu [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) . Autorizační pravidlo musí zahrnovat práva **Spravovat**, **naslouchat**a **odesílat** .
+    * **Úložiště Azure**  -  [Vytvoření účtu úložiště pomocí Azure PowerShell](../storage/common/storage-account-create.md?tabs=azure-powershell)
+    * **Centra**  -  událostí Azure [Vytvořte centrum událostí pomocí Azure PowerShell](../event-hubs/event-hubs-quickstart-powershell.md). K vytvoření autorizačního pravidla, které uděluje službě Azure služba AD DS oprávnění k *oboru názvů*centra událostí, možná budete muset použít rutinu [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) . Autorizační pravidlo musí zahrnovat práva **Spravovat**, **naslouchat**a **odesílat** .
 
         > [!IMPORTANT]
         > Ujistěte se, že jste nastavili autorizační pravidlo v oboru názvů centra událostí a ne na samotném centru událostí.
 
-    * **Analytické pracovní prostory** - Azure log[vytvoří Log Analytics pracovní prostor s Azure PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
+    * **Analytické pracovní prostory**  -  pro Azure log [Vytvoří Log Analytics pracovní prostor s Azure PowerShell](../azure-monitor/learn/quick-create-workspace-posh.md).
 
 1. Pomocí rutiny [Get-AzResource](/powershell/module/Az.Resources/Get-AzResource) Získejte ID prostředku pro spravovanou doménu Azure služba AD DS. Vytvořte proměnnou s názvem *$aadds. ResourceId* pro uchování hodnoty:
 
@@ -217,7 +217,7 @@ Audity zabezpečení Azure služba AD DS odpovídají tradičnímu auditu pro tr
 
 K dispozici jsou následující kategorie událostí auditu:
 
-| Název kategorie auditu | Popis |
+| Název kategorie auditu | Description |
 |:---|:---|
 | Přihlášení k účtu|Audit se pokusí ověřit data účtu na řadiči domény nebo v místním správci zabezpečení účtů (SAM).</p>Nastavení zásad přihlášení a odhlášení a události sledují pokusy o přístup k určitému počítači. Nastavení a události v této kategorii se zaměřují na databázi účtů, která se používá. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat ověřování pověření](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-credential-validation)</li><li>[Auditovat ověřovací službu protokolu Kerberos](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-authentication-service)</li><li>[Auditovat operace lístku služby Kerberos](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-kerberos-service-ticket-operations)</li><li>[Auditovat jiné události přihlášení a odhlášení](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-logonlogoff-events)</li></ul>|
 | Správa účtů|Audituje změny účtů uživatelů a počítačů a skupin. Tato kategorie obsahuje následující podkategorie:<ul><li>[Auditovat správu skupin aplikací](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-application-group-management)</li><li>[Auditovat správu účtů počítače](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-computer-account-management)</li><li>[Auditovat správu skupin distribuce](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-distribution-group-management)</li><li>[Auditovat další správu účtů](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-other-account-management-events)</li><li>[Auditovat správu skupiny zabezpečení](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-security-group-management)</li><li>[Auditovat správu účtů uživatelů](https://docs.microsoft.com/windows/security/threat-protection/auditing/audit-user-account-management)</li></ul>|
@@ -237,10 +237,10 @@ K dispozici jsou následující kategorie událostí auditu:
 |:---|:---|
 |Zabezpečení přihlášení k účtu|4767, 4774, 4775, 4776, 4777|
 |Zabezpečení správy účtů|4720, 4722, 4723, 4724, 4725, 4726, 4727, 4728, 4729, 4730, 4731, 4732, 4733, 4734, 4735, 4737, 4738, 4740, 4741, 4742, 4743, 4754, 4755, 4756, 4757, 4758, 4764, 4765, 4766, 4780, 4781, 4782, 4793, 4798, 4799, 5376, 5377,|
-|Zabezpečení sledování podrobností|Žádná|
+|Zabezpečení sledování podrobností|Žádné|
 |Zabezpečení přístupu DS|5136, 5137, 5138, 5139, 5141|
 |Zabezpečení při odhlašování|4624, 4625, 4634, 4647, 4648, 4672, 4675, 4964|
-|Zabezpečení přístupu k objektům|Žádná|
+|Zabezpečení přístupu k objektům|Žádné|
 |Zabezpečení změny zásad|4670, 4703, 4704, 4705, 4706, 4707, 4713, 4715, 4716, 4717, 4718, 4719, 4739, 4864, 4865, 4866, 4867, 4904, 4906, 4911, 4912|
 |Zabezpečení použití oprávnění|4985|
 |Zabezpečení systému|4612, 4621|

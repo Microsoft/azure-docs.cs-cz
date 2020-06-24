@@ -1,14 +1,14 @@
 ---
 title: Osvědčené postupy
 description: Naučte se osvědčené postupy a užitečné tipy pro vývoj řešení Azure Batch.
-ms.date: 05/22/2020
+ms.date: 06/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1d482eeb8b3da94e8af0a597ade1a1d834ccf6a0
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: d91804b91b50ee1ba4015456438c9f153ed12ada
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84677777"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85201714"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch osvědčené postupy
 
@@ -121,6 +121,9 @@ Běžným příkladem je úloha kopírování souborů do výpočetního uzlu. J
 
 Úlohy, které se spouštějí jenom po dobu jedné až dvou sekund, nejsou ideální. Měli byste se pokusit o významné množství práce v jednotlivých úkolech (minimálně 10 sekund, což je víc než hodiny nebo dny). Pokud je každý úkol spuštěný na jednu minutu (nebo více), pak se režijní náklady na plánování za zlomek celkového výpočetního času budou malé.
 
+### <a name="use-pool-scope-for-short-tasks-on-windows-nodes"></a>Použití oboru fondu pro krátké úlohy v uzlech Windows
+
+Při plánování úlohy na uzlech Batch můžete zvolit, jestli se má spustit s oborem úlohy nebo oborem fondu. Pokud se úloha spustí jenom krátkou dobu, obor úlohy může být neefektivní z důvodu prostředků potřebných k vytvoření účtu automatického uživatele pro tuto úlohu. Pro vyšší efektivitu zvažte nastavení těchto úloh na rozsah fondu. Další informace najdete v tématu [spuštění úlohy jako automatický uživatel s rozsahem fondu](batch-user-accounts.md#run-a-task-as-an-auto-user-with-pool-scope).
 
 ## <a name="nodes"></a>Uzly
 

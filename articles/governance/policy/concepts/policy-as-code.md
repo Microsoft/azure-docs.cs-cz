@@ -3,12 +3,12 @@ title: Návrh pracovních postupů pro zásady jako kód
 description: Naučte se navrhovat pracovní postupy pro nasazení Azure Policy definic jako kódu a automatické ověřování prostředků.
 ms.date: 05/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 972ec40609c340b159d21dde2bf18ab3330bf8cd
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 04ec27216a3e9d59da21ef80948ef8620234e575
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83684264"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194412"
 ---
 # <a name="design-policy-as-code-workflows"></a>Návrh pracovních postupů pro zásady jako kód
 
@@ -19,7 +19,7 @@ Jak budete postupovat na cestě pomocí zásad správného řízení cloudu, bud
 
 Zásada jako kód je kombinací těchto nápadů. V podstatě Udržujte definice zásad ve správě zdrojového kódu a pokaždé, když provedete změnu, otestujete a ověříte tuto změnu. Nicméně by neměl být rozsahem zapojení zásad s infrastrukturou jako Code nebo DevOps.
 
-Krok ověření by měl být také součástí dalších pracovních postupů průběžné integrace nebo průběžného nasazování. Příklady zahrnují nasazení prostředí aplikace nebo virtuální infrastruktury. Provedením Azure Policy ověření počáteční komponenty procesu sestavení a nasazení aplikace a provozní týmy zjišťují, zda jsou jejich změny nestížnosti, dlouho před tím, než jsou příliš pozdě a pokoušejí se nasadit v produkčním prostředí.
+Krok ověření by měl být také součástí dalších pracovních postupů průběžné integrace nebo průběžného nasazování. Příklady zahrnují nasazení prostředí aplikace nebo virtuální infrastruktury. Provedením Azure Policy ověření počáteční komponenty procesu sestavení a nasazení aplikace a provozní týmy zjišťují, zda jsou jejich změny nekompatibilní, dlouho předtím, než jsou příliš pozdě a pokoušejí se nasadit v produkčním prostředí.
 
 ## <a name="workflow-overview"></a>Přehled pracovního postupu
 

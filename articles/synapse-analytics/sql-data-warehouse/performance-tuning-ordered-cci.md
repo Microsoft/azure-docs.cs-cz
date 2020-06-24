@@ -6,17 +6,17 @@ author: XiaoyuMSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 088a0d10b96a30ef830b4e8a8dc12c19127141db
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 6cd81031f27d772912383fa050e0f946bf9964c0
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81417039"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204655"
 ---
 # <a name="performance-tuning-with-ordered-clustered-columnstore-index"></a>Ladění výkonu s využitím uspořádaného clusterovaného indexu columnstore  
 
@@ -109,7 +109,7 @@ Počet překrývajících se segmentů závisí na velikosti dat, která se maj�
 
 - Třídu prostředků xlargerc můžete použít na vyšší DWU, abyste umožnili více paměti pro řazení dat před tím, než tvůrce indexů komprimuje data do segmentů.  V segmentu indexu nemůže být fyzické umístění dat změněno.  Neexistuje žádné řazení dat v rámci segmentu nebo napříč segmenty.  
 
-- Vytvořte uspořádanou INSTRUKCi s MAXDOP = 1.  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době se možnost MAXDOP podporuje jenom při vytváření seřazené tabulky INSTRUKCí pomocí CREATE TABLE jako příkazu SELECT.  Vytvoření seřazené instrukce prostřednictvím příkazu CREATE INDEX nebo CREATE TABLE nepodporuje možnost MAXDOP. Například:
+- Vytvořte uspořádanou INSTRUKCi s MAXDOP = 1.  Každé vlákno používané pro seřazené vytváření konzulárních instrukcí funguje na podmnožině dat a seřadí je místně.  Neexistuje žádné globální řazení napříč daty seřazenými podle různých vláken.  Použití paralelních vláken může zkrátit čas k vytvoření seřazené instrukce, ale vygeneruje více překrývajících se segmentů než použití jednoho vlákna.  V současné době se možnost MAXDOP podporuje jenom při vytváření seřazené tabulky INSTRUKCí pomocí CREATE TABLE jako příkazu SELECT.  Vytvoření seřazené instrukce prostřednictvím příkazu CREATE INDEX nebo CREATE TABLE nepodporuje možnost MAXDOP. Třeba
 
 ```sql
 CREATE TABLE Table1 WITH (DISTRIBUTION = HASH(c1), CLUSTERED COLUMNSTORE INDEX ORDER(c1) )

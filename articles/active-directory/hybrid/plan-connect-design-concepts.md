@@ -18,11 +18,11 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bb41e14a7ecf41a2698a063c3067a98d8acf8f07
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79253881"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698593"
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: koncepty návrhu
 Účelem tohoto dokumentu je popsat oblasti, které je potřeba promyslet během návrhu implementace Azure AD Connect. Tento dokument je hluboko podrobně v určitých oblastech a tyto pojmy se stručně popisují i v dalších dokumentech.
@@ -62,7 +62,7 @@ Pokud máte více doménových struktur a nepřesouváte uživatele mezi doméno
 
 Pokud přesouváte uživatele mezi doménovými strukturami a doménami, je nutné najít atribut, který se nemění nebo může být během přesunu přesunut s uživateli. Doporučeným přístupem je zavedení syntetického atributu. Atribut, který může obsahovat něco, co vypadá jako identifikátor GUID, by byl vhodný. Při vytváření objektu se vytvoří nový GUID a na uživatele se vyřídí razítko. Na serveru synchronizace se dá vytvořit vlastní pravidlo synchronizace pro vytvoření této hodnoty na základě identifikátoru **GUID** a aktualizace vybraného atributu v nástroji Přidat. Při přesunu objektu Nezapomeňte také zkopírovat obsah této hodnoty.
 
-Dalším řešením je vybrat existující atribut, který víte, že se nemění. Běžně používané atributy zahrnují **ČísloZaměstnance**. Pokud se podíváte na atribut, který obsahuje písmena, ujistěte se, že se nejedná o případ (velká a malá písmena), která by se mohla změnit pro hodnotu atributu. Chybné atributy, které by neměly být použity, obsahují tyto atributy s názvem uživatele. V sňatku nebo rozvodu se očekává, že se změní název, který není pro tento atribut povolen. To je také jeden z důvodů, proč atributy, jako například **userPrincipalName**, **mail**a **targetAddress** , nejsou dokonce možné vybrat v Průvodci instalací Azure AD Connect. Tyto atributy také obsahují znak "\@", který není v sourceAnchor povolen.
+Dalším řešením je vybrat existující atribut, který víte, že se nemění. Běžně používané atributy zahrnují **ČísloZaměstnance**. Pokud se podíváte na atribut, který obsahuje písmena, ujistěte se, že se nejedná o případ (velká a malá písmena), která by se mohla změnit pro hodnotu atributu. Chybné atributy, které by neměly být použity, obsahují tyto atributy s názvem uživatele. V sňatku nebo rozvodu se očekává, že se změní název, který není pro tento atribut povolen. To je také jeden z důvodů, proč atributy, jako například **userPrincipalName**, **mail**a **targetAddress** , nejsou dokonce možné vybrat v Průvodci instalací Azure AD Connect. Tyto atributy také obsahují znak " \@ ", který není v sourceAnchor povolen.
 
 ### <a name="changing-the-sourceanchor-attribute"></a>Změna atributu sourceAnchor
 Hodnotu atributu sourceAnchor nelze změnit poté, co byl objekt vytvořen v rámci služby Azure AD a identita je synchronizována.
@@ -119,7 +119,7 @@ Při instalaci Azure AD Connect s vlastním režimem poskytuje průvodce Azure A
 
 ![Vlastní instalace – konfigurace sourceAnchor](./media/plan-connect-design-concepts/consistencyGuid-02.png)
 
-| Nastavení | Popis |
+| Nastavení | Description |
 | --- | --- |
 | Nechat správu zdrojového ukotvení na Azure | Tuto možnost vyberte, pokud chcete, aby Azure AD vybral atribut za vás. Pokud vyberete tuto možnost, průvodce Azure AD Connect použije stejnou [logiku výběru atributu sourceAnchor, která se používá při expresní instalaci](#express-installation). Podobně jako Expresní instalace vám průvodce informuje o tom, který atribut byl po dokončení vlastní instalace vybrán jako atribut zdrojového ukotvení. |
 | Konkrétní atribut | Tuto možnost vyberte, pokud chcete jako atribut sourceAnchor zadat existující atribut AD. |
@@ -180,7 +180,7 @@ Při integraci místního adresáře se službou Azure AD je důležité pochopi
 ### <a name="choosing-the-attribute-for-userprincipalname"></a>Výběr atributu pro userPrincipalName
 Když vybíráte atribut pro poskytování hodnoty hlavního názvu uživatele (UPN), která se má použít v Azure One, měla by to zajistit.
 
-* Hodnoty atributů odpovídají syntaxi hlavního názvu uživatele (RFC 822), to znamená, že by měla být ve formátu doména\@uživatelského jména.
+* Hodnoty atributů odpovídají syntaxi hlavního názvu uživatele (RFC 822), to znamená, že by měla být ve formátu Doména uživatelského jména. \@
 * Přípona v hodnotách odpovídá jedné z ověřených vlastních domén ve službě Azure AD.
 
 V expresním nastavení má předpokládaná volba pro atribut hodnotu userPrincipalName. Pokud atribut userPrincipalName neobsahuje hodnotu, kterou chcete uživatelům přihlašovat do Azure, musíte zvolit **vlastní instalaci**.
@@ -188,7 +188,7 @@ V expresním nastavení má předpokládaná volba pro atribut hodnotu userPrinc
 ### <a name="custom-domain-state-and-upn"></a>Vlastní stav domény a hlavní název uživatele
 Je důležité zajistit, aby byla k dispozici ověřená doména pro příponu hlavního názvu uživatele (UPN).
 
-Jan je uživatel v contoso.com. Požadujete, aby Jan používal místní hlavní název uživatele (\@UPN) John contoso.com pro přihlášení k Azure po synchronizovaných uživatelích s adresářem azure AD contoso.onmicrosoft.com. Aby to bylo možné, musíte před zahájením synchronizace uživatelů přidat a ověřit contoso.com jako vlastní doménu ve službě Azure AD. Pokud přípona hlavního názvu uživatele (UPN) Jan, například contoso.com, neodpovídá ověřené doméně ve službě Azure AD, pak Azure AD nahradí příponu UPN pomocí contoso.onmicrosoft.com.
+Jan je uživatel v contoso.com. Požadujete, aby Jan používal místní hlavní název uživatele (UPN) John \@ contoso.com pro přihlášení k Azure po synchronizovaných uživatelích s adresářem Azure AD contoso.onmicrosoft.com. Aby to bylo možné, musíte před zahájením synchronizace uživatelů přidat a ověřit contoso.com jako vlastní doménu ve službě Azure AD. Pokud přípona hlavního názvu uživatele (UPN) Jan, například contoso.com, neodpovídá ověřené doméně ve službě Azure AD, pak Azure AD nahradí příponu UPN pomocí contoso.onmicrosoft.com.
 
 ### <a name="non-routable-on-premises-domains-and-upn-for-azure-ad"></a>Místní domény a hlavní název uživatele (UPN) pro Azure AD, které Nesměrovatelné
 Některé organizace mají Nesměrovatelné domény, jako je contoso. Local nebo jednoduché domény s jedním popiskem, jako je contoso. Nemůžete ověřit doménu bez směrování v Azure AD. Azure AD Connect se může synchronizovat jenom s ověřenou doménou v Azure AD. Když vytvoříte adresář služby Azure AD, vytvoří se směrovatelný doména, která se jako výchozí doména pro Azure AD bude například contoso.onmicrosoft.com. Proto je nutné ověřit jakoukoli jinou směrovatelný doménu v takovém scénáři pro případ, že se nechcete synchronizovat s výchozí doménou onmicrosoft.com.

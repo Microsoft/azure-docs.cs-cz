@@ -2,21 +2,21 @@
 title: Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD
 description: Řešení běžných problémů při konfiguraci zřizování uživatelů pro aplikaci, která je už uvedená v galerii aplikací Azure AD
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 09/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: e6fb5fbecc9b2917f4fde2d1ccb76d6962a0af18
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 306c3771c0392bbc97260a726e153cfd385cebcd
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593960"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782122"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Problém s konfigurací zřizování uživatelů pro aplikaci Galerie Azure AD
 
@@ -28,9 +28,9 @@ Vždy byste měli začít hledáním kurzu nastavení, který je specifický pro
 
 Jakmile je služba nakonfigurovaná, dají se většinu přehledů provozu služby vykreslovat ze dvou míst:
 
--   **Protokoly zřizování (Preview)** – [protokoly zřizování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) zaznamenávají všechny operace prováděné službou zřizování, včetně dotazování Azure AD pro přiřazené uživatele, kteří jsou v oboru pro zřizování. Dotazování cílové aplikace na existenci těchto uživatelů, porovnání uživatelských objektů mezi systémem. Pak na základě porovnání přidejte, aktualizujte nebo zakažte uživatelský účet v cílovém systému. K protokolům zřizování v Azure Portal můžete získat přístup tak, že v části **aktivita** vyberete **Azure Active Directory** &gt; protokoly zřizování **podnikových aplikací** &gt; **(Preview)** .
+-   **Protokoly zřizování (Preview)** – [protokoly zřizování](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) zaznamenávají všechny operace prováděné službou zřizování, včetně dotazování Azure AD pro přiřazené uživatele, kteří jsou v oboru pro zřizování. Dotazování cílové aplikace na existenci těchto uživatelů, porovnání uživatelských objektů mezi systémem. Pak na základě porovnání přidejte, aktualizujte nebo zakažte uživatelský účet v cílovém systému. K protokolům zřizování v Azure Portal můžete získat přístup tak, že **Azure Active Directory** &gt; v části aktivita vyberete Azure Active Directory protokoly zřizování **podnikových aplikací** &gt; **(Preview)** . **Activity**
 
--   **Aktuální stav –** Souhrn posledního spuštění zřizování pro danou aplikaci najdete v části **Azure Active Directory &gt; podnikové aplikace &gt; \[název\] &gt;aplikace název aplikace** , v dolní části obrazovky pod nastavením služby. V části aktuální stav se zobrazuje, zda zřizovací cyklus zahájil zřizování uživatelských účtů. Průběh cyklu můžete sledovat, zjistit, kolik uživatelů a skupin se zřídilo, a zjistit, kolik rolí se vytvořilo. Pokud dojde k chybám, podrobnosti najdete v [zřizovacích protokolech (. /Reports-monitoring/Concept-Provisioning-Logs.MD? Context = Azure/Active-Directory/Manage-Apps/Context/Manage-Apps-Context).
+-   **Aktuální stav –** Souhrn posledního spuštění zřizování pro danou aplikaci najdete v části **Azure Active Directory &gt; podnikové aplikace &gt; \[ název aplikace název aplikace \] &gt; ** , v dolní části obrazovky pod nastavením služby. V části aktuální stav se zobrazuje, zda zřizovací cyklus zahájil zřizování uživatelských účtů. Průběh cyklu můžete sledovat, zjistit, kolik uživatelů a skupin se zřídilo, a zjistit, kolik rolí se vytvořilo. Pokud dojde k chybám, podrobnosti najdete v [zřizovacích protokolech (. /Reports-monitoring/Concept-Provisioning-Logs.MD? Context = Azure/Active-Directory/Manage-Apps/Context/Manage-Apps-Context).
 
 ## <a name="general-problem-areas-with-provisioning-to-consider"></a>Obecné oblasti problému s zřizováním pro zvážení
 
@@ -42,7 +42,7 @@ Níže je uveden seznam obecných oblastí problémů, na které můžete přej�
 
 ## <a name="provisioning-service-does-not-appear-to-start"></a>Služba zřizování se nezdá spustit
 
-Pokud nastavíte **stav zřizování** **v části** ** &gt; Azure Active Directory podnikové &gt; \[\] &gt;aplikace Azure Portal název aplikace** . Po dalším opětovném načtení se na této stránce nezobrazují žádné další podrobnosti o stavu. Je nejspíš, že služba běží, ale ještě nedokončila počáteční cyklus. Zkontrolujte **protokoly zřizování** popsané výše a určete, jaké operace služba provádí, a pokud dojde k chybám.
+Pokud nastavíte **stav zřizování** **v části** **Azure Active Directory &gt; podnikové aplikace Azure Portal &gt; \[ název aplikace \] &gt; ** . Po dalším opětovném načtení se na této stránce nezobrazují žádné další podrobnosti o stavu. Je nejspíš, že služba běží, ale ještě nedokončila počáteční cyklus. Zkontrolujte **protokoly zřizování** popsané výše a určete, jaké operace služba provádí, a pokud dojde k chybám.
 
 >[!NOTE]
 >Počáteční cyklus může trvat až 20 minut až několik hodin, v závislosti na velikosti adresáře Azure AD a počtu uživatelů v oboru pro zřizování. Následná synchronizace po počátečním cyklu, protože služba zřizování ukládá meze, které reprezentují stav obou systémů po počátečním cyklu, což zvyšuje výkon následných synchronizací.

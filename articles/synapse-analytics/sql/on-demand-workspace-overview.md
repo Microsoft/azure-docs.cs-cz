@@ -5,15 +5,16 @@ services: synapse analytics
 author: filippopovic
 ms.service: synapse-analytics
 ms.topic: overview
+ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55ef72b23f804ce7fcdb339ba4c66bcefe39db46
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 3f020abd4d207a49068ccffb9bb7f57b88bc87df
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020808"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85206389"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL na vyžádání (Preview) ve službě Azure synapse Analytics 
 
@@ -112,7 +113,7 @@ SQL na vyžádání nabízí mechanismy pro zabezpečení přístupu k datům.
 
 SQL na vyžádání umožňuje centrálně spravovat identity uživatelů databáze a dalších služeb Microsoftu pomocí [Azure Active Directory Integration](../../azure-sql/database/authentication-aad-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json). Tato možnost zjednodušuje správu oprávnění a zvyšuje zabezpečení. Azure Active Directory (Azure AD) podporuje [vícefaktorové ověřování](../../azure-sql/database/authentication-mfa-ssms-configure.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) (MFA) pro zvýšení zabezpečení dat a aplikací a současně podporuje proces jednotného přihlašování.
 
-#### <a name="authentication"></a>Authentication
+#### <a name="authentication"></a>Ověřování
 
 Ověřování SQL na vyžádání odkazuje na to, jak uživatelé při připojení ke koncovému bodu prokáže svoji identitu. Podporují se dva typy ověřování:
 

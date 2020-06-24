@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.author: cathys
 keywords: visualstudio
-ms.openlocfilehash: 134f0202b4b18e96b9f089460f4235c6b5c0fe4d
-ms.sourcegitcommit: fdec8e8bdbddcce5b7a0c4ffc6842154220c8b90
+ms.openlocfilehash: ecec05da3904782199e68cfdca917a8c451edec6
+ms.sourcegitcommit: e04a66514b21019f117a4ddb23f22c7c016da126
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/19/2020
-ms.locfileid: "83652674"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85105984"
 ---
 # <a name="visual-studio-images-on-azure"></a>Image sady Visual Studio v Azure
 Použití sady Visual Studio v předkonfigurovaném virtuálním počítači Azure je rychlý a snadný způsob, jak přejít z žádného nečinnosti do provozního vývojového prostředí. Systémové image s různými konfiguracemi sady Visual Studio jsou k dispozici v [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute?filters=virtual-machine-images%3Bmicrosoft%3Bwindows&page=1&subcategories=application-infrastructure).
@@ -104,7 +104,7 @@ Další informace najdete v tématu [Vytvoření spravované image zobecněného
 > [!NOTE]
 > Pořád se vám účtují poplatky za ukládání imagí, ale tyto přírůstkové náklady můžou být v porovnání s režijními náklady na opětovné sestavení virtuálního počítače od začátku pro každého člena týmu, který ho potřebují. Například má za měsíc vytvoření a uložení image 127-GB na měsíc, který je možné využít celý tým, náklady na několik dolarů. Tyto náklady jsou ale ve srovnání s hodinami nevýznamné, protože každý zaměstnanec investoval do sestavení a ověří správně nakonfigurované vývojové pole pro jejich individuální použití.
 
-Kromě toho můžou vaše vývojářské úlohy nebo technologie potřebovat větší měřítko, jako jsou odrůdy konfigurací vývoje a více konfigurací počítačů. Azure DevTest Labs můžete použít k vytvoření _recepty_ , které automatizují konstrukci "zlatých imagí". DevTest Labs můžete použít také ke správě zásad pro běžící virtuální počítače vašeho týmu. Pro další informace o DevTest Labs je nejvhodnějším zdrojem [použití Azure DevTest Labs pro vývojáře](/azure/devtest-lab/devtest-lab-developer-lab) .
+Kromě toho můžou vaše vývojářské úlohy nebo technologie potřebovat větší měřítko, jako jsou odrůdy konfigurací vývoje a více konfigurací počítačů. Azure DevTest Labs můžete použít k vytvoření _recepty_ , které automatizují konstrukci "zlatých imagí". DevTest Labs můžete použít také ke správě zásad pro běžící virtuální počítače vašeho týmu. Pro další informace o DevTest Labs je nejvhodnějším zdrojem [použití Azure DevTest Labs pro vývojáře](../../devtest-labs/devtest-lab-developer-lab.md) .
 
 ## <a name="next-steps"></a>Další kroky
 Teď, když víte o předkonfigurovaných bitových kopiích sady Visual Studio, je dalším krokem vytvoření nového virtuálního počítače:

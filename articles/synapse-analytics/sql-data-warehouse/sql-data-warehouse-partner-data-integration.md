@@ -6,17 +6,17 @@ author: mabasile-MSFT
 manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
-ms.subservice: ''
+ms.subservice: sql-dw
 ms.date: 03/27/2019
 ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: b3d77a84aa5206257f82bc5d634e1a3eae1a7790
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: c8ab5bc5072612edd3eaabbd13468567a92f42e4
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996413"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296385"
 ---
 # <a name="azure-synapse-analytics-data-integration-partners"></a>Partneři Azure synapse Analytics pro integraci dat
 
@@ -36,8 +36,8 @@ Pokud chcete vytvořit řešení datového skladu pomocí funkce synapse fondu S
 | ![Tvůrci informací](./media/sql-data-warehouse-partner-data-integration/informationbuilders_logo.png) |**Sestavování informací (Omni-gen Správa dat)**<br>Omni – obecná platforma pro správu dat, která poskytuje řešení pro integraci dat, kvalitu dat a správu hlavních dat. Usnadňuje přístup, přesun a míchání všech dat bez ohledu na formát, umístění, svazek nebo latenci.|[Stránka produktu](https://www.informationbuilders.com/3i-platform)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/informationbuilders.omni-gen-mdm) |
 | ![Matillion](./media/sql-data-warehouse-partner-data-integration/matillion-logo.png) |**Matillion**<br>Matillion je software pro transformaci dat pro cloudové datové sklady. Matillion je navržený pro Azure synapse, který umožňuje firmám dosáhnout nových úrovní jednoduchosti, rychlosti, škálování a úspory. Produkty Matillion jsou vysoce ohodnocené a důvěryhodné pro společnosti všech velikostí, aby splnily požadavky na jejich integraci a transformaci dat. Přečtěte si další informace o tom, jak můžete odemknout potenciál vašich dat pomocí cloudového přístupu Matillion k transformaci dat.| [Stránka produktu](https://www.matillion.com/technology/cloud-data-warehouse/microsoft-azure-synapse/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/matillion.matillion-etl-azure-synapse?tab=Overview) |
 | ![oh22 HEDDA. OPERACE](./media/sql-data-warehouse-partner-data-integration/heddaiowhitebg-logo.png) |**oh22 HEDDA <span></span> . OPERACE**<br>oh22's HEDDA <span></span> . V/v je produktová kvalita dat, která je sestavená pro Microsoft Azure. Umožňuje vytvořit znalostní bázi a použít ji k provádění celé řady důležitých úloh kvality dat, včetně oprav, obohacení a standardizace vašich dat. HEDDA <span></span> . Vstupně-výstupní operace také umožňují provádět čištění dat pomocí cloudových referenčních služeb poskytovaných poskytovateli referenčních dat nebo vyvinutých a poskytovaných vámi.| [Stránka produktu](https://hedda.io)<br> [Azure Marketplace]( https://azuremarketplace.microsoft.com/en-us/marketplace/apps/oh22.hedda-io) |
-| ![Qubole](./media/sql-data-warehouse-partner-data-integration/qubole_logo.png) |**Qubole**<br>Qubole poskytuje platformu nativní pro Cloud, která umožňuje uživatelům provádět úlohy ETL, analýzy a AI/ML. Podporuje různé druhy Open Source modulů – Apache Spark, TensorFlow, presto, flow, Hadoop, podregistr a další. Nabízí snadno použitelné nástroje pro koncové uživatele pro zpracování dat z nástrojů dotazů SQL, poznámkové bloky a řídicí panely, které využívají výkonné Open Source moduly.|[Stránka produktu](https://www.qubole.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) |
-| ![Segment](./media/sql-data-warehouse-partner-data-integration/segment_logo.png) |**Letu**<br>Segment je řešení pro správu a analýzu dat, které vám pomůže se zajištěním, že zákaznická data přicházejí z různých zdrojů. Umožňuje připojit vaše data k více než 200 nástrojům a vytvářet tak lepší rozhodnutí, produkty a prostředí. Segment provede transformaci a načtení několika zdrojů dat do datového skladu za použití vestavěných datových konektorů.|[Stránka produktu](https://segment.com/)<br> |
+| ![Qubole](./media/sql-data-warehouse-partner-data-integration/qubole_logo.png) |**Qubole**<br>Qubole poskytuje platformu nativní pro Cloud, která umožňuje uživatelům provádět úlohy ETL, analýzy a AI/ML. Podporuje různé druhy Open Source modulů – Apache Spark, TensorFlow, presto, flow, Hadoop, podregistr a další. Nabízí snadno použitelné nástroje pro koncové uživatele pro zpracování dat z nástrojů dotazů SQL, poznámkové bloky a řídicí panely, které využívají výkonné Open Source moduly.|[Stránka produktu](https://www.qubole.com/company/partners/partners-microsoft-azure/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/qubole-inc.qubole-data-service?tab=Overview) |
+| ![Segment](./media/sql-data-warehouse-partner-data-integration/segment_logo.png) |**Segment**<br>Segment je řešení pro správu a analýzu dat, které vám pomůže se zajištěním, že zákaznická data přicházejí z různých zdrojů. Umožňuje připojit vaše data k více než 200 nástrojům a vytvářet tak lepší rozhodnutí, produkty a prostředí. Segment provede transformaci a načtení několika zdrojů dat do datového skladu za použití vestavěných datových konektorů.|[Stránka produktu](https://segment.com/)<br> |
 | ![Skyvia](./media/sql-data-warehouse-partner-data-integration/skyvia_logo.png) |**Skyvia (integrace dat)**<br>Integrace dat Skyvia poskytuje průvodce, který automatizuje import dat. Tento průvodce vám umožní migrovat data mezi různými druhy zdrojů – CRMs, aplikační databáze, soubory CSV a další. |[Stránka produktu](https://skyvia.com/)<br> |
 | ![SnapLogic](./media/sql-data-warehouse-partner-data-integration/snaplogic_logo.png) |**SnapLogic**<br>Platforma SnapLogic umožňuje zákazníkům rychle přenést data do datového skladu Azure synapse a z něj. Nabízí možnost integrace stovek aplikací, služeb a scénářů IoT v jednom řešení.|[Stránka produktu](https://www.snaplogic.com/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/snaplogic.snaplogic-elastic-integration-windows)<br> |
 | ![StreamSets](./media/sql-data-warehouse-partner-data-integration/streamsets_logo.png) |**StreamSets**<br>StreamSets poskytuje platformu pro integraci dat pro DataOps. Operationalizes kompletní životní cyklus návrhu – nasazení – provoz integruje data do datového skladu Azure synapse. Můžete rychle ingestovat a integrovat data do a ze skladu prostřednictvím streamování, dávek nebo změněných způsobů doručování dat. Můžete také zajistit průběžné operace s inteligentními datovými kanály, které poskytují ucelenou viditelnost toku dat a odolnost.|[Stránka produktu](https://streamsets.com/partners/microsoft)|
@@ -48,4 +48,4 @@ Pokud chcete vytvořit řešení datového skladu pomocí funkce synapse fondu S
 
 
 ## <a name="next-steps"></a>Další kroky
-Další informace o dalších partnerech najdete v tématu partneři a [Správa dat partneři](sql-data-warehouse-partner-data-management.md)pro [Business Intelligence](sql-data-warehouse-partner-business-intelligence.md) .
+Další informace o dalších partnerech najdete v tématu [partneři Business Intelligence](sql-data-warehouse-partner-business-intelligence.md), [Správa dat partneři](sql-data-warehouse-partner-data-management.md) a [partneři Machine Learning a AI](sql-data-warehouse-partner-machine-learning-ai.md).

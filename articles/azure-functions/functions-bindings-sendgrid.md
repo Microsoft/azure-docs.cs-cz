@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
 ms.openlocfilehash: 9ed2b81c12c698822b9542bb6903189c865b572b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277463"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697353"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>Azure Functions vazby SendGrid
 
@@ -98,13 +98,13 @@ public class OutgoingEmail
 }
 ```
 
-Nastavení `ApiKey` vlastnosti atributu můžete vynechat, pokud máte klíč rozhraní API v nastavení aplikace s názvem "AzureWebJobsSendGridApiKey".
+Nastavení vlastnosti atributu můžete vynechat, `ApiKey` Pokud máte klíč rozhraní API v nastavení aplikace s názvem "AzureWebJobsSendGridApiKey".
 
 # <a name="c-script"></a>[Skript jazyka C#](#tab/csharp-script)
 
-Následující příklad ukazuje výstupní vazbu SendGrid v souboru *Function. JSON* a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu.
+Následující příklad ukazuje výstupní vazbu SendGrid v souboru *function.js* a [funkci skriptu jazyka C#](functions-reference-csharp.md) , která používá vazbu.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json 
 {
@@ -161,9 +161,9 @@ public class Message
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Následující příklad ukazuje výstupní vazbu SendGrid v souboru *Function. JSON* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
+Následující příklad ukazuje výstupní vazbu SendGrid v souboru v *function.js* a [funkci JavaScriptu](functions-reference-node.md) , která používá vazbu.
 
-Tady jsou data vazby v souboru *Function. JSON* :
+Tady jsou data vazby v *function.js* souboru:
 
 ```json 
 {
@@ -203,7 +203,7 @@ module.exports = function (context, input) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Následující příklad ukazuje funkci aktivovanou protokolem HTTP, která pošle e-mail s použitím vazby SendGrid. V konfiguraci vazby můžete zadat výchozí hodnoty. Například e-mailová *adresa je nakonfigurována* v *Function. JSON*. 
+Následující příklad ukazuje funkci aktivovanou protokolem HTTP, která pošle e-mail s použitím vazby SendGrid. V konfiguraci vazby můžete zadat výchozí hodnoty. Například e-mailová *adresa je nakonfigurována* v *function.jsna*. 
 
 ```json
 {
@@ -318,7 +318,7 @@ public class HttpTriggerSendGrid {
 
 V [knihovnách tříd jazyka C#](functions-dotnet-class-library.md)použijte atribut [SendGrid](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/SendGridAttribute.cs) .
 
-Informace o vlastnostech atributů, které můžete konfigurovat, najdete v tématu [Konfigurace](#configuration). Tady je příklad `SendGrid` atributu v signatuře metody:
+Informace o vlastnostech atributů, které můžete konfigurovat, najdete v tématu [Konfigurace](#configuration). Tady je `SendGrid` příklad atributu v signatuře metody:
 
 ```csharp
 [FunctionName("SendEmail")]
@@ -352,13 +352,13 @@ Python nepodporuje atributy.
 
 ## <a name="configuration"></a>Konfigurace
 
-V následující tabulce jsou uvedeny vlastnosti konfigurace vazby, které jsou k dispozici v souboru *Function. JSON* a `SendGrid` atribut nebo anotace.
+V následující tabulce jsou uvedeny vlastnosti konfigurace vazby, které jsou k dispozici v *function.jspro* soubor a `SendGrid` atribut nebo anotaci.
 
-| *Function. JSON* – vlastnost | Atribut nebo vlastnost anotace | Popis | Nepovinné |
+| *function.js* vlastnost | Atribut nebo vlastnost anotace | Description | Volitelné |
 |--------------------------|-------------------------------|-------------|----------|
-| type |neuvedeno| Musí být nastaven na `sendGrid`hodnotu.| Ne |
-| směr |neuvedeno| Musí být nastaven na `out`hodnotu.| Ne |
-| jméno |neuvedeno| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return` , pokud je k dispozici pouze jedna návratová hodnota. | Ne |
+| typ |Není k dispozici| Musí být nastaven na hodnotu `sendGrid` .| Ne |
+| směr |Není k dispozici| Musí být nastaven na hodnotu `out` .| Ne |
+| name |Není k dispozici| Název proměnné použitý v kódu funkce pro text žádosti nebo žádosti. Tato hodnota je `$return` , pokud je k dispozici pouze jedna návratová hodnota. | Ne |
 | apiKey | ApiKey | Název nastavení aplikace, které obsahuje klíč rozhraní API. Pokud není nastavená, výchozí název nastavení aplikace je *AzureWebJobsSendGridApiKey*.| Ne |
 | na| Akce | E-mailová adresa příjemce | Ano |
 | Výsledkem| From | E-mailová adresa odesílatele |  Ano |
@@ -371,12 +371,12 @@ Volitelné vlastnosti mohou mít ve vazbě definovány výchozí hodnoty a buď 
 
 <a name="host-json"></a>  
 
-## <a name="hostjson-settings"></a>nastavení Host. JSON
+## <a name="hostjson-settings"></a>host.jsnastavení
 
-Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2. x a vyšší. Ukázkový soubor host. JSON níže obsahuje pouze nastavení verze 2. x + pro tuto vazbu. Další informace o globálních nastaveních konfigurace ve verzích 2. x a novějších naleznete v tématu [reference Host. JSON pro Azure Functions](functions-host-json.md).
+Tato část popisuje globální nastavení konfigurace, která jsou k dispozici pro tuto vazbu ve verzích 2. x a vyšší. Příklad host.jsv souboru níže obsahuje pouze nastavení verze 2. x + pro tuto vazbu. Další informace o globálních nastaveních konfigurace ve verzích 2. x a novějších naleznete v tématu [host.jsv referenčních informacích pro Azure Functions](functions-host-json.md).
 
 > [!NOTE]
-> Odkaz na Host. JSON ve funkcích 1. x najdete v [referenčních informacích k host. JSON pro Azure Functions 1. x](functions-host-json-v1.md).
+> Odkaz na host.jspro ve funkcích 1. x naleznete v tématu [host.json reference for Azure Functions 1. x](functions-host-json-v1.md).
 
 ```json
 {
@@ -389,9 +389,9 @@ Tato část popisuje globální nastavení konfigurace, která jsou k dispozici 
 }
 ```  
 
-|Vlastnost  |Výchozí | Popis |
+|Vlastnost  |Výchozí | Description |
 |---------|---------|---------| 
-|Výsledkem|neuvedeno|E-mailová adresa odesílatele napříč všemi funkcemi.| 
+|Výsledkem|Není k dispozici|E-mailová adresa odesílatele napříč všemi funkcemi.| 
 
 
 ## <a name="next-steps"></a>Další kroky

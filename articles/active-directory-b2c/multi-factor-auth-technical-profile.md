@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: c9ed0e329b498112feafaf21c34e85ea436cbb77
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e1b5d6787a41e59511267dd9e7f9048a0431e26a
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332808"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85204111"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu Azure MFA ve službě Azure AD B2C vlastní zásady
 
@@ -34,7 +34,7 @@ Tento technický profil:
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`hodnotu. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C:
+Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C:
 
 ```
 Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
@@ -42,7 +42,7 @@ Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, 
 
 Následující příklad ukazuje technický profil Azure MFA:
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
     <DisplayName>Send Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -57,7 +57,7 @@ Prvním režimem tohoto technického profilu je vygenerování kódu a jeho odes
 
 Element **InputClaims** obsahuje seznam deklarací pro odeslání do Azure MFA. Název vaší deklarace identity můžete také namapovat na název definovaný v technickém profilu MFA.
 
-| ClaimReferenceId | Požaduje se | Popis |
+| ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- |
 | userPrincipalName (Hlavní název uživatele) | Ano | Identifikátor uživatele, který vlastní telefonní číslo. |
 | phoneNumber | Ano | Telefonní číslo, do kterého se má poslat SMS kód |
@@ -74,7 +74,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 ### <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | Operace | Ano | Musí být **OneWaySMS**.  |
 
@@ -82,7 +82,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 Následující metadata lze použít ke konfiguraci chybových zpráv zobrazených při odesílání selhání serveru SMS. Metadata by měla být nakonfigurovaná v technickém profilu s [vlastním kontrolním](self-asserted-technical-profile.md) výrazem. Chybové zprávy lze [lokalizovat](localization-string-ids.md#azure-mfa-error-messages).
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | UserMessageIfCouldntSendSms | Ne | Chybová zpráva uživatele, pokud telefonní číslo nepřijímá zprávu SMS. |
 | UserMessageIfInvalidFormat | Ne | Chybová zpráva uživatele v případě, že zadané telefonní číslo není platné telefonní číslo. |
@@ -93,7 +93,7 @@ Následující metadata lze použít ke konfiguraci chybových zpráv zobrazený
 
 Následující příklad ukazuje technický profil Azure MFA, který slouží k odeslání kódu prostřednictvím serveru SMS.
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-SendSms">
   <DisplayName>Send Sms</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -119,7 +119,7 @@ Druhým režimem tohoto technického profilu je ověření kódu. Pro tento rež
 
 Element **InputClaims** obsahuje seznam deklarací pro odeslání do Azure MFA. Název vaší deklarace identity můžete také namapovat na název definovaný v technickém profilu MFA.
 
-| ClaimReferenceId | Požaduje se | Popis |
+| ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- | ----------- |
 | phoneNumber| Ano | Stejné telefonní číslo jako dříve použité k odeslání kódu. Používá se také k vyhledání relace ověřování pro telefon. |
 | verificationCode  | Ano | Ověřovací kód poskytnutý uživatelem, který se má ověřit |
@@ -134,7 +134,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 ### <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | Operace | Ano | Je nutné **ověřit** |
 
@@ -142,7 +142,7 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 Následující metadata lze použít ke konfiguraci chybových zpráv zobrazených při selhání ověřování kódu. Metadata by měla být nakonfigurovaná v technickém profilu s [vlastním kontrolním](self-asserted-technical-profile.md) výrazem. Chybové zprávy lze [lokalizovat](localization-string-ids.md#azure-mfa-error-messages).
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | UserMessageIfMaxAllowedCodeRetryReached| Ne | Chybová zpráva uživatele v případě, že se uživatel pokusil o ověřovací kód příliš mnohokrát. |
 | UserMessageIfServerError | Ne | Chybová zpráva uživatele v případě, že došlo k vnitřní chybě serveru |
@@ -153,7 +153,7 @@ Následující metadata lze použít ke konfiguraci chybových zpráv zobrazený
 
 Následující příklad ukazuje technický profil Azure MFA, který slouží k ověření kódu.
 
-```XML
+```xml
 <TechnicalProfile Id="AzureMfa-VerifySms">
     <DisplayName>Verify Sms</DisplayName>
     <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureMfaProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

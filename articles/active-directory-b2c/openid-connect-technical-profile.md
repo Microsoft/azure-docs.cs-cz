@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: e259a57a9cd6b24362862ffd6cb738157ca912d5
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ff5a83a8ab608e685f43056debe45877965e0c53
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332767"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203992"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu OpenID Connect v Azure Active Directory B2C vlastní zásady
 
@@ -26,9 +26,9 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro poskytovatele id
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-Atribut **Name** elementu **Protocol** musí být nastaven na `OpenIdConnect`hodnotu. Například protokol pro technický profil **MSA-OIDC** je `OpenIdConnect`:
+Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `OpenIdConnect` . Například protokol pro technický profil **MSA-OIDC** je `OpenIdConnect` :
 
-```XML
+```xml
 <TechnicalProfile Id="MSA-OIDC">
   <DisplayName>Microsoft Account</DisplayName>
   <Protocol Name="OpenIdConnect" />
@@ -39,7 +39,7 @@ Atribut **Name** elementu **Protocol** musí být nastaven na `OpenIdConnect`hod
 
 Prvky **InputClaims** a **InputClaimsTransformations** nejsou požadovány. Je ale možné, že bude poskytovateli identity poslat další parametry. Následující příklad přidá parametr řetězce dotazu **domain_hint** s hodnotou `contoso.com` do autorizační žádosti.
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="domain_hint" DefaultValue="contoso.com" />
 </InputClaims>
@@ -74,29 +74,29 @@ Technický profil také vrací deklarace identity, které nejsou vráceny zprost
 
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | client_id | Ano | Identifikátor aplikace zprostředkovatele identity |
-| IdTokenAudience | Ne | Cílová skupina id_token. Když se tato `aud` možnost zadá, Azure AD B2C ověří, jestli je deklarace identity v tokenu, kterou vrátil poskytovatel identity, rovna hodnotě uvedené v metadatech IdTokenAudience.  |
+| IdTokenAudience | Ne | Cílová skupina id_token. Když se tato možnost zadá, Azure AD B2C ověří, jestli je `aud` deklarace identity v tokenu, kterou vrátil poskytovatel identity, rovna hodnotě uvedené v metadatech IdTokenAudience.  |
 | MEZIPAMĚŤ | Ano | Adresa URL, která odkazuje na dokument konfigurace zprostředkovatele identity OpenID Connect, který se taky označuje jako OpenID dobře známý koncový bod konfigurace. Adresa URL může obsahovat `{tenant}` výraz, který je nahrazen názvem tenanta.  |
 | authorization_endpoint | Ne | Adresa URL, která odkazuje na koncový bod autorizace konfigurace zprostředkovatele identity OpenID Connect. Hodnota metadat authorization_endpoint má přednost před `authorization_endpoint` zadanou hodnotou v koncovém bodu známé konfigurace OpenID. Adresa URL může obsahovat `{tenant}` výraz, který je nahrazen názvem tenanta. |
-| issuer | Ne | Jedinečný identifikátor poskytovatele identity OpenID Connect. Hodnota metadat vystavitele má přednost před `issuer` zadanou hodnotou v OpenIDm známém koncovém bodu konfigurace.  Když se tato `iss` možnost zadá, Azure AD B2C ověří, jestli je deklarace identity v tokenu, kterou vrátil poskytovatel identity, rovna hodnotě určené v metadatech vystavitele. |
+| issuer | Ne | Jedinečný identifikátor poskytovatele identity OpenID Connect. Hodnota metadat vystavitele má přednost před `issuer` zadanou hodnotou v OpenIDm známém koncovém bodu konfigurace.  Když se tato možnost zadá, Azure AD B2C ověří, jestli je `iss` deklarace identity v tokenu, kterou vrátil poskytovatel identity, rovna hodnotě určené v metadatech vystavitele. |
 | ProviderName | Ne | Název zprostředkovatele identity  |
-| response_types | Ne | Typ odpovědi v souladu se specifikací OpenID Connect Core 1,0. Možné hodnoty: `id_token`, `code`, nebo `token`. |
-| response_mode | Ne | Metoda, kterou zprostředkovatel identity používá k odeslání výsledku zpět do Azure AD B2C. Možné hodnoty: `query`, `form_post` (výchozí) nebo `fragment`. |
-| scope | Ne | Rozsah požadavku, který je definován podle specifikace 1,0 OpenID Connect Core. Například `openid`, `profile`a `email`. |
-| HttpBinding | Ne | Očekávaná vazba protokolu HTTP k přístupovému tokenu a koncovým bodům tokenu deklarací identity. Možné hodnoty: `GET` nebo `POST`.  |
+| response_types | Ne | Typ odpovědi v souladu se specifikací OpenID Connect Core 1,0. Možné hodnoty: `id_token` , `code` , nebo `token` . |
+| response_mode | Ne | Metoda, kterou zprostředkovatel identity používá k odeslání výsledku zpět do Azure AD B2C. Možné hodnoty: `query` , `form_post` (výchozí) nebo `fragment` . |
+| scope | Ne | Rozsah požadavku, který je definován podle specifikace 1,0 OpenID Connect Core. Například `openid` , `profile` a `email` . |
+| HttpBinding | Ne | Očekávaná vazba protokolu HTTP k přístupovému tokenu a koncovým bodům tokenu deklarací identity. Možné hodnoty: `GET` nebo `POST` .  |
 | ValidTokenIssuerPrefixes | Ne | Klíč, který se dá použít k přihlášení ke každému klientovi při použití poskytovatele identity s více klienty, jako je například Azure Active Directory. |
-| UsePolicyInRedirectUri | Ne | Určuje, jestli se při vytváření identifikátoru URI přesměrování má použít zásada. Při konfiguraci aplikace ve zprostředkovateli identity je nutné zadat identifikátor URI přesměrování. Identifikátor URI přesměrování odkazuje na Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`.  Pokud zadáte `false`, budete muset pro každou zásadu, kterou používáte, přidat identifikátor URI přesměrování. Například: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
+| UsePolicyInRedirectUri | Ne | Určuje, jestli se při vytváření identifikátoru URI přesměrování má použít zásada. Při konfiguraci aplikace ve zprostředkovateli identity je nutné zadat identifikátor URI přesměrování. Identifikátor URI přesměrování odkazuje na Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` .  Pokud zadáte `false` , budete muset pro každou zásadu, kterou používáte, přidat identifikátor URI přesměrování. Příklad: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 | MarkAsFailureOnStatusCode5xx | Ne | Určuje, zda má být požadavek na externí službu označený jako selhání, pokud je stavový kód HTTP v rozsahu 5xx. Výchozí formát je `false`. |
 | DiscoverMetadataByTokenIssuer | Ne | Určuje, zda mají být metadata OIDC zjištěna pomocí vystavitele v tokenu JWT. |
-| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true`, nebo `false`  (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true`. |
+| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
 
 ### <a name="ui-elements"></a>Prvky uživatelského rozhraní
  
 Následující nastavení lze použít ke konfiguraci chybové zprávy, která se zobrazí po selhání. Metadata by měla být nakonfigurovaná ve technickém profilu OpenID Connect. Chybové zprávy lze [lokalizovat](localization-string-ids.md#sign-up-or-sign-in-error-messages).
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | UserMessageIfClaimsPrincipalDoesNotExist | Ne | Zpráva, která se zobrazí uživateli, pokud se v adresáři nenajde účet se zadaným uživatelským jménem |
 | UserMessageIfInvalidPassword | Ne | Zpráva, která se zobrazí uživateli, pokud je chybné heslo |
@@ -106,13 +106,13 @@ Následující nastavení lze použít ke konfiguraci chybové zprávy, která s
 
 Element **CryptographicKeys** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity. Kryptografický klíč je vyžadován pouze v případě, že jsou metadata **response_types** nastavena `code`na hodnotu. V takovém případě Azure AD B2C provede další volání výměny autorizačního kódu pro přístupový token. Pokud jsou metadata nastavená na `id_token` , můžete kryptografický klíč vynechat.  |
+| client_secret | Ano | Tajný kód klienta aplikace zprostředkovatele identity. Kryptografický klíč je vyžadován pouze v případě, že jsou metadata **response_types** nastavena na hodnotu `code` . V takovém případě Azure AD B2C provede další volání výměny autorizačního kódu pro přístupový token. Pokud jsou metadata nastavená na `id_token` , můžete kryptografický klíč vynechat.  |
 
 ## <a name="redirect-uri"></a>Identifikátor URI pro přesměrování
 
-Když nakonfigurujete identifikátor URI pro přesměrování poskytovatele identity, zadejte `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`. Ujistěte se, že `{your-tenant-name}` jste se svým jménem svého tenanta nahradili. Identifikátor URI pro přesměrování musí být malými písmeny.
+Když nakonfigurujete identifikátor URI pro přesměrování poskytovatele identity, zadejte `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp` . Ujistěte se, že `{your-tenant-name}` jste se svým jménem svého tenanta nahradili. Identifikátor URI pro přesměrování musí být malými písmeny.
 
 Příklady:
 

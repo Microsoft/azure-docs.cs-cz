@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: f72e98213977a09b97cab9966ec69194cd8439e8
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.openlocfilehash: 991bb3e296f18ef6d5182048d8ce4601c0fc09c9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/26/2020
-ms.locfileid: "83845963"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734992"
 ---
 # <a name="known-issues-service-principal-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy instančního objektu v Azure Active Directory Domain Services
 
-[Instanční objekty](../active-directory/develop/app-objects-and-service-principals.md) jsou aplikace, které platforma Azure používá ke správě, aktualizaci a údržbě spravované domény služby Azure služba AD DS. Pokud dojde k odstranění instančního objektu, bude to mít vliv na funkčnost ve spravované doméně služby Azure služba AD DS.
+[Instanční objekty](../active-directory/develop/app-objects-and-service-principals.md) jsou aplikace, které platforma Azure používá ke správě, aktualizaci a údržbě spravované domény služby Azure Active Directory Domain Services (Azure služba AD DS). Pokud dojde k odstranění instančního objektu, bude to mít vliv na funkčnost ve spravované doméně.
 
 Tento článek vám pomůže odstranit a vyřešit výstrahy konfigurace související s instančním objektem.
 
@@ -30,7 +30,7 @@ Tento článek vám pomůže odstranit a vyřešit výstrahy konfigurace souvise
 
 *Instanční objekt vyžadovaný pro správné fungování Azure AD Domain Services se odstranil z adresáře služby Azure AD. Tato konfigurace má vliv na schopnost Microsoftu monitorovat, spravovat, opravovat a synchronizovat vaši spravovanou doménu.*
 
-Pokud se požadovaný objekt služby odstraní, platforma Azure nemůže provádět automatizované úlohy správy. Spravovaná doména Azure služba AD DS nemusí správně používat aktualizace nebo vytvářet zálohy.
+Pokud se požadovaný objekt služby odstraní, platforma Azure nemůže provádět automatizované úlohy správy. Spravovaná doména nemusí správně používat aktualizace nebo vytvářet zálohy.
 
 ### <a name="check-for-missing-service-principals"></a>Kontrolovat chybějící objekty služby
 
@@ -64,18 +64,18 @@ Pokud v adresáři Azure AD chybí ID aplikace *2565bd9d-DA50-47d4-8B85-4c97f669
     New-AzureAdServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
     ```
 
-Stav spravované domény Azure služba AD DS se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
+Stav spravované domény se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
 
 ### <a name="re-register-the-microsoft-aad-namespace"></a>Znovu zaregistrujte obor názvů Microsoft AAD.
 
 Pokud v adresáři služby Azure AD chybí ID aplikace *443155a6-77f3-45e3-882b-22b3a8d431fb*, *abba844e-bc0e-44b0-947a-dc74e5d09022*nebo *d87dcbc6-a371-462e-88e3-28ad15ec4e64* , proveďte následující kroky a znovu zaregistrujte poskytovatele prostředků *Microsoft. aad* :
 
 1. V Azure Portal vyhledejte a vyberte **předplatná**.
-1. Vyberte předplatné přidružené k vaší spravované doméně Azure služba AD DS.
+1. Vyberte předplatné přidružené k vaší spravované doméně.
 1. V levém navigačním panelu vyberte **poskytovatelé prostředků**.
 1. Vyhledejte *Microsoft. aad*a pak vyberte **znovu registrovat**.
 
-Stav spravované domény Azure služba AD DS se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
+Stav spravované domény se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
 
 ## <a name="alert-aadds105-password-synchronization-application-is-out-of-date"></a>Výstraha AADDS105: aplikace synchronizace hesel je zastaralá.
 
@@ -105,7 +105,7 @@ K opětovnému vytvoření aplikace služby Azure AD používané pro synchroniz
     Remove-AzureADServicePrincipal -ObjectId $spObject
     ```
 
-Po odstranění obou aplikací se platforma Azure automaticky znovu vytvoří a pokusí se obnovit synchronizaci hesel. Stav spravované domény Azure služba AD DS se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
+Po odstranění obou aplikací se platforma Azure automaticky znovu vytvoří a pokusí se obnovit synchronizaci hesel. Stav spravované domény se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
 
 ## <a name="next-steps"></a>Další kroky
 

@@ -2,22 +2,22 @@
 title: Vysvětlení konektorů služby Azure Proxy aplikací služby AD | Microsoft Docs
 description: Zahrnuje základní informace o konektorech Azure Proxy aplikací služby AD.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/15/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b80d20084f45dd2212cdc03f9c7417a67833d887
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 236e8e32eedce1a075aa4b3d1600c9c5595b7e2c
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84116618"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84764668"
 ---
 # <a name="understand-azure-ad-application-proxy-connectors"></a>Vysvětlení konektorů Azure Proxy aplikací služby AD
 
@@ -31,7 +31,7 @@ Konektory jsou odlehčené agenti, kteří jsou místně a usnadňují odchozí 
 
 K úspěšnému nasazení proxy aplikace potřebujete aspoň jeden konektor, ale pro větší odolnost doporučujeme dvě nebo víc. Nainstalujte konektor na počítač se systémem Windows Server 2012 R2 nebo novějším. Konektor musí komunikovat se službou proxy aplikací a místními aplikacemi, které publikujete.
 
-### <a name="windows-server"></a>Server Windows
+### <a name="windows-server"></a>Windows Server
 Potřebujete server se systémem Windows Server 2012 R2 nebo novějším, na kterém můžete nainstalovat konektor proxy aplikací. Server se musí připojit k aplikačním proxy službám v Azure a místním aplikacím, které publikujete.
 
 Aby mohl Windows Server nainstalovat konektor proxy aplikací, musí mít povolený protokol TLS 1,2. Povolení TLS 1,2 na serveru:

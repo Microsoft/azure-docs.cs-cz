@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: fcad05749892e3a652e110a7e351450bffaca6f2
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 548cd488bc811ad16cd84950ce3819f2e1f3ddbb
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72792984"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080711"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Upgrade na Azure Search .NET SDK verze 3
 
@@ -25,7 +25,7 @@ Indexer execution result errors no longer have status
 the data source API will no longer return in the response of any REST operation, the connection string specified by the user.
 --->
 
-Pokud používáte verzi 2,0-Preview nebo starší [sadu Azure Search .NET SDK](https://aka.ms/search-sdk), Tento článek vám pomůže při upgradu aplikace na použití verze 3.
+Pokud používáte verzi 2,0-Preview nebo starší [sadu Azure Search .NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/search), Tento článek vám pomůže při upgradu aplikace na použití verze 3.
 
 Obecnější návod k sadě SDK, včetně příkladů, najdete v tématu [použití Azure Search z aplikace .NET](search-howto-dotnet-sdk.md).
 
@@ -41,7 +41,7 @@ Verze 3 sady Azure Search .NET SDK obsahuje některé změny z dřívějších v
 ## <a name="whats-new-in-version-3"></a>Co je nového ve verzi 3
 Verze 3 sady Azure Search .NET SDK cílí na nejnovější všeobecně dostupnou verzi Azure Search REST API, konkrétně 2016-09-01. Díky tomu je možné využít mnoho nových funkcí Azure Search z aplikace .NET, včetně následujících:
 
-* [Vlastní analyzátory](https://aka.ms/customanalyzers)
+* [Vlastní analyzátory](index-add-custom-analyzers.md)
 * Podpora [azure BLOB Storage](search-howto-indexing-azure-blob-storage.md) a [Azure Table Storage](search-howto-indexing-azure-tables.md) indexeru
 * Přizpůsobení indexeru prostřednictvím [mapování polí](search-indexer-field-mappings.md)
 * Podpora značek ETag umožňuje bezpečný souběžnou aktualizaci definic indexů, indexerů a zdrojů dat.
@@ -51,7 +51,7 @@ Verze 3 sady Azure Search .NET SDK cílí na nejnovější všeobecně dostupnou
 <a name="UpgradeSteps"></a>
 
 ## <a name="steps-to-upgrade"></a>Postup upgradu
-Nejdřív aktualizujte svůj odkaz na NuGet `Microsoft.Azure.Search` pro použití buď konzoly Správce balíčků NuGet, nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
+Nejdřív aktualizujte svůj odkaz na NuGet pro `Microsoft.Azure.Search` použití buď konzoly Správce balíčků NuGet, nebo kliknutím pravým tlačítkem na odkazy na projekt a výběrem možnosti spravovat balíčky NuGet... v aplikaci Visual Studio.
 
 Jakmile NuGet stáhne nové balíčky a jejich závislosti, sestavte projekt znovu. V závislosti na tom, jak je kód strukturovaný, se může úspěšně znovu sestavit. Pokud ano, jste připraveni!
 
@@ -71,7 +71,7 @@ Jakmile opravíte jakékoli chyby sestavení, můžete v aplikaci provádět zm�
 Ve verzi 3 Existuje malý počet zásadních změn, které mohou vyžadovat změny kódu kromě opakovaného sestavování aplikace.
 
 ### <a name="indexesgetclient-return-type"></a>Indexs. GetClient – návratový typ
-`Indexes.GetClient` Metoda má nový návratový typ. Dřív to vrátilo `SearchIndexClient`, ale změnilo se `ISearchIndexClient` ve verzi 2,0-Preview a tato změna se provádí na verzi 3. To je podpora pro zákazníky, kteří chtějí napodobovat `GetClient` metodu pro testování částí, a to vrácením `ISearchIndexClient`napodobnou implementaci.
+`Indexes.GetClient`Metoda má nový návratový typ. Dřív to vrátilo `SearchIndexClient` , ale změnilo se `ISearchIndexClient` ve verzi 2,0-Preview a tato změna se provádí na verzi 3. To je podpora pro zákazníky, kteří chtějí napodobovat `GetClient` metodu pro testování částí, a to vrácením napodobnou implementaci `ISearchIndexClient` .
 
 #### <a name="example"></a>Příklad
 Pokud váš kód vypadá takto:
@@ -87,7 +87,7 @@ ISearchIndexClient indexClient = serviceClient.Indexes.GetClient("hotels");
 ```
 
 ### <a name="analyzername-datatype-and-others-are-no-longer-implicitly-convertible-to-strings"></a>Deanalýza, datový typ a další už nejsou implicitně převoditelné na řetězce.
-Existuje mnoho typů v sadě Azure Search .NET SDK, které jsou odvozeny z `ExtensibleEnum`. Dříve tyto typy byly implicitně převoditelné na `string`typ. V `Object.Equals` implementaci pro tyto třídy se ale zjistila chyba a opravuje se chyba, která vyžaduje zakázání tohoto implicitního převodu. Explicitní převod na `string` je stále povolen.
+Existuje mnoho typů v sadě Azure Search .NET SDK, které jsou odvozeny z `ExtensibleEnum` . Dříve tyto typy byly implicitně převoditelné na typ `string` . V implementaci pro tyto třídy se ale zjistila Chyba `Object.Equals` a opravuje se chyba, která vyžaduje zakázání tohoto implicitního převodu. Explicitní převod na `string` je stále povolen.
 
 #### <a name="example"></a>Příklad
 Pokud váš kód vypadá takto:
@@ -130,9 +130,9 @@ index.Analyzers = new Analyzer[]
 
 Můžou se zobrazit chyby sestavení související s metodami nebo vlastnostmi, které byly označené jako zastaralé ve verzi 2,0-Preview a následně odebrány ve verzi 3. Pokud dojde k takovým chybám, můžete je vyřešit:
 
-- Pokud jste tento konstruktor používali: `ScoringParameter(string name, string value)`, použijte tuto jednu z nich:`ScoringParameter(string name, IEnumerable<string> values)`
-- Pokud jste `ScoringParameter.Value` vlastnost používali, použijte místo toho `ScoringParameter.Values` vlastnost nebo `ToString` metodu.
-- Pokud jste `SearchRequestOptions.RequestId` vlastnost používali, použijte místo ní `ClientRequestId` vlastnost.
+- Pokud jste tento konstruktor používali: `ScoringParameter(string name, string value)` , použijte tuto jednu z nich:`ScoringParameter(string name, IEnumerable<string> values)`
+- Pokud jste vlastnost používali `ScoringParameter.Value` , použijte `ScoringParameter.Values` `ToString` místo toho vlastnost nebo metodu.
+- Pokud jste vlastnost používali `SearchRequestOptions.RequestId` , použijte `ClientRequestId` místo ní vlastnost.
 
 ### <a name="removed-preview-features"></a>Odebrané funkce verze Preview
 

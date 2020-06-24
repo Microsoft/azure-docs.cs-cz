@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 03/30/2020
 ms.author: iainfou
-ms.openlocfilehash: 07aa9ade25d1d986833b6da2f3907d07b752b662
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 71a1a97c3cb6df4c1498940738fe070819fba1b5
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80655430"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734805"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Konfigurace omezeného delegování protokolu Kerberos (KCD) v Azure Active Directory Domain Services
 
@@ -33,7 +33,7 @@ K dokončení tohoto článku potřebujete tyto prostředky:
 * Tenant Azure Active Directory přidružený k vašemu předplatnému, buď synchronizovaný s místním adresářem, nebo jenom s cloudovým adresářem.
     * V případě potřeby [vytvořte tenanta Azure Active Directory][create-azure-ad-tenant] nebo [přidružte předplatné Azure k vašemu účtu][associate-azure-ad-tenant].
 * Ve vašem tenantovi Azure AD je povolená a nakonfigurovaná spravovaná doména Azure Active Directory Domain Services.
-    * V případě potřeby [vytvořte a nakonfigurujte instanci Azure Active Directory Domain Services][create-azure-ad-ds-instance].
+    * V případě potřeby [vytvořte a nakonfigurujte Azure Active Directory Domain Services spravovanou doménu][create-azure-ad-ds-instance].
 * Virtuální počítač pro správu Windows serveru, který je připojený k spravované doméně Azure služba AD DS.
     * V případě potřeby dokončete kurz [a vytvořte virtuální počítač s Windows serverem a připojte ho ke spravované doméně a][create-join-windows-vm] [nainstalujte nástroje pro správu služba AD DS][tutorial-create-management-vm].
 * Uživatelský účet, který je členem skupiny *správců řadičů domény Azure AD* ve vašem TENANTOVI Azure AD.
@@ -46,7 +46,7 @@ Omezené delegování protokolu Kerberos (KCD) omezuje služby nebo prostředky,
 
 Tradiční KCD také obsahuje několik problémů. Například ve starších operačních systémech neměl správce služby žádný užitečný způsob, jak zjistit, které front-endové služby jsou delegovány službám prostředků, které vlastní. Všechny front-endové služby, které by mohly delegovat službu prostředků, byly potenciálního bodu útoku. Pokud došlo k ohrožení bezpečnosti serveru, který hostuje front-end službu nakonfigurovanou pro delegování na služby prostředků, mohly by taky dojít k ohrožení služeb prostředků.
 
-Ve spravované doméně Azure služba AD DS nemáte oprávnění správce domény. V důsledku toho se tradiční KCD založený na účtu nedá nakonfigurovat v Azure služba AD DS spravované doméně. Místo toho je možné použít KCD založené na prostředku, což je také bezpečnější.
+Ve spravované doméně nemáte oprávnění správce domény. V důsledku toho se tradiční KCD založený na účtu nedá nakonfigurovat ve spravované doméně. Místo toho je možné použít KCD založené na prostředku, což je také bezpečnější.
 
 ### <a name="resource-based-kcd"></a>KCD na základě prostředků
 
@@ -58,8 +58,8 @@ KCD na základě prostředků se konfiguruje pomocí PowerShellu. Rutiny [set-AD
 
 V tomto scénáři předpokládáme, že máte webovou aplikaci, která běží na počítači s názvem *Contoso-WebApp.aaddscontoso.com*. Webová aplikace potřebuje přístup k webovému rozhraní API, které běží na počítači s názvem *Contoso-API.aaddscontoso.com* v kontextu doménových uživatelů. Pro konfiguraci tohoto scénáře proveďte následující kroky:
 
-1. [Vytvořte vlastní organizační jednotku](create-ou.md). Můžete delegovat oprávnění ke správě této vlastní organizační jednotky pro uživatele v rámci spravované domény Azure služba AD DS.
-1. [Doména se připojí k virtuálním počítačům][create-join-windows-vm], které používají webovou aplikaci, a tu, která spouští webové rozhraní API, do spravované domény Azure služba AD DS. Vytvořte tyto účty počítačů ve vlastní organizační jednotce z předchozího kroku.
+1. [Vytvořte vlastní organizační jednotku](create-ou.md). Můžete delegovat oprávnění ke správě této vlastní organizační jednotky pro uživatele ve spravované doméně.
+1. [Doména se připojí k virtuálním počítačům][create-join-windows-vm], které používají webovou aplikaci, a tu, která spouští webové rozhraní API, do spravované domény. Vytvořte tyto účty počítačů ve vlastní organizační jednotce z předchozího kroku.
 
     > [!NOTE]
     > Účty počítačů pro webovou aplikaci a webové rozhraní API musí být ve vlastní organizační jednotce, kde máte oprávnění ke konfiguraci KCD založených na prostředcích. KCD na základě prostředků nejde nakonfigurovat pro účet počítače na integrovaném kontejneru *AAD DC Computers* .
@@ -75,8 +75,8 @@ V tomto scénáři předpokládáme, že máte webovou aplikaci, která běží 
 
 V tomto scénáři předpokládáme, že máte webovou aplikaci, která je spuštěná jako účet služby s názvem *appsvc*. Webová aplikace potřebuje přístup k webovému rozhraní API, které běží jako účet služby s názvem *backendsvc* v kontextu doménových uživatelů. Pro konfiguraci tohoto scénáře proveďte následující kroky:
 
-1. [Vytvořte vlastní organizační jednotku](create-ou.md). Můžete delegovat oprávnění ke správě této vlastní organizační jednotky pro uživatele v rámci spravované domény Azure služba AD DS.
-1. [Doména se připojí k virtuálním počítačům][create-join-windows-vm] , na kterých běží back-end webové rozhraní API nebo prostředek, do spravované domény Azure služba AD DS. Vytvořte účet počítače v rámci vlastní organizační jednotky.
+1. [Vytvořte vlastní organizační jednotku](create-ou.md). Můžete delegovat oprávnění ke správě této vlastní organizační jednotky pro uživatele ve spravované doméně.
+1. [Doména – připojí virtuální počítače][create-join-windows-vm] , na kterých běží back-end webové rozhraní API nebo prostředek, do spravované domény. Vytvořte účet počítače v rámci vlastní organizační jednotky.
 1. Vytvořte účet služby (například ' appsvc '), který se používá ke spuštění webové aplikace v rámci vlastní organizační jednotky.
 
     > [!NOTE]

@@ -1,6 +1,6 @@
 ---
 title: Migrace Azure AD Domain Services z klasické virtuální sítě | Microsoft Docs
-description: Přečtěte si, jak migrovat existující instanci spravované domény Azure AD Domain Services z modelu klasické virtuální sítě do virtuální sítě založené na Správce prostředků.
+description: Naučte se migrovat existující Azure AD Domain Services spravovanou doménu z modelu klasických virtuálních sítí do virtuální sítě založené na Správce prostředků.
 author: iainfoulds
 manager: daveba
 ms.service: active-directory
@@ -9,18 +9,18 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: fb9e12f29c148ea6854dde57456d8cf796cc8c34
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 35f92afea9f9e8da3cf1eeefa81cac0cb712843a
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83994064"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84734618"
 ---
-# <a name="migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrace Azure AD Domain Services z modelu klasických virtuálních sítí do Správce prostředků
+# <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrace Azure Active Directory Domain Services z modelu klasických virtuálních sítí do Správce prostředků
 
-Azure Active Directory Domain Services (služba AD DS) podporuje jednorázové přesunutí pro zákazníky, kteří aktuálně používají model klasických virtuálních sítí pro model Správce prostředků virtuální sítě. Azure služba AD DS spravované domény, které používají model nasazení Správce prostředků poskytují další funkce, jako jsou jemně odstupňované zásady pro hesla, protokoly auditu a ochrana před uzamčením účtu.
+Azure Active Directory Domain Services (Azure služba AD DS) podporuje jednorázové přesunutí pro zákazníky, kteří aktuálně používají model klasických virtuálních sítí pro model Správce prostředků virtuální sítě. Azure služba AD DS spravované domény, které používají model nasazení Správce prostředků poskytují další funkce, jako jsou jemně odstupňované zásady pro hesla, protokoly auditu a ochrana před uzamčením účtu.
 
-V tomto článku najdete pokyny k migraci a pak potřebné kroky k úspěšné migraci existující instance služby Azure služba AD DS. Některé výhody najdete v tématu [výhody migrace z modelu nasazení Classic na správce prostředků v Azure služba AD DS][migration-benefits].
+V tomto článku najdete popis důležitých informací o migraci a o tom, jaké kroky je potřeba k úspěšné migraci existující spravované domény. Některé výhody najdete v tématu [výhody migrace z modelu nasazení Classic na správce prostředků v Azure služba AD DS][migration-benefits].
 
 > [!NOTE]
 > V 2017 je Azure AD Domain Services k dispozici pro hostování v Azure Resource Manager síti. Od té doby jsme dokázali vytvořit bezpečnější službu pomocí moderních možností Azure Resource Manager. Vzhledem k tomu, že Azure Resource Manager nasazení plně nahrazují klasická nasazení, nasazení Azure služba AD DS Classic Virtual Network se vyřadí 1. března 2023.
@@ -29,47 +29,47 @@ V tomto článku najdete pokyny k migraci a pak potřebné kroky k úspěšné m
 
 ## <a name="overview-of-the-migration-process"></a>Přehled procesu migrace
 
-Proces migrace převezme existující instanci služby Azure služba AD DS, která běží v klasické virtuální síti, a přesune ji do existující Správce prostředků virtuální sítě. Migrace se provádí pomocí prostředí PowerShell a má dvě hlavní fáze provádění: *Příprava* a *migrace*.
+Proces migrace převezme existující spravovanou doménu, která běží v klasické virtuální síti, a přesune ji do existující Správce prostředků virtuální sítě. Migrace se provádí pomocí prostředí PowerShell a má dvě hlavní fáze provádění: *Příprava* a *migrace*.
 
 ![Přehled procesu migrace pro Azure služba AD DS](media/migrate-from-classic-vnet/migration-overview.png)
 
-Ve fázi *přípravy* Azure služba AD DS postará o zálohu domény, aby bylo možné získat nejnovější snímek uživatelů, skupin a hesel synchronizovaných se spravovanými doménami. Synchronizace je pak zakázaná a cloudová služba, která je hostitelem spravované domény Azure služba AD DS, se odstraní. Ve fázi přípravy není Azure služba AD DS spravované doméně schopen ověřit uživatele.
+Ve fázi *přípravy* Azure služba AD DS postará o zálohu domény, aby bylo možné získat nejnovější snímek uživatelů, skupin a hesel synchronizovaných se spravovanými doménami. Synchronizace je pak zakázaná a cloudová služba, která je hostitelem spravované domény, se odstraní. Ve fázi přípravy nemůže spravovaná doména ověřovat uživatele.
 
 ![Příprava pro migraci Azure služba AD DS](media/migrate-from-classic-vnet/migration-preparation.png)
 
-Ve fázi *migrace* se zkopírují základní virtuální disky pro řadiče domény z klasické domény spravované službou Azure služba AD DS, aby se vytvořily virtuální počítače pomocí modelu nasazení Správce prostředků. Pak se znovu vytvoří spravovaná doména Azure služba AD DS, která zahrnuje protokoly LDAP a DNS. Synchronizace do služby Azure AD se restartuje a obnoví se certifikáty LDAP. Není nutné znovu připojovat žádné počítače k spravované doméně Azure služba AD DS – budou se nadále připojovat ke spravované doméně a spouštět beze změn.
+Ve fázi *migrace* se zkopírují základní virtuální disky pro řadiče domény z klasické spravované domény, aby se vytvořily virtuální počítače pomocí modelu nasazení Správce prostředků. Spravovaná doména se pak znovu vytvoří, což zahrnuje protokol LDAPs a konfiguraci DNS. Synchronizace do služby Azure AD se restartuje a obnoví se certifikáty LDAP. Není nutné znovu připojit žádné počítače ke spravované doméně – budou se nadále připojovat ke spravované doméně a běžet beze změn.
 
 ![Migrace služba AD DS Azure](media/migrate-from-classic-vnet/migration-process.png)
 
 ## <a name="example-scenarios-for-migration"></a>Příklady scénářů pro migraci
 
-Mezi běžné scénáře migrace spravované domény Azure služba AD DS patří následující příklady.
+Mezi běžné scénáře migrace spravované domény patří následující příklady.
 
 > [!NOTE]
-> Neprovádějte převod klasické virtuální sítě, dokud nepotvrdíte úspěšnou migraci. Pokud během fází migrace a ověření dojde k problémům, převod virtuální sítě odebere zpět nebo obnoví spravovanou doménu Azure služba AD DS.
+> Neprovádějte převod klasické virtuální sítě, dokud nepotvrdíte úspěšnou migraci. Pokud během fází migrace a ověření dojde k nějakým potížím, převod virtuální sítě odebere zpět nebo obnoví spravovanou doménu.
 
 ### <a name="migrate-azure-ad-ds-to-an-existing-resource-manager-virtual-network-recommended"></a>Migrace Azure služba AD DS do existující Správce prostředků virtuální sítě (doporučeno)
 
-Běžným scénářem je, že už jste přesunuli jiné existující klasické prostředky do modelu nasazení Správce prostředků a virtuální sítě. Partnerský vztah se pak použije z Správce prostředků virtuální sítě do klasické virtuální sítě, která dál spouští Azure služba AD DS. Tento přístup umožňuje Správce prostředků aplikacím a službám používat funkce ověřování a správy ve spravované doméně Azure služba AD DS v klasické virtuální síti. Po migraci se všechny prostředky spustí pomocí modelu nasazení Správce prostředků a virtuální sítě.
+Běžným scénářem je, že už jste přesunuli jiné existující klasické prostředky do modelu nasazení Správce prostředků a virtuální sítě. Partnerský vztah se pak použije z Správce prostředků virtuální sítě do klasické virtuální sítě, která dál spouští Azure služba AD DS. Tento přístup umožňuje Správce prostředků aplikacím a službám používat funkce ověřování a správy spravované domény v klasické virtuální síti. Po migraci se všechny prostředky spustí pomocí modelu nasazení Správce prostředků a virtuální sítě.
 
 ![Migrace Azure služba AD DS do existující Správce prostředků virtuální sítě](media/migrate-from-classic-vnet/migrate-to-existing-vnet.png)
 
 Kroky vysoké úrovně, které se týkají tohoto ukázkového scénáře migrace, zahrnují tyto části:
 
 1. Odeberte existující brány VPN nebo partnerský vztah virtuálních sítí konfigurovaný v klasické virtuální síti.
-1. Pomocí kroků uvedených v tomto článku migrujte spravovanou doménu Azure služba AD DS.
+1. Pomocí kroků uvedených v tomto článku migrujte spravovanou doménu.
 1. Otestujte a potvrďte úspěšnou migraci a pak odstraňte klasickou virtuální síť.
 
 ### <a name="migrate-multiple-resources-including-azure-ad-ds"></a>Migrace několika prostředků včetně Azure služba AD DS
 
-V tomto ukázkovém scénáři migrujete služba AD DS Azure a další přidružené prostředky z modelu nasazení Classic do modelu nasazení Správce prostředků. Pokud se některé prostředky nadále spouštějí v klasické virtuální síti společně se službou Azure služba AD DS spravované domény, můžou všechny využívat výhod migrace na model nasazení Správce prostředků.
+V tomto ukázkovém scénáři migrujete služba AD DS Azure a další přidružené prostředky z modelu nasazení Classic do modelu nasazení Správce prostředků. Pokud některé prostředky pokračují v provozu v klasické virtuální síti společně se spravovanou doménou, můžou všechny využít výhod migrace na model nasazení Správce prostředků.
 
 ![Migrace několika prostředků do modelu nasazení Správce prostředků](media/migrate-from-classic-vnet/migrate-multiple-resources.png)
 
 Kroky vysoké úrovně, které se týkají tohoto ukázkového scénáře migrace, zahrnují tyto části:
 
 1. Odeberte existující brány VPN nebo partnerský vztah virtuálních sítí konfigurovaný v klasické virtuální síti.
-1. Pomocí kroků uvedených v tomto článku migrujte spravovanou doménu Azure služba AD DS.
+1. Pomocí kroků uvedených v tomto článku migrujte spravovanou doménu.
 1. Nastavte partnerský vztah virtuální sítě mezi klasickými virtuálními sítěmi a Správce prostředků sítě.
 1. Otestujte a potvrďte úspěšnou migraci.
 1. [Přesuňte další klasické prostředky, jako jsou virtuální počítače][migrate-iaas].
@@ -83,20 +83,20 @@ V tomto ukázkovém scénáři máte minimální dobu výpadku v jedné relaci. 
 Kroky vysoké úrovně, které se týkají tohoto ukázkového scénáře migrace, zahrnují tyto části:
 
 1. Odeberte existující brány VPN nebo partnerský vztah virtuálních sítí konfigurovaný v klasické virtuální síti.
-1. Pomocí kroků uvedených v tomto článku migrujte spravovanou doménu Azure služba AD DS.
+1. Pomocí kroků uvedených v tomto článku migrujte spravovanou doménu.
 1. Nastavte partnerský vztah virtuální sítě mezi klasickou virtuální sítí a novou Správce prostředkůovou virtuální sítí.
 1. Později v případě potřeby [migrujte další prostředky][migrate-iaas] z klasické virtuální sítě.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
-Když připravujete a pak migrujete spravovanou doménu Azure služba AD DS, dochází k nějakým hlediskům, které se týkají dostupnosti služeb ověřování a správy. Doména spravovaná službou Azure služba AD DS je během migrace nedostupná v časovém intervalu. Aplikace a služby, které spoléhají na Azure služba AD DS v průběhu migrace nezpůsobují výpadek.
+Při přípravě a následné migraci spravované domény jsou k dispozici některé okolnosti týkající se dostupnosti služeb ověřování a správy. Spravovaná doména není během migrace k dispozici v časovém intervalu. Aplikace a služby, které spoléhají na Azure služba AD DS v průběhu migrace nezpůsobují výpadek.
 
 > [!IMPORTANT]
 > Před zahájením procesu migrace si přečtěte část tohoto článku a pokyny k migraci. Proces migrace má vliv na dostupnost řadičů domény Azure služba AD DS po časových obdobích. Uživatelé, služby a aplikace se nemůžou během procesu migrace ověřit ve spravované doméně.
 
 ### <a name="ip-addresses"></a>IP adresy
 
-IP adresy řadiče domény pro spravovanou doménu Azure služba AD DS se po migraci změnily. Tato změna zahrnuje veřejnou IP adresu pro koncový bod zabezpečeného LDAP. Nové IP adresy jsou v rozsahu adres pro novou podsíť ve virtuální síti Správce prostředků.
+Po migraci se IP adresy řadiče domény pro spravovanou doménu změnily. Tato změna zahrnuje veřejnou IP adresu pro koncový bod zabezpečeného LDAP. Nové IP adresy jsou v rozsahu adres pro novou podsíť ve virtuální síti Správce prostředků.
 
 V případě odvolání se IP adresy můžou po vrácení zpět změnit.
 
@@ -108,11 +108,11 @@ Proces migrace zahrnuje řadiče domény, které jsou po určitou dobu offline. 
 
 ### <a name="account-lockout"></a>Uzamčení účtu
 
-Azure služba AD DS spravované domény, které běží na klasických virtuálních sítích, nemají nastavené zásady uzamčení účtů AD. Pokud jsou virtuální počítače přístupné pro Internet, útočníci můžou použít metody postřikování hesel k hrubě vynucenému způsobu jejich používání. Neexistují žádné zásady uzamčení účtů k zastavení těchto pokusů. V případě Azure služba AD DS spravované domény, které používají model nasazení Správce prostředků a virtuální sítě, zásady uzamčení účtů služby AD chrání před těmito útoky ze postřiku pomocí hesla.
+Spravované domény, které běží na klasických virtuálních sítích, nemají zásady uzamčení účtů služby AD. Pokud jsou virtuální počítače přístupné pro Internet, útočníci můžou použít metody postřikování hesel k hrubě vynucenému způsobu jejich používání. Neexistují žádné zásady uzamčení účtů k zastavení těchto pokusů. U spravovaných domén, které používají model nasazení Správce prostředků a virtuální sítě, jsou zásady uzamčení účtů služby AD chráněny proti těmto útokům pomocí hesla.
 
 Ve výchozím nastavení se 5 špatných pokusů o zadání hesla během 2 minut zamkne účet na 30 minut.
 
-Uzamčený účet se nedá použít k přihlášení, což může narušovat schopnost spravovat spravované domény a aplikace Azure služba AD DS spravované pomocí účtu. Když se migruje spravovaná doména Azure služba AD DS, můžou se účty vyskytnout jako trvalé uzamčení z důvodu opakovaných neúspěšných pokusů o přihlášení. Mezi dva běžné scénáře migrace patří následující:
+Uzamčený účet se nedá použít k přihlášení, což může narušit schopnost spravovat spravovanou doménu nebo aplikace, které spravuje daný účet. Po migraci spravované domény můžou mít účty k diskontu jako trvalé uzamčení kvůli opakovaným neúspěšným pokusům o přihlášení. Mezi dva běžné scénáře migrace patří následující:
 
 * Účet služby, který používá heslo s vypršenou platností
     * Účet služby se opakovaně snaží přihlásit pomocí hesla, které vypršelo, které uzamkne účet. Pokud to chcete opravit, vyhledejte aplikaci nebo virtuální počítač s přihlašovacími údaji, které vypršely, a aktualizujte heslo.
@@ -124,11 +124,11 @@ Pokud se domníváte, že některé účty můžou být po migraci uzamčené, p
 
 ### <a name="roll-back-and-restore"></a>Vrácení zpět a obnovení
 
-Pokud migrace není úspěšná, bude proces vrácení nebo obnovení spravované domény Azure služba AD DS. Vrácení zpět představuje možnost samoobslužné služby, která okamžitě vrátí stav spravované domény do doby před pokusem o migraci. Technici podpory Azure můžou také obnovit spravovanou doménu ze zálohy jako poslední. Další informace najdete v tématu [Jak vrátit zpět nebo obnovit z neúspěšné migrace](#roll-back-and-restore-from-migration).
+Pokud migrace není úspěšná, je proces vrácení nebo obnovení spravované domény. Vrácení zpět představuje možnost samoobslužné služby, která okamžitě vrátí stav spravované domény do doby před pokusem o migraci. Technici podpory Azure můžou také obnovit spravovanou doménu ze zálohy jako poslední. Další informace najdete v tématu [Jak vrátit zpět nebo obnovit z neúspěšné migrace](#roll-back-and-restore-from-migration).
 
 ### <a name="restrictions-on-available-virtual-networks"></a>Omezení pro dostupné virtuální sítě
 
-Existují určitá omezení pro virtuální sítě, na které se dá migrovat doména spravované službou Azure služba AD DS. Cílová Správce prostředků virtuální síť musí splňovat následující požadavky:
+Existují určitá omezení pro virtuální sítě, na které může být spravovaná doména migrována. Cílová Správce prostředků virtuální síť musí splňovat následující požadavky:
 
 * Virtuální síť Správce prostředků musí být ve stejném předplatném Azure jako klasická virtuální síť, ve které je služba Azure služba AD DS aktuálně nasazená.
 * Správce prostředků virtuální síť musí být ve stejné oblasti jako klasická virtuální síť, ve které je služba Azure služba AD DS aktuálně nasazená.
@@ -144,8 +144,8 @@ Migrace na model nasazení Správce prostředků a virtuální síť je rozděle
 | Krok    | Provedeno prostřednictvím  | Odhadovaný čas  | Výpadek  | Vrátit zpět a obnovit? |
 |---------|--------------------|-----------------|-----------|-------------------|
 | [Krok 1 – aktualizace a vyhledání nové virtuální sítě](#update-and-verify-virtual-network-settings) | portál Azure | 15 minut | Nepožaduje se žádný výpadek | – |
-| [Krok 2 – Příprava Azure služba AD DS spravované domény pro migraci](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minut v průměru | Výpadek služby Azure služba AD DS začíná po dokončení tohoto příkazu. | Vrácení zpět a obnovení k dispozici. |
-| [Krok 3 – přesunutí spravované domény Azure služba AD DS do existující virtuální sítě](#migrate-the-managed-domain) | PowerShell | 1 – 3 hodiny v průměru | Po dokončení tohoto příkazu je k dispozici jeden řadič domény, výpadek skončí. | Při selhání jsou k dispozici obě vrácení zpět (Samoobslužná služba) i obnovení. |
+| [Krok 2 – Příprava spravované domény na migraci](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 minut v průměru | Výpadek služby Azure služba AD DS začíná po dokončení tohoto příkazu. | Vrácení zpět a obnovení k dispozici. |
+| [Krok 3 – přesunutí spravované domény do existující virtuální sítě](#migrate-the-managed-domain) | PowerShell | 1 – 3 hodiny v průměru | Po dokončení tohoto příkazu je k dispozici jeden řadič domény, výpadek skončí. | Při selhání jsou k dispozici obě vrácení zpět (Samoobslužná služba) i obnovení. |
 | [Krok 4 – testování a čekání na repliku řadiče domény](#test-and-verify-connectivity-after-the-migration)| PowerShell a Azure Portal | 1 hodina nebo více, v závislosti na počtu testů | Oba řadiče domény jsou k dispozici a měly by fungovat normálně. | Není k dispozici. Po úspěšné migraci prvního virtuálního počítače není k dispozici možnost vrácení nebo obnovení. |
 | [Krok 5 – volitelné kroky konfigurace](#optional-post-migration-configuration-steps) | Azure Portal a virtuální počítače | – | Nepožaduje se žádný výpadek | – |
 
@@ -154,7 +154,7 @@ Migrace na model nasazení Správce prostředků a virtuální síť je rozděle
 
 ## <a name="update-and-verify-virtual-network-settings"></a>Aktualizace a ověření nastavení virtuální sítě
 
-Než zahájíte proces migrace, proveďte následující počáteční kontroly a aktualizace. K těmto krokům může dojít kdykoli před migrací a neovlivní provoz spravované domény Azure služba AD DS.
+Než zahájíte proces migrace, proveďte následující počáteční kontroly a aktualizace. K těmto krokům může dojít kdykoli před migrací a neovlivňují provoz spravované domény.
 
 1. Aktualizujte své místní Azure PowerShell prostředí na nejnovější verzi. K dokončení kroků migrace potřebujete alespoň verzi *2.3.2*.
 
@@ -168,17 +168,17 @@ Než zahájíte proces migrace, proveďte následující počáteční kontroly 
 
     Poznamenejte si tuto cílovou skupinu prostředků, cílovou virtuální síť a podsíť cílové virtuální sítě. Tyto názvy prostředků se používají během procesu migrace.
 
-1. Ověřte v Azure Portal stav spravované domény Azure služba AD DS. Pokud máte pro spravovanou doménu nějaké výstrahy, vyřešte je před zahájením procesu migrace.
+1. Ověřte stav spravované domény v Azure Portal. Pokud máte pro spravovanou doménu nějaké výstrahy, vyřešte je před zahájením procesu migrace.
 1. Případně, pokud plánujete přesunout další prostředky do modelu nasazení Správce prostředků a virtuální síť, potvrďte, že je možné tyto prostředky migrovat. Další informace najdete v tématu [migrace prostředků IaaS podporovaných platformou z klasický na správce prostředků][migrate-iaas].
 
     > [!NOTE]
-    > Neprovádějte převod klasické virtuální sítě na virtuální síť Správce prostředků. Pokud to uděláte, nebudete mít možnost vrátit zpět nebo obnovit spravovanou doménu služba AD DS Azure.
+    > Neprovádějte převod klasické virtuální sítě na virtuální síť Správce prostředků. V takovém případě není k dispozici možnost vrátit zpět nebo obnovit spravovanou doménu.
 
 ## <a name="prepare-the-managed-domain-for-migration"></a>Příprava spravované domény na migraci
 
-Azure PowerShell slouží k přípravě Azure služba AD DS spravované domény pro migraci. Tyto kroky zahrnují zálohování, pozastavení synchronizace a odstranění cloudové služby, která hostuje Azure služba AD DS. Po dokončení tohoto kroku bude Azure služba AD DS po určitou dobu offline. Pokud krok přípravy neproběhne úspěšně, můžete [se vrátit k předchozímu stavu](#roll-back).
+Azure PowerShell slouží k přípravě spravované domény pro migraci. Tyto kroky zahrnují zálohování, pozastavení synchronizace a odstranění cloudové služby, která hostuje Azure služba AD DS. Po dokončení tohoto kroku bude Azure služba AD DS po určitou dobu offline. Pokud krok přípravy neproběhne úspěšně, můžete [se vrátit k předchozímu stavu](#roll-back).
 
-K přípravě Azure služba AD DS spravované domény pro migraci, proveďte následující kroky:
+K přípravě spravované domény pro migraci proveďte následující kroky:
 
 1. Nainstalujte `Migrate-Aaads` skript z [Galerie prostředí PowerShell][powershell-script]. Tento skript migrace prostředí PowerShell je digitálně podepsaný technickým týmem Azure AD.
 
@@ -196,7 +196,7 @@ K přípravě Azure služba AD DS spravované domény pro migraci, proveďte ná
     $creds = Get-Credential
     ```
 
-1. Nyní spusťte `Migrate-Aadds` rutinu pomocí parametru *-Prepare* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS, jako je třeba *aaddscontoso.com*:
+1. Nyní spusťte `Migrate-Aadds` rutinu pomocí parametru *-Prepare* . Zadejte *ManagedDomainFqdn* pro vlastní spravovanou doménu, jako je například *aaddscontoso.com*:
 
     ```powershell
     Migrate-Aadds `
@@ -207,9 +207,9 @@ K přípravě Azure služba AD DS spravované domény pro migraci, proveďte ná
 
 ## <a name="migrate-the-managed-domain"></a>Migrace spravované domény
 
-Po přípravě a zálohování spravované domény Azure služba AD DS může být doména migrována. V tomto kroku se vytvoří virtuální počítače Azure AD Domain Services řadiče domény pomocí modelu nasazení Správce prostředků. Dokončení tohoto kroku může trvat 1 až 3 hodiny.
+Když je spravovaná doména připravena a zálohována, je možné doménu migrovat. V tomto kroku se vytvoří virtuální počítače Azure AD Domain Services řadiče domény pomocí modelu nasazení Správce prostředků. Dokončení tohoto kroku může trvat 1 až 3 hodiny.
 
-Spusťte `Migrate-Aadds` rutinu s použitím parametru *-Commit* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS připravenou v předchozí části, jako je třeba *aaddscontoso.com*:
+Spusťte `Migrate-Aadds` rutinu s použitím parametru *-Commit* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu připravenou v předchozí části, jako je například *aaddscontoso.com*:
 
 Zadejte cílovou skupinu prostředků obsahující virtuální síť, do které chcete migrovat Azure služba AD DS, například *myResourceGroup*. Zadejte cílovou virtuální síť, například *myVnet*, a podsíť, jako je například *DomainServices*.
 
@@ -228,7 +228,7 @@ Migrate-Aadds `
 Jakmile skript ověří, že je spravovaná doména připravená pro migraci, zadejte *Y* a spusťte proces migrace.
 
 > [!IMPORTANT]
-> Během procesu migrace nepřeveďte klasickou virtuální síť do Správce prostředků virtuální sítě. Pokud převedete virtuální síť, nemůžete vrátit zpět nebo obnovit spravovanou doménu Azure služba AD DS, protože původní virtuální síť už neexistuje.
+> Během procesu migrace nepřeveďte klasickou virtuální síť do Správce prostředků virtuální sítě. Pokud převedete virtuální síť, nemůžete tuto spravovanou doménu vrátit zpět ani obnovit, protože původní virtuální síť už neexistuje.
 
 Každé dvě minuty během procesu migrace zobrazí indikátor průběhu stav aktuálního stavu, jak je znázorněno v následujícím příkladu výstupu:
 
@@ -242,23 +242,23 @@ V této fázi můžete volitelně přesunout další existující prostředky z 
 
 ## <a name="test-and-verify-connectivity-after-the-migration"></a>Testování a ověření připojení po migraci
 
-Může trvat nějakou dobu, než se druhý řadič domény úspěšně nasadí a bude k dispozici pro použití ve spravované doméně Azure služba AD DS.
+Může trvat nějakou dobu, než se druhý řadič domény úspěšně nasadí a bude k dispozici pro použití ve spravované doméně.
 
-Pomocí modelu nasazení Správce prostředků se v Azure Portal nebo Azure PowerShell zobrazují síťové prostředky pro spravovanou doménu Azure služba AD DS. Další informace o tom, jaké jsou tyto síťové prostředky, najdete v tématu [síťové prostředky používané službou Azure služba AD DS][network-resources].
+Pomocí modelu nasazení Správce prostředků se v Azure Portal nebo Azure PowerShell zobrazí síťové prostředky pro spravovanou doménu. Další informace o tom, jaké jsou tyto síťové prostředky, najdete v tématu [síťové prostředky používané službou Azure služba AD DS][network-resources].
 
 Pokud je k dispozici alespoň jeden řadič domény, proveďte následující kroky konfigurace pro síťové připojení k virtuálním počítačům:
 
-* **Aktualizovat nastavení serveru DNS** Pokud chcete umožnit jiným prostředkům v Správce prostředků virtuální síti přeložit a používat spravovanou doménu služba AD DS Azure, aktualizujte nastavení DNS s použitím IP adres nových řadičů domény. Azure Portal může tato nastavení automaticky nakonfigurovat. Další informace o tom, jak nakonfigurovat Správce prostředků virtuální síť, najdete v tématu [aktualizace nastavení DNS pro virtuální síť Azure][update-dns].
+* **Aktualizovat nastavení serveru DNS** Pokud chcete umožnit jiným prostředkům ve Správce prostředků virtuální síti přeložit a používat spravovanou doménu, aktualizujte nastavení DNS pomocí IP adres nových řadičů domény. Azure Portal může tato nastavení automaticky nakonfigurovat. Další informace o tom, jak nakonfigurovat Správce prostředků virtuální síť, najdete v tématu [aktualizace nastavení DNS pro virtuální síť Azure][update-dns].
 * **Restartujte virtuální počítače připojené k doméně** – jako IP adresy serveru DNS pro řadiče domény služba AD DS Azure, restartujte všechny virtuální počítače připojené k doméně, aby pak používali nové nastavení serveru DNS. Pokud aplikace nebo virtuální počítače mají ručně nakonfigurovaná nastavení DNS, aktualizujte je ručně s novými IP adresami serveru DNS řadičů domény, které jsou uvedené v Azure Portal.
 
 Nyní otestujte připojení k virtuální síti a překlad názvů. Na virtuálním počítači, který je připojený k Správce prostředků virtuální síti, nebo na něj partnerský vztah, vyzkoušejte následující testy komunikace v síti:
 
 1. Ověřte, jestli můžete testovat IP adresu jednoho z řadičů domény, třeba`ping 10.1.0.4`
-    * IP adresy řadičů domény se zobrazují na stránce **vlastnosti** pro spravovanou doménu Azure služba AD DS v Azure Portal.
+    * IP adresy řadičů domény se zobrazují na stránce **vlastnosti** spravované domény v Azure Portal.
 1. Ověřte překlad názvů spravované domény, například`nslookup aaddscontoso.com`
-    * Zadejte název DNS vlastní spravované domény Azure služba AD DS, abyste ověřili, že jsou nastavení DNS správná a vyřešená.
+    * Zadejte název DNS vlastní spravované domény, abyste ověřili, že jsou nastavení DNS správná a vyřešená.
 
-Druhý řadič domény by měl být k dispozici 1-2 hodin po dokončení rutiny migrace. Pokud chcete zjistit, jestli je druhý řadič domény dostupný, podívejte se na stránku **vlastnosti** spravované domény Azure služba AD DS v Azure Portal. Pokud se zobrazí dvě IP adresy, druhý řadič domény je připravený.
+Druhý řadič domény by měl být k dispozici 1-2 hodin po dokončení rutiny migrace. Pokud chcete zjistit, jestli je druhý řadič domény dostupný, podívejte se na stránku **vlastnosti** spravované domény v Azure Portal. Pokud se zobrazí dvě IP adresy, druhý řadič domény je připravený.
 
 ## <a name="optional-post-migration-configuration-steps"></a>Volitelné kroky konfigurace po migraci
 
@@ -268,17 +268,17 @@ Po úspěšném dokončení procesu migrace zahrnuje některé volitelné kroky 
 
 Azure služba AD DS zveřejňuje protokoly auditu, které vám pomůžou řešit a zobrazovat události na řadičích domény. Další informace najdete v tématu [povolení a používání protokolů auditu][security-audits].
 
-Pomocí šablon můžete monitorovat důležité informace, které jsou k dispozici v protokolech. Šablona sešitu protokolu auditu může například monitorovat možné uzamčení účtů ve spravované doméně Azure služba AD DS.
+Pomocí šablon můžete monitorovat důležité informace, které jsou k dispozici v protokolech. Například Šablona sešitu protokolu auditu může sledovat možné uzamčení účtu ve spravované doméně.
 
 ### <a name="configure-azure-ad-domain-services-email-notifications"></a>Konfigurace e-mailových oznámení Azure AD Domain Services
 
-Chcete-li být upozorněni na zjištění problému ve spravované doméně Azure služba AD DS, aktualizujte nastavení e-mailových oznámení v Azure Portal. Další informace najdete v tématu [Konfigurace nastavení oznámení][notifications].
+Chcete-li být upozorněni na zjištění problému ve spravované doméně, aktualizujte nastavení e-mailových oznámení v Azure Portal. Další informace najdete v tématu [Konfigurace nastavení oznámení][notifications].
 
 ### <a name="update-fine-grained-password-policy"></a>Aktualizace jemně odstupňovaných zásad hesel
 
 V případě potřeby můžete jemně odstupňované zásady hesel aktualizovat tak, aby byly méně omezující než výchozí konfigurace. Protokoly auditu můžete použít k určení, jestli má méně omezující nastavení smysl, a pak zásadu podle potřeby nakonfigurovat. Pomocí následujících kroků vysoké úrovně zkontrolujte a aktualizujte nastavení zásad pro účty, které se po migraci opakovaně zablokují:
 
-1. [Nakonfigurujte zásady hesel][password-policy] pro méně omezení na spravované doméně Azure služba AD DS a sledujte události v protokolech auditu.
+1. [Nakonfigurujte zásady hesel][password-policy] pro méně omezení ve spravované doméně a sledujte události v protokolech auditu.
 1. Pokud některé účty služeb používají hesla s vypršenou platností podle identifikace v protokolech auditu, aktualizujte tyto účty správným heslem.
 1. Pokud je virtuální počítač vystavený Internetu, přečtěte si obecné názvy účtů, jako je například *správce*, *uživatel*nebo *Host* s vysokým počtem pokusů o přihlášení. Pokud je to možné, aktualizujte tyto virtuální počítače tak, aby používaly méně obecně pojmenovaných účtů.
 1. Pomocí trasování sítě na virtuálním počítači vyhledejte zdroj útoků a zajistěte, aby se tyto IP adresy mohly pokoušet o přihlášení.
@@ -293,13 +293,13 @@ Azure služba AD DS potřebuje skupinu zabezpečení sítě k zabezpečení port
 
 ## <a name="roll-back-and-restore-from-migration"></a>Vrácení zpět a obnovení z migrace
 
-Až do určitého bodu v procesu migrace se můžete rozhodnout vrátit zpět nebo obnovit spravovanou doménu Azure služba AD DS.
+Až do určitého bodu v procesu migrace se můžete rozhodnout vrátit zpět nebo obnovit spravovanou doménu.
 
 ### <a name="roll-back"></a>Vrátit zpět
 
-Pokud dojde k chybě při spuštění rutiny PowerShellu pro přípravu migrace v kroku 2 nebo pro migraci sebe sama v kroku 3, spravovaná doména Azure služba AD DS se může vrátit k původní konfiguraci. Tato návratová záloha vyžaduje původní klasickou virtuální síť. Všimněte si, že IP adresy se i po vrácení zpět můžou změnit.
+Pokud při spuštění rutiny prostředí PowerShell dojde k chybě pro přípravu migrace v kroku 2 nebo pro samotnou migraci v kroku 3, spravovaná doména se může vrátit k původní konfiguraci. Tato návratová záloha vyžaduje původní klasickou virtuální síť. Všimněte si, že IP adresy se i po vrácení zpět můžou změnit.
 
-Spusťte `Migrate-Aadds` rutinu s použitím parametru *-Abort* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu Azure služba AD DS připravenou v předchozí části, jako je třeba *aaddscontoso.com*, a název klasické virtuální sítě, jako je například *myClassicVnet*:
+Spusťte `Migrate-Aadds` rutinu s použitím parametru *-Abort* . Zadejte *ManagedDomainFqdn* pro vaši vlastní spravovanou doménu připravenou v předchozí části, jako je třeba *aaddscontoso.com*, a název klasické virtuální sítě, například *myClassicVnet*:
 
 ```powershell
 Migrate-Aadds `
@@ -313,9 +313,9 @@ Migrate-Aadds `
 
 Jako poslední možnost se Azure AD Domain Services dá obnovit z poslední dostupné zálohy. Zálohování se provádí v kroku 1 migrace, aby se zajistilo, že je k dispozici nejaktuálnější záloha. Tato záloha se ukládá po dobu 30 dnů.
 
-Pokud chcete ze zálohy obnovit spravovanou doménu Azure služba AD DS, [otevřete lístek podpory s použitím Azure Portal][azure-support]. Zadejte ID adresáře, název domény a důvod pro obnovení. Dokončení procesu podpory a obnovení může trvat několik dní.
+Chcete-li obnovit spravovanou doménu ze zálohy, [otevřete lístek podpory případu pomocí Azure Portal][azure-support]. Zadejte ID adresáře, název domény a důvod pro obnovení. Dokončení procesu podpory a obnovení může trvat několik dní.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Pokud máte po migraci do modelu nasazení Správce prostředků problémy, přečtěte si některé z následujících běžných oblastí pro odstraňování potíží:
 
@@ -326,7 +326,7 @@ Pokud máte po migraci do modelu nasazení Správce prostředků problémy, pře
 
 ## <a name="next-steps"></a>Další kroky
 
-Po migraci spravované domény Azure služba AD DS do modelu nasazení Správce prostředků [vytvořte a připojte virtuální počítač s Windows k doméně][join-windows] a pak [nainstalujte nástroje pro správu][tutorial-create-management-vm].
+Po migraci spravované domény do modelu nasazení Správce prostředků [vytvořte a připojte se k doméně virtuální počítač s Windows][join-windows] a pak [nainstalujte nástroje pro správu][tutorial-create-management-vm].
 
 <!-- INTERNAL LINKS -->
 [azure-bastion]: ../bastion/bastion-overview.md

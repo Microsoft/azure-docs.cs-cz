@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/18/2019
 ms.author: iainfou
-ms.openlocfilehash: 06b0fa1979f18981ec5cf78dc9a9dbad8b196394
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 68798cf98bf01697e5d854f5b539c1c381642c3c
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71258052"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735026"
 ---
 # <a name="known-issues-secure-ldap-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy protokol Secure LDAP v Azure Active Directory Domain Services
 
@@ -32,7 +32,7 @@ Tento článek vám pomůže pochopit a vyřešit běžné výstrahy pomocí zab
 
 ### <a name="resolution"></a>Řešení
 
-Pokud povolíte zabezpečený protokol LDAP, doporučujeme vytvořit další pravidla, která omezují přístup příchozích LDAP na konkrétní IP adresy. Tato pravidla chrání spravovanou doménu Azure služba AD DS před útoky hrubou silou. Pokud chcete aktualizovat skupinu zabezpečení sítě tak, aby se omezil přístup k portu TCP 636 pro zabezpečený protokol LDAP, proveďte následující kroky:
+Pokud povolíte zabezpečený protokol LDAP, doporučujeme vytvořit další pravidla, která omezují přístup příchozích LDAP na konkrétní IP adresy. Tato pravidla chrání spravovanou doménu před útoky hrubou silou. Pokud chcete aktualizovat skupinu zabezpečení sítě tak, aby se omezil přístup k portu TCP 636 pro zabezpečený protokol LDAP, proveďte následující kroky:
 
 1. V Azure Portal vyhledejte a vyberte **skupiny zabezpečení sítě**.
 1. Zvolte skupinu zabezpečení sítě přidruženou k vaší spravované doméně, například *AADDS-contoso.com-NSG*, a pak vyberte **příchozí pravidla zabezpečení** .
@@ -43,7 +43,7 @@ Pokud povolíte zabezpečený protokol LDAP, doporučujeme vytvořit další pra
 1. Zadejte prioritu pravidla a potom zadejte název, například *RestrictLDAPS*.
 1. Až budete připraveni, vyberte **Přidat** a vytvořte pravidlo.
 
-Stav spravované domény Azure služba AD DS se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
+Stav spravované domény se automaticky aktualizuje během dvou hodin a výstraha se odstraní.
 
 > [!TIP]
 > Nejedná se o jediné pravidlo, které vyžaduje, aby Azure služba AD DS běžely hladce. 636 Další informace najdete v tématu [skupiny zabezpečení sítě Azure služba AD DS a požadované porty](network-considerations.md#network-security-groups-and-required-ports).

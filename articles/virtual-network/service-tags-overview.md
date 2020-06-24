@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: ea756b965a2539886e695585c9b5f5034eac7684
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 42fd1a6c17ddbf06715a9f814bc214db3f34e1ad
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84263184"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100179"
 ---
 # <a name="virtual-network-service-tags"></a>Značky služby virtuální sítě
 <a name="network-service-tags"></a>
@@ -139,6 +139,8 @@ Můžete stáhnout soubory JSON, které obsahují aktuální seznam značek slu�
 - [Azure pro vládu USA](https://www.microsoft.com/download/details.aspx?id=57063)  
 - [Azure (Čína)](https://www.microsoft.com/download/details.aspx?id=57062) 
 - [Azure (Německo)](https://www.microsoft.com/download/details.aspx?id=57064)   
+
+Rozsahy IP adres v těchto souborech jsou v zápisu CIDR. 
 
 > [!NOTE]
 >Podmnožina těchto informací byla publikována v souborech XML pro [Azure Public](https://www.microsoft.com/download/details.aspx?id=41653), [Azure Čína](https://www.microsoft.com/download/details.aspx?id=42064)a [Azure Německo](https://www.microsoft.com/download/details.aspx?id=54770). Tyto soubory XML budou zastaralé od 30. června 2020 a po tomto datu již nebudou k dispozici. Měli byste migrovat na použití rozhraní Discovery API nebo souboru JSON ke stažení, jak je popsáno v předchozích částech.

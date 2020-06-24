@@ -1,7 +1,7 @@
 ---
 title: 'PowerShell: migrace SQL Server do SQL Database'
 titleSuffix: Azure Database Migration Service
-description: Naučte se migrovat datagbase z SQL Server na Azure SQL Database pomocí Azure PowerShell Azure Database Migration Service.
+description: Naučte se migrovat databázi z SQL Server na Azure SQL Database pomocí Azure PowerShell s Azure Database Migration Service.
 services: database-migration
 author: pochiraju
 ms.author: rajpo
@@ -12,16 +12,16 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
 ms.date: 02/20/2020
-ms.openlocfilehash: 494ef67938df161915390d9adc74093bafa550f5
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: a092ec3d211ed3fafadd73c37b3e58c353b618d6
+ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84192658"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85253405"
 ---
 # <a name="migrate-a-sql-server-database-to-azure-sql-database-using-azure-powershell"></a>Migrace databáze SQL Server pro Azure SQL Database pomocí Azure PowerShell
 
-V tomto článku migrujete databázi **Adventureworks2012** obnovenou do místní instance SQL Server 2016 nebo vyšší do Azure SQL Database pomocí Microsoft Azure PowerShell. Databáze můžete migrovat z instance SQL Server do Azure SQL Database pomocí `Az.DataMigration` modulu v Microsoft Azure PowerShell.
+V tomto článku migrujete databázi **Adventureworks2012** obnovenou do místní instance SQL Server 2016 nebo vyšší a Azure SQL Database pomocí Microsoft Azure PowerShell. Databáze můžete migrovat z instance SQL Server do Azure SQL Database pomocí `Az.DataMigration` modulu v Microsoft Azure PowerShell.
 
 V tomto článku získáte informace o těchto tématech:
 > [!div class="checklist"]
@@ -38,7 +38,7 @@ K provedení těchto kroků potřebujete:
 * [SQL Server 2016 nebo vyšší](https://www.microsoft.com/sql-server/sql-server-downloads) (jakákoli edice)
 * Povolení protokolu TCP/IP, který je ve výchozím nastavení zakázán při instalaci SQL Server Express. Povolte protokol TCP/IP podle článku [Povolení nebo zakázání síťového protokolu serveru](https://docs.microsoft.com/sql/database-engine/configure-windows/enable-or-disable-a-server-network-protocol#SSMSProcedure).
 * Ke konfiguraci [brány Windows Firewall pro přístup k databázovému stroji](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
-* Instance služby Azure SQL Database. Instanci Azure SQL Database můžete vytvořit podle podrobných informací uvedených v článku [Vytvoření databáze SQL Azure v Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
+* Instance služby Azure SQL Database. Instanci Azure SQL Database můžete vytvořit podle podrobných informací uvedených v článku [Vytvoření databáze v Azure SQL Database v Azure Portal](https://docs.microsoft.com/azure/sql-database/sql-database-get-started-portal).
 * [Data Migration Assistant](https://www.microsoft.com/download/details.aspx?id=53595) v 3.3 nebo novějším.
 * Pokud chcete vytvořit Microsoft Azure Virtual Network pomocí modelu nasazení Azure Resource Manager, který poskytuje Azure Database Migration Service připojení typu Site-to-site k místním zdrojovým serverům pomocí [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) nebo [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways).
 * Aby bylo dokončeno posouzení místní databáze a migrace schématu pomocí Data Migration Assistant, jak je popsáno v článku, který [provádí hodnocení migrace SQL Server](https://docs.microsoft.com/sql/dma/dma-assesssqlonprem)
@@ -96,7 +96,7 @@ Po vytvoření instance Azure Database Migration Service vytvořte projekt migra
 Objekt s informacemi o připojení databáze můžete vytvořit pomocí `New-AzDmsConnInfo` rutiny. Tato rutina očekává následující parametry:
 
 * *ServerType*. Typ požadovaného databázového připojení, například SQL, Oracle nebo MySQL. Použijte SQL pro SQL Server a Azure SQL.
-* *Zdroj dat* Název nebo IP adresa instance SQL Server nebo Azure SQL Database.
+* *Zdroj dat* Název nebo IP instance SQL Server nebo Azure SQL Database.
 * *Typ authType*. Typ ověřování pro připojení, který může být buď SqlAuthentication, nebo WindowsAuthentication.
 * Parametr *TrustServerCertificate* nastaví hodnotu, která indikuje, jestli je kanál zašifrovaný při obnechání procházení řetězu certifikátů k ověření vztahu důvěryhodnosti. Hodnota může být true nebo false.
 

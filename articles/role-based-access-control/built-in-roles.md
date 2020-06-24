@@ -7,13 +7,13 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 05/04/2020
-ms.openlocfilehash: 909485ea3c4e143ce93579d1bfea5e13cf94c575
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.date: 06/18/2020
+ms.openlocfilehash: 6e570c100a30f18a843f50cb8dc93572bb62d0f7
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660044"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080728"
 ---
 # <a name="azure-built-in-roles"></a>Předdefinované role Azure
 
@@ -26,7 +26,7 @@ Následující tabulka uvádí stručný popis a jedinečné ID každé předdef
 ## <a name="all"></a>Vše
 
 > [!div class="mx-tableFixed"]
-> | Předdefinovaná role | Popis | ID |
+> | Předdefinovaná role | Description | ID |
 > | --- | --- | --- |
 > | **Obecné** |  |  |
 > | [Přispěvatel](#contributor) | Umožňuje spravovat vše kromě udělení přístupu k prostředkům. | b24988ac-6180-42a0-ab88-20f7382dd24c |
@@ -1168,6 +1168,7 @@ Může vytvořit a spravovat cluster avere vFXT. [Další informace](../avere-vf
 > | [Microsoft. Authorization](resource-provider-operations.md#microsoftauthorization)/*/Read | Čtení rolí a přiřazení rolí |
 > | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/*/Read |  |
 > | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/availabilitySets/* |  |
+> | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/proximityPlacementGroups/* |  |
 > | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/virtualMachines/* |  |
 > | [Microsoft. COMPUTE](resource-provider-operations.md#microsoftcompute)/disks/* |  |
 > | [Microsoft. Network](resource-provider-operations.md#microsoftnetwork)/*/Read |  |
@@ -1207,6 +1208,7 @@ Může vytvořit a spravovat cluster avere vFXT. [Další informace](../avere-vf
         "Microsoft.Authorization/*/read",
         "Microsoft.Compute/*/read",
         "Microsoft.Compute/availabilitySets/*",
+        "Microsoft.Compute/proximityPlacementGroups/*",
         "Microsoft.Compute/virtualMachines/*",
         "Microsoft.Compute/disks/*",
         "Microsoft.Network/*/read",
@@ -2767,7 +2769,7 @@ Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.
 > | [Microsoft. support](resource-provider-operations.md#microsoftsupport)/* | Vytvoření a aktualizace lístku podpory |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Certificates/* | Vytváření a Správa certifikátů webu |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/listSitesAssignedToHostName/Read | Získá názvy webů přiřazených k názvu hostitele. |
-> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/JOIN/Action |  |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/JOIN/Action | Připojí App Service plán. |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/Read | Získat vlastnosti v plánu App Service |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Sites/* | Vytváření a Správa webů (vytváření webů vyžaduje taky oprávnění k zápisu do přidruženého plánu App Service) |
 > | **NotActions** |  |
@@ -2812,7 +2814,7 @@ Umožňuje spravovat weby (nikoli webové plány), ale ne přístup k nim.
 }
 ```
 
-## <a name="containers"></a>Containers
+## <a name="containers"></a>Kontejnery
 
 
 ### <a name="acrdelete"></a>AcrDelete
@@ -5623,7 +5625,7 @@ Umožňuje spravovat Logic Apps, ale ne měnit přístup k nim. [Další informa
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/connectionGateways/* | Vytvoření a správa brány připojení. |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/Connections/* | Vytvoření a Správa připojení. |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/customApis/* | Vytvoří a spravuje vlastní rozhraní API. |
-> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/JOIN/Action |  |
+> | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/JOIN/Action | Připojí App Service plán. |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/serverFarms/Read | Získat vlastnosti v plánu App Service |
 > | [Microsoft. Web](resource-provider-operations.md#microsoftweb)/sites/Functions/listSecrets/Action | Výpis tajných kódů funkcí |
 > | **NotActions** |  |
@@ -6342,7 +6344,7 @@ Oprávnění k zobrazení Security Center. Může zobrazit doporučení, výstra
 
 ### <a name="devtest-labs-user"></a>Uživatel DevTest Labs
 
-Umožňuje připojit, spustit, restartovat a vypnout virtuální počítače ve vašem Azure DevTest Labs. [Další informace](../lab-services/devtest-lab-add-devtest-user.md)
+Umožňuje připojit, spustit, restartovat a vypnout virtuální počítače ve vašem Azure DevTest Labs. [Další informace](../devtest-labs/devtest-lab-add-devtest-user.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -6446,7 +6448,7 @@ Umožňuje připojit, spustit, restartovat a vypnout virtuální počítače ve 
 
 ### <a name="lab-creator"></a>Autor testovacího prostředí
 
-Umožňuje vytvářet, spravovat a odstraňovat spravované laboratoře v rámci účtů Azure Lab. [Další informace](../lab-services/classroom-labs/add-lab-creator.md)
+Umožňuje vytvářet, spravovat a odstraňovat spravované laboratoře v rámci účtů Azure Lab. [Další informace](../lab-services/add-lab-creator.md)
 
 > [!div class="mx-tableFixed"]
 > |  |  |
@@ -8340,7 +8342,7 @@ Umožňuje spravovat značky entit bez poskytnutí přístupu k samotným entit�
 }
 ```
 
-## <a name="other"></a>Další
+## <a name="other"></a>Jiné
 
 
 ### <a name="biztalk-contributor"></a>Přispěvatel BizTalk

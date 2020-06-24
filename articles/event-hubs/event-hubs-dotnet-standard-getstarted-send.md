@@ -4,21 +4,18 @@ description: Tento článek poskytuje návod pro vytvoření aplikace .NET Core,
 services: event-hubs
 documentationcenter: na
 author: spelluru
-editor: ''
 ms.assetid: ''
 ms.service: event-hubs
-ms.devlang: na
 ms.topic: conceptual
-ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 02/11/2020
+ms.date: 06/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 2a3b14acad4990059a27201b7e1e6b9e93123194
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.reviewer: shvija
+ms.openlocfilehash: abe6a5d2cd4432b5b9dc387940a4d48f4be2aa92
+ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82025165"
+ms.lasthandoff: 06/24/2020
+ms.locfileid: "85296572"
 ---
 # <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Odesílání událostí do nebo příjem událostí z Azure Event Hubs pomocí .NET Core (Microsoft. Azure. EventHubs)
 V tomto rychlém startu se dozvíte, jak odesílat události do centra událostí a přijímat z něj události pomocí knihovny **Microsoft. Azure. EventHubs** .NET Core.
@@ -51,7 +48,7 @@ Spusťte Visual Studio. V nabídce **Soubor** klikněte na položku **Nový** a 
 
 ### <a name="add-the-event-hubs-nuget-package"></a>Přidání balíčku NuGet služby Event Hubs
 
-Pomocí následujících [`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) kroků přidejte do projektu balíček NuGet knihovny .NET Core: 
+[`Microsoft.Azure.EventHubs`](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)Pomocí následujících kroků přidejte do projektu balíček NuGet knihovny .NET Core: 
 
 1. Klikněte pravým tlačítkem na nově vytvořený projekt a vyberte možnost **Spravovat balíčky NuGet**.
 2. Klikněte na kartu **Procházet**, vyhledejte Microsoft.Azure.EventHubs a pak vyberte balíček **Microsoft.Azure.EventHubs**. Klikněte na **Instalovat** a dokončete instalaci, pak zavřete dialogové okno.
@@ -201,7 +198,7 @@ Pomocí následujících [`Microsoft.Azure.EventHubs`](https://www.nuget.org/pac
 ## <a name="receive-events"></a>Příjem událostí
 V této části se dozvíte, jak napsat konzolovou aplikaci .NET Core, která přijímá zprávy z centra událostí pomocí třídy [Event Processor Host](event-hubs-event-processor-host.md). [Procesor událostí Host](event-hubs-event-processor-host.md) je třída rozhraní .NET, která zjednodušuje přijímání událostí z Center událostí tím, že spravuje trvalé kontrolní body a paralelní příjem z těchto Center událostí. Pomocí třídy Event Processor Host můžete události rozdělit mezi několik příjemců, i když jsou hostovaní v různých uzlech. Tento příklad ukazuje způsob použití třídy Event Processor Host pro jednoho příjemce.
 > [!NOTE]
-> Tento rychlý Start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), nahradit `EventHubConnectionString` `EventHubName` `StorageAccountName` `StorageAccountKey`,, a `StorageContainerName` řetězce s hodnotami centra událostí a spustit ho. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
+> Tento rychlý Start si můžete stáhnout jako ukázku z [GitHubu](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleEphReceiver), nahradit,, a `EventHubConnectionString` `EventHubName` `StorageAccountName` `StorageAccountKey` `StorageContainerName` řetězce s hodnotami centra událostí a spustit ho. Alternativně můžete vytvořit vlastní řešení podle kroků v tomto kurzu.
 
 [!INCLUDE [event-hubs-create-storage](../../includes/event-hubs-create-storage.md)]
 

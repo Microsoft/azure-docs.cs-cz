@@ -12,15 +12,15 @@ ms.subservice: msi
 ms.devlang: ''
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/20/2020
+ms.date: 06/18/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cd1b846b77e4b600fc9b7590715a73b0ca8f672
-ms.sourcegitcommit: 309cf6876d906425a0d6f72deceb9ecd231d387c
+ms.openlocfilehash: 3557bab44e1a4af5fdcbda5f8643018952e4e54e
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/01/2020
-ms.locfileid: "84266317"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85099525"
 ---
 # <a name="what-are-managed-identities-for-azure-resources"></a>Jaké jsou spravované identity prostředků Azure?
 
@@ -43,17 +43,20 @@ V sadě dokumentace spravovaných identit pro prostředky Azure se používají 
 - **ID objektu zabezpečení** – ID objektu instančního objektu pro spravovanou identitu, která se používá pro udělení přístupu na základě role k prostředku Azure.
 - **Azure instance metadata Service (IMDS)** – koncový bod REST přístupný všem virtuálním počítačům s IaaS vytvořeným prostřednictvím Azure Resource Manager. Koncový bod je k dispozici na dobře známé IP adrese bez směrování (169.254.169.254), ke kterým se dá získat přístup jenom z virtuálního počítače.
 
-## <a name="how-does-the-managed-identities-for-azure-resources-work"></a>Jak fungují spravované identity prostředků Azure?
+## <a name="managed-identity-types"></a>Spravované typy identity
 
 Existují dva typy spravovaných identit:
 
 - **Spravovaná identita přiřazená systémem** se povoluje přímo v instanci služby Azure. Když je tato identita povolená, Azure vytvoří identitu pro instanci v tenantovi Azure AD důvěryhodném pro předplatné instance. Po vytvoření identity se přihlašovací údaje zřídí do instance. Životní cyklus identity přiřazené systémem je přímo vázaný na instanci služby Azure, na které je povolený. Pokud se instance odstraní, Azure automaticky vyčistí přihlašovací údaje a identitu v Azure AD.
 - **Spravovaná identita přiřazená uživatelem** se vytváří jako samostatný prostředek Azure. Prostřednictvím procesu vytvoření Azure vytvoří identitu v tenantovi Azure AD důvěryhodném pro použité předplatné. Po vytvoření identity je možné ji přiřadit k jedné nebo několika instancím služeb Azure. Životní cyklus uživatelsky přiřazené identity se spravuje nezávisle na životním cyklu instancí služby Azure, ke kterým je přiřazený.
 
-Spravované identity jsou interně instančními objekty speciálního typu, které se dají používat jenom s prostředky Azure. Po odstranění spravované identity se odpovídající objekt služby automaticky odebere.
+Spravované identity jsou interně instančními objekty speciálního typu, které jsou uzamčené jenom pro použití s prostředky Azure. Po odstranění spravované identity se odpovídající objekt služby automaticky odebere.
 I když je vytvořena uživatelem přiřazená identita nebo identita přiřazená systémem, poskytovatel spravovaných prostředků identity (MSRP) vystaví certifikát pro danou identitu interně. 
 
 Váš kód může spravovanou identitu použít k vyžádání přístupových tokenů pro služby, které podporují ověřování Azure AD. Azure zajistí vracení přístupových údajů, které instance služby používá. 
+
+## <a name="credential-rotation"></a>Rotace přihlašovacích údajů
+Rotace přihlašovacích údajů se řídí poskytovatelem prostředků, který je hostitelem prostředku Azure. K výchozímu rotaci přihlašovacích údajů dojde každých 46 dní. Je až poskytovatele prostředků pro volání nových přihlašovacích údajů, takže poskytovatel prostředků může počkat déle než 46 dní.
 
 Následující diagram ukazuje fungování identit spravovaných služeb s virtuálními počítači Azure:
 
@@ -61,10 +64,10 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 
 |  Vlastnost    | Spravovaná identita přiřazená systémem | Spravovaná identita přiřazená uživatelem |
 |------|----------------------------------|--------------------------------|
-| Vytvoření |  Vytvořena jako součást prostředku Azure (například virtuální počítač Azure nebo Azure App Service). | Vytvoří se jako samostatný prostředek Azure. |
+| Vytvoření |  Vytvořené jako součást prostředku Azure (například virtuální počítač Azure nebo Azure App Service) | Vytvoří se jako samostatný prostředek Azure. |
 | Životní cyklus | Sdílený životní cyklus s prostředkem Azure, pomocí kterého se vytvořila spravovaná identita. <br/> Při odstranění nadřazeného prostředku se odstraní také spravovaná identita. | Nezávislý životní cyklus. <br/> Je nutné explicitně odstranit. |
-| Sdílení napříč prostředky Azure | Nelze sdílet. <br/> Dá se přidružit jenom k jednomu prostředku Azure. | Lze sdílet. <br/> Stejná uživatelem přiřazená spravovaná identita může být přidružená k více než jednomu prostředku Azure. |
-| Běžné případy použití | Úlohy, které jsou obsaženy v rámci jednoho prostředku Azure. <br/> Úlohy, pro které potřebujete nezávislé identity. <br/> Například aplikace, která běží na jednom virtuálním počítači | Úlohy, které běží na několika prostředcích a které můžou sdílet jedinou identitu. <br/> Úlohy, které vyžadují předběžnou autorizaci zabezpečeného prostředku jako součást toku zřizování. <br/> Úlohy, kde se prostředky recyklují často, ale oprávnění by měla zůstat konzistentní. <br/> Například zatížení, ve kterém více virtuálních počítačů potřebuje přístup ke stejnému prostředku |
+| Sdílení napříč prostředky Azure | Nelze sdílet. <br/> Dá se přidružit jenom k jednomu prostředku Azure. | Může být sdíleno <br/> Stejná uživatelem přiřazená spravovaná identita může být přidružená k více než jednomu prostředku Azure. |
+| Běžné případy použití | Úlohy, které jsou obsaženy v rámci jednoho prostředku Azure <br/> Úlohy, pro které potřebujete nezávislé identity. <br/> Například aplikace, která běží na jednom virtuálním počítači | Úlohy, které běží na několika prostředcích a které můžou sdílet jedinou identitu. <br/> Úlohy, které vyžadují předběžnou autorizaci zabezpečeného prostředku jako součást toku zřizování. <br/> Úlohy, kde se prostředky recyklují často, ale oprávnění by měla zůstat konzistentní. <br/> Například zatížení, ve kterém více virtuálních počítačů potřebuje přístup ke stejnému prostředku |
 
 ### <a name="how-a-system-assigned-managed-identity-works-with-an-azure-vm"></a>Jak funguje spravovaná identita přiřazená systémem s virtuálním počítačem Azure
 
@@ -104,9 +107,6 @@ Následující diagram ukazuje fungování identit spravovaných služeb s virtu
 
 6. Zavolá se služba Azure AD s požadavkem na přístupový token (jak je popsáno v kroku 5) s použitím ID klienta a certifikátu nakonfigurovaných v kroku 3. Azure AD vrátí přístupový token JSON Web Token (JWT).
 7. Váš kód odešle přístupový token prostřednictvím volání do služby, která podporuje ověřování Azure AD.
-
-## <a name="credential-rotation"></a>Rotace přihlašovacích údajů
-Rotace přihlašovacích údajů se řídí poskytovatelem prostředků, který je hostitelem prostředku Azure. K výchozímu rotaci přihlašovacích údajů dojde každých 46 dní. Je až poskytovatele prostředků pro volání nových přihlašovacích údajů, takže poskytovatel prostředků může počkat déle než 46 dní.
 
 ## <a name="how-can-i-use-managed-identities-for-azure-resources"></a>Jak mám použít spravované identity prostředků Azure?
 

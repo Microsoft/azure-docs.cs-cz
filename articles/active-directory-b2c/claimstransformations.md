@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 2a919996d00f8ef3fa00109944b60d53b63d95ff
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 37d9bd78a80ac52d2a790537bf47e33807720349
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80529132"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85202955"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -35,7 +35,7 @@ Chcete-li zahrnout seznam transformačních funkcí deklarací identity, které 
 
 Element **ClaimsTransformation** obsahuje následující atributy:
 
-| Atribut |Požaduje se | Popis |
+| Atribut |Povinné | Popis |
 | --------- |-------- | ----------- |
 | ID |Ano | Identifikátor, který slouží k jednoznačné identifikaci transformace deklarace identity. Identifikátor je odkazován z dalších prvků XML v zásadě. |
 | TransformationMethod | Ano | Metoda transformace, která se má použít v transformaci deklarací Každá transformace deklarace má své vlastní hodnoty. Úplný seznam dostupných hodnot najdete v [referenčních informacích o transformaci deklarací identity](#claims-transformations-reference) . |
@@ -59,7 +59,7 @@ Element **ClaimsTransformation** obsahuje následující prvky:
 ```
 
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | -------- | ----------- |
 | InputClaims | 0:1 | Seznam **InputClaim** prvků, které určují typy deklarací identity, které jsou pořízeny jako vstup pro transformaci deklarací. Každý z těchto prvků obsahuje odkaz na objekt ClaimType, který je již definován v části ClaimsSchema v zásadách. |
 | Parametry | 0:1 | Seznam **InputParameter** prvků, které jsou zadány jako vstup pro transformaci deklarací.
@@ -69,7 +69,7 @@ Element **ClaimsTransformation** obsahuje následující prvky:
 
 Element **InputClaims** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | InputClaim | 1: n | Očekával se vstupní typ deklarace identity. |
 
@@ -77,7 +77,7 @@ Element **InputClaims** obsahuje následující element:
 
 Element **InputClaim** obsahuje následující atributy:
 
-| Atribut |Požaduje se | Popis |
+| Atribut |Povinné | Popis |
 | --------- | ----------- | ----------- |
 | ClaimTypeReferenceId |Ano | Odkaz na objekt ClaimType již definovaný v části ClaimsSchema v zásadách. |
 | TransformationClaimType |Ano | Identifikátor, na který se má odkazovat typ deklarace transformace Každá transformace deklarace má své vlastní hodnoty. Úplný seznam dostupných hodnot najdete v [referenčních informacích o transformaci deklarací identity](#claims-transformations-reference) . |
@@ -86,13 +86,13 @@ Element **InputClaim** obsahuje následující atributy:
 
 Element **vstupní parametry** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | InputParameter | 1: n | Očekával se vstupní parametr. |
 
 #### <a name="inputparameter"></a>InputParameter
 
-| Atribut | Požaduje se |Popis |
+| Atribut | Povinné |Popis |
 | --------- | ----------- |----------- |
 | ID | Ano | Identifikátor, který je odkazem na parametr metody transformace deklarací identity. Každá metoda transformace deklarací má své vlastní hodnoty. Úplný seznam dostupných hodnot najdete v tabulce pro transformaci deklarací identity. |
 | DataType | Ano | Typ dat parametru, jako je například String, Boolean, int nebo DateTime, podle výčtu DataType ve schématu XML vlastní zásady. Tento typ se používá k správnému provádění aritmetických operací. Každá transformace deklarace má své vlastní hodnoty. Úplný seznam dostupných hodnot najdete v [referenčních informacích o transformaci deklarací identity](#claims-transformations-reference) . |
@@ -102,7 +102,7 @@ Element **vstupní parametry** obsahuje následující element:
 
 Element **OutputClaims** obsahuje následující element:
 
-| Prvek | Výskytů | Popis |
+| Prvek | Výskytů | Description |
 | ------- | ----------- | ----------- |
 | OutputClaim | 0: n | Očekával se výstupní typ deklarace identity. |
 
@@ -110,7 +110,7 @@ Element **OutputClaims** obsahuje následující element:
 
 Element **OutputClaim** obsahuje následující atributy:
 
-| Atribut |Požaduje se | Popis |
+| Atribut |Povinné | Popis |
 | --------- | ----------- |----------- |
 | ClaimTypeReferenceId | Ano | Odkaz na objekt ClaimType již definovaný v části ClaimsSchema v zásadách.
 | TransformationClaimType | Ano | Identifikátor, na který se má odkazovat typ deklarace transformace Každá transformace deklarace má své vlastní hodnoty. Úplný seznam dostupných hodnot najdete v [referenčních informacích o transformaci deklarací identity](#claims-transformations-reference) . |
@@ -121,7 +121,7 @@ Pokud vstupní deklarace identity a výstupní deklarace identity jsou stejného
 
 Můžete například uložit poslední verzi vašich podmínek služby, kterou uživatel přijal. Když aktualizujete podmínky služeb, můžete požádat uživatele, aby přijal novou verzi. V následujícím příkladu transformace deklarací **HasTOSVersionChanged** porovnává hodnotu deklarace identity **TOSVersion** s hodnotou deklarace **LastTOSAcceptedVersion** a potom vrátí logickou deklaraci identity **TOSVersionChanged** .
 
-```XML
+```xml
 <BuildingBlocks>
   <ClaimsSchema>
     <ClaimType Id="TOSVersionChanged">
@@ -160,7 +160,7 @@ Můžete například uložit poslední verzi vašich podmínek služby, kterou u
 Příklady transformací deklarací identity najdete na následujících odkazových stránkách:
 
 - [Logická hodnota](boolean-transformations.md)
-- [Datum](date-transformations.md)
+- [Date](date-transformations.md)
 - [Integer](integer-transformations.md)
 - [JSON](json-transformations.md)
 - [Telefonní číslo](phone-number-claims-transformations.md)

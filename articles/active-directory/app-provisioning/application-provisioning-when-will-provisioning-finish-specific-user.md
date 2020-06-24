@@ -2,21 +2,21 @@
 title: Zjistěte, kdy bude mít konkrétní uživatel přístup k aplikaci.
 description: Jak zjistit, kdy uživatel s kritickou důležitosti bude mít přístup k aplikaci, kterou jste nakonfigurovali pro zřizování uživatelů pomocí Azure AD
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 09/03/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 9d976785340e1a032aa4484dd2e8fd6cb2915129
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 03af572c94500e046265a5e9affa4f1742fae544
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593909"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782020"
 ---
 # <a name="check-the-status-of-user-provisioning"></a>Ověřit stav zřizování uživatelů
 
@@ -35,7 +35,7 @@ Při první konfiguraci automatického zřizování se v části **aktuální st
 
 Po dokončení cyklu zřizování se v části **Statistika k datu** zobrazuje kumulativní počet uživatelů a skupin, které byly zřízeny do data, spolu s datem dokončení a dobou trvání posledního cyklu. **ID aktivity** jednoznačně identifikuje nejnovější cyklus zřizování. **ID úlohy** je jedinečný identifikátor pro úlohu zřizování a je specifický pro aplikaci ve vašem tenantovi.
 
-Průběh zřizování můžete zobrazit v Azure Portal na kartě **Azure Active Directory &gt; podnikové &gt; \[\] &gt; aplikace název aplikace** .
+Průběh zřizování můžete zobrazit v Azure Portal na kartě **Azure Active Directory &gt; podnikové aplikace &gt; \[ název aplikace \] &gt; ** .
 
 ![Indikátor průběhu zřizování stránky](./media/application-provisioning-when-will-provisioning-finish-specific-user/provisioning-progress-bar-section.png)
 
@@ -43,7 +43,7 @@ Průběh zřizování můžete zobrazit v Azure Portal na kartě **Azure Active 
 
 Pokud chcete zobrazit stav zřizování pro vybraného uživatele, přečtěte si téma [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) ve službě Azure AD. Všechny operace spouštěné službou zřizování uživatelů se zaznamenávají v protokolech zřizování služby Azure AD. To zahrnuje všechny operace čtení a zápisu provedené ve zdrojovém a cílovém systému a uživatelská data, která byla během každé operace načtena nebo zapsána.
 
-K protokolům zřizování v Azure Portal můžete získat přístup tak, že v části **aktivita** vyberete **Azure Active Directory** &gt; protokoly zřizování **podnikových aplikací** &gt; **(Preview)** . Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
+K protokolům zřizování v Azure Portal můžete získat přístup tak, že **Azure Active Directory** &gt; v části aktivita vyberete Azure Active Directory protokoly zřizování **podnikových aplikací** &gt; **(Preview)** . **Activity** Data zřizování můžete vyhledat na základě jména uživatele nebo identifikátoru v systému zdrojového systému nebo v cílovém systému. Podrobnosti najdete v tématu [zřizování protokolů (Preview)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). 
 
 Protokoly zřizování zaznamenávají všechny operace prováděné službou zřizování, včetně:
 

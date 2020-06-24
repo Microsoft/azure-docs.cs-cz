@@ -4,23 +4,21 @@ description: Přečtěte si o službě Azure Migrate.
 ms.topic: overview
 ms.date: 04/15/2020
 ms.custom: mvc
-ms.openlocfilehash: c0fe4293b4e07152ff41ae946faf703aacc42d89
-ms.sourcegitcommit: 1f48ad3c83467a6ffac4e23093ef288fea592eb5
+ms.openlocfilehash: d90c40447dc4928a34332685aea728b13c3775b1
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84193598"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771253"
 ---
 # <a name="about-azure-migrate"></a>Informace o službě Azure Migrate
 
 Tento článek poskytuje rychlý přehled služby Azure Migrate.
 
-Azure Migrate poskytuje centralizované centrum pro vyhodnocení a migraci na místní servery, infrastrukturu, aplikace a data Azure.
-
-Azure Migrate poskytuje následující funkce:
+Azure Migrate poskytuje centralizované centrum pro vyhodnocení a migraci na místní servery, infrastrukturu, aplikace a data Azure. Poskytuje následující:
 
 - **Jednotná platforma migrace**: jeden portál pro spuštění, spuštění a sledování migrace do Azure.
-- **Rozsah nástrojů**: řada nástrojů pro účely posouzení a migrace. Mezi nástroje patří Azure Migrate: vyhodnocení serveru a Azure Migrate: Migrace serveru. Azure Migrate se integruje s jinými službami Azure a dalšími nástroji a nabídkami nezávislého výrobce softwaru (ISV).
+- **Rozsah nástrojů**: řada nástrojů pro účely posouzení a migrace. Mezi Azure Migrate nástroje patří vyhodnocení serveru a Azure Migrate: Migrace serveru. Azure Migrate se taky integruje s dalšími službami a nástroji Azure a nabídkami nezávislého výrobce softwaru (ISV).
 - **Posouzení a migrace**: v centru Azure Migrate můžete vyhodnotit a migrovat:
     - **Servery**: vyhodnoťte místní servery a migrujte je na virtuální počítače Azure.
     - **Databáze**: vyhodnoťte místní databáze a migrujte je do Azure SQL Database nebo do spravované instance SQL.
@@ -49,7 +47,7 @@ Centrum Azure Migrate zahrnuje tyto nástroje:
 
 Azure Migrate se integruje s několika nabídkami ISV. 
 
-**ISV**    | **Příznak**
+**ISV**    | **Funkce**
 --- | ---
 [Carbonite](https://www.carbonite.com/globalassets/files/datasheets/carb-migrate4azure-microsoft-ds.pdf) | Migrujte servery.
 [Cloudamize](https://www.cloudamize.com/platform) | Vyhodnoťte servery.
@@ -82,15 +80,12 @@ Posouzení serveru používá odlehčené [Azure Migrate zařízení](migrate-ap
 
 Azure Migrate: Nástroj pro migraci serveru vám pomůže migrovat do Azure:
 
-- Místní virtuální počítače VMware
-- Virtuální počítače Hyper-V
-- Fyzické servery
-- Jiné virtualizované počítače
-- Virtuální počítače s veřejným cloudem
+**Migrace** | **Podrobnosti**
+--- | ---
+Místní virtuální počítače VMware | Migrujte virtuální počítače do Azure pomocí agenta bez agentů nebo migrace založené na agentech.<br/><br/> Při migraci bez agentů používá migrace serveru Azure Migrate zařízení, které nasazujete místně. Je to stejný typ zařízení, které používáte pro vyhodnocování serveru.<br/><br/> Pro migraci na základě agenta používá posouzení serveru zařízení replikace.
+Místní virtuální počítače Hyper-V | Migrujte virtuální počítače do Azure.<br/><br/> Vyhodnocování serveru používá pro migraci agenty poskytovatele nainstalované na hostiteli Hyper-V.
+Místní fyzické servery | Můžete migrovat fyzické počítače do Azure. Můžete také migrovat další virtualizované počítače a virtuální počítače z jiných veřejných cloudů tak, že je považujete jako virtuální počítače za účelem migrace. | Posouzení serveru používá pro migraci replikační zařízení.
 
-Počítače můžete migrovat po jejich vyhodnocení nebo jejich migraci bez posouzení.
-
-Pro migraci virtuálních počítačů VMware a migrace virtuálních počítačů Hyper-V bez agenta používá migrace serveru Azure Migrate zařízení, které nasadíte místně. Zařízení se používá také v případě, že jste nastavili server Assessment. Je popsána v předchozí části.
 
 ## <a name="selecting-assessment-and-migration-tools"></a>Výběr nástrojů pro posouzení a migraci
 

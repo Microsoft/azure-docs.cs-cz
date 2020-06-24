@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
-ms.date: 3/19/2020
-ms.openlocfilehash: e8d5abd81feb86ba48fc442ee95615cb52230a24
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: 9b577b12250f1a600c91776e64ecaf65be5d8476
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80063818"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85100888"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Protokoly auditu v Azure Database for MariaDB
 
@@ -22,17 +22,21 @@ V Azure Database for MariaDB je k dispozici pro uživatele protokol auditu. Prot
 
 ## <a name="configure-audit-logging"></a>Konfigurace protokolování auditu
 
-Ve výchozím nastavení je protokol auditu zakázán. Pokud ho chcete povolit, `audit_log_enabled` nastavte na zapnuto.
+>[!NOTE]
+> Doporučujeme pouze protokolovat typy událostí a uživatele požadované pro vaše účely auditování, aby se zajistilo, že výkon serveru nebude velmi ovlivněn.
+
+Ve výchozím nastavení je protokol auditu zakázán. Pokud ho chcete povolit, nastavte na `audit_log_enabled` zapnuto.
 
 Mezi další parametry, které můžete upravit, patří:
 
 - `audit_log_events`: řídí události, které mají být protokolovány. Konkrétní události auditu najdete v níže uvedené tabulce.
-- `audit_log_include_users`: MariaDB uživatelům, kteří mají být zahrnuti do protokolování. Výchozí hodnota pro tento parametr je prázdná, což bude zahrnovat všechny uživatele pro protokolování. Má vyšší prioritu `audit_log_exclude_users`. Maximální délka parametru je 512 znaků.
-> [!Note]
-> `audit_log_include_users`má vyšší prioritu `audit_log_exclude_users`. `audit_log_include_users`  =  `demouser` Například pokud `audit_log_exclude_users`a  = , bude uživatel zahrnut v protokolech auditu, protože `audit_log_include_users` má vyšší prioritu. `demouser`
+- `audit_log_include_users`: MariaDB uživatelům, kteří mají být zahrnuti do protokolování. Výchozí hodnota pro tento parametr je prázdná, což bude zahrnovat všechny uživatele pro protokolování. Má vyšší prioritu `audit_log_exclude_users` . Maximální délka parametru je 512 znaků.
 - `audit_log_exclude_users`: MariaDB uživatelům, kteří mají být vyloučení z protokolování. Umožňuje maximálně čtyři uživatele. Maximální délka parametru je 256 znaků.
 
-| **Událostí** | **Popis** |
+> [!Note]
+> `audit_log_include_users`má vyšší prioritu `audit_log_exclude_users` . Například pokud `audit_log_include_users`  =  `demouser` a `audit_log_exclude_users`  =  `demouser` , bude uživatel zahrnut v protokolech auditu, protože `audit_log_include_users` má vyšší prioritu.
+
+| **Událost** | **Popis** |
 |---|---|
 | `CONNECTION` | – Iniciování připojení (úspěšné nebo neúspěšné) <br> – Opakované ověření uživatele s jiným uživatelem nebo heslem během relace <br> – Ukončení připojení |
 | `DML_SELECT`| VYBRAT dotazy |
@@ -79,6 +83,9 @@ V následujících částech najdete popis toho, co má výstup MariaDB protokol
 ### <a name="general"></a>Obecné
 
 Níže uvedené schéma se vztahuje na obecné, DML_SELECT, DML_NONSELECT, DML, DDL, DCL a typy událostí správce.
+
+> [!NOTE]
+> V případě `sql_text` se protokol zkrátí, pokud překračuje 2048 znaků.
 
 | **Vlastnost** | **Popis** |
 |---|---|

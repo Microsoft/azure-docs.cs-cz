@@ -2,21 +2,21 @@
 title: Automatizované zřizování uživatelů aplikací SaaS ve službě Azure AD
 description: Představte si, jak můžete pomocí Azure AD automaticky zřídit, zrušit zřízení a průběžně aktualizovat uživatelské účty napříč různými aplikacemi SaaS třetích stran.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: conceptual
+ms.topic: overview
 ms.workload: identity
 ms.date: 11/25/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh, celested
-ms.openlocfilehash: 1e72d885858b543999090a4a0521845d556802fd
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: 7f09bb42f529164ef0f5062ef801ddc7ecfef85c
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593110"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781086"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-ad"></a>Automatizace zřizování uživatelů a jejich rušení s aplikacemi pomocí Azure AD
 

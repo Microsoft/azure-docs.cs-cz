@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 35497f978a1819f09411487e4bbc7eb1d05cc80d
-ms.sourcegitcommit: 0fda81f271f1a668ed28c55dcc2d0ba2bb417edd
+ms.openlocfilehash: c94e0f7e2f39eb6002bc2fd1076b78f4579fbe01
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/07/2020
-ms.locfileid: "82900381"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203975"
 ---
 # <a name="define-a-one-time-password-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Definování technického profilu s jednorázovým heslem v Azure AD B2C vlastní zásady
 
@@ -28,15 +28,15 @@ Technický profil pro jednorázové heslo může také při ověřování kódu 
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`hodnotu. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C:
+Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C:
 
-```XML
+```xml
 Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
 ```
 
 Následující příklad ukazuje technický profil pro jednorázové heslo:
 
-```XML
+```xml
 <TechnicalProfile Id="VerifyCode">
   <DisplayName>Validate user input verification code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -51,7 +51,7 @@ Prvním režimem tohoto technického profilu je vygenerování kódu. Níže jso
 
 Element **InputClaims** obsahuje seznam deklarací identity potřebných k odeslání do poskytovatele protokolu jednorázového hesla. Název vaší deklarace identity můžete také namapovat na název definovaný níže.
 
-| ClaimReferenceId | Požaduje se | Popis |
+| ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- |
 | identifikátor | Ano | Identifikátor k identifikaci uživatele, který potřebuje později ověřit kód. Obvykle se používá jako identifikátor cílového umístění, do kterého se kód doručuje, například e-mailová adresa nebo telefonní číslo. |
 
@@ -61,7 +61,7 @@ Element **InputClaimsTransformations** může obsahovat kolekci prvků **InputCl
 
 Element **OutputClaims** obsahuje seznam deklarací generovaných poskytovatelem protokolu jednorázového hesla. Název vaší deklarace identity můžete také namapovat na název definovaný níže.
 
-| ClaimReferenceId | Požaduje se | Popis |
+| ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- |
 | otpGenerated | Ano | Generovaný kód, jehož relace je spravovaná pomocí Azure AD B2C. |
 
@@ -71,20 +71,20 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 Následující nastavení lze použít ke konfiguraci režimu generování kódu:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| CodeExpirationInSeconds | No | Doba v sekundách, po kterou bude vypršení platnosti kódu. Minimum: `60`; Maximum: `1200`; Výchozí: `600`. |
-| CodeLength | No | Délka kódu. Výchozí hodnota je `6`. |
-| CharacterSet | No | Znaková sada pro kód formátovaný pro použití v regulárním výrazu. Například, `a-z0-9A-Z`. Výchozí hodnota je `0-9`. Znaková sada musí obsahovat minimálně 10 různých znaků v zadané sadě. |
-| NumRetryAttempts | No | Počet pokusů o ověření před kódem, který je považován za neplatný. Výchozí hodnota je `5`. |
-| Operace | Ano | Operace, která má být provedena. Možná hodnota: `GenerateCode`. |
-| ReuseSameCode | No | Bez ohledu na to, zda by měl být uveden duplicitní kód namísto generování nového kódu, pokud uplynula platnost daného kódu a je stále platný. Výchozí hodnota je `false`. |
+| CodeExpirationInSeconds | Ne | Doba v sekundách, po kterou bude vypršení platnosti kódu. Minimum: `60` ; Maximum: `1200` ; Výchozí: `600` . |
+| CodeLength | Ne | Délka kódu. Výchozí hodnota je `6`. |
+| CharacterSet | Ne | Znaková sada pro kód formátovaný pro použití v regulárním výrazu. Například, `a-z0-9A-Z`. Výchozí hodnota je `0-9`. Znaková sada musí obsahovat minimálně 10 různých znaků v zadané sadě. |
+| NumRetryAttempts | Ne | Počet pokusů o ověření před kódem, který je považován za neplatný. Výchozí hodnota je `5`. |
+| Operace | Ano | Operace, která má být provedena. Možná hodnota: `GenerateCode` . |
+| ReuseSameCode | Ne | Bez ohledu na to, zda by měl být uveden duplicitní kód namísto generování nového kódu, pokud uplynula platnost daného kódu a je stále platný. Výchozí hodnota je `false`. |
 
 ### <a name="example"></a>Příklad
 
 Následující příklad `TechnicalProfile` slouží k vygenerování kódu:
 
-```XML
+```xml
 <TechnicalProfile Id="GenerateCode">
   <DisplayName>Generate Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -113,7 +113,7 @@ Druhým režimem tohoto technického profilu je ověření kódu. Níže jsou uv
 
 Element **InputClaims** obsahuje seznam deklarací identity potřebných k odeslání do poskytovatele protokolu jednorázového hesla. Název vaší deklarace identity můžete také namapovat na název definovaný níže.
 
-| ClaimReferenceId | Požaduje se | Popis |
+| ClaimReferenceId | Povinné | Popis |
 | --------- | -------- | ----------- |
 | identifikátor | Ano | Identifikátor k identifikaci uživatele, který dříve vygeneroval kód. Obvykle se používá jako identifikátor cílového umístění, do kterého se kód doručuje, například e-mailová adresa nebo telefonní číslo. |
 | otpToVerify | Ano | Ověřovací kód poskytnutý uživatelem |
@@ -130,28 +130,28 @@ Element **OutputClaimsTransformations** může obsahovat kolekci prvků **Output
 
 V režimu ověření kódu lze použít následující nastavení:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| Operace | Ano | Operace, která má být provedena. Možná hodnota: `VerifyCode`. |
+| Operace | Ano | Operace, která má být provedena. Možná hodnota: `VerifyCode` . |
 
 
 ### <a name="ui-elements"></a>Prvky uživatelského rozhraní
 
 Následující metadata lze použít ke konfiguraci chybových zpráv zobrazených při selhání ověřování kódu. Metadata by měla být nakonfigurovaná v technickém profilu s [vlastním kontrolním](self-asserted-technical-profile.md) výrazem. Chybové zprávy lze [lokalizovat](localization-string-ids.md#one-time-password-error-messages).
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| UserMessageIfSessionDoesNotExist | No | Zpráva, která se zobrazí uživateli, pokud vypršela platnost relace ověření kódu Buď je tento kód neplatný, nebo kód nebyl nikdy vygenerován pro daný identifikátor. |
-| UserMessageIfMaxRetryAttempted | No | Zpráva, která se zobrazí uživateli, pokud překročila maximální povolený počet pokusů o ověření. |
-| UserMessageIfInvalidCode | No | Zpráva, která se zobrazí uživateli, pokud jim byl zadán neplatný kód. |
-| UserMessageIfVerificationFailedRetryAllowed | No | Zpráva, která se zobrazí uživateli, pokud jim byl poskytnut neplatný kód a uživatel je oprávněn poskytnout správný kód.  |
-|UserMessageIfSessionConflict|No| Zpráva, která se zobrazí uživateli, pokud nelze kód ověřit|
+| UserMessageIfSessionDoesNotExist | Ne | Zpráva, která se zobrazí uživateli, pokud vypršela platnost relace ověření kódu Buď je tento kód neplatný, nebo kód nebyl nikdy vygenerován pro daný identifikátor. |
+| UserMessageIfMaxRetryAttempted | Ne | Zpráva, která se zobrazí uživateli, pokud překročila maximální povolený počet pokusů o ověření. |
+| UserMessageIfInvalidCode | Ne | Zpráva, která se zobrazí uživateli, pokud jim byl zadán neplatný kód. |
+| UserMessageIfVerificationFailedRetryAllowed | Ne | Zpráva, která se zobrazí uživateli, pokud jim byl poskytnut neplatný kód a uživatel je oprávněn poskytnout správný kód.  |
+|UserMessageIfSessionConflict|Ne| Zpráva, která se zobrazí uživateli, pokud nelze kód ověřit|
 
 ### <a name="example"></a>Příklad
 
 Následující příklad `TechnicalProfile` slouží k ověření kódu:
 
-```XML
+```xml
 <TechnicalProfile Id="VerifyCode">
   <DisplayName>Verify Code</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.OneTimePasswordProtocolProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />

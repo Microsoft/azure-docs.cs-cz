@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: seoapr2020
 ms.date: 04/20/2020
-ms.openlocfilehash: 94823445e4f8e3f8d40a219dc23b40f8a5c267c6
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: 65df89aff0232d7bf9809cdffc4262d1a640a5a1
+ms.sourcegitcommit: 99d016949595c818fdee920754618d22ffa1cd49
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996308"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84771117"
 ---
 # <a name="overview-of-enterprise-security-in-azure-hdinsight"></a>Přehled podnikového zabezpečení ve službě Azure HDInsight
 
-Azure HDInsight nabízí řadu metod pro řešení vašich potřeb podnikového zabezpečení. Většina těchto řešení není ve výchozím nastavení aktivována. Tato flexibilita vám umožní zvolit funkce zabezpečení, které jsou pro vás nejdůležitější. A pomáhá vyhnout se placení funkcí, které nechcete používat. Tato flexibilita také znamená, že je vaší zodpovědností zajistit, aby byla pro vaše nastavení a prostředí povolena správná řešení.
+Azure HDInsight nabízí řadu metod pro řešení vašich potřeb podnikového zabezpečení. Většina těchto řešení není ve výchozím nastavení aktivována. Tato flexibilita vám umožní zvolit funkce zabezpečení, které jsou pro vás nejdůležitější, a pomůže vám vyhnout se placení funkcí, které nechcete. Tato flexibilita také znamená, že je vaší zodpovědností zajistit, aby byla pro vaše nastavení a prostředí povolena správná řešení.
 
 Tento článek popisuje řešení zabezpečení a dělí řešení zabezpečení na čtyři tradiční pilíře zabezpečení: hraniční zabezpečení, ověřování, autorizace a šifrování.
 
@@ -33,7 +33,7 @@ Hraniční zabezpečení v HDInsight se dosahuje pomocí [virtuálních sítí](
 
 Všechny clustery nasazené ve virtuální síti budou mít také privátní koncový bod. Koncový bod se přeloží na soukromou IP adresu v rámci virtuální sítě pro privátní přístup HTTP ke branám clusteru.
 
-### <a name="authentication"></a>Authentication
+### <a name="authentication"></a>Ověřování
 
 [Balíček zabezpečení podniku](apache-domain-joined-architecture.md) ze služby HDInsight poskytuje ověřování založené na službě Active Directory, podporu více uživatelů a řízení přístupu na základě rolí. Integrace služby Active Directory se dosahuje pomocí [Azure Active Directory Domain Services](../../active-directory-domain-services/overview.md). S těmito možnostmi můžete vytvořit cluster HDInsight připojený k doméně služby Active Directory. Pak nakonfigurujte seznam zaměstnanců z podnikového, který se může ověřit v clusteru.
 
@@ -53,7 +53,7 @@ Auditování přístupu k prostředkům clusteru je nezbytné ke sledování nea
 
 Správce může zobrazit a ohlásit veškerý přístup k prostředkům a datům clusteru HDInsight. Správce může zobrazit a ohlásit změny v zásadách řízení přístupu.
 
-Pro přístup k protokolům auditu Apache Ranger a Ambari a k protokolům přístupu SSH [povolte Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing). A zobrazí se tabulky, které poskytují záznamy auditování.
+Pro přístup k protokolům auditu Apache Ranger a Ambari a k protokolům přístupu SSH [povolte Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md#cluster-auditing) a zobrazte tabulky, které poskytují záznamy auditování.
 
 ### <a name="encryption"></a>Šifrování
 
@@ -75,20 +75,20 @@ Následující tabulka obsahuje odkazy na prostředky pro jednotlivé typy řeš
 
 | Oblast zabezpečení | Dostupná řešení | Zodpovědná strana |
 |---|---|---|
-| Zabezpečení přístupu k datům | Konfigurace [seznamů řízení přístupu seznamy ACL](../../storage/blobs/data-lake-storage-access-control.md) pro Azure Data Lake Storage Gen1 a Gen2  | Customer (Zákazník) |
-|  | U účtů úložiště Povolte vlastnost ["vyžaduje zabezpečený přenos"](../../storage/common/storage-require-secure-transfer.md) . | Customer (Zákazník) |
-|  | Konfigurace [Azure Storage bran firewall](../../storage/common/storage-network-security.md) a virtuálních sítí | Customer (Zákazník) |
-|  | Konfigurace [koncových bodů služby virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) pro Cosmos DB a [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Customer (Zákazník) |
-|  | Zajistěte, aby bylo [šifrování TLS](../../storage/common/storage-security-tls.md) povolené pro přenos dat. | Customer (Zákazník) |
-|  | Konfigurace [klíčů spravovaných zákazníkem](../../storage/common/storage-encryption-keys-portal.md) pro šifrování Azure Storage | Customer (Zákazník) |
-| Zabezpečení aplikací a middlewaru | Integrace s AAD-DS a [Konfigurace ověřování](apache-domain-joined-configure-using-azure-adds.md) | Customer (Zákazník) |
-|  | Konfigurace zásad [autorizace Apache Ranger](apache-domain-joined-run-hive.md) | Customer (Zákazník) |
-|  | Použití [protokolů Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | Customer (Zákazník) |
-| Zabezpečení operačního systému | Vytváření clusterů s nejnovější zabezpečenou základní imagí | Customer (Zákazník) |
-|  | Zajistěte, aby byly [opravy operačního systému](../hdinsight-os-patching.md) v pravidelných intervalech | Customer (Zákazník) |
+| Zabezpečení přístupu k datům | Konfigurace [seznamů řízení přístupu seznamy ACL](../../storage/blobs/data-lake-storage-access-control.md) pro Azure Data Lake Storage Gen1 a Gen2  | Zákazník |
+|  | U účtů úložiště Povolte vlastnost ["vyžaduje zabezpečený přenos"](../../storage/common/storage-require-secure-transfer.md) . | Zákazník |
+|  | Konfigurace [Azure Storage bran firewall](../../storage/common/storage-network-security.md) a virtuálních sítí | Zákazník |
+|  | Konfigurace [koncových bodů služby virtuální sítě Azure](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) pro Cosmos DB a [Azure SQL DB](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview) | Zákazník |
+|  | Zajistěte, aby bylo [šifrování TLS](../../storage/common/storage-security-tls.md) povolené pro přenos dat. | Zákazník |
+|  | Konfigurace [klíčů spravovaných zákazníkem](../../storage/common/storage-encryption-keys-portal.md) pro šifrování Azure Storage | Zákazník |
+| Zabezpečení aplikací a middlewaru | Integrace s AAD-DS a [Konfigurace ověřování](apache-domain-joined-configure-using-azure-adds.md) | Zákazník |
+|  | Konfigurace zásad [autorizace Apache Ranger](apache-domain-joined-run-hive.md) | Zákazník |
+|  | Použití [protokolů Azure monitor](../hdinsight-hadoop-oms-log-analytics-tutorial.md) | Zákazník |
+| Zabezpečení operačního systému | Vytváření clusterů s nejnovější zabezpečenou základní imagí | Zákazník |
+|  | Zajistěte, aby byly [opravy operačního systému](../hdinsight-os-patching.md) v pravidelných intervalech | Zákazník |
 | Zabezpečení sítě | Konfigurace [virtuální sítě](../hdinsight-plan-virtual-network-deployment.md) |
-|  | Konfigurace [pravidel skupiny zabezpečení příchozí sítě (NSG)](../control-network-traffic.md) | Customer (Zákazník) |
-|  | Konfigurace [omezení odchozích přenosů](../hdinsight-restrict-outbound-traffic.md) pomocí brány firewall | Customer (Zákazník) |
+|  | Konfigurace [pravidel skupiny zabezpečení příchozí sítě (NSG)](../control-network-traffic.md) | Zákazník |
+|  | Konfigurace [omezení odchozích přenosů](../hdinsight-restrict-outbound-traffic.md) pomocí brány firewall | Zákazník |
 | Virtualizovaná infrastruktura | – | HDInsight (poskytovatel cloudu) |
 | Zabezpečení fyzické infrastruktury | – | HDInsight (poskytovatel cloudu) |
 

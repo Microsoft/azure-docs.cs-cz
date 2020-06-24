@@ -5,17 +5,17 @@ services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: how-to
-ms.date: 04/24/2020
+ms.date: 06/18/2020
 ms.author: spelluru
-ms.openlocfilehash: a13b9339c55d4d70c19ce737e81f34106dd3d6f6
-ms.sourcegitcommit: 1692e86772217fcd36d34914e4fb4868d145687b
+ms.openlocfilehash: 69c7c7f361a930ab1dc2e0437365d2f4457b57e2
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/29/2020
-ms.locfileid: "84167991"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85101076"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Doručování událostí se spravovanou identitou
-Tento článek popisuje, jak povolit [identitu spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro Azure Event Grid téma nebo doménu. Slouží k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
+Tento článek popisuje, jak povolit [identitu spravované služby](../active-directory/managed-identities-azure-resources/overview.md) pro témata a domény služby Azure Event Grid. Slouží k přeposílání událostí do podporovaných cílů, jako jsou Service Bus fronty a témata, centra událostí a účty úložiště.
 
 Tady je postup, který je podrobně popsaný v tomto článku:
 1. Vytvořte téma nebo doménu s identitou přiřazenou systémem, nebo aktualizujte existující téma nebo doménu, aby bylo možné identitu povolit. 
@@ -45,12 +45,15 @@ V předchozí části jste zjistili, jak povolit systémově spravovanou identit
 
 ### <a name="use-the-azure-portal"></a>Použití webu Azure Portal
 1. Přejít na [Azure Portal](https://portal.azure.com).
-2. Na panelu hledání vyhledejte **témata Event gridu** .
+2. V horní části panelu hledání vyhledejte **témata Event gridu** .
 3. Vyberte **téma** , pro které chcete spravovanou identitu povolit. 
 4. Přepněte na kartu **Identita** . 
-5. Zapnutím přepínače povolte identitu. 
+5. **Zapnutím přepínače povolte identitu** . 
+1. Nastavení uložte kliknutím na **Uložit** na panelu nástrojů. 
 
-Pomocí podobných kroků můžete povolit identitu pro doménu Event Grid.
+    :::image type="content" source="./media/managed-service-identity/identity-existing-topic.png" alt-text="Stránka identita pro téma"::: 
+
+Podobný postup můžete použít k povolení identity pro doménu služby Event Grid.
 
 ### <a name="use-the-azure-cli"></a>Použití Azure CLI
 Pomocí `az eventgrid topic update` příkazu s `--identity` nastavením na `systemassigned` můžete pro existující téma povolit identitu přiřazenou systémem. Pokud chcete identitu zakázat, zadejte `noidentity` hodnotu. 
@@ -93,7 +96,7 @@ Následující příklad přidá spravovanou identitu pro téma Event gridu s n�
 Postup je podobný jako při přidání identity k jiným rolím uvedeným v tabulce. 
 
 ### <a name="use-the-azure-cli"></a>Použití Azure CLI
-V příkladu v této části se dozvíte, jak pomocí rozhraní příkazového řádku Azure přidat identitu do role RBAC. Ukázkové příkazy jsou k pro témata služby Event Grid. Příkazy pro Event Grid domény jsou podobné. 
+V příkladu v této části se dozvíte, jak pomocí rozhraní příkazového řádku Azure přidat identitu do role RBAC. Ukázkové příkazy jsou k pro témata služby Event Grid. Příkazy pro domény služby Event Grid jsou podobné. 
 
 #### <a name="get-the-principal-id-for-the-topics-system-identity"></a>Získat ID objektu zabezpečení pro identitu systému tématu 
 Nejprve získejte hlavní ID identity spravovaného systémem v tématu a přiřaďte identitu k příslušným rolím.

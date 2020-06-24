@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 09/19/2019
 ms.author: iainfou
-ms.openlocfilehash: 959f1e3f25602938d769c574ea975c4bba9300e1
-ms.sourcegitcommit: fad3aaac5af8c1b3f2ec26f75a8f06e8692c94ed
+ms.openlocfilehash: 6d0cde3d3615350658a06cf118ff38cebf8952c9
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "71258003"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84735009"
 ---
 # <a name="known-issues-network-configuration-alerts-in-azure-active-directory-domain-services"></a>Známé problémy: výstrahy konfigurace sítě v Azure Active Directory Domain Services
 
@@ -30,15 +30,15 @@ Tento článek vám pomůže pochopit a vyřešit běžné výstrahy týkající
 
 *Společnost Microsoft se nemůže spojit s řadiči domény pro tuto spravovanou doménu. K tomu může dojít v případě, že skupina zabezpečení sítě (NSG) nakonfigurovaná ve vaší virtuální síti blokuje přístup ke spravované doméně. Dalším možným důvodem je, že existuje trasa definovaná uživatelem, která blokuje příchozí provoz z Internetu.*
 
-Neplatná pravidla skupiny zabezpečení sítě jsou nejběžnější příčinou chyb sítě pro Azure služba AD DS. Skupina zabezpečení sítě pro virtuální síť musí umožňovat přístup ke konkrétním portům a protokolům. Pokud jsou tyto porty blokované, platforma Azure nemůže monitorovat ani aktualizovat spravovanou doménu. Má vliv i na synchronizaci mezi adresářem služby Azure AD a službou Azure služba AD DS spravované domény. Ujistěte se, že jsou otevřené výchozí porty, aby nedošlo k přerušení provozu.
+Neplatná pravidla skupiny zabezpečení sítě jsou nejběžnější příčinou chyb sítě pro Azure služba AD DS. Skupina zabezpečení sítě pro virtuální síť musí umožňovat přístup ke konkrétním portům a protokolům. Pokud jsou tyto porty blokované, platforma Azure nemůže monitorovat ani aktualizovat spravovanou doménu. To má vliv na synchronizaci mezi adresářem služby Azure AD a službou Azure služba AD DS. Ujistěte se, že jsou otevřené výchozí porty, aby nedošlo k přerušení provozu.
 
 ## <a name="default-security-rules"></a>Výchozí pravidla zabezpečení
 
-Následující výchozí pravidla příchozího a odchozího zabezpečení se aplikují na skupinu zabezpečení sítě pro spravovanou doménu Azure služba AD DS. Tato pravidla zachovají Azure služba AD DS zabezpečená a umožňují platformě Azure monitorovat, spravovat a aktualizovat spravovanou doménu. Je také možné, že máte další pravidlo, které povolí příchozí provoz, pokud [konfigurujete zabezpečený protokol LDAP][configure-ldaps].
+Pro skupinu zabezpečení sítě pro spravovanou doménu se aplikují následující výchozí pravidla pro příchozí a odchozí zabezpečení. Tato pravidla zachovají Azure služba AD DS zabezpečená a umožňují platformě Azure monitorovat, spravovat a aktualizovat spravovanou doménu. Je také možné, že máte další pravidlo, které povolí příchozí provoz, pokud [konfigurujete zabezpečený protokol LDAP][configure-ldaps].
 
 ### <a name="inbound-security-rules"></a>Příchozí pravidla zabezpečení
 
-| Priorita | Název | Port | Protocol (Protokol) | Zdroj | Cíl | Akce |
+| Priorita | Name | Port | Protocol (Protokol) | Zdroj | Cíl | Akce |
 |----------|------|------|----------|--------|-------------|--------|
 | 101      | AllowSyncWithAzureAD | 443 | TCP | AzureActiveDirectoryDomainServices | Všechny | Povolit |
 | 201      | AllowRD | 3389 | TCP | CorpNetSaw | Všechny | Povolit |
@@ -49,7 +49,7 @@ Následující výchozí pravidla příchozího a odchozího zabezpečení se ap
 
 ### <a name="outbound-security-rules"></a>Odchozí pravidla zabezpečení
 
-| Priorita | Název | Port | Protocol (Protokol) | Zdroj | Cíl | Akce |
+| Priorita | Name | Port | Protocol (Protokol) | Zdroj | Cíl | Akce |
 |----------|------|------|----------|--------|-------------|--------|
 | 65000    | AllVnetOutBound | Všechny | Všechny | VirtualNetwork | VirtualNetwork | Povolit |
 | 65001    | AllowAzureLoadBalancerOutBound | Všechny | Všechny |  Všechny | Internet | Povolit |
@@ -68,7 +68,7 @@ Pokud chcete ověřit stávající pravidla zabezpečení a ujistit se, že jsou
 
     Zkontrolujte pravidla příchozích a odchozích připojení a porovnejte je se seznamem požadovaných pravidel v předchozí části. V případě potřeby vyberte a odstraňte všechna vlastní pravidla, která blokují požadovaný provoz. Pokud chybí některá z požadovaných pravidel, přidejte pravidlo do další části.
 
-    Po přidání nebo odstranění pravidel, která povolí požadovaný provoz, se stav spravované domény Azure služba AD DS automaticky aktualizuje během dvou hodin a výstraha se odstraní.
+    Po přidání nebo odstranění pravidel, která povolí požadovaný provoz, se stav spravované domény automaticky aktualizuje během dvou hodin a výstraha se odstraní.
 
 ### <a name="add-a-security-rule"></a>Přidání pravidla zabezpečení
 

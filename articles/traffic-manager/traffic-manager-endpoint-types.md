@@ -4,7 +4,6 @@ description: Tento článek popisuje různé typy koncových bodů, které je mo
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
 ms.topic: article
@@ -12,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: rohink
-ms.openlocfilehash: 3d8f899a7899243129d31c2620a51dc764a8e917
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: cd5c6968425c64bd670e56bbe7ae016c59662169
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250930"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84698661"
 ---
 # <a name="traffic-manager-endpoints"></a>Koncové body Traffic Manageru
 

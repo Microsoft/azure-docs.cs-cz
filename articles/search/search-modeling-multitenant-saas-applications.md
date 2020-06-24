@@ -8,20 +8,24 @@ ms.author: liamca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d8e453336005f3389f67e9571fac438bfc340c1b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 90a9672e3a58a068d1a4488a514a6fd51c272a56
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80549014"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85081111"
 ---
 # <a name="design-patterns-for-multitenant-saas-applications-and-azure-cognitive-search"></a>Vzory návrhu pro víceklientské aplikace SaaS a Azure Kognitivní hledání
+
 Víceklientské aplikace nabízí stejné služby a možnosti pro libovolný počet klientů, kteří nemůžou zobrazit nebo sdílet data žádného jiného tenanta. Tento dokument popisuje strategie izolace klientů pro víceklientské aplikace sestavené s Azure Kognitivní hledání.
 
 ## <a name="azure-cognitive-search-concepts"></a>Koncepty Azure Kognitivní hledání
-Azure Kognitivní hledání jako řešení hledání jako služby umožňuje vývojářům přidávat do aplikací bohatá vyhledávací prostředí, aniž by museli spravovat žádnou infrastrukturu nebo se stane odborníkem při načítání informací. Data se odešlou do služby a pak se uloží do cloudu. Pomocí jednoduchých požadavků na rozhraní API služby Azure Kognitivní hledání můžete data upravit a prohledat. Přehled služby najdete v [tomto článku](https://aka.ms/whatisazsearch). Než začnete diskutovat na vzory návrhu, je důležité pochopit některé koncepty v Azure Kognitivní hledání.
+[Azure kognitivní hledání](search-what-is-azure-search.md) jako řešení hledání jako služby umožňuje vývojářům přidávat do aplikací bohatá vyhledávací prostředí, aniž by museli spravovat žádnou infrastrukturu nebo se stane odborníkem při načítání informací. Data se odešlou do služby a pak se uloží do cloudu. Pomocí jednoduchých požadavků na rozhraní API služby Azure Kognitivní hledání můžete data upravit a prohledat. 
 
 ### <a name="search-services-indexes-fields-and-documents"></a>Vyhledávání služeb, indexů, polí a dokumentů
+
+Než začnete diskutovat na vzory návrhu, je důležité pochopit několik základních konceptů.
+
 Když používáte Azure Kognitivní hledání, jeden se přihlásí k odběru *vyhledávací služby*. Když se data nahrají do Azure Kognitivní hledání, uloží se do *indexu* v rámci vyhledávací služby. V rámci jedné služby může být několik indexů. Aby bylo možné používat známé koncepty databází, může být vyhledávací služba likened k databázi, zatímco indexy v rámci služby mohou být likened do tabulek v rámci databáze.
 
 Každý index v rámci vyhledávací služby má vlastní schéma, které je definováno řadou přizpůsobitelných *polí*. Data se přidávají do indexu Azure Kognitivní hledání ve formě jednotlivých *dokumentů*. Každý dokument musí být nahrán do konkrétního indexu a musí odpovídat schématu indexu. Při vyhledávání dat pomocí Kognitivní hledání Azure jsou dotazy fulltextového vyhledávání vydávány na konkrétní index.  Aby bylo možné porovnat tyto koncepty s databázemi, mohou být pole likened do sloupců v tabulce a dokumenty mohou být likened do řádků.
@@ -37,7 +41,7 @@ Přidávání a odebírání oddílů a replik v nástroji umožní, aby služba
 ### <a name="service-and-index-limits-in-azure-cognitive-search"></a>Omezení služby a indexu v Azure Kognitivní hledání
 V Azure Kognitivní hledání existuje několik různých [cenových úrovní](https://azure.microsoft.com/pricing/details/search/) , každá z vrstev má různá [omezení a kvóty](search-limits-quotas-capacity.md). Některá z těchto omezení jsou na úrovni služby, některé jsou na úrovni indexu a některé jsou na úrovni oddílu.
 
-|  | Základní | Standard1 | Standard2 | Standard3 | Standard3 HD |
+|  | Basic | Standard1 | Standard2 | Standard3 | Standard3 HD |
 | --- | --- | --- | --- | --- | --- |
 | Maximální počet replik na službu |3 |12 |12 |12 |12 |
 | Maximální počet oddílů na službu |1 |12 |12 |12 |3 |
@@ -127,5 +131,5 @@ Tato metoda se dá použít k dosažení funkcí samostatných uživatelských �
 ## <a name="next-steps"></a>Další kroky
 Azure Kognitivní hledání je přesvědčivou volbou pro mnoho aplikací. Při vyhodnocování různých vzorů návrhu pro víceklientské aplikace Vezměte v úvahu [různé cenové úrovně](https://azure.microsoft.com/pricing/details/search/) a příslušné [omezení služby](search-limits-quotas-capacity.md) , aby služba Azure kognitivní hledání nejlépe vyhovovala úlohám a architekturám aplikací všech velikostí.
 
-Jakékoli otázky týkající se Azure Kognitivní hledání a víceklientské scénáře lze směrovat na azuresearch_contact@microsoft.com.
+Jakékoli otázky týkající se Azure Kognitivní hledání a víceklientské scénáře lze směrovat na azuresearch_contact@microsoft.com .
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8052f94755019d8ad3fe818d979d2eb7f8ba0a5e
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: ece49d0c1537e345b1ccb1f44f907252a5a7b4e1
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83738757"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203890"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Definovat transformace deklarací telefonního čísla v Azure AD B2C
 
@@ -37,7 +37,7 @@ Převede `phoneNumber` datový typ na `string` datový typ.
 
 V tomto příkladu je deklarace identity cellPhoneNumber s typem hodnoty `phoneNumber` převedena na deklaraci cellPhone s hodnotou typu `string` .
 
-```XML
+```xml
 <ClaimsTransformation Id="PhoneNumberToString" TransformationMethod="ConvertPhoneNumberClaimToString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="cellPhoneNumber" TransformationClaimType="phoneNumber" />
@@ -72,7 +72,7 @@ Transformace deklarací **ConvertStringToPhoneNumberClaim** je vždy prováděna
 
 Tuto transformaci deklarací identity můžete použít k zajištění, že poskytnutá deklarace řetězce je platné telefonní číslo. V takovém případě je vyvolána chybová zpráva. Následující příklad zkontroluje, zda je **phoneString** ClaimType skutečně platné telefonní číslo, a potom vrátí telefonní číslo ve standardním Azure AD B2C formátu. V opačném případě je vyvolána chybová zpráva.
 
-```XML
+```xml
 <ClaimsTransformation Id="ConvertStringToPhoneNumber" TransformationMethod="ConvertStringToPhoneNumberClaim">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneString" TransformationClaimType="phoneNumberString" />
@@ -86,7 +86,7 @@ Tuto transformaci deklarací identity můžete použít k zajištění, že posk
 
 Technický profil s vlastním uplatněním, který volá technický profil ověření, který obsahuje tuto transformaci deklarací, může definovat chybovou zprávu.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfClaimsTransformationInvalidPhoneNumber">Custom error message if the phone number is not valid.</Item>
@@ -132,7 +132,7 @@ Pomocí této transformace deklarací identity můžete rozdělit celé telefonn
 
 Následující příklad se pokusí rozdělit telefonní číslo na národní číslo a kód země/oblasti. Pokud je telefonní číslo platné, telefonní číslo bude přepsáno národním číslem. Pokud telefonní číslo není platné, výjimka nebude vyvolána a telefonní číslo má nadále původní hodnotu.
 
-```XML
+```xml
 <ClaimsTransformation Id="GetNationalNumberAndCountryCodeFromPhoneNumberString" TransformationMethod="GetNationalNumberAndCountryCodeFromPhoneNumberString">
   <InputClaims>
     <InputClaim ClaimTypeReferenceId="phoneNumber" TransformationClaimType="phoneNumber" />
@@ -150,7 +150,7 @@ Následující příklad se pokusí rozdělit telefonní číslo na národní č
 
 Technický profil s vlastním uplatněním, který volá technický profil ověření, který obsahuje tuto transformaci deklarací, může definovat chybovou zprávu.
 
-```XML
+```xml
 <TechnicalProfile Id="SelfAsserted-LocalAccountSignup-Phone">
   <Metadata>
     <Item Key="UserMessageIfPhoneNumberParseFailure">Custom error message if the phone number is not valid.</Item>

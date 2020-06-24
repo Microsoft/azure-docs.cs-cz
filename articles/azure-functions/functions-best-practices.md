@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277775"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697686"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optimalizace výkonu a spolehlivosti Azure Functions
 
@@ -24,7 +24,7 @@ Níže jsou uvedené osvědčené postupy při sestavování a architekti řeše
 
 Velké a dlouho běžící funkce můžou způsobit neočekávané problémy s časovým limitem. Další informace o časových limitech pro daný plán hostování najdete v tématu [Doba trvání časového limitu aplikace Function App](functions-scale.md#timeout). 
 
-Funkce může být velká z důvodu mnoha závislostí Node. js. Import závislostí může také způsobit delší dobu načítání, která vede k neočekávaným časovým limitům. Závislosti jsou načítány explicitně i implicitně. Jeden modul načtený vaším kódem může načíst vlastní další moduly. 
+Funkce může být velká z důvodu řady Node.jsch závislostí. Import závislostí může také způsobit delší dobu načítání, která vede k neočekávaným časovým limitům. Závislosti jsou načítány explicitně i implicitně. Jeden modul načtený vaším kódem může načíst vlastní další moduly. 
 
 Kdykoli je to možné, refaktorujte velké funkce na menší sady funkcí, které fungují společně, a rychle vrátí odpovědi. Například Webhook nebo funkce triggeru HTTP může vyžadovat odpověď potvrzení v určitém časovém limitu. pro Webhooky je běžné, že vyžadují okamžitou reakci. Datovou část triggeru HTTP můžete předat do fronty, aby ji bylo možné zpracovat funkcí triggeru fronty. Tento přístup umožňuje odložit skutečnou práci a vrátit okamžitou odezvu.
 
@@ -92,7 +92,7 @@ Nepoužívejte podrobné protokolování v produkčním kódu, který má negati
 
 Asynchronní programování je doporučený osvědčený postup, zejména při zablokování vstupně-výstupních operací.
 
-V jazyce C# vždy vyhněte odkazování `Result` na vlastnost nebo `Wait` volání metody v `Task` instanci. Tento přístup může vést k vyčerpání vlákna.
+V jazyce C# vždy vyhněte odkazování na `Result` vlastnost nebo volání `Wait` metody v `Task` instanci. Tento přístup může vést k vyčerpání vlákna.
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]
 
@@ -104,17 +104,17 @@ FUNCTIONS_WORKER_PROCESS_COUNT se vztahuje na každého hostitele, který funkce
 
 ### <a name="receive-messages-in-batch-whenever-possible"></a>Kdykoli je to možné, přijímat zprávy v dávce
 
-Některé triggery, jako je centrum událostí, umožňují příjem dávky zpráv na jednom volání.  Dávkování zpráv má mnohem lepší výkon.  Maximální velikost dávky v `host.json` souboru můžete nakonfigurovat podle podrobných informací v [dokumentaci Host. JSON.](functions-host-json.md)
+Některé triggery, jako je centrum událostí, umožňují příjem dávky zpráv na jednom volání.  Dávkování zpráv má mnohem lepší výkon.  Maximální velikost dávky v souboru můžete nakonfigurovat `host.json` tak, jak je popsáno v [host.jsv referenční dokumentaci](functions-host-json.md) .
 
-U funkcí jazyka C# lze typ změnit na pole silného typu.  Například namísto `EventData sensorEvent` signatury metody může být `EventData[] sensorEvent`.  Pro jiné jazyky budete muset explicitně nastavit vlastnost mohutnosti v sadě `function.json` na `many` , aby bylo možné dávkování povolit [, jak je znázorněno zde](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
+U funkcí jazyka C# lze typ změnit na pole silného typu.  Například namísto `EventData sensorEvent` signatury metody může být `EventData[] sensorEvent` .  Pro jiné jazyky budete muset explicitně nastavit vlastnost mohutnosti v sadě na, aby `function.json` `many` bylo možné dávkování povolit [, jak je znázorněno zde](https://github.com/Azure/azure-webjobs-sdk-templates/blob/df94e19484fea88fc2c68d9f032c9d18d860d5b5/Functions.Templates/Templates/EventHubTrigger-JavaScript/function.json#L10).
 
 ### <a name="configure-host-behaviors-to-better-handle-concurrency"></a>Konfigurace chování hostitelů pro lepší zpracování souběžnosti
 
-`host.json` Soubor v aplikaci Function App umožňuje konfiguraci chování hostitele a spuštění.  Kromě dávkování chování můžete spravovat souběžnost pro určitý počet triggerů. Často se upravují hodnoty v těchto možnostech, které mohou pokaždé škálovat každou instanci odpovídajícím způsobem pro požadavky vyvolaných funkcí.
+`host.json`Soubor v aplikaci Function App umožňuje konfiguraci chování hostitele a spuštění.  Kromě dávkování chování můžete spravovat souběžnost pro určitý počet triggerů. Často se upravují hodnoty v těchto možnostech, které mohou pokaždé škálovat každou instanci odpovídajícím způsobem pro požadavky vyvolaných funkcí.
 
-Nastavení v souboru Host. JSON se aplikují napříč všemi funkcemi v rámci aplikace v rámci *jedné instance* funkce. Pokud máte například aplikaci funkcí se dvěma funkcemi HTTP a [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) požadavky nastavenými na 25, požadavek na Trigger http by se nacházel do sdíleného 25 souběžných požadavků.  Když se tato aplikace Functions škáluje na 10 instancí, můžou tyto dvě funkce efektivně umožňovat 250 souběžných žádostí (10 instancí × 25 souběžných požadavků na instanci). 
+Nastavení v souboru host.json se aplikují napříč všemi funkcemi v rámci aplikace v rámci *jedné instance* funkce. Pokud máte například aplikaci funkcí se dvěma funkcemi HTTP a [`maxConcurrentRequests`](functions-bindings-http-webhook-output.md#hostjson-settings) požadavky nastavenými na 25, požadavek na Trigger http by se nacházel do sdíleného 25 souběžných požadavků.  Když se tato aplikace Functions škáluje na 10 instancí, můžou tyto dvě funkce efektivně umožňovat 250 souběžných žádostí (10 instancí × 25 souběžných požadavků na instanci). 
 
-Další možnosti konfigurace hostitele najdete v [článku Konfigurace Host. JSON](functions-host-json.md).
+Další možnosti konfigurace hostitele najdete v [host.jsčlánku o konfiguraci](functions-host-json.md).
 
 ## <a name="next-steps"></a>Další kroky
 

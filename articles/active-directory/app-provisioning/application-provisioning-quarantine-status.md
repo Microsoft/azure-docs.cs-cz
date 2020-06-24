@@ -2,21 +2,21 @@
 title: Stav zřizování aplikace v karanténě | Microsoft Docs
 description: Pokud jste nakonfigurovali aplikaci pro Automatické zřizování uživatelů, přečtěte si, co stav zřizování karantény znamená a jak ho vymazat.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/28/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: c1e0039133b7f9a7ae827e348640f6379b7f10ac
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: d8b50bfdd894d36b96fb3a53eab7c43c5b1fe11a
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593926"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782105"
 ---
 # <a name="application-provisioning-in-quarantine-status"></a>Stav zřizování aplikace v karanténě
 
@@ -28,11 +28,11 @@ V karanténě se frekvence přírůstkových cyklů postupně zkracuje na jeden 
 
 Existují tři způsoby, jak ověřit, zda je aplikace v karanténě:
   
-- V Azure Portal přejděte na **Azure Active Directory** > **podnikové aplikace** > &lt;*název*&gt; > **zřizování** a Projděte si indikátor průběhu pro zprávu o karanténě.   
+- V Azure Portal přejděte na **Azure Active Directory**  >  **podnikové aplikace**  >  &lt; *název* &gt;  >  **zřizování** a Projděte si indikátor průběhu pro zprávu o karanténě.   
 
   ![Stavový řádek znázorňující stav karantény](./media/application-provisioning-quarantine-status/progress-bar-quarantined.png)
 
-- V Azure Portal přejděte do **Azure Active Directory** > **protokoly auditu** > filtrovat **aktivity: umístit do karantény** a zkontrolovat historii karantény. Zobrazení v indikátoru průběhu, jak je popsáno výše, ukazuje, jestli je zřizování aktuálně v karanténě, a protokoly auditu vám umožní zobrazit historii karantény pro aplikaci. 
+- V Azure Portal přejděte do **Azure Active Directory**  >  **protokoly auditu** > filtrovat **aktivity: umístit do karantény** a zkontrolovat historii karantény. Zobrazení v indikátoru průběhu, jak je popsáno výše, ukazuje, jestli je zřizování aktuálně v karanténě, a protokoly auditu vám umožní zobrazit historii karantény pro aplikaci. 
 
 - Pomocí Microsoft Graph žádosti [Get synchronizationJob](https://docs.microsoft.com/graph/api/synchronization-synchronizationjob-get?view=graph-rest-beta&tabs=http) programově Získejte stav úlohy zřizování:
 
@@ -46,7 +46,7 @@ Existují tři způsoby, jak ověřit, zda je aplikace v karanténě:
 
 ## <a name="why-is-my-application-in-quarantine"></a>Proč je moje aplikace v karanténě?
 
-|Popis|Doporučená akce|
+|Description|Doporučená akce|
 |---|---|
 |**Problém s dodržováním předpisů SCIM:** Byla vrácena odpověď HTTP/404 nenalezena místo očekávané odpovědi HTTP/200 OK. V tomto případě služba zřizování Azure AD odeslala žádost do cílové aplikace a obdržela neočekávanou odpověď.|Zkontrolujte část přihlašovací údaje správce, abyste viděli, jestli aplikace vyžaduje zadání adresy URL tenanta, a ujistěte se, že je adresa URL správná. Pokud se problém nezobrazuje, obraťte se prosím na vývojáře aplikace, aby se zajistilo, že je jejich služba kompatibilní s SCIM. https://tools.ietf.org/html/rfc7644#section-3.4.2 |
 |**Neplatné přihlašovací údaje:** Při pokusu o autorizaci přístupu k cílové aplikaci jsme dostali odpověď z cílové aplikace, která indikuje, že zadané přihlašovací údaje jsou neplatné.|Přejděte do části přihlašovací údaje správce uživatelského rozhraní pro konfiguraci zřizování a znovu udělte přístup s platnými přihlašovacími údaji. Pokud je aplikace v galerii, Projděte si kurz konfigurace aplikace pro všechny další požadované kroky.|
@@ -66,7 +66,7 @@ Nejprve Vyřešte problém, který způsobil, že se aplikace umístila do karan
 
 - Zkontrolujte nastavení zřizování aplikace a ujistěte se, že jste [zadali platné přihlašovací údaje správce](../app-provisioning/configure-automatic-user-provisioning-portal.md#configuring-automatic-user-account-provisioning). Azure AD musí být schopný vytvořit vztah důvěryhodnosti s cílovou aplikací. Ujistěte se, že jste zadali platné přihlašovací údaje a že váš účet má potřebná oprávnění.
 
-- Zkontrolujte [protokoly zřizování](../reports-monitoring/concept-provisioning-logs.md) a prozkoumejte, jaké chyby způsobují karanténu a řeší chybu. Přístup k protokolům zřizování v Azure Portal získáte tak, že v části **aktivita** zařadíte **protokoly zřizování (Preview)** **Azure Active Directory** &gt; **Enterprise Apps** &gt; (Preview).
+- Zkontrolujte [protokoly zřizování](../reports-monitoring/concept-provisioning-logs.md) a prozkoumejte, jaké chyby způsobují karanténu a řeší chybu. Přístup k protokolům zřizování v Azure Portal získáte tak, že **Azure Active Directory** &gt; v části aktivita zařadíte **Enterprise Apps** &gt; **protokoly zřizování (Preview) Azure Active Directory Enterprise Apps (Preview)** . **Activity**
 
 Po vyřešení problému restartujte úlohu zřizování. Některé změny nastavení zřizování aplikace, jako jsou mapování atributů nebo filtry oborů, se automaticky restartují pro vás. Indikátor průběhu na stránce pro **zřizování** aplikace indikuje, kdy bylo zřizování naposledy spuštěno. Pokud potřebujete úlohu zřizování restartovat ručně, použijte jednu z následujících metod:  
 

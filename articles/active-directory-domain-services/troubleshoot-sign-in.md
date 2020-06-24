@@ -10,16 +10,16 @@ ms.workload: identity
 ms.topic: troubleshooting
 ms.date: 10/02/2019
 ms.author: iainfou
-ms.openlocfilehash: 0585ced3bc53f216ab203b4686b5800b5e14bbbd
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9b85859e6294fa24731bc13e9edd5fe2610e8fb6
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77612746"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84733955"
 ---
-# <a name="troubleshoot-account-sign-in-problems-with-an-azure-ad-domain-services-managed-domain"></a>Řešení potíží s přihlašováním k účtu pomocí spravované domény Azure AD Domain Services
+# <a name="troubleshoot-account-sign-in-problems-with-an-azure-active-directory-domain-services-managed-domain"></a>Řešení potíží s přihlašováním k účtu pomocí spravované domény Azure Active Directory Domain Services
 
-Nejběžnějšími důvody pro uživatelský účet, který se nemůže přihlásit ke spravované doméně Azure služba AD DS, jsou tyto scénáře:
+Nejběžnějšími důvody pro uživatelský účet, který se nemůže přihlásit ke spravované doméně služby Azure Active Directory Domain Services (Azure služba AD DS), jsou tyto scénáře:
 
 * [Účet zatím není synchronizovaný do Azure služba AD DS.](#account-isnt-synchronized-into-azure-ad-ds-yet)
 * [Azure služba AD DS nemá hodnoty hash hesla, aby se mohl přihlásit k účtu.](#azure-ad-ds-doesnt-have-the-password-hashes)
@@ -47,19 +47,19 @@ Azure AD negeneruje nebo ukládá hodnoty hash hesel ve formátu, který je vyž
 
 ### <a name="hybrid-environments-with-on-premises-synchronization"></a>Hybridní prostředí s místní synchronizací
 
-Pro hybridní prostředí, která používají Azure AD Connect k synchronizaci z místního prostředí služba AD DS můžete v Azure AD místně vygenerovat a synchronizovat požadované hodnoty hash hesla protokolu NTLM nebo Kerberos. Po vytvoření spravované domény Azure služba AD DS [Povolte synchronizaci hodnot hash hesel pro Azure Active Directory Domain Services][azure-ad-connect-phs]. Bez dokončení kroku synchronizace hodnoty hash hesla se nemůžete přihlásit k účtu pomocí Azure služba AD DS. Pokud zakážete Azure služba AD DS a pak znovu povolíte, budete muset postupovat znovu.
+Pro hybridní prostředí, která používají Azure AD Connect k synchronizaci z místního prostředí služba AD DS můžete v Azure AD místně vygenerovat a synchronizovat požadované hodnoty hash hesla protokolu NTLM nebo Kerberos. Po vytvoření spravované domény [Povolte synchronizaci hodnot hash hesel na Azure Active Directory Domain Services][azure-ad-connect-phs]. Bez dokončení kroku synchronizace hodnoty hash hesla se nemůžete přihlásit k účtu pomocí Azure služba AD DS. Pokud zakážete Azure služba AD DS a pak znovu povolíte, budete muset postupovat znovu.
 
 Další informace najdete v tématu [Jak funguje synchronizace hodnot hash hesel pro Azure služba AD DS][phs-process].
 
 ### <a name="cloud-only-environments-with-no-on-premises-synchronization"></a>Pouze cloudová prostředí bez místní synchronizace
 
-Azure služba AD DS spravované domény, které nemají místní synchronizaci, jenom účty ve službě Azure AD, musí také vygenerovat požadované hodnoty hash hesla protokolu NTLM nebo Kerberos. Pokud se účet jenom pro Cloud nemůže přihlásit, má po povolení Azure služba AD DS úspěšné dokončení procesu změny hesla pro účet?
+Spravované domény bez místní synchronizace: pro účty ve službě Azure AD musí taky vygenerovat požadované hodnoty hash hesla protokolu NTLM nebo Kerberos. Pokud se účet jenom pro Cloud nemůže přihlásit, má po povolení Azure služba AD DS úspěšné dokončení procesu změny hesla pro účet?
 
 * **Ne, heslo se nezměnilo.**
     * [Změňte heslo pro účet][enable-user-accounts] , abyste vygenerovali požadované hodnoty hash hesla, a pak počkejte 15 minut, než se znovu pokusíte o přihlášení.
     * Pokud zakážete Azure služba AD DS a pak znovu povolíte, každý účet musí znovu postupovat podle kroků a změnit heslo a vygenerovat požadované hodnoty hash hesla.
 * **Ano, heslo bylo změněno.**
-    * Pokuste se přihlásit pomocí *hlavního názvu uživatele (UPN)* , `driley@aaddscontoso.com`jako je třeba místo formátu *sAMAccountName* `AADDSCONTOSO\deeriley`.
+    * Pokuste se přihlásit pomocí *hlavního názvu uživatele (UPN)* , jako `driley@aaddscontoso.com` je třeba místo formátu *sAMAccountName* `AADDSCONTOSO\deeriley` .
     * *SAMAccountName* se může automaticky vygenerovat pro uživatele, jejichž předpona hlavního názvu uživatele je příliš dlouhá nebo je stejná jako jiný uživatel ve spravované doméně. Formát *UPN* je v rámci TENANTA Azure AD zaručený jako jedinečný.
 
 ## <a name="the-account-is-locked-out"></a>Účet je uzamčený.
@@ -72,7 +72,7 @@ Další informace a řešení problémů s uzamčením účtu najdete v tématu 
 
 ## <a name="next-steps"></a>Další kroky
 
-Pokud stále máte problémy s připojením k VIRTUÁLNÍmu počítači do spravované domény Azure služba AD DS, [Najděte nápovědu a otevřete lístek podpory pro Azure Active Directory][azure-ad-support].
+Pokud stále máte problémy s připojením k VIRTUÁLNÍmu počítači ke spravované doméně, [Najděte nápovědu a otevřete lístek podpory pro Azure Active Directory][azure-ad-support].
 
 <!-- INTERNAL LINKS -->
 [troubleshoot-account-lockout]: troubleshoot-account-lockout.md

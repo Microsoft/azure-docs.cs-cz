@@ -7,12 +7,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: 523049ea3286445117f41147f3dd12a2c911d1ae
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 4125d7ea17c6ebab28ef8e5fde5af5475d07002d
+ms.sourcegitcommit: 23604d54077318f34062099ed1128d447989eea8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "72755015"
+ms.lasthandoff: 06/20/2020
+ms.locfileid: "85113377"
 ---
 # <a name="data-modeling-in-azure-cosmos-db"></a>Modelování dat v Azure Cosmos DB
 
@@ -33,7 +33,7 @@ Když začnete sestavovat data v Azure Cosmos DB pokusíte se zacházet s entita
 
 V případě porovnání si nejdřív projdeme, jak můžeme modelovat data v relační databázi. Následující příklad ukazuje, jak může být osoba uložená v relační databázi.
 
-![Model relační databáze](./media/sql-api-modeling-data/relational-data-model.png)
+:::image type="content" source="./media/sql-api-modeling-data/relational-data-model.png" alt-text="Model relační databáze" border="false":::
 
 Při práci s relačními databázemi je strategie normalizovat všechna vaše data. Normalizace dat obvykle zahrnuje pořízení entity, jako je třeba osoba, a její rozdělení do diskrétních součástí. V předchozím příkladu může osoba mít několik záznamů s podrobnostmi kontaktů a také několik záznamů adres. Kontaktní údaje mohou být dále rozděleny další extrakcí společných polí, jako je typ. Totéž platí pro adresu, každý záznam může být typu *Home* nebo *Business*.
 
@@ -282,7 +282,8 @@ Ve výše uvedeném příkladu jsme zrušili nevázanou kolekci v dokumentu vyda
 
 V relačních databázích *mnoho: mnoho* relací je často modelů s spojovacími tabulkami, které slouží pouze k propojení záznamů z jiných tabulek.
 
-![Spojování tabulek](./media/sql-api-modeling-data/join-table.png)
+
+:::image type="content" source="./media/sql-api-modeling-data/join-table.png" alt-text="Spojování tabulek" border="false":::
 
 Můžete se rozhodnout, že budete replikovat stejnou věc s použitím dokumentů a vytvořit datový model, který vypadá podobně jako následující.
 
@@ -373,7 +374,7 @@ Vezměte v úvahu následující JSON.
 
 Tady jsme (hlavně) následovali vložený model, ve kterém jsou data z jiných entit vložená v dokumentu nejvyšší úrovně, ale odkaz na další data.
 
-Pokud se podíváte na dokument knihy, uvidíme několik zajímavých polí, když se podíváme na pole autorů. K dispozici `id` je pole, které používáme k odkazování zpátky na vytvořený dokument, standardní postupy v normalizovaném modelu, ale také máme `name` a. `thumbnailUrl` Mohli jsme aplikaci zablokovat `id` a pojmenovat tak, aby z příslušného autorského dokumentu získali všechny další informace, které potřebuje, pomocí odkazu, ale vzhledem k tomu, že naše aplikace zobrazuje jméno autora a miniaturu, a to s každou otevřenou knihou, můžeme v seznamu odkázat na server na jednu knihu tím, že se odnormalizují data od autora. **some**
+Pokud se podíváte na dokument knihy, uvidíme několik zajímavých polí, když se podíváme na pole autorů. K dispozici je `id` pole, které používáme k odkazování zpátky na vytvořený dokument, standardní postupy v normalizovaném modelu, ale také máme `name` a `thumbnailUrl` . Mohli jsme aplikaci zablokovat a pojmenovat `id` tak, aby z příslušného autorského dokumentu získali všechny další informace, které potřebuje, pomocí odkazu, ale vzhledem k tomu, že naše aplikace zobrazuje jméno autora a miniaturu, a to s každou otevřenou knihou, můžeme v seznamu odkázat na server na jednu knihu **some** tím, že se odnormalizují data od autora.
 
 Ujistěte se, že pokud se změnil název autora nebo chce aktualizovat fotografii, musíme si projít a aktualizovat každou knihu, kterou předtím publikovali, ale pro naši aplikaci, a to na základě předpokladu, že autoři nezměnili jejich názvy často, jedná se o přijatelné rozhodnutí o návrhu.  
 
@@ -383,7 +384,7 @@ Možnost mít model s předem vypočítanými poli je možná, protože Azure Co
 
 ## <a name="distinguishing-between-different-document-types"></a>Odlišení mezi různými typy dokumentů
 
-V některých scénářích může být vhodné kombinovat různé typy dokumentů ve stejné kolekci. obvykle se jedná o případ, kdy chcete do stejného [oddílu](partitioning-overview.md)zasedat více souvisejících dokumentů. Můžete například do jedné kolekce umístit recenze knih a knih a rozdělit je na oddíly `bookId`. V takové situaci obvykle chcete do dokumentů přidat pole, které určuje jejich typ, aby je bylo možné odlišit.
+V některých scénářích může být vhodné kombinovat různé typy dokumentů ve stejné kolekci. obvykle se jedná o případ, kdy chcete do stejného [oddílu](partitioning-overview.md)zasedat více souvisejících dokumentů. Můžete například do jedné kolekce umístit recenze knih a knih a rozdělit je na oddíly `bookId` . V takové situaci obvykle chcete do dokumentů přidat pole, které určuje jejich typ, aby je bylo možné odlišit.
 
     Book documents:
     {

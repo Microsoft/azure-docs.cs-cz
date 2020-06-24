@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 03/26/2020
+ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 410f413fc8450c0ee33c3ca95e860a3e8de34107
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e8486241d4de0025603b22b591f4a8f62901bd7f
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80332613"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85203652"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definování technického profilu RESTful ve vlastní zásadě Azure Active Directory B2C
 
@@ -26,11 +26,11 @@ Azure Active Directory B2C (Azure AD B2C) poskytuje podporu pro integraci vlastn
 
 ## <a name="protocol"></a>Protocol (Protokol)
 
-Atribut **Name** elementu **Protocol** musí být nastaven na `Proprietary`hodnotu. Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`:.
+Atribut **Name** elementu **Protocol** musí být nastaven na hodnotu `Proprietary` . Atribut **obslužné rutiny** musí obsahovat plně kvalifikovaný název sestavení obslužné rutiny protokolu, které je používáno Azure AD B2C: `Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null` .
 
 Následující příklad ukazuje technický profil RESTful:
 
-```XML
+```xml
 <TechnicalProfile Id="REST-UserMembershipValidator">
   <DisplayName>Validate user input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -41,7 +41,7 @@ Následující příklad ukazuje technický profil RESTful:
 
 Element **InputClaims** obsahuje seznam deklarací pro odeslání do REST API. Název vaší deklarace identity můžete také namapovat na název definovaný v REST API. Následující příklad ukazuje mapování mezi vaší zásadou a REST API. Tato **deklarace identity** se pošle REST API jako **FirstName**, zatímco **příjmení** se pošle jako **LastName**. Deklarace **e-mailu** je nastavená tak, jak je.
 
-```XML
+```xml
 <InputClaims>
   <InputClaim ClaimTypeReferenceId="email" />
   <InputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="firstName" />
@@ -60,13 +60,13 @@ Chcete-li odeslat složitou datovou část JSON:
 1. Pomocí transformace deklarací [GenerateJson](json-transformations.md) Sestavte datovou část JSON.
 1. V REST API Technical profil:
     1. Přidejte transformaci vstupních deklarací identity s odkazem na `GenerateJson` transformaci deklarací.
-    1. Nastavte možnost `SendClaimsIn` metadata na`body`
-    1. Nastavte možnost `ClaimUsedForRequestPayload` metadata na název deklarace identity obsahující datovou část JSON.
+    1. Nastavte `SendClaimsIn` možnost metadata na`body`
+    1. Nastavte `ClaimUsedForRequestPayload` možnost metadata na název deklarace identity obsahující datovou část JSON.
     1. Ve vstupní deklaraci identity přidejte odkaz na vstupní deklaraci, která obsahuje datovou část JSON.
 
 Následující příklad `TechnicalProfile` odešle ověřovací e-mail s použitím e-mailové služby jiného výrobce (v tomto případě SendGrid).
 
-```XML
+```xml
 <TechnicalProfile Id="SendGrid">
   <DisplayName>Use SendGrid's email API to send the code the the user</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -75,6 +75,7 @@ Následující příklad `TechnicalProfile` odešle ověřovací e-mail s použi
     <Item Key="AuthenticationType">Bearer</Item>
     <Item Key="SendClaimsIn">Body</Item>
     <Item Key="ClaimUsedForRequestPayload">sendGridReqBody</Item>
+    <Item Key="DefaultUserMessageIfRequestFailed">Cannot process your request right now, please try again later.</Item>
   </Metadata>
   <CryptographicKeys>
     <Key Id="BearerAuthenticationToken" StorageReferenceId="B2C_1A_SendGridApiKey" />
@@ -100,7 +101,7 @@ Následující příklad ukazuje deklaraci identity vrácenou REST API:
 
 Technický profil také vrací deklarace identity, které nejsou vraceny zprostředkovatelem identity:
 
-- Deklarace identity **loyaltyNumberIsNew** , která má výchozí hodnotu nastavenou `true`na.
+- Deklarace identity **loyaltyNumberIsNew** , která má výchozí hodnotu nastavenou na `true` .
 
 ```xml
 <OutputClaims>
@@ -111,24 +112,35 @@ Technický profil také vrací deklarace identity, které nejsou vraceny zprost�
 
 ## <a name="metadata"></a>Metadata
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ServiceUrl | Ano | Adresa URL koncového bodu REST API. |
-| AuthenticationType | Ano | Typ ověřování prováděného zprostředkovatelem deklarací RESTful. Možné hodnoty: `None`, `Basic`, `Bearer`, nebo `ClientCertificate`. `None` Hodnota označuje, že REST API není anonymní. `Basic` Hodnota označuje, že REST API je zabezpečeno pomocí ověřování HTTP Basic. K rozhraní API můžou přistupovat jenom ověření uživatelé, včetně Azure AD B2C. Hodnota `ClientCertificate` (doporučeno) znamená, že REST API omezuje přístup pomocí ověřování klientského certifikátu. K vašemu rozhraní API můžou mít přístup jenom služby, které mají příslušné certifikáty, například Azure AD B2C. `Bearer` Hodnota označuje, že REST API omezí přístup pomocí tokenu nosiče klienta OAuth2. |
-| AllowInsecureAuthInProduction| Ne| Určuje, zda `AuthenticationType` lze nastavit `none` na hodnotu v produkčním prostředí`DeploymentMode` ( [TrustFrameworkPolicy](trustframeworkpolicy.md) je nastaven na `Production`nebo není určen). Možné hodnoty: true nebo false (výchozí). |
-| SendClaimsIn | Ne | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form`, `Header`nebo `QueryString`. `Body` Hodnota je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. `Form` Hodnota je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty oddělovače & znaku. `Header` Hodnota je vstupní deklarace, která je odeslána v hlavičce požadavku. `QueryString` Hodnota je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. Příkazy HTTP, které jsou vyvolány pomocí obou, jsou následující:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
+| AuthenticationType | Ano | Typ ověřování prováděného zprostředkovatelem deklarací RESTful. Možné hodnoty: `None` , `Basic` , `Bearer` , nebo `ClientCertificate` . `None`Hodnota označuje, že REST API není anonymní. `Basic`Hodnota označuje, že REST API je zabezpečeno pomocí ověřování HTTP Basic. K rozhraní API můžou přistupovat jenom ověření uživatelé, včetně Azure AD B2C. `ClientCertificate`Hodnota (doporučeno) znamená, že REST API omezuje přístup pomocí ověřování klientského certifikátu. K vašemu rozhraní API můžou mít přístup jenom služby, které mají příslušné certifikáty, například Azure AD B2C. `Bearer`Hodnota označuje, že REST API omezí přístup pomocí tokenu nosiče klienta OAuth2. |
+| AllowInsecureAuthInProduction| Ne| Určuje, zda `AuthenticationType` lze nastavit na hodnotu `none` v produkčním prostředí ( `DeploymentMode` [TrustFrameworkPolicy](trustframeworkpolicy.md) je nastaven na `Production` nebo není určen). Možné hodnoty: true nebo false (výchozí). |
+| SendClaimsIn | Ne | Určuje, jakým způsobem se vstupní deklarace identity odesílají do zprostředkovatele deklarací RESTful. Možné hodnoty: `Body` (výchozí), `Form` , `Header` nebo `QueryString` . `Body`Hodnota je vstupní deklarace, která je odeslána v těle žádosti ve formátu JSON. `Form`Hodnota je vstupní deklarace, která se pošle v těle žádosti ve formátu hodnoty oddělovače & znaku. `Header`Hodnota je vstupní deklarace, která je odeslána v hlavičce požadavku. `QueryString`Hodnota je vstupní deklarace, která je odeslána v řetězci dotazu požadavku. Příkazy HTTP, které jsou vyvolány pomocí obou, jsou následující:<br /><ul><li>`Body`: POST</li><li>`Form`: POST</li><li>`Header`: GET</li><li>`QueryString`: GET</li></ul> |
 | ClaimsFormat | Ne | Aktuálně se nepoužívá, může být ignorováno. |
 | ClaimUsedForRequestPayload| Ne | Název deklarace identity řetězce, která obsahuje datovou část, která se má odeslat do REST API. |
-| DebugMode | Ne | Spustí technický profil v režimu ladění. Možné hodnoty: `true`, nebo `false` (výchozí). V režimu ladění může REST API vrátit více informací. Přečtěte si část [vracení chybové zprávy](#returning-error-message) . |
-| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true`, nebo `false`  (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true`. |
-| ResolveJsonPathsInJsonTokens  | Ne | Určuje, zda technický profil řeší cesty JSON. Možné hodnoty: `true`, nebo `false` (výchozí). Tato metadata slouží ke čtení dat z vnořeného prvku JSON. V [OutputClaim](technicalprofiles.md#outputclaims)nastavte `PartnerClaimType` na element cesty JSON, který chcete výstup. Například: `firstName.localized`nebo `data.0.to.0.email`.|
+| DebugMode | Ne | Spustí technický profil v režimu ladění. Možné hodnoty: `true` , nebo `false` (výchozí). V režimu ladění může REST API vrátit více informací. Přečtěte si část [vracení chybové zprávy](#returning-validation-error-message) . |
+| IncludeClaimResolvingInClaimsHandling  | Ne | Pro vstupní a výstupní deklarace identity určuje, jestli je [řešení deklarací identity](claim-resolver-overview.md) zahrnuté v technickém profilu. Možné hodnoty: `true` , nebo `false`   (výchozí). Pokud chcete použít překladač deklarací identity v technickém profilu, nastavte tuto hodnotu na `true` . |
+| ResolveJsonPathsInJsonTokens  | Ne | Určuje, zda technický profil řeší cesty JSON. Možné hodnoty: `true` , nebo `false` (výchozí). Tato metadata slouží ke čtení dat z vnořeného prvku JSON. V [OutputClaim](technicalprofiles.md#outputclaims)nastavte na `PartnerClaimType` element cesty JSON, který chcete výstup. Například: `firstName.localized` nebo `data.0.to.0.email` .|
 | UseClaimAsBearerToken| Ne| Název deklarace identity, která obsahuje nosný token.|
+
+## <a name="error-handling"></a>Zpracování chyb
+
+Následující metadata lze použít ke konfiguraci chybových zpráv zobrazených při REST API chybě. Chybové zprávy lze [lokalizovat](localization-string-ids.md#restful-service-error-messages).
+
+| Atribut | Povinné | Popis |
+| --------- | -------- | ----------- |
+| DefaultUserMessageIfRequestFailed | Ne | Výchozí přizpůsobená chybová zpráva pro všechny výjimky REST API.|
+| UserMessageIfCircuitOpen | Ne | Chybová zpráva, když REST API není dostupná. Pokud není zadaný, DefaultUserMessageIfRequestFailed se vrátí. |
+| UserMessageIfDnsResolutionFailed | Ne | Chybová zpráva pro výjimku překladu DNS Pokud není zadaný, DefaultUserMessageIfRequestFailed se vrátí. | 
+| UserMessageIfRequestTimeout | Ne | Chybová zpráva, když vypršel časový limit připojení Pokud není zadaný, DefaultUserMessageIfRequestFailed se vrátí. | 
 
 ## <a name="cryptographic-keys"></a>Kryptografické klíče
 
-Pokud je typ ověřování nastaven na `None`, není použit element **CryptographicKeys** .
+Pokud je typ ověřování nastaven na, není `None` použit element **CryptographicKeys** .
 
-```XML
+```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -140,16 +152,16 @@ Pokud je typ ověřování nastaven na `None`, není použit element **Cryptogra
 </TechnicalProfile>
 ```
 
-Pokud je typ ověřování nastaven na `Basic`, element **CryptographicKeys** obsahuje následující atributy:
+Pokud je typ ověřování nastaven na `Basic` , element **CryptographicKeys** obsahuje následující atributy:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | BasicAuthenticationUsername | Ano | Uživatelské jméno, které se používá k ověření. |
 | BasicAuthenticationPassword | Ano | Heslo, které se používá k ověření. |
 
 Následující příklad ukazuje technický profil se základním ověřováním:
 
-```XML
+```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -165,13 +177,13 @@ Následující příklad ukazuje technický profil se základním ověřováním
 </TechnicalProfile>
 ```
 
-Pokud je typ ověřování nastaven na `ClientCertificate`, element **CryptographicKeys** obsahuje následující atribut:
+Pokud je typ ověřování nastaven na `ClientCertificate` , element **CryptographicKeys** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | ClientCertificate | Ano | Certifikát x509 (sada klíčů RSA), která se má použít k ověření. |
 
-```XML
+```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -186,13 +198,13 @@ Pokud je typ ověřování nastaven na `ClientCertificate`, element **Cryptograp
 </TechnicalProfile>
 ```
 
-Pokud je typ ověřování nastaven na `Bearer`, element **CryptographicKeys** obsahuje následující atribut:
+Pokud je typ ověřování nastaven na `Bearer` , element **CryptographicKeys** obsahuje následující atribut:
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
 | BearerAuthenticationToken | Ne | Nosný token OAuth 2,0. |
 
-```XML
+```xml
 <TechnicalProfile Id="REST-API-SignUp">
   <DisplayName>Validate user's input data and return loyaltyNumber claim</DisplayName>
   <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.RestfulProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
@@ -207,11 +219,11 @@ Pokud je typ ověřování nastaven na `Bearer`, element **CryptographicKeys** o
 </TechnicalProfile>
 ```
 
-## <a name="returning-error-message"></a>Vracení chybové zprávy
+## <a name="returning-validation-error-message"></a>Vracení chybové zprávy ověřování
 
 Vaše REST API může potřebovat vrátit chybovou zprávu, například ' uživatel nebyl nalezen v systému CRM '. Pokud dojde k chybě, REST API by měla vracet chybovou zprávu HTTP 4xx, jako je například 400 (chybný požadavek) nebo 409 (konflikt) kód stavu odpovědi. Tělo odpovědi obsahuje chybovou zprávu formátovanou ve formátu JSON:
 
-```JSON
+```json
 {
   "version": "1.0.0",
   "status": 409,
@@ -223,15 +235,15 @@ Vaše REST API může potřebovat vrátit chybovou zprávu, například ' uživa
 }
 ```
 
-| Atribut | Požaduje se | Popis |
+| Atribut | Povinné | Popis |
 | --------- | -------- | ----------- |
-| version | Ano | Vaše verze REST API. Příklad: 1.0.1 |
+| verze | Ano | Vaše verze REST API. Příklad: 1.0.1 |
 | status | Ano | Musí být 409 |
-| kód | Ne | Kód chyby od poskytovatele koncového bodu RESTful, který se zobrazí, `DebugMode` když je povolený. |
-| Identifikátor | Ne | Identifikátor požadavku od poskytovatele koncového bodu RESTful, který se zobrazí, `DebugMode` když je povolený. |
+| kód | Ne | Kód chyby od poskytovatele koncového bodu RESTful, který se zobrazí, když `DebugMode` je povolený. |
+| Identifikátor | Ne | Identifikátor požadavku od poskytovatele koncového bodu RESTful, který se zobrazí, když `DebugMode` je povolený. |
 | userMessage | Ano | Chybová zpráva, která se zobrazí uživateli. |
 | developerMessage | Ne | Podrobný popis problému a jak ho opravit, který se zobrazí, když `DebugMode` je povolený. |
-| moreInfo | Ne | Identifikátor URI, který odkazuje na Další informace, které se zobrazí `DebugMode` , když je povolený. |
+| moreInfo | Ne | Identifikátor URI, který odkazuje na Další informace, které se zobrazí, když `DebugMode` je povolený. |
 
 
 Následující příklad ukazuje třídu jazyka C#, která vrací chybovou zprávu:

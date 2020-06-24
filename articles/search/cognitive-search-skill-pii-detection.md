@@ -7,13 +7,13 @@ author: careyjmac
 ms.author: chalton
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 1/27/2020
-ms.openlocfilehash: f21200bc6f5b25f3330f5bb87c0843caa5a84e56
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/17/2020
+ms.openlocfilehash: bec993c2b59aa03195b78a02668baf3f5fac6695
+ms.sourcegitcommit: 971a3a63cf7da95f19808964ea9a2ccb60990f64
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80298883"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85080751"
 ---
 #    <a name="pii-detection-cognitive-skill"></a>Vnímání zjistitelnosti PII
 
@@ -25,40 +25,40 @@ Dovednost **detekce PII** získává osobní údaje ze vstupního textu a poskyt
 > [!NOTE]
 > Když rozbalíte rozsah zvýšením četnosti zpracování, přidáním dalších dokumentů nebo přidáním dalších algoritmů AI, budete muset [připojit fakturovatelné Cognitive Services prostředku](cognitive-search-attach-cognitive-services.md). Poplatky se účtují při volání rozhraní API v Cognitive Services a pro extrakci obrázků jako součást fáze pro vystavování dokumentů ve službě Azure Kognitivní hledání. Pro extrakci textu z dokumentů se neúčtují žádné poplatky.
 >
-> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://go.microsoft.com/fwlink/?linkid=2042400).
+> Při provádění integrovaných dovedností se účtují poplatky za stávající [Cognitive Services průběžných plateb](https://azure.microsoft.com/pricing/details/cognitive-services/). Ceny za extrakci imagí jsou popsané na [stránce s cenami za Azure kognitivní hledání](https://azure.microsoft.com/pricing/details/search/).
 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft. dovednosti. text. PIIDetectionSkill
 
 ## <a name="data-limits"></a>Omezení dat
-Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length). Pokud potřebujete data před odesláním do dovednosti rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
+Maximální velikost záznamu musí být 50 000 znaků měřených podle [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length) . Pokud potřebujete data před odesláním do dovednosti rozdělit, zvažte použití [dovednosti rozdělení textu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry dovednosti
 
 V parametrech jsou rozlišována malá a velká písmena a jsou volitelná.
 
-| Název parametru     | Popis |
+| Název parametru     | Description |
 |--------------------|-------------|
-| defaultLanguageCode |    Kód jazyka vstupního textu V současné době se `en` podporuje jenom. |
-| minimumPrecision | Hodnota mezi 0,0 a 1,0. Pokud je výsledek spolehlivosti (ve `piiEntities` výstupu) nižší než hodnota nastavená `minimumPrecision` , entita se nevrátí ani nemaskuje. Výchozí hodnota je 0,0. |
-| maskingMode | Parametr, který poskytuje různé způsoby, jak maskovat zjištěné PII ve vstupním textu. Podporovány jsou následující možnosti: <ul><li>`none`(výchozí): to znamená, že se neprovede žádné maskování a `maskedText` výstup nebude vrácen. </li><li> `redact`: Tato možnost odebere zjištěné entity ze vstupního textu a nenahradí je cokoli. Všimněte si, že v tomto případě bude posun ve `piiEntities` výstupu ve vztahu k původnímu textu, a ne maskovanému textu. </li><li> `replace`: Tato možnost nahradí zjištěné entity znakem uvedeným v `maskingCharacter` parametru.  Znak se zopakuje na délku zjištěné entity, takže posuny budou správně odpovídat vstupnímu textu i výstupu `maskedText`.</li></ul> |
-| maskingCharacter | Znak, který bude použit k maskování textu v případě, `maskingMode` že je parametr nastaven na `replace`hodnotu. Podporovány jsou následující možnosti: `*` (výchozí), `#`,. `X` Tento parametr může být `null` pouze v `maskingMode` případě, že není `replace`nastaven na hodnotu. |
+| `defaultLanguageCode` |    Kód jazyka vstupního textu V současné době `en` se podporuje jenom. |
+| `minimumPrecision` | Hodnota mezi 0,0 a 1,0. Pokud je výsledek spolehlivosti (ve `piiEntities` výstupu) nižší než hodnota nastavená `minimumPrecision` , entita se nevrátí ani nemaskuje. Výchozí hodnota je 0,0. |
+| `maskingMode` | Parametr, který poskytuje různé způsoby, jak maskovat zjištěné PII ve vstupním textu. Podporovány jsou následující možnosti: <ul><li>`none`(výchozí): to znamená, že se neprovede žádné maskování a `maskedText` Výstup nebude vrácen. </li><li> `redact`: Tato možnost odebere zjištěné entity ze vstupního textu a nenahradí je cokoli. Všimněte si, že v tomto případě bude posun ve `piiEntities` výstupu ve vztahu k původnímu textu, a ne maskovanému textu. </li><li> `replace`: Tato možnost nahradí zjištěné entity znakem uvedeným v `maskingCharacter` parametru.  Znak se zopakuje na délku zjištěné entity, takže posuny budou správně odpovídat vstupnímu textu i výstupu `maskedText` .</li></ul> |
+| `maskingCharacter` | Znak, který bude použit k maskování textu v případě, že `maskingMode` je parametr nastaven na hodnotu `replace` . Podporovány jsou následující možnosti: `*` (výchozí), `#` , `X` . Tento parametr může být pouze v `null` případě, že není `maskingMode` nastaven na hodnotu `replace` . |
 
 
 ## <a name="skill-inputs"></a>Vstupy dovedností
 
-| Název vstupu      | Popis                   |
+| Název vstupu      | Description                   |
 |---------------|-------------------------------|
-| languageCode    | Nepovinný parametr. Výchozí je `en`.  |
-| text          | Text, který se má analyzovat          |
+| `languageCode`    | Nepovinný parametr. Výchozí je `en`.  |
+| `text`          | Text, který se má analyzovat          |
 
 ## <a name="skill-outputs"></a>Výstupy dovedností
 
-| Název výstupu      | Popis                   |
+| Název výstupu      | Description                   |
 |---------------|-------------------------------|
-| piiEntities | Pole komplexních typů, které obsahují následující pole: <ul><li>text (skutečný PII jako extrahovaný)</li> <li>type</li><li>Podtyp</li><li>skóre (vyšší hodnota znamená, že je pravděpodobnější, že se jedná o skutečnou entitu)</li><li>posun (do vstupního textu)</li><li>length</li></ul> </br> [Možné typy a podtypy lze nalézt zde.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
-| maskedText | Pokud `maskingMode` je hodnota nastavena na jinou hodnotu než `none`, bude tento výstup výsledkem řetězce maskování provedeného na vstupním textu, jak je popsáno ve vybraném `maskingMode`.  Pokud `maskingMode` je nastaveno na `none`, nebude tento výstup k dispozici. |
+| `piiEntities` | Pole komplexních typů, které obsahují následující pole: <ul><li>text (skutečný PII jako extrahovaný)</li> <li>typ</li><li>Podtyp</li><li>skóre (vyšší hodnota znamená, že je pravděpodobnější, že se jedná o skutečnou entitu)</li><li>posun (do vstupního textu)</li><li>length</li></ul> </br> [Možné typy a podtypy lze nalézt zde.](https://docs.microsoft.com/azure/cognitive-services/text-analytics/named-entity-types?tabs=personal) |
+| `maskedText` | Pokud `maskingMode` je hodnota nastavena na jinou hodnotu než `none` , bude tento výstup výsledkem řetězce maskování provedeného na vstupním textu, jak je popsáno ve vybraném `maskingMode` .  Pokud `maskingMode` je nastaveno na `none` , nebude tento výstup k dispozici. |
 
 ##    <a name="sample-definition"></a>Definice vzorku
 

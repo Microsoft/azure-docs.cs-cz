@@ -8,12 +8,12 @@ ms.date: 01/30/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 7540c5a82220eef61b8f1cf470697315496cd6bf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 81db9c7e729aa0be67a807d9d77a3cccb8f41604
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82127606"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85194786"
 ---
 # <a name="understand-iot-edge-automatic-deployments-for-single-devices-or-at-scale"></a>Pochopení IoT Edge automatického nasazení pro jednotlivá zařízení nebo ve velkém měřítku
 
@@ -46,7 +46,7 @@ Manifest nasazení je dokument JSON, který popisuje moduly, které mají být n
 
 Konfigurační metadata pro každý modul zahrnují:
 
-* Version
+* Verze
 * Typ
 * Stav (například spuštěno nebo zastaveno)
 * Zásady restartování
@@ -61,7 +61,7 @@ Cílová podmínka se průběžně vyhodnocuje po celou dobu životnosti nasazen
 
 Máte například nasazení pomocí značek cílové podmínky. Environment = ' prod '. Když zahájíte nasazení, je k dispozici 10 produkčních zařízení. Moduly jsou úspěšně nainstalovány v těchto 10 zařízeních. Stav agenta IoT Edge zobrazuje 10 celkem zařízení, 10 úspěšných odpovědí, 0 odpovědí na chyby a 0 nedokončených odpovědí. Nyní přidáte pět dalších zařízení se značkami. prostředí = ' prod '. Služba zjistí změnu a stav agenta IoT Edge se změní na 15 celkových zařízení, 10 úspěšných odpovědí, 0 odpovědí na chyby a 5 nevyřízených odpovědí, zatímco se nasadí na pět nových zařízení.
 
-Použijte jakoukoli logickou podmínku pro nepoužité značky zařízení, vykázaných vlastností zařízení, které jsou v seznamu, a vyberte cílové zařízení. Pokud chcete použít podmínku s značkami, je nutné přidat "značky":{} oddíl do zařízení je možné nastavit na stejné úrovni jako vlastnosti. [Další informace o značkách v zařízení s dvojitou dvojicí](../iot-hub/iot-hub-devguide-device-twins.md)
+Použijte jakoukoli logickou podmínku pro nepoužité značky zařízení, vykázaných vlastností zařízení, které jsou v seznamu, a vyberte cílové zařízení. Pokud chcete použít podmínku s značkami, je nutné přidat "značky": {} oddíl do zařízení je možné nastavit na stejné úrovni jako vlastnosti. [Další informace o značkách v zařízení s dvojitou dvojicí](../iot-hub/iot-hub-devguide-device-twins.md)
 
 Příklady cílových podmínek:
 
@@ -69,15 +69,15 @@ Příklady cílových podmínek:
 * Tags. Environment = ' prod '
 * Tags. Environment = ' prod ' a Tags. Location = ' westus '
 * Tags. Environment = ' prod ' nebo Tags. Location = ' westus '
-* Tags. operator = Jan a Tags. Environment = ' prod ' není deviceId = ' linuxprod1 '
+* Tags. operator = Jan a Tags. Environment = ' prod ' a NOT deviceId = ' linuxprod1 '
 * Properties. inhlášeny. devicemodel = ' 4000x '
 
 Při vytváření cílové podmínky Vezměte v úvahu tato omezení:
 
 * V zařízení je možné vytvořit jenom cílovou podmínku pomocí značek, hlášených vlastností nebo deviceId.
 * Dvojité uvozovky nejsou v žádné části podmínky cíle povoleny. Použijte jednoduché uvozovky.
-* Jednoduché uvozovky reprezentují hodnoty cílové podmínky. Proto je nutné jednu uvozovku začínat jinou jednou uvozovkou, pokud je součástí názvu zařízení. Například pro cílení na zařízení nazvané `operator'sDevice`Write. `deviceId='operator''sDevice'`
-* V hodnotách cílové podmínky jsou povoleny číslice, písmena a následující znaky: `-:.+%_#*?!(),=@;$`.
+* Jednoduché uvozovky reprezentují hodnoty cílové podmínky. Proto je nutné jednu uvozovku začínat jinou jednou uvozovkou, pokud je součástí názvu zařízení. Například pro cílení na zařízení nazvané `operator'sDevice` Write `deviceId='operator''sDevice'` .
+* V hodnotách cílové podmínky jsou povoleny číslice, písmena a následující znaky: `-:.+%_#*?!(),=@;$` .
 
 ### <a name="priority"></a>Priorita
 
@@ -142,7 +142,7 @@ Například ve standardním nasazení můžete přidat modul simulovaného senzo
 }
 ```
 
-V vrstveném nasazení, které se zaměřuje na některá nebo všechna stejná zařízení, můžete přidat vlastnost, která dává simulovanému senzoru odeslání zpráv 1000 a pak se zastaví. Nechcete přepsat existující vlastnosti, takže vytvoříte novou část v rámci požadovaných vlastností `layeredProperties`, které obsahují novou vlastnost:
+V vrstveném nasazení, které se zaměřuje na některá nebo všechna stejná zařízení, můžete přidat vlastnost, která dává simulovanému senzoru odeslání zpráv 1000 a pak se zastaví. Nechcete přepsat existující vlastnosti, takže vytvoříte novou část v rámci požadovaných vlastností `layeredProperties` , které obsahují novou vlastnost:
 
 ```json
 "SimulatedTemperatureSensor": {
@@ -166,7 +166,7 @@ Zařízení, které má nasazování obou nasazení, odráží následující vl
 }
 ```
 
-Pokud nastavíte `properties.desired` pole s dvojitým navrstveným nasazením v vrstveném nasazení, přepíše se požadované vlastnosti tohoto modulu v libovolném nasazení s nižší prioritou.
+Pokud nastavíte pole s `properties.desired` dvojitým navrstveným nasazením v vrstveném nasazení, přepíše se požadované vlastnosti tohoto modulu v libovolném nasazení s nižší prioritou.
 
 ## <a name="phased-rollout"></a>Dvoufázové zavedení
 
@@ -174,7 +174,7 @@ Postupné zavedení je celkový proces, kdy operátor nasadí změny do rozší�
 
 Postupné zavedení se provádí v následujících fázích a krocích:
 
-1. Vytvořte testovací prostředí IoT Edgech zařízení tím, že je zřídíte a nastavíte nestejnou značku `tag.environment='test'`zařízení jako.Testovací prostředí by mělo zrcadlit provozní prostředí, na které bude nasazení nakonec cílit.
+1. Vytvořte testovací prostředí IoT Edgech zařízení tím, že je zřídíte a nastavíte nestejnou značku zařízení jako `tag.environment='test'` .Testovací prostředí by mělo zrcadlit provozní prostředí, na které bude nasazení nakonec cílit.
 2. Vytvořte nasazení, včetně požadovaných modulů a konfigurací. Podmínka cílení by měla cílit na prostředí test IoT Edge zařízení.
 3. Ověřte konfiguraci nového modulu v testovacím prostředí.
 4. Aktualizujte nasazení tak, aby zahrnovalo podmnožinu produkčních IoT Edge zařízení přidáním nové značky do podmínky cílení. Také se ujistěte, že priorita pro nasazení je vyšší než jiné nasazení, které jsou aktuálně cílem těchto zařízení.

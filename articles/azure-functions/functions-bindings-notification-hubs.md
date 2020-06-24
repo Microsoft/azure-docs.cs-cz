@@ -6,11 +6,11 @@ ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: 211f8c8a203b81a4df6a8e9515b403f99cec572a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79277281"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84697404"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Notification Hubs výstupní vazba pro Azure Functions
 
@@ -35,7 +35,7 @@ Tato vazba není k dispozici ve funkcích 2. x a vyšší.
 
 ## <a name="example---template"></a>Příklad šablony
 
-Oznámení, která odesíláte, můžou být nativní oznámení nebo [oznámení šablon](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Nativní oznámení cílí na konkrétní klientskou platformu, jak je `platform` nakonfigurovaná ve vlastnosti výstupní vazby. Oznámení šablony lze použít k zacílení na více platforem.   
+Oznámení, která odesíláte, můžou být nativní oznámení nebo [oznámení šablon](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md). Nativní oznámení cílí na konkrétní klientskou platformu, jak je nakonfigurovaná ve `platform` vlastnosti výstupní vazby. Oznámení šablony lze použít k zacílení na více platforem.   
 
 Podívejte se na příklad konkrétního jazyka:
 
@@ -96,7 +96,7 @@ private static IDictionary<string, string> GetTemplateProperties(string message)
 
 ### <a name="c-script-template-example---json"></a>Příklad šablony skriptu C# – JSON
 
-Tento příklad pošle oznámení pro [registraci šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `message` zástupný symbol v ŠABLONĚ pomocí platného řetězce JSON.
+Tento příklad pošle oznámení pro [registraci šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `message` zástupný symbol v šabloně pomocí platného řetězce JSON.
 
 ```cs
 using System;
@@ -135,7 +135,7 @@ private static TemplateNotification GetTemplateNotification(string message)
 
 ### <a name="f-template-example"></a>Příklad šablony F #
 
-Tento příklad pošle oznámení pro [registraci šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `location` a `message`.
+Tento příklad pošle oznámení pro [registraci šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `location` a `message` .
 
 ```fsharp
 let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
@@ -144,7 +144,7 @@ let Run(myTimer: TimerInfo, notification: byref<IDictionary<string, string>>) =
 
 ### <a name="javascript-template-example"></a>Příklad šablony JavaScriptu
 
-Tento příklad pošle oznámení pro [registraci šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `location` a `message`.
+Tento příklad pošle oznámení pro [registraci šablony](../notification-hubs/notification-hubs-templates-cross-platform-push-messages.md) , která obsahuje `location` a `message` .
 
 ```javascript
 module.exports = function (context, myTimer) {
@@ -245,13 +245,13 @@ Parametry a vlastnosti konstruktoru atributu jsou popsány v oddílu [Konfigurac
 
 ## <a name="configuration"></a>Konfigurace
 
-Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v souboru *Function. JSON* , a `NotificationHub` atribut:
+Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastavili v *function.jspro* soubor a `NotificationHub` atribut:
 
-|Function. JSON – vlastnost | Vlastnost atributu |Popis|
+|function.jsvlastnost | Vlastnost atributu |Description|
 |---------|---------|----------------------|
-|**textový** |neuvedeno| Musí být nastaven na `notificationHub`hodnotu. |
-|**direction** |neuvedeno| Musí být nastaven na `out`hodnotu. | 
-|**Jméno** |neuvedeno| Název proměnné použitý v kódu funkce pro zprávu centra oznámení |
+|**typ** |Není k dispozici| Musí být nastaven na hodnotu `notificationHub` . |
+|**direction** |Není k dispozici| Musí být nastaven na hodnotu `out` . | 
+|**Jméno** |Není k dispozici| Název proměnné použitý v kódu funkce pro zprávu centra oznámení |
 |**tagExpression** |**TagExpression** | Výrazy značek umožňují určit, že oznámení budou doručena do sady zařízení, která jsou zaregistrovaná pro příjem oznámení, která odpovídají výrazu značky.  Další informace najdete v tématu [výrazy směrování a značek](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Název prostředku centra oznámení v Azure Portal. |
 |**vázán** | **ConnectionStringSetting** | Název nastavení aplikace, které obsahuje připojovací řetězec Notification Hubs.  Připojovací řetězec musí být nastaven na hodnotu *DefaultFullSharedAccessSignature* vašeho centra oznámení. Viz [nastavení připojovacího řetězce](#connection-string-setup) dále v tomto článku.|
@@ -259,9 +259,9 @@ Následující tabulka popisuje vlastnosti konfigurace vazby, které jste nastav
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
-### <a name="functionjson-file-example"></a>Příklad souboru Function. JSON
+### <a name="functionjson-file-example"></a>Příklad souboru function.js
 
-Tady je příklad vazby Notification Hubs v souboru *Function. JSON* .
+Tady je příklad vazby Notification Hubs v *function.js* souboru.
 
 ```json
 {
@@ -290,13 +290,13 @@ Konfigurace připojovacího řetězce pro existující centrum oznámení:
     ![Zkopírování připojovacího řetězce centra oznámení](./media/functions-bindings-notification-hubs/get-notification-hub-connection.png)
 1. V Azure Portal přejděte do aplikace Function App, zvolte **nastavení aplikace**, přidejte klíč, jako je například **MyHubConnectionString**, vložte zkopírované *DefaultFullSharedAccessSignature* pro vaše centrum oznámení jako hodnotu a potom klikněte na **Uložit**.
 
-Název tohoto nastavení aplikace je to, co se nachází v nastavení připojení výstupní vazby v atributu *Function. JSON* nebo .NET. Viz [část konfigurace](#configuration) výše v tomto článku.
+Název tohoto nastavení aplikace je to, co se nachází v nastavení připojení výstupní vazby v *function.jsna* nebo atributu .NET. Viz [část konfigurace](#configuration) výše v tomto článku.
 
 [!INCLUDE [app settings to local.settings.json](../../includes/functions-app-settings-local.md)]
 
 ## <a name="exceptions-and-return-codes"></a>Výjimky a návratové kódy
 
-| Vazba | Odkaz |
+| Vazba | Referenční informace |
 |---|---|
 | Centrum oznámení | [Provozní příručka](https://docs.microsoft.com/rest/api/notificationhubs/) |
 

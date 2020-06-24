@@ -4,12 +4,12 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 04/21/2020
 ms.author: jroth
-ms.openlocfilehash: 8247b1cedc2c5ebc8577af6be485aed0fcd5d6af
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 065365ec2dc429013732725ccb22f73c519b6c0e
+ms.sourcegitcommit: 3988965cc52a30fc5fed0794a89db15212ab23d7
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81768735"
+ms.lasthandoff: 06/22/2020
+ms.locfileid: "85200192"
 ---
 ### <a name="key-transactions-maximum-transactions-allowed-in-10-seconds-per-vault-per-regionsup1sup"></a>Klíčové transakce (maximální počet transakcí povolených za 10 sekund, na trezor v oblasti<sup>1</sup>):
 
@@ -46,7 +46,10 @@ Informace o tom, jak zpracovávat omezení v případě překročení těchto li
 
 ### <a name="azure-private-link-integration"></a>Integrace s privátními propojeními Azure
 
+> [!NOTE]
+> Počet trezorů klíčů s povolenými soukromými koncovými body pro každé předplatné je upravitelný limit. Níže uvedený limit je nastaven jako výchozí. Pokud chcete pro vaši službu požádat o zvýšení limitu, pošlete prosím e-mail na adresu akv-privatelink@microsoft.com . Tyto žádosti schválíme na základě případu.
+
 | Prostředek | Omezení |
 | -------- | ----- |
 | Soukromé koncové body na Trezor klíčů | 64 |
-| Trezory klíčů s privátními koncovými body na předplatné | 64 |
+| Trezory klíčů s privátními koncovými body na předplatné | 400 |

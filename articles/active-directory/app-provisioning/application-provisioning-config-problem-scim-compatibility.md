@@ -2,21 +2,21 @@
 title: Známé problémy s dodržováním předpisů protokolu SCIM 2,0 – Azure AD
 description: Řešení běžných problémů s kompatibilitou protokolů při přidávání aplikace mimo galerii, která podporuje SCIM 2,0 do Azure AD
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 12/03/2018
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 00551eb6c9d5d6fab9dc1d698a7a25bb6872901b
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.openlocfilehash: ae08589785d8a482801c71ce3641ba0d66d11133
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82594028"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84782258"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Známé problémy a řešení s dodržováním předpisů protokolu SCIM 2,0 ve službě Azure AD pro zřizování uživatelů
 
@@ -53,10 +53,10 @@ Ano. Pokud už tuto instanci aplikace používáte pro jednotné přihlašován�
 > [!NOTE]
 > Pokud je vaše aplikace stále ve vývoji a ještě nebyla nasazena pro jednotné přihlašování nebo zřizování uživatelů, nejjednodušší řešení je odstranit položku aplikace v části **Azure Active Directory > podnikové aplikace** v Azure Portal a jednoduše přidat novou položku pro aplikaci pomocí možnosti **vytvořit aplikaci > mimo galerii** . Toto je alternativa ke spuštění níže uvedeného postupu.
  
-1. Přihlaste se k https://portal.azure.comAzure Portal na.
+1. Přihlaste se k Azure Portal na https://portal.azure.com .
 2. V Azure Portal oddílu **Azure Active Directory > podnikové aplikace** vyhledejte a vyberte existující aplikaci SCIM.
 3. V části **Properties (vlastnosti** ) vaší existující aplikace SCIM zkopírujte **ID objektu**.
-4. V novém okně webového prohlížeče klikněte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce TENANTA Azure AD, do kterého se vaše aplikace přidala.
+4. V novém okně webového prohlížeče klikněte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce tenanta Azure AD, do kterého se vaše aplikace přidala.
 5. V Průzkumníku grafů spusťte následující příkaz a vyhledejte ID vaší úlohy zřizování. Nahraďte "[Object-ID]" ID objektu služby (ID objektu) zkopírovaným z třetího kroku.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
@@ -93,10 +93,10 @@ Ano. Pokud už tuto instanci aplikace používáte pro jednotné přihlašován�
 
 Ano. Pokud jste nasadili aplikaci na staré chování, které existovalo před opravami, a potřebujete nasadit novou instanci této služby, postupujte podle níže uvedeného postupu. Tento postup popisuje, jak pomocí rozhraní Microsoft Graph API a Microsoft Graph API Exploreru vytvořit úlohu zřizování SCIM, která se projeví ve starém chování.
  
-1. Přihlaste se k https://portal.azure.comAzure Portal na.
+1. Přihlaste se k Azure Portal na https://portal.azure.com .
 2. v části **Azure Active Directory > podnikové aplikace > vytvořit aplikaci** v Azure Portal vytvořte novou aplikaci **mimo galerii** .
 3. V části **vlastnosti** vaší nové vlastní aplikace zkopírujte **ID objektu**.
-4. V novém okně webového prohlížeče klikněte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce TENANTA Azure AD, do kterého se vaše aplikace přidala.
+4. V novém okně webového prohlížeče klikněte na https://developer.microsoft.com/graph/graph-explorer a přihlaste se jako správce tenanta Azure AD, do kterého se vaše aplikace přidala.
 5. V Průzkumníku grafů spusťte níže uvedený příkaz pro inicializaci konfigurace zřizování pro vaši aplikaci.
    Nahraďte "[Object-ID]" ID objektu služby (ID objektu) zkopírovaným z třetího kroku.
 

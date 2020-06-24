@@ -2,20 +2,20 @@
 title: Exportujte konfiguraci zřizování a vraťte se do známého funkčního stavu pro zotavení po havárii.
 description: Naučte se exportovat vaši konfiguraci zřizování a vrátit se do známého stavu pro zotavení po havárii.
 services: active-directory
-author: cmmdesai
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
-ms.topic: conceptual
+ms.topic: how-to
 ms.workload: identity
 ms.date: 03/19/2020
-ms.author: chmutali
-ms.openlocfilehash: acc14cf9fc544a15dfb9ac4ffd74e5ed0ac56108
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.author: kenwith
+ms.openlocfilehash: ef4fbf582baf1e4b81d49c81a8b0e16674e64841
+ms.sourcegitcommit: 52d2f06ecec82977a1463d54a9000a68ff26b572
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/30/2020
-ms.locfileid: "82593756"
+ms.lasthandoff: 06/15/2020
+ms.locfileid: "84781718"
 ---
 # <a name="how-to-export-provisioning-configuration-and-roll-back-to-a-known-good-state"></a>Postupy: Export konfigurace zřizování a návrat do známého funkčního stavu
 
@@ -97,7 +97,7 @@ V Průzkumníku Microsoft Graph nakonfigurujte následující dotaz PUT, nahraď
 
 Na kartě tělo žádosti zkopírujte obsah souboru schématu JSON.
 
-   [![Text žádosti](./media/export-import-provisioning-configuration/wd_export_04.png)](./media/export-import-provisioning-configuration/wd_export_04.png#lightbox)
+   [![Text požadavku](./media/export-import-provisioning-configuration/wd_export_04.png)](./media/export-import-provisioning-configuration/wd_export_04.png#lightbox)
 
 Na kartě hlavičky žádosti přidejte atribut záhlaví Content-Type s hodnotou "Application/JSON".
 

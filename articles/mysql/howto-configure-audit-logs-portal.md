@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: fcd436f87b24d8cdc246d2f1d33a49311e72d46b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 6/18/2020
+ms.openlocfilehash: d6d037f3d45216b81d2c5fdcb67ea48b4252a889
+ms.sourcegitcommit: 51718f41d36192b9722e278237617f01da1b9b4e
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81380290"
+ms.lasthandoff: 06/19/2020
+ms.locfileid: "85101001"
 ---
 # <a name="configure-and-access-audit-logs-for-azure-database-for-mysql-in-the-azure-portal"></a>Konfigurace a přístup k protokolům auditu pro Azure Database for MySQL v Azure Portal
 
@@ -27,6 +27,9 @@ Pokud chcete projít tento průvodce, budete potřebovat:
 - [Server Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-portal.md)
 
 ## <a name="configure-audit-logging"></a>Konfigurace protokolování auditu
+
+>[!NOTE]
+> Doporučujeme pouze protokolovat typy událostí a uživatele požadované pro vaše účely auditování, aby se zajistilo, že výkon serveru nebude velmi ovlivněn.
 
 Povolte a nakonfigurujte protokolování auditu.
 
@@ -53,7 +56,7 @@ Povolte a nakonfigurujte protokolování auditu.
 
 1. V části **monitorování** na bočním panelu vyberte **nastavení diagnostiky**.
 
-1. Klikněte na + Přidat nastavení diagnostiky ![přidat nastavení diagnostiky.](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
+1. Klikněte na + Přidat nastavení diagnostiky ![ Přidat nastavení diagnostiky.](./media/howto-configure-audit-logs-portal/add-diagnostic-setting.png)
 
 1. Zadejte název nastavení diagnostiky.
 
