@@ -16,11 +16,11 @@ ms.date: 03/18/2019
 ms.author: xpouyat
 ms.reviewer: anilmur;juliako
 ms.openlocfilehash: 27bdf82d4515678e28eadf07fe325860fe5df063
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79250995"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712339"
 ---
 # <a name="using-multiple-input-files-and-component-properties-with-premium-encoder"></a>Použití více vstupních souborů a vlastností komponenty s kodérem Premium
 ## <a name="overview"></a>Přehled
@@ -97,7 +97,7 @@ Příklad:
 ```
 
 ### <a name="property-with-an-xml-value"></a>Vlastnost s hodnotou XML
-Chcete-li nastavit vlastnost, která očekává hodnotu XML, zapouzdřte `<![CDATA[ and ]]>`pomocí.
+Chcete-li nastavit vlastnost, která očekává hodnotu XML, zapouzdřte pomocí `<![CDATA[ and ]]>` .
 
 Příklad:
 
@@ -131,7 +131,7 @@ Příklad:
 ```
 
 > [!NOTE]
-> Ujistěte se, že nezadáte návratový znak hned po `<![CDATA[`.
+> Ujistěte se, že nezadáte návratový znak hned po `<![CDATA[` .
 
 ### <a name="propertypath-value"></a>hodnota propertyPath
 V předchozích příkladech byl propertyPath "/Media File Input/filename" nebo "/inactiveTimeout" nebo "clipListXml".
@@ -272,10 +272,10 @@ S dalším oříznutím přes rám:
 ## <a name="example-1--overlay-an-image-on-top-of-the-video"></a>Příklad 1: překrytí obrázku nad videem
 
 ### <a name="presentation"></a>Zobrazení
-Vezměte v úvahu příklad, ve kterém chcete překrýt obrázek loga na vstupním videu, když je video zakódované. V tomto příkladu se vstupní video jmenuje "Microsoft_HoloLens_Possibilities_816p24. mp4" a logo má název "logo. png". Proveďte následující kroky:
+Vezměte v úvahu příklad, ve kterém chcete překrýt obrázek loga na vstupním videu, když je video zakódované. V tomto příkladu se vstupní video jmenuje "Microsoft_HoloLens_Possibilities_816p24.mp4" a logo se jmenuje "logo.png". Proveďte následující kroky:
 
 * Vytvořte prostředek pracovního postupu pomocí souboru pracovního postupu (viz následující příklad).
-* Vytvořte mediální prostředek, který obsahuje dva soubory: MyInputVideo. mp4 jako primární soubor a MyLogo. png.
+* Vytvoření mediálního prostředku, který obsahuje dva soubory: MyInputVideo.mp4 jako primární soubor a MyLogo.png.
 * Odešlete úlohu do procesoru Media Encoder Premium Workflow médií pomocí výše uvedených vstupních assetů a zadejte následující konfigurační řetězec.
 
 Konfigurace:
@@ -299,7 +299,7 @@ V předchozím příkladu je název videosouboru odeslán do komponenty pro vstu
 ### <a name="step-by-step-workflow-creation"></a>Vytváření pracovních postupů krok za krokem
 Tady je postup vytvoření pracovního postupu, který jako vstup používá dva soubory: video a obrázek. Obrázek se překryje nad video.
 
-Otevřete **Návrhář postupu provádění** a vyberte **soubor** > **nový pracovní prostor** > **překódování**.
+Otevřete **Návrhář postupu provádění** a vyberte **soubor**  >  **nový pracovní prostor**  >  **překódování**.
 
 Nový pracovní postup ukazuje tři prvky:
 
@@ -442,7 +442,7 @@ Pro kódování proveďte následující kroky:
 * Vytvoří Media Services Asset se souborem MXF a zvukovými soubory (0 až 18 zvukových souborů).
 * Ujistěte se, že je soubor MXF nastavený jako primární soubor.
 * Vytvořte úlohu a úlohu pomocí procesoru Premium Workflow Encoder. Použijte zadaný pracovní postup (MultiMP4-1080p-19audio-v1. Workflow).
-* Předání dat setruntime. XML do úlohy (Pokud používáte Azure Media Services Exploreru, použijte tlačítko "předat data XML do pracovního postupu").
+* Předání dat setruntime.xml do úlohy (Pokud používáte Azure Media Services Explorer, použijte tlačítko "předat data XML do pracovního postupu").
   * Aktualizujte prosím data XML, abyste určili správné názvy souborů a značky jazyků.
   * Pracovní postup obsahuje zvukové komponenty s názvem audio 1 až zvuk 18.
   * RFC5646 se podporuje pro značku jazyka.

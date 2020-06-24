@@ -1,6 +1,6 @@
 ---
-title: Začínáme s Azure CDN SDK pro Node. js | Microsoft Docs
-description: Naučte se psát aplikace v Node. js pro správu Azure CDN.
+title: Začínáme s Azure CDN SDK pro Node.js | Microsoft Docs
+description: Naučte se psát aplikace Node.js pro správu Azure CDN.
 services: cdn
 documentationcenter: nodejs
 author: zhangmanling
@@ -11,15 +11,15 @@ ms.service: azure-cdn
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
-ms.openlocfilehash: 18dbcbf93947306334ccc2c156d9266884198e19
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: f5a6180fa939699f752678271fbddfb8328a1afe
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "67594127"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84883937"
 ---
 # <a name="get-started-with-azure-cdn-development"></a>Začínáme s vývojem pro Azure CDN
 > [!div class="op_single_selector"]
@@ -28,9 +28,9 @@ ms.locfileid: "67594127"
 > 
 > 
 
-[Azure CDN SDK pro Node. js](https://www.npmjs.com/package/azure-arm-cdn) můžete použít k automatizaci vytváření a správy profilů a koncových bodů CDN.  Tento kurz vás provede vytvořením jednoduché konzolové aplikace Node. js, která ukazuje několik dostupných operací.  Tento kurz není určen k podrobnému popisu všech aspektů Azure CDN SDK pro Node. js.
+K automatizaci vytváření a správy profilů a koncových bodů CDN můžete použít [sadu SDK Azure CDN pro Node.js](https://www.npmjs.com/package/azure-arm-cdn) .  Tento kurz vás provede vytvořením jednoduché aplikace Node.js konzolou, která ukazuje několik dostupných operací.  Tento kurz není určený k popisu všech aspektů Azure CDN SDK pro Node.js podrobněji.
 
-Pro dokončení tohoto kurzu byste už měli mít nainstalovanou a nakonfigurovanou [Node. js](https://www.nodejs.org) **4. x. x** nebo vyšší.  Můžete použít libovolný textový editor, ve kterém chcete vytvořit aplikaci Node. js.  Pro zápis tohoto kurzu jsem použili [Visual Studio Code](https://code.visualstudio.com).  
+Pro dokončení tohoto kurzu byste už měli mít nainstalovanou a nakonfigurovanou [Node.js](https://www.nodejs.org) **4. x. x** nebo vyšší.  Můžete použít libovolný textový editor, ve kterém chcete vytvořit aplikaci Node.js.  Pro zápis tohoto kurzu jsem použili [Visual Studio Code](https://code.visualstudio.com).  
 
 > [!TIP]
 > [Dokončený projekt z tohoto kurzu](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74) je k dispozici ke stažení na webu MSDN.
@@ -42,20 +42,20 @@ Pro dokončení tohoto kurzu byste už měli mít nainstalovanou a nakonfigurova
 ## <a name="create-your-project-and-add-npm-dependencies"></a>Vytvoření projektu a přidání závislostí NPM
 Teď, když jsme vytvořili skupinu prostředků pro profily CDN a udělili jí oprávnění aplikace Azure AD ke správě profilů a koncových bodů CDN v této skupině, můžeme začít vytvářet aplikace.
 
-Vytvořte složku pro uložení vaší aplikace.  Z konzoly nástroje Node. js v aktuální cestě nastavte své aktuální umístění do této nové složky a inicializujte projekt spuštěním:
+Vytvořte složku pro uložení vaší aplikace.  Z konzoly nástroje Node.js nástrojů v aktuální cestě nastavte aktuální umístění do této nové složky a inicializujte projekt spuštěním:
 
     npm init
 
-Pak budete mít k dispozici řadu otázek pro inicializaci projektu.  V případě **vstupního bodu**používá tento kurz *App. js*.  V následujícím příkladu vidíte své další volby.
+Pak budete mít k dispozici řadu otázek pro inicializaci projektu.  V případě **vstupního bodu**používá tento kurz *app.js*.  V následujícím příkladu vidíte své další volby.
 
 ![Výstup inicializace NPM](./media/cdn-app-dev-node/cdn-npm-init.png)
 
-Náš projekt je nyní inicializován pomocí souboru *Packages. JSON* .  Náš projekt bude používat některé knihovny Azure, které jsou obsaženy v balíčcích NPM.  Použijeme Azure Client runtime pro Node. js (MS-REST-Azure) a Azure CDN klientskou knihovnu pro Node. js (Azure-ARM-CD).  Pojďme je přidat do projektu jako závislosti.
+Náš projekt je nyní inicializován pomocí *packages.jsv* souboru.  Náš projekt bude používat některé knihovny Azure, které jsou obsaženy v balíčcích NPM.  Pro Node.js (Azure-ARM-CD) použijeme Azure Client runtime pro Node.js (MS-REST-Azure) a Klientská knihovna Azure CDN.  Pojďme je přidat do projektu jako závislosti.
 
     npm install --save ms-rest-azure
     npm install --save azure-arm-cdn
 
-Po dokončení instalace balíčků by soubor *Package. JSON* měl vypadat podobně jako tento příklad (čísla verzí se mohou lišit):
+Po dokončení instalace balíčků by *package.jsv* souboru mělo vypadat podobně jako v tomto příkladu (čísla verzí se můžou lišit):
 
 ``` json
 {
@@ -75,10 +75,10 @@ Po dokončení instalace balíčků by soubor *Package. JSON* měl vypadat podob
 }
 ```
 
-Nakonec pomocí textového editoru vytvořte prázdný textový soubor a uložte ho do kořenové složky naší složky projektu jako *App. js*.  Teď jsme připraveni začít psát kód.
+Nakonec pomocí textového editoru vytvořte prázdný textový soubor a uložte ho do kořenové složky projektu jako *app.js*.  Teď jsme připraveni začít psát kód.
 
 ## <a name="requires-constants-authentication-and-structure"></a>Vyžaduje, konstanty, ověřování a strukturu.
-Když je *App. js* otevřený v našem editoru, pojďme získat základní strukturu našeho programu napsaného.
+Když *app.js* otevřete v našem editoru, pojďme získat základní strukturu našeho programu.
 
 1. Přidejte v horní části "vyžaduje" pro naše balíčky NPM následující:
    
@@ -86,7 +86,7 @@ Když je *App. js* otevřený v našem editoru, pojďme získat základní struk
     var msRestAzure = require('ms-rest-azure');
     var cdnManagementClient = require('azure-arm-cdn');
     ```
-2. Musíme definovat některé konstanty, které budou používat naše metody.  Přidejte následující.  Zástupné symboly, včetně ** &lt;lomených závorek&gt;**, nahraďte požadovanými hodnotami.
+2. Musíme definovat některé konstanty, které budou používat naše metody.  Přidejte následující.  Zástupné symboly, včetně ** &lt; lomených závorek &gt; **, nahraďte požadovanými hodnotami.
    
     ``` javascript
     //Tenant app constants
@@ -119,8 +119,8 @@ Když je *App. js* otevřený v našem editoru, pojďme získat základní struk
     var cdnClient = new cdnManagementClient(credentials, subscriptionId);
     ```
    
-    Nezapomeňte nahradit položky v ** &lt;lomených závorkách&gt; ** správnými informacemi.  Pro `<redirect URI>`použijte identifikátor URI pro přesměrování, který jste zadali při registraci aplikace ve službě Azure AD.
-4. Naše Konzolová aplikace Node. js bude brát v úvahu některé parametry příkazového řádku.  Pojďme ověřit, že byl předán alespoň jeden parametr.
+    Nezapomeňte nahradit položky v ** &lt; lomených závorkách &gt; ** správnými informacemi.  Pro `<redirect URI>` použijte identifikátor URI pro přesměrování, který jste zadali při registraci aplikace ve službě Azure AD.
+4. Naše Node.js Konzolová aplikace bude brát v úvahu některé parametry příkazového řádku.  Pojďme ověřit, že byl předán alespoň jeden parametr.
    
    ```javascript
    //Collect command-line parameters
@@ -337,10 +337,10 @@ function cdnDelete() {
 ```
 
 ## <a name="running-the-program"></a>Spuštění programu
-Náš program Node. js teď můžeme spustit pomocí našeho oblíbeného ladicího programu nebo v konzole.
+Náš Node.js program teď můžeme spustit pomocí našeho oblíbeného ladicího programu nebo v konzole.
 
 > [!TIP]
-> Pokud používáte Visual Studio Code jako ladicí program, budete muset nastavit prostředí tak, aby se předávalo v parametrech příkazového řádku.  Visual Studio Code to provede v souboru **Launch. JSON** .  Vyhledejte vlastnost s názvem **args** a přidejte pole řetězcových hodnot pro parametry, aby vypadalo podobně jako toto: `"args": ["list", "profiles"]`.
+> Pokud používáte Visual Studio Code jako ladicí program, budete muset nastavit prostředí tak, aby se předávalo v parametrech příkazového řádku.  Visual Studio Code to provádí v **launch.jsv** souboru.  Vyhledejte vlastnost s názvem **args** a přidejte pole řetězcových hodnot pro parametry, aby vypadalo podobně jako toto: `"args": ["list", "profiles"]` .
 > 
 > 
 
@@ -363,9 +363,9 @@ Nakonec odstraňte náš profil.
 ## <a name="next-steps"></a>Další kroky
 Pokud si chcete zobrazit dokončený projekt z tohoto návodu, [Stáhněte si ukázku](https://code.msdn.microsoft.com/Azure-CDN-SDK-for-Nodejs-c712bc74).
 
-Odkaz na Azure CDN SDK pro Node. js zobrazíte tak, že si zobrazíte [odkaz](https://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/).
+Odkaz na sadu Azure CDN SDK pro Node.js zobrazíte tak [, že si](https://azure.github.io/azure-sdk-for-node/azure-arm-cdn/latest/)zobrazíte odkaz.
 
-Další dokumentaci k sadě Azure SDK pro Node. js najdete v [úplných odkazech](https://azure.github.io/azure-sdk-for-node/).
+Pokud chcete najít další dokumentaci k sadě Azure SDK pro Node.js, podívejte se na [úplný odkaz](https://azure.github.io/azure-sdk-for-node/).
 
 Spravujte své prostředky CDN pomocí [PowerShellu](cdn-manage-powershell.md).
 

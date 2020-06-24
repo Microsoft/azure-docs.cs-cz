@@ -7,23 +7,23 @@ author: damendo
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7a69610d1ac176354a9d7e388a12ccc7f064d848
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: d72a981749af87e1b73625bdce2e0fd2d24fff0d
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80382711"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84724913"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>Správa zachytávání paketů pomocí Azure Network Watcher pomocí Azure CLI
 
 > [!div class="op_single_selector"]
 > - [portál Azure](network-watcher-packet-capture-manage-portal.md)
-> - [Prostředí](network-watcher-packet-capture-manage-powershell.md)
+> - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
@@ -38,7 +38,7 @@ Tento článek vás provede různými úlohami správy, které jsou aktuálně k
 - [**Odstranění zachytávání paketů**](#delete-a-packet-capture)
 - [**Stažení zachytávání paketů**](#download-a-packet-capture)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 V tomto článku se předpokládá, že máte následující zdroje:
 
@@ -50,7 +50,7 @@ V tomto článku se předpokládá, že máte následující zdroje:
 
 ## <a name="install-vm-extension"></a>Instalace rozšíření virtuálních počítačů
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 Spuštěním `az vm extension set` příkazu nainstalujte agenta zachytávání paketů do hostovaného virtuálního počítače.
 
@@ -68,7 +68,7 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 
 ### <a name="step-2"></a>Krok 2
 
-Chcete-li zajistit, aby byl agent nainstalován, `vm extension show` spusťte příkaz a předejte mu skupinu prostředků a název virtuálního počítače. Zkontrolujte výsledný seznam a ujistěte se, že je agent nainstalovaný.
+Chcete-li zajistit, aby byl agent nainstalován, spusťte `vm extension show` příkaz a předejte mu skupinu prostředků a název virtuálního počítače. Zkontrolujte výsledný seznam a ujistěte se, že je agent nainstalovaný.
 
 Pro virtuální počítače s Windows:
 
@@ -108,7 +108,7 @@ Následující ukázka je příkladem reakce na spuštění`az vm extension show
 
 Po dokončení předchozích kroků se na virtuálním počítači nainstaluje agent zachytávání paketů.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 Načtěte účet úložiště. Tento účet úložiště se používá k uložení souboru zachycení paketů.
 

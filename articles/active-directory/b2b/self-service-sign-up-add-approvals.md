@@ -1,22 +1,22 @@
 ---
-title: Konektory rozhraní API pro vlastní pracovní postupy schvalování v samoobslužné registraci externích identit – Azure AD
+title: Přidání vlastních schválení pro samoobslužné registrační toky – Azure AD
 description: Přidání konektorů API pro vlastní pracovní postupy schvalování v samoobslužné registraci externích identit – Azure Active Directory (Azure AD)
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
-ms.topic: conceptual
-ms.date: 05/19/2020
+ms.topic: article
+ms.date: 06/16/2020
 ms.author: mimart
 author: msmimart
 manager: celestedg
-ms.reviewer: mal
+ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e172f2041e7339a69648bfb84c0955eec15a0bc6
-ms.sourcegitcommit: f01c2142af7e90679f4c6b60d03ea16b4abf1b97
+ms.openlocfilehash: 45a08ff8d1f796cec2d4562ae64392253a539416
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84680060"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886490"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Přidání vlastního pracovního postupu schválení pro samoobslužné přihlášení
 
@@ -34,7 +34,7 @@ Svůj schvalovací systém musíte zaregistrovat jako aplikaci v tenantovi Azure
 1. Přihlaste se na web [Azure Portal](https://portal.azure.com) jako správce.
 2. V části **služby Azure**vyberte **Azure Active Directory**.
 3. V nabídce vlevo vyberte **Registrace aplikací**a pak vyberte **Nová registrace**.
-4. Zadejte **název** aplikace, například *schválení registrací*.
+4. Zadejte **název** aplikace, například _schválení registrací_.
 
    <!-- ![Register an application for the approval system](./self-service-sign-up-add-approvals/approvals/register-an-approvals-application.png) -->
 
@@ -46,11 +46,11 @@ Svůj schvalovací systém musíte zaregistrovat jako aplikaci v tenantovi Azure
 7. Na stránce **žádost o oprávnění API** vyberte **Microsoft Graph**a pak vyberte **oprávnění aplikace**.
 8. V části **vybrat oprávnění**rozbalte položku **uživatel**a potom zaškrtněte políčko **uživatel. čtení. All** . Toto oprávnění umožňuje schvalovacímu systému vytvořit uživatele při schválení. Pak vyberte **Přidat oprávnění**.
 
-    ![Registrovat stránku aplikace](media/self-service-sign-up-add-approvals/request-api-permissions.png)
+   ![Registrovat stránku aplikace](media/self-service-sign-up-add-approvals/request-api-permissions.png)
 
 9. Na stránce **oprávnění rozhraní API** vyberte **udělit souhlas správce pro (název tenanta)** a pak vyberte **Ano**.
 10. V části **Spravovat** v nabídce vlevo vyberte **certifikáty & tajných**kódů a pak vyberte **nový tajný klíč klienta**.
-11. Zadejte **Popis** tajného kódu, například *schválení tajného kódu klienta*, a vyberte dobu, po **jejímž uplynutí bude platnost**tajného klíče klienta ukončena. Pak vyberte **Přidat**.
+11. Zadejte **Popis** tajného kódu, například _schválení tajného kódu klienta_, a vyberte dobu, po **jejímž uplynutí bude platnost**tajného klíče klienta ukončena. Pak vyberte **Přidat**.
 12. Zkopírujte hodnotu tajného klíče klienta.
 
     ![Kopírovat tajný klíč klienta pro použití ve schvalovacím systému](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
@@ -63,11 +63,11 @@ V dalším kroku [vytvoříte konektory rozhraní API](self-service-sign-up-add-
 
 - **Zkontroluje stav schválení**. Jakmile se uživatel přihlásí pomocí poskytovatele identity, požádejte ho, aby zkontroloval, jestli má uživatel existující žádost o schválení nebo už byl zamítnutý. Pokud váš systém schvalování provede jenom rozhodnutí o automatickém schválení, nemusí být tento konektor API potřebný. V následujícím příkladu je konektor rozhraní API pro kontrolu stavu schválení.
 
-   ![Zkontroluje konfiguraci konektoru rozhraní API stavu schválení.](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
+  ![Zkontroluje konfiguraci konektoru rozhraní API stavu schválení.](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
 - **Žádost o schválení** – odeslání volání schvalovacímu systému poté, co uživatel dokončí stránku kolekce atributů, ale před vytvořením uživatelského účtu pro vyžádání schválení. Žádost o schválení se dá automaticky udělit nebo ručně zkontrolovat. Následuje příklad konektoru rozhraní API "schválení žádosti". Vyberte všechny **deklarace identity, které zasílají** , aby schvalovací systém mohl učinit rozhodnutí o schválení.
 
-   ![Konfigurace požadavku na schválení konektoru rozhraní API](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
+  ![Konfigurace požadavku na schválení konektoru rozhraní API](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
 Chcete-li vytvořit tyto konektory, postupujte podle kroků v části [Vytvoření konektoru rozhraní API](self-service-sign-up-add-api-connector.md#create-an-api-connector).
 
@@ -80,8 +80,9 @@ Nyní přidáte konektory rozhraní API k samoobslužnému uživatelskému toku 
 3. V nabídce vlevo vyberte **externí identity**.
 4. Vyberte **toky uživatelů (Preview)** a pak vyberte tok uživatele, pro který chcete povolit konektor API.
 5. Vyberte možnost **konektory rozhraní API**a potom vyberte koncové body rozhraní API, které chcete vyvolat, v následujících krocích v toku uživatele:
-   - **Po přihlášení pomocí zprostředkovatele identity**: vyberte svůj stav schválení váš konektor API, třeba *Ověřte stav schválení*.
-   - **Před vytvořením uživatele**: vyberte svůj konektor API žádosti o schválení, například *žádost o schválení*.
+
+   - **Po přihlášení pomocí zprostředkovatele identity**: vyberte svůj stav schválení váš konektor API, třeba _Ověřte stav schválení_.
+   - **Před vytvořením uživatele**: vyberte svůj konektor API žádosti o schválení, například _žádost o schválení_.
 
    ![Přidání rozhraní API do toku uživatele](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
@@ -182,7 +183,7 @@ Content-type: application/json
  ],
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
@@ -191,7 +192,7 @@ Content-type: application/json
 
 Koncový bod rozhraní API pro **schválení žádosti** by měl vrátit odpověď pokračování, pokud:
 
-- Uživatel může být ***automaticky schválen***.
+- Uživatel může být **_automaticky schválen_**.
 
 Následuje příklad reakce na pokračování:
 
@@ -273,7 +274,7 @@ Content-type: application/json
  ],
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
@@ -298,19 +299,19 @@ Content-type: application/json
  ],
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value"
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value"
 }
 ```
 
-| Parametr  | Povinné | Popis |
-|---|---|---|
-| userPrincipalName (Hlavní název uživatele) | Yes | Dá se vygenerovat tak, že se převezme deklarace, která se `email_address` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
-| accountEnabled  | Yes  | Musí být nastaven na hodnotu `true` .  |
-| pošta  | Yes | Ekvivalent k `email_address` deklaraci identity odeslané do rozhraní API. |
-| userType | Yes | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host. |
-| nebyly  | Yes  | Informace o federované identitě. |
-| \<otherBuiltInAttribute>  | No  | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.|
-| \<extension_\<aad-extensions-app-id>\_Atribut CustomAttribute> | No | Vlastní atributy uživatele Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API. |
+| Parametr                                           | Povinné | Popis                                                                                                                                                            |
+| --------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| userPrincipalName (Hlavní název uživatele)                                   | Ano      | Dá se vygenerovat tak, že se převezme deklarace, která se `email_address` pošle do rozhraní API, nahradí se `@` znak za `_` a předá ho do `#EXT@<tenant-name>.onmicrosoft.com` . |
+| accountEnabled                                      | Ano      | Musí být nastaven na hodnotu `true` .                                                                                                                                                 |
+| pošta                                                | Ano      | Ekvivalent k `email_address` deklaraci identity odeslané do rozhraní API.                                                                                                               |
+| userType                                            | Ano      | Musí být `Guest` . Určí tohoto uživatele jako uživatel typu Host.                                                                                                                 |
+| nebyly                                          | Ano      | Informace o federované identitě.                                                                                                                                    |
+| \<otherBuiltInAttribute>                            | Ne       | Jiné předdefinované atributy jako `displayName` , `city` a další. Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                            |
+| \<extension\_\{extensions-app-id}\_CustomAttribute> | Ne       | Vlastní atributy uživatele Názvy parametrů jsou stejné jako parametry odesílané konektorem rozhraní API.                                                            |
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Pro uživatele federovaného Azure Active Directory
 
@@ -326,7 +327,7 @@ Content-type: application/json
  "email_address": "johnsmith@fabrikam.onmicrosoft.com",
  "displayName": "John Smith",
  "city": "Redmond",
- "extension_<aad-extensions-app-id>_CustomAttribute": "custom attribute value",
+ "extension_<extensions-app-id>_CustomAttribute": "custom attribute value",
  "ui_locales":"en-US"
 }
 ```
@@ -334,11 +335,11 @@ Content-type: application/json
 2. Systém schvalování vytvoří pozvánku pomocí `email_address` konektoru rozhraní API.
 
 ```http
-POST https://graph.microsoft.com/v1.0/invitations 
+POST https://graph.microsoft.com/v1.0/invitations
 Content-type: application/json
 
 {
-    "invitedUserEmailAddress":"johnsmith@fabrikam.onmicrosoft.com", 
+    "invitedUserEmailAddress":"johnsmith@fabrikam.onmicrosoft.com",
     "inviteRedirectUrl" : "https://myapp.com"
 }
 ```
@@ -366,11 +367,11 @@ Content-type: application/json
 {
     "displayName": "John Smith",
     "city": "Redmond",
-    "extension_<aad-extensions-app-id>_AttributeName": "custom attribute value"
+    "extension_<extensions-app-id>_AttributeName": "custom attribute value"
 }
 ```
 
-<!-- ## Next steps -->
-<!-- - See an example approval system with the [Woodgrove self-service sign-up for guest users sample](code-samples-self-service-sign-up.md#custom-approval-system).  -->
-<!--TODO: link to sample-->
+## <a name="next-steps"></a>Další kroky
 
+- Začněte s našimi [ukázkami Azure Functions pro rychlý Start](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts).
+- Zarezervujte [samoobslužnou registraci pro uživatele typu Host pomocí ukázky ručního schválení](code-samples-self-service-sign-up.md#custom-approval-workflows). 

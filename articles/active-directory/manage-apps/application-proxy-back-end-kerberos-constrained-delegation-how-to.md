@@ -3,25 +3,25 @@ title: Řešení potíží s vynuceným delegováním protokolu Kerberos – pro
 description: Řešení potíží s konfigurací vynuceného delegování protokolu Kerberos pro proxy aplikací
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 04/23/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c5e866f61409960447e17ecb50b035eabd53dc38
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 1d086d816be17699989aafda144493d80837188b
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "74275684"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760435"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Řešení potíží s konfigurací vynuceného delegování protokolu Kerberos pro proxy aplikací
 
@@ -62,11 +62,11 @@ Co zobrazuje KCD problém? Existuje několik běžných indikací, které KCD SS
 
 Oba tyto obrázky zobrazují stejný příznak: selhání jednotného přihlašování. Přístup uživatele k aplikaci byl odepřen.
 
-## <a name="troubleshooting"></a>Řešení potíží
+## <a name="troubleshooting"></a>Poradce při potížích
 
 Způsob řešení potíží závisí na problému a symptomech, které sledujete. Než začnete, Projděte si následující články. Poskytují užitečné informace pro řešení potíží:
 
-- [Řešení problémů s proxy aplikací a chybové zprávy](application-proxy-troubleshoot.md)
+- [Řešení potíží s Proxy aplikací a souvisejícími chybovými zprávami](application-proxy-troubleshoot.md)
 - [Chyby a příznaky protokolu Kerberos](application-proxy-troubleshoot.md#kerberos-errors)
 - [Práce s jednotným přihlašováním, když jsou místní a cloudové identity stejné](application-proxy-configure-single-sign-on-with-kcd.md#working-with-different-on-premises-and-cloud-identities)
 
@@ -86,7 +86,7 @@ Jak už bylo zmíněno dříve, chybové zprávy prohlížeče poskytují nějak
 
 ![Příklad: nesprávná chyba konfigurace KCD](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic3.png)
 
-Odpovídající záznamy, které se zobrazují v protokolu událostí, se zobrazí jako události 13019 nebo 12027. Najděte protokoly událostí konektoru v **aplikacích a službách protokoluje** &gt; **správce** **konektoru** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt; .
+Odpovídající záznamy, které se zobrazují v protokolu událostí, se zobrazí jako události 13019 nebo 12027. Najděte protokoly událostí konektoru v **aplikacích a službách protokoluje** &gt; **Microsoft** &gt; **AadApplicationProxy** &gt; **správce konektoru** Microsoft AadApplicationProxy &gt; **Admin**.
 
 ![Událost 13019 z protokolu událostí proxy aplikace](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic4.png)
 

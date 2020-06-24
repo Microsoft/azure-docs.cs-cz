@@ -4,20 +4,19 @@ description: Tento článek vysvětluje, jak nakonfigurovat Traffic Manager pro 
 services: traffic-manager
 documentationcenter: ''
 author: rohinkoul
-manager: twooley
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: rohink
-ms.openlocfilehash: 60cddce610d223433d0ffe1f6b9234625aca9881
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: fe65e2e2a05c3c1d936bcdfa94bbe8cc310f7c68
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76938737"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711778"
 ---
 # <a name="direct-traffic-to-specific-endpoints-based-on-user-subnet-using-traffic-manager"></a>Směrování provozu do konkrétních koncových bodů na základě podsítě uživatele pomocí služby Traffic Manager
 
@@ -25,7 +24,7 @@ Tento článek popisuje, jak nakonfigurovat metodu směrování provozu podsít�
 
 Ve scénáři popsaném v tomto článku se používá směrování podsítí v závislosti na IP adrese dotazu uživatele. provoz se směruje buď na interní web, nebo na produkční Web.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="prerequisites"></a>Požadavky
 Aby bylo možné zobrazit službu Traffic Manager v akci, vyžaduje tento kurz, abyste nasadili:
@@ -47,7 +46,7 @@ V této části vytvoříte dvě instance webů, které zajistí dva požadovan�
 #### <a name="create-vms-for-running-websites"></a>Vytvoření virtuálních počítačů pro provoz webů
 V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *myEndpointVMWEurope* v oblastech **východní USA** a **západní Evropa** Azure.
 
-1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** > **COMPUTE** > **virtuální počítač s Windows serverem 2016**.
+1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek**  >  **COMPUTE**  >  **virtuální počítač s Windows serverem 2016**.
 2. V části **Základy** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
 
     |Nastavení|Hodnota|
@@ -87,14 +86,14 @@ V této části vytvoříte dva virtuální počítače *myEndpointVMEastUS* a *
 
 #### <a name="install-iis-and-customize-the-default-web-page"></a>Instalace služby IIS a přizpůsobení výchozí webové stránky
 
-V této části nainstalujete server IIS na dva virtuální počítače – *myIISVMEastUS*  & *myIISVMWEurope*a pak aktualizujete výchozí stránku webu. Na přizpůsobené webové stránce se zobrazí název virtuálního počítače, ke kterému se připojujete při prohlížení webu ve webovém prohlížeči.
+V této části nainstalujete server IIS na dva virtuální počítače – *myIISVMEastUS*   &  *myIISVMWEurope*a pak aktualizujete výchozí stránku webu. Na přizpůsobené webové stránce se zobrazí název virtuálního počítače, ke kterému se připojujete při prohlížení webu ve webovém prohlížeči.
 
 1. V levé nabídce vyberte **Všechny prostředky** a pak v seznamu prostředků klikněte na *myIISVMEastUS* ve skupině prostředků *myResourceGroupTM1*.
 2. Na stránce **Přehled** klikněte na **Připojit** a pak v části **Připojit k virtuálnímu počítači** vyberte **Stáhnout soubor RDP**.
 3. Otevřete stažený soubor .rdp. Pokud se zobrazí výzva, vyberte **Připojit**. Zadejte uživatelské jméno a heslo, které jste zadali při vytváření virtuálního počítače. Možná bude nutné vybrat **Další možnosti** a pak **Použít jiný účet** a zadat přihlašovací údaje, které jste zadali při vytváření virtuálního počítače.
 4. Vyberte **OK**.
 5. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se toto upozornění zobrazí, vyberte **Ano** nebo **Pokračovat** a pokračujte v připojování.
-6. Na ploše serveru přejděte na> **Nástroje pro správu systému Windows****Správce serveru**.
+6. Na ploše serveru přejděte na **Nástroje pro správu systému Windows** > **Správce serveru**.
 7. Spusťte prostředí Windows PowerShell na *myIISVMEastUS* a pomocí následujících příkazů nainstalujte server IIS a aktualizujte výchozí soubor htm.
     ```powershell-interactive
     # Install IIS
@@ -133,7 +132,7 @@ Traffic Manager směruje provoz uživatelů na základě názvů DNS koncových 
 
 V této části vytvoříte virtuální počítač (*mVMEastUS* a *myVMWestEurope*) v každé oblasti Azure (**východní USA** a **západní Evropa**. Pomocí těchto virtuálních počítačů otestujete, jak Traffic Manager směruje provoz při prohlížení webu na nejbližší server služby IIS.
 
-1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek** > **COMPUTE** > **virtuální počítač s Windows serverem 2016**.
+1. V levém horním rohu Azure Portal vyberte **vytvořit prostředek**  >  **COMPUTE**  >  **virtuální počítač s Windows serverem 2016**.
 2. V části **Základy** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
 
     |Nastavení|Hodnota|
@@ -170,7 +169,7 @@ V této části vytvoříte virtuální počítač (*mVMEastUS* a *myVMWestEurop
 ## <a name="create-a-traffic-manager-profile"></a>Vytvoření profilu Traffic Manageru
 Vytvořte profil služby Traffic Manager, který vám umožní na základě zdrojové IP adresy požadavku vracet konkrétní koncové body.
 
-1. V levém horním rohu obrazovky vyberte **vytvořit prostředek** > **sítě** > **Traffic Manager profil** > **vytvořit**.
+1. V levém horním rohu obrazovky vyberte **vytvořit prostředek**  >  **sítě**  >  **Traffic Manager profil**  >  **vytvořit**.
 2. V části **Vytvořit profil služby Traffic Manager** zadejte nebo vyberte následující informace, u zbývajících nastavení přijměte výchozí hodnoty a pak vyberte **Vytvořit**:
 
     | Nastavení                 | Hodnota                                              |
@@ -186,7 +185,7 @@ Vytvořte profil služby Traffic Manager, který vám umožní na základě zdro
 
 ## <a name="add-traffic-manager-endpoints"></a>Přidání koncových bodů služby Traffic Manager
 
-Přidejte dva virtuální počítače se spuštěným serverem IIS – *myIISVMEastUS* & *myIISVMWEurope* ke směrování provozu uživatelů na základě podsítě dotazu uživatele.
+Přidejte dva virtuální počítače se spuštěným serverem IIS – *myIISVMEastUS*  &  *myIISVMWEurope* ke směrování provozu uživatelů na základě podsítě dotazu uživatele.
 
 1. Na panelu hledání na portálu vyhledejte název profilu služby Traffic Manager, který jste vytvořili v předchozí části, a pak tento profil služby Traffic Manager vyberte v zobrazených výsledcích.
 2. V okně **Profil služby Traffic Manager** v části **Nastavení** klikněte na **Koncové body** a pak na **Přidat**.
@@ -195,7 +194,7 @@ Přidejte dva virtuální počítače se spuštěným serverem IIS – *myIISVME
     | Nastavení                 | Hodnota                                              |
     | ---                     | ---                                                |
     | Typ                    | Koncový bod Azure                                   |
-    | Název           | myTestWebSiteEndpoint                                        |
+    | Name           | myTestWebSiteEndpoint                                        |
     | Typ cílového prostředku           | Veřejná IP adresa                          |
     | Cílový prostředek          | **Zvolte veřejnou IP adresu** a zobrazí se výpis prostředků s veřejnými IP adresami ve stejném předplatném. Jako **Prostředek** vyberte veřejnou IP adresu *myIISVMEastUS-ip*. Toto je veřejná IP adresa virtuálního počítače se serverem služby IIS v oblasti USA – východ.|
     |  Nastavení směrování podsítě    |   Přidejte IP adresu testovacího virtuálního počítače *myVMEastUS* . Všechny dotazy uživatelů pocházející z tohoto virtuálního počítače se přesměrují na *myTestWebSiteEndpoint*.    |

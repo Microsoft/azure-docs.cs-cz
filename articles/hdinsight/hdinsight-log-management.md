@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 02/05/2020
 ms.openlocfilehash: 8c3cbf4c18b32a94abfe95e77be768020b44fda6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79272302"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709245"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Správa protokolů pro cluster HDInsight
 
@@ -87,11 +87,11 @@ Pomocí uživatelského rozhraní Ambari můžete stáhnout konfiguraci pro vše
 
 ### <a name="view-the-script-action-logs"></a>Zobrazit protokoly akcí skriptů
 
-[Akce skriptu](hdinsight-hadoop-customize-cluster-linux.md) HDInsight spouštějí skripty v clusteru, a to buď ručně, nebo podle zadání. Například akce skriptu lze použít k instalaci dalšího softwaru do clusteru nebo ke změně nastavení konfigurace z výchozích hodnot. Protokoly akcí skriptů mohou poskytnout přehled o chybách, ke kterým došlo během instalace clusteru, a také změny nastavení konfigurace, které mohou ovlivnit výkon a dostupnost clusteru.  Pokud chcete zobrazit stav akce skriptu, klikněte na tlačítko **OPS** v uživatelském rozhraní Ambari nebo přejděte k protokolům stavu ve výchozím účtu úložiště. Protokoly úložiště jsou k dispozici `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE`na adrese.
+[Akce skriptu](hdinsight-hadoop-customize-cluster-linux.md) HDInsight spouštějí skripty v clusteru, a to buď ručně, nebo podle zadání. Například akce skriptu lze použít k instalaci dalšího softwaru do clusteru nebo ke změně nastavení konfigurace z výchozích hodnot. Protokoly akcí skriptů mohou poskytnout přehled o chybách, ke kterým došlo během instalace clusteru, a také změny nastavení konfigurace, které mohou ovlivnit výkon a dostupnost clusteru.  Pokud chcete zobrazit stav akce skriptu, klikněte na tlačítko **OPS** v uživatelském rozhraní Ambari nebo přejděte k protokolům stavu ve výchozím účtu úložiště. Protokoly úložiště jsou k dispozici na adrese `/STORAGE_ACCOUNT_NAME/DEFAULT_CONTAINER_NAME/custom-scriptaction-logs/CLUSTER_NAME/DATE` .
 
 ### <a name="view-ambari-alerts-status-logs"></a>Zobrazit protokoly stavu výstrah Ambari
 
-Apache Ambari zapisuje změny stavu výstrahy `ambari-alerts.log`do. Úplná cesta je `/var/log/ambari-server/ambari-alerts.log`. Chcete-li povolit ladění protokolu, změňte vlastnost v `/etc/ambari-server/conf/log4j.properties.` nabídce `# Log alert state changes` změnit na položku z:
+Apache Ambari zapisuje změny stavu výstrahy do `ambari-alerts.log` . Úplná cesta je `/var/log/ambari-server/ambari-alerts.log` . Chcete-li povolit ladění protokolu, změňte vlastnost v `/etc/ambari-server/conf/log4j.properties.` nabídce změnit na položku `# Log alert state changes` z:
 
 ```
 log4j.logger.alerts=INFO,alerts
@@ -131,7 +131,7 @@ Agregované protokoly nejsou přímo čitelné, protože jsou napsány v binárn
 
 #### <a name="yarn-cli-tools"></a>Nástroje rozhraní příkazového řádku PŘÍZ
 
-Chcete-li použít nástroje rozhraní příkazového řádku PŘÍZ, musíte se nejprve připojit ke clusteru HDInsight pomocí protokolu SSH. Zadejte informace `<applicationId>`, `<user-who-started-the-application>` `<containerId>`, a `<worker-node-address>` při spuštění těchto příkazů. Protokoly můžete zobrazit jako prostý text jedním z následujících příkazů:
+Chcete-li použít nástroje rozhraní příkazového řádku PŘÍZ, musíte se nejprve připojit ke clusteru HDInsight pomocí protokolu SSH. Zadejte `<applicationId>` informace, `<user-who-started-the-application>` , `<containerId>` a `<worker-node-address>` při spuštění těchto příkazů. Protokoly můžete zobrazit jako prostý text jedním z následujících příkazů:
 
 ```bash
 yarn logs -applicationId <applicationId> -appOwner <user-who-started-the-application>
@@ -171,7 +171,7 @@ Sadu .NET SDK pro Hadoop můžete použít k prohlédnutí souborů protokolu ge
 
 ### <a name="control-the-size-and-number-of-backup-indexes-for-old-log-files"></a>Řízení velikosti a počtu indexů zálohování pro staré soubory protokolu
 
-Chcete-li řídit velikost a počet uchovávaných souborů protokolu, nastavte následující vlastnosti `RollingFileAppender`:
+Chcete-li řídit velikost a počet uchovávaných souborů protokolu, nastavte následující vlastnosti `RollingFileAppender` :
 
 * `maxFileSize`je kritická velikost souboru, nad kterou se soubor zavedl. Výchozí hodnota je 10 MB.
 * `maxBackupIndex`Určuje počet záložních souborů, které mají být vytvořeny, výchozí 1.

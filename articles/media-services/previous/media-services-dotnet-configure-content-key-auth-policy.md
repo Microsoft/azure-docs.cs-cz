@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 58d52cd194ca4391c61f2477189984273df1198a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251203"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712390"
 ---
 # <a name="configure-a-content-key-authorization-policy"></a>Konfigurace zásad autorizace klíče obsahu
 
@@ -38,7 +38,7 @@ Služba Media Services podporuje více způsobů ověřování uživatelů, kte�
 
 Media Services neposkytuje službu STS. Můžete vytvořit vlastní STS nebo použít Azure Access Control Service k vydávání tokenů. Služba STS musí být nakonfigurovaná tak, aby vytvořila token podepsaný pomocí zadaného klíče a vydávala deklarace identity, které jste zadali v konfiguraci omezení tokenu (jak je popsáno v tomto článku). Pokud je token platný a deklarace identity v tokenu odpovídají nastavením nakonfigurovaným pro klíč obsahu, služba doručování Media Services Key vrátí šifrovací klíč klientovi.
 
-Další informace najdete v těchto článcích:
+Další informace najdete v následujících článcích:
 
 - [Ověřování tokenu JWT](http://www.gtrifonov.com/2015/01/03/jwt-token-authentication-in-azure-media-services-and-dynamic-encryption/)
 - [Integrace Azure Media Services OWIN aplikace založené na MVC s Azure Active Directory a omezení doručení klíče obsahu na základě deklarací JWT](http://www.gtrifonov.com/2015/01/24/mvc-owin-azure-media-services-ad-integration/)
@@ -51,7 +51,7 @@ Další informace najdete v těchto článcích:
 * Služba doručení klíčů ukládá do mezipaměti ContentKeyAuthorizationPolicy a související objekty (možnosti zásad a omezení) po dobu 15 minut. Můžete vytvořit ContentKeyAuthorizationPolicy a určit, že se má použít omezení tokenu, otestovat ho a pak aktualizovat zásadu na otevřené omezení. Tento proces trvá zhruba 15 minut, než se zásada přepne na otevřenou verzi zásady.
 * Pokud přidáte nebo aktualizujete zásady pro doručení prostředku, musíte odstranit stávající lokátor a vytvořit nový.
 * V současné době nemůžete šifrovat progresivní stahování.
-* Koncový bod streamování Media Services nastaví jako zástupný znak\*hodnotu v hlavičce CORS "Access-Control-Allow-Origin" v odpovědi na kontrolu před výstupem. Tato hodnota dobře funguje u většiny hráčů, včetně Azure Media Player, roku a JWPlayer a dalších. Někteří hráči, kteří používají dashjs, ale nefungují, protože s režimem přihlašovacích údajů nastaveným na include, XMLHttpRequest ve svých dashjsch nepovoluje\*zástupný znak "" jako hodnotu "Access-Control-Allow-Origin". Jako alternativní řešení tohoto omezení v dashjs platí, že pokud Hostujte klienta z jedné domény, můžete tuto doménu v hlavičce odpovědi na předběžné služby zadat Media Services. Pokud potřebujete pomoc, otevřete lístek podpory prostřednictvím Azure Portal.
+* Koncový bod streamování Media Services nastaví jako zástupný znak hodnotu v hlavičce CORS "Access-Control-Allow-Origin" v odpovědi na kontrolu před výstupem \* . Tato hodnota dobře funguje u většiny hráčů, včetně Azure Media Player, roku a JWPlayer a dalších. Někteří hráči, kteří používají dashjs, ale nefungují, protože s režimem přihlašovacích údajů nastaveným na include, XMLHttpRequest ve svých dashjsch nepovoluje zástupný znak \* "" jako hodnotu "Access-Control-Allow-Origin". Jako alternativní řešení tohoto omezení v dashjs platí, že pokud Hostujte klienta z jedné domény, můžete tuto doménu v hlavičce odpovědi na předběžné služby zadat Media Services. Pokud potřebujete pomoc, otevřete lístek podpory prostřednictvím Azure Portal.
 
 ## <a name="aes-128-dynamic-encryption"></a>Dynamické šifrování AES-128
 ### <a name="open-restriction"></a>Otevřené omezení

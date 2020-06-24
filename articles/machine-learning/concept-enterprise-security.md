@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 05/19/2020
-ms.openlocfilehash: 36012801a2d36b75a0683db6f029a4560150ac2b
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: e030bd1124a93c667070a2b58f2f0e1c10c7d3a6
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83683054"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718552"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Podnikové zabezpečení pro Azure Machine Learning
 
@@ -26,7 +26,7 @@ Když použijete cloudovou službu, osvědčeným postupem je omezit přístup j
 > [!NOTE]
 > Informace v tomto článku jsou v sadě Azure Machine Learning Python SDK verze 1.0.83.1 nebo vyšší.
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Ověřování
 
 Služba Multi-Factor Authentication je podporovaná, pokud je služba Azure Active Directory (Azure AD) nakonfigurovaná tak, aby ji používala. Toto je proces ověřování:
 
@@ -42,10 +42,10 @@ Další informace najdete v tématu [nastavení ověřování pro Azure Machine 
 
 Azure Machine Learning podporuje dvě formy ověřování pro webové služby: klíč a token. Každá webová služba může současně povolit jenom jednu formu ověřování.
 
-|Metoda ověřování|Popis|Azure Container Instances|AKS|
+|Metoda ověřování|Description|Azure Container Instances|AKS|
 |---|---|---|---|
 |Klíč|Klíče jsou statické a není nutné je aktualizovat. Klíče je možné znovu vygenerovat ručně.|Zakázáno ve výchozím nastavení| Ve výchozím nastavení povolená|
-|Podpisový|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici| Zakázáno ve výchozím nastavení |
+|Token|Po zadaném časovém období vyprší platnost tokenů a je nutné ji aktualizovat.| Není k dispozici| Zakázáno ve výchozím nastavení |
 
 Příklady kódu naleznete v [části ověřování webové služby](how-to-setup-authentication.md#web-service-authentication).
 
@@ -146,7 +146,7 @@ Pokud chcete k šifrování instance Azure Cosmos DB použít vlastní klíče (
 
 Pokud chcete ve svém předplatném povolit zřizování Cosmos DB instance pomocí klíčů spravovaných zákazníkem, proveďte následující akce:
 
-* Pokud jste to ještě neudělali, zaregistrujte Azure Machine Learning a poskytovatele prostředků Azure Cosmos DB v předplatném.
+* Zaregistrujte poskytovatele prostředků Microsoft. MachineLearning a Microsoft.DocumentDB v rámci vašeho předplatného, pokud to ještě neudělalo.
 
 * Autorizaci aplikace Machine Learning (v části Správa identit a přístupu) s oprávněními přispěvatele v předplatném.
 

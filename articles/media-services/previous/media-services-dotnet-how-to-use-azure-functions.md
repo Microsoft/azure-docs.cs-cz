@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 618acae10b874eb5ebd5b6da7fe081368528dbd8
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251164"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712492"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Vývoj Azure Functions s využitím Media Services
 
@@ -54,7 +54,7 @@ Funkce definovaná v tomto článku předpokládá, že máte v nastavení aplik
 
 **AMSClientSecret**: tajný kód klienta aplikace Azure AD.
 
-**StorageConnection**: připojení k úložišti účtu přidruženého k Media Servicesmu účtu. Tato hodnota se používá v souboru **Function. JSON** a v souboru **. csx** (popsaných níže).
+**StorageConnection**: připojení k úložišti účtu přidruženého k Media Servicesmu účtu. Tato hodnota se používá v **function.js** souboru a spustit soubor **. csx** (popsaný níže).
 
 ## <a name="create-a-function"></a>Vytvoření funkce
 
@@ -74,18 +74,18 @@ Po nasazení aplikace Function App ji můžete najít mezi **App Services** Azur
 
 ## <a name="files"></a>Soubory
 
-Vaše funkce Azure je přidružená k souborům kódu a dalším souborům, které jsou popsány v této části. Když použijete Azure Portal k vytvoření funkce, **Function. JSON** a **spuštění. csx** , vytvoří se za vás. Je nutné přidat nebo odeslat soubor **Project. JSON** . Zbytek této části poskytuje stručné vysvětlení jednotlivých souborů a ukazuje jejich definice.
+Vaše funkce Azure je přidružená k souborům kódu a dalším souborům, které jsou popsány v této části. Když použijete Azure Portal k vytvoření funkce, **function.jsna** a **spusťte. csx** jsou vytvořeny za vás. Je nutné přidat nebo odeslat **project.js** do souboru. Zbytek této části poskytuje stručné vysvětlení jednotlivých souborů a ukazuje jejich definice.
 
 ![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
-Soubor Function. JSON definuje vazby funkcí a další nastavení konfigurace. Modul runtime pomocí tohoto souboru určí události, které se mají monitorovat, a způsob předávání dat do a návratové data z provádění funkce. Další informace najdete v tématu [vazby HTTP a webhooků služby Azure Functions](../../azure-functions/functions-reference.md#function-code).
+function.jsv souboru definuje vazby funkcí a další nastavení konfigurace. Modul runtime pomocí tohoto souboru určí události, které se mají monitorovat, a způsob předávání dat do a návratové data z provádění funkce. Další informace najdete v tématu [vazby HTTP a webhooků služby Azure Functions](../../azure-functions/functions-reference.md#function-code).
 
 >[!NOTE]
 >Nastavte vlastnost **disabled** na **hodnotu true** , chcete-li zabránit provedení této funkce. 
 
-Obsah existujícího souboru functions. JSON nahraďte následujícím kódem:
+Nahraďte obsah existující function.jsv souboru následujícím kódem:
 
 ```json
 {
@@ -104,9 +104,9 @@ Obsah existujícího souboru functions. JSON nahraďte následujícím kódem:
 
 ### <a name="projectjson"></a>project.json
 
-Soubor Project. JSON obsahuje závislosti. Tady je příklad souboru **Project. JSON** , který obsahuje požadované balíčky Azure Media Services .NET z nugetu. Všimněte si, že se čísla verzí mění s nejnovějšími aktualizacemi balíčků, takže byste měli potvrdit nejnovější verze. 
+project.jsv souboru obsahuje závislosti. Tady je příklad **project.js** souboru, který obsahuje požadované balíčky Azure Media Services .NET z nugetu. Všimněte si, že se čísla verzí mění s nejnovějšími aktualizacemi balíčků, takže byste měli potvrdit nejnovější verze. 
 
-Přidejte následující definici do Project. JSON. 
+Přidejte následující definici pro project.js. 
 
 ```json
 {

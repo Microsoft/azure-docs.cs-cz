@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 8/25/2017
 ms.author: alkohli
 ms.openlocfilehash: 3d6ef22e4df36996d68194589f43ea0f57def22c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267908"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711761"
 ---
 # <a name="replace-a-disk-drive-on-your-storsimple-8000-series-device"></a>Výměna diskové jednotky na zařízení StorSimple řady 8000
 
@@ -46,7 +46,7 @@ Tento postup vysvětluje, jak můžou být zámky proti falšování v zařízen
    
     **Obrázek 1** Zapojení zámku proti falšování
    
-   | Popisek | Popis |
+   | Popisek | Description |
    |:--- |:--- |
    | 1 |Clona indikátoru |
    | 2 |Zámek proti falšování |
@@ -103,7 +103,7 @@ Po selhání jednotky ve vašem zařízení StorSimple a jejím odebráním se p
     **Obrázek 6**  Posuňte nosič jednotky na skříň.
 3. Když je vložen nosič jednotek, uzavřete popisovač obslužné rutiny jednotky a pokračujte tak, že přehrajete nosič jednotek do skříně, dokud se popisovač obslužné rutiny jednotky nepřichytí do uzamčené pozice.
 4. Použijte klíč zámku, který byl poskytnutý Microsoftem (tamperproof Torx Screwdriver), abyste zabezpečili popisovač nosné frekvence tím, že zapnete zámek a posunete ho po směru hodinových ručiček.
-5. Ověřte, zda byla náhrada úspěšná a zda je jednotka funkční. Přejděte k Azure Portal a přejděte do **Nastavení** > zařízení**stav hardwaru**. V části **sdílené součásti** nebo **sdílené součásti eBOD**by měl být stav jednotky zelený, což značí, že je v pořádku.
+5. Ověřte, zda byla náhrada úspěšná a zda je jednotka funkční. Přejděte k Azure Portal a přejděte do **nastavení zařízení**  >  **stav hardwaru**. V části **sdílené součásti** nebo **sdílené součásti eBOD**by měl být stav jednotky zelený, což značí, že je v pořádku.
 
    
    > [!NOTE]

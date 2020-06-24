@@ -4,15 +4,15 @@ description: Přečtěte si, jak nakonfigurovat ověřování Azure Active Direc
 services: virtual-wan
 author: anzaman
 ms.service: virtual-wan
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 03/17/2020
 ms.author: alzam
-ms.openlocfilehash: 703b832d58f2374eac131cfd380ba27f2c890618
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: dd80724d62c71fdec81965fb4aa6a07a6233a288
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80059488"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753960"
 ---
 # <a name="configure-azure-active-directory-authentication-for-user-vpn"></a>Konfigurace ověřování Azure Active Directory pro uživatele VPN
 
@@ -34,7 +34,7 @@ V tomto článku získáte informace o těchto tématech:
 
 ![Diagram virtuální sítě WAN](./media/virtual-wan-about/virtualwanp2s.png)
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Před zahájením konfigurace ověřte, že splňujete následující kritéria:
 
@@ -54,7 +54,7 @@ V prohlížeči přejděte na web [Azure Portal](https://portal.azure.com) a př
 2. Z výsledků vyberte **virtuální síť WAN** . Na stránce virtuální síť WAN kliknutím na **vytvořit** otevřete stránku vytvořit síť WAN.
 3. Na stránce **vytvořit síť WAN** na kartě **základy** vyplňte následující pole:
 
-   ![Virtuální síť WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
+   ![Virtual WAN](./media/virtual-wan-point-to-site-azure-ad/vwan.png)
 
    * **Subscription** (Předplatné) – vyberte předplatné, které chcete použít.
    * **Skupina prostředků** – vytvořte nové nebo použijte existující.
@@ -125,7 +125,7 @@ Pomocí profilu sítě VPN nakonfigurujte své klienty.
 Abyste se mohli připojit, je potřeba stáhnout klienta Azure VPN a importovat profil klienta VPN, který jste stáhli v předchozích krocích v každém počítači, který se chce připojit k virtuální síti.
 
 > [!NOTE]
-> Ověřování Azure AD se podporuje jenom pro připojení&reg; protokolu OpenVPN.
+> Ověřování Azure AD se podporuje jenom pro &reg; připojení protokolu OpenVPN.
 >
 
 #### <a name="to-download-the-azure-vpn-client"></a>Stažení klienta Azure VPN

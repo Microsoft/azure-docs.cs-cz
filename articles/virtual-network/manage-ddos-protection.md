@@ -5,31 +5,31 @@ description: Naučte se, jak pomocí Azure DDoS Protection standardní telemetri
 services: virtual-network
 documentationcenter: na
 author: KumudD
-manager: twooley
+manager: mtillman
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/17/2019
 ms.author: kumud
-ms.openlocfilehash: f208119ce80d6b728030ea96f13d6c3d0375e74a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: ed311e9c8031f8586762d2adc4c104545e323bc0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82182935"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711506"
 ---
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Správa Azure DDoS Protection Standard pomocí Azure Portal
 
 Naučte se, jak povolit a zakázat distribuovanou ochranu před útoky na DDoS (Denial of Service), a využijte telemetrii k omezení DDoS útoku pomocí Azure DDoS Protection Standard. DDoS Protection Standard chrání prostředky Azure, jako jsou virtuální počítače, nástroje pro vyrovnávání zatížení a aplikační brány, které mají přiřazenou [veřejnou IP adresu](virtual-network-public-ip-address.md) Azure. Další informace o službě DDoS Protection Standard a jejích funkcích najdete v tématu [přehled DDoS Protection úrovně Standard](ddos-protection-overview.md).
 
-Před dokončením všech kroků v tomto kurzu se přihlaste k Azure Portal https://portal.azure.com v rámci pomocí účtu přiřazeného k roli [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazena k příslušným akcím uvedeným v [oprávněních](#permissions).
+Před dokončením všech kroků v tomto kurzu se přihlaste k Azure Portal v https://portal.azure.com rámci pomocí účtu přiřazeného k roli [přispěvatele sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní roli](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , která je přiřazena k příslušným akcím uvedeným v [oprávněních](#permissions).
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="create-a-ddos-protection-plan"></a>Vytvoření plánu DDoS Protection
 
@@ -230,7 +230,7 @@ Výstrahy obsahují obecné informace o veřejné IP adrese, která se nachází
 
 Aby bylo možné pracovat s plány ochrany DDoS Protection, musí být váš účet přiřazen k roli [Přispěvatel sítě](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) nebo k [vlastní](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) roli, která je přiřazena k příslušným akcím uvedeným v následující tabulce:
 
-| Akce                                            | Název                                     |
+| Akce                                            | Name                                     |
 | ---------                                         | -------------                            |
 | Microsoft. Network/ddosProtectionPlans/Read        | Přečíst plán DDoS Protection              |
 | Microsoft. Network/ddosProtectionPlans/Write       | Vytvořit nebo aktualizovat plán DDoS Protection  |

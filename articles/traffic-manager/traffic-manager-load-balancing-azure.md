@@ -7,17 +7,17 @@ author: rohinkoul
 manager: kumudD
 ms.service: traffic-manager
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/27/2016
 ms.author: rohink
-ms.openlocfilehash: 786b4141ed83121dce069b45ce7ddcd91bb3b00e
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: c5667a03d127441a9a911ff4b8daba0b3b138e3a
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84020791"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711744"
 ---
 # <a name="using-load-balancing-services-in-azure"></a>Použití služeb pro vyrovnávání zatížení v Azure
 
@@ -88,10 +88,10 @@ Následující diagram znázorňuje architekturu tohoto scénáře:
    * **Počet**instancí: počet instancí, hodnota od 2 do 10.
    * **Skupina prostředků**: Skupina prostředků, která obsahuje aplikační bránu. Může se jednat o existující skupinu prostředků nebo o novou.
    * **Location (umístění**): oblast pro aplikační bránu, která je stejně umístění jako skupina prostředků. Umístění je důležité, protože virtuální síť a veřejná IP adresa musí být ve stejném umístění jako brána.
-3. Klikněte na tlačítko **OK**.
+3. Klikněte na **OK**.
 4. Definujte konfigurace virtuální sítě, podsítě, front-endové IP adresy a naslouchacího procesu pro službu Application Gateway. V tomto scénáři je front-end IP adresa **Veřejná**, což umožňuje později přidat jako koncový bod do profilu Traffic Manager.
 5. Nakonfigurujte naslouchací proces pomocí jedné z následujících možností:
-    * Pokud používáte protokol HTTP, není k dispozici žádná konfigurace. Klikněte na tlačítko **OK**.
+    * Pokud používáte protokol HTTP, není k dispozici žádná konfigurace. Klikněte na **OK**.
     * Pokud používáte protokol HTTPS, je vyžadována další konfigurace. Podívejte se na téma [Vytvoření aplikační brány](../application-gateway/application-gateway-create-gateway-portal.md), počínaje krokem 9. Po dokončení konfigurace klikněte na **OK**.
 
 #### <a name="configure-url-routing-for-application-gateways"></a>Konfigurace směrování adres URL pro brány Application Gateway

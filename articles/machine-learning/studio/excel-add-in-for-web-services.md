@@ -5,17 +5,17 @@ description: Jak používat Azure Machine Learning webové služby přímo v apl
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/01/2018
-ms.openlocfilehash: ae51ed2ce39705e66e82ee28442374e8bcd0f901
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: 8565e3c62ea1b74879f2e127abed772576563886
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84118445"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85211319"
 ---
 # <a name="excel-add-in-for-azure-machine-learning-studio-classic-web-services"></a>Doplněk Excelu pro webové služby Azure Machine Learning Studio (Classic)
 
@@ -83,4 +83,4 @@ Získejte klíč rozhraní API pro webovou službu. Kde tuto akci provedete, zá
 ## <a name="sharing-your-workbook"></a>Sdílení sešitu
 Pokud sešit uložíte, uloží se taky rozhraní API/primární klíč pro webové služby, které jste přidali. To znamená, že byste měli sešit sdílet jenom s jednotlivci, kterým důvěřujete.
 
-Požádejte o všechny otázky v následující části komentáře nebo na našem [fóru](https://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
+Požádejte o všechny otázky v následující části komentáře nebo na našem [fóru](https://docs.microsoft.com/answers/topics/azure-machine-learning.html).

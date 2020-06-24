@@ -8,24 +8,24 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 8862c33b7660b8130f692dc4beea89a7b6b5f5ad
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 61272bee350fc7c7dd7d0e17adc55c436f4706ef
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "80804482"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84885965"
 ---
-# <a name="add-a-simple-data-layer"></a>Přidat jednoduchou datovou vrstvu
+# <a name="add-a-simple-data-layer"></a>Přidání jednoduché datové vrstvy
 
-Modul pro prostorové vstupně- `SimpleDataLayer` výstupní operace poskytuje třídu. Tato třída usnadňuje vykreslování stylů funkcí na mapě. Může dokonce vykreslovat sady dat, které mají vlastnosti stylu a sady dat, které obsahují smíšené typy geometrie. Jednoduchá Datová vrstva dosahuje této funkce zabalením více vrstev vykreslování a pomocí výrazů stylu. Výrazy stylu hledají společné vlastnosti stylu funkcí uvnitř těchto zabalených vrstev. `atlas.io.read` Funkce a `atlas.io.write` funkce tyto vlastnosti používají ke čtení a zápisu stylů do podporovaného formátu souboru. Po přidání vlastností do podporovaného formátu souboru je možné soubor použít k různým účelům. Soubor lze například použít k zobrazení funkcí stylu na mapě.
+Modul pro prostorové vstupně-výstupní operace poskytuje `SimpleDataLayer` třídu. Tato třída usnadňuje vykreslování stylů funkcí na mapě. Může dokonce vykreslovat sady dat, které mají vlastnosti stylu a sady dat, které obsahují smíšené typy geometrie. Jednoduchá Datová vrstva dosahuje této funkce zabalením více vrstev vykreslování a pomocí výrazů stylu. Výrazy stylu hledají společné vlastnosti stylu funkcí uvnitř těchto zabalených vrstev. `atlas.io.read`Funkce a `atlas.io.write` funkce tyto vlastnosti používají ke čtení a zápisu stylů do podporovaného formátu souboru. Po přidání vlastností do podporovaného formátu souboru je možné soubor použít k různým účelům. Soubor lze například použít k zobrazení funkcí stylu na mapě.
 
 Kromě funkcí pro stylování `SimpleDataLayer` obsahuje integrovaná místní funkce s místní šablonou. Automaticky otevírané okno se zobrazí, když se klikne na funkci. V případě potřeby lze zakázat výchozí místní funkci. Tato vrstva také podporuje data v clusteru. Po kliknutí na cluster se tato mapa přiblíží ke clusteru a rozšíří se na jednotlivé body a podclustery.
 
-`SimpleDataLayer` Třída je určena pro použití ve velkých sadách dat s mnoha typy geometrie a mnoho stylů použitých pro funkce. Při použití Tato třída přidá režii šesti vrstev obsahujících výrazy stylu. Existují však případy, kdy je efektivnější používat základní vrstvy vykreslování. Například použijte základní vrstvu pro vykreslení několika typů geometrie a několika stylů na funkci.
+`SimpleDataLayer`Třída je určena pro použití ve velkých sadách dat s mnoha typy geometrie a mnoho stylů použitých pro funkce. Při použití Tato třída přidá režii šesti vrstev obsahujících výrazy stylu. Existují však případy, kdy je efektivnější používat základní vrstvy vykreslování. Například použijte základní vrstvu pro vykreslení několika typů geometrie a několika stylů na funkci.
 
 ## <a name="use-a-simple-data-layer"></a>Použití jednoduché datové vrstvy
 
-`SimpleDataLayer` Třída se používá jako jiné vrstvy vykreslování. Následující kód ukazuje, jak použít jednoduchou datovou vrstvu v mapě:
+`SimpleDataLayer`Třída se používá jako jiné vrstvy vykreslování. Následující kód ukazuje, jak použít jednoduchou datovou vrstvu v mapě:
 
 ```javascript
 //Create a data source and add it to the map.
@@ -37,7 +37,7 @@ var layer = new atlas.layer.SimpleDataLayer(datasource);
 map.layers.add(layer);
 ```
 
-Přidejte funkce do zdroje dat. Jednoduchá Datová vrstva pak vyhledá, jak nejlépe vykreslíte funkce. Styly pro jednotlivé funkce lze nastavit jako vlastnosti funkce. Následující kód ukazuje funkci bodu zobrazení typu injson s `color` vlastností nastavenou na `red`. 
+Přidejte funkce do zdroje dat. Jednoduchá Datová vrstva pak vyhledá, jak nejlépe vykreslíte funkce. Styly pro jednotlivé funkce lze nastavit jako vlastnosti funkce. Následující kód ukazuje funkci bodu zobrazení typu injson s `color` vlastností nastavenou na `red` . 
 
 ```json
 {
@@ -56,7 +56,7 @@ Následující kód vykreslí funkci výše uvedeného bodu pomocí jednoduché 
 
 <br/>
 
-<iframe height="500" style="width: 100%;" scrolling="no" title="Použití jednoduché datové vrstvy" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> Podívejte se, jak pero <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>použít jednoduchou datovou vrstvu</a> pomocí<a href='https://codepen.io/azuremaps'>@azuremaps</a>Azure Maps () na <a href='https://codepen.io'>CodePen</a>.
+<iframe height="500" style="width: 100%;" scrolling="no" title="Použití jednoduché datové vrstvy" src="//codepen.io/azuremaps/embed/zYGzpQV/?height=500&theme-id=0&default-tab=js,result&editable=true" frameborder="no" allowtransparency="true" allowfullscreen="true"> Podívejte se, jak pero <a href='https://codepen.io/azuremaps/pen/zYGzpQV/'>použít jednoduchou datovou vrstvu</a> pomocí Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 Skutečná síla jednoduché datové vrstvy nastane v těchto případech:
@@ -69,7 +69,7 @@ Například při analýze datových kanálů XML nemusíte znát přesné styly 
 
 <br/>
 
-<iframe height="700" style="width: 100%;" scrolling="no" title="Možnosti jednoduchých datových vrstev" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Přečtěte si <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>Možnosti jednoduché datové vrstvy</a> pera od Azure Maps<a href='https://codepen.io/azuremaps'>@azuremaps</a>() na <a href='https://codepen.io'>CodePen</a>.
+<iframe height="700" style="width: 100%;" scrolling="no" title="Možnosti jednoduchých datových vrstev" src="//codepen.io/azuremaps/embed/gOpRXgy/?height=700&theme-id=0&default-tab=result" frameborder="no" allowtransparency="true" allowfullscreen="true"> Přečtěte si <a href='https://codepen.io/azuremaps/pen/gOpRXgy/'>Možnosti jednoduché datové vrstvy</a> pera od Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) na <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 
@@ -79,21 +79,21 @@ Například při analýze datových kanálů XML nemusíte znát přesné styly 
 > - Všechny skripty, formuláře, zámky ukazatele a horní navigační funkce jsou zakázané. Odkazy mohou být při kliknutí na nové kartě otevřené. 
 > - Starší prohlížeče, které nepodporují `srcdoc` parametr pro prvky IFrame, budou omezeny na vykreslování malého množství obsahu.
 > 
-> Pokud důvěřujete načítající data do překryvných oken a potenciálně chcete, aby se tyto skripty načetly do automaticky otevíraných oken, můžete k aplikaci zablokovat, a to `sandboxContent` nastavením možnosti automaticky otevíraná okna šablony na hodnotu NEPRAVDA. 
+> Pokud důvěřujete načítající data do překryvných oken a potenciálně chcete, aby se tyto skripty načetly do automaticky otevíraných oken, můžete k aplikaci zablokovat, a to nastavením možnosti automaticky otevíraná okna šablony `sandboxContent` na hodnotu NEPRAVDA. 
 
 ## <a name="default-supported-style-properties"></a>Výchozí podporované vlastnosti stylu
 
 Jak bylo zmíněno dříve, jednoduchá Datová vrstva zalomí několik základních vrstev vykreslování: bublinový, symbol, spojnicový, Mnohoúhelníkový a vytlačený mnohoúhelník. Potom používá výrazy k hledání platných vlastností stylu u jednotlivých funkcí.
 
-Vlastnosti stylu Azure Maps a GitHub jsou dvě hlavní sady podporovaných názvů vlastností. Většina názvů vlastností různých možností vrstvy Azure Maps je podporovaná jako styl vlastností funkcí v jednoduché datové vrstvě. Do některých možností vrstvy byly přidány výrazy pro podporu názvů vlastností stylu, které se běžně používají v GitHubu. Tyto názvy vlastností jsou definované [podporou mapy pro INjson v rámci GitHubu](https://help.github.com/en/github/managing-files-in-a-repository/mapping-geojson-files-on-github)a používají se pro styly souborů. JSON, které se ukládají a vykreslují v rámci platformy. Všechny vlastnosti stylu GitHubu jsou podporované v jednoduché datové vrstvě s výjimkou vlastností `marker-symbol` stylu.
+Vlastnosti stylu Azure Maps a GitHub jsou dvě hlavní sady podporovaných názvů vlastností. Většina názvů vlastností různých možností vrstvy Azure Maps je podporovaná jako styl vlastností funkcí v jednoduché datové vrstvě. Do některých možností vrstvy byly přidány výrazy pro podporu názvů vlastností stylu, které se běžně používají v GitHubu. Tyto názvy vlastností jsou definované [podporou mapy pro INjson v rámci GitHubu](https://help.github.com/en/github/managing-files-in-a-repository/mapping-geojson-files-on-github)a používají se pro styly souborů. JSON, které se ukládají a vykreslují v rámci platformy. Všechny vlastnosti stylu GitHubu jsou podporované v jednoduché datové vrstvě s výjimkou `marker-symbol` vlastností stylu.
 
 Pokud čtenář přichází napříč méně běžnými vlastnostmi stylu, převede ho na nejbližší vlastnost Style Azure Maps. Kromě toho je možné přepsat výchozí výrazy stylu pomocí `getLayers` funkce jednoduché datové vrstvy a aktualizací možností na kterékoli z vrstev.
 
-V následujících oddílech jsou uvedeny podrobnosti o výchozích vlastnostech stylu, které jsou podporovány jednoduchou datovou vrstvou. Pořadí podporovaného názvu vlastnosti je také prioritou vlastnosti. Pokud jsou definovány dvě vlastnosti stylu pro stejnou možnost vrstvy, pak první v seznamu má vyšší prioritu.
+V následujících oddílech jsou uvedeny podrobnosti o výchozích vlastnostech stylu, které jsou podporovány jednoduchou datovou vrstvou. Pořadí podporovaného názvu vlastnosti je také prioritou vlastnosti. Pokud jsou definovány dvě vlastnosti stylu pro stejnou možnost vrstvy, pak první v seznamu má vyšší prioritu. Barvy můžou být jakékoli hodnoty barvy CSS3; ŠESTNÁCTKOVá, RGB, RGBA, HSL, HSLA nebo pojmenovaná hodnota barvy.
 
 ### <a name="bubble-layer-style-properties"></a>Vlastnosti stylu bublinové vrstvy
 
-`Point` Pokud je funkce `MultiPoint`nebo a a funkce nemá `image` vlastnost, která by se použila jako vlastní ikona pro vykreslení bodu jako symbolu, funkce se vykreslí pomocí. `BubbleLayer`
+Pokud je funkce nebo a `Point` `MultiPoint` a funkce nemá `image` vlastnost, která by se použila jako vlastní ikona pro vykreslení bodu jako symbolu, funkce se vykreslí pomocí `BubbleLayer` .
 
 | Možnost vrstvy | Podporované názvy vlastností | Výchozí hodnota |
 |--------------|----------------------------|---------------|
@@ -101,19 +101,19 @@ V následujících oddílech jsou uvedeny podrobnosti o výchozích vlastnostech
 | `radius` | `size`<sup>1</sup>, `marker-size` <sup>2</sup>, `scale` <sup>1</sup> | `8` |
 | `strokeColor` | `strokeColor`, `stroke` | `'#FFFFFF'` |
 
-\[1\] hodnoty `size` a `scale` jsou považovány za skalární hodnoty a vynásobí se`8`
+\[1 \] `size` hodnoty a `scale` jsou považovány za skalární hodnoty a vynásobí se`8`
 
-\[2\] Pokud je zadána `marker-size` možnost GitHubu, budou pro protokol RADIUS použity následující hodnoty.
+\[2 \] Pokud `marker-size` je zadána možnost GitHubu, budou pro protokol RADIUS použity následující hodnoty.
 
-| Velikost značky | Poloměr |
+| Velikost značky | RADIUS |
 |-------------|--------|
 | `small`     | `6`    |
 | `medium`    | `8`    |
 | `large`     | `12`   |
 
-Clustery se také vykreslují pomocí bublinové vrstvy. Ve výchozím nastavení je poloměr clusteru nastavený na `16`. Barva clusteru se liší v závislosti na počtu bodů v clusteru, jak je definováno níže:
+Clustery se také vykreslují pomocí bublinové vrstvy. Ve výchozím nastavení je poloměr clusteru nastavený na `16` . Barva clusteru se liší v závislosti na počtu bodů v clusteru, jak je definováno níže:
 
-| počet bodů | Barvy    |
+| počet bodů | Barva    |
 |-------------|----------|
 | &gt;= 100   | `red`    |
 | &gt;= 10    | `yellow` |
@@ -121,7 +121,7 @@ Clustery se také vykreslují pomocí bublinové vrstvy. Ve výchozím nastaven�
 
 ### <a name="symbol-style-properties"></a>Vlastnosti stylu symbolu
 
-`Point` Pokud je funkce `MultiPoint`nebo a a má `image` vlastnost, která by se použila jako vlastní ikona pro vykreslení bodu jako symbolu, funkce se vykreslí pomocí. `SymbolLayer`
+Pokud je funkce nebo a `Point` `MultiPoint` a má `image` vlastnost, která by se použila jako vlastní ikona pro vykreslení bodu jako symbolu, funkce se vykreslí pomocí `SymbolLayer` .
 
 | Možnost vrstvy | Podporované názvy vlastností | Výchozí hodnota |
 |--------------|----------------------------|---------------|
@@ -131,7 +131,7 @@ Clustery se také vykreslují pomocí bublinové vrstvy. Ve výchozím nastaven�
 | `offset` | `offset` | `[0, 0]` |
 | `anchor` | `anchor` | `'bottom'` |
 
-\[1\] Pokud je zadaná `marker-size` možnost GitHubu, použijí se pro možnost velikost ikony následující hodnoty.
+\[1 \] Pokud `marker-size` je zadaná možnost GitHubu, použijí se pro možnost velikost ikony následující hodnoty.
 
 | Velikost značky | Symbol size |
 |-------------|-------------|
@@ -143,7 +143,7 @@ Pokud je funkce Point clusterem, bude `point_count_abbreviated` vlastnost vykres
 
 ### <a name="line-style-properties"></a>Vlastnosti stylu čáry
 
-Pokud je funkce `LineString`, `MultiLineString`, `Polygon`, nebo `MultiPolygon`, funkce bude vykreslena pomocí. `LineLayer`
+Pokud je funkce `LineString` , `MultiLineString` , `Polygon` , nebo `MultiPolygon` , funkce bude vykreslena pomocí `LineLayer` .
 
 | Možnost vrstvy | Podporované názvy vlastností | Výchozí hodnota |
 |--------------|----------------------------|---------------|
@@ -153,7 +153,7 @@ Pokud je funkce `LineString`, `MultiLineString`, `Polygon`, nebo `MultiPolygon`,
 
 ### <a name="polygon-style-properties"></a>Vlastnosti stylu mnohoúhelníku
 
-Pokud je tato `Polygon` funkce nebo `MultiPolygon`, a funkce buď nemá `height` vlastnost nebo má `height` vlastnost hodnotu nula, funkce bude vykreslena pomocí. `PolygonLayer`
+Pokud je tato funkce `Polygon` nebo `MultiPolygon` , a funkce buď nemá `height` vlastnost nebo má `height` vlastnost hodnotu nula, funkce bude vykreslena pomocí `PolygonLayer` .
 
 | Možnost vrstvy | Podporované názvy vlastností | Výchozí hodnota |
 |--------------|----------------------------|---------------|
@@ -162,7 +162,7 @@ Pokud je tato `Polygon` funkce nebo `MultiPolygon`, a funkce buď nemá `height`
 
 ### <a name="extruded-polygon-style-properties"></a>Vlastnosti stylu vytlačeného mnohoúhelníku
 
-`Polygon` Pokud je funkce `MultiPolygon`nebo a má `height` vlastnost s hodnotou větší než 0, funkce bude vykreslena s. `PolygonExtrusionLayer`
+Pokud je funkce nebo a `Polygon` `MultiPolygon` má `height` vlastnost s hodnotou větší než 0, funkce bude vykreslena s `PolygonExtrusionLayer` .
 
 | Možnost vrstvy | Podporované názvy vlastností | Výchozí hodnota |
 |--------------|----------------------------|---------------|
@@ -186,7 +186,7 @@ Další ukázky kódu pro přidání do vašich map najdete v následujících �
 > [Čtení a zápis prostorových dat](spatial-io-read-write-spatial-data.md)
 
 > [!div class="nextstepaction"]
-> [Přidat vrstvu mapy OGC](spatial-io-add-ogc-map-layer.md)
+> [Přidání vrstvy mapy OGC](spatial-io-add-ogc-map-layer.md)
 
 > [!div class="nextstepaction"]
 > [Připojení ke službě WFS](spatial-io-connect-wfs-service.md)
@@ -195,4 +195,4 @@ Další ukázky kódu pro přidání do vašich map najdete v následujících �
 > [Využití základních operací](spatial-io-core-operations.md)
 
 > [!div class="nextstepaction"]
-> [Podrobnosti o podporovaném formátu dat](spatial-io-supported-data-format-details.md)
+> [Podrobnosti o podporovaných formátech dat](spatial-io-supported-data-format-details.md)

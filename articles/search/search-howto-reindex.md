@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 02/14/2020
-ms.openlocfilehash: 58b60a0eee8ab407709f33911d3c6b13ffbf301a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/18/2020
+ms.openlocfilehash: 96177686e78a0595ac4ad49b9969b22d862facd6
+ms.sourcegitcommit: ff19f4ecaff33a414c0fa2d4c92542d6e91332f8
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77498384"
+ms.lasthandoff: 06/18/2020
+ms.locfileid: "85051737"
 ---
 # <a name="how-to-rebuild-an-index-in-azure-cognitive-search"></a>Postup opětovného sestavení indexu v Azure Kognitivní hledání
 
@@ -21,13 +21,23 @@ Tento článek vysvětluje, jak znovu sestavit index služby Azure Kognitivní h
 
 *Nové sestavení* odkazuje na vyřazení a opětovné vytvoření fyzických datových struktur přidružených k indexu, včetně všech obrácených indexů založených na polích. V Azure Kognitivní hledání nemůžete vyřadit a znovu vytvořit jednotlivá pole. Chcete-li znovu sestavit index, je nutné odstranit všechna úložiště pole, znovu vytvořit na základě existujícího nebo revidovaného schématu indexu a pak znovu naplnit data vložená do indexu nebo načíst z externích zdrojů. 
 
-Během vývoje je běžné znovu sestavit indexy, ale možná budete muset znovu sestavit index na úrovni výroby, aby bylo možné přizpůsobit strukturální změny, jako je například přidání komplexních typů nebo přidání polí do návrhů.
+Je běžné sestavovat indexy během vývoje, když provádíte iteraci nad návrhem indexu, ale možná budete muset znovu sestavit index na úrovni výroby, abyste pokryli strukturální změny, jako je například přidávání složitých typů nebo přidávání polí do modulu pro návrhy.
+
+## <a name="rebuild-versus-refresh"></a>"Znovu sestavit" oproti "obnovení"
+
+Opětovné sestavení by nemělo být zaměněno s aktualizací obsahu indexu pomocí nových, upravených nebo odstraněných dokumentů. Aktualizace hledání corpus je skoro v každé vyhledávací aplikaci, a to s některými scénáři, které vyžadují aktualizace po minutách (například když corpus vyhledávání potřebuje, aby odrážely změny inventáře v online prodejní aplikaci).
+
+Pokud neměníte strukturu indexu, můžete index aktualizovat pomocí stejných technik, jako jste použili k načtení indexu zpočátku:
+
+* Pro indexování v režimu push volejte změny do indexu [zadáním přidat, aktualizovat nebo odstranit dokumenty](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) .
+
+* U indexerů můžete [naplánovat provádění indexeru](search-howto-schedule-indexers.md) a použít sledování změn nebo časová razítka k identifikaci rozdílu. Pokud se aktualizace musí projevit rychleji, než může Plánovač spravovat, můžete místo toho použít indexování v režimu push.
 
 ## <a name="rebuild-conditions"></a>Podmínky opětovného sestavení
 
 Pokud platí kterákoli z následujících podmínek, vyřaďte index a vytvořte ho znovu. 
 
-| Podmínka | Popis |
+| Podmínka | Description |
 |-----------|-------------|
 | Změna definice pole | Kontrola názvu pole, datového typu nebo konkrétních [atributů indexu](https://docs.microsoft.com/rest/api/searchservice/create-index) (prohledávatelné, filtrovatelné, seřaditelné, plošky) vyžadují úplné opětovné sestavení. |
 | Přiřazení analyzátoru k poli | [Analyzátory](search-analyzers.md) se definují v indexu a pak se přiřazují k polím. Novou definici analyzátoru můžete kdykoli přidat do indexu, ale když je pole Vytvořeno, můžete k němu *přiřadit* pouze analyzátor. To platí jak pro vlastnosti **analyzátoru** , tak pro **indexAnalyzer** . Vlastnost **searchAnalyzer** je výjimka (tuto vlastnost můžete přiřadit existujícímu poli). |

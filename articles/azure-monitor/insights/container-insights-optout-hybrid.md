@@ -2,19 +2,28 @@
 title: Postup zastavení monitorování hybridního clusteru Kubernetes | Microsoft Docs
 description: Tento článek popisuje, jak můžete zastavit monitorování clusteru hybridního Kubernetes pomocí Azure Monitor pro kontejnery.
 ms.topic: conceptual
-ms.date: 04/24/2020
-ms.openlocfilehash: f2f3a8671c1f2baf60d399cc87f2f843dfee4f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/16/2020
+ms.openlocfilehash: 86a774737d5269d77c4053ad61ab870b13288aa7
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82196215"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84885855"
 ---
 # <a name="how-to-stop-monitoring-your-hybrid-cluster"></a>Postup zastavení monitorování hybridního clusteru
 
-Po povolení monitorování clusteru Kubernetes běžícího na Azure Stack nebo v místním prostředí můžete zastavit monitorování clusteru pomocí Azure Monitor pro kontejnery, pokud se rozhodnete, že ho už nechcete monitorovat. Tento článek ukazuje, jak to provést.  
+Po povolení monitorování clusteru Kubernetes můžete zastavit monitorování clusteru pomocí Azure Monitor pro kontejnery, pokud se rozhodnete, že už ho nechcete monitorovat. Tento článek ukazuje, jak to provést v následujících prostředích:
+
+- AKS Engine v Azure a Azure Stack
+- OpenShift verze 4 a vyšší
+- Kubernetes s podporou Azure Arc (Preview)
 
 ## <a name="how-to-stop-monitoring-using-helm"></a>Postup zastavení monitorování pomocí Helm
+
+Následující postup platí pro následující prostředí:
+
+- AKS Engine v Azure a Azure Stack
+- OpenShift verze 4 a vyšší
 
 1. Abyste nejdřív identifikovali Azure Monitor pro vydanou verzi grafu Helm pro kontejnery nainstalované na clusteru, spusťte následující příkaz Helm.
 
@@ -45,7 +54,69 @@ Po povolení monitorování clusteru Kubernetes běžícího na Azure Stack nebo
     NAME                            NAMESPACE       REVISION        UPDATED                                 STATUS          CHART                           APP VERSION
     ```
 
-Dokončení změny konfigurace může trvat několik minut. Vzhledem k tomu, že Helm sleduje vaše verze, i když je odstraníte, můžete auditovat historii clusteru a dokonce zrušit odstranění verze pomocí `helm rollback`.
+Dokončení změny konfigurace může trvat několik minut. Vzhledem k tomu, že Helm sleduje vaše verze, i když je odstraníte, můžete auditovat historii clusteru a dokonce zrušit odstranění verze pomocí `helm rollback` .
+
+## <a name="how-to-stop-monitoring-on-arc-enabled-kubernetes"></a>Postup zastavení monitorování Kubernetes s povoleným ARC
+
+### <a name="using-powershell"></a>Pomocí prostředí PowerShell
+
+1. Stáhněte a uložte skript do místní složky, která konfiguruje cluster pomocí doplňku monitorování pomocí následujících příkazů:
+
+    ```powershell
+    wget https://aka.ms/disable-monitoring-powershell-script -OutFile disable-monitoring.ps1
+    ```
+
+2. Nakonfigurujte `$azureArcClusterResourceId` proměnnou tak, že nastavíte odpovídající hodnoty `subscriptionId` pro `resourceGroupName` a `clusterName` zastupujete ID prostředku vašeho prostředku clusteru Kubernetes s podporou ARC Azure.
+
+    ```powershell
+    $azureArcClusterResourceId = "/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
+    ```
+
+3. `$kubeContext`Pomocí příkazu nakonfigurujte proměnnou pomocí **Kube kontextu** clusteru `kubectl config get-contexts` . Pokud chcete použít aktuální kontext, nastavte hodnotu na `""` .
+
+    ```powershell
+    $kubeContext = "<kubeContext name of your k8s cluster>"
+    ```
+
+4. Spusťte následující příkaz, který zastaví monitorování clusteru.
+
+    ```powershell
+    .\disable-monitoring.ps1 -clusterResourceId $azureArcClusterResourceId -kubeContext $kubeContext
+    ```
+
+### <a name="using-bash"></a>Použití bash
+
+1. Stáhněte a uložte skript do místní složky, která konfiguruje cluster pomocí doplňku monitorování pomocí následujících příkazů:
+
+    ```bash
+    curl -o disable-monitoring.sh -L https://aka.ms/disable-monitoring-bash-script
+    ```
+
+2. Nakonfigurujte `azureArcClusterResourceId` proměnnou tak, že nastavíte odpovídající hodnoty `subscriptionId` pro `resourceGroupName` a `clusterName` zastupujete ID prostředku vašeho prostředku clusteru Kubernetes s podporou ARC Azure.
+
+    ```bash
+    export azureArcClusterResourceId="/subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.Kubernetes/connectedClusters/<clusterName>"
+    ```
+
+3. `kubeContext`Pomocí příkazu nakonfigurujte proměnnou pomocí **Kube kontextu** clusteru `kubectl config get-contexts` .
+
+    ```bash
+    export kubeContext="<kubeContext name of your k8s cluster>"
+    ```
+
+4. Pokud chcete zastavit monitorování clusteru, jsou na základě scénáře nasazení k dispozici různé příkazy.
+
+    Spusťte následující příkaz, který zastaví monitorování clusteru pomocí aktuálního kontextu.
+
+    ```bash
+    bash disable-monitoring.sh --resource-id $azureArcClusterResourceId
+    ```
+
+    Spusťte následující příkaz, který zastaví monitorování clusteru zadáním kontextu.
+
+    ```bash
+    bash disable-monitoring.sh --resource-id $azureArcClusterResourceId --kube-context $kubeContext
+    ```
 
 ## <a name="next-steps"></a>Další kroky
 

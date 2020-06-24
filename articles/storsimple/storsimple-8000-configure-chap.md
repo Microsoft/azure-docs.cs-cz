@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: efc116c278bfe72419800603a3b365f461fe0a28
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267960"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711795"
 ---
 # <a name="configure-chap-for-your-storsimple-device"></a>Konfigurace protokolu CHAP pro zařízení StorSimple
 
@@ -80,7 +80,7 @@ V případě jednosměrného ověřování cíl ověřuje iniciátor. Toto ově�
    1. Zaškrtněte políčko **Povolit přihlášení protokolem CHAP** .
    2. Do pole **název** zadejte uživatelské jméno, které jste zadali pro iniciátor protokolu CHAP v Azure Portal.
    3. V poli **cílový tajný klíč** zadejte heslo, které jste zadali pro iniciátor protokolu CHAP v Azure Portal.
-   4. Klikněte na tlačítko **OK**.
+   4. Klikněte na **OK**.
       
        ![Rozšířená nastavení – Obecné](./media/storsimple-configure-chap/IC740946.png)
 5. Na kartě **cíle** v okně **Vlastnosti iniciátoru iSCSI** se má stav zařízení zobrazit jako **připojeno**. Pokud používáte zařízení StorSimple 1200, pak je každý svazek připojený jako cíl iSCSI. Proto se pro každý svazek musí opakovat kroky 3-4.
@@ -123,7 +123,7 @@ V obousměrném ověřování cíl ověřuje iniciátor a potom iniciátor ově�
 4. V dialogovém okně **vzájemného tajného klíče CHAP iniciátoru iSCSI** :
    
    1. Zadejte **heslo reverzního protokolu CHAP** , které jste nakonfigurovali v Azure Portal.
-   2. Klikněte na tlačítko **OK**.
+   2. Klikněte na **OK**.
       
        ![společný tajný klíč protokolu CHAP iniciátoru iSCSI](./media/storsimple-configure-chap/IC740949.png)
 5. Klikněte na kartu **cíle** .

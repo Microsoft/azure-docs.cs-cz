@@ -4,15 +4,15 @@ description: Naučte se, jak nastavit proměnné prostředí v kontejnerech, kte
 ms.topic: article
 ms.date: 04/17/2019
 ms.openlocfilehash: c3c76ba0c6131a8ab3de68c13c9dfddaf7e8749a
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79247225"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686728"
 ---
 # <a name="set-environment-variables-in-container-instances"></a>Nastavení proměnných prostředí v instancích kontejnerů
 
-Když v instancích kontejnerů nastavíte proměnné prostředí, můžete dynamicky konfigurovat aplikaci nebo skript, které kontejner spustí. To je podobné jako argument `--env` příkazového řádku pro `docker run`. 
+Když v instancích kontejnerů nastavíte proměnné prostředí, můžete dynamicky konfigurovat aplikaci nebo skript, které kontejner spustí. To je podobné jako `--env` argument příkazového řádku pro `docker run` . 
 
 Chcete-li nastavit proměnné prostředí v kontejneru, určete je při vytváření instance kontejneru. Tento článek ukazuje příklady nastavení proměnných prostředí při spuštění kontejneru pomocí [Azure CLI](#azure-cli-example), [Azure PowerShell](#azure-powershell-example)a [Azure Portal](#azure-portal-example). 
 
@@ -38,7 +38,7 @@ az container create \
     --restart-policy OnFailure
 ```
 
-Chcete-li změnit výstup, spusťte druhý kontejner s přidaným `--environment-variables` argumentem a určete hodnoty proměnných *NUMWORDS* a *minLength* . (V tomto příkladu se předpokládá, že rozhraní příkazového řádku spouštíte v prostředí bash nebo v Azure Cloud Shell. Při použití příkazového řádku systému Windows zadejte proměnné s dvojitými uvozovkami, například `--environment-variables "NumWords"="5" "MinLength"="8"`.)
+Chcete-li změnit výstup, spusťte druhý kontejner s `--environment-variables` přidaným argumentem a určete hodnoty proměnných *NUMWORDS* a *minLength* . (V tomto příkladu se předpokládá, že rozhraní příkazového řádku spouštíte v prostředí bash nebo v Azure Cloud Shell. Při použití příkazového řádku systému Windows zadejte proměnné s dvojitými uvozovkami, například `--environment-variables "NumWords"="5" "MinLength"="8"` .)
 
 ```azurecli-interactive
 az container create \
@@ -94,7 +94,7 @@ New-AzContainerGroup `
     -Image mcr.microsoft.com/azuredocs/aci-wordcount:latest
 ```
 
-Nyní spusťte následující příkaz [New-AzContainerGroup][new-Azcontainergroup] . Tato hodnota určuje proměnné prostředí *NUMWORDS* a *minLength* po naplnění proměnné pole `envVars`:
+Nyní spusťte následující příkaz [New-AzContainerGroup][new-Azcontainergroup] . Tato hodnota určuje proměnné prostředí *NUMWORDS* a *minLength* po naplnění proměnné pole `envVars` :
 
 ```azurepowershell-interactive
 $envVars = @{'NumWords'='5';'MinLength'='8'}
@@ -229,7 +229,7 @@ Pomocí příkazu [AZ Container exec][az-container-exec] , který umožňuje pro
 az container exec --resource-group myResourceGroup --name securetest --exec-command "/bin/bash"
 ```
 
-Po otevření interaktivního prostředí v rámci kontejneru můžete získat přístup k hodnotě `SECRET` proměnné:
+Po otevření interaktivního prostředí v rámci kontejneru můžete získat přístup k `SECRET` hodnotě proměnné:
 
 ```console
 root@caas-ef3ee231482549629ac8a40c0d3807fd-3881559887-5374l:/# echo $SECRET

@@ -7,11 +7,11 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: sutalasi
 ms.openlocfilehash: 6499c986bef965848303ee9833fd59f5e3f0889c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257989"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710231"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Nastavení zotavení po havárii do Azure pro virtuální počítače Hyper-V pomocí PowerShellu a Azure Resource Manager
 
@@ -44,7 +44,7 @@ Kromě toho konkrétní příklad, který je popsaný v tomto článku, má nás
 
 ## <a name="step-1-sign-in-to-your-azure-account"></a>Krok 1: přihlášení k účtu Azure
 
-1. Otevřete konzolu PowerShellu a spusťte tento příkaz, abyste se přihlásili ke svému účtu Azure. Rutina zobrazí webovou stránku s výzvou k zadání přihlašovacích údajů k účtu `Connect-AzAccount`:.
+1. Otevřete konzolu PowerShellu a spusťte tento příkaz, abyste se přihlásili ke svému účtu Azure. Rutina zobrazí webovou stránku s výzvou k zadání přihlašovacích údajů k účtu: `Connect-AzAccount` .
    - Alternativně můžete použít přihlašovací údaje účtu jako parametr v `Connect-AzAccount` rutině pomocí parametru **Credential** .
    - Pokud jste partnerem CSP při práci jménem tenanta, zadejte zákazníka jako tenanta pomocí názvu primární domény tenantID nebo tenanta. Příklad: `Connect-AzAccount -Tenant "fabrikam.com"`
 1. Přidružte předplatné, které chcete používat s účtem, protože účet může mít několik předplatných:
@@ -73,7 +73,7 @@ Kromě toho konkrétní příklad, který je popsaný v tomto článku, má nás
 
 ## <a name="step-2-set-up-the-vault"></a>Krok 2: nastavení trezoru
 
-1. Vytvořte Azure Resource Manager skupinu prostředků, ve které chcete vytvořit trezor, nebo použijte existující skupinu prostředků. Následujícím způsobem vytvořte novou skupinu prostředků. `$ResourceGroupName` Proměnná obsahuje název skupiny prostředků, kterou chcete vytvořit, a proměnná $Geo obsahuje oblast Azure, ve které chcete vytvořit skupinu prostředků (například "Brazílie – jih").
+1. Vytvořte Azure Resource Manager skupinu prostředků, ve které chcete vytvořit trezor, nebo použijte existující skupinu prostředků. Následujícím způsobem vytvořte novou skupinu prostředků. `$ResourceGroupName`Proměnná obsahuje název skupiny prostředků, kterou chcete vytvořit, a proměnná $Geo obsahuje oblast Azure, ve které chcete vytvořit skupinu prostředků (například "Brazílie – jih").
 
    ```azurepowershell
    New-AzResourceGroup -Name $ResourceGroupName -Location $Geo
@@ -86,7 +86,7 @@ Kromě toho konkrétní příklad, který je popsaný v tomto článku, má nás
    $vault = New-AzRecoveryServicesVault -Name <string> -ResourceGroupName <string> -Location <string>
    ```
 
-Pomocí `Get-AzRecoveryServicesVault` rutiny můžete načíst seznam existujících trezorů.
+Pomocí rutiny můžete načíst seznam existujících trezorů `Get-AzRecoveryServicesVault` .
 
 ## <a name="step-3-set-the-recovery-services-vault-context"></a>Krok 3: nastavte kontext trezoru Recovery Services.
 
@@ -130,7 +130,7 @@ Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 
 Pokud používáte server základní technologie Hyper-V, Stáhněte instalační soubor a proveďte následující kroky:
 
-1. Extrahujte soubory z _AzureSiteRecoveryProvider. exe_ do místního adresáře spuštěním tohoto příkazu:
+1. Extrahujte soubory z _AzureSiteRecoveryProvider.exe_ do místního adresáře spuštěním tohoto příkazu:
 
    ```console
    AzureSiteRecoveryProvider.exe /x:. /q
@@ -242,7 +242,7 @@ Než začnete, zadaný účet úložiště by měl být ve stejné oblasti Azure
 > 1. Povolení převzetí služeb při selhání u spravovaných disků aktualizací vlastností virtuálního počítače
 > 1. Pomocí `Get-AzRecoveryServicesAsrReplicationProtectedItem` rutiny načtěte ID disku pro každý disk chráněné položky.
 > 1. Vytvořte objekt Dictionary pomocí `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` rutiny, který bude obsahovat mapování ID disku na disk pro šifrování disku. Tyto sady diskových šifrovacích sad se v cílové oblasti předem vytvoří.
-> 1. Aktualizujte vlastnosti virtuálního počítače `Set-AzRecoveryServicesAsrReplicationProtectedItem` pomocí rutiny předáním objektu Dictionary v parametru **DiskIdToDiskEncryptionSetMap** .
+> 1. Aktualizujte vlastnosti virtuálního počítače pomocí `Set-AzRecoveryServicesAsrReplicationProtectedItem` rutiny předáním objektu Dictionary v parametru **DiskIdToDiskEncryptionSetMap** .
 
 ## <a name="step-8-run-a-test-failover"></a>Krok 8: spuštění testovacího převzetí služeb při selhání
 

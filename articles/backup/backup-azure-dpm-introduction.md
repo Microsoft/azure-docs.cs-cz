@@ -2,13 +2,13 @@
 title: Příprava serveru DPM pro zálohování úloh
 description: V tomto článku se dozvíte, jak připravit zálohy aplikace System Center Data Protection Manager (DPM) do Azure pomocí služby Azure Backup.
 ms.topic: conceptual
-ms.date: 01/30/2019
-ms.openlocfilehash: 2119d46ca6102286ca879777058a49938b501ad6
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.date: 06/11/2020
+ms.openlocfilehash: 7c2b811685ec9ea5f8fe752a5a1c73611a624b62
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79273459"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718321"
 ---
 # <a name="prepare-to-back-up-workloads-to-azure-with-system-center-dpm"></a>Příprava zálohování úloh do Azure pomocí System Center DPM
 
@@ -48,7 +48,7 @@ Podporované typy souborů | Tyto typy souborů je možné zálohovat pomocí Az
 Nepodporované typy souborů | Servery se systémy souborů s rozlišováním velkých a malých písmen; pevné odkazy (vynecháno); body rozboru (přeskočeny); šifrované a komprimované (vynechané); šifrované a zhuštěné (přeskočené); Komprimovaný datový proud; analyzovat datový proud.
 Místní úložiště | Každý počítač, který chcete zálohovat, musí mít místní volné úložiště, které má nejméně 5% velikosti zálohovaných dat. Například zálohování 100 GB dat vyžaduje minimálně 5 GB volného místa v umístění od začátku.
 Úložiště trezoru | Neexistuje žádné omezení na množství dat, která můžete zálohovat do trezoru Azure Backup, ale velikost zdroje dat (například virtuální počítač nebo databáze) by neměla překročit 54 400 GB.
-Azure ExpressRoute | Pokud je Azure ExpressRoute nakonfigurovaný s privátním nebo veřejným partnerským vztahem Microsoftu, nejde ho použít k zálohování dat do Azure.<br/><br/> Pokud je Azure ExpressRoute nakonfigurovaný s veřejným partnerským vztahem, dá se použít k zálohování dat do Azure.<br/><br/> **Poznámka:** Veřejné partnerské vztahy se pro nové okruhy zastaraly.
+Azure ExpressRoute | Data můžete zálohovat přes Azure ExpressRoute s veřejným partnerským vztahem (k dispozici pro staré okruhy) a partnerským vztahem Microsoftu. Zálohování přes soukromý partnerský vztah se nepodporuje.<br/><br/> **S veřejným partnerským vztahem**: Zajistěte přístup k následujícím doménám nebo adresám:<br/><br/>- `http://www.msftncsi.com/ncsi.txt` <br/><br/>- `microsoft.com` <br/><br/>-`.WindowsAzure.com`<br/><br/>-`.microsoftonline.com`<br/><br/>-`.windows.net`<br/><br/> **S partnerským vztahem Microsoftu**vyberte následující služby nebo oblasti a příslušné hodnoty komunity:<br/><br/>-Azure Active Directory (12076:5060)<br/><br/>-Microsoft Azure oblasti (podle umístění vašeho trezoru Recovery Services)<br/><br/>-Azure Storage (podle umístění vašeho trezoru Recovery Services)<br/><br/>Další informace najdete v tématu [požadavky na směrování ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-routing).<br/><br/>**Poznámka**: veřejný partnerský vztah je pro nové okruhy zastaralý.
 Agent Azure Backup | Je-li aplikace DPM spuštěna v produktu System Center 2012 SP1, nainstalujte kumulativní aktualizaci 2 nebo novější pro aplikaci DPM SP1. To je vyžadováno pro instalaci agenta.<br/><br/> Tento článek popisuje, jak nasadit nejnovější verzi agenta Azure Backup, označovaného také jako agent služby Microsoft Azure Recovery Services (MARS). Pokud máte nasazenou starší verzi, aktualizujte na nejnovější verzi, abyste zajistili, že zálohování funguje podle očekávání.
 
 Než začnete, potřebujete účet Azure s povolenou funkcí Azure Backup. Pokud účet nemáte, můžete si během několika minut vytvořit bezplatný zkušební účet. Přečtěte si o [cenách Azure Backup](https://azure.microsoft.com/pricing/details/backup/).
@@ -103,7 +103,7 @@ Stáhněte si soubor s přihlašovacími údaji trezoru do místního počítač
 
     ![Otevření nabídky trezoru](./media/backup-azure-dpm-introduction/vault-settings-dpm.png)
 
-4. V nabídce **vlastnosti** > **zálohovat přihlašovací údaje**klikněte na **Stáhnout**. Portál vygeneruje soubor s přihlašovacími údaji trezoru pomocí kombinace názvu trezoru a aktuálního data a zpřístupní ho ke stažení.
+4. V nabídce **vlastnosti**  >  **zálohovat přihlašovací údaje**klikněte na **Stáhnout**. Portál vygeneruje soubor s přihlašovacími údaji trezoru pomocí kombinace názvu trezoru a aktuálního data a zpřístupní ho ke stažení.
 
     ![Stáhnout](./media/backup-azure-dpm-introduction/vault-credentials.png)
 
@@ -121,7 +121,7 @@ Každý počítač, který je zálohovaný pomocí Azure Backup musí mít nains
 
     ![Stáhnout](./media/backup-azure-dpm-introduction/azure-backup-agent.png)
 
-4. Po stažení spusťte soubor marsagentinstaller. exe. Instalace agenta do počítače aplikace DPM.
+4. Po stažení spusťte MARSAgentInstaller.exe. Instalace agenta do počítače aplikace DPM.
 5. Vyberte instalační složku a složku mezipaměti pro agenta. Volné místo na umístění mezipaměti musí být alespoň 5% dat zálohy.
 6. Pokud se k Internetu připojujete pomocí proxy server, zadejte na obrazovce **konfigurace proxy serveru** proxy server podrobnosti. Pokud používáte ověřený proxy server, zadejte na této obrazovce Podrobnosti o uživatelském jménu a hesle.
 7. Agent Azure Backup nainstaluje .NET Framework 4,5 a prostředí Windows PowerShell (pokud nejsou nainstalované), aby se instalace dokončila.

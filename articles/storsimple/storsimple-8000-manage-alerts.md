@@ -7,11 +7,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: alkohli
 ms.openlocfilehash: ff50836e1438b8d35f26ddfdf165084406f52faf
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79267817"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711931"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>Použití služby StorSimple Device Manager k zobrazení a správě upozornění StorSimple
 
@@ -48,11 +48,11 @@ Můžete zvolit, jestli chcete být upozorňováni e-mailem podmínek upozorněn
 > [!NOTE]
 > Pro každé zařízení můžete zadat maximálně 20 e-mailových adres.
 
-Po povolení e-mailových oznámení pro zařízení budou členové seznamu oznámení dostávat e-mailové zprávy pokaždé, když dojde k kritickému upozornění. Zprávy budou odeslány z *StorSimple-Alerts-mail.windowsazure.com\@odpovědi* a popíší se podmínky upozornění. Příjemci můžou kliknout na **zrušit odběr** a odebrat si ho ze seznamu e-mailových oznámení.
+Po povolení e-mailových oznámení pro zařízení budou členové seznamu oznámení dostávat e-mailové zprávy pokaždé, když dojde k kritickému upozornění. Zprávy budou odeslány z *StorSimple-Alerts- \@ mail.windowsazure.com odpovědi* a popíší se podmínky upozornění. Příjemci můžou kliknout na **zrušit odběr** a odebrat si ho ze seznamu e-mailových oznámení.
 
 #### <a name="to-enable-email-notification-of-alerts-for-a-device"></a>Povolení e-mailových oznámení o výstrahách pro zařízení
 1. Přejděte do služby Správce zařízení StorSimple. V seznamu zařízení vyberte a klikněte na zařízení, které chcete nakonfigurovat.
-2. Pro zařízení přejít na **Nastavení** > **Obecné** .
+2. Pro zařízení přejít na **Nastavení**  >  **Obecné** .
 
    ![Okno výstrahy](./media/storsimple-8000-manage-alerts/configure-alerts-email2.png)
    
@@ -60,7 +60,7 @@ Po povolení e-mailových oznámení pro zařízení budou členové seznamu ozn
    
    1. V poli **Odeslat oznámení e-mailem** vyberte **Ano**.
    2. V poli **Správci e-mailové služby** vyberte **Ano** , pokud chcete, aby správce služby a všichni spolusprávci dostávali oznámení o výstrahách.
-   3. V poli **ostatní příjemci e-mailu** zadejte e-mailové adresy všech dalších příjemců, kteří by měli dostávat oznámení o výstrahách. Zadejte jména ve formátu *někdo\@Somewhere.com*. Oddělte e-mailové adresy pomocí středníků. Pro každé zařízení můžete nakonfigurovat maximálně 20 e-mailových adres. 
+   3. V poli **ostatní příjemci e-mailu** zadejte e-mailové adresy všech dalších příjemců, kteří by měli dostávat oznámení o výstrahách. Zadejte jména ve formátu *někdo \@ Somewhere.com*. Oddělte e-mailové adresy pomocí středníků. Pro každé zařízení můžete nakonfigurovat maximálně 20 e-mailových adres. 
       
 3. Pokud chcete poslat testovací e-mailové oznámení, klikněte na **Odeslat zkušební e-mail**. Služba StorSimple Device Manager zobrazí stavové zprávy, když přepošle oznámení o testu.
 
@@ -125,7 +125,7 @@ V následujících tabulkách jsou uvedeny některé výstrahy Microsoft Azure S
 
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
-| Nelze navázat připojení k <*název přihlašovacích údajů cloudu*>. |Nejde se připojit k účtu úložiště. |Vypadá to, že může dojít k potížím s připojením k vašemu zařízení. Pokud chcete tento `Test-HcsmConnection` problém identifikovat a vyřešit, spusťte prosím rutinu z rozhraní Windows PowerShellu pro StorSimple na vašem zařízení. Pokud je nastavení správné, problém může být s přihlašovacími údaji účtu úložiště, pro který byla výstraha vyvolána. V takovém případě pomocí `Test-HcsStorageAccountCredential` rutiny určete, jestli jsou problémy, které můžete vyřešit.<ul><li>Ověřte nastavení sítě.</li><li>Ověřte přihlašovací údaje účtu úložiště.</li></ul> |
+| Nelze navázat připojení k <*název přihlašovacích údajů cloudu*>. |Nejde se připojit k účtu úložiště. |Vypadá to, že může dojít k potížím s připojením k vašemu zařízení. Pokud `Test-HcsmConnection` Chcete tento problém identifikovat a vyřešit, spusťte prosím rutinu z rozhraní Windows PowerShellu pro StorSimple na vašem zařízení. Pokud je nastavení správné, problém může být s přihlašovacími údaji účtu úložiště, pro který byla výstraha vyvolána. V takovém případě pomocí `Test-HcsStorageAccountCredential` rutiny určete, jestli jsou problémy, které můžete vyřešit.<ul><li>Ověřte nastavení sítě.</li><li>Ověřte přihlašovací údaje účtu úložiště.</li></ul> |
 | Z vašeho zařízení jsme nedostali prezenční signál pro poslední <*číslo*> minut. |Nelze se připojit k zařízení. |Vypadá to, že máte problém s připojením k vašemu zařízení. Použijte prosím `Test-HcsmConnection` rutinu z rozhraní Windows PowerShellu pro StorSimple na vašem zařízení k identifikaci a vyřešení problému nebo kontaktujte správce sítě. |
 
 ### <a name="storsimple-behavior-when-cloud-connectivity-fails"></a>StorSimple chování při neúspěšném připojení ke cloudu
@@ -158,7 +158,7 @@ Pokud v produkčním zařízení StorSimple dojde k chybě cloudového připojen
 
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
-| Operace obnovení nemohly obnovit všechna nastavení této služby. Data konfigurace zařízení jsou pro některá zařízení v nekonzistentním stavu. |Po zotavení po havárii se zjistila nekonzistence dat. |Šifrovaná data ve službě nejsou synchronizovaná s tímto zařízením na zařízení. Pokud chcete spustit proces synchronizace, autorizujte zařízení <*název zařízení*> z StorSimple Device Manager. Použijte rozhraní Windows PowerShell pro StorSimple ke spuštění `Restore-HcsmEncryptedServiceData` rutiny Device <*název zařízení*> a zadáním starého hesla jako vstupu do této rutiny obnovíte profil zabezpečení. Pak spusťte `Invoke-HcsmServiceDataEncryptionKeyChange` rutinu, která aktualizuje šifrovací klíč dat služby. Až provedete příslušnou akci, vymažte tuto výstrahu ze stránky s upozorněními. |
+| Operace obnovení nemohly obnovit všechna nastavení této služby. Data konfigurace zařízení jsou pro některá zařízení v nekonzistentním stavu. |Po zotavení po havárii se zjistila nekonzistence dat. |Šifrovaná data ve službě nejsou synchronizovaná s tímto zařízením na zařízení. Pokud chcete spustit proces synchronizace, autorizujte zařízení <*název zařízení*> z StorSimple Device Manager. Použijte rozhraní Windows PowerShell pro StorSimple ke spuštění `Restore-HcsmEncryptedServiceData` rutiny device <*název zařízení*> a zadáním starého hesla jako vstupu do této rutiny obnovíte profil zabezpečení. Pak spusťte `Invoke-HcsmServiceDataEncryptionKeyChange` rutinu, která aktualizuje šifrovací klíč dat služby. Až provedete příslušnou akci, vymažte tuto výstrahu ze stránky s upozorněními. |
 
 ### <a name="hardware-alerts"></a>Hardwarové výstrahy
 
@@ -192,9 +192,9 @@ Pokud v produkčním zařízení StorSimple dojde k chybě cloudového připojen
 | Text výstrahy | Událost | Další informace/doporučené akce |
 |:--- |:--- |:--- |
 | Nepovedlo se spustit služby StorSimple. |Chyba DataPath |Pokud potíže potrvají, obraťte se na podpora Microsoftu. |
-| Byla zjištěna duplicitní IP adresa pro ' DATA0 '. | |Systém zjistil konflikt pro IP adresu 10.0.0.1. Síťový prostředek ' DATA0 ' na * \<zařízení1>* zařízení je offline. Ujistěte se, že se tato IP adresa nepoužívá v žádné jiné entitě v této síti. Pokud chcete řešit problémy se sítí, přečtěte si [řešení potíží pomocí rutiny Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Pokud chcete tento problém vyřešit, obraťte se na správce sítě. Pokud potíže potrvají, obraťte se na podpora Microsoftu. |
-| Adresa IPv4 (nebo IPv6) pro ' DATA0 ' je offline. | |Síťový prostředek "DATA0" s IP adresou "10.0.0.1" a délka předpony "22" na * \<zařízení1>* zařízení je offline. Zajistěte, aby byly porty přepínače, ke kterým je toto rozhraní připojené, v provozu. Pokud chcete řešit problémy se sítí, přečtěte si [řešení potíží pomocí rutiny Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
-| Nelze se připojit k ověřovací službě. |Chyba DataPath |URLthat se používá k ověření, není dosažitelný. Ujistěte se, že pravidla brány firewall obsahují vzory adres URL určené pro zařízení StorSimple. Další informace o vzorech adresy URL v Azure Portal najdete v protokolu HTTPS\/:/aka.MS/SS-8000-Network-reqs. Pokud používáte Azure Government Cloud, pokračujte na vzory adres URL v protokolu HTTPS\/:/aka.MS/ss8000-gov-Network-reqs.|
+| Byla zjištěna duplicitní IP adresa pro ' DATA0 '. | |Systém zjistil konflikt pro IP adresu 10.0.0.1. Síťový prostředek ' DATA0 ' na zařízení *\<device1>* je offline. Ujistěte se, že se tato IP adresa nepoužívá v žádné jiné entitě v této síti. Pokud chcete řešit problémy se sítí, přečtěte si [řešení potíží pomocí rutiny Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). Pokud chcete tento problém vyřešit, obraťte se na správce sítě. Pokud potíže potrvají, obraťte se na podpora Microsoftu. |
+| Adresa IPv4 (nebo IPv6) pro ' DATA0 ' je offline. | |Síťový prostředek "DATA0" s IP adresou "10.0.0.1" a délka předpony 22 na zařízení *\<device1>* je offline. Zajistěte, aby byly porty přepínače, ke kterým je toto rozhraní připojené, v provozu. Pokud chcete řešit problémy se sítí, přečtěte si [řešení potíží pomocí rutiny Get-netadapter](storsimple-8000-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet). |
+| Nelze se připojit k ověřovací službě. |Chyba DataPath |URLthat se používá k ověření, není dosažitelný. Ujistěte se, že pravidla brány firewall obsahují vzory adres URL určené pro zařízení StorSimple. Další informace o vzorech adresy URL v Azure Portal najdete v protokolu https: \/ /aka.MS/SS-8000-Network-reqs. Pokud používáte Azure Government Cloud, pokračujte na vzory adres URL v protokolu https: \/ /aka.MS/ss8000-gov-Network-reqs.|
 
 ### <a name="performance-alerts"></a>Výstrahy výkonu
 

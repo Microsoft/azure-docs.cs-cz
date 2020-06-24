@@ -15,11 +15,11 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 88b903d68e4398b4e30b0b7435279c29bee6cd6b
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79254479"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711710"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Instalace aktualizace 1,1 ve virtuálním poli StorSimple
 
@@ -66,7 +66,7 @@ K stažení aktualizace 1,1 z katalogu Microsoft Update proveďte následující
 
 #### <a name="to-download-the-update-or-the-hotfix"></a>Stažení aktualizace nebo opravy hotfix
 
-1. Spusťte Internet Explorer a přejděte na [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com).
+1. Spusťte Internet Explorer a přejděte na [https://catalog.update.microsoft.com](https://catalog.update.microsoft.com) .
 
 2. Pokud na tomto počítači používáte katalog Microsoft Update poprvé, po zobrazení výzvy k instalaci doplňku katalogu Microsoft Update klikněte na **nainstalovat** .
 
@@ -85,8 +85,8 @@ K stažení aktualizace 1,1 z katalogu Microsoft Update proveďte následující
     ![Soubory v balíčku](./media/storsimple-virtual-array-install-update-11/update01folder.png)
 
     Zobrazí se dva soubory:
-    -  Soubor `WindowsTH-KB3011067-x64`samostatného balíčku Microsoft Update. Tento soubor slouží k aktualizaci softwaru zařízení.
-    - Soubor, který obsahuje kumulativní aktualizace pro červenou `Windows8.1-KB4284815-x64`. Další informace o tom, co je zahrnuté v této kumulativní aktualizaci, najdete v [měsíci kumulativního zabezpečení v červnu](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815).
+    -  Soubor samostatného balíčku Microsoft Update `WindowsTH-KB3011067-x64` . Tento soubor slouží k aktualizaci softwaru zařízení.
+    - Soubor, který obsahuje kumulativní aktualizace pro červenou `Windows8.1-KB4284815-x64` . Další informace o tom, co je zahrnuté v této kumulativní aktualizaci, najdete v [měsíci kumulativního zabezpečení v červnu](https://support.microsoft.com/help/4284815/windows-81-update-kb4284815).
 
 ### <a name="install-the-update-or-the-hotfix"></a>Instalace aktualizace nebo opravy hotfix
 
@@ -99,7 +99,7 @@ Dokončení této procedury trvá přibližně 4 minuty. Provedením následují
 
 #### <a name="to-install-the-update-or-the-hotfix"></a>Instalace aktualizace nebo opravy hotfix
 
-1. V místním webovém uživatelském rozhraní přejdete na **Údržba** > **aktualizace softwaru**. Poznamenejte si verzi softwaru, kterou používáte. **Pokračujte v této aktualizaci pouze v případě, že používáte aktualizaci 1 (10.0.10296.0). Pokud používáte aktualizaci 0,6, nejdřív na zařízení [nainstalujte Update 1](storsimple-virtual-array-install-update-1.md) a pak použijte Update 1,1.**
+1. V místním webovém uživatelském rozhraní přejdete na **Údržba**  >  **aktualizace softwaru**. Poznamenejte si verzi softwaru, kterou používáte. **Pokračujte v této aktualizaci pouze v případě, že používáte aktualizaci 1 (10.0.10296.0). Pokud používáte aktualizaci 0,6, nejdřív na zařízení [nainstalujte Update 1](storsimple-virtual-array-install-update-1.md) a pak použijte Update 1,1.**
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-11/update1m.png)
 
@@ -115,14 +115,14 @@ Dokončení této procedury trvá přibližně 4 minuty. Provedením následují
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-11/update5m.png)
 
-5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, navštivte web**aktualizace softwaru** **Údržba** > . Zobrazená verze softwaru by měla být **10.0.0.0.0.10307** pro aktualizaci 1,1.
+5. Po dokončení restartování přejdete na **přihlašovací** stránku. Chcete-li ověřit, zda byl software zařízení aktualizován, v místním webovém uživatelském rozhraní, **Maintenance**navštivte web  >  **aktualizace softwaru**údržba. Zobrazená verze softwaru by měla být **10.0.0.0.0.10307** pro aktualizaci 1,1.
    
    > [!NOTE]
    > Verze softwaru oznamujeme trochu jiným způsobem v místním webovém uživatelském rozhraní a Azure Portal. Například místní webové uživatelské rozhraní hlásí **10.0.0.0.0.10307** a sestavy Azure Portal **10.0.10307.0** pro stejnou verzi.
    
     ![aktualizace zařízení](./media/storsimple-virtual-array-install-update-11/update6m.png)
 
-6. Opakujte kroky 2-4 pro instalaci opravy zabezpečení systému Windows pomocí souboru `Windows8.1-KB4284815-x64`. Virtuální pole se po instalaci restartuje a musíte se přihlásit k místnímu webovému uživatelskému rozhraní.
+6. Opakujte kroky 2-4 pro instalaci opravy zabezpečení systému Windows pomocí souboru `Windows8.1-KB4284815-x64` . Virtuální pole se po instalaci restartuje a musíte se přihlásit k místnímu webovému uživatelskému rozhraní.
 
 
 ## <a name="next-steps"></a>Další kroky

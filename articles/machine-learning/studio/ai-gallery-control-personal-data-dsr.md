@@ -5,18 +5,18 @@ description: Data uživatelů v produktu můžete exportovat a odstranit z Azure
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: studio
-ms.topic: conceptual
+ms.topic: how-to
 author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 05/25/2018
 ms.reviewer: jmartens, mldocs
-ms.openlocfilehash: 03341b9e663398f2c42266dead0d2dd01e97c3f3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 429ba2ae44788430bfa9d308b8de5daff25954d0
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79204541"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711166"
 ---
 # <a name="view-and-delete-in-product-user-data-from-azure-ai-gallery"></a>Umožňuje zobrazit a odstranit data uživatelů v produktu z Azure AI Gallery
 
@@ -38,7 +38,7 @@ Můžete zobrazit položky, které jste publikovali prostřednictvím uživatels
 
 ## <a name="use-the-ai-gallery-catalog-api-to-view-your-data"></a>Použití rozhraní API katalogu Galerie AI k zobrazení vašich dat
 
-Můžete programově zobrazit data shromážděná prostřednictvím rozhraní API katalogu Galerie AI, které je dostupné na https://catalog.cortanaanalytics.com/entitiesadrese. Chcete-li zobrazit data, budete potřebovat své ID autora. Pokud chcete zobrazit neuvedené entity prostřednictvím rozhraní API katalogu, budete potřebovat přístupový token.
+Můžete programově zobrazit data shromážděná prostřednictvím rozhraní API katalogu Galerie AI, které je dostupné na adrese https://catalog.cortanaanalytics.com/entities . Chcete-li zobrazit data, budete potřebovat své ID autora. Pokud chcete zobrazit neuvedené entity prostřednictvím rozhraní API katalogu, budete potřebovat přístupový token.
 
 Odpovědi katalogu se vrátí ve formátu JSON.
 
@@ -47,7 +47,7 @@ ID autora vychází z e-mailové adresy, která se používá při publikování
 
 1.    Přihlaste se k [Azure AI Gallery](https://gallery.azure.ai/).
 2.    Klikněte na profilový obrázek v pravém horním rohu a pak na název účtu pro načtení stránky profilu.
-3.    Adresa URL na panelu Adresa zobrazuje následující `authorId=`alfanumerické ID. Například pro adresu URL:`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
+3.    Adresa URL na panelu Adresa zobrazuje následující alfanumerické ID `authorId=` . Například pro adresu URL:`https://gallery.azure.ai/Home/Author?authorId=99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
         
     ID autora:`99F1F5C6260295F1078187FA179FBE08B618CB62129976F09C6AF0923B02A5BA`
 
@@ -55,13 +55,13 @@ ID autora vychází z e-mailové adresy, která se používá při publikování
 
 Abyste mohli zobrazit neuvedené entity prostřednictvím rozhraní API katalogu, potřebujete přístupový token. Bez přístupového tokenu můžou uživatelé dál zobrazovat veřejné entity a další informace o uživateli.
 
-K získání přístupového tokenu je potřeba zkontrolovat `DataLabAccessToken` HLAVIČKU požadavku HTTP, který prohlížeč vytvoří v katalogu rozhraní API, když se přihlásí:
+K získání přístupového tokenu je potřeba zkontrolovat `DataLabAccessToken` hlavičku požadavku HTTP, který prohlížeč vytvoří v katalogu rozhraní API, když se přihlásí:
 
 1.    Přihlaste se k [Azure AI Gallery](https://gallery.azure.ai/).
 2.    Klikněte na profilový obrázek v pravém horním rohu a pak na název účtu pro načtení stránky profilu.
 3.    Stisknutím klávesy F12 otevřete podokno Vývojářské nástroje prohlížečem, vyberte kartu síť a aktualizujte stránku. 
 4. Vyfiltrujte požadavky na *katalog* řetězců zadáním do textového pole Filtr.
-5.    V části žádosti na adresu `https://catalog.cortanaanalytics.com/entities`URL Najděte požadavek GET a vyberte kartu *záhlaví* . Posuňte se dolů k části s *hlavičkou požadavků* .
+5.    V části žádosti na adresu URL `https://catalog.cortanaanalytics.com/entities` Najděte požadavek GET a vyberte kartu *záhlaví* . Posuňte se dolů k části s *hlavičkou požadavků* .
 6.    V záhlaví `DataLabAccessToken` je alfanumerický token. Pokud chcete zajistit zabezpečení vašich dat, tento token nesdílejte.
 
 ### <a name="view-user-information"></a>Zobrazit informace o uživateli
@@ -82,7 +82,7 @@ Vrátí odpověď, například:
 
 Rozhraní API služby Catalog ukládá informace o publikovaných entitách do Azure AI Gallery, které můžete zobrazit také přímo na [webu Galerie AI](https://gallery.azure.ai/). 
 
-Chcete-li zobrazit publikované entity, přejděte na následující adresu `[AuthorId]` URL, kde nahraďte ID autora získané v poli [získat ID autora](#get-an-author-id) výše.
+Chcete-li zobrazit publikované entity, přejděte na následující adresu URL, kde nahraďte `[AuthorId]` ID autora získané v poli [získat ID autora](#get-an-author-id) výše.
 
     https://catalog.cortanaanalytics.com/entities?$filter=author/id eq '[AuthorId]'
 
@@ -95,7 +95,7 @@ Příklad:
 Tento dotaz zobrazí pouze veřejné entity. Pokud chcete zobrazit všechny vaše entity, včetně neuvedených seznamů, zadejte přístupový token získaný z předchozí části.
 
 1.    Pomocí nástroje, jako je například [post](https://www.getpostman.com), vytvořte požadavek HTTP GET na adresu URL katalogu, jak je popsáno v části [získání přístupového tokenu](#get-your-access-token).
-2.    Vytvořte hlavičku požadavku HTTP s názvem `DataLabAccessToken`, která má nastavenou hodnotu přístupového tokenu.
+2.    Vytvořte hlavičku požadavku HTTP s názvem `DataLabAccessToken` , která má nastavenou hodnotu přístupového tokenu.
 3.    Odešlete požadavek HTTP.
 
 > [!TIP]

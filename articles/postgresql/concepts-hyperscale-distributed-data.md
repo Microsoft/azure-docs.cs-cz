@@ -8,18 +8,18 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: ade7632dc042741a07bdb59e34e30b3fb464e0e9
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79243650"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710350"
 ---
 # <a name="distributed-data-in-azure-database-for-postgresql--hyperscale-citus"></a>Distribuovaná data v Azure Database for PostgreSQL – Citus (škálování)
 
 Tento článek popisuje tři typy tabulek v Azure Database for PostgreSQL – Citus (škálování).
 Ukazuje, jak jsou distribuované tabulky uložené jako horizontálních oddílů, a způsob, jakým se horizontálních oddílů umístí na uzly.
 
-## <a name="table-types"></a>Typy tabulek
+## <a name="table-types"></a>Typy table
 
 Existují tři typy tabulek ve skupině serverů Citus (), které se používají pro různé účely.
 
@@ -51,7 +51,7 @@ Dobrým kandidátem na místní tabulky budou malé administrativní tabulky, kt
 
 Předchozí část popisuje, jak se distribuované tabulky ukládají jako horizontálních oddílů na pracovních uzlech. Tato část se věnuje více technickým podrobnostem.
 
-Tabulka `pg_dist_shard` metadat koordinátora obsahuje řádek pro každý horizontálních oddílů každé distribuované tabulky v systému. Řádek odpovídá ID horizontálních oddílů s rozsahem celých čísel v prostoru hodnot hash (shardminvalue, shardmaxvalue).
+`pg_dist_shard`Tabulka metadat koordinátora obsahuje řádek pro každý horizontálních oddílů každé distribuované tabulky v systému. Řádek odpovídá ID horizontálních oddílů s rozsahem celých čísel v prostoru hodnot hash (shardminvalue, shardmaxvalue).
 
 ```sql
 SELECT * from pg_dist_shard;
@@ -64,7 +64,7 @@ SELECT * from pg_dist_shard;
  (4 rows)
 ```
 
-Pokud uzel koordinátora chce určit `github_events`, který horizontálních oddílů obsahuje řádek, vyhodnotí hodnotu distribučního sloupce v řádku. Uzel pak ověří, který rozsah\'horizontálních oddílů s má hodnotu hash. Rozsahy jsou definovány tak, že obrázek funkce hash je jejich nesouvislý sjednocení.
+Pokud uzel koordinátora chce určit, který horizontálních oddílů obsahuje řádek `github_events` , vyhodnotí hodnotu distribučního sloupce v řádku. Uzel pak ověří, který \' Rozsah horizontálních oddílů s má hodnotu hash. Rozsahy jsou definovány tak, že obrázek funkce hash je jejich nesouvislý sjednocení.
 
 ### <a name="shard-placements"></a>Horizontálních oddílů místa
 

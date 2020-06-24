@@ -2,22 +2,22 @@
 title: Přidat aplikaci mimo galerii – Microsoft Identity Platform | Microsoft Docs
 description: Přidejte do svého tenanta služby Azure AD aplikaci mimo galerii.
 services: active-directory
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
-ms.topic: article
+ms.topic: how-to
 ms.workload: identity
 ms.date: 10/24/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bd5a5f100dbe09c3b82f58183a118ee3bf455f70
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9691ecb8d742952ba4364dcda2b62c3829f79d60
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77063607"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760316"
 ---
 # <a name="add-an-unlisted-non-gallery-application-to-your-azure-ad-organization"></a>Přidání aplikace, která není v seznamu (galerie), do vaší organizace Azure AD
 
@@ -34,7 +34,7 @@ Tento článek popisuje, jak přidat aplikaci mimo galerii do **podnikových apl
 
 1. Přihlaste se k [portálu Azure Active Directory](https://aad.portal.azure.com/) pomocí účtu správce Microsoft Identity Platform.
 
-2. Vyberte možnost **podnikové aplikace** > **Nová aplikace**.
+2. Vyberte možnost **podnikové aplikace**  >  **Nová aplikace**.
 
 3. (Volitelné, ale doporučené) Do vyhledávacího pole **Procházet galerii Azure AD** zadejte zobrazovaný název aplikace. 
 

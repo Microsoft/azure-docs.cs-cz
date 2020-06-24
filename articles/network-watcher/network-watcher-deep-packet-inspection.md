@@ -7,23 +7,23 @@ author: damendo
 ms.assetid: 7b907d00-9c35-40f5-a61e-beb7b782276f
 ms.service: network-watcher
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
-ms.openlocfilehash: 7d32043ca73e9cf810b3eab5e65cb4b42b599d18
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 2a4debda712636e577639b84845dda6b9b4228a1
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77152920"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84725051"
 ---
 # <a name="packet-inspection-with-azure-network-watcher"></a>Kontrola paketů pomocí Network Watcher Azure
 
 Pomocí funkce zachytávání paketů Network Watcher můžete iniciovat a spravovat relace zachycení na virtuálních počítačích Azure z portálu, PowerShellu, rozhraní příkazového řádku a programově prostřednictvím sady SDK a REST API. Zachytávání paketů umožňuje řešit scénáře, které vyžadují data na úrovni paketů, poskytováním informací v snadno použitelném formátu. Využití volně dostupných nástrojů pro kontrolu dat vám umožní prozkoumat komunikaci odesílaná do a z vašich virtuálních počítačů a získat přehled o provozu v síti. Mezi příklady použití dat zachytávání paketů patří: zkoumání problémů se sítí nebo aplikacemi, zjišťování zneužití sítě a pokusů o vniknutí nebo zachování dodržování předpisů. V tomto článku se dozvíte, jak otevřít soubor zachycení paketů, který poskytuje Network Watcher s využitím oblíbeného nástroje open source. Nabídneme vám také příklady, jak vypočítat latenci připojení, identifikovat neobvyklý provoz a prozkoumávat statistiky sítě.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek prochází některými předkonfigurovanými scénáři při zachytávání paketů, který byl spuštěn dříve. Tyto scénáře ilustrují možnosti, ke kterým lze získat pøístup pomocí kontroly zachytávání paketů. Tento scénář používá nástroj [Wireshark](https://www.wireshark.org/) ke kontrole zachytávání paketů.
 
@@ -41,7 +41,7 @@ V tomto scénáři ukážeme, jak zobrazit prvotní dobu odezvy (RTT) konverzace
 
 Po navázání připojení TCP se první tři pakety odeslané v rámci připojení řídí vzorem, který se běžně označuje jako Třícestný handshake. Kontrolou prvních dvou paketů odeslaných v této signalizaci, počáteční požadavek od klienta a odpověď ze serveru můžeme vypočítat latenci při navázání připojení. Tato latence je označována jako čas odezvy (RTT). Další informace o protokolu TCP a prostředcích metody handshake najdete v následujících zdrojích informací. [https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip](https://support.microsoft.com/en-us/help/172983/explanation-of-the-three-way-handshake-via-tcp-ip)
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
 Spustit nástroj WireShark
 
@@ -75,9 +75,9 @@ V instanci virtuálního počítače, kterou jste nasadili v Azure, můžete mí
 
 V tomto příkladu si projdeme předchozí spuštěné zachytávání paketů pro nechtěné protokoly, které mohou ukazovat na neoprávněnou komunikaci z aplikace spuštěné na vašem počítači.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
-Použití stejného zachycení v předchozím scénáři klikněte na**hierarchie protokolu** **statistiky** > .
+Použití stejného zachycení v předchozím scénáři klikněte na **Statistics**  >  **hierarchie protokolu** statistiky.
 
 ![Nabídka hierarchie protokolu][2]
 
@@ -91,9 +91,9 @@ Jak vidíte na následujícím snímku obrazovky, probíhal provoz pomocí proto
 
 Porozumění typům provozu, koncovým bodům a portům, které jsou předávány, je důležité při monitorování nebo řešení potíží s aplikacemi a prostředky ve vaší síti. Pomocí souboru zachycení paketů z výše uvedeného se můžeme rychle naučit nejdůležitější cíle, se kterými náš virtuální počítač komunikuje, a porty, které se využívají.
 
-### <a name="step-1"></a>Krok 1
+### <a name="step-1"></a>Step 1
 
-Pomocí stejného zachycení v předchozím scénáři klikněte na **Statistika** > **IPv4** > **cíle a porty** .
+Pomocí stejného zachycení v předchozím scénáři klikněte na **Statistika**  >  **IPv4**  >  **cíle a porty** .
 
 ![okno zachytávání paketů][4]
 

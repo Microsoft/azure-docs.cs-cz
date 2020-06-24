@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.author: mayg
 ms.openlocfilehash: 0d39f763d3cdc90f89e0bcd17d0facc67551ffc0
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257898"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710265"
 ---
 # <a name="analyze-the-azure-site-recovery-deployment-planner-report"></a>Analýza sestavy Plánovač nasazení služby Azure Site Recovery
 Tento článek popisuje listy v sestavě aplikace Excel vygenerované Plánovačem nasazení služby Azure Site Recovery pro scénář nasazení Hyper-V do Azure.
@@ -187,7 +187,7 @@ Sestava aplikace Excel vygenerovaná Plánovačem nasazení služby Site Recover
 * 1 025 GB až 2 048 GB je P40.
 * 2 049 GB až 4 095 GB je P50.
 
-Pokud se například charakteristiky zatížení disku umístí do kategorie P20 nebo P30, ale jeho velikost ho mapuje na nižší typ disku služby Premium Storage, nástroj tento virtuální počítač označí jako **Ano**\*. Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Premium Storage, nebo po převzetí služeb při selhání změnit typ cílového disku.
+Pokud se například charakteristiky zatížení disku umístí do kategorie P20 nebo P30, ale jeho velikost ho mapuje na nižší typ disku služby Premium Storage, nástroj tento virtuální počítač označí jako **Ano** \* . Nástroj také doporučí změnit velikost zdrojového disku tak, aby se vešel do doporučeného typu disku služby Premium Storage, nebo po převzetí služeb při selhání změnit typ cílového disku.
 
 **Storage Type** (Typ služby Storage): Standard nebo Premium.
 

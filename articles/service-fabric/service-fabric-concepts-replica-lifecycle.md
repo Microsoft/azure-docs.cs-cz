@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: aprameyr
 ms.openlocfilehash: cf21af43de553a2802289e44eaece12952d077d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79258561"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710741"
 ---
 # <a name="replicas-and-instances"></a>Repliky a instance 
 Tento článek obsahuje přehled životního cyklu replik stavových služeb a instancí bezstavových služeb.
@@ -37,7 +37,7 @@ Ve stavu ukončení Azure Service Fabric v procesu vypínání instance v tomto 
 Ve stavu zrušeno, instance již na uzlu neběží. V tomto okamžiku Service Fabric udržuje metadata o této instanci, která je nakonec také odstraněna.
 
 > [!NOTE]
-> Můžete přejít ze všech stavů na vyřazený stav pomocí možnosti **ForceRemove** na `Remove-ServiceFabricReplica`.
+> Můžete přejít ze všech stavů na vyřazený stav pomocí možnosti **ForceRemove** na `Remove-ServiceFabricReplica` .
 >
 
 ## <a name="replicas-of-stateful-services"></a>Repliky stavových služeb
@@ -101,7 +101,7 @@ Role repliky není relevantní v pohotovostním stavu.
 >
 
 > [!NOTE]
-> Je možné přejít ze všech stavů do stavu zrušeno pomocí možnosti **ForceRemove** na `Remove-ServiceFabricReplica`.
+> Je možné přejít ze všech stavů do stavu zrušeno pomocí možnosti **ForceRemove** na `Remove-ServiceFabricReplica` .
 >
 
 ## <a name="replica-role"></a>Role repliky 

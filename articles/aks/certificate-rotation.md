@@ -4,12 +4,12 @@ description: Naučte se, jak tyto certifikáty otočit v clusteru Azure Kubernet
 services: container-service
 ms.topic: article
 ms.date: 11/15/2019
-ms.openlocfilehash: ae85b544409cbf4532c221a2a7ca27940ae6f369
-ms.sourcegitcommit: 813f7126ed140a0dff7658553a80b266249d302f
+ms.openlocfilehash: 715771c7a1704e0d39f790d018980c4b39ba351b
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/06/2020
-ms.locfileid: "84465605"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817453"
 ---
 # <a name="rotate-certificates-in-azure-kubernetes-service-aks"></a>Otočení certifikátů ve službě Azure Kubernetes (AKS)
 
@@ -17,7 +17,7 @@ Služba Azure Kubernetes Service (AKS) používá certifikáty pro ověřování
 
 V tomto článku se dozvíte, jak otočit certifikáty v clusteru AKS.
 
-## <a name="before-you-begin"></a>Před zahájením
+## <a name="before-you-begin"></a>Než začnete
 
 Tento článek vyžaduje, abyste spustili Azure CLI verze 2.0.77 nebo novější. Verzi zjistíte spuštěním příkazu `az --version`. Pokud potřebujete instalaci nebo upgrade, přečtěte si téma [Instalace Azure CLI][azure-cli-install].
 
@@ -39,8 +39,7 @@ AKS generuje a používá následující certifikáty, certifikační autority a
 > 
 > Navíc můžete kontrolovat datum vypršení platnosti certifikátu vašeho clusteru. Například následující příkaz zobrazí podrobnosti o certifikátu pro cluster *myAKSCluster* .
 > ```console
-> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d > my-cert.crt
-> openssl x509 -in my-cert.crt -text
+> kubectl config view --raw -o jsonpath="{.clusters[?(@.name == 'myAKSCluster')].cluster.certificate-authority-data}" | base64 -d | openssl x509 -text | grep -A2 Validity
 > ```
 
 ## <a name="rotate-your-cluster-certificates"></a>Otočení certifikátů clusteru

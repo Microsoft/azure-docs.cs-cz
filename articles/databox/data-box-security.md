@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 06/16/2020
 ms.author: alkohli
-ms.openlocfilehash: 21b05631f1c225c9c4b1f7c65d18588900850b8e
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 19f06893c862e1e34cd79a42c428d202918f92e2
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77911727"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817717"
 ---
 # <a name="azure-data-box-security-and-data-protection"></a>Zabezpečení a ochrana dat v zařízení Azure Data Box
 
@@ -45,7 +45,6 @@ Data Box představuje bezpečné řešení pro přenos dat díky tomu, že prohl
 Zařízení Data Box je chráněno následujícími funkcemi.
 
 - Odolné pouzdro zařízení, které odolá nárazům, nešetrné přepravě a vnějším podmínkám. 
-- Pečetě, které odhalují manipulaci se zařízením při přepravě.
 - Hardwarová a softwarová detekce nedovolené manipulace, která zabrání dalšímu používání zařízení.
 - Běží pouze na softwaru specifickém pro Data Box.
 - Spouští se v uzamčeném stavu.
@@ -57,7 +56,7 @@ Zařízení Data Box je chráněno následujícími funkcemi.
 Data, která se na zařízení Data Box ukládají a která se z něho kopírují, jsou chráněna následujícími funkcemi:
 
 - 256bitové šifrování AES pro neaktivní uložená data.
-- Pro přenášená data je možné použít šifrované protokoly.
+- Pro přenášená data je možné použít šifrované protokoly. Pro ochranu dat při kopírování z datových serverů doporučujeme použít protokol SMB 3,0 se šifrováním.
 - Bezpečné vymazání dat ze zařízení po dokončení jejich nahrání do Azure. Výmaz dat je v souladu s pokyny v [dodatku A pro jednotky pevného disku ATA v NIST standardech 800-88r1](https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-88r1.pdf). Událost mazání dat je zaznamenána v [historii objednávky](data-box-logs.md#download-order-history).
 
 ### <a name="data-box-service-protection"></a>Ochrana služby Data Box
@@ -80,7 +79,7 @@ Azure Data Box shromažďuje a zobrazuje osobní údaje v následujících klí�
 
   - Jméno kontaktu
   - Telefonní číslo
-  - E-mailu
+  - E-mail
   - Ulice a číslo
   - Město
   - PSČ
@@ -100,7 +99,7 @@ Další informace najdete v Zásadách ochrany osobních údajů společnosti Mi
 
 V zařízení Data Box jsou implementovány následující pokyny pro zabezpečení: 
 
-|Pokyn   |Popis   |
+|Pokyn   |Description   |
 |---------|---------|
 |[IEC 60529 IP52](https://www.iec.ch/)    | Ochrana před vodou a prachem         |
 |[ISTA 2A](https://ista.org/docs/2Aoverview.pdf)     | Odolnost před nešetrným zacházením při přepravě          |

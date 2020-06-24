@@ -5,20 +5,23 @@ services: automation
 ms.subservice: update-management
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/11/2019
+ms.date: 06/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: ae8c4f09c0133dde7b0a73b7c2fcd0a28aa22ae3
-ms.sourcegitcommit: 053e5e7103ab666454faf26ed51b0dfcd7661996
+ms.openlocfilehash: 2bcf2518ab7f4e5a3648b508e42868fd5bb1a863
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84013193"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817211"
 ---
 # <a name="integrate-update-management-with-windows-endpoint-configuration-manager"></a>Integrace Update Management s koncovým bodem Windows Configuration Manager
 
 Zákazníci, kteří investovali do služby Microsoft Endpoint Configuration Manager pro správu počítačů, serverů a mobilních zařízení, se také spoléhají na jeho sílu a splatnost při správě aktualizací softwaru jako součást cyklu správy softwarových aktualizací (SUM).
 
 Spravované servery Windows můžete nahlásit a aktualizovat tak, že vytvoříte a předvedete předprodukční nasazení aktualizací softwaru ve Windows Endpoint Configuration Manager a získáte podrobný stav dokončených nasazení aktualizací pomocí [Update Management](automation-update-management.md). Pokud používáte Windows Endpoint Configuration Manager pro vytváření sestav o kompatibilitě aktualizací, ale ne pro správu nasazení aktualizací se servery Windows, můžete pokračovat ve vytváření sestav nástroje Configuration Manager, zatímco aktualizace zabezpečení jsou spravované pomocí Azure Automation Update Management.
+
+>[!NOTE]
+>I když Update Management podporuje posouzení aktualizací a opravy Windows serveru 2008 R2, nepodporuje klienty spravované pomocí koncového bodu Configuration Manager spuštění tohoto operačního systému.
 
 ## <a name="prerequisites"></a>Požadavky
 

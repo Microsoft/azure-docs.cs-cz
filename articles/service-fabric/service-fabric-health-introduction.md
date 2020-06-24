@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 2/28/2018
 ms.author: oanapl
 ms.openlocfilehash: 473aa2b9a74193a857390cd3e29b2b559b6084d3
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79282416"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712186"
 ---
 # <a name="introduction-to-service-fabric-health-monitoring"></a>Úvod do monitorování stavu Service Fabric
 Azure Service Fabric zavádí model stavu, který poskytuje bohatě, flexibilní a rozšiřitelné vyhodnocení stavu a vytváření sestav. Model umožňuje monitorovat stav clusteru a služby, které jsou v něm spuštěné, do téměř v reálném čase. Můžete snadno získat informace o stavu a opravit případné problémy, které se budou zastarat, a způsobit obrovské výpadky. V typickém modelu odesílají služby sestavy na základě místních zobrazení a tyto informace jsou agregované tak, aby poskytovaly celkové zobrazení na úrovni clusteru.
@@ -101,7 +101,7 @@ Následující příklad je výňatek z manifestu clusteru. Chcete-li definovat 
 ```
 
 ### <a name="application-health-policy"></a>Zásada stavu aplikace
-[Zásady stavu aplikace](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) popisují, jak se provádí vyhodnocení agregací událostí a podřízených stavů pro aplikace a jejich podřízené objekty. Může být definován v manifestu aplikace **souboru ApplicationManifest. XML**v balíčku aplikace. Pokud nejsou zadány žádné zásady, Service Fabric předpokládá, že entita není v pořádku, pokud má zprávu o stavu nebo podřízenou položku ve stavu upozornění nebo chyba.
+[Zásady stavu aplikace](https://docs.microsoft.com/dotnet/api/system.fabric.health.applicationhealthpolicy) popisují, jak se provádí vyhodnocení agregací událostí a podřízených stavů pro aplikace a jejich podřízené objekty. Může být definován v manifestu aplikace, **ApplicationManifest.xml**v balíčku aplikace. Pokud nejsou zadány žádné zásady, Service Fabric předpokládá, že entita není v pořádku, pokud má zprávu o stavu nebo podřízenou položku ve stavu upozornění nebo chyba.
 Konfigurovatelné zásady jsou:
 
 * [ConsiderWarningAsError](https://docs.microsoft.com/dotnet/api/system.fabric.health.clusterhealthpolicy.considerwarningaserror). Určuje, jestli se mají při hodnocení stavu považovat zprávy o stavu s varováním za chyby. Výchozí hodnota: false.
@@ -179,7 +179,7 @@ Jakmile Health Store vyhodnotí všechny podřízené položky, agreguje jejich 
 ## <a name="health-reporting"></a>Vytváření sestav o stavu
 Komponenty systému, aplikace systémových prostředků infrastruktury a interní/externí sledovací zařízení mohou hlásit Service Fabric entit. Sestavy provádějí *místní* určení stavu monitorovaných entit na základě podmínek, které monitorují. Nemusí se pohlížet na žádná globální stav ani agregovaná data. Požadovaným chováním je jednoduché sestavování a ne komplexní organismy, které potřebují prohledat informace, které se mají odeslat, a získat tak mnoho věcí.
 
-Aby bylo možné odesílat údaje o stavu Health Store, musí zpravodaj identifikovat ovlivněnou entitu a vytvořit sestavu o stavu. K odeslání sestavy použijte rozhraní API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , vystavení rozhraní API pro stav vystavená na objektech `Partition` nebo `CodePackageActivationContext` , rutinách PowerShellu nebo REST.
+Aby bylo možné odesílat údaje o stavu Health Store, musí zpravodaj identifikovat ovlivněnou entitu a vytvořit sestavu o stavu. K odeslání sestavy použijte rozhraní API [FabricClient. HealthClient. ReportHealth](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.healthclient.reporthealth) , vystavení rozhraní API pro stav vystavená na `Partition` `CodePackageActivationContext` objektech nebo, rutinách PowerShellu nebo REST.
 
 ### <a name="health-reports"></a>Sestavy stavu
 [Sestavy o stavu](https://docs.microsoft.com/dotnet/api/system.fabric.health.healthreport) pro každou entitu v clusteru obsahují následující informace:
@@ -187,7 +187,7 @@ Aby bylo možné odesílat údaje o stavu Health Store, musí zpravodaj identifi
 * **SourceId**. Řetězec, který jednoznačně identifikuje zpravodaj události stavu.
 * **Identifikátor entity** Určuje entitu, ve které se sestava aplikuje. Liší se v závislosti na [typu entity](service-fabric-health-introduction.md#health-entities-and-hierarchy):
   
-  * Služby. Žádné.
+  * Služby. Žádné
   * Uzlu. Název uzlu (řetězec).
   * Použití. Název aplikace (URI). Představuje název instance aplikace nasazené v clusteru.
   * Službám. Název služby (URI). Představuje název instance služby nasazené v clusteru.

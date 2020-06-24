@@ -11,12 +11,12 @@ manager: philmea
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: ddbb1c6fd705e658867c0d594981e87bc8cd6afe
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.openlocfilehash: aa6aa7a8d98ae756a65a2618371c320118875c42
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/08/2020
-ms.locfileid: "82930484"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710435"
 ---
 # <a name="get-connected-to-azure-iot-central"></a>Připojte se k Azure IoT Central
 
@@ -50,7 +50,7 @@ Tento přístup je užitečný při experimentování s IoT Central nebo testov�
 
 ![Klíče SAS pro jednotlivá zařízení](./media/concepts-get-connected/single-device-sas.png)
 
-Další informace najdete v kurzu [Vytvoření a připojení klientské aplikace Node. js do vaší aplikace Azure IoT Central](./tutorial-connect-device-nodejs.md) .
+Další informace najdete v kurzu [Vytvoření a připojení klientské aplikace Node.js k vaší aplikaci Azure IoT Central](./tutorial-connect-device-nodejs.md) .
 
 ## <a name="connect-devices-at-scale-using-sas"></a>Připojení zařízení ve velkém měřítku pomocí SAS
 
@@ -93,11 +93,11 @@ Pokud dojde k narušení zabezpečení nebo pokud je váš primární certifiká
 
 Pokud chcete zařízení hromadně propojit pomocí certifikátů X. 509, nejdřív zařízení zaregistrujte do aplikace, a to pomocí souboru CSV [a importujte identifikátory zařízení a názvy zařízení](howto-manage-devices.md#import-devices). Všechna ID zařízení by měla být malá.
 
-Vygenerujte na svých zařízeních listový certifikát X. 509 pomocí nahraného kořenového nebo zprostředkujícího certifikátu. Jako `CNAME` hodnotu v listových certifikátech použijte **ID zařízení** . Váš kód zařízení potřebuje hodnotu **rozsahu ID** vaší aplikace, **ID zařízení**a odpovídající certifikát zařízení.
+Vygenerujte na svých zařízeních listový certifikát X. 509 pomocí nahraného kořenového nebo zprostředkujícího certifikátu. Jako **Device ID** `CNAME` hodnotu v listových certifikátech použijte ID zařízení. Váš kód zařízení potřebuje hodnotu **rozsahu ID** vaší aplikace, **ID zařízení**a odpovídající certifikát zařízení.
 
 #### <a name="sample-device-code"></a>Ukázkový kód zařízení
 
-Následující ukázka v [sadě Azure IoT Node. js SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) ukazuje, jakým způsobem klient zařízení Node. js používá pro registraci v aplikaci IoT Central listový certifikát X. 509 a DPS:
+Následující ukázka v [sadě Azure IoT Node.JS SDK](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/device/samples/register_x509.js) ukazuje, jakým způsobem klient Node.js zařízení používá k registraci v aplikaci IoT Central listový certifikát X. 509 a DPS:
 
 :::code language="nodejs" source="~/azure-iot-sdk-node/provisioning/device/samples/register_x509.js":::
 
@@ -107,7 +107,7 @@ Ekvivalentní ukázku jazyka C najdete v tématu [prov_dev_client_sample. C](htt
 
 Pro účely testování můžete pomocí následujících nástrojů generovat certifikáty root, zprostředkujícího a zařízení:
 
-- [Nástroje pro sadu SDK zařízení pro zřizování zařízení Azure IoT](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md): kolekce nástrojů Node. js, které můžete použít ke generování a ověření certifikátů a klíčů X. 509.
+- [Nástroje pro sadu SDK zařízení pro zřizování zařízení Azure IoT](https://github.com/Azure/azure-iot-sdk-node/blob/master/provisioning/tools/readme.md): kolekce Node.jsch nástrojů, které můžete použít ke generování a ověření certifikátů a klíčů X. 509.
 - Pokud používáte zařízení DevKit, tento [Nástroj příkazového řádku](https://aka.ms/iotcentral-docs-dicetool) vygeneruje certifikát certifikační autority, který můžete přidat do vaší aplikace IoT Central pro ověření certifikátů.
 - [Správa certifikátů testovací CA pro ukázky a kurzy](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md): kolekce skriptů PowerShellu a bash pro:
   - Vytvořte řetěz certifikátů.
@@ -180,7 +180,7 @@ IoT Central podporuje následující mechanismy ověřování identity pro jedno
 - **Certifikáty X. 509:** Pokud chcete vytvořit jednotlivou registraci pomocí certifikátů X. 509, otevřete stránku **připojení zařízení** , jako způsob připojení vyberte **jednotlivou registraci** a jako mechanismus zvolte **certifikáty (X. 509)** . Certifikáty zařízení používané s jednotlivou položkou registrace mají požadavek, aby byl Vydavatel a předmět CN nastaven na ID zařízení.
 
     > [!TIP]
-    > Pro účely testování můžete použít [Nástroje pro sadu SDK zařízení pro zřizování zařízení Azure IoT pro Node. js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) k vygenerování certifikátu podepsaného svým držitelem:`node create_test_cert.js device "mytestdevice"`
+    > Pro účely testování můžete použít [Nástroje pro sadu SDK zařízení pro zřizování zařízení Azure IoT pro Node.js](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/tools) k vygenerování certifikátu podepsaného svým držitelem:`node create_test_cert.js device "mytestdevice"`
 
 - **Ověření identity čipu TPM (Trusted Platform Module):** [Čip TPM](https://docs.microsoft.com/azure/iot-dps/concepts-tpm-attestation) je typ modulu hardwarového zabezpečení. Používání čipu TPM je jedním z nejbezpečnější způsobů, jak připojit zařízení. V tomto článku se předpokládá, že používáte diskrétní, firmware nebo integrovaný čip TPM. Software emulující čipy TPM je vhodný pro vytváření prototypů nebo testování, ale neposkytuje stejnou úroveň zabezpečení jako diskrétní, firmware nebo integrované čipy TPM. Nepoužívejte software čipy TPM v produkčním prostředí. Pokud chcete vytvořit jednotlivou registraci, která používá čip TPM, otevřete stránku **připojení zařízení** , jako způsob připojení vyberte **jednotlivou registraci** a jako mechanismus vytvořte **TPM** . Zadejte ověřovací klíč čipu TPM a uložte informace o připojení zařízení.
 
@@ -261,7 +261,7 @@ Následující tabulka shrnuje, jak se funkce IoT Central zařízení Azure nama
 | Vlastnost (zapisovatelná) | Požadované a hlášené vlastnosti vlákna zařízení |
 | Příkaz | Přímé metody |
 
-Další informace o používání sad SDK pro zařízení najdete v tématu [připojení zařízení DevDiv Kit k vaší aplikaci Azure IoT Central](howto-connect-devkit.md) , například Code.
+Další informace o používání sad SDK pro zařízení najdete v tématu [připojení zařízení IoT DevKit MXChip k vaší aplikaci Azure IoT Central](howto-connect-devkit.md) , například Code.
 
 ### <a name="protocols"></a>Protokoly
 

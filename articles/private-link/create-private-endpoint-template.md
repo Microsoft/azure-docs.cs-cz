@@ -1,6 +1,6 @@
 ---
-title: Šablona privátního koncového bodu Azure
-description: Informace o privátním propojení Azure
+title: Vytvoření privátního koncového bodu ve službě Azure Private Link
+description: V tomto rychlém startu použijete šablonu Azure Resource Manager k vytvoření privátního koncového bodu.
 services: private-link
 author: mblanco77
 ms.service: private-link
@@ -8,65 +8,65 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
-ms.openlocfilehash: af00119f1da3368b8592e020eee1ebb2a39a8501
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: a60edde222a6200a0378cd8c9c4f4774da9c2e50
+ms.sourcegitcommit: 1383842d1ea4044e1e90bd3ca8a7dc9f1b439a54
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84669949"
+ms.lasthandoff: 06/16/2020
+ms.locfileid: "84817967"
 ---
-# <a name="quickstart-create-a-private-endpoint---resource-manager-template"></a>Rychlý Start: Vytvoření šablony privátního koncového bodu – Správce prostředků
+# <a name="quickstart-create-a-private-endpoint-by-using-an-azure-resource-manager-template"></a>Rychlý Start: Vytvoření privátního koncového bodu pomocí šablony Azure Resource Manager
 
-V tomto rychlém startu použijete šablonu Správce prostředků k vytvoření privátního koncového bodu.
+V tomto rychlém startu použijete šablonu Azure Resource Manager k vytvoření privátního koncového bodu.
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Tento rychlý Start můžete také dokončit pomocí [Azure Portal](create-private-endpoint-portal.md), [Azure PowerShell](create-private-endpoint-powershell.md)nebo rozhraní příkazového [řádku Azure CLI](create-private-endpoint-cli.md).
+Tento rychlý Start můžete také dokončit pomocí [Azure Portal](create-private-endpoint-portal.md), [Azure PowerShell](create-private-endpoint-powershell.md)nebo rozhraní příkazového [řádku Azure](create-private-endpoint-cli.md).
 
-## <a name="prerequisites"></a>Požadavky
+## <a name="prerequisite"></a>Požadavek
 
-- Účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Potřebujete účet Azure s aktivním předplatným. [Vytvořte si účet zdarma](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-## <a name="create-an-private-endpoint"></a>Vytvoření privátního koncového bodu
+## <a name="create-a-private-endpoint"></a>Vytvoření privátního koncového bodu
 
-Tato šablona vytvoří privátní koncový bod pro Azure SQL Server.
+Tato šablona vytvoří privátní koncový bod pro instanci Azure SQL Database.
 
 ### <a name="review-the-template"></a>Kontrola šablony
 
-Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/101-private-endpoint-sql/).
+Šablona použitá v tomto rychlém startu je ze [šablon Azure pro rychlý Start](https://azure.microsoft.com/resources/templates/).
 
 :::code language="json" source="~/quickstart-templates/101-private-endpoint-sql/azuredeploy.json" range="001-295" highlight="131-156":::
 
 V šabloně je definováno víc prostředků Azure:
 
-- [**Microsoft. SQL/servery**](/azure/templates/microsoft.sql/servers) : Azure SQL Server s ukázkovou databází
-- [**Microsoft. SQL/servery/databáze**](/azure/templates/microsoft.sql/servers/databases) : Ukázková databáze
-- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks) : Virtual Network při nasazení privátního koncového bodu
-- [**Microsoft. Network/privateEndpoints**](/azure/templates/microsoft.network/privateendpoints) : privátní koncový bod pro přístup k privátnímu serveru Azure SQL Server
-- [**Microsoft. Network/privateDnsZones**](/azure/templates/microsoft.network/privatednszones) : používá se k překladu IP adresy privátního koncového bodu.
+- [**Microsoft. SQL/Servers**](/azure/templates/microsoft.sql/servers): instance SQL Database s ukázkovou databází.
+- [**Microsoft. SQL/servery/databáze**](/azure/templates/microsoft.sql/servers/databases): Ukázková databáze.
+- [**Microsoft. Network/virtualNetworks**](/azure/templates/microsoft.network/virtualnetworks): virtuální síť, ve které je nasazený privátní koncový bod.
+- [**Microsoft. Network/privateEndpoints**](/azure/templates/microsoft.network/privateendpoints): soukromý koncový bod pro přístup k instanci SQL Database.
+- [**Microsoft. Network/privateDnsZones**](/azure/templates/microsoft.network/privatednszones): zóna používaná k překladu IP adresy privátního koncového bodu.
 - [**Microsoft. Network/privateDnsZones/virtualNetworkLinks**](/azure/templates/microsoft.network/privatednszones/virtualnetworklinks)
-- [**Microsoft. Network/privateEndpoints/privateDnsZoneGroups**](/azure/templates/microsoft.network/privateendpoints/privateDnsZoneGroups) : pro přidružení privátního koncového bodu k privátní zóně DNS
-- [**Microsoft. Network/publicIpAddresses**](/azure/templates/microsoft.network/publicIpAddresses) : veřejná IP adresa pro přístup k virtuálnímu počítači
-- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces) : síťové rozhraní pro virtuální počítač
-- [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines) : virtuální počítač pro otestování privátního připojení s privátním koncovým bodem na Azure SQL Server
+- [**Microsoft. Network/privateEndpoints/privateDnsZoneGroups**](/azure/templates/microsoft.network/privateendpoints/privateDnsZoneGroups): Skupina zón používaná k přidružení privátního koncového bodu k privátní zóně DNS.
+- [**Microsoft. Network/publicIpAddresses**](/azure/templates/microsoft.network/publicIpAddresses): veřejná IP adresa použitá pro přístup k virtuálnímu počítači.
+- [**Microsoft. Network/networkInterfaces**](/azure/templates/microsoft.network/networkinterfaces): síťové rozhraní pro virtuální počítač.
+- [**Microsoft. COMPUTE/virtualMachines**](/azure/templates/microsoft.compute/virtualmachines): virtuální počítač, který slouží k otestování soukromého připojení s privátním koncovým bodem, do instance SQL Database.
 
 ### <a name="deploy-the-template"></a>Nasazení šablony
 
-Nasadit šablonu Správce prostředků do Azure:
+Tady je postup, jak nasadit šablonu Azure Resource Manager do Azure:
 
-1. Vyberte **nasadit do Azure** a přihlaste se k Azure a otevřete šablonu. Šablona vytvoří privátní koncový bod, Azure SQL Server, síťovou infrastrukturu a virtuální počítače, které se mají ověřit.
+1. Pokud se chcete přihlásit k Azure a otevřít šablonu, vyberte **nasadit do Azure**. Šablona vytvoří privátní koncový bod, instanci SQL Database, síťovou infrastrukturu a virtuální počítač, který se má ověřit.
 
    [![Nasazení do Azure](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-private-endpoint-sql%2Fazuredeploy.json)
 
-2. Vyberte nebo vytvořte skupinu prostředků,
-3. Zadejte přihlašovací jméno a heslo správce SQL.
+2. Vyberte nebo vytvořte skupinu prostředků.
+3. Zadejte přihlášení a heslo správce SQL.
 4. Zadejte uživatelské jméno a heslo správce virtuálního počítače.
-5. Vyberte Souhlasím **s podmínkami a ujednáními uvedenými nahoře** a pak vyberte **koupit**. Dokončení nasazení může trvat až 20 minut nebo i déle.
+5. Přečtěte si prohlášení o podmínkách a ujednáních. Pokud souhlasíte, vyberte Souhlasím **s podmínkami a ujednáními uvedenými nad**  >  **nákupem**. Dokončení nasazení může trvat až 20 minut nebo i déle.
 
 ## <a name="validate-the-deployment"></a>Ověření nasazení
 
 > [!NOTE]
-> Šablona ARM vygeneruje jedinečný název pro prostředek myVm<b>{UniqueID}</b> a pro prostředek Azure SQL Server SQLServer<b>{UniqueID}</b> , nahraďte <b>{UniqueID}</b> svou generovanou hodnotou.
+> Šablona Azure Resource Manager vygeneruje jedinečný název pro prostředek virtuálního počítače<b>{UniqueID}</b> a pro prostředek SQL Database SQLServer<b>{UniqueID}</b> . Vygenerovanou hodnotu pro **{UniqueID}** nahraďte.
 
 ### <a name="connect-to-a-vm-from-the-internet"></a>Připojení k virtuálnímu počítači z internetu
 
@@ -74,11 +74,11 @@ Připojte se k virtuálnímu počítači _myVm {UniqueID}_ z Internetu následuj
 
 1. Na panelu hledání na portálu zadejte _myVm {UniqueID}_.
 
-2. Klikněte na tlačítko **Připojit**. Po výběru tlačítka **připojit** se **připojte k virtuálnímu počítači** .
+2. Vyberte **Připojit**. **Připojení k virtuálnímu počítači** se otevře.
 
 3. Vyberte **Stáhnout soubor RDP**. Azure vytvoří soubor protokol RDP (Remote Desktop Protocol) (_. RDP_) a stáhne ho do vašeho počítače.
 
-4. Otevřete stažený soubor. RDP \* .
+4. Otevřete stažený soubor .rdp.
 
    a. Pokud se zobrazí výzva, vyberte **Připojit**.
 
@@ -89,16 +89,17 @@ Připojte se k virtuálnímu počítači _myVm {UniqueID}_ z Internetu následuj
 
 5. Vyberte **OK**.
 
-6. Během procesu přihlášení se může zobrazit upozornění certifikátu. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
+6. Při přihlášení se může zobrazit upozornění na certifikát. Pokud se zobrazí upozornění certifikátu, vyberte **Ano** nebo **pokračovat**.
 
-7. Jakmile se zobrazí plocha virtuálního počítače, minimalizujte ji tak, aby se vrátila k místnímu počítači.
+7. Po zobrazení plochy virtuálního počítače ho minimalizujte, abyste se mohli vrátit k místnímu počítači.
 
-### <a name="access-sql-database-server-privately-from-the-vm"></a>Přístup k serveru SQL Database soukromě z virtuálního počítače
+### <a name="access-the-sql-database-server-privately-from-the-vm"></a>Přístup k serveru SQL Database soukromě z virtuálního počítače
 
-V této části se připojíte k serveru SQL Database z virtuálního počítače pomocí privátního koncového bodu.
+Tady je postup, jak se připojit k serveru SQL Database z virtuálního počítače pomocí privátního koncového bodu.
 
 1.  Ve vzdálené ploše _myVM {UniqueID}_ otevřete PowerShell.
-2.  Zadejte příkaz nslookup SQLServer {UniqueID}. Database. Windows. NET   obdržíte zprávu podobnou této:
+2.  Zadejte následující příkaz: nslookup SQLServer {UniqueID}. Database. Windows. NET. 
+    Zobrazí se zpráva podobná této:
 
     ```
       Server:  UnKnown
@@ -109,15 +110,17 @@ V této části se připojíte k serveru SQL Database z virtuálního počítač
       Aliases:  sqlserver.database.windows.net
     ```
 
-3.  Nainstalovat SQL Server Management Studio
-4.  V připojení k serveru zadejte nebo vyberte tyto informace: typ serveru: vyberte možnost databázový stroj.
-    Název serveru: vyberte SQLServer {UniqueID}. Database. Windows. NET username: zadejte uživatelské jméno, které jste zadali při vytváření.
-    Heslo: zadejte heslo, které jste zadali při vytváření.
-    Pamatovat heslo: vyberte Ano.
+3.  Nainstalujte SQL Server Management Studio.
+4.  V **Connect to Server (připojit k serveru**) zadejte nebo vyberte tyto informace:
+    - **Typ serveru**: vyberte možnost **databázový stroj**.
+    - **Název serveru**: vyberte **SQLServer {UniqueID}. Database. Windows. NET**.
+    - **Uživatelské jméno**: zadejte uživatelské jméno, které jste zadali při vytváření.
+    - **Heslo**: zadejte heslo, které jste zadali při vytváření.
+    - **Pamatovat heslo**: vyberte **Ano**.
 
 5.  Vyberte **Připojit**.
-6.  Procházet **databáze** z levé nabídky
-7.  Volitelně Vytvoření nebo dotazování informací z _ukázky – DB_
+6.  V nabídce na levé straně přejděte do části **databáze**.
+7.  Volitelně můžete vytvořit nebo dotazovat informace z _Sample-DB_.
 8.  Zavřete připojení ke vzdálené ploše na _myVm {UniqueID}_.
 
 ## <a name="clean-up-resources"></a>Vyčištění prostředků
@@ -132,4 +135,4 @@ Remove-AzResourceGroup -Name <your resource group name>
 
 ## <a name="next-steps"></a>Další kroky
 
-- Další informace o [privátním propojení Azure](private-link-overview.md)
+Přečtěte si další informace o [privátních odkazech Azure](private-link-overview.md).

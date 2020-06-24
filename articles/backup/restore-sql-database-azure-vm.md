@@ -4,11 +4,11 @@ description: Tento článek popisuje, jak obnovit SQL Server databáze, které b
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 642476c98ca223da01bda5c6eb79ee9b53732468
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79252451"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84687425"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>Obnovení databází SQL Server na virtuálních počítačích Azure
 
@@ -95,7 +95,7 @@ Obnovte následujícím způsobem:
 
 ### <a name="restore-and-overwrite"></a>Obnovit a přepsat
 
-1. V nabídce **obnovit konfiguraci** v části **kde se má obnovení**vyberte **přepsat databázi** > **OK**.
+1. V nabídce **obnovit konfiguraci** v části **kde se má obnovení**vyberte **přepsat databázi**  >  **OK**.
 
     ![Vybrat přepsat databázi](./media/backup-azure-sql-database/restore-configuration-overwrite-db.png)
 

@@ -7,17 +7,17 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.openlocfilehash: c56c31bb6f56efb10808ce25b6b232089391e831
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79270521"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712441"
 ---
 # <a name="data-operation-code-samples-for-azure-logic-apps"></a>Ukázky kódu operací s daty pro Azure Logic Apps
 
 Tady jsou ukázky kódu pro definice akcí operací s daty v článku, které [provádějí operace s daty](../logic-apps/logic-apps-perform-data-operations.md). Tyto ukázky můžete použít pro případy, kdy chcete vyzkoušet příklady s vlastní definicí pracovního postupu aplikace logiky, předplatným Azure a připojením rozhraní API. Jednoduše zkopírujte a vložte tyto definice akcí do editoru zobrazení kódu pro definici pracovního postupu vaší aplikace logiky a pak upravte definice pro konkrétní pracovní postup. 
 
-Na základě standardů JavaScript Object Notation (JSON) se tyto definice akcí zobrazují v abecedním pořadí. V návrháři aplikace logiky se však každá definice zobrazí ve správném pořadí v rámci pracovního postupu, protože každá `runAfter` vlastnost definice akce určuje pořadí spuštění.
+Na základě standardů JavaScript Object Notation (JSON) se tyto definice akcí zobrazují v abecedním pořadí. V návrháři aplikace logiky se však každá definice zobrazí ve správném pořadí v rámci pracovního postupu, protože každá vlastnost definice akce `runAfter` určuje pořadí spuštění.
 
 <a name="compose-action-example"></a>
 

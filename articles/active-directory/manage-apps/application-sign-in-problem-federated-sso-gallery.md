@@ -3,27 +3,27 @@ title: Problémy s přihlašováním do aplikace v galerii federovaného jednotn
 description: Doprovodné materiály k určitým chybám při přihlašování do aplikace, kterou jste nakonfigurovali pro federované jednotné přihlašování založené na SAML pomocí Azure AD
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 02/18/2019
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 874d273e26a728afc0a1dc1a16852016797067ca
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 9c2dc73038151297952dc208031b4a3b6dbcf146
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "77367896"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759313"
 ---
-# <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problémy s přihlašováním k aplikaci Galerie nakonfigurované pro federované jednotné přihlašování
+# <a name="problems-signing-in-to-a-gallery-application-configured-for-federated-single-sign-on"></a>Problémy s přihlášením k aplikaci z galerie s nakonfigurovaným federovaným jednotným přihlašováním
 
 Pokud chcete řešit potíže s přihlašováním níže, doporučujeme vám postupovat podle těchto návrhů a získat tak lepší diagnostiku a automatizovat postup řešení:
 
@@ -33,15 +33,15 @@ Pokud chcete řešit potíže s přihlašováním níže, doporučujeme vám pos
 
 ## <a name="application-not-found-in-directory"></a>Aplikace nebyla nalezena v adresáři.
 
-*Chyba AADSTS70001: aplikace s identifikátorem https:\//contoso.com nebyla v adresáři nalezena*.
+*Chyba AADSTS70001: aplikace s identifikátorem https: \/ /contoso.com nebyla v adresáři nalezena*.
 
 **Možná příčina**
 
-`Issuer` Atribut odeslaný z aplikace do služby Azure AD v požadavku SAML neodpovídá hodnotě identifikátoru, která je nakonfigurovaná pro aplikaci ve službě Azure AD.
+`Issuer`Atribut odeslaný z aplikace do služby Azure AD v požadavku SAML neodpovídá hodnotě identifikátoru, která je nakonfigurovaná pro aplikaci ve službě Azure AD.
 
-**Rozlišení**
+**Rozhodnutí**
 
-Zajistěte `Issuer` , aby se atribut v požadavku SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
+Zajistěte, aby se `Issuer` atribut v požadavku SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
 1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce**.
 
@@ -63,15 +63,15 @@ Zajistěte `Issuer` , aby se atribut v požadavku SAML shodoval s hodnotou ident
 
 ## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>Adresa pro odpověď neodpovídá adresám odpovědí nakonfigurovaným pro aplikaci.
 
-*Chyba AADSTS50011: adresa pro odpověď "https:\//contoso.com" neodpovídá adresám odpovědí nakonfigurovaným pro aplikaci*
+*Chyba AADSTS50011: adresa pro odpověď "https: \/ /contoso.com" neodpovídá adresám odpovědí nakonfigurovaným pro aplikaci*
 
 **Možná příčina**
 
-`AssertionConsumerServiceURL` Hodnota v požadavku SAML se neshoduje s hodnotou adresy URL odpovědi nebo vzorem nakonfigurovaným ve službě Azure AD. `AssertionConsumerServiceURL` Hodnota v požadavku SAML je adresa URL, která se zobrazí v chybě.
+`AssertionConsumerServiceURL`Hodnota v požadavku SAML se neshoduje s hodnotou adresy URL odpovědi nebo vzorem nakonfigurovaným ve službě Azure AD. `AssertionConsumerServiceURL`Hodnota v požadavku SAML je adresa URL, která se zobrazí v chybě.
 
-**Rozlišení**
+**Rozhodnutí**
 
-Zajistěte `AssertionConsumerServiceURL` , aby hodnota v požadavku SAML odpovídala hodnotě adresy URL odpovědi nakonfigurované ve službě Azure AD. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
+Zajistěte, aby `AssertionConsumerServiceURL` hodnota v požadavku SAML odpovídala hodnotě adresy URL odpovědi nakonfigurované ve službě Azure AD. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
 1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce**.
 
@@ -87,19 +87,19 @@ Zajistěte `AssertionConsumerServiceURL` , aby hodnota v požadavku SAML odpoví
 
 1.  Vyberte aplikaci, kterou chcete nakonfigurovat pro jednotné přihlašování.
 
-1.  Po načtení aplikace otevřete **základní konfiguraci SAML**. Ověřte nebo aktualizujte hodnotu v textovém poli adresy URL odpovědi tak, `AssertionConsumerServiceURL` aby odpovídala hodnotě v požadavku SAML.    
+1.  Po načtení aplikace otevřete **základní konfiguraci SAML**. Ověřte nebo aktualizujte hodnotu v textovém poli adresy URL odpovědi tak, aby odpovídala `AssertionConsumerServiceURL` hodnotě v požadavku SAML.    
     
 Po aktualizaci hodnoty adresy URL odpovědi v Azure AD, která odpovídá hodnotě odeslané aplikací v žádosti SAML, byste měli být schopni se přihlásit k aplikaci.
 
 ## <a name="user-not-assigned-a-role"></a>Uživatel nemá přiřazenou roli.
 
-*Chyba AADSTS50105: přihlášený uživatel brian\@contoso.com není přiřazen k roli pro aplikaci*.
+*Chyba AADSTS50105: přihlášený uživatel brian \@ contoso.com není přiřazen k roli pro aplikaci*.
 
 **Možná příčina**
 
 Uživateli se v Azure AD neudělil přístup k aplikaci.​
 
-**Rozlišení**
+**Rozhodnutí**
 
 Chcete-li přiřadit jednoho nebo více uživatelů k aplikaci přímo, postupujte podle následujících kroků. Pokud používáte prostředí pro [testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků.
 
@@ -148,7 +148,7 @@ Azure AD nepodporuje požadavek SAML, který aplikace odeslala pro jednotné př
 -   Chybějící požadovaná pole v požadavku SAML
 -   Kódovaná metoda požadavku SAML
 
-**Rozlišení**
+**Rozhodnutí**
 
 1. Zachytit požadavek SAML. V tomto kurzu se dozvíte, jak pomocí [SAML ladit jednotné přihlašování k aplikacím ve službě Azure AD](../azuread-dev/howto-v1-debug-saml-sso-issues.md) a Naučte se zachytit požadavek SAML.
 
@@ -166,11 +166,11 @@ Dodavatel aplikace by měl ověřit, jestli podporují implementaci Azure AD SAM
 
 **Možná příčina**
 
-`Issuer` Atribut odeslaný z aplikace do služby Azure AD v žádosti SAML se neshoduje s hodnotou identifikátoru nakonfigurovanou pro aplikaci ve službě Azure AD.
+`Issuer`Atribut odeslaný z aplikace do služby Azure AD v žádosti SAML se neshoduje s hodnotou identifikátoru nakonfigurovanou pro aplikaci ve službě Azure AD.
 
-**Rozlišení**
+**Rozhodnutí**
 
-Zajistěte `Issuer` , aby se atribut v požadavku SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte [prostředí testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků:
+Zajistěte, aby se `Issuer` atribut v požadavku SAML shodoval s hodnotou identifikátoru nakonfigurovanou v Azure AD. Pokud používáte [prostředí testování](../azuread-dev/howto-v1-debug-saml-sso-issues.md) v Azure Portal s rozšířením zabezpečeného prohlížeče moje aplikace, nemusíte ručně postupovat podle těchto kroků:
 
 1.  Otevřete [**Azure Portal**](https://portal.azure.com/) a přihlaste se jako **globální správce** nebo **spolusprávce**.
 
@@ -197,7 +197,7 @@ Zajistěte `Issuer` , aby se atribut v požadavku SAML shodoval s hodnotou ident
 
 Objekt aplikace je poškozený a Azure AD nerozpozná certifikát nakonfigurovaný pro aplikaci.
 
-**Rozlišení**
+**Rozhodnutí**
 
 Chcete-li odstranit a vytvořit nový certifikát, postupujte podle následujících kroků:
 
@@ -233,7 +233,7 @@ Chcete-li odstranit a vytvořit nový certifikát, postupujte podle následujíc
 
 Služba Azure AD nemohla identifikovat požadavek SAML v rámci parametrů adresy URL v požadavku HTTP. K tomu může dojít, když aplikace při odesílání požadavku SAML do Azure AD nepoužívá vazbu přesměrování HTTP.
 
-**Rozlišení**
+**Rozhodnutí**
 
 Aplikace potřebuje odeslat požadavek SAML zakódovaný do hlavičky umístění pomocí vazby přesměrování HTTP. Další informace o způsobu implementace najdete v části věnované vazbě HTTP Redirect v [dokumentu specifikace protokolu SAML](https://docs.oasis-open.org/security/saml/v2.0/saml-bindings-2.0-os.pdf).
 
@@ -241,11 +241,11 @@ Aplikace potřebuje odeslat požadavek SAML zakódovaný do hlavičky umístěn�
 
 **Možná příčina**
 
-Pokud v rámci jednotného přihlašování požadavek na přihlášení neobsahuje adresu URL explicitní odpovědi (adresa URL služby potvrzení), služba Azure AD vybere kteroukoli z konfigurovaných adres URL pro danou aplikaci. I když má aplikace nakonfigurovanou adresu URL pro explicitní odpověď, může být uživatel přesměrován https://127.0.0.1:444. 
+Pokud v rámci jednotného přihlašování požadavek na přihlášení neobsahuje adresu URL explicitní odpovědi (adresa URL služby potvrzení), služba Azure AD vybere kteroukoli z konfigurovaných adres URL pro danou aplikaci. I když má aplikace nakonfigurovanou adresu URL pro explicitní odpověď, může být uživatel přesměrován https://127.0.0.1:444 . 
 
 Při přidávání aplikace jako aplikace mimo galerii služba Azure Active Directory vytvořila tuto adresu URL pro odpověď jako výchozí hodnotu. Toto chování se změnilo a Azure Active Directory už tuto adresu URL ve výchozím nastavení nepřidává. 
 
-**Rozlišení**
+**Rozhodnutí**
 
 Odstraní nepoužívané adresy URL odpovědí nakonfigurované pro aplikaci.
 

@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: a47f30cf00624faf098c8b605534cf355eacadee
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79251580"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710469"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Vědecké zpracování týmových dat v akci: použití SQL Server
 V tomto kurzu se seznámíte s procesem sestavení a nasazení modelu Machine Learning pomocí SQL Server a veřejně dostupné datové sady ( [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) ). Postup následuje za standardním pracovním postupem pro datové vědy: ingestování a zkoumání dat, inženýr funkcí usnadňujících učení a následné sestavení a nasazení modelu.
@@ -41,13 +41,13 @@ Data NYC taxislužby na cestách mají přibližně 20 GB komprimovaných soubor
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:54:15,CSH,5,0.5,0.5,0,0,6
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,2013-01-07 23:25:03,CSH,9.5,0.5,0.5,0,0,10.5
 
-Jedinečný klíč pro připojení k datům\_cest a služební\_tarif se skládá z těchto polí: Medallion, licence\_pro napadení\_a data a času vyzvednutí.
+Jedinečný klíč pro připojení k \_ datům cest a služební \_ tarif se skládá z těchto polí: Medallion, licence pro napadení \_ a \_ data a času vyzvednutí.
 
 ## <a name="examples-of-prediction-tasks"></a><a name="mltasks"></a>Příklady úkolů předpovědi
-Budeme formulovat tři problémy předpovědi na základě *výše tipu\_*, konkrétně:
+Budeme formulovat tři problémy předpovědi na základě * \_ výše tipu*, konkrétně:
 
-* Binární klasifikace: předpověď bez ohledu na to, zda byl pro cestu zaplacen tip, tj. *hodnota tipu\_* větší než $0 je pozitivní příklad, zatímco *hodnota tipu\_* $0 je negativním příkladem.
-* Klasifikace více tříd: pro předpověď rozsahu tipu placeného pro danou cestu. *Velikost tipu\_* rozdělíme na pět přihrádek nebo tříd:
+* Binární klasifikace: předpověď bez ohledu na to, zda byl pro cestu zaplacen tip, tj. * \_ hodnota tipu* větší než $0 je pozitivní příklad, zatímco * \_ hodnota tipu* $0 je negativním příkladem.
+* Klasifikace více tříd: pro předpověď rozsahu tipu placeného pro danou cestu. * \_ Velikost tipu* rozdělíme na pět přihrádek nebo tříd:
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
@@ -66,7 +66,7 @@ V tomto kurzu provedeme paralelní hromadný import dat do SQL Server, zkoumán�
 
 Nastavení prostředí pro datové vědy v Azure:
 
-1. [vytvořit účet úložiště](../../storage/common/storage-account-create.md)
+1. [Vytvoření účtu úložiště](../../storage/common/storage-account-create.md)
 2. [Vytvoření pracovního prostoru Azure Machine Learning](../studio/create-workspace.md)
 3. [Zřídí Data Science Virtual Machine](../data-science-virtual-machine/setup-sql-server-virtual-machine.md), který poskytuje SQL Server a server IPython notebook.
    
@@ -79,7 +79,7 @@ Nastavení prostředí pro datové vědy v Azure:
    > 
    > 
 
-V závislosti na velikosti datové sady, umístění zdroje dat a vybraném cílovém prostředí Azure se tento scénář podobá [scénáři \#5: velká datová sada v místních souborech, cílová SQL Server na virtuálním počítači Azure](plan-sample-scenarios.md#largelocaltodb).
+V závislosti na velikosti datové sady, umístění zdroje dat a vybraném cílovém prostředí Azure se tento scénář podobá [scénáři \# 5: velká datová sada v místních souborech, cílová SQL Server na virtuálním počítači Azure](plan-sample-scenarios.md#largelocaltodb).
 
 ## <a name="get-the-data-from-public-source"></a><a name="getdata"></a>Získat data z veřejného zdroje
 Pokud chcete získat datovou sadu [NYC taxislužby TRIPS](https://www.andresmh.com/nyctaxitrips/) z jejího veřejného umístění, můžete použít kteroukoli z metod popsaných v tématu [přesun dat do a z Azure Blob Storage](move-azure-blob.md) ke zkopírování dat do nového virtuálního počítače.
@@ -92,8 +92,8 @@ Kopírování dat pomocí AzCopy:
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
    
-    Po dokončení AzCopy by měl být celkem 24 souborů. CSV (12 pro data o\_služební cestě a 12 pro\_služební tarif) ve složce data.
-4. Extrahování stažených souborů. Poznamenejte si složku, do které se nacházejí nekomprimované soubory. Tato složka bude označována jako <\_cesta k\_datovým\_souborům.\>
+    Po dokončení AzCopy by měl být celkem 24 souborů. CSV (12 pro data o služební cestě \_ a 12 pro služební \_ tarif) ve složce data.
+4. Extrahování stažených souborů. Poznamenejte si složku, do které se nacházejí nekomprimované soubory. Tato složka bude označována jako <cesta \_ k \_ datovým \_ souborům \> .
 
 ## <a name="bulk-import-data-into-sql-server-database"></a><a name="dbload"></a>Hromadný import dat do SQL Server databáze
 Výkon načítání a přenosu velkých objemů dat na SQL Database a následné dotazy lze zlepšit pomocí *dělených tabulek a zobrazení*. V této části budeme postupovat podle pokynů popsaných v článku [paralelní hromadné importy dat pomocí tabulek oddílů SQL](parallel-load-sql-partitioned-tables.md) k vytvoření nové databáze a načtení dat do dělených tabulek paralelně.
@@ -102,7 +102,7 @@ Výkon načítání a přenosu velkých objemů dat na SQL Database a následné
 2. Připojte se pomocí ověřování systému Windows.
    
     ![SSMS připojit][12]
-3. Pokud jste ještě nezměnili režim ověřování SQL Server a vytvořili jste nového uživatele s přihlašovacími údaji SQL, otevřete soubor skriptu s názvem **Change\_auth. SQL** ve složce **Sample Scripts** . Změňte výchozí uživatelské jméno a heslo. Spusťte skript kliknutím na tlačítko **Spustit** na panelu nástrojů.
+3. Pokud jste ještě nezměnili režim ověřování SQL Server a vytvořili jste nového uživatele s přihlašovacími údaji SQL, otevřete soubor skriptu s názvem **Change \_ auth. SQL** ve složce **Sample Scripts** . Změňte výchozí uživatelské jméno a heslo. Spusťte skript kliknutím na tlačítko **Spustit** na panelu nástrojů.
    
     ![Spustit skript][13]
 4. Ověřte nebo změňte SQL Server výchozí databázi a složky protokolů, abyste zajistili, že nově vytvořené databáze budou uloženy na datovém disku. Image virtuálního počítače s SQL Server optimalizovaná pro načítání datových skladů je předem nakonfigurovaná s daty a disky protokolu. Pokud váš virtuální počítač neobsahoval datový disk a Přidali jste nové virtuální pevné disky během procesu instalace virtuálního počítače, změňte výchozí složky následujícím způsobem:
@@ -114,37 +114,37 @@ Výkon načítání a přenosu velkých objemů dat na SQL Database a následné
    * Ověřte nebo změňte **výchozí umístění databáze** na umístění **datových disků** dle vašeho výběru. V tomto umístění se nacházejí nové databáze, pokud se vytvoří s výchozím nastavením.
      
        ![Výchozí nastavení SQL Database][15]  
-5. Pokud chcete vytvořit novou databázi a sadu skupin souborů pro ukládání dělených tabulek, otevřete vzorový skript **vytvořit\_databázi\_default. SQL**. Skript vytvoří ve výchozím umístění dat novou databázi nazvanou **TaxiNYC** a 12 skupin souborů. Každá skupina souborů bude uchovávat data o služební cestě\_a data o\_služebním tarifu za jeden měsíc. V případě potřeby upravte název databáze. Kliknutím na **Spustit** spusťte skript.
-6. Dále vytvořte dvě tabulky oddílů, jednu pro data na cestách\_a druhou pro služební\_tarif. Otevřete vzorový skript **vytvořit\_dělenou\_tabulku. SQL**, která bude:
+5. Pokud chcete vytvořit novou databázi a sadu skupin souborů pro ukládání dělených tabulek, otevřete vzorový skript **vytvořit \_ databázi \_ Default. SQL**. Skript vytvoří ve výchozím umístění dat novou databázi nazvanou **TaxiNYC** a 12 skupin souborů. Každá skupina souborů bude uchovávat data o služební cestě \_ a data o služebním tarifu za jeden měsíc \_ . V případě potřeby upravte název databáze. Kliknutím na **Spustit** spusťte skript.
+6. Dále vytvořte dvě tabulky oddílů, jednu pro data na cestách \_ a druhou pro služební \_ tarif. Otevřete vzorový skript **vytvořit \_ dělenou \_ tabulku. SQL**, která bude:
    
    * Vytvořte funkci oddílu pro rozdělení dat po měsících.
    * Vytvořte schéma oddílu pro mapování dat jednotlivých měsíců do jiné skupiny souborů.
-   * Vytvoření dvou dělených tabulek mapovaných na schéma oddílu: **nyctaxi\_Trip** bude obsahovat data o\_cestách a **nyctaxi\_tarif** bude obsahovat data o\_služebním tarifu.
+   * Vytvoření dvou dělených tabulek mapovaných na schéma oddílu: **nyctaxi \_ Trip** bude obsahovat data o cestách \_ a **nyctaxi \_ tarif** bude obsahovat data o služebním \_ tarifu.
      
      Kliknutím na **Spustit** spusťte skript a vytvořte dělené tabulky.
 7. Ve složce **Sample Scripts** jsou k dispozici dva ukázkové skripty PowerShellu, které ukazují paralelní hromadné importy dat do SQL Server tabulek.
    
-   * **BCP\_Parallel\_Generic. ps1** je obecný skript k paralelnímu hromadnému importu dat do tabulky. Úpravou tohoto skriptu nastavte vstupní a cílové proměnné, které jsou uvedené v řádcích komentářů ve skriptu.
-   * **BCP\_Parallel\_nyctaxi. ps1** je předem nakonfigurovaná verze obecného skriptu a dá se použít k načtení obou tabulek pro data NYC taxislužby TRIPS.  
-8. Klikněte pravým tlačítkem myši na název skriptu **BCP\_Parallel\_nyctaxi. ps1** a kliknutím na **Upravit** ho otevřete v PowerShellu. Zkontrolujte přednastavené proměnné a upravte je podle zvoleného názvu databáze, složky vstupních dat, cílové složky protokolu a cest k souborům ukázkových formátů **nyctaxi_trip. XML** a **nyctaxi\_jízdné. XML** (poskytované ve složce **Sample Scripts** ).
+   * ** \_ paralelní \_generic.ps1BCP** je obecný skript k paralelnímu hromadnému importu dat do tabulky. Úpravou tohoto skriptu nastavte vstupní a cílové proměnné, které jsou uvedené v řádcích komentářů ve skriptu.
+   * ** \_ paralelní \_nyctaxi.ps1BCP** je předem nakonfigurovaná verze obecného skriptu a dá se použít k načtení obou tabulek pro data o cestách NYC taxislužby.  
+8. Klikněte pravým tlačítkem myši na název ** \_ paralelního \_nyctaxi.ps1skriptu BCP** a kliknutím na **Upravit** ho otevřete v PowerShellu. Zkontrolujte přednastavené proměnné a upravte je podle zvoleného názvu databáze, složky vstupních dat, cílové složky protokolu a cest k souborům formátů vzorku **nyctaxi_trip.xml** a **nyctaxi \_fare.xml** (ve složce **Sample Scripts** ).
    
     ![Hromadné importy dat][16]
    
     Můžete také vybrat režim ověřování, výchozí hodnota je ověřování systému Windows. Kliknutím na zelenou šipku na panelu nástrojů spustíte. Skript spustí 24 hromadných operací hromadného importu paralelně 12 pro každou dělenou tabulku. Průběh importu dat můžete monitorovat tak, že otevřete složku SQL Server výchozí data, jak je uvedeno výše.
 9. PowerShellový skript hlásí počáteční a koncové časy. Po dokončení všech hromadných importů se nahlásí koncový čas. Zkontrolujte cílovou složku protokolu a ověřte, že hromadné importy byly úspěšné, tj. v cílové složce protokolu nejsou hlášeny žádné chyby.
-10. Vaše databáze je teď připravená na průzkum, strojírenství funkcí a další činnosti podle potřeby. Vzhledem k tomu, že jsou tabulky rozdělené podle pole pro **Datum vyzvednutí\_** , dotazy, které zahrnují podmínky pro **vyzvednutí\_hodnoty DateTime** v klauzuli **WHERE** , budou využívat schéma oddílu.
-11. V **SQL Server Management Studio**Prozkoumejte uvedené ukázkové **\_dotazy**vzorového skriptu. SQL. Chcete-li spustit některý z ukázkových dotazů, zvýrazněte řádky dotazu a klikněte na tlačítko **Spustit** na panelu nástrojů.
-12. Data cest NYC taxislužby se načítají ve dvou samostatných tabulkách. Pro zlepšení operací spojování se důrazně doporučuje indexovat tabulky. Vzorový skript **vytvořit\_\_rozdělený index. SQL** vytvoří dělené indexy na složeném klíči Join **Medallion, hacker\_a data a času vyzvednutí\_**.
+10. Vaše databáze je teď připravená na průzkum, strojírenství funkcí a další činnosti podle potřeby. Vzhledem k tomu, že jsou tabulky rozdělené podle pole pro ** \_ Datum vyzvednutí** , dotazy, které zahrnují podmínky pro **vyzvednutí hodnoty \_ DateTime** v klauzuli **WHERE** , budou využívat schéma oddílu.
+11. V **SQL Server Management Studio**Prozkoumejte uvedené ukázkové dotazy vzorového skriptu ** \_ . SQL**. Chcete-li spustit některý z ukázkových dotazů, zvýrazněte řádky dotazu a klikněte na tlačítko **Spustit** na panelu nástrojů.
+12. Data cest NYC taxislužby se načítají ve dvou samostatných tabulkách. Pro zlepšení operací spojování se důrazně doporučuje indexovat tabulky. Vzorový skript **vytvořit \_ rozdělený \_ index. SQL** vytvoří dělené indexy na složeném klíči Join **Medallion, hacker \_ a \_ data a času vyzvednutí**.
 
 ## <a name="data-exploration-and-feature-engineering-in-sql-server"></a><a name="dbexplore"></a>Zkoumání dat a strojírenství funkcí v SQL Server
-V této části provedeme zkoumání dat a generování funkcí spuštěním dotazů SQL přímo v **SQL Server Management Studio** pomocí databáze SQL Server vytvořené dříve. Vzorový skript s názvem **ukázkové\_dotazy. SQL** je k dispozici ve složce **Sample Scripts** . Úpravou skriptu změňte název databáze, pokud se liší od výchozího nastavení: **TaxiNYC**.
+V této části provedeme zkoumání dat a generování funkcí spuštěním dotazů SQL přímo v **SQL Server Management Studio** pomocí databáze SQL Server vytvořené dříve. Vzorový skript s názvem **ukázkové \_ dotazy. SQL** je k dispozici ve složce **Sample Scripts** . Úpravou skriptu změňte název databáze, pokud se liší od výchozího nastavení: **TaxiNYC**.
 
 V tomto cvičení budeme:
 
 * Připojte se k **SQL Server Management Studio** buď pomocí ověřování systému Windows, nebo pomocí ověřování SQL a přihlašovacího jména SQL a hesla.
 * Prozkoumejte distribuci dat několika polí v různých časových oknech.
 * Prozkoumejte kvalitu dat v polích Zeměpisná délka a zeměpisná šířka.
-* Vygenerujte binární a mezitřídní popisky klasifikace na **základě\_velikosti tipu**.
+* Vygenerujte binární a mezitřídní popisky klasifikace na **základě \_ velikosti tipu**.
 * Generování funkcí a výpočetních/porovnávacích vzdáleností cest.
 * Připojte se k oběma tabulkám a extrahujte náhodný vzorek, který se použije k sestavení modelů.
 
@@ -164,7 +164,7 @@ Rychlé ověření počtu řádků a sloupců v tabulkách vydaných dříve pom
     SELECT COUNT(*) FROM information_schema.columns WHERE table_name = 'nyctaxi_trip'
 
 #### <a name="exploration-trip-distribution-by-medallion"></a>Průzkum: distribuce cest pomocí Medallion
-Tento příklad identifikuje Medallion (taxislužby čísla) o více než 100 cest během daného časového období. Dotaz by měl těžit z tabulkového přístupu s dělenou výhodou, protože je podmíněné schémam oddílu **pro\_Datum vyzvednutí**. Dotazování na celou datovou sadu použije také prohledání děleného tabulky nebo indexu.
+Tento příklad identifikuje Medallion (taxislužby čísla) o více než 100 cest během daného časového období. Dotaz by měl těžit z tabulkového přístupu s dělenou výhodou, protože je podmíněné schémam oddílu **pro \_ Datum vyzvednutí**. Dotazování na celou datovou sadu použije také prohledání děleného tabulky nebo indexu.
 
     SELECT medallion, COUNT(*)
     FROM nyctaxi_fare
@@ -233,7 +233,7 @@ Tento příklad převede vyzvednutí a dropoff zeměpisnou délku a zeměpisnou 
 Dotazy pro zkoumání a vytváření popisků se dají použít ke generování popisků nebo funkcí odebráním části počítání. Další příklady metodologie jazyka SQL najdete v části [zkoumání dat a funkce pro vývoj funkcí v poznámkovém bloku IPython](#ipnb) . Je efektivnější spustit dotazy generace funkcí na celé datové sadě nebo ve velké podmnožině pomocí dotazů jazyka SQL, které se spouštějí přímo na instanci databáze SQL Server. Dotazy mohou být spuštěny v **SQL Server Management Studio**, poznámkovém bloku IPython nebo jakémkoli vývojovém nástroji nebo prostředí, které má přístup k databázi místně nebo vzdáleně.
 
 #### <a name="preparing-data-for-model-building"></a>Příprava dat pro vytváření modelů
-Následující dotaz se spojí s tabulkami **nyctaxi\_TRIPS** a **\_nyctaxi tarifs** , vygeneruje **binární popisek klasifikace**, který je na ní popsán, **třídu tipů\_** klasifikační klasifikace s více třídami a extrahuje 1% náhodný vzorek z plné připojené datové sady. Tento dotaz se dá zkopírovat přímo do [Azure Machine Learning Studio](https://studio.azureml.net) [importovat data][import-data] modul pro příjem přímých dat z instance databáze SQL Server v Azure. Dotaz vyloučí záznamy s nesprávnými souřadnicemi (0, 0).
+Následující dotaz se spojí s tabulkami **nyctaxi \_ TRIPS** a **nyctaxi \_ tarifs** , vygeneruje **binární popisek klasifikace**, který je na ní popsán, ** \_ třídu tipů**klasifikační klasifikace s více třídami a extrahuje 1% náhodný vzorek z plné připojené datové sady. Tento dotaz se dá zkopírovat přímo do [Azure Machine Learning Studio](https://studio.azureml.net) [importovat data][import-data] modul pro příjem přímých dat z instance databáze SQL Server v Azure. Dotaz vyloučí záznamy s nesprávnými souřadnicemi (0, 0).
 
     SELECT t.*, f.payment_type, f.fare_amount, f.surcharge, f.mta_tax, f.tolls_amount,     f.total_amount, f.tip_amount,
         CASE WHEN (tip_amount > 0) THEN 1 ELSE 0 END AS tipped,
@@ -324,7 +324,7 @@ Doba čtení ukázkové tabulky je 6,492000 sekund.
 Počet načtených řádků a sloupců = (84952, 21)
 
 #### <a name="descriptive-statistics"></a>Popisné statistiky
-Teď jsou připravené k prozkoumání ukázkových dat. Začneme s prohlížením popisných statistik o **vzdálenosti\_** (nebo jakémkoli jiném) poli na cestách:
+Teď jsou připravené k prozkoumání ukázkových dat. Začneme s prohlížením popisných statistik o ** \_ vzdálenosti** (nebo jakémkoli jiném) poli na cestách:
 
     df1['trip_distance'].describe()
 
@@ -363,25 +363,25 @@ Rozdělení přihrádky můžeme vykreslit do pruhového nebo pruhového grafu, 
 ![#4 vykreslení][4]
 
 #### <a name="visualization-scatterplot-example"></a>Vizualizace: příklad scatterplot
-Pro zjištění, zda existuje korelace, zobrazujeme **v grafu\_dobu provozu\_v\_sekundách** a na **služební\_dráze** .
+Pro zjištění, zda existuje korelace, zobrazujeme ** \_ v grafu dobu provozu \_ v \_ sekundách** a na **služební \_ dráze** .
 
     plt.scatter(df1['trip_time_in_secs'], df1['trip_distance'])
 
 ![#6 vykreslení][6]
 
-Podobně můžeme kontrolovat vztah mezi **kódem sazby\_** a **délkou cesty\_**.
+Podobně můžeme kontrolovat vztah mezi ** \_ kódem sazby** a ** \_ délkou cesty**.
 
     plt.scatter(df1['passenger_count'], df1['trip_distance'])
 
 ![#8 vykreslení][8]
 
 ### <a name="sub-sampling-the-data-in-sql"></a>Dílčí vzorkování dat v SQL
-Při přípravě dat pro sestavování modelu v [Azure Machine Learning Studio](https://studio.azureml.net)se můžete rozhodnout, že se má **dotaz SQL použít přímo v modulu import dat** nebo zachovat provedená inženýrská a ukázková data v nové tabulce, kterou můžete použít v modulu [Import dat][import-data] s jednoduchým **příkazem SELECT * z\_<nového\_názvu tabulky\_>**.
+Při přípravě dat pro sestavování modelu v [Azure Machine Learning Studio](https://studio.azureml.net)se můžete rozhodnout, že se má **dotaz SQL použít přímo v modulu import dat** nebo zachovat provedená inženýrská a ukázková data v nové tabulce, kterou můžete použít v modulu [Import dat][import-data] s jednoduchým **příkazem SELECT * z <\_ nového \_ názvu tabulky \_>**.
 
 V této části vytvoříme novou tabulku, která bude obsahovat ukázková a inženýrská data. Příklad přímého dotazu SQL pro sestavování modelu je k dispozici v části [zkoumání dat a strojírenství funkcí v tématu SQL Server](#dbexplore) .
 
 #### <a name="create-a-sample-table-and-populate-with-1-of-the-joined-tables-drop-table-first-if-it-exists"></a>Vytvořte ukázkovou tabulku a naplňte ji o 1% spojených tabulek. Přetáhněte tabulku jako první, pokud existuje.
-V této části se spojíme s tabulkami **nyctaxi\_TRIPS** a **nyctaxi\_jízdné**, extrahujete náhodný vzorek o velikosti 1% a zachovejte ukázková data v novém názvu tabulky **nyctaxi\_1\_**%:
+V této části se spojíme s tabulkami **nyctaxi \_ TRIPS** a **nyctaxi \_ jízdné**, extrahujete náhodný vzorek o velikosti 1% a zachovejte ukázková data v novém názvu tabulky **nyctaxi \_ 1 \_ **%:
 
     cursor = conn.cursor()
 
@@ -405,7 +405,7 @@ V této části se spojíme s tabulkami **nyctaxi\_TRIPS** a **nyctaxi\_jízdné
     cursor.commit()
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>Zkoumání dat pomocí dotazů SQL v poznámkovém bloku IPython
-V této části prozkoumáme distribuci dat pomocí 1% ukázkových dat, která jsou trvalá v nové tabulce, kterou jsme vytvořili výše. Podobné průzkumy je možné provádět pomocí původních tabulek, volitelně můžete pomocí funkce **TABLESAMPLE** omezit ukázku průzkumu nebo omezením výsledků na dané časové období pomocí oddílů data a času **vyzvednutí\_** , jak je znázorněno v části [zkoumání dat a funkce pro vývoj funkcí v SQL Server](#dbexplore) .
+V této části prozkoumáme distribuci dat pomocí 1% ukázkových dat, která jsou trvalá v nové tabulce, kterou jsme vytvořili výše. Podobné průzkumy je možné provádět pomocí původních tabulek, volitelně můžete pomocí funkce **TABLESAMPLE** omezit ukázku průzkumu nebo omezením výsledků na dané časové období pomocí oddílů data a času **vyzvednutí \_ ** , jak je znázorněno v části [zkoumání dat a funkce pro vývoj funkcí v SQL Server](#dbexplore) .
 
 #### <a name="exploration-daily-distribution-of-trips"></a>Průzkum: každodenní distribuce cest
     query = '''
@@ -432,7 +432,7 @@ V této části vygenerujeme nové popisky a funkce přímo pomocí dotazů SQL,
 V následujícím příkladu generujeme dvě sady popisků, které se mají použít pro modelování:
 
 1. Popisky binárních **tipped** tříd byly označeny (předpověď, jestli se má Tip předávat)
-2. **Třída Tip\_** pro více tříd (předpověď z přihrádky nebo rozsahu Tip)
+2. ** \_ Třída Tip** pro více tříd (předpověď z přihrádky nebo rozsahu Tip)
    
         nyctaxi_one_percent_add_col = '''
             ALTER TABLE nyctaxi_one_percent ADD tipped bit, tip_class int
@@ -586,7 +586,7 @@ Příkladem binární klasifikace experimentu pro čtení dat přímo z SQL Serv
 ![Azure Machine Learning vlak][10]
 
 > [!IMPORTANT]
-> V ukázkách dotazů pro extrakci a vzorkování dat modelování, které jsou uvedené v předchozích částech, **jsou v dotazu zahrnuté všechny popisky pro tři cvičení modelování**. Důležitým (vyžadovaným) krokem v každé cvičení modelování je **vyloučení** zbytečných popisků pro ostatní dva problémy a jakékoli jiné **cíle nevracení**. Například při použití binární klasifikace **použijte popisek,** který se zanechal a vyloučí pole **Třída Tip\_**, **hodnota tipu\_** a **\_celkovou částku**. Tato druhá z nich nevrací cíle, protože implikuje Tip.
+> V ukázkách dotazů pro extrakci a vzorkování dat modelování, které jsou uvedené v předchozích částech, **jsou v dotazu zahrnuté všechny popisky pro tři cvičení modelování**. Důležitým (vyžadovaným) krokem v každé cvičení modelování je **vyloučení** zbytečných popisků pro ostatní dva problémy a jakékoli jiné **cíle nevracení**. Například při použití binární klasifikace **použijte popisek,** který se zanechal a vyloučí pole ** \_ Třída Tip**, ** \_ hodnota tipu**a **celkovou \_ částku**. Tato druhá z nich nevrací cíle, protože implikuje Tip.
 > 
 > Pokud chcete vyloučit nepotřebné sloupce nebo nevrácené cíle, můžete použít modul [Vybrat sloupce v datové sadě][select-columns] nebo [Upravit metadata][edit-metadata]. Další informace najdete v tématu [Výběr sloupců v datové sadě][select-columns] a úpravy odkazů na [metadata][edit-metadata] .
 > 
@@ -619,9 +619,9 @@ Experimentování s ukázkovým bodováním je na následujícím obrázku. Až 
 V tomto výukovém kurzu jste v tomto návodu vytvořili prostředí Azure Data Sciences, které fungovalo s velkou veřejnou datovou sadou, a to všechno jako při získávání dat pro modelování školení a nasazení webové služby Azure Machine Learning.
 
 ### <a name="license-information"></a>Informace o licenci
-Tento ukázkový návod a příslušné doprovodné skripty a IPython Poznámkový blok sdílí Microsoft v rámci licence MIT. Další podrobnosti najdete v souboru LICENSE. txt v adresáři ukázkového kódu na GitHubu.
+Tento ukázkový návod a příslušné doprovodné skripty a IPython Poznámkový blok sdílí Microsoft v rámci licence MIT. Další podrobnosti najdete v souboru LICENSE.txt v adresáři ukázkového kódu na GitHubu.
 
-### <a name="references"></a>Odkazy
+### <a name="references"></a>Reference
 • [Stránka pro stažení Andrés MONROY NYC taxislužby](https://www.andresmh.com/nyctaxitrips/)  
 • [Fólie NYC data taxislužby na cestách pomocí chrisho Whongu](https://chriswhong.com/open-data/foil_nyc_taxi/)   
 • [NYC taxislužby a Limousine výzkumu a statistiky Komise](https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page)

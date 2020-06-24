@@ -4,15 +4,15 @@ description: Pomocí šablony můžete přesunout konfiguraci veřejné IP adres
 author: asudbring
 ms.service: virtual-network
 ms.subservice: ip-services
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/29/2019
 ms.author: allensu
-ms.openlocfilehash: a4fd5da3c910b10c81caccde307df0fd36e2fa78
-ms.sourcegitcommit: f1132db5c8ad5a0f2193d751e341e1cd31989854
+ms.openlocfilehash: 23fe515ddfdecb9ef168dd662e3fa2d91ece688f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/31/2020
-ms.locfileid: "84235396"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711472"
 ---
 # <a name="move-azure-public-ip-configuration-to-another-region-using-the-azure-portal"></a>Přesuňte konfiguraci veřejné IP adresy Azure do jiné oblasti pomocí Azure Portal
 
@@ -45,7 +45,7 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
 2. Vyhledejte skupinu prostředků, která obsahuje zdrojovou veřejnou IP adresu, a klikněte na ni.
 3. Vyberte > **Nastavení**  >  **Exportovat šablonu**.
 4. V okně **Exportovat šablonu** vyberte **nasadit** .
-5. Kliknutím na **šablonu**  >  **Upravit parametry** otevřete soubor **Parameters. JSON** v online editoru.
+5. Kliknutím na **šablonu**  >  **Upravit parametry** otevřete **parameters.js** v souboru v online editoru.
 8. Pokud chcete upravit parametr názvu veřejné IP adresy, změňte vlastnost v části **parametry**  >  **hodnota** ze zdrojového názvu veřejné IP adresy na název cílové veřejné IP adresy, ujistěte se, že je název v uvozovkách:
 
     ```json
@@ -62,7 +62,7 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
     ```
 8.  V Editoru klikněte na **Uložit** .
 
-9.  Kliknutím na **Šablona**  >  **Upravit šablonu** otevřete soubor **template. JSON** v online editoru.
+9.  Kliknutím na **šablonu**  >  **Upravit šablonu** otevřete **template.js** v souboru v online editoru.
 
 10. Chcete-li upravit cílovou oblast, kam bude přesunuta veřejná IP adresa, změňte vlastnost **umístění** v části **prostředky**:
 
@@ -94,7 +94,7 @@ Následující kroky ukazují, jak připravit veřejnou IP adresu pro přesunut�
 
 12. Můžete také změnit jiné parametry v šabloně, pokud zvolíte možnost a jsou nepovinné v závislosti na vašich požadavcích:
 
-    * **SKU** -SKU veřejné IP adresy můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard, a to změnou **sku**  >  vlastnosti**název** SKU v souboru **template. JSON** :
+    * **SKU** – vlastnost název SKU pro veřejnou IP adresu můžete změnit v konfiguraci z úrovně Standard na Basic nebo Basic na standard, a to změnou **sku**  >  vlastnosti**název** SKU v **template.js** souboru:
 
         ```json
           "resources": [

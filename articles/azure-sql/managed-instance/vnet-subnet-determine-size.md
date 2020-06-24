@@ -3,8 +3,8 @@ title: Určení požadované velikosti podsítě & rozsahu
 titleSuffix: Azure SQL Managed Instance
 description: Toto téma popisuje, jak vypočítat velikost podsítě, do které se nasadí spravovaná instance Azure SQL.
 services: sql-database
-ms.service: sql-database
-ms.subservice: managed-instance
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: seo-lt-2019, sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova, carlrab
 ms.date: 02/22/2019
-ms.openlocfilehash: 2ad140e7f0040552cbdc2490d25a07f3d1184720
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: 8d1073dbcced9532390776a23dd17c1f572cce40
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84657863"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84686677"
 ---
 # <a name="determine-required-subnet-size--range-for-azure-sql-managed-instance"></a>Určení požadované velikosti podsítě & rozsahu pro spravovanou instanci SQL Azure
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

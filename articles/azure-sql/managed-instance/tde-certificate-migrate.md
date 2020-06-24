@@ -2,7 +2,7 @@
 title: Migrace instance spravovaného certifikátem TDE
 description: Migrace certifikátu ochrany šifrovacího klíče databáze databáze s transparentní šifrování dat do spravované instance Azure SQL
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: security
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -11,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: carlrab, jovanpop
 ms.date: 04/25/2019
-ms.openlocfilehash: d2f5439874590db0f2775667d91586c51d6c43b3
-ms.sourcegitcommit: 5a8c8ac84c36859611158892422fc66395f808dc
+ms.openlocfilehash: c9a9b42d6f6d8c89847b03f5eda858c75d198c58
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84660319"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711387"
 ---
 # <a name="migrate-a-certificate-of-a-tde-protected-database-to-azure-sql-managed-instance"></a>Migrace certifikátu chráněné databáze TDE do spravované instance Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

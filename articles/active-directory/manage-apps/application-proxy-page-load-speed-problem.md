@@ -3,25 +3,25 @@ title: Načtení aplikace proxy aplikací trvá příliš dlouho a nemůže se n
 description: Řešení potíží s výkonem stránky při načítání Proxy aplikací služby AD Azure
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 07/11/2017
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4ac1182d719d7c90129115e1fadf94f4f86a28e8
-ms.sourcegitcommit: be32c9a3f6ff48d909aabdae9a53bd8e0582f955
+ms.openlocfilehash: bff9873742d5d660f563eebcb58ff9bcca940d24
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/26/2020
-ms.locfileid: "65782653"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84760167"
 ---
 # <a name="an-application-proxy-application-takes-too-long-to-load"></a>Načtení aplikace proxy aplikací trvá příliš dlouho.
 
@@ -35,7 +35,7 @@ Kromě síťové topologie neexistují v současnosti žádná další doporuče
 Datová centra s aplikační proxy službou můžete najít pomocí [Nástroje pro testování portů konektoru](https://aadap-portcheck.connectorporttest.msappproxy.net/). 
 
 ## <a name="feedback-on-application-proxy-data-center-locations"></a>Zpětná vazba na umístění datového centra proxy aplikací 
-Možná existují datová centra Azure, která ještě neobsahují proxy aplikací, ale mají za následek lepší vylepšení latence. Odešle umístění datového centra do aadapfeedback@microsoft.com. Microsoft používá vaši zpětnou vazbu k plánům rozšíření.
+Možná existují datová centra Azure, která ještě neobsahují proxy aplikací, ale mají za následek lepší vylepšení latence. Odešle umístění datového centra do aadapfeedback@microsoft.com . Microsoft používá vaši zpětnou vazbu k plánům rozšíření.
 
 Microsoft pracuje na dalších možnostech zlepšování latence. Jakmile budou tato vylepšení k dispozici, bude dokumentace aktualizována.
 

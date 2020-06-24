@@ -10,11 +10,11 @@ ms.topic: article
 ms.service: event-grid
 services: event-grid
 ms.openlocfilehash: ba82b1bea4753cd51e275a78b248247032d79a01
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79280999"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710860"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Kurz: publikování, přihlášení k odběru událostí v místním prostředí
 
@@ -118,7 +118,7 @@ Ponechte výchozí trasy a vyberte **Další** , abyste pokračovali v části K
 
 Jako vydavatel události je třeba vytvořit téma Event Grid. V Azure Event Grid téma odkazuje na koncový bod, do kterého mohou vydavatelé odesílat události.
 
-1. Vytvořte téma. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md).
+1. Vytvořte topic.jss následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md).
 
     ```json
         {
@@ -129,7 +129,7 @@ Jako vydavatel události je třeba vytvořit téma Event Grid. V Azure Event Gri
         }
     ```
 
-1. Spuštěním následujícího příkazu vytvořte téma Event Grid. Ověřte, že se `200 OK`zobrazí stavový kód HTTP.
+1. Spuštěním následujícího příkazu vytvořte téma Event Grid. Ověřte, že se zobrazí stavový kód HTTP `200 OK` .
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @topic.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1?api-version=2019-01-01-preview
@@ -163,7 +163,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
 
 [!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
-1. Vytvořte Subscription. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
+1. Vytvořte subscription.jss následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md) .
 
     ```json
         {
@@ -180,7 +180,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
 
     >[!NOTE]
     > Vlastnost **endpointType** určuje, že předplatitel je **Webhook**.  **EndpointUrl** Určuje adresu URL, na které předplatitel naslouchá pro události. Tato adresa URL odpovídá ukázce Azure předplatitele, kterou jste předtím nasadili.
-2. Spuštěním následujícího příkazu vytvořte odběr pro téma. Ověřte, že se `200 OK`zobrazí stavový kód HTTP.
+2. Spuštěním následujícího příkazu vytvořte odběr pro téma. Ověřte, že se zobrazí stavový kód HTTP `200 OK` .
 
     ```sh
     curl -k -H "Content-Type: application/json" -X PUT -g -d @subscription.json https://<your-edge-device-public-ip-here>:4438/topics/sampleTopic1/eventSubscriptions/sampleSubscription1?api-version=2019-01-01-preview
@@ -212,7 +212,7 @@ Předplatitelé se můžou zaregistrovat pro události publikované v tématu. P
 
 ## <a name="publish-an-event"></a>Publikování události
 
-1. Vytvořte Event. JSON s následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md).
+1. Vytvořte event.jss následujícím obsahem. Podrobnosti o datové části najdete v naší [dokumentaci k rozhraní API](api.md).
 
     ```json
         [

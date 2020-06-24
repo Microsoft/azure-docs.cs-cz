@@ -4,11 +4,11 @@ description: Tento článek obsahuje úvod k upgradu aplikace Service Fabric, v�
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: 2dc484b49c5250510e5f018cbbc2da107573d452
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259042"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710316"
 ---
 # <a name="service-fabric-application-upgrade"></a>Upgrade aplikace Service Fabric
 Aplikace Azure Service Fabric je kolekce služeb. Během upgradu Service Fabric porovná nový [manifest aplikace](service-fabric-application-and-service-manifests.md) s předchozí verzí a určí, které služby v aplikaci vyžadují aktualizace. Service Fabric porovná čísla verzí v manifestech služby s čísly verzí v předchozí verzi. Pokud se služba nezměnila, tato služba se neupgraduje.
@@ -49,7 +49,7 @@ Když se upgrade aplikace vrátí zpátky, výchozí parametry služby se vrát�
 > Nastavení konfigurace clusteru [EnableDefaultServicesUpgrade](service-fabric-cluster-fabric-settings.md) musí mít *hodnotu true* , aby bylo možné povolit pravidla 2) a 3) výše (výchozí aktualizace služby a odstranění). Tato funkce je podporovaná od verze Service Fabric 5,5.
 
 ## <a name="upgrading-multiple-applications-with-https-endpoints"></a>Upgrade více aplikací s koncovými body HTTPS
-Při použití HTTP**S**musíte být opatrní, nepoužívejte **stejný port** pro různé instance stejné aplikace. Důvodem je to, že Service Fabric nebude moci upgradovat certifikát pro jednu z instancí aplikace. Například pokud aplikace 1 nebo aplikace 2 bude chtít upgradovat svůj certifikát 1 na CERT 2. Když dojde k upgradu, Service Fabric pravděpodobně vyčistil registraci certifikátu 1 pomocí HTTP. sys, i když ji druhá aplikace stále používá. Chcete-li tomu zabránit, Service Fabric zjistí, že na portu s certifikátem již je registrována jiná instance aplikace (z důvodu http. sys), a operace se nezdařila.
+Při použití HTTP**S**musíte být opatrní, nepoužívejte **stejný port** pro různé instance stejné aplikace. Důvodem je to, že Service Fabric nebude moci upgradovat certifikát pro jednu z instancí aplikace. Například pokud aplikace 1 nebo aplikace 2 bude chtít upgradovat svůj certifikát 1 na CERT 2. Když dojde k upgradu, Service Fabric pravděpodobně vyčistil registraci certifikátu 1 s http.sys, i když ji jiná aplikace stále používá. Chcete-li tomu zabránit, Service Fabric zjistí, že na portu s certifikátem již je registrována jiná instance aplikace (z důvodu http.sys) a operace se nezdařila.
 
 Proto Service Fabric nepodporuje upgrade dvou různých služeb pomocí **stejného portu** v různých instancích aplikace. Jinými slovy, nemůžete použít stejný certifikát pro různé služby na stejném portu. Pokud potřebujete mít sdílený certifikát na stejném portu, musíte zajistit, aby se služby nastavily na různých počítačích s omezením umístění. Nebo zvažte použití Service Fabric dynamické porty, pokud je to možné pro každou službu v každé instanci aplikace. 
 

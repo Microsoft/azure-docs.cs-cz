@@ -5,11 +5,11 @@ ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
 ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79240293"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709925"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Co je služba Azure Backup?
 
@@ -20,10 +20,10 @@ Služba Azure Backup poskytuje jednoduchá, zabezpečená a cenově výhodná ř
 ## <a name="what-can-i-back-up"></a>Co můžu zálohovat?
 
 - **Místní** zálohování souborů, složek, stavu systému pomocí [agenta Microsoft Azure Recovery Services (MARS)](backup-support-matrix-mars-agent.md). Nebo použijte agenta DPM nebo Azure Backup Server (MABS) k ochraně místních virtuálních počítačů ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) a [VMware](backup-azure-backup-server-vmware.md)) a dalších [místních úloh](backup-mabs-protection-matrix.md) .
-- **Virtuální počítače** - Azure[zálohují celé virtuální počítače s Windows/Linux](backup-azure-vms-introduction.md) (pomocí rozšíření zálohování) nebo zálohují soubory, složky a stav systému pomocí [agenta Mars](backup-azure-manage-mars.md).
-- **Soubory Azure sdílí** - [zálohy sdílených složek Azure do účtu úložiště](backup-afs.md) .
-- **SQL Server ve virtuálních počítačích** -  Azure[zálohují SQL Server databáze běžící na virtuálních počítačích Azure](backup-azure-sql-database.md) .
-- **Databáze SAP HANA ve virtuálních počítačích** - Azure –[zálohování SAP HANA databází běžících na virtuálních počítačích Azure](backup-azure-sap-hana-database.md)
+- **Virtuální počítače Azure**  -  [Zazálohujte všechny virtuální počítače s Windows/Linux](backup-azure-vms-introduction.md) (pomocí rozšíření zálohování) nebo zálohujte soubory, složky a stav systému pomocí [agenta Mars](backup-azure-manage-mars.md).
+- **Sdílené složky**  -  Azure Files [Zálohování sdílených složek Azure do účtu úložiště](backup-afs.md)
+- **SQL Server ve virtuálních počítačích Azure**  -   [Zálohování SQL Server databází běžících na virtuálních počítačích Azure](backup-azure-sql-database.md)
+- **SAP HANA databáze na virtuálních počítačích Azure**  -  [Zálohování SAP HANA databází běžících na virtuálních počítačích Azure](backup-azure-sap-hana-database.md)
 
 ![Přehled Azure Backup](./media/backup-overview/azure-backup-overview.png)
 
@@ -36,7 +36,7 @@ Azure Backup přináší tyto klíčové výhody:
 - **Snadné škálování** – Azure Backup využívá základní výkon a neomezené škálování cloudu Azure pro zajištění vysoké dostupnosti bez režie údržby a monitorování.
 - **Získání neomezeného přenosu dat**: Azure Backup neomezuje množství příchozích a odchozích dat, která přenášíte, nebo poplatky za přenášená data.
   - Odchozí data označují data přenášená z trezoru služby Recovery Services během operace obnovení.
-  - Pokud provedete offline prvotní zálohování pomocí služby Azure import/export k importu velkých objemů dat, budou se vám pro příchozí data přidružit náklady.  [Další informace](backup-azure-backup-import-export.md).
+  - Pokud provedete offline prvotní zálohování pomocí služby Azure import/export k importu velkých objemů dat, budou se vám pro příchozí data přidružit náklady.  [Přečtěte si další informace](backup-azure-backup-import-export.md).
 - **Zabezpečení dat**: Azure Backup poskytuje řešení pro zabezpečení dat [při přenosu](backup-azure-security-feature.md) a [v klidovém](backup-azure-security-feature-cloud.md)provozu.
 - **Centralizované monitorování a Správa**: Azure Backup poskytují [integrované funkce monitorování a upozorňování](backup-azure-monitoring-built-in-monitor.md) v trezoru Recovery Services. Tyto možnosti jsou k dispozici bez další infrastruktury pro správu. Můžete také zvýšit měřítko monitorování a vytváření sestav [pomocí Azure monitor](backup-azure-monitoring-use-azuremonitor.md).
 - **Získání záloh konzistentních vzhledem**k aplikacím: záloha konzistentní vzhledem k aplikacím znamená, že bod obnovení obsahuje všechna požadovaná data pro obnovení záložní kopie. Azure Backup poskytuje zálohy konzistentní s aplikacemi, které zajistí, že se pro obnovení dat nevyžadují další opravy. Obnovování dat konzistentních s aplikací zkracuje čas obnovení, což vám umožní rychle se vrátit do funkčního stavu.

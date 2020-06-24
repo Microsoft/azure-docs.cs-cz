@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/08/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 217e48ab21439f03e0b52c894c9aace5b51b1502
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 995339f91be37b71d73b409f3eaeafb3dd1777ab
+ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79086141"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84754607"
 ---
 Azure Data Factory je víceklientské služba, která má následující výchozí omezení, aby se zajistilo, že předplatná zákazníka budou chráněná před jednotlivými úlohami. Pokud chcete zvýšit limity až do maximálního počtu pro vaše předplatné, obraťte se na podporu.
 
@@ -46,7 +46,7 @@ Azure Data Factory je víceklientské služba, která má následující výchoz
 | Monitorování dotazů za minutu | 1 000 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
 | Operace CRUD entity za minutu | 50 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
 | Maximální doba relace ladění toku dat | 8 hodin | 8 hodin |
-| Souběžný počet datových toků na továrnu | 50 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
+| Souběžný počet datových toků na prostředí Integration runtime | 50 | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
 | Souběžný počet relací ladění toku dat na uživatele na továrnu | 3 | 3 |
 | Omezení hodnoty TTL Azure IR toku dat | 4 hodiny | [Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
 
@@ -64,7 +64,7 @@ Azure Data Factory je víceklientské služba, která má následující výchoz
 
 ### <a name="version-1"></a>Verze 1
 
-| **Prostředek** | **Výchozí omezení** | **Maximální limit** |
+| **Prostředek** | **Výchozí omezení** | **Maximální omezení** |
 | --- | --- | --- |
 | Kanály v rámci datové továrny |2,500 |[Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |
 | Datové sady v rámci datové továrny |5 000 |[Obraťte](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)se na podporu. |

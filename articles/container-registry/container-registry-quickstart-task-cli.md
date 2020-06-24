@@ -3,12 +3,12 @@ title: Rychlý Start – sestavení image kontejneru & spuštění
 description: Rychlé spouštění úloh s Azure Container Registry k sestavení a spuštění image kontejneru Docker na vyžádání v cloudu.
 ms.topic: quickstart
 ms.date: 01/31/2020
-ms.openlocfilehash: e07dd9dd36bc2c5a2dc5ea7efe81f693784b8996
-ms.sourcegitcommit: 50673ecc5bf8b443491b763b5f287dde046fdd31
+ms.openlocfilehash: 610d82a0761f06338d04f0794d4141165d67d36c
+ms.sourcegitcommit: 4ac596f284a239a9b3d8ed42f89ed546290f4128
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/20/2020
-ms.locfileid: "83680589"
+ms.lasthandoff: 06/12/2020
+ms.locfileid: "84753709"
 ---
 # <a name="quickstart-build-and-run-a-container-image-using-azure-container-registry-tasks"></a>Rychlý Start: sestavení a spuštění image kontejneru pomocí Azure Container Registrych úloh
 
@@ -37,20 +37,21 @@ az group create --name myResourceGroup --location eastus
 Pomocí příkazu [AZ ACR Create][az-acr-create] vytvořte registr kontejnerů. Název registru musí být jedinečný v rámci Azure a musí obsahovat 5 až 50 alfanumerických znaků. V následujícím příkladu se používá *myContainerRegistry008* . Aktualizujte název na jedinečnou hodnotu.
 
 ```azurecli-interactive
-az acr create --resource-group myResourceGroup --name myContainerRegistry008 --sku Basic
+az acr create --resource-group myResourceGroup \
+  --name myContainerRegistry008 --sku Basic
 ```
 
 Tento příklad vytvoří *základní* registr, což je možnost pro vývojáře, která se naučí o Azure Container Registry. Podrobnosti o dostupných úrovních služby najdete v tématu [úrovně služby registru kontejnerů][container-registry-skus].
 
-## <a name="build-an-image-from-a-dockerfile"></a>Vytvoření image z souboru Dockerfile
+## <a name="build-and-push-image-from-a-dockerfile"></a>Sestavení a vložení obrázku z souboru Dockerfile
 
-Nyní pomocí Azure Container Registry vytvořit bitovou kopii. Nejprve vytvořte pracovní adresář a pak vytvořte souboru Dockerfile s názvem *souboru Dockerfile* s následujícím obsahem. Toto je jednoduchý příklad pro sestavení image kontejneru Linux, ale můžete vytvořit vlastní standardní souboru Dockerfile a image sestavení pro jiné platformy. Příklady příkazů v tomto článku jsou formátované pro prostředí bash shell.
+Nyní použijte Azure Container Registry k sestavení a vložení obrázku. Nejprve vytvořte pracovní adresář a pak vytvořte souboru Dockerfile s názvem *souboru Dockerfile* s jedním řádkem: `FROM hello-world` . Toto je jednoduchý příklad pro sestavení image kontejneru Linux z `hello-world` image v Docker Hub. Můžete vytvářet vlastní standardní souboru Dockerfile a image sestavení pro jiné platformy. Pokud pracujete v prostředí bash, vytvořte souboru Dockerfile pomocí následujícího příkazu:
 
 ```bash
 echo FROM hello-world > Dockerfile
 ```
 
-Spusťte příkaz [AZ ACR Build][az-acr-build] a sestavte image. Po úspěšném sestavení se obrázek vloží do registru. Následující příklad vloží `sample/hello-world:v1` obrázek. Na `.` konci příkazu nastaví umístění souboru Dockerfile, v tomto případě aktuální adresář.
+Spusťte příkaz [AZ ACR Build, který sestaví][az-acr-build] image a po úspěšném sestavení image ji nahrajte do svého registru. Následující příklad sestaví a vloží `sample/hello-world:v1` obrázek. Na `.` konci příkazu nastaví umístění souboru Dockerfile, v tomto případě aktuální adresář.
 
 ```azurecli-interactive
 az acr build --image sample/hello-world:v1 \

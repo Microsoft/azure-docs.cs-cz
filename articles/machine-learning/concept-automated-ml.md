@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 04/22/2020
-ms.openlocfilehash: dc40668ec7008042b5f1600214184cbf8bba4701
-ms.sourcegitcommit: 6a9f01bbef4b442d474747773b2ae6ce7c428c1f
+ms.openlocfilehash: cec4213cc9b4d40707607b00ef96761e69438ee2
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "84119088"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210248"
 ---
 # <a name="what-is-automated-machine-learning-automl"></a>Co je Automated Machine Learning (AutoML)?
 
@@ -37,7 +37,7 @@ Odborníci na data, analytiké a vývojáři v různých oborech můžou použí
 
 Klasifikace je běžný úkol strojového učení. Klasifikace je typ vzdělávání pod dohledem, ve kterém se modely učí pomocí školicích dat, a aplikujte tyto učení na nová data. Azure Machine Learning nabízí featurizations specificky pro tyto úlohy, jako je například hluboký neuronové Network text featurizers for Classification. Další informace o [možnostech featurization](how-to-configure-auto-features.md#featurization) 
 
-Hlavním cílem modelů klasifikace je předpovědět, ke kterým kategoriím budou nová data zacházet v závislosti na studiu ze svých školicích dat. Mezi běžné klasifikace patří zjišťování podvodů, rozpoznávání rukopisu a detekce objektů.  Přečtěte si další informace a podívejte [se na příklad klasifikace pomocí automatizovaného strojového učení](tutorial-train-models-with-aml.md).
+Hlavním cílem modelů klasifikace je předpovědět, ke kterým kategoriím budou nová data zacházet v závislosti na studiu ze svých školicích dat. Mezi běžné klasifikace patří zjišťování podvodů, rozpoznávání rukopisu a detekce objektů. Přečtěte si další informace a podívejte se na příklad [Vytvoření klasifikačního modelu pomocí automatizovaného ml](tutorial-first-experiment-automated-ml.md).
 
 Podívejte se na příklady klasifikace a automatizované strojové učení v těchto poznámkových blocích Pythonu: [zjišťování podvodů](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-credit-card-fraud/auto-ml-classification-credit-card-fraud.ipynb), [předpověď marketingu](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-bank-marketing-all-features/auto-ml-classification-bank-marketing-all-features.ipynb)a [klasifikace dat diskusních skupin](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb) .
 
@@ -97,6 +97,10 @@ Tento proces je znázorněn na následujícím obrázku.
 Můžete také zkontrolovat protokolované informace o spuštění, které [obsahují metriky](how-to-understand-automated-ml.md) shromážděné během spuštění. Školicí běh vytvoří serializovaný objekt ( `.pkl` soubor) Pythonu, který obsahuje model a předzpracování dat.
 
 I když je vytváření modelů automatizované, můžete také zjistit, jak jsou pro vygenerované modely [důležité nebo relevantní funkce](how-to-configure-auto-train.md#explain) .
+
+Naučte se používat [vzdálený výpočetní cíl](how-to-auto-train-remote.md).
+
+
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE2Xc9t]
 
@@ -267,17 +271,30 @@ Modul runtime ONNX podporuje také jazyk C#, takže můžete použít model sest
 
 ## <a name="next-steps"></a>Další kroky
 
-Podívejte se na příklady a Naučte se vytvářet modely pomocí automatizovaného strojového učení:
+K dispozici je několik prostředků, které vám pomohou při práci s AutoML. 
 
-+ Nakonfigurujte nastavení pro experiment automatických školení:
-  + V Azure Machine Learning Studiu [použijte tento postup](how-to-use-automated-ml-for-ml-models.md).
-  + Pomocí sady Python SDK [použijte následující postup](how-to-configure-auto-train.md).
+### <a name="tutorials-how-tos"></a>Kurzy a postupy
+Kurzy představují ucelené Úvodní příklady scénářů AutoML.
++ **Při prvním použití kódu**postupujte podle [kurzu: Automatické učení regresního modelu s Azure Machine Learning Python SDK](tutorial-auto-train-models.md).
 
-+ Naučte se používat [vzdálený cíl výpočtů](how-to-auto-train-remote.md) .
+ + V **případě nedostatku nebo prostředí bez kódu**si přečtěte [kurz: vytváření automatizovaných modelů klasifikace ml pomocí Azure Machine Learning studia](tutorial-first-experiment-automated-ml.md).
 
-+ Postupujte podle [kurzu: Automatické učení regresního modelu s Azure Machine Learning](tutorial-auto-train-models.md) 
+Články s postupy poskytují další podrobnosti o tom, jaké funkce AutoML nabízí. Třeba 
 
-+ Naučte se, jak automaticky naučit data časových řad pomocí [těchto kroků](how-to-auto-train-forecast.md).
++ Konfigurovat nastavení pro automatické experimenty školení
+    + V Azure Machine Learning Studiu [použijte tento postup](how-to-use-automated-ml-for-ml-models.md). 
+    + Pomocí sady Python SDK [použijte následující postup](how-to-configure-auto-train.md).
 
-+ Vyzkoušení [Jupyter notebook ukázek pro automatizované strojové učení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/)
-* Automatizovaná ML je dostupná taky v dalších řešeních Microsoftu, jako je [ml.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
++  Pomocí [těchto kroků](how-to-auto-train-forecast.md)se naučíte, jak automaticky naučit pomocí dat časových řad.
+
+### <a name="jupyter-notebook-samples"></a>Ukázky poznámkových bloků Jupyter 
+
+Přečtěte si podrobné příklady kódu a případy použití v [úložišti notebook GitHub pro automatizované ukázky strojového učení](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/).
+
+### <a name="python-sdk-reference"></a>Referenční dokumentace sady Python SDK 
+
+Prohloubte své znalosti vzorů návrhu sady SDK a specifikace tříd pomocí [Referenční dokumentace třídy AutoML](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py). 
+
+> [!Note]
+> Automatizované funkce strojového učení jsou dostupné i v dalších řešeních Microsoftu, jako jsou [ml.NET](https://docs.microsoft.com/dotnet/machine-learning/automl-overview), [HDInsight](../hdinsight/spark/apache-spark-run-machine-learning-automl.md), [Power BI](https://docs.microsoft.com/power-bi/service-machine-learning-automated) a [SQL Server](https://cloudblogs.microsoft.com/sqlserver/2019/01/09/how-to-automate-machine-learning-on-sql-server-2019-big-data-clusters/)
+

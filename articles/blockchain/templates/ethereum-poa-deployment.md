@@ -2,14 +2,14 @@
 title: Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
 description: Nasazení a konfigurace Ethereemé sítě konsorcia Ethereem pro více členů v Azure pomocí řešení pro kontrolu pravopisu
 ms.date: 06/04/2020
-ms.topic: article
+ms.topic: how-to
 ms.reviewer: ravastra
-ms.openlocfilehash: 2be87dec252aa927c6b1acfc6cb1aa23bf7d2620
-ms.sourcegitcommit: b55d1d1e336c1bcd1c1a71695b2fd0ca62f9d625
+ms.openlocfilehash: 127aa860fe0c80f4d12a373c00ad2f53447c3497
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/04/2020
-ms.locfileid: "84434361"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85210112"
 ---
 # <a name="deploy-ethereum-proof-of-authority-consortium-solution-template-on-azure"></a>Nasazení šablony řešení Ethereem pro kontrolu pravopisu pro účely úřadu v Azure
 
@@ -558,7 +558,7 @@ V následujícím příkladu vytvoříte jednoduchou inteligentní kontrakt. Tru
 #### <a name="prerequisites"></a>Požadavky
 
 * Nainstalujte [Python 2.7.15](https://www.python.org/downloads/release/python-2715/). Python je potřeba pro Truffle a Web3. Vyberte možnost instalovat, pokud chcete zahrnout Python do vaší cesty.
-* Nainstalujte Truffle v 5.0.5 `npm install -g truffle@v5.0.5` . Truffle vyžaduje instalaci několika nástrojů, včetně [Node. js](https://nodejs.org), [Gitu](https://git-scm.com/). Další informace najdete v [dokumentaci k Truffle](https://github.com/trufflesuite/truffle).
+* Nainstalujte Truffle v 5.0.5 `npm install -g truffle@v5.0.5` . Truffle vyžaduje instalaci několika nástrojů, včetně [Node.js](https://nodejs.org), [Gitu](https://git-scm.com/). Další informace najdete v [dokumentaci k Truffle](https://github.com/trufflesuite/truffle).
 
 ### <a name="create-truffle-project"></a>Vytvořit projekt Truffle
 
@@ -648,7 +648,7 @@ Truffle používá skripty pro migraci k nasazení inteligentních kontraktů do
 Teď, když je vaše inteligentní smlouva nasazená, můžete odeslat transakci pro volání funkce.
 
 1. V adresáři projektu Truffle vytvořte nový soubor s názvem `sendtransaction.js` .
-1. Do **sendtransaction. js**přidejte následující obsah.
+1. Přidejte následující obsah do **sendtransaction.js**.
 
     ``` javascript
     var postBox = artifacts.require("postBox");
@@ -709,7 +709,7 @@ Monitorování je volitelná funkce. Ve výjimečných případech, kdy se nasaz
 
 ### <a name="are-public-ip-deployments-compatible-with-private-network-deployments"></a>Jsou nasazení veřejné IP adresy kompatibilní s nasazeními privátních sítí?
 
-No. Partnerský vztah vyžaduje obousměrnou komunikaci, takže celá síť musí být buď veřejná, nebo soukromá.
+Ne. Partnerský vztah vyžaduje obousměrnou komunikaci, takže celá síť musí být buď veřejná, nebo soukromá.
 
 ### <a name="what-is-the-expected-transaction-throughput-of-proof-of-authority"></a>Jaká je očekávaná propustnost transakce v rámci autority pro ověření?
 

@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 5/24/2019
 ms.author: hrushib
 ms.openlocfilehash: f56fcb7d1dde700d954c3b55bcf8cd7759893521
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79259003"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84712458"
 ---
 # <a name="periodic-backup-and-restore-in-an-azure-service-fabric-cluster"></a>Periodické zálohování a obnovení v clusteru Azure Service Fabric
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ Service Fabric poskytuje sadu rozhraní API pro zajištění následujících fu
     Install-Module -Name Microsoft.ServiceFabric.Powershell.Http -AllowPrerelease
 ```
 
-* Před provedením libovolné žádosti o konfiguraci pomocí `Connect-SFCluster` modulu Microsoft. ServiceFabric. PowerShell. http zajistěte, aby byl cluster připojen pomocí příkazu.
+* `Connect-SFCluster`Před provedením libovolné žádosti o konfiguraci pomocí modulu Microsoft. ServiceFabric. PowerShell. http zajistěte, aby byl cluster připojen pomocí příkazu.
 
 ```powershell
 
@@ -68,7 +68,7 @@ Service Fabric poskytuje sadu rozhraní API pro zajištění následujících fu
 
 ### <a name="using-azure-portal"></a>Pomocí webu Azure Portal
 
-Povolit `Include backup restore service` zaškrtávací políčko v `+ Show optional settings` části `Cluster Configuration` na kartě.
+Povolit `Include backup restore service` zaškrtávací políčko v části `+ Show optional settings` na `Cluster Configuration` kartě.
 
 ![Povolení služby obnovení zálohování pomocí portálu][1]
 
@@ -76,7 +76,7 @@ Povolit `Include backup restore service` zaškrtávací políčko v `+ Show opti
 ### <a name="using-azure-resource-manager-template"></a>Použití šablony Azure Resource Manager
 Nejdřív musíte ve svém clusteru povolit _službu zálohování a obnovení_ . Získejte šablonu pro cluster, který chcete nasadit. Můžete buď použít [ukázkové šablony](https://github.com/Azure/azure-quickstart-templates/tree/master/service-fabric-secure-cluster-5-node-1-nodetype) , nebo vytvořit šablonu správce prostředků. Pomocí následujících kroků povolte _službu zálohování a obnovení_ :
 
-1. Ověřte, zda `apiversion` je u `Microsoft.ServiceFabric/clusters` prostředku **`2018-02-01`** nastavena na hodnotu a v případě potřeby jej aktualizujte, jak je znázorněno v následujícím fragmentu kódu:
+1. Ověřte, zda `apiversion` je u prostředku nastavena na hodnotu **`2018-02-01`** `Microsoft.ServiceFabric/clusters` a v případě potřeby jej aktualizujte, jak je znázorněno v následujícím fragmentu kódu:
 
     ```json
     {
@@ -88,7 +88,7 @@ Nejdřív musíte ve svém clusteru povolit _službu zálohování a obnovení_ 
     }
     ```
 
-2. Nyní povolte _službu zálohování a obnovení_ přidáním následujícího `addonFeatures` oddílu `properties` do části, jak je znázorněno v následujícím fragmentu kódu: 
+2. Nyní povolte _službu zálohování a obnovení_ přidáním následujícího oddílu do části `addonFeatures` `properties` , jak je znázorněno v následujícím fragmentu kódu: 
 
     ```json
         "properties": {
@@ -99,7 +99,7 @@ Nejdřív musíte ve svém clusteru povolit _službu zálohování a obnovení_ 
         }
 
     ```
-3. Nakonfigurujte certifikát X. 509 pro šifrování přihlašovacích údajů. To je důležité, aby se přihlašovací údaje, které se zadaly pro připojení k úložišti, zašifroval před tím, než budou trvalé. Nakonfigurujte šifrovací certifikát přidáním následující `BackupRestoreService` části v `fabricSettings` části, jak je znázorněno v následujícím fragmentu kódu: 
+3. Nakonfigurujte certifikát X. 509 pro šifrování přihlašovacích údajů. To je důležité, aby se přihlašovací údaje, které se zadaly pro připojení k úložišti, zašifroval před tím, než budou trvalé. Nakonfigurujte šifrovací certifikát přidáním následující `BackupRestoreService` části v části `fabricSettings` , jak je znázorněno v následujícím fragmentu kódu: 
 
     ```json
     "properties": {
@@ -116,19 +116,19 @@ Nejdřív musíte ve svém clusteru povolit _službu zálohování a obnovení_ 
     }
     ```
 
-4. Jakmile aktualizujete šablonu clusteru předchozími změnami, použijte je a nechejte nasazení nebo upgrade dokončeno. Po dokončení se _Služba zálohování a obnovení_ spustí v clusteru. Identifikátor URI této služby je `fabric:/System/BackupRestoreService` a služba se může nacházet v části systémová služba v Průzkumníkovi Service Fabric. 
+4. Jakmile aktualizujete šablonu clusteru předchozími změnami, použijte je a nechejte nasazení nebo upgrade dokončeno. Po dokončení se _Služba zálohování a obnovení_ spustí v clusteru. Identifikátor URI této služby je `fabric:/System/BackupRestoreService` a služba se může nacházet v části systémová služba v průzkumníkovi Service Fabric. 
 
 ## <a name="enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors"></a>Povolení pravidelného zálohování pro spolehlivou stavovou službu a Reliable Actors
 Podívejme se na postupy, které umožňují pravidelné zálohování pro spolehlivou stavovou službu a Reliable Actors. Tyto kroky předpokládají
 - Cluster se nastavuje pomocí nástroje X. 509 Security se _službou Backup and Restore_.
-- V clusteru je nasazená spolehlivá stavová služba. Pro účely tohoto průvodce rychlým startem je `fabric:/SampleApp` identifikátor URI aplikace a identifikátor URI pro spolehlivou stavovou službu, která `fabric:/SampleApp/MyStatefulService`patří do této aplikace. Tato služba je nasazená s jedním oddílem a ID oddílu je `974bd92a-b395-4631-8a7f-53bd4ae9cf22`.
+- V clusteru je nasazená spolehlivá stavová služba. Pro účely tohoto průvodce rychlým startem je identifikátor URI aplikace `fabric:/SampleApp` a identifikátor URI pro spolehlivou stavovou službu, která patří do této aplikace `fabric:/SampleApp/MyStatefulService` . Tato služba je nasazená s jedním oddílem a ID oddílu je `974bd92a-b395-4631-8a7f-53bd4ae9cf22` .
 - Certifikát klienta s rolí správce se instaluje do _osobního_ (_osobního_) názvu úložiště _CurrentUser_ úložiště certifikátů na počítači, ze kterého se budou vyvolávat skripty. Tento příklad používá `1b7ebe2174649c45474a4819dafae956712c31d3` jako kryptografický otisk tohoto certifikátu. Další informace o klientských certifikátech najdete v tématu [řízení přístupu na základě rolí pro klienty Service Fabric](service-fabric-cluster-security-roles.md).
 
 ### <a name="create-backup-policy"></a>Vytvořit zásady zálohování
 
 Prvním krokem je vytvoření zásad zálohování popisujících plán zálohování, cílové úložiště pro zálohovaná data, název zásady, maximální počet přírůstkových záloh, které se mají povolit, než se spustí úplné zálohování a zásady uchovávání informací pro úložiště záloh. 
 
-Pro úložiště zálohování použijte účet Azure Storage vytvořený výše. Kontejner `backup-container` je nakonfigurován pro ukládání záloh. Kontejner s tímto názvem je vytvořen, pokud ještě neexistuje, během nahrávání zálohy. Naplňte `ConnectionString` platným připojovacím řetězcem pro účet Azure Storage, `account-name` nahraďte název svého účtu úložiště a `account-key` klíč účtu úložiště.
+Pro úložiště zálohování použijte účet Azure Storage vytvořený výše. Kontejner `backup-container` je nakonfigurován pro ukládání záloh. Kontejner s tímto názvem je vytvořen, pokud ještě neexistuje, během nahrávání zálohy. Naplňte `ConnectionString` platným připojovacím řetězcem pro účet Azure Storage, nahraďte `account-name` název svého účtu úložiště a `account-key` klíč účtu úložiště.
 
 #### <a name="powershell-using-microsoftservicefabricpowershellhttp-module"></a>PowerShell s použitím modulu Microsoft. ServiceFabric. PowerShell. http
 
@@ -198,7 +198,7 @@ Enable-SFApplicationBackup -ApplicationId 'SampleApp' -BackupPolicyName 'BackupP
 ```
 #### <a name="rest-call-using-powershell"></a>Volání REST pomocí PowerShellu
 
-Spusťte následující skript PowerShellu pro vyvolání požadované REST API k přidružení zásady zálohování s názvem `BackupPolicy1` vytvořeným v předchozím kroku s `SampleApp`aplikací.
+Spusťte následující skript PowerShellu pro vyvolání požadované REST API k přidružení zásady zálohování s názvem `BackupPolicy1` vytvořeným v předchozím kroku s aplikací `SampleApp` .
 
 ```powershell
 $BackupPolicyReference = @{
@@ -241,7 +241,7 @@ Get-SFApplicationBackupList -ApplicationId WordCount
 
 #### <a name="rest-call-using-powershell"></a>Volání REST pomocí PowerShellu
 
-Spuštěním následujícího skriptu PowerShellu vyvolejte rozhraní HTTP API, abyste mohli vytvořit výčet záloh vytvořených pro všechny `SampleApp` oddíly v rámci aplikace.
+Spuštěním následujícího skriptu PowerShellu vyvolejte rozhraní HTTP API, abyste mohli vytvořit výčet záloh vytvořených pro všechny oddíly v rámci `SampleApp` aplikace.
 
 ```powershell
 $url = "https://mysfcluster.southcentralus.cloudapp.azure.com:19080/Applications/SampleApp/$/GetBackups?api-version=6.4"

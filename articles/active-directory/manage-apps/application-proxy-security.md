@@ -3,8 +3,8 @@ title: Požadavky na zabezpečení pro Azure Proxy aplikací služby AD | Micros
 description: Zahrnuje požadavky na zabezpečení při používání Azure Proxy aplikací služby AD
 services: active-directory
 documentationcenter: ''
-author: msmimart
-manager: CelesteDG
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/13/2020
-ms.author: mimart
+ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74e0faf8ac776c043f2407e509c936d21f227664
-ms.sourcegitcommit: 493b27fbfd7917c3823a1e4c313d07331d1b732f
+ms.openlocfilehash: 13b020f633adc2e2286cc14b01c6d248fc2c1e3e
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 05/21/2020
-ms.locfileid: "83739964"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759882"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Otázky zabezpečení při vzdáleném přístupu k aplikacím pomocí Azure Proxy aplikací služby AD
 
@@ -79,7 +79,7 @@ Nemusíte si dělat starosti s údržbou a opravou místních serverů.
 
 Neopravný software je stále pro velký počet útoků. Azure Proxy aplikací služby AD je služba internetového škálování, kterou Microsoft vlastní, takže vždycky získáte nejnovější opravy a upgrady zabezpečení.
 
-Abychom vylepšili zabezpečení aplikací publikovaných v Azure Proxy aplikací služby AD, zablokovali jsme roboty webového prohledávacího modulu z indexování a archivace vašich aplikací. Pokaždé, když se robot webového prohledávacího programu pokusí načíst nastavení robota pro publikovanou aplikaci, proxy aplikací aplikace odpoví souborem robots. txt, který obsahuje `User-agent: * Disallow: /` .
+Abychom vylepšili zabezpečení aplikací publikovaných v Azure Proxy aplikací služby AD, zablokovali jsme roboty webového prohledávacího modulu z indexování a archivace vašich aplikací. Pokaždé, když se robot webového prohledávacího programu pokusí načíst nastavení robota pro publikovanou aplikaci, proxy aplikací aplikace odpoví souborem robots.txt, který obsahuje `User-agent: * Disallow: /` .
 
 #### <a name="azure-ddos-protection-service"></a>Služba Azure DDoS Protection
 

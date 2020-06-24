@@ -4,23 +4,23 @@ description: Použijte záznam aliasu Azure DNS k hostování webových aplikac�
 services: dns
 author: rohinkoul
 ms.service: dns
-ms.topic: article
+ms.topic: how-to
 ms.date: 08/10/2019
 ms.author: rohink
-ms.openlocfilehash: 8ba96a028d51e6e5503bb4a8e6735b48033c9ba1
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: e7c4db7a2fc3ba931415e3b167f7fe72ee2b3980
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "76937369"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710537"
 ---
 # <a name="host-load-balanced-azure-web-apps-at-the-zone-apex"></a>Webové aplikace Azure s vyrovnáváním zatížení hostitele ve vrcholu zóny
 
-Protokol DNS brání přiřazení jakékoli jiné než záznam A nebo AAAA na vrcholu zóny. Vzorový vrchol zóny je contoso.com. Toto omezení představuje problém pro vlastníky aplikace, kteří mají aplikace s vyrovnáváním zatížení za Traffic Manager. Není možné nasměrovat profil Traffic Manager ze záznamu vrcholu zóny. V důsledku toho musí vlastníci aplikace používat alternativní řešení. Přesměrování v aplikační vrstvě se musí přesměrovat ze vrcholu zóny na jinou doménu. Příkladem je přesměrování z contoso.com na webovou\.contoso.com. Toto uspořádání představuje pro funkci přesměrování jediný bod selhání.
+Protokol DNS brání přiřazení jakékoli jiné než záznam A nebo AAAA na vrcholu zóny. Vzorový vrchol zóny je contoso.com. Toto omezení představuje problém pro vlastníky aplikace, kteří mají aplikace s vyrovnáváním zatížení za Traffic Manager. Není možné nasměrovat profil Traffic Manager ze záznamu vrcholu zóny. V důsledku toho musí vlastníci aplikace používat alternativní řešení. Přesměrování v aplikační vrstvě se musí přesměrovat ze vrcholu zóny na jinou doménu. Příkladem je přesměrování z contoso.com na webovou \. contoso.com. Toto uspořádání představuje pro funkci přesměrování jediný bod selhání.
 
 U záznamů aliasů tento problém již neexistuje. Vlastníci aplikací teď můžou odkazovat na svůj záznam vrcholu zóny na Traffic Manager profil, který má externí koncové body. Vlastníci aplikací můžou odkazovat na stejný profil Traffic Manager, který se používá pro jakoukoliv jinou doménu v rámci zóny DNS.
 
-Například contoso.com a webová\.contoso.com mohou odkazovat na stejný profil Traffic Manager. Toto je případ, pokud má profil Traffic Manager jenom nakonfigurované externí koncové body.
+Například contoso.com a webová \. contoso.com mohou odkazovat na stejný profil Traffic Manager. Toto je případ, pokud má profil Traffic Manager jenom nakonfigurované externí koncové body.
 
 V tomto článku se dozvíte, jak vytvořit záznam aliasu pro svůj doménový vrchol a nakonfigurovat koncové body profilu Traffic Manager pro vaše webové aplikace.
 
@@ -43,7 +43,7 @@ Vytvořte skupinu prostředků, která bude obsahovat všechny prostředky použ
 Vytvořte dva plány Web App Service ve skupině prostředků pomocí následující tabulky pro informace o konfiguraci. Další informace o vytvoření plánu App Service najdete v tématu [Správa plánu App Service v Azure](../app-service/app-service-plan-manage.md).
 
 
-|Název  |Operační systém  |Umístění  |Cenová úroveň  |
+|Name  |Operační systém  |Umístění  |Cenová úroveň  |
 |---------|---------|---------|---------|
 |ASP – 01     |Windows|USA – východ|Vývoj/testování D1 – Shared|
 |ASP-02     |Windows|USA – střed|Vývoj/testování D1 – Shared|
@@ -58,7 +58,7 @@ Vytvořte dvě webové aplikace, jednu v každém plánu App Service.
 4. Vyberte **Vytvořit**.
 5. Přijměte výchozí hodnoty a pomocí následující tabulky nakonfigurujte dvě webové aplikace:
 
-   |Název<br>(musí být jedinečné v rámci. azurewebsites.net)|Skupina prostředků |Zásobník modulu runtime|Oblast|App Service plán/umístění
+   |Name<br>(musí být jedinečné v rámci. azurewebsites.net)|Skupina prostředků |Zásobník modulu runtime|Oblast|App Service plán/umístění
    |---------|---------|-|-|-------|
    |App – 01|Použít existující<br>Vyberte skupinu prostředků.|.NET Core 2.2|USA – východ|ASP-01 (D1)|
    |App-02|Použít existující<br>Vyberte skupinu prostředků.|.NET Core 2.2|USA – střed|ASP-02 (D1)|
@@ -84,13 +84,13 @@ Nyní můžete vytvořit koncové body pro tyto dvě webové aplikace.
 
 1. Otevřete skupinu prostředků a vyberte profil Traffic Manager.
 2. V levém sloupci vyberte **koncové body**.
-3. Vyberte **Přidat**.
+3. Vyberte možnost **Přidat**.
 4. Pro konfiguraci koncových bodů použijte následující tabulku:
 
-   |Typ  |Název  |Cíl  |Umístění  |Vlastní nastavení hlaviček|
+   |Typ  |Name  |Cíl  |Umístění  |Vlastní nastavení hlaviček|
    |---------|---------|---------|---------|---------|
-   |Externí koncový bod     |Konec – 01|IP adresa, kterou jste si poznamenali pro App-01|USA – východ|Hostitel:\<adresa URL, kterou jste si poznamenali pro App-01.\><br>Příklad: **Host: App-01.azurewebsites.NET**|
-   |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|USA – střed|Hostitel:\<adresa URL, kterou jste si poznamenali pro App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
+   |Externí koncový bod     |Konec – 01|IP adresa, kterou jste si poznamenali pro App-01|USA – východ|provoz\<the URL you recorded for App-01\><br>Příklad: **Host: App-01.azurewebsites.NET**|
+   |Externí koncový bod     |Konec-02|IP adresa, kterou jste si poznamenali pro App-02|USA – střed|provoz\<the URL you recorded for App-02\><br>Příklad: **Host: App-02.azurewebsites.NET**
 
 ## <a name="create-dns-zone"></a>Vytvořit zónu DNS
 
@@ -104,7 +104,7 @@ Když do svých webových aplikací přidáte vlastní název hostitele, bude vy
 2. Vyberte **Sada záznamů**.
 3. Přidejte sadu záznamů pomocí následující tabulky. Pro tuto hodnotu použijte skutečnou adresu URL webové aplikace, kterou jste předtím nahráli:
 
-   |Název  |Typ  |Hodnota|
+   |Name  |Typ  |Hodnota|
    |---------|---------|-|
    |@     |TXT|App-01.azurewebsites.net|
 
@@ -132,7 +132,7 @@ Nyní přidejte záznam aliasu pro vrchol zóny.
 2. Vyberte **Sada záznamů**.
 3. Přidejte sadu záznamů pomocí následující tabulky:
 
-   |Název  |Typ  |Sada záznamů aliasů  |Typ aliasu  |Prostředek Azure|
+   |Name  |Typ  |Sada záznamů aliasů  |Typ aliasu  |Prostředek Azure|
    |---------|---------|---------|---------|-----|
    |@     |A|Ano|Prostředek Azure|Traffic Manager – váš profil|
 

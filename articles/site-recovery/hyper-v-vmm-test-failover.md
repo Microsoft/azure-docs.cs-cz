@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: rajanaki
 ms.openlocfilehash: 0363911574a076b13cb72591fb2564364e096c76
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79257963"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710673"
 ---
 # <a name="run-a-dr-drill-for-hyper-v-vms-to-a-secondary-site"></a>Spuštění postupu zotavení po havárii pro virtuální počítače Hyper-V do sekundární lokality
 
@@ -43,7 +43,7 @@ Spustíte testovací převzetí služeb při selhání z primární lokality do 
 
 Při spuštění testovacího převzetí služeb při selhání se zobrazí výzva k výběru nastavení sítě pro počítače testovací repliky, jak je shrnuto v tabulce.
 
-| **Možnost** | **Zobrazí** | |
+| **Nastavení** | **Podrobnosti** | |
 | --- | --- | --- |
 | **Žádné** | Testovací virtuální počítač se vytvoří na hostiteli, na kterém je umístěný virtuální počítač repliky. Není přidaný do cloudu a není připojený k žádné síti.<br/><br/> Počítač můžete po vytvoření připojit k síti virtuálních počítačů.| |
 | **Použít existující** | Testovací virtuální počítač se vytvoří na hostiteli, na kterém je umístěný virtuální počítač repliky. Není přidaný do cloudu.<br/><br/>Vytvořte síť virtuálních počítačů, která je izolovaná od produkční sítě.<br/><br/>Pokud používáte síť na bázi VLAN, doporučujeme pro tento účel vytvořit samostatnou logickou síť (nepoužitou v produkčním prostředí). Tato logická síť slouží k vytváření sítí virtuálních počítačů pro testovací převzetí služeb při selhání.<br/><br/>Logická síť by měla být přidružená alespoň k jednomu ze síťových adaptérů všech serverů Hyper-V, které jsou hostiteli virtuálních počítačů.<br/><br/>U logických sítí VLAN by se měly izolované síťové lokality, které přidáte do logické sítě.<br/><br/>Pokud používáte logickou síť založenou na virtualizaci sítě Windows, Azure Site Recovery automaticky vytvoří izolované sítě virtuálních počítačů. | |
@@ -119,7 +119,7 @@ Připravte server DNS pro testovací převzetí služeb při selhání následuj
 
 Tento postup popisuje, jak spustit testovací převzetí služeb při selhání pro plán obnovení. Alternativně můžete spustit převzetí služeb při selhání pro jeden virtuální počítač na kartě **Virtual Machines** .
 
-1. Vyberte **plány** > obnovení*recoveryplan_name*. Klikněte na **převzetí služeb při selhání** > **test Failover**.
+1. Vyberte **plány obnovení**  >  *recoveryplan_name*. Klikněte na **převzetí služeb při selhání**  >  **test Failover**.
 2. V okně **Test převzetí služeb při selhání** určete, jak se mají virtuální počítače repliky po testovacím převzetí služeb při selhání připojit k sítím.
 3. Sledujte průběh převzetí služeb při selhání na kartě **úlohy** .
 4. Po dokončení převzetí služeb při selhání ověřte, že se virtuální počítače úspěšně spustily.

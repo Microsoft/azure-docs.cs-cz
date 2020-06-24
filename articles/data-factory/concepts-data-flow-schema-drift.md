@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/15/2020
-ms.openlocfilehash: 6e361d23860ce8f40abba5c246242cf345bb974c
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.openlocfilehash: 5b7fe9cf6c751bfb96dff8aa911172ae91a17653
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "81606102"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886631"
 ---
 # <a name="schema-drift-in-mapping-data-flow"></a>Posun schématu v mapování toku dat
 
@@ -37,7 +37,7 @@ Toto video poskytuje Úvod do některých komplexních řešení, která můžet
 
 ## <a name="schema-drift-in-source"></a>Odtenatových schématu ve zdroji
 
-Sloupce přicházející do datového toku ze zdrojové definice jsou definované jako "odstraněné", pokud se ve zdrojové projekci nevyskytují. Zdroj projekce můžete zobrazit na kartě projekce ve zdrojové transformaci. Když vyberete datovou sadu pro zdroj, ADF automaticky vezme schéma z datové sady a vytvoří projekt z této definice schématu datové sady.
+Sloupce přicházející do datového toku ze zdrojové definice jsou definované jako "odstraněné", pokud se ve zdrojové projekci nevyskytují. Zdroj projekce můžete zobrazit na kartě projekce ve zdrojové transformaci. Když vyberete datovou sadu pro zdroj, ADF automaticky vezme schéma z datové sady a vytvoří projekci z této definice schématu datové sady.
 
 Ve zdrojové transformaci je na posunu schématu definovaná jako sloupce pro čtení, které nedefinují vaše schéma datové sady. Pokud chcete povolit posun schématu, zaškrtněte možnost **Povolit posun schématu** ve zdrojové transformaci.
 
@@ -59,7 +59,7 @@ Pokud je zapnutý posun schématu, ujistěte se, že je zapnutý posuvník **aut
 
 Když datový tok obsahuje sloupce, můžete k nim přistupovat v transformacích pomocí následujících metod:
 
-* Použijte výrazy `byPosition` a `byName` k explicitnímu odkazu na sloupec podle názvu nebo čísla pozice.
+* Použijte `byPosition` výrazy a `byName` k explicitnímu odkazu na sloupec podle názvu nebo čísla pozice.
 * Přidejte do odvozeného sloupce vzor sloupce nebo agregovanou transformaci podle libovolné kombinace názvu, datového proudu, pozice nebo typu.
 * Přidání mapování založeného na pravidlech v transformaci SELECT nebo Sink tak, aby se shodovaly se sloupci s aliasy přes vzor
 

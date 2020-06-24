@@ -2,25 +2,25 @@
 title: Pochopení a řešení potíží s Proxy aplikací služby AD CORS pro Azure
 description: Poskytuje informace o CORS v Azure Proxy aplikací služby AD a o tom, jak identifikovat a řešit problémy CORS.
 services: active-directory
-author: jeevanbisht
-manager: mtillman
+author: kenwith
+manager: celestedg
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.topic: conceptual
+ms.topic: troubleshooting
 ms.date: 05/23/2019
-ms.author: celested
+ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: c49535ad11139ac5145d4f283374bf9cc6d71f52
-ms.sourcegitcommit: b1e25a8a442656e98343463aca706f4fde629867
+ms.openlocfilehash: 2019802725e36c2400f57952fedf7af40877c8c9
+ms.sourcegitcommit: bc943dc048d9ab98caf4706b022eb5c6421ec459
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/27/2020
-ms.locfileid: "72025789"
+ms.lasthandoff: 06/14/2020
+ms.locfileid: "84759925"
 ---
 # <a name="understand-and-solve-azure-active-directory-application-proxy-cors-issues"></a>Pochopení a řešení potíží s Proxy aplikací služby Azure Active Directory CORS
 
-[Sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/) může někdy představovat výzvy pro aplikace a rozhraní API, které publikujete prostřednictvím proxy aplikací služby Azure Active Directory. Tento článek popisuje problémy a řešení pro Azure Proxy aplikací služby AD CORS.
+[Sdílení prostředků mezi zdroji (CORS)](https://www.w3.org/TR/cors/)   v některých případech může docházet k problémům s aplikacemi a rozhraními API, která publikujete prostřednictvím Proxy aplikací služby Azure Active Directory. Tento článek popisuje problémy a řešení pro Azure Proxy aplikací služby AD CORS.
 
 Zabezpečení prohlížeče obvykle brání webové stránce v provádění požadavků AJAX na jinou doménu. Toto omezení se nazývá *zásady stejného původu*a brání škodlivému webu v čtení citlivých dat z jiné lokality. V některých případech však můžete chtít povolit jiným webům volat vaše webové rozhraní API. CORS je standard W3C, který umožňuje serveru zmírnit zásady stejného původce a při zamítnutí dalších požadavků umožnit některé žádosti mezi zdroji.
 
@@ -28,15 +28,15 @@ Zabezpečení prohlížeče obvykle brání webové stránce v provádění pož
 
 Dvě adresy URL mají stejný původ, pokud mají identická schémata, hostitele a porty ([RFC 6454](https://tools.ietf.org/html/rfc6454)), například:
 
--   http:\//contoso.com/foo.html
--   http:\//contoso.com/bar.html
+-   http: \/ /contoso.com/foo.html
+-   http: \/ /contoso.com/bar.html
 
 Následující adresy URL mají jiný původ než předchozí dvě:
 
--   http:\//contoso.NET – odlišná doména
--   http:\//contoso.com:9000/foo.html – jiný port
--   https:\//contoso.com/foo.html – odlišné schéma
--   http:\//www.contoso.com/foo.html – odlišná subdoména
+-   http: \/ /contoso.NET – odlišná doména
+-   http: \/ /contoso.com:9000/foo.html – jiný port
+-   https: \/ /contoso.com/foo.html – odlišné schéma
+-   http: \/ /www.contoso.com/foo.html – odlišná subdoména
 
 Zásady stejného původu zabraňují aplikacím v přístupu k prostředkům z jiných zdrojů, pokud nepoužívají správné hlavičky řízení přístupu. Pokud jsou hlavičky CORS chybějící nebo nesprávné, požadavky na více zdrojů selžou. 
 
@@ -46,7 +46,7 @@ Problémy CORS můžete identifikovat pomocí ladicích nástrojů prohlížeče
 1. Stisknutím klávesy **F12** otevřete konzolu ladění.
 1. Zkuste reprodukování transakce a zkontrolujte zprávu konzoly. Porušení CORS vyvolá chybu konzoly týkající se původu.
 
-Na následujícím snímku obrazovky se při výběru tlačítka **vyzkoušet** vyvolala chybová zpráva CORS, že protokol\/https:/corswebclient-contoso.msappproxy.NET nebyl nalezen v hlavičce Access-Control-Allow-Origin.
+Na následujícím snímku obrazovky se při výběru tlačítka **vyzkoušet** vyvolala chybová zpráva CORS, že protokol https: \/ /corswebclient-contoso.msappproxy.NET nebyl nalezen v hlavičce Access-Control-Allow-Origin.
 
 ![Problém CORS](./media/application-proxy-understand-cors-issues/image3.png)
 
@@ -82,8 +82,8 @@ Místo toho nastavte **interní adresu URL** pro publikování nadřazeného adr
 
 Výsledné adresy URL aplikací efektivně vyřeší problém CORS:
 
-- https:\//corswebclient-contoso.msappproxy.NET/CORSWebService
-- https:\//corswebclient-contoso.msappproxy.NET/CORSWebClient
+- https: \/ /corswebclient-contoso.msappproxy.NET/CORSWebService
+- https: \/ /corswebclient-contoso.msappproxy.NET/CORSWebClient
 
 ### <a name="option-3-update-http-headers"></a>Možnost 3: Aktualizace hlaviček protokolu HTTP
 
@@ -101,7 +101,7 @@ Content-Type: text/prostý; charset = UTF-8 \
 Konec platnosti:-1 \
 Lišící se: přijmout – kódování \
 Server: Microsoft-IIS/8.5 Microsoft-HTTPAPI/2.0 \
-**Přístup-řízení-povolení-původu: https\://corswebclient-contoso.msappproxy.NET**\
+**Přístup-řízení-povolení-původu: https \: //corswebclient-contoso.msappproxy.NET**\
 X-AspNet-verze: 4.0.30319 \
 X-napájen-by: ASP.NET \
 Content-Length: 17

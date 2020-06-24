@@ -4,46 +4,46 @@ description: Jak používat Log Analytics s funkcí diagnostiky virtuálních kl
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: conceptual
+ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9b18b596e0be0e410f1d868f405e2a30105276d8
-ms.sourcegitcommit: ba8df8424d73c8c4ac43602678dae4273af8b336
+ms.openlocfilehash: 7a138308b48a24a78c55bdc0105379e31482456d
+ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/05/2020
-ms.locfileid: "84456449"
+ms.lasthandoff: 06/23/2020
+ms.locfileid: "85209381"
 ---
 # <a name="use-log-analytics-for-the-diagnostics-feature"></a>Použití Log Analytics pro diagnostickou funkci
 
 >[!IMPORTANT]
 >Tento obsah se vztahuje na jarní 2020 aktualizaci s Azure Resource Manager objekty virtuálních klientů Windows. Pokud používáte virtuální plochu Windows na verzi 2019 bez Azure Resource Manager objektů, přečtěte si [Tento článek](./virtual-desktop-fall-2019/diagnostics-log-analytics-2019.md).
 >
-> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti. 
+> V současnosti je ve verzi Public Preview na jaře 2020 aktualizace virtuálních počítačů s Windows. Tato verze Preview se poskytuje bez smlouvy o úrovni služeb a nedoporučujeme ji používat pro produkční úlohy. Některé funkce se nemusí podporovat nebo mohou mít omezené možnosti.
 > Další informace najdete v [dodatečných podmínkách použití pro verze Preview v Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Virtuální plocha Windows používá [Azure monitor](../azure-monitor/overview.md) pro monitorování a výstrahy, jako je mnoho dalších služeb Azure. To správcům umožňuje identifikovat problémy přes jediné rozhraní. Služba vytvoří protokoly aktivit pro uživatele i pro akce správy. Každý protokol aktivit spadá do následujících kategorií:  
+Virtuální plocha Windows používá [Azure monitor](../azure-monitor/overview.md) pro monitorování a výstrahy, jako je mnoho dalších služeb Azure. To správcům umožňuje identifikovat problémy přes jediné rozhraní. Služba vytvoří protokoly aktivit pro uživatele i pro akce správy. Každý protokol aktivit spadá do následujících kategorií:
 
 - Aktivity správy:
     - Můžete sledovat, jestli pokusy o změnu objektů virtuálních klientů Windows pomocí rozhraní API nebo PowerShellu jsou úspěšné. Může například někdo úspěšně vytvořit fond hostitelů pomocí PowerShellu?
-- Kanálu 
-    - Můžou se uživatelé úspěšně přihlásit k odběru pracovních prostorů? 
+- Kanálu
+    - Můžou se uživatelé úspěšně přihlásit k odběru pracovních prostorů?
     - Uvidí uživatelé všechny prostředky publikované v klientovi vzdálené plochy?
-- Připojení: 
-    - Když uživatelé zahájí a dokončí připojení ke službě. 
-- Registrace hostitele: 
+- Připojení:
+    - Když uživatelé zahájí a dokončí připojení ke službě.
+- Registrace hostitele:
     - Byl hostitel relace úspěšně zaregistrován u služby při připojení?
-- Vyskytl 
+- Vyskytl
     - Narazí uživatelé na nějaké problémy s konkrétními aktivitami? Tato funkce může vygenerovat tabulku, která sleduje data aktivity za vás, dokud jsou informace spojeny s aktivitami.
-- Kontrolní body  
+- Kontrolní body
     - Konkrétní kroky při životním cyklu aktivity, která byla dosažena. Během relace se například uživatel vyrovnává jako vyrovnaný k určitému hostiteli, potom byl během připojení přihlášen a tak dále.
 
 Připojení, která nedosáhnou virtuálního klienta Windows, se nezobrazí ve výsledcích diagnostiky, protože samotná služba role diagnostiky je součástí virtuálního klienta Windows. Problémy s připojením k virtuálnímu počítači s Windows se můžou vyskytnout, když uživatel dochází k problémům se síťovým připojením.
 
-Azure Monitor umožňuje analyzovat data virtuálních klientů Windows a sledovat čítače výkonu virtuálních počítačů (VM), a to vše v rámci stejného nástroje. V tomto článku se dozvíte víc o tom, jak povolit diagnostiku pro prostředí virtuálních počítačů s Windows. 
+Azure Monitor umožňuje analyzovat data virtuálních klientů Windows a sledovat čítače výkonu virtuálních počítačů (VM), a to vše v rámci stejného nástroje. V tomto článku se dozvíte víc o tom, jak povolit diagnostiku pro prostředí virtuálních počítačů s Windows.
 
->[!NOTE] 
+>[!NOTE]
 >Informace o tom, jak monitorovat virtuální počítače v Azure, najdete v tématu [monitorování virtuálních počítačů Azure pomocí Azure monitor](../azure-monitor/insights/monitor-vm-azure.md). Nezapomeňte také [zkontrolovat prahové hodnoty čítače výkonu](../virtual-desktop/virtual-desktop-fall-2019/deploy-diagnostics.md#windows-performance-counter-thresholds) , abyste lépe pochopili uživatelské prostředí na hostiteli relace.
 
 ## <a name="before-you-get-started"></a>Než začnete
@@ -60,7 +60,7 @@ Po vytvoření pracovního prostoru postupujte podle pokynů v tématu [připoje
 
 Tyto informace budete potřebovat později v procesu instalace.
 
-Nezapomeňte si projít správu oprávnění pro Azure Monitor, abyste povolili přístup k datům pro uživatele, kteří monitorují a udržují prostředí virtuálních počítačů s Windows. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/platform/roles-permissions-security.md). 
+Nezapomeňte si projít správu oprávnění pro Azure Monitor, abyste povolili přístup k datům pro uživatele, kteří monitorují a udržují prostředí virtuálních počítačů s Windows. Další informace najdete v tématu [Začínáme s rolemi, oprávněními a zabezpečením pomocí Azure monitor](../azure-monitor/platform/roles-permissions-security.md).
 
 ## <a name="push-diagnostics-data-to-your-workspace"></a>Vložení diagnostických dat do pracovního prostoru
 
@@ -68,27 +68,27 @@ Diagnostická data můžete ze svých objektů virtuálních ploch Windows nahra
 
 Nastavení Log Analytics nového objektu:
 
-1. Přihlaste se k Azure Portal a přejít na **virtuální plochu Windows**. 
+1. Přihlaste se k Azure Portal a přejít na **virtuální plochu Windows**.
 
-2. Přejděte na objekt (například fond hostitelů, skupinu aplikací nebo pracovní prostor), pro který chcete zachytit protokoly a události. 
+2. Přejděte na objekt (například fond hostitelů, skupinu aplikací nebo pracovní prostor), pro který chcete zachytit protokoly a události.
 
-3. V nabídce na levé straně obrazovky vyberte **nastavení diagnostiky** . 
+3. V nabídce na levé straně obrazovky vyberte **nastavení diagnostiky** .
 
-4. V nabídce, která se zobrazí na pravé straně obrazovky, vyberte **Přidat nastavení diagnostiky** . 
-   
+4. V nabídce, která se zobrazí na pravé straně obrazovky, vyberte **Přidat nastavení diagnostiky** .
+
     Možnosti zobrazené na stránce nastavení diagnostiky se budou lišit v závislosti na tom, jaký typ objektu upravujete.
 
-    Pokud například povolíte diagnostiku pro skupinu aplikací, zobrazí se možnosti konfigurace kontrolních bodů, chyb a správy. U pracovních prostorů tyto kategorie konfigurují informační kanál, který se bude sledovat, když se uživatelé přihlásí k odběru seznamu aplikací. Další informace o nastavení diagnostiky najdete [v tématu Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik prostředků v Azure](../azure-monitor/platform/diagnostic-settings.md). 
+    Pokud například povolíte diagnostiku pro skupinu aplikací, zobrazí se možnosti konfigurace kontrolních bodů, chyb a správy. U pracovních prostorů tyto kategorie konfigurují informační kanál, který se bude sledovat, když se uživatelé přihlásí k odběru seznamu aplikací. Další informace o nastavení diagnostiky najdete [v tématu Vytvoření nastavení diagnostiky pro shromažďování protokolů a metrik prostředků v Azure](../azure-monitor/platform/diagnostic-settings.md).
 
-     >[!IMPORTANT] 
-     >Nezapomeňte povolit diagnostiku pro každý objekt Azure Resource Manager, který chcete monitorovat. Data budou k dispozici pro aktivity po povolení diagnostiky. Po prvním nastavení může trvat několik hodin.  
+     >[!IMPORTANT]
+     >Nezapomeňte povolit diagnostiku pro každý objekt Azure Resource Manager, který chcete monitorovat. Data budou k dispozici pro aktivity po povolení diagnostiky. Po prvním nastavení může trvat několik hodin.
 
 5. Zadejte název konfigurace nastavení a pak vyberte **Odeslat do Log Analytics**. Název, který použijete, by neměl obsahovat mezery a měl by odpovídat [konvencím pojmenování Azure](../azure-resource-manager/management/resource-name-rules.md). V rámci protokolů můžete vybrat všechny možnosti, které chcete přidat do Log Analytics, jako je například kontrolní bod, chyba, Správa a tak dále.
 
 6. Vyberte **Uložit**.
 
 >[!NOTE]
->Log Analytics vám poskytne možnost streamovat data do [Event Hubs](../event-hubs/event-hubs-about.md) nebo archivovat v účtu úložiště. Další informace o této funkci najdete v tématu [streamování dat monitorování Azure do centra událostí](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) a [archivaci protokolů prostředků Azure do účtu úložiště](../azure-monitor/platform/resource-logs-collect-storage.md). 
+>Log Analytics vám poskytne možnost streamovat data do [Event Hubs](../event-hubs/event-hubs-about.md) nebo archivovat v účtu úložiště. Další informace o této funkci najdete v tématu [streamování dat monitorování Azure do centra událostí](../azure-monitor/platform/stream-monitoring-data-event-hubs.md) a [archivaci protokolů prostředků Azure do účtu úložiště](../azure-monitor/platform/resource-logs-collect-storage.md).
 
 ## <a name="how-to-access-log-analytics"></a>Přístup k Log Analytics
 
@@ -98,23 +98,23 @@ K Log Analytics pracovním prostorům můžete přistupovat Azure Portal nebo Az
 
 1. Přihlaste se k portálu Azure.
 
-2. Vyhledejte **Log Analytics pracovní prostor**. 
+2. Vyhledejte **Log Analytics pracovní prostor**.
 
-3. V části služby vyberte **Log Analytics pracovní prostory**. 
-   
+3. V části služby vyberte **Log Analytics pracovní prostory**.
+
 4. V seznamu vyberte pracovní prostor, který jste nakonfigurovali pro objekt virtuálního počítače s Windows.
 
-5. V pracovním prostoru vyberte **protokoly**. Seznam nabídek můžete vyfiltrovat pomocí **vyhledávací** funkce. 
+5. V pracovním prostoru vyberte **protokoly**. Seznam nabídek můžete vyfiltrovat pomocí **vyhledávací** funkce.
 
 ### <a name="access-log-analytics-on-azure-monitor"></a>Přístup k Log Analytics v Azure Monitor
 
 1. Přihlášení k webu Azure Portal
 
-2. Vyhledejte a vyberte **monitor**. 
+2. Vyhledejte a vyberte **monitor**.
 
 3. Vyberte **Protokoly**.
 
-4. Podle pokynů na stránce protokolování nastavte obor dotazu.  
+4. Podle pokynů na stránce protokolování nastavte obor dotazu.
 
 5. Jste připraveni na dotaz na diagnostiku. Všechny tabulky diagnostiky mají předponu "WVD".
 
@@ -138,114 +138,114 @@ Následující ukázkové dotazy ukazují, jak funkce diagnostiky generuje sesta
 Pokud chcete získat seznam připojení, která udělali vaši uživatelé, spusťte tuto rutinu:
 
 ```kusto
-WVDConnections 
-| project-away TenantId,SourceSystem 
-| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId 
-| join kind=leftouter ( 
-    WVDErrors 
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId 
-    ) on CorrelationId     
-| join kind=leftouter ( 
-   WVDCheckpoints 
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId 
-   | mv-apply Checkpoints on 
-    ( 
-        order by todatetime(Checkpoints['Time']) asc 
-        | summarize Checkpoints=makelist(Checkpoints) 
-    ) 
-   ) on CorrelationId 
-| project-away CorrelationId1, CorrelationId2 
-| order by  TimeGenerated desc 
+WVDConnections
+| project-away TenantId,SourceSystem
+| summarize arg_max(TimeGenerated, *), StartTime =  min(iff(State== 'Started', TimeGenerated , datetime(null) )), ConnectTime = min(iff(State== 'Connected', TimeGenerated , datetime(null) ))   by CorrelationId
+| join kind=leftouter (
+    WVDErrors
+    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
+    ) on CorrelationId
+| join kind=leftouter (
+   WVDCheckpoints
+   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
+   | mv-apply Checkpoints on
+    (
+        order by todatetime(Checkpoints['Time']) asc
+        | summarize Checkpoints=makelist(Checkpoints)
+    )
+   ) on CorrelationId
+| project-away CorrelationId1, CorrelationId2
+| order by  TimeGenerated desc
 ```
 
 Postup zobrazení aktivity informačního kanálu pro uživatele:
 
 ```kusto
-WVDFeeds  
-| project-away TenantId,SourceSystem  
-| join kind=leftouter (  
-    WVDErrors  
-    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId  
-    ) on CorrelationId      
-| join kind=leftouter (  
-   WVDCheckpoints  
-   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId  
-   | mv-apply Checkpoints on  
-    (  
-        order by todatetime(Checkpoints['Time']) asc  
-        | summarize Checkpoints=makelist(Checkpoints)  
-    )  
-   ) on CorrelationId  
-| project-away CorrelationId1, CorrelationId2  
-| order by  TimeGenerated desc 
+WVDFeeds
+| project-away TenantId,SourceSystem
+| join kind=leftouter (
+    WVDErrors
+    |summarize Errors=makelist(pack('Code', Code, 'CodeSymbolic', CodeSymbolic, 'Time', TimeGenerated, 'Message', Message ,'ServiceError', ServiceError, 'Source', Source)) by CorrelationId
+    ) on CorrelationId
+| join kind=leftouter (
+   WVDCheckpoints
+   | summarize Checkpoints=makelist(pack('Time', TimeGenerated, 'Name', Name, 'Parameters', Parameters, 'Source', Source)) by CorrelationId
+   | mv-apply Checkpoints on
+    (
+        order by todatetime(Checkpoints['Time']) asc
+        | summarize Checkpoints=makelist(Checkpoints)
+    )
+   ) on CorrelationId
+| project-away CorrelationId1, CorrelationId2
+| order by  TimeGenerated desc
 ```
 
-Vyhledání všech připojení pro jednoho uživatele: 
+Vyhledání všech připojení pro jednoho uživatele:
 
 ```kusto
 WVDConnections
-|where UserName == "userupn" 
-|take 100 
-|sort by TimeGenerated asc, CorrelationId 
+|where UserName == "userupn"
+|take 100
+|sort by TimeGenerated asc, CorrelationId
 ```
- 
+
 
 Zjištění počtu připojení uživatele za den:
 
 ```kusto
-WVDConnections 
-|where UserName == "userupn" 
-|take 100 
-|sort by TimeGenerated asc, CorrelationId 
-|summarize dcount(CorrelationId) by bin(TimeGenerated, 1d) 
+WVDConnections
+|where UserName == "userupn"
+|take 100
+|sort by TimeGenerated asc, CorrelationId
+|summarize dcount(CorrelationId) by bin(TimeGenerated, 1d)
 ```
- 
+
 
 Postup zjištění trvání relace podle uživatele:
 
 ```kusto
-let Events = WVDConnections | where UserName == "userupn" ; 
-Events 
-| where State == "Connected" 
-| project CorrelationId , UserName, ResourceAlias , StartTime=TimeGenerated 
-| join (Events 
-| where State == "Completed" 
-| project EndTime=TimeGenerated, CorrelationId) 
-on CorrelationId 
-| project Duration = EndTime - StartTime, ResourceAlias 
-| sort by Duration asc 
+let Events = WVDConnections | where UserName == "userupn" ;
+Events
+| where State == "Connected"
+| project CorrelationId , UserName, ResourceAlias , StartTime=TimeGenerated
+| join (Events
+| where State == "Completed"
+| project EndTime=TimeGenerated, CorrelationId)
+on CorrelationId
+| project Duration = EndTime - StartTime, ResourceAlias
+| sort by Duration asc
 ```
 
 Chcete-li najít chyby pro určitého uživatele:
 
 ```kusto
 WVDErrors
-| where UserName == "userupn" 
+| where UserName == "userupn"
 |take 100
 ```
 
 Zjistit, zda došlo k určité chybě:
 
 ```kusto
-WVDErrors 
-| where CodeSymbolic =="ErrorSymbolicCode" 
-| summarize count(UserName) by CodeSymbolic 
+WVDErrors
+| where CodeSymbolic =="ErrorSymbolicCode"
+| summarize count(UserName) by CodeSymbolic
 ```
 
 Zjištění výskytu chyby napříč všemi uživateli:
 
 ```kusto
-WVDErrors 
-| where ServiceError =="false" 
-| summarize usercount = count(UserName) by CodeSymbolic 
+WVDErrors
+| where ServiceError =="false"
+| summarize usercount = count(UserName) by CodeSymbolic
 | sort by usercount desc
-| render barchart 
+| render barchart
 ```
 
 Chcete-li se dotazovat aplikace na uživatele otevřené, spusťte tento dotaz:
 
 ```kusto
-WVDCheckpoints 
+WVDCheckpoints
 | where TimeGenerated > ago(7d)
 | where Name == "LaunchExecutable"
 | extend App = parse_json(Parameters).filename
@@ -259,6 +259,6 @@ WVDCheckpoints
 >- V tabulce WVDErrors se zobrazují chyby správy, problémy s registrací hostitele a další problémy, ke kterým dochází, když se uživatel přihlásí k odběru seznamu aplikací nebo stolních počítačů.
 >- WVDErrors vám pomůže identifikovat problémy, které mohou být vyřešeny úlohami správce. Hodnota v ServiceError vždy říká "false" pro tyto typy problémů. Pokud ServiceError = "true", budete muset problém vyřešit společnosti Microsoft. Ujistěte se, že jste zadali ID korelace pro chyby, které chcete eskalovat.
 
-## <a name="next-steps"></a>Další kroky 
+## <a name="next-steps"></a>Další kroky
 
 Pokud si chcete projít běžné chybové scénáře, které vám diagnostická funkce může zjistit, přečtěte si téma [identifikace a Diagnostika problémů](diagnostics-role-service.md#common-error-scenarios).

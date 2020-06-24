@@ -2,7 +2,8 @@
 title: Časová pásma spravované instance Azure SQL
 description: Další informace o konkrétních časových pásmech spravované instance Azure SQL
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
+ms.subservice: operations
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: conceptual
@@ -10,12 +11,12 @@ author: MladjoA
 ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 05/25/2020
-ms.openlocfilehash: df4d91cf6dffaeb9309c5304382b415f7adde8b5
-ms.sourcegitcommit: 69156ae3c1e22cc570dda7f7234145c8226cc162
+ms.openlocfilehash: 84df755d4a89b83a0842a74a619fad5275396dec
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/03/2020
-ms.locfileid: "84309658"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84711353"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Časová pásma ve spravované instanci Azure SQL
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]

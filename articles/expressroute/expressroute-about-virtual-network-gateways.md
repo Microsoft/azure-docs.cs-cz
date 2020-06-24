@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: mialdrid
 ms.openlocfilehash: 58e75e4efecf390c4c1449b7ec59684554fa7516
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79281415"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710503"
 ---
 # <a name="about-expressroute-virtual-network-gateways"></a>O branách virtuální sítě ExpressRoute
 
@@ -86,9 +86,9 @@ Další informace o FastPath, včetně omezení a požadavků, najdete v tématu
 ## <a name="rest-apis-and-powershell-cmdlets"></a><a name="resources"></a>Rozhraní REST API a rutiny PowerShellu
 Další technické materiály a specifické požadavky na syntaxi při použití rozhraní REST API a rutin PowerShellu pro konfigurace brány virtuální sítě najdete na následujících stránkách:
 
-| **Classic** | **Resource Manager** |
+| **Klasický** | **Resource Manager** |
 | --- | --- |
-| [Prostředí](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[Prostředí](https://docs.microsoft.com/powershell/module/az.network#networking) |
+| [PowerShell](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#azure) |[PowerShell](https://docs.microsoft.com/powershell/module/az.network#networking) |
 | [REST API](https://msdn.microsoft.com/library/jj154113.aspx) |[REST API](https://msdn.microsoft.com/library/mt163859.aspx) |
 
 ## <a name="next-steps"></a>Další kroky

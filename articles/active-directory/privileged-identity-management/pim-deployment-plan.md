@@ -14,12 +14,12 @@ ms.date: 04/28/2020
 ms.author: curtand
 ms.custom: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 51a60d307ca7dac139db0097283fc08e9e41624c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ac3f9adbb3b83345fe14df39014c6119e97ba7f9
+ms.sourcegitcommit: e3c28affcee2423dc94f3f8daceb7d54f8ac36fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "82233529"
+ms.lasthandoff: 06/17/2020
+ms.locfileid: "84886105"
 ---
 # <a name="deploy-azure-ad-privileged-identity-management-pim"></a>Nasazení Azure AD Privileged Identity Management (PIM)
 
@@ -52,13 +52,14 @@ Pokud chcete použít Privileged Identity Management, musí mít adresář jednu
 
 - Azure AD Premium P2
 - Enterprise Mobility + Security (EMS) E5
-- Microsoft 365 M5
+- Microsoft 365 Education A5
+- Microsoft 365 Enterprise E5
 
 Další informace najdete v tématu [licenční požadavky pro použití Privileged Identity Management](subscription-requirements.md).
 
 ### <a name="key-terminology"></a>Klíčová terminologie
 
-| Termín nebo koncept | Popis |
+| Termín nebo koncept | Description |
 | --- | --- |
 | způsobil | Přiřazení role, které vyžaduje, aby uživatel prováděl jednu nebo více akcí pro použití role. Pokud uživatel nastavil nárok na roli, to znamená, že může roli aktivovat, když potřebují provádět privilegované úlohy. Neexistuje žádný rozdíl v přístupu pro někoho, kdo má trvalé přiřazení oprávnění oproti oprávněné roli. Jediným rozdílem je, že někteří lidé nepotřebují přístup ke všemu času. |
 | aktivovat | Proces provádění jedné nebo více akcí pro použití role, pro kterou má uživatel nárok. Akce můžou zahrnovat provádění kontroly vícefaktorového ověřování (MFA), poskytování obchodního odůvodnění nebo žádosti o schválení od určených schvalovatelů. |
@@ -99,7 +100,7 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-ad-roles"></a>Zúčastněné strany: Privileged Identity Management pro role Azure AD
 
-| Název | Role | Akce |
+| Name | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Architekt identity nebo globální správce Azure**<br/>Zástupce z týmu pro správu identit, který má za následek definování způsobu, jakým se tato změna rovná, s hlavní infrastrukturou správy identit ve vaší organizaci. | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník služby/manažer line**<br/>Zástupce od vlastníků IT služby nebo skupiny služeb. Jsou klíčem k rozhodování a přispívání Privileged Identity Management pro svůj tým. | TAKŽE/R/I |
@@ -109,7 +110,7 @@ Následující část vám pomůže identifikovat všechny zúčastněné strany
 
 #### <a name="stakeholders-privileged-identity-management-for-azure-resource-roles"></a>Zúčastněné strany: Privileged Identity Management pro role prostředků Azure
 
-| Název | Role | Akce |
+| Name | Role | Akce |
 | --- | --- | --- |
 | Jméno a e-mail | **Předplatné/vlastník prostředku**<br/>Zástupce od vlastníků IT každého předplatného nebo prostředku, který chcete nasadit Privileged Identity Management pro | TAKŽE/R/I |
 | Jméno a e-mail | **Vlastník zabezpečení**<br/>Zástupce bezpečnostního týmu, který se může odhlásit, že plán splňuje požadavky vaší organizace na zabezpečení. | SO/R |
@@ -179,7 +180,7 @@ Je důležité upřednostnit ochranu rolí Azure AD, které mají nejvyšší po
 
 1. Globální správce
 1. Správce zabezpečení
-1. Správce uživatele
+1. Správce uživatelů
 1. Správce Exchange
 1. Správce SharePointu
 1. Správce Intune
@@ -243,20 +244,20 @@ Před implementací řešení Privileged Identity Management je vhodné koncepty
 | Role | Vyžadování MFA | Oznámení | Lístek incidentu | Vyžadovat schválení | Schvalovatel | Doba trvání aktivace | Trvalý správce |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
 | Globální správce | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Jiní globální správci | 1 hodina | Účty pro nouzový přístup |
-| Správce Exchange | :heavy_check_mark: | :heavy_check_mark: | znak | znak | Žádná | 2 hodiny | Žádná |
-| Správce helpdesku | znak | znak | :heavy_check_mark: | znak | Žádná | 8 hodin | Žádná |
+| Správce Exchange | :heavy_check_mark: | :heavy_check_mark: | znak | znak | Žádné | 2 hodiny | Žádné |
+| Správce helpdesku | znak | znak | :heavy_check_mark: | znak | Žádné | 8 hodin | Žádné |
 
 #### <a name="privileged-identity-management-settings-for-azure-resource-roles"></a>Nastavení Privileged Identity Management pro role prostředků Azure
 
 | Role | Vyžadování MFA | Oznámení | Vyžadovat schválení | Schvalovatel | Doba trvání aktivace | Aktivní správce | Aktivní doba platnosti | Nárok na vypršení platnosti |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| Vlastník kritických předplatných | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Další vlastníci předplatného | 1 hodina | Žádná | neuvedeno | 3 měsíce |
-| Správce přístupu uživatele s méně důležitými předplatnými | :heavy_check_mark: | :heavy_check_mark: | znak | Žádná | 1 hodina | Žádná | neuvedeno | 3 měsíce |
-| Přispěvatel virtuálních počítačů | znak | :heavy_check_mark: | znak | Žádná | 3 hodiny | Žádná | neuvedeno | 6 měsíců |
+| Vlastník kritických předplatných | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Další vlastníci předplatného | 1 hodina | Žádné | Není k dispozici | 3 měsíce |
+| Správce přístupu uživatele s méně důležitými předplatnými | :heavy_check_mark: | :heavy_check_mark: | znak | Žádné | 1 hodina | Žádné | Není k dispozici | 3 měsíce |
+| Přispěvatel virtuálních počítačů | znak | :heavy_check_mark: | znak | Žádné | 3 hodiny | Žádné | Není k dispozici | 6 měsíců |
 
 V následující tabulce jsou popsána jednotlivá nastavení.
 
-| Nastavení | Popis |
+| Nastavení | Description |
 | --- | --- |
 | Role | Název role, pro kterou definujete nastavení. |
 | Vyžadování MFA | Určuje, zda oprávněný uživatel musí před aktivací role provést MFA.<br/><br/> : heavy_check_mark: **Společnost Microsoft doporučuje** vymáhat MFA pro všechny role správce, zejména v případě, že role mají uživatele typu Host. |

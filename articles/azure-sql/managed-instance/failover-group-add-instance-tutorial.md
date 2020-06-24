@@ -1,9 +1,9 @@
 ---
-title: 'Kurz: Přidání spravované instance spravované instance SQL do skupiny převzetí služeb při selhání'
+title: 'Kurz: Přidání spravované instance SQL do skupiny převzetí služeb při selhání'
 titleSuffix: Azure SQL Managed Instance
-description: V tomto kurzu vytvoříte dvě spravované instance jako primární a sekundární a pak je přidáte do skupiny s automatickým převzetím služeb při selhání.
+description: V tomto kurzu se naučíte vytvořit skupinu převzetí služeb při selhání mezi primární a sekundární spravovanou instancí SQL Azure.
 services: sql-database
-ms.service: sql-database
+ms.service: sql-managed-instance
 ms.subservice: high-availability
 ms.custom: sqldbrb=1
 ms.devlang: ''
@@ -12,14 +12,14 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: sashan, carlrab
 ms.date: 08/27/2019
-ms.openlocfilehash: 3b132fb5c718346462e43d161e4d85f07223df09
-ms.sourcegitcommit: eeba08c8eaa1d724635dcf3a5e931993c848c633
+ms.openlocfilehash: f1bf8eff4a6f518fc24c87c5fbd24984ef8f8b29
+ms.sourcegitcommit: a8928136b49362448e992a297db1072ee322b7fd
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 06/10/2020
-ms.locfileid: "84667739"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84718882"
 ---
-# <a name="tutorial-add-a-managed-instance-of-sql-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance spravované instance SQL do skupiny převzetí služeb při selhání
+# <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Kurz: Přidání spravované instance SQL do skupiny převzetí služeb při selhání
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
 
 Přidejte spravované instance spravované instance Azure SQL do skupiny převzetí služeb při selhání. V tomto článku se dozvíte, jak:

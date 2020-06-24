@@ -7,11 +7,11 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 849bb1729b89d075eed579aa36395bf4d29f3bd9
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "79283937"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84710367"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Provádění operací s daty v Azure Logic Apps
 
@@ -29,12 +29,12 @@ Tyto tabulky shrnují datové operace, které lze použít a jsou uspořádány 
 
 Tyto akce vám pomůžou pracovat s daty v polích.
 
-| Akce | Popis |
+| Akce | Description |
 |--------|-------------|
 | [**Vytvořit tabulku CSV**](#create-csv-table-action) | Vytvoří tabulku hodnot s oddělovači (CSV) z pole. |
 | [**Vytvořit tabulku HTML**](#create-html-table-action) | Vytvoří tabulku HTML z pole. |
 | [**Filtrovat pole**](#filter-array-action) | Vytvořte podmnožinu pole z pole na základě zadaného filtru nebo podmínky. |
-| [**Zúčastnit**](#join-action) | Vytvoří řetězec ze všech položek v poli a oddělí každou položku zadaným znakem. |
+| [**Spojit**](#join-action) | Vytvoří řetězec ze všech položek v poli a oddělí každou položku zadaným znakem. |
 | [**Vyberte**](#select-action) | Vytvoří pole z určených vlastností pro všechny položky v jiném poli. |
 ||| 
 
@@ -42,7 +42,7 @@ Tyto akce vám pomůžou pracovat s daty v polích.
 
 Tyto akce vám pomůžou pracovat s daty ve formátu JavaScript Object Notation (JSON).
 
-| Akce | Popis |
+| Akce | Description |
 |--------|-------------|
 | [**Vytvořit**](#compose-action) | Vytvoření zprávy nebo řetězce z více vstupů, které mohou mít různé datové typy. Tento řetězec je pak možné použít jako jeden vstup místo opakovaného zadávání stejných vstupů. Můžete například vytvořit jednu zprávu JSON z různých vstupů. |
 | [**Analyzovat JSON**](#parse-json-action) | Vytvářejte uživatelsky přívětivé datové tokeny pro vlastnosti v obsahu JSON, abyste mohli snadněji používat vlastnosti ve svých aplikacích logiky. |
@@ -90,9 +90,9 @@ Pokud chcete vyzkoušet příklad, postupujte podle těchto kroků pomocí návr
 
      ![Pro akci psaní vyberte nový krok.](./media/logic-apps-perform-data-operations/add-compose-operation-action.png)
 
-   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo**+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte `compose` do vyhledávacího pole jako filtr. V seznamu akce vyberte akci **vytvořit** .
+1. V části **zvolit akci**zadejte do vyhledávacího pole `compose` jako filtr. V seznamu akce vyberte akci **vytvořit** .
 
    ![Vybrat akci psaní](./media/logic-apps-perform-data-operations/select-compose-action.png)
 
@@ -148,9 +148,9 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
      ![Pro akci vytvoření tabulky CSV vyberte nový krok.](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo**+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte `create csv table` do vyhledávacího pole jako filtr. V seznamu akce vyberte akci **vytvořit tabulku CSV** .
+1. V části **zvolit akci**zadejte do vyhledávacího pole `create csv table` jako filtr. V seznamu akce vyberte akci **vytvořit tabulku CSV** .
 
    ![Výběr akce vytvoření tabulky CSV](./media/logic-apps-perform-data-operations/select-create-csv-table-action.png)
 
@@ -219,11 +219,11 @@ V akci ponechte sloupec **záhlaví** prázdný. Na každém řádku ve sloupci 
 
 #### <a name="work-in-code-view"></a>Práce v zobrazení kódu
 
-V definici JSON akce nastavte v `columns` poli `header` vlastnost na prázdný řetězec. Pro každou `value` vlastnost odkažte na každou vlastnost pole, kterou chcete.
+V definici JSON akce `columns` nastavte v poli `header` vlastnost na prázdný řetězec. Pro každou `value` vlastnost odkažte na každou vlastnost pole, kterou chcete.
 
 1. Na panelu nástrojů návrháře vyberte **zobrazení kódu**.
 
-1. V editoru kódu v `columns` poli Akce přidejte vlastnost Empty `header` a tento `value` výraz pro každý sloupec hodnot pole, který chcete použít:
+1. V editoru kódu v `columns` poli Akce přidejte `header` vlastnost Empty a tento `value` výraz pro každý sloupec hodnot pole, který chcete použít:
 
    ```json
    {
@@ -299,9 +299,9 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
      ![Pro akci vytvoření tabulky HTML vyberte nový krok.](./media/logic-apps-perform-data-operations/add-create-table-action.png)
 
-   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo**+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
-1. V části **zvolit akci**zadejte `create html table` do vyhledávacího pole jako filtr. V seznamu akce vyberte akci **vytvořit tabulku HTML** .
+1. V části **zvolit akci**zadejte do vyhledávacího pole `create html table` jako filtr. V seznamu akce vyberte akci **vytvořit tabulku HTML** .
 
    ![Výběr akce vytvoření tabulky HTML](./media/logic-apps-perform-data-operations/select-create-html-table-action.png)
 
@@ -370,11 +370,11 @@ V akci ponechte sloupec **záhlaví** prázdný. Na každém řádku ve sloupci 
 
 #### <a name="work-in-code-view"></a>Práce v zobrazení kódu
 
-V definici JSON akce nastavte v `columns` poli `header` vlastnost na prázdný řetězec. Pro každou `value` vlastnost odkažte na každou vlastnost pole, kterou chcete.
+V definici JSON akce `columns` nastavte v poli `header` vlastnost na prázdný řetězec. Pro každou `value` vlastnost odkažte na každou vlastnost pole, kterou chcete.
 
 1. Na panelu nástrojů návrháře vyberte **zobrazení kódu**.
 
-1. V editoru kódu v `columns` poli Akce přidejte vlastnost Empty `header` a tento `value` výraz pro každý sloupec hodnot pole, který chcete použít:
+1. V editoru kódu v `columns` poli Akce přidejte `header` vlastnost Empty a tento `value` výraz pro každý sloupec hodnot pole, který chcete použít:
 
    ```json
    {
@@ -464,7 +464,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
      ![Pro akci filtrování pole vyberte nový krok.](./media/logic-apps-perform-data-operations/add-filter-array-action.png)
 
-   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo**+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte `filter array` jako filtr. V seznamu akce vyberte akci **Filtr pole** .
 
@@ -478,7 +478,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
 1. Pro podmínku zadejte položky pole, které chcete porovnat, vyberte operátor porovnání a zadejte hodnotu porovnání.
 
-   V tomto příkladu se `item()` používá funkce pro přístup k jednotlivým položkám v poli, zatímco akce **pole filtru** vyhledává položky pole, jejichž hodnota je větší než jedna:
+   V tomto příkladu se používá `item()` funkce pro přístup k jednotlivým položkám v poli, zatímco akce **pole filtru** vyhledává položky pole, jejichž hodnota je větší než jedna:
 
    ![Příklad dokončení pro akci "Filter Array"](./media/logic-apps-perform-data-operations/finished-filter-array-action.png)
 
@@ -526,7 +526,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
      ![SSelect akci "nový krok" pro "spojení"](./media/logic-apps-perform-data-operations/new-step-add-join-action.png)
 
-   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo**+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte `join` jako filtr. V seznamu akce vyberte tuto akci: **připojit**
 
@@ -586,7 +586,7 @@ Pokud upřednostňujete práci v editoru zobrazení kódu, můžete zkopírovat 
 
      ![Pro akci analyzovat JSON vyberte nový krok.](./media/logic-apps-perform-data-operations/add-parse-json-action.png)
 
-   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo**+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
 1. Do vyhledávacího pole zadejte `parse json` jako filtr. V seznamu akce vyberte akci **analyzovat JSON** .
 
@@ -661,7 +661,7 @@ Pokud dáváte přednost práci v editoru zobrazení kódu, můžete zkopírovat
 
      ![Pro akci vybrat vyberte nový krok.](./media/logic-apps-perform-data-operations/add-select-operation-action.png)
 
-   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo**+** znaménko plus (). Vyberte znaménko plus a pak vyberte **přidat akci**.
+   * Chcete-li přidat akci mezi kroky, přesuňte ukazatel myši na šipku připojení, aby se zobrazilo znaménko plus ( **+** ). Vyberte znaménko plus a pak vyberte **přidat akci**.
 
 1. V části **zvolit akci**vyberte **předdefinovaná**. Do vyhledávacího pole zadejte `select` jako filtr. V seznamu akce vyberte akci **Vybrat** .
 

@@ -17,18 +17,18 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: b88a855f1f486a94bb591e3d2a72b49a9a8500db
+ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
 ms.translationtype: MT
 ms.contentlocale: cs-CZ
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79241595"
+ms.lasthandoff: 06/11/2020
+ms.locfileid: "84709211"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Rychlý start: Diagnostika problému s filtrováním síťového provozu virtuálního počítače pomocí webu Azure Portal
 
 V tomto rychlém startu nasadíte virtuální počítač a potom zkontrolujete obousměrnou komunikaci mezi IP adresou a adresou URL. Určíte příčinu selhání komunikace a najdete jeho řešení.
 
-Pokud ještě nemáte předplatné Azure, vytvořte si [bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) před tím, než začnete.
+Pokud ještě nemáte předplatné Azure, [vytvořte si bezplatný účet](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), ještě než začnete.
 
 ## <a name="log-in-to-azure"></a>Přihlaste se k Azure.
 
@@ -44,7 +44,7 @@ Přihlaste se k webu Azure Portal na adrese https://portal.azure.com.
     |---|---|
     |Název|myVm|
     |Uživatelské jméno| Zadejte libovolné uživatelské jméno.|
-    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat [zadané požadavky na složitost](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    |Heslo| Zadejte libovolné heslo. Heslo musí obsahovat nejméně 12 znaků a musí splňovat zadané požadavky na složitost.|
     |Předplatné| Vyberte své předplatné.|
     |Skupina prostředků| Vyberte **Vytvořit novou** a zadejte **myResourceGroup**.|
     |Umístění| Vyberte **východní USA**|
@@ -59,7 +59,7 @@ Pokud chcete otestovat síťovou komunikaci pomocí sledovacího procesu sítě,
 
 ### <a name="enable-network-watcher"></a>Povolení Network Watcheru
 
-Pokud už sledovací proces sítě máte alespoň v jedné oblasti povolený, přeskočte vpřed na část [Použití ověření toku protokolu IP](#use-ip-flow-verify).
+Pokud už máte sledovací proces sítě povolený aspoň v jedné oblasti, přejděte k části [použití ověření toku IP](#use-ip-flow-verify).
 
 1. Na webu Azure Portal vyberte **Všechny služby**. Do **pole filtru** zadejte *Network Watcher*. Jakmile se služba **Network Watcher** zobrazí ve výsledcích, vyberte ji.
 2. Povolte sledovací proces sítě v oblasti USA – východ, protože tam jste v předchozím kroku nasadili virtuální počítač. Rozbalte **Oblasti** a potom vedle **USA – východ** vyberte **...** (stejně jako v následujícím obrázku):
@@ -98,19 +98,19 @@ Nyní, když už víte, která pravidla zabezpečení umožňují nebo odepíraj
 
 ## <a name="view-details-of-a-security-rule"></a>Zobrazení podrobností pravidla zabezpečení
 
-1. Pokud chcete určit, proč pravidla v krocích 3 až 5 v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) povolují nebo odepírají komunikaci, prohlédněte si platná pravidla zabezpečení pro síťové rozhraní virtuálního počítače. Do vyhledávacího pole v horní části webu Azure Portal zadejte *myvm*. Když se síťové rozhraní **myvm** (nebo libovolný jiný název síťového rozhraní) zobrazí ve výsledcích hledání, vyberte ho.
+1. Pokud chcete určit, proč pravidla v krocích 3 až 5 v části **Použití ověření toku protokolu IP** povolují nebo odepírají komunikaci, prohlédněte si platná pravidla zabezpečení pro síťové rozhraní virtuálního počítače. Do vyhledávacího pole v horní části webu Azure Portal zadejte *myvm*. Když se síťové rozhraní **myvm** (nebo libovolný jiný název síťového rozhraní) zobrazí ve výsledcích hledání, vyberte ho.
 2. Podle následujícího obrázku v části **PODPORA A ŘEŠENÍ POTÍŽÍ** vyberte **Platná pravidla zabezpečení**:
 
     ![Platná pravidla zabezpečení](./media/diagnose-vm-network-traffic-filtering-problem/effective-security-rules.png)
 
-    Ve třetím kroku v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) jste zjistili, že komunikace byla povolená díky pravidlu **AllowInternetOutbound**. Na předchozím obrázku si můžete všimnout, že **CÍL** (DESTINATION) tohoto pravidla je **Internet**. Není však jasné, jak adresa 13.107.21.200, kterou jste ve třetím kroku v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) testovali, souvisí s **Internetem**.
+    Ve třetím kroku v části **Použití ověření toku protokolu IP** jste zjistili, že komunikace byla povolená díky pravidlu **AllowInternetOutbound**. Na předchozím obrázku si můžete všimnout, že **CÍL** (DESTINATION) tohoto pravidla je **Internet**. Není však jasné, jak adresa 13.107.21.200, kterou jste ve třetím kroku v části **Použití ověření toku protokolu IP** testovali, souvisí s **Internetem**.
 3. Vyberte pravidlo **AllowInternetOutBound** a podle následujícího obrázku vyberte **Cíl**:
 
     ![Předpony pravidla zabezpečení](./media/diagnose-vm-network-traffic-filtering-problem/security-rule-prefixes.png)
 
     a jednou z nich je **12.0.0.0/6**, která zahrnuje rozsah IP adres od 12.0.0.1 do 15.255.255.254. Vzhledem k tomu, že adresa 13.107.21.200 do tohoto rozsahu adres patří, pravidlo **AllowInternetOutBound** jí odchozí provoz umožní. Kromě toho na obrázku ve druhém kroku nejsou zobrazená žádná jiná pravidla s vyšší prioritou (nižším číslem), která by toto pravidlo přepisovala. Okno **Předpony adres** zavřete. Pokud byste chtěli odepřít odchozí komunikaci na IP adresu 13.107.21.200, mohli byste přidat pravidlo zabezpečení s vyšší prioritou, které portu 80 odchozí komunikaci na tuto IP adresu zakáže.
-4. Když jste ve čtvrtém kroku v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) spustili kontrolu odchozího provozu na IP adresu 172.131.0.100, zjistili jste, že pravidlo **DefaultOutboundDenyAll** tuto komunikaci odepřelo. Toto pravidlo plní stejnou funkci jako pravidlo **DenyAllOutBound** zobrazené na obrázku ve druhém kroku, které jako **CÍL** (DESTINATION) používá adresu **0.0.0.0/0**. Toto pravidlo zakazuje odchozí komunikaci na IP adresu 172.131.0.100, protože tato adresa se nenachází v **CÍLI** žádného jiného **odchozího pravidla** zobrazeného na obrázku. Pokud chcete odchozí komunikaci povolit, můžete přidat pravidlo zabezpečení s vyšší prioritou, které IP adrese 172.131.0.100 na portu 80 umožní odchozí komunikaci.
-5. Když jste v pátém kroku v části [Použití ověření toku protokolu IP](#use-ip-flow-verify) spustili kontrolu příchozího provozu z IP adresy 172.131.0.100, zjistili jste, že pravidlo **DefaultInboundDenyAll** tuto komunikaci odepřelo. Toto pravidlo plní stejnou funkci jako pravidlo **DenyAllInBound** zobrazené na obrázku ve druhém kroku. Pravidlo **DenyAllInBound** se vynucuje, protože žádné pravidlo s vyšší prioritou, které by umožňovalo portu 80 příchozí provoz na virtuální počítač z IP adresy 172.31.0.100, neexistuje. Pokud chcete příchozí komunikaci povolit, mohli byste přidat pravidlo zabezpečení s vyšší prioritou, které by portu 80 příchozí komunikaci z IP adresy 172.31.0.100 umožnilo.
+4. Když jste ve čtvrtém kroku v části **Použití ověření toku protokolu IP** spustili kontrolu odchozího provozu na IP adresu 172.131.0.100, zjistili jste, že pravidlo **DefaultOutboundDenyAll** tuto komunikaci odepřelo. Toto pravidlo plní stejnou funkci jako pravidlo **DenyAllOutBound** zobrazené na obrázku ve druhém kroku, které jako **CÍL** (DESTINATION) používá adresu **0.0.0.0/0**. Toto pravidlo zakazuje odchozí komunikaci na IP adresu 172.131.0.100, protože tato adresa se nenachází v **CÍLI** žádného jiného **odchozího pravidla** zobrazeného na obrázku. Pokud chcete odchozí komunikaci povolit, můžete přidat pravidlo zabezpečení s vyšší prioritou, které IP adrese 172.131.0.100 na portu 80 umožní odchozí komunikaci.
+5. Když jste v pátém kroku v části **Použití ověření toku protokolu IP** spustili kontrolu příchozího provozu z IP adresy 172.131.0.100, zjistili jste, že pravidlo **DefaultInboundDenyAll** tuto komunikaci odepřelo. Toto pravidlo plní stejnou funkci jako pravidlo **DenyAllInBound** zobrazené na obrázku ve druhém kroku. Pravidlo **DenyAllInBound** se vynucuje, protože žádné pravidlo s vyšší prioritou, které by umožňovalo portu 80 příchozí provoz na virtuální počítač z IP adresy 172.31.0.100, neexistuje. Pokud chcete příchozí komunikaci povolit, mohli byste přidat pravidlo zabezpečení s vyšší prioritou, které by portu 80 příchozí komunikaci z IP adresy 172.31.0.100 umožnilo.
 
 Kontroly v tomto rychlém startu testovaly konfiguraci Azure. Pokud kontroly vrátily očekávané výsledky a problémy se sítí přetrvávají, přesvědčte se, že mezi virtuálním počítačem a koncovým bodem, se kterým komunikujete, se nenachází brána firewall a že operační systém ve virtuálním počítači nemá bránu firewall, která by komunikaci povolovala nebo odepírala.
 
